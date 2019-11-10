@@ -1,0 +1,13 @@
+pkgbase = libperflogger
+	pkgdesc = A library and script for monitoring frametimes in OpenGL/Vulkan games for Linux.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Lurkki14/libperflogger
+	arch = any
+	license = GPL3
+	depends = glibc
+	source = libperflogger-0.0.1.tar.gz::https://github.com/Lurkki14/libperflogger/archive/0.0.1.tar.gz
+	sha256sums = b0ce5b0e89a00f73be5e0ccbd0f59b4ff681c49021afb07986dbdb5a1db72d19
+
+pkgname = libperflogger
+

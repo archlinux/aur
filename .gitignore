@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+*.pkg.tar.xz
+libperflogger-*.tar.gz
+pkg/*
+src/*
