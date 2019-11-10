@@ -3,7 +3,7 @@
 pkgname=jaesve-git
 _pkgname=jaesve
 pkgver=1.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A CLI utility for stream converting JSON objects to a series of CSV values"
 url="https://github.com/bazaah/jaesve"
 license=("MIT")
@@ -15,7 +15,7 @@ makedepends=('rustup')
 prepare () {
     cd "$_pkgname"
     git checkout --quiet $pkgver
-    rustup override set stable
+    rustup override set 1.39.0
 }
 
 build() {

@@ -14,7 +14,7 @@ JAESVE_LATEST=$(git ls-remote --tags git://github.com/bazaah/jaesve.git \
   | head -n1 \
   | awk -F '/' '{print $NF}'
 )
-PKG_LATEST=$(grep -oP "(\d+\.)+\d+(-[\d\w\.\-]+)?" ./PKGBUILD)
+PKG_LATEST=$(grep "pkgver=" ./PKGBUILD | grep -oP "(\d+\.)+\d+(-[\d\w\.\-]+)?")
 
 echo "Latest jaesve tag: $JAESVE_LATEST, Latest PKG version: $PKG_LATEST, comparing..."
 
