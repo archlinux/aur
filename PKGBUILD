@@ -13,8 +13,7 @@ depends=(vala libgee libpeas gtksourceview3 gtksourceview4 jsonrpc-glib)
 makedepends=(git meson)
 optdepends=()
 groups=()
-source=("git+https://gitlab.gnome.org/esodan/gvls.git"
-        "fix-valadoc-icon-dir.patch")
+source=("git+https://gitlab.gnome.org/esodan/gvls.git")
 sha256sums=('SKIP')
 
 pkgver() {

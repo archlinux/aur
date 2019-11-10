@@ -17,7 +17,6 @@ pkgbase = gvls-git
 	provides = gvls
 	conflicts = gvls
 	source = git+https://gitlab.gnome.org/esodan/gvls.git
-	source = fix-valadoc-icon-dir.patch
 	sha256sums = SKIP
 
 pkgname = gvls-git
