@@ -8,7 +8,7 @@ pkgbase = freenet
 	arch = x86_64
 	license = GPL2
 	makedepends = java-environment>=8
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = git
 	makedepends = zip
 	depends = java-runtime>=8

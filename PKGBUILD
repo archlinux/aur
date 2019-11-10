@@ -19,7 +19,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
 depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'apache-ant' 'git' 'zip')
+makedepends=('java-environment>=8' 'ant' 'git' 'zip')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
