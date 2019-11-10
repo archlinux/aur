@@ -1,6 +1,6 @@
 pkgbase = breezeway-mod-git
 	pkgdesc = BreezewayMod is a fork of the Breezeway window decoration which aims to mimic the macOS interface.
-	pkgver = r56.c90387d
+	pkgver = r65.17b8cc6
 	pkgrel = 1
 	url = https://github.com/n4n0GH/breezeway-mod
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = breezeway-mod-git
 	makedepends = extra-cmake-modules
 	makedepends = kdecoration
 	depends = kwin
+	provides = breezeway-mod
 	source = git+https://github.com/n4n0GH/breezeway-mod.git
 	md5sums = SKIP
 

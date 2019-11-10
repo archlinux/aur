@@ -1,7 +1,8 @@
 # Maintainer: Dylan Simowitz <aur@dylan.simowitz.com>
+
 pkgname="breezeway-mod-git"
 _pkgname="breezeway-mod"
-pkgver=r56.c90387d
+pkgver=r65.17b8cc6
 pkgrel=1
 pkgdesc="BreezewayMod is a fork of the Breezeway window decoration which aims to mimic the macOS interface."
 arch=('i686' 'x86_64')
@@ -11,6 +12,7 @@ depends=('kwin')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdecoration')
 source=('git+https://github.com/n4n0GH/breezeway-mod.git')
 md5sums=('SKIP')
+provides=('breezeway-mod')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
