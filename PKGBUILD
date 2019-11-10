@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-auth-ldap-git
 pkgver=r145.e208153
-pkgrel=2
+pkgrel=3
 
 _modname=nginx-auth-ldap
 _nginxver=1.17.4
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
     cd "$srcdir"/nginx-$_nginxver
-    ./configure --with-compat --add-dynamic-module=../$_modname
+    ./configure --with-compat --with-http_ssl_module --add-dynamic-module=../$_modname
     make modules
 }
 
