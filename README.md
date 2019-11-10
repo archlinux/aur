@@ -5,8 +5,12 @@
 
 0. Get newest version from https://github.com/symfony/cli/releases
 1. Update package version in PKGBUILD
-2. Generate new checksums with `updpkgsums`
-3. Test install `makepkg -si`
-4. Update .SRCINFO `makepkg --printsrcinfo > .SRCINFO`
-5. `git remote add arch ssh://aur@aur.archlinux.org/symfony-cli.git`
-6. `git push arch`
+2. Execute `update.sh`
+
+or 
+
+3. Generate new checksums with `updpkgsums`
+4. Test install `makepkg -si`
+5. Update .SRCINFO `makepkg --printsrcinfo > .SRCINFO`
+6. `git remote add arch ssh://aur@aur.archlinux.org/symfony-cli.git`
+7. `git push arch`
