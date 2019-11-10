@@ -22,13 +22,13 @@ pkgver() {
 
 package() {
   cd "${pkgdir}"
-  mkdir -p "${pkgdir}"/srv/http/fail2web
-  mkdir -p "${pkgdir}"/usr/share/webapps/fail2web
+  mkdir -p "${pkgdir}"/usr/share/webapps/fail2web/static
   
-  cp "${srcdir}"/fail2web/web/. -r "${pkgdir}"/srv/http/fail2web/.
+  cp "${srcdir}"/fail2web/web/. -r "${pkgdir}"/usr/share/webapps/fail2web/static/.
   cp "${srcdir}"/fail2web/http-configs/. -r "${pkgdir}"/usr/share/webapps/fail2web/.
   chmod 0644 -R "${pkgdir}"/usr/share/webapps/fail2web
-  chmod 0644 -R "${pkgdir}"/srv/http/fail2web
-  chmod 0755 "${pkgdir}"/srv/http/fail2web
-  chmod 0755 "${pkgdir}"/srv/http/fail2web/fonts
+  chmod 0644 -R "${pkgdir}"/usr/share/webapps/fail2web/static
+  chmod 0755 "${pkgdir}"/usr/share/webapps/fail2web
+  chmod 0755 "${pkgdir}"/usr/share/webapps/fail2web/static
+  chmod 0755 "${pkgdir}"/usr/share/webapps/fail2web/static/fonts
 }
