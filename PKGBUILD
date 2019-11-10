@@ -14,7 +14,7 @@ source=("https://files.pythonhosted.org/packages/source/z/zfec/zfec-${pkgver}.ta
 sha256sums=('b41bd4b0af9c6b3a78bd6734e1e4511475944164375e6241b53df518a366922b')
 
 package_python2-zfec() {
-    depends=('python2-pyutil' 'python2-argparse')
+    depends=('python2-pyutil')
     replaces=('zfec')
     conflicts=('python-zfec')
 
@@ -23,7 +23,7 @@ package_python2-zfec() {
 }
 
 package_python-zfec() {
-    depends=('python-pyutil' 'python-argparse')
+    depends=('python-pyutil')
     conflicts=('python2-zfec')
 
     cd "zfec-$pkgver"

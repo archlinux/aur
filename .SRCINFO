@@ -12,12 +12,10 @@ pkgbase = zfec
 
 pkgname = python2-zfec
 	depends = python2-pyutil
-	depends = python2-argparse
 	conflicts = python-zfec
 	replaces = zfec
 
 pkgname = python-zfec
 	depends = python-pyutil
-	depends = python-argparse
 	conflicts = python2-zfec
 
