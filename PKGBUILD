@@ -3,7 +3,7 @@
 pkgbase=python-iso3166
 pkgname=(python-iso3166 python2-iso3166)
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-contained ISO 3166-1 country definitions."
 arch=('any')
 url="https://github.com/deactivated/python-iso3166"
