@@ -1,9 +1,9 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributr: Patrick José Pereira < positivcheg94 at gmail dot com >
 
-_commit=5096aab40c71bfa2bebd17e4ace5f6678587b889  # tags=v2.29.0
+_commit=9f99fa9a509555f85bffc15ce27531aaa6db6f7e  # tags=v2.30.0
 pkgname=librealsense
-pkgver=v2.29.0
+pkgver=v2.30.0
 pkgrel=1
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
 arch=('x86_64')
