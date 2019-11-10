@@ -4,14 +4,15 @@
 pkgname=firefox-nightly-de
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
-pkgver=72.0a1
-pkgrel=1
+pkgver=72.0a1.20191109
+pkgrel=2
+_version=72.0a1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 
 source=('firefox-nightly.desktop' 'policies.json')
-source_i686=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${pkgver}.de.linux-i686.tar.bz2"{,.asc})
-source_x86_64=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${pkgver}.de.linux-x86_64.tar.bz2"{,.asc})
+source_i686=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-i686.tar.bz2"{,.asc})
+source_x86_64=("https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-x86_64.tar.bz2"{,.asc})
 
 sha512sums=('7e950fbcdd7e0bd972038e3be158ba7ee5e0c0a3c9fc4778a7525e23ca7ab1dfff7ee7b14747651ca8666bd3000011c40074e53f1101e4d2bd3ca3721051cddf'
   '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
@@ -32,6 +33,11 @@ optdepends=('pulseaudio: audio support'
 
 conflicts=('firefox-nightly')
 provides=('firefox-nightly')
+
+pkgver() {
+  # Use Last-Modified Header from server
+  echo "${_version}.$(curl -sI https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-${arch}.tar.bz2 | grep -i Last-Modified | cut -c16- | date -f- '+%Y%m%d')"
+}
 
 package() {
   install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
