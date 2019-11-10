@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
-	pkgver = 5.3.9
+	pkgver = 5.3.10
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = linux-clear-current
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.3.9.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.3.10.xz
 	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.3.1-11
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2
 	sha256sums = SKIP
-	sha256sums = 92ee77e57bcde9bddfa3db69c26805fbffa27ca128feba670e04664e1407dc63
+	sha256sums = 4c0304c4ac05105881c7f50463a1485a71c0a5899830f07eac0321f32ae4eb4a
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 
