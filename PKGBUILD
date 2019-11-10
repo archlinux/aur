@@ -2,8 +2,8 @@
 # Contributor: ssysmso sending updated PKGBUILD
 # Old Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=beebeep
-_pkgver=r1215
-pkgver=5.6.8
+_pkgver=r1352
+pkgver=5.8.2
 pkgrel=1
 pkgdesc="Secure LAN Messenger"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("http://netcologne.dl.sourceforge.net/project/${pkgname}/Sources/${pkgna
         "${pkgname}.xpm"
         "${pkgname}.desktop"
         "${pkgname}_script")
-md5sums=('eb202077322f73edec059140e9bb9557'
+md5sums=('b9f32711876c433f2434f9381fd66480'
          '08e15ed0d7e938c863e5437984e9c597'
          'e89c5abe353abcbbbb2b9ae9be3e46bc'
          'a282005b0f8ee2dffc42704612ad95fe')
