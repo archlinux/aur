@@ -1,0 +1,12 @@
+pkgbase = opencl-1.2-man-doc
+	pkgdesc = OpenCL 1.2 man pages
+	pkgver = 1.0~svn33624
+	pkgrel = 4
+	url = http://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/
+	arch = any
+	license = custom
+	source = http://ftp.ubuntu.com/ubuntu/ubuntu/pool/universe/k/khronos-opencl-man/opencl-1.2-man-doc_1.0~svn33624-4_all.deb
+	sha256sums = 8363acad5450f60a568af71ed09ae20ff88319cd2087c275393e438012583155
+
+pkgname = opencl-1.2-man-doc
+
