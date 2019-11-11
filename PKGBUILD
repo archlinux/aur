@@ -20,7 +20,7 @@ _clear_version=31530
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash="17fd658ad142307f65cadaa96500e40f5e1695e492a3a1752d2e0f716cbb4682"
+_config_hash=17fd658ad142307f65cadaa96500e40f5e1695e492a3a1752d2e0f716cbb4682
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
