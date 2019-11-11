@@ -3,7 +3,7 @@
 
 pkgname=bzrtp-git
 _pkgname=bzrtp
-pkgver=1.0.6.r36.gc01c277
+pkgver=4.3.0.alpha.r0.g55f5c1f
 pkgrel=1
 pkgdesc="Opensource implementation of ZRTP keys exchange protocol"
 arch=('x86_64')
