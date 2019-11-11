@@ -82,7 +82,7 @@ package() {
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 vmlinuz-${pkgname} "$modulesdir/vmlinuz"
     install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
-    install -Dm644 vmlinuz-${pkgname}.cmdline $pkgdir/boot
+    install -Dm644 vmlinuz-${pkgname}.cmdline $pkgdir/boot/vmlinuz-${pkgname}.cmdline
 
     msg2 "Installing modules..."
     cp -r modules $pkgdir/usr/lib
