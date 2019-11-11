@@ -1,11 +1,15 @@
 pkgbase = distccd-alarm
 	pkgdesc = Toolchain for Arch ARM builds via distcc on x86_64 volunteers
 	pkgver = 8.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
 	arch = x86_64
 	license = GPL
 	depends = distcc
+	noextract = x-tools-20190909.tar.xz
+	noextract = x-tools6h-20190909.tar.xz
+	noextract = x-tools7h-20190909.tar.xz
+	noextract = x-tools8-20190909.tar.xz
 	options = libtool
 	options = emptydirs
 	options = !strip
