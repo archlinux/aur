@@ -1,2 +1,2 @@
 #!/bin/sh
-/opt/appimages/./kdenlive.AppImage
+/opt/appimages/./kdenlive.AppImage $@
