@@ -4,7 +4,7 @@
  _pkgdate=20191111
  pkgrel=3	
  pkgdesc="Internal Network Penetration Client based on ngrok(Linux Version)"
- arch=("x86_64" "aarch64")
+ arch=("x86_64" "aarch64" "armv7h")
  url="https://natapp.cn"
  license=('unknown')
  depends=()
