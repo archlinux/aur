@@ -61,7 +61,8 @@ _localmodcfg=
 pkgbase=linux-bcachefs-git
 pkgver=5.2.21.arch1.r844589.e96bfb9bc2c1
 pkgrel=1
-_srcver_tag=5.2.21-arch1
+pkgdesc="Linux"
+_srcver_tag=v5.2.21-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -94,8 +95,8 @@ source=(
     config         # the main kernel config file
 )
 validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+    "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
+    "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -103,7 +104,7 @@ sha512sums=('SKIP'
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 pkgver() {
     cd "$_reponame"
@@ -120,26 +121,26 @@ prepare() {
 
     msg2 "Adding patches from Linux upstream kernel repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    # git pull --no-edit -s recursive -X ours upstream_stable v${_srcver_tag//-arch*/}
-    git pull --no-edit upstream_stable v${_srcver_tag//-arch*/}
-
+    # git pull --no-edit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
+    git pull --no-edit upstream_stable ${_srcver_tag//-arch*/}
+    
+    # Revert broken commit for now, until bcachefs upstream fixes it
     # https://github.com/koverstreet/bcachefs/issues/74
-    git revert --no-edit c785529bebceeaf38db8ebf9b50ff3a173fb18c6
     # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v5.2.1&id=c785529bebceeaf38db8ebf9b50ff3a173fb18c6
-    # block: fix .bi_size overflow    
+    # block: fix .bi_size overflow
+    git revert --no-edit c785529bebceeaf38db8ebf9b50ff3a173fb18c6
 
-    msg2 "Adding patches from Arch Linux kernel repository..."
-    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    # git pull --no-edit arch_stable "v$_srcver_tag"
-    git fetch arch_stable v5.2.14-arch2
+    # msg2 "Pull stable releases from Arch vanilla kernel repository..."
+    # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    # git pull --no-edit arch_stable "$_srcver_tag"
 
-    git cherry-pick 7097880bd7857294d2b91084a35d2211cef7dd8b
     # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=fd0f4757ded3627edc883650941a26a21e435a7d
     # add sysctl to disallow unprivileged CLONE_NEWUSER by default
-
-    git cherry-pick de96c660ed1f470fed317e987444634cb6287d57
+    patch -Np1 -i "$srcdir/fd0f4757ded3627edc883650941a26a21e435a7d.patch"
+    
     # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
     # ZEN: Add CONFIG for unprivileged_userns_clone
+    patch -Np1 -i "$srcdir/7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7.patch"
 
     msg2 "Fixing EXTRAVERSION..."
     sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
@@ -187,7 +188,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules $_pkgdesc_extra"
+    pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
         coreutils
         kmod
@@ -223,7 +224,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel $_pkgdesc_extra"
+    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
     depends=("$pkgbase=$pkgver")
     provides=(
         "$pkgbase-headers=$pkgver"
@@ -306,7 +307,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel $_pkgdesc_extra"
+    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel $_pkgdesc_extra"
     depends=("$pkgbase=$pkgver")
     provides=(
         "$pkgbase-docs=$pkgver"
@@ -320,8 +321,8 @@ _package-docs() {
     mkdir -p "$builddir"
     cp -t "$builddir" -a Documentation
 
-    msg2 "Removing doctrees..."
-    rm -r "$builddir/Documentation/output/.doctrees"
+    msg2 "Removing unneeded files..."
+    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
     msg2 "Moving HTML docs..."
     local src dst

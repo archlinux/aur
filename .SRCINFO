@@ -1,4 +1,5 @@
 pkgbase = linux-bcachefs-git
+	pkgdesc = Linux
 	pkgver = 5.2.21.arch1.r844589.e96bfb9bc2c1
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
@@ -25,7 +26,7 @@ pkgbase = linux-bcachefs-git
 	sha512sums = d9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8
 
 pkgname = linux-bcachefs-git
-	pkgdesc = The Linux-bcachefs-git kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
+	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,13 +36,13 @@ pkgname = linux-bcachefs-git
 	provides = linux-bcachefs-git=5.2.21.arch1.r844589.e96bfb9bc2c1
 
 pkgname = linux-bcachefs-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
+	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = linux-bcachefs-git=5.2.21.arch1.r844589.e96bfb9bc2c1
 	provides = linux-bcachefs-git-headers=5.2.21.arch1.r844589.e96bfb9bc2c1
 	provides = linux-headers=5.2.21.arch1.r844589.e96bfb9bc2c1
 
 pkgname = linux-bcachefs-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-bcachefs-git kernel ~ featuring Kent Overstreet's bcachefs filesystem
+	pkgdesc = Kernel hacker's manual for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = linux-bcachefs-git=5.2.21.arch1.r844589.e96bfb9bc2c1
 	provides = linux-bcachefs-git-docs=5.2.21.arch1.r844589.e96bfb9bc2c1
 	provides = linux-docs=5.2.21.arch1.r844589.e96bfb9bc2c1
