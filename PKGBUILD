@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=191103
+pkgver=190930
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
@@ -33,7 +33,8 @@ optdepends=('aften: support for AC-3 audio encoding'
 'x265: support for H.265 video encoding')
 url="http://www.selur.de/"
 
-source_x86_64=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt551.zip
+#source_x86_64=(http://www.selur.de/sites/default/files/hybrid_downloads/Hybrid_${pkgver}_64bit_binary_qt551.zip
+source_x86_64=(https://www.videohelp.com/download/Hybrid_${pkgver}_64bit_binary_qt551.zip
           hybrid.desktop
           Hybrid.png
           LICENSE)
@@ -45,7 +46,8 @@ package() {
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-md5sums_x86_64=('05c6d04c6498ebd309553c1337d6b147'
+md5sums_x86_64=('4de10033c96121fdcd03112fe3965ae0'
                 'dd87c6eb6df85049de38c61dfe400347'
                 '798dd936a3bc9bcd3b131d5dd6db96e6'
                 '1fd2ac133744f86e25fd680d14aed2b4')
+
