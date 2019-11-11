@@ -5,7 +5,7 @@
 
 pkgname=ortp-git
 _pkgname=ortp
-pkgver=1.0.2.r55.gf9595c7
+pkgver=1.0.2.r67.g74feb19
 pkgrel=1
 pkgdesc="A Real-time Transport Protocol (RTP) library"
 arch=('x86_64')
@@ -27,7 +27,8 @@ build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-      -DENABLE_STATIC="NO" .
+      -DENABLE_STATIC="NO" \
+      -DCMAKE_SKIP_INSTALL_RPATH=ON .
   make
 }
 
