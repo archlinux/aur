@@ -1,0 +1,17 @@
+pkgbase = nemo-subliminal-git
+	pkgdesc = Subliminal integration within Nemo file manager
+	pkgver = r15.a8dcd74
+	pkgrel = 1
+	url = https://github.com/Diaoul/nautilus-subliminal/tree/nemo
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = subliminal
+	depends = nemo-python
+	provides = nemo-subliminal
+	conflicts = nemo-subliminal
+	source = git+https://github.com/Diaoul/nautilus-subliminal.git#branch=nemo
+	sha256sums = SKIP
+
+pkgname = nemo-subliminal-git
+
