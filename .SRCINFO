@@ -1,7 +1,7 @@
 pkgbase = linux-selinux
-	pkgver = 5.2.7.arch1
+	pkgver = 5.3.8.1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.2.7-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.3.8-arch1
 	arch = x86_64
 	groups = selinux
 	license = GPL2
@@ -10,35 +10,27 @@ pkgbase = linux-selinux
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
-	makedepends = git
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.2.7-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.3.8-arch1
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 483ff5231e50b423cd1bd98715005d34822c11fea308cd1142d111c45b69ea34
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = e6d2df92f3079c740ca2cafd7e8b34b5dd43832d292284c2dc133d47600d1f29
 
 pkgname = linux-selinux
 	pkgdesc = The Linux-selinux kernel and modules
-	install = linux.install
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-selinux.preset
+	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-selinux-headers
 	pkgdesc = Header files and scripts for building modules for Linux-selinux kernel
