@@ -7,7 +7,7 @@ _major=5.3
 _minor=9
 _clr=863
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
 _clear_version=31530
-_kernel_version="${pkgver}-${_clr}.native"
+_kernel_version="${_major}.${_minor}-${_clr}.native"
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
