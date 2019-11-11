@@ -3,7 +3,7 @@
 # for _mod use either (src_no_xspec_modeldata or src) and dont forget to change sha256sums
 
 pkgname=heasoft
-pkgver=6.25
+pkgver=6.26.1
 pkgrel=1
 _mod="src_no_xspec_modeldata" 
 pkgdesc="NASA high energy astrophysics library"
@@ -12,9 +12,8 @@ depends=("ncurses" "readline" "libxpm" )
 url="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"
 arch=('x86_64')
 license=('NASA' 'GPL')
-source=(http://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/release/${pkgname}-${pkgver}${_mod}.tar.gz)
-sha256sums=('d77e5ca26dc0e53128a9bd71e2110f1864800dba18ee9ee8b320e9d5df93cb43')
-#sha256sums=('08037a9ca3f0803829398deafaaafd634dfdce597ae093b9757a10c74a8c617e') # src
+source=(https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft${pkgver}/${pkgname}-${pkgver}${_mod}.tar.gz)
+sha256sums=('2bffdbc2a02f3bc69ab59a8ff881c75abe83d3064dc59bf8be261d638cd1afe0')
 install="${pkgname}.install"
 
 build() {
