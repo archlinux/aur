@@ -3,8 +3,11 @@ pkgdesc="Clear Linux kernel and modules in binary"
 url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-pkgver="5.3.9"
-pkgrel="863"
+_major=5.3
+_minor=9
+_clr=863
+pkgver=${_major}.${_minor}
+pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -22,7 +25,7 @@ options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
 _clear_version=31530
-_kernel_version="${pkgver}-${pkgrel}.native"
+_kernel_version="${pkgver}-${_clr}.native"
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
