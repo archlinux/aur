@@ -1,14 +1,14 @@
 pkgbase = python2-powerlaw
 	pkgdesc = Toolbox for testing if a probability distribution fits a power law
-	pkgver = 1.4.3
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/jeffalstott/powerlaw
 	arch = any
 	license = GPL
 	depends = python2-scipy
 	options = !emptydirs
-	source = https://pypi.python.org/packages/83/7e/12756bfd0a98fda04e35b25353a6870dbcd53680faca3b77ff044cc65fec/powerlaw-1.4.3.tar.gz
-	md5sums = 2ea92f975361594767b652d863909d2e
+	source = https://pypi.io/packages/source/p/powerlaw/powerlaw-1.4.6.tar.gz
+	md5sums = c24da39e25ac8cd164f80c27f76f38d8
 
 pkgname = python2-powerlaw
 
