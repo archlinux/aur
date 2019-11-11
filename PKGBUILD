@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=b4aa8d277d30f4042797dc8b64c073b10f8bac4b  # tags/2.46.0
+_commit=a11f5d68e555c5231d0adcbaf83d963e53c65764  # tags/2.47.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.46.0
+pkgver=2.47.0
 pkgrel=1
 pkgdesc="A SVG viewing library (mingw-w64)"
 arch=('any')
