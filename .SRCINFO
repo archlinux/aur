@@ -6,8 +6,8 @@ pkgbase = grabserial
 	arch = any
 	license = GPL v2
 	makedepends = git
-	makedepends = python2-setuptools
-	depends = python2-pyserial
+	makedepends = python-setuptools
+	depends = python-pyserial
 	source = https://github.com/tbird20d/grabserial/archive/v1.9.9.tar.gz
 	sha256sums = 604d61199827b5ed27306204116779e759dfb34de78098028dc28b0c0f099323
 
