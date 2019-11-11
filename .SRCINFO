@@ -1,0 +1,18 @@
+pkgbase = python-medpy
+	pkgdesc = Medical image processing in Python
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://loli.github.io/medpy
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = boost
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = python-simpleitk
+	source = https://github.com/loli/medpy/archive/0.4.0.tar.gz
+	sha256sums = 2a309ad7aaf80c1a46a56a1e3b8f19b981313cf2011bc901cfc3020c9ffa720d
+
+pkgname = python-medpy
+
