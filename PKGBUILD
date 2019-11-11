@@ -2,15 +2,17 @@
 
 _name=rumur
 pkgname="$_name-git"
-pkgver=2019.06.30.r2.g53f20cc
+pkgver=2019.11.09.r4.gc04d79d
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
 url="https://github.com/Smattr/rumur"
 license=('custom:UNLICENSE')
-depends=('gmp')
-makedepends=('git' 'cmake' 'bison>=3.3.2' 'flex' 'python')
-checkdepends=('valgrind')
+depends=('gmp' 'python')
+makedepends=('git' 'cmake' 'bison>=3.3.2' 'flex')
+checkdepends=('valgrind' 'z3')
+optdepends=('z3: Preferred SMT solver'
+            'cvc4: Alternative SMT solver')
 provides=("$_name")
 conflicts=("$_name")
 source=("git+https://github.com/Smattr/$_name.git")
@@ -35,7 +37,8 @@ build() {
 
 check() {
   cd $_name/build
-  ../tests/integration-tests.py --verbose
+  # The test needs about 1 hour
+  #../tests/integration-tests.py --verbose
 }
 
 package() {
