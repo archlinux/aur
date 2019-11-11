@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-geoip2
-pkgver=3.2
-pkgrel=13
+pkgver=3.3
+pkgrel=1
 
 _modname="ngx_http_geoip2_module"
 _nginxver=1.17.4
@@ -24,7 +24,7 @@ validpgpkeys=(
 
 sha256sums=('62854b365e66670ef4f1f8cc79124f914551444da974207cd5fe22d85710e555'
             'SKIP'
-            '15bd1005228cf2c869a6f09e8c41a6aaa6846e4936c473106786ae8ac860fab7')
+            '41378438c833e313a18869d0c4a72704b4835c30acaf7fd68013ab6732ff78a7')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
