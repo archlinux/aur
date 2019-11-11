@@ -34,6 +34,7 @@ prepare() {
   git submodule add https://chromium.googlesource.com/linux-syscall-support 3rdparty/linux-syscall-support
 
   python2 build/utils/set_version.py "$pkgver" > src/version.h
+  touch 3rdparty/crashreporter/src/
   python2 build/utils/set_version.py "$pkgver" > 3rdparty/crashreporter/src/version.h
 
   _lssdir='3rdparty/gbreakpad/src/third_party/lss/'
