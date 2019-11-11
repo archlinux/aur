@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-fuzz
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Command line helpers for fuzzing "
 url="https://github.com/rust-fuzz/cargo-fuzz"
@@ -9,18 +9,16 @@ depends=('cargo' 'gcc-libs')
 arch=('i686' 'x86_64' 'armv6h')
 license=('MIT' 'APACHE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rust-fuzz/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b2e116fa6dbb4d62402508687faf92472e7a2979740f31ab4f698c105cac8114')
-sha512sums=('08f1fa7adb958033f779fda8e6d7d66c9925396aa20550c4adb6f911c5eb062c8477648bc38ac6e4d482ed36f5f29f0a14b3ecfb9877eeb6d824b5ef4e1f2d04')
+sha512sums=('de5f6aabc7d80d7b4ad08b563d19128c72951d7ada32c815056b55c5c5903423b665124f496fc8948f40700312e29e0b142cedeb1d4f083c5c3d693d10360f17')
 
 build() {
   cd "${pkgname}-${pkgver}"
-  # outdated Cargo.lock: https://github.com/rust-fuzz/cargo-fuzz/issues/168
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
