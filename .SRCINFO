@@ -1,0 +1,18 @@
+pkgbase = nsbox-edge-git
+	pkgdesc = A multi-purpose, nspawn-powered container manager
+	pkgver = 19.11.10.173.c73840b
+	pkgrel = 1
+	arch = x86_64
+	license = mpl-2.0
+	makedepends = gn
+	makedepends = go
+	makedepends = ninja
+	makedepends = python
+	depends = polkit
+	depends = sudo
+	optdepends = gtk3: desktop file icon integration
+	source = nsbox-edge-git::git+https://github.com/refi64/nsbox
+	sha256sums = SKIP
+
+pkgname = nsbox-edge-git
+

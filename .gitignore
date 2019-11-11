@@ -1,0 +1,4 @@
+nsbox-edge-git/
+*.pkg.*
+pkg/
+src/
