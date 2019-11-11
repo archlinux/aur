@@ -4,7 +4,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=(any)
@@ -21,7 +21,7 @@ optdepends=('php-gd'
             'mesa-demos: required for universe-cli test suite'
             'openmpi: required for universe-cli test suite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('041aebe9e3828bb41dfd51c57446a5d215b38a7cd1830bee8154a73a0d384129')
+sha256sums=('66f57eeb12241966cb7ad6594981bfd6ccdb28c4a14325271bec50c810d041db')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
