@@ -2,7 +2,7 @@
 
 pkgname=lime-git
 _pkgname=lime
-pkgver=0.1.0.r53.g98234a8
+pkgver=4.3.0.alpha
 pkgrel=1
 pkgdesc="C++ library implementing Open Whisper System Signal protocol"
 arch=('x86_64')
