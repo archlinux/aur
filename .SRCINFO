@@ -1,7 +1,7 @@
 pkgbase = dungeon-keeper-gold-gog
 	pkgdesc = Construct and manage a dungeon, recruiting and catering for minions to run it and defend it from enemy invaders.
 	pkgver = 10.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gog.com/game/dungeon_keeper
 	install = dungeon-keeper-gold-gog.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = dungeon-keeper-gold-gog
 	makedepends = icoutils
 	depends = dosbox
 	optdepends = unionfs-fuse: mounting game folder to home for savegames and settings
-	source = setup_dungeon_keeper_gold_10.1_(28184).exe::gogdownloader://dungeon_keeper/installer_win_en
+	source = setup_dungeon_keeper_gold_10.1_(28184).exe::gogdownloader://dungeon_keeper/en1installer0
 	source = dungeon-keeper-gold-gog.sh
 	source = dungeon-keeper-gold-gog.desktop
 	source = dosboxdk_single.conf
