@@ -1,8 +1,8 @@
 # Maintainer: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 pkgname=projfs
-pkgver=0.1.1
-pkgrel=2
-pkgdesc='A FUSE filesystem doing projection of existing directory by a custom command'
+pkgver=0.1.3
+pkgrel=1
+pkgdesc='A FUSE filesystem which does projection of directory content through a custom command. Capable of doing audio/video transparent transcoding (e.g. any music file to mp3).'
 url='https://github.com/renyuneyun/projfs'
 license=('Apache')
 depends=('fuse2')
@@ -18,6 +18,5 @@ build() {
 
 package() {
     cd "$pkgname"
-    binname=proj_fs
-    install -Dm755 "target/release/$binname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
