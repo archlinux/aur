@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Tutanota Desktop
+Comment=The desktop client for Tutanota, the secure e-mail service.
+Exec=/usr/bin/tutanota-desktop-linux
+Terminal=false
+Type=Application
+Icon=tutanota-desktop
+StartupWMClass=tutanota-desktop
+MimeType=x-scheme-handler/mailto;
+Categories=Network;

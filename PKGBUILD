@@ -1,7 +1,7 @@
 # Maintainer: agilob <archlinux@agilob.net>
 # Contributor: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-linux
-pkgver=3.60.11
+pkgver=3.60.15
 pkgrel=1
 pkgdesc='Official Tutanota email client'
 arch=('x86_64')
@@ -9,18 +9,40 @@ url='https://tutanota.com/blog/posts/desktop-clients/'
 license=('GPL3')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('fuse' 'zenity')
+depends=('fuse' 'zenity' 'libappindicator' 'libindicator' 'gconf' 'libnotify' 'libxss' 'libxtst')
 options=(!strip)
-source=("${pkgname}-${pkgver}.AppImage::https://mail.tutanota.com/desktop/${pkgname}.AppImage")
-noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums=('1b4b8fd209ddf92b94617170fa22c0198f0d9ad8b4355decadbe50ef3b4185104d7ad5c0f4198ac7f41ba5c85c02bd7ad8966320175a09634bfb7d0ec1b96f80')
-#install="tutanota-desktop-linux.install"
+source=("${pkgname}-${pkgver}.AppImage::https://mail.tutanota.com/desktop/${pkgname}.AppImage"
+	"tutanota-desktop.desktop"
+	"tutanota-desktop-linux"
+	"LICENSE")
+#noextract=("${pkgname}-${pkgver}.AppImage")
+sha512sums=('8fff776bef686aba3f93e862005b689ec6e5c159fcdb8a4b8a20b72d4908ae359ded0622361cf091c42f6574eb761caa6e75ce139412903722c474a6d8e96254'
+	    '2182fb9ee7f2ec0fd1f7ed81b09b64ab9f6a822b94099c13111a940102cf062b0d16c0d9bcd18eda5cf26c11b9ebed5c15660d8136cd6c166c39d6a5a23e2c79'
+	    'e4de2208710893bc78ecab65a0bedb9b89a1d713bf2af895f00b3613e4082fb224ff8100b68275ae2cfc750b8204edd3e1e084fbe92c44d8168e6755155ab7b2'
+	    '7633623b66b5e686bb94dd96a7cdb5a7e5ee00e87004fab416a5610d59c62badaf512a2e26e34e2455b7ed6b76690d2cd47464836d7d85d78b51d50f7e933d5c')
+
+prepare() {
+  chmod u+x ${srcdir}/${pkgname}-${pkgver}.AppImage
+  ${srcdir}/${pkgname}-${pkgver}.AppImage --appimage-extract
+}
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-  # Saving the below for later
-  #install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  #install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/opt/${pkgname}/${pkgname}.png"
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
+
+  #find ${srcdir}/squashfs-root/locales/ -type d -exec chmod 755 {} +
+  #find ${srcdir}/squashfs-root/resources/ -type d -exec chmod 755 {} +
+  #install -d ${pkgdir}/opt/${pkgname}
+  #cp -r ${srcdir}/squashfs-root/* ${pkgdir}/opt/${pkgname}
+  #rm -r ${pkgdir}/opt/${pkgname}/usr/
+
+  find ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
+  install -d ${pkgdir}/usr/share/icons
+  cp -r ${srcdir}/squashfs-root/usr/share/icons/hicolor ${pkgdir}/usr/share/icons/hicolor
+
+  install -Dm644 ${srcdir}/tutanota-desktop.desktop ${pkgdir}/usr/share/applications/tutanota-desktop.desktop
+
+  install -Dm755 ${srcdir}/tutanota-desktop-linux ${pkgdir}/usr/bin/tutanota-desktop-linux
+  install -Dm444 ${srcdir}/LICENSE ${pkgdir}/usr/share/LICENSES/${pkgname}/LICENSE
 }
