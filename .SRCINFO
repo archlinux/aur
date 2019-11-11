@@ -1,7 +1,7 @@
 pkgbase = python-django-rest-auth
 	pkgdesc = Django-rest-auth provides a set of REST API endpoints for Authentication and Registration
-	pkgver = 0.9.0
-	pkgrel = 1
+	pkgver = 0.9.5
+	pkgrel = 0
 	url = https://github.com/Tivix/django-rest-auth/
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = python-django-rest-auth
 	depends = python
 	depends = python-django
 	depends = python-django-rest-framework
-	source = https://github.com/Tivix/django-rest-auth/archive/v0.9.0.tar.gz
-	md5sums = SKIP
+	source = https://pypi.io/packages/source/d/django-rest-auth/django-rest-auth-0.9.5.tar.gz
+	sha256sums = f11e12175dafeed772f50d740d22caeab27e99a3caca24ec65e66a8d6de16571
 
 pkgname = python-django-rest-auth
 
