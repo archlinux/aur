@@ -1,6 +1,6 @@
 pkgbase = linux-clear-bin
 	pkgdesc = Clear Linux kernel and modules in binary
-	pkgver = 5.3.9
+	pkgver = 5.3.9.863
 	pkgrel = 1
 	epoch = 0
 	url = https://clearlinux.org/node/15538

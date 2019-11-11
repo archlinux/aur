@@ -6,7 +6,7 @@ pkgname=linux-clear-bin
 _major=5.3
 _minor=9
 _clr=863
-pkgver=${_major}.${_minor}
+pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
