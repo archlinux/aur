@@ -20,16 +20,8 @@ pkgbase = linux-clear-bin
 	options = !strip
 	source = https://cdn.download.clearlinux.org/update/31530/Manifest.kernel-native
 	source = https://cdn.download.clearlinux.org/update/31530/pack-kernel-native-from-0.tar
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = 99-linux.hook
-	source = linux.preset
 	sha256sums = ccc25fa20e68f891149f11747300d74aa7cfdcb69d9e9aea357c533871596941
 	sha256sums = 74b32f8a9c895b8ff9084c86c7cb41a8519f8fbe267e853436fee707c834339a
-	sha256sums = 60b965278d9b0af897b6a54c847a4ea5adfe6116c19191b2b814c6f8bf92521e
-	sha256sums = 5a1b61d41b4d194d0ff6e1e13f650ee982db403b008cacdc5564e7bd265a81fc
-	sha256sums = a61b3fdc2ef2f1405b3ffe166e9c6d1666289ab427f2348259f04b5e878376a2
-	sha256sums = 210e075d642b212df990a2a669e88b81547e6c4e0ed37ef289c0e2987f713c92
 
 pkgname = linux-clear-bin
 

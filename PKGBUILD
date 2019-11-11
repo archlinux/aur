@@ -26,17 +26,9 @@ _kernel_version="${pkgver}-${pkgrel}.native"
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
-        "60-linux.hook" # pacman hook for depmod
-        "90-linux.hook" # pacman hook for initramfs regeneration
-        "99-linux.hook" # pacman hook for remove initramfs
-        "linux.preset"  # standard config files for mkinitcpio ramdisk)
 )
 sha256sums=('ccc25fa20e68f891149f11747300d74aa7cfdcb69d9e9aea357c533871596941'
-            '74b32f8a9c895b8ff9084c86c7cb41a8519f8fbe267e853436fee707c834339a'
-            '60b965278d9b0af897b6a54c847a4ea5adfe6116c19191b2b814c6f8bf92521e'
-            '5a1b61d41b4d194d0ff6e1e13f650ee982db403b008cacdc5564e7bd265a81fc'
-            'a61b3fdc2ef2f1405b3ffe166e9c6d1666289ab427f2348259f04b5e878376a2'
-            '210e075d642b212df990a2a669e88b81547e6c4e0ed37ef289c0e2987f713c92')
+            '74b32f8a9c895b8ff9084c86c7cb41a8519f8fbe267e853436fee707c834339a')
 build() {
     # get kernel's filename (hash) from the Manifest, ie:
     # 4776962fb058c91e89dcefac4740d7a1af37ea12d217d3f8d0f49797553146e7
@@ -66,12 +58,6 @@ package() {
     local modulesdir="$pkgdir/usr/lib/modules/$_kernel_version"
     local extradir="$pkgdir/usr/lib/modules/$extramodules"
 
-    local subst="
-      s|%PKGNAME%|$pkgname|g
-      s|%KERNEL_VERSION%|$_kernel_version|g
-      s|%EXTRAMODULES%|$extramodules|g
-    "
-
     mkdir -p $pkgdir/usr/lib
     mkdir -p $extradir
     echo $_kernel_version > $extradir/version
@@ -81,21 +67,13 @@ package() {
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 vmlinuz-${pkgname} "$modulesdir/vmlinuz"
-    install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
     install -Dm644 vmlinuz-${pkgname}.cmdline $pkgdir/boot/vmlinuz-${pkgname}.cmdline
+
+    # Used by mkinitcpio to name the kernel
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
     cp -r modules $pkgdir/usr/lib
-
-    msg2 "Installing hooks..."
-    sed "$subst" linux.preset | install -Dm644 /dev/stdin \
-        "$pkgdir/etc/mkinitcpio.d/${pkgname}.preset"
-    sed "$subst" 60-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/60-${pkgname}.hook"
-    sed "$subst" 90-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/90-${pkgname}.hook"
-    sed "$subst" 99-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/99-${pkgname}.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"

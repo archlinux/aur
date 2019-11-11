@@ -1,9 +1,0 @@
-[Trigger]
-Type = File
-Operation = Remove
-Target = boot/vmlinuz-%PKGNAME%
-
-[Action]
-Description = Remove %PKGNAME% initramfs files...
-When = PreTransaction
-Exec = /usr/bin/rm -f /boot/initramfs-%PKGNAME%.img /boot/initramfs-%PKGNAME%-fallback.img
