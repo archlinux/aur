@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=2.1.0
-_commit=ffdba7c19eca07657f722a7c0a1b1c848d661f50
+pkgver=2.1.0_1
+_commit=253fcaa997d3d5e30c3789c825a82e1ed3e7a3fe
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
@@ -28,9 +28,6 @@ prepare() {
 
     patch -Np1 -i ../use-system-qpid-proton.patch
     patch -Np1 -i ../use-system-rust.patch
-
-    # Runs forever
-    sed -e '/prioritisetransaction.py/d' -i qa/pull-tester/rpc-tests.sh
 }
 
 build() {
@@ -99,8 +96,7 @@ check() {
     export PATH="${srcdir}/python:${PATH}"
 
     ./zcutil/fetch-params.sh --testnet
-    # ./qa/zcash/full_test_suite.py
-    # ./qa/pull-tester/rpc-tests.sh
+    ./qa/zcash/full_test_suite.py
 }
 
 package() {
