@@ -1,7 +1,7 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=rumur
-pkgver=2019.10.27
+pkgver=2019.11.09
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
@@ -9,9 +9,11 @@ url="https://github.com/Smattr/rumur"
 license=('custom:UNLICENSE')
 depends=('gmp' 'python')
 makedepends=('cmake' 'bison>=3.3.2' 'flex')
-checkdepends=('valgrind')
+checkdepends=('valgrind' 'z3')
+optdepends=('z3: Preferred SMT solver'
+            'cvc4: Alternative SMT solver')
 source=("https://github.com/Smattr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('cdb974d2757e7f79777d8d4f7d4db3c1e33b972ed81ecccd3aa29a9707363834')
+sha256sums=('4aa0d7b6ded517796e2c1f07eed76bd2bbba9b73b477634e29d12ff83ff57386')
 
 prepare() {
   mkdir -p $pkgname-$pkgver/build
