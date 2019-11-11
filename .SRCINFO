@@ -1,6 +1,6 @@
 pkgbase = python-bqplot
 	pkgdesc = Plotting library for IPython/Jupyter notebooks
-	pkgver = 0.10.5
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/bloomberg/bqplot
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-bqplot
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-traitlets
-	source = https://pypi.org/packages/source/b/bqplot/bqplot-0.10.5.tar.gz
-	sha256sums = 32cad266a850665582bd8089c63e8731c505fff138a0e83cf0b2dd1b753d1d2a
+	source = https://pypi.org/packages/source/b/bqplot/bqplot-0.12.0.tar.gz
+	sha256sums = 4b780edd67e2e76ba18ecaad1dcc53322dff4badd75cb012815b3d21aa33b44f
 
 pkgname = python-bqplot
 
