@@ -16,6 +16,10 @@
 	"http://download.natapp.cn/assets/downloads/clients/${pkgver}/${pkgname}_linux_arm64_${pkgver}.zip"
  )
  md5sums_aarch64=("33e100ca4d57834a551eafb5830c976f")
+ source_armv7h=(
+	"http://download.natapp.cn/assets/downloads/clients/${pkgver}/${pkgname}_linux_arm_${pkgver}.zip"
+ )
+ md5sums_armv7h=("116ce8024b15dc2da61786e93f925053")
 
  package(){
 	cd ${srcdir}
