@@ -5,7 +5,7 @@
 
 _basename=panon
 pkgname=plasma5-applets-${_basename}
-pkgver=0.2.10
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('plasma5-applets-panon')
 conflicts=('plasma5-applets-panon')
 source=("${_basename}-${pkgver}::https://github.com/rbn42/${_basename}/archive/v${pkgver}.tar.gz")
-md5sums=('5e7db7be220e655c500f37165e474cfa')
+md5sums=('c7ae96c3936a71b9a9117a0c0e8ac4f9')
 
 package() {
   cd "${srcdir}/${_basename}-${pkgver}"
@@ -24,6 +24,5 @@ package() {
 
   cd kde
   kpackagetool5 -p "$pkgdir/usr/share/plasma/plasmoids/" -t Plasma/Applet -i plasmoid
-  rm "$pkgdir/usr/share/plasma/plasmoids/kpluginindex.json"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-panon
 	pkgdesc = A Different Audio Spectrum Analyzer for KDE Plasma
-	pkgver = 0.2.10
+	pkgver = 0.2.14
 	pkgrel = 1
 	url = http://github.com/rbn42/panon
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = plasma5-applets-panon
 	depends = qt5-3d
 	provides = plasma5-applets-panon
 	conflicts = plasma5-applets-panon
-	source = panon-0.2.10::https://github.com/rbn42/panon/archive/v0.2.10.tar.gz
-	md5sums = 5e7db7be220e655c500f37165e474cfa
+	source = panon-0.2.14::https://github.com/rbn42/panon/archive/v0.2.14.tar.gz
+	md5sums = c7ae96c3936a71b9a9117a0c0e8ac4f9
 
 pkgname = plasma5-applets-panon
 
