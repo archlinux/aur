@@ -1,14 +1,14 @@
 pkgbase = uefi-shell-git
 	pkgdesc = UEFI Shell v2 - from Tianocore EDK2 - GIT Version
-	pkgver = 26894.edk2.stable201903.1157.g1bcc65b9a1
-	pkgrel = 2
+	pkgver = 26946.edk2.stable201903.1209.gf8dd7c7018
+	pkgrel = 1
 	url = https://github.com/tianocore/edk2
 	install = uefi-shell.install
 	arch = x86_64
 	arch = i686
 	license = BSD
 	makedepends = git
-	makedepends = python2
+	makedepends = python
 	makedepends = nasm
 	provides = uefi-shell
 	conflicts = uefi-shell

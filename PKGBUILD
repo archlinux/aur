@@ -29,14 +29,14 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=26894.edk2.stable201903.1157.g1bcc65b9a1
-pkgrel=2
+pkgver=26946.edk2.stable201903.1209.gf8dd7c7018
+pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
 arch=('x86_64' 'i686')
 license=('BSD')
 
-makedepends=('git' 'python2' 'nasm')
+makedepends=('git' 'python' 'nasm')
 
 options=('!strip' '!makeflags')
 
@@ -74,10 +74,6 @@ _prepare_tianocore_sources() {
 
 	msg "Disable build ID generation"
 	sed 's|,--gc-sections|,--gc-sections,--build-id=none|g' -i "${EDK_TOOLS_PATH}/Conf/tools_def.template"
-
-	msg "Use python2 for UDK BaseTools"
-	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/BinWrappers/PosixLike"/* || true
-	sed 's|python |python2 |g' -i "${EDK_TOOLS_PATH}/Tests/GNUmakefile"
 
 	msg "Fix GCC Warning as error"
 	sed 's|-Werror |-Wno-error -Wno-unused-but-set-variable |g' -i "${EDK_TOOLS_PATH}/Source/C/Makefiles/header.makefile" || true
