@@ -1,18 +1,16 @@
-# Maintainer:  Devin Cofer <ranguvar[AT]ranguvar[DOT]io>
-# Contributor: Michael Greene <mgreene@securityinnovation.com>
-# Contributor: Nikita Tarasov <nikatar@disroot.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Arjan Timmerman <arjan@archlinux.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
 # Contributor: Will Rea <sillywilly@gmail.com>
+# Contributor: Nikita Tarasov <nikatar@disroot.org>
 
 pkgbase=network-manager-applet-indicator
 pkgname=(network-manager-applet-indicator nm-connection-editor-indicator libnma-indicator)
 pkgdesc="Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab"
 url="https://wiki.gnome.org/Projects/NetworkManager/"
-pkgver=1.8.22
+pkgver=1.8.24
 pkgrel=1
 arch=(x86_64)
 license=(GPL LGPL)
@@ -20,7 +18,7 @@ depends=(libappindicator-gtk3)
 makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection git gtk-doc meson
              libnm gcr gtk3 iso-codes mobile-broadband-provider-info)
 #source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git")
-_commit=b9f22d35aa2c6356e29e2e646298797ad90f5bdc # tags/1.8.22^0
+_commit=ce203dd7e99c9c943cb24756d25968781fb1dbd3  # tags/1.8.24^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -39,9 +37,9 @@ build() {
   ninja -C build
 }
 
-check() {
-  meson test -C build
-}
+#~ check() {
+  #~ meson test -C build --print-errorlogs
+#~ }
 
 _pick() {
   local p="$1" f d; shift
