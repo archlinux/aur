@@ -13,8 +13,6 @@ pkgbase = linux-clear-bin
 	optdepends = intel-ucode-clear: intel cpu and i915 firmware
 	optdepends = linux-clear-headers-bin: header files for the kernel
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.3.9
-	provides = linux-clear=5.3.9
 	provides = WIREGUARD-MODULE
 	conflicts = linux-clear
 	options = !strip

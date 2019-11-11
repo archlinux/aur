@@ -19,7 +19,7 @@ optdepends=(
     'linux-clear-headers-bin: header files for the kernel'
     'crda: to set the correct wireless channels of your country'
 )
-provides=("linux=${pkgver}" "linux-clear=${pkgver}" "WIREGUARD-MODULE")
+provides=("WIREGUARD-MODULE")
 conflicts=("linux-clear")
 options=('!strip')
 
