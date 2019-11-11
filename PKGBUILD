@@ -4,8 +4,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=kotatogram-desktop
-pkgver=1.1
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -41,7 +41,16 @@ source=(
         "rlottie::git+https://github.com/desktop-app/rlottie.git"
         "variant::git+https://github.com/mapbox/variant"
         "xxHash::git+https://github.com/Cyan4973/xxHash.git"
-        
+        "codegen::git+https://github.com/desktop-app/codegen.git"
+        "lib_base::git+https://github.com/desktop-app/lib_base.git"
+        "lib_crl::git+https://github.com/desktop-app/lib_crl"
+        "lib_lottie::git+https://github.com/desktop-app/lib_lottie"
+        "lib_rlottie::git+https://github.com/desktop-app/lib_rlottie"
+        "lib_rpl::git+https://github.com/desktop-app/lib_rpl"
+        "lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck"
+        "lib_tl::git+https://github.com/desktop-app/lib_tl"
+        "lib_ui::git+https://github.com/kotatogram/lib_ui.git"
+
         "CMakeLists.inj"
         "libtgvoip.patch"
         "no-gtk2.patch"
@@ -53,6 +62,15 @@ source=(
         "Use-system-wide-font.patch"
        )
 sha512sums=(
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -77,6 +95,7 @@ sha512sums=(
 prepare() {
     cd "$srcdir/kdesktop"
         git submodule init
+        
         git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch2"
         git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
         git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
@@ -87,20 +106,31 @@ prepare() {
         git config submodule.Telegram/ThirdParty/SPMediaKeyTap.url "$srcdir/SPMediaKeyTap"
         git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
         git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
+        
+        git config submodule.Telegram/codegen.url "$srcdir/codegen"
+        git config submodule.Telegram/lib_base.url "$srcdir/lib_base"
+        git config submodule.Telegram/lib_crl.url "$srcdir/lib_crl"
+        git config submodule.Telegram/lib_lottie.url "$srcdir/lib_lottie"
+        git config submodule.Telegram/lib_rlottie.url "$srcdir/lib_rlottie"
+        git config submodule.Telegram/lib_rpl.url "$srcdir/lib_rpl"
+        git config submodule.Telegram/lib_spellcheck.url "$srcdir/lib_spellcheck"
+        git config submodule.Telegram/lib_tl.url "$srcdir/lib_tl"
+        git config submodule.Telegram/lib_ui.url "$srcdir/lib_ui"
+
         git submodule update
 
         dos2unix "$srcdir/kdesktop/.appveyor/install.bat"
 
-        patch -Np1 -i "$srcdir/tdesktop.patch"
         patch -Np1 -i "$srcdir/no-gtk2.patch"
+        # patch -Np1 -i "$srcdir/Revert-Change-some-private-header-includes.patch"
         # patch -Np1 -i "$srcdir/Revert-Disable-DemiBold-fallback-for-Semibold.patch"
-        patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
-        patch -Np1 -i "$srcdir/Revert-Change-some-private-header-includes.patch"
+        # patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
         # patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
+        patch -Np1 -i "$srcdir/tdesktop.patch"
 
         unix2dos "$srcdir/kdesktop/.appveyor/install.bat"
         # disable static-qt for rlottie
-        sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/kdesktop/Telegram/gyp/lib_rlottie.gyp"
+        sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/kdesktop/Telegram/lib_rlottie/lib_rlottie.gyp"
 
         cd "$srcdir/kdesktop"
         cd "Telegram/ThirdParty/libtgvoip"
@@ -110,7 +140,7 @@ prepare() {
 build() {
     cd "$srcdir/kdesktop"
         export LANG=en_US.UTF-8
-        export GYP_DEFINES="TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION"
+        export GYP_DEFINES="DESKTOP_APP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION"
         export EXTRA_FLAGS="-Winvalid-pch"
         export CPPFLAGS="$CPPFLAGS $EXTRA_FLAGS"
         export CXXFLAGS="$CXXFLAGS $EXTRA_FLAGS"

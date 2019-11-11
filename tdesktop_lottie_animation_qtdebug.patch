@@ -1,7 +1,7 @@
-diff --git a/Telegram/SourceFiles/lottie/lottie_animation.cpp b/Telegram/SourceFiles/lottie/lottie_animation.cpp
+diff --git a/Telegram/lib_lottie/lottie/lottie_animation.cpp b/Telegram/lib_lottie/lottie/lottie_animation.cpp
 index f681c9220..8f80640e1 100644
---- a/Telegram/SourceFiles/lottie/lottie_animation.cpp
-+++ b/Telegram/SourceFiles/lottie/lottie_animation.cpp
+--- a/Telegram/lib_lottie/lottie/lottie_animation.cpp
++++ b/Telegram/lib_lottie/lottie/lottie_animation.cpp
 @@ -15,6 +15,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
  #include "logs.h"
  
