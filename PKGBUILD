@@ -4,8 +4,8 @@
 # https://github.com/masterkorp/joplin-pkgbuild
 
 pkgname=joplin
-pkgver=1.0.170
-pkgrel=2
+pkgver=1.0.173
+pkgrel=1
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
 makedepends=("git" "nodejs" "rsync" "npm" "python")
@@ -15,10 +15,10 @@ url="https://joplin.cozic.net"
 license=("MIT")
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
         "https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
-sha256sums=('57f88605a21649590aaff68e17996e49e399c7b28a3914f946116d6b55763fe0'
+sha256sums=('c5ff40f6c0eded444df859eb857c623d03f5ee30744dc7ef265e668b11d6d919'
             '41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d'
             '5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276'
-            '0ae04173f1978dae437d067cb2c89f47b218a5181b450dcbe924e84345ece801')
+            '43e13501c177e78c6616658e7096c346bdd98fe1011a6836045b3e883bdac9f5')
 
 build() {
   # Remove husky (git hooks) from dependencies
@@ -50,7 +50,7 @@ build() {
   npm install sqlite3@4.0.7
   npm install
   # Remove uneeed .vscode path that comes with it
-  rm -r node_modules/sqlite3/.vscode 
+  rm -r node_modules/sqlite3/.vscode
 
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/lib/" \
     "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/lib/"
