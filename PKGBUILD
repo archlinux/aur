@@ -2,7 +2,7 @@
 
 pkgname=nodejs-webtorrent-cli
 _pkgname="${pkgname#nodejs-}"
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='WebTorrent, the streaming torrent client. For the command line.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/feross/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7543429892b44e5bace355620d5a2632ebd4d9785929944fe08784d503609629')
+sha256sums=('6b849e46f4511d2aeaeb93ae544cff6b9c72202ca24388e1aee7ccefb5451296')
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
