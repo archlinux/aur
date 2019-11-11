@@ -1,7 +1,7 @@
 pkgbase = pencil
 	pkgdesc = Sketching and GUI prototyping/wireframing tool
-	pkgver = 3.0.4
-	pkgrel = 3
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://github.com/evolus/pencil
 	arch = any
 	license = GPL2
@@ -15,12 +15,14 @@ pkgbase = pencil
 	depends = alsa-lib
 	conflicts = evolus-pencil-bin
 	conflicts = pencil-v2
-	source = https://github.com/evolus/pencil/archive/v3.0.4.tar.gz
+	source = https://github.com/evolus/pencil/archive/v3.1.0.tar.gz
 	source = pencil.desktop
 	source = pencil-mime.xml
-	sha256sums = f00b06d7db9583479597db827ebe1371ad0878a947a28c97c00895e50f2476f4
+	source = fixed-package.json
+	sha256sums = e14eddd0aad28919cfdf8d47b726f9c75a3a0d2042605e8da96309c23a995f44
 	sha256sums = 6d467da74509e74e06325e7464a6a177164ae8977470423da6cae43265dedd4d
 	sha256sums = 87aac9f5005ccd57aa6b1bf190052fcc4915eff1d7bddb2723863739545e42fc
+	sha256sums = 6f0902d9d2294865b8993c94ce4f01dd01318c7da428dad5a45b7753c46ad757
 
 pkgname = pencil
 
