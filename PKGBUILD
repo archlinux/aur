@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=5.2.21.arch1.r844589.e96bfb9bc2c1
+pkgver=v5.2.21.arch1.r844617.860a434cb8ac
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.2.21-arch1
@@ -93,6 +93,8 @@ source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
+    7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7.patch
+    fd0f4757ded3627edc883650941a26a21e435a7d.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -100,7 +102,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'd9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8')
+            'd9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8'
+            'dc6321a572ac365f73b924b3bd8cd26112a0256baf358e3893b90a623e4c0a9eb3667b23f86570581371f993f2c17998e31e27aa36eee925a0589b20b71b65ff'
+            '6792e775464ba41b03938fd42d71caf22c85a4c63a255f5ff807da6101a42afe2f9cb940bd5e80b1e7d21a0b959962d90cc2452920597e7ba0bcb15d37c15233')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
