@@ -5,7 +5,7 @@
 
 pkgname=linphone-git
 _pkgname=linphone
-pkgver=3.12.0.r3338.g254ab7ab2
+pkgver=4.3.0.alpha.r14.g2724e7bcf
 pkgrel=1
 pkgdesc="A Voice-over-IP phone library and CLI"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('alsa-lib' 'bctoolbox-git' 'belcard-git' 'belle-sip-git' 'belr-git'
     'bzrtp-git' 'ffmpeg' 'lime-git' 'libnotify' 'libpulse' 'libsoup' 'libv4l'
     'libxv' 'mediastreamer-git' 'ortp-git' 'soci-git' 'speex' 'v4l-utils' 'xsd')
-makedepends=('cmake' 'doxygen' 'graphviz' 'pkg-config' 'python-pystache')
+makedepends=('cmake' 'doxygen' 'git' 'graphviz' 'pkg-config' 'python-pystache')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone')
@@ -39,7 +39,8 @@ build() {
       -DENABLE_ROOTCA_DOWNLOAD=NO \
       -DENABLE_LIME=YES \
       -DENABLE_UNIT_TESTS=NO \
-      -DENABLE_STRICT=NO .
+      -DENABLE_STRICT=NO \
+      -DCMAKE_INSTALL_RPATH=NO .
   make
 }
 

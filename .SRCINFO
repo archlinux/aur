@@ -1,6 +1,6 @@
 pkgbase = linphone-git
 	pkgdesc = A Voice-over-IP phone library and CLI
-	pkgver = 3.12.0.r3338.g254ab7ab2
+	pkgver = 4.3.0.alpha.r14.g2724e7bcf
 	pkgrel = 1
 	url = http://www.linphone.org
 	install = linphone.install
@@ -8,6 +8,7 @@ pkgbase = linphone-git
 	license = GPL
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	makedepends = graphviz
 	makedepends = pkg-config
 	makedepends = python-pystache
