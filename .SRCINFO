@@ -1,12 +1,13 @@
 pkgbase = mediastreamer-git
 	pkgdesc = A modular sound and video processing and streaming library
-	pkgver = 2.16.1.r545.g9891bed4
+	pkgver = 2.16.1.r636.g67d34195
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/mediastreamer2
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = doxygen
+	makedepends = git
 	depends = bctoolbox-git
 	depends = bcg729-git
 	depends = bcmatroska2-git
