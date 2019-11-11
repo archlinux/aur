@@ -2,8 +2,8 @@
 
 pkgname=genie-systemd
 _pkgname=genie
-pkgver=1.17
-pkgrel=3
+pkgver=1.20
+pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
