@@ -2,7 +2,7 @@
 
 pkgname=bananapkg-git
 pkgver=r160.3e2d238
-pkgrel=2
+pkgrel=3
 pkgdesc="Low-level package manager written in shell bash."
 url="https://bananapkg.github.io"
 license=('MIT')
@@ -28,12 +28,10 @@ package() {
     sed --in-place 's@/usr/libexec@/usr/lib@g' {banana,core.sh}
 
     # install files manually
-    install -vDm755 -t "${pkgdir}/usr/bin/" "banana"
-    install -vDm644 -t "${pkgdir}/usr/share/man/pt_BR/man8/" 'banana.8'
-    install -vDm644 -t "${pkgdir}/usr/lib/banana/" {core,help}'.sh'
-    install -vDm644 -t "${pkgdir}/etc/banana/" "banana.conf"
-    # create dirs
-    mkdir -vp "${pkgdir}/var/lib/banana/"{list,desc,remove}
-
-    install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" 'LICENSE'
+    install -Dm755 -t "${pkgdir}/usr/bin/" "banana"
+    install -Dm644 -t "${pkgdir}/usr/share/man/pt_BR/man8/" 'banana.8'
+    install -Dm644 -t "${pkgdir}/usr/lib/banana/" {core,help}'.sh'
+    install -Dm644 -t "${pkgdir}/etc/banana/" "banana.conf"
+    mkdir -p "${pkgdir}/var/lib/banana/"{list,desc,remove} # create dirs
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" 'LICENSE'
 }
