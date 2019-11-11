@@ -3,7 +3,7 @@
 _pkgname=krita
 pkgname=${_pkgname}-appimage
 pkgver=4.2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Edit and paint images"
 arch=('x86_64')
 url="https://krita.org"
@@ -13,7 +13,7 @@ conflicts=('krita')
 source=("https://download.kde.org/stable/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}b-${arch}.appimage"
         ${_pkgname}.sh)
 md5sums=('638f28d7278012b7d882b93154e005d0'
-         'b4f6a06058b5cc4be425e05fc457bde2')
+         'be0106f949b491a89f955759ca8eb92a')
 options=(!strip)
 _filename=./${_pkgname}-${pkgver}b-${arch}.appimage
 
