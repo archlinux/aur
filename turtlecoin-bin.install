@@ -6,6 +6,7 @@ binary_message() {
     echo "  wallet-api => trtl-wallet-api"
     echo "  TurtleCoind => unchanged"
     echo "  turtle-service => unchanged"
+    echo "  wallet-upgrader => trtl-wallet-upgrader"
     echo
 }
 
