@@ -1,7 +1,7 @@
 # Maintainer: Maximilian Luz <luzmaximilian@gmail.com>
 
 pkgname="surface-control"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/qzed/linux-surface-control'
