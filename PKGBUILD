@@ -1,41 +1,45 @@
-# Maintainer: zargbell <zargbell@yandex.ru>
+# Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
+# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
+# News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=pixiecore-git
-pkgver=r306.870d490
+_pkgname='pixiecore'
+pkgver=r328.72fa512
 pkgrel=1
 pkgdesc="An all-in-one tool for easy netbooting"
-arch=("x86_64" "armv7h")
-url="https://github.com/google/netboot"
-license=("GPL2")
-depends=("glibc")
-makedepends=("git" "go")
-optdepends=()
+arch=('any')
+url="https://godoc.org/go.universe.tf/netboot/pixiecore"
+license=('Apache')
+makedepends=('go'
+'gcc'
+'binutils')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-options=()
-
-
-prepare() {
-	export GOPATH="$srcdir/go"
-	mkdir -p $GOPATH
-
-	export GOBIN="$GOPATH/bin"
-	mkdir -p $GOBIN
-
-	go env
-
-	go get -d -v go.universe.tf/netboot/cmd/pixiecore
-}
-
+conflicts=("${pkgname%-git}") # pending removal from AUR; upstream has no static versioning
+source=("${_pkgname}::git+https://github.com/danderson/netboot.git#branch=master")
+sha512sums=('SKIP')
+ 
 pkgver(){
-	cd "${GOPATH}/src/go.universe.tf/netboot/"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-build() {
-	go install -v go.universe.tf/netboot/cmd/pixiecore
+ 
+# https://wiki.archlinux.org/index.php/Go_package_guidelines
+ 
+build(){
+    cd "${srcdir}/${_pkgname}"
+    #EXTRA_GOFLAGS="-trimpath" \
+    #LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\""
+    #make GOFLAGS="-v" build
+    #export GOPATH="${srcdir}/${_pkgname}"
+    #export GO111MODULES=off
+    go build \
+        -trimpath \
+        -ldflags "-extldflags $LDFLAGS" \
+        -o ${_pkgname} \
+        ${srcdir}/${_pkgname}/cmd/pixiecore
 }
-
+ 
 package() {
-	install -Dm755 "$GOBIN/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    cd ${srcdir}/${_pkgname}/${_pkgname}
+    install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
 }
