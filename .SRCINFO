@@ -1,7 +1,7 @@
 pkgbase = fcitx5-rime-git
 	pkgdesc = RIME input method for fcitx5
-	pkgver = r105.02afc31
-	pkgrel = 4
+	pkgver = r106.32a61ee
+	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-rime
 	arch = i686
 	arch = x86_64
