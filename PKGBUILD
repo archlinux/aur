@@ -2,7 +2,7 @@
 
 pkgname=belr-git
 _pkgname=belr
-pkgver=0.1.3.r56.g57bf7eb
+pkgver=4.3.0.alpha.r1.g8ac0364
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 conflicts=('belr')
 provides=('belr')
 depends=('bctoolbox-git')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
 
@@ -26,7 +26,8 @@ build() {
   cmake -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DENABLE_STATIC=NO \
-      -DENABLE_TOOLS=NO "../$_pkgname"
+      -DENABLE_TOOLS=NO \
+      -DCMAKE_SKIP_INSTALL_RPATH=ON "../$_pkgname"
   make
 }
 
