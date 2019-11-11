@@ -1,0 +1,12 @@
+pkgbase = kosmorro
+	pkgdesc = A program that computes the ephemerides
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://kosmorro.astronewbie.space
+	arch = any
+	license = AGPL3
+	source = https://github.com/Deuchnord/kosmorro/archive/v0.1.1.tar.gz
+	sha256sums = c2ade380968d285faa79f663fbd4721f914c612137614478364a17f4b5083674
+
+pkgname = kosmorro
+
