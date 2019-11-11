@@ -45,6 +45,7 @@ build() {
       UNAME=Windows CC=${_arch}-gcc CXX=${_arch}-g++ F77=${_arch}-gfortran \
       AR=${_arch}-ar RANLIB=${_arch}-ranlib BLAS="-lblas -lgfortran -lquadmath" \
       CFLAGS="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
+      LDFLAGS="-fstack-protector" \
       CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" JOBS=2
@@ -60,6 +61,7 @@ package() {
       UNAME=Windows CC=${_arch}-gcc CXX=${_arch}-g++ F77=${_arch}-gfortran \
       AR=${_arch}-ar RANLIB=${_arch}-ranlib BLAS="-lblas -lgfortran -lquadmath" \
       CFLAGS="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
+      LDFLAGS="-fstack-protector" \
       CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" \
