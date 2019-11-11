@@ -2,8 +2,10 @@
 
 pkgname=kosmorro
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A program that computes the ephemerides'
+depends=('python>=3.7.0')
+makedepends=('python-pip')
 arch=('any')
 url='http://kosmorro.astronewbie.space'
 license=('AGPL3')
