@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.0-rc6 Kernel Configuration
+# Linux/x86 5.4.0-rc7 Kernel Configuration
 #
 
 #
@@ -7440,6 +7440,7 @@ CONFIG_UWB_WHCI=m
 CONFIG_UWB_I1480U=m
 # CONFIG_EXFAT_FS is not set
 CONFIG_QLGE=m
+# CONFIG_VBOXSF_FS is not set
 CONFIG_X86_PLATFORM_DEVICES=y
 CONFIG_ACER_WMI=m
 CONFIG_ACER_WIRELESS=m
