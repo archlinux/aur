@@ -1,7 +1,7 @@
 pkgbase = linux-clear-bin
 	pkgdesc = Clear Linux kernel and modules in binary
 	pkgver = 5.3.9.863
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://clearlinux.org/node/15538
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = linux-clear-bin
 	optdepends = linux-clear-headers-bin: header files for the kernel
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = WIREGUARD-MODULE
-	conflicts = linux-clear
 	options = !strip
 	source = https://cdn.download.clearlinux.org/update/31530/Manifest.kernel-native
 	source = https://cdn.download.clearlinux.org/update/31530/pack-kernel-native-from-0.tar

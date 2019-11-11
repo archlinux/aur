@@ -7,7 +7,7 @@ _major=5.3
 _minor=9
 _clr=863
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=2
+pkgrel=3
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -20,7 +20,6 @@ optdepends=(
     'crda: to set the correct wireless channels of your country'
 )
 provides=("WIREGUARD-MODULE")
-conflicts=("linux-clear")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
