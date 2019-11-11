@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.7.r460.531afe0f9
+pkgver=0.0.7.r507.8234bdb8f
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -53,24 +53,26 @@ source=(
   rpcs3-llvm::git+https://github.com/RPCS3/llvm.git
   git+https://github.com/kobalicek/asmjit.git
   git+https://github.com/FNA-XNA/FAudio.git
-  git+https://github.com/Microsoft/GSL.git
   git+https://github.com/KhronosGroup/glslang.git
   git+https://github.com/zeux/pugixml.git
+  git+https://github.com/tcbrindle/span.git
   git+https://github.com/Cyan4973/xxHash.git
   git+https://github.com/jbeder/yaml-cpp.git
 )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=(
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+  SKIP
+)
 
 pkgver() {
   cd rpcs3
@@ -81,18 +83,18 @@ pkgver() {
 prepare() {
   pushd rpcs3
 
-  git submodule init 3rdparty/{FAudio,GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule init 3rdparty/{FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.glslang.url ../glslang
   git config submodule.FAudio.url ../FAudio
-  git config submodule.GSL.url ../GSL
   git config submodule.hidapi.url ../rpcs3-hidapi
   git config submodule.libusb.url ../rpcs3-libusb
   git config submodule.llvm.url ../rpcs3-llvm
   git config submodule.pugixml.url ../pugixml
+  git config submodule.span.url ../span
   git config submodule.xxHash ../xxHash
   git config submodule.yaml-cpp ../yaml-cpp
-  git submodule update 3rdparty/{FAudio,GSL,hidapi,libusb,pugixml,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule update 3rdparty/{FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
 
   popd
 
