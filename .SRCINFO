@@ -1,6 +1,6 @@
 pkgbase = cargo-bloat
 	pkgdesc = Find out what takes most of the space in your executable
-	pkgver = 0.8.3
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/RazrFalcon/cargo-bloat
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cargo-bloat
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-bloat-0.8.3.tar.gz::https://github.com/RazrFalcon/cargo-bloat/archive/v0.8.3.tar.gz
-	sha256sums = a3a65d89a9e034702bfb1b4a1f893d3db1e8c3bffe81ba2a7625172a27ce70fb
+	source = cargo-bloat-0.9.1.tar.gz::https://github.com/RazrFalcon/cargo-bloat/archive/v0.9.1.tar.gz
+	sha256sums = 51123295603831ad3e48217d310225d0fbdff3020a5fb2032aae6c2953fdf61a
 
 pkgname = cargo-bloat
 
