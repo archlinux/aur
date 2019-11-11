@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/tbird20d/grabserial"
 license=('GPL v2')
 depends=('python-pyserial')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-setuptools')
 source=("https://github.com/tbird20d/grabserial/archive/v$pkgver.tar.gz")
 sha256sums=('604d61199827b5ed27306204116779e759dfb34de78098028dc28b0c0f099323')
 
