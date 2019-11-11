@@ -5,7 +5,7 @@ _svt_av1_ver='0.6.0'
 _svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r94961.g1d86e4b3eb
+pkgver=4.3.r95713.g0e49560806
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac; git version)'
 arch=('x86_64')
@@ -15,27 +15,26 @@ depends=(
     # official repositories:
         'glibc' 'alsa-lib' 'jack' 'libpng'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
-        'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'dav1d'
-        'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
-        'libgme' 'gsm' 'libiec61883' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
-        'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump' 'snappy'
-        'libsoxr' 'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora'
+        'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'codec2'
+        'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
+        'libgme' 'gsm' 'libilbc' 'libiec61883' 'kvazaar' 'lensfun' 'libmodplug' 'lame'
+        'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump'
+        'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora'
         'twolame' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
-        'libx264.so'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi'
-        'lv2' 'lilv' 'xz' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libva'
-        'libdrm' 'libvdpau' 'svt-hevc' 'svt-av1'
+        'libx264.so'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
+        'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
+        'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libdrm'
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'svt-av1'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
-        'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
-        'xavs' 'xavs2' 'libmysofa' 'pocketsphinx' 'intel-media-sdk' 'rockchip-mpp'
-        'svt-vp9-git'
+        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
+        'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
+        'rockchip-mpp' 'svt-vp9-git'
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'opencl-headers' 'ffnvcodec-headers'
+        'git' 'nasm' 'vmaf' 'opencl-headers' 'ffnvcodec-headers'
     # AUR:
-        'vmaf' 'blackmagic-decklink-sdk' 'amf-headers-git'
+        'blackmagic-decklink-sdk' 'amf-headers-git'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
@@ -59,7 +58,7 @@ prepare() {
     
     # add svt codec support for hevc, av1 and vp9
     git apply --index "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
-    git apply --index "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    patch -Np1 -i     "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     git apply --index "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
     git apply --index "${srcdir}/ffmpeg-full-git-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
 }
@@ -154,6 +153,7 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
+        --enable-librav1e \
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
@@ -229,10 +229,7 @@ build() {
 }
 
 package() {
-    cd ffmpeg
-    
-    make DESTDIR="$pkgdir" install
-    
-    install -D -m755 tools/qt-faststart  -t "${pkgdir}/usr/bin"
-    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    make -C ffmpeg DESTDIR="$pkgdir" install
+    install -D -m755 ffmpeg/tools/qt-faststart -t "${pkgdir}/usr/bin"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
