@@ -2,7 +2,7 @@
 
 pkgname=swanctl-completion
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='strongSwan swanctl tool bash autocompletion'
 url='https://github.com/Thermi/swanctl-completion'
 license=('GPL3')
@@ -17,7 +17,7 @@ sha512sums=('14735249886911ab3dbb523c3c45c4297a711f1ffad151d0e046e72ae7a062e9139
             'SKIP')
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/swanctl.sh" "${pkgdir}/usr/share/bash-completion/completions/swanctl.sh"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/swanctl.sh" "${pkgdir}/usr/share/bash-completion/completions/swanctl"
 }
 
 # vim: ts=2 sw=2 et:

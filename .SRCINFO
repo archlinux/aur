@@ -1,7 +1,7 @@
 pkgbase = swanctl-completion
 	pkgdesc = strongSwan swanctl tool bash autocompletion
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Thermi/swanctl-completion
 	arch = any
 	license = GPL3
