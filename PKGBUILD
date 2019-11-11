@@ -65,10 +65,11 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.3.8.1
+pkgver=5.3.10.1
 pkgrel=1
-_srcver_tag=${pkgver%.*}-arch${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver_tag"
+pkgdesc="Linux"
+_srcver_tag=v${pkgver%.*}-arch${pkgver##*.}
+url="https://git.archlinux.org/linux.git/log/?h=$_srcver_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -95,26 +96,26 @@ _gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 source=(
-    "git+$_repo_url?signed#tag=v$_srcver_tag"
+    "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    01-Undead-PDS-0.99o-rebase-by-TkG.patch
-    02-Glitched-PDS-by-TkG.patch
+    0005-glitched-pds.patch
+    0005-v5.3_undead-pds099o.patch
 )
 validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-    '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+    "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
+    "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
+    "8218F88849AAC522E94CF470A5E9288C4FA415FA"  # Jan Alexander Steffens (heftig)
 )
 sha512sums=('SKIP'
             'SKIP'
-            '82827018d203ce117c927a0f8a80d7e32819b9f36fd08d6a9bb88ee9077ba025ac357afa1146c3ea07b8d294af4bb2eadcf41e51902e41e4210bd0abba96f885'
-            '2aef8b8949fec12d237facc57d5feddf0e7c1c878c94fb4eb8a845c110d5cfcc83492e73475de04ce98069e9ab1bb6b4a0a4559d445fbf264442dd8b0af9a8f1'
-            'a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae')
+            '9cc93d626f16727903b8c01dafec89ba9aca19d8d73c75d060b3915a5ca40ee2a55c8269965e91a0adb8eb18f8d901d87516a133a0a59116819b333727e61444'
+            'a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae'
+            '2aef8b8949fec12d237facc57d5feddf0e7c1c878c94fb4eb8a845c110d5cfcc83492e73475de04ce98069e9ab1bb6b4a0a4559d445fbf264442dd8b0af9a8f1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
     cd $_reponame
@@ -128,11 +129,13 @@ prepare() {
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
-    # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux52-tkg/linux52-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.2 by TkG"
-    patch -Np1 -i "$srcdir/01-Undead-PDS-0.99o-rebase-by-TkG.patch"
-    patch -Np1 -i "$srcdir/02-Glitched-PDS-by-TkG.patch"
-    
+    # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
+    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.3 by TkG"
+    for MyPatch in 0005-v5.3_undead-pds099o.patch 0005-glitched-pds.patch
+    do
+        patch -Np1 -i "$srcdir/$MyPatch"
+    done
+
     msg2 "Setting config..."
     cp ../config .config
 
@@ -190,7 +193,7 @@ build() {
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules $_pkgdesc_extra"
+    pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
         coreutils
         kmod
@@ -226,7 +229,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel $_pkgdesc_extra"
+    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
     depends=("$pkgbase=$pkgver")
     provides=(
         "$pkgbase-headers=$pkgver"
@@ -309,7 +312,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel $_pkgdesc_extra"
+    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel $_pkgdesc_extra"
     depends=("$pkgbase=$pkgver")
     provides=(
         "$pkgbase-docs=$pkgver"
@@ -323,8 +326,8 @@ _package-docs() {
     mkdir -p "$builddir"
     cp -t "$builddir" -a Documentation
 
-    msg2 "Removing doctrees..."
-    rm -r "$builddir/Documentation/output/.doctrees"
+    msg2 "Removing unneeded files..."
+    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
     msg2 "Moving HTML docs..."
     local src dst
