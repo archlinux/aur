@@ -3,11 +3,11 @@
 pkgname=python-jproperties
 _name=jproperties
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Java Property file parser and writer for Python"
 url="https://github.com/Tblue/python-jproperties"
 depends=('python3')
-makedepends=('python3')
+makedepends=('python3' 'python-setuptools')
 license=('BSD' 'Python')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
