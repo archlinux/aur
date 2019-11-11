@@ -1,7 +1,7 @@
 # Maintainer: Versus Void <chaoskeeper somewhere at mail punctuation ru>
 pkgname=reactotron
 pkgver=2.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop app for inspecting your React JS and React Native projects"
 arch=('x86_64')
 url="https://github.com/infinitered/reactotron"
@@ -12,4 +12,6 @@ noextract=("${source[0]##*/}")
 
 package() {
 	bsdtar -xf reactotron-app-$pkgver.x86_64.rpm -C "$pkgdir"
+	mkdir -p "$pkgdir/usr/bin"
+	ln -sf /opt/Reactotron/reactotron-app "$pkgdir/usr/bin/reactotron"
 }
