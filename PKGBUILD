@@ -2,14 +2,14 @@
 
 pkgname=i2c-piix4-aura-dkms
 _pkgbase=${pkgname%-dkms}
-pkgver=5.3.4
+pkgver=5.3.10
 pkgrel=1
 pkgdesc="The i2c-piix4 kernel driver, patched to be used with OpenAuraSDK: https://gitlab.com/CalcProgrammer1/OpenAuraSDK"
 arch=('x86_64')
 url="https://bugzilla.kernel.org/show_bug.cgi?id=202587"
 license=('GPL2')
 depends=('dkms')
-source=("https://raw.githubusercontent.com/torvalds/linux/master/drivers/i2c/busses/i2c-piix4.c"
+source=("i2c-piix4.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/i2c/busses/i2c-piix4.c?h=v${pkgver}"
 	"https://gitlab.com/CalcProgrammer1/OpenAuraSDK/uploads/241ead031b210fba3772ea2b648fec05/piix4-2.diff"
         'dkms.conf'
         'Makefile'
