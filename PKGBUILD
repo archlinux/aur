@@ -2,7 +2,7 @@
 
 pkgname=caddy2
 pkgver=beta9
-pkgrel=3
+pkgrel=4
 pkgdesc='Fast, cross-platform HTTP/2 web server with automatic HTTPS'
 arch=('x86_64')
 license=('Apache')
@@ -11,8 +11,10 @@ depends=()
 conflicts=('caddy')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/caddyserver/caddy/archive/v2.0.0-${pkgver}.tar.gz"
+	"Caddyfile"
         "caddy.service")
 sha256sums=('55c1093ed3ed55d0b27bb4c1e39727cecf8ad1787a4dea3e1bb28eb1ccbe91d1'
+            'adf24a575a20ae9f503fac2348f7cfd26256f167992a1938f1a53a6d77b9b1f4'
             'c3eb327ba564b167e508b2bfa76ef459cacef09fb2e67a7f09944cb8f92e3207')
 
 build() {
