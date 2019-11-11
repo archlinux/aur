@@ -1,4 +1,10 @@
-kotatogram-desktop-1.1-2-x86_64.pkg.tar.xz
-kotatogram-desktop-1.1.tar.gz
-pkg/
+Catch2/
+GSL/
+crl/
+kdesktop/
+libtgvoip/
+lz4/
+rlottie/
 src/
+variant/
+xxHash/
