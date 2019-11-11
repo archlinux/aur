@@ -2,15 +2,16 @@
 
 pkgname=devpi-server
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="reliable private and pypi.python.org caching server"
 arch=(any)
 url="http://doc.devpi.net/"
 license=('MIT')
-depends=('python' 'python-py' 'python-itsdangerous' 'python-execnet'
+depends=('python' 'python-py' 'python-appdirs' 'python-attrs'
+         'python-itsdangerous' 'python-execnet'
          'python-pyramid' 'python-waitress' 'python-repoze.lru'
          'python-pluggy' 'python-pastedeploy' 'python-passlib'
-         'python-argon2_cffi' 'devpi-common')
+         'python-argon2_cffi' 'python-strictyaml' 'devpi-common')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'devpi-server.service'
