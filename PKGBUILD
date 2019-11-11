@@ -10,7 +10,9 @@ url="https://www.waterfoxproject.org"
 license=('MPL')
 depends=('libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
 optdepends=('alsa-lib' 'pulseaudio')
-provides=(${pkgname})
+provides=('waterfox')
+conflicts=('waterfox-bin')
+
 source=(
     'waterfox-classic.desktop'
     'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2'
