@@ -5,7 +5,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -93,13 +93,13 @@ prepare() {
 
         patch -Np1 -i "$srcdir/tdesktop.patch"
         patch -Np1 -i "$srcdir/no-gtk2.patch"
-# patch -Np1 -i "$srcdir/Revert-Disable-DemiBold-fallback-for-Semibold.patch"
+        # patch -Np1 -i "$srcdir/Revert-Disable-DemiBold-fallback-for-Semibold.patch"
         patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
-        # patch -Np1 -i "$srcdir/Revert-Change-some-private-header-includes.patch"
-# patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
+        patch -Np1 -i "$srcdir/Revert-Change-some-private-header-includes.patch"
+        # patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 
         unix2dos "$srcdir/kdesktop/.appveyor/install.bat"
-# disable static-qt for rlottie
+        # disable static-qt for rlottie
         sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/kdesktop/Telegram/gyp/lib_rlottie.gyp"
 
         cd "$srcdir/kdesktop"
