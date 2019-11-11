@@ -21,11 +21,12 @@ source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/po
         fix-seccomp-sandbox-bug.patch)
 sha512sums=('8ff9cd653c62044ec26f0eca7ef06ac7be6183ec1fc6052d27da11a079bd95d4971a79aefeec42c04ae9e78fd987dd44b15996fd9aaa3bfb937e71710d8f6121'
             '7e7d712a01edcb91fcd3759d77620ae53c5f24e6fc0ec311bec7eebf5736d643945c2600c9198261e47d0349ef358a6d673a446e15c7599c31b548c93f464f7d'
-            '6f7affb6cf85a16452bd934c8ebb996d5f98bc82100d1a4b7c308438ff4dd90c36552ec533de803264201fdfbf7e127cb8ecbfce92f24f205fcf762576a8b51f')
+            '2c01bc2da7a0aa6bd1f943737949e3e84d56a1258f316e558c49e8474a86dec2c510eb5260f48ed0dbfd656801b73f69f4ea702a6f878f94e5e23bf12d67995f')
 
 prepare() {
   mkdir ${pkgname}-${pkgver}
   tar xzf data.tar.gz -C ${pkgname}-${pkgver}
+  cd hipchat-*
   patch -p0 -i "${srcdir}"/fix-seccomp-sandbox-bug.patch
 }
 

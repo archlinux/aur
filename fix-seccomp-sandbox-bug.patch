@@ -1,8 +1,9 @@
---- hipchat-4.30.0.1663/opt/HipChat4/bin/QtWebEngineProcess.orig	2017-09-10 20:40:15.745339729 -0400
-+++ hipchat-4.30.0.1663/opt/HipChat4/bin/QtWebEngineProcess	2017-09-10 20:40:38.134780623 -0400
+diff -aur hipchat-4.30.5.1680/opt/HipChat4/bin/QtWebEngineProcess hipchat-new/opt/HipChat4/bin/QtWebEngineProcess
+--- opt/HipChat4/bin/QtWebEngineProcess	2018-07-25 10:17:47.000000000 +0200
++++ opt/HipChat4/bin/QtWebEngineProcess	2019-11-12 00:44:05.783103355 +0100
 @@ -1,7 +1,7 @@
  #!/bin/bash
- 
+
  commandtorun=''
 -arguments=$@
 +arguments="--disable-seccomp-filter-sandbox $@"
