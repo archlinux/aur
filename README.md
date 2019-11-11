@@ -15,5 +15,5 @@ This package is avaliable on [AUR](https://aur.archlinux.org/packages/amber/)
 Install this package using:
 
 ```
-yaourt -S amber
+trizen -S amber
 ```
