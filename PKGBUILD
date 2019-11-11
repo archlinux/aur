@@ -7,7 +7,7 @@
 _name=cx_Oracle
 pkgname=python-cx_oracle
 pkgver=7.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python extension module that allows access to Oracle databases"
 arch=('i686' 'x86_64')
 url='https://oracle.github.io/python-cx_Oracle/'
@@ -35,6 +35,6 @@ package() {
   cd $srcdir/cx_Oracle-$pkgver
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 "$pkgdir"/usr/cx_Oracle-doc/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
-  install -Dm644 "$pkgdir"/usr/cx_Oracle-doc/README.txt "$pkgdir"/usr/share/docs/$pkgname/README.txt
+  install -Dm644 "$pkgdir"/usr/cx_Oracle-doc/README.txt "$pkgdir"/usr/share/doc/$pkgname/README.txt
   rm -rf "$pkgdir"/usr/cx_Oracle-doc
 }
