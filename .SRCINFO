@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Multimedia processing graphs. (GIT version)
-	pkgver = 0.2.7.1401.gc8ffcaae
+	pkgver = 0.2.7.1782.gc63f0ed5
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -20,13 +20,7 @@ pkgbase = pipewire-git
 	provides = pipewire
 	conflicts = pipewire
 	backup = etc/pipewire/pipewire.conf
-	source = git+https://github.com/PipeWire/pipewire.git
-	source = git+https://github.com/PipeWire/pipewire-alsa.git
-	source = git+https://github.com/PipeWire/pipewire-jack.git
-	source = git+https://github.com/PipeWire/pipewire-pulseaudio.git
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
 pkgname = pipewire-git

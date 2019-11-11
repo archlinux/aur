@@ -1,5 +1,5 @@
 pkgname=pipewire-git
-pkgver=0.2.7.1401.gc8ffcaae
+pkgver=0.2.7.1782.gc63f0ed5
 pkgrel=1
 pkgdesc="Multimedia processing graphs. (GIT version)"
 arch=('x86_64')
@@ -21,16 +21,8 @@ makedepends=('graphviz'
              )
 conflicts=('pipewire')
 provides=('pipewire')
-source=('git+https://github.com/PipeWire/pipewire.git'
-        'git+https://github.com/PipeWire/pipewire-alsa.git'
-        'git+https://github.com/PipeWire/pipewire-jack.git'
-        'git+https://github.com/PipeWire/pipewire-pulseaudio.git'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            )
+source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
+sha256sums=('SKIP')
 backup=('etc/pipewire/pipewire.conf')
 
 pkgver() {
@@ -42,15 +34,14 @@ prepare() {
   mkdir -p build
 
   cd pipewire
-  git config submodule.pipewire-alsa.url "${srcdir}/pipewire-alsa"
-  git config submodule.pipewire-jack.url "${srcdir}/pipewire-jack"
-  git config submodule.pipewire-pulseaudio.url "${srcdir}/pipewire-pulseaudio"
-  git submodule update --init pipewire-alsa pipewire-jack pipewire-pulseaudio
+
 
   # Reduce docs size
   printf '%s\n' >> doc/Doxyfile.in \
     HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
+}
 
+build() {
   cd "${srcdir}/build"
 
   arch-meson ../pipewire \
@@ -58,10 +49,7 @@ prepare() {
     -D gstreamer=false \
     -D ffmpeg=true \
 
-}
-
-build() {
-  ninja -C build
+  ninja
 }
 
 package() {
