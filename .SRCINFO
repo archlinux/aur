@@ -1,6 +1,6 @@
 pkgbase = turtlecoin-git
 	pkgdesc = TurtleCoin daemon, CLI wallet, RPC interface, and solo miner
-    pkgver = r1362.c342cdec
+	pkgver = r1842.7183230d
 	pkgrel = 1
 	url = https://turtlecoin.lol
 	install = turtlecoin-git.install
@@ -15,3 +15,4 @@ pkgbase = turtlecoin-git
 	sha256sums = SKIP
 
 pkgname = turtlecoin-git
+

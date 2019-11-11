@@ -1,5 +1,5 @@
 pkgname=turtlecoin-git
-pkgver=r1362.c342cdec
+pkgver=r1842.7183230d
 pkgrel=1
 pkgdesc="TurtleCoin daemon, CLI wallet, RPC interface, and solo miner"
 arch=('x86_64')
