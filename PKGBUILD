@@ -3,7 +3,7 @@
 # Contributor: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=texlive-europecv
-pkgver=2019.02.04
+pkgver=2019.03.19
 pkgrel=1
 pkgdesc='Unofficial class for European curricula vitæ'
 arch=('any')
@@ -11,7 +11,7 @@ url='http://www.ctan.org/tex-archive/macros/latex/contrib/europecv/'
 license=('GPL')
 depends=('texlive-latexextra')
 source=("https://github.com/gsilano/EuropeCV/archive/"$pkgver".zip")
-sha256sums=('4f4c1ad66571099d094c7a1780e748bc837755239089b932884129f96f18fccd')
+sha256sums=('de6ed45b7e2db2c8e88a25cb8de5f60456a4d131fcbb0e58a51d22882c9f8277')
 
 package() {
   install -d -- "$pkgdir"/usr/share/texmf/tex/latex
