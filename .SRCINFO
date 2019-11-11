@@ -1,7 +1,7 @@
 pkgbase = python-cx_oracle
 	pkgdesc = Python extension module that allows access to Oracle databases
 	pkgver = 7.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oracle.github.io/python-cx_Oracle/
 	arch = i686
 	arch = x86_64
