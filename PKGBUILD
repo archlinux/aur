@@ -2,7 +2,7 @@
 
 pkgname=belcard-git
 _pkgname=belcard
-pkgver=1.0.2.r30.g3bd1400
+pkgver=4.3.0.alpha.r1.g0cd3b7c
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 conflicts=('belcard')
 provides=('belcard')
 depends=('belr-git')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/$_pkgname.git")
 sha256sums=('SKIP')
 
