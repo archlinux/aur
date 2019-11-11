@@ -1,4 +1,5 @@
-# Maintainer: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
+# Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
+# Contributor: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
 # Contributor: Lev Lybin <aur@devtrue.net>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
