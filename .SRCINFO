@@ -1,13 +1,11 @@
 pkgbase = linux-clear-headers-bin
 	pkgdesc = Header files and scripts for Clear Linux kernel and modules
-	pkgver = 5.3.9
-	pkgrel = 863
+	pkgver = 5.3.9.863
+	pkgrel = 1
 	epoch = 0
 	url = https://clearlinux.org/node/15538
 	arch = x86_64
 	license = GPL2
-	provides = linux-headers=5.3.9
-	provides = linux-clear-headers=5.3.9
 	conflicts = linux-clear-headers
 	options = !strip
 	source = https://cdn.download.clearlinux.org/update/31530/Manifest.linux-dev

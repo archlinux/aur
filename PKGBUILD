@@ -3,19 +3,21 @@ pkgdesc="Header files and scripts for Clear Linux kernel and modules"
 url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-pkgver="5.3.9"
-pkgrel="863"
+_major=5.3
+_minor=9
+_clr=863
+pkgver=${_major}.${_minor}.${_clr}
+pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
 license=('GPL2')
-provides=("linux-headers=${pkgver}" "linux-clear-headers=${pkgver}")
 conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
 _clear_version=31530
-_kernel_version="${pkgver}-${pkgrel}.native"
+_kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
 _config_hash="17fd658ad142307f65cadaa96500e40f5e1695e492a3a1752d2e0f716cbb4682"
