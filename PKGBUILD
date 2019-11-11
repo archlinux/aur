@@ -1,5 +1,5 @@
 pkgname=nix-bin
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A purely functional package manager - /nix/store multi-user edition"
 arch=('i686' 'x86_64')
@@ -15,8 +15,11 @@ backup=('etc/nix/nix.conf' 'root/.nix-channels')
 options=('!strip' 'staticlibs' 'libtool' 'emptydirs')
 SOURCE_DATE_EPOCH=1
 
-NIX_STORE_NIX=3ds3cgji9vjxdbgp10av6smyym1126d1-nix-2.3
 NIX_SRC=nix-$pkgver-$CARCH-linux
+
+nix_store_nix() {
+  cd $srcdir/$NIX_SRC/store && echo *-nix-$pkgver
+}
 
 build() {
   {
@@ -27,12 +30,15 @@ build() {
   } > $srcdir/nix.sysusers
 
   { # patch nix-daemon.sh to add user channels to NIX_PATH, see https://github.com/NixOS/nixpkgs/pull/38351
+    NIX_STORE_NIX=$(nix_store_nix)
     cat $srcdir/$NIX_SRC/store/$NIX_STORE_NIX/etc/profile.d/nix-daemon.sh
     echo 'export NIX_PATH="$HOME/.nix-defexpr/channels:$NIX_PATH"'
   } > $srcdir/nix-daemon.sh
 }
 
 package() {
+  NIX_STORE_NIX=$(nix_store_nix)
+
   install -dm0755 $pkgdir/nix/var/nix/db $pkgdir/nix/var/pacman/store $pkgdir/nix/var/nix/gcroots/pacman $pkgdir/usr/bin
   install -dm1775 $pkgdir/nix/store
   install -dm0750 $pkgdir/root
@@ -68,5 +74,5 @@ package() {
   done
 }
 sha256sums=(SKIP SKIP SKIP SKIP)
-sha256sums_i686=('e1c6fa89a0d55a56cddb5f26598a15e0f238115423ad884a3673a3e4815fd33b')
-sha256sums_x86_64=('e43f6947d1f302b6193302889e7800f3e3dd4a650b6f929c668c894884a02701')
+sha256sums_i686=('a5d3f26d4a449616bf654286f2fe29c1c1df4f029b7e29fa3ccf8494d598bfee')
+sha256sums_x86_64=('107310e95a57f502b7ada41aa2c76a3d4aec18847ad864d0b233ca8f4452e9fc')
