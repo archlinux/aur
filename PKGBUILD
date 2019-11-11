@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=toptracker
-_pkgver=1.5.8-273
+_pkgver=1.6.0-334
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Time tracking software for remote teams and individuals"
@@ -15,7 +15,7 @@ source=('toptracker.desktop'
 noextract=("${pkgname}_${_pkgver}_x86_64.rpm")
 sha256sums=('f799b24235e5c784e4d95b7b43cfedb97f97d2756ba197870c0950ad41ba0819'
             '3a12e2c5bd4c992b24320e1e2552476f21d08229417ca298cb39a2512f36162e')
-sha256sums_x86_64=('c7191b4eef5b2dd6b1504f3c9571b52e4e57e783362f7e6c1de28a8e52f9fc0a')
+sha256sums_x86_64=('212f82bc574c741b1c8837ae5d06b2999d15d6c431ef8d41cf096653d877b95c')
 
 package() {
   bsdtar -xf ${srcdir}/${pkgname}_${_pkgver}_x86_64.rpm -C ${pkgdir}/
