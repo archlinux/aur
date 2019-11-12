@@ -5,7 +5,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -26,7 +26,6 @@ makedepends=(
         range-v3
         python
         libappindicator-gtk3
-        dos2unix
         )
 optdepends=(
         'libnotify: desktop notifications'
@@ -85,7 +84,7 @@ sha512sums=(
         '117b0c2bae3d3d3aa94d41382621be4e05c3314a2831dba59e1bcfb443e7b8ff4bcd0403544fa0cb6def85b444146bf59eef9da25f96b041d3ce8f5429b4a867'  # no-gtk2.patch
         '087dd821690dfedf1c275f264a0223b123e31ab9ee95050023930470bc9c866958cae00e2fd9132e6f7efbc4f1dfc3fdc20f8fba1fc9472d92bd702eaa60adb0'  # Revert-Change-some-private-header-includes.patch
         'd5cd7ecb5583258462c21a9ae3d4e8ae8c709d47d7ce2c45f8ae23100d24993398b8372021957b9a4607b3988f366e1c0cf64d724d901cb70212665c481217e9'  # Revert-Disable-DemiBold-fallback-for-Semibold.patch
-        'c46d8362c01d8b312d20959b13673f3bf1648c3247f554dc1529bd6b1a9e92883995ead2d302defa6e49ca525c49e06c62c97d01e06eb47179351f0497b9bfb6'  # tdesktop.patch
+        '27a4f94a9cf5ea1096001d151f560b6ec3a00018b377c2ff00a133a121598713e4d1a3a79f0c4f0e4c1a8035b4317c9585d3953dfaf04a0d70aba5adc5f0bdea'  # tdesktop.patch
         'be4bac59d0002006bc00ada0f2edff1e5432eb0e34d19ac0bf64983016ee9194386ce35e63aaeb854862696c03e947d6f79d5e1c355e888f2f7f1bab7045e1af'  # tdesktop_lottie_animation_qtdebug.patch
         'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'  # tg.protocol
         '2c1bb75449b4634befa3edaac5d20e4b29ede21119549d9a3895dda9d4723f618dd950ee32133e04186fa65d07f80081ba3e3d5585209ba9112aa754d06fbb5c'  # Use-system-wide-font.patch
@@ -119,18 +118,18 @@ prepare() {
 
         git submodule update
 
-        dos2unix "$srcdir/kdesktop/.appveyor/install.bat"
+        # dos2unix "$srcdir/kdesktop/.appveyor/install.bat"
 
-        # patch -Np1 -i "$srcdir/no-gtk2.patch"
+        patch -Np1 -i "$srcdir/no-gtk2.patch"
         # patch -Np1 -i "$srcdir/Revert-Change-some-private-header-includes.patch"
         # patch -Np1 -i "$srcdir/Revert-Disable-DemiBold-fallback-for-Semibold.patch"
         # patch -Np1 -i "$srcdir/tdesktop_lottie_animation_qtdebug.patch"
         # patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
         patch -Np1 -i "$srcdir/tdesktop.patch"
 
-        unix2dos "$srcdir/kdesktop/.appveyor/install.bat"
+        # unix2dos "$srcdir/kdesktop/.appveyor/install.bat"
         # disable static-qt for rlottie
-        sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/kdesktop/Telegram/lib_rlottie/lib_rlottie.gyp"
+        # sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/kdesktop/Telegram/lib_rlottie/lib_rlottie.gyp"
 
         cd "$srcdir/kdesktop"
         cd "Telegram/ThirdParty/libtgvoip"
