@@ -2,8 +2,8 @@
 # Poached from Arch Strike: ArchStrike <team@archstrike.org>
 
 pkgname=rifiuti2
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A rewrite of rifiuti, a great tool from Foundstone folks for analyzing Windows Recycle Bin INFO2 file."
 url="https://github.com/abelcheung/rifiuti2"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,18 +11,28 @@ license=('custom:BSD')
 depends=('glib2')
 conflicts=('rifiuti')
 options=('!emptydirs')
-source=("https://github.com/abelcheung/rifiuti2/archive/${pkgver}.tar.gz")
-sha512sums=('2e83b13dc15d05a770719048a1d8f503c63ac660c80d5ae14c859c51272b4ccc4091138504f128b2551113d0cd4c005ffadb0939cb2f3565916e9c97b733ae58')
+source=("https://github.com/abelcheung/rifiuti2/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha512sums=('1f538b70fa405f84d41f84e8f9d9f1d9e6c6badc1d50859a994bac0462b9bdba96f24c4fa16522f0f3ab4d4f95ca8fd9bbfee9477a324630542e2ebe92a835cc')
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make -k check
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --bindir=/usr/bin --mandir=/usr/share/man
+}
 
 build() {
-  cd "$srcdir/rifiuti2-$pkgver"
-  ./autogen.sh
-  ./configure --prefix=/usr --bindir=/usr/bin --mandir=/usr/share/man
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/rifiuti2-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/rifiuti2/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 docs/LICENSE.md "$pkgdir/usr/share/licenses/rifiuti2/LICENSE"
 }
+
+# https://github.com/abelcheung/rifiuti2/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.xz
