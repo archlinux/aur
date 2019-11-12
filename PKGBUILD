@@ -1,7 +1,7 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 
 pkgname=wwphone
-pkgver=3.0.18
+pkgver=3.0.19
 pkgrel=1
 pkgdesc="A proprietary CTI and SIP client from wwcom"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:"Copyright (c) 2019 by wwcom ag"')
 url="https://www.wwcom.ch/"
 
 source=("https://wwcom.ch/downloads/wwphone_${pkgver//./_}.deb")
-sha256sums=('e2dc7c2e2433c279af4e6bb91c940922f06d6272d50cefed9061eda57ba87aef')
+sha256sums=('3eb461deb2eeda5c6734453b882b40ab9930845041e2394a8e8597dcd36d1d76')
 
 depends=(
 	"alsa-lib"
