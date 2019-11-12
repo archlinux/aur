@@ -1,6 +1,6 @@
 pkgbase = renoise3-demo
 	pkgdesc = A music composition program
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://www.renoise.com
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = renoise3-demo
 	optdepends = jack: For JACK audio support
 	conflicts = renoise
 	options = !strip
-	source = https://files.renoise.com/demo/Renoise_3_2_0_Demo_Linux.tar.gz
-	sha256sums = 114ae91c0ffa202bfc0a689774717fcb96ba9a77e234326d30bfb530efffcc31
+	source = https://files.renoise.com/demo/Renoise_3_2_1_Demo_Linux.tar.gz
+	sha256sums = 8678bb6776f6219a40ef2233b9971de07e5593543cf00ef852a47d695f8b0c36
 
-pkgname = renoise-demo
+pkgname = renoise3-demo
 
