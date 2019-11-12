@@ -13,8 +13,8 @@
 #  place it into same DIR as this file
 
 pkgname="renoise"
-pkgver="3.2.0"
-pkgrel="3"
+pkgver="3.2.1"
+pkgrel="1"
 pkgdesc="A music composition program"
 arch=("x86_64")
 url="https://www.renoise.com"
@@ -27,6 +27,10 @@ conflicts=("renoise3-demo")
 
 source=("file://rns_${pkgver//./}_linux_x86_64.tar.gz")
 md5sums=('SKIP')
+
+prepare() {
+    bsdtar xf "$srcdir/rns_${pkgver//./}_linux_x86_64.tar.gz"
+}
 
 package() {
     cd "$srcdir/rns_${pkgver//./}_linux_x86_64"
