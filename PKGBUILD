@@ -6,17 +6,17 @@ _debug=n
 
 # Compile from a specific commit?
 _commit=HEAD
-_branch=feature-bind
+_branch=master
 
 pkgname=libtorrent-pyro-git
-pkgver=20180605
+pkgver=20191021
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ (git version)'
 url='https://rakshasa.github.io/rtorrent'
 license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('openssl')
-makedepends=('git')
+makedepends=('git' 'clang')
 conflicts=('libtorrent' 'libtorrent-git' 'libtorrent-ps')
 provides=('libtorrent')
 install=libtorrent-pyro.install
@@ -30,26 +30,34 @@ install=libtorrent-pyro.install
     options=(!strip)
 }
 
-source=("git://github.com/rakshasa/libtorrent.git#branch=$_branch")
-md5sums=('SKIP')
+_url='https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches'
+source=("git://github.com/rakshasa/libtorrent.git#branch=$_branch"
+        "$_url/backport_lt_all_01-partially_done_and_choke_group_fix.patch")
+md5sums=('SKIP'
+         '2a8eb09877e81e3e72bd544c27b45dbb')
 
 pkgver() {
-    cd "$srcdir/libtorrent"
+    cd libtorrent
     git log -1 --format="%cd" --date=short "$_commit" |tr -d -
 }
 
 prepare() {
-    cd "$srcdir/libtorrent"
-    #patch -Np1 -i "${startdir}/libtorrent.patch"
+    cd libtorrent
+    #patch -Np1 -i "$startdir/libtorrent.patch"
+
+    for i in $srcdir/*.patch; do
+        msg "Patching $(basename $i)"
+        patch -uNp1 -i "$i"
+    done
 
     ./autogen.sh
 }
 
 build() {
-    cd "$srcdir/libtorrent"
-    #export CC=clang
-    #export CXX=clang++ ;export CXXFLAGS+=" -Wno-unknown-warning-option"
-    export CXXFLAGS+=" -fno-strict-aliasing -faligned-new -Wno-terminate -Wno-class-memaccess"
+    cd libtorrent
+    export CC=clang
+    export CXX=clang++
+    export CXXFLAGS+=" -Wno-exceptions"
 
     ./configure $_debug \
         --prefix=/usr \
@@ -58,10 +66,9 @@ build() {
 }
 
 check() {
-    cd "$srcdir/libtorrent"
-    make check
+    make -C libtorrent check
 }
 
 package() {
-    make -C "$srcdir/libtorrent" DESTDIR="$pkgdir" install
+    make -C libtorrent DESTDIR="$pkgdir" install
 }
