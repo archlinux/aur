@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=1.01+533+gcefb52a
+pkgver=1.01+858+g8ad376d
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64')
@@ -30,14 +30,9 @@ pkgver() {
     git describe --tags --long | sed 's/^v//;s/-/+/g'
 }
 
-prepare() {
-    cd NBlood
-    sed -i 's|/etc/timidity|/etc/timidity++|g' source/audiolib/src/sdlmusic.cpp
-}
-
 build() {
     cd NBlood
-    make PACKAGE_REPOSITORY=1 REVFLAG="-DREV=\\\"$(git describe --tags --long)\\\""
+    make PACKAGE_REPOSITORY=1
     MAGICK_OCL_DEVICE=OFF convert \
         source/blood/rsrc/game.bmp \
         -gravity center \
