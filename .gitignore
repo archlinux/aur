@@ -8,3 +8,12 @@ rlottie/
 src/
 variant/
 xxHash/
+codegen/
+lib_base/
+lib_crl/
+lib_lottie/
+lib_rlottie/
+lib_rpl/
+lib_spellcheck/
+lib_tl/
+lib_ui/
