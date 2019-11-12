@@ -1,23 +1,25 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.10.2.r399.g63783aeca0
+pkgver=3.10.3.r483.g36cbdde009
 pkgrel=1
 pkgdesc="Environment and programming language for real time audio synthesis and algorithmic composition"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://supercollider.github.io/"
 license=('GPL3')
-depends=('boost-libs' 'desktop-file-utils' 'fftw' 'jack' 'qt5-svg'
-'qt5-webengine' 'qt5-websockets' 'yaml-cpp')
+depends=('alsa-lib' 'avahi' 'boost-libs' 'desktop-file-utils' 'fftw' 'gcc-libs'
+'glibc' 'jack' 'libsndfile' 'libx11' 'qt5-base' 'qt5-svg' 'qt5-webengine'
+'qt5-websockets' 'readline' 'systemd-libs' 'yaml-cpp')
 makedepends=('boost' 'cmake' 'emacs' 'git' 'link' 'qt5-tools')
 checkdepends=('xorg-server-xvfb')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
             'sc3-plugins: additional extension plugins for scsynth')
 conflicts=('supercollider')
-provides=('supercollider')
+provides=('libscsynth.so' 'supercollider')
 source=("git+https://github.com/${_name}/${_name}.git#branch=develop"
+        "${pkgname}-boost1.71.patch::https://github.com/supercollider/supercollider/pull/4612.patch"
         "${pkgname}-devendor-ableton-link.patch"
         "git+https://github.com/ableton/link.git"
         "git+https://github.com/${_name}/scel.git"
@@ -28,6 +30,7 @@ source=("git+https://github.com/${_name}/${_name}.git#branch=develop"
         "git+https://github.com/timblechmann/nova-simd.git"
         "git+https://github.com/timblechmann/nova-tt.git")
 sha512sums=('SKIP'
+            '005d241b797083dc031dda7f192013b69887c84db6b2616176605abafc1633c06a46a58b8ad1581d4cce0650fbc1f6d479b8992dbe4bdbf5ceace77fdccbdca8'
             '8aa14c7bf94b69f0ffa5b6f348544c3df72083d9f39cdf509efee3997e2e93cde2a3a8f6d6a149b3fd431843fec630d22c31c0f0332f2a1fff24c79ca4c16a00'
             'SKIP'
             'SKIP'
@@ -40,7 +43,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${_name}"
-  git describe --long --tags | sed 's/Version-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --match 'Version-*' --tags | sed 's/Version-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -57,6 +60,7 @@ prepare() {
   git config submodule.external_libraries/link.url "${srcdir}/link"
   git submodule update
   patch -Np1 -i ../"${pkgname}-devendor-ableton-link.patch"
+  patch -Np1 -i ../"${pkgname}-boost1.71.patch"
   mkdir -p build
 }
 
