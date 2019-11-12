@@ -5,7 +5,6 @@
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher
 pkgver=2.0.3
-_commit=4f7bc8e9fae72005935143d255b83a7ee6572f4a
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
