@@ -2,7 +2,7 @@
 # Contributor: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
 
 pkgname=redis-desktop-manager
-pkgver=2019.3
+pkgver=2019.4
 pkgrel=1
 pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
 arch=('x86_64')
@@ -34,7 +34,6 @@ prepare() {
   git submodule add https://chromium.googlesource.com/linux-syscall-support 3rdparty/linux-syscall-support
 
   python2 build/utils/set_version.py "$pkgver" > src/version.h
-  python2 build/utils/set_version.py "$pkgver" > 3rdparty/crashreporter/src/version.h
 
   _lssdir='3rdparty/gbreakpad/src/third_party/lss/'
   mkdir -p ${_lssdir}
@@ -45,18 +44,6 @@ prepare() {
 
 build() {
   rm -rf $srcdir/rdm/bin
-
-  cd $srcdir/rdm/3rdparty/crashreporter
-  sed -ie 's/(APP_NAME)/("RedisDesktopManager")/g' src/main.cpp
-  sed -ie "s/(APP_VERSION)/(\"$pkgver\")/g" src/main.cpp
-  sed -ie 's/(CRASH_SERVER_URL)/("\/crash-report")/g' src/main.cpp
-  qmake CONFIG+=release DESTDIR="$srcdir/rdm/bin/linux/release" QMAKE_LFLAGS_RPATH=""
-  make -j 2
-
-  cd $srcdir/rdm/3rdparty/gbreakpad
-  ./configure
-  make -j 2
-
   cd $srcdir/rdm/src
   qmake && make
 }
@@ -72,7 +59,6 @@ package() {
 
   install -Dm644 "$srcdir/rdm/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "${_instdir}/rdm" "${_bindir}/rdm"
-  install -Dm755 "${_instdir}/crashreporter" "${_bindir}/crashreporter"
   install -Dm755 "$srcdir/rdm.sh" "${_bindir}/rdm.sh"
   install -Dm644 "$srcdir/rdm/src/resources/images/rdm.png" "$pkgdir/usr/share/pixmaps/rdm.png"
   install -Dm644 "$srcdir/rdm.desktop" "$pkgdir/usr/share/applications/rdm.desktop"
