@@ -36,7 +36,7 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
       ..
-    make
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
   done
 }
