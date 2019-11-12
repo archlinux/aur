@@ -3,12 +3,12 @@
 
 pkgname=i3status-rust
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Resourcefriendly and feature-rich replacement for i3status, written in pure Rust'
 arch=('any')
 url=https://github.com/greshake/i3status-rust
 license=('GPL3')
-depends=('dbus')
+depends=('dbus' 'libpulse')
 makedepends=('rust')
 optdepends=('alsa-utils: for the volume block'
             'lm_sensors: for the temperature block'

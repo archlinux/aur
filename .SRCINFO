@@ -1,12 +1,13 @@
 pkgbase = i3status-rust
 	pkgdesc = Resourcefriendly and feature-rich replacement for i3status, written in pure Rust
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greshake/i3status-rust
 	arch = any
 	license = GPL3
 	makedepends = rust
 	depends = dbus
+	depends = libpulse
 	optdepends = alsa-utils: for the volume block
 	optdepends = lm_sensors: for the temperature block
 	optdepends = powerline-fonts: for all themes using the Powerline arrow char
