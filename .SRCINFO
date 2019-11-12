@@ -1,14 +1,14 @@
 pkgbase = writefreely
 	pkgdesc = Federated blogging from write.as
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://writefreely.org/
 	install = writefreely.install
 	arch = x86_64
 	license = AGPL3
 	makedepends = go
-	makedepends = go-bindata
 	makedepends = sqlite
+	makedepends = go-bindata
 	makedepends = nodejs-less
 	makedepends = nodejs-less-plugin-clean-css
 	depends = glibc
@@ -19,12 +19,12 @@ pkgbase = writefreely
 	source = writefreely.service
 	source = config.ini
 	source = makefile.patch
-	source = https://github.com/writeas/writefreely/archive/v0.10.0.tar.gz
+	source = https://github.com/writeas/writefreely/archive/v0.11.1.tar.gz
 	sha256sums = 6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10
 	sha256sums = 60d4b49872523a2aed3e0e6a55513dfefe5ae6cbec43f2fcc65db894fb3bd2a3
-	sha256sums = e357b687bd0eab95996711276216b6f2dc534ba9214ae094172d6d7a6b1fdae5
+	sha256sums = c061a38c62ae76aaeade0b818215ec67eb55543f1f9778fbd13818be73f9c501
 	sha256sums = f6282ce91ada86b77f54469f0c24db20089b87bf4593ee23f5855cbf5fde4859
-	sha256sums = 7ba4208ece3c6e94573e1acb89506b3dd803ec10b98f291d72a372d032b326a6
+	sha256sums = 0304da7838f8a7878f94b4d40aa40e3af4131264b1e3bfd9daa2c3147bc00032
 
 pkgname = writefreely
 
