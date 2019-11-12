@@ -3,20 +3,22 @@
 # Please note this is NOT useragentswitcher by chris perderrik.
 
 _plugin_name=user-agent-switcher
-_plugin_version=1.2.18
 _plugin_ext="-an+fx"
-pkgdesc="Firefox extension to override the browser's User-Agent string"
-license=('GPL')
+_file=3442618
 
 pkgname=firefox-extension-$_plugin_name
-pkgver=$_plugin_version
+pkgver=1.3.16
 pkgrel=1
 arch=('any')
+pkgdesc="Firefox extension to override the browser's User-Agent string"
+license=('GPL')
 url="https://gitlab.com/alexander255/user-agent-switcher"
 depends=("firefox>=57")
-source=("https://addons.mozilla.org/firefox/downloads/file/3061197/user_agent_switcher-${pkgver}${_plugin_ext}.xpi")
+source=("https://addons.mozilla.org/firefox/downloads/file/${_file}/user_agent_switcher-${pkgver}${_plugin_ext}.xpi")
 noextract=('user_agent_switcher-${pkgver}${_plugin_ext}.xpi')
-sha256sums=('83fd41a86df61a0e01c2a197b3670f8b7820e2d4e2814da01a296835d73efe42')
+sha256sums=('fed5475083265a2e0120a855963d3e14f0636bea4a28113ce7a55a1486e8619d')
+
+# https://addons.mozilla.org/firefox/downloads/file/3442618/user_agent_switcher-1.3.16-an+fx.xpi?src=search
 
 package() {
   cd "${srcdir}"
