@@ -1,12 +1,17 @@
 pkgbase = kosmorro
 	pkgdesc = A program that computes the ephemerides
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kosmorro.astronewbie.space
 	arch = any
 	license = AGPL3
-	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python>=3.7.0
+	depends = python<4.0.0
+	depends = python-skyfield>=1.14
+	depends = python-skyfield<2.0.0
+	depends = python-numpy>=1.17.0
+	depends = python-numpy<2.0.0
 	source = https://github.com/Deuchnord/kosmorro/archive/v0.1.1.tar.gz
 	sha256sums = c2ade380968d285faa79f663fbd4721f914c612137614478364a17f4b5083674
 
