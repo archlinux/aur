@@ -6,17 +6,17 @@ _debug=n
 
 # Compile from a specific commit?
 _commit=HEAD
-_branch=feature-bind
+_branch=master
 
 pkgname=rtorrent-pyro-git
-pkgver=20180605
+pkgver=20191003
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
 license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('libtorrent-pyro-git' 'ncurses' 'curl' 'xmlrpc-c')
-makedepends=('git')
+makedepends=('git' 'clang')
 optdepends=('ttf-dejavu: for utf8 glyphs')
 conflicts=('rtorrent' 'rtorrent-git' 'rtorrent-ps')
 provides=('rtorrent')
@@ -32,61 +32,40 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
     options=(!strip)
 }
 
-_url="https://raw.githubusercontent.com/pyroscope/rtorrent-ps/master/patches"
+_url='https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches'
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
-        "${_url}/command_pyroscope.cc"
-        "${_url}/ui_pyroscope.cc"
-        "${_url}/ui_pyroscope.h"
-        "${_url}/backport_0.9.6_algorithm_median.patch"
-        "${_url}/ps-event-view_all.patch"
-        "${_url}/ps-import.return_all.patch"
-        "${_url}/ps-info-pane-xb-sizes_all.patch"
-        "${_url}/ps-item-stats-human-sizes_all.patch"
-        "${_url}/ps-silent-catch_all.patch"
-        "${_url}/ps-ui_pyroscope_all.patch"
-        "${_url}/ps-view-filter-by_all.patch"
-        "${_url}/pyroscope.patch"
-        "${_url}/ui_pyroscope.patch"
+        "https://github.com/skydrome/rtorrent/commit/c3697d3a82085194643e58e8ee06855e4d45a6dc.patch"
+        "$_url/command_pyroscope.cc"
+        "$_url/ui_pyroscope.cc"
+        "$_url/ui_pyroscope.h"
         "rtorrent.rc.sample")
 
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'b49903d3fa25a66c72db69570dfe8b47'
-         '56701bca42cc9b309637bf3f918ede12'
-         'cc9bbf20acf855e551ca2f80cac91903'
-         'f1539d70c74e5c74d8a15d51675aa26c'
-         '2d34e8c86c1c6ed1354b55ca21819886'
-         'e3f367abe42d28168008f99a9bf0f1d6'
-         '7a88f8ab5d41242fdf1428de0e2ca182'
-         '26faff00b306b6ef276a7d9e6d964994'
-         'bd04a0699b80c8042e1cf63a7e0e4222'
-         '0a2bbaf74c7160ba33876dcc2f050f14'
+         '5d41e09f61e346a6c055e36c243f00b5' 
+         'd68073da455851d628b587b852b4b54a'
+         '5befaa2e705a550a6dcd7f397060df81'
+         '0e9791d796e2185279d7f109b064576b'
          '35e2c69152a3c2137c5958f9f27cb906')
 
 pkgver() {
-    cd "$srcdir/rtorrent"
+    cd rtorrent
     git log -1 --format="%cd" --date=short "$_commit" |tr -d -
 }
 
 prepare() {
-    cd "$srcdir/rtorrent"
-    #patch -Np1 -i "${startdir}/rtorrent.patch"
+    cd rtorrent
+    #patch -Np1 -i "$startdir/rtorrent.patch"
 
-    sed -i ../{command_pyroscope.cc,ui_pyroscope.cc} \
-        -e "s:tr1:std:" \
-        -e "s:print_download_info:print_download_info_full:"
     sed -i configure.ac \
-        -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\nAC_DEFINE(RT_HEX_VERSION, 0x000907, version checks):"
+        -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\nAC_DEFINE(RT_HEX_VERSION, 0x000908, version checks):"
     sed -i src/ui/download_list.cc \
-        -e "s:rTorrent \" VERSION:rTorrent-PS git~$(git rev-parse --short $_commit) \" VERSION:"
+        -e "s:rTorrent \" VERSION:rTorrent-PS g$(git rev-parse --short $_commit) \" VERSION:"
 
-    for i in ${srcdir}/*.patch; do
+    for i in $srcdir/*.patch; do
         msg "Patching $(basename $i)"
-        patch -uNlp1 -i "$i"
+        patch -uNp1 -i "$i"
     done
-    for i in ${srcdir}/*.{cc,h}; do
+    for i in $srcdir/*.{cc,h}; do
         ln -sf "$i" src
     done
 
@@ -94,10 +73,10 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/rtorrent"
-    #export CC=clang
-    #export CXX=clang++ ;export CXXFLAGS+=" -Wno-unknown-warning-option"
-    export CXXFLAGS+=" -fno-strict-aliasing -faligned-new -Wno-terminate -Wno-class-memaccess"
+    cd rtorrent
+    export CC=clang
+    export CXX=clang++
+    export CXXFLAGS+=" -Wno-exceptions"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
     ./configure $_debug \
@@ -107,15 +86,14 @@ build() {
 }
 
 check() {
-    cd "$srcdir/rtorrent"
-    make check || return 0
+    make -C rtorrent check ||true
 }
 
 package() {
-    cd "$srcdir/rtorrent"
+    cd rtorrent
     make DESTDIR="$pkgdir" install
 
-    install -Dm644 "$srcdir"/rtorrent.rc.sample "${pkgdir}/usr/share/doc/rtorrent/rtorrent.rc.sample"
-    install -Dm644 doc/faq.xml        "${pkgdir}/usr/share/doc/rtorrent/faq.xml"
-    install -Dm644 doc/old/rtorrent.1 "${pkgdir}/usr/share/man/man1/rtorrent.1"
+    install -Dm644 "$srcdir"/rtorrent.rc.sample "$pkgdir/usr/share/doc/rtorrent/rtorrent.rc.sample"
+    install -Dm644 doc/faq.xml        "$pkgdir/usr/share/doc/rtorrent/faq.xml"
+    install -Dm644 doc/old/rtorrent.1 "$pkgdir/usr/share/man/man1/rtorrent.1"
 }
