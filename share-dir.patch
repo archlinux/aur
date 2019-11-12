@@ -1,0 +1,55 @@
+diff --git a/es-app/src/main.cpp b/es-app/src/main.cpp
+index d109afd9..aa483cc5 100644
+--- a/es-app/src/main.cpp
++++ b/es-app/src/main.cpp
+@@ -23,6 +23,9 @@
+ #include <time.h>
+ #ifdef WIN32
+ #include <Windows.h>
++#elif defined(__linux__)
++#include <libgen.h>
++#include <unistd.h>
+ #endif
+ 
+ #include "resources/TextureData.h"
+@@ -108,7 +111,17 @@ void playVideo()
+ 
+ bool parseArgs(int argc, char* argv[])
+ {
++#if defined(__linux__)
++    char* result = new char[PATH_MAX];
++    ssize_t len = readlink("/proc/self/exe", result, PATH_MAX);
++    if (len != -1) {
++        result[len] = 0;
++        Utils::FileSystem::setExePath(dirname(result));
++    }
++    delete [] result;
++#else
+ 	Utils::FileSystem::setExePath(argv[0]);
++#endif
+ 
+ 	// We need to process --home before any call to Settings::getInstance(), because settings are loaded from homepath
+ 	for (int i = 1; i < argc; i++)
+diff --git a/es-core/src/resources/ResourceManager.cpp b/es-core/src/resources/ResourceManager.cpp
+index c18bcd14..3f66cfc4 100644
+--- a/es-core/src/resources/ResourceManager.cpp
++++ b/es-core/src/resources/ResourceManager.cpp
+@@ -37,6 +37,11 @@ std::string ResourceManager::getResourcePath(const std::string& path) const
+ 		if(Utils::FileSystem::exists(test))
+ 			return test;
+ 
++		// check in share
++		test = Utils::FileSystem::getParent(Utils::FileSystem::getExePath()) + "/share/emulationstation/resources/" + &path[2];
++		if(Utils::FileSystem::exists(test))
++			return test;
++
+ 		// check in cwd
+ 		test = Utils::FileSystem::getCWDPath() + "/resources/" + &path[2];
+ 		if(Utils::FileSystem::exists(test))
+@@ -167,4 +172,4 @@ void ResourceManager::removeReloadable(std::weak_ptr<IReloadable> reloadable)
+ 		else
+ 			iter = mReloadables.erase(iter);
+ 	}
+-}
+\ No newline at end of file
++}
