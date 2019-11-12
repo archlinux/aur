@@ -1,0 +1,46 @@
+diff --git a/proton b/proton
+index 22b5112..f0edf82 100755
+--- a/proton
++++ b/proton
+@@ -104,39 +104,15 @@ class Proton:
+         self.user_settings_file = self.path("user_settings.py")
+         self.wine_bin = self.bin_dir + "wine"
+         self.wineserver_bin = self.bin_dir + "wineserver"
+-        self.dist_lock = FileLock(self.path("dist.lock"), timeout=-1)
+ 
+     def path(self, d):
+         return self.base_dir + d
+ 
+     def extract_tarball(self):
+-        with self.dist_lock:
+-            if not os.path.exists(self.dist_dir) or \
+-                    not os.path.exists(self.path("dist/version")) or \
+-                    not filecmp.cmp(self.version_file, self.path("dist/version")):
+-                if os.path.exists(self.dist_dir):
+-                    shutil.rmtree(self.dist_dir)
+-                tar = None
+-                for sf in ["", ".xz", ".bz2", ".gz"]:
+-                    if os.path.exists(self.path("proton_dist.tar" + sf)):
+-                        tar = tarfile.open(self.path("proton_dist.tar" + sf), mode="r:*")
+-                        break
+-                if not tar:
+-                    log("No proton_dist tarball??")
+-                    sys.exit(1)
+-                tar.extractall(path=self.dist_dir)
+-                tar.close()
+-                try_copy(self.version_file, self.dist_dir)
++        return True
+ 
+     def make_default_prefix(self):
+-        with self.dist_lock:
+-            local_env = dict(g_session.env)
+-            if not os.path.isdir(self.default_pfx_dir):
+-                #make default prefix
+-                local_env["WINEPREFIX"] = self.default_pfx_dir
+-                local_env["WINEDEBUG"] = "-all"
+-                g_session.run_proc([self.wine_bin, "wineboot"], local_env)
+-                g_session.run_proc([self.wineserver_bin, "-w"], local_env)
++        return True
+ 
+ class CompatData:
+     def __init__(self, compatdata):
