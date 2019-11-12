@@ -1,9 +1,8 @@
-# Maintainer: Brainfuck
-# https://github.com/brainfucksec
+# Maintainer: Brainfuck <brainfucksec@protonmail.com>
 
-_gitname=archtorify
 pkgname=archtorify-git
-pkgver=1.19.3
+_pkgname=archtorify
+pkgver=v1.19.4.r2.gf1f3854
 pkgrel=1
 pkgdesc="Transparent proxy through Tor for Arch Linux"
 arch=('any')
@@ -11,17 +10,24 @@ url="https://github.com/brainfucksec/archtorify/"
 license=('GPL3')
 depends=('tor')
 makedepends=('git')
-source=("git+https://github.com/brainfucksec/${_gitname}/")
+source=("git+https://github.com/brainfucksec/${_pkgname}/")
 md5sums=('SKIP')
 
-package() {
-	cd "$_gitname"
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-	install -Dm644 README.md $pkgdir/usr/share/doc/$_gitname/README.md
+package() {
+	cd "$_pkgname"
+
+	install -Dm644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
 	install -Dm755 archtorify.sh $pkgdir/usr/bin/archtorify
-    mkdir -p $pkgdir/usr/share/$_gitname/data
-    mkdir -p $pkgdir/usr/share/$_gitname/backups
-    install -Dm644 data/* $pkgdir/usr/share/$_gitname/data
+
+    mkdir -p $pkgdir/usr/share/$_pkgname/data
+    mkdir -p $pkgdir/usr/share/$_pkgname/backups
+
+    install -Dm644 data/* $pkgdir/usr/share/$_pkgname/data
 }
 
 # vim:set ts=2 sw=2
