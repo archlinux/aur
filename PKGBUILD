@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=153
+_minor=154
 _srcname=linux-${_major}
 _clr=${_major}.152-75
 pkgbase=linux-clear-lts2017
@@ -128,7 +128,7 @@ prepare() {
 
         # Device Drivers
         scripts/config --module PATA_JMICRON \
-                       --enable-after SOUND SOUND_OSS_CORE \
+                       --enable SOUND_OSS_CORE \
                        --enable SND_OSSEMUL \
                        --module-after SND_OSSEMUL SND_MIXER_OSS \
                        --module-after SND_MIXER_OSS SND_PCM_OSS \
@@ -188,7 +188,7 @@ prepare() {
 
     ### Save configuration for later reuse
 
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
+        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
@@ -319,7 +319,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '9f2770d110e36ad7de90e1ff0760de4f52b4d2d376b59d6dbde5f2b79e2fdb54'
+            'de2b370132852a5372ab4a55deced74252843885ef0d2ae98f7e9b63af00fc67'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
