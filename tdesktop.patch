@@ -155,10 +155,10 @@ index cc1a767cf..1f2330cb5 100644
 +#endif // Q_OS_WIN | Q_OS_MAC
 Submodule Telegram/ThirdParty/libtgvoip contains modified content
 diff --git a/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp b/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp
-index 1d03579..fbdfa8a 100644
+index 1d03579..f48c18e 100644
 --- a/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp
 +++ b/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp
-@@ -14,11 +14,12 @@
+@@ -14,7 +14,7 @@
          'variables': {
            'tgvoip_src_loc': '.',
            'special_build_target%': '',
@@ -167,11 +167,6 @@ index 1d03579..fbdfa8a 100644
          },
          'include_dirs': [
            '<(tgvoip_src_loc)/webrtc_dsp',
-           '<(linux_path_opus_include)',
-+          '/usr/include/openssl',
-         ],
-         'direct_dependent_settings': {
-           'include_dirs': [
 Submodule Telegram/gyp/helpers contains modified content
 diff --git a/Telegram/gyp/helpers/PrecompiledHeader.cmake b/Telegram/gyp/helpers/PrecompiledHeader.cmake
 index 9508bd8..15952e5 100644
@@ -216,20 +211,18 @@ index 12b91b0..507a6b9 100644
        ],
        'cflags_c': [
 diff --git a/Telegram/gyp/helpers/modules/openssl.gypi b/Telegram/gyp/helpers/modules/openssl.gypi
-index 91f1a99..d01c463 100644
+index 91f1a99..03c4533 100644
 --- a/Telegram/gyp/helpers/modules/openssl.gypi
 +++ b/Telegram/gyp/helpers/modules/openssl.gypi
-@@ -56,10 +56,6 @@
-           '<(libs_loc)/openssl/include',
-         ],
+@@ -58,7 +58,7 @@
        }]],
--    }], [ 'build_linux', {
--      'include_dirs': [
+     }], [ 'build_linux', {
+       'include_dirs': [
 -        '/usr/local/desktop-app/openssl-1.1.1/include',
--      ],
++        '/usr/include/openssl',
+       ],
      }],
    ],
- }
 diff --git a/Telegram/gyp/helpers/modules/qt.gypi b/Telegram/gyp/helpers/modules/qt.gypi
 index e329211..5e67752 100644
 --- a/Telegram/gyp/helpers/modules/qt.gypi
