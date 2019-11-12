@@ -2,7 +2,7 @@
 pkgname=tallow
 pkgdesc="Block hosts that attempt to bruteforce SSH using the journald API"
 
-pkgver="18"
+pkgver="19"
 pkgrel=1
 
 arch=('x86_64')
