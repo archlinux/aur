@@ -2,9 +2,9 @@
 
 _pkgname=mailvelope
 pkgname=firefox-extension-${_pkgname}
-pkgver=3.2.0
+pkgver=4.2.0
 pkgrel=1
-_file=2927344
+_file=3444849
 pkgdesc="Secure webmail communication based on the OpenPGP standard."
 license=('GPL2')
 arch=('any')
@@ -13,7 +13,7 @@ depends=("firefox")
 source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname}-${pkgver}-fx.xpi")
 
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('136b43b730434f79dac620d1de5d3456414d83a57f39cad42c2eeae3eae3ea4c')
+sha256sums=('324c1127adaf5e614ceada5cf26e29af544a2264c8473d781d6bff6ff080102e')
 
 package() {
   cd "${srcdir}"
@@ -21,3 +21,5 @@ package() {
   _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
   install -Dm644 ${_pkgname}-${pkgver}${_plugin_ext}.xpi "${_extension_dest}.xpi"
 }
+
+# https://addons.mozilla.org/firefox/downloads/file/3444849/mailvelope-4.2.0-fx.xpi?src=dp-btn-primary
