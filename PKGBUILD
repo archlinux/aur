@@ -11,7 +11,7 @@ depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-boost' 'mi
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz")
-sha256sums=('ecf0c09283c0e5987be30e131b42022d7bcfef4fbddb03d4078e9cf635141838')
+sha256sums=('b6102dcd0099a3a23fe1bbf2d562e21d981e068b252381ad5db4392bfd871e47')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
