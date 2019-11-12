@@ -9,7 +9,7 @@ pkgdesc="a fairly launched privacy-centric meme coin with no premine and a finit
 license=('custom:Cryptonote')
 arch=('x86_64')
 url="http://wownero.org/"
-depends=('openssl' 'zeromq' 'libpgm' 'unbound' 'libsodium')
+depends=('openssl' 'libpgm' 'unbound' 'libsodium')
 makedepends=('git' 'cmake' 'boost')
 provides=('wownero-git')
 
