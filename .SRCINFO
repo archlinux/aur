@@ -9,7 +9,6 @@ pkgbase = wownero-git
 	makedepends = cmake
 	makedepends = boost
         depends = openssl
-        depends = zeromq
         depends = libpgm
         depends = unbound
         depends = libsodium
