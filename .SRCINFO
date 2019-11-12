@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-lts49-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.9 Kernel Modules)
-	pkgver = 1.1.8.207.gcb093208d
-	pkgrel = 1
+	pkgver = 1.1.8.421.g6bc14a626
+	pkgrel = 2
 	url = http://www.openss7.org
 	install = openss7-modules-lts49-git.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = openss7-modules-lts49-git
 	license = AGPL3
 	makedepends = git
 	makedepends = doxygen
-	makedepends = gcc-gcj
+	makedepends = gcc6-gcj
 	makedepends = gcc-libs
 	makedepends = ghostscript
 	makedepends = gjdoc
@@ -30,11 +30,10 @@ pkgbase = openss7-modules-lts49-git
 	makedepends = texlive-core
 	makedepends = transfig
 	makedepends = gawk
-	makedepends = java-environment
-	makedepends = lm_sensors
+	makedepends = classpath
 	makedepends = popt
 	depends = linux-lts49=4.9.198-1
-	provides = openss7-modules-lts49=1.1.8.207.gcb093208d
+	provides = openss7-modules-lts49=1.1.8.421.g6bc14a626
 	conflicts = openss7-modules-lts49
 	options = !emptydirs
 	options = !strip
