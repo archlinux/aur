@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ATLauncher
+GenericName=ATLauncher
+Comment=A Minecraft mod pack manager and launcher.
+Exec=atlauncher
+Icon=/usr/share/pixmaps/atlauncher.png
+Terminal=false
+Type=Application
+Categories=Game;
