@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.3.10 Kernel Configuration
+# Linux/x86 5.3.11 Kernel Configuration
 #
 
 #
@@ -432,6 +432,9 @@ CONFIG_X86_SMAP=y
 # CONFIG_X86_INTEL_UMIP is not set
 # CONFIG_X86_INTEL_MPX is not set
 # CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS is not set
+CONFIG_X86_INTEL_TSX_MODE_OFF=y
+# CONFIG_X86_INTEL_TSX_MODE_ON is not set
+# CONFIG_X86_INTEL_TSX_MODE_AUTO is not set
 CONFIG_EFI=y
 CONFIG_EFI_STUB=y
 CONFIG_EFI_MIXED=y
