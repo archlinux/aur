@@ -5,9 +5,9 @@
 pkgname=flightradar24
 _pkgname=fr24feed
 pkgver=1.0.24
-pkgrel=6
+pkgrel=7
 _pkgver=1.0.24-5
-_pkgverarm=1.0.24-6
+_pkgverarm=1.0.24-7
 pkgdesc='Feeder software for Flightradar24.com (fr24feed)'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://www.flightradar24.com/share-your-data'
@@ -29,8 +29,8 @@ sha256sums=('7c0d1a5508917851789477b035cd91eafb84f8706c3214babea7125f8a82a0d2'
             '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0')
 sha256sums_x86_64=('cc88150f753e734327bf35574f6de5b11d8f989ddb1186514a4ce02e6e61600b')
 sha256sums_i686=('68dc31cf7f085074d1c639fe8bf383dc614704a0c526d98a6ab52a32f1833f9d')
-sha256sums_armv6h=('09e0ef461ea592097817324ef2b33add6c37f9c6e03cdf47c5ea6cd3960e9280')
-sha256sums_armv7h=('09e0ef461ea592097817324ef2b33add6c37f9c6e03cdf47c5ea6cd3960e9280')
+sha256sums_armv6h=('5f83f65a0a87b464455ce42d508bd0ad61fb605786b5d0d6bd46d45f8747644e')
+sha256sums_armv7h=('5f83f65a0a87b464455ce42d508bd0ad61fb605786b5d0d6bd46d45f8747644e')
 
 package() {
   case $CARCH in
