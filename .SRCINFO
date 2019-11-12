@@ -1,7 +1,7 @@
 pkgbase = tahoe-lafs
 	pkgdesc = Secure, decentralized, and fault-tolerant filesystem.
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tahoe-lafs.org/trac/tahoe-lafs
 	arch = any
 	license = GPL
@@ -14,10 +14,10 @@ pkgbase = tahoe-lafs
 	depends = python2-characteristic>=14.3.0
 	depends = python2-service-identity>=14.0.0
 	depends = python2-cryptography
-	depends = pyutil>=1.9.4
+	depends = python2-pyutil>=1.9.4
 	depends = python2-simplejson>=3.1.3
 	depends = nevow>=0.12.0
-	depends = zbase32>=1.1.5
+	depends = python2-zbase32>=1.1.5
 	depends = zfec>=1.4.24
 	depends = pycryptopp>=0.6.0
 	depends = python2-cffi
