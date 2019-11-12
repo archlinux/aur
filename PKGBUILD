@@ -1,6 +1,6 @@
 # Maintainer: Aram Drevekenin <aram@poor.dev>
 pkgname=what
-pkgver=0.3.2
+pkgver=0.3.7
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
