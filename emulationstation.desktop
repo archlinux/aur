@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Emulation Station
+Categories=Game
+Comment=A flexible emulator front-end supporting keyboardless navigation and custom system themes.
+Exec=emulationstation
+Icon=emulationstation.png
+Terminal=false

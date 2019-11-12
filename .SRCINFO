@@ -1,7 +1,7 @@
 pkgbase = emulationstation-fcamod-git
 	pkgdesc = A graphical front-end for emulators with controller navigation, with fcamod
 	pkgver = r1685.bbcd68d6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabricecaruso/EmulationStation
 	arch = i686
 	arch = x86_64
@@ -16,23 +16,20 @@ pkgbase = emulationstation-fcamod-git
 	makedepends = mesa
 	makedepends = libsm
 	makedepends = rapidjson
-	depends = alsa-lib
-	depends = sdl2
+	makedepends = glu
 	depends = sdl2_mixer
-	depends = boost-libs
 	depends = freeimage
-	depends = ttf-dejavu
-	depends = glu
 	depends = vlc
-	depends = libcec
-	depends = libgl
+	depends = curl
 	provides = emulationstation
 	conflicts = emulationstation
 	conflicts = emulationstation-git
 	source = emulationstation-fcamod-git::git+https://github.com/fabricecaruso/EmulationStation.git
 	source = share-dir.patch
+	source = emulationstation.desktop
 	sha512sums = SKIP
 	sha512sums = 72dcac3938c62ecda365bb50088658828d3876aa01d6a9ad21cb1b05da41f7defdee856ff353ab7b37d17a7f0b1e56d862e0da2da2b109e0dde3f8656a7848be
+	sha512sums = 00ddb6f2175290bf2cdb1fdee371c13fe67776b5222c9d79d3c1db1755d08d4cdae4f344d8131f97ef534d7e76dd2dc768f0ff49a41d0a8ee88fe44d4040e485
 
 pkgname = emulationstation-fcamod-git
 
