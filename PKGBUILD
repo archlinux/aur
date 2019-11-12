@@ -3,7 +3,7 @@
 # Upsteeam: https://github.com/gcla/termshark
 
 pkgname=('termshark-git')
-pkgver=1.0.0.15.g1b7264f
+pkgver=2.0.1.6.ge1630e7
 pkgrel=1
 pkgdesc="A terminal UI for tshark, inspired by Wireshark"
 arch=('i686' 'x86_64')

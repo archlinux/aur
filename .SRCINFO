@@ -1,6 +1,6 @@
 pkgbase = termshark-git
 	pkgdesc = A terminal UI for tshark, inspired by Wireshark
-	pkgver = 1.0.0.15.g1b7264f
+	pkgver = 2.0.1.6.ge1630e7
 	pkgrel = 1
 	url = https://github.com/gcla/termshark
 	arch = i686
