@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=fatcat
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc=" FAT filesystems explore, extract, repair, and forensic tool"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/Gregwar/fatcat"
 license=('BSD')
 depends=()
 makedepends=('cmake')
-source=("https://github.com/Gregwar/fatcat/archive/${pkgver}.tar.gz")
-sha256sums=('d44f6bb80d20ed50095ace9e71df8da98037db9f22cda76bdd9724d37df69130')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/Gregwar/fatcat/archive/v${pkgver}.tar.gz")
+sha256sums=('303efe2aa73cbfe6fbc5d8af346d0f2c70b3f996fc891e8859213a58b95ad88c')
 
 build() {
   cd ${pkgname}-${pkgver}
