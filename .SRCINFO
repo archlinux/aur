@@ -1,0 +1,14 @@
+pkgbase = python-bitstruct
+	pkgdesc = This module performs conversions between Python values and C bit field structs represented as Python byte strings
+	pkgver = 8.8.1
+	pkgrel = 1
+	url = https://github.com/eerimoq/bitstruct
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/51/fc/0f4a732f32ee60449832d024dd2f5f3ecd77e4791fb732b2086adf24f8a6/bitstruct-8.8.1.tar.gz
+	md5sums = 274b53fffe7e1adfdcecf1c4b688a984
+
+pkgname = python-bitstruct
+
