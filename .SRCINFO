@@ -1,12 +1,13 @@
 pkgbase = superbeam
 	pkgdesc = The easiest and fastest way to share files with Android
 	pkgver = 5.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://superbe.am/
 	arch = any
 	license = custom
 	makedepends = gendesk
 	depends = java-environment
+	depends = java8-openjfx
 	depends = bash
 	source = http://superbe.am/download/5294
 	md5sums = ab48dd63bb2c0a0b7a7e4d06bb2dfec5
