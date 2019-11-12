@@ -2,7 +2,7 @@
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2-module-director
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
@@ -11,7 +11,7 @@ depends=('icingaweb2' 'icingaweb2-module-incubator' 'icingaweb2-module-ipl' 'ici
 url="http://www.icinga.org"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz"
   "$pkgname.sysusers")
-sha256sums=("448613b30dd440b66a0163c5fe9343b6dbc65fc9715ae83324aa3087cbfc23ca"
+sha256sums=("4b87f360d326e5c8d55a8567f78fed4b969d1f7fc6b2b3023148cb77ecb38764"
   "311043f4f4da68e5fcf8ad8593475d8287fe2f681e52940b33d41bc681d74cec")
 
 package() {
