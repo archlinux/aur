@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-lts414-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.14 Kernel Modules)
-	pkgver = 1.1.8.220.g5d057658a
-	pkgrel = 1
+	pkgver = 1.1.8.421.g6bc14a626
+	pkgrel = 2
 	url = http://www.openss7.org
 	install = openss7-modules-lts414-git.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = openss7-modules-lts414-git
 	license = AGPL3
 	makedepends = git
 	makedepends = doxygen
-	makedepends = gcc-gcj
+	makedepends = gcc6-gcj
 	makedepends = gcc-libs
 	makedepends = ghostscript
 	makedepends = gjdoc
@@ -30,11 +30,10 @@ pkgbase = openss7-modules-lts414-git
 	makedepends = texlive-core
 	makedepends = transfig
 	makedepends = gawk
-	makedepends = java-environment
-	makedepends = lm_sensors
+	makedepends = classpath
 	makedepends = popt
-	depends = linux-lts414=4.14.151-1
-	provides = openss7-modules-lts414=1.1.8.220.g5d057658a
+	depends = linux-lts414=4.14.152-1
+	provides = openss7-modules-lts414=1.1.8.421.g6bc14a626
 	conflicts = openss7-modules-lts414
 	options = !emptydirs
 	options = !strip
