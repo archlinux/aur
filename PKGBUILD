@@ -1,57 +1,56 @@
-# Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
-# Contributor: Maximilian Berger <snowdragon92@gmail.com>
+# Maintainer: Alan Jenkins <alan.james.jenkins at gmail dot com>
+# Maintainer: Ryan Dowling <ryan at ryandowling dot me>
+# Contributor: Maximilian Berger <snowdragon92 at gmail dot com>
+# Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 
 pkgname=atlauncher
-pkgrel=2
-pkgver=3.2.3.9
-pkgdesc="ATLauncher is a Launcher for Minecraft which integrates multiple different ModPacks to allow you to download and install ModPacks easily and quickly. Installs latest released jar."
+_upstreamname=ATLauncher
+pkgrel=3
+pkgver=3.3.1.4
+pkgdesc="A Launcher for Minecraft which to allow you to download and install ModPacks quickly and easily."
 arch=('any')
-url="http://www.atlauncher.com/"
-license=('CCPL')
-depends=('java-runtime' 'openal')
-makedepends=('unzip')
+url="https://github.com/ATLauncher/ATLauncher"
+license=('GPL3')
+depends=('java-runtime=8' 'openal')
+makedepends=('java-environment=8' 'gradle')
 provides=('atlauncher')
 
-source=("http://www.atlauncher.com/download/jar"
+source=("$_upstreamname-$pkgver.tar.gz::https://github.com/ATLauncher/ATLauncher/archive/$pkgver.tar.gz"
         "atlauncher"
         "atlauncher.desktop"
         "atlauncher.png"
-        )
-noextract=('jar')
+       )
 
+sha256sums=('f94c80bbb5f0a1f8278604b8cde3f01fe9020bc27b538c0bd3b9ddf0a2be264a'
+            '8d74eebf99c96ce3719147dd5d00b66c72b5336371d0dc07cd1c96f7d45688fe'
+            '5f45436c96ab9830555d0f987a96fc0b1a9766d450b958aba282820ffca6cc84'
+            '369c7aa4439762878fd9970c75d1312cf0cd97119c8320b732addef4a621482d')
 
-md5sums=('SKIP'
-         '2aa7755e8bf88ba7ad7f7303d29b439f'
-         'bb6c25c948b8d2341a27803c123df453'
-         'e116c617332de8b19bf34f130c7eec2e')
+build() {
+    cd "$_upstreamname-$pkgver"
 
-
-pkgver() {
-    cd "$srcdir"
-    mkdir temp
-    unzip -d temp jar > /dev/null
-    grep -i 'Implementation-Version' temp/META-INF/MANIFEST.MF | cut -d' ' -f2 | grep -oE '[0-9.]*'
-    rm -R temp
+    gradle build
 }
 
+
 package() {
-    cd "$srcdir"
+  cd "$srcdir"
 
-    # create folder for the main jar executable
-    mkdir -p "${pkgdir}/usr/share/java/atlauncher/"
-    chmod -R 755 "${pkgdir}/usr/share/java/atlauncher/"
+  # create folder for the main jar executable
+  mkdir -p "$pkgdir/usr/share/java/atlauncher/"
+  chmod -R 755 "$pkgdir/usr/share/java/atlauncher/"
 
-    # create folder for other files
-    mkdir -p "${pkgdir}/usr/share/atlauncher/Downloads"
-    chmod 777 "${pkgdir}/usr/share/atlauncher/Downloads"
+  # create folder for other files
+  mkdir -p "$pkgdir/usr/share/atlauncher/Downloads"
+  chmod 777 "$pkgdir/usr/share/atlauncher/Downloads"
 
-    # install shell wrapper script
-    install -D -m755 "${srcdir}/atlauncher"         "${pkgdir}/usr/bin/atlauncher"
+  # install shell wrapper script
+  install -D -m755 "$srcdir/atlauncher" "$pkgdir/usr/bin/atlauncher"
 
-    # install jar
-    install -D -m644 "${srcdir}/jar"     "${pkgdir}/usr/share/java/atlauncher/ATLauncher.jar"
+  # install jar
+  install -D -m644 "$srcdir/$_upstreamname-$pkgver/dist/$_upstreamname-$pkgver.jar" "$pkgdir/usr/share/java/atlauncher/ATLauncher.jar"
 
-    # install desktop launcher with icon
-    install -D -m644 "${srcdir}/atlauncher.desktop" "${pkgdir}/usr/share/applications/atlauncher.desktop"
-    install -D -m644 "${srcdir}/atlauncher.png"     "${pkgdir}/usr/share/pixmaps/atlauncher.png"
+  # install desktop launcher with icon
+  install -D -m644 "$srcdir/atlauncher.desktop" "$pkgdir/usr/share/applications/atlauncher.desktop"
+  install -D -m644 "$srcdir/atlauncher.png" "$pkgdir/usr/share/pixmaps/atlauncher.png"
 }
