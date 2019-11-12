@@ -1,6 +1,6 @@
 # Maintainer: surefire@cryptomile.net
 pkgname=acme-client-portable
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h')
 license=('BSD')
