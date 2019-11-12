@@ -1,13 +1,13 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity-compiler-git
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The triNNity DNN compiler"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity-compiler"
 license=('BSD')
 groups=()
-depends=()
+depends=('python' 'python-numpy' 'python-protobuf')
 makedepends=('python')
 checkdepends=()
 optdepends=()
