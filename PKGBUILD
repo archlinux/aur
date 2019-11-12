@@ -4,14 +4,14 @@
 
 pkgname='frr'
 pkgver='7.2'
-pkgrel='1'
-pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, NHRP and EIGRP.'
+pkgrel='2'
+pkgdesc='FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.'
 arch=('any')
 url="https://frrouting.org/"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp'
-	 'rtrlib' 'libyang' 'libunwind')
-makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'c-ares' 'perl-xml-libxml' 'python-sphinx')
+	 'rtrlib' 'libyang' 'libunwind' 'c-ares')
+makedepends=('patch' 'gcc' 'net-snmp' 'bison' 'perl-xml-libxml' 'python-sphinx')
 checkdepends=('python-pytest')
 optdepends=('rsyslog: syslog support')
 conflicts=('quagga' 'babeld' 'quagga_cumulus')
@@ -23,16 +23,19 @@ source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.ta
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}_${pkgver}_Archlinux.patch"
-	"frr-init-functions")
+	"frr-init-functions"
+	"5213.patch")
 sha256sums=('11dff4a4b2f705bf0a4fd2ca2f186b7f91a104d3a2a17c79bb4009d69b38c924'
             '9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e'
             '6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89'
             'fbbd0b6d40dffbdb850ecabf91ab6bd22da07aa2c7c6406af5e3816988905e02'
-            'e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a')
+            'e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a'
+            'ff30c1de8008aa02a1bae619644837f835372bca2c2244ef50e8963f8341a4d7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   patch -p1 -i "${srcdir}/${pkgname}_${pkgver}_Archlinux.patch"
+  patch -p1 -i "${srcdir}/5213.patch"
 
   autoreconf -fvi
   ./configure \
