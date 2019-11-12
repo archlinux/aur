@@ -1,3 +1,4 @@
+# Maintainer: Arne Ludwig < arne.ludwig at posteo dot de >
 # Maintainer: Szymon Scholz < szymonscholz at gmail dot com >
 # Contributor: Jo De Boeck <deboeck.jo@gmail.com>
 # Original Maintainer: Julien Humbert <julroy67@gmail.com>
