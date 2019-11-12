@@ -20,14 +20,19 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.3.8-arch1
+_srcver=5.3.10-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
+pkgdesc='Linux'
 _bmqversion=5.3-r2
 arch=(x86_64)
 url="https://cchalpha.blogspot.co.uk/"
 license=(GPL2)
-makedepends=(kmod inetutils bc libelf)
+makedepends=(
+  xmlto kmod inetutils bc libelf
+  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
+)
 options=('!strip')
 _srcname=linux-$_srcver
 _bmq_patch="bmq_v${_bmqversion}.patch"
@@ -35,9 +40,6 @@ _gcc_more_v='20190822'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
   "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.3/${_bmq_patch}"
   "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
 )
@@ -46,11 +48,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ec2092391717d165faeab20d21789aab2606ddcc1b85cb80003481aa4c9ca6a9'
-            'b7daf52a06cec968741ef36236d567ead53aecb5b21920285ed535a4a55114e1'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+sha256sums=('3265a689bb38b15245e2721f9f63335bd5ea3975567696a4f2f5b4684fef4036'
+            'd5ae578427b119197eff83c41d471b5c58d9b78cdad642554f8e62cd21ea56ac'
             '131ce6048e26771f5b017ceb4cc7106cd646c28ae8ce6d46c0fca92bed5f82ae'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
@@ -58,7 +57,7 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
@@ -101,8 +100,8 @@ prepare() {
   # do not run `make olddefconfig` as it sets default options
   yes "" | make config >/dev/null
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -116,77 +115,45 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the PDS-mq CPU scheduler"
-  depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  pkgdesc="The $pkgdesc kernel and modules with the PDS-mq CPU scheduler"
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   provides=("linux-gc=${pkgver}")
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
-
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   cd $_srcname
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  #install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  #
-  # hard-coded path in case user defined CC=xxx for build which causes errors
-  # see this FS https://bugs.archlinux.org/task/64315
-  install -Dm644 arch/x86/boot/bzImage "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
-
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|$pkgbase|g
-    s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=('linux-gc')
   provides=("linux-gc-headers=${pkgver}" "linux-headers=${pkgver}")
 
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
   cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* ../version vmlinux
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -250,7 +217,7 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
