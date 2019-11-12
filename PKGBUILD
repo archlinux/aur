@@ -4,7 +4,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=wine-mono-bin
-pkgver=4.9.0
+pkgver=4.9.4
 pkgrel=1
 pkgdesc="Wine's built-in replacement for Microsoft's .NET Framework"
 arch=('any')
@@ -13,8 +13,9 @@ license=('GPL' 'LGPL2.1' 'MPL')
 depends=('wine')
 provides=('wine-mono=$pkgver')
 conflicts=('wine-mono=$pkgver')
+options=('!strip')
 source=("https://github.com/madewokherd/wine-mono/releases/download/${pkgname/-bin/}-$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('12bc6e3ca6d5ec7592ce7613b6c3ee1f6e415954f9866757d8c2fa7fa1b5b4488f1a58c368d482c47a4baad5c07431802a85e7d9df63029ef54d034669ccb01a')
+sha512sums=('52dfacacb65bbf1fa977e56ff62145d2919405c6d9bcf86091dd0a4e98cb30269ba625d01483abd3770d4daf9d0b27a58e7d27c64f04dd0d95a509c04b1a18d1')
 
 package() {
   install -Dm 755 -d "$pkgdir"/usr/share/wine/mono/
