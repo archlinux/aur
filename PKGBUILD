@@ -1,14 +1,14 @@
 # Maintainer: Franek Madej <franek.madej@gmail.com>
 # Completion changes and optdepends by Artemis
 pkgname=yadm-git
-pkgver=1.12.0.r0.g09a018e
+pkgver=2.0.1.r0.g5aa1a7b
 pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
 license=('GPL3')
 makedepends=('git')
-optdepends=('gpg: encrypt/decrypt sensitive files'
+optdepends=('gnupg: encrypt/decrypt sensitive files'
             'python-envtpl-git: use templates with variables')
 provides=('yadm')
 conflicts=('yadm')
