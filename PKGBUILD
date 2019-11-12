@@ -2,7 +2,7 @@
 
 pkgname='starship-bin'
 pkgdesc='The cross-shell prompt for astronauts'
-pkgver='0.26.2'
+pkgver='0.26.3'
 pkgrel='1'
 arch=('x86_64')
 url='https://starship.rs/'
@@ -15,7 +15,7 @@ checkdepends=()
 provides=('starship')
 conflicts=('starship')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/starship/starship/releases/download/v${pkgver}/starship-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('9633c22248fcbe483c076857aaca73335112392bd28f55e6de6e607094709520')
+sha256sums=('fe578c1f7e377e401230070d427641f0666cb85c43b9d4dfb2c7f043adcc531d')
 PKGEXT='.pkg.tar.gz'
 
 package() {
