@@ -12,7 +12,7 @@ pkgbase = nss-hg
 	makedepends = python
 	makedepends = ninja
 	makedepends = mercurial
-	depends = nspr>=4.15
+	depends = nspr>=4.24
 	depends = sqlite
 	depends = zlib
 	depends = sh

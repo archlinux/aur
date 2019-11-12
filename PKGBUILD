@@ -10,7 +10,7 @@ pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 license=('MPL' 'GPL')
-_nsprver=4.15
+_nsprver=4.24
 depends=("nspr>=${_nsprver}" sqlite zlib sh p11-kit)
 makedepends=(gyp perl python ninja mercurial)
 options=('!strip' '!makeflags' 'staticlibs')
