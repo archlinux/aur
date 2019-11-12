@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=python2-phonenumbers
-pkgver=8.10.13
+pkgver=8.10.22
 pkgrel=1
 pkgdesc="Python version of Google's common library for parsing, formatting, storing and validating international phone numbers"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python2')
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/daviddrysdale/python-phonenumbers/archive/v$pkgver.tar.gz")
-sha512sums=('ca5dd22f8184b44d2d373dbfe090b497147e4f0855e6ba597a878b7147b8d58290b69a7f92bba6782530469338ea867b0538014405945f13c74496dc1fae2ef5')
+sha512sums=('b5434f895b590285d2347c14bdd4b46ac1fb4c9867419846b80cbc2e7ab9d23e2cf04ba8178f493ba2cf01514e23eac64160ffb6b427459e929112eda49e93d4')
 
 build() {
   cd python-phonenumbers-$pkgver
