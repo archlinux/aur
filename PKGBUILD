@@ -4,8 +4,8 @@
 # Contributor: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=firefox-extension-greasemonkey
-_file=2334146
-pkgver=4.8
+_file=3024171
+pkgver=4.9
 pkgrel=1
 pkgdesc="Customize the way a web page displays or behaves, by using small bits of JavaScript."
 arch=('any')
@@ -14,7 +14,7 @@ license=('MPL')
 makedepends=('jq')
 depends=('firefox>=52.0')
 source=("https://addons.mozilla.org/firefox/downloads/file/$_file/greasemonkey-${pkgver}-an+fx.xpi")
-sha256sums=('243dd35537975ae4566710f3bac165dcf413642dbc735e9f92501fca30ff824e')
+sha256sums=('a3c94257caa11c7ef4c9a61b2d898f82212a017aa3ab07e79bce07f98a25d4f1')
 
 package() {
   cd ${srcdir}
@@ -26,4 +26,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-

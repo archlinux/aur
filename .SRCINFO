@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-greasemonkey
 	pkgdesc = Customize the way a web page displays or behaves, by using small bits of JavaScript.
-	pkgver = 4.8
+	pkgver = 4.9
 	pkgrel = 1
 	url = http://www.greasespot.net/
 	arch = any
 	license = MPL
 	makedepends = jq
 	depends = firefox>=52.0
-	source = https://addons.mozilla.org/firefox/downloads/file/2334146/greasemonkey-4.8-an+fx.xpi
-	sha256sums = 243dd35537975ae4566710f3bac165dcf413642dbc735e9f92501fca30ff824e
+	source = https://addons.mozilla.org/firefox/downloads/file/3024171/greasemonkey-4.9-an+fx.xpi
+	sha256sums = a3c94257caa11c7ef4c9a61b2d898f82212a017aa3ab07e79bce07f98a25d4f1
 
 pkgname = firefox-extension-greasemonkey
 
