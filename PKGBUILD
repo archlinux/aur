@@ -1,8 +1,8 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sherlock-git
-pkgver=20191002.d8290d5
-pkgrel=3
+pkgver=20191111.288d4fb
+pkgrel=1
 pkgdesc="Find usernames across social networks"
 arch=('any')
 url="https://github.com/sherlock-project/sherlock"
@@ -25,7 +25,7 @@ source=(
   "sherlock.sh"
 )
 sha256sums=('SKIP'
-  '45bb5034d63681f3e0f0d12f868465024a473b12b2751b00e968fcb7a935497c')
+            '45bb5034d63681f3e0f0d12f868465024a473b12b2751b00e968fcb7a935497c')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
