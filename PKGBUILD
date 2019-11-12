@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.3
-_minor=10
+_minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -337,7 +337,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('ad01f687b70e1ae670848e484b308907a29b32731832e2fc155c64e56daa9362cae3f1770936056edbebe40c6224303ba32da4af3980e22a3ddc3599a3117139'
+sha512sums=('24e167531014b637793aab5ce47e6e747f619e2a0e598c0db348ea9069fc3fd86c81d4ee63ae085d42aba260d702f5b797e550c7e22c3d5df4fe8d9c32f5b3d5'
             'SKIP'
             'b6eb2c5ed7ea682c80494b6b62c2972155048d2d4b1f012a90866a283e14d32b324aa172ff69058e2f6d06d13226c8b36d16dea87d45e99bdaa9496cad9ff733'
             '36fd71b056f99c650e276c380c08f26ae8ef08c7c603868a95dfd4cb9ab3666d7e198c6b59e503c515fe32a16a1d6dd4a2f24d709a0dffc077a2a7fe275cc251'
