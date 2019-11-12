@@ -3,7 +3,7 @@
 # Contributpr: felix.s <felix.von.s@posteo.de>
 
 pkgname=weborf
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="Minimal HTTP server to share your files"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('findutils')
 optdepends=('qweborf: graphical user interface')
 conflicts=('weborf-git')
 source=(https://github.com/ltworf/weborf/releases/download/$pkgver/weborf_$pkgver.orig.tar.gz)
-sha256sums=('c77388253f7513fcabd74900cd8cd28623478c6ced6cd3b06994c4eb3f60e9a3')
+sha256sums=('a0d1c181fd344268600c76d8cfd773b5f5cd9662a401bb3a8b4b038de19426d6')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -27,6 +27,7 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	make DESTDIR="$pkgdir" install
+	cp -r "examples" "$pkgdir/usr/share/doc/$pkgname/"
 
 	cd "$pkgdir"
 	find lib -type f -exec install -D {} usr/{} \;
