@@ -4,11 +4,11 @@
 # Contributor: rubenvb < vanboxem dot ruben at gmail dot com >
 # Contributor: rkitover < rkitover at gmail dot com >
 
-_pkgver=6.0.0
+_pkgver=7.0.0
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-winpthreads-git
-pkgver=6.0.0.20190901
+pkgver=7.0.0.20191109
 pkgrel=1
 pkgdesc="MinGW-w64 winpthreads library (git version)"
 arch=('any')
@@ -25,7 +25,7 @@ conflicts=('mingw-w64-winpthreads'
            'mingw-w64-headers-bootstrap')
 replaces=('mingw-w64-headers-bootstrap')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64#commit=0a1d495478d8ed1a94fc77b9dbb428b7e0372588")
+source=("git+https://git.code.sf.net/p/mingw-w64/mingw-w64")
 sha256sums=('SKIP')
 
 pkgver() {
