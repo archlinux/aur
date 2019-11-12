@@ -6,6 +6,7 @@ pkgbase = appimagelauncher
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	makedepends = wget
 	makedepends = vim
 	makedepends = qt5-tools
@@ -21,9 +22,9 @@ pkgbase = appimagelauncher
 	depends = qt5-base
 	depends = shared-mime-info
 	conflicts = appimagelauncher-git
-	source = https://github.com/TheAssassin/AppImageLauncher/archive/v2.0.3.tar.gz
+	source = git+https://github.com/TheAssassin/AppImageLauncher.git#tag=v2.0.3
 	source = appimage-binfmt-remove.hook
-	sha256sums = d04b9b909c8594f1f97738b67633f905019e245fd60f20785d2874c0f4a6718a
+	sha256sums = SKIP
 	sha256sums = 72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81
 
 pkgname = appimagelauncher
