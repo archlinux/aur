@@ -1,12 +1,13 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
+_kvv="$(pacman -Si linux-lts44|awk '/^Version/{print$3}')" || \
 _kvv="$(pacman -Qi linux-lts44|awk '/^Version/{print$3}')"
 _kvv="${_kvv:-4.4.199-1}"
 _kvr="${_kvv:+${_kvv}-lts44}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts44-git
 _pkgname=openss7-modules-lts44
-pkgver=1.1.8.354.g188418a7e
-pkgrel=1
+pkgver=1.1.8.421.g6bc14a626
+pkgrel=2
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 4.4} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -17,7 +18,7 @@ makedepends=('git' 'doxygen' 'gcc6-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html'
              'linux-lts44' 'linux-lts44-headers'
              'lsof' 'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
-	     'texlive-core' 'transfig' 'gawk' 'java-environment' 'classpath'
+	     'texlive-core' 'transfig' 'gawk' 'classpath'
              'popt')
 conflicts=($_pkgname)
 provides=("$_pkgname=$pkgver")
