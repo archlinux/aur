@@ -1,0 +1,6 @@
+[Unit]
+Description=Update whitelist of pi-hole
+
+[Service]
+Type=oneshot
+ExecStart=/opt/pi-hole-whitelist/whitelist.sh

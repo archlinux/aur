@@ -1,0 +1,7 @@
+[Unit]
+Description=Weekly update whitelist of pi-hole
+
+[Timer]
+OnCalendar=weekly
+AccuracySec=3h
+Persistent=true
