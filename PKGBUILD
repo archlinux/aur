@@ -5,7 +5,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -26,6 +26,7 @@ makedepends=(
         range-v3
         python
         libappindicator-gtk3
+        dos2unix
         )
 optdepends=(
         'libnotify: desktop notifications'
@@ -118,7 +119,7 @@ prepare() {
 
         git submodule update
 
-        # dos2unix "$srcdir/kdesktop/.appveyor/install.bat"
+        dos2unix "$srcdir/kdesktop/.appveyor/install.bat"
 
         patch -Np1 -i "$srcdir/no-gtk2.patch"
         # patch -Np1 -i "$srcdir/Revert-Change-some-private-header-includes.patch"
@@ -127,7 +128,7 @@ prepare() {
         # patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
         patch -Np1 -i "$srcdir/tdesktop.patch"
 
-        # unix2dos "$srcdir/kdesktop/.appveyor/install.bat"
+        unix2dos "$srcdir/kdesktop/.appveyor/install.bat"
         # disable static-qt for rlottie
         # sed "/RLOTTIE_WITH_STATIC_QT/d" -i "$srcdir/kdesktop/Telegram/lib_rlottie/lib_rlottie.gyp"
 
