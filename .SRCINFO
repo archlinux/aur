@@ -17,7 +17,7 @@ pkgbase = pyinstaller
 	source = https://github.com/pyinstaller/pyinstaller/releases/download/v3.5/PyInstaller-3.5.tar.gz
 	source = https://github.com/pyinstaller/pyinstaller/releases/download/v3.5/PyInstaller-3.5.tar.gz.asc
 	validpgpkeys = D4AD8B9C167B757C4F08E8777B752811BF773B65
-	sha256sums = a5a6e04a66abfcf8761e89a2ebad937919c6be33a7b8963e1a961b55cb35986b
+	sha256sums = ee7504022d1332a3324250faf2135ea56ac71fdb6309cff8cd235de26b1d0a96
 	sha256sums = SKIP
 
 pkgname = pyinstaller
