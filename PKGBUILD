@@ -1,6 +1,6 @@
 pkgname=mtg
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64')
 url='https://github.com/9seconds/mtg'
@@ -10,7 +10,7 @@ makedepends=('go')
 install='mtg.install'
 
 source=(
-    'git+https://github.com/9seconds/mtg#commit=596fafe30ddb05dfe5cfcaba8b66b1055462ced4' # 1.0 isn't tagged (yet?)
+    'git+https://github.com/9seconds/mtg#commit=8e0436e89a04b9cfecf4678adbc6d79988214ec4' # 1.0 isn't tagged (yet?)
     'mtg@.service'
     'example.conf'
 )
