@@ -1,38 +1,62 @@
-# Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
+# Maintainer: Butui Hu <hot123tea123@gmal.com>
+# Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=imagej2
-_ver=2.0.0-rc-71
-pkgver=${_ver//-/}
+pkgver=2.0.0_rc_71
+_pkgver=${pkgver//_/-}
 pkgrel=1
-pkgdesc="Image manipulation software for scientists"
-arch=('any')
-url="https://imagej.net"
-license=('Public Domain')
-depends=('java-runtime>=8')
-makedepends=('maven' 'java-environment=8')
-source=("https://github.com/imagej/imagej/archive/imagej-$_ver.tar.gz"
-        "imagej2.desktop")
-md5sums=('f2c7dec97f4ae49dd8b84a854cad2d13'
-         'db18ac6d6ed799e04bc23b635b35e673')
+pkgdesc='Open scientific N-dimensional image processing'
+arch=('x86_64')
+url='https://imagej.net'
+license=('BSD')
+depends=(
+  'glibc'
+  'java-runtime=8'
+)
+makedepends=(
+  'gendesk'
+  'java-environment=8'
+  'maven'
+)
+source=("https://github.com/imagej/imagej/archive/imagej-${_pkgver}.tar.gz")
+sha256sums=('ef93850c9d1c5a8247295bc92e1c742579c5616305e7cbc661f24da2643b5169')
+
+prepare() {
+  echo 'Creating desktop file'
+  gendesk -f -n --pkgname ${pkgname} \
+    --pkgdesc "${pkgdesc}" \
+    --categories 'Graphics;Science;Biology;' \
+    --icon "${pkgname}" \
+    --exec "${pkgname} %f"
+}
 
 build() {
-	cd imagej-imagej-$_ver
+  cd imagej-imagej-${_pkgver}
 
-	# only building with Java 8 is supported
-	# https://github.com/imagej/imagej/issues/197#issuecomment-403531162
-	export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
-	mvn -Papp -Ppopulate-app
+  # only building with Java 8 is supported
+  # https://github.com/imagej/imagej/issues/197#issuecomment-403531162
+  export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+  mvn -Papp -Ppopulate-app
 }
 
 package() {
-	mkdir -p $pkgdir/usr/share
-	cp -r $srcdir/imagej-imagej-$_ver/ImageJ.app $pkgdir/usr/share/imagej2
-	rm -r $pkgdir/usr/share/imagej2/{Contents,ImageJ-win{32,64}.exe}
+  install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/pixmaps"
+  cp -r "${srcdir}/imagej-imagej-${_pkgver}/ImageJ.app" "${pkgdir}/opt/${pkgname}"
+  rm -rfv "${pkgdir}/opt/${pkgname}/Contents" "${pkgdir}/opt/${pkgname}/*.exe"
 
-	mkdir -p $pkgdir/usr/bin
-	ln -s /usr/share/imagej2/ImageJ-linux64 $pkgdir/usr/bin/imagej2
+  cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/bin/bash
+if [ -d /usr/lib/jvm/java-8-jdk/bin ]; then
+  PATH=/usr/lib/jvm/java-8-jdk/bin:${PATH} /opt/${pkgname}/ImageJ-linux64
+elif [ -d /usr/lib/jvm/java-8-openjdk/bin ]; then
+  PATH=/usr/lib/jvm/java-8-openjdk/bin:${PATH} /opt/${pkgname}/ImageJ-linux64
+else
+  echo "Error, no compatiable java found! ${pkgname} depends on java 8"
+fi
+EOF
 
-	cd $srcdir
-	install -Dm644 imagej2.desktop $pkgdir/usr/share/applications/imagej2.desktop
-	install -Dm644 imagej-imagej-$_ver/logo/imagej.png $pkgdir/usr/share/icons/hicolor/512x512/apps/imagej2.png
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "imagej-imagej-${_pkgver}/logo/imagej.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/imagej-imagej-${_pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
