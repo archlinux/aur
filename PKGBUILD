@@ -11,20 +11,88 @@ url="https://github.com/ValveSoftware/Proton"
 license=('GPL')
 groups=()
 depends=(
-    python
-    steam-native-runtime
-    sdl2
-    wine_gecko=$_geckover
-    wine-mono-bin=$_monover
-    vkd3d       lib32-vkd3d
-    dxvk
-    d9vk
+  fontconfig      lib32-fontconfig
+  lcms2           lib32-lcms2
+  libxml2         lib32-libxml2
+  libxcursor      lib32-libxcursor
+  libxrandr       lib32-libxrandr
+  libxdamage      lib32-libxdamage
+  libxi           lib32-libxi
+  gettext         lib32-gettext
+  freetype2       lib32-freetype2
+  glu             lib32-glu
+  libsm           lib32-libsm
+  gcc-libs        lib32-gcc-libs
+  libpcap         lib32-libpcap
+  desktop-file-utils
+  python
+  steam-native-runtime
+  wine_gecko=$_geckover
+  wine-mono-bin=$_monover
+  dxvk
+  d9vk
 )
-makedepends=(
-    git
-    cmake
-    afdko
+makedepends=(autoconf ncurses bison perl fontforge flex
+  'gcc>=4.5.0-2'
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  gnutls                lib32-gnutls
+  libxinerama           lib32-libxinerama
+  libxcomposite         lib32-libxcomposite
+  libxmu                lib32-libxmu
+  libxxf86vm            lib32-libxxf86vm
+  libldap               lib32-libldap
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
+  alsa-lib              lib32-alsa-lib
+  libxcomposite         lib32-libxcomposite
+  mesa                  lib32-mesa
+  mesa-libgl            lib32-mesa-libgl
+  opencl-icd-loader     lib32-opencl-icd-loader
+  libxslt               lib32-libxslt
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vulkan-icd-loader     lib32-vulkan-icd-loader
+  vkd3d                 lib32-vkd3d
+  sdl2                  lib32-sdl2
+  libgphoto2
+  sane
+  gsm
+  vulkan-headers
+  samba
+  opencl-headers
+  git
+  cmake
+  afdko
 )
+optdepends=(
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  libldap               lib32-libldap
+  gnutls                lib32-gnutls
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
+  alsa-plugins          lib32-alsa-plugins
+  alsa-lib              lib32-alsa-lib
+  libjpeg-turbo         lib32-libjpeg-turbo
+  libxcomposite         lib32-libxcomposite
+  libxinerama           lib32-libxinerama
+  ncurses               lib32-ncurses
+  opencl-icd-loader     lib32-opencl-icd-loader
+  libxslt               lib32-libxslt
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vkd3d                 lib32-vkd3d
+  sdl2                  lib32-sdl2
+  libgphoto2
+  sane
+  gsm
+  cups
+  samba           dosbox
+)
+makedepends=(${makedepends[@]} ${depends[@]})
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=()
