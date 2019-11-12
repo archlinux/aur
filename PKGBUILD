@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.3
-_minor=10
+_minor=11
 _srcname=linux-${_major}
 _clr=${_major}.1-11
 pkgbase=linux-clear-current
@@ -190,7 +190,7 @@ prepare() {
 
     ### Save configuration for later reuse
 
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
+        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
@@ -318,7 +318,7 @@ done
 
 sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             'SKIP'
-            '4c0304c4ac05105881c7f50463a1485a71c0a5899830f07eac0321f32ae4eb4a'
+            '3ffab23babc1635aa1a670ff7d44987e9aa1346d3394f1e2cbd37a9fcbefcac0'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
