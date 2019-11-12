@@ -1,7 +1,7 @@
-diff -ruN dav1d-0.4.0/src/meson.build patched/src/meson.build
---- dav1d-0.4.0/src/meson.build 2019-08-05 16:29:38.000000000 +0200
-+++ patched/src/meson.build     2019-10-03 17:12:58.752740719 +0200
-@@ -134,13 +134,18 @@
+diff -ruN dav1d-0.5.1/src/meson.build patched/src/meson.build
+--- dav1d-0.5.1/src/meson.build	2019-10-26 02:59:52.000000000 +0200
++++ patched/src/meson.build	2019-11-13 00:06:59.939298682 +0100
+@@ -139,14 +139,19 @@
          )
  
          if dav1d_bitdepths.contains('8')
@@ -9,15 +9,17 @@ diff -ruN dav1d-0.4.0/src/meson.build patched/src/meson.build
 +            if host_machine.cpu_family().startswith('x86_64')
 +                libdav1d_sources_asm += files(
 +                    'x86/cdef.asm',
++                    'x86/film_grain.asm',
 +                    'x86/ipred.asm',
 +                    'x86/itx.asm',
 +                    'x86/loopfilter.asm',
 +                    'x86/looprestoration.asm',
-+                    'x86/mc.asm')
++                    'x86/mc.asm',
++                )
 +            endif
-+
              libdav1d_sources_asm += files(
 -                'x86/cdef.asm',
+-                'x86/film_grain.asm',
 -                'x86/ipred.asm',
 -                'x86/itx.asm',
 -                'x86/loopfilter.asm',

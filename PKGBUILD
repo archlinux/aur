@@ -2,27 +2,27 @@
 # Contributor: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mingw-w64-dav1d
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('i686' 'x86_64')
 url='https://code.videolan.org/videolan/dav1d/'
 license=('BSD')
-depends=('mingw-w64-crt' 'mingw-w64-sdl2' 'mingw-w64-libplacebo')
+depends=('mingw-w64-crt' 'mingw-w64-vulkan-icd-loader')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git' 'nasm' 'doxygen')
 source=(https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz{,.asc}
-        mingw64-w64-stripping-fix.patch)
-sha512sums=('8ed44b3d747f01b87b34f86fada824dfb7f86c16168af641fe754c767af5714e9fe212b6eea2bc11b5b041460184c78f755e10d4947e46bc70d95e1bd750f79d'
+        mingw-w64-stripping-fix.patch)
+sha512sums=('0ed67219127c2a3dc3151d9e427c5f3dab4e3272a8fdcd17ceae032b81992a1f250045d45b0e0c5c500ebf11e8387fd47f8bf8c4c319577c887daab49a651504'
             'SKIP'
-            'b223c9c830eee9d8f45f20e3747f369f459ee632a9e92ac22ae9dc87771290096928e79f9089443ccde1c4f601533ad70d377cf44b947ebdbaee64ac6e7f5442')
+            '04dba9898475550243b6edd7dade239f67c132f0bc5c0f2ac57b60de1c9d22b5c3e4cec16aa00ad505b47d36142278bf36a1efc6c7f424c039cf1a7c87cb3cbf')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
 prepare() {
   cd "${srcdir}/dav1d-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/mingw64-w64-stripping-fix.patch"
+  patch -Np1 -i "${srcdir}/mingw-w64-stripping-fix.patch"
 }
 
 build () {
