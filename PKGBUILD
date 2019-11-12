@@ -1,12 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=v0.8.7.r0.gadf002a
+pkgver=v0.8.8.r0.gc6d0929
 pkgrel=1
 #epoch=
 pkgdesc="Qt5 image viewer. Fast, configurable, easy to use. Supports video playback."
