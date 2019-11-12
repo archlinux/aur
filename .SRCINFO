@@ -1,6 +1,6 @@
 pkgbase = jacksettings
 	pkgdesc = JACK settings using jackd via systemd
-	pkgver = r33.a61f59c
+	pkgver = v0.0.1.alpha.r0.g3e4500c
 	pkgrel = 1
 	url = https://github.com/azdrums/jacksettings
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = jacksettings
 	depends = qt5-base
 	depends = jack2
 	optdepends = a2jmidid: A daemon for exposing legacy ALSA sequencer applications in JACK MIDI system.
+	conflicts = jacksettings-git
 	source = jacksettings::git+https://github.com/azdrums/jacksettings.git
 	md5sums = SKIP
 
