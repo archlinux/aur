@@ -1,7 +1,7 @@
 pkgbase = asofe
 	pkgdesc = Permissionless financial system employing zero-knowledge security
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asofe.org/
 	arch = x86_64
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = asofe
 	depends = libevent
 	depends = qpid-proton
 	depends = zeromq
-	source = git+https://github.com/TheLightSide/asofe.git#commit=53244ded9e61ab570c47232b231051ba3f1c4195
+	source = git+https://github.com/TheLightSide/asofe.git#commit=ca4d97473b55a2032c235151472c3577b3d1c54c
 	source = use-system-qpid-proton.patch
 	source = use-system-rust.patch
 	source = asofed.service

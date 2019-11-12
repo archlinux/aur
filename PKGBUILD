@@ -3,8 +3,8 @@
 
 pkgname=asofe
 pkgver=2.1.0
-_commit=53244ded9e61ab570c47232b231051ba3f1c4195
-pkgrel=1
+_commit=ca4d97473b55a2032c235151472c3577b3d1c54c
+pkgrel=2
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://asofe.org/'
