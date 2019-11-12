@@ -33,7 +33,7 @@ isNoOpenGL() {
 
 pkgname=mingw-w64-qt5-base-angle
 pkgver=5.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -157,7 +157,7 @@ prepare() {
   CPPFLAGS="${MINGW_CPPFLAGS:--D_FORTIFY_SOURCE=2}"
   CFLAGS="${MINGW_CFLAGS:-$CPPFLAGS -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4}"
   CXXFLAGS="${MINGW_CXXFLAGS:-$CPPFLAGS -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4}"
-  LDFLAGS="${MINGW_LDFLAGS:--Wl,-O1,--sort-common,--as-needed}"
+  LDFLAGS="${MINGW_LDFLAGS:--Wl,-O1,--sort-common,--as-needed -fstack-protector}"
   sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*=\).*$|\1 ${CFLAGS}|" \
          -e "s|^\(QMAKE_CXXFLAGS_RELEASE.*=\).*$|\1 ${CXXFLAGS}|" \
          -e "s|^\(QMAKE_LFLAGS_RELEASE.*=\).*$|\1 ${LDFLAGS}|" \
