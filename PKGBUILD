@@ -1,24 +1,18 @@
-pkgbase='python-flask-paginate'
-pkgname=('python-flask-paginate')
-_module='flask-paginate'
-pkgver='0.5.5'
-pkgrel=1
-pkgdesc="Simple paginate support for flask"
-url="https://github.com/lixxu/flask-paginate"
-depends=('python')
-makedepends=('python-setuptools')
-license=('BSD')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/a2/5a/133899485b67440d0bddbead5f90191f9bbb3c60b600dbddd184f85c2c1a/flask_paginate-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('d2aa07b4ef27f56f973482aaa06a0d93dc769a3e4d3e9c382a305ab72ac38ad9')
+# Maintainer: Brad Erhart <brae.04+aur@gmail.com>
 
-build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
-}
+pkgbase=python-flask-paginate
+pkgname=python-flask-paginate
+_name=${pkgname#python-}
+pkgver=0.5.5
+pkgrel=1
+pkgdesc="A simple paginate extension for flask"
+arch=('any')
+license=('BSD')
+url="https://pypi.org/project/flask-paginate"
+makedepends=('python-pip')
+source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name/-/_}-$pkgver-py2.py3-none-any.whl")
+sha512sums=('ffba99a5167c55faa3eee1afcb71313fc1bce10ad47949a728c51defb8124c8becfcae3cb2ab03780bf76bbebb6a42b2689358ab8c4dd37075c3b94ab27f088e')
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
 }
