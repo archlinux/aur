@@ -4,8 +4,9 @@ _pkgname=adhocspot-script
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=20190514.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption."
+url="http://git.dreieck.kettenbruch.de/dreieck/${_pkgname}"
 arch=('any')
 license=('custom: Public Domain')
 groups=()
@@ -27,7 +28,7 @@ replaces=("${_pkgname}<=${pkgver}")
 options=('emptydirs')
 install='adhocspot-script.install'
 source=(
-  "${_pkgname}::git+http://gitea.felics.kettenbruch.de/felics/${_pkgname}.git"
+  "${_pkgname}::git+http://git.dreieck.kettenbruch.de/dreieck/${_pkgname}.git"
   "adhocspot-script.install"
 )
 sha256sums=(
