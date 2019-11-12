@@ -23,6 +23,7 @@ source=('git+https://github.com/electron/electron.git'
         'use-system-libraries-in-node.patch'
         'chromium-SIOCGSTAMP.patch'
         'chromium-skia-harmony.patch'
+        'icu65.patch'
         'chromium-system-icu.patch'
         'fix-cfi-icall-failure-with-use_system_libjpeg-true.patch'
         'only-disable-cfi-icall-when-use_system_libjpeg-true.patch'
@@ -34,6 +35,7 @@ sha256sums=('SKIP'
             '3a81953701ac976a311db4e17999e67ab7c6de97ff63388f287d6497ef9adb9b'
             '7acc4dd59b70fb64f602ceda2846ccddcb46f64a18f912658d1034965f6c1276'
             'feca54ab09ac0fc9d0626770a6b899a6ac5a12173c7d0c1005bc3964ec83e7b3'
+            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
             'c4f2d1bed9034c02b8806f00c2e8165df24de467803855904bff709ceaf11af5'
             '97b421bc60a4abdf37de2d88a51b973e9f68fb44d1eccd464adfb3d9f5d71478'
             '9cae9ded6497afd15ad72d963897425ab6c7f28941bb3c3948e7996610a0d180')
@@ -132,6 +134,7 @@ prepare() {
   echo "Applying local patches..."
   patch -Np1 -i ../chromium-SIOCGSTAMP.patch
   patch -Np4 -i ../chromium-skia-harmony.patch
+  patch -Np1 -i ../icu65.patch
   patch -Np1 -i ../chromium-system-icu.patch
   patch -Np1 -i ../fix-cfi-icall-failure-with-use_system_libjpeg-true.patch
   patch -Np1 -i ../only-disable-cfi-icall-when-use_system_libjpeg-true.patch
