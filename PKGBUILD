@@ -4,11 +4,11 @@
 
 _pkgname=AppImageLauncher
 pkgname=appimagelauncher
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
-url="https://github.com/TheAssassin/AppImageLauncher"
+url="https://github.com/TheAssassin/$_pkgname"
 license=('MIT')
 depends=('binutils'
     'boost'
@@ -21,11 +21,11 @@ depends=('binutils'
     'librsvg'
     'qt5-base'
     'shared-mime-info')
-makedepends=('git' 'cmake' 'wget' 'vim' 'qt5-tools')
+makedepends=('cmake' 'wget' 'vim' 'qt5-tools')
 conflicts=('appimagelauncher-git')
-source=("git+$url.git#tag=v$pkgver"
+source=("$url/archive/v$pkgver.tar.gz"
     'appimage-binfmt-remove.hook')
-sha256sums=('SKIP'
+sha256sums=('d04b9b909c8594f1f97738b67633f905019e245fd60f20785d2874c0f4a6718a'
             '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
