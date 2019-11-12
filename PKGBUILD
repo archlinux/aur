@@ -5,12 +5,12 @@
 # Contributor: hermes14
 pkgname=superbeam
 pkgver=5.0.3
-pkgrel=1
+pkgrel=3
 pkgdesc="The easiest and fastest way to share files with Android"
 arch=('any')
 url="http://superbe.am/"
 license=('custom')
-depends=('java-environment' 'bash')
+depends=('java-environment' 'java8-openjfx' 'bash')
 makedepends=('gendesk')
 source=(http://superbe.am/download/5294)
 
