@@ -1,5 +1,5 @@
---- a/app/main.js	2019-08-30 19:55:24.091850904 +0200
-+++ b/app/main.js	2019-08-30 19:57:32.550487630 +0200
+--- a/build/main.js	2019-08-30 19:55:24.091850904 +0200
++++ b/build/main.js	2019-08-30 19:57:32.550487630 +0200
 @@ -2589,6 +2589,7 @@
              this._adjustViewToContentSize(),
              this.mainView.setAutoResize({ width: !0, height: !0 })),

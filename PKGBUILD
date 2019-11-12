@@ -1,8 +1,8 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.17.10
-pkgrel=5
+pkgver=4.17.21
+pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -15,16 +15,14 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
         systray.patch
         menu-bar.patch
         oauth.patch
-        nav-buttons.patch
         0001-MPRIS-interface.patch
         https://github.com/SibrenVasse/deezer/raw/mpris/node_modules.tar.xz)
-sha256sums=('4fea147de6cfa4ee083a1cecf24a13230045cbca816667df6f5674a654da0b7b'
+sha256sums=('433fe36ee19c4b13eb715bd740a6ae325199b00da15c4ea376b03944cb57b0fe'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
-            'c024851f4c87580b4f764c88f630d77a28794338d0b43947e68939afb146bc0a'
-            '964d23e5fa473bd1a78bed4213d0a546a253541e0b82337dc5929c3719bbe020'
-            'bcb546b71c94fcec80cdde9a4c56df6b35f17ce3619db1bd051f446a3b5adaf0'
-            '7384fbec4e6e4e5dc3b003614ac8068fe30e7fa7e3072846fc3d15a58f88be19'
-            '54794e94142aa509313ffa9d53cf795cc16f9cb2483b3652825ab837d5dfb425'
+            'f7df7ba3dd91d8d327c3bfe69c65d3969b3f7a80ca253c29bad316e09f65ab8b'
+            '9c1a1c809f813646f14355af03670f6c10a5ad47c606b0ef45e1b66b6aa559b5'
+            '5cbe1696d5f948cdda1fdd5ef9f8d94d5e14d8594558e35472517fa659057add'
+            '7cd2ba25d61bbd86d49ca99be96366e72fc6e6a57d50bdbeacf1a6a5535c3e76'
             '8a8a42fd38c6fc5a5f9523620ce7e794355ceec5d71c93a7cee378c9a5b3d8ec')
 
 prepare() {
@@ -43,16 +41,14 @@ prepare() {
     rm -r app/node_modules/@nodert
 
     cd app
-    prettier --write "app/*.js"
-    prettier --write "app/assets/cache/js/route-naboo*ads*.js"
+
+    prettier --write "build/*.js"
     # Fix crash on startup since 4.14.1 (patch systray icon path)
     patch -p1 < "$srcdir/systray.patch"
     # Disable menu bar
     patch -p1 < "$srcdir/menu-bar.patch"
     # Fix oauth login
     patch -p1 < "$srcdir/oauth.patch"
-    # Force enable nav buttons
-    patch -p1 < "$srcdir/nav-buttons.patch"
 
     # Monkeypatch MPRIS D-Bus interface
     patch -p1 < "$srcdir/0001-MPRIS-interface.patch"
