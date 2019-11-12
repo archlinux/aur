@@ -6,49 +6,63 @@
 # https://github.com/michaellass/AUR
 
 pkgname=fritzing
-pkgver=0.9.3b
-pkgrel=5
-partsrev=667a5360e53e8951e5ca6c952ae928f7077a9d5e
+pkgver=0.9.4b
+pkgrel=1
+tagver=CD-415
+partsrev=e79a69765026f3fda8aab1b3e7a4952c28047a62
 pkgdesc='PCB layout prototyping application'
 arch=('i686' 'x86_64')
 url=http://fritzing.org
 license=(GPL3)
-makedepends=('boost')
-depends=('desktop-file-utils' 'libgit2' 'python2' 'qt5-serialport' 'qt5-svg' 'shared-mime-info')
-source=(https://github.com/fritzing/fritzing-app/archive/${pkgver}.tar.gz
-        parts-${partsrev}.tar.gz::https://codeload.github.com/fritzing/fritzing-parts/tar.gz/${partsrev}
-        0001-Squashed-commit-of-the-following.patch
-        fritzing.desktop.patch
-        fritzing.xml)
-sha256sums=('2475a95aad2c1536eef3fdb72665c5c16590644b45bd110a0cde223c916625b8'
-            'c6f9c5275a569e86c0cadb85844120e8f79ca79bea004b00916af78772969d76'
-            'e142b7443d03c644d06a4741dcc64eef7077a86b42b4461f10ee8b1f59e4775c'
-            'e48994c9d4191675ca8c53c64d99effc704bb10b67f253eb9f05b0c188805baa'
-            '9aa55c4a27025b40a1573b3b09a59f48709dfa5ac637ef6a059fd8157d20192b')
+makedepends=('boost' 'git')
+depends=('desktop-file-utils' 'libgit2' 'qt5-serialport' 'qt5-svg')
+source=(https://github.com/fritzing/fritzing-app/archive/${tagver}.tar.gz
+        0001-don-t-scan-filesystem-for-application-directory-if-i.patch
+        0002-allow-user-and-administrator-to-install-parts-librar.patch
+        0003-provide-script-for-user-to-clone-parts-library.patch)
+sha256sums=('4502bcdf262d5fa3897342a787b201f6fc27fa071242ecbc79f6515b845339fc'
+            '52b20ee77723f805c905dea49177931cfe681689e71b941ee35e2e302a83cf4c'
+            '1e59cd5db471b60cd12b8d63510de442c883b3fa0f8d27532aa29bc81838fec1'
+            'fb0d8fc6257f166ab77f99bbe32dff51bbdace7d5a3d4d9a789542a8e3fec540')
 
 prepare() {
-  mkdir -p "$srcdir"/fritzing-app-${pkgver}/parts
-  cp -r "$srcdir"/fritzing-parts-${partsrev}/* "$srcdir"/fritzing-app-${pkgver}/parts/
+  cd "${srcdir}"/fritzing-app-${tagver}
 
-  cd "$srcdir"/fritzing-app-${pkgver}
-  patch -N -p1 < "$srcdir"/0001-Squashed-commit-of-the-following.patch || true
-  patch -p0 < "$srcdir"/fritzing.desktop.patch
+  # Dynamically link against system libgit2
+  sed -i 's/LIBGIT_STATIC = true/LIBGIT_STATIC = false/' phoenix.pro
+
+  # Disable broken font scaling (#3221)
+  sed -i 's/Exec=Fritzing/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=0 Fritzing/' org.fritzing.Fritzing.desktop
+
+  # Allow users to have their own updatable parts library. See #3238, #3454 on this topic.
+  patch -p1 < "${srcdir}"/0001-don-t-scan-filesystem-for-application-directory-if-i.patch
+  patch -p1 < "${srcdir}"/0002-allow-user-and-administrator-to-install-parts-librar.patch
+  patch -p1 < "${srcdir}"/0003-provide-script-for-user-to-clone-parts-library.patch
 }
 
 build() {
-  cd "$srcdir"/fritzing-app-${pkgver}
-  qmake-qt5
+  cd "${srcdir}"/fritzing-app-${tagver}
+
+  mkdir build && cd build
+  qmake-qt5 ..
   make
 }
 
 package() {
-  cd "$srcdir"/fritzing-app-${pkgver}
-  make INSTALL_ROOT="$pkgdir" install
+  cd "${srcdir}"/fritzing-app-${tagver}/build
+  make INSTALL_ROOT="${pkgdir}" install
+
+  # We want a system-wide installation of the parts library. Following steps are
+  # derived from tools/linux_release_script/release.sh.
+  cd "${pkgdir}"/usr/share/fritzing/
+  git clone --branch master --single-branch https://github.com/fritzing/fritzing-parts.git
+  cd fritzing-parts
+  git checkout ${partsrev}
+  "${pkgdir}"/usr/bin/Fritzing \
+    -db "${pkgdir}"/usr/share/fritzing/fritzing-parts/parts.db \
+    -pp "${pkgdir}"/usr/share/fritzing/fritzing-parts \
+    -f  "${pkgdir}"/usr/share/fritzing
 
   # install partsdb clone script
-  install -Dm755 "${srcdir}"/fritzing-app-${pkgver}/tools/user_parts_clone.sh "${pkgdir}"/usr/bin/fritzing_clone_parts
-
-  # connect .fzz files to fritzing by default
-  install -Dm644 "${srcdir}/fritzing.xml" "${pkgdir}/usr/share/mime/packages/fritzing.xml"
-  echo "MimeType=application/x-fritzing;" >> "${pkgdir}/usr/share/applications/fritzing.desktop"
+  install -Dm755 "${srcdir}"/fritzing-app-${tagver}/tools/user_parts_clone.sh "${pkgdir}"/usr/bin/fritzing_clone_parts
 }
