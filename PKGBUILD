@@ -13,7 +13,7 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'python-scikit-image'
-        'opencv>=4.0.0' 'gtk3' 'cuda' 'nccl' 'openmp'
+        'openexr' 'opencv>=4.0.0' 'gtk3' 'cuda' 'nccl' 'openmp'
 )
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
             'cblas: Use CBLAS for  backend linear algebra ops'
