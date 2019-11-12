@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=sahel-fonts
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A beautiful Persian font."
 url="https://github.com/rastikerdar/sahel-font"
@@ -12,7 +12,7 @@ depends=('fontconfig')
 provides=('ttf-sahel')
 conflicts=('ttf-sahel')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver//_/-}/sahel-font-v${pkgver//_/-}.zip")
-sha256sums=('44160c6e2067de4046648865b6148d4f302f2d9ae8b55d6196e30ca895047837')
+sha256sums=('362a2c6f7ec098f698bd72dff0d57f8eee87c2c2879ced18be842811e2a23094')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/${pkgname%-fonts}"
