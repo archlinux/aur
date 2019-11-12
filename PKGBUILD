@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=83
+_minor=84
 _srcname=linux-${_major}
 _clr=${_major}.82-90
 pkgbase=linux-clear-lts2018
@@ -191,7 +191,7 @@ prepare() {
 
     ### Save configuration for later reuse
 
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
+        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
@@ -322,7 +322,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '0725b4241d080042fab01f4946b1522b4480c85b3a8a923670f0532a43dd126a'
+            '06385c95678abddf0341c8a46232c8ffbfca1a486fec8f8800ed07a466e2de22'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
