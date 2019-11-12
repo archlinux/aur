@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=olive
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
@@ -10,10 +10,8 @@ license=('GPL3')
 depends=('ffmpeg' 'qt5-multimedia' 'qt5-svg')
 makedepends=('cmake' 'qt5-tools')
 optdepends=('frei0r-plugins' 'olive-community-effects-git')
-source=("${pkgver}.tar.gz::https://github.com/olive-editor/olive/archive/${pkgver}.tar.gz"
-        'olive_tr.ts')
-sha512sums=('72aefc03956b3a64d4fb69d15f9a5c88429e8988dac7a6f10287265c065e7b85cb7c6c63ea35e07aef34cdc71e6a3611a8622a1916163c08182bab227d8555e1'
-            '443ba088018e97597dc5e7209d2493276ebbc15576e4fe638c8f486088ea0041f681693dc3939fba06b7fb4a0ffd289d5e87d36b82753e4c7742659f95a46067')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/olive-editor/olive/archive/$pkgver.tar.gz")
+sha512sums=('48cf44b5ba1bd95e20efb5312d61d6c37e6dedc1f02156ef436ab51705be4bdaf5bb68875b55b06337c25a34aee23eac645fe295d08ab0038872adccf12fc95e')
 
 prepare() {
   if [ -d build ]
@@ -22,8 +20,6 @@ prepare() {
   fi
 
   mkdir build
-
-  cp "$srcdir/olive_tr.ts" "$srcdir/$pkgname-$pkgver/ts/"
 }
 
 build() {
