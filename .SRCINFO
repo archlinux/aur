@@ -65,6 +65,7 @@ pkgbase = proton-native-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = afdko
+	makedepends = nasm
 	makedepends = fontconfig
 	makedepends = lib32-fontconfig
 	makedepends = lcms2

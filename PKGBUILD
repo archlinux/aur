@@ -65,6 +65,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   git
   cmake
   afdko
+  nasm
 )
 optdepends=(
   giflib                lib32-giflib
