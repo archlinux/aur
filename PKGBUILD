@@ -3,7 +3,7 @@
 # previous maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-gtk-theme
-pkgver=2019_10_03
+pkgver=2019_11_02
 pkgrel=1
 pkgdesc="A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 source=("https://github.com/vinceliuice/matcha/archive/${pkgver//_/-}.tar.gz")
 
-sha256sums=('b32b3fbadcfdbee3ac6ed2c44c260da7dbf8f9ba8b9f42fa56f2e000a3a8542c')
+sha256sums=('44050eff15133d65f5f3b6561e6c44668c97a7838420bbf241c146973b35616f')
 
 package() {
   mkdir "${pkgdir}"/usr
