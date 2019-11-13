@@ -1,6 +1,7 @@
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=('docker-compose-git')
 _srcname='compose'
-pkgver='r1'
+pkgver='r5440'
 pkgrel='1'
 pkgdesc='Define and run complex applications using Docker'
 arch=('any')
@@ -34,6 +35,14 @@ pkgver() {
         "$( git rev-list --count 'HEAD' )" \
         "$( git log --max-count='1' --pretty='format:%ct' )" \
         "$( git rev-parse --short 'HEAD' )"
+}
+
+prepare() {
+    cd "${srcdir}/${_srcname}"
+
+    # Remove upper bound on requirements
+    sed --regexp-extended --in-place 's/==(\s*[0-9]+(\.[0-9]+)*)/>=\1/g' requirements.txt
+    sed --regexp-extended --in-place "s/, < [0-9]+(\.[0-9]+)*//g" setup.py
 }
 
 package() {

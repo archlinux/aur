@@ -1,6 +1,6 @@
 pkgbase = docker-compose-git
 	pkgdesc = Define and run complex applications using Docker
-	pkgver = r1
+	pkgver = r5440
 	pkgrel = 1
 	url = https://github.com/docker/compose
 	arch = any
