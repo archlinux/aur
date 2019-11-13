@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=youtube-viewer-git
-pkgver=3.5.8
+pkgver=3.5.9
 pkgrel=1
 pkgdesc="Command line utility for searching and streaming videos from YouTube."
 arch=('any')
