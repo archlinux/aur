@@ -1,0 +1,25 @@
+pkgbase = aw-core
+	pkgdesc = Log what you do on your computer. Simple, extensible, no third parties.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/ActivityWatch/activitywatch
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = python>=3.5.1
+	makedepends = python-setuptools
+	depends = python>=3.5.1
+	depends = python-iso8601
+	depends = python-appdirs
+	depends = python-attrs
+	depends = python-jsonschema
+	depends = python-peewee
+	depends = python-json-logger
+	depends = python-pyrsistent
+	depends = python-strict-rfc3339
+	depends = python-takethetime
+	source = git+https://github.com/ActivityWatch/aw-core.git#commit=eeec0d6
+	md5sums = SKIP
+
+pkgname = aw-core
+
