@@ -8,7 +8,6 @@ license=('Open Font License')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 
 _commit='8c86543d1ef0a348ad471a3443a3ab0a2a0162c8'
-_raw="https://github.com/productiontype/Spectral/raw/${_commit}/fonts/desktop"
 _raw="https://github.com/alexeiva/cuprum/raw/${_commit}/fonts/ttf"
 
 source=(
