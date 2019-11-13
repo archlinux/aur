@@ -1,0 +1,15 @@
+pkgbase = flashpoint-bin
+	pkgdesc = Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only.
+	pkgver = 6.3
+	pkgrel = 1.0
+	url = http://bluemaxima.org/flashpoint/
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nss>=3.0
+	depends = gtk3
+	source = https://bluepload.unstable.life/selif/flashpoint-linux-x64-20191112.tar.gz
+	md5sums = 313d585f60cb4d7a0c834e0ff693729c
+
+pkgname = flashpoint-bin
+
