@@ -1,10 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-cudaarch=All
+cudaarch=Common
 _pkgname=mxnet
-pkgname=('mxnet-git' 'mxnet-mkl-git' 'mxnet-cuda-git' 'mxnet-cuda-mkl-git')
+pkgname=('mxnet-cuda-git' 'mxnet-cuda-mkl-git')
 _pkgver=1.5.1
-pkgver=1.5.1.r10323.a37dcd46cb
+pkgver=1.5.1.r10334.e3f5dade60
 pkgrel=1
 pkgdesc="A flexible and efficient library for deep learning"
 arch=('x86_64')
@@ -32,7 +32,6 @@ makedepends=(
   'git'
   'gtk3'
   'nccl'
-  'opencv'
   'patchelf'
   'qt5-base'
 )
@@ -58,8 +57,9 @@ prepare() {
   mkdir "${srcdir}/${_pkgname}/build"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-cuda-git"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-cuda-mkl-git"
-  cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-git"
-  cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-mkl-git"
+  # use gcc version compatible with CUDA
+  export CC=/opt/cuda/bin/gcc
+  export CXX=/opt/cuda/bin/g++
 }
 
 build() {
@@ -84,37 +84,6 @@ build() {
     -DUSE_S3:BOOL=ON
 )
 
-  # building without MKL-DNN and without CUDA
-  cd "${srcdir}/mxnet-git/build"
-  cmake \
-    ${cmake_opts[@]} \
-    -DUSE_CUDA:BOOL=OFF \
-    -DUSE_CUDNN:BOOL=OFF \
-    -DUSE_MKLDNN:BOOL=OFF \
-    -DUSE_NCCL:BOOL=OFF \
-    -DUSE_OPENCV:BOOL=ON \
-    ..
-  make
-  cd ../python
-  python setup.py build --with-cython
-
-  # building with MKL-DNN and without CUDA
-  cd "${srcdir}/mxnet-mkl-git/build"
-  cmake \
-    ${cmake_opts[@]} \
-    -DUSE_CUDA:BOOL=OFF \
-    -DUSE_CUDNN:BOOL=OFF \
-    -DUSE_MKLDNN:BOOL=ON \
-    -DUSE_NCCL:BOOL=OFF \
-    -DUSE_OPENCV:BOOL=ON \
-    ..
-  make
-  cd ../python
-  python setup.py build --with-cython
-
-  # use gcc version compatible with CUDA
-  export CC=/opt/cuda/bin/gcc
-  export CXX=/opt/cuda/bin/g++
   # building with CUDA and without MKL-DNN
   cd "${srcdir}/mxnet-cuda-git/build"
   cmake \
@@ -173,32 +142,17 @@ _package() {
   find "${pkgdir}" -type d -empty -delete
 }
 
-package_mxnet-git() {
-  depends+=(opencv)
-  _package
-}
-
 package_mxnet-cuda-git() {
   pkgdesc="${pkgdesc} (with CUDA)"
   depends+=(cuda cudnn nccl)
-  conflicts=(mxnet)
-  provides=(mxnet)
-  _package
-}
 
-package_mxnet-mkl-git() {
-  pkgdesc="${pkgdesc} (with MKL-DNN)"
-  depends+=(opencv)
-  conflicts=(mxnet)
-  provides=(mxnet)
   _package
 }
 
 package_mxnet-cuda-mkl-git() {
   pkgdesc="${pkgdesc} (with CUDA and MKL-DNN)"
   depends+=(cuda cudnn nccl)
-  conflicts=(mxnet)
-  provides=(mxnet)
+
   _package
 }
 # vim:set ts=2 sw=2 et:
