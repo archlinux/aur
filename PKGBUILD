@@ -9,17 +9,17 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.2.2
-pkgrel=5
+pkgver=1.3.1
+pkgrel=1
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
 license=('Apache')
-depends=('python-matplotlib' 'python-numpy' 'python-numpydoc' 'python-scipy' 'python-networkx' 'python-traits' 'python-dateutil' 'python-nibabel' 'python-future' 'python-simplejson' 'python-prov' 'python-click' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-pydotplus' 'python-pydot' 'python-packaging')
+depends=('python-filelock' 'python-matplotlib' 'python-numpy' 'python-numpydoc' 'python-scipy' 'python-networkx' 'python-traits' 'python-dateutil' 'python-nibabel' 'python-future' 'python-simplejson' 'python-prov' 'python-click' 'python-funcsigs' 'python-pytest' 'python-mock' 'python-pydotplus' 'python-pydot' 'python-packaging')
 makedepends=('python-sphinx')
 optdepends=('python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('d20bd3c0e325e0de135f44a4b1af88ff8f5de658f92988346aa304d8c9d4c258')
+sha256sums=('5f3e6e26b5dd609f1b78791718bcf22cbebc6195d4dafeacae51c07b46d5278a')
 
 _setpaths(){
 
