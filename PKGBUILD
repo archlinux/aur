@@ -1,14 +1,16 @@
-# Maintainer: Kai Xuan <woxuankai at gmail dot com>
+# Maintainer: Liam Timms <timms5000@gmail.com>
+# Contributor: Kai Xuan <woxuankai at gmail dot com>
+
 _pkgname='ants'
 pkgname="${_pkgname}-git"
-pkgver=v2.1.0.r776.g3f5cc924
+pkgver=v2.3.2.r28.gb8889562
 pkgrel=1
 pkgdesc='Advanced Normalization Tools (ANTs) computes high-dimensional \
 mappings to capture the statistics of brain structure and function'
 arch=('i686' 'x86_64')
 url='http://www.picsl.upenn.edu/ANTS/'
 license=('Apache')
-depends=('perl' 'insight-toolkit>=4.11.0')
+depends=('perl' 'insight-toolkit>=5')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=("${_pkgname}")
@@ -23,29 +25,36 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  mkdir -p build
+  mkdir -p antsBuild
 }
 
 build() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}/antsBuild"
   cmake \
-      -DANTS_SUPERBUILD=OFF \
-      -DANTS_USE_QT=OFF \
-      -DANTS_INSTALL_DEVELOPMENT=OFF \
-      -DCOPY_SCRIPT_FILES_TO_BIN_DIR=OFF \
-      -DANTS_BUILD_DISTRIBUTE=ON \
       -DBUILD_ALL_ANTS_APPS=ON \
-      -DUSE_VTK=OFF \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DBUILD_STYLE_UTILS=OFF \
+      -DBUILD_TESTING=ON \
+      -DCCACHE_PROGRAM=CCACHE_PROGRAM-NOTFOUND \
       -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_TESTING=OFF \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DBUILD_SHARED_LIBS=ON ..
+      -DCMAKE_INSTALL_PREFIX=/opt/ANTs \
+      -DEXTERNAL_PROJECT_BUILD_TYPE=Release \
+      -DFORCE_EXTERNAL_BUILDS=OFF \
+      -DITK_BUILD_MINC_SUPPORT=OFF \
+      -DITK_VERSION_MAJOR=5 \
+      -DOLD_BASELINE_TESTS=OFF \
+      -DRUN_LONG_TESTS=ON \
+      -DRUN_SHORT_TESTS=ON \
+      -DSuperBuild_ANTS_USE_GIT_PROTOC=ON \
+      -DUSE_SYSTEM_ITK=OFF \
+      -DUSE_SYSTEM_SlicerExecutionMode=OFF \
+      -DCMAKE_INSTALL_PREFIX=/opt/ANTs \
+      ..
   make
 }
-# -DITK_USE_SYSTEM_FFTW=ON
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}/antsBuild/ANTS-build"
   make DESTDIR="${pkgdir}" install
 }
 
