@@ -37,10 +37,7 @@ depends=('jupyter-nbconvert'
          'python-sphinx'
          'python-spyder-kernels'
          'python-watchdog'
-         'python-xdg'
-
-         'desktop-file-utils'
-         'gtk-update-icon-cache')
+         'python-xdg')
 #'pyside2: Qt-Python bindings'
 optdepends=('cython: run Cython files'
             'python-matplotlib: 2D/3D plotting'
