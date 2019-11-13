@@ -1,12 +1,26 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = netkit
+	pkgdesc = The poor man's system to experiment computer networking
+	pkgver = 2.8
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = http://wiki.netkit.org/index.php/Download_Official
+	install = netkit.install
+	arch = any
+	license = unknown
+	depends = xterm
+	depends = lsof
+	noextract = netkit-filesystem-i386-F5.2.tar.bz2
+	noextract = netkit-2.8.tar.bz2
+	noextract = netkit-kernel-i386-K2.8.tar.bz2
+	source = http://wiki.netkit.org/download/netkit-filesystem/netkit-filesystem-i386-F5.2.tar.bz2
+	source = http://wiki.netkit.org/download/netkit/netkit-2.8.tar.bz2
+	source = http://wiki.netkit.org/download/netkit-kernel/netkit-kernel-i386-K2.8.tar.bz2
+	source = init-netkit.sh
+	source = init-netkit
+	sha256sums = 476d9212897246878803642b14cb0210c9f112250e65a75da8c5fd2309242588
+	sha256sums = eb0544a69a57a188cf853452414a38c5000e0bc643305c25b628967fc86aa696
+	sha256sums = 0106b9ac0c6ccda756455b6e5d38d2845b8380ae0db7b7a8f44304c24c9694ac
+	sha256sums = b2da34ca5461fc0f9c154b846be27245759046b7f79fb4cb0b0ed99e200a6766
+	sha256sums = 82ec28316dfdb587c7832385cb08305bf43b75485c00d3057dc14c77928962c5
 
-pkgname = yarxi
+pkgname = netkit
 
