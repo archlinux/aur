@@ -19,7 +19,7 @@ pkgbase = kotatogram-desktop
 	depends = qt5-imageformats
 	depends = openssl
 	optdepends = libnotify: desktop notifications
-	source = kdesktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.1.1
+	source = kotatogram-desktop-1.1.1::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.1.1
 	source = Catch2::git+https://github.com/catchorg/Catch2.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
