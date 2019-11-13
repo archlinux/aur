@@ -19,7 +19,7 @@ pkgbase = asofe
 	depends = libevent
 	depends = qpid-proton
 	depends = zeromq
-	source = git+https://github.com/TheLightSide/asofe.git#commit=ca4d97473b55a2032c235151472c3577b3d1c54c
+	source = git+https://github.com/TheLightSide/asofe.git#commit=dec56f81c3c3cf98e7cdb1c38d21d3ed2c56414c
 	source = use-system-qpid-proton.patch
 	source = use-system-rust.patch
 	source = asofed.service
