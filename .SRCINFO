@@ -1,7 +1,7 @@
 pkgbase = kdesrc-build
 	pkgdesc = A script to build KDE software from KDE's source repositories
 	pkgver = 18.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kdesrc-build.kde.org/
 	arch = any
 	license = GPL

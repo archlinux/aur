@@ -3,7 +3,7 @@
 
 pkgname=kdesrc-build
 pkgver=18.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
 arch=('any')
@@ -16,25 +16,21 @@ conflicts=('kdesrc-build-git')
 source=("git+https://anongit.kde.org/kdesrc-build.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../kdesrc-build \
+  cmake \
+	-S kdesrc-build \
+	-B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -d "${pkgdir}"/usr/share/doc/samples
-  install -Dm644 ../kdesrc-build/kdesrc-buildrc-{,kf5-}sample \
+  install -Dm644 kdesrc-build/kdesrc-buildrc-{,kf5-}sample \
     "${pkgdir}"/usr/share/doc/samples/
-  install -Dm644 ../kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
+  install -Dm644 kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
     "${pkgdir}"/usr/share/doc/samples/
 }
