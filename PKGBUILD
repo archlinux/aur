@@ -1,7 +1,7 @@
 # Maintainer: David Harrigan <dharrigan [@] gmail [dot] com>
 
 pkgname=mkinitcpio-wireguard
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='mkinitcpio hook that initialises Wireguard to assist in the remote unlocking of encrypted partitions.'
 url='https://github.com/dharrigan/mkinitcpio-wireguard'

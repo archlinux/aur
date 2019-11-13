@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-wireguard
 	pkgdesc = mkinitcpio hook that initialises Wireguard to assist in the remote unlocking of encrypted partitions.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dharrigan/mkinitcpio-wireguard
 	install = mkinitcpio-wireguard.install
