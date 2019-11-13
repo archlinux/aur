@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop
 	pkgdesc = Experimental Telegram Desktop fork with option to select custom fonts.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL3
