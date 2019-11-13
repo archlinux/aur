@@ -1,3 +1,5 @@
+# Maintainer: Auteiy <dmitry@auteiy.me>
+
 pkgname=ttf-spectral
 pkgver=2.003
 pkgrel=1
