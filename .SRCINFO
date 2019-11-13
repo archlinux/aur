@@ -1,7 +1,7 @@
 pkgbase = carp-git
 	pkgdesc = A statically typed lisp, without a GC, for real-time applications.
-	pkgver = v0.3.0.r122.g31e10347
-	pkgrel = 2
+	pkgver = v0.3.0.r198.g6954642c
+	pkgrel = 1
 	url = https://github.com/carp-lang/Carp
 	arch = x86_64
 	license = Apache
