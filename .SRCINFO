@@ -1,0 +1,18 @@
+pkgbase = aw-client
+	pkgdesc = Log what you do on your computer. Simple, extensible, no third parties.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/ActivityWatch/activitywatch
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = python>=3.5.1
+	makedepends = python-setuptools
+	depends = python>=3.5.1
+	depends = python-persist-queue
+	depends = python-requests
+	source = git+https://github.com/ActivityWatch/aw-client.git#commit=a8c9fd7
+	md5sums = SKIP
+
+pkgname = aw-client
+
