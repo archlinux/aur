@@ -1,15 +1,15 @@
 pkgbase = ptail
 	pkgdesc = Stream and display a fixed number of lines from processes output
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/orf/ptail
 	arch = x86_64
-	license = custom
+	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	conflicts = ptail-git
-	source = 0.2.1.tar.gz::https://github.com/orf/ptail/archive/v0.2.1.tar.gz
-	sha256sums = 2b482ec33e899caed985a046fdf6f19cd39af9d3b26ca3012333bd9b2cc69c44
+	source = 0.2.2.tar.gz::https://github.com/orf/ptail/archive/v0.2.2.tar.gz
+	sha256sums = 1bd4d68bd13c901d6ab045c52cb49cfd39448941a880cec12dd88c7e922a549f
 
 pkgname = ptail
 
