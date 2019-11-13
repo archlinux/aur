@@ -1,7 +1,7 @@
 pkgbase = sublime-text-3-imfix
-	pkgdesc = Sophisticated text editor for code, markup and prose - Stable build with input method support for CJK users
+	pkgdesc = Sophisticated text editor for code, html and prose - Stable build with support for CJK
 	pkgver = 3.3211
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sublimetext.com/3
 	arch = x86_64
 	license = custom
