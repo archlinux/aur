@@ -8,17 +8,21 @@ arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr' 'nss')
-makedepends=('git' 'ninja' 'cmake' 'unzip' 'python2')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz")
+makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
+source=(
+  "build.sh"
+  "${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/v${pkgver}-${pkgrel}.tar.gz"
+)
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('de9aeab5dfece9f1cd574f2292ac42d6')
+md5sums=('8e804bbdad8bbe1e929f284512207a8d'
+         'de9aeab5dfece9f1cd574f2292ac42d6')
+provides=('naiveproxy')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
 
 build(){
   pushd ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/src
-  ./get-clang.sh
-  ./build.sh
+  ../../build.sh
   popd
 }
 
