@@ -19,7 +19,7 @@ makedepends=(
 options=(!emptydirs)
 source=("git+https://github.com/facebookresearch/visdom.git" "visdom.conf" "visdom.group.conf")
 sha256sums=('SKIP'
-            'f795c8a3185282b366e7942b07b5ac74b9c293d1eb0f15727cf26905c1d7934e'
+            '3df45ac54962cac4425bcd6ff9f118d851e0fe2dbc9cfd54089d8ae46e9fecbf'
             'd71fbfa6bb3feecfb1997a459da196f8a2f0f50b33428043921803d97db5562c')
 
 pkgver() {
@@ -35,5 +35,7 @@ install='visdom.install'
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 "${srcdir}/${_pkgbase}.group.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.group.conf"
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  sed -i "s;{site};$site_packages;g" "${srcdir}/${_pkgbase}.conf"
   install -Dm 644 "${srcdir}/${_pkgbase}.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }

@@ -21,7 +21,7 @@ pkgbase = python-visdom-git
 	source = visdom.conf
 	source = visdom.group.conf
 	sha256sums = SKIP
-	sha256sums = f795c8a3185282b366e7942b07b5ac74b9c293d1eb0f15727cf26905c1d7934e
+	sha256sums = 3df45ac54962cac4425bcd6ff9f118d851e0fe2dbc9cfd54089d8ae46e9fecbf
 	sha256sums = d71fbfa6bb3feecfb1997a459da196f8a2f0f50b33428043921803d97db5562c
 
 pkgname = python-visdom-git
