@@ -1,0 +1,4 @@
+pkg/
+src/
+mockoon-*.deb
+mockoon-bin-*.pkg.tar
