@@ -1,0 +1,30 @@
+pkgbase = madagascar
+	pkgdesc = Automatic Rule-Based Time Tracker
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://ahay.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = scons
+	makedepends = libtirpc
+	makedepends = libtirpc-compat
+	depends = libtirpc
+	depends = ffmpeg
+	depends = libxaw
+	depends = cario
+	depends = fftw
+	depends = netpbm
+	depends = gd
+	depends = openmpi
+	depends = glu
+	depends = freeglut
+	depends = suitesparse
+	depends = python
+	noextract = madagascar.tar.gz
+	options = strip
+	source = madagascar.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-3.0/madagascar-3.0.1.tar.gz/download
+	md5sums = a87a6f7f5ba552cd251b1588048844bf
+
+pkgname = madagascar
+
