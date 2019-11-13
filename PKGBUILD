@@ -65,10 +65,10 @@ _enable_acs_override="y"
 _major=5.3
 _minor=11
 _srcname=linux-${_major}
-_clr=${_major}.10-865
+_clr=${_major}.10-867
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -103,6 +103,7 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
+        sed -i '35,52 {s/^/#/}' ${srcdir}/clearlinux/linux.spec
         for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0123|^Patch0130' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
@@ -201,7 +202,7 @@ prepare() {
 
     ### Save configuration for later reuse
 
-        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${_kernelname}"
+        cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 }
 
 build() {
