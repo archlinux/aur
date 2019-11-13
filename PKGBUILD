@@ -8,7 +8,7 @@ _pkgname=tokenserver
 pkgdesc="Mozilla Token Server"
 url="https://github.com/mozilla-services/tokenserver"
 
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 
 arch=("any")
@@ -24,7 +24,7 @@ depends=(
 )
 
 source=("https://github.com/mozilla-services/tokenserver/archive/${pkgver}.tar.gz")
-sha512sums=('353266b6a5499f3974576ec64d37e802d3badbdf2cc115ab75b19473da5262f9b086544d07d50a7920a4d175c3c6fd1b60cd5f02a90c3e58fe74fe5d4ea49496')
+sha512sums=('f1e8602d8205c38be0d532adb1f064e2daafbcd70ddb2bed829b192df7b1664c9d798450b9184a09dc7d39bdc57b861db831ed05671088958c69b91db8c049aa')
 
 build(){
   cd ${srcdir}/${_pkgname}-${pkgver}
