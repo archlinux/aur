@@ -95,7 +95,7 @@ _verify_repo() {
 }
 
 prepare() {
-    _verify_repo
+    _verify_repo || return
 
     rm -rf "$srcdir/$pkgname-$pkgver"
     mkdir "$srcdir/$pkgname-$pkgver"
