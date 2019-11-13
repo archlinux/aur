@@ -6,7 +6,7 @@ pkgdesc="Automatic Rule-Based Time Tracker"
 url=http://ahay.org/
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('libtirpc' 'ffmpeg' 'libxaw' 'cario' 'fftw' 'netpbm' 'gd'
+depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd'
 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python') 
 makedepends=('scons' 'libtirpc' 'libtirpc-compat')
 options=('strip')
