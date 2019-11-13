@@ -1,5 +1,5 @@
 pkgbase = komodo-10
-	pkgdesc = Freeware version of the Komodo chess engine (~3310 Elo)
+	pkgdesc = Freeware version of the Komodo chess engine (~3347 Elo)
 	pkgver = 10
 	pkgrel = 1
 	url = https://komodochess.com
