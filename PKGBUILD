@@ -2,21 +2,21 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Mick Elliot <micke at sfu dot ca>
 pkgname=mesquite
-pkgver=3.40
-_pkgver=340-Linux
-buildver=build-877
+pkgver=3.6
+_pkgver=36-Linux
+#buildver=build-917
 pkgrel=1
 pkgdesc="A modular, extendible software for evolutionary biology, designed to help biologists organize and analyze comparative data about organisms"
 arch=('any')
-url="http://mesquiteproject.wikispaces.com"
+url="http://mesquiteproject.org"
 license=('(L)GPL')
 depends=('java-runtime')
-source=(https://github.com/MesquiteProject/MesquiteCore/releases/download/v$pkgver-$buildver/Mesquite$_pkgver.tgz
+source=(https://github.com/MesquiteProject/MesquiteCore/releases/download/v$pkgver/Mesquite_Folder$_pkgver.tgz
         $pkgname.png
         $pkgname.desktop
 	$pkgname.sh
         )
-md5sums=('85d122f3ca439c3f9fe5d2752d45a9d7'
+md5sums=('671cf1b579a9fef2a8cf4771e1accd85'
          '8b62ba93f95aab14a8643bf5b939f465'
          '279160bcf1544a78e0b0372279bfa68d'
 	 'f6ff62edbf95e40d21c7bceadb35ecfe'
