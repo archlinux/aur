@@ -5,7 +5,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.1
-pkgrel=7
+pkgrel=1
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -26,7 +26,6 @@ makedepends=(
         range-v3
         python
         libappindicator-gtk3
-        dos2unix
         )
 optdepends=(
         'libnotify: desktop notifications'
@@ -78,7 +77,7 @@ sha512sums=(
         '98236f7f161c8bad1152a77505f9c3eebae06ffc0420ed476e101359a92d01438dd6ce6062e0b110b76f2d6d09f59accf4b1969699b8af5a3650ecb0c31929c5'  # CMakeLists.inj
         '117b0c2bae3d3d3aa94d41382621be4e05c3314a2831dba59e1bcfb443e7b8ff4bcd0403544fa0cb6def85b444146bf59eef9da25f96b041d3ce8f5429b4a867'  # no-gtk2.patch
         'f667b00f4c2e02799d3a130f1370bbe13866294329164c9fee901fa54655e4ebfaaae4e0f15327b660b10248c6a087dd2fa53d9f72714ba099ea2cbf4d07ca32'  # tdesktop.patch
-        'b87414ceaae19185a8a5749cea1f6d9f3fc3c69b8dd729e3db8790cde00b987c3c827cd30baf0eac579d1884e34aa2f37bb90778c3c0bc9ca211d75a82891b9d'  # tg.protocol
+        'e54c2f5a4cdeff5850828072890679e07da07cfa3663cf9bfb1e6b8f5bca0dc15e6b4b9a2a6c111b796a0440035beea419cda9bf4ec5d476d4fbb54c1b4ad7fd'  # tg.protocol
         )
         
 
