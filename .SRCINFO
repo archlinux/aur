@@ -1,11 +1,12 @@
 pkgbase = trinnity-caffe-cudnn-git
 	pkgdesc = Caffe 1.0 with triNNity extensions (CUDNN backend)
 	pkgver = 1.0
-	pkgrel = 17
+	pkgrel = 18
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = gcc8
 	depends = boost-libs
 	depends = protobuf
 	depends = google-glog
