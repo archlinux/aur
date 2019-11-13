@@ -1,4 +1,10 @@
-kotatogram-desktop-1.1-2-x86_64.pkg.tar.xz
-kotatogram-desktop-1.1.tar.gz
-pkg/
-src/
+icon128.png
+icon16.png
+icon256.png
+icon32.png
+icon48.png
+icon512.png
+icon64.png
+kotatogram-desktop-bin-*
+kotatogramdesktop.desktop
+tg.protocol
