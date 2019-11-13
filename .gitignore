@@ -1,0 +1,6 @@
+*xz
+*gz
+*tar
+pkg/
+src/
+tfsec-linux-amd64
