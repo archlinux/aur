@@ -2,7 +2,7 @@
 
 pkgname=i2c-piix4-aura-dkms
 _pkgbase=${pkgname%-dkms}
-pkgver=5.3.10
+pkgver=5.3.11
 pkgrel=1
 pkgdesc="The i2c-piix4 kernel driver, patched to be used with OpenAuraSDK: https://gitlab.com/CalcProgrammer1/OpenAuraSDK"
 arch=('x86_64')
