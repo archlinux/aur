@@ -4,31 +4,36 @@
 #
 _pkgname="Shortwave"
 pkgname="shortwave"
-pkgver="7.2"
+pkgver="0.0.1"
 pkgrel="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('any')
-url="https://gitlab.gnome.org/World/Shortwave"
+url="https://gitlab.gnome.org/World/${_pkgname}"
 license=('GPL3')
-depends=('gstreamer' 'libhandy')
-makedepends=('cargo' 'gobject-introspection' 'libdazzle' 'libhandy' 'meson' 'rust')
+depends=('gstreamer' 'libhandy' 'libsoup' 'gtk3')
+makedepends=('cargo' 'gobject-introspection' 'gst-plugins-base-libs' 'libdazzle' 'meson' 'rust')
 options=('!emptydirs')
 provides=("${pkgname}")
 conflicts=("${pkgname}"-git)
-source=("Shortwave-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/Shortwave-v${pkgver}.tar.gz")
-sha256sums=('0417004126069ad693b1a0afa622cb6edf330aafcd98642577dac230e43cfc16')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('7173400e55c8c5d0117ca1e877942af685e646197552f7ee8103fca73d648e34')
 
 build() {
-    cd "${_pkgname}-v${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     arch-meson builddir --prefix=/usr
     ninja -C builddir
 }
 
+check() {
+	cd "${_pkgname}-${pkgver}"
+	ninja -C builddir test
+}
+
 package() {
-    cd "${_pkgname}-v${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     DESTDIR="${pkgdir}" ninja -C builddir install
 
-	install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et syn=sh ft=sh:
