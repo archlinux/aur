@@ -1,0 +1,6 @@
+# source
+/xcrysden-*.tar.gz
+# makepkg
+/src
+/pkg
+*.pkg.tar.*

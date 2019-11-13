@@ -1,7 +1,7 @@
 #########################################################################
 #
 #  System-dependent definitions suitable for compiling xcrysden using
-#  a system shared libraries (needs Tcl/Tk/GL/GLU/FFTW libraries)
+#  a system shared libraries (needs Tcl/Tk/Togl/GL/GLU/FFTW libraries)
 #
 ########################################################################
 
@@ -21,7 +21,7 @@ CC     = gcc -g
 #LDLIB  = -ldl
 MATH   = -lm -lc
 
-FFLAGS = 
+FFLAGS =
 FC     = gfortran -std=legacy -fdefault-double-8 -fdefault-real-8 -O2
 
 #-------------------------------------------
@@ -43,6 +43,7 @@ X_INCDIR  =
 
 TCL_LIB      = -ltcl
 TK_LIB       = -ltk
+TOGL_LIB     = -L/usr/lib/Togl2.0 -lTogl$(TOGL_VER) -Wl,-rpath=/usr/lib/Togl2.0
 GLU_LIB      = -lGLU
 GL_LIB       = -lGL
 FFTW3_LIB    = -lfftw3
@@ -54,8 +55,9 @@ EXT_LIB      = -lgl2ps
 # Include directories
 #
 
-TCL_INCDIR      = -I/usr/include
+TCL_INCDIR      =
 TK_INCDIR       =
+TOGL_INCDIR     =
 GL_INCDIR       =
 FFTW3_INCDIR    =
 # this is only used for some testing purposes
