@@ -1,14 +1,14 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=onefetch
-pkgver=1.6.5
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Display info about software projects"
+pkgdesc="Git repository summary on your terminal"
 url="https://github.com/o2sh/onefetch"
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('cargo')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('50f069db2fa713024a19bf708add7812f3420b0c107eb68cd9907d76e375a06d')
+sha256sums=('54c7b543b39cf22bac2505c792d7fbba75bfdbe1a19900879b439dc65c75c414')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
