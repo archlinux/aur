@@ -4,7 +4,7 @@
 pkgname=cockroachdb-bin
 conflicts=('cockroachdb')
 provides=('cockroachdb')
-pkgver=19.1.5
+pkgver=19.2.0
 pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("https://binaries.cockroachdb.com/cockroach-v${pkgver}.linux-amd64.tgz"
         cockroach.default
         cockroach.sysusers
         cockroach.tmpfiles)
-sha256sums=('20f5ed70849d42f3d575fe8580205b3133f903c5059df9aa26e5a7c09e7c324f'
+sha256sums=('f775545229b3f967cf8c07d5c3e86f039f7647eb96f7d09766179e4202744971'
             '68040689c4342e0018adec3eb0fb1f2ae68aaeef918e7b4493518523381b7129'
             'b3ef077aa9a0d4b697722de993fa83959f10910ae600de90bcdcdd49fafce371'
             '2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067'
