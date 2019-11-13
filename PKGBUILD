@@ -1,3 +1,5 @@
+# Maintainer: Auteiy <dmitry@auteiy.me>
+
 pkgname=ttf-exo-2
 pkgver=1.100
 pkgrel=1
