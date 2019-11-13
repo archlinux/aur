@@ -1,14 +1,14 @@
 pkgbase = python2-hupper
 	pkgdesc = Integrated process monitor for developing servers.
-	pkgver = 1.9
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/Pylons/hupper/
 	arch = any
 	license = MTI
 	makedepends = python2-distribute
 	depends = python2
-	source = https://files.pythonhosted.org/packages/eb/62/a54a34fddfec90ce650430203ee168804b925dd97138a5732b7d70b08627/hupper-1.9.tar.gz
-	sha256sums = afd4e7beedc7417fed12cb2e15a21610c73cb08821c7f09aa926be24d4038dae
+	source = https://files.pythonhosted.org/packages/09/3a/4f215659f31eeffe364a984dba486bfa3907bfcc54b7013bdfe825cebb5f/hupper-1.9.1.tar.gz
+	sha256sums = 3b1c2222ec7b8159e7ad059e4493c6cc634c86184af0bf2ce5aba6edd241cf5f
 
 pkgname = python2-hupper
 
