@@ -7,8 +7,9 @@ arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
 license=('MIT')
 depends=('nss>=3.0'
+         'php'
          'gtk3')
-makedepends=('npm')
+optdepends=('wine: non-native game support')
 source=('https://bluepload.unstable.life/selif/flashpoint-linux-x64-20191112.tar.gz')
 md5sums=('313d585f60cb4d7a0c834e0ff693729c')
 

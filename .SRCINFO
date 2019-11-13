@@ -5,9 +5,10 @@ pkgbase = flashpoint-bin
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
 	license = MIT
-	makedepends = npm
 	depends = nss>=3.0
+	depends = php
 	depends = gtk3
+	optdepends = wine: non-native game support
 	source = https://bluepload.unstable.life/selif/flashpoint-linux-x64-20191112.tar.gz
 	md5sums = 313d585f60cb4d7a0c834e0ff693729c
 
