@@ -1,9 +1,8 @@
 pkgbase = runescape-launcher
 	pkgdesc = RuneScape Game Client (NXT)
 	pkgver = 2.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.runescape.com/
-	install = install.sh
 	arch = x86_64
 	license = custom
 	makedepends = gcc
