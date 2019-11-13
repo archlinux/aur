@@ -4,16 +4,16 @@
 #_GPU_TARGET="61"
 _pkgname=faiss
 pkgbase=faiss-cuda-git
-pkgname=('faiss-cuda-git' 'python-faiss-cuda-git' 'python2-faiss-cuda-git')
+pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.5.2.r5.gd224d11
+pkgver=v1.6.0.r5.ge325c50
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
 depends=('blas' 'lapack' 'cuda')
-makedepends=('git' 'python' 'python2' 'python-numpy' 'python2-numpy' 'swig' 'python-setuptools' 'python2-setuptools')
+makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools')
 
 
 pkgver() {
@@ -24,8 +24,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  cp -ar python python2
-  sed -i 's/makefile.inc/makefile2.inc/g' python2/Makefile
 }
 
 
@@ -40,15 +38,9 @@ build() {
     done
     _CONF_FLAGS=$_CONF_FLAGS'"'
   fi
-  sh -c "./configure $_CONF_FLAGS --with-python=python2" # what an ugliness! I don't know how to do it better though
-  mv makefile.inc makefile2.inc
   sh -c "./configure $_CONF_FLAGS --with-python=python"
-  make clean
-  make -C python clean
-  make -C python2 clean
-  make 			# build faiss
+  make 			    # build faiss
   make -C python  	# build python package
-  make -C python2 	# build python2 package
 }
 
 package_faiss-cuda-git() {
@@ -68,16 +60,5 @@ package_python-faiss-cuda-git() {
 
   cd "${srcdir}/${_pkgname}/python"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-faiss-cuda-git() {
-  pkgdesc='A library for efficient similarity search and clustering of dense vectors, CUDA version. Python2 wrappers'
-  provides=('python2-faiss')
-  conflicts=('python2-faiss')
-  depends=('python2' 'python2-numpy')
-
-  cd "${srcdir}/${_pkgname}/python2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
