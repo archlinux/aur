@@ -61,10 +61,10 @@ _localmodcfg=
 _major=4.19
 _minor=84
 _srcname=linux-${_major}
-_clr=${_major}.82-90
+_clr=${_major}.83-93
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
@@ -97,6 +97,7 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
+        sed -i '38,63 {s/^/#/}' ${srcdir}/${pkgbase}/linux-lts2018.spec
         for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126|^Patch0128' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
