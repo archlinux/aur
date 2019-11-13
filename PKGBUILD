@@ -3,29 +3,30 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.2.4
-pkgrel=4
+pkgver=2.2.5
+pkgrel=1
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
 url="https://www.runescape.com/"
 depends=(
-    glew1.10
+    # TODO: prune redundant deps, this is just straight out of lddtree
+    gdk-pixbuf2
     gtk2
-    libcurl-compat
-    libpng12
-    libvorbis
-    sdl2
+    libcap
+    libsm
+    libxxf86vm
+    # TODO: change back to openssl 1.1 for v2.2.6
+    openssl-1.0
 )
+makedepends=(gcc) # HACK
 conflicts=(runescape-launcher-nxt)
 provides=(runescape-launcher-nxt)
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
-        "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg"
-        "wrapper.sh")
+        "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
 source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
                "${pkgname}_${pkgver}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 sha256sums_x86_64=('SKIP'
                    'SKIP')
@@ -97,8 +98,19 @@ prepare() {
     mkdir "$srcdir/$pkgname-$pkgver"
     cd "$srcdir/$pkgname-$pkgver"
 
-    bsdtar xf ../control.tar.gz
-    bsdtar xf ../data.tar.xz
+    msg2 "Extracting control files..."
+    bsdtar xvf ../control.tar.xz
+
+    msg2 "Extracting data files..."
+    bsdtar xvf ../data.tar.xz
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+
+    # HACK
+    echo 'int SSLv3_client_method() { return -1; }' > libfakesslv3.c
+    gcc -shared -o libfakesslv3.so libfakesslv3.c
 }
 
 package() {
@@ -106,10 +118,22 @@ package() {
 
     cp -a usr "$pkgdir"
 
-    mv "$pkgdir"/usr/bin/runescape-launcher{,.real}
+    # 2019-11-11: The binary needs 'SSLv3_client_method', but our OpenSSL
+    # package does not support SSLv3. (This will be fixed in NXT 2.2.6)
+    #sed -i 's,SSLv3_client_method,TLSv1_client_method,g' \
+    #       "$pkgdir"/usr/share/games/runescape-launcher/runescape
 
-    install -Dm0755 ../wrapper.sh "$pkgdir"/usr/bin/runescape-launcher
+    # XXX: maybe move the binary out of /usr/share to where it belongs
+    #mkdir -p "$pkgdir"/usr/lib/runescape-launcher
+    #mv "$pkgdir"/usr/{share/games,lib}/runescape-launcher/runescape
+    #sed -i 's,/usr/share/games,/usr/lib,' "$pkgdir"/usr/bin/runescape-launcher
+
     install -Dm0644 copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+    # HACK
+    install -Dm0644 libfakesslv3.so "$pkgdir"/usr/share/games/runescape-launcher/libfakesslv3.so
+    sed -i '1aexport LD_PRELOAD=/usr/share/games/runescape-launcher/libfakesslv3.so' \
+           "$pkgdir"/usr/bin/runescape-launcher
 }
 
 # vim: ft=sh:ts=4:sw=4:et:nowrap
