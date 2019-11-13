@@ -20,8 +20,6 @@ depends=(
     openssl-1.0
 )
 makedepends=(gcc) # HACK
-conflicts=(runescape-launcher-nxt)
-provides=(runescape-launcher-nxt)
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
         "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
 source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
