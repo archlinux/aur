@@ -1,7 +1,7 @@
 pkgbase = freesteam
 	pkgdesc = Open source steam property routines in C
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freesteam.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,11 @@ pkgbase = freesteam
 	makedepends = scons
 	depends = gsl
 	depends = gtk2
-	depends = python2
+	depends = python
 	source = https://downloads.sourceforge.net/project/freesteam/freesteam/2.1/freesteam-2.1.tar.bz2
+	source = python3.patch
 	sha256sums = 5993bb3aa8a121256e43363c7c2b66facc53142e0f5ed9e4f5daa492a1a3e976
+	sha256sums = a0411f2987db9eb9ea052160041638e86aa0a4b53f541c472881001d8ab0877f
 
 pkgname = freesteam
 

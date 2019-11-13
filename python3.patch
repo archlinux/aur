@@ -1,0 +1,1658 @@
+diff -u -r freesteam-2.1_orig/pyqt/UI_steamTables.py freesteam-2.1/pyqt/UI_steamTables.py
+--- freesteam-2.1_orig/pyqt/UI_steamTables.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/pyqt/UI_steamTables.py	2019-11-13 10:03:23.442827518 +0100
+@@ -3,7 +3,7 @@
+ 
+ from PyQt4 import QtCore, QtGui
+ from csv import writer
+-from ConfigParser import ConfigParser
++from configparser import ConfigParser
+ from webbrowser import open_new_tab
+ 
+ from freesteam import *
+@@ -149,20 +149,20 @@
+         layout.addWidget(self.labelPunto2,2,3,1,1)
+         layout.addItem(QtGui.QSpacerItem(50, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed), 1, 4, 2, 1)
+         
+-        self.labelEntalpia=QtGui.QLabel(u"Δh")
++        self.labelEntalpia=QtGui.QLabel("Δh")
+         layout.addWidget(self.labelEntalpia,1,5,1,1)
+         self.entalpia=Entrada_con_unidades(UI_enthalpy, unidades.Enthalpy, "Enthalpy", readOnly=True, boton=False, frame=False, width=70)
+         layout.addWidget(self.entalpia,1,6,1,1)
+-        self.labelEntropia=QtGui.QLabel(u"Δs")
++        self.labelEntropia=QtGui.QLabel("Δs")
+         layout.addWidget(self.labelEntropia,2,5,1,1)
+         self.entropia=Entrada_con_unidades(UI_specificHeat, unidades.SpecificHeat, "SpecificHeat", "Entropy", readOnly=True, boton=False, frame=False, width=70)
+         layout.addWidget(self.entropia,2,6,1,1)
+         
+-        self.labelGibbs=QtGui.QLabel(u"Δg")
++        self.labelGibbs=QtGui.QLabel("Δg")
+         layout.addWidget(self.labelGibbs,1,8,1,1)
+         self.gibbs=Entrada_con_unidades(UI_enthalpy, unidades.Enthalpy, "Enthalpy", readOnly=True, boton=False, frame=False, width=70)
+         layout.addWidget(self.gibbs,1,9,1,1)
+-        self.labelEnergiaInterna=QtGui.QLabel(u"Δu")
++        self.labelEnergiaInterna=QtGui.QLabel("Δu")
+         layout.addWidget(self.labelEnergiaInterna,2,8,1,1)
+         self.energiaInterna=Entrada_con_unidades(UI_enthalpy, unidades.Enthalpy, "Enthalpy", readOnly=True, boton=False, frame=False, width=70)
+         layout.addWidget(self.energiaInterna,2,9,1,1)
+@@ -250,7 +250,7 @@
+         self.puntos=puntos
+         self.gridLayout = QtGui.QGridLayout(self)
+         self.listWidget = QtGui.QTableWidget(len(puntos), 3)
+-        self.listWidget.setHorizontalHeaderLabels([QtCore.QString(u"Δ1"), QtCore.QString(u"Δ2"), QtGui.QApplication.translate("SteamTables", "Definición", None, QtGui.QApplication.UnicodeUTF8)])
++        self.listWidget.setHorizontalHeaderLabels([QtCore.QString("Δ1"), QtCore.QString("Δ2"), QtGui.QApplication.translate("SteamTables", "Definición", None, QtGui.QApplication.UnicodeUTF8)])
+         self.listWidget.resizeColumnsToContents()
+         self.listWidget.horizontalHeader().setStretchLastSection(True)
+         self.listWidget.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
+@@ -265,7 +265,7 @@
+         self.tablaPropiedades.setVerticalHeaderItem(2, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Volumen", None, QtGui.QApplication.UnicodeUTF8)+", %s" %config.Configuracion("SpecificVolume").text()))
+         self.tablaPropiedades.setVerticalHeaderItem(3, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Entalpía", None, QtGui.QApplication.UnicodeUTF8)+", %s" %config.Configuracion("Enthalpy").text()))
+         self.tablaPropiedades.setVerticalHeaderItem(4, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Entropía", None, QtGui.QApplication.UnicodeUTF8)+", %s" %config.Configuracion("SpecificHeat", "Entropy").text()))
+-        self.tablaPropiedades.setVerticalHeaderItem(5, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", u"Fracción de vapor", None, QtGui.QApplication.UnicodeUTF8)))
++        self.tablaPropiedades.setVerticalHeaderItem(5, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Fracción de vapor", None, QtGui.QApplication.UnicodeUTF8)))
+         self.tablaPropiedades.setVerticalHeaderItem(6, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Energía interna", None, QtGui.QApplication.UnicodeUTF8)+", %s" %config.Configuracion("Enthalpy").text()))
+         self.tablaPropiedades.setVerticalHeaderItem(7, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Energía de Gibbs", None, QtGui.QApplication.UnicodeUTF8)+", %s" %config.Configuracion("Enthalpy").text()))
+         self.tablaPropiedades.setVerticalHeaderItem(8, QtGui.QTableWidgetItem(QtGui.QApplication.translate("SteamTables", "Energía de Helmholtz", None, QtGui.QApplication.UnicodeUTF8)+", %s" %config.Configuracion("Enthalpy").text()))
+@@ -713,7 +713,7 @@
+         self.conductividad=Entrada_con_unidades(UI_thermalConductivity, unidades.ThermalConductivity, "ThermalConductivity", readOnly=True, retornar=False)
+         self.conductividad.setStatusTip(QtGui.QApplication.translate("SteamTables", "Conductividad térmica", None, QtGui.QApplication.UnicodeUTF8))
+         self.gridLayout_1.addWidget(self.conductividad,18,1,1,1)
+-        self.gridLayout_1.addWidget(QtGui.QLabel(QtGui.QApplication.translate("SteamTables", u"Viscosidad", None, QtGui.QApplication.UnicodeUTF8)),19,0,1,1)
++        self.gridLayout_1.addWidget(QtGui.QLabel(QtGui.QApplication.translate("SteamTables", "Viscosidad", None, QtGui.QApplication.UnicodeUTF8)),19,0,1,1)
+         self.viscosidad=Entrada_con_unidades(UI_viscosity, unidades.Viscosity, "Viscosity", readOnly=True, retornar=False)
+         self.viscosidad.setStatusTip(QtGui.QApplication.translate("SteamTables", "Viscosidad dinámica", None, QtGui.QApplication.UnicodeUTF8))
+         self.gridLayout_1.addWidget(self.viscosidad, 19,1,1,1)
+@@ -815,7 +815,7 @@
+             self.puntos=[]
+             while True:
+                 try:
+-                    punto=map(float, self.Config.get("Points", str(i)).split(","))
++                    punto=list(map(float, self.Config.get("Points", str(i)).split(",")))
+                 except: break
+                 if punto[0]==0.0:
+                     self.puntos.append(steam_Tx(punto[1], punto[2]))
+@@ -859,7 +859,7 @@
+ 
+     def exporttoCSV(self):
+         """Guarda los datos de la tabla en un archivo csv"""
+-        fname = QtGui.QFileDialog.getSaveFileName(self, QtGui.QApplication.translate("SteamTables", u"Exportar datos", None, QtGui.QApplication.UnicodeUTF8), "./", "CSV (*.csv);;All archives (*.*)")
++        fname = QtGui.QFileDialog.getSaveFileName(self, QtGui.QApplication.translate("SteamTables", "Exportar datos", None, QtGui.QApplication.UnicodeUTF8), "./", "CSV (*.csv);;All archives (*.*)")
+         if fname:
+             texto = writer(open(fname, 'wb'), delimiter='\t')
+             texto.writerow([""]+[str(i) for i in self.xdata[0]])
+@@ -1592,7 +1592,7 @@
+                 Isolineas[i].intervalo=self.Config.getfloat(propiedad, 'Step')
+                 Isolineas[i].Personalizar=self.Config.getboolean(propiedad, 'Custom')
+                 lista=[]
+-                if self.Config.get(propiedad, 'List')<>"":
++                if self.Config.get(propiedad, 'List')!="":
+                     for j in self.Config.get(propiedad, 'List').split(','):
+                         lista.append(float(j))
+                 Isolineas[i].Lista=lista
+@@ -1716,13 +1716,13 @@
+             texto="Cv, %s" %config.Configuracion("SpecificHeat").text()
+             self.factorz=unidades.SpecificHeat(1).unit(config.Configuracion("SpecificHeat").func())
+         elif self.variableTabla.currentText()==QtGui.QApplication.translate("SteamTables", "Densidad", None, QtGui.QApplication.UnicodeUTF8):
+-            texto=u"ρ, %s" %config.Configuracion("Density").text()
++            texto="ρ, %s" %config.Configuracion("Density").text()
+             self.factorz=unidades.Density(1).unit(config.Configuracion("Density").func())
+         elif self.variableTabla.currentText()==QtGui.QApplication.translate("SteamTables", "Conductividad térmica", None, QtGui.QApplication.UnicodeUTF8):
+             texto="k, %s" %config.Configuracion("ThermalConductivity").text()
+             self.factorz=unidades.ThermalConductivity(1).unit(config.Configuracion("ThermalConductivity").func())
+         elif self.variableTabla.currentText()==QtGui.QApplication.translate("SteamTables", "Viscosidad", None, QtGui.QApplication.UnicodeUTF8):
+-            texto=u"μ, %s" %config.Configuracion("Viscosity").text()
++            texto="μ, %s" %config.Configuracion("Viscosity").text()
+             self.factorz=unidades.Viscosity(1).unit(config.Configuracion("Viscosity").func())
+         elif self.variableTabla.currentText()==QtGui.QApplication.translate("SteamTables", "Velocidad del sonido", None, QtGui.QApplication.UnicodeUTF8):
+             texto="w, %s" %config.Configuracion("Speed").text()
+@@ -2154,7 +2154,7 @@
+         x, y, z, x2, y2=self.isolineas(S, X, steam_ps, start, rango)
+         for i in range(len(S)-1, -1, -1):
+             for j in range(len(X)-1, -1, -1):
+-                if bounds_ps(X[j], S[i], 0)<>0:
++                if bounds_ps(X[j], S[i], 0)!=0:
+                     del x[i][j]
+                     del y[i][j]
+                     del z[i][j]
+@@ -2197,7 +2197,7 @@
+         x, y, z, x2, y2=self.isolineas(H, X, steam_ph, start, rango)
+         for i in range(len(H)-1, -1, -1):
+             for j in range(len(X)-1, -1, -1):
+-                if bounds_ph(X[j], H[i], 0)<>0:
++                if bounds_ph(X[j], H[i], 0)!=0:
+                     del x[i][j]
+                     del y[i][j]
+                     del z[i][j]
+@@ -2321,7 +2321,7 @@
+         x, y, z, x2, y2=self.isolineas(V, X, steam_pv, start, rango)
+         for i in range(len(V)-1, -1, -1):
+             for j in range(len(x[i])-1, -1, -1):
+-                if bounds_pv(X[j], V[i], 0)<>0:
++                if bounds_pv(X[j], V[i], 0)!=0:
+                     del x[i][j]
+                     del y[i][j]
+                     del z[i][j]
+@@ -2403,7 +2403,7 @@
+                 
+     def mostrarPropiedades(self):
+         """Muestra los valores de las propiedades de la sección de puntos especificados por el usuario"""
+-        if self.punto<>0:
++        if self.punto!=0:
+             self.presion.setValue(self.punto.p)
+             self.temperatura.setValue(self.punto.T)
+             self.volumen.setValue(self.punto.v)
+diff -u -r freesteam-2.1_orig/pyqt/units/config.py freesteam-2.1/pyqt/units/config.py
+--- freesteam-2.1_orig/pyqt/units/config.py	2019-11-13 09:59:29.869306033 +0100
++++ freesteam-2.1/pyqt/units/config.py	2019-11-13 11:35:47.477408453 +0100
+@@ -1,8 +1,8 @@
+ #!/usr/bin/python
+ # -*- coding: utf-8 -*-
+ 
+-from ConfigParser import ConfigParser
+-from unidades import texto, units
++from configparser import ConfigParser
++from .unidades import texto, units
+ 
+ class Configuracion():
+     """Clase que define los valores de las unidades, a partir del archivo de configuración"""
+@@ -96,7 +96,7 @@
+     return (K-273.15)/1.25
+ 
+ if __name__ == "__main__":
+-    print Re2K(80)
+-    print K2Re(373.15)
+-    print K2F(273.15)
+-    print F2K(32)
++    print((Re2K(80)))
++    print((K2Re(373.15)))
++    print((K2F(273.15)))
++    print((F2K(32)))
+diff -u -r freesteam-2.1_orig/pyqt/units/UI.py freesteam-2.1/pyqt/units/UI.py
+--- freesteam-2.1_orig/pyqt/units/UI.py	2019-11-13 09:59:29.869306033 +0100
++++ freesteam-2.1/pyqt/units/UI.py	2019-11-13 10:03:25.149519497 +0100
+@@ -3,10 +3,10 @@
+ 
+ from PyQt4 import QtCore, QtGui
+ from os import linesep
+-from ConfigParser import ConfigParser
++from configparser import ConfigParser
+ 
+-from unidades import *
+-from config import Configuracion, representacion
++from .unidades import *
++from .config import Configuracion, representacion
+ from images import images_rc
+ 
+ Config=ConfigParser()
+@@ -126,7 +126,7 @@
+             
+     def entrada_editingFinished(self):
+         if not self.readOnly:
+-            if self.unidad<>int:
++            if self.unidad!=int:
+                 self.entrada.setText(representacion(float(self.entrada.text().replace(',', '.')), self.decimales, self.tolerancia))
+             if self.magnitud:
+                 self.value=self.unidad(float(self.entrada.text())).unit(Configuracion(self.magnitud, self.UIconfig).func())
+@@ -433,27 +433,27 @@
+         """Configura las unidades acorde con el sistema británico de unidades"""
+         self.conf_temperatura.setCurrentIndex(self.conf_temperatura.findText('F'))
+         self.conf_presion.setCurrentIndex(self.conf_presion.findText('psi'))
+-        self.conf_volumen.setCurrentIndex(self.conf_volumen.findText(u'ft³/lb'))
+-        self.conf_densidad.setCurrentIndex(self.conf_densidad.findText(u'lb/ft³'))
+-        self.conf_conductividad.setCurrentIndex(self.conf_conductividad.findText(u'Btu/h·ft·F'))
+-        self.conf_capacidad.setCurrentIndex(self.conf_capacidad.findText(u'Btu/lb·F'))
+-        self.conf_entalpia.setCurrentIndex(self.conf_entalpia.findText(u'Btu/lb'))
+-        self.conf_velocidad.setCurrentIndex(self.conf_velocidad.findText(u'ft/s'))
+-        self.conf_viscosidad.setCurrentIndex(self.conf_viscosidad.findText(u'cP'))
+-        self.conf_entropia.setCurrentIndex(self.conf_entropia.findText(u'Btu/lb·F'))
++        self.conf_volumen.setCurrentIndex(self.conf_volumen.findText('ft³/lb'))
++        self.conf_densidad.setCurrentIndex(self.conf_densidad.findText('lb/ft³'))
++        self.conf_conductividad.setCurrentIndex(self.conf_conductividad.findText('Btu/h·ft·F'))
++        self.conf_capacidad.setCurrentIndex(self.conf_capacidad.findText('Btu/lb·F'))
++        self.conf_entalpia.setCurrentIndex(self.conf_entalpia.findText('Btu/lb'))
++        self.conf_velocidad.setCurrentIndex(self.conf_velocidad.findText('ft/s'))
++        self.conf_viscosidad.setCurrentIndex(self.conf_viscosidad.findText('cP'))
++        self.conf_entropia.setCurrentIndex(self.conf_entropia.findText('Btu/lb·F'))
+         
+     def si(self, bool):
+         """Configura las unidades acorde con el sistema internacional de unidades"""
+         self.conf_temperatura.setCurrentIndex(self.conf_temperatura.findText('K'))
+         self.conf_presion.setCurrentIndex(self.conf_presion.findText('bar'))
+-        self.conf_volumen.setCurrentIndex(self.conf_volumen.findText(u'm³/kg'))
+-        self.conf_densidad.setCurrentIndex(self.conf_densidad.findText(u'kg/m³'))
+-        self.conf_conductividad.setCurrentIndex(self.conf_conductividad.findText(u'W/m·K'))
+-        self.conf_capacidad.setCurrentIndex(self.conf_capacidad.findText(u'kJ/kg·K'))
+-        self.conf_entalpia.setCurrentIndex(self.conf_entalpia.findText(u'kJ/kg'))
+-        self.conf_velocidad.setCurrentIndex(self.conf_velocidad.findText(u'm/s'))
+-        self.conf_viscosidad.setCurrentIndex(self.conf_viscosidad.findText(u'Pa·s'))
+-        self.conf_entropia.setCurrentIndex(self.conf_entropia.findText(u'kJ/kg·K'))
++        self.conf_volumen.setCurrentIndex(self.conf_volumen.findText('m³/kg'))
++        self.conf_densidad.setCurrentIndex(self.conf_densidad.findText('kg/m³'))
++        self.conf_conductividad.setCurrentIndex(self.conf_conductividad.findText('W/m·K'))
++        self.conf_capacidad.setCurrentIndex(self.conf_capacidad.findText('kJ/kg·K'))
++        self.conf_entalpia.setCurrentIndex(self.conf_entalpia.findText('kJ/kg'))
++        self.conf_velocidad.setCurrentIndex(self.conf_velocidad.findText('m/s'))
++        self.conf_viscosidad.setCurrentIndex(self.conf_viscosidad.findText('Pa·s'))
++        self.conf_entropia.setCurrentIndex(self.conf_entropia.findText('kJ/kg·K'))
+ 
+     def aceptar(self, Config):
+         if not Config.has_section("Units"):
+@@ -607,7 +607,7 @@
+             self.intervalo.setValue(Config.getfloat(ConfSection, 'Step'))
+             self.Personalizar.setChecked(Config.getboolean(ConfSection, 'Custom'))
+             
+-            if Config.get(ConfSection, 'List')<>"":
++            if Config.get(ConfSection, 'List')!="":
+                 T=[]
+                 for i in Config.get(ConfSection, 'List').split(','):
+                     if magnitud==None:
+diff -u -r freesteam-2.1_orig/pyqt/units/unidades.py freesteam-2.1/pyqt/units/unidades.py
+--- freesteam-2.1_orig/pyqt/units/unidades.py	2019-11-13 09:59:29.869306033 +0100
++++ freesteam-2.1/pyqt/units/unidades.py	2019-11-13 11:35:48.100750471 +0100
+@@ -3,7 +3,7 @@
+ 
+ from PyQt4.QtGui import QApplication
+ import scipy.constants as k
+-from ConfigParser import ConfigParser
++from configparser import ConfigParser
+ 
+ k.tonUS=2000*k.lb
+ k.tonUK = 2240*k.lb
+@@ -12,15 +12,15 @@
+ k.Reaumur=1/0.8
+ 
+ texto=dict(
+-            Temperature=['K',u'ºC',u'ºR',u'ºF',u'ºRe'], 
+-            Pressure=['Pa', 'hPa', 'kPa', 'MPa', 'bar', 'bar g', 'mbar', 'psi', 'psi g', 'atm', u'kg/cm²', u'kg/cm² g', 'mmH2O', 'cmH2O', 'mH2O', 'inH2O', 'ftH2O', 'mmHg', 'cmHg', 'inHg', 'ftHg', u'lb/cm²',u'lb/ft²', u'dyn/cm²' ], 
++            Temperature=['K','ºC','ºR','ºF','ºRe'], 
++            Pressure=['Pa', 'hPa', 'kPa', 'MPa', 'bar', 'bar g', 'mbar', 'psi', 'psi g', 'atm', 'kg/cm²', 'kg/cm² g', 'mmH2O', 'cmH2O', 'mH2O', 'inH2O', 'ftH2O', 'mmHg', 'cmHg', 'inHg', 'ftHg', 'lb/cm²','lb/ft²', 'dyn/cm²' ], 
+             Speed=['m/s', 'cm/s', 'mm/s', 'km/s', 'ft/s', 'ft/min',  'm/min', 'km/min','km/h',  'km/day', 'mph', QApplication.translate("unidades", "nudo", None, QApplication.UnicodeUTF8)], 
+-            Viscosity=[u'Pa·s', u'mPa·s', u'µPa·s', 'P', 'cP', u'dyn/s·cm²', u'µP', 'reyn', u'lb/ft·s', u'lbf/ft²', u'lbf/in²', u'lb/ft·h'], 
+-            Density=[u'kg/m³', u'g/cm³', u'g/m³', u'kg/cm³', u'lb/ft³',u'lb/inch³' , 'lb/galUK', 'lb/galUS', 'lb/bbl'], 
+-            ThermalConductivity=[u'W/m·K', u'J/h·m·K', u'cal/s·cm·K', u'cal/h·cm·K',u'kcal/h·m·K' , u'lbf/s·F', u'lb/ft·s³·F',u'Btu/h·ft·F'], 
+-            SpecificHeat=[u'J/kg·K', u'kJ/kg·K', u'kcal/kg·K', u'kcal/g·K', u'kWh/kg·K', u'Btu/lb·F'], 
++            Viscosity=['Pa·s', 'mPa·s', 'µPa·s', 'P', 'cP', 'dyn/s·cm²', 'µP', 'reyn', 'lb/ft·s', 'lbf/ft²', 'lbf/in²', 'lb/ft·h'], 
++            Density=['kg/m³', 'g/cm³', 'g/m³', 'kg/cm³', 'lb/ft³','lb/inch³' , 'lb/galUK', 'lb/galUS', 'lb/bbl'], 
++            ThermalConductivity=['W/m·K', 'J/h·m·K', 'cal/s·cm·K', 'cal/h·cm·K','kcal/h·m·K' , 'lbf/s·F', 'lb/ft·s³·F','Btu/h·ft·F'], 
++            SpecificHeat=['J/kg·K', 'kJ/kg·K', 'kcal/kg·K', 'kcal/g·K', 'kWh/kg·K', 'Btu/lb·F'], 
+             Enthalpy=['J/kg', 'kJ/kg', 'MJ/kg','cal/kg' , 'kcal/kg', 'cal/lb', 'Btu/lb'], 
+-            SpecificVolume=[u'm³/kg',u'cm³/g' , u'm³/g', u'cm³/kg', u'ft³/lb', u'in³/lb', 'gallon UK/lb', 'gallon US/lb', 'barril/lb', u'ft³/ton UK', u'ft³/ton US', u'ft³/slug', u'ft³/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8), u'in³/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8), 'gallon UK/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8), 'gallon US/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8)], 
++            SpecificVolume=['m³/kg','cm³/g' , 'm³/g', 'cm³/kg', 'ft³/lb', 'in³/lb', 'gallon UK/lb', 'gallon US/lb', 'barril/lb', 'ft³/ton UK', 'ft³/ton US', 'ft³/slug', 'ft³/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8), 'in³/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8), 'gallon UK/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8), 'gallon US/'+QApplication.translate("unidades", "onza", None, QApplication.UnicodeUTF8)], 
+            )
+            
+ units=dict(
+@@ -39,10 +39,10 @@
+             Temperature=['Kelvin','Celsius','Rankine','Fahrenheit','Reaumur'], 
+            Pressure=['Pascal', '', '', '', 'bar', '', '', QApplication.translate("unidades", "libras por pulgada cuadrada", None, QApplication.UnicodeUTF8), '', 'atm', 'kgcm2', 'kgcm2g', 'mmH2O', 'cmH2O', 'mH2O', 'inH2O', 'ftH2O', 'mmHg', 'cmHg', 'inHg', 'ftHg', 'lbcm2','lbft2', 'dyncm2' ], 
+             Speed=['m/s', 'cm/s', 'mm/s', 'km/s', 'ft/s', 'ft/min',  'm/min', 'km/min','km/h',  'km/day', QApplication.translate("unidades", "millas por hora", None, QApplication.UnicodeUTF8), QApplication.translate("unidades", "nudo", None, QApplication.UnicodeUTF8)], 
+-            Viscosity=[u'Pa·s', u'mPa·s', u'µPa·s', 'Poise', 'centipoise', u'dyn/s·cm²', u'µP', 'reyn', u'lb/ft·s', u'lbf/ft²', u'lbf/in²', u'lb/ft·h'], 
+-            Density=[u'kg/m³', u'g/cm³', u'g/m³', u'kg/cm³', u'lb/ft³',u'lb/inch³' , 'lb/galUK', 'lb/galUS', 'lb/barril'], 
+-            ThermalConductivity=[u'W/m·K', u'J/h·m·K', u'cal/s·cm·K', u'cal/h·cm·K',u'kcal/h·m·K' , u'lbf/s·F', u'lb/ft·s³·F',u'Btu/h·ft·F'], 
+-            SpecificHeat=[u'J/kg·K', u'kJ/kg·K', u'kcal/kg·K', u'kcal/g·K', u'kWh/kg·K', u'Btu/lb·F'], 
++            Viscosity=['Pa·s', 'mPa·s', 'µPa·s', 'Poise', 'centipoise', 'dyn/s·cm²', 'µP', 'reyn', 'lb/ft·s', 'lbf/ft²', 'lbf/in²', 'lb/ft·h'], 
++            Density=['kg/m³', 'g/cm³', 'g/m³', 'kg/cm³', 'lb/ft³','lb/inch³' , 'lb/galUK', 'lb/galUS', 'lb/barril'], 
++            ThermalConductivity=['W/m·K', 'J/h·m·K', 'cal/s·cm·K', 'cal/h·cm·K','kcal/h·m·K' , 'lbf/s·F', 'lb/ft·s³·F','Btu/h·ft·F'], 
++            SpecificHeat=['J/kg·K', 'kJ/kg·K', 'kcal/kg·K', 'kcal/g·K', 'kWh/kg·K', 'Btu/lb·F'], 
+             Enthalpy=['J/kg', 'kJ/kg', 'MJ/kg','cal/kg' , 'kcal/kg', 'cal/lb', 'Btu/lb'], 
+            SpecificVolume=['m3kg','lkg' , 'm3g', 'cckg', 'ft3lb', 'inch3lb', 'galUKlb', 'galUSlb', 'bbllb', 'ft3tonUK', 'ft3tonUS', 'ft3slug',  'ft3oz', 'in3oz', 'galUKoz', 'galUSoz'], 
+            )
+@@ -1350,8 +1350,8 @@
+ 
+ if __name__ == "__main__":
+     T=Temperature(273.15)
+-    print T.C,  T,  T.F, T.R, T.Re
+-    print T.config
++    print((T.C,  T,  T.F, T.R, T.Re))
++    print((T.config))
+ #
+ #    P=Pressure(760).unit("mmHg")
+ #    print "kPa: ",  P.kPa
+diff -u -r freesteam-2.1_orig/python/defunct/phdiagram.py freesteam-2.1/python/defunct/phdiagram.py
+--- freesteam-2.1_orig/python/defunct/phdiagram.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/defunct/phdiagram.py	2019-11-13 11:35:44.207362894 +0100
+@@ -13,7 +13,7 @@
+ Tmax = freesteam.TCRIT
+ n = 1000
+ DT = (Tmax - Tmin)/n
+-TT0 = 273.15 + DT*array(range(n+1))
++TT0 = 273.15 + DT*array(list(range(n+1)))
+ psat = array([freesteam.psat_T(T)/1e6 for T in TT0])
+ hf = [freesteam.region4_Tx(T,0).h/1e3 for T in TT0]
+ hg = [freesteam.region4_Tx(T,1).h/1e3 for T in TT0]
+@@ -46,7 +46,7 @@
+ 
+ TT = logspace(math.log10(273.15),math.log10(1073.15),30)
+ for T in TT:
+-	print "T =",T
++	print(("T =",T))
+ 	smin = freesteam.bound_pmax_T(T).s + 0.1 
+ 	smax = freesteam.region2_pT(1,T).s - 0.1
+ 	ss = linspace(smin,smax,1000)
+@@ -70,7 +70,7 @@
+ 
+ ss = linspace(1,11,30) * 1e3
+ for s in ss:
+-	print "s =",s
++	print(("s =",s))
+ 	Tmin = freesteam.steam_ps(freesteam.PMAX,s).T
+ 	Tmax = freesteam.steam_ps(freesteam.PTRIPLE,s).T
+ 	TT = linspace(Tmin,Tmax,1000)
+diff -u -r freesteam-2.1_orig/python/defunct/pudiagram.py freesteam-2.1/python/defunct/pudiagram.py
+--- freesteam-2.1_orig/python/defunct/pudiagram.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/defunct/pudiagram.py	2019-11-13 11:35:44.024027007 +0100
+@@ -13,7 +13,7 @@
+ Tmax = freesteam.TCRIT
+ n = 1000
+ DT = (Tmax - Tmin)/n
+-TT0 = 273.15 + DT*array(range(n+1))
++TT0 = 273.15 + DT*array(list(range(n+1)))
+ psat = array([freesteam.psat_T(T)/1e6 for T in TT0])
+ uf = [freesteam.region4_Tx(T,0).u/1e3 for T in TT0]
+ ug = [freesteam.region4_Tx(T,1).u/1e3 for T in TT0]
+@@ -49,7 +49,7 @@
+ if 1:
+ 	TT = logspace(math.log10(273.15),math.log10(1073.15),30)
+ 	for T in TT:
+-		print "T =",T
++		print(("T =",T))
+ 		smin = freesteam.bound_pmax_T(T).s + 0.1 
+ 		smax = freesteam.region2_pT(1,T).s - 0.1
+ 		ss = linspace(smin,smax,1000)
+@@ -66,17 +66,17 @@
+ # LINES OF CONSTANT ENTROPY
+ 
+ sgpmin = freesteam.region4_Tx(freesteam.Tsat_p(freesteam.PTRIPLE),1.).s
+-print sgpmin
++print(sgpmin)
+ 
+ ss = logspace(math.log10(1e3),math.log10(12e3),30)
+ for s in ss:
+-	print "s =",s
++	print(("s =",s))
+ 	Tmax = freesteam.steam_ps(100e6,s).T
+ 	if s<sgpmin:
+ 		Tmin = freesteam.TMIN
+ 	else:
+ 		Tmin = freesteam.steam_ps(freesteam.PTRIPLE,s).T
+-	print "Tmin = %f, Tmax = %f" %(Tmin,Tmax)
++	print(("Tmin = %f, Tmax = %f" %(Tmin,Tmax)))
+ 	TT = linspace(Tmin,Tmax,1000)
+ 	uu = []
+ 	pp = []
+diff -u -r freesteam-2.1_orig/python/defunct/Tsdiagram.py freesteam-2.1/python/defunct/Tsdiagram.py
+--- freesteam-2.1_orig/python/defunct/Tsdiagram.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/defunct/Tsdiagram.py	2019-11-13 11:35:44.394032162 +0100
+@@ -22,7 +22,7 @@
+ im = zeros((len(TT),len(ss)))
+ x = 0
+ for T in TT:
+-	print "T = %f K" % (T)
++	print(("T = %f K" % (T)))
+ 	y = 0
+ 	for s in ss:
+ 		#if freesteam.bounds_Ts(T,s,0):
+@@ -41,7 +41,7 @@
+ Tmax = freesteam.TCRIT
+ n = 1000
+ DT = (Tmax - Tmin)/n
+-TT0 = 273.15 + DT*array(range(n+1))
++TT0 = 273.15 + DT*array(list(range(n+1)))
+ psat = array([freesteam.psat_T(T)/1e6 for T in TT0])
+ sf = [freesteam.region4_Tx(T,0).s/1e3 for T in TT0]
+ sg = [freesteam.region4_Tx(T,1).s/1e3 for T in TT0]
+diff -u -r freesteam-2.1_orig/python/hsdiagram.py freesteam-2.1/python/hsdiagram.py
+--- freesteam-2.1_orig/python/hsdiagram.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/hsdiagram.py	2019-11-13 10:03:19.342766685 +0100
+@@ -44,7 +44,7 @@
+ 
+ 
+ # supercritical region
+-print "Supercritical region..."
++print("Supercritical region...")
+ 
+ supcrit_p = [250,300,400,500]
+ supcrit_T = linspace(tmin,tmax,50)
+@@ -62,7 +62,7 @@
+ 
+ # lines of constant pressure
+ 
+-print "Lines of constant pressure..."
++print("Lines of constant pressure...")
+ 
+ for i in pressure_range:
+     p = i * 1e5 #bar
+@@ -102,7 +102,7 @@
+                 
+ # lines of constant dryness fraction
+ 
+-print "Lines of dryness fraction (quality)..."
++print("Lines of dryness fraction (quality)...")
+ 
+ twophase_T = linspace(tmin,373,20)
+ 
+@@ -119,7 +119,7 @@
+ 
+ # lines of constant temperature
+ 
+-print "Lines of constant temperature..."
++print("Lines of constant temperature...")
+ 
+ for i in const_T_range:
+     T = i + 273.15 # K
+@@ -179,7 +179,7 @@
+ xlim( smin,smax )
+ ylim( hmin,hmax )
+ 
+-print "Exporting PDF file to current directory..."
++print("Exporting PDF file to current directory...")
+ savefig('mollier.pdf')
+ 
+ #print "Exporting EPS file to current directory..."
+diff -u -r freesteam-2.1_orig/python/rhoTdiagram.py freesteam-2.1/python/rhoTdiagram.py
+--- freesteam-2.1_orig/python/rhoTdiagram.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/rhoTdiagram.py	2019-11-13 10:03:18.929427217 +0100
+@@ -18,8 +18,8 @@
+ 	rrho  = [freesteam.steam_pT(p,T).rho for T in TT]
+ 	plot(TT-273.15,rrho,label='%f MPa' % (p/1e6))
+ 
+-xlabel(u"Temperature / [°C]")
+-ylabel(u"Density / [kg/m³]")
++xlabel("Temperature / [°C]")
++ylabel("Density / [kg/m³]")
+ legend()
+ show()
+ 
+diff -u -r freesteam-2.1_orig/python/tables.py freesteam-2.1/python/tables.py
+--- freesteam-2.1_orig/python/tables.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/tables.py	2019-11-13 10:03:19.139430335 +0100
+@@ -126,7 +126,7 @@
+     elif variable == "internal":
+         variable_label = r"Specific Internal Energy / [$\unit{kJ/kg}$]"
+     else:
+-        print "Option not recognised"
++        print("Option not recognised")
+         raise SystemExit
+     fout.write(r"$T$/[$^\circ C$] & \multicolumn{%d}{c}{%s} \\" % ((len(p_range)-1),variable_label))
+     fout.write("\n")
+@@ -148,7 +148,7 @@
+                 data = round((S.u / 1000),2)
+                 fout.write(r"& %4.4g " %  data)
+             else:
+-                print "Option not recognised"
++                print("Option not recognised")
+                 raise SystemExit
+ 
+         fout.write(r"\\")
+@@ -197,7 +197,7 @@
+ 	fout.write("\n")
+ 	fout.write("""\end{table}\n""")
+ 
+-print "tables.py - script to get data for Steam Tables"
++print("tables.py - script to get data for Steam Tables")
+ 
+ # Create a latex file
+ fout = open("steamtable.tex","w")
+@@ -220,22 +220,22 @@
+ 
+ fout.write(version_string)
+ 
+-print "Creating Table 7..."
++print("Creating Table 7...")
+ # Equivalent to Table 7 in Haywood Steam Tables: Saturated Water and
+ # Steam by Temperature from Triple Point to 100 deg C
+ # Actually we split into two tables 7a and 7b so as to make typesetting easier
+ 
+ #Table 7A
+-T_range = [Ttriple] + range(2,51,2) # Range of table in deg C
++T_range = [Ttriple] + list(range(2,51,2)) # Range of table in deg C
+ caption = r"Saturated Water and Steam (Triple Point to 50$\unit{^\circ C}$)"
+ temperature_table(T_range,caption,fout)
+ 
+ #Table 7B
+-T_range = range(50,101,2) # Range of table in deg C
++T_range = list(range(50,101,2)) # Range of table in deg C
+ caption = r"Saturated Water and Steam (50 to 100 $\unit{^\circ C}$)"
+ temperature_table(T_range,caption,fout)
+ 
+-print "Creating Table 8..."
++print("Creating Table 8...")
+ #Table 8 - values by pressure all the way up to the crtical point....
+ 
+ # Given the non-uniform spacing here sometimes the manual way is the best...
+@@ -269,7 +269,7 @@
+ caption = r"Saturated Water and Steam (90 to 220 $\unit{bar}$)"
+ pressure_table(p_range,caption,fout)
+ 
+-print "Creating Table 9,10,11 and 12"
++print("Creating Table 9,10,11 and 12")
+ p_range = [0.1,0.5,1,5,10,20,40,60,80,100,150,200,250,300,400,500]
+ t_range = [0,25,50,75,100,125,150,175,200,225,250,275,300,350,400,450,500,550,600,650,700,750,800]
+ superheat_table("Enthalpy of Water and Steam","enthalpy",fout,p_range,t_range)
+@@ -277,11 +277,11 @@
+ superheat_table("Density of Water and Steam","density",fout,p_range,t_range)
+ superheat_table("Internal Energy of Water and Steam","internal",fout,p_range,t_range)
+ 
+-print "Creating thermophysical properties table"
++print("Creating thermophysical properties table")
+ t_range = [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,110,120,130,140,150,160,180,200,220,240,260,280,300,320,340,360, 370]
+ thermophys_table("Transport properties of water (saturated liquid)",t_range)
+ 
+-print "including hsdiagram"
++print("including hsdiagram")
+ fout.write(r"""
+ 
+ \begin{figure}
+diff -u -r freesteam-2.1_orig/python/test.py freesteam-2.1/python/test.py
+--- freesteam-2.1_orig/python/test.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/test.py	2019-11-13 11:35:43.134014606 +0100
+@@ -40,30 +40,30 @@
+ 
+ S = freesteam.steam_ph(100e5,300)
+ 
+-print "TESTING RESULTS"
++print("TESTING RESULTS")
+ 
+-print "region =",S.region
+-print "h =",S.h
+-print "v =",S.v
+-print "p =",S.p
+-print "s =",S.s
+-print "mu=",S.mu
++print(("region =",S.region))
++print(("h =",S.h))
++print(("v =",S.v))
++print(("p =",S.p))
++print(("s =",S.s))
++print(("mu=",S.mu))
+ 
+-print "TESTING PV"
++print("TESTING PV")
+ 
+ p = 500e5
+ v = 1./401.
+-print "(p,v) = (%f, %f)" % (p, v)
+-print "bounds errors?",freesteam.bounds_pv(p,v,1)
+-print "region?",freesteam.region_pv(p,v)
++print(("(p,v) = (%f, %f)" % (p, v)))
++print(("bounds errors?",freesteam.bounds_pv(p,v,1)))
++print(("region?",freesteam.region_pv(p,v)))
+ 
+ S = freesteam.steam_pv(p,v)
+ 
+-print "region =",S.region
+-print "h =",S.h
+-print "v =",S.v
+-print "p =",S.p
+-print "s =",S.s
+-print "mu=",S.mu
++print(("region =",S.region))
++print(("h =",S.h))
++print(("v =",S.v))
++print(("p =",S.p))
++print(("s =",S.s))
++print(("mu=",S.mu))
+ 
+ 
+diff -u -r freesteam-2.1_orig/python/Thdiagram.py freesteam-2.1/python/Thdiagram.py
+--- freesteam-2.1_orig/python/Thdiagram.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/python/Thdiagram.py	2019-11-13 11:35:43.317350495 +0100
+@@ -19,7 +19,7 @@
+ # these are the pressures we're interested in here
+ pp = [freesteam.psat_T(50+273.15), 3e6, 12e6,  165e5, 300e5]
+ 
+-print "low p =",pp[0]
++print(("low p =",pp[0]))
+ 
+ hh = arange(50.,4500.,100)*1e3
+ 
+Only in freesteam-2.1: .sconf_temp
+diff -u -r freesteam-2.1_orig/scons/ascend.py freesteam-2.1/scons/ascend.py
+--- freesteam-2.1_orig/scons/ascend.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/scons/ascend.py	2019-11-13 11:35:44.587368189 +0100
+@@ -31,10 +31,10 @@
+ 			except:
+ 				raise RuntimeError("PyWin32 is not installed. Install it first.")
+ 
+-			import _winreg
+-			x=_winreg.ConnectRegistry(None,_winreg.HKEY_LOCAL_MACHINE)
+-			y= _winreg.OpenKey(x,r"SOFTWARE\ASCEND")
+-			BIN,t = _winreg.QueryValueEx(y,'INSTALL_BIN')
++			import winreg
++			x=winreg.ConnectRegistry(None,winreg.HKEY_LOCAL_MACHINE)
++			y= winreg.OpenKey(x,r"SOFTWARE\ASCEND")
++			BIN,t = winreg.QueryValueEx(y,'INSTALL_BIN')
+ 			Path = os.path.join(BIN,"ascend-config")
+ 			if not os.path.exists(Path):
+ 				raise RuntimeError("Could not find 'ascend-config' in your PATH")
+@@ -93,12 +93,12 @@
+ 		#print "ASCEND_EXTLIB_PREFIX =",env.get('ASCEND_EXTLIB_PREFIX')
+ 		#print "ASCEND_MODELS =",env.get('ASCEND_MODELS')
+ 
+-	except Exception,e:
+-		print "Checking for ASCEND... not found! (%s)" % str(e)
++	except Exception as e:
++		print(("Checking for ASCEND... not found! (%s)" % str(e)))
+ 		env.Append(HAVE_ASCEND=False)
+ 		return False
+ 		
+-	print "Checking for ASCEND... found (ASCEND_CPPPATH = %s)" % env.get('ASCEND_CPPPATH')
++	print(("Checking for ASCEND... found (ASCEND_CPPPATH = %s)" % env.get('ASCEND_CPPPATH')))
+ 	return True
+ 	
+ def exists(env):
+@@ -107,10 +107,10 @@
+ 	"""
+ 	if platform.system()=="Windows":
+ 		try:
+-			import _winreg
+-			x=_winreg.ConnectRegistry(None,_winreg.HKEY_LOCAL_MACHINE)
+-			y= _winreg.OpenKey(x,r"SOFTWARE\ASCEND")
+-			BIN,t = _winreg.QueryValueEx(y,'INSTALL_BIN')
++			import winreg
++			x=winreg.ConnectRegistry(None,winreg.HKEY_LOCAL_MACHINE)
++			y= winreg.OpenKey(x,r"SOFTWARE\ASCEND")
++			BIN,t = winreg.QueryValueEx(y,'INSTALL_BIN')
+ 			return True
+ 		except:
+ 			return False
+diff -u -r freesteam-2.1_orig/scons/disttar.py freesteam-2.1/scons/disttar.py
+--- freesteam-2.1_orig/scons/disttar.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/scons/disttar.py	2019-11-13 10:03:21.322796067 +0100
+@@ -106,7 +106,7 @@
+ 	"""tar archive suffix generator"""
+ 
+ 	env_dict = env.Dictionary()
+-	if env_dict.has_key("DISTTAR_FORMAT") and env_dict["DISTTAR_FORMAT"] in ["gz", "bz2"]:
++	if "DISTTAR_FORMAT" in env_dict and env_dict["DISTTAR_FORMAT"] in ["gz", "bz2"]:
+ 		return ".tar." + env_dict["DISTTAR_FORMAT"]
+ 	else:
+ 		return ".tar"
+diff -u -r freesteam-2.1_orig/scons/gsl.py freesteam-2.1/scons/gsl.py
+--- freesteam-2.1_orig/scons/gsl.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/scons/gsl.py	2019-11-13 11:35:45.527381285 +0100
+@@ -45,8 +45,8 @@
+ 		#p1 = subprocess.Popen(["sh.exe","-c","echo hello"], stdout=subprocess.PIPE)
+ 		out = p1.communicate()[0].strip()
+ 		#print "NEW PATH IS '%s'" % out
+-	except Exception,e:
+-		print "FAILED: %s"%str(e)
++	except Exception as e:
++		print(("FAILED: %s"%str(e)))
+ 	finally:
+ 		#print "Deleting %s" % fn
+ 		os.unlink(fn)
+@@ -62,12 +62,12 @@
+ 	try:
+ 		if platform.system()=="Windows":
+ 			try:
+-				import _winreg
+-				x=_winreg.ConnectRegistry(None,_winreg.HKEY_LOCAL_MACHINE)
+-				y= _winreg.OpenKey(x,r"SOFTWARE\gsl")
+-				BIN,t = _winreg.QueryValueEx(y,"INSTALL_BIN")
+-				LIB,t = _winreg.QueryValueEx(y,"INSTALL_LIB")
+-				INCLUDE,t = _winreg.QueryValueEx(y,"INSTALL_INCLUDE")
++				import winreg
++				x=winreg.ConnectRegistry(None,winreg.HKEY_LOCAL_MACHINE)
++				y= winreg.OpenKey(x,r"SOFTWARE\gsl")
++				BIN,t = winreg.QueryValueEx(y,"INSTALL_BIN")
++				LIB,t = winreg.QueryValueEx(y,"INSTALL_LIB")
++				INCLUDE,t = winreg.QueryValueEx(y,"INSTALL_INCLUDE")
+ 
+ 				env['GSL_CPPPATH'] = [munge(INCLUDE)]
+ 				env['GSL_LIBPATH'] = [munge(LIB)]
+@@ -80,7 +80,7 @@
+ 				env1['CPPPATH'] = None
+ 				env1['LIBPATH'] = None
+ 				env1['LIBS'] = None
+-				print "RUNNING gsl-config"
++				print("RUNNING gsl-config")
+ 				env1.ParseConfig(cmd)
+ 				env['GSL_CPPPATH'] = winpath(env1.get('CPPPATH')[0])
+ 				env['GSL_LIBPATH'] = winpath(env1.get('LIBPATH')[0])
+@@ -94,7 +94,7 @@
+ 			env['GSL_CPPPATH'] = env.get('CPPPATH')
+ 			env['GSL_LIBPATH'] = env.get('LIBPATH')
+ 
+-			print "GSL_STATIC =",env.get('GSL_STATIC')
++			print(("GSL_STATIC =",env.get('GSL_STATIC')))
+ 
+ 			if env.get('GSL_STATIC'):
+ 				env['GSL_STATICLIBS'] = [os.path.join(env.get('GSL_LIBPATH')[0],"lib%s.a"%i) for i in ["gsl","gslcblas"]]
+@@ -103,7 +103,7 @@
+ 
+ 			for i in ['LIBS','LIBPATH','CPPPATH']:
+ 				if old_env.get(i) is None:
+-					if env.has_key(i):
++					if i in env:
+ 						del env[i]
+ 				else:
+ 					env[i] = old_env[i]
+@@ -117,13 +117,13 @@
+ 			#		if 'gslcblas' in env['GSL_LIBS']:
+ 			#			env['GSL_LIBS'].remove('gslcblas')
+ 
+-		print "GSL_LIBS =",env.get('GSL_LIBS')
+-		print "GSL_LIBPATH =",env.get('GSL_LIBPATH')
+-		print "GSL_CPPPATH =",env.get('GSL_CPPPATH')
+-		print "GSL_STATICLIBS =",env.get('GSL_STATICLIBS')
++		print(("GSL_LIBS =",env.get('GSL_LIBS')))
++		print(("GSL_LIBPATH =",env.get('GSL_LIBPATH')))
++		print(("GSL_CPPPATH =",env.get('GSL_CPPPATH')))
++		print(("GSL_STATICLIBS =",env.get('GSL_STATICLIBS')))
+ 
+-	except Exception,e:
+-		print "Checking for GSL... not found! (%s)" % str(e)
++	except Exception as e:
++		print(("Checking for GSL... not found! (%s)" % str(e)))
+ 		env['HAVE_GSL'] = False
+ 
+ def exists(env):
+@@ -132,10 +132,10 @@
+ 	"""
+ 	if platform.system()=="Windows":
+ 		try:
+-			import _winreg
+-			x=_winreg.ConnectRegistry(None,_winreg.HKEY_LOCAL_MACHINE)
+-			y= _winreg.OpenKey(x,r"SOFTWARE\gsl")
+-			INCLUDE,t = _winreg.QueryValueEx(y,'INSTALL_INCLUDE')
++			import winreg
++			x=winreg.ConnectRegistry(None,winreg.HKEY_LOCAL_MACHINE)
++			y= winreg.OpenKey(x,r"SOFTWARE\gsl")
++			INCLUDE,t = winreg.QueryValueEx(y,'INSTALL_INCLUDE')
+ 			return True
+ 		except:
+ 			return False
+diff -u -r freesteam-2.1_orig/scons/gtk.py freesteam-2.1/scons/gtk.py
+--- freesteam-2.1_orig/scons/gtk.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/scons/gtk.py	2019-11-13 11:35:45.127375712 +0100
+@@ -30,22 +30,22 @@
+ 		cmd = ['pkg-config','--cflags','--libs','gtk+-2.0','gmodule-2.0']
+ 		old_env = env.Clone()
+ 		env.ParseConfig(cmd)
+-		print "LIBPATH:",env.get('LIBPATH')
++		print(("LIBPATH:",env.get('LIBPATH')))
+ 		env['GTK_CPPPATH'] = env.get('CPPPATH') or []
+ 		env['GTK_LIBPATH'] = env.get('LIBPATH') or []
+ 		env['GTK_LIBS'] = env.get('LIBS') or []
+ 
+ 		for i in ['LIBS','LIBPATH','CPPPATH']:
+ 			if old_env.get(i) is None:
+-				if env.has_key(i):
++				if i in env:
+ 					del env[i]
+ 			else:
+ 				env[i] = old_env[i]
+ 
+ 		env['HAVE_GTK'] = True
+ 
+-	except Exception,e:
+-		print "Checking for GTK... not found! (%s)" % str(e)
++	except Exception as e:
++		print(("Checking for GTK... not found! (%s)" % str(e)))
+ 		env['HAVE_GTK'] = False
+ 
+ def exists(env):
+diff -u -r freesteam-2.1_orig/scons/nsis.py freesteam-2.1/scons/nsis.py
+--- freesteam-2.1_orig/scons/nsis.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/scons/nsis.py	2019-11-13 10:03:21.879470993 +0100
+@@ -70,7 +70,7 @@
+   while varPos != -1:
+     endpos = filename.find('}',varPos)
+     assert endpos != -1
+-    if not nsisdefines.has_key(filename[varPos+2:endpos]):
++    if filename[varPos+2:endpos] not in nsisdefines:
+       raise KeyError ("Could not find %s in NSISDEFINES" % filename[varPos+2:endpos])
+     val = nsisdefines[filename[varPos+2:endpos]]
+     if type(val) == list:
+@@ -142,11 +142,11 @@
+ 
+ def runNSIS(source,target,env,for_signature):
+   ret = env['NSIS']+" "
+-  if env.has_key('NSISFLAGS'):
++  if 'NSISFLAGS' in env:
+     for flag in env['NSISFLAGS']:
+       ret += flag
+       ret += ' '
+-  if env.has_key('NSISDEFINES'):
++  if 'NSISDEFINES' in env:
+     for d in env['NSISDEFINES']:
+       ret += '/D'+d
+       if env['NSISDEFINES'][d]:
+@@ -165,7 +165,7 @@
+                                  emitter=nsis_emitter)
+   env.Append(SCANNERS = SCons.Scanner.Scanner( function = nsis_scanner,
+              skeys = ['.nsi']))
+-  if not env.has_key('NSISDEFINES'):
++  if 'NSISDEFINES' not in env:
+     env['NSISDEFINES'] = {}
+   env['NSIS'] = find_nsis(env)
+ 
+Only in freesteam-2.1/scons: __pycache__
+diff -u -r freesteam-2.1_orig/scons/substinfile.py freesteam-2.1/scons/substinfile.py
+--- freesteam-2.1_orig/scons/substinfile.py	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/scons/substinfile.py	2019-11-13 11:08:12.314402303 +0100
+@@ -21,32 +21,32 @@
+         then all instances of %VERSION% in the file will be replaced with 1.2345 etc.
+         """
+         try:
+-            f = open(sourcefile, 'rb')
++            f = open(sourcefile, 'r')
+             contents = f.read()
+             f.close()
+         except:
+-            raise SCons.Errors.UserError, "Can't read source file %s"%sourcefile
+-        for (k,v) in dict.items():
++            raise SCons.Errors.UserError("Can't read source file %s"%sourcefile)
++        for (k,v) in list(dict.items()):
+             contents = re.sub(k, v, contents)
+         try:
+-            f = open(targetfile, 'wb')
++            f = open(targetfile, 'w')
+             f.write(contents)
+             f.close()
+         except:
+-            raise SCons.Errors.UserError, "Can't write target file %s"%targetfile
++            raise SCons.Errors.UserError("Can't write target file %s"%targetfile)
+         return 0 # success
+ 
+     def subst_in_file(target, source, env):
+-        if not env.has_key('SUBST_DICT'):
+-            raise SCons.Errors.UserError, "SubstInFile requires SUBST_DICT to be set."
++        if 'SUBST_DICT' not in env:
++            raise SCons.Errors.UserError("SubstInFile requires SUBST_DICT to be set.")
+         d = dict(env['SUBST_DICT']) # copy it
+-        for (k,v) in d.items():
++        for (k,v) in list(d.items()):
+             if callable(v):
+                 d[k] = env.subst(v()).replace('\\','\\\\')
+             elif SCons.Util.is_String(v):
+                 d[k] = env.subst(v).replace('\\','\\\\')
+             else:
+-                raise SCons.Errors.UserError, "SubstInFile: key %s: %s must be a string or callable"%(k, repr(v))
++                raise SCons.Errors.UserError("SubstInFile: key %s: %s must be a string or callable"%(k, repr(v)))
+         for (t,s) in zip(target, source):
+             return do_subst_in_file(str(t), str(s), d)
+ 
+@@ -60,7 +60,7 @@
+         Returns original target, source tuple unchanged.
+         """
+         d = env['SUBST_DICT'].copy() # copy it
+-        for (k,v) in d.items():
++        for (k,v) in list(d.items()):
+             if callable(v):
+                 d[k] = env.subst(v())
+             elif SCons.Util.is_String(v):
+Only in freesteam-2.1: .sconsign.dblite
+diff -u -r freesteam-2.1_orig/SConstruct freesteam-2.1/SConstruct
+--- freesteam-2.1_orig/SConstruct	2019-11-13 09:59:29.865972649 +0100
++++ freesteam-2.1/SConstruct	2019-11-13 11:27:38.560598217 +0100
+@@ -18,30 +18,30 @@
+ 
+ # Set up some platform-specific defaults
+ if platform.system()=="Windows":
+-	default_emso_location = "c:\\Program Files\\EMSO\\interface"
+-	default_prefix = 'c:/MinGW'
+-	python_exe = sys.executable
+-	default_python = distutils.sysconfig.get_python_lib()
+-	default_gsl_static = 1
++    default_emso_location = "c:\\Program Files\\EMSO\\interface"
++    default_prefix = 'c:/MinGW'
++    python_exe = sys.executable
++    default_python = distutils.sysconfig.get_python_lib()
++    default_gsl_static = 1
+ else:
+-	default_emso_location = None
+-	default_prefix = '/usr/local'
+-	python_exe = "/usr/bin/env python"
+-	default_python = distutils.sysconfig.get_python_lib()
+-	default_gsl_static = 0
++    default_emso_location = None
++    default_prefix = '/usr/local'
++    python_exe = "/usr/bin/env python"
++    default_python = distutils.sysconfig.get_python_lib()
++    default_gsl_static = 0
+ 
+ if platform.system()=="Darwin":
+-	default_gsl_static = 0
++    default_gsl_static = 0
+ 
+ # SONAME related flags, for linux shared object versioning. Because this is a
+ # re-write of freesteam with a new API, we will bump the soname to .1
+ 
+ if platform.system()=="Windows":
+-	soname_major = ""
+-	soname_minor = ""
++    soname_major = ""
++    soname_minor = ""
+ else:
+-	soname_major = ".1"
+-	soname_minor = ".0"
++    soname_major = ".1"
++    soname_minor = ".0"
+ 
+ soname_default = "${SHLIBPREFIX}freesteam${SHLIBSUFFIX}${SONAME_MAJOR}"
+ 
+@@ -51,108 +51,108 @@
+ vars = Variables()
+ 
+ vars.Add(BoolVariable(
+-	'GCOV'
+-	,"Build for coverage testing using gcov."
+-	,False
++    'GCOV'
++    ,"Build for coverage testing using gcov."
++    ,False
+ ))
+ 
+ vars.Add(BoolVariable(
+-	'DEBUG'
+-	,"Build with debug data for use with GDB."
+-	,False
++    'DEBUG'
++    ,"Build with debug data for use with GDB."
++    ,False
+ ))
+ 
+ vars.Add(PathVariable(
+-	'INSTALL_PREFIX'
+-	,"Base directory for install, see also INSTALL_LIB and INSTALL_INCLUDE"
+-	,default_prefix
++    'INSTALL_PREFIX'
++    ,"Base directory for install, see also INSTALL_LIB and INSTALL_INCLUDE"
++    ,default_prefix
+ ))
+ 
+ vars.Add(
+-	'INSTALL_LIB'
+-	,"Location to install library"
+-	, "$INSTALL_PREFIX/lib"
++    'INSTALL_LIB'
++    ,"Location to install library"
++    , "$INSTALL_PREFIX/lib"
+ )
+ 
+ vars.Add(
+-	'INSTALL_INCLUDE'
+-	,"Location to install headers"
+-	,"$INSTALL_PREFIX/include"
++    'INSTALL_INCLUDE'
++    ,"Location to install headers"
++    ,"$INSTALL_PREFIX/include"
+ )
+ 
+ vars.Add(
+-	'INSTALL_BIN'
+-	,"Location to install binaries"
+-	,"$INSTALL_PREFIX/bin"
++    'INSTALL_BIN'
++    ,"Location to install binaries"
++    ,"$INSTALL_PREFIX/bin"
+ )
+ 
+ vars.Add(
+-	'INSTALL_SHARE'
+-	,"Location to install 'share' files, examples, etc."
+-	,"$INSTALL_PREFIX/share"
++    'INSTALL_SHARE'
++    ,"Location to install 'share' files, examples, etc."
++    ,"$INSTALL_PREFIX/share"
+ )
+ 
+ vars.Add(PathVariable(
+-	'INSTALL_ROOT'
+-	,"Root onto which installation should take place. Normally only for "
+-		+"use when building RPMs"
+-	,None
++    'INSTALL_ROOT'
++    ,"Root onto which installation should take place. Normally only for "
++        +"use when building RPMs"
++    ,None
+ ))
+ 
+ vars.Add(PathVariable(
+-	'INSTALL_PYTHON'
+-	,"Directory for installation of Python extensions"
+-	,"%s" % default_python
++    'INSTALL_PYTHON'
++    ,"Directory for installation of Python extensions"
++    ,"%s" % default_python
+ ))
+ 
+ vars.Add(
+-	'SONAME_MAJOR'
+-	,"major version of the freesteam library"
+-	,soname_major
++    'SONAME_MAJOR'
++    ,"major version of the freesteam library"
++    ,soname_major
+ )
+ 
+ vars.Add(
+-	'SONAME_MINOR'
+-	,"Shared library minor version number (for use in installed file name). Should be '.0' for example."
+-	,soname_minor
++    'SONAME_MINOR'
++    ,"Shared library minor version number (for use in installed file name). Should be '.0' for example."
++    ,soname_minor
+ )
+ 
+ vars.Add(
+-	'SONAME'
+-	,"'soname' to be assigned to the shared library. Should be 'freesteam.so.1' for example."
+-	,soname_default
++    'SONAME'
++    ,"'soname' to be assigned to the shared library. Should be 'freesteam.so.1' for example."
++    ,soname_default
+ )
+ 
+ vars.Add(
+-	'DISTTAR_NAME'
+-	,"Stem name of the tarball created by 'scons dist'. So for 'freesteam-aaa.tar.bz2', set this to 'freesteam-aaa'."
+-	,"freesteam-"+version
++    'DISTTAR_NAME'
++    ,"Stem name of the tarball created by 'scons dist'. So for 'freesteam-aaa.tar.bz2', set this to 'freesteam-aaa'."
++    ,"freesteam-"+version
+ )
+ 
+ vars.Add(
+-	'HOST_PREFIX'
+-	,"Host prefix, for use in cross-compiling. Defaults to empty"
+-	,""
++    'HOST_PREFIX'
++    ,"Host prefix, for use in cross-compiling. Defaults to empty"
++    ,""
+ )
+ 
+ vars.Add(
+-	'CC'
+-	,'C Compiler command'
+-	,"${HOST_PREFIX}gcc"
++    'CC'
++    ,'C Compiler command'
++    ,"${HOST_PREFIX}gcc"
+ )
+ 
+ vars.Add(
+-	'SWIG'
+-	,"Name of your swig executable"
+-	,'swig'
++    'SWIG'
++    ,"Name of your swig executable"
++    ,'swig'
+ )
+ 
+ if platform.system()=="Windows":
+-	vars.Add(
+-		'WIN_INSTALLER_NAME'
+-		,"Name of the installer .exe to create under Windows (minus the '.exe')"
+-		,"freesteam-"+version+instarch+"-py"+pyversion+".exe"
+-	)
++    vars.Add(
++        'WIN_INSTALLER_NAME'
++        ,"Name of the installer .exe to create under Windows (minus the '.exe')"
++        ,"freesteam-"+version+instarch+"-py"+pyversion+".exe"
++    )
+ 
+ # TODO work out a way to set gsl_static via options...?
+ 
+@@ -161,48 +161,48 @@
+ 
+ tools = ['swig','ascend','substinfile','gsl','gtk','tar','disttar', 'nsis']
+ if platform.system()=="Windows":
+-	env = Environment(ENV=os.environ
+-		, GSL_STATIC = default_gsl_static
+-		, toolpath = ['scons']
+-		, tools = ['mingw']+tools
+-	)
++    env = Environment(ENV=os.environ
++        , GSL_STATIC = default_gsl_static
++        , toolpath = ['scons']
++        , tools = ['mingw']+tools
++    )
+ else:
+-	env = Environment(
+-		ENV={"PATH":os.environ['PATH']}
+-		, GSL_STATIC = default_gsl_static
+-		, toolpath=['scons']
+-		, tools=['default']+tools
+-	)
+-	# import this one if it's been specified
+-	if os.environ.get('PKG_CONFIG_PATH'):
+-		env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
++    env = Environment(
++        ENV={"PATH":os.environ['PATH']}
++        , GSL_STATIC = default_gsl_static
++        , toolpath=['scons']
++        , tools=['default']+tools
++    )
++    # import this one if it's been specified
++    if os.environ.get('PKG_CONFIG_PATH'):
++        env['ENV']['PKG_CONFIG_PATH'] = os.environ['PKG_CONFIG_PATH']
+ 
+ Help(vars.GenerateHelpText(env))
+ 
+ # Some utility tools for installing file with suitable permissions
+-  	 
+-import SCons 	 
+-from SCons.Script.SConscript import SConsEnvironment 	 
+-SConsEnvironment.Chmod = SCons.Action.ActionFactory(os.chmod, 	 
+-	lambda dest, mode: 'Chmod("%s", 0%o)' % (dest, mode)) 	 
+-  	 
+-def InstallPerm(env, dest, files, perm): 	 
+-	obj = env.Install(dest, files) 	 
+-	for i in obj: 	 
+-		env.AddPostAction(i, env.Chmod(str(i), perm))
+-	return dest
+-
+-def InstallPermAs(env, dest, filen, perm): 	 
+-	obj = env.InstallAs(dest, filen) 	 
+-	for i in obj: 	 
+-		env.AddPostAction(i, env.Chmod(str(i), perm))
+-	return dest
+-  	 
++
++import SCons
++from SCons.Script.SConscript import SConsEnvironment
++SConsEnvironment.Chmod = SCons.Action.ActionFactory(os.chmod,
++    lambda dest, mode: 'Chmod("%s", 0%o)' % (dest, mode))
++
++def InstallPerm(env, dest, files, perm):
++    obj = env.Install(dest, files)
++    for i in obj:
++        env.AddPostAction(i, env.Chmod(str(i), perm))
++    return dest
++
++def InstallPermAs(env, dest, filen, perm):
++    obj = env.InstallAs(dest, filen)
++    for i in obj:
++        env.AddPostAction(i, env.Chmod(str(i), perm))
++    return dest
++
+ SConsEnvironment.InstallPerm = InstallPerm
+-SConsEnvironment.InstallProgram = lambda env, dest, files: InstallPerm(env, dest, files, 0755) 	 
+-SConsEnvironment.InstallHeader = lambda env, dest, files: InstallPerm(env, dest, files, 0644) 	 
+-SConsEnvironment.InstallLibrary = lambda env, dest, files: InstallPerm(env, dest, files, 0644) 	 
+-SConsEnvironment.InstallLibraryAs = lambda env, dest, files: InstallPermAs(env, dest, files, 0644)
++SConsEnvironment.InstallProgram = lambda env, dest, files: InstallPerm(env, dest, files, 0o755)
++SConsEnvironment.InstallHeader = lambda env, dest, files: InstallPerm(env, dest, files, 0o644)
++SConsEnvironment.InstallLibrary = lambda env, dest, files: InstallPerm(env, dest, files, 0o644)
++SConsEnvironment.InstallLibraryAs = lambda env, dest, files: InstallPermAs(env, dest, files, 0o644)
+ 
+ # Add configuration options to the 'environment'
+ 
+@@ -214,69 +214,69 @@
+ import re,subprocess
+ 
+ def get_swig_version(env):
+-	#print "SWIG='%s'" % env['SWIG']
+-	cmd = [env['SWIG'],'-version']
+-	output = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0]
+-	
+-	restr = "SWIG\\s+Version\\s+(?P<maj>[0-9]+)\\.(?P<min>[0-9]+)\\.(?P<pat>[0-9]+)\\s*$"
+-	expr = re.compile(restr,re.M);
+-	m = expr.search(output);
+-	if not m:
+-		return None
+-	maj = int(m.group('maj'))
+-	min = int(m.group('min'))
+-	pat = int(m.group('pat'))
++    #print "SWIG='%s'" % env['SWIG']
++    cmd = [env['SWIG'],'-version']
++    output = subprocess.Popen(cmd, stdout=subprocess.PIPE).communicate()[0]
++
++    restr = "SWIG\\s+Version\\s+(?P<maj>[0-9]+)\\.(?P<min>[0-9]+)\\.(?P<pat>[0-9]+)\\s*$"
++    expr = re.compile(restr,re.M);
++    m = expr.search(output);
++    if not m:
++        return None
++    maj = int(m.group('maj'))
++    min = int(m.group('min'))
++    pat = int(m.group('pat'))
++
++    return (maj,min,pat)
+ 
+-	return (maj,min,pat)
+-	
+ 
+ def CheckSwigVersion(context):
+-	
+-	try:
+-		context.Message("Checking version of SWIG... ")
+-		maj,min,pat = get_swig_version(context.env)
+-	except Exception,e:
+-		context.Result("Failed to detect version, or failed to run SWIG (%s)"% str(e))
+-		return False;
+-	
+-	context.env['SWIGVERSION']=tuple([maj,min,pat])
+-	
+-	if maj == 1 and (
+-			min > 3
+-			or (min == 3 and pat >= 24)
+-		):
+-		context.Result("ok, %d.%d.%d" % (maj,min,pat))
+-		return True;
+-	elif maj >= 2:
+-		context.Result("ok, %d.%d.%d" % (maj,min,pat))
+-		return True;
+-	else:
+-		context.Result("too old, %d.%d.%d" % (maj,min,pat))
+-		return False;
++
++    try:
++        context.Message("Checking version of SWIG... ")
++        maj,min,pat = get_swig_version(context.env)
++    except Exception as e:
++        context.Result("Failed to detect version, or failed to run SWIG (%s)"% str(e))
++        return False;
++
++    context.env['SWIGVERSION']=tuple([maj,min,pat])
++
++    if maj == 1 and (
++            min > 3
++            or (min == 3 and pat >= 24)
++        ):
++        context.Result("ok, %d.%d.%d" % (maj,min,pat))
++        return True;
++    elif maj >= 2:
++        context.Result("ok, %d.%d.%d" % (maj,min,pat))
++        return True;
++    else:
++        context.Result("too old, %d.%d.%d" % (maj,min,pat))
++        return False;
+ 
+ # Check that we got all the associated stuff that we need...
+ 
+ if not env.get('HAVE_GSL'):
+-	print "GSL was not found... install GSL (package 'libgsl0-dev' or similar in Ubuntu)."
+-	Exit(1)
++    print("GSL was not found... install GSL (package 'libgsl0-dev' or similar in Ubuntu).")
++    Exit(1)
+ 
+ # TODO: detect PYTHON properly.
+ if platform.system()=="Windows":
+-	python_lib='python%d%d'
++    python_lib='python%d%d'
+ else:
+-	python_lib='python%d.%d'
++    python_lib='python%d.%d'
+ 
+ import distutils.sysconfig
+ 
+ python_lib = python_lib % (sys.version_info[0],sys.version_info[1])
+ 
+ conf = env.Configure(custom_tests =
+-	{'CheckSwigVersion' : CheckSwigVersion}
++    {'CheckSwigVersion' : CheckSwigVersion}
+ )
+ 
+ if not conf.CheckFunc('fprintf'):
+-	print "You compiler and/or environment is not correctly configured (see config.log for details)"
+-	Exit(1)
++    print("You compiler and/or environment is not correctly configured (see config.log for details)")
++    Exit(1)
+ 
+ without_python_reason = "Python header 'Python.h' not found"
+ env['HAVE_PYTHON'] = False
+@@ -284,22 +284,22 @@
+ #print "PYINC =",pyinc
+ _havepy = conf.CheckHeader(pyinc)
+ if _havepy:
+-	env['HAVE_PYTHON'] = True
++    env['HAVE_PYTHON'] = True
+ 
+ #without_python_reason = "Python library '%s' not found" % python_lib
+ #conf.env['HAVE_PYTHON'] = conf.CheckLib(python_lib)
+ 
+ if conf.env['HAVE_PYTHON'] and conf.CheckSwigVersion() is False:
+-	without_python_reason = 'SWIG >= 1.3.24 is required'
+-	conf.env['HAVE_PYTHON']=False
++    without_python_reason = 'SWIG >= 1.3.24 is required'
++    conf.env['HAVE_PYTHON']=False
+ 
+ conf.Finish()
+ 
+ if  not env.get('HAVE_ASCEND'):
+-	print "WARNING: ASCEND was not found... freesteam will be built without ASCEND bindings."
++    print("WARNING: ASCEND was not found... freesteam will be built without ASCEND bindings.")
+ 
+ if not env['HAVE_PYTHON']:
+-	print "WARNING: Freesteam will be built without Python bindings.", without_python_reason
++    print("WARNING: Freesteam will be built without Python bindings.", without_python_reason)
+ 
+ 
+ # Flags to give some more warning output from the GCC compiler
+@@ -309,27 +309,27 @@
+ # Flags for coverage testing (will apply to all code built in 'env')
+ 
+ if env.get('GCOV'):
+-	env.Append(
+-		CFLAGS=['-fprofile-arcs','-ftest-coverage']
+-		,LIBS=['gcov']
+-	)
++    env.Append(
++        CFLAGS=['-fprofile-arcs','-ftest-coverage']
++        ,LIBS=['gcov']
++    )
+ 
+ if env.get('DEBUG'):
+-	env.Append(
+-		CFLAGS=['-g']
+-	)
++    env.Append(
++        CFLAGS=['-g']
++    )
+ 
+ # Create config.h including version number
+ 
+ subst_dict = {
+-	'@VERSION@':version
+-	,'@SONAME_MAJOR@':soname_major
+-	,'@SONAME_MINOR@':soname_minor
+-	, '@PYTHON@' : python_exe
+-	, '@INSTALL_BIN@':env['INSTALL_BIN']
+-	, '@INSTALL_INCLUDE@':env['INSTALL_INCLUDE']
+-	, '@INSTALL_LIB@':env['INSTALL_LIB']
+-	, '@INSTALL_SHARE@':env['INSTALL_SHARE']
++    '@VERSION@':version
++    ,'@SONAME_MAJOR@':soname_major
++    ,'@SONAME_MINOR@':soname_minor
++    , '@PYTHON@' : python_exe
++    , '@INSTALL_BIN@':env['INSTALL_BIN']
++    , '@INSTALL_INCLUDE@':env['INSTALL_INCLUDE']
++    , '@INSTALL_LIB@':env['INSTALL_LIB']
++    , '@INSTALL_SHARE@':env['INSTALL_SHARE']
+ }
+ 
+ env.Append(SUBST_DICT=subst_dict)
+@@ -346,31 +346,31 @@
+ # the freesteam DLL/SO.
+ 
+ srcs = ["region1.c", "region2.c", "region3.c", "region4.c", "steam_ph.c"
+-	,"steam.c", "backwards.c","b23.c", "common.c", "derivs.c", "zeroin.c"
+-	,"steam_ps.c", "solver2.c","steam_pT.c","steam_pu.c","steam_Ts.c"
+-	,"steam_Tx.c", "surftens.c"
+-	,"bounds.c", "steam_pv.c", "viscosity.c", "thcond.c"
++    ,"steam.c", "backwards.c","b23.c", "common.c", "derivs.c", "zeroin.c"
++    ,"steam_ps.c", "solver2.c","steam_pT.c","steam_pu.c","steam_Ts.c"
++    ,"steam_Tx.c", "surftens.c"
++    ,"bounds.c", "steam_pv.c", "viscosity.c", "thcond.c"
+ ]
+ 
+ # Create a sub-environment with linking to libm for mathematics routines
+ 
+ lib_env = env.Clone()
+ lib_env.Append(
+-	LIBS = ['m']
++    LIBS = ['m']
+ )
+ lib_env.Append(
+-	CPPPATH = env.get('GSL_CPPPATH')
++    CPPPATH = env.get('GSL_CPPPATH')
+ )
+ lib_srcs = srcs
+ if not lib_env['GSL_STATIC']:
+-	lib_env.Append(
+-		LIBS = env.get('GSL_LIBS')
+-		,LIBPATH = env.get('GSL_LIBPATH')
+-	)
++    lib_env.Append(
++        LIBS = env.get('GSL_LIBS')
++        ,LIBPATH = env.get('GSL_LIBPATH')
++    )
+ else:
+-	lib_srcs = srcs + env.get('GSL_STATICLIBS',[])
++    lib_srcs = srcs + env.get('GSL_STATICLIBS',[])
+ if platform.system()=="Linux":
+-	lib_env.Append(LINKFLAGS=['-Wl,-soname,$SONAME'])
++    lib_env.Append(LINKFLAGS=['-Wl,-soname,$SONAME'])
+ 
+ # Create the shared library
+ 
+@@ -381,16 +381,16 @@
+ 
+ # create local symlink for the soname stuff.
+ if platform.system()=="Linux":
+-	if env.get('SONAME_MAJOR'):
+-		lib_env.Command("${SHLIBPREFIX}freesteam${SHLIBSUFFIX}${SONAME_MAJOR}",lib,Move("$TARGET","$SOURCE"))
+-		#print "MAKING LINK, SONAME_MAJOR =",env.get('SONAME_MAJOR')
+-		liblink = lib_env.Command("${SHLIBPREFIX}freesteam${SHLIBSUFFIX}${SONAME_MAJOR}"
+-			,lib
+-			,"ln -s $SOURCE $TARGET"
+-		)
+-		libs.append(liblink)
+-		env.Depends('python',liblink)
+-		env.Depends('test',liblink)
++    if env.get('SONAME_MAJOR'):
++        lib_env.Command("${SHLIBPREFIX}freesteam${SHLIBSUFFIX}${SONAME_MAJOR}",lib,Move("$TARGET","$SOURCE"))
++        #print "MAKING LINK, SONAME_MAJOR =",env.get('SONAME_MAJOR')
++        liblink = lib_env.Command("${SHLIBPREFIX}freesteam${SHLIBSUFFIX}${SONAME_MAJOR}"
++            ,lib
++            ,"ln -s $SOURCE $TARGET"
++        )
++        libs.append(liblink)
++        env.Depends('python',liblink)
++        env.Depends('test',liblink)
+ 
+ # Store a reference to this library so that we can reference it from
+ # SConscript files in subdirectories
+@@ -423,9 +423,9 @@
+ 
+ prog_env = env.Clone()
+ prog_env.Append(
+-	LIBS=['freesteam']
+-	,LIBPATH=['#']
+-	,LINKFLAGS=['-Wl,-rpath,'+str(Dir('#'))]
++    LIBS=['freesteam']
++    ,LIBPATH=['#']
++    ,LINKFLAGS=['-Wl,-rpath,'+str(Dir('#'))]
+ )
+ 
+ prog_env.Program("test","test.c")
+@@ -438,30 +438,30 @@
+ #print "INSTALL_ROOT =",env.get('INSTALL_ROOT')
+ 
+ try:
+-	umask = os.umask(022)
++    umask = os.umask(0o22)
+ except OSError:
+-	# ignore on systems that don't support umask
+-	pass
++    # ignore on systems that don't support umask
++    pass
+ 
+ 
+ libname = "${INSTALL_LIB}/$SONAME$SONAME_MINOR"
+ if platform.system()=="Windows":
+-	install_lib = env.InstallLibrary("$INSTALL_ROOT$INSTALL_LIB",[lib])
++    install_lib = env.InstallLibrary("$INSTALL_ROOT$INSTALL_LIB",[lib])
+ else:
+-	install_lib = env.InstallLibraryAs("${INSTALL_ROOT}"+libname, [lib])
++    install_lib = env.InstallLibraryAs("${INSTALL_ROOT}"+libname, [lib])
+ 
+-	link1 = "$INSTALL_LIB/${SHLIBPREFIX}freesteam$SHLIBSUFFIX"
+-	link2 = "$INSTALL_LIB/$SONAME"
++    link1 = "$INSTALL_LIB/${SHLIBPREFIX}freesteam$SHLIBSUFFIX"
++    link2 = "$INSTALL_LIB/$SONAME"
+ 
+-	install_link1 = None
+-	if env.subst(link1) != env.subst(libname):
+-		install_link1 = env.Command("${INSTALL_ROOT}"+link1,install_lib,"ln -s %s $TARGET" % os.path.basename(libname))
+-
+-	install_link2 = None
+-	if env.get("SONAME_MINOR"):
+-		install_link2 = env.Command("${INSTALL_ROOT}"+link2,install_lib,"ln -s %s $TARGET"%os.path.basename(libname))
+-	
+-	env['installedfiles'] += [install_link1, install_link2]
++    install_link1 = None
++    if env.subst(link1) != env.subst(libname):
++        install_link1 = env.Command("${INSTALL_ROOT}"+link1,install_lib,"ln -s %s $TARGET" % os.path.basename(libname))
++
++    install_link2 = None
++    if env.get("SONAME_MINOR"):
++        install_link2 = env.Command("${INSTALL_ROOT}"+link2,install_lib,"ln -s %s $TARGET"%os.path.basename(libname))
++
++    env['installedfiles'] += [install_link1, install_link2]
+ 
+ env['installedfiles'] += [install_lib, install_config]
+ 
+@@ -469,26 +469,26 @@
+ headerfiles = glob.glob("*.h")
+ 
+ if env.get('HAVE_SWIG') and env.get('HAVE_PYTHON'):
+-	headerfiles += glob.glob("python/*.i")
++    headerfiles += glob.glob("python/*.i")
+ 
+ #---------------
+ # DISTRIBUTION TARBALL
+ 
+ env['DISTTAR_FORMAT']='bz2'
+ env.Append(
+-	DISTTAR_EXCLUDEEXTS=['.o','.os','.so','.0','.1','.2','.3'
+-		,'.a','.dll','.lib','.cc','.cache'
+-		,'.pyc','.cvsignore','.dblite','.log','.pl','.out','.exe','.aux','.idx'
+-		,'.toc','.lof','.lot','.mm','.warnings','.tm2','.swp',',tmp','.gz'
+-		,'.bz2','.7z','.deb','.dsc','.changes','_wrap.c','.pyc'
+-		,'.dvi','.tex','.lot','.loc','.eps'
+-	]
+-	, DISTTAR_EXCLUDEDIRS=['CVS','.svn','.sconf_temp', 'dist','debian']
+-	, DISTTAR_EXCLUDERES=[r"_wrap\.c$", r"~$", r"python/freesteam\.py", r"/test$",r"examples/isentropic$"]
++    DISTTAR_EXCLUDEEXTS=['.o','.os','.so','.0','.1','.2','.3'
++        ,'.a','.dll','.lib','.cc','.cache'
++        ,'.pyc','.cvsignore','.dblite','.log','.pl','.out','.exe','.aux','.idx'
++        ,'.toc','.lof','.lot','.mm','.warnings','.tm2','.swp',',tmp','.gz'
++        ,'.bz2','.7z','.deb','.dsc','.changes','_wrap.c','.pyc'
++        ,'.dvi','.tex','.lot','.loc','.eps'
++    ]
++    , DISTTAR_EXCLUDEDIRS=['CVS','.svn','.sconf_temp', 'dist','debian']
++    , DISTTAR_EXCLUDERES=[r"_wrap\.c$", r"~$", r"python/freesteam\.py", r"/test$",r"examples/isentropic$"]
+ )
+ 
+ tar = env.DistTar("dist/"+env['DISTTAR_NAME']
+-	, [env.Dir('#'),'freesteam.spec']
++    , [env.Dir('#'),'freesteam.spec']
+ )
+ 
+ #------------------------------------------------------
+@@ -496,23 +496,23 @@
+ # DEBIAN TARBALL for use with Build Service
+ 
+ if platform.system() != "Windows":
+-	import glob
+-	deb_files = glob.glob('debian/*.install')
+-	deb_files += glob.glob('debian/*.docs')
+-	deb_files += glob.glob('debian/*.dirs')
+-	deb_files += glob.glob('debian/*.man')
+-	deb_files += glob.glob('debian/*.manpages')
+-	deb_files += ['debian/%s' % s for s in ['rules','control','changelog','compat','copyright','dirs']]
+-
+-	deb_tar = env.Tar(
+-		'dist/debian.tar.gz'
+-		,deb_files
+-		,TARFLAGS = ['cz']
+-	)
++    import glob
++    deb_files = glob.glob('debian/*.install')
++    deb_files += glob.glob('debian/*.docs')
++    deb_files += glob.glob('debian/*.dirs')
++    deb_files += glob.glob('debian/*.man')
++    deb_files += glob.glob('debian/*.manpages')
++    deb_files += ['debian/%s' % s for s in ['rules','control','changelog','compat','copyright','dirs']]
++
++    deb_tar = env.Tar(
++        'dist/debian.tar.gz'
++        ,deb_files
++        ,TARFLAGS = ['cz']
++    )
+ 
+ #---------------------------------------------------
+ env['installedfiles'] += [env.InstallHeader("${INSTALL_ROOT}$INSTALL_INCLUDE/freesteam", headerfiles)]
+-	
++
+ env.Alias('install',env['installedfiles'])
+ 
+ #------------------------------------------------------
+@@ -521,31 +521,30 @@
+ with_installer = True
+ 
+ if not env.get('NSIS'):
+-	with_installer = False
+-	without_installer_reason = "NSIS not found"
++    with_installer = False
++    without_installer_reason = "NSIS not found"
+ 
+ if platform.system()=="Windows":
+-	if with_installer:
+-		inst64 = ("0","1")[platform.architecture()[0] == "64bit"]
+-		env.Append(NSISDEFINES={
+-			'OUTFILE':"#dist/"+env['WIN_INSTALLER_NAME']
+-			,"VERSION":version
+-			,'PYVERSION':pyversion
+-			,'INST64':inst64
+-		})
+-		installer = env.Installer('installer.nsi')
+-		Depends(installer,["python","ascend"])
+-		Depends(installer,[configscript])
+-		env.Alias('installer',installer)
+-	else:
+-		print "Skipping... Windows installer isn't being built:",without_installer_reason
++    if with_installer:
++        inst64 = ("0","1")[platform.architecture()[0] == "64bit"]
++        env.Append(NSISDEFINES={
++            'OUTFILE':"#dist/"+env['WIN_INSTALLER_NAME']
++            ,"VERSION":version
++            ,'PYVERSION':pyversion
++            ,'INST64':inst64
++        })
++        installer = env.Installer('installer.nsi')
++        Depends(installer,["python","ascend"])
++        Depends(installer,[configscript])
++        env.Alias('installer',installer)
++    else:
++        print("Skipping... Windows installer isn't being built:",without_installer_reason)
+ 
+ #------------------------------------------------------
+ # DEFAULT TARGETS
+ 
+ env.Default(default_targets)
+ 
+-print "Building targets:"," ".join([str(i) for i in BUILD_TARGETS])
++print("Building targets:"," ".join([str(i) for i in BUILD_TARGETS]))
+ 
+ # vim:set ts=4 sw=4 noexpandtab ft=python:
+-
+diff -u -r freesteam-2.1_orig/thcond.py freesteam-2.1/thcond.py
+--- freesteam-2.1_orig/thcond.py	2019-11-13 09:59:29.862639264 +0100
++++ freesteam-2.1/thcond.py	2019-11-13 11:35:42.190668131 +0100
+@@ -29,7 +29,7 @@
+ 	Converted from Python from the XSteam OpenOffice version.
+ 	"""
+ 
+-	print "rho = %f, T = %f" % (rho, T)
++	print(("rho = %f, T = %f" % (rho, T)))
+ 
+ 	# ver2.6 Start corrected bug
+ 	if T < 273.15:
+@@ -59,7 +59,7 @@
+ 
+ 	lam2 = (0.0701309 / T ** 10 + 0.011852) * rho ** (9. / 5) * exp(0.642857 * (1 - rho ** (14. / 5))) + 0.00169937 * s * rho ** Q * exp((Q / (1. + Q)) * (1. - rho ** (1. + Q))) - 1.02 * exp(-4.11717 * T ** (3. / 2) - 6.17937 / rho ** 5)
+ 
+-	print "lam0 = %f, lam1 = %f, lam2 = %f" % (lam0, lam1, lam2)
++	print(("lam0 = %f, lam1 = %f, lam2 = %f" % (lam0, lam1, lam2)))
+ 
+ 	return lam0 + lam1 + lam2
+ 
+@@ -67,10 +67,10 @@
+ 	p = 5
+ 	T = 300
+ 	rho = steam_pT(p * 1e6,T + 273.15).rho
+-	print "p = %f MPa" % p
+-	print "T = %f °C" % T
+-	print "rho = %f kg/m³" % rho
++	print(("p = %f MPa" % p))
++	print(("T = %f °C" % T))
++	print(("rho = %f kg/m³" % rho))
+ 	
+ 	k = tc_ptrho(p, T + 273.15, rho)
+-	print "k =",k
++	print(("k =",k))
+ 
