@@ -2,7 +2,7 @@
 pkgname=madagascar
 pkgver=3.0.1
 pkgrel=1
-pkgdesc="Automatic Rule-Based Time Tracker"
+pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url=http://ahay.org/
 license=('GPL2')
 arch=('i686' 'x86_64')

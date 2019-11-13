@@ -1,5 +1,5 @@
 pkgbase = madagascar
-	pkgdesc = Automatic Rule-Based Time Tracker
+	pkgdesc = Multidimensional data analysis and reproducible computational experiments.
 	pkgver = 3.0.1
 	pkgrel = 1
 	url = http://ahay.org/
