@@ -2,17 +2,18 @@
 
 pkgname='xampp'
 pkgver='7.3.11'
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
 arch=('x86_64')
 depends=('net-tools')
 optdepends=('polkit: to run XAMPP Manager from menu')
-makedepends=('fakeuser-git' 'proot')
+makedepends=('fakeuser-git' 'sdx')
 source=('lampp.service'
 	'xampp-manager.desktop'
-	'xampp-manager.png')
+	'xampp-manager.png'
+    'bitrock-unpacker.tcl')
 source_x86_64=("https://www.apachefriends.org/xampp-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 	'org.freedesktop.xampp-manager.policy'
 	'xampp-manager-polkit')
@@ -20,7 +21,8 @@ options=(!strip)
 install='xampp.install'
 sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
-            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a')
+            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
+            '70ec39b668eae513f88c413e0159af776325aed10de0c4337fe587837cc5e358')
 sha256sums_x86_64=('53710f3d8c5a0b4d145382243093fde927c28a6dc3cf8e3af5bbe2b1c03465ad'
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
                    '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
@@ -56,33 +58,35 @@ prepare() {
 	export LD_PRELOAD='/usr/lib/fakeuser/libfakeuser.so'
 
 }
-
 package() {
 
 	cd "${srcdir}"
 
 	install -dm755 "${pkgdir}/opt/lampp"
-
+    
 	msg 'Creating a temporary mysql user/group with fakeadd...'
 
 	getent group mysql > /dev/null || fakeadd -G -n mysql -g "${_mysql_uuid}" || _fakeadd_error
 	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g "${_mysql_uuid}" -u "${_mysql_uuid}" -s /bin/false || _fakeadd_error
 
-	msg 'Extracting package (this might take several minutes, don'\''t give up!)...'
+	msg 'Extracting package...'
 
 	chmod +x "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
-
-	proot -0 -b "${pkgdir}/opt/lampp:/opt/lampp" "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
-		--mode unattended --disable-components 'xampp_developer_files' --debuglevel 4 --launchapps 0 \
-		--debugtrace "${srcdir}/bitrock_debug.log"
-
+    
+        ./bitrock-unpacker.tcl ${srcdir}/xampp-linux-x64-7.3.11-0-installer.run ${pkgdir}
 	msg 'Copying executables and launcher...'
-
+	cp -a "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
+	cp -a "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
+	cp -a "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
+	cp -a "${pkgdir}/native_proftpd_adapter/proftpd_xampp_linux/proftpd"/. "${pkgdir}/opt/lampp/proftpd"
+	cp -a "${pkgdir}/native_mysql_adapter/mysql_xampp_linux/mysql"/. "${pkgdir}/opt/lampp/mysql"
+	cp -a "${pkgdir}/manager/binary"/. "${pkgdir}/opt/lampp"
+	cp -a "${pkgdir}/common_native_adapter/common"/. "${pkgdir}/opt/lampp"
 	chmod g-s -R "${pkgdir}/opt/lampp"
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
-	cp "${pkgdir}/opt/lampp/licenses"/* "${pkgdir}/usr/share/licenses/xampp"
+	cp "${pkgdir}/xampp_core_files/xampp_core_folder/licenses"/* "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
@@ -100,6 +104,14 @@ package() {
 
 	# Install policy file for desktop launcher
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
-
+    
+	# Remove unused folder
+	rm -rf "${pkgdir}/xampp_core_files/"
+	rm -rf "${pkgdir}/xampp_developer_files/"
+	rm -rf "${pkgdir}/native_mysql_adapter/"
+	rm -rf "${pkgdir}/native_apache_adapter/"
+	rm -rf "${pkgdir}/native_proftpd_adapter/"
+	rm -rf "${pkgdir}/manager/"
+	rm -rf "${pkgdir}/common_native_adapter/"
 }
 
