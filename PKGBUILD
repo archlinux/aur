@@ -1,21 +1,22 @@
-# Maintainer: Manoel Brunnen <manoel.brunnen@gmail.com>
+# Maintainer: Nils Van Zuijlen <nils.van-zuijlen@mailo.com>
+# Contributor: Manoel Brunnen <manoel.brunnen@gmail.com>
 
 pkgname=xctu
-pkgver=6.3.5
+pkgver=6.4.4
 pkgrel=0
 pkgdesc="Next Generation Configuration Platform for XBee/RF Solutions."
 arch=('i686' 'x86_64')
 url="http://www.digi.com/products/xbee-rf-solutions/xctu-software/xctu"
 license=('custom')
-depends=('java-runtime-common')
+depends=('gtk2' 'java-runtime' 'libxtst' 'alsa-lib' 'gconf' 'nss' 'libglvnd' 'libnet' 'libxt')
 options=('!strip')
 # install=$pkgname.install
 if [[ $CARCH == 'i686' ]]; then
-    _setup_file=40002880_G.run
-    md5sums=('906fe507935450b3e0f2ff28044c5650')
+    _setup_file=40002880_V.run
+    md5sums=('61ce815688c1e34847e42b1d9c910503')
 elif [[ $CARCH == 'x86_64' ]]; then
-    _setup_file=40002881_G.run
-    md5sums=('f378b0636d5f3b9327e43355c89151ef')
+    _setup_file=40002881_V.run
+    md5sums=('663bde271ae131a429fe07eb75b73479')
 fi
 source=("http://ftp1.digi.com/support/utilities/$_setup_file"
         'launcher.sh'
