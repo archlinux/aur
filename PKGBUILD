@@ -1,39 +1,47 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=core
-pkgver=5.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
 url="https://github.com/coreemu/core/"
 license=('BSD')
-depends=('libev' 'ebtables' 'iproute2' 'python2' 'python2-enum34'
-         'bridge-utils' 'tkimg' 'xterm')
-makedepends=('help2man' 'imagemagick' 'python2-sphinx' 'openvswitch')
-conflicts=('core-svn')
-backup=('etc/core/core.conf' 'etc/core/perflogserver.conf')
+depends=('bridge-utils' 'ebtables' 'ethtool' 'iproute2' 'libev' 'openvswitch'
+  'procps-ng' 'python3' 'python-future' 'python-grpcio' 'python-lxml' 'tkimg'
+  'util-linux' 'xterm')
+makedepends=('help2man' 'imagemagick' 'python-sphinx' 'python-grpcio-tools'
+  'openvswitch')
+optdepends=('openvswitch: Open vSwitch support')
+backup=('etc/core/core.conf')
 source=("https://github.com/coreemu/core/archive/release-$pkgver.tar.gz"
-        'sphinx-apidoc2.patch')
-md5sums=('ff100baf762170d1e8f124b9493b98f5'
-         'a636bfcf4865709855079f3053504dda')
+        'python-lib-dir.patch'
+        'systemd-service-dir.patch')
+md5sums=('15414de3e9a43664c86894aca039a6a7'
+         'e3ce4e27688f93a07a0388c93aab2a5a'
+         '43189fc4c5eff0bfbf0464c407a15bec')
+
+prepare() {
+  cd "$srcdir/core-release-$pkgver"
+
+  patch -p1 < "$srcdir/python-lib-dir.patch"
+  patch -p1 < "$srcdir/systemd-service-dir.patch"
+}
 
 build() {
   cd "$srcdir/core-release-$pkgver"
 
-  patch -p1 < ../sphinx-apidoc2.patch
-
   ./bootstrap.sh
-  ./configure CFLAGS=-fno-strict-aliasing PYTHON=/usr/bin/python2 --prefix=/usr
+  ./configure              \
+    --prefix=/usr          \
+    --with-startup=systemd \
+    --enable-python3       \
+    --enable-docs
   make
 }
 
 package() {
   cd "$srcdir/core-release-$pkgver"
   make DESTDIR="$pkgdir/" install
-
-  rm "$pkgdir/etc/init.d/core-daemon"
-  rmdir "$pkgdir/etc/init.d"
-
-  install -D "$srcdir/core-release-$pkgver/scripts/core-daemon.service" "$pkgdir/usr/lib/systemd/system/core-daemon.service"
 }
 
 # vim:set ts=2 sw=2 et:
