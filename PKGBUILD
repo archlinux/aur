@@ -1,13 +1,13 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
-# Contributor: David Runge <dave@sleepmap.de>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: timbosa <tinny_tim@dodo.com.au>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-_pkgver=4.19.72
-_rtpatchver=26
+_pkgver=4.19.82
+_rtpatchver=30
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -23,9 +23,8 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v4.x/linux-${_pkgver}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/4.19/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
-  config         # the main kernel config file
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
+  'config'
+  '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -35,13 +34,12 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('f9fcb6b3bd29115ac55fc154e300c3dce2044502732f6842ad6c25e6f9f51f6d'
+sha256sums=('58d96d6c2c5ee8288fe9714891e4037a18f457b008e369e33fc744afc2cb595d'
             'SKIP'
-            '7e360014f510daf6ab886f272531f98d9ae5cb5a55973a9b636346ac45f841f6'
+            'c299a487a4a0446019b15241e132f6d570910eb18a968309f57b9bc8e44fc23a'
             'SKIP'
-            'e5a6ac3346c359353b3a7491bb77637870328a4bf3f3d57bf434a29b72632600'
-            '75aa8dd708ca5a0137fbf7cddc9cafefe6aac6b8e0638c06c156d412d05af4bc'
-            '67aed9742e4281df6f0bd18dc936ae79319fee3763737f158c0e87a6948d100d')
+            'ab71979485ff9771d264c692a1215b5657455e844a16e00656cba0c810a99a81'
+            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -54,7 +52,7 @@ prepare() {
   msg "applying patch-${_pkgver}-rt${_rtpatchver}.patch"
   patch -Np1 -i "../patch-${_pkgver}-rt${_rtpatchver}.patch"
 
-  msg2 "Setting version..."
+  echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -64,17 +62,17 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
   make olddefconfig
 #  make menuconfig # CLI menu for configuration
 
   make -s kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
@@ -92,7 +90,7 @@ _package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -100,13 +98,13 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -116,7 +114,7 @@ _package-headers() {
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -132,7 +130,7 @@ _package-headers() {
   # this is gone in v5.3
   mkdir "$builddir/.tmp_versions"
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -148,10 +146,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -159,16 +157,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -183,11 +181,11 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -197,14 +195,14 @@ _package-docs() {
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing documentation..."
+  echo "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
+  echo "Removing doctrees..."
   rm -r "$builddir/Documentation/output/.doctrees"
 
-  msg2 "Moving HTML docs..."
+  echo "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
     dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
@@ -213,11 +211,11 @@ _package-docs() {
     rmdir -p --ignore-fail-on-non-empty "${src%/*}"
   done < <(find "$builddir/Documentation/output" -type f -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
