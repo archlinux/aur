@@ -1,6 +1,6 @@
 pkgbase = gtklp
 	pkgdesc = a graphical frontend for cups, the linux printing system
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = http://gtklp.sirtobi.com/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = gtklp
 	license = GPL
 	depends = cups
 	depends = gtk2
-	source = gtklp-1.3.3.src.tar.gz::https://sourceforge.net/projects/gtklp/files/gtklp/1.3.3/gtklp-1.3.3.src.tar.gz/download
-	sha256sums = 6e105c22b8e3e855bfba060cb3285959841f04439077b0a533f14f6aa52bfbbf
+	source = gtklp-1.3.4.src.tar.gz::https://sourceforge.net/projects/gtklp/files/gtklp/1.3.4/gtklp-1.3.4.src.tar.gz/download
+	sha256sums = be07609042595fa932034e3b2d7038cef33901ec0863fcedbb5188acb6b53bab
 
 pkgname = gtklp
 
