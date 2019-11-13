@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.9.r1447.ge54c15aa729
+pkgver=4.10.r1513.g87c52809b2b
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -21,9 +21,15 @@ source=(git+https://review.coreboot.org/coreboot
 	    git+https://review.coreboot.org/libgfxinit
 	    git+https://review.coreboot.org/fsp
 	    git+https://review.coreboot.org/opensbi
+	    git+https://review.coreboot.org/intel-microcode
+	    git+https://review.coreboot.org/ffs
+	    git+https://review.coreboot.org/amd_blobs
         # vboot provides vb2_api.h needed by cbfstool
         autoport-tool-paths.patch)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -62,6 +68,9 @@ prepare() {
   git config -f .gitmodules 'submodule.libgfxinit.url' "$srcdir/libgfxinit"
   git config -f .gitmodules 'submodule.3rdparty/fsp.url' "$srcdir/fsp"
   git config -f .gitmodules 'submodule.opensbi.url' "$srcdir/opensbi"
+  git config -f .gitmodules 'submodule.intel-microcode.url' "$srcdir/intel-microcode"
+  git config -f .gitmodules 'submodule.3rdparty/ffs.url' "$srcdir/ffs"
+  git config -f .gitmodules 'submodule.3rdparty/amd_blobs.url' "$srcdir/amd_blobs"
 
   git submodule update --init
 
