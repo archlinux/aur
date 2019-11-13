@@ -8,7 +8,7 @@
 _pluginame=neodatis
 pkgname=i2p-plugin-${_pluginame}
 pkgver=2.1_2.14_209_17
-pkgrel=1
+pkgrel=2
 pkgdesc="Some I2P middleware for seedless"
 arch=('any')
 url="http://i2pwiki.i2p/index.php?title=Plugins"
@@ -20,6 +20,7 @@ provides=('i2p-neodatis')
 # get this from http://sponge.i2p/files/seedless/01_neodatis.xpi2p
 source=("file://01_${_pluginame}.xpi2p")
 noextract=("file://01_${_pluginame}.xpi2p")
+install="${_pluginame}.install"
 sha256sums=('3af50cb8d735b1ef0077789d6c1ea438735b1caef59bfbfdfd443fc3623e64be')
 
 prepare() {
@@ -36,7 +37,7 @@ prepare() {
 }
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/opt/i2p/.i2p/plugins/"
-  cp -Ra "i2p" "${pkgdir}/opt/i2p/.i2p/plugins/01_${_pluginame}"
+  mkdir -p "${pkgdir}/opt/i2p/plugins/"
+  cp -Ra "i2p" "${pkgdir}/opt/i2p/plugins/01_${_pluginame}"
 }
 
