@@ -30,16 +30,16 @@ provides=('kotatogram-desktop')
 source=(
 	$pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver.tar.xz
 
-	$url/blob/dev/lib/xdg/tg.protocol
-	$url/blob/dev/lib/xdg/kotatogramdesktop.desktop
+	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/tg.protocol
+	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
 	
 	$url/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
 sha512sums=('38d466cddea59676394e910a2e951f8a1c63f7bd7e92f3710453a8dded246984177271bf1ff17b717da566859dc5e147a5da639cb1c2fa2819c41a934156f006'
-            'e545b20de01dbd73f519137d62a693a2197d8a11f441bccb91299a5c36ede314152b54c9f275c3c678ceb4a8f1e43bf7b64abd932b340a710e0b2ddbc6fa4aa5'
-            '1b34555db4b11a4b3aa75d74456d9e17fa09b402439fe5f7dbf5d86875c3481b44736300220bd698cecdbf743a044a4bee6a748a287db2f6d1732daccfe04a66'
+            'e54c2f5a4cdeff5850828072890679e07da07cfa3663cf9bfb1e6b8f5bca0dc15e6b4b9a2a6c111b796a0440035beea419cda9bf4ec5d476d4fbb54c1b4ad7fd'
+            '9f24071d00eabd650a65ed0aa3b231c1de0d0fdc2ec7e305e9e4bb194e4cc643bcb281cdfc3d58765e60410045a4d58d192fdb5aab14ca29e53507c257aef03e'
             '9f4f8d6bbbb54012da0bd9bdf6975ba29fd6ebfca3083995581d815a54e46bc5d4c4d8fedc67f71e892ace08e79179ea6452a7dea0f6ea4f932c1f57ca8497a7'
             '6481cde1cd25c74dd5ad2200f1529d48835590a5ca49cd1650a3cf9dfbc2f391c06fc2a31910742fa7edb3b3369d3795b6e55779f251e3c14fdacbfa033d8579'
             '0a09bc3b0ee9c3d8190ce8069d5cd488c2624f099e0880845dc7ae467d71c48873361e642bb02f3a60425d0334adc8fc40d6b868f9ec534eb4d44e3ec3604c0f'
