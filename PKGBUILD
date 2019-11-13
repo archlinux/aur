@@ -1,7 +1,7 @@
-# Maintainer: perqin <perqinxie at gmail dot com>
+# Maintainer: marcospb19 <marcospb19@hotmail.com>
 
 pkgname=sublime-text-3-imfix
-pkgver=3.3207
+pkgver=3.3211
 pkgrel=1
 pkgdesc='Sophisticated text editor for code, markup and prose - Stable build with input method support for CJK users'
 arch=('x86_64')
