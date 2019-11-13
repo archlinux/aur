@@ -6,6 +6,7 @@ _pkgname="Shortwave"
 pkgname="shortwave"
 pkgver="0.0.1"
 pkgrel="1"
+epoch="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('any')
 url="https://gitlab.gnome.org/World/${_pkgname}"
