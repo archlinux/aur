@@ -1,3 +1,5 @@
+# Maintainer: Auteiy <dmitry@auteiy.me>
+
 pkgname=ttf-cuprum
 pkgver=2.000
 pkgrel=1
