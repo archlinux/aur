@@ -8,7 +8,7 @@ pkgname=('libmega-git'
          'python2-megasync-git'
          'fuse-megasync-git'
          )
-pkgver=v3.4.8.19.g6ecca6a7
+pkgver=v3.6.2a.778.g03224b659
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('x86_64')
@@ -105,13 +105,14 @@ package_libmega-git() {
            'libraw'
            'libuv'
            'libmediainfo'
+           'sqlite'
            )
   optdepends=('python-megasync-git: python bindings'
               'python2-megasync-git: python2 bindings'
               )
   make -C build DESTDIR="${pkgdir}" install-data install-libLTLIBRARIES install-pkgconfigDATA
 
-  install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 sdk/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_fuse-megasync-git() {
@@ -120,13 +121,14 @@ package_fuse-megasync-git() {
   provides=('fuse-megasync')
   depends=(libmega-git
            'fuse2'
+           'gcc-libs'
            )
 
   make -C build DESTDIR="${pkgdir}" install-binPROGRAMS
   rm -fr "${pkgdir}/usr/bin/megacli"
   rm -fr "${pkgdir}/usr/bin/megasimplesync"
 
-  install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 sdk/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_megasync-daemon-git() {
@@ -146,7 +148,7 @@ package_megasync-daemon-git() {
   install -d "${pkgdir}/srv/mega"
   install -dm700 "${pkgdir}/var/mega"
 
-  install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 sdk/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_megasync-cli-git() {
@@ -159,7 +161,7 @@ package_megasync-cli-git() {
   rm -fr ${pkgdir}/usr/bin/megafuse
   rm -fr ${pkgdir}/usr/bin/megasimplesync
 
-  install -Dm644 MEGAsync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 sdk/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-megasync-git() {
@@ -179,7 +181,7 @@ package_python-megasync-git() {
   rm -fr ${pkgdir}${_sites_packages}/mega/libmega.so
   chrpath -d ${pkgdir}${_sites_packages}/mega/_mega.so
 
-  install -Dm644 "${srcdir}/MEGAsync/LICENCE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/sdk/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-megasync-git() {
@@ -198,5 +200,5 @@ package_python2-megasync-git() {
   rm -fr ${pkgdir}${_sites_packages}/mega/libmega.so
   chrpath -d ${pkgdir}${_sites_packages}/mega/_mega.so
 
-  install -Dm644 "${srcdir}/MEGAsync/LICENCE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/sdk/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
