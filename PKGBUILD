@@ -2,7 +2,7 @@
 
 pkgname=sublime-text-3-imfix
 pkgver=3.3211
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated text editor for code, markup and prose - Stable build with input method support for CJK users'
 arch=('x86_64')
 url='https://www.sublimetext.com/3'
@@ -14,10 +14,8 @@ source=(
     "https://download.sublimetext.com/sublime_text_3_build_${pkgver:2}_x64.tar.bz2"
     'LICENSE'
 )
-sha256sums=(
-    'acb64f1de024a0f004888096afa101051e48d96c7a3e7fe96e11312d524938c4'
-    '8e4c48469bf3f35d0c0904e770c4e307d4965a8931e839c01c5765498a19cf01'
-)
+sha256sums=('0b3c8ca5e6df376c3c24a4b9ac2e3b391333f73b229bc6e87d0b4a5f636d74ee'
+            '8e4c48469bf3f35d0c0904e770c4e307d4965a8931e839c01c5765498a19cf01')
 
 package() {
     cd "${srcdir}"
