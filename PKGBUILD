@@ -3,7 +3,7 @@
 # Contributor: Wang Jiajun <amesists@gmail.com>
 
 pkgname=kdesrc-build-git
-pkgver=r2091.aa925d6
+pkgver=r2096.97510bf
 pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
@@ -28,12 +28,12 @@ build() {
     -S kdesrc-build \
     -B build \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
 package() {
-  cmake --install build --prefix "${pkgdir}"/usr
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -d "${pkgdir}"/usr/share/doc/samples
   install -Dm644 kdesrc-build/kdesrc-buildrc-kf5-sample \
