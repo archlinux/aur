@@ -48,7 +48,7 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/opt/i2p/.i2p/plugins/"
+  mkdir -p "${pkgdir}/opt/i2p/plugins/"
   cp -Ra "i2p" "${pkgdir}/opt/i2p/plugins/${_pluginame}"
   _unpack_dir "${pkgdir}/opt/i2p/plugins/${_pluginame}/lib"
   _unpack_dir "${pkgdir}/opt/i2p/plugins/${_pluginame}/console/webapps"
