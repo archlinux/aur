@@ -1,8 +1,8 @@
 pkgbase = blender-plugin-animation-nodes-git
 	pkgdesc = Node based visual scripting system designed for motion graphics in Blender.
-	pkgver = 2.1.4.r5320.b02e0491
+	pkgver = 2.1.5.r5357.1b013502
 	pkgrel = 1
-	url = https://github.com/JacquesLucke/animation_nodes
+	url = https://animation-nodes.com/
 	arch = any
 	license = GPL
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = blender-plugin-animation-nodes-git
 	makedepends = cython
 	depends = blender
 	depends = python-numpy
-	source = git+https://github.com/JacquesLucke/animation_nodes.git#branch=blender2.8
+	source = git+https://github.com/JacquesLucke/animation_nodes.git#branch=master
 	md5sums = SKIP
 
 pkgname = blender-plugin-animation-nodes-git
