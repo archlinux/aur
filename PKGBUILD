@@ -47,7 +47,7 @@ _verify_repo() {
     local jagexpgpkey=${validpgpkeys[0]}
     local _out
 
-    msg2 "Verifying Release (PGP)..."
+    msg2 "Verifying 'Release' file (PGP)..."
     if ! _out=$(gpg --batch --status-fd 1 \
                     --trust-model always \
                     --verify "$Release.gpg" "$Release" \
@@ -61,7 +61,7 @@ _verify_repo() {
         return 1
     fi
 
-    msg2 "Parsing Release..."
+    msg2 "Parsing 'Release' file..."
     _out=$(awk 'ok && $3 == "non-free/binary-amd64/Packages" {print $1; exit}
                 /^[^[:space:]]/ {ok=0}
                 /^SHA256:$/ {ok=1}' < "$Release")
@@ -70,13 +70,13 @@ _verify_repo() {
         return 1
     fi
 
-    msg2 "Verifying Packages (SHA256)..."
+    msg2 "Verifying 'Packages' file (SHA256)..."
     if ! sha256sum --quiet --check <<< "$_out *$Packages"; then
         error "Hash sum of 'Packages' did not match expected"
         return 1
     fi
 
-    msg2 "Parsing Packages..."
+    msg2 "Parsing 'Packages' file..."
     _out=$(awk 'ok && /^SHA256:/ {print $2; exit}
                 /^Package:/ {ok=0}
                 /^Package: runescape-launcher$/ {ok=1}' < "$Packages")
@@ -85,7 +85,7 @@ _verify_repo() {
         return 1
     fi
 
-    msg2 "Verifying $debfile (SHA256)..."
+    msg2 "Verifying '$debfile' (SHA256)..."
     if ! sha256sum --quiet --check <<< "$_out *$debfile"; then
         error "Hash sum of '$debfile' did not match expected"
         return 1
