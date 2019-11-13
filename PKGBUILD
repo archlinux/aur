@@ -2,7 +2,7 @@
 # Contributor: Andreas Manthey <abamanthey@gmail.com>
 pkgname=tuxedo-keyboard-dkms
 _pkgbase=tuxedo-keyboard
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Tuxedo Computers Kernel module for keyboard backlightning."
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"

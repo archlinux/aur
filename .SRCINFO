@@ -1,6 +1,6 @@
 pkgbase = tuxedo-keyboard-dkms
 	pkgdesc = Tuxedo Computers Kernel module for keyboard backlightning.
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard
 	install = tuxedo-keyboard-dkms.install
