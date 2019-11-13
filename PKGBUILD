@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=libnetstack
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Networking stack cache atop netlink"
 url="https://nick-black.com/dankwiki/index.php/Libnetstack"
@@ -29,4 +29,4 @@ check() {
   make test
 }
 
-sha256sums=('235f6969c490774048b9cbbea7278848f198fce8a42fdbbf20e2e616bdf0197b')
+sha256sums=('9aa36e8e3587cc163c0cf7330570520191264e3547ec7131e13bb54a0fd33b4a')
