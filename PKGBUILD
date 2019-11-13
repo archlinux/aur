@@ -1,11 +1,12 @@
-# Maintainer: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
+# Maintainer: adrien1018 <adrien.sf.wu[at]gmail[dot]com>
+# Contributor: fs4000 <matthias_dienstbier[at]yahoo[dot]de>
 # Contributor: trapanator <trap[at]trapanator[dot]com>
 # Contributor: tomprogrammer <Thomas-Bahn[at]gmx[dot]net>
 
 pkgname=phc-intel
 _phcver=0.3.2
-pkgver=$_phcver.12.28
-_realver=pack-rev28
+pkgver=$_phcver.12.31
+_realver=pack-rev31
 pkgrel=1
 pkgdesc="Frequency driver for Intel CPUs with undervolting feature"
 url="http://www.linux-phc.org"
@@ -15,22 +16,24 @@ depends=('dkms')
 provides=('linux-phc')
 backup=('etc/default/phc-intel')
 install=phc-intel.install
-source=($pkgname-$_realver.tar.bz2::$url/forum/download/file.php?id=198
-        phc-intel.{default,sh,sleep,system-sleep}
+source=(phc-intel.{default,sh,sleep,system-sleep}
         dkms.conf)
-sha256sums=('4cfe1c746347278a01fe6af765b9950bf51e0b4c9c07fcbc6dce4f6a15e32b5b'
-            'ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
+sha256sums=('ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3'
             'b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f'
             '569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef'
             '2e17c90d7bfae8f5070e46388e95d443188eaa7beb5ffdd418a0da090f2e7557'
             '7b44882a96eeb7c79dbb7fe5b1ff8cded68c2b6a374c95bdc5e08c414cfd3549')
 
 prepare() {
+	curl $(curl 'http://www.linux-phc.org/forum/viewtopic.php?f=7&t=267' | grep -Po 'href="\.\K.*(?=">phc-intel-pack)' | sed 's/^/http:\/\/www.linux-phc.org\/forum/; s/amp;//') > $pkgname-$_realver.tar.bz2
+	[ $(sha256sum $pkgname-$_realver.tar.bz2 | cut -f1 -d' ') == adee614a1aacfe924625de0d75703d8fa37f942dcd99e276ee357359beac3129 ]
+	tar -jxf $pkgname-$_realver.tar.bz2
 	cd $pkgname-$_realver
 	sed -i 's,/sbin/modprobe phc-intel |,/sbin/modprobe phc-intel \&\& /usr/bin/phc-intel set |,' phc-intel.modprobe
 }
 
 package() {
+	umask 022
 	install -Dm644 dkms.conf "$pkgdir/usr/src/phc-intel-$_phcver/dkms.conf"
 	install -Dm644 phc-intel.default "$pkgdir/etc/default/phc-intel"
 	install -Dm755 phc-intel.sh "$pkgdir/usr/bin/phc-intel"
