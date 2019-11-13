@@ -1,15 +1,15 @@
-# Maintainer: Patrick Wicki <patrick.wicki@member.fsf.org>
+# Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=xfce4-meta
-pkgver=4.12
+pkgver=4.14
 pkgrel=1
 pkgdesc='Meta package for installing the xfce4 group'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
-depends=(exo
+depends=(
+	exo
 	garcon
-	gtk-xfce-engine
 	thunar
 	thunar-volman
 	tumbler
@@ -23,5 +23,5 @@ depends=(exo
 	xfdesktop
 	xfwm4
 	xfwm4-themes
-	)
+)
 
