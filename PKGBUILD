@@ -1,18 +1,23 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-vitals-git
-pkgver=34.r204.gdb5b288
+pkgver=34.r271.gf5f18e8
 pkgrel=1
 pkgdesc="Displays system vitals in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/corecoding/Vitals"
 license=('GPL')
-depends=('dconf' 'gnome-icon-theme' 'gnome-shell' 'libgtop' 'lm_sensors')
-makedepends=('git')
+depends=('dconf' 'gnome-icon-theme' 'gnome-icon-theme-symbolic' 'gnome-shell' 'libgtop' 'lm_sensors')
+makedepends=('gettext' 'git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}")
 sha512sums=('SKIP')
+
+prepare() {
+  cd "${pkgname%-*}"
+  msgfmt -o locale/sk/LC_MESSAGES/vitals.mo locale/sk/LC_MESSAGES/vitals.po
+}
 
 pkgver() {
   cd "${pkgname%-*}"
