@@ -4,20 +4,23 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
 url="https://www.runescape.com/"
 depends=(
-    # TODO: prune redundant deps, this is just straight out of lddtree
+    cairo
+    gcc-libs
     gdk-pixbuf2
     gtk2
     libcap
     libsm
+    libx11
     libxxf86vm
-    # TODO: change back to openssl 1.1 for v2.2.6
-    openssl-1.0
+    openssl-1.0 # TODO: change back to openssl 1.1 for v2.2.6
+    pango
+    sdl2
 )
 makedepends=(gcc) # HACK
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
