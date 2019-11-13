@@ -3,7 +3,7 @@
 
 pkgname=xinetd
 pkgver=2.3.15
-pkgrel=5
+pkgrel=6
 pkgdesc="A secure replacement for inetd"
 arch=('x86_64')
 url="http://www.xinetd.org/"
