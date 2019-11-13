@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -31,6 +31,7 @@ sha256sums=('SKIP'
 sha256sums_x86_64=('SKIP'
                    'SKIP')
 validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
+install="install.sh"
 
 # avoid caching in makepkg!
 SRCDEST=$startdir
