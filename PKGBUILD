@@ -55,15 +55,15 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 "dist/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm755 scripts/fzf.bash "$pkgdir/usr/share/$pkgname/fzf.bash"
+	install -Dm755 "dist/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm755 scripts/fzf.bash -t "$pkgdir/usr/share/$pkgname"
 	install -Dm755 "scripts/$pkgname-autocompletion.bash" \
 		"$pkgdir/usr/share/bash-completion/completions/cheat"
 	install -Dm755 "scripts/$pkgname-autocompletion.fish" \
 		"$pkgdir/usr/share/fish/completions/cheat.fish"
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
 	install -dm644 "$pkgdir/usr/share/$pkgname/cheatsheets/community"
 	cp "$srcdir/"cheatsheets/* "$pkgdir/usr/share/$pkgname/cheatsheets/community"
-	install -Dm744 "$srcdir/conf.yml" "$pkgdir/etc/cheat/conf.yml"
+	install -Dm744 "$srcdir/conf.yml" -t "$pkgdir/etc/cheat"
 }
