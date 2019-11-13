@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=10.0.0_r331726.33e882d5ada
+pkgver=10.0.0_r331734.86f07e826f4
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -45,7 +45,7 @@ _python_optimize() {
   python -OO -m compileall "$@"
 }
 
- _ocaml_ver() {
+ _ocamlver() {
     { pacman -Q ocaml 2>/dev/null || pacman -Sp --print-format '%n %v' ocaml ;} \
      | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
 }
@@ -124,14 +124,14 @@ check() {
 
 package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=(llvm-libs-git=$pkgver-$pkgrel 'perl')
-    optdepends=( 'python: for scripts'
-                            'python-setuptools: for using lit (LLVM Integrated Tester)'
-                            'ocaml: for ocaml support')
+    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl' "ocaml=$(_ocamlver)")
+    optdepends=('python: for scripts'
+                           'python-setuptools: for using lit = LLVM Integrated Tester'
+    )
     # yes, I know polly is not in official repos. It just feels cleaner to list it
     provides=(aur-llvm-git
-                        compiler-rt-git=$pkgver-$pkgrel clang-git=$pkgver-$pkgrel lld-git=$pkgver-$pkgrel lldb-git=$pkgver-$pkgrel polly-git=$pkgver-$pkgrel llvm-ocaml-git=$pkgver-$pkgrel 
-                        compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lld=$pkgver-$pkgrel lldb=$pkgver-$pkgrel polly=$pkgver-$pkgrel llvm-ocaml=$pkgver-$pkgrel
+                        compiler-rt-git=$pkgver-$pkgrel clang-git=$pkgver-$pkgrel lld-git=$pkgver-$pkgrel lldb-git=$pkgver-$pkgrel polly-git=$pkgver-$pkgrel
+                        compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lld=$pkgver-$pkgrel lldb=$pkgver-$pkgrel polly=$pkgver-$pkgrel
     )
     # A package always provides itself, so there's no need to provide llvm-git
     conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
@@ -217,12 +217,13 @@ package_llvm-libs-git() {
 }
 
 package_llvm-ocaml-git() {
-  pkgdesc="OCaml bindings for LLVM"
-  depends=('llvm-git' "ocaml=$(_ocaml_ver)" 'ocaml-ctypes')
+    pkgdesc="OCaml bindings for LLVM"
+    depends=("llvm-git=$pkgver-$pkgrel" "ocaml=$(_ocaml_ver)" 'ocaml-ctypes')
+    provides=("llvm-ocaml=$pkgver-$pkgrel")
+    
+    install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
+    cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
+    cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
 
-  install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
-  cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
-  cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
-
-  install -Dm644 "$srcdir"/llvm-$pkgver.src/LICENSE.TXT  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 "$srcdir"/llvm-$pkgver.src/LICENSE.TXT  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
