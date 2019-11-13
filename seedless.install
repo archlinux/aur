@@ -4,6 +4,6 @@ post_install() {
 
 post_upgrade() {
     systemd-tmpfiles --create i2prouter.conf
-    chown -R i2p:i2p /opt/i2p/.i2p/plugins/02_seedless
-    chmod 700 /opt/i2p/.i2p/plugins/02_seedless
+    chown -R i2p:i2p /opt/i2p/plugins/02_seedless
+    chmod 700 /opt/i2p/plugins/02_seedless
 }

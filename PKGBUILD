@@ -37,7 +37,7 @@ prepare() {
 }
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/opt/i2p/.i2p/plugins/"
-  cp -Ra "i2p" "${pkgdir}/opt/i2p/.i2p/plugins/02_${_pluginame}"
+  mkdir -p "${pkgdir}/opt/i2p/plugins/"
+  cp -Ra "i2p" "${pkgdir}/opt/i2p/plugins/02_${_pluginame}"
 }
 
