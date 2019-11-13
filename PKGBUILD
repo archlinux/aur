@@ -4,7 +4,7 @@
 
 _pkgname=lsd
 pkgname=lsd-truedeps
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Modern ls with a lot of pretty colors and awesome icons'
 url='https://github.com/Peltoche/lsd'
@@ -17,8 +17,8 @@ conflicts=("${_pkgname}=${pkgver}")
 provides=("${_pkgname}=${pkgver}")
 makedepends=('rust' 'cargo')
 source=(https://github.com/Peltoche/lsd/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('849ad168171737ef1ca74b762b3d9fb885c936cb9a753eca07426886478ad2de')
-sha512sums=('58a280615e72f9dc685e49532d147c17d94be099f80400add15b983d5945d98004a6a636f7f7a76809376dc07cab25f44d716a4b00456db0201c34f935952ed3')
+sha256sums=('e2406748d78431a1c03bdd2404a204a006c19905d926e41a36587b93a791e003')
+sha512sums=('562c070d3e716af26ff3a54632cd176a1b95471fbb7e947f8175f89df483ff5b337d1a0d7578fa6ee41f77fa7ed1a618d37e91ebf1b8428e6a857918b415aa39')
 
 build() {
   cd ${_pkgname}-${pkgver}
