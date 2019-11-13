@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=4.0.0b5.r205.g1d8fd370e
+pkgver=4.0.0rc1.r120.gdbc198597
 pkgrel=1
 arch=('any')
 url="https://www.spyder-ide.org/"
@@ -43,9 +43,11 @@ package_spyder-git() {
   #TODO 'python2-diff-match-patch'
   depends=('python2-atomicwrites'
            'python2-chardet'
+           'python2-cloudpickle'
            'python2-jedi'
            'python2-keyring'
            'python2-language-server'
+           'python2-numpydoc'
            'python2-paramiko'
            'python2-pexpect'
            'python2-pickleshare'
@@ -95,10 +97,12 @@ package_spyder3-git() {
   depends=('jupyter-nbconvert'
            'python-atomicwrites'
            'python-chardet'
+           'python-cloudpickle'
            'python-diff-match-patch'
            'python-jedi'
            'python-keyring'
            'python-language-server'
+           'python-numpydoc'
            'python-paramiko'
            'python-pexpect'
            'python-pickleshare'
