@@ -3,12 +3,12 @@
 pkgname=lib32-libbs2b
 _pkgname=libbs2b
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bauer stereophonic-to-binaural DSP effect library"
 arch=('i686' 'x86_64')
 url='http://bs2b.sourceforge.net'
 license=('GPL')
-depends=('libsndfile')
+depends=('lib32-libsndfile' 'libbs2b')
 source=(https://cfhcable.dl.sourceforge.net/project/bs2b/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz)
 sha1sums=('a71318211611a00bd3d595b0830d2188938ff89d')
 
