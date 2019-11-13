@@ -53,7 +53,8 @@ source=(
         "CMakeLists.inj"
         "no-gtk2.patch"
         "tdesktop.patch"
-        "tg.protocol"
+        "https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/tg.protocol"
+
        )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
 sha512sums=('SKIP'
