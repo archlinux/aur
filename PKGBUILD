@@ -2,7 +2,7 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=2.3.1
+_npmver=3.0.0
 pkgname=cloudron-cli
 pkgver=$_npmver
 pkgrel=1
@@ -15,10 +15,10 @@ makedepends=('npm' 'jq')
 optdepends=()
 source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('546d4a828f8ec3844bc09b0b7b7ad719c25c4037f1d82db6cfc042758479c0f1')
+sha256sums=('dad93c1579ee62a2530bd36e1b274ef8fd8c0edec7b4aa1212afcf4eeefac950')
 
 package() {
- 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
 	find "$pkgdir/usr" -type d -exec chmod 755 {} +
 
 	# Remove references to $pkgdir
@@ -29,5 +29,5 @@ package() {
 	local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
 	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
 	mv "$tmppackage" "$pkgjson"
-	chmod 644 "$pkgjson" 
+	chmod 644 "$pkgjson"
 }
