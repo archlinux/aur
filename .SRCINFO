@@ -1,5 +1,5 @@
 pkgbase = faiss-git
-	pkgver = v1.5.2.r5.gd224d11
+	pkgver = v1.6.0.r5.ge325c50
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686
@@ -7,12 +7,9 @@ pkgbase = faiss-git
 	license = MIT
 	makedepends = git
 	makedepends = python
-	makedepends = python2
 	makedepends = python-numpy
-	makedepends = python2-numpy
 	makedepends = swig
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = blas
 	depends = lapack
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
@@ -29,11 +26,4 @@ pkgname = python-faiss-git
 	depends = python-numpy
 	provides = python-faiss
 	conflicts = python-faiss
-
-pkgname = python2-faiss-git
-	pkgdesc = A library for efficient similarity search and clustering of dense vectors. Python2 wrappers
-	depends = python2
-	depends = python2-numpy
-	provides = python2-faiss
-	conflicts = python2-faiss
 
