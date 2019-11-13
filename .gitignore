@@ -1,0 +1,6 @@
+.#*
+CoolDigits_*.zip
+*.pkg.tar.xz
+
+pkg/*
+src/*
