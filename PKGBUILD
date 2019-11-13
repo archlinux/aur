@@ -3,13 +3,13 @@
 
 pkgname=alttab-git
 _name=alttab
-pkgver=v1.4.0.16.g6ff9d46
+pkgver=v1.4.0.21.g7e4fc4c
 pkgrel=1
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
 url="https://github.com/sagb/alttab"
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash')
+depends=('libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash' 'libxpm' 'git')
 makedepends=('autoconf' 'automake')
 source=("git+https://github.com/sagb/alttab.git#branch=master")
 sha1sums=('SKIP')
