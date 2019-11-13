@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=cura-git
-pkgver=4.0.0.442.gf6dd3f922
+pkgver=4.4.beta.r183.gebea5fbd1
 pkgrel=1
 pkgdesc="A full software solution for 3D printing aimed at RepRaps and the Ultimaker."
 arch=('any')
@@ -30,7 +30,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd Cura
-  git describe --tags | sed 's/-/./g'
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
