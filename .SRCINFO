@@ -1,4 +1,4 @@
-pkgbase = spyder3-git
+pkgbase = spyder-git
 	pkgdesc = The Scientific Python Development Environment (Python 3 version)
 	pkgver = 4.0.0rc1.r120.gdbc198597
 	pkgrel = 1

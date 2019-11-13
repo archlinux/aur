@@ -1,6 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 _pkgname=spyder3
+pkgbase=spyder-git
 pkgname=$_pkgname-git
 pkgver=4.0.0rc1.r120.gdbc198597
 pkgrel=1
