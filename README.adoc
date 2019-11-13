@@ -25,6 +25,11 @@ WARNING: Read the warning above.
 |===
 |Version | Note
 
+| *0.4.1*
+a|
+* Remove unnecessary license headers and simply copy UNLICENSED to appropriate place
+* Minor bugfixes - thanks @undiabler!
+
 | *0.4.0*
 a|
 * Add a route based upon the ALLOWED_IPS.
