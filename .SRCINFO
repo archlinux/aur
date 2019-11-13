@@ -13,7 +13,6 @@ pkgbase = shortwave-git
 	makedepends = gobject-introspection
 	makedepends = gst-plugins-base-libs
 	makedepends = libdazzle
-	makedepends = libhandy
 	makedepends = meson
 	makedepends = rust
 	depends = gstreamer
