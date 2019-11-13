@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=10.0.0_r330902.86cdf74dc87
+pkgver=10.0.0_r331726.33e882d5ada
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -45,6 +45,11 @@ _python_optimize() {
   python -OO -m compileall "$@"
 }
 
+ _ocaml_ver() {
+    { pacman -Q ocaml 2>/dev/null || pacman -Sp --print-format '%n %v' ocaml ;} \
+     | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
+}
+    
 pkgver() {
     cd llvm-project/llvm
 
@@ -67,7 +72,7 @@ prepare() {
     
     cd llvm-project
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc
     
     cd clang
     patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
@@ -153,6 +158,12 @@ package_llvm-git() {
     mv -f "$pkgdir"/usr/lib/lib{LLVM,LTO}*.so* "$srcdir"
     mv -f "$pkgdir"/usr/lib/LLVMgold.so "$srcdir"
 
+    # OCaml bindings go to a separate package
+    rm -rf "$srcdir"/ocaml.{lib,doc}
+    mv "$pkgdir"/usr/lib/ocaml "$srcdir"/ocaml.lib
+    mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
+
+    
     if [[ $CARCH == x86_64 ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
         # Header stub is taken from Fedora
@@ -205,4 +216,13 @@ package_llvm-libs-git() {
     install -Dm644 polly/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/polly-LICENSE
 }
 
-# vim:set ts=2 sw=2 et:
+package_llvm-ocaml-git() {
+  pkgdesc="OCaml bindings for LLVM"
+  depends=('llvm-git' "ocaml=$(_ocaml_ver)" 'ocaml-ctypes')
+
+  install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
+  cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
+  cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
+
+  install -Dm644 "$srcdir"/llvm-$pkgver.src/LICENSE.TXT  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
