@@ -2,8 +2,9 @@
 
 pkgname=newtonwars
 arch=('any')
+pkgdesc='turn-based strategic shooter with lots of gravity'
 pkgver=1
-pkgrel=1
+pkgrel=2
 url='https://github.com/Draradech/NewtonWars'
 depends=('freeglut')
 
