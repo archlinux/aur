@@ -1,0 +1,11 @@
+pkgbase = newtonwars
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Draradech/NewtonWars
+	arch = any
+	depends = freeglut
+	source = https://github.com/Draradech/NewtonWars/archive/master.zip
+	sha256sums = 8fa0e5f53fce3eb862dd95aa6c8d8debc4dddf327e15733d9652d92403b388b2
+
+pkgname = newtonwars
+
