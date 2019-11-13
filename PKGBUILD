@@ -22,7 +22,7 @@ provides=("protobuf=$pkgver")
 conflicts=('protobuf')
 source=("$_pkgname-$pkgver.tgz::https://github.com/google/${_pkgname}/archive/v${pkgver}.tar.gz"
     "no-thirdparty.patch")
-sha256sums=('758249b537abba2f21ebc2d02555bf080917f0f2f88f4cbe2903e0e28c4187ed'
+sha256sums=('6adf73fd7f90409e479d6ac86529ade2d45f50494c5c10f539226693cb8fe4f7'
             '6fc836196e69b872794e821111df64effe69f984d46d83c902a9df8953a868b3')
 
 prepare() {
