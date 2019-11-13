@@ -1,0 +1,16 @@
+pkgbase = rofigen-git
+	pkgdesc = A framework to easily create personal Rofi menus.
+	pkgver = r19.287d7f1
+	pkgrel = 1
+	url = https://github.com/losoliveirasilva/rofigen
+	arch = any
+	license = 
+	makedepends = git
+	depends = rofi
+	depends = bash
+	provides = rofigen
+	source = rofigen::git+https://github.com/losoliveirasilva/rofigen.git
+	md5sums = SKIP
+
+pkgname = rofigen-git
+
