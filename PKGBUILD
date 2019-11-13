@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=gitlab-cli
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('any')
@@ -32,4 +32,4 @@ package() {
   install -Dm755 $pkgname                              "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "README.md"                           "$pkgdir/usr/share/$pkgname/README.md"
 }
-sha512sums=(214d6f72b72fc3aed554df22226d4a5b1fe398076ec65c08a961ef4e095ce290b3d2ff3d4c16ca1761b5abd4917aa5eb2cd7716805fb6d1d0f87e1887a049393)
+sha512sums=(a0cf5ea1ccd610c2bb0cd702700dd521e90e4c1503e3b8d64c51cc7fe88ee72fe9f7f45aebbe6e0fb8e6bf3b8a37d8f9925cd642743b7859894aee321d7f71aa)
