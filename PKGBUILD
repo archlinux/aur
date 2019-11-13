@@ -2,7 +2,7 @@
 
 pkgname=ycmd-git
 _gitname=ycmd
-pkgver=r2474.6f3e2ac5
+pkgver=r2493.f8f50d4e
 pkgrel=1
 pkgdesc="A code-completion & code-comprehension server"
 arch=('i686' 'x86_64')
@@ -19,8 +19,9 @@ source=("git+https://github.com/Valloric/ycmd.git"
         "git+https://github.com/davidhalter/parso.git"
         "git+https://github.com/PythonCharmers/python-future.git"
         "git+https://github.com/requests/requests.git"
-        "git+https://github.com/Pylons/waitress.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "git+https://github.com/Pylons/waitress.git"
+        "git+https://github.com/davidhalter/typeshed.git")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
@@ -43,6 +44,9 @@ prepare() {
     git config submodule.third_party/python-future.url $srcdir/python-future
     git config submodule.third_party/requests_deps/requests.url $srcdir/requests_deps/requests
     git config submodule.third_party/waitress.url $srcdir/waitress
+    git submodule update
+    cd "third_party/jedi_deps/jedi"
+    git config submodule.jedi/third_party/typeshed.url "$srcdir"/typeshed
     git submodule update
 }
 

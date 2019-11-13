@@ -1,6 +1,6 @@
 pkgbase = ycmd-git
 	pkgdesc = A code-completion & code-comprehension server
-	pkgver = r2474.6f3e2ac5
+	pkgver = r2493.f8f50d4e
 	pkgrel = 1
 	url = https://github.com/Valloric/ycmd
 	arch = i686
@@ -23,6 +23,8 @@ pkgbase = ycmd-git
 	source = git+https://github.com/PythonCharmers/python-future.git
 	source = git+https://github.com/requests/requests.git
 	source = git+https://github.com/Pylons/waitress.git
+	source = git+https://github.com/davidhalter/typeshed.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
