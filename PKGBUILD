@@ -3,7 +3,7 @@
 pkgname=tuxedo-keyboard
 _pkgbase=tuxedo-keyboard
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
 license=("GPL")
