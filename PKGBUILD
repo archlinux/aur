@@ -1,5 +1,4 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
-# PACKAGER: Benjamin Denhartog <ben@sudoforge.com>
 # Contributor: Mansour Behabadi <mansour@oxplot.com>
 # Contributor: Troy Engel <troyengel+arch@gmail.com>
 # Contributor: Geoff Hill <geoff@geoffhill.org>
@@ -7,8 +6,8 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=270.0.0
-pkgrel=3
+pkgver=271.0.0
+pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -24,7 +23,7 @@ source=(
   "google-cloud-sdk.sh"
 )
 sha256sums=(
-  '0d77c00bcba0cde023b3b9b993029f81bd964a055124b29f1e7d0af8130fd611'
+  'bc023ab02ff6e38c3adac063e5148a43cab0ee8ce0e0a5c55a422597f3d3006c'
   '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692'
 )
 
