@@ -1,0 +1,14 @@
+pkgbase = maur
+	pkgdesc = A minimal AUR helper
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://github.com/stilvoid/maur
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = maur::git+https://github.com/stilvoid/maur.git
+	sha256sums = SKIP
+
+pkgname = maur
+
