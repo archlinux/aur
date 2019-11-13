@@ -2,7 +2,7 @@
 pkgname=flashpoint-bin
 pkgver=6.3
 pkgrel=1.0
-pkgdesc="Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only."
+pkgdesc="Launcher for BlueMaxima's Flashpoint - Infinity Edition."
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
 license=('MIT')

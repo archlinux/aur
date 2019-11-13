@@ -1,5 +1,5 @@
 pkgbase = flashpoint-bin
-	pkgdesc = Launcher for BlueMaxima's Flashpoint - Does not include data files! - Launcher software only.
+	pkgdesc = Launcher for BlueMaxima's Flashpoint - Infinity Edition.
 	pkgver = 6.3
 	pkgrel = 1.0
 	url = http://bluemaxima.org/flashpoint/
