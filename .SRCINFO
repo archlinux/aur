@@ -1,0 +1,15 @@
+pkgbase = css-html-js-minify-git
+	pkgdesc = CSS HTML JS Minifier
+	pkgver = r339.8f72452
+	pkgrel = 1
+	url = https://github.com/juancarlospaco/css-html-js-minify
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	provides = css-html-js-minify
+	source = git+https://github.com/juancarlospaco/css-html-js-minify
+	sha256sums = SKIP
+
+pkgname = css-html-js-minify-git
+
