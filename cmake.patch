@@ -1,0 +1,24 @@
+diff -urN orc-rel-release-1.6.1-orig/cmake_modules/FindZSTD.cmake orc-rel-release-1.6.1/cmake_modules/FindZSTD.cmake
+--- orc-rel-release-1.6.1-orig/cmake_modules/FindZSTD.cmake	2019-10-23 12:18:30.000000000 -0400
++++ orc-rel-release-1.6.1/cmake_modules/FindZSTD.cmake	2019-11-13 13:38:47.394063996 -0500
+@@ -32,7 +32,7 @@
+         NO_DEFAULT_PATH
+         PATH_SUFFIXES "include")
+ 
+-find_library (ZSTD_LIBRARIES NAMES ${ZSTD_STATIC_LIB_NAME} HINTS
++find_library (ZSTD_LIBRARIES NAMES zstd HINTS
+         ${_zstd_path}
+         PATH_SUFFIXES "lib")
+ 
+diff -urN orc-rel-release-1.6.1-orig/cmake_modules/ThirdpartyToolchain.cmake orc-rel-release-1.6.1/cmake_modules/ThirdpartyToolchain.cmake
+--- orc-rel-release-1.6.1-orig/cmake_modules/ThirdpartyToolchain.cmake	2019-10-23 12:18:30.000000000 -0400
++++ orc-rel-release-1.6.1/cmake_modules/ThirdpartyToolchain.cmake	2019-11-13 13:38:25.926669476 -0500
+@@ -136,7 +136,7 @@
+ # Zstd
+ 
+ if (NOT "${ZSTD_HOME}" STREQUAL "")
+-  find_package (zstd REQUIRED)
++  find_package (ZSTD REQUIRED)
+   set(ZSTD_VENDORED FALSE)
+ else ()
+   set(ZSTD_HOME "${THIRDPARTY_DIR}/zstd_ep-install")
