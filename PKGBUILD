@@ -1,34 +1,42 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
 pkgver=2.4.4
-pkgrel=3
-pkgdesc="an open-source, non-linear video editor for Linux based on MLT framework"
+pkgrel=4
+pkgdesc="An award-winning free and open-source video editor"
 arch=('any')
 url="https://www.openshot.org/"
-license=('GPL')
-depends=('python-mlt' 'sdl' 'librsvg' 'mplayer'
-	 'pyxdg' 'python-pyqt5' 'python-httplib2' 'python-pillow' 'dvgrab'
-	 'ladspa' 'sox' 'vid.stab' 'qt5-svg' 'sdl_image'
-	 'libopenshot' 'python-pyzmq' 'qt5-webkit' 'python-setuptools'
-	 'python-requests')
-optdepends=('frei0r-plugins: effects'
-	    'libquicktime' 'libavc1394' 'faac' 'jack')
+license=('GPL3')
+depends=('ffmpeg' 'python-mlt' 'python-pyqt5' 'python-requests' 'libopenshot'
+'libopenshot-audio' 'python-pyzmq' 'qt5-base' 'qt5-svg' 'qt5-webkit')
+optdepends=('faac: for exporting audio using AAC')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz" 2837.patch)
-sha256sums=('8197923b3fff2010ee69c75469818543674a12fcb8fcb08944471e4ead3426be'
-            '3a4da79b668d263095559a9e5fa257bdb49fa8a6aa96d02e5c4e27def2b10634')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz"
+        "${pkgname}-hicolor-icons.patch::https://github.com/OpenShot/openshot-qt/pull/2837.patch")
+sha512sums=('efa71f97a83b89e691b7dab09288ba7d3e91eb25119669fa8f6e28becb8d4cb3e60a923f936ee4ff9a593d016fe3a6b0348153cff937ab7d21a5517de5dfa10c'
+            '97ebbe5d289d89c5da307076d7a3a0f517f57e8fd8123a920d031585bd48e1ccdcaa9f8180e976dd602e562d0bd2373e4bf5059dc72cf04b61b462b72a8bba1f')
 
 prepare() {
-  cd "$srcdir"/openshot-qt-$pkgver
+  mv -v "${pkgname}-qt-${pkgver}" "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  # Fix hicolor icon paths
+  patch -Np1 -i "../${pkgname}-hicolor-icons.patch"
+}
 
-  # Fix hicolor icon paths. Fix is part of develop branch (2.4.4+)
-  patch -p1 -i "$srcdir/2837.patch"
+build() {
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir"/openshot-qt-$pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --skip-build \
+                          --optimize=1 \
+                          --prefix=/usr \
+                          --root="${pkgdir}"
+  install -vDm 644 {AUTHORS,{CONTRIBUTING,README}.md} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
