@@ -27,7 +27,7 @@ optdepends=('python-bcolz'
   'python-zarr')
 makedepends=('python-setuptools')
 source=("https://github.com/dask/dask/archive/$pkgver.tar.gz")
-sha256sums=('33778929ed878f1aaebfc937c3721d3d21eddbce660479aef3a3608035d4012e')
+sha256sums=('8e47fe92540cd2f03c4f339eb5345f114f6392fe679d69b7ede75a8e81be2c26')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
