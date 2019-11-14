@@ -12,7 +12,7 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 pkgver=0.5.4.r3.17a5dfd
-pkgrel=2
+pkgrel=3
 
 pkgdesc="The mustache template engine written in python"
 arch=('x86_64')
