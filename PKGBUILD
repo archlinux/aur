@@ -47,18 +47,29 @@ build() {
 check() {
 	cd "core-rs-${_commithash}"
 
-	# Echoes a blue arrow followed by a bolded log message, much like the
-	# verbose printing that makepkg itself does
-	log() {
-		echo -e "  $(tput setaf 4)$(tput bold)->$(tput sgr0) $(tput bold)$@$(tput sgr0)"
-	}
-
 	# NOTE: The integration tests need to link to the already-built turtl_core
 	# library and used to do so automatically, however this does not work
 	# anymore. Upstream bug or deprecated funtionality in Rust?
 	# To work around this, we temporarily set LD_PRELOAD_PATH to the directory
 	# containing turtl_core.so to allow the dynamic linking to occur.
 	export LD_LIBRARY_PATH="${srcdir}/core-rs-${_commithash}/target/release:${LD_LIBRARY_PATH}"
+
+	# Determine the capabilities of the terminal this script is running in
+	reset="$(tput sgr0 2> /dev/null)"
+	if [ "$?" -eq 0 ]; then
+		bold="$(tput bold 2> /dev/null)"
+
+		numColours="$(tput colors)"
+		if [ "$numColours" -ge 8 ]; then
+			blue="$(tput setaf 4)"
+		fi
+	fi
+
+	# Echoes a blue arrow followed by a bolded log message, much like the
+	# verbose printing that makepkg itself does
+	log() {
+		echo -e "${reset}  ${bold}${blue}->${reset} ${bold}$@${reset}"
+	}
 
 	# Create the directories for the PostgreSQL database cluster, Turtl server
 	# copy and Turtl server upload contents. Copy the core-rs and server
