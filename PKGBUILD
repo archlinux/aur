@@ -1,6 +1,6 @@
 # Maintainer: BrainDamage
 pkgname="libsixel"
-pkgrel=1
+pkgrel=2
 stripped_ver="1.8.2"
 pkgver="v$stripped_ver"
 pkgdesc="libsixel provides and encoder/decoder implementation for DEC SIXEL graphics, and some converter programs"
