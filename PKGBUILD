@@ -6,7 +6,7 @@
 
 pkgname=electrum-vtc
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, powerful, and secure Vertcoin wallet which has no sync time or long waits for the blockchain to download.'
 
 arch=('any')
