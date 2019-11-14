@@ -4,17 +4,32 @@
 
 pkgname=micronaut
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Application Framework"
 arch=('x86_64')
 url="https://github.com/micronaut-projects/micronaut-core"
 license=(Apache)
 depends=('java-environment>=8')
-makedepends=('java-environment<11')
 source=(https://github.com/micronaut-projects/micronaut-core/archive/v${pkgver}.tar.gz)
 sha512sums=('385376e592b8bd3d31ec2df2023ba219c01b80cbb1e6d098a40d8dceba671bb9ba70d2dbfc3223f33b54fecbe4bfe3f3ca0293d8a7d427eae131983f18fa44c9')
 
 build() {
+
+  function build_failed {
+    if [ "$?" != "0" ]; then
+      tput bold
+      echo
+      echo "Building may have failed due to an incompatible JDK."
+      echo "Please set JAVA_HOME to a JDK compatible with gradle 4.6."
+      echo "(e.g. install 'jdk8-openjdk' and run 'archlinux-java set java-8-openjdk')"
+      echo "After building the package you may set it back to a newer version"
+      echo
+      tput sgr0
+    fi
+  }
+
+  trap build_failed EXIT
+
   cd "$srcdir/micronaut-core-$pkgver"
   ./gradlew cli:fatJar
 }

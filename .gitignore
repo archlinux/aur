@@ -1,3 +1,6 @@
 /src
 /*.tar.gz
+/*.tar.xz
+/.gradle
+/pkg
 
