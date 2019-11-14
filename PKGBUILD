@@ -1,7 +1,7 @@
 # Maintainer: Fernando Fernández <fernando@softwareperonista.com.ar>
 _pkgname=gvls
 pkgname=${_pkgname}-git
-pkgver=0.10.2+143+g1c67bde
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='GNOME Vala Language Server'
 arch=(i686 x86_64)
@@ -34,10 +34,6 @@ build() {
 
   ninja -C build
 }
-
-#check() {
-#  meson test -C build
-#}
 
 package() {
   DESTDIR="${pkgdir}" meson install -C build

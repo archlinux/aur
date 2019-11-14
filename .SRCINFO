@@ -1,6 +1,6 @@
 pkgbase = gvls-git
 	pkgdesc = GNOME Vala Language Server
-	pkgver = 0.10.2+143+g1c67bde
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/esodan/gvls
 	arch = i686
