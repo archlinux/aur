@@ -1,0 +1,34 @@
+diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.toml core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.toml
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.toml	2019-11-14 15:41:30.353803437 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.toml	2019-11-14 12:42:07.004160374 +1030
+@@ -45,7 +45,7 @@ num_cpus = "1.8.0"
+ protected_derive = { path = "protected_derive" }
+ quick-error = "1.2.2"
+ regex = "0.1.77"
+-rusqlite = "0.13.0"
++rusqlite = "0.14.0"
+ serde = "1.0.8"
+ serde_derive = "1.0.8"
+ serde_json = "1.0.2"
+diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/clouseau/Cargo.toml core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/clouseau/Cargo.toml
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/clouseau/Cargo.toml	2019-11-14 15:41:30.357136770 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/clouseau/Cargo.toml	2019-11-14 12:42:30.750826254 +1030
+@@ -5,5 +5,5 @@ authors = ["Andrew Danger Lyon <orthecre
+ 
+ [dependencies]
+ quick-error = "1.2.2"
+-rusqlite = "0.13.0"
++rusqlite = "0.14.0"
+ 
+diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/dumpy/Cargo.toml core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/dumpy/Cargo.toml
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/dumpy/Cargo.toml	2019-11-14 15:41:30.357136770 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/dumpy/Cargo.toml	2019-11-14 12:42:57.057492048 +1030
+@@ -6,7 +6,7 @@ authors = ["Andrew Danger Lyon <orthecre
+ [dependencies]
+ jedi = { path = "../jedi" }
+ libc = "0.2.15"
+-rusqlite = "0.13.0"
++rusqlite = "0.14.0"
+ quick-error = "1.2.2"
+ serde = "1.0.8"
+ serde_json = "1.0.2"

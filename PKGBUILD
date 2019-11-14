@@ -17,10 +17,20 @@ _commithash="774fa361d021d9ef5237d32d09515ab7b2a32ad2"
 
 source=("https://github.com/turtl/core-rs/archive/${_commithash}.tar.gz"
         "config-client.yaml"
-        "config-server.yaml")
+        "config-server.yaml"
+        "rusqlite.patch")
 sha256sums=("71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68"
             "f5400e9c80c935915212e818f05eab8d3d542a54ed89e153c20a6c0fa00d8e1a"
-            "1b46d55e5f4753a494ceb005783db1c0c0908195b4f18a38a99118ecffae110a")
+            "1b46d55e5f4753a494ceb005783db1c0c0908195b4f18a38a99118ecffae110a"
+            "cd784b2b1de7bb0dba4d92623a525fc970627fd60b44b41d6f2d8e520770fce4")
+
+prepare() {
+	# This version of Turtl depends on an old version of rusqlite (v0.13.0)
+	# which can't be built on current versions of Rust. This patch updates the
+	# version of rusqlite used to v0.14.0, the first release to contain the
+	# fix that allows it to compile again.
+	patch -Np0 -i rusqlite.patch
+}
 
 build() {
 	export OPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0
