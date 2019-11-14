@@ -3,7 +3,7 @@
 pkgname=python-virtualbox
 _pkgname=virtualbox-python
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete implementation of VirtualBox's COM API with a Pythonic interface"
 arch=('any')
 url="https://github.com/sethmlarson/virtualbox-python"
