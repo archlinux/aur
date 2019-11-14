@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+
+Type=Application
+
+Name=DBanaszewski.pl Launcher
+Comment=Minecraft by DBanaszewski
+
+Terminal=true
+
+Exec=/usr/bin/dbanaszewski-launcher
+
+Icon=dbanaszewski-launcher
+
+Categories=Game;Simulation;

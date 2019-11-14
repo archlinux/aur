@@ -1,0 +1,21 @@
+pkgbase = dbanaszewski-launcher
+	pkgdesc = Modded minecraft launcher by DBanaszewski
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.dbanaszewski.pl/minecraft/
+	arch = x86_64
+	license = MIT
+	makedepends = imagemagick
+	depends = java-runtime>=8
+	options = staticlibs
+	source = icon.ico::https://www.dbanaszewski.pl/favicon.ico
+	source = launcher.sh
+	source = launcher.desktop
+	md5sums = dfc7e5cfe2a83e6c58b389e2d861df8b
+	md5sums = 4d9f15f59405ac71d4933fa6a4ced9f9
+	md5sums = 6776bf4b08fd2b74dfdc6762c61cf1ad
+	source_x86_64 = launcher.zip::https://www.dbanaszewski.pl/minecraft/downloads/dbanaszewski.pl-launcher-linux64.zip
+	md5sums_x86_64 = 2f9ad262e3b3c379b984c52deb1f44ea
+
+pkgname = dbanaszewski-launcher
+
