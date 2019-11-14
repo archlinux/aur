@@ -1,8 +1,8 @@
 # Maintainer: Maurizio D'Addona <mauritiusdadd at gmail dot com>
 
 pkgname=python-sewpy-git
-pkgver=0.r90.g08b91c1
-pkgrel=2
+pkgver=0.r91.g9a1be21
+pkgrel=1
 pkgdesc="Python interface to SExtractor"
 arch=('any')
 url="http://sewpy.readthedocs.io/en/latest"
