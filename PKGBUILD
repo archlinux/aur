@@ -1,14 +1,14 @@
 pkgname=ttf-apple-emoji
 pkgver=1
-pkgrel=7
+pkgrel=8
 pkgdesc='Apple Color Emoji is a color typeface used by iOS and macOS to display emoji'
 arch=('any')
 url='https://git.auteiy.me/dmitry/appleEmojiAUR'
 license=('unknown')
 depends=()
 conflicts=(
-'ttf-dejavu' # Replaces some emojis with its own
-'noto-fonts' # Replases some emojis with its own
+'ttf-dejavu'
+'noto-fonts'
 'noto-fonts-emoji' 
 'ttf-symbola'
 'ttf-joypixels'
