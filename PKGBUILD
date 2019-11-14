@@ -2,7 +2,7 @@
 
 pkgname='repotool'
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An arch linux repository management tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
