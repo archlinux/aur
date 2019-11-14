@@ -1,0 +1,16 @@
+pkgbase = azirevpn-git
+	pkgdesc = AzireVPN Qt GUI client
+	pkgver = 28
+	pkgrel = 1
+	url = https://www.azirevpn.com/client
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = qt5-tools
+	makedepends = qt5-base
+	depends = openvpn
+	source = git+https://github.com/azirevpn/azclient.git
+	md5sums = SKIP
+
+pkgname = azirevpn-git
+
