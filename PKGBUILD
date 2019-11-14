@@ -6,7 +6,7 @@ provides=("${Name}")
 conflicts=("${Name}")
 pkgname="${Name}-git"
 
-arch=("x86_64")
+arch=("any")
 pkgver=5
 pkgrel=1
 
