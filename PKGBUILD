@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=('python-django-cleanup' 'python2-django-cleanup')
-pkgver=2.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Automatically deletes old file for FileField and ImageField. It also deletes files on models instance deletion"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/un1t/django-cleanup"
 license=('MIT')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('bee4d05411d91947493a6abcfe46a0429856471b73a1c3051683e2d422bd0176')
+sha256sums=('776a76d21916a0b7bd4995297a8fbb4805e0d4f6f2c42662cf6cda2fa2fe22f1')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-cleanup() {
