@@ -1,7 +1,7 @@
 pkgbase = git-nautilus-icons-common
 	pkgdesc = Common files for the git-{nautilus,nemo}-icons packages
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrisjbillington/git_nautilus_icons
 	arch = x86_64
 	arch = i686
