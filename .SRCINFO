@@ -1,0 +1,20 @@
+pkgbase = connman-gtk
+	pkgdesc = Tray menu and GUI for ConnMan, with Bluetooth patched out.
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://github.com/ajmar/connman-gtk-nobluetooth
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	makedepends = git
+	makedepends = meson
+	makedepends = openconnect
+	depends = glib2
+	depends = gtk3
+	optdepends = openconnect: Easier authentication to AnyConnect VPNs
+	provides = connman-gtk
+	source = git+https://github.com/ajmar/connman-gtk-nobluetooth.git#commit=aad93f7089b50c92d6b200de91106229a27fdfc7
+	sha256sums = SKIP
+
+pkgname = connman-gtk-nobluetooth
+
