@@ -1,7 +1,7 @@
 pkgbase = jitterdebugger-git
 	pkgdesc = Real time response measurement tool
-	pkgver = r95.2657f15
-	pkgrel = 2
+	pkgver = r106.daeff0a
+	pkgrel = 3
 	url = https://github.com/igaw/jitterdebugger
 	arch = i686
 	arch = x86_64
