@@ -8,15 +8,15 @@
 pkgname=fritzing
 pkgver=0.9.4b
 pkgrel=1
-tagver=CD-415
-partsrev=e79a69765026f3fda8aab1b3e7a4952c28047a62
+_tagver=CD-415
+_partsrev=e79a69765026f3fda8aab1b3e7a4952c28047a62
 pkgdesc='PCB layout prototyping application'
 arch=('i686' 'x86_64')
 url=http://fritzing.org
 license=(GPL3)
 makedepends=('boost' 'git')
 depends=('desktop-file-utils' 'libgit2' 'qt5-serialport' 'qt5-svg')
-source=(https://github.com/fritzing/fritzing-app/archive/${tagver}.tar.gz
+source=(https://github.com/fritzing/fritzing-app/archive/${_tagver}.tar.gz
         0001-don-t-scan-filesystem-for-application-directory-if-i.patch
         0002-allow-user-and-administrator-to-install-parts-librar.patch
         0003-provide-script-for-user-to-clone-parts-library.patch)
@@ -26,7 +26,7 @@ sha256sums=('4502bcdf262d5fa3897342a787b201f6fc27fa071242ecbc79f6515b845339fc'
             'fb0d8fc6257f166ab77f99bbe32dff51bbdace7d5a3d4d9a789542a8e3fec540')
 
 prepare() {
-  cd "${srcdir}"/fritzing-app-${tagver}
+  cd "${srcdir}"/fritzing-app-${_tagver}
 
   # Dynamically link against system libgit2
   sed -i 's/LIBGIT_STATIC = true/LIBGIT_STATIC = false/' phoenix.pro
@@ -41,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"/fritzing-app-${tagver}
+  cd "${srcdir}"/fritzing-app-${_tagver}
 
   mkdir build && cd build
   qmake-qt5 ..
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/fritzing-app-${tagver}/build
+  cd "${srcdir}"/fritzing-app-${_tagver}/build
   make INSTALL_ROOT="${pkgdir}" install
 
   # We want a system-wide installation of the parts library. Following steps are
@@ -57,12 +57,12 @@ package() {
   cd "${pkgdir}"/usr/share/fritzing/
   git clone --branch master --single-branch https://github.com/fritzing/fritzing-parts.git
   cd fritzing-parts
-  git checkout ${partsrev}
+  git checkout ${_partsrev}
   "${pkgdir}"/usr/bin/Fritzing \
     -db "${pkgdir}"/usr/share/fritzing/fritzing-parts/parts.db \
     -pp "${pkgdir}"/usr/share/fritzing/fritzing-parts \
     -f  "${pkgdir}"/usr/share/fritzing
 
   # install partsdb clone script
-  install -Dm755 "${srcdir}"/fritzing-app-${tagver}/tools/user_parts_clone.sh "${pkgdir}"/usr/bin/fritzing_clone_parts
+  install -Dm755 "${srcdir}"/fritzing-app-${_tagver}/tools/user_parts_clone.sh "${pkgdir}"/usr/bin/fritzing_clone_parts
 }
