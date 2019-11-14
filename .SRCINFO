@@ -21,12 +21,13 @@ pkgbase = hydrus
 	depends = python-html5lib
 	depends = python-requests
 	depends = hdf5
-	depends = python-wxpython>=4.0.0
 	depends = gtkglext
+	depends = pyside2
+	depends = python-qtpy
+	depends = qt5-charts
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
-	optdepends = python-matplotlib: bandwidth usage graphs
 	conflicts = hydrus-docs
 	conflicts = hydrus-sources
 	options = !strip
