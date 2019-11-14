@@ -1,7 +1,7 @@
 pkgbase = comic-dl
 	pkgdesc = Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily.
 	pkgver = 2019.05.26
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Xonshiz/comic-dl
 	arch = any
 	license = MIT
