@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 
 pkgname=azote-git
-pkgver=1.7.4.r21.ga45feab
+pkgver=1.7.4.r27.g50b3430
 pkgrel=1
 pkgdesc="Wallpaper manager for Sway, i3 and some other WMs (development version)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ package() {
   cd azote
   /usr/bin/python setup.py install --root="$pkgdir/" --optimize=1
   
-  install -Dm755 dist/azote "$pkgdir"/usr/bin/azote
+  install -D -m 755 dist/azote-arch "$pkgdir"/usr/bin/azote
   install -Dm755 dist/azote.desktop "$pkgdir"/usr/share/applications/azote.desktop
   install -Dm644 dist/azote.svg "$pkgdir"/usr/share/azote/azote.svg
 }
