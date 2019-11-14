@@ -2,12 +2,12 @@
 
 pkgname=emacs-commander
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line parsing for emacs"
 arch=('any')
 url="https://github.com/rejeep/commander.el.git"
 license=('GPL3')
-depends=('emacs')
+depends=('emacs-f')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rejeep/commander.el/archive/v$pkgver.tar.gz")
 sha256sums=('5eb0f7f016b484ffc91bcd54ced1b0455667e5ee93077a92eafc9d5f4214daa4')
 
