@@ -1,7 +1,7 @@
 pkgbase = python-django-simple-captcha
 	pkgdesc = Django application to add captcha images to any Django form
 	pkgver = 0.5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mbi/django-simple-captcha
 	arch = any
 	license = MIT
