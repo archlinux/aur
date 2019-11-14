@@ -37,7 +37,7 @@ sync:
   max_bulk_sync_records: 32
 
 plugins:
-  plugin_location: '/usr/share/webapps/turtl/plugins'
+  plugin_location: 'plugins'
   # each key here corresponds to a folder name in the plugins folder, so `email`
   # below would be a plugin at usr/share/webapps/turtl/plugins/email (see the
   # example-plugins/ folder for an email plugin you can use)

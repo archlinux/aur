@@ -21,7 +21,7 @@ source=("https://github.com/turtl/core-rs/archive/${_commithash}.tar.gz"
         "rusqlite.patch")
 sha256sums=("71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68"
             "31791752feae4d5b0a19272bbb15df827bf67bb9df237e45431dc4b15b212c2e"
-            "07cdaff828f3743b78693b029c8023d703874c4a612c64b3f9cf0608065b397b"
+            "f3c974201d4d7b8bc00e51595cb0738d3772fd3bbd73624abc32536838465308"
             "cd784b2b1de7bb0dba4d92623a525fc970627fd60b44b41d6f2d8e520770fce4")
 
 prepare() {
@@ -91,6 +91,7 @@ check() {
 		cp -r /usr/share/webapps/turtl/helpers helpers
 		cp -r /usr/share/webapps/turtl/models models
 		cp -r /usr/share/webapps/turtl/node_modules node_modules
+		mkdir plugins
 		cp -r /usr/share/webapps/turtl/scripts scripts
 		cp -r /usr/share/webapps/turtl/tools tools
 		cp /usr/share/webapps/turtl/server.js server.js
