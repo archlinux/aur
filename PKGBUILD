@@ -6,13 +6,13 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.13.0
-pkgrel=8
+pkgrel=9
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
 makedepends=('startup-notification' 'gtkspell' 'libxss' 'nss' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
-             'libnsl' 'avahi' 'ca-certificates' 'intltool' 'networkmanager' 'dbus-glib')
+             'libnsl' 'avahi' 'ca-certificates' 'intltool' 'libnm' 'dbus-glib')
 source=(https://bitbucket.org/pidgin/main/downloads/$pkgname-$pkgver.tar.bz2{,.asc}
         purple-remote-python3.patch pidgin-python-3.8.patch pidgin-nm-1.0.patch)
 sha256sums=('2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f'
@@ -73,7 +73,8 @@ package_pidgin(){
 
 package_libpurple(){
   pkgdesc="IM library extracted from Pidgin"
-  depends=('farstream' 'libsasl' 'libidn' 'libnsl' 'libgadu' 'dbus-glib' 'nss')
+  depends=('farstream' 'libsasl' 'libidn' 'libnsl' 'libgadu' 'dbus-glib' 'nss'
+           'libnm')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
               'python-dbus: for purple-remote and purple-url-handler'
