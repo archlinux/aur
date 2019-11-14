@@ -1,7 +1,7 @@
 pkgbase = python-pyprind
 	pkgdesc = Python Progress Bar and Percent Indicator Utility
 	pkgver = 2.11.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/PyPrind/
 	arch = any
 	license = BSD
