@@ -1,0 +1,16 @@
+pkgbase = lsynth
+	pkgdesc = LSynth is a program that synthesizes bendable parts for LDraw files
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://deeice.github.io/lsynth/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = glibc
+	source = lsynth-3.1.1.tar.gz::https://github.com/deeice/lsynth/archive/v3.1.1.tar.gz
+	source = local://CMakeLists.txt
+	sha256sums = 8c1a4286b7ec8512de5c5d61cb6a5a374490dec159cabcf8cd9aa560203d3433
+	sha256sums = 4e6ad6706f685114edbbaa90fc2d739c4f6040c31338dee1782befc6efbbbb6f
+
+pkgname = lsynth
+
