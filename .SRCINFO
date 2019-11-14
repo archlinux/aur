@@ -1,6 +1,6 @@
 pkgbase = suil-git
 	pkgdesc = Lightweight C library for loading and wrapping LV2 plugin UIs (git version)
-	pkgver = 0.10.4.r322.ee6ee77
+	pkgver = 0.10.6.r328.0863b8d
 	pkgrel = 1
 	url = http://drobilla.net/software/suil/
 	arch = i686
@@ -16,7 +16,8 @@ pkgbase = suil-git
 	optdepends = gtk3: GTK+ 3.x UI wrapping support
 	optdepends = qt5-base: Qt 5.x UI wrapping support
 	provides = suil
-	provides = suil=0.10.4
+	provides = suil=0.10.6
+	provides = libsuil-0.so
 	conflicts = suil
 	conflicts = suil-svn
 	source = suil::git+https://gitlab.com/lv2/suil.git

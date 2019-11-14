@@ -2,7 +2,7 @@
 
 _pkgname=suil
 pkgname="${_pkgname}-git"
-pkgver=0.10.4.r322.ee6ee77
+pkgver=0.10.6.r328.0863b8d
 pkgrel=1
 pkgdesc="Lightweight C library for loading and wrapping LV2 plugin UIs (git version)"
 arch=('i686' 'x86_64')
@@ -12,11 +12,12 @@ makedepends=('git' 'gtk2' 'gtk3' 'lv2' 'python' 'qt5-base')
 optdepends=('gtk2: GTK+ 2.x UI wrapping support'
             'gtk3: GTK+ 3.x UI wrapping support'
             'qt5-base: Qt 5.x UI wrapping support')
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
