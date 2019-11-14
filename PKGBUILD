@@ -33,6 +33,10 @@ prepare() {
 }
 
 build() {
+	# Note: The OpenSSL binding library used by Turtl depends on OpenSSL v1.0,
+	# here we specify variables to ensure that version 1.0 is used for
+	# building, rather than v1.1 which is included in Arch-based systems and
+	# used by default.
 	export OPENSSL_INCLUDE_DIR=/usr/include/openssl-1.0
 	export OPENSSL_LIB_DIR=/usr/lib/openssl-1.0
 
@@ -48,6 +52,13 @@ check() {
 	log() {
 		echo -e "  $(tput setaf 4)$(tput bold)->$(tput sgr0) $(tput bold)$@$(tput sgr0)"
 	}
+
+	# NOTE: The integration tests need to link to the already-built turtl_core
+	# library and used to do so automatically, however this does not work
+	# anymore. Upstream bug or deprecated funtionality in Rust?
+	# To work around this, we temporarily set LD_PRELOAD_PATH to the directory
+	# containing turtl_core.so to allow the dynamic linking to occur.
+	export LD_LIBRARY_PATH="${srcdir}/core-rs-${_commithash}/target/release:${LD_LIBRARY_PATH}"
 
 	# Create the directories for the PostgreSQL database cluster, Turtl server
 	# copy and Turtl server upload contents. Copy the core-rs and server
@@ -108,10 +119,10 @@ check() {
 	# NodeJS server, which would cause this test to fail as the Lisp server is
 	# not available. As such, this test has also been disabled.
 	run_tests() {
-		log "Running unit tests..."
+		log "Building and running unit tests..."
 		cargo test --features sqlite-static --release -- --test-threads 1
 
-		log "Running integration tests..."
+		log "Building and running integration tests..."
 		cd integration-tests
 		cargo test --release -- --test-threads 1 --skip migrate --skip file_sync --skip import_export --skip login_sync_logout
 		cd ..
