@@ -2,7 +2,7 @@
 _pkgname=ptvsd
 pkgname=python-$_pkgname
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python debugger package for use with Visual Studio and Visual Studio Code"
 url="https://github.com/microsoft/$_pkgname"
 license=("MIT")
