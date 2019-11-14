@@ -1,6 +1,6 @@
 
 pkgname=pinegrow
-pkgver=5.7
+pkgver=5.8
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
         "${url}/Pinegrow_EULA.pdf"
 	"${pkgname}.ico::${url}/favicon.ico")
 noextract=("Pinegrow_EULA.pdf")
-sha512sums=('6a04bc6c68101f1f0af054e3acfcbf5410ab0b04a354b9896284c290d2d5e0ab62c41a77baf2077d519e984032edc23329f1b1bcc7358d6fe11e745120b0a9de'
+sha512sums=('SKIP'
             '75b36c2e324d6ee01aa381c28a35593d861c16a551ce3b4be35cafbdcdd17e19ee9aeb56a2032d3a22206df398cbe3b9bd1e4c7bb03db00b5362440e286b3af5'
 	    '96f42cb4b4dfaef72b3868bbc89975a2987cbd9a1b2cb53de16409d654a77c367712eaf5bc7dceed93ea25a19a5e9df3075a166cd03c0d959ac873b941b771b8')
 
