@@ -3,7 +3,7 @@
 _pkgbase=veeam
 pkgname=veeam
 pkgver=3.0.2.1190
-pkgrel=1
+pkgrel=2
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
 url=http://repository.veeam.com/backup/linux/agent
