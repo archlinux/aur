@@ -1,7 +1,7 @@
 pkgbase = python-django-constance
 	pkgdesc = Dynamic Django settings
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazzband/django-constance
 	arch = any
 	license = BSD
