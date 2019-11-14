@@ -13,8 +13,8 @@ conflicts=("${_pkgbase}")
 install=${pkgname}.install
 source=( "${url}/rpm/el/7/x86_64/veeamsnap-${pkgver}-1.noarch.rpm"
         'dkms.conf')
-md5sums=('6b2018bc488763885488eeb79df3367f'
-         '23381bcf3c992e0b6467be681bbc751a')
+sha256sums=('831db832ee227e3efd31ee0152ad1a07ef5428e50886dad8021aac1b40d813bf'
+         '7d2a83f28b7c41797fadf06f29ab124ae63d662f2dba4e81e1eb4d1ef15bee7c')
 
 build() {
   msg "build..."
