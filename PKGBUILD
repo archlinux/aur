@@ -1,20 +1,20 @@
 # Contributor: Tomas Ostasevicius <t dot ostasevicius at gmail dot com>
-# Maintainer: Tomas Ostasevicius <t dot ostasevicius at gmail dot com>
+# Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=hyperspy
-pkgver=1.1.2
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
 url="http://hyperspy.org"
 license=('GPL3')
 
-depends=('python' 'python-numpy' 'python-matplotlib' 'python-traits' 
-         'python-traitsui' 'python-h5py' 'python-scikit-learn' # 'python2-nose' 
-         'python-statsmodels' 'ipython' 'python-jinja' 'python-pyzmq'
-         'python-pyqt4' 'python-tornado' 'python-sip' 'python2-pygments'
-         'python-jsonschema' 'python-dateutil' 'python-scipy' 'python-natsort'
-         'ipython-ipyparallel' 'python-dill' 'python-tqdm' 'python-requests'
-         'python-sympy')
+depends=('python' 'python-scipy' 'python-matplotlib' 'python-numpy'
+         'python-traits' 'python-natsort' 'python-requests' 'python-tqdm'
+         'python-sympy' 'python-dill' 'python-h5py' 'python-dateutil'
+         'ipython-ipyparallel' 'python-dask' 'python-scikit-image'
+         'python-pint' 'python-statsmodels' 'python-numexpr' 'python-sparse'
+         'python-imageio' 'python-pyaml' 'python-ptable'          
+         )
 
 optdepends=('python-pillow: tiff export'
             'python-seaborn: prettier plotting')
@@ -25,7 +25,7 @@ provides=('hyperspy')
 conflicts=('hyperspy')
 
 source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.zip)
-sha256sums=('0bbea17dea8069c901dfde546449acfa89a9ae23c1a46002d2d8bf231c14fa5e')
+sha256sums=('fd326d22be987038b2415d7886c39199569235d92aa2d6167c539a4dce125358')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -33,3 +33,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+
