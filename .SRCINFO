@@ -1,7 +1,7 @@
 pkgbase = vermin
 	pkgdesc = Concurrently detect the minimum Python versions needed to run code
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netromdk/vermin
 	arch = any
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=vermin
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Concurrently detect the minimum Python versions needed to run code"
 url="https://github.com/netromdk/$pkgname"
 license=("MIT")
