@@ -11,9 +11,9 @@
 ##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 25
+## Valid numbers between: 0 to 38
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 25 => native
+## Good option if your package is for one machine: 38 => native
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
