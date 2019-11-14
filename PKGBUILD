@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=('python-django-cacheops' 'python2-django-cacheops')
-pkgver=4.0.6
+pkgver=4.2
 pkgrel=1
 pkgdesc="A slick ORM cache with automatic granular event-driven invalidation"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/Suor/django-cacheops"
 license=('custom')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('799ce297d187f6a10523cfbc90434a5794fe2fa9a455b49f2f5b560f65e97626')
+sha256sums=('271d20579dd95c7f58e5799cc8f2a8541f312f3fa263857ba22254a5863defc0')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-cacheops() {
