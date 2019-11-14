@@ -2,13 +2,16 @@
 _pkgname=xmrig
 pkgname=${_pkgname}-bin
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Monero cryptocurrency CPU miner, HTTP API enabled, with default donation level"
 arch=('x86_64')
 url="https://github.com/xmrig/xmrig"
 license=('GPL')
 depends=('glibc')
 optdepends=('monero: wallet')
+provides=('xmrig')
+conflicts=('xmrig')
+replaces=('xmrig')
 install=${_pkgname}.install
 changelog=CHANGELOG.md
 source=("https://github.com/xmrig/xmrig/releases/download/v${pkgver}/${_pkgname}-${pkgver}-xenial-x64.tar.gz"
