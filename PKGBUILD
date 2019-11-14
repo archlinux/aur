@@ -24,7 +24,7 @@ build() {
 package() {
 	cd $srcdir/$pkgname-$pkgver
 
-	install -Dm 0744 module/netatop.ko $pkgdir/usr/lib/modules/extramodules-ARCH/netatop.ko
+	install -Dm 0744 module/netatop.ko $pkgdir/usr/lib/modules/$(uname -r)/extramodules/netatop.ko
 
 	install -D daemon/netatopd $pkgdir/usr/bin/netatopd
 
