@@ -2,3 +2,4 @@ pkg/
 src/
 wgmgr
 *pkg.tar.xz*
+*.log
