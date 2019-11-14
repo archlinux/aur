@@ -2,7 +2,7 @@
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=hyperspy-gui-traitsui
 pkginst=hyperspy_gui_traitsui
-pkgver=1.1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="traitsui GUI elements for HyperSpy" 
 arch=('any')
@@ -18,11 +18,13 @@ makedepends=('python-setuptools')
 provides=('hyperspy-gui-traitsui')
 conflicts=('hyperspy-gui-traitsui')
 
-source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.zip)
-sha256sums=('63131d783d6183e5f81a9d2f6c77bc42ad48cf2bc0fc644b53f3d320611f2846')
+#source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.zip)
+source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/master.zip)
+sha256sums=('8b40b846a7ad15e9e4f48243cab3b77ace94ce7b70889dcd21b96a0b4d8d2637')
 
 package() {
-  cd "$srcdir/$pkginst-$pkgver"
+#  cd "$srcdir/$pkginst-$pkgver"
+  cd "$srcdir/$pkginst-master"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
