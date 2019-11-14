@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=vim-plugins-profiler
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to output a sorted list of VIM plugin startup times in millisec."
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
