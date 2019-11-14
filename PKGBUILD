@@ -24,7 +24,7 @@ package() {
   msg2 "package..."
 
   install -Dm 0644 "${srcdir}/etc/veeam/veeam.ini" "${pkgdir}/etc/veeam/veeam.ini"
-  install -Dm 0744 "${srcdir}/lib/systemd/system/veeamservice.service" "${pkgdir}/usr/lib/systemd/system/veeamservice.service"
+  install -Dm 0644 "${srcdir}/lib/systemd/system/veeamservice.service" "${pkgdir}/usr/lib/systemd/system/veeamservice.service"
   install -Dm 0755 "${srcdir}/usr/bin/veeam" "${pkgdir}/usr/bin/veeam"
   install -Dm 0755 "${srcdir}/usr/bin/veeamconfig" "${pkgdir}/usr/bin/veeamconfig"
   install -Dm 0755 "${srcdir}/usr/sbin/veeamagentid" "${pkgdir}/usr/bin/veeamagentid"
