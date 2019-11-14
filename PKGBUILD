@@ -33,10 +33,7 @@ prepare() {
 	cd "$_pkgname"
 	mkdir build
 	cd build
-	cmake .. \ 
-        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
-        -DCMAKE_BUILD_TYPE=Release
+	cmake .. -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib -DCMAKE_BUILD_TYPE=Release
 }
 
 package() {
