@@ -1,9 +1,9 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('tracktime')
+pkgbase='tracktime'
 pkgname=('tracktime')
 _module='tracktime'
-pkgver='0.9.9'
+pkgver='0.9.10'
 pkgrel=1
 pkgdesc='Time tracking library with command line interface.'
 url='https://gitlab.com/sumner/tracktime'
@@ -19,8 +19,8 @@ depends=(
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/source/t/tracktime/tracktime-0.9.9.tar.gz')
-sha256sums=('79df55d54a2c73adc2044924341025a45da7c9ef53f1c9ae24f8a61048e6f9ba')
+source=('https://files.pythonhosted.org/packages/source/t/tracktime/tracktime-0.9.10.tar.gz')
+sha256sums=('aa23c57cb248b5607c829c78ef2d2932d86bc07243a62fa065a62c68d15c1f8b')
 
 
 build() {
