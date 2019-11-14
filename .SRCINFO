@@ -1,7 +1,7 @@
 pkgbase = python-django-post-office
 	pkgdesc = A simple app to send and manage your emails in Django
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ui/django-post_office
 	arch = any
 	license = MIT

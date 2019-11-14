@@ -3,7 +3,7 @@
 pkgname=('python-django-post-office' 'python2-django-post-office')
 pkgbase='python-django-post-office'
 pkgver='3.2.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple app to send and manage your emails in Django'
 arch=('any')
 url='https://github.com/ui/django-post_office'
