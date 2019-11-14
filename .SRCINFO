@@ -17,8 +17,12 @@ pkgbase = cnijfilter-mp280
 	conflicts = cnijfilter-common
 	source = http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-3.40-1.tar.gz
 	source = fix.patch
+	source = cups-fixes.patch
+	source = cn-ppd-support-mp280.patch
 	md5sums = 609975a05d6050fcca88f312d3f35c6a
 	md5sums = 1f4f7aa58be271e2d60b5f9615b1104d
+	md5sums = 55a10cc83b072c12ba50ea6864d3b18f
+	md5sums = 1b76cb2d4a46f6a10e6aced051729bb7
 
 pkgname = cnijfilter-mp280
 

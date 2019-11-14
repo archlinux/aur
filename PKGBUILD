@@ -28,15 +28,22 @@ install=cnijfilter-mp280.install
 source=(
     'http://gdlp01.c-wss.com/gds/0/0100003020/01/cnijfilter-source-3.40-1.tar.gz'
     'fix.patch'
+    'cups-fixes.patch'
+    'cn-ppd-support-mp280.patch'
 )
 md5sums=(
     '609975a05d6050fcca88f312d3f35c6a'
     '1f4f7aa58be271e2d60b5f9615b1104d'
+    '55a10cc83b072c12ba50ea6864d3b18f'
+    '1b76cb2d4a46f6a10e6aced051729bb7'
 )
 
 build() {
     cd "$srcdir/cnijfilter-source-$_pkgrealver-$_pkgrealrel"
     patch -p0 < "$startdir/fix.patch"
+    patch -p1 < "$startdir/cups-fixes.patch"
+    patch -p1 < "$startdir/cn-ppd-support-mp280.patch"
+    
     sed -i -e 's/png_p->jmpbuf/png_jmpbuf(png_p)/' cnijfilter/src/bjfimage.c
     cp cnijfilter/src/config* lgmon/src/
     cp cnijfilter/src/config* cngpijmon/cnijnpr/cnijnpr/
