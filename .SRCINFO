@@ -1,7 +1,7 @@
 pkgbase = python-readability-lxml
 	pkgdesc = This is a python port of a ruby port of arc90’s readability project
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/readability-lxml/
 	arch = any
 	license = custom:Apache

@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname=python-readability-lxml
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a python port of a ruby port of arc90’s readability project"
 arch=(any)
 url="https://pypi.org/project/readability-lxml/"
