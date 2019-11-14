@@ -2,3 +2,4 @@ pkg/
 src/
 mollyguardctl/
 *.pkg.tar.xz*
+*.log

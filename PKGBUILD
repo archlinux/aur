@@ -2,7 +2,7 @@
 
 pkgname='mollyguardctl'
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Guards your system from accidental reboots and shutdowns'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
