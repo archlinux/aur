@@ -1,7 +1,7 @@
 pkgbase = diagram-git
 	pkgdesc = Text mode diagrams using UTF-8 characters and fancy colors
 	pkgver = 0.2.23.r10.gc6895c1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tehmaze/diagram
 	arch = any
 	license = MIT
