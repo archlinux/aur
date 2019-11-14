@@ -1,7 +1,7 @@
 pkgbase = python-bempp-git
 	pkgdesc = The BEM++ boundary element library
 	pkgver = 3.3.4_ce2ffc1c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bempp.com/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = python-bempp-git
 	makedepends = cython>=0.22
 	makedepends = git
 	makedepends = cmake
+	makedepends = python-sphinx
 	depends = python-scipy
 	depends = python-mpi4py
 	depends = intel-tbb
