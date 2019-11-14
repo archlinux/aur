@@ -1,7 +1,7 @@
 pkgbase = python-django-environ
 	pkgdesc = Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joke2k/django-environ/
 	arch = any
 	license = MIT
