@@ -5,7 +5,7 @@
 _pkgname="Shortwave"
 pkgname="shortwave"
 pkgver="0.0.1"
-pkgrel="1"
+pkgrel="2"
 epoch="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('any')
@@ -14,7 +14,6 @@ license=('GPL3')
 depends=('gstreamer' 'libhandy' 'libsoup' 'gtk3')
 makedepends=('cargo' 'gobject-introspection' 'gst-plugins-base-libs' 'libdazzle' 'meson' 'rust')
 options=('!emptydirs')
-provides=("${pkgname}")
 conflicts=("${pkgname}"-git)
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('7173400e55c8c5d0117ca1e877942af685e646197552f7ee8103fca73d648e34')
