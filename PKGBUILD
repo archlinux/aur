@@ -2,7 +2,7 @@
 
 pkgname=waterfox-current-kpe
 pkgver=2019.10
-pkgrel=0
+pkgrel=1
 pkgdesc="Free, open and private browser with patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -153,7 +153,7 @@ END
   install -Dm644 $srcdir/distribution.ini \
     "$pkgdir/usr/lib/waterfox-current/distribution/distribution.ini"
 
-  install -Dm644 "$srcdir/vendor.js" "$pkgdir/usr/lib/waterfox-classic/browser/defaults/preferences/vendor.js"
+  install -Dm644 "$srcdir/vendor.js" "$pkgdir/usr/lib/waterfox-current/browser/defaults/preferences/vendor.js"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/waterfox-current" <<END
