@@ -2,7 +2,7 @@
 
 _pkgname=sratom
 pkgname="${_pkgname}-git"
-pkgver=0.6.3.r173.bdfb8d0
+pkgver=0.6.4.r181.84fc8bf
 pkgrel=1
 pkgdesc="An LV2 Atom RDF serialisation library (git version)"
 arch=('i686' 'x86_64')
@@ -11,10 +11,11 @@ license=('custom:ISC')
 depends=('lv2' 'sord')
 makedepends=('git' 'python')
 conflicts=("${_pkgname}" "${_pkgname}-svn")
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
 source=("${_pkgname}::git+https://gitlab.com/lv2/sratom.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 
 pkgver() {

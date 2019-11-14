@@ -1,6 +1,6 @@
 pkgbase = sratom-git
 	pkgdesc = An LV2 Atom RDF serialisation library (git version)
-	pkgver = 0.6.3.r173.bdfb8d0
+	pkgver = 0.6.4.r181.84fc8bf
 	pkgrel = 1
 	url = http://drobilla.net/software/sratom/
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = sratom-git
 	depends = lv2
 	depends = sord
 	provides = sratom
-	provides = sratom=0.6.3
+	provides = sratom=0.6.4
+	provides = libsratom-0.so
 	conflicts = sratom
 	conflicts = sratom-svn
 	source = sratom::git+https://gitlab.com/lv2/sratom.git
