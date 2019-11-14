@@ -1,6 +1,6 @@
 pkgbase = hyperspy-gui-ipywidgets
 	pkgdesc = ipywidgets GUI elements for HyperSpy
-	pkgver = 1.1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/hyperspy/hyperspy_gui_ipywidgets
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = hyperspy-gui-ipywidgets
 	depends = hyperspy-link-traits
 	provides = hyperspy-gui-ipywidgets
 	conflicts = hyperspy-gui-ipywidgets
-	source = https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v1.1.1.zip
-	sha256sums = 78e20fd90795eaab1a79aaa98dddeaf24bb668b0b2787a477fafc07cb373a4f3
+	source = https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/master.zip
+	sha256sums = 1c672cce0f3a7bf1d4707de564966973428c11beb59c74947c3302acddf54ecb
 
 pkgname = hyperspy-gui-ipywidgets
 
