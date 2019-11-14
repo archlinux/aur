@@ -2,7 +2,7 @@
 
 pkgname='speculum'
 pkgver=1.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"

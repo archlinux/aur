@@ -1,7 +1,7 @@
 pkgbase = speculum
 	pkgdesc = Yet another mirror list optimization tool
 	pkgver = 1.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/coNQP/speculum
 	arch = any
 	license = GPLv3
