@@ -5,7 +5,7 @@
 _pkgname=lilv
 pkgname="${_pkgname}-git"
 pkgver=0.24.6.r1258.425af42
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/lilv"
@@ -16,7 +16,7 @@ optdepends=(
     "bash-completion: completion for bash"
     "libsndfile: lv2apply utility"
 )
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "liblilv-${pkver::1}.so")
+provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "lib${_pkgname}-${pkgver::1}.so")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git'
