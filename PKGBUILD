@@ -3,7 +3,7 @@
 pkgbase='python-cas'
 pkgname=('python-cas' 'python2-cas')
 pkgver='1.4.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Python utilities to implement CAS protocol (Central Authentication Service)'
 arch=('any')
 url='https://github.com/python-cas/python-cas'
