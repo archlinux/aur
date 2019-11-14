@@ -17,6 +17,7 @@ sha256sums=('29013226d237df36c8b722549fa565b6fa745939deab1be22e17b21f837f7b37')
 build() {
   msg "build..."
   rpmextract.sh veeam-${pkgver}-1.el7.x86_64.rpm
+  sed -i 's#/var/run#/run#' "${srcdir}/lib/systemd/system/veeamservice.service"
 }
 #
 package() {
