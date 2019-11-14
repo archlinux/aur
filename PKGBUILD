@@ -2,9 +2,9 @@
 
 cudaarch=Common
 _pkgname=mxnet
-pkgname=('mxnet-cuda-git' 'mxnet-cuda-mkl-git')
+pkgname=('mxnet-git' 'mxnet-mkl-git' 'mxnet-cuda-git' 'mxnet-cuda-mkl-git')
 _pkgver=1.5.1
-pkgver=1.5.1.r10336.47fd3a02f4
+pkgver=1.5.1.r10341.017f6fa799
 pkgrel=1
 pkgdesc="A flexible and efficient library for deep learning"
 arch=('x86_64')
@@ -32,6 +32,7 @@ makedepends=(
   'git'
   'gtk3'
   'nccl'
+  'opencv'
   'patchelf'
   'qt5-base'
 )
@@ -55,11 +56,10 @@ prepare() {
   sed -i 's/OPENMP_FOUND/OpenMP_FOUND/g' "${srcdir}/${_pkgname}/CMakeLists.txt"
   rm -rf "${srcdir}/${_pkgname}/build"
   mkdir "${srcdir}/${_pkgname}/build"
+  cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-git"
+  cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-mkl-git"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-cuda-git"
   cp -r "${srcdir}/${_pkgname}" "${srcdir}/mxnet-cuda-mkl-git"
-  # use gcc version compatible with CUDA
-  export CC=/opt/cuda/bin/gcc
-  export CXX=/opt/cuda/bin/g++
 }
 
 build() {
@@ -83,6 +83,41 @@ build() {
     -DUSE_OPENMP:BOOL=ON
     -DUSE_S3:BOOL=ON
 )
+
+  export CC=gcc
+  export CXX=g++
+
+  # building without CUDA and without MKL-DNN
+  cd "${srcdir}/mxnet-git/build"
+  cmake \
+    ${cmake_opts[@]} \
+    -DUSE_CUDA:BOOL=OFF \
+    -DUSE_CUDNN:BOOL=OFF \
+    -DUSE_MKLDNN:BOOL=OFF \
+    -DUSE_NCCL:BOOL=OFF \
+    -DUSE_OPENCV:BOOL=ON \
+    ..
+  make
+  cd ../python
+  python setup.py build --with-cython
+
+  # building without CUDA and with MKL-DNN
+  cd "${srcdir}/mxnet-mkl-git/build"
+  cmake \
+    ${cmake_opts[@]} \
+    -DUSE_CUDA:BOOL=OFF \
+    -DUSE_CUDNN:BOOL=OFF \
+    -DUSE_MKLDNN:BOOL=ON \
+    -DUSE_NCCL:BOOL=OFF \
+    -DUSE_OPENCV:BOOL=ON \
+    ..
+  make
+  cd ../python
+  python setup.py build --with-cython
+
+  # use gcc version compatible with CUDA
+  export CC=/opt/cuda/bin/gcc
+  export CXX=/opt/cuda/bin/g++
 
   # building with CUDA and without MKL-DNN
   cd "${srcdir}/mxnet-cuda-git/build"
@@ -115,7 +150,43 @@ build() {
   python setup.py build --with-cython
 }
 
-_package() {
+package_mxnet-git() {
+  depends+=(opencv)
+
+  export CC=gcc
+  export CXX=g++
+  cd "${srcdir}/${pkgname}/build"
+  # install mxnet core component
+  make DESTDIR="${pkgdir}" install
+
+  if [ -f "${srcdir}/${pkgname}/build/im2rec" ]; then
+    install -Dm755 "${srcdir}/${pkgname}/build/im2rec" "${pkgdir}/usr/bin/im2rec"
+  fi
+
+  # install python binding
+  cd "${srcdir}/${pkgname}/python"
+  python setup.py install --root="${pkgdir}" --optimize=1 --with-cython --skip-build
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  rm -rfv "${pkgdir}/usr/mxnet"
+  ln -sf '/usr/lib/libmxnet.so' "${pkgdir}/usr/lib/python3.7/site-packages/mxnet/libmxnet.so"
+  ln -s "/usr/include" "${pkgdir}/usr/lib/python3.7/site-packages/mxnet/include"
+  install -d "${pkgdir}/usr/lib/mxnet/mkldnn"
+  find "${pkgdir}/usr/lib" -name 'libmkldnn*' -exec mv {} "${pkgdir}/usr/lib/mxnet/mkldnn" \;
+  # patch rpath
+  find "${pkgdir}" -type f -perm 755 -exec patchelf --set-rpath '/usr/lib/mxnet/mkldnn' {} \;
+  # remove unwantted files
+  rm -rfv "${pkgdir}/usr/lib/cmake" "${pkgdir}/usr/share/doc"
+  find "${pkgdir}/usr/include" -type f -name 'mkldnn*' -delete
+  find "${pkgdir}" -type d -empty -delete
+}
+
+package_mxnet-mkl-git() {
+  pkgdesc="${pkgdesc} (with MKL-DNN)"
+  depends+=(opencv)
+
+  export CC=gcc
+  export CXX=g++
   cd "${srcdir}/${pkgname}/build"
   # install mxnet core component
   make DESTDIR="${pkgdir}" install
@@ -146,14 +217,64 @@ package_mxnet-cuda-git() {
   pkgdesc="${pkgdesc} (with CUDA)"
   depends+=(cuda cudnn nccl)
 
-  _package
+  export CC=/opt/cuda/bin/gcc
+  export CXX=/opt/cuda/bin/g++
+  cd "${srcdir}/${pkgname}/build"
+  # install mxnet core component
+  make DESTDIR="${pkgdir}" install
+
+  if [ -f "${srcdir}/${pkgname}/build/im2rec" ]; then
+    install -Dm755 "${srcdir}/${pkgname}/build/im2rec" "${pkgdir}/usr/bin/im2rec"
+  fi
+
+  # install python binding
+  cd "${srcdir}/${pkgname}/python"
+  python setup.py install --root="${pkgdir}" --optimize=1 --with-cython --skip-build
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  rm -rfv "${pkgdir}/usr/mxnet"
+  ln -sf '/usr/lib/libmxnet.so' "${pkgdir}/usr/lib/python3.7/site-packages/mxnet/libmxnet.so"
+  ln -s "/usr/include" "${pkgdir}/usr/lib/python3.7/site-packages/mxnet/include"
+  install -d "${pkgdir}/usr/lib/mxnet/mkldnn"
+  find "${pkgdir}/usr/lib" -name 'libmkldnn*' -exec mv {} "${pkgdir}/usr/lib/mxnet/mkldnn" \;
+  # patch rpath
+  find "${pkgdir}" -type f -perm 755 -exec patchelf --set-rpath '/usr/lib/mxnet/mkldnn' {} \;
+  # remove unwantted files
+  rm -rfv "${pkgdir}/usr/lib/cmake" "${pkgdir}/usr/share/doc"
+  find "${pkgdir}/usr/include" -type f -name 'mkldnn*' -delete
+  find "${pkgdir}" -type d -empty -delete
 }
 
 package_mxnet-cuda-mkl-git() {
   pkgdesc="${pkgdesc} (with CUDA and MKL-DNN)"
   depends+=(cuda cudnn nccl)
 
-  _package
+  export CC=/opt/cuda/bin/gcc
+  export CXX=/opt/cuda/bin/g++
+  cd "${srcdir}/${pkgname}/build"
+  # install mxnet core component
+  make DESTDIR="${pkgdir}" install
+
+  if [ -f "${srcdir}/${pkgname}/build/im2rec" ]; then
+    install -Dm755 "${srcdir}/${pkgname}/build/im2rec" "${pkgdir}/usr/bin/im2rec"
+  fi
+
+  # install python binding
+  cd "${srcdir}/${pkgname}/python"
+  python setup.py install --root="${pkgdir}" --optimize=1 --with-cython --skip-build
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  rm -rfv "${pkgdir}/usr/mxnet"
+  ln -sf '/usr/lib/libmxnet.so' "${pkgdir}/usr/lib/python3.7/site-packages/mxnet/libmxnet.so"
+  ln -s "/usr/include" "${pkgdir}/usr/lib/python3.7/site-packages/mxnet/include"
+  install -d "${pkgdir}/usr/lib/mxnet/mkldnn"
+  find "${pkgdir}/usr/lib" -name 'libmkldnn*' -exec mv {} "${pkgdir}/usr/lib/mxnet/mkldnn" \;
+  # patch rpath
+  find "${pkgdir}" -type f -perm 755 -exec patchelf --set-rpath '/usr/lib/mxnet/mkldnn' {} \;
+  # remove unwantted files
+  rm -rfv "${pkgdir}/usr/lib/cmake" "${pkgdir}/usr/share/doc"
+  find "${pkgdir}/usr/include" -type f -name 'mkldnn*' -delete
+  find "${pkgdir}" -type d -empty -delete
 }
 # vim:set ts=2 sw=2 et:
 
