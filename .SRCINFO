@@ -9,7 +9,7 @@ pkgbase = nspr-hg
 	makedepends = zip
 	depends = glibc
 	depends = sh
-	provides = nspr
+	provides = nspr=4.24
 	conflicts = nspr
 	source = hg+https://hg.mozilla.org/projects/nspr
 	sha256sums = SKIP

@@ -15,7 +15,7 @@ makedepends=(zip)
 source=("hg+https://hg.mozilla.org/projects/nspr")
 sha256sums=('SKIP')
 conflicts=('nspr')
-provides=('nspr')
+provides=("nspr=${pkgver}")
 
 prepare() {
   cd $_pkgname
