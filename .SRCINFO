@@ -1,7 +1,7 @@
 pkgbase = interminal
 	pkgdesc = Utility for launching commands in a GUI terminal
 	pkgver = 0.3.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chrisjbillington/interminal
 	arch = any
 	license = BSD
