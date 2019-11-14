@@ -3,7 +3,7 @@
 
 pkgname=python-lyra2re2_hash
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Bindings for Lyra2RE2 proof of work used by Vertcoin'
 
 arch=('any')
