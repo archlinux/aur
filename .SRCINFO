@@ -1,7 +1,7 @@
 pkgbase = rarcrack
 	pkgdesc = Use brute force algorithm to find the correct password for rar, 7z, zip archives.
 	pkgver = 0.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://rarcrack.sourceforge.net/
 	arch = i686
 	arch = x86_64

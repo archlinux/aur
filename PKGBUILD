@@ -6,7 +6,7 @@
  
 pkgname=rarcrack
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Use brute force algorithm to find the correct password for rar, 7z, zip archives."
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -20,11 +20,15 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ziman/$pkgname/archive/$pkg
         "file-type-detection.patch")
 sha256sums=('662d14f080431424c816eca11cea00fe8eeb5bf0d2da36e18f5d07140c0a78af'
             '8d39315ead8f6058bc8f37b6724e7d266eed2b7ee79910de6a5a4bc2ee80bbe4')
- 
-build() {
+
+prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	# https://github.com/optiseth/rarcrack-fix Thank you optiseth:
-	patch < "$srcdir/file-type-detection.patch"
+	patch -p0 -i "$srcdir/file-type-detection.patch"
+}
+
+build() {
+	cd "$srcdir/$pkgname-$pkgver"
 	make
 }
  
