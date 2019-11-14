@@ -1,7 +1,7 @@
 pkgbase = otf-san-francisco-pro
 	pkgdesc = System font for iOS, macOS, and tvOS. Sourced directly from Apple.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = otf-san-francisco-pro
 	makedepends = xar
 	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/SF-Font-Pro.dmg
-	md5sums = 6a2c92e8ebd3ea389d162b790423ca20
+	md5sums = da1f767a3d185cac4efe9003aefc082a
 
 pkgname = otf-san-francisco-pro
 
