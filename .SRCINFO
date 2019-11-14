@@ -11,7 +11,7 @@ pkgbase = python-fsspec
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/intake/filesystem_spec/archive/0.6.0.tar.gz
+	source = python-fsspec-0.6.0.tar.gz::https://github.com/intake/filesystem_spec/archive/0.6.0.tar.gz
 	sha256sums = 8948c712a33e0c34b5df3c8f7bbb8d4948078b9bc96f815121bec57e03830fbf
 
 pkgname = python-fsspec
