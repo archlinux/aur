@@ -4,7 +4,7 @@ pkgbase=python-postpic
 pkgname=(python-postpic python2-postpic)
 _pkgname="${pkgbase#*-}"
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='The open source particle-in-cell post processor.'
 url='https://github.com/skuschel/postpic'
 arch=('i686' 'pentium4' 'x86_64')
@@ -14,8 +14,8 @@ _deppy2=(
   'python2<2.8'
 )
 _deppy=(
-  'python>=3.7'
-  'python<3.8'
+  'python>=3.8'
+  'python<3.9'
 )
 _depends=(
   'python-matplotlib' 'python-numpy>=1.7' 'python-scipy' 'python-future' 'python-urllib3' 'python-numexpr'
