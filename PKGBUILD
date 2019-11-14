@@ -1,11 +1,12 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 # Co-maintainer : Erik Dubois <erik.dubois@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
-# Contributor: Zhengyu Xu <xzy3186@gmail.com> 
+# Contributor: Zhengyu Xu <xzy3186@gmail.com>
+# Source : new application - https://forums.insynchq.com
 
 pkgname=insync
-pkgver=3.0.23.40579
-pkgrel=3
+pkgver=3.0.24.40626
+pkgrel=1
 _dist=buster
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
@@ -27,7 +28,7 @@ arch=('x86_64')
 source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-${_dist}_amd64.deb"
     'insync@.service'
     'insync.service')
-sha256sums=('f348fad2241dae11fe4d0af61398e40b900eab5d56f0e2d0cc75fc970c6b49eb'
+sha256sums=('380e90bfffc37fbdb059aefa261a77398ff3284db7333bff681a5fd139cab72f'
             'cf276c1dbf1592ea63a21c2d61c75f7ad6ec3b13e87b3aaa331e9c14799f4598'
             '1432141539a6b3c5333631a2ee6696fab9bd2fe8770643bc670d95e4e96203e0')
 package() {
