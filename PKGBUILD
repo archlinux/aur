@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=10.0.0_r330903.81cc5d1c7d3
+pkgver=10.0.0_r331809.a2f6ae9abff
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -30,13 +30,14 @@ pkgver() {
     # This will almost match the output of `llvm-config --version` when the
     # LLVM_APPEND_VC_REV cmake flag is turned on. The only difference is
     # dash being replaced with underscore because of Pacman requirements.
-    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |SUFFIX |)' \
+    local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
             'BEGIN { ORS="." ; i=0 } \
              /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
              END { print "\n" }' \
              CMakeLists.txt)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
     echo "${_pkgver//svn}"
 }
+
 
 prepare() {
     # Somehow CMake finds the 64-bit library in /lib first,
