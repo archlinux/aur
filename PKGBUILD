@@ -4,7 +4,7 @@
 pkgname='python-django-oauth-toolkit'
 _pkgbase="django-oauth-toolkit"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OAuth2 Provider for Django'
 arch=(any)
 url='https://github.com/jazzband/django-oauth-toolkit'

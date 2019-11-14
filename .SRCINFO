@@ -1,7 +1,7 @@
 pkgbase = python-django-oauth-toolkit
 	pkgdesc = OAuth2 Provider for Django
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazzband/django-oauth-toolkit
 	arch = any
 	license = BSD
