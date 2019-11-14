@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	mkdir -p build
+	mkdir build
 	cd build
 	cmake .. \ 
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
