@@ -2,14 +2,14 @@
 
 pkgname=emacs-commander-git
 pkgver=0.7.0r10.gc93985d
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line parsing for emacs"
 arch=('any')
 url="https://github.com/rejeep/commander.el.git"
 conflicts=('emacs-commander')
 provides=('emacs-commander')
 license=('GPL3')
-depends=('emacs')
+depends=('emacs-f')
 makedepends=('git')
 source=(git+$url)
 sha256sums=('SKIP')

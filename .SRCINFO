@@ -1,12 +1,12 @@
 pkgbase = emacs-commander-git
 	pkgdesc = Command line parsing for emacs
 	pkgver = 0.7.0r10.gc93985d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rejeep/commander.el.git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = emacs
+	depends = emacs-f
 	provides = emacs-commander
 	conflicts = emacs-commander
 	source = git+https://github.com/rejeep/commander.el.git
