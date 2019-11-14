@@ -33,7 +33,7 @@ logging:
     size: 1048576
 
 api:
-  endpoint: "http://localhost:8181"
+  endpoint: "http://127.0.1.1:8181"
   # this should be set by the client loading the core. standard format is
   # <platform>/<version>, like "android/0.7.0"
   client_version_string: 'core'

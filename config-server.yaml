@@ -2,7 +2,7 @@
 server:
   # Per default, turtl will listen on all IP addresses
   # You can choose the IP it will use with this parameter
-  host: '127.0.0.1'
+  host: '127.0.1.1'
   port: 8181
 
 db:
@@ -16,7 +16,7 @@ app:
   # Set to 'I UNDERSTAND THIS VIOLATES THE PRIVACY OF MY USERS' to enable
   enable_bookmarker_proxy: false
   # no trailing slash
-  api_url: 'http://127.0.0.1:8181'
+  api_url: 'http://127.0.1.1:8181'
   www_url: 'https://turtlapp.com'
   emails:
     admin: 'admin@turtlapp.com'

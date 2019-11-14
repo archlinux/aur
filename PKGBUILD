@@ -20,8 +20,8 @@ source=("https://github.com/turtl/core-rs/archive/${_commithash}.tar.gz"
         "config-server.yaml"
         "rusqlite.patch")
 sha256sums=("71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68"
-            "f5400e9c80c935915212e818f05eab8d3d542a54ed89e153c20a6c0fa00d8e1a"
-            "1b46d55e5f4753a494ceb005783db1c0c0908195b4f18a38a99118ecffae110a"
+            "31791752feae4d5b0a19272bbb15df827bf67bb9df237e45431dc4b15b212c2e"
+            "07cdaff828f3743b78693b029c8023d703874c4a612c64b3f9cf0608065b397b"
             "cd784b2b1de7bb0dba4d92623a525fc970627fd60b44b41d6f2d8e520770fce4")
 
 prepare() {
@@ -108,23 +108,18 @@ check() {
 	}
 
 	# Run the cargo test suite for core-rs.
-	# Note: some of the integration tests fail to correctly authenticate with
-	# the server, which results in them infinitely trying to synchronise the
-	# database with the server and failing. For now, I have disabled these
-	# tests to enable the remaining tests to pass, but I really need to figure
-	# out what is causing the authentication failure.
-	# Also, the 'migrate' test requires a deprecated Lisp-based Turtl server to
+	# Note: The 'migrate' test requires a deprecated Lisp-based Turtl server to
 	# be running, in order to test how the client can migrate data from an old
-	# server to a new NodeJS-based server. This package only includes the
-	# NodeJS server, which would cause this test to fail as the Lisp server is
-	# not available. As such, this test has also been disabled.
+	# server to a new NodeJS-based server. As the Lisp server is not run from
+	# this PKGBUILD check() function, the test will fail. To work around this,
+	# (at least for now) we just skip the test.
 	run_tests() {
 		log "Building and running unit tests..."
 		cargo test --features sqlite-static --release -- --test-threads 1
 
 		log "Building and running integration tests..."
 		cd integration-tests
-		cargo test --release -- --test-threads 1 --skip migrate --skip file_sync --skip import_export --skip login_sync_logout
+		cargo test --release -- --skip migrate
 		cd ..
 	}
 
