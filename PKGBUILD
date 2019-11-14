@@ -4,13 +4,14 @@
 # Contributor : Sébastien Duquette <ekse.0x@gmail.com>
 # Contributor : onny <onny@project-insanity.org>
 
+
 pkgname=wfuzz-git
 pkgver() {
   cd "${pkgname/-git}"
   git describe --long --tags | sed 's/v//;s/-/.r/;s/-g/./'
 }
-pkgver=2.4.r0.05c8a6f
-pkgrel=1
+pkgver=2.4.1.r0.fc34a8a
+pkgrel=2
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
 url='https://github.com/xmendez/wfuzz'
@@ -48,5 +49,5 @@ package() {
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
-# vi: ts=2 sw=2 et:
 
+# vi: ts=2 sw=2 et:
