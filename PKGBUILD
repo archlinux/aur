@@ -6,7 +6,7 @@
 
 pkgname=mitmproxy
 pkgver=4.0.4
-pkgrel=7
+pkgrel=8
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
 url='https://mitmproxy.org'
@@ -18,6 +18,7 @@ depends=('python-blinker' 'python-brotlipy' 'python-click' 'python-cryptography'
          'python-urwid' 'python-wsproto')
 checkdepends=('python-asynctest' 'python-beautifulsoup4' 'python-tornado' 'python-parver'
               'python-pytest-runner' 'python-pytest-asyncio' 'python-requests')
+optdepends=('python-tornado: mitmweb')
 provides=('pathod')
 conflicts=('pathod')
 replaces=('pathod')

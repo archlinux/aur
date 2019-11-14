@@ -1,7 +1,7 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
 	pkgver = 4.0.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://mitmproxy.org
 	arch = any
 	license = MIT
@@ -32,6 +32,7 @@ pkgbase = mitmproxy
 	depends = python-flask
 	depends = python-urwid
 	depends = python-wsproto
+	optdepends = python-tornado: mitmweb
 	provides = pathod
 	conflicts = pathod
 	replaces = pathod
