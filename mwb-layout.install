@@ -1,0 +1,4 @@
+post_install() {
+	printf "Run the following command to switch to the new layout:\n"
+	printf "\tlocalectl set-x11-keymap mwb\n"
+}

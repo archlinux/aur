@@ -1,0 +1,15 @@
+pkgbase = mwb-layout
+	pkgdesc = Optimized keyboard layout, based on programmer dvorak and with a 3rd layer
+	pkgver = r24.244ca13
+	pkgrel = 1
+	url = https://github.com/MatteoWickiBande/mwb-layout
+	install = mwb-layout.install
+	arch = any
+	license = GPL3
+	depends = git
+	optdepends = xcape: swap for swapping CAPS with escape
+	source = git+https://github.com/MatteoWickiBande/mwb-layout.git
+	md5sums = SKIP
+
+pkgname = mwb-layout
+
