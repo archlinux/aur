@@ -1,7 +1,7 @@
 pkgbase = python-vtc_scrypt
 	pkgdesc = Bindings for scrypt-n proof of work used by Vertcoin
 	pkgver = 1.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vertcoin-project/vtc-scrypt
 	arch = any
 	license = MIT

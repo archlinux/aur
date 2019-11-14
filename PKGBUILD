@@ -3,7 +3,7 @@
 
 pkgname=python-vtc_scrypt
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Bindings for scrypt-n proof of work used by Vertcoin'
 
 arch=('any')
