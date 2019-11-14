@@ -1,7 +1,7 @@
 pkgbase = offlinemsmtp
 	pkgdesc = msmtp wrapper allowing for offline use
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/sumner/offlinemsmtp
 	arch = any
 	license = GPL3
