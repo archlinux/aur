@@ -1,4 +1,6 @@
 src/*
 pkg/*
 *.pkg.tar.xz*
+*.log
+tablet-mode
 tablet-switch

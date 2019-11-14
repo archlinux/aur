@@ -2,7 +2,7 @@
 
 pkgname='tablet-mode'
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools to toggle a convertible laptop between laptop and tablet mode'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
