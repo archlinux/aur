@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=pydflatex
 pkgver=r1.a466693d
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper around pdflatex which produces a short, readable, coloured output"
 arch=('any')
 url="https://github.com/olivierverdier/pydflatex/"
