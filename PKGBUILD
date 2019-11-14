@@ -1,15 +1,20 @@
-pkgname=python-parmed
-pkgver=2.7.1
-pkgrel=1
-pkgdesc="Parameter/topology editor and molecular simulator"
-arch=('i686' 'x86_64')
-url="https://parmed.github.io/ParmEd/html/index.html"
-depends=('python')
-license=('MIT' 'LGPL')
-source=("https://github.com/ParmEd/ParmEd/archive/${pkgver}.tar.gz")
-sha512sums=('1f056d6b5f6ae2cea77d7781a5d3ab95ebbe304005c2d493c8222944d30dd9c0af1e17492d03e864cea15e405eb0561ce0c04c4414a4a8153230f24878df1f1a')
+# Maintainer: Michael Borders <michael.a.borders@gmail.com>
 
-package() {
-  cd ${srcdir}/ParmEd-${pkgver}
-  python setup.py install --root=${pkgdir} || 1
+pkgname=python-parmed
+_pkgname=ParmEd
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="Amber parameter file editor"
+arch=('any')
+url="https://github.com/parmed/parmed"
+license=('LGPL')
+depends=('python')
+optdepends=()
+makedepends=('python-setuptools')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('5522cb6218b467a7b9f5c8dd5f81a59d199f8712b8d02a1ad6c9161647256821')
+
+package(){
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
