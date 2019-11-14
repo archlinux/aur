@@ -1,7 +1,7 @@
 pkgbase = b2restore
 	pkgdesc = Program to recreate Backblaze B2 file archive at specified date+time.
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bulletmark/b2restore
 	arch = any
 	license = GPL3

@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=b2restore
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to recreate Backblaze B2 file archive at specified date+time."
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
