@@ -1,71 +1,132 @@
-# Maintainer: Atte Lautanala <atte dot lautanala at gmail dot com>
-# Based on python and python35 PKGBUILD files
+# Maintainer: Whyme Lyu <callme5long@gmail.com>
+# Contributor: Tobias Kunze <r@rixx.de>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.0
+pkgver=3.7.5
 pkgrel=1
-_pybasever=3.7
-pkgdesc="Next generation of the python high-level scripting language"
-arch=('i686' 'x86_64')
+_pybasever=${pkgver%.*}
+_pymajver=3
+pkgdesc="Major release 3.7 of the Python high-level programming language"
+arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl')
 makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'llvm' 'gdb' 'xorg-server-xvfb')
-optdepends=('tk: for tkinter' 'sqlite' 'mpdecimal: for decimal' 'xz: for lzma')
-options=('!makeflags')
-source=("https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz"
-        dont-make-libpython-readonly.patch)
-sha512sums=('8bb11233fb67ee9ab8ed1b72f8fdc62f66e26a6beaaeb92448bce681cf065269833b1658d3ed2459127f25ba43adb0eab73cf27c59834a2a803fb529b4216739'
-            '500ea7f603f96f721d04ca64390f4bd9ddbab2c16b837b67f8a51ed9167a1d57c5b435be1ebe98b0c74eff728714033b3dcbb5ee978b9bf98086571399717f17')
+optdepends=('sqlite'
+            'mpdecimal: for decimal'
+            'xz: for lzma'
+            'tk: for tkinter')
+source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
+        dont-make-libpython-readonly.patch
+        0001-compileall-Fix-ddir-when-recursing.patch)
+sha512sums=('f4f3879881f260f58dbb041fb0f2f210d4b70b02a739e41e50e6fea67d31855a7a29ce4ebef66bfde3d0edf54b946a48f78490f986da965357b835d4dbb3f414'
+            'SKIP'
+            '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
+            'ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff')
+validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
 prepare() {
-    cd "${srcdir}/Python-${pkgver}"
+  cd Python-${pkgver}
 
-    # FS#45809
-    patch -p1 -i ../dont-make-libpython-readonly.patch
+  # FS#45809
+  patch -p1 -i ../dont-make-libpython-readonly.patch
 
-    # FS#23997
-    sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
+  # FS#59997
+  patch -p1 -i ../0001-compileall-Fix-ddir-when-recursing.patch
 
-    rm -r Modules/expat
-    rm -r Modules/_ctypes/{darwin,libffi}*
-    rm -r Modules/_decimal/libmpdec
+  # https://bugs.python.org/issue34587
+  sed -i -e "s|testCongestion|disabled_&|" Lib/test/test_socket.py
+
+  # FS#23997
+  sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
+
+  # Speed up LTO
+  sed -i -e "s|-flto |-flto=4 |g" configure configure.ac
+
+  # Ensure that we are using the system copy of various libraries (expat, libffi, and libmpdec),
+  # rather than copies shipped in the tarball
+  rm -r Modules/expat
+  rm -r Modules/_ctypes/{darwin,libffi}*
+  rm -r Modules/_decimal/libmpdec
 }
 
 build() {
-    cd "${srcdir}/Python-${pkgver}"
+  cd Python-${pkgver}
 
-    ./configure --prefix=/usr \
-                --enable-shared \
-                --with-threads \
-                --with-computed-gotos \
-                --enable-optimizations \
-                --with-lto \
-                --enable-ipv6 \
-                --with-valgrind \
-                --with-system-expat \
-                --with-dbmliborder=gdbm:ndbm \
-                --with-system-ffi \
-                --with-system-libmpdec \
-                --enable-loadable-sqlite-extensions
+  # PGO should be done with -O3
+  CFLAGS="${CFLAGS/-O2/-O3}"
 
-    LC_CTYPE=en_US.UTF-8 xvfb-run make EXTRA_CFLAGS="$CFLAGS"
+  # Disable bundled pip & setuptools
+  ./configure --prefix=/usr \
+              --enable-shared \
+              --with-threads \
+              --with-computed-gotos \
+              --enable-optimizations \
+              --with-lto \
+              --enable-ipv6 \
+              --with-system-expat \
+              --with-dbmliborder=gdbm:ndbm \
+              --with-system-ffi \
+              --with-system-libmpdec \
+              --enable-loadable-sqlite-extensions \
+              --without-ensurepip
+
+  # Obtain next free server number for xvfb-run; this even works in a chroot environment.
+  export servernum=99
+  while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
+
+  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
+}
+
+check() {
+  # test_gdb is expected to fail with LTO
+  # test_idle, test_tk, test_ttk_guionly segfaults since 3.6.5
+
+  # https://bugs.python.org/issue34022
+  # test_cmd_line_script, test_compileall, test_importlib,
+  # test_multiprocessing_main_handling, test_py_compile, test_runpy
+
+  cd Python-${pkgver}
+
+  # Obtain next free server number for xvfb-run; this even works in a chroot environment.
+  export servernum=99
+  while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
+
+  LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
+  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" \
+    "${srcdir}/Python-${pkgver}/python" -m test.regrtest -v -uall -x test_gdb -x test_idle -x test_tk -x test_ttk_guionly \
+    -x test_cmd_line_script -x test_compileall -x test_importlib -x test_multiprocessing_main_handling -x test_py_compile -x test_runpy \
+    -x test_httplib
 }
 
 package() {
-    cd "${srcdir}/Python-${pkgver}"
+  cd Python-${pkgver}
 
-    make DESTDIR="${pkgdir}" EXTRA_CFLAGS="$CFLAGS" altinstall maninstall
+  # Hack to avoid building again
+  sed -i 's/^all:.*$/all: build_all/' Makefile
 
-    # Remove files that conflict with python package
-    rm "${pkgdir}/usr/lib/libpython3.so"
-    rm "${pkgdir}/usr/share/man/man1/python3.1"
+  # PGO should be done with -O3
+  CFLAGS="${CFLAGS/-O2/-O3}"
 
-    # Add useful scripts FS#46146
-    install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
-    install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/usr/lib/python${_pybasever}/Tools/i18n/
-    install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib/python${_pybasever}/Tools/scripts/
+  # altinstall: /usr/bin/pythonX.Y but not /usr/bin/python or /usr/bin/pythonX
+  make DESTDIR="${pkgdir}" EXTRA_CFLAGS="$CFLAGS" altinstall
 
-    # License
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Avoid conflicts with the main 'python' package, once Python 3.8 is standard.
+  rm "${pkgdir}/usr/lib/libpython${_pymajver}.so"
+
+  # Add missing pkgconfig stuff
+  ln -s "python${_pybasever}m-config" "${pkgdir}/usr/bin/python${_pybasever}-config"
+
+  # some useful "stuff" FS#46146
+  install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
+  install -m755 Tools/i18n/{msgfmt,pygettext}.py "${pkgdir}"/usr/lib/python${_pybasever}/Tools/i18n/
+  install -m755 Tools/scripts/{README,*py} "${pkgdir}"/usr/lib/python${_pybasever}/Tools/scripts/
+
+  # License
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
