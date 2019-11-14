@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=cdhist
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash cd history"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")

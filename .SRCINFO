@@ -1,7 +1,7 @@
 pkgbase = cdhist
 	pkgdesc = Bash cd history
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bulletmark/cdhist
 	install = install.sh
 	arch = any
