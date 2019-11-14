@@ -2,7 +2,7 @@
 
 pkgname=gallery-dl
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line program to download image-galleries and collections from several image hosting sites"
 arch=('any')
 url="https://github.com/mikf/gallery-dl"
