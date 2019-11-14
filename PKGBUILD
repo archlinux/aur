@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-winelib
-_tag=0.21
+_tag=0.30
 pkgver=$_tag
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, winelib version"
