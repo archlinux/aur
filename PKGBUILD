@@ -2,7 +2,7 @@
 
 pkgname=krill-git
 pkgver=v0.3.0.r1.ga1031ea
-pkgrel=2
+pkgrel=4
 pkgdesc="Read and filter web feeds."
 arch=('any')
 url="https://github.com/p-e-w/krill"
