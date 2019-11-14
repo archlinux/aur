@@ -4,7 +4,7 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.5.r1249.36e74a7
+pkgver=0.24.6.r1258.425af42
 pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')
@@ -16,11 +16,14 @@ optdepends=(
     "bash-completion: completion for bash"
     "libsndfile: lv2apply utility"
 )
-provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
+provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "liblilv-${pkver::1}.so")
 conflicts=("${_pkgname}" "${_pkgname}-svn")
 source=("${_pkgname}::git+https://gitlab.com/lv2/${_pkgname}.git"
-        'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP' 'SKIP')
+        'autowaf::git+https://gitlab.com/drobilla/autowaf.git'
+        'lilv-no-empty-collection-assert.patch')
+md5sums=('SKIP'
+         'SKIP'
+         '5d60a2514d5f81c5335d9278057bf0ae')
 
 
 pkgver() {
@@ -37,9 +40,7 @@ prepare() {
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
 
-  # Ugly hack to fix pkgconfig file template
-  # https://github.com/drobilla/lilv/issues/30
-  sed -i -e 's/^Requires:.*/Requires: @LILV_PKG_DEPS@/' lilv.pc.in
+  patch -p1 -N -i "${srcdir}"/lilv-no-empty-collection-assert.patch
 }
 
 check() {
