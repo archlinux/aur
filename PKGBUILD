@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=3.2.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/xwiki-labs/cryptpad/archive/$pkgver.tar.gz"
 	"cryptpad.service"
 	"cryptpad.sysusers"
 	"cryptpad.tmpfiles")
-sha256sums=('4f7576401e506aa24c032be675539b671ace27c5453b40edfe39f84daa0fcbfc'
+sha256sums=('88c3dbdabd2d14ab38fcaba5bf3c012e1348000e5741e0fd9a1573e09d0cf73c'
             '522851fbe4e0e41fd6ece8b2b0ed17bbae0233a58328b7994a5207aa341a635b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             'fa710a977248c1cd2482d4624325d3f8ac8479c9d748dd636077f55f48906d44')
@@ -24,17 +24,17 @@ package() {
 	npm install -g --user root --prefix "${pkgdir}"/usr --cache "${srcdir}/npm-cache" 
         bower install --allow-root
 
-	rm -rv "${pkgdir}"/usr
+	rm -r "${pkgdir}"/usr
 
 	# make sure directory permissions are acceptable
 	find . -type d -exec chmod 755 {} +
 
 	# Documentation
-	install -v -t "${pkgdir}"/usr/share/doc/$pkgname -Dm 644 docs/ARCHITECTURE.md -Dm 644 docs/example.nginx.conf -Dm 644 CHANGELOG.md 
+	install -t "${pkgdir}"/usr/share/doc/$pkgname -Dm 644 docs/ARCHITECTURE.md -Dm 644 docs/example.nginx.conf -Dm 644 CHANGELOG.md
 	
 	# Cryptpad
-	install -vd "${pkgdir}"/usr/share/$pkgname 
-	cp -rv {customize.dist,historyKeeper.js,import,lib,node_modules,rpc.js,scripts,server.js,storage,www,package.json} "${pkgdir}"/usr/share/$pkgname
+	install -d "${pkgdir}"/usr/share/$pkgname
+	cp -r {customize.dist,historyKeeper.js,import,lib,node_modules,rpc.js,scripts,server.js,storage,www,package.json} "${pkgdir}"/usr/share/$pkgname
 
 	# Config
 	sed -e "s|\(Path: '\)\./|\1/var/lib/cryptpad/|" \
@@ -42,8 +42,8 @@ package() {
 	    -e "s|logToStdout: false|logToStdout: true|" \
 	    -i config/config.example.js
 
-	install -vDm 644 config/config.example.js "${pkgdir}/etc/webapps/$pkgname/config.example.js"
-	ln -vs "/etc/webapps/$pkgname" "${pkgdir}"/usr/share/$pkgname/config
+	install -Dm 644 config/config.example.js "${pkgdir}/etc/webapps/$pkgname/config.example.js"
+	ln -s "/etc/webapps/$pkgname" "${pkgdir}"/usr/share/$pkgname/config
 
 	# systemd
 	install -Dm 644 "${srcdir}"/cryptpad.sysusers "${pkgdir}"/usr/lib/sysusers.d/cryptpad.conf
