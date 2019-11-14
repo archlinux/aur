@@ -1,10 +1,10 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('python-pdfkit')
+pkgbase='python-pdfkit'
 pkgname=('python-pdfkit')
 _module='pdfkit'
 pkgver='0.6.1'
-pkgrel=2
+pkgrel=3
 pkgdesc='Wkhtmltopdf python wrapper to convert html to pdf using the webkit rendering engine and qt'
 url='https://github.com/JazzCore/python-pdfkit'
 depends=(
