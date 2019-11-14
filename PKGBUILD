@@ -2,8 +2,8 @@
 
 _pkgbase='peeweeplus'
 pkgname="python-${_pkgbase}-git"
-pkgver=latest
-pkgrel=1
+pkgver=r364.7c06464
+pkgrel=2
 pkgdesc='Practical extension of a small, expressive ORM'
 arch=('any')
 url="https://gitlab.com/HOMEINFO/${_pkgbase}"

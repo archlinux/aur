@@ -1,7 +1,7 @@
 pkgbase = python-peeweeplus-git
 	pkgdesc = Practical extension of a small, expressive ORM
-	pkgver = latest
-	pkgrel = 1
+	pkgver = r364.7c06464
+	pkgrel = 2
 	url = https://gitlab.com/HOMEINFO/peeweeplus
 	arch = any
 	license = GPLv3
