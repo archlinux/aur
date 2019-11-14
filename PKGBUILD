@@ -1,6 +1,6 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('offlinemsmtp')
+pkgbase='offlinemsmtp'
 pkgname=('offlinemsmtp')
 _module='offlinemsmtp'
 pkgver='0.3.4'
