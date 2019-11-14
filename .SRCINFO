@@ -1,7 +1,7 @@
 pkgbase = python-invocations
 	pkgdesc = Reusable Invoke tasks
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pyinvoke/invocations
 	arch = any
 	license = BSD
