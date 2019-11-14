@@ -3,13 +3,14 @@
 
 pkgname=lariza
 pkgver=19.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://www.uninformativ.de/projects/lariza/"
 license=('custom:PIZZA-WARE')
 depends=('webkit2gtk')
 makedepends=('git')
+optdepends=('tabbed')
 source=("git+https://www.uninformativ.de/git/lariza.git#commit=96055b0c4d9018e7e64a7f3826350e9db1e4e9d7")
 sha512sums=('SKIP')
 
