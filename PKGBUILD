@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='repotool'
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc='An arch linux repository management tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
