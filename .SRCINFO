@@ -1,7 +1,7 @@
 pkgbase = octopi-notifier-frameworks
 	pkgdesc = Notifier for Octopi with Knotifications support
 	pkgver = 0.9.0
-	pkgrel = 7
+	pkgrel = 8
 	url = http://octopiproject.wordpress.com
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = octopi-notifier-frameworks
 	depends = knotifications
 	provides = octopi-notifier
 	conflicts = octopi-notifier-qt5
-	source = octopi-0.9.0-7.tar.gz::https://github.com/aarnt/octopi/archive/ed0a6c8b822dcc546c56c3f5afe5de3e8b357471.tar.gz
-	sha256sums = 00fa0b882a828973c481d2a5f54e966df0a66e8fcd2a3aad60a3c14b4455143d
+	source = octopi-0.9.0-8.tar.gz::https://github.com/aarnt/octopi/archive/245db0572a97497d93b3864638458c4bcc0fa126.tar.gz
+	sha256sums = b98ce84f815097b69f27fb60121b9583f718688fc63454c262c231d3107f9f5d
 
 pkgname = octopi-notifier-frameworks
 
