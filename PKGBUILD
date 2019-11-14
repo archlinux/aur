@@ -2,7 +2,7 @@
 pkgname=('git-nautilus-icons')
 _pypi_name=('git_nautilus_icons')
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 url="https://github.com/chrisjbillington/git_nautilus_icons"
 license=('BSD 2-Clause "Simplified"')
