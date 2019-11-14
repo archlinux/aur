@@ -3,7 +3,7 @@
 _pkgbase='usernotify'
 pkgname="python-${_pkgbase}-git"
 pkgver=r32.cf66096
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 library and scripts for notifying desktop users"
 arch=('any')
 url="https://github.com/conqp/${_pkgbase}"
