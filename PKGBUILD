@@ -8,8 +8,8 @@ pkgver() {
   cd "$_prjname"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r324.f56e0bc
-pkgrel=1
+pkgver=r327.7e40b11
+pkgrel=2
 
 pkgdesc='Search and play songs from Youtube, Soundcloud, Spotify and more from your terminal'
 arch=('any')
