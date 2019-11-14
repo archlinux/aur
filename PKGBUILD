@@ -1,7 +1,7 @@
 # Maintainer: Callum Parsey <neoninteger@protonmail.com>
 pkgname=turtl-core-rs
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Turtl's logic core, built in Rust"
 arch=("i686" "x86_64")
 url="https://github.com/turtl/core-rs"
