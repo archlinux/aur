@@ -1,7 +1,7 @@
 pkgbase = gpodder-git
 	pkgdesc = A podcast receiver/catcher
-	pkgver = 3.10.11.r0.g3199f936
-	pkgrel = 1
+	pkgver = 3.10.11.r3.gc6860de1
+	pkgrel = 3
 	url = http://gpodder.org/
 	arch = any
 	license = GPL3
