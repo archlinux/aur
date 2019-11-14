@@ -5,7 +5,7 @@ pkgbase=python-ipympl
 pkgname=(python2-ipympl python-ipympl python-ipympl-common)
 _pkgname="${pkgbase#*-}"
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 _deppy2=(
@@ -13,8 +13,8 @@ _deppy2=(
   'python2<2.8'
 )
 _deppy=(
-  'python>=3.7'
-  'python<3.8'
+  'python>=3.8'
+  'python<3.9'
 )
 _depends=(
   'python')
