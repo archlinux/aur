@@ -2,9 +2,8 @@
 # Maintainer: boosterdev@linuxmail.org
 # Contributer: Ben Ruijl <benruyl@gmail.com> (sabnzbd)
 
-_pkgname=sabnzbd
 pkgname=sabnzbd-git
-pkgver=2.3.7RC1.r2.g6f69bfd9
+pkgver=2.3.8RC1.r213.g1671ca5e
 pkgrel=1
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
@@ -16,8 +15,8 @@ makedepends=('git')
 conflicts=('sabnzbd')
 install="sabnzbd.install"
 backup=("etc/conf.d/sabnzbd" "opt/sabnzbd/sabnzbd.ini")
-source=("git://github.com/sabnzbd/sabnzbd.git"
-        "$_pkgname-shell" "sabnzbd.desktop" "addnzb.sh" "nzb.png" "sabnzbd.png" "x-nzb.xml" "sabnzbd.service" "sabnzbd.confd")
+source=("${pkgname%-git}::git://github.com/sabnzbd/sabnzbd.git"
+        "${pkgname%-git}-shell" "sabnzbd.desktop" "addnzb.sh" "nzb.png" "sabnzbd.png" "x-nzb.xml" "sabnzbd.service" "sabnzbd.confd")
 sha256sums=('SKIP'
             '82630edfc767a383843ffaae9d716e99010dad9e93bdee08d541faa74e694a65'
             '887f93942b78c0475009b1ce84b502c28e273c222451a4736cd4c37ff5454f04'
@@ -29,28 +28,28 @@ sha256sums=('SKIP'
             '8462203454d488b5d4f7beb85e61da2efa42d3dffa465f3bf16a95abe0bc7c0a')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$_pkgname"
-  install -d -m755 "${pkgdir}/opt/${_pkgname}"
-  touch "${pkgdir}/opt/${_pkgname}/${_pkgname}.ini"
-  cp -r "${srcdir}/${_pkgname}/"* "${pkgdir}/opt/${_pkgname}"
+  cd "${pkgname%-git}"
+  install -d -m755 "${pkgdir}/opt/${pkgname%-git}"
+  touch "${pkgdir}/opt/${pkgname%-git}/${pkgname%-git}.ini"
+  cp -r "${srcdir}/${pkgname%-git}/"* "${pkgdir}/opt/${pkgname%-git}"
 
   # Fix for issues with Python 3
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec sed -i 's/python/python2/g' {} \;
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod 755 {} \;
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod 644 {} \;
-  chmod 755 "${pkgdir}/opt/${_pkgname}/SABnzbd.py"
+  find "${pkgdir}/opt/${pkgname%-git}" -type f -exec sed -i 's/python/python2/g' {} \;
+  find "${pkgdir}/opt/${pkgname%-git}" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/opt/${pkgname%-git}" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}/opt/${pkgname%-git}/SABnzbd.py"
 
-  install -Dm755 "${srcdir}/${_pkgname}-shell"       "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}.confd" "${pkgdir}/etc/conf.d/${_pkgname}"
-  install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-  install -Dm755 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${_pkgname}/addnzb.sh"
-  install -Dm644 "${srcdir}/nzb.png"    "${pkgdir}/opt/${_pkgname}/nzb.png"
-  install -Dm644 "${srcdir}/sabnzbd.png"  "${pkgdir}/opt/${_pkgname}/sabnzbd.png"
-  install -Dm644 "${srcdir}/x-nzb.xml"    "${pkgdir}/opt/${_pkgname}/x-nzb.xml"
+  install -Dm755 "${srcdir}/${pkgname%-git}-shell"       "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -Dm644 "${srcdir}/${pkgname%-git}.confd" "${pkgdir}/etc/conf.d/${pkgname%-git}"
+  install -Dm644 "${srcdir}/${pkgname%-git}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service"
+  install -Dm755 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+  install -Dm755 "${srcdir}/addnzb.sh"    "${pkgdir}/opt/${pkgname%-git}/addnzb.sh"
+  install -Dm644 "${srcdir}/nzb.png"    "${pkgdir}/opt/${pkgname%-git}/nzb.png"
+  install -Dm644 "${srcdir}/sabnzbd.png"  "${pkgdir}/opt/${pkgname%-git}/sabnzbd.png"
+  install -Dm644 "${srcdir}/x-nzb.xml"    "${pkgdir}/opt/${pkgname%-git}/x-nzb.xml"
 }
