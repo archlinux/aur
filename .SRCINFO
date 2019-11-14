@@ -1,7 +1,7 @@
 pkgbase = timesched
 	pkgdesc = Python module providing a simple time event scheduler
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bulletmark/timesched
 	arch = any
 	license = GPL3

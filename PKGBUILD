@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=timesched
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module providing a simple time event scheduler"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
