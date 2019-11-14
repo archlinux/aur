@@ -1,16 +1,18 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Maintainer: Robert Gonciarz <goncairz (malpa) gmail (kropka) com>
+# Maintainer: Kevin Baxmann <kvbx@kvbx.de>
 
 pkgname=micronaut
-pkgver=1.1.4
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Application Framework"
 arch=('x86_64')
 url="https://github.com/micronaut-projects/micronaut-core"
 license=(Apache)
-depends=('java-environment>=8' 'java-environment<12')
+depends=('java-environment>=8')
+makedepends=('java-environment<11')
 source=(https://github.com/micronaut-projects/micronaut-core/archive/v${pkgver}.tar.gz)
-sha512sums=('10c07da8f796d96de1ceba99aaa21b76a86fe3a8261df849812d011b82a0373ee4d39503fef476240161fd4ed4eaac50bf12242db15f09f64c16d6292464dc98')
+sha512sums=('385376e592b8bd3d31ec2df2023ba219c01b80cbb1e6d098a40d8dceba671bb9ba70d2dbfc3223f33b54fecbe4bfe3f3ca0293d8a7d427eae131983f18fa44c9')
 
 build() {
   cd "$srcdir/micronaut-core-$pkgver"
