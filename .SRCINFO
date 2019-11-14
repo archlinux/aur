@@ -12,7 +12,7 @@ pkgbase = veeam
 	depends = rpmextract
 	conflicts = veeam
 	source = http://repository.veeam.com/backup/linux/agent/rpm/el/7/x86_64/veeam-3.0.2.1190-1.el7.x86_64.rpm
-	md5sums = 0597a0ce19f134bac0f7f265f01d75cc
+	sha256sums = 29013226d237df36c8b722549fa565b6fa745939deab1be22e17b21f837f7b37
 
 pkgname = veeam
 

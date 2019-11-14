@@ -12,7 +12,7 @@ depends=('ncurses' 'lvm2' 'fuse' 'rpmextract')
 install=${pkgname}.install
 source=( "${url}/rpm/el/7/x86_64/veeam-${pkgver}-1.el7.x86_64.rpm" )
 conflicts=("${_pkgbase}")
-md5sums=('0597a0ce19f134bac0f7f265f01d75cc')
+sha256sums=('29013226d237df36c8b722549fa565b6fa745939deab1be22e17b21f837f7b37')
 #
 build() {
   msg "build..."
