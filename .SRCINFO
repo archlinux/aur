@@ -1,7 +1,7 @@
 pkgbase = python-pysnooper
 	pkgdesc = PySnooper - Never use print for debugging again
 	pkgver = 0.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cool-RR/PySnooper
 	arch = any
 	license = MIT

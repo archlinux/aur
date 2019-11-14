@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=python-pysnooper
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="PySnooper - Never use print for debugging again"
 url="https://github.com/cool-RR/PySnooper"
 license=("MIT")
