@@ -1,0 +1,18 @@
+pkgbase = hyperspy-gui-traitsui
+	pkgdesc = traitsui GUI elements for HyperSpy
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/hyperspy/hyperspy_gui_traitsui
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = hyperspy
+	depends = python-traitsui
+	depends = hyperspy-link-traits
+	provides = hyperspy-gui-traitsui
+	conflicts = hyperspy-gui-traitsui
+	source = https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v1.1.1.zip
+	sha256sums = 63131d783d6183e5f81a9d2f6c77bc42ad48cf2bc0fc644b53f3d320611f2846
+
+pkgname = hyperspy-gui-traitsui
+
