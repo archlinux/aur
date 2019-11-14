@@ -2,7 +2,7 @@
 
 pkgname=blocklist
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool for download and write blocklists'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Joffr3y/$pkgname"

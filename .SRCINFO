@@ -1,7 +1,7 @@
 pkgbase = blocklist
 	pkgdesc = Command-line tool for download and write blocklists
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Joffr3y/blocklist
 	arch = i686
 	arch = x86_64
