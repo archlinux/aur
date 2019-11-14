@@ -2,7 +2,7 @@
 
 pkgname='dynwg'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A DynDNS watchdog for WireGuard over systemd-networkd'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
