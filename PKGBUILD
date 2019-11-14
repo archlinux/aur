@@ -2,8 +2,8 @@
 # Forked from buildkit-git by Victor <victor@xirion.net>
 
 pkgname=buildkit
-pkgver=0.6.2
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc='A toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.'
 arch=('any')
 url="https://github.com/moby/buildkit"
@@ -14,7 +14,7 @@ depends=(docker)
 makedepends=(make)
 source=("https://github.com/moby/buildkit/archive/v${pkgver}.tar.gz")
 
-sha256sums=('1eaf2c85c20d8da283e48548954484883354df66c6a4c2dc87bba7514a7ba99e')
+sha256sums=('b455ee83340f08b30c64918da2cce6e4f97cd8d0f65aeb3f640ca93d19f17e56')
 
 build() {
   cd "$pkgname-${pkgver}"
