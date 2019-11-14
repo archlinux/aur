@@ -1,7 +1,7 @@
 pkgbase = gmenu
 	pkgdesc = desktop application launcher
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~tslocum/gmenu
 	arch = i686
 	arch = x86_64

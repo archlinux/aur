@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev at sgregoratto dot me>
 pkgname=gmenu
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="desktop application launcher"
 url="https://git.sr.ht/~tslocum/gmenu"
 license=('MIT')
@@ -23,5 +23,5 @@ build() {
 package() {
   install -Dm755 "$pkgname-v$pkgver/gmenu"   "$pkgdir/usr/bin/gmenu"
   install -Dm755 "$pkgname-v$pkgver/gtkmenu" "$pkgdir/usr/bin/gtkmenu"
-  install -Dm755 "$pkgname-v$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-v$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
