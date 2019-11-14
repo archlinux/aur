@@ -4,7 +4,7 @@
 # Contributor: Polichronucci <nick at discloud dot eu>
 
 pkgname=nextcloud-app-ocsms-git
-pkgver=2.1.3.r12.g7a23294
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Push your Android SMS to your Nextcloud instance."
 arch=('any')
@@ -14,8 +14,9 @@ depends=('nextcloud')
 makedepends=('git')
 options=('!strip')
 source=("git+https://github.com/nextcloud/ocsms")
-sha512sums=('SKIP')
+sha256sums=('3c230fa7fd5515996849ee775675aad86cb95fdbb824c18425fbdceb076bce63')
 provides=("nextcloud-app-ocsms=$pkgver")
+sha256sums=('SKIP')
 conflicts=('nextcloud-app-ocsms')
 
 pkgver() {
