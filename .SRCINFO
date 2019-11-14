@@ -1,7 +1,7 @@
 pkgbase = veeamsnap
 	pkgdesc = Veeam Agent for Linux kernel modules (DKMS)
 	pkgver = 3.0.2.1190
-	pkgrel = 1
+	pkgrel = 2
 	url = http://repository.veeam.com/backup/linux/agent
 	install = veeamsnap.install
 	arch = i686
