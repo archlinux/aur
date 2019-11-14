@@ -1,7 +1,7 @@
 # Maintainer: Alexander Seiler <seileralex@gmail.com>
 
 pkgname=kodi-addon-checker
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Check kodi addons or whole kodi repositories for errors and best practices."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'python-pillow' 'python-polib' 'python-requests' 'python-radon' 'python-urllib3' 'python-xmlschema')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7ad487ad9d035a631ee26eb05c097566c0886a0beaec14298730a038e2089c87')
+sha256sums=('a73b80b901592de077aa3b88b8090b5066c2c46ebdc13e3fd7bb5a61af54b1a5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
