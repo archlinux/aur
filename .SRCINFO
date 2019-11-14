@@ -1,7 +1,7 @@
 pkgbase = edir
 	pkgdesc = Program to rename and remove files and directories using your editor
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bulletmark/edir
 	arch = any
 	license = GPL3

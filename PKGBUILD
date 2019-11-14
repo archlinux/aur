@@ -1,7 +1,7 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=edir
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Program to rename and remove files and directories using your editor"
 url="https://github.com/bulletmark/$pkgname"
 license=("GPL3")
