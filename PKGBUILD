@@ -3,7 +3,7 @@
 _pipname=django-widget-tweaks
 pkgbase=python-django-widget-tweaks
 pkgname=('python-django-widget-tweaks')
-pkgver=1.4.3
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Tweak the form field rendering in templates, not in python-level form definitions. CSS classes and HTML attributes can be altered."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/jazzband/django-widget-tweaks/"
 license=('MIT')
 makedepends=('python-setuptools' 'python-django')
 source=("https://github.com/jazzband/django-widget-tweaks/archive/${pkgver}.tar.gz")
-sha256sums=('8ac4176b5c09fe228f9495a4309e9b681e5d46afa236d32e51ae9e22c6992282')
+sha256sums=('cc3f7fdd25e2919873c42c367eb5ab7c2c6774cf527ca644f7c9aa6cee887a2b')
 
 
 build() {
