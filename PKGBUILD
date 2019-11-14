@@ -5,7 +5,7 @@
 
 pkgname=python-pssh
 pkgver=2.3.1
-pkgrel=10
+pkgrel=11
 pkgdesc="Parallel versions of the openssh tools ssh, scp, rsync, nuke, slurp"
 arch=('any')
 url="http://code.google.com/p/parallel-ssh/"

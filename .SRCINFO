@@ -1,7 +1,7 @@
 pkgbase = python-pssh
 	pkgdesc = Parallel versions of the openssh tools ssh, scp, rsync, nuke, slurp
 	pkgver = 2.3.1
-	pkgrel = 10
+	pkgrel = 11
 	url = http://code.google.com/p/parallel-ssh/
 	changelog = python-pssh.changelog
 	arch = any
