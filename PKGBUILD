@@ -2,18 +2,17 @@
 
 pkgname=iacs
 pkgver=1.1.5.0.5492
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM i Access Client Solutions provides a Java based, platform-independent interface for IBM iAccess/iSeries (formerly known as AS400)."
 arch=('any')
 url="http://www.ibm.com/systems/power/software/i/access/solutions.html"
 license=('custom')
 depends=('java-runtime' 'gtk-update-icon-cache')
-install="${pkgname}.install"
-source=("https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/IBMiAccess_v1r1.zip"
-        "https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/Readme.txt"
-        "https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/GettingStarted_en.html"
-        "https://dl.dropboxusercontent.com/u/99802211/External_Sources/IBM%20i%20Access%20Client%20Solutions/${pkgver}/QuickStartGuide_en.html"
-        "${pkgname}"
+source=("https://url.muflone.com/iacs-${pkgver}.zip"
+        "https://url.muflone.com/iacs_readme-${pkgver}.txt"
+        "https://url.muflone.com/iacs_getting_started-${pkgver}.html"
+        "https://url.muflone.com/iacs_quickstart_guide-${pkgver}.html"
+        "${pkgname}.sh"
         "${pkgname}.desktop")
 sha256sums=('abba132c0095886cfaa483714a8f6587365c6631b9cd7ec48efcd05dcc719e01'
             '3893d5f86f168e06e5aedaf3dc11d292ebf2ec0636e51c84081eebf2dfc41e99'
@@ -26,9 +25,9 @@ package() {
   cd "${srcdir}"
   # Install documentation files
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/GettingStarted_en.html"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/QuickStartGuide_en.html"
-  install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${srcdir}/Readme.txt"
+  install -m 644 "${srcdir}/iacs_getting_started-${pkgver}.html" "${pkgdir}/usr/share/doc/${pkgname}/GettingStarted.html"
+  install -m 644 "${srcdir}/iacs_quickstart_guide-${pkgver}.html" "${pkgdir}/usr/share/doc/${pkgname}/QuickStartGuide.html"
+  install -m 644 "${srcdir}/iacs_readme-${pkgver}.txt" "${pkgdir}/usr/share/doc/${pkgname}/Readme.txt"
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" Documentation/*.txt
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" Documentation/*.html
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" Documentation/*.css
@@ -45,7 +44,7 @@ package() {
   install -m 644 -t "${pkgdir}/usr/share/java/${pkgname}/Icons" Icons/*
   # Install executable file
   install -m 755 -d "${pkgdir}/usr/bin"
-  install -m 755 -t "${pkgdir}/usr/bin" "${srcdir}/${pkgname}"
+  install -m 755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
   # Install icons
   install -m 755 -d "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
   install -m 644 "Icons/logo32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
