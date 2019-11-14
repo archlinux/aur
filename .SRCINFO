@@ -1,7 +1,7 @@
 pkgbase = python-torchfile
 	pkgdesc = Deserialize torch-serialized objects from Python
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bshillingford/python-torchfile
 	arch = any
 	license = BSD
