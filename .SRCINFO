@@ -1,7 +1,7 @@
 pkgbase = dynwg
 	pkgdesc = A DynDNS watchdog for WireGuard over systemd-networkd
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coNQP/dynwg
 	arch = any
 	license = GPLv3
