@@ -2,16 +2,16 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-canary-git
-pkgver=r12836.27118b23e
+pkgver=r13098.0740db225
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
-url="https://github.com/yuzu-emu/yuzu-mainline"
+url="https://github.com/yuzu-emu/yuzu-canary"
 license=('GPL2')
 depends=('shared-mime-info' 'desktop-file-utils' 'sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11')
 makedepends=('git' 'cmake' 'python2')
 optdepends=('qt5-wayland: for Wayland support')
-source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline")
+source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-canary")
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,7 +32,7 @@ build() {
 	cd "$srcdir/$_pkgname"
 	export CI=true
 	export TRAVIS=true
-	export TRAVIS_REPO_SLUG=yuzu-emu/yuzu-mainline
+	export TRAVIS_REPO_SLUG=yuzu-emu/yuzu-canary
 	export TRAVIS_TAG=$(git describe --tags)
 	
 	# Hopefully temporary fix for a compilation error involving fmt
@@ -49,11 +49,10 @@ build() {
 	make
 }
 
-# Tests removed temporarily as they haven't been updated and throw a false error
-#check() {
-#	cd "$srcdir/$_pkgname/build"
-#	make test
-#}
+check() {
+	cd "$srcdir/$_pkgname/build"
+	make test
+}
 
 package() {
 	cd "$srcdir/$_pkgname/build"
