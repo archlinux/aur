@@ -5,13 +5,13 @@
 
 pkgname=libopenshot
 pkgver=0.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=('x86_64')
 url="https://openshot.org/"
 license=('LGPL3')
 depends=('gcc-libs' 'glibc' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
-'libswscale.so' 'libswresample.so' 'libmagick6' 'libopenshot-audio' 'python'
+'libswscale.so' 'libswresample.so' 'libmagick6' 'libopenshot-audio.so' 'python'
 'libjsoncpp.so' 'qt5-base' 'qt5-multimedia' 'x264' 'zeromq')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
 provides=('libopenshot.so')
