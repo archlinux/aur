@@ -1,10 +1,8 @@
 # Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
 pkgbase=dune-core
 pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid')
-
 pkgver=2.6.0
 pkgrel=1
-export CPPFLAGS="-I/usr/include/tirpc ${CPPFLAGS}"
 pkgdesc='Core modules of the DUNE framework'
 groups=('dune')
 url='http://www.dune-project.org'
@@ -13,9 +11,9 @@ arch=('i686' 'x86_64')
 license=('custom')
 
 makedepends=('cmake' 'gcc-fortran' 'openmpi' 'gmp' 'lapack' 'boost' 'superlu' 'suitesparse'
-    'parmetis' 'psurface' )
+    'parmetis' 'psurface' 'python' 'bash')
 
-
+export CPPFLAGS="-I/usr/include/tirpc ${CPPFLAGS}"
 export CFLAGS="-fPIC ${CFLAGS}"
 export CXXFLAGS="-fPIC ${CFLAGS}" 
 
@@ -32,13 +30,13 @@ md5sums=('fb21de7469a2c2cbff6ec7439891c7d6'
 
 _dunecontrol="./dune-common-${pkgver}/bin/dunecontrol"
 
-prepare() {
-    cd "dune-istl-${pkgver}"
+#prepare() {
+#    cd "dune-istl-${pkgver}"
 
 #    patch -p1 -i ../../avoid-boost-fusion-1.61.patch
-}
+#}
 
-package() {
+make_package() {
     $_dunecontrol --only=${pkgname} make install DESTDIR="${pkgdir}"
 
     install -m644 -D ${pkgname}-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -57,51 +55,52 @@ package_dune-common() {
     pkgdesc='Basic classes used by all DUNE modules'
     depends=('bash' 'python')
 
-    package
+    make_package
 }
 
 package_dune-geometry() {
     pkgdesc='Reference elements with corresponding mappings and quadratures'
 
-    package
+    make_package
 }
 
 package_dune-localfunctions() {
     pkgdesc='Shape functions, interpolation operators on DUNE reference elemements'
     arch=('any')
 
-    package
-}
-
-package_dune-grid() {
-    pkgdesc='Nonconforming, hierarchically nested, multi-element-type, parallel grids'
-    arch=('any')
-    package
-}
-
-package_dune-uggrid() {
-    pkgdesc='UG grid manager'
-    arch=('any')
-    package
+    make_package
 }
 
 package_dune-istl() {
     pkgdesc='Iterative solver template library'
     arch=('any')
 
-    package
+    make_package
 }
 
-package_dune-alugrid() {
-    pkgdesc='Unstructured simplicial and cube DUNE grids'
+package_dune-grid() {
+    pkgdesc='Nonconforming, hierarchically nested, multi-element-type, parallel grids'
     arch=('any')
-
-    package
+    make_package
 }
-package_dune-functions() {
-    pkgdesc='Needed to build core dune modules'
+
+package_dune-uggrid() {
+    pkgdesc='UG grid manager'
     arch=('any')
-
-    package
+    make_package
 }
+
+
+#package_dune-alugrid() {
+#    pkgdesc='Unstructured simplicial and cube DUNE grids'
+#    arch=('any')
+#
+#    package
+#}
+#package_dune-functions() {
+#    pkgdesc='Needed to build core dune modules'
+#    arch=('any')
+#
+#    package
+#}
 
