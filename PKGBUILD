@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=10.0.0_r331809.a2f6ae9abff
+pkgver=10.0.0_r331817.4787c6e2f31
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -40,13 +40,6 @@ pkgver() {
 
 
 prepare() {
-    # Somehow CMake finds the 64-bit library in /lib first,
-    # so let's preseed CMAKE_LIBRARY_PATH with /lib32.
-    sed -i \
-        '/^[[:blank:]]*find_library(FFI_LIBRARY_PATH/i\
-    list(INSERT CMAKE_LIBRARY_PATH 0 /usr/lib32)' \
-        "$srcdir"/llvm-project/llvm/cmake/config-ix.cmake
-
     if [  -d _build ]; then
         rm -rf _build
     fi
@@ -54,7 +47,7 @@ prepare() {
     
    cd llvm-project
     # remove code parts not needed to build this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc
     
     cd clang
     patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
@@ -63,10 +56,10 @@ prepare() {
 build() {
     cd _build
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
+    
     LIB32_CFLAGS="$CFLAGS"" -m32"
     LIB32_CXXFLAGS="$CXXFLAGS"" -m32"
-    
+
     cmake "$srcdir"/llvm-project/llvm  -G Ninja \
         -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;compiler-rt" \
         -DCMAKE_BUILD_TYPE=Release \
@@ -88,7 +81,6 @@ build() {
         -DLLVM_ENABLE_DOXYGEN=OFF \
         -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
         -DLLVM_BINUTILS_INCDIR=/usr/include \
-        -DCOMPILER_RT_BUILD_LIBFUZZER=OFF \
         -DLLVM_APPEND_VC_REV=ON
 
     ninja $NINJAFLAGS all
