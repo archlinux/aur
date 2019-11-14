@@ -1,8 +1,13 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 pkgname=vintagestory
+
+# _release is the version's release type, commonly "stable" for normal releases,
+# "unstable" for release candidates and "pre" for testing releases before big updates.
+_release=stable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-# makepkg doesn't support hyphens in pkgver. They'll be replaced by underscores.
-_pkgver=1.10.19
+_pkgver=1.11.0
+
+# makepkg doesn't support hyphens in pkgver. They'll be replaced with underscores.
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="An in-development indie sandbox game about innovation and exploration"
@@ -10,11 +15,11 @@ arch=("any")
 url="https://www.vintagestory.at/"
 license=("custom")
 depends=("mono" "opengl-driver" "openal")
-source=("https://cdn.vintagestory.at/gamefiles/stable/vs_archive_$_pkgver.tar.gz"
-#       "https://account.vintagestory.at/files/stable/vs_archive_$_pkgver.tar.gz" (alternative source)
+source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_archive_$_pkgver.tar.gz"
+#       "https://account.vintagestory.at/files/$_release/vs_archive_$_pkgver.tar.gz" (alternative source)
         "vintagestory.desktop"
         "vintagestory.sh")
-md5sums=("b488965c0e12bec2b49872eb9784fb8d"
+md5sums=("616b3676f9df6d116a04b4e4f6d493a6"
          "ab6680c4499b58b14aa36acc2ab4038a"
          "da232b56f48e047ec60791bb7d8b6398")
 
@@ -27,7 +32,7 @@ prepare() {
 }
 
 package() {
-	# Copy console launcher .sh
+	# Copy terminal launcher script
 	install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
 	# Copy application icon and .desktop launcher file
 	install -Dm644 "$pkgname"/assets/gameicon.xpm "$pkgdir"/usr/share/pixmaps/"$pkgname".xpm
