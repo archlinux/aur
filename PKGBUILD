@@ -21,10 +21,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=15.5.0
-_buildver=14665864
+pkgver=15.5.1
+_buildver=15018445
 _pkgver=${pkgver}_${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -99,7 +99,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'b557b4dcebefb51466da5b33dc51549537b0d381864b6155c3a48a66801a8597'
+  '490f8fe8d874c27601c155c1b2c0055ad0d4f14feb32fa9f18643659a147d3c6'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -140,10 +140,10 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.5.0_14634996
+_vmware_fusion_ver=11.5.1_15018442
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.2
+_unlocker_commit=2fd359ec996419dc6c43253e3c728e1f2734c2ee
 _efi_unlocker_ver=1.0.0
 
 makedepends+=(
@@ -154,14 +154,12 @@ makedepends+=(
 
 source+=(
   "VMware-Fusion-${_vmware_fusion_ver/_/-}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/core/com.vmware.fusion.zip.tar"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
-  'unlocker.patch'
+  "unlocker-${_unlocker_commit}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_commit}/unlocker.py"
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/efi-unlocker/${_efi_unlocker_ver}/patches.txt"
 )
 sha256sums+=(
-  'ed819604cb9c0f204e377f16b8678103467d2cf4a50129932e2b1a9a000ad8cf'
-  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
-  '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
+  'c36048a42c03988068aab7474b6c48ebc5054b8c6324cb93f009aec45aa899f0'
+  '89e3f41eade574c263b9afa0ba721d2179cd168f502e68b91ec3b6df4c5fee0e'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
@@ -208,9 +206,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   done
   rm -rf __MACOSX payload manifest.plist preflight postflight
 
-  cp "$srcdir/unlocker-${_unlocker_ver}.py" "$srcdir/unlocker.py"
-  patch -Np1 < unlocker.patch
-  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
+  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_commit}.py"
 fi
 }
 
@@ -458,7 +454,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python "$srcdir/unlocker.py" > /dev/null
+  python "$srcdir/unlocker-${_unlocker_commit}.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
