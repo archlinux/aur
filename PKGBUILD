@@ -2,7 +2,7 @@
 
 pkgname=kiss-gui
 pkgver=2.0.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Crossplatform configuration tool for the Flyduino flight control system (KISS)"
 arch=(x86_64)
 url="https://github.com/flyduino/kissfc-chrome-gui"
@@ -13,7 +13,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha512sums=('7e24c65a56fe97470d5186187b0b8bab8ea7c70fcd2ba44657c1f8e06b0e568ca796c4d151368d0a99bacda5d6630b7e0aa8c4461ab9b031352037476fa747db'
+sha512sums=('806d0f56d9ca37e5d524420c8b236b33519e5b04e2393a9fec744300a63a91651b61cfe66eb7f80e42ca5e4e18317389acc1dda813ba99fc386100ebd5d027dd'
             '68c02635d1c6449c8aadf55dc156717b8393c422fe9bfb96a2263314762ec82b024dc5979e1cb5c275de49439a25a4d4b962c5e7b3b58406038a3673daf895f0'
             '5a43483c365a1b1134bdd176be481a0400d3807b270cf0a31a575d5a7b0de167db6d1cd182ee9443cc0c86c77fbe14bb66bb1147c230f994aab36540687536ae')
 
