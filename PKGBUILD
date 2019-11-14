@@ -6,7 +6,7 @@
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.7+3+gd7a93938
+pkgver=2.7+25+g15c611ca
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
