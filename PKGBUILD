@@ -1,8 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=iacs
-pkgver=1.1.5.0.5492
-pkgrel=2
+pkgver=1.1.8.2.9170
+pkgrel=1
 pkgdesc="IBM i Access Client Solutions provides a Java based, platform-independent interface for IBM iAccess/iSeries (formerly known as AS400)."
 arch=('any')
 url="http://www.ibm.com/systems/power/software/i/access/solutions.html"
@@ -14,10 +14,10 @@ source=("https://url.muflone.com/iacs-${pkgver}.zip"
         "https://url.muflone.com/iacs_quickstart_guide-${pkgver}.html"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha256sums=('abba132c0095886cfaa483714a8f6587365c6631b9cd7ec48efcd05dcc719e01'
-            '3893d5f86f168e06e5aedaf3dc11d292ebf2ec0636e51c84081eebf2dfc41e99'
-            'bc08998aa0908f0484edd1b968d014b8b25895b7be55e3c641cc1c537126b6dc'
-            '66b4130afd6b6d24b3db6d7cce6e9dd301f9498522e1a42b5ed93eacf563ea2b'
+sha256sums=('2cb94eccc55835bd10ba51e64288fcfa8c8c83c947a56b40b5d5e8b6fef8bcf1'
+            'ee1809764aae73617aa3357c97ba3e0a138071c8de0ed2a108232225c30dc948'
+            '07be73f767196ef306636384306d9ba0044630ade6a8e5c60ce6eb68be620b0b'
+            'e9268ffbefc7bcf019c108a9902fa3b9a2006e11481f4327e7ddf7f376f23b31'
             'ab45ad56ae32d11ad8372c5313db3cfe810551fe84cfa093a677ca423ad51ab2'
             '282ac5df2bd9db62e7684ea05ab249379b3cdc8776983d71a55956de85e79128')
 
