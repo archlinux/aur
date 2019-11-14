@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('glib2' 'gtk3')
 makedepends=('intltool' 'git' 'meson' 'openconnect')
 optdepends=('openconnect: Easier authentication to AnyConnect VPNs')
-provides=('connman-gtk')
+conflicts=('connman-gtk')
 _commit=aad93f7089b50c92d6b200de91106229a27fdfc7
 source=("git+https://github.com/ajmar/connman-gtk-nobluetooth.git#commit=$_commit")
 sha256sums=('SKIP')

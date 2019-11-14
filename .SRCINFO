@@ -12,7 +12,7 @@ pkgbase = connman-gtk-nobluetooth
 	depends = glib2
 	depends = gtk3
 	optdepends = openconnect: Easier authentication to AnyConnect VPNs
-	provides = connman-gtk
+	conflicts = connman-gtk
 	source = git+https://github.com/ajmar/connman-gtk-nobluetooth.git#commit=aad93f7089b50c92d6b200de91106229a27fdfc7
 	sha256sums = SKIP
 
