@@ -2,14 +2,14 @@
 
 pkgname=otf-new-york
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Apple-designed serif typeface based on essential aspects of historical type styles.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip' 'dmg2img' 'cpio' 'xar' 'gzip')
 source=('https://developer.apple.com/design/downloads/NY-Font.dmg')
-md5sums=('b50a8fc74bfeb830340b68f8987db239')
+md5sums=('59e9c38d6e75e97ef3558b99f0928b29')
 
 prepare() {
   dmg2img NY-Font.dmg NY-Font.img
