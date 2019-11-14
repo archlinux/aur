@@ -1,4 +1,4 @@
-# Maintainer: Jack O'Connor <oconnor663@gmail.com>
+# Maintainer: Keybase <linux-packages@keyba.se>
 
 # NOTE: This PKGBUILD is generated and pushed by Keybase's release automation.
 # Any changes made in aur.archlinux.org git repos will get overwritten. See
@@ -8,7 +8,7 @@ pkgname=keybase-bin
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 url='https://keybase.io'
-pkgver=4.7.2_20191028173732+6fc2e969b4
+pkgver=5.0.0_20191114203213+f73f97dac6
 src_prefix=https://prerelease.keybase.io/linux_binaries/deb
 deb_pkgver="${pkgver/_/-}"
 deb_pkgver="${deb_pkgver/+/.}"
@@ -16,8 +16,9 @@ pkgrel=1
 arch=('i686' 'x86_64')
 depends=(fuse gconf libxss gtk2 lsof) # don't change this without changing the SRCINFO template too
                                       # also make sure to change the keybase-git PKGBUILD
+provides=(keybase keybase-gui kbfs)
 # keybase-release is a deprecated AUR package
-conflicts=(keybase keybase-release keybase-git)
+conflicts=(keybase keybase-release keybase-git keybase-gui kbfs)
 source_i686=(
   "${src_prefix}/keybase_${deb_pkgver}_i386.deb"
 )
@@ -48,5 +49,5 @@ package() {
 # You can cross reference these hashes with Keybase Debian repo metadata:
 # https://prerelease.keybase.io/deb/dists/stable/main/binary-amd64/Packages
 # https://prerelease.keybase.io/deb/dists/stable/main/binary-i386/Packages
-sha256sums_i686=(d4eba19ff6e9fc7fd8f221d470cd109ef059aa47789cc7f24672bdac2a0a4b86)
-sha256sums_x86_64=(4da375c6235b5ca84af3aca6e652dd46bc22ec871dcef0f3202568c97a835407)
+sha256sums_i686=(2a71987b4f903294e2f7de8ef5d6e0fd71a7f5ca9fe4cb8525775e170ee0cac7)
+sha256sums_x86_64=(e175e52a6355d8359d66ef4b445981b572c513754329d5c7f75ad7bb14ec348f)
