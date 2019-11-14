@@ -1,5 +1,5 @@
 diff --git a/whipper/program/cdparanoia.py b/whipper/program/cdparanoia.py
-index 6bc579d..1e21276 100644
+index 160646e..e2c45aa 100644
 --- a/whipper/program/cdparanoia.py
 +++ b/whipper/program/cdparanoia.py
 @@ -277,10 +277,10 @@ class ReadTrackTask(task.Task):
@@ -24,7 +24,7 @@ index 6bc579d..1e21276 100644
  
              raise
  
-@@ -556,8 +556,8 @@ _VERSION_RE = re.compile(
+@@ -557,8 +557,8 @@ _VERSION_RE = re.compile(
  
  
  def getCdParanoiaVersion():
@@ -35,7 +35,7 @@ index 6bc579d..1e21276 100644
                                    _VERSION_RE,
                                    "%(version)s %(release)s")
  
-@@ -582,12 +582,12 @@ class AnalyzeTask(ctask.PopenTask):
+@@ -584,12 +584,12 @@ class AnalyzeTask(ctask.PopenTask):
      def __init__(self, device=None):
          # cdparanoia -A *always* writes cdparanoia.log
          self.cwd = tempfile.mkdtemp(suffix='.whipper.cache')

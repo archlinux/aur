@@ -1,3 +1,5 @@
+# Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
+# Maintainer: Bruno Pagani <archange@archlinux.org>
 # Contributor: Frederik "Freso" S. Olesen <archlinux@freso.dk>
 # Contributor: Bastien Traverse <firstname at lastname dot email>
 # Contributor: Samantha Baldwin <fuhsaz+git@cryptic.li>
@@ -5,42 +7,36 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
-# Based on aur/whipper-git PKGBUILD
 
 pkgname=whipper-cdparanoia-git
-pkgver=0.7.3.r77.g635113b
+pkgver=0.8.0.r4.gaf06718
 pkgrel=1
-pkgdesc="A Unix CD ripper aiming for accuracy over speed -- forked from morituri -- uses cdparanoia instead of libcdio-paranoia"
-arch=('any')
-url="https://github.com/JoeLametta/whipper"
-license=('GPL3')
+pkgdesc="Unix CD ripper aiming for accuracy over speed -- forked from morituri"
+arch=(x86_64)
+url="https://github.com/whipper-team/whipper"
+license=(GPL3)
 depends=(
-    'accuraterip-checksum'          # for accuraterip-checksum calculation
-    'cddb-py'                       # for showing but not using disc info if not in MusicBrainz (issue #28)
-    'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
-    'flac'                          # for reading flac files
-    'cdparanoia'                    # for the actual ripping
-    'libsndfile'                    # for reading wav files
-    'mutagen'                       # for metadata handling
-    'python2-musicbrainzngs'        # for metadata lookup
-    'python2-pycdio'                # for storing drive identification in config file
-    'python2-requests'              # for retrieving AccurateRip database entries
-    'python2-setuptools'            # for plugin support
-    'sox'                           # for track peak detection'
+    libcdio-paranoia              # for the actual ripping
+    cdrdao                        # for session, TOC, pregap, and ISRC extraction
+    libsndfile                    # for reading wav files (pulls in flac, also required for reading flac files)
+    python2-gobject
+    python2-mutagen               # for metadata handling
+    python2-musicbrainzngs        # for metadata lookup
+    python2-pycdio                # for storing drive identification in config file
+    python2-requests
+    python2-setuptools            # for plugin support
+    sox                           # for track peak detection'
+    python2-ruamel.yaml           # for log output
     )
-makedepends=(
-    'git'
-    'python2-gobject2'
-    )
-checkdepends=(
-    'python2-twisted'
-    )
-provides=('whipper' 'whipper-git')
-conflicts=('whipper' 'whipper-git')
-source=("git+${url}.git" "cdparanoia.diff")
-sha256sums=(
-    'SKIP'
-    'a1403f86602a08f903fd85a9ce5fd1e8a11a98a91b8365bd5e75ffb6fa6136ab'
+makedepends=(python2-setuptools-scm git)
+optdepends=(flac)
+checkdepends=(python2-twisted)
+conflicts=(morituri accuraterip-checksum)
+provides=(accuraterip-checksum)
+source=(git+${url}.git 'cdparanoia.diff')
+sha512sums=(
+    SKIP
+    '937d743b73f7f0f5921e5e4234da4ddc5b4a9e69937df6f45ab741cf36dd8f65ca8cd42fba5ab03bdce1f139978295f1fb01add95ba027d3a1df845c55317878'
 )
 
 pkgver() {
@@ -51,15 +47,16 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/whipper"
-    git apply "$srcdir/cdparanoia.diff"
+    patch --forward --strip=1 --input="${srcdir}/cdparanoia.diff"
 }
 
-check() {
-    cd "$srcdir/whipper"
-    python2 -m unittest discover
+build() {
+    cd whipper
+    python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/whipper"
-    python2 setup.py install --root="${pkgdir}"/ --optimize=1
+    cd whipper
+    python2 setup.py --version
+    python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
 }
