@@ -1,6 +1,6 @@
 pkgbase = cloudflared-bin
 	pkgdesc = An Argo Tunnel client which proxies any local webserver through the Cloudflare network
-	pkgver = 2019.10.4
+	pkgver = 2019.11.0
 	pkgrel = 1
 	url = https://developers.cloudflare.com/argo-tunnel/
 	arch = x86_64
@@ -21,14 +21,14 @@ pkgbase = cloudflared-bin
 	sha256sums = 791ec5bebea5863544f5e0db0d9184a5bbb75e66725f7505e83e252f51d84376
 	sha256sums = bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206
 	sha256sums = bfda935c07b8e49821ee13e19433b1ed475ebb651e3008a32950734afbaef813
-	source_x86_64 = https://bin.equinox.io/a/ijZqF95ph9v/cloudflared-2019.10.4-linux-amd64.tar.gz
-	sha256sums_x86_64 = 4426d39941173abddd528f5840014337f7476287d69a2b0884bf04b2ba4e5815
-	source_i686 = https://bin.equinox.io/a/c55LA3YN9yX/cloudflared-2019.10.4-linux-386.tar.gz
-	sha256sums_i686 = 05abe991f640fbb375332ce610dfdd13838ad35c829981aea949eb9737c804f2
-	source_armv6h = https://bin.equinox.io/a/mRu1brvUS6Q/cloudflared-2019.10.4-linux-arm.tar.gz
-	sha256sums_armv6h = 8f6b5f91aa9b634c606efa450a4cc014002251d88faddc9787b3709925771be3
-	source_armv7h = https://bin.equinox.io/a/mRu1brvUS6Q/cloudflared-2019.10.4-linux-arm.tar.gz
-	sha256sums_armv7h = 8f6b5f91aa9b634c606efa450a4cc014002251d88faddc9787b3709925771be3
+	source_x86_64 = https://bin.equinox.io/a/6mHJpAdzmZF/cloudflared-2019.11.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = fc320275d952288262dbf14a88cb7ed6592c8b2bf5fbdebfcb6ea4415336c958
+	source_i686 = https://bin.equinox.io/a/2erdbm7LCsn/cloudflared-2019.11.0-linux-386.tar.gz
+	sha256sums_i686 = 4b6fcc01751866047297d2baec046c30c0fc07800dd3e54e08f0346a2e5c28da
+	source_armv6h = https://bin.equinox.io/a/diWT7SefFRZ/cloudflared-2019.11.0-linux-arm.tar.gz
+	sha256sums_armv6h = a5821825e3d53d488e3d9503479b5282e841f7ec904cd232d192c6284c5de442
+	source_armv7h = https://bin.equinox.io/a/diWT7SefFRZ/cloudflared-2019.11.0-linux-arm.tar.gz
+	sha256sums_armv7h = a5821825e3d53d488e3d9503479b5282e841f7ec904cd232d192c6284c5de442
 
 pkgname = cloudflared-bin
 
