@@ -7,7 +7,7 @@
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
 pkgname=swi-prolog-devel
-pkgver=8.1.15
+pkgver=8.1.16
 pkgrel=1
 pkgdesc='Prolog environment (development version)'
 arch=('x86_64' 'i686')
@@ -27,7 +27,7 @@ source=("https://www.swi-prolog.org/download/devel/src/swipl-$pkgver.tar.gz")
 provides=('swi-prolog')
 conflicts=('swi-prolog')
 
-sha256sums=('b318ade25fe3fe118a1b9d8e524e0fe69cb41f90ca68bc1c5d077f655ed35ac8')
+sha256sums=('0a9b9389702c39f0ae498056fa6563efde7fed85fe5dc754c9f201398d61672a')
 
 build() {
   mkdir -p build
