@@ -1,9 +1,9 @@
 # Maintainer: Hans-Nikolai Viessmann <hand AT viess.mn>
 
 pkgname='xmrig-proxy'
-pkgver=3.2.1
+pkgver=5.0.0
 pkgrel=1
-pkgdesc='Stratum protocol proxy for Monero, Electroneum, Sumokoin and AEON pools; HTTP API disabled, donation percentage is 0.'
+pkgdesc='Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-proxy'
 depends=('libuv')
@@ -15,7 +15,7 @@ license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('86e42d5800145f0fdf0b7343ba17093751ecfe7af389f9bbaecb5fe1c487634e')
+sha256sums=('3c4d3e2eda9ccaad9c790a55e8b60d56697de6d990cb25ef8b548afd2140652e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
