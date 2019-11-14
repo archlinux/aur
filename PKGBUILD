@@ -10,7 +10,7 @@ url="https://github.com/easymodo/qimgv"
 license=('GPL3')
 #groups=()
 depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'mpv' 'exiv2')
-makedepends=('git' 'cmake' 'qt5-tools' 'mpv' 'exiv2')
+makedepends=('git' 'cmake' 'pkgconf' 'qt5-tools' 'mpv' 'exiv2')
 #checkdepends=()
 optdepends=()
 provides=("qimgv")
@@ -33,7 +33,10 @@ prepare() {
 	cd "$_pkgname"
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib ..
+	cmake .. \ 
+        -DCMAKE_INSTALL_PREFIX:PATH=/usr \
+        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+        -DCMAKE_BUILD_TYPE=Release
 }
 
 package() {
