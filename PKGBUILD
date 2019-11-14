@@ -3,8 +3,8 @@
 
 _pkgname="raul"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r603.10fb82f
-pkgrel=2
+pkgver=1.0.0.r604.cdf6256
+pkgrel=1
 epoch=1
 pkgdesc="Realtime Audio Utility Library for audio and musical applications (git version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ provides=("$_pkgname" "$_pkgname=${pkgver//.r*/}")
 conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://gitlab.com/drobilla/${_pkgname}.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 
 pkgver() {
@@ -32,6 +33,9 @@ prepare() {
   git submodule init
   git config submodule.waflib.url "${srcdir}/autowaf"
   git submodule update
+
+  # remove local call to ldconfig
+  sed -i "/ldconfig/d" wscript
 }
 
 build(){
