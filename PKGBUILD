@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgname=interminal
 pkgver=0.3.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Utility for launching commands in a GUI terminal"
 url="https://github.com/chrisjbillington/interminal"
 depends=('python' )
