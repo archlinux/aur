@@ -14,7 +14,7 @@ license=('GPL3')
 conflicts=('ortp')
 provides=('ortp')
 depends=('bctoolbox-git')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/ortp.git")
 sha256sums=('SKIP')
 

@@ -6,6 +6,7 @@ pkgbase = ortp-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = bctoolbox-git
 	provides = ortp
 	conflicts = ortp
