@@ -6,7 +6,7 @@ _name=radon
 pkgbase="python-${_name}"
 pkgname=("${pkgbase}" "python2-${_name}")
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${_name}.readthedocs.org/"
 license=('MIT')
@@ -36,7 +36,7 @@ build() {
 
 package_python-radon() {
   pkgdesc="A tool that computes various metrics for Python source code"
-  depends=('python-flake8-polyfill' 'python-mando' 'python-colorama')
+  depends=('python-flake8-polyfill' 'python-future' 'python-mando' 'python-colorama')
 
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
@@ -50,7 +50,7 @@ package_python-radon() {
 
 package_python2-radon() {
   pkgdesc="A tool that computes various metrics for Python source code (Python2)"
-  depends=('python2-flake8-polyfill' 'python2-mando' 'python2-colorama')
+  depends=('python2-flake8-polyfill' 'python2-future' 'python2-mando' 'python2-colorama')
 
   cd "${srcdir}/python2-${_name}-$pkgver"
   python2 setup.py install --root="$pkgdir" --skip-build --optimize=1
