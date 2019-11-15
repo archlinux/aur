@@ -2,7 +2,7 @@
 # Contributor: 
 pkgname=python-tensorflow-probability
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Probabilistic reasoning and statistical analysis in TensorFlow"
 url="https://github.com/tensorflow/probability"
 arch=('any')
