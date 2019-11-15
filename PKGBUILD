@@ -1,11 +1,11 @@
-# Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=('flatery-icon-theme-git')
 pkgver=r48.5cf6958
 pkgrel=1
-pkgdesc="Flatery is an icon theme for linux in flat style."
+pkgdesc='Flatery is an icon theme for linux in flat style'
 arch=('any')
-url="https://github.com/cbrnix/Flatery"
+url='https://github.com/cbrnix/Flatery'
 license=('CC BY-NC-SA 3.0')
 makedepends=('git')
 source=("git+$url")
@@ -17,9 +17,9 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir"/Flatery
 	( 
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
 
@@ -32,8 +32,9 @@ build() {
 }
 
 package() {
-	msg2 "Installing ${pkgname%-*}...";
+	msg2 "Installing ${pkgname%-*}..."
 	cd "$srcdir"
-	install -dm 755 "${pkgdir}"/usr/share/icons/;
-	cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/;
+	install -dm 755 "${pkgdir}"/usr/share/icons/
+	cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/
 }
+# vim:set ts=2 sw=2 et:
