@@ -4,12 +4,12 @@
 
 pkgname=annie
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 pkgdesc="A fast, simple and clean video downloader written in Go"
 url="https://github.com/iawia002/annie"
 license=("MIT")
-makedepends=('dep')
+makedepends=('git' 'dep')
 depends=('go-pie' 'ffmpeg')
 conflicts=("annie")
 options=('!strip' '!emptydirs')
