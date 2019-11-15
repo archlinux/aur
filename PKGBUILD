@@ -4,7 +4,7 @@
 
 pkgname=perl-par-packer
 pkgver=1.049
-pkgrel=2
+pkgrel=3
 pkgdesc="PAR Packager"
 _dist=PAR-Packer
 arch=('any')
