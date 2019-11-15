@@ -1,7 +1,7 @@
 pkgbase = gr-fosphor
 	pkgdesc = GNU Radio block for RTSA-like spectrum visualization; repackaged from Ubuntu
 	pkgver = 3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sdr.osmocom.org/trac/wiki/fosphor
 	install = gr-fosphor.install
 	arch = x86_64
