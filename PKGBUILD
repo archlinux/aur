@@ -2,7 +2,7 @@
 
 pkgname=('python-requests-http-signature' 'python2-requests-http-signature')
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Requests auth module for the HTTP Signature IETF draft standard RFC"
 arch=(any)
 url="https://github.com/EliotBerriot/requests-http-signature"
