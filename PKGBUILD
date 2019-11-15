@@ -1,10 +1,10 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('rst2beamer')
+pkgbase='rst2beamer'
 pkgname=('rst2beamer')
 _module='rst2beamer'
 pkgver='0.6.6'
-pkgrel=2
+pkgrel=3
 pkgdesc='A docutils script converting restructured text into Beamer-flavoured LaTeX.'
 url='www.agapow.net/software/rst2beamer'
 depends=(

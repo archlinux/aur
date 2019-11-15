@@ -1,7 +1,7 @@
 pkgbase = rst2beamer
 	pkgdesc = A docutils script converting restructured text into Beamer-flavoured LaTeX.
 	pkgver = 0.6.6
-	pkgrel = 2
+	pkgrel = 3
 	url = www.agapow.net/software/rst2beamer
 	arch = any
 	license = GPL
