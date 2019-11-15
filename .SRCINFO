@@ -1,6 +1,6 @@
 pkgbase = longoverdue
 	pkgdesc = System service update management made easy
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/Streetwalrus/longoverdue
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = longoverdue
 	depends = python
 	depends = python-click
 	depends = lsof
-	source = https://github.com/Streetwalrus/longoverdue/archive/v0.5.2.tar.gz
-	sha256sums = f0a969741d880fe29b088aa123d31a9bcca419e46c188b9e66adb95c75a931b5
+	source = https://github.com/Streetwalrus/longoverdue/archive/v0.5.3.tar.gz
+	sha256sums = d4c182e3e6b3e82ca4be6b7222efbb1531b661b771c4129a636fde662cb47e4e
 
 pkgname = longoverdue
 
