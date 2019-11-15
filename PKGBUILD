@@ -28,8 +28,8 @@ package () {
 	mkdir --parents "${pkgdir}/usr/bin"
 	mkdir --parents "${pkgdir}/usr/share/man/man1"
 
-	cp --recursive "${srcdir}/${pkgname}/assets/box" "${pkgdir}/usr/share/box"
-	cp "${srcdir}/${pkgname}/assets/box.1" "${pkgdir}/usr/share/man/man1/box.1"
+	mv "${srcdir}/${Name}/assets/box" "${pkgdir}/usr/share/box"
+	mv "${srcdir}/${Name}/assets/box.1" "${pkgdir}/usr/share/man/man1/box.1"
 	ln --symbolic "/usr/share/box/_box" "${pkgdir}/usr/bin/box"
 
 	find "${pkgdir}" -type d -exec chmod u=rwx,g=rx,o=rx {} \;
