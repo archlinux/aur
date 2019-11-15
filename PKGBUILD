@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.79
+pkgver=5.9.81
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(i686 x86_64)
@@ -44,19 +44,14 @@ optdepends=(
 )
 options=(!strip)
 source=(https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz
-        use-libtirpc-headers.patch
         use-system-libxcb.patch
         use-system-vstsdk.patch)
-sha256sums=('b560c954fd702149dd5c4b9bd9940f4575c09fc22ac7f6280ec94d8ee4e966f1'
-            '0dfa3014bc6a66989564c7da2d963681f5d129eb0be28153744693dd533e4909'
+sha256sums=('42a1f6a3368ea8041de70870ab62c482b17d0487b85153d98749e807d021493b'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
             '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
 
 prepare() {
   cd radium-$pkgver
-
-  # Force libpd to look for legacy rpc headers in the libtirpc package
-  patch -p1 < "$srcdir/use-libtirpc-headers.patch"
 
   # Use system libxcb 1.13 rather than try to compile it
   patch -p1 < "$srcdir/use-system-libxcb.patch"
