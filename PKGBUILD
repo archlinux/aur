@@ -5,7 +5,7 @@
 
 pkgname=python-discogs-client
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the official Discogs API client for Python. You can use it to query the Discogs music database for metadata on artists, releases, and more."
 depends=('python-six' 'python-requests' 'python-oauthlib')
 makedepends=('python-setuptools')
