@@ -1,7 +1,7 @@
 pkgbase = funkwhale
 	pkgdesc = A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark.
-	pkgver = 0.19.0
-	pkgrel = 2
+	pkgver = 0.20.1
+	pkgrel = 1
 	url = https://funkwhale.audio/
 	install = funkwhale.install
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = funkwhale
 	depends = python-celery
 	depends = python-django-cors-headers
 	depends = python-musicbrainzngs
-	depends = python-django-rest-framework>=3.9
+	depends = python-django-rest-framework>=3.10
 	depends = python-django-rest-framework-jwt
 	depends = python-pendulum
 	depends = python-persisting-theory
@@ -33,7 +33,6 @@ pkgbase = funkwhale
 	depends = python-django-filter
 	depends = python-django-rest-auth
 	depends = python-mutagen
-	depends = python-django-taggit
 	depends = python-pymemoize
 	depends = python-django-dynamic-preferences
 	depends = python-raven
@@ -41,9 +40,13 @@ pkgbase = funkwhale
 	depends = python-django-channels
 	depends = python-django-channels-redis
 	depends = python-daphne
+	depends = uvicorn
+	depends = gunicorn
 	depends = python-cryptography
 	depends = python-requests-http-signature
 	depends = python-django-cleanup
+	depends = python-requests
+	depends = python-pyopenssl
 	depends = python-ldap
 	depends = python-django-auth-ldap
 	depends = python-service-identity
@@ -55,28 +58,29 @@ pkgbase = funkwhale
 	depends = python-django-storages
 	depends = python-boto3
 	depends = python-unicode-slugify-git
+	depends = python-django-cacheops
 	optdepends = apache: to use the Apache web server
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = nginx: to use nginx web server
-	source = funkwhale-0.19.0-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.19.0/download?job=build_api
-	source = funkwhale-0.19.0-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.19.0/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.19.0/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.19.0/deploy/nginx.template
+	source = funkwhale-0.20.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.20.1/download?job=build_api
+	source = funkwhale-0.20.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/0.20.1/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.20.1/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/0.20.1/deploy/nginx.template
 	source = funkwhale-beat.service
 	source = funkwhale-worker.service
 	source = funkwhale-server.service
 	source = apache-funkwhale.conf
 	source = env-template
 	source = funkwhale.service
-	sha256sums = 8838f83c1c658a758ef283d22f682820b4866f33d83d7832eb52fa04b4f729c8
-	sha256sums = 2a664eb81f46c1f7c9d52d472a2a9958356eb409fed36bb2acba7bde87c7d7c6
+	sha256sums = 5ef55f5e8a9bddaf93744027791efa23d49fe59af681e39942be1227a0de4126
+	sha256sums = 22d774590b943fa6d64f634a7175b1d100089fe33734ce9889d050063ff50ce7
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
 	sha256sums = 212f346b599146954b433a66f5857d8ba5bc5689d3268fa41dca1dec0b3ee683
 	sha256sums = a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b
 	sha256sums = 0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6
-	sha256sums = 4a28ddf6a6ba8ec28c10a164f82e3d5e5904d6dfe68ae8852428a589cee210c5
-	sha256sums = ee895ecaf5faaa794f161e9df038177497cb5c49510acd3aef088f75eb8b02f1
-	sha256sums = c2ee8160e2f4f87a2d4fe46136ffb8ea14422dc599db3eca4341e48db26d72ad
+	sha256sums = 9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470
+	sha256sums = f37b1b6257c5b92272f36773041c83fc72276ff4040100fba92db8136cc9177d
+	sha256sums = cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8
 	sha256sums = 01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349
 
 pkgname = funkwhale

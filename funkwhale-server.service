@@ -8,7 +8,8 @@ User=funkwhale
 # adapt this depending on the path of your funkwhale installation
 WorkingDirectory=/usr/share/webapps/funkwhale/api
 EnvironmentFile=/srv/funkwhale/config/env
-ExecStart=/usr/bin/daphne -b ${FUNKWHALE_API_IP} -p ${FUNKWHALE_API_PORT} config.asgi:application --proxy-headers
+ExecStart=/usr/bin/gunicorn config.asgi:application -w ${FUNKWHALE_WEB_WORKERS} -k uvicorn.workers.UvicornWorker -b ${FUNKWHALE_API_IP}:${FUNKWHALE_API_PORT}
+#ExecStart=/usr/bin/daphne -b ${FUNKWHALE_API_IP} -p ${FUNKWHALE_API_PORT} config.asgi:application --proxy-headers
 
 [Install]
 WantedBy=multi-user.target

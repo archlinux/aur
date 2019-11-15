@@ -1,8 +1,8 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.1
+pkgrel=1
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -25,7 +25,7 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-celery'
         'python-django-cors-headers'
         'python-musicbrainzngs'
-        'python-django-rest-framework>=3.9'
+        'python-django-rest-framework>=3.10'
         'python-django-rest-framework-jwt'
         'python-pendulum'
         'python-persisting-theory'
@@ -33,7 +33,6 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-django-filter'
         'python-django-rest-auth'
         'python-mutagen'
-        'python-django-taggit'
         'python-pymemoize'
         'python-django-dynamic-preferences'
         'python-raven'
@@ -41,9 +40,13 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-django-channels'
         'python-django-channels-redis'
         'python-daphne'
+        'uvicorn'
+        'gunicorn'
         'python-cryptography'
         'python-requests-http-signature'
         'python-django-cleanup'
+        'python-requests'
+        'python-pyopenssl'
         'python-ldap'
         'python-django-auth-ldap'
         'python-service-identity'
@@ -55,6 +58,7 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-django-storages'
         'python-boto3'
         'python-unicode-slugify-git'
+        'python-django-cacheops'
 )
 makedepends=(git)
 _source_api="https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/${pkgver}/download?job="
@@ -70,15 +74,15 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale.service"
 )
-sha256sums=('8838f83c1c658a758ef283d22f682820b4866f33d83d7832eb52fa04b4f729c8'
-            '2a664eb81f46c1f7c9d52d472a2a9958356eb409fed36bb2acba7bde87c7d7c6'
+sha256sums=('5ef55f5e8a9bddaf93744027791efa23d49fe59af681e39942be1227a0de4126'
+            '22d774590b943fa6d64f634a7175b1d100089fe33734ce9889d050063ff50ce7'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             '212f346b599146954b433a66f5857d8ba5bc5689d3268fa41dca1dec0b3ee683'
             'a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b'
             '0e6d7c96b7c1ec63794214decb1f2e7dd112a22b02e55555cf98c2a573014af6'
-            '4a28ddf6a6ba8ec28c10a164f82e3d5e5904d6dfe68ae8852428a589cee210c5'
-            'ee895ecaf5faaa794f161e9df038177497cb5c49510acd3aef088f75eb8b02f1'
-            'c2ee8160e2f4f87a2d4fe46136ffb8ea14422dc599db3eca4341e48db26d72ad'
+            '9d5a6f2cae6f18e22c5423247570519e8c772a9447ec2d92bd2fe5d69e519470'
+            'f37b1b6257c5b92272f36773041c83fc72276ff4040100fba92db8136cc9177d'
+            'cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8'
             '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349')
 install=${pkgname}.install
 

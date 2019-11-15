@@ -35,7 +35,9 @@ FUNKWHALE_VERSION=latest
 # example: FUNKWHALE_API_PORT=5678
 FUNKWHALE_API_IP=127.0.0.1
 FUNKWHALE_API_PORT=5000
-
+# The number of web workers to start in parallel. Higher means you can handle
+# more concurrent requests, but also leads to higher CPU/Memory usage
+FUNKWHALE_WEB_WORKERS=1
 # Replace this by the definitive, public domain you will use for
 # your instance
 FUNKWHALE_HOSTNAME=funkwhale.local
@@ -107,6 +109,9 @@ DJANGO_SECRET_KEY=
 # This will help us detect and correct bugs
 RAVEN_ENABLED=false
 RAVEN_DSN=https://44332e9fdd3d42879c7d35bf8562c6a4:0062dc16a22b41679cd5765e5342f716@sentry.eliotberriot.com/5
+
+# Denormalized audio permission logic in a separate table to enhance performance
+MUSIC_USE_DENORMALIZATION=True
 
 # In-place import settings
 # You can safely leave those settings uncommented if you don't plan to use
