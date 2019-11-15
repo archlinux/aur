@@ -1,29 +1,25 @@
 #! /bin/bash
-#  Coding manual at: https://gitlab.com/es20490446e/aur-box/wikis/packaging
 
-Name="aur-box"
-provides=("aur" "aur-publisher" "${Name}")
-conflicts=("aur" "aur-publisher" "${Name}")
-replaces=("aur" "aur-publisher")
-pkgname="${Name}"
+pkgname="aur-box"
+provides=("${pkgname}")
+conflicts=("${pkgname}")
 
-arch=("x86_64")
-pkgver=12
+pkgver=18
 pkgrel=1
+arch=("any")
 
 pkgdesc="Publishes software instantly to Arch Linuxes"
+url="https://gitlab.com/es20490446e/${pkgname}"
 license=("GPL3")
-url="https://gitlab.com/es20490446e/${Name}"
 
 makedepends=("git")
-depends=("commits-count-git" "silently")
-
+depends=("silently")
 source=("git+${url}.git")
 md5sums=("SKIP")
 
 
 pkgver () {
-	cd "${Name}"
+	cd "${pkgname}"
 	git rev-list --count HEAD
 }
 
@@ -32,8 +28,8 @@ package () {
 	mkdir --parents "${pkgdir}/usr/bin"
 	mkdir --parents "${pkgdir}/usr/share/man/man1"
 
-	mv "${srcdir}/${Name}/assets/box" "${pkgdir}/usr/share/box"
-	mv "${srcdir}/${Name}/assets/box.1" "${pkgdir}/usr/share/man/man1/box.1"
+	cp --recursive "${srcdir}/${pkgname}/assets/box" "${pkgdir}/usr/share/box"
+	cp "${srcdir}/${pkgname}/assets/box.1" "${pkgdir}/usr/share/man/man1/box.1"
 	ln --symbolic "/usr/share/box/_box" "${pkgdir}/usr/bin/box"
 
 	find "${pkgdir}" -type d -exec chmod u=rwx,g=rx,o=rx {} \;
