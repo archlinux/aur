@@ -8,7 +8,7 @@
 pkgname=('scipoptsuite')
 pkgver=6.0.2
 pkgrel=1
-pkgdesc='Toolbox for generating and solving optimization problems.'
+pkgdesc='Toolbox for generating and solving optimization problems'
 arch=('x86_64')
 url='http://scip.zib.de'
 license=('LGPL3' 'custom:ZIB Academic License')

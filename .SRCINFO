@@ -1,5 +1,5 @@
 pkgbase = scipoptsuite
-	pkgdesc = Toolbox for generating and solving optimization problems.
+	pkgdesc = Toolbox for generating and solving optimization problems
 	pkgver = 6.0.2
 	pkgrel = 1
 	url = http://scip.zib.de
