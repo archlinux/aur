@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 373
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
@@ -21,7 +21,6 @@ pkgbase = hydrus
 	depends = python-html5lib
 	depends = python-requests
 	depends = hdf5
-	depends = gtkglext
 	depends = pyside2
 	depends = python-qtpy
 	depends = qt5-charts
