@@ -1,0 +1,22 @@
+pkgbase = kubernetes-helm3
+	pkgdesc = A tool to manage Kubernetes charts
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/helm/helm
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = glide
+	makedepends = go
+	depends = socat
+	optdepends = kubectl: check cluster status
+	optdepends = kubectl-bin: check cluster status - binary package
+	conflicts = kubernetes-helm-bin
+	source = git+https://github.com/helm/helm#tag=v3.0.0
+	md5sums = SKIP
+
+pkgname = kubernetes-helm3
+
