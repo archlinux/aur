@@ -14,7 +14,7 @@ conflicts=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
 options=('!strip')
 
 pkgver() {
-  cd "$srcdir"/rtl88-Themes/Arc-ICONS
+  cd "${srcdir}/rtl88-Themes/Arc-ICONS"
 	( 
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 prepare() {
-  git clone --single-branch --branch "Arc-ICONS" https://github.com/rtlewis88/rtl88-Themes   
-  cd "$srcdir"/rtl88-Themes/Arc-ICONS
+  git clone --single-branch --branch "Arc-ICONS" "${url}/Arc-ICONS"   
+  cd "${srcdir}/rtl88-Themes/Arc-ICONS"
 }
 
 package() {
-  install -dm 755 "$pkgdir"/usr/share/icons/Arc-ICONS
-  cp -r "$srcdir"/rtl88-Themes/Arc-ICONS/* ${pkgdir}/usr/share/icons/Arc-ICONS/
+  install -dm 755 "${pkgdir}/usr/share/icons/Arc-ICONS"
+  cp -r "${srcdir}/rtl88-Themes/Arc-ICONS/*" "${pkgdir}/usr/share/icons/Arc-ICONS/"
 }
 # vim:set ts=2 sw=2 et:
