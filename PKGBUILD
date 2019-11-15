@@ -1,7 +1,7 @@
 # Maintainer: Maxime Vincent (maximevince) <maxime [dot] vince [at] gmail [dot] com>
 
 pkgname=radare2-cutter-ghidra
-pkgver=1.9.0.r23.gb11ba240
+pkgver=1.9.0.r49.g524b27fa
 pkgrel=1
 pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework with Python and Ghidra support'
 url='https://github.com/radareorg/cutter'
@@ -22,8 +22,11 @@ pkgver() {
 }
 
 prepare() {
+  sed -e 's|PKGCONFIG += python3|PKGCONFIG += python3-embed|' -i $pkgname/src/Cutter.pro # Fix linking to python 3.8
+
   cd ${pkgname}
   git submodule update --init --recursive
+
 
   mkdir -p build
   cd build
