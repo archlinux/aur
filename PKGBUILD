@@ -37,16 +37,8 @@ build() {
 
 
 package() {
-	mkdir --parents "${pkgdir}/usr/bin"
-	mkdir --parents "${pkgdir}/usr/share/pixmaps"
-	mkdir --parents "${pkgdir}/usr/share/applications"
-
-	mv "${srcdir}/${Name}/build/${Name}" "${pkgdir}/usr/bin/${LowercaseName}"
-	cp "${srcdir}/${Name}/resources/images/Icon1024.png" "${pkgdir}/usr/share/pixmaps/${LowercaseName}.png"
-	cp "${srcdir}/${LowercaseName}.desktop" "${pkgdir}/usr/share/applications/${LowercaseName}.desktop"
-
-	find "${pkgdir}" -type d -exec chmod u=rwx,g=rx,o=rx {} \;
-	find "${pkgdir}" -type f -exec chmod u=rw,g=r,o=r {} \;
-	chmod +x "${pkgdir}/usr/bin/${LowercaseName}"
+	install -Dm755 "${srcdir}/${Name}/build/${Name}" "${pkgdir}/usr/bin/${LowercaseName}"
+	install -Dm644 "${srcdir}/${Name}/resources/images/Icon1024.png" "${pkgdir}/usr/share/pixmaps/${LowercaseName}.png"
+	install -Dm644 "${srcdir}/${LowercaseName}.desktop" "${pkgdir}/usr/share/applications/${LowercaseName}.desktop"
 }
 
