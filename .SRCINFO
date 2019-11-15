@@ -1,5 +1,5 @@
 pkgbase = powerkit
-	pkgdesc = Powerkit is a Lightweight Desktop Independent full featured power manager.
+	pkgdesc = Powerkit is a Lightweight Desktop Independent full featured power manager
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/rodlie/powerkit
