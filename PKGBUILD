@@ -10,8 +10,8 @@ pkgdesc="Syncs files among devices, and shows the sync status on a tray icon. Ve
 url="https://github.com/sieren/${Name}"
 license=("LGPL3")
 
-pkgver=r421
-pkgrel=2
+pkgver=421
+pkgrel=3
 arch=("i686" "x86_64")
 
 makedepends=("cmake" "git")
@@ -22,7 +22,7 @@ md5sums=("SKIP" "SKIP")
 
 pkgver () {
 	cd "${Name}"
-	printf "r%s\n" "$(git rev-list --count HEAD)"
+	git rev-list --count HEAD
 }
 
 
