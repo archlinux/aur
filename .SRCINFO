@@ -1,0 +1,22 @@
+pkgbase = projecteur-git
+	pkgdesc = Linux Desktop Application for the Logitech Spotlight device.
+	pkgver = 184
+	pkgrel = 1
+	url = https://github.com/jahnf/Projecteur
+	install = projecteur.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = qt5-graphicaleffects>=5.7
+	depends = udev
+	provides = projecteur
+	conflicts = projecteur
+	source = git+https://github.com/jahnf/Projecteur.git
+	source = projecteur.install
+	md5sums = SKIP
+	md5sums = 658b29f7bc92ece81acfe5601d8ef21c
+
+pkgname = projecteur-git
+
