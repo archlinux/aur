@@ -10,6 +10,10 @@ depends=(
 		"python>=3.6"
 		"ffmpeg"
 		"youtube-dl"
+		"python-mutagen"
+		"python-beautifulsoup4"
+		"python-colorama"
+		"downloader-cli"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
