@@ -1,7 +1,7 @@
 # Maintainer: Payson Wallach <payson@paysonwallach.com>
 
 pkgname=aw-watcher-window
-pkgver=0.8.1
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
 arch=('i686' 'x86_64')
