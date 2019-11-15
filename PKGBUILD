@@ -2,7 +2,7 @@
 
 pkgname=python-puzpy
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for reading and writing .puz crossword files"
 arch=('any')
 url="https://github.com/alexdej/puzpy"
