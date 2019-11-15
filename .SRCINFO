@@ -1,6 +1,6 @@
 pkgbase = clr-power-tweaks
 	pkgdesc = Power Tweaks -- adjusts runtime kernel options for optimal power and performance
-	pkgver = 203
+	pkgver = 204
 	pkgrel = 1
 	url = https://github.com/clearlinux/clr-power-tweaks
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = clr-power-tweaks
 	license = GPL3
 	depends = glibc
 	options = !emptydirs
-	source = https://github.com/clearlinux/clr-power-tweaks/archive/203.tar.gz
-	sha256sums = 09ed9582c977a8fb455f8895de7d90d9655fc0b06b5ef90da840797f17cc587d
+	source = https://github.com/clearlinux/clr-power-tweaks/archive/204.tar.gz
+	sha256sums = db22ad18bee1e7e26669323590f5f68c1a2ea12cf3ef3a988e9e9aa8302ccfbd
 
 pkgname = clr-power-tweaks
 
