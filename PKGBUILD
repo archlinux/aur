@@ -1,8 +1,14 @@
-# Maintainer: oguzkagan <me@oguzkaganeren.com.tr>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Julio González <juliolokoo at gmail dot com>
+# Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
+# Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
+# Contributor: alegotta <algottardi at disroot dot org>
+# Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
 pkgver='7.3.11'
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
