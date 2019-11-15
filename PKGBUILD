@@ -1,7 +1,7 @@
 # Maintainer: James Pike <jpike@chilon.net>
 pkgname=naru
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
@@ -13,8 +13,6 @@ build() {
 }
 
 package() {
-    cargo install --root="$pkgdir" naru
-    mkdir "$pkgdir/usr"
-    mv "$pkgdir/bin" "$pkgdir/usr"
-    rm "$pkgdir/.crates.toml"
+    cargo install --version=$pkgver --root="$pkgdir/usr" naru
+    rm "$pkgdir/usr/.crates.toml"
 }
