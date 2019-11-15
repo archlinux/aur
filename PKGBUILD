@@ -3,14 +3,14 @@
 pkgname=papirus-folders-nordic
 _pkgname=papirus-folders
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Icons themes papirus color folder nordic"
 arch=('any')
 url="https://github.com/basigur/papirus-folders"
 license=("LGPL3")
 depends=('gtk-update-icon-cache' 'papirus-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/basigur/papirus-folders/archive/v${pkgver}.tar.gz")
-sha256sums=('4c9aacb45945a15a4f8c8135251d6fcbc12410c5caa5097d18557024adbf9cf1')
+sha256sums=('19d4a1b23c2ec91d3a6daee2e65260634b9a7d1abfdf7756c08c66239958cf8f')
 
 
 prepare() {
