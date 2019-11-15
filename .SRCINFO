@@ -1,6 +1,6 @@
 pkgbase = neovim-remote
 	pkgdesc = Support --remote and friends for Neovim
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/mhinz/neovim-remote
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = neovim-remote
 	makedepends = python-setuptools
 	depends = python-pynvim
 	depends = python-psutil
-	source = https://github.com/mhinz/neovim-remote/archive/v2.2.2.tar.gz
-	sha256sums = 3e7442f227812ad81bc9bbbced7fc6bd92a4e74670d4c44b4dca3ed0cb85d631
+	source = https://github.com/mhinz/neovim-remote/archive/v2.2.3.tar.gz
+	sha256sums = debe9f4e0eed41ce3a3d2b22935d92149caddc135496d3ee4342bfbf286e16ae
 
 pkgname = neovim-remote
 
