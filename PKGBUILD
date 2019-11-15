@@ -5,7 +5,7 @@ _pkgname=pylzma
 pkgbase=python-$_pkgname
 pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform independent python bindings for the LZMA compression library"
 url="https://www.joachim-bauch.de/projects/pylzma/"
 license=("LGPL2.1")
@@ -15,7 +15,7 @@ source=($_pkgname-$pkgver.tar.gz::https://github.com/fancycode/pylzma/archive/v$
         # testing data
         https://archive.org/download/stackexchange/ux.stackexchange.com.7z)
 sha256sums=('baefed4c84d147a507a606206478ff0894e04fa41aa3742381159cde44836fc3'
-            '4281ef7c7327c0b18e7f70dcc7eafb15cec674ca5579699964275f406d97520a')
+            '0539fae058dbf3443aae1646b4910ba8f0e10c8a7780c2bc75fdb93d1ac8d09c')
 noextract=(ux.stackexchange.com.7z)
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
-    PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-3.7" python tests/__init__.py
+    PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-3.8" python tests/__init__.py
 
     cd "$srcdir/$_pkgname-$pkgver-py2"
     PYTHONPATH="$PWD:$PWD/build/lib.linux-$CARCH-2.7" python2 tests/__init__.py
