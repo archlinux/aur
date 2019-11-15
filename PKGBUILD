@@ -41,7 +41,7 @@ package() {
 	mkdir --parents "${pkgdir}/usr/share/pixmaps"
 	mkdir --parents "${pkgdir}/usr/share/applications"
 
-	cp "${srcdir}/${Name}/build/${Name}" "${pkgdir}/usr/bin/${LowercaseName}"
+	mv "${srcdir}/${Name}/build/${Name}" "${pkgdir}/usr/bin/${LowercaseName}"
 	cp "${srcdir}/${Name}/resources/images/Icon1024.png" "${pkgdir}/usr/share/pixmaps/${LowercaseName}.png"
 	cp "${srcdir}/${LowercaseName}.desktop" "${pkgdir}/usr/share/applications/${LowercaseName}.desktop"
 
