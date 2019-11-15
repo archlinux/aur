@@ -109,34 +109,33 @@ foreach {fileName props} $manifest {
 }
 
 puts "Creating links..."
-
-foreach {fileName props} $manifest {
-    set type [lindex $props 0]
-
-    if {$type == "link"} {
-        set linkTarget [lindex $props 1]
-	set typeLink [lindex $props 0]
-	#file delete $destDir/$fileName
-	puts $linkTarget
-	if {[catch {file link -symbolic $destDir/$fileName $linkTarget} issue]} {
-		puts "There is a failure and it is ignored"
-   		puts "Reason for failure : $issue"
-	}
-	
+proc getRootFile { linkT mFest } {
+    foreach {fileName props} $mFest {
+    set linkTarget [lindex $props 1]
+    
+    if {string match *$linkT $fileName} {
+	    puts "Here We Goo"
     }
 }
-
+}
 foreach {fileName props} $manifest {
     set type [lindex $props 0]
 
     if {$type == "link"} {
         set linkTarget [lindex $props 1]
-	set typeLink [lindex $props 0]
-	#file delete $destDir/$fileName
-	puts $linkTarget
-	if {[catch {file link -symbolic $destDir/$fileName $linkTarget} issue]} {
-		
-	}
+	    set typeLink [lindex $props 2]
+	    #file delete $destDir/$fileName
+	    #puts $linkTarget
+        
+        #file link -symbolic $destDir/$fileName $linkTarget
+	    if {[catch {file link -symbolic $destDir/$fileName $linkTarget} issue]} {
+	    #	puts "There is a failure and it is ignored"
+       	#	puts "Reason for failure : $issue"
+            puts $linkTarget
+            puts "--"
+            puts $fileName
+            getRootFile $linkTarget $manifest
+	    }
 	
     }
 }
