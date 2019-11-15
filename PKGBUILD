@@ -3,11 +3,11 @@
 # This project does not have a traditional setup.py, so I am just installing
 # the source directly into the proper directory for Python 3.7 site packages.
 
-pkgbase=('python-mosspy')
+pkgbase='python-mosspy'
 pkgname=('python-mosspy')
 _module='mosspy'
 pkgver='1.0.7'
-pkgrel=1
+pkgrel=3
 pkgdesc='A Python client for Moss: A System for Detecting Software Similarity'
 url='https://github.com/soachishti/moss.py'
 depends=(

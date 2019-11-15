@@ -1,7 +1,7 @@
 pkgbase = python-mosspy
 	pkgdesc = A Python client for Moss: A System for Detecting Software Similarity
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/soachishti/moss.py
 	arch = any
 	license = MIT
