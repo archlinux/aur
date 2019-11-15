@@ -1,7 +1,7 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=mediahandling
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A library solely intended for the use in the project Chestnut by handling all media-file operations"
 arch=(x86_64)
 url="https://github.com/jonno85uk/mediahandling"
@@ -23,8 +23,7 @@ prepare() {
 
 build() {
     cd "$srcdir/mediahandling"
-    CORES=$(cat /proc/cpuinfo | grep -c "vendor_id")
-    make -j${CORES} -l${CORES} VERBOSE=1
+    make
 }
 
 
