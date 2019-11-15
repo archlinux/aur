@@ -1,11 +1,11 @@
-# Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=('rednukem-git')
 pkgver=r256.19f24f3
 pkgrel=1
-pkgdesc="Redneck Rampage and Duke Nukem 3D port based on EDuke32."
+pkgdesc='Redneck Rampage and Duke Nukem 3D port based on EDuke32'
 arch=('i686' 'x86_64')
-url="https://github.com/nukeykt/NRedneck/"
+url='https://github.com/nukeykt/NRedneck/'
 license=('GPL' 'custom: BUILD')
 depends=('sdl2_mixer' 'libgl' 'libvpx' 'flac' 'gtk2')
 makedepends=('mesa' 'glu')
@@ -38,3 +38,4 @@ package() {
   install -Dm644 ../../rednukem.png "$pkgdir"/usr/share/pixmaps/rednukem.png
   install -Dm644 ../../rednukem.desktop "$pkgdir"/usr/share/applications/rednukem.desktop
 }
+# vim:set ts=2 sw=2 et:
