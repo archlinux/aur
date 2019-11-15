@@ -12,7 +12,7 @@ license=('GPL2')
 conflicts=('bzrtp')
 provides=('bzrtp')
 depends=('libxml2' 'mbedtls' 'bctoolbox-git')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/bzrtp.git")
 sha256sums=('SKIP')
 
@@ -20,6 +20,7 @@ pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
 }
+
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \

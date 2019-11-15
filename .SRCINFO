@@ -6,6 +6,7 @@ pkgbase = bzrtp-git
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = git
 	depends = libxml2
 	depends = mbedtls
 	depends = bctoolbox-git
