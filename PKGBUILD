@@ -2,7 +2,7 @@
 
 pkgname=('python-pymemoize' 'python2-pymemoize')
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Python cache and memoizing module"
 arch=(any)
 url="https://github.com/mikeboers/PyMemoize"
