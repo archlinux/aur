@@ -1,0 +1,9 @@
+[Unit]
+Description=Socket activation for autopass
+
+[Socket]
+ListenFIFO=%t/autopass.fifo
+SocketMode=0600
+
+[Install]
+WantedBy=default.target
