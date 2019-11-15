@@ -1,44 +1,38 @@
 # Maintainer: Augusto Borges <aborges@iflysib.unlp.edu.ar>
 # Contributor: Emanuel Cura Costa <ecuracosta@gmail.com>
+# Contributor: Gerhard Burger <burger.ga@gmail.com>
+
 pkgname=morpheus-modeling
-pkgver=2.0
-pkgrel=2
-pkgdesc="It's a modeling and simulation environment for the study of multiscale and multicellular systems."
-arch=('i686' 'x86_64')
-url="https://imc.zih.tu-dresden.de/wiki/morpheus"
+pkgver=2.1.0
+pkgrel=1
+pkgdesc="A modeling and simulation environment for the study of multiscale and multicellular systems."
+arch=('x86_64')
+url="https://morpheus.gitlab.io"
 license=('BSD')
 depends=('zlib' 'libtiff' 'graphviz' 'qt4' 'sqlite' 'qtwebkit')
-makedepends=('gcc>=4.6' 'cmake>=1.8' 'libxslt' 'doxygen' 'git' 'qt5-svg')
-optdepends=("libxml2: "
-            "gnuplot: Used for generating graphics"
+makedepends=('gcc>=4.6' 'cmake>=2.8' 'libxslt' 'doxygen' 'git' 'boost' 'libxml2')
+optdepends=("gnuplot: Used for generating graphics"
             "ffmpeg: Used for generating movies" )
-source=("$pkgname-$pkgver::git+https://gitlab.com/morpheus.lab/morpheus.git")
+source=("$pkgname-$pkgver::git+https://gitlab.com/morpheus.lab/morpheus.git#tag=v$pkgver" "package.patch")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'd628593b5861820476f1bfa7acb677e3')
 
 build() {
-  if ! test -e "$pkgname-$pkgver"; then
-    mkdir "$pkgname-$pkgver";
-  fi
-  cd "$pkgname-$pkgver"
-  if ! test -e "build"; then
-    mkdir "build";
-  fi
-  cp "../../CMakeLists.txt" "3rdparty/CMakeLists.txt"
-  sed -e '3s/# //' CMakeLists.txt > temporal.txt
-  mv temporal.txt CMakeLists.txt
-  cd "morpheus/core"
-  sed -e '3s/# //' CMakeLists.txt > temporal.txt
-  mv temporal.txt CMakeLists.txt
+  mkdir -p "$pkgname-$pkgver/build"
+  cd "$pkgname-$pkgver/build"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+}
 
-  cd "../.."
-  cd "build"
-  cmake ..
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/package.patch"
+
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  cd "build"
-  pwd
-  make && make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd build
+  make DESTDIR="$pkgdir" install
 }
