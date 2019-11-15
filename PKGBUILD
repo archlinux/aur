@@ -1,7 +1,7 @@
 # Maintainer: Mikaela Szekely <mikaela.szekely@qyriad.me>
 pkgname=gr-fosphor
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc='GNU Radio block for RTSA-like spectrum visualization; repackaged from Ubuntu'
 arch=('x86_64')
 url="http://sdr.osmocom.org/trac/wiki/fosphor"
@@ -28,7 +28,6 @@ prepare()
 	_soname_patch="${srcdir}/debian/patches/debian-set-soname"
 
 	cd "${srcdir}/${_gr_name}"
-	echo cd "${srcdir}/${_gr_name}"
 	patch -p1 < "${_patch_001}"
 	patch -p1 < "${_soname_patch}"
 
@@ -39,10 +38,9 @@ prepare()
 
 build()
 {
+	_gr_name=$(tar --exclude='*/*' -tf "${srcdir}/gr-fosphor.tar.xz" | tr -d '\n')
 	cd "${srcdir}/${_gr_name}"
-	echo cd "${srcdir}/${_gr_name}"
 	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}" -B build
-	pwd
 	make -C build
 }
 
