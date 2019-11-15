@@ -1,7 +1,7 @@
 pkgbase = one-more-cheese
 	pkgdesc = Arcade-puzzle game
 	pkgver = 0.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://nwg.pl/cheese
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = one-more-cheese
 	source = http://nwg.pl/mice/download/one-more-cheese.desktop
 	source = http://nwg.pl/mice/download/one-more-cheese.png
 	md5sums = b970e85495df3ede018aabc23b2d5754
-	md5sums = 20dd11dadba799472f6fefbf105f01de
+	md5sums = 0696e9c0993945f42815ba941679e1ea
 	md5sums = 8c44865338673c7a9ff646d23af1b172
 	md5sums = 15b45413c215260baf7c462cbbdde183
 
