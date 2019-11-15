@@ -10,7 +10,7 @@ pkgbase = ytmdl
 	depends = python>=3.6
 	depends = ffmpeg
 	depends = youtube-dl
-	source = https://github.com/deepjyoti30/ytmdl/archive/2019.11.15.tar.gz
+	source = https://github.com/deepjyoti30/ytmdl/archive/2019.11.16.tar.gz
 	md5sums = SKIP
 
 pkgname = ytmdl
