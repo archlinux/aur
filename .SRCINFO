@@ -5,9 +5,11 @@ pkgbase = upcheck
 	url = https://gitlab.com/edu4rdshl/upcheck
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	makedepends = cargo
 	depends = pacman-contrib
-	source = https://gitlab.com/edu4rdshl/upcheck/-/archive/0.1.3/upcheck-0.1.3.tar.gz
-	sha512sums = 38e14ef4910c9afb2858d70a1663dd5fed8f13256240a6d6761e881d943f6dd95bbb46830f568bb60fe2dba822ec3a82741fa058475acc9534746ec0cf149957
+	source = git+https://github.com/Edu4rdSHL/upcheck.git
+	sha512sums = SKIP
 
 pkgname = upcheck
 

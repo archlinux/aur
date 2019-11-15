@@ -8,13 +8,20 @@ arch=('x86_64')
 url='https://gitlab.com/edu4rdshl/upcheck'
 license=('GPL3')
 depends=('pacman-contrib')
-source=("https://gitlab.com/edu4rdshl/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('38e14ef4910c9afb2858d70a1663dd5fed8f13256240a6d6761e881d943f6dd95bbb46830f568bb60fe2dba822ec3a82741fa058475acc9534746ec0cf149957')
+makedepends=('git' 'cargo')
+source=("git+https://github.com/Edu4rdSHL/$pkgname.git")
+sha512sums=('SKIP')
+
+build() {
+  cd $pkgname
+
+  cargo build --release --locked
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -Dm 755 bin/"${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm 755 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
-  install -Dm 644 "${pkgname}".service "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+  install -Dm 755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 README.md "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm 644 "$pkgname.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
 }
