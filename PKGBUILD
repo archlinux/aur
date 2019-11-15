@@ -1,8 +1,13 @@
-# Maintainer: oguzkagan <me@oguzkaganeren.com.tr
-
+# Maintainer: Yunhui Fu (yhfudev@gmail.com)
+# Contributor: Julien Sopena (jsopena.archlinux@free.fr)
+# Contributor: Oleg Smirnov (oleg.smirnov@gmail.com)
+# Contributor: angrycore (angrycore@gmail.com)
+# Contributor: Christophe Guéret (christophe.gueret@gmail.com)
+# Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
+# 
 pkgname="omnetpp"
 pkgver=5.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Component-based simulation package designed for modeling communication networks"
 url="http://www.omnetpp.org"
 license=("Academic Public License")
