@@ -1,0 +1,14 @@
+pkgbase = python2-pmw
+	pkgdesc = A toolkit for high-level compound widgets in Python using the Tkinter module
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = http://pmw.sourceforge.net/
+	arch = any
+	license = MIT
+	depends = python2
+	depends = tk
+	source = python2-pmw-2.0.1.tar.gz::https://pypi.python.org/packages/source/P/Pmw/Pmw-2.0.1.tar.gz
+	md5sums = 8080b0fabc731ff236f97e88e13b3938
+
+pkgname = python2-pmw
+
