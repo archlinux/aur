@@ -84,7 +84,7 @@ foreach {fileName props} $manifest {
         set index 1
 
         file mkdir [file dirname $destDir/$fileName]
-        file copy -force $dataMount/$fileName $destDir/$fileName
+       file copy -force $dataMount/$fileName $destDir/$fileName
 
         if {$nparts > 0} {
             set fp [open $destDir/$fileName a]
@@ -98,7 +98,7 @@ foreach {fileName props} $manifest {
                 close $fp2
                 incr index
             }
-            close $fp
+           close $fp
         }
 
         file attributes $destDir/$fileName -permissions $mode
@@ -109,16 +109,8 @@ foreach {fileName props} $manifest {
 }
 
 puts "Creating links..."
-proc getRootFile { linkT mFest } {
-    foreach {fileName props} $mFest {
-    set linkTarget [lindex $props 1]
-    
-    if {string match *$linkT $fileName} {
-	    puts "Here We Goo"
-    }
-}
-}
-foreach {fileName props} $manifest {
+for {set i 0} {$i < 5} {incr i} {
+    foreach {fileName props} $manifest {
     set type [lindex $props 0]
 
     if {$type == "link"} {
@@ -126,17 +118,18 @@ foreach {fileName props} $manifest {
 	    set typeLink [lindex $props 2]
 	    #file delete $destDir/$fileName
 	    #puts $linkTarget
-        
-        #file link -symbolic $destDir/$fileName $linkTarget
+            #file link -symbolic $destDir/$fileName $linkTarget
 	    if {[catch {file link -symbolic $destDir/$fileName $linkTarget} issue]} {
+		#incr linkErrorCount
 	    #	puts "There is a failure and it is ignored"
-       	#	puts "Reason for failure : $issue"
-            puts $linkTarget
-            puts "--"
-            puts $fileName
-            getRootFile $linkTarget $manifest
+            #puts "Reason for failure : $issue"
+            #puts $linkTarget
+            #puts "--"
+            #puts $manifest
+            #getRootFile $linkTarget $manifest
 	    }
 	
     }
+}
 }
 puts "Done"
