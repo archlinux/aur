@@ -1,6 +1,6 @@
 pkgbase = wob
 	pkgdesc = A lightweight overlay volume/backlight/progress/anything bar for Wayland
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/francma/wob
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = wob
 	makedepends = wayland-protocols
 	provides = wob
 	conflicts = wob
-	source = git+https://github.com/francma/wob#tag=0.2
+	source = git+https://github.com/francma/wob#tag=0.3
 	sha512sums = SKIP
 
 pkgname = wob
