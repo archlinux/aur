@@ -2,14 +2,14 @@
 
 pkgname=patroneo
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use pattern based midi sequencer"
 arch=('x86_64')
 url="https://www.laborejo.org/patroneo.git/"
 license=('GPL3')
 groups=('pro-audio')
-depends=('glib2' 'glibc' 'hicolor-icon-theme' 'libjack.so' 'libsndfile'
-'libusb-1.0.so' 'libuuid.so' 'python' 'python-pyqt5' 'ttf-dejavu')
+depends=('glib2' 'glibc' 'hicolor-icon-theme' 'libjack.so' 'libncursesw.so'
+'libsndfile' 'libuuid.so' 'python' 'python-pyqt5' 'ttf-dejavu')
 makedepends=('nuitka' 'chrpath')
 optdepends=('non-session-manager: Session management')
 source=("https://www.laborejo.org/downloads/${pkgname}-${pkgver}.tar.gz"{,.sig})
