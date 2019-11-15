@@ -8,7 +8,7 @@
 
 pkgname=python37
 pkgver=3.7.5
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -81,27 +81,6 @@ build() {
   while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
 
   LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
-}
-
-check() {
-  # test_gdb is expected to fail with LTO
-  # test_idle, test_tk, test_ttk_guionly segfaults since 3.6.5
-
-  # https://bugs.python.org/issue34022
-  # test_cmd_line_script, test_compileall, test_importlib,
-  # test_multiprocessing_main_handling, test_py_compile, test_runpy
-
-  cd Python-${pkgver}
-
-  # Obtain next free server number for xvfb-run; this even works in a chroot environment.
-  export servernum=99
-  while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
-
-  LD_LIBRARY_PATH="${srcdir}/Python-${pkgver}":${LD_LIBRARY_PATH} \
-  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" \
-    "${srcdir}/Python-${pkgver}/python" -m test.regrtest -v -uall -x test_gdb -x test_idle -x test_tk -x test_ttk_guionly \
-    -x test_cmd_line_script -x test_compileall -x test_importlib -x test_multiprocessing_main_handling -x test_py_compile -x test_runpy \
-    -x test_httplib
 }
 
 package() {
