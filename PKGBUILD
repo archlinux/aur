@@ -3,7 +3,7 @@
 _name=TakeTheTime
 pkgname=python-takethetime
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A time-taking library for Python."
 arch=(any)
 url="https://github.com/ErikBjare/TakeTheTime"

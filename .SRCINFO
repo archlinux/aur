@@ -1,7 +1,7 @@
 pkgbase = python-takethetime
 	pkgdesc = A time-taking library for Python.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ErikBjare/TakeTheTime
 	arch = any
 	license = custom:
@@ -11,4 +11,3 @@ pkgbase = python-takethetime
 	md5sums = ef7414c5776087754abfe073cf6e6430
 
 pkgname = python-takethetime
-
