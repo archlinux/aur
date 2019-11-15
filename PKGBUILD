@@ -2,7 +2,7 @@
 # Contributor: 
 pkgname=python-gpflow
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Gaussian process methods in tensorflow"
 url="https://github.com/GPflow/GPflow"
 arch=('any')
