@@ -1,10 +1,10 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('statcode')
+pkgbase='statcode'
 pkgname=('statcode')
 _module='statcode'
 pkgver='2.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Man pages for HTTP status codes'
 url='https://github.com/shobrook/statcode'
 depends=(
