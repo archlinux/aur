@@ -1,6 +1,6 @@
 pkgbase = aw-server
 	pkgdesc = Log what you do on your computer. Simple, extensible, no third parties.
-	pkgver = 0.8.1
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/ActivityWatch/activitywatch
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = aw-server
 	depends = python-pyrsistent
 	depends = python-pytz
 	depends = python-werkzeug
-	source = git+https://github.com/ActivityWatch/aw-server.git#commit=9128018
+	source = git+https://github.com/ActivityWatch/aw-server.git#commit=f43ea51
 	md5sums = SKIP
 
 pkgname = aw-server
