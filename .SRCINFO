@@ -3,7 +3,7 @@
 pkgbase = lifx-cli-git
 	pkgdesc = Command line interface for LIFX light bulbs written in Python 3
 	pkgver = v1.2.r0.gdeabe9c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Rawa/lifx-cli
 	arch = any
 	license = MIT
