@@ -1,7 +1,7 @@
 pkgbase = python-relativetimebuilder
 	pkgdesc = A library for using the dateutil relativedeltas for calendar precision with aniso8601.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/nielsenb/relativetimebuilder
 	arch = any
 	license = BSD
@@ -13,4 +13,3 @@ pkgbase = python-relativetimebuilder
 	md5sums = c85d1d2aaaedbf3fb8d0d35cd4baf66d
 
 pkgname = python-relativetimebuilder
-
