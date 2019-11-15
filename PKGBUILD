@@ -1,11 +1,11 @@
-# Maintainer: Dimitris Kiziridis <ragouel@outlook.com>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=('ex-impression-icon-theme')
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="This icon theme got inspired on Mac OS icons and mimics those for the Linux OS."
+pkgdesc='This icon theme got inspired on Mac OS icons and mimics those for the Linux OS'
 arch=('any')
-url="https://github.com/balasakthi88/EX-Impression"
+url='https://github.com/balasakthi88/EX-Impression'
 license=('GPL v3')
 makedepends=('git')
 source=("git+$url")
@@ -15,15 +15,16 @@ options=('!strip')
 md5sums=('SKIP')
 
 build() {
-	cd "$srcdir"/EX-Impression
- 	rm *.md
+  cd "$srcdir"/EX-Impression
+  rm *.md
   rm LICENSE
   rm categories
 }
 
 package() {
-	msg2 "Installing ${pkgname%-*}...";
+  msg2 "Installing ${pkgname%-*}..."
 	cd "$srcdir"
-	install -dm 755 "${pkgdir}"/usr/share/icons/;
-	cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/;
+	install -dm 755 "${pkgdir}"/usr/share/icons/
+	cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/
 }
+# vim:set ts=2 sw=2 et:
