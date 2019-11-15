@@ -1,7 +1,7 @@
 pkgbase = msi-perkeyrgb
 	pkgdesc = Configuration tool for SteelSeries per-key RGB keyboards on MSI laptops
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Askannz/msi-perkeyrgb
 	arch = any
 	license = MIT
