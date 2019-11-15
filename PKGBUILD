@@ -1,8 +1,8 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname='python-apptools'
-pkgver=4.4.0
-pkgrel=6
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Application tools"
 arch=('any')
 url="https://github.com/enthought/apptools"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 optdepends=('python-configobj: for apptools.preferences package'
             'python-traitsui: for user interface to apptools')
 source=("apptools-$pkgver.tar.gz::https://github.com/enthought/apptools/archive/${pkgver}.tar.gz")
-sha256sums=('00c4e6cb8c8cd59ff0464fe59de356aa6e8a2bd5a106f5841db36dab7f782a7e')
+sha256sums=('1bf5931d6e8fa79f94d0de20a5cab1eeedc7775fe599628d14aa51d31004e3ee')
 
 build() {
   cd "$srcdir"/apptools-$pkgver
