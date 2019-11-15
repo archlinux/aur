@@ -4,7 +4,7 @@
 pkgname="samrewritten-git"
 _pkgname="SamRewritten"
 pkgver=r119.7ff28cf
-pkgrel=1
+pkgrel=2
 pkgdesc="A Steam Achievement Manager For Linux."
 arch=("any")
 url="https://github.com/PaulCombal/SamRewritten"
