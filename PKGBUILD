@@ -21,7 +21,7 @@ prepare() {
 #  done
   go get github.com/bazelbuild/buildtools/buildifier
   # The commit id of $pkgver
-  echo "7a12f379e47a9f7cf7211c727fe8fc70b6a0a9ab" > SOURCE_VERSION
+  echo "44f8c365a1f1798f0af776f6aa64279dc68f5666" > SOURCE_VERSION
 }
 
 build() {
