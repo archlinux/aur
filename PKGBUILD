@@ -1,14 +1,14 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=netkit
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The poor man's system to experiment computer networking"
 arch=(any)
 url="http://wiki.netkit.org/index.php/Download_Official"
 license=('unknown')
 groups=()
-depends=('xterm' 'lsof')
+depends=('xterm' 'lsof' 'lib32-glibc')
 makedepends=()
 checkdepends=()
 optdepends=()

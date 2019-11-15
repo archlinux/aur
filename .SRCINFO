@@ -1,13 +1,14 @@
 pkgbase = netkit
 	pkgdesc = The poor man's system to experiment computer networking
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.netkit.org/index.php/Download_Official
 	install = netkit.install
 	arch = any
 	license = unknown
 	depends = xterm
 	depends = lsof
+	depends = lib32-glibc
 	noextract = netkit-filesystem-i386-F5.2.tar.bz2
 	noextract = netkit-2.8.tar.bz2
 	noextract = netkit-kernel-i386-K2.8.tar.bz2
