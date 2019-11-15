@@ -10,7 +10,6 @@ url="https://github.com/RDFLib/rdflib/pull/649"
 arch=('any')
 license=('BSD')
 depends=('python')
-conflicts=("")
 provides=("python-neurdflib")
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/fb/ab/a2b0b79bd532b93acc8012fc032c0b56cbbc2fdba02816d82fa8c6fccf2e/${_pkgname}-${pkgver}.tar.gz")
