@@ -1,11 +1,12 @@
 # Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
-_version=5.1.1
+_version=5.1.2
+
 pkgname=swift-bin
-pkgver=${_version//-/.}
-pkgrel=3
-pkgdesc="Official binary builds of the Swift programming language."
+pkgver=5.1.2
+pkgrel=1
+pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
@@ -15,12 +16,14 @@ conflicts=('swift-language-git')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
+_urlbase='https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s'
+_fullver="$pkgver-0.1.20191107git71def56.fc32.x86_64"
 source=(
-  'https://download.fedoraproject.org/pub/fedora/linux/updates/31/Everything/x86_64/Packages/s/swift-lang-5.1.1-0.2.20191004git4242edd.fc31.x86_64.rpm'
-  'https://download.fedoraproject.org/pub/fedora/linux/updates/31/Everything/x86_64/Packages/s/swift-lang-runtime-5.1.1-0.2.20191004git4242edd.fc31.x86_64.rpm'
+  "$_urlbase/swift-lang-$_fullver.rpm"
+  "$_urlbase/swift-lang-runtime-$_fullver.rpm"
 )
-sha256sums=('95ac1ea38c20d68497b9c1af352400a9f39bcc7a631aff2be1ec2e917abdc4a3'
-            'd5b24102df9c551d5719a1aad17685179f838c4f8fb0409ede42871978a8b497')
+sha256sums=('5a1ee60d3d9bd54373098905d058d0699b19e9e402392a24f9758c6bae6ccd15'
+            'e72848d74edd77a8d6ca2bf9c22bbd4ae552662933eb8bdfd6141d2fab9e54d0')
 
 package() {
   cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
