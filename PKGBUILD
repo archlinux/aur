@@ -1,11 +1,11 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
-pkgbase=('rst2beamer3k')
+pkgbase='rst2beamer3k'
 pkgname=('rst2beamer3k')
 _module='rst2beamer3k'
 pkgver='0.9.1'
-pkgrel=2
-pkgdesc='This is an unofficial fork rst2beamer that runs on both Python 2 and 3.'
+pkgrel=3
+pkgdesc='This is an unofficial fork of rst2beamer that runs on both Python 2 and 3.'
 url='https://github.com/myint/rst2beamer'
 depends=(
     'python'
