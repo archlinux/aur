@@ -1,0 +1,16 @@
+pkgbase = travis-conditions-bin
+	pkgdesc = Boolean language for conditional builds, stages, jobs
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/travis-ci/travis-conditions
+	arch = x86_64
+	license = MIT
+	provides = travis-conditions
+	conflicts = travis-conditions
+	source = LICENSE::https://raw.githubusercontent.com/travis-ci/travis-conditions/master/LICENSE
+	source = travis-conditions-1.0.9.zip::https://github.com/travis-ci/travis-conditions/archive/v1.0.9.zip
+	sha256sums = 17131f3b252bad007696ac5ae00aa17be922587bf5abc5e95fc53d716155aa7f
+	sha256sums = 0132c558cf9b9f85ae98a7c1f606e020f271f550ce2630e2b07080ed164c0dd7
+
+pkgname = travis-conditions-bin
+
