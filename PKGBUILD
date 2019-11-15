@@ -1,6 +1,6 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=halide-git
-pkgver=r19253.ee9a583df
+pkgver=r19445.6156f3259
 pkgrel=1
 pkgdesc="a language for fast, portable data-parallel computation"
 arch=(x86_64)
@@ -34,9 +34,7 @@ build() {
     cd "$srcdir/Halide/build"
     cmake   -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=False -DWITH_DOCS=False -DWITH_TUTORIALS=False \
             -DWARNINGS_AS_ERRORS=False -DWITH_APPS=False -DBUILD_AOT_TUTORIAL=False -DWITH_UTILS=False ..
-    CORES=$(cat /proc/cpuinfo | grep -c "vendor_id")                
-    make clean
-    make -j${CORES} -l${CORES}
+    make
 }
 
 check() {
