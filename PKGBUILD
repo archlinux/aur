@@ -2,7 +2,7 @@
 
 pkgname=travis-conditions-bin
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Boolean language for conditional builds, stages, jobs"
 url="https://github.com/travis-ci/travis-conditions"
 
@@ -27,7 +27,7 @@ package() {
   echo "installing license"
   install -D -m 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   echo "installing travis-conditions"
-  install -D -m 755 "${srcdir}/travis-conditions-${pkgver}/bin/travis-conditions" "${pkgdir}/usr/bin/${pkgname%-cli-bin}"
+  install -D -m 755 "${srcdir}/travis-conditions-${pkgver}/bin/travis-conditions" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
 
 # vim:set ts=2 sw=2 et:
