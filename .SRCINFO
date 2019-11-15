@@ -15,6 +15,7 @@ pkgbase = exfalso
 	optdepends = kakasi: for "Kana/Kanji Simple Inverter" plugin
 	optdepends = python-dbus: for "Browse Folders" plugin
 	optdepends = python-musicbrainzngs: for "MusicBrainz Lookup" plugin
+	conflicts = quodlibet
 	source = https://github.com/quodlibet/quodlibet/releases/download/release-4.2.1/quodlibet-4.2.1.tar.gz
 	source = https://github.com/quodlibet/quodlibet/releases/download/release-4.2.1/quodlibet-4.2.1.tar.gz.sig
 	validpgpkeys = 0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC

@@ -6,20 +6,19 @@ pkgname=exfalso
 pkgver=4.2.1
 pkgrel=1
 pkgdesc="GTK+ audio tag editor"
-arch=('any')
+arch=(any)
 url="https://quodlibet.readthedocs.io/"
-license=('GPL2')
-depends=('gtk3' 'python-mutagen' 'python-gobject' 'python-cairo' 'python-feedparser')
+license=(GPL2)
+depends=(gtk3 python-mutagen python-gobject python-cairo python-feedparser)
 optdepends=('gst-plugins-bad: for "Acoustic Fingerprint" plugins'
             'gst-plugins-good: for "Replay Gain" plugin'
             'kakasi: for "Kana/Kanji Simple Inverter" plugin'
             'python-dbus: for "Browse Folders" plugin'
             'python-musicbrainzngs: for "MusicBrainz Lookup" plugin')
-conflicts=("${pkgbase}")
+conflicts=("${_pkgbase}")
 source=("https://github.com/${_pkgbase}/${_pkgbase}/releases/download/release-${pkgver}/${_pkgbase}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('870a11e685213828733222dcb3d314a90d3b7bdf4757af60954b680c49de392c'
-            'SKIP')
-validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
+sha256sums=(870a11e685213828733222dcb3d314a90d3b7bdf4757af60954b680c49de392c SKIP)
+validpgpkeys=(0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC) # Christoph Reiter
 
 build() {
     cd ${_pkgbase}-${pkgver}
@@ -27,7 +26,7 @@ build() {
     python setup.py build
 }
 
-package_exfalso() {
+package() {
     cd ${_pkgbase}-${pkgver}
 
     python setup.py install --root="${pkgdir}" --skip-build --optimize=1
@@ -76,5 +75,3 @@ package_exfalso() {
             -o -name "refresh.*" \
         \) -delete
 }
-
-# vim:set tabstop=4 softtabstop=4 shiftwidth=4 expandtab:
