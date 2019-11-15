@@ -1,33 +1,33 @@
 pkgbase = howdy
 	pkgdesc = Windows Hello for Linux
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/boltgolt/howdy
 	arch = x86_64
 	license = MIT
 	makedepends = python2-sphinx
-	makedepends = git
 	makedepends = cmake
 	makedepends = pkgfile
-	makedepends = python-pip
 	depends = opencv
 	depends = hdf5
+	depends = pam-python
 	depends = python2
 	depends = python3
 	depends = python-pillow
+	depends = python-dlib
+	depends = python-face_recognition
 	depends = python-face_recognition_models
 	depends = python-click
 	depends = python-numpy
 	backup = usr/lib/security/howdy/config.ini
-	source = https://github.com/boltgolt/howdy/archive/v2.5.0.tar.gz
-	source = https://downloads.sourceforge.net/project/pam-python/pam-python-1.0.6-1/pam-python-1.0.6.tar.gz
-	source = https://sourceforge.net/p/pam-python/tickets/_discuss/thread/5dc8cfd5/5839/attachment/pam-python-1.0.6-fedora.patch
-	source = https://sourceforge.net/p/pam-python/tickets/_discuss/thread/5dc8cfd5/5839/attachment/pam-python-1.0.6-gcc8.patch
-	sha256sums = a42c278f05866a6a616e8f5dd8349e35769063a229c236e680e566c5a6580334
-	sha256sums = 0ef4dda35da14088afb1640266415730a6e0274bea934917beb5aca90318f853
-	sha256sums = acb9d1b5cf7cad73d5524334b7954431bb9b90f960980378c538907e468c34b5
-	sha256sums = 02dd9a4d8ec921ff9a2408183f290f08102e3f9e0151786ae7220a4d550bfe24
+	source = https://github.com/boltgolt/howdy/archive/v2.5.1.tar.gz
+	source = https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2
+	source = https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2
+	source = https://github.com/davisking/dlib-models/raw/master/shape_predictor_5_face_landmarks.dat.bz2
+	sha256sums = 596c8d947422e6d419746784f900a4af931a6fc647e1324913c6ce66a146bf82
+	sha256sums = abb1f61041e434465855ce81c2bd546e830d28bcbed8d27ffbe5bb408b11553a
+	sha256sums = db9e9e40f092c118d5eb3e643935b216838170793559515541c56a2b50d9fc84
+	sha256sums = 6e787bbebf5c9efdb793f6cd1f023230c4413306605f24f299f12869f95aa472
 
 pkgname = howdy
-
 

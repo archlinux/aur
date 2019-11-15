@@ -1,7 +1,8 @@
 # Maintainer: boltgolt <boltgolt@gmail.com>
 # Maintainer: Kelley McChesney <kelley@kelleymcchesney.us>
+
 pkgname=howdy
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Windows Hello for Linux"
 arch=('x86_64')
@@ -10,75 +11,44 @@ license=('MIT')
 depends=(
 	'opencv'
 	'hdf5'
+	'pam-python'
 	'python2'
 	'python3'
 	'python-pillow'
+	'python-dlib'
+	'python-face_recognition'
 	'python-face_recognition_models'
 	'python-click'
 	'python-numpy'
 )
 makedepends=(
 	'python2-sphinx'
-	'git'
 	'cmake'
 	'pkgfile'
-	'python-pip'
 )
 backup=('usr/lib/security/howdy/config.ini')
-source=("https://github.com/boltgolt/howdy/archive/v2.5.0.tar.gz"
-        "https://downloads.sourceforge.net/project/pam-python/pam-python-1.0.6-1/pam-python-1.0.6.tar.gz"
-	"https://sourceforge.net/p/pam-python/tickets/_discuss/thread/5dc8cfd5/5839/attachment/pam-python-1.0.6-fedora.patch"
-	"https://sourceforge.net/p/pam-python/tickets/_discuss/thread/5dc8cfd5/5839/attachment/pam-python-1.0.6-gcc8.patch")
-sha256sums=('a42c278f05866a6a616e8f5dd8349e35769063a229c236e680e566c5a6580334'
-	    '0ef4dda35da14088afb1640266415730a6e0274bea934917beb5aca90318f853'
-	    'acb9d1b5cf7cad73d5524334b7954431bb9b90f960980378c538907e468c34b5'
-	    '02dd9a4d8ec921ff9a2408183f290f08102e3f9e0151786ae7220a4d550bfe24')
-prepare() {
-	# Preparing dlib with GPU here
-	git clone --depth 1 https://github.com/davisking/dlib.git dlib_clone
+source=(
+	"https://github.com/boltgolt/howdy/archive/v${pkgver}.tar.gz"
+	"https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2"
+	"https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2"
+	"https://github.com/davisking/dlib-models/raw/master/shape_predictor_5_face_landmarks.dat.bz2"
+)
+sha256sums=(
+	'596c8d947422e6d419746784f900a4af931a6fc647e1324913c6ce66a146bf82'
+	'abb1f61041e434465855ce81c2bd546e830d28bcbed8d27ffbe5bb408b11553a'
+	'db9e9e40f092c118d5eb3e643935b216838170793559515541c56a2b50d9fc84'
+	'6e787bbebf5c9efdb793f6cd1f023230c4413306605f24f299f12869f95aa472'
+)
 
-	# Preparing pam-python to be installed
-	cd pam-python-1.0.6
-	sed -i'' 's|#!/usr/bin/python -W default|#!/usr/bin/python2 -W default|g' src/setup.py
-	sed -i'' 's|#!/usr/bin/python -W default|#!/usr/bin/python2 -W default|g' src/test.py
-	sed -i'' 's|LIBDIR ?= /lib/security|LIBDIR ?= /usr/lib/security|g' src/Makefile
-	sed -i'' 's|sphinx-build|sphinx-build2|g' doc/Makefile
-	patch -p1 < ../pam-python-1.0.6-fedora.patch
-	patch -p1 < ../pam-python-1.0.6-gcc8.patch
-
-	# Doing some fixes for pam-python so that it can compile
-	sudo pkgfile -u
-	sudo pkgfile /usr/include/sys/cdefs.h core/glibc
-	cd ..
-}
-build() {
-	# Building pam-python
-	cd pam-python-1.0.6
-	PREFIX=/usr make
-	cd ..
-
-	# Building dlib with GPU
-	cd dlib_clone
-	python setup.py build
-}
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps face_recognition
-
-	# Installing dlib with GPU
-	cd dlib_clone
-	python3 setup.py install --yes USE_AVX_INSTRUCTIONS --no DLIB_USE_CUDA --root="$pkgdir/" --optimize=1 --skip-build
-	cd ..
-
-	# Installing pam-python
-	cd pam-python-1.0.6
-	PREFIX=/usr make DESTDIR="$pkgdir/" install
-	cd ..
-
 	# Installing the proper license files and the rest of howdy
 	cd howdy-$pkgver
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	mkdir -p "$pkgdir/usr/lib/security/howdy"
 	cp -r src/* "$pkgdir/usr/lib/security/howdy"
+	cp "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "$pkgdir/usr/lib/security/howdy/dlib-data/"
+	cp "${srcdir}/mmod_human_face_detector.dat" "$pkgdir/usr/lib/security/howdy/dlib-data/"
+	cp "${srcdir}/shape_predictor_5_face_landmarks.dat" "$pkgdir/usr/lib/security/howdy/dlib-data/"
 	chmod 600 -R "$pkgdir/usr/lib/security/howdy"
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /lib/security/howdy/cli.py "$pkgdir/usr/bin/howdy"
