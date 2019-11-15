@@ -1,7 +1,7 @@
 pkgbase = osrm-backend
 	pkgdesc = High performance routing engine written in C++14 designed to run on OpenStreetMap data.
 	pkgver = 5.22.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://map.project-osrm.org/
 	arch = x86_64
 	license = BSD
@@ -13,8 +13,10 @@ pkgbase = osrm-backend
 	depends = intel-tbb
 	source = osrm-backend-5.22.0.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v5.22.0.tar.gz
 	source = fix-boost-fs.patch
+	source = fix-guidance-so.patch
 	sha256sums = df0987a04bcf65d74f9c4e18f34a01982bf3bb97aa47f9d86cfb8b35f17a6a55
 	sha256sums = 2c353e7e942df92091cf138f9c47135a74dc6f70bcad6897b118b312ca226ad6
+	sha256sums = 5866c256dcfd63806d696483e2b9ca9b74edb969697ba4ac3025948c892c1407
 
 pkgname = osrm-backend
 

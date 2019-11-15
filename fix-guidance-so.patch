@@ -1,0 +1,24 @@
+commit 46ab931c648f89f8a92f9b8f389944934eb184c0
+Author: Julien Desgats <julien@desgats.fr>
+Date:   Fri Nov 15 10:19:04 2019 +0000
+
+    fix: install the osrm_guidance library
+    
+    In the case of a shared object compilation, the resulting binaries need
+    that library. It was not installed along the others, leading to failures
+    when running osrm-extract.
+    
+    Fixes #5603
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 27abf3008..0b1aaf3ab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -778,6 +778,7 @@ install(TARGETS osrm_customize DESTINATION lib)
+ install(TARGETS osrm_update DESTINATION lib)
+ install(TARGETS osrm_contract DESTINATION lib)
+ install(TARGETS osrm_store DESTINATION lib)
++install(TARGETS osrm_guidance DESTINATION lib)
+ 
+ 
+ # Install profiles and support library to /usr/local/share/osrm/profiles by default
