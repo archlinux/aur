@@ -1,7 +1,7 @@
 pkgbase = python-nbval
 	pkgdesc = A py.test plugin to validate Jupyter notebooks
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/computationalmodelling/nbval
 	arch = any
 	license = BSD

@@ -3,7 +3,7 @@
 pkgname=python-nbval
 _pkgname=nbval
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A py.test plugin to validate Jupyter notebooks'
 arch=(any)
 url='https://github.com/computationalmodelling/nbval'
@@ -24,7 +24,8 @@ check() {
   cd $_pkgname-$pkgver
   # needed for the pytest plugin entry point
   python setup.py install --root="$srcdir"/tmp_install
-  PYTHONPATH="$srcdir"/tmp_install/usr/lib/python3.7/site-packages doit test
+  site_packages_path=$(python -c 'import site; print(site.getsitepackages()[0])')
+  PYTHONPATH="$srcdir"/tmp_install$site_packages_path doit test
 }
 
 package() {
