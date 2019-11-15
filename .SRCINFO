@@ -1,0 +1,14 @@
+pkgbase = python2-isodate
+	pkgdesc = An ISO 8601 date/time/duration parser and formatter
+	pkgver = 0.6.0
+	pkgrel = 3
+	url = https://github.com/gweis/isodate/
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/i/isodate/isodate-0.6.0.tar.gz
+	sha1sums = 2c69e08c9894a9cd96c627146463260f5731df62
+
+pkgname = python2-isodate
+	depends = python2-six
+
