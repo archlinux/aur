@@ -3,7 +3,7 @@
 
 pkgname=gdrive
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Drive CLI Client"
 arch=('x86_64' 'i686')
 url="https://github.com/gdrive-org/gdrive"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('git' 'go' 'godep')
 options=('!strip' '!emptydirs')
 #source=(https://github.com/prasmussen/$pkgname/archive/$pkgver.tar.gz)
-source=($pkgname-$pkgver::git://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269)
+source=($pkgname-$pkgver::git+https://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269)
 sha256sums=('SKIP')
 
 _gourl=github.com/prasmussen/gdrive
@@ -21,7 +21,7 @@ prepare() {
   mkdir -p "$(dirname $_gobuild)"
   cp -a "$srcdir/$pkgname-$pkgver" $_gobuild
 
-  cd $pkgname-$pkgver
+  cd $_gobuild
   GOPATH="$srcdir/build" godep restore
 }
 

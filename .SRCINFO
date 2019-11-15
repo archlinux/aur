@@ -1,7 +1,7 @@
 pkgbase = gdrive
 	pkgdesc = Google Drive CLI Client
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gdrive-org/gdrive
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = gdrive
 	makedepends = godep
 	options = !strip
 	options = !emptydirs
-	source = gdrive-2.1.0::git://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269
+	source = gdrive-2.1.0::git+https://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269
 	sha256sums = SKIP
 
 pkgname = gdrive
