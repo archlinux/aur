@@ -2,7 +2,7 @@
 
 pkgname=autopass.cr
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
@@ -13,9 +13,13 @@ makedepends=(crystal shards rust git python)
 source=(
   "https://gitlab.com/repomaa/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
   "https://gitlab.com/repomaa/autopass.cr/uploads/52cc5f7f2ff2f2e492e054eb29930e8f/autopass.cr-v0.2.0.tar.gz.sig"
+  'autopass.socket'
+  'autopass.service'
 )
 md5sums=(
   470db1b54a4d846e55ce941022e87bf5
+  SKIP
+  SKIP
   SKIP
 )
 validpgpkeys=(CC7BD43A315EBC373F9A1F2EEFEB16CB1C8952C5)
@@ -32,6 +36,8 @@ package() {
   cd "${pkgname}-v${pkgver}"
   install -Dm755 bin/autopass "$pkgdir/usr/bin/autopass"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 autopass.socket "$pkgdir/usr/lib/systemd/user/autopass.socket"
+  install -Dm644 autopass.service "$pkgdir/usr/lib/systemd/user/autopass.service"
 }
 
 # vim:set ts=2 sw=2 et:
