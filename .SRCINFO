@@ -3,7 +3,7 @@ pkgbase = execute-git
 	pkgver = 19
 	pkgrel = 1
 	url = https://gitlab.com/es20490446e/exeCute
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	depends = dosbox
@@ -12,6 +12,8 @@ pkgbase = execute-git
 	depends = wine-mono
 	provides = execute
 	conflicts = execute
+	source = git+https://gitlab.com/es20490446e/exeCute.git
+	md5sums = SKIP
 
 pkgname = execute-git
 

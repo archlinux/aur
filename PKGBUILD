@@ -1,51 +1,32 @@
 #! /bin/bash
 
+Name="execute"
+CammelName="exeCute"
+pkgname="${Name}-git"
+provides=("${Name}")
+conflicts=("${Name}")
 
-pkgver() {
-	local numbers='^[0-9]+$'
+pkgdesc="Opens exe and bat files as if they were native"
+url="https://gitlab.com/es20490446e/${CammelName}"
+license=("GPL3")
 
-	local version=$(
-		curl --silent "${url}" |
-		grep "Commits</a>" |
-		cut --delimiter='>' --fields=7 |
-		cut --delimiter='<' --fields=1
-	)
+pkgver=19
+pkgrel=1
+arch=("any")
 
-	if [[ "${version}" == "" ]] || ! [[ ${version} =~ ${numbers} ]] ; then
-		echo "Invalid version: ${version}" >&2
-		exit 1
-	else
-		echo "${version}"
-	fi
-}
+makedepends=("git")
+depends=("dosbox" "q4wine" "wine_gecko" "wine-mono")
+source=("git+${url}.git")
+md5sums=("SKIP")
 
 
-build () {
-	cd "${srcdir}"
-	git clone "${url}.git"
+pkgver () {
+	cd "${CammelName}"
+	git rev-list --count HEAD
 }
 
 
 package () {
 	"${srcdir}/exeCute/installer" "-install" "${pkgdir}"
 }
-
-
-Name="execute"
-provides=("${Name}")
-conflicts=("${Name}")
-pkgname="${Name}-git"
-
-pkgdesc="Opens exe and bat files as if they were native"
-url="https://gitlab.com/es20490446e/exeCute"
-license=("GPL3")
-
-pkgver=$(pkgver)
-pkgrel=1
-arch=("x86_64")
-
-makedepends=("git")
-depends=("dosbox" "q4wine" "wine_gecko" "wine-mono")
-source=()
-md5sums=()
 
