@@ -1,6 +1,6 @@
 pkgbase = ytmdl
 	pkgdesc = Download songs from YouTube with metadata from sources like Itunes and Gaana
-	pkgver = 2019.11.15
+	pkgver = 2019.11.16
 	pkgrel = 0
 	url = https://github.com/deepjyoti30/ytmdl
 	arch = any
