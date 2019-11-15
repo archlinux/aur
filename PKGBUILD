@@ -1,7 +1,7 @@
 # Maintainer: Tom Meyers tom@odex.be
 pkgname=source-marking-system-git
-pkgver=r30.a26a83d
-pkgrel=1
+pkgver=r38.3f85d72
+pkgrel=2
 pkgdesc="A tool to mark your source code with your copyright/license"
 arch=(any)
 url="https://github.com/F0xedb/source-marking-system"
