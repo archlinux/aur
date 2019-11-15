@@ -1,11 +1,12 @@
-# Maintainer: oguzkagan <me@oguzkaganeren.com.tr>
+# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 # Forked from https://aur.archlinux.org/packages/nextcloud-app-ocsms/
 # Original contributors:
 # Contributor: Polichronucci <nick at discloud dot eu>
+# Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
 
 pkgname=nextcloud-app-ocsms
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Push your Android SMS to your Nextcloud instance."
 arch=('any')
