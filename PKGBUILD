@@ -1,6 +1,6 @@
 pkgname=asciidoc-py3
 pkgver=8.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Text document format for short documents, articles, books and UNIX man pages. (python3 version)'
 arch=('any')
 url='https://github.com/asciidoc/asciidoc-py3'
@@ -34,6 +34,10 @@ package() {
   make install DESTDIR=${pkgdir}
   make docs DESTDIR=${pkgdir}
 
+  install -Dm644 filters/graphviz/asciidoc-graphviz-sample.txt \
+    -t "${pkgdir}"/etc/asciidoc/filters/graphviz
   install -Dm644 asciidocapi.py \
-    ${pkgdir}/usr/lib/python3.7/site-packages/asciidocapi.py
+    -t "${pkgdir}"/usr/lib/python3.8/site-packages
+  ln -sf ../../../../../../etc/asciidoc/filters/graphviz/asciidoc-graphviz-sample.txt \
+    "${pkgdir}"/usr/share/doc/asciidoc/examples/website/asciidoc-graphviz-sample.txt
 }

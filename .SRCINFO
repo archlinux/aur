@@ -1,7 +1,7 @@
 pkgbase = asciidoc-py3
 	pkgdesc = Text document format for short documents, articles, books and UNIX man pages. (python3 version)
 	pkgver = 8.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asciidoc/asciidoc-py3
 	arch = any
 	license = GPL2
