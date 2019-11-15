@@ -1,6 +1,6 @@
 pkgbase = python-fontawesome
 	pkgdesc = The Font Awesome icon set for python
-	pkgver = 5.7.2.post1
+	pkgver = 5.10.1.post1
 	pkgrel = 1
 	url = https://github.com/justbuchanan/fontawesome-python
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-fontawesome
 	makedepends = python-setuptools
 	makedepends = python-pypandoc
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/f/fontawesome/fontawesome-5.7.2.post1.tar.gz
-	md5sums = d10e9ee97713028609d85f0593fd890d
+	source = https://files.pythonhosted.org/packages/source/f/fontawesome/fontawesome-5.10.1.post1.tar.gz
+	md5sums = 13d48226fb352f6d9affc2c497821a80
 
 pkgname = python-fontawesome
 
