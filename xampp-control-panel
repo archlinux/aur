@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $(which pkexec) ]; then
+	pkexec python2 "/opt/lampp/share/xampp-control-panel/xampp-control-panel.py" "$@"
+else
+	python2 /opt/lampp/share/xampp-control-panel/xampp-control-panel.py "$@"
+fi

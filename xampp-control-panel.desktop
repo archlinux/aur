@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=XAMPP Control Panel
+Comment=XAMPP control panel
+Exec= /usr/bin/xampp-control-panel
+StartupWMClass=XAMPP
+Icon=xampp-manager
+Terminal=false
+Type=Application
+Categories=Network;
+Name[en_US]=XAMPP Control Panel

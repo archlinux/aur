@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.3.11'
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
@@ -19,6 +19,8 @@ makedepends=('fakeuser-git' 'sdx')
 source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png'
+	'xampp-control-panel'
+	'xampp-control-panel.desktop'
     'bitrock-unpacker.tcl')
 source_x86_64=("https://www.apachefriends.org/xampp-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
 	'org.freedesktop.xampp-manager.policy'
@@ -28,6 +30,8 @@ install='xampp.install'
 sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
             '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
+            '10b03ad9d22d938a4bec6f4d7642b5409ea33b01adf946b3c08785c85bfd4177'
+            '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
             '2d3a79a3018cb9187c259719968893bce237c2d1f2b177ccb40fe6f401619a07')
 sha256sums_x86_64=('53710f3d8c5a0b4d145382243093fde927c28a6dc3cf8e3af5bbe2b1c03465ad'
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
@@ -89,6 +93,12 @@ package() {
 	cp -a "${pkgdir}/manager/binary"/. "${pkgdir}/opt/lampp"
 	cp -a "${pkgdir}/common_native_adapter/common"/. "${pkgdir}/opt/lampp"
 	chmod g-s -R "${pkgdir}/opt/lampp"
+	ln -sf '/opt/lampp/xampp' "${pkgdir}/opt/lampp/lampp"
+	
+	msg 'Changes root location in files(may take a few minutes)...'
+	# Change root location for all files
+	find ${pkgdir}/opt/ -type f -exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI' {} \;
+	find ${pkgdir}/opt/ -type f -exec sed -i 's/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
@@ -99,6 +109,7 @@ package() {
 	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/xampp"
 	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/lampp"
 	install -Dm755 "${srcdir}/xampp-manager-polkit" "${pkgdir}/usr/bin/xampp-manager_polkit"
+	install -Dm755 "${srcdir}/xampp-control-panel" "${pkgdir}/usr/bin/xampp-control-panel"
 
 	# Systemd service
 	install -dm755 "${pkgdir}/etc/systemd/system"
@@ -107,6 +118,7 @@ package() {
 	# Desktop launcher
 	install -Dm755 "${srcdir}/xampp-manager.png" "${pkgdir}/usr/share/pixmaps/xampp-manager.png"
 	install -Dm755 "${srcdir}/xampp-manager.desktop" "${pkgdir}/usr/share/applications/xampp-manager.desktop"
+	install -Dm755 "${srcdir}/xampp-control-panel.desktop" "${pkgdir}/usr/share/applications/xampp-control-panel.desktop"
 
 	# Install policy file for desktop launcher
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
@@ -119,5 +131,7 @@ package() {
 	rm -rf "${pkgdir}/native_proftpd_adapter/"
 	rm -rf "${pkgdir}/manager/"
 	rm -rf "${pkgdir}/common_native_adapter/"
+
+	
 }
 
