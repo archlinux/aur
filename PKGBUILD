@@ -1,7 +1,7 @@
 # Maintainer: Trevor Facer <trevordf@protonmail.com>
 
 pkgname=aliyun-cli-bin
-pkgver=3.0.29
+pkgver=3.0.30
 pkgrel=1
 pkgdesc="A tool to manage and use Alibaba Cloud resources through a command line interface"
 url="https://github.com/aliyun/aliyun-cli"
@@ -19,7 +19,7 @@ source=(
 
 sha256sums=(
   '479818324be726e5596a2a9fb6fd9e5c5edfe2fa967dc69c23ff1bba707e84bb'
-  'cf27ffdbe34836f182e0e8c18d8ee943c0201acfa222e0cdbecaa46dac78161f'
+  '35108cd2a2d48d492b173ebe504edd848f98dc4db9f3905159b354b2541fc722'
 )
 
 package() {
