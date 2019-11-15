@@ -2,7 +2,7 @@
 
 pkgname=('python-persisting-theory' 'python2-persisting-theory')
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Registries that can autodiscover values accross your project apps"
 arch=(any)
 url="https://code.eliotberriot.com/eliotberriot/persisting-theory"

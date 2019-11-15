@@ -1,7 +1,7 @@
 pkgbase = python-persisting-theory
 	pkgdesc = Registries that can autodiscover values accross your project apps
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.eliotberriot.com/eliotberriot/persisting-theory
 	arch = any
 	license = BSD
