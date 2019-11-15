@@ -3,7 +3,7 @@
 
 pkgname=python-climin-git
 pkgver=r544.2215b1a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Optimizers for machine learning"
 arch=("any")
