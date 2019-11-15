@@ -6,8 +6,8 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.0.11
-pkgrel=2
+pkgver=3.0.12
+pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -18,17 +18,15 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'python-sphinx' 'perl-pod-pom-view-restructured')
 source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         "perl-libs.patch"
-        "sphinx-2.0.patch"
         "vzic-flags.patch"
         "imapd.conf.patch"
         "cyrus-imapd.service"
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('058efc2e462729b79e431e1b5dab1addfe737aeec8b686698cd2270748275028ca5722ed3960fcd680a0393027ee1b1d7dff65872dd1d8349a3f933e81227e48'
+sha512sums=('cef5c361dacfac6ae5e8900aa0cba705387a94c06fb176326c890ef4ab3384be121cae3e196ce1dfbd0ff01358719c5479414095d108e61a28e27420f0fde2c7'
             'SKIP'
-            '0076967074a5c4ada11b886f13a6994c0ccb4058caf9278179dac10e99347fea51d587b03fcdad4d1895ff97032c27cfc90032171216ce7a674f56898bae81e1'
-            'fca846a0ec73618ac3c5334331b8928eb667c590381a76cfc9a1ea7c2b7d7590135b9ac98873d6dc7f4018c85d4a32dd29c1977033c1f4838dabb1f6ccde530c'
+            '743a377cc3b2e1ee9418360d7c05502797e82b975700ff45812b799edd4371d36cfc9a7ec57ce4b31a6782603d8e2f0802f75505ad40200e9c56c81d948704ef'
             'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
@@ -39,7 +37,6 @@ prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
   patch -Np1 < "${srcdir}/perl-libs.patch"
-  patch -Np1 < "${srcdir}/sphinx-2.0.patch"
   patch -Np1 < "${srcdir}/vzic-flags.patch"
   autoreconf
 }

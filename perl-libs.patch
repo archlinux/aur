@@ -1,7 +1,7 @@
 diff -aur package.pristine/configure.ac package.new/configure.ac
 --- package.pristine/configure.ac	2019-03-15 01:31:20.000000000 +0100
 +++ package.new/configure.ac	2019-03-30 11:31:11.971579309 +0100
-@@ -1361,6 +1361,7 @@
+@@ -1359,6 +1359,7 @@
          with_libcap="${withval}")
  
  have_libcap=no
@@ -9,7 +9,7 @@ diff -aur package.pristine/configure.ac package.new/configure.ac
  case $host_os in
  linux*)
          if test "x$with_libcap" = "xyes"; then
-@@ -1368,13 +1369,14 @@
+@@ -1366,13 +1367,14 @@
                  AC_CHECK_HEADERS([sys/capability.h sys/prctl.h], , have_libcap=no)
                  if test "$have_libcap" = "yes"; then
                          AC_DEFINE(HAVE_LIBCAP, [], [Do we have libcap system capabilities handling (Linux systems only)?])
@@ -28,7 +28,7 @@ diff -aur package.pristine/configure.ac package.new/configure.ac
 diff -aur package.pristine/Makefile.am package.new/Makefile.am
 --- package.pristine/Makefile.am	2019-03-15 01:31:20.000000000 +0100
 +++ package.new/Makefile.am	2019-03-30 11:32:32.989988392 +0100
-@@ -1433,7 +1433,7 @@
+@@ -1453,7 +1453,7 @@
  lib_libcyrus_min_la_SOURCES += lib/map_nommap.c
  endif
  endif
