@@ -4,7 +4,7 @@ pkgname="aur-box"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-pkgver=18
+pkgver=19
 pkgrel=1
 arch=("any")
 
@@ -25,15 +25,10 @@ pkgver () {
 
 
 package () {
-	mkdir --parents "${pkgdir}/usr/bin"
-	mkdir --parents "${pkgdir}/usr/share/man/man1"
+	install -Dm755 "${srcdir}/${pkgname}/assets/box/"* -t "${pkgdir}/usr/lib/box"
+	install -Dm644 "${srcdir}/${pkgname}/assets/box.1" -t "${pkgdir}/usr/share/man/man1"
 
-	mv "${srcdir}/${pkgname}/assets/box" "${pkgdir}/usr/share/box"
-	mv "${srcdir}/${pkgname}/assets/box.1" "${pkgdir}/usr/share/man/man1/box.1"
-	ln --symbolic "/usr/share/box/_box" "${pkgdir}/usr/bin/box"
-
-	find "${pkgdir}" -type d -exec chmod u=rwx,g=rx,o=rx {} \;
-	find "${pkgdir}" -type f -exec chmod u=rw,g=r,o=r {} \;
-	chmod u=rwx,g=rx,o=rx "${pkgdir}/usr/share/box/_box"
+	mkdir "${pkgdir}/usr/bin"
+	ln --symbolic "/usr/lib/box/_box" "${pkgdir}/usr/bin/box"
 }
 

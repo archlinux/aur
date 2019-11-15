@@ -1,6 +1,6 @@
 pkgbase = aur-box
 	pkgdesc = Publishes software instantly to Arch Linuxes
-	pkgver = 18
+	pkgver = 19
 	pkgrel = 1
 	url = https://gitlab.com/es20490446e/aur-box
 	arch = any
