@@ -4,25 +4,22 @@
 
 _pipname=pandoc-include
 pkgname=python-$_pipname
-pkgver=0.3.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Panflute filter to allow file includes"
 arch=(any)
 url="https://github.com/DCsunset/$_pipname"
 license=(MIT)
-makedepends=("python" "python-pip")
-depends=("python-click"
-        "python-future"
-        "python-panflute"
-        "python-shutilwhich"
-        "python-yaml")
+makedepends=('python' 'python-pip')
+_py_deps=('click' 'future' 'panflute' 'shutilwhich' 'yaml')
+depends=("${_py_deps[@]/#/python-}")
 
 build() {
-  pip install --no-deps --target="$_pipname" "$_pipname==$pkgver"
+    pip install --no-deps --target="$_pipname" "$_pipname==$pkgver"
 }
 
 package() {
-  sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-  mkdir -p "$pkgdir/$sitepackages"
-  cp -r "$srcdir/$_pipname"/* "$pkgdir/$sitepackages"
+    sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
+    mkdir -p "$pkgdir/$sitepackages"
+    cp -r "$srcdir/$_pipname"/* "$pkgdir/$sitepackages"
 }
