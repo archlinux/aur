@@ -1,0 +1,20 @@
+pkgbase = not-perf-git
+	pkgdesc = A sampling CPU profiler for Linux
+	pkgver = 0.1.0.310
+	pkgrel = 1
+	url = https://github.com/koute/not-perf
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	provides = not-perf
+	conflicts = not-perf
+	source = not-perf::git+https://github.com/koute/not-perf
+	sha256sums = SKIP
+
+pkgname = not-perf-git
+
