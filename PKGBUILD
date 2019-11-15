@@ -1,13 +1,13 @@
 # Maintainer: Layne Bernardo <lmbernar (at) uark (dot) edu>
 pkgname='qthttpserver-git'
 pkgver=r68.7dc185f
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide a Qt framework for a simple HTTP server"
 arch=('x86_64')
 url="https://github.com/qt-labs/qthttpserver"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('make' 'git')
+makedepends=('git')
 source=('git+https://github.com/qt-labs/qthttpserver.git'
 	'git+https://github.com/nodejs/http-parser.git')
 md5sums=('SKIP' 'SKIP')
