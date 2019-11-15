@@ -7,7 +7,7 @@
 pkgname=atlas-lapack
 pkgver=3.10.3
 _lapackver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatically Tuned Linear Algebra Software"
 url="http://math-atlas.sourceforge.net/"
 depends=('gcc-libs')
@@ -63,6 +63,7 @@ package() {
    cp -d lib/*.so* $pkgdir/usr/lib
    cd $pkgdir/usr/lib
    ln -s libblas.so libblas.so.3
+   ln -s libcblas.so libcblas.so.3
    ln -s liblapack.so.3 liblapack.so
    
    cd ../include/atlas
