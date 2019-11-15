@@ -2,23 +2,26 @@
 
 Name="silently"
 pkgname="${Name}-git"
-pkgver=r5.3a67f98
-pkgrel=1
-pkgdesc="Silences a command output except on error, so its correct operation is self supervised (aka jidoka)"
-arch=("x86_64")
-url="https://gitlab.com/es20490446e/${Name}"
-license=("GPL3")
-makedepends=("git")
-depends=("bash")
 provides=("${Name}")
 conflicts=("${Name}")
+
+pkgver=11
+pkgrel=1
+arch=("any")
+
+pkgdesc="Silences a command output except on error, so its correct operation is self supervised (aka jidoka)"
+url="https://gitlab.com/es20490446e/${Name}"
+license=("GPL3")
+
+makedepends=("git")
+depends=("bash")
 source=("git+${url}.git")
 md5sums=("SKIP")
 
 
 pkgver() {
 	cd "${Name}"
-	printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git rev-list --count HEAD
 }
 
 
