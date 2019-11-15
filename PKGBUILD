@@ -2,7 +2,7 @@
 
 pkgname=eg
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful examples at the command line"
 license=("MIT")
 url="https://github.com/srsudar/eg"
