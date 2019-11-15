@@ -10,7 +10,9 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-imageformats' 'qt5-svg' 'mpv' 'exiv2')
 makedepends=('git' 'cmake' 'pkgconf' 'qt5-tools' 'mpv' 'exiv2')
 #checkdepends=()
-optdepends=()
+optdepends=('kimageformats: support for more image formats'
+            'qt5-apng-plugin: apng support'
+            'qtraw-git: raw support')
 provides=("qimgv")
 conflicts=("qimgv")
 source=('git+https://github.com/easymodo/qimgv.git')
