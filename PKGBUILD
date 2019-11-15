@@ -1,35 +1,30 @@
 # Maintainer: Cassio Almeida <jcassiocosta@gmail.com>
+# Maintainer: Claudio Netto <nettinhorama@gmail.com>
 
-pkgname="tsuru"
-pkgver=1.5.1
-pkgrel=2
-pkgdesc="Tsuru client"
-arch=('x86_64')
-license=('Copyright (c) 2015, tsuru-client authors')
+pkgname=tsuru
+pkgver=1.7.3
+pkgrel=1
+arch=('any')
 
-url="https://github.com/tsuru/tsuru-client"
+pkgdesc='Command-line tool for application developers managing apps, services or workloads through Tsuru.'
+url='https://github.com/tsuru/tsuru-client'
+license=('BSD')
 
-source=("https://github.com/tsuru/tsuru-client/releases/download/${pkgver}/tsuru_${pkgver}_linux_amd64.tar.gz" 
-	"LICENSE")
+makedepends=('go')
+provides=("tsuru=${pkgver}")
 
-package(){
-	cd "${srcdir}"
+source=("tsuru-client.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('9e8adceba8d4f65df120f27be474cb4602e757920a5cc1c6bc4ddaa09d58ec02')
 
-	tar -xzf "${pkgname}_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
-
-	
-	install -Dm755 "${srcdir}/tsuru" "${pkgdir}/usr/bin/tsuru"
-
-	# License
-	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-
-	# bash completion
-	mkdir -p "$pkgdir"/usr/share/bash-completion/completions/
-	install -m644 "$srcdir"/misc/bash-completion "$pkgdir"/usr/share/bash-completion/completions/tsuru
-
-
+build() {
+  make -C ${srcdir}/tsuru-client-${pkgver} build
 }
 
-sha256sums=('fa3a330c23e4389df95e05b5fd8ed822640cde76560ae4cf3546793a2d9aa58c'
-            '047e4f042a8441f2b58bc4181a1d167bc462870f511b3b82f71d9ef3104c1a3e')
+package(){
+  cd "${srcdir}/tsuru-client-${pkgver}"
+
+  install -Dpm755 ./bin/tsuru -t ${pkgdir}/usr/bin
+
+  install -Dpm644 ./misc/bash-completion -t ${pkgdir}/usr/share/bash-completion/completions/tsuru
+  install -Dpm644 ./misc/zsh-completion -t ${pkgdir}/usr/share/zsh/site-functions/_tsuru
+}
