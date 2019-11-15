@@ -4,7 +4,7 @@
 _basename=libkate
 pkgname="lib32-$_basename"
 pkgver=0.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A karaoke and text codec for embedding in ogg (32-bit)"
 url="https://wiki.xiph.org/OggKate"
 license=('BSD')
@@ -30,6 +30,7 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export PYTHON="/usr/bin/python2"
 
     ./configure \
         --build=i686-pc-linux-gnu \
@@ -44,7 +45,7 @@ build() {
 package() {
     cd $_basename
 
-    make DESTDIR=$pkgdir install
+    make DESTDIR=$pkgdir PYTHON=/usr/bin/python2 install
 
     install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
