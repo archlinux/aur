@@ -2,7 +2,7 @@
 
 pkgname=('python-django-rest-framework-jwt' 'python2-django-rest-framework-jwt')
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON Web Token Authentication support for Django REST Framework"
 arch=(any)
 url="https://github.com/GetBlimp/django-rest-framework-jwt"
