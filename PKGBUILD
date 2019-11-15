@@ -1,7 +1,7 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=chestnut
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source NLE video editor "
 arch=(x86_64)
 url="https://github.com/jonno85uk/chestnut"
@@ -29,8 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/chestnut"
-    CORES=$(cat /proc/cpuinfo | grep -c "vendor_id")
-    make -j${CORES} -l${CORES}
+    make
 }
 
 check() {
