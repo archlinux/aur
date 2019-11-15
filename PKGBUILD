@@ -1,9 +1,8 @@
-# Maintainer: 'Konstantin Kogan < kostyalamer@yandex.ru >'
-# Contributor: 'Yury Pakin < zxwarior@yandex.ru >'
+# Maintainer: kostyalamer < kostyalamer@yandex.ru >
 
 pkgname=mplayer-vc
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for full-screen viewing of local video in mplayer via console. Autor Yury Pakin "
 arch=('x86_64')
 url="http://forum.russ2.com/index.php?showtopic=4431"
