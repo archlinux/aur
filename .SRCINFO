@@ -24,7 +24,7 @@ pkgbase = scipoptsuite
 	provides = soplex=4.0.2
 	provides = zimpl=3.3.8
 	replaces = ziboptsuite
-	source = http://scip.zib.de/download/release/scipoptsuite-6.0.2.tgz
+	source = {http://scip.zib.de}/download/release/scipoptsuite-6.0.2.tgz
 	sha256sums = e25329a2ed4fbdde8a32279a4c955ee7a8b8795429b6e7105ae17998c2ecbe66
 
 pkgname = scipoptsuite
