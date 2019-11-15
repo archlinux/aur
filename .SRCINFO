@@ -1,7 +1,7 @@
 pkgbase = python-pyclipper
 	pkgdesc = Cython wrapper for the C++ translation of the Angus Johnson's Clipper library
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greginvm/pyclipper
 	arch = any
 	license = MIT
