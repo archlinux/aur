@@ -8,14 +8,14 @@ arch=('any')
 url='https://www.opencode.net/fabianalexis/kuyen-icons'
 license=('CC BY-NC-SA 3.0')
 makedepends=('git')
-source=("git+$url")
+source=("git+${url}")
 provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir"/kuyen-icons
+	cd "${srcdir}/kuyen-icons"
 	( 
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -24,14 +24,14 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir"/kuyen-icons
+	cd "${srcdir}/kuyen-icons"
  	rm *.md
 }
 
 package() {
   msg2 "Installing ${pkgname%-*}..."
-  cd "$srcdir"
-  install -dm 755 "${pkgdir}"/usr/share/icons/
-  cp -drf --no-preserve='ownership' . "${pkgdir}"/usr/share/icons/
+  cd "${srcdir}"
+  install -dm 755 "${pkgdir}/usr/share/icons/"
+  cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
 }
 # vim:set ts=2 sw=2 et:
