@@ -1,7 +1,7 @@
 # Maintainer: David Scholl <djscholl at gmail dot com>
 pkgname=audiotools
 pkgver=3.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of Python-based command-line audio handling programs"
 arch=('i686' 'x86_64')
 url="http://audiotools.sourceforge.net"
