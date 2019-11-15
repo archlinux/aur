@@ -1,7 +1,7 @@
 pkgbase = python-flask-bcrypt
 	pkgdesc = Bcrypt hashing for Flask
 	pkgver = 0.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://flask-bcrypt.readthedocs.io/en/latest/
 	arch = any
 	license = BSD
