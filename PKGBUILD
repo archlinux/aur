@@ -4,8 +4,8 @@
 pkgname=gmt6
 _pkgname=gmt
 pkgver=6.0.0
-pkgrel=1
-pkgdesc="Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps."
+pkgrel=2
+pkgdesc="Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data"
 arch=(i686 x86_64)
 url="https://www.generic-mapping-tools.org"
 license=('LGPL')

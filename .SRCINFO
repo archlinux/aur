@@ -1,7 +1,7 @@
 pkgbase = gmt6
-	pkgdesc = Generic Mapping Tools: Collection of tools for manipulating geographic and Cartesian data sets, and generating EPS maps.
+	pkgdesc = Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.generic-mapping-tools.org
 	install = gmt.install
 	arch = i686
