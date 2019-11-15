@@ -3,7 +3,7 @@
 
 pkgname=python-pyscroll
 pkgver=2.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="some basic modules to make scrolling pygame games"
 arch=('any')
 url="https://github.com/bitcraft/pyscroll"
