@@ -1,6 +1,6 @@
 pkgbase = ytmdl
 	pkgdesc = Download songs from YouTube with metadata from sources like Itunes and Gaana
-	pkgver = 2019.10.8
+	pkgver = 2019.11.15
 	pkgrel = 0
 	url = https://github.com/deepjyoti30/ytmdl
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = ytmdl
 	depends = python>=3.6
 	depends = ffmpeg
 	depends = youtube-dl
-	source = https://github.com/deepjyoti30/ytmdl/archive/2019.10.8.tar.gz
+	source = https://github.com/deepjyoti30/ytmdl/archive/2019.11.15.tar.gz
 	md5sums = SKIP
 
 pkgname = ytmdl
