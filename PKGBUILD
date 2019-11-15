@@ -14,7 +14,7 @@ depends=(
   'python-requests'
   'python-setuptools'
 )
-conflicts=('')
+conflicts=()
 source=("${_pkgname}::git+https://github.com/Rawa/lifx-cli.git")
 md5sums=('SKIP')
 
