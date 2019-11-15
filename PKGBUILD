@@ -3,7 +3,7 @@
 pkgname=('arc-icon-theme-full-git')
 pkgver=r145.ae267dc
 pkgrel=1
-pkgdesc="The complete Arc icon theme"
+pkgdesc='The complete Arc icon theme'
 arch=('any')
 url='https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS'
 license=('Creative Commons')
@@ -19,7 +19,7 @@ pkgver() {
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	)
 }
 
 prepare() {
