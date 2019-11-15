@@ -2,7 +2,7 @@
 pkgname=aragon-cli
 _npmscope=@aragon
 _npmname=cli
-pkgver=6.3.3
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="CLI for creating and publishing Aragon apps"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('nodejs')
 makedepends=('nodejs' 'npm')
 source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmscope}/${_npmname}-${pkgver}.tgz")
-sha256sums=('7373506bd41b8a96a6083693332d1227e2083454f87057fdab10595f7e3971e1')
+sha256sums=('cef0a3be23222e1adf1e84253e9dcbeb93816c74b14203ed29d3d0a3614624de')
 noextract=('${_npmname}-${pkgver}.tgz')
 
 package() {
@@ -25,12 +25,4 @@ package() {
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
-
-    # Remove unwanted git hooks.
-    # HUSKY_SKIP_INSTALL doesn't work for old husky package (1.1.3) that installed from ganache-core dependencies
-    cd ..
-    if [ -d .git ]
-    then
-        rm -v .git/hooks/*
-    fi
 }
