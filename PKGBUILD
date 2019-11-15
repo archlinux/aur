@@ -20,7 +20,7 @@ md5sums=(
 )
 validpgpkeys=(CC7BD43A315EBC373F9A1F2EEFEB16CB1C8952C5)
 provides=('autopass')
-conflicts=('autopass', 'autopass.cr-git', 'autopass.cr-bin')
+conflicts=('autopass' 'autopass.cr-git' 'autopass.cr-bin')
 optdepends=('passed-git: batch editing of pass entries with sed')
 
 build() {
