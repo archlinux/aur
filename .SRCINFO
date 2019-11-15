@@ -8,6 +8,7 @@ pkgbase = python-fontparts
 	checkdepends = python-fontpens
 	makedepends = python-setuptools
 	depends = python
+	depends = python-booleanoperations
 	depends = python-defcon
 	depends = python-fontmath
 	depends = python-fonttools
