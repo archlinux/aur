@@ -2,27 +2,35 @@
 
 Publisher="tarassh"
 pkgname="fairy-wallet"
-pkgver=0.10.0
-pkgrel=2
-pkgdesc="Manages EOS tokens stored in a Ledger Nano S hardware wallet"
-arch=("x86_64")
-url="https://github.com/${Publisher}/${pkgname}"
-license=("MIT")
+
 depends=("ledger-udev")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
+
+pkgver=0.10.0
+pkgrel=3
+arch=("x86_64")
+
+pkgdesc="Manages EOS tokens stored in a Ledger Nano S hardware wallet"
+url="https://github.com/${Publisher}/${pkgname}"
+license=("MIT")
+
+Version=$(
+	Url="https://api.github.com/repos/${Publisher}/${pkgname}/releases/latest"
+	curl --silent "${Url}" | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/' | cut --characters="2-")
+source=("${url}/releases/download/v${Version}/${pkgname}_${Version}_amd64.deb")
 sha256sums=("SKIP")
+
+
+pkgver() {
+	cd "${pkgname}"
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 
 package () {
 	tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
-	install --directory "${pkgdir}/usr/bin"
-	ln --symbolic "/opt/FairyWallet/fairy-wallet" "${pkgdir}/usr/bin/fairy-wallet"
+	mkdir --parents "${pkgdir}/usr/bin"
+	ln --symbolic "/opt/FairyWallet/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
-
-pkgver () {
-	Url="https://api.github.com/repos/${Publisher}/${pkgname}/releases/latest"
-	curl --silent "${Url}" | grep "tag_name" | sed -E 's/.*"([^"]+)".*/\1/' | cut --characters="2-"
-}
