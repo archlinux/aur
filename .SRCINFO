@@ -1,7 +1,7 @@
 pkgbase = jitterdebugger-bin
 	pkgdesc = Real time response measurement tool (binary)
-	pkgver = r95.2657f15
-	pkgrel = 1
+	pkgver = r106.daeff0a
+	pkgrel = 2
 	url = https://github.com/igaw/jitterdebugger
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = jitterdebugger-bin
 	depends = glibc
 	provides = jitterdebugger
 	options = !emptydirs
-	source = file:///jitterdebugger-bin-r95.2657f15.tar.gz
-	sha256sums = 95504d95b9a6bef6f60ed4704b7f5125e2dc76322da066d99460f8913e2bc8d0
+	source = file:///jitterdebugger-bin-r106.daeff0a.tar.gz
+	sha256sums = 3ac105bfde7dfc7ffca649964dd7619cd50736ce6c69f5f7ac2c9e8f919c8a8e
 
 pkgname = jitterdebugger-bin
 
