@@ -3,7 +3,7 @@
 _name=persist-queue
 pkgname=python-persist-queue
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A thread-safe disk based persistent queue in Python."
 arch=(any)
 url="http://github.com/peter-wangxu/persist-queue"

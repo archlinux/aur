@@ -1,7 +1,7 @@
 pkgbase = python-persist-queue
 	pkgdesc = A thread-safe disk based persistent queue in Python.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/peter-wangxu/persist-queue
 	arch = any
 	license = BSD
