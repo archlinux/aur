@@ -1,10 +1,14 @@
-# Maintainer: oguzkagan <me@oguzkaganeren.com.tr>
+# Maintainer: ValHue <vhuelamo at gmail dot com>
 #
-# Contributor: Gabriel B. Casella <gbc921@gmail.com>
+# Contributor: Christopher Loen <christopherloen at gmail dot com>
+# Contributor: MarkZZ <mark dot weiman at markzz dot com>
+# Contributer: t3ddy <t3ddy1988 "at" gmail {dot} com>
+# Contributor: kriation
+# Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
 #
 pkgname="fluxgui"
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Better lighting for Linux. Open source GUI for xflux"
 url="https://justgetflux.com/"
 arch=('i686' 'x86_64')
