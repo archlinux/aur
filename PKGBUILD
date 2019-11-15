@@ -1,7 +1,9 @@
-# Maintainer: oguzkagan
+# Maintainer: Sibren Vasse <arch at sibrenvasse dot nl>
+# Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
+#
 pkgname=splashtop-streamer
 pkgver=2.5.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Splashtop Remote Streamer. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64' 'i686')
 url="http://www.splashtop.com/streamer/linux"
