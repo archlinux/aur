@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=cdist
-pkgver=4.7.3
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='A usable configuration management system'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'openssh')
 makedepends=('python-setuptools')
 validpgpkeys=('69767822F3ECC3C349C1EFFFEFD2AE4EC36B6901') # ungleich GmbH (ungleich FOSS) <foss@ungleich.ch>')
 source=("https://github.com/ungleich/cdist/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('ab80460ce5383d34b904cb8b5ad4367def76025ebf9534e67ab80f29ea44c8c8'
+sha256sums=('cc35bd05bf4feed44f9ac33b1a868a27029abfd05018cee2f053f54c318186a6'
             'SKIP')
 
 prepare() {
