@@ -2,17 +2,25 @@
 
 pkgname=maptool-jar
 _pkgname=MapTool
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
-depends=('jre10')
+depends=('java-runtime-jre=10')
 provides=('maptool')
 conflicts=('maptool')
-source=("https://github.com/RPTools/maptool/releases/download/$pkgver/$_pkgname-$pkgver.jar" "$_pkgname" "$_pkgname.desktop")
-sha256sums=('4bfe636b0ea93f5ca31152934f9a05ecbdc703da49d251eb7162b750f3518b3e' '71f160a65b68440870e1f59493bf7f6c0369007e5c41596f42e1f5e7d4863ef2' 'c83d0a79c1e91713bd25cb07174de64638c44bdd082bd86dfe2605bad66c7b87')
+source=(
+    "https://github.com/RPTools/maptool/releases/download/$pkgver/$_pkgname-$pkgver.jar"
+    "$_pkgname"
+    "$_pkgname.desktop"
+)
+sha256sums=(
+    '5b98cbd1cca38d5ce3cb79d734b06ab74b6db95cce76542277bb077d8aeca167'
+    'd5efe71f36259e9c78f7f01806b8b43eb8367cf90d26dcc029cbdbcedac86dbf'
+    '4db045122b4dbb7ca04db3359faa6a991e7c5b7e222ff8ddacd1cbc4012fec3b'
+)
 
 package() {
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.jar" -t "${pkgdir}/usr/share/java/${_pkgname}/"
