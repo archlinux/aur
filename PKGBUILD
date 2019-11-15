@@ -2,7 +2,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -20,7 +20,7 @@ build() {
     sudo archlinux-java set java-10-jdk
 
     cd ${pkgname}
-    gradle deploy
+    ./gradlew deploy
 
     if [ -n "$ORIG_JAVA" ]; then
         sudo archlinux-java set $ORIG_JAVA
