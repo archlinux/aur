@@ -1,5 +1,5 @@
 pkgbase = webp-thumbnailer
-	pkgdesc = Creates a thumbnail for the webp.
+	pkgdesc = Creates thumbnails for .webp files
 	pkgver = 0.0.2
 	pkgrel = 3
 	url = https://github.com/gabrielmoura/webp-thumbnailer
