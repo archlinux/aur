@@ -1,7 +1,7 @@
 pkgbase = python-janus
 	pkgdesc = Thread-safe asyncio-aware queue for Python
 	pkgver = 0.4.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/aio-libs/janus
 	arch = any
 	license = Apache
