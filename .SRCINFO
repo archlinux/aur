@@ -1,12 +1,14 @@
 pkgbase = python-dotenv
 	pkgdesc = Get and set values in your .env file in local and production servers
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theskumar/python-dotenv/
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
+	checkdepends = python-sh
 	checkdepends = python2-pytest
+	checkdepends = python2-sh
 	makedepends = python-click
 	makedepends = python-setuptools
 	makedepends = python2-click
@@ -18,11 +20,9 @@ pkgname = python-dotenv
 	depends = python-click
 	depends = python-setuptools
 	optdepends = ipython
-	conflicts = python2-dotenv
 
 pkgname = python2-dotenv
 	depends = python2-click
 	depends = python2-setuptools
 	optdepends = ipython2
-	conflicts = python-dotenv
 
