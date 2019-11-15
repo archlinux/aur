@@ -1,7 +1,7 @@
 # Maintainer: Julian Hornich <julianhornich@googlemail.com>
 
 pkgname=likwid-git
-pkgver=r1606
+pkgver=r2040
 pkgrel=1
 pkgdesc="Lightweight performance tools"
 url="https://github.com/rrze-likwid/likwid"
@@ -12,7 +12,8 @@ depends=('lua' 'hwloc')
 makedepends=('gcc' 'make' 'perl')
 optdepends=('perl: for likwid-mpirun and likwid-perfscope'
             'gnuplot: for likwid-perfscope'
-            'openmpi: for likwid-mpirun')
+            'openmpi: for likwid-mpirun'
+            'cuda: for cuda interface' )
 conflicts=('likwid' 'likwid-svn')
 sha256sums=('SKIP')
 
@@ -23,7 +24,8 @@ pkgver() {
 
 build() {
   cd ${srcdir}/likwid
-	sed -i "13s:/usr/local:/usr:; 25s:/man:/share/man:; 58s:/sbin:/bin:; 59s:/sbin:/bin:" config.mk
+	sed -i "14s:/usr/local:/usr:; 46s:/man:/share/man:;" config.mk
+	sed -i "s:/sbin:/bin:" config.mk
   sed -i "s:/sbin:/bin:" Makefile
   make
 }
