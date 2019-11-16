@@ -2,7 +2,7 @@
 
 pkgname=('arc-icon-theme-full-git')
 pkgver=r145.ae267dc
-pkgrel=3
+pkgrel=4
 pkgdesc="The complete Arc icon theme"
 arch=('any')
 url="https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS"
