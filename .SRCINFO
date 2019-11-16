@@ -1,7 +1,7 @@
 pkgbase = ms-office-online
 	pkgdesc = Microsoft Office Suite Online as a native application
 	pkgver = 19.06.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.office.com/
 	arch = any
 	license = GPL3
