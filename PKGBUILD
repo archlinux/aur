@@ -3,16 +3,16 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=dcmtk
-pkgver=3.6.4
-pkgrel=3
+pkgver=3.6.5
+pkgrel=1
 pkgdesc="A collection of libraries and applications implementing large parts the DICOM standard"
 arch=('i686' 'x86_64')
 url="http://dicom.offis.de/dcmtk"
 license=('other')
 depends=('zlib' 'libpng' 'libtiff' 'libxml2' 'openssl' 'libssh' 'libwrap')
 makedepends=('cmake' 'make')
-source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk364/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('735f85d04410437a5163b154f43c8a299aff7a8f810605ce6c5027ae4569ff1323a69f70a2603805cec9d826a31166fd904bb53c3edc1137bfc41ba2902c2261')
+source=("ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk365/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('c0cf61b0095c5708709406bfef5e8bb82dd01dbf77df7f2af2118004920bda68218eb1e4174bf92941cdae0acdb275c886570dafd29476eee2eb815e9a82830a')
 
 #Currently it's not building otherwise
 options=(!buildflags)
@@ -51,6 +51,4 @@ package() {
 
   # Remove empty files (0 length)
   find "${pkgdir}" -type f -empty -exec rm -v {} \;
-
-  install -dm755 "${pkgdir}/usr/lib/"
 }
