@@ -1,13 +1,14 @@
 # Maintainer: Mikaela Szekely <mikaela.szekely@qyriad.me>
 pkgname=gr-fosphor
 pkgver=3.8
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU Radio block for RTSA-like spectrum visualization; repackaged from Ubuntu'
 arch=('x86_64')
 url="http://sdr.osmocom.org/trac/wiki/fosphor"
 license=('GPL')
 groups=('')
 depends=('boost' 'gnuradio>=3.8.0.0' 'hicolor-icon-theme' 'log4cpp' 'python>=3.7.0' 'qt5-base>=5.12.2' 'opencl-driver')
+makedepends=('boost' 'opencl-icd' 'opencl-header' 'cmake')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=(debian.tar.xz::"https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gr-fosphor/3.8~1.278b66e-2/gr-fosphor_3.8~1.278b66e-2.debian.tar.xz" gr-fosphor.tar.xz::"https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/gr-fosphor/3.8~1.278b66e-2/gr-fosphor_3.8~1.278b66e.orig.tar.xz" "cmake_swig.patch" "cmake_python.patch")
