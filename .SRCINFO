@@ -1,15 +1,25 @@
 pkgbase = watchghost-git
 	pkgdesc = Your invisible but loud monitoring pet
-	pkgver = 0.1.0.git_99.0005a9e
+	pkgver = 0.4.0.git_399.7215f5f
 	pkgrel = 1
+	epoch = 1
 	url = https://gitlab.com/localg-host/watchghost/
 	install = watchghost.install
 	arch = any
 	license = AGPLv3
 	makedepends = python-setuptools
-	depends = python-tornado
+	depends = python-aiohttp
 	depends = python-aioftp
-	source = git+https://gitlab.com/localg-host/watchghost.git
+	depends = python-asyncssh
+	depends = python-whois
+	depends = python-influxdb
+	depends = python-aiohttp-jinja2
+	conflicts = watchghost
+	backup = etc/watchghost/watchers.toml
+	backup = etc/watchghost/loggers.toml
+	backup = etc/watchghost/servers.toml
+	backup = etc/watchghost/groups.toml
+	source = git+https://gitlab.com/localg-host/watchghost.git#branch=master
 	sha256sums = SKIP
 
 pkgname = watchghost-git

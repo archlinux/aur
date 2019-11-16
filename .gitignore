@@ -6,3 +6,4 @@
 !sysusers.conf
 !watchghost.install
 !watchghost.service
+!.gitlab-ci.yml

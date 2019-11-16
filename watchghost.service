@@ -6,7 +6,8 @@ After=network.target
 Type=simple
 User=watchghost
 Group=watchghost
-ExecStart=/usr/bin/watchghost-server.py --config=/etc/watchghost
+ExecStart=/usr/bin/watchghost --config=/etc/watchghost
+ExecReload=/bin/kill -SIGHUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
