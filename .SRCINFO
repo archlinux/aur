@@ -1,15 +1,15 @@
 pkgbase = ttf-adobe-source-fonts
 	pkgdesc = TTF versions of Adobe's Source fonts (includes non-variable versions of Source Sans Pro, Source Serif Pro, and Source Code Pro).
-	pkgver = 3.006R+3.000R+2.030R+ro+1.050R+it
+	pkgver = 3.006R+3.001R+2.030R+ro+1.050R+it
 	pkgrel = 3
 	url = https://github.com/adobe-fonts
 	arch = any
 	license = custom
 	source = source-sans-pro-3.006R.tar.gz::https://github.com/adobe-fonts/source-sans-pro/archive/3.006R.tar.gz
-	source = source-serif-pro-3.000R.tar.gz::https://github.com/adobe-fonts/source-serif-pro/archive/3.000R.tar.gz
+	source = source-serif-pro-3.001R.tar.gz::https://github.com/adobe-fonts/source-serif-pro/archive/3.001R.tar.gz
 	source = source-code-pro-2.030R-ro-1.050R-it.tar.gz::https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.tar.gz
 	sha256sums = a384e8c3246490bb5eaf79eb9eb9e41d7f2d167bb7d36280156ec77ae8ddfda1
-	sha256sums = bbb504463342f01666db34790574477b2bbd61a338897466461c66c4cd4464fd
+	sha256sums = 84e08c9e870081e0fcda4d83b02e06a4a7f35e52f96491a2246eca8b82fc8a53
 	sha256sums = a4e4dd59b8e0a436b934f0f612c2e91b5932910c6d1c3b7d1a5a9f389c86302b
 
 pkgname = ttf-adobe-source-fonts
