@@ -1,7 +1,7 @@
 pkgbase = python-colorlog
 	pkgdesc = Log formatting with colors
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/colorlog/
 	arch = any
 	license = MIT
