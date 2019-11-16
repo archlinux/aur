@@ -1,7 +1,7 @@
 pkgbase = python-pyinstrument_cext
 	pkgdesc = A CPython extension supporting pyinstrument
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joerick/pyinstrument_cext
 	arch = any
 	license = BSD

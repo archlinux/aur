@@ -4,7 +4,7 @@ _srcname=pyinstrument_cext
 
 pkgname=python-pyinstrument_cext
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CPython extension supporting pyinstrument"
 arch=('any')
 url="https://github.com/joerick/pyinstrument_cext"
