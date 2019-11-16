@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=linux-selinux
-pkgver=5.3.10.1
+pkgver=5.3.11.1
 pkgrel=1
 pkgdesc='Linux SELinux'
 _srctag=v${pkgver%.*}-arch${pkgver##*.}
@@ -36,7 +36,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4')
+            '54bd002b40030609bfb236c35d2a23d23e426edd1f84dd448afbadd1b0aacb55')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
