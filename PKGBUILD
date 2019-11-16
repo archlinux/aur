@@ -1,8 +1,8 @@
 # Maintainer: fft <anonim288@gmail.com>
 
 pkgname=open-numismat-git
-tag_ver=1.8.0
-pkgver=1.8.0.r26.gbe32c39
+tag_ver=1.8.3
+pkgver=1.8.3.r1.g44ef49a
 pkgrel=1
 pkgdesc='Application to create, organize and manage coin catalogue'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 source=("${pkgname}::git+https://github.com/OpenNumismat/open-numismat.git#branch=master"
         "https://github.com/OpenNumismat/open-numismat/releases/download/${tag_ver}/open-numismat_${tag_ver}_all.deb")
 sha256sums=('SKIP'
-            '268588d76ee3c9c6f337e6f5d67563f9088d84d725e619b7da0c0241167789c8')
+            'ce555203baba8ba123117aa24e7605da8fa7f03e021b54a2b29f05919b0ccccd')
 
 pkgver() {
   cd ${pkgname}
