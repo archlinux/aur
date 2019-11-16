@@ -26,7 +26,7 @@ prepare() {
   cd $pkgname-$pkgver
 
   # Update boost.m4 to support GCC > 5.1
-  cp $srcdir/boost.m4 m4/
+  cp "$srcdir"/boost.m4 m4/
   autoconf
 
   patch -Np1 -i ../iostream.patch
