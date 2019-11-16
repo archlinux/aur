@@ -1,10 +1,10 @@
 # Maintainer: Pig Monkey <pm@pig-monkey.com>
 
-pkgbase=('python-undertime')
-pkgname=('python-undertime')
+pkgbase=python-undertime
+pkgname=python-undertime
 _module='undertime'
 pkgver='1.7.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="pick a meeting time"
 url="https://gitlab.com/anarcat/undertime"
 depends=('python-dateparser' 'python-pytz' 'python-pyaml' 'python-termcolor' 'python-terminaltables')

@@ -1,7 +1,7 @@
 pkgbase = python-undertime
 	pkgdesc = pick a meeting time
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/anarcat/undertime
 	arch = any
 	license = AGPL3
