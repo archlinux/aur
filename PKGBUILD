@@ -7,7 +7,7 @@ _module="$_name"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An unladen web framework for building APIs and app backends."
 arch=("i686" "x86_64")
 url="https://falconframework.org"
