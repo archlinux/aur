@@ -3,7 +3,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-x265
-pkgver=3.1.2
+pkgver=3.2.1
 pkgrel=1
 arch=('any')
 pkgdesc='Open Source H265/HEVC video encoder (android)'
@@ -13,7 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake' 'nasm')
 source=("https://bitbucket.org/multicoreware/x265/downloads/x265_${pkgver}.tar.gz")
-sha256sums=('6f785f1c9a42e00a56402da88463bb861c49d9af108be53eb3ef10295f2a59aa')
+sha256sums=('fb9badcf92364fd3567f8b5aa0e5e952aeea7a39a2b864387cec31e3b58cbbcc')
 
 build() {
     cd "${srcdir}"/x265_${pkgver}
@@ -24,6 +24,7 @@ build() {
         mkdir build-12 && cd build-12
 
         android-${_android_arch}-cmake \
+            -DCMAKE_CXX_STANDARD=11 \
             -DLIB_INSTALL_DIR=lib \
             -DENABLE_SHARED=FALSE \
             -DENABLE_CLI=FALSE \
@@ -36,6 +37,7 @@ build() {
         cd .. && mkdir build-10 && cd build-10
 
         android-${_android_arch}-cmake \
+            -DCMAKE_CXX_STANDARD=11 \
             -DLIB_INSTALL_DIR=lib \
             -DENABLE_SHARED=FALSE \
             -DENABLE_CLI=FALSE \
@@ -49,6 +51,7 @@ build() {
         ln -s ../build-12/libx265.a libx265_main12.a
 
         android-${_android_arch}-cmake \
+            -DCMAKE_CXX_STANDARD=11 \
             -DLIB_INSTALL_DIR=lib \
             -DENABLE_SHARED=FALSE \
             -DENABLE_CLI=FALSE \
@@ -62,6 +65,7 @@ build() {
         mkdir build-8 && cd build-8
 
         android-${_android_arch}-cmake \
+            -DCMAKE_CXX_STANDARD=11 \
             -DLIB_INSTALL_DIR=lib \
             -DENABLE_SHARED=FALSE \
             -DENABLE_CLI=FALSE \
