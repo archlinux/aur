@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS Package Tool."
 url='https://wiki.ros.org/rospack'
 
 pkgname='ros-melodic-rospack'
-pkgver='2.5.3'
+pkgver='2.5.4'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -41,7 +41,7 @@ depends=(
 
 _dir="rospack-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rospack/archive/${pkgver}.tar.gz")
-sha256sums=('6d3def4e56d351baab049550b41d4b452da3fa262ba1e2fdc8ec8173ebe0eebd')
+sha256sums=('f28c9399bb45818a60d2e348ad5a5a43a87aea4a362ebaea63230fd9120e19af')
 
 build() {
 	# Use ROS environment variables.
@@ -61,9 +61,9 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
+		-DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
+		-DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
+		-DPYTHON_BASENAME=.cpython-38 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
