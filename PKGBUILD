@@ -3,7 +3,7 @@
 pkgname=singularityviewer-alpha
 pkgver=1.8.7.7968
 _pkgver=1_8_7_7968
-pkgrel=1
+pkgrel=2
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (nighly builds)"
 url="http://www.singularityviewer.org/"
 license=('custom')
@@ -25,7 +25,7 @@ source=("https://bitbucket.org/router_gray/singularityviewer/downloads/Singulari
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
 md5sums=('7d9933cb2985defe93b36cd3b060f219'
-         'ff7aa34dcd7548e3acdb3c2d44ae6604'
+         'f375ed0bc781ef5e880a9d5dbb29258a'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
 
 package() {

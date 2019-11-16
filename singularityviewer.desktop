@@ -2,7 +2,7 @@
 Name=Singularity
 Comment=Client for Online Virtual Worlds, such as Second Life
 Exec=/usr/bin/singularityviewer
-Icon=/opt/singularityviewer/singularity_icon.png
+Icon=/usr/share/pixmaps/singularityviewer_icon.png
 Terminal=false
 Type=Application
 Categories=Game
