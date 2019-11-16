@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-camera-calibration
 	pkgdesc = ROS - camera_calibration allows easy calibration of monocular or stereo cameras using a checkerboard calibration target.
-	pkgver = 1.12.23
-	pkgrel = 2
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://wiki.ros.org/camera_calibration
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = ros-melodic-camera-calibration
 	depends = ros-melodic-message-filters
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-rospy
-	source = ros-melodic-camera-calibration-1.12.23.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.12.23.tar.gz
-	sha256sums = 0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357
+	source = ros-melodic-camera-calibration-1.13.0.tar.gz::https://github.com/ros-perception/image_pipeline/archive/1.13.0.tar.gz
+	sha256sums = 3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4
 
 pkgname = ros-melodic-camera-calibration
 
