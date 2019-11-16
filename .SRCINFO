@@ -1,7 +1,7 @@
 pkgbase = python-flask-cors
 	pkgdesc = A Flask extension for handling Cross Origin Resource Sharing (CORS), making cross-origin AJAX possible
 	pkgver = 3.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/Flask-Cors
 	arch = any
 	license = MIT
