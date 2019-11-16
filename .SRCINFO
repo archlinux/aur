@@ -1,15 +1,15 @@
 pkgbase = libt3config
 	pkgdesc = A library for reading and writing configuration files.
-	pkgver = 0.2.11
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = http://os.ghalkes.nl/t3/libt3config.html
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = gettext
 	options = !libtool
-	source = http://os.ghalkes.nl/dist/libt3config-0.2.11.tar.bz2
-	md5sums = 950ee88a52b29483c819d7ebf6b04b27
+	source = http://os.ghalkes.nl/dist/libt3config-1.0.0.tar.bz2
+	md5sums = e6b1629c4d7f5eabb05a12a65e45a9c7
 
 pkgname = libt3config
 

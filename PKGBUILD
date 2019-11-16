@@ -1,7 +1,7 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
 pkgname=libt3config
-pkgver=0.2.11
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A library for reading and writing configuration files."
 arch=('x86_64' 'i686')
 url="http://os.ghalkes.nl/t3/$pkgname.html"
@@ -18,7 +18,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('950ee88a52b29483c819d7ebf6b04b27')
+md5sums=('e6b1629c4d7f5eabb05a12a65e45a9c7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
