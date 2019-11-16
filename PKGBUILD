@@ -6,7 +6,7 @@
 pkgname=pdftk-gcj
 _pkgname=pdftk
 pkgver=2.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
@@ -20,7 +20,7 @@ source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${_pkgname}-${pkgver
 )
 sha1sums=('a4a27e984c5e1401cfa44b8e92a64113d7396a06'
           '0c8e1a442d266eb6782349e41652c6c07464222e'
-          '1cc399569ff9cca3f514d9385dd3884733cca150')
+          '668240583dc4f8564edd5eaec3c769ec6fdd4cc0')
 
 prepare() {
 	cd ${_pkgname}-$pkgver-dist/${_pkgname}
