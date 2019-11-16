@@ -1,36 +1,47 @@
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Maintainer: Joaquin Garmendia <joaquingc123 at gmail dot com>
 # Contributor: Orestis Floros <orestisf1993@gmail.com>
-
-# All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
-
 pkgname=gtk-arc-flatabulous-theme
+_pkgname=arc-flatabulous-theme
 pkgver=20180201
-pkgrel=1
+pkgrel=2
 pkgdesc="Arc theme with Flatabulous window controls."
 arch=('any')
-url="https://github.com/andreisergiu98/${pkgname#gtk\-}"
+url="https://github.com/andreisergiu98/${_pkgname}"
 license=('GPL3')
-makedepends=('git' 'gtk3' 'sassc')
+makedepends=('autoconf' 'automake' 'sassc' 'optipng' 'inkscape')
 optdepends=('gtk-engine-murrine: for gtk2 themes'
-            'gnome-themes-standard: for gtk2 themes'
-            'arc-icon-theme: recommended icon theme'
+            'gnome-themes-extra: for gtk2 themes'
             'gtk3: for gtk3 themes'
+            'gnome-shell: for detecting GNOME Shell version'
            )
-source=("https://github.com/andreisergiu98/${pkgname#gtk\-}/archive/${pkgver}.tar.gz")
+source=("https://github.com/andreisergiu98/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('37c4a748273ed32cc5ec16fa083dfc4f708374b1a9811b03baf311265f6b5f4d')
 conflicts=('gtk-arc-flatabulous-theme')
 
-prepare() {
-	cd "${srcdir}/${pkgname#gtk\-}-${pkgver}"
-	autoreconf -fi
+_autogen_options=()
+
+check_optdepends() {
+    # Check if gnome-shell is installed
+    if (pacman -Qq gnome-shell > /dev/null) ; then
+        msg "Enabling GNOME Shell support"
+    else
+        msg "Disabling GNOME Shell support"
+        _autogen_options=(${_autogen_options[@]} --disable-gnome-shell)
+    fi
 }
 
 build() {
-	cd "${srcdir}/${pkgname#gtk\-}-${pkgver}"
-	./configure --prefix=/usr
+
+    # Check optional dependencies
+    check_optdepends
+
+    cd "${srcdir}/${_pkgname}"
+    ./autogen.sh ${_autogen_options[@]} --prefix=/usr
+    make
 }
 
 package() {
-	cd "${srcdir}/${pkgname#gtk\-}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+    cd "${srcdir}/${_pkgname}"
+    make DESTDIR="${pkgdir}" install
 }
