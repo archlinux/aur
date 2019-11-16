@@ -12,7 +12,7 @@ _pkgver=0.18
 _count=16148
 _commit=9c2cf7283bc71107202e63b9d8cd0b7eb8c0e531
 pkgver=$_pkgver.$_count
-pkgrel=1
+pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
@@ -30,6 +30,7 @@ sha256sums=('SKIP'
             '1d98fa4e62f352966eb357c93f54b1f0bf562931e8323bf70a83b5e221a5fb14')
 
 _backports=(
+    6eacb17b3e03d20039b85c9daebab9e44386d6bf # Update swigpyrun.in for Python 3.8
     851e3d9847c5043a604a544b502c51e8c628e96c # add missing std:: namespace to build on Debian 10
     bf5923c0f360f43703bf0c2d8b1e52ac246a9c11 # add missing std:: namespace to build on Debian 10
     2a92051192782930f53f8e3dab011dd8382ca8c3 # add missing std:: namespace to build on Debian 10
