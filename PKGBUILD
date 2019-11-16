@@ -1,7 +1,7 @@
-# Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
+# Maintainer: Musee "lae" Ullah <lae(at)idolactiviti(dot)es>
 pkgname=electrum-mona
-pkgver=3.3.4
-pkgrel=2
+pkgver=3.3.8
+pkgrel=1
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
 url='https://github.com/wakiyamap/electrum-mona'
@@ -21,6 +21,12 @@ depends=('cython'
          'python-certifi'
          'python-pycryptodomex'
          'python-websocket-client'
+         'python-aiorpcx'
+         'python-aiohttp'
+         'python-aiohttp-socks'
+         'python-async-timeout'
+         'python-multidict'
+         'python-yarl'
          'gettext'
 )
 optdepends=('python-matplotlib: for plot history'
@@ -29,7 +35,7 @@ optdepends=('python-matplotlib: for plot history'
             'python-keepkey: for KeepKey hardware support')
 makedepends=('python-pycurl' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wakiyamap/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('c79d34a77c77f2d267ecf3127065ae8b8d01d9390700637bf255cc14826e6f6a12095921746de788a3b46f2e3adebc7173e1629e96d9d2f56c63785d101d3574')
+sha512sums=('90f08f771122bb6ead38475765fe1407d6e1a1223fa634242fb20f99ee8bb93e721a5936af04823553856b298ec7d8a21de0439c41a668778f86f43c6a453c6d')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
@@ -38,8 +44,7 @@ prepare() {
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}/
   ./setup.py build
-  ./contrib/make_locale
-  ./contrib/make_packages
+  ./contrib/pull_locale
 }
 
 package() {
