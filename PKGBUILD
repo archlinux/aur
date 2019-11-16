@@ -5,7 +5,7 @@ _sha256sum=e61b8ed5e36b976b487c6e7b15f31bb10c7a0ca7bd5c0e837f4afab64b53a0c6
 
 pkgname=python-googleapis-common-protos
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Common protobufs used in Google APIs"
 arch=('any')
 url="https://pypi.org/project/googleapis-common-protos/"

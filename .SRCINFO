@@ -1,7 +1,7 @@
 pkgbase = python-googleapis-common-protos
 	pkgdesc = Common protobufs used in Google APIs
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/googleapis-common-protos/
 	arch = any
 	license = APACHE
