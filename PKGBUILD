@@ -25,7 +25,7 @@ package() {
         $pkgdir/usr/share/pixmaps/$pkgname.png
 }
 
-md5sums=('78075387e31ec1344b9aabc9b291a6ad'
+md5sums=('25a862c1dd2f07ffdb0ad602ab3ae2a0'
          '6ce7e5c80d16fdc9d4f04089b50a0e96'
          '1968d6cd572b5cef609e5b1792a8935d'
          'a396345680d223883c2ea2c2bf50734d')
