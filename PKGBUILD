@@ -4,7 +4,7 @@
 
 _pkgname=pyradio
 pkgname=$_pkgname-git
-pkgver=0.6.0.r0.gd13b7e3
+pkgver=0.8.5.r0.g058bbe3
 pkgrel=1
 pkgdesc="Command line internet radio player"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('mplayer: as backend' 'vlc: as backend' 'mpv: as backend' 'socat: if
 makedepends=('git' 'python-setuptools')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=($pkgname::git://github.com/coderholic/pyradio.git)
+source=($pkgname::git+https://github.com/coderholic/pyradio.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,17 +25,19 @@ pkgver() {
 
 package() {
   cd $pkgname
-  descr="$(git describe --long --tags)"
-  sed -i "s/git_description = ''/git_description = '$descr'/" pyradio/radio.py
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/pyradio/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/pyradio/README.md"
+
+  _descr="$(git describe --long --tags)"
+  sed -i "s/git_description = ''/git_description = '$_descr'/" pyradio/radio.py
+
+  install -Dm644 LICENCE     "$pkgdir/usr/share/licenses/pyradio/LICENSE"
+  install -Dm644 README.md   "$pkgdir/usr/share/doc/pyradio/README.md"
   install -Dm644 README.html "$pkgdir/usr/share/doc/pyradio/README.html"
-  install -Dm644 build.md "$pkgdir/usr/share/doc/pyradio/build.md"
-  install -Dm644 build.html "$pkgdir/usr/share/doc/pyradio/build.html"
+  install -Dm644 build.md    "$pkgdir/usr/share/doc/pyradio/build.md"
+  install -Dm644 build.html  "$pkgdir/usr/share/doc/pyradio/build.html"
+
   gzip pyradio.1
   install -Dm644 pyradio.1.gz "$pkgdir/usr/share/man/man1/pyradio.1.gz"
-  # We don't have to install stations.csv, it is already in the egg file
-  #install -Dm644 pyradio/stations.csv "$pkgdir/usr/share/doc/pyradio/stations.csv"
+
+  python setup.py install --root="$pkgdir" --optimize=1
 }
 
