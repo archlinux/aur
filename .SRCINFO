@@ -1,7 +1,7 @@
 pkgbase = python-pyinstrument
 	pkgdesc = Call stack profiler for Python. Shows you why your code is slow!
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joerick/pyinstrument
 	arch = any
 	license = BSD

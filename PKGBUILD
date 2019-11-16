@@ -4,7 +4,7 @@ _srcname=pyinstrument
 
 pkgname=python-pyinstrument
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Call stack profiler for Python. Shows you why your code is slow!"
 arch=('any')
 url="https://github.com/joerick/pyinstrument"
