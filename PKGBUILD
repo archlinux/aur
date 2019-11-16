@@ -6,7 +6,7 @@
 pkgname=('mysql56' 'libmysqlclient56' 'mysql-clients56')
 _pkgname=mysql
 pkgbase=mysql56
-pkgver=5.6.45
+pkgver=5.6.46
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.6"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${_pkgname}-${pkgver}.tar
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "mysql-srv_buf_size.patch")
-sha256sums=('404d798974dd89aca4a19e67194b534eddc7508489982175978966360607aabb'
+sha256sums=('12e1fbabf2086e6175359767ca89fa8a58f9274fcad40434aa6a56e582d65f49'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
@@ -57,7 +57,7 @@ build() {
     -DINSTALL_DOCDIR=share/mysql/docs \
     -DINSTALL_SHAREDIR=share/mysql \
     -DWITH_ZLIB=system \
-    -DWITH_SSL=bundled \
+    -DWITH_SSL=system \
     -DWITH_LIBWRAP=OFF \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
     -DWITH_EXTRA_CHARSETS=complex \
@@ -77,7 +77,7 @@ build() {
 
 package_libmysqlclient56(){
   pkgdesc="MySQL client libraries, v5.6"
-  depends=('zlib' 'bash')
+  depends=('openssl' 'zlib' 'bash')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}")
 
