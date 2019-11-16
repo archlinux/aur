@@ -1,0 +1,16 @@
+prompt_itunespy_install() {
+    # Echo to the user that they need to install itunespy manually
+    echo -e "\033[0;31m"
+    echo ""
+    echo "Please make sure you install itunespy from https://pypi.org/project/itunespy/ since it is not available in AUR."
+    echo -e "\033[0m"
+    echo ""
+}
+
+post_install() {
+    prompt_itunespy_install
+}
+
+post_upgrade() {
+    prompt_itunespy_install
+}
