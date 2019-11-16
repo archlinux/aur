@@ -2,7 +2,7 @@
 
 pkgname=fades
 pkgver=8.1
-pkgrel=1.0
+pkgrel=1.1
 pkgdesc="FAst DEpendencies for Scripts."
 url="https://github.com/PyAr/fades/"
 arch=('any')

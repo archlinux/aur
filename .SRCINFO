@@ -1,7 +1,7 @@
 pkgbase = fades
 	pkgdesc = FAst DEpendencies for Scripts.
 	pkgver = 8.1
-	pkgrel = 1.0
+	pkgrel = 1.1
 	url = https://github.com/PyAr/fades/
 	arch = any
 	license = GPL3
