@@ -16,6 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
+    git tag | grep -q v2.0 || git tag v2.0 b548ed4
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
