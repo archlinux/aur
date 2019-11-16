@@ -1,6 +1,6 @@
 pkgbase = python-pyside
 	pkgver = 1.2.4
-	pkgrel = 9
+	pkgrel = 10
 	url = https://wiki.qt.io/PySide
 	arch = x86_64
 	license = LGPL

@@ -1,13 +1,15 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
-# Contributor: lilydjwg <lilydjwg@gmail.com>
-# Contributor: Matthias Maennich <arch@maennich.net>
-# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Florian Pritz <bluewind at xinu dot at>
+# Contributor: lilydjwg <lilydjwg at gmail dot com>
+# Contributor: Matthias Maennich <arch at maennich dot net>
+# Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
+
 pkgbase=python-pyside
 pkgname=(python-pyside-common python2-pyside python-pyside)
 _pkgrealname=pyside
 pkgver=1.2.4
-pkgrel=9
+pkgrel=10
 arch=(x86_64)
 license=(LGPL)
 url="https://wiki.qt.io/PySide"
@@ -17,7 +19,7 @@ source=("pypi-$pkgbase-$pkgver.tar.gz::https://pypi.python.org/packages/source/P
 sha256sums=('1421bc1bf612c396070de9e1ffe227c07c1f3129278bc7d30c754b5146be2433')
 
 build(){
-  cd PySide-$pkgver/sources/pyside
+  cd $srcdir/PySide-$pkgver/sources/pyside
 
   mkdir -p build_py3
   cd build_py3
@@ -28,9 +30,10 @@ build(){
   cd ..
   mkdir -p build_py2
   cd build_py2
+  _ver2=$(python2 -c "import platform; print(platform.python_version())")
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTS=OFF \
     -DQT_PHONON_INCLUDE_DIR=/usr/include/qt4/phonon -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
-    -DPYTHON_SUFFIX=-python2.7
+    -DPYTHON_SUFFIX=-python${_ver2%.*}
   make
 }
 
@@ -53,8 +56,10 @@ package_python-pyside(){
   cd PySide-$pkgver/sources/pyside/build_py3
   make DESTDIR="$pkgdir" install
 
+  _ver3=$(python -c "import platform; print(platform.python_version())")
+
   cp -r "$srcdir/PySide-$pkgver/pyside_package/PySide.egg-info" \
-    "$pkgdir/usr/lib/python3.7/site-packages/pyside-$pkgver-py3.7.egg-info"
+    "$pkgdir/usr/lib/python${_ver3%.*}/site-packages/pyside-$pkgver-py${_ver3%.*}.egg-info"
   mv "$pkgdir"/usr/lib/pkgconfig/pyside.pc \
     "$pkgdir"/usr/lib/pkgconfig/pyside-py3.pc
 
@@ -72,8 +77,10 @@ package_python2-pyside(){
   cd "$srcdir/PySide-$pkgver/sources/pyside/build_py2"
   make DESTDIR="$pkgdir" install
 
+  _ver2=$(python2 -c "import platform; print(platform.python_version())")
+
   cp -r "$srcdir/PySide-$pkgver/pyside_package/PySide.egg-info" \
-    "$pkgdir/usr/lib/python2.7/site-packages/pyside-$pkgver-py2.7.egg-info"
+    "$pkgdir/usr/lib/python${_ver2%.*}/site-packages/pyside-$pkgver-py${_ver2%.*}.egg-info"
   mv "$pkgdir"/usr/lib/pkgconfig/pyside.pc \
     "$pkgdir"/usr/lib/pkgconfig/pyside-py2.pc
 
