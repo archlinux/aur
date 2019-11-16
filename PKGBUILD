@@ -3,7 +3,7 @@
 
 pkgname=python-rplcd
 _pkgname=RPLCD
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="LCD library for the widely used Hitachi HD44780 controller"
 arch=(any)
@@ -11,7 +11,7 @@ url='https://github.com/dbrgn/RPLCD'
 license=('MIT')
 depends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dbrgn/RPLCD/archive/v${pkgver}.tar.gz")
-sha512sums=('5bc9e3cb3bc291ab5e4854e0904db909230e9271bb4e521d8f0cc1c2f4db078af3d84097114ca026a6ae03c611b0301bfdebfe6ed7bb38be965dbe53ac0c30f6')
+sha512sums=('9a5c223cb990e1e20cd2b86e23a49fd1b99b24809163b769bd20c35c1a9b7c8398d725fe9275f27787ec9210b7d415bbae4a31b1c6d1595bb636132b0ca97a1e')
 
 package() {
   cd "${_pkgname}-${pkgver}"
