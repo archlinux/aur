@@ -1,0 +1,18 @@
+pkgbase = python-netmiko
+	pkgdesc = Multi-vendor library to simplify Paramiko SSH connections to network devices
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://github.com/ktbyers/netmiko
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-paramiko
+	depends = python-scp
+	depends = python-pyserial
+	depends = python-textfsm
+	source = https://github.com/ktbyers/netmiko/archive/v2.4.2.tar.gz
+	sha256sums = 02f6d1eafa5588ae89a7ba01f9a0c65089aded8cfedef7bd8d61a1255bf2b4f7
+
+pkgname = python-netmiko
+
