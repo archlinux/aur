@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=('arc-icon-theme-full-git')
-pkgver=r145.ae267dc
-pkgrel=4
+pkgver=r147.d3dcee1
+pkgrel=2
 pkgdesc="The complete Arc icon theme"
 arch=('any')
 url="https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS"
@@ -29,6 +29,6 @@ prepare() {
 
 package() {
   install -dm 755 "$pkgdir/usr/share/icons/Arc-ICONS"
-  cp -r "$srcdir/rtl88-Themes/Arc-ICONS/*" "$pkgdir/usr/share/icons/Arc-ICONS/"
+  cp -r "$srcdir"/rtl88-Themes/Arc-ICONS/* "$pkgdir/usr/share/icons/Arc-ICONS/"
 }
 # vim:set ts=2 sw=2 et:

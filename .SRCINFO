@@ -1,7 +1,7 @@
 pkgbase = arc-icon-theme-full-git
 	pkgdesc = The complete Arc icon theme
-	pkgver = r145.ae267dc
-	pkgrel = 4
+	pkgver = r147.d3dcee1
+	pkgrel = 2
 	url = https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS
 	arch = any
 	license = GPL3
