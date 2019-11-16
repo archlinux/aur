@@ -3,12 +3,12 @@
 
 pkgname=python-paramz
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Parameterization Framework for parameterized model creation and handling"
 arch=("any")
 license=("BSD")
 url="https://github.com/sods/paramz"
-depends=('python' 'python-numpy' 'python-scipy' 'python-six' 'python-decorator')
+depends=('python' 'python-numpy' 'python-scipy' 'python-six' 'python-decorator' 'python-climin-git')
 optdepends=('ipython' 'python-sphinx' 'python-ipykernel' 'python-ipywidgets' 'python-jupyter_client' 'jupyter-notebook')
 makedepends=()
 source=("https://github.com/sods/paramz/archive/v${pkgver}.tar.gz")
