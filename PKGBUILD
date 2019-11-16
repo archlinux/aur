@@ -4,7 +4,7 @@ _gitcommit=713515355ed3aa74ed0b09477bd2eaae7506b77b
 
 pkgname=rst2pdf
 pkgver=0.95.dev0+4+${_gitcommit:0:7}
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert reStructured Text to PDF via ReportLab."
 url="https://rst2pdf.org"
 depends=(
