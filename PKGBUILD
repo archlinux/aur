@@ -1,4 +1,8 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: Florian Pritz <bluewind@xinu.at>
+# Contributor: fzerorubigd <fzero@rubi.gd>
+
+# Based on python-backports.csv in [community]
 
 _name=backports.csv
 pkgname=python2-$_name
