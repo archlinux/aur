@@ -1,12 +1,13 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
-# Contributor: Jelle van der Waa <jelle@vdwaa.nl>
-# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
-# Contributor: Matthias Maennich <arch@maennich.net>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Florian Pritz <bluewind at xinu dot at>
+# Contributor: Jelle van der Waa <jelle@ at vdwaa dot nl>
+# Contributor: Hugo Osvaldo Barrera <hugo at barrera dot io>
+# Contributor: Matthias Maennich <arch at maennich dot net>
 
 pkgbase=shiboken
 pkgname=(python{2,}-shiboken shiboken)
 pkgver=1.2.4
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 license=('LGPL')
 url="http://www.pyside.org"
@@ -25,22 +26,26 @@ build(){
     cd "$srcdir/Shiboken-$pkgver"
     # build python2
     mkdir -p build-py2 && cd build-py2
+    _ver2=$(python2 -c "import platform; print(platform.python_version())")
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr  \
               -DCMAKE_BUILD_TYPE=Release   \
               -DBUILD_TESTS=OFF            \
               -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-              -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-              -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
+              -DPYTHON_LIBRARY=/usr/lib/libpython${_ver2%.*}.so \
+              -DPYTHON_INCLUDE_DIR=/usr/include/python${_ver2%.*} \
               -DQT_QMAKE_EXECUTABLE=qmake-qt4
     make
 
     # build python3
     cd "$srcdir/Shiboken-$pkgver"
     mkdir -p build-py3 && cd build-py3
+    _ver3=$(python -c "import platform; print(platform.python_version())")
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr  \
               -DCMAKE_BUILD_TYPE=Release   \
               -DBUILD_TESTS=OFF            \
               -DUSE_PYTHON3=yes            \
+              -DPYTHON3_LIBRARY=/usr/lib/libpython${_ver3%.*}.so \
+              -DPYTHON3_INCLUDE_DIR=/usr/include/python${_ver3%.*} \
               -DQT_QMAKE_EXECUTABLE=qmake-qt4
     make
 }
@@ -51,7 +56,7 @@ package_shiboken() {
   optdepends=("python2-shiboken: for compilation against python2"
               "python-shiboken: for compilation against python")
 
-  # Header files/ /usr/bin/shiboke, pkgconfig, man page
+  # Header files, /usr/bin/shiboken, pkgconfig, man page
   cd "$srcdir/Shiboken-$pkgver/build-py3"
   make DESTDIR="$pkgdir" install
 
