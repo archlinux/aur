@@ -12,8 +12,7 @@ depends=('python' 'python-cffi' 'python-paramiko' 'python-future' 'python-textfs
 optdepends=()
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
-#sha256sums=('5522cb6218b467a7b9f5c8dd5f81a59d199f8712b8d02a1ad6c9161647256821')
+sha256sums=('c30254303f0d908f64902d89ea73673a922d3a27f94c2af674264a1b5a230249')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
