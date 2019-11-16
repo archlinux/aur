@@ -1,7 +1,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2019.09.09
+pkgver=2019.11.15
 pkgrel=1
 pkgdesc="Colorful Web browser"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://textbrowser.github.io/dooble/"
 license=('BSD')
 depends=('qt5-webengine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('8eae788757083d29846ad11a889c75c2f418309d1c248c09f45b2f10b64506c8')
+sha256sums=('899aeaaf4f27b61ef02aba950fa518bea79fb06bfc31fb1013e1f3029e31cef8')
 
 prepare() {
 	cd $pkgname-$pkgver/2.x

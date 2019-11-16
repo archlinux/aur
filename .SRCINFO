@@ -1,13 +1,13 @@
 pkgbase = dooble
 	pkgdesc = Colorful Web browser
-	pkgver = 2019.09.09
+	pkgver = 2019.11.15
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble/
 	arch = x86_64
 	license = BSD
 	depends = qt5-webengine
-	source = dooble-2019.09.09.tar.gz::https://github.com/textbrowser/dooble/archive/2019.09.09.tar.gz
-	sha256sums = 8eae788757083d29846ad11a889c75c2f418309d1c248c09f45b2f10b64506c8
+	source = dooble-2019.11.15.tar.gz::https://github.com/textbrowser/dooble/archive/2019.11.15.tar.gz
+	sha256sums = 899aeaaf4f27b61ef02aba950fa518bea79fb06bfc31fb1013e1f3029e31cef8
 
 pkgname = dooble
 
