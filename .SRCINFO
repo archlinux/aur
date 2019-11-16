@@ -1,6 +1,6 @@
 pkgbase = flowee
 	pkgdesc = Flowee Bitcoin products
-	pkgver = 2019.7.1
+	pkgver = 2019.9.1
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install
@@ -8,12 +8,15 @@ pkgbase = flowee
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = pkgconf
 	depends = boost-libs
 	depends = libevent
 	depends = openssl
 	provides = flowee-hub
 	backup = etc/flowee/flowee.conf
-	source = git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.07
+	source = git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.09
 	source = flowee.logrotate
 	source = flowee.conf
 	source = logs.conf
