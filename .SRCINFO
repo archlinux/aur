@@ -1,7 +1,7 @@
 pkgbase = mysql
 	pkgdesc = Fast SQL database server, community edition
-	pkgver = 8.0.17
-	pkgrel = 2
+	pkgver = 8.0.18
+	pkgrel = 1
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
 	license = GPL
@@ -18,13 +18,13 @@ pkgbase = mysql
 	makedepends = libevent
 	makedepends = re2
 	makedepends = rapidjson
-	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.17.tar.gz
+	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.18.tar.gz
 	source = my-default.cnf
 	source = mysql-ld.so.conf
 	source = mysql.sysconfig
 	source = mysqld_service.patch
 	source = systemd-sysusers-tmpfiles.patch
-	sha256sums = d44231316ce30a1d1189125ceed86d3388409778e17d0e3b9a060f532463e29a
+	sha256sums = 0eccd9d79c04ba0ca661136bb29085e3833d9c48ed022d0b9aba12236994186b
 	sha256sums = 6bc24ae510f6b6bbad6b3edda2d0028b29292937b482274a4c2fae335f4de328
 	sha256sums = e1c23fa0971a13d998f2790379b68c475438d05b6d6f2691b99051dbf497567f
 	sha256sums = 203dcd22fea668477ac7123dbd9909fae72d3d07f8855417a669a9c94db072ae
@@ -45,8 +45,8 @@ pkgname = mysql
 	depends = libevent
 	depends = systemd-libs
 	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission
-	provides = mariadb=8.0.17
-	provides = mysql=8.0.17
+	provides = mariadb=8.0.18
+	provides = mysql=8.0.18
 	conflicts = mariadb
 	options = emptydirs
 	backup = etc/mysql/my.cnf
@@ -56,9 +56,10 @@ pkgname = libmysqlclient
 	pkgdesc = MySQL client libraries
 	depends = libsasl
 	depends = zlib
-	provides = libmariadbclient=8.0.17
-	provides = libmysqlclient=8.0.17
-	provides = mariadb-libs=8.0.17
+	depends = zstd
+	provides = libmariadbclient=8.0.18
+	provides = libmysqlclient=8.0.18
+	provides = mariadb-libs=8.0.18
 	conflicts = libmariadbclient
 	conflicts = mariadb-libs
 
@@ -70,7 +71,7 @@ pkgname = mysql-clients
 	depends = jemalloc
 	depends = libedit
 	depends = lz4
-	provides = mariadb-clients=8.0.17
-	provides = mysql-clients=8.0.17
+	provides = mariadb-clients=8.0.18
+	provides = mysql-clients=8.0.18
 	conflicts = mariadb-clients
 
