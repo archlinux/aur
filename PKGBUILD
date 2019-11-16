@@ -20,6 +20,7 @@ source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png'
 	'xampp-control-panel'
+	'properties.ini'
 	'xampp-control-panel.desktop'
     'bitrock-unpacker.tcl')
 source_x86_64=("https://www.apachefriends.org/xampp-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
@@ -30,9 +31,10 @@ install='xampp.install'
 sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
             '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
-            '10b03ad9d22d938a4bec6f4d7642b5409ea33b01adf946b3c08785c85bfd4177'
+            '35499d6ccf6f4429432b6a484ae21c6813a9d89ccb4b59463018f8b84477cb64'
+            'b3b8af5ffb807722d73809ab021c67a23108c4fe9cf8b64fa56e62cc81a1d879'
             '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
-            '2d3a79a3018cb9187c259719968893bce237c2d1f2b177ccb40fe6f401619a07')
+            '3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e')
 sha256sums_x86_64=('53710f3d8c5a0b4d145382243093fde927c28a6dc3cf8e3af5bbe2b1c03465ad'
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
                    '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
@@ -56,7 +58,6 @@ _fakeadd_error() {
 	return 1
 
 }
-
 prepare() {
 
 	cd "${srcdir}"
@@ -85,24 +86,26 @@ package() {
     
         ./bitrock-unpacker.tcl ${srcdir}/xampp-linux-x64-7.3.11-0-installer.run ${pkgdir}
 	msg 'Copying executables and launcher...'
-	cp -a "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
-	cp -a "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
-	cp -a "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
-	cp -a "${pkgdir}/native_proftpd_adapter/proftpd_xampp_linux/proftpd"/. "${pkgdir}/opt/lampp/proftpd"
-	cp -a "${pkgdir}/native_mysql_adapter/mysql_xampp_linux/mysql"/. "${pkgdir}/opt/lampp/mysql"
-	cp -a "${pkgdir}/manager/binary"/. "${pkgdir}/opt/lampp"
-	cp -a "${pkgdir}/common_native_adapter/common"/. "${pkgdir}/opt/lampp"
-	chmod g-s -R "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/native_proftpd_adapter/proftpd_xampp_linux"/. "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/native_mysql_adapter/mysql_xampp_linux"/. "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/manager/binary"/. "${pkgdir}/opt/lampp"
+	rsync -avz --remove-source-files "${pkgdir}/common_native_adapter/common"/. "${pkgdir}/opt/lampp"
+	#chmod g-s -R "${pkgdir}/opt/lampp"
 	ln -sf '/opt/lampp/xampp' "${pkgdir}/opt/lampp/lampp"
+	mkdir ${pkgdir}/opt/lampp/share/lampp
+	ln -sf '/opt/lampp/share/xampp/' "${pkgdir}/opt/lampp/share/lampp/"
 	
 	msg 'Changes root location in files(may take a few minutes)...'
 	# Change root location for all files
-	find ${pkgdir}/opt/ -type f -exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI' {} \;
-	find ${pkgdir}/opt/ -type f -exec sed -i 's/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
+	find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI' {} \;
+	find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
-	cp "${pkgdir}/xampp_core_files/xampp_core_folder/licenses"/* "${pkgdir}/usr/share/licenses/xampp"
+	rsync -avz "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
@@ -110,6 +113,7 @@ package() {
 	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/lampp"
 	install -Dm755 "${srcdir}/xampp-manager-polkit" "${pkgdir}/usr/bin/xampp-manager_polkit"
 	install -Dm755 "${srcdir}/xampp-control-panel" "${pkgdir}/usr/bin/xampp-control-panel"
+	install -Dm755 "${srcdir}/properties.ini" "${pkgdir}/opt/lampp/properties.ini"
 
 	# Systemd service
 	install -dm755 "${pkgdir}/etc/systemd/system"
@@ -124,13 +128,13 @@ package() {
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
     
 	# Remove unused folder
-	rm -rf "${pkgdir}/xampp_core_files/"
-	rm -rf "${pkgdir}/xampp_developer_files/"
-	rm -rf "${pkgdir}/native_mysql_adapter/"
-	rm -rf "${pkgdir}/native_apache_adapter/"
-	rm -rf "${pkgdir}/native_proftpd_adapter/"
-	rm -rf "${pkgdir}/manager/"
-	rm -rf "${pkgdir}/common_native_adapter/"
+	#rm -rf "${pkgdir}/xampp_core_files/"
+	#rm -rf "${pkgdir}/xampp_developer_files/"
+	#rm -rf "${pkgdir}/native_mysql_adapter/"
+	#rm -rf "${pkgdir}/native_apache_adapter/"
+	#rm -rf "${pkgdir}/native_proftpd_adapter/"
+	#rm -rf "${pkgdir}/manager/"
+	#rm -rf "${pkgdir}/common_native_adapter/"
 
 	
 }

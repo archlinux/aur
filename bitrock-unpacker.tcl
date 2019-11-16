@@ -76,7 +76,6 @@ set entryIndex 0
 
 foreach {fileName props} $manifest {
     set type [lindex $props 0]
-
     if {$type == "file"} {
         set mode [lindex $props 1]
         set sizes [lindex $props 4]
