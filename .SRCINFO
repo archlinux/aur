@@ -1,7 +1,7 @@
 pkgbase = python-django-rest-auth
 	pkgdesc = Django-rest-auth provides a set of REST API endpoints for Authentication and Registration
 	pkgver = 0.9.5
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Tivix/django-rest-auth/
 	arch = any
 	license = MIT

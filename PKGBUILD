@@ -3,7 +3,7 @@
 pkgname=python-django-rest-auth
 _pypi_pkgname=django-rest-auth
 pkgver=0.9.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Django-rest-auth provides a set of REST API endpoints for Authentication and Registration"
 arch=(any)
 url="https://github.com/Tivix/django-rest-auth/"
