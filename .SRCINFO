@@ -1,7 +1,7 @@
 pkgbase = python-google-api-core
 	pkgdesc = Google API client core library
 	pkgver = 1.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/google-api-core/
 	arch = any
 	license = APACHE

@@ -5,7 +5,7 @@ _sha256sum=df8adc4b97f5ab4328a0e745bee77877cf4a7d4601cb1cd5959d2bbf8fba57aa
 
 pkgname=python-google-api-core
 pkgver=1.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Google API client core library"
 arch=('any')
 url="https://pypi.org/project/google-api-core/"
