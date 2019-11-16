@@ -11,7 +11,7 @@
 
 pkgname=strongswan
 pkgver=5.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source IPsec implementation'
 url='https://www.strongswan.org'
 license=('GPL2')
@@ -32,19 +32,14 @@ backup=(
     etc/swanctl/swanctl.conf
     etc/strongswan.conf
     etc/strongswan.d/{charon-logging.conf,charon.conf,pki.conf,pool.conf,scepclient.conf,starter.conf,swanctl.conf}
-    etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,bliss.conf,chapoly.conf,cmac.conf,connmark.conf,constraints.conf,curl.conf,des.conf,dhcp.conf,dnskey.conf,eap-aka-3gpp2.conf,eap-aka.conf,eap-gtc.conf,eap-identity.conf,eap-md5.conf,eap-mschapv2.conf,eap-radius.conf,eap-sim-file.conf,eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-auth.conf,farp.conf,fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,mgf1.conf,nonce.conf,newhope.conf,ntru.conf,openssl.conf,pem.conf,pgp.conf,pkcs1.conf,pkcs12.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,random.conf,rc2.conf,resolve.conf,revocation.conf,sha1.conf,sha2.conf,sha3.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf,curve25519.conf,bypass-lan.conf}
-
-)
-
+    etc/strongswan.d/charon/{aesni.conf,attr-sql.conf,attr.conf,bliss.conf,chapoly.conf,cmac.conf,connmark.conf,constraints.conf,curl.conf,des.conf,dhcp.conf,dnskey.conf,eap-aka-3gpp2.conf,eap-aka.conf,eap-gtc.conf,eap-identity.conf,eap-md5.conf,eap-mschapv2.conf,eap-radius.conf,eap-sim-file.conf,eap-sim.conf,eap-simaka-pseudonym.conf,eap-simaka-reauth.conf,eap-tls.conf,ext-auth.conf,farp.conf,fips-prf.conf,forecast.conf,gmp.conf,ha.conf,hmac.conf,kernel-netlink.conf,md5.conf,mgf1.conf,nonce.conf,newhope.conf,ntru.conf,openssl.conf,pem.conf,pgp.conf,pkcs1.conf,pkcs12.conf,pkcs7.conf,pkcs8.conf,pubkey.conf,random.conf,rc2.conf,resolve.conf,revocation.conf,sha1.conf,sha2.conf,sha3.conf,socket-default.conf,sql.conf,sqlite.conf,sshkey.conf,stroke.conf,updown.conf,vici.conf,x509.conf,xauth-eap.conf,xauth-generic.conf,xcbc.conf,unity.conf,curve25519.conf,bypass-lan.conf})
 source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"{,.sig}
-    'configure_ac.patch'
-)
-
+    'configure_ac.patch')
 validpgpkeys=("948F158A4E76A27BF3D07532DF42C170B34DBA77")
-
 sha512sums=('630d24643b3d61e931bb25cdd083ad3c55f92fe41f3fcd3198012eee486fb3b1a16dc3f80936162afb7da9e471d45d92b7d183a00153a558babb2a79e5f6813f'
     'SKIP'
     '0e2c818f2f620410dda949d9016a4c1a686bf2946acb3b42a729b2376c077f4dad6762fe8d2f736c213c4895c1fbd60c0d654a1c36f72d06f58ba7cff635bc74')
+install=strongswan.install
 
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
