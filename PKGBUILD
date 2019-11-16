@@ -4,7 +4,7 @@ _name=dlint
 
 pkgname="python-${_name}"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dlint is a tool for encouraging best coding practices and helping ensure we're writing secure Python code."
 arch=('any')
 url="https://github.com/duo-labs/dlint"

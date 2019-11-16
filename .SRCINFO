@@ -1,7 +1,7 @@
 pkgbase = python-dlint
 	pkgdesc = Dlint is a tool for encouraging best coding practices and helping ensure we're writing secure Python code.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/duo-labs/dlint
 	arch = any
 	license = BSD
