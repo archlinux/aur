@@ -1,11 +1,11 @@
 pkgbase = lzdoom-bin
 	pkgdesc = Fork of GZDoom 3.3.2 for legacy systems
 	pkgver = 3.83a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zdoom.org/downloads
 	arch = i686
 	arch = x86_64
-	license = GPL v3
+	license = GPL3
 	depends = sdl2
 	depends = zlib
 	optdepends = fluidsynth
