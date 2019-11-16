@@ -1,7 +1,7 @@
 pkgbase = python-httptools
 	pkgdesc = A collection of framework independent HTTP protocol utils.
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MagicStack/httptools
 	arch = i686
 	arch = x86_64

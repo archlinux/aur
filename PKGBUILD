@@ -6,7 +6,7 @@ _sha256sum=e00cbd7ba01ff748e494248183abc6e153f49181169d8a3d41bb49132ca01dfc
 
 pkgname='python-httptools'
 pkgver='0.0.13'
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of framework independent HTTP protocol utils.'
 arch=('i686' 'x86_64')
 url='https://github.com/MagicStack/httptools'
