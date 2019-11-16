@@ -1,6 +1,6 @@
 # Maintainer: David Flemström <david.flemstrom@gmail.com>
 pkgname=record-query-git
-pkgver=v0.10.4.r50.gd84d4d8
+pkgver=v1.0.0.r1.g594d6a9
 pkgrel=1
 epoch=
 pkgdesc="A tool for doing record analysis and transformation"
@@ -9,7 +9,7 @@ url="https://github.com/dflemstr/rq"
 license=('Apache')
 groups=()
 depends=(gcc-libs)
-makedepends=(cargo clang git rust wget)
+makedepends=(cargo git rust)
 checkdepends=()
 optdepends=()
 provides=()
@@ -21,12 +21,10 @@ install=
 changelog=
 source=(
   $pkgname::git+https://github.com/dflemstr/rq.git
-  https://s3-eu-west-1.amazonaws.com/record-query/v8/x86_64-unknown-linux-gnu/5.7.441.1/v8-build.tar.gz
 )
 noextract=()
 md5sums=(
   SKIP
-  134eb4e842a26f193ae5532d6cd4960a
 )
 
 pkgver() {
@@ -35,8 +33,6 @@ pkgver() {
 }
 
 build() {
-  export V8_LIBS=$srcdir/v8-build/lib/libv8uber.a
-  export V8_SOURCE=$srcdir/v8-build
   cd "$srcdir/$pkgname"
   cargo build --release
 }
