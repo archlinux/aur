@@ -14,7 +14,7 @@ _typeshed_gitcommit="668988fa8cfd106a73218b23f953f226db89b3d4"
 
 pkgname=pytype
 pkgver="${_pytype_tag}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://google.github.io/pytype"

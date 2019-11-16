@@ -1,7 +1,7 @@
 pkgbase = pytype
 	pkgdesc = Python type inferencer
 	pkgver = 2019.10.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://google.github.io/pytype
 	arch = any
 	license = APACHE
