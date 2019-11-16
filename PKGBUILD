@@ -4,7 +4,7 @@ _srcname=binary
 
 pkgname=python-binary
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily convert between binary and SI units (kibibyte, kilobyte, etc.)."
 arch=('any')
 url="https://github.com/ofek/binary"
@@ -18,6 +18,12 @@ source=(
 sha256sums=(
   '6ec010e58f7331ebc8bc9638dbe6c66d635de60d5818b0723bef4dead0ec28a6'
 )
+
+prepare() {
+  cd "${srcdir}/${_srcname}-${pkgver}"
+  # hack: no need to include tests files
+  rm tests/__init__.py
+}
 
 build() {
   cd "${srcdir}/${_srcname}-${pkgver}"
