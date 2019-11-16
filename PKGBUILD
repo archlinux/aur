@@ -23,7 +23,7 @@ pkgver() {
   )
 }
 
-build() {
+prepare() {
 	cd "$srcdir/Flatery/Flatery"
  	rm .directory
  	rm *.md
