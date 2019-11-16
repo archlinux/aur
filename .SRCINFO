@@ -18,6 +18,7 @@ pkgbase = python-napalm
 	depends = python-junos-eznc
 	depends = python-scp
 	depends = python-lxml
+	depends = ciscoconfparse
 	source = https://github.com/napalm-automation/napalm/archive/2.5.0.tar.gz
 	sha256sums = c30254303f0d908f64902d89ea73673a922d3a27f94c2af674264a1b5a230249
 
