@@ -44,15 +44,17 @@ pkgbase = blender-2.7
 	source = SelectCudaComputeArch.patch
 	source = stl_export_iter.patch
 	source = python3.7.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = cef7a015d4ab57592b424ea06c8b576e
-	md5sums = 8b22ddc71fb3a766029dc460bba49a0a
-	md5sums = f21e971208232d8d78d1a4c41013a101
-	md5sums = e0d4a0a876bcf48969613912f3463c01
+	source = python3.8.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 5d489f24c7401574e79b755aead07c779449ae50a1c3299ad182588127697de1
+	sha256sums = 73d878d55434d535d4a8cc2b9b633a43e822812531213a97ac64ade3497b03d6
+	sha256sums = 649c21a12a1bfc0207078e1e58b4813a3e898c6dbbbb35d21e1de7c9e8f1985a
+	sha256sums = 47811284f080e38bcfbfb1f7346279245815a064df092989336b0bf3fe4530e9
+	sha256sums = 229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59
 
 pkgname = blender-2.7
 

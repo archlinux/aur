@@ -38,16 +38,18 @@ source=("git://git.blender.org/blender.git${_fragment}"
         SelectCudaComputeArch.patch
         stl_export_iter.patch
         python3.7.patch
+        python3.8.patch
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'cef7a015d4ab57592b424ea06c8b576e'
-         '8b22ddc71fb3a766029dc460bba49a0a'
-         'f21e971208232d8d78d1a4c41013a101'
-         'e0d4a0a876bcf48969613912f3463c01')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '5d489f24c7401574e79b755aead07c779449ae50a1c3299ad182588127697de1'
+            '73d878d55434d535d4a8cc2b9b633a43e822812531213a97ac64ade3497b03d6'
+            '649c21a12a1bfc0207078e1e58b4813a3e898c6dbbbb35d21e1de7c9e8f1985a'
+            '47811284f080e38bcfbfb1f7346279245815a064df092989336b0bf3fe4530e9'
+            '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -61,7 +63,7 @@ prepare() {
   if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
     git apply -v ${srcdir}/SelectCudaComputeArch.patch
   fi
-  git apply -v ${srcdir}/{python3.7,stl_export_iter}.patch
+  git apply -v ${srcdir}/{python3.7,stl_export_iter,python3.8}.patch
 }
 
 build() {
