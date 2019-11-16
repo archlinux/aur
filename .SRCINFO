@@ -1,7 +1,7 @@
 pkgbase = mysql
 	pkgdesc = Fast SQL database server, community edition
 	pkgver = 8.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mysql.com/products/community/
 	arch = x86_64
 	license = GPL
@@ -18,7 +18,6 @@ pkgbase = mysql
 	makedepends = libevent
 	makedepends = re2
 	makedepends = rapidjson
-	makedepends = protobuf
 	source = https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.17.tar.gz
 	source = my-default.cnf
 	source = mysql-ld.so.conf
@@ -44,7 +43,6 @@ pkgname = mysql
 	depends = icu
 	depends = lz4
 	depends = libevent
-	depends = protobuf
 	depends = systemd-libs
 	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission
 	provides = mariadb=8.0.17
