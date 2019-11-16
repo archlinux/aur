@@ -2,14 +2,14 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r6668
+pkgver=r7000
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('libmad' 'faad2' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'taglib' 'libmp4v2' 'rubberband' 'portaudio' 'portmidi' 'protobuf' 'libshout' 'libid3tag' 'opusfile' 'chromaprint' 'lilv' 'upower')
+depends=('libmad' 'faad2' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'taglib' 'libmp4v2' 'rubberband' 'portaudio' 'portmidi' 'protobuf' 'libshout' 'libid3tag' 'opusfile' 'chromaprint' 'lilv' 'upower' 'lv2')
 makedepends=('git' 'scons' 'pkgconfig' 'glu' 'qt5-tools')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
