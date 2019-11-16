@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=('flatery-icon-theme-git')
-pkgver=r48.5cf6958
+pkgver=r72.a38b3ee
 pkgrel=2
 pkgdesc="Flatery is an icon theme for linux in flat style"
 arch=('any')
@@ -24,17 +24,24 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/Flatery"
+	cd "$srcdir/Flatery/Flatery"
  	rm .directory
- 	rm *.pdf
  	rm *.md
  	rm *.png
+ 	rm *.pdf
+ 	cd "$srcdir/Flatery/Flatery-Dark"
+ 	rm .directory
+ 	rm *.md
+ 	rm *.pdf
 }
 
 package() {
-	msg2 "Installing ${pkgname%-*}..."
-	cd "$srcdir"
-	install -dm 755 "$pkgdir/usr/share/icons/"
-	cp -drf --no-preserve='ownership' . "$pkgdir/usr/share/icons/"
+	cd "$srcdir/Flatery/Flatery"
+	install -dm 755 "$pkgdir/usr/share/icons/Flatery"
+	cp -drf --no-preserve='ownership' * "$pkgdir/usr/share/icons/Flatery"
+
+	cd "$srcdir/Flatery/Flatery-Dark"
+	install -dm 755 "$pkgdir/usr/share/icons/Flatery-Dark"
+	cp -drf --no-preserve='ownership' * "$pkgdir/usr/share/icons/Flatery-Dark"
 }
 # vim:set ts=2 sw=2 et:
