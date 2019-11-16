@@ -2,7 +2,7 @@
 pkgname=python-adafruit-platformdetect
 _pypi_pkgname=Adafruit-PlatformDetect
 pkgver=1.3.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Platform detection for use by libraries like Adafruit-Blinka"
 arch=('armv6h' 'armv7h')
 url="https://github.com/adafruit/Adafruit_Python_PlatformDetect"
