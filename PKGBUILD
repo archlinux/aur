@@ -5,7 +5,7 @@ _sha256sum=d855350d19dc10a17aabd2fe6f4b428ff1a936071f692fbf686a73694d26a51c
 
 pkgname=python-importlab
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to calculate python dependency graphs."
 arch=('any')
 url="https://github.com/google/importlab"
