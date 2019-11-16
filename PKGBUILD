@@ -2,7 +2,7 @@
 pkgname=python-django-modeladmin-reorder
 _pypi_pkgname=django-modeladmin-reorder
 pkgver=0.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Custom ordering for the apps and models in the admin app"
 arch=('any')
 url="https://github.com/mishbahr/django-modeladmin-reorder"

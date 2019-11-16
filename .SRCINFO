@@ -1,7 +1,7 @@
 pkgbase = python-django-modeladmin-reorder
 	pkgdesc = Custom ordering for the apps and models in the admin app
 	pkgver = 0.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mishbahr/django-modeladmin-reorder
 	arch = any
 	license = PSF
