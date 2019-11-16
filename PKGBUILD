@@ -4,7 +4,7 @@ _srcname=binary
 
 pkgname=python-binary
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily convert between binary and SI units (kibibyte, kilobyte, etc.)."
 arch=('any')
 url="https://github.com/ofek/binary"
