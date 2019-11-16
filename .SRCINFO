@@ -13,14 +13,22 @@ pkgbase = dxvk-winelib
 	depends = vulkan-icd-loader
 	depends = wine>=4.0rc1
 	depends = lib32-vulkan-icd-loader
-	conflicts = dxvk-bin
+	provides = dxvk-bin
+	provides = dxvk-git
+	provides = dxvk-wine32-git
+	provides = dxvk-wine64-git
+	provides = dxvk-win32-git
+	provides = dxvk-win64-git
+	provides = dxvk-mingw-git
+	provides = dxvk-winelib-git
+	provides = dxvk
 	conflicts = dxvk-git
 	conflicts = dxvk-wine32-git
 	conflicts = dxvk-wine64-git
 	conflicts = dxvk-win32-git
 	conflicts = dxvk-win64-git
-	conflicts = dxvk-mingw-git
 	conflicts = dxvk-winelib-git
+	conflicts = dxvk
 	source = git+https://github.com/doitsujin/dxvk.git
 	sha256sums = SKIP
 
