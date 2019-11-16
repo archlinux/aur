@@ -1,6 +1,6 @@
 pkgbase = python-aiohttp-jinja2
 	pkgdesc = jinja2 template renderer for aiohttp.web
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/aio-libs/aiohttp_jinja2/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-aiohttp-jinja2
 	depends = python
 	depends = python-aiohttp
 	depends = python-jinja
-	source = https://github.com/aio-libs/aiohttp-jinja2/archive/v1.1.2.zip
-	md5sums = 0b5e8de6cd73a22c5b0fbcca9dee82fa
+	source = https://github.com/aio-libs/aiohttp-jinja2/archive/v1.2.0.zip
+	md5sums = c7de43501a303c351a76f8a6b69a759e
 
 pkgname = python-aiohttp-jinja2
 
