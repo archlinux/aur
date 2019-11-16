@@ -2,7 +2,7 @@
 # Contributor: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=python-colormath
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module that abstracts common color math operations"
 arch=('any')
 url="https://github.com/gtaylor/python-colormath"
@@ -14,9 +14,12 @@ conflicts=('python-colormath')
 source=('https://github.com/gtaylor/python-colormath/archive/3.0.0.tar.gz')
 md5sums=('7a6fe120a4a688fb87b23f9930508471')
 
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py build
+}
+
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
