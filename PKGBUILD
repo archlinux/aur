@@ -3,7 +3,7 @@
 # Author: Vitor Lopes <vmnlop@gmail.com>
 pkgname=jade-application-kit
 pkgver=2.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
 url="https://pypi.org/project/Jade-Application-Kit/"
