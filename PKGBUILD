@@ -5,13 +5,14 @@ _sha256sum=dd0b8ba650732c614c5e6b709e51be321c596566422d99a443d545401a965468
 
 pkgname=python-userpath
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform tool for adding locations to the user PATH, no elevated privileges required!"
 arch=('any')
 url="https://github.com/ofek/userpath"
 license=('MIT' 'APACHE')
 depends=(
   'python-click'
+  'python-distro'
 )
 makedepends=('python' 'python-setuptools')
 options=(!emptydirs)
