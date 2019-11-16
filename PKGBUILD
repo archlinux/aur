@@ -1,14 +1,14 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-git
-pkgver=5b155600d
+pkgver=c1671c707
 pkgrel=1
 pkgdesc="Flowee Bitcoin products"
 arch=('x86_64')
 url="https://flowee.org/"
 license=('GPL')
 depends=('boost-libs' 'libevent' 'openssl')
-makedepends=('boost' 'cmake' 'autoconf' 'automake', 'pkgconf')
+makedepends=('boost' 'cmake' 'autoconf' 'automake' 'pkgconf')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
