@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-  git clone --single-branch --branch "Arc-ICONS" "$url/Arc-ICONS"
+  git clone --single-branch --branch "Arc-ICONS" "$url"
   cd "$srcdir/rtl88-Themes/Arc-ICONS"
 }
 
