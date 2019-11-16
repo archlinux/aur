@@ -1,0 +1,22 @@
+pkgbase = cargo-dinghy-git
+	pkgdesc = Easier cross-compilation for phones and single boards computers
+	pkgver = 0.4.19.552
+	pkgrel = 1
+	url = https://github.com/snipsco/dinghy
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = rust
+	depends = cargo
+	optdepends = android-tools: android support
+	optdepends = android-ndk: android support
+	provides = cargo-dinghy
+	conflicts = cargo-dinghy
+	source = dinghy::git+https://github.com/snipsco/dinghy
+	sha256sums = SKIP
+
+pkgname = cargo-dinghy-git
+
