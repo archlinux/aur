@@ -7,8 +7,8 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.13.1
-pkgrel=2
+pkgver=5.13.2
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
@@ -66,7 +66,7 @@ source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkg
         "0002-Disable-mapboxgl.patch"
         "0003-Support-pkg-config-under-Android.patch"
         "0004-Use-pkg-config-to-find-libjpeg.patch")
-md5sums=('d66b1da335d0c25325fdf493e9044c38'
+md5sums=('7c04c678d4ecd9e9c06747e7c17e0bb9'
          '0658c31a909beba3e73e503060df5fba'
          '2fafec93d1dc9da0797095b815a60d88'
          '621a2b82623d5514be88d15700e9eb20'
