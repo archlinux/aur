@@ -1,6 +1,6 @@
 pkgbase = ttf-font-logos
 	pkgdesc = An icon font providing popular Linux distro logos.
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://github.com/lukas-w/font-logos
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ttf-font-logos
 	depends = fontconfig
 	depends = xorg-font-utils
 	replaces = ttf-font-linux
-	source = ttf-font-logos-0.11.tar.gz::https://github.com/lukas-w/font-logos/archive/v0.11.tar.gz
-	md5sums = 706e05bf9e1d531b7c68f6c74980c8ab
+	source = ttf-font-logos-0.12.tar.gz::https://github.com/lukas-w/font-logos/archive/v0.12.tar.gz
+	md5sums = 4b9c868c059db7d568c997f4413a530b
 
 pkgname = ttf-font-logos
 
