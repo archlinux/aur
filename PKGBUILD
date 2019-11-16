@@ -5,7 +5,7 @@ _sha256sum=b4b65753fcd8319ebddd51c0e1ef148d09592cdc38923d032f8f58ffc1658fd7
 
 pkgname=python-hatch
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern project, package, and virtual env manager"
 arch=('any')
 url="https://github.com/ofek/hatch"
