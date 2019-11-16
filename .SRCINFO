@@ -1,7 +1,7 @@
 pkgbase = python-google-resumable-media
 	pkgdesc = Utilities for Google Media Downloads and Resumable Uploads
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/google-resumable-media/
 	arch = any
 	license = APACHE

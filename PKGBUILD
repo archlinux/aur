@@ -4,7 +4,7 @@ _srcname=google-resumable-media
 
 pkgname=python-google-resumable-media
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
 url="https://pypi.org/project/google-resumable-media/"
