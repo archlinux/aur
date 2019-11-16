@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=muwire
-pkgver=0.5.0
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='An I2P file sharing program'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('gradle')
 source=("https://github.com/zlatinb/muwire/archive/muwire-${pkgver}.tar.gz"
         'muwire.desktop'
         'muwire.sh')
-sha256sums=('fb1a61ad815a69540850b099c990252748e6ffe0166ecd558ac7d8f0a8b58920'
+sha256sums=('5bc4de22d8dfcd5ae17b083a228493c01ba25a6423eefd66546357aa6ccbab54'
             'e3e425d872f3c8cd68037b4ffe71ec66d07148072db89f6af220e7b24881d633'
             'd48d94fef75622bb2afca202804a32cac1cec0514894e1a7c21bb9c2d3a9438b')
 
@@ -23,10 +23,10 @@ build() {
 package() {
     cd "muwire-muwire-${pkgver}"
     
-    bsdtar -x -f "gui/build/distributions/gui-shadow-${pkgver}.tar" --strip-components 2 */lib/"gui-${pkgver}.jar"
+    bsdtar -x -f "gui/build/distributions/gui-shadow-${pkgver}.tar" --strip-components 2 */lib/"gui-${pkgver}-all.jar"
     
-    install -D -m755 "${srcdir}/muwire.sh" "${pkgdir}/usr/bin/muwire"
-    install -D -m644 "gui-${pkgver}.jar"   "${pkgdir}/usr/share/java/muwire.jar"
+    install -D -m755 "${srcdir}/muwire.sh"   "${pkgdir}/usr/bin/muwire"
+    install -D -m644 "gui-${pkgver}-all.jar" "${pkgdir}/usr/share/java/muwire.jar"
     
     install -D -m644 "${srcdir}/muwire.desktop" -t "${pkgdir}/usr/share/applications"
     
