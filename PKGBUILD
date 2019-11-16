@@ -24,6 +24,9 @@ package() {
 	install -Dm755 "$srcdir/usr/share/digiflisp/digiflisp" \
 	               "$pkgdir/usr/share/digiflisp/digiflisp"
 
+	install -Dm755 "$srcdir/usr/share/digiflisp/digiflisp.png" \
+	               "$pkgdir/usr/share/digiflisp/digiflisp.png"
+
 	install -Dm755 "$srcdir/usr/share/digiflisp/qaflisp" \
 	               "$pkgdir/usr/share/digiflisp/qaflisp"
 	
