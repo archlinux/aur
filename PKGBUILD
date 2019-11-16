@@ -26,6 +26,6 @@ package() {
   make -i DESTDIR="$pkgdir" install
   rm -r "$pkgdir"/var
   install -Dm755 -t "$pkgdir"/usr/bin/ "$pkgdir"/usr/sbin/*
-  rm -r "$pkgdir"/usr/sbin/
+  rm -r "$pkgdir"{/lib,/usr/sbin/}
   install -Dm644 bsdlic.txt "$pkgdir"/usr/share/licenses/$pkgname/bsdlic.txt
 }
