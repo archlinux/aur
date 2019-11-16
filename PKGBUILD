@@ -1,6 +1,6 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=xrandr-watch-git
-pkgver=r3.6aa95bb
+pkgver=r4.00bcac4
 pkgrel=1
 pkgdesc="xrandr event watcher"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'make')
 provides=('xrandr-watch')
 conflicts=('xrandr-watch')
 source=(
-	'git://github.com/pastleo/xrandr-watcher.git#branch=master'
+	'git://github.com/pastleo/xrandr-watcher.git#branch=src'
 	'default-handler-hint.sh'
 	'xrandr-watcher.service'
 )
