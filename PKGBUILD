@@ -4,7 +4,7 @@
 _pkgname=qr-filetransfer
 _gourl="github.com/claudiodangelis/$_pkgname"
 pkgname="$_pkgname-git"
-pkgver=r128.09241c3
+pkgver=r129.cfc067a
 pkgrel=1
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
 arch=('any')
