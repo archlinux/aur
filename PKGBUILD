@@ -6,8 +6,8 @@ __author=davis
 _pkgname=LAGraph
 __pkgname=lagraph
 pkgname=$__pkgname-git
-pkgver=22July2019.r36.ge4e91af
-pkgrel=2
+pkgver=22July2019.r134.g63a6fd7
+pkgrel=1
 pkgdesc="A library plus a test harness for collecting algorithms that use the GraphBLAS."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
@@ -38,5 +38,5 @@ package(){
 	make DESTDIR="$pkgdir/" install
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$__pkgname/LICENSE"
 	cd "$pkgdir/usr"
-	mv lib64 lib
+	# mv lib64 lib
 }
