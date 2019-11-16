@@ -1,0 +1,20 @@
+39a40
+> #include <unistd.h>
+219c220,230
+<   strcpy(filename,fullpath_progname);
+---
+>   ssize_t len = readlink("/proc/self/exe", filename, sizeof(filename)-1);
+>   if (len != 1)
+>   {
+>     filename[len] = '\0';
+>   }
+>   else
+>   {
+>     filename[0] = '\0';
+>   }
+> 
+>   // strcpy(filename,fullpath_progname);
+230c241
+<   strcat(filename,"lsynth.mpd");
+---
+>   strcat(filename,"../share/lsynth/lsynth.mpd");

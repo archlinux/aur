@@ -9,8 +9,10 @@ pkgbase = lsynth
 	depends = glibc
 	source = lsynth-3.1.1.tar.gz::https://github.com/deeice/lsynth/archive/v3.1.1.tar.gz
 	source = local://CMakeLists.txt
+	source = local://lsynth-3.1.1.patch
 	sha256sums = 8c1a4286b7ec8512de5c5d61cb6a5a374490dec159cabcf8cd9aa560203d3433
 	sha256sums = 4e6ad6706f685114edbbaa90fc2d739c4f6040c31338dee1782befc6efbbbb6f
+	sha256sums = 182d2bceba128ac66df73a05e4c87f45f78bff0323c492d8207c80019335a9a3
 
 pkgname = lsynth
 
