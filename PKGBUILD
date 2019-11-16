@@ -14,7 +14,7 @@ conflicts=("${pkgname%-*}" "${pkgname}")
 options=('!strip')
 md5sums=('SKIP')
 
-build() {
+prepare() {
   cd "$srcdir/EX-Impression"
   rm *.md
   rm LICENSE
