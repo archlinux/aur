@@ -2,9 +2,9 @@
 _project_name='aioftp'
 pkgname='python-aioftp'
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ftp client/server for asyncio"
-url="http://pohmelie.github.io/aioftp/"
+url="https://github.com/aio-libs/aioftp"
 arch=('any')
 license=('WTFPL')
 depends=('python')
