@@ -1,13 +1,14 @@
 # Contributor: Yosef Or Boczko <yoseforb@gmail.com>
 
 pkgname=geoip-git
-pkgver=1.6.9.r8.g6e18deb
+pkgver=1.6.12.r8.g44e5ffc
 pkgrel=1
 pkgdesc="Non-DNS IP-to-country resolver C library & utils"
 epoch=1
 arch=('i686' 'x86_64')
 url="http://www.maxmind.com/app/c"
 license=('GPL')
+makedepends=('git')
 depends=('zlib' 'geoip-database')
 source=("$pkgname::git://github.com/maxmind/geoip-api-c.git")
 sha256sums=('SKIP')
