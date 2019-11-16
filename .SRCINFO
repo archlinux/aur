@@ -1,7 +1,7 @@
 pkgbase = python-tinyrecord
 	pkgdesc = Atomic transactions for TinyDB
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eugene-eeo/tinyrecord
 	arch = any
 	license = MIT

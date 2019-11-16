@@ -4,7 +4,7 @@ _srcname=tinyrecord
 
 pkgname=python-tinyrecord
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Atomic transactions for TinyDB"
 arch=('any')
 url="https://github.com/eugene-eeo/tinyrecord"
