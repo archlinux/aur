@@ -2,8 +2,8 @@
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-kombu
-pkgver=4.6.4
-pkgrel=3
+pkgver=4.6.6
+pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
 url="https://kombu.readthedocs.org/"
@@ -26,11 +26,7 @@ checkdepends=('python-pytest-runner' 'python-redis' 'python-yaml' 'python-msgpac
               'python-case' 'python-pymongo' 'python-pytz' 'python-pytest-sugar' 'python-sqlalchemy'
               'python-pyro' 'python-boto3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/celery/kombu/archive/$pkgver.tar.gz")
-sha512sums=('fe5e4d0b54bbde23983d557b7593b77982aece76277a8c4c69543c18e89d6224ba914da1024b0cb5565915503d60dcd7110d4c6b4e707a3c642c9c26bb7691ad')
-
-prepare() {
-  sed -i 's/>=2.5.1/>=2.5/' kombu-$pkgver/requirements/default.txt
-}
+sha512sums=('b515d5d2d52212ca2b38005fde13e95eaa289f473dead2b403199f4d62ebf7dde3a32f81468af50fff47bd725041c2a7f7df7661da987beece546852e636db28')
 
 build() {
   cd kombu-$pkgver
