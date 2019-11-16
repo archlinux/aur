@@ -1,7 +1,7 @@
 pkgbase = clingo
 	pkgdesc = Grounding tools for (disjunctive) logic programs
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://potassco.org/
 	arch = i686
 	arch = x86_64
