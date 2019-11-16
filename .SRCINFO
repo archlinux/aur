@@ -1,13 +1,15 @@
 pkgbase = gitlab-cli
 	pkgdesc = Perform GitLab actions on the CLI
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://gitlab.com/T4cC0re/gitlab-cli
 	arch = x86_64
 	license = GPLv3
 	noextract = gitlab-cli
-	source = gitlab-cli::https://gitlab.com/api/v4/projects/13375720/jobs/artifacts/0.1.7/raw/bin/gitlab-cli?job=build
-	sha512sums = c51f2e8fdc3ff18c7907b831aee1b75ca14e58a2b295084b825193354924e3fa5153da3ecb1b03b05756431c7908bcb93852b0250687662f07e22e57dbb817db
+	source = gitlab-cli::https://gitlab.com/api/v4/projects/13375720/jobs/artifacts/0.1.8/raw/bin/gitlab-cli?job=build
+	source = gitlab-cli.1::https://gitlab.com/api/v4/projects/13375720/jobs/artifacts/0.1.8/raw/share/man/man1/gitlab-cli.1?job=build
+	sha512sums = 305b8aa6e378df9deb52d60b424d57ef347f4a7eee4b46364ba1830fe8587a7de6cbf794ac25a09bd0221ece363b95e1c4c9f4290db12a0955a16e7cab90069a
+	sha512sums = d33a778e2213747ab9254fc888a8b8d1253dedb67e379bf0c8e8688e6c401e38805ced8461a698ea5585afa1bb3acbe84caae729e7de30761abceec9cde337e5
 
 pkgname = gitlab-cli
 
