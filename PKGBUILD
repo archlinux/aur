@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Ian Denhardt <ian@zenhack.net>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Ian Denhardt <ian at zenhack dot net>
 
 pkgname=keyringer
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Encrypted and distributed secret sharing software"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnupg' 'git')
 source=("https://keyringer.pw/releases/${pkgname}-${pkgver}.tar.bz2"
         "https://keyringer.pw/releases/${pkgname}-${pkgver}.tar.bz2.asc")
-sha256sums=('45dc05f76fb08797d380ff2841a74ceec61936cfae2219d05b96b7733e349f83'
+sha256sums=('0569eeb38cd398e827cf4358f75f3ce0428072f759db17ae8da6c58a766c4182'
             'SKIP')
 validpgpkeys=("4FA73DE89ADE75998AC24E97B8C1D523FE7AAA84")
 
