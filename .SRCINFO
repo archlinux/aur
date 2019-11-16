@@ -1,13 +1,15 @@
 pkgbase = python-adafruit-ssd1306
 	pkgdesc = Python library to use SSD1306-based 128x64 or 128x32 pixel OLED displays with a Raspberry Pi or Beaglebone Black
 	pkgver = 1.6.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_Python_SSD1306/
 	arch = any
-	license = BSD
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-raspberry-gpio
+	depends = python-adafruit-gpio
+	depends = python-adafruit-pureio
+	optdepends = python-pillow
 	source = https://pypi.io/packages/source/a/adafruit-ssd1306/Adafruit_SSD1306-1.6.2.tar.gz
 	sha256sums = 4768518204037db82eb6b90838938f8519ecd29fe3d6cc3efa0d1100ed527727
 
