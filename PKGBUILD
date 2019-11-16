@@ -1,7 +1,7 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 
 pkgname=drpcli
-pkgver=3.13.5
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Command-line client for Digital Rebar Provision, an API-driven DHCP/PXE/TFTP provisioning system."
 arch=('x86_64')
@@ -10,12 +10,23 @@ license=('Apache')
 provides=('drpcli')
 optdepends=('jq: for parsing and syntax colouring JSON responses'
             'bash-completion: tab completion')
-source=("dr-provision-${pkgver}.zip::https://github.com/digitalrebar/provision/releases/download/v${pkgver}/dr-provision.zip")
-sha256sums=('9cf4aa705962f3c1616cbbbb71780fa15c01382be21da3052fe0c978de78d61f')
+makedepends=('go')
+source=("https://github.com/digitalrebar/provision/archive/v${pkgver}.tar.gz")
+sha256sums=('baa867a14abd20f328bea7c476b8d4c8fd9232df116bf6f5a0eccf13dd8c9a06')
 
 build() {
-    mv ${srcdir}/bin/linux/amd64/drpcli ${srcdir}/
-    ${srcdir}/drpcli autocomplete ${srcdir}/drpcli.definitions
+    _ver=(${pkgver//\./ })
+    export CGO_ENABLED=0
+    export GO111MODULE=on
+    export VERFLAGS="-s -w \
+        -X github.com/digitalrebar/provision/v4.RSMajorVersion=${_ver[0]} \
+        -X github.com/digitalrebar/provision/v4.RSMinorVersion=${_ver[1]} \
+        -X github.com/digitalrebar/provision/v4.RSPatchVersion=${_ver[2]} \
+        -X github.com/digitalrebar/provision/v4.RSExtra=-${pkgrel} \
+        -X github.com/digitalrebar/provision/v4.BuildStamp=$(date -u '+%Y-%m-%d_%I:%M:%S%p')"
+    cd "${srcdir}/provision-${pkgver}/cmds/drpcli"
+    go build -ldflags "${VERFLAGS}" -o "${srcdir}/drpcli"
+    "${srcdir}/drpcli" autocomplete "${srcdir}/drpcli.definitions"
 }
 
 package() {
