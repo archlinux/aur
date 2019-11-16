@@ -6,7 +6,7 @@ _pkgname=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='https://www.mozilla.com/firefox/channel/#beta'
 pkgver=71.0b10
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
@@ -48,4 +48,4 @@ package() {
 }
 md5sums=('4c0ca11a8034b53c0c5b7b9830442cd7'
          'b4d5afd97c8ac229f6027d7853c73c0c'
-         'ea377d9d48f6abe4d9b1554122fcff83')
+         '68c9e357994d714b25f91be9db2a8594')
