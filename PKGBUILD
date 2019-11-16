@@ -1,6 +1,6 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=prerex  
-pkgver=6.5.4
+pkgver=6.8.0
 _vver=6.5.1
 pkgrel=3
 pkgdesc="a LaTeX document style for prerequisite charts"
@@ -14,10 +14,10 @@ source=("http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/$pkgname/doc/$pkgn
 	"http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/$pkgname/$pkgname.sty"
 	http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/doc/prerex.sty.7
        http://ftp.math.purdue.edu/mirrors/ctan.org/graphics/prerex/doc/intro.pdf)
-sha256sums=('9a4a288120fc9284510b0b2da3af2661f8f378c682106c4449bd8d97dd18a1f3'
+sha256sums=('32defe69d3c04e3e1d13d0cb427666dcb8fcca9bf9d9d004873538b79a2516fa'
             'fef226574a214d39d4f09017b29167b4efc24bc9f592d69f56127d7e0d33245b'
-            '5c194defee4c917a82232b410547b9a3ecefa8a714f727a1028860a878cf1ca1'
-            'fedb558717e115d79c1a3610001b4ecfaaf9236c89ccc4336d147b7427a5a448'
+            '55a852cf6fa8f478a540331907b534f8959037ae35e7b521bcf8a2a77d5460a6'
+            'a29f7c75ab58654ba51d6b3f5923b8a3a0b704f8910dfc8ea50974c50a563846'
             '18fe08ff3cdc7ed0d3f7887858e42dcffb485e8b1f49956fe5b926e9b21849fa')
 
 prepare () {
