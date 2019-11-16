@@ -7,7 +7,7 @@ pkgbase = prototool-bin
 	license = MIT
 	provides = prototool=1.9.0
 	conflicts = prototool-git
-	source = https://github.com/uber/prototool/releases/download/v1.9.0/prototool-Linux-x86_64.tar.gz
+	source = prototool-1.9.0-x86_64.tar.gz::https://github.com/uber/prototool/releases/download/v1.9.0/prototool-Linux-x86_64.tar.gz
 	source = https://raw.githubusercontent.com/uber/prototool/v1.9.0/LICENSE
 	sha256sums = 144dfe0070818f56ec5bc3c43d8fe8c837b5dbcb4d383b2a24046ebd485d5c0f
 	sha256sums = 020d43a0acd998e8c1ce91f6ab7ba9fd505c9968dd6d5ce7c7ae9c749641a95e

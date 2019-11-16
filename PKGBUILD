@@ -11,7 +11,7 @@ provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}-git")
 license=('MIT')
 source=(
-  "https://github.com/uber/prototool/releases/download/v${pkgver}/prototool-Linux-$arch.tar.gz"
+  "$_pkgname-$pkgver-$arch.tar.gz::https://github.com/uber/prototool/releases/download/v${pkgver}/prototool-Linux-$arch.tar.gz"
   "https://raw.githubusercontent.com/uber/prototool/v${pkgver}/LICENSE"
 )
 sha256sums=(
