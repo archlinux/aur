@@ -1,0 +1,10 @@
+[Unit]
+Description=Xrandr Watcher
+
+[Service]
+Type=simple
+Environment=XRANDR_DEFAULT_HANDLER_SCRIPT=/usr/bin/xrandr-watcher-handler-example
+ExecStart=/usr/bin/xrandr-watcher %h/.xrandr-changed
+
+[Install]
+WantedBy=graphical.target
