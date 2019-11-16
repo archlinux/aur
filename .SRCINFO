@@ -8,8 +8,8 @@ pkgbase = gr-fosphor
 	groups = 
 	license = GPL
 	makedepends = boost
-	makedepends = opencl-icd
-	makedepends = opencl-header
+	makedepends = ocl-icd
+	makedepends = opencl-headers
 	makedepends = cmake
 	depends = boost
 	depends = gnuradio>=3.8.0.0
