@@ -1,6 +1,6 @@
 pkgbase = python-interruptingcow
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bitbucket.org/evzijst/interruptingcow
 	arch = any
 	license = MIT
