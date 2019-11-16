@@ -3,13 +3,13 @@
 
 pkgname=slashtime
 pkgver=0.5.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A small program which displays the time in various places"
 arch=('any')
 url="https://github.com/afcowie/slashtime.git"
 license=('GPL')
-depends=('java-gnome-bin' 'java-runtime' 'sh' 'hicolor-icon-theme')
-makedepends=('java-environment' 'git')
+depends=('java-gnome-bin' 'java-runtime=8' 'sh' 'hicolor-icon-theme')
+makedepends=('java-environment=8' 'git')
 source=("git+$url#commit=357e15714e9948dc3ae0aefb02325d83266c9740")
 md5sums=('SKIP')
 

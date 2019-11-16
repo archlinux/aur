@@ -1,14 +1,14 @@
 pkgbase = slashtime
 	pkgdesc = A small program which displays the time in various places
 	pkgver = 0.5.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/afcowie/slashtime.git
 	arch = any
 	license = GPL
-	makedepends = java-environment
+	makedepends = java-environment=8
 	makedepends = git
 	depends = java-gnome-bin
-	depends = java-runtime
+	depends = java-runtime=8
 	depends = sh
 	depends = hicolor-icon-theme
 	source = git+https://github.com/afcowie/slashtime.git#commit=357e15714e9948dc3ae0aefb02325d83266c9740
