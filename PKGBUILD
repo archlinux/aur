@@ -3,7 +3,7 @@
 pkgname=python-adafruit-blinka
 _pypi_pkgname=Adafruit-Blinka
 pkgver=3.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="CircuitPython APIs for non-CircuitPython versions of Python such as CPython on Linux and MicroPython"
 arch=('armv6h' 'armv7h')
 url="https://github.com/adafruit/Adafruit_Blinka"
