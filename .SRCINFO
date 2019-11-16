@@ -1,7 +1,7 @@
 pkgbase = python-pypinfo
 	pkgdesc = View PyPI download statistics with ease.
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ofek/pypinfo
 	arch = any
 	license = MIT

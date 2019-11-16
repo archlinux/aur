@@ -4,7 +4,7 @@ _srcname=pypinfo
 
 pkgname=python-pypinfo
 pkgver=15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="View PyPI download statistics with ease."
 arch=('any')
 url="https://github.com/ofek/pypinfo"
