@@ -23,7 +23,7 @@ pkgver() {
 	)
 }
 
-build() {
+prepare() {
 	cd "$srcdir/kuyen-icons"
  	rm *.md
 }
