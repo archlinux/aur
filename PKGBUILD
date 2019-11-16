@@ -4,7 +4,7 @@ _srcname=google-cloud-bigquery
 
 pkgname=python-google-cloud-bigquery
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google BigQuery API client library"
 arch=('any')
 url="https://pypi.org/project/google-cloud-bigquery/"

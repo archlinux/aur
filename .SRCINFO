@@ -1,7 +1,7 @@
 pkgbase = python-google-cloud-bigquery
 	pkgdesc = Google BigQuery API client library
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/google-cloud-bigquery/
 	arch = any
 	license = APACHE
