@@ -1,6 +1,6 @@
 pkgbase = guake-git
 	pkgdesc = Top-down terminal for Gnome using gtk3 and vte3
-	pkgver = 3.4.0.48.g7c91cfe
+	pkgver = 3.6.3.37.g9d3ef38
 	pkgrel = 1
 	url = https://github.com/Guake/guake
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = guake-git
 	depends = gettext
 	depends = gobject-introspection-runtime
 	depends = libwnck3
+	depends = libnotify
 	provides = guake
 	conflicts = guake
 	conflicts = guake-gtk2-git
