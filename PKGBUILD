@@ -6,7 +6,7 @@ _pkgname=firefox-beta
 pkgver=71.0b10
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=('x86_64')
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
@@ -26,7 +26,7 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US
         "$_pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('fc8882043c9d42272543c78b78722b06f66022b38898746e179fbaae3a1617f5'
-            '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
+            '4bec62032e49c28ff27750abddbdbdbb1a4b5cba719c39498968fe53adee790b'
             '210f13ea47c4b96387f26ee7fc4dfc5c192cfb169aef2a13303fbd1ee58b3761')
 # RC
 if [[ $_build = ? ]]; then
