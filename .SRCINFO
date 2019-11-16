@@ -1,7 +1,7 @@
 pkgbase = python-asgiref
 	pkgdesc = Reference ASGI adapters and channel layers
 	pkgver = 3.2.3
-	pkgrel = 0
+	pkgrel = 1
 	url = http://github.com/django/asgiref/
 	arch = any
 	license = BSD
