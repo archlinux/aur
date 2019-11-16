@@ -4,7 +4,7 @@ _srcname=zimports
 
 pkgname=python-zimports
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="yet another import fixing tool"
 arch=('any')
 url="https://github.com/sqlalchemyorg/zimports"
