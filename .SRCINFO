@@ -1,13 +1,13 @@
 pkgbase = nlohmann-json
 	pkgdesc = Header-only JSON library for Modern C++
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://github.com/nlohmann/json
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = nlohmann-json-3.7.1.tar.gz::https://github.com/nlohmann/json/archive/v3.7.1.tar.gz
-	sha256sums = e25cf46631f1a3200d109ca33a683b84538411170ee99cd181db8089a2513189
+	source = nlohmann-json-3.7.2.tar.gz::https://github.com/nlohmann/json/archive/v3.7.2.tar.gz
+	sha256sums = 914c4af3f14bb98ff084172685fba5d32e8ce4390ec8ba5da45c63daa305df4d
 
 pkgname = nlohmann-json
 
