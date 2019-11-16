@@ -1,8 +1,8 @@
 pkgname="feed2tweet"
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse rss feed and tweet new posts to Twitter"
-url="https://github.com/chaica/feed2tweet"
+url="https://gitlab.com/chaica/feed2tweet"
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-persistentlist' 'python-tweepy' 'python-feedparser')
