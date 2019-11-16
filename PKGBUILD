@@ -2,10 +2,10 @@
 
 pkgname=('flatery-icon-theme-git')
 pkgver=r48.5cf6958
-pkgrel=1
-pkgdesc='Flatery is an icon theme for linux in flat style'
+pkgrel=2
+pkgdesc="Flatery is an icon theme for linux in flat style"
 arch=('any')
-url='https://github.com/cbrnix/Flatery'
+url="https://github.com/cbrnix/Flatery"
 license=('CC BY-NC-SA 3.0')
 makedepends=('git')
 source=("git+$url")
@@ -15,7 +15,7 @@ options=('!strip')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/Flatery"
+	cd "$srcdir/Flatery"
   ( 
     set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-	cd "${srcdir}/Flatery"
+	cd "$srcdir/Flatery"
  	rm .directory
  	rm *.pdf
  	rm *.md
@@ -33,8 +33,8 @@ build() {
 
 package() {
 	msg2 "Installing ${pkgname%-*}..."
-	cd "${srcdir}"
-	install -dm 755 "${pkgdir}/usr/share/icons/"
-	cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
+	cd "$srcdir"
+	install -dm 755 "$pkgdir/usr/share/icons/"
+	cp -drf --no-preserve='ownership' . "$pkgdir/usr/share/icons/"
 }
 # vim:set ts=2 sw=2 et:
