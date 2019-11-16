@@ -2,7 +2,7 @@
 
 pkgname=('rednukem-git')
 pkgver=r256.19f24f3
-pkgrel=2
+pkgrel=3
 pkgdesc="Redneck Rampage and Duke Nukem 3D port based on EDuke32"
 arch=('i686' 'x86_64')
 url="https://github.com/nukeykt/NRedneck/"
@@ -34,7 +34,7 @@ package() {
   # install binaries, buildlicense, icon and desktop files
   install -d "$pkgdir/usr/bin"
   install -m 755 rednukem "$pkgdir/usr/bin/"
-  install -Dm "644 package/common/buildlic.txt" "$pkgdir/usr/share/licenses/$pkgname/buildlic.txt"
+  install -Dm 644 "package/common/buildlic.txt" "$pkgdir/usr/share/licenses/$pkgname/buildlic.txt"
   install -Dm 644 "../../rednukem.png" "$pkgdir/usr/share/pixmaps/rednukem.png"
   install -Dm 644 "../../rednukem.desktop" "$pkgdir/usr/share/applications/rednukem.desktop"
 }
