@@ -6,7 +6,7 @@ _sha256sum=abb5a88b70de96e7dfb65244cc13cff7e9c5edee5333175d5a7668ac7c742c6c
 
 pkgname="python-${_name}"
 pkgver="${_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for measuring Python class cohesion."
 arch=('any')
 url="https://github.com/mschwager/cohesion"
