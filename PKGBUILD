@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=(cling-git cling-jupyter-git)
-pkgver=r4338.4683c83c
+pkgver=r4443.9470e538
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ build() {
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/opt/cling" \
-        -DLLVM_TARGETS_TO_BUILD="host" \
+        -DLLVM_TARGETS_TO_BUILD="host;NVPTX" \
         -DLLVM_BUILD_LLVM_DYLIB=OFF \
         -DLLVM_ENABLE_RTTI=ON \
         -DLLVM_ENABLE_FFI=ON \
