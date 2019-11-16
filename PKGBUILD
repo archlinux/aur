@@ -2,7 +2,7 @@
 
 pkgname=uvicorn
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The lightning-fast ASGI server."
 arch=('any')
 url="https://www.uvicorn.org/"
