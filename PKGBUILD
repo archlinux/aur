@@ -3,7 +3,7 @@
 pkgbase=django-redis
 pkgname=('python-django-redis')
 pkgver=4.10.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Full featured redis cache backend for Django"
 arch=('any')
 license=('BSD')
