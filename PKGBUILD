@@ -1,6 +1,6 @@
 # Maintainer: Lukas Spies <Lukas .dot. Spies (at) web .dot. de>
 pkgname=mingw-w64-exiv2
-pkgver=0.27.1
+pkgver=0.27.2
 pkgrel=1
 pkgdesc="Exif and Iptc metadata manipulation library and tools (mingw-w64)"
 arch=('any')
@@ -9,8 +9,8 @@ license=('GPL')
 makedepends=('mingw-w64-cmake' 'rsync')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-gettext' 'mingw-w64-libiconv' 'mingw-w64-expat')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://github.com/Exiv2/exiv2/archive/$pkgver.tar.gz")
-md5sums=('1dabdd50018fd12a85299aeeed38c4e9')
+source=("https://github.com/Exiv2/exiv2/archive/v$pkgver.tar.gz")
+sha256sums=('3dbcaf01fbc5b98d42f091d1ff0d4b6cd9750dc724de3d9c0d113948570b2934')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
