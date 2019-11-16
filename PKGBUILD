@@ -37,5 +37,5 @@ build() {
 package() {
   cd ${pkgname}
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  mv "${srcdir}/private_keys.py" "${pkgdir}/usr/lib/python3.7/site-packages/OpenNumismat/"
+  mv "${srcdir}/private_keys.py" "${pkgdir}/usr/lib/python3.8/site-packages/OpenNumismat/"
 }
