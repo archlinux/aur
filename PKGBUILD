@@ -32,5 +32,5 @@ package() {
     for f in .BUILDINFO .MTREE .INSTALL .PKGINFO; do
       rm -f "$pkgdir/$f"
     done
-    rm -f "$pkgdir/*.tar.*"
+    find "$pkgdir" -name "*.pkg.tar*" | xargs rm -f
 }
