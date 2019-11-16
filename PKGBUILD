@@ -36,7 +36,7 @@ build () {
 package() {
     cd ${srcdir}/PineapplePictures
     #make INSTALL_ROOT="$pkgdir" install
-    install -Dm644 ./PineapplePictures ${pkgdir}/usr/bin/PineapplePictures
+    install -Dm755 ./PineapplePictures ${pkgdir}/usr/bin/PineapplePictures
     mkdir -p ${pkgdir}/usr/share/licenses/pineapple-pictures-git
     install ./LICENSE ${pkgdir}/usr/share/licenses/pineapple-pictures-git/LICENSE
 }
