@@ -7,10 +7,10 @@
 
 pkgname=('scipoptsuite')
 pkgver=6.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolbox for generating and solving optimization problems"
 arch=('x86_64')
-url="https://github.com/heppu/gkill"
+url="https://scip.zib.de"
 license=('LGPL3' 'custom:ZIB Academic License')
 replaces=('ziboptsuite')
 depends=('gmp' 'readline' 'zlib')
@@ -21,9 +21,7 @@ optdepends=('coin-or-ipopt: COIN-OR Interior Point Optimizer IPOPT'
             'bliss: Library for computing automorphism groups and canonical forms of graphs'
             )
 provides=('scip=6.0.2' 'soplex=4.0.2' 'zimpl=3.3.8')
-source=("$url/releases/download/v$pkgver/gkill-linux-386")
-sha512sums=('20e07b4e916473d01804c25a04b9a3d97b2ac1be54ea62d81a77dda262281b39cd0666e30772e9d82c9c4cf18edcf80c3b864d3085ce51ac022c769ee5a2e730')
-# source=("$url/download/release/$pkgname-$pkgver.tgz")
+source=("$url/download/release/$pkgname-$pkgver.tgz")
 sha256sums=('e25329a2ed4fbdde8a32279a4c955ee7a8b8795429b6e7105ae17998c2ecbe66')
 
 build() {
