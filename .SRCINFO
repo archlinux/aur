@@ -1,6 +1,6 @@
 pkgbase = espanso-bin
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://espanso.org/
 	install = espanso-bin.install
@@ -11,9 +11,9 @@ pkgbase = espanso-bin
 	depends = libxtst
 	provides = espanso
 	conflicts = espanso
-	source = espanso-linux-0.3.4.tar.gz::https://github.com/federico-terzi/espanso/releases/download/v0.3.4/espanso-linux.tar.gz
-	source = https://raw.githubusercontent.com/federico-terzi/espanso/v0.3.4/src/res/linux/systemd.service
-	sha512sums = 5c0ad1dde2dbeba9d23e5c7ecb902f4ccc7b98eaaa93fcdc485a4059a6825b5ca557b9797e20cee7fd6240b5798aaa88e208df07644e85cf1fd03d392d84e226
+	source = espanso-linux-0.3.5.tar.gz::https://github.com/federico-terzi/espanso/releases/download/v0.3.5/espanso-linux.tar.gz
+	source = https://raw.githubusercontent.com/federico-terzi/espanso/v0.3.5/src/res/linux/systemd.service
+	sha512sums = 4ad0d47aaabbe720137e5b38a82476ea97c95ee8edb710357b593fe1f11ab0610e93f1fe518466fd900c9597b7079cfcf02e4e7382f972cda0b5e450481a4a86
 	sha512sums = 8f30ebc5dbb633f9cdd464765df38e6ef3fa008ba6d2fa83d66eed992a9e2c8be41fadbeb1d3048738078357bb72c78663900b5970f5061a0175c72cd5053dad
 
 pkgname = espanso-bin
