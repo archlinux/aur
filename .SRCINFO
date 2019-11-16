@@ -1,7 +1,7 @@
 pkgbase = rednukem-git
 	pkgdesc = Redneck Rampage and Duke Nukem 3D port based on EDuke32
 	pkgver = r256.19f24f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nukeykt/NRedneck/
 	install = rednukem.install
 	arch = i686
