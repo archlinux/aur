@@ -7,13 +7,13 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0alpha.r483.gca2953d0ed
+pkgver=5.0alpha.r539.ge47ab7aa3b
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="https://www.jabref.org"
 license=('MIT')
-depends=('java-environment=12') # tested with zulu-12-bin
+depends=('java-environment=13') # tested with  openjdk 13 from official repos
 makedepends=('git' 'java-environment=12')
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
