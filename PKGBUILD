@@ -1,14 +1,14 @@
 # Maintainer: Will Price <will.price94+aur@gmail.com>
 pkgname=gdub-git
-pkgver=r31.fd7c8a8
-pkgrel=1
+pkgver=r43.ebe14f1
+pkgrel=2
 epoch=
 pkgdesc="A gradle wrapper wrapper to make gradlew easier to use"
 arch=('any')
 url="www.gdup.rocks"
 license=('MIT')
 groups=()
-depends=('jdk')
+depends=('java-environment')
 makedepends=()
 checkdepends=()
 optdepends=('gradle')
@@ -29,6 +29,6 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname%%-git}"
-    mkdir -p "$pkgdir/usr/share"
-    ./install "$pkgdir/usr/share"
+    mkdir -p "$pkgdir/usr/"bin
+    ./install "$pkgdir/usr"
 }
