@@ -16,7 +16,9 @@ pkgbase = clingo
 	depends = python
 	conflicts = clasp
 	source = git+https://github.com/potassco/clingo#tag=v5.4.0
+	source = python38-fix.patch
 	sha256sums = SKIP
+	sha256sums = 782d9fa710e59cba36bc3bfb922d52de0469cd3d0c5c591308f8e459139bd72f
 
 pkgname = clingo
 

@@ -12,11 +12,17 @@ license=('MIT')
 depends=('lua' 'python')
 makedepends=('clang' 'cmake' 'git' 'ninja' 're2c')
 conflicts=('clasp')
-source=("git+https://github.com/potassco/clingo#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("git+https://github.com/potassco/clingo#tag=v${pkgver}"
+        "python38-fix.patch")
+sha256sums=('SKIP'
+            '782d9fa710e59cba36bc3bfb922d52de0469cd3d0c5c591308f8e459139bd72f')
 
 prepare() {
   sed '/#include <xlocale.h>/d' -i "${srcdir}"/clingo/clasp/libpotassco/src/string_convert.cpp
+
+  cd "${srcdir}/${pkgname}"
+  # Upstream patch
+  patch -Np1 -i "${srcdir}/python38-fix.patch"
 }
 
 build() {
