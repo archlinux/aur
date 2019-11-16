@@ -2,7 +2,7 @@
 
 pkgname=monacoin-qt
 _coinname=monacoin
-pkgver=0.16.3
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="peer-to-peer network based digital currency - Qt GUI"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'pkg-config' 'boost' 'gcc' 'make' 'autoconf' 'automake' 'libt
 optdepends=('qrencode: for generating QR codes within the GUI' 'zeromq: send notifications via zeromq')
 source=("https://github.com/monacoinproject/${_coinname}/archive/${_coinname}-${pkgver}.tar.gz"
         "monacoin-qt.desktop")
-sha256sums=('15d81a215b7b42df50ff94353c2617a365797102813bc7812ef03d564e084580'
+sha256sums=('f3fbbd0014abcbf1993a59ac4742dc6b77dc2caaeee7956f1177a450833e278b'
             '4af25bac0076c6d2060832b66819741d3e049a71d6ad5f1a26a2700415d23cfc')
 install=monacoin.install
 
