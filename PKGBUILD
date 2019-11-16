@@ -2,15 +2,14 @@
 
 pkgname=emacs-else-git 
 pkgver=2014_02_14
-pkgrel=3
+pkgrel=4
 pkgdesc="Emacs Language Sensitive Editor -- minor mode to use language specific abbreviations"
 url="http://home.comcast.net/~dharter46"
 arch=('any')
 license=('GPL')
 depends=('emacs')
-makedepends=('texlive-plainextra')
 install=else.install
-source=('git+https://github.com/stefanhusmann/emacs-else.git')
+source=('git+https://gitlab.com/stefanhusmann/emacs-else.git')
 md5sums=('SKIP')
 
 pkgver(){
