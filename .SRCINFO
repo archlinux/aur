@@ -1,6 +1,6 @@
 pkgbase = mxnet-git
 	pkgdesc = A flexible and efficient library for deep learning
-	pkgver = 1.5.1.r10346.4a27b5c32b
+	pkgver = 1.5.1.r10348.ec2f3a6110
 	pkgrel = 1
 	url = http://mxnet.io/
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = mxnet-git
 	depends = python-numpy
 	depends = python-requests
 	depends = zeromq
-	provides = mxnet=1.5.1.r10346.4a27b5c32b
+	provides = mxnet=1.5.1.r10348.ec2f3a6110
 	conflicts = mxnet
 	source = mxnet::git+https://github.com/apache/incubator-mxnet.git
 	sha512sums = SKIP
