@@ -3,7 +3,7 @@
 
 pkgname=picup
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Picflash upload Tool"
 arch=('any')
 url="https://github.com/Arvedui/picup"
