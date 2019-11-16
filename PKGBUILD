@@ -6,7 +6,7 @@
 pkgname=('mysql57' 'libmysqlclient57' 'mysql-clients57')
 _pkgname=mysql
 pkgbase=mysql57
-pkgver=5.7.27
+pkgver=5.7.28
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "my-default.cnf")
-sha256sums=('f8b65872a358d6f5957de86715c0a3ef733b60451dad8d64a8fd1a92bf091bba'
+sha256sums=('298b58b7448a8ceff0ba4ab67f63ea58cef0863055730d76241dff42efe2cfdb'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
