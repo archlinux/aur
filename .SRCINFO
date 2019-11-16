@@ -1,7 +1,7 @@
 pkgbase = python2-wstool
 	pkgdesc = workspace multi-SCM commands
 	pkgver = 0.1.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/wstool
 	arch = any
 	license = BSD
@@ -11,7 +11,7 @@ pkgbase = python2-wstool
 	depends = python2-yaml
 	conflicts = python-wstool
 	source = https://files.pythonhosted.org/packages/source/w/wstool/wstool-0.1.17.tar.gz
-	md5sums = 656e6456e31dc5a43f0a9aae9efed7ea
+	sha256sums = c79b4f110ef17004c24972d742d2c5f606b0f6b424295e7ed029a48e857de237
 
 pkgname = python2-wstool
 
