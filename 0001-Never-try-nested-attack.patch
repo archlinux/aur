@@ -1,0 +1,26 @@
+From 4412e1f92353a9211f865438c784f28d6492122d Mon Sep 17 00:00:00 2001
+From: Davide Depau <davide@depau.eu>
+Date: Sun, 17 Nov 2019 18:44:31 +0100
+Subject: [PATCH] Never try nested attack
+
+---
+ src/mfoc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/mfoc.c b/src/mfoc.c
+index e2545be..6cf8055 100644
+--- a/src/mfoc.c
++++ b/src/mfoc.c
+@@ -1059,7 +1059,8 @@ int mf_enhanced_auth(int e_sector, int a_sector, mftag t, mfreader r, denonce *d
+       NtLast = bytes_to_num(Rx, 4) ^ crypto1_word(pcs, bytes_to_num(Rx, 4) ^ t.authuid, 1);
+ 
+       // Make sure the card is using the known PRNG
+-      if (! validate_prng_nonce(NtLast)) {
++      if (true || ! validate_prng_nonce(NtLast)) {
++           printf("Not doing nested attack.\n");
+            printf("Card is not vulnerable to nested attack\n");
+            return -99999;
+       }
+-- 
+2.24.0
+
