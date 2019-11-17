@@ -1,6 +1,6 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=xrandr-watch-git
-pkgver=r5.68c0387
+pkgver=r7.a5736ef
 pkgrel=1
 pkgdesc="xrandr event watcher"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 md5sums=(
 	'SKIP'
 	'55e84a48456024d6d61313bdb15daaee'
-	'1547e19adcbf94d91109e99dab57a464'
+	'd9029d0359429aa3c54acb7e02d111a1'
 )
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
