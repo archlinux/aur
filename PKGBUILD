@@ -1,7 +1,7 @@
 # Maintainer: Martin Franc <me@martinfranc.eu>
 
 pkgname=wob
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64')
