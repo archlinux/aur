@@ -3,8 +3,8 @@
 
 _gemname=hitimes
 pkgname=ruby-${_gemname}
-pkgver=1.3.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Fast, high resolution timer library for recording performance metrics'
 url='https://github.com/copiousfreetime/hitimes'
 arch=('x86_64')
@@ -12,9 +12,9 @@ license=('ISC')
 depends=('ruby')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/copiousfreetime/hitimes/archive/v${pkgver}.tar.gz)
-sha256sums=('194a75069de5165739a6108c9a039be0bf30583ae50609d46fb142dc29fe9ff9')
-sha512sums=('215ce983345fb1ecceb381d2e9cb7079e1eadaa0eb118052a569cf7239e3fd12f9799a769bf03abb17185326804da6ca6dce5e0c16f6c126e1992e7ff02e1113')
+source=(https://github.com/copiousfreetime/hitimes/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('3cc6f67fd1e87f7978e8919c4af528a9f1677d8d70209b2bb46d6a196f26ad37')
+sha512sums=('ac7211eafe8e1534d65a26b235e2558712ce91ecfb529a097974e749ef07d4ae232cd10411561f4f759df920b3133b8a57089c7f77d5a0bd5a0b56352724fae7')
 
 prepare() {
   cd ${_gemname}-${pkgver}
@@ -29,12 +29,16 @@ build() {
 package() {
   cd ${_gemname}-${pkgver}
   local _gemdir="$(gem env gemdir)"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
-  find "${pkgdir}/${_gemdir}" \( -name '*.log' -or -name 'gem_make.out' \) -delete
+
+  cd "${pkgdir}/${_gemdir}"
+  rm -rf cache gems/${_gemname}-${pkgver}/{ext,lib/*/*.so} \
+    extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
 }
 
 # vim: ts=2 sw=2 et:
