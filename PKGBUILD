@@ -11,17 +11,17 @@
 # checksums
 
 pkgname=mongodb-3.4
-pkgver=3.4.20
+pkgver=3.4.23
 pkgrel=1
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=('x86_64')
 url='https://www.mongodb.com/'
 license=('AGPL3')
 provides=('mongodb')
-conflicts=('mongodb')
+conflicts=('mongodb' 'mongodb-bin')
 depends=('pcre' 'snappy' 'openssl' 'libsasl' 'yaml-cpp' 'lsb-release' 'wiredtiger'
          'libstemmer')
-makedepends=('scons' 'readline' 'ncurses' 'libpcap' 'boost')
+makedepends=('python2-scons' 'readline' 'ncurses' 'libpcap' 'boost')
 checkdepends=('python2-pymongo' 'python2-yaml')
 optdepends=('libpcap: needed for mongosniff'
             'mongodb-tools: mongoimport, mongodump, mongotop, etc')
@@ -30,7 +30,7 @@ source=("http://downloads.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
         'mongodb.sysusers' 'mongodb.tmpfiles' 'mongodb.conf' 'mongodb.service'
         'asio-openssl-1.1.0.patch'
         'using-std-string.patch')
-sha512sums=('6192ae906e0d56a028c73056471d60c5bbd684ede346c946dfd2d03370e634323ca8ca64f8d9eaaed845c581d4b67a949279b083d78a83abf4ec0db88fb048e9'
+sha512sums=('01931d3701a9ed3109132cf3106a6f959f3a393e71284537959095f853cdad5c8b17eebddd4dc1d6a8cb4f5af8393b0bda62034318aa78fd5f656589449f7eb4'
             '889425b864c58a767aa5865c0ce9817361ad99fec78050fa600f14eaef5a56ce0bc41a03878233e99f4862596a94dafcfebebecd4d57443b742117b873ab813d'
             'a931c401792f4e7928e4778d91626c1ecc3e97e5728549b170c050de487b2e5234747b0ee2d5acc3d63b798716758c17e30914dcaa9a92ac386db39f8a45a05c'
             '05dead727d3ea5fe8af1a3c3888693f6b3e2b8cb7f197a5d793352e10d2c524e96c9a5c55ad2e88c1114643a9612ec0b26a2574b48a5260a9b51ec8941461f1c'
@@ -58,7 +58,7 @@ build() {
   cd mongodb-src-r${pkgver}
   export SCONSFLAGS="$MAKEFLAGS"
 
-  scons core tools "${_scons_args[@]}"
+  scons2 core tools "${_scons_args[@]}"
 }
 
 check() {
@@ -69,11 +69,11 @@ check() {
   # std::exception: locale::facet::_S_create_c_locale name not valid
 
   # 3.4.9: Tests hang
-  # scons unittests "${_scons_args[@]}"
+  # scons2 unittests "${_scons_args[@]}"
   # sed -i -e '/oplog_buffer_collection_test/d' build/unittests.txt
   # LANG=en_US.UTF-8 python2 buildscripts/resmoke.py --suites=unittests
 
-  scons dbtest "${_scons_args[@]}"
+  scons2 dbtest "${_scons_args[@]}"
   python2 buildscripts/resmoke.py --suites=dbtest
 
 
@@ -100,7 +100,7 @@ prepare() {
 package() {
   cd mongodb-src-r${pkgver}
 
-  scons install --prefix="$pkgdir/usr" --nostrip "${_scons_args[@]}"
+  scons2 install --prefix="$pkgdir/usr" --nostrip "${_scons_args[@]}"
 
   install -Dm644 "$srcdir/mongodb.conf" "$pkgdir/etc/mongodb.conf"
   install -Dm644 "$srcdir/mongodb.service" "$pkgdir/usr/lib/systemd/system/mongodb.service"
