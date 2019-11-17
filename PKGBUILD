@@ -1,4 +1,4 @@
-# Maintainer: Nick Boughton (nicholasboughton@gmail.com)
+# Maintainer: Nick Boughton <nicholasboughton@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=vue-cli
@@ -10,6 +10,7 @@ url=https://cli.vuejs.org
 license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
+optdepends=()
 conflicts=(nodejs-vue-cli)
 options=(!strip)
 
