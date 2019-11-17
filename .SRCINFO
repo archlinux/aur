@@ -1,7 +1,7 @@
 pkgbase = python-mxboard
 	pkgdesc = Logging MXNet Data for Visualization in TensorBoard
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/awslabs/mxboard
 	arch = any
 	license = Apache
