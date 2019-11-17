@@ -4,7 +4,7 @@ _pkgname=whirlpool-gui
 
 pkgname="${_pkgname}"-appimage
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop GUI for Whirlpool by Samourai-Wallet"
 arch=('x86_64')
 url="https://github.com/Samourai-Wallet/whirlpool-gui/"
@@ -28,6 +28,12 @@ build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
         "squashfs-root/${_pkgname}.desktop"
+
+    # Fix icon image location
+    mkdir -p squashfs-root/usr/share/icons/hicolor/512x512/apps
+    cp squashfs-root/usr/share/icons/hicolor/0x0/apps/"${_pkgname}".png\
+       squashfs-root/usr/share/icons/hicolor/512x512/apps
+
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
