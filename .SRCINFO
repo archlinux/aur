@@ -6,8 +6,23 @@ pkgbase = quickapp-ide
 	arch = i386
 	arch = x86_64
 	license = custom
+	depends = fontconfig
+	depends = libxtst
+	depends = gtk3
+	depends = python
+	depends = cairo
+	depends = alsa-lib
+	depends = nss
+	depends = gcc-libs
+	depends = libnotify
+	depends = libxss
+	depends = glibc>=2.28-4
+	depends = lsof
+	depends = which
 	source = https://statres.quickapp.cn/quickapp/ide/quickapp-ide-1.5.0.deb
+	source = https://statres.quickapp.cn/quickapp/quickapp/201809/file/201809171830002525474.docx
 	md5sums = 22a380224d2d50b7b2d0f206cc6850e2
+	md5sums = 8d634c0f6d214e6cbacdae6b94f3ddae
 
 pkgname = quickapp-ide
 
