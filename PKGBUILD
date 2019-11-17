@@ -1,15 +1,15 @@
 # Maintainer: Radioactive Sand <iamrobox001@tutanota.com>
 pkgname='python-mywal'
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A colorscheme generator that parses Xresources"
 arch=('any')
 url="https://github.com/iamrobox001/mywal"
 license=('GPL')
-depends=('python>=3.6')
-optdepends=('python-wheel: building python whl file'
-            'python-setuptools: building python whl file'
-            'feh: Detecting current wallpaper')
+depends=('python>=3.6'
+		 'python-setuptools: building python whl file'
+		 'python-wheel: building python whl file')
+optdepends=('feh: Detecting current wallpaper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iamrobox001/mywal/archive/${pkgver}.tar.gz"
         "$pkgname-$pkgver-py3-none-any.whl::https://github.com/iamrobox001/mywal/releases/download/${pkgver}/mywal-${pkgver}-py3-none-any.whl")
 
