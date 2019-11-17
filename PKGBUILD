@@ -1,12 +1,12 @@
 pkgname=jd-cmd
-pkgver=0.9.1.Final
+pkgver=1.0.0.Final
 pkgrel=1
 arch=('any')
 depends=('java-runtime')
 license=('GPL3')
 url='https://github.com/kwart/jd-cmd'
 source=("https://github.com/kwart/jd-cmd/releases/download/$pkgname-$pkgver/jd-cli-$pkgver-dist.tar.gz")
-sha256sums=('959bde5ba8d41009dae4c3690ca172697c9c9525eccd21e51a940fa3f13f525f')
+sha256sums=('b87ec7ca0243bab697f2806ffe4e425618860787bf6cff3daff2e44bfd4a266a')
 
 package() {
     install -Dm644 "$srcdir/jd-cli.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
