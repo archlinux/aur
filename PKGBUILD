@@ -11,7 +11,7 @@ depends=('java-runtime=8' 'desktop-file-utils' 'sane')
 source_i686=("${pkgname}-${pkgver}_linux.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux.deb")
 source_x86_64=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb")
 source=("$pkgname.desktop")
-sha256sums=('366e4cc2c4db9bbb3baa0901b2a22a4e8ee0b2093d6e13e7c9558e6e28555f86')
+sha256sums=('d6fb9b6f18a80bc44b8e2079683bfd1903153887861630e0c9c3813c6f3119d2')
 sha256sums_i686=('e6399666d53106ba0acab0a618c79ad8d34c840a2baa9a6d341f1c1ad7c0ccf9')
 sha256sums_x86_64=('d82e5db92ecf8c8b0b74d460eb4a354bf46953e4e66c39f8a64bd9d2c7020d19')
 
@@ -30,5 +30,5 @@ package() {
 	install -Dm644 "opt/$_pkgname/.install4j/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm644 resources/license.html -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+	ln -sf "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$pkgname"
 }
