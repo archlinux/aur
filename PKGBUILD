@@ -1,7 +1,7 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=linsim
-pkgver=2.0.2
+pkgver=2.0.3
 #.r1.g2c8072f
 pkgrel=1
 pkgdesc="Ham Radio - Digital Mode/HF propagation evaluation tool"
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('fltk' 'libsamplerate')
 optdepends=('hamradio-menus: XDG compliant menuing')
 makedepends=('automake' 'autoconf' 'pkg-config')
-source=("$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=pu/df"
-#	"$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=master")
+source=("$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=master"
+#	"$pkgname::git://git.code.sf.net/p/fldigi/$pkgname#branch=pu/df"
 #	http://www.w1hkj.com/files/test_suite/linsim-2.0.1.tar.gz
 	)
 

@@ -1,6 +1,6 @@
 pkgbase = linsim
 	pkgdesc = Ham Radio - Digital Mode/HF propagation evaluation tool
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = http://www.w1hkj.com/files/test_suite/guide.html
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = linsim
 	depends = fltk
 	depends = libsamplerate
 	optdepends = hamradio-menus: XDG compliant menuing
-	source = linsim::git://git.code.sf.net/p/fldigi/linsim#branch=pu/df
+	source = linsim::git://git.code.sf.net/p/fldigi/linsim#branch=master
 	md5sums = SKIP
 	sha256sums = SKIP
 
