@@ -28,4 +28,5 @@ build() {
 package() {
 	cd ${pkgname}
 	DESTDIR="$pkgdir" ninja -C build-${pkgname}-${pkgver} install
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
