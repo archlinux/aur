@@ -8,6 +8,7 @@ pkgbase = walinuxagent
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
+	depends = python-distro
 	depends = openssh
 	depends = openssl
 	depends = parted
