@@ -2,7 +2,7 @@
 pkgname=gomopho
 _realname=GoMoPho
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Google motion photos video extractor"
 arch=(x86_64)
 url="https://github.com/cliveontoast/GoMoPho"
@@ -35,5 +35,5 @@ package() {
   cp -ar --no-preserve=ownership . "$pkgdir"/opt/"$pkgname"/
 
   install -d "$pkgdir"/usr/bin
-  ln -s "$pkgdir"/opt/"$pkgname"/"$_realname"CoreConsole "$pkgdir"/usr/bin/"$pkgname"
+  ln -s ../../opt/"$pkgname"/"$_realname"CoreConsole "$pkgdir"/usr/bin/"$pkgname"
 }
