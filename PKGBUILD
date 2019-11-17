@@ -2,7 +2,7 @@
 
 pkgname=xiaomi-adb-fastboot-tools
 _pkgname=XiaomiADBFastbootTools
-pkgver=6.8
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="Simple tool for managing Xiaomi devices on desktop using ADB and Fastboot"
 arch=(any) 
@@ -12,7 +12,7 @@ depends=('java-runtime' 'android-tools')
 makedepends=('gradle' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Szaki/$_pkgname/archive/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('1bc37208728f37451ecf7b4889053377fd5b1da0a2feb131eb98688e6fdf5fe8'
+sha256sums=('a807e5f4d01eccaa5203e80f92930aff670db8e4423b908442479db6e0dfc295'
             'f170e8d5fce6990423bf914ac0a846a01c67885bc0fd13aaf888dc4be4a541e0')
 
 prepare() {
