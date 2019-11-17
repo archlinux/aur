@@ -6,7 +6,7 @@ pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
 pkgver=9.1.1
 _pkgver=9.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -41,7 +41,7 @@ build() {
   cd $_pkgname
   mkdir -p builddir
   cd builddir
-  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true
+  meson --prefix=/usr --sysconfdir=/etc -Denable-appindicator=true --buildtype=release
   # build
   ninja
 }
