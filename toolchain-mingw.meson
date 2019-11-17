@@ -8,6 +8,7 @@ ranlib = '@TRIPLE@-gcc-ranlib'
 strip = '@TRIPLE@-strip'
 windres = '@TRIPLE@-windres'
 exe_wrapper = '@TRIPLE@-wine'
+cmake = '@TRIPLE@-cmake'
 
 [properties]
 root = '@TRIPLE@'
