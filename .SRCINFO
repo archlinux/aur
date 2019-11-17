@@ -1,0 +1,16 @@
+pkgbase = flying-robots
+	pkgdesc = A three-dimensional clone of the classic BSD Robots game.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bunburya/FlyingRobots
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = tk: For tkinter-based UI
+	options = !emptydirs
+	source = http://bunburya.eu/apps/flying-robots/flying-robots-0.2.0.tar.gz
+	md5sums = ce38284174e6cf15c0ca710c15bce486
+
+pkgname = flying-robots
+
