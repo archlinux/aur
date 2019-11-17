@@ -1,0 +1,19 @@
+This is needed to properly halt the machine without powering it down.
+
+See:
+  https://bugzilla.redhat.com/show_bug.cgi?id=348701
+  https://bugzilla.redhat.com/show_bug.cgi?id=1442577
+
+
+diff -up apcupsd-3.14.4/platforms/apccontrol.in.shutdown apcupsd-3.14.4/platforms/apccontrol.in
+--- apcupsd-3.14.4/platforms/apccontrol.in.shutdown	2008-05-28 09:15:47.000000000 +0200
++++ apcupsd-3.14.4/platforms/apccontrol.in	2008-05-28 09:16:04.000000000 +0200
+@@ -104,7 +104,7 @@ case "$1" in
+     ;;
+     doshutdown)
+ 	echo "UPS ${2} initiated Shutdown Sequence" | ${WALL}
+-	${SHUTDOWN} -h now "apcupsd UPS ${2} initiated shutdown"
++	${SHUTDOWN} -h -H now "apcupsd UPS ${2} initiated shutdown"
+     ;;
+     annoyme)
+ 	echo "Power problems with UPS ${2}. Please logoff." | ${WALL}
