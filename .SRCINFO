@@ -1,0 +1,19 @@
+pkgbase = aniproject-git
+	pkgdesc = Unarelith's aniproject
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.unarelith.net/Unarelith/aniproject
+	install = aniproject-git.install
+	arch = i686
+	arch = x86_64
+	depends = apache
+	depends = mod_wsgi
+	depends = python
+	depends = python-pip
+	depends = python-virtualenv
+	provides = aniproject
+	source = aniproject::git+https://git.unarelith.net/Unarelith/aniproject.git
+	md5sums = SKIP
+
+pkgname = aniproject-git
+
