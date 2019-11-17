@@ -1,6 +1,6 @@
 pkgbase = nodejs-spago
 	pkgdesc = PureScript package manager and build tool powered by Dhall and package-sets
-	pkgver = 0.10.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/spacchetti/spago
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-spago
 	depends = nodejs
 	depends = npm
 	depends = purescript
-	noextract = spago-0.10.0.tgz
-	source = https://registry.npmjs.org/spago/-/spago-0.10.0.tgz
-	sha1sums = 8783febe6e701122cdc90e4a509ecf0dfa646bd7
+	noextract = spago-0.12.1.tgz
+	source = https://registry.npmjs.org/spago/-/spago-0.12.1.tgz
+	sha1sums = 18deb496c5da9c192217480aa846a55e6e1dbd5a
 
 pkgname = nodejs-spago
 
