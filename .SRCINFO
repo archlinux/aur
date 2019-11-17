@@ -1,7 +1,7 @@
 pkgbase = python-box
 	pkgdesc = Advanced Python dictionaries with dot notation access
 	pkgver = 3.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cdgriffith/Boxs
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=python-box
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Python dictionaries with dot notation access"
 arch=('any')
 url="https://github.com/cdgriffith/Boxs"
