@@ -1,0 +1,24 @@
+pkgbase = i3-resurrect
+	pkgdesc = A simple but flexible solution to saving and restoring i3 workspace layouts
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://github.com/JonnyHaystack/i3-resurrect
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-psutil
+	depends = python-i3ipc
+	depends = python-click
+	depends = python-natsort
+	depends = python-enum-compat
+	depends = xorg-xprop
+	depends = xdotool
+	optdepends = i3-wm
+	provides = i3-resurrect
+	conflicts = i3-resurrect-git
+	source = https://github.com/JonnyHaystack/i3-resurrect/archive/1.4.0.tar.gz
+	md5sums = 7ced5fa51315aaaf0c9fc98899ec86b3
+
+pkgname = i3-resurrect
+
