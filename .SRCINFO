@@ -22,7 +22,7 @@ pkgbase = devilutionx
 	source = https://github.com/diasurgical/devilutionX/archive/master.zip
 	source = devilutionx.png
 	md5sums = SKIP
-	md5sums = 014003a7bcef2f035eddff2ee74b3994
+	md5sums = c593b446c07608ce2ab2eddac6ce7304
 
 pkgname = devilutionx
 
