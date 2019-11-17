@@ -2,8 +2,8 @@
 pkgname=gomopho
 _realname=GoMoPho
 pkgver=2.0.4
-pkgrel=2
-pkgdesc="Google motion photos video extractor"
+pkgrel=3
+pkgdesc="Google motion photos video extractor (extract MP4 from MVIMG)"
 arch=(x86_64)
 url="https://github.com/cliveontoast/GoMoPho"
 license=('GPL')
