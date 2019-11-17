@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname}"
-    echo "$(git log -1 --format="%cd" --date=short | tr -d '-').$(git log -1 --format="%h")"
+    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
