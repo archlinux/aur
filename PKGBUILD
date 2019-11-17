@@ -4,7 +4,7 @@
 pkgname=gtk-arc-flatabulous-theme
 _pkgname=arc-flatabulous-theme
 pkgver=20180201
-pkgrel=2
+pkgrel=3
 pkgdesc="Arc theme with Flatabulous window controls."
 arch=('any')
 url="https://github.com/andreisergiu98/${_pkgname}"
@@ -36,12 +36,12 @@ build() {
     # Check optional dependencies
     check_optdepends
 
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     ./autogen.sh ${_autogen_options[@]} --prefix=/usr
     make
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
