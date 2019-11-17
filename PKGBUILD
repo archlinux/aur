@@ -19,7 +19,7 @@ md5sums=('c284197d06ad25d78009ff55f18dd512'
 
 prepare(){
     cd "$srcdir/Shiboken-$pkgver"
-    patch -p1 -i ../support-new-python.diff
+    patch -p1 -i "$srcdir/support-new-python.diff"
 }
 
 build(){
@@ -39,13 +39,22 @@ build(){
     # build python3
     cd "$srcdir/Shiboken-$pkgver"
     mkdir -p build-py3 && cd build-py3
+
     _ver3=$(python -c "import platform; print(platform.python_version())")
+    if [ "${_ver3}" < "3.8.0" ]; then
+        _includedir=/usr/include/python${_ver3%.*}m
+        _library=/usr/lib/libpython${_ver3%.*}m.so
+    else
+        _includedir=/usr/include/python${_ver3%.*}
+        _library=/usr/lib/libpython${_ver3%.*}.so
+    fi
+
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr  \
               -DCMAKE_BUILD_TYPE=Release   \
               -DBUILD_TESTS=OFF            \
               -DUSE_PYTHON3=yes            \
-              -DPYTHON3_LIBRARY=/usr/lib/libpython${_ver3%.*}.so \
-              -DPYTHON3_INCLUDE_DIR=/usr/include/python${_ver3%.*} \
+              -DPYTHON3_LIBRARY=${_library} \
+              -DPYTHON3_INCLUDE_DIR=${_includedir} \
               -DQT_QMAKE_EXECUTABLE=qmake-qt4
     make
 }
