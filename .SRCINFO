@@ -1,14 +1,14 @@
 pkgbase = overgrive
 	pkgdesc = A complete Google Drive™ desktop client solution for Linux
 	pkgver = 3.3.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.thefanclub.co.za/overgrive
 	install = overgrive.install
 	arch = x86_64
 	license = unknown
 	depends = libappindicator-gtk3
 	depends = libnotify
-	depends = python3
+	depends = python
 	depends = python-gobject
 	depends = python-oauth2client
 	depends = python-pyinotify

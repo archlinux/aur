@@ -1,15 +1,15 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=overgrive
 pkgver=3.3.2
-pkgrel=0
+pkgrel=1
 pkgdesc='A complete Google Drive™ desktop client solution for Linux'
 arch=('x86_64')
 url='https://www.thefanclub.co.za/overgrive'
 license=('unknown')
 
 # original overgrive dependencies
-# libnotify python3 python-oauth2client python-pyinotify python-pip python-gobject libappindicator-gtk3
-depends=(libappindicator-gtk3 libnotify python3 python-gobject python-oauth2client python-pyinotify)
+# libnotify python python-oauth2client python-pyinotify python-pip python-gobject libappindicator-gtk3
+depends=(libappindicator-gtk3 libnotify python python-gobject python-oauth2client python-pyinotify)
 
 provides=('overgrive')
 conflicts=('overgrive')
