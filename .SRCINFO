@@ -1,5 +1,5 @@
 pkgbase = python-sqlparse-cli_helpers
-	pkgdesc = Non-validating SQL parser for Python
+	pkgdesc = Non-validating SQL parser for Python; version compatible with litecli, mycli, ...
 	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/andialbrecht/sqlparse
