@@ -2,7 +2,7 @@
 pkgname=scholarref-git
 _pkgname=scholarref
 pkgver=r29.98931f5
-pkgrel=2
+pkgrel=3
 pkgdesc="POSIX shell tools to extract, fetch, and parse DOIs and BiBTeX bibliography references."
 arch=('any')
 url="https://src.adamsgaard.dk/scholarref/files.html"
@@ -14,11 +14,11 @@ md5sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
+	cd "$_pkgname"
 	make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX=/usr install
 }

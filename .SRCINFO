@@ -1,7 +1,7 @@
 pkgbase = scholarref-git
 	pkgdesc = POSIX shell tools to extract, fetch, and parse DOIs and BiBTeX bibliography references.
 	pkgver = r29.98931f5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://src.adamsgaard.dk/scholarref/files.html
 	arch = any
 	license = GPL
