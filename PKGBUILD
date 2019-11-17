@@ -18,8 +18,8 @@ source=("git+https://git.xiph.org/libao.git#commit=3f4b02f046550aca54d7f11a5d9c5
 sha256sums=('SKIP')
 
 build() {
-  #cd "$srcdir/$_pkgbasename-$pkgver"
-  cd "$srcdir/$_pkgbasename"
+  #cd $_pkgbasename-$pkgver
+  cd $_pkgbasename
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
@@ -31,10 +31,10 @@ build() {
 }
 
 package() {
-  #cd "$srcdir/$_pkgbasename-$pkgver"
-  cd "$srcdir/$_pkgbasename"
+  #cd $_pkgbasename-$pkgver
+  cd $_pkgbasename
 
-  make DESTDIR=$pkgdir/ install
-  rm -rf "${pkgdir}"/usr/{include,share,bin,sbin}
+  make DESTDIR="$pkgdir/" install
+  rm -rf "$pkgdir"/usr/{include,share,bin,sbin}
 }
 # vim:set ts=2 sw=2 et:
