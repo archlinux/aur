@@ -22,7 +22,7 @@ source=("https://github.com/ValveSoftware/Proton/archive/$pkgname-$_pkgver.tar.g
 
 prepare() {
 	cd "Proton-$pkgname-$_pkgver"
-	git clone --recurse-submodules https://github.com/ValveSoftware/Proton.git .
+	git clone --recurse-submodules https://github.com/ValveSoftware/Proton.git
 	#sed -i 's,wined3d-interop.h,wine/wined3d-interop.h,g' vrclient_x64/vrclient_x64/*
 }
 
