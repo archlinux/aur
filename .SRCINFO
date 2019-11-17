@@ -1,0 +1,18 @@
+pkgbase = nrf5x-sniffer
+	pkgdesc = nRF-based 802.15.4 sniffer (firmware and software)
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/NordicSemiconductor/nRF-Sniffer-for-802.15.4
+	install = nrf5x-sniffer.install
+	arch = any
+	license = Custom
+	depends = wireshark-cli
+	depends = python
+	depends = python-pyserial
+	optdepends = nrf5x-command-line-tools: for flashing firmware on nRF52840-DK (PCA10056)
+	optdepends = nrfconnect-appimage: for flashing the firmware on nRF52840-Dongle (PCA10059)
+	source = nrf5x-sniffer-0.7.2.tar.gz::https://github.com/NordicSemiconductor/nRF-Sniffer-for-802.15.4/archive/v0.7.2.tar.gz
+	sha256sums = 10db42a9d7111bc05f353ecccd3dca81dabe282086c95fe2b6f4f430c18bb924
+
+pkgname = nrf5x-sniffer
+

@@ -1,0 +1,14 @@
+post_install() {
+tput bold
+  cat << EOF
+firmware files and instructions are located at
+/usr/share/nrf5x-sniffer/
+EOF
+tput sgr0
+}
+
+post_upgrade() {
+  post_install
+}
+
+
