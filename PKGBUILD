@@ -38,5 +38,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+	make INSTALL_ROOT="$pkgdir/" install
 }
