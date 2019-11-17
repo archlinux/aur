@@ -1,7 +1,7 @@
 pkgbase = autokey
 	pkgdesc = AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3
 	pkgver = 0.95.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/autokey/autokey
 	arch = i686
 	arch = x86_64

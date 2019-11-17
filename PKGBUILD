@@ -3,7 +3,7 @@
 
 pkgname=autokey
 pkgver=0.95.8
-pkgrel=1
+pkgrel=2
 pkgdesc="AutoKey, a desktop automation utility for Linux and X11, updated to run on Python 3"
 arch=('i686' 'x86_64')
 url="https://github.com/autokey/autokey"
