@@ -1,0 +1,15 @@
+pkgbase = python-ternary
+	pkgdesc = Ternary plotting library for python with matplotlib
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/marcharper/python-ternary/
+	arch = any
+	license = BSD
+	depends = python-matplotlib
+	depends = python-scipy
+	depends = python-numpy
+	source = https://github.com/marcharper/python-ternary/archive/1.0.6.tar.gz
+	sha256sums = 645e7b746e4397a5e0a37eab7172e7e4abe5285604b18b2bf25338568e5ff53c
+
+pkgname = python-ternary
+
