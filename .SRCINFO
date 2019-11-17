@@ -18,7 +18,7 @@ pkgname = n64-git
 	depends = n64-tools
 	provides = n64
 	conflicts = n64
-	replaces = n64)
+	replaces = n64
 
 pkgname = n64-tools-git
 	pkgdesc = A set of N64 development tools.
@@ -27,5 +27,5 @@ pkgname = n64-tools-git
 	depends = libusb
 	provides = n64-tools
 	conflicts = n64-tools
-	replaces = n64-tools)
+	replaces = n64-tools
 

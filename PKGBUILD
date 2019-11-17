@@ -1,6 +1,6 @@
   # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 pkgname=('n64-git' 'n64-tools-git')
-pkgver=r100.c9c95e7
+pkgver=r110.23a6b60
 pkgrel=1
 arch=('x86_64' 'i686' 'mips64')
 url="https://github.com/glankk/n64"
@@ -8,7 +8,7 @@ source=("git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gs.patch")
 makedepends=('git')
 sha256sums=('SKIP'
-            'dad3aa103bfa59ed276ff487459c28166d9ca89fdb910c4d4a5ffcae4d1fa78c')
+            '297c101faff16258d647b633b2207067a15d9637218e895752bc65f530e6ac46')
 options=('!buildflags' '!strip')
 _prefix=/usr
 
@@ -16,7 +16,6 @@ pkgver() {
   cd ${srcdir}/n64/
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 prepare() {
   # The gs binary conflicts with GhostScript on Linux. Rename it to gs.n64.
@@ -42,6 +41,7 @@ package_n64-tools-git() {
   replaces=('n64-tools)')
   cd $srcdir/n64
   make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install-local-exec
 }
 
 package_n64-git() {
