@@ -1,12 +1,14 @@
 pkgbase = sbtools-git
 	pkgdesc = Secure boot tools
-	pkgver = r18.bfdf686
+	pkgver = r22.f3aa297
 	pkgrel = 1
 	url = https://github.com/xdbob/sbtools
 	arch = x86_64
 	depends = sbsigntools
 	depends = openssl
 	depends = efitools
+	optdepends = lz4: initramfs compression
+	optdepends = lzop: initramfs compression
 	provides = sbtools
 	source = git+https://github.com/xdbob/sbtools.git
 	sha512sums = SKIP

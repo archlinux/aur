@@ -1,13 +1,17 @@
 # Maintainer: Antoine Damhet <antoine.damhet@lse.epita.fr>
 
 pkgname=('sbtools-git' 'sbtools-hook-git')
-pkgver=r18.bfdf686
+pkgver=r22.f3aa297
 pkgrel=1
 provides=('sbtools')
 pkgdesc='Secure boot tools'
 url='https://github.com/xdbob/sbtools'
 arch=('x86_64')
 depends=('sbsigntools' 'openssl' 'efitools')
+optdepends=(
+	'lz4: initramfs compression'
+	'lzop: initramfs compression'
+)
 source=('git+https://github.com/xdbob/sbtools.git')
 sha512sums=('SKIP')
 _gitname="sbtools"
