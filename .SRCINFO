@@ -1,7 +1,7 @@
 pkgbase = rednotebook
 	pkgdesc = A simple desktop diary.
 	pkgver = 2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rednotebook.sourceforge.net
 	arch = any
 	license = GPL2
