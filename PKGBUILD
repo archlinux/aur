@@ -2,7 +2,7 @@
 
 pkgname=python-proc
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple interface to Linux process information"
 arch=("any")
 url="https://github.com/xolox/python-proc"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python" "python-coloredlogs" "python-executor" "python-humanfriendly" "python-property-manager" "python-setuptools")
 source=(
     "https://github.com/xolox/python-proc/archive/${pkgver}.tar.gz"
-    "python37-compat.patch"
+    "python38-compat.patch"
 )
 sha256sums=(
     "fa0cde2babdac512a251685d73036b956f509b12021b2051e285b3f29d321b46"
@@ -19,7 +19,7 @@ sha256sums=(
 
 prepare() {
     cd "python-proc-${pkgver}"
-    patch -p1 < "${srcdir}/python37-compat.patch"
+    patch -p1 < "${srcdir}/python38-compat.patch"
 }
 
 package() {
