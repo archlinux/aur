@@ -1,20 +1,20 @@
 pkgbase = pdfstudioviewer
 	pkgdesc = Review, annotate, and edit PDF Documents
-	pkgver = 2019.1.3
+	pkgver = 2019.2.0
 	pkgrel = 1
 	url = https://www.qoppa.com/pdfstudioviewer
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-runtime<=8
+	depends = java-runtime=8
 	depends = desktop-file-utils
 	depends = sane
 	source = pdfstudioviewer.desktop
 	sha256sums = 366e4cc2c4db9bbb3baa0901b2a22a4e8ee0b2093d6e13e7c9558e6e28555f86
-	source_i686 = pdfstudioviewer-2019.1.3_linux.deb::https://download.qoppa.com/pdfstudioviewer/PDFStudioViewer_linux.deb
-	sha256sums_i686 = 58eb33cbbe14ed4f0a47372b4c5239017e8a8cdff00b4c68350f2bda7f38d7c5
-	source_x86_64 = pdfstudioviewer-2019.1.3_linux64.deb::https://download.qoppa.com/pdfstudioviewer/PDFStudioViewer_linux64.deb
-	sha256sums_x86_64 = f8e72df2df81071ab0d55491f5b65a83aebdf4f5a5984ec8c1083f012ae0d0ef
+	source_i686 = pdfstudioviewer-2019.2.0_linux.deb::https://download.qoppa.com/pdfstudioviewer/PDFStudioViewer_linux.deb
+	sha256sums_i686 = e6399666d53106ba0acab0a618c79ad8d34c840a2baa9a6d341f1c1ad7c0ccf9
+	source_x86_64 = pdfstudioviewer-2019.2.0_linux64.deb::https://download.qoppa.com/pdfstudioviewer/PDFStudioViewer_linux64.deb
+	sha256sums_x86_64 = d82e5db92ecf8c8b0b74d460eb4a354bf46953e4e66c39f8a64bd9d2c7020d19
 
 pkgname = pdfstudioviewer
 
