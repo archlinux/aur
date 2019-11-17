@@ -1,13 +1,13 @@
 pkgname=warfork
 pkgver=4269802.OCT.8.201
 _dataver=4269802-OCT-8-2019
-pkgrel=1
+pkgrel=2
 pkgdesc='Warfork'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://github.com/TeamForbiddenLLC/warfork-qfusion'
 depends=('sdl2' "warfork-data>=$_dataver")
-makedepends=('cmake' 'libvorbis' 'libtheora' 'libcurl' 'zlib' 'freetype' 'openal' 'mesa')
+makedepends=('cmake' 'libvorbis' 'libtheora' 'curl' 'zlib' 'freetype2' 'openal' 'mesa')
 source=("https://github.com/TeamForbiddenLLC/warfork-qfusion/archive/${_dataver}.tar.gz"
         "warfork.desktop")
 sha256sums=('SKIP'
