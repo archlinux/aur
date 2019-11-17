@@ -22,13 +22,13 @@ conflicts=("multibootusb")
 source=("${pkgname}"'::git+https://github.com/aguslr/multibootusb.git')
 md5sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/${pkgname}"
-    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+build() {
+	cd "$srcdir/$pkgname"
+	python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    chmod 755 "$srcdir/$pkgname/data/multibootusb.desktop"
-    python3 setup.py install --root="$pkgdir/" --optimize=1
+	cd "$srcdir/$pkgname"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	chmod 755 "$srcdir/$pkgname/data/multibootusb.desktop"
 }
