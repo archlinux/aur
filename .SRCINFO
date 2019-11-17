@@ -1,6 +1,6 @@
 pkgbase = debops
-	pkgdesc = A collection of Ansible playbooks, scalable from one container to an entire data center.
-	pkgver = 0.8.0
+	pkgdesc = Your Debian-based data center in a box
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = http://debops.org/
 	arch = any
@@ -8,16 +8,18 @@ pkgbase = debops
 	makedepends = python-setuptools
 	depends = python
 	depends = ansible
-	depends = python-netaddr
-	depends = python-ldap
-	depends = python-passlib
+	depends = python-future
 	depends = util-linux
 	depends = encfs
 	depends = gnupg
-	depends = python-dnspython
+	optdepends = python-dnspython: required by Ansible "dig" module
+	optdepends = python-pyopenssl: required by "openssl_*" Ansible modules
+	optdepends = python-netaddr: required by Ansible "ipaddr" filter plugin
+	optdepends = python-ldap: required by Ansible "ldap_*" modules
+	optdepends = python-passlib: required by Ansible "password" lookup plugin
 	conflicts = depops-git
-	source = https://github.com/debops/debops/archive/v0.8.0.tar.gz
-	sha256sums = 0068745fdf79f57a3d1436b88b5849421b1f48c9c5c64da450e51ce9022b0c70
+	source = https://github.com/debops/debops/archive/v1.1.5.tar.gz
+	sha512sums = a77d5efcbf777fe1bdcbd5679487bb448f6e4a1ea536f192849f1e613b97e80c562e7b348885ade4b88b0c422148c9bd5cea4ecc0f6bd0d5773094379365c166
 
 pkgname = debops
 
