@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=DT
-_cranver=0.9
+_cranver=0.10
 pkgname=r-dt
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,9 +10,9 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=('GPL3')
 depends=('r' 'r-htmltools>=0.3.6' 'r-htmlwidgets>=1.3' 'r-jsonlite>=0.9.16' 'r-magrittr' 'r-crosstalk' 'r-promises')
-optdepends=('r-knitr>=1.8' 'r-rmarkdown' 'r-shiny>=1.1.0')
+optdepends=('r-knitr' 'r-rmarkdown' 'r-shiny')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f88e05d62255acc81e818e72311bee0b')
+md5sums=('90c8d6a6c318ff5aa6b2b202469c33cf')
 
 build(){
     cd "${srcdir}"
