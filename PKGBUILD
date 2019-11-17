@@ -17,7 +17,7 @@ md5sums=('2e8f9fab32eb5ccb37969fe317fd17aa'
          'SKIP')
 
 prepare() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  cd ${_pkgbasename}-${pkgver}
 
   # use our buildflags
   sed -i "s/CFLAGS :=/CFLAGS += \$(CPPFLAGS) /" Make.Rules
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  cd ${_pkgbasename}-${pkgver}
 
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
@@ -33,10 +33,10 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgbasename}-${pkgver}"
+  cd ${_pkgbasename}-${pkgver}
 
-  make -C libcap prefix=/usr lib=lib32 DESTDIR=${pkgdir} install
-  chmod 755 ${pkgdir}/usr/lib32/libcap.so.${pkgver}
+  make -C libcap prefix=/usr lib=lib32 DESTDIR="$pkgdir" install
+  chmod 755 "$pkgdir"/usr/lib32/libcap.so.${pkgver}
 
-  rm -rf "${pkgdir}/usr/include"
+  rm -rf "$pkgdir"/usr/include
 }
