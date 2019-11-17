@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/iamrobox001/mywal"
 license=('GPL')
 depends=('python>=3.6'
-		 'python-setuptools: building python whl file'
-		 'python-wheel: building python whl file')
+		 'python-setuptools'
+		 'python-wheel')
 optdepends=('feh: Detecting current wallpaper')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iamrobox001/mywal/archive/${pkgver}.tar.gz"
         "$pkgname-$pkgver-py3-none-any.whl::https://github.com/iamrobox001/mywal/releases/download/${pkgver}/mywal-${pkgver}-py3-none-any.whl")
