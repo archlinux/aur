@@ -1,5 +1,5 @@
 pkgname=mps-youtube-git
-pkgver=0.2.8.r108.g44fad52
+pkgver=0.2.8.r128.ge083bfa
 pkgrel=1
 
 pkgdesc="Terminal based YouTube jukebox with playlist management - git develop release"
