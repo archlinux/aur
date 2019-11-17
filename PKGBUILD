@@ -1,7 +1,7 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
+# Maintainer: Chiwan Park <chiwanpark@hotmail.com>
 
 pkgname=pulse-secure
-pkgver=9.1r2.0_b69
+pkgver=9.1r3.0_b85
 pkgrel=1
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source_x86_64=("https://www.rz.uni-osnabrueck.de/fileadmin/user_upload/VPN/Softw
 md5sums=('d81155461e2666c2b9d669c1b76f85fe'
          '261848a28201e5386ec4bf587473a48b'
          '0799902854ece4473d2a23c67c089630')
-md5sums_x86_64=('0facca1171787222b3f1450384fb32ea')
+md5sums_x86_64=('c38c15930dcd78dbec6afdc772d76ba8')
 optdepends=('webkitgtk: for pulseUi frontend'
             'psmisc: for pulsesvc -K')
 conflicts=(pulse-connect-secure)
