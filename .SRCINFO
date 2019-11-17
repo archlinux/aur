@@ -1,7 +1,7 @@
 pkgbase = python-simpleeval
 	pkgdesc = A simple, safe single expression evaluator library.
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danthedeckie/simpleeval
 	arch = any
 	license = MIT
