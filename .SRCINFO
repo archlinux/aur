@@ -1,7 +1,7 @@
 pkgbase = domain2idna
 	pkgdesc = The tool to convert domains the famous IDNA format.
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/funilrys/domain2idna
 	arch = any
 	license = MIT

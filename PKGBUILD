@@ -3,7 +3,7 @@
 pkgname=domain2idna
 _name=${pkgname#}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The tool to convert domains the famous IDNA format."
 arch=('any')
 url="https://github.com/funilrys/domain2idna"
