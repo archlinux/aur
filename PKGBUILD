@@ -3,8 +3,8 @@
 
 _gemname=timers
 pkgname=ruby-${_gemname}
-pkgver=4.1.2
-pkgrel=5
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='Schedule procs to run after a certain time, or at periodic intervals, using any API that accepts a timeout'
 url='https://github.com/celluloid/timers'
 arch=('any')
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('ruby' 'ruby-hitimes')
 makedepends=('ruby-rdoc')
 options=('!emptydirs')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/celluloid/timers/archive/v${pkgver}.tar.gz)
-sha512sums=('4f3fae32e868fbf87a4e02767b3ebdb04a30596f3668d8e0d1ad70d59e3c590de42a89d9773e6a830cf34ab68f063663839775a5618e832b871dc976c670e6af')
+source=(https://github.com/celluloid/timers/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha512sums=('58cda357826f8744a673f0abae9e9670d38cf125b90668c06de12a14666ede000b62f79be004593ae04154c8cf5db0992da0f7cb5739120d4f95c8fb04397e75')
 
 prepare() {
   cd ${_gemname}-${pkgver}
@@ -28,10 +28,15 @@ build() {
 package() {
   cd ${_gemname}-${pkgver}
   local _gemdir="$(gem env gemdir)"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
-  install -Dm 644 README.md CHANGES.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" \
+    -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cd "${pkgdir}/${_gemdir}"
+  rm -rf cache gems/${_gemname}-${pkgver}/{ext,lib/*/*.so} \
+    extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
 }
 
 # vim: ts=2 sw=2 et:
