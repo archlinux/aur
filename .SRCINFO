@@ -1,0 +1,14 @@
+pkgbase = python-itunespy
+	pkgdesc = itunespy is a simple library to fetch data from the iTunes Store API made for Python 3.X.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/sleepyfran/itunespy
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	source = https://github.com/sleepyfran/itunespy/archive/1.5.3.tar.gz
+	md5sums = 720114c60742ac0b9f8bbb2ace7b50dc
+
+pkgname = python-itunespy
+
