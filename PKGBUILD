@@ -2,7 +2,7 @@
 
 pkgname=python-webpagecache
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility class for downloading webpages and storing them in an SQLite3 database as a cache."
 arch=("any")
 url="https://github.com/djmattyg007/python-webpagecache"
