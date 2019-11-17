@@ -2,7 +2,7 @@
 
 pkgname=python-idiotscript
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An easier, less powerful alternative to regular expressions"
 arch=("any")
 url="https://github.com/djmattyg007/IdiotScript"
