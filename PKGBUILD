@@ -1,5 +1,5 @@
 pkgname=mingw-w64-zfp
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Library for compressed numerical array (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/LLNL/zfp/releases/download/$pkgver/zfp-$pkgver.tar.gz")
-sha256sums=('746e17aaa401c67dcffd273d6e6f95c76adfbbd5cf523dcad56d09e9d3b71196')
+sha256sums=('fdf7b948bab1f4e5dccfe2c2048fd98c24e417ad8fb8a51ed3463d04147393c5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
