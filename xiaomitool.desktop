@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=XiaoMiTool V2
+Exec=/usr/bin/xiaomitool %U
+StartupNotify=true
+Terminal=false
+Icon=xiaomitool
+Type=Application
+Categories=Development;Utility;

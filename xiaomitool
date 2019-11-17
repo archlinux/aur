@@ -1,0 +1,2 @@
+#!/bin/sh
+(cd /opt/XiaoMiTool-V2/ && exec ./bin/java -jar ./XiaoMiTool.jar & )

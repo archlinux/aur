@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE default-apps SYSTEM "gnome-da-list.dtd">
+<!-- This file should be put in /usr/share/gnome-control-center/default-apps,
+     or, if that directory does not exist, its web-browser tag patched into
+     /usr/share/gnome-control-center/default-apps/gnome-default-applications.xml
+     -->
+<default-apps>
+  <web-browsers>
+    <web-browser>
+      <name>XiaoMiTool V2</name>
+      <executable>/opt/xiaomitool/xiaomitool</executable>
+      <command>/opt/xiaomitool/xiaomitool %s</command>
+      <icon-name>xiaomitool</icon-name>
+      <run-in-terminal>false</run-in-terminal>
+      <netscape-remote>true</netscape-remote>
+    </web-browser>
+  </web-browsers>
+</default-apps>

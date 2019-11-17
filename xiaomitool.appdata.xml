@@ -1,0 +1,25 @@
+<!-- Copyright 2017 The Chromium Authors -->
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>xiaomitool.desktop</id>
+  <update_contact>dev@xiaomitool.com</update_contact>
+  <project_license>Freeware under XiaoMiTool V2 Terms of Service</project_license>
+  <name>XiaoMiTool V2</name>
+  <summary>Xiaomi modding made easy</summary>
+  <description>
+    <p>
+    XiaoMiTool V2 is a tool used to simplify modding proceudures for Xiaomi devices
+   </p>
+  </description>
+  <url type="homepage">https://www.xiaomitool.com/V2</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.xiaomitool.com/V2/img/xmt2.png</image>
+      <caption/>
+    </screenshot>
+  </screenshots>
+  <translation/>
+  <developer_name>Francesco Tescari</developer_name>
+  <url type="bugtracker">https://www.xiaomitool.com/V2#feedback</url>
+  <url type="help">https://www.xiaomitool.com/V2#feedback</url>
+</component>
