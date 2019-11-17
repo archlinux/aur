@@ -1,16 +1,18 @@
 pkgbase = zap-desktop-appimage
 	pkgdesc = Lightning wallet focused on user experience and ease of use
-	pkgver = 0.5.4_beta
+	pkgver = 0.6.2_beta
 	pkgrel = 1
 	url = https://github.com/LN-Zap/zap-desktop
 	arch = x86_64
 	license = MIT
 	depends = zlib
-	noextract = zap-desktop-appimage-0.5.4_beta.AppImage
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	noextract = zap-desktop-appimage-0.6.2_beta.AppImage
 	options = !strip
-	source_x86_64 = zap-desktop-appimage-0.5.4_beta.AppImage::https://github.com/LN-Zap/zap-desktop/releases/download/v0.5.4-beta/Zap-linux-x86_64-v0.5.4-beta.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/LN-Zap/zap-desktop/v0.5.4-beta/LICENSE
-	sha256sums_x86_64 = 40e845310f50f4ba9860b0ed31d9f712e55568d7a19a8fa33d54538f7d8db1ea
+	source_x86_64 = zap-desktop-appimage-0.6.2_beta.AppImage::https://github.com/LN-Zap/zap-desktop/releases/download/v0.6.2-beta/Zap-linux-x86_64-v0.6.2-beta.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/LN-Zap/zap-desktop/v0.6.2-beta/LICENSE
+	sha256sums_x86_64 = 8202e036481b08035c9267f846b650064b8dc46915c6056867fb40b2a943c2da
 	sha256sums_x86_64 = c7779cd186930fa9bd4d900b2243b3302f01cd593ac19098bbeb123c8ebf9d72
 
 pkgname = zap-desktop-appimage
