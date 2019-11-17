@@ -1,14 +1,14 @@
 pkgbase = python-xdis
 	pkgdesc = Python cross-version byte-code disassembler and marshal routines.
-	pkgver = 3.9.1
+	pkgver = 4.1.2
 	pkgrel = 1
 	url = https://github.com/rocky/python-xdis/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/x/xdis/xdis-3.9.1.tar.gz
-	sha256sums = b95337ee772ade4f8038a100f06aaf5ab9e975170fe9afafc9bd29964bc8cc42
+	source = https://files.pythonhosted.org/packages/source/x/xdis/xdis-4.1.2.tar.gz
+	sha256sums = 0f72c0aeced7090e5f19b840ac58fa76a4761a072fd7a60121ec5eaf578bedad
 
 pkgname = python-xdis
 	depends = python-click
