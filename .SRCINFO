@@ -12,6 +12,7 @@ pkgbase = campdown
 	depends = python-docopt
 	provides = campdown
 	conflicts = campdown
+	conflicts = python-campdown
 	replaces = python-campdown
 	source = https://files.pythonhosted.org/packages/c6/cc/6be7de0c0250f97d186f5f58455161b2ae5bb96d6681b966f8a91ad2a31e/campdown-1.46.tar.gz
 	sha256sums = e91e505368157319f660c615a2fffab757a414e025b5d6e6a69dc481952ad5b0
