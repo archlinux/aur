@@ -1,0 +1,10 @@
+# neomutt-autocrypt
+
+This package is a clone of community/neomutt with autocrypt enabled.
+
+Please see https://autocrypt.org/> to learn more about autocrypt.
+
+Please see https://neomutt.org/guide/autocryptdoc.html to learn how
+to enable and use autocrypt in neomutt.
+
+// Klaus

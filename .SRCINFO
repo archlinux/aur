@@ -1,0 +1,33 @@
+pkgbase = neomutt-autocrypt
+	pkgdesc = A version of neomutt with added autocrypt
+	pkgver = 20191111
+	pkgrel = 1
+	url = https://neomutt.org/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnupg
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	makedepends = w3m
+	depends = glibc
+	depends = gpgme
+	depends = lua
+	depends = notmuch-runtime
+	depends = krb5
+	depends = openssl
+	depends = libsasl
+	depends = ncurses
+	depends = libidn2
+	depends = lmdb
+	depends = gdbm
+	depends = kyotocabinet
+	depends = sqlite
+	optdepends = python: keybase.py
+	provides = neomutt
+	conflicts = neomutt
+	source = neomutt-autocrypt-20191111.tar.gz::https://github.com/neomutt/neomutt/archive/20191111.tar.gz
+	sha256sums = 29b9e9d7293157a8575808eb2ceb62ffb2f31be206405abc64fc37a4425e36f4
+
+pkgname = neomutt-autocrypt
+
