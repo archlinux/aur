@@ -41,6 +41,7 @@ sha512sums=('SKIP')
 prepare() {
     mkdir "${srcdir}/build" -p
 
+    export CFLAGS CXXFLAGS LDFLAGS
     meson "${srcdir}/${_pkgname}"\
           "${srcdir}/build" \
         --prefix=/usr \
