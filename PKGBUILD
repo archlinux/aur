@@ -2,7 +2,7 @@
 
 pkgname=python-simplediff
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python module to annotate two versions of a list with the values that have been changed between the versions, similar to unix's diff but with a dead-simple Python interface."
 arch=("any")
 url="https://pypi.org/project/simplediff"
