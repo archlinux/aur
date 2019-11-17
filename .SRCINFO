@@ -1,6 +1,6 @@
 pkgbase = xdemorse
 	pkgdesc = An X/GTK+ application - decodes Morse Code signals into text.
-	pkgver = 3.0
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = http://www.qsl.net/5b4az/pkg/morse/xdemorse/xdemorse.html
 	arch = i686
@@ -11,21 +11,17 @@ pkgbase = xdemorse
 	makedepends = intltool
 	makedepends = imagemagick
 	makedepends = pkg-config
-	depends = gtk2
-	depends = alsa-lib
+	depends = gtk3
 	depends = hamradio-menus
-	source = http://www.qsl.net/5b4az/pkg/morse/xdemorse/xdemorse-3.0.tar.bz2
-	source = diff.autogen.sh
+	source = http://www.qsl.net/5b4az/pkg/morse/xdemorse/xdemorse-3.6.2.tar.bz2
 	source = xdemorse.desktop
 	source = xdemorse.1
-	md5sums = 31c3cb8386a9f5ac6f0179802881a25f
-	md5sums = ad6b0e6dd69c1d0efd01efef63ace093
+	md5sums = 068cfd1e944269f8060ffbb603a60fcb
 	md5sums = abb9f6e6510c9f747d70c738eeb5a824
-	md5sums = d7f9056699f4467fd1ee6834b75cbed8
-	sha256sums = 9600481edaf3c71d1bdf3962e9e506eefcb00b432ba3ff66bf4c1b9e8d87cd26
-	sha256sums = cc38902be0fc1026cc027cd0fdab7e78bbfb336df36b90b8f25060775636924a
+	md5sums = 24377210d07bb855d47993245fbea03b
+	sha256sums = 8abecc219fd8293963766457e0fa952f7be715f7c8837bdcaa45a890829aebd4
 	sha256sums = 1a690f6c7fdb73be3ebcedb59390faf74fcfb5f71484290d9d5a682650d3c9b1
-	sha256sums = ff51f11e00b872469a86d297a008b26ccad90a066d19397361e16e0b15ecb68c
+	sha256sums = ac206099b5f44dd33acca7beedb821f025dfc08be48d4e54ab21ffd081d5e5f8
 
 pkgname = xdemorse
 

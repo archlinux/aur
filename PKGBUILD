@@ -4,28 +4,28 @@
 # Original author: Bennett Goble <nivardus at gmail dot com>
 
 pkgname=xdemorse
-pkgver=3.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="An X/GTK+ application - decodes Morse Code signals into text."
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/morse/xdemorse/xdemorse.html"
 license=(GPL)
-depends=('gtk2' 'alsa-lib' 'hamradio-menus')
+depends=('gtk3' 'hamradio-menus')
 makedepends=('autoconf' 'automake' 'intltool' 'imagemagick' 'pkg-config')
 source=("http://www.qsl.net/5b4az/pkg/morse/$pkgname/$pkgname-$pkgver.tar.bz2"
-	diff.autogen.sh
+#	diff.autogen.sh
 	$pkgname.desktop
 	$pkgname.1
 )
 
-prepare() {
-	cd $srcdir/$pkgname-$pkgver
-
-	patch -p0 < ../diff.autogen.sh
-	sed -i s:xpm:png: Makefile.am
-	convert files/$pkgname.xpm files/$pkgname.png
-	install -m644 ../$pkgname.desktop files/$pkgname.desktop
-}
+#prepare() {
+#	cd $srcdir/$pkgname-$pkgver
+#
+#	patch -p0 < ../diff.autogen.sh
+#	sed -i s:xpm:png: Makefile.am
+#	convert files/$pkgname.xpm files/$pkgname.png
+#	install -m644 ../$pkgname.desktop files/$pkgname.desktop
+#}
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
@@ -46,18 +46,20 @@ package() {
 	cd $srcdir/$pkgname-$pkgver
 
 	mkdir -p $pkgdir/usr/share/doc/$pkgname/examples/
-	mkdir -p $pkgdir/usr/share/{applications,pixmaps}
+	mkdir -p $pkgdir/usr/share/{applications,pixmaps,man/man1}
 	make DESTDIR=$pkgdir install
 
 	mkdir -p $pkgdir/usr/bin
 	mv $pkgdir/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname.1
 	install -D -m 755 ../$pkgname.1 $pkgdir/usr/bin/$pkgname
+
+	install -Dm644 .$pkgname/xdemorserc $pkgdir/usr/share/doc/$pkgname/examples/xdemorserc.example
+
+	rm $pkgdir/usr/share/doc/$pkgname/$pkgname.1.gz
 }
-md5sums=('31c3cb8386a9f5ac6f0179802881a25f'
-         'ad6b0e6dd69c1d0efd01efef63ace093'
+md5sums=('068cfd1e944269f8060ffbb603a60fcb'
          'abb9f6e6510c9f747d70c738eeb5a824'
-         'd7f9056699f4467fd1ee6834b75cbed8')
-sha256sums=('9600481edaf3c71d1bdf3962e9e506eefcb00b432ba3ff66bf4c1b9e8d87cd26'
-            'cc38902be0fc1026cc027cd0fdab7e78bbfb336df36b90b8f25060775636924a'
+         '24377210d07bb855d47993245fbea03b')
+sha256sums=('8abecc219fd8293963766457e0fa952f7be715f7c8837bdcaa45a890829aebd4'
             '1a690f6c7fdb73be3ebcedb59390faf74fcfb5f71484290d9d5a682650d3c9b1'
-            'ff51f11e00b872469a86d297a008b26ccad90a066d19397361e16e0b15ecb68c')
+            'ac206099b5f44dd33acca7beedb821f025dfc08be48d4e54ab21ffd081d5e5f8')

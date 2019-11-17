@@ -1,5 +1,3 @@
 #!/bin/sh
-if [ ! -f "~/.xdemorserc" ]; then
-    cp -a /usr/share/doc/xdemorse/examples/xdemorserc.example ~/.xdemorserc
-fi
+cp -ua /usr/share/doc/xdemorse/examples/xdemorserc.example ~/.xdemorserc
 exec xdemorse.1
