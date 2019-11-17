@@ -2,7 +2,7 @@
 # Contributor: Siôn le Roux <sinisterstuf@gmail.com>
 
 pkgname=wakatime
-pkgver=13.0.1
+pkgver=13.0.2
 pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=('python')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e449da625f7ca5d63be555ed3acb84763873c21217678a2a5bde42b0d2dbb771')
+sha256sums=('925667f6d28ba7d0848f473fe87bed62932fdb6f3b44df13b24904d70254e4a0')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
