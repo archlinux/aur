@@ -1,6 +1,10 @@
+# Maintainer: Leo Verto <leotheverto+aur@gmail.com>
+# Contributor: tsuflux
+# Contributor: sekret
+
 pkgname=roomeqwizard
-pkgver=5.18
-_pkgver=5_18
+pkgver=5.19
+_pkgver=5_19
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('any')
@@ -8,7 +12,7 @@ url="http://www.roomeqwizard.com"
 license=('custom')
 depends=('java-environment')
 source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
-sha512sums=('e256d2ad57bbed4c1e90380e1aa7247815f0ff91a4426a68caa200cf3f4af971515598c04a48f8657a8f4ada65bc8aa106469f46133f8a39a87f62e7e205af8b')
+sha512sums=('9fa847163d89916585953a454ada58f2c940298fa6fedd7a5fc0290215691662f5ccd49d52205765e77e5a867a34050d71f82023498b646a6a329d1ed052b12f')
 
 package() {
   sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/opt/$pkgname"
@@ -20,7 +24,6 @@ package() {
 
   ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   mv "$pkgdir/opt/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
-  mv "$pkgdir/opt/$pkgname/readme.txt" "$pkgdir/usr/share/doc/$pkgname/"
   mv "$pkgdir/opt/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 
   # repair
