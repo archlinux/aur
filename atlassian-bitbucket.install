@@ -1,7 +1,7 @@
 post_install() {
-  systemd-sysusers bitbucket.conf
-  systemd-tmpfiles --create bitbucket.conf
-  chown -R bitbucket:bitbucket /opt/atlassian-bitbucket /etc/bitbucket
+  #systemd-sysusers bitbucket.conf
+  #systemd-tmpfiles --create bitbucket.conf
+  chown -R bitbucket:bitbucket /opt/atlassian-bitbucket /etc/bitbucket /var/lib/bitbucket
   chmod -R 750 /etc/bitbucket
   echo "If you are running bitbucket in a VM and/or are experiencing trouble with the ssh-plugin, it might be necessary to enable haveged."
 }

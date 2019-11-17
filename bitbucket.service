@@ -3,12 +3,22 @@ Description=Bitbucket Server by Atlassian
 After=network.target
 
 [Service]
-Type=forking
+User=bitbucket
+SyslogIdentifier=bitbucket
+Environment="BITBUCKET_HOME=/var/lib/bitbucket"
+Environment="CATALINA_HOME=/opt/atlassian-bitbucket"
+Environment="CATALINA_BASE=/opt/atlassian-bitbucket"
+Environment="CATALINA_TMPDIR=/opt/atlassian-bitbucket/temp"
+Environment="JAVA_HOME=/usr/lib/jvm/default"
+Environment="CLASSPATH=/opt/atlassian-bitbucket/app"
+EnvironmentFile=-/etc/conf.d/bitbucket
 ExecStart=/opt/atlassian-bitbucket/bin/start-bitbucket.sh
 ExecStop=/opt/atlassian-bitbucket/bin/stop-bitbucket.sh
-PIDFile=/opt/atlassian-bitbucket/work/catalina.pid
+Type=forking
+PIDFile=/var/lib/bitbucket/log/bitbucket.pid
 KillSignal=SIGINT
 LimitNOFILE=8196
+SuccessExitStatus=143
 
 [Install]
 WantedBy=multi-user.target
