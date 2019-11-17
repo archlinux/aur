@@ -3,10 +3,10 @@
 pkgname='python-skyfield'
 _name=${pkgname#python-}
 pkgver='1.14'
-pkgrel=1
+pkgrel=2
 pkgdesc="Elegant astronomy for Python"
 url="https://rhodesmill.org/skyfield/"
-depends=('python' 'python-numpy' 'python-jplephem')
+depends=('python' 'python-numpy' 'python-jplephem' 'python-sgp4')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
