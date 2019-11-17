@@ -1,7 +1,7 @@
 # Maintainer: Mao Wtm <m@maowtm.org>
 pkgname=ts-player
-pkgver=1
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A terminal recorder that produces files capable of efficient random access"
 arch=(x86_64)
 url="https://github.com/micromaomao/ts-player"
