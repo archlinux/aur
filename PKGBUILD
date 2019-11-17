@@ -19,7 +19,7 @@ depends=(
 makedepends=("git")
 provides=("multibootusb")
 conflicts=("multibootusb")
-source=("${pkgname}"'::git+https://github.com/aguslr/multibootusb.git')
+source=("${pkgname}"'::git+https://github.com/mbusb/multibootusb.git')
 md5sums=('SKIP')
 
 build() {
