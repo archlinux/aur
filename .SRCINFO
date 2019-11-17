@@ -1,18 +1,18 @@
 pkgbase = gog-bastion
 	pkgdesc = An action role-playing game set in a lush imaginative world. (GOG version)
-	pkgver = 1.50436.29.08.2018.23317
+	pkgver = 1.0.1747
 	pkgrel = 2
-	epoch = 2
+	epoch = 3
 	url = https://www.gog.com/game/bastion
 	arch = i686
 	arch = x86_64
 	groups = games
 	groups = gog
 	license = custom
-	source = local:///bastion_1_50436_29_08_2018_23317.sh
+	source = local:///bastion_1_0_1747_initial_test_33876.sh
 	source = gog-bastion.desktop
 	source = gog-bastion
-	sha256sums = e8b35a29dbe0e941232eea3c63ad2ae75f3d605868dfab5acdae85254e73b79a
+	sha256sums = 3be3bc37cb24d3031f9e469b97a16639ad81a3ea217fcf20865d9e034ae523b6
 	sha256sums = 79c2b1c4e8d00c3b0f9dfc2b700929b6dc85b332047533e418fd0eb5cd41465b
 	sha256sums = 306723d271f33e32d3e057b7b1c69bc0075223364c136898557b24e4ae035a1c
 
