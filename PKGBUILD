@@ -2,22 +2,23 @@
 _pkgbasename=i3-resurrect
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=1.3.2
-pkgdesc="A simple but flexible solution to saving and restoring i3 workspace layouts"
+pkgver=1.4.0.r0.g9b8d399
+pkgdesc='A simple but flexible solution to saving and restoring i3 workspace layouts'
 arch=('any')
-url="http://github.com/JonnyHaystack/i3-resurrect"
+url='http://github.com/JonnyHaystack/i3-resurrect'
 license=('GPL')
-depends=('python' 'python-psutil' 'i3ipc-python-git' 'wmctrl'
-         'wmctrl-python3-git' 'python-click' 'python-enum-compat'
-         'python-setuptools' 'xdotool')
-makedepends=('git')
+depends=('python' 'python-psutil' 'python-i3ipc' 'python-click' 'python-natsort' 
+         'python-enum-compat' 'xorg-xprop' 'xdotool')
+makedepends=('git' 'python-setuptools')
 optdepends=('i3-wm')
+provides=('i3-resurrect')
+conflicts=('i3-resurrect')
 source=(git+https://github.com/JonnyHaystack/i3-resurrect)
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgbasename"
-    git tag -l --sort=-v:refname | head -n 1
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -25,7 +26,6 @@ build() {
     
     python setup.py bdist
 }
-
 
 package() {
     _pkg=$(ls "$srcdir/$_pkgbasename/dist/")
