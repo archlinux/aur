@@ -61,12 +61,16 @@ package() {
 	source .venv/bin/activate
 	pip install -r requirements.txt
 	pip install https://github.com/JarbasAl/py_mplayer/archive/master.zip
+	
+	# Fix Virtualenv
 	sed -i 's/^VIRTUAL_ENV=.*/VIRTUAL_ENV="\/usr\/share\/mycroft-core\/.venv"/g' .venv/bin/activate
+	pathtoreplace=`echo $pkgdir | sed 's:/:\\\/:g'`
 	rm .venv/bin/activate.{fish,csh}
 
 	# Cleanup
 	find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +
 	rm -rf "$pkgdir/usr/share/mycroft-core/test"
+        sed -i "s/$pathtoreplace//g" $pkgdir/usr/share/mycroft-core/.venv/bin/*
 
 	# Pulseaudio Client configuration
 	install -D -m644 "${srcdir}/client.conf" "${pkgdir}/usr/share/mycroft-core/pulseaudio.client.conf"
