@@ -6,7 +6,7 @@ pkgname="${_pkgname}"-appimage
 pkgver=0.6.2_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning wallet focused on user experience and ease of use"
 arch=('x86_64')
 url="https://github.com/LN-Zap/zap-desktop"
@@ -28,8 +28,7 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}.desktop"
+    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
     sed -i -E "s|Icon=zap|Icon=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
