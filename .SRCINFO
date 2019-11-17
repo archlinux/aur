@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-minizip2
 	pkgdesc = ZIP file extraction library (mingw-w64)
-	pkgver = 2.3.8
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/nmoinvaz/minizip
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-minizip2
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/nmoinvaz/minizip/archive/2.3.8.tar.gz
-	sha256sums = 8752d8a3d45f264d36e427774118f94d507236482698736c6194ca00cef91df6
+	source = https://github.com/nmoinvaz/minizip/archive/2.9.1.tar.gz
+	sha256sums = 90481093302ccda81b2d129fea1800ea53be3f826ab0ec6176ad6807869ec4d9
 
 pkgname = mingw-w64-minizip2
 
