@@ -43,7 +43,6 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/"
-    #cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
     # Symlink executable
