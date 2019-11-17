@@ -4,7 +4,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=linsmith
-pkgver=0.99.30
+pkgver=0.99.31
 pkgrel=1
 pkgdesc="A Smith Charting program, mainly designed for educational use"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ package() {
   install -Dm644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 linsmith_icon.xpm "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
 }
-md5sums=('a07f14ca8a3c1368d7594ec177f4b5d9'
+md5sums=('967a45c7715fbc698c16260c0af0df19'
          '2d0246a85ce1aebd359c5c3cabfed7b5')
-sha256sums=('76739c0cdc13f193793842ea4ddd027a27143a6672994de485b9902c32a41aa3'
+sha256sums=('bafdf9edcae7e55bc85bfc989620d9e8c8cbb6b9a1bd39a14e0c1b81923d128f'
             'bc74c02dbedc8c80b552e276c770e9ee3f0b231e371ea08a3e0a6921812b1938')
