@@ -2,7 +2,7 @@
 
 pkgname=vue-cli-service-global
 _pkgname=@vue/cli-service-global
-pkgver=3.11.0
+pkgver=4.0.5
 pkgrel=1
 pkgdesc='vue-cli-service global addon for vue-cli'
 arch=(i686 x86_64)
