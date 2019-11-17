@@ -1,0 +1,12 @@
+pkgbase = pandoc-manpage
+	pkgdesc = A temporary solution for getting the manpage while the missing manpage bug persists in the official package
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = https://pandoc.org
+	arch = any
+	license = GPL2
+	source = https://raw.githubusercontent.com/jgm/pandoc/2.7.3/man/pandoc.1
+	md5sums = c0f56df3283f8ec8b8caf166125c50e0
+
+pkgname = pandoc-manpage
+
