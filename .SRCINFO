@@ -1,10 +1,14 @@
 pkgbase = lanmessenger
 	pkgdesc = An opensource LAN messenger
 	pkgver = 1.2.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanmessenger/lanmessenger
 	arch = x86_64
-	license = MIT
+	license = None
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-webkit
+	depends = qt5-multimedia
 	source = https://github.com/lanmessenger/lanmessenger/releases/download/v1.2.37/lmc-1.2.37.x86_64_min.rpm
 	sha512sums = cbaf93e15acd11b258db425f4387835c32e898b8687227018d5422dac45efbc54fb9c2cdaf4e75c941c2ad74a1c6287d030d062c972540554a284bb93ce4035b
 
