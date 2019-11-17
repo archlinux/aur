@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-lz4
 	pkgdesc = Very fast lossless compression algorithm (mingw-w64)
-	pkgver = 1.8.3
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://lz4.github.io/lz4/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-lz4
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/lz4/lz4/archive/v1.8.3.tar.gz
-	sha256sums = 33af5936ac06536805f9745e0b6d61da606a1f8b4cc5c04dd3cbaca3b9b4fc43
+	source = https://github.com/lz4/lz4/archive/v1.9.2.tar.gz
+	sha256sums = 658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc
 
 pkgname = mingw-w64-lz4
 
