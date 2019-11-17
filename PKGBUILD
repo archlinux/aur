@@ -2,7 +2,7 @@
 pkgname=python-naturalsort
 _name=${pkgname#python-}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple natural order sorting API for Python that just works"
 arch=(any)
 url="https://github.com/xolox/python-naturalsort"
