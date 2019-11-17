@@ -1,7 +1,7 @@
 # Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=libpcanbasic
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='API for the development of applications with PEAK CAN connection for Linux '
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "https://www.peak-system.com/produktcd/Develop/PC%20interfaces/Linux/PCAN-Basic_API_for_Linux/PCAN-Basic_Linux-${pkgver}.tar.gz"
 )
 sha256sums=(
-    "b88f5a73ebe6a52a58f005ae4a205c937ed317445a95de58b6872af69f1f9524"
+    "5e37d48c7f21094b16a12d9cd6d2bac988ecfe3ed34e449a43058fb25903e336"
 )
 
 prepare() {
