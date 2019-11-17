@@ -1,8 +1,8 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=kosmorro
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A program that computes the ephemerides'
 depends=('python>=3.7.0' 'python<4.0.0' 'python-skyfield>=1.14' 'python-skyfield<2.0.0' 'python-numpy>=1.17.0' 'python-numpy<2.0.0')
 makedepends=('python-setuptools')
@@ -11,7 +11,7 @@ url='http://kosmorro.astronewbie.space'
 license=('AGPL3')
 
 source=("https://github.com/Deuchnord/kosmorro/archive/v${pkgver}.tar.gz")
-sha256sums=("c2ade380968d285faa79f663fbd4721f914c612137614478364a17f4b5083674")
+sha256sums=("71e4d68d4fc4134fabcdbc9f200b90c4f4c0e921062a7b66b051d070f3028f37")
 
 build() {
     cd "${srcdir}/kosmorro-${pkgver}"
