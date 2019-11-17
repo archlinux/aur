@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-openh264
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)"
 arch=(any)
 url="http://www.openh264.org/"
@@ -19,7 +19,7 @@ build() {
   export CPPFLAGS="-D_FORTIFY_SOURCE=2"
   export CFLAGS="-pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS=${CFLAGS}
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
   for _arch in ${_architectures}; do
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/openh264-${pkgver}" "${srcdir}/build-${_arch}"
