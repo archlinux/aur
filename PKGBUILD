@@ -12,7 +12,7 @@ depends=("python-pyqt5" "pyqt5-common" "python-dbus" "mtools" "util-linux"
 makedepends=("git")
 provides=("multibootusb")
 conflicts=("multibootusb")
-source=("${pkgname}"'::git+git://github.com/mbusb/multibootusb.git')
+source=("${pkgname}"'::git+https://github.com/aguslr/multibootusb.git')
 md5sums=('SKIP')
 
 pkgver() {
