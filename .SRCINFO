@@ -1,6 +1,6 @@
 pkgbase = libzia
 	pkgdesc = Support lib. for tucnak4
-	pkgver = 4.11
+	pkgver = 4.18
 	pkgrel = 1
 	url = http://tucnak.nagano.cz/
 	arch = i686
@@ -13,13 +13,13 @@ pkgbase = libzia
 	depends = libusb-compat
 	depends = libftdi
 	conflicts = libzia3
-	source = http://tucnak.nagano.cz/libzia-4.11.tar.gz
+	source = http://tucnak.nagano.cz/libzia-4.18.tar.gz
 	source = diff.zbfd.c
 	source = diff.zdump.c
-	md5sums = 88ca8c31e4e47e16320d321835d1f822
+	md5sums = 9ea23e96662efe22ea2bb3c742f7f613
 	md5sums = 89c0df530740b443ecb9a81fcd56b290
 	md5sums = 2605f7404324ff64c78d539e37dc3a8a
-	sha256sums = 39153c74bdf9b542b0295263500fe9fbbf9992a932a3c31c5b879c4d1d630094
+	sha256sums = c7ff9ad99dbe5d11e832495cf52f283e6c7ae14deeaa29edcd77e9ce4ac2dced
 	sha256sums = d7e847934c40ce192ff949c0aa33b2ddf252310d11ade4fbbbd21f47e00c1301
 	sha256sums = 414064189562c05a5d600ead106f77348db4dccc73dc4a3a1b103075befe96ed
 
