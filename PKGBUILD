@@ -7,8 +7,15 @@ pkgdesc="Boot multiple live Linux distros from a usb flash drive."
 arch=("any")
 url="http://multibootusb.org"
 license=("GPL")
-depends=("python-pyqt5" "pyqt5-common" "python-dbus" "mtools" "util-linux"
-    "parted" "p7zip" "python-six" "python-pyudev" "lsof")
+depends=(
+	"lsof"
+	"mtools"
+	"p7zip"
+	"parted"
+	"python-dbus"
+	"python-pyqt5"
+	"python-pyudev"
+)
 makedepends=("git")
 provides=("multibootusb")
 conflicts=("multibootusb")
