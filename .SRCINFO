@@ -1,12 +1,13 @@
 pkgbase = qthttpserver-git
 	pkgdesc = Provide a Qt framework for a simple HTTP server
 	pkgver = r68.7dc185f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/qt-labs/qthttpserver
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-websockets
 	source = git+https://github.com/qt-labs/qthttpserver.git
 	source = git+https://github.com/nodejs/http-parser.git
 	md5sums = SKIP
