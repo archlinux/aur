@@ -2,7 +2,8 @@
 
 _pkgname=fiji
 pkgname=fiji-bin
-pkgver=20190930.130746
+pkgver=2.0.0_pre_10
+epoch=1
 pkgrel=1
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('x86_64')
@@ -14,12 +15,12 @@ depends=(
 )
 makedepends=('gendesk')
 
-source=('https://downloads.imagej.net/fiji/latest/fiji-linux64.zip')
-sha256sums=('4e8153a3e264d32e15ee4b2dcaaf8489d5a63ccd2cf77eae911e82b000c46651')
+source=("https://downloads.imagej.net/${_pkgname}/latest/${_pkgname}-linux64.tar.gz")
+sha256sums=('96cff501cb5e5e29f445a515c2aef1b85b39366e0ca9ef70a3c7dc5e986e1ba5')
 
 
 prepare() {
-  echo "Creating desktop file"
+  echo 'Creating desktop file'
   gendesk -f -n --pkgname ${_pkgname} \
     --pkgdesc "${pkgdesc}" \
     --categories "Graphics;Science;ImageProcessing;" \
