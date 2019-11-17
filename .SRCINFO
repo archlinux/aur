@@ -1,13 +1,13 @@
 pkgbase = python-mywal
 	pkgdesc = A colorscheme generator that parses Xresources
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iamrobox001/mywal
 	arch = any
 	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python>=3.6
-	depends = python-setuptools
-	depends = python-wheel
 	optdepends = feh: Detecting current wallpaper
 	source = python-mywal-0.4.tar.gz::https://github.com/iamrobox001/mywal/archive/0.4.tar.gz
 	source = python-mywal-0.4-py3-none-any.whl::https://github.com/iamrobox001/mywal/releases/download/0.4/mywal-0.4-py3-none-any.whl
