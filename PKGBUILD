@@ -2,7 +2,7 @@
 # Former maintainer: Jakub Maleszewski <xyz43 at me dot com>
 # Contributor: A. Klitzing <andre at incubo dot de>
 pkgname=gnome-manual-duplex
-pkgver=0.69
+pkgver=0.70
 pkgrel=1
 pkgdesc="Utility allowing manual duplex printing"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python2' 'python2-pycups' 'python2-gobject' 'file' 'transfig' 'netpbm' 'psutils' 'gamin')
 makedepends=('gtk2')
 source=(http://downloads.sourceforge.net/project/g-manual-duplex/$pkgname-$pkgver.tar.gz )
-md5sums=('66e39a581ccf314e5de85fe1efabb4b9')
+md5sums=('b5cb78f07dca4cd12df52671dfbdcb46')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
