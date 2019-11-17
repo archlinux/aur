@@ -4,8 +4,8 @@
 # Previous Maintainer: Marcin Skory <armitage at q84fh dot net>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 pkgname=gargoyle
-pkgver=2011.1
-pkgrel=6
+pkgver=2019.1
+pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h')
 url="http://ccxvii.net/gargoyle/"
@@ -19,18 +19,18 @@ conflicts=('gargoyle-mod')
 replaces=('gargoyle-mod')
 #backup=()
 groups=(inform)
-source=("https://github.com/garglk/garglk/archive/stable-${pkgver}.tar.gz" \
+source=("https://github.com/garglk/garglk/archive/${pkgver}.tar.gz" \
 	"gargoyle.sh" \
 	"gargoyle.install" \
 	"gargoyle.xml")
 install=${pkgname}.install
-sha512sums=('3d2eb71e34b9faaace63963b55dddb61f81cfb1f3d42918036d942ffa0e59ca7f8a9747b1059230c32cfd8d467e09aae88befac1dd77723c2edfcb5acf8d4fa8'
+sha512sums=('59f32be9e5faa542e5d12a03466a92503f15023add1da5370645e15ef5b6c1eb2696456b0f9fcc924a5341b40cc98e9e7bcb1aec0ea05acfd66ccc412e39cbb7'
             'fbfd04e6d62e469b62263f1fb92b314e825784982be3be9f0e506fe6ff7d367704db907c88ec60fc492f35eaa3548fc3a65fd67d8c4c2be7e35ed87a6c9c3489'
             '1fa602865745c1c9801178ee9b24be86215f2af4f9ee3f4f3b3c0606a87aba32a67c9c5343b481332c8fc97ff6c1a5e447f074d116c0cc5b255af35098096e6e'
             'c9924abc48b6dc5025fb83c040a3bdd2a324302d67683645a4fd1d1f3bcfe92c58a9db71c1e41a26afe8a3144e1cdafbc060df2261d93ddac29a9144ae22db71')
 
 prepare() {
-	cd "${srcdir}/garglk-stable-${pkgver}"
+	cd "${srcdir}/garglk-${pkgver}"
 	# Remove hardcoded optimisation and replace it with our CFLAGS	
 	sed -i 's|OPTIM = -O2 $(CFLAGS) ;|OPTIM = ${CFLAGS} -std=c++11 ;|' Jamrules
 	# Required to build with gcc 5
@@ -38,13 +38,13 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/garglk-stable-${pkgver}"
+	cd "${srcdir}/garglk-${pkgver}"
 	jam
 	jam install
 }
 
 package() {
-	local gsrcdir="${srcdir}/garglk-stable-${pkgver}"
+	local gsrcdir="${srcdir}/garglk-${pkgver}"
 	cd "$gsrcdir"
 
 	# Install proper IF-reading binaries
