@@ -2,7 +2,7 @@
 # Contributor: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-pkgver=19.8.2
+pkgver=19.8.3
 pkgrel=1
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ package() {
 	ln -s /usr/bin/mimic ${pkgdir}/usr/share/mycroft-core/mimic/bin/mimic
 
 	# Set permissions
-	chmod -R g+w ${pkgdir}/usr/share/mycroft-core
+	chmod -R 755 ${pkgdir}/usr/share/mycroft-core
 
 	# systemd
 	install -D -m644 "${srcdir}/mycroft.service" -t "${pkgdir}/usr/lib/systemd/system"
@@ -72,8 +72,8 @@ package() {
 	install -D -m644 "${srcdir}/client.conf" "${pkgdir}/usr/share/mycroft-core/pulseaudio.client.conf"
 }
 
-md5sums=('8cc14a0c6b74d35dd7e4a4d749695b42'
-	'39bcf2f0f30854b7b6e516d49946566a'
-	'578b9531acff7b5bf96d776bbd327d15'
-	'7cbcc7b8b71d00c19a11166fbbd5ed4f'
-'46775f06fd9d6c4ad5ff3a221d4912ff')
+md5sums=('814d722c4a96b5205d31da341e5d9917'
+         '39bcf2f0f30854b7b6e516d49946566a'
+         '578b9531acff7b5bf96d776bbd327d15'
+         '7cbcc7b8b71d00c19a11166fbbd5ed4f'
+         '46775f06fd9d6c4ad5ff3a221d4912ff')
