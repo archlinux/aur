@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-giflib
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for reading and writing gif images (mingw-w64)"
 arch=(any)
 url="http://sourceforge.net/projects/giflib/"
@@ -31,7 +31,7 @@ build() {
   export CPPFLAGS="-D_FORTIFY_SOURCE=2"
   export CFLAGS="-pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS=${CFLAGS}
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
   
   for _arch in ${_architectures}; do
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
