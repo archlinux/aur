@@ -5,8 +5,8 @@
 
 _name=talloc
 pkgname=lib32-${_name}
-pkgver=2.1.16
-pkgrel=4
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='A hierarchical pool based memory allocator with destructors'
 arch=('x86_64')
 url='http://talloc.samba.org/'
@@ -14,7 +14,7 @@ license=('GPL3')
 source=("https://samba.org/ftp/${_name}/${_name}-${pkgver}.tar.gz")
 depends=('talloc')
 makedepends=('python')
-sha256sums=('195bf6830a070deb11c492b8cd575a59cd4d3b634164f3f693f6388f806a52a9')
+sha256sums=('75d5bcb34482545a82ffb06da8f6c797f963a0da450d0830c669267b14992fc6')
 
 build() {
   cd ${_name}-${pkgver}
