@@ -4,7 +4,7 @@ _target=mips64-ultra-elf
 pkgname=${_target}-gcc
 _gccver=9.1.0
 _islver=0.21
-pkgver=9.1.0_r100.c9c95e7
+pkgver=9.1.0_r110.23a6b60
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_target}-gcc-stage1")
 provides=("${_target}-gcc-stage1")
 replaces=("${_target}-gcc-stage1")
 options=('!emptydirs' '!strip' )
-source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${_gccver}.tar.xz"
+source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
     "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
     "git+https://github.com/glankk/n64.git#branch=n64-ultra")
 sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
