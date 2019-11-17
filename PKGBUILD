@@ -4,7 +4,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=78.0.3904.97
-_rev=1
+_rev=2
 _archver=f2914b4d0e0a062da92f1434780dd168b12678db
 pkgrel=${_rev}
 _launcher_ver=6
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/${_archver}.tar.gz)
 sha256sums=('d1f49ab9f4f973536166f587114553c21a29977bdc350dd407a89d34e22a9d07'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'dd89ed77066a6a3248932095e5c4557c699bf620b8ee1ccdf195bfc714bb6b43'
+            '75f20b8bd35f64aeb4b079044f536e494dccbfa6ef6e4d5450dd3abf6abec368'
             '781bc4f83298286c45fcc941484cbe23cf913a7149bf7233181922f8d58cd833')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
