@@ -1,7 +1,7 @@
 # Maintainer: edward-p <edward At edward-p Dot xyz>
 
 pkgname=proxmark3-iceman-git
-pkgver=7610.e0d4e69c
+pkgver=7614.f08fd019
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
@@ -73,7 +73,7 @@ build() {
   done
 
   # Build & install other targets
-  make {client,mfkey,nonce2key,common}/install
+  make {bootrom,client,mfkey,nonce2key,common}/install
 }
 
 package() {
