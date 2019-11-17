@@ -29,11 +29,13 @@ conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-$pkgrel.tar.gz
-        https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/${_archver}.tar.gz)
+        https://github.com/ungoogled-software/ungoogled-chromium-archlinux/archive/${_archver}.tar.gz
+        icu65.patch)
 sha256sums=('d1f49ab9f4f973536166f587114553c21a29977bdc350dd407a89d34e22a9d07'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '75f20b8bd35f64aeb4b079044f536e494dccbfa6ef6e4d5450dd3abf6abec368'
-            '781bc4f83298286c45fcc941484cbe23cf913a7149bf7233181922f8d58cd833')
+            '781bc4f83298286c45fcc941484cbe23cf913a7149bf7233181922f8d58cd833'
+            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -70,6 +72,9 @@ prepare() {
   _utils="${_ungoogled_repo}/utils"
 
   cd "$srcdir/chromium-$pkgver"
+
+  # https://crbug.com/1014272
+  patch -Np1 -i ../icu65.patch
 
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
