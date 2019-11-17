@@ -1,0 +1,28 @@
+pkgbase = devilutionx
+	pkgdesc = Diablo devolved for linux
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/diasurgical/devilutionX
+	install = devilutionx.install
+	arch = i686
+	arch = x86_64
+	license = custom:unlicense
+	makedepends = cmake
+	makedepends = gcc-libs
+	depends = freetype2
+	depends = graphite
+	depends = libpng
+	depends = libsodium
+	depends = pcre
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	depends = sdl2_ttf
+	depends = sdl2_ttf
+	optdepends = ttf-charis-sil: CharisSILB.ttf
+	source = https://github.com/diasurgical/devilutionX/archive/master.zip
+	source = devilutionx.png
+	md5sums = SKIP
+	md5sums = 014003a7bcef2f035eddff2ee74b3994
+
+pkgname = devilutionx
+
