@@ -2,7 +2,7 @@
 
 pkgname=python-wire
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A convenience wrapper around the built-in SQLite3 module in python"
 arch=("any")
 url="https://github.com/djmattyg007/python-wire"
