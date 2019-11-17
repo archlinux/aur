@@ -14,6 +14,7 @@ depends=(
 		"python-beautifulsoup4"
 		"python-colorama"
 		"downloader-cli"
+		"python-itunespy"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
@@ -22,7 +23,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=ytmdl.install
+install=
 changelog=
 source=("https://github.com/deepjyoti30/ytmdl/archive/2019.11.16.tar.gz")
 noextract=()
