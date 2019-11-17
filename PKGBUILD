@@ -1,15 +1,15 @@
 pkgname=('python-liquidctl')
 _module='liquidctl'
-pkgver='1.2.0'
+pkgver='1.3.0'
 pkgrel=1
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 url="https://github.com/jonasmalacofilho/liquidctl"
-depends=('python' 'python-setuptools' 'python-pyusb' 'python-hidapi' 'python-docopt' 'python-appdirs')
+depends=('python' 'python-setuptools' 'python-pyusb' 'python-hidapi' 'python-docopt')
 makedepends=()
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-${pkgver}.tar.gz")
-sha256sums=('ad8c03c0695620fedaec11e7a8286bb5d4da18ba0c71e55888bfa06f8f7d7529')
+sha256sums=('ce0483b0a7f9cf2618cb30bdf3ff4195e20d9df6c615f69afe127f54956e42ce')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
@@ -22,4 +22,5 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 liquidctl.8 "${pkgdir}/usr/share/man/man8/liquidctl.8"
 }
