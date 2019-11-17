@@ -2,8 +2,9 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=opensmtpd-extras
-pkgver=6.4.0
-pkgrel=4
+_pkgname=OpenSMTPD-extras
+pkgver=6.6.0
+pkgrel=1
 pkgdesc='Additional queues, schedulers, and tables for OpenSMTPD'
 arch=(i686 x86_64)
 url=https://github.com/OpenSMTPD/OpenSMTPD-extras
@@ -17,20 +18,22 @@ optdepends=(
   'hiredis: for table-redis support'
 )
 source=(https://www.opensmtpd.org/archives/$pkgname-$pkgver.tar.gz)
-sha512sums=('097223884841ec3939d3f3d86ba9d23f9c62a37825a8e5b94c2ac5fd16584879780305685706b9bd8ed9a49dfece3ff5ed8f7f143494ca92a8c2c249aff9c28d')
+sha512sums=('0c2f89449f51df243d8933a228f7685c8262376a1c95632517c02066c7be6155ddeae71ce364d953d3571cad4a46cfdbfbb11010ee778d82f6185b49d1336003')
 
 prepare() {
-  cd $pkgname-$pkgver
-
-  # Python add-ons use Python 2
-  sed 's#python_type="python"#python_type="python2"#' -i configure
+  cd $_pkgname-$pkgver
 
   # Fix config folder location
   sed 's#/mail#/smtpd#' -i extras/tables/table-sqlite/sqlite.conf
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
+
+  ./bootstrap
+
+  # Python add-ons use Python 2
+  sed 's#python_type="python#&2#' -i configure
 
   ./configure \
     --prefix=/usr \
@@ -58,11 +61,11 @@ build() {
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   make -k check
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
