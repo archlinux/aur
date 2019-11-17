@@ -1,5 +1,5 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
-# orphaned: Maintainer: Samuel Kesterson <arch@k-labs.com>
+# Contributor: Samuel Kesterson <arch@k-labs.com>
 
 pkgname=brother-hl4150cdn
 pkgver=1.1.1
