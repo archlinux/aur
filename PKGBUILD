@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-librtmp0
 pkgver=2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Toolkit for RTMP streams (mingw-w64)"
 arch=('any')
 url='http://rtmpdump.mplayerhq.hu/'
@@ -24,8 +24,10 @@ prepare() {
 
 
 build() {
-  export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
+  export CFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS=${CFLAGS}
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
   for _arch in ${_architectures}; do
     export C_INCLUDE_PATH="/usr/${_arch}/include/openssl-1.0"
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
