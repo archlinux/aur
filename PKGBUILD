@@ -2,12 +2,12 @@
 
 pkgname=featherweight
 pkgver=1428444876
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight news syndication aggregator for your terminal shell"
 url="https://github.com/GNU-Pony/featherweight"
 arch=(any)
 license=(GPL3)
-depends=(python3 coreutils wget pytagomacs html2text)
+depends=(python3 coreutils wget pytagomacs html2text-with-utf8)
 makedepends=(make coreutils python3 zip texinfo)
 install=featherweight.install
 source=("${url}/archive/${pkgver}.tar.gz")

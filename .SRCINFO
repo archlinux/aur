@@ -1,7 +1,7 @@
 pkgbase = featherweight
 	pkgdesc = A lightweight news syndication aggregator for your terminal shell
 	pkgver = 1428444876
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNU-Pony/featherweight
 	install = featherweight.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = featherweight
 	depends = coreutils
 	depends = wget
 	depends = pytagomacs
-	depends = html2text
+	depends = html2text-with-utf8
 	source = https://github.com/GNU-Pony/featherweight/archive/1428444876.tar.gz
 	sha256sums = 17e8031bec3a68171acc182d925a684b53a2f28c9275362b5592510c07fe2c3b
 
