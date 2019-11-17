@@ -1,7 +1,6 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
-pkgbase=('python-skyfield')
-pkgname=('python-skyfield')
+pkgname='python-skyfield'
 _name=${pkgname#python-}
 pkgver='1.11'
 pkgrel=1
