@@ -13,7 +13,7 @@ source=(ftp://ftp.alsa-project.org/pub/oss-lib/${_pkgbasename}-$pkgver.tar.bz2)
 md5sums=('9ec4bb783fdce19032aace086d65d874')
 
 build() {
-  cd $srcdir/${_pkgbasename}-$pkgver
+  cd ${_pkgbasename}-$pkgver
 
   export CC='gcc -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
@@ -22,10 +22,10 @@ build() {
 }
 
 package() {
-  cd $srcdir/${_pkgbasename}-$pkgver
+  cd ${_pkgbasename}-$pkgver
 
   make DESTDIR="$pkgdir" install
 
   # Clean up lib32 package
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
+  rm -rf "$pkgdir"/usr/{bin,include,share}
 }
