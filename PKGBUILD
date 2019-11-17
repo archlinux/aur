@@ -2,20 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-socialmeta'
-pkgver='0.74003'
+pkgver='0.74004'
 pkgrel='1'
 pkgdesc="Module to generate Social Media Meta Tags, "
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-coerce-types-standard>=0.000005' 'perl-list-moreutils>=0.33' 'perl-moo>=1.001001' 'perl-moox-lazierattributes>=1.06' 'perl-moox-validatesubs>=1.012001' 'perl-type-tiny>=1.002000' 'perl>=5.006')
+depends=('perl-coerce-types-standard>=0.000004' 'perl-list-moreutils>=0.33' 'perl-moo>=1.001001' 'perl-moox-lazierattributes>=1.05' 'perl-moox-validatesubs>=1.012001' 'perl-type-tiny>=1.002000' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-exception>=0')
 url='https://metacpan.org/release/HTML-SocialMeta'
-source=('https://cpan.metacpan.org/authors/id/L/LN/LNATION/HTML-SocialMeta-0.74003.tar.gz')
-md5sums=('b934a2ad4c78a70a8263fd9a0d8c5905')
-sha512sums=('eabf79f5ed73a03e3efc3e1466d20e5f0042acd1e0e0c979de3137f2720cdb26d02d5443b482c00a383f45217f6a3387e36251488e0e632b70e8d171b4999bdb')
-_distdir="HTML-SocialMeta-0.74003"
+source=('https://cpan.metacpan.org/authors/id/L/LN/LNATION/HTML-SocialMeta-0.74004.tar.gz')
+md5sums=('afeb55c843aa2ac93c17f688e2f749be')
+sha512sums=('3a47dd810a72329982d617aba87bfae21eeb83aab2edef3500da09fef592f73808d253267336fbd1e53def8e80cf03e5b73e6a8e6dc73b1cb1b682f53cef8159')
+_distdir="HTML-SocialMeta-0.74004"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
