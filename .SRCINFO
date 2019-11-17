@@ -1,6 +1,6 @@
 pkgbase = cqrlog-source
 	pkgdesc = An advanced ham radio logger using MariaDB - SOURCE version.
-	pkgver = 2.0.5
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://www.cqrlog.com
 	arch = i686
@@ -23,9 +23,10 @@ pkgbase = cqrlog-source
 	provides = cqrlog
 	conflicts = cqrlog
 	conflicts = cqrlog-git
-	source = https://github.com/ok2cqr/cqrlog/archive/v2.0.5.tar.gz
-	md5sums = 7635929c34dd0de37918f1f0b41b3a1e
-	sha256sums = fce2831e93070ab68820143ea6c6a96a625d6e7869d6fa345135185c1c115c44
+	conflicts = cqrlog-bin
+	source = https://github.com/ok2cqr/cqrlog/archive/v2.4.0.tar.gz
+	md5sums = 3be6e7c0dfc2595e33680f68627449fe
+	sha256sums = f492839803f7fdbaed873308c169ae251e7b9e6c3eb232a20a5773fd0d9acecd
 
 pkgname = cqrlog-source
 

@@ -3,7 +3,7 @@
 pkgname=cqrlog-source
 _pkgname=cqrlog
 _authorname=ok2cqr
-pkgver=2.0.5
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="An advanced ham radio logger using MariaDB - SOURCE version."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ optdepends=('winkeydaemon: usb cw xmit'
 	    'xplanet: gui location'
 	    'glabels: print qsl labels')
 provides=('cqrlog')
-conflicts=('cqrlog' 'cqrlog-git')
+conflicts=('cqrlog' 'cqrlog-git' 'cqrlog-bin')
 source=(https://github.com/${_authorname}/${_pkgname}/archive/v${pkgver}.tar.gz)
 
 prepare() {
@@ -46,5 +46,5 @@ package() {
 
 	make DESTDIR="$pkgdir/" install
 }
-md5sums=('7635929c34dd0de37918f1f0b41b3a1e')
-sha256sums=('fce2831e93070ab68820143ea6c6a96a625d6e7869d6fa345135185c1c115c44')
+md5sums=('3be6e7c0dfc2595e33680f68627449fe')
+sha256sums=('f492839803f7fdbaed873308c169ae251e7b9e6c3eb232a20a5773fd0d9acecd')
