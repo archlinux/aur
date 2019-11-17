@@ -1,8 +1,8 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-wsgidav
-pkgver=2.4.1
-pkgrel=4
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")
@@ -14,14 +14,14 @@ optdepends=(
     "python-cheroot: to use the built-in webserver"
 )
 source=(
-    "https://files.pythonhosted.org/packages/07/06/8952c1496a68db8d7571bfa4ddfbf0bcb0d155d23e64e3909752b9c6acfc/WsgiDAV-${pkgver}.tar.gz"
+    "https://files.pythonhosted.org/packages/17/c4/360564dac7ad8f0a13914436b011dc520e898608cd80179b074ad6a27a0c/WsgiDAV-3.0.1.tar.gz"
     "https://raw.githubusercontent.com/mar10/wsgidav/v${pkgver}/LICENSE"
     "uwsgi.py"
     "uwsgi.ini"
     "config.example.json"
 )
 sha256sums=(
-    "d95014d71f595ae08062cb8608742adb4c1d7aece029e22ebe7de010359cb8f5"
+    "415ac221806a266a3661f6f2f91ecc8dbcbe3653cdb1508abc0c397ea0cf35f3"
     "efab1ba243ab3de9a6fb75068eb39424055408849aa3aabf085f0fca0a1be3d1"
     "7ca04465a67ec0726a4503aea86695e6d1948fa233dd2caa0fcee4db779aeaaf"
     "25826e3ceec2e9e01c54e6367966537017b0c758c7eda131566a95f97b474250"
