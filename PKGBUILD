@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-mpg123
-pkgver=1.25.12
+pkgver=1.25.13
 pkgrel=1
 pkgdesc="A console based real time MPEG Audio Player for Layer 1, 2 and 3 (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://downloads.sourceforge.net/sourceforge/mpg123/mpg123-${pkgver}.tar.bz2")
-sha256sums=('1ffec7c9683dfb86ea9040d6a53d6ea819ecdda215df347f79def08f1fe731d1')
+sha256sums=('90306848359c793fd43b9906e52201df18775742dc3c81c06ab67a806509890a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
