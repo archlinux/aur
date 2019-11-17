@@ -116,8 +116,9 @@ prepare() {
                        --undefine RT_GROUP_SCHED
 
         # Power management and ACPI options
-        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE  \
-                       --enable HIBERNATION
+        scripts/config --enable HIBERNATION \
+                       --enable ACPI_REV_OVERRIDE_POSSIBLE  \
+                       --enable ACPI_TABLE_UPGRADE
 
         # Enable loadable module support
         scripts/config --undefine MODULE_SIG_FORCE \
