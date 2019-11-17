@@ -1,10 +1,9 @@
 # Maintainer: Alex Hirzel <alex at hirzel period us>
 
-pkgbase=('python-sgp4')
-pkgname=('python-sgp4')
+pkgname='python-sgp4'
 _name=${pkgname#python-}
 pkgver='1.4'
-pkgrel=1
+pkgrel=2
 pkgdesc="Track earth satellite TLE orbits using up-to-date 2010 version of SGP4"
 url="https://pypi.org/project/sgp4/"
 depends=('python')
