@@ -1,7 +1,9 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 pkgname=pwninit-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
+provides=('pwninit')
+conflicts=('pwninit')
 depends=('elfutils')
 arch=('x86_64')
 pkgdesc="pwninit - automate starting binary exploit challenges"
