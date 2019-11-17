@@ -1,0 +1,6 @@
+[Desktop Entry]
+Comment=Standalone FRC Robot Project Builder
+Exec=/usr/bin/wpilib-utility
+Icon=wpilib-utility
+Name=WPILib Utility
+Type=Application
