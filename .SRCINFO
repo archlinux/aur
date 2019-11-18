@@ -1,14 +1,14 @@
 pkgbase = python-bidict
 	pkgdesc = Bidirectional map implementation and related functionality to work with one-to-one mappings in Python 3
-	pkgver = 0.18.0
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://bidict.readthedocs.org/
 	arch = any
 	license = MPLv2
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/8a/18/a3feb46d99a7a73c3078faf1c9b24655eace83bcf696cfecae46288cad8a/bidict-0.18.0.tar.gz
-	sha256sums = 4d10630fd5d86b7c165387473c5180e7fca7635f12e24b1f426aac259c72c81a
+	source = https://files.pythonhosted.org/packages/source/b/bidict/bidict-0.18.3.tar.gz
+	sha256sums = 1742a25a9ef1b1ac4000683406879a3e1a6577faa02f31e482e6c84e2e3bf628
 
 pkgname = python-bidict
 
