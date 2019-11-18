@@ -4,14 +4,17 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.16.0
+pkgver=5.17.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-makedepends=('git' 'go-pie' 'npm')
+# Had to downgrade to node 12.x LTS, because 13.2 is buggy and crashing due to
+# closing signal handlers several time.
+# src.: https://github.com/nodejs/node/issues/30581
+makedepends=('git' 'go-pie' 'npm' 'nodejs-lts-erbium')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "${CARCH}" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
@@ -31,8 +34,8 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    'a96adb1aa3c0b1ca75e3a9ffe3455558081d2e62745de791bd4c5ae594efe7cacf53190ab03052536177da7a928ebb1f5e4588b57a839bc72c97f653ac38e273'
-    '869dde16ceae6cd1137c08e4a96f91615236e81ae73991afe1b19d79d521ca29469e41ed490cf225a32e4ab4adfdc075d2075be59668ec9a2dc1720f075ae5fb'
+    '40b396991d33137f5d9deda967a0d033658d93caf4b7382439c44447d1e921ccf4fda0dfe77d1ed6214104cc9d88bd78d9c0cfba732d7c15d39b2a6ebe93d6b1'
+    'f78943f2857801b6fbc562faa18dcde651e770e5b318878ad77e505be8016086c3c148734c9d2c7b7e5c3c61684c353e159b75600f0981afbf778b3204fa3841'
     '5b761c5715387e6abf3afbe653de218b9a45708d7ffbc699856f53cc3e62760fbd0ce175615f36a4b9090182705c3343d07fca72d12275411080ab516cee3eeb'
     '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
     'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
