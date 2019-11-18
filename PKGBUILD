@@ -94,6 +94,6 @@ package() {
 
 # vim: ft=sh syn=sh ts=2 sw=2
 sha256sums=('SKIP'
-            '343d7c61ee1c105d760480e9ba6a0655da6bd1a58335f4264a289ade96cffa4c'
+            'f8612ba5d92fdae8fffe826b3248452d25315af15b1c8f1874f68bbfaeaab055'
             'e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48'
             'af4ce76ae0a8773429eac53c72f1b87c8fa59c63acf003450f75dcb73131a21c')

@@ -1,10 +1,4 @@
 post_install() {
-    systemd-sysusers prosody.conf
-    systemd-tmpfiles --create prosody.conf
-
-    chown prosody:jabber var/lib/prosody
-    [ -d var/log/prosody ] && chown prosody:jabber var/log/prosody
-
     echo ">> Documentation: https://wiki.archlinux.org/index.php/Prosody"
 }
 
