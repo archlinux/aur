@@ -9,7 +9,7 @@ pkgdesc="Apple TV4 Aerial and Underwater Screensavers for Kodi"
 arch=('any')
 url='https://github.com/EvolveEcosystem/screensaver.evolve.aerial'
 license=('GPL')
-depends=('kodi')
+depends=('kodi' 'python2-urllib3')
 source=("${pkgname/kodi-addon-/}-$pkgver.zip::https://github.com/EvolveEcosystem/screensaver.evolve.aerial/archive/$_commit.zip"
 )
 install=readme.install
