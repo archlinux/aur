@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=wordup-cli
-pkgver=0.7.0
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='open-source toolkit for WordPress Theme/Plugin development'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('npm' 'docker-compose')
 provides=('wordup')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('b2620908f7123ba98eb087560d0a16e06aaa1976e5b6152de1b8d07e4a6038946eae3e7dee60f0bae7a9bfa9a2b053a19ba42f3792e0aaa0e20c940daf830c2d')
+sha512sums=('6b312cb5fb8d74ee2913fe5a74c5774eb638b8fb1e8bbdb792e818efe9c585bfdb967f5dc940977ebb1736ca63d035b90aa5a725ef3bb346dfca7aa08aba1b4d')
 
 package() {
     npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
