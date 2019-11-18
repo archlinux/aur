@@ -14,8 +14,8 @@
 # Contributor: Tomas Wilhelmsson <tomas.wilhelmsson@gmail.com>
 
 
-pkgname=('llvm-git' 'llvm-libs-git')
-pkgver=10.0.0_r331734.86f07e826f4
+pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
+pkgver=10.0.0_r332048.eedb9648229
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -124,7 +124,7 @@ check() {
 
 package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl' "ocaml=$(_ocamlver)")
+    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
     optdepends=('python: for scripts'
                            'python-setuptools: for using lit = LLVM Integrated Tester'
     )
@@ -134,7 +134,7 @@ package_llvm-git() {
                         compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lld=$pkgver-$pkgrel lldb=$pkgver-$pkgrel polly=$pkgver-$pkgrel
     )
     # A package always provides itself, so there's no need to provide llvm-git
-    conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly' 'llvm-ocaml')
+    conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly')
     
     pushd _build
         DESTDIR="$pkgdir" ninja $NINJAFLAGS install
@@ -218,7 +218,8 @@ package_llvm-libs-git() {
 
 package_llvm-ocaml-git() {
     pkgdesc="OCaml bindings for LLVM"
-    depends=("llvm-git=$pkgver-$pkgrel" "ocaml=$(_ocaml_ver)" 'ocaml-ctypes')
+    depends=("llvm-git=$pkgver-$pkgrel" "ocaml=$(_ocamlver)" 'ocaml-ctypes')
+    conflicts=('llvm-ocaml')
     provides=("llvm-ocaml=$pkgver-$pkgrel")
     
     install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
