@@ -7,7 +7,7 @@ _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts44-git
 _pkgname=openss7-modules-lts44
 pkgver=1.1.8.421.g6bc14a626
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 4.4} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -107,7 +107,7 @@ package() {
   mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
         "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts44
   install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
-  ln -s ../lib/modules/${_kvr}/build/openss7 \
+  ln -s ../../lib/modules/${_kvr}/build/openss7 \
         "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
 }
 
