@@ -1,18 +1,16 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=measurement-kit-git
 pkgver=r3296.a5f8fc0c
-pkgrel=2
+pkgrel=3
 pkgdesc="Network measurement engine"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/measurement-kit/measurement-kit'
 license=('BSD')
-groups=()
 depends=('openssl' 'libevent' 'curl' 'libmaxminddb')
 makedepends=('git' 'cmake')
 provides=('measurement-kit')
 conflicts=('measurement-kit')
-source=('git+git://github.com/measurement-kit/measurement-kit.git')
-noextract=()
+source=('git://github.com/measurement-kit/measurement-kit.git')
 md5sums=('SKIP')
 
 pkgver() {

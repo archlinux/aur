@@ -1,9 +1,8 @@
 pkgbase = measurement-kit-git
 	pkgdesc = Network measurement engine
 	pkgver = r3296.a5f8fc0c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/measurement-kit/measurement-kit
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -14,7 +13,7 @@ pkgbase = measurement-kit-git
 	depends = libmaxminddb
 	provides = measurement-kit
 	conflicts = measurement-kit
-	source = git+git://github.com/measurement-kit/measurement-kit.git
+	source = git://github.com/measurement-kit/measurement-kit.git
 	md5sums = SKIP
 
 pkgname = measurement-kit-git
