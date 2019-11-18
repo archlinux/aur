@@ -1,8 +1,8 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 
 _gitname=irslackd
 pkgname=${_gitname}-git
-pkgver=r134.c9b8b20
+pkgver=r155.9aaf4e4
 pkgrel=1
 pkgdesc='A self-hosted IRC gateway to Slack'
 arch=('any')

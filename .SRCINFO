@@ -1,6 +1,6 @@
 pkgbase = irslackd-git
 	pkgdesc = A self-hosted IRC gateway to Slack
-	pkgver = r134.c9b8b20
+	pkgver = r155.9aaf4e4
 	pkgrel = 1
 	url = https://github.com/adsr/irslackd
 	arch = any
