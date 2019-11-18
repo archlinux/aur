@@ -1,7 +1,7 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 pkgname=bluemail-bin
 pkgver=1.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
 url="https://www.bluemail.me"
@@ -23,7 +23,7 @@ package() {
     unsquashfs -f -d "${pkgdir}/opt/bluemail" "${pkgname}-${pkgver}.snap"
 
     chmod 755 "${pkgdir}/opt/bluemail"
-    ln -sf "${pkgdir}/opt/bluemail/bluemail" "${pkgdir}/usr/bin/bluemail"
+    ln -sf /opt/bluemail/bluemail "${pkgdir}/usr/bin/bluemail"
 
     # Fix and install desktop icons
     for size in 22 24 32 48 64 128 256 512; do

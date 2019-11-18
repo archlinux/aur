@@ -1,7 +1,7 @@
 pkgbase = bluemail-bin
 	pkgdesc = BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts
 	pkgver = 1.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bluemail.me
 	arch = x86_64
 	license = unknown
