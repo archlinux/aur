@@ -1,14 +1,15 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+
 pkgname=libfragmentzip-git
-pkgver=r21.038fc37
+pkgver=r58.ffec726
 pkgrel=1
 pkgdesc="A library allowing to download single files from a remote zip archive"
 arch=(i686 x86_64)
 url="https://github.com/tihmstar/libfragmentzip"
 license=('LGPL3')
 groups=()
-depends=()
-makedepends=('git')
+depends=('curl' 'libzip' 'zlib')
+makedepends=('git' 'libgeneral')
 provides=(libfragmentzip)
 conflicts=(libfragmentzip)
 source=("git://github.com/tihmstar/libfragmentzip")
