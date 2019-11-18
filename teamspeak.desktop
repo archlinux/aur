@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TeamSpeak
+GenericName=TeamSpeak
+Comment=The future of gaming communication
+Exec=teamspeak %u
+Icon=teamspeak.svg
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;Application
+StartupWMClass=TeamSpeak
