@@ -1,33 +1,38 @@
+# Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 # Maintainer: jtmb <packaging at technologicalwizardry dot com>
-_pkgname=pkhex
-pkgname=${_pkgname}-bin
-pkgver=r3793.854768bd
+_pkgname=PKHeX
+pkgname=pkhex-bin
+pkgver=19.11.15e
 pkgrel=1
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
-url="https://github.com/kwsch/PKHeX"
+url="https://projectpokemon.org/home/files/file/1-pkhex/"
 license=('GPL')
 depends=(mono)
+makedepends=(unzip)
 provides=(pkhex)
-conflicts=(pkhex)
-source=("https://teamcity.projectpokemon.org/guestAuth/repository/download/PKHeX_BuildLinuxMono/15228:id/PKHeX%20Mono%20Build%202533.zip"
+conflicts=(pkhex pkhex-git)
+options=('!strip')
+source=("https://dominikbodi.de/downloads/${_pkgname}-${pkgver}.tar.gz"
 		"PKHeX.sh"
-        "pkhex.desktop"
-		"pkhex.png")
-md5sums=('SKIP'
-         '8bd71d319e130750a39f15d56b5636e1'
-         '18966e43b894687954ee19df24532b54'
-         'ceb97fc5efcf4548ca4572b5116f5875')
+		"PKHeX.desktop"
+		"PKHeX.png")
+		
+sha256sums=('9a606541bdc66166206dff56b522982bd3ad5103fc369e869dc27fc06228e95c'
+            '6a13e35459c2ace9a32e34be76f0ec637c15b7481d4c280af7f148e0fae4ec88'
+            '6093975bcf0157b889a0f95321c6fc4895904d17a86c4d3bc51ede2e040d32ef'
+            '688456b442d51a9cdcffeb053099f23e3333e492c5b9d9266e97da7cd077b89b')
+backup=("opt/${_pkgname}/PKHeX.exe.config"
+        "opt/${_pkgname}/PKHeX.Core.dll.config")
 
 package() {
 
-  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
-  install -Dm755 -- PKHeX.sh "$pkgdir/usr/bin/PKHeX"
+  install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm755 -- PKHeX.sh "$pkgdir/usr/bin/${_pkgname}"
+#  cd "${_pkgname}-${$pkgver}"
   install -Dm755 -- PKHeX.exe "$pkgdir/opt/${_pkgname}/PKHeX.exe"
-  install -Dm644 -- PKHeX.exe.config "$pkgdir/opt/${_pkgname}/PKHeX.exe.config"
-  install -Dm755 -- PKHeX.Core.dll "$pkgdir/opt/${_pkgname}/PKHeX.Core.dll"
-  install -Dm644 -- PKHeX.Core.dll.config "$pkgdir/opt/${_pkgname}/PKHeX.Core.dll.config"
+
   mkdir -p -- "$pkgdir/opt/${_pkgname}/bak"
   mkdir -p -- "$pkgdir/opt/${_pkgname}/pkmdb"
   chmod 777 -- "$pkgdir/opt/${_pkgname}/bak"

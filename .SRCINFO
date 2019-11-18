@@ -1,21 +1,26 @@
 pkgbase = pkhex-bin
 	pkgdesc = Pokémon core series save editor, programmed in C#.
-	pkgver = r3793.854768bd
+	pkgver = 19.11.15e
 	pkgrel = 1
-	url = https://github.com/kwsch/PKHeX
+	url = https://projectpokemon.org/home/files/file/1-pkhex/
 	arch = any
 	license = GPL
+	makedepends = unzip
 	depends = mono
 	provides = pkhex
 	conflicts = pkhex
-	source = https://teamcity.projectpokemon.org/guestAuth/repository/download/PKHeX_BuildLinuxMono/15228:id/PKHeX%20Mono%20Build%202533.zip
+	conflicts = pkhex-git
+	options = !strip
+	backup = opt/PKHeX/PKHeX.exe.config
+	backup = opt/PKHeX/PKHeX.Core.dll.config
+	source = https://dominikbodi.de/downloads/PKHeX-19.11.15e.tar.gz
 	source = PKHeX.sh
-	source = pkhex.desktop
-	source = pkhex.png
-	md5sums = SKIP
-	md5sums = 8bd71d319e130750a39f15d56b5636e1
-	md5sums = 18966e43b894687954ee19df24532b54
-	md5sums = ceb97fc5efcf4548ca4572b5116f5875
+	source = PKHeX.desktop
+	source = PKHeX.png
+	sha256sums = 9a606541bdc66166206dff56b522982bd3ad5103fc369e869dc27fc06228e95c
+	sha256sums = 6a13e35459c2ace9a32e34be76f0ec637c15b7481d4c280af7f148e0fae4ec88
+	sha256sums = 6093975bcf0157b889a0f95321c6fc4895904d17a86c4d3bc51ede2e040d32ef
+	sha256sums = 688456b442d51a9cdcffeb053099f23e3333e492c5b9d9266e97da7cd077b89b
 
 pkgname = pkhex-bin
 

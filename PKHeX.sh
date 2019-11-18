@@ -1,2 +1,2 @@
 #!/bin/sh
-mono /opt/pkhex/PKHeX.exe $@
+mono /opt/PKHeX/PKHeX.exe $@
