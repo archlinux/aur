@@ -1,0 +1,17 @@
+pkgbase = labview-mathscript-2018
+	pkgdesc = LabVIEW MathScript is a text-based environment you can use to write functions and scripts.
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.ni.com/en-no/shop/select/labview-mathscript-module
+	arch = x86_64
+	license = custom:LabVIEW-2018
+	makedepends = libarchive
+	makedepends = p7zip
+	makedepends = tar
+	depends = labview-2018
+	options = !strip
+	source = file://MathScript2018.iso
+	sha256sums = 1706b414f58a00b7bcedd109529e3ba713681a9a463241257f0965a12523c90f
+
+pkgname = labview-mathscript-2018
+
