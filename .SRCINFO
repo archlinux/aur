@@ -1,13 +1,15 @@
 pkgbase = klee-uclibc
 	pkgdesc = uclibc for a symbolic virtual machine built on top of the LLVM compiler infrastructure
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://klee.github.io/
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = llvm>=3.4
 	makedepends = clang
 	makedepends = git
+	makedepends = python
+	makedepends = wget
 	provides = klee-uclibc
 	source = git+https://github.com/klee/klee-uclibc.git#tag=klee_uclibc_v1.2
 	md5sums = SKIP

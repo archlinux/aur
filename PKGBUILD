@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee-uclibc
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="uclibc for a symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -11,7 +11,9 @@ groups=()
 depends=()
 makedepends=('llvm>=3.4'
              'clang'
-             'git')
+             'git'
+             'python'
+             'wget')
 checkdepends=()
 optdepends=()
 provides=('klee-uclibc')
