@@ -1,7 +1,7 @@
 # Maintainer: Joakim Hulthe <joakim@hulthe.net>
 pkgname=digiflisp
 pkgver=1.08
-pkgrel=1
+pkgrel=2
 pkgdesc="IDE for the FLIS processor and training computer"
 arch=('x86_64')
 url="http://www.cse.chalmers.se/edu/resources/software/index.html"
