@@ -31,8 +31,8 @@ build(){
               -DCMAKE_BUILD_TYPE=Release   \
               -DBUILD_TESTS=OFF            \
               -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-              -DPYTHON_LIBRARY=/usr/lib/libpython${_ver2%.*}.so \
-              -DPYTHON_INCLUDE_DIR=/usr/include/python${_ver2%.*} \
+              -DPYTHON_LIBRARIES=/usr/lib/libpython${_ver2%.*}.so \
+              -DPYTHON_INCLUDE_DIRS=/usr/include/python${_ver2%.*} \
               -DQT_QMAKE_EXECUTABLE=qmake-qt4
     make
 
@@ -41,7 +41,7 @@ build(){
     mkdir -p build-py3 && cd build-py3
 
     _ver3=$(python -c "import platform; print(platform.python_version())")
-    if [ "${_ver3}" < "3.8.0" ]; then
+    if [ "${_ver3}" -lt "3.8.0" ]; then
         _includedir=/usr/include/python${_ver3%.*}m
         _library=/usr/lib/libpython${_ver3%.*}m.so
     else
@@ -53,7 +53,9 @@ build(){
               -DCMAKE_BUILD_TYPE=Release   \
               -DBUILD_TESTS=OFF            \
               -DUSE_PYTHON3=yes            \
+              -DPYTHON3_LIBRARIES=${_library} \
               -DPYTHON3_LIBRARY=${_library} \
+              -DPYTHON3_INCLUDE_DIRS=${_includedir} \
               -DPYTHON3_INCLUDE_DIR=${_includedir} \
               -DQT_QMAKE_EXECUTABLE=qmake-qt4
     make
