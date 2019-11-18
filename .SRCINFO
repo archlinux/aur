@@ -20,7 +20,6 @@ pkgbase = prosody-hg
 	depends = lua52-filesystem
 	depends = openssl
 	optdepends = lua52-sec: TLS encryption support
-	optdepends = lua52-bitop: websocket support
 	optdepends = lua52-event: libevent support
 	provides = prosody
 	conflicts = prosody

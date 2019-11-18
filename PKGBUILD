@@ -30,10 +30,8 @@ checkdepends=('luacheck' 'shellcheck' 'lua52-posix' 'lua52-sec')
 conflicts=('prosody')
 provides=('prosody')
 optdepends=(
-'lua52-sec: TLS encryption support'
-'lua52-bitop: websocket support'
-'lua52-event: libevent support'
-)
+  'lua52-sec: TLS encryption support'
+  'lua52-event: libevent support')
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
 source=("prosody-hg::hg+https://hg.prosody.im/trunk"
