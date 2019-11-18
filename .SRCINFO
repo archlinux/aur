@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 68.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
@@ -17,7 +17,7 @@ pkgbase = firefox-esr
 	makedepends = inetutils
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
-	makedepends = rust
+	makedepends = rust-bin=1.37.0
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
