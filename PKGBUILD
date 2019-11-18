@@ -35,17 +35,20 @@ optdepends=(python-matplotlib)
 makedepends=(cmake boost mesa gcc-fortran ninja qt5-tools qt5-xmlpatterns eigen pegtl utf8cpp)
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz"
         paraview-system-pugixml.patch
-        vtk-python-3.8.patch::"https://gitlab.kitware.com/vtk/vtk/merge_requests/5883.patch")
-source+=(paraview.sh)
+        vtk-python-3.8.patch::"https://gitlab.kitware.com/vtk/vtk/merge_requests/5883.patch"
+        h5part-with-mpi.patch::"https://gitlab.kitware.com/bartoszek/h5part/commit/5426b52248a8de0cfb474a2901b2abb691ff69c3.patch"
+        paraview.sh)
 sha256sums=('e41e597e1be462974a03031380d9e5ba9a7efcdb22e4ca2f3fec50361f310874'
             'dd2e23298ab5a07da0e799c3db313ed3f9d2a403d7228d50748206b535b6f65f'
-            '3beff972e7e9236f2e8ab596be8f893ae7e9346a140c4538d9e8d88c3378b916')
-sha256sums+=('862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291')
+            '3beff972e7e9236f2e8ab596be8f893ae7e9346a140c4538d9e8d88c3378b916'
+            '8602b81c5d5aa979c97169d2e4313e822b4904bd56093f6c8d7de835a83aef03'
+            '862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291')
 
 prepare() {
     mkdir -p build
     patch -Np0 -i ${srcdir}/paraview-system-pugixml.patch
-    patch -d ParaView-v${pkgver}/VTK -p1 -i "$srcdir"/vtk-python-3.8.patch # Fix build with python 3.8 
+    patch -d "$srcdir"/ParaView-v${pkgver}/VTK -p1 -i "$srcdir"/vtk-python-3.8.patch # Fix build with python 3.8
+    patch -d "$srcdir"/ParaView-v${pkgver}/VTK/ThirdParty/h5part/vtkh5part/ -p1 -i "$srcdir"/h5part-with-mpi.patch # Fix https://bugs.archlinux.org/task/64545
 }
 
 build() {
