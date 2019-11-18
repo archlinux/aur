@@ -1,9 +1,8 @@
 pkgbase = ooni-probe-cli-git
 	pkgdesc = Next generation OONI Probe CLI
-	pkgver = r232.946289d
-	pkgrel = 3
+	pkgver = r244.222b0bf
+	pkgrel = 1
 	url = https://github.com/ooni/probe-cli
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -18,7 +17,7 @@ pkgbase = ooni-probe-cli-git
 	depends = libmaxminddb
 	provides = ooni-probe-cli
 	conflicts = ooni-probe-cli
-	source = git+git://github.com/ooni/probe-cli.git#commit=946289d6fe34c5f0f1c37c891b4af7c281d36e9d
+	source = git://github.com/ooni/probe-cli.git#commit=222b0bfbca84e4547d8507261b7e1f847776c2ec
 	source = ooni-engine-measurementkit-task_gco.go.patch
 	md5sums = SKIP
 	md5sums = e36ee10a071236d376c3b1971f987210
