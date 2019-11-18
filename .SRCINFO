@@ -1,6 +1,6 @@
 pkgbase = irc-slack-git
 	pkgdesc = IRC-to-Slack gateway
-	pkgver = 20190206
+	pkgver = 20191027
 	pkgrel = 1
 	url = https://github.com/insomniacslk/irc-slack
 	arch = any

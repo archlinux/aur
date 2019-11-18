@@ -1,8 +1,8 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 
 _gitname=irc-slack
 pkgname=${_gitname}-git
-pkgver=20190206
+pkgver=20191027
 pkgrel=1
 pkgdesc='IRC-to-Slack gateway'
 arch=('any')
