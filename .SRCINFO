@@ -10,7 +10,7 @@ pkgbase = ddev-bin
 	optdepends = bash-completion: subcommand completion support
 	provides = ddev
 	conflicts = ddev
-	source = https://github.com/drud/ddev/releases/download/v1.11.2/ddev_linux.v1.12.0-alpha2.tar.gz
+	source = https://github.com/drud/ddev/releases/download/v1.12.0-alpha2/ddev_linux.v1.12.0-alpha2.tar.gz
 	sha256sums = 7f0c5b8362b7c84145c17e6850be1a8e4a0aa9aae15ba91fe463e898c24653a4
 
 pkgname = ddev-bin

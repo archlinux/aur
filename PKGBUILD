@@ -2,7 +2,7 @@
 
 _name="ddev"
 pkgname="$_name-bin"
-pkgver=1.12.0-alpha2
+pkgver="1.12.0-alpha2"
 pkgrel=1
 pkgdesc='DDEV-Local: a local PHP development environment system'
 arch=('x86_64')
