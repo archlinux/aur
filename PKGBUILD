@@ -18,8 +18,13 @@ pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (developme
 arch=('i686' 'x86_64' 'armv7h')
 url="https://prosody.im/"
 license=('MIT')
-depends=('lua52' 'lua52-socket' 'lua52-expat' 'lua52-filesystem' 'libidn'
-         'openssl')
+depends=(
+  'icu'
+  'lua52'
+  'lua52-socket'
+  'lua52-expat'
+  'lua52-filesystem'
+  'openssl')
 makedepends=('mercurial')
 checkdepends=('luacheck' 'shellcheck' 'lua52-posix' 'lua52-sec')
 conflicts=('prosody')
@@ -65,7 +70,8 @@ build() {
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" --no-example-certs \
     --runwith=lua5.2 \
-    --lua-version=5.2
+    --lua-version=5.2 \
+    --idn-library=icu
   make
 }
 
