@@ -1,0 +1,16 @@
+pkgbase = python-threadpoolctl
+	pkgdesc = Python helpers to limit the number of threads used in native libraries that handle their own internal threadpool (BLAS and OpenMP implementations)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/joblib/threadpoolctl
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-pip
+	source = https://github.com/joblib/threadpoolctl/raw/master/LICENSE
+	source = https://files.pythonhosted.org/packages/py3/t/threadpoolctl/threadpoolctl-1.1.0-py3-none-any.whl
+	md5sums = 8f2439cfddfbeebdb5cac3ae4ae80eaf
+	md5sums = 290b79daaeb1832d73263450eb2479a1
+
+pkgname = python-threadpoolctl
+
