@@ -1,0 +1,11 @@
+[Unit]
+Description=Dynamic DNS Update Client
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/ddclient-curl.pid
+ExecStart=/usr/bin/ddclient-curl -foreground -pid /run/ddclient-curl.pid
+
+[Install]
+WantedBy=multi-user.target
