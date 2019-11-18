@@ -1,7 +1,7 @@
 pkgbase = pycharm-professional
-	pkgdesc = Powerful Python and Django IDE. Professional Edition.
+	pkgdesc = Powerful Python and Django IDE. Professional Edition
 	pkgver = 2019.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
 	license = custom
