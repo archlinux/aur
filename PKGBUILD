@@ -2,7 +2,7 @@
 # Maintainer: Joseph R Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon-git
 _pkgname=cphalcon
-pkgver=4.0.0.rc.2
+pkgver=4.0.0.rc.3
 pkgrel=2
 pkgdesc="High performance, full-stack PHP framework delivered as a C extension. Git package."
 arch=('i686' 'x86_64')
