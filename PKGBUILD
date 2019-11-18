@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=assemblyscript
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="TypeScript to WebAssembly compiler"
 arch=('any')
@@ -19,4 +19,6 @@ package() {
   npm install -g --user root --prefix="$pkgdir/usr" git+file://$(pwd)
 
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
+
+  chown -R root:root "$pkgdir"
 }
