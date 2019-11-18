@@ -1,0 +1,12 @@
+post_install() {
+  echo
+  echo 'This release brings Persistent Storage support.'
+  echo
+  echo 'To create a Live USB supporting Persistent Storage:'
+  echo 'mkauipers <usb device> <iso image>'
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
