@@ -1,6 +1,6 @@
 pkgbase = shortwave-git
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 0.0.1.r0.gcd80fc2
+	pkgver = 0.0.1.r2.g205166f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Shortwave
 	arch = i686
@@ -18,9 +18,8 @@ pkgbase = shortwave-git
 	depends = gstreamer
 	depends = libhandy
 	provides = shortwave
-	provides = gradio
 	conflicts = shortwave
-	conflicts = gradio
+	replaces = gradio
 	source = git+https://gitlab.gnome.org/World/Shortwave.git
 	sha256sums = SKIP
 
