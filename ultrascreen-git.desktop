@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ultrascreen
+Comment=Share your screen
+Exec=/usr/bin/ultrascreen-git
+Terminal=false
+Type=Application
+Icon=ultrascreen-git
+StartupWMClass=Ultrascreen
+Categories=Network;GTK;
