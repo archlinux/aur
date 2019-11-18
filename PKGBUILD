@@ -1,22 +1,22 @@
 # Maintainer: Dennis Fink <dennis.fink@c3l.lu>
 
 pkgname=patternutils
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Combine regular expressions with template engines in a powerful matter."
 arch=('any')
 url="https://projects.metalgamer.eu/patternutils"
 license=('GPL3')
 depends=('python' 'python-click' 'python-jinja' 'python-pygments')
-source=('patternutils-0.0.6.zip::https://projects.metalgamer.eu/patternutils/archive/197b847bbf5304f568c7a7b36af002df601367c7.zip?subrepos=false')
-sha512sums=('683bd060390e8654519bf5bc61876164a87fcea06c7c98a5ac9a8c1cda6c20548e0fd23936c4973ec36e1d50f3227f030b3299aafd5af710196c81f2258a21e1')
+source=('patternutils-0.0.7.zip::https://projects.metalgamer.eu/patternutils/archive/63e2ad2d42116041db43b33f5ad0aafe84ec38ad.zip?subrepos=false')
+sha512sums=('efbae7ecd8eb17564db574fa4a8bc573ce0203fb7b6130ad118d695f3ba4cd4b1f66c2fd469a8c3003e7538467ee4d54a7b30d02dd3f28afe12b4c012e52a9bc')
 
 build() {
-    cd "$srcdir/$pkgname-197b847bbf53"
+    cd "$srcdir/$pkgname-63e2ad2d4211"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-197b847bbf53"
+    cd "$srcdir/$pkgname-63e2ad2d4211"
     python setup.py install --root="$pkgdir" --optimize=1
 }
