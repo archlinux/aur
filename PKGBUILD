@@ -15,10 +15,10 @@ makedepends=("eigen" "python2-scons" "git" "boost")
 provides=("mitsuba")
 conflicts=("mitsuba" "mitsuba-hg")
 source=("${_pkgname}::git+https://github.com/mitsuba-renderer/mitsuba.git"
-        "python3.5.patch"
+        "python3.8.patch"
         )
 sha256sums=('SKIP'
-            '0591c38be9343db62d4f8294116f38cc836d170a5504cf2d70e472c48e290121')
+            'e3411c523aa56e1d784b64699cc32eaffc970b8e4d9645911e335e765fe472b4')
 
 pkgver() {
   cd ${_pkgname}
@@ -55,7 +55,7 @@ prepare() {
     sed -i "s/^CFLAGS[ ]*= \[/&\'${CFLAGS// /\',\'}\', /g" config.py
     sed -i "s/^CXXFLAGS[ ]*= \[/&\'${CXXFLAGS// /\',\'}\', /g" config.py
 
-    git apply ${srcdir}/python3.5.patch
+    git apply ${srcdir}/python3.8.patch
 }
 
 build() {
