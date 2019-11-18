@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=nodejs-svgo-git
-pkgver=1.0.5.r20.g174c372
+pkgver=1.3.2.r7.g7746480
 pkgrel=1
 pkgdesc="Node.js tool for optimizing SVG files"
 arch=('any')
@@ -28,4 +28,5 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/nodejs-svgo/LICENSE"
 
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
+  chown -R root:root "$pkgdir"
 }

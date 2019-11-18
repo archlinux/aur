@@ -1,6 +1,6 @@
 pkgbase = nodejs-svgo-git
 	pkgdesc = Node.js tool for optimizing SVG files
-	pkgver = 1.0.5.r20.g174c372
+	pkgver = 1.3.2.r7.g7746480
 	pkgrel = 1
 	url = https://github.com/svg/svgo
 	arch = any
