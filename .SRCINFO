@@ -1,0 +1,16 @@
+pkgbase = python-numpy-mkl-bin
+	pkgdesc = Scientific tools for Python - with Intel MKL - prebuilt binaries from Anaconda
+	pkgver = 1.17.3
+	pkgrel = 1
+	url = https://www.numpy.org/
+	arch = x86_64
+	license = custom
+	depends = python-mkl-service
+	provides = python-numpy
+	provides = python-numpy-mkl
+	conflicts = python-numpy
+	source = http://repo.continuum.io/pkgs/main/linux-64/numpy-base-1.17.3-py38hde5b4d6_0.tar.bz2
+	sha256sums = 01bf2e2ce1981432c2e8eff496e46bea4102ebb2b5e9b4f89711b1a350416fd5
+
+pkgname = python-numpy-mkl-bin
+
