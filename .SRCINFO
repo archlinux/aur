@@ -1,5 +1,5 @@
 pkgbase = linux-amd
-	pkgver = 5.4.rc7
+	pkgver = 5.4.rc8
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linux-amd
 	source = config.x86_64
 	source = linux-amd.preset
 	sha256sums = SKIP
-	sha256sums = 891270c4432f685e1ae13adceb91be4bec00302e7a2778ceaa7676e5732018cc
+	sha256sums = 51eb14714725d2287ebc5f48bb413dd1cc309b7605d0f48196137a7bf34c0b55
 	sha256sums = 71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08
 
 pkgname = linux-amd
