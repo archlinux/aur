@@ -1,4 +1,4 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 # Contributor: Augustin deMayo <gus.demayo@gmail.com>
 
 pkgname="desktop-dimmer"
