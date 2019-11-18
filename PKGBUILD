@@ -51,7 +51,7 @@ _major=5.3
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=5
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -344,7 +344,7 @@ sha512sums=('24e167531014b637793aab5ce47e6e747f619e2a0e598c0db348ea9069fc3fd86c8
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
             '3d1a3cb812328b615823cc95f16525c61f687b0abec1a1bce885a3b62153a4ee8f7546222d6a4592cd96f599837108f63de9f0c971c3bfd1ae83bfabce1015dd'
-            '4e2d3682c2b0bff18b7fac4163c96b8fd54a0808d24398c0acb450f136ca39c1de015ca80ae49b67e06636c30ebbc2772987173b7d10c49a24f90a1ebe3b0a51')
+            'a19d0619404c2815a647942d556d17d9c02c0e2ec6a6461200c61962f27e4d3dcf6577fc426073025c58ee2114de2a96ee6172a0935629dff7a1af1ab7be2b2a')
 
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
