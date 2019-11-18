@@ -20,7 +20,6 @@ sha256sums=('SKIP'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301')
 
 
-_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DCMAKE_BUILD_TYPE=Ship
               -DCMAKE_INSTALL_PREFIX=/opt/appleseed
@@ -32,7 +31,6 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DUSE_STATIC_OCIO=OFF
               -DUSE_STATIC_OIIO=OFF
               -DUSE_STATIC_OSL=OFF
-              -DPYTHON3_INCLUDE_DIR=/usr/include/python${_pyver}m
               -DWARNINGS_AS_ERRORS=OFF
             )
 
@@ -53,6 +51,8 @@ prepare() {
 }
 
 build() {
+_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+CMAKE_FLAGS+=(-DPYTHON3_INCLUDE_DIR=/usr/include/python${_pyver})
   cd ${pkgname}
   mkdir -p build
   cd build
