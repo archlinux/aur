@@ -2,7 +2,7 @@
 
 pkgname=gridtracker-bin
 pkgver='1.19.1117'
-pkgrel=3
+pkgrel=1
 pkgdesc="Companion program for WSJT-X for mapping contacts"
 arch=('x86_64')
 url="https://tagloomis.com/grid-tracker/"
