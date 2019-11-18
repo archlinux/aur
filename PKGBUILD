@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=quiterss-git
-pkgver=0.18.12.r0.gb4adf1f4
+pkgver=0.19.1.r0.gc873b11a
 pkgrel=1
 pkgdesc="Fast and light RSS/Atom feed reader written in Qt/С++"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gst-plugins-good' 'qt5-multimedia' 'qt5-webkit')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=('git+https://github.com/QuiteRSS/quiterss.git')
+source=('quiterss::git+https://github.com/QuiteRSS/quiterss.git')
 sha256sums=('SKIP')
 
 pkgver() {
