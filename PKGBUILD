@@ -3,9 +3,9 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.13
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible drawing editor"
-url="http://tclab.kaist.ac.kr/ipe/"
+url="http://ipe.otfried.org/"
 depends=('lua' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
 arch=('i686' 'x86_64')
 license=("GPL")
@@ -13,6 +13,7 @@ conflicts=('ipe')
 source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgver-src.tar.gz"
         "ipe.bash-completion"
         "config.patch"
+        "ipe.desktop"
         )
 
 prepare() {
@@ -39,9 +40,22 @@ package() {
   # Bash completion
   mkdir -p "$pkgdir/etc/bash_completion.d"
   install "$srcdir/ipe.bash-completion" "$pkgdir/etc/bash_completion.d/ipe"
+
+  # Desktop file
+  mkdir -p "$pkgdir/usr/share/applications"
+  install -m644 "$srcdir/ipe.desktop" "$pkgdir/usr/share/applications/ipe.desktop"
+
+  # Icons
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/16x16/apps"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+  install -m644 "$srcdir/$pkgname-$pkgver/src/ipe/icons/ipe.png" "$pkgdir/usr/share/icons/hicolor/16x16/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/src/ipe/icons/ipe128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/ipe.png"
+  install -m644 "$srcdir/$pkgname-$pkgver/src/ipe/icons/ipe512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/ipe.png"
 }
 
 # vim: ft=sh syn=sh et ts=2 sw=2
 md5sums=('2653159b975ac83890f70095200f0658'
          '694f0d5402655901be385647e5d8d6e3'
-         'd4e289bce01302a8b76a0df294c7de40')
+         'd4e289bce01302a8b76a0df294c7de40'
+         '5388ca8dcf85854338d32d04b4a2bcf7')
