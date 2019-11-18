@@ -3,7 +3,7 @@
 
 pkgname=kind-bin
 pkgdesc="Kubernetes IN Docker - local clusters for testing Kubernetes"
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/kubernetes-sigs/kind"
@@ -18,3 +18,4 @@ package() {
   "$pkgdir/usr/bin/kind" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/kind"
   "$pkgdir/usr/bin/kind" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_kind"
 }
+sha256sums=('b68e758f5532db408d139fed6ceae9c1400b5137182587fc8da73a5dcdb950ae')

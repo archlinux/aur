@@ -1,12 +1,12 @@
 pkgbase = kind-bin
 	pkgdesc = Kubernetes IN Docker - local clusters for testing Kubernetes
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/kind
 	arch = x86_64
 	license = apache
-	source = kind-linux-amd64-0.5.1::https://github.com/kubernetes-sigs/kind/releases/download/v0.5.1/kind-linux-amd64
-	sha256sums = 9a64f1774cdf24dad5f92e1299058b371c4e3f09d2f9eb281e91ed0777bd1e13
+	source = kind-linux-amd64-0.6.0::https://github.com/kubernetes-sigs/kind/releases/download/v0.6.0/kind-linux-amd64
+	sha256sums = b68e758f5532db408d139fed6ceae9c1400b5137182587fc8da73a5dcdb950ae
 
 pkgname = kind-bin
 
