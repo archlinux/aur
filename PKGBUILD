@@ -9,7 +9,7 @@ arch=(any)
 url="https://pypi.python.org/pypi/django_celery_beat"
 license=('BSD')
 makedepends=('python-setuptools')
-depends=('python' 'python-django' 'python-celery')
+depends=('python' 'python-django' 'python-celery' 'python-crontab')
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('659b39232c454ac27022bf679939bce0471fd482f3ee9276f5199716cb4afad9')
 
