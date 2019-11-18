@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-screensaver.evolve.aerial
+	pkgdesc = Apple TV4 Aerial and Underwater Screensavers for Kodi
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/EvolveEcosystem/screensaver.evolve.aerial
+	install = readme.install
+	arch = any
+	license = GPL
+	depends = kodi
+	source = screensaver.evolve.aerial-1.0.10.zip::https://github.com/EvolveEcosystem/screensaver.evolve.aerial/archive/dc0756dbf1cfe0f1c24f9ec3756b5b37b87ba2b0.zip
+	sha256sums = 62f611c287b176864d2beecce4acab9820a8a0e9902cb1e3218806655da0de00
+
+pkgname = kodi-addon-screensaver.evolve.aerial
+
