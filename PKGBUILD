@@ -1,5 +1,4 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgbase=('ecos')
 pkgname=('ecos')
 pkgver='2.0.7'
 pkgrel=1
