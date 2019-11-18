@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=10.0.0_r332048.eedb9648229
+pkgver=10.0.0_r332063.b462cdff05b
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -140,9 +140,10 @@ package_llvm-git() {
         DESTDIR="$pkgdir" ninja $NINJAFLAGS install
     popd
 
+    _py="3.8"
     # Clean up conflicting files
     # TODO: This should probably be discussed with upstream.
-    rm -rf "${pkgdir}/usr/lib/python3.7/site-packages/six.py"
+    rm -rf "${pkgdir}/usr/lib/python$_py/site-packages/six.py"
 
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
@@ -173,9 +174,9 @@ package_llvm-git() {
 
     cd llvm-project
     # Install Python bindings and optimize them
-    cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python3.7/site-packages/
-    cp -a clang/bindings/python/clang  "$pkgdir"/usr/lib/python3.7/site-packages/
-    _python_optimize "$pkgdir"/usr/lib/python3.7/site-packages
+    cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python$_py/site-packages/
+    cp -a clang/bindings/python/clang  "$pkgdir"/usr/lib/python$_py/site-packages/
+    _python_optimize "$pkgdir"/usr/lib/python$_py/site-packages
 
     #optimize other python files except 2 problem cases
     _python_optimize "$pkgdir"/usr/share -x 'clang-include-fixer|run-find-all-symbols'
@@ -226,5 +227,5 @@ package_llvm-ocaml-git() {
     cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
     cp -a "$srcdir"/ocaml.doc "$pkgdir"/usr/share/doc/$pkgname/html
 
-    install -Dm644 "$srcdir"/llvm-$pkgver.src/LICENSE.TXT  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 "$srcdir"/llvm-project/llvm/LICENSE.TXT  "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
