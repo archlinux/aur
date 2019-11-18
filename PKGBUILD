@@ -1,4 +1,4 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 # Contributor: Adam Ehlers Nyholm Thomsen <adament@adament.net>
 # Contributor: Sebastian Jug <seb@stianj.ug>
 
