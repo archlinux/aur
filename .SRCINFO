@@ -1,6 +1,6 @@
 pkgbase = plex-hama-bundle-git
 	pkgdesc = Plex HTTP Anidb Metadata Agent (HAMA)
-	pkgver = r844.f98cf15
+	pkgver = r883.6ab37e2
 	pkgrel = 1
 	url = https://github.com/ZeroQI/Hama.bundle
 	arch = x86_64
