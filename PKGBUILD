@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
 url="https://www.bluemail.me"
-license=('unknown')
+license=('custom')
 provides=('bluemail')
 
 depends=()
