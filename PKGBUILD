@@ -1,21 +1,22 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Alex Brinister <alex_brinister at yahoo dot com>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Gabriel Martinez < reitaka at gmail dot com >
 
 pkgname=libimobiledevice-git
 epoch=1
-pkgver=1.2.0.r52.g45fda81
-pkgrel=2
-pkgdesc="libimobiledevice is a software library that talks the protocols to support iPhone and iPod Touch devices on Linux"
+pkgver=1.2.0.r149.gaf91dc6
+pkgrel=1
+pkgdesc="Library that talks the protocols to support iPhone and iPod Touch devices on Linux"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
-depends=('gnutls' 'openssl' 'libgcrypt' 'libplist-git' 'libusbmuxd-git')
-makedepends=('git')
+depends=('libusbmuxd-git' 'usbmuxd-git' 'gnutls')
+makedepends=('python' 'cython' 'libplist-git' 'autoconf-archive'
+             'git' 'python-setuptools')
 provides=('libiphone-git' 'libiphone' 'libimobiledevice')
 conflicts=('libiphone-git' 'libiphone' 'libimobiledevice')
-# it should be a proper dependency, but many tools complain about cyclic deps
-optdepends=('usbmuxd-git: needed in runtime to actually use libimobiledevice')
-
 source=("git+https://git.libimobiledevice.org/libimobiledevice.git")
 sha512sums=('SKIP')
 
@@ -28,20 +29,18 @@ pkgver() {
 prepare() {
 	cd libimobiledevice
 
-#	find . -type f -exec sed -re 's|SSLv3_method\(|SSLv23_method\(|g' -i {} \;
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
 	cd libimobiledevice
 
-	PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr
+	./configure --prefix=/usr --disable-openssl
+	#sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
 
 package() {
-	# see above
-	#depends+=('usbmuxd-git')
-
 	cd libimobiledevice
 
 	make DESTDIR="$pkgdir" install
