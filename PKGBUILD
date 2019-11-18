@@ -1,8 +1,8 @@
 # Packager: Joseph R. Quinn <quinn.josephr@protonmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon3
-pkgver=3.4.4
-pkgrel=2
+pkgver=3.4.5
+pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP. 3.x version line."
 arch=('i686' 'x86_64')
 url="http://phalconphp.com"
@@ -17,7 +17,7 @@ source=(
   "https://github.com/phalcon/cphalcon/archive/v$pkgver.zip"
   'phalcon.ini'
 )
-sha1sums=('641519032cf9019ad7d8a9f5bbe5eabf1e98ea64'
+sha1sums=('31f2f0f2977332dba4fefc76d25bafe503b9afb9'
           'ed25858fa5e997332d5bbed453f54ba3c8659b13')
 
 _PHP_VERSION=`php-config --version`
