@@ -1,7 +1,7 @@
 pkgbase = cocoa
 	pkgdesc = A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter.
-	pkgver = 0.99601
-	pkgrel = 3
+	pkgver = 0.99650
+	pkgrel = 1
 	url = http://cocoa.dima.unige.it/
 	arch = i686
 	arch = x86_64
@@ -9,13 +9,11 @@ pkgbase = cocoa
 	makedepends = frobby
 	makedepends = boost
 	depends = gmp
-	depends = cddlib
 	depends = boost-libs
-	depends = normaliz
 	depends = readline
-	source = http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-0.99601.tgz
+	source = http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-0.99650.tgz
 	source = cocoa5
-	sha256sums = caf37f71398b9715be262e434f04a218db05cfa58e08bce954626d7f4ffd6b75
+	sha256sums = 0c04f32ecdcad8a7c36776fd470540350b806e964801da84761115a3e7f6ecc2
 	sha256sums = e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3
 
 pkgname = cocoa

@@ -1,21 +1,21 @@
 # Maintainer: Florian Walsh
 
 pkgname=cocoa
-pkgver=0.99601
-pkgrel=3
+pkgver=0.99650
+pkgrel=1
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
 license=('GPL')
-depends=('gmp' 'cddlib' 'boost-libs' 'normaliz' 'readline')
+depends=('gmp' 'boost-libs' 'readline')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "cocoa5")
-sha256sums=('caf37f71398b9715be262e434f04a218db05cfa58e08bce954626d7f4ffd6b75'
+sha256sums=('0c04f32ecdcad8a7c36776fd470540350b806e964801da84761115a3e7f6ecc2'
             'e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3')
 
 build() {
   cd "$srcdir/CoCoALib-$pkgver"
-  ./configure --with-libfrobby='/usr/lib/libfrobby.a' --with-libnormaliz='/usr/lib/libnormaliz.so' --with-libcddgmp='/usr/lib/libcddgmp.so'
+  ./configure --with-libfrobby='/usr/lib/libfrobby.a'
   make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' library
   cd src/CoCoA-5
   make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' cocoa5
