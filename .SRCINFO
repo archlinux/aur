@@ -1,7 +1,7 @@
 pkgbase = mitsuba-git
 	pkgdesc = Mitsuba physically based renderer.
 	pkgver = 0.6.0.r2171.26355676
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mitsuba-renderer.org/
 	arch = i686
 	arch = x86_64
