@@ -1,4 +1,4 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 # Contributor: Daniel Nunes <daniel.henri.nunes_AT_gmail_DOT_COM>
 
 _pkgname=fontawesome
