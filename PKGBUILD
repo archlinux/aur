@@ -1,18 +1,17 @@
 # Maintainer: samæ <samæ at marvid dot fr>
 
 pkgname=dhcpwn-git
-pkgver=r6.dc2f2b1
+pkgver=r29.77ab92a
 pkgrel=1
 pkgdesc="A tool used for testing DHCP IP exhaustion attacks."
 arch=('any')
 url="https://github.com/mschwager/dhcpwn"
 license=('GPLv3')
 groups=()
-depends=('python' 'scapy3k-git')
+depends=('python' 'scapy-git')
 makedepends=('git')
 source=('git+https://github.com/mschwager/dhcpwn')
 md5sums=('SKIP')
-conflicts=('scapy')
 
 pkgver() {
   cd "$srcdir/dhcpwn"
