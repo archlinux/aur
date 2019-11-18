@@ -1,13 +1,13 @@
 pkgbase = libco
 	pkgdesc = Cooperative multithreading library
-	pkgver = 1.0.2
+	pkgver = 20
 	pkgrel = 1
 	url = https://github.com/canonical/libco
 	arch = x86_64
 	license = custom
-	source = https://github.com/canonical/libco/archive/v1.0.2.tar.gz
+	source = https://github.com/canonical/libco/archive/v20.tar.gz
 	source = LICENSE
-	sha256sums = 8876aa8e61f07b37adb3ad422b369ecf9bf6fad20ce691428c35719ba5f16615
+	sha256sums = 6d6d6ada15a36224ee4aa59b8361c4b90f1ffb6c077b4932aa6e6344ee91be0e
 	sha256sums = 8938af6b9204bd76eccc205b1e62829ab6d0973d33038db4423903640e5bca64
 
 pkgname = libco
