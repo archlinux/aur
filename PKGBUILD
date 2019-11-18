@@ -2,12 +2,12 @@
 
 pkgname=mpdris2
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="MPRIS2 support for MPD"
 url="https://github.com/eonpatapon/mpDris2"
 arch=('any')
 license=('GPL3')
-depends=('python-dbus' 'python-gobject2' 'python-mpd2')
+depends=('python-dbus' 'python-gobject' 'python-mpd2')
 makedepends=('intltool')
 optdepends=(
   'python-mutagen: read covers from music files'
