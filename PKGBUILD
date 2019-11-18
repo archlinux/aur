@@ -12,12 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Maintainer: Aleksey Filippov <sarum9in@gmail.com>
+# Maintainer: Lisa White <lisa.rsfp+dev@gmail.com>
+# Contributor: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
-pkgver=0.8.103
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
 arch=('any')
