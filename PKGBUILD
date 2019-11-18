@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 pkgname=pwninit
-pkgver=1.2.1
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 provides=('pwninit')
 depends=('elfutils')
 makedepends=('rust' 'cargo')
@@ -10,7 +10,7 @@ pkgdesc="pwninit - automate starting binary exploit challenges"
 license=('MIT')
 url="https://github.com/io12/pwninit"
 source=("https://github.com/io12/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('910a96c3bca003fe78aa557e2462e62c')
+md5sums=('7be81b2be2138d0696da125012ae795b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
