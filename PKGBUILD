@@ -51,7 +51,7 @@ _major=5.3
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -339,7 +339,7 @@ sha512sums=('24e167531014b637793aab5ce47e6e747f619e2a0e598c0db348ea9069fc3fd86c8
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
             '3d1a3cb812328b615823cc95f16525c61f687b0abec1a1bce885a3b62153a4ee8f7546222d6a4592cd96f599837108f63de9f0c971c3bfd1ae83bfabce1015dd'
-            '1438fe2004aa37196b428f87e4fc3c0009ba96bbabc1140da1df5beeb144f12ae289f302dd12af5db832965764f466b64b1ad022d40b626ffcb039da94ddef52')
+            'e45145fef8711fc28d18a0e8a330ebe87fdc97a09654df5a04d8788ff257d1e287a68008b3915a8fe6c0a765a654a12f988d6316815cdc31b442c13ffd326884')
 
 validpgpkeys=(
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
