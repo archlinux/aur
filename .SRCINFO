@@ -1,6 +1,6 @@
 pkgbase = dgraph-git
 	pkgdesc = Fast, transactional, distributed graph database
-	pkgver = 1.0.12.rc3.r628.gcf7c1e630
+	pkgver = 1.1.0.r150.g1ee42ef40
 	pkgrel = 1
 	url = https://github.com/dgraph-io/dgraph
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dgraph-git
 	provides = dgraph
 	conflicts = dgraph
 	conflicts = dgraph-bin
-	source = dgraph-git::git+https://github.com/dgraph-io/dgraph
+	source = dgraph-git::git+https://github.com/dgraph-io/dgraph#branch=master
 	source = dgraph.service
 	source = dgraph-zero.service
 	sha256sums = SKIP
