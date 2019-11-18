@@ -1,0 +1,14 @@
+pkgbase = d3s-nagios-plugins-git
+	pkgdesc = A collection of various mini-plugins for Nagios.
+	pkgver = r9.9865cf3
+	pkgrel = 1
+	url = https://github.com/D-iii-S/d3s-nagios-plugins
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	source = d3s-nagios-plugins::git+https://github.com/D-iii-S/d3s-nagios-plugins.git
+	sha512sums = SKIP
+
+pkgname = d3s-nagios-plugins-git
+
