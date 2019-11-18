@@ -5,19 +5,19 @@
 # Contributer: t3ddy <t3ddy1988 "at" gmail {dot} com>
 # Contributor: kriation
 # Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
-#
+# Contributor: alaskanarcher adam at aslevy dot com
 pkgname="fluxgui"
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Better lighting for Linux. Open source GUI for xflux"
 url="https://justgetflux.com/"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('hicolor-icon-theme' 'libindicator-gtk2' 'libappindicator-gtk2'\
          'python2-libappindicator' 'python2-pexpect' 'python2-xdg'\
-         'python2-gconf' 'libappindicator-gtk3'
+         'python2-gconf' 'libappindicator-gtk3' 'python'
 )
-makedepends=('python2-pip')
+makedepends=('python2-pip' 'wget')
 conflicts=('xflux' 'xflux-gui-git')
 provides=("${pkgname}")
 source=("https://github.com/xflux-gui/${pkgname}/archive/v${pkgver}.tar.gz")
