@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=js-beautify-git
-pkgver=1.9.0_beta5.r0.g2742799a
-pkgrel=2
+pkgver=1.10.2.r3.g45b073d9
+pkgrel=1
 pkgdesc="Beautifier for javascript"
 arch=('any')
 url="https://beautifier.io/"
@@ -40,4 +40,5 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/js-beautify/LICENSE"
 
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
+  chown -R root:root "$pkgdir"
 }

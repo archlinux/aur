@@ -1,7 +1,7 @@
 pkgbase = js-beautify-git
 	pkgdesc = Beautifier for javascript
-	pkgver = 1.9.0_beta5.r0.g2742799a
-	pkgrel = 2
+	pkgver = 1.10.2.r3.g45b073d9
+	pkgrel = 1
 	url = https://beautifier.io/
 	arch = any
 	license = MIT
