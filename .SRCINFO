@@ -1,9 +1,10 @@
 pkgbase = python-threadpoolctl
 	pkgdesc = threadpoolctl
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/joblib/threadpoolctl
 	arch = any
+	license = BSD
 	depends = python
 	depends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-1.1.0.tar.gz
