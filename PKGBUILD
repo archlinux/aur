@@ -11,6 +11,7 @@ makedepends=('make' 'binutils' 'cmake' 'gcc')
 source=("$pkgname::git+https://github.com/FWGS/hlsdk-xash3d")
 
 _args="--libdir=/usr/lib \
+--enable-goldsrc-support \
 --build-type=release"
 
 if [ $CARCH == "x86_64" ]; then
