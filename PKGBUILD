@@ -1,7 +1,7 @@
 # Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 
 pkgname=libxlsxwriter
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='A C library for creating Excel XLSX files.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=(zlib)
 makedepends=(git)
 license=('BSD')
 source=("https://github.com/jmcnamara/libxlsxwriter/archive/RELEASE_$pkgver.tar.gz")
-md5sums=('fd994fc6a15d6e0545288c23ac588ccd')
+md5sums=('b1f7fb6d59ed0dbec55dac9420f33b0f')
 
 build() {
   cd "$srcdir/$pkgname-RELEASE_$pkgver/"

@@ -1,6 +1,6 @@
 pkgbase = libxlsxwriter
 	pkgdesc = A C library for creating Excel XLSX files.
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = http://libxlsxwriter.github.io
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libxlsxwriter
 	license = BSD
 	makedepends = git
 	depends = zlib
-	source = https://github.com/jmcnamara/libxlsxwriter/archive/RELEASE_0.8.7.tar.gz
-	md5sums = fd994fc6a15d6e0545288c23ac588ccd
+	source = https://github.com/jmcnamara/libxlsxwriter/archive/RELEASE_0.8.8.tar.gz
+	md5sums = b1f7fb6d59ed0dbec55dac9420f33b0f
 
 pkgname = libxlsxwriter
 
