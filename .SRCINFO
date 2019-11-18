@@ -9,6 +9,9 @@ pkgbase = mingw-w64-doctrina
 	makedepends = vala
 	depends = mingw-w64-gtk3
 	depends = mingw-w64-sqlite
+	options = !buildflags
+	options = !strip
+	options = staticlibs
 	source = https://git.softwareperonista.com.ar/cdp/doctrina/archive/0.1.12.tar.gz
 	sha256sums = c711892f91fde81a676eb57a25cbadbcdfd7c9435b3032500948202066d9939a
 
