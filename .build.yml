@@ -18,15 +18,15 @@ packages:
 #- git+https://git.code.sf.net/p/cdesktopenv/code
 tasks:
   - precheck: |
-      cd cdesktopenv-git-aur
+      cd cdesktopenv-git
       namcap PKGBUILD
   - build: |
-      cd cdesktopenv-git-aur
+      cd cdesktopenv-git
       time makepkg
   - show: |
-      cd cdesktopenv-git-aur
+      cd cdesktopenv-git
       ls
       tar taf cdesktopenv-git-*.pkg.tar*
   - postcheck: |
-      cd cdesktopenv-git-aur
+      cd cdesktopenv-git
       namcap cdesktopenv-git-*.pkg.tar*
