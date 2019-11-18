@@ -18,7 +18,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
 arch=('any')
@@ -40,10 +40,11 @@ depends=(
     'python-yaml'
 )
 makedepends=(
-    'python-setuptools'
-    'npm'
     'cmake'
     'flex'
+    'git'
+    'npm'
+    'python-setuptools'
 )
 checkdepends=()
 optdepends=()
