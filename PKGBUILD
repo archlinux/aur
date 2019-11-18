@@ -2,7 +2,7 @@
 
 pkgname=rats-search-git
 pkgver=1.4.1.r0.gb9f9732
-pkgrel=1
+pkgrel=1.1
 pkgdesc="BitTorrent P2P multi-platform search engine for Desktop and Web servers with integrated torrent client."
 arch=("x86_64")
 url="https://github.com/DEgITx/rats-search"
@@ -18,7 +18,7 @@ source=("${pkgname}::git+$url.git#tag=v1.4.1"
 		"${pkgname}.install")
 md5sums=('SKIP'
          'bf8d0e316e3904298ec63d3e5a44bc94'
-         'efc0ac6b469b8836143eaa5e81dfb30d'
+         'a0d9bad379a6774e8bbc28da8a4979a3'
          '1a85dc610507dd1b2db75f95d1917126')
 
 prepare() {

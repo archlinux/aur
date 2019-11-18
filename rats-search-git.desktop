@@ -5,5 +5,5 @@ Exec=/usr/bin/rats-search-git
 Terminal=false
 Type=Application
 Icon=rats-search-git
-StartupWMClass=Rats Search
+StartupWMClass=Rats on The Boat
 Categories=Internet;Network;FileTransfer;
