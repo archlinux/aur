@@ -1,0 +1,26 @@
+pkgbase = i3expo
+	pkgdesc = Provide a workspace overview for i3wm
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/mihalea/i3expo
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = python-setuptools
+	depends = python
+	depends = python-i3ipc
+	depends = python-pillow-simd
+	depends = python-pygame
+	depends = python-xdg
+	provides = i3expo-daemon
+	provides = i3expo
+	source = git+https://github.com/mihalea/i3expo.git#tag=v1.1.1
+	md5sums = SKIP
+
+pkgname = i3expo
+	depends = python
+	depends = python-i3ipc
+	depends = python-pillow-simd
+	depends = python-pygame
+	depends = python-xdg
+
