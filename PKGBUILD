@@ -23,12 +23,12 @@ optdepends=(
     'libappindicator-sharp: to hide Kotatogram in the tray bar (Unity-based desktop environment)'
     'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
-conflicts=('kotatogram-desktop')
+conflicts=('kotatogram-desktop' 'telegram-desktop' 'telegram-desktop-bin')
 provides=('kotatogram-desktop')
 
 # Sources
 source=(
-	$pkgname-$pkgver::$url/releases/download/k$pkgver/$pkgver.tar.xz
+	$pkgname-$pkgver-$pkgrel::$url/releases/download/k$pkgver/$pkgver.tar.xz
 
 	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/tg.protocol
 	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
