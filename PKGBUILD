@@ -44,30 +44,30 @@ prepare() {
   cd ${pkgname}
 
   # disable logging to output and activate syslog
-    sed -i s/"info = "/"-- info = "/g prosody.cfg.lua.dist
-    sed -i s/"error = "/"-- error = "/g prosody.cfg.lua.dist
-    sed -i s/"--\ \"\*syslog\"\;"/"\"*syslog\"\;"/g prosody.cfg.lua.dist
+  sed -i s/"info = "/"-- info = "/g prosody.cfg.lua.dist
+  sed -i s/"error = "/"-- error = "/g prosody.cfg.lua.dist
+  sed -i s/"--\ \"\*syslog\"\;"/"\"*syslog\"\;"/g prosody.cfg.lua.dist
 
 
   # add pidfile and daemonize
   # daemonize is important for systemd!
-    mv prosody.cfg.lua.dist prosody.cfg.lua.old
+  mv prosody.cfg.lua.dist prosody.cfg.lua.old
 
-    echo --Important for systemd >> prosody.cfg.lua.dist
-    echo -- daemonize is important for systemd. if you set this to false the systemd startup will freeze. >> prosody.cfg.lua.dist
-    echo daemonize = true >> prosody.cfg.lua.dist
-    echo 'pidfile = "/run/prosody/prosody.pid"'>> prosody.cfg.lua.dist
-    echo "" >> prosody.cfg.lua.dist
-    cat prosody.cfg.lua.old >> prosody.cfg.lua.dist
-    rm prosody.cfg.lua.old
+  echo --Important for systemd >> prosody.cfg.lua.dist
+  echo -- daemonize is important for systemd. if you set this to false the systemd startup will freeze. >> prosody.cfg.lua.dist
+  echo daemonize = true >> prosody.cfg.lua.dist
+  echo 'pidfile = "/run/prosody/prosody.pid"'>> prosody.cfg.lua.dist
+  echo "" >> prosody.cfg.lua.dist
+  cat prosody.cfg.lua.old >> prosody.cfg.lua.dist
+  rm prosody.cfg.lua.old
 
-    ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
-      --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
-      --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
-      --ldflags="${LDFLAGS} -shared" --no-example-certs \
-      --runwith=lua5.2 \
-      --lua-version=5.2 \
-      --idn-library=icu
+  ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
+    --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
+    --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
+    --ldflags="${LDFLAGS} -shared" --no-example-certs \
+    --runwith=lua5.2 \
+    --lua-version=5.2 \
+    --idn-library=icu
 }
 
 build() {
