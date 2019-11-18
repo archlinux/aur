@@ -1,4 +1,5 @@
-# Maintainer : chris_L <echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'>
+# Maintainer: ambra <echo mail@a1m2b3r4a5s6p7a8c9e.com|sed 's/[0-9]//g'>
+# Contributor: chris_L <echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'>
 
 pkgname=static_update
 pkgver=1.0.1
