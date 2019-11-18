@@ -6,7 +6,7 @@
 pkgname=yacas
 pkgver=1.8.0
 _docver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet another computer algebra system'
 url='http://www.yacas.org/'
 screenshot='https://dl.dropbox.com/s/dy9evnpl13kdo21/yacas-console.png'
@@ -19,8 +19,8 @@ if [ ${_build_gui} == "OFF" ]; then
 depends=('glibc' 'gcc-libs')
 makedepends=('gcc' 'cmake' 'perl')
 else
-depends=('dbus' 'libbluray' 'libva' 'libvorbis' 'libxcursor' 'nspr' 'qt5-webengine' 'x264' 'x265' 'xvidcore' 'zstd')
-makedepends=('gcc' 'cmake' 'perl' 'python-sphinx' 'python-sphinxcontrib-bibtex' 'python-sphinx' 'python-sphinx_rtd_theme' 'npm')
+depends=('dav1d' 'dbus' 'libbluray' 'libva' 'libvorbis' 'libxcursor' 'nspr' 'qt5-webengine' 'x264' 'x265' 'xvidcore' 'zstd')
+makedepends=('gcc' 'cmake' 'perl' 'python-sphinx' 'python-sphinxcontrib-bibtex' 'python-sphinx_rtd_theme' 'npm' 'qt5-svg')
 fi
 #--------------------------------------------------------------
 optdepends=('gnuplot' 'lynx' 'texmacs' 'fbreader: Reading EPUB manual')
