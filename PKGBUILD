@@ -1,13 +1,13 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.11.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
 url="https://www.sws-extension.org/"
 license=('MIT')
 depends=('reaper-bin>=5.979' 'taglib')
-makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'php-gd' 'perl')
+makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git://github.com/reaper-oss/sws.git"
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE=Release 
+	cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_TAGLIB=YES
     cmake --build build
 }
 
