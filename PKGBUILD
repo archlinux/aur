@@ -11,6 +11,7 @@ source=("$url/archive/v$pkgver.tar.gz")
 backup=('etc/ddnsc/ddnsc.conf')
 depends=("python>=3" "python-systemd" "python-requests")
 sha256sums=("269970ea8da399765171619bc3a5d2b5261ecf36eb0e5d050bc79fc200d147b7")
+validpgpkeys=('202164AC7B099EC3C4ECD161FC3F05FA01F8DD0E')
 
 package() {
 

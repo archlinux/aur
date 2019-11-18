@@ -10,6 +10,7 @@ pkgbase = ddnsc
 	depends = python-requests
 	backup = etc/ddnsc/ddnsc.conf
 	source = https://github.com/shyaminayesh/ddnsc/archive/v1.0.1.tar.gz
+	validpgpkeys = 202164AC7B099EC3C4ECD161FC3F05FA01F8DD0E
 	sha256sums = 269970ea8da399765171619bc3a5d2b5261ecf36eb0e5d050bc79fc200d147b7
 
 pkgname = ddnsc
