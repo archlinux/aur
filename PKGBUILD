@@ -1,26 +1,22 @@
 # Maintainer: Dennis Fink <dennis.fink@c3l.lu>
 
 pkgname=patternutils
-pkgver=0.0.1
+pkgver=0.0.6
 pkgrel=1
-pkgdesc="Combine regular expressions with template engines in a powerful matter"
+pkgdesc="Combine regular expressions with template engines in a powerful matter."
 arch=('any')
 url="https://projects.metalgamer.eu/patternutils"
 license=('GPL3')
-makedpends=('python-setuptools')
-depends=('python' 'python-click')
-optepends=('python-jinja: Using jinja2 templates')
-source=(https://download.metalgamer.eu/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('e1760de8fbac61face2f005f6e7f5cf923d218fe7e3824307402531ab7d9cf84f963ec61f398c975dd7fb241dc1e67a192bb7a2529a986f09eb681948397a394')
+depends=('python' 'python-click' 'python-jinja' 'python-pygments')
+source=('patternutils-0.0.6.zip::https://projects.metalgamer.eu/patternutils/archive/197b847bbf5304f568c7a7b36af002df601367c7.zip?subrepos=false')
+sha512sums=('683bd060390e8654519bf5bc61876164a87fcea06c7c98a5ac9a8c1cda6c20548e0fd23936c4973ec36e1d50f3227f030b3299aafd5af710196c81f2258a21e1')
 
 build() {
-  cd "$srcdir/$pkgname"
-  python setup.py build
+    cd "$srcdir/$pkgname-197b847bbf53"
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/$pkgname-197b847bbf53"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et; 
