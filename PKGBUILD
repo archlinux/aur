@@ -2,7 +2,7 @@
 
 pkgname=ultrascreen-git
 pkgver=1.0.r0.gdc22aa0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Share your screen"
 arch=("x86_64")
 url="https://github.com/w3yden/ultrascreen"
@@ -18,7 +18,7 @@ source=("${pkgname}::git+$url.git#tag=v1.0"
 		"${pkgname}.install")
 md5sums=('SKIP'
          '195889e3c90b3740696b11e246d01801'
-         'da742da59b3fb9ca67ce233b09a3fbc8'
+         'd800cd1006a5af6399827cb9cfc8d5cd'
          '287a23454fb9109715f15ab6157bf3aa')
 
 prepare() {

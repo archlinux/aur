@@ -5,5 +5,5 @@ Exec=/usr/bin/ultrascreen-git
 Terminal=false
 Type=Application
 Icon=ultrascreen-git
-StartupWMClass=Ultrascreen
+StartupWMClass=ultrascreen
 Categories=Network;GTK;

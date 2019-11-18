@@ -1,7 +1,7 @@
 pkgbase = ultrascreen-git
 	pkgdesc = Share your screen
 	pkgver = 1.0.r0.gdc22aa0
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/w3yden/ultrascreen
 	install = ultrascreen-git.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = ultrascreen-git
 	source = ultrascreen-git.install
 	md5sums = SKIP
 	md5sums = 195889e3c90b3740696b11e246d01801
-	md5sums = da742da59b3fb9ca67ce233b09a3fbc8
+	md5sums = d800cd1006a5af6399827cb9cfc8d5cd
 	md5sums = 287a23454fb9109715f15ab6157bf3aa
 
 pkgname = ultrascreen-git
