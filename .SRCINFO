@@ -1,7 +1,7 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/languitar/autosuspend
 	arch = any
 	license = GPL2
