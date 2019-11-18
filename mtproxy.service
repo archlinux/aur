@@ -7,6 +7,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 EnvironmentFile=/etc/mtproxy.conf
+Restart=on-failure
 ExecStart=/usr/bin/mtproto-proxy \
     --user=${USER} \
     --port=${STATS_PORT} \

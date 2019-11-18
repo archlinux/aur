@@ -1,0 +1,12 @@
+diff --git a/common/pid.c b/common/pid.c
+index 7bd4b8d..8904cc7 100644
+--- a/common/pid.c
++++ b/common/pid.c
+@@ -39,7 +39,6 @@ npid_t PID;
+ void init_common_PID (void) {
+   if (!PID.pid) {
+     int p = getpid ();
+-    assert (!(p & 0xffff0000));
+     PID.pid = p;
+   }
+   if (!PID.utime) {
