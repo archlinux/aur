@@ -60,17 +60,18 @@ prepare() {
     echo "" >> prosody.cfg.lua.dist
     cat prosody.cfg.lua.old >> prosody.cfg.lua.dist
     rm prosody.cfg.lua.old
+
+    ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
+      --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
+      --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
+      --ldflags="${LDFLAGS} -shared" --no-example-certs \
+      --runwith=lua5.2 \
+      --lua-version=5.2 \
+      --idn-library=icu
 }
 
 build() {
   cd ${pkgname}
-  ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
-    --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
-    --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
-    --ldflags="${LDFLAGS} -shared" --no-example-certs \
-    --runwith=lua5.2 \
-    --lua-version=5.2 \
-    --idn-library=icu
   make
 }
 
