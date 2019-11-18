@@ -1,7 +1,7 @@
 pkgbase = python-torchstat
 	pkgdesc = Model analyzer in PyTorch
 	pkgver = 0.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Swall0w/torchstat
 	arch = any
 	license = MIT
