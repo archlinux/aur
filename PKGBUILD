@@ -1,7 +1,7 @@
 # Maintainer: Peter Sutton <foxxy@foxdogstudios.com>
 pkgname=pangolin-git
 _name=${pkgname%-git}
-pkgver=r1630.9694655
+pkgver=r1736.b6cecf4e
 pkgrel=1
 pkgdesc='Pangolin is a lightweight portable rapid development library for managing OpenGL display / interaction and abstracting video input.'
 arch=(x86_64)
@@ -44,12 +44,6 @@ sha256sums=('fe25815547bcad7ff6d9ab12a381f64c0ef57e9fbb06cb831e9becdd22fde7c7'
 pkgver() {
     cd "$srcdir/$_name"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir"/"$_name"
-    git remote add patch https://github.com/ebachard/Pangolin.git
-    git pull patch master
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = pangolin-git
 	pkgdesc = Pangolin is a lightweight portable rapid development library for managing OpenGL display / interaction and abstracting video input.
-	pkgver = r1630.9694655
+	pkgver = r1736.b6cecf4e
 	pkgrel = 1
 	url = https://github.com/stevenlovegrove/Pangolin
 	arch = x86_64
