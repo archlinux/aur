@@ -12,8 +12,8 @@ sha512sums=("a459730a63a067f42d0df8a7472caa00979f15c307c49d17cb658838e02fa0cebe4
 
 package() {
     installdir="${pkgdir}/opt/Mathematica/AddOns/Applications/"
-	mkdir -p "${installdir}"
+    mkdir -p "${installdir}"
     cp -R -d --preserve=timestamps "${srcdir}/Radia" "${installdir}"
     chmod -R 755 "${installdir}"
-	install -Dm644 "${srcdir}/Radia/CopyRight.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${srcdir}/Radia/CopyRight.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
