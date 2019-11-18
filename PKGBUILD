@@ -19,19 +19,22 @@ source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment
 sha256sums=('SKIP'
             '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301')
 
-#_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
-#_pyver=$(pacman -Sddp --print-format %v python|grep -oP ^[0-9.]{3})
-CMAKE_FLAGS=" -DWITH_EMBREE=ON \
-              -DWITH_DISNEY_MATERIAL=ON \
-              -DWITH_PYTHON3_BINDINGS=ON \
-              -DUSE_STATIC_EMBREE=OFF \
-              -DUSE_STATIC_EXR=OFF \
-              -DUSE_STATIC_BOOST=OFF \
-              -DUSE_STATIC_OCIO=OFF \
-              -DUSE_STATIC_OIIO=OFF \
-              -DUSE_STATIC_OSL=OFF \
-              -DPYTHON3_INCLUDE_DIR=/usr/include/python3.7m \
-              -DWARNINGS_AS_ERRORS=OFF"
+
+_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+CMAKE_FLAGS=( -DWITH_EMBREE=ON
+              -DCMAKE_BUILD_TYPE=Ship
+              -DCMAKE_INSTALL_PREFIX=/opt/appleseed
+              -DWITH_DISNEY_MATERIAL=ON
+              -DWITH_PYTHON3_BINDINGS=ON
+              -DUSE_STATIC_EMBREE=OFF
+              -DUSE_STATIC_EXR=OFF
+              -DUSE_STATIC_BOOST=OFF
+              -DUSE_STATIC_OCIO=OFF
+              -DUSE_STATIC_OIIO=OFF
+              -DUSE_STATIC_OSL=OFF
+              -DPYTHON3_INCLUDE_DIR=/usr/include/python${_pyver}m
+              -DWARNINGS_AS_ERRORS=OFF
+            )
 
 pkgver() {
   cd ${srcdir}/${pkgname}
@@ -47,17 +50,18 @@ prepare() {
   grep -q f16c /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_F16C=ON"
   grep -q sse4_2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_SSE42=ON"
 }
+
 build() {
   cd ${pkgname}
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Ship -DCMAKE_INSTALL_PREFIX=/opt/appleseed ${CMAKE_FLAGS} ..
+  cmake ${CMAKE_FLAGS[*]} ..
   make
 }
 
 package() {
   cd ${pkgname}/build
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR=${pkgdir} install
   install -D -m644 "../LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
