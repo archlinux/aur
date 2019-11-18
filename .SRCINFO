@@ -1,12 +1,14 @@
 pkgbase = sonic-lineup
 	pkgdesc = Sonic Lineup is a free, open-source application for Windows, Linux, and Mac, designed for rapid visualisation of multiple audio files containing versions of the same source material
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sonicvisualiser.org/sonic-lineup/
 	arch = x86_64
 	license = GPL2
 	makedepends = gcc
 	makedepends = make
+	makedepends = boost
+	depends = boost-libs
 	depends = fftw
 	depends = jack2
 	depends = libfishsound
