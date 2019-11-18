@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _kvv="$(pacman -Si linux-lts316|awk '/^Version/{print$3}')" || \
 _kvv="$(pacman -Qi linux-lts316|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-3.16.76-1}"
+_kvv="${_kvv:-3.16.77-1}"
 _kvr="${_kvv:+${_kvv}-lts316}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts316-git
