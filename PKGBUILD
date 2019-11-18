@@ -4,7 +4,7 @@
 # Contributor: John Trengrove <john at retrofilter dot com>
 
 pkgname=dgraph-git
-pkgver=1.0.12.rc3.r634.g31b96c263
+pkgver=1.1.0.r150.g1ee42ef40
 pkgrel=1
 pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
@@ -20,14 +20,14 @@ sha256sums=('SKIP'
             '94449db0bbd30aca993dbc6486fbec615e2cada7cd3d91e6b99d6a426a5d7ace'
             '402c5a022615f47d26db47f375f242638d04abbed3bfd22f86067f8f19031f83')
 
-export GOPATH="$srcdir"
-export GOOS=linux
-case "$CARCH" in
-    x86_64) export GOARCH=amd64 ;;
-    i686)   export GOARCH=386 GO386=387 ;;
-esac
-
 prepare() {
+  export GOPATH="$srcdir"
+  export GOOS=linux
+  case "$CARCH" in
+      x86_64) export GOARCH=amd64 ;;
+      i686)   export GOARCH=386 GO386=387 ;;
+  esac
+
   # sets up a fresh temporary go path and symlinks the source repo to appear under
   #   the proper directory structure to avoid dependency manager weirdness
   # see https://wiki.archlinux.org/index.php/Go_package_guidelines#Old_Go_projects_(for_Go_%3C1.11)
