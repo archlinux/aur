@@ -1,7 +1,7 @@
 # Maintainer: Andrés Cordero <arch@andrew67.com>
 pkgname=etherpuppet
 pkgver=v0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Small program that will create a voodoo doll for an Ethernet interface"
 arch=('any')
 url="http://www.secdev.org/projects/etherpuppet/"
