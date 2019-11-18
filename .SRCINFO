@@ -19,9 +19,9 @@ pkgbase = xash3d-git
 	source = xash3d.desktop
 	source = https://github.com/FWGS/xash-extras/releases/download/v0.19.2/extras.pak
 	md5sums = SKIP
-	md5sums = 5455a774fc831160e6071df62413f0cc
+	md5sums = ca89e0d9d9b28f2a0657dd96d1ddae66
 	md5sums = 2f9f7b77e05177961fdcecc4660a2010
-	md5sums = aa2aac6a4cd9fc0a3b1d2b0d2acdd5c3
+	md5sums = 45bdee1a2166ac9caeb9a5030cf65b29
 	md5sums = 60d714544048b0383a7e79cfaed96d78
 	md5sums = 409462da6be03f004e84452cfcb93d6b
 
