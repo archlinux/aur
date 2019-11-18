@@ -1,6 +1,6 @@
 pkgbase = kame-tools-git
 	pkgdesc = A tool for bundling 3DS theme files
-	pkgver = 4993ade
+	pkgver = 96c5ae1
 	pkgrel = 1
 	url = https://gitlab.com/beelzy/kame-tools
 	arch = i686
