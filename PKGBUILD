@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _kvv="$(pacman -Si linux-lts44|awk '/^Version/{print$3}')" || \
 _kvv="$(pacman -Qi linux-lts44|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-4.4.199-1}"
+_kvv="${_kvv:-4.4.202-1}"
 _kvr="${_kvv:+${_kvv}-lts44}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules-lts44-git
