@@ -30,7 +30,6 @@ package() {
   install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
   install -Dm755 -- PKHeX.sh "$pkgdir/usr/bin/${_pkgname}"
-#  cd "${_pkgname}-${$pkgver}"
   install -Dm755 -- PKHeX.exe "$pkgdir/opt/${_pkgname}/PKHeX.exe"
 
   mkdir -p -- "$pkgdir/opt/${_pkgname}/bak"
