@@ -7,7 +7,7 @@ pkgname=python-i3-py
 pkgver=0.6.7
 # https://github.com/ziberna/i3-py/issues/22
 _commit=27f88a616e9ecc340e7d041d3d00782f8a1964c1
-pkgrel=5
+pkgrel=6
 pkgdesc="tools for i3 users and developers"
 arch=('any')
 url='https://github.com/ziberna/i3-py'
