@@ -3,7 +3,7 @@
 
 _pkgname="wadllib"
 pkgname=("python-wadllib")
-pkgver="1.3.2"
+pkgver="1.3.3"
 pkgrel="1"
 pkgdesc="Python 3 library for navigating WADL files. The Web Application Description Language is an XML vocabulary for describing the capabilities of HTTP resources."
 arch=('any')
@@ -13,9 +13,9 @@ makedepends=('python-setuptools')
 depends=('python-lazr-uri' 'python-setuptools' 'python-simplejson')
 source=("${pkgname}-${pkgver}.tar.gz::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://launchpad.net/$_pkgname/trunk/$pkgver/+download/$_pkgname-$pkgver.tar.gz.asc")
-sha256sums=('140e43fc16d4352a98a90a450c6326bee5e6de73ae373a569947f3b505405034'
+sha256sums=('1234cfe81e2cf223e56816f86df3aa18801d1770261865d93337b8b603be366e'
             'SKIP')
-validpgpkeys=('8417157EDBE73D9EAC1E539B126EB563A74B06BF')
+validpgpkeys=('AC0A4FF12611B6FCCF01C111393587D97D86500B')  # Colin Watson 
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
