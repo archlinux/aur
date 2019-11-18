@@ -1,7 +1,7 @@
 pkgbase = radia
 	pkgdesc = Mathematica addon for magnetostatics calculations
 	pkgver = 4.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.esrf.eu/Accelerators/Groups/InsertionDevices/Software/Radia
 	arch = x86_64
 	license = custom
