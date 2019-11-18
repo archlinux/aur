@@ -1,6 +1,6 @@
 pkgbase = gnuradio-git
 	pkgdesc = General purpose DSP and SDR toolkit, with drivers for usrp and fcd.
-	pkgver = v3.8.0.0.78.gf78c95897
+	pkgver = v3.8.0.0.79.gc750d104d
 	pkgrel = 1
 	url = https://github.com/gnuradio/gnuradio
 	arch = i686
