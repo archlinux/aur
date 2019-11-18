@@ -4,7 +4,7 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk-cisco
-pkgver=16.4.0
+pkgver=16.5.0
 pkgrel=1
 pkgdesc="A complete PBX solution. Includes the Cisco Presence patch for use with Cisco IP Phones"
 provides=('asterisk')
@@ -135,8 +135,8 @@ source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$
 	asterisk.logrotated \
 	asterisk.tmpfile)
 install=asterisk.install
-sha256sums=('d870711299089d0b1f01708534b0e139c4e83d828cbb79dfc90ec59774be83fa'
-            'cb28bb435c1f49f9e5d7174c0244a5dc66044eec2dff09922dd6976cc7a8313c'
+sha256sums=('e4e280a7ce176d36ebb249618377d0c484f147125c630c6ba2ab410d62c7a41a'
+            'e2ecefa86cabe4a4530f16a94ec6c649c00821be3658bb487d8633f0a142808c'
             '10795bc3b2fb28b79b3ab74bbd8f33b667e3bf4b1c87ccfb2aae168f9b07a17c'
             'da5a87717517b37d0554369235e0bdb86700bd696c1a70db5a47d9f4711b44db'
             'ecff1e7807003beb3198f95859fa3c1b57d618940872d1c8638e65f5a49afce4'
