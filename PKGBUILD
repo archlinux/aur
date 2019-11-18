@@ -1,14 +1,14 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=sigviewer
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewing application for biosignals"
 arch=('i686' 'x86_64')
 url="https://github.com/cbrnr/sigviewer"
 license=('GPL')
 groups=()
 depends=('qt5-base' 'libbiosig' 'libxdf')
-makedepends=('')
+makedepends=()
 optdepends=()
 provides=()
 conflicts=()

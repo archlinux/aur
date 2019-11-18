@@ -1,7 +1,7 @@
 pkgbase = sigviewer
 	pkgdesc = A viewing application for biosignals
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cbrnr/sigviewer
 	arch = i686
 	arch = x86_64
