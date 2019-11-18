@@ -4,7 +4,7 @@
 _pkgname=projecteur
 _gitname=Projecteur
 pkgname=projecteur-git
-pkgver=184
+pkgver=0.7alpha.2.r192.1de2631
 pkgrel=1
 pkgdesc="Linux Desktop Application for the Logitech Spotlight device."
 arch=('x86_64')
@@ -18,20 +18,21 @@ conflicts=('projecteur')
 source=("git+https://github.com/jahnf/Projecteur.git"
         "projecteur.install")
 md5sums=('SKIP'
-        '658b29f7bc92ece81acfe5601d8ef21c' )
+         '658b29f7bc92ece81acfe5601d8ef21c')
 
 pkgver() {
         cd "$srcdir/$_gitname"
-        /usr/bin/git rev-list --count HEAD
+        printf "%s.r%s.%s" "$(cat $srcdir/build/version-string.archlinux)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
         mkdir -p "$srcdir/build"
+        cd "$srcdir/build"
+        cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr "$srcdir/$_gitname"
 }
 
 build() {
         cd "$srcdir/build"
-        cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr "$srcdir/$_gitname"
         make
 }
 
