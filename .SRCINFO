@@ -1,0 +1,22 @@
+pkgbase = python2-sphinx-gallery
+	pkgdesc = Sphinx extension to automatically generate an examples gallery
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = http://sphinx-gallery.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python2-pytest-cov
+	checkdepends = python2-matplotlib
+	checkdepends = python2-pillow
+	checkdepends = python2-sphinx
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-gallery/sphinx-gallery-0.4.0.tar.gz
+	md5sums = 1f3e578107ca253a184889733a4fbcea
+
+pkgname = python2-sphinx-gallery
+	depends = python2-sphinx
+	depends = python2-matplotlib
+	depends = python2-pillow
+	optdepends = python2-seaborn
+
