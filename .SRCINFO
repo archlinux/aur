@@ -1,6 +1,6 @@
 pkgbase = influxdb-cli
 	pkgdesc = InfluxDB command line interface
-	pkgver = 1.7.8
+	pkgver = 1.7.9
 	pkgrel = 1
 	url = https://github.com/InfluxData/influxdb
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = influxdb-cli
 	makedepends = xmlto
 	makedepends = dep
 	conflicts = influxdb
-	source = influxdb-cli-1.7.8.tar.gz::https://github.com/influxdata/influxdb/archive/v1.7.8.tar.gz
-	sha256sums = ed52925bb71ca8912e4daecce66a4c32935f396cf3f021464aab99934b41db51
+	source = influxdb-cli-1.7.9.tar.gz::https://github.com/influxdata/influxdb/archive/v1.7.9.tar.gz
+	sha256sums = fad5107985395353a584978f6c0ad1fbd4f41ea71bdc9cf55a006cc9a88d2b61
 
 pkgname = influxdb-cli
 
