@@ -1,7 +1,7 @@
 pkgbase = python-fastprocess
 	pkgdesc = A fast subprocess library
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dstathis/fastprocess
 	arch = any
 	license = LGPL
