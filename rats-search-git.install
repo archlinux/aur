@@ -1,0 +1,7 @@
+post_install() {
+	chmod +x /usr/bin/rats-search-git
+}
+
+post_upgrade() {
+        post_install
+}

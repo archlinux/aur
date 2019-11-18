@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Rats Search
+Comment=BitTorrent P2P multi-platform search engine for Desktop.
+Exec=/usr/bin/rats-search-git
+Terminal=false
+Type=Application
+Icon=rats-search-git
+StartupWMClass=Rats Search
+Categories=Internet;Network;FileTransfer;
