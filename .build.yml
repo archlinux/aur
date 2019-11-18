@@ -1,0 +1,32 @@
+image: archlinux
+packages:
+    - base-devel
+
+    - tcl
+    - ncompress
+
+    - openmotif
+    - xbitmaps
+    - rpcbind
+    - mksh
+    - libxss
+    - xbitmaps
+    - libxinerama
+
+    - namcap
+#sources:
+#- git+https://git.code.sf.net/p/cdesktopenv/code
+tasks:
+  - precheck: |
+      cd cdesktopenv-git-aur
+      namcap PKGBUILD
+  - build: |
+      cd cdesktopenv-git-aur
+      time makepkg
+  - show: |
+      cd cdesktopenv-git-aur
+      ls
+      tar taf cdesktopenv-git-*.pkg.tar*
+  - postcheck: |
+      cd cdesktopenv-git-aur
+      namcap cdesktopenv-git-*.pkg.tar*
