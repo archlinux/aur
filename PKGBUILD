@@ -17,7 +17,7 @@ license=(GPL3)
 makedepends=('boost' 'git')
 depends=('desktop-file-utils' 'libgit2' 'qt5-serialport' 'qt5-svg')
 source=(https://github.com/fritzing/fritzing-app/archive/${_tagver}.tar.gz
-        git+https://github.com/fritzing/fritzing-parts.git#commit=${_partsrev}
+        "git+https://github.com/fritzing/fritzing-parts.git#commit=${_partsrev}"
         0001-don-t-scan-filesystem-for-application-directory-if-i.patch
         0002-allow-user-and-administrator-to-install-parts-librar.patch
         0003-provide-script-for-user-to-clone-parts-library.patch)
