@@ -1,6 +1,6 @@
 pkgbase = sccache-git
 	pkgdesc = ccache-like tool. Wraps compiler and avoids compilation when possible. Supports rustc
-	pkgver = r655.1087c20
+	pkgver = r801.9777708
 	pkgrel = 1
 	url = https://github.com/mozilla/sccache
 	install = sccache.install
@@ -9,6 +9,8 @@ pkgbase = sccache-git
 	license = Apache
 	makedepends = git
 	makedepends = rust
+	conflicts = sccache
+	conflicts = sccache-bin
 	source = git+https://github.com/mozilla/sccache/
 	sha256sums = SKIP
 

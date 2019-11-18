@@ -1,12 +1,13 @@
-# Maintainer: Versus Void <chaoskeeper@mail.ru>
+# Maintainer: Versus Void <chaoskeeper at mail DOT ru>
 pkgname=sccache-git
-pkgver=r655.1087c20
+pkgver=r801.9777708
 pkgrel=1
 pkgdesc="ccache-like tool. Wraps compiler and avoids compilation when possible. Supports rustc"
 arch=(i686 x86_64)
 url="https://github.com/mozilla/sccache"
 license=('Apache')
 makedepends=('git' 'rust')
+conflicts=('sccache' 'sccache-bin')
 install=sccache.install
 source=('git+https://github.com/mozilla/sccache/')
 sha256sums=('SKIP')
@@ -18,7 +19,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release
+	cargo build --release --all-features
 }
 
 #check() {
@@ -28,6 +29,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo install --path . --root "$pkgdir/usr"
-	rm  -f "$pkgdir/usr/.crates.toml"
+	install -D target/release/sccache -t "$pkgdir"/usr/bin
+	install -D target/release/sccache-dist -t "$pkgdir"/usr/bin
+	install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/sccache
 }
