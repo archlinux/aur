@@ -1,4 +1,4 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 # Contributor: longifn <longfinfunnel@gmail.com>
 
 pkgname=spoqa-han-sans
