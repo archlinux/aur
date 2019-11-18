@@ -9,16 +9,16 @@ url='http://tmrh20.github.io/RF24Network/'
 license=('MIT')
 depends=('boost-libs' 'rf24-network' 'python' 'python-rf24')
 makedepends=('boost' 'python-setuptools')
-source=('https://github.com/nRF24/RF24Network/archive/v$pkver.tar.gz')
+source=("https://github.com/nRF24/RF24Network/archive/v$pkgver.tar.gz")
 sha256sums=('1b38748d3b23f04d7ed5cb935eb57441085c6e2d6d51c61e2d2c77a9a227dbc9')
 
 build() {
-  cd "$srcdir/RF24Network-$pkver/RPi/pyRF24Network"
+  cd "$srcdir/RF24Network-$pkgver/RPi/pyRF24Network"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/RF24Network-$pkver/RPi/pyRF24Network"
+  cd "$srcdir/RF24Network-$pkgver/RPi/pyRF24Network"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
