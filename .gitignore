@@ -3,3 +3,4 @@ src
 *.gz
 *.xz
 pwninit
+pwninit-*
