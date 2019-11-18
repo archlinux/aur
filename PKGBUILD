@@ -1,3 +1,4 @@
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=satoshipay-stellar-wallet
 _pkgname="Solar Wallet"
 pkgver=0.22.1
