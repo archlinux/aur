@@ -1,16 +1,21 @@
 # Maintainer: robertfoster
 
 pkgname=xash3d-hlsdk
-pkgver=r322.43d63a1
+pkgver=r428.52b067fd
 pkgrel=1
 pkgdesc="Half-Life SDK from original Xash3D engine"
 arch=('i686' 'x86_64')
 url="http://xash.su/"
 license=('GPL3')
-makedepends=('make' 'binutils' 'cmake')
-makedepends_i686=('gcc')
-makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
+makedepends=('make' 'binutils' 'cmake' 'gcc')
 source=("$pkgname::git+https://github.com/FWGS/hlsdk-xash3d")
+
+_args="--libdir=/usr/lib \
+--build-type=release"
+
+if [ $CARCH == "x86_64" ]; then
+    _args+=" -8"
+fi
 
 pkgver() {
     cd $srcdir/$pkgname
@@ -20,24 +25,17 @@ pkgver() {
 prepare() {
     cd $srcdir/$pkgname
     git submodule init && git submodule update
+    ./waf configure ${_args}
 }
 
 build() {
     cd $srcdir/$pkgname
-        if [ -d build ]; then
-               rm -rf build
-        fi
-	mkdir build
-        cd build
-        cmake ../ -DCMAKE_INSTALL_PREFIX="/usr/lib32"
-        make
-
+    ./waf build
 }
 
 package() {
     cd $srcdir/$pkgname/
-    cd build
-    make DESTDIR=$pkgdir install
+    ./waf install --destdir="$pkgdir/usr/lib"
 }
 
 md5sums=('SKIP')

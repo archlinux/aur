@@ -1,6 +1,6 @@
 pkgbase = xash3d-hlsdk
 	pkgdesc = Half-Life SDK from original Xash3D engine
-	pkgver = r322.43d63a1
+	pkgver = r428.52b067fd
 	pkgrel = 1
 	url = http://xash.su/
 	arch = i686
@@ -9,11 +9,9 @@ pkgbase = xash3d-hlsdk
 	makedepends = make
 	makedepends = binutils
 	makedepends = cmake
+	makedepends = gcc
 	source = xash3d-hlsdk::git+https://github.com/FWGS/hlsdk-xash3d
 	md5sums = SKIP
-	makedepends_i686 = gcc
-	makedepends_x86_64 = gcc-multilib
-	makedepends_x86_64 = lib32-gcc-libs
 
 pkgname = xash3d-hlsdk
 
