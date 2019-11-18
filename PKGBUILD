@@ -2,19 +2,19 @@
 # Contributor: Feufochmar <feufochmar dot gd at gmail dot com>
 
 _name='libtcod'
-_importname='libtcodpy'
-pkgbase=('python-libtcod')
-pkgname=('python-libtcod' 'python2-libtcod')
-pkgver=1.8.2
+
+pkgbase=python-libtcod
+pkgname=(python-libtcod python2-libtcod)
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Python Roguelike graphics/utility library"
 arch=('any')
-url="https://bitbucket.org/libtcod/libtcod"
+url='https://github.com/libtcod/libtcod'
 license=('BSD')
 depends=('libtcod')
-makedepends=('mercurial' 'python-setuptools' 'python2-setuptools')
-source=("hg+https://bitbucket.org/$_name/$_name#tag=$pkgver")
-md5sums=('SKIP')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz")
+md5sums=('514370f95c00464f23caed2358453ca7')
 
 package_python-libtcod() {
 	depends+=('python')
