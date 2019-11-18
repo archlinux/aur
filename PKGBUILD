@@ -1,4 +1,4 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: Redpill13
 
 pkgname=seadrive-gui
 pkgver=1.0.8
