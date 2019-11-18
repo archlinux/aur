@@ -1,7 +1,7 @@
 pkgbase = ytcc
 	pkgdesc = The YouTube channel checker
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/woefe/ytcc
 	arch = any
 	license = GPL3

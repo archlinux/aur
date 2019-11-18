@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Popp mail@wolfgang-popp.de
 pkgname=ytcc
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The YouTube channel checker"
 arch=('any')
 url="https://github.com/woefe/ytcc"
