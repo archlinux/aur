@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#branch=2.0.5-beta-maintenance"
-pkgver=2.0.0.beta.r408.gffce4b2da
+pkgver=2.1.0.beta.r87.gb2a2631ed
 pkgrel=1
 epoch=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
@@ -45,6 +45,7 @@ prepare() {
   cd ${pkgname}
   git apply -v ${srcdir}/cmake.extra.install.dirs.remove.patch
 # git apply -v ${srcdir}/*.diff
+  sed '/python37/s/37/38/' -i src/appleseed.python/CMakeLists.txt
   grep -q avx /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX=ON"
   grep -q avx2 /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_AVX2=ON"
   grep -q f16c /proc/cpuinfo && CMAKE_FLAGS="${CMAKE_FLAGS} -DUSE_F16C=ON"
