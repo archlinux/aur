@@ -1,10 +1,10 @@
 pkgbase = tauon-music-box
-	pkgdesc = A streamlined music player that uses BASS
-	pkgver = 5.0.4
+	pkgdesc = A modern streamlined music player
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/taiko2k/tauonmb
-	arch = x86_64
-	license = custom
+	arch = any
+	license = GPL3
 	depends = python3
 	depends = noto-fonts
 	depends = noto-fonts-emoji
@@ -25,14 +25,19 @@ pkgbase = tauon-music-box
 	depends = python-musicbrainzngs
 	depends = python-discogs-client
 	depends = alsa-plugins
+	depends = gstreamer
+	depends = gst-plugins-base
 	optdepends = ffmpeg: File transcoding
 	optdepends = noto-fonts-cjk: Matching font for CJK characters
 	optdepends = p7zip: 7z archive extraction support
 	optdepends = unrar: RAR archive extraction support
 	optdepends = python-plexapi: PLEX client streaming
 	optdepends = picard: Tag editing
-	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.0.4/Tauon.Music.Box.v5.0.4.Linux.Bass.64bit.zip
-	sha1sums = 64f548b1c807767d533faca1eed154ca97f8a9e7
+	optdepends = gst-plugins-good: Extra GStreamer codecs
+	optdepends = gst-plugins-bad: Extra GStreamer codecs
+	optdepends = gst-plugins-ugly: Extra GStreamer codecs
+	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.1.0/Tauon.Music.Box.v5.1.0.Linux.zip
+	sha1sums = ef382a1b4c6811204d7083df41442bb86d53d724
 
 pkgname = tauon-music-box
 
