@@ -1,20 +1,22 @@
 pkgbase = python-emcee-doc
 	pkgdesc = Documentation for Python emcee
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://emcee.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python-emcee=3.0.1
+	makedepends = python-emcee=3.0.2
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = jupyter-nbconvert
 	makedepends = pandoc
-	source = https://github.com/dfm/emcee/archive/v3.0.1.tar.gz
-	source = fix_MPI_python_highlight.patch
-	md5sums = 68da24f0df9cbc43e4c3adfb9bb3f17f
-	md5sums = 04636e60d509170af5e537588de57a0c
+	makedepends = texlive-core
+	makedepends = texlive-science
+	source = https://github.com/dfm/emcee/archive/v3.0.2.tar.gz
+	source = fix_testimonials_duplicate.patch
+	md5sums = f25802506f32490c51414c6ae169ad52
+	md5sums = 5e88556560ab075f8331465012b8286a
 
 pkgname = python-emcee-doc
 
