@@ -30,8 +30,10 @@ makedepends=(
 optdepends=(
         'libnotify: desktop notifications'
         )
+conflicts=('kotatogram-desktop-bin' 'telegram-desktop' 'telegram-desktop-bin')
+provides=('kotatogram-desktop')
 source=(
-        "$pkgname-$pkgver::git+$url.git#tag=k$pkgver"
+        "$pkgname-$pkgver-$pkgrel::git+$url.git#tag=k$pkgver"
         "Catch2::git+https://github.com/catchorg/Catch2.git"
         "crl::git+https://github.com/telegramdesktop/crl.git"
         "GSL::git+https://github.com/Microsoft/GSL.git"
@@ -82,7 +84,7 @@ sha512sums=('SKIP'
         
 
 prepare() {
-    cd "$srcdir/kdesktop"
+    cd "$srcdir/$pkgname-$pkgver-$pkgrel"
         git submodule init
         
         git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch2"
@@ -113,7 +115,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/kdesktop"
+    cd "$srcdir/$pkgname-$pkgver-$pkgrel"
         export LANG=en_US.UTF-8
         export GYP_DEFINES="DESKTOP_APP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME,TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION"
         export EXTRA_FLAGS="-Winvalid-pch"
@@ -134,17 +136,17 @@ build() {
         --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
         NUM=$((`wc -l < out/Release/CMakeLists.txt` - 2))
         sed -i "$NUM r ../CMakeLists.inj" out/Release/CMakeLists.txt
-        cd "$srcdir/kdesktop/out/Release"
+        cd "$srcdir/$pkgname-$pkgver-$pkgrel/out/Release"
         cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -UTDESKTOP_OFFICIAL_TARGET
         make
 }
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-        install -m755 "$srcdir/kdesktop/out/Release/Telegram" "$pkgdir/usr/bin/kotatogram-desktop"
+        install -m755 "$srcdir/$pkgname-$pkgver-$pkgrel/out/Release/Telegram" "$pkgdir/usr/bin/kotatogram-desktop"
 
         install -d "$pkgdir/usr/share/applications"
-        install -m644 "$srcdir/kdesktop/lib/xdg/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
+        install -m644 "$srcdir/$pkgname-$pkgver-$pkgrel/lib/xdg/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
 
         install -d "$pkgdir/usr/share/kservices5"
         install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
@@ -154,6 +156,6 @@ package() {
             icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 
                 install -d "$icon_dir"
-                install -m644 "$srcdir/kdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/kotatogram.png"
+                install -m644 "$srcdir/$pkgname-$pkgver-$pkgrel/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/kotatogram.png"
                 done
 }
