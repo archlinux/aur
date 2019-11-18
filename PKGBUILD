@@ -3,7 +3,7 @@
 # All my PKGBUILDs are managed at https://github.com/schra/pkgbuilds
 
 pkgname=x11docker
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc='Run GUI applications and desktops in Docker. Focus on security.'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=('cups: --printer support'
             'xorg-server: --xorg, --xdummy support')
 
 source=(https://github.com/mviereck/x11docker/archive/v$pkgver.tar.gz)
-sha256sums=(9a68c5ad376e5d194ac7476f46396e1bafbac5eba66104d579550517f00b4d85)
+sha256sums=(838eba58d42a7561375e4e91323ebe53c9098cd08e30893d64bfc0415557556f)
 
 package() {
   cd "$pkgname-$pkgver"
