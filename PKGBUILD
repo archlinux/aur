@@ -1,4 +1,4 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 
 _pkgname=namespaced-openvpn
 pkgname=${_pkgname}-git
