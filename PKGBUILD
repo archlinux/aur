@@ -9,6 +9,7 @@
 # Contributor: Michele Mocciola <mickele>
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 # Contributor: chuckdaniels
+# shellcheck disable=SC2034
 
 _pkg=paraview
 _mpi=openmpi
@@ -108,3 +109,4 @@ package() {
     # add paraview to PATH
     install -Dm 755 ../paraview.sh -t "${pkgdir}/etc/profile.d"
 }
+# vim:set sw=2 ts=2 et:
