@@ -1,4 +1,4 @@
-# Maintainer: JunYoung Gwak <i@jgwak.com>
+# Maintainer: JunYoung Gwak <aur@jgwak.com>
 
 pkgname=ttf-kopubworld
 pkgver=1.0
