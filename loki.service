@@ -1,0 +1,11 @@
+[Unit]
+Description=Grafana Loki service
+After=network.target
+
+[Service]
+User=loki
+Group=loki
+ExecStart=/usr/bin/loki -config.file /etc/loki/loki.yml
+
+[Install]
+WantedBy=multi-user.target
