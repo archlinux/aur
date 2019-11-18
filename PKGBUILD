@@ -16,10 +16,9 @@ options=()
 source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment}"
         "cmake.extra.install.dirs.remove.patch"
         )
-md5sums=('SKIP'
-         '667700dcf5d0e135ad17109877001ade'
-         )
-  
+sha256sums=('SKIP'
+            '87b987f006e45d11cc4dfec2bd37fd2b760fd2bdbf06f48e7d467cbca9b2b301')
+
 #_pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 #_pyver=$(pacman -Sddp --print-format %v python|grep -oP ^[0-9.]{3})
 CMAKE_FLAGS=" -DWITH_EMBREE=ON \
