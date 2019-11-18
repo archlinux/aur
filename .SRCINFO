@@ -1,0 +1,16 @@
+pkgbase = nodejs-icon-font-generator
+	pkgdesc = Easy-to-use cli tool to generate webfont icon kits from a bunch of .svg files
+	pkgver = 2.1.10
+	pkgrel = 1
+	url = https://www.npmjs.com/package/icon-font-generator
+	arch = any
+	license = MIT
+	depends = nodejs
+	depends = npm
+	provides = icon-font-generator
+	noextract = icon-font-generator-2.1.10.tgz
+	source = http://registry.npmjs.org/icon-font-generator/-/icon-font-generator-2.1.10.tgz
+	md5sums = 086ae31994e8f45bca0d4cd93e4e0bfa
+
+pkgname = nodejs-icon-font-generator
+
