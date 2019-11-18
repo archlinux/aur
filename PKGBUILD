@@ -2,13 +2,13 @@
 
 pkgname=sourcetrail
 _pkgname=Sourcetrail
-pkgver=2019.3.46
+pkgver=2019.4.61
 _pkgver=${pkgver/\./\_}
 pkgrel=1
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
 url='https://www.sourcetrail.com'
-license=('custom')
+license=('LGPL3')
 conflicts=('coati')
 replaces=('coati')
 makedepends=('rsync')
@@ -16,7 +16,7 @@ provides=("${pkgname}=${pkgver}")
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/downloads/${pkgver}/linux/64bit/"
         "${pkgname}.desktop")
-sha256sums=('2497a65227d89ba093a7ce35c2429446db9461f71488768d5d9ac9e846eed336'
+sha256sums=('3ba0995f3e271dcf9eb61a15e0078f89439320de1f011c376d50626fb81a27ef'
             '9254abd7c73b70d3b81a40a6993b8c305cd24535aafe0eedffcd280f7fae2a3d')
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
