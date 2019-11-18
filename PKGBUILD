@@ -1,8 +1,8 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 # Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
-pkgname=kubernetes-helm
-pkgver=3.0.0
+pkgname=kubernetes-helm2
+pkgver=2.16.1
 pkgrel=1
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -13,7 +13,12 @@ optdepends=(
   'kubectl: check cluster status'
   'kubectl-bin: check cluster status - binary package'
 )
-conflicts=('kubernetes-helm-bin')
+conflicts=(
+  'kubernetes-helm-bin'
+  'kubernetes-helm'
+  'kubernetes-helm3'
+  'kubernetes-helm-git'
+)
 license=('Apache')
 source=("git+https://github.com/helm/helm#tag=v${pkgver}")
 md5sums=('SKIP')
