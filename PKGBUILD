@@ -1,13 +1,13 @@
 # Maintainer: hfte@posteo.org
 pkgname=sws
 pkgver=2.11.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of features that seamlessly integrate into REAPER"
 arch=('x86_64')
-url="http://www.sws-extension.org/"
+url="https://www.sws-extension.org/"
 license=('MIT')
-depends=('reaper-bin>=5.979')
-makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'php-gd' 'perl')
+depends=('reaper-bin>=5.979' 'taglib')
+makedepends=('git' 'gcc' 'make' 'cmake' 'php' 'perl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git://github.com/reaper-oss/sws.git"
@@ -22,13 +22,13 @@ pkgver() {
 prepare() {
     cp "$srcdir/reaper_plugin_functions.h" "$srcdir/$pkgname/vendor"
     cd "$srcdir/$pkgname"
-	git submodule update --init
+	git submodule update --init vendor/WDL
 }
 
 
 build() {
 	cd "$srcdir/$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_TAGLIB=YES
     cmake --build build
 }
 
@@ -36,7 +36,7 @@ build() {
 package() {
 	mkdir -p "${pkgdir}/opt/REAPER/UserPlugins/"
 	cp "${srcdir}/$pkgname/build/reaper_sws-x86_64.so" "${pkgdir}/opt/REAPER/UserPlugins/"
-	cp "${srcdir}/$pkgname/build/sws_python64.py" "${pkgdir}/opt/REAPER/UserPlugins/"
+	cp "${srcdir}/$pkgname/build/sws_python64.py" "${pkgdir}/opt/REAPER/Scripts/"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
 	cp "${srcdir}/$pkgname/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
