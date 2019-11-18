@@ -1,11 +1,13 @@
 pkgbase = projecteur
 	pkgdesc = Linux Desktop Application for the Logitech Spotlight device.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jahnf/Projecteur
 	install = projecteur.install
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
+	makedepends = make
 	depends = qt5-graphicaleffects>=5.7
 	depends = udev
 	provides = projecteur
