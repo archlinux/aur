@@ -6,6 +6,7 @@ pkgbase = d3s-nagios-plugins-git
 	arch = any
 	license = Apache
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	source = d3s-nagios-plugins::git+https://github.com/D-iii-S/d3s-nagios-plugins.git
 	sha512sums = SKIP

@@ -10,7 +10,7 @@ license=('Apache')
 url="https://github.com/D-iii-S/d3s-nagios-plugins"
 # Most AUR helpers unfortunately do not support versioned deps in the AUR ("python-acme=${pkgver}")
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=("${_reponame}"::"git+https://github.com/D-iii-S/${_reponame}.git")
 sha512sums=('SKIP')
 
