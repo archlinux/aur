@@ -2,10 +2,10 @@
 # Contributor: Gustavo Castro < gustawho [ at ] disroot [ dot ] org >
 
 pkgname=qtemu-git
-pkgver=r242.eb0b8fe
-pkgrel=3
+pkgver=r247.d230e82
+pkgrel=1
 pkgdesc="Qt5 GUI front-end for QEMU, similar to VirtualBox."
-url="http://qtemu.org"
+url="https://gitlab.com/qtemu/gui"
 license=("GPL2")
 arch=('i686' 'x86_64')
 makedepends=('git')
