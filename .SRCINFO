@@ -1,5 +1,5 @@
 pkgbase = n64-git
-	pkgver = r100.c9c95e7
+	pkgver = r110.23a6b60
 	pkgrel = 1
 	url = https://github.com/glankk/n64
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = n64-git
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
 	source = gs.patch
 	sha256sums = SKIP
-	sha256sums = dad3aa103bfa59ed276ff487459c28166d9ca89fdb910c4d4a5ffcae4d1fa78c
+	sha256sums = b36d4a851c5dd76ba3d56e4ab2370e5a8ac28dc0e8feef11fb6f32141abdc117
 
 pkgname = n64-git
 	pkgdesc = A custom N64 development library
 	depends = n64-tools
 	provides = n64
 	conflicts = n64
-	replaces = n64
+	replaces = n64)
 
 pkgname = n64-tools-git
 	pkgdesc = A set of N64 development tools.
@@ -27,5 +27,5 @@ pkgname = n64-tools-git
 	depends = libusb
 	provides = n64-tools
 	conflicts = n64-tools
-	replaces = n64-tools
+	replaces = n64-tools)
 

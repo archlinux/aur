@@ -8,7 +8,7 @@ source=("git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gs.patch")
 makedepends=('git')
 sha256sums=('SKIP'
-            '297c101faff16258d647b633b2207067a15d9637218e895752bc65f530e6ac46')
+            'b36d4a851c5dd76ba3d56e4ab2370e5a8ac28dc0e8feef11fb6f32141abdc117')
 options=('!buildflags' '!strip')
 _prefix=/usr
 
@@ -20,7 +20,7 @@ pkgver() {
 prepare() {
   # The gs binary conflicts with GhostScript on Linux. Rename it to gs.n64.
   patch --strip=1 --input=${srcdir}/gs.patch
-
+  #pwd
 }
 
 build() {

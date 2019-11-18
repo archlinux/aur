@@ -1,7 +1,19 @@
---- src.pristine/n64/src/libgs/makefile.in	2019-06-15 21:50:50.656063865 -0400
-+++ src.new/n64/src/libgs/makefile.in	2019-07-06 22:17:44.897606509 -0400
+diff -aur '--exclude=.git' src.pristine/n64/makefile.in src.new/n64/makefile.in
+--- src.pristine/n64/makefile.in	2019-11-17 22:13:29.286615032 -0500
++++ src.new/n64/makefile.in	2019-11-17 22:24:16.665342266 -0500
+@@ -202,6 +202,7 @@
+ 			(cd "$(DESTDIR)$(tooldir)/bin" && rm -f "$${f##$(target)-}" && $(LN_S) -f "$(bindir)/$$f" "$${f##$(target)-}"); \
+ 		fi \
+ 	done
++	(cd "$(DESTDIR)$(tooldir)/bin"  && $(LN_S) -f "$(bindir)/gs.n64" "$(DESTDIR)$(tooldir)/bin/gs");
+ 	touch $@
+ clean-local-exec              :
+ 	rm -f clean-local-exec
+diff -aur '--exclude=.git' src.pristine/n64/src/libgs/makefile.in src.new/n64/src/libgs/makefile.in
+--- src.pristine/n64/src/libgs/makefile.in	2019-11-17 22:13:29.296615012 -0500
++++ src.new/n64/src/libgs/makefile.in	2019-11-17 22:13:38.626596593 -0500
 @@ -8,7 +8,7 @@
- LDFLAGS                       = -Wl,-rpath,\$$ORIGIN/../lib @LDFLAGS@
+ LDFLAGS                       = @LDFLAGS@
  LDLIBS                        = @LIBUSB@ @LIBM@
  SRC                           = $(srcdir)/src/lib/*.c $(srcdir)/src/exe/*.c $(srcdir)/../../include/vector/vector.c
 -PROGNAME                      = gs
