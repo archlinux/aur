@@ -1,25 +1,23 @@
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python compiled with intel mkl
-	pkgver = 1.16.4
+	pkgver = 1.17.4
 	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = intel-compiler-base
 	makedepends = intel-fortran-compiler
 	makedepends = cython
 	depends = intel-mkl
 	depends = python
-	depends = python2
 	options = staticlibs
-	source = https://github.com/numpy/numpy/archive/v1.16.4.tar.gz
+	source = https://github.com/numpy/numpy/archive/v1.17.4.tar.gz
 	source = site64.cfg
 	source = site32.cfg
 	source = intelccompiler.py.patch
-	sha256sums = 3bdabda4a2ac4f1986b4bc55f865cd0b68b71edc9420b03e911e0ee52743e9c4
+	sha256sums = SKIP
 	sha256sums = 86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1
 	sha256sums = 882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df
 	sha256sums = 0d185daf0f2fcab08778173f54cee86cd88dc3c6703413686ab3742c0097db4e
@@ -28,13 +26,6 @@ pkgname = python-numpy-mkl
 	depends = intel-mkl
 	depends = python
 	optdepends = python-pytest: testsuite
-	provides = python-numpy=1.16.4
+	provides = python-numpy=1.17.4
 	conflicts = python-numpy
-
-pkgname = python2-numpy-mkl
-	depends = intel-mkl
-	depends = python2
-	optdepends = python2-pytest: testsuite
-	provides = python2-numpy=1.16.4
-	conflicts = python2-numpy
 
