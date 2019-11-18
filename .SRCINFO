@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-doctrina
 	pkgdesc = The library of Software Peronista
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.softwareperonista.com.ar/cdp/doctrina
 	arch = x86_64
 	license = GPL3
