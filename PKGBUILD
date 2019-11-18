@@ -21,7 +21,7 @@ source=(https://github.com/numpy/numpy/archive/v${pkgver}.tar.gz
 	'site32.cfg'
 	'intelccompiler.py.patch')
 
-sha256sums=( SKIP
+sha256sums=('e78ef65c08fc25c6172586e3b7ac366fbd49d9227d435d2f05184e9f3dd6317f'
 	    '86cd68a695a5e1d76f8e53cda70c888c4ed04349f15c8096d4492e346e7187e1'
             '882f2717deca0fd6a2e2384aac2dc7973c566f9cd2ba46777c3b5ffdffa814df'
 	    '0d185daf0f2fcab08778173f54cee86cd88dc3c6703413686ab3742c0097db4e')
