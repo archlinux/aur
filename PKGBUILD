@@ -1,13 +1,14 @@
-# Maintainer 2015-2016: Andy Weidenbaum <archbaum@gmail.com>
-# Maintainer: Xander van der Goot <xandervandergoot@gmail.com>
+# Maintainer: Harrison Thorne <harrison.thorne@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Xander van der Goot <xandervandergoot@gmail.com>
 
 pkgname=hledger-git
-pkgver=20161102
+pkgver=20191117
 pkgrel=1
 pkgdesc="The hledger command-line and web-based accounting tool"
 arch=('i686' 'x86_64')
 depends=('ncurses')
-makedepends=('git' 'haskell-stack')
+makedepends=('git' 'stack')
 url="http://hledger.org"
 license=('GPL3')
 options=('strip')
