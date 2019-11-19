@@ -13,7 +13,7 @@ pkgbase = cocoa
 	depends = readline
 	source = http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-0.99650.tgz
 	source = cocoa5
-	sha256sums = 0c04f32ecdcad8a7c36776fd470540350b806e964801da84761115a3e7f6ecc2
+	sha256sums = 2a7a51dc8e7b20d560c863ef065d69f25750701f656b8370babfbd99fffd1e25
 	sha256sums = e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3
 
 pkgname = cocoa

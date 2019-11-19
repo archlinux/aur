@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gmp' 'boost-libs' 'readline')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "cocoa5")
-sha256sums=('0c04f32ecdcad8a7c36776fd470540350b806e964801da84761115a3e7f6ecc2'
+sha256sums=('2a7a51dc8e7b20d560c863ef065d69f25750701f656b8370babfbd99fffd1e25'
             'e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3')
 
 build() {
