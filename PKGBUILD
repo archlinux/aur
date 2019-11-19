@@ -31,9 +31,9 @@ pkgbase=systemd-light
 _pkgbase=${pkgbase%-light}
 pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
-_commit='ef677436aa203c24816021dd698b57f219f0ff64'
-pkgver=243.78
-pkgrel=3
+_commit='e51d9bf9e5ac5a6618c175cd9b5cfdc6733cd5d1'
+pkgver=243.162
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -88,8 +88,6 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
-  # Revert "sysusers: properly mark generated accounts as locked"
-  '12c829376a95ee0a734b8dbd347042062516f0a9'
 )
 
 _reverts=(
