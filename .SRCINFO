@@ -1,7 +1,7 @@
 pkgbase = opencpn-plugin-climatology
 	pkgdesc = Climatology plugin for OpenCPN
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opencpn.org/OpenCPN/plugins/climatology.html
 	arch = x86_64
 	license = GPL3
