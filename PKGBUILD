@@ -4,7 +4,7 @@
 
 pkgname=poetry-beta
 _pkgname=poetry
-pkgver=1.0.0b4
+pkgver=1.0.0b5
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy (pre-release version)"
 arch=('any')
@@ -18,8 +18,8 @@ source=(
   "https://github.com/sdispater/poetry/archive/${pkgver}.tar.gz"
   "poetry.py"
 )
-sha256sums=('a264ca064288a4b0b85e9fa0191bd108dc0308d32b4f328a9ca6e896934843be'
-            'e0642d8641a0663fe544b8e75843a9af2510adfd1af8bfb3ea1ad9ea88659888'
+sha256sums=('606085b06e62d292947f78bc7a940ef8d20709cf5ec1d992cb4beb7b606a9ee9'
+            '025c1c88235abdfc3197809c117d6cb39bd1a5391305e483e9ccb4d9cf593140'
             'e9fee925c0fb42df53389bdfc8ebbe01bfd4f6146ed0a55786bd2ba741169c0c')
 
 package() {
