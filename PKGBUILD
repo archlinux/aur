@@ -1,8 +1,8 @@
 # Maintainer: rnestler
 
-_pkgname=kernel-updated
+_pkgname=reboot-arch-btw
 pkgname=${_pkgname}-git
-pkgver=12
+pkgver=46
 pkgrel=1
 pkgdesc='Check if you need to reboot due to an updated kernel'
 arch=('i686' 'x86_64')
@@ -27,5 +27,5 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   mkdir -p "${pkgdir}/usr/bin"
-  cp -p target/release/kernel-updated "${pkgdir}/usr/bin"
+  cp -p target/release/${_pkgname} "${pkgdir}/usr/bin"
 }
