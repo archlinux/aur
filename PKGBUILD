@@ -4,12 +4,14 @@
 
 pkgname=yadm
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
 url="https://github.com/TheLocehiliosan/yadm"
 license=('GPL3')
+depends=('awk')
 optdepends=('gnupg: encrypt/decrypt sensitive files'
+            'python-j2cli: use jinja2 templates'
             'python-envtpl: use templates with variables')
 provides=('yadm')
 conflicts=('yadm-git')
