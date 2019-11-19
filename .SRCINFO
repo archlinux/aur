@@ -1,6 +1,6 @@
 pkgbase = warfork
 	pkgdesc = Warfork
-	pkgver = 4269802.OCT.8.201
+	pkgver = 4269802.OCT.8.2019
 	pkgrel = 2
 	url = https://github.com/TeamForbiddenLLC/warfork-qfusion
 	arch = i686
@@ -14,9 +14,10 @@ pkgbase = warfork
 	makedepends = freetype2
 	makedepends = openal
 	makedepends = mesa
+	makedepends = git
 	depends = sdl2
-	depends = warfork-data>=4269802-OCT-8-2019
-	source = https://github.com/TeamForbiddenLLC/warfork-qfusion/archive/4269802-OCT-8-2019.tar.gz
+	depends = warfork-data>=4269802.OCT.8.2019
+	source = git+https://github.com/TeamForbiddenLLC/warfork-qfusion.git#branch=4269802-OCT-8-2019
 	source = warfork.desktop
 	sha256sums = SKIP
 	sha256sums = 98faaf4fcb90753e88e303fda478ec195ae412a4bee5fb74cc3d94b6692c884a
