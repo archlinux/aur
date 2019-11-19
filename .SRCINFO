@@ -7,9 +7,12 @@ pkgbase = python-brother_ql
 	license = GPL-3.0
 	makedepends = python-setuptools
 	depends = python
+	depends = python-attrs
+	depends = python-click
 	depends = python-future
 	depends = python-packbits
-	depends = python-pillow
+	depends = python-pillow>=3.3.0
+	optdepends = python-pyusb
 	source = https://files.pythonhosted.org/packages/source/b/brother_ql/brother_ql-0.9.4.tar.gz
 	sha256sums = 1f5c57a039f012c9c204397f470001f76ebb7483421ebde985d0cb3c614e8660
 
