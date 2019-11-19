@@ -4,7 +4,7 @@
 pkgname=('python-aenum' 'python2-aenum')
 _pkgname='aenum'
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Enumerations (compatible with Python's stdlib Enum), NamedTuples, and NamedConstants"
 arch=('any')
 url="https://bitbucket.org/stoneleaf/aenum"
@@ -26,7 +26,7 @@ package_python-aenum() {
   python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   # XXX: I have no idea what's wrong with the setup.py. This is a quickfix!
-  install -Dm644 aenum/__init__.py "${pkgdir}/usr/lib/python3.7/site-packages/${_pkgname}/__init__.py"
+  install -Dm644 aenum/__init__.py "${pkgdir}/usr/lib/python3.8/site-packages/${_pkgname}/__init__.py"
   install -Dm644 aenum/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

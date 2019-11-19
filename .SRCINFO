@@ -1,7 +1,7 @@
 pkgbase = python-aenum
 	pkgdesc = Advanced Enumerations (compatible with Python's stdlib Enum), NamedTuples, and NamedConstants
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/stoneleaf/aenum
 	arch = any
 	license = BSD
