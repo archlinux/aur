@@ -6,11 +6,10 @@ pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
 url="https://github.com/Badgie/spotirec"
-depends=('python>=3.7.4'
-        'python-pip>=19.2.3'
-        'python-bottle<=0.12.17-1'
-        'python-requests>=2.22.0'
-        'python-spotipy>=2.4.4')
+depends=('python<=3.7.4'
+        'python-bottle<=0.12.16'
+        'python-requests<=2.22.0'
+        'python-spotipy<=2.4.4')
 makedepends=('git')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}::git+https://github.com/Badgie/spotirec")
