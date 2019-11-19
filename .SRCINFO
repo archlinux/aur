@@ -1,12 +1,13 @@
 pkgbase = trinnity-caffe-cudnn-git
 	pkgdesc = Caffe 1.0 with triNNity extensions (CUDNN backend)
 	pkgver = 1.0
-	pkgrel = 18
+	pkgrel = 19
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = gcc8
+	makedepends = opencv
 	depends = boost-libs
 	depends = protobuf
 	depends = google-glog
@@ -30,7 +31,7 @@ pkgbase = trinnity-caffe-cudnn-git
 	depends = python-six
 	depends = python-scikit-image
 	depends = openexr
-	depends = opencv>=4.0.0
+	depends = opencv
 	depends = gtk3
 	depends = cudnn
 	depends = nccl

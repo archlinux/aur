@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cudnn-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=18
+pkgrel=19
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDNN backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -13,12 +13,12 @@ depends=(
         'python-matplotlib' 'ipython' 'python-networkx' 'python-nose'
         'python-pandas' 'python-dateutil' 'python-protobuf' 'python-gflags'
         'python-yaml' 'python-pillow' 'python-six' 'python-scikit-image'
-        'openexr' 'opencv>=4.0.0' 'gtk3' 'cudnn' 'nccl' 'openmp'
+        'openexr' 'opencv' 'gtk3' 'cudnn' 'nccl' 'openmp'
 )
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
             'cblas: Use CBLAS for  backend linear algebra ops'
 )
-makedepends=('cmake' 'gcc8')
+makedepends=('cmake' 'gcc8' 'opencv')
 provides=('caffe')
 conflicts=('trinnity-caffe-cuda-git' 'trinnity-caffe-git')
 source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git")
@@ -61,7 +61,7 @@ prepare() {
 
 build() {
     cd build
-    PATH+=":/opt/cuda/bin" CC=gcc-7 CXX=g++-7 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe python upgrade_net_proto_text upgrade_net_proto_binary
+    PATH+=":/opt/cuda/bin" CC=gcc-8 CXX=g++-8 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe python upgrade_net_proto_text upgrade_net_proto_binary
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
