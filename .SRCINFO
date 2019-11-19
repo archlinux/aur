@@ -1,0 +1,21 @@
+pkgbase = stoqserver
+	pkgdesc = A server for Stoq
+	pkgver = 0.26.1
+	pkgrel = 1
+	url = https://www.stoq.com.br
+	install = stoqserver.install
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-flask
+	depends = python-flask-restful
+	depends = python-gevent
+	depends = python-netifaces
+	depends = python-requests
+	depends = python-twisted
+	depends = postgresql
+	source = https://pypi.python.org/packages/source/s//-0.26.1.tar.gz
+	md5sums = 66dd7c7a83b21e0138e28c38f27fe45c
+
+pkgname = stoqserver
+

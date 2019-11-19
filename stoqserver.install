@@ -1,0 +1,119 @@
+post_install() {
+  # Make sure stoqserver's home exists
+  if [ ! -d '/usr/share/stoqserver' ]; then
+    mkdir -p '/usr/share/stoqserver'    
+  fi
+  
+  #Crete script stoqsconf
+  if [ ! -d '/usr/share/stoqserver/stoqsconf' ]; then
+    cat << 'EOF' > /usr/bin/stoqsconf
+#!/bin/bash
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -p|--port)
+    PORT="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -D|--directory)
+    DIR="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -h|--help)
+    HELP="$2"
+    shift # past argument
+    shift # past value
+    echo "help text"
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+if [[ -n $1 ]]; then
+    echo "Invalid argument."
+else
+
+  #Create pgpass file
+  if [ ! -f ${DIR}/.pgpass ]; then
+    createuser -p ${PORT} -dsR stoqserver
+    PG_PASSWORD="`cat /dev/urandom | tr -dc _A-Z-a-z-0-9 | head -c32`"
+    psql -p $PORT -c "ALTER USER stoqserver WITH PASSWORD '${PG_PASSWORD}';"
+    echo "*:*:*:stoqserver:${PG_PASSWORD}" > ${DIR}/.pgpass
+    chmod 0600 ${DIR}/.pgpass
+  fi
+
+  #Create a ssh key for remote support
+  if [ ! -f ${DIR}/.ssh/id_rsa ]; then
+    if [ ! -f ${DIR}/.ssh/ ]; then
+      mkdir -p ${DIR}/.ssh
+    fi
+    ssh-keygen -t rsa -N "" -f ${DIR}/.ssh/id_rsa
+  fi
+fi
+EOF
+  chmod 777 /usr/bin/stoqsconf
+  
+  fi
+  
+  # Create .stoq dir and configuration if they don't exist
+  if [ ! -f /usr/share/stoqserver/.stoq/stoq.conf ]; then
+    mkdir -p /usr/share/stoqserver/.stoq
+    cat <<EOF > /usr/share/stoqserver/.stoq/stoq.conf
+[General]
+logfile = /usr/share/stoqserver/.stoq/stoqserver.log
+
+[Database]
+rdbms = postgres
+address = 
+port = 5432
+dbname = stoq
+dbusername = stoqserver
+
+[Backup]
+key = 
+EOF
+  fi
+    
+  # Create stoqserver user if it doesn't exist
+  if ! getent group stoqserver >/dev/null; then
+    useradd -d '/usr/share/stoqserver' -s /bin/bash stoqserver
+    passwd -l stoqserver >/dev/null
+  fi
+  
+  if ! getent group stoqserver | grep &>/dev/null "postgres"; then
+    gpasswd -a postgres stoqserver
+  fi
+    
+  # Fix directory permissions
+  chown -R stoqserver:stoqserver /usr/share/stoqserver
+  chmod g+rwx -R /usr/share/stoqserver
+  
+  grep -q 'files = /etc/supervisor/conf.d/\*.conf' /etc/supervisord.conf || echo 'files = /etc/supervisor/conf.d/*.conf' >> /etc/supervisord.conf
+}
+
+post_upgrade() {
+  post_install $1
+  # FS#23858, fix postgres user shell issue
+  stoqserver_shell=$(getent passwd stoqserver | cut -d: -f7)
+  if [ "$stoqserver_shell" = "/sbin/nologin" ]; then
+    chsh -s /bin/bash stoqserver
+  fi
+}
+
+post_remove() {
+  if getent passwd stoqserver >/dev/null; then
+    userdel stoqserver
+  fi
+  if getent group stoqserver >/dev/null; then
+    groupdel stoqserver
+  fi
+}
