@@ -1,7 +1,7 @@
 pkgbase = opencpn-plugin-weatherrouting
 	pkgdesc = Weather routing plugin for OpenCPN
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencpn.org/OpenCPN/plugins/weatherroute.html
 	arch = x86_64
 	license = GPL3

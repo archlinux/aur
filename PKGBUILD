@@ -4,7 +4,7 @@
 
 pkgname=opencpn-plugin-weatherrouting
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Weather routing plugin for OpenCPN"
 arch=('x86_64')
 license=("GPL3")
@@ -18,7 +18,7 @@ build() {
   cd "weather_routing_pi-${pkgver}"
   mkdir -p build
   cd build
-  cmake ..
+  cmake -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   make
 }
 
