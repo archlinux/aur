@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cpumanager-git
-pkgver=2.2
-pkgrel=0
+pkgver=2.1.r0.g059c46c
+pkgrel=1
 #epoch=
 pkgdesc="CPU controler"
 arch=('any')
@@ -28,6 +28,12 @@ source=("git+https://github.com/nbebaw/cpumanager-git.git")
 #noextract=()
 md5sums=('SKIP')
 #validpgpkeys=()
+
+pkgver() {
+  cd "$pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 #prepare() {
 #	cd "$pkgname-$pkgver"

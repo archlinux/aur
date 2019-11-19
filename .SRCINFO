@@ -1,7 +1,7 @@
 pkgbase = cpumanager-git
 	pkgdesc = CPU controler
-	pkgver = 2.2
-	pkgrel = 0
+	pkgver = 2.1.r0.g059c46c
+	pkgrel = 1
 	url = https://github.com/nbebaw/cpumanager-git
 	arch = any
 	license = GPL
