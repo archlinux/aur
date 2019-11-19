@@ -8,10 +8,10 @@
 pkgname=wfuzz-git
 pkgver() {
   cd "${pkgname/-git}"
-  git describe --long --tags | sed 's/v//;s/-/.r/;s/-g/./'
+  git describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'
 }
-pkgver=2.4.1.r0.fc34a8a
-pkgrel=2
+pkgver=2.4.2.r0.619ea18
+pkgrel=1
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
 url='https://github.com/xmendez/wfuzz'
@@ -46,8 +46,8 @@ package() {
   install -dm644 "$pkgdir/usr/share/${pkgname/-git}/wordlists"
   rsync -rpt wordlist/* "$pkgdir/usr/share/${pkgname/-git}/wordlists/"
 
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
 
-# vi: ts=2 sw=2 et:
+# vim: ts=2 sw=2 et ft=PKGBUILD:
