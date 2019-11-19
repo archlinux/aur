@@ -2,8 +2,8 @@
 # Maintainer: Marco A Rojas <marco.rojas@zentek.com.mx>
 
 pkgname=libam7xxx
-pkgver=20180302
-pkgrel=1
+pkgver=0.1.7
+pkgrel=2
 pkgdesc="Open Source library to communicate via USB with Projectors and Digital Picture Frames based on the Actions Micro AM7XXX family of ICs"
 arch=(any)
 url="https://ao2.it/en/blog/2012/03/30/open-source-driver-usb-pico-projectors"
