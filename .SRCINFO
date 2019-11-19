@@ -15,6 +15,7 @@ pkgbase = rtorrent-pyro-git
 	depends = curl
 	depends = xmlrpc-c
 	optdepends = ttf-dejavu: for utf8 glyphs
+	optdepends = python2: for pyroscope tools
 	provides = rtorrent
 	conflicts = rtorrent
 	conflicts = rtorrent-git
@@ -22,16 +23,20 @@ pkgbase = rtorrent-pyro-git
 	backup = usr/share/doc/rtorrent/rtorrent.rc.sample
 	source = git://github.com/rakshasa/rtorrent.git#branch=master
 	source = https://github.com/skydrome/rtorrent/commit/c3697d3a82085194643e58e8ee06855e4d45a6dc.patch
+	source = https://raw.githubusercontent.com/pyroscope/pyrocore/master/src/pyrocore/data/config/bash-completion
 	source = https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches/command_pyroscope.cc
 	source = https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches/ui_pyroscope.cc
 	source = https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches/ui_pyroscope.h
 	source = rtorrent.rc.sample
+	source = bootstrap.sh
 	md5sums = SKIP
 	md5sums = 5d41e09f61e346a6c055e36c243f00b5
+	md5sums = efdb1a143d661dcda5a22e43bb28e36f
 	md5sums = d68073da455851d628b587b852b4b54a
 	md5sums = 5befaa2e705a550a6dcd7f397060df81
 	md5sums = 0e9791d796e2185279d7f109b064576b
-	md5sums = 35e2c69152a3c2137c5958f9f27cb906
+	md5sums = ac6885720390a54fea906976eae84a9d
+	md5sums = 9edae7ef267b47d2445a667e98f6ea2d
 
 pkgname = rtorrent-pyro-git
 

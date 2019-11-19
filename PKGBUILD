@@ -17,7 +17,8 @@ license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('libtorrent-pyro-git' 'ncurses' 'curl' 'xmlrpc-c')
 makedepends=('git' 'clang')
-optdepends=('ttf-dejavu: for utf8 glyphs')
+optdepends=('ttf-dejavu: for utf8 glyphs'
+            'python2: for pyroscope tools')
 conflicts=('rtorrent' 'rtorrent-git' 'rtorrent-ps')
 provides=('rtorrent')
 install='pyroscope.install'
@@ -35,17 +36,21 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 _url='https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches'
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
         "https://github.com/skydrome/rtorrent/commit/c3697d3a82085194643e58e8ee06855e4d45a6dc.patch"
+        "https://raw.githubusercontent.com/pyroscope/pyrocore/master/src/pyrocore/data/config/bash-completion"
         "$_url/command_pyroscope.cc"
         "$_url/ui_pyroscope.cc"
         "$_url/ui_pyroscope.h"
-        "rtorrent.rc.sample")
+        "rtorrent.rc.sample"
+        "bootstrap.sh")
 
 md5sums=('SKIP'
-         '5d41e09f61e346a6c055e36c243f00b5' 
+         '5d41e09f61e346a6c055e36c243f00b5'
+         'efdb1a143d661dcda5a22e43bb28e36f'
          'd68073da455851d628b587b852b4b54a'
          '5befaa2e705a550a6dcd7f397060df81'
          '0e9791d796e2185279d7f109b064576b'
-         '35e2c69152a3c2137c5958f9f27cb906')
+         'ac6885720390a54fea906976eae84a9d'
+         '9edae7ef267b47d2445a667e98f6ea2d')
 
 pkgver() {
     cd rtorrent
@@ -93,7 +98,9 @@ package() {
     cd rtorrent
     make DESTDIR="$pkgdir" install
 
-    install -Dm644 "$srcdir"/rtorrent.rc.sample "$pkgdir/usr/share/doc/rtorrent/rtorrent.rc.sample"
-    install -Dm644 doc/faq.xml        "$pkgdir/usr/share/doc/rtorrent/faq.xml"
-    install -Dm644 doc/old/rtorrent.1 "$pkgdir/usr/share/man/man1/rtorrent.1"
+    install -Dm644 doc/faq.xml           "$pkgdir/usr/share/doc/rtorrent/faq.xml"
+    install -Dm644 doc/old/rtorrent.1    "$pkgdir/usr/share/man/man1/rtorrent.1"
+    install -Dm755 ../bootstrap.sh       "$pkgdir/usr/share/doc/rtorrent/bootstrap.sh"
+    install -Dm644 ../rtorrent.rc.sample "$pkgdir/usr/share/doc/rtorrent/rtorrent.rc.sample"
+    install -Dm644 ../bash-completion    "$pkgdir/usr/share/bash-completion/completions/pyrocore"
 }

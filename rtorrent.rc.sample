@@ -45,8 +45,7 @@ schedule = watch_directory,5,5,"load.start=~/.rtorrent/watch/*.torrent,d.delete_
 
 method.insert = pyro.extended, value|const, 1
 method.insert = pyro.bin_dir, string|const, ~/bin/
-method.insert = pyro.rtorrent_rc, string|const|private, "$cat=~/.pyroscope/rtorrent-0.9.2.rc"
-import = $pyro.rtorrent_rc=
+import = ~/.pyroscope/rtorrent-pyro.rc
 
 # TORQUE: Daemon watchdog schedule
 # Must be activated by touching the "~/.pyroscope/run/pyrotorque" file!

@@ -1,11 +1,13 @@
 post_install() {
     echo
-    echo " An updated rtorrent.rc file is installed to"
-    echo " /usr/share/doc/rtorrent/rtorrent.rc.sample"
+    echo " An updated rtorrent.rc file is provided at /usr/share/doc/rtorrent/rtorrent.rc.sample"
     echo " If you wish to use the pyrocore tools, you'll want to read"
     echo " https://code.google.com/p/pyroscope/wiki/UserConfiguration"
+    echo " A bootstrap script is provided at /usr/share/doc/rtorrent/bootstrap.sh"
+    echo " Run it as the user who will be using rtorrent"
     echo
 }
-post_upgrade() {
-    post_install
-}
+
+# post_upgrade() {
+#     post_install
+# }
