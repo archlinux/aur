@@ -1,19 +1,19 @@
 # Maintainer: Tharre <tharre3@gmail.com>
 
 pkgname=pandoc-pyplot
-pkgver=2.1.1.1
+pkgver=2.2.0.0
 pkgrel=1
 pkgdesc='A Pandoc filter to generate Matplotlib figures directly in documents'
 url='https://github.com/LaurentRDC/pandoc-pyplot'
 license=('MIT')
 arch=('x86_64')
 depends=('ghc-libs' 'pandoc' 'haskell-hspec' 'haskell-tasty'
-         'haskell-tasty-hunit' 'haskell-tasty-hspec' 'haskell-yaml'
-         'haskell-open-browser' 'haskell-typed-process' 'python-matplotlib'
-         'python-pillow')
+         'haskell-tasty-hunit' 'haskell-tasty-hspec' 'haskell-shakespeare'
+         'haskell-yaml' 'haskell-open-browser' 'haskell-typed-process'
+         'python-matplotlib' 'python-pillow')
 makedepends=('ghc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LaurentRDC/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('05ff76d059abb237d1e16ab97c14c105f9c477f80599d6cbbf3d8d7785eb6bb1')
+sha256sums=('8b0038fcb647a45d641ebeaadad50428d16d1fbcea2851f76046aae47a5fefae')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,5 +40,5 @@ package() {
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
     runhaskell Setup copy --destdir="${pkgdir}"
     install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE.md"
+    rm -f "${pkgdir}/usr/share/doc/${pkgname}/COPYING.md"
 }
