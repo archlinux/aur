@@ -1,0 +1,20 @@
+pkgbase = sourcetrail-bin
+	pkgdesc = A cross-platform source explorer for C/C++ and Java
+	pkgver = 2019.4.61
+	pkgrel = 1
+	url = https://www.sourcetrail.com
+	arch = x86_64
+	license = LGPL3
+	makedepends = rsync
+	provides = sourcetrail=2019.4.61
+	conflicts = sourcetrail-bin
+	replaces = sourcetrail-bin
+	noextract = sourcetrail-2019.4.61.tar.gz
+	options = !strip
+	source = sourcetrail-2019.4.61.tar.gz::https://www.sourcetrail.com/downloads/2019.4.61/linux/64bit/
+	source = sourcetrail.desktop
+	sha256sums = 3ba0995f3e271dcf9eb61a15e0078f89439320de1f011c376d50626fb81a27ef
+	sha256sums = 9254abd7c73b70d3b81a40a6993b8c305cd24535aafe0eedffcd280f7fae2a3d
+
+pkgname = sourcetrail-bin
+

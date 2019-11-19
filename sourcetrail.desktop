@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sourcetrail
+GenericName=sourcetrail
+Comment="A cross-platform source explorer for C/C++ and Java"
+Icon=sourcetrail
+Exec="/usr/bin/sourcetrail"
+Terminal=false
+Categories=Development;
+StartupNotify=true
+StartupWMClass=sourcetrail
