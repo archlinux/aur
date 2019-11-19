@@ -4,22 +4,19 @@
 
 pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.26.0_2018.02.25
-pkgrel=2
+pkgver=1.41.0_2019.11.18
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm' 'cargo')
 _src="https://static.rust-lang.org/dist/rustc-nightly-src.tar.xz"
-source=($_src
-	$_src.asc)
+source=($_src)
 options=('staticlibs' '!strip' '!emptydirs' '!makeflags')
 conflicts=('rust')
 provides=('rust')
-validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE')
-sha256sums=("$(curl -sL $_src.sha256 | cut -d\  -f1)"
-	    "SKIP")
+sha256sums=("$(curl -sL $_src.sha256 | cut -d\  -f1)")
 
 export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi"
 
@@ -37,7 +34,6 @@ build() {
     --release-channel=stable \
     --llvm-root=/usr \
     --disable-codegen-tests \
-    --jemalloc-root=/usr/lib \
     --disable-rpath \
     --disable-compiler-docs 
 }
