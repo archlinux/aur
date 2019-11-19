@@ -8,16 +8,16 @@ if [ ! -d "$XASH3D_BASEDIR" ]; then
     exit 1
 fi
 
-if [ $(uname -m) == "x86_64" ]; then 
-	if [ ! -f "$XASH3D_BASEDIR/valve/dlls/hl_amd64.so" ]; then
-    	ln -sr $DEFAULT_LIBPATH/valve/dlls/hl_amd64.so "$XASH3D_BASEDIR"/valve/dlls/hl_amd64.so
-    	ln -sr $DEFAULT_LIBPATH/valve/cl_dlls/client_amd64.so "$XASH3D_BASEDIR"/valve/cl_dlls/client_amd64.so
-	fi
-else 
+#if [ $(uname -m) == "x86_64" ]; then 
+#	if [ ! -f "$XASH3D_BASEDIR/valve/dlls/hl_amd64.so" ]; then
+#    	ln -sr $DEFAULT_LIBPATH/valve/dlls/hl_amd64.so "$XASH3D_BASEDIR"/valve/dlls/hl_amd64.so
+#    	ln -sr $DEFAULT_LIBPATH/valve/cl_dlls/client_amd64.so "$XASH3D_BASEDIR"/valve/cl_dlls/client_amd64.so
+#	fi
+#else 
 	if [ ! -f "$XASH3D_BASEDIR/valve/dlls/hl.so" ]; then
     	ln -sr $DEFAULT_LIBPATH/valve/dlls/hl.so "$XASH3D_BASEDIR"/valve/dlls/hl.so
     	ln -sr $DEFAULT_LIBPATH/valve/cl_dlls/client.so "$XASH3D_BASEDIR"/valve/cl_dlls/client.so
 	fi
-fi
+#fi
 
 $DEFAULT_LIBPATH/xash3d/xash3d "$@"
