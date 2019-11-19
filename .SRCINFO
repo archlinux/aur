@@ -14,7 +14,7 @@ pkgbase = stoqserver
 	depends = python-requests
 	depends = python-twisted
 	depends = postgresql
-	source = https://pypi.python.org/packages/source/s//-0.26.1.tar.gz
+	source = https://pypi.python.org/packages/source/s/stoqserver/stoqserver-0.26.1.tar.gz
 	md5sums = 66dd7c7a83b21e0138e28c38f27fe45c
 
 pkgname = stoqserver

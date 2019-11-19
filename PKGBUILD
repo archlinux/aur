@@ -9,7 +9,7 @@ url="https://www.stoq.com.br"
 license=('GPL')
 depends=('python' 'python-flask' 'python-flask-restful' 'python-gevent' 'python-netifaces' 'python-requests' 'python-twisted' 'postgresql')
 install=${pkgname}.install
-source=("https://pypi.python.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/s/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('66dd7c7a83b21e0138e28c38f27fe45c')
 
 build() {
