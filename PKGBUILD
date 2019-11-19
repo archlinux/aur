@@ -5,21 +5,21 @@
 #
 pkgname=openmpi-cuda
 _pkgname=openmpi
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="High Performance Message Passing Library (MPI) compiled with CUDA support enabled"
 arch=('x86_64')
 url="https://www.open-mpi.org/"
 license=('BSD')
 groups=()
-depends=('libsystemd' 'libnl' 'numactl' 'libpciaccess' 'cuda' 'hwloc')
-makedepends=('git' 'valgrind' 'gcc-fortran' 'hwloc')
+depends=('libsystemd' 'libnl' 'numactl' 'libpciaccess' 'cuda')
+makedepends=('git' 'valgrind' 'gcc-fortran')
 provides=("${pkgname%-cuda}")
 conflicts=("${pkgname%-cuda}")
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709')
+sha256sums=('900bf751be72eccf06de9d186f7b1c4b5c2fa9fa66458e53b77778dffdfe4057')
 
 
 build() {
@@ -35,7 +35,8 @@ build() {
                --enable-memchecker \
                --enable-pretty-print-stacktrace \
                --without-slurm \
-               --with-hwloc=/usr \
+               --with-hwloc=internal \
+               --with-libevent=internal \
                --with-cuda=/opt/cuda/include \
                --with-libltdl=/usr  \
                LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
@@ -43,11 +44,11 @@ build() {
    make -j8
 }
 
-check() {
-   cd $_pkgname-$pkgver
-
-   make check
-}
+#check() {
+#   cd $_pkgname-$pkgver
+#
+#   make check
+#}
 
 package() {
    cd $_pkgname-$pkgver
