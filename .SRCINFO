@@ -1,0 +1,27 @@
+pkgbase = rivet-git
+	pkgdesc = A particle physics package for data analysis and validation of Monte Carlo event generators -- latest build from git repo
+	pkgver = 3.0.1.r207.g2818879d1
+	pkgrel = 1
+	url = http://rivet.hepforge.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cython
+	depends = python
+	depends = yoda
+	depends = fastjet
+	depends = gsl
+	depends = hepmc
+	depends = fastjet-contrib
+	optdepends = texlive-core: Plotting functionality
+	optdepends = ghostscript: PDF plot output
+	optdepends = imagemagick: PNG plot output
+	optdepends = python2: For Python2 module in addition to Python3
+	provides = rivet
+	conflicts = rivet
+	replaces = rivet-hg
+	source = git+https://gitlab.com/hepcedar/rivet.git
+	md5sums = SKIP
+
+pkgname = rivet-git
+
