@@ -1,7 +1,7 @@
 pkgbase = madagascar
 	pkgdesc = Multidimensional data analysis and reproducible computational experiments.
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ahay.org/
 	arch = i686
 	arch = x86_64

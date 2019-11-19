@@ -1,7 +1,7 @@
 # Maintainer: Josh Hoffer 
 pkgname=madagascar
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url=http://ahay.org/
 license=('GPL2')
