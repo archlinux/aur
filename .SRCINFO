@@ -1,7 +1,7 @@
 pkgbase = pm2ml
 	pkgdesc = Generate metalinks for downloading Pacman packages and databases.
 	pkgver = 2017.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xyne.archlinux.ca/projects/pm2ml
 	arch = any
 	license = GPL
