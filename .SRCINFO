@@ -1,7 +1,7 @@
 pkgbase = python3-xcgf
 	pkgdesc = Xyne's common generic functions, for internal use.
 	pkgver = 2017.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xyne.archlinux.ca/projects/python3-xcgf
 	arch = any
 	license = GPL
