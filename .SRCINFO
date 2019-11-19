@@ -1,13 +1,13 @@
 pkgbase = intel-mkl-bin
 	pkgdesc = Intel Math Kernel Library - prebuilt binaries from Anaconda
-	pkgver = 2019.5
-	pkgrel = 1
+	pkgver = 2019.5.281
+	pkgrel = 0
 	url = https://software.intel.com/en-us/mkl
 	arch = x86_64
 	license = custom
 	provides = intel-mkl
 	conflicts = intel-mkl
-	source = http://repo.continuum.io/pkgs/main/linux-64/mkl-2019.5-281.tar.bz2
+	source = https://repo.anaconda.com/pkgs/main/linux-64/mkl-2019.5-281.tar.bz2
 	sha256sums = 040bed2cb07db1e74b46e2a47fbb31c4173932f05acabfe4433f20549b17cbfc
 
 pkgname = intel-mkl-bin
