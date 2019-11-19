@@ -8,6 +8,7 @@ index 389c34b3b..00cb6f038 100644
    gtk_widget_show (GTK_WIDGET (column));
 -  hdy_column_set_maximum_width (column, 860);
 +  hdy_column_set_maximum_width (column, gdk_screen_width ());
-   hdy_column_set_linear_growth_width (column, 560);
+-  hdy_column_set_linear_growth_width (column, 560);
++  hdy_column_set_linear_growth_width (column, gdk_screen_width ());
    gtk_container_add (GTK_CONTAINER (column), GTK_WIDGET (header_bar->title_widget));
    gtk_header_bar_set_custom_title (GTK_HEADER_BAR (header_bar), GTK_WIDGET (column));

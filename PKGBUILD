@@ -4,7 +4,7 @@
 
 pkgname=epiphany-pantheon
 pkgver=3.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://wiki.gnome.org/Apps/Web"
 arch=(x86_64)
@@ -38,7 +38,7 @@ source=("$pkgname::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=$_comm
 sha1sums=('SKIP'
           '2a8fda153bf3fb2d9a14b632082329ed6e2d8fab'
           '2c1c89aee5e1ea2ca47d518690b93238213e73fd'
-          '96c7a159f357077150e320bfe39ca4acd610d357'
+          '3d1ae633eb4815cb0956125bb1810ce82a3c79ab'
           '3ebd0aadbf3ba145ccf5b5c07b810cc21c28f5a9'
           '824c797de664a7d5a904b49d76636ab929f5e400'
           'ec44a91a1693c664e55ef42c21ae2d9e27c75148'
