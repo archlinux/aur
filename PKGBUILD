@@ -1,24 +1,25 @@
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Submitter: Ecmel Ercan <ecmel dot ercan at gmail dot com>
 # Contributor: Vain <aurmaint1 on host: uninformativ dot de>
-#
-# New Maintainer: BlindPenguin <ferdinand holzner at gmail dot com>
+# Contributor: BlindPenguin <ferdinand holzner at gmail dot com>
+# Thanks goes to yjftsjthsd for https://aur.archlinux.org/packages/cdesktopenv-git/ PKGBUILD.
 #
 pkgname=cdesktopenv
-pkgver=2.2.4
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="CDE - Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
-license=('LGPL2')
+license=('LGPL2.1')
 options=(!strip !zipman)
 install="cdesktopenv.install"
-depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama)
+depends=(openmotif xbitmaps rpcbind mksh ncurses libxss libxinerama)
 makedepends=(tcl ncompress bison)
 optdepends=('xorg-fonts-100dpi: additional fonts'
             'cups: for printing support'
             'xinetd: for rpc services')
 backup=('etc/dt/config/xfonts/C/fonts.alias')
-source=("http://downloads.sourceforge.net/$pkgname/cde-src-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/$pkgname/cde-$pkgver.tar.gz"
 	'cdesktopenv.install'
         'dtlogin.service'
         'fonts.alias'
@@ -26,7 +27,7 @@ source=("http://downloads.sourceforge.net/$pkgname/cde-src-$pkgver.tar.gz"
         'cde.desktop'
 	'startxsession.sh')
 
-md5sums=('dc175239cbcc6e4b8e51b00be97e271c'
+md5sums=('a8ddf95e1d5973e18c4874eb060655db'
          '66ff27b4c6b7c5fda4e2db69f829e4aa'
          '18f9ef4643ff7ed6637907f5cbdabecf'
          '5cc80c2851ea90b94e94b0c5d92d81fb'
@@ -37,8 +38,6 @@ md5sums=('dc175239cbcc6e4b8e51b00be97e271c'
 build() {
   cd "$srcdir/cde-$pkgver/"
 
-  sed -e '1i #define FILE_MAP_OPTIMIZE' -i programs/dtfile/Utils.c
-
   cat >> config/cf/site.def <<EOF
 #define KornShell /bin/mksh
 #define CppCmd cpp
@@ -48,9 +47,6 @@ build() {
 #define DtLocalesToBuild
 EOF
 
-#  mkdir -p imports/x11/include
-#  ln -sf /usr/include/X11 imports/x11/include/
-  
   (
      export LANG=C
      export LC_ALL=C
@@ -70,7 +66,7 @@ package() {
     export INSTALL_LOCATION="$pkgdir/usr/dt"
     export LOGFILES_LOCATION="$pkgdir/var/dt"
     export CONFIGURE_LOCATION="$pkgdir/etc/dt"
-    ./installCDE -s "$srcdir/cde-$pkgver"
+    ./installCDE -s "$srcdir/cde-$pkgver" -destdir "$pkgdir"
   )
 
   cd "$pkgdir/var/dt/"
@@ -92,6 +88,9 @@ package() {
   mkdir -p config/Xsession.d
   mkdir -p config/xfonts/C
   chmod -R 755 *
+
+  #Adding Calendar (see wiki -> https://sourceforge.net/p/cdesktopenv/wiki/LinuxBuild/#installing)
+  mkdir -p $pkgdir/var/spool/calendar
 
   chmod a+x $srcdir/startxsession.sh
   install -m644 "$srcdir"/fonts.{alias,dir} "$pkgdir/etc/dt/config/xfonts/C/"
