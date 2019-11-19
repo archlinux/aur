@@ -1,7 +1,7 @@
 patch -u -l -b -F 5 -N --suffix=.preplumed "./Makefile" << \EOF_EOF
 --- ./Makefile.preplumed
 +++ ./Makefile
-@@ -432,10 +432,14 @@
+@@ -427,10 +427,14 @@
  CXXFLAGS = $(CXXBASEFLAGS) $(CXXOPTS)
  CXXMICFLAGS = $(CXXBASEFLAGS) $(CXXOPTS) $(CXXMICOPTS)
  CXXTHREADFLAGS = $(CXXBASEFLAGS) $(CXXTHREADOPTS)
@@ -16,7 +16,7 @@ patch -u -l -b -F 5 -N --suffix=.preplumed "./Makefile" << \EOF_EOF
  CFLAGS = $(COPTI)$(SRCDIR) $(TCL) $(COPTS) $(RELEASE) $(EXTRADEFINES) $(TRACEOBJDEF)
  PLUGINGCCFLAGS = $(COPTI)$(PLUGINSRCDIR) $(COPTI)$(PLUGININCDIR) $(COPTD)STATIC_PLUGIN
  PLUGINCFLAGS = $(PLUGINGCCFLAGS) $(COPTS)
-@@ -479,10 +483,11 @@
+@@ -474,10 +478,11 @@
  	$(CUDALIB) \
  	$(DPMTALIB) \
  	$(DPMELIB) \
@@ -188,7 +188,7 @@ EOF_EOF
 patch -u -l -b -F 5 -N --suffix=.preplumed "./src/SimParameters.C" << \EOF_EOF
 --- ./src/SimParameters.C.preplumed
 +++ ./src/SimParameters.C
-@@ -1701,10 +1701,17 @@
+@@ -1719,10 +1719,17 @@
     opts.optionalB("main", "GBIS", "Use GB implicit solvent?",
        &GBISOn, FALSE);
     opts.optionalB("main", "GBISSer", "Use GB implicit solvent?",
@@ -206,7 +206,7 @@ patch -u -l -b -F 5 -N --suffix=.preplumed "./src/SimParameters.C" << \EOF_EOF
     opts.optional("GBIS", "intrinsicRadiusOffset",
        "Coulomb Radius Offset", &coulomb_radius_offset, 0.09);
     opts.optional("GBIS", "ionConcentration",
-@@ -5334,11 +5341,11 @@
+@@ -5369,11 +5376,11 @@
     
     // Global forces configuration
  
@@ -219,7 +219,7 @@ patch -u -l -b -F 5 -N --suffix=.preplumed "./src/SimParameters.C" << \EOF_EOF
     if (tclForcesOn)
     {
       iout << iINFO << "TCL GLOBAL FORCES ACTIVE\n";
-@@ -5419,10 +5426,25 @@
+@@ -5454,10 +5461,25 @@
       }
  
       iout << endi;
@@ -249,7 +249,7 @@ EOF_EOF
 patch -u -l -b -F 5 -N --suffix=.preplumed "./src/SimParameters.h" << \EOF_EOF
 --- ./src/SimParameters.h.preplumed
 +++ ./src/SimParameters.h
-@@ -545,10 +545,13 @@
+@@ -556,10 +556,13 @@
  	char tclBCArgs[128];		//  Extra args for calcforces command
  	Bool freeEnergyOn;		//  Doing free energy perturbation?
  	Bool miscForcesOn;		//  Using misc forces?

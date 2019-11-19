@@ -1,7 +1,7 @@
 pkgbase = plumed-patches
 	pkgdesc = Additional patches for PLUMED
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = http://www.plumed.org/
 	arch = any
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = plumed-patches
 	source = amber18.config
 	source = amber18.diff
 	md5sums = b86e6eb88be3f087299bbd8231e15539
-	md5sums = a91673a94308ebfc6116ae50bafb4bcb
+	md5sums = f74ede20053ddedb1f93498c125c2bd0
 	md5sums = 9e0da596883144b971bd625deb415060
 	md5sums = 7d4aeeb5d15a343abe93bcf4ec236ba1
 
