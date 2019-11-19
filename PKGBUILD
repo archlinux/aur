@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cpumanager-git
-pkgver=2.1
-pkgrel=1
+pkgver=2.2
+pkgrel=0
 #epoch=
 pkgdesc="CPU controler"
 arch=('any')
