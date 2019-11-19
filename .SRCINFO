@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-lts49-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.9 Kernel Modules)
 	pkgver = 1.1.8.421.g6bc14a626
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openss7.org
 	install = openss7-modules-lts49-git.install
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = openss7-modules-lts49-git
 	makedepends = gawk
 	makedepends = classpath
 	makedepends = popt
-	depends = linux-lts49=4.9.198-1
+	depends = linux-lts49=4.9.201-1
 	provides = openss7-modules-lts49=1.1.8.421.g6bc14a626
 	conflicts = openss7-modules-lts49
 	options = !emptydirs
