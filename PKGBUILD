@@ -3,7 +3,7 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.13
-pkgrel=3
+pkgrel=4
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
 depends=('lua' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
@@ -58,4 +58,4 @@ package() {
 md5sums=('2653159b975ac83890f70095200f0658'
          '694f0d5402655901be385647e5d8d6e3'
          'd4e289bce01302a8b76a0df294c7de40'
-         '5388ca8dcf85854338d32d04b4a2bcf7')
+         '19fd2cac2564125afa0149105d00d3dd')
