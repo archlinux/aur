@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=labplot-git
-pkgver=2.6.0.r8.g136b252d
+pkgver=2.7.0.r21.gdb85858bb
 pkgrel=1
 arch=('x86_64')
 pkgdesc="KDE Application for interactive graphing and analysis of scientific data, build from git"
@@ -12,7 +12,7 @@ depends=('cantor' 'netcdf' 'cfitsio' 'fftw' 'gsl' 'qt5-serialport' 'libcerf')
 makedepends=('extra-cmake-modules' 'kdelibs4support' 'kdesignerplugin' 'kdoctools' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=(git://anongit.kde.org/labplot)
+source=(git://anongit.kde.org/labplot.git)
 sha256sums=('SKIP')
 
 pkgver() {
