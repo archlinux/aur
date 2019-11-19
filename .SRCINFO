@@ -1,7 +1,7 @@
 pkgbase = python3-colorsysplus
 	pkgdesc = An extension of the standard colorsys module with support for CMYK, terminal colors, ANSI and more.
 	pkgver = 2018.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xyne.archlinux.ca/projects/python3-colorsysplus
 	arch = any
 	license = GPL
