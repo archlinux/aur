@@ -1,0 +1,13 @@
+pkgbase = cpumanager-git
+	pkgdesc = CPU controler
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/nbebaw/cpumanager-git
+	arch = any
+	license = GPL
+	depends = zenity
+	source = git+https://github.com/nbebaw/cpumanager-git.git
+	md5sums = SKIP
+
+pkgname = cpumanager-git
+
