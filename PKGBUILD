@@ -9,7 +9,7 @@ url="https://github.com/nwg-piotr/azote"
 license=('GPL3')
 conflicts=('azote')
 provides=('azote')
-depends=('python' 'python-setuptools' 'python-gobject' 'python-pillow' 'gtk3' 'feh' 'xorg-xrandr' 'python-pyaml')
+depends=('python' 'python-setuptools' 'python-gobject' 'python-pillow' 'gtk3' 'feh' 'xorg-xrandr')
 optdepends=('python-send2trash: trash support'
 			'grim: for screen color picker on Sway'
 			'slurp: for screen color picker on Sway'

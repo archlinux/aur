@@ -12,7 +12,6 @@ pkgbase = azote-git
 	depends = gtk3
 	depends = feh
 	depends = xorg-xrandr
-	depends = python-pyaml
 	optdepends = python-send2trash: trash support
 	optdepends = grim: for screen color picker on Sway
 	optdepends = slurp: for screen color picker on Sway
