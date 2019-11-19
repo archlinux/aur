@@ -1,20 +1,20 @@
 # Maintainer:  Hao Zhang <theivorytower [at] gmail [dot] com>
 
 pkgname=systemmodeler
-pkgver=4.1.0
+pkgver=12.0.0
 pkgrel=1
 pkgdesc="An easy-to-use, next-generation modeling and simulation environment for cyber-physical systems."
 arch=('i686' 'x86_64')
 url="https://www.wolfram.com/system-modeler/"
 license=('proprietary')
 source=("file://SystemModeler_${pkgver}_LINUX.sh")
-md5sums=('482cec00186d7ea40dd4ade3170bda70')
+md5sums=('2aedcf8e631c0b25854b515dccf2b3ad')
 install='systemmodeler.install'
 options=('!strip')
 
 PKGEXT=".pkg.tar"
 
-build() {
+prepare() {
     chmod +x ${srcdir}/SystemModeler_${pkgver}_LINUX.sh
 }
 
@@ -34,10 +34,10 @@ package() {
 
     cd ${pkgdir}/opt/SystemModeler/SystemFiles/Installation
 
-    sed -i 's/^[ \t]*//' wolfram-wsm4.desktop
-    sed -i "s@$pkgdir@@" wolfram-wsm4.desktop
+    sed -i 's/^[ \t]*//' wolfram-wsm12.desktop
+    sed -i "s@$pkgdir@@" wolfram-wsm12.desktop
     
-    cp wolfram-wsm4.desktop ${pkgdir}/usr/share/applications/
+    cp wolfram-wsm12.desktop ${pkgdir}/usr/share/applications/
     cp wolfram-wsm.directory ${pkgdir}/usr/share/desktop-directories/
     cp *.xml ${pkgdir}/usr/share/mime/packages/
 
