@@ -2,7 +2,7 @@
 Name=tsMuxeR
 Comment=tsMuxeR
 Exec=tsMuxerGUI
-Icon=/usr/share/icons/hicolor/32x32/apps/tsmuxer.png
+Icon=/usr/share/icons/hicolor/128x128/apps/tsmuxer.png
 Terminal=false
 Type=Application
 Categories=AudioVideo;

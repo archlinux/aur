@@ -1,28 +1,35 @@
-# Maintainer: zoe <chp321 at gmail dot com>
+# Contributor: zoe <chp321 [at] gmail (dot) com>
+# Maintainer: zoe <chp321 [at] gmail (dot) com>
 
 pkgname=tsmuxer
-pkgver=2.6.11
-pkgrel=8
+PkgName=tsMuxer
+pkgver=2.6.13
+pkgrel=1
 pkgdesc="Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS, without re-encoding. Can quickly generate your own Blu-ray discs by processing your media files and converting them into streamable content. CLI and GUI all-in-one"
-url="http://www.videohelp.com/software/tsMuxeR"
-arch=('i686' 'x86_64')
-license=('custom')
-depends=('bash' 'gcc-libs' 'freetype2' 'qt4' 'libpng12'
-         'lib32-gcc-libs' 'lib32-freetype2' 'lib32-qt4' 'lib32-libpng12'
-         )
-conflicts=('tsmuxer-cli' 'tsmuxer-cli-ng' 'tsmuxer-gui' 'tsmuxer-gui-ng' 'tsmuxer-ng-cli-bin' 'tsmuxer-ng-gui-bin')
-provides=('tsmuxer-cli' 'tsmuxer-cli-ng' 'tsmuxer-gui' 'tsmuxer-gui-ng' 'tsmuxer-ng-cli-bin' 'tsmuxer-ng-gui-bin')
-source=("https://www.deb-multimedia.org/pool/non-free/t/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
-         "${pkgname}.desktop" "${pkgname}.png" "LICENSE")
-md5sums=('21e86f83d76917a4160d9ae93b9ac765'
-         '6ce782be4b5f7ca0203ba4fb14d1c328'
-         '3e71328058f9dbeb5c580a5fb7c6850a'
-         'c042a4c5e9dd8393f62ee0e63affc485')
+arch=('x86_64')
+url="https://github.com/justdan96/${PkgName}"
+license=("Apache License 2.0")
+depends=('freetype2' 'zlib' 'qt5-multimedia' 'qt5-declarative')
+makedepends=('ninja')
+source=("${pkgname}.git::git+https://github.com/justdan96/${PkgName}.git"
+        "${pkgname}.desktop")
+md5sums=(SKIP 'f1419c462f5decb22bec6bae4077693c')
+
+build() {
+cd ${srcdir}/${pkgname}.git
+rm -rf build
+mkdir build
+cd build
+cmake ../ -G Ninja -DTSMUXER_GUI=ON
+ninja
+}
 
 package() {
-  cd $srcdir/${pkgname}-${pkgver}  
-  install -D -m755 -t $pkgdir/usr/bin/  ./tsMuxeR   ./tsMuxerGUI
-  install -D -m644 $srcdir/${pkgname}.png     $pkgdir/usr/share/icons/hicolor/32x32/apps/${pkgname}.png
-  install -D -m644 $srcdir/${pkgname}.desktop $pkgdir/usr/share/applications/${pkgname}.desktop
-  install -D -m644 $srcdir/LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+install -D -m644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+cd ${srcdir}/${pkgname}.git
+install -D -m755 -t ${pkgdir}/usr/bin/  ./build/${PkgName}/${pkgname}   ./build/${PkgName}GUI/${PkgName}GUI
+install -D -m644 ./${PkgName}GUI/images/icon.png     ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
+install -D -m644 ./LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+install -D -m644 ./README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+install -D -m644 ./CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
 }
