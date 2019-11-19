@@ -1,0 +1,20 @@
+pkgbase = python-pygls
+	pkgdesc = Pythonic generic implementation of the Language Server Protocol
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/openlawlibrary/pygls
+	arch = any
+	license = APACHE
+	checkdepends = python-mock
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-setuptools
+	depends = bandit
+	depends = flake8
+	source = https://files.pythonhosted.org/packages/source/p/pygls/pygls-0.8.1.tar.gz
+	sha256sums = 780fd0c5ae95ad02ecaf70b071e43ff8ced8384b7d6bed19311a7b431d26fb88
+
+pkgname = python-pygls
+
