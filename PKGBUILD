@@ -13,7 +13,7 @@ pkgdesc="A free and open source cross-platform web server package (LAMP Stack), 
 url="http://www.apachefriends.org/"
 license=('GPL')
 arch=('x86_64')
-depends=('net-tools')
+depends=('net-tools' 'mariadb')
 optdepends=('polkit: to run XAMPP Manager from menu')
 makedepends=('fakeuser-git' 'sdx')
 source=('lampp.service'
@@ -32,7 +32,7 @@ sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
             '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
             '35499d6ccf6f4429432b6a484ae21c6813a9d89ccb4b59463018f8b84477cb64'
-            'b3b8af5ffb807722d73809ab021c67a23108c4fe9cf8b64fa56e62cc81a1d879'
+            '567dcfe99dde385cd93da38ea2ffa9ae9b350d8b4019debc1fb22b3154df4206'
             '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
             '3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e')
 sha256sums_x86_64=('53710f3d8c5a0b4d145382243093fde927c28a6dc3cf8e3af5bbe2b1c03465ad'
@@ -74,11 +74,7 @@ package() {
 	cd "${srcdir}"
 
 	install -dm755 "${pkgdir}/opt/lampp"
-    
-	msg 'Creating a temporary mysql user/group with fakeadd...'
 
-	getent group mysql > /dev/null || fakeadd -G -n mysql -g "${_mysql_uuid}" || _fakeadd_error
-	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g "${_mysql_uuid}" -u "${_mysql_uuid}" -s /bin/false || _fakeadd_error
 
 	msg 'Extracting package...'
 
@@ -86,6 +82,9 @@ package() {
     
         ./bitrock-unpacker.tcl ${srcdir}/xampp-linux-x64-7.3.11-0-installer.run ${pkgdir}
 	msg 'Copying executables and launcher...'
+    chmod -R 777 ${pkgdir}/xampp_core_files/xampp_core_folder
+    chown -hR nobody ${pkgdir}/xampp_core_files/xampp_core_folder
+    chmod -R 755 ${pkgdir}/xampp_core_files/xampp_core_folder
 	rsync -avz --remove-source-files "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
@@ -102,7 +101,9 @@ package() {
 	# Change root location for all files
 	find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI' {} \;
 	find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
-
+	#For mysql
+	find ${pkgdir}/opt/lampp/mysql/scripts -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' {} \;
+	#find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI' {} \;
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
 	rsync -avz "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
@@ -126,15 +127,20 @@ package() {
 
 	# Install policy file for desktop launcher
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
-    
+        
+	msg 'Creating a temporary mysql user/group with fakeadd...'
+
+	getent group mysql > /dev/null || fakeadd -G -n mysql -g "${_mysql_uuid}" || _fakeadd_error
+	getent passwd mysql > /dev/null || fakeadd -U -n mysql -g "${_mysql_uuid}" -u "${_mysql_uuid}" -s /bin/false || _fakeadd_error
+
 	# Remove unused folder
-	#rm -rf "${pkgdir}/xampp_core_files/"
-	#rm -rf "${pkgdir}/xampp_developer_files/"
-	#rm -rf "${pkgdir}/native_mysql_adapter/"
-	#rm -rf "${pkgdir}/native_apache_adapter/"
-	#rm -rf "${pkgdir}/native_proftpd_adapter/"
-	#rm -rf "${pkgdir}/manager/"
-	#rm -rf "${pkgdir}/common_native_adapter/"
+	rm -rf "${pkgdir}/xampp_core_files/"
+	rm -rf "${pkgdir}/xampp_developer_files/"
+	rm -rf "${pkgdir}/native_mysql_adapter/"
+	rm -rf "${pkgdir}/native_apache_adapter/"
+	rm -rf "${pkgdir}/native_proftpd_adapter/"
+	rm -rf "${pkgdir}/manager/"
+	rm -rf "${pkgdir}/common_native_adapter/"
 
 	
 }
