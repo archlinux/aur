@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=cargo-watch
-pkgver=7.2.2
+pkgver=7.3.0
 pkgrel=1
 pkgdesc="Utility for Cargo to compile projects when sources change"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/passcod/cargo-watch"
 license=('CC0-1.0')
 depends=('cargo')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('2b7122b8c49c0d22e648097938f0f085ec7998f925e71287ac9052ca516437d8d2c717a65b3f6d5937d4fda3f300b6f13bfdbc237d1a2a689b34b67b7a953537')
+sha512sums=('c9a281e9b713a5dfc6a075a71ad2d8823b6eb8cd40d2f6e57c9a7849a906e2e641540826a972e991194e58c04050216f97ef305673c653ab00edf6444950b165')
 
 build() {
   cd "$pkgname-$pkgver"
