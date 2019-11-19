@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 78.0.3904.97
+	pkgver = 78.0.3904.108
 	pkgrel = 2
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -51,9 +51,9 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
-	provides = chromium=78.0.3904.97
+	provides = chromium=78.0.3904.108
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-78.0.3904.97.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-78.0.3904.108.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = add-missing-include-for-unique_ptr.patch
 	source = dns_util-make-DohUpgradeEntry-non-const.patch
@@ -64,7 +64,7 @@ pkgbase = chromium-no-extras
 	source = fix-spammy-unique-font-matching-log.patch
 	source = chromium-widevine.patch
 	source = chromium-skia-harmony.patch
-	sha256sums = d1f49ab9f4f973536166f587114553c21a29977bdc350dd407a89d34e22a9d07
+	sha256sums = f9c53839f306d2973de27723360024f7904101d426b9e7e9cdb56e8bcc775b0e
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = 49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e
 	sha256sums = 69694ab12a5ced389916c0c5e8c7bdc191544f576b134ddfb2fe9d4ed9ec4494
