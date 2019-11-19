@@ -7,8 +7,8 @@
 _gopkgname='github.com/caddyserver/caddy'
 
 pkgname=caddy
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://caddyserver.com'
@@ -23,7 +23,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         'caddy.tmpfiles'
         'caddy.conf'
         'plugins.go')
-sha256sums=('c1c7b337a5008d28c1956fd4f057104a78d0e24b74c30867cea988369b61fed3'
+sha256sums=('bf81245d2b347c89a8e8aa358a224b722d55cb6e1c266bbdffbe6acc54d130a5'
             'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
             '6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
             '5f899f3d72bd815ba67a2fbd95144f7ff5d83ae47d1c4bee8297ce4e5d2ed400'
@@ -132,6 +132,7 @@ plugins=(
 #    'tls.dns.linode'
 #    'tls.dns.namecheap'
 #    'tls.dns.namedotcom'
+#    'tls.dns.namesilo'
 #    'tls.dns.ns1'
 #    'tls.dns.otc'
 #    'tls.dns.ovh'
