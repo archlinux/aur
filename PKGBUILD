@@ -2,7 +2,7 @@
 _pkgbasename=i3-resurrect
 pkgname=$_pkgbasename
 pkgrel=1
-pkgver=1.4.0
+pkgver=1.4.1
 pkgdesc='A simple but flexible solution to saving and restoring i3 workspace layouts'
 arch=('any')
 url='http://github.com/JonnyHaystack/i3-resurrect'
@@ -14,7 +14,7 @@ optdepends=('i3-wm')
 provides=('i3-resurrect')
 conflicts=('i3-resurrect-git')
 source=("https://github.com/JonnyHaystack/i3-resurrect/archive/$pkgver.tar.gz")
-md5sums=('7ced5fa51315aaaf0c9fc98899ec86b3')
+md5sums=('53bcc2fbb44798b3298c2bbc589f06c3')
 
 build() {
     cd "$srcdir/$_pkgbasename-$pkgver"
