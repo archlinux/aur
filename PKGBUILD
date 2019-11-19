@@ -1,34 +1,45 @@
-# Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
-# Contributor: Øyvind 'Mr.Elendig' Heggstad <mrelendig at har-ikkje dot net>
-# Original contributor: Travis Fickett <tfickett AT ufl DOT edu>
-# Original Maintainer: Anders Lund <anders at alweb dot dk>
+# ---------------------------------------------------------------
+# Maintainer: Romain Bazile <gromain dot baz at gmail dot com>
+# ---------------------------------------------------------------
 
 pkgname=opencpn-git
-pkgver=20160211.eab78f4
+pkgver=5.0.0.r214.g83a3c4b5f
 pkgrel=1
-pkgdesc="Open Source Chart Plotting and Marine Navigation"
-arch=('i686' 'x86_64')
+pkgdesc="Open Source Chart Plotting / Marine Navigation - Git version"
+arch=('x86_64')
 license=("GPL2")
-depends=('wxgtk' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme')
-makedepends=('cmake' 'clang' 'git')
-conflicts=("opencpn")
+depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk')
+makedepends=('cmake' 'git')
+conflicts=('opencpn')
+provides=('opencpn')
+
 url="http://opencpn.org"
 install=opencpn.install
-source=("git://github.com/OpenCPN/OpenCPN.git")
+source=("$pkgname::git+https://github.com/OpenCPN/OpenCPN.git")
 sha1sums=('SKIP')
 
+
 pkgver() {
-	cd "OpenCPN"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+  cd $pkgname
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
 }
 
 build() {
-  cd "OpenCPN"
-  CC=clang CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cd $pkgname
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUNDLE_GSHHS=CRUDE -DBUNDLE_TCDATA=ON -DBUNDLE_DOCS=ON \
+        -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+        -DOCPN_FORCE_GTK3=ON ../
   make
 }
 
 package() {
-  cd "OpenCPN"
+  cd $pkgname/build
   make DESTDIR="$pkgdir" install
 }
