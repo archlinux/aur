@@ -1,0 +1,36 @@
+pkgbase = sycl-info-git
+	pkgver = r3.416b7db
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/codeplaysoftware/sycl-info
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	groups = sycl
+	license = Apache-2.0
+	checkdepends = doctest
+	makedepends = ocl-icd
+	makedepends = opencl-headers
+	makedepends = nlohmann-json
+	makedepends = ruby-ronn
+	makedepends = cmake
+	makedepends = ninja
+	source = sycl-info::git+https://github.com/codeplaysoftware/sycl-info.git#branch=master
+	source = https://github.com/bfgroup/Lyra/archive/1.1.tar.gz
+	sha256sums = SKIP
+	sha256sums = c2d70a926f698fb7decb99c7215bb55ab770100f9574c290998bf91416bd8217
+
+pkgname = sycl-info-git
+	pkgdesc = Prints metadata about available SYCL implementations
+	depends = target-selector
+	optdepends = computecpp
+	optdepends = trisycl-git
+	optdepends = hipsycl-git
+
+pkgname = target-selector-git
+	pkgdesc = SYCL target selector
+	depends = ocl-icd
+
