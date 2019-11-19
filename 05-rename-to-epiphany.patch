@@ -1,7 +1,7 @@
-diff --git a/data/org.gnome.Epiphany.desktop.in b/data/org.gnome.Epiphany.desktop.in
+diff --git a/data/org.gnome.Epiphany.desktop.in.in b/data/org.gnome.Epiphany.desktop.in.in
 index c02164e1e..4c2e2fea0 100644
---- a/data/org.gnome.Epiphany.desktop.in
-+++ b/data/org.gnome.Epiphany.desktop.in
+--- a/data/org.gnome.Epiphany.desktop.in.in
++++ b/data/org.gnome.Epiphany.desktop.in.in
 @@ -1,5 +1,5 @@
  [Desktop Entry]
 -Name=Web

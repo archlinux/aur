@@ -5,7 +5,7 @@ index dee8f1b4b..3947ff681 100644
 @@ -234,6 +234,20 @@ button_press_cb (EphyNotebook   *notebook,
      gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook), tab_clicked);
    }
-
+ 
 +	/* Open a new tab when double-clicked. */
 +	if (event->type == GDK_2BUTTON_PRESS &&
 +	    event->button == 1 &&
@@ -22,4 +22,4 @@ index dee8f1b4b..3947ff681 100644
 +
    return GDK_EVENT_PROPAGATE;
  }
-
+ 

@@ -2,16 +2,16 @@ diff --git a/src/resources/gtk/prefs-dialog.ui b/src/resources/gtk/prefs-dialog.
 index e2584996a..943af2552 100644
 --- a/src/resources/gtk/prefs-dialog.ui
 +++ b/src/resources/gtk/prefs-dialog.ui
-@@ -305,7 +305,7 @@
-             </child>
-             <child>
-               <object class="GtkBox">
+@@ -393,7 +393,7 @@
+               <object class="HdyPreferencesPage">
+                 <property name="icon_name">document-edit-symbolic</property>
+                 <property name="title" translatable="yes">Fonts &amp; Style</property>
 -                <property name="visible">True</property>
-+                <property name="visible">false</property>
-                 <property name="border-width">12</property>
-                 <property name="orientation">vertical</property>
-                 <property name="spacing">18</property>
-@@ -459,16 +459,7 @@
++                <property name="visible">False</property>
+                 <style>
+                   <class name="background"/>
+                 </style>
+@@ -557,16 +557,6 @@
                  <property name="position">1</property>
                </packing>
              </child>
@@ -25,7 +25,6 @@ index e2584996a..943af2552 100644
 -                <property name="tab_fill">False</property>
 -              </packing>
 -            </child>
-+
              <child>
-               <object class="GtkBox">
-                 <property name="visible">True</property>
+               <object class="HdyPreferencesPage">
+                 <property name="icon_name">drive-harddisk-symbolic</property>

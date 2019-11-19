@@ -1,0 +1,103 @@
+diff --git a/src/resources/gtk/tab-label.ui b/src/resources/gtk/tab-label.ui
+index bddbaef23..6bb8e6086 100644
+--- a/src/resources/gtk/tab-label.ui
++++ b/src/resources/gtk/tab-label.ui
+@@ -12,71 +12,71 @@
+     <property name="spacing">6</property>
+     <signal name="style-updated" handler="style_updated_cb" swapped="no"/>
+     <child>
+-      <object class="GtkImage" id="icon">
++      <object class="GtkButton" id="close_button">
+         <property name="visible">True</property>
+         <property name="can_focus">False</property>
++        <property name="focus_on_click">False</property>
++        <property name="receives_default">False</property>
++        <property name="tooltip_text" translatable="yes">Close Document</property>
++        <property name="image">close_button_image</property>
++        <property name="relief">none</property>
++        <signal name="clicked" handler="close_button_clicked_cb" object="EphyTabLabel" swapped="no"/>
++        <style>
++          <class name="small-button"/>
++          <class name="flat"/>
++        </style>
+       </object>
+       <packing>
+         <property name="expand">False</property>
+         <property name="fill">True</property>
+-        <property name="position">0</property>
++        <property name="pack_type">end</property>
++        <property name="position">3</property>
+       </packing>
+     </child>
+-    <child>
+-      <object class="GtkSpinner" id="spinner">
++    <child type="center">
++      <object class="GtkLabel" id="label">
++        <property name="visible">True</property>
+         <property name="can_focus">False</property>
++        <property name="ellipsize">end</property>
+       </object>
+       <packing>
+         <property name="expand">False</property>
+         <property name="fill">True</property>
+-        <property name="position">1</property>
++        <property name="position">0</property>
+       </packing>
+     </child>
+-    <child type="center">
+-      <object class="GtkLabel" id="label">
++    <child>
++      <object class="GtkImage" id="audio_button">
+         <property name="visible">True</property>
+         <property name="can_focus">False</property>
+-        <property name="ellipsize">end</property>
++        <property name="icon_name">audio-volume-high-symbolic</property>
+       </object>
+       <packing>
+         <property name="expand">False</property>
+         <property name="fill">True</property>
+-        <property name="position">0</property>
++        <property name="pack_type">end</property>
++        <property name="position">5</property>
+       </packing>
+     </child>
+     <child>
+-      <object class="GtkButton" id="close_button">
+-        <property name="visible">True</property>
++      <object class="GtkSpinner" id="spinner">
+         <property name="can_focus">False</property>
+-        <property name="focus_on_click">False</property>
+-        <property name="receives_default">False</property>
+-        <property name="tooltip_text" translatable="yes">Close Document</property>
+-        <property name="image">close_button_image</property>
+-        <property name="relief">none</property>
+-        <signal name="clicked" handler="close_button_clicked_cb" object="EphyTabLabel" swapped="no"/>
+-        <style>
+-          <class name="small-button"/>
+-          <class name="flat"/>
+-        </style>
+       </object>
+       <packing>
+         <property name="expand">False</property>
+         <property name="fill">True</property>
+-        <property name="pack_type">end</property>
+-        <property name="position">3</property>
++        <property name="position">1</property>
+       </packing>
+     </child>
+     <child>
+-      <object class="GtkImage" id="audio_button">
++      <object class="GtkImage" id="icon">
+         <property name="visible">True</property>
+         <property name="can_focus">False</property>
+-        <property name="icon_name">audio-volume-high-symbolic</property>
+       </object>
+       <packing>
+         <property name="expand">False</property>
+         <property name="fill">True</property>
+-        <property name="pack_type">end</property>
+-        <property name="position">5</property>
++        <property name="position">0</property>
+       </packing>
+     </child>
+   </template>

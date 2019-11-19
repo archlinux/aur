@@ -1,0 +1,13 @@
+diff --git a/src/ephy-window.c b/src/ephy-window.c
+index 3d90f2610..279c9c358 100644
+--- a/src/ephy-window.c
++++ b/src/ephy-window.c
+@@ -3722,7 +3722,7 @@
+ 
+   /* Setup incognito mode style */
+   if (mode == EPHY_EMBED_SHELL_MODE_INCOGNITO)
+-    gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (window)), "incognito-mode");
++    gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (window)), "incognito");
+   else if (mode == EPHY_EMBED_SHELL_MODE_AUTOMATION)
+     gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (window)), "automation-mode");
+ 
