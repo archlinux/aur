@@ -1,6 +1,6 @@
 # Maintainer: Roberto Hueso < robertohueso96 at gmail dot com >
 pkgname=ensmallen
-pkgver=2.10.3
+pkgver=2.10.4
 pkgrel=1
 pkgdesc='Flexible C++ library for efficient mathematical optimization'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   'cmake>=2.8.10'
 )
 source=("https://ensmallen.org/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2be4da4256723510c624c55d11b9f2a582ab405e4976be3fbe1eea114baf1026')
+sha256sums=('82aca3724331b26156fd9bad118992093a08e3ef6881b996e976d090fb390bc7')
 options=(!emptydirs)
 
 prepare() {
@@ -32,6 +32,7 @@ build() {
 
   cmake \
       -D CMAKE_INSTALL_PREFIX="/usr" \
+      -D BUILD_TESTS=OFF \
       -D USE_OPENMP=ON \
       ..
   make
