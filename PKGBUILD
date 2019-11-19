@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cpumanagergui
 pkgver=0.2
-pkgrel=0
+pkgrel=1
 pkgdesc="CPU controler with a gui"
 arch=('any')
 url="https://github.com/nbebaw/cpumanagergui"
