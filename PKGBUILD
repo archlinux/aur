@@ -7,7 +7,7 @@
 pkgname=firefox-beta
 _pkgname=firefox
 name=firefox-beta
-pkgver=71.0b10
+pkgver=71.0b11
 _pkgver=71.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
@@ -31,7 +31,7 @@ source=("http://ftp.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$p
 		"$_pkgname.sh"
         "$pkgname.desktop"
         "$_pkgname-symbolic.svg")
-sha256sums=('db87d0fa737d3edcb6f6e9e448388888c1f58d8b25436b47dccaf70a54b91244'
+sha256sums=('d370344d6bcad69ae242f4364d32221948ee97f8a9f794eb0f6b2151db8af85c'
             '367100e5f66523a90c3792e2e0d0e2fe8a3c28748b905ce9f5f6b121343d7842'
             'd6b4c91a7fe77f9a335b44b943e120ce44511e46bbb16ae305cc82b4c3db66cd'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
