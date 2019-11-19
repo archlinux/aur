@@ -7,15 +7,18 @@ pkgdesc="Half-Life SDK from original Xash3D engine"
 arch=('i686' 'x86_64')
 url="http://xash.su/"
 license=('GPL3')
-makedepends=('make' 'binutils' 'cmake' 'gcc')
+makedepends=('make' 'binutils' 'cmake')
+makedepends_i686=('gcc' 'gcc-libs')
+makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 source=("$pkgname::git+https://github.com/FWGS/hlsdk-xash3d")
 
-_args="--libdir=/usr/lib \
---enable-goldsrc-support \
+_args="--enable-goldsrc-support \
 --build-type=release"
 
 if [ $CARCH == "x86_64" ]; then
-    _args+=" -8"
+    _args+=" --libdir=/usr/lib32"
+else
+    _args+=" --libdir=/usr/lib"
 fi
 
 pkgver() {

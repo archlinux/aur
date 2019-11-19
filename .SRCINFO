@@ -9,9 +9,12 @@ pkgbase = xash3d-hlsdk
 	makedepends = make
 	makedepends = binutils
 	makedepends = cmake
-	makedepends = gcc
 	source = xash3d-hlsdk::git+https://github.com/FWGS/hlsdk-xash3d
 	md5sums = SKIP
+	makedepends_i686 = gcc
+	makedepends_i686 = gcc-libs
+	makedepends_x86_64 = gcc-multilib
+	makedepends_x86_64 = lib32-gcc-libs
 
 pkgname = xash3d-hlsdk
 
