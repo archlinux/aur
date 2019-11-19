@@ -1,6 +1,6 @@
 pkgbase = ondir-git
 	pkgdesc = a small program to automate tasks specific to certain directories
-	pkgver = r13.55279f0
+	pkgver = r14.017b4c6
 	pkgrel = 1
 	url = https://github.com/alecthomas/ondir
 	arch = i686
