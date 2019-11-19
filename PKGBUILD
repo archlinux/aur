@@ -20,22 +20,6 @@ sha256sums=('SKIP'
             '94449db0bbd30aca993dbc6486fbec615e2cada7cd3d91e6b99d6a426a5d7ace'
             '402c5a022615f47d26db47f375f242638d04abbed3bfd22f86067f8f19031f83')
 
-prepare() {
-  export GOPATH="$srcdir"
-  export GOOS=linux
-  case "$CARCH" in
-      x86_64) export GOARCH=amd64 ;;
-      i686)   export GOARCH=386 GO386=387 ;;
-  esac
-
-  # sets up a fresh temporary go path and symlinks the source repo to appear under
-  #   the proper directory structure to avoid dependency manager weirdness
-  # see https://wiki.archlinux.org/index.php/Go_package_guidelines#Old_Go_projects_(for_Go_%3C1.11)
-  mkdir -p "$srcdir"/src/github.com/dgraph-io
-  ln -rTsf "$srcdir/$pkgname" "$srcdir"/src/github.com/dgraph-io/dgraph
-  go get -v -d github.com/dgraph-io/dgraph/dgraph
-}
-
 pkgver() {
   cd "$srcdir/$pkgname"
   # cuts off 'v' prefix and uses most recent un-annotated tag reachable from the
@@ -58,12 +42,11 @@ build() {
   # '-X' options mark the binary so that it reports proper version information
   # '-extldflags' passes options to the external linking tool to enable RELRO, without
   #   overwriting default linker flags
-  cd "$srcdir"/src/github.com/dgraph-io/dgraph/dgraph
-  go build -v \
+  cd "$srcdir/$pkgname"/dgraph
+    go build -v \
     -o dgraph \
     -buildmode=pie \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
+    -trimpath \
     -ldflags "-X 'github.com/dgraph-io/dgraph/x.dgraphVersion=$(git rev-parse --short HEAD)' \
               -X 'github.com/dgraph-io/dgraph/x.gitBranch=$(git rev-parse --abbrev-ref HEAD)' \
               -X 'github.com/dgraph-io/dgraph/x.lastCommitSHA=$(git log -1 --format=%ci)' \
@@ -74,8 +57,8 @@ build() {
 }
 
 package() {
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/dgraph/ "$srcdir"/src/github.com/dgraph-io/dgraph/{LICENSE*,licenses/*}
-  install -Dm755 "$srcdir"/src/github.com/dgraph-io/dgraph/dgraph/dgraph "$pkgdir"/usr/bin/dgraph
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname"/{LICENSE*,licenses/*}
+  install -Dm755 "$srcdir/$pkgname/dgraph/dgraph" "$pkgdir/usr/bin/dgraph"
   install -Dm644 dgraph.service "$pkgdir/usr/lib/systemd/system/dgraph.service"
   install -Dm644 dgraph-zero.service "$pkgdir/usr/lib/systemd/system/dgraph-zero.service"
 }
