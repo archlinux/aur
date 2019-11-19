@@ -3,7 +3,7 @@
 pkgname=pycharm-edu
 pkgver=2019.2.2
 _pkgver=2019.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Easy & Professional Tool to Learn Programming with Python"
 arch=('x86_64')
 url="https://www.jetbrains.com/pycharm-edu/"
@@ -22,8 +22,8 @@ build() {
   cd pycharm-edu-$_pkgver
 
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
-  python3 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
+  #python2 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
+  #python3 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   
   rm -rf bin/fsnotifier{,-arm} lib/libpty/linux/x86
 }

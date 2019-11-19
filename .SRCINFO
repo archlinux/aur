@@ -1,7 +1,7 @@
 pkgbase = pycharm-edu
 	pkgdesc = Free, Easy & Professional Tool to Learn Programming with Python
 	pkgver = 2019.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/pycharm-edu/
 	arch = x86_64
 	license = Apache
