@@ -6,8 +6,8 @@
 
 pkgbase=lib32-bluez-libs
 pkgname=("${pkgbase}" 'lib32-bluez-plugins')
-pkgver=5.50
-pkgrel=2
+pkgver=5.52
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('LGPL2.1')
@@ -15,7 +15,7 @@ makedepends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-glib2' 'lib32-systemd')
 source=("https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar."{xz,sign}
         "refresh_adv_manager_for_non-LE_devices.diff")
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha512sums=('64a680e4b3c270bc2439610c91ad2aef36131d84401e4bbdf6c2b7ec8708a19dfc942b31b9189c38a97ca072c761c669ae1aace5f4ff5d06de3ccbf33184be45'
+sha512sums=('9024481910d1dee85578bf3d7a4fc4be2bece516e6216c91aa1a7ac18537f092b47c41c4a5506ddd7e279599d58002e98203c5439745c01df4dbc22a75234c84'
             'SKIP'
             'c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
