@@ -7,8 +7,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=psmisc-selinux
-pkgver=23.2
-pkgrel=1
+pkgver=23.3
+pkgrel=2
 pkgdesc='Miscellaneous procfs tools with SELinux support'
 arch=('x86_64')
 url='http://psmisc.sourceforge.net/'
@@ -19,7 +19,7 @@ conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=("https://downloads.sourceforge.net/psmisc/${pkgname/-selinux}-${pkgver}.tar.xz")
-sha256sums=('4b7cbffdc9373474da49b85dc3457ae511c43dc7fa7d94513fe06f89dcb87880')
+sha256sums=('41750e1a5abf7ed2647b094f58127c73dbce6876f77ba4e0a7e0995ae5c7279a')
 
 build() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
