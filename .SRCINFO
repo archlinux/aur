@@ -1,0 +1,17 @@
+pkgbase = fcitx5-icons
+	pkgdesc = Icons from fcitx4 for fcitx5
+	pkgver = 4.2.9.7
+	pkgrel = 1
+	url = https://fcitx-im.org
+	arch = any
+	license = GPL
+	license = LGPL
+	depends = fcitx5
+	source = https://download.fcitx-im.org/fcitx/fcitx-4.2.9.7_dict.tar.xz
+	source = https://download.fcitx-im.org/fcitx/fcitx-4.2.9.7_dict.tar.xz.sig
+	validpgpkeys = 2CC8A0609AD2A479C65B6D5C8E8B898CBF2412F9
+	sha512sums = b940478c648e30b2ea55903465ed02c8a0c3ae3539e4bd5b77be46a9e4d0c13ceff074ddd7532f86893111eb96308e1740db621a83fb809e4fd02256d75ebe7b
+	sha512sums = SKIP
+
+pkgname = fcitx5-icons
+
