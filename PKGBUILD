@@ -14,10 +14,7 @@ source=("$pkgname::git+https://github.com/FWGS/hlsdk-xash3d")
 
 _args="--enable-goldsrc-support \
 --build-type=release \
---enable-voicemgr \
---enable-lto \
---enable-poly-opt \
---strip"
+--enable-voicemgr"
 
 if [ $CARCH == "x86_64" ]; then
     _args+=" --libdir=/usr/lib32"
