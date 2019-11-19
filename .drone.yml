@@ -57,7 +57,7 @@ steps:
     port: 22
     rm: true
     strip_components: 2
-    target: /srv/ftp/ingress/mbp
+    target: /srv/storage/ingress/mbp
     source:
       - /tmp/products/*
   when:
