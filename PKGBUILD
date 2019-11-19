@@ -1,17 +1,16 @@
-# Maintainer: Vinicius Correa <vinicius dot correa at zoho dot com>
+# Maintainer: Vinicius Correa <vinicius.correa at zoho dot com>
 _pkgname=stoqdrivers
 pkgname=python-stoqdrivers
-pkgver=1.4.2
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Python fiscal printer (ECF) drivers"
 arch=('any')
-url="https://github.com/stoq/${_pkgname}"
+url="https://www.stoq.com.br"
 license=('LGPL')
-depends=('python' 'python-stoq-kiwi' 'python-pyserial' 'python-pyusb' 'python-zope-interface' 'python-qrcode')
-makedepends=('git')
+depends=('python' 'python-pyserial' 'python-pyusb' 'python-zope-interface' 'python-qrcode')
 conflicts=('stoqdrivers')
-source=("https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/${_pkgname}/${pkgver}-1bionic/${_pkgname}_${pkgver}-1bionic.tar.gz")
-md5sums=('9b960a933af33c878b29c4b7946b7f89')
+source=("https://pypi.python.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('e3002937558bfd0c81660a2e11ef6545')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

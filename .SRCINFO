@@ -1,20 +1,18 @@
 pkgbase = python-stoqdrivers
 	pkgdesc = Python fiscal printer (ECF) drivers
-	pkgver = 1.4.2
+	pkgver = 1.6.2
 	pkgrel = 1
-	url = https://github.com/stoq/stoqdrivers
+	url = https://www.stoq.com.br
 	arch = any
 	license = LGPL
-	makedepends = git
 	depends = python
-	depends = python-stoq-kiwi
 	depends = python-pyserial
 	depends = python-pyusb
 	depends = python-zope-interface
 	depends = python-qrcode
 	conflicts = stoqdrivers
-	source = https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/stoqdrivers/1.4.2-1bionic/stoqdrivers_1.4.2-1bionic.tar.gz
-	md5sums = 9b960a933af33c878b29c4b7946b7f89
+	source = https://pypi.python.org/packages/source/s/stoqdrivers/stoqdrivers-1.6.2.tar.gz
+	md5sums = e3002937558bfd0c81660a2e11ef6545
 
 pkgname = python-stoqdrivers
 
