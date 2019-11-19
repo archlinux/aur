@@ -3,26 +3,31 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-weatherrouting
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.13.1.r464.gc36d748
+pkgrel=1
 pkgdesc="Weather routing plugin for OpenCPN"
 arch=('x86_64')
 license=("GPL3")
 depends=('opencpn')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/weatherroute.html"
-source=("https://github.com/seandepagnier/weather_routing_pi/archive/v${pkgver}.tar.gz")
-sha1sums=('be3c5d7ee096aa19767cd0c7cf851186785ac387')
+source=("$pkgname::git+https://github.com/seandepagnier/weather_routing_pi.git")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "weather_routing_pi-${pkgver}"
+  cd $pkgname
   mkdir -p build
   cd build
-  cmake -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   make
 }
 
 package() {
-  cd "weather_routing_pi-${pkgver}/build"
+  cd "$pkgname/build"
   DESTDIR="$pkgdir" make install
 }

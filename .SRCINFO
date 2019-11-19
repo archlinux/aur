@@ -1,14 +1,15 @@
 pkgbase = opencpn-plugin-weatherrouting
 	pkgdesc = Weather routing plugin for OpenCPN
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgver = 1.13.1.r464.gc36d748
+	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/weatherroute.html
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = opencpn
-	source = https://github.com/seandepagnier/weather_routing_pi/archive/v1.10.1.tar.gz
-	sha1sums = be3c5d7ee096aa19767cd0c7cf851186785ac387
+	source = opencpn-plugin-weatherrouting::git+https://github.com/seandepagnier/weather_routing_pi.git
+	sha1sums = SKIP
 
 pkgname = opencpn-plugin-weatherrouting
 
