@@ -1,0 +1,19 @@
+pkgbase = python-tableone
+	pkgdesc = Create "Table 1" for research papers in Python
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://github.com/tompollard/tableone
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tabulate
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-statsmodels
+	source = https://files.pythonhosted.org/packages/source/t/tableone/tableone-0.6.5.tar.gz
+	sha256sums = 4eea67880e5ba9ad7eaa3985e4a14ab6acd7c9e9385a5fb83357403cbae9f9fa
+
+pkgname = python-tableone
+
