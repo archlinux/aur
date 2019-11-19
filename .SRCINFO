@@ -1,0 +1,21 @@
+pkgbase = qtcreator-sourcetrail-plugin-git
+	pkgdesc = Qt Creator Plugin for communication with Sourcetrail
+	pkgver = r80.746c203
+	pkgrel = 2
+	url = https://github.com/CoatiSoftware/qtc-sourcetrail
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = MIT
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	depends = sourcetrail
+	provides = qtcreator-sourcetrail-plugin
+	conflicts = qtcreator-sourcetrail-plugin
+	source = qtcreator-sourcetrail-plugin-git::git+https://github.com/CoatiSoftware/qtc-sourcetrail.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-sourcetrail-plugin-git
+
