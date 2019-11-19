@@ -25,10 +25,11 @@ pkgbase = sycl-info-git
 
 pkgname = sycl-info-git
 	pkgdesc = Prints metadata about available SYCL implementations
-	depends = target-selector
+	depends = target-selector-git
 	optdepends = computecpp
 	optdepends = trisycl-git
-	optdepends = hipsycl-git
+	optdepends = hipsycl-cuda-git
+	optdepends = hipsycl-rocm-git
 
 pkgname = target-selector-git
 	pkgdesc = SYCL target selector

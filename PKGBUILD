@@ -53,8 +53,8 @@ check() {
 
 package_sycl-info-git() {
     pkgdesc="Prints metadata about available SYCL implementations"
-    depends=('target-selector')
-    optdepends=('computecpp' 'trisycl-git' 'hipsycl-git')
+    depends=('target-selector-git')
+    optdepends=('computecpp' 'trisycl-git' 'hipsycl-cuda-git' 'hipsycl-rocm-git')
 
     install -Dm 0644 "$srcdir/sycl-info/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
     DESTDIR="$pkgdir/" cmake --install build --component sycl-info-base
@@ -69,4 +69,3 @@ package_target-selector-git() {
     DESTDIR="$pkgdir/" cmake --install build --component target-selector-base
     DESTDIR="$pkgdir/" cmake --install build --component target-selector-devel
 }
-
