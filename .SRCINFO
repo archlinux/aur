@@ -1,12 +1,12 @@
 pkgbase = rgain
 	pkgdesc = Modules to read, write and calculate Replay Gain
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/fk/rgain
 	arch = any
 	license = GPL
 	makedepends = python2-docutils
-	depends = mutagen
+	depends = python2-mutagen
 	depends = pygobject2-devel
 	depends = gst-plugins-good
 	depends = gst-python2
