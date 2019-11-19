@@ -5,11 +5,10 @@ pkgname=lix
 pkgver=0.9.29
 pkgrel=1
 changelog=.CHANGELOG
-source=("$pkgname::git+https://github.com/SimonN/LixD.git#tag=v$pkgver")
-sha512sums=('SKIP')
+source=("$pkgname-$pkgver-$pkgrel.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
+sha512sums=('2681e662c0593b34d47f64fe7a91b56a36e00bd98318e4ad8f6e984d05d7d9c2f3ecdc3849241b5f8c574ba00016d29de4d9877665aa2aeb764f7dc793e5ea25')
 
-_pkgname=$pkgname
-# template start; name=lix; version=1.5;
+_gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -29,11 +28,12 @@ _dubv=(	"4.0.4+5.2.0"   # allegro
         "0.7.52"        # unit-threaded
         )
 
-
 # let makepkg handle dub packages
-# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules
-source+=(   "$_pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
-            "$_pkgname.desktop"
+# These have to be git clones, otherwise dub isn't able to pick them up with the correct version later on
+# no git, no version field, assumed ~master
+# https://dub.pm/commandline.html#add-path
+source+=(   "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
+            "$pkgname.desktop"
             )
 sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
                 '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
@@ -65,7 +65,7 @@ sha512sums+=(   'SKIP'
 
 _build()
 {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$srcdir/$_gitname-$pkgver" || exit
     _r=0
 
     # add local dependencies to search path
@@ -101,13 +101,13 @@ _build()
 
 build()
 {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$srcdir/$_gitname-$pkgver" || exit
     _build build
 }
 
 check()
 {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$srcdir/$_gitname-$pkgver" || exit
     _build test
 }
 
@@ -118,25 +118,25 @@ package()
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
-            "$_pkgname.desktop" \
+            "$pkgname.desktop" \
         `# DSTFILE:` \
-            "$pkgdir/usr/share/applications/$_pkgname.desktop"
+            "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-    cd "$_pkgname" || exit
+    cd "$_gitname-$pkgver" || exit
 
     # install application entry icon
     install -Dm644 \
         `# SRCFILE:` \
-            "data/images/${_pkgname}_logo.svg" \
+            "data/images/${pkgname}_logo.svg" \
         `# DSTFILE:` \
-            "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
+            "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
     # install license text
     install -Dm644 \
         `# SRCFILE:` \
             "doc/copying.txt" \
         `# DSTFILE:` \
-            "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
+            "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
     # install man page
     install -Dm644 \
@@ -148,26 +148,26 @@ package()
     # install binary
     install -Dm755 \
         `# SRCFILE:` \
-            "bin/$_pkgname" \
+            "bin/$pkgname" \
         `# DSTFILE:` \
-            "$pkgdir/usr/bin/$_pkgname"
+            "$pkgdir/usr/bin/$pkgname"
 
     # remove unimportant files
     # https://raw.githubusercontent.com/SimonN/LixD/master/doc/build/package.txt
-    rm -r "$srcdir/$_pkgname/doc/build"
+    rm -r "$srcdir/$_gitname-$pkgver/doc/build"
 
     # https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
     # make directories
     mkdir -p \
-        "$pkgdir/usr/share/$_pkgname" \
-        "$pkgdir/usr/share/doc/$_pkgname"
+        "$pkgdir/usr/share/$pkgname" \
+        "$pkgdir/usr/share/doc/$pkgname"
 
     # copy documentary
     cp -dpr --no-preserve=ownership \
         `# SRCFILES:` \
             "doc/." \
         `# DSTDIR:` \
-            "$pkgdir/usr/share/doc/$_pkgname/"
+            "$pkgdir/usr/share/doc/$pkgname/"
 
     # copy game files
     cp -dpr --no-preserve=ownership \
@@ -177,6 +177,5 @@ package()
             "levels" \
             "$srcdir/music" \
         `# DSTDIR:` \
-            "$pkgdir/usr/share/$_pkgname"
+            "$pkgdir/usr/share/$pkgname"
 }
-# template end;
