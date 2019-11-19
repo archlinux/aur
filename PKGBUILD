@@ -13,8 +13,8 @@ groups=('base-devel')
 makedepends=('git')
 provides=($pkgname)
 conflicts=($pkgname)
-source=("git+https://git.ao2.it/libam7xxx.git/")
-md5sums=('SKIP')
+source=("git+https://git.ao2.it/libam7xxx.git/" libam7xxx.conf)
+md5sums=('SKIP' 'a092a064f7d6006df50c87063507ce55')
 
 pkgver() {
   cd "${pkgname}"
@@ -30,8 +30,15 @@ package() {
   make && make DESTDIR="$pkgdir/" install
 
   install -d $pkgdir/usr/share/man/man1/
-  install -pm 644 $pkgdir/usr/local/share/man/man1/* $pkgdir/usr/share/man/man1
+  install -d $pkgdir/usr/lib/pkgconfig/
+  install -d $pkgdir/etc/ld.so.conf.d/
+
+  install -pm 644 $pkgdir/usr/local/share/man/man1/* $pkgdir/usr/share/man/man1/
+  install -pm 644 $pkgdir/usr/local/lib/pkgconfig/libam7xxx.pc $pkgdir/usr/lib/pkgconfig/
+  install -pm 644 $srcdir/libam7xxx.conf $pkgdir/etc/ld.so.conf.d/
+
   rm -rf $pkgdir/usr/local/share/man
+  rm -rf $pkgdir/usr/local/lib/pkgconfig
 
 }
 
