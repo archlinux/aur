@@ -34,13 +34,18 @@
  
      public Panel (Services.PopoverManager popover_manager) {
          Object (popover_manager : popover_manager);
-@@ -64,46 +63,12 @@
+@@ -64,51 +63,17 @@
          });
  
          style_context = this.get_style_context ();
          style_context.add_provider (resource_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 -
 -        Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
+     }
+ 
+     public override bool draw (Cairo.Context ctx) {
+         ctx.translate (0, draw_y);
+         return base.draw (ctx);
      }
  
      static construct {

@@ -1,9 +1,9 @@
-diff --git a/./meson.build b/./meson.build
-index 4f0f279..19b4f65 100644
---- a/./meson.build
-+++ b/./meson.build
+diff --git a/meson.build b/meson.build
+index c69b81a..7519893 100644
+--- a/meson.build
++++ b/meson.build
 @@ -14,7 +14,8 @@ add_project_arguments([
-
+ 
  add_project_arguments([
          '-DGETTEXT_PACKAGE="wingpanel"',
 -        '-DG_LOG_DOMAIN="wingpanel"'
@@ -12,18 +12,18 @@ index 4f0f279..19b4f65 100644
      ],
      language: 'c'
  )
-@@ -29,6 +30,7 @@ gio_dep = dependency('gio-2.0')
+@@ -30,6 +31,7 @@ gio_dep = dependency('gio-2.0')
  gio_unix_dep = dependency('gio-unix-2.0')
  gmodule_dep = dependency('gmodule-2.0')
  gtk_dep = dependency('gtk+-3.0', version: '>=3.10')
 +libwnck_dep = dependency('libwnck-3.0', version: '>=3.14')
  gee_dep = dependency('gee-0.8')
  granite_dep = dependency('granite')
-
-diff --git a/./schemas/io.elementary.desktop.wingpanel.gschema.xml b/./schemas/io.elementary.desktop.wingpanel.gschema.xml
+ 
+diff --git a/schemas/io.elementary.desktop.wingpanel.gschema.xml b/schemas/io.elementary.desktop.wingpanel.gschema.xml
 index a309a1d..aa150f7 100644
---- a/./schemas/io.elementary.desktop.wingpanel.gschema.xml
-+++ b/./schemas/io.elementary.desktop.wingpanel.gschema.xml
+--- a/schemas/io.elementary.desktop.wingpanel.gschema.xml
++++ b/schemas/io.elementary.desktop.wingpanel.gschema.xml
 @@ -6,5 +6,23 @@
  			<summary>Sets if the panel uses transparency.</summary>
  			<description>Disable this to provide higher contrasts and make indicators better readable.</description>
@@ -48,15 +48,14 @@ index a309a1d..aa150f7 100644
 +		</key>
  	</schema>
  </schemalist>
-diff --git a/./src/PanelWindow.vala b/./src/PanelWindow.vala
-index 162c54a..e06472f 100644
---- a/./src/PanelWindow.vala
-+++ b/./src/PanelWindow.vala
-@@ -29,6 +29,14 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+diff --git a/src/PanelWindow.vala b/src/PanelWindow.vala
+index c334fd0..0b56f3b 100644
+--- a/src/PanelWindow.vala
++++ b/src/PanelWindow.vala
+@@ -29,6 +29,13 @@ public class Wingpanel.PanelWindow : Gtk.Window {
      private int panel_height;
      private bool expanded = false;
      private int panel_displacement;
-+    private uint shrink_timeout = 0;
 +    private uint timeout;
 +    private bool hiding = false;
 +    private bool delay = false;
@@ -64,13 +63,13 @@ index 162c54a..e06472f 100644
 +    private string autohide_mode = panel_settings.get_string ("autohide");
 +    private int autohide_delay = panel_settings.get_int ("delay");
 +    private Wnck.Screen wnck_screen = Wnck.Screen.get_default ();
-
+ 
      public PanelWindow (Gtk.Application application) {
          Object (
-@@ -70,16 +77,65 @@ public class Wingpanel.PanelWindow : Gtk.Window {
-         application.add_accelerator ("<Control>Tab", "app.cycle", null);
-         application.add_accelerator ("<Control><Shift>Tab", "app.cycle-back", null);
-
+@@ -78,16 +85,72 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+         application.set_accels_for_action ("app.cycle", {"<Control>Tab"});
+         application.set_accels_for_action ("app.cycle-back", {"<Control><Shift>Tab"});
+ 
 +        panel_settings.changed["autohide"].connect (() => {
 +            autohide_mode = panel_settings.get_string ("autohide");
 +            update_autohide_mode ();
@@ -82,7 +81,7 @@ index 162c54a..e06472f 100644
 +
          add (panel);
      }
-
+ 
      private bool animation_step () {
 -        if (panel_displacement <= panel_height * (-1)) {
 -            return false;
@@ -107,23 +106,30 @@ index 162c54a..e06472f 100644
 +                    case "Autohide":
 +                        update_struts ();
 +                        this.leave_notify_event.connect (hide_panel);
++                        this.focus_out_event.connect (hide_panel);
 +                        break;
 +                    case "Float":
 +                        this.leave_notify_event.connect (hide_panel);
++                        this.focus_out_event.connect (hide_panel);
 +                        break;
 +                    case "Dodge":
 +                        update_struts ();
-+                        if (should_hide_active_change (wnck_screen.get_active_window()))
++                        if (should_hide_active_change (wnck_screen.get_active_window ())) {
 +                            this.leave_notify_event.connect (hide_panel);
++                            this.focus_out_event.connect (hide_panel);
++                        }
 +
 +                        break;
 +                    case "Dodge-Float":
-+                        if (should_hide_active_change (wnck_screen.get_active_window()))
++                        if (should_hide_active_change (wnck_screen.get_active_window ())) {
 +                            this.leave_notify_event.connect (hide_panel);
++                            this.focus_out_event.connect (hide_panel);
++                        }
 +
 +                        break;
 +                    default:
 +                        this.leave_notify_event.disconnect (hide_panel);
++                        this.focus_out_event.disconnect (hide_panel);
 +                        update_struts ();
 +                        break;
 +                }
@@ -131,16 +137,16 @@ index 162c54a..e06472f 100644
 +            }
 +            panel_displacement--;
          }
-
+ 
 -        panel_displacement--;
 -
          update_panel_dimensions ();
-
+ 
          return true;
-@@ -90,7 +146,130 @@ public class Wingpanel.PanelWindow : Gtk.Window {
-
+@@ -98,7 +161,134 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+ 
          Services.BackgroundManager.initialize (this.monitor_number, panel_height);
-
+ 
 -        Timeout.add (300 / panel_height, animation_step);
 +        panel_displacement--;
 +        update_panel_dimensions ();
@@ -148,7 +154,7 @@ index 162c54a..e06472f 100644
 +    }
 +
 +    private void active_window_changed (Wnck.Window? prev_active_window) {
-+        unowned Wnck.Window? active_window = wnck_screen.get_active_window();
++        unowned Wnck.Window? active_window = wnck_screen.get_active_window ();
 +        update_visibility_active_change (active_window);
 +
 +        if (prev_active_window != null)
@@ -158,12 +164,12 @@ index 162c54a..e06472f 100644
 +    }
 +
 +    private void active_workspace_changed (Wnck.Workspace? prev_active_workspace) {
-+        unowned Wnck.Window? active_window = wnck_screen.get_active_window();
++        unowned Wnck.Window? active_window = wnck_screen.get_active_window ();
 +        update_visibility_active_change (active_window);
 +    }
 +
 +    private void viewports_changed (Wnck.Screen? screen) {
-+        unowned Wnck.Window? active_window = wnck_screen.get_active_window();
++        unowned Wnck.Window? active_window = wnck_screen.get_active_window ();
 +        update_visibility_active_change (active_window);
 +    }
 +
@@ -175,10 +181,12 @@ index 162c54a..e06472f 100644
 +    private void update_visibility_active_change (Wnck.Window? active_window) {
 +        if (should_hide_active_change (active_window)) {
 +            this.leave_notify_event.connect (hide_panel);
++            this.focus_out_event.connect (hide_panel);
 +            delay = false;
 +            hide_panel ();
 +        } else {
 +            this.leave_notify_event.disconnect (hide_panel);
++            this.focus_out_event.disconnect (hide_panel);
 +            delay = false;
 +            show_panel ();
 +        }
@@ -248,8 +256,9 @@ index 162c54a..e06472f 100644
 +            case "Dodge":
 +            case "Dodge-Float":
 +                delay = false;
-+                if (!should_hide_active_change (wnck_screen.get_active_window())) {
++                if (!should_hide_active_change (wnck_screen.get_active_window ())) {
 +                    this.leave_notify_event.disconnect (hide_panel);
++                    this.focus_out_event.disconnect (hide_panel);
 +                    show_panel ();
 +                } else {
 +                    hide_panel ();
@@ -260,6 +269,7 @@ index 162c54a..e06472f 100644
 +                break;
 +            default:
 +                this.leave_notify_event.connect (hide_panel);
++                this.focus_out_event.connect (hide_panel);
 +                wnck_screen.active_window_changed.disconnect (active_window_changed);
 +                wnck_screen.active_workspace_changed.disconnect (active_workspace_changed);
 +                wnck_screen.viewports_changed.disconnect (viewports_changed);
@@ -267,25 +277,84 @@ index 162c54a..e06472f 100644
 +                break;
 +        }
      }
-
+ 
      private void update_panel_dimensions () {
-@@ -110,7 +287,6 @@ public class Wingpanel.PanelWindow : Gtk.Window {
-
-         this.move (monitor_x, monitor_y - (panel_height + panel_displacement));
-
+@@ -116,9 +306,29 @@ public class Wingpanel.PanelWindow : Gtk.Window {
+         monitor_x = monitor_dimensions.x;
+         monitor_y = monitor_dimensions.y;
+ 
+-        this.move (monitor_x, monitor_y - (panel_height + panel_displacement));
++        int wx, wy;
++        get_position (out wx, out wy);
++
++        /**
++         * Instead of constantly moving the window for the animation,
++         * we will only move the window when it has been hidden / shown
++         * The actual animation is handed off to the panel widget.
++         */
++        if (panel_displacement == -1) {
++            int y = monitor_y - (panel_height + panel_displacement);
++            if (wx != monitor_x || wy != y) {
++                move (monitor_x, y);
++            }
++
++            panel.draw_y = 0;
++        } else {
++            if (wx != 0 || wy != 0) {
++                move (0, 0);
++            }
++
++            panel.draw_y = monitor_y - (panel_height + panel_displacement);
++        }
+ 
 -        update_struts ();
      }
-
+ 
      private void update_visual () {
-diff --git a/./src/meson.build b/./src/meson.build
-index 3703e53..b3b1b39 100644
---- a/./src/meson.build
-+++ b/./src/meson.build
-@@ -16,6 +16,7 @@ wingpanel_files = files(
+diff --git a/src/Widgets/Panel.vala b/src/Widgets/Panel.vala
+index 90aeb78..79b0c0e 100644
+--- a/src/Widgets/Panel.vala
++++ b/src/Widgets/Panel.vala
+@@ -27,6 +27,18 @@ public class Wingpanel.Widgets.Panel : Gtk.EventBox {
+     private Gtk.StyleContext style_context;
+     private Gtk.CssProvider? style_provider = null;
+ 
++    private int _draw_y = 0;
++    public int draw_y {
++        get {
++            return _draw_y;
++        }
++
++        set {
++            _draw_y = value;
++            queue_draw ();
++        }
++    }
++
+     private static Gtk.CssProvider resource_provider;
+ 
+     public Panel (Services.PopoverManager popover_manager) {
+@@ -73,6 +85,11 @@ public class Wingpanel.Widgets.Panel : Gtk.EventBox {
+         Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
+     }
+ 
++    public override bool draw (Cairo.Context ctx) {
++        ctx.translate (0, draw_y);
++        return base.draw (ctx);
++    }
++
+     static construct {
+         resource_provider = new Gtk.CssProvider ();
+         resource_provider.load_from_resource ("io/elementary/wingpanel/panel.css");
+diff --git a/src/meson.build b/src/meson.build
+index c3708dd..4357d4e 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -15,6 +15,7 @@ wingpanel_files = files(
  wingpanel_deps = [
      libwingpanel_dep,
      granite_dep,
 +    libwnck_dep,
  ]
-
+ 
  executable(meson.project_name(),
