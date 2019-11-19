@@ -4,7 +4,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.62.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
