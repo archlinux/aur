@@ -1,7 +1,7 @@
 pkgbase = pbget
 	pkgdesc = Retrieve PKGBUILDs and local source files from Git, ABS and the AUR for makepkg.
-	pkgver = 2017.7
-	pkgrel = 3
+	pkgver = 2019
+	pkgrel = 2
 	url = https://xyne.archlinux.ca/projects/pbget
 	arch = any
 	license = GPL
@@ -11,13 +11,13 @@ pkgbase = pbget
 	depends = python3-aur
 	depends = python3-xcgf
 	depends = python3-xcpf
-	source = https://xyne.archlinux.ca/projects/pbget/src/pbget-2017.7.tar.xz
-	source = https://xyne.archlinux.ca/projects/pbget/src/pbget-2017.7.tar.xz.sig
+	source = https://xyne.archlinux.ca/projects/pbget/src/pbget-2019.tar.xz
+	source = https://xyne.archlinux.ca/projects/pbget/src/pbget-2019.tar.xz.sig
 	validpgpkeys = EC3CBE7F607D11E663149E811D1F0DC78F173680
-	md5sums = 63a8457b4ae67b825b694b6602c2e873
-	md5sums = 61c81d3affe9e3088ad7233d7b16dddb
-	sha512sums = bfaf39316d893887b301de551563526f0e8e3848f78c77fd6546d47a3a141e6a57ebe8f0e6827f7f33000d80da5ef99f2f40ee9f888779d05fe43143e72bde6e
-	sha512sums = 4ef0ee3f3f605e9fe4e7d58bf40a4acb4789f39cb2d731c5af1e9e3795b9800b2cf8ed8bcdb7be32888e632826025cf8838cda710f40040a2b26618c74cf3d02
+	md5sums = 656e57cc6bdd18fa656c1a1f980c1e75
+	md5sums = 93b741e4e19b1db83bb205f0948dac21
+	sha512sums = eddcb0c16af8343df83554fe54407141053b44a27b72feed07108c399e61df2f1431e7ac7f9fbc0bbb5cd19865c65bacaa18a1a268040d2cb8eada6640590557
+	sha512sums = 4ac6d4b384e2787ab24d8f1d9086bd5276b57eafa60dba017957f075e902ce7a86b9ef72fd643707cd399b1bdf79c254b17a67ab3c16e354d2f32060cb8ec2a8
 
 pkgname = pbget
 
