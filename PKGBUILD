@@ -1,27 +1,28 @@
-# Maintainer: Jonas Heinrich <onny@project-insanity.org>
+# Maintainer: Zachary Riedlshah <git@zacharyrs.me>
+# Contributor: Zachary Riedlshah <git@zacharyrs.me>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=onlyoffice-documentserver
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('any')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-# notejs-lts-dubnium due to bug with nodehun build fail
+# nodejs-lts-dubnium due to bug with nodehun build fail
 depends=('nodejs-lts-dubnium' 'noto-fonts')
 # noto-fonts required due to bug https://github.com/ONLYOFFICE/DocumentServer/issues/377#issuecomment-455782913
 makedepends=('npm' 'nodejs-lts-dubnium' 'grunt-cli' 'qt5-base' 'git' 'wget' 'p7zip' 'clang' 'python2' 'java-runtime' 'svn' 'ncurses5-compat-libs')
 # ncurses-5compat-libs required to build v8
 optdepends=('rabbitmq' 'redis' 'postgresql')
 license=('AGPL')
-source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-5.4.0-2.tar.gz"
-	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/11dad1b10b67f7341b284b821b15cf9d90a0c4cd.tar.gz"
+source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-DocumentServer-5.4.1.tar.gz"
+	"core-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core/archive/c8def9eb7bc02d675d0f1c64d2acf5b9cdf2bca8.tar.gz"
 	"core-fonts-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/core-fonts/archive/abc25e4538cbce3ba96671283d14cec09087829b.tar.gz"
 	"dictionaries-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/dictionaries/archive/0e43b7b8aeb099ec30725f39234e2b898e7f0e67.tar.gz"
-	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/f6c385e9523f9c2136f421e3f843feded622aaf8.tar.gz"
-	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/453f544a7f09fe5599a4ef6ae622faec1796f597.tar.gz"
-	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/4ae78080f01940f2274dff72ec95f12e0133afe2.tar.gz"
-	"web-apps-pro-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps-pro/archive/7aeeb4fe5889203a4578f1f86bd9387eca0c7a87.tar.gz"
+	"sdkjs-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs/archive/00800885c8c07d908dfb7e093cc045fbedc275b3.tar.gz"
+	"sdkjs-plugins-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/sdkjs-plugins/archive/03b41c0dff8b50aedc2fb914d3c8b7d051d45228.tar.gz"
+	"server-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/server/archive/09f7fee6a0cafb8c95eeee6d6d525134e7cccd20.tar.gz"
+	"web-apps-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/web-apps-pro/archive/9f0f3e7396488e9bbbac1704432e73147cec1fe5.tar.gz"
 	"server_makefile.patch"
 	"onlyoffice-fileconverter.service"
 	"onlyoffice-spellchecker.service"
@@ -29,14 +30,14 @@ source=("https://github.com/ONLYOFFICE/DocumentServer/archive/ONLYOFFICE-Documen
 	"onlyoffice-documentserver.hook"
 	"onlyoffice-documentserver.sysusers"
 	"onlyoffice-documentserver.tmpfiles")
-sha512sums=('bc16388fdad4afd4144b5d7618c74e44dcd483794c4d2b3a09fb86da2b1af97fd6171f27a5a2e414193ececfaa0bb863b2e5c50da4884d34f2acf78532d9488f'
-            'b41f6316a11a8a5071b80e0e5460245d77b09697839802028151dfc10a8d0ed17c2961ed4496ff4ab3b446ae4ec187c716940278bac218d7a5bcb48a4bd7e0b6'
+sha512sums=('5e5b2ac052d1e39a415cd6e7a8004095c2eb4c4098717a6dfc96e6f5c6cd31d124870d1b08e722f1b0c903e92f95cd482d99ac13ab4fa4a2d89eaddec3cc8eb5'
+            '7afd1cc73fd721ccf649994a296fd833da334d70bbd7ce71ec34ff27503339e25514619b856cf8364d984a49b8058e05150d612207bc8e28c61cfeea00551411'
             '0a3a2daa0c3c8a3b63ae2e02b4afc2324c0b7cab70b87d18068790cd664d35a7b11083db2e56f62aa2508f942570092aa91ab78097755ab6d8ca3b1459767030'
             '9f59b29a946b421aed5ff81d8a1bf1e6f33ab95387a052dd53aa2b03313c44aac9a441e4bc5ef2caa2401d4eba24e843cf2dd90c90118ff96d89d540e36eef47'
-            '44942d0c7587d41851704f35ed4b3f142f56cc921446bf81fcbd40b424b39dca98f9988c83464adb088df32341c613c239c3a4eb0fa9aaec5bac0215ba4257c5'
-            'd3437320547ff3578c57d24d3040e3037fbdeae9a5b60a20451f4ae29ab2a0480fd57b917f503722ca88bcbfdb3340ec2a89aa7f1e33cbf97f2eb24d77b020aa'
-            '57a8d6855ee9e1455e2c85003301deccb2ff8ee1855de9680d7b6dc22f6bf4c920bb28fc4626a461540a49873af0de5f4b49f54cfbb6b53adff520e677a89422'
-            'edb2dc4b6d711453548f061ef8ebca94383a11bdbedbbe1da719c07ff0c72a54e3640f29df6dca7e3687b557b4f4ced87b609b388c057f036e4574a22fa66f7b'
+            'b3357e34ac8ace549d5cb89889b288dd855e32c469f9b9d5a6851c944d5c9ed975a1ee1f8980ad1d932ab5b6f947cb7cfe85eb00d19b07fc1eb5bbcb479171b2'
+            '446685c33125fe93d09137f149552a591c6e58148d17eace28f290248992a212179317b4b087a8448b0ec73e047819f246ab703e1534b9c9c30024b42b9ee034'
+            'd564c3d99cfb8d746818fab0e9b824dae5a0fd6713067119971bade418996c7181950e39111b87191fa93111f1810cfe10c109dadde87edb4a1ba7d404aa0f51'
+            '454e6ce01f748966bb3729693fcd687163bf3776bb912908156f2439e56649ac226f7f76577ddf5f9159f2ce63a8d45fdcaae8c7f1e880a95e5153a6d02314d7'
             '40c9ecaa2b2008c152cfb89988bb175b3824550ca913b14365226be9b003c7c394d1c70d269ab64edb7d0eda483d4c67aac232f4ac404d73f5c807483e235f28'
             'f6e888d23d980eb50dcd70c1ce82324f3ee60c666298f77adf7f7abdf524d78bfcd10a8e17180a64596d964d98ae5457645ece6e3d05d93b938f465f2dc3612a'
             '8ed8c1301469242cc669a1f0520708ad0fa4f19406541c976cd9287917f573ec3f47902f9021eef5ff82ca20de04234f459e4826320689705772589b1aca0267'
@@ -57,7 +58,7 @@ prepare() {
   cd "${srcdir}"
   rm *.tar.gz
 
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}-2"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
   rm -r core core-fonts dictionaries sdkjs sdkjs-plugins server web-apps-pro
   mv ../core-fonts* core-fonts
   mv ../core-* core
@@ -65,7 +66,7 @@ prepare() {
   mv ../sdkjs-plugins-* sdkjs-plugins
   mv ../sdkjs-* sdkjs
   mv ../server-* server
-  mv ../web-apps-pro* web-apps-pro
+  mv ../web-apps-* web-apps-pro
 
   # Use clang instead of gcc because of compile errors
   sed -i 's/is_clang=false/is_clang=true/g' core/Common/3dParty/v8/build.sh
@@ -73,6 +74,9 @@ prepare() {
   # python2 dependency for gclient
   sed -i '12iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/fetch.sh
   sed -i '28iexport PATH="'${srcdir}'/path:$PATH"' core/Common/3dParty/v8/build.sh
+
+  # drop back to v8 6.0, not 7.0 - fixes build issues
+  sed -i 's/v8_version="7.0"/v8_version="6.0"/g' core/Common/3dParty/v8/fetch.sh
 
   # Patching Makefile to include DESTDIR variable
   patch -p0 -i ../server_makefile.patch
@@ -83,7 +87,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}-2"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}"
 
   # workaround bug https://github.com/ONLYOFFICE/onlyoffice-owncloud/issues/42
   export PRODUCT_VERSION=${pkgver}
@@ -106,7 +110,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}-2/server"
+  cd "${srcdir}/DocumentServer-ONLYOFFICE-DocumentServer-${pkgver}/server"
   install -Dm 644 "${srcdir}/onlyoffice-docservice.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-docservice.service"
   install -Dm 644 "${srcdir}/onlyoffice-fileconverter.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-fileconverter.service"
   install -Dm 644 "${srcdir}/onlyoffice-spellchecker.service" "${pkgdir}/usr/lib/systemd/system/onlyoffice-spellchecker.service"
