@@ -1,16 +1,14 @@
 pkgbase = xe-guest-utilities-git
-	pkgver = r40.83de571
+	pkgdesc = Citrix XenServer Tools
+	pkgver = 20190927.2f5d2e4
 	pkgrel = 1
 	url = https://github.com/xenserver/xe-guest-utilities
-	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-2
+	makedepends = go-pie
 	makedepends = git
-	makedepends = go
 	source = git+https://github.com/xenserver/xe-guest-utilities.git
-	source = xe-guest-utilities.service
-	sha256sums = SKIP
-	sha256sums = beda5dbcc03529959984267a1a9748439beda3fcd24db26589848aa7023333a7
+	sha1sums = SKIP
 
 pkgname = xe-guest-utilities-git
 	pkgdesc = Writes distribution version information and IP address to XenStore

@@ -1,9 +1,0 @@
-[Unit]
-Description=XenServer Guest Utilities
-
-[Service]
-ExecStartPre=/usr/bin/xe-linux-distribution /var/cache/xe-linux-distribution
-ExecStart=/usr/bin/xe-daemon
-
-[Install]
-WantedBy=multi-user.target
