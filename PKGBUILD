@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.18.0.r876.e8688d8
+pkgver=0.18.0.r879.661166e
 pkgrel=1
 pkgdesc="Open source modding toolkit for Halo Combat Evolved on the PC"
 depends=('libtiff' 'libarchive' 'freetype2' 'zstd')
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
     cd "$srcdir"/build
-    cmake ../invader -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+    cmake ../invader -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
     make
 }
 
