@@ -1,16 +1,14 @@
 pkgbase = python-storm
 	pkgdesc = An object-relational mapper (ORM) for Python
-	pkgver = 0.20
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://storm.canonical.com
 	arch = any
 	license = LGPL
-	makedepends = git
 	depends = python
 	depends = python-six
-	depends = python-future
-	source = https://launchpad.net/~stoq-dev/+archive/ubuntu/stoq3/+sourcefiles/storm/0.20.0.100-2~py3-1bionic/storm_0.20.0.100-2~py3-1bionic.tar.gz
-	md5sums = b16a6966fc5db564bdc01ed8a58cdf8e
+	source = https://pypi.python.org/packages/source/s/storm/storm-0.21.tar.bz2
+	md5sums = 26f8179daed04d062ebba1fbb0c7e797
 
 pkgname = python-storm
 
