@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=cpumanagergui
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CPU controler with a gui"
 arch=('any')
 url="https://github.com/nbebaw/cpumanagergui"
@@ -32,6 +32,6 @@ md5sums=('SKIP')
 package() {
 	cd "$pkgname"
 	install -Dm755 cpumanagergui ${pkgdir}/usr/bin/cpumanagergui
-	install -Dm755 cpumanagergui.desktop ${pkgdir}/usr/bin/applications/cpumanagergui.desktop
+	install -Dm755 cpumanagergui.desktop ${pkgdir}/usr/share/applications/cpumanagergui.desktop
 	install -Dm755 cpumanager.png ${pkgdir}/usr/share/pixmaps/cpumanager.png
 }
