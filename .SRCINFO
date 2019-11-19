@@ -1,0 +1,21 @@
+pkgbase = nodejs12
+	pkgdesc = Evented I/O for V8 javascript, version 12
+	pkgver = 12.13.0
+	pkgrel = 2
+	url = https://nodejs.org/
+	arch = x86_64
+	license = MIT
+	makedepends = python2
+	makedepends = procps-ng
+	depends = openssl
+	depends = zlib
+	depends = icu64
+	depends = libuv
+	depends = c-ares
+	depends = libnghttp2
+	optdepends = npm: nodejs package manager
+	source = nodejs-12.13.0.tar.gz::https://github.com/nodejs/node/archive/v12.13.0.tar.gz
+	sha512sums = 79f8c6d0c90e5294d9878927f0bad5eefd3098580c9f2cc30dd4fcd7d5a105550250cedc6553ac928f9be5bc71a51ebc58be036d99a6c68a569fa7d62165d908
+
+pkgname = nodejs12
+
