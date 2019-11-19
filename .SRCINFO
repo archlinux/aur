@@ -1,0 +1,35 @@
+pkgbase = python-convey
+	pkgdesc = CSV processing and mutual conversion of web related data types
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/CZ-NIC/convey
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pint
+	depends = python-chardet
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-netaddr
+	depends = python-jsonpickle
+	depends = python-ipdb
+	depends = python-pythondialog
+	depends = python-validate-email
+	depends = python-tabulate
+	depends = python-appdirs
+	depends = python-humanize
+	depends = python-beautifulsoup4
+	depends = python-levenshtein
+	depends = python-prompt_toolkit
+	depends = python-pygments
+	optdepends = bind-tools: DNS information gathering with dig,
+	optdepends = nmap: port scanning,
+	optdepends = xdg-utils: opening default apps using xdg-open,
+	optdepends = whois: querying WHOIS information
+	source = https://github.com/CZ-NIC/convey/archive/1.2/convey-1.2.tar.gz
+	source = 0001-requirements.txt-use-correct-beautifulsoup4-package-.patch
+	sha256sums = c9350ab35fba4b75355181a48cdef6459e6a4269caa817783bcb2630e83e1158
+	sha256sums = a9250e5aec87e7fc6e69bb6d0054fdd93476eccaf0dd8f0ec394e9755093285a
+
+pkgname = python-convey
+

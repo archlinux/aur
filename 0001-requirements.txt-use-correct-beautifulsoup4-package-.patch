@@ -1,0 +1,31 @@
+From 27339d952fdc3dc317d7ee31ddabcdafefcb4c50 Mon Sep 17 00:00:00 2001
+From: Tomas Krizek <tomas.krizek@nic.cz>
+Date: Tue, 19 Nov 2019 14:14:26 +0100
+Subject: [PATCH] requirements.txt - use correct beautifulsoup4 package name
+
+The package "bs4" is only a placeholder for the actual package
+"beautifulsoup4" https://pypi.org/project/bs4/
+
+This fixes a pkg_resources import issue when installing
+convey without pip.
+---
+ requirements.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index cf805e2..d0eaebd 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -10,7 +10,7 @@ validate_email
+ tabulate
+ appdirs
+ humanize
+-bs4
++beautifulsoup4
+ python-Levenshtein
+ prompt_toolkit>=2
+ pygments
+\ No newline at end of file
+-- 
+2.24.0
+
