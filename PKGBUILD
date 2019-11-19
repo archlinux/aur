@@ -10,6 +10,7 @@ url="https://github.com/rnestler/${_pkgname}"
 license=('GPL3')
 makedepends=('git' 'rust' 'cargo')
 depends=('dbus')
+replaces=('kernel-updated')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git://github.com/rnestler/${_pkgname}.git")
