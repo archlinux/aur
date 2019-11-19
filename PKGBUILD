@@ -1,6 +1,6 @@
 pkgname=crmngr
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="crmngr is a tool to aid with the management of a r10k-style control repository."
 url="https://github.com/vshn/crmngr"
 depends=('python' 'python-natsort' 'python-requests' 'git')
