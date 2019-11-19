@@ -1,12 +1,13 @@
 pkgbase = trinnity-caffe-cuda-git
 	pkgdesc = Caffe 1.0 with triNNity extensions (CUDA backend)
 	pkgver = 1.0
-	pkgrel = 18
+	pkgrel = 19
 	url = https://bitbucket.org/STG-TCD/trinnity-caffe
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = gcc8
+	makedepends = opencv
 	depends = boost-libs
 	depends = protobuf
 	depends = google-glog

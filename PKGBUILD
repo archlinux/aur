@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cuda-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=18
+pkgrel=19
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDA backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -18,7 +18,7 @@ depends=(
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
             'cblas: Use CBLAS for  backend linear algebra ops'
 )
-makedepends=('cmake' 'gcc8')
+makedepends=('cmake' 'gcc8' 'opencv')
 provides=('caffe')
 conflicts=('trinnity-caffe-git' 'trinnity-caffe-cudnn-git')
 source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git")
