@@ -1,6 +1,6 @@
 post_install() {
   echo '>>  Security features introduced in Kodi v17+ automatically disables addons'
-  echo '>>  not installed through Kodi. To use this package, simple enable the screensaver'
+  echo '>>  not installed through Kodi. To use this package, enable the screensaver'
   echo '>>  from within the Kodi GUI:  Add-ons>My add-ons>Look and feel>Screensaver>Aerial'
 }
 
