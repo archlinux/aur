@@ -1,6 +1,6 @@
 pkgbase = python-jupyter_telemetry
 	pkgdesc = Configurable event-logging for Jupyter applications and extensions
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/jupyter/telemetry
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-jupyter_telemetry
 	depends = python-jsonschema
 	depends = python-ruamel-yaml
 	depends = python-traitlets
-	source = git+https://github.com/jupyter/telemetry.git#tag=v0.0.2
+	source = git+https://github.com/jupyter/telemetry.git#tag=v0.0.3
 	sha256sums = SKIP
 
 pkgname = python-jupyter_telemetry
