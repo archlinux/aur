@@ -1,11 +1,11 @@
 pkgbase = warfork-data
 	pkgdesc = Warfork assets
-	pkgver = 4269802.OCT.8.201
+	pkgver = 4269802.OCT.8.2019
 	pkgrel = 1
 	url = https://github.com/TeamForbiddenLLC/warfork-assets
 	arch = any
 	license = custom
-	source = https://github.com/TeamForbiddenLLC/warfork-assets/archive/4269802-OCT-8-2019.tar.gz
+	source = git+https://github.com/TeamForbiddenLLC/warfork-assets.git#branch=4269802-OCT-8-2019
 	sha256sums = SKIP
 
 pkgname = warfork-data
