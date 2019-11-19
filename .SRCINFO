@@ -1,6 +1,6 @@
 pkgbase = jupyterlab_code_formatter
 	pkgdesc = A universal code formatter for JupyterLab.
-	pkgver = 0.5.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://pypi.org/project/jupyterlab-code-formatter
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = jupyterlab_code_formatter
 	optdepends = yapf
 	optdepends = python-isort
 	optdepends = python-black
-	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_code_formatter/jupyterlab_code_formatter-0.5.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab_code_formatter/jupyterlab_code_formatter-0.7.0.tar.gz
 	source = https://raw.githubusercontent.com/ryantam626/jupyterlab_code_formatter/master/LICENSE
-	md5sums = 22cd6bffc530d5d5d7e876a760dfaf61
+	md5sums = da7775941a054872b11f2699d9dc3117
 	md5sums = SKIP
 
 pkgname = jupyterlab_code_formatter
