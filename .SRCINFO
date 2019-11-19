@@ -6,7 +6,7 @@ pkgbase = spotirec
 	arch = any
 	makedepends = git
 	depends = python<=3.7.4
-	depends = python-bottle<=0.12.16
+	depends = python-bottle=0.12.17-1
 	depends = python-requests<=2.22.0
 	depends = python-spotipy<=2.4.4
 	provides = spotirec
