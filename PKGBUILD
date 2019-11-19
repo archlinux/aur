@@ -3,7 +3,7 @@
 
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Python library for distributed computing"
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD')
 source=("$pkgver.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/$pkgver")
-sha256sums=('8e47fe92540cd2f03c4f339eb5345f114f6392fe679d69b7ede75a8e81be2c26')
+sha256sums=('2e9a92877ac31ff292ec24ba4c6f52f6cebc692ece7101f205ffb4dce73d0b4e')
 
 build() {
   cd "$_pkgname-$pkgver"
