@@ -2,7 +2,7 @@
 
 pkgname=drevo-power-console-git
 _pkgname=drevo-power-console
-pkgver=6.eb9bfe1
+pkgver=9.ee15513
 pkgrel=1
 pkgdesc="The Drevo Power Console (DPC) for Linux"
 arch=(x86_64)
