@@ -1,5 +1,4 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
-# Contributor: Andras Czigany <andras dot czigany dot 'thirteen with digits' at gmail dot com>
+# Maintainer: Tobias Zindl <zie dot develop at gmail dot com>
 
 pkgname=qtcreator-sourcetrail-plugin-git
 pkgver=r80.746c203
