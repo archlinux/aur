@@ -1,0 +1,16 @@
+pkgbase = python-kiwi-gtk
+	pkgdesc = A framework and a set of enhanced widgets based on PyGTK
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://www.stoq.com.br
+	arch = any
+	license = LGPL
+	depends = python
+	depends = python-setuptools
+	optdepends = 
+	conflicts = python-stoq-kiwi
+	source = https://pypi.python.org/packages/source/k/kiwi-gtk/kiwi-gtk-3.0.3.tar.gz
+	md5sums = cd129fd212e803944dec40024f56d696
+
+pkgname = python-kiwi-gtk
+
