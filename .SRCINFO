@@ -1,7 +1,7 @@
 pkgbase = python-brother_ql
 	pkgdesc = Python package for the raster language protocol of the Brother QL series label printers
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pklaus/brother_ql
 	arch = any
 	license = GPL-3.0
