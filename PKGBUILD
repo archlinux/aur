@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/rnestler/${_pkgname}"
 license=('GPL3')
 makedepends=('git' 'rust' 'cargo')
+depends=('dbus')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git://github.com/rnestler/${_pkgname}.git")
