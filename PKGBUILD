@@ -3,7 +3,7 @@
 pkgname=klient-jpk-2.0
 pkgver=1.0.4.4
 pkgrel=2
-pkgdesc="A tool for submitting JPK files to Ministerstwo Finansów"
+pkgdesc="A tool for submitting JPK files (Standard Audit File for Tax equivalent) to Ministerstwo Finansów (Polish Ministry of Finance)"
 arch=('i686' 'x86_64')
 url="https://finanse-arch.mf.gov.pl/web/wp/pp/jpk/aplikacje-do-pobrania"
 license=(custom)
