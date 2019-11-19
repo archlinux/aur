@@ -82,9 +82,6 @@ package() {
     
         ./bitrock-unpacker.tcl ${srcdir}/xampp-linux-x64-7.3.11-0-installer.run ${pkgdir}
 	msg 'Copying executables and launcher...'
-    chmod -R 777 ${pkgdir}/xampp_core_files/xampp_core_folder
-    chown -hR nobody ${pkgdir}/xampp_core_files/xampp_core_folder
-    chmod -R 755 ${pkgdir}/xampp_core_files/xampp_core_folder
 	rsync -avz --remove-source-files "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
@@ -92,7 +89,17 @@ package() {
 	rsync -avz --remove-source-files "${pkgdir}/native_mysql_adapter/mysql_xampp_linux"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/manager/binary"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/common_native_adapter/common"/. "${pkgdir}/opt/lampp"
-	#chmod g-s -R "${pkgdir}/opt/lampp"
+
+
+	#access to phpmyadmin
+	chmod 777 ${pkgdir}/opt/lampp/temp
+	mkdir ${pkgdir}/opt/lampp/phpmyadmin/tmp
+	chmod 777 ${pkgdir}/opt/lampp/phpmyadmin/tmp
+
+
+	#phpadmin mysql settings
+	find ${pkgdir}/opt/lampp/phpmyadmin -type f -exec sed -i 's/localhost/localhost:3306/gI' {} \;
+	#make links
 	ln -sf '/opt/lampp/xampp' "${pkgdir}/opt/lampp/lampp"
 	mkdir ${pkgdir}/opt/lampp/share/lampp
 	ln -sf '/opt/lampp/share/xampp/' "${pkgdir}/opt/lampp/share/lampp/"
@@ -101,9 +108,15 @@ package() {
 	# Change root location for all files
 	find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI' {} \;
 	find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
+
 	#For mysql
+	#for using mariadb
 	find ${pkgdir}/opt/lampp/mysql/scripts -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' {} \;
 	#find ${pkgdir}/opt/lampp/ -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI' {} \;
+
+	# start from xampp manager
+	find ${pkgdir}/opt/lampp/mysql/scripts -type f -exec sed -i 's/\/opt\/lampp\/lampp\ startmysql/systemctl\ start\ mysqld/gI' {} \;
+
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
 	rsync -avz "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
