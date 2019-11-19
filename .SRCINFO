@@ -1,0 +1,19 @@
+pkgbase = yoda-git
+	pkgdesc = A particle physics package for data analysis (specifically histogramming) classes -- latest build from git repo.
+	pkgver = 1.7.7.r31.g63722a29
+	pkgrel = 1
+	url = http://yoda.hepforge.org
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cython
+	depends = python
+	optdepends = python2: For Python2 module in addition to Python3
+	provides = yoda
+	conflicts = yoda
+	replaces = yoda-hg
+	source = git+https://gitlab.com/hepcedar/yoda.git
+	md5sums = SKIP
+
+pkgname = yoda-git
+
