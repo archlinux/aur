@@ -1,6 +1,6 @@
 pkgbase = i3-resurrect-git
 	pkgdesc = A simple but flexible solution to saving and restoring i3 workspace layouts
-	pkgver = 1.4.0.r4.g0f0a1d1
+	pkgver = 1.4.0.r6.g67290f8
 	pkgrel = 1
 	url = http://github.com/JonnyHaystack/i3-resurrect
 	arch = any

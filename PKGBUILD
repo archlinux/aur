@@ -2,7 +2,7 @@
 _pkgbasename=i3-resurrect
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=1.4.0.r4.g0f0a1d1
+pkgver=1.4.0.r6.g67290f8
 pkgdesc='A simple but flexible solution to saving and restoring i3 workspace layouts'
 arch=('any')
 url='http://github.com/JonnyHaystack/i3-resurrect'
