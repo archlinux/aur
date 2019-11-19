@@ -1,0 +1,20 @@
+pkgbase = qtcreator-minimap-plugin-git
+	pkgdesc = Minimap for QtCreator
+	pkgver = r18.57476c3
+	pkgrel = 2
+	url = https://github.com/Longhanks/qtcreator-plugin-minimap
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = LGPL2
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	provides = qtcreator-minimap-plugin
+	conflicts = qtcreator-minimap-plugin
+	source = qtcreator-minimap-plugin-git::git+https://github.com/Longhanks/qtcreator-plugin-minimap.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-minimap-plugin-git
+
