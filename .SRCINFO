@@ -1,4 +1,4 @@
-pkgbase = spotirec-git
+pkgbase = spotirec
 	pkgdesc = Create playlist of recommended tracks on Spotify
 	pkgver = r24.781b07c
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = spotirec-git
 	source = spotirec-r24.781b07c::git+https://github.com/Badgie/spotirec
 	md5sums = SKIP
 
-pkgname = spotirec-git
+pkgname = spotirec
 
