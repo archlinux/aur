@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=hapi
 pkgver=2018
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library, command-line tools and server for annotating Mandarin Chinese with phonetics (pinyin, zhuyin, etc.) and colors by tone.'
 arch=(any)
 license=(GPL)
