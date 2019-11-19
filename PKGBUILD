@@ -4,7 +4,7 @@
 
 pkgname=opencpn-plugin-climatology
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Climatology plugin for OpenCPN"
 arch=('x86_64')
 license=("GPL3")
@@ -21,7 +21,7 @@ build() {
   cd "climatology_pi-${pkgver}"
   mkdir -p build
   cd build
-  cmake ..
+  cmake -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   make
 }
 
