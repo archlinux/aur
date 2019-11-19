@@ -1,6 +1,6 @@
 pkgbase = mcuxpresso-config-tools
-	pkgdesc = Integrated suite of configuration tools for NXP's microcontrollers. From DEB package distributed by NXP.
-	pkgver = 5.0
+	pkgdesc = Integrated suite of configuration tools for NXP's microcontrollers. From BIN package distributed by NXP.
+	pkgver = 6.0
 	pkgrel = 1
 	url = http://www.nxp.com/products/software-and-tools/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-config-tools:MCUXpresso-Config-Tools
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = mcuxpresso-config-tools
 	depends = alsa-lib
 	depends = libnet
 	options = !strip
-	source = https://cache.nxp.com/secured/NMG/mcuxpresso-config-tools-v5-1_amd64.deb?__gda__=1553430714_0bcc48b6e34738215a3ffef68915f9d0&fileExt=.deb
+	source = mcuxpresso-config-tools.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v6-1_amd64.deb.bin?__gda__=1574169297_e347971b8163eb740b551f33d7a30fc2&fileExt=.bin
 	source = LICENSE
 	source = mcuxpresso-config-tools.install
-	sha256sums = 78302f30526acceb2a036645543f16aba278b8e0574bf9ff8368081b8c2d53a7
+	sha256sums = 40fa3efe30f019d789c1e0f329a370fa429ecf1ec70170bdbf3edca5c6477145
 	sha256sums = 10b7132837be893b36d5a136cf7688abe3f7cff76653381797e54110c6d46006
 	sha256sums = 6435144e9b28ec594ebea3e598e01e23a4d41c3787a67de68dafedcf71bc18ed
 
