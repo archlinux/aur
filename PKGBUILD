@@ -9,9 +9,10 @@ pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://github.com/dask/dask"
 license=('BSD')
-checkdepends=('ipython' 'python-bcolz' 'python-cachey' 'python-distributed' 'python-graphviz' 'python-sparse' 'python-pytest')
+checkdepends=('python-bcolz' 'python-cachey' 'python-pytest')
 depends=('python' 'python-fsspec' 'python-numpy' 'python-scipy' 'python-pandas' 'python-toolz' 'python-cloudpickle' 'python-partd>=0.3.8' 'python-yaml')
-optdepends=('python-bcolz'
+optdepends=('ipython: ipython integration'
+  'python-bcolz'
   'python-bokeh'
   'python-cachey'
   'python-cityhash: faster hashing'
