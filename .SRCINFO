@@ -1,6 +1,6 @@
 pkgbase = outcurses
 	pkgdesc = High-level UI elements built atop ncurses
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Outcurses
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = outcurses
 	makedepends = gtest
 	makedepends = cmake
 	depends = ncurses
-	source = https://github.com/dankamongmen/outcurses/archive/v0.0.7.tar.gz
-	sha256sums = 22247d10ece339db219603e8dced5c32d1e3757c268c5a66de314039cc230860
+	source = https://github.com/dankamongmen/outcurses/archive/v0.0.8.tar.gz
+	sha256sums = 3eb71bb292dc24d008b0175361f4ba6f745e9b520dddbcaa899051eb1a941d6f
 
 pkgname = outcurses
 

@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=outcurses
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="High-level UI elements built atop ncurses"
 url="https://nick-black.com/dankwiki/index.php/Outcurses"
@@ -24,4 +24,9 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('22247d10ece339db219603e8dced5c32d1e3757c268c5a66de314039cc230860')
+check() {
+  cd "$pkgname-$pkgver/build"
+  make test
+}
+
+sha256sums=('3eb71bb292dc24d008b0175361f4ba6f745e9b520dddbcaa899051eb1a941d6f')
