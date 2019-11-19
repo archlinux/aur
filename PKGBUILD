@@ -2,8 +2,8 @@
 
 pkgname=azote-git
 pkgver=1.7.4.r27.g50b3430
-pkgrel=2
-pkgdesc="Wallpaper manager for Sway, i3 and some other WMs (development version)"
+pkgrel=3
+pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs (development version)"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/azote"
 license=('GPL3')
@@ -13,7 +13,9 @@ depends=('python' 'python-setuptools' 'python-gobject' 'python-pillow' 'gtk3' 'f
 optdepends=('python-send2trash: trash support'
 			'grim: for screen color picker on Sway'
 			'slurp: for screen color picker on Sway'
-			'maim: for screen color picker on X11')
+			'maim: for screen color picker on X11'
+			'imagemagick: for screen color picker on X11 and Sway'
+			'python-pyaml: for alacritty.yml toolbox')
 
 source=("git+https://github.com/nwg-piotr/azote.git")
 md5sums=('SKIP')
