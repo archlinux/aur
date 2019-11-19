@@ -2,7 +2,7 @@
 
 pkgname=mlbstreamer
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Enables real-time and time-shifted viewing of MLB.tv streams"
 url="https://github.com/tonycpsu/mlbstreamer"
 arch=('any')
@@ -10,8 +10,11 @@ license=('GPL2')
 depends=(
   'python' 'python-six' 'python-requests' 'python-lxml' 'python-pytz'
   'python-tzlocal' 'python-pymemoize' 'python-orderedattrdict' 'python-yaml'
-  'python-dateutil' 'streamlink>0.11.0' 'python-prompt_toolkit' 'python-urwid'
-  'python-urwid_utils>=0.1.2' 'python-panwid>0.2.4'
+  'python-dateutil' 'streamlink' 'python-prompt_toolkit' 'python-urwid'
+  'python-urwid_utils' 'python-panwid'
+)
+makedepends=(
+  'python-setuptools'
 )
 source=(
   "https://github.com/tonycpsu/mlbstreamer/archive/v$pkgver.tar.gz"
@@ -36,6 +39,7 @@ build() {
 
 package() {
     cd "mlbstreamer-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    rm -r "$pkgdir/usr/lib/python3.7/site-packages/test"
+    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
+    SPDIR=$(python -c 'import site; print(site.getsitepackages()[0])')
+    rm -r "$pkgdir$SPDIR/test"
 }
