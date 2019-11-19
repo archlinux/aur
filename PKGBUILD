@@ -1,10 +1,10 @@
 # Maintainer: Universebenzene <universebenzene at sina dot com>
 # Contributor: Miguel de Val-Borro <miguel.deval at gmail dot com>
 _pyname=astropy-helpers
-pkgbase=("python-${_pyname}31")
+pkgbase=python-${_pyname}31
 pkgname=("python-${_pyname}31" "python-${_pyname}31-doc")
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://astropy-helpers.readthedocs.io/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-sphinx-astropy')
 source=("https://github.com/astropy/astropy-helpers/archive/v${pkgver}.tar.gz"
         'use_system_astropy_helpers.patch')
 md5sums=('69be038c5b31aa43b41470ec9e6e9f41'
-         '13cd66eec7da36e18d5db09fe9dfd3a5')
+         '387b23e088026915b59fb70eefb9b14e')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
