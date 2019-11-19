@@ -1,0 +1,14 @@
+pkgbase = podman-compose
+	pkgdesc = a script to run docker-compose.yml using podman
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/containers/podman-compose
+	arch = any
+	license = GPLv2
+	depends = python
+	depends = python-yaml
+	source = https://github.com/containers/podman-compose/archive/v0.1.5.zip
+	sha256sums = a21f767c2970041f2b22ae57915ae3a5bd23089a438ec37c67b3a2ba122da3c8
+
+pkgname = podman-compose
+
