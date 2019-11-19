@@ -28,12 +28,12 @@ buildenv_pgo() {
 
     [[ "$INFAKEROOT" == 1 ]] && return
 
-    if [ ! -d "$PROFDEST/$pkgbase.gen" ]; then
+    if [[ ! -d $PROFDEST/$pkgbase.gen ]]; then
       pgoflags=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
       pgoldflags=" -lgcov --coverage"
       msg2 "Profile data will be generated."
-    else
-      [[ ! -d "$PROFDEST/$pkgbase.used" ]] && mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
+    elif [[ ! -d $PROFDEST/$pkgbase.used ]]; then
+      mv $PROFDEST/$pkgbase.{gen,used}
       pgoflags=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
       msg2 "Profile data will be applied."
     fi
