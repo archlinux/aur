@@ -1,6 +1,6 @@
 pkgbase = makepkg-optimize
 	pkgdesc = Supplemental build and packaging optimizations for makepkg
-	pkgver = 15
+	pkgver = 16
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Makepkg-optimize
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = makepkg-optimize
 	source = pkgopts-param_ext.conf
 	source = compress-param_max.conf
 	sha1sums = a9af81c30f57b7db6a9a52796d79399a4e754791
-	sha1sums = 3e512ce1dfacc1163ca1ebec3d6821b499498174
+	sha1sums = 61c765080f3d41dbae15be9212667f9e6364550b
 	sha1sums = d7a3801037333c582dba976db27cf8896bc1b401
 	sha1sums = c99d9cb49dd31924a1cb298bcfe142cef31a9fd3
 	sha1sums = a893c32f2a3fff8b279025ec60f0c3d88143dc1e

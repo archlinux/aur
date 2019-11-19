@@ -20,7 +20,7 @@ buildenv_lto() {
     check_buildoption "lto-thin-clang" "y" && ltoflags+="=thin"
     check_buildoption "lto-thin" "y" || check_buildoption "lto" "y" && \
     [[ -f "$(gcc -print-search-dirs | grep install | awk '{print $2 "liblto_plugin.so"}')" ]] && \
-      ltoflags+="=$(getconf _NPROCESSORS_ONLN) -fno-fat-lto-objects"
+      ltoflags+="=auto -fno-fat-lto-objects"
     check_buildoption "lto" "y" && ltoflags+=" -flto-partition=none"
 
     CFLAGS+="$ltoflags"
