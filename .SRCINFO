@@ -1,0 +1,17 @@
+pkgbase = chromium-extension-dashlane
+	pkgdesc = The password manager, perfected
+	pkgver = 6.1942.1.0
+	pkgrel = 1
+	url = https://www.dashlane.com
+	arch = any
+	license = CUSTOM
+	makedepends = curl
+	depends = chromium
+	noextract = dashlane.crx
+	source = dashlane.crx::https://clients2.google.com/service/update2/crx?response=redirect&prodversion=78.0&x=id%3Dfdjamakpfbbddfjaooikfcpapjohcfmg%26uc
+	source = fdjamakpfbbddfjaooikfcpapjohcfmg.json
+	sha256sums = SKIP
+	sha256sums = 8470694193e7964b7603f881a3936146f50c5e432c39370578351b039f95ab67
+
+pkgname = chromium-extension-dashlane
+
