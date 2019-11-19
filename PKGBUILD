@@ -3,26 +3,32 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-climatology
-pkgver=1.4
-pkgrel=3
+pkgver=1.4.r69.g5c8e992
+pkgrel=1
 pkgdesc="Climatology plugin for OpenCPN"
 arch=('x86_64')
 license=("GPL3")
 depends=('opencpn')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/climatology.html"
-source=("https://github.com/seandepagnier/climatology_pi/archive/v${pkgver}.tar.gz" "https://downloads.sourceforge.net/project/opencpnplugins/climatology_pi/CL-DATA-1.0.tar.xz")
-sha1sums=('5fa481df6bfd073d80d66297bc97e814207b98c2'
-          '5829a5c95fda9fa4a6963dbfffacf23f60d061e5')
+source=("$pkgname::git+https://github.com/seandepagnier/climatology_pi.git")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 prepare(){
+  cd ${srcdir}/${pkgname}
+  git submodule init
+  git submodule sync
   git submodule update
+  rm data/.git
 }
           
 build() {
-  cd ${srcdir}
-  cp data/* climatology_pi-${pkgver}/data/
-  cd "climatology_pi-${pkgver}"
+  cd ${srcdir}/${pkgname}
   mkdir -p build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
@@ -30,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "climatology_pi-${pkgver}/build"
+  cd "${pkgname}/build"
   DESTDIR="$pkgdir" make install
 }

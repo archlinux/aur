@@ -1,16 +1,15 @@
 pkgbase = opencpn-plugin-climatology
 	pkgdesc = Climatology plugin for OpenCPN
-	pkgver = 1.4
-	pkgrel = 3
+	pkgver = 1.4.r69.g5c8e992
+	pkgrel = 1
 	url = https://opencpn.org/OpenCPN/plugins/climatology.html
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = opencpn
-	source = https://github.com/seandepagnier/climatology_pi/archive/v1.4.tar.gz
-	source = https://downloads.sourceforge.net/project/opencpnplugins/climatology_pi/CL-DATA-1.0.tar.xz
-	sha1sums = 5fa481df6bfd073d80d66297bc97e814207b98c2
-	sha1sums = 5829a5c95fda9fa4a6963dbfffacf23f60d061e5
+	source = opencpn-plugin-climatology::git+https://github.com/seandepagnier/climatology_pi.git
+	sha1sums = SKIP
 
 pkgname = opencpn-plugin-climatology
 
