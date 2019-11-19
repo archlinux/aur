@@ -2,12 +2,12 @@
 
 pkgname=ms-teams
 pkgver=1.2.00.31751
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365. Currently *only for insiders* on linux."
 arch=('x86_64')
 url="https://teams.microsoft.com/start"
 #license=('custom:ms-teams')
-depends=('gnome-keyring' 'libgnome-keyring' 'pango' 'libsecret' 'gtk3' 'gdk-pixbuf2' 'cairo' 'fontconfig' 'dbus' 'glibc' 'glib2' 'gcc-libs' 'libxss' 'libxtst' 'nss') #?? FIXME
+depends=('libgnome-keyring' 'pango' 'libsecret' 'gtk3' 'gdk-pixbuf2' 'cairo' 'fontconfig' 'dbus' 'glibc' 'glib2' 'gcc-libs' 'libxss' 'libxtst' 'nss') #?? FIXME
 optdepends=('libdbusmenu-glib' 'alsa-lib' 'libnotify') ##??
 provides=("ms-teams=${pkgver}")
 options=('!emptydirs' '!strip')
