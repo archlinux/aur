@@ -11,7 +11,9 @@ pkgbase = libam7xxx
 	provides = libam7xxx
 	conflicts = libam7xxx
 	source = git+https://git.ao2.it/libam7xxx.git/
+	source = libam7xxx.conf
 	md5sums = SKIP
+	md5sums = a092a064f7d6006df50c87063507ce55
 
 pkgname = libam7xxx
 
