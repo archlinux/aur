@@ -1,0 +1,11 @@
+pkgbase = vim-dhall-git
+	pkgdesc = Vim syntax for Dhall config files
+	pkgver = r116.20d2fa23dd
+	pkgrel = 1
+	url = https://github.com/vmchale/dhall-vim
+	arch = any
+	source = https://github.com/vmchale/dhall-vim
+	md5sums = SKIP
+
+pkgname = vim-dhall-git
+
