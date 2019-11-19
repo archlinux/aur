@@ -1,0 +1,15 @@
+pkgbase = python-timethat
+	pkgdesc = A human friendly time calculator for functions and code blocks in Python
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://gitlab.com/mozgurbayhan/timethat
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/timethat/timethat-1.0.6.tar.gz
+	md5sums = a455a01a6d7a85194640da3b54eee303
+
+pkgname = python-timethat
+
