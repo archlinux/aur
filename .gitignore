@@ -2,3 +2,4 @@ src
 pkg
 mlbstreamer
 *.pkg.tar.xz
+*.log

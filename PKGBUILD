@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=mlbstreamer-git
-pkgver=v0.0.10.r23.g92eb0ad
+pkgver=v0.0.10.r40.gbb3caab
 pkgrel=1
 pkgdesc="Enables real-time and time-shifted viewing of MLB.tv streams"
 url="https://github.com/tonycpsu/mlbstreamer"
@@ -12,10 +12,10 @@ provides=('mlbstreamer')
 depends=(
   'python' 'python-six' 'python-requests' 'python-lxml' 'python-pytz'
   'python-tzlocal' 'python-pymemoize' 'python-orderedattrdict' 'python-yaml'
-  'python-dateutil' 'streamlink>=0.11.0' 'python-prompt_toolkit' 'python-urwid'
-  'python-urwid_utils>=0.1.2' 'python-panwid>=0.2.5'
+  'python-dateutil' 'streamlink' 'python-prompt_toolkit' 'python-urwid'
+  'python-urwid_utils' 'python-panwid'
 )
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 source=(
   'git+https://github.com/tonycpsu/mlbstreamer.git'
 )
@@ -47,6 +47,7 @@ build() {
 
 package() {
     cd "mlbstreamer"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    rm -r "$pkgdir/usr/lib/python3.7/site-packages/test"
+    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
+    SPDIR=$(python -c 'import site; print(site.getsitepackages()[0])')
+    rm -r "$pkgdir$SPDIR/test"
 }
