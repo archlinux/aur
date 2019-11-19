@@ -3,7 +3,7 @@
 _hkgname=tasty-hspec
 pkgname=haskell-tasty-hspec
 pkgver=1.1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hspec provider for the Tasty test framework."
 url="https://github.com/mitchellwrosen/tasty-hspec"
 license=("BSD")
@@ -16,7 +16,7 @@ source=(
     "https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}.cabal"
 )
 sha256sums=('fe889ec0f7b3991c46a07d9ff9cf09608a73a18f434a7480d2a09c79e56f3345'
-            'f24e87f7681d12b7c7c7951a644657b53630fe7e2844d010adb860bbca1ffff1')
+            '531ba79ad1aa8d8c12ca1ae27b6e8125d1d768d98ca5487fe6348b2c34e4f7fa')
 
 prepare() {
     cd $_hkgname-$pkgver
