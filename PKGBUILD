@@ -1,10 +1,10 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - MAVLink communication library."
-url='https://wiki.ros.org/mavros'
+url='https://wiki.ros.org/libmavconn'
 
 pkgname='ros-melodic-libmavconn'
-pkgver='0.32.2'
+pkgver='0.33.3'
 arch=('any')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
@@ -21,16 +21,16 @@ depends=(${ros_depends[@]}
   boost
   console-bridge)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/libmavconn/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/mavlink/mavros-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="mavros-${pkgver}/libmavconn"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz"
+        "boost-1.70.patch")
+sha256sums=('eb4fc2439c78cdc2fa5f2d9ab81abe4f1fa54f9dd45f02b8f2440a231125118e'
+            'd7a6c462f9328536ffd9b5b59e3a7e483fc5d403d71114bfc03024c364df233d')
+
+prepare() {
+    cd "${srcdir}/${_dir}"
+    patch -uN src/tcp.cpp ../../../boost-1.70.patch || return 1
+}
 
 build() {
   # Use ROS environment variables
