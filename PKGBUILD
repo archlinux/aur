@@ -5,7 +5,7 @@
 _name="caddy"
 pkgname="$_name-bin"
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS'
 arch=('x86_64')
 url='https://caddyserver.com'
@@ -15,7 +15,7 @@ provides=("$_name")
 conflicts=("$_name")
 install='caddy.install'
 source=("https://github.com/mholt/caddy/releases/download/v${pkgver//_/-}/caddy_v${pkgver//_/-}_linux_amd64.tar.gz"
-        'https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg'
+        'https://caddyserver.com/v1/resources/images/brand/caddy-at-your-service-white.svg'
         'index.html'
         'caddy.service'
         'caddy.tmpfiles'

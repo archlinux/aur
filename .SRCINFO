@@ -1,7 +1,7 @@
 pkgbase = caddy-bin
 	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = caddy-bin
 	conflicts = caddy
 	backup = etc/caddy/caddy.conf
 	source = https://github.com/mholt/caddy/releases/download/v1.0.4/caddy_v1.0.4_linux_amd64.tar.gz
-	source = https://caddyserver.com/resources/images/brand/caddy-at-your-service-white.svg
+	source = https://caddyserver.com/v1/resources/images/brand/caddy-at-your-service-white.svg
 	source = index.html
 	source = caddy.service
 	source = caddy.tmpfiles
