@@ -1,7 +1,7 @@
 pkgbase = svgtools
 	pkgdesc = Tools for working with SVG files and JessyInk presentations.
 	pkgver = 2017.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xyne.archlinux.ca/projects/svgtools
 	arch = any
 	license = GPL
