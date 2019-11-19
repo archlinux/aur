@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=flauncher
-pkgver='1.1.7'
+pkgver='1.1.8'
 pkgrel='1'
 pkgdesc='universal file launcher for terminal'
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=('python>=3')
 makedepends=('python' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.1.7.tar.gz")
-sha256sums=('27ea01e5c006865c7d713209e8e981a5b27682145c25f31d8ef2450abf4b2f7b')
-#source#=("file:///$MHOME/dev/python/flauncher/dist/flauncher-1.1.7.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.1.8.tar.gz")
+sha256sums=('3fdde1adcc97829e688c4aec0bd2a7bd0a164975b6dc42635c9b9f502517b856')
+#source#=("file:///$MHOME/dev/python/flauncher/dist/flauncher-1.1.8.tar.gz")
 #sha256sums#=("SKIP")
 
 build() {
