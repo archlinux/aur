@@ -1,7 +1,7 @@
 pkgbase = python3-nist
 	pkgdesc = Modules for accessing and working with data from the National Institute of Standards and Technology (NIST).
 	pkgver = 2013.10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://xyne.archlinux.ca/projects/python3-nist
 	arch = any
 	license = GPL
