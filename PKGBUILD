@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=cronwhip
 pkgver=2015
-pkgrel=5
+pkgrel=6
 pkgdesc='Run missed cronjobs.'
 arch=(any)
 license=(GPL)

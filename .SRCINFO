@@ -1,7 +1,7 @@
 pkgbase = cronwhip
 	pkgdesc = Run missed cronjobs.
 	pkgver = 2015
-	pkgrel = 5
+	pkgrel = 6
 	url = https://xyne.archlinux.ca/projects/cronwhip
 	arch = any
 	license = GPL
