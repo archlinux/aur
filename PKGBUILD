@@ -13,7 +13,11 @@ makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 source=("$pkgname::git+https://github.com/FWGS/hlsdk-xash3d")
 
 _args="--enable-goldsrc-support \
---build-type=release"
+--build-type=release \
+--enable-voicemgr \
+--enable-lto \
+--enable-poly-opt \
+--strip"
 
 if [ $CARCH == "x86_64" ]; then
     _args+=" --libdir=/usr/lib32"
