@@ -33,7 +33,7 @@ pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
 _commit='e51d9bf9e5ac5a6618c175cd9b5cfdc6733cd5d1'
 pkgver=243.162
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -278,31 +278,33 @@ package_systemd-light() {
           etc/udev/udev.conf)
   install=systemd.install
 
-  if [ "$_backlight" != "system" -a "$_backlight" != "none" ]; then
-    optdepends+=("${_backlight}: replacement for systemd-backlight")
-  fi
+  case "$_backlight" in
+    "systemd"|"none") ;;
+    *) optdepends+=("${_backlight}: replacement for systemd-backlight");;
+  esac
 
-  if [ "$_bootloader" != "system" -a "$_bootloader" != "none" ]; then
-    optdepends+=("${_bootloader}: replacement for bootctl")
-  fi
+  case "$_bootloader" in
+    "systemd"|"none") ;;
+    *) optdepends+=("${_bootloader}: replacement for bootctl");;
+  esac
 
-  if [ "$_network" = "systemd" ]; then
-    backup+=(etc/systemd/networkd.conf)
-  elif [ "$_network" != "none" ]; then
-    optdepends+=("${_network}: replacement for systemd-networkd")
-  fi
+  case "$_network" in
+    "systemd") backup+=(etc/systemd/networkd.conf);;
+    "none") ;;
+    *) optdepends+=("${_network}: replacement for systemd-networkd");;
+  esac
 
-  if [ "$_resolver" = "systemd" ]; then
-    backup+=(etc/systemd/resolved.conf)
-  elif [ "$_resolver" != "none" ]; then
-    optdepends+=("${_resolver}: replacement for systemd-resolved")
-  fi
+  case "$_resolver" in
+    "systemd") backup+=(etc/systemd/resolved.conf);;
+    "none") ;;
+    *) optdepends+=("${_resolver}: replacement for systemd-resolved");;
+  esac
 
-  if [ "$_timesync" = "systemd" ]; then
-    backup+=(etc/systemd/timesyncd.conf)
-  elif [ "$_timesync" != "none" ]; then
-    optdepends+=("${_resolver}: replacement for systemd-timesyncd")
-  fi
+  case "$_timesync" in
+    "systemd") backup+=(etc/systemd/timesyncd.conf);;
+    "none") ;;
+    *) optdepends+=("${_timesync}: replacement for systemd-timesyncd");;
+  esac
 
   for opt in seccomp selinux smack; do
     if [ "$(bool_opt "$opt" "${_security[@]}")" = "true" ]; then
@@ -329,10 +331,10 @@ package_systemd-light() {
   rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
 
   # files shipped with systemd-resolvconf
-  rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+  rm -f "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
   # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  rm -f "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
   sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
     -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 

@@ -1,6 +1,6 @@
 pkgbase = systemd-light
-	pkgver = 243.78
-	pkgrel = 3
+	pkgver = 243.162
+	pkgrel = 2
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
@@ -92,7 +92,7 @@ pkgname = systemd-light
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = systemd-light-libs=243.78
+	depends = systemd-light-libs=243.162
 	depends = libidn2
 	depends = libidn2.so
 	depends = lz4
@@ -114,10 +114,10 @@ pkgname = systemd-light
 	optdepends = systemd: replacement for systemd-networkd
 	optdepends = systemd: replacement for systemd-resolved
 	optdepends = systemd: replacement for systemd-timesyncd
-	provides = systemd=243.78
+	provides = systemd=243.162
 	provides = nss-myhostname
-	provides = systemd-tools=243.78
-	provides = udev=243.78
+	provides = systemd-tools=243.162
+	provides = udev=243.162
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -148,7 +148,7 @@ pkgname = systemd-light-libs
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = systemd-libs=243.78
+	provides = systemd-libs=243.162
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
