@@ -2,7 +2,7 @@
 # Contributor: Universebenzene <universebenzene at sina dot com>
 pkgname=('python-astropy-helpers')
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
 url="https://astropy-helpers.readthedocs.io/"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-${pkgver}.tar.gz"
         'use_system_astropy_helpers.patch')
 md5sums=('8e6cee4698f0fe3382e2eb3368d62114'
-         '13cd66eec7da36e18d5db09fe9dfd3a5')
+         '9b061a3f373546f797fcc658483d7e2b')
 
 prepare() {
     cd ${srcdir}/astropy-helpers-${pkgver}
