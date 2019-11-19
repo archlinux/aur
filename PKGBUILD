@@ -10,7 +10,7 @@
 
 pkgname=shadow-selinux
 pkgver=4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
@@ -61,23 +61,20 @@ prepare() {
   cd "${pkgname/-selinux}"
 
   local backports=(
+    edf7547ad5aa650be868cf2dac58944773c12d75
+    e293aa9cfca0619a63616af75532637dab60d49d
   )
 
   for commit in "${backports[@]}"; do
     git cherry-pick -n "$commit"
   done
-
-  autoreconf -v -f --install
-
-  # supress etc/pam.d/*, we provide our own
-  sed -i '/^SUBDIRS/s/pam\.d//' etc/Makefile.in
 }
 
 build() {
   cd "${pkgname/-selinux}"
 
+  autoreconf -fisv
   ./configure \
-    LIBS="-lcrypt" \
     --prefix=/usr \
     --bindir=/usr/bin \
     --sbindir=/usr/bin \
@@ -87,6 +84,7 @@ build() {
     --sysconfdir=/etc \
     --with-libpam \
     --with-group-name-max-length=32 \
+    --with-audit \
     --with-selinux
 
   make
@@ -101,11 +99,11 @@ package() {
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # useradd defaults
-  install -Dm644 "$srcdir/useradd.defaults" "$pkgdir/etc/default/useradd"
+  install -Dm600 "$srcdir/useradd.defaults" "$pkgdir/etc/default/useradd"
 
-  # systemd timer
+  # systemd units
   install -D -m644 "$srcdir/shadow.timer" "$pkgdir/usr/lib/systemd/system/shadow.timer"
-  install -D -m644 "$srcdir/shadow.service" $pkgdir/usr/lib/systemd/system/shadow.service
+  install -D -m644 "$srcdir/shadow.service" "$pkgdir/usr/lib/systemd/system/shadow.service"
   install -d -m755 "$pkgdir/usr/lib/systemd/system/timers.target.wants"
   ln -s ../shadow.timer "$pkgdir/usr/lib/systemd/system/timers.target.wants/shadow.timer"
 
@@ -113,7 +111,7 @@ package() {
   install -Dm644 "$srcdir/login.defs" "$pkgdir/etc/login.defs"
 
   # PAM config - custom
-  install -dm755 "$pkgdir/etc/pam.d"
+  rm "$pkgdir/etc/pam.d"/*
   install -t "$pkgdir/etc/pam.d" -m644 "$srcdir"/{passwd,chgpasswd,chpasswd,newusers}
 
   # PAM config - from tarball
@@ -126,12 +124,10 @@ package() {
   done
 
   # Remove evil/broken tools
-  rm "$pkgdir"/usr/sbin/logoutd
+  rm "$pkgdir"/usr/bin/logoutd
 
   # Remove utilities provided by util-linux
-  rm \
-      "$pkgdir"/usr/bin/{login,su,chsh,chfn,sg,nologin} \
-      "$pkgdir"/usr/sbin/{vipw,vigr}
+  rm "$pkgdir"/usr/bin/{login,su,chsh,chfn,sg,nologin,vipw,vigr}
 
   # but we keep newgrp, as sg is really an alias to it
   mv "$pkgdir"/usr/bin/{newgrp,sg}
@@ -151,8 +147,4 @@ package() {
   rmdir \
       "$pkgdir"/usr/share/man/{fi,id,zh_TW}/man1 \
       "$pkgdir"/usr/share/man/{fi,ko/man8}
-
-  # move everything else to /usr/bin, because this isn't handled by ./configure
-  mv "$pkgdir"/usr/sbin/* "$pkgdir"/usr/bin
-  rmdir "$pkgdir/usr/sbin"
 }
