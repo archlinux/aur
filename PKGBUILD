@@ -2,10 +2,10 @@
 
 _extension_name='dashlane'
 _extension_id='fdjamakpfbbddfjaooikfcpapjohcfmg'
-_store_base_url='https://clients2.google.com/service/update2/crx?response=redirect&prodversion=78.0&x=id%3D'
+_store_base_url='https://clients2.google.com/service/update2/crx?response=redirect&prodversion=78.0&acceptformat=crx2,crx3&x=id%3D'
 pkgname="chromium-extension-${_extension_name}"
 pkgver=6.1942.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The password manager, perfected'
 license=('CUSTOM')
 arch=('any')
