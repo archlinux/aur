@@ -7,7 +7,7 @@ pkgdesc="Intuitive applications and API for chemical sketching, visualization an
 arch=('any')
 url="http://www.chemaxon.com"
 license=('proprietary')
-depends=('jre11-openjdk')
+depends=('java-runtime<=11')
 filename="marvin_linux_19.23.rpm"
 source=("https://dl.chemaxon.com/marvin/$pkgver/$filename"
 "MarvinSketch.desktop"

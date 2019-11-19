@@ -5,7 +5,7 @@ pkgbase = marvin
 	url = http://www.chemaxon.com
 	arch = any
 	license = proprietary
-	depends = jre11-openjdk
+	depends = java-runtime<=11
 	source = https://dl.chemaxon.com/marvin/19.23.0/marvin_linux_19.23.rpm
 	source = MarvinSketch.desktop
 	source = marvin-sketch-symbolic.svg
