@@ -1,0 +1,13 @@
+pkgbase = chromium-extension-user-agent-switcher
+	pkgdesc = Spoofs & Mimics User-Agent strings
+	pkgver = latest
+	pkgrel = 1
+	url = https://www.google.com
+	arch = any
+	license = CUSTOM
+	depends = chromium
+	source = djflhoibgkdhkhhcedjiklpkjnoahfmg.json
+	sha256sums = 5bcd92f712b450ecb20eb390f957216d488e5dc0c4abbb2cbf4dd6b570b11edc
+
+pkgname = chromium-extension-user-agent-switcher
+
