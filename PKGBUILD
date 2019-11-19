@@ -1,12 +1,12 @@
 pkgname=pyneedle
 pkgnameorig=pyneedle
-pkgver=r85.88f7f0a171d7
+pkgver=86
 pkgrel=1
 pkgdesc="Convenient tool created to allow you to quickly search for files in your computer, using one of the supported search engines (i.e. tracker and recoll)"
 arch=('any')
 url="https://bitbucket.org/aperezmendez/pyneedle"
 license=('MIT')
-depends=('gtk3' 'python2-setuptools')
+depends=('gtk3' 'python-setuptools')
 optdepends=('recoll' 'tracker')
 options=(!emptydirs)
 makedepends=('mercurial')
