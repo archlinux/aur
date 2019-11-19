@@ -3,26 +3,31 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-polar
-pkgver=1.1008
-pkgrel=2
+pkgver=1.1008.r6.g9d8188e
+pkgrel=1
 pkgdesc="Polar creation plugin for OpenCPN"
 arch=('x86_64')
 license=("GPL3")
 depends=('opencpn')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/polar.html"
-source=("https://github.com/ptulp/polar_pi/archive/v${pkgver}.tar.gz")
-sha1sums=('9354184d44b72fcd7932f83a7eba248a15307a9b')
+source=("$pkgname::git+https://github.com/ptulp/polar_pi.git")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "polar_pi-${pkgver}"
+  cd $pkgname
   mkdir -p build
   cd build
-  cmake -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   make
 }
 
 package() {
-  cd "polar_pi-${pkgver}/build"
+  cd "$pkgname/build"
   DESTDIR="$pkgdir" make install
 }
