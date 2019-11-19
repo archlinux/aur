@@ -1,6 +1,6 @@
 pkgbase = openframeworks-nightly
 	pkgdesc = An open source C++ toolkit for creative coding.
-	pkgver = 20180511
+	pkgver = 20191119
 	pkgrel = 1
 	url = http://openframeworks.cc/
 	install = openframeworks.install
@@ -34,9 +34,9 @@ pkgbase = openframeworks-nightly
 	provides = openframeworks
 	conflicts = openframeworks
 	options = !strip
-	source = http://ci.openframeworks.cc/versions/nightly/of_v20180511_linux64gcc6_nightly.tar.gz
+	source = http://ci.openframeworks.cc/versions/nightly/of_v20191119_linux64gcc6_nightly.tar.gz
 	source = of-make-workspace
-	md5sums = 23024539542af287a8b521a586b7df60
+	md5sums = ac1569f11504eff92df0f72f44cd9f6f
 	md5sums = d4a0cfda1970138b71d28f1cd81220da
 
 pkgname = openframeworks-nightly

@@ -2,7 +2,7 @@
 # Original PKGBUILD: Marco Pompili <aur@emarcs.org>
 
 pkgname=openframeworks-nightly
-pkgver=20180511
+pkgver=20191119
 pkgrel=1
 pkgdesc="An open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
@@ -21,7 +21,7 @@ _name="of_v${pkgver}_linux64gcc6_release"
 
 source=("http://ci.openframeworks.cc/versions/nightly/of_v${pkgver}_linux64gcc6_nightly.tar.gz"
         "of-make-workspace")
-md5sums=('23024539542af287a8b521a586b7df60'
+md5sums=('ac1569f11504eff92df0f72f44cd9f6f'
          'd4a0cfda1970138b71d28f1cd81220da')
 
 prepare() {
