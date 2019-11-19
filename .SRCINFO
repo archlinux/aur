@@ -1,14 +1,14 @@
 pkgbase = mtg
 	pkgdesc = Bullshit-free MTProto proxy for Telegram
-	pkgver = 1.0
-	pkgrel = 4
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/9seconds/mtg
 	install = mtg.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/9seconds/mtg#tag=1.0
+	source = git+https://github.com/9seconds/mtg#tag=v1.0.1
 	source = mtg@.service
 	source = example.conf
 	sha256sums = SKIP
