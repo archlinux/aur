@@ -1,6 +1,6 @@
 pkgbase = lucas-simpsons-hit-and-run-mod-launcher
 	pkgdesc = Mod launcher for The Simpsons: Hit & Run.
-	pkgver = 1.23.7
+	pkgver = 1.23.9
 	pkgrel = 1
 	url = https://donutteam.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lucas-simpsons-hit-and-run-mod-launcher
 	depends = zenity
 	depends = wine
 	depends = winetricks
-	source = lucas-simpsons-hit-and-run-mod-launcher-1.23.7.zip::https://cdn.donutteam.com/Downloads/Tools/Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%201.23.7.zip
+	source = lucas-simpsons-hit-and-run-mod-launcher-1.23.9.zip::https://cdn.donutteam.com/Downloads/Tools/Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%201.23.9.zip
 	source = lucas-simpsons-hit-and-run-mod-launcher-linux-launcher.zip::https://gitlab.com/CodingKoopa/lucas-simpsons-hit-and-run-mod-launcher-linux-launcher/-/archive/master/lucas-simpsons-hit-and-run-mod-launcher-linux-launcher-master.zip
 	md5sums = SKIP
 	md5sums = SKIP
