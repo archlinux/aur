@@ -1,0 +1,17 @@
+pkgbase = libam7xxx
+	pkgdesc = Open Source library to communicate via USB with Projectors and Digital Picture Frames based on the Actions Micro AM7XXX family of ICs
+	pkgver = 20180302
+	pkgrel = 1
+	url = https://ao2.it/en/blog/2012/03/30/open-source-driver-usb-pico-projectors
+	arch = any
+	groups = base-devel
+	license = custom
+	makedepends = git
+	depends = gst-libav
+	provides = libam7xxx
+	conflicts = libam7xxx
+	source = git+https://git.ao2.it/libam7xxx.git/
+	md5sums = SKIP
+
+pkgname = libam7xxx
+
