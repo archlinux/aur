@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.19
-_minor=84
+_minor=85
 _srcname=linux-${_major}
-_clr=${_major}.83-93
+_clr=${_major}.84-95
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
@@ -97,7 +97,6 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        sed -i '38,63 {s/^/#/}' ${srcdir}/${pkgbase}/linux-lts2018.spec
         for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2018.spec | grep -Ev '^Patch0126|^Patch0128' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
@@ -324,7 +323,7 @@ done
 
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '06385c95678abddf0341c8a46232c8ffbfca1a486fec8f8800ed07a466e2de22'
+            'ee5c2b855ede038cef27abf56ada0027a6044959678da168bb9a2bed62ec4f74'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
