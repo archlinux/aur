@@ -1,7 +1,7 @@
 pkgname=pyneedle
 pkgnameorig=pyneedle
 pkgver=86
-pkgrel=1
+pkgrel=2
 pkgdesc="Convenient tool created to allow you to quickly search for files in your computer, using one of the supported search engines (i.e. tracker and recoll)"
 arch=('any')
 url="https://bitbucket.org/aperezmendez/pyneedle"
@@ -12,11 +12,6 @@ options=(!emptydirs)
 makedepends=('mercurial')
 source=('hg+https://bitbucket.org/aperezmendez/pyneedle')
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-}
 
 build() {
   cd "$srcdir/$pkgname"
