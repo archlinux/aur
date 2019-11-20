@@ -16,8 +16,8 @@ optdepends=('plumed-patches: PLUMED support'
             'plumed-mpi: metadynamics support with MPI')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
          '6b38d9cfb6e33b719bdf7fe73b26e841'
-         '3fcea0f27a2b47ac98a1725e48a80136'
-         '16a34c0e34f31e3f5eeaa5d0723b154a')
+         'ef2dc0fec7e716075c044a019d8f8f0c'
+         'a4fe6129d03ad814744b85584d1aba9a')
 options=(staticlibs !buildflags !makeflags)
 
 # Due to licensing issues you must register and download AmberTools package from AmberMD url and put it in directory with PKGBUILD.
