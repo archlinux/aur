@@ -32,7 +32,7 @@ pkgbase = prosody-hg
 	sha256sums = SKIP
 	sha256sums = f8612ba5d92fdae8fffe826b3248452d25315af15b1c8f1874f68bbfaeaab055
 	sha256sums = e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48
-	sha256sums = af4ce76ae0a8773429eac53c72f1b87c8fa59c63acf003450f75dcb73131a21c
+	sha256sums = f2ba8da777d660361a4fbe5d80e8e5855e07052ad67d7534413d39b4cbddaa1d
 
 pkgname = prosody-hg
 

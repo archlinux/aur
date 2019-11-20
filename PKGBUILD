@@ -48,19 +48,6 @@ prepare() {
   sed -i s/"error = "/"-- error = "/g prosody.cfg.lua.dist
   sed -i s/"--\ \"\*syslog\"\;"/"\"*syslog\"\;"/g prosody.cfg.lua.dist
 
-
-  # add pidfile and daemonize
-  # daemonize is important for systemd!
-  mv prosody.cfg.lua.dist prosody.cfg.lua.old
-
-  echo --Important for systemd >> prosody.cfg.lua.dist
-  echo -- daemonize is important for systemd. if you set this to false the systemd startup will freeze. >> prosody.cfg.lua.dist
-  echo daemonize = true >> prosody.cfg.lua.dist
-  echo 'pidfile = "/run/prosody/prosody.pid"'>> prosody.cfg.lua.dist
-  echo "" >> prosody.cfg.lua.dist
-  cat prosody.cfg.lua.old >> prosody.cfg.lua.dist
-  rm prosody.cfg.lua.old
-
   ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
     --datadir=/var/lib/prosody --with-lua-include=/usr/include/lua5.2 \
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
@@ -102,4 +89,4 @@ package() {
 sha256sums=('SKIP'
             'f8612ba5d92fdae8fffe826b3248452d25315af15b1c8f1874f68bbfaeaab055'
             'e5c30ffbb066f0ed3444475b3313490c535d8c9df018726f6cecf9e3ddfd2e48'
-            'af4ce76ae0a8773429eac53c72f1b87c8fa59c63acf003450f75dcb73131a21c')
+            'f2ba8da777d660361a4fbe5d80e8e5855e07052ad67d7534413d39b4cbddaa1d')

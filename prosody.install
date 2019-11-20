@@ -1,5 +1,8 @@
 post_install() {
     echo ">> Documentation: https://wiki.archlinux.org/index.php/Prosody"
+    echo
+    echo ">> The unit file has been changed to Type=simple. "
+    echo ">> You need to change the configuration back to daemonize=false (prosody default)."
 }
 
 post_upgrade() {

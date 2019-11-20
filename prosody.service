@@ -1,15 +1,73 @@
 [Unit]
 Description=XMPP (Jabber) Server
+Documentation=https://prosody.im/doc
 After=network.target
 
 [Service]
-Type=forking
-PIDFile=/run/prosody/prosody.pid
-ExecStart=/usr/bin/prosodyctl start
-ExecStop=/usr/bin/prosodyctl stop
+### See man systemd.service ###
+# With this configuration, systemd takes care of daemonization
+# so Prosody should be configured with daemonize = false
+Type=simple
+
+# Not sure if this is needed for 'simple'
+PIDFile=/var/run/prosody/prosody.pid
+
+# Start by executing the main executable
+ExecStart=/usr/bin/prosody
+
 ExecReload=/bin/kill -HUP $MAINPID
 
+# Restart on crashes
+Restart=on-abnormal
+
+# Set O_NONBLOCK flag on sockets passed via socket activation
+NonBlocking=true
+
+### See man systemd.exec ###
+
+WorkingDirectory=/var/lib/prosody
+
+User=prosody
+Group=jabber
+
+Umask=0027
+
+# Nice=0
+
+# Set stdin to /dev/null since Prosody does not need it
+StandardInput=null
+
+# Direct stdout/-err to journald for use with log = "*stdout"
 StandardOutput=journal
+StandardError=inherit
+
+# This usually defaults to 4k or so
+# LimitNOFILE=1M
+
+## Interesting protection methods
+# Finding a useful combo of these settings would be nice
+#
+# Needs read access to /etc/prosody for config
+# Needs write access to /var/lib/prosody for storing data (for internal storage)
+# Needs write access to /var/log/prosody for writing logs (depending on config)
+# Needs read access to code and libraries loaded
+
+# ReadWriteDirectories=/var/lib/prosody /var/log/prosody
+# InaccessibleDirectories=/boot /home /media /mnt /root /srv
+# ReadOnlyDirectories=/usr /etc/prosody
+
+# PrivateTmp=true
+# PrivateDevices=true
+# PrivateNetwork=false
+
+# ProtectSystem=full
+# ProtectHome=true
+# ProtectKernelTunables=true
+# ProtectControlGroups=true
+# SystemCallFilter=
+
+# This should break LuaJIT
+# MemoryDenyWriteExecute=true
 
 [Install]
 WantedBy=multi-user.target
