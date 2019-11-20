@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Abricotine
+GenericName=Abricotine
+Comment=A markdown editor with inline preview
+Exec=abricotine %F
+Icon=abricotine
+Terminal=false
+Type=Application
+Categories=Office;TextEditor;
+MimeType=text/markdown;
+Keywords=Text;Editor;Markdown;

@@ -1,27 +1,29 @@
-# Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
+# Maintainer:  Frank Seifferth <frankseifferth@posteo.net>
 
 pkgname=abricotine-bin
-_binname=Abricotine
-pkgver=0.3.0
+_pkgname=abricotine
+conflicts=("abricotine")
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A markdown editor with inline preview"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
-provides=('abricotine')
-conflicts=('abricotine')
-source_i686=("${_binname}-${pkgver}-ia32.zip::https://github.com/brrd/${_binname}/releases/download/${pkgver}/${_binname}-linux-ia32.zip")
-source_x86_64=("${_binname}-${pkgver}-x64.zip::https://github.com/brrd/${_binname}/releases/download/${pkgver}/${_binname}-linux-x64.zip")
-sha256sums_i686=('225f8b37ba69f1e9b3e9a7a0c325baaa78cca19e306c62fdf46e35dd1c7c00dc')
-sha256sums_x86_64=('702c9255d10abc273e7b43c53f6d71c256b4984dcdb47e07a1a7b11617cec257')
+depends=('gconf' 'libxss')
+source=("https://github.com/brrd/Abricotine/releases/download/$pkgver/Abricotine-$pkgver-linux-x64.tar.gz"
+        "abricotine.desktop")
+sha256sums=('46e96c2d6e89817ce709eec723a2ae886b7a865dd0e68478c37441023b517acc'
+            '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
 
 package() {
-  cd "${srcdir}/${_binname}-linux-"*
-  install -d "${pkgdir}/opt/${_binname,,}"
-  cp -ra * "${pkgdir}/opt/${_binname,,}"
+    cd "$srcdir/Abricotine-linux-x64"
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${_binname,,}/${_binname}" "${pkgdir}/usr/bin/${_binname,,}"
+    install -d "$pkgdir/opt/abricotine"
+    cp -r * "$pkgdir/opt/abricotine"
+
+    install -d "$pkgdir/usr/bin"
+    ln -s "/opt/abricotine/Abricotine" "$pkgdir/usr/bin/abricotine"
+
+    install -Dm644 "../abricotine.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "icons/abricotine@2x.png" "$pkgdir/usr/share/pixmaps/abricotine.png"
 }
-
-# vim:set ts=2 sw=2 et:
