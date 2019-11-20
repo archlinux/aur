@@ -10,6 +10,7 @@ DEPENDS=(
     python-deprecated
     python-fuzzywuzzy
     python-gobject
+    python-ordered-set
     python-pychromecast
     pygobject-devel
     python-dateutil
