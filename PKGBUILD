@@ -23,18 +23,18 @@ makedepends=('git' 'cmake')
 optdepends=('gtksourceview-lolcode: syntax highlight')
 # provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::$_pkgurl")
+source=("$pkgname::$_pkgurl")
 sha512sums=('SKIP')
 
 pkgver()
 {
-    cd "${pkgname%-git}" || exit
+    cd "$pkgname" || exit
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
 {
-    cd "${pkgname%-git}" || exit
+    cd "$pkgname" || exit
     cmake -DCMAKE_INSTALL_PREFIX=/usr
     make
     # make docs
@@ -48,6 +48,6 @@ build()
 
 package()
 {
-    cd "${pkgname%-git}" || exit
+    cd "$pkgname" || exit
     make DESTDIR="$pkgdir" install
 }
