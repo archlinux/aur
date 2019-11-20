@@ -1,4 +1,4 @@
-#!/usr/bin/electron4
+#!/usr/bin/electron6
 
 const name = 'openbazaar';
 
