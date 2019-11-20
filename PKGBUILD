@@ -65,7 +65,7 @@ sha512sums+=(   'SKIP'
 
 _build()
 {
-    cd "$srcdir/$_gitname-$pkgver" || exit
+    cd "$_gitname-$pkgver" || exit
     _r=0
 
     # add local dependencies to search path
@@ -101,20 +101,18 @@ _build()
 
 build()
 {
-    cd "$srcdir/$_gitname-$pkgver" || exit
+    cd "$_gitname-$pkgver" || exit
     _build build
 }
 
 check()
 {
-    cd "$srcdir/$_gitname-$pkgver" || exit
+    cd "$_gitname-$pkgver" || exit
     _build test
 }
 
 package()
 {
-    cd "$srcdir" || exit
-
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
@@ -154,7 +152,7 @@ package()
 
     # remove unimportant files
     # https://raw.githubusercontent.com/SimonN/LixD/master/doc/build/package.txt
-    rm -r "$srcdir/$_gitname-$pkgver/doc/build"
+    rm -r "doc/build"
 
     # https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
     # make directories
