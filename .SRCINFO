@@ -1,7 +1,7 @@
 pkgbase = p4v
 	pkgdesc = Perforce Visual Client
 	pkgver = 2019.2.1856742
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.perforce.com
 	arch = x86_64
 	license = custom:p4v
@@ -16,7 +16,7 @@ pkgbase = p4v
 	sha256sums = 10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827
 	sha256sums = 139c5e4951ea9ab040912ef1f9705de16a37d32fdf7b8c7116eb5a785829c634
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	sha256sums = 0702a2bfcbbe63ab34a2398535c19413bb60cd9c85d6c6b92e6319c620959521
+	sha256sums = a1fed5d161d21d461313c19214d1922987160b2ad55ed7054d28d014914bb1dd
 
 pkgname = p4v
 
