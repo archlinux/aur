@@ -1,15 +1,34 @@
-# Maintainer: Ivy Foster <code@escondida.tk>
+# Maintainer: Ivy Foster <code@iff.ink>
 
 pkgbase=frotz-git
-pkgname=(frotz-ncurses-git frotz-dumb-git)
-pkgver=2.44.r196.gf3ceac9
+pkgname=(frotz-dumb-git frotz-ncurses-git frotz-sdl-git)
+pkgver=2.50.r2.g295b6aa
 pkgrel=1
 pkgdesc='Z-machine interpreter for interactive fiction games'
 
-arch=(i686 x86_64)
-url='http://frotz.sourceforge.net/'
+makedepends=(
+		git
+
+		libao
+		libmodplug
+		libsamplerate
+		libsndfile
+		libvorbis
+
+		ncurses
+
+		freetype2
+		libjpeg-turbo
+		libpng
+		sdl2
+		sdl2_mixer
+		zlib
+)
+
+arch=(x86_64)
+url='https://gitlab.com/DavidGriffith/frotz'
 license=(GPL)
-source=('git+https://github.com/DavidGriffith/frotz')
+source=('git+https://gitlab.com/DavidGriffith/frotz.git')
 md5sums=(SKIP)
 
 pkgver() {
@@ -17,32 +36,57 @@ pkgver() {
 	git describe | sed 's@-\(.*\)-@.r\1.@'
 }
 
-prepare() {
-	cd frotz
-	sed '/^PREFIX/ s:/usr/local:/usr:
-		/^MAN_PREFIX/ s:$:/share:
-		' -i Makefile
-}
-
 build() {
 	cd frotz
-	make OPTS="$CFLAGS $LDFLAGS"
-	make OPTS="$CFLAGS $LDFLAGS" dumb 
-}
-
-package_frotz-ncurses-git() {
-	conflicts=(frotz)
-	provides=(frotz)
-	depends=('ncurses')
-
-	cd frotz
-	make DESTDIR="$pkgdir" install
+	make PREFIX=/usr dumb ncurses sdl
 }
 
 package_frotz-dumb-git() {
+	pkgdesc='Z-machine interpreter for interactive fiction games, for dumb terminals or scripting'
+	provides=(dfrotz frotz-dumb)
 	conflicts=(frotz-dumb)
-	provides=(frotz-dumb)
 
 	cd frotz
-	make DESTDIR="$pkgdir" install_dumb
+	make DESTDIR="$pkgdir" PREFIX=/usr install_dumb
+}
+
+package_frotz-ncurses-git() {
+	pkgdesc='ncurses-based Z-machine interpreter for interactive fiction games'
+	provides=(frotz frotz-ncurses)
+	conflicts=(frotz-ncurses)
+	depends=(
+		libao
+		libmodplug
+		libsamplerate
+		libsndfile
+		libvorbis
+
+		ncurses
+	)
+
+	cd frotz
+	make DESTDIR="$pkgdir" PREFIX=/usr install_frotz
+}
+
+package_frotz-sdl-git() {
+	pkgdesc='Graphical Z-machine interpreter for interactive fiction games'
+	provides=(sfrotz frotz-sdl)
+	conflicts=(frotz-sdl)
+	depends=(
+		libao
+		libmodplug
+		libsamplerate
+		libsndfile
+		libvorbis
+
+		freetype2
+		libjpeg-turbo
+		libpng
+		sdl2
+		sdl2_mixer
+		zlib
+	)
+
+	cd frotz
+	make DESTDIR="$pkgdir" PREFIX=/usr install_sdl
 }
