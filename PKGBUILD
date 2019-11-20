@@ -9,7 +9,7 @@ pkgname=icecat
 pkgver=68.2.0
 a_pkgver=( ${pkgver//./ } )
 #_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -17,7 +17,7 @@ license=('GPL' 'MPL' 'LGPL')
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust-bin=1.37.0 clang llvm jack gtk2
+             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm wget mercurial perl-rename)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -29,24 +29,19 @@ options=(!emptydirs !makeflags !strip)
 #source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
 source=(https://gitlab.com/anto.trande/icecat/-/archive/master/icecat-master.tar.gz
         icecat.desktop icecat-safe.desktop
-        "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368")
+        "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368"
+        "patch-bindgen-rust1390.patch::https://svnweb.freebsd.org/ports/head/www/firefox-esr/files/patch-bindgen-rust1390?revision=516995&view=co&pathrev=516995")
 
 sha256sums=('5d12ab0a0dd8a77c0364a13642205cebe8b2f450469d40c841c50cf803882c83'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
-            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
+            'd0c7cc63ce49128e6a53dde7f4116293a51e2144fc329df93dda44b228a8effb')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 prepare() {
   cd icecat-master
-  #patch -Np1 -i ../patch_makeicecat_stuff.patch
-  #sed -e "s/^FFMAJOR.*/FFMAJOR=${a_pkgver[0]}/g" -i makeicecat
-  #sed -e "s/^FFMINOR.*/FFMINOR=${a_pkgver[1]}/g" -i makeicecat
-  #sed -e "s/^FFSUB.*/FFSUB=${a_pkgver[2]}/g" -i makeicecat
-#  sed -e "s/^FFSUB.*/FFSUB=/g" -i makeicecat
-  #sed -e "s/^GNUVERSION=.*/GNUVERSION=${pkgrel}/g" -i makeicecat
-  #sed -e 's/^FFVERSION.*/FFVERSION=$FFMAJOR.$FFMINOR.$FFSUB/g' -i makeicecat   # Only need this patch if release has 2 numbers
 
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
@@ -77,11 +72,11 @@ prepare() {
   bash makeicecat
   cd output/icecat-${pkgver}
 
-  # Fix brand name variables
-  #echo -e "-brand-shorter-name = IceCat\n-brand-full-name = GNU IceCat\n-brand-product-name = IceCat\n-vendor-short-name = GNU" >> browser/branding/official/locales/en-US/brand.ftl
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../../../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # https://svnweb.freebsd.org/ports/head/www/firefox-esr/files/patch-bindgen-rust1390?revision=516995&view=markup&pathrev=516995
+  patch -Np0 -i ../../../patch-bindgen-rust1390.patch
 
   # Remove extra tag
   mv -f browser/base/content/aboutDialog.xul browser/base/content/aboutDialog.xul_bad
@@ -91,12 +86,6 @@ prepare() {
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
-
-  # Update all IceCat extensions
-  #git clone https://gitlab.com/sebaro/ViewTube.git data/extensions/viewtube@extension/
-  #cd data/extensions/https-everywhere@eff.org
-  #rm -rf * && wget -O - 'https://www.eff.org/files/https-everywhere-latest.xpi' | bsdtar -xvf-
-  #cd ../../..
 
   printf '%b' "  \e[1;36m->\e[0m\033[1m Starting build...\n"
   
@@ -146,8 +135,8 @@ build() {
 
   # -fno-plt with cross-LTO causes obscure LLVM errors
   # LLVM ERROR: Function Import: link error
-  CFLAGS="${CFLAGS/-fno-plt/}"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+  #CFLAGS="${CFLAGS/-fno-plt/}"
+  #CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols

@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
 	pkgver = 68.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = icecat
 	makedepends = inetutils
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
-	makedepends = rust-bin=1.37.0
+	makedepends = rust
 	makedepends = clang
 	makedepends = llvm
 	makedepends = jack
@@ -52,10 +52,12 @@ pkgbase = icecat
 	source = icecat.desktop
 	source = icecat-safe.desktop
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368
+	source = patch-bindgen-rust1390.patch::https://svnweb.freebsd.org/ports/head/www/firefox-esr/files/patch-bindgen-rust1390?revision=516995&view=co&pathrev=516995
 	sha256sums = 5d12ab0a0dd8a77c0364a13642205cebe8b2f450469d40c841c50cf803882c83
 	sha256sums = e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d
 	sha256sums = 33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208
 	sha256sums = ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894
+	sha256sums = d0c7cc63ce49128e6a53dde7f4116293a51e2144fc329df93dda44b228a8effb
 
 pkgname = icecat
 
