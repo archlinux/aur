@@ -19,8 +19,8 @@
 # Contributor: Tran Cong <nopain2110@gmail.com>
 
 pkgname=ibus-bamboo-git
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='A Vietnamese IME for IBus'
 arch=(any)
 license=(GPL3)
