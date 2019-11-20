@@ -2,19 +2,18 @@
 # Maintainer: Michael Saunders <michael (dot) saunders [at] tuta {dot} io>
 
 pkgname=mkp224o
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Vanity address generator for Tor onion v3 (ed25519) Onion Services"
 arch=('i686' 'x86_64')
 url="https://github.com/cathugger/mkp224o"
 license=('CC0')
 provides=('mkp224o')
-# To build and run in clean chroot
 depends=('libsodium')
 
 source=(https://github.com/cathugger/${pkgname}/archive/v${pkgver}.tar.gz)
 
-sha256sums=('6c7e43381158ae3527225f03859ceda7ca50ede518182d239440b4c2573b486b')
+sha256sums=('36480893aca298b7a6b7d6f07dad27754a02211c5e64fa292c7d57153cf7db7c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
