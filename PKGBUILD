@@ -21,9 +21,11 @@ _resolver="systemd"
 _timesync="systemd"
 
 # Prepend with ! to disable support.
+_features=(hostnamed localed machined portabled firstboot importd rfkill)
 _security=(seccomp !selinux !apparmor !smack)
 
 # Specify non-empty to enable these features
+_audit="y"  # audit framework support
 _cryptsetup="y"  # Disk encryption (LUKS)
 _clear=""  #  Clearlinux patches
 
@@ -40,7 +42,7 @@ makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'git'
-             'meson' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'meson' 'pcre2' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
@@ -97,9 +99,8 @@ if [ "$_bootloader" = 'systemd' ]; then
   makedepends+=('gnu-efi-libs')
 fi
 
-if [ -n "$_cryptsetup" ]; then
-  makedepends+=('cryptsetup')
-fi
+[ -n "$_audit" ] && makedepends+=('audit')
+[ -n "$_cryptsetup" ] && makedepends+=('cryptsetup')
 
 if [ -n "$_clear" ]; then
   local _clrrel=267
@@ -226,18 +227,23 @@ build() {
     -Dsysvinit-path=
     -Dsysvrcnd-path=
 
+    -Daudit=$(is_nonempty "$_audit")
     -Dbacklight=$(is_systemd "$_backlight")
     -Defi=$(is_systemd "$_bootloader")
     -Dgnu-efi=$(is_systemd "$_bootloader")
+    -Dlibcryptsetup=$(is_nonempty "$_cryptsetup")
     -Dnetworkd=$(is_systemd "$_network")
-    -Dresolve=$(is_systemd "$_resolver")
-    -Dgnutls=$(is_systemd "$_resolver")
-    -Dopenssl=$(is_systemd "$_resolver")
+    -Dnss-mymachines=$(bool_opt 'machined' "${_features[@]}")
     -Dnss-resolve=$(is_systemd "$_resolver")
+    -Dopenssl=$(is_systemd "$_resolver")
+    -Dresolve=$(is_systemd "$_resolver")
     -Dtimedated=$(is_systemd "$_timesync")
     -Dtimesyncd=$(is_systemd "$_timesync")
-    -Dlibcryptsetup=$(is_nonempty "$_cryptsetup")
   )
+
+  for opt in hostnamed localed machined portabled firstboot importd rfkill; do
+    _meson_options+=("-D${opt}=$(bool_opt "$opt" "${_features[@]}")")
+  done
 
   for opt in seccomp selinux apparmor smack; do
     _meson_options+=("-D${opt}=$(bool_opt "$opt" "${_security[@]}")")
@@ -255,9 +261,9 @@ check() {
 package_systemd-light() {
   pkgdesc='system and service manager'
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' "systemd-light-libs=$pkgver" 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
-           'util-linux' 'xz' 'pcre2' 'audit')
+           'util-linux' 'xz' 'pcre2')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
@@ -314,6 +320,10 @@ package_systemd-light() {
   if [ "$(bool_opt 'apparmor' "${_security[@]}")" = "true" ]; then
     depends+=('apparmor')
   fi
+
+
+  [ -n "$_audit" ] && depends+=('audit')
+  [ -n "$_cryptsetup" ] && depends+=('cryptsetup')
 
   DESTDIR="$pkgdir" meson install -C build
 
