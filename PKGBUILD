@@ -2,7 +2,7 @@
 
 pkgname=sigrok-firmware-fx2lafw-bin
 _pkgname=sigrok-firmware-fx2lafw
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="An open-source firmware for Cypress FX2 (precompiled binaries)"
 arch=(any)
@@ -12,7 +12,7 @@ depends=()
 conflicts=("sigrok-firmware-fx2lafw")
 makedepends=()
 source=("http://sigrok.org/download/binary/${_pkgname}/${_pkgname}-bin-${pkgver}.tar.gz")
-sha512sums=('0dd4eb5327fbf5a8ee413b5ad460e2febe7da6aba13cfe4c7467966e4d4a0033b796ce7634647c0bbfa335034180272e7f8167b7a8181fb73ed3839891a44e46')
+sha512sums=('60faac29198532bd5e03e44ed7f89c1502c83c6cf60ec5cc0f3ae9891c45b5de55eba5304c47d3231c8222ff61f1425aed88a44e7ff89d30b75d6e5faf7a623c')
 
 
 build(){
