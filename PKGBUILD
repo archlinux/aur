@@ -13,7 +13,7 @@ provides=('compton')
 conflicts=('compton')
 makedepends=(asciidoc git mesa meson ninja setconf)
 depends=(hicolor-icon-theme libconfig libdbus libev libgl libxdg-basedir pcre
-         pixman xcb-util-image xcb-util-renderutil)
+         pixman xcb-util-image xcb-util-renderutil libxcomposite)
 backup=(etc/xdg/compton.conf)
 optdepends=('dbus:          For controlling compton via D-Bus'
             'xorg-xwininfo: For compton-trans'
