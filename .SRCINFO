@@ -1,16 +1,17 @@
 pkgbase = python-leveldb
 	pkgdesc = Python bindings for leveldb database library
 	pkgver = 0.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/leveldb/
 	arch = x86_64
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	depends = leveldb
 	source = python-leveldb-0.20.tar.gz::https://files.pythonhosted.org/packages/source/l/leveldb/leveldb-0.20.tar.gz
+	source = python-leveldb-0.20-python3.8-fix.patch::https://patch-diff.githubusercontent.com/raw/rjpower/py-leveldb/pull/11.patch
 	source = LICENSE
 	sha256sums = 9ffc9b68c8c0e0a996e2409e4a95ef1fbb4dcf0f6040b21b9153cbd57c90e079
+	sha256sums = ca2e6932b3add24e7116d78b2c975714a4dc781f23ba932f017d640c418b3b42
 	sha256sums = e1223a5ab4b4631a8f841302c6e407738a6195e68f46cfec25438a75949c8689
 
 pkgname = python-leveldb
