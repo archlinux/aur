@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=/opt/biniax2/biniax2
+Exec=biniax2
 Name=Biniax2
 GenericName=Arcade game : match two similar fruits, and they will disappear, just clear your way and avoid being blocked
 Comment=
