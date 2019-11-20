@@ -1,0 +1,4 @@
+[DEFAULT]
+client_id = YOUR_CLIENT_ID_HERE
+idtoken_for_roles_url = YOUR_URL_HERE
+well_known_url = https://YOUR_IDP_URL_HERE/.well-known/openid-configuration

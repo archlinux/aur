@@ -1,0 +1,22 @@
+pkgbase = python-mozilla-aws-cli-git
+	pkgdesc = Command line tool to enable accessing AWS using federated single sign on
+	pkgver = v0.1.0.r1.g7fe776c
+	pkgrel = 1
+	url = https://github.com/mozilla-iam/mozilla-aws-cli
+	arch = any
+	license = MPL
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	depends = python
+	depends = python-jose
+	depends = python-requests
+	depends = python-console-menu-git
+	depends = python-flask
+	source = git://github.com/mozilla-iam/mozilla-aws-cli
+	source = config
+	md5sums = SKIP
+	md5sums = 05602a69b352ac548f2c0f2e9aad5a7e
+
+pkgname = python-mozilla-aws-cli-git
+
