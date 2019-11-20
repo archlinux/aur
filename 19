@@ -9,7 +9,7 @@ proc ModulesHelp { } {
 module-whatis "AmberTools19 package"
 
 set             AMBER_PREFIX    /opt/ambertools
-set             _gccver         7.4.1
+set             _gccver         8.3.0
 
 setenv          AMBER_PREFIX    ${AMBER_PREFIX}
 setenv          AMBERHOME       ${AMBER_PREFIX}

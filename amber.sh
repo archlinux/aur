@@ -1,4 +1,4 @@
-export _gccver=7.4.1
+export _gccver=8.3.0
 export AMBER_PREFIX=/opt/ambertools
 export AMBERHOME=/opt/ambertools
 export PATH="${AMBER_PREFIX}/bin:${PATH}"

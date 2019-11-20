@@ -4,25 +4,25 @@ pkgname=ambertools
 _srcname=amber
 pkgver=19
 _releasever=18
-_gccver=7.4.1
-pkgrel=4
+_gccver=8.3.0
+pkgrel=5
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=('GPL' 'LGPL')
 arch=('x86_64')
-depends=('fakeroot' 'zlib' 'bzip2' 'gcc7-libs' 'flex' 'python2' 'python2-matplotlib' 'tk' 'openmpi3-gcc7')
-makedepends=('make' 'gcc7' 'gcc7-fortran' 'patch' 'tcsh' 'imake')
+depends=('fakeroot' 'zlib' 'bzip2' 'gcc8-libs' 'flex' 'python2' 'python2-matplotlib' 'tk' 'openmpi3-gcc8')
+makedepends=('make' 'gcc8' 'gcc8-fortran' 'patch' 'tcsh' 'imake')
 optdepends=('plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
             'cuda: GPU acceleration support for PBSA and CPPTRAJ'
             'env-modules-tcl: modulefile support')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
-         '85880c3a3267c2e369f4c48c9e552800'
+         '954a26eb9c71cbc21ccad8506030ae35'
          'eff0977b0c5d2da8ea74186dadd9ed01'
          '2e4a52fb820aae6a0b707fec89cb23d1'
-         '768cf354ec1a364d55a858ca871df358'
-         '2fe2fd85a6312f7847fba8e7c2d49896'
-         'b6a324cd278a0818c87ac2cd802614a5')
+         '94c0e67fac1a7e182fa71c165980d69d'
+         '860a64577fe9e4d8b236b7eb2a252327'
+         '20e82439a05f3abdca9c0dcdd2695e6f')
 options=(staticlibs !buildflags !makeflags)
 install=amber.install
 
@@ -69,11 +69,11 @@ build() {
   export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"
 
   # configure and build serial version of AmberTools
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates gnu
   make install
 
   # configure and build parallel version of AmberTools
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -mpi gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates -mpi gnu
   make install
 
   # if CUDA is installed then build extra binaries
@@ -81,10 +81,10 @@ build() {
       export CUDA_HOME="/opt/cuda"
       export LD_LIBRARY_PATH="/opt/cuda/lib:/opt/cuda/lib64:${LD_LIBRARY_PATH}"
 
-      LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -cuda gnu
+      LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates -cuda gnu
       make install
 
-      LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -cuda -mpi gnu
+      LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates -cuda -mpi gnu
       make install
   fi
 }
