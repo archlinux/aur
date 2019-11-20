@@ -15,7 +15,7 @@ pkgbase = vim-x11
 	makedepends = lua
 	makedepends = gawk
 	makedepends = tcl
-	depends = vim-runtime=8.1.2268-1
+	depends = vim-runtime=8.1.2268-2
 	depends = gpm
 	depends = acl
 	optdepends = python2: Python 2 language support
@@ -24,7 +24,7 @@ pkgbase = vim-x11
 	optdepends = lua: Lua language support
 	optdepends = perl: Perl language support
 	optdepends = tcl: Tcl language support
-	provides = vim=8.1.2268-1
+	provides = vim=8.1.2268-2
 	provides = xxd
 	conflicts = vim-minimal
 	conflicts = vim
