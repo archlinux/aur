@@ -1,20 +1,21 @@
 pkgbase = dotnet-sdk-bin
 	pkgdesc = The .NET Core SDK (binary version)
-	pkgver = 3.0.100
+	pkgver = 3.0.101
 	pkgrel = 1
 	url = https://dotnet.microsoft.com/download/dotnet-core
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	depends = dotnet-runtime=3.0.0
-	optdepends = aspnet-runtime=3.0.0: ASP.NET build support
-	provides = dotnet-sdk=3.0.100
+	depends = dotnet-runtime=3.0.1
+	optdepends = aspnet-runtime=3.0.1: ASP.NET build support
+	provides = dotnet-sdk=3.0.101
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/886b4a4c-30af-454b-8bec-81c72b7b4e1f/d1a0c8de9abb36d8535363ede4a15de6/dotnet-sdk-3.0.100-linux-x64.tar.gz
-	sha512sums_x86_64 = 766da31f9a0bcfbf0f12c91ea68354eb509ac2111879d55b656f19299c6ea1c005d31460dac7c2a4ef82b3edfea30232c82ba301fb52c0ff268d3e3a1b73d8f7
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/8ddb8193-f88c-4c4b-82a3-39fcced27e91/b8e0b9bf4cf77dff09ff86cc1a73960b/dotnet-sdk-3.0.100-linux-arm.tar.gz
-	sha512sums_armv7h = c81dddb0b2db8e29762f222f8dc15b8f3fdf939226c4015d2d919b8faaece503c7bbe0ceeec3e8dc27ad9ca29d027bb1164ac9901f7bbf9c5e4a793e4111d45d
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/4f51cfd8-311d-43fe-a887-c80b40358cfd/440d10dc2091b8d0f1a12b7124034e49/dotnet-sdk-3.0.101-linux-x64.tar.gz
+	sha512sums_x86_64 = 8cd6070c9df1272ac3f2a0e9bd8c1fc2cfef38907fa2e3c81384f005168f45036b5904b4f731cbe37d2b3fe558f560008c481939093b0d08ef0f1778ca97f186
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/0b30374c-3d52-45ad-b4e5-9a39d0bf5bf0/deb17f7b32968b3a2186650711456152/dotnet-sdk-3.0.101-linux-arm.tar.gz
+	sha512sums_armv7h = 79f1a40e30b1e3f1e743dc7e9d539ec296a65ba9a2ca5a11c7ba0d3811ddfda5a4897c263da754d6f5ee4d02531d5a42cc303f1106c57d84bbe8d7d713c510bc
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/89fb60b1-3359-414e-94cf-359f57f37c7c/256e6dac8f44f9bad01f23f9a27b01ee/dotnet-sdk-3.0.101-linux-arm64.tar.gz
 
 pkgname = dotnet-sdk-bin
 
