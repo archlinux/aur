@@ -5,8 +5,8 @@ post_install() {
             certificates made available prior to use.
 
             cd /var/lib/oragono
-            sudo -u oragono /usr/bin/oragono initdb --conf /etc/oragono.conf
             sudo -u oragono /usr/bin/oragono mkcerts --conf /etc/oragono.conf
+            sudo -u oragono /usr/bin/oragono initdb --conf /etc/oragono.conf
 		EOF
     fi
 }
