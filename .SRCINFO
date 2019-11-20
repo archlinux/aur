@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.3.11.arch1.r859541.9311dbd9088c
+	pkgver = v5.3.11.arch1.r859541.ae4815c57d21
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -33,17 +33,17 @@ pkgname = linux-bcachefs-git
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-git=v5.3.11.arch1.r859541.9311dbd9088c
+	provides = linux-bcachefs-git=v5.3.11.arch1.r859541.ae4815c57d21
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=v5.3.11.arch1.r859541.9311dbd9088c
-	provides = linux-bcachefs-git-headers=v5.3.11.arch1.r859541.9311dbd9088c
-	provides = linux-headers=v5.3.11.arch1.r859541.9311dbd9088c
+	depends = linux-bcachefs-git=v5.3.11.arch1.r859541.ae4815c57d21
+	provides = linux-bcachefs-git-headers=v5.3.11.arch1.r859541.ae4815c57d21
+	provides = linux-headers=v5.3.11.arch1.r859541.ae4815c57d21
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Kernel hacker's manual for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=v5.3.11.arch1.r859541.9311dbd9088c
-	provides = linux-bcachefs-git-docs=v5.3.11.arch1.r859541.9311dbd9088c
-	provides = linux-docs=v5.3.11.arch1.r859541.9311dbd9088c
+	depends = linux-bcachefs-git=v5.3.11.arch1.r859541.ae4815c57d21
+	provides = linux-bcachefs-git-docs=v5.3.11.arch1.r859541.ae4815c57d21
+	provides = linux-docs=v5.3.11.arch1.r859541.ae4815c57d21
 

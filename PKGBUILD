@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.11.arch1.r859541.9311dbd9088c
+pkgver=v5.3.11.arch1.r859541.ae4815c57d21
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.3.11-arch1
@@ -134,8 +134,8 @@ prepare() {
     git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     git pull --no-edit arch_stable "$_srcver_tag"
 
-    msg2 "Fixing EXTRAVERSION..."
-    sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
+    # msg2 "Fixing EXTRAVERSION..."
+    # sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
