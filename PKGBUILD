@@ -4,7 +4,7 @@
 
 pkgname=firefox-kde-opensuse-bin
 pkgver=70.0.1
-_pkgrel=1
+_pkgrel=2
 pkgrel=${_pkgrel}
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(https://repo.itmettke.de/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_6
 noextract=(firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(81E604C18BFD3FA9986E32D91E74416BECD445A4)
 sha256sums=(
-	'c6e7ca29274a353b3d288837fdeab27d7f8427fc35c395ea5cd6165834311bcc'
+	'8dd51fd9b7675d335c81833a2b287387462bdcbd14e15018b2d6ef7ad69c7a2c'
 	'SKIP'
 )
 
