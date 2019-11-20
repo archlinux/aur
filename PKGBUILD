@@ -2,7 +2,7 @@
 # Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
 
 pkgname="nzbhydra2"
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers"
 arch=('any')
@@ -15,7 +15,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.tmpfiles'
         'nzbhydra2.sysusers')
 
-sha256sums=('7e0902aa3d80a1e261abae351e2ddb4b5a3a9da9b984ec75486285e49e9d6d17'
+sha256sums=('26bb98527c46defea77b598a336120b8f76efc6c601f3a3cff61e75362d05add'
             '8c864fa865c92a6e0182f4dd3d4032ad85f09d021444cca217efafecbeff33c3'
             '464bffa0e7bf99ccd7bbcdb787b25b53b7692f86f081a4fe347b92f88c56fb09'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a')
