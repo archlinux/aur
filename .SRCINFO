@@ -1,9 +1,8 @@
 pkgbase = caffe-git
 	pkgdesc = A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)
 	pkgver = 1.0.r134.g04ab089db
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caffe.berkeleyvision.org/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
@@ -50,7 +49,7 @@ pkgbase = caffe-git
 	source = Makefile.config
 	source = caffe-git-opencv4-fix.patch
 	sha256sums = SKIP
-	sha256sums = 78137e80f764f51c0d4eeed5ce566f3745614b572b481c50197199291d34e2cd
+	sha256sums = d2a96f1cc984a2258b9f44a9dec8ec994796bd80f5f29b8f7bbb9a9de9f2f19b
 	sha256sums = 2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9
 
 pkgname = caffe-git

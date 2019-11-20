@@ -1,13 +1,12 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Drew Noel <drewmnoel@gmail.com>
 # Contributor: Jonathan Yantis
 
 pkgname=caffe-git
-_srcname=caffe
 pkgver=1.0.r134.g04ab089db
-pkgrel=1
+pkgrel=2
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only, git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
 license=('BSD')
 depends=('openblas' 'lapack' 'boost-libs' 'protobuf' 'google-glog' 'gflags'
@@ -21,7 +20,7 @@ optdepends=(
         'python-leveldb' 'python-scikit-image' 'python-pydotplus'
     # NOTE:
     # python-pydotplus (or python-pydot) is required by python executable 'draw_net.py'
-    # https://github.com/BVLC/caffe/blob/99bd99795dcdf0b1d3086a8d67ab1782a8a08383/python/caffe/draw.py#L7-L22
+    # https://github.com/BVLC/caffe/blob/04ab089db018a292ae48d51732dd6c66766b36b6/python/caffe/draw.py#L7-L22
 )
 makedepends=('git' 'boost' 'doxygen' 'texlive-core' 'texlive-latexextra' 'ghostscript')
 provides=('caffe' 'caffe-cpu-git')
@@ -31,44 +30,41 @@ source=('git+https://github.com/BVLC/caffe.git'
         'Makefile.config'
         'caffe-git-opencv4-fix.patch')
 sha256sums=('SKIP'
-            '78137e80f764f51c0d4eeed5ce566f3745614b572b481c50197199291d34e2cd'
+            'd2a96f1cc984a2258b9f44a9dec8ec994796bd80f5f29b8f7bbb9a9de9f2f19b'
             '2072c8ca1393b53ef280a15c43af940cc9bf1419ae32b3d8a6541b10b8cb50e9')
 
 prepare() {
-    cp -af "${srcdir}/Makefile.config" "${srcdir}/${_srcname}"
+    cp -af Makefile.config caffe
     
     # fix build with opencv 4
-    cd "$_srcname"
-    patch -Np1 -i "${srcdir}/caffe-git-opencv4-fix.patch"
+    # https://github.com/BVLC/caffe/pull/6625
+    patch -d caffe -Np1 -i "${srcdir}/caffe-git-opencv4-fix.patch"
 }
 
 pkgver() {
-    cd "$_srcname"
+    cd caffe
     
     # git, tags available
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_srcname"
-    
-    make all pycaffe test
-    rm -rf doxygen
-    make docs distribute
+    make -C caffe all pycaffe test
+    rm -rf  caffe/doxygen
+    make -C caffe docs distribute
 }
 
 check() {
-    cd "$_srcname"
-    make runtest
+    make -C caffe runtest
 }
 
 package() {
-    cd "${_srcname}/distribute"
+    cd caffe/distribute
     
-    local _pythonver
-    _pythonver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    local _pyver
+    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     
-    mkdir -p "$pkgdir"/usr/{bin,include,lib/python"$_pythonver"/site-packages,share/doc}
+    mkdir -p "$pkgdir"/usr/{bin,include,lib/python"$_pyver"/site-packages,share/doc}
     
     # binaries
     install -m755 bin/* "${pkgdir}/usr/bin"
@@ -82,12 +78,12 @@ package() {
     
     # python
     install -m755 python/*.py "${pkgdir}/usr/bin"
-    cp -a python/caffe "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -a python/caffe "${pkgdir}/usr/lib/python${_pyver}/site-packages"
     
     # proto
     install -D -m644 proto/caffe.proto -t "${pkgdir}/usr/share/caffe"
     
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/caffe"
     
     # docs
     cp -a doxygen/html "${pkgdir}/usr/share/doc/${pkgname}"
