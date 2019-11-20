@@ -1,4 +1,4 @@
-# Maintainer: Ebrahim Azarisooreh <ebrahim.azarisooreh@gmail.com>
+# Maintainer: Evgeny Cherkashin <eugeneai@irnok.net>
 
 pkgname=logtalk
 pkgver=3.32.0
