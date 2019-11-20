@@ -64,7 +64,6 @@ build() {
 
 check() {
   cd ${pkgname}
-
   make lint
 }
 
