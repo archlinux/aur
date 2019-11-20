@@ -1,6 +1,6 @@
 pkgname=gedit-markdownpreview-git
 pkgver=r25.d30ccef
-pkgrel=1
+pkgrel=2
 pkgdesc="Show side by side preview of markdown files"
 arch=('any')
 url="https://github.com/aliva/gedit-markdownpreview"
@@ -20,7 +20,7 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -d $pkgdir/usr/lib/gedit/plugins/markdownpreview
+	install -d "$pkgdir"/usr/share/gedit/plugins/markdownpreview
 	cp markdownpreview.plugin markdownpreview.py style.css template.html \
-		$pkgdir/usr/lib/gedit/plugins/markdownpreview/
+		"$pkgdir"/usr/share/gedit/plugins/markdownpreview/
 }

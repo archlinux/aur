@@ -1,7 +1,7 @@
 pkgbase = gedit-markdownpreview-git
 	pkgdesc = Show side by side preview of markdown files
 	pkgver = r25.d30ccef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aliva/gedit-markdownpreview
 	arch = any
 	license = GPL2
