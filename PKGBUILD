@@ -1,16 +1,15 @@
 pkgname=mingw-w64-discord-rpc-api
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Libraries for Discord Rich Presence (mingw-w64)"
 arch=(any)
 url="https://github.com/discordapp/discord-rpc"
 license=('MIT')
-depends=('mingw-w64-crt')
+depends=('mingw-w64-crt' 'mingw-w64-rapidjson')
 makedepends=('mingw-w64-cmake')
 options=(!strip !buildflags staticlibs)
-source=("$pkgname-$pkgver.tar.gz"::'https://github.com/discordapp/discord-rpc/archive/v3.3.0.tar.gz')
-md5sums=('6f8c49413a2b91c443d812f4bae39938')
-sha256sums=('1c625f3546761e778e084fe037540f4fdb5452e9c297ee790bbb43ce3cf955b5')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/discordapp/discord-rpc/archive/v$pkgver.tar.gz")
+sha256sums=('e13427019027acd187352dacba6c65953af66fdf3c35fcf38fc40b454a9d7855')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
