@@ -2,7 +2,7 @@ post_install() {
 	echo ""
 	echo "Finish these last three steps in order to complete this installation:"
 	echo ""
-	echo "1) Ensure that the lines below are in your \`.bashrc\`.":
+	echo "1) Ensure that the lines below are in your \`~/.bashrc\`.":
 	echo ""
 	echo "LOGTALKHOME=/usr/lib/logtalk/share/logtalk"
 	echo "LOGTALKUSER=\$HOME/logtalk"
@@ -21,7 +21,7 @@ post_upgrade() {
 	echo ""
 	echo "Finish these last three steps in order to complete this upgrade:"
 	echo ""
-	echo "1) Ensure that the lines below are in your \`.bashrc\`.":
+	echo "1) Ensure that the lines below are in your \`~/.bashrc\`.":
 	echo ""
 	echo "LOGTALKHOME=/usr/lib/logtalk/share/logtalk"
 	echo "LOGTALKUSER=\$HOME/logtalk"
