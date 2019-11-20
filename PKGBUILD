@@ -3,17 +3,17 @@
 
 pkgname=lix-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.27.r1560437770.3e7c410d
+pkgver=0.9.29.r1572290530.9b38eb65
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/SimonN/lix-unstable.git")
+source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git")
 sha512sums=('SKIP')
 
 pkgver()
 {
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-    cd "$_pkgname" || exit
+    cd "$pkgname" || exit
     (
         set -o pipefail
 
@@ -48,23 +48,23 @@ _dubv=(	"4.0.4+5.2.0"   # allegro
 # These have to be git clones, otherwise dub isn't able to pick them up with the correct version later on
 # no git, no version field, assumed ~master
 # https://dub.pm/commandline.html#add-path
-source+=(   "$_pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
-            "$_pkgname.desktop"
+source+=(   "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
+            "$pkgname.desktop"
             )
 sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
                 '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
                 )
-source+=(   "allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
-            "bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
-            "derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
-            "derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
-            "enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
-            "libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
-            "optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
-            "sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
-            "silly::git+https://github.com/ohdatboi/silly.git#tag=v${_dubv[8]}"
-            "taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
-            "unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
+source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
+            "$pkgname-bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
+            "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
+            "$pkgname-derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
+            "$pkgname-enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
+            "$pkgname-libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
+            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
+            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
+            "$pkgname-silly::git+https://github.com/ohdatboi/silly.git#tag=v${_dubv[8]}"
+            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
+            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
             )
 sha512sums+=(   'SKIP'
                 'SKIP'
@@ -81,7 +81,6 @@ sha512sums+=(   'SKIP'
 
 _build()
 {
-    cd "$_pkgname" || exit
     _r=0
 
     # add local dependencies to search path
@@ -117,13 +116,13 @@ _build()
 
 build()
 {
-    cd "$_pkgname" || exit
+    cd "$pkgname" || exit
     _build build
 }
 
 check()
 {
-    cd "$_pkgname" || exit
+    cd "$pkgname" || exit
     _build test
 }
 
@@ -132,11 +131,11 @@ package()
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
-            "$_pkgname.desktop" \
+            "$pkgname.desktop" \
         `# DSTFILE:` \
             "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
-    cd "$_pkgname" || exit
+    cd "$pkgname" || exit
 
     # install application entry icon
     install -Dm644 \
