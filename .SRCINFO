@@ -1,7 +1,7 @@
 pkgbase = python-postfix-policyd-spf
 	pkgdesc = Python Postfix Sender Policy Framework (SPF) filter
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/pypolicyd-spf/
 	arch = any
 	license = GPL
