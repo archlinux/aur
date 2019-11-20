@@ -1,19 +1,19 @@
 diff --git a/oragono.yaml b/oragono.yaml
-index 6c5aa75..eed4991 100644
+index d671673..6eddf66 100644
 --- a/oragono.yaml
 +++ b/oragono.yaml
-@@ -23,8 +23,8 @@ server:
-     tls-listeners:
-         # listener on ":6697"
+@@ -28,8 +28,8 @@ server:
+         # The standard SSL/TLS port for IRC is 6697. This will listen on all interfaces:
          ":6697":
--            key: tls.key
--            cert: tls.crt
-+            key: /var/lib/oragono/tls.key
-+            cert: /var/lib/oragono/tls.crt
+             tls:
+-                key: tls.key
+-                cert: tls.crt
++                key: /var/lib/oragono/tls.key
++                cert: /var/lib/oragono/tls.crt
  
-     # strict transport security, to get clients to automagically use TLS
-     sts:
-@@ -54,7 +54,7 @@ server:
+         # Example of a Unix domain socket for proxying:
+         # "/tmp/oragono_sock":
+@@ -90,7 +90,7 @@ server:
  
      # motd filename
      # if you change the motd, you should move it to ircd.motd
@@ -22,16 +22,16 @@ index 6c5aa75..eed4991 100644
  
      # motd formatting codes
      # if this is true, the motd is escaped using formatting codes like $c, $b, and $i
-@@ -340,7 +340,7 @@ debug:
+@@ -509,7 +509,7 @@ debug:
  # datastore configuration
  datastore:
      # path to the datastore
 -    path: ircd.db
 +    path: /var/lib/oragono/ircd.db
  
- # languages config
- languages:
-@@ -352,7 +352,7 @@ languages:
+     # if the database schema requires an upgrade, `autoupgrade` will attempt to
+     # perform it automatically on startup. the database will be backed
+@@ -526,7 +526,7 @@ languages:
      default: en
  
      # which directory contains our language files

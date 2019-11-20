@@ -2,7 +2,7 @@
 # Contributor: Sean Enck <enckse@gmail.com>
 
 pkgname=oragono
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A modern IRC server written in Go."
 arch=('x86_64')
@@ -21,8 +21,8 @@ sha256sums=('SKIP'
             'SKIP'
             'd35dd5205e3b607ee105a1252677d0607d0c35636ee3e6057275b5f13e555858'
             '7e214caa8bee053adac26a00a17ed732970e86665cbe31553b1d3d609f0a49b4'
-            '9b6bae7dc9bb49cb2ca4ec4dedc23ac4f2f2275958caae34316ca4462d674e69'
-            'd56a8935891bc421683e48245786c9f8d9d4c449197de5f455ce7d7804907c7a')
+            '7bd95ebd15a7b8838abe7aaa6ea31eca00d685749e337485a8a09a2c25d4eb03'
+            '8f6baaa89e9723ac3344a2af201a93f348975537bc748024c0a48b0773f42b1f')
 backup=('etc/oragono.conf')
 
 prepare() {
