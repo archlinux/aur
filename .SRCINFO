@@ -1,0 +1,18 @@
+pkgbase = abricotine-git
+	pkgdesc = A markdown editor with inline preview
+	pkgver = latest
+	pkgrel = 1
+	url = http://abricotine.brrd.fr
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	depends = gconf
+	depends = libxss
+	conflicts = abricotine
+	source = abricotine::git+https://github.com/brrd/abricotine
+	source = abricotine.desktop
+	sha256sums = SKIP
+	sha256sums = 164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c
+
+pkgname = abricotine-git
+
