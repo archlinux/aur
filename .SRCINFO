@@ -23,7 +23,6 @@ pkgbase = prosody-hg
 	optdepends = lua52-event: libevent support
 	provides = prosody
 	conflicts = prosody
-	options = !emptydirs
 	backup = etc/prosody/prosody.cfg.lua
 	source = prosody-hg::hg+https://hg.prosody.im/trunk
 	source = prosody.tmpfile.d
