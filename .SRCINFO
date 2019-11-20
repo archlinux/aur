@@ -1,7 +1,7 @@
 pkgbase = lib32-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (32bit)
 	pkgver = 7.13.3496
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KhronosGroup/glslang
 	arch = x86_64
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = lib32-glslang
 	depends = lib32-spirv-tools
 	depends = python
 	options = staticlibs
-	source = -7.13.3496.tar.gz::https://github.com/KhronosGroup/glslang/archive/7.13.3496.tar.gz
+	source = glslang-7.13.3496.tar.gz::https://github.com/KhronosGroup/glslang/archive/7.13.3496.tar.gz
 	source = fix-cmake-folder.patch
 	sha256sums = 170d1538a670af4cae300e875d7cda9744b1acee1ab7252ecf7c4004186bb922
 	sha256sums = 5b231d27cfde2178b937b115e9b92fe10c28e7624a638cca9f7b48b4bec3f71e

@@ -8,7 +8,7 @@ _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
 pkgver=7.13.3496
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/glslang'
@@ -25,7 +25,7 @@ makedepends=(
         )
 options=('staticlibs')
 source=(
-        ${_pkgnamename}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz
+        ${_pkgbasename}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz
         fix-cmake-folder.patch
 )
 sha256sums=(
