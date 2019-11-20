@@ -8,9 +8,13 @@ xe-guest-utilities is an add-on package for the [Xen](https://xenproject.org/dev
 This package provides a service file which can be activated/enabled by systemd to provide these features to your VM running with Xen/xcp-ng.
 
 ### Source Code
-xe-guest-utilities pulls its sourcecode from the [Xenserver](https://github.com/xenserver/xe-guest-utilities) github repository. The source code requires a [Go development environment](https://golang.org/doc/install) in order to successfully compile the code. This script should automatically download the go-pie package, compile and install the script.  
+xe-guest-utilities pulls its sourcecode from the [Xenserver](https://github.com/xenserver/xe-guest-utilities) github repository. The source code requires a [Go development environment](https://golang.org/doc/install) in order to successfully compile the code. This script should automatically download the go-pie package, compile and install the script.
 
 ### Installation
+The PKGBUILD file is hosted on [github](https://github.com/kevdogg/xe-guest-utilities-git) and listed in the [AUR](https://aur.archlinux.org/packages/xe-guest-utilities-git/). The package file can be installed via:
+  - Manual Installation - Download PKGBUILD, `makepkg -si` -- [Instructions for Manual Installation of PKGBUILD files](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages)
+  - Automated Installation - Through use of AUR Helper Utilities(yay, trizen, pacaur, etc) [AUR Helper List](https://wiki.archlinux.org/index.php/AUR_helpers) 
+
 The following files are installed by the package: (Listed here in case manual removal is necessary)
   - /usr/share/licenses/xe-guest-utilities-git/LICENSE
   - /usr/share/oem/xs/xe-daemon
