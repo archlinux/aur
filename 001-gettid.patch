@@ -1,0 +1,17 @@
+--- a/src/util.h
++++ b/src/util.h
+@@ -374,6 +374,7 @@ static inline int IsEmptyStr(const char *str)
+     return 0;
+ }
+ 
++#if !defined(__GLIBC__) || !defined(__GLIBC_PREREQ) || !__GLIBC_PREREQ(2, 30)
+ static inline pid_t gettid(void)
+ {
+ #if defined(LINUX) && defined(SYS_gettid)
+@@ -382,5 +383,6 @@ static inline pid_t gettid(void)
+     return getpid();
+ #endif
+ }
++#endif
+ 
+ #endif /*__UTIL_H__*/
