@@ -9,8 +9,8 @@ url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
 license=(LGPL2.1)
 depends=(glib2 pipewire fuse2 geoclue2)
-makedepends=(python xmlto docbook-xsl git flatpak)
-checkdepends=(libportal epiphany gedit)
+makedepends=(python xmlto docbook-xsl git flatpak libportal)
+checkdepends=(epiphany gedit)
 _commit=5a4e6ed3b4c9322a6e3e79dd10cb881f25e84335  # tags/1.5.2^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit"
         hack.diff)
