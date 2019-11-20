@@ -1,0 +1,17 @@
+pkgbase = speedtest++
+	pkgdesc = Unofficial speedtest.net cli using raw TCP for better accuracy
+	pkgver = v1.11.r13.g262daf8
+	pkgrel = 1
+	url = https://github.com/taganaka/SpeedTest
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	depends = openssl
+	depends = libxml2
+	source = git+https://github.com/taganaka/SpeedTest.git
+	md5sums = SKIP
+
+pkgname = speedtest++
+
