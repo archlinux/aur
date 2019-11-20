@@ -1,0 +1,23 @@
+pkgbase = itk-snap-nightly-bin
+	pkgdesc = A software application used to segment structures in 3D medical images (nightly build)
+	pkgver = 3.8.0.r4.8ad549e8
+	pkgrel = 1
+	url = https://www.itksnap.org
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	makedepends = git
+	depends = curl
+	depends = glib2
+	provides = itk-snap=3.8.0.r4.8ad549e8
+	conflicts = itk-snap
+	noextract = itk-snap.tar.gz
+	source = itk-snap-git::git+https://git.code.sf.net/p/itk-snap/src
+	source = itk-snap.tar.gz::https://sourceforge.net/projects/itk-snap/files/itk-snap/Nightly/itksnap-nightly-master-Linux-gcc64.tar.gz
+	source = itk-snap.png::https://sourceforge.net/p/itk-snap/src/ci/master/tree/GUI/Qt/Resources/logo_square.png?format=raw
+	sha512sums = SKIP
+	sha512sums = 9e5d4964e182303f1aacb207ed23e00a9421c79e678d3185d6740036f321380a5afbb915f5758f0e870232751a84bf6e958d5cddc86a021b81b50372ff510a97
+	sha512sums = 7d7866a4f28ee645cf4a454488d197a776475d2959d0f9d4d34cf534f34a73ffbb1b92430518f36948b4c25b736990693be07dd345600ed8292e526e2846fca1
+
+pkgname = itk-snap-nightly-bin
+
