@@ -1,6 +1,6 @@
 pkgbase = epiphany-pantheon
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
-	pkgver = 3.34.1
+	pkgver = 3.35.1
 	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Web
 	arch = x86_64
@@ -19,46 +19,28 @@ pkgbase = epiphany-pantheon
 	depends = gcr
 	depends = libdazzle
 	depends = libhandy
-	provides = epiphany=3.34.1
+	provides = epiphany=3.35.1
 	provides = epiphany-sync
-	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=fae9ef019e39c8ca420344c8c01416a3184bb8fc
+	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=aa3e99a5845daac749bab80bc600ec5797a3f9c7
 	source = epiphany-sync
 	source = epiphany-sync.service
-	source = 01-full-width-url-bar.patch
-	source = 02-24px-color-toolbar-icons.patch
 	source = 03-tab-close-buttons-on-the-left.patch
-	source = 04-new-tab-button-on-the-left.patch
 	source = 05-rename-to-epiphany.patch
 	source = 06-double-click-for-new-tab.patch
 	source = 07-overlay-bar-style.patch
 	source = 08-rename-incongito-class-to-dodge-GNOME-style.patch
 	source = 09-middle-click-closes-tab.patch
-	source = 10-add-preferences-menuitem.patch
-	source = 11-fix-menu-margins.patch
-	source = 12-remove-tab-menuitem.patch
-	source = 13-remove-text-encoding-menuitem.patch
-	source = 14-add-important-menuitems.patch
-	source = 15-remove-GNOME-menu.patch
 	source = 16-hide-the-fonts-and-styles-tab.patch
 	source = 17-give-notebook-a-margin.patch
 	sha1sums = SKIP
 	sha1sums = 2a8fda153bf3fb2d9a14b632082329ed6e2d8fab
 	sha1sums = 2c1c89aee5e1ea2ca47d518690b93238213e73fd
-	sha1sums = 3d1ae633eb4815cb0956125bb1810ce82a3c79ab
-	sha1sums = 3ebd0aadbf3ba145ccf5b5c07b810cc21c28f5a9
-	sha1sums = 824c797de664a7d5a904b49d76636ab929f5e400
-	sha1sums = ec44a91a1693c664e55ef42c21ae2d9e27c75148
+	sha1sums = 06b7c38fa4db3b3a69b2c0b92f88e1156f08a5a0
 	sha1sums = 7dbfdea116239bb3ee947e9175a43a6bdd768f1e
 	sha1sums = 71fc912aee1e01bc6d17907d7bfa33852ef15fb2
 	sha1sums = cb88f86c9e44936993ab2e3a02f71874de422ae7
 	sha1sums = 0f1085fb06e06298c7fb8feb12be0699d166dd2b
 	sha1sums = 5c0d41eda4b449ceba4699e1a1e8b6359d12deb4
-	sha1sums = 2b07c438cdabe254a33b6b5f180f9359e3e21422
-	sha1sums = 8deb1718a29e157e888a1358048200cc5887b1f3
-	sha1sums = 58227528aa8bc1d1480fbd0f5e18a6eb11450ba8
-	sha1sums = 33246f87659164729c55a201151c368bd0f02b9c
-	sha1sums = 67f6d0c60cbf4ea9252c56d3ac37090fd18a534c
-	sha1sums = e125a6e6ca85ad06d192e1c200190438ca2b1f8a
 	sha1sums = 0f3e50ecb72b9cf671dc75d5ac987f5e05b2ed66
 	sha1sums = cd1090f20a153d77060aa1d6304c4d5e621c125f
 
