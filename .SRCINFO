@@ -1,15 +1,17 @@
 pkgbase = python2-flask-script
-	pkgdesc = Flask support for writing external scripts.
-	pkgver = 2.0.5
+	pkgdesc = Flask extension to help writing external scripts for Flask applications
+	pkgver = 2.0.6
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/Flask-Script
+	url = https://github.com/smurfix/flask-script
 	arch = any
 	license = BSD
+	checkdepends = python2-pytest
 	makedepends = python2-setuptools
 	depends = python2-flask
-	optdepends = python2-nose
-	source = https://pypi.python.org/packages/source/F/Flask-Script/Flask-Script-2.0.5.tar.gz
-	md5sums = e5c73d3b7937f5b88942f342f9617029
+	source = python2-flask-script-2.0.6.tar.gz::https://github.com/smurfix/flask-script/archive/v2.0.6.tar.gz
+	source = flask.ext.script_import.patch::https://github.com/smurfix/flask-script/commit/fcf894b6e4d0ad17489480b722c870aaea600db1.patch
+	sha256sums = 1c18e25966e966e6ffa9e8798840b1e663f471cba09be8e463e1b0addf4e76ef
+	sha256sums = cb1feb6965baf7c7e9250e8eecfd821bd57d0432d8c15ac83ff66e7f0a87972a
 
 pkgname = python2-flask-script
 
