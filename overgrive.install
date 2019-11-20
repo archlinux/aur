@@ -4,9 +4,24 @@ post_install() {
     /opt/thefanclub/overgrive/venv/bin/pip install --upgrade google-api-python-client
 
     gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Recomplie Schemas for good measure
     if [ -f /usr/bin/glib-compile-schemas ]
     then
         /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
+    fi
+
+	if [ -d /opt/thefanclub/overgrive/__pycache__ ]
+    then
+        cp /opt/thefanclub/overgrive/__pycache__/$(ls /opt/thefanclub/overgrive/__pycache__ |  grep $(python3 -V | cut -d' ' -f2 | cut -d'.' -f1-2 | sed 's/\.//g')) /opt/thefanclub/overgrive/overgrive
+        rm -R /opt/thefanclub/overgrive/__pycache__
+    fi
+	
+    # Post Install Check if correctly installed and Python version present
+    if [ ! -f /opt/thefanclub/overgrive/overgrive ]
+    then
+        echo "[overGrive] Install failed. Could not find compatible Python3 version. Install a compatible Python3 version then re-install overGrive, or consider using the AppImage."
+        exit 1
     fi
 }
 
@@ -39,16 +54,25 @@ pre_remove() {
 	   fi
 	fi
 
-	# if [ -f  "$userHome/.config/autostart/overgrive-autostart.desktop" ]
-	# then 
-	#    rm  "$userHome/.config/autostart/overgrive-autostart.desktop"
-	# fi
+	if [ -f  "$userHome/.config/autostart/overgrive-autostart.desktop" ]
+	then 
+	   rm  "$userHome/.config/autostart/overgrive-autostart.desktop"
+	fi
 	
-    # if [ -f  "$userHome/.config/autostart/overgrive.desktop" ]
-	# then 
-	#    rm  "$userHome/.config/autostart/overgrive.desktop"
-	# fi
+    if [ -f  "$userHome/.config/autostart/overgrive.desktop" ]
+	then 
+	   rm  "$userHome/.config/autostart/overgrive.desktop"
+	fi
     
+	if [ -d  "/opt/thefanclub/overgrive/venv" ]
+	then 
+	   rm -r "/opt/thefanclub/overgrive/venv"
+	fi
+
+	if [ -f  "/opt/thefanclub/overgrive/overgrive" ]
+	then 
+	   rm  "/opt/thefanclub/overgrive/overgrive"
+	fi
 }
 
 post_remove() {

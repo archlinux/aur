@@ -1,7 +1,7 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=overgrive
 pkgver=3.3.3
-pkgrel=0
+pkgrel=1
 pkgdesc='A complete Google Drive™ desktop client solution for Linux'
 arch=('x86_64')
 url='https://www.thefanclub.co.za/overgrive'
@@ -27,12 +27,14 @@ prepare() {
 
     # script to execute through terminal 
     mkdir --parents ./usr/bin/
-    echo -e '/opt/thefanclub/overgrive/venv/bin/python /opt/thefanclub/overgrive/__pycache__/overgrive.cpython-38.pyc' \
+    echo -e '#!/usr/bin/sh\n/opt/thefanclub/overgrive/venv/bin/python /opt/thefanclub/overgrive/overgrive' \
         > ./usr/bin/overgrive
+    chmod +x ./usr/bin/overgrive
+
     
     # update .desktop files
     sed --in-place -- \
-        's+Exec=.*+Exec=sh /usr/bin/overgrive+g' \
+        's+Exec=.*+Exec=/usr/bin/overgrive+g' \
         ./usr/share/applications/overgrive.desktop \
         ./opt/thefanclub/overgrive/overgrive-autostart.desktop
 }
