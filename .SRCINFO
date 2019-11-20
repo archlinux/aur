@@ -1,0 +1,20 @@
+pkgbase = packer-post-processor-flasher-git
+	pkgdesc = Packer plugin to dump image on physical device
+	pkgver = 4.d40a32d
+	pkgrel = 1
+	url = https://github.com/mkaczanowski/packer-post-processor-flasher
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = APACHE
+	makedepends = go
+	depends = glibc
+	depends = multipath-tools
+	provides = packer-post-processor-flasher
+	source = git://github.com/mkaczanowski/packer-post-processor-flasher.git
+	md5sums = SKIP
+
+pkgname = packer-post-processor-flasher-git
+
