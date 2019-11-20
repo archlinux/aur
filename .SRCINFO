@@ -1,6 +1,6 @@
 pkgbase = wine-git
 	pkgdesc = A compatibility layer for running Windows programs (git version)
-	pkgver = 4.11.r138.g6e97461580
+	pkgver = 4.20.r74.ga9c4b309f6
 	pkgrel = 1
 	url = https://www.winehq.org/
 	install = wine-git.install
@@ -59,6 +59,8 @@ pkgbase = wine-git
 	makedepends = lib32-vkd3d
 	makedepends = sdl2
 	makedepends = lib32-sdl2
+	makedepends = libcups
+	makedepends = lib32-libcups
 	makedepends = libgphoto2
 	makedepends = sane
 	makedepends = gsm
@@ -140,9 +142,9 @@ pkgbase = wine-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=4.11.r138.g6e97461580
-	provides = bin32-wine=4.11.r138.g6e97461580
-	provides = wine-wow64=4.11.r138.g6e97461580
+	provides = wine=4.20.r74.ga9c4b309f6
+	provides = bin32-wine=4.20.r74.ga9c4b309f6
+	provides = wine-wow64=4.20.r74.ga9c4b309f6
 	conflicts = wine
 	conflicts = bin32-wine
 	conflicts = wine-wow64

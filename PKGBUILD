@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=4.11.r138.g6e97461580
+pkgver=4.20.r74.ga9c4b309f6
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'vkd3d'                 'lib32-vkd3d'
     'sdl2'                  'lib32-sdl2'
+    'libcups'               'lib32-libcups'
     'libgphoto2'
     'sane'
     'gsm'
