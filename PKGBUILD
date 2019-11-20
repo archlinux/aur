@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaard
-_ver=0.13.5
+_ver=0.13.6
 pkgver=$(echo "${_ver}" | tr -d -)
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
@@ -42,7 +42,7 @@ package() {
 	install -Dm755 $srcdir/$pkgname.sysuser.conf $pkgdir/usr/lib/sysusers.d/$pkgname.conf
 }
 
-md5sums=('4cc1378be13dd04f18d023ecdbc5b79d'
-	'ae3e285b857b7efeecbab29826f29735'
-	'9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
-'92cd2fa8929c5acddbddf7d4fc2fd494')
+md5sums=('188911e32d8e14740f052da58f31e411'
+         'ae3e285b857b7efeecbab29826f29735'
+         '9fd31f8bc5b6ccc21a52fc1b58fdb9d6'
+         '92cd2fa8929c5acddbddf7d4fc2fd494')
