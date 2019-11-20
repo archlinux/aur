@@ -1,16 +1,16 @@
 # xe-guest-utilities-git
 
-###Purpose
+### Purpose
 xe-guest-utilities is an add-on package for the [Xen](https://xenproject.org/developers/teams/xen-hypervisor/) and [xcp-ng](https://xcp-ng.org/) hypervisors. As per [documentation](https://xenproject.org/developers/teams/xen-hypervisor/) these tools:
   - Report extra VM info (that only the Operating system can know, not your underlying hypervisor), like VM IP address, kernel version etc.
   - Communicate with the OS in case of quiesce snapshots (Windows and its VSS)
   - Allow sending signals to the OS (clean reboot, hotplug hardware etc.)
 This package provides a service file which can be activated/enabled by systemd to provide these features to your VM running with Xen/xcp-ng.
 
-###Source Code
+### Source Code
 xe-guest-utilities pulls its sourcecode from the [Xenserver](https://github.com/xenserver/xe-guest-utilities) github repository. The source code requires a [Go development environment](https://golang.org/doc/install) in order to successfully compile the code. This script should automatically download the go-pie package, compile and install the script.  
 
-###Installation
+### Installation
 The following files are installed by the package: (Listed here in case manual removal is necessary)
   - /usr/share/licenses/xe-guest-utilities-git/LICENSE
   - /usr/share/oem/xs/xe-daemon
@@ -24,7 +24,7 @@ The following files are installed by the package: (Listed here in case manual re
   - /usr/bin/xenstore-write
 
 
-###Activation
+### Activation
 Once xe-guest-utilities-git is installed, the service can be started (as root):
 ```
 systemctl start xe-guest-utilities.service
