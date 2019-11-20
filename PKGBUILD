@@ -28,13 +28,13 @@ sha512sums=('SKIP')
 
 pkgver()
 {
-    cd "$srcdir/${pkgname%-git}" || exit
+    cd "${pkgname%-git}" || exit
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
 {
-    cd "$srcdir/${pkgname%-git}" || exit
+    cd "${pkgname%-git}" || exit
     cmake -DCMAKE_INSTALL_PREFIX=/usr
     make
     # make docs
@@ -42,12 +42,12 @@ build()
 
 # check()
 # {
-#     cd "$srcdir/$pkgname"
+#     cd "$pkgname"
 #     ctest
 # }
 
 package()
 {
-    cd "$srcdir/${pkgname%-git}" || exit
+    cd "${pkgname%-git}" || exit
     make DESTDIR="$pkgdir" install
 }
