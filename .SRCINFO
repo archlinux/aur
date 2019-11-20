@@ -6,7 +6,7 @@ pkgbase = nfpm
 	arch = x86_64
 	license = MIT
 	source = https://github.com/goreleaser/nfpm/releases/download/v1.1.6/nfpm_1.1.6_linux_x86_64.tar.gz
-	sha256sums = b79b668d9ba7d4839df07c7b1347c6b75317bd00e084ba020d10c87030f9ab5d
+	sha256sums = 55c2a2857189ebeaf44c0cd68c5ec86d42cf33b7a98911d8747ae192bb6ef6e0
 
 pkgname = nfpm
 
