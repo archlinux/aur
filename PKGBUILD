@@ -1,7 +1,7 @@
 # Maintainer: Cyril Levis <pkgbuilds AT levis DOT name>
 
 pkgname=websocat-bin
-pkgver=1.2.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=()
 optdepends=()
 conflicts=("websocat-git")
 source=("https://github.com/vi/websocat/releases/download/v${pkgver}/websocat_amd64-linux")
-sha256sums=('0c537869b885df28fe458b0db6738e3f07fb848865447fd1bacc41cdd717d4dd')
+sha256sums=('e6012aa32b0437681c22b0c0738583b6d68863110159e2e158ccd63e6921c308')
 
 package() {
     install -d "$pkgdir/usr/bin"
