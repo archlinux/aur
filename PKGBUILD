@@ -19,7 +19,6 @@ makedepends=('appstream-glib'
              'rust')
 provides=('shortwave')
 conflicts=('shortwave')
-replaces=('gradio')
 source=('git+https://gitlab.gnome.org/World/Shortwave.git')
 sha256sums=('SKIP')
 
