@@ -2,7 +2,7 @@
 # https://aur.archlinux.org/packages/openxray-git/
 # <openxray@yahoo.com>
 pkgname=openxray-git
-pkgver=1.6.02_770202c82
+pkgver=1.6.02
 pkgrel=1 
 pkgdesc="Unofficial X-Ray Engine Linux port by OpenXRay team (Originally developed by GSC Game World)"                                          
 arch=('x86_64') 
