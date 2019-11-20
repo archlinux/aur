@@ -1,5 +1,5 @@
 pkgbase = python-numexpr-mkl-bin
-	pkgdesc = Fast numerical array expression evaluator for Python - with Intel MLK - prebuilt binaries from Anaconda
+	pkgdesc = Fast numerical array expression evaluator for Python - with Intel MKL - prebuilt binaries from Anaconda
 	pkgver = 2.7.0.0.py38h9e4a6bb.0
 	pkgrel = 0
 	url = https://github.com/pydata/numexpr
