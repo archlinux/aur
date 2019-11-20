@@ -1,7 +1,7 @@
 pkgbase = python-txtorcon
 	pkgdesc = A Twisted-based Python asynchronous controller library for Tor
 	pkgver = 19.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://txtorcon.readthedocs.org/
 	arch = any
 	license = MIT
