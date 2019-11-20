@@ -1,8 +1,8 @@
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 
 pkgname=mstflint
-pkgver=4.13.0.1
-_pkgver=4.13.0-1
+pkgver=4.13.1.1
+_pkgver=4.13.1-1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards (without inband support)'
 arch=('x86_64' 'i686')
