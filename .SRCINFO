@@ -1,6 +1,6 @@
 pkgbase = osmium-tool
 	pkgdesc = Command line tool for working with OpenStreetMap data based on the Osmium library
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = http://osmcode.org/osmium-tool/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = osmium-tool
 	depends = boost-libs
 	depends = expat
 	optdepends = pandoc: building documentation
-	source = osmium-tool-1.11.0.tar.gz::https://github.com/osmcode/osmium-tool/archive/v1.11.0.tar.gz
-	sha256sums = 09720d8ffcf250000628cb174934885962e09677094bd5bd96071f11fe170f4f
+	source = osmium-tool-1.11.1.tar.gz::https://github.com/osmcode/osmium-tool/archive/v1.11.1.tar.gz
+	sha256sums = ea47ca909d167951b975673b8a818600f988aeb35a5a911d4a3a0004bc76f04a
 
 pkgname = osmium-tool
 
