@@ -1,6 +1,6 @@
 pkgbase = bitw-git
 	pkgdesc = Minimalist BitWarden client with Secret Service API implementation
-	pkgver = r32.3271a01
+	pkgver = r40.8c8d0e9
 	pkgrel = 1
 	url = https://github.com/mvdan/bitw
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = bitw-git
 	sha256sums = SKIP
 
 pkgname = bitw-git
-

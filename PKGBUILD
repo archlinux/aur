@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='bitw'
 pkgname="$_pkgname-git"
-pkgver='r32.3271a01'
+pkgver='r40.8c8d0e9'
 pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -25,7 +25,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 'LICENSE.google' "$pkgdir/usr/share/licenses/$pkgname/LICENSE.google"
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	go clean -modcache
 }
