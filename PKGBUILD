@@ -1,7 +1,7 @@
 # Maintainer: dryes <joswiseman@cock.li>
 pkgname='pyrescene-hg'
 pkgver=806
-pkgrel=2
+pkgrel=3
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://bitbucket.org/Gfy/pyrescene'
 arch=('any')
@@ -28,6 +28,7 @@ package() {
   mkdir -p "${pkgdir}/opt/rarlinux"
   python2 'bin/preprardir.py' "${srcdir}/rarlinux" "${pkgdir}/opt/rarlinux"
   chown -R root:root "${pkgdir}/opt/rarlinux"
+  chmod -R a+x "${pkgdir}/opt/rarlinux"
   # RAR 5.50 breaks pyrescene
   rm "${pkgdir}/opt/rarlinux/2017-08-11_rar550"
 
