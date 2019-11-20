@@ -1,13 +1,12 @@
 pkgbase = vibrantlinux-git
 	pkgdesc = vibranceGUI replacement for Linux (NVIDIA only)
-	pkgver = r12.8f1a430
+	pkgver = 1.2.2.r3.gd872dbc
 	pkgrel = 1
 	url = https://gitlab.com/zee220/vibrantlinux
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = imagemagick
 	depends = nvidia-settings
 	depends = qt5-base
 	source = vibrantlinux::git+https://gitlab.com/zee220/vibrantlinux.git

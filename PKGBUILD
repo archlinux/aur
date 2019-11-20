@@ -6,40 +6,34 @@ pkgdesc='vibranceGUI replacement for Linux (NVIDIA only)'
 arch=('x86_64' 'i686')
 url='https://gitlab.com/zee220/vibrantlinux'
 license=('MIT')
-depends=('nvidia-settings'
-         'qt5-base')
-makedepends=('git'
-             'imagemagick')
+depends=('nvidia-settings' 'qt5-base')
+makedepends=('git')
 conflicts=()
-source=("$_pkgname::git+$url.git"
-        'vibrantLinux.desktop')
-sha256sums=('SKIP'
-            'SKIP')
-pkgver=r12.8f1a430
+source=("${_pkgname}::git+https://gitlab.com/zee220/vibrantlinux.git" 'vibrantLinux.desktop')
+sha256sums=('SKIP' 'SKIP')
+pkgver=1.2.2.r3.gd872dbc
 
-pkgver()
-{
-    cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+    cd "${_pkgname}"
+
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build()
-{
-    cd "$_pkgname"
+build() {
+    cd "${_pkgname}"
+
     qmake
-    make $MAKEFLAGS
+    make ${MAKEFLAGS}
 }
 
-package()
-{
-    cd "$_pkgname"
-    make INSTALL_ROOT="$pkgdir" install
-    mkdir -p "$pkgdir/usr/bin"
-    ln -s "/opt/vibrantLinux/bin/vibrantLinux" "$pkgdir/usr/bin"
-    install -Dm644 "$srcdir/vibrantLinux.desktop" "$pkgdir/usr/share/applications/vibrantLinux.desktop"
+package() {
+    cd "${_pkgname}"
 
-    convert 'assets/icon.png' -resize '512x512' 'assets/icon512.png'
-    install -Dm664 'assets/icon512.png' "$pkgdir/usr/share/icons/hicolor/512x512/apps/vibrantLinux.png"
+    make INSTALL_ROOT="${pkgdir}" install
 
-    install -Dm664 'assets/icon512.png' "$pkgdir/opt/vibrantLinux/bin/assets/icon.png"
+    for res in 16 32 64 128 256 512
+    do
+        install -Dm664 "assets/icon${res}.png" "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vibrantLinux.png"
+    done
+    install -Dm644 "${srcdir}/vibrantLinux.desktop" "${pkgdir}/usr/share/applications/vibrantLinux.desktop"
 }
