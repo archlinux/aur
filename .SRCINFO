@@ -1,14 +1,14 @@
 pkgbase = lang-sh
 	pkgdesc = Scripts from RedHat which provide fallback for CJK languages that can't be displayed in console.
-	pkgver = 2.13.3
+	pkgver = 2.13.6
 	pkgrel = 1
 	url = https://pagure.io/setup
 	arch = any
 	license = custom
 	source = https://pagure.io/setup/raw/master/f/lang.sh
 	source = https://pagure.io/setup/raw/master/f/lang.csh
-	sha256sums = 597add8fe85c1a137983a23634647802defdce44ac2abac2b2b11065dde04fd4
-	sha256sums = a13babc1459db736847ad11677b8a7f460268f0dd04f11b3ff9040ce52bb52b2
+	sha256sums = 58bf8b07428754b273560c5ea4040c672440b2bb04709842cf94163e15dc144f
+	sha256sums = 5486ae2358f54ba086017a5a7d89fc71855e4071c06fe1866a278838b465b161
 
 pkgname = lang-sh
 
