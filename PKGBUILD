@@ -61,8 +61,8 @@ _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
 _srcver_tag=5.4
-pkgver=v5.4_rc4
-pkgrel=2
+pkgver=v5.4_rc8
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/koverstreet/bcachefs"
 license=(GPL2)
@@ -119,7 +119,6 @@ pkgver() {
   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
   [ -z "$_srcver_tag" ] &&
   _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
-  msg2 $_srcver_tag
   echo "${_srcver_tag}" | sed 's/-/_/'
 }
 
@@ -138,6 +137,8 @@ actual_prepare() {
 
   git rebase origin/master
 
+curl https://raw.githubusercontent.com/Tk-Glitch/PKGBUILDS/master/linux53-tkg/linux53-tkg-patches/0007-v5.3-fsync.patch |
+patch -p1
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
