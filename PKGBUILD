@@ -1,7 +1,7 @@
 # Maintainer: edubart <edub4rt@gmail.com>
 _basename=jemalloc
 pkgname=mingw-w64-jemalloc
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='General-purpose scalable concurrent malloc implementation (mingw-w64)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 depends=(mingw-w64-crt)
 makedepends=(mingw-w64-configure)
 source=("https://github.com/jemalloc/jemalloc/releases/download/${pkgver}/${_basename}-${pkgver}.tar.bz2")
-sha256sums=('74be9f44a60d2a99398e706baa921e4efde82bf8fd16e5c0643c375c5851e3b4')
+sha256sums=('34330e5ce276099e2e8950d9335db5a875689a4c6a56751ef3b1d8c537f887f6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
