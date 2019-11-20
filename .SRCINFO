@@ -1,12 +1,32 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = patroni-git
+	pkgdesc = A template for PostgreSQL High Availability with ZooKeeper, etcd, or Consul
+	pkgver = 1.6.1
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/zalando/patroni
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-psycopg2
+	depends = python-urllib3>=1.19.1
+	depends = python-urllib3<>1.21
+	depends = python-pyaml
+	depends = python-requests
+	depends = python-six>=1.7
+	depends = python-click>=4.1
+	depends = python-prettytable>=0.7
+	depends = python-tzlocal
+	depends = python-dateutil
+	depends = python-psutil>=2.0.0
+	depends = python-cdiff
+	optdepends = python-boto: aws
+	optdepends = python-etcd: etcd
+	optdepends = python-consul: consul
+	optdepends = python-kazoo: exhibitor, zookeeper
+	optdepends = python-kubernetes: kubernetes
+	provides = patroni
+	conflicts = patroni
+	source = patroni-git::git+https://github.com/zalando/patroni.git
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = patroni-git
 
