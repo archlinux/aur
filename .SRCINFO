@@ -1,6 +1,6 @@
 pkgbase = gruvbox-material-neosyn-git
 	pkgdesc = Gruvbox with Material Palette -- neosyn branch
-	pkgver = v1.3.r21.g38167b3
+	pkgver = v0.3.3.r12.g57e2167
 	pkgrel = 1
 	url = https://github.com/sainnhe/gruvbox-material
 	arch = any
