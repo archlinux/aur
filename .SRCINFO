@@ -1,7 +1,7 @@
 pkgbase = dbus-cpp
 	pkgdesc = A header-only dbus-binding leveraging C++-11
 	pkgver = 5.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://code.launchpad.net/dbus-cpp
 	arch = x86_64
 	license = LGPL3
@@ -9,6 +9,8 @@ pkgbase = dbus-cpp
 	makedepends = gmock
 	makedepends = properties-cpp
 	makedepends = boost
+	makedepends = lcov
+	makedepends = gcovr
 	depends = process-cpp
 	depends = dbus
 	depends = libxml2

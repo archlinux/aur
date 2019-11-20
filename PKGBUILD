@@ -5,12 +5,12 @@ pkgname=dbus-cpp
 pkgdesc='A header-only dbus-binding leveraging C++-11'
 pkgver=5.0.0
 _pkgver=5.0.0+18.04.20171031
-pkgrel=4
+pkgrel=5
 url='https://code.launchpad.net/dbus-cpp'
 arch=(x86_64)
 license=(LGPL3)
 depends=(process-cpp dbus libxml2)
-makedepends=(cmake gmock properties-cpp boost)
+makedepends=(cmake gmock properties-cpp boost lcov gcovr)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/dbus-cpp_${_pkgver}.orig.tar.gz"
         'boost-asio-1-66.patch')
 sha256sums=('e0d426027acd65f7e568c53e974ae3e666f0af2e75b2d2afed3dae721a6e9e38'
@@ -31,7 +31,7 @@ build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
 
-  cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DDBUS_CPP_VERSION_MAJOR=5 -DDBUS_CPP_VERSION_MINOR=0 -DDBUS_CPP_VERSION_PATCH=0
+  CXXFLAGS=-Wno-error=deprecated-copy cmake .. -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DDBUS_CPP_VERSION_MAJOR=5 -DDBUS_CPP_VERSION_MINOR=0 -DDBUS_CPP_VERSION_PATCH=0
   make
 }
 
