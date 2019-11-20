@@ -17,8 +17,8 @@ package_gtksourceview2-lolcode()
     pkgdesc="lolcode syntax highlight support in gtksourceview2"
     depends=('gtksourceview2')
 
-    install -Dm644 "$srcdir/$pkgbase/lolcode.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/lolcode.lang"
-    install -Dm644 "$srcdir/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/${pkgname[0]}/LICENSE"
+    install -Dm644 "$pkgbase/lolcode.lang" "$pkgdir/usr/share/gtksourceview-2.0/language-specs/lolcode.lang"
+    install -Dm644 "$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/${pkgname[0]}/LICENSE"
 }
 
 package_gtksourceview3-lolcode()
@@ -26,8 +26,8 @@ package_gtksourceview3-lolcode()
     pkgdesc="lolcode syntax highlight support in gtksourceview3"
     depends=('gtksourceview3')
 
-    install -Dm644 "$srcdir/$pkgbase/lolcode.lang" "$pkgdir/usr/share/gtksourceview-3.0/language-specs/lolcode.lang"
-    install -Dm644 "$srcdir/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/${pkgname[1]}/LICENSE"
+    install -Dm644 "$pkgbase/lolcode.lang" "$pkgdir/usr/share/gtksourceview-3.0/language-specs/lolcode.lang"
+    install -Dm644 "$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/${pkgname[1]}/LICENSE"
 }
 
 package_gtksourceview4-lolcode()
@@ -35,6 +35,6 @@ package_gtksourceview4-lolcode()
     pkgdesc="lolcode syntax highlight support in gtksourceview4"
     depends=('gtksourceview4')
 
-    install -Dm644 "$srcdir/$pkgbase/lolcode.lang" "$pkgdir/usr/share/gtksourceview-4/language-specs/lolcode.lang"
-    install -Dm644 "$srcdir/$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/${pkgname[2]}/LICENSE"
+    install -Dm644 "$pkgbase/lolcode.lang" "$pkgdir/usr/share/gtksourceview-4/language-specs/lolcode.lang"
+    install -Dm644 "$pkgbase/LICENSE" "$pkgdir/usr/share/licenses/${pkgname[2]}/LICENSE"
 }
