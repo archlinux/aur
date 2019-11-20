@@ -1,7 +1,7 @@
 pkgbase = tsmuxer
 	pkgdesc = Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS, without re-encoding. Can quickly generate your own Blu-ray discs by processing your media files and converting them into streamable content. CLI and GUI all-in-one
 	pkgver = 2.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justdan96/tsMuxer
 	arch = x86_64
 	license = Apache License 2.0

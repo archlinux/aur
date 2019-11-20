@@ -4,7 +4,7 @@
 pkgname=tsmuxer
 PkgName=tsMuxer
 pkgver=2.6.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Remux/mux elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS, without re-encoding. Can quickly generate your own Blu-ray discs by processing your media files and converting them into streamable content. CLI and GUI all-in-one"
 arch=('x86_64')
 url="https://github.com/justdan96/${PkgName}"
@@ -25,11 +25,12 @@ ninja
 }
 
 package() {
-install -D -m644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-cd ${srcdir}/${pkgname}.git
-install -D -m755 -t ${pkgdir}/usr/bin/  ./build/${PkgName}/${pkgname}   ./build/${PkgName}GUI/${PkgName}GUI
+cd ${srcdir}/
+install -D -m644 -t ${pkgdir}/usr/share/applications/ ${pkgname}.desktop
+cd ${srcdir}/${pkgname}.git/
 install -D -m644 ./${PkgName}GUI/images/icon.png     ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
-install -D -m644 ./LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-install -D -m644 ./README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
-install -D -m644 ./CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
+install -D -m644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ LICENSE
+install -D -m644 -t ${pkgdir}/usr/share/doc/${pkgname}/ README.md CHANGELOG.md
+cd ${srcdir}/${pkgname}.git/build/
+install -D -m755 -t ${pkgdir}/usr/bin/  ${PkgName}/${pkgname}   ${PkgName}GUI/${PkgName}GUI
 }
