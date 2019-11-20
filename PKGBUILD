@@ -75,6 +75,6 @@ package() {
     install -Dm755 -d "$pkgdir/usr/share/$pkgname/i18n"
     cp languages/* "$pkgdir/usr/share/$pkgname/i18n/"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm 755 oragono "$pkgdir/usr/bin/oragono"
-    install -Dm 644 oragono.yaml "$pkgdir/etc/oragono.conf"
+    install -Dm755 oragono "$pkgdir/usr/bin/oragono"
+    install -Dm644 oragono.yaml "$pkgdir/etc/oragono.conf"
 }
