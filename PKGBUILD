@@ -15,7 +15,7 @@ optdepends=('python-send2trash: trash support'
 			'slurp: for screen color picker on Sway'
 			'maim: for screen color picker on X11'
 			'imagemagick: for screen color picker on X11 and Sway'
-			'python-pyaml: for alacritty.yml toolbox')
+			'python-yaml: for alacritty.yml toolbox')
 
 source=("git+https://github.com/nwg-piotr/azote.git")
 md5sums=('SKIP')
