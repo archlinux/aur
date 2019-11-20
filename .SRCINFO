@@ -1,6 +1,6 @@
 pkgbase = msc-generator
 	pkgdesc = Draws MSCs from textual descriptions
-	pkgver = 6.1
+	pkgver = 6.3.5
 	pkgrel = 1
 	url = http://sourceforge.net/projects/msc-generator/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = msc-generator
 	makedepends = texlive-plainextra
 	depends = graphviz>=2.36
 	depends = glpk
-	source = http://sourceforge.net/projects/msc-generator/files/msc-generator/v6.x/msc-generator-6.1.tar.gz
-	sha256sums = 871b07ab574c8a6d13fa733c7e8419139a63e427d4d8110756727fad4becf1cb
+	source = http://sourceforge.net/projects/msc-generator/files/msc-generator/v6.x/msc-generator-6.3.5.tar.gz
+	sha256sums = 8a715e91b3630c61885b977dd50f18068643cbf1cb824f1a70ddffdbed2aa39b
 
 pkgname = msc-generator
 
