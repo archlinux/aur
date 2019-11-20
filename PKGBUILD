@@ -3,7 +3,7 @@
 pkgbase=python-backoff
 pkgname=('python-backoff' 'python2-backoff')
 _name=${pkgname#python-}
-pkgver=1.9.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Function decoration for backoff and retry."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 
 #source=("${_name}-${pkgver}.tar.gz::https://github.com/litl/backoff/archive/v${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('33c6e75821aa9a23c47870ce945d4f359b0c602ca6501b50c335d4125b582361168d7741579c807abe684aa1f877474a2d4baddd5d0e15bc552f1c3521570d96')
+sha512sums=('33bc0565eff99e1ce20693a52f9caea90d863c77412ca15b0ea75ae9da56591340f8832c4f8f6ae083baab63b3ba93fd8320c37d49fbaec88cdad80a75b2c9c0')
 
 prepare() {
   cp -a backoff-${pkgver}{,-py2}
