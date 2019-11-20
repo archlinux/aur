@@ -1,7 +1,8 @@
 # Maintainer: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
-pkgname='vim-git'
-provides=('vim')
-pkgver=1.1c39102
+# Maintainer: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
+pkgbase='vim-git'
+pkgname=('vim-git' 'vim-git-runtime')
+pkgver=10857.a07549008
 pkgrel=1
 pkgdesc="VIM: Vi IMproved"
 arch=('i686' 'x86_64')
@@ -9,7 +10,7 @@ url="http://github.com/vim/vim"
 license=('GPL')
 depends=('gpm' 'ruby' 'lua' 'python2' 'python' 'acl')
 optdepends=()
-conflicts=('vim')
+conflicts=('vim' 'vim-runtime')
 backup=()
 options=()
 source=("git://github.com/vim/vim.git")
@@ -50,7 +51,29 @@ build() {
     make
 }
 
-package() {
+package_vim-git-runtime() {
+  pkgdesc+=' (shared runtime)'
+  optdepends=('sh: support for some tools and macros'
+              'python: demoserver example tool'
+              'gawk: mve tools upport')
+  backup=('etc/vimrc')
+
+  cd "$srcdir/vim"
+
+  make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
+  # man and bin files belong to 'vim'
+  rm -r "${pkgdir}"/usr/share/man/ "${pkgdir}"/usr/bin/
+
+  # no desktop files and icons
+  rm -r "${pkgdir}"/usr/share/{applications,icons}
+
+  # license
+  install -dm 755 "${pkgdir}"/usr/share/licenses/vim-runtime
+  ln -s /usr/share/vim/vim${_versiondir}/doc/uganda.txt \
+    "${pkgdir}"/usr/share/licenses/vim-runtime/license.txt
+}
+
+package_vim-git() {
   cd "$srcdir/vim"
 
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
