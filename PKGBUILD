@@ -1,7 +1,7 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 
 pkgname=krita-beta
-pkgver=4.2.7
+pkgver=4.2.8
 _subver=beta1
 pkgrel=1
 pkgdesc="Edit and paint images - beta release"
@@ -15,7 +15,7 @@ optdepends=()
 provides=(krita)
 conflicts=(krita)
 source=("https://download.kde.org/unstable/krita/$pkgver-$_subver/krita-$pkgver-$_subver.tar.xz")
-sha256sums=('7ee233dd7002e428896db76dac02ba61d6e816a86bcf0b2004b5c81ef76f5f7a')
+sha256sums=('e24b962b04e6cad45f8c7fa61bca17a75835ff62a5677a638439cff8a3fafe69')
 
 prepare() {
   mkdir -p build
@@ -24,7 +24,7 @@ prepare() {
 build() {
   cd build
   cmake "../krita-$pkgver-$_subver" \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF \
