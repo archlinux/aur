@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Vanity address generator for Tor onion v3 (ed25519) Onion Services"
 arch=('i686' 'x86_64')
 url="https://github.com/cathugger/mkp224o"
-license=('CC0')
+license=('custom:CC0')
 provides=('mkp224o')
 depends=('libsodium')
 
