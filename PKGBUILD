@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=4.11.r3.g3ad04757+wine.4.11.r138.g6e97461580
+pkgver=4.20.r4.ga9639c41+wine.4.20.r74.ga9c4b309f6
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -50,6 +50,7 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
     'sdl2'                  'lib32-sdl2'
     'vkd3d'                 'lib32-vkd3d'
+    'libcups'               'lib32-libcups'
     'sane'
     'libgphoto2'
     'gsm'

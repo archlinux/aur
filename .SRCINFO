@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 4.11.r3.g3ad04757+wine.4.11.r138.g6e97461580
+	pkgver = 4.20.r4.ga9639c41+wine.4.20.r74.ga9c4b309f6
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -63,6 +63,8 @@ pkgbase = wine-staging-git
 	makedepends = lib32-sdl2
 	makedepends = vkd3d
 	makedepends = lib32-vkd3d
+	makedepends = libcups
+	makedepends = lib32-libcups
 	makedepends = sane
 	makedepends = libgphoto2
 	makedepends = gsm
@@ -150,10 +152,10 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=4.11.r138.g6e97461580
-	provides = wine-wow64=4.11.r138.g6e97461580
-	provides = wine-git=4.11.r138.g6e97461580
-	provides = wine-staging=4.11.r3.g3ad04757
+	provides = wine=4.20.r74.ga9c4b309f6
+	provides = wine-wow64=4.20.r74.ga9c4b309f6
+	provides = wine-git=4.20.r74.ga9c4b309f6
+	provides = wine-staging=4.20.r4.ga9639c41
 	conflicts = wine
 	conflicts = wine-wow64
 	options = staticlibs
