@@ -1,62 +1,27 @@
-# Maintainer: Aoibhinn Nic Aoidh <oibind@pm.me>
-# Contributor: Matthew McGinn <mamcgi@gmail.com>
-# Contributor: alicewww <almw@protonmail.com>
-
+# Maintainer: telans <telans@protonmail.com>
+# Co-Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
 pkgname=mullvad-vpn-bin-beta
-_pkgname=mullvad-vpn
-pkgver=2019.2
-pkgrel=3
-pkgdesc="VPN Client for Mullvad.net, a bitcoin-friendly VPN for anonymity and privacy"
+pkgver=2019.9.stable
+_pkgver=2019.9
+pkgrel=2
+pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('gconf' 'gtk3' 'libnotify' 'libappindicator-gtk2' 'libxss' 'nss')
-conflicts=($_pkgname)
-replaces=($_pkgname)
-provides=($_pkgname)
-backup=()
-install=
-
-source=(mullvad-daemon.service
-mullvad-vpn.desktop
-"https://mullvad.net/media/app/MullvadVPN-${pkgver}-beta1_x86_64.rpm"{,.asc})
-
-sha256sums=('77b71d613ef09c6ffbcfa66a59f787246f64d4463843e648edc6fbbea18dd55e'
-            '8090fcecc2e07cb3e384387f14a181c4acf7ee01db53dad322b51649a1f5dc24'
-            '912a2d4da1e29ef120df28230ba36a50523ba2eeaaa3632b68286f82b5acec58'
+provides=("${pkgname%-bin-beta}")
+conflicts=("${pkgname%-bin-beta}")
+install="${pkgname%-bin-beta}.install"
+source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$_pkgver/MullvadVPN-${_pkgver}_amd64.deb"{,.asc})
+sha256sums=('4ba5b1c87cb5afdadbcfb37413bdd7ea72df139dd01815e9ca0f1c54f81f03e1'
             'SKIP')
-validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF')
+validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
 package() {
-    # Install systemd service
-    install -Dm644 mullvad-daemon.service "${pkgdir}/usr/lib/systemd/system/mullvad-daemon.service"
-
-    # Install the main files.
-    install -d "${pkgdir}/opt/${_pkgname}"
-    cp -a "${srcdir}/opt/Mullvad VPN/." "${pkgdir}/opt/${_pkgname}"
-
-    # Make it exec
-    chmod 755 "${pkgdir}/opt/${_pkgname}/${_pkgname}"
-
-    # Main binary
-    mkdir -p ${pkgdir}/usr/bin
-    ln -s "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-    # Desktop Entry
-    install -d "${pkgdir}/usr/share/applications"
-    install ${_pkgname}.desktop "${pkgdir}/usr/share/applications"
-    sed -i s%/usr/share%/opt% ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-
-    # CLI binary
-    install -m755 "${srcdir}/usr/bin/mullvad" "${pkgdir}/usr/bin/mullvad"
-
-    # Icons
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -a "${srcdir}/usr/share/icons/hicolor/." "${pkgdir}/usr/share/icons/hicolor"
-
-    echo -------------------------------------------------------------
-    echo 'Make sure to enable and run the mullvad daemon'
-    echo 'For systemd, do systemctl enable --now mullvad-daemon'
-    echo -------------------------------------------------------------
-
+	tar -xvf data.tar.xz -C "$pkgdir"
+	
+	ln -s "/opt/Mullvad VPN/mullvad-gui" "$pkgdir/usr/bin/${pkgname%-bin-beta}"
+	
+	install -Dm644 "$pkgdir/opt/Mullvad VPN/resources/mullvad-daemon.service" \
+		"$pkgdir/usr/lib/systemd/system/mullvad-daemon.service"
 }

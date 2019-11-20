@@ -1,6 +1,8 @@
-*.asc
-*.rpm
-*.pkg.tar.*
-*.tar.*
-pkg
-src
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!mullvad-vpn.install
