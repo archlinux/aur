@@ -5,16 +5,16 @@
 
 pkgname=gnuradio-git
 _gitname=gnuradio
-pkgver=v3.8.0.0.79.gc750d104d
+pkgver=v3.8.0.0.80.gd53136afd
 pkgrel=1
 pkgdesc="General purpose DSP and SDR toolkit, with drivers for usrp and fcd."
 arch=('i686' 'x86_64')
 url="https://github.com/gnuradio/gnuradio"
 license=('GPL')
-depends=('fftw' 'python' 'python-numpy' 'python-mako' 'python-click' 'python-click-plugins' 'python-pyqt5' 'cppunit' 'gsl' 'blas' 'guile' 'boost-libs>=1.54' 'libusbx' 'portaudio' 'libuhd' 'zeromq' 'libvolk' 'log4cpp')
+depends=('fftw' 'python' 'python-numpy' 'python-mako' 'python-click' 'python-click-plugins' 'python-pyqt5' 'python-gobject' 'cppunit' 'gsl' 'blas' 'guile' 'boost-libs>=1.54' 'libusbx' 'portaudio' 'libuhd' 'zeromq' 'libvolk' 'log4cpp')
 makedepends=('git' 'boost' 'cmake' 'python-cairo' 'python-yaml' 'python-cheetah' 'glu' 'swig' 'pygtk' 'qwt' 'python-sphinx')
 optdepends=('python-lxml: Some GRC modules use lxml optionally for improved performance')
-source=("git+https://github.com/gnuradio/gnuradio.git")
+source=("git+https://github.com/karel/gnuradio.git#branch=json_loads_encoding")
 md5sums=('SKIP')
 conflicts=('gnuradio' 'gnuradio-companion')
 provides=('gnuradio' 'gnuradio-companion')
