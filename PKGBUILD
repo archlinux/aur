@@ -1,5 +1,5 @@
 pkgname=reaper-bin
-pkgver=5.986
+pkgver=5.987
 pkgrel=1
 conflicts=(reaper)
 
@@ -12,7 +12,7 @@ depends=('gtk3' 'desktop-file-utils' 'xdg-utils')
 optdepends=('jack' 'pulseaudio')
 
 source=("http://reaper.fm/files/5.x/reaper${pkgver//.}_linux_x86_64.tar.xz")
-sha256sums=('18a29c63d46fda6dc494f93b7d43df85b7c4a42661a4df3da9426fd350d7be22')
+sha256sums=('332151cb2858130b6b2e74956382d6bd7814aa07191ae6ca89b51ef96d2c1310')
 
 package() {
   XDG_DATA_HOME="${srcdir}/desktop" sh "${srcdir}/reaper_linux_x86_64/install-reaper.sh" --install "${pkgdir}/opt" --integrate-user-desktop
