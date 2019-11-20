@@ -3,19 +3,20 @@
 
 pkgname=('ogdf-snapshot' 'ogdf-snapshot-docs')
 pkgver=2018_03_28
-pkgrel=2
+pkgrel=3
 pkgdesc="OGDF is a self-contained C++ class library for the automatic layout of diagrams. OGDF offers sophisticated algorithms and data structures to use within your own applications or scientific projects."
 arch=('i686' 'x86_64')
-url="http://amber-v7.cs.tu-dortmund.de/doku.php/start"
+url="https://ogdf.uos.de/"
 license=('GPL')
 makedepends=('cmake' 'doxygen' 'graphviz' 'bash')
 conflicts=('ogdf' 'coin-or-clp' 'coin-or-osi' 'coin-or-coinutils')
-source=("$pkgname-${pkgver//_/-}.zip::http://amber-v7.cs.tu-dortmund.de/lib/exe/fetch.php/tech:$pkgname-${pkgver//_/-}.zip")
+provides=('ogdf')
+source=("$pkgname-${pkgver//_/-}.zip::https://ogdf.uos.de/wp-content/uploads/2019/04/$pkgname-${pkgver//_/-}.zip")
 sha256sums=("347c3fa8dcdbb094f9c43008cbc2934bc5a64a532af4d3fe360a5fa54488440f")
 
 build() {
 	cd "$srcdir/OGDF-snapshot"
-	cmake -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS} -Wno-class-memaccess -Wno-error=restrict" \
+	cmake -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} ${CPPFLAGS} -Wno-class-memaccess -Wno-error=restrict -Wno-deprecated-copy -Wno-pessimizing-move -Wno-error=shadow" \
 		-DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
 		-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true \
 	        -DCMAKE_INSTALL_PREFIX="$pkgdir" .
