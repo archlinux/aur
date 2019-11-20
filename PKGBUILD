@@ -1,4 +1,5 @@
-# Maintainer: Head_on_a_Stick <matthew.t.hoare dot gmail at com>
+# Maintainer: Adrien Wu <adrien.sf.wu dot gmail at com>
+# Contributor: Head_on_a_Stick <matthew.t.hoare dot gmail at com>
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
