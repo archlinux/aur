@@ -41,7 +41,7 @@ pkgbase = gnuradio-git
 	provides = gnuradio-companion
 	conflicts = gnuradio
 	conflicts = gnuradio-companion
-	source = git+https://github.com/karel/gnuradio.git#branch=json_loads_encoding
+	source = git+https://github.com/gnuradio/gnuradio.git
 	md5sums = SKIP
 
 pkgname = gnuradio-git
