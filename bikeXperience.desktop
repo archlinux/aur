@@ -2,7 +2,7 @@
 Name=bikeXperience
 Comment=Software for outdoor training planning and gpx-track-management
 Exec=bikeXperience
-Icon=/usr/share/icons/hicolor/100x100/apps/bxpicon.png
+Icon=/usr/share/icons/hicolor/100x100/apps/bikeXperience.png
 Terminal=false
 Type=Application
 Categories=Utility;DataVisualization;Office;Geography;

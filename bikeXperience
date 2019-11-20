@@ -1,2 +1,2 @@
 #!/bin/bash
-java -Duser.language=en -Duser.country=US -Xmn150M -Xms500M -Xmx500M -jar /opt/bikexperience/bikeXperience.jar
+java -Duser.language=en -Duser.country=US -Xmn150M -Xms500M -Xmx500M -jar /usr/share/java/bikexperience/bikeXperience.jar
