@@ -7,14 +7,14 @@
 
 pkgname="google-cloud-sdk"
 pkgver=272.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('x86_64')
 depends=('python2')
 optdepends=(
-  "python: experimental support for python3. see https://cloud.google.com/sdk/gcloud/reference/topic/startup"
+  "python: [cli] beta support for python3. see https://cloud.google.com/sdk/gcloud/reference/topic/startup"
   "python2-crcmod: [gsutil] verify the integrity of GCS object contents"
 )
 options=('!strip' 'staticlibs')
