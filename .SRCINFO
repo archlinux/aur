@@ -1,0 +1,19 @@
+pkgbase = beets-bandcamp
+	pkgdesc = Plugin for beets to use bandcamp as an autotagger source.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/unrblt/beets-bandcamp
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = beets
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-isodate
+	source = https://github.com/unrblt/beets-bandcamp/archive/v0.1.3.tar.gz
+	sha256sums = 250ae2845bbbc1577efff786e95739e49c1382de92881576445d3e6ac75d01f4
+
+pkgname = beets-bandcamp
+
