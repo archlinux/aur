@@ -1,6 +1,6 @@
 pkgbase = mir-git
 	pkgdesc = Canonical's display server
-	pkgver = 1.0.0+8+g0b7f873aff
+	pkgver = 1.5.0+120+g5fdc44755a
 	pkgrel = 1
 	url = https://mir-server.io
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = mir-git
 	makedepends = valgrind
 	makedepends = python-dbusmock
 	makedepends = umockdev
+	makedepends = wlcs
 	depends = gtest
 	depends = boost-libs
 	depends = capnproto
