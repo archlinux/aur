@@ -1,16 +1,22 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-pystatparser-git
-pkgver=0.1
+pkgver=r24.0e4990d
 pkgrel=1
 pkgdesc="Simple Python statistical (CKY) parser"
 url="https://github.com/emilmont/pyStatParser"
 arch=('any')
 provides=('python-pystatparser')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 _name='pyStatParser'
 source=("git+https://github.com/emilmont/$_name.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_name"
+  _gitversion=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
+  printf "%s" $_gitversion
+}
 
 build() {
   cd "$_name"
