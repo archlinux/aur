@@ -1,8 +1,8 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4
-pkgver=2019.1.1845410
-pkgrel=2
+pkgver=2019.2.1885864
+pkgrel=1
 
 pkgdesc="Perforce command line client"
 depends=('glibc')
