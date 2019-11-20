@@ -134,9 +134,6 @@ prepare() {
     git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     git pull --no-edit arch_stable "$_srcver_tag"
 
-    # msg2 "Fixing EXTRAVERSION..."
-    # sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
-
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching to enabled additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
