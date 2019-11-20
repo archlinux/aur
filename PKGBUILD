@@ -2,7 +2,7 @@
 
 pkgname=libcelero-headers
 _pkgname=Celero
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='C++ Benchmark Authoring Library/Framework (Developmental Headers)'
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom:"Apache License, Version 2.0"')
 conflicts=('libcelero')
 provides=('libcelero')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DigitalInBlue/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1306444fb78ad1d33d6b9ed8ec94a1740b49fc98c3337dead15395255eda76a8')
+sha256sums=('a5b72da254f81d42369382ba3157229b6b32ebbb670a22b185f80db95535e66e')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
