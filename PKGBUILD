@@ -3,7 +3,7 @@
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
 pkgver=2019.9
-pkgrel=2
+pkgrel=4
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
