@@ -4,7 +4,7 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=mongodb-tools
-pkgver=4.2.0
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('libpcap')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mongodb/mongo-tools/archive/r${pkgver}.tar.gz")
-sha512sums=('f937a9f2b4ccfe262ca1a09e7bd103ffbdd45eae7c6deed8c1453f4499935f526f513749422e3215071ef465291c3f0544bf1e9510bbaf8dd9fa1edcf22f887a')
+sha512sums=('bba754acd9e21f8f832fc2e434720347c2222897b2af08d66f9491110d5491f5475ae2118ff25b263606677da10b0c96b76cc507a01287180096c25c1eab5ced')
 
 _tools=('bsondump' 'mongostat' 'mongofiles' 'mongoexport' 'mongoimport' 'mongorestore' 'mongodump' 'mongotop' 'mongoreplay')
 
@@ -21,7 +21,6 @@ prepare() {
   cd "${srcdir}"
   install -d build/src/github.com/mongodb/bin
   mv "mongo-tools-r${pkgver}" build/src/github.com/mongodb/mongo-tools
-  sed -i 's/_Ctype_struct_/C.struct_/' build/src/github.com/mongodb/mongo-tools/vendor/github.com/google/gopacket/pcap/pcap.go
 }
 
 build() {
