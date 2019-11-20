@@ -3,7 +3,7 @@
 #based on ida-free PKGBUILD by fatalis
 #maintainer: fenugrec
 
-pkgver=7.3
+pkgver=7.4
 pkgname="ida-pro"
 pkgrel=2
 pkgdesc="Hex-Rays IDA Pro {pkgver}"
@@ -15,11 +15,13 @@ depends=('libgl'
 	)
 options=('!strip')
 
-_installer='x64_idapronl_7.3.run'
+_installer='idapronl_7.4.run'
 
-source=('ida-pro.desktop')
+source=('ida-pro.desktop'
+		'ida-pro64.desktop')
 
-sha256sums=('6ac694f7956d5baf466db1983bcece84a3b8bc5d8ae82d5d69a46921d673d0c8')
+sha256sums=('5df2fcbfa07c470b33a3c6df12c6625d78ccb2918b554f2dabfe6c341fefb182'
+            '2345e0c88f0426729b1ef04824d2a0be8ab5456d16fc602921f1261238ffdac1')
 
 arch=('x86_64')
 
@@ -46,8 +48,10 @@ package() {
 
 	rm "${pkgdir}"/opt/${pkgname}/{uninstall*,Uninstall*}
 
-	install "${srcdir}"/ida-pro.desktop "${pkgdir}"/usr/share/applications
-	ln -s /opt/${pkgname}/appico64.png "${pkgdir}"/usr/share/icons/ida-pro.png
+	install "${srcdir}"/ida-pro*.desktop "${pkgdir}"/usr/share/applications
+	ln -s /opt/${pkgname}/appico64.png "${pkgdir}"/usr/share/icons/ida-pro64.png
+	ln -s /opt/${pkgname}/appico.png "${pkgdir}"/usr/share/icons/ida-pro.png
 	ln -s /opt/${pkgname}/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 	ln -s /opt/${pkgname}/ida64 "${pkgdir}"/usr/bin/ida64
+	ln -s /opt/${pkgname}/ida "${pkgdir}"/usr/bin/ida
 }

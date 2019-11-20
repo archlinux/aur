@@ -1,8 +1,8 @@
 pkgbase = ida-pro
 	pkgdesc = Hex-Rays IDA Pro {pkgver}
-	pkgver = 7.3
+	pkgver = 7.4
 	pkgrel = 2
-	url = https://www.hex-rays.com/products/ida/7.3/index.shtml
+	url = https://www.hex-rays.com/products/ida/7.4/index.shtml
 	arch = x86_64
 	license = custom
 	makedepends = fakechroot
@@ -10,7 +10,9 @@ pkgbase = ida-pro
 	depends = qt5-base
 	options = !strip
 	source = ida-pro.desktop
-	sha256sums = 6ac694f7956d5baf466db1983bcece84a3b8bc5d8ae82d5d69a46921d673d0c8
+	source = ida-pro64.desktop
+	sha256sums = 5df2fcbfa07c470b33a3c6df12c6625d78ccb2918b554f2dabfe6c341fefb182
+	sha256sums = 2345e0c88f0426729b1ef04824d2a0be8ab5456d16fc602921f1261238ffdac1
 
 pkgname = ida-pro
 
