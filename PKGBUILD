@@ -1,8 +1,8 @@
 # Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=vscodium-bin
-pkgver=1.40.0
-pkgrel=2
+pkgver=1.40.1
+pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
@@ -23,7 +23,7 @@ source=(
        )
 noextract=("${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('31fbf764608b74abedaa4dbb5bf8b7d62570345e2a7079bdbc156e5f7c2357ff'
-            '4482f533bc639d0462a0b98f1a5a13f0adf50a4e7bb75102280bee18297c217a')
+            'fa897af34d8efdcac64f9790ad387912306d3a0264ffc83338d2e281f9a4ab06')
 
 prepare() {
     mkdir -p ${srcdir}/${pkgname}
