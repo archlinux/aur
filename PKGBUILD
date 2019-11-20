@@ -4,8 +4,8 @@
 
 pkgname=adwaita-qt4
 _pkgname=adwaita-qt
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell'
 arch=('x86_64')
 url="https://github.com/FedoraQt/adwaita-qt"
@@ -14,7 +14,7 @@ depends=('qt4')
 makedepends=('cmake' 'git')
 optdepends=('qgnomeplatform: apply GNOME settings to Qt apps')
 source=("https://github.com/FedoraQt/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a7d535e42ff56a4851eeb0572b920c2e76ae0bdd87fe21a8503242fe6e7327f6')
+sha256sums=('da02683beacc6f7751ac370b99f8e4af7bc2d71af854f7a4ba6f1b4a5205fddb')
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   mkdir build
