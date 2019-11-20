@@ -9,7 +9,7 @@
 
 pkgname=prosody-hg
 pkgrel=1
-pkgver=r10421+.09b54ad0fdc4+
+pkgver=r10422+.cb6c0a5f9367+
 pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (development build from trunk-branch)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://prosody.im/"
