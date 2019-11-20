@@ -1,7 +1,7 @@
 # Maintainer: Jonas Krogh Hansen "Badgy" <jonaskhansen@gmail.com>
 # Contributor: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
 pkgname=spotirec
-pkgver=r34.ea60066
+pkgver=r37.e2ed62b
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
@@ -28,6 +28,4 @@ package() {
     install spotirec.py oauth2.py -t "$pkgdir/usr/lib/spotirec"
 
     ln -s "/usr/lib/spotirec/spotirec.py" "$pkgdir/usr/bin/spotirec"
-
-    touch "$HOME/.config/spotirec/blacklist"
 }
