@@ -1,7 +1,7 @@
 pkgbase = pyneedle
 	pkgdesc = Convenient tool created to allow you to quickly search for files in your computer, using one of the supported search engines (i.e. tracker and recoll)
 	pkgver = 86
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/aperezmendez/pyneedle
 	arch = any
 	license = MIT
