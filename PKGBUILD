@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.2.21.arch1.r844617.860a434cb8ac
+pkgver=v5.3.11.arch1.r859541.9311dbd9088c
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.2.21-arch1
+_srcver_tag=v5.3.11-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -93,8 +93,6 @@ source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7.patch
-    fd0f4757ded3627edc883650941a26a21e435a7d.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -102,9 +100,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'd9519955c66275dbb8a1b056eb799b97387fab4cadb96de3a400cef7ec39f6a3ad0228c6deb24401f4ad65ffb6ed6173b27f453a1edf9c5e2a36c3a46851d4a8'
-            'dc6321a572ac365f73b924b3bd8cd26112a0256baf358e3893b90a623e4c0a9eb3667b23f86570581371f993f2c17998e31e27aa36eee925a0589b20b71b65ff'
-            '6792e775464ba41b03938fd42d71caf22c85a4c63a255f5ff807da6101a42afe2f9cb940bd5e80b1e7d21a0b959962d90cc2452920597e7ba0bcb15d37c15233')
+            'beb2a30558f3e5cc6aa56c8ec908309c40cf9fae02151d16bb7c229dc4f20fe5c26def36a06d12464edf84c25dfa04c4e9490599ca53d388b7735846c81114b8')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -132,19 +128,11 @@ prepare() {
     # https://github.com/koverstreet/bcachefs/issues/74
     # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v5.2.1&id=c785529bebceeaf38db8ebf9b50ff3a173fb18c6
     # block: fix .bi_size overflow
-    git revert --no-edit c785529bebceeaf38db8ebf9b50ff3a173fb18c6
+    # git revert --no-edit c785529bebceeaf38db8ebf9b50ff3a173fb18c6
 
-    # msg2 "Pull stable releases from Arch vanilla kernel repository..."
-    # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    # git pull --no-edit arch_stable "$_srcver_tag"
-
-    # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=fd0f4757ded3627edc883650941a26a21e435a7d
-    # add sysctl to disallow unprivileged CLONE_NEWUSER by default
-    patch -Np1 -i "$srcdir/fd0f4757ded3627edc883650941a26a21e435a7d.patch"
-    
-    # https://git.archlinux.org/linux.git/commit/?h=v5.1.16-arch1&id=7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7
-    # ZEN: Add CONFIG for unprivileged_userns_clone
-    patch -Np1 -i "$srcdir/7e6c7c0d56e1342b9ad5d8071736a5851d1ae1c7.patch"
+    msg2 "Pull stable releases from Arch vanilla kernel repository..."
+    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    git pull --no-edit arch_stable "$_srcver_tag"
 
     msg2 "Fixing EXTRAVERSION..."
     sed -i 's/EXTRAVERSION =/EXTRAVERSION = -arch1/g' "$srcdir/$_reponame/Makefile"
