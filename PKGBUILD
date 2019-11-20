@@ -2,14 +2,14 @@
 # Contributor: Gerardo Marset <gammer1994@gmail.com>
 
 pkgname=lci-git
-_pkgurl=git://github.com/justinmeza/lci.git
 
 # Set this to true for the 1.4 draft (fileio, sockets, bukkits, …):
 _usedraft=false
+_pkgurl="git+https://github.com/justinmeza/lci.git"
 
 if test "$_usedraft" == "true"; then
     # 1.4 draft:
-    _pkgurl=$_pkgurl#branch=future
+    _pkgurl="$_pkgurl#branch=future"
 fi
 
 pkgver=0.10.5.r27.g6762b72
