@@ -3,7 +3,7 @@
 # Contributor: Callum Denby <me@callumdenby.com>
 pkgname=aws-session-manager-plugin
 pkgver=1.1.35.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AWS Session Manager Plugin for aws-cli."
 arch=('i686' 'x86_64')
 url="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html"
@@ -11,7 +11,6 @@ license=('custom')
 depends=('aws-cli')
 backup=('usr/lib/systemd/system/session-manager-plugin.service' 'usr/sessionmanagerplugin/LICENSE' 'usr/sessionmanagerplugin/seelog.xml' 'usr/sessionmanagerplugin/VERSION')
 options=('!strip' '!emptydirs')
-install=${pkgname}.install
 source_i686=(https://s3.amazonaws.com/session-manager-downloads/plugin/${pkgver}/ubuntu_32bit/session-manager-plugin.deb)
 source_x86_64=(https://s3.amazonaws.com/session-manager-downloads/plugin/${pkgver}/ubuntu_64bit/session-manager-plugin.deb)
 sha512sums_i686=('025b900e3387e3885a7330bb2188ef9a1bd8a40bb16f16f5f246e849b5efb2d1ee4d4ecfb99287d87381ae030f2603ae1deeee18d88b4f7327e6ffc99579ef03')
@@ -25,14 +24,16 @@ package(){
 	# Fix directories structure differencies
 	cd "${pkgdir}"
 
+	mkdir -p usr/bin
 	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
 
-	# rm -fr etc/init/
+	rm -fr etc/
 
 	sed -i 's/usr\/local/usr/' usr/lib/systemd/system/session-manager-plugin.service
 
 	mv usr/local/* usr; rm -rf usr/local
 
-	cd ..
+	ln -sf /usr/sessionmanagerplugin/bin/session-manager-plugin usr/bin/session-manager-plugin
 
+	cd ..
 }
