@@ -2,7 +2,7 @@
 pkgname=gruvbox-material-git
 pkgdesc="Gruvbox with Material Palette"
 pkgrel=1
-pkgver=v1.3.r21.g38167b3
+pkgver=v0.3.3.r12.g57e2167
 arch=('any')
 url="https://github.com/sainnhe/gruvbox-material"
 license=('MIT' 'Anti-996')
@@ -24,7 +24,6 @@ package() {
   install -Dm644 doc/gruvbox-material.txt "$pkgdir/usr/share/vim/vimfiles/doc/gruvbox-material.txt"
   install -Dm755 ${srcdir}/${_pkgname}/autoload/airline/themes/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/airline/themes/gruvbox_material.vim
   install -Dm755 ${srcdir}/${_pkgname}/autoload/lightline/colorscheme/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/lightline/colorscheme/gruvbox_material.vim
-  install -Dm755 ${srcdir}/${_pkgname}/autoload/leaderf/colorscheme/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/leaderf/colorscheme/gruvbox_material.vim
 }
 
 # vim:set ts=2 sw=2 et:
