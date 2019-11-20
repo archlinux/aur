@@ -1,10 +1,11 @@
 pkgbase = nativescript-sidekick
 	pkgdesc = NativeScript Sidekick is a desktop GUI that enhances the power of the NativeScript CLI and simplifies the development of mobile applications. It is designed to be a companion that complements your code editor, source control, and any other tools you use.
 	pkgver = 1.19.1.v.2019.8.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nativescript.org
 	install = nativescript-sidekick.install
 	arch = x86_64
+	groups = 
 	license = custom
 	depends = desktop-file-utils
 	depends = gconf
@@ -16,7 +17,9 @@ pkgbase = nativescript-sidekick
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = nativescript-sidekick-1.19.1.v.2019.8.1.2.deb::https://sk-cdn.nativescript.cloud/fusion/1.19.1-v.2019.8.1.2/linux/NativeScriptSidekick__amd64.deb
+	source_x86_64 = launcher1.patch
 	sha512sums_x86_64 = 44f0880b475efd84adec246dbf72c4f4a8ce2b623c63ad97c7734809649e37b335cd556722c3aaacdc278ac1b734361a38ac2b9d279afb65fe050df60eddecf8
+	sha512sums_x86_64 = 52421ed9086bf3eb511ed36856f27a7d2122b6add3ef69f9562a7c11b4a2f3d960f4ab809eae93915151e27f88898dc1e6292451fdc1891b67bbc81c637a3017
 
 pkgname = nativescript-sidekick
 
