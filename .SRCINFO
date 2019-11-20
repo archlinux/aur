@@ -1,0 +1,13 @@
+pkgbase = ttf-oppo-sans
+	pkgdesc = Oppo's new brand font, free for business use.
+	pkgver = 1.00
+	pkgrel = 1
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://static01.coloros.com/www/public/img/topic7/font-opposans.zip?194
+	md5sums = 3fa55b469f66e74d6dc291d928b7d7bb
+
+pkgname = ttf-oppo-sans
+
