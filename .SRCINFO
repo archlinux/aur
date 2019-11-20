@@ -1,6 +1,6 @@
 pkgbase = xe-guest-utilities-git
 	pkgdesc = Citrix XenServer Tools
-	pkgver = 20190927.2f5d2e4
+	pkgver = 20191120
 	pkgrel = 1
 	url = https://github.com/xenserver/xe-guest-utilities
 	arch = x86_64
