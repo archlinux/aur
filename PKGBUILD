@@ -5,7 +5,7 @@
 
 pkgname=shopify-themekit-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform tool for building Shopify Themes"
 arch=('x86_64')
 
