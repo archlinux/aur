@@ -1,22 +1,12 @@
 post_install() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-    
     # virtual environement to avoid pip changing system packages
-    python3 -m venv --system-site-packages /opt/thefanclub/overgrive/venv
-    /opt/thefanclub/overgrive/venv/bin/pip3 install --upgrade google-api-python-client
+    /usr/bin/python -m venv --system-site-packages /opt/thefanclub/overgrive/venv
+    /opt/thefanclub/overgrive/venv/bin/pip install --upgrade google-api-python-client
 
-    # Recomplie Schemas for good measure
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
     if [ -f /usr/bin/glib-compile-schemas ]
     then
         /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-    fi
-
-    # Choose cpython interpreter for overgrive and copy correct compiled version and remove folder
-    if [ -d /opt/thefanclub/overgrive/__pycache__ ]
-    then
-        cp /opt/thefanclub/overgrive/__pycache__/$(ls /opt/thefanclub/overgrive/__pycache__ |  grep $(python3 -V | cut -d' ' -f2 | cut -d'.' -f1-2 | sed 's/\.//g')) /opt/thefanclub/overgrive/overgrive
-        rm -R /opt/thefanclub/overgrive/__pycache__
-        chmod 0755 /opt/thefanclub/overgrive/overgrive
     fi
 }
 
@@ -49,29 +39,23 @@ pre_remove() {
 	   fi
 	fi
 
-	if [ -f  "$userHome/.config/autostart/overgrive-autostart.desktop" ]
-	then 
-	   rm  "$userHome/.config/autostart/overgrive-autostart.desktop"
-	fi
+	# if [ -f  "$userHome/.config/autostart/overgrive-autostart.desktop" ]
+	# then 
+	#    rm  "$userHome/.config/autostart/overgrive-autostart.desktop"
+	# fi
 	
-    if [ -f  "$userHome/.config/autostart/overgrive.desktop" ]
-	then 
-	   rm  "$userHome/.config/autostart/overgrive.desktop"
-	fi
-
-
-	if [ -f  "/opt/thefanclub/overgrive/overgrive" ]
-	then 
-	   rm  "/opt/thefanclub/overgrive/overgrive"
-	fi
+    # if [ -f  "$userHome/.config/autostart/overgrive.desktop" ]
+	# then 
+	#    rm  "$userHome/.config/autostart/overgrive.desktop"
+	# fi
+    
 }
 
 post_remove() {
-    sudo rm -rf /opt/thefanclub/overgrive/
-    
+    rm -rf /opt/thefanclub/overgrive/
     if [ -z "$(ls -A /opt/thefanclub/)" ]
     then
-        sudo rmdir /opt/thefanclub/
+        rmdir /opt/thefanclub/
     fi
 
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
