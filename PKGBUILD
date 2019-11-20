@@ -1,7 +1,7 @@
 # Maintainer: Kevin Hilton <>
 pkgname=('xe-guest-utilities-git' 'xenstore-git')
 pkgrel=1
-pkgver=20190927.2f5d2e4
+pkgver=20191120
 pkgdesc="Citrix XenServer Tools"
 arch=('x86_64')
 url="https://github.com/xenserver/xe-guest-utilities"
