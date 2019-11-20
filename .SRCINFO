@@ -1,7 +1,7 @@
 pkgbase = cum
 	pkgdesc = Comic Updater, Mangafied
 	pkgver = 0.9.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Hamuko/cum
 	arch = any
 	license = Apache
