@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
@@ -8,12 +8,12 @@ url='https://dnsdist.org/'
 license=('GPL2')
 source=(https://downloads.powerdns.com/releases/${pkgname}-${pkgver}.tar.bz2{,.asc}
         sysusers.conf)
-sha512sums=('c0e3435eafc1f7bcdf41346cecf7b089cc142716f94058f9ec262d0c6ad16467e0b8bed5abc648829c597120c94f998602849ded574e75bfc1a1fb70c1b719ad'
+sha512sums=('c9450e97325d8ad8c8c3a395412c46ea8053cbe1ebe73329a1618212ba29bdf2f8da908ae2b90c314b5aab613387f42363e3a5322b1a36f60190fb48e1c425c5'
             'SKIP'
             'd55ccd612cbe08b353815027d30a3b0f0ec7bf6b0d74a0a634939be53ce6e6b41d23e54c2328946f00738c03e9f306ce4f2dabe5e4b11d9fb28d0abf49917893')
 validpgpkeys=('D6300CABCBF469BBE392E503A208ED4F8AF58446') # Remi Gacogne <remi.gacogne@powerdns.com>
 makedepends=('boost' 'systemd')
-depends=('fstrm' 'gnutls' 'libedit' 'libsodium' 'libsystemd' 'luajit' 'net-snmp' 'openssl' 'protobuf' 're2')
+depends=('fstrm' 'gnutls' 'libcap' 'libedit' 'libsodium' 'libsystemd' 'lmdb' 'luajit' 'net-snmp' 'openssl' 'protobuf' 're2' 'tinycdb')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -22,18 +22,17 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --with-ebpf \
-    --with-lua=luajit \
     --with-protobuf \
+    --with-gnutls \
+    --with-libsodium \
+    --with-libssl \
+    --with-re2 \
+    --enable-dnstap \
     --enable-dns-over-tls \
     --enable-dnscrypt \
-    --enable-gnutls \
-    --enable-libsodium \
-    --enable-libssl \
-    --enable-fstrm \
-    --enable-re2 \
     --enable-systemd
   make
-  sed -i 's,ExecStart=/usr/bin/dnsdist --supervised --disable-syslog,ExecStart=/usr/bin/dnsdist --supervised --disable-syslog -u dnsdist,' dnsdist.service
+  sed -i 's,CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID,CapabilityBoundingSet=CAP_NET_BIND_SERVICE\nAmbientCapabilities=CAP_NET_BIND_SERVICE\nUser=dnsdist\nGroup=dnsdist,' dnsdist.service
 }
 
 package() {
