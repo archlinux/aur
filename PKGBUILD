@@ -3,14 +3,14 @@
 pkgname=pmemd
 pkgver=18
 _toolsver=19
-_gccver=7.4.1
+_gccver=8.3.0
 pkgrel=1
 pkgdesc="PMEMD module of AMBER software package"
 url="http://ambermd.org/"
 license=('custom')
 arch=('x86_64')
-depends=('openmpi3-gcc7' 'fakeroot' 'zlib' 'bzip2' 'gcc7-libs' 'flex' 'python2')
-makedepends=('make' 'gcc7' 'gcc7-fortran' 'tcsh' 'imake' 'patch')
+depends=('openmpi3-gcc8' 'fakeroot' 'zlib' 'bzip2' 'gcc8-libs' 'flex' 'python2')
+makedepends=('make' 'gcc8' 'gcc8-fortran' 'tcsh' 'imake' 'patch')
 optdepends=('plumed-patches: PLUMED support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI')
@@ -50,7 +50,7 @@ build() {
 
   # build serial version
   cd ${srcdir}/amber${pkgver}
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates gnu
 
   # add support for PLUMED
   if [ -e "/usr/bin/plumed-mpi-patch" -a -e "/usr/lib/plumed-mpi/patches/amber${pkgver}.diff" ]; then
@@ -80,7 +80,7 @@ build() {
 
   # build parallel version
   cd ${srcdir}/amber${pkgver}
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -mpi gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates -mpi gnu
   cd ${srcdir}/amber${pkgver}/src
   make install
 }
