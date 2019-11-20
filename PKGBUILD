@@ -3,8 +3,8 @@
 pkgname=openmpi3-gcc7
 _pkgname=openmpi
 pkgver=3.1.4
-_gccver=7.4.1
-pkgrel=2
+_gccver=7.5.0
+pkgrel=3
 pkgdesc='High performance message passing library (MPI), version 3 (built with GCC7)'
 url='https://www.open-mpi.org'
 arch=('x86_64')
