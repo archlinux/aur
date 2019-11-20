@@ -1,11 +1,12 @@
 # Maintainer: Jonas Krogh Hansen "Badgy" <jonaskhansen@gmail.com>
 # Contributor: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
 pkgname=spotirec
-pkgver=r39.9d170a4
+pkgver=r45.b18dd15
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
 url="https://github.com/Badgie/spotirec"
+license=('GPL3')
 depends=('python>=3.8.0'
         'python-bottle>=0.12.17'
         'python-requests>=2.22.0')
