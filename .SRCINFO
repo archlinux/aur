@@ -1,0 +1,17 @@
+pkgbase = python-console-menu-git
+	pkgdesc = A simple Python menu system for building terminal user interfaces.
+	pkgver = v0.6.0.r11.g93006cb
+	pkgrel = 1
+	url = https://github.com/aegirhall/console-menu
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jose
+	depends = python-requests
+	source = git://github.com/aegirhall/console-menu
+	md5sums = SKIP
+
+pkgname = python-console-menu-git
+
