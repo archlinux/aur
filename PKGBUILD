@@ -5,7 +5,7 @@ pkgname=lix
 pkgver=0.9.29
 pkgrel=1
 changelog=.CHANGELOG
-source=("$pkgname-$pkgver-$pkgrel.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
 sha512sums=('2681e662c0593b34d47f64fe7a91b56a36e00bd98318e4ad8f6e984d05d7d9c2f3ecdc3849241b5f8c574ba00016d29de4d9877665aa2aeb764f7dc793e5ea25')
 
 _gitname=LixD
@@ -38,17 +38,17 @@ source+=(   "$pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
 sha512sums+=(   '37349c98b739ea43c25137dd03865f1c9c41eec91e5edc109afd9d50ce3871bd0c7f63c3f3599a47bb4ef52f5bfd14e034010de0ac2aec5a9c0c83eaf0b89425'
                 '375b1439d9398371a3f58a92bfc0901b86bd89140aae431c7d9405bd2fb36ebcdb22b2686fea72d88b23a4ab94b138b4d742d8fd2965d8ec0542d2f8f64ed0c2'
                 )
-source+=(   "allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
-            "bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
-            "derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
-            "derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
-            "enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
-            "libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
-            "optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
-            "sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
-            "silly::git+https://github.com/ohdatboi/silly.git#tag=v${_dubv[8]}"
-            "taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
-            "unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
+source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#tag=v${_dubv[0]}"
+            "$pkgname-bolts::git+https://github.com/aliak00/bolts.git#tag=v${_dubv[1]}"
+            "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
+            "$pkgname-derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
+            "$pkgname-enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
+            "$pkgname-libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
+            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
+            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
+            "$pkgname-silly::git+https://github.com/ohdatboi/silly.git#tag=v${_dubv[8]}"
+            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
+            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
             )
 sha512sums+=(   'SKIP'
                 'SKIP'
@@ -65,7 +65,6 @@ sha512sums+=(   'SKIP'
 
 _build()
 {
-    cd "$_gitname-$pkgver" || exit
     _r=0
 
     # add local dependencies to search path
