@@ -1,7 +1,7 @@
 # Maintainer: Felix Bühler <account at buehler dot de>
 
 pkgname=nautilus-open-any-terminal
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="context-menu entry for opening other terminal in nautilus"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/Stunkymonkey/nautilus-open-any-terminal"
 license=(GPL3)
 depends=(python-nautilus)
 makedepends=(git python-setuptools)
-_commit=bd2397028266ceb0e2653a35f9886e42796d0866
+_commit=b733f618a8e823f23d8c074ca45e150cc25e152d
 source=("git+https://github.com/Stunkymonkey/nautilus-open-any-terminal#commit=$_commit")
 sha512sums=("SKIP")
 
