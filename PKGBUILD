@@ -5,7 +5,7 @@
 _target=riscv64-linux-gnu
 pkgname=$_target-gcc
 pkgver=9.2.0
-_islver=0.21
+_islver=0.22
 pkgrel=1
 pkgdesc='Cross compiler for 32-bit and 64-bit RISC-V'
 arch=('x86_64')
