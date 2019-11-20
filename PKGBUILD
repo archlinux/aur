@@ -2,17 +2,18 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix-git
+_pkgname=${pkgname%-git}
 pkgver=0.9.27.r1560437770.3e7c410d
 pkgrel=1
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/SimonN/lix-unstable.git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/SimonN/lix-unstable.git")
 sha512sums=('SKIP')
 
 pkgver()
 {
     # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-    cd "${pkgname%-git}" || exit
+    cd "$_pkgname" || exit
     (
         set -o pipefail
 
@@ -24,8 +25,6 @@ pkgver()
     )
 }
 
-_pkgname=${pkgname%-git}
-# template start; name=lix; version=1.5;
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
@@ -45,9 +44,10 @@ _dubv=(	"4.0.4+5.2.0"   # allegro
         "0.7.52"        # unit-threaded
         )
 
-
 # let makepkg handle dub packages
-# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git_Submodules
+# These have to be git clones, otherwise dub isn't able to pick them up with the correct version later on
+# no git, no version field, assumed ~master
+# https://dub.pm/commandline.html#add-path
 source+=(   "$_pkgname-music-1.zip::http://www.lixgame.com/dow/lix-music.zip"
             "$_pkgname.desktop"
             )
@@ -81,7 +81,7 @@ sha512sums+=(   'SKIP'
 
 _build()
 {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$_pkgname" || exit
     _r=0
 
     # add local dependencies to search path
@@ -117,20 +117,18 @@ _build()
 
 build()
 {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$_pkgname" || exit
     _build build
 }
 
 check()
 {
-    cd "$srcdir/$_pkgname" || exit
+    cd "$_pkgname" || exit
     _build test
 }
 
 package()
 {
-    cd "$srcdir" || exit
-
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
@@ -170,7 +168,7 @@ package()
 
     # remove unimportant files
     # https://raw.githubusercontent.com/SimonN/LixD/master/doc/build/package.txt
-    rm -r "$srcdir/$_pkgname/doc/build"
+    rm -r "doc/build"
 
     # https://lists.archlinux.org/pipermail/aur-general/2011-November/016777.html
     # make directories
@@ -195,4 +193,3 @@ package()
         `# DSTDIR:` \
             "$pkgdir/usr/share/$_pkgname"
 }
-# template end;
