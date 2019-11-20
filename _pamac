@@ -173,7 +173,7 @@ _pamac_command_list() {
         "(-m --foreign)"{-m,--foreign}"[list packages that were not found in the repositories]" \
         "(-g --groups)"{-g,--groups}"[list all packages that are members of the given groups, if no group is given list all groups]:groups:_pamac_completions_all_groups" \
         "(-r --repos)"{-r,--repos}"[list all packages available in the given repos, if no repo is given list all repos]:repos:_pamac_completions_repositories" \
-        "(-f --files)"{-f,--files}"[list files owned by the given packages]:packages:_pamac_completions_all_packages"
+        "(-f --files)"{-f,--files}"[list files owned by the given packages]:packages:_pamac_all_packages"
 }
 
 _pamac_command_install() {
