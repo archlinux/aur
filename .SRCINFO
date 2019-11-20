@@ -1,0 +1,16 @@
+pkgbase = chromium-extension-autoscroll
+	pkgdesc = Customizable autoscroll support for Chromium
+	pkgver = 4.10
+	pkgrel = 1
+	url = https://github.com/Pauan/AutoScroll
+	install = chromium-extension-autoscroll.install
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = chromium: open-source web browser from Google
+	optdepends = google-chrome: Google's freeware web browser
+	source = git+https://github.com/Pauan/AutoScroll#commit=625c045ddd74debeb480d54cc96f66aeff52fcbf
+	sha256sums = SKIP
+
+pkgname = chromium-extension-autoscroll
+
