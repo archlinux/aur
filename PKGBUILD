@@ -3,24 +3,24 @@
 pkgname=pmemd-cuda
 pkgver=18
 _toolsver=19
-_gccver=7.4.1
-pkgrel=1
+_gccver=8.3.0
+pkgrel=2
 pkgdesc="PMEMD module of AMBER software package (with CUDA support)"
 url="http://ambermd.org/"
 license=('custom')
 arch=('x86_64')
-depends=('openmpi3-gcc7' 'cuda' 'fakeroot' 'zlib' 'bzip2' 'gcc7-libs' 'flex' 'python2' 'bash')
-makedepends=('make' 'gcc7' 'gcc7-fortran' 'patch' 'tcsh' 'imake')
+depends=('openmpi3-gcc8' 'cuda' 'fakeroot' 'zlib' 'bzip2' 'gcc8-libs' 'flex' 'python2' 'bash')
+makedepends=('make' 'gcc8' 'gcc8-fortran' 'patch' 'tcsh' 'imake')
 optdepends=('plumed-patches: PLUMED support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
          '6b38d9cfb6e33b719bdf7fe73b26e841'
          '6015e304e72538d84e6d44f883ac39c2'
-         'c0e28736c9fe7ffd1cbed27ad3220e16'
-         'b1b881bd9e0f64a463c5e54138a679a6'
-         'c18bfebde8bd68bc6815e7e1ab17f154'
-         'c223fda763779c4f78fe3c634cfa3d50')
+         '37f2f7ac7741abebc7a5e350404f57f4'
+         '6e01a8326a5862a277b0f000e28e75bd'
+         '8ecf563204b32f4aff13f6fb70e4a2aa'
+         'da952d59d07f305106f8e5dd13441e7a')
 options=(staticlibs !buildflags !makeflags)
 
 # Due to licensing issues you must register and download AmberTools package from AmberMD url and put it in directory with PKGBUILD.
@@ -60,7 +60,7 @@ build() {
 
   # pre-configure
   cd ${srcdir}/amber${pkgver}
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates gnu
 
   # add support for PLUMED
   if [ -e "/usr/bin/plumed-mpi-patch" -a -e "/usr/lib/plumed-mpi/patches/amber${pkgver}.diff" ]; then
@@ -87,13 +87,13 @@ build() {
 
   # build serial CUDA version
   cd ${srcdir}/amber${pkgver}
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -cuda gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates -cuda gnu
   cd src
   make install
 
   # build parallel CUDA version
   cd ${srcdir}/amber${pkgver}
-  LANG=en_US.UTF-8 CC=gcc-7 CXX=g++-7 FC=gfortran-7 ./configure --with-python /usr/bin/python2 --no-updates -cuda -mpi gnu
+  LANG=en_US.UTF-8 CC=gcc-8 CXX=g++-8 FC=gfortran-8 ./configure --with-python /usr/bin/python2 --no-updates -cuda -mpi gnu
   cd src
   make install
 }
