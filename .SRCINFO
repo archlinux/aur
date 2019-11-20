@@ -1,0 +1,34 @@
+pkgbase = teamviewer-latest
+	pkgdesc = All-In-One Software for Remote Support and Online Meetings
+	pkgver = 15.0.8397
+	pkgrel = 1
+	url = http://www.teamviewer.com
+	install = teamviewer.install
+	arch = x86_64
+	arch = x86
+	license = custom
+	depends = hicolor-icon-theme
+	depends = qt5-webkit
+	depends = qt5-x11extras
+	depends = qt5-quickcontrols
+	conflicts = teamviewer-beta
+	conflicts = teamviewer
+	conflicts = teamviewer8
+	conflicts = teamviewer9
+	conflicts = teamviewer10
+	conflicts = teamviewer11
+	conflicts = teamviewer12
+	replaces = teamviewer-beta
+	replaces = teamviewer
+	replaces = teamviewer8
+	replaces = teamviewer9
+	replaces = teamviewer10
+	replaces = teamviewer11
+	replaces = teamviewer12
+	source_x86_64 = https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+	md5sums_x86_64 = 1ab9f03323f3bb4a7d03f47c2aae44c5
+	source_x86 = https://download.teamviewer.com/download/linux/teamviewer_i386.deb
+	md5sums_x86 = c53f6f90039bf97213fd5e9bce7878c6
+
+pkgname = teamviewer-latest
+
