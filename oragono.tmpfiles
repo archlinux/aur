@@ -1,1 +1,3 @@
-d /var/lib/oragono 0755 oragono oragono
+#Type Path                       Mode User    Group   Age Argument
+d     /var/lib/oragono           0755 oragono oragono -   -
+C     /var/lib/oragono/ircd.motd 0644 oragono oragono -   /usr/share/oragono/default.motd

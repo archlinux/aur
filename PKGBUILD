@@ -77,4 +77,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm755 oragono "$pkgdir/usr/bin/oragono"
     install -Dm644 oragono.yaml "$pkgdir/etc/oragono.conf"
+    install -Dm644 oragono.motd "$pkgdir/usr/share/$pkgname/default.motd"
 }
