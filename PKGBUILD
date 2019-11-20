@@ -20,13 +20,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-_srcver=5.3.10-arch1
-pkgver=${_srcver%-*}
+pkgver=5.3.11.1
 pkgrel=1
 pkgdesc='Linux'
-_bmqversion=5.3-r2
-arch=(x86_64)
+_srctag=v${pkgver%.*}-arch${pkgver##*.}
 url="https://cchalpha.blogspot.co.uk/"
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf
@@ -34,11 +33,12 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-$_srcver
+_srcname=linux-$_srctag
+_bmqversion=5.3-r2
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20190822'
 source=(
-  "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srcver.tar.gz"
+  "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srctag.tar.gz"
   config         # the main kernel config file
   "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/5.3/${_bmq_patch}"
   "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
@@ -48,8 +48,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('3265a689bb38b15245e2721f9f63335bd5ea3975567696a4f2f5b4684fef4036'
-            'd5ae578427b119197eff83c41d471b5c58d9b78cdad642554f8e62cd21ea56ac'
+sha256sums=('c3131052c167ddae606f47d91d233effe452caad700930cecb8e620bde3e0032'
+            '9421bec4db4a5eeeef64ece14d7eda55a7b1c4b2ebaf2821fadf2f93a5ceff4c'
             '131ce6048e26771f5b017ceb4cc7106cd646c28ae8ce6d46c0fca92bed5f82ae'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
