@@ -33,8 +33,7 @@ package() {
   install -D -m644 -t ${pkgdir}/usr/share/doc/${pkgname}/ ${PkgName}/CrochetCharts_User_Guide_1.2.0.pdf
   ## Crochet Charts impose la localisation de CrochetCharts_User_Guide_1.2.0.pdf pour la fonction help de l'appli :
   mkdir ${pkgdir}/usr/share/${PkgName}
-  ln -s -T ${pkgdir}/usr/share/doc/${pkgname}/CrochetCharts_User_Guide_1.2.0.pdf \
-           ${pkgdir}/usr/share/${PkgName}/CrochetCharts_User_Guide_1.2.0.pdf
+  cp ${pkgdir}/usr/share/doc/${pkgname}/CrochetCharts_User_Guide_1.2.0.pdf ${pkgdir}/usr/share/${PkgName}/
   cp -R ${PkgName}/images/ ${pkgdir}/usr/share/doc/${pkgname}/
   
   cd ${srcdir}/usr/share/${PkgName}/icons/
