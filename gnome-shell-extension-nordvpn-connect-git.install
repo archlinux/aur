@@ -1,0 +1,37 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+	echo "After the 'NordVPN_Connect' extension installation, you'll need to enable this extension manually ( gnome-extension website, 'gnome-shell-extension-prefs', 'gnome-extension enable NordVPN_Connect@poilrouge.fr', … )."
+	echo "Also, you might need to refresh your gnome-shell by hitting the 'Alt+F2' hotkey and entering 'r'"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "After the 'NordVPN_Connect' upgrade you might need to refresh your gnome-shell by hitting the 'Alt+F2' hotkey and entering 'r'"
+}
+
+## arg 1:  the old package version
+pre_remove() {
+	/usr/share/gnome-shell/extensions/NordVPN_Connect@poilrouge.fr/setup.sh --system --gitless clean	
+}
+
+## arg 1:  the old package version
+post_remove() {
+	echo "After the 'NordVPN_Connect' removal you might need to refresh your gnome-shell by hitting the 'Alt+F2' hotkey and entering 'r'"
+}
+
