@@ -1,0 +1,122 @@
+From bd69a4fb1206c3441ed56a9a058adfb6e46d55a6 Mon Sep 17 00:00:00 2001
+From: Arfrever Frehtes Taifersar Arahesis <Arfrever@Apache.Org>
+Date: Mon, 18 Nov 2019 11:11:55 -0800
+Subject: [PATCH] Respect CMAKE_INSTALL_LIBDIR in installed CMake files
+
+Fixes #1965
+---
+ OGLCompilersDLL/CMakeLists.txt             | 2 +-
+ SPIRV/CMakeLists.txt                       | 4 ++--
+ StandAlone/CMakeLists.txt                  | 6 +++---
+ glslang/CMakeLists.txt                     | 2 +-
+ glslang/OSDependent/Unix/CMakeLists.txt    | 2 +-
+ glslang/OSDependent/Windows/CMakeLists.txt | 2 +-
+ gtests/CMakeLists.txt                      | 2 +-
+ hlsl/CMakeLists.txt                        | 2 +-
+ 8 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/OGLCompilersDLL/CMakeLists.txt b/OGLCompilersDLL/CMakeLists.txt
+index af4ab587d..e0096743b 100644
+--- a/OGLCompilersDLL/CMakeLists.txt
++++ b/OGLCompilersDLL/CMakeLists.txt
+@@ -11,5 +11,5 @@ endif(WIN32)
+ if(ENABLE_GLSLANG_INSTALL)
+     install(TARGETS OGLCompiler EXPORT OGLCompilerTargets
+             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-	install(EXPORT OGLCompilerTargets DESTINATION lib/cmake)
++	install(EXPORT OGLCompilerTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ endif(ENABLE_GLSLANG_INSTALL)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e25ec0a..364f04c 100644
+--- a/SPIRV/CMakeLists.txt
++++ b/SPIRV/CMakeLists-new.txt
+@@ -91,8 +91,8 @@ if(ENABLE_GLSLANG_INSTALL)
+                 ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+     endif()
+ 	
+-	install(EXPORT SPVRemapperTargets DESTINATION lib/cmake)
+-	install(EXPORT SPIRVTargets DESTINATION lib/cmake)
++	install(EXPORT SPVRemapperTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
++	install(EXPORT SPIRVTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ 
+     install(FILES ${HEADERS} ${SPVREMAP_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/glslang/SPIRV/)
+ endif(ENABLE_GLSLANG_INSTALL)
+diff --git a/StandAlone/CMakeLists.txt b/StandAlone/CMakeLists.txt
+index 0878965c1..d9d71d1ab 100644
+--- a/StandAlone/CMakeLists.txt
++++ b/StandAlone/CMakeLists.txt
+@@ -49,12 +49,12 @@ if(ENABLE_GLSLANG_INSTALL)
+     install(TARGETS spirv-remap EXPORT spirv-remapTargets
+             RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 	
+-	install(EXPORT glslangValidatorTargets DESTINATION lib/cmake)
+-	install(EXPORT spirv-remapTargets DESTINATION lib/cmake)
++	install(EXPORT glslangValidatorTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
++	install(EXPORT spirv-remapTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+             
+     if(BUILD_SHARED_LIBS)
+         install(TARGETS glslang-default-resource-limits EXPORT glslang-default-resource-limitsTargets
+                 LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-		install(EXPORT glslang-default-resource-limitsTargets DESTINATION lib/cmake)
++		install(EXPORT glslang-default-resource-limitsTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+     endif()
+ endif(ENABLE_GLSLANG_INSTALL)
+diff --git a/glslang/CMakeLists.txt b/glslang/CMakeLists.txt
+index 42df1d1e6..446cabb91 100644
+--- a/glslang/CMakeLists.txt
++++ b/glslang/CMakeLists.txt
+@@ -112,7 +112,7 @@ if(ENABLE_GLSLANG_INSTALL)
+         install(TARGETS glslang EXPORT glslangTargets
+                 ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+     endif()
+-	install(EXPORT glslangTargets DESTINATION lib/cmake)
++	install(EXPORT glslangTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ endif(ENABLE_GLSLANG_INSTALL)
+ 
+ if(ENABLE_GLSLANG_INSTALL)
+diff --git a/glslang/OSDependent/Unix/CMakeLists.txt b/glslang/OSDependent/Unix/CMakeLists.txt
+index 91fb45a71..9994314fd 100644
+--- a/glslang/OSDependent/Unix/CMakeLists.txt
++++ b/glslang/OSDependent/Unix/CMakeLists.txt
+@@ -22,5 +22,5 @@ endif()
+ if(ENABLE_GLSLANG_INSTALL)
+     install(TARGETS OSDependent EXPORT OSDependentTargets
+             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-	install(EXPORT OSDependentTargets DESTINATION lib/cmake)
++	install(EXPORT OSDependentTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ endif(ENABLE_GLSLANG_INSTALL)
+diff --git a/glslang/OSDependent/Windows/CMakeLists.txt b/glslang/OSDependent/Windows/CMakeLists.txt
+index f6bd4e9db..c050ef61d 100644
+--- a/glslang/OSDependent/Windows/CMakeLists.txt
++++ b/glslang/OSDependent/Windows/CMakeLists.txt
+@@ -17,5 +17,5 @@ endif(WIN32)
+ if(ENABLE_GLSLANG_INSTALL)
+     install(TARGETS OSDependent EXPORT OSDependentTargets
+             ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+-	install(EXPORT OSDependentTargets DESTINATION lib/cmake)
++	install(EXPORT OSDependentTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ endif(ENABLE_GLSLANG_INSTALL)
+diff --git a/gtests/CMakeLists.txt b/gtests/CMakeLists.txt
+index 77d217f1a..aadf9a54f 100644
+--- a/gtests/CMakeLists.txt
++++ b/gtests/CMakeLists.txt
+@@ -33,7 +33,7 @@ if(BUILD_TESTING)
+         if(ENABLE_GLSLANG_INSTALL)
+             install(TARGETS glslangtests EXPORT glslangtestsTargets
+                     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+-			install(EXPORT glslangtestsTargets DESTINATION lib/cmake)
++			install(EXPORT glslangtestsTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+         endif(ENABLE_GLSLANG_INSTALL)
+ 
+         set(GLSLANG_TEST_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../Test")
+diff --git a/hlsl/CMakeLists.txt b/hlsl/CMakeLists.txt
+index 44f9d6a26..ae0d4d4eb 100644
+--- a/hlsl/CMakeLists.txt
++++ b/hlsl/CMakeLists.txt
+@@ -41,5 +41,5 @@ if(ENABLE_GLSLANG_INSTALL)
+         install(TARGETS HLSL EXPORT HLSLTargets
+                 ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+     endif()
+-	install(EXPORT HLSLTargets DESTINATION lib/cmake)
++	install(EXPORT HLSLTargets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake)
+ endif(ENABLE_GLSLANG_INSTALL)
