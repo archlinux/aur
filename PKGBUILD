@@ -1,8 +1,8 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
-pkgver=2019.2.1856742
-pkgrel=2
+pkgver=2019.2.1883366
+pkgrel=1
 pkgdesc="Perforce Visual Client"
 arch=('x86_64')
 url="http://www.perforce.com"
