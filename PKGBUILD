@@ -33,5 +33,5 @@ package() {
   install -DTm644 ${srcdir}/LICENSE.txt          "${pkgdir}/share/licenses/${pkgname}/LICENSE"
   install -DTm644 ${startdir}/${pkgname}.png     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
   install -DTm644 ${startdir}/${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -DTm755 ${startdir}/${pkgname}         "${pkgdir}/usr/bin/${pkgname}"
+  install -DTm755 ${startdir}/${pkgname}.sh      "${pkgdir}/usr/bin/${pkgname}"
   }
