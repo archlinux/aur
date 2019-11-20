@@ -26,10 +26,12 @@ package_dotnet-host-bin() {
   provides=("dotnet-host=${pkgver%+*}")
   conflicts=('dotnet-host')
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses/dotnet-host-bin}
+  install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses/dotnet-host-bin,usr/bin,usr/lib}
   cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/opt/dotnet/
   cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-bin
-  install -Dm 755 "${srcdir}"/dotnet.sh "${pkgdir}"/usr/bin/dotnet
+  install -Dm 755 "${srcdir}"/dotnet.sh "${pkgdir}"/opt/dotnet
+  ln -sf /opt/dotnet/dotnet.sh "${pkgdir}"/usr/bin/dotnet
+  ln -sf /opt/dotnet/host/fxr/"${pkgver}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
 }
 
 package_dotnet-runtime-bin() {
