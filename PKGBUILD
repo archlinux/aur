@@ -1,7 +1,7 @@
 # Maintainer: Jonas Krogh Hansen "Badgy" <jonaskhansen@gmail.com>
 # Contributor: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
 pkgname=spotirec
-pkgver=r45.b18dd15
+pkgver=r61.7fff4ff
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')

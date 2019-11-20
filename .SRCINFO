@@ -1,6 +1,6 @@
 pkgbase = spotirec
 	pkgdesc = Create playlist of recommended tracks on Spotify
-	pkgver = r45.b18dd15
+	pkgver = r61.7fff4ff
 	pkgrel = 1
 	url = https://github.com/Badgie/spotirec
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = spotirec
 	depends = python-bottle>=0.12.17
 	depends = python-requests>=2.22.0
 	provides = spotirec
-	source = spotirec-r45.b18dd15::git+https://github.com/Badgie/spotirec
+	source = spotirec-r61.7fff4ff::git+https://github.com/Badgie/spotirec
 	md5sums = SKIP
 
 pkgname = spotirec
