@@ -1,6 +1,6 @@
 pkgbase = deconz
 	pkgdesc = A generic ZigBee monitoring and control tool
-	pkgver = 2.05.70
+	pkgver = 2.05.71
 	pkgrel = 1
 	url = http://www.dresden-elektronik.de
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = deconz
 	depends = qt5-serialport
 	depends = qt5-websockets
 	depends = sqlite
-	source_x86_64 = deconz-2.05.70-x86_64.deb::https://www.dresden-elektronik.de/deconz/ubuntu/beta/deconz-2.05.70-qt5.deb
-	sha256sums_x86_64 = 970125b8833060403934866196839deb2f153b7bec72c6c532fe9f30e1d2afc7
-	source_armv6h = deconz-2.05.70-armv6h.deb::https://www.dresden-elektronik.de/rpi/deconz/beta/deconz-2.05.70-qt5.deb
-	sha256sums_armv6h = 9df484e67fdc0f12d9b14f238a1723821c8d57ac68ebb84611eda0d74912a1fa
-	source_armv7h = deconz-2.05.70-armv7h.deb::https://www.dresden-elektronik.de/rpi/deconz/beta/deconz-2.05.70-qt5.deb
-	sha256sums_armv7h = 9df484e67fdc0f12d9b14f238a1723821c8d57ac68ebb84611eda0d74912a1fa
+	source_x86_64 = deconz-2.05.71-x86_64.deb::http://deconz.dresden-elektronik.de/ubuntu/beta/deconz-2.05.71-qt5.deb
+	sha256sums_x86_64 = 0733d2e2271307463661c90b0953e091c1fa70516e13bbd11038dde1ab302f33
+	source_armv6h = deconz-2.05.71-armv6h.deb::http://deconz.dresden-elektronik.de/raspbian/beta/deconz-2.05.71-qt5.deb
+	sha256sums_armv6h = 495bc8af2af0f5bbba4c033c5ff9a7df56eda720f2fd99d0505dce758921540d
+	source_armv7h = deconz-2.05.71-armv7h.deb::http://deconz.dresden-elektronik.de/raspbian/beta/deconz-2.05.71-qt5.deb
+	sha256sums_armv7h = 495bc8af2af0f5bbba4c033c5ff9a7df56eda720f2fd99d0505dce758921540d
 
 pkgname = deconz
 
