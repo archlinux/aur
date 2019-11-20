@@ -24,11 +24,11 @@ prepare() {
 		msg2 "Unpacking $datatar"
 		tar -xf $datatar
 	done
-	sed -i '/function CheckQtQuickControls()/{N;a ls /usr/lib/qt/qml/QtQuick/Controls/qmldir &>/dev/null && return # ArchLinux}'\
-	./opt/teamviewer/tv_bin/script/teamviewer_setup || msg2 "teamviewer_setup failed"
-	msg2 "Running teamviewer_setup checklibs"
-	./opt/teamviewer/tv_bin/script/teamviewer_setup checklibs \
-    || msg2 "teamviewer_setup checklibs failed" 
+	#sed -i '/function CheckQtQuickControls()/{N;a ls /usr/lib/qt/qml/QtQuick/Controls/qmldir &>/dev/null && return # ArchLinux}'\
+	#./opt/teamviewer/tv_bin/script/teamviewer_setup || msg2 "teamviewer_setup failed"
+	#msg2 "Running teamviewer_setup checklibs"
+	#./opt/teamviewer/tv_bin/script/teamviewer_setup checklibs \
+    #|| msg2 "teamviewer_setup checklibs failed" 
 }
 
 package() {
