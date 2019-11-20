@@ -3,7 +3,7 @@ Description=SABnzbd binary newsreader
 After=network.target
 
 [Service]
-ExecStart=/opt/sabnzbd/SABnzbd.py -l0 -f /opt/sabnzbd/sabnzbd.ini
+ExecStart=/opt/sabnzbd/SABnzbd.py --logging 0 --config-file /opt/sabnzbd/sabnzbd.ini
 User=sabnzbd
 Group=sabnzbd
 
