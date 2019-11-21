@@ -1,7 +1,7 @@
 # Maintainer: water_lift <0xWATERx0@gmail.com>
 # Maintainer: Dust1404 <unknown>
 pkgname=lemonplus-git
-pkgver=20190721
+pkgver=20191121
 pkgrel=1
 epoch=
 pkgdesc="A tiny judging environment for OI contest based on Project_Lemon"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=('git+https://github.com/Dust1404/Project_LemonPlus' 'LemonPlus.desktop')
 noextract=()
-md5sums=('SKIP' '983771f033d32f2e7b07f0b44bb14c8d')
+md5sums=('SKIP' '321fca1aae094e762cd46bbf9eea83ef')
 
 pkgver() {
     cd "$srcdir/Project_LemonPlus"
