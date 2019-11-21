@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=0.94
+pkgver=0.94.1
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -18,7 +18,7 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.c
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-md5sums=('647ccd2ccd5fee351566a7a3639b52dc'
+md5sums=('c035de76b1b14589eb85312b6f7ab1bb'
          '24f44d5a881b94daf48775213a57e4ec'
          'df94e031306ac22f7f19d38bf3023c1a'
          '7fc3b01ef6eb321c5ecba75099e08d33')
@@ -57,7 +57,8 @@ package() {
 
   # Clean up
   rm "${pkgdir}/opt/${_pkgname}/XnView.desktop"
-  chmod -x "${pkgdir}/opt/${_pkgname}/xnview.png"
+  chmod 644 "${pkgdir}/opt/${_pkgname}"/xnview*.png
+  chmod 755 "${pkgdir}/opt/${_pkgname}/XnView"
 
   # Remove the bundled framework libs (Qt and icu).
   rm "${pkgdir}/opt/${_pkgname}/lib/"lib*
