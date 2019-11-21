@@ -3,19 +3,19 @@
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 
 pkgname=nemo-dropbox
-pkgver=4.0.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('custom:CC-BY-ND-3' 'GPL')
-depends=('nemo>=4.0' 'dropbox' 'polkit')
+depends=('nemo>=4.4' 'dropbox' 'polkit')
 makedepends=('glib2' 'python-docutils' 'python-gobject')
 groups=('nemo-extensions')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz"
 	"01__Remove-python-dependencies.patch"
         "02__Makefile.patch")
-md5sums=('349e8a471944d1bc1fddd7acf49447d9'
+md5sums=('fef59443ae265b5f551e365c47c7db9f'
          '4e607465244108d0eae5422ed04a7ac1'
          'fb0f04ed594b62bc9bf7256d18a4d6c2')
 

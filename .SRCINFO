@@ -1,6 +1,6 @@
 pkgbase = nemo-dropbox
 	pkgdesc = Dropbox for Linux - Nemo extension
-	pkgver = 4.0.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = nemo-dropbox
 	makedepends = glib2
 	makedepends = python-docutils
 	makedepends = python-gobject
-	depends = nemo>=4.0
+	depends = nemo>=4.4
 	depends = dropbox
 	depends = polkit
-	source = nemo-extensions-4.0.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/4.0.0.tar.gz
+	source = nemo-extensions-4.4.0.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/4.4.0.tar.gz
 	source = 01__Remove-python-dependencies.patch
 	source = 02__Makefile.patch
-	md5sums = 349e8a471944d1bc1fddd7acf49447d9
+	md5sums = fef59443ae265b5f551e365c47c7db9f
 	md5sums = 4e607465244108d0eae5422ed04a7ac1
 	md5sums = fb0f04ed594b62bc9bf7256d18a4d6c2
 
