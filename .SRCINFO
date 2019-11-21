@@ -1,7 +1,7 @@
 pkgbase = dnsdist
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dnsdist.org/
 	arch = x86_64
 	license = GPL2
@@ -9,6 +9,7 @@ pkgbase = dnsdist
 	makedepends = systemd
 	depends = fstrm
 	depends = gnutls
+	depends = h2o
 	depends = libcap
 	depends = libedit
 	depends = libsodium
