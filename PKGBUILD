@@ -14,11 +14,12 @@ sha512sums=('SKIP')
 
 prepare() {
     export GO111MODULE=on
+    export GOPROXY=https://goproxy.io
 }
 
 build() {
     cd "V2RayA-$pkgver/service"
-    go build -ldflags='-X global.Version=$pkgver' -o v2raya
+    go build -ldflags='-X V2RayA/global.Version=$pkgver' -o v2raya
 }
 
 package() {
