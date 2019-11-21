@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Stoplight Studio
+Comment=The modern editor for API Architects and Technical Writers
+Exec=/opt/appimages/stoplight-studio.AppImage
+Icon=stoplight-studio
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;TextEditor;

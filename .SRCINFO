@@ -1,0 +1,17 @@
+pkgbase = stoplight-studio-appimage
+	pkgdesc = The modern editor for API Architects and Technical Writers.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://odio.io/
+	arch = x86_64
+	license = custom
+	provides = station
+	conflicts = station
+	options = !strip
+	source = https://github.com/stoplightio/studio/releases/download/v1.5.0/stoplight-studio-linux-x86_64.AppImage
+	source = stoplight-studio.desktop
+	sha256sums = e8955f0ddd5ad6987202aeafe589cc5ad96b11ecab58171530157c1c4df93a58
+	sha256sums = SKIP
+
+pkgname = stoplight-studio-appimage
+
