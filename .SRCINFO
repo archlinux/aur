@@ -1,7 +1,7 @@
 pkgbase = postgis-git
 	pkgdesc = Postgres GIS extensions (from git)
 	pkgver = 76e34fa54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://postgis.net/
 	arch = i686
 	arch = x86_64
