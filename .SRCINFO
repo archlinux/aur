@@ -1,7 +1,7 @@
 pkgbase = nix
 	pkgdesc = A purely functional package manager
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nixos.org/nix
 	install = nix.install
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = nix
 	depends = editline
 	optdepends = archlinux-nix: tools to help with setup of Nix
 	source = https://nixos.org/releases/nix/nix-2.3.1/nix-2.3.1.tar.xz
+	source = ldflags.patch
 	sha256sums = bb6578e9f20eebab6d78469ecc59c450ac54f276e5a86a882015d98fecb1bc7b
+	sha256sums = 42350237d98785b30b0ee099405f2f1f7412f8a816162c22bd232ed3dbbe0305
 
 pkgname = nix
 
