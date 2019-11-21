@@ -1,7 +1,7 @@
 pkgbase = ghq-bin
 	pkgdesc = Remote repository management made easy. Pre-compiled.
 	pkgver = 0.12.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motemen/ghq
 	arch = x86_64
 	license = MIT
