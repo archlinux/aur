@@ -3,6 +3,7 @@
 pkgname=abricotine-git
 _pkgname=abricotine
 conflicts=("abricotine")
+provides=("abricotine")
 pkgver=latest
 pkgrel=1
 pkgdesc="A markdown editor with inline preview"
