@@ -1,6 +1,6 @@
 pkgbase = inav-configurator
 	pkgdesc = Crossplatform configuration tool for the INAV flight control system
-	pkgver = 2.2.1
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/iNavFlight/inav-configurator
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = inav-configurator
 	provides = inav-configurator
 	conflicts = inav-configurator
 	options = !strip
-	source = https://github.com/iNavFlight/inav-configurator/archive/2.2.1.zip
+	source = https://github.com/iNavFlight/inav-configurator/archive/2.3.1.zip
 	source = inav-configurator.desktop
-	md5sums = b37f8b3951bed711116265d8e82228ae
+	md5sums = b1273b11d6e4eed52a86650804079d8a
 	md5sums = SKIP
 
 pkgname = inav-configurator
