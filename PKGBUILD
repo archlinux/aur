@@ -1,3 +1,4 @@
+# Maintainer: Konstantin Gizdov <arch at kge dot pw>
 _pkgname=j2cli
 pkgname=python-${_pkgname}
 pkgver=0.3.12b
