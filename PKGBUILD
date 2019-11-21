@@ -6,7 +6,7 @@ _base=dolfin
 pkgname=${_base}
 pkgdesc="The C++ interface of FEniCS, providing a consistent PSE (Problem Solving Environment) for ordinary and partial differential equations (stable)."
 pkgver=2019.1.0.post0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/fenics-project/${_base}"
 license=('LGPL3')
@@ -22,7 +22,6 @@ depends=('cppunit'
 optdepends=('scotch: libraries for graph, mesh and hypergraph partitioning'
             'slepc: eigenvalue problem solvers')
 options=(!emptydirs)
-makedepends=('python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/fenics-project/${_base}/downloads/${_base}-${pkgver}.tar.gz)
 sha256sums=('61abdcdb13684ba2a3ba4afb7ea6c7907aa0896a46439d3af7e8848483d4392f')
 
