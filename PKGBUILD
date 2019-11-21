@@ -1,7 +1,7 @@
 # Maintainer: Johannes Graën <johannes SPIRALGALAXY selfnet FULLSTOP de>
 
 pkgname=jabref-latest
-pkgver=20191016
+pkgver=20191121
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('x86_64')
@@ -38,6 +38,9 @@ package() {
   cd ${srcdir}
   install -Dm755 JabRef/bin/JabRef ${pkgdir}/opt/JabRef/bin/JabRef
   find JabRef/lib -type f -exec install -Dm644 "{}" "${pkgdir}/opt/{}" \;
+  chmod +x ${pkgdir}/opt/JabRef/lib/runtime/bin/*
+  chmod +x ${pkgdir}/opt/JabRef/lib/runtime/lib/jexec
+  chmod +x ${pkgdir}/opt/JabRef/lib/runtime/lib/jspawnhelper
   install -Dm755 jabref.sh ${pkgdir}/usr/bin/jabref
   install -Dm755 JabRef.svg ${pkgdir}/usr/share/pixmaps/JabRef.svg
   install -Dm644 JabRef.desktop ${pkgdir}/usr/share/applications/JabRef.desktop
