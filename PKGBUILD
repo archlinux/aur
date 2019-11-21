@@ -3,9 +3,9 @@
 _pkg=geventhttpclient-wheels
 pkgname="python-$_pkg-git"
 pkgver=1.3.1dev2.r0.g4d83606
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance, concurrent http client library for python with gevent"
-arch=('any')
+arch=('x86_64')
 url='https://github.com/locustio/geventhttpclient'
 license=('MIT')
 depends=()
