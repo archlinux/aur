@@ -2,7 +2,7 @@
 # Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=SimpleITK
 pkgname=simpleitk
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
@@ -95,7 +95,7 @@ package() {
 			--no-deps \
 			--root="$pkgdir" \
 			"$_builddir/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
-	python -O -m compileall "${pkgdir}/usr/lib/python3.7/site-packages/SimpleITK"
+	python -O -m compileall "${pkgdir}/usr/lib/python3.8/site-packages/SimpleITK"
 
 	install -d -Dm755 "$pkgdir/usr/lib/lua/5.1/"
 	install -Dm755 "$_builddir/Wrapping/Lua/lib/$_pkgname.so" "$pkgdir/usr/lib/lua/5.1/$_pkgname.so"
