@@ -22,7 +22,7 @@ build () {
     mkdir -p "build-${_arch}" && pushd "build-${_arch}"
     ${_arch}-cmake \
         -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_CXX_FLAGS:STRING='-Wno-error=implicit-fallthrough' \
+        -DCMAKE_CXX_FLAGS:STRING='-w' \
         -DCMAKE_INSTALL_PREFIX:PATH="/usr/${_arch}" \
         ..
     make
