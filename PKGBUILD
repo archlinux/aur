@@ -2,7 +2,7 @@
 
 pkgname=ttf-joypixels
 pkgver=5.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Emoji as a Service (formerly EmojiOne)'
 url='https://www.joypixels.com/download'
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('622bdc17f828436167d0818d885093af374b8f327237b1cb301b97dc7f37b091'
             '05084e4ddbbb0c241bb0ff4e307853a9e6236fa1c617b7cba44af31b6bfc5e2d')
 
 package() {
-    install -Dm644 "joypixels-android-${pkgver}.ttf" "${pkgdir}/usr/share/fonts/TTF/JoyPixels.ttf"
+    install -Dm644 "joypixels-android-${pkgver}.ttf" "${pkgdir}/usr/share/fonts/${pkgname#ttf-}/JoyPixels.ttf"
     install -Dm644 -t "${pkgdir}/etc/fonts/conf.avail" 75-joypixels.conf
     install -Dm644 "license-free-${pkgver}-${pkgrel}.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
     install -Dm644 "license-appendix-${pkgver}-${pkgrel}.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.appendix.pdf"
