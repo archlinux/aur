@@ -1,7 +1,7 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
 	pkgver = 0.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ipfs-shipyard/ipfs-desktop
 	install = ipfs-desktop.install
 	arch = x86_64
