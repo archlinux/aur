@@ -6,7 +6,7 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=('any')
 url="https://github.com/wting/autojump"
@@ -18,10 +18,6 @@ sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
 prepare() {
   cd $pkgname-release-v$pkgver
   sed -i "s:/env python:/python3:g" bin/$pkgname
-
-  # FS#60929
-  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
-  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 }
 
 package() {
@@ -39,6 +35,8 @@ package() {
   # FS#60929
   install -d "${pkgdir}/usr/lib/python3.8/site-packages"
   mv ${pkgdir}/usr/bin/*.py "${pkgdir}/usr/lib/python3.8/site-packages"
+  python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+  python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
 
   # FS#49601
   install -d "${pkgdir}"/usr/share/fish/completions
