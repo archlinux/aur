@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.nxp.com/products/software-and-tools/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-config-tools:MCUXpresso-Config-Tools"
 license=('custom:"NXP"')
 depends=('java-environment' 'libxslt' 'libxtst' 'gcc-libs-multilib' 'gtk2' 'alsa-lib' 'libnet')
-source=("$pkgname.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v6-1_amd64.deb.bin?__gda__=1574169297_e347971b8163eb740b551f33d7a30fc2&fileExt=.bin" "LICENSE" "${pkgname}.install")
+source=("$pkgname.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v6-1_amd64.deb.bin?__gda__=1574333057_92271456bfb886dd2fd7c2b35276c446&fileExt=.bin" "LICENSE" "${pkgname}.install")
 
 sha256sums=('40fa3efe30f019d789c1e0f329a370fa429ecf1ec70170bdbf3edca5c6477145'
             '10b7132837be893b36d5a136cf7688abe3f7cff76653381797e54110c6d46006'
