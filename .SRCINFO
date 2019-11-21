@@ -1,10 +1,12 @@
 pkgbase = tarsum
 	pkgdesc = Compute checksums from tar archives on-the-fly
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/connesc/tarsum
 	arch = any
 	license = ISC
+	depends = tar
+	depends = coreutils
 	source = https://github.com/connesc/tarsum/archive/v0.1.1.tar.gz
 	sha256sums = ce4e96e7fd1ca343cbb9d21acfae017b9b5994081022fda5b3eed50c9c0fb17a
 
