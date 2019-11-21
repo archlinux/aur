@@ -2,7 +2,7 @@
  
 _realname='libinputsynth'
 pkgname="$_realname-git"
-pkgver=0.13.0.58.699426a
+pkgver=0.13.2.60.4a048ca
 pkgrel=1
 pkgdesc='Synthesize desktop input for X11 and Wayland'
 arch=('i686' 'x86_64')
