@@ -1,0 +1,36 @@
+pkgbase = python2-pwntools-nopwn
+	pkgdesc = A CTF framework and exploit development library. Patch to remove /usr/bin/pwn to resolve conflicts when using both py2/py3.
+	pkgver = 3.13.0beta0
+	pkgrel = 4
+	url = https://github.com/Gallopsled/pwntools
+	arch = any
+	license = MIT
+	license = GPL2
+	license = BSD
+	makedepends = lib32-glibc
+	makedepends = python2-setuptools
+	depends = python2>=2.7
+	depends = python2-mako
+	depends = python2-paramiko
+	depends = python2-pyelftools
+	depends = python2-capstone
+	depends = python2-pyserial
+	depends = python2-requests
+	depends = python2-psutil
+	depends = python2-tox
+	depends = python2-pysocks
+	depends = python2-dateutil
+	depends = python2-pygments
+	depends = python2-pypandoc
+	depends = python2-packaging
+	depends = python2-unicorn
+	depends = python2-intervaltree
+	depends = python2-pip
+	depends = ropgadget
+	provides = python2-pwntools
+	conflicts = python2-pwntools
+	options = strip
+	source = python2-pwntools-nopwn-3.12.1.tar.gz::https://github.com/Gallopsled/pwntools/archive/3.12.1.tar.gz
+	sha256sums = dfea4140d345f2749086e07ed9c08d5625e50e0f969e2894509e69f9d4755c3d
+
+pkgname = python2-pwntools-nopwn
