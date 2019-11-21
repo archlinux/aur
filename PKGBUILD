@@ -17,7 +17,9 @@ sha256sums=('SKIP'
             '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
 
 pkgver() {
-  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$srcdir/abricotine"
+    printf "%s" "$(git describe --long --tags |
+        sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
