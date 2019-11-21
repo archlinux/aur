@@ -9,7 +9,7 @@ pkgname=$_pkgname-mimeo
 # https://gitlab.freedesktop.org/xdg/xdg-utils/commits/master
 _commit=0547886c0a7ae79145998495a6e3af6a1450d0c7 # master # 2019-04-19
 pkgver=1.1.3+18+g0547886
-pkgrel=4
+pkgrel=5
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/xdg-utils/"
@@ -18,7 +18,6 @@ depends=('sh' 'which' 'file' 'xorg-xset' 'xorg-xprop') # xset + xprop needed ins
 makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
 optdepends=('kde-cli-tools: for KDE Plasma5 support in xdg-open'
             'exo: for Xfce support in xdg-open'
-            'xorg-xprop: for Xfce support in xdg-open'
             'pcmanfm: for LXDE support in xdg-open'
             'mimeo: for mimeo support in xdg-open'
             'perl-file-mimeinfo: for generic support in xdg-open'
