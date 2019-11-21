@@ -31,5 +31,4 @@ build() {
 package() {
     install -Dm 755 "${src_name}/build/app/scrcpy" "${pkgdir}/usr/bin/scrcpy"
     install -Dm 644 "${src_server}" "${pkgdir}/usr/local/share/scrcpy/scrcpy-server"
-    mkdir -p "${pkgdir}/usr/bin"
 }
