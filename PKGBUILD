@@ -1,12 +1,12 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=youtrack
-pkgver=2019.2.59309
+pkgver=2019.2.60865
 pkgrel=1
 pkgdesc='Issue tracker designed for development teams'
 arch=('i686' 'x86_64')
 url='http://www.jetbrains.com/youtrack/'
-license=('Commercial')
+license=('commercial')
 depends=('java-runtime-headless')
 backup=('etc/youtrack/youtrack.conf')
 options=('!strip')
@@ -16,7 +16,7 @@ source=("youtrack-${pkgver}.jar::https://download.jetbrains.com/charisma/${pkgna
         youtrack.sysusers
         youtrack.tmpfiles)
 noextract=('youtrack.jar')
-sha512sums=('a3cf2678340110346ff608e25da19633305aaeef09752191fc78d2a9fc7d93fa0dd2ab6859533b07584e0445b46a4c9574b391f60a7e9313e1205a4bad8ee21d'
+sha512sums=('8730672347be4d27b05ccfaef1fb2f8e9c6e7f43f321c8131be8aa3ba5bf7df9ba613eda951076c16a0e088bfbe4f5b7dded1fd79d56079ac322f419dbbdc76d'
             '97d2c8ac07fd7903b82c2fc5beac33b38f13aa653f6684f00e40ead854af972a6f2bd2a179062ea27b14c9457aa48f68917acbb54a6a73372d5702a428d4843e'
             'c43c7ded853591ded84a5dff0e319de16fff4ec728b35cc5072b9832bb1a54bb6bb1454a6d75c0d34520f42d47022bbe6afecaf9bef7368f8a99d09fb3b24958'
             'cabd3dedcfa71c888731e3af33b5e9662e4ef3075c2c3d6491adca2003c5d0da85031be2923547170a61aa40d761731581f90dd931ddc95594d33860fe2ca39d'
