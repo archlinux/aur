@@ -1,32 +1,29 @@
-# Maintainer: Bart De Vries <devriesb@gmail.com>
+# Maintainer: Bart De Vries <devriesb at gmail dot com>
 
 pkgname=snapcast
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
-depends=(alsa-lib avahi libvorbis flac)
+depends=(alsa-lib avahi libvorbis flac opus)
 makedepends=(alsa-utils boost)
 install="snapcast.install"
 backup=('etc/default/snapserver' 'etc/default/snapclient' 'etc/snapserver.conf')
 source=("https://github.com/badaix/snapcast/archive/v${pkgver}.tar.gz"
         "snapcast.sysusers"
         "snapcast.tmpfiles"
-        "sysuser-names.patch"
         "snapcast.install")
-sha256sums=('a910dd3edd401ef085827a8880454ee48c5b9cd0d1412363fd22a128b4e06f6d'
+sha256sums=('138d4720b7ecda5f5b88b9170a88d4e0f108ca58009ad02d5d85b800b9576b54'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             '1c58fef5d3e2de64c1df52138f0f3c841773e7881b9cbc76f23312deeebc11b5'
-            '3357c6dfce78000049e64edd269835ebe8bc63b4a070c52509099bac5075e8c3'
             '132ec97e9b1d179f45269cc5cc4d6850384b4796ffef7d7560cf8440447a11c6')
-         
+
 prepare() {
     cd "${pkgname}-${pkgver}"
-    patch --strip=1 --input=${srcdir}/sysuser-names.patch
 }
-            
+
 build() {
     cd "${pkgname}-${pkgver}"
     make
