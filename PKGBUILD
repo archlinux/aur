@@ -8,7 +8,7 @@ _wl_project=${_orgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=0.9.0.r4.g608eb9ee
+pkgver=20191118.1.r0.g89dfeed0
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=(x86_64)
@@ -35,7 +35,7 @@ sha256sums=('SKIP')
 pkgver() {
   if [ "${_use_gh_api}" = true ]; then
     read -r tag_name tag_sha <<<$(curl -s "${_gh_api_url}/releases" | \
-      jq -r '.[0]|[.tag_name,.target_commitish]|@sh' | sed "s/'//g")
+      jq -r '.[0]|[.tag_name,.target_commitish]|@sh' | sed "s/'//g;s/master-//")
     head=$(curl -s "${_gh_api_url}/git/refs/heads/${_branch}" | \
       jq -r '.object.sha')
     count=$(curl -s "${_gh_api_url}/compare/${tag_sha}...${head}" | \
