@@ -2,7 +2,7 @@
 
 pkgname=mirrorlist-manager
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt frontend for easy mirrorlist management"
 arch=('x86_64')
 url="https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager"
