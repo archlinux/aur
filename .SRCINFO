@@ -1,13 +1,11 @@
 pkgbase = postman-bin
 	pkgdesc = Build, test, and document your APIs faster
 	pkgver = 7.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.getpostman.com
 	arch = x86_64
 	license = custom
-	depends = gconf
 	depends = libxss
-	depends = gtk2
 	depends = libxtst
 	depends = nss
 	depends = alsa-lib
