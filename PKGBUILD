@@ -39,12 +39,8 @@ build() {
 
 package() {
     cd "$pkgdir"
-    mkdir -p "opt/LemonPlus"
-    mkdir -p "usr/bin"
 
     install -Dm644 "$srcdir/Project_LemonPlus/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/lemon.png"
     install -Dm644 "$srcdir/LemonPlus.desktop" "$pkgdir/usr/share/applications/LemonPlus.desktop"
-    
-    cp -Rv "$srcdir/Project_LemonPlus/lemon" "$pkgdir/opt/LemonPlus/lemon"
-    ln -s "$pkgdir/opt/LemonPlus/lemon" "$pkgdir/usr/bin/lemon"
+    cp -Rv "$srcdir/Project_LemonPlus/lemon" "$pkgdir/usr/bin/lemon"
 }
