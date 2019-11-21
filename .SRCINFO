@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 374
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = hydrus
 	depends = python-html5lib
 	depends = python-requests
 	depends = hdf5
-	depends = pyside2
+	depends = python-pyqt5
 	depends = python-qtpy
 	depends = qt5-charts
 	optdepends = ffmpeg: show duration and other information on video thumbnails
@@ -37,7 +37,7 @@ pkgbase = hydrus
 	source = hydrus.desktop
 	sha256sums = SKIP
 	sha256sums = 5cd4414cbf226eddc6319216a6def95e73c148f37746effaae983a4c690b71a2
-	sha256sums = d2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5
+	sha256sums = 7b0dbc6f38f9aaff409e435ba807199575166976b52715d6b54418f89dbde634
 	sha256sums = 463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806
 	sha256sums = 9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923
 
