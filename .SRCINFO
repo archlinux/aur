@@ -5,8 +5,8 @@ pkgbase = babashka-bin
 	url = https://github.com/borkdude/babashka
 	arch = x86_64
 	license = EPL
-	provides = babshka-bin
-	conflicts = babshka-bin
+	provides = babashka-bin
+	conflicts = babashka-bin
 	source = https://github.com/borkdude/babashka/releases/download/v0.0.33/babashka-0.0.33-linux-amd64.zip
 	sha256sums = c49a2545ee7f08ff82e2e7ec1e02024229ebf37eaebd376fe03cb834ed0cee1c
 
