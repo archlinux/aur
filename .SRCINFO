@@ -1,0 +1,18 @@
+pkgbase = gfourcc
+	pkgdesc = GTKMM3 Tool to change the FOURCC codec and description of an AVI file
+	pkgver = 0.1.2.r4.g4163fc4
+	pkgrel = 1
+	url = https://github.com/gamegard68/gfourcc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gnome-common
+	makedepends = pkg-config
+	depends = gtkmm3
+	provides = gfourcc
+	conflicts = gfourcc
+	source = git+https://github.com/gamegard68/gfourcc.git
+	sha256sums = SKIP
+
+pkgname = gfourcc
+
