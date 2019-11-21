@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgbasename=libxslt
 pkgname=lib32-libxslt
-pkgver=1.1.33
+pkgver=1.1.34
 pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="http://xmlsoft.org/XSLT/"
 license=('custom')
 depends=('lib32-libxml2' 'lib32-libgcrypt' 'libxslt' 'lib32-xz')
 makedepends=(gcc-multilib git)
-_commit=f1eb717f04d9cc297cc5e58e94b81ac96f47e741  # tags/v1.1.33^0
-source=("git+https://git.gnome.org/browse/libxslt#commit=$_commit")
+_commit=3653123f992db24cec417d12600f4c67388025e3  # tags/v1.1.34^0
+source=("git+https://gitlab.gnome.org/GNOME/libxslt.git#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {
@@ -32,6 +32,7 @@ build() {
 
   cd "${_pkgbasename}"
   ./configure --prefix=/usr --libdir=/usr/lib32 --without-python
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
