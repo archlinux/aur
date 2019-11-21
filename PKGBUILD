@@ -1,7 +1,7 @@
 # Maintainer: Ivan Avdonin <avdonin@yahoo.com>
 
 pkgname=teamviewer-latest
-pkgver=15.0.8397 # will be dynamically changed in pkgver()
+pkgver=latest # will be dynamically changed in pkgver()
 pkgrel=1
 pkgdesc="All-In-One Software for Remote Support and Online Meetings"
 arch=('x86_64' 'x86')
