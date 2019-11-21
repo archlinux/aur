@@ -1,10 +1,9 @@
 # Maintainer Lone_Wolf <lonewolf at xs4all dot nl>
 
-
 pkgname=opentmpfiles
-pkgver=0.1.3
+pkgver=0.2
 pkgrel=1
-pkgdesc='a standalone utility for handling systemd-style tmpfiles.d settings'
+pkgdesc='Utility for handling systemd-style tmpfiles.d settings for systems booting openrc'
 arch=('any')
 url='https://github.com/openrc/opentmpfiles'
 license=('BSD')
@@ -12,18 +11,12 @@ depends=('openrc' 'sh')
 
 backup=(etc/openrc/conf.d/opentmpfiles-dev etc/openrc/conf.d/opentmpfiles-setup )
 
-source=($pkgname-$pkgver::https://github.com/OpenRC/$pkgname/archive/$pkgver.tar.gz
-        replace-sbin-with-usr-bin.patch
-        )
-install=$pkgname.install
+source=($pkgname-$pkgver::https://github.com/OpenRC/$pkgname/archive/$pkgver.tar.gz)
 
-sha512sums=('fd0b10ebfeb621466edadede50ec6e8f415861ab3b14b833c75bd71f7296e9c091e59144d39e1f9efd342b6d97776cade5a692c941085e33e9651fd885da7121'
-            '7ff8e3269668850f0d812bb6003ec5111ee89a5beab882fd09c9a2cbb30b35a0b96c083bde007845418e8747082160f907b5043562425d909a13af0beacdb1e6')
+md5sums=('5197fcae0f2fb2ed223e92dae96497cc')
+sha512sums=('bc384cc9156ba6c54d3308ddad4d26b1877f020aa8558e82df2ed49ffa65e0fed5a49eaa11b27193bfe2ad11a4d7368f7cdbc225b820b309af3b299327ddb07b')
 
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    patch -Np1 -i "$srcdir"/replace-sbin-with-usr-bin.patch
-}
+_SYSCONFDIR=/etc/openrc
 
 package() {
 
@@ -34,11 +27,11 @@ package() {
 
     # put service files in correct locations
     for f in opentmpfiles-dev opentmpfiles-setup; do
-        install -Dm755 openrc/$f.confd "$pkgdir"/etc/openrc/conf.d/$f
-	install -Dm755 openrc/$f.initd "$pkgdir"/etc/openrc/init.d/$f
+        install -Dm755 openrc/$f.confd "$pkgdir"$_SYSCONFDIR/conf.d/$f
+        install -Dm755 openrc/$f.initd "$pkgdir"$_SYSCONFDIR/init.d/$f
     done
     
-    # activating the services is done in .install file
+    # activating the services should be done manually
     
     # License is BSD 2 clause type and needs to be installed
     install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"

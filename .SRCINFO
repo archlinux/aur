@@ -1,19 +1,17 @@
 pkgbase = opentmpfiles
-	pkgdesc = a standalone utility for handling systemd-style tmpfiles.d settings
-	pkgver = 0.1.3
+	pkgdesc = Utility for handling systemd-style tmpfiles.d settings for systems booting openrc
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/openrc/opentmpfiles
-	install = opentmpfiles.install
 	arch = any
 	license = BSD
 	depends = openrc
 	depends = sh
 	backup = etc/openrc/conf.d/opentmpfiles-dev
 	backup = etc/openrc/conf.d/opentmpfiles-setup
-	source = opentmpfiles-0.1.3::https://github.com/OpenRC/opentmpfiles/archive/0.1.3.tar.gz
-	source = replace-sbin-with-usr-bin.patch
-	sha512sums = fd0b10ebfeb621466edadede50ec6e8f415861ab3b14b833c75bd71f7296e9c091e59144d39e1f9efd342b6d97776cade5a692c941085e33e9651fd885da7121
-	sha512sums = 7ff8e3269668850f0d812bb6003ec5111ee89a5beab882fd09c9a2cbb30b35a0b96c083bde007845418e8747082160f907b5043562425d909a13af0beacdb1e6
+	source = opentmpfiles-0.2::https://github.com/OpenRC/opentmpfiles/archive/0.2.tar.gz
+	md5sums = 5197fcae0f2fb2ed223e92dae96497cc
+	sha512sums = bc384cc9156ba6c54d3308ddad4d26b1877f020aa8558e82df2ed49ffa65e0fed5a49eaa11b27193bfe2ad11a4d7368f7cdbc225b820b309af3b299327ddb07b
 
 pkgname = opentmpfiles
 
