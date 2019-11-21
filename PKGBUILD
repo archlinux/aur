@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosgraph'
 pkgname='ros-melodic-rosgraph'
 pkgver='1.14.3'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,8 +30,16 @@ depends=(
 )
 
 _dir="ros_comm-${pkgver}/tools/rosgraph"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz"
+	"python38.patch")
+sha256sums=('3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f'
+            '57d5c7ad1638ba2bd4056a0be8ce15e681a77984b54c04a84799ef51c37e46c2')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch -uN src/rosgraph/roslogging.py ../../../python38.patch || return 1
+}
+
 
 build() {
 	# Use ROS environment variables.
