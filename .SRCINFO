@@ -1,6 +1,6 @@
 pkgbase = python-license-expression
 	pkgdesc = Utility library to parse, normalize and compare License expressions for Python using a boolean logic engine
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/nexB/license-expression
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-license-expression
 	makedepends = python-setuptools
 	makedepends = python-boolean.py
 	depends = python
-	source = python-license-expression-1.0.tar.gz::https://github.com/nexB/license-expression/archive/v1.0.tar.gz
-	sha256sums = cff181fbc43f40989f4b32685230b82c1f0d557aac15822c747f90cb6e9d26d0
+	source = python-license-expression-1.2.tar.gz::https://github.com/nexB/license-expression/archive/v1.2.tar.gz
+	sha256sums = 27e2a33ba833ece7a13068aba1c08d2aa6fe9d81acbf33ad284fe1e24200da98
 
 pkgname = python-license-expression
 
