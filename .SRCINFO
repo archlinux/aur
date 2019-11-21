@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.3.11
+	pkgver = 5.3.12
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.11.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.11.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.12.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.12.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.3/5.3-ck1/patch-5.3-ck1.xz
@@ -19,9 +19,9 @@ pkgbase = linux-ck
 	source = 0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 6e7156946d1d72e24786d09a47511e44c3abe5d4da757f4f68f2da482880aeb7
+	sha256sums = 53bff6f89dca19f928043fb0d3434bfb4b6abbb1bf18b907cb731188bdac97a0
 	sha256sums = SKIP
-	sha256sums = 54bd002b40030609bfb236c35d2a23d23e426edd1f84dd448afbadd1b0aacb55
+	sha256sums = 10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = 5b66761eae4efa4cb967aba9d4e555aa320cf5c004f0848e6bfbcb75ef66fbf1
 	sha256sums = 01367272cd82cafc24ae04d309d5c738352949727dc2a37f8578c14c7a90b9f0
@@ -35,11 +35,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.3.11
+	provides = linux-ck=5.3.12
 
 pkgname = linux-ck-headers
 	pkgdesc = Header files and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.3.11
-	provides = linux-headers=5.3.11
+	provides = linux-ck-headers=5.3.12
+	provides = linux-headers=5.3.12
 
