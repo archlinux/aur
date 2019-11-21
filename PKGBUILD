@@ -1,7 +1,7 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 # Contributer: ArielAxionL <i at axionl dot me>
 pkgname=qv2ray-dev-git
-pkgver=1.3.8.0.r2f6c829
+pkgver=1.3.8.0.r9b0a77a
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
