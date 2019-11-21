@@ -6,7 +6,7 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=('any')
 url="https://github.com/wting/autojump"
@@ -19,7 +19,7 @@ prepare() {
   cd $pkgname-release-v$pkgver
   sed -i "s:/env python:/python3:g" bin/$pkgname
 
-  # https://bugs.archlinux.org/task/60929
+  # FS#60929
   python -m compileall -d /usr/lib "$pkgdir/usr/lib"
   python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 }
@@ -35,13 +35,19 @@ package() {
   for i in $pkgname.*
     do ln -s /usr/share/$pkgname/$i "${pkgdir}"/etc/profile.d/$i
   done
-#FS#49601
+
+  # FS#60929
+  install -d "${pkgdir}/usr/lib/python3.8/site-packages"
+  mv ${pkgdir}/usr/bin/*.py "${pkgdir}/usr/lib/python3.8/site-packages"
+
+  # FS#49601
   install -d "${pkgdir}"/usr/share/fish/completions
   mv "${pkgdir}"/etc/profile.d/$pkgname.fish "${pkgdir}"/usr/share/fish/completions
 
-#https://github.com/joelthelion/autojump/pull/339
+  # https://github.com/joelthelion/autojump/pull/339
   sed -i "s:/usr/local/:/usr/:g" "${pkgdir}"/etc/profile.d/$pkgname.sh
   sed -i "s:/build/autojump/pkg/autojump/:/:g" "${pkgdir}"/etc/profile.d/$pkgname.sh
-#FS#43762
+
+  # FS#43762
   sed -i '27,31d' "${pkgdir}"/etc/profile.d/$pkgname.sh
 }

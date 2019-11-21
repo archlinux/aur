@@ -1,7 +1,7 @@
 pkgbase = autojump
 	pkgdesc = A faster way to navigate your filesystem from the command line
 	pkgver = 22.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wting/autojump
 	arch = any
 	license = GPL3
