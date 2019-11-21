@@ -3,7 +3,7 @@
 pkgname=pocketbook-pro-sdk-linux
 pkgver=1.1
 _pkgver=1_1a
-pkgrel=1
+pkgrel=2
 pkgdesc="Pocketbook-Pro SDK for Linux"
 url="https://sourceforge.net/projects/pocketbook-free/files/PocketBook_Pro_SDK_Linux_1.1/"
 license=('custom')

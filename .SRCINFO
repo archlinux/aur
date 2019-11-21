@@ -1,7 +1,7 @@
 pkgbase = pocketbook-pro-sdk-linux
 	pkgdesc = Pocketbook-Pro SDK for Linux
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/pocketbook-free/files/PocketBook_Pro_SDK_Linux_1.1/
 	arch = x86_64
 	license = custom
