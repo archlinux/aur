@@ -79,6 +79,13 @@ _pamac_completions_installed_packages_and_groups() {
         'pkgs:installed packages:_pamac_completions_installed_packages' \
         'grps:installed groups:_pamac_completions_installed_groups'
 }
+_pamac_completions_all_packages_groups_and_local() {
+    _alternative : \
+        'pkgs:packages:_pamac_completions_all_packages' \
+        'grps:groups:_pamac_completions_all_groups' \
+        'locl:package files:_files -g "*.pkg.tar.(z|gz|bz|bz2|lrz|lz|lz4|lzop|xz|lzma)"' 
+}
+
 
 # provides completions for repository names
 _pamac_completions_repositories() {
@@ -182,7 +189,7 @@ _pamac_command_install() {
         "(--ignore)--ignore[ignore a package upgrade, multiple packages can be specified by separating them with a comma]:packages:_pamac_all_packages" \
         "(--overwrite)--override[overwrite conflicting files, multiple patterns can be specified by separating them with a comma]:glob:_files" \
         "(--no-confirm)--no-confirm[bypass any and all confirmation messages]" \
-        "*:packages:_pamac_completions_all_packages_and_groups"
+        "*:packages:_pamac_completions_all_packages_groups_and_local"
 }
 
 _pamac_command_reinstall() {
