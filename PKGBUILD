@@ -3,24 +3,17 @@
 
 pkgname=abricotine
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor with inline preview"
 arch=('x86_64')
 url="http://abricotine.brrd.fr"
 license=('GPL3')
 depends=('gconf' 'libxss')
-makedepends=('npm')
+makedepends=('npm' 'nodejs-lts-dubnium')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/brrd/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('03bc7735be08ceacb412b1fd96d13b8ba14eda629cd8b6c705e8421ee7875442'
             '164d0042ffe461ca0418709a59be29b433055589b661be4d6555c07df42b383c')
-
-prepare() {
-  # This is an ugly workaround for fixing outdated dependencies.
-  cd "${srcdir}/${pkgname^}-${pkgver}"
-  sed -i 's,"\([0-9]\+\.[0-9]\+\.[0-9]\+"\),"^\1,g' package.json
-  sed -i 's,"version": "^0.7.0","version": "0.7.0",g' package.json
-}
 
 build() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
