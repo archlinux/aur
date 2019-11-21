@@ -3,6 +3,7 @@ pkgbase = crochetcharts
 	pkgver = 1.2.0
 	pkgrel = 5
 	url = http://stitchworkssoftware.com/
+	install = crochetcharts.install
 	arch = x86_64
 	license = GPLv3
 	makedepends = tar

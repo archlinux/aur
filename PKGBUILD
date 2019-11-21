@@ -11,6 +11,7 @@ arch=('x86_64')
 license=('GPLv3')
 makedepends=('tar')
 depends=('qt4>=4.8')
+install=${pkgname}.install
 source=("https://github.com/StitchworksSoftware/${PkgName}/releases/download/${pkgver}/${PkgName}-${pkgver}-x86_64.deb")
 md5sums=('663220d3d0e2b6a0b6de506039e40494')
 
@@ -36,27 +37,22 @@ package() {
   cp ${pkgdir}/usr/share/doc/${pkgname}/CrochetCharts_User_Guide_1.2.0.pdf ${pkgdir}/usr/share/${PkgName}/
   cp -R ${PkgName}/images/ ${pkgdir}/usr/share/doc/${pkgname}/
   
+  
+  ##---- Traitement des icônes ----##
   cd ${srcdir}/usr/share/${PkgName}/icons/
-  install -D -m644 ${PkgName}-16.png    ${pkgdir}/usr/share/icons/hicolor/16x16/apps/${pkgname}-16.png
-  install -D -m644 ${PkgName}-32.png    ${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}-32.png
-  install -D -m644 ${PkgName}-48.png    ${pkgdir}/usr/share/icons/hicolor/48x48/apps/${pkgname}-48.png
-  install -D -m644 ${PkgName}-64.png    ${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}-64.png
-  install -D -m644 ${PkgName}-96.png    ${pkgdir}/usr/share/icons/hicolor/96x96/apps/${pkgname}-96.png
-  install -D -m644 ${PkgName}-128.png   ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}-128.png
-  install -D -m644 ${PkgName}-192.png   ${pkgdir}/usr/share/icons/hicolor/192x192/apps/${pkgname}-192.png
-  install -D -m644 ${PkgName}-256.png   ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}-256.png
-  install -D -m644 ${PkgName}-512.png   ${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}-512.png
-  install -D -m644 ${PkgName}-1024.png  ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}-1024.png
-  install -D -m644 ${PkgName}-2048.png  ${pkgdir}/usr/share/icons/hicolor/2048x2048/apps/${pkgname}-2048.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/16x16/apps/ stitchworks-pattern-16.png    
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/32x32/apps/ stitchworks-pattern-32.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/48x48/apps/ stitchworks-pattern-48.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/64x64/apps/ stitchworks-pattern-64.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/96x96/apps/ stitchworks-pattern-96.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/128x128/apps/ stitchworks-pattern-128.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/192x192/apps/ stitchworks-pattern-192.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/256x256/apps/ stitchworks-pattern-256.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/512x512/apps/ stitchworks-pattern-512.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/ stitchworks-pattern-1024.png
-  install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/2048x2048/apps/ stitchworks-pattern-2048.png
+  
+  for fichier in ${PkgName}-*.png
+      do
+          nb=${fichier%.*} ## enlève le suffixe .png
+          nb=${nb#*-}      ## enlève le préfixe CrochetCharts-
+          install -D -m644 ${fichier}    ${pkgdir}/usr/share/icons/hicolor/${nb}x${nb}/apps/${pkgname}-${nb}.png
+      done
+  
+  for fichier in stitchworks-pattern-*.png
+        do
+            nb=${fichier%.*} ## enlève le suffixe .png
+            nb=${nb#*-} ## enlève le préfixe stitchworks-
+            nb=${nb#*-} ## enlève le préfixe pattern-
+            install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/${nb}x${nb}/apps/ ${fichier}
+        done
 }
