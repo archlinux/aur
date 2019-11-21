@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-ros-planning-interface'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf-conversions
@@ -19,6 +19,7 @@ ros_makedepends=(ros-melodic-tf-conversions
   ros-melodic-eigen-conversions
   ros-melodic-moveit-ros-manipulation
   ros-melodic-rosconsole
+  ros-melodic-moveit-resources
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
@@ -85,9 +86,9 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
+        -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
+        -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
+        -DPYTHON_BASENAME=.cpython-38 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
