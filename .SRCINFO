@@ -1,0 +1,13 @@
+pkgbase = streamlib
+	pkgdesc = Play your favorite live streams from command line
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/streamlib/streamlib
+	arch = any
+	license = GPL
+	makedepends = cargo
+	source = https://github.com/streamlib/streamlib/archive/v0.6.1.tar.gz
+	sha1sums = 1373356032f9f1f7c4454daab7a815747e1dbe78
+
+pkgname = streamlib
+
