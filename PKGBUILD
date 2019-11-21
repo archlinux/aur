@@ -6,7 +6,7 @@ _name='libtcod'
 pkgbase=python-libtcod
 pkgname=(python-libtcod python2-libtcod)
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Roguelike graphics/utility library"
 arch=('any')
 url='https://github.com/libtcod/libtcod'
@@ -19,7 +19,7 @@ md5sums=('514370f95c00464f23caed2358453ca7')
 package_python-libtcod() {
 	depends+=('python')
 
-	cd "${srcdir}/${_name}/python"
+	cd "${srcdir}/${_name}-${pkgver}/python"
 
 	python setup.py install --root=${pkgdir}
 
@@ -32,7 +32,7 @@ package_python-libtcod() {
 package_python2-libtcod() {
 	depends+=('python2')
 
-	cd "${srcdir}/${_name}/python"
+	cd "${srcdir}/${_name}-${pkgver}/python"
 
 	python2 setup.py install --root=${pkgdir}
 
