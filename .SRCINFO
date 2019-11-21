@@ -1,6 +1,6 @@
 pkgbase = aerc
 	pkgdesc = Email Client for your Terminal
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aerc
 	depends = dante
 	provides = aerc
 	conflicts = aerc
-	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc#tag=0.2.1
+	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc#tag=0.3.0
 	sha512sums = SKIP
 
 pkgname = aerc
