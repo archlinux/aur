@@ -6,14 +6,14 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.60.git.20.gc7370db9
+pkgver=2.62.git.1.g1fca842e
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('LGPL3')
 depends=('gc' 'python' 'freeglut' 'glew' 'gsl' 'fftw' 'libsigsegv')
-makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm')
+makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'asymptote')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
@@ -32,6 +32,9 @@ prepare() {
   cd ${pkgname%-git}/
   touch prc/config.h
   patch -Np1 < "$srcdir"/remove_include.patch
+  # dirty workaround for doc creation
+  cd doc
+  asy logo.asy
 }
 
 build() {
@@ -40,7 +43,7 @@ build() {
   ./configure --enable-gc=/usr \
     --prefix=/usr \
     --enable-offscreen
-  make V=1
+  make all
 }
 
 check() {
