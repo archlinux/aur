@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ipfs-desktop
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs-shipyard/$pkgname"
@@ -16,7 +16,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	npm install
 	npm run-script build:babel
-	npx electron-builder build --linux pacman
+	npx electron-builder build --linux pacman --cache "$srcdir/npm-cache"
 }
 
 package() {
