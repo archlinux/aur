@@ -5,6 +5,7 @@ pkgbase = pocketbook-pro-sdk-linux
 	url = https://sourceforge.net/projects/pocketbook-free/files/PocketBook_Pro_SDK_Linux_1.1/
 	arch = x86_64
 	license = custom
+	depends = zlib
 	optdepends = cmake: build some pocketbook apps from /usr/share/pocketbook-pro-sdk-linux/sources/
 	optdepends = freetype2: use freetype in your apps, also required to build some pocketbook apps
 	optdepends = gtk2: use GTK2 in your apps, also required to build some pocketbook apps
@@ -12,8 +13,10 @@ pkgbase = pocketbook-pro-sdk-linux
 	optdepends = giflib: use giflib in your apps, also required to build some pocketbook apps
 	options = !strip
 	options = !libtool
-	source = https://datapacket.dl.sourceforge.net/project/pocketbook-free/PocketBook_Pro_SDK_Linux_1.1/sdkrelease_1_1a.tar.gz
+	source = https://liquidtelecom.dl.sourceforge.net/project/pocketbook-free/PocketBook_Pro_SDK_Linux_1.1/sdkrelease_1_1a.tar.gz
+	source = https://master.dl.sourceforge.net/project/pocketbook-free/pbres/1/pbres.c
 	md5sums = 814aca54f7edf4b8c4d9469b455e0866
+	md5sums = 1cfaa2f3150974440c08bc02ed3625df
 
 pkgname = pocketbook-pro-sdk-linux
 
