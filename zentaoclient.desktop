@@ -1,0 +1,16 @@
+[Desktop Entry]
+Exec=/opt/zentaoclient/zentaoclient
+Icon=zentaoclient
+Terminal=false
+Type=Application
+Name=zentao
+Name[zh_CN]=禅道
+Name[zh_HK]=禪道
+Name[zh_TW]=禪道
+Comment=zentao client
+Comment[zh_CN]=禅道客户端
+Comment[zh_HK]=禪道用戶端
+Comment[zh_TW]=禪道用戶端
+Categories=Office;Chat;Network;Development;GTK;
+StartupNotify=true
+StartupWMClass=zentaoclient
