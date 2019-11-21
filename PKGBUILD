@@ -42,10 +42,10 @@ if [ -z ${use_pds+x} ]; then
 fi
 
 pkgbase=linux-xanmod-rt
-_srcname=linux
 pkgver=4.19.82
 xanmod=30
-pkgrel=1
+pkgrel=2
+_rev=_rev2
 arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
@@ -54,9 +54,9 @@ makedepends=(
   graphviz imagemagick cpio
 )
 options=('!strip')
-_srcname="linux-${pkgver}-rt${xanmod}-xanmod"
+_srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
 
-source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod.tar.gz
+source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod${_rev}.tar.gz
        60-linux.hook  # pacman hook for depmod
        90-linux.hook  # pacman hook for initramfs regeneration
        ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
@@ -64,7 +64,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod.tar
        0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch  # Grabbed from linux-ck package
 )
 
-sha256sums=('e004f5a27964a5b8ceb1b3f72d4622819c83c8f9945cd914555b6ea7647fe2a6'
+sha256sums=('ced358a87e35ea3bd7d0e62c0518a55bce31104bed7207141a9cd4d94961c40b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
