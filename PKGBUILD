@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster (milk on freenode irc)
 pkgname=bslizr-git
-pkgver=r104.4dd8fbd
+pkgver=r126.bed9c29
 pkgrel=1
 epoch=
 pkgdesc="Sequenced audio slicing effect LV2 plugin with a step sequencer effect. "
@@ -48,5 +48,6 @@ build() {
 
 package() {
   cd "$srcdir"/BSlizr
-  make INSTALL_DIR="${pkgdir}/usr/lib/lv2" install 
+  # make INSTALL_DIR="${pkgdir}/usr/lib/lv2" install 
+  make PREFIX="${pkgdir}/usr" install 
 }
