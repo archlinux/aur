@@ -10,7 +10,7 @@ pkgbase = zrepl-bin
 	source = zrepl-0.2.1::https://github.com/zrepl/zrepl/archive/v0.2.1.tar.gz
 	source = zrepl-bin::https://github.com/zrepl/zrepl/releases/download/v0.2.1/zrepl-linux-amd64
 	sha256sums = df474e70f5a51d84816ee8a06038ded167a7548e547e2d2822c313f088eeeafd
-	sha256sums = 8c89f610000c1ccc5b5fa6a90b372bdf1b2fe7301af7200c2ab0b9d5a037819e
+	sha256sums = 5ee464b240ba33914d94f6d8abc0f92d0d2ceb2dd6dade9eab36f01f9e07aa41
 
 pkgname = zrepl-bin
 
