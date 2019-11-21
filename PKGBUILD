@@ -1,11 +1,12 @@
 # Maintainer: Joost Bremmer <contact@madeofmagicandwires.online>
 pkgname=mpv-filenavigator-git
 pkgver=r36.199fc33
-pkgrel=1
+pkgrel=2
 pkgdesc="MPV Plugin to navigate and open your local files in mpv"
 arch=('any')
 url="https://github.com/jonniek/mpv-filenavigator"
 license=('Unlicense')
+makedepends=('git')
 source=("${pkgname%-git}::git+https://github.com/jonniek/mpv-filenavigator.git")
 sha256sums=("SKIP")
 provides=("${pkgname%-git}")

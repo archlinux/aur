@@ -1,10 +1,11 @@
 pkgbase = mpv-filenavigator-git
 	pkgdesc = MPV Plugin to navigate and open your local files in mpv
 	pkgver = r36.199fc33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonniek/mpv-filenavigator
 	arch = any
 	license = Unlicense
+	makedepends = git
 	provides = mpv-filenavigator
 	conflicts = mpv-filenavigator
 	source = mpv-filenavigator::git+https://github.com/jonniek/mpv-filenavigator.git
