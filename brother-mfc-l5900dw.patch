@@ -1,0 +1,12 @@
+diff --unified --recursive --text opt/brother/Printers/MFCL5900DW/cupswrapper/brother_lpdwrapper_MFCL5900DW opt.new/brother/Printers/MFCL5900DW/cupswrapper/brother_lpdwrapper_MFCL5900DW
+--- opt/brother/Printers/MFCL5900DW/cupswrapper/brother_lpdwrapper_MFCL5900DW	2015-11-03 21:28:44.000000000 -1000
++++ opt.new/brother/Printers/MFCL5900DW/cupswrapper/brother_lpdwrapper_MFCL5900DW	2019-11-21 13:25:39.976669658 -1000
+@@ -589,7 +589,7 @@
+ sub check_custom_paper {
+     my $x = 0;
+     my $y = 0;
+-    my $unitfunc;
++    my $unitfunc = \&pt2dot;
+     my $unit = '';
+     my $ssize = '';
+ 
