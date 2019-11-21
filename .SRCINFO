@@ -1,14 +1,14 @@
 pkgbase = python-inotify-simple
 	pkgdesc = A simple wrapper around inotify.
-	pkgver = 1.1.8
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 0
 	url = https://pypi.python.org/pypi/inotify_simple
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/i/inotify_simple/inotify_simple-1.1.8.tar.gz
-	sha256sums = fc2c10dd73278a1027d0663f2db51240af5946390f363a154361406ebdddd8dd
+	source = https://files.pythonhosted.org/packages/source/i/inotify_simple/inotify_simple-1.2.0.tar.gz
+	sha256sums = f5a7dd817122f64196da8ba9b24ec285181215a9f7503791e718b3cb342eaee6
 
 pkgname = python-inotify-simple
 
