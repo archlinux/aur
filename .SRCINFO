@@ -1,16 +1,16 @@
 pkgbase = python-ffc
 	pkgdesc = A compiler for finite element variational forms (stable).
 	pkgver = 2019.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/fenics-project/ffc
 	arch = any
 	groups = fenics
 	license = LGPL3
-	makedepends = python-setuptools
 	depends = python-dijitso=2019.1.0
 	depends = python-fiat=2019.1.0
 	depends = python-ufl=2019.1.0
 	depends = pybind11
+	depends = python-setuptools
 	conflicts = python-ffc-git
 	options = !emptydirs
 	source = python-ffc-2019.1.0.tar.gz::https://bitbucket.org/fenics-project/ffc/downloads/ffc-2019.1.0.tar.gz
