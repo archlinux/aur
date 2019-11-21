@@ -5,7 +5,7 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-planners-ompl'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
@@ -16,6 +16,7 @@ ros_makedepends=(ros-melodic-moveit-core
   ros-melodic-dynamic-reconfigure
   ros-melodic-moveit-ros-planning
   ros-melodic-eigen-conversions
+  ros-melodic-moveit-resources
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
