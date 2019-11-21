@@ -1,7 +1,7 @@
 # Maintainer: Jonas Krogh Hansen "Badgy" <jonaskhansen@gmail.com>
 # Contributor: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
 pkgname=spotirec
-pkgver=r61.7fff4ff
+pkgver=r80.c082a01
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
@@ -26,7 +26,7 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$HOME/.config/spotirec"
 
-    install spotirec.py oauth2.py -t "$pkgdir/usr/lib/spotirec"
+    install spotirec.py oauth2.py recommendation.py -t "$pkgdir/usr/lib/spotirec"
 
     ln -s "/usr/lib/spotirec/spotirec.py" "$pkgdir/usr/bin/spotirec"
 }
