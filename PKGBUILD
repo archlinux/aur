@@ -1,14 +1,15 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: jwmartnet
 
 pkgname=gpx2map-git
 _pkgname=gpx2map
-pkgver=r40.9b73b96
+pkgver=r41.98093e8
 pkgrel=1
 pkgdesc="Utility to read gps track (gpx) and writes Google Map or OSM mash-up"
 arch=('any')
 url="https://sd2k9.github.io/gpx2map/"
 license=('GPL3')
-depends=('perl-chart-gnuplot' 'perl-template-toolkit' 'perl-geo-distance')
+depends=('perl-chart-gnuplot' 'perl-template-toolkit' 'perl-geo-distance' 'perl-xml-twig')
 conflicts=('gpx2map')
 source=("${_pkgname}"::'git+https://github.com/sd2k9/gpx2map.git')
 md5sums=('SKIP')
