@@ -18,7 +18,7 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="HotDoc: the tastiest API documentation system"
 arch=('any')
@@ -26,6 +26,10 @@ url="https://github.com/hotdoc/hotdoc"
 license=('LGPL2')
 groups=()
 depends=(
+    'libxml2'
+    'json-glib'
+    'clang'
+    'llvm'
     'python'
     'python-cchardet'
     'python-dbus-deviation'
