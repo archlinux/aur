@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 1d39c4f..e506341 100755
+index 479efc1..86cbd71 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -397,7 +397,7 @@ class FrameGUI( ClientGUITopLevelWindows.FrameThatResizes ):
+@@ -598,7 +598,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -12,7 +12,7 @@ index 1d39c4f..e506341 100755
                          cmd = [ python_executable, server_script_path, db_param ]
                          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 7b45015..47fc32c 100755
+index 9ec3402..0ea9266 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
 @@ -2,30 +2,9 @@ import os
@@ -47,10 +47,10 @@ index 7b45015..47fc32c 100755
 +BASE_DIR = os.path.expanduser("~/.local/share/hydrus")
  
  PLATFORM_WINDOWS = False
- PLATFORM_OSX  = False
+ PLATFORM_MACOS  = False
 @@ -38,23 +17,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
- RUNNING_FROM_OSX_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
+ RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
 -BIN_DIR = os.path.join( BASE_DIR, 'bin' )
 -HELP_DIR = os.path.join( BASE_DIR, 'help' )
@@ -63,7 +63,7 @@ index 7b45015..47fc32c 100755
  
  DEFAULT_DB_DIR = os.path.join( BASE_DIR, 'db' )
  
--if PLATFORM_OSX:
+-if PLATFORM_MACOS:
 -    
 -    USERPATH_DB_DIR = os.path.join( os.path.expanduser( '~' ), 'Library', 'Hydrus' )
 -    
