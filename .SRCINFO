@@ -1,6 +1,6 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.2.15
+	pkgver = 1.2.16.2
 	pkgrel = 1
 	url = http://www.aseprite.org/
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = aseprite
 	makedepends = ninja
 	makedepends = git
 	makedepends = python2
+	makedepends = pandoc
 	depends = cmark
 	depends = pixman
 	depends = curl
@@ -24,9 +25,10 @@ pkgbase = aseprite
 	depends = fontconfig
 	depends = libxcursor
 	depends = desktop-file-utils
+	depends = hicolor-icon-theme
 	conflicts = aseprite-git
 	conflicts = aseprite-gpl
-	source = https://github.com/aseprite/aseprite/releases/download/v1.2.15/Aseprite-v1.2.15-Source.zip
+	source = https://github.com/aseprite/aseprite/releases/download/v1.2.16.2/Aseprite-v1.2.16.2-Source.zip
 	source = aseprite.desktop
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m71
@@ -59,7 +61,7 @@ pkgbase = aseprite
 	source = git+https://github.com/2d-inc/Nima-Cpp.git#commit=4bd02269d7d1d2e650950411325eafa15defb084
 	source = git+https://github.com/2d-inc/Nima-Math-Cpp.git#commit=e0c12772093fa8860f55358274515b86885f0108
 	source = gn::https://chromium-gn.storage-download.googleapis.com/2f27ff0b6118e5886df976da5effa6003d19d1ce
-	sha256sums = 813d6a099e1131f25f54e3935d6fdcdb1d0854ba757af074f3fc59dc869f38f4
+	sha256sums = 3539c49da702d1ade71d6b5e5a3c495dd5d42c58ae88308b4a3288f93ac522bd
 	sha256sums = c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f
 	sha256sums = SKIP
 	sha256sums = SKIP

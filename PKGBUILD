@@ -7,15 +7,15 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.15
+pkgver=1.2.16.2
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
 license=('custom')
 depends=('cmark' 'pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2'
-         'harfbuzz' 'nettle' 'fontconfig' 'libxcursor' 'desktop-file-utils')
-makedepends=('cmake' 'ninja' 'git' 'python2')
+         'harfbuzz' 'nettle' 'fontconfig' 'libxcursor' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('cmake' 'ninja' 'git' 'python2' 'pandoc')
 conflicts=("aseprite-git" "aseprite-gpl")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname^}-\
 v${pkgver}-Source.zip"
@@ -71,60 +71,56 @@ SPIRV-Headers.git#commit=661ad91124e6af2272afd00f804d8aa276e17107"
 "git+https://github.com/2d-inc/Nima-Math-Cpp.git#commit=e0c12772093fa8860f55358274515b86885f0108"
 "gn::https://chromium-gn.storage-download.googleapis.com/2f27ff0b6118e5886df976da5effa6003d19d1ce"
 )
-sha256sums=(
-'813d6a099e1131f25f54e3935d6fdcdb1d0854ba757af074f3fc59dc869f38f4'
-'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'c482981e91b5591ff85e055f3026956d6178aae3560ed984ff60b22e99351312'
-)
+sha256sums=('3539c49da702d1ade71d6b5e5a3c495dd5d42c58ae88308b4a3288f93ac522bd'
+            'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'c482981e91b5591ff85e055f3026956d6178aae3560ed984ff60b22e99351312')
 
 prepare() {
-  cd "$srcdir"
+  cd "${srcdir}"
 
   # Install skia deps (essentially runs git-sync-deps with the files already downloaded)
   mkdir --parents --verbose skia/third_party/externals
 
-  for dep in buildtools common
+  for _dep in buildtools common
   do
-    rm --recursive --force "skia/$dep"
-    mv --force --no-target-directory --verbose "$dep" "skia/$dep"
+    mv --force --no-target-directory --verbose "${_dep}" "skia/${_dep}"
   done
 
-  for dep in angle2 dng_sdk egl-registry expat freetype googletest harfbuzz icu imgui jsoncpp \
+  for _dep in angle2 dng_sdk egl-registry expat freetype googletest harfbuzz icu imgui jsoncpp \
              libjpeg-turbo libpng libwebp lua microhttpd opencl-lib opengl-registry piex sdl \
              sfntly spirv-headers spirv-tools swiftshader zlib Nima-Cpp Nima-Math-Cpp
   do
-    rm --recursive --force "skia/third_party/externals/$dep"
-    mv --force --no-target-directory --verbose "$dep" "skia/third_party/externals/$dep"
+    mv --force --no-target-directory --verbose "${_dep}" "skia/third_party/externals/${_dep}"
   done
 
   chmod u=rwx,g=rx,o=rx --verbose gn
@@ -141,18 +137,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"
+  cd "${srcdir}"
 
   # Build skia
-  _skiapath="$srcdir/binsub:$srcdir/depot_tools:$PATH"
+  _skiapath="${srcdir}/binsub:${srcdir}/depot_tools:${PATH}"
   cd skia
-  PATH="$_skiapath" gn gen out/Release --args="is_debug=false is_official_build=true\
+  PATH="${_skiapath}" gn gen out/Release --args="is_debug=false is_official_build=true\
     skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false\
     skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false"
-  PATH="$_skiapath" ninja -C out/Release skia
+  PATH="${_skiapath}" ninja -C out/Release skia
 
   # Build aseprite
-  cd "$srcdir"
+  cd "${srcdir}"
   mkdir --parents --verbose build && cd build
 
   cmake \
@@ -171,8 +167,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLAF_OS_BACKEND=skia \
-    -DSKIA_DIR="$srcdir/skia" \
-    -DSKIA_OUT_DIR="$srcdir/skia/out/Release" \
+    -DSKIA_DIR="${srcdir}/skia" \
+    -DSKIA_OUT_DIR="${srcdir}/skia/out/Release" \
     -G Ninja \
     ..
 
@@ -180,25 +176,41 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/build
+  cd "${srcdir}"/build
 
-  DESTDIR="$pkgdir" cmake --install .
-  # Aseprite doesn't seem to install README.md for some reason.
-  install --mode=644 --verbose 'bin/data/README.md' "$pkgdir/usr/share/aseprite/data"
+  DESTDIR="${pkgdir}" cmake --install .
 
-  install -D --mode=644 --verbose "$srcdir/$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -D --mode=644 --verbose "../data/icons/ase48.png" \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -D --mode=644 --verbose "../EULA.txt" "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
+  # Aseprite, by default, doesn't install a few files on its own. So, they are installed manually.
+
+  cp --recursive --verbose 'bin/data/docs' "${pkgdir}/usr/share/aseprite/data"
+  install --mode=644 --verbose 'bin/data/README.md' "${pkgdir}/usr/share/aseprite/data"
+  install --mode=644 --verbose 'bin/data/EULA.txt' "${pkgdir}/usr/share/aseprite/data"
+
+  install --directory --verbose "${pkgdir}/usr/share/doc/${pkgname}"
+  cp --recursive --verbose '../docs' "${pkgdir}/usr/share/doc/${pkgname}"
+  install --mode=644 --verbose 'bin/data/EULA.txt' "${pkgdir}/usr/share/doc/${pkgname}"
+  pandoc '../README.md' --output="${pkgdir}/usr/share/doc/${pkgname}/README.html"
+
+  install -D --mode=644 --verbose "../${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  for _size in 32 48 64
+  do
+    install -D --mode=644 --verbose "../data/icons/ase${_size}.png" \
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
+  done
+
+  install -D --mode=644 --verbose --target-directory "${pkgdir}/usr/share/licenses/${pkgname}" \
+    'bin/data/EULA.txt'
+  install --mode=644 --verbose '../docs/LICENSES.md' "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Remove conflicting files with libarchive
   # TODO: With the current compilation options, looks like aseprite build process builds these
   # binaries. Disable the compilation of the following files later on:
   # Note: Github issue: https://github.com/aseprite/aseprite/issues/1602
-  rm --verbose "$pkgdir/usr/bin/"{bsdcat,bsdcpio,bsdtar,img2webp}
-  rm --recursive --verbose "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share/WebP" \
-                           "$pkgdir/usr/share/man"
+  rm --verbose "${pkgdir}/usr/bin/"{bsdcat,bsdcpio,bsdtar,img2webp}
+  rm --recursive --verbose "${pkgdir}/usr/include" "${pkgdir}/usr/lib" "${pkgdir}/usr/share/WebP" \
+    "${pkgdir}/usr/share/man"
 }
 
 # vim:set ts=2 sw=2 et:
