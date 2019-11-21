@@ -1,35 +1,38 @@
 # Maintainer: copygirl <copygirl@mcft.net>
-pkgname=mindustry-git
-pkgver=r4618.5a0669d43
+_pkgname=mindustry
+pkgname=$_pkgname-git
+pkgver=r5344.ff2d9c34f
 pkgrel=1
 pkgdesc="A sandbox tower defense game written in Java"
 arch=("any")
 url="https://github.com/Anuken/Mindustry"
 license=("MIT")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=("java-runtime=8")
 makedepends=("git" "java-environment=8")
-source=("$pkgname::git://github.com/Anuken/Mindustry.git"
-        "mindustry-git.desktop"
-        "mindustry-git.png"
-        "mindustry-git.sh")
+source=("$_pkgname::git://github.com/Anuken/Mindustry.git"
+        "mindustry.desktop"
+        "mindustry.png"
+        "mindustry.sh")
 md5sums=("SKIP"
-         "9d28943fc8daa46d3552bce3cffaba57"
-         "08674801f873e782f96029c0f655f0b3"
-         "f1d39bc76c71e641cd84739a77c08ab9")
+         "5cbcd7783b438452f494b34799dbea65"
+         "87e1a2c19d319f1eaef6c1a2920672d2"
+         "3c3fd3a7851992656c45feaf1ccdc4ca")
 
 pkgver() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$pkgname"
+	cd "$_pkgname"
 	./gradlew desktop:dist
 }
 
 package() {
-	install -Dm755 "$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
-	install -Dm644 "$pkgname".png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
-	install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
-	install -Dm755 "$pkgname"/desktop/build/libs/Mindustry.jar "$pkgdir"/usr/share/java/"$pkgname"/Mindustry.jar
+	install -Dm755 "$_pkgname".sh "$pkgdir"/usr/bin/"$_pkgname"
+	install -Dm644 "$_pkgname".png "$pkgdir"/usr/share/pixmaps/"$_pkgname".png
+	install -Dm644 "$_pkgname".desktop "$pkgdir"/usr/share/applications/"$_pkgname".desktop
+	install -Dm755 "$_pkgname"/desktop/build/libs/Mindustry.jar "$pkgdir"/usr/share/java/"$_pkgname"/Mindustry.jar
 }

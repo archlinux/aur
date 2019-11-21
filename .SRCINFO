@@ -1,6 +1,6 @@
 pkgbase = mindustry-git
 	pkgdesc = A sandbox tower defense game written in Java
-	pkgver = r4618.5a0669d43
+	pkgver = r5344.ff2d9c34f
 	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
@@ -8,14 +8,16 @@ pkgbase = mindustry-git
 	makedepends = git
 	makedepends = java-environment=8
 	depends = java-runtime=8
-	source = mindustry-git::git://github.com/Anuken/Mindustry.git
-	source = mindustry-git.desktop
-	source = mindustry-git.png
-	source = mindustry-git.sh
+	provides = mindustry
+	conflicts = mindustry
+	source = mindustry::git://github.com/Anuken/Mindustry.git
+	source = mindustry.desktop
+	source = mindustry.png
+	source = mindustry.sh
 	md5sums = SKIP
-	md5sums = 9d28943fc8daa46d3552bce3cffaba57
-	md5sums = 08674801f873e782f96029c0f655f0b3
-	md5sums = f1d39bc76c71e641cd84739a77c08ab9
+	md5sums = 5cbcd7783b438452f494b34799dbea65
+	md5sums = 87e1a2c19d319f1eaef6c1a2920672d2
+	md5sums = 3c3fd3a7851992656c45feaf1ccdc4ca
 
 pkgname = mindustry-git
 
