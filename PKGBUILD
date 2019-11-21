@@ -7,7 +7,7 @@
 
 pkgname=mapnik-git
 _pkgname=mapnik
-pkgver=3.0.20.1046.gfdf60044c
+pkgver=3.0.22.1073.g94dd75666
 pkgrel=1
 pkgdesc="Free Toolkit for developing mapping applications. Above all Mapnik is about rendering beautiful maps (git version)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ optdepends=('libxslt:         Web Map Service'
 			'mod_wsgi2:       Web Map Service')
 makedepends=('scons' 'boost' 'git')
 conflicts=('mapnik')
-provides=('mapnik=3.0.20')
+provides=('mapnik=3.0.22')
 options=(staticlibs)
 install="mapnik.install"
 source=("git+https://github.com/mapnik/mapnik.git")
@@ -35,7 +35,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$_pkgname"
 
-	echo "3.0.20$(git describe --long | cut -c8- | sed 's/-/./g')"
+	echo "3.0.22$(git describe --long | cut -c8- | sed 's/-/./g')"
 }
 
 prepare() {
@@ -51,8 +51,9 @@ build() {
 		PREFIX="/usr" \
 		INPUT_PLUGINS=all \
 		DESTDIR="$pkgdir" \
+		FREETYPE_INCLUDES=/usr/include/freetype2 \
 		FREETYPE_LIBS=/usr/lib \
-		FREETYPE_INCLUDES=/usr/include/freetype2
+		CUSTOM_DEFINES="-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1"
 }
 
 package(){
