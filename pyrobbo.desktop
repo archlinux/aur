@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PyRobbo
+Exec=pyrobbo
+Comment=Emulator Robbo w Pythonie
+Terminal=false
+Icon=robbo.png
+Categories=Game;
+Type=Application

@@ -1,0 +1,22 @@
+pkgbase = pyrobbo
+	pkgdesc = Clone of an old 8-bit Atari game Robbo
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://github.com/macdems/pyrobbo
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygame
+	depends = python-yaml
+	depends = python-appdirs
+	depends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/P/PyRobbo/PyRobbo-0.2.1.tar.gz
+	source = pyrobbo.desktop
+	source = robbo.png
+	sha256sums = fbbebb6f87b0288a2d72f09a94c24771b0502a369e1d8d3ff156d661f7d88fa5
+	sha256sums = d29ae49f54b9ba159fd39b0132dad6f0fa252902533934e7021f6cd61a04db33
+	sha256sums = cc89dcb37e7f2dde624e8db706f0b26c0493fc68a1af5716b615ee992d716a84
+
+pkgname = pyrobbo
+
