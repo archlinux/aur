@@ -1,0 +1,6 @@
+src/
+pkg/
+phoenicis/
+phoenicis-playonlinux*.tar.gz
+*.log
+*.pkg.tar.xz

@@ -1,7 +1,7 @@
 pkgbase = phoenicis-playonlinux
 	pkgdesc = Phoenicis PlayOnLinux allows you to install and use non-native applications on linux
 	pkgver = 5.0_alpha2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.phoenicis.org/
 	arch = any
 	license = LGPL3
@@ -11,18 +11,16 @@ pkgbase = phoenicis-playonlinux
 	depends = curl
 	depends = icoutils
 	depends = imagemagick
-	depends = java-openjfx-bin
 	depends = java-runtime-openjdk=11
+	depends = java11-openjfx
 	depends = p7zip
 	depends = unzip
 	depends = wget
 	depends = wine
 	depends = xterm
 	options = !strip
-	source = https://github.com/PhoenicisOrg/phoenicis/archive/v5.0-alpha.2.tar.gz
-	source = fix-launcher-on-wayland.patch
-	sha256sums = c88b8ca68c0c37f62aad4db44cef0047c09e8fd553455af15ef3265b0e3c575b
-	sha256sums = f681160a361e84021cd9f0c272e9992eedb6950ffde49f335dec665232510ed7
+	source = git+https://github.com/PhoenicisOrg/phoenicis.git#commit=4a5e61e850ed616fa4db1d1bbbd57c9229c0ce3c
+	sha256sums = SKIP
 
 pkgname = phoenicis-playonlinux
 
