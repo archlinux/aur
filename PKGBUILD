@@ -3,14 +3,14 @@
 
 pkgname=subtitleripper
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DVD subtitle to text converter"
 arch=('x86_64')
 url="http://subtitleripper.sourceforge.net/"
 license=('GPL')
 depends=('netpbm')
 makedepends=('make' 'gcc' 'netpbm')
-source=("http://www.joonet.de/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=('2ae166123a8d46a0be7eba552ef33d84ab09ba9a882f1b684c85bf442f8ddc35')
 
 
