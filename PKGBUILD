@@ -5,7 +5,7 @@
 
 # Maintainer: Martín Pizarro Ascui <martinpiz097@gmail.com>
 pkgname=xpress-player
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Java Swing desktop music player"
