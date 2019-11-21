@@ -1,15 +1,15 @@
 pkgbase = pg_repack
 	pkgdesc = Reorganize tables in PostgreSQL databases with minimal locks (fork of pg_reorg)
-	pkgver = 1.4.4
-	pkgrel = 3
+	pkgver = 1.4.5
+	pkgrel = 1
 	url = http://reorg.github.com/pg_repack/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = postgresql
 	depends = postgresql-libs
-	source = https://github.com/reorg/pg_repack/archive/ver_1.4.4.tar.gz
-	sha256sums = b9f00d6e0b4d39460670610719d9e5510273b1396b18f2f2a5d35e080bcde255
+	source = https://github.com/reorg/pg_repack/archive/ver_1.4.5.tar.gz
+	sha256sums = 2781aeee118d706ab1f594d0f709b7a06a31bde521c72ff79dbffa507136b545
 
 pkgname = pg_repack
 
