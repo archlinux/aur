@@ -9,8 +9,8 @@ pkgbase = zivid-telicam-driver
 	provides = zivid-telicam-sdk
 	conflicts = zivid-telicam-sdk
 	options = !strip
-	source = https://www.zivid.com/hubfs/softwarefiles/releases/1.6.0+7a245bbe-26/u18/zivid-telicam-driver_2.0.0.1-1_amd64.deb
-	sha256sums = 1ecaf4a8a47975d82e68a052ab6385f0cf05eb451d2a1c8f06474d258461bd68
+	source = https://www.zivid.com/hubfs/softwarefiles/releases/1.7.0+a115eaa4-4/u18/zivid-telicam-driver_2.0.0.1-1_amd64.deb
+	sha256sums = 11601ed9d8e77a7bbee21f55044c3fc7a9ba1fbea6df8b5429767aa37e2dae7a
 
 pkgname = zivid-telicam-driver
 
