@@ -3,10 +3,10 @@
 pkgname=python-tableone
 _name=${pkgname#python-}
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Create \"Table 1\" for research papers in Python"
 arch=('any')
-url="https://github.com/tompollard/${_name}"
+url="https://pypi.org/project/${_name}"
 license=('MIT')
 depends=('python' 'python-tabulate' 'python-pandas' 'python-numpy' 'python-scipy' 'python-statsmodels')
 makedepends=('python-setuptools')
