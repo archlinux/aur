@@ -1,0 +1,18 @@
+pkgbase = python-pygram11
+	pkgdesc = histogramming in python accelerated with OpenMP
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/douglasdavis/pygram11
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = python>=3.5
+	depends = python-numpy
+	options = !emptydirs
+	source = https://pypi.io/packages/source/p/pygram11/pygram11-0.6.1.tar.gz
+	sha256sums = eea52496b4af3b6e0d65414031d2b5124ae598e4e97bcb64b46e5c1b67000e12
+
+pkgname = python-pygram11
+
