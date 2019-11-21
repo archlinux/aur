@@ -14,7 +14,7 @@ options=('!strip')
 source=("git+https://github.com/ValveSoftware/openvr.git"
         '0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch'                   # openvr_capi: Add pragma pack around VRControllerState_t.
         '0002-samples-cmake-Remove-OpenVR-paths-check.patch'                                # samples/cmake: Remove OpenVR paths check.
-        '0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch'                   # Use correct C++11 definition for vsprintf_s
+        '0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch'                   # Use correct C++11 definition for vsprintf_s https://github.com/ValveSoftware/openvr/pull/594
         'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch' # Add ability to build with system installed jsoncpp
         )
 md5sums=('SKIP'
