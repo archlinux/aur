@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="V2RayA是一个支持全局透明代理的V2Ray Linux客户端。"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
