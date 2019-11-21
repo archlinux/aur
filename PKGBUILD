@@ -24,7 +24,7 @@ md5sums=(
   # ACE+TAO-2.2a_pPATCH_complete_NO_makefiles.tar.gz
   'a21185584ca0a2785c8b3d04d5d60f3a'
   # OpenDDS-VERSION.tar.gz
-  '0ff8fed7b1590f460ca0d6ae3de219ec'
+  '35a0907fd6d6b9c29a5c4718e8c35624'
   # build.patch
   'd8dda850a09ba6ba621be2eef7bc9329'
   # tao-cosnaming.service
