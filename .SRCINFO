@@ -38,6 +38,8 @@ pkgbase = waves-exchange
 	depends = nspr
 	depends = nss
 	depends = pango
+	source = https://waves.exchange/files/Waves.Exchange.deb
+	md5sums = 1867cef5e7098d6bdcd98944f38938ff
 
 pkgname = waves-exchange
 
