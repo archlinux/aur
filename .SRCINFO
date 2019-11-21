@@ -8,6 +8,7 @@ pkgbase = abricotine-git
 	makedepends = npm
 	depends = gconf
 	depends = libxss
+	provides = abricotine
 	conflicts = abricotine
 	source = abricotine::git+https://github.com/brrd/abricotine
 	source = abricotine.desktop
