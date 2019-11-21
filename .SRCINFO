@@ -1,0 +1,14 @@
+pkgbase = prosody-mod-bookmarks2-hg
+	pkgdesc = Interop between XEP-0048 and XEP 0402 for Prosody
+	pkgver = r3755.bb18a1f5e9d7
+	pkgrel = 1
+	url = https://modules.prosody.im/mod_bookmarks2.html
+	arch = any
+	license = MIT
+	makedepends = mercurial
+	depends = prosody
+	source = hg+https://hg.prosody.im/prosody-modules/
+	sha1sums = SKIP
+
+pkgname = prosody-mod-bookmarks2-hg
+
