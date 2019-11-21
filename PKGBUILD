@@ -2,7 +2,7 @@
 
 pkgname=kapp
 pkgdesc='A simple deployment tool focused on the concept of a Kubernetes application'
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -11,7 +11,7 @@ depends=('kubectl')
 makedepends=('go')
 conflicts=('kapp-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/k14s/kapp/archive/v$pkgver.tar.gz")
-sha256sums=('89190985ed6f50a0714ca6b201097aaa7a0d5af1959b1e8cda9445daa7d11fc1')
+sha256sums=('04fc3289d3dcc3d41a62b7d979e4279e583e42c4b69497ca9705a101ee3d260a')
 
 prepare() {
   # Make fake gopath
