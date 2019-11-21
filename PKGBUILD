@@ -3,7 +3,7 @@
 
 pkgname=mwb-layout
 pkgver=r24.244ca13
-pkgrel=1
+pkgrel=2
 pkgdesc='Optimized keyboard layout, based on programmer dvorak and with a 3rd layer'
 arch=(any)
 url="https://github.com/MatteoWickiBande/mwb-layout"
@@ -23,5 +23,5 @@ package() {
   cd "$srcdir/$pkgname"
   gzip -c mwb.map > mwb.map.gz
   install -Dm 644 mwb.map.gz "$pkgdir/usr/share/kbd/keymaps/i386/dvorak/mwb.map.gz"
-  install -Dm 644 mwb "$pkgdir/usr/share/x11/xkb/symbols/mwb"
+  install -Dm 644 mwb "$pkgdir/usr/share/X11/xkb/symbols/mwb"
 }

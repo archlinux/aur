@@ -1,7 +1,7 @@
 pkgbase = mwb-layout
 	pkgdesc = Optimized keyboard layout, based on programmer dvorak and with a 3rd layer
 	pkgver = r24.244ca13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatteoWickiBande/mwb-layout
 	install = mwb-layout.install
 	arch = any
