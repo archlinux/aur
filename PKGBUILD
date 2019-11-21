@@ -5,7 +5,7 @@
 
 basename=gnome-shell
 pkgname=$basename-xrdesktop-git
-pkgver=3.34.0
+pkgver=3.34.1
 pkgrel=1
 conflicts=($basename)
 pkgdesc="The next generation GNOME Shell - with patches for xrdesktop."
@@ -16,12 +16,12 @@ depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-sett
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
          mutter nm-connection-editor unzip gstreamer libibus xrdesktop-git libinputsynth-git)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
-             sassc vulkan-headers)
+             sassc vulkan-headers asciidoc)
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
 provides=(gnome-shell=$pkgver)
-source=($basename::"git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.34.0-xrdesktop"
+source=($basename::"git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.34.1-xrdesktop"
         "git+https://git.gnome.org/browse/libgnome-volume-control")
 
 sha256sums=('SKIP'
