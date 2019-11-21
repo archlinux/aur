@@ -1,8 +1,9 @@
-# Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=python-apscheduler
 _pkgname=APScheduler
-pkgver=3.6.0
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='A light but powerful in-process task scheduler'
 arch=(any)
@@ -11,7 +12,7 @@ license=(MIT)
 depends=(python-six python-pytz python-tzlocal)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/A/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('75f439704fee11865432ab8f60cf4cb7')
+md5sums=('5e603880cf9ce8f4baa20a600ed1aac8')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
