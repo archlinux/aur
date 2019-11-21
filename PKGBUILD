@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
-pkgver=r1341.f058244
-pkgrel=4
+pkgver=r1469.10c4055
+pkgrel=1
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
 url='https://github.com/AlexeyAB/darknet'
@@ -11,7 +11,7 @@ optdepends=('cuda' 'cudnn' 'opencv')
 makedepends=('cmake' 'git' 'vtk')
 _name=darknet
 provides=('darknet')
-conflicts=('')
+conflicts=()
 source=("git+https://github.com/AlexeyAB/darknet.git"
         LICENSE)
 md5sums=('SKIP'
