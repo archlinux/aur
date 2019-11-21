@@ -2,7 +2,7 @@
 
 pkgname=hash-checker
 pkgver=2.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A Free tool for checking any file's MD5, SHA256 & SHA512 hash easily"
 arch=('x86_64')
 url="https://github.com/Rizwan-Hasan/Hash-Checker/"
