@@ -2,9 +2,10 @@
 # Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=rabbitvcs-cli
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
-_gitcommit='e7d5a82836855675b11cc860bc9cc3ce56864ffd'
+_gitcommit='5555d67769c0af1d143a78c56ea91425caf23178'
+
 pkgdesc="Command Line (CLI) front-end for RabbitVCS"
 arch=('i686' 'x86_64')
 url="https://github.com/rabbitvcs/rabbitvcs"
@@ -15,7 +16,7 @@ if [ "${_gitcommit}" != "" ]; then
 else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
-sha256sums=('658f410d29baf615f668ff0d787e5f3769c887d3077a307b6da9d2169291fa5f')
+sha256sums=('d5d3e038bd9d007c8ebe7289598cf66fa0f79c12dbf46e9ebd64dc1ebb8367fe')
 #sha256sums=('SKIP')
 
 package(){
