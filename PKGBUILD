@@ -1,8 +1,9 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.3.4
+pkgver={{pkgver}}
 pkgrel=1
+install:.INSTALL
 pkgdesc="V2RayA是一个支持全局透明代理的V2Ray Linux客户端。"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mzz2017/V2RayA"
@@ -26,20 +27,4 @@ package() {
     cd "V2RayA-$pkgver"
     install -Dm644 "install/v2raya.service" "$pkgdir/usr/lib/systemd/system/v2raya.service"
     install -Dm755 "service/v2raya" -t "$pkgdir/usr/bin/"
-}
-
-post_install() {
-    bash install/after_install.sh
-}
-
-post_remove() {
-    bash install/after_remove.sh
-}
-
-post_upgrade() {
-    bash install/after_upgrade.sh
-}
-
-pre_remove() {
-    bash install/before_remove.sh
 }

@@ -1,0 +1,32 @@
+post_install() {
+    :
+#!/bin/sh
+
+systemctl daemon-reload
+systemctl enable v2raya
+systemctl start v2raya
+
+}
+post_upgrade() {
+    :
+#!/bin/sh
+
+systemctl restart v2raya
+
+}
+pre_remove() {
+    :
+#!/bin/sh
+
+systemctl disable v2raya
+ststemctl stop v2raya
+ststemctl stop v2ray
+
+}
+post_remove() {
+    :
+#!/bin/sh
+
+systemctl daemon-reload
+
+}
