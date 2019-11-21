@@ -1,35 +1,44 @@
-# Maintainer: Sherlock Holo <Sherlockya@gmail.com>
-pkgname=python-locust-git
-_pkgname=locust
-pkgver=v0.8.1.67.g387e7a8
+# Maintainer: Stick <stick@stma.is>
+# Contributer: Sherlock Holo <Sherlockya@gmail.com>
+
+_pkg=locust
+pkgname="python-$_pkg-git"
+pkgver=0.13.2.r6.g989fa24
 pkgrel=1
-pkgdesc="An easy-to-use, distributed, user load testing tool."
+pkgdesc="Scalable user load testing tool written in Python"
 arch=('any')
-url="http://locust.io/"
+url="https://github.com/locustio/$_pkg"
 license=('MIT')
-depends=('python-gevent' 'python-flask' 'python-requests' 'python-msgpack' 'python-pyzmq' 'python-six')
-makedepends=('git' 'python-setuptools')
-source=('git+https://github.com/locustio/locust')
+depends=('python-flask'
+         'python-gevent'
+		 'python-geventhttpclient-wheels'
+         'python-msgpack'
+         'python-pyzmq'
+		 'python-requests'
+         'python-six')
+makedepends=('git'
+             'python-setuptools')
+provides=("python-$_pkg")
+conflicts=("python-$_pkg")
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --tags | sed "s/-/./g"
+	cd "$pkgname" || exit
+	local _ver
+	_ver="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+	printf '%s\n' "${_ver#v}"
 }
 
+
 build() {
-    cd $srcdir
-    cd $_pkgname
-    sed -i "s/gevent>=1.2.2/gevent/" setup.py
-    sed -i "s/flask>=0.10.1/flask/" setup.py
-    sed -i "s/requests>=2.9.1/requests/" setup.py
-    sed -i "s/msgpack-python>=0.4.2/msgpack-python/" setup.py
-    sed -i "s/six>=1.10.0/six/" setup.py
-    sed -i "s/pyzmq>=16.0.2/pyzmq/" setup.py
+	cd "$pkgname" || exit
+    sed -i 's/msgpack-python/msgpack/' setup.py
+    sed -i 's/        "\([[:alpha:]-]*\).=.*"/        "\1"/' setup.py
     python setup.py build
 }
 
 package() {
-    cd $srcdir/$_pkgname
-    python setup.py install --skip-build --root=${pkgdir}/ --optimize=1
+	cd "$pkgname" || exit
+    python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
 }
