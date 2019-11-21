@@ -1,10 +1,13 @@
 pkgbase = zentaoclient
 	pkgdesc = 禅道客户端 zentao client
 	pkgver = 2.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zentao.net/
 	arch = x86_64
-	license = custom: commercial
+	license = unknown
+	depends = gtk3
+	depends = libxss
+	depends = nss
 	provides = zentaoclient
 	conflicts = zentaoclient
 	source = zentaoclient.desktop
