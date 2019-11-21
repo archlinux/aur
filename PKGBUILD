@@ -3,8 +3,9 @@
 pkgname=abricotine-bin
 _pkgname=abricotine
 conflicts=("abricotine")
+provides=("abricotine")
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor with inline preview"
 arch=('x86_64')
 url="http://abricotine.brrd.fr"
