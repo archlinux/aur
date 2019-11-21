@@ -1,12 +1,13 @@
 pkgbase = abricotine-bin
 	pkgdesc = A markdown editor with inline preview
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://abricotine.brrd.fr
 	arch = x86_64
 	license = GPL3
 	depends = gconf
 	depends = libxss
+	provides = abricotine
 	conflicts = abricotine
 	source = https://github.com/brrd/Abricotine/releases/download/0.7.0/Abricotine-0.7.0-linux-x64.tar.gz
 	source = abricotine.desktop
