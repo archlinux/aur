@@ -4,8 +4,8 @@
 
 pkgbase="monero"
 pkgname=('monero' 'libmonero-wallet')
-pkgver=0.15.0.0
-pkgrel=3
+pkgver=0.15.0.1
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)"
 license=('custom:Cryptonote')
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')

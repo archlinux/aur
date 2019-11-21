@@ -1,7 +1,7 @@
 pkgbase = monero
 	pkgdesc = Monero: the secure, private, untraceable currency - release version (includes daemon, wallet and miner)
-	pkgver = 0.15.0.0
-	pkgrel = 3
+	pkgver = 0.15.0.1
+	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = monero
 	provides = libmonero-wallet
 	conflicts = bitmonero-git
 	conflicts = libmonero-wallet-git
-	source = monero::git+https://github.com/monero-project/monero#tag=v0.15.0.0
+	source = monero::git+https://github.com/monero-project/monero#tag=v0.15.0.1
 	source = monero.sysusers
 	source = monero.tmpfiles
 	sha256sums = SKIP
