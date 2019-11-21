@@ -2,7 +2,7 @@
 # Maintainer: Dust1404 <unknown>
 pkgname=lemonplus-git
 pkgver=20191121
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A tiny judging environment for OI contest based on Project_Lemon"
 arch=(x86_64)
