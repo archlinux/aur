@@ -1,7 +1,7 @@
 pkgbase = mirrorlist-manager
 	pkgdesc = A Qt frontend for easy mirrorlist management
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rizwan-Hasan/ArchLinux-Mirrorlist-Manager
 	arch = x86_64
 	license = GPL3
