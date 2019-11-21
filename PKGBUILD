@@ -2,13 +2,13 @@
 
 pkgname=arangodb
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-model NoSQL database, combining key-value, document and graph data models."
 arch=("i686" "x86_64")
 url="https://www.arangodb.com/"
 license=("APACHE")
 depends=("openssl" "systemd" "curl" "zlib")
-makedepends=("cmake" "gcc7" "python2" "linux-api-headers")
+makedepends=("cmake" "python2" "linux-api-headers")
 options=()
 install=arangodb.install
 source=("https://download.arangodb.com/Source/ArangoDB-$pkgver.tar.bz2"
@@ -28,8 +28,6 @@ build() {
   ln -s -f /usr/bin/python2 python
   export PATH="`pwd`:$PATH"
   export LD="ld.gold"
-  export CC="gcc-7"
-  export CXX="g++-7"
 
   msg2 "Configuring ArangoDB."
   cd $srcdir/ArangoDB-$pkgver
