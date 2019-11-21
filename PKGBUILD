@@ -2,7 +2,7 @@
 
 pkgname=speedtest++
 _gitname=SpeedTest
-pkgver=v1.11.r13.g262daf8
+pkgver=1.14.r65.262daf8
 pkgrel=1
 pkgdesc="Unofficial speedtest.net cli using raw TCP for better accuracy"
 arch=('any')
@@ -15,7 +15,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  local maj=$(grep -m 1 VERSION_MAJOR CMakeLists.txt |sed 's/[^0-9]*//g')
+  local min=$(grep -m 1 VERSION_MINOR CMakeLists.txt |sed 's/[^0-9]*//g')
+  printf "%s.%s.r%s.%s" $maj $min "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

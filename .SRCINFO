@@ -1,6 +1,6 @@
 pkgbase = speedtest++
 	pkgdesc = Unofficial speedtest.net cli using raw TCP for better accuracy
-	pkgver = v1.11.r13.g262daf8
+	pkgver = 1.14.r65.262daf8
 	pkgrel = 1
 	url = https://github.com/taganaka/SpeedTest
 	arch = any
