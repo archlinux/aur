@@ -1,7 +1,7 @@
 pkgbase = crochetcharts
 	pkgdesc = Pattern design software for crochet charts
 	pkgver = 1.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://stitchworkssoftware.com/
 	install = crochetcharts.install
 	arch = x86_64
