@@ -1,6 +1,6 @@
 pkgbase = python-dask
 	pkgdesc = Minimal task scheduling abstraction
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/dask/dask
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = python-dask
 	optdepends = python-s3fs: S3 support
 	optdepends = python-gcsfs: Google Cloud Storage fs support
 	optdepends = python-zarr
-	source = python-dask-2.7.0.tar.gz::https://github.com/dask/dask/archive/2.7.0.tar.gz
-	sha256sums = 33778929ed878f1aaebfc937c3721d3d21eddbce660479aef3a3608035d4012e
+	source = python-dask-2.8.0.tar.gz::https://github.com/dask/dask/archive/2.8.0.tar.gz
+	sha256sums = eeaca21cb925faef7d142031bbf9eecc25546defc57b9c7bc899b6febe996583
 
 pkgname = python-dask
 
