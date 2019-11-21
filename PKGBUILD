@@ -2,7 +2,7 @@
 pkgname=gruvbox-material-neosyn-git
 pkgdesc="Gruvbox with Material Palette -- neosyn branch"
 pkgrel=1
-pkgver=v0.3.3.r12.g57e2167
+pkgver=v0.3.3.r19.gcac9721
 arch=('any')
 url="https://github.com/sainnhe/gruvbox-material"
 license=('MIT' 'Anti-996')
@@ -22,6 +22,7 @@ pkgver() {
 package() {
   cd "$srcdir/$_pkgname"
   git checkout neosyn
+  git pull origin neosyn
   install -Dm644 colors/gruvbox-material.vim "$pkgdir/usr/share/vim/vimfiles/colors/gruvbox-material.vim"
   install -Dm644 doc/gruvbox-material.txt "$pkgdir/usr/share/vim/vimfiles/doc/gruvbox-material.txt"
   install -Dm755 ${srcdir}/${_pkgname}/autoload/airline/themes/gruvbox_material.vim ${pkgdir}/usr/share/vim/vimfiles/autoload/airline/themes/gruvbox_material.vim
