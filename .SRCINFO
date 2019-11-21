@@ -1,8 +1,8 @@
 pkgbase = ayatana-ido
 	pkgdesc = Ayatana Indicator Display Objects
 	pkgver = 0.4.4
-	pkgrel = 2
-	url = https://github.com/AyatanaIndicators
+	pkgrel = 3
+	url = https://github.com/AyatanaIndicators/ayatana-ido
 	arch = x86_64
 	license = LGPL2.1
 	license = LGPL3
