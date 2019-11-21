@@ -1,15 +1,27 @@
 pkgbase = barriers
 	pkgdesc = Compute local minima and energy barriers of a landscape
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://www.tbi.univie.ac.at/RNA/Barriers
 	arch = x86_64
 	arch = i686
 	license = Custom
+	depends = perl
 	optdepends = viennarna: Generate sets of suboptimal RNA secondary structures with RNAsubopt
 	optdepends = treekin: Compute folding dynamics using barriers generated transition rates
-	source = http://www.tbi.univie.ac.at/RNA/packages/source/Barriers-1.8.0.tar.gz
-	sha256sums = c1b16f5ac32def877677a5d8afa08d7fd16d3c4d4d1a2e683a5da09e4071feaa
+	source = http://www.tbi.univie.ac.at/RNA/packages/source/Barriers-1.8.1.tar.gz
+	sha256sums = 072c1bfdddf70bd638b068e2a651308cddccb5661478502537a55377e625cea0
 
 pkgname = barriers
+	provides = genPoHoLandscape
+	provides = crossrates.pl
+	provides = saddle2dot.pl
+	provides = saddle2gml.pl
+	provides = treeplot.pl
+
+pkgname = perl-rna-barrier
+	depends = perl
+	depends = perl-rna
+	provides = fix_bar.pl
+	provides = saddle.pl
 
