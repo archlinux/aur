@@ -7,7 +7,7 @@ pkgbase = ghq-bin
 	license = MIT
 	provides = ghq
 	conflicts = ghq
-	source = https://github.com/motemen/ghq/releases/download/v0.12.9/ghq_linux_amd64.zip
+	source = ghq-0.12.9_linux_amd64.zip::https://github.com/motemen/ghq/releases/download/v0.12.9/ghq_linux_amd64.zip
 	sha1sums = 85d888b77367ef02114c5db1dd9fa320bdf8a5f6
 
 pkgname = ghq-bin

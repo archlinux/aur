@@ -2,7 +2,7 @@
 
 pkgname=ghq-bin
 pkgver=0.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote repository management made easy. Pre-compiled."
 arch=('x86_64')
 url="https://github.com/motemen/ghq"
@@ -11,7 +11,7 @@ depends=()
 provides=('ghq')
 conflicts=('ghq')
 
-source=("https://github.com/motemen/ghq/releases/download/v${pkgver}/${pkgname/-bin/}_linux_amd64.zip")
+source=("${pkgname/-bin/}-${pkgver}_linux_amd64.zip::https://github.com/motemen/ghq/releases/download/v${pkgver}/${pkgname/-bin/}_linux_amd64.zip")
 sha1sums=('85d888b77367ef02114c5db1dd9fa320bdf8a5f6')
 
 package() {
