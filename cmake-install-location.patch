@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index fd12cb7..5e74fe7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -32,7 +32,7 @@ if (WIN32)
+ endif()
+ 
+ if(UNIX AND NOT APPLE)
+-	install(TARGETS gbe_plus DESTINATION /usr/local/bin)
++	install(TARGETS gbe_plus DESTINATION bin)
+ 	install(FILES gbe.ini DESTINATION ${USER_HOME}/.gbe_plus/)
+ 	install(DIRECTORY data DESTINATION ${USER_HOME}/.gbe_plus/)
+ 	install(CODE "execute_process(COMMAND chown -R ${USER}:${USER} ${USER_HOME}/.gbe_plus)")

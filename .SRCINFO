@@ -1,0 +1,20 @@
+pkgbase = gbe-plus-git
+	pkgdesc = DMG/GBC/GBA emulator and experimental NDS emulator.
+	pkgver = r2502.d8b063b
+	pkgrel = 1
+	url = https://github.com/shonumi/gbe-plus
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = qt4
+	depends = sdl2_net
+	provides = gbe-plus=r2502.d8b063b
+	conflicts = gbe-plus
+	source = git+https://github.com/shonumi/gbe-plus.git
+	source = cmake-install-location.patch
+	sha256sums = SKIP
+	sha256sums = 98f2f2d2650b5a9c26dc4e7e19875ef802627fbe3b31455c9097fc09c07df237
+
+pkgname = gbe-plus-git
+
