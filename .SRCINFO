@@ -1,6 +1,6 @@
 pkgbase = teamviewer-latest
 	pkgdesc = All-In-One Software for Remote Support and Online Meetings
-	pkgver = "latest"
+	pkgver = latest
 	pkgrel = 1
 	url = http://www.teamviewer.com
 	install = teamviewer.install
