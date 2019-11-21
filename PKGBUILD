@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 
 pkgname=simg-tools
-pkgver=9.0.0_r39
+pkgver=10.0.0_r14
 pkgrel=1
 pkgdesc="Tools to handle/convert Android sparse image file (simg2img, append2simg, img2simg, simg2simg)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -21,16 +21,15 @@ build() {
 	cd "${srcdir}/core/libsparse"
 	g++ -c -o sparse_read.o sparse_read.cpp -Iinclude -I../base/include -lz
 	g++ -c -o stringprintf.o ../base/stringprintf.cpp -Iinclude -I../base/include
-	gcc -c -o sparse_crc32.o sparse_crc32.c -Iinclude -I../base/include
-	gcc -c -o sparse_crc32.o sparse_crc32.c -Iinclude -I../base/include
-	gcc -c -o backed_block.o backed_block.c -Iinclude -I../base/include
-	gcc -c -o output_file.o output_file.c -Iinclude -I../base/include
-	gcc -c -o sparse.o sparse.c -Iinclude -I../base/include
-	gcc -c -o sparse_err.o sparse_err.c -Iinclude -I../base/include
-	gcc -c -o simg2img.o simg2img.c -Iinclude -I../base/include
-	gcc -c -o append2simg.o append2simg.c -Iinclude -I../base/include
-	gcc -c -o img2simg.o img2simg.c -Iinclude -I../base/include
-	gcc -c -o simg2simg.o simg2simg.c -Iinclude -I../base/include
+	g++ -c -o sparse_crc32.o sparse_crc32.cpp -Iinclude -I../base/include
+	g++ -c -o backed_block.o backed_block.cpp -Iinclude -I../base/include
+	g++ -c -o output_file.o output_file.cpp -Iinclude -I../base/include
+	g++ -c -o sparse.o sparse.cpp -Iinclude -I../base/include
+	g++ -c -o sparse_err.o sparse_err.cpp -Iinclude -I../base/include
+	g++ -c -o simg2img.o simg2img.cpp -Iinclude -I../base/include
+	g++ -c -o append2simg.o append2simg.cpp -Iinclude -I../base/include
+	g++ -c -o img2simg.o img2simg.cpp -Iinclude -I../base/include
+	g++ -c -o simg2simg.o simg2simg.cpp -Iinclude -I../base/include -fpermissive
 	g++ -o simg2img simg2img.o sparse_crc32.o backed_block.o output_file.o sparse.o sparse_err.o sparse_read.o stringprintf.o -lz
 	g++ -o append2simg append2simg.o sparse_crc32.o backed_block.o output_file.o sparse.o sparse_err.o sparse_read.o stringprintf.o -lz
 	g++ -o img2simg -Iinclude img2simg.o sparse_crc32.o backed_block.o output_file.o sparse.o sparse_err.o sparse_read.o stringprintf.o -lz

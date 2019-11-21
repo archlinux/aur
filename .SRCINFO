@@ -1,6 +1,6 @@
 pkgbase = simg-tools
 	pkgdesc = Tools to handle/convert Android sparse image file (simg2img, append2simg, img2simg, simg2simg)
-	pkgver = 9.0.0_r39
+	pkgver = 10.0.0_r14
 	pkgrel = 1
 	url = https://android.googlesource.com/platform/system/core
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = simg-tools
 	license = Apache
 	makedepends = git
 	depends = zlib
-	source = git+https://android.googlesource.com/platform/system/core#tag=android-9.0.0_r39
+	source = git+https://android.googlesource.com/platform/system/core#tag=android-10.0.0_r14
 	md5sums = SKIP
 
 pkgname = simg-tools
