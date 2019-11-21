@@ -1,9 +1,9 @@
 # Maintainer: Stick <stick@stma.is>
 
-_pkg=geventhttpclient-wheels
-pkgname="python-$_pkg-git"
+_pkg=python-geventhttpclient-wheels
+pkgname="$_pkg-git"
 pkgver=1.3.1dev2.r0.g4d83606
-pkgrel=3
+pkgrel=4
 pkgdesc="A high performance, concurrent http client library for python with gevent"
 arch=('x86_64')
 url='https://github.com/locustio/geventhttpclient'
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python-certifi')
 makedepends=('git'
              'python-setuptools')
-provides=("python-$_pkg")
-conflicts=("pyhon-$_pkg")
+provides=("$_pkg")
+conflicts=("$_pkg")
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
