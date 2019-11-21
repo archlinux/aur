@@ -1,0 +1,23 @@
+pkgbase = python-pptk-git
+	pkgdesc = Python package for visualizing and processing 2-d/3-d point clouds
+	pkgver = r49.697c09a
+	pkgrel = 1
+	url = https://github.com/heremaps/pptk.git
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = patchelf
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = eigen
+	depends = intel-tbb
+	depends = python-numpy
+	depends = qt5-base
+	provides = python-pptk
+	source = git+https://github.com/heremaps/pptk.git
+	sha256sums = SKIP
+
+pkgname = python-pptk-git
+
