@@ -9,7 +9,7 @@ license=('GPL')
 
 arch=('i686' 'x86_64')
 depends=('postgresql' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt')
-makedepends=('git')
+makedepends=('git' 'llvm')
 conflicts=('postgis')
 provides=('postgis')
 
