@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.29.3
+pkgver=1.30.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -24,9 +24,11 @@ makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368')
-sha256sums=('05881a2890a3248f7d9e6b38de3784a07e42b1555bd783045976ccb8f42ae24f'
-            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
+        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368'
+        '0001-Update-bindgen.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Update-bindgen.patch?h=packages/firefox&id=08a9a094518eb248492fbc9980ada5993c4c2079')
+sha256sums=('adc64c38108cca995562528a5cce9bfe75888dbb42c1bb7d31f5ba970b9504fd'
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
+            '97cf9112c0e2fa1373220b7396265360f86efd4d96587a85eb2e269f7412ebe3')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -59,6 +61,11 @@ Exec=/usr/lib/cliqz/cliqz --private-window %u
 END
 
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
+
+  # Make it compile with Rust 1.39
+  patch -Np1 -i "$srcdir/0001-Update-bindgen.patch"
+  sed -i 's/0643459b6ebeeed83aecd7604f0ea29c06bea7ce6c1cd9acd4988d27ace1ec53/09bf0ef660a0add1768bd1158ec863b4b7ef7404cb43def2738307ec6423df1f/' \
+    third_party/rust/unicode-xid-0.1.0/.cargo-checksum.json
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i "$srcdir/0001-Use-remoting-name-for-GDK-application-names.patch"
@@ -177,11 +184,15 @@ pref("intl.locale.requested", "");
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
-  _vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
-  install -D -m644 vendor.js "$_vendorjs"
+  local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
+  install -D -m644 vendor.js "$vendorjs"
 
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -D -m644 mozilla-release/toolkit/mozapps/installer/linux/rpm/mozilla.desktop \
           "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
+
+# Local Variables:
+# sh-basic-offset: 2
+# End:
