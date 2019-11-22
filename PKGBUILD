@@ -6,7 +6,7 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=('any')
 url="https://github.com/wting/autojump"
@@ -14,6 +14,7 @@ license=('GPL3')
 depends=('python')
 source=($pkgname-$pkgver.tar.gz::https://github.com/wting/$pkgname/archive/release-v$pkgver.tar.gz)
 sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
+install=readme.install
 
 prepare() {
   cd $pkgname-release-v$pkgver
@@ -27,9 +28,9 @@ package() {
                                --prefix 'usr/' \
                                --zshshare 'usr/share/zsh/site-functions'
 
-  cd "${pkgdir}"/usr/share/$pkgname
+  cd "${pkgdir}/usr/share/$pkgname"
   for i in $pkgname.*
-    do ln -s /usr/share/$pkgname/$i "${pkgdir}"/etc/profile.d/$i
+    do ln -s "/usr/share/$pkgname/$i" "${pkgdir}/etc/profile.d/$i"
   done
 
   # FS#60929
@@ -43,9 +44,9 @@ package() {
   mv "${pkgdir}"/etc/profile.d/$pkgname.fish "${pkgdir}"/usr/share/fish/completions
 
   # https://github.com/joelthelion/autojump/pull/339
-  sed -i "s:/usr/local/:/usr/:g" "${pkgdir}"/etc/profile.d/$pkgname.sh
-  sed -i "s:/build/autojump/pkg/autojump/:/:g" "${pkgdir}"/etc/profile.d/$pkgname.sh
+  sed -i "s:/usr/local/:/usr/:g" "${pkgdir}/etc/profile.d/$pkgname.sh"
+  sed -i "s:/build/autojump/pkg/autojump/:/:g" "${pkgdir}/etc/profile.d/$pkgname.sh"
 
   # FS#43762
-  sed -i '27,31d' "${pkgdir}"/etc/profile.d/$pkgname.sh
+  sed -i '27,31d' "${pkgdir}/etc/profile.d/$pkgname.sh"
 }
