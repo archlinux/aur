@@ -1,14 +1,14 @@
 _pkgname=zigbee2mqtt
 pkgname=zigbee2mqtt-git
-pkgver=1.5.1.r0.gac3b924
+pkgver=1.7.1.r0.gb459c35
 pkgrel=1
 pkgdesc="A Zigbee to MQTT bridge for domotic devices."
 arch=('any')
 url="https://www.zigbee2mqtt.io"
 license=('GPLv3')
-depends=('nodejs>=10.0')
+depends=('nodejs>=10.0', 'npm')
 conflicts=('zigbee2mqtt')
-makedepends=('npm' 'git')
+makedepends=('git')
 optdepends=(
   'cc-tool: To flash Texas Instruments CC2531 debugger'
   'mosquitto: MQTT broker')
