@@ -1,12 +1,10 @@
 pkgbase = mfcoin-bin
 	pkgdesc = MFCoin is a digital currency and blockchain service platform.
-	pkgver = 3.0.0.2
-	pkgrel = 20706322
+	pkgver = 0.8.0
+	pkgrel = 0
 	url = https://mfcoin.net/
 	arch = x86_64
 	license = GPL3
-	makedepends = wget
-	makedepends = jq
 	depends = libevent>=2.1.8
 	depends = qt5-base
 	depends = dbus>=1.10.14
@@ -14,13 +12,17 @@ pkgbase = mfcoin-bin
 	depends = expat>=2.2.0
 	depends = freetype2>=2.7.1
 	depends = protobuf
+	depends = libdb-4.8
 	provides = mfcoin
 	provides = mfcoin-daemon
-	conflicts = mfcoin-cli
 	conflicts = mfcoin-git
-	conflicts = mfcoin-cli-git
-	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.3.0.0.2/mfcoin-0.7.10-linux.zip
-	sha256sums_x86_64 = 9fe30f4e2143fc1ffd3060b82c959347f81533fab0836d72ed127d0f57619373
+	conflicts = mfcoin
+	source_x86_64 = https://github.com/MFrcoin/MFCoin/releases/download/v.0.8.0.0/mfcoin-0.8.0-linux.zip
+	source_x86_64 = mfcoin.desktop
+	source_x86_64 = mfcoin.svg
+	sha256sums_x86_64 = bc71c94d74465569ce387401240944165704733ce7a0b66bf2349b6e3d9db0f9
+	sha256sums_x86_64 = 6e66f05d3c794cacbb1858b0578737572fa5ce8bae4a73e1b6d71adfc0f8765c
+	sha256sums_x86_64 = 0f1076e814656a476de97cf7c3773be8f3788a4ca3c13e64d800ad829571edd6
 
 pkgname = mfcoin-bin
 
