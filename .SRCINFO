@@ -10,7 +10,6 @@ pkgbase = gthumb-openexr-extension
 	depends = gnome-common
 	depends = gtk3
 	depends = gconf
-	depends = ilmbase
 	depends = openexr
 	provides = gthumb-openexr-extension=1.0
 	source = gthumb-openexr-extension::git+https://github.com/yama-chan/gthumb-openexr-extension.git
