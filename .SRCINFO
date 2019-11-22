@@ -1,22 +1,16 @@
 pkgbase = kata-containers
 	pkgdesc = Lightweight virtual machines for containers
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	noextract = kata-runtime-1.9.2-7.1.x86_64.rpm
-	noextract = kata-proxy-bin-1.9.2-7.1.x86_64.rpm
-	noextract = kata-shim-bin-1.9.2-7.1.x86_64.rpm
-	noextract = kata-ksm-throttler-1.9.2-7.1.x86_64.rpm
-	noextract = kata-containers-image-1.9.2-7.1.x86_64.rpm
-	noextract = kata-linux-container-4.19.75.54-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-runtime-1.9.2-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-proxy-bin-1.9.2-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-shim-bin-1.9.2-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-ksm-throttler-1.9.2-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-containers-image-1.9.2-7.1.x86_64.rpm
-	source = http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-linux-container-4.19.75.54-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-runtime-1.9.2-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-proxy-bin-1.9.2-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-shim-bin-1.9.2-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-ksm-throttler-1.9.2-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-containers-image-1.9.2-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64/kata-linux-container-4.19.75.54-7.1.x86_64.rpm
 	sha256sums = b5f47b9d905d4d265b6ded744a0413b1a5b1c24b4adec66449095afa5ab8e6ee
 	sha256sums = 772500f64cfb7cd046e4d46c440e00bab665a276bf4d2cfea6016a7141ae5434
 	sha256sums = 60615672c1aa926fafc591abd0a78302b7b78fea2f0e6f2dd810746dd5bc8b6b
@@ -32,6 +26,8 @@ pkgname = kata-runtime
 	depends = kata-ksm-throttler=1.9.2
 	depends = kata-containers-image=1.9.2
 	depends = kata-linux-container=1.9.2
+	optdepends = nemu
+	optdepends = firecracker-git
 
 pkgname = kata-proxy
 
