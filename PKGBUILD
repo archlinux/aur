@@ -8,7 +8,7 @@ url="http://icculus.org/smpeg"
 license=("LGPL")
 makedepends=(mingw-w64-configure subversion)
 depends=(mingw-w64-sdl)
-options=(staticlibs !strip !buildflags)
+options=('!buildflags' '!strip' 'staticlibs')
 source=("smpeg-$pkgver::svn://svn.icculus.org/smpeg/tags/release_${pkgver//./_}")
 sha256sums=('SKIP')
 
@@ -16,6 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd "$srcdir/smpeg-$pkgver"
+	sed -i "s|-version-info|-no-undefined -version-info|g" Makefile.am
   ./autogen.sh
 }
 
@@ -24,7 +25,6 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     CFLAGS+=" -Wno-error=narrowing"
-    LDFLAGS+=" -lstdc++"
     ${_arch}-configure \
       --disable-sdltest \
       --disable-gtk-player \
@@ -32,8 +32,7 @@ build() {
       --disable-opengl-player \
       --with-sdl-prefix=/usr/${_arch} \
       --without-x
-    make 
-    ${_arch}-gcc -shared .libs/*.o -lSDL -lstdc++ -o smpeg.dll -Xlinker --out-implib -Xlinker libsmpeg.dll.a
+    make
     popd
   done
 }
@@ -43,8 +42,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/smpeg-${pkgver}/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    install -m644 smpeg.dll "$pkgdir/usr/$_arch/bin/"
-    install -m644 libsmpeg.dll.a "$pkgdir/usr/$_arch/lib/"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     rm -r "$pkgdir/usr/${_arch}/share"

@@ -9,9 +9,9 @@ pkgbase = mingw-w64-smpeg
 	makedepends = mingw-w64-configure
 	makedepends = subversion
 	depends = mingw-w64-sdl
-	options = staticlibs
-	options = !strip
 	options = !buildflags
+	options = !strip
+	options = staticlibs
 	source = smpeg-0.4.5::svn://svn.icculus.org/smpeg/tags/release_0_4_5
 	sha256sums = SKIP
 
