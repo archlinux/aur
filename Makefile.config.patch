@@ -1,0 +1,29 @@
+--- src/go4-6.0.0/Makefile.config	2019-10-25 12:45:46.709957747 +0200
++++ Makefile.config	2019-11-22 18:15:33.517213237 +0100
+@@ -130,7 +130,7 @@
+ 
+ QMAKEOPTFLAG  = "CONFIG+=release"
+ 
+-QMAKEFLAGS    = "QMAKE_CXXFLAGS=$(WARNINGS) $(QTGO4DEFINITIONS)" "QMAKE_CXXFLAGS_RELEASE = -O2" "QMAKE_CFLAGS_RELEASE = -O2"
++QMAKEFLAGS    = "QMAKE_CXXFLAGS=$(WARNINGS) $(QTGO4DEFINITIONS) -std=c++17" "QMAKE_CXXFLAGS_RELEASE = -O2" "QMAKE_CFLAGS_RELEASE = -O2"
+ 
+ ifeq ($(GO4_OS),Win32)
+   QMAKEFLAGS   += "INCLUDEPATH+=$(shell cygpath -w $(ROOTINCPATH))" "DEPENDPATH+=$(shell cygpath -w $(ROOTINCPATH))"
+@@ -277,7 +277,7 @@
+                -lMinuit \
+                 $(if $(USESPECTRUM),-lSpectrum,) \
+                 $(if $(USEXMLIO),-lXMLIO,) \
+-               -L$(GO4LIBPATH)
++               -Llib
+ 
+ ifneq ($(USERT),false)
+ LIBS_BASESET += -lrt
+@@ -296,7 +296,7 @@
+                 $(if $(USEDIM),-L$(DIMLIBPATH) -ldim,) \
+                 $(if $(LINKX11),-L/usr/X11R6/lib/ -lX11,) \
+                 $(if $(GO4_X11),-L/usr/lib/ -lX11,) \
+-                -L$(GO4LIBPATH) \
++                -L../../lib \
+                 $(call go4ldname,Go4Fit) \
+                 $(call go4ldname,Go4Base) \
+                 $(call go4ldname,Go4ThreadManager) \

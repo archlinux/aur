@@ -3,15 +3,17 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=5.3.2
-pkgrel=3
+pkgver=6.0.0
+pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
 depends=('root' 'qt5-base')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
-source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-sha256sums=('eca243e519bf5903fee8e47f9fdbab0713075d4eb2ea14eb805946938cb544bf')
+source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz"
+       "Makefile.config.patch")
+sha256sums=('28e3ecccbbde5a9168e85d6b6b5abaa147c0d65ea70332cdaaa80050ad61c55f'
+            'd03fd394378e4ee97d2d17071010df046f1e9346d7b57585a694410a25bc5883')
 
 prepare() {
 
@@ -25,12 +27,9 @@ prepare() {
   sed -i 's#\$(GO4LIBPATH)#$(DESTDIR)/&#g' Makefile
   sed -i 's#\$(GO4TOPPATH)#$(DESTDIR)/&#g' Makefile
 
-  sed -i 's#QMAKE_CXXFLAGS=#& -std=c++17#g' Makefile.config
+  # something change and the libraries are not found now at compilation time
+  patch -Np2 < ${srcdir}/Makefile.config.patch
 
-  # The line INCPATH in src/go4-5.3.2/qt4/Go4UserGUI/Makefile.qt does
-  # not include respect USERGUI4_QFLAGS = GO4INCDIR=../../include
-  cp ./qt4/Go4GUI/QGo4Widget.h     ./qt4/Go4UserGUI/
-  cp ./qt4/Go4QtRoot/QRootCanvas.h ./qt4/Go4UserGUI/
 }
 
 build() {
@@ -39,9 +38,6 @@ build() {
   make clean-bin
   make clean
 
-  ##
-  #  rpath=false seemed to reduce que volume of warnings with ROOT6
-  ##
   make prefix=/usr \
        withqt=5 \
        GO4_OS=Linux \
@@ -50,6 +46,13 @@ build() {
        debug=1 \
        nodepend=1 \
        all || return 1
+
+  ## options not explored
+  # noweb=1
+  # nox11=1
+
+  # options known not to work Nov/22/2019
+  # designer=1
 
 }
 
