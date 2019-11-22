@@ -4,7 +4,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=yabasic
-pkgver=2.84.3
+pkgver=2.85.0
 pkgrel=1
 pkgdesc="Yet Another Basic"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://www.yabasic.de/"
 depends=('libx11' 'ncurses')
 makedepends=('libxt')
 source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
-sha256sums=('a78bfa48f9f7d3469ebbccdb4128f1618355b1dbf9d60eca679eb461da6bbbcd')
+sha256sums=('0598f25b4fa8320a1367d3ef46c95345df710434d10a6f647c5b4ad244be0ded')
 
 build() {
   cd $pkgname-$pkgver
@@ -21,7 +21,6 @@ build() {
   #disable ffi because ffi.h cannot be found on Archlinux ?!
   make
 }
-
 
 check() {
   cd $pkgname-$pkgver
