@@ -1,0 +1,17 @@
+#!/bin/sh -
+
+# Any copyright is dedicated to the Public Domain.
+# https://creativecommons.org/publicdomain/zero/1.0/
+
+# Helper for dealing with incompatibility with Debian hostname:
+# hostname: invalid option -- 'I'
+
+# -I, --all-ip-addresses all addresses for the host
+
+if [ x"$1" = x"-I" ]; then
+    ip -o address show up scope global | \
+        grep -Po '(?<=inet |inet6 )[^/]+' | \
+        xargs echo
+else
+    exec /usr/bin/hostname "$@"
+fi

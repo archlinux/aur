@@ -9,6 +9,7 @@ ProtectSystem=full
 ProtectHome=true
 RuntimeDirectory=fr24feed
 ExecStart=/usr/bin/fr24feed --config-file=/etc/fr24feed.ini --logfile=/var/log/fr24feed.log
+Environment=PATH=/usr/lib/flightradar24:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 
 [Install]
 WantedBy=network.target
