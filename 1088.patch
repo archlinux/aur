@@ -1,0 +1,23 @@
+From e622516c1b4f1c54b53c55126ec5b231432500e7 Mon Sep 17 00:00:00 2001
+From: William Wold <wm@wmww.sh>
+Date: Fri, 22 Nov 2019 12:32:28 -0500
+Subject: [PATCH] Forward declare wl types to fix build on Arch
+
+---
+ include/test/mir/test/doubles/mock_egl.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/include/test/mir/test/doubles/mock_egl.h b/include/test/mir/test/doubles/mock_egl.h
+index 6aa5ca990a..8e942fd9d6 100644
+--- a/include/test/mir/test/doubles/mock_egl.h
++++ b/include/test/mir/test/doubles/mock_egl.h
+@@ -35,6 +35,9 @@
+ #include <GLES2/gl2.h>
+ #include <GLES2/gl2ext.h>
+ 
++struct wl_display;
++struct wl_resource;
++
+ namespace mir
+ {
+ namespace test

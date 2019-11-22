@@ -1,7 +1,7 @@
 pkgbase = mir-git
 	pkgdesc = Canonical's display server
 	pkgver = 1.5.0+120+g5fdc44755a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mir-server.io
 	arch = x86_64
 	arch = i686
@@ -51,9 +51,11 @@ pkgbase = mir-git
 	provides = mir
 	conflicts = mir
 	source = git+https://github.com/MirServer/mir.git
-	source = https://raw.githubusercontent.com/capnproto/capnproto/04fd66e2992a3ed38d686642a3c479a7f3e131c9/c%2B%2B/cmake/FindCapnProto.cmake
+	source = https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1087.patch
+	source = https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1088.patch
 	sha256sums = SKIP
-	sha256sums = 83153402ea0220a9ed3f9d2c2c157eb49fedf340f368cd8173f0966b3fbf2647
+	sha256sums = b86c2359309b951fdb574de9381d2fc879709a4be81d22b9f6cb10198c26b3a4
+	sha256sums = 1e1a1b188db2fa540c200bf66e15473230f91cdadffa3040985ec4b7503ce2bd
 
 pkgname = mir-git
 

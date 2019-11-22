@@ -4,7 +4,7 @@
 pkgname=mir-git
 _pkgname=mir
 pkgver=1.5.0+120+g5fdc44755a
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686 armv7h aarch64)
@@ -19,9 +19,11 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos'
             'qtubuntu: opt requirement for miral demos')
 source=('git+https://github.com/MirServer/mir.git'
-        'https://raw.githubusercontent.com/capnproto/capnproto/04fd66e2992a3ed38d686642a3c479a7f3e131c9/c%2B%2B/cmake/FindCapnProto.cmake')
+        'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1087.patch'
+        'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1088.patch')
 sha256sums=('SKIP'
-            '83153402ea0220a9ed3f9d2c2c157eb49fedf340f368cd8173f0966b3fbf2647')
+            'b86c2359309b951fdb574de9381d2fc879709a4be81d22b9f6cb10198c26b3a4'
+            '1e1a1b188db2fa540c200bf66e15473230f91cdadffa3040985ec4b7503ce2bd')
 
 BUILD_DIR=build
 
@@ -29,7 +31,8 @@ prepare() {
   cd ${_pkgname}
   git submodule init
   git submodule update
-  cp ../FindCapnProto.cmake cmake/
+  patch -Np1 -i "${srcdir}/1087.patch"
+  patch -Np1 -i "${srcdir}/1088.patch"
 }
 
 pkgver() {

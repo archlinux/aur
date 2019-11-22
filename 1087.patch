@@ -1,0 +1,23 @@
+From c13312017a061a31188510417885014e7778c7e7 Mon Sep 17 00:00:00 2001
+From: William Wold <wm@wmww.sh>
+Date: Fri, 22 Nov 2019 13:03:00 -0500
+Subject: [PATCH] Replace DMESA_EGL_NO_X11_HEADERS with DEGL_NO_X11 (fixes
+ 1086)
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 588b14c7f2..df102018ad 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -213,7 +213,7 @@ add_definitions(
+ )
+ endif(MIR_DISABLE_EPOLL_REACTOR)
+ 
+-add_definitions(-DMESA_EGL_NO_X11_HEADERS)
++add_definitions(-DEGL_NO_X11)
+ 
+ pkg_check_modules(WAYLAND_EGLSTREAM wayland-eglstream)
+ 
