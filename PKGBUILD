@@ -72,7 +72,7 @@ SPIRV-Headers.git#commit=661ad91124e6af2272afd00f804d8aa276e17107"
 "gn::https://chromium-gn.storage-download.googleapis.com/2f27ff0b6118e5886df976da5effa6003d19d1ce"
 )
 sha256sums=('3539c49da702d1ade71d6b5e5a3c495dd5d42c58ae88308b4a3288f93ac522bd'
-            'c258fa38a0e0bd575f0bd744c4c3b60cf8d59d596c7572f84bd392e1c5e49b4f'
+            'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'
             'SKIP'
