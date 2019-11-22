@@ -1158,7 +1158,7 @@ index 51494741aa..a8d051f00e 100644
          """
          return hash(self._monomial)
 diff --git a/src/sage/parallel/map_reduce.py b/src/sage/parallel/map_reduce.py
-index 0fb6091cbd..3ba04546c7 100644
+index 0fb6091cbd..c2f7e77727 100644
 --- a/src/sage/parallel/map_reduce.py
 +++ b/src/sage/parallel/map_reduce.py
 @@ -1396,7 +1396,7 @@ class RESetMapReduce(object):
@@ -1166,7 +1166,7 @@ index 0fb6091cbd..3ba04546c7 100644
              sage: EX.setup_workers(2)
              sage: EX.random_worker()
 -            <RESetMapReduceWorker(RESetMapReduceWorker-..., initial)>
-+            <RESetMapReduceWorker name='RESetMapReduceWorker-... initial)>
++            <RESetMapReduceWorker name='RESetMapReduceWorker-... initial>
              sage: EX.random_worker() in EX._workers
              True
  
@@ -1175,7 +1175,7 @@ index 0fb6091cbd..3ba04546c7 100644
              sage: EX = RESetMPExample()
              sage: RESetMapReduceWorker(EX, 200, True)
 -            <RESetMapReduceWorker(RESetMapReduceWorker-..., initial)>
-+            <RESetMapReduceWorker name='RESetMapReduceWorker-... initial)>
++            <RESetMapReduceWorker name='RESetMapReduceWorker-... initial>
          """
          mp.Process.__init__(self)
          self._iproc = iproc
@@ -1390,6 +1390,28 @@ index 07c2318b25..756c7054f1 100644
          """
          P = copy(self)
          P.normalize_coordinates()
+diff --git a/src/sage/schemes/riemann_surfaces/riemann_surface.py b/src/sage/schemes/riemann_surfaces/riemann_surface.py
+index a1cb20567b..c296ca8593 100644
+--- a/src/sage/schemes/riemann_surfaces/riemann_surface.py
++++ b/src/sage/schemes/riemann_surfaces/riemann_surface.py
+@@ -344,7 +344,7 @@ class RiemannSurface(object):
+     EXAMPLES::
+ 
+         sage: from sage.schemes.riemann_surfaces.riemann_surface import RiemannSurface
+-        sage: R.<z,w> = QQ[]
++        sage: 
+         sage: f = w^2 - z^3 + 1
+         sage: RiemannSurface(f)
+         Riemann surface defined by polynomial f = -z^3 + w^2 + 1 = 0, with 53 bits of precision
+@@ -354,7 +354,7 @@ class RiemannSurface(object):
+         sage: S = RiemannSurface(f, prec=100); S
+         Riemann surface defined by polynomial f = -z^3 + w^2 + 1 = 0, with 100 bits of precision
+         sage: S.riemann_matrix() #abs tol 0.00000001
+-        [0.500000000000000000000000... + 0.866025403784438646763723...*I]
++        [-0.500000000000000000000000... + 0.866025403784438646763723...*I]
+ 
+     We can also work with Riemann surfaces that are defined over fields with a
+     complex embedding, but since the current interface for computing genus and
 diff --git a/src/sage/schemes/toric/homset.py b/src/sage/schemes/toric/homset.py
 index 4bff92bcb0..eb2a784edc 100644
 --- a/src/sage/schemes/toric/homset.py
