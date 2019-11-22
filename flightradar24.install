@@ -1,7 +1,4 @@
 post_install() {
-  systemd-sysusers flightradar24.conf
-  systemd-tmpfiles --create flightradar24.conf
-
   echo "==> If you install on Raspberry-pi, you need to install dump1090-git from AUR"
   echo "==> To signup and configure fr24feed, run"
   echo "==> "

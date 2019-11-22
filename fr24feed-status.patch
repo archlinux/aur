@@ -1,0 +1,15 @@
+--- usr/bin/fr24feed-status
++++ usr/bin/fr24feed-status
+@@ -1,6 +1,11 @@
+ #!/bin/bash
+ 
+-. /lib/lsb/init-functions
++function log_failure_msg {
++    echo $@
++}
++function log_success_msg {
++    echo $@
++}
+ 
+ MONITOR_FILE=/dev/shm/decoder.txt
+ 
