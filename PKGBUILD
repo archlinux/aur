@@ -1,8 +1,8 @@
 # Maintainer: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=autopass.cr
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
@@ -11,13 +11,13 @@ depends=(pass rofi xdotool gpgme gc libyaml libevent)
 makedepends=(crystal shards rust git python)
 
 source=(
-  "https://gitlab.com/repomaa/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
-  "https://gitlab.com/repomaa/autopass.cr/uploads/52cc5f7f2ff2f2e492e054eb29930e8f/autopass.cr-v0.2.0.tar.gz.sig"
+  'https://gitlab.com/repomaa/autopass.cr/uploads/6f6ae1e1c3b8b6d85cf9e5d1a1a1a552/autopass.cr-v0.2.1.tar.gz'
+  'https://gitlab.com/repomaa/autopass.cr/uploads/59e4404c98b1daac1644438359353cf3/autopass.cr-v0.2.1.tar.gz.sig'
   'autopass.socket'
   'autopass.service'
 )
 md5sums=(
-  470db1b54a4d846e55ce941022e87bf5
+  4b42151f74cac439d5c9173083d60964
   SKIP
   SKIP
   SKIP
