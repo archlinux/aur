@@ -1,8 +1,9 @@
 pkgbase = arduino-pro-ide
 	pkgdesc = IDE for Arduino development.
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arduino/arduino-pro-ide
+	install = arduino-pro-ide.install
 	arch = x86_64
 	license = EPLv2
 	depends = wget
