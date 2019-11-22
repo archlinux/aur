@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-	cd "$srcdir/smpeg-$pkgver"
-	sed -i "s|-version-info|-no-undefined -version-info|g" Makefile.am
+  cd "$srcdir/smpeg-$pkgver"
+  sed -i "s|-version-info|-no-undefined -version-info|g" Makefile.am
   ./autogen.sh
 }
 
