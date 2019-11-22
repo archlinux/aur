@@ -1,7 +1,7 @@
 # Maintainer: snafu
 pkgname=(env-modules)
-pkgver=4.3.1
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -18,11 +18,10 @@ replaces=(env-modules)
 options=()
 install=env-modules.install
 changelog=
-source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz" moduleshome.patch)
+source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-md5sums=('70b5a0f6bf8771a26435661794e78b12'
-         '3a3b6ba0ac0766be9ba601223baaf107')
+md5sums=('f9dfb6dff19bd6fe3b67a6c8413f0e0d')
 
 # Install locations:
 install_prefix=/usr
@@ -31,13 +30,6 @@ profiled="/etc/profile.d"
 moduledir=modules
 
 backup=("${config_path:1}/${moduledir}/init/modulerc")
-
-
-prepare() {
-    cd "modules-$pkgver"
-
-    patch -p1 < ../moduleshome.patch
-}
 
 build() {
 	cd "modules-$pkgver"
@@ -84,4 +76,3 @@ package() {
   ln -s ./perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
   ln -s ./python.py ${pkgdir}${config_path}/${moduledir}/init/python
 }
-

@@ -1,7 +1,7 @@
 pkgbase = env-modules
 	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
-	pkgver = 4.3.1
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://sourceforge.net/projects/modules/
 	install = env-modules.install
 	arch = i686
@@ -12,10 +12,8 @@ pkgbase = env-modules
 	conflicts = env-modules
 	replaces = env-modules
 	backup = etc/modules/init/modulerc
-	source = https://sourceforge.net/projects/modules/files/Modules/modules-4.3.1/modules-4.3.1.tar.gz
-	source = moduleshome.patch
-	md5sums = 70b5a0f6bf8771a26435661794e78b12
-	md5sums = 3a3b6ba0ac0766be9ba601223baaf107
+	source = https://sourceforge.net/projects/modules/files/Modules/modules-4.4.0/modules-4.4.0.tar.gz
+	md5sums = f9dfb6dff19bd6fe3b67a6c8413f0e0d
 
 pkgname = env-modules
 
