@@ -31,7 +31,7 @@ source=('git+https://github.com/rembo10/headphones.git'
 sha256sums=('SKIP'
             '60ef2bc4c0bc1d23d4fe43202759cb24d9f456bd00cb8841ee11b2c4cbce917e'
             '348abc0627d63762a97655b5893c306e5b923857be5d0b876e9df5fea7ef9ed9'
-            'f1e537c6853c3d641ec2266283b726a8fa5ed8f78c4325d295e66bb4d4868585')
+            'ff2a4be9594518b670dafe80023772affc5e8cca85bb4c95972c7c14c72453c2')
 
 pkgver() {
   cd "${srcdir}/headphones"
