@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.deb::https://dl.ubnt.com/firmwares/ufv/v${pkgver}/
 sha256sums=('3edc8d7dd86327541a8f4e8feaccab501617a67c56684a296dd4fc1caa9f6003'
             '9df948b046347c25e7c83e4837284ef63d9f8d3f28daa20a6c36e203e3ebfdb3'
             '90fb2f826a70d3b7815cd6a2253c2af6754c17504be28ef92ee223bd02093730'
-            'c31918e3ef0eb55f44639af0ae5db029654230b84d5ae0c55c18fbb2c80dfc70'
+            '1ba38968cd5822b336bcffde0a150ea8c2358471abbcbde641de1ad9555bbff1'
             '9e04a0ffe891fbda0ae0f7a7f3edbcc59118dfc4bd4fea19c1b44954579a3952')
             
 package() {
