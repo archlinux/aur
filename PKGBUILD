@@ -62,7 +62,8 @@ makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _bfq_rev_path="bfq-reverts-sep"
-_bfq_rev_patch="0001-Revert-block-bfq-push-up-injection-only-after-settin.patch"
+_bfq_rev_patch_1="0001-Revert-block-bfq-push-up-injection-only-after-settin.patch"
+_bfq_rev_patch_2="0002-Revert-block-bfq-deschedule-empty-bfq_queues-not-ref.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
 _bfq_rel="r2K191119"
@@ -72,7 +73,8 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patc
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_1}"
+        # "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_2}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -339,7 +341,7 @@ done
 
 sha512sums=('84eec92afff148295e6d6a2c47046e5a270c2934ad696f1102793f0566d32e7bd1ea1dc70a4be066cad9ede0a9a712a0a33fbc31f64b7440031c39c0e33acdd0'
             'SKIP'
-            'b6eb2c5ed7ea682c80494b6b62c2972155048d2d4b1f012a90866a283e14d32b324aa172ff69058e2f6d06d13226c8b36d16dea87d45e99bdaa9496cad9ff733'
+            'efcbf8d75018b601f92ed4a189db661c9805d2fcb5516053422129eed78aee3d219be6715e088455d31a8d407b78e33fa2981e7cbb17dd4ac2bd0655a5b7e7ef'
             'b23bdbadf79f89893ccea500dc29f501763103d581bdd744a1247046fc992b541a114448804d3e0260bcbcc8df07c3b79988905289c88899a16944619e907978'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
