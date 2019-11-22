@@ -1,7 +1,7 @@
 pkgbase = viper4linux-gui
 	pkgdesc = Official UI for Viper4Linux
-	pkgver = 1.12
-	pkgrel = 2
+	pkgver = 1.13
+	pkgrel = 1
 	url = https://github.com/ThePBone/Viper4Linux-GUI
 	arch = any
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = viper4linux-gui
 	depends = viper4linux
 	depends = qt5-base
 	depends = mesa
-	source = viper4linux-gui-1.12.tar.gz::https://github.com/ThePBone/Viper4Linux-GUI/archive/1.12.tar.gz
+	source = viper4linux-gui-1.13.tar.gz::https://github.com/ThePBone/Viper4Linux-GUI/archive/1.13.tar.gz
 	source = viper4linux-gui.desktop
-	sha256sums = 7e7243187412be7915739540f4a1812ce0f48af908cbf66ea7a4a716391801ff
+	sha256sums = f8b638f899f4622801ed96700ffc69256838871bae6808842d3e6c5cad4b81b9
 	sha256sums = 05a46b8ad3508e9275388d9255247cda09977eb8087fa5dd96d04bc25c17a77c
 
 pkgname = viper4linux-gui
