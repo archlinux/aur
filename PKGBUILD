@@ -2,7 +2,7 @@
 
 pkgname=cpupower-gui
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
 url="https://gitlab.com/vagnum08/cpupower-gui"
@@ -13,8 +13,15 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
 makedepends=('autoconf-archive')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}_${pkgver}.orig.tar.gz"::"https://github.com/vagnum08/cpupower-gui/archive/v${pkgver}.tar.gz")
-sha256sums=('8fd21c60bd6ea75f2a9b26a72ac6711465ba10c5461788cbdbde89b82e280e99')
+source=("${pkgname}_${pkgver}.orig.tar.gz"::"https://github.com/vagnum08/cpupower-gui/archive/v${pkgver}.tar.gz"
+               "fix-dbus.patch")
+sha256sums=('8fd21c60bd6ea75f2a9b26a72ac6711465ba10c5461788cbdbde89b82e280e99'
+            '86b689957b4f34b838c36731ab874acdbe84ee09242eab0bdcadf3550540965a')
+
+prepare() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    patch -Np1 -i ../fix-dbus.patch
+}
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
