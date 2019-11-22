@@ -22,7 +22,7 @@ source=('git+https://gitlab.com/LazyLibrarian/LazyLibrarian.git'
 
 sha256sums=('SKIP'
             '6963070cf23093213fc1230f1786a085f2d8e0f0cc8a206f72df23f7bd6b82a7'
-            '89af84719dfd504f5d05e7a80ec42c17588f1dd5615d194af5a12d5e1034ba1e'
+            'eeb4e0f6dc18f7077049a526c47c94408b49e6a2fa275faba3d1ae3fa2416a2c'
             '1e5ee6265af4e4d8beea3cec49cbdba6624a6169edee081aa03de32965d4729d')
 
 pkgver() {
