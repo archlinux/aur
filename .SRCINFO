@@ -8,6 +8,7 @@ pkgbase = element-git
 	makedepends = git
 	makedepends = pkgconf
 	depends = python
+	depends = python2
 	depends = boost
 	depends = freetype2
 	depends = libxext
