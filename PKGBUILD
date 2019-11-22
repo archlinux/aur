@@ -37,8 +37,8 @@ package() {
 
   # Clean up
   rm "${pkgdir}/opt/${pkgname}/XnView.desktop"
-  chmod 644 "${pkgdir}/opt/${_pkgname}"/xnview*.png
-  chmod 755 "${pkgdir}/opt/${_pkgname}/XnView"
+  chmod 644 "${pkgdir}/opt/${pkgname}"/xnview*.png
+  chmod 755 "${pkgdir}/opt/${pkgname}/XnView"
 }
 
 # vim:set ts=2 sw=2 et:
