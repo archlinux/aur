@@ -2,7 +2,7 @@
 # Contributor: Profpatsch <mail AT [nickname] DOT de>
 
 pkgname=gnome-keysign
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An easier way to sign OpenPGP keys over the local network or Bluetooth."
 arch=('any')
@@ -13,8 +13,8 @@ depends=('python' 'python-cairo' 'python-dbus' 'python-future' 'python-gobject' 
          'python-qrcode' 'python-requests' 'python-twisted' 'avahi' 'dbus'
          'gst-plugins-good' 'gst-plugins-bad' 'magic-wormhole' 'zbar')
 optdepends=('python-pybluez: Bluetooth support')
-makedepends=('git' 'python-setuptools' 'python-lxml')
-_commit=eaee3c48a870b5bb7d9e4645684fb149ec56dcf2  # tags/1.0.1
+makedepends=('git' 'python-setuptools' 'python-babel-glade')
+_commit=216c3677e68960afc517edc00529323e85909323  # 1.2.0 plus the bable-glade fix
 source=("git+https://gitlab.gnome.org/GNOME/gnome-keysign.git#commit=$_commit")
 sha256sums=('SKIP')
 
