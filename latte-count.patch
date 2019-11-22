@@ -2,8 +2,8 @@ diff --git a/src/sage/geometry/polyhedron/base_ZZ.py b/src/sage/geometry/polyhed
 index 268af9db0d..70d41dfa30 100644
 --- a/src/sage/geometry/polyhedron/base_ZZ.py
 +++ b/src/sage/geometry/polyhedron/base_ZZ.py
-@@ -170,7 +170,7 @@ class Polyhedron_ZZ(Polyhedron_base):
-             sage: p = P.ehrhart_polynomial(maxdet=5, verbose=True)  # optional - latte_int
+@@ -195,7 +195,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P._ehrhart_polynomial_latte(maxdet=5, verbose=True)  # optional - latte_int
              This is LattE integrale ...
              ...
 -            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd '--maxdet=5' /dev/stdin
@@ -11,8 +11,8 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p    # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -178,7 +178,7 @@ class Polyhedron_ZZ(Polyhedron_base):
-             sage: p = P.ehrhart_polynomial(dual=True, verbose=True)  # optional - latte_int
+@@ -203,7 +203,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P._ehrhart_polynomial_latte(dual=True, verbose=True)  # optional - latte_int
              This is LattE integrale ...
              ...
 -            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --dual /dev/stdin
@@ -20,8 +20,8 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p   # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -186,7 +186,7 @@ class Polyhedron_ZZ(Polyhedron_base):
-             sage: p = P.ehrhart_polynomial(irrational_primal=True, verbose=True)   # optional - latte_int
+@@ -211,7 +211,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P._ehrhart_polynomial_latte(irrational_primal=True, verbose=True)   # optional - latte_int
              This is LattE integrale ...
              ...
 -            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-primal /dev/stdin
@@ -29,8 +29,8 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p   # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -194,7 +194,7 @@ class Polyhedron_ZZ(Polyhedron_base):
-             sage: p = P.ehrhart_polynomial(irrational_all_primal=True, verbose=True)  # optional - latte_int
+@@ -219,7 +219,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+             sage: p = P._ehrhart_polynomial_latte(irrational_all_primal=True, verbose=True)  # optional - latte_int
              This is LattE integrale ...
              ...
 -            Invocation: count --ehrhart-polynomial '--redundancy-check=none' --cdd --irrational-all-primal /dev/stdin
@@ -38,7 +38,7 @@ index 268af9db0d..70d41dfa30 100644
              ...
              sage: p   # optional - latte_int
              1/2*t^2 + 3/2*t + 1
-@@ -206,7 +206,7 @@ class Polyhedron_ZZ(Polyhedron_base):
+@@ -231,7 +231,7 @@ class Polyhedron_ZZ(Polyhedron_base):
              ...
              RuntimeError: LattE integrale program failed (exit code 1):
              ...
@@ -46,7 +46,7 @@ index 268af9db0d..70d41dfa30 100644
 +            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd '--bim-bam-boum=19' /dev/stdin
              Unknown command/option --bim-bam-boum=19
          """
-         if self.is_empty():
+         # note: the options below are explicitely written in the function
 diff --git a/src/sage/interfaces/latte.py b/src/sage/interfaces/latte.py
 index 066cedd401..302b39910d 100644
 --- a/src/sage/interfaces/latte.py

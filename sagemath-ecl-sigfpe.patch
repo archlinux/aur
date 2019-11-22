@@ -2,7 +2,7 @@ diff --git a/src/sage/libs/ecl.pyx b/src/sage/libs/ecl.pyx
 index e408866..fa24ac0 100644
 --- a/src/sage/libs/ecl.pyx
 +++ b/src/sage/libs/ecl.pyx
-@@ -16,7 +16,7 @@ from __future__ import print_function, absolute_import
+@@ -15,7 +15,7 @@ from __future__ import print_function, absolute_import
  #adapted to work with pure Python types.
  
  from libc.stdlib cimport abort
@@ -11,7 +11,7 @@ index e408866..fa24ac0 100644
  from libc.signal cimport raise_ as signal_raise
  from posix.signal cimport sigaction, sigaction_t
  cimport cysignals.signals
-@@ -48,9 +48,14 @@ cdef extern from "eclsig.h":
+@@ -47,9 +47,14 @@ cdef extern from "eclsig.h":
      void ecl_sig_off()
      cdef sigaction_t ecl_sigint_handler
      cdef sigaction_t ecl_sigbus_handler
@@ -26,7 +26,7 @@ index e408866..fa24ac0 100644
  
  cdef cl_object string_to_object(char * s):
      return ecl_read_from_cstring(s)
-@@ -239,6 +244,7 @@ def init_ecl():
+@@ -238,6 +243,7 @@ def init_ecl():
      global ecl_has_booted
      cdef char *argv[1]
      cdef sigaction_t sage_action[32]
@@ -34,7 +34,7 @@ index e408866..fa24ac0 100644
      cdef int i
  
      if ecl_has_booted:
-@@ -258,6 +264,8 @@ def init_ecl():
+@@ -257,6 +263,8 @@ def init_ecl():
      for i in range(1,32):
          sigaction(i, NULL, &sage_action[i])
  
@@ -43,7 +43,7 @@ index e408866..fa24ac0 100644
      #initialize ECL
      ecl_set_option(ECL_OPT_SIGNAL_HANDLING_THREAD, 0)
      cl_boot(1, argv)
-@@ -265,8 +273,12 @@ def init_ecl():
+@@ -264,8 +272,12 @@ def init_ecl():
      #save signal handler from ECL
      sigaction(SIGINT, NULL, &ecl_sigint_handler)
      sigaction(SIGBUS, NULL, &ecl_sigbus_handler)
@@ -56,7 +56,7 @@ index e408866..fa24ac0 100644
      #verify that no SIGCHLD handler was installed
      cdef sigaction_t sig_test
      sigaction(SIGCHLD, NULL, &sig_test)
-@@ -277,6 +289,9 @@ def init_ecl():
+@@ -276,6 +288,9 @@ def init_ecl():
      for i in range(1,32):
          sigaction(i, &sage_action[i], NULL)
  
@@ -66,7 +66,7 @@ index e408866..fa24ac0 100644
      #initialise list of objects and bind to global variable
      # *SAGE-LIST-OF-OBJECTS* to make it rooted in the reachable tree for the GC
      list_of_objects=cl_cons(Cnil,cl_cons(Cnil,Cnil))
-@@ -320,7 +335,6 @@ def init_ecl():
+@@ -319,7 +334,6 @@ def init_ecl():
                      (values nil (princ-to-string cnd)))))
          """))
      safe_funcall_clobj=cl_eval(string_to_object(b"(symbol-function 'sage-safe-funcall)"))

@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.0.beta1.r0.g0f20b37ca8
+pkgver=9.0.beta6.r0.g232ae1bddc
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -42,17 +42,19 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
-        sagemath-rpy-3.patch)
+        sagemath-rpy-3.patch
+        sagemath-python-3.8.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
-            '1a82372a96ffd5e6d475b0e620935967ce5eb9b4484607d39da90824a77b07c4'
+            'dbf1f1d09decc6448ce443b5b60ed124a432761973bc0f4f08c9b5e34d968f9c'
             '1f2a34e15bf732ec8687c467a52e897615505dc3ddd792d811e8b6a7e19f1517'
-            '7fcb52e96935dccb0f958d37c2f4e3918392480b9af53e08562f6cba6c68cb94'
+            '9b2d87990db3045a83776e1ff527a31ce60a3361b08f5ec85fb1d45106982faa'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '961bfb5694b67d425d21240d71490cb71714b5207c23448c89be0966512ff8f9'
-            'a42f3b152b1aedb8abf16bc70971419919d1fe30328574e7fef8305f9d07d938'
+            '54ad11e22ef38ddcd77b289260d9a5fef6a34af24e028bdb179d7474df49ae8f'
+            'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
             '1336f8ce3ef2fbc7531da90b60b83cf8b7713cbf726cff6fdbbd30f085c31074'
-            '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495')
+            '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
+            '4550cb7b6449acd59beed80e75bb7a0abc62e2c9593f4b1ccdc3f8f711621994')
 
 pkgver() {
   cd sage
@@ -75,6 +77,8 @@ prepare(){
   patch -p1 -i ../sagemath-rpy-3.patch
 # Fix mathjax path
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
+# Python 3.8 support
+  patch -p1 -i ../sagemath-python-3.8.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209

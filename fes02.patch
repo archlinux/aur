@@ -34,7 +34,7 @@ index 40b9c23..d188cf0 100644
  non-linear.
  
  AUTHORS:
-@@ -71,7 +73,7 @@ from libc.stdint cimport uint64_t
+@@ -69,7 +71,7 @@ from libc.stdint cimport uint64_t
  cdef extern from "fes_interface.h":
      ctypedef int (*solution_callback_t)(void *, uint64_t)
  
@@ -43,7 +43,7 @@ index 40b9c23..d188cf0 100644
  
  
  from sage.rings.integer import Integer
-@@ -217,7 +217,7 @@ def exhaustive_search(eqs,  max_sols=Infinity, verbose=False):
+@@ -215,7 +215,7 @@ def exhaustive_search(eqs,  max_sols=Infinity, verbose=False):
  
      # ------- runs the library
      sig_on()

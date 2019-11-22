@@ -2,7 +2,7 @@ diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/functi
 index 87342e8..9a0d37d 100644
 --- a/src/sage/libs/singular/function.pyx
 +++ b/src/sage/libs/singular/function.pyx
-@@ -1258,7 +1258,7 @@ cdef class SingularFunction(SageObject):
+@@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
              Traceback (most recent call last):
              ...
              RuntimeError: error in Singular function call 'size':
@@ -11,7 +11,7 @@ index 87342e8..9a0d37d 100644
              sage: size('foobar', ring=P)
              6
  
-@@ -1667,17 +1667,17 @@ def singular_function(name):
+@@ -1666,17 +1666,17 @@ def singular_function(name):
          Traceback (most recent call last):
          ...
          RuntimeError: error in Singular function call 'factorize':
@@ -36,7 +36,7 @@ diff --git a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx 
 index 8f6576b477..deaf0f5769 100644
 --- a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
-@@ -447,7 +447,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -446,7 +446,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
              return True
          for i from 0 <= i < p_d-s_d:
              s_poly = singular_system("stest",s_poly,1,
@@ -45,7 +45,7 @@ index 8f6576b477..deaf0f5769 100644
              if P.monomial_divides(s_poly,p_poly):
                  return True
          return False
-@@ -601,7 +601,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -600,7 +600,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
          # we must put the polynomials into the same ring
          left._poly = A._current_ring(left._poly)
          right._poly = A._current_ring(right._poly)
@@ -54,7 +54,7 @@ index 8f6576b477..deaf0f5769 100644
          return FreeAlgebraElement_letterplace(A,left._poly*rshift, check=False)
  
      def __pow__(FreeAlgebraElement_letterplace self, int n, k):
-@@ -629,7 +629,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -628,7 +628,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
          q = p = self._poly
          cdef int i
          for i from 0<i<n:
