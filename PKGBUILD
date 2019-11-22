@@ -3,7 +3,7 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=folly
-pkgver=2019.10.21.00
+pkgver=2019.11.11.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -14,7 +14,7 @@ makedepends=('cmake' 'gcc')
 source=("https://github.com/facebook/$pkgname/archive/v${pkgver}.tar.gz"
 'gtest-1.7.0.zip::https://github.com/google/googletest/archive/release-1.7.0.zip'
 )
-md5sums=('90565957ed02996446ffa00050572a86'
+md5sums=('a3cab40efa5247b28089bd2934e196cf'
          'ef5e700c8a0f3ee123e2e0209b8b4961')
 
 prepare() {
