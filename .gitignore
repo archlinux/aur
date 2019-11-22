@@ -1,0 +1,4 @@
+asyncqt/
+pkg/
+src/
+*.tar*
