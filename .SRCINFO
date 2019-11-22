@@ -1,16 +1,16 @@
 pkgbase = lib32-lapack
 	pkgdesc = Linear Algebra PACKage (32-bit)
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
-	url = http://www.netlib.org/lapack
+	url = https://www.netlib.org/lapack
 	arch = x86_64
 	license = custom
 	makedepends = gcc-fortran
 	makedepends = lib32-gcc-libs
 	makedepends = cmake
 	makedepends = python
-	source = http://www.netlib.org/lapack/lapack-3.8.0.tar.gz
-	sha1sums = 55ac9d6be510883c5442c8aca967722cdf58fb29
+	source = lapack-3.9.0.tar.gz::https://github.com/Reference-LAPACK/lapack/archive/v3.9.0.tar.gz
+	sha1sums = 0451d180eed2b12b94aaae77e772d7573e87bec4
 
 pkgname = lib32-lapack
 	depends = lib32-blas

@@ -1,21 +1,21 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: orumin <dev at orum.in>
 
 pkgbase=lib32-lapack
 _basename=lapack
 pkgname=('lib32-lapack' 'lib32-blas' 'lib32-cblas' 'lib32-lapacke')
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
-url="http://www.netlib.org/lapack"
+url="https://www.netlib.org/lapack"
 pkgdesc="Linear Algebra PACKage (32-bit)"
 makedepends=('gcc-fortran' 'lib32-gcc-libs' 'cmake' 'python')
 arch=('x86_64')
 license=("custom")
-source=("http://www.netlib.org/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha1sums=('55ac9d6be510883c5442c8aca967722cdf58fb29')
+source=($_basename-$pkgver.tar.gz::"https://github.com/Reference-LAPACK/lapack/archive/v$pkgver.tar.gz")
+sha1sums=('0451d180eed2b12b94aaae77e772d7573e87bec4')
 
 build() {
-  install -d ${srcdir}/build
+  mkdir -p ${srcdir}/build
   cd ${srcdir}/build
 
   export FFLAGS='-m32'
@@ -24,7 +24,6 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cmake ../${_basename}-${pkgver} \
-    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTING=OFF \
