@@ -17,5 +17,5 @@ build() {
 
 package() {
   cd "${srcdir}/nbsphinx-$pkgver"
-  python setup.py install --root=${pkgdir} --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
