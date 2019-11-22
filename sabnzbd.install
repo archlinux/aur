@@ -1,9 +1,0 @@
-# Installation location of SABnzbd
-SABNZBD_DIR="/opt/sabnzbd"  # should not be changed
-
-## arg 1:  the old package version
-post_remove() {
-  echo "==> There may be some files left in ${SABNZBD_DIR}."
-}
-
-# vim:set ts=2 sw=2 et:

@@ -3,7 +3,6 @@ pkgbase = sabnzbd
 	pkgver = 2.3.9
 	pkgrel = 1
 	url = http://www.sabnzbd.org
-	install = sabnzbd.install
 	arch = any
 	license = GPL
 	depends = curl

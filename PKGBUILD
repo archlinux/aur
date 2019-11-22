@@ -21,7 +21,6 @@ optdepends=('python2-feedparser: rss support'
             'python2-pyopenssl: ssl support'
             'par2cmdline-tbb: par2 multi-threading')
 
-install='sabnzbd.install'
 backup=('opt/sabnzbd/sabnzbd.ini')
 source=("https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
         'sabnzbd.service'
