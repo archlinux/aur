@@ -1,7 +1,7 @@
 pkgbase = bluez-utils-compat
 	pkgdesc = Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools.
 	pkgver = 5.52
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bluez.org/
 	arch = i686
 	arch = x86_64
