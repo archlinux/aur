@@ -2,8 +2,11 @@ src
 pkg
 *.src.tar.gz
 *.tar.gz
+*.tar.zst
 *.tar.bz2
 *.part
 *.pkg.tar.xz
 *.deb
+*.log
+*.sig
 LICENSE*
