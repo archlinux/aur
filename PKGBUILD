@@ -1,6 +1,6 @@
 pkgname=enroot-git
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.'
 url='https://github.com/NVIDIA/enroot'
 arch=(x86_64)
@@ -24,3 +24,5 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
   mv "${pkgdir}/usr/share/enroot/enroot.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/enroot"
 }
+
+backup=(etc/enroot/enroot.conf)
