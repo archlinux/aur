@@ -5,7 +5,7 @@
 
 pkgname=selinux-gui
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux GUI tools"
 groups=('selinux')
 arch=('any')
