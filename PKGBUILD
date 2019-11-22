@@ -2,7 +2,7 @@
 
 pkgname=python-wsgidav
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")
@@ -22,10 +22,10 @@ source=(
 )
 sha256sums=(
     "415ac221806a266a3661f6f2f91ecc8dbcbe3653cdb1508abc0c397ea0cf35f3"
-    "efab1ba243ab3de9a6fb75068eb39424055408849aa3aabf085f0fca0a1be3d1"
-    "7ca04465a67ec0726a4503aea86695e6d1948fa233dd2caa0fcee4db779aeaaf"
+    "a95c307807f8f5b404301b593b26b41d387982120f5683187c24247084081127"
+    "774ee839b5248d2614294daf2c8a28fda69f1524d8b5b61d9e75de7b9c986b4d"
     "25826e3ceec2e9e01c54e6367966537017b0c758c7eda131566a95f97b474250"
-    "3d114dd7275c40fde789a69eaaa8ddd0e5a1d803bf76948857eae7d9783cd761"
+    "17bd5af150b9f8666cac503c6c46e671263f143e59b04dfb3033a0752f7bf6a5"
 )
 
 build() {
