@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=r2093.241065b9
-pkgrel=2
+pkgver=r2149.944175b7
+pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -11,7 +11,6 @@ depends=('gcc-libs')
 makedepends=('git' 'rust'
   # aom dependency
   'cmake' 'perl' 'nasm')
-# aom dependency
 provides=('rav1e')
 conflicts=('rav1e')
 options=('staticlibs')
@@ -23,7 +22,7 @@ prepare() {
   cd "rav1e"
 
   # for librav1e
-  cargo install --root "$srcdir" cargo-c
+  RUSTFLAGS="-C opt-level=0" cargo install --root "$srcdir" cargo-c
 }
 
 pkgver() {
