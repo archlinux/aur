@@ -7,7 +7,7 @@
 pkgbase=shiboken
 pkgname=(python{2,}-shiboken shiboken)
 pkgver=1.2.4
-pkgrel=5
+pkgrel=7
 arch=('x86_64')
 license=('LGPL')
 url="http://www.pyside.org"
@@ -28,11 +28,8 @@ build(){
     mkdir -p build-py2 && cd build-py2
     _ver2=$(python2 -c "import platform; print(platform.python_version())")
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr  \
-              -DCMAKE_BUILD_TYPE=Release   \
               -DBUILD_TESTS=OFF            \
               -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-              -DPYTHON_LIBRARIES=/usr/lib/libpython${_ver2%.*}.so \
-              -DPYTHON_INCLUDE_DIRS=/usr/include/python${_ver2%.*} \
               -DQT_QMAKE_EXECUTABLE=qmake-qt4
     make
 
@@ -41,23 +38,27 @@ build(){
     mkdir -p build-py3 && cd build-py3
 
     _ver3=$(python -c "import platform; print(platform.python_version())")
-    if [ "${_ver3}" -lt "3.8.0" ]; then
+    declare -a _extra_library_opt
+    declare -a _extra_include_opt
+    if [[ ${_ver3//./} -lt 380 ]]; then
         _includedir=/usr/include/python${_ver3%.*}m
         _library=/usr/lib/libpython${_ver3%.*}m.so
+        _extra_library_opt+=("-DPYTHON3_LIBRARIES=${_library}")
+        _extra_include_opt+=("-DPYTHON3_INCLUDE_DIRS=${_includedir}")
     else
         _includedir=/usr/include/python${_ver3%.*}
         _library=/usr/lib/libpython${_ver3%.*}.so
+        _extra_library_opt+=("-DPYTHON3_LIBRARY=${_library}")
+        _extra_include_opt+=("-DPYTHON3_INCLUDE_DIR=${_includedir}")
     fi
 
-    cmake ../ -DCMAKE_INSTALL_PREFIX=/usr  \
-              -DCMAKE_BUILD_TYPE=Release   \
+    cmake     -DCMAKE_INSTALL_PREFIX=/usr  \
               -DBUILD_TESTS=OFF            \
               -DUSE_PYTHON3=yes            \
-              -DPYTHON3_LIBRARIES=${_library} \
-              -DPYTHON3_LIBRARY=${_library} \
-              -DPYTHON3_INCLUDE_DIRS=${_includedir} \
-              -DPYTHON3_INCLUDE_DIR=${_includedir} \
-              -DQT_QMAKE_EXECUTABLE=qmake-qt4
+              "${_extra_library_opt[@]}"   \
+              "${_extra_include_opt[@]}"   \
+              -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
+              ..
     make
 }
 

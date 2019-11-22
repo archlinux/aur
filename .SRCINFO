@@ -1,6 +1,6 @@
 pkgbase = shiboken
 	pkgver = 1.2.4
-	pkgrel = 5
+	pkgrel = 7
 	url = http://www.pyside.org
 	arch = x86_64
 	license = LGPL
