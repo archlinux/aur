@@ -6,7 +6,7 @@ pkgrel=1
 _srcname=linux-5.3
       url="https://www.kernel.org/"
 _major=5.3
-_minor=9
+_minor=12
 _minorc=$((_minor+1))
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
@@ -18,7 +18,7 @@ makedepends=(
 )
 options=('!strip')
 source=(
-  https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
   # https://lkml.org/lkml/2019/8/23/712
   # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.$_minor.tar.{xz,sign}
@@ -30,11 +30,11 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('7e138c3ba5826428eac60a0d9131119e67d61d4b97146a4081183acda0aac743'
+sha256sums=('3eb53cb8a22ab909c7aeb4d7c23673c07ca6fe0d68f9780265a69922a3f107bb'
             'SKIP'
-            'd72579aa732edd0e25779adfc43e68a53f77e80020c4aab5db2f5b28c247e98a'
+            '53bff6f89dca19f928043fb0d3434bfb4b6abbb1bf18b907cb731188bdac97a0'
             'SKIP'
-            'e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4'
+            '10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1'
             '1594f81f1b1ed4f3d474aaa2ebfc03623fc0168d0243d1654c250fb7b32ad5d7'
             'd81560f2dd07755d5d51dc1d0d2ee5d4a107c12a13f5d0a021411385813ae7dd')
 
