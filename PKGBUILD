@@ -3,8 +3,8 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=glom
-pkgver=1.31.6
-pkgrel=12
+pkgver=1.32.0
+pkgrel=1
 pkgdesc="An easy-to-use database designer and user interface"
 arch=('x86_64')
 url="https://www.glom.org/"
@@ -14,7 +14,7 @@ depends=('gettext' 'boost-libs' 'libgdamm' 'libxml++' 'python-gobject' 'libepc'
 makedepends=('intltool' 'python-sphinx' 'boost' 'itstool' 'libgda-mysql')
 changelog=$pkgname.changelog
 source=(https://ftp.gnome.org/pub/GNOME/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz)
-sha256sums=('6c5bb163e66d487f979763c3ca3437b56322581872429f1fc3af95f11a2eace0')
+sha256sums=('53bf207ebca82c563b9e67bce977459a17e7fd94e35c27c196986736da248df1')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
