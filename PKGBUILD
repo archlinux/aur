@@ -2,15 +2,15 @@
 
 pkgname=rkward
 pkgver=0.7.0b
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy to use and easily extensible IDE/GUI for R"
-url="http://rkward.kde.org/"
+url="https://rkward.kde.org/"
 arch=('x86_64')
 license=('GPL')
 depends=('kdewebkit' 'ktexteditor' 'r')
 makedepends=('kdoctools' 'extra-cmake-modules')
 provides=('rkward')
-conflicts=('rkward-frameworks-git')
+conflicts=('rkward-git' 'rkward')
 source=("http://download.kde.org/stable/rkward/${pkgver//b/}/src/rkward-$pkgver.tar.gz"
         "eject.patch")
 md5sums=('a678008a571c7dacd5c13d62817ead7a'
