@@ -4,7 +4,7 @@
 # Matthew Carter <m@ahungry.com>
 
 pkgname=postgresql-9.5
-pkgver=9.5.12
+pkgver=9.5.20
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.postgresql.org/"
@@ -21,9 +21,12 @@ optdepends=('python2: for PL/Python support'
 install=postgresql.install
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
-        postgresql.pam postgresql.logrotate
-        postgresql.service postgresql.tmpfiles.conf postgresql-check-db-dir)
-sha256sums=('02e86f5c66467731bbec18fde96e0daf38c13c9141d8e7d41be663ab6fa6f698'
+        postgresql.pam
+        postgresql.logrotate
+        postgresql.service
+        postgresql.tmpfiles.conf
+        postgresql-check-db-dir)
+sha256sums=('925751b375cf975bebbe79753fbcb5fe85d7a62abe516d4c56861a6b877dde0d'
             '8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e'

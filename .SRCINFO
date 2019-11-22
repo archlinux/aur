@@ -1,6 +1,6 @@
 pkgbase = postgresql-9.5
 	pkgdesc = A powerful, open source object-relational database system
-	pkgver = 9.5.12
+	pkgver = 9.5.20
 	pkgrel = 1
 	url = http://www.postgresql.org/
 	install = postgresql.install
@@ -18,21 +18,21 @@ pkgbase = postgresql-9.5
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
-	provides = postgresql=9.5.12
-	provides = postgresql-libs=9.5.12
-	provides = postgresql-client=9.5.12
+	provides = postgresql=9.5.20
+	provides = postgresql-libs=9.5.20
+	provides = postgresql-client=9.5.20
 	conflicts = postgresql
 	conflicts = postgresql-libs
 	conflicts = postgresql-testing
 	conflicts = postgresql-client
-	source = https://ftp.postgresql.org/pub/source/v9.5.12/postgresql-9.5.12.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v9.5.20/postgresql-9.5.20.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql.pam
 	source = postgresql.logrotate
 	source = postgresql.service
 	source = postgresql.tmpfiles.conf
 	source = postgresql-check-db-dir
-	sha256sums = 02e86f5c66467731bbec18fde96e0daf38c13c9141d8e7d41be663ab6fa6f698
+	sha256sums = 925751b375cf975bebbe79753fbcb5fe85d7a62abe516d4c56861a6b877dde0d
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
