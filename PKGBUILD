@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rembo10/headphones/arch
 sha256sums=('604365d356c2079bd55955aa8448a70c39cc5f32a71049a49876847423ce5d12'
             '60ef2bc4c0bc1d23d4fe43202759cb24d9f456bd00cb8841ee11b2c4cbce917e'
             '348abc0627d63762a97655b5893c306e5b923857be5d0b876e9df5fea7ef9ed9'
-            'f1e537c6853c3d641ec2266283b726a8fa5ed8f78c4325d295e66bb4d4868585')
+            'ff2a4be9594518b670dafe80023772affc5e8cca85bb4c95972c7c14c72453c2')
 
 package() {
   install -d -m 755 "${pkgdir}/usr/lib/headphones"
