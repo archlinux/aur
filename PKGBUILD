@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=outcurses
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="High-level UI elements built atop ncurses"
 url="https://nick-black.com/dankwiki/index.php/Outcurses"
@@ -29,4 +29,4 @@ check() {
   make test
 }
 
-sha256sums=('3eb71bb292dc24d008b0175361f4ba6f745e9b520dddbcaa899051eb1a941d6f')
+sha256sums=('da5aba7ff4cd33b4b956c5708c2e05f779f582d077f84b031627c602bc1fa89a')
