@@ -83,7 +83,7 @@ _pamac_completions_all_packages_groups_and_local() {
     _alternative : \
         'pkgs:packages:_pamac_completions_all_packages' \
         'grps:groups:_pamac_completions_all_groups' \
-        'locl:package files:_path_files -g "*.pkg.tar.(z|gz|bz|bz2|lrz|lz|lz4|lzop|xz|lzma)"'
+        'locl:package files:_path_files -g "*.pkg.tar(|.z|.gz|.bz|.bz2|.lrz|.lz|.lz4|.lzop|.xz|.lzma)"'
 }
 
 
@@ -123,7 +123,7 @@ _pamac_commands() {
 _pamac_command_clean() {
     _arguments : \
         "(1 * -)--help[show help for command]" \
-        "(-k --keep)"{-k,--keep}"[specify how many vqersions of each package are kept in the cache directory]:number:_values number 0 1 2 3 4 5 6 7 8 9" \
+        "(-k --keep)"{-k,--keep}"[specify how many versions of each package are kept in the cache directory]:number:_values number 0 1 2 3 4 5 6 7 8 9" \
         "(-u --uninstalled)"{-u,--uninstalled}"[only target uninstalled packages]" \
         "(-b --build-files)"{-b,--build-files}"[remove all build files, the build directory is the one specified in pamac.conf]" \
         "(-d --dry-run)"{-d,--dry-run}"[do not remove files, only find candidate packages]" \
