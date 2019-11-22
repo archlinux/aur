@@ -3,9 +3,9 @@
 #
 pkgname=opendds
 _pkgname=OpenDDS
-pkgver=3.13.3
+pkgver=3.13
 pkgrel=1
-_oci_ace_tao_patch=16
+_oci_ace_tao_patch=15
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
 url="http://www.opendds.org/"
@@ -22,7 +22,7 @@ source=(
 )
 md5sums=(
   # ACE+TAO-2.2a_pPATCH_complete_NO_makefiles.tar.gz
-  'a21185584ca0a2785c8b3d04d5d60f3a'
+  '2ccae8afe84ef9978cb6a1ab21b91402'
   # OpenDDS-VERSION.tar.gz
   '0ff8fed7b1590f460ca0d6ae3de219ec'
   # build.patch
