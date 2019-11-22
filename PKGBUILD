@@ -2,7 +2,7 @@
 
 pkgname=rav1e
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -20,7 +20,7 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   # for librav1e
-  cargo install --root "$srcdir" cargo-c
+  RUSTFLAGS="-C opt-level=0" cargo install --root "$srcdir" cargo-c
 }
 
 check() {
