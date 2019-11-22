@@ -31,7 +31,7 @@ source=(
     "ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('7bc693baddd615f554a08f452c5282dd')
+md5sums=('445dced799cbc281dca4751477ec2a45')
 
 build() {
   dir=`find . -name "molden*" -type d -exec echo {} \;`
