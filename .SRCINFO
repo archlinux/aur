@@ -42,16 +42,18 @@ pkgbase = mir
 	depends = libxcursor
 	depends = yaml-cpp
 	optdepends = qterminal: required for miral demos
-	optdepends = xcursor-dmz: required for miral demos
 	optdepends = ttf-ubuntu-font-family: required for miral demos
 	optdepends = qt5-wayland: required for miral demos
+	optdepends = xcursor-dmz: opt requirement for miral demos
 	optdepends = qtubuntu: opt requirement for miral demos
 	provides = mir
 	conflicts = mir
 	source = https://github.com/MirServer/mir/archive/v1.5.0.tar.gz
-	source = https://raw.githubusercontent.com/capnproto/capnproto/04fd66e2992a3ed38d686642a3c479a7f3e131c9/c%2B%2B/cmake/FindCapnProto.cmake
+	source = https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1087.patch
+	source = https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1088.patch
 	sha256sums = 526f844a7ac8ca7ede2ec33f3e942e0c130a76b1cf453d05a4f3f36e31b1cda8
-	sha256sums = 83153402ea0220a9ed3f9d2c2c157eb49fedf340f368cd8173f0966b3fbf2647
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mir
 
