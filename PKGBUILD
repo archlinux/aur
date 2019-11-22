@@ -4,7 +4,7 @@
 pkgname=mir-git
 _pkgname=mir
 pkgver=1.5.0+120+g5fdc44755a
-pkgrel=2
+pkgrel=3
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686 armv7h aarch64)
@@ -22,8 +22,8 @@ source=('git+https://github.com/MirServer/mir.git'
         'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1087.patch'
         'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1088.patch')
 sha256sums=('SKIP'
-            'b86c2359309b951fdb574de9381d2fc879709a4be81d22b9f6cb10198c26b3a4'
-            '1e1a1b188db2fa540c200bf66e15473230f91cdadffa3040985ec4b7503ce2bd')
+            'SKIP'
+            'SKIP')
 
 BUILD_DIR=build
 
