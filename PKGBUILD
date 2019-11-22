@@ -1,8 +1,8 @@
 # Maintainer: Vitruvius <vitrvvivs dot architectus at gmail dot com>
 
 gitname=htop
-pkgname=htop-temperature-clockspeed-vim
-pkgver=1119.1d95f0b
+pkgname=htop-temperature-clockspeed-vim-git
+pkgver=1120.b8c555c
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer"
 url="https://github.com/vitrvvivs/${gitname}"
@@ -19,7 +19,7 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	 cd "${srcdir}/${gitname}"
+	 cd "${srcdir}/htop"
 	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 	 printf "%s" "${ver//-/.}"
 }
