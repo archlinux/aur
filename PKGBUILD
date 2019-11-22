@@ -1,11 +1,12 @@
-# Maintainer: Alexander Görtz <aur@nyloc.de>
-# Previous Maintainer of dehydrated-git: Patrick Burroughs (Celti) <celti@celti.name>
+# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Contributor: Alexander Görtz <aur@nyloc.de>
+# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=dehydrated-git
 _pkgname=dehydrated
-pkgver=v0.4.0.r40.g0be0ab0
+pkgver=0.6.5.r4.ge2eeaf7
 pkgrel=1
-pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
+pkgdesc="A Let's Encrypt (ACME) client implemented as a shell script"
 arch=(any)
 url="https://github.com/lukas2511/dehydrated"
 license=('MIT')
@@ -19,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "$_pkgname"
-        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
