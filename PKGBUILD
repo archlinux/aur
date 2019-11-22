@@ -1,6 +1,6 @@
 pkgname=enroot-git
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='A simple yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.'
 url='https://github.com/NVIDIA/enroot'
 arch=(x86_64)
