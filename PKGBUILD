@@ -77,5 +77,5 @@ package() {
   rm -rf "${pkgdir}"/usr/lib
   
   # move the hid2hci man page out
-  # mv "${pkgdir}"/usr/share/man/man1/hid2hci.1 "${srcdir}"/
+  rm "${pkgdir}"/usr/share/man/man1/hid2hci.1
 }
