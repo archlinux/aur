@@ -1,6 +1,6 @@
 pkgbase = kbdlight-git
 	pkgdesc = Program to management keyboard brightness
-	pkgver = 1.4.r1.g6ec7f06
+	pkgver = 1.5.r0.g7d186ac
 	pkgrel = 1
 	url = https://github.com/glats/kbdlight
 	arch = i686
