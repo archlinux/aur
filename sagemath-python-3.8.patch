@@ -618,10 +618,10 @@ index cc49fd19b7..6cd094b438 100644
          """
          return hash(self._coeffs) ^ hash(self._const)
 diff --git a/src/sage/geometry/polyhedron/library.py b/src/sage/geometry/polyhedron/library.py
-index d66997fc95..8c01eb1376 100644
+index d66997fc95..57a039d4d6 100644
 --- a/src/sage/geometry/polyhedron/library.py
 +++ b/src/sage/geometry/polyhedron/library.py
-@@ -2287,10 +2287,10 @@ class Polytopes():
+@@ -2287,12 +2287,12 @@ class Polytopes():
  
              sage: perm_a2_reg = polytopes.generalized_permutahedron(['A',2],regular=True)
              sage: perm_a2_reg.vertices()
@@ -633,8 +633,11 @@ index d66997fc95..8c01eb1376 100644
 +             A vertex at (1/2, 0.866025403784439?),
 +             A vertex at (-1/2, -0.866025403784439?),
               A vertex at (1.000000000000000?, 0.?e-18),
-              A vertex at (0.500000000000000?, 0.866025403784439?))
+-             A vertex at (0.500000000000000?, 0.866025403784439?))
++             A vertex at (0.500000000000000?, -0.866025403784439?))
              sage: perm_a2_reg.is_inscribed()
+             True
+             sage: perm_a3_reg = polytopes.generalized_permutahedron(['A',3],regular=True)
 @@ -2304,20 +2304,20 @@ class Polytopes():
              sage: perm_a2_inexact = polytopes.generalized_permutahedron(['A',2],exact=False)
              sage: perm_a2_inexact.vertices()
