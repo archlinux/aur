@@ -1,0 +1,13 @@
+diff --unified --recursive --text libgnt.orig/meson.build libgnt.new/meson.build
+--- libgnt.orig/meson.build	2019-11-22 09:33:50.667726131 -0500
++++ libgnt.new/meson.build	2019-11-22 09:37:48.015959685 -0500
+@@ -204,8 +204,7 @@
+ ]
+ 
+ # Check for Python headers
+-python_dep = dependency('python3', required : false)
+-gnt_config.set('USE_PYTHON', python_dep.found())
++python_dep = dependency('python3', required : true)
+ 
+ configure_file(output : 'gntconfig.h',
+     configuration : gnt_config)
