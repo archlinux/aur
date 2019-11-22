@@ -58,7 +58,7 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=27.0.50.139370
+pkgver=27.0.50.139564
 pkgrel=1
 pkgdesc="GNU Emacs. Development master."
 arch=('x86_64') # Arch Linux only. Derivative users are on their own.
@@ -75,6 +75,11 @@ source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
 md5sums=('SKIP')
 ################################################################################
+
+# Guess why!
+COMPRESSZST=(zstd -c -z -q -T0 -19 -)
+PKGEXT='.pkg.tar.zst'
+SRCEXT='.src.tar.zst'
 
 ################################################################################
 
