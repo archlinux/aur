@@ -1,0 +1,7 @@
+post_install() {
+    calibre-alternatives set
+}
+
+post_upgrade() {
+    calibre-alternatives set
+}

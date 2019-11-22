@@ -9,8 +9,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgbase=calibre-git
-pkgname=(calibre-git calibre-python3-git)
-pkgver=3.48.0.r412.g380ccbc2d4
+pkgname=(calibre-common-git calibre-git calibre-python3-git)
+pkgver=4.4.0.r3.g8d07d6bf55
 pkgrel=1
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
@@ -25,12 +25,13 @@ depends=('chmlib' 'hunspell' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax
 makedepends=('git' "${_py_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
              'sip' 'xdg-utils' 'rapydscript-ng') #'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
-optdepends=('poppler: required for converting pdf to html')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
+        "calibre-alternatives.sh"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
+            '20dc4ff196423a7c7c8f644cb83fcfe07b4b5a64ba4addeb0750f94cd7aa9e8e'
             'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
@@ -97,26 +98,54 @@ check() {
     LANG='en_US.UTF-8' xvfb-run python2 setup.py test
 }
 
-package_calibre-git() {
-    depends+=("${_py_deps[@]/#/python2-}")
-    optdepends+=('ipython2: to use calibre-debug')
+package_calibre-common-git() {
+    pkgdesc+=" (common files)"
+    optdepends=('poppler: required for converting pdf to html')
     provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}")
-
+    conflicts=("${pkgname%-git}" "calibre<${pkgver}")
+    install=calibre-common-git.install
     cd "${srcdir}/${pkgbase%-git}"
 
     # If this directory don't exist, zsh completion won't install.
     install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-    LANG='en_US.UTF-8' python2 setup.py install \
-        --staging-root="${pkgdir}/usr" \
+    LANG='en_US.UTF-8' python2 setup.py install --staging-root="${pkgdir}/usr" \
         --prefix=/usr
-    rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/3/
+
+    for bin in "${pkgdir}"/usr/bin/*; do
+        ln -sfT "/usr/lib/calibre/bin/${bin##*/}" "${bin}"
+    done
+
+    install -Dm755 "${srcdir}"/calibre-alternatives.sh "${pkgdir}"/usr/bin/calibre-alternatives
 
     #cp -a man-pages/ "${pkgdir}/usr/share/man"
 
     # not needed at runtime
     rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
+
+    #cleanup overlapping files
+    rm -r "${pkgdir}"/usr/lib/python2.7
+    rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/
+    find "${pkgdir}" -type f -name '*.py[co]' -delete
+}
+
+package_calibre-git() {
+    pkgdesc+=" (python2 build)"
+    depends=('calibre-common-git' "${_py_deps[@]/#/python2-}")
+    optdepends+=('ipython2: to use calibre-debug')
+    provides=("${pkgname%-git}")
+    conflicts=("${pkgname%-git}")
+    install=calibre-git.install
+
+    cd "${srcdir}/${pkgbase%-git}"
+
+    LANG='en_US.UTF-8' python2 setup.py install \
+        --staging-root="${pkgdir}/usr" \
+        --prefix=/usr \
+        --no-postinstall \
+        --bindir=/usr/lib/calibre/bin-py2 \
+        --staging-bindir="${pkgdir}/usr/lib/calibre/bin-py2" \
+        --staging-sharedir="${srcdir}"/temp
 
     # Compiling bytecode FS#33392
     # This is kind of ugly but removes traces of the build root.
@@ -125,13 +154,18 @@ package_calibre-git() {
         python2 -m compileall -d "${_destdir}" "${_file}"
         python2 -O -m compileall -d "${_destdir}" "${_file}"
     done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
+
+    find "${pkgdir}"/usr/lib/calibre -name '*.py' -delete
+    rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/3/
 }
 
 package_calibre-python3-git() {
-    depends+=("${_py3_deps[@]/#/python-}" 'calibre-git')
+    pkgdesc+=" (experimental python3 port)"
+    depends=('calibre-common-git' "${_py3_deps[@]/#/python-}")
     optdepends+=('ipython: to use calibre-debug')
     provides=("${pkgname%-git}")
     conflicts=("${pkgname%-git}")
+    install=calibre-git.install
 
     cd "${srcdir}/${pkgbase%-git}"
 
@@ -139,8 +173,8 @@ package_calibre-python3-git() {
         --staging-root="${pkgdir}/usr" \
         --prefix=/usr \
         --no-postinstall \
-        --bindir=/opt/calibre-python3 \
-        --staging-bindir="${pkgdir}"/opt/calibre-python3 \
+        --bindir=/usr/lib/calibre/bin-py3 \
+        --staging-bindir="${pkgdir}/usr/lib/calibre/bin-py3" \
         --staging-sharedir="${srcdir}"/temp
 
     # Compiling bytecode FS#33392

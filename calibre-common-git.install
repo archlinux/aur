@@ -1,0 +1,4 @@
+post_remove() {
+    rm -f /usr/lib/calibre/bin
+    rmdir /usr/lib/calibre/
+}
