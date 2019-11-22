@@ -1,0 +1,6 @@
+#!/bin/bash
+
+post_install() {
+	pkgname="arduino-pro-ide"
+	ln -s "/usr/bin/$pkgname" "/opt/$pkgname/arduino.pro.ide"
+}
