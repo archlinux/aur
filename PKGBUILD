@@ -2,7 +2,7 @@
 pkgname=obs-input-overlay-bin
 pkgver="v4.8"
 _obsver=19.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="obs-studio plugin to show keyboard, gamepad and mouse input on stream."
 arch=("x86_64")
 url="https://github.com/univrsal/input-overlay"
@@ -16,7 +16,7 @@ depends=(
 source=(
     "https://github.com/univrsal/input-overlay/releases/download/${pkgver}/input-overlay.${pkgver}b.linux64.zip"
 )
-sha256sums=('0aa52c1478f6c465f8e2d05400ca03d768d650d0e41c510ed5091d6af8265d6d')
+sha256sums=('cdd1ccdd0580770ec3836b26c7d7f2ac0324ed2ddfdb4008ada0bc9ad8464358')
 
 package() {
     install -d ${pkgdir}/usr/lib/obs-plugins/
