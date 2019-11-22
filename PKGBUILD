@@ -2,7 +2,7 @@
 # Maintainer: Dust1404 <unknown>
 pkgname=lemonplus-git
 pkgver=20190721
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A tiny judging environment for OI contest based on Project_Lemon"
 arch=(x86_64)
@@ -43,5 +43,5 @@ package() {
 
     install -Dm644 "$srcdir/Project_LemonPlus/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/lemon.png"
     install -Dm644 "$srcdir/LemonPlus.desktop" "$pkgdir/usr/share/applications/LemonPlus.desktop"
-    install -Dm644 "$srcdir/Project_LemonPlus/lemon" "$pkgdir/usr/bin/lemon"
+    install -Dm755 "$srcdir/Project_LemonPlus/lemon" "$pkgdir/usr/bin/lemon"
 }

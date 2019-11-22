@@ -1,7 +1,7 @@
 pkgbase = lemonplus-git
 	pkgdesc = A tiny judging environment for OI contest based on Project_Lemon
 	pkgver = 20190721
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Dust1404/Project_LemonPlus
 	arch = x86_64
