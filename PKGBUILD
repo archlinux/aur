@@ -1,45 +1,45 @@
 # Contributor: zico <zico@dxx-rebirth.com>
+# Contributor: Dominic Radermacher <dominic.radermacher@gmail.com>
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=d1x-rebirth
-pkgver=0.58.1
-pkgrel=2
+pkgver=20191121
+pkgrel=1
 pkgdesc="An enhanced engine to play with Descent1 data."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.dxx-rebirth.com/"
 license=('custom:D1x' 'LGPL' 'custom:as-is')
 depends=('sdl' 'sdl_mixer' 'mesa' 'physfs')
 makedepends=('scons' 'unzip')
 install="$pkgname.install"
-source=("http://www.dxx-rebirth.com/download/dxx/${pkgname}_v${pkgver}-src.tar.gz"
-        "$pkgname.desktop"
+source=("https://www.dxx-rebirth.com/download/dxx/rebirth/dxx-rebirth_$pkgver-src.tar.xz"
         "http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa"
         "http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa")
 noextract=("d1xr-hires.dxa" "d1xr-sc55-music.dxa")
-md5sums=('8f43e66191fdedd0c7ff9278719accf1'
-         'ded1f8c2deb3825134e1a984985684cb'
+md5sums=('049cae350eab9da1c3bb2561cedadf27'
          '7d978ce3875995e54cbf426167e88b94'
          'bf54b45a648052b2531bbb95c001403b')
 
 build() {
-	cd "$srcdir/${pkgname}_v${pkgver}-src"
+	cd "dxx-rebirth_$pkgver-src"
 	sed -ie "/^PREFIX =/s|/usr/local/|/usr/|" SConstruct
-	scons sharepath="/usr/share/$pkgname"
+	scons sharepath="/usr/share/$pkgname" d1x=1
 }
 
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
-	mkdir -p "$pkgdir/usr/share/$pkgname/"
-	mkdir -p "$pkgdir/usr/share/pixmaps/"
-	mkdir -p "$pkgdir/usr/share/applications/"
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+	mkdir -p "$pkgdir/usr/share/$pkgname"
+	mkdir -p "$pkgdir/usr/share/pixmaps"
+	mkdir -p "$pkgdir/usr/share/applications"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
-	cd $srcdir/${pkgname}_v${pkgver}-src
-	install -m755 "$pkgname" "$pkgdir/usr/bin/"
+	install -m755 "dxx-rebirth_$pkgver-src/d1x-rebirth/d1x-rebirth" "$pkgdir/usr/bin/"
 
-	install -m644 "$srcdir/${pkgname}_v${pkgver}-src/$pkgname.xpm" "$pkgdir/usr/share/pixmaps/"
-	install -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/"
-	install -m644 "$srcdir/${pkgname}_v${pkgver}-src/COPYING.txt" "$pkgdir/usr/share/licenses/$pkgname/"
-	install -m644 "$srcdir/d1xr-hires.dxa" "$pkgdir/usr/share/$pkgname/"
-	install -m644 "$srcdir/d1xr-sc55-music.dxa" "$pkgdir/usr/share/$pkgname/"
+	install -m644 "dxx-rebirth_$pkgver-src/d1x-rebirth/d1x-rebirth.xpm" "$pkgdir/usr/share/pixmaps/"
+
+	install -m644 "dxx-rebirth_$pkgver-src/d1x-rebirth/d1x-rebirth.desktop" "$pkgdir/usr/share/applications/"
+
+	install -m644 "dxx-rebirth_$pkgver-src/COPYING.txt" "$pkgdir/usr/share/licenses/$pkgname/"
+	install -m644 "d1xr-sc55-music.dxa" "$pkgdir/usr/share/$pkgname/"
+	install -m644 "d1xr-hires.dxa" "$pkgdir/usr/share/$pkgname/"
 } 
