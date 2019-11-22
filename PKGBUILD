@@ -2,15 +2,15 @@
 # URL: https://github.com/michaelbeaumont/aur-packages
 
 pkgname=sops
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Editor of encrypted files that supports YAML, JSON and BINARY formats'
 arch=('i686' 'x86_64')
 url='https://github.com/mozilla/sops'
 license=('MPL2')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('65f680ada424094dcdb80b44e3c11c86235618ef1ab10f5f632fcda954a06363')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('a9c257dc5ddaab736dce08b8c5b1f00e6ca1e3171909b6d7385689044ebe759b')
 
 prepare() {
   mkdir -p src/go.mozilla.org
