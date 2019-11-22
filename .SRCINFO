@@ -1,6 +1,6 @@
 pkgbase = just
 	pkgdesc = A handy way to save and run project-specific commands
-	pkgver = 0.4.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/casey/just
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = just
 	license = custom:CC0
 	makedepends = cargo
 	depends = gcc-libs
-	source = just-0.4.5.tar.gz::https://github.com/casey/just/archive/v0.4.5.tar.gz
-	sha256sums = a444b7a28ad33c19113cbb76d6678ea966a64eebd366bc889fa83aa8a44abd65
+	source = just-0.5.1.tar.gz::https://github.com/casey/just/archive/v0.5.1.tar.gz
+	sha256sums = 3fa32e3479278c9288c761e7cf7a64d8d0984d599fd3ebb8606dea6343a7a92e
 
 pkgname = just
 
