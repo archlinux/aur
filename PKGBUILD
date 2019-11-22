@@ -1,7 +1,6 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd
-_pkgname=SABnzbd
 pkgver=2.3.9
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
@@ -23,7 +22,7 @@ optdepends=('python2-feedparser: rss support'
             'p7zip: for .7z support')
 
 backup=('opt/sabnzbd/sabnzbd.ini')
-source=("https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
+source=("https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}/SABnzbd-${pkgver}-src.tar.gz"
         'sabnzbd.service'
         'sabnzbd.sysusers'
         'sabnzbd.tmpfiles')
