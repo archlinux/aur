@@ -1,8 +1,8 @@
 # Maintainer: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=autopass.cr-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
@@ -10,14 +10,14 @@ license=('MIT')
 depends=(pass rofi xdotool gpgme gc libyaml libevent)
 
 source=(
-  'https://gitlab.com/repomaa/autopass.cr/uploads/a953c14bdfa7206ad5e9fe1e8b8d30eb/autopass'
-  'https://gitlab.com/repomaa/autopass.cr/uploads/d686f12a4e15988d424a03e5efb85a8d/autopass.sig'
+  'https://gitlab.com/repomaa/autopass.cr//uploads/168f5db1cc7434c5c82a6e7fd9d7b217/autopass'
+  'https://gitlab.com/repomaa/autopass.cr//uploads/b95bc647537b2c669f5de6f8bb666f9f/autopass.sig'
   "https://gitlab.com/repomaa/autopass.cr/raw/v${pkgver}/LICENSE"
   'autopass.service'
   'autopass.socket'
 )
 md5sums=(
-  30c8edd39c0798f60b6eb8831632bef2
+  6197eeea3b6812f4b23a1424666dce17
   SKIP
   SKIP
   SKIP
