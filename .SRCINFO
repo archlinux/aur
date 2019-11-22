@@ -1,0 +1,30 @@
+pkgbase = pcexhumed-git
+	pkgdesc = Exhumed / PowerSlave port based on EDuke32 (git version)
+	pkgver = 211119+6+g945391c
+	pkgrel = 1
+	url = https://gitlab.com/exhumed/exhumed
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:BUILD
+	makedepends = git
+	makedepends = imagemagick
+	depends = flac
+	depends = glu
+	depends = gtk2
+	depends = libgl
+	depends = libogg
+	depends = libvorbis
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = timidity++
+	provides = pcexhumed
+	conflicts = pcexhumed
+	source = exhumed::git+https://gitlab.com/exhumed/exhumed.git
+	source = pcexhumed.desktop
+	sha256sums = SKIP
+	sha256sums = deda95400d3e7b44078cac690fe6203280d0744ee14f523dd715eaf9f567f341
+	makedepends_i686 = nasm
+
+pkgname = pcexhumed-git
+
