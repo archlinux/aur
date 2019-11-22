@@ -8,6 +8,7 @@ pkgbase = rpm-org
 	license = GPL2
 	makedepends = python2
 	makedepends = python
+	makedepends = pkg-config
 	depends = lua>=5.1
 	depends = file
 	depends = nss>=3.12

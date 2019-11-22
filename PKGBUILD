@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://www.rpm.org/"
 license=('GPL2')
 depends=('lua>=5.1' 'file' 'nss>=3.12' 'popt' 'elfutils' 'libarchive' 'libcap')
-makedepends=('python2' 'python')
+makedepends=('python2' 'python' 'pkg-config')
 optdepends=('libdbus: systemd inhibit plugin')
 conflicts=('rpm' 'rpmextract')
 options=('!libtool')
