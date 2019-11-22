@@ -1,6 +1,6 @@
 pkgbase = kubectl-beta-bin
 	pkgdesc = Command-line tool for deploying and managing applications on Kubernetes (beta)
-	pkgver = 1.17.0_beta.1
+	pkgver = 1.17.0_rc.1
 	pkgrel = 1
 	url = https://github.com/kubernetes/kubernetes
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = kubectl-beta-bin
 	conflicts = kubectl
 	conflicts = kubectl-bin
 	conflicts = kubernetes>=1.4.6
-	source = kubectl-1.17.0-beta.1::https://storage.googleapis.com/kubernetes-release/release/v1.17.0-beta.1/bin/linux/amd64/kubectl
-	sha512sums = 6067116dd7ab88f1d1b099f20cf172727acd1224d3046ead21b594ee0b82de80cda5d1fc0e259f1ab67ca855e296263aa02df79a5adb4a387ad74e82465f95ab
+	source = kubectl-1.17.0-rc.1::https://storage.googleapis.com/kubernetes-release/release/v1.17.0-rc.1/bin/linux/amd64/kubectl
+	sha512sums = 66eb876711b2443b9c7cdcdfbf8aa303c4962850aaa8595701b2d94c2f7b6bc0384e29676e08d932207d928f6fbfecb0f3c93822272e9cf0520a251ef7791494
 
 pkgname = kubectl-beta-bin
 
