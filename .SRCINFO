@@ -1,12 +1,12 @@
 pkgbase = fava
 	pkgdesc = Web interface for beancount
 	pkgver = 1.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/beancount/fava
 	arch = any
 	license = GPL
+	makedepends = python-pip
 	depends = beancount
-	depends = python-pip
 	depends = python-click
 	depends = python-markdown2
 	depends = python-flask
