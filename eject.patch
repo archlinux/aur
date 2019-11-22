@@ -1,0 +1,43 @@
+diff --unified --recursive --text package.orig/rkward/rkward.cpp package.new/rkward/rkward.cpp
+--- package.orig/rkward/rkward.cpp	2018-04-16 21:37:41.000000000 +0300
++++ package.new/rkward/rkward.cpp	2019-11-22 11:15:23.042486673 +0200
+@@ -24,6 +24,9 @@
+ #include <QMenuBar>
+ #include <QStatusBar>
+ #include <QInputDialog>
++#include <QVBoxLayout>
++#include <QHBoxLayout>
++#include <QIcon>
+ 
+ // include files for KDE
+ #include <kmessagebox.h>
+@@ -39,7 +42,6 @@
+ #include <krecentfilesaction.h>
+ #include <ktoolbar.h>
+ #include <kactionmenu.h>
+-#include <QIcon>
+ #include <KSharedConfig>
+ #include <KConfigGroup>
+ 
+diff --unified --recursive --text package.orig/rkward/windows/rktoolwindowbar.cpp package.new/rkward/windows/rktoolwindowbar.cpp
+--- package.orig/rkward/windows/rktoolwindowbar.cpp	2018-04-16 21:37:41.000000000 +0300
++++ package.new/rkward/windows/rktoolwindowbar.cpp	2019-11-22 11:14:06.446187354 +0200
+@@ -26,6 +26,7 @@
+ 
+ #include <QSplitter>
+ #include <QContextMenuEvent>
++#include <QHBoxLayout>
+ 
+ #include "rkworkplace.h"
+ #include "rkworkplaceview.h"
+diff --unified --recursive --text package.orig/rkward/windows/rkworkplace.cpp package.new/rkward/windows/rkworkplace.cpp
+--- package.orig/rkward/windows/rkworkplace.cpp	2018-04-16 21:37:41.000000000 +0300
++++ package.new/rkward/windows/rkworkplace.cpp	2019-11-22 11:13:11.133199401 +0200
+@@ -31,6 +31,7 @@
+ #include <QDir>
+ #include <QApplication>
+ #include <QMimeDatabase>
++#include <QLayout>
+ 
+ #include "detachedwindowcontainer.h"
+ #include "rkcommandeditorwindow.h"
