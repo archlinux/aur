@@ -1,12 +1,12 @@
 # Maintainer: Kat Witten <turtlewit@live.com>
 pkgname=sway-launcher-desktop-git
-pkgver=r48.474f6fd
+pkgver=r53.e81161a
 pkgrel=1
-pkgdesc="A launcher menu made for the Sway window manager made with bash and the amazing fzf."
-arch=(x86_64)
+pkgdesc="A TUI-based launcher menu made with bash and the amazing fzf."
+arch=('any')
 url="https://github.com/Biont/sway-launcher-desktop"
 license=('GPL')
-depends=(sway fzf)
+depends=('fzf')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

@@ -1,12 +1,11 @@
 pkgbase = sway-launcher-desktop-git
-	pkgdesc = A launcher menu made for the Sway window manager made with bash and the amazing fzf.
-	pkgver = r48.474f6fd
+	pkgdesc = A TUI-based launcher menu made with bash and the amazing fzf.
+	pkgver = r53.e81161a
 	pkgrel = 1
 	url = https://github.com/Biont/sway-launcher-desktop
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
-	depends = sway
 	depends = fzf
 	provides = sway-launcher-desktop
 	conflicts = sway-launcher-desktop
