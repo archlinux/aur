@@ -1,7 +1,7 @@
 pkgbase = selinux-python
 	pkgdesc = SELinux python tools and libraries
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = selinux-python
 	makedepends = python-ipy
 	makedepends = libsemanage>=2.8
 	makedepends = setools>=4.0.0
-	provides = sepolgen=2.9-1
+	provides = sepolgen=2.9-2
 	conflicts = sepolgen<2.7
 	conflicts = policycoreutils<2.7
 	source = https://github.com/SELinuxProject/selinux/releases/download/20190315/selinux-python-2.9.tar.gz

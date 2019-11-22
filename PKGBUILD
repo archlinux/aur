@@ -6,7 +6,7 @@
 pkgbase=selinux-python
 pkgname=(selinux-python selinux-python2)
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux python tools and libraries"
 groups=('selinux')
 arch=('i686' 'x86_64')
