@@ -1,29 +1,31 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-_kvv="$(pacman -Si linux-lts49|awk '/^Version/{print$3}')" || \
-_kvv="$(pacman -Qi linux-lts49|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-4.9.202-1}"
-_kvr="${_kvv:+${_kvv}-lts49}"
+_knm="-lts49"
+_kvd="4.9.202-1"
+_kvo=""
+_kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+_kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+_kvv="${_kvv:-${_kvd}}"
+_kvr="${_kvv:+${_kvv}${_knm}}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
-pkgname=openss7-modules-lts49-git
-_pkgname=openss7-modules-lts49
+pkgname=openss7-modules${_knm}-git
+_pkgname=openss7-modules${_knm}
 pkgver=1.1.8.421.g6bc14a626
-pkgrel=3
-pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 4.9} Kernel Modules)"
+pkgrel=6
+pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS ${_kvx}} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
 license=('AGPL3')
-depends=("linux-lts49${_kvv:+=$_kvv}")
-#depends=("openss7-git" "linux-lts49${_kvv:+=$_kvv}")
+depends=("linux${_knm}${_kvv:+=$_kvv}")
+#depends=("openss7-git" "linux${_knm}${_kvv:+=$_kvv}")
 makedepends=('git' 'doxygen' 'gcc6-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html'
-             'linux-lts49' 'linux-lts49-headers'
+             "linux${_knm}" "linux${_knm}-headers"
              'lsof' 'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
 	     'texlive-core' 'transfig' 'gawk' 'classpath'
              'popt')
 conflicts=($_pkgname)
 provides=("$_pkgname=$pkgver")
-options=('!emptydirs' '!strip')
-install="$pkgname.install"
+options=('!emptydirs' '!strip' ${_kvo})
 source=("$pkgname::git+https://github.com/openss7/openss7.git")
 md5sums=('SKIP')
 
@@ -103,12 +105,13 @@ package() {
   cat Module.symvers|awk '{print$4"\t"$3"\t"$1"\t"$2}' >abi-${_kvr}
   install -m644 abi-${_kvr}                      "$d"
   install -m644 symsets-${_kvr}.tar.gz           "$d"
-  install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts49
+  install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
   mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
-        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts49
-  install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
-  ln -s ../../lib/modules/${_kvr}/build/openss7 \
-        "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
+        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
+  rm -fr "$pkgdir"/usr/src
+  install -d "$pkgdir"/usr/src
+  ln -s ../lib/modules/${_kvr}/build/openss7 \
+        "$pkgdir"/usr/src/${_pkgname}-$pkgver-$pkgrel
 }
 
 # vim: sw=2 et
