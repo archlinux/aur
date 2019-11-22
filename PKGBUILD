@@ -1,7 +1,7 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=litex-git
-pkgver=4143
-pkgrel=3
+pkgver=4782
+pkgrel=1
 pkgdesc="Migen based SoC"
 arch=(any)
 url="https://github.com/enjoy-digital/litex"
@@ -38,6 +38,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%%-git}"
   python setup.py install --root="$pkgdir/" --skip-build --optimize=1
-  cp -r litex/soc/cores/cpu/vexriscv/verilog $pkgdir/usr/lib/python3.7/site-packages/litex/soc/cores/cpu/vexriscv/
 }
 
