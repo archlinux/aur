@@ -1,14 +1,16 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _knm="-lts414"
+_kvd="4.14.155-1"
+_kvo=""
 _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
 _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-4.14.155-1}"
+_kvv="${_kvv:-${_kvd}}"
 _kvr="${_kvv:+${_kvv}${_knm}}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules${_knm}-git
 _pkgname=openss7-modules${_knm}
 pkgver=1.1.8.421.g6bc14a626
-pkgrel=4
+pkgrel=6
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS ${_kvx}} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -23,7 +25,7 @@ makedepends=('git' 'doxygen' 'gcc6-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
              'popt')
 conflicts=($_pkgname)
 provides=("$_pkgname=$pkgver")
-options=('!emptydirs' '!strip')
+options=('!emptydirs' '!strip' ${_kvo})
 source=("$pkgname::git+https://github.com/openss7/openss7.git")
 md5sums=('SKIP')
 
@@ -106,9 +108,10 @@ package() {
   install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
   mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
         "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
-  install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
-  ln -s ../../lib/modules/${_kvr}/build/openss7 \
-        "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
+  rm -fr "$pkgdir"/usr/src
+  install -d "$pkgdir"/usr/src
+  ln -s ../lib/modules/${_kvr}/build/openss7 \
+        "$pkgdir"/usr/src/${_pkgname}-$pkgver-$pkgrel
 }
 
 # vim: sw=2 et
