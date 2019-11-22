@@ -1,3 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
 d /var/lib/lazylibrarian 0755 lazylibrarian lazylibrarian
 Z /var/lib/lazylibrarian - lazylibrarian lazylibrarian
 Z /usr/lib/lazylibrarian - lazylibrarian lazylibrarian
