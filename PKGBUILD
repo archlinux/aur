@@ -4,26 +4,28 @@
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.9.1"
+pkgver="1.9.2"
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-__runtime_suffix="-6.1"
-__proxy_suffix="-6.1"
-__shim_suffix="-6.1"
-__ksm_throttler_suffix="-6.1"
-__img_suffix="-6.1"
-__linux_container_ver="4.19.75.54-6.1"
+__default_suffix="-7.1"
+#__runtime_suffix="-7.1"
+#__proxy_suffix="-7.1"
+#__shim_suffix="-7.1"
+#__ksm_throttler_suffix="-7.1"
+#__img_suffix="-7.1"
+__linux_container_ver="4.19.75.54"
+#__linux_container_suffix="-7.1"
 
-__runtime_rpm="kata-runtime-${pkgver}${__runtime_suffix}.x86_64.rpm"
-__proxy_bin_rpm="kata-proxy-bin-${pkgver}${__proxy_suffix}.x86_64.rpm"
-__shim_bin_rpm="kata-shim-bin-${pkgver}${__shim_suffix}.x86_64.rpm"
-__ksm_throttler_rpm="kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix}.x86_64.rpm"
-__img_rpm="kata-containers-image-${pkgver}${__img_suffix}.x86_64.rpm"
-__linux_container_rpm="kata-linux-container-${__linux_container_ver}.x86_64.rpm"
+__runtime_rpm="kata-runtime-${pkgver}${__runtime_suffix:-${__default_suffix}}.x86_64.rpm"
+__proxy_bin_rpm="kata-proxy-bin-${pkgver}${__proxy_suffix:-${__default_suffix}}.x86_64.rpm"
+__shim_bin_rpm="kata-shim-bin-${pkgver}${__shim_suffix:-${__default_suffix}}.x86_64.rpm"
+__ksm_throttler_rpm="kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix:-${__default_suffix}}.x86_64.rpm"
+__img_rpm="kata-containers-image-${pkgver}${__img_suffix:-${__default_suffix}}.x86_64.rpm"
+__linux_container_rpm="kata-linux-container-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.x86_64.rpm"
 
 __dlbase="http://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.9/Fedora_30/x86_64"
 __runtime_src="${__dlbase}/${__runtime_rpm}"
@@ -50,12 +52,14 @@ noextract=(
   $__linux_container_rpm
 )
 
-sha256sums=('2262a5c0710accb7e2dd10c922f25fbf364638243f0da81f0a6c5e36082a4eb1'
-            '0b8ec0e294de445bea72e7468a656395155457e944ddf8bd266e2c34e734f77d'
-            '464ba87eeb7e58cf1d2a31bda0654b307b353e5c1ccb37e3dfc6db831de2d403'
-            'eeec5fdda2a989dbde67719030aa312c26222a802ae534ea473d66a0ec2ade8a'
-            '0a851e1a08a5dab9cdff573cdf700a214a4c11753bed658cc623db6baaa5218a'
-            '924124496922e0b34a6a26c49916b550c04e6d49adc045efaa3ecbe66c94469f')
+sha256sums=(
+  'b5f47b9d905d4d265b6ded744a0413b1a5b1c24b4adec66449095afa5ab8e6ee'
+  '772500f64cfb7cd046e4d46c440e00bab665a276bf4d2cfea6016a7141ae5434'
+  '60615672c1aa926fafc591abd0a78302b7b78fea2f0e6f2dd810746dd5bc8b6b'
+  '96c49d80cbcf5575534cf8bd9e6fcff6c4f5667be729521d313fe172bae37bce'
+  '7b7529b8b92e63c0a1c00a2273688299e8d8001dce9820d3ad9b73e06d293476'
+  'a78fcecac7afb9e7c2e81bc84a73287f9ff471ba7300978aacb0a6b88598494f'
+)
 
 __extract_into_dir() {
   archive=$1
