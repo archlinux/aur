@@ -1,16 +1,6 @@
 # Installation location of SABnzbd
 SABNZBD_DIR="/opt/sabnzbd"  # should not be changed
 
-## arg 1:  the new package version
-## arg 2:  the old package version
-pre_upgrade() {
-  PID="$(pgrep -f SABnzbd.py)"
-
-  if [ -n "${PID}" ];then
-    systemctl stop sabnzbd.service
-  fi
-}
-
 ## arg 1:  the old package version
 post_remove() {
   echo "==> There may be some files left in ${SABNZBD_DIR}."
