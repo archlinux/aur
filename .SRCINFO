@@ -1,0 +1,16 @@
+pkgbase = python-babel-glade
+	pkgdesc = Python library for Babel Glade XML files translatable strings extractor.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/gnome-keysign/babel-glade
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-babel
+	depends = python
+	source = git+https://github.com/gnome-keysign/babel-glade.git#commit=40b88d7701ead154f0effd7621202891335d71b3
+	sha256sums = SKIP
+
+pkgname = python-babel-glade
+
