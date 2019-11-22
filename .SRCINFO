@@ -9,6 +9,7 @@ pkgbase = element-git
 	makedepends = pkgconf
 	depends = python
 	depends = python2
+	depends = libxcomposite
 	depends = boost
 	depends = freetype2
 	depends = libxext
