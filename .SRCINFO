@@ -1,0 +1,16 @@
+pkgbase = materiav2-gtk-theme
+	pkgdesc = A futuristic Material theme for Linux with rounded edges.
+	pkgver = 20191122
+	pkgrel = 1
+	url = https://gitlab.com/Gsbhasin84/materiav2
+	arch = any
+	license = MIT
+	depends = gtk3
+	depends = gnome-themes-extra
+	optdepends = gtk-engine-murrine: for gtk2 theme
+	options = !strip
+	source = https://gitlab.com/Gsbhasin84/materiav2/-/archive/27cc05ab05c645443e650efb49eebe68ab7ec519/materiav2-27cc05ab05c645443e650efb49eebe68ab7ec519.tar.gz
+	sha256sums = 73c31d350b5e53ff9a7dcd08ebfd0fb468b82d001e042a3cb585b1072ac3b750
+
+pkgname = materiav2-gtk-theme
+
