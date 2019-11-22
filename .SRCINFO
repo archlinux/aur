@@ -1,14 +1,14 @@
 pkgbase = scaleft-server-tools
 	pkgdesc = ScaleFT(TM) daemon and shell
-	pkgver = 1.40.8
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://scaleft.com
 	install = scaleft-server-tools.install
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = https://pkg.scaleft.com/rpm/scaleft-server-tools-1.40.8-1.x86_64.rpm
-	sha256sums = 4e841ecf802ade99d71a73541f8d076b687eaa769bb8f8a007cb6fdd47820c10
+	source = https://pkg.scaleft.com/rpm/scaleft-server-tools-1.41.0-1.x86_64.rpm
+	sha256sums = 90c9b0946f602580c8079b0cc85de628004f5a80ee6e8304f38f67ae9ac57f7a
 
 pkgname = scaleft-server-tools
 
