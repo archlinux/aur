@@ -3,27 +3,27 @@
 
 pkgname=rtl8812au-dkms-git
 _pkgbase=rtl8812au
-pkgver=5.2.20.2.r12.gc39e615
+pkgver=5.6.4.2.r7.g582c046
 pkgrel=1
-pkgdesc="rtl8812AU chipset driver with firmware v5.2.20.2"
+pkgdesc="rtl8812AU chipset driver with firmware v5.6.4.2"
 arch=('i686' 'x86_64')
-url="https://github.com/zebulon2/rtl8812au-driver-5.2.20"
+url="https://github.com/gordboy/rtl8812au-5.6.4.2"
 license=('GPL2')
 depends=('dkms' 'bc')
 makedepends=('git')
 conflicts=("${_pkgbase}")
-source=("git+https://github.com/zebulon2/rtl8812au-driver-5.2.20.git"
+source=("git+https://github.com/gordboy/rtl8812au-5.6.4.2.git"
         'dkms.conf')
 sha256sums=('SKIP'
 	    'f0842466dad49a2d0a16fd29e3c5253128b3642d6a42a0a8e08b7310ab265204')
 
 pkgver() {
-    cd ${srcdir}/rtl8812au-driver-5.2.20
-    printf '%s.r%s.g%s' '5.2.20.2' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${srcdir}/rtl8812au-5.6.4.2
+    printf '%s.r%s.g%s' '5.6.4.2' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-        cd ${srcdir}/rtl8812au-driver-5.2.20
+        cd ${srcdir}/rtl8812au-5.6.4.2
         mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
