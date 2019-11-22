@@ -1,13 +1,12 @@
 pkgbase = redis-desktop-manager
 	pkgdesc = Open source cross-platform Redis Desktop Manager based on Qt 5
-	pkgver = 2019.4
+	pkgver = 2019.5
 	pkgrel = 1
 	url = https://redisdesktop.com/
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	makedepends = gcc
-	makedepends = python2
 	depends = qt5-base
 	depends = qt5-imageformats
 	depends = qt5-tools
@@ -18,13 +17,16 @@ pkgbase = redis-desktop-manager
 	depends = qt5-graphicaleffects
 	depends = qt5-svg
 	depends = libssh2
+	depends = python
 	conflicts = redis-desktop-manager-bin
-	source = rdm::git://github.com/uglide/RedisDesktopManager.git#tag=2019.4
+	source = rdm::git://github.com/uglide/RedisDesktopManager.git#tag=2019.5
 	source = rdm.sh
 	source = rdm.desktop
+	source = link-python.patch
 	sha256sums = SKIP
 	sha256sums = f469d9a5adce723904efe0f1b1db5d79807410f90aafb117f18ae108d8b2d391
 	sha256sums = 9ca6cfe0fc1a050552ec2fa009a2d517de3b049ff6f379f0fda849e4dbca3f68
+	sha256sums = 428d2758345059f844dee05bbc6d06eecf82f6cbd3f1a8a308fe4f54cadb43ce
 
 pkgname = redis-desktop-manager
 
