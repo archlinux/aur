@@ -16,6 +16,7 @@ pkgbase = sabnzbd
 	optdepends = python2-feedparser: rss support
 	optdepends = python2-pyopenssl: ssl support
 	optdepends = par2cmdline-tbb: par2 multi-threading
+	optdepends = p7zip: for .7z support
 	backup = opt/sabnzbd/sabnzbd.ini
 	source = https://github.com/sabnzbd/sabnzbd/releases/download/2.3.9/SABnzbd-2.3.9-src.tar.gz
 	source = sabnzbd.service

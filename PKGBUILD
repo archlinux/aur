@@ -19,7 +19,8 @@ depends=('curl'
 
 optdepends=('python2-feedparser: rss support'
             'python2-pyopenssl: ssl support'
-            'par2cmdline-tbb: par2 multi-threading')
+            'par2cmdline-tbb: par2 multi-threading'
+            'p7zip: for .7z support')
 
 backup=('opt/sabnzbd/sabnzbd.ini')
 source=("https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
