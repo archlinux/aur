@@ -14,12 +14,12 @@ source=("$pkgname::git://github.com/jelly/jellyshot.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname"
         install -d $pkgdir/usr/bin/
         install -Dm755 jellyshot $pkgdir/usr/bin/
 }
