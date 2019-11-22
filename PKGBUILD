@@ -76,10 +76,6 @@ build() {
   make build
   make install
 	mv messaging-server ${srcdir}/go/bin/messaging-server
-  #user must generate default json config by running this script after install
-	msg 2 'creating setup script; please run skywire-seup after installation'
-  echo -e '#!/bin/bash \n # this script sets up skywire after installation \n mkdir -p ~/skywire \n sudo chmod 777 ~/skywire \n sudo chmod 777 ~/apps \n cd ~/ \n ln -s /usr/lib/skycoin/skywire/apps ~/ \n skywire-cli node gen-config -r \n skywire-manager-node gen-config -r \n skywire-manager-node \n #skywire-node skywire-config.json' > ${srcdir}/go/bin/${pkgname1}-setup
-  chmod +x ${srcdir}/go/bin/${pkgname1}-setup
 }
 
 package() {
@@ -102,5 +98,4 @@ package() {
     ln -rTsf ${pkgdir}/usr/lib/${projectname}/go/bin/${i} ${pkgdir}/usr/bin/${i}
     chmod 755 ${pkgdir}/usr/bin/${i}
   done
-  msg2 'please run skywire-setup after installing this package'
 }
