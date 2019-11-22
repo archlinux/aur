@@ -1,6 +1,4 @@
 post_install() {
-  echo "==> If you install on Raspberry-pi, you need to install dump1090-git from AUR"
   echo "==> To signup and configure fr24feed, run"
-  echo "==> "
-  echo "==> sudo -u fr24 fr24feed --signup --config-file=/etc/fr24feed.ini"
+  echo "==> sudo fr24feed --signup --config-file=/etc/fr24feed.ini"
 }

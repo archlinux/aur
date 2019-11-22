@@ -1,15 +1,18 @@
 [Unit]
-Description=Flightradar24 decoder and feeder
-After=network.target
+Description=Flightradar24 Decoder & Feeder
+After=network-online.target
 
 [Service]
+Type=simple
 Restart=on-failure
 User=fr24
+Group=fr24
 ProtectSystem=full
-ProtectHome=true
+ProtectHome=yes
 RuntimeDirectory=fr24feed
-ExecStart=/usr/bin/fr24feed --config-file=/etc/fr24feed.ini --logfile=/var/log/fr24feed.log
+LogsDirectory=fr24feed
+ExecStart=/usr/bin/fr24feed --config-file=/etc/fr24feed.ini --logfile=/var/log/fr24feed/fr24feed.log
 Environment=PATH=/usr/lib/flightradar24:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 
 [Install]
-WantedBy=network.target
+WantedBy=multi-user.target
