@@ -1,3 +1,6 @@
+1.1.2-1 (November 22, 2019)
+    Made subscribe function slightly faster
+
 1.1.1-1 (November 2, 2019)
     Change upstream to https://sourcehut.org/
     Debugging feature now works with "no option" option, i.e. opening a stream
