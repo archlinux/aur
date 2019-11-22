@@ -1,3 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
 d /var/lib/mylar 0755 mylar mylar
 Z /var/lib/mylar - mylar mylar
 Z /usr/lib/mylar - mylar mylar

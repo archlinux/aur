@@ -29,7 +29,7 @@ source=('git+https://github.com/evilhero/mylar.git'
 
 sha256sums=('SKIP'
             '42f8929aed076868512dbf285d3bc1341cba57069fde8430b5ba46536085ed5f'
-            '4d393042e6f1b7233abbefeb92f1b706d16b040e55dc92cf8bda08d34755398f'
+            'ccd2419a83587527cbf96aa4a232ee5045915fd4eeb085999508f5a17d0745a8'
             '619a6266ad56e8363296b2ae7e2428c0f433f8c73a57d9bdf55ffba179f6c81d')
 
 pkgver() {
