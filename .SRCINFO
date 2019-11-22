@@ -1,6 +1,6 @@
 pkgbase = rpm-org
 	pkgdesc = RPM Package Manager - RPM.org fork, used in major RPM distros
-	pkgver = 4.14.2
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = http://www.rpm.org/
 	arch = i686
@@ -17,16 +17,16 @@ pkgbase = rpm-org
 	depends = libarchive
 	depends = libcap
 	optdepends = libdbus: systemd inhibit plugin
-	provides = rpm=4.14.2
+	provides = rpm=4.15.0
 	provides = rpmextract=1.0-4
 	conflicts = rpm
 	conflicts = rpmextract
 	options = !libtool
-	source = http://ftp.rpm.org/releases/rpm-4.14.x/rpm-4.14.2.tar.bz2
+	source = https://ftp.osuosl.org/pub/rpm/releases/rpm-4.15.x/rpm-4.15.0.tar.bz2
 	source = rpmextract.sh
 	source = rpmlib-filesystem-check.patch
 	source = bfdfix.patch
-	sha1sums = 1ca664af796ab8d05ea3fccabe2b2e4767a97c74
+	sha1sums = 879fb5c560323aecae8314a3303cd8e7e1294705
 	sha1sums = 74849919207885ae024f1ab8ed68a76474d67ad7
 	sha1sums = 0c5fa516dde1f10211af896c729e4b00c313e12b
 	sha1sums = 456d4a2c9f71c2e3bfa5011800855a73a55aa5bc

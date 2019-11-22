@@ -5,7 +5,7 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.14.2
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
@@ -18,13 +18,16 @@ conflicts=('rpm' 'rpmextract')
 options=('!libtool')
 provides=("rpm=${pkgver}" 'rpmextract=1.0-4')
 
-_base_pkgver=${pkgver%.*}.x
+
+_pkgver_major="${pkgver%%.*}"
+_pkgver_major_rem="${pkgver#*.}"
+_pkgver_minor="${_pkgver_major_rem%%.*}"
+_base_pkgver=$_pkgver_major.$_pkgver_minor.x
 _pkgver=$pkgver
 
-#source=(https://github.com/rpm-software-management/rpm/releases/download/rpm-${pkgver}-release/rpm-${pkgver}.tar.bz2
-source=(http://ftp.rpm.org/releases/rpm-$_base_pkgver/rpm-$pkgver.tar.bz2
+source=(https://ftp.osuosl.org/pub/rpm/releases/rpm-$_base_pkgver/rpm-$pkgver.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch bfdfix.patch)
-sha1sums=('1ca664af796ab8d05ea3fccabe2b2e4767a97c74'
+sha1sums=('879fb5c560323aecae8314a3303cd8e7e1294705'
           '74849919207885ae024f1ab8ed68a76474d67ad7'
           '0c5fa516dde1f10211af896c729e4b00c313e12b'
           '456d4a2c9f71c2e3bfa5011800855a73a55aa5bc')
@@ -32,7 +35,6 @@ sha1sums=('1ca664af796ab8d05ea3fccabe2b2e4767a97c74'
 prepare() {
 	cd ${srcdir}/rpm-${_pkgver}
 	patch -p1 < ../rpmlib-filesystem-check.patch
-	#patch -p1 < ../bfdfix.patch
 }
 
 build() {
