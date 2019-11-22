@@ -3,25 +3,21 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: nbebaw
 pkgname=cpumanagergui
-pkgver=0.2
-pkgrel=1
+pkgver=1.0
+pkgrel=0
 pkgdesc="CPU controler with a gui"
 arch=('any')
 url="https://github.com/nbebaw/cpumanagergui"
 license=('GPL')
-#depends=()
-#makedepends=()
-#checkdepends=()
-#optdepends=()
-#provides=()
-#conflicts=()
-#replaces=()
-#backup=()
-#options=()
-#install=
-#changelog=
+#makedepends=('')
+depends=('gambas3-gb-form'
+	 'gambas3-gb-gtk'
+	 'gambas3-gb-image'
+	 'gambas3-gb-qt5'
+	 'gambas3-gb-qt5-webkit'
+	 'gambas3-runtime')
 source=("git+https://github.com/nbebaw/cpumanagergui.git")
 md5sums=('SKIP')
 
@@ -30,8 +26,8 @@ md5sums=('SKIP')
 #}
 
 package() {
-	cd "$pkgname"
-	install -Dm755 cpumanagergui ${pkgdir}/usr/bin/cpumanagergui
-	install -Dm755 cpumanagergui.desktop ${pkgdir}/usr/share/applications/cpumanagergui.desktop
-	install -Dm755 cpumanager.png ${pkgdir}/usr/share/pixmaps/cpumanager.png
+	cd "$pkgname"/App
+	install -Dm755 cpumanagergui.gambas ${pkgdir}/usr/bin/cpu-manager
+	install -Dm644 cpumanagergui.desktop ${pkgdir}/usr/share/applications/cpumanagergui.desktop
+	install -Dm644 cpumanager.png ${pkgdir}/usr/share/pixmaps/cpumanager.png
 }

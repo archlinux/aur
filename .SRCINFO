@@ -1,10 +1,16 @@
 pkgbase = cpumanagergui
 	pkgdesc = CPU controler with a gui
-	pkgver = 0.2
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 0
 	url = https://github.com/nbebaw/cpumanagergui
 	arch = any
 	license = GPL
+	depends = gambas3-gb-form
+	depends = gambas3-gb-gtk
+	depends = gambas3-gb-image
+	depends = gambas3-gb-qt5
+	depends = gambas3-gb-qt5-webkit
+	depends = gambas3-runtime
 	source = git+https://github.com/nbebaw/cpumanagergui.git
 	md5sums = SKIP
 
