@@ -17,7 +17,7 @@ pkgbase = opendds
 	source = build.patch
 	source = tao-cosnaming.service
 	md5sums = a21185584ca0a2785c8b3d04d5d60f3a
-	md5sums = 35a0907fd6d6b9c29a5c4718e8c35624
+	md5sums = 0ff8fed7b1590f460ca0d6ae3de219ec
 	md5sums = d8dda850a09ba6ba621be2eef7bc9329
 	md5sums = 63fba1c486fb3ed8b216e0b456b50988
 
