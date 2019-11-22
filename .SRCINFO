@@ -1,6 +1,6 @@
 pkgbase = opendds
 	pkgdesc = Open source C++ implementation of OMG Data Distribution Service (DDS)
-	pkgver = 3.13.3
+	pkgver = 3.14
 	pkgrel = 1
 	url = http://www.opendds.org/
 	install = opendds.install
@@ -12,10 +12,10 @@ pkgbase = opendds
 	provides = ace
 	provides = tao
 	options = !buildflags
-	source = https://github.com/objectcomputing/OpenDDS/releases/download/DDS-3.13.3/OpenDDS-3.13.3.tar.gz
+	source = https://github.com/objectcomputing/OpenDDS/archive/DDS-3.14-pre2.tar.gz
 	source = build.patch
 	source = tao-cosnaming.service
-	sha256sums = 2f0600fb1bdeea0f8e8b6d1720f0552d20d5a3ea983c1c329095f9940dfa402c
+	sha256sums = SKIP
 	sha256sums = 17b1846d2c98daf4e51924a0deab767651ed29821a516414693363ee949614d8
 	sha256sums = 2b8af1b2ce852a6bf79a4cdaa6e975b4668f82d56f1bde0b70446b8ce328bd1d
 

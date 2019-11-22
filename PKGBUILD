@@ -2,7 +2,7 @@
 # Former Maintainer: Brian Bidulock <bidulock@openss7.org>
 #
 pkgname=opendds
-pkgver=3.13.3
+pkgver=3.14
 pkgrel=1
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
@@ -13,13 +13,13 @@ provides=('ace' 'tao')
 options=('!buildflags')
 install=opendds.install
 source=(
-  "https://github.com/objectcomputing/OpenDDS/releases/download/DDS-${pkgver}/OpenDDS-${pkgver}.tar.gz"
+  "https://github.com/objectcomputing/OpenDDS/archive/DDS-${pkgver}-pre2.tar.gz"
   build.patch
   tao-cosnaming.service
 )
 sha256sums=(
   # OpenDDS-VERSION.tar.gz
-  '2f0600fb1bdeea0f8e8b6d1720f0552d20d5a3ea983c1c329095f9940dfa402c'
+  '3b98fca20ddb78e157895b7dbc9daaffe526d5c1a1c6e2f28fc46f7b559648ea'
   # build.patch
   '17b1846d2c98daf4e51924a0deab767651ed29821a516414693363ee949614d8'
   # tao-cosnaming.service
@@ -28,7 +28,7 @@ sha256sums=(
 
 prepare() {
   cd "$srcdir"
-  mv "OpenDDS-$pkgver" OpenDDS
+  mv "OpenDDS-DDS-$pkgver-pre2" OpenDDS
   #patch -Np1 -b -z .orig -i ../build.patch
 }
 
