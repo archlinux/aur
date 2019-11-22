@@ -1,13 +1,13 @@
 pkgbase = f30-backgrounds
 	pkgdesc = Fedora 30 backgrounds.
 	pkgver = 30.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedoraproject.org/wiki/Artwork/MediaArt/F30
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f30-backgrounds-30.1.2-1.fc31.src.rpm
-	sha256sums = be0f35df606f8b670bfc4cfdee09f985a0481adedd65d57167d165961913daad
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f30-backgrounds-30.1.2-2.fc31.src.rpm
+	sha256sums = dcc0cae7a7d689498ec88f162a2b514918ed894e73011149a701846ef5abbd26
 
 pkgname = f30-backgrounds
 
