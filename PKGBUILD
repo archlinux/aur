@@ -2,8 +2,8 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-bin
 _pkgname=sftpgo
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.9.4
+pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('x86_64')
 url="https://github.com/drakkan/${_pkgname}"
@@ -24,7 +24,7 @@ backup=(
 )
 
 source=("https://github.com/drakkan/sftpgo/releases/download/${pkgver}/sftpgo_${pkgver}_linux_x86_64.tar.xz")
-sha256sums=('aa23d62356adc0d9b1634374647dff363c32afa8fd67c26635b99617929d1825')
+sha256sums=('b47068499173eb13dcd4779f4e6d63817bad758cbcd030f487f7138e2c750c04')
 
 package() {
   install -Dm755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
