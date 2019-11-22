@@ -1,29 +1,29 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
-_kvv="$(pacman -Si linux-lts414|awk '/^Version/{print$3}')" || \
-_kvv="$(pacman -Qi linux-lts414|awk '/^Version/{print$3}')"
-_kvv="${_kvv:-4.14.152-1}"
-_kvr="${_kvv:+${_kvv}-lts414}"
+_knm="-lts414"
+_kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+_kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+_kvv="${_kvv:-4.14.155-1}"
+_kvr="${_kvv:+${_kvv}${_knm}}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
-pkgname=openss7-modules-lts414-git
-_pkgname=openss7-modules-lts414
+pkgname=openss7-modules${_knm}-git
+_pkgname=openss7-modules${_knm}
 pkgver=1.1.8.421.g6bc14a626
-pkgrel=2
-pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS 4.14} Kernel Modules)"
+pkgrel=4
+pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS ${_kvx}} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
 license=('AGPL3')
-depends=("linux-lts414${_kvv:+=$_kvv}")
-#depends=("openss7-git" "linux-lts414${_kvv:+=$_kvv}")
+depends=("linux${_knm}${_kvv:+=$_kvv}")
+#depends=("openss7-git" "linux${_knm}${_kvv:+=$_kvv}")
 makedepends=('git' 'doxygen' 'gcc6-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html'
-             'linux-lts414' 'linux-lts414-headers'
+             "linux${_knm}" "linux${_knm}-headers"
              'lsof' 'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
 	     'texlive-core' 'transfig' 'gawk' 'classpath'
              'popt')
 conflicts=($_pkgname)
 provides=("$_pkgname=$pkgver")
 options=('!emptydirs' '!strip')
-install="$pkgname.install"
 source=("$pkgname::git+https://github.com/openss7/openss7.git")
 md5sums=('SKIP')
 
@@ -103,11 +103,11 @@ package() {
   cat Module.symvers|awk '{print$4"\t"$3"\t"$1"\t"$2}' >abi-${_kvr}
   install -m644 abi-${_kvr}                      "$d"
   install -m644 symsets-${_kvr}.tar.gz           "$d"
-  install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts414
+  install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
   mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
-        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts414
+        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
   install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
-  ln -s ../lib/modules/${_kvr}/build/openss7 \
+  ln -s ../../lib/modules/${_kvr}/build/openss7 \
         "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
 }
 
