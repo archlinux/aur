@@ -1,15 +1,16 @@
 pkgbase = lib32-unixodbc
 	pkgdesc = ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources
 	pkgver = 2.3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.unixodbc.org/
 	arch = x86_64
 	license = GPL2
 	license = LGPL2.1
+	makedepends = gcc-multilib
 	makedepends = lib32-gcc-libs
 	depends = lib32-libltdl
 	depends = unixodbc
-	source = ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.7.tar.gz
+	source = http://www.unixodbc.org/unixODBC-2.3.7.tar.gz
 	sha256sums = 45f169ba1f454a72b8fcbb82abd832630a3bf93baa84731cf2949f449e1e3e77
 
 pkgname = lib32-unixodbc
