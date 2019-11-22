@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Canon Scangear (MG7200 series)
+Exec=/usr/bin/scangearmp
+Icon=/usr/share/pixmaps/canon-pixma-mg5700-complete-scangear-icon.png
+Categories=Graphics;2DGraphics;
+Name[en_US]=canon-pixma-mg5700-complete-scangear.desktop

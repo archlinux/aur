@@ -1,0 +1,35 @@
+pkgbase = canon-pixma-mg5700-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MG5700 series
+	pkgver = 5.20
+	pkgrel = 1
+	url = https://www.canon-europe.com/printers/inkjet/pixma/pixma_mg5700_series
+	install = canon-pixma-mg5700-complete.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	makedepends = sed
+	source = http://gdlp01.c-wss.com/gds/2/0100006902/01/cnijfilter2-5.20-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/5/0100006905/01/scangearmp2-3.20-1-deb.tar.gz
+	source = canon-pixma-mg5700-complete.license
+	source = canon-pixma-mg5700-complete-scangear.desktop
+	source = canon-pixma-mg5700-complete-scangear-icon.png
+	sha1sums = 9fff089de350b02e4b1e29a39ff54f9ed7a22771
+	sha1sums = 4cf0ab10c1e8b4df13db18c4c1e47b8c643c0fd3
+	sha1sums = 3657e73ea9255451b4765482285f3154863a09f4
+	sha1sums = a850d282cbb8dce08fd7d10e94fcaa0f05469ad9
+	sha1sums = 2425b1c07eb684cf22763f02b5f7ca7a74dec604
+	depends_i686 = popt
+	depends_i686 = libpng12
+	depends_i686 = libusb-compat
+	depends_i686 = libtiff4
+	depends_i686 = libxml2
+	depends_i686 = gtk2
+	depends_x86_64 = lib32-popt
+	depends_x86_64 = lib32-libpng12
+	depends_x86_64 = lib32-libtiff4
+	depends_x86_64 = lib32-libxml2
+	depends_x86_64 = lib32-gtk2
+
+pkgname = canon-pixma-mg5700-complete
+
