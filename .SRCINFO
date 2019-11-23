@@ -11,6 +11,7 @@ pkgbase = bubblemail-git
 	depends = python-dbus
 	depends = python-gobject
 	depends = libsecret
+	depends = gnome-keyring
 	optdepends = gnome-online-accounts
 	optdepends = gnome-shell
 	optdepends = bubblemail-gnome-shell-extension
