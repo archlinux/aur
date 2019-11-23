@@ -1,8 +1,6 @@
 # Maintainer: Νίκος Φυτίλης n-fit[at]live[dot]com
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle[dot]devir[at]mykolab[dot]com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
@@ -13,7 +11,7 @@ _makenconfig=
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 26.
+# generic (default) option is 30.
 #
 # Note - the march=native option is unavailable by this method, use the nconfig
 # and manually select it.
@@ -29,42 +27,45 @@ _makenconfig=
 #  9. AMD Steamroller (MSTEAMROLLER)
 #  10. AMD Excavator (MEXCAVATOR)
 #  11. AMD Zen (MZEN)
-#  12. Intel P4 / older Netburst based Xeon (MPSC)
-#  13. Intel Atom (MATOM)
-#  14. Intel Core 2 (MCORE2)
-#  15. Intel Nehalem (MNEHALEM)
-#  16. Intel Westmere (MWESTMERE)
-#  17. Intel Silvermont (MSILVERMONT)
-#  18. Intel Sandy Bridge (MSANDYBRIDGE)
-#  19. Intel Ivy Bridge (MIVYBRIDGE)
-#  20. Intel Haswell (MHASWELL)
-#  21. Intel Broadwell (MBROADWELL)
-#  22. Intel Skylake (MSKYLAKE)
-#  23. Intel Skylake X (MSKYLAKEX)
-#  24. Intel Cannon Lake (MCANNONLAKE)
-#  25. Intel Ice Lake (MICELAKE)
-#  26. Generic-x86-64 (GENERIC_CPU)
+#  12. AMD Zen 2 (MZEN2)
+#  13. Intel P4 / older Netburst based Xeon (MPSC)
+#  14. Intel Atom (MATOM)
+#  15. Intel Core 2 (MCORE2)
+#  16. Intel Nehalem (MNEHALEM)
+#  17. Intel Westmere (MWESTMERE)
+#  18. Intel Silvermont (MSILVERMONT)
+#  19. Intel Goldmont (MGOLDMONT)
+#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
+#  21. Intel Sandy Bridge (MSANDYBRIDGE)
+#  22. Intel Ivy Bridge (MIVYBRIDGE)
+#  23. Intel Haswell (MHASWELL)
+#  24. Intel Broadwell (MBROADWELL)
+#  25. Intel Skylake (MSKYLAKE)
+#  26. Intel Skylake X (MSKYLAKEX)
+#  27. Intel Cannon Lake (MCANNONLAKE)
+#  28. Intel Ice Lake (MICELAKE)
+#  29. Intel Cascade Lake (MCASCADELAKE)
+#  30. Generic-x86-64 (GENERIC_CPU)
+#  31. Native optimizations autodetected by GCC (MNATIVE)
 _subarch=
 
-# Compile ONLY probed modules
-# Build in only the modules that you currently have probed in your system VASTLY
-# reducing the number of modules built and the build time.
-#
-# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+# Compile ONLY used modules to VASTLY reduce the number of modules built
+# and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD will call it directly to probe all the modules you have logged!
+# This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
-_srcver_tag=5.4
-pkgver=v5.4_rc8
-pkgrel=1
-arch=(x86_64)
+pkgver=v5.4_rc8_303
+pkgrel=2
+pkgdesc="Linux"
+_srcver_tag=v5.4
 url="https://github.com/koverstreet/bcachefs"
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
     xmlto
@@ -72,193 +73,156 @@ makedepends=(
     inetutils
     bc
     libelf
+    python-sphinx
+    python-sphinx_rtd_theme
+    graphviz
+    imagemagick
     git
 )
 options=('!strip')
 
 _reponame="bcachefs"
-_repo_url="https://github.com/nicman23/${_reponame}"
+_repo_url="https://github.com/nicman23/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
-_repo_url_gcc_patch="https://github.com/graysky2/${_reponame_gcc_patch}"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v8.1+_kernel_v4.13+.patch"
+_repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 _repo_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "git+${_repo_url_gcc_patch}"
-    "upstream::git+${_repo_upstream}"
+    "git+$_repo_upstream"
+    "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    60-linux.hook  # pacman hook for depmod
-    90-linux.hook  # pacman hook for initramfs regeneration
-    linux.preset   # standard config files for mkinitcpio ramdisk
+    'https://raw.githubusercontent.com/Tk-Glitch/PKGBUILDS/master/linux53-tkg/linux53-tkg-patches/0007-v5.3-fsync.patch'
 )
 validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886'    # Linus Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E'    # Greg Kroah-Hartman
+    "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
+    "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
 )
 sha512sums=('SKIP'
             'SKIP'
-            '50d550c97a61eea91139e24024a9b72d73bd36b6dbb213d10dec5b76f1baeb14ddf7aaa47473c0bb60fcbe2637134cc8e3ccb6e2b50df8a28e89527cb70b00f4'
-            '7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a'
-            '2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7'
-            '2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf'
+            '4832046cb1b17c39ff00f8c5f95994ef1691c27e019c4d3e77f397df7e8e1ef3e124fc333217e1d40ad9200536b793836e8cdff78275b72d727816bb5e3703f3'
+            'cf692f6cb5a750dceaae83e6976363dd8611557868769e851da48cb572ae0ec6497e222f2fa8828126e2febf025fc8b64f5bccccbe25f7ac868e86c52d031a08'
 )
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-ARCH}
+prepare() {
+    cd linux
+    git fetch --tags
 
-pkgver() {
-  cd ../upstream
-  git fetch --tags &> /dev/null
+    git remote add $_reponame $_repo_url || true
+    git fetch $_reponame master
+    git reset --hard $_reponame/master
 
-  cd ../src/upstream
-  git fetch --tags &> /dev/null
+    export EDITOR=true
 
-  _srcver_tag=$(git tag | grep v${_srcver_tag} | grep -v '-' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -n1)
-  [ -z "$_srcver_tag" ] &&
-  _srcver_tag=$(git tag | grep v${_srcver_tag} | grep '-' | tail -n1)
-  echo "${_srcver_tag}" | sed 's/-/_/'
-}
+    git rebase origin/master
 
-actual_prepare() {
+    patch -p1 -i ../0007-v5.3-fsync.patch
 
-  cd upstream
-  git fetch --tags
 
-  git remote add ${_reponame} ${_repo_url} || true
-  git fetch ${_reponame} master
-  git reset --hard ${_reponame}/master
+    msg2 "Setting version..."
+    scripts/setlocalversion --save-scmversion
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  _srcver_tag=$(echo $pkgver | sed 's/_/-/')
+    msg2 "Setting config..."
+    cp ../config .config
 
-  export EDITOR=true
-
-  git rebase origin/master
-
-curl https://raw.githubusercontent.com/Tk-Glitch/PKGBUILDS/master/linux53-tkg/linux53-tkg-patches/0007-v5.3-fsync.patch |
-patch -p1
-  msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
-
-  msg2 "Setting config..."
-  cp ../config .config
-
-  if [ -n "$_subarch" ]; then
-      yes "$_subarch" | make oldconfig
-  else
-      yes '
-' | make prepare
-  fi
-
-  ### Optionally load needed modules for the make localmodconfig
-  # See https://aur.archlinux.org/packages/modprobed-db
-  if [ -n "$_localmodcfg" ]; then
-      msg "If you have modprobed-db installed, running it in recall mode now"
-      if [ -e /usr/bin/modprobed-db ]; then
-          [[ -x /usr/bin/sudo ]] || {
-          echo "Cannot call modprobe with sudo. Install sudo and configure it to work with this user."
-          exit 1; }
-          sudo /usr/bin/modprobed-db recall
-          make localmodconfig
-      fi
+    if [ -n "$_subarch" ]; then
+        yes "$_subarch" | make oldconfig
+    else
+        make prepare
     fi
 
-  # do not run `make olddefconfig` as it sets default options
-  yes "" | make config >/dev/null
+    ### Optionally load needed modules for the make localmodconfig
+    # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+        if [ -f $HOME/.config/modprobed.db ]; then
+            msg2 "Running Steven Rostedt's make localmodconfig now"
+            make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        else
+            msg2 "No modprobed.db data found"
+            exit
+        fi
+    fi
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+    # do not run 'make olddefconfig' as it sets default options
+    yes "" | make config >/dev/null
 
-  [[ -z "$_makenconfig" ]] || make menuconfig
+    make -s kernelrelease > version
+    msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+    [[ -z "$_makenconfig" ]] || make nconfig
+
+    # save configuration for later reuse
+    cat .config > "$startdir/config.last"
+}
+
+pkgver() {
+    cd "$srcdir/linux"
+    git describe | cut -f-3 -d '-' | sed 's/-/_/g'
 }
 
 build() {
-    ( actual_prepare )
-    cd upstream
-    make bzImage modules
+    cd linux
+    make bzImage modules # htmldocs
 }
 
 _package() {
-    pkgdesc="The ${pkgbase/linux/Linux} kernel and modules ${_pkgdesc_extra}"
+    pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
         coreutils
-        linux-firmware
         kmod
-        mkinitcpio
+        initramfs
         bcachefs-tools-git
     )
-    optdepends=('crda: to set the correct wireless channels of your country')
-    backup=("etc/mkinitcpio.d/$pkgbase.preset")
-    install=linux.install
+    optdepends=(
+        "crda: to set the correct wireless channels of your country"
+        "linux-firmware: firmware images needed for some devices"
+    )
+    provides=("$pkgbase=$pkgver")
 
+    cd linux 
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-
-    cd upstream
 
     msg2 "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-    install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+    # Used by mkinitcpio to name the kernel
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-    # a place for external modules,
-    # with version file for building modules and running depmod from hook
-    local extramodules="extramodules$_kernelname"
-    local extradir="$pkgdir/usr/lib/modules/$extramodules"
-    install -Dt "$extradir" -m644 ../version
-    ln -sr "$extradir" "$modulesdir/extramodules"
-
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    msg2 "Installing hooks..."
-    # sed expression for following substitutions
-    local subst="
-        s|%PKGBASE%|$pkgbase|g
-        s|%KERNVER%|$kernver|g
-        s|%EXTRAMODULES%|$extramodules|g
-    "
-
-    # hack to allow specifying an initially nonexisting install file
-    sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-    true && install=$install.pkg
-
-    # fill in mkinitcpio preset and pacman hooks
-    sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-        "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-    sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-    sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
+    pkgdesc="Header files and scripts for building modules for $pkgdesc kernel $_pkgdesc_extra"
+    depends=("$pkgbase=$pkgver")
     provides=(
-        "linux-bcachefs-git-headers=${pkgver}"
-        "linux-headers=${pkgver}"
+        "$pkgbase-headers=$pkgver"
+        "linux-headers=$pkgver"
     )
 
+    cd linux
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    cd upstream
-
     msg2 "Installing build files..."
-    install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+    install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+        localversion.* version vmlinux
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
@@ -268,9 +232,6 @@ _package-headers() {
 
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
-
-    # ???
-    mkdir "$builddir/.tmp_versions"
 
     msg2 "Installing headers..."
     cp -t "$builddir" -a include
@@ -325,26 +286,38 @@ _package-headers() {
 
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
-    ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+    ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-    pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel ${_pkgdesc_extra}"
+    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel $_pkgdesc_extra"
+    depends=("$pkgbase=$pkgver")
     provides=(
-        "linux-bcachefs-git-docs=${pkgver}"
-        "linux-docs=${pkgver}"
+        "$pkgbase-docs=$pkgver"
+        "linux-docs=$pkgver"
     )
 
+    cd linux
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    cd upstream
 
     msg2 "Installing documentation..."
     mkdir -p "$builddir"
     cp -t "$builddir" -a Documentation
+
+    msg2 "Removing unneeded files..."
+    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
+
+    msg2 "Moving HTML docs..."
+    local src dst
+    while read -rd '' src; do
+        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
+        mkdir -p "${dst%/*}"
+        mv "$src" "$dst"
+        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
+    done < <(find "$builddir/Documentation/output" -type f -print0)
 
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/share/doc"
@@ -366,4 +339,3 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-# vim:set ts=8 sts=2 sw=2 et:

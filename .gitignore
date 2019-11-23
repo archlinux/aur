@@ -8,3 +8,5 @@ kernel_gcc_patch
 pkg
 src
 upstream
+linux
+*patch

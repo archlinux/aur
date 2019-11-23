@@ -1,6 +1,7 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = v5.4_rc8
-	pkgrel = 1
+	pkgdesc = Linux
+	pkgver = v5.4_rc8_303
+	pkgrel = 2
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
 	license = GPL2
@@ -9,36 +10,36 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
 	makedepends = git
 	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	source = git+https://github.com/graysky2/kernel_gcc_patch
-	source = upstream::git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
+	source = https://raw.githubusercontent.com/Tk-Glitch/PKGBUILDS/master/linux53-tkg/linux53-tkg-patches/0007-v5.3-fsync.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 50d550c97a61eea91139e24024a9b72d73bd36b6dbb213d10dec5b76f1baeb14ddf7aaa47473c0bb60fcbe2637134cc8e3ccb6e2b50df8a28e89527cb70b00f4
-	sha512sums = 7ad5be75ee422dda3b80edd2eb614d8a9181e2c8228cd68b3881e2fb95953bf2dea6cbe7900ce1013c9de89b2802574b7b24869fc5d7a95d3cc3112c4d27063a
-	sha512sums = 2718b58dbbb15063bacb2bde6489e5b3c59afac4c0e0435b97fe720d42c711b6bcba926f67a8687878bd51373c9cf3adb1915a11666d79ccb220bf36e0788ab7
-	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+	sha512sums = 4832046cb1b17c39ff00f8c5f95994ef1691c27e019c4d3e77f397df7e8e1ef3e124fc333217e1d40ad9200536b793836e8cdff78275b72d727816bb5e3703f3
+	sha512sums = cf692f6cb5a750dceaae83e6976363dd8611557868769e851da48cb572ae0ec6497e222f2fa8828126e2febf025fc8b64f5bccccbe25f7ac868e86c52d031a08
 
 pkgname = linux-mainline-bcachefs
-	pkgdesc = The Linux-mainline-bcachefs kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
-	install = linux.install
+	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-mainline-bcachefs.preset
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = linux-mainline-bcachefs=v5.4_rc8_303
 
 pkgname = linux-mainline-bcachefs-headers
-	pkgdesc = Header files and scripts for building modules for Linux-mainline-bcachefs kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	provides = linux-bcachefs-git-headers=v5.4_rc8
-	provides = linux-headers=v5.4_rc8
+	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
+	depends = linux-mainline-bcachefs=v5.4_rc8_303
+	provides = linux-mainline-bcachefs-headers=v5.4_rc8_303
+	provides = linux-headers=v5.4_rc8_303
 
