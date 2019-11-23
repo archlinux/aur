@@ -1,8 +1,8 @@
-# Maintainer: Lorenzo Fontana <lo@linux.com>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=coredns-bin
 pkgver=1.6.5
-pkgrel=1
-pkgdesc="CoreDNS is a DNS server that chains plugins (official binary version)"
+pkgrel=2
+pkgdesc="A DNS server that chains plugins (official binary version)"
 arch=('x86_64')
 conflicts=('coredns')
 url="https://github.com/coredns/coredns"

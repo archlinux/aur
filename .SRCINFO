@@ -1,7 +1,7 @@
 pkgbase = coredns-bin
-	pkgdesc = CoreDNS is a DNS server that chains plugins (official binary version)
+	pkgdesc = A DNS server that chains plugins (official binary version)
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coredns/coredns
 	arch = x86_64
 	license = Apache
