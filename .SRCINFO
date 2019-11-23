@@ -1,5 +1,6 @@
 pkgbase = linux-hardened-git
-	pkgver = 5.4.0rc5.r872441.g5061ca987e29
+	pkgdesc = Security-Hardened Linux
+	pkgver = 5.4.0rc8.r873393.g33c8300eac3b
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -22,10 +23,10 @@ pkgbase = linux-hardened-git
 	validpgpkeys = 65EEFE022108E2B708CBFCF7F9E712E59AF5F22A
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = 770af4cd36af968e9fea41417f5d02cae03fa7a1bce1d5ebc45e3e7d2b214425
+	sha256sums = 8fd3e3e5be7c1f6378959292808769bedea93987f80daf14b6d196741788eea2
 
 pkgname = linux-hardened-git
-	pkgdesc = The Linux-hardened-git kernel and modules
+	pkgdesc = The Security-Hardened Linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,10 +36,10 @@ pkgname = linux-hardened-git
 	provides = linux-hardened
 
 pkgname = linux-hardened-headers-git
-	pkgdesc = Header files and scripts for building modules for Linux-hardened-git kernel
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel
 	provides = linux-hardened-headers
 
 pkgname = linux-hardened-docs-git
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-hardened-git kernel
+	pkgdesc = Kernel hacker's manual for the Security-Hardened Linux kernel
 	provides = linux-hardened-docs
 

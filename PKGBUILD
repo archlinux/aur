@@ -6,27 +6,32 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=5.4
-pkgver=5.4.0rc5.r872441.g5061ca987e29
+pkgver=5.4.0rc8.r873393.g33c8300eac3b
 pkgrel=1
+pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git
+  xmlto kmod inetutils bc libelf
+  python-sphinx python-sphinx_rtd_theme graphviz imagemagick git
 )
 options=('!strip')
 source=("${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
         config         # the main kernel config files
 )
-sha256sums=('SKIP'
-            '770af4cd36af968e9fea41417f5d02cae03fa7a1bce1d5ebc45e3e7d2b214425')
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-              '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A' # Daniel Micay
-              'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak
-             )
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+  '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A' # Daniel Micay
+  'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak
+)
+sha256sums=('SKIP'
+            '8fd3e3e5be7c1f6378959292808769bedea93987f80daf14b6d196741788eea2')
+
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 pkgver() {
   cd $_srcname
@@ -72,7 +77,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
@@ -86,7 +91,6 @@ _package() {
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
@@ -102,7 +106,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -180,7 +184,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -189,8 +193,8 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  msg2 "Removing unneeded files..."
+  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
   msg2 "Moving HTML docs..."
   local src dst
