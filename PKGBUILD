@@ -9,7 +9,7 @@ pkgdesc="Python implementation of TEOS-10 GSW based on ufunc wrappers of GSW-C "
 arch=('i686' 'x86_64')
 url="https://github.com/TEOS-10/GSW-Python.git"
 license=('custom')
-makedepends=('git' 'python-numpy')
+makedepends=('git' 'python-numpy' 'python-setuptools')
 source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 

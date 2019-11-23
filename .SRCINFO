@@ -8,6 +8,7 @@ pkgbase = python-gsw-git
 	license = custom
 	makedepends = git
 	makedepends = python-numpy
+	makedepends = python-setuptools
 	source = GSW-Python::git+https://github.com/TEOS-10/GSW-Python.git
 	md5sums = SKIP
 
