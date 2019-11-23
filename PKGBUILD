@@ -5,7 +5,7 @@
 
 _basename=panon
 pkgname=plasma5-applets-${_basename}
-pkgver=0.2.14
+pkgver=0.2.16
 pkgrel=1
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('git')
 provides=('plasma5-applets-panon')
 conflicts=('plasma5-applets-panon')
 source=("${_basename}-${pkgver}::https://github.com/rbn42/${_basename}/archive/v${pkgver}.tar.gz")
-md5sums=('c7ae96c3936a71b9a9117a0c0e8ac4f9')
+md5sums=('d83f76232ed8a7faaf272a2d4baad72b')
 
 package() {
   cd "${srcdir}/${_basename}-${pkgver}"
