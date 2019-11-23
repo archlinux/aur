@@ -2,7 +2,7 @@
 _name=pptk
 pkgname=python-$_name-git
 pkgver=r49.697c09a
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for visualizing and processing 2-d/3-d point clouds"
 arch=('x86_64')
 url="https://github.com/heremaps/pptk.git"
@@ -57,8 +57,9 @@ build() {
 
 package() {
 	cd "$srcdir/$_name"
+	_py_version=$(python --version | grep -o '[0-9]\.[0-9]\+')
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ./dist/*.whl
-	python -O -m compileall "${pkgdir}/usr/lib/python3.8/site-packages/$_name"
-	ln -s /usr/lib/qt/plugins "${pkgdir}/usr/lib/python3.8/site-packages/$_name/libs/qt_plugins"
+	python -O -m compileall "${pkgdir}/usr/lib/python${_py_version}/site-packages/$_name"
+	ln -s /usr/lib/qt/plugins "${pkgdir}/usr/lib/python${_py_version}/site-packages/$_name/libs/qt_plugins"
 }
 
