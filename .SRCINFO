@@ -1,0 +1,14 @@
+pkgbase = bat-extras-git
+	pkgdesc = Bash scripts that integrate bat with various command line tools
+	pkgver = r71.8339354
+	pkgrel = 1
+	url = https://github.com/eth-p/bat-extras
+	arch = any
+	license = MIT
+	depends = bat
+	optdepends = ripgrep: for batgrep script
+	source = git+https://github.com/eth-p/bat-extras
+	md5sums = SKIP
+
+pkgname = bat-extras-git
+
