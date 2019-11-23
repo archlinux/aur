@@ -1,4 +1,4 @@
-pkgbase = python-gsw
+pkgbase = python-gsw-git
 	pkgdesc = Python implementation of TEOS-10 GSW based on ufunc wrappers of GSW-C
 	pkgver = v3.3.1.r0.1b2ccab
 	pkgrel = 1
