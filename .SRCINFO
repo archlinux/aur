@@ -1,6 +1,6 @@
 pkgbase = bitwarden_rs-git
 	pkgdesc = An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface.
-	pkgver = 1.11.0.r8.g0586c00
+	pkgver = 1.12.0.r5.g486c7d8
 	pkgrel = 1
 	url = https://github.com/dani-garcia/bitwarden_rs
 	install = bitwarden_rs.install
@@ -26,8 +26,6 @@ pkgbase = bitwarden_rs-git
 	sha512sums = 399e63002acb764895bbcf3b983642c8858343b36909eeeb73133de1a9740a3d81232bc206ff6bf3daed50f72354c5e6fd5314d0d044acd9f1cb23a933b1dd74
 	sha512sums = 4ce188956f6fe7cfdb711b1505f6344ed2775751ea112a0506dc96455c2705ab8529ec442e4747d7810fc3535b4ca78d1864e874dab5b5306373587097e02658
 	sha512sums = a6f2361c7aa83e63b9a557500406b0cd660e0d7f8b16345f859faa3f96e22bdcecd7589711960486fa0401896291f7d46f66882744c69117fc146056f4a49028
-	source_armv7h = 0002-Rollback-ARM-Toolchain.patch
-	sha512sums_armv7h = f26044402b04cc8494cf97b8592ad792bdda875f13598028f020757f8b79bce03059fabf11c80f78bec392f45ab713e861711026881b152df4fb2dcf675e8247
 
 pkgname = bitwarden_rs-git
 
