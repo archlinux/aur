@@ -1,6 +1,6 @@
 pkgbase = hpl
 	pkgdesc = A portable implementation of the high-performance Linpack benchmark for distributed-memory computers
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 2
 	url = http://www.netlib.org/benchmark/hpl/
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = hpl
 	depends = cblas
 	depends = lapack
 	depends = mpich
-	source = http://www.netlib.org/benchmark/hpl/hpl-2.2.tar.gz
-	source = hpl-2.2-arch.patch
-	md5sums = 0eb19e787c3dc8f4058db22c9e0c5320
+	source = http://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz
+	source = hpl-2.3-arch.patch
+	md5sums = 2789bbadd6d75ae0d64d9b9f2fa8a136
 	md5sums = 542fcac3a92f9860eb4dd4cb717db865
 
 pkgname = hpl
