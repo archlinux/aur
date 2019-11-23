@@ -2,7 +2,7 @@
 pkgname=('python-sentry_sdk' 'python2-sentry_sdk')
 _pkgname=sentry-sdk
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
 url="https://github.com/getsentry/sentry-python"
@@ -18,10 +18,10 @@ prepare() {
 }
             
 build() {
-	cd "$_pkgname-$pkgver" 
+	cd "$srcdir/$_pkgname-$pkgver" 
 	python setup.py build
 	
-	cd ../"$_pkgname-$pkgver-py2"
+	cd "$srcdir/$_pkgname-$pkgver-py2"
 	python2 setup.py build
 }
 

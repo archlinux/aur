@@ -1,7 +1,7 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getsentry/sentry-python
 	arch = any
 	license = BSD
