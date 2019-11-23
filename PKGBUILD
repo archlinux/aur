@@ -1,7 +1,7 @@
 # Maintainer: Chavdar Dutsov <ch.dutsov@phys.uni-sofia.bg>
 # Contributor: TEOS-10
 _pkgname=GSW-Python
-pkgbase=python-gsw
+pkgbase=python-gsw-git
 pkgname=('python-gsw-git')
 pkgver=v3.3.1.r0.1b2ccab
 pkgrel=1
