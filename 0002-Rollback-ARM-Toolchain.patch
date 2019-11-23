@@ -1,7 +1,0 @@
-diff --git a/rust-toolchain b/rust-toolchain
-index 3f7cead..2ad2d88 100644
---- a/rust-toolchain
-+++ b/rust-toolchain
-@@ -1 +1 @@
--nightly-2019-08-27
-+nightly-2019-05-11
