@@ -3,7 +3,7 @@
 # General package information
 pkgname=hashboot
 pkgver=0.9.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Check integrity of files in /boot"
 url="https://schlomp.space/tastytea/hashboot"
 license=("custom:The Hug-Ware License")
@@ -39,9 +39,7 @@ package() {
   install -D -m644 hashboot.1 "${pkgdir}/usr/share/man/man1/hashboot.1"
 
   # systemd
-  install -D -m644 init/systemd/emergency.service "${pkgdir}/etc/systemd/system/emergency.service"
-  install -D -m644 init/systemd/emergency.target "${pkgdir}/etc/systemd/system/emergency.target"
-  install -D -m644 init/systemd/hashboot.service "${pkgdir}/etc/systemd/system/hashboot.service"
+  install -D -m644 init/systemd/hashboot.service "${pkgdir}/usr/lib/systemd/system/hashboot.service"
 
   # pacman hook
   install -D -m644 hooks/pacman.hook "${pkgdir}/usr/share/libalpm/hooks/99-hashboot.hook"

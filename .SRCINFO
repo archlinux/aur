@@ -1,7 +1,7 @@
 pkgbase = hashboot
 	pkgdesc = Check integrity of files in /boot
 	pkgver = 0.9.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://schlomp.space/tastytea/hashboot
 	install = hashboot.install
 	arch = any
