@@ -9,7 +9,7 @@ url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('7b396391e16b28eb8d8f48987c38d55465b997c908e2cd9a8cffa38270e825ab')
+sha256sums=('81491c4f801007f88749e022c8312cc06c9b2729405e25767925f3abc7f84046')
 
 package() {
     cd "$pkgname-$pkgver"
