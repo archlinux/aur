@@ -23,16 +23,20 @@ pkgver() {
 }
 
 package() {
+  # Create and install the binaries in /usr/bin
   install -d -m 755 "${pkgdir}/usr/bin"
   install -D -m 755 rpi-eeprom/firmware/vl805 "${pkgdir}/usr/bin/vl805"
   install -D -m 755 rpi-eeprom/rpi-eeprom-config "${pkgdir}/usr/bin/rpi-eeprom-config"
 
+  # Patch /opt/vc/bin into PATH in script due to weird install location of raspberrypi-firmware
   install -D -m 755 rpi-eeprom/rpi-eeprom-update "${pkgdir}/usr/bin/rpi-eeprom-update"
   patch "${pkgdir}/usr/bin/rpi-eeprom-update" "${srcdir}/rpi-eeprom-update.patch"
 
+  # Copy all the firmware and files to the right place
   install -d -m 755 "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
   cp -a rpi-eeprom/firmware/* "${pkgdir}/usr/lib/firmware/raspberrypi/bootloader"
 
+  # Copy the override in place
   install -d -m 755 "${pkgdir}/etc/default"
   install -D -m 644 rpi-eeprom/rpi-eeprom-update-default "${pkgdir}/etc/default/rpi-eeprom-update"
 }
