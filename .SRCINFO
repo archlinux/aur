@@ -1,0 +1,14 @@
+pkgbase = firefox-extension-containerise
+	pkgdesc = Automatically open websites in a container. Map multiple domains and subdomain to a container with simple csv based config
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/containerise/
+	arch = any
+	license = MIT
+	depends = firefox>=53
+	noextract = containerise-3.7.0-fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/3432724/containerise-3.7.0-fx.xpi
+	sha256sums = 242226d3a24670d2ee85191c40e5df80c955fa5aae02ce56c28b965cf88dec11
+
+pkgname = firefox-extension-containerise
+
