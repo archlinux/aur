@@ -1,7 +1,7 @@
 pkgbase = python-privy-git
 	pkgdesc = An easy, fast lib to correctly password-protect your data
 	pkgver = r67.624bb58
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ofek/privy
 	arch = any
 	license = dual

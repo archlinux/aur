@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=python-privy-git
 pkgver=r67.624bb58
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
