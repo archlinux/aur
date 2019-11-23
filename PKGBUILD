@@ -4,7 +4,7 @@ pkgver=0.15.0
 pkgrel=1
 pkgdesc='AUR helper in Rust providing control, review, patch application and safe build options'
 url='https://github.com/vn971/rua'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vn971/rua/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vn971/rua/archive/v${pkgver}.tar.gz")
 arch=('x86_64' 'i686')
 license=('GPL3')
 

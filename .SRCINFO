@@ -14,7 +14,7 @@ pkgbase = rua
 	optdepends = bubblewrap-suid: version of bubblewrap that works on linux-hardened kernel
 	optdepends = shellcheck: check PKGBUILD scripts, taking care of special variables
 	optdepends = sudo: package installation can be done via sudo, if convenient
-	source = rua-0.15.0.tar.gz::https://github.com/vn971/rua/archive/0.15.0.tar.gz
+	source = rua-0.15.0.tar.gz::https://github.com/vn971/rua/archive/v0.15.0.tar.gz
 	sha256sums = 35a21ad6f821d3acf76264e6384f4f97d4c3d51f8cd019d98974978f9471cd0c
 
 pkgname = rua
