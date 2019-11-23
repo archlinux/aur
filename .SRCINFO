@@ -1,0 +1,23 @@
+pkgbase = drmr-falktx
+	pkgdesc = DrMr is a LV2 sampler plugin that can play Hydrogen drumkits. This version enables plugin state saving using strings.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/falkTX/drmr
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL
+	makedepends = gtk2
+	makedepends = cmake
+	depends = libsndfile
+	depends = libsamplerate
+	depends = expat
+	depends = lv2
+	optdepends = gtk2: For the builtin GUI
+	provides = drmr
+	conflicts = drmr
+	source = https://github.com/falkTX/drmr/archive/v0.1.tar.gz
+	sha256sums = 6c8fb3daacf3d9f847301a8483395a7070794de7f474e4d732c9f3c590cda407
+
+pkgname = drmr-falktx
+
