@@ -1,0 +1,108 @@
+diff --git i/include/wayland-egldevice.h w/include/wayland-egldevice.h
+index 2b436aa..d32cce6 100644
+--- i/include/wayland-egldevice.h
++++ w/include/wayland-egldevice.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <wayland-client.h>
+ #include "wayland-external-exports.h"
+ #include "wayland-eglhandle.h"
+diff --git i/include/wayland-egldisplay.h w/include/wayland-egldisplay.h
+index ac42e7b..fe11f74 100644
+--- i/include/wayland-egldisplay.h
++++ w/include/wayland-egldisplay.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <wayland-client.h>
+ #include "wayland-external-exports.h"
+ #include "wayland-eglhandle.h"
+diff --git i/include/wayland-eglhandle.h w/include/wayland-eglhandle.h
+index 2697206..01bf11b 100644
+--- i/include/wayland-eglhandle.h
++++ w/include/wayland-eglhandle.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include "wayland-external-exports.h"
+ #include "wayland-egl-ext.h"
+ #include <pthread.h>
+diff --git i/include/wayland-eglstream-server.h w/include/wayland-eglstream-server.h
+index 27ab863..359926e 100644
+--- i/include/wayland-eglstream-server.h
++++ w/include/wayland-eglstream-server.h
+@@ -26,6 +26,7 @@
+ #include <wayland-server-protocol.h>
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include "wayland-eglhandle.h"
+ 
+ #ifdef __cplusplus
+diff --git i/include/wayland-eglstream.h w/include/wayland-eglstream.h
+index e8486be..57b5e04 100644
+--- i/include/wayland-eglstream.h
++++ w/include/wayland-eglstream.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+diff --git i/include/wayland-eglsurface.h w/include/wayland-eglsurface.h
+index 38fcd85..f292812 100644
+--- i/include/wayland-eglsurface.h
++++ w/include/wayland-eglsurface.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <pthread.h>
+ #include <wayland-client.h>
+ #include "wayland-egldisplay.h"
+diff --git i/include/wayland-eglswap.h w/include/wayland-eglswap.h
+index 594f3ce..783ecbe 100644
+--- i/include/wayland-eglswap.h
++++ w/include/wayland-eglswap.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include "wayland-eglhandle.h"
+ #include "wayland-eglsurface.h"
+ 
+diff --git i/include/wayland-eglutils.h w/include/wayland-eglutils.h
+index ae54fcb..797bee7 100644
+--- i/include/wayland-eglutils.h
++++ w/include/wayland-eglutils.h
+@@ -25,6 +25,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include "wayland-external-exports.h"
+ #include "wayland-eglhandle.h"
+ 
+diff --git i/src/wayland-eglstream-server.c w/src/wayland-eglstream-server.c
+index c37f8e6..ef4bcb5 100644
+--- i/src/wayland-eglstream-server.c
++++ w/src/wayland-eglstream-server.c
+@@ -34,6 +34,7 @@
+ #include <wayland-server.h>
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ 
+ #include "wayland-eglstream-server.h"
+ #include "wayland-eglstream-server-protocol.h"
