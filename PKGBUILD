@@ -8,8 +8,7 @@ pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
 url='http://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
-depends=('raspberrypi-firmware' 'binutils' 'sed' 'grep')
-optdepends=('flashrom')
+depends=('raspberrypi-firmware')
 backup=('etc/default/rpi-eeprom-update')
 source=('rpi-eeprom::git+https://github.com/raspberrypi/rpi-eeprom.git'
         'rpi-eeprom-update.patch')
