@@ -1,0 +1,34 @@
+post_install() {
+    cat << EOF
+
+For making wlc usable create the file '~/.config/weblate' with the following
+content:
+
+    [weblate]
+    url = https://hosted.weblate.org/api/
+    translation = weblate/master
+
+    [keys]
+    https://hosted.weblate.org/api/ = APIKEY
+
+You can get your APIKEY from:
+
+    Logging icon > Settings > API Access > Your personal API key
+
+Also create a '.weblate' file in the root of your project with the following
+content:
+
+    [weblate]
+    url = https://hosted.weblate.org/api/
+    translation = PROJECT/COMPONENT
+
+You can get PROJECT/COMPONENT value from:
+
+    Projects > Project > Info > Repository containing Weblate translations
+
+If you have more questions check the official documentation:
+
+    https://docs.weblate.org/en/latest/wlc.html
+
+EOF
+}
