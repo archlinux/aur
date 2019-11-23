@@ -1,6 +1,6 @@
 pkgbase = mxnet-git
 	pkgdesc = A flexible and efficient library for deep learning
-	pkgver = 1.5.1.r10351.5a97cf5c92
+	pkgver = 1.5.1.r10371.6c20fb9e6a
 	pkgrel = 1
 	url = http://mxnet.io/
 	arch = x86_64
@@ -13,33 +13,28 @@ pkgbase = mxnet-git
 	makedepends = gtk3
 	makedepends = nccl
 	makedepends = opencv
-	makedepends = patchelf
 	makedepends = qt5-base
-	depends = curl
 	depends = cblas
 	depends = double-conversion
 	depends = hdf5
 	depends = intel-tbb
 	depends = lapack
-	depends = openblas
 	depends = protobuf
 	depends = python-graphviz
 	depends = python-numpy
 	depends = python-requests
 	depends = zeromq
-	provides = mxnet=1.5.1.r10351.5a97cf5c92
+	provides = mxnet=1.5.1.r10371.6c20fb9e6a
 	conflicts = mxnet
 	source = mxnet::git+https://github.com/apache/incubator-mxnet.git
 	sha512sums = SKIP
 
 pkgname = mxnet-git
-	depends = curl
 	depends = cblas
 	depends = double-conversion
 	depends = hdf5
 	depends = intel-tbb
 	depends = lapack
-	depends = openblas
 	depends = protobuf
 	depends = python-graphviz
 	depends = python-numpy
@@ -49,13 +44,11 @@ pkgname = mxnet-git
 
 pkgname = mxnet-mkl-git
 	pkgdesc = A flexible and efficient library for deep learning (with MKL-DNN)
-	depends = curl
 	depends = cblas
 	depends = double-conversion
 	depends = hdf5
 	depends = intel-tbb
 	depends = lapack
-	depends = openblas
 	depends = protobuf
 	depends = python-graphviz
 	depends = python-numpy
@@ -65,13 +58,11 @@ pkgname = mxnet-mkl-git
 
 pkgname = mxnet-cuda-git
 	pkgdesc = A flexible and efficient library for deep learning (with CUDA)
-	depends = curl
 	depends = cblas
 	depends = double-conversion
 	depends = hdf5
 	depends = intel-tbb
 	depends = lapack
-	depends = openblas
 	depends = protobuf
 	depends = python-graphviz
 	depends = python-numpy
@@ -83,13 +74,11 @@ pkgname = mxnet-cuda-git
 
 pkgname = mxnet-cuda-mkl-git
 	pkgdesc = A flexible and efficient library for deep learning (with CUDA and MKL-DNN)
-	depends = curl
 	depends = cblas
 	depends = double-conversion
 	depends = hdf5
 	depends = intel-tbb
 	depends = lapack
-	depends = openblas
 	depends = protobuf
 	depends = python-graphviz
 	depends = python-numpy
@@ -98,4 +87,10 @@ pkgname = mxnet-cuda-mkl-git
 	depends = cuda
 	depends = cudnn
 	depends = nccl
+	provides = mxnet=1.5.1.r10371.6c20fb9e6a
+	provides = mxnet-cuda=1.5.1.r10371.6c20fb9e6a
+	provides = mxnet-mkl=1.5.1.r10371.6c20fb9e6a
+	conflicts = mxnet
+	conflicts = mxnet-cuda=1.5.1.r10371.6c20fb9e6a
+	conflicts = mxnet-mkl=1.5.1.r10371.6c20fb9e6a
 
