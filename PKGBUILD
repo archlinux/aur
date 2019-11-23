@@ -1,10 +1,11 @@
 #! /bin/bash
+#  https://es20490446e.wordpress.com/signature/
 
 pkgname="darkmod"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-pkgver=2.07.1.28
+pkgver=2.07.1.29
 pkgrel=1
 arch=("x86_64")
 
