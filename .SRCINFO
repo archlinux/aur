@@ -1,6 +1,6 @@
 pkgbase = rpi-eeprom
 	pkgdesc = Raspberry Pi4 boot EEPROM updater
-	pkgver = 20191111
+	pkgver = r84.9a447ae
 	pkgrel = 1
 	url = http://github.com/raspberrypi/rpi-eeprom
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = rpi-eeprom
 	options = !strip
 	backup = etc/default/rpi-eeprom-update
 	source = rpi-eeprom::git+https://github.com/raspberrypi/rpi-eeprom.git
+	source = rpi-eeprom-update.patch
 	sha256sums = SKIP
+	sha256sums = d716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f
 
 pkgname = rpi-eeprom
 
