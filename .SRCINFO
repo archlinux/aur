@@ -1,7 +1,7 @@
 pkgbase = octomap
-	pkgdesc = A probabilistic, flexible, and compact 3D mapping library for robotic systems.
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgdesc = Efficient probabilistic 3D mapping framework based on octrees
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = http://octomap.github.com/
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = octomap
 	provides = octomap
 	conflicts = octomap-git
 	options = staticlibs
-	source = octomap-1.9.0.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.0.tar.gz
-	sha256sums = 5f81c9a8cbc9526b2e725251cd3a829e5222a28201b394314002146d8b9214dd
+	source = octomap-1.9.1.tar.gz::https://github.com/OctoMap/octomap/archive/v1.9.1.tar.gz
+	sha256sums = 9abce615d9f3f97a15ba129a10e3a01f9bef9aad178f2ef398f9a925f793c7b9
 
 pkgname = octomap
 
