@@ -1,8 +1,8 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=aiocoap
 pkgname=python-${_pkgname}-git
-pkgver=0.4b1.r0.g79feb4c
-pkgrel=2
+pkgver=0.4b1.r12.gb4540f9
+pkgrel=1
 pkgdesc="Python implementation of CoAP"
 arch=('any')
 url="https://github.com/chrysn/aiocoap"
@@ -24,5 +24,6 @@ package() {
 	python setup.py install --optimize=1 --root="$pkgdir"
 
 	# Do not install tests, to not conflict with other packages
-	rm -rf "$pkgdir/usr/lib/python3.7/site-packages/tests"
+	_py_version=$(python --version | grep -o '[0-9]\.[0-9]\+')
+	rm -rf "$pkgdir/usr/lib/python${_py_version}/site-packages/tests"
 }
