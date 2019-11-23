@@ -1,7 +1,7 @@
 pkgbase = python-fusepyng
 	pkgdesc = Simple ctypes bindings for FUSE
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rianhunter/fusepyng
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 pkgname=python-fusepyng
 _gitname=fusepyng
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple ctypes bindings for FUSE"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/fusepyng"
