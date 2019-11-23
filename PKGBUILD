@@ -4,7 +4,7 @@ _name=pyre-check
 _py=py3
 pkgname=pyre-check-bin
 pkgver=0.0.32
-pkgrel=1
+pkgrel=2
 pkgdesc="Performant type-checking for Python"
 arch=('any')
 url="https://pyre-check.org/"
@@ -16,6 +16,8 @@ source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name
 sha256sums=('4b5eb0796e33930eaf1beb6e5f086e018474f6da640387d5871ec6c39ba82b1f')
 
 package() {
+	_python_version=$(python --version | grep -o '[0-9]\.[0-9]\+')
+
 	PIP_CONFIG_FILE=/dev/null pip install \
 		--isolated \
 		--root="$pkgdir" \
@@ -24,9 +26,9 @@ package() {
 		--no-warn-script-location \
 		./*.whl
 
-	python -O -m compileall "${pkgdir}/usr/lib/python3.7/site-packages/pyre_check"
+	python -O -m compileall "${pkgdir}/usr/lib/python${_python_version}/site-packages/pyre_check"
 
 	install -D -m644 \
-		"${pkgdir}/usr/lib/python3.7/site-packages/pyre_check-${pkgver}.dist-info/LICENSE" \
+		"${pkgdir}/usr/lib/python${_python_version}/site-packages/pyre_check-${pkgver}.dist-info/LICENSE" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

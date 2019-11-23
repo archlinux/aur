@@ -1,7 +1,7 @@
 pkgbase = pyre-check-bin
 	pkgdesc = Performant type-checking for Python
 	pkgver = 0.0.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyre-check.org/
 	arch = any
 	license = MIT
