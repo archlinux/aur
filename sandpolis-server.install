@@ -2,6 +2,8 @@ post_install() {
   useradd -M -s /bin/false sandpolis
   chown sandpolis /var/lib/sandpolis-server/db
   chown sandpolis /var/lib/sandpolis-server/gen
+  chown sandpolis /var/log/sandpolis-server
+  chown -R sandpolis /usr/share/java/sandpolis-server
 }
 
 post_remove() {

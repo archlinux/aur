@@ -1,13 +1,13 @@
 pkgbase = sandpolis-git
 	pkgdesc = Ultimate remote management utility
-	pkgver = r509.4a6d3e8
+	pkgver = r750.4a370c73
 	pkgrel = 1
 	url = https://github.com/Subterranean-Security/Sandpolis
 	arch = any
 	license = Apache 2
-	makedepends = java-environment>=11
+	makedepends = java-environment>=13
 	makedepends = git
-	depends = java-runtime>=11
+	depends = java-runtime>=13
 	source = git+https://github.com/Subterranean-Security/Sandpolis.git
 	sha512sums = SKIP
 

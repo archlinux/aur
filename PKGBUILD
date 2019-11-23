@@ -1,14 +1,14 @@
 # Maintainer: Tyler Cook <tcc@sandpolis.com>
 pkgbase=sandpolis-git
 pkgname=('sandpolis-server-git' 'sandpolis-viewer-git' 'sandpolis-viewer-cli-git')
-pkgver=r509.4a6d3e8
+pkgver=r750.4a370c73
 pkgrel=1
 pkgdesc='Ultimate remote management utility'
 arch=('any')
 url='https://github.com/Subterranean-Security/Sandpolis'
 license=('Apache 2')
-depends=('java-runtime>=11')
-makedepends=('java-environment>=11' 'git')
+depends=('java-runtime>=13')
+makedepends=('java-environment>=13' 'git')
 source=("git+https://github.com/Subterranean-Security/Sandpolis.git")
 sha512sums=('SKIP')
 
@@ -19,20 +19,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/Sandpolis"
-  ./gradlew -g "$startdir/.gradle" assemble
-
-  # Get Gradle to output all dependencies
-  ./gradlew -g "$startdir/.gradle" -q \
-      :com.sandpolis.server.vanilla:installDependencies <<< "$startdir/lib_sandpolis-server"
-  ./gradlew -g "$startdir/.gradle" -q \
-      :com.sandpolis.viewer.jfx:installDependencies <<< "$startdir/lib_sandpolis-viewer"
-  ./gradlew -g "$startdir/.gradle" -q \
-      :com.sandpolis.viewer.cli:installDependencies <<< "$startdir/lib_sandpolis-viewer-cli"
+  ./gradlew --no-daemon -g "$startdir/.gradle" jar
 }
 
 check() {
   cd "$srcdir/Sandpolis"
-  ./gradlew -g "$startdir/.gradle" test
+  ./gradlew --no-daemon -g "$startdir/.gradle" test
 }
 
 package_sandpolis-server-git() {
@@ -40,24 +32,26 @@ package_sandpolis-server-git() {
   provides=('sandpolis-server')
   install=sandpolis-server.install
 
-  # Install binaries to /usr/share/java/sandpolis-server
-  install -m644 -D "$srcdir"/Sandpolis/com.sandpolis.server.vanilla/build/libs/*.jar \
-      "$pkgdir/usr/share/java/sandpolis-server/com.sandpolis.server.vanilla.jar"
+  cd "$srcdir/Sandpolis"
 
-  # Install dependencies to /usr/share/java/sandpolis-server/lib
-  mv "$startdir/lib_sandpolis-server" "$pkgdir/usr/share/java/sandpolis-server/lib"
+  # Install libraries
+  ./gradlew --no-daemon -q -g "$startdir/.gradle" \
+      -Dlib_dest="$pkgdir/usr/share/java/sandpolis-server/lib" :com.sandpolis.server.vanilla:install
 
-  # Install script stubs to /usr/bin
+  # Install scripts
   install -m755 -D "$startdir/sandpolis-server.sh" "$pkgdir/usr/bin/sandpolis-server"
 
-  # Setup database directory in /var/lib/sandpolis-server/db
+  # Setup database directory
   install -d "$pkgdir/var/lib/sandpolis-server/db"
 
-  # Setup gen directory in /var/lib/sandpolis-server/gen
+  # Setup gen directory
   install -d "$pkgdir/var/lib/sandpolis-server/gen"
 
-  # Setup log directory in /var/log/sandpolis-server
+  # Setup log directory
   install -d "$pkgdir/var/log/sandpolis-server"
+
+  # Setup plugin directory
+  install -d "$pkgdir/usr/share/java/sandpolis-server/plugin"
 
   # Install systemd unit
   install -m644 -D "$startdir/sandpolis-server.service" "$pkgdir/usr/lib/systemd/system/sandpolisd.service"
@@ -67,28 +61,38 @@ package_sandpolis-viewer-git() {
   conflicts=('sandpolis-viewer')
   provides=('sandpolis-viewer')
 
-  # Install binaries to /usr/share/java/sandpolis-viewer
-  install -m644 -D "$srcdir"/Sandpolis/com.sandpolis.viewer.jfx/build/libs/*.jar \
-      "$pkgdir/usr/share/java/sandpolis-viewer/com.sandpolis.viewer.jfx.jar"
+  cd "$srcdir/Sandpolis"
 
-  # Install dependencies to /usr/share/java/sandpolis-viewer/lib
-  mv "$startdir/lib_sandpolis-viewer" "$pkgdir/usr/share/java/sandpolis-viewer/lib"
+  # Install libraries
+  ./gradlew --no-daemon -q -g "$startdir/.gradle" \
+      -Dlib_dest="$pkgdir/usr/share/java/sandpolis-viewer/lib" :com.sandpolis.viewer.jfx:install
 
-  # Install script stubs to /usr/bin
+  # Install scripts
   install -m755 -D "$startdir/sandpolis-viewer.sh" "$pkgdir/usr/bin/sandpolis-viewer"
+
+  # Setup log directory
+  install -d "$pkgdir/var/log/sandpolis-viewer"
+
+  # Setup plugin directory
+  install -d "$pkgdir/usr/share/java/sandpolis-viewer/plugin"
 }
 
 package_sandpolis-viewer-cli-git() {
   conflicts=('sandpolis-viewer-cli')
   provides=('sandpolis-viewer-cli')
 
-  # Install binaries to /usr/share/java/sandpolis-viewer-cli
-  install -m644 -D "$srcdir"/Sandpolis/com.sandpolis.viewer.cli/build/libs/*.jar \
-      "$pkgdir/usr/share/java/sandpolis-viewer-cli/com.sandpolis.viewer.cli.jar"
+  cd "$srcdir/Sandpolis"
 
-  # Install dependencies to /usr/share/java/sandpolis-viewer-cli/lib
-  mv "$startdir/lib_sandpolis-viewer-cli" "$pkgdir/usr/share/java/sandpolis-viewer-cli/lib"
+  # Install libraries
+  ./gradlew --no-daemon -q -g "$startdir/.gradle" \
+      -Dlib_dest="$pkgdir/usr/share/java/sandpolis-viewer-cli/lib" :com.sandpolis.viewer.cli:install
 
-  # Install script stubs to /usr/bin
+  # Install scripts
   install -m755 -D "$startdir/sandpolis-viewer-cli.sh" "$pkgdir/usr/bin/sandpolis-viewer-cli"
+
+  # Setup log directory
+  install -d "$pkgdir/var/log/sandpolis-viewer-cli"
+
+  # Setup plugin directory
+  install -d "$pkgdir/usr/share/java/sandpolis-viewer-cli/plugin"
 }
