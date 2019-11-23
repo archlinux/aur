@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/taiko2k/tauonmb
 	arch = any
@@ -36,8 +36,8 @@ pkgbase = tauon-music-box
 	optdepends = gst-plugins-good: Extra GStreamer codecs
 	optdepends = gst-plugins-bad: Extra GStreamer codecs
 	optdepends = gst-plugins-ugly: Extra GStreamer codecs
-	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.1.0/Tauon.Music.Box.v5.1.0.Linux.zip
-	sha1sums = ef382a1b4c6811204d7083df41442bb86d53d724
+	source = https://github.com/Taiko2k/tauonmb/releases/download/v5.1.1/Tauon.Music.Box.v5.1.1.Linux.zip
+	sha1sums = a5acd1b579a660cfe040145655059e339d9b781e
 
 pkgname = tauon-music-box
 
