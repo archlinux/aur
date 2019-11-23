@@ -1,7 +1,7 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=jellyfish
-pkgver=2.2.10
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A tool for fast, memory-efficient counting of k-mers in DNA"
 
@@ -10,6 +10,8 @@ pkgdesc="A tool for fast, memory-efficient counting of k-mers in DNA"
 arch=("x86_64")
 url="http://www.genome.umd.edu/jellyfish.html"
 
+# FIXME: in v2.3.0+ the LICENSE file says GPL3 or BSD (changed from just GPL3),
+# but tarball is missing the BSD license.  Add BSD license once it's included.
 license=("GPL3")
 source=("https://github.com/gmarcais/Jellyfish/releases/download/v${pkgver}/jellyfish-${pkgver}.tar.gz")
 
@@ -24,4 +26,4 @@ package() {
     make DESTDIR=${pkgdir} install
 }
 
-sha256sums=('8988550dfb30ca077c7ddf77d382b87d39749a2e95c0eb459d819bbddd6097cc')
+sha256sums=('3d5b68bdf741acdb119546bfaf52219834f83cea1f47b0caa135fc649d0d6faf')
