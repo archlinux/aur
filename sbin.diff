@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -26,7 +26,7 @@
+ 
+ sysconfdir = /etc
+ libexecdir = /usr/lib
+-sbindir = /usr/sbin
++sbindir = /usr/bin
+ mandir = /usr/share/man
+ man5dir = $(mandir)/man5
+ man8dir = $(mandir)/man8
