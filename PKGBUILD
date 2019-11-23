@@ -2,7 +2,7 @@
 pkgname=python-userspacefs
 _gitname=userspacefs
 pkgver=1.0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform user-space file systems for Python"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/userspacefs"

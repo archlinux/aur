@@ -1,7 +1,7 @@
 pkgbase = python-userspacefs
 	pkgdesc = Cross-platform user-space file systems for Python
 	pkgver = 1.0.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rianhunter/userspacefs
 	arch = i686
 	arch = x86_64
