@@ -2,7 +2,7 @@
 
 pkgname=adwm-git
 _pkgname=adwm
-pkgver=0.7.9.r87.g848bae8
+pkgver=0.7.9.r88.gca18c59
 pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
