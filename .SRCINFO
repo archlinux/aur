@@ -1,7 +1,7 @@
 pkgbase = python-block_tracing
 	pkgdesc = Protect process memory
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rianhunter/block_tracing
 	arch = i686
 	arch = x86_64

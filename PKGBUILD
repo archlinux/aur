@@ -2,7 +2,7 @@
 pkgname=python-block_tracing
 _gitname=block_tracing
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Protect process memory"
 arch=('i686' 'x86_64')
 url="https://github.com/rianhunter/block_tracing"
