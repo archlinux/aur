@@ -1,0 +1,124 @@
+Index: ffmpegfs-1.9/Makefile.am
+===================================================================
+--- ffmpegfs-1.9.orig/Makefile.am
++++ ffmpegfs-1.9/Makefile.am
+@@ -4,10 +4,6 @@ export WARNINGS = -Wall -Wextra -Wconver
+ export AM_CFLAGS = -std=c11 $(INCLUDES) $(WARNINGS) $(OPTIMISATION) -D_GNU_SOURCE
+ export AM_CXXFLAGS = -std=c++11 $(INCLUDES) $(WARNINGS) $(OPTIMISATION) -D_GNU_SOURCE
+ 
+-export USERNAME=ffmpegfs
+-export USERGROUP=ffmpegfs
+-export CACHEDIR=/var/cache/ffmpegfs
+-
+ SUBDIRS = src test
+ 
+ dist_man_MANS = ffmpegfs.1
+@@ -104,43 +100,4 @@ clean-local: doxy-clean
+ # Really clean up everything
+ wipe-all: doxy-clean distclean
+ 	rm -Rf autom4te.cache configure config aclocal.m4 Makefile.in test/Makefile.in src/Makefile.in
+-	
+-install-exec-hook:
+-	@if getent passwd $(USERNAME) > /dev/null 2>&1; \
+-	then \
+-		echo "User $(USERNAME) already exists."; \
+-	else \
+-		echo "Creating user $(USERNAME)."; \
+-                ls -l /etc/; \
+-		useradd --system $(USERNAME); \
+-		usermod -L $(USERNAME); \
+-	fi
+-
+-	@if [ -d "$(CACHEDIR)" ]; \
+-	then \
+-		echo "$(CACHEDIR) already exists."; \
+-	else \
+-		echo "Creating cache in $(CACHEDIR)."; \
+-		mkdir $(CACHEDIR); \
+-		if [ -d "/tmp/ffmpegfs" ]; \
+-		then \
+-			echo "Moving old cache from /tmp to $(CACHEDIR)."; \
+-			mv /tmp/ffmpegfs/* $(CACHEDIR)/ || true; \
+-			rmdir /tmp/ffmpegfs/; \
+-		fi \
+-	fi
+-	@chown -R $(USERNAME):$(USERGROUP) $(CACHEDIR)
+-	@chmod -R 777 $(CACHEDIR)
+-
+-uninstall-hook:
+-	@if [ -d "$(CACHEDIR)" ]; \
+-	then \
+-		echo "Removing cache directory $(CACHEDIR)."; \
+-		rm -Rf "$(CACHEDIR)"; \
+-	fi
+-	
+-	@if getent passwd $(USERNAME) > /dev/null 2>&1; \
+-	then \
+-		echo "Removing user $(USERNAME)."; \
+-		userdel $(USERNAME); \
+-	fi
++
+Index: ffmpegfs-1.9/NEWS
+===================================================================
+--- ffmpegfs-1.9.orig/NEWS
++++ ffmpegfs-1.9/NEWS
+@@ -11,7 +11,6 @@ Important changes in 1.9 (2019-11-18)
+ * Feature: Added optional graphviz to configure, only required for Doxygen.
+ * Feature: Updated INSTALL.md with missing prerequisites. Rearranged paragraphs, mentioning building
+            from git first was confusing.
+-* Feature: Moved cache directory from rather unusual /tmp/ffmpegfs location to /var/cache/ffmpegfs.
+ * Bugfix: Fixed several warnings if compiled for 32 bit.
+ * Bugfix: Removed unused xmlint prerequisite from configure.
+ * Bugfix: Video and audio was out of sync on android devices.
+Index: ffmpegfs-1.9/ffmpegfs.1.txt
+===================================================================
+--- ffmpegfs-1.9.orig/ffmpegfs.1.txt
++++ ffmpegfs-1.9/ffmpegfs.1.txt
+@@ -228,7 +228,7 @@ Default: 0 (no minimum space)
+ *--cachepath*=DIR, *-o cachepath*=DIR::
+ Sets the disk cache directory to 'DIR'. Will be created if not existing. The user running ffmpegfs must have write access to the location.
+ +
+-Default: /var/cache/ffmpegfs
++Default: temp directory, e.g. /tmp
+ 
+ *--disable_cache*, -o *disable_cache*::
+ Disable the cache functionality.
+Index: ffmpegfs-1.9/src/ffmpegfs.cc
+===================================================================
+--- ffmpegfs-1.9.orig/src/ffmpegfs.cc
++++ ffmpegfs-1.9/src/ffmpegfs.cc
+@@ -113,7 +113,7 @@ FFMPEGFS_PARAMS::FFMPEGFS_PARAMS()
+     , m_prebuffer_size(100 /* KB */ * 1024)     // default: 100 KB
+     , m_max_cache_size(0)                       // default: no limit
+     , m_min_diskspace(0)                        // default: no minimum
+-    , m_cachepath("")                           // default: /var/cache/ffmpegfs
++    , m_cachepath("")                           // default: /tmp
+     , m_disable_cache(0)                        // default: enabled
+     , m_cache_maintenance((60*60))              // default: prune every 60 minutes
+     , m_prune_cache(0)                          // default: Do not prune cache immediately
+Index: ffmpegfs-1.9/src/ffmpegfs.h
+===================================================================
+--- ffmpegfs-1.9.orig/src/ffmpegfs.h
++++ ffmpegfs-1.9/src/ffmpegfs.h
+@@ -159,7 +159,7 @@ extern struct FFMPEGFS_PARAMS
+     size_t              m_prebuffer_size;           /**< @brief Number of bytes that will be decoded before it can be accessed */
+     size_t              m_max_cache_size;           /**< @brief Max. cache size in MB. When exceeded, oldest entries will be pruned */
+     size_t              m_min_diskspace;            /**< @brief Min. diskspace required for cache */
+-    std::string         m_cachepath;                /**< @brief Disk cache path, defaults to /var/cache */
++    std::string         m_cachepath;                /**< @brief Disk cache path, defaults to /tmp */
+     int                 m_disable_cache;            /**< @brief Disable cache */
+     time_t              m_cache_maintenance;        /**< @brief Prune timer interval */
+     int                 m_prune_cache;              /**< @brief Prune cache immediately */
+Index: ffmpegfs-1.9/src/transcode.cc
+===================================================================
+--- ffmpegfs-1.9.orig/src/transcode.cc
++++ ffmpegfs-1.9/src/transcode.cc
+@@ -173,7 +173,7 @@ void transcoder_cache_path(std::string &
+     }
+     else
+     {
+-        path = "/var/cache";
++        tempdir(path);
+     }
+ 
+     append_sep(&path);
