@@ -1,6 +1,6 @@
 pkgbase = materia-custom-accent
 	pkgdesc = Easy installer for the materia theme with a custom accent color, gdm and qt5 support and a workaround for dark apps (edit PKGBUILD)
-	pkgver = r1182.2e8c3a48
+	pkgver = r1211.c95281e8
 	pkgrel = 1
 	url = https://github.com/nana-4/materia-theme
 	arch = any
