@@ -1,8 +1,8 @@
-# Maintainer: Shengyu Zhang <lastavengers at archlinuxcn dot org>
+# Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 # Contributor: Guo Yunhe <guoyunhebrave@gmail.com>
 pkgname=fontweak
 pkgver=1.3.1
-pkgrel=2
+pkgrel=6
 pkgdesc="GUI front-end of fontconfig"
 arch=(any)
 url="https://github.com/guoyunhe/fontweak"
@@ -16,7 +16,6 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=()
 changelog=
 source=("https://github.com/guoyunhe/${pkgname}/archive/v1.3.1/${pkgname}-${pkgver}.tar.gz")
 noextract=()
