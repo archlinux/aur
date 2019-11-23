@@ -4,8 +4,8 @@ _use_pycrypto="no"
 _use_pycountry="no"  
 
 pkgname=streamlink-git
-pkgver=1.2.0.r41.gcc32730e
-pkgrel=2
+pkgver=1.3.0.r0.g9253fc51
+pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
 url='https://streamlink.github.io/'
