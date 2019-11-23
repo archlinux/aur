@@ -1,7 +1,7 @@
 # Maintainer: Darryl Pogue <darryl@dpogue.ca>
 
 pkgname="gplugin"
-pkgver=0.28.1
+pkgver=0.29.0
 pkgrel=1
 arch=('i868' 'x86_64')
 pkgdesc="A GObject based library that implements a reusable plugin system"
@@ -20,7 +20,7 @@ source=("$pkgname::hg+https://bitbucket.org/$pkgname/$pkgname#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  meson --prefix /usr --buildtype=plain -D perl=false -D python=false -D lua=false -D tcl=false "$srcdir/$pkgname" build
+  meson --prefix /usr --buildtype=plain -D doc=false -D perl=false -D python=false -D lua=false -D tcl=false "$srcdir/$pkgname" build
   ninja -C build
 }
 
