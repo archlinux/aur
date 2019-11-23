@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=bootinfoscript
-pkgver=0.77
+pkgver=0.78
 pkgrel=1
 pkgdesc="A script which searches all hard drives attached to the computer for information related to booting."
 arch=('i686' 'x86_64')
@@ -16,4 +16,4 @@ package() {
 	chmod +x $pkgdir/usr/bin/bootinfoscript
 }
 
-md5sums=('cc8df0d15e290537600350f913cbab89')
+md5sums=('48221c5714eb45feb321ee1ac823a962')

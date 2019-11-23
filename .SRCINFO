@@ -1,14 +1,14 @@
 pkgbase = bootinfoscript
 	pkgdesc = A script which searches all hard drives attached to the computer for information related to booting.
-	pkgver = 0.77
+	pkgver = 0.78
 	pkgrel = 1
 	url = https://github.com/arvidjaar/bootinfoscript
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = bash
-	source = https://github.com/arvidjaar/bootinfoscript/archive/v0.77.tar.gz
-	md5sums = cc8df0d15e290537600350f913cbab89
+	source = https://github.com/arvidjaar/bootinfoscript/archive/v0.78.tar.gz
+	md5sums = 48221c5714eb45feb321ee1ac823a962
 
 pkgname = bootinfoscript
 
