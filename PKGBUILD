@@ -3,14 +3,13 @@
 
 pkgname=zathura-ypb
 pkgver=0.0.8.2.r30.gbef9bc4
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GTK2 PDF viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/ypb/zat"
 license=('custom')
 depends=('poppler-glib>=0.12.3' 'gtk2>=2.18.6' 'desktop-file-utils')
 makedepends=('git')
-install="zat.install"
 source=("$pkgname::git+https://github.com/ypb/zat.git"
         "zat.desktop" "zat.png")
 md5sums=('SKIP'

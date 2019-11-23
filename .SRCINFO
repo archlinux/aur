@@ -1,9 +1,8 @@
 pkgbase = zathura-ypb
 	pkgdesc = A lightweight GTK2 PDF viewer
 	pkgver = 0.0.8.2.r30.gbef9bc4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ypb/zat
-	install = zat.install
 	arch = i686
 	arch = x86_64
 	license = custom
