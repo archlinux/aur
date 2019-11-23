@@ -11,7 +11,11 @@ pkgbase = freecad-appimage-git
 	noextract = freecad-0.19_18738.AppImage
 	options = !strip
 	source = freecad-0.19_18738.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/0.19_pre/FreeCAD_0.19-18738-Linux-Conda_Py3Qt5_glibc2.12-x86_64.AppImage
-	sha256sums = 0491175b38cdbcc7d17c8930faf4ce2daa7b07fde03b27a1746da298470a6d43
+	source = freecad.sh
+	source = freecad_conda.desktop.patch
+	sha256sums = 60b41ee1e16740b059ade92d21afe14bc69630fa1cee545bd5fd15dafe58666e
+	sha256sums = b052abcbbdb1f5c5743a576c96d83deadb19f490cbcbc1cf61c39cbeb62d1793
+	sha256sums = 927545a2aae158e95dcc16244d49fc124d7c0754a1b6362f7b0f1a27051d879e
 
 pkgname = freecad-appimage-git
 
