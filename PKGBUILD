@@ -1,7 +1,7 @@
 # Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
 pkgname=powershell-preview-bin
-_pkgver=7.0.0-preview.5
+_pkgver=7.0.0-preview.6
 _version=7-preview
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ depends=('libunwind' 'icu' 'openssl-1.0')
 provides=('powershell')
 options=(staticlibs !strip)
 install=powershell-preview.install
-sha256sums=('FAB403167A629080AE1F1F83823B81757BD32F3F327A8EA4B4BDAD58FAA4649F')
+sha256sums=('D99F3198DBF8809E2CB30285E0B9FFF8BFF2362E8BA3B51A4C4FB6BD846EDA35')
 source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.ubuntu.18.04_amd64.deb")
 
 package() {
