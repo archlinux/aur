@@ -1,0 +1,16 @@
+pkgbase = phppgadmin-relhasoids
+	pkgdesc = The premier web-based administration tool for postgresql
+	pkgver = 7.12.1
+	pkgrel = 1
+	url = https://github.com/xzilla/phppgadmin/tree/relhasoids
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	provides = phppgadmin
+	conflicts = phppgadmin
+	source = git+https://github.com/xzilla/phppgadmin#branch=relhasoids
+	md5sums = SKIP
+
+pkgname = phppgadmin-relhasoids
+
