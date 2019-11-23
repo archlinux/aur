@@ -1,6 +1,6 @@
 pkgbase = coredns
-	pkgdesc = CoreDNS is a DNS server that chains plugins
-	pkgver = 1.6.3
+	pkgdesc = A DNS server that chains plugins
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/coredns/coredns
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = coredns
 	makedepends = make
 	provides = coredns
 	conflicts = coredns-bin
-	source = coredns-1.6.3.tar.gz::https://github.com/coredns/coredns/archive/v1.6.3.tar.gz
+	source = coredns-1.6.5.tar.gz::https://github.com/coredns/coredns/archive/v1.6.5.tar.gz
 	source = coredns.service
 	source = coredns-sysusers.conf
-	sha256sums = e46ba138da4820c74d9daf4464e4ff33ae64aa027e9e1a519a7aac5cd011e89f
+	sha256sums = df2e61a857eb7735258fd230e096e254596f18a89b5504dc2ac687798403343a
 	sha256sums = 030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1
 	sha256sums = 536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7
 
