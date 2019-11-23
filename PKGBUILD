@@ -3,23 +3,20 @@
 
 pkgname=neru-icon-classic-theme
 pkgver=2.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Classic theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-classic-theme"
 license=('LGPL3')
 depends=('gtk-update-icon-cache')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz")
-
-md5sums=('265525887608c3358a792de266954d0e')
-sha1sums=('33328744c5e5a2e02ec9e67743098693eafc7f75')
-sha256sums=('f03e19d145cc7582933ac2c89cfccfd73e2a63f776fab0838629d7b98dcebfb2')
-sha512sums=('5d3ef71c869dd6f63b010fe1e5bba57018ea5310a7f707d7897319e5b2631c3d4bd12e4cfbcf77cd430cb6a887dfa41888c214ea26b29dd3a9e77991114b7a9b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz"
+         'neru-2.7.patch')
+sha256sums=('f03e19d145cc7582933ac2c89cfccfd73e2a63f776fab0838629d7b98dcebfb2'
+            '9e7218102d2569847c6c46944426a9a855e320be02b55493c53ca95861f9023b')
 
 
 prepare() {
-	cd "$srcdir"/"${pkgname}-${pkgver}"
-
+	cd "${pkgname}-${pkgver}"
 	ln -s document-viewer.svg neru-classic-light/32x32/apps/graphics-viewer-document.svg
 	ln -s document-viewer.svg neru-classic-light/32x32/apps/org.gnome.Evince.svg
 	ln -s document-viewer.svg neru-classic-light/32x32/apps/xpdf9.svg
@@ -32,7 +29,7 @@ prepare() {
 	ln -s preferences-system-privacy.svg neru-classic-light/32x32/apps/org.gnome.seahorse.Application.svg
 	ln -s applications-fonts.svg neru-classic-light/32x32/apps/org.gnome.font-viewer.svg
 
-	ln -s edit-find.svg neru-classic-light/32x32/apps/gtk-find.svg
+	
 	ln -s applications-multimedia.svg neru-classic-light/32x32/apps/gmtpicon.svg
 	ln -s fontforge.svg neru-classic-light/32x32/apps/org.fontforge.FontForge.svg
 
@@ -45,20 +42,36 @@ prepare() {
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/redhat-filemanager.svg
 	ln -s system-file-manager.svg neru-classic-light/32x32/apps/user-file-manager.svg
 	ln -s utilities-terminal.svg neru-classic-light/32x32/apps/org.gnome.Terminal.svg
+	
+	ln -s preferences-desktop-color.svg neru-classic-light/32x32/apps/xfce4-color-settings.svg
+	ln -s wps-office-wpsmain.svg neru-classic-light/32x32/apps/wps-office2019-wpsmain.svg
+	ln -s wps-office-wppmain.svg neru-classic-light/32x32/apps/wps-office2019-wppmain.svg
+	ln -s preferences-desktop-color.svg neru-classic-light/32x32/apps/package_graphics.svg
+	ln -s electron.svg neru-classic-light/32x32/apps/electron4.svg
+	ln -s wps-office-wpsmain.svg neru-classic-light/32x32/apps/com.wps.Office2019.wpsmain.svg
+	ln -s wps-office-wppmain.svg neru-classic-light/32x32/apps/com.wps.Office2019.wppmain.svg
+	ln -s wps-office-wpsmain.svg neru-classic-light/32x32/apps/com.wps.Office.wpsmain.svg
+	ln -s wps-office-wppmain.svg neru-classic-light/32x32/apps/com.wps.Office.wppmain.svg
+	ln -s wps-office-etmain.svg neru-classic-light/32x32/apps/wps-office2019-etmain.svg
+	ln -sf preferences-desktop-multimedia.svg neru-classic-light/32x32/apps/redhat-sound_video.svg
+	
+	#ln -s wps-office-pdfmain.svg neru-classic-light/32x32/apps/wps-office2019-pdfmain.svg
+	#ln -s wps-office-pdfmain.svg neru-classic-light/32x32/apps/com.wps.Office2019.pdfmain.svg
+	#ln -s wps-office-pdfmain.svg neru-classic-light/32x32/apps/com.wps.Office.pdfmain.svg
+	#ln -s edit-find.svg neru-classic-light/32x32/apps/gtk-find.svg
+	
+	rm -f neru-classic-light/32x32/apps/pick-colour-picker.svg
+	rm -f neru-classic-light/32x32/apps/xfce-system.svg
+	
+	patch -Np1 -i "${srcdir}"/neru-2.7.patch
 }
 
+
 package() {
-	cd "$srcdir"/"${pkgname}-${pkgver}"
-
-	install -d "$pkgdir/usr/share/icons"
-	cp -r neru-classic-* "$pkgdir"/usr/share/icons/
-
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    local _res
-    for _res in README.md AUTHORS screenshot.svg screenshot.png
-    do
-	install -Dm644 "${_res}" "${pkgdir}/usr/share/doc/${pkgname}/${_res}"
-    done
+    cd "${pkgname}-${pkgver}"
+    install -d "$pkgdir/usr/share/icons"
+    cp -r */ "$pkgdir"/usr/share/icons/
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md AUTHORS screenshot.svg -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
