@@ -1,0 +1,18 @@
+pkgbase = ligaturizer-git
+	pkgdesc = FontForge script to add ligatures to any coding font
+	pkgver = 4.r3.gdaa4dc8
+	pkgrel = 1
+	url = https://github.com/ToxicFrog/Ligaturizer
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = fontforge
+	optdepends = otf-fira-code: default font to copy ligatures from
+	provides = ligaturizer
+	source = ligaturizer::git+https://github.com/ToxicFrog/Ligaturizer.git
+	source = ligaturizer.sh
+	md5sums = SKIP
+	md5sums = 8aaf3b09e5040c727d9aa2c1eab0b464
+
+pkgname = ligaturizer-git
+
