@@ -9,7 +9,7 @@ url="https://sourceforge.net/projects/qdvd"
 license=('GPL2')
 arch=('i586' 'x86_64')
 depends=('qt5-base' 'ffmpeg063-static' 'vlc' 'xine-lib')
-makedepends=('cmake' 'extra-cmake-modules' 'git')
+makedepends=('cmake' 'extra-cmake-modules')
 conflicts=()
 provides=(
   qdvdauthor.desktop
@@ -30,7 +30,7 @@ provides=(
   qrender
 )
 options=()
-source=(https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-$pkgver-010a.tar.gz)
+source=(https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-010a.tar.gz)
 md5sums=('10adc7ca9018333a9bb11224873f70e9')
 
 build() {
