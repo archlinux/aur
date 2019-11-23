@@ -32,6 +32,7 @@ build() {
     .
 }
 
+
 package() {
   install -Dm644 prometheus-pushgateway.service "$pkgdir"/usr/lib/systemd/system/prometheus-pushgateway.service
   cd pushgateway-$pkgver
