@@ -4,8 +4,8 @@
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
 pkgver=3.0.1.2
-pkgrel=1
-_subver=2
+pkgrel=2
+_mainver=`echo $pkgver | cut -f -3 -d '.'`
 pkgdesc="Baidu Net Disk is a cloud storage client (Linux Version)."
 arch=('x86_64')
 depends=('libxss' 'gtk3' 'nss')
@@ -21,16 +21,12 @@ source=("LICENSE.html::https://pan.baidu.com/disk/duty/index.html"
         "0001-baidunetdisk-bin-deksktop-file.patch"
         "baidunetdisk-wrapper.sh")
 
-source_x86_64=("${pkgname}-${pkgver}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${pkgver}/${_pkgname}_linux_${pkgver}.${_subver}.deb")
+source_x86_64=("${pkgname}-${pkgver}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${_mainver}/${_pkgname}_linux_${pkgver}.deb")
 
 sha256sums=('80f8835a1d742ac9aa05701dfc2566b1db07b626d70e0e463688c9b5e4736e1d'
             'd72eb6fa07abc0e7c2298fcecbe4a4e6849c63a6a31c39706e0dfea870e85aff'
             'c0035e038344a154421301b7855c274049ad432a5b06b52efc74831daa73e02e')
 sha256sums_x86_64=('40eb1950af62a8b9b75da8ffb9a74416ae0d3fc886b07f6de7d63673683b1ef3')
-
-pkgver() {
-    printf "%s.%s" ${pkgver} ${_subver}
-}
 
 prepare() {
     bsdtar -xpf "data.tar.xz"
