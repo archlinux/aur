@@ -2,7 +2,7 @@
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=('git-nautilus-icons-common-git')
 pkgver=1.1.1.r7.37db00c
-pkgrel=1
+pkgrel=2
 pkgdesc="Common files for git-nautilus-icons, git-nemo-icons and git-caja-icons"
 arch=('x86_64' 'i686')
 url="https://github.com/chrisjbillington/git_nautilus_icons"
