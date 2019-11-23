@@ -1,0 +1,17 @@
+pkgname="netrunner-bin"
+
+post_install() {
+	echo
+	echo "==> ${pkgname} will be extracted to ~/.local/share/netrunner"
+	echo "==> the first time you run ${pkgname} as your normal user!"
+	echo "==> This needs to be removed manually upon uninstall!"
+	echo
+}
+
+post_remove() {
+	echo
+	echo "==> You have to remove the ${pkgname} directory in your home"
+	echo "==> directory by hand: As your normal user, do:"
+	echo "  ==> rm -rf ~/.local/share/${pkgname}"
+	echo
+}

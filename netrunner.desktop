@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=NetRunner
+Description=NetRunner is a telnet client originally developed in the late 90s in sync with the release of Windows XP. It was intended to be a console telnet client which stayed true to ANSI-BBS emulation and the old school feel of DOS terminals. Some features include batch upload/download Zmodem and Zmodem 8K, multiple phone book, mTelnet and SyncTerm phone book importers, original MSDOS and Amiga fonts with font switching, full screen mode, basic scripting language, mouse support, and font UPSCALING that (when enabled) provides the highest quality BBS terminal, even at 2K full screen resolutions!
+Exec=netrunner
+Terminal=false
+Type=Application
+Icon=/usr/share/netrunner/netrunner.icn
+Categories=Network;Utilities;
