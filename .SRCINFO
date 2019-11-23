@@ -1,0 +1,23 @@
+pkgbase = bubblemail-git
+	pkgdesc = Unread mail notification service
+	pkgver = 0.19
+	pkgrel = 0
+	url = https://framagit.org/razer/bubblemail/
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = vala
+	depends = python
+	depends = python-dbus
+	depends = python-gobject
+	depends = libsecret
+	optdepends = gnome-online-accounts
+	optdepends = gnome-shell
+	optdepends = bubblemail-gnome-shell-extension
+	provides = bubblemail
+	conflicts = bubblemail
+	source = https://framagit.org/razer/bubblemail/-/archive/master/bubblemail-master.tar.bz2
+	sha256sums = SKIP
+
+pkgname = bubblemail-git
+
