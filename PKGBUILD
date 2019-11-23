@@ -2,7 +2,7 @@
 # Contributors: Ben White, Igor Duarte Cardoso, haagch, Olivier Médoc, Rains, Det
 
 pkgname=vmware-patch
-pkgver=15.5.0
+pkgver=15.5.1
 pkgrel=1
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,9 @@ depends=('fuse' 'gtkmm' 'linux-headers' 'ncurses5-compat-libs')
 options=('!emptydirs')
 install=$pkgname.install
 source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.service' 'vmware-usbarbitrator.service' 'vmware-workstation.service'
+        # Workstation Pro/Player 15.5.0
+        'vmmon-15.5.1-5.3.patch'
+        'vmnet-15.5.1-5.3.patch'
         # Workstation Pro/Player 15.5.0
         'vmmon-15.5.0-5.3.patch'
         'vmnet-15.5.0-5.3.patch'
