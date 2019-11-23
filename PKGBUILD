@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/egara/buttermanager"
 license=('GPL')
 groups=()
-depends=('btrfs-progs' 'python>=3')
+depends=('btrfs-progs' 'python>=3' 'python-pyaml')
 makedepends=('git' 'python-setuptools')
 checkdepends=()
 optdepends=()
