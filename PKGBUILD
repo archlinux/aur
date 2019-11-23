@@ -2,7 +2,7 @@
 _pkgname=aiocoap
 pkgname=python-${_pkgname}-git
 pkgver=0.4b1.r12.gb4540f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of CoAP"
 arch=('any')
 url="https://github.com/chrysn/aiocoap"
@@ -24,6 +24,6 @@ package() {
 	python setup.py install --optimize=1 --root="$pkgdir"
 
 	# Do not install tests, to not conflict with other packages
-	_py_version=$(python --version | grep -o '[0-9]\.[0-9]\+')
+	_py_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 	rm -rf "$pkgdir/usr/lib/python${_py_version}/site-packages/tests"
 }
