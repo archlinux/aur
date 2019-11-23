@@ -2,12 +2,12 @@
 # Contributor: Tobias Luther <tobias [at] tonstrom [dot] de>
 
 pkgname=idjc-git
-pkgver=917.4cbc71d
+pkgver=931.9aa8e08
 pkgrel=1
 pkgdesc="Powerful client for individuals interested in streaming live radio shows"
 arch=(i686 x86_64)
 url="http://idjc.sourceforge.net/"
-depends=('dbus-python'
+depends=(
 	 'desktop-file-utils'
 	 'ffmpeg'
 	 'flac'
@@ -18,9 +18,10 @@ depends=('dbus-python'
 	 'libsamplerate'
 	 'libshout-idjc-git'
 	 'libsndfile'
-	 'mutagen'
 	 'pygtk'
 	 'python2'
+	 'python2-dbus'
+	 'python2-mutagen'
 	 'speex'
 	 'twolame'
 	 'vorbis-tools'
