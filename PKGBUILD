@@ -18,7 +18,8 @@ source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases
         "freecad.sh"
         "freecad_conda.desktop.patch")
 
-sha256sums=("60b41ee1e16740b059ade92d21afe14bc69630fa1cee545bd5fd15dafe58666e"
+# skip, since it changes every day
+sha256sums=("SKIP"
             "b052abcbbdb1f5c5743a576c96d83deadb19f490cbcbc1cf61c39cbeb62d1793"
             "927545a2aae158e95dcc16244d49fc124d7c0754a1b6362f7b0f1a27051d879e")
 
