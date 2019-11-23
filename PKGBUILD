@@ -1,4 +1,5 @@
 # Maintainer: graysky <graysky AT archlnux DOT us>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 # Contributor: Joël Schaerer <joel.schaerer@laposte.net>
@@ -6,12 +7,13 @@
 
 pkgname=autojump
 pkgver=22.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=('any')
 url="https://github.com/wting/autojump"
 license=('GPL3')
-depends=('python')
+depends=('python>=3.8')
+_python=python3.8
 source=($pkgname-$pkgver.tar.gz::https://github.com/wting/$pkgname/archive/release-v$pkgver.tar.gz)
 sha256sums=('00daf3698e17ac3ac788d529877c03ee80c3790472a85d0ed063ac3a354c37b1')
 install=readme.install
@@ -25,8 +27,8 @@ package() {
   cd $pkgname-release-v$pkgver
 
   SHELL=/bin/bash ./install.py --destdir "${pkgdir}" \
-                               --prefix 'usr/' \
-                               --zshshare 'usr/share/zsh/site-functions'
+    --prefix 'usr/' \
+    --zshshare 'usr/share/zsh/site-functions'
 
   cd "${pkgdir}/usr/share/$pkgname"
   for i in $pkgname.*
@@ -34,8 +36,8 @@ package() {
   done
 
   # FS#60929
-  install -d "${pkgdir}/usr/lib/python3.8/site-packages"
-  mv ${pkgdir}/usr/bin/*.py "${pkgdir}/usr/lib/python3.8/site-packages"
+  install -d "${pkgdir}/usr/lib/$_python/site-packages"
+  mv ${pkgdir}/usr/bin/*.py "${pkgdir}/usr/lib/$_python/site-packages"
   python -m compileall -d /usr/lib "${pkgdir}/usr/lib"
   python -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
 
