@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.4-rc8
 pkgver=5.4.rc8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -18,12 +18,16 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
-        "${pkgbase}.preset")
+        "${pkgbase}.preset"
+	# patch from our gentoo overlords
+	5012_enable-cpu-optimizations-for-gcc91.patch)
 sha256sums=('SKIP'
              #config.x86_64
-            '51eb14714725d2287ebc5f48bb413dd1cc309b7605d0f48196137a7bf34c0b55'
+            '393d3e945c801e232621c2577e575eb3d6e592359958a21872b1596a1add2173'
              #.preset file
-             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08')
+             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
+             #patch file
+             'fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b')
 
 _kernelname=${pkgbase#linux}
 
@@ -44,6 +48,9 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
+
+  # Implement cpu optimisation (MZEN2) patch from our gentoo lords
+  git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
 
   # get kernel version
   yes "" | make prepare
