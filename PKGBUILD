@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-handy-git
-pkgver=163.6b19a4f
+pkgver=179.4b97a35
 pkgrel=1
 pkgdesc="libretro implementation of Handy. (Atari Lynx)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
