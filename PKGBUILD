@@ -1,7 +1,7 @@
 # Maintainer:  thoth <thoth@mailoo.org>
 pkgname=python-odrive
 _pkgnamepython=odrive
-pkgver=0.4.9
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="python tools for odrive motors"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-matplotlib: required to run the liveplotter')
 source=("https://files.pythonhosted.org/packages/source/${_pkgnamepython::1}/${_pkgnamepython}/${_pkgnamepython}-${pkgver}.tar.gz")
 
 
-sha256sums=('6a17f48654459268fac275d29b2532b7477b891dda7d5998e9e4fc5366db73fe')
+sha256sums=('fa0db10c827192955bdbfa6327e4e839c7999b4086b5162e1569dc149530bab7')
 noextract=()
 
 build() {

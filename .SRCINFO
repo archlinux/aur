@@ -1,6 +1,6 @@
 pkgbase = python-odrive
 	pkgdesc = python tools for odrive motors
-	pkgver = 0.4.9
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/madcowswe/ODrive
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-odrive
 	depends = python-requests
 	depends = python-intelhex
 	optdepends = python-matplotlib: required to run the liveplotter
-	source = https://files.pythonhosted.org/packages/source/o/odrive/odrive-0.4.9.tar.gz
-	sha256sums = 6a17f48654459268fac275d29b2532b7477b891dda7d5998e9e4fc5366db73fe
+	source = https://files.pythonhosted.org/packages/source/o/odrive/odrive-0.4.11.tar.gz
+	sha256sums = fa0db10c827192955bdbfa6327e4e839c7999b4086b5162e1569dc149530bab7
 
 pkgname = python-odrive
 
