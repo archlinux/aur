@@ -9,7 +9,7 @@ _url_qt="https://github.com/PapirusDevelopmentTeam/materia-kde"
 pkgver=r1211.c95281e8
 pkgrel=1
 license=('GPL')
-makedepends=()
+makedepends=(bc sassc inkscape)
 depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra' 'kvantum-qt5')
 optdepends=()
 provides=()
