@@ -2,14 +2,14 @@
 
 pkgname='gnunet-fuse-git'
 _appname='gnunet-fuse'
-pkgver='0.11.0.r112.56513fc'
+pkgver='0.11.8.r136.060ab11'
 pkgrel=1
 pkgdesc='Read-only mounting of GNUnet directories as file systems using FUSE'
 arch=('any')
 url='https://gnunet.org/'
 license=('GPL')
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${_appname}" "${_appname}-bin")
 depends=('gnunet' 'fuse2')
 makedepends=('autoconf')
 source=("git+https://gnunet.org/git/${_appname}.git")
