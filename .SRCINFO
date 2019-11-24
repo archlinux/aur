@@ -1,8 +1,8 @@
-pkgbase = breezeway-mod-git
-	pkgdesc = BreezewayMod is a fork of the Breezeway window decoration which aims to mimic the macOS interface.
-	pkgver = r65.17b8cc6
+pkgbase = hello-kde-git
+	pkgdesc = hello. is a compilation of various color-schemes, themes, icons and more for the KDE Plasma desktop. It is unopinionated, putting you in charge.
+	pkgver = r47.1400b81
 	pkgrel = 1
-	url = https://github.com/n4n0GH/breezeway-mod
+	url = https://github.com/n4n0GH/hello
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,9 +11,9 @@ pkgbase = breezeway-mod-git
 	makedepends = extra-cmake-modules
 	makedepends = kdecoration
 	depends = kwin
-	provides = breezeway-mod
-	source = git+https://github.com/n4n0GH/breezeway-mod.git
+	provides = hello-kde
+	source = git+https://github.com/n4n0GH/hello.git
 	md5sums = SKIP
 
-pkgname = breezeway-mod-git
+pkgname = hello-kde-git
 

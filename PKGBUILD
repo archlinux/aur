@@ -1,18 +1,18 @@
 # Maintainer: Dylan Simowitz <aur@dylan.simowitz.com>
 
-pkgname="breezeway-mod-git"
-_pkgname="breezeway-mod"
-pkgver=r65.17b8cc6
+pkgname="hello-kde-git"
+_pkgname="hello"
+pkgver=r47.1400b81
 pkgrel=1
-pkgdesc="BreezewayMod is a fork of the Breezeway window decoration which aims to mimic the macOS interface."
+pkgdesc="hello. is a compilation of various color-schemes, themes, icons and more for the KDE Plasma desktop. It is unopinionated, putting you in charge."
 arch=('i686' 'x86_64')
-url="https://github.com/n4n0GH/breezeway-mod"
+url="https://github.com/n4n0GH/hello"
 license=('GPL2')
 depends=('kwin')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdecoration')
-source=('git+https://github.com/n4n0GH/breezeway-mod.git')
+source=('git+https://github.com/n4n0GH/hello.git')
 md5sums=('SKIP')
-provides=('breezeway-mod')
+provides=('hello-kde')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
