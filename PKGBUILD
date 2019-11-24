@@ -2,10 +2,10 @@
 
 pkgname=gorsync-git
 _pkgname=go-rsync
-pkgver=0.3.2
+pkgver=0.3.3
 epoch=
 pkgrel=1
-pkgdesc="Best GTK+ client frontend for RSYNC console utility."
+pkgdesc="GTK+ frontend (backup application) for RSYNC utility."
 arch=('x86_64' 'i686')
 url="https://github.com/d2r2/go-rsync"
 license=('GPL3')
@@ -50,12 +50,13 @@ build() {
     # export GOPATH="${srcdir}/.go"
     mv "${srcdir}/${_pkgname}" "${srcdir}/.go/src/github.com/d2r2/"
     cd "${srcdir}/.go/src/github.com/d2r2/${_pkgname}/"
-    # download and build main package and all dependencies
-    # retrying n times, due to issue with go get functionality
+    # Download and build main package and all dependencies
+    # retrying n times, due to issue(?) with go get functionality.
+    # Probably the cycle should be eliminated in next releases.
     n=0
-    until [ $n -ge 7 ]
+    until [ $n -ge 1 ]
     do
-        GOPATH="${srcdir}/.go" go get -v all && \
+        GOPATH="${srcdir}/.go" go get -v -u ./... && \
             GOPATH="${srcdir}/.go" ./gorsync_build.sh --buildtype Release && \
             break  # substitute your command here
         n=$[$n+1]
