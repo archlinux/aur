@@ -2,7 +2,7 @@
 
 _pkgname=peasy
 pkgname="${_pkgname}-git"
-pkgver=0.6.r137.3c8a558
+pkgver=0.9.r146.b3d43ff
 pkgrel=1
 pkgdesc="A plugin for Geany  which allows to load other plugins written in Python or Lua (Git version)"
 url="https://github.com/kugel-/peasy/"
@@ -20,24 +20,21 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  ver=$(grep PACKAGE_VERSION= configure | cut -f 2 -d "'")
+  ver=$(git describe --tags | sed -e 's/^v//' -e 's/-/_/g')
   echo $ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  ./autogen.sh
-}
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
+
   make DESTDIR="${pkgdir}" install
 }
 
