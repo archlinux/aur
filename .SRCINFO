@@ -19,7 +19,7 @@ pkgbase = vte3-notification
 	depends = pcre2
 	depends = gnutls
 	options = !emptydirs
-	source = git+https://git.gnome.org/browse/vte#tag=0.56.3
+	source = git+https://git.gnome.org/browse/vte#tag=0.58.3
 	source = vte291-cntnr-precmd-preexec-scroll.patch-b067afd77f6dbc789b9844dbe4b455ed77540464::https://src.fedoraproject.org/rpms/vte291/raw/b067afd77f6dbc789b9844dbe4b455ed77540464/f/vte291-cntnr-precmd-preexec-scroll.patch
 	sha256sums = SKIP
 	sha256sums = 9e2f27aad738d11226161f066c0eefc831a3aa1ec6f043d53104382a8e752d2d
@@ -29,13 +29,13 @@ pkgname = vte3-notification
 	depends = pcre2
 	depends = gnutls
 	depends = vte-notification-common
-	provides = vte3=0.56.3
+	provides = vte3=0.58.3
 	conflicts = vte3
 
 pkgname = vte-notification-common
 	pkgdesc = Common files used by vte and vte3
 	arch = any
 	depends = sh
-	provides = vte-common=0.56.3
+	provides = vte-common=0.58.3
 	conflicts = vte-common
 
