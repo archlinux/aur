@@ -1,6 +1,6 @@
 pkgbase = mintstick
 	pkgdesc = A GUI to write .img or .iso files to a USB Key. It can also format them
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mintstick
 	arch = any
@@ -17,17 +17,17 @@ pkgbase = mintstick
 	depends = parted
 	depends = polkit
 	depends = procps-ng
-	depends = python2
-	depends = python2-dbus
-	depends = python2-gobject
-	depends = python2-pyparted
-	depends = python2-xapp
+	depends = python
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-pyparted
+	depends = python-xapp
 	depends = udisks2
 	depends = util-linux
 	depends = xapps
 	conflicts = mintstick-git
-	source = mintstick-1.4.0.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.4.0.tar.xz
-	sha256sums = f618a8ef0ee5a5a672cd7818fdb2b1322ffcabc7ad6a60718cd51198a240505d
+	source = mintstick-1.4.1.tar.xz::http://packages.linuxmint.com/pool/main/m/mintstick/mintstick_1.4.1.tar.xz
+	sha256sums = 7720a79e1bf0bb8ba09270bdb6441b5ed2d87dadc9355f74d59792dd6777eb17
 
 pkgname = mintstick
 

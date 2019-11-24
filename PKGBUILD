@@ -1,7 +1,7 @@
-# Maintainer: Sam Burgos < santiago dot burgos1089 at gmail dot com >
+# Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mintstick
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='A GUI to write .img or .iso files to a USB Key. It can also format them'
 arch=('any')
@@ -19,11 +19,11 @@ depends=(
     parted
     polkit
     procps-ng
-    python2
-    python2-dbus
-    python2-gobject
-    python2-pyparted
-    python2-xapp
+    python
+    python-dbus
+    python-gobject
+    python-pyparted
+    python-xapp
     udisks2
     util-linux
     xapps
@@ -35,7 +35,7 @@ conflicts=(
     mintstick-git
 )
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('f618a8ef0ee5a5a672cd7818fdb2b1322ffcabc7ad6a60718cd51198a240505d')
+sha256sums=('7720a79e1bf0bb8ba09270bdb6441b5ed2d87dadc9355f74d59792dd6777eb17')
 
 prepare() {
   cd ${pkgname}
