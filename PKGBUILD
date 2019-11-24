@@ -1,16 +1,14 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _name=airnef
-pkgbase="python-${_name}"
-pkgname=("python-${_name}" "python2-${_name}")
+pkgname="python-${_name}"
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Wireless download from your Nikon/Sony/Canon camera"
 arch=('any')
 url="http://www.testcams.com/airnef/"
 license=('GPL3')
-depends=('tk')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python' 'tk')
 source=("http://www.testcams.com/airnef/Version_1.1/airnef_v1.1_Source.zip"
         "airnef-linux.patch")
 sha512sums=('b45b0591e42179d1e5b5eea9ede6762d311cd0642585c54568c90111424e2ca316aa444d772b4855afe42f25b6cc4b3e1b78bb5a0c2a4cb52440535894a5cba6'
@@ -24,34 +22,16 @@ prepare() {
   patch -N -p1 -i "${srcdir}"/airnef-linux.patch
 }
 
-package_python-airnef() {
-  pkgdesc+=" (for Python 3.x)"
+package() {
   cd "${srcdir}/${_name}"
 
   local py_ver=$(python -c 'import sys; print("%i.%i" % sys.version_info[:2])')
-  local package_dir="${pkgdir}/usr/lib/python${py_ver}/site-packages/$_name"
-  install -dm755 "${package_dir}"/appresource
-  install *.py "${package_dir}"
-  install airnef.pyw "${package_dir}"/airnef.py
-  install appresource/* "${package_dir}"/appresource/
+  local package_dir="/usr/lib/python${py_ver}/site-packages/$_name"
+  install -dm755 "${pkgdir}${package_dir}"/appresource
+  install *.py "${pkgdir}${package_dir}"
+  install airnef.pyw "${pkgdir}${package_dir}"/airnef.py
+  install appresource/* "${pkgdir}${package_dir}"/appresource/
   install -dm755 "${pkgdir}"/usr/bin
   ln -s "${package_dir}"/airnef.py "${pkgdir}"/usr/bin/airnef
   ln -s "${package_dir}"/airnefcmd.py "${pkgdir}"/usr/bin/airnefcmd
-}
-
-package_python2-airnef() {
-  pkgdesc+=" (for Python 2.x)"
-
-  cd "${srcdir}/${_name}"
-  local py_ver=$(python2 -c 'import sys; print "%i.%i" % sys.version_info[:2]')
-  local package_dir="${pkgdir}/usr/lib/python${py_ver}/site-packages/$_name"
-  install -dm755 "${package_dir}"/appresource
-  install *.py "${package_dir}"
-  install airnef.pyw "${package_dir}"/airnef.py
-  install appresource/* "${package_dir}"/appresource/
-  install -dm755 "${pkgdir}"/usr/bin
-  sed -i 's|env python$|env python2|' "${package_dir}"/airnef.py
-  sed -i 's|env python$|env python2|' "${package_dir}"/airnefcmd.py
-  ln -s "${package_dir}"/airnef.py "${pkgdir}"/usr/bin/airnef2
-  ln -s "${package_dir}"/airnefcmd.py "${pkgdir}"/usr/bin/airnefcmd2
 }
