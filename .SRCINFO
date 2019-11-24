@@ -1,0 +1,14 @@
+pkgbase = funkicrab-git
+	pkgdesc = Optimising Brainfuck compiler written in Rust
+	pkgver = r18.98528cc
+	pkgrel = 1
+	url = https://github.com/zesterer/funkicrab
+	arch = x86_64
+	license = unknown
+	makedepends = rust-nightly
+	depends = gcc-libs
+	source = git+git://github.com/zesterer/funkicrab.git
+	md5sums = SKIP
+
+pkgname = funkicrab-git
+
