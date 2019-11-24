@@ -1,33 +1,20 @@
 pkgname=gram-wallet-bin
-pkgver=0.9.2
-pkgrel=21156636
+pkgver=0.9.4
+pkgrel=1
 provides=('gram-wallet')
 conflicts=('gram-wallet' 'gram-wallet-git')
 pkgdesc="Desktop Gram Wallet"
 arch=('x86_64')
 depends=()
-makedepends=('wget' 'jq' 'grep')
-url="https://mfcoin.net/"
+url="https://github.com/ton-blockchain/wallet-desktop"
 license=('GPL3')
-repo="ton-blockchain/wallet-desktop"
-current_release=$(wget -O - https://api.github.com/repos/${repo}/releases/${pkgrel} 2>/dev/null)
-
-_tarball(){
-    assets=$(echo "${current_release}" | jq '.assets')
-    length=$(echo "${assets}" | jq '. | length')
-    for (( i=0; i <= $length; i++ )); do
-        url=$(echo "${assets}" | jq --raw-output ".[$i].browser_download_url")
-        name=$(echo "${assets}" | jq --raw-output ".[$i].label")
-        echo "$name" | grep -P '[Ll]inux.*64' > /dev/null && echo "$url"
-    done
-}
 
 source_x86_64=(
-    "$(_tarball)"
+    "https://github.com/ton-blockchain/wallet-desktop/releases/download/v0.9.4/wsetup.0.9.4.tar.xz"
 )
 
 sha256sums_x86_64=(
-    '6fa5ae92f3c539c558d21bd50f61d45e424ccd2fc8c08100b9d20ed2b1d7d564'
+    '6cc7b2eeb9d4ed219905c1227e3f7f25bdce36c714d45b538bd4bc626bc6d12b'
 )
 
 package() {

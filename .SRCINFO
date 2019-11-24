@@ -1,18 +1,15 @@
 pkgbase = gram-wallet-bin
 	pkgdesc = Desktop Gram Wallet
-	pkgver = 0.9.2
-	pkgrel = 21156636
-	url = https://mfcoin.net/
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/ton-blockchain/wallet-desktop
 	arch = x86_64
 	license = GPL3
-	makedepends = wget
-	makedepends = jq
-	makedepends = grep
 	provides = gram-wallet
 	conflicts = gram-wallet
 	conflicts = gram-wallet-git
-	source_x86_64 = https://github.com/ton-blockchain/wallet-desktop/releases/download/v0.9.2/wsetup.0.9.2.tar.xz
-	sha256sums_x86_64 = 6fa5ae92f3c539c558d21bd50f61d45e424ccd2fc8c08100b9d20ed2b1d7d564
+	source_x86_64 = https://github.com/ton-blockchain/wallet-desktop/releases/download/v0.9.4/wsetup.0.9.4.tar.xz
+	sha256sums_x86_64 = 6cc7b2eeb9d4ed219905c1227e3f7f25bdce36c714d45b538bd4bc626bc6d12b
 
 pkgname = gram-wallet-bin
 
