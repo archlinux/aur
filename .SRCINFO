@@ -1,25 +1,17 @@
 pkgbase = python-radon
+	pkgdesc = A tool that computes various metrics for Python source code
 	pkgver = 4.0.0
 	pkgrel = 2
 	url = https://radon.readthedocs.org/
 	arch = any
 	license = MIT
 	makedepends = python-sphinx
-	makedepends = python2-sphinx
-	source = https://files.pythonhosted.org/packages/source/r/radon/radon-4.0.0.tar.gz
-	sha256sums = 20f799949e42e6899bc9304539de222d3bdaeec276f38fbd4034859ccd548b46
-
-pkgname = python-radon
-	pkgdesc = A tool that computes various metrics for Python source code
 	depends = python-flake8-polyfill
 	depends = python-future
 	depends = python-mando
 	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/r/radon/radon-4.0.0.tar.gz
+	sha256sums = 20f799949e42e6899bc9304539de222d3bdaeec276f38fbd4034859ccd548b46
 
-pkgname = python2-radon
-	pkgdesc = A tool that computes various metrics for Python source code (Python2)
-	depends = python2-flake8-polyfill
-	depends = python2-future
-	depends = python2-mando
-	depends = python2-colorama
+pkgname = python-radon
 
