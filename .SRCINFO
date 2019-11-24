@@ -1,0 +1,18 @@
+pkgbase = ashes
+	pkgdesc = Drop-in replacement for Vulkan shared library, for older hardware compatibility
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/DragonJoker/Ashes
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = libxrandr
+	depends = mesa
+	provides = ashes
+	conflicts = ashes
+	source = git+https://github.com/DragonJoker/Ashes.git
+	sha256sums = SKIP
+
+pkgname = ashes
+
