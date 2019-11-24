@@ -1,7 +1,7 @@
 pkgbase = flightgear
 	pkgdesc = An open-source, multi-platform flight simulator
 	pkgver = 2019.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.flightgear.org/
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = flightgear
 	depends = libxmu
 	depends = libxi
 	depends = zlib
-	depends = openscenegraph34
+	depends = openscenegraph
 	depends = libxrandr
 	depends = glu
 	depends = openal
