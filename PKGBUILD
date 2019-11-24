@@ -2,7 +2,7 @@
 
 _pkgname=CPPurses
 pkgname=cppurses
-pkgver=0.2.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="C++14 Terminal User Interface framework with NCurses."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:MIT')
 depends=()
 makedepends=('ncurses' 'cmake' 'git')
 source=("${url}/archive/v$pkgver.tar.gz")
-sha256sums=('d80a6d67d3302081ebaf9c8e26a8d9a19de9e8a904eed232fa3c8e7a02c75006')
+sha256sums=('a23bde3e9f26d44d3abe38eaf9937da5d6a87f7e2f1d8b2cce3c9d9d6f16d3e9')
 
 prepare() {
     cd "$_pkgname-$pkgver"
