@@ -1,14 +1,13 @@
 pkgbase = python-primesieve
-	pkgdesc = Fast prime number generator. Python bindings for primesieve C/C++ library
-	pkgver = 1.4.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/hickford/primesieve-python
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/primesieve/primesieve-1.4.4.tar.gz
-	sha256sums = 58bbff5c6928254e4fadd21ce324d8bae97aa706f72d69b1b0e1bf7ed6a1925c
+	source = https://files.pythonhosted.org/packages/source/p/primesieve/primesieve-2.0.0.tar.gz
+	sha256sums = da7d5f13e0c5949ef598642aa39fcd9aa84487b116d8ea7d5e3a47a6ed2936cb
 
 pkgname = python-primesieve
 	depends = python

@@ -1,16 +1,16 @@
 pkgbase='python-primesieve'
 pkgname=('python-primesieve')
 _module='primesieve'
-pkgver='1.4.4'
+pkgver='2.0.0'
 pkgrel=1
-pkgdesc="Fast prime number generator. Python bindings for primesieve C/C++ library"
+pkgdesc=""
 url="https://github.com/hickford/primesieve-python"
 depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('58bbff5c6928254e4fadd21ce324d8bae97aa706f72d69b1b0e1bf7ed6a1925c')
+sha256sums=('da7d5f13e0c5949ef598642aa39fcd9aa84487b116d8ea7d5e3a47a6ed2936cb')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
