@@ -3,7 +3,7 @@
 # my old fork is at https://sourceforge.net/u/ilikenwf/mcomix/ci/gtk3/tree/
 
 pkgname=mcomix-gtk3-git
-pkgver=r1853.8f61454
+pkgver=r1883.2ce9f7a
 pkgrel=1
 pkgdesc="A comic book reader. Forked from MComix and ported to GTK3."
 arch=('any')
@@ -34,13 +34,13 @@ package() {
   # setup.py doesn't work – setting up manually
  
   # their installer
-  python installer.py --srcdir=mcomix --target="${pkgdir}"/usr/lib/python3.7
+  python installer.py --srcdir=mcomix --target="${pkgdir}"/usr/lib/python3.8
  
   # but leave out the additional directory, so the module is in the correct directory
-  mv "${pkgdir}"/usr/lib/python3.7/mcomix "${pkgdir}"/usr/lib/python3.7/site-packages
+  mv "${pkgdir}"/usr/lib/python3.8/mcomix "${pkgdir}"/usr/lib/python3.8/site-packages
   mkdir "${pkgdir}"/usr/bin
-  mv "${pkgdir}"/usr/lib/python3.7/site-packages/mcomixstarter.py "${pkgdir}"/usr/bin/mcomix
-  mv "${pkgdir}"/usr/lib/python3.7/site-packages/comicthumb.py "${pkgdir}"/usr/bin/comicthumb
+  mv "${pkgdir}"/usr/lib/python3.8/site-packages/mcomixstarter.py "${pkgdir}"/usr/bin/mcomix
+  mv "${pkgdir}"/usr/lib/python3.8/site-packages/comicthumb.py "${pkgdir}"/usr/bin/comicthumb
  
   # other files
   install -Dm644 "${srcdir}/mcomix3"/man/* -t "${pkgdir}"/usr/share/man/man1/
@@ -53,8 +53,8 @@ package() {
   do
     install -Dm644 "${srcdir}/mcomix3"/mime/icons/${size}x${size}/* -t "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/mimetypes/
     mkdir "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/
-    ln -s /usr/lib/python3.7/site-packages/mcomix/images/${size}x${size}/mcomix.png \
+    ln -s /usr/lib/python3.8/site-packages/mcomix/images/${size}x${size}/mcomix.png \
       "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/
   done
-  rm "${pkgdir}"/usr/lib/python3.7/site-packages/mcomix/images/mcomix-large.png
+  rm "${pkgdir}"/usr/lib/python3.8/site-packages/mcomix/images/mcomix-large.png
 }
