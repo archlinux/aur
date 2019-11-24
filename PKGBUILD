@@ -1,10 +1,11 @@
+# Maintainer: Evan Tatarka <evan @ tatarka . me>
 # Contributor: Daniel Wallace <daniel.wallace at gatech dot edu>
 # Once In AUR3 this package used to have 4690 votes, but was a troll and now fixed
-# Maintainer: Pablo Lezaeta <prflr88 @ gmail . com> (Pony Provider)
+# Contributor: Pablo Lezaeta <prflr88 @ gmail . com> (Pony Provider)
 
 pkgname=ponysay-git
 _pkgname=ponysay
-pkgver=3.0.3+1
+pkgver=3.0.3+25
 pkgrel=1
 pkgdesc="Cowsay reimplementation for ponies."
 arch=("any")
@@ -12,7 +13,7 @@ url="https://github.com/erkin/ponysay"
 license=("GPL3" "FDL")
 depends=("python3" "coreutils")
 provides=("ponysay")
-conflicts=("ponysay" "ponysay-git")
+conflicts=("ponysay")
 optdepends=("util-say:  Improved TTY support utilising KMS and support for PNG files")
 makedepends=("git" "texinfo")
 screenshot="http://i.imgur.com/xOJbE.png"

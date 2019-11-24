@@ -1,6 +1,6 @@
 pkgbase = ponysay-git
 	pkgdesc = Cowsay reimplementation for ponies.
-	pkgver = 3.0.3+1
+	pkgver = 3.0.3+25
 	pkgrel = 1
 	url = https://github.com/erkin/ponysay
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = ponysay-git
 	optdepends = util-say: Improved TTY support utilising KMS and support for PNG files
 	provides = ponysay
 	conflicts = ponysay
-	conflicts = ponysay-git
 	source = ponysay::git+https://github.com/erkin/ponysay.git
 	md5sums = SKIP
 
