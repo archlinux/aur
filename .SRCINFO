@@ -1,0 +1,13 @@
+pkgbase = raphnet-manager
+	pkgdesc = Raphnet USB adapter management tools
+	pkgver = r364.62fecb4
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	source = git+https://github.com/raphnet/gcn64tools.git
+	source = https://gist.githubusercontent.com/aconscious/45070a48fb6cb0bfa2f0287307f40202/raw/c961dcddb3f8018da38aba2d20d9bc5735cc3c72/raphnet%2520adapter%2520manager
+	md5sums = SKIP
+	md5sums = 0ad61fc552c3d984fc9f23f3e0a46b65
+
+pkgname = raphnet-manager
+
