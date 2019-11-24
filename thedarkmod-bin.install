@@ -1,0 +1,3 @@
+post_install() {
+	echo "In order to run the game, you need to add the user to the 'games' group"
+}
