@@ -1,0 +1,15 @@
+pkgbase = truffleruby-jdk11-bin
+	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 11 version)
+	pkgver = 19.3.0
+	pkgrel = 1
+	url = https://github.com/oracle/truffleruby
+	arch = x86_64
+	license = EPL
+	license = GPL2
+	license = LGPL2.1
+	depends = jdk11-graalvm-bin
+	source = https://github.com/oracle/truffleruby/releases/download/vm-19.3.0/ruby-installable-svm-java11-linux-amd64-19.3.0.jar
+	sha256sums = 593feefd10f06743b4768e1b37242b2364b5b72cb335ce1c7bcddc900b8846fd
+
+pkgname = truffleruby-jdk11-bin
+
