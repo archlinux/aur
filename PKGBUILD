@@ -1,6 +1,6 @@
 # Maintainer : David Beley <dbeley@protonmail.com>
 pkgname=ypc-git
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,6 +18,7 @@ depends=(
         'python-beautifulsoup4'
         'python-lxml'
         'python-tqdm'
+        'python-itunespy'
         )
 source=("git+https://github.com/dbeley/${pkgname%-git}")
 md5sums=("SKIP")

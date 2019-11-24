@@ -1,6 +1,6 @@
 pkgbase = ypc-git
 	pkgdesc = Convert spotify/deezer/text albums/playlists to youtube urls and/or download audio/video files.
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/dbeley/ypc
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = ypc-git
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-tqdm
+	depends = python-itunespy
 	provides = ypc
 	conflicts = ypc
 	source = git+https://github.com/dbeley/ypc
