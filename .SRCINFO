@@ -1,5 +1,6 @@
 pkgbase = python-rtmidi
-	pkgver = 1.3.0
+	pkgdesc = Python bindings for the cross-platform MIDI I/O library RtMidi
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/python-rtmidi
 	arch = i686
@@ -7,20 +8,11 @@ pkgbase = python-rtmidi
 	arch = arm
 	license = MIT
 	makedepends = cython
-	makedepends = cython2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	depends = jack
-	source = https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-1.3.0.tar.gz
-	sha256sums = 61e9d1c1f1202a1577f06644948af985427030984ff956970a22b50f080d4c2d
-
-pkgname = python-rtmidi
-	pkgdesc = Python bindings for the cross-platform MIDI I/O library RtMidi
 	depends = jack
 	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-1.3.1.tar.gz
+	sha256sums = f9d2a1b5374b2e6856006537b6d4d5ceed4db4c4ee60caec4af83707a78297e4
 
-pkgname = python2-rtmidi
-	pkgdesc = Python 2 bindings for the cross-platform MIDI I/O library RtMidi
-	depends = jack
-	depends = python2
+pkgname = python-rtmidi
 
