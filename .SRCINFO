@@ -1,0 +1,17 @@
+pkgbase = pandoc-plantuml-filter-py
+	pkgdesc = Pandoc filter for PlantUML code blocks, python version
+	pkgver = 0.1.2
+	pkgrel = 2
+	url = https://pypi.org/project/pandoc-plantuml-filter
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pandocfilters
+	conflicts = pandoc-plantuml-filter
+	replaces = pandoc-plantuml-filter
+	source = https://files.pythonhosted.org/packages/2b/a6/d63364f4f89314efc29b541d9422532bd6825f0fa64f6e471ecce8500516/pandoc-plantuml-filter-py-0.1.2.tar.gz
+	sha256sums = 2a26b6375f2ee6d34ee2498fecf1d6c8ace5cf6f8bbe5745d186ebce5d1dc720
+
+pkgname = pandoc-plantuml-filter-py
+
