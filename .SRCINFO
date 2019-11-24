@@ -6,7 +6,6 @@ pkgbase = ffmpeg063-static
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	source = https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2
 	md5sums = cdf4ad9b2a4d195b5ca874494bc7b0b0
 

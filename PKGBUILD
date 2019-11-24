@@ -1,4 +1,4 @@
-# Maintainer: Suchan Roland <snrd at arcor dot de>
+# Maintainer: Roland Suchan <snrd at arcor dot de>
 
 
 pkgname=ffmpeg063-static
@@ -20,6 +20,7 @@ provides=(
   'libavformat.a'
   'libavutil.a'
   'libswscale.a'
+  'ffmpeg063'
 )
 options=('staticlibs')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2")
