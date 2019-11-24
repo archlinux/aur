@@ -13,6 +13,7 @@ pkgbase = ckb-next-git
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = quazip
+	depends = qt5-tools
 	optdepends = libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)
 	optdepends = libpulse
 	provides = ckb-next
