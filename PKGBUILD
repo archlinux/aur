@@ -3,7 +3,7 @@
 
 pkgname=check-manifest
 pkgver=0.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Check MANIFEST.in in a Python package for completeness"
 arch=('any')
 url="https://github.com/mgedmin/check-manifest"
