@@ -6,7 +6,7 @@
 # Maintainer: nbebaw
 pkgname=cpumanagergui
 pkgver=1.2
-pkgrel=2
+pkgrel=4
 pkgdesc="CPU controler with a gui"
 arch=('any')
 url="https://github.com/nbebaw/cpumanagergui"
