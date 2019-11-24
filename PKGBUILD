@@ -2,12 +2,12 @@
 
 pkgname=polychromatic
 pkgver=0.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc='A graphical front end for managing Razer peripherals under GNU/Linux.'
 arch=('any')
 url='https://github.com/polychromatic/polychromatic'
 license=('GPL3')
-depends=('python' 'hicolor-icon-theme' 'python-openrazer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
+depends=('python' 'python-distro' 'hicolor-icon-theme' 'python-openrazer' 'webkit2gtk' 'libappindicator-gtk3' 'imagemagick')
 makedepends=('nodejs-less')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/polychromatic/polychromatic/archive/v$pkgver.tar.gz"
         "0001-Migrate-platform-module-to-distro-v0.3.12.patch")
