@@ -3,7 +3,7 @@
 
 pkgname=linux-show-player
 pkgver=0.5.1_py3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Sound cue playback software designed for live musical shows and theatre plays"
 url="http://linux-show-player.sourceforge.net/"
 arch=('any')
@@ -18,6 +18,12 @@ options=('!emptydirs')
 source=("https://github.com/FrancescoCeruti/${pkgname}/archive/v${pkgver/_/-}.tar.gz")
 sha256sums=('2a9bd80fa45c508c9c19d7edd430199290c9096f74e520e766f99a8223297946')
 
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver/_/-}"
+
+  sed -i -e 's|\\$||' lisp/ui/ui_utils.py
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver/_/-}"

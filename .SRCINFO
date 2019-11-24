@@ -1,7 +1,7 @@
 pkgbase = linux-show-player
 	pkgdesc = Sound cue playback software designed for live musical shows and theatre plays
 	pkgver = 0.5.1_py3.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://linux-show-player.sourceforge.net/
 	arch = any
 	license = GPL3
