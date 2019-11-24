@@ -1,5 +1,5 @@
---- src/serveradmin-1.7.0/setup.py	2019-08-07 15:43:13.000000000 +0200
-+++ for_patch	2019-11-24 22:27:56.427862010 +0100
+--- a/setup.py	2019-11-24 23:12:47.120782692 +0100
++++ b/setup.py	2019-11-24 23:14:51.695064193 +0100
 @@ -14,7 +14,7 @@
          name='adminapi',
          description='Serveradmin module',
@@ -9,3 +9,11 @@
          package_data={
              'serveradmin.api': ['templates/api/*'],
              'serveradmin.apps': ['templates/apps/*'],
+@@ -43,7 +43,6 @@
+         },
+         entry_points={
+             'console_scripts': [
+-                'serveradmin=serveradmin.__main__:main',
+                 'adminapi=adminapi.__main__:main',
+             ],
+         },
