@@ -53,8 +53,8 @@ _src="${_name}-${_version}.${_lang}.linux-${_carch}"
 _filename="${_build_id[date]}-${_build_id[time]}-${_src}"
 source=('firefox-nightly.desktop'
         'policies.json'
-        "${_filename}.tar.bz2"::"${_url}/${_src}.linux-x86_64.tar.bz2"
-        "${_filename}.tar.bz2.asc"::"${_url}/${_src}.linux-x86_64.tar.bz2.asc")
+        "${_filename}.tar.bz2"::"${_url}/${_src}.tar.bz2"
+        "${_filename}.tar.bz2.asc"::"${_url}/${_src}.tar.bz2.asc")
 sha512sums=('b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
             '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
             'SKIP'
