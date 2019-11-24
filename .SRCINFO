@@ -1,0 +1,14 @@
+pkgbase = python-uiutil
+	pkgdesc = Utility module to assist creating Tk GUIs
+	pkgver = 1.36.3
+	pkgrel = 1
+	url = https://bitbucket.org/daycoder/uiutil
+	arch = any
+	license = custom:PSF
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/u/uiutil/uiutil-1.36.3.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-uiutil
+
