@@ -10,16 +10,16 @@ url='https://ffmpeg.org/'
 license=('GPL2')
 depends=()
 provides=(
-  libavcodec.so
-  libavdevice.so
-  libavformat.so
-  libavutil.so
-  libswscale.so
-  libavcodec.a
-  libavdevice.a
-  libavformat.a
-  libavutil.a
-  libswscale.a
+  'libavcodec.so'
+  'libavdevice.so'
+  'libavformat.so'
+  'libavutil.so'
+  'libswscale.so'
+  'libavcodec.a'
+  'libavdevice.a'
+  'libavformat.a'
+  'libavutil.a'
+  'libswscale.a'
 )
 options=('staticlibs')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.bz2")
