@@ -1,7 +1,7 @@
 pkgbase = otf-san-francisco-mono
 	pkgdesc = Monospaced variant of San Francisco. Sourced directly from Apple.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.apple.com/fonts/
 	arch = any
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = otf-san-francisco-mono
 	makedepends = xar
 	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/SF-Mono.dmg
-	md5sums = da5cc357ca677b57454e7cacb336d036
+	md5sums = d93f9f19c962547d18b72f532e91ecdd
 
 pkgname = otf-san-francisco-mono
 
