@@ -3,14 +3,15 @@
 
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Python library for distributed computing"
 arch=('any')
-depends=('python>=3.5' 'python-click>=6.6' 'python-cloudpickle>=0.2.2'
-'python-dask>=2.5.2' 'python-msgpack' 'python-psutil>=5.0'
-'python-sortedcontainers>2.0.1' 'python-tblib' 'python-toolz>=0.7.4'
-'python-tornado>=5' 'python-zict>=0.1.3' 'python-yaml')
+depends=(
+  'python' 'python-click' 'python-cloudpickle' 'python-dask' 'python-msgpack'
+  'python-psutil' 'python-sortedcontainers' 'python-tblib' 'python-toolz'
+  'python-tornado' 'python-zict' 'python-yaml'
+)
 optdepends=(
   # Packages suggested in dev-requirements.txt
   'python-joblib: Joblib integration'
@@ -34,7 +35,7 @@ optdepends=(
 url="http://distributed.readthedocs.org/en/stable/"
 license=('BSD')
 source=("$pkgver.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/$pkgver")
-sha256sums=('2e9a92877ac31ff292ec24ba4c6f52f6cebc692ece7101f205ffb4dce73d0b4e')
+sha256sums=('f3fab1d6f8484c4a19f7d07ca4d1ecfaf86ded126ffe8e8675a1743d460c70c1')
 
 build() {
   cd "$_pkgname-$pkgver"
