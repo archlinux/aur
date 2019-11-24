@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moosex-enumeration'
-pkgver='0.008'
+pkgver='0.009'
 pkgrel='1'
 pkgdesc="a native attribute trait for enums"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-module-runtime>=0' 'perl-moose>=1.15' 'perl-match-simple>=0' 'per
 makedepends=()
 checkdepends=('perl-test-fatal>=0' 'perl-test-requires>=0.006')
 url='https://metacpan.org/release/MooseX-Enumeration'
-source=('https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/MooseX-Enumeration-0.008.tar.gz')
-md5sums=('cbed709ecf12c578d32b7f6492493f1a')
-sha512sums=('5682978fb2efd8bdf4105dca92d442ca0c6d3604b48aa42388c57854cfbb36ce40c677cf5340f432b034a267fd581e3df63754b39dc6b8900b1e0b0e360cc29a')
-_distdir="MooseX-Enumeration-0.008"
+source=('https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/MooseX-Enumeration-0.009.tar.gz')
+md5sums=('a6e27c2d6121ea5ce7b587f4e55bdb28')
+sha512sums=('89dff673fd8a6734750d32251da53c2730071941903ff8a5c66c2286605bac92f56f04241ee32926af507fdcbbd473cba46cb03fa52223bb4a7f1a5fe06e719c')
+_distdir="MooseX-Enumeration-0.009"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
