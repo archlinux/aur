@@ -8,7 +8,7 @@ Type=simple
 User=vmango
 Group=vmango
 Environment=VMANGO_CONFIG="/etc/vmango.conf"
-ExecStart=/usr/bin/vmango
+ExecStart=/usr/bin/vmango web
 
 [Install]
 WantedBy=multi-user.target

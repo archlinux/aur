@@ -3,7 +3,7 @@
 _pkgname=vmango
 
 pkgname=${_pkgname}-git
-pkgver=v0.9.0.r2.g47e93e7
+pkgver=v0.10.0.r0.g054da00
 pkgrel=1
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
@@ -23,7 +23,7 @@ source=("${_pkgname}::git+https://github.com/subuk/vmango.git"
         "sysusers"
         "tmpfiles")
 sha512sums=('SKIP'
-            '4b729f55f3d90337a9d259df1da383c17d7e5d506701b20c5b5fd4c03f7647988cc93a088921c8c3d6283426b4ab6c3e846997e78a6ab03598993506e7e457ce'
+            '958fa25dfb96394483ee5ed3d78bbfbf0d846b921be3fd0ce481f19918b40227e38debee8ec5de655f4d8e866997b44f97a316ad6eac791174444c052f18ec08'
             'de9d454c87fadf9b2cea3ba2acd417a1201abae2d79a58187f0c96d0163ad921a96710b7c24ff9907bfd1d42242abeffbaec9a6cacb1b26c3b76ed219610ab12'
             '42b09bd69fb6562f6e44da0faa021f10e1bd30abe5e9215d882d5b08f37082a65a658594c9b81e04aaf9a6ed16f1b7947ed6804be015c4ec78656effde8a84d5')
 
