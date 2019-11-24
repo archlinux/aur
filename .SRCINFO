@@ -8,7 +8,6 @@ pkgbase = qdvdauthor
 	license = GPL
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = git
 	depends = qt5-base
 	depends = ffmpeg063-static
 	depends = vlc
