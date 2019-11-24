@@ -1,8 +1,8 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=('pipdeptree')
-pkgver='0.13.2'
-pkgrel=1
+pkgver=0.13.2
+pkgrel=2
 pkgdesc="Command line utility to show dependency tree of Python packages"
 url="https://github.com/naiquevin/${pkgname}"
 depends=('python-pip')
