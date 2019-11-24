@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-moveit-planners-ompl
 	pkgdesc = ROS - MoveIt interface to OMPL.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
@@ -15,6 +15,7 @@ pkgbase = ros-melodic-moveit-planners-ompl
 	makedepends = ros-melodic-dynamic-reconfigure
 	makedepends = ros-melodic-moveit-ros-planning
 	makedepends = ros-melodic-eigen-conversions
+	makedepends = ros-melodic-moveit-resources
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-moveit-core
 	depends = ros-melodic-ompl
