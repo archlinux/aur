@@ -2,8 +2,8 @@
 
 pkgname=('python-pgzero')
 _module='pgzero'
-pkgver='1.2'
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc="A zero-boilerplate 2D games framework"
 url="http://pypi.python.org/pypi/pgzero"
 depends=('python-numpy' 'python-pygame')
