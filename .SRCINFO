@@ -1,0 +1,14 @@
+pkgbase = python-stateutil
+	pkgdesc = A collection of state machine utilities
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://bitbucket.org/daycoder/stateutil
+	arch = any
+	license = custom:PSF
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/s/stateutil/stateutil-1.4.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-stateutil
+
