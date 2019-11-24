@@ -1,6 +1,6 @@
 pkgbase = jgd-fall-sunset
 	pkgdesc = A dark GTK theme collection with an orange, brown and blue color scheme
-	pkgver = 11_10_18
+	pkgver = 11_23_19
 	pkgrel = 1
 	url = https://www.jasong-designs.com/2018/11/11/jgd-fallsunset/
 	arch = any
@@ -10,9 +10,10 @@ pkgbase = jgd-fall-sunset
 	depends = gtk-engine-murrine
 	optdepends = openbox: optional window manager theme
 	optdepends = metacity: optional window manager theme
+	optdepends = xfwm4: optional window manager theme
 	optdepends = ttf-dejavu: font support
-	source = https://github.com/jgpws/jgd-fall-sunset/raw/master/downloads/jgd-fall-sunset-11-10-18.tar.gz
-	md5sums = 5ffee5ba96760ca508e525683b318c6d
+	source = https://github.com/jgpws/jgd-fall-sunset/raw/master/downloads/jgd-fall-sunset-11-23-19.tar.gz
+	md5sums = eac6a34ce523254f3289c32948ff36fc
 
 pkgname = jgd-fall-sunset
 
