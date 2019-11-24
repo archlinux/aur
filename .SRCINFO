@@ -8,7 +8,7 @@ pkgbase = btrfs-snapshot
 	depends = bash
 	depends = btrfs-progs
 	source = https://github.com/YHNdnzj/btrfs-snapshot/archive/3.3.2.tar.gz
-	sha256sums = ca8a8d231b8804eeabb0ff9264a2fbb6207d04f0387052ddb016bce03ba84a4b
+	sha256sums = 9a51bc8dfa9effd692da9449d0bc6275707784387703d6277d0695564937b0c7
 
 pkgname = btrfs-snapshot
 
