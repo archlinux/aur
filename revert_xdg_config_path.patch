@@ -1,12 +1,10 @@
---- a/FreeFileSync/Source/base/ffs_paths.cpp	2019-06-13 20:39:40.000000000 +0200
-+++ b/FreeFileSync/Source/base/ffs_paths.cpp	2019-06-17 08:28:10.960031518 +0200
-@@ -73,9 +73,6 @@
-     ZEN_ON_SCOPE_EXIT(wxTheApp->SetAppName(appName));
+--- a/FreeFileSync/Source/base/ffs_paths.cpp    2019-11-19 23:52:20.000000000 +0100
++++ b/FreeFileSync/Source/base/ffs_paths.cpp    2019-11-24 18:14:17.627328553 +0100
+@@ -80,6 +80,4 @@
  
--    Zstring cfgFolderPath;
--    //OS standard path (XDG layout): ~/.config/FreeFileSync
--    //wxBug: wxStandardPaths::GetUserDataDir() does not honor FileLayout_XDG flag
--    wxStandardPaths::Get().SetFileLayout(wxStandardPaths::FileLayout_XDG);
--    cfgFolderPath = appendSeparator(utfTo<Zstring>(wxStandardPaths::Get().GetUserConfigDir())) + "FreeFileSync";
-+    //OS standard path (classic layout): ~/.FreeFileSync
-+    Zstring cfgFolderPath = utfTo<Zstring>(wxStandardPaths::Get().GetUserDataDir());
+-        //OS standard path (XDG layout): ~/.config/FreeFileSync
+-        //wxBug: wxStandardPaths::GetUserDataDir() does not honor FileLayout_XDG flag
+-        wxStandardPaths::Get().SetFileLayout(wxStandardPaths::FileLayout_XDG);
+-        const Zstring cfgFolderPath = appendSeparator(utfTo<Zstring>(wxStandardPaths::Get().GetUserConfigDir())) + "FreeFileSync";
++        //OS standard path (classic layout): ~/.FreeFileSync
++        Zstring cfgFolderPath = utfTo<Zstring>(wxStandardPaths::Get().GetUserDataDir());
