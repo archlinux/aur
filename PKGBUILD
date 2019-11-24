@@ -2,8 +2,8 @@
 
 _pkgbase=monero
 pkgname=monero-gui-bin
-pkgver=0.14.1.0
-pkgrel=2
+pkgver=0.15.0.1
+pkgrel=1
 pkgdesc="Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)"
 arch=("x86_64")
 conflicts=("${_pkgbase}")
@@ -23,14 +23,14 @@ provides=("monerod=${pkgver}"
 )
 install=monero-gui-bin.install
 
-
-source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
+source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/linux64}"
+#source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
     "monero-wallet-gui.desktop"
 )
 
-sha256sums=("51739f0472ccbd49832a5828ca1000ebb1ce63b19dd57507b7905739bf8cf238"
-    "21765940c2fdd504c0550afa96eb4efa896e298c4761c87f52f637eb368f5736"
+sha256sums=("85a6885849d578691a09834c66ed55af4783ea8347b7784de9ea46e90995a57c"
+    "f08a864ac8a2438965eb25080e5c21d4f60ef1d6b099f622eb7416fac96fb6ef"
     "1a88e0dd59687fc19f4ca84b43311c506e04c1723cb9972faf427942723c73d2"
 )
 
@@ -44,7 +44,7 @@ package() {
     # Fix permissions
     chmod -R +rX "${pkgdir}/usr/share/monero-gui"
     chmod +x "${pkgdir}/usr/share/monero-gui/monero-wallet-gui"
-    chmod +x "${pkgdir}/usr/share/monero-gui/start-gui.sh"
+    #chmod +x "${pkgdir}/usr/share/monero-gui/start-gui.sh"
 
     # Wallet launcher script
     install -Dm755 "monero-wallet-gui" "${pkgdir}/usr/bin/monero-wallet-gui"
@@ -59,7 +59,7 @@ package() {
     desktop-file-install -m 644 --dir="${pkgdir}/usr/share/applications/" "monero-wallet-gui.desktop"
 
     # Patch start-gui.sh to support launching with flags
-    sed -e 's/monero-wallet-gui/monero-wallet-gui\ \"\$\@\"/g' -i "${pkgdir}/usr/share/monero-gui/start-gui.sh"
+    #sed -e 's/monero-wallet-gui/monero-wallet-gui\ \"\$\@\"/g' -i "${pkgdir}/usr/share/monero-gui/start-gui.sh"
 
     # Binary symlinks
     ln -sf /usr/share/monero-gui/monerod "${pkgdir}/usr/bin/monerod"

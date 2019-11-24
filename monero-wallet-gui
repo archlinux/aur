@@ -2,4 +2,4 @@
 export QT_QPA_FONTDIR="/usr/share/fonts/TTF" # Fixes invisible text on arch
 
 cd /usr/share/monero-gui
-./start-gui.sh "$@"
+./monero-wallet-gui "$@"
