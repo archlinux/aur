@@ -1,7 +1,7 @@
 pkgbase = python-systemd-dbus-git
 	pkgdesc = Python wrapper for systemd system and session manager dbus interfaces
 	pkgver = 0.1.r29.d930fea
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wiliamsouza/python-systemd
 	arch = any
 	license = LGPL-2.1
