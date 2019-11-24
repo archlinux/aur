@@ -4,7 +4,7 @@
 
 _name=sxiv
 pkgname="${_name}-dir-navigation-git"
-pkgver=v25.r10.g07300da
+pkgver=25.r10.g07300da
 pkgrel=1
 pkgdesc="Simple X Image Viewer (with patch to browse through images in working directory)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_name}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

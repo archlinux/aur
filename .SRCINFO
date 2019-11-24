@@ -1,6 +1,6 @@
 pkgbase = sxiv-dir-navigation-git
 	pkgdesc = Simple X Image Viewer (with patch to browse through images in working directory)
-	pkgver = v25.r10.g07300da
+	pkgver = 25.r10.g07300da
 	pkgrel = 1
 	url = https://github.com/muennich/sxiv
 	arch = x86_64
