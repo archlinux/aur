@@ -23,7 +23,7 @@ provides=("monerod=${pkgver}"
 )
 install=monero-gui-bin.install
 
-source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/linux64}"
+source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.getmonero.org/gui/linux64"
 #source=("${pkgname}-${pkgver}.tar.bz2::https://github.com/monero-project/monero-gui/releases/download/v${pkgver}/monero-gui-linux-x64-v${pkgver}.tar.bz2"
     "monero-wallet-gui"
     "monero-wallet-gui.desktop"
