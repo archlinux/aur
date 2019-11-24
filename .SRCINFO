@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.3.11.1
+	pkgver = 5.3.13.1
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -16,15 +16,15 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-v5.3.11-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-v5.3.11-arch1.tar.gz
+	source = linux-v5.3.13-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-v5.3.13-arch1.tar.gz
 	source = config
 	source = 0001_bmq_v5.3-r2.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.3/bmq_v5.3-r2.patch
 	source = 0002_enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = c3131052c167ddae606f47d91d233effe452caad700930cecb8e620bde3e0032
-	sha256sums = 9421bec4db4a5eeeef64ece14d7eda55a7b1c4b2ebaf2821fadf2f93a5ceff4c
+	sha256sums = 3091726cf4d0a9de54d282ea595a6b6a6ff47b9f518c971d08cea3d5d65a3c24
+	sha256sums = fdbf604275bb911d2f4b64e3697b39d77cbadcd027b36caca655929c9b9b2ded
 	sha256sums = 131ce6048e26771f5b017ceb4cc7106cd646c28ae8ce6d46c0fca92bed5f82ae
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 
@@ -35,11 +35,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.3.11.1
+	provides = linux-gc=5.3.13.1
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.3.11.1
-	provides = linux-headers=5.3.11.1
+	provides = linux-gc-headers=5.3.13.1
+	provides = linux-headers=5.3.13.1
 
