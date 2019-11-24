@@ -1,20 +1,14 @@
 pkgbase = graal-bin
-	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other)
-	pkgver = 19.2.1
+	pkgdesc = Virtual package for backwards compatibility; please directly install jdk8-graalvm-bin instead
+	pkgver = 19.3.0
 	pkgrel = 1
 	url = https://www.graalvm.org/
-	install = graal-bin.install
 	arch = x86_64
 	license = custom
-	depends = java-runtime-common
-	depends = java-environment-common
+	depends = jdk8-graalvm-bin
 	optdepends = graal-native-image: plugin to generate native binary images (used to be bundled with this package before the 19.0.0 release)
-	provides = java-runtime=8
-	provides = java-environment=8
 	provides = graal
 	conflicts = graal
-	source = https://github.com/oracle/graal/releases/download/vm-19.2.1/graalvm-ce-linux-amd64-19.2.1.tar.gz
-	sha256sums = c3af1238c8021cbf018e4824a39823a246256596979bd6ec55685ccf661b253b
 
 pkgname = graal-bin
 
