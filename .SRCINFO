@@ -1,7 +1,7 @@
 pkgbase = vsco-scraper
 	pkgdesc = Allows for easy scraping of one VSCO at a time
 	pkgver = 0.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mvabdi/vsco-scraper
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=vsco-scraper
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Allows for easy scraping of one VSCO at a time"
 arch=("any")
