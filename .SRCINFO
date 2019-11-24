@@ -1,0 +1,14 @@
+pkgbase = python-logging-tree
+	pkgdesc = Introspect and display the logger tree inside logging
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/brandon-rhodes/logging_tree
+	arch = any
+	license = custom:PSF
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/l/logging_tree/logging_tree-1.8.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-logging-tree
+
