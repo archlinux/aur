@@ -1,10 +1,11 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
+# Maintainer: Rihards Skuja <rhssk at posteo dot eu>
+# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: ArmandasJ <armandas@gmail.com>
 pkgname=aspell-lv
 pkgver=0.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Latvian aspell dictionary'
-arch=('i686' 'x86_64')
+arch=('any')
 depends=('aspell')
 url='ftp://ftp.gnu.org/gnu/aspell/dict/0index.html'
 source=("ftp://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2"
