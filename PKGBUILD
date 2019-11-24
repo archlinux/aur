@@ -36,7 +36,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "restore_ua_overrides.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/restore_ua_overrides.patch"
-        "bmo1480003.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/bmo1480003.patch")
+        "bmo1480003.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/bmo1480003.patch"
+        rust_1.39.patch)
 sha256sums=('SKIP'
             'b0ec717b10494dad234a10c9ba9c2a89ed52fd0afbc3b98bb8c4f9c5dd4755a0'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -48,7 +49,8 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             'e179856821d463be8ceb75313fa8eb44be7d8580c81b4897e867fefc3e89a864'
-            '56e5ed40df1cb84606e9d095b05e5e8d9a397198a1eb6491e208d5f888266ee7')
+            '56e5ed40df1cb84606e9d095b05e5e8d9a397198a1eb6491e208d5f888266ee7'
+            'e5a1cc8d651744252910f9b3090d0f284445d8a480a14ec649411c487083a3c7')
 
 prepare() {
   mkdir path
@@ -71,6 +73,8 @@ prepare() {
   patch -Np1 -i ../restore_ua_overrides.patch
 
   patch -Np1 -i ../bmo1480003.patch
+
+  patch -Np1 -i ../rust_1.39.patch
 
   cat >.mozconfig <<END
 export CC=clang
