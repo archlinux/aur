@@ -11,7 +11,7 @@ pkgbase = spotirec-git
 	depends = python-requests>=2.22.0
 	depends = python-pillow>=6.2.0
 	provides = spotirec
-	source = spotirec-r97.ed9ec77::git+https://github.com/Badgie/spotirec
+	source = git+https://github.com/Badgie/spotirec
 	md5sums = SKIP
 
 pkgname = spotirec-git

@@ -14,7 +14,7 @@ depends=('python>=3.8.0'
         'python-pillow>=6.2.0')
 makedepends=('git')
 provides=("${_pkgname}")
-source=("${_pkgname}-${pkgver}::git+https://github.com/Badgie/spotirec")
+source=("git+https://github.com/Badgie/spotirec")
 md5sums=('SKIP')
 
 pkgver() {
