@@ -1,8 +1,8 @@
 # maintainer: craftyguy <clayton@craftyguy.net>
 pkgname=prosody-mod-conversejs-hg
 pkgver=r3755.bb18a1f5e9d7
-pkgrel=1
-pkgdesc="Prosody module that allows interop between older clients that use XEP-0048: Bookmarks in its 1.0 version and recent clients which use it in PEP"
+pkgrel=2
+pkgdesc="Prosody module that serves a small snippet of HTML that loads Converse.js"
 arch=('any')
 url="https://modules.prosody.im/mod_conversejs.html"
 license=('MIT')
