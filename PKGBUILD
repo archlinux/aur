@@ -3,7 +3,7 @@
 pkgname=signal-desktop
 _pkgname=Signal-Desktop
 pkgver=1.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Electron application that links with Signal on mobile'
 arch=(x86_64)
 url=https://signal.org
@@ -13,7 +13,7 @@ makedepends=(
   yarn
   git
   python2
-  nodejs
+  'nodejs>=12.4.0'
   npm
   python
 )
