@@ -1,7 +1,7 @@
 pkgbase = python-gpiozero
 	pkgdesc = A simple interface to GPIO devices with Raspberry Pi
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gpiozero/gpiozero
 	arch = any
 	license = BSD

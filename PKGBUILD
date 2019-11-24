@@ -4,7 +4,7 @@
 _pkgname=gpiozero
 pkgname="python-${_pkgname}"
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple interface to GPIO devices with Raspberry Pi'
 arch=('any')
 url="https://github.com/${_pkgname}/${_pkgname}"
