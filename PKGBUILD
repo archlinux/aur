@@ -3,7 +3,7 @@
 
 pkgname=emacs-pkgbuild-mode-git
 pkgver=0.14.1.r8.gd237beb
-pkgrel=1
+pkgrel=2
 pkgdesc="A major mode for creating packages with emacs"
 arch=('any')
 url="https://github.com/stefanhusmann/pkgbuild-mode"
@@ -28,10 +28,10 @@ build() {
 }
 
 package() {
-  install -d $pkgdir/usr/share/emacs/site-lisp
-  install -m644 $srcdir/$_gitname/*.el* \
-	  $pkgdir/usr/share/emacs/site-lisp/
-  install -Dm755 $srcdir/$_gitname/prepare_4_aur4.sh \
-	  $pkgdir/usr/bin/prepare_4_aur4.sh
+  install -d "$pkgdir"/usr/share/emacs/site-lisp
+  install -m644 "$srcdir"/$_gitname/*.el* \
+	  "$pkgdir"/usr/share/emacs/site-lisp/
+  install -Dm755 "$srcdir"/$_gitname/prepare_4_aur4.sh \
+	  "$pkgdir"/usr/bin/prepare_4_aur4.sh
 }
 
