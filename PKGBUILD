@@ -2,7 +2,7 @@
 
 pkgname=jack-select
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A systray app to set the JACK configuration from QjackCtl presets via DBus."
 arch=('any')
 url="https://github.com/SpotlightKid/jack-select"
