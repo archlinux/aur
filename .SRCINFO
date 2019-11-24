@@ -1,0 +1,22 @@
+pkgbase = git-annex-standalone
+	pkgdesc = Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency.
+	pkgver = 7.20191107
+	pkgrel = 1
+	url = https://git-annex.branchable.com/
+	arch = x86_64
+	license = GPL
+	depends = file
+	depends = git
+	depends = lsof
+	depends = rsync
+	depends = sqlite
+	provides = git-annex
+	conflicts = git-annex
+	source = git-annex-standalone-amd64-7.20191107.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz
+	source = git-annex-standalone-amd64-7.20191107.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.sig
+	validpgpkeys = 40055C6AFD2D526B2961E78F5EE1DBA789C809CB
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = git-annex-standalone
+
