@@ -1,7 +1,7 @@
 pkgbase = lightdm-slick-greeter
 	pkgdesc = A slick-looking LightDM greeter
-	pkgver = 1.2.7
-	pkgrel = 2
+	pkgver = 1.2.8
+	pkgrel = 1
 	url = https://github.com/linuxmint/slick-greeter
 	install = slick-greeter.install
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = lightdm-slick-greeter
 	depends = xorg-server
 	optdepends = numlockx: enable numerical keypad on supported keyboard
 	backup = etc/lightdm/slick-greeter.conf
-	source = slick-greeter-master.mint19.tar.gz::https://github.com/linuxmint/slick-greeter/archive/master.mint19.tar.gz
-	sha256sums = 51a1adec0c88544691e28f850af38f4a3fbe4d5afa4ab5323524fc71894724f1
+	source = slick-greeter-1.2.8.tar.gz::https://github.com/linuxmint/slick-greeter/archive/1.2.8.tar.gz
+	sha256sums = c21994beb58e911a687e7982823c8cbbaf8d4a22da02fa7c9af97dc71116eff4
 
 pkgname = lightdm-slick-greeter
 
