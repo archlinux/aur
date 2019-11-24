@@ -7,9 +7,9 @@ pkgrel=4
 pkgdesc='Latvian aspell dictionary'
 arch=('any')
 depends=('aspell')
-url='ftp://ftp.gnu.org/gnu/aspell/dict/0index.html'
-source=("ftp://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2"
-        "ftp://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2.sig")
+url='https://ftp.gnu.org/gnu/aspell/dict/0index.html'
+source=("https://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2"
+        "https://ftp.gnu.org/gnu/aspell/dict/lv/aspell6-lv-$pkgver-1.tar.bz2.sig")
 license=('GPL2')
 sha256sums=('3c30e206ea562b2e759fb7467680e1a01d5deec5edbd66653c83184550d1fb8a'
             'SKIP')
