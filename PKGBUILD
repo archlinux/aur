@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.3
-_minor=12
+_minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -74,7 +74,7 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patc
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_1}"
-        # "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_2}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_2}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -339,9 +339,10 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('84eec92afff148295e6d6a2c47046e5a270c2934ad696f1102793f0566d32e7bd1ea1dc70a4be066cad9ede0a9a712a0a33fbc31f64b7440031c39c0e33acdd0'
+sha512sums=('bc9e98cc666761b94bae2a13d4cd9f4a5b563526d634e1185653b936e7d53edf1d0d8545835794c2196ab7b91d03651a7035ab41a2492adaefcf307791e050b3'
             'SKIP'
             'efcbf8d75018b601f92ed4a189db661c9805d2fcb5516053422129eed78aee3d219be6715e088455d31a8d407b78e33fa2981e7cbb17dd4ac2bd0655a5b7e7ef'
+            'd56d0c23b8d72d6112f143e1d394d0e22bddd27baba11afd8731c4912c1942ecc5be4fdf539ee7e098109700c8450796dbf0de59c4f449f12e842487a5760fa8'
             'b23bdbadf79f89893ccea500dc29f501763103d581bdd744a1247046fc992b541a114448804d3e0260bcbcc8df07c3b79988905289c88899a16944619e907978'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
