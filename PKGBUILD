@@ -19,7 +19,7 @@ source=(${_buildenv[@]}
         ${_executable[@]}
         ${_tidy[@]}
         ${_conf[@]})
-sha1sums=('4c69c617b88bb26ced5562f844aa249d49ff1ad0'
+sha1sums=('2b746b2d8bf57691f1b25afce96a2752f6eee7e5'
           '61c765080f3d41dbae15be9212667f9e6364550b'
           'd7a3801037333c582dba976db27cf8896bc1b401'
           'c99d9cb49dd31924a1cb298bcfe142cef31a9fd3'
