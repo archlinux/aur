@@ -1,0 +1,15 @@
+pkgbase = libsmall-git
+	pkgdesc = tarantool specialized memory allocators
+	pkgver = 0.r122.57e48de
+	pkgrel = 1
+	url = https://github.com/sonntex/small
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	provides = libsmall
+	conflicts = libsmall
+	source = git+https://github.com/sonntex/small.git
+	sha256sums = SKIP
+
+pkgname = libsmall-git
+
