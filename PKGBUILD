@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=btrfs-snapshot
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
