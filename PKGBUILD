@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=bat-extras-git
 pkgver=r71.8339354
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash scripts that integrate bat with various command line tools'
 arch=('any')
 _gitname='bat-extras'
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    ./build.sh --minify=none
+    ./build.sh --minify=none --no-verify
 }
 
 package() {
