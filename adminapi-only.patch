@@ -1,0 +1,11 @@
+--- src/serveradmin-1.7.0/setup.py	2019-08-07 15:43:13.000000000 +0200
++++ for_patch	2019-11-24 22:27:56.427862010 +0100
+@@ -14,7 +14,7 @@
+         name='adminapi',
+         description='Serveradmin module',
+         url='https://github.com/innogames/serveradmin',
+-        packages=find_packages(exclude=["serveradmin_*"]),
++        packages=find_packages(include=['adminapi*']),
+         package_data={
+             'serveradmin.api': ['templates/api/*'],
+             'serveradmin.apps': ['templates/apps/*'],

@@ -1,24 +1,19 @@
 pkgbase = python-adminapi
 	pkgdesc = Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames
-	pkgver = 1.4.3
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/InnoGames/serveradmin
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = serveradmin.tar.gz::https://github.com/InnoGames/serveradmin/archive/v1.4.3.tar.gz
-	sha256sums = 050da40183d1d3ade1016aaf012655f28253dfa335d37ead44df0d6b0535dd7b
-
-pkgname = python-adminapi
 	depends = python
 	depends = python-ipaddress
 	depends = python-netaddr
 	conflicts = python-adminapi-git
+	source = serveradmin.tar.gz::https://github.com/InnoGames/serveradmin/archive/v1.7.0.tar.gz
+	source = adminapi-only.patch
+	sha256sums = aad9999e3b9ef37389025435c7dd20323b0420dc50786c247e731e18a13e08e2
+	sha256sums = a1b19bafdfb32f997cfacb4855cfcbb1681e77fbff1ec292aa4cdbaebb11d107
 
-pkgname = python2-adminapi
-	depends = python2
-	depends = python2-ipaddress
-	depends = python2-netaddr
-	conflicts = python2-adminapi-git
+pkgname = python-adminapi
 

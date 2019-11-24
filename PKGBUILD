@@ -2,32 +2,29 @@
 
 _name=adminapi
 _srcname=serveradmin
-pkgbase="python-${_name}"
-pkgname=("python-${_name}" "python2-${_name}")
-pkgver=1.4.3
+pkgname="python-${_name}"
+conflicts=("python-${_name}-git")
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Adminapi is a python module which can be used to talk to the open source serveradmin project by Innogames'
 arch=('any')
 url="https://github.com/InnoGames/${_srcname}"
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
+depends=('python' 'python-ipaddress' 'python-netaddr')
 license=('MIT')
-source=("${_srcname}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('050da40183d1d3ade1016aaf012655f28253dfa335d37ead44df0d6b0535dd7b')
+source=(
+  "${_srcname}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  'adminapi-only.patch'
+)
+sha256sums=(
+  'aad9999e3b9ef37389025435c7dd20323b0420dc50786c247e731e18a13e08e2'
+  'a1b19bafdfb32f997cfacb4855cfcbb1681e77fbff1ec292aa4cdbaebb11d107'
+)
 
 
-package_python2-adminapi() {
-  depends=('python2' 'python2-ipaddress' 'python2-netaddr')
-  conflicts=("python2-${_name}-git")
+package() {
   cd "${srcdir}/${_srcname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  mv "${pkgdir}/usr/bin/${_name}"  "${pkgdir}/usr/bin/${_name}2"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
-}
-
-package_python-adminapi() {
-  depends=('python' 'python-ipaddress' 'python-netaddr')
-  conflicts=("python-${_name}-git")
-  cd "${srcdir}/${_srcname}-${pkgver}"
+  patch < ../adminapi-only.patch
   python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"LICENSE
 }
