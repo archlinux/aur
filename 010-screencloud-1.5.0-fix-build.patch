@@ -1,0 +1,39 @@
+diff -Naurp a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-06-30 19:28:31.000000000 +0000
++++ b/CMakeLists.txt	2019-11-24 17:39:45.214293986 +0000
+@@ -266,17 +266,6 @@ set(REQUIRED_LIBS ${REQUIRED_LIBS}
+   ${QUAZIP_LIBRARY}
+ )
+ 
+-#Find Python
+-if(PYTHON_USE_PYTHON3)
+-    find_package(PythonLibs 3.3 REQUIRED)
+-else(PYTHON_USE_PYTHON3)
+-    find_package(PythonLibs 2.6 REQUIRED)
+-endif(PYTHON_USE_PYTHON3)
+-include_directories(${PYTHON_INCLUDE_DIR})
+-set(REQUIRED_LIBS ${REQUIRED_LIBS}
+-    ${PYTHON_LIBRARIES}
+-)
+-
+ #Find PythonQt
+ find_package(PythonQt REQUIRED)
+ include_directories(${PYTHONQT_INCLUDE_DIR})
+@@ -296,6 +285,17 @@ else(PYTHONQT_QTALL_FOUND)
+     message(STATUS "Using PythonQt_QtBindings (old) for Qt bindings.")
+ endif(PYTHONQT_QTALL_FOUND)
+ 
++#Find Python
++if(PYTHON_USE_PYTHON3)
++    find_package(PythonLibs 3.3 REQUIRED)
++else(PYTHON_USE_PYTHON3)
++    find_package(PythonLibs 2.6 REQUIRED)
++endif(PYTHON_USE_PYTHON3)
++include_directories(${PYTHON_INCLUDE_DIR})
++set(REQUIRED_LIBS ${REQUIRED_LIBS}
++    ${PYTHON_LIBRARIES}
++)
++
+ #Platform specific libs
+ if(WIN32)
+     set(REQUIRED_LIBS ${REQUIRED_LIBS}
