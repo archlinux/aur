@@ -1,6 +1,6 @@
 pkgbase = lucky
 	pkgdesc = A web framework written in Crystal
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://luckyframework.org/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lucky
 	depends = crystal
 	depends = shards
 	conflicts = lucky-git
-	source = lucky_cli-0.18.0.tar.gz::https://github.com/luckyframework/lucky_cli/archive/v0.18.0.tar.gz
-	sha256sums = cf3168acae10fc79141b0a7c1baf87672f0c4c81c31768a94e62ade0f3faf812
+	source = lucky_cli-0.18.1.tar.gz::https://github.com/luckyframework/lucky_cli/archive/v0.18.1.tar.gz
+	sha256sums = d110948fde43cc62e35419f0db6231f60b76171b365b3d9e9d4d106362832cd3
 
 pkgname = lucky
 
