@@ -1,7 +1,7 @@
 pkgbase = mu-editor
 	pkgdesc = A simple Python editor for beginner programmers
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codewith.mu/
 	arch = any

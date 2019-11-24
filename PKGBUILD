@@ -4,7 +4,7 @@
 pkgname=mu-editor
 epoch=1
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple Python editor for beginner programmers'
 arch=('any')
 url='https://codewith.mu/'
