@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-app-audioplayer
-pkgver=2.7.0
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="Audio Player for Nextcloud and ownCloud"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://rello.github.io/audioplayer"
 license=('AGPL3')
 depends=('nextcloud')
 source=("nextcloud-app-audioplayer-${pkgver}.tar.gz::https://github.com/Rello/audioplayer/archive/${pkgver}.tar.gz")
-sha512sums=('7962f017b046b8294a0bfd572781e9b582b09a2f12a1ff2026da1f3ad3073eaf6b4fbdb1f2b4a96bf143326d74afa68ac6874a8ad711bf8165592e63227ff6b6')
+sha512sums=('7e7701592290d699b2d2936cdf9da55baa4704d67e6e044023e89ad5fab23c38e3f3b397659ebdea792cb52c8ff9a6848eff2376e24e4eab0bc8669a88e571cf')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
