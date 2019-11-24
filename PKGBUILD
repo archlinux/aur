@@ -2,8 +2,8 @@
 
 pkgname='python-guizero'
 _module='guizero'
-pkgver='1.1.0'
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="Python module to allow learners to easily create GUIs"
 url="https://github.com/lawsie/guizero"
 depends=('python-pillow')

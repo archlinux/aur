@@ -1,7 +1,7 @@
 pkgbase = python-guizero
 	pkgdesc = Python module to allow learners to easily create GUIs
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lawsie/guizero
 	arch = any
 	license = BSD
