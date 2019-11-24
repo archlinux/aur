@@ -1,7 +1,7 @@
 pkgbase = ruby-ctf-party
 	pkgdesc = A library to enhance and speed up script/exploit writting for CTF players
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://orange-cyberdefense.github.io/ctf-party/
 	arch = x86_64
 	license = MIT
