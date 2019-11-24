@@ -1,7 +1,7 @@
 pkgbase = hybridreverb2-git
 	pkgdesc = Hybrid impulse convolution reverb, available as LV2 and VST
 	pkgver = r92.6beac8e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpcima/HybridReverb2
 	arch = i686
 	arch = x86_64
@@ -23,9 +23,11 @@ pkgbase = hybridreverb2-git
 	source = git+https://github.com/jpcima/HybridReverb2.git
 	source = git+https://github.com/jpcima/JUCE.git
 	source = RIR-1.0.0.zip::https://github.com/jpcima/HybridReverb2-impulse-response-database/archive/v1.0.0.zip
+	source = juce-gcc9.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 8ada57a590e6b04c272312874c67656ccf7e3de71b2cc7dbaadf53880fb77fd7
+	sha256sums = 52b9e65cd0f2bf55b9f32b66bcec292d8d537d157c26e6cf8fb5b1d9c5b39640
 
 pkgname = hybridreverb2-git
 
