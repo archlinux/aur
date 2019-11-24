@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-jsonschema-objects
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.11
+pkgrel=1
 pkgdesc="Return the jsonschema-objects true value of an iterable"
 url="https://github.com/cwacek/python-jsonschema-objects"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python-inflection' 'python-markdown' 'python-jsonschema' 'python-six')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner' 'python-pytest-mock')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cwacek/python-jsonschema-objects/archive/$pkgver.tar.gz")
-sha512sums=('a973db9d128d78f7941e6cc5e980320dc7c7930b5bba940fb2cb890af86d35206eede7adecef80dfe1970d06726bed1ffaf7532647492a0eed85c5553ee0595d')
+sha512sums=('f92e9719b8feed30e2a12f3094470f9ebc0df4b177c5f11733e413df83bbd458958709364627c9064f9cde60f0a94d255aeb3f086db21310e8b44f39ddff0b3d')
 
 build() {
   cd python-jsonschema-objects-$pkgver
