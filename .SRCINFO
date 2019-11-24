@@ -1,7 +1,7 @@
 pkgbase = abiword-git
 	pkgdesc = Fully-featured word processor from official gnome gitlab mirror
-	pkgver = 20502.91faa0e0a
-	pkgrel = 2
+	pkgver = 20527.a65fab84f
+	pkgrel = 1
 	url = http://www.abisource.com
 	arch = i686
 	arch = x86_64
@@ -33,15 +33,13 @@ pkgbase = abiword-git
 	conflicts = abiword
 	conflicts = abiword-plugins
 	source = git+https://gitlab.gnome.org/World/AbiWord.git
-	source = enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword
 	source = aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword
 	source = command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword
 	source = in_chroot.patch
 	sha256sums = SKIP
-	sha256sums = 444dc2aadea3c80310a509b690097541573f6d2652c573d04da66a0f385fcfb2
 	sha256sums = 5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1
 	sha256sums = 2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be
-	sha256sums = 379908e0a2d9fd58fe7529283378079c79da6a519d99dc59a2e774f2f045a8e4
+	sha256sums = 3b98834cceb0aa69effe182568cbf38248ae729f7fb3b07d03483283b287c7b6
 
 pkgname = abiword-git
 

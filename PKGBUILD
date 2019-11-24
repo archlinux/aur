@@ -4,8 +4,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=20502.91faa0e0a
-pkgrel=2
+pkgver=20527.a65fab84f
+pkgrel=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
 url="http://www.abisource.com"
@@ -17,14 +17,12 @@ makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd')
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
 source=("git+https://gitlab.gnome.org/World/AbiWord.git"
-	'enchant-2.1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/enchant-2.1.patch?h=packages/abiword'
 	'aiksaurus-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/aiksaurus-plugin.m4?h=packages/abiword' 
 	'command-plugin.m4::https://git.archlinux.org/svntogit/packages.git/plain/trunk/command-plugin.m4?h=packages/abiword' in_chroot.patch)
 sha256sums=('SKIP'
-            '444dc2aadea3c80310a509b690097541573f6d2652c573d04da66a0f385fcfb2'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
             '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be'
-            '379908e0a2d9fd58fe7529283378079c79da6a519d99dc59a2e774f2f045a8e4')
+            '3b98834cceb0aa69effe182568cbf38248ae729f7fb3b07d03483283b287c7b6')
 
 pkgver() {
   cd AbiWord
@@ -39,7 +37,6 @@ prepare() {
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
-  patch -Np1 < "$srcdir"/enchant-2.1.patch || true
   patch -Np0 < "$srcdir"/in_chroot.patch || true
 }
 
