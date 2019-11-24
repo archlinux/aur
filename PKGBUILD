@@ -5,7 +5,7 @@ pkgname="darkmod"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-pkgver=2.07.1.29
+pkgver=2.07.1.30
 pkgrel=1
 arch=("x86_64")
 
