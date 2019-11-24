@@ -1,7 +1,7 @@
 pkgbase = prosody-mod-conversejs-hg
 	pkgdesc = Prosody module that serves a small snippet of HTML that loads Converse.js
-	pkgver = r3755.bb18a1f5e9d7
-	pkgrel = 2
+	pkgver = r3758.900ea02ab00b
+	pkgrel = 1
 	url = https://modules.prosody.im/mod_conversejs.html
 	arch = any
 	license = MIT

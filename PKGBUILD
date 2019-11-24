@@ -1,7 +1,7 @@
 # maintainer: craftyguy <clayton@craftyguy.net>
 pkgname=prosody-mod-conversejs-hg
-pkgver=r3755.bb18a1f5e9d7
-pkgrel=2
+pkgver=r3758.900ea02ab00b
+pkgrel=1
 pkgdesc="Prosody module that serves a small snippet of HTML that loads Converse.js"
 arch=('any')
 url="https://modules.prosody.im/mod_conversejs.html"
@@ -19,4 +19,6 @@ pkgver() {
 package() {
   cd "${srcdir}/prosody-modules/mod_conversejs"
   find . -type f -name '*.lua' -exec install -Dm 644 '{}' "${pkgdir}/usr/lib/prosody/modules/{}" \;
+  install -Dm 644 template.html "${pkgdir}/usr/lib/prosody/modules/template.html"
+  install -Dm 644 template.js "${pkgdir}/usr/lib/prosody/modules/template.js"
 }
