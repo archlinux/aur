@@ -1,17 +1,13 @@
 pkgbase = python-colorzero
+	pkgdesc = A simple to use and pythonic color manipulation library
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://colorzero.readthedocs.org/
 	arch = any
 	license = BSD
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/colorzero/colorzero-1.1.tar.gz
 	sha256sums = acba47119b5d8555680d3cda9afe6ccc5481385ccc3c00084dd973f7aa184599
 
 pkgname = python-colorzero
-	pkgdesc = A simple to use and pythonic color manipulation library
-	depends = python
-
-pkgname = python2-colorzero
-	pkgdesc = A simple to use and pythonic color manipulation library (Python 2)
-	depends = python2
 
