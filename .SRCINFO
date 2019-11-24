@@ -1,18 +1,15 @@
 pkgbase = python-flake8-polyfill
 	pkgdesc = Polyfill package for Flake8 plugins
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/pycqa/flake8-polyfill
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	depends = flake8
 	source = https://files.pythonhosted.org/packages/source/f/flake8-polyfill/flake8-polyfill-1.0.2.tar.gz
 	md5sums = 076110bed47814d27019a0db25ad481b
 
 pkgname = python-flake8-polyfill
-	depends = flake8
-
-pkgname = python2-flake8-polyfill
-	depends = python2-flake8
 

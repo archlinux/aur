@@ -2,6 +2,5 @@ pkg/
 src/
 flake8-polyfill-*.tar.gz
 python-flake8-polyfill-*.pkg.tar.xz
-python2-flake8-polyfill-*.pkg.tar.xz
 python-flake8-polyfill-*.src.tar.gz
 .AURINFO
