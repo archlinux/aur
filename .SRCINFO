@@ -1,5 +1,5 @@
 pkgbase = netrunner-bin
-	pkgdesc = NetRunner is a telnet client originally developed in the late 90s in sync with the release of Windows XP. It was intended to be a console telnet client which stayed true to ANSI-BBS emulation and the old school feel of DOS terminals. Some features include batch upload/download Zmodem and Zmodem 8K, multiple phone book, mTelnet and SyncTerm phone book importers, original MSDOS and Amiga fonts with font switching, full screen mode, basic scripting language, mouse support, and font UPSCALING that (when enabled) provides the highest quality BBS terminal, even at 2K full screen resolutions! The current release is version 2.0 Beta 18 which is based on the SDL2 graphics engine, providing the most accurate and highest quality ANSI-BBS experience. Optimiziations for CPU usage and speed are still on-going for the beta cycle amd improvements should be seen as versions progress.
+	pkgdesc = NetRunner is a telnet client originally developed in the late 90s in sync with the release of Windows XP.
 	pkgver = 2.0b18
 	pkgrel = 1
 	url = http://www.mysticbbs.com/
