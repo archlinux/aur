@@ -1,0 +1,14 @@
+pkgbase = python-configurationutil
+	pkgdesc = A collection of state machine utilities
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://bitbucket.org/daycoder/configurationutil
+	arch = any
+	license = custom:PSF
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/c/configurationutil/configurationutil-3.7.2.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-configurationutil
+
