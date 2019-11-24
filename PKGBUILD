@@ -3,7 +3,7 @@
 
 _pkgname=edb-debugger
 pkgname=$_pkgname-git
-pkgver=1.0.0.r370.g6a87b68f
+pkgver=1.1.0.r0.g6d9fb5b8
 pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg. Git version"
 arch=('x86_64')
@@ -13,6 +13,8 @@ license=('GPL2')
 # to be printed in their shortest possible representation
 depends=('capstone' 'desktop-file-utils' 'graphviz' 'hicolor-icon-theme' 'qt5-svg' 'qt5-xmlpatterns')
 makedepends=('boost>=1.35.0')
+provides=('edb-debugger')
+conflicts=('edb-debugger')
 source=("git+https://github.com/eteran/edb-debugger.git"
         'edb.desktop')
 sha256sums=('SKIP'
