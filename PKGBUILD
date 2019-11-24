@@ -1,4 +1,4 @@
-# Maintainer: Cyano Hao < c at cyano dot cn >
+# Maintainer: Cyano Hao <c@cyano.cn>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
 
@@ -26,7 +26,7 @@ _build_id=(
 
 pkgver=${_version}.${_build_id[date]}.${_build_id[time]}
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(i686 pentium4 x86_64)
 license=('MPL' 'GPL' 'LGPL')
 conflicts=('firefox-nightly')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'mime-types')
@@ -41,16 +41,21 @@ optdepends=('pulseaudio: audio support'
             'startup-notification: support for FreeDesktop Startup Notification')
 
 _url="https://ftp.mozilla.org/pub/${_name}/${_channel}/${_build_id[year]}/${_build_id[month]}/${_build_id[year]}-${_build_id[month]}-${_build_id[day]}-${_build_id[hour]}-${_build_id[min]}-${_build_id[sec]}-mozilla-central-l10n"
-_src="${_name}-${_version}.${_lang}.linux-${CARCH}"
-_filename="${_build_id[date]}-${_build_id[time]}-${_src}"
+_src="${_name}-${_version}.${_lang}"
+_filename="${_build_id[date]}-${_build_id[time]}-${_src}-${CARCH}"
 source=('firefox-nightly.desktop'
-        'policies.json'
-        "${_filename}.tar.bz2"::"${_url}/${_src}.tar.bz2"
-        "${_filename}.tar.bz2.asc"::"${_url}/${_src}.tar.bz2.asc")
+        'policies.json')
+source_i686=("${_filename}.tar.bz2"::"${_url}/${_src}.linux-i686.tar.bz2"
+             "${_filename}.tar.bz2.asc"::"${_url}/${_src}.linux-i686.tar.bz2.asc")
+source_pentium4=("${_filename}.tar.bz2"::"${_url}/${_src}.linux-i686.tar.bz2"
+                 "${_filename}.tar.bz2.asc"::"${_url}/${_src}.linux-i686.tar.bz2.asc")
+source_x86_64=("${_filename}.tar.bz2"::"${_url}/${_src}.linux-x86_64.tar.bz2"
+               "${_filename}.tar.bz2.asc"::"${_url}/${_src}.linux-x86_64.tar.bz2.asc")
 sha512sums=('b514abafc559ec03a4222442fa4306db257c3de9e18ed91a0b37cc9d7058a8e08a241442e54a67659a3ab4512a5dae6a0b94ea7a33d08ef0b8a76a9eac902095'
-            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308'
-            'SKIP'
-            'SKIP')
+            '5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308')
+sha512sums_i686=(SKIP SKIP)
+sha512sums_pentium4=(SKIP SKIP)
+sha512sums_x86_64=(SKIP SKIP)
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 package() {
