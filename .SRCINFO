@@ -8,14 +8,14 @@ pkgbase = tclx
 	arch = armv6h
 	arch = armv7h
 	license = BSD
-	depends = tcl=8.6.9
+	depends = tcl=8.6.10
 	depends = tk
 	depends = libtirpc
 	source = https://github.com/flightaware/tclx/archive/v8.4.3.tar.gz
-	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.9-src.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.10-src.tar.gz
 	source = interperrorline.patch
 	md5sums = e4c9a627dcc10686ff46f7bd9abecbd3
-	md5sums = aa0a121d95a0e7b73a036f26028538d4
+	md5sums = 97c55573f8520bcab74e21bfd8d0aadc
 	md5sums = 3254188674bfa4cdf58605d0d69586d0
 
 pkgname = tclx
