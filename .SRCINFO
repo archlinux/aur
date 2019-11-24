@@ -1,8 +1,8 @@
 pkgbase = python-cerealizer
 	pkgdesc = A Python module for saving objects in a file
 	pkgver = 0.8.1
-	pkgrel = 2
-	url = http://home.gna.org/oomadness/en/cerealizer/
+	pkgrel = 3
+	url = http://www.lesfleursdunormal.fr/static/informatique/cerealizer/index_en.html
 	arch = any
 	license = PSF
 	source = https://pypi.python.org/packages/source/C/Cerealizer/Cerealizer-0.8.1.tar.bz2
