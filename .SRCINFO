@@ -1,0 +1,17 @@
+pkgbase = kpeople-vcard-git
+	pkgdesc = KPeople VCard Support
+	pkgver = r36.d912814
+	pkgrel = 1
+	url = https://phabricator.kde.org/source/kpeoplevcard/
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = kpeople
+	depends = kcontacts
+	provides = kpeople-vcard
+	conflicts = kpeople-vcard
+	source = git+git://anongit.kde.org/kpeoplevcard
+	md5sums = SKIP
+
+pkgname = kpeople-vcard-git
+
