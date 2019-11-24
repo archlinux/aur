@@ -1,0 +1,9 @@
+# source
+/*.tar.gz
+
+# build
+/src/
+/pkg/
+
+# package
+/*.pkg.tar*
