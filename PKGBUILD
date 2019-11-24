@@ -17,6 +17,7 @@ provides=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/kugel-/peasy.git")
 sha256sums=('SKIP')
 
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
@@ -24,10 +25,16 @@ pkgver() {
   echo $ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${_pkgname}"
 
   ./autogen.sh
+  sed -i -e 's/@install_sh@/install/g' po/Makefile.in.in
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
   ./configure --prefix=/usr
   make
 }
