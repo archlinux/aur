@@ -8,7 +8,9 @@ pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='https://ffmpeg.org/'
 license=('GPL2')
-depends=()
+depends=(
+  'bzip2'
+)
 provides=(
   'libavcodec.so'
   'libavdevice.so'
