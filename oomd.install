@@ -3,5 +3,7 @@ post_install() {
 ==> An example oomd configuration has been deployed to /etc/oomd.json, please modify it according to your needs.
 ==> A systemd service is also available, it can be configured in /etc/default/oomd and started with:
 ==>     $ sudo systemctl start oomd
+==> ATTETION: add systemd.unified_cgroup_hierarchy=1 to your kernel cmdline for oomd to work correctly
+==> reference: https://github.com/facebookincubator/oomd/issues/67#issuecomment-524315033
 EOF
 }

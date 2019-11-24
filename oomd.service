@@ -13,7 +13,7 @@ Environment=OOMD_INTERVAL=5
 EnvironmentFile=-/etc/default/oomd
 
 ExecStartPre=/usr/bin/oomd --check-config ${OOMD_CONFIG}
-ExecStart=/usr/bin/oomd --config ${OOMD_CONFIG} --interval ${OOMD_INTERVAL} --cgroup-fs /sys/fs/cgroup/unified/
+ExecStart=/usr/bin/oomd --config ${OOMD_CONFIG} --interval ${OOMD_INTERVAL}
 
 CapabilityBoundingSet=
 NoNewPrivileges=yes

@@ -3,7 +3,7 @@
 
 pkgname=oomd
 pkgver=0.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A userspace out-of-memory killer.'
 arch=('x86_64')
 url='https://github.com/facebookincubator/oomd'
