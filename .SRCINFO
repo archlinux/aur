@@ -1,6 +1,6 @@
 pkgbase = python-conversionutil
 	pkgdesc = A collection of conversion utilities
-	pkgver = 1.1.0
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://bitbucket.org/davisowb/conversionutil
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-conversionutil
 	depends = python-timingsutil
 	depends = python-six
 	depends = python-logging-helper
-	source = https://pypi.io/packages/source/c/conversionutil/conversionutil-1.1.0.tar.gz
-	md5sums = 84f3ef553e04c92014398f99f0e1f9a7
+	source = https://pypi.io/packages/source/c/conversionutil/conversionutil-1.4.3.tar.gz
+	md5sums = 1e6085d01e7136ba09d585d537b4a154
 
 pkgname = python-conversionutil
 
