@@ -1,6 +1,6 @@
 pkgbase = python2-mahotas
 	pkgdesc = A set of functions for image processing in Python
-	pkgver = 1.4.7
+	pkgver = 1.4.9
 	pkgrel = 1
 	url = http://mahotas.readthedocs.io/en/latest/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = python2-mahotas
 	optdepends = python2-scipy
 	optdepends = python2-matplotlib
 	optdepends = freeimage
-	source = python2-mahotas.tar.gz::https://github.com/luispedro/mahotas/archive/v1.4.7.tar.gz
+	source = python2-mahotas.tar.gz::https://github.com/luispedro/mahotas/archive/v1.4.9.tar.gz
 	sha256sums = d545906bc9b5f021ed0460435f89b87d6e67c86a8bff82604d1de0606458856a
 
 pkgname = python2-mahotas
