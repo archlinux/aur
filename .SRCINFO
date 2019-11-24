@@ -1,7 +1,7 @@
 pkgbase = python-mido
 	pkgdesc = A Python library for working with MIDI messages and ports
 	pkgver = 1.2.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mido.readthedocs.io/
 	arch = any
 	license = MIT

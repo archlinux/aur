@@ -2,8 +2,8 @@
 
 pkgname='python-mido'
 _name='mido'
-pkgver='1.2.9'
-pkgrel=2
+pkgver=1.2.9
+pkgrel=3
 pkgdesc="A Python library for working with MIDI messages and ports"
 url="https://mido.readthedocs.io/"
 depends=('python-rtmidi')
@@ -25,7 +25,6 @@ build() {
 }
 
 package() {
-
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
