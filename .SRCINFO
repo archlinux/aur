@@ -1,0 +1,14 @@
+pkgbase = python-tableutil
+	pkgdesc = A collection of table creation utilities
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://bitbucket.org/daycoder/tableutil
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/t/tableutil/tableutil-2.4.2.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-tableutil
+
