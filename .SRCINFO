@@ -1,14 +1,10 @@
 pkgbase = lutris-battlenet-meta
 	pkgdesc = Meta package for using lutris with Battle.Net
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/lutris/lutris/wiki/Game:-Blizzard-App
 	arch = any
-	depends = lib32-gnutls
-	depends = lib32-libldap
-	depends = lib32-libgpg-error
-	depends = lib32-sqlite
-	depends = lib32-libpulse
+	depends = lutris-wine-meta
 
 pkgname = lutris-battlenet-meta
 
