@@ -2,7 +2,7 @@
 
 _pkgname='mangl'
 pkgname="${_pkgname}-git"
-pkgver=20191022.13e891b
+pkgver=20191123.a85b3f6
 pkgrel=1
 pkgdesc="graphical man page viewer"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = mangl-git
 	pkgdesc = graphical man page viewer
-	pkgver = 20191022.13e891b
+	pkgver = 20191123.a85b3f6
 	pkgrel = 1
 	url = https://github.com/zigalenarcic/mangl
 	arch = x86_64
