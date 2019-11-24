@@ -1,7 +1,7 @@
 pkgbase = python-nudatus
 	pkgdesc = A tool to remove comments from Python scripts
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zanderbrown/nudatus
 	arch = any
 	license = MIT

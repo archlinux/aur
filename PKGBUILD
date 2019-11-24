@@ -2,8 +2,8 @@
 
 pkgname='python-nudatus'
 _module='nudatus'
-pkgver='0.0.4'
-pkgrel=1
+pkgver=0.0.4
+pkgrel=2
 pkgdesc="A tool to remove comments from Python scripts"
 url="https://github.com/zanderbrown/nudatus"
 depends=('python')
