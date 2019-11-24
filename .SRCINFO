@@ -6,11 +6,17 @@ pkgbase = python-apscheduler
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-six
-	depends = python-pytz
-	depends = python-tzlocal
+	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/A/APScheduler/APScheduler-3.6.3.tar.gz
 	md5sums = 5e603880cf9ce8f4baa20a600ed1aac8
 
 pkgname = python-apscheduler
+	depends = python-six
+	depends = python-pytz
+	depends = python-tzlocal
+
+pkgname = python2-apscheduler
+	depends = python2-six
+	depends = python2-pytz
+	depends = python2-tzlocal
 
