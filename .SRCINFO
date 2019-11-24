@@ -1,0 +1,15 @@
+pkgbase = broken-link-checker
+	pkgdesc = Find broken links, missing images, etc within your HTML
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/stevenvachon/broken-link-checker
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = broken-link-checker-0.7.8.tgz
+	source = https://registry.npmjs.org/broken-link-checker/-/broken-link-checker-0.7.8.tgz
+	sha256sums = 33367d4c0ebd4495144d38cbcf12d844786295218d463c7d1dd315709193e3e8
+
+pkgname = broken-link-checker
+
