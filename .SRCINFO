@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 374
-	pkgrel = 3
+	pkgrel = 4
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = hydrus
 	depends = python-qtpy
 	depends = qt5-charts
 	depends = python-pyopenssl
+	depends = emoji-font
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
