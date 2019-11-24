@@ -7,7 +7,7 @@
 
 _name=pdfminer.six
 pkgname="python-$_name"
-pkgver=20191107
+pkgver=20191110
 pkgrel=1
 pkgdesc="PDF parser and analyzer for Python"
 depends=('python-six' 'python-chardet' 'python-pycryptodome' 'python-sortedcontainers')
@@ -16,7 +16,7 @@ arch=('any')
 url="https://github.com/pdfminer/pdfminer.six"
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha384sums=('3ddd0256c33700c6d4f02ecbd6f9e28bcf21947472d3239ff621fb6994b7f553f7e116dfc5f54ce9178975c5f8cafc01')
+sha384sums=('1f98a6553b1a6dfcb51f45ff730b4c1a77da9b2e815c609e428d361354846b668a4bb50e46db1b034e141861be6a03d3')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
