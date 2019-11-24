@@ -1,7 +1,7 @@
 pkgname=haskell-clay
 _hkgname=clay
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CSS preprocessor as embedded Haskell."
 url="https://hackage.haskell.org/package/clay"
 license=('BSD')
@@ -18,6 +18,10 @@ build() {
     --prefix=/usr --docdir="/usr/share/doc/${pkgname}" \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid
     runghc Setup.lhs build
+    runhaskell Setup register --gen-script
+    runhaskell Setup unregister --gen-script
+    sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+    sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
@@ -25,4 +29,6 @@ package() {
     runghc Setup.lhs copy --destdir="${pkgdir}"
     mkdir -p ${pkgdir}/usr/share/licenses/haskell-clay
     mv "${pkgdir}/usr/share/doc/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/haskell-clay"
+    install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
+    install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
 }
