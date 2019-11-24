@@ -2,7 +2,7 @@
 # Contributor: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
 _pkgname=spotirec
 pkgname=${_pkgname}-git
-pkgver=r97.ed9ec77
+pkgver=r108.7e71c69
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
@@ -18,12 +18,12 @@ source=("git+https://github.com/Badgie/spotirec")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${_pkgname}-$pkgver"
+	cd "$srcdir/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd "$srcdir/${_pkgname}-$pkgver"
+    cd "$srcdir/${_pkgname}"
     mkdir -p "$pkgdir/usr/lib/spotirec"
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$HOME/.config/spotirec"
