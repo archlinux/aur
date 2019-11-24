@@ -1,7 +1,7 @@
 pkgbase = python-soundfile
 	pkgdesc = An audio library based on libsndfile, CFFI and NumPy
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bastibe/PySoundFile
 	arch = any
 	license = BSD
