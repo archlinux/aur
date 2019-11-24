@@ -4,8 +4,8 @@
 #Maintainer: Daniel YC Lin <dlin.tw at gmail>
 
 pkgname=bvi
-pkgver=1.4.0
-_pkgver=1.4.0
+pkgver=1.4.1
+_pkgver=1.4.1
 pkgrel=3
 pkgdesc="A display-oriented editor for binary files operate like 'vi' editor"
 url="http://bvi.sourceforge.net"
@@ -26,4 +26,4 @@ package ()
   cd "$srcdir/$pkgname-$_pkgver"
   make DESTDIR="$pkgdir/" install
 }
-md5sums=('aa83eb8b2b6b0bb6cdd8e6beef12b775')
+md5sums=('4d83d46e2ee76609a7b7b52e075a5900')
