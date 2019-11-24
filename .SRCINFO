@@ -1,7 +1,7 @@
 pkgbase = polysh
 	pkgdesc = a tool to aggregate several remote shells into one.
 	pkgver = 0.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://pypi.org/project/polysh/
 	arch = any
 	license = GPL2
