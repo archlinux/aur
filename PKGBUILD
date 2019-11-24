@@ -2,16 +2,16 @@
 
 pkgname=rabid
 pkgver=0.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A CLI tool and library allowing to simply decode all kind of BigIP cookies'
 arch=('any')
 url='https://orange-cyberdefense.github.io/rabid/'
 license=('MIT')
 depends=('ruby' 'ruby-paint' 'ruby-docopt')
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
+source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 #source=("https://github.com/Orange-Cyberdefense/$pkgname/archive/v$pkgver.tar.gz")
-noextract=($pkgname-$pkgver.gem)
+noextract=("$pkgname-$pkgver.gem")
 b2sums=('002d4994fe05f008ddf01c9372ca926936f07b1670d90a2fec7f220a812ccdd43ad3907764163615de650607e2fa96d4dcff92e9f0ae46a788d5af22a57938d5')
 
 package() {

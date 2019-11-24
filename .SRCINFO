@@ -1,7 +1,7 @@
 pkgbase = rabid
 	pkgdesc = A CLI tool and library allowing to simply decode all kind of BigIP cookies
 	pkgver = 0.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://orange-cyberdefense.github.io/rabid/
 	arch = any
 	license = MIT
