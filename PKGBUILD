@@ -4,15 +4,15 @@
 # Contributor: aldeano <aldea.diaguita at gmail.com>
 
 pkgname=(python-cerealizer python2-cerealizer)
-pkgver=0.8.1
-pkgrel=4
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="A Python module for saving objects in a file"
 arch=('any')
 url="http://www.lesfleursdunormal.fr/static/informatique/cerealizer/index_en.html"
 makedepends=("python-setuptools" "python2-setuptools")
 license=('PSF')
-source=(https://pypi.python.org/packages/source/C/Cerealizer/Cerealizer-${pkgver}.tar.bz2)
-md5sums=('a77b6215f77c539035ae46a73bfa819e')
+source=(https://pypi.python.org/packages/source/C/Cerealizer/Cerealizer-${pkgver}.tar.gz)
+md5sums=('a7cf54e5db5cb6485627d116ef90f89f')
 
 prepare() {
     cp -a Cerealizer-$pkgver{,-py2}
