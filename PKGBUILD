@@ -2,7 +2,7 @@
 
 pkgname=dpf-plugins-git
 pkgver=r113.86084a9
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of DPF-based plugins by DISTRHO. LV2, LADSPA, dssi and VST."
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
@@ -26,10 +26,6 @@ build() {
 
 package() {
     cd "${pkgname%-*}"
-    pwd
-    # Avoid errors while installing binaries
-    sed -i -- 's/cp \-r bin\/ProM/\#cp \-r bin\/ProM/' Makefile
-    sed -i -- 's/cp \-r bin\/glBars/\#cp \-r bin\/glBars/' Makefile
     # Install the custom license:
     install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # Install the package files:
