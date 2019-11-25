@@ -1,0 +1,27 @@
+# Maintainer: Alexander V.Buev <san@zzz.spb.ru>
+
+pkgname="hasher-priv"
+
+pre_install() {
+  echo preinstall $1
+  if ! groupadd -r hashman ; then
+    echo 'Group already exist' > /dev/null
+  fi  
+}
+
+post_install() {
+  echo "post install" $1
+  chgrp hashman /usr/lib/${pkgname}
+  chmod 0750 /usr/lib/${pkgname}
+  chgrp hashman /usr/lib/${pkgname}/${pkgname}
+  chmod 6710 /usr/lib/${pkgname}/${pkgname}
+}
+
+pre_upgrade() {
+  pre_install $1
+}
+
+post_upgrade() {
+  post_install $1
+}
+
