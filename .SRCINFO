@@ -1,0 +1,16 @@
+pkgbase = obs-xdg-portal-git
+	pkgdesc = OBS Studio plugin using the Desktop portal for Wayland & X11 screencasting
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/feaneron/obs-xdg-portal
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = git
+	depends = obs-studio
+	depends = gst-plugins-base-libs
+	source = git+https://gitlab.gnome.org/feaneron/obs-xdg-portal
+	md5sums = SKIP
+
+pkgname = obs-xdg-portal-git
+
