@@ -1,0 +1,14 @@
+pkgbase = python-tokenize-rt
+	pkgdesc = A wrapper around the stdlib tokenize which roundtrips.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/asottile/tokenize-rt
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = tokenize-rt-3.2.0::https://github.com/asottile/tokenize-rt/archive/v3.2.0.tar.gz
+	sha256sums = d43801fbc8ca369736ba336246df0c3923134649e3daa150c0f48d6dd0fcbc75
+
+pkgname = python-tokenize-rt
+
