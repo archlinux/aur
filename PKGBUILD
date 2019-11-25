@@ -34,5 +34,4 @@ package() {
     cd "$srcdir/$_pkgname-$pkgver"
     make install DESTDIR=$pkgdir
 }
-md5sums=('8141d588fe975ddaf21a6892d97bd245')
 md5sums=('db036e6c29ad6aa4e4b41f2472e4f1b4')
