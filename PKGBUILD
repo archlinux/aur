@@ -24,7 +24,7 @@ build() {
   # -fix flag is a no-op when using modules
   GOPATH="$srcdir" go get -v "$_gourl/cmd/pistol"
   strip -x "$srcdir/bin/pistol"
-  chmod -R u+wX "$srcdir/$pkgname/*"
+  chmod -R u+wX "$srcdir"
 }
 
 package() {
