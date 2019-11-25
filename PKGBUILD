@@ -1,6 +1,6 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-cars
-pkgver=19.0317
+pkgver=19.1125
 pkgrel=1
 pkgdesc="Additional RVGL cars used for official events."
 url='https://rvgl.re-volt.io'
@@ -9,7 +9,7 @@ license=('custom')
 depends=('rvgl-bin')
 optdepends=('rvgl-skins: additional car skins')
 source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_cars.zip")
-sha256sums=('c9545c1dc2a4ed2c2e0b93c73568132e2926f55f2163b8e60c57f3585abb7568')
+sha256sums=('117099d7fa69ed308d8626d2cb343f5130cd016aa0b871199f04cb6d81ce79fd')
 
 package() {
     find cars -type f -exec \
