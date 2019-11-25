@@ -11,6 +11,7 @@ url='http://bokeh.pydata.org/'
 license=('BSD')
 source=("https://pypi.io/packages/source/b/bokeh/bokeh-${pkgver}.tar.gz")
 sha256sums=('c60d38a41a777b8147ee4134e6142cea8026b5eebf48149e370c44689869dce7')
+makedepends=('python-setuptools')
 
 build() {
 #  cp -r "${srcdir}"/bokeh-$pkgver "${srcdir}"/bokeh-$pkgver-py2

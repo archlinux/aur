@@ -5,6 +5,7 @@ pkgbase = python-bokeh
 	url = http://bokeh.pydata.org/
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	source = https://pypi.io/packages/source/b/bokeh/bokeh-1.4.0.tar.gz
 	sha256sums = c60d38a41a777b8147ee4134e6142cea8026b5eebf48149e370c44689869dce7
 
