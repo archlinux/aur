@@ -1,13 +1,13 @@
 pkgbase = emacs-web-server
 	pkgdesc = web server running Emacs Lisp handlers.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eschulte/emacs-web-server
 	arch = any
 	license = GPL3
 	depends = emacs
 	source = https://github.com/eschulte/emacs-web-server/archive/version-0.1.0.tar.gz
-	sha256sums = be24796ad47335ce91ec3e142d52ee07f00ca79078312a0759bce135e1bf414e
+	sha256sums = 9983c1f208078dad00d5fb8259b6812b0959acc5917c899be4b6dc344a0622cc
 
 pkgname = emacs-web-server
 

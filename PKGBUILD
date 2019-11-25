@@ -2,7 +2,7 @@
 
 pkgname=emacs-web-server
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="web server running Emacs Lisp handlers."
 arch=('any')
 url="https://github.com/eschulte/emacs-web-server"
@@ -11,13 +11,13 @@ depends=('emacs')
 makedepends=()
 source=("https://github.com/eschulte/emacs-web-server/archive/version-${pkgver}.tar.gz")
 noextract=()
-sha256sums=('be24796ad47335ce91ec3e142d52ee07f00ca79078312a0759bce135e1bf414e')
+sha256sums=('9983c1f208078dad00d5fb8259b6812b0959acc5917c899be4b6dc344a0622cc')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-version-${pkgver}"
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-version-${pkgver}"
     install -D -m 644 web-server.el "${pkgdir}"/usr/share/emacs/site-lisp/web-server/web-server.el
 }
