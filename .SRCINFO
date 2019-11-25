@@ -1,0 +1,17 @@
+pkgbase = streamable
+	pkgdesc = Electron wrapper for streamable
+	pkgver = 1
+	pkgrel = 1
+	url = https://streamable.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = streamable.png
+	source = streamable.desktop
+	sha256sums = 54ac99161a59995f0cd2af9a31a1ad0b90edb5dfc0db7a7e48509d168413f075
+	sha256sums = 4d3ae2428d176d6c3cca9cb5652a8cf42b4b8528bfe0ea76aad8ecbd7bb66cfb
+
+pkgname = streamable
+

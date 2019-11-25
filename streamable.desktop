@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Streamable
+Comment=Fast and easy video streaming for bloggers and publishers.
+Exec=streamable
+Icon=/usr/share/pixmaps/streamable.png
+Terminal=false
+Categories=Productivity;Streamable;Nativefier;
