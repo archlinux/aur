@@ -2,7 +2,7 @@
 
 _pkgname=gols
 pkgname=gols-git
-pkgver=1.2.0
+pkgver=1.2.0.e10b48e
 pkgrel=1
 pkgdesc='Tool to syncronize Garmin devices with online service'
 url='https://gols.readthedocs.io/'
