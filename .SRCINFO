@@ -1,6 +1,6 @@
 pkgbase = fossilize-git
 	pkgdesc = Library and Vulkan layer for serializing various persistent Vulkan objects which typically end up in hashmaps
-	pkgver = 0.0.0+413.0b082debfb
+	pkgver = 0.0.0+428.1a5ff351f1
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/Fossilize
 	arch = x86_64
@@ -10,6 +10,18 @@ pkgbase = fossilize-git
 	makedepends = ninja
 	conflicts = fossilize
 	source = https://github.com/ValveSoftware/Fossilize
+	source = https://github.com/KhronosGroup/SPIRV-Cross
+	source = https://github.com/KhronosGroup/SPIRV-Headers
+	source = https://github.com/KhronosGroup/SPIRV-Tools
+	source = https://github.com/tronkko/dirent
+	source = https://github.com/zeux/volk
+	source = https://github.com/miloyip/rapidjson
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = fossilize-git
