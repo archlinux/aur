@@ -1,0 +1,13 @@
+pkgbase = portergos
+	pkgdesc = the portergos ISO installer & system cloner utility
+	pkgver = 201808
+	pkgrel = 1
+	url = https://github.com/Portergos/Fork-Portergos-iso-64bits
+	arch = x86_64
+	depends = dialog
+	depends = ncurses
+	source = portergos.tar.gz
+	sha256sums = acf917d009b42ae72165462aa1d067f3113a105634eabea438446d36bf43db57
+
+pkgname = portergos
+
