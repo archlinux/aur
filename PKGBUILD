@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------
-# Maintainer: Romain Bazile <gromain.baz at gmail dot com>
+# Maintainer: Romain Bazile <gromain.baz@gmail.com>
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-climatology
 pkgver=1.4.r69.g5c8e992
-pkgrel=1
+pkgrel=2
 pkgdesc="Climatology plugin for OpenCPN"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake' 'git')
