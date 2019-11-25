@@ -1,6 +1,6 @@
 pkgbase = swiftshader-git
 	pkgdesc = High-performance CPU-based implementation of the Vulkan, OpenGL ES, and Direct3D 9 graphics APIs
-	pkgver = r4700.036463457e
+	pkgver = r4824.e7ce4e5391
 	pkgrel = 1
 	url = https://swiftshader.googlesource.com/SwiftShader
 	arch = x86_64
