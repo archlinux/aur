@@ -1,9 +1,10 @@
 pkgbase = opencpn-plugin-polar
 	pkgdesc = Polar creation plugin for OpenCPN
 	pkgver = 1.1008.r6.g9d8188e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opencpn.org/OpenCPN/plugins/polar.html
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
