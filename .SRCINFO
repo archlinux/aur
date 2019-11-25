@@ -1,0 +1,19 @@
+pkgbase = shuttlepro-v2-git
+	pkgdesc = A user program for interpreting input from a Contour Design Shuttle device (git version). This is a moded version from SERVCUBED. https://github.com/SERVCUBED/ShuttlePRO
+	pkgver = 0.1.r49.g2bb3c65
+	pkgrel = 1
+	url = https://github.com/SERVCUBED/ShuttlePRO
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = libxtst
+	depends = jack
+	provides = shuttlepro
+	conflicts = shuttlepro
+	conflicts = shuttlepro-git
+	conflicts = contour-shuttle-git
+	source = shuttlepro-v2-git::git+https://github.com/SERVCUBED/ShuttlePRO.git
+	md5sums = SKIP
+
+pkgname = shuttlepro-v2-git
+
