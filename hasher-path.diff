@@ -1,0 +1,11 @@
+--- pocket.conf
++++ pocket.conf
+@@ -3,7 +3,7 @@
+ POCKETDIR=$HOME/pocket
+ 
+ # Hasher-priv configuration
+-HSHPRIVDIR=/usr/libexec/hasher-priv
++HSHPRIVDIR=/usr/lib/hasher-priv
+ 
+ # System configuration
+ RESOLVCONF=/etc/resolv.conf

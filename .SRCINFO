@@ -1,0 +1,23 @@
+pkgbase = pocket
+	pkgdesc = Pocket - hasher-priv based debian package build system
+	pkgver = v0.2.27.r0.g6897640
+	pkgrel = 1
+	url = http://
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL3
+	makedepends = help2man
+	makedepends = ruby-ronn
+	makedepends = autoconf
+	makedepends = automake
+	depends = hasher-priv
+	depends = debootstrap
+	depends = debian-archive-keyring
+	depends = dpkg
+	depends = rsync
+	source = git+https://github.com/buevsan/pocket.git
+	md5sums = SKIP
+
+pkgname = pocket
+

@@ -1,0 +1,11 @@
+--- debian.pocket
++++ debian.pocket
+@@ -331,7 +331,7 @@
+ $(BUILDROOT)/dev/.stamp: $(BUILDROOT)/.stamp
+ 	mkdir -p $(BUILDROOT)/dev
+ 	chgrp $(USER_A) $(BUILDROOT)/dev
+-	mkdir $(BUILDROOT)/dev/pts
++	mkdir -p $(BUILDROOT)/dev/pts
+ 	chgrp $(USER_A) $(BUILDROOT)/dev/pts
+ 	$(MAKEDEV) $(realpath $(BUILDROOT))
+ 	mkdir -m1777 $(BUILDROOT)/dev/shm
