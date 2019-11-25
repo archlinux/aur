@@ -3,7 +3,7 @@
 pkgname=ps3netsrv
 _wMM_version=1.47.25
 pkgver=20190924
-pkgrel=1
+pkgrel=2
 pkgdesc='PS3 Net Server (mod by aldostools)'
 arch=('x86_64')
 url='https://github.com/aldostools/webMAN-MOD/'
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd  "${srcdir}/${pkgname}"
-	meson --prefix /usr --buildtype=release build
+	meson --prefix /usr --buildtype=plain build
 	ninja -C build
 }
 
