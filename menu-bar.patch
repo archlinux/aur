@@ -1,10 +1,12 @@
---- a/build/main.js	2019-08-30 19:55:24.091850904 +0200
-+++ b/build/main.js	2019-08-30 19:57:32.550487630 +0200
-@@ -2589,6 +2589,7 @@
-             this._adjustViewToContentSize(),
-             this.mainView.setAutoResize({ width: !0, height: !0 })),
-           (this.originalUserAgent = this.getWebContents().getUserAgent()),
+diff --git a/build/main.js b/build/main.js
+index a229f52..0f1955b 100644
+--- a/build/main.js
++++ b/build/main.js
+@@ -4580,6 +4580,7 @@ module.exports = (function(modules) {
+                 .setAutoResize({ width: !0, height: !0 }))
+             : this.appService.setWindow(this.window, void 0),
+           this.appService.setUserAgent(),
 +          this.window.setMenuBarVisibility(false),
-           this.getWebContents().setUserAgent(this.getUserAgent()),
-           Object(utils.h)(platform.a)
-             ? this.getWindow().on("moved", () => {
+           isPlatform(PLATFORM_DARWIN)
+             ? this.window.on("moved", () => {
+                 this.windowState.save();

@@ -10,14 +10,14 @@ index 6f97abb..aaf62f5 100644
          if (void 0 !== this.isSupported) return this.isSupported;
          if (Object(utils.h)(constants.n))
            return (this.isSupported = !1), this.isSupported;
-@@ -3998,6 +3999,7 @@ module.exports = (function(modules) {
-               services_SchemeHandler.handleSchemeFromOpenUrl(url),
-               event.preventDefault();
-           }),
+@@ -4428,6 +4428,7 @@ module.exports = (function(modules) {
+             event.preventDefault(),
+             this.deepLink.handlePath(this.deepLink.getPathFromUrl(url));
+         }),
 +          external_electron_.app.commandLine.appendSwitch('disable-features', 'MediaSessionService'),
-           external_electron_.app.on("ready", () => {
-             external_electron_log_default.a.debug("App is ready"),
-               this.applicationMenu.init(),
+           external_electron_.app.on("ready", () =>
+             application_awaiter(this, void 0, void 0, function*() {
+               external_electron_log_default.a.debug("App is ready"),
 diff --git a/node_modules/electron-media-service/src/index.js b/node_modules/electron-media-service/src/index.js
 index 301db0d..9677e7c 100644
 --- a/node_modules/electron-media-service/src/index.js

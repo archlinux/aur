@@ -1,6 +1,6 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
-	pkgver = 4.17.21
+	pkgver = 4.18.0
 	pkgrel = 1
 	url = https://www.deezer.com/
 	arch = any
@@ -9,22 +9,21 @@ pkgbase = deezer
 	makedepends = asar
 	makedepends = prettier
 	makedepends = imagemagick
+	makedepends = npm
 	depends = electron6
 	provides = deezer
-	source = deezer-4.17.21-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.17.21
+	source = deezer-4.18.0-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.18.0
 	source = deezer.desktop
 	source = systray.patch
 	source = menu-bar.patch
-	source = oauth.patch
+	source = nav-buttons.patch
 	source = 0001-MPRIS-interface.patch
-	source = https://github.com/SibrenVasse/deezer/raw/mpris/node_modules.tar.xz
-	sha256sums = 433fe36ee19c4b13eb715bd740a6ae325199b00da15c4ea376b03944cb57b0fe
+	sha256sums = 6af0d33489a82399a814928daa96cece5eaf4b3276b7ede2bf88c1c78a3b160d
 	sha256sums = f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99
 	sha256sums = f7df7ba3dd91d8d327c3bfe69c65d3969b3f7a80ca253c29bad316e09f65ab8b
-	sha256sums = 9c1a1c809f813646f14355af03670f6c10a5ad47c606b0ef45e1b66b6aa559b5
-	sha256sums = 5cbe1696d5f948cdda1fdd5ef9f8d94d5e14d8594558e35472517fa659057add
-	sha256sums = 7cd2ba25d61bbd86d49ca99be96366e72fc6e6a57d50bdbeacf1a6a5535c3e76
-	sha256sums = 8a8a42fd38c6fc5a5f9523620ce7e794355ceec5d71c93a7cee378c9a5b3d8ec
+	sha256sums = 8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0
+	sha256sums = 4b9279549a4ea005e5a852b7ecad8749d0c60be51a87105db364afbcdcd0bcfd
+	sha256sums = e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414
 
 pkgname = deezer
 
