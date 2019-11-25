@@ -1,14 +1,14 @@
 pkgbase = rvgl-cars-bonus
 	pkgdesc = Additional RVGL cars no longer used for official events.
-	pkgver = 18.0916
+	pkgver = 19.1125
 	pkgrel = 1
 	url = https://rvgl.re-volt.io
 	arch = any
 	license = custom
 	depends = rvgl-bin
 	optdepends = rvgl-skins: additional car skins
-	source = rvgl-cars-bonus-18.0916.zip::https://distribute.re-volt.io/packs/io_cars_bonus.zip
-	sha256sums = f9b8eac81e7ff96123eb7fb5674f52ff17b3ae7bf1b164d8dc11c413121683e8
+	source = rvgl-cars-bonus-19.1125.zip::https://distribute.re-volt.io/packs/io_cars_bonus.zip
+	sha256sums = 86c3e2d67efa66b4ea6dfb20417221fb4a3e83cad74dfc1642803398b5e74d7a
 
 pkgname = rvgl-cars-bonus
 
