@@ -1,7 +1,7 @@
 # Maintainer: Lukas Zimmermann <luk.zim91 at gmail dot com>
 # Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 pkgname=python-msrest
-pkgver=0.6.7
+pkgver=0.6.10
 pkgrel=1
 pkgdesc='The runtime library for AutoRest generated Python clients.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-isodate' 'python-requests-oauthlib')
 makedepends=('python-setuptools')
 source=("https://github.com/Azure/msrest-for-python/archive/v${pkgver}.tar.gz")
-sha256sums=('2605ae14c397440ca4817a01474218d0cda687bdf7a12b8bded443bf9878975f')
+sha256sums=('0aec73f6fa60294173e42779de52da75d8eadad146fc8043cb49d2e3bbb7cdc3')
 
 build() {
   cd "msrest-for-python-${pkgver}"
