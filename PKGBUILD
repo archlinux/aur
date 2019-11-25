@@ -1,12 +1,13 @@
 # Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Upstream author :  Luke Smith <https://git{hub,lab}.com/lukesmithxyz/>
 
+
 pkgname=mutt-wizard-git
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r685.gb66fb80
+pkgver=r713.g4542f27
 pkgrel=1
 
 pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
@@ -41,7 +42,7 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir" -s install
+  make PREFIX=/usr DESTDIR="$pkgdir" -s install
   install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" README.md
 }
 
