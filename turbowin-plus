@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar -Xms1024M -Xmx1024M -XX:NewRatio=2 /usr/share/turbowin-plus/turbowin_jws.jar 

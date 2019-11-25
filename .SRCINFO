@@ -1,0 +1,23 @@
+pkgbase = turbowin-plus
+	pkgdesc = Assists an observer in reporting and transmitting marine weather observations.
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://projects.knmi.nl/turbowin/
+	install = turbowin-plus.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = java-runtime
+	provides = turbowin-plus
+	options = !strip
+	source = http://projects.knmi.nl/turbowin/download/TurboWin+.zip
+	source = turbowin-plus.desktop
+	source = turbowin-plus
+	source = turbowin-plus.install
+	sha1sums = a586a92cd29d9c6e12472d8e5321471a79cac7c9
+	sha1sums = b21f071cb4c9057979e6f780b7bed588b6c99693
+	sha1sums = 4e52a79032a1fa9efc80af9af746f24d885684b6
+	sha1sums = 1128f83382617d12a4db3fdd75729753a6c5e5a1
+
+pkgname = turbowin-plus
+
