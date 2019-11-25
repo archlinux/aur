@@ -6,6 +6,7 @@ pkgbase = tnb
 	arch = x86_64
 	license = custom:WTFPL
 	makedepends = git
+	makedepends = rust
 	source = git+git://github.com/Wint3rmute/tnb.git
 	sha1sums = SKIP
 
