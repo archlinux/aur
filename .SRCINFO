@@ -1,6 +1,6 @@
 pkgbase = keeweb-desktop-bin
 	pkgdesc = Free cross-platform password manager compatible with KeePass
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/keeweb/keeweb
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = keeweb-desktop-bin
 	conflicts = keeweb
 	conflicts = keeweb-bin
 	conflicts = keeweb-git
-	source = keeweb-desktop-bin-1.12.2.deb::https://github.com/keeweb/keeweb/releases/download/v1.12.2/KeeWeb-1.12.2.linux.x64.deb
-	md5sums = 0c0adadc2e026f497e358be5edac01df
+	source = keeweb-desktop-bin-1.12.3.deb::https://github.com/keeweb/keeweb/releases/download/v1.12.3/KeeWeb-1.12.3.linux.x64.deb
+	md5sums = d8ad767c52c81be38f5978e61c9afac9
 
 pkgname = keeweb-desktop-bin
 
