@@ -19,15 +19,12 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  chmod -R a+wX "$srcdir/$pkgname"
-}
-
 build() {
   cd "$srcdir/$pkgname"
   # -fix flag is a no-op when using modules
   GOPATH="$srcdir" go get -v "$_gourl/cmd/pistol"
   strip -x "$srcdir/bin/pistol"
+  chmod -R a+wX "$srcdir/$pkgname"
 }
 
 package() {
