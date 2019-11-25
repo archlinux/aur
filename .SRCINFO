@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.34
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
 	groups = selinux
@@ -45,8 +45,8 @@ pkgname = util-linux-selinux
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
-	provides = util-linux=2.34-6
-	provides = selinux-util-linux=2.34-6
+	provides = util-linux=2.34-8
+	provides = selinux-util-linux=2.34-8
 	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
@@ -66,6 +66,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.34-6
+	provides = libutil-linux=2.34-8
 	conflicts = libutil-linux
 

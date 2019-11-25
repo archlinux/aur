@@ -12,7 +12,7 @@ pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.34
 pkgver=${_pkgmajor}
-pkgrel=6
+pkgrel=8
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url='https://github.com/karelzak/util-linux'
 arch=('x86_64')
@@ -64,7 +64,9 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib \
     --bindir=/usr/bin \
+    --sbindir=/usr/bin \
     --localstatedir=/var \
+    --enable-usrdir-path \
     --enable-fs-paths-default=/usr/bin:/usr/local/bin \
     --enable-raw \
     --enable-vipw \
@@ -119,8 +121,8 @@ package_util-linux-selinux() {
   # adjust for usrmove
   # TODO(dreisner): fix configure.ac upstream so that this isn't needed
   cd "$pkgdir"
-  mv {,usr/}sbin/* usr/bin
-  rmdir sbin usr/sbin
+  mv usr/sbin/* usr/bin
+  rmdir usr/sbin
 
   ### runtime libs are shipped as part of libutil-linux
   rm "$pkgdir"/usr/lib/lib*.{a,so}*
