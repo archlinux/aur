@@ -1,14 +1,15 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer: Frederic Bezies < fredbezies at gmail dot com> 
+# Contributor: archlinux.info:tdy
 
 pkgname=andscacs-engine
-pkgver=0.90
+pkgver=0.95
 pkgrel=1
 pkgdesc="A UCI chess engine (~3239 Elo)"
 arch=(x86_64)
 url=http://www.andscacs.com
 license=(custom)
 source=(http://www.andscacs.com/downloads/${pkgname%-*}${pkgver/.}.zip)
-sha256sums=(605f4454082691fc6595d184213c9a18970d56b24c0ac2a553fc68b9f2af92d4)
+sha256sums=('b691c46da0de664815d93a46db52783f8beb08fb035adb4c7286322d231372f7')
 
 package() {
   install -Dm755 linux/${pkgname%-*} "$pkgdir"/usr/bin/${pkgname%-*}
