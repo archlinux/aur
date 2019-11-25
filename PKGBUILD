@@ -11,7 +11,7 @@ source=($pkgname.png
         $pkgname.desktop)
 makedepends=(nodejs nodejs-nativefier npm)
 sha256sums=('54ac99161a59995f0cd2af9a31a1ad0b90edb5dfc0db7a7e48509d168413f075'
-            '4d3ae2428d176d6c3cca9cb5652a8cf42b4b8528bfe0ea76aad8ecbd7bb66cfb')
+            '92fd1e738a9f4464bfc17cb2a808d6fefa894be1c1e96aa580404279096c6bec')
 
 _instname=streamable
 
