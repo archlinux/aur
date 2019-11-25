@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.4-rc8
-pkgver=5.4.rc8
-pkgrel=3
+gitver=v5.4
+pkgver=5.4.v.0
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	5012_enable-cpu-optimizations-for-gcc91.patch)
 sha256sums=('SKIP'
              #config.x86_64
-            'cd18f34469af0c6fe8bf3db522b50e39de462cd48c5be7214d467da5e1867a16'
+            'fca771f84013291b68873fddb49301054109e5c0bfe2a4334d091e2bd413147c'
              #.preset file
              '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
              #patch file
