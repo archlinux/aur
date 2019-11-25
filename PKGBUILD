@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
 _gitname='xbmc'
-pkgver=r53675.88fffa1392b
+pkgver=r53775.6c39aebde24
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -73,6 +73,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
+  000-python3.8.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -93,7 +94,8 @@ sha256sums=('SKIP'
             '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '1789b97e790da8f2cb5ff827d15580878c8629fd889f5f038d7524dca43eacc9'
-            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1')
+            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
+            'edff38cea510817c3682c7c6086054ac49adaa478285093ea294d83db065b83f')
 
 pkgver() {
   cd "$_gitname"
@@ -116,6 +118,8 @@ prepare() {
     local _replace="exec_program(cat ARGS \"/build/$pkgname/src/cpuinfo\" OUTPUT_VARIABLE CPUINFO)"
     sed -i s"|$_find|$_replace|" cmake/modules/FindSSE.cmake
   fi
+
+  patch -Np1 -i ../000-python3.8.patch
 }
 
 build() {
@@ -136,6 +140,7 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON \
     -DENABLE_INTERNAL_FLATBUFFERS=ON \
     -DENABLE_MYSQLCLIENT=ON \
+    -DX11_RENDER_SYSTEM=gl \
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz" \
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz" \
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz" \
