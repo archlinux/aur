@@ -3,8 +3,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=epiphany-pantheon
-pkgver=3.35.1
-pkgrel=3
+pkgver=3.35.2+1+g16a4219dc
+pkgrel=1
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://wiki.gnome.org/Apps/Web"
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(docbook-xml startup-notification lsb-release gobject-introspection 
 checkdepends=(xorg-server-xvfb)
 groups=(pantheon)
 provides=(epiphany="${pkgver}" epiphany-sync)
-_commit=aa3e99a5845daac749bab80bc600ec5797a3f9c7  # tags/3.35.1^0
+_commit=16a4219dcb44b23d23c9ebe69ad466cb2ea7e597 # tags/3.35.2+1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=$_commit"
         epiphany-sync{,.service}
         "05-rename-to-epiphany.patch"

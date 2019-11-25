@@ -1,7 +1,7 @@
 pkgbase = epiphany-pantheon
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
-	pkgver = 3.35.1
-	pkgrel = 3
+	pkgver = 3.35.2+1+g16a4219dc
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Web
 	arch = x86_64
 	groups = pantheon
@@ -19,9 +19,9 @@ pkgbase = epiphany-pantheon
 	depends = gcr
 	depends = libdazzle
 	depends = libhandy
-	provides = epiphany=3.35.1
+	provides = epiphany=3.35.2+1+g16a4219dc
 	provides = epiphany-sync
-	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=aa3e99a5845daac749bab80bc600ec5797a3f9c7
+	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=16a4219dcb44b23d23c9ebe69ad466cb2ea7e597
 	source = epiphany-sync
 	source = epiphany-sync.service
 	source = 05-rename-to-epiphany.patch
