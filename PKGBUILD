@@ -1,33 +1,47 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 pkgname=lvtk
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Libraries wrapping the LV2 C API and extensions into C++ classes"
 arch=('x86_64')
 url="https://github.com/lvtk/lvtk"
 license=('GPL3')
-depends=('boost-libs')
-makedepends=('boost' 'gtkmm' 'lv2' 'python2')
-optdepends=('gtkmm: example plugins')
+depends=('gcc-libs' 'glibc')
+makedepends=('boost' 'gtkmm' 'lv2' 'waf')
+optdepends=('atk: for example plugins'
+            'atkmm: for example plugins'
+            'cairo: for example plugins'
+            'cairomm: for example plugins'
+            'fontconfig: for example plugins'
+            'gdk-pixbuf2: for example plugins'
+            'glib2: for example plugins'
+            'gtk2: for example plugins'
+            'gtkmm: for example plugins'
+            'harfbuzz: for example plugins'
+            'libfreetype.so: for example plugins'
+            'pango: for example plugins'
+            'pangomm: for example plugins')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('f193ec28103cb2f6353ff0f96f8790041baf1ae99472c5d04017c23b42d0179b1f5e1de6722e17080410311d0e7e1de4ca0ae9ab76fb3bf8a02d9dc1451d8db7')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  # remove (useless) python2 based print
+  sed -e '/print/d' -i wscript
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export CXXFLAGS="-std=c++11 $CXXFLAGS"
-  python2 waf configure --prefix=/usr \
-                        --boost-includes='/usr/include/boost' \
-                        --boost-libs='/usr/lib'
-  python2 waf build
+  waf configure --prefix=/usr \
+                --boost-includes='/usr/include/boost' \
+                --boost-libs='/usr/lib'
+  waf build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python2 waf install --destdir="$pkgdir/"
+  waf install --destdir="$pkgdir/"
   install -vDm 644 {AUTHORS,ChangeLog,README} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
