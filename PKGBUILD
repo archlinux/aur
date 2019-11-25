@@ -34,7 +34,7 @@ build() {
   #SMS plugin
   make -C lib/bmx7_sms/
   #Table plugin
-  make -C lib/bmx7_table/
+#  make -C lib/bmx7_table/
   #topology plugin
   make -C lib/bmx7_topology/
   #tun plugin
@@ -51,7 +51,7 @@ package() {
   install -D -m 755 bmx7 ${pkgdir}/usr/bin/bmx7
   install -D -m 755 lib/bmx7_json/bmx7_json.so ${pkgdir}/usr/lib/bmx7_json.so
   install -D -m 755 lib/bmx7_sms/bmx7_sms.so ${pkgdir}/usr/lib/bmx7_sms.so
-  install -D -m 755 lib/bmx7_table/bmx7_table.so ${pkgdir}/usr/lib/bmx7_table.so
+#  install -D -m 755 lib/bmx7_table/bmx7_table.so ${pkgdir}/usr/lib/bmx7_table.so
   install -D -m 755 lib/bmx7_topology/bmx7_topology.so ${pkgdir}/usr/lib/bmx7_topology.so
   install -D -m 755 lib/bmx7_tun/bmx7_tun.so ${pkgdir}/usr/lib/bmx7_tun.so
   install -D -m 755 lib/bmx7_evil/bmx7_evil.so ${pkgdir}/usr/lib/bmx7_evil.so

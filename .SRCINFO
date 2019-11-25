@@ -1,7 +1,7 @@
 pkgbase = bmx7
 	pkgdesc = Bmx7 mesh routing network protocol including plugins
 	pkgver = v7.1.1.r0.g91d6651
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bmx-routing/bmx7
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = bmx7
 	depends = json-c
 	depends = wireless_tools
 	depends = mbedtls
+	depends = zlib
 	provides = bmx7
 	source = bmx7::git+https://github.com/bmx-routing/bmx7.git
 	source = 0001-Linux-changed-the-header-file-for-SIOCGSTAMP.patch
