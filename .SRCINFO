@@ -13,7 +13,7 @@ pkgbase = xcursor-retrosmart
 	optdepends = retrosmart-xfwm4-themes: The corresponding themes for XFwm4
 	optdepends = retrosmart-openbox-themes: The corresponding themes for Openbox
 	source = xcursor-retrosmart-2.0.tar.gz::https://github.com/mdomlop/retrosmart-x11-cursors/archive/2.0.tar.gz
-	md5sums = db036e6c29ad6aa4e4b41f2472e4f1b4
+	md5sums = fd4b533e218d101b3789ce14274f9c35
 
 pkgname = xcursor-retrosmart
 
