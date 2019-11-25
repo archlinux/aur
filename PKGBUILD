@@ -2,8 +2,8 @@
 
 pkgbase=sol2-git
 pkgname=(sol2-git sol2-single-git)
-pkgver=v3.0.2.r1.ge256012d
-pkgrel=2
+pkgver=v3.0.3.r38.g21c03093
+pkgrel=1
 pkgdesc="C++ <-> Lua Wrapper Library"
 arch=('any')
 url="http://sol2.rtfd.io/"
@@ -23,13 +23,13 @@ pkgver() {
 package_sol2-git() {
   cd sol2
 
-  install -d $pkgdir/usr/include
+  install -d $pkgdir/usr/include/sol
   cp -rf ./include $pkgdir/usr
 }
 
 package_sol2-single-git() {
   cd sol2/single
 
-  install -d $pkgdir/usr/include
+  install -d $pkgdir/usr/include/sol
   python single.py --input ../include --output $pkgdir/usr/include/sol/sol.hpp
 }
