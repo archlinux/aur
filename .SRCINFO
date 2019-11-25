@@ -1,11 +1,10 @@
 pkgbase = elm-platform-bin
 	pkgdesc = Bundle of all core development tools for Elm
 	pkgver = 0.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elm/compiler
 	arch = x86_64
 	license = BSD-3-Clause
-	depends = ncurses5-compat-libs
 	provides = elm-platform
 	conflicts = elm-platform
 	source = elm-platform-bin-0.19.1.gz::https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz

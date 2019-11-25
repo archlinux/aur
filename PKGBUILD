@@ -6,12 +6,12 @@ pkgname=elm-platform-bin
 _pkgname=elm-platform
 
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundle of all core development tools for Elm"
 url="https://github.com/elm/compiler"
 license=('BSD-3-Clause')
 arch=('x86_64')
-depends=(ncurses5-compat-libs)
+depends=()
 conflicts=(elm-platform)
 provides=(elm-platform)
 makedepends=()
