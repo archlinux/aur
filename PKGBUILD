@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 pkgname=pwninit-bin
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 provides=('pwninit')
 conflicts=('pwninit')
 depends=('elfutils')
