@@ -2,7 +2,7 @@
 #_with_docs=1
 
 pkgname=libcomps
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Comps XML file manipulation library"
 arch=('i686' 'x86_64')
@@ -13,11 +13,10 @@ makedepends=('cmake' 'python')
 ((_with_docs)) && makedepends+=('doxygen' 'python-sphinx')
 checkdepends=('check')
 optdepends=('python: for python bindings')
-source=("$url/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('e63cf17441e1c7e167405e364fd52fdd')
+source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('1fd641428842b90a73ec56305daf12e0')
 
 prepare() {
-	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build
