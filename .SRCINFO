@@ -1,6 +1,6 @@
 pkgbase = cinnamon-slim
 	pkgdesc = Innovative Linux desktop. Slim version.
-	pkgver = 4.2.4
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/linuxmint/Cinnamon
 	arch = x86_64
@@ -32,23 +32,24 @@ pkgbase = cinnamon-slim
 	depends = python-pexpect
 	depends = python-pillow
 	depends = python-pyinotify
+	depends = python-pytz
 	depends = python-tinycss
+	depends = python-xapp
+	depends = timezonemap
 	depends = xapps
 	optdepends = blueberry: Bluetooth support
 	optdepends = cinnamon-translations: i18n
 	optdepends = gnome-panel: fallback mode
 	optdepends = metacity: fallback mode
 	optdepends = system-config-printer: printer settings
-	provides = cinnamon=4.2.4
+	provides = cinnamon=4.4.0
 	conflicts = cinnamon
 	replaces = cinnamon
 	options = !emptydirs
-	source = cinnamon-4.2.4.tar.gz::https://github.com/linuxmint/Cinnamon/archive/4.2.4.tar.gz
+	source = cinnamon-4.4.0.tar.gz::https://github.com/linuxmint/Cinnamon/archive/4.4.0.tar.gz
 	source = 0001-cinnamon-settings-don-t-rely-on-the-presence-of-cinn.patch
 	source = set_wheel.patch
 	source = default-theme.patch
-	source = remove-networkmanager.patch
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
