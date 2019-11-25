@@ -8,6 +8,7 @@ _gourl="github.com/doronbehar/pistol"
 url="https://$_gourl"
 license=('MIT')
 makedepends=('go' 'git')
+depends=('file')
 optdepends=('ranger: file browser to preview files in' 'lf: file browser to preview files in')
 source=("$pkgname::git+$url#branch=master")
 sha256sums=('SKIP')

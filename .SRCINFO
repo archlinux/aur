@@ -7,11 +7,11 @@ pkgbase = pistol-git
 	license = MIT
 	makedepends = go
 	makedepends = git
+	depends = file
 	optdepends = ranger: file browser to preview files in
 	optdepends = lf: file browser to preview files in
 	source = pistol-git::git+https://github.com/doronbehar/pistol#branch=master
 	sha256sums = SKIP
 
 pkgname = pistol-git
-
 
