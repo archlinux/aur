@@ -2,19 +2,18 @@
 
 _pypiname=CurrencyConverter
 pkgname=('python-currencyconverter' 'python2-currencyconverter')
-pkgver=0.13.2
+pkgver=0.13.10
 pkgrel=2
 pkgdesc="A currency converter using the European Central Bank data."
 arch=(any)
 url="https://pypi.python.org/pypi/CurrencyConverter"
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools')
-checkdepends=('')
 conflicts=('python3-currencyconverter')
 #source=("https://pypi.python.org/packages/source/w/CurrencyConverter/$_pypiname-$pkgver.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
 
-md5sums=('29de018001f4ae67d082ee35705a2870')
+md5sums=('e44756a4cbbc7b0c35f33f956c47224f')
 
 prepare() {
   cp -a ${_pypiname}-$pkgver{,-py2}
