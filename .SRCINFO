@@ -1,14 +1,16 @@
 pkgbase = gxemul
-	pkgdesc = An instruction-level emulator capable of ARM, MIPS, PowerPC, and SuperH
-	pkgver = 0.6.0.1
+	pkgdesc = Instruction-level machine emulator
+	pkgver = 0.6.2
 	pkgrel = 1
-	url = http://gxemul.sourceforge.net/
+	url = http://gavare.se/gxemul/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = doxygen
 	depends = libx11
-	source = http://gxemul.sourceforge.net/src/gxemul-0.6.0.1.tar.gz
-	md5sums = a66794710e930f43fef8cb9a734dc7d3
+	depends = sh
+	source = http://gavare.se/gxemul/src/gxemul-0.6.2.tar.gz
+	sha256sums = a703ac7965feb3c701c7677d78c353f0efa1af4d36a9508fb045eb63dd571547
 
 pkgname = gxemul
 
