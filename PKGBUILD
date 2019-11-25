@@ -1,6 +1,6 @@
 
 pkgname=python-voicerss-tts
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Access the http://www.voicerss.org/api/ Text to Voice API."
 url="https://bitbucket.org/daycoder/voicerss_tts.git"
@@ -9,7 +9,7 @@ makedepends=(python-setuptools)
 license=('MIT')
 arch=('any')
 source=("https://pypi.io/packages/source/v/voicerss_tts/voicerss_tts-${pkgver}.tar.gz")
-md5sums=('d66f8bfaf6f06d3097c87aa047574fcb')
+md5sums=('edc60d36861eda79c7a0bc9b4c91b599')
 
 build() {
     cd $srcdir/voicerss_tts-${pkgver}
