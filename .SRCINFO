@@ -1,7 +1,7 @@
 pkgbase = cpumanagergui
 	pkgdesc = CPU controler with a gui
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/nbebaw/cpumanagergui
 	arch = any
 	license = GPL
