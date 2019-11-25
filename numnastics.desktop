@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Name=Numnastics
+GenericName=A number puzzle audio game
+Comment=A number puzzle audio game
+Path=/opt/numnastics
+Exec=python numnastics
+Terminal=false
+StartupNotify=true
+Categories=Application;Game;PuzzleGame
