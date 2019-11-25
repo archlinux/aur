@@ -1,15 +1,11 @@
 pkgbase = graalpython-bin
-	pkgdesc = Graal based, high-performance implementation of the Python language (early development)
-	pkgver = 19.2.1
+	pkgdesc = Virtual package for backwards compatibility; please directly install graalpython-jdk8-bin instead
+	pkgver = 19.3.0
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
 	license = custom
-	depends = graal
-	provides = graalpython
-	conflicts = graalpython
-	source = https://github.com/graalvm/graalpython/releases/download/vm-19.2.1/python-installable-svm-linux-amd64-19.2.1.jar
-	sha256sums = d26948ca968e46ba53925961912ba4ed3267fdb1fcb402d3bc96d47c8a8f7cd3
+	depends = graalpython-jdk8-bin
 
 pkgname = graalpython-bin
 
