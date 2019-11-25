@@ -5,11 +5,10 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-planners-ompl'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-moveit-core
-  ros-melodic-ompl
   ros-melodic-tf
   ros-melodic-pluginlib
   ros-melodic-roscpp
@@ -18,26 +17,18 @@ ros_makedepends=(ros-melodic-moveit-core
   ros-melodic-eigen-conversions
   ros-melodic-moveit-resources
   ros-melodic-catkin)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools' 'ompl'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-moveit-core
-  ros-melodic-ompl
   ros-melodic-tf
   ros-melodic-pluginlib
   ros-melodic-roscpp
   ros-melodic-dynamic-reconfigure
   ros-melodic-moveit-ros-planning
   ros-melodic-eigen-conversions)
-depends=(${ros_depends[@]})
+depends=('ompl' ${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/moveit_planners_ompl/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('d65ac8d13f2e8c831fdef1e4185cd42723253449f48426e116bd0b94e2293669')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_planners/ompl"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
 sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
