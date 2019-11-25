@@ -3,7 +3,7 @@
 _name=azure-cli
 pkgname=python-$_name
 pkgver=2.0.76
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -18,6 +18,10 @@ sha256sums=('66ddda0c03c7a109d5c451c7881f42cb34651a028b0f8a74f80a32ad19070c06')
 
 build() {
   cd "$_name-$_name-$pkgver/src"
+
+  # Patch for python3.8 support
+  # TODO: Remove in azure-cli 2.0.77
+  sed -i 's/time.clock()/time.time()/' azure-cli-core/azure/cli/core/_session.py
 
   for d in azure-cli \
                azure-cli-core \

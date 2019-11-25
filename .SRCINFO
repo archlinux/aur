@@ -1,7 +1,7 @@
 pkgbase = python-azure-cli
 	pkgdesc = Microsoft Azure Command-Line Tools
 	pkgver = 2.0.76
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
