@@ -2,7 +2,7 @@
 
 pkgname=quikey
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A keyboard macro tool."
 arch=('any')
 url="https://github.com/bostrt/quikey"
