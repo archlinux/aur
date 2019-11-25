@@ -1,4 +1,4 @@
-pkgbase = olsrd
+pkgbase = olsrd-git
 	pkgdesc = The olsr.org implementation of the Optimized Link State Routing Protocol.
 	pkgver = v0.9.7.r71.g4ef6d68e
 	pkgrel = 1
@@ -12,10 +12,10 @@ pkgbase = olsrd
 	makedepends = flex
 	makedepends = gpsd
 	optdepends = gpsd
-	source = olsrd::git+https://github.com/OLSR/olsrd.git
+	source = olsrd-git::git+https://github.com/OLSR/olsrd.git
 	source = olsrd.service
 	sha256sums = SKIP
 	sha256sums = 321f2e0d30af597a38442eb8f039757767efc5da88205b85cf96819384c94ac7
 
-pkgname = olsrd
+pkgname = olsrd-git
 

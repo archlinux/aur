@@ -1,5 +1,5 @@
 # Maintainer: Nimrod Maclomair <nimrod4garoa at gmail dot com>
-pkgname=olsrd
+pkgname=olsrd-git
 pkgrel=1
 pkgver=v0.9.7.r71.g4ef6d68e
 pkgdesc='The olsr.org implementation of the Optimized Link State Routing Protocol.'
