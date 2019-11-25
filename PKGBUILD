@@ -4,7 +4,7 @@
 
 pkgname=gns3-gui
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
 url='https://github.com/GNS3/gns3-gui'
@@ -21,6 +21,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkg
         'gns3.desktop')
 sha256sums=('cdffe76a94cd20316b46592cd7b38234a55955d1178d4245c34bfb21dd5e0872'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    sed -i -e 's|^psutil==5\.6\.3$|psutil>=5.6.3|' requirements.txt
+}
 
 build() {
     cd "$pkgname-$pkgver"

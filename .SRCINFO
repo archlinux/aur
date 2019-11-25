@@ -1,7 +1,7 @@
 pkgbase = gns3-gui
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GNS3/gns3-gui
 	arch = any
 	groups = gns3
