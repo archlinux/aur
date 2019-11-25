@@ -3,8 +3,8 @@
 set -u
 _driver='BHC360'
 pkgname=$(echo "konica-minolta-bizhub-${_driver}" | tr '[:upper:]' '[:lower:]')
-pkgver='10000.0001'; _dl1='201111'; _dl2='15083233'
-pkgrel='1'
+pkgver='10000.0001'
+pkgrel='2'
 pkgdesc='CUPS PostScript printer driver for bizhub C220 C280 C360'
 arch=('any')
 url='https://www.konicaminolta.eu/en/business-solutions/support/download-center.html'
@@ -14,7 +14,7 @@ makedepends=('gzip')
 _driver="${_driver//-/}"
 _srcdir="${_driver^^}PPDLinux_${pkgver//\./}"
 source=(
-  "https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/${_dl1}/${_dl2}/${_srcdir}MU.zip"
+  "https://dl.konicaminolta.eu/en/?tx_kmanacondaimport_downloadproxy[fileId]=60f41c84e052e29e0a161466d4b78a02&tx_kmanacondaimport_downloadproxy[documentId]=84232&tx_kmanacondaimport_downloadproxy[system]=KonicaMinolta&tx_kmanacondaimport_downloadproxy[language]=EN&type=1558521685"
   "LICENSE"
 )
 #_srcdir+='MU'

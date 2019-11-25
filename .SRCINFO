@@ -1,13 +1,13 @@
 pkgbase = konica-minolta-bizhub-bhc360
 	pkgdesc = CUPS PostScript printer driver for bizhub C220 C280 C360
 	pkgver = 10000.0001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.konicaminolta.eu/en/business-solutions/support/download-center.html
 	arch = any
 	license = custom:konica minolta commercial license
 	makedepends = gzip
 	depends = cups
-	source = https://o.cses.konicaminolta.com/file/Default.aspx?FilePath=DL/201111/15083233/BHC360PPDLinux_100000001MU.zip
+	source = https://dl.konicaminolta.eu/en/?tx_kmanacondaimport_downloadproxy[fileId]=60f41c84e052e29e0a161466d4b78a02&tx_kmanacondaimport_downloadproxy[documentId]=84232&tx_kmanacondaimport_downloadproxy[system]=KonicaMinolta&tx_kmanacondaimport_downloadproxy[language]=EN&type=1558521685
 	source = LICENSE
 	sha256sums = 774e85ae0e7e19f0160891d2a2bf5b85563ca3348e51c2ba0d93c20b879006bb
 	sha256sums = a3dcdd6459b4a376c61ad8c69ced0f356581229b39b209debe1679749824c408
