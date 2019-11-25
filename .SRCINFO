@@ -1,15 +1,14 @@
 pkgbase = terraform11
 	pkgdesc = Tool for building, changing, and versioning infrastructure safely and efficiently
-	pkgver = v0.11.14.r0.g12bf5f6afe
+	pkgver = 0.11.14
 	pkgrel = 1
-	url = http://www.terraform.io/
+	url = https://www.terraform.io/
 	arch = x86_64
 	license = MPL
 	makedepends = git
 	makedepends = go-pie
-	provides = terraform11
-	source = terraform::git+https://github.com/hashicorp/terraform.git#tag=v0.11.14
-	sha256sums = SKIP
+	source = terraform::https://github.com/hashicorp/terraform/archive/v0.11.14.tar.gz
+	sha256sums = 50b75c94c4d3bfe44cfc12c740126747b6b34c014602777154356caa85a783f4
 
 pkgname = terraform11
 
