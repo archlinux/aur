@@ -4,7 +4,7 @@
 
 pkgname=webstorm-eap
 _pkgname=WebStorm
-pkgver=193.5233.52
+pkgver=193.5233.80
 _pkgver=2019.3
 pkgrel=1
 ipkgdesc="JavaScript IDE and HTML editor."
@@ -14,12 +14,12 @@ url="http://www.jetbrains.com/webstorm"
 license=('custom')
 depends=()
 
-source=(http://download.jetbrains.com/webstorm/${_pkgname}-${pkgver}.tar.gz
+source=(http://download.jetbrains.com/webstorm/${_pkgname}-${_pkgver}.tar.gz
         jetbrains-webstorm-eap
         jetbrains-webstorm-eap.desktop
         ${_pkgname}_license.txt)
 
-sha256sums=('a9df6e40a5677ac77844b3a58f8db1d077794e8d3b4ce597c2e01df544d4fa1c'
+sha256sums=('63ffa9d500182909078356157dd4c7ee97abfc55c51bced45d71423c7230e593'
             '3712fc9477a8b5a54d970103166b05bf872fa2512c5bee7e63f62a5738e40419'
             '931de5f12ab12e62eccaa3648d0cedf5e2c3845cc1e1a37030137fdbc24f54f3'
             '8464fc766dbb4f6a0de4acd84007fc2916b50ca48ce7d22654144f549c8c6f4c')
