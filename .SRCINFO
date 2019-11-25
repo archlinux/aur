@@ -1,0 +1,17 @@
+pkgbase = ksmoothdock-git
+	pkgdesc = A cool desktop panel for KDE Plasma 5
+	pkgver = r550.793b94e
+	pkgrel = 1
+	url = https://github.com/dangvd/ksmoothdock
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = python
+	depends = kactivities
+	depends = kxmlgui
+	source = git+https://github.com/dangvd/ksmoothdock
+	sha256sums = SKIP
+
+pkgname = ksmoothdock-git
+
