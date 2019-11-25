@@ -1,0 +1,13 @@
+pkgbase = native-image-jdk11-bin
+	pkgdesc = Plugin to turn GraalVM-based applications into native binary images (Java 11 version)
+	pkgver = 19.3.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	license = custom
+	depends = jdk11-graalvm-bin
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0/native-image-installable-svm-java11-linux-amd64-19.3.0.jar
+	sha256sums = ed8a281df66a438e116fff2dec71c201594fd39c82c7152d67a1dbb4dd58992d
+
+pkgname = native-image-jdk11-bin
+
