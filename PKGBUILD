@@ -3,8 +3,8 @@
 
 _pkgname=yarl
 pkgname=python-"$_pkgname"-gns3
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Yet another URL library (GNS3)"
 arch=('any')
 url="https://github.com/aio-libs/yarl/"
@@ -16,7 +16,7 @@ depends=('glibc' 'python' 'python-multidict-gns3' 'python-idna')
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aio-libs/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1083cb0eb2a68638c239d96ed6b3cfe8427f5fea62aa2e575ae5511a196b5df5')
+sha256sums=('0d4acfd6c750612871e11c49eea43213949f1528686a184eefc1366142a6fbb3')
 
 build() {
     cd "$_pkgname-$pkgver"
