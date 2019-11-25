@@ -2,9 +2,9 @@
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko-git
-pkgver=0.7.20.r154.g7ca0fa85d
+pkgver=0.7.21.r1.ge1530b594
 pkgrel=1
-pkgdesc="Free implementation of the card game Doppelkopf (developer version)"
+pkgdesc="Free implementation of the card game Doppelkopf (development version)"
 arch=('x86_64')
 url="http://free-doko.sourceforge.net"
 license=('GPL')
@@ -14,8 +14,8 @@ conflicts=('freedoko')
 provides=('freedoko')
 source=("git+https://gitlab.com/dknof/FreeDoko.git"
         "freedoko-install-directories.patch")
-sha256sums=('SKIP'
-            '3bd03f2d57327b97ea1ab22ff210381f0ff60d8b1db794f07cda5ef01d7e7df4')
+sha512sums=('SKIP'
+            '602f53bfd4c4c49824400a36e4655dc6f6d5692b7277489f8e5f9f9d9d4d90eb086a4d142736e76edc2c8864430d8cbf5fa403bb25497b2c6a510a1979fe7650')
 
 pkgver() {
   cd FreeDoko
