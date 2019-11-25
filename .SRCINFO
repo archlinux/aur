@@ -1,6 +1,6 @@
 pkgbase = python-azure-git
 	pkgdesc = Microsoft Azure SDK for Python
-	pkgver = 4.0.0.r801.gaed2963b27
+	pkgver = 4.0.0.r1443.g3d7a5d9281
 	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any

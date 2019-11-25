@@ -1,7 +1,7 @@
 # Maintainer: pallxk <aur at pallxk dot com>
 
 pkgname=python-azure-git
-pkgver=4.0.0.r801.gaed2963b27
+pkgver=4.0.0.r1443.g3d7a5d9281
 pkgrel=1
 pkgdesc="Microsoft Azure SDK for Python"
 arch=('any')
