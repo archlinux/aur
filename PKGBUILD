@@ -1,10 +1,9 @@
 # Maintainer: TheAifam5 <theaifam5 at gmail com>
 
-_pkgver=3.0.2
 pkgbase=sol2
 pkgname=(sol2 sol2-single)
-pkgver=v${_pkgver}
-pkgrel=3
+pkgver=3.0.3
+pkgrel=1
 pkgdesc="C++ <-> Lua Wrapper Library"
 arch=('any')
 options=(!strip)
@@ -14,20 +13,20 @@ makedepends=('git' 'python')
 optdepends=('lua' 'lua51' 'lua52' 'luajit')
 conflicts=('sol2')
 provides=('sol2')
-source=("https://github.com/ThePhD/sol2/archive/$pkgver.tar.gz")
-sha256sums=('6265ade1efd5b1133d71fa3b81fd0214ccf964992a8cbab3dfae650a00ed0258')
+source=("https://github.com/ThePhD/sol2/archive/v$pkgver.tar.gz")
+sha256sums=('bf089e50387edfc70063e24fd7fbb693cceba4a50147d864fabedd1b33483582')
 
 package_sol2() {
-  cd "./$pkgbase-$_pkgver"
+  cd "./$pkgbase-$pkgver"
 
-  install -d $pkgdir/usr/include
+  install -d $pkgdir/usr/include/sol
   cp -rf ./include $pkgdir/usr
 }
 
 package_sol2-single() {
-  cd "./$pkgbase-$_pkgver/single"
+  cd "./$pkgbase-$pkgver/single"
 
-  install -d $pkgdir/usr/include
+  install -d $pkgdir/usr/include/sol
   
   python single.py --input ../include --output $pkgdir/usr/include/sol/sol.hpp
 }
