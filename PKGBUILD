@@ -1,8 +1,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=lazylibrarian
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Automatic Book Downloading via NZBs & Torrent"
 arch=('any')
 url="https://gitlab.com/LazyLibrarian/LazyLibrarian/"
@@ -21,7 +21,7 @@ source=("https://gitlab.com/LazyLibrarian/LazyLibrarian/-/archive/${pkgver}/Lazy
         'lazylibrarian.tmpfiles'
         'lazylibrarian.sysusers')
 
-sha256sums=('a29b6592396fa43c11311336a9dcb126a0da3417f1c0b261d9394bce0a023920'
+sha256sums=('9f7c44c75f0bde6c31efdd8d8fab89cbec2b336c3cff84df49c5e523d4d438d6'
             '6963070cf23093213fc1230f1786a085f2d8e0f0cc8a206f72df23f7bd6b82a7'
             '02f5a617eb591440188939e1aa047fa81d9f4382e8f7f444113b1127ef64156f'
             '1e5ee6265af4e4d8beea3cec49cbdba6624a6169edee081aa03de32965d4729d')
