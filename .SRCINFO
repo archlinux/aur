@@ -1,0 +1,27 @@
+pkgbase = python2-bokeh
+	pkgdesc = Interactive Web Plotting for Python
+	pkgver = 1.3.4
+	pkgrel = 4
+	url = http://bokeh.pydata.org/
+	arch = any
+	license = BSD
+	source = https://pypi.io/packages/source/b/bokeh/bokeh-1.3.4.tar.gz
+	sha256sums = e2d97bed5b199a10686486001fed5c854e4c04ebe28859923f27c52b93904754
+
+pkgname = python2-bokeh
+	depends = python2-numpy
+	depends = python2-six
+	depends = python2-flask
+	depends = python2-jinja
+	depends = python2-requests
+	depends = python2-pillow
+	depends = python2-yaml
+	depends = python2-tornado
+	optdepends = python2-bkcharts: server
+	optdepends = phantomjs: svg export
+	optdepends = nodejs: extending Bokeh
+	optdepends = python2-pandas: Pandas support
+	optdepends = python2-psutil: detailed memory logging
+	optdepends = python2-networkx: plot directly from NetworkX data
+	optdepends = python2-sphinx: support sphinx documentation
+
