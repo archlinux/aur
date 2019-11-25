@@ -1,0 +1,14 @@
+pkgbase = emacs-markdown-preview-mode
+	pkgdesc = Minor mode to preview markdown output as you save
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/ancane/markdown-preview-mode
+	arch = any
+	license = MIT
+	depends = emacs
+	noextract = GPL3
+	source = https://github.com/ancane/markdown-preview-mode/archive/v0.9.2.tar.gz
+	sha256sums = 7827f570005a4adc801878fc0a9679fbe015239701a6f8ff7eb6761dfbd15950
+
+pkgname = emacs-markdown-preview-mode
+
