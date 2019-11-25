@@ -1,6 +1,6 @@
 pkgbase = rvgl-tracks
 	pkgdesc = Additional RVGL tracks for official events.
-	pkgver = 19.0630
+	pkgver = 19.1125
 	pkgrel = 1
 	url = https://rvgl.re-volt.io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = rvgl-tracks
 	depends = rvgl-bin
 	optdepends = rvgl-loadlevel: custom load screens
 	optdepends = rvgl-music: music for levels
-	source = rvgl-tracks-19.0630.zip::https://distribute.re-volt.io/packs/io_tracks.zip
-	sha256sums = 5aa5fa144df5b981964ba2489ba0dcb2b5785e54949952ee03acbe4a66db416f
+	source = rvgl-tracks-19.1125.zip::https://distribute.re-volt.io/packs/io_tracks.zip
+	sha256sums = 51f19282af9d1daa3121e3f763a9b711302638cf70d4a60cb191e34555fe6600
 
 pkgname = rvgl-tracks
 
