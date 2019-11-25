@@ -7,6 +7,11 @@ pkgbase = python-pycobertura-git
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-click
+	depends = python-colorama
+	depends = python-jinja
+	depends = python-lxml
+	depends = python-tabulate
 	provides = python-pycobertura=0.10.5
 	conflicts = python-pycobertura
 	source = https://github.com/aconrad/pycobertura
