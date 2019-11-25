@@ -1,0 +1,13 @@
+--- a/src/makefiles/Makefile.linux	2019-11-25 09:01:12.719163530 -0500
++++ b/src/makefiles/Makefile.linux	2019-11-25 09:12:50.430942449 -0500
+@@ -1,7 +1,7 @@
+ CC = gcc
+-LD = gcc -static
+-CFLAGS = -Wall -O3 $(CDEFS)
+-LDFLAGS = -s
++LD = gcc
++CFLAGS += $(CDEFS)
++LDFLAGS +=
+ 
+ SOURCES = avra.c \
+ 	device.c \
