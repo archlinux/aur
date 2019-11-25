@@ -10,7 +10,7 @@ pkgdesc="pwninit - automate starting binary exploit challenges. Pre-compiled."
 license=('MIT')
 url="https://github.com/io12/pwninit"
 source=("${pkgname}-${pkgver}::https://github.com/io12/pwninit/releases/download/${pkgver}/pwninit")
-md5sums=('708a4eb80ac07d2ca57c391ac312342c')
+md5sums=('7bbf9be8f4329307d39ce30192578199')
 
 package() {
   install -Dm 755 "${pkgname}-${pkgver}" -T "${pkgdir}/usr/bin/pwninit"
