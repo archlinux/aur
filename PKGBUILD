@@ -35,6 +35,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         blender-2.8.desktop
         SelectCudaComputeArch.patch
+        python3.8.patch
         )
 md5sums=('SKIP'
          'SKIP'
@@ -42,7 +43,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
-         '4441d9a6db38b85b7dc5c3c9e6872951')
+         '4441d9a6db38b85b7dc5c3c9e6872951'
+         '3b8c61d865e00e7d5d371824d46ac700')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -53,6 +55,7 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
+  git apply -v ${srcdir}/python3.8.patch
   if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
     git apply -v ${srcdir}/SelectCudaComputeArch.patch
   fi
