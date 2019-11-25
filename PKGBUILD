@@ -1,8 +1,8 @@
-# Maintainer: Brendan Szymanski <brendan.szymanski1@gmail.com>
+# Maintainer: Brendan Szymanski <bscubed@pm.me>
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r8088.146072746
+pkgver=r8148.a77f8cd88
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger written in C++"
 arch=('i686' 'x86_64')
