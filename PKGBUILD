@@ -24,12 +24,12 @@ build() {
   # -fix flag is a no-op when using modules
   GOPATH="$srcdir" go get -v "$_gourl/cmd/pistol"
   strip -x "$srcdir/bin/pistol"
-  chmod -R a+wX "$srcdir/$pkgname"
 }
 
 package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname/LICENSE"
   install -Dm755 "$srcdir/bin/pistol" "$pkgdir/usr/bin/pistol"
+  chmod -fR a+wX "$srcdir/$pkgname/*"
 }
 
 warn_build_references() {
