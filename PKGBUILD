@@ -29,7 +29,7 @@ build() {
 package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/$pkgname/LICENSE"
   install -Dm755 "$srcdir/bin/pistol" "$pkgdir/usr/bin/pistol"
-  chmod -fR a+wX "$srcdir/$pkgname/*"
+  chmod -R u+wX "$srcdir/$pkgname/*" &>/dev/null
 }
 
 warn_build_references() {
