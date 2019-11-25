@@ -1,7 +1,7 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 pkgname=librenms
-pkgver=1.57
+pkgver=1.58
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
