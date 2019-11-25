@@ -1,8 +1,9 @@
 pkgbase = roger-router-git
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
-	pkgver = v2.1.0.r8.g3af078e
-	pkgrel = 3
+	pkgver = v2.1.5.r12.gbaa7274
+	pkgrel = 1
 	url = https://www.tabos.org/
+	install = roger-router.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -19,13 +20,15 @@ pkgbase = roger-router-git
 	depends = libappindicator-gtk3
 	depends = evolution-data-server
 	optdepends = portaudio: PortAudio support
-	provides = rogerrouter=v2.1.0.r8.g3af078e
-	provides = roger=v2.1.0.r8.g3af078e
+	provides = rogerrouter=v2.1.5.r12.gbaa7274
+	provides = roger=v2.1.5.r12.gbaa7274
 	conflicts = rogerrouter
 	conflicts = roger
 	conflicts = roger-router
 	options = !emptydirs
 	source = git+https://gitlab.com/tabos/rogerrouter.git
+	source = open-hiden.patch
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = roger-router-git

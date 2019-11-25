@@ -10,6 +10,13 @@ post_install() {
 		echo
 		gpasswd --add $(logname) lp || echo "Add a user to the group \"lp\" with: gpasswd --add $(logname) lp"
 	fi
+
+	echo "==> For faxing and calling from your PC directly, you must activate a CAPI over TCP!"
+	echo "==> To activate a CAPI over TCP, please call #96*3* from your DECT phone"
+	echo "==> To deactivate a CAPI over TCP, please call #96*2* from your DECT phone"
+	echo
+	echo "==> To activate a signaling of calls: Please call #96*5*"
+	echo "==> To deactivate a signaling of calls: Please call #96*4*"
 }
 
 psot_remove() {

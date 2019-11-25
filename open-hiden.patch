@@ -1,0 +1,13 @@
+diff --git a/roger/org.tabos.roger.desktop.in b/roger/org.tabos.roger.desktop.in
+index b1f47715fdd8ee499353aa1ff843a8810c7c1bb9..3191d04ed6271ad23d5583fadc304e38979ec2a6 100644
+--- a/roger/org.tabos.roger.desktop.in
++++ b/roger/org.tabos.roger.desktop.in
+@@ -2,7 +2,7 @@
+ Name=Roger Router
+ GenericName=Roger Router
+ Comment=Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
+-Exec=roger %u
++Exec=roger -i %u
+ Icon=org.tabos.roger
+ StartupNotify=true
+ Terminal=false
