@@ -4,7 +4,7 @@
 
 pkgname=gns3-server
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
 url='https://github.com/GNS3/gns3-server'
@@ -13,7 +13,7 @@ groups=('gns3')
 makedepends=('python-setuptools')
 depends=('python-jsonschema26' 'python-aiohttp-gns3' 'python-aiohttp-cors-gns3'
          'python-async_generator' 'python-aiofiles'
-         'python-yarl-gns3' 'python-jinja' 'python-raven' 'python-psutil'
+         'python-yarl' 'python-jinja' 'python-raven' 'python-psutil'
          'python-zipstream-gns3' 'python-prompt_toolkit-gns3' 'python-async-timeout-gns3'
          'busybox')
 optdepends=('dynamips: Cisco router emulator.'
@@ -28,6 +28,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
 sha256sums=('d4e7ca531e352259d2d7f8ff6fc9126a18adcdd6628ef5cbdbffbffe5515d91a'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    sed -i -e 's|^psutil==5\.6\.3$|psutil>=5.6.3|' requirements.txt
+}
 
 build() {
     cd "$pkgname-$pkgver"
