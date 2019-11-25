@@ -3,7 +3,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-appimage-git
 pkgver=0.19_18775
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
@@ -20,14 +20,15 @@ source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases
 
 # skip, since it changes every day
 sha256sums=("SKIP"
-            "b052abcbbdb1f5c5743a576c96d83deadb19f490cbcbc1cf61c39cbeb62d1793"
-            "927545a2aae158e95dcc16244d49fc124d7c0754a1b6362f7b0f1a27051d879e")
+            "0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674"
+            "93981010947cc386f31b07b3cf07921105d817974d3de291f32083d42af02b8e")
 
 prepare() {
   cd "${srcdir}"
   chmod +x freecad-${pkgver}.AppImage
   ./freecad-${pkgver}.AppImage --appimage-extract freecad_conda.desktop
   ./freecad-${pkgver}.AppImage --appimage-extract usr/share/icons
+  ./freecad-${pkgver}.AppImage --appimage-extract usr/share/mime/packages
   patch -Np0 < ./freecad_conda.desktop.patch
 }
 
@@ -36,7 +37,9 @@ package() {
   install -Dm755 "${srcdir}/freecad.sh" "${pkgdir}/usr/bin/freecad"
 
   install -dm755 "${pkgdir}/usr/share/"
+  install -dm755 "${pkgdir}/usr/share/mime/application"
   cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/mime/packages/org.freecadweb.FreeCAD.xml" "${pkgdir}/usr/share/mime/application/x-extension-fcstd.xml"
 
   install -Dm644 "${srcdir}/squashfs-root/freecad_conda.desktop" "${pkgdir}/usr/share/applications/freecad_conda.desktop"
 }

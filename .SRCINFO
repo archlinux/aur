@@ -1,7 +1,7 @@
 pkgbase = freecad-appimage-git
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.19_18775
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
@@ -14,8 +14,8 @@ pkgbase = freecad-appimage-git
 	source = freecad.sh
 	source = freecad_conda.desktop.patch
 	sha256sums = SKIP
-	sha256sums = b052abcbbdb1f5c5743a576c96d83deadb19f490cbcbc1cf61c39cbeb62d1793
-	sha256sums = 927545a2aae158e95dcc16244d49fc124d7c0754a1b6362f7b0f1a27051d879e
+	sha256sums = 0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674
+	sha256sums = 93981010947cc386f31b07b3cf07921105d817974d3de291f32083d42af02b8e
 
 pkgname = freecad-appimage-git
 
