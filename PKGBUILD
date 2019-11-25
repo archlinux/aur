@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=ptags
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A parallel universal-ctags wrapper for git repository.'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("$pkgname"::'git+https://github.com/dalance/ptags.git')
 source=(
     $pkgname-$pkgver.zip::https://github.com/dalance/ptags/archive/v$pkgver.zip
 )
-sha256sums=('ee1667edff9282d8ae8b6d7087b8a6fa2ed46c93ee2b15054d7a37a703f9a988')
+sha256sums=('f270c5195196bee852bbc61f811788685fb85eb8bfb5672bdd41bf430974ac21')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
