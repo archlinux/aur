@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/serge-rgb/milton'
 license=('GPL')
 depends=('gtk2' 'opengl-driver')
-makedepends=('icoutils' 'patch' 'sdl2')
+makedepends=('cmake' 'icoutils' 'patch' 'sdl2')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/serge-rgb/milton/archive/v${pkgver}.tar.gz"
         'harfbuzz-cflags.patch'

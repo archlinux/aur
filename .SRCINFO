@@ -5,6 +5,7 @@ pkgbase = milton
 	url = https://github.com/serge-rgb/milton
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	makedepends = icoutils
 	makedepends = patch
 	makedepends = sdl2
