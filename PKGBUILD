@@ -2,55 +2,47 @@
 
 _githubname=tizonia-openmax-il
 pkgname=tizonia-all-git
-pkgver=0.18.0.r0.g89a4d6a6
+pkgver=0.18.0.r55.g28b2b257
 pkgrel=1
 pkgdesc="Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Dirble Internet Radio, Plex servers and Chromecast devices."
 arch=('x86_64')
 url="https://www.tizonia.org"
 license=('LGPL')
+makedepends=('git' 'boost' 'check')
 depends=(
     # official repositories:
     'libmad'
-    'sqlite'
-    'libutil-linux'
     'taglib'
     'mediainfo'
     'sdl'
     'lame'
     'faad2'
     'libcurl-gnutls'
-    'libvorbis'
     'libvpx'
     'mpg123'
-    'opus'
     'opusfile'
-    'libogg'
     'libfishsound'
-    'flac'
     'liboggz'
-    'libsndfile'
-    'alsa-lib'
     'libpulse'
-    'boost'
-    'check'
-    'python2-pafy'
-    'python2-eventlet'
+    'boost-libs'
+    'hicolor-icon-theme'
+    'python-eventlet'
 
     # AUR:
     'log4c'
     'libspotify'
-    'python2-gmusicapi'
-    'python2-soundcloud-git'
-    'python2-youtube-dl-git'
-    'python2-pychromecast-git'
+    'python-pafy'
+    'python-gmusicapi'
+    'python-soundcloud-git'
+    'youtube-dl'
+    'python-pychromecast-git'
     'python-plexapi'
-    'python2-fuzzywuzzy'
-    'python2-eventlet'
-    'python2-spotipy'
+    'python-fuzzywuzzy'
+    'python-spotipy'
 )
 provides=('tizonia-all')
 conflicts=('tizonia-all')
-source=("${pkgname}"::"git+https://github.com/tizonia/${_githubname}.git")
+source=("${pkgname}"::git+https://github.com/tizonia/${_githubname}.git#branch=develop)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -69,13 +61,13 @@ prepare() {
       exit 1; }
   mkdir -p "$srcdir/path"
   # Tizonia expects Python 2
-  ln -sf /usr/bin/python2 "$srcdir/path/python"
-  ln -sf /usr/bin/python2-config "$srcdir/path/python-config"
+  ln -sf /usr/bin/python "$srcdir/path/python"
+  ln -sf /usr/bin/python-config "$srcdir/path/python-config"
 }
 
 build() {
     export PATH="$srcdir/path:$PATH"
-    export PYTHON="/usr/bin/python2"
+    export PYTHON="/usr/bin/python"
     cd "$pkgname"
     autoreconf -ifs
     ./configure \
