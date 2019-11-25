@@ -1,7 +1,7 @@
 pkgbase = hasher-priv
 	pkgdesc = Altlinux save package build & chroot system ( private part )
 	pkgver = 1.6.0.alt1.r0.gfc432c2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.altlinux.org/hasher
 	install = hasher-priv.install
 	arch = i686
