@@ -1,0 +1,15 @@
+pkgbase = pyupgrade
+	pkgdesc = A tool to automatically upgrade syntax for newer versions of the language.
+	pkgver = 1.25.1
+	pkgrel = 1
+	url = https://github.com/asottile/pyupgrade
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tokenize-rt
+	source = pyupgrade-1.25.1::https://github.com/asottile/pyupgrade/archive/v1.25.1.tar.gz
+	sha256sums = 2e004fc7c95695da728e19624a7a221da0cdfadf593892d3158130acca0acbf8
+
+pkgname = pyupgrade
+
