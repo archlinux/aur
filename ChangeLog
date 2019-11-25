@@ -1,9 +1,14 @@
+2019-11-25 Christopher Arndt <aur -at- chrisarndt -dot- de>
+	* 0.9.0.r1897.abdedd52-2
+	Added patch to fix JUCE compilation error with GCC >= 9.x
+	Install VST binary into /usr/lib/vst instead of /usr/lib/lxvst
+
 2018-07-17 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 0.9.0.r1897.abdedd52-1
-	Removed absolete 'prepare' function from PKGBUILD.
+	Removed obsolete 'prepare' function from PKGBUILD.
 	Removed obsolete dependency on 'steinberg-vst36'.
 	Removed obsolete extra CXXFLAGS.
-	Added depencies 'curl' 'hicolor-icon-theme' and 'libxinerama'.
+	Added dependencies 'curl' 'hicolor-icon-theme' and 'libxinerama'.
 
 2017-07-11 Christopher Arndt <aur -at- chrisarndt -dot- de>
 	* 0.9.0.r1876.927d2ed2-1

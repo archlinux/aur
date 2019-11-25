@@ -1,7 +1,7 @@
 pkgbase = helm-git
 	pkgdesc = a cross-platform, polyphonic synthesizer LV2 and VST plugin
 	pkgver = 0.9.0.r1897.abdedd52
-	pkgrel = 1
+	pkgrel = 2
 	url = http://tytel.org/helm/
 	changelog = ChangeLog
 	arch = i686
@@ -20,7 +20,9 @@ pkgbase = helm-git
 	provides = helm
 	conflicts = helm
 	source = helm::git+https://github.com/mtytel/helm.git
+	source = juce-gcc.diff
 	md5sums = SKIP
+	md5sums = 2495dfc19287544c0ac87dae3837b3be
 
 pkgname = helm-git
 
