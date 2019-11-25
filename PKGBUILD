@@ -21,4 +21,5 @@ build() {
 package() {
     cd "${srcdir}/markdown-preview-mode-${pkgver}"
     install -D -m 644 markdown-preview-mode.el "${pkgdir}"/usr/share/emacs/site-lisp/markdown-preview-mode.el
+    install -D -m 644 preview.html "${pkgdir}"/usr/share/emacs/site-lisp/preview.html
 }
