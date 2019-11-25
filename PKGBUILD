@@ -2,7 +2,7 @@
 
 pkgname=emacs-web-server
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="web server running Emacs Lisp handlers."
 arch=('any')
 url="https://github.com/eschulte/emacs-web-server"
@@ -20,4 +20,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-version-${pkgver}"
     install -D -m 644 web-server.el "${pkgdir}"/usr/share/emacs/site-lisp/web-server/web-server.el
+    install -D -m 644 web-server-status-code.el "${pkgdir}"/usr/share/emacs/site-lisp/web-server/web-server-status-code.el
 }
