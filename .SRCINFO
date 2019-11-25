@@ -1,6 +1,6 @@
 pkgbase = bmx7
 	pkgdesc = Bmx7 mesh routing network protocol including plugins
-	pkgver = r917.85841b0
+	pkgver = v7.1.1.r0.g91d6651
 	pkgrel = 1
 	url = https://github.com/bmx-routing/bmx7
 	arch = i686
@@ -15,7 +15,9 @@ pkgbase = bmx7
 	depends = mbedtls
 	provides = bmx7
 	source = bmx7::git+https://github.com/bmx-routing/bmx7.git
+	source = 0001-Linux-changed-the-header-file-for-SIOCGSTAMP.patch
 	sha256sums = SKIP
+	sha256sums = d95400340bcd14c3b18b3478abf517210dc15d8693241760b46450bb1ec76db0
 
 pkgname = bmx7
 
