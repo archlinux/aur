@@ -1,0 +1,23 @@
+pkgbase = mercurial-stable-hg
+	pkgdesc = Distributed source control management tool (development stable branch)
+	pkgver = r43734.88a306478556
+	pkgrel = 1
+	url = https://www.mercurial-scm.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = mercurial
+	makedepends = python-docutils
+	depends = glibc
+	depends = python
+	optdepends = tk: for the hgk GUI
+	provides = mercurial
+	conflicts = mercurial
+	backup = etc/mercurial/hgrc
+	source = hg+https://www.mercurial-scm.org/repo/hg#branch=stable
+	source = mercurial.profile::https://git.archlinux.org/svntogit/packages.git/plain/trunk/mercurial.profile?h=packages/mercurial
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mercurial-stable-hg
+
