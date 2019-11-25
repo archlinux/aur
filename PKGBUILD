@@ -10,6 +10,7 @@ license=('GPL3')
 depends=('emacs' 'emacs-websocket' 'emacs-web-server')
 makedepends=()
 source=("https://github.com/ancane/markdown-preview-mode/archive/v${pkgver}.tar.gz")
+install=${pkgname}.install
 noextract=()
 sha256sums=('7827f570005a4adc801878fc0a9679fbe015239701a6f8ff7eb6761dfbd15950')
 

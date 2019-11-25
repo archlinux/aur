@@ -3,6 +3,7 @@ pkgbase = emacs-markdown-preview-mode
 	pkgver = 0.9.2
 	pkgrel = 2
 	url = https://github.com/ancane/markdown-preview-mode
+	install = emacs-markdown-preview-mode.install
 	arch = any
 	license = GPL3
 	depends = emacs
