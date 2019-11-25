@@ -1,0 +1,14 @@
+pkgbase = python-meld3
+	pkgdesc = An HTML/XML templating engine
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://github.com/supervisor/meld3
+	arch = any
+	license = Repoze
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/meld3/meld3-1.0.2.tar.gz
+	sha256sums = f7b754a0fde7a4429b2ebe49409db240b5699385a572501bb0d5627d299f9558
+
+pkgname = python-meld3
+
