@@ -1,0 +1,16 @@
+pkgbase = python-pycobertura-git
+	pkgdesc = Code coverage diff tool for Cobertura reports
+	pkgver = 0.10.5+2.g25ce699cfb
+	pkgrel = 1
+	url = https://github.com/aconrad/pycobertura
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pycobertura=0.10.5
+	conflicts = python-pycobertura
+	source = https://github.com/aconrad/pycobertura
+	sha256sums = SKIP
+
+pkgname = python-pycobertura-git
+
