@@ -2,7 +2,7 @@
 
 pkgname=emacs-websocket
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A websocket implementation in elisp, for emacs."
 arch=('any')
 url="https://github.com/ahyatt/emacs-websocket"
@@ -10,8 +10,7 @@ license=('GPL2')
 depends=('emacs')
 makedepends=()
 source=("https://github.com/ahyatt/emacs-websocket/archive/${pkgver}.tar.gz")
-install=${pkgname}.install
-noextract=('GPL3')
+noextract=()
 sha256sums=('be24796ad47335ce91ec3e142d52ee07f00ca79078312a0759bce135e1bf414e')
 
 build() {
