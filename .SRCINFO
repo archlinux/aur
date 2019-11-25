@@ -1,6 +1,6 @@
 pkgbase = pyqt4
 	pkgver = 4.12.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.riverbankcomputing.com/software/pyqt/intro
 	arch = x86_64
 	license = GPL
