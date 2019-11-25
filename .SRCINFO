@@ -1,0 +1,19 @@
+pkgbase = euterpe-git
+	pkgdesc = Real-time Audio-to-audio Karaoke Generation System for Monaural Music
+	pkgver = r20.c114002
+	pkgrel = 1
+	url = https://github.com/tachi-hi/euterpe
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = tcl
+	depends = fftw
+	depends = portaudio
+	source = euterpe::git+https://github.com/tachi-hi/euterpe.git
+	source = euterpe.sh
+	md5sums = SKIP
+	md5sums = a476435472c2cddc447242d8c9fa1e9d
+
+pkgname = euterpe-git
+
