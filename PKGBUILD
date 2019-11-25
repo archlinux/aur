@@ -3,10 +3,10 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-weatherrouting
-pkgver=1.13.1.r464.gc36d748
+pkgver=1.10.1.r464.gc36d748
 pkgrel=1
 pkgdesc="Weather routing plugin for OpenCPN"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake' 'git')
