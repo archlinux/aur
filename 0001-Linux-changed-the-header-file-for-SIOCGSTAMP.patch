@@ -1,0 +1,25 @@
+From 29ebc958226e892e7d63f4ff3f0531df9bacd3c6 Mon Sep 17 00:00:00 2001
+From: Arne Zachlod <arne@nerdkeller.org>
+Date: Sun, 13 Oct 2019 22:38:45 +0200
+Subject: [PATCH 1/1] Linux changed the header file for SIOCGSTAMP
+
+Signed-off-by: Arne Zachlod <arne@nerdkeller.org>
+---
+ src/schedule.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/schedule.c b/src/schedule.c
+index 8868b01..09ab248 100644
+--- a/src/schedule.c
++++ b/src/schedule.c
+@@ -23,6 +23,7 @@
+ #include <fcntl.h>
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
++#include <linux/sockios.h>
+ 
+ 
+ #include "list.h"
+-- 
+2.24.0
+

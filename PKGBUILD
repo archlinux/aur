@@ -1,7 +1,7 @@
 # Maintainer: Arne Zachlod <arne@nerdkeller.org>
 
 pkgname=bmx7
-pkgver=r917.85841b0
+pkgver=v7.1.1.r0.g91d6651
 pkgrel=1
 pkgdesc="Bmx7 mesh routing network protocol including plugins"
 arch=('i686' 'x86_64')
@@ -9,19 +9,26 @@ url="https://github.com/bmx-routing/bmx7"
 license=('GPL2')
 depends=('glibc' 'json-c' 'wireless_tools' 'mbedtls')
 makedepends=('git' 'make' 'gcc')
-conflicts=('')
+#conflicts=('')
 provides=('bmx7')
 
-source=("$pkgname"::'git+https://github.com/bmx-routing/bmx7.git')
-sha256sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/bmx-routing/bmx7.git'
+        '0001-Linux-changed-the-header-file-for-SIOCGSTAMP.patch')
+sha256sums=('SKIP'
+            'd95400340bcd14c3b18b3478abf517210dc15d8693241760b46450bb1ec76db0')
 
 pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  patch --forward --strip=1 --input="${srcdir}/0001-Linux-changed-the-header-file-for-SIOCGSTAMP.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/src"
   make
   #JSON plugin
   make -C lib/bmx7_json/
@@ -41,7 +48,7 @@ build() {
 
 package() {
   install -D -m 644 ${startdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/src"
   install -D -m 755 bmx7 ${pkgdir}/usr/bin/bmx7
   install -D -m 755 lib/bmx7_json/bmx7_json.so ${pkgdir}/usr/lib/bmx7_json.so
   install -D -m 755 lib/bmx7_sms/bmx7_sms.so ${pkgdir}/usr/lib/bmx7_sms.so
