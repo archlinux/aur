@@ -3,12 +3,12 @@
 # @mdomlop at telegram
 
 _pkgver_year=2019
-_pkgver_month=07
-_pkgver_day=13
+_pkgver_month=11
+_pkgver_day=25
 
 pkgname=xcursor-retrosmart
 _pkgname=retrosmart-x11-cursors
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="A retrosmart look collection of cursors for X."
 url="https://github.com/mdomlop/$_pkgname"
@@ -35,3 +35,4 @@ package() {
     make install DESTDIR=$pkgdir
 }
 md5sums=('8141d588fe975ddaf21a6892d97bd245')
+md5sums=('db036e6c29ad6aa4e4b41f2472e4f1b4')
