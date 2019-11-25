@@ -6,7 +6,7 @@ pkgdesc="CLI-based Telegram Notification Bot"
 arch=('x86_64')
 url="https://github.com/Wint3rmute/tnb.git"
 license=('custom:WTFPL')
-makedepends=('git')
+makedepends=('git' 'rust')
 
 source=("git+git://github.com/Wint3rmute/tnb.git")
 sha1sums=('SKIP')
