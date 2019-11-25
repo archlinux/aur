@@ -1,7 +1,7 @@
 pkgbase = linux-nitrous
 	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
-	pkgver = 5.3.12
-	pkgrel = 2
+	pkgver = 5.3.13
+	pkgrel = 1
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -11,8 +11,8 @@ pkgbase = linux-nitrous
 	conflicts = linux-nitrous-git-headers
 	conflicts = linux-nitrous-git
 	options = !strip
-	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.12-2/linux-nitrous-git-5.3.12-2-x86_64.pkg.tar.xz
-	sha256sums = d512c48c2178a3b1e0d539e64ac6d7461141cb6448dbbb27fb01f19910157bb2
+	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.3.13-1/linux-nitrous-git-5.3.13-1-x86_64.pkg.tar.xz
+	sha256sums = 32b1d06fddbe9b63e638fadc382e49e33d32d622dc96d3aa20e0dff31ac1ce06
 
 pkgname = linux-nitrous
 	install = linux-nitrous.install
