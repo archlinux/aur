@@ -1,8 +1,8 @@
 # Maintainer: nightuser <nightuser.android at gmail dot com>
 
 pkgname=glib2-static
-pkgver=2.62.2
-pkgrel=2
+pkgver=2.62.3
+pkgrel=1
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
@@ -11,24 +11,11 @@ depends=(pcre libffi)
 makedepends=(zlib libffi shared-mime-info python libelf git util-linux meson dbus)
 checkdepends=(desktop-file-utils dbus)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
-_commit=ca9f51b82f57e05f6b3c82b98c235623afa47573  # tags/2.62.2^0
-source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        utf8-pointer-test-disable-optimisations.patch)
-sha256sums=(SKIP
-            1accbea014625913f8727139f6072d3be615af19d77953b250a56d97238ecdf6)
-
-pkgver() {
-  cd glib
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd glib
-  patch -Np1 -i "$srcdir"/utf8-pointer-test-disable-optimisations.patch
-}
+source=(https://gitlab.gnome.org/GNOME/glib/-/archive/$pkgver/glib-$pkgver.tar.gz)
+sha256sums=(4cdd62797dcf112a6be53fe88a8343994691c37e7b65f1ec5b1a02b65ed3adc6)
 
 build() {
-  arch-meson glib _build \
+  arch-meson "glib-$pkgver" _build \
     --default-library static \
     --buildtype release \
     -Dselinux=disabled \
@@ -39,7 +26,6 @@ build() {
 }
 
 check() {
-  # meson test -C build
   meson test -C _build --no-suite flaky --timeout-multiplier 2 --print-errorlogs
 }
 
