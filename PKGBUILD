@@ -3,8 +3,8 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.2.5
-pkgrel=4
+pkgver=2.2.6
+pkgrel=1
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
 license=(custom)
@@ -18,11 +18,10 @@ depends=(
     libsm
     libx11
     libxxf86vm
-    openssl-1.0 # TODO: change back to openssl 1.1 for v2.2.6
+    openssl
     pango
     sdl2
 )
-makedepends=(gcc) # HACK
 source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
         "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
 source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
@@ -32,9 +31,7 @@ sha256sums=('SKIP'
 sha256sums_x86_64=('SKIP'
                    'SKIP')
 validpgpkeys=("AAC9264309E4D717441DB9527373B12CE03BEB4B")
-# TODO: Enable in v2.2.6. Cannot enable now, as capabilities and setuid bits
-# cause LD_PRELOAD to be ignored.
-#install="install.sh"
+install="install.sh"
 
 # avoid caching in makepkg!
 SRCDEST=$startdir
@@ -109,23 +106,10 @@ prepare() {
     bsdtar xvf ../data.tar.xz
 }
 
-build() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # HACK
-    echo 'int SSLv3_client_method() { return -1; }' > libfakesslv3.c
-    gcc -shared -o libfakesslv3.so libfakesslv3.c
-}
-
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
     cp -a usr "$pkgdir"
-
-    # 2019-11-11: The binary needs 'SSLv3_client_method', but our OpenSSL
-    # package does not support SSLv3. (This will be fixed in NXT 2.2.6)
-    #sed -i 's,SSLv3_client_method,TLSv1_client_method,g' \
-    #       "$pkgdir"/usr/share/games/runescape-launcher/runescape
 
     # XXX: maybe move the binary out of /usr/share to where it belongs
     #mkdir -p "$pkgdir"/usr/lib/runescape-launcher
@@ -133,11 +117,6 @@ package() {
     #sed -i 's,/usr/share/games,/usr/lib,' "$pkgdir"/usr/bin/runescape-launcher
 
     install -Dm0644 copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-    # HACK
-    install -Dm0644 libfakesslv3.so "$pkgdir"/usr/share/games/runescape-launcher/libfakesslv3.so
-    sed -i '1aexport LD_PRELOAD=/usr/share/games/runescape-launcher/libfakesslv3.so' \
-           "$pkgdir"/usr/bin/runescape-launcher
 }
 
 # vim: ft=sh:ts=4:sw=4:et:nowrap
