@@ -61,7 +61,8 @@ package() {
   "${pkgdir}"/usr/bin/Fritzing \
     -db "${pkgdir}"/usr/share/fritzing/fritzing-parts/parts.db \
     -pp "${pkgdir}"/usr/share/fritzing/fritzing-parts \
-    -f  "${pkgdir}"/usr/share/fritzing
+    -f  "${pkgdir}"/usr/share/fritzing \
+    -platform offscreen
   rm -rf "${pkgdir}"/usr/share/fritzing/fritzing-parts/.git{,ignore}
 
   # install partsdb clone script
