@@ -10,6 +10,9 @@ pkgbase = ksmoothdock-git
 	makedepends = python
 	depends = kactivities
 	depends = kxmlgui
+	provides = ksmoothdock-git
+	provides = ksmoothdock
+	conflicts = ksmoothdock
 	source = git+https://github.com/dangvd/ksmoothdock
 	sha256sums = SKIP
 

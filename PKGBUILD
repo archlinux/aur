@@ -12,6 +12,8 @@ depends=('kactivities' 'kxmlgui')
 makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=("git+${url}")
 sha256sums=('SKIP')
+provides=("${pkgname}" "ksmoothdock")
+conflicts=("ksmoothdock")
 
 pkgver() {
 	cd "$srcdir/ksmoothdock"
