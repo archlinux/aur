@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.15.5
+pkgver=3.16.0
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -12,15 +12,8 @@ license=('custom')
 depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
 makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui')
-source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
-        cmake-default-libdir.patch::"https://gitlab.kitware.com/cmake/cmake/commit/18365587.diff")
-sha512sums=('c71a50fe864772dbef16ef472c1ead88e8e322c8451bc395c454af9baa7c7eb6e1bd9abdca0745f979fbacf97f1e1ceaa84c0fcc412cf1e3bcd835aff32199b6'
-            '9e9fcb9cb104fd1c679c41d0c7ac6c7184ef7fb9c44bfe807926f96b1f4afd3c86a7bbe486d306c1384f27c9141363543a2a9e63bc585e30f09731d9f7533b08')
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -p1 -i ../cmake-default-libdir.patch # Set lib as default LIBDIR
-}
+source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('edbe16745cb82dc85f387ccdff37f3a89aa670a0e3b7dae53c3762c1cc44be1fa647156000a4ddcaac66822e3e537434ce2918da72a1ad208fa5378947ecec0d')
 
 build() {
   cd ${pkgname}-${pkgver}
