@@ -2,7 +2,7 @@
 
 pkgname=zfs-auto-snapshot-git
 pkgdesc="Implementation of a snapshotting service for ZFS"
-pkgver=1.2.4.r0.277287f
+pkgver=1.2.4.r31.92db087
 pkgrel=1
 epoch=1
 arch=('any')
@@ -14,7 +14,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url" "prefix_label_order.patch")
 sha512sums=('SKIP'
-            'f0dc350f17bac8b1569e088c7b8c4d097b810eeab1addbf84f79aa5294c96a6353ceaaeb212feb85136f5a190d5ae54ff9a2e5b9441a0cb0960d43518aedfa47')
+            '178d60a1fa234d89314eae72d82079ca41d886505fd92af79050e1fe04f1cbb172900151911e37b4e5f3ba50c5cc741b6d1a71bdfd99f0003fad0df77f547af4')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
