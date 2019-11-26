@@ -3,4 +3,5 @@ pkg
 *.deb
 *.part
 *.pkg.tar.xz
+*.pkg.tar.zst
 *.rpm
