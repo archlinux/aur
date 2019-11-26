@@ -1,14 +1,14 @@
 pkgbase = lib32-libdvdnav
 	pkgdesc = The library for xine-dvdnav plugin (32 bit)
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = https://www.videolan.org/developers/libdvdnav.html
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = lib32-libdvdread
 	depends = libdvdnav
-	source = git+https://code.videolan.org/videolan/libdvdnav.git#commit=dcb9109e45ccd304ec82a7c7bf46cca63620adf9
+	source = git+https://code.videolan.org/videolan/libdvdnav.git#commit=ee4f6486d73ab54e7704b4fed2615a1bad76427f
 	sha256sums = SKIP
 
 pkgname = lib32-libdvdnav
