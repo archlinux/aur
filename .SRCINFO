@@ -1,0 +1,17 @@
+pkgbase = mtx-git
+	pkgdesc = Tools used to view information about, and to control, Media Changer devices such as Tape and DVD/CD libraries.
+	pkgver = 20191126
+	pkgrel = 1
+	url = https://github.com/zombielinux/MTX
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = mtx
+	conflicts = mtx
+	source = git+https://github.com/zombielinux/MTX.git
+	md5sums = SKIP
+
+pkgname = mtx-git
+
+
