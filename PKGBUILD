@@ -1,0 +1,32 @@
+# Maintainer: Bruno Silva <brunofernandes at ua dot pt>
+pkgname=xmr-stak-rx-git
+pkgver=r1463.e46dfe6
+pkgrel=1
+pkgdesc="Unified All-in-one Monero miner with randomx fork"
+arch=('x86_64')
+url="https://github.com/fireice-uk/xmr-stak/releases/tag/1.0.0-rx"
+license=('GPL3')
+makedepends=('git' 'cmake' 'opencl-headers' 'gcc7')
+depends=('libmicrohttpd' 'openssl' 'hwloc' 'cuda' 'ocl-icd')
+source=("${pkgname}::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev")
+sha256sums=('SKIP'
+            'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$srcdir/$pkgname"
+    cmake .
+    make
+}
+
+package() {
+    install -D -m755 "$srcdir/$pkgname/bin/xmr-stak-rx" -t "$pkgdir/usr/bin/"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmr-stak-backend.a" -t "$pkgdir/usr/lib/"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmr-stak-randomx.a" -t "$pkgdir/usr/lib/"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmrstak_cuda_backend.so" -t "$pkgdir/usr/lib"
+    install -D -m644 "$srcdir/$pkgname/bin/libxmrstak_opencl_backend.so" -t "$pkgdir/usr/lib"
+}

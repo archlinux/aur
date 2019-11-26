@@ -1,0 +1,22 @@
+pkgbase = xmr-stak-rx-git
+	pkgdesc = Unified All-in-one Monero miner with randomx fork
+	pkgver = r1463.e46dfe6
+	pkgrel = 1
+	url = https://github.com/fireice-uk/xmr-stak/releases/tag/1.0.0-rx
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = opencl-headers
+	makedepends = gcc7
+	depends = libmicrohttpd
+	depends = openssl
+	depends = hwloc
+	depends = cuda
+	depends = ocl-icd
+	source = xmr-stak-rx-git::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev
+	sha256sums = SKIP
+	sha256sums = b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a
+
+pkgname = xmr-stak-rx-git
+
