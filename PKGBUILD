@@ -3,7 +3,7 @@
 set -u
 _pkgname='uncrustify'
 pkgname="${_pkgname}-git"
-pkgver=0.62.r816.gb274ba8
+pkgver=0.70.0.r21.g7d250bad
 pkgrel=1
 pkgdesc='A source code beautifier'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
-_srcdir="${pkgname}"
-source=("${_srcdir}::git://github.com/bengardner/${_pkgname}.git")
+_srcdir="${pkgname}-u"
+source=("${_srcdir}::git://github.com/uncrustify/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,7 @@ build() {
   if [ ! -d 'build' ]; then
     mkdir 'build'
     cd 'build'
-    cmake -D'CMAKE_INSTALL_PREFIX:PATH=/usr' ..
+    cmake -D'CMAKE_BUILD_TYPE=RelWithDebInfo' -D'CMAKE_INSTALL_PREFIX:PATH=/usr' ..
   else
     cd 'build'
   fi
