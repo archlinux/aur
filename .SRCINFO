@@ -1,8 +1,8 @@
 pkgbase = python-snap7
-	pkgdesc = This is a ctypes based python wrapper for snap7
+	pkgdesc = ctypes based python wrapper for snap7
 	pkgver = 0.10
-	pkgrel = 4
-	url = http://snap7.sourceforge.net/
+	pkgrel = 5
+	url = https://github.com/gijzelaerr/python-snap7
 	arch = any
 	license = LGPL3
 	makedepends = python-setuptools
