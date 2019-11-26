@@ -1,6 +1,6 @@
 pkgbase = git-brws
 	pkgdesc = CLI tool to open repository URLs for GitHub, BitBucket and GitLab in your browser
-	pkgver = 0.11.3
+	pkgver = 0.11.5
 	pkgrel = 1
 	url = https://github.com/rhysd/git-brws
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = git-brws
 	makedepends = rust
 	makedepends = cargo
 	conflicts = git-brws-git
-	source = 0.11.3.tar.gz::https://github.com/rhysd/git-brws/archive/0.11.3.tar.gz
-	sha256sums = 9d0a2d700bf4ddef1ebd242692452d006a1b62e72b63b34818ca20b68eb16c0a
+	source = 0.11.5.tar.gz::https://github.com/rhysd/git-brws/archive/0.11.5.tar.gz
+	sha256sums = 23f6b676df6d8a65cc9bef03e95daa2a5a10ae381fd313892db7fae77b60cef7
 
 pkgname = git-brws
 
