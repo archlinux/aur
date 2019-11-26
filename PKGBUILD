@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=('python-sentry_sdk' 'python2-sentry_sdk')
 _pkgname=sentry-sdk
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -10,17 +10,17 @@ license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE")
-sha256sums=('e3302e8df82e68599eeeef564f08d15aa62efc1cb013d8e1cccc5bf526d375a4'
+sha256sums=('bfc486af718c268cf49ff43d6334ed4db7333ace420240b630acdd8f8a3a8f60'
             '59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c')
-            
+
 prepare() {
 	cp -a "$_pkgname-$pkgver"{,-py2}
 }
-            
+
 build() {
-	cd "$srcdir/$_pkgname-$pkgver" 
+	cd "$srcdir/$_pkgname-$pkgver"
 	python setup.py build
-	
+
 	cd "$srcdir/$_pkgname-$pkgver-py2"
 	python2 setup.py build
 }
