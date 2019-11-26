@@ -1,6 +1,6 @@
 pkgbase = hello-kde-git
 	pkgdesc = hello. is a compilation of various color-schemes, themes, icons and more for the KDE Plasma desktop. It is unopinionated, putting you in charge.
-	pkgver = r47.1400b81
+	pkgver = r51.ee0a53b
 	pkgrel = 1
 	url = https://github.com/n4n0GH/hello
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = hello-kde-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = kdecoration
+	makedepends = qt5-tools
 	depends = kwin
 	provides = hello-kde
 	source = git+https://github.com/n4n0GH/hello.git

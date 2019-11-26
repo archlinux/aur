@@ -2,14 +2,14 @@
 
 pkgname="hello-kde-git"
 _pkgname="hello"
-pkgver=r47.1400b81
+pkgver=r51.ee0a53b
 pkgrel=1
 pkgdesc="hello. is a compilation of various color-schemes, themes, icons and more for the KDE Plasma desktop. It is unopinionated, putting you in charge."
 arch=('i686' 'x86_64')
 url="https://github.com/n4n0GH/hello"
 license=('GPL2')
 depends=('kwin')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdecoration')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdecoration' 'qt5-tools')
 source=('git+https://github.com/n4n0GH/hello.git')
 md5sums=('SKIP')
 provides=('hello-kde')
