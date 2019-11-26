@@ -1,13 +1,14 @@
-# Maintainer: Jonas Krogh Hansen "Badgy" <jonaskhansen@gmail.com>
-# Contributor: Falke Carlsen "cogitantium" <falke.cs@gmail.com>
+# Maintainer: Jonas Krogh Hansen "Badgy" <jonaskhansen at gmail dot com>
+# Contributor: Falke Carlsen "cogitantium" <falke dot cs at gmail dot com>
 _pkgname=spotirec
 pkgname=${_pkgname}-git
-pkgver=r108.7e71c69
+pkgver=r124.47298a3
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')
 url="https://github.com/Badgie/spotirec"
 license=('GPL3')
+replaces=('spotirec')
 depends=('python>=3.8.0'
         'python-bottle>=0.12.17'
         'python-requests>=2.22.0'
@@ -28,7 +29,7 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$HOME/.config/spotirec"
 
-    install spotirec.py oauth2.py recommendation.py -t "$pkgdir/usr/lib/spotirec"
+    install spotirec.py oauth2.py recommendation.py api.py -t "$pkgdir/usr/lib/spotirec"
 
     ln -s "/usr/lib/spotirec/spotirec.py" "$pkgdir/usr/bin/spotirec"
 }
