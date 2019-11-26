@@ -1,0 +1,23 @@
+--- src/Uranium/UM/Qt/Bindings/i18nCatalogProxy.py	2019-11-25 18:38:52.691659879 +0100
++++ src/Uranium/UM/Qt/Bindings/i18nCatalogProxy.py.new	2019-11-25 21:15:40.319871966 +0100
+@@ -30,7 +30,7 @@
+             self.nameChanged.emit()
+ 
+     nameChanged = pyqtSignal()
+-    
++
+     @pyqtProperty(str, fset = setName, notify = nameChanged)
+     def name(self):
+         return self._name
+@@ -86,9 +86,9 @@
+     #   \todo Move this to a more generic place so more things can use it.
+     def _wrapFunction(self, engine, this_object, function):
+         # JavaScript code that wraps the Python method call in a closure
+-        wrap_js = """function(this_object) {{
++        wrap_js = """(function(this_object) {{
+             return function({args}) {{ return this_object.{function}({args}) }}
+-        }}"""
++        }}) """
+ 
+         # Get the function name and argument list.
+         function_name = function.__name__
