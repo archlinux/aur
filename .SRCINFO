@@ -1,15 +1,15 @@
 pkgbase = python-bidi
 	pkgdesc = BIDI algorithm related functions
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://github.com/MeirKriheli/python-bidi
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
 	depends = python-wheel
 	options = !emptydirs
-	source = https://github.com/MeirKriheli/python-bidi/archive/v0.4.0.tar.gz
-	md5sums = 74ec522efab0328e3471e58ab8007131
+	source = https://github.com/MeirKriheli/python-bidi/archive/v0.4.2.tar.gz
+	md5sums = 52477f00edf4dfab666988d126684f86
 
 pkgname = python-bidi
 
