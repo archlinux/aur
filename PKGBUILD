@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-applications-menu
-pkgver=2.4.4
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='The Pantheon Application Menu'
 arch=(x86_64)
@@ -30,12 +30,17 @@ makedepends=(
   vala
   wingpanel
 )
-source=(pantheon-applications-menu::git+https://github.com/elementary/applications-menu.git#tag=${pkgver})
+source=(pantheon-applications-menu::git+https://github.com/elementary/applications-menu.git#tag=5fe45e08aa3beadf2202eb92de3539de31f9acde)
 sha256sums=(SKIP)
+
+pkgver() {
+  cd pantheon-applications-menu
+
+  git describe --tags
+}
 
 build() {
   arch-meson pantheon-applications-menu build \
-    -D b_pie=false \
     -D with-unity=false
   ninja -C build
 }
