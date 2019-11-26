@@ -1,6 +1,6 @@
 pkgbase = sky
 	pkgdesc = Lync and Skype for Business client on Linux
-	pkgver = 2.1.7458.1
+	pkgver = 2.1.7520.1
 	pkgrel = 1
 	url = https://tel.red
 	install = sky.install
@@ -20,8 +20,8 @@ pkgbase = sky
 	depends = qt5-base>=5.6
 	depends = qt5-base<6.0
 	depends = openssl
-	source_x86_64 = https://tel.red/repos/archlinux/sky-archlinux-2.1.7458-1-x86_64.pkg.tar.xz
-	sha256sums_x86_64 = 0acb63e16ccf1e33fd2bfeda7a9098c8f00a399588bb3fcb8ba53afe32562615
+	source_x86_64 = https://tel.red/repos/archlinux/sky-archlinux-2.1.7520-1-x86_64.pkg.tar.xz
+	sha256sums_x86_64 = 3ed68ea5b695cb2695b215ee39b2e714dd4c286ccba14a6aded526b595076404
 
 pkgname = sky
 
