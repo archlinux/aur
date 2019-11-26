@@ -1,6 +1,6 @@
 pkgbase = timekpr-next
 	pkgdesc = Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in.
-	pkgver = 0.2.7
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://launchpad.net/timekpr-next
 	install = timekpr-next.install
@@ -25,8 +25,8 @@ pkgbase = timekpr-next
 	conflicts = timekpr-beta
 	conflicts = timekpr-revived-bzr
 	conflicts = timekpr-next-git
-	source = https://launchpad.net/timekpr-next/stable/0.2.7/+download/timekpr-next-0.2.7.tar.gz
-	md5sums = 24dbbc25c5c177a65e4335855795976a
+	source = https://launchpad.net/timekpr-next/stable/0.2.9/+download/timekpr-next-0.2.9.tar.gz
+	md5sums = 1a37b78d198e3ff9bcf06dd5db4b9849
 
 pkgname = timekpr-next
 
