@@ -2,7 +2,7 @@
 
 pkgname=cargo-c
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
 arch=('x86_64')
 url='https://github.com/lu-zero/cargo-c/'
@@ -13,13 +13,15 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/lu-zero/cargo-c/archi
 sha256sums=('a8e662539218728372f6b8fbbbd72ff2092ecb71fb4ffef7e6a3969a0734e58f')
 
 prepare() {
+    # https://github.com/lu-zero/cargo-c/issues/44
+    # cannot use the '--locked' option as upstream does not provide 'Cargo.lock' (no reproducible builds support)
     cd "${pkgname}-${pkgver}"
     cargo fetch
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --release --bins --frozen
+    cargo build --release --frozen
 }
 
 check() {
