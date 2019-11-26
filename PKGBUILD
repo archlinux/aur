@@ -1,4 +1,5 @@
-# Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 # Contributor: Markus Hovorka <m.hovorka@live.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: lilydjwg <lilydjwg@gmail.com>
@@ -6,101 +7,59 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Jan-Erik Meyer-Luetgens <nyan at meyer-luetgens dot de>
 
-pkgbase=pyside2-git
-pkgname=(pyside2-common-git python2-pyside2-git python-pyside2-git)
-pkgver=5.11.2.r5903.ae51319f
-_upver=5.11.2
+pkgname=pyside2-git
+pkgver=r6554.6eb583d7
 pkgrel=1
-arch=('i686' 'x86_64')
-license=('LGPL')
-url="http://qt-project.org/wiki/PySide"
-makedepends=("python"{,2}"-shiboken2-git" 'cmake'
-             'phonon-qt5' 'git' 'python2-sphinx' 'graphviz' 'qt5-base'
-             'qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia' 'qt5-declarative' 'qt5-scxml'
-             'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
-             'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.11")
+arch=(x86_64)
+url='https://www.qt.io'
+license=(LGPL)
+pkgdesc='Enables the use of Qt5 APIs in Python applications (git version)'
+depends=(python-shiboken2 qt5-declarative)
+makedepends=(shiboken2 cmake git
+             qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
+             qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras qt5-remoteobjects)
+optdepends=('qt5-svg: QtSvg bindings'
+            'qt5-script: QtScript bindings'
+            'qt5-speech: QtTextToSpeech bindings'
+            'qt5-websockets: QtWebSockets bindings'
+            'qt5-webengine: QtWebEngine bindings'
+            'qt5-datavis3d: QtDataVisualization bindings'
+            'qt5-scxml: QtScxml bindings'
+            'qt5-sensors: QtSensors bindings'
+            'qt5-3d: Qt3D bindings'
+            'qt5-x11extras: QtX11Extras bindings'
+            'qt5-charts: QtCharts bindings'
+            'qt5-tools: QtHelp bindings'
+            'qt5-remoteobjects: QtRemoteObjects bindings')
+conflicts=(python-pyside2 pyside2)
+provides=(python-pyside2 pyside2)
+source=("$pkgname::git+https://code.qt.io/pyside/pyside-setup.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgbase"
-    printf "%s.r%s.%s" "$_upver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir"/$pkgbase/sources/pyside2
+  cd "${srcdir}/${pkgname}"
+
+  mkdir -p build
 }
 
 build() {
-  cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF"
+  cd "${srcdir}/${pkgname}/build"
 
-  # Build for python2.
-  cd "$srcdir"/$pkgbase/sources/pyside2
-  mkdir -p build-py2 && cd build-py2
-  cmake \
-    -DUSE_PYTHON_VERSION=2 \
-    ${cmake_args} ..
-  make
-
-  # Build for python3.
-  cd "$srcdir"/$pkgbase/sources/pyside2
-  mkdir -p build-py3 && cd build-py3
-  cmake \
-    -DUSE_PYTHON_VERSION=3 \
-    ${cmake_args} ..
+  cmake ../sources/pyside2 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS=OFF \
+    -DPYTHON_EXECUTABLE=/usr/bin/python
   make
 }
 
-package_pyside2-common-git(){
-  pkgdesc="LGPL Qt bindings for Python (Common Files)"
-  provides=("pyside2-common=${_upver}")
-  conflicts=("pyside2-common")
+package() {
+  cd "${srcdir}/${pkgname}/build"
 
-  cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
-  make DESTDIR="$pkgdir" install
-
-  rm -rf "$pkgdir"/usr/lib/pkgconfig
-  rm -rf "$pkgdir"/usr/lib/python* "$pkgdir"/usr/lib/libpyside2.*
-  rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2Config*python*.cmake
-}
-
-package_python-pyside2-git(){
-  depends=('python' "python-shiboken2-git" "pyside2-common-git" "qt5-base")
-  pkgdesc="LGPL Qt bindings for Python 3"
-  optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
-              'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
-              'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-  provides=("python-pyside2=${_upver}")
-  conflicts=("python-pyside2")
-
-  cd "$srcdir"/$pkgbase/sources/pyside2/build-py3
-  make DESTDIR="$pkgdir" install
-
-  rm -rf "$pkgdir"/usr/include
-  rm -rf "$pkgdir"/usr/share
-  rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2Config.cmake
-  rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2ConfigVersion.cmake
-}
-
-package_python2-pyside2-git(){
-  depends=('python2' "python2-shiboken2-git" "pyside2-common-git" "qt5-base")
-  pkgdesc="LGPL Qt bindings for Python 2"
-  optdepends=('qt5-xmlpatterns' 'qt5-tools' 'qt5-multimedia'
-              'qt5-declarative' 'qt5-script' 'qt5-speech' 'qt5-svg' 'qt5-datavis3d' 'qt5-3d'
-              'qt5-webchannel' 'qt5-webengine' 'qt5-webkit' 'qt5-websockets')
-  provides=("python2-pyside2=${_upver}")
-  conflicts=("python2-pyside2")
-
-  cd "$srcdir"/$pkgbase/sources/pyside2/build-py2
-  make DESTDIR="$pkgdir" install
-
-  mv "$pkgdir"/usr/lib/pkgconfig/pyside2{,-py2}.pc
-
-  sed -i 's#^Requires: shiboken$#Requires: shiboken-py2#' \
-      "$pkgdir"/usr/lib/pkgconfig/pyside2-py2.pc
-
-  rm -rf "$pkgdir"/usr/include
-  rm -rf "$pkgdir"/usr/share
-  rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2Config.cmake
-  rm "$pkgdir"/usr/lib/cmake/PySide2-$_upver/PySide2ConfigVersion.cmake
+  make DESTDIR="${pkgdir}" install
 }
