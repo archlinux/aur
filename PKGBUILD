@@ -28,7 +28,7 @@ source=("https://github.com/sabnzbd/sabnzbd/releases/download/${pkgver}/SABnzbd-
         'sabnzbd.tmpfiles')
         
 sha256sums=('f3ab6dffba914e6ddf88f1a755ec3ebaa95f0bdbec6f04b7bf0f90822249bb0c'
-            '64f5c25f140456489d71e8c7eba115362640edff81087515605db254efd3038f'
+            '3d48f2f4c2bcb6dac29cef13e21a91baec0fccb92d4e925033ade695df0a192f'
             '8cdeae7e8fa327bafc2fd1b19c1995f89f52b2ba231c8305b4e7269ab9e0738a'
             'f86a23384e430b79b328167262216ad315ef89c4a2c49276e6d25c5f7b4cf5bf')
 
