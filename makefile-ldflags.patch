@@ -1,0 +1,46 @@
+--- a/Makefile	2019-11-27 01:36:44.974092183 +0200
++++ b/Makefile	2019-11-27 01:37:37.623529624 +0200
+@@ -121,34 +121,34 @@
+ 	cp $(BINS) afl
+ 
+ ort: main.o libort.a
+-	$(CC) -o $@ main.o libort.a
++	$(CC) -o $@ main.o libort.a $(LDFLAGS)
+ 
+ libort.a: $(LIBOBJS)
+ 	$(AR) rs $@ $(LIBOBJS)
+ 
+ ort-c-source: source.o libort.a
+-	$(CC) -o $@ source.o libort.a
++	$(CC) -o $@ source.o libort.a $(LDFLAGS)
+ 
+ ort-c-header: header.o libort.a
+-	$(CC) -o $@ header.o libort.a
++	$(CC) -o $@ header.o libort.a $(LDFLAGS)
+ 
+ ort-javascript: javascript.o libort.a
+-	$(CC) -o $@ javascript.o libort.a
++	$(CC) -o $@ javascript.o libort.a $(LDFLAGS)
+ 
+ ort-sql: sql.o libort.a
+-	$(CC) -o $@ sql.o libort.a
++	$(CC) -o $@ sql.o libort.a $(LDFLAGS)
+ 
+ ort-sqldiff: sql.o libort.a
+-	$(CC) -o $@ sql.o libort.a
++	$(CC) -o $@ sql.o libort.a $(LDFLAGS)
+ 
+ ort-audit: audit.o libort.a
+-	$(CC) -o $@ audit.o libort.a
++	$(CC) -o $@ audit.o libort.a $(LDFLAGS)
+ 
+ ort-audit-gv: audit.o libort.a
+-	$(CC) -o $@ audit.o libort.a
++	$(CC) -o $@ audit.o libort.a $(LDFLAGS)
+ 
+ ort-audit-json: audit.o libort.a
+-	$(CC) -o $@ audit.o libort.a
++	$(CC) -o $@ audit.o libort.a $(LDFLAGS)
+ 
+ ort-xliff: xliff.o libort.a
+ 	$(CC) -o $@ xliff.o libort.a $(LDFLAGS) -lexpat
