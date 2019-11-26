@@ -2,9 +2,22 @@
 
 # This PKGBUILD is managed at https://github.com/sudoforge/pkgbuilds
 
+# POST-INSTALLATION INSTRUCTIONS
+#
+# WeeChat is unable to source files from outside of a user's home directory.
+# Because of this limitation, this package *DOES NOT* make the Slack plugin
+# available to WeeChat without end user interaction.
+#
+# Each user who wants to enable the Slack plugin needs to create symlinks in
+# the WeeChat configuration directory for their user (by default, ~/.weechat).
+# The following commands will accomplish this:
+#
+#     $ ln -s /usr/lib/weechat/weemoji.json ~/.weechat/weemoji.json
+#     $ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/autoload/wee_slack.py
+
 pkgname=wee-slack-git
 pkgver=2.3.0.r105.g1af420e
-pkgrel=1
+pkgrel=2
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
@@ -32,15 +45,7 @@ package() {
 
   msg2 "Installing the emoji tab completion dictionary"
   install -Dm644 weemoji.json "${pkgdir}/usr/lib/weechat/weemoji.json"
-  msg2 "To enable emoji tab completion, run the following command in weechat:"
-  msg2 '    /set weechat.completion.default_template "%%(nicks)|%%(irc_channels)|%%(emoji)"'
 
   msg2 "Installing license"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-
-  msg2 "Since WeeChat does not yet load plugins in the system path, you need to"
-  msg2 "load the script and emoji dictionary from your user path. Use symlnks"
-  msg2 "so that you can benefit from package upgrades via pacman."
-  msg2 "    $ ln -s /usr/lib/weechat/python/wee_slack.py $HOME/.weechat/python/wee_slack.py"
-  msg2 "    $ ln -s /usr/lib/weechat/weemoji.json $HOME/.weechat/weemoji.json"
 }
