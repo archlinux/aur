@@ -2,8 +2,8 @@
 
 pkgorg='humanoid-path-planner'
 pkgname=('hpp-fcl' 'hpp-fcl-docs')
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
