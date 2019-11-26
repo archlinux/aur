@@ -1,6 +1,6 @@
 pkgbase = gtk3-classic
 	pkgdesc = GTK3 patched for classic desktops like XFCE or MATE. Please see README.
-	pkgver = 3.24.12
+	pkgver = 3.24.12+81
 	pkgrel = 1
 	url = https://github.com/krumelmonster/gtk3-mushrooms
 	install = gtk3.install
@@ -64,6 +64,7 @@ pkgbase = gtk3-classic
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	source = series
+	source = plus81.patch.xz
 	source = appearance__buttons-menus-icons.patch
 	source = appearance__disable-backdrop.patch
 	source = appearance__file-chooser.patch
@@ -86,10 +87,11 @@ pkgbase = gtk3-classic
 	source = popovers__places-sidebar.patch
 	source = smaller-adwaita.css
 	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.12.tar.xz
-	source = settings.ini::https://git.archlinux.org/svntogit/packages.git/plain/trunk/settings.ini?h=packages/gtk3&id=70ed1d42b78a46147731604341db44186798780f
-	source = gtk-query-immodules-3.0.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-query-immodules-3.0.hook?h=packages/gtk3&id=70ed1d42b78a46147731604341db44186798780f
+	source = settings.ini::https://git.archlinux.org/svntogit/packages.git/plain/trunk/settings.ini?h=packages/gtk3&id=811bc6d9df014e576e95e45af9ac43e4108fb55a
+	source = gtk-query-immodules-3.0.hook::https://git.archlinux.org/svntogit/packages.git/plain/trunk/gtk-query-immodules-3.0.hook?h=packages/gtk3&id=811bc6d9df014e576e95e45af9ac43e4108fb55a
 	source = README.md
-	sha256sums = 4935ec23cbd0150bd479fc457861d3a665354509c3ff933997827c7141c8657c
+	sha256sums = 9a48bcbde6ecf1dace9c50ba926850f228858e5634d9235325b1534b8ce4d007
+	sha256sums = 3eac62f5f38fd36ccedf33e3618737d427b294b525a51feaef0faa7227ebaec9
 	sha256sums = 728075255a559f0ec2cbde78c0fdcb9bdaa6859f21cdd8e0070595233822029e
 	sha256sums = 795f745545a7d0c899c27d0832e15a1376f6e34fa1ef9c2ceada5f7f575cbb79
 	sha256sums = 8ead5c4a6fbad9b1fbf81bf67ed2e1b8a8ce8d25d459c0fff9372937963b4f95
@@ -168,7 +170,7 @@ pkgname = lib32-gtk3-classic
 	depends = lib32-libcups
 	depends = lib32-krb5
 	depends = lib32-e2fsprogs
-	depends = gtk3-classic>=3.24.12
-	provides = lib32-gtk3=3.24.12
+	depends = gtk3-classic>=3.24.12+81
+	provides = lib32-gtk3=3.24.12+81
 	conflicts = lib32-gtk3
 

@@ -5,16 +5,17 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="70ed1d42b78a46147731604341db44186798780f"
+__arch_pkg_commit="811bc6d9df014e576e95e45af9ac43e4108fb55a"
+_gtkver=3.24.12
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
-pkgver=3.24.12
+pkgver=${_gtkver}+81
 pkgrel=1
 pkgdesc="GTK3 patched for classic desktops like XFCE or MATE. Please see README."
 url="https://github.com/krumelmonster/gtk3-mushrooms"
 conflicts=(gtk3 gtk3-print-backends)
-provides=(gtk3=$pkgver gtk3-mushrooms=$pkgver gtk3-print-backends)
+provides=(gtk3=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends)
 arch=(x86_64)
 license=(LGPL)
 makedepends=(
@@ -34,6 +35,7 @@ install=gtk3.install
 source=(
 	# Patch files.
 	series
+	plus81.patch.xz
 	appearance__buttons-menus-icons.patch
 	appearance__disable-backdrop.patch
 	appearance__file-chooser.patch
@@ -59,7 +61,7 @@ source=(
 	smaller-adwaita.css
 
 	# GTK source code.
-	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$pkgver.tar.xz"
+	"https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-$_gtkver.tar.xz"
 
 	# Arch Linux package files.
 	"settings.ini::https://git.archlinux.org/svntogit/packages.git/plain/trunk/settings.ini?h=packages/gtk3&id=$__arch_pkg_commit"
@@ -67,7 +69,8 @@ source=(
 
 	README.md
 )
-sha256sums=('4935ec23cbd0150bd479fc457861d3a665354509c3ff933997827c7141c8657c'
+sha256sums=('9a48bcbde6ecf1dace9c50ba926850f228858e5634d9235325b1534b8ce4d007'
+            '3eac62f5f38fd36ccedf33e3618737d427b294b525a51feaef0faa7227ebaec9'
             '728075255a559f0ec2cbde78c0fdcb9bdaa6859f21cdd8e0070595233822029e'
             '795f745545a7d0c899c27d0832e15a1376f6e34fa1ef9c2ceada5f7f575cbb79'
             '8ead5c4a6fbad9b1fbf81bf67ed2e1b8a8ce8d25d459c0fff9372937963b4f95'
@@ -98,7 +101,8 @@ prepare()
 {
 	QUILT_PATCHES=. quilt push -av
 
-	cat "$srcdir/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$pkgver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
+	rm -f "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css
+	cat "$srcdir/smaller-adwaita.css" | tee -a "$srcdir"/gtk+-"$_gtkver"/gtk/theme/Adwaita/gtk-contained{,-dark}.css > /dev/null
 }
 
 build()
@@ -106,7 +110,7 @@ build()
 	CFLAGS+=" -DG_ENABLE_DEBUG -DG_DISABLE_CAST_CHECKS"
 
 	# 64-bit
-	arch-meson gtk+-$pkgver build \
+	arch-meson gtk+-$_gtkver build \
 		-D broadway_backend=true \
 		-D colord=no \
 		-D demos=true \
@@ -123,7 +127,7 @@ build()
 	CXXFLAGS+=" -m32"
 	LDFLAGS+=" -m32"
 
-	linux32 arch-meson gtk+-$pkgver build32 \
+	linux32 arch-meson gtk+-$_gtkver build32 \
 		-D broadway_backend=true \
 		-D colord=no \
 		-D demos=false \
