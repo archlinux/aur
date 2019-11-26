@@ -1,7 +1,7 @@
 # Maintainer: exprez135 <exprez135 at latour dot 33mail dot com>
 
 pkgname=protonvpn-cli-ng
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")

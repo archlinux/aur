@@ -1,6 +1,6 @@
 pkgbase = protonvpn-cli-ng
 	pkgdesc = ProtonVPN CLI tool for protonvpn.com
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/protonvpn-cli-ng
 	arch = any
