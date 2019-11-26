@@ -1,6 +1,6 @@
 pkgbase = ssb-patchwork
 	pkgdesc = A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)
-	pkgver = 3.16.2
+	pkgver = 3.17.1
 	pkgrel = 1
 	url = https://github.com/ssbc/patchwork
 	arch = i686
@@ -17,12 +17,12 @@ pkgbase = ssb-patchwork
 	depends = gtk2
 	depends = alsa-lib
 	depends = nss
-	depends = electron4
+	depends = electron6
 	options = !strip
-	source = https://github.com/ssbc/patchwork/archive/v3.16.2.tar.gz
+	source = https://github.com/ssbc/patchwork/archive/v3.17.1.tar.gz
 	source = run.sh
 	source = ssb-patchwork.desktop
-	sha256sums = 7bf634bbc56fbd3db18efa8ac8bcbdfa348520944c481dfc1d08c0f35eb30881
+	sha256sums = 73a13f23bf5c20cc521cbcdd4a53833d1381e20518d6a5451fbcef50c4e10eee
 	sha256sums = 5db66d7942606df5f48ea0db2d90b584fa3a984bc2de7bb678d25897f64e3a2f
 	sha256sums = b226436970db40030ad03e9cd847c103aa534d775cd81212308e86a23917d76a
 
