@@ -1,0 +1,3 @@
+pre_remove() {
+	dkms remove new/lg4ff --all
+}

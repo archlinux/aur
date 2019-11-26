@@ -1,0 +1,16 @@
+pkgbase = new-lg4ff-dkms-git
+	pkgdesc = The Example kernel modules (DKMS)
+	pkgver = r27.3dfe622
+	pkgrel = 1
+	url = https://www.example.org/
+	install = new-lg4ff-dkms-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = new-lg4ff-dkms-git
+	source = git+https://github.com/berarma/new-lg4ff
+	md5sums = SKIP
+
+pkgname = new-lg4ff-dkms-git
+
