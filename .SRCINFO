@@ -9,7 +9,6 @@ pkgbase = gitkraken
 	depends = nss
 	depends = libxtst
 	depends = libgnome-keyring
-	depends = gconf
 	depends = alsa-lib
 	depends = libcurl-gnutls
 	depends = libxss
