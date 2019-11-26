@@ -1,0 +1,11 @@
+--- a/swig/casadi.i	2019-11-26 10:06:54.818697550 -0500
++++ b/swig/casadi.i	2019-11-26 10:07:23.604830671 -0500
+@@ -228,7 +228,7 @@
+ 
+ import contextlib
+ 
+-class _copyableObject(_object):
++class _copyableObject(object):
+   def __copy__(self):
+     return self.__class__(self)
+ 
