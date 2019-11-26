@@ -3,11 +3,11 @@
 pkgname=python-ciscoconfparse
 _pkgname=ciscoconfparse
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse, Audit, Query, Build, and Modify Cisco IOS-style configurations "
 arch=('any')
 url="http://www.pennington.net/py/ciscoconfparse/"
-license=('GPL')
+license=('GPL3')
 depends=('python' 'python-colorama' 'python-passlib' 'python-dnspython')
 optdepends=()
 makedepends=('python-setuptools')
@@ -17,4 +17,5 @@ sha256sums=('c404bbf14d50ea89c7c86f0df742e13ae99d5573777ad712a87117c3765a069f')
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
