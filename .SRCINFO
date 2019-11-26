@@ -1,7 +1,7 @@
 pkgbase = pgpointcloud
 	pkgdesc = A PostgreSQL extension for storing point cloud (LIDAR) data
 	pkgver = 1.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pgpointcloud/pointcloud
 	changelog = pgpointcloud.changelog
 	arch = i686
