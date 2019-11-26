@@ -1,7 +1,7 @@
 pkgbase = hybridreverb2-git
 	pkgdesc = Hybrid impulse convolution reverb, available as LV2 and VST
 	pkgver = r92.6beac8e
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jpcima/HybridReverb2
 	arch = i686
 	arch = x86_64
