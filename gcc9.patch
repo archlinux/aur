@@ -1,0 +1,40 @@
+--- CuraEngine.orig/src/layerPart.cpp   2019-08-15 12:47:55.000000000 +0200
++++ CuraEngine/src/layerPart.cpp        2019-08-15 12:57:49.000000000 +0200
+@@ -46,7 +46,7 @@
+ {
+     const auto total_layers = slicer->layers.size();
+     assert(mesh.layers.size() == total_layers);
+-#pragma omp parallel for default(none) shared(mesh,slicer) firstprivate(union_layers,union_all_remove_holes) schedule(dynamic)
++#pragma omp parallel for shared(mesh,slicer) firstprivate(union_layers,union_all_remove_holes) schedule(dynamic)
+     for (unsigned int layer_nr = 0; layer_nr < total_layers; layer_nr++)
+     {
+         SliceLayer& layer_storage = mesh.layers[layer_nr];
+--- CuraEngine.orig/src/support.cpp     2019-08-15 12:47:55.000000000 +0200
++++ CuraEngine/src/support.cpp  2019-08-15 12:58:42.590264508 +0200
+@@ -720,7 +720,7 @@
+     const double support_angle = mesh.getSettingInAngleRadians("support_angle");
+     const double tan_angle = tan(support_angle) - 0.01;  //The X/Y component of the support angle. 0.01 to make 90 degrees work too.
+     const coord_t max_dist_from_lower_layer = tan_angle * layer_height; //Maximum horizontal distance that can be bridged.
+-    #pragma omp parallel for default(none) shared(storage, mesh) schedule(dynamic)
++    #pragma omp parallel for shared(storage, mesh) schedule(dynamic)
+     for (unsigned int layer_idx = 1; layer_idx < storage.print_layer_count; layer_idx++)
+     {
+         std::pair<Polygons, Polygons> basic_and_full_overhang = computeBasicAndFullOverhang(storage, mesh, layer_idx, max_dist_from_lower_layer);
+@@ -775,7 +775,7 @@
+     const double tan_angle = tan(angle) - 0.01;  // the XY-component of the supportAngle
+     xy_disallowed_per_layer[0] = storage.getLayerOutlines(0, false).offset(xy_distance);
+     // for all other layers (of non support meshes) compute the overhang area and possibly use that when calculating the support disallowed area
+-    #pragma omp parallel for default(none) shared(xy_disallowed_per_layer, storage, mesh) schedule(dynamic)
++    #pragma omp parallel for shared(xy_disallowed_per_layer, storage, mesh) schedule(dynamic)
+     for (unsigned int layer_idx = 1; layer_idx < layer_count; layer_idx++)
+     {
+         Polygons outlines = storage.getLayerOutlines(layer_idx, false);
+@@ -978,7 +978,7 @@
+         const int max_checking_layer_idx = std::min(static_cast<int>(storage.support.supportLayers.size())
+                                                   , static_cast<int>(layer_count - (layer_z_distance_top - 1)));
+         const size_t max_checking_idx_size_t = std::max(0, max_checking_layer_idx);
+-#pragma omp parallel for default(none) shared(support_areas, storage) schedule(dynamic)
++#pragma omp parallel for shared(support_areas, storage) schedule(dynamic)
+         for (size_t layer_idx = 0; layer_idx < max_checking_idx_size_t; layer_idx++)
+         {
+             support_areas[layer_idx] = support_areas[layer_idx].difference(storage.getLayerOutlines(layer_idx + layer_z_distance_top - 1, false));
