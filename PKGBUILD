@@ -9,8 +9,7 @@ license=('GPL3')
 makedepends=('git' 'cmake' 'opencl-headers' 'gcc7')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'cuda' 'ocl-icd')
 source=("${pkgname}::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev")
-sha256sums=('SKIP'
-            'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
