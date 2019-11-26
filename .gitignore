@@ -1,0 +1,8 @@
+Uranium
+src
+pkg
+*.tar.xz
+*.tar.gz
+*.zip
+*.log
+.psci_modules
