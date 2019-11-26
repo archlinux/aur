@@ -59,12 +59,10 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        choose-gcc-optimization.sh
-       0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch  # Grabbed from linux-ck package
 )
 
 sha256sums=('7c328cd003a4d4a4ad2e538418c018775c573dbc7851cb7b8efa0ab39ef4550b'
-            '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
-            '112b16c247dae8ff44066fd0268012f9c623d5da349ebd66896e54257b3404a5')
+            '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

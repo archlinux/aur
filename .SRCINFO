@@ -17,13 +17,8 @@ pkgbase = linux-xanmod
 	options = !strip
 	source = https://github.com/xanmod/linux/archive/5.4.0-xanmod0.tar.gz
 	source = choose-gcc-optimization.sh
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	sha256sums = 085a1cda3098963ed748e62d818806737d80c69cda2fdf89b7b2333487610c68
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 7c328cd003a4d4a4ad2e538418c018775c573dbc7851cb7b8efa0ab39ef4550b
 	sha256sums = 8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748
-	sha256sums = 112b16c247dae8ff44066fd0268012f9c623d5da349ebd66896e54257b3404a5
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
