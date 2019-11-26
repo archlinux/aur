@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Wallpapers created by User:Trougnouf, with gnome integration and transitions built-in'
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -25,15 +25,15 @@ _images=(
 	'Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg'
 	'Tunnel_Belliard,_coming_out_on_Rue_de_la_Loi.jpg'
 	'Container_cranes_at_the_MPET-_MSC_PSA_European_Terminal_in_Port_of_Antwerp_(Kieldrecht,_Belgium)_during_the_sunset_civil_twilight_(DSCF3901).jpg'
-	'Common loons swimming in Swan Lake (DSCF3780).jpg'  # 18h09
+	'Common_loons_swimming_in_Swan_Lake_(DSCF3780).jpg'  # 18h09
 	'Beginning_of_Grande_Randonnée_en_Haute_Ardennes,_BE.jpg'  # 19h55 to 20h25 = 30 minutes
 	'Garden_of_Kunstberg_viewed_from_Mont_des_Arts_during_nautical_twilight_(DSCF1028).jpg'  # 20h25 to 20h55 = 30 minutes
-	'Reflected trees over Babcock Lake (DSCF3423).jpg'  # 20h55 to 21h01 = 6min
-	'Isaac Lake during golden hour, moments before a storm (DSCF2631).jpg'  # 21h01
-	'Civil twilight sunset over Sandy Lake (DSCF2996).jpg'  # 21h44
-	'Nautical twilight sunset over Sandy Lake (DSCF3005).jpg'  # 22h24
+	'Reflected_trees_over_Babcock_Lake_(DSCF3423).jpg'  # 20h55 to 21h01 = 6min
+	'Isaac_Lake_during_golden_hour,_moments_before_a_storm_(DSCF2631).jpg'  # 21h01
+	'Civil_twilight_sunset_over_Sandy_Lake_(DSCF2996).jpg'  # 21h44
+	'Nautical_twilight_sunset_over_Sandy_Lake_(DSCF3005).jpg'  # 22h24
 	'Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg'  # 22h46 to 23h49 = 63 minutes
-	'Campsite 38 in Bowron Lake Provincial Park at night (DSCF3026).jpg'  # 23h49
+	'Campsite_38_in_Bowron_Lake_Provincial_Park_at_night_(DSCF3026).jpg'  # 23h49
 	)
 	
 # missing:
