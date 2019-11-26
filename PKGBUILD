@@ -54,6 +54,8 @@ url="https://github.com/Wilfred/remacs.git"
 license=('GPL')
 depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
 makedepends=('git' 'clang' 'rustup')
+provides=('remacs')
+conflicts=('remacs')
 #######################################################################
 #######################################################################
 if [[ $GTK2 = "YES" ]]; then
