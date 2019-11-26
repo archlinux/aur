@@ -2,7 +2,7 @@
 
 pkgname=python-ciscoconfparse
 _pkgname=ciscoconfparse
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="Parse, Audit, Query, Build, and Modify Cisco IOS-style configurations "
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-colorama' 'python-passlib' 'python-dnspython')
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz") #https://pypi.io/packages/source/c/ciscoconfparse/ciscoconfparse-#.#.#.tar.gz
-sha256sums=('c0c5d497b2285650a4c69eb754eee93b3b8efc65755bb899faafd339d9f28dd7')
+sha256sums=('c404bbf14d50ea89c7c86f0df742e13ae99d5573777ad712a87117c3765a069f')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
