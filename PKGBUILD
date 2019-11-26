@@ -69,7 +69,6 @@ prepare() {
     # Apply Brave patches
     cd "${_reponame}"
     patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
-    chromium-vaapi-fix.patch
 
     # Hack to prioritize python2 in PATH
     mkdir -p "${srcdir}/bin"
