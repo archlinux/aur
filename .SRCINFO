@@ -1,41 +1,26 @@
 pkgbase = python-astropy-healpix
 	pkgdesc = BSD-licensed HEALPix for Astropy
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.5
+	pkgrel = 1
 	url = http://astropy-healpix.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	checkdepends = python2-pytest32
-	checkdepends = python2-healpy
-	checkdepends = python2-hypothesis
+	checkdepends = python-pytest-astropy
+	checkdepends = python-hypothesis
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python2-numpy
 	makedepends = python-astropy
-	makedepends = python-astropy-helpers31
-	makedepends = python2-astropy-helpers
+	makedepends = python-astropy-helpers
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/a/astropy-healpix/astropy-healpix-0.4.tar.gz
-	source = python2-astropy-healpix.install
+	source = https://files.pythonhosted.org/packages/source/a/astropy-healpix/astropy-healpix-0.5.tar.gz
 	source = fix_deprecation_warning.patch
-	md5sums = 59174f71ae6ef8b8969b2cfce702231e
-	md5sums = 68d099a7f241f405c488da6f09618890
+	md5sums = 8e474c70da122ff44cb4743176936391
 	md5sums = 71e532a1fed7a57d4ccf0d3e41035dd8
 
 pkgname = python-astropy-healpix
-	depends = python>=3.5
-	depends = python-numpy>=1.10
-	depends = python-astropy>=1.2
-	optdepends = python-astropy-healpix-doc: Documentation for Astropy-HEALPix
-	optdepends = python-pytest-astropy: For testing
-	optdepends = python-astropy<3.2: For testing
-
-pkgname = python2-astropy-healpix
-	install = python2-astropy-healpix.install
-	depends = python2>=2.7
-	depends = python2-numpy>=1.10
-	depends = python2-astropy>=1.2
+	depends = python>=3.6
+	depends = python-numpy>=1.11
+	depends = python-astropy>=2.0
 	optdepends = python-astropy-healpix-doc: Documentation for Astropy-HEALPix
 
 pkgname = python-astropy-healpix-doc
