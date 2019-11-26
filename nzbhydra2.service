@@ -10,6 +10,7 @@ Type=simple
 WorkingDirectory=/usr/lib/nzbhydra2
 ExecStart=/usr/bin/python2 /usr/lib/nzbhydra2/nzbhydra2wrapper.py --nobrowser --datafolder /var/lib/nzbhydra2
 Restart=always
+SyslogIdentifier=nzbhydra2
 
 [Install]
 WantedBy=multi-user.target
