@@ -1,0 +1,16 @@
+pkgbase = surfn-arc-breeze-icons-git
+	pkgdesc = Surfn Arc Breeze icons are created to be used on Plasma with dark toolbar
+	pkgver = 19.12
+	pkgrel = 1
+	url = https://github.com/erikdubois/surfn-arc-breeze
+	arch = any
+	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
+	makedepends = git
+	depends = breeze-icons
+	options = !strip
+	options = !emptydirs
+	source = Surfn::git+https://github.com/erikdubois/surfn-arc-breeze
+	md5sums = SKIP
+
+pkgname = surfn-arc-breeze-icons-git
+
