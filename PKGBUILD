@@ -9,6 +9,7 @@ url="https://github.com/marp-team/marp-cli"
 license=('MIT')
 depends=('gcc-libs')
 options=('!strip') # Stripping causes "Pkg: Error reading from file."
+replaces=('marp')
 
 # Package
 source=("${url}/releases/download/v${pkgver}/marp-cli-v${pkgver}-linux.tar.gz" "${url}/raw/master/LICENSE")
