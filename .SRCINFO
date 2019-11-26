@@ -1,7 +1,7 @@
 pkgbase = python-junos-eznc
 	pkgdesc = Python library for Junos automation
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Juniper/py-junos-eznc
 	arch = any
 	license = Apache
