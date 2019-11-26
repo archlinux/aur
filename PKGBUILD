@@ -1,12 +1,12 @@
 # Maintainer: Toke Høiland-Jørgensen <toke@toke.dk>
 pkgname=postfix-mta-sts-resolver
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon for MTA-STS policy enforcement for postfix"
 arch=('any')
 url="https://github.com/Snawoot/postfix-mta-sts-resolver"
 license=('MIT')
-depends=('python' 'python-aiohttp' 'python-aiodns' 'python-pyaml'
+depends=('python' 'python-aiohttp' 'python-aiodns' 'python-yaml'
          'python-pynetstring' 'python-sdnotify')
 makedepends=('python-pip')
 optdepends=('python-uvloop: For faster event loop handling'

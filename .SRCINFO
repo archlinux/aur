@@ -1,7 +1,7 @@
 pkgbase = postfix-mta-sts-resolver
 	pkgdesc = Daemon for MTA-STS policy enforcement for postfix
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Snawoot/postfix-mta-sts-resolver
 	install = postfix-mta-sts-resolver.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = postfix-mta-sts-resolver
 	depends = python
 	depends = python-aiohttp
 	depends = python-aiodns
-	depends = python-pyaml
+	depends = python-yaml
 	depends = python-pynetstring
 	depends = python-sdnotify
 	optdepends = python-uvloop: For faster event loop handling
