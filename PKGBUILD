@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=(python-rchitect python2-rchitect)
 _pkgname=${pkgname#python-}
-pkgver=0.3.4
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Minimal R API for Python"
 url="https://github.com/randy3k/$_pkgname"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools' 'python2-setuptools'
              'python-six>=1.9.0' 'python2-six>=1.9.0')
 checkdepends=('python2-pytest' 'python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f09dfccdfd12e21f072a0b906f5e90dd3c1510d7037badabcd3b00828dd59f3')
+sha256sums=('8ef67f8be5932ca7f2ad48e3a6308918542efe272315f633ad2691972343ef69')
 
 check_disabled() { # 
   cd "$srcdir/$_pkgname-$pkgver"
