@@ -1,6 +1,6 @@
 pkgbase = linux-amd-staging-drm-next-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 5.4.858375.20b60d8f9f72
+	pkgver = 5.5.875183.2c96a366b9a0
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-amd-staging-drm-next-git
 	source = 90-linux.hook
 	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 3390c9937264bf3bcb577a947b61ca8b4547913b5c0fb7bc6eb232cbb2f4fcd9
+	sha256sums = 17c288ec0752b07472e928d447ba1c945c77e24ae0ff006eda319b4672344fdc
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
