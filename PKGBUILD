@@ -2,7 +2,7 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2-git
-pkgver=581.343faecc
+pkgver=609.092487ec
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
@@ -45,6 +45,7 @@ check() {
 package() {
   install -dm755 "${pkgdir}"/opt/onivim2
   install -dm755 "${pkgdir}"/usr/bin/
+  install -Dm644 ${pkgname}/Outrun-Labs-EULA-v1.1.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 
   cd ${pkgname}/_release/
   install -Dm644 Onivim2.AppDir/usr/share/applications/Onivim2.desktop "${pkgdir}"/usr/share/applications/Onivim2.desktop
