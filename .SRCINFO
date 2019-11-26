@@ -1,7 +1,7 @@
 pkgbase = pianoteq-stage
 	pkgdesc = Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions.
 	pkgver = 6.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pianoteq.com/pianoteq
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = pianoteq-stage
 	makedepends = p7zip
 	depends = alsa-lib
 	depends = freetype2
+	depends = ttf-font
 	depends = libxext
 	provides = pianoteq
 	conflicts = pianoteq

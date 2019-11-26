@@ -6,12 +6,12 @@
 
 pkgname=pianoteq-stage
 pkgver=6.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq"
 license=('LGPL')
-depends=('alsa-lib' 'freetype2' 'libxext')
+depends=('alsa-lib' 'freetype2' 'ttf-font' 'libxext')
 makedepends=('gendesk' 'wget' 'p7zip')
 optdepends=()
 provides=("${pkgname%-*}")
