@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=qmplay2-bin
-pkgver=19.11.06
+pkgver=19.11.26
 pkgrel=1
 _appimagerel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
@@ -16,7 +16,7 @@ provides=('qmplay2')
 options=(!strip)
 makedepends=('fakeroot' 'patchelf' 'findutils')
 source=("https://github.com/zaps166/QMPlay2/releases/download/${pkgver}/QMPlay2-${pkgver}-${_appimagerel}-x86_64.AppImage")
-sha1sums=(f127d7af83cb43004e446d2e1b85271f20482484)
+sha1sums=(f4a42132852c1d398cbb512d8a3629bebe7464ba)
 
 prepare()
 {
