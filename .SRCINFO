@@ -1,0 +1,36 @@
+pkgbase = bcn3dcura-git
+	pkgdesc = 3D printer / slicing GUI forked from Cura and built on top of the Uranium framework, customized for the BCN3D machines.
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/BCN3D/Cura
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = python
+	depends = python-pyqt5
+	depends = python-numpy
+	depends = python-protobuf
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = libarcus-git
+	depends = libsavitar
+	depends = bcn3duranium-git
+	depends = bcn3dcuraengine-git
+	optdepends = python-zeroconf: Detecting mDNS printers
+	optdepends = cura-binary-data-git: Firmwares and translations
+	optdepends = python-pyserial: USB printing
+	provides = cura
+	provides = bcn3dcura
+	conflicts = cura
+	conflicts = bcn3dcura
+	source = git+https://github.com/BCN3D/Cura.git
+	source = git+https://github.com/BCN3D/CuraResources.git
+	source = bcn3dcura.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 82ab7bf90b0c3529a571bbb9e8f912ae
+
+pkgname = bcn3dcura-git
+
