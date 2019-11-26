@@ -6,8 +6,10 @@ pkgdesc="Unified All-in-one Monero miner with randomx fork"
 arch=('x86_64')
 url="https://github.com/fireice-uk/xmr-stak/releases/tag/1.0.0-rx"
 license=('GPL3')
-makedepends=('git' 'cmake' 'opencl-headers' 'gcc7')
+makedepends=('git' 'cmake' 'opencl-headers')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'cuda' 'ocl-icd')
+conflicts=('xmr-stak' 'xmr-stak-git')
+provides=('xmr-stak')
 source=("${pkgname}::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev")
 sha256sums=('SKIP')
 

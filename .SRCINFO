@@ -8,12 +8,14 @@ pkgbase = xmr-stak-rx-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = opencl-headers
-	makedepends = gcc7
 	depends = libmicrohttpd
 	depends = openssl
 	depends = hwloc
 	depends = cuda
 	depends = ocl-icd
+	provides = xmr-stak
+	conflicts = xmr-stak
+	conflicts = xmr-stak-git
 	source = xmr-stak-rx-git::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev
 	sha256sums = SKIP
 
