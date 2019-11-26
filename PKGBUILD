@@ -2,18 +2,20 @@
 
 pkgbase=goland-eap
 pkgname=(goland-eap goland-eap-jre)
-pkgver=193.5233.18
+pkgver=193.5233.69
 pkgrel=1
 pkgdesc='Capable and Ergonomic Go IDE'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/go/'
-license=('Commercial')
+license=('commercial')
 depends=('glib2')
 options=('!strip')
 source=("https://download.jetbrains.com/go/${pkgbase%-eap}-${pkgver}.tar.gz"
-        jetbrains-goland-eap.desktop)
-sha512sums=('e72a4b5e96248901b571c785171b6c5cd5664e3f3841a1fc5de984dac3a2bb9b7a91ad7a1d9c83496a06b7c159b407bc27e209eb352039718b27d561e297c808'
-            '23048f7fe57ff86e45ff62f047903f0ad976382084b93c86ba5d5991813f62771e901c365101471a6f42d4cd55f33532175223fce3f1c152edcadd0d3404e0ef')
+        jetbrains-goland-eap.desktop
+        LICENSE)
+sha512sums=('4b1dbd6df314ef4bcfca6565a62c50f0dfe2623f013e7271e718e19747f208943168ff000e71155aec919380d2fa06d556aff40030274285a8bbc20b0e3d206b'
+            '23048f7fe57ff86e45ff62f047903f0ad976382084b93c86ba5d5991813f62771e901c365101471a6f42d4cd55f33532175223fce3f1c152edcadd0d3404e0ef'
+            'e2aaaa75571f368f85bcc4baef27cc502781ce382bf04737763b07244716918fc2f0eb0b78b02631e242c9a5c246b27d720bb28556fc64bbde213403b7bf57f6')
 
 package_goland-eap() {
   optdepends=('goland-eap-jre: JetBrains custom Java Runtime (Recommended)'
@@ -32,10 +34,11 @@ package_goland-eap() {
   ln -s "/opt/${pkgbase}/bin/${pkgbase%-eap}.sh" "${pkgdir}/usr/bin/${pkgbase}"
   install -m644 "${srcdir}"/jetbrains-${pkgbase}.desktop "${pkgdir}"/usr/share/applications/
   install -m644 "${pkgdir}"/opt/${pkgbase}/bin/${pkgbase%-eap}.png "${pkgdir}"/usr/share/pixmaps/${pkgbase}.png
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 }
 
 package_goland-eap-jre() {
-  pkgdesc='JBR (JetBrains Runtime) for Goland - a patched JDK'
+  pkgdesc='JBR (JetBrains Runtime) for Goland - a patched JRE'
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
   conflicts=('gogland-eap-jre')
   replaces=('gogland-eap-jre')
