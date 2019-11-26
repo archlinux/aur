@@ -14,7 +14,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-	cd "${srcdir}/LinVst3-${pkgver}-Debian-Stretch/embedded/"
+	cd "${srcdir}/LinVst3-${pkgver}-Debian-Buster/embedded/"
 	for file in *.so; do
         	install -Dm755 $file $pkgdir/usr/bin/$file
 	done
