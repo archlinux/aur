@@ -1,0 +1,14 @@
+pkgbase = python-miflora-git
+	pkgdesc = Library for Xiaomi Mi plant sensor
+	pkgver = ebda66d
+	pkgrel = 1
+	url = https://github.com/open-homeautomation/miflora
+	arch = any
+	license = MIT
+	depends = python
+	conflicts = python-miflora
+	source = miflora::git+https://github.com/open-homeautomation/miflora.git
+	sha512sums = SKIP
+
+pkgname = python-miflora-git
+
