@@ -1,0 +1,13 @@
+Index: src/gtk+-3.24.12/gtk/gtkwindow.c
+===================================================================
+--- src.orig/gtk+-3.24.12/gtk/gtkwindow.c
++++ src/gtk+-3.24.12/gtk/gtkwindow.c
+@@ -4107,6 +4107,8 @@ gtk_window_supports_client_shadow (GtkWi
+ #ifdef GDK_WINDOWING_X11
+   if (GDK_IS_X11_DISPLAY (display))
+     {
++      if (g_strcmp0 (g_getenv ("GTK_CSD"), "1") != 0)
++        return FALSE;
+       if (!gdk_screen_is_composited (screen))
+         return FALSE;
+ 
