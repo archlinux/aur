@@ -3,8 +3,8 @@
 pkgname='remarkable-git'
 conflicts=('remarkable')
 provides=('remarkable')
-pkgver=1.87.r27.gda0d88c
-pkgrel=3
+pkgver=1.87.r44.gf4ac3d4
+pkgrel=1
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('any')
 url="http://remarkableapp.github.io"
@@ -16,7 +16,7 @@ depends=('python'
          'python-beautifulsoup4'
          'python-lxml'
          'python-setuptools'
-         'webkitgtk'
+         'webkit2gtk'
          'wkhtmltopdf'
          'gtksourceview3'
          )
@@ -32,7 +32,6 @@ sha1sums=('SKIP'
 
 pkgver() {
   cd Remarkable
-  # cutting off 'foo-' prefix that presents in the git tag
   git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
