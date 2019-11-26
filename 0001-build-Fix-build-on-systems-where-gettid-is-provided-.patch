@@ -1,0 +1,88 @@
+From 829c33dbc28116cb108bdff10ccfddec12247d56 Mon Sep 17 00:00:00 2001
+From: Matt Coffin <mcoffin13@gmail.com>
+Date: Tue, 26 Nov 2019 01:48:45 -0700
+Subject: [PATCH] build: Fix build on systems where gettid is provided in
+ headers
+
+---
+ 3rdparty/Makefile.am       | 13 ++++++++++---
+ 3rdparty/grpc-1.10.0.patch | 12 ++++++++++++
+ configure.ac               |  2 ++
+ 3 files changed, 24 insertions(+), 3 deletions(-)
+
+diff --git a/3rdparty/Makefile.am b/3rdparty/Makefile.am
+index 0de005dad..eb7f26b1b 100644
+--- a/3rdparty/Makefile.am
++++ b/3rdparty/Makefile.am
+@@ -503,6 +503,12 @@ LIB_GRPC = $(GRPC)/libs/opt/libgrpc++$(GRPC_VARIANT).a	\
+ 
+ $(LIB_GRPC): $(GRPC)-build-stamp
+ 
++if HAVE_GETTID
++GRPC_DEFINES = -DHAVE_GETTID=1
++else
++GRPC_DEFINES =
++endif
++
+ # NOTE: We pass compiler flags through environment variables rather than the
+ # command line because gRPC uses target-specific assignments to append compiler
+ # flags, which will be overwritten by the command line. See:
+@@ -517,18 +523,19 @@ $(LIB_GRPC): $(GRPC)-build-stamp
+ # and set up proper include and linker flags instead.
+ $(GRPC)-build-stamp: $(GRPC)-stamp			\
+                      $(PROTOBUF)-build-stamp
++	echo GRPC_DEFINES: $(GRPC_DEFINES)
+ 	cd $(GRPC) &&					\
+ 	  CPPFLAGS="$(PROTOBUF_INCLUDE_FLAGS)		\
+ 	            $(SSL_INCLUDE_FLAGS)		\
+ 	            $(ZLIB_INCLUDE_FLAGS)		\
+ 	            $(CPPFLAGS)"			\
+-	  CFLAGS="$(CFLAGS)"				\
+-	  CXXFLAGS="$(CXXFLAGS)"			\
++	  CFLAGS="$(CFLAGS)"		\
++	  CXXFLAGS="$(CXXFLAGS)"	\
+ 	  $(MAKE) $(AM_MAKEFLAGS)			\
+ 	    $(LIB_GRPC:%=$(realpath $(abs_builddir))/%)	\
+ 	    CC="$(CC)"					\
+ 	    CXX="$(CXX)"				\
+-	    EXTRA_CPPFLAGS=-Wno-error			\
++	    EXTRA_CPPFLAGS="-Wno-error $(GRPC_DEFINES)"	\
+ 	    LD="$(CC)"					\
+ 	    LDXX="$(CXX)"				\
+ 	    LDFLAGS="$(PROTOBUF_LINKER_FLAGS)		\
+diff --git a/3rdparty/grpc-1.10.0.patch b/3rdparty/grpc-1.10.0.patch
+index 00dddbcbe..0f602a340 100644
+--- a/3rdparty/grpc-1.10.0.patch
++++ b/3rdparty/grpc-1.10.0.patch
+@@ -86,3 +86,15 @@ index 83f642a675..8e2253fb39 100644
+ -- 
+ 2.17.2 (Apple Git-113)
+ 
++--- a/src/core/lib/gpr/log_linux.cc
+++++ b/src/core/lib/gpr/log_linux.cc
++@@ -39,7 +39,9 @@
++ #include <time.h>
++ #include <unistd.h>
++ 
+++#ifndef HAVE_GETTID
++ static long gettid(void) { return syscall(__NR_gettid); }
+++#endif
++ 
++ void gpr_log(const char* file, int line, gpr_log_severity severity,
++              const char* format, ...) {
+diff --git a/configure.ac b/configure.ac
+index f274f34e6..58bf265b8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2883,6 +2883,8 @@ AS_IF([test -f ${srcdir}/${git_config} || test -f ${git_config}], [AC_MSG_RESULT
+   AC_CONFIG_FILES([${git_config}])
+ ])
+ 
++AC_CHECK_FUNCS([gettid], [have_gettid=true], [have_gettid=false])
++AM_CONDITIONAL(HAVE_GETTID, $have_gettid)
+ 
+ AC_OUTPUT
+ 
+-- 
+2.24.0
+
