@@ -1,4 +1,4 @@
-From fea9120460e44dc489acfd5671839d497910be73 Mon Sep 17 00:00:00 2001
+From 399e77d75a007d74e294adf16958cdeba70fe88b Mon Sep 17 00:00:00 2001
 From: Cody P Schafer <dev@codyps.com>
 Date: Mon, 29 Oct 2018 22:40:51 -0400
 Subject: [PATCH 2/3] make: make all dirs required in install
@@ -13,7 +13,7 @@ This adds the directories that were omitted.
  1 file changed, 4 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index 4c4d1c5..c502102 100755
+index 45cbf1b..0d9f61b 100755
 --- a/Makefile
 +++ b/Makefile
 @@ -272,6 +272,10 @@ install-strip: build strip_options install
@@ -28,5 +28,5 @@ index 4c4d1c5..c502102 100755
  	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_CS_TARGET} $(DESTDIR)${libdir}
  	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_A_TARGET} $(DESTDIR)${libdir}
 -- 
-2.19.1
+2.24.0
 

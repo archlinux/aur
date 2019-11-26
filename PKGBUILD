@@ -3,7 +3,7 @@
 
 _bpn=paho-mqtt-c
 pkgname=${_bpn}-git
-pkgver=1.3.0.r4.g26c6c99
+pkgver=1.3.1.r12.gce82bd9
 pkgrel=1
 pkgdesc="A fully fledged MQTT client written in ANSI standard C"
 arch=(any)
@@ -20,14 +20,14 @@ options=(!emptydirs !makeflags)
 install=
 source=(
   "git+https://github.com/eclipse/paho.mqtt.c.git"
-  "file://0001-make-pull-out-optimization-debug-flags.patch"
-  "file://0002-make-make-all-dirs-required-in-install.patch"
-  "file://533.patch"
+  file://0001-make-pull-out-optimization-debug-flags.patch
+  file://0002-make-make-all-dirs-required-in-install.patch
+  file://0003-Fix-Makefile-install-target.patch
 )
 md5sums=('SKIP'
-         'f81bb7a9e9f20ae450676ab0f9843a5d'
-         '740b4ec8e0632cd4757d104cae4c8cf9'
-         '4981a9dc98cc1262a001ee0400e61d37')
+         'b48f2a276550cb943c4304f0850a1674'
+         '6c5084ddf779e7069b3abefc1b904253'
+         '8970ff664bad4ddcd3ea9ee71aefe1da')
 
 pkgver() {
   cd "$srcdir/paho.mqtt.c"
@@ -36,9 +36,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/paho.mqtt.c"
-  patch -Np1 <"$srcdir/533.patch"
   patch -Np1 <"$srcdir/0001-make-pull-out-optimization-debug-flags.patch"
   patch -Np1 <"$srcdir/0002-make-make-all-dirs-required-in-install.patch"
+  patch -Np1 <"$srcdir/0003-Fix-Makefile-install-target.patch"
 }
 
 build() {

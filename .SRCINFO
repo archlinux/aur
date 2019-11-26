@@ -1,6 +1,6 @@
 pkgbase = paho-mqtt-c-git
 	pkgdesc = A fully fledged MQTT client written in ANSI standard C
-	pkgver = 1.3.0.r4.g26c6c99
+	pkgver = 1.3.1.r12.gce82bd9
 	pkgrel = 1
 	url = https://www.eclipse.org/paho/clients/c/
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = paho-mqtt-c-git
 	source = git+https://github.com/eclipse/paho.mqtt.c.git
 	source = file://0001-make-pull-out-optimization-debug-flags.patch
 	source = file://0002-make-make-all-dirs-required-in-install.patch
-	source = file://533.patch
+	source = file://0003-Fix-Makefile-install-target.patch
 	md5sums = SKIP
-	md5sums = f81bb7a9e9f20ae450676ab0f9843a5d
-	md5sums = 740b4ec8e0632cd4757d104cae4c8cf9
-	md5sums = 4981a9dc98cc1262a001ee0400e61d37
+	md5sums = b48f2a276550cb943c4304f0850a1674
+	md5sums = 6c5084ddf779e7069b3abefc1b904253
+	md5sums = 8970ff664bad4ddcd3ea9ee71aefe1da
 
 pkgname = paho-mqtt-c-git
 
