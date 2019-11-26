@@ -16,7 +16,6 @@ pkgbase = xmr-stak-rx-git
 	depends = ocl-icd
 	source = xmr-stak-rx-git::git+https://github.com/fireice-uk/xmr-stak.git#branch=xmr-stak-rx-dev
 	sha256sums = SKIP
-	sha256sums = b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a
 
 pkgname = xmr-stak-rx-git
 
