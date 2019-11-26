@@ -1,14 +1,16 @@
 pkgbase = mutagen-git
 	pkgdesc = An audio metadata tag reader and writer, mercurial version
-	pkgver = 1479.b15f1f4
-	pkgrel = 1
+	pkgver = 1571.cb363c1
+	pkgrel = 2
 	url = https://github.com/quodlibet/mutagen
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = python-setuptools
 	provides = mutagen
+	provides = python-mutagen
 	conflicts = mutagen
+	conflicts = python-mutagen
 	source = mutagen-git::git+https://github.com/quodlibet/mutagen.git
 	md5sums = SKIP
 
