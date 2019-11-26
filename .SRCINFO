@@ -1,0 +1,32 @@
+pkgbase = the-darkmod-tweaked
+	pkgdesc = First person forgery stealth game, tweaked to have the best usability on Linux. With separated saved games for each user, missions auto-cleanup, and enhanced installation speed.
+	pkgver = 2.07.1.32
+	pkgrel = 1
+	url = http://www.thedarkmod.com
+	arch = x86_64
+	license = GPL3
+	license = BSD
+	license = CCPL:by-nc-sa
+	makedepends = git
+	makedepends = unzip
+	depends = curl
+	depends = glew
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libpng12
+	depends = libpulse
+	depends = libxxf86vm
+	depends = openal
+	depends = silently
+	provides = the-darkmod-tweaked
+	provides = darkmod
+	provides = thedarkmod
+	conflicts = the-darkmod-tweaked
+	conflicts = darkmod
+	conflicts = thedarkmod
+	replaces = darkmod
+	source = git+https://gitlab.com/es20490446e/the-darkmod-tweaked.git
+	md5sums = SKIP
+
+pkgname = the-darkmod-tweaked
+
