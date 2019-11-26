@@ -1,5 +1,5 @@
 pkgbase = shiboken2-git
-	pkgdesc = Generates bindings for C++ libraries using CPython source code
+	pkgdesc = Generates bindings for C++ libraries using CPython source code (git version)
 	pkgver = r6554.6eb583d7
 	pkgrel = 1
 	url = https://www.qt.io
