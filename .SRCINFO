@@ -1,6 +1,6 @@
 pkgbase = corectrl
 	pkgdesc = Core control application
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://gitlab.com/corectrl/corectrl
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = corectrl
 	optdepends = vulkan-tools: For vulkaninfo
 	optdepends = mesa-demos: For glxinfo,
 	optdepends = util-linux: For lscpu
-	source = https://gitlab.com/corectrl/corectrl/-/archive/v1.0.6/corectrl-v1.0.6.tar.bz2
-	sha512sums = f5df1b21414ff41dc300fa451c2a30c715aaf9e2f1c70109a8221e59fd107b470620cbc1d12ae8a09a3910fdbcc511b7c33dc96235f6a4d7b951879de06913ca
+	source = https://gitlab.com/corectrl/corectrl/-/archive/v1.0.7/corectrl-v1.0.7.tar.bz2
+	sha512sums = ab8fd107200793fa5dd8c7a7120d2613525de1a5444ec76ebde52f08e80f01e83c14a6bd19b12b21485682a11b986f19a5e1efb6a1e2f1aa903ccb01511f252a
 
 pkgname = corectrl
 
