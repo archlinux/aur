@@ -1,12 +1,12 @@
 #Maintainer: max-k <max-k AT post DOT com>
 pkgname=ampache
-pkgver=3.9.0
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
 url="http://www.ampache.org/"
 license=('GPL')
-depends=('mariadb>=5.0' 'php>=5.3')
+depends=('mariadb>=10.0' 'php>=7.1')
 optdepends=('lame: all transcoding/downsampling'
                 'vorbis-tools: all transcoding'
                 'flac: flac transcoding/downsampling'
@@ -18,7 +18,7 @@ _sourcebase="https://github.com/${pkgname}/${pkgname}/releases/download"
 source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all.zip"
         "nginx-example.conf"
         "${pkgname}.install")
-sha256sums=('2c232e080eb9ea6c77cea7b078b89e94079f5629cfe7b1de578de92c1240b892'
+sha256sums=('5ceb3934e6feda172a1df3bae37a15ccd09329849da0209c3958e7b79ba120c4'
             'd579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb'
             '218f6293f3b63310bba36c6903f907a2b5594013d4d64d206d7ac45c85b1ed26')
 options=(!strip)
