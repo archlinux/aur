@@ -20,7 +20,7 @@ source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archiv
         'bazarr.tmpfiles')
 
 sha256sums=('3e1b6afa271e8eb851df33cf9461fbd9e1e900e651a1dba6fae29fae799e64a6'
-            'b9e739e66eeabe5e9768db791d0d930e7f3cbaba6d2253a5973f8034ca12a8e7'
+            'c8260e212cc28dd793cc8e503741042860863748c129f253b7b082f599e6dcef'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
             '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60'
             '3aa2ebbf4083301d331f36486edcb81fcd094767a0ea404a89d870217d4f6632')
