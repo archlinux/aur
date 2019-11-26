@@ -4,9 +4,9 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=postgis-old-upgrade
-pkgver=2.5.1
+pkgver=2.5.3
 pkgrel=1
-pg_majorver=10
+pg_majorver=11
 pkgdesc="Postgis build against postgresql-old-upgrade package for pg_upgrade"
 arch=('x86_64')
 url="http://postgis.net/"
@@ -15,7 +15,7 @@ depends=('postgresql-old-upgrade' 'gdal' 'json-c' 'proj' 'protobuf-c')
 changelog=$pkgname.changelog
 options=('!makeflags')
 source=(http://download.osgeo.org/postgis/source/${pkgname/-old-upgrade/}-${pkgver}.tar.gz)
-sha256sums=('fb137056f43aae0e9d475dc5b7934eccce466f86f5ceeb69ec8b5cea26817a91')
+sha256sums=('72e8269d40f981e22fb2b78d3ff292338e69a4f5166e481a77b015e1d34e559a')
 
 build() {
   cd ${pkgname/-old-upgrade/}-${pkgver}
