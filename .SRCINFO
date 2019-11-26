@@ -1,42 +1,30 @@
 pkgbase = shiboken2-git
-	pkgver = 5.12.2.r6266.54f48761
+	pkgdesc = Generates bindings for C++ libraries using CPython source code
+	pkgver = r6554.6eb583d7
 	pkgrel = 1
-	url = http://www.pyside.org
-	arch = i686
+	url = https://www.qt.io
 	arch = x86_64
+	license = GPL2
 	license = LGPL
-	makedepends = git
-	makedepends = llvm
 	makedepends = clang
+	makedepends = llvm
 	makedepends = cmake
-	makedepends = python2
-	makedepends = python
 	makedepends = libxslt
 	makedepends = qt5-xmlpatterns
-	source = shiboken2-git::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.12
+	makedepends = python-sphinx
+	source = shiboken2-git::git+https://code.qt.io/pyside/pyside-setup.git
 	sha256sums = SKIP
 
-pkgname = python2-shiboken2-git
-	pkgdesc = Support library for Python2 bindings
-	depends = python2
-	depends = shiboken2-git
-	provides = python2-shiboken2=5.12.2
-	conflicts = python2-shiboken2
+pkgname = shiboken2-git
+	depends = clang=9.0.0
+	depends = llvm
+	depends = libxslt
+	depends = qt5-xmlpatterns
+	provides = shiboken2
+	conflicts = shiboken2
 
 pkgname = python-shiboken2-git
-	pkgdesc = Support library for Python bindings
 	depends = python
-	depends = shiboken2-git
-	provides = python-shiboken2=5.12.2
+	provides = python-shiboken2
 	conflicts = python-shiboken2
-
-pkgname = shiboken2-git
-	pkgdesc = CPython bindings generator for C++ libraries
-	depends = libxslt
-	depends = clang
-	depends = qt5-xmlpatterns
-	optdepends = python2-shiboken2-git: for compilation against python2
-	optdepends = python-shiboken2-git: for compilation against python
-	provides = shiboken2=5.12.2
-	conflicts = shiboken2
 

@@ -1,4 +1,5 @@
-# Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 # Contributor: Markus Hovorka <m.hovorka@live.de>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
@@ -6,92 +7,59 @@
 # Contributor: Matthias Maennich <arch@maennich.net>
 
 pkgbase=shiboken2-git
-pkgname=(python{2,}-shiboken2-git shiboken2-git)
-pkgver=5.12.2.r6266.54f48761
+pkgname=(shiboken2-git python-shiboken2-git)
+_clangver=9.0.0
+pkgver=r6554.6eb583d7
 pkgrel=1
-arch=('i686' 'x86_64')
-license=('LGPL')
-url="http://www.pyside.org"
-makedepends=('git' 'llvm' 'clang' 'cmake' 'python2' 'python' 'libxslt'
-             'qt5-xmlpatterns')
-source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git#branch=5.12")
+arch=(x86_64)
+url='https://www.qt.io'
+license=(GPL2 LGPL)
+pkgdesc='Generates bindings for C++ libraries using CPython source code'
+makedepends=(clang llvm cmake libxslt qt5-xmlpatterns python-sphinx)
+source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgbase"
-    _upver="$(python sources/shiboken2/shiboken_version.py | cut -d';' -f-3 | tr ';' '.')"
-    printf "%s.r%s.%s" "$_upver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgbase}"
+
+  mkdir -p build
+  sed -e 's|0307FFFF|0308FFFF|' -i sources/shiboken2/libshiboken/pep384impl.h # Support python 3.8
 }
 
 build() {
-    # Build for python2.
-    cd "$srcdir"/$pkgbase/sources/shiboken2
-    cmake_args="-DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_CXX_COMPILER=/usr/bin/clang++"
-    mkdir -p build-py2 && cd build-py2
-    cmake \
-        -DUSE_PYTHON_VERSION=2 \
-        ${cmake_args} ..
-    make
+  cd "${srcdir}/${pkgbase}/build"
 
-    # Build for python3.
-    cd "$srcdir"/$pkgbase/sources/shiboken2
-    mkdir -p build-py3 && cd build-py3
-    cmake \
-        -DUSE_PYTHON_VERSION=3 \
-        ${cmake_args} ..
-    make
+  cmake ../sources/shiboken2 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTS=OFF \
+    -DUSE_PYTHON_VERSION=3
+  make
 }
 
 package_shiboken2-git() {
-    pkgdesc="CPython bindings generator for C++ libraries"
-    depends=('libxslt' 'clang' 'qt5-xmlpatterns')
-    optdepends=("python2-shiboken2-git: for compilation against python2"
-                "python-shiboken2-git: for compilation against python")
-    provides=("shiboken2=${pkgver%%.r*}")
-    conflicts=("shiboken2")
+  depends=(clang=$_clangver llvm libxslt qt5-xmlpatterns)
+  conflicts=(shiboken2)
+  provides=(shiboken2)
 
-    cd "$srcdir"/$pkgbase/sources/shiboken2/build-py3
-    make DESTDIR="$pkgdir" install
-
-    _upver="${pkgver%%.r*}"
-    rm -rf "$pkgdir/usr/lib/python"*
-    rm -rf "$pkgdir/usr/lib/libshiboken2"*
-    rm -rf "$pkgdir/usr/lib/pkgconfig/"
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}"/Shiboken2Config*python*.cmake
-}
-
-package_python2-shiboken2-git() {
-    pkgdesc="Support library for Python2 bindings"
-    depends=("python2" "shiboken2-git")
-    provides=("python2-shiboken2=${pkgver%%.r*}")
-    conflicts=("python2-shiboken2")
-
-    cd "$srcdir"/$pkgbase/sources/shiboken2/build-py2
-    make DESTDIR="$pkgdir" install
-
-    mv "$pkgdir"/usr/lib/pkgconfig/shiboken2{,-py2}.pc
-
-    _upver="${pkgver%%.r*}"
-    rm -rf "$pkgdir"/usr/{include,bin,share}
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2ConfigVersion.cmake"
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2Config.cmake"
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}"/Shiboken2Targets{,-release}.cmake
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/shiboken_helpers.cmake"
+  cd "${srcdir}/${pkgbase}/build"
+  make DESTDIR="$pkgdir" install
+# Provided in python-shiboken2
+  rm -r "$pkgdir"/usr/lib/{python*,libshiboken*}
 }
 
 package_python-shiboken2-git() {
-    pkgdesc="Support library for Python bindings"
-    depends=("python" "shiboken2-git")
-    provides=("python-shiboken2=${pkgver%%.r*}")
-    conflicts=("python-shiboken2")
+  depends=(python)
+  conflicts=(python-shiboken2)
+  provides=(python-shiboken2)
 
-    cd "$srcdir"/$pkgbase/sources/shiboken2/build-py3
-    make DESTDIR="$pkgdir" install
-
-    _upver="${pkgver%%.r*}"
-    rm -rf "$pkgdir"/usr/{include,bin,share}
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2ConfigVersion.cmake"
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/Shiboken2Config.cmake"
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}"/Shiboken2Targets{,-release}.cmake
-    rm "$pkgdir/usr/lib/cmake/Shiboken2-${_upver}/shiboken_helpers.cmake"
+  cd "${srcdir}/${pkgbase}/build"
+  make DESTDIR="$pkgdir" install
+# Provided in shiboken2
+  rm -r "$pkgdir"/usr/{bin,include,lib/{cmake,pkgconfig},share}
 }
