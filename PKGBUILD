@@ -2,7 +2,7 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=googler
-pkgver=3.9
+pkgver=4.0
 pkgrel=1
 pkgdesc="Google from the command-line"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python')
 conflicts=('googler-git')
 source=("https://github.com/jarun/googler/archive/v$pkgver.tar.gz")
-sha256sums=('b90c6d28ad6ce0a2a2320806ab2133857fe1a0b6ca2a489d8eda1b8062e620e2')
+sha256sums=('f72593ca2a3dccd7301c0fed55effd223cc38f6c21910bffbbfba1360c985cd3')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
