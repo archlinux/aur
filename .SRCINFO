@@ -1,10 +1,11 @@
 pkgbase = gst-plugin-viper4linux-git
 	pkgdesc = ViPER FX core wrapper plugin for gstreamer
 	pkgver = r21.e0a615e
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/noahbliss/gst-plugin-viperfx
 	arch = x86_64
 	license = custom
+	makedepends = git
 	depends = gstreamer
 	depends = libviperfx
 	provides = gst-plugin-viper4linux
