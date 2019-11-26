@@ -1,19 +1,23 @@
 pkgbase = remacs-git
 	pkgdesc = Development branch of REmacs, a fork of GNU Emacs with components rewritten in Rust
-	pkgver = 26.0.60.132231
+	pkgver = 26.2.90.135232
 	pkgrel = 1
 	url = https://github.com/Wilfred/remacs.git
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = git
-	makedepends = cargo
+	makedepends = clang
+	makedepends = rustup
 	depends = gpm
 	depends = m17n-lib
 	depends = alsa-lib
 	depends = imagemagick
 	depends = gtk3
 	depends = giflib
+	provides = remacs
+	conflicts = remacs
 	source = remacs-git::git+https://github.com/Wilfred/remacs.git
 	md5sums = SKIP
 
