@@ -1,14 +1,17 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-wallpapers-git
-pkgver=r112.6c81141
+pkgver=r124.47b25c2
 pkgrel=1
 pkgdesc='Collection of wallpapers for elementary OS'
 arch=(any)
 url=https://github.com/elementary/wallpapers
 license=(GPL3)
 groups=(pantheon-unstable)
-makedepends=(git)
+makedepends=(
+  git
+  meson
+)
 provides=(elementary-wallpapers)
 conflicts=(elementary-wallpapers)
 source=(elementary-wallpapers::git+https://github.com/elementary/wallpapers.git)
@@ -20,12 +23,13 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd elementary-wallpapers
+build() {
+  arch-meson elementary-wallpapers build
+  ninja -C build
+}
 
-  install -dm 755 "${pkgdir}"/usr/share/backgrounds/elementary
-  install -m 644 *.jpg "${pkgdir}"/usr/share/backgrounds/elementary/
-  ln -s 'elementary/Ashim DSilva.jpg' "${pkgdir}"/usr/share/backgrounds/elementaryos-default
+package() {
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:

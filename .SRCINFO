@@ -1,12 +1,13 @@
 pkgbase = elementary-wallpapers-git
 	pkgdesc = Collection of wallpapers for elementary OS
-	pkgver = r112.6c81141
+	pkgver = r124.47b25c2
 	pkgrel = 1
 	url = https://github.com/elementary/wallpapers
 	arch = any
 	groups = pantheon-unstable
 	license = GPL3
 	makedepends = git
+	makedepends = meson
 	provides = elementary-wallpapers
 	conflicts = elementary-wallpapers
 	source = elementary-wallpapers::git+https://github.com/elementary/wallpapers.git
