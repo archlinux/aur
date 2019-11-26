@@ -2,7 +2,7 @@
 
 pkgname=qmplay2
 pkgver=19.11.26
-pkgrel=1
+pkgrel=2
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/zaps166/QMPlay2'
