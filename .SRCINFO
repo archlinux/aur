@@ -5,8 +5,8 @@ pkgbase = coinomi-desktop
 	url = https://coinomi.com
 	arch = x86_64
 	license = unknown
-	depends = java-runtime=8
-	depends = java-openjfx
+	depends = java-runtime
+	depends = libxss
 	source = https://binaries.coinomi.com/desktop/coinomi-wallet-1.1.1-linux64.tar.gz
 	source = coinomi.png
 	sha256sums = fbc3d42a1be2608748cc11acf8dff5da1ed9d7f61762b57729cbee9ae2e9f833

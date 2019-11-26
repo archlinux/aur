@@ -7,7 +7,7 @@ pkgdesc="Coinomi desktop wallet. Securely store, manage and exchange Bitcoin, Et
 arch=(x86_64)
 url="https://coinomi.com"
 license=('unknown')
-depends=(java-runtime=8 java-openjfx)
+depends=(java-runtime libxss)
 source=("https://binaries.coinomi.com/desktop/coinomi-wallet-$pkgver-linux64.tar.gz"
 	"coinomi.png")
 sha256sums=('fbc3d42a1be2608748cc11acf8dff5da1ed9d7f61762b57729cbee9ae2e9f833'
