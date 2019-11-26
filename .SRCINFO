@@ -5,6 +5,7 @@ pkgbase = python-parmed
 	url = https://github.com/parmed/parmed
 	arch = any
 	license = LGPL2.1
+	checkdepends = python-tox
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/parmed/parmed/archive/3.2.0.tar.gz

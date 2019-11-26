@@ -9,10 +9,15 @@ arch=('any')
 url="https://github.com/parmed/parmed"
 license=('LGPL2.1')
 depends=('python')
-optdepends=()
 makedepends=('python-setuptools')
+checkdepends=('python-tox')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('5522cb6218b467a7b9f5c8dd5f81a59d199f8712b8d02a1ad6c9161647256821')
+
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  tox test -e py
+}
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
