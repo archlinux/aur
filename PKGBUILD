@@ -2,7 +2,7 @@
 # Contributor: lukpod <lukpod9@ya.ru>
 
 pkgname=electrum-ltc-git
-pkgver=3.3.8.1.git20190811.cd41861
+pkgver=4.0.0a0.git20191121.e0a3bd9
 pkgrel=1
 pkgdesc='Litecoin thin client'
 arch=(any)
@@ -50,13 +50,13 @@ optdepends=('desktop-file-utils: update desktop icon'
             'xdg-utils: update desktop icon'
             'zbar: QR code reading support')
 source=(git+https://github.com/pooler/electrum-ltc)
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 provides=('electrum-ltc')
 conflicts=('electrum-ltc')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf %s.git%s "$(grep -om1 '[0-9.]*' electrum_ltc/version.py)" \
+  printf %s.git%s "$(grep -om1 "'.*'" electrum_ltc/version.py | tr -d "'" )" \
                   "$(git log -1 --format=%ad.%h --date=format:%Y%m%d --abbrev=7)"
 }
 
