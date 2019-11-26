@@ -3,7 +3,7 @@
 pkgname=clightd
 _gitname=Clightd
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
 arch=('i686' 'x86_64')
 url="https://github.com/FedeDP/${_gitname}"
@@ -28,7 +28,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE="Release" \
-        -DENABLE_DDC=1 -DENABLE_GAMMA=1 -DENABLE_IDLE=1 -DENABLE_DPMS=1 \
+        -DENABLE_DDC=1 -DENABLE_GAMMA=1 -DENABLE_DPMS=1 -DENABLE_SCREEN=1 \
         ..
     make
 }
