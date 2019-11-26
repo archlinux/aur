@@ -7,10 +7,11 @@
 # Contributor: Shun Terabayashi <shunonymous at gmail.com>
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 # Contributor: Doug Johnson <dougvj at dougvj.net>
+# Contributor: Parker <parker.l.reed@gmail.com>
 
 pkgbase=linux-git
 _srcname=linux
-pkgver=5.4rc4.r0.g7d194c2100ad
+pkgver=5.4.r3800.g2be7d348fe92
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,7 +25,7 @@ source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/l
         "${pkgbase}.preset")
 sha256sums=('SKIP'
             'becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc'
-            '603bb6f868c0cfdbc15752fc71bb40068fa836db13307d600514784b9e5a3b32'
+            'f5c48fe919bd841fc87839c73f5021d859a4ba614ffc832fed790e64a0d58f58'
             '95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7')
 
 _kernelname=${pkgbase#linux}
@@ -148,8 +149,9 @@ _package-headers() {
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
-  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+  for i in acpi asm-generic clocksource config crypto drm dt-bindings \
+           generated keys kvm linux math-emu media misc net pcmcia ras rdma \
+           scsi soc sound target trace uapi vdso video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
