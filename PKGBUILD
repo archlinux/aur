@@ -3,8 +3,8 @@
 
 pkgname=mir-git
 _pkgname=mir
-pkgver=1.5.0+120+g5fdc44755a
-pkgrel=3
+pkgver=1.5.0+146+gd42981b4a6
+pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686 armv7h aarch64)
@@ -18,12 +18,8 @@ optdepends=('qterminal: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos'
             'qtubuntu: opt requirement for miral demos')
-source=('git+https://github.com/MirServer/mir.git'
-        'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1087.patch'
-        'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1088.patch')
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=('git+https://github.com/MirServer/mir.git')
+sha256sums=('SKIP')
 
 BUILD_DIR=build
 
@@ -31,8 +27,6 @@ prepare() {
   cd ${_pkgname}
   git submodule init
   git submodule update
-  patch -Np1 -i "${srcdir}/1087.patch"
-  patch -Np1 -i "${srcdir}/1088.patch"
 }
 
 pkgver() {
