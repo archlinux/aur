@@ -4,12 +4,12 @@
 # Contributor: Lucas H. Gabrielli
 pkgname=mumps
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sparse solver library using Gaussian elimination'
 url='http://mumps.enseeiht.fr'
 license=('custom')
 depends=('lapack' 'openmpi' 'scotch' 'scalapack' 'parmetis' 'zlib' 'bzip2')
-makedepends=()
+makedepends=('gcc-fortran')
 provides=('mumps')
 conflicts=('mumps-par' 'mumps4')
 replaces=()

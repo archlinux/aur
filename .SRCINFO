@@ -1,7 +1,7 @@
 pkgbase = mumps
 	pkgdesc = Sparse solver library using Gaussian elimination
 	pkgver = 5.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mumps.enseeiht.fr
 	arch = i686
 	arch = x86_64
