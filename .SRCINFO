@@ -1,0 +1,30 @@
+pkgbase = carla-aurcifix-git
+	pkgdesc = Audio Plugin Host
+	pkgver = 2.1.b1.test1.r108.g801bc02a8
+	pkgrel = 1
+	epoch = 1
+	url = http://kxstudio.sf.net/carla
+	changelog = changelog.txt
+	arch = i686
+	arch = x86_64
+	license = GPL2+
+	makedepends = git
+	makedepends = gtk2
+	makedepends = gtk3
+	depends = ffmpeg
+	depends = file
+	depends = fluidsynth
+	depends = liblo
+	depends = python-pyqt5
+	depends = qt5-svg
+	optdepends = gtk2: LV2 GTK2 UI support
+	optdepends = gtk3: LV2 GTK3 UI support
+	optdepends = python-pyliblo: OSC control support
+	optdepends = python-rdflib: LADSPA-RDF support
+	provides = carla
+	conflicts = carla
+	source = carla::git+https://github.com/falkTX/Carla.git#branch=develop
+	md5sums = SKIP
+
+pkgname = carla-aurcifix-git
+
