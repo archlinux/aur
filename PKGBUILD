@@ -13,7 +13,7 @@ license=('MIT')
 depends=('lua' 'pcre' 'openssl')
 optdepends=('openssl: SSL/TLS encryption and CRAM-MD5 authentication')
 source=("https://codeload.github.com/lefcha/${pkgname}/tar.gz/v${pkgver}")
-sha256sums=('bf7b859e7fc44c593acc497f7f8ee03dbec249bd21961a4f5914ccca3e5cb15c')
+sha256sums=('90af9bc9875e03fb5a09a3233287b74dd817867cb18ec9ff52fead615755563e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
