@@ -3,7 +3,7 @@
 pkgname=python-bme280-git
 _pkgname=bme280
 pkgver=eb28f73
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for accessing the BME280 combined humidity and pressure from Bosch via python-smbus using the I2C interface."
 url="https://github.com/cmur2/python-bme280"
 arch=("any")
@@ -11,6 +11,7 @@ license=("MIT")
 depends=("python")
 source=("${_pkgname}::git+https://github.com/cmur2/python-bme280.git")
 sha512sums=("SKIP")
+conflicts=("python-bme280")
 
 pkgver() {
   cd "${_pkgname}"
