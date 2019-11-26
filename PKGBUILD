@@ -2,7 +2,7 @@
 
 pkgorg='stack-of-tasks'
 pkgname=('pinocchio' 'pinocchio-docs')
-pkgver=2.1.9
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
