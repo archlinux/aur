@@ -1,7 +1,7 @@
 pkgbase = monero-gui-bin
 	pkgdesc = Monero: the secure, private, untraceable currency - release version (Includes daemon, wallet, and miner)
 	pkgver = 0.15.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getmonero.org/
 	install = monero-gui-bin.install
 	arch = x86_64

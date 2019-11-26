@@ -11,4 +11,5 @@ post_upgrade() {
 }
 
 post_remove() {
+	:
 }
