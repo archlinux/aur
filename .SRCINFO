@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-animation-tweaks-git
+	pkgdesc = A GNOME Shell Extension to Tweak animations and customize them.
+	pkgver = 8.482f1ab
+	pkgrel = 1
+	url = https://github.com/Selenium-H/Animation-Tweaks
+	arch = any
+	license = GLPv3
+	makedepends = git
+	depends = gnome-shell
+	source = git+https://github.com/Selenium-H/Animation-Tweaks.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-animation-tweaks-git
+
