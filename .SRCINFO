@@ -1,12 +1,12 @@
 pkgbase = autojump-git
 	pkgdesc = A faster way to navigate your filesystem from the command line
 	pkgver = 22.5.3.r0.g06e082c
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/wting/autojump
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python
+	depends = python>=3.8
 	provides = autojump
 	conflicts = autojump
 	source = git+https://github.com/wting/autojump.git
