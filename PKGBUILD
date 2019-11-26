@@ -3,7 +3,7 @@
 pkgname=xsv-bin
 pkgver=0.13.0
 pkgrel=1
-pkgdesc='A fast CSV command line toolkit written in Rust'
+pkgdesc='CSV command line toolkit written in Rust'
 arch=('x86_64')
 url='https://github.com/BurntSushi/xsv'
 license=('MIT')

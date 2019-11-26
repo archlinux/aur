@@ -1,5 +1,5 @@
 pkgbase = xsv-bin
-	pkgdesc = A fast CSV command line toolkit written in Rust
+	pkgdesc = CSV command line toolkit written in Rust
 	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/BurntSushi/xsv
