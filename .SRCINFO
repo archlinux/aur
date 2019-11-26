@@ -1,5 +1,5 @@
 pkgbase = carla-aurcifix-git
-	pkgdesc = Audio Plugin Host
+	pkgdesc = Audio Plugin Host (fix for building with aurci)
 	pkgver = 2.1.b1.test1.r108.g801bc02a8
 	pkgrel = 1
 	epoch = 1
