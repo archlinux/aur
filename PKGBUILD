@@ -19,7 +19,7 @@ conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
 # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v660.7z
-source=("file://pianoteq_stage_linux_v${pkgver//./}.7z"
+source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 sha512sums=('cc539eed0b155a05e277dcdb3746106b5cbf8931d3b396833297a46e0485b92299b23ae091f3b4ae796caa924cc4d5b10e549a8c57d4e66a6519f64590c8217b'
             '71690cc597b16cd363ddf8837c81eece620be275bf7860e2a2a30cc94da73f32a809d24a086c6ceacbe945282c8b73d03d6567e6058b620b4beb07feb4e46dab')
