@@ -15,7 +15,7 @@ arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL2 LGPL)
 pkgdesc='Generates bindings for C++ libraries using CPython source code'
-makedepends=(clang llvm cmake libxslt qt5-xmlpatterns python-sphinx)
+makedepends=(clang llvm cmake git libxslt qt5-xmlpatterns python-sphinx)
 source=("$pkgbase::git+https://code.qt.io/pyside/pyside-setup.git")
 sha256sums=('SKIP')
 

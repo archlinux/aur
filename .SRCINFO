@@ -9,6 +9,7 @@ pkgbase = shiboken2-git
 	makedepends = clang
 	makedepends = llvm
 	makedepends = cmake
+	makedepends = git
 	makedepends = libxslt
 	makedepends = qt5-xmlpatterns
 	makedepends = python-sphinx
