@@ -31,7 +31,7 @@ source=("https://download.sonarr.tv/v3/phantom-develop/${pkgver}/Sonarr.phantom-
 
 noextract=()
 sha256sums=('f77fc154a6f049743d8ff8fa3288c80d6f7ecac824db63dc185424a3ae3bd926'
-            'b16e72fc8556aa2708adf81cec6ef44cefd207cfb07fe069790131829c672c39'
+            '0cf9f57403939df673755949ca39a1981f542b97ca28116c599f321a939f5d00'
             'cc3c69f719fa64335f4c5b41b2588f1ec56865fb2202f5919d3668b50b8f398e'
             'a436a979ca3a9e78bdc410bd0027d97956bfa8d2d4f2b7bdf3f7d2ed199dd6a8')
 
