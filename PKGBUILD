@@ -53,7 +53,7 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Wilfred/remacs.git"
 license=('GPL')
 depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
-makedepends=('git' 'cargo' 'clang')
+makedepends=('git' 'clang' 'rustup')
 #######################################################################
 #######################################################################
 if [[ $GTK2 = "YES" ]]; then
