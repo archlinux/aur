@@ -1,6 +1,6 @@
 pkgbase = mpd-sima
 	pkgdesc = Automagically add title to mpd playlist based on last.fm recomendations
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = http://kaliko.me/code/mpd-sima/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = mpd-sima
 	depends = python>=3.2
 	depends = python-musicpd>=0.4.1
 	depends = python-requests>=2.4.0
-	source = https://files.pythonhosted.org/packages/source/M/MPD_sima/MPD_sima-0.15.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/M/MPD_sima/MPD_sima-0.15.2.tar.gz
 	source = service
 	sha256sums = 4b7e0c35637ad24cc0b91d1ec5cbba6b4d2be429a312178ebe80b660fae8c984
 	sha256sums = 864b997cbf53864120aba183f2642ad6a632a0bcde3c4701779cc9a25cc0f448
