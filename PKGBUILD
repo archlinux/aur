@@ -36,6 +36,7 @@ optdepends=('cups: Printer support'
             'sccache: For faster builds')
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
+        'chromium-vaapi-fix.patch'
         'brave-launcher'
         'brave-browser.desktop')
 arch_revision=b8f5b855df7d8d165921e217ac124cc7652944bd
@@ -53,6 +54,7 @@ done
 
 sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
+            '7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
             '49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e'
@@ -67,6 +69,7 @@ prepare() {
     # Apply Brave patches
     cd "${_reponame}"
     patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
+    chromium-vaapi-fix.patch
 
     # Hack to prioritize python2 in PATH
     mkdir -p "${srcdir}/bin"
@@ -81,6 +84,8 @@ prepare() {
 
     msg2 "Apply Chromium patches..."
     cd src/
+    patch -Np1 -i "${srcdir}/chromium-vaapi-fix.patch"
+
     # Missing include in third_party/blink/public/platform/web_rtc_rtp_source.h
     patch -Np1 -i ${srcdir}/add-missing-include-for-unique_ptr.patch
 

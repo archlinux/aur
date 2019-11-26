@@ -25,6 +25,7 @@ pkgbase = brave
 	optdepends = sccache: For faster builds
 	source = git+https://github.com/brave/brave-browser.git#tag=v1.0.1
 	source = brave-vaapi-enable.patch
+	source = chromium-vaapi-fix.patch
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = add-missing-include-for-unique_ptr.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-missing-include-for-unique_ptr.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
@@ -36,6 +37,7 @@ pkgbase = brave
 	source = icu65.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu65.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
 	sha256sums = SKIP
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
+	sha256sums = 7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
 	sha256sums = 2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488
 	sha256sums = 49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e
