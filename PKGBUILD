@@ -3,7 +3,7 @@
 
 pkgname=monetcours
 pkgdesc="A toolchain for creating class subjects webpages and more."
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1.0
 epoch=
 arch=('any')
@@ -22,14 +22,15 @@ options=()
 install=
 changelog=
 source=("https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/$pkgver.tar.gz")
+#source=("$pkgver.tar.gz")
 noextract=()
-md5sums=('97dfa505bcb8df7900743a2f4716bfad')
+md5sums=('16d217effd3ae59cf5bbcbc33f28aa82')
 validpgpkeys=()
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/lib/monetcours"
+	mkdir -p "$pkgdir/usr/share/monetcours"
 	ls "$srcdir"
 	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -I{} mv {} "$pkgdir/usr/bin"
-	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -I{} mv {} "$pkgdir/usr/lib/monetcours"
+	find "$srcdir/Monetcours-linux-$pkgver/"  -not -path '*/\.*' -type f | grep -E -v "*.sh$|*.pl$|*.py$" | xargs -n1 -L1 -r -I{} mv {} "$pkgdir/usr/share/monetcours"
 }
