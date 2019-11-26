@@ -1,25 +1,24 @@
 _pkgbase=atlantic
 pkgname="${_pkgbase}-dkms"
-pkgver=2.2.6.0_178
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="aquantia multigigabit nic driver - \"development preview\""
-url="https://www.aquantia.com/support/driver-download/"
+url="https://github.com/Aquantia/AQtion"
 arch=('x86_64')
 license=('GPLv2')
 depends=('dkms')
 makedepends=('linux-headers')
 conflicts=("${_pkgbase}")
-zipname="20190605_Linux_ver_2.2.6.0.178"
-source=("https://s3-us-west-2.amazonaws.com/aq-media/wp-content/uploads/2019/06/${zipname}.zip")
-md5sums=('fcb1dc1c20f93a4e7919139645b8280d')
+commit="3c2a2a3abe3df6cb0c985a49cea9a359a83e3f75"
+source=("https://github.com/Aquantia/AQtion/archive/$commit.tar.gz")
+md5sums=('2a916d439a8171878d5cc85a1810d160')
 
 build() {
-  cd "${srcdir}/${zipname}/"
-  tar zxf "atlantic.tar.gz"
+  cd "${srcdir}/AQtion-${commit}"
 }
 
 package() {
-  cd "${srcdir}/${zipname}/Linux"
+  cd "${srcdir}/AQtion-${commit}"
   mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
   cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
   cat <<EOF >${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf
