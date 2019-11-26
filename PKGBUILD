@@ -12,9 +12,11 @@ makedepends=('cmake' 'git' 'intltool' 'mesa')
 provides=('pcsxr' "${pkgname/%-git/}")
 conflicts=('pcsxr' "${pkgname/%-git/}")
 source=("${pkgname/%-git/}::git+https://github.com/iCatButler/pcsxr.git"
-        'fix-pango.patch')
+        'fix-pango.patch'
+)
 sha256sums=('SKIP'
-            '40298efe5f3137fa6926a1315d2299ef1b311ec365674d63578235bb00f2e454')
+            '91a34f3d7c9cd916afb4f14d5a15498c0d94637e792f6d3a31950204f50960c3'
+)
 
 pkgver() {
   cd "${pkgname/%-git/}"

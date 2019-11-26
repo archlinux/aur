@@ -18,7 +18,7 @@ index 907009ce..850da301 100644
  
  find_package(X11 REQUIRED)
  
-+set(OpenGL_GL_PREFERENCE GLVND)
++set(OpenGL_GL_PREFERENCE LEGACY)
  find_package(OpenGL REQUIRED)
  if(NOT OPENGL_FOUND)
      message(FATAL_ERROR "GL library not found")
