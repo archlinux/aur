@@ -1,10 +1,11 @@
 pkgbase = ntpsec
 	pkgdesc = Security-hardened Network Time Protocol implementation
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ntpsec.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = custom
 	makedepends = asciidoc
 	makedepends = pps-tools
