@@ -9,13 +9,13 @@ url="https://github.com/osxmidi/LinVst"
 depends=('wine' 'python>=3.7')
 conflicts=('linvst' 'linvst-stable')
 replaces=('linvst' 'linvst-stable')
-source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Debian-Stretch.zip"
+source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Debian-Buster.zip"
         "git+https://github.com/usrmusicman/ArchStudioUtils.git")
 sha256sums=('SKIP'
             'SKIP')
 
 package() {
-	cd "${srcdir}/LinVst-${pkgver}-Debian-Stretch/embedded/"
+	cd "${srcdir}/LinVst-${pkgver}-Debian-Buster/embedded/"
 	for file in *.so; do
 	install -Dm755 $file $pkgdir/usr/bin/$file
 	done
