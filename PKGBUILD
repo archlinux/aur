@@ -4,8 +4,8 @@
 
 pkgbase=virtualbox-modules-lts
 pkgname=('virtualbox-host-modules-lts' 'virtualbox-guest-modules-lts')
-pkgver=6.0.8
-pkgrel=10
+pkgver=6.0.14
+pkgrel=1
 _linux_major=4
 _linux_minor=19
 arch=('x86_64' 'i686')
@@ -17,11 +17,11 @@ makedepends=("linux-lts>=$_linux_cur" "linux-lts<$_linux_next"
              "linux-lts-headers>=$_linux_cur" "linux-lts-headers<$_linux_next"
              "virtualbox-host-dkms>=$pkgver"
              "virtualbox-guest-dkms>=$pkgver")
-
-_extramodules=extramodules-${_linux_major}.${_linux_minor}-lts
+_kernver="$(pacman -Si linux-lts|awk '/Version/{print$3}')" || \
+_kernver="$(pacman -Qi linux-lts|awk '/Version/{print$3}')"
+_kernver="${_kernver}-lts"
 
 package_virtualbox-host-modules-lts(){
-  _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Virtualbox host kernel modules for LTS Kernel'
   depends=("linux-lts>=$_linux_cur" "linux-lts<$_linux_next")
   replaces=('virtualbox-modules' 'virtualbox-host-modules')
@@ -30,7 +30,7 @@ package_virtualbox-host-modules-lts(){
   provides=('VIRTUALBOX-HOST-MODULES-LTS')
 
   cd "/var/lib/dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
-  install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
+  install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m644 *
 
   # compress each module individually
   find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
@@ -41,7 +41,6 @@ package_virtualbox-host-modules-lts(){
 }
 
 package_virtualbox-guest-modules-lts(){
-  _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Virtualbox guest kernel modules for LTS Kernel'
   license=('GPL')
   depends=("linux-lts>=$_linux_cur" "linux-lts<$_linux_next")
@@ -51,7 +50,7 @@ package_virtualbox-guest-modules-lts(){
   provides=('VIRTUALBOX-GUEST-MODULES-LTS')
 
   cd "/var/lib/dkms/vboxsf/${pkgver}_OSE/$_kernver/$CARCH/module"
-  install -Dt "$pkgdir/usr/lib/modules/$_extramodules" -m644 *
+  install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m644 *
 
   # compress each module individually
   find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
