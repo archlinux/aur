@@ -1,7 +1,7 @@
 pkgbase = python-yamlordereddictloader
 	pkgdesc = (DEPRECATED) YAML loader and dumper for PyYAML allowing to keep keys order.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fmenabe/python-yamlordereddictloader
 	arch = any
 	license = MIT
