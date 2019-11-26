@@ -1,0 +1,12 @@
+diff -ura terminator-1.91.orig/terminatorlib/plugins/custom_commands.py terminator-1.91.new/terminatorlib/plugins/custom_commands.py
+--- terminator-1.91.orig/terminatorlib/plugins/custom_commands.py	2017-02-26 14:45:29.000000000 -0300
++++ terminator-1.91.new/terminatorlib/plugins/custom_commands.py	2018-04-10 18:22:55.566435800 -0300
+@@ -127,7 +127,7 @@
+       if command[-1] != '\n':
+         command = command + '\n'
+       for terminal in data['terminals']:
+-        terminal.vte.feed_child(command,  len(command))
++        terminal.vte.feed_child(command)
+ 
+     def configure(self, widget, data = None):
+       ui = {}

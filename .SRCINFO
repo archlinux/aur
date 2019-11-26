@@ -1,0 +1,26 @@
+pkgbase = termiantor-tmux-git
+	pkgdesc = Terminal emulator that supports tabs, grids, and patched with tmux -CC support
+	pkgver = r2621.a079048
+	pkgrel = 1
+	url = https://gnometerminator.blogspot.com/p/introduction.html
+	arch = any
+	license = GPL2
+	makedepends = intltool
+	depends = gsettings-desktop-schemas
+	depends = libkeybinder3
+	depends = libnotify
+	depends = python2-cairo
+	depends = python2-dbus
+	depends = python2-psutil
+	depends = python2-gobject
+	depends = vte3
+	depends = xdg-utils
+	provides = terminator
+	provides = terminator-git
+	source = terminator::git+git://github.com/manno/terminator.git#branch=tmux
+	source = 001-custom_commands.patch
+	sha512sums = SKIP
+	sha512sums = db1e3bbc911afaedd07dae0d34301b15ae28ecec54f7ce10a9c0fd6e2ebd6eaac643e8b6c2a01942f76ba51a41c39eb164fa83e3c78f13ef8441c253a5408d4d
+
+pkgname = terminator-tmux-git
+
