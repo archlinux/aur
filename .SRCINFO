@@ -1,7 +1,7 @@
 pkgbase = python-textfsm
 	pkgdesc = Python module for parsing semi-structured text into python tables.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/textfsm
 	arch = any
 	license = Apache
