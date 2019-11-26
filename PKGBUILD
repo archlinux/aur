@@ -3,18 +3,20 @@
 
 pkgname=crates
 pkgver=0.7.1
-pkgrel=6
+pkgrel=7
+_commit=7eef3f61362903fb06fb6609bd001fef22e6c93f
+
 pkgdesc="Challenging and fun three dimensional puzzle game."
-url="http://www.octaspire.com/crates/"
+url="https://github.com/octaspire/crates"
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('lua51' 'mesa' 'libgl' 'sdl_mixer')
 makedepends=('cmake')
 backup=("usr/share/crates/resources/config.lua")
-source=("http://www.octaspire.com/$pkgname/$pkgname-$pkgver.tar.gz" "crates.desktop")
+source=("https://github.com/octaspire/crates/archive/$_commit.zip" "crates.desktop")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_commit"
   mkdir -p build
   cd build
   # https://github.com/octaspire/crates/issues/3
@@ -23,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_commit"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir"/usr/share/{crates,applications,pixmaps,man/man6}
   cp man/man6/crates.6 "$pkgdir/usr/share/man/man6/"
@@ -36,5 +38,5 @@ package() {
   install "$srcdir/$pkgname-$pkgver/resources/images/crateslogo48x48x32.ico" "$pkgdir/usr/share/pixmaps/$pkgname.ico"
 }
 
-md5sums=('93b59c6134a4343d43f93aa211c3c485'
+md5sums=('1bd8a585f8e22b0dc8a1df140ab9661c'
          '22b3dc83195f5d05d175e6298123d496')
