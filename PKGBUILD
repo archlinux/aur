@@ -3,13 +3,12 @@
 
 pkgname=xf86-input-egalax
 pkgver=2.5.5814
-pkgrel=3
-_reldate=20151022
+pkgrel=4
 pkgdesc="Touchscreen driver for eGalax (eeti) devices"
 arch=('i686' 
       'x86_64'
       'armv7h')
-url="http://home.eeti.com.tw/drivers_Linux.html"
+url="https://tvielectronics.com/touch-solutions-downloads.html"
 license=('custom:EULA')
 groups=('xorg-input-drivers')
 depends=('linux' 
@@ -19,20 +18,28 @@ depends=('linux'
          'hicolor-icon-theme')
 optdepends=('xorg-server')
 backup=(etc/eGTouchL.ini)
-install='xf86-input-egalax.install'
+install=xf86-input-egalax.install
 
-source_armv7h=("eGTouch_v${pkgver}.L-ma.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/${_reldate}/eGTouch_v${pkgver}.L-ma.tar.gz")
-source_i686=("eGTouch_v${pkgver}.L-x.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/${_reldate}/eGTouch_v${pkgver}.L-x.tar.gz")
-source_x86_64=("eGTouch_v${pkgver}.L-x.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/${_reldate}/eGTouch_v${pkgver}.L-x.tar.gz")
+_base_url="https://www.tvielectronics.com/ocart/download"
+source_armv7h=(
+	"eGTouch_v${pkgver}.L-ma.tar.gz::${_base_url}/eGTouch_v${pkgver}.L-ma.tar.gz"
+)
+source_i686=(
+	"eGTouch_v${pkgver}.L-x.tar.gz::${_base_url}/eGTouch_v${pkgver}.L-x.tar.gz"
+)
+source_x86_64=(
+	"eGTouch_v${pkgver}.L-x.tar.gz::${_base_url}/eGTouch_v${pkgver}.L-x.tar.gz"
+)
+md5sums_i686=('fb29252cd9ebf3a4ebd1530e4946f092')
+md5sums_x86_64=('fb29252cd9ebf3a4ebd1530e4946f092')
+md5sums_armv7h=('4d53599a89dd7653d6587279cef5a25c')
+
 source=("eGalaxConfig.desktop" 
         "eGTouchD.service"
         "eGTouchD.conf")
 md5sums=('0ee99c83fd74bdb8357427eae9b2dc7d'
          'a52c4c1682ee196a6bbffe4768154a92'
          'c9284fbcf2bdaec8d3eea21f6b7be34d')
-md5sums_i686=('fb29252cd9ebf3a4ebd1530e4946f092')
-md5sums_x86_64=('fb29252cd9ebf3a4ebd1530e4946f092')
-md5sums_armv7h=('4d53599a89dd7653d6587279cef5a25c')
          
 _architect="32"
 _archshort="L-x"

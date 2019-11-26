@@ -1,8 +1,8 @@
 pkgbase = xf86-input-egalax
 	pkgdesc = Touchscreen driver for eGalax (eeti) devices
 	pkgver = 2.5.5814
-	pkgrel = 3
-	url = http://home.eeti.com.tw/drivers_Linux.html
+	pkgrel = 4
+	url = https://tvielectronics.com/touch-solutions-downloads.html
 	install = xf86-input-egalax.install
 	arch = i686
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = xf86-input-egalax
 	md5sums = 0ee99c83fd74bdb8357427eae9b2dc7d
 	md5sums = a52c4c1682ee196a6bbffe4768154a92
 	md5sums = c9284fbcf2bdaec8d3eea21f6b7be34d
-	source_i686 = eGTouch_v2.5.5814.L-x.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/20151022/eGTouch_v2.5.5814.L-x.tar.gz
+	source_i686 = eGTouch_v2.5.5814.L-x.tar.gz::https://www.tvielectronics.com/ocart/download/eGTouch_v2.5.5814.L-x.tar.gz
 	md5sums_i686 = fb29252cd9ebf3a4ebd1530e4946f092
-	source_x86_64 = eGTouch_v2.5.5814.L-x.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/20151022/eGTouch_v2.5.5814.L-x.tar.gz
+	source_x86_64 = eGTouch_v2.5.5814.L-x.tar.gz::https://www.tvielectronics.com/ocart/download/eGTouch_v2.5.5814.L-x.tar.gz
 	md5sums_x86_64 = fb29252cd9ebf3a4ebd1530e4946f092
-	source_armv7h = eGTouch_v2.5.5814.L-ma.tar.gz::http://home.eeti.com.tw/touch_driver/Linux/20151022/eGTouch_v2.5.5814.L-ma.tar.gz
+	source_armv7h = eGTouch_v2.5.5814.L-ma.tar.gz::https://www.tvielectronics.com/ocart/download/eGTouch_v2.5.5814.L-ma.tar.gz
 	md5sums_armv7h = 4d53599a89dd7653d6587279cef5a25c
 
 pkgname = xf86-input-egalax
