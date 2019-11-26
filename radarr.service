@@ -9,6 +9,7 @@ Group=radarr
 ExecStart=/usr/bin/mono --debug /usr/lib/radarr/Radarr.exe -nobrowser -data=/var/lib/radarr
 Type=simple
 TimeoutStopSec=20
+SyslogIdentifier=radarr
 
 # Lets built in updater work well.
 Restart=on-failure
