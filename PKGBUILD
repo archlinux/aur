@@ -1,7 +1,7 @@
 # Maintainer Alex Mcmillan <linuxguy93@gmail.com>
 
 pkgname=linvst2
-pkgver=2.7.4
+pkgver=2.8
 pkgrel=1
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/osxmidi/LinVst"
 depends=('wine' 'python>=3.7')
 conflicts=('linvst' 'linvst-stable')
 replaces=('linvst' 'linvst-stable')
-source=("https://github.com/osxmidi/LinVst/releases/download/2.7/LinVst-${pkgver}-Debian-Stretch.zip"
+source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Debian-Stretch.zip"
         "git+https://github.com/usrmusicman/ArchStudioUtils.git")
 sha256sums=('SKIP'
             'SKIP')
