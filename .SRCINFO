@@ -1,6 +1,6 @@
 pkgbase = stikked
 	pkgdesc = An advanced and beautiful pastebin written in PHP
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/claudehohl/Stikked
 	install = stikked.install
@@ -9,8 +9,8 @@ pkgbase = stikked
 	depends = php
 	conflicts = stikked-git
 	backup = etc/webapps/stikked/stikked.php
-	source = stikked-0.13.0.zip::https://github.com/claudehohl/Stikked/zipball/0.13.0
-	sha1sums = 8e577d097071ee2384a6f16671423c8dc2038b49
+	source = stikked-0.14.0.zip::https://github.com/claudehohl/Stikked/zipball/0.14.0
+	sha1sums = 2e4c3d6a12657f4298d40674a0fb179e077e6160
 
 pkgname = stikked
 
