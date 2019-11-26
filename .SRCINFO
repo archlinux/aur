@@ -1,6 +1,6 @@
 pkgbase = monetcours
 	pkgdesc = A toolchain for creating class subjects webpages and more.
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1.0
 	url = https://scott-hamilton.github.io/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = monetcours
 	depends = zip>=3.0
 	depends = python-yaml
 	provides = monetcours
-	source = https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/1.1.4.tar.gz
-	md5sums = 97dfa505bcb8df7900743a2f4716bfad
+	source = https://github.com/SCOTT-HAMILTON/Monetcours-linux/archive/1.1.5.tar.gz
+	md5sums = 16d217effd3ae59cf5bbcbc33f28aa82
 
 pkgname = monetcours
 
