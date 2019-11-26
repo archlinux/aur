@@ -1,0 +1,14 @@
+pkgbase = xsv-bin
+	pkgdesc = A fast CSV command line toolkit written in Rust
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/BurntSushi/xsv
+	arch = x86_64
+	license = MIT
+	source = https://github.com/BurntSushi/xsv/releases/download/0.13.0/xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
+	source = xsv-LICENSE::https://raw.githubusercontent.com/BurntSushi/xsv/master/LICENSE-MIT
+	sha256sums = d36b1be0f008d6597c2437e764fbe720eb7557f8980e0b03ca709e1020b5c52b
+	sha256sums = 0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f
+
+pkgname = xsv-bin
+
