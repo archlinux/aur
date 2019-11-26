@@ -1,5 +1,0 @@
-#!/usr/bin/sh
-
-export LD_LIBRARY_PATH="/opt/XMind ZEN/lib"
-
-exec "/opt/XMind ZEN/XMind" $@
