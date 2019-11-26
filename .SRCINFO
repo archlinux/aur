@@ -1,10 +1,11 @@
 pkgbase = python-ciscoconfparse
 	pkgdesc = Parse, Audit, Query, Build, and Modify Cisco IOS-style configurations
 	pkgver = 1.4.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pennington.net/py/ciscoconfparse/
 	arch = any
 	license = GPL3
+	checkdepends = python-tox
 	makedepends = python-setuptools
 	depends = python
 	depends = python-colorama
