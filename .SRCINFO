@@ -1,7 +1,7 @@
 pkgbase = python-miflora
 	pkgdesc = Library for Xiaomi Mi plant sensor
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/open-homeautomation/miflora
 	arch = any
 	license = MIT
