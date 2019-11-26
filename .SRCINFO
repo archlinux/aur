@@ -1,0 +1,30 @@
+pkgbase = python2-astropy-healpix
+	pkgdesc = BSD-licensed HEALPix for Astropy
+	pkgver = 0.4
+	pkgrel = 2
+	url = http://astropy-healpix.readthedocs.io/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python2-setuptools
+	makedepends = python2-astropy
+	makedepends = python2-astropy-helpers
+	makedepends = python2-sphinx
+	makedepends = python2-matplotlib
+	source = https://files.pythonhosted.org/packages/source/a/astropy-healpix/astropy-healpix-0.4.tar.gz
+	source = python2-astropy-healpix.install
+	source = fix_deprecation_warning.patch
+	md5sums = 59174f71ae6ef8b8969b2cfce702231e
+	md5sums = 68d099a7f241f405c488da6f09618890
+	md5sums = 71e532a1fed7a57d4ccf0d3e41035dd8
+
+pkgname = python2-astropy-healpix
+	install = python2-astropy-healpix.install
+	depends = python2>=2.7
+	depends = python2-numpy>=1.10
+	depends = python2-astropy>=1.2
+	optdepends = python2-astropy-healpix-doc: Documentation for Astropy-HEALPix
+
+pkgname = python2-astropy-healpix-doc
+	pkgdesc = Documentation for AstroPy-HEALPix
+
