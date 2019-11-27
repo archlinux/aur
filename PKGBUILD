@@ -5,13 +5,13 @@ pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
-pkgrel=2
+pkgrel=3
 pkgdesc="Recursively mirror a directory tree of FLAC audio files to AAC/OGG"
 url="https://github.com/cmcginty/flacsync"
 arch=('any')
 license=('GPL')
-depends=('python2' 'python-imaging' 'mutagen' 'flac')
-makedepends=('git' 'python2-distribute')
+depends=('python2' 'python2-setuptools' 'python2-pillow' 'python2-mutagen' 'flac')
+makedepends=('git')
 optdepends=('neroaacenc: AAC encoding'
             'neroaactag: AAC tagging'
             'vorbis-tools: OGG Vorbis encoding and tagging'
