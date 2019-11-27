@@ -1,6 +1,6 @@
 pkgbase = r-biobase
 	pkgdesc = Functions that are needed by many other packages or which replace R functions.
-	pkgver = 2.42.0
+	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Biobase.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-biobase
 	depends = r
 	depends = r-biocgenerics
 	depends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.42.0.tar.gz
-	sha1sums = 747eb3eb144a92efd823734efc72969d6a5c939e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.46.0.tar.gz
+	sha1sums = 4dcd9a29ce30fb8ca2d3d62f721e9c88853245ae
 
 pkgname = r-biobase
 
