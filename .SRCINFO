@@ -1,0 +1,44 @@
+pkgbase = webthings-gateway
+	pkgdesc = WebThings Gateway by Mozilla
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://iot.mozilla.org/gateway/
+	install = webthings-gateway.install
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = jq
+	makedepends = npm
+	makedepends = python-setuptools
+	makedepends = python2
+	depends = nodejs>=8.0.0
+	depends = nodejs<13.0.0
+	depends = pagekite
+	depends = python-adapt-parser
+	depends = python-gateway-addon
+	depends = python-pip
+	optdepends = avahi: mDNS hostname broadcast and resolution
+	optdepends = ffmpeg: required for video transcoding in ONVIF and virtual things add-on
+	optdepends = iputils: required for network presence add-on
+	optdepends = mosquitto: required for some MQTT add-ons
+	source = webthings-gateway-0.10.0.tar.gz::https://github.com/mozilla-iot/gateway/archive/0.10.0.tar.gz
+	source = gateway-addon-python.tar.gz::https://github.com/mozilla-iot/gateway-addon-python/archive/v0.10.0.tar.gz
+	source = intent-parser.zip::https://github.com/mozilla-iot/intent-parser/archive/52b1d7f1f9d53d83adb813bc7bfbbbed203c0627.zip
+	source = webthings-gateway.conf
+	source = webthings-gateway.install
+	source = webthings-gateway.service
+	source = webthings-gateway-intent-parser.service
+	source = webthings-gateway.sh
+	source = webthings-gateway.sysusers
+	sha256sums = 1346efa975cc25d32c30a40620597e6af5c027e8b5dc975218cbf8a004ba5d57
+	sha256sums = b288d3e5adaa9de103e8e340c82889f6afa9dfee1b1e6d01d175c55ccf1cc0f3
+	sha256sums = b59382026981c14bd5a08c82cb88d9ebb159ed98b0fb7bcaf954bc2f41f7b2d5
+	sha256sums = 8c2f4a28c9bdd4571d27e98e1f4beecd9fc7d8bfa57c412f2d749d4c0a774cde
+	sha256sums = 60a275bf3a4b93defcc2a47a0833e9baf2e019443f401a4399e81277f8c9bf5c
+	sha256sums = e8f4faa6fb1778157d9927d730038ef0f5520c6c3c5cc33222f155d9979238a5
+	sha256sums = 68685a10449c51fd8fa48fc8a4c399b36e22148a58d939e8f4b99a91c37c34e8
+	sha256sums = 0ebd9e60fc5d2a3333814859369249f052aae2c8097b6f4a206a3e89e39c99b3
+	sha256sums = 38ac347a82f61525e762ba3dd129faf2eb5af03371599626bef7fc66e8bf8a32
+
+pkgname = webthings-gateway
+

@@ -1,0 +1,23 @@
+post_install() {
+  echo ""
+  echo "You can start the WebThings Gateway as follows:"
+  echo "  systemctl start webthings-gateway-intent-parser"
+  echo "  systemctl start webthings-gateway"
+
+  echo ""
+  echo "The former is required for the commands (e.g. speech) interface,"
+  echo "while the latter is the gateway itself."
+
+  echo ""
+  echo "By default, the gateway listens on port 8080, so you should navigate"
+  echo "to http://localhost:8080 in your browser."
+
+  if ! systemctl -q is-active avahi-daemon; then
+    echo ""
+    echo "You should probably also install avahi and enable the avahi-daemon"
+    echo "service, as well as mDNS hostname resolution. See:"
+    echo "https://wiki.archlinux.org/index.php/Avahi"
+  fi
+}
+
+# vim:set ts=2 sw=2 et ft=sh:

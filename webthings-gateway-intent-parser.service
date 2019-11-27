@@ -1,0 +1,16 @@
+[Unit]
+Description=Mozilla WebThings Gateway Intent Parser
+After=network.target
+
+[Service]
+Type=simple
+StandardOutput=journal
+StandardError=journal
+User=webthings
+WorkingDirectory=/opt/webthings-gateway/intent-parser
+ExecStart=/opt/webthings-gateway/intent-parser/intent-parser-server.py
+Restart=always
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
