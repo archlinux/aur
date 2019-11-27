@@ -5,6 +5,7 @@ pkgbase = c-ares-cmake
 	url = https://c-ares.haxx.se/
 	arch = x86_64
 	license = custom
+	makedepends = cmake
 	depends = glibc
 	provides = c-ares
 	conflicts = c-ares

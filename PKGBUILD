@@ -12,6 +12,7 @@ arch=('x86_64')
 url='https://c-ares.haxx.se/'
 license=('custom')
 depends=('glibc')
+makedepends=('cmake')
 source=("https://c-ares.haxx.se/download/$_pkgname-$pkgver.tar.gz"
         'LICENSE')
 sha512sums=('a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
