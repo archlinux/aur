@@ -1,14 +1,14 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
 pkgname=ballerina
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 _pkg=${pkgname}-${pkgver}
 pkgdesc="an open source programming language and platform for cloud-era application programmers to easily write software that just works"
 arch=('any')
 url="https://ballerina.io/"
 license=('Apache')
 depends=('jre8-openjdk')
-optdepends=('docker' 'bash')
+optdepends=('docker' 'bash' 'kubectl' 'helm')
 source=(${_pkg}.zip::https://product-dist.ballerina.io/downloads/${pkgver}/ballerina-${pkgver}.zip)
 sha256sums=('b01af6a269ccd9cb826cc7372c73e6005af12be9c89502b0caeb7c495f3047dc')
 
