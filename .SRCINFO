@@ -1,0 +1,20 @@
+pkgbase = rumno
+	pkgdesc = Lightweight media notification manager written in Rust
+	pkgver = v0.3
+	pkgrel = 1
+	url = https://gitlab.com/natjo/rumno
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = gtk3
+	source = https://gitlab.com/natjo/rumno/-/archive/v0.3/rumno-v0.3.tar.gz
+	md5sums = 4779d8e023f51718972d90b5c94dccdd
+
+pkgname = rumno
+
