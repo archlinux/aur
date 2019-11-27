@@ -1,7 +1,7 @@
 pkgbase = aerc
 	pkgdesc = Email Client for your Terminal
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = aerc
 	depends = notmuch
 	provides = aerc
 	conflicts = aerc
-	source = aerc::git+https://git.sr.ht/~sircmpwn/aerc#tag=0.3.0
-	sha512sums = SKIP
+	source = aerc-0.3.0.tar.gz::https://git.sr.ht/~sircmpwn/aerc/archive/0.3.0.tar.gz
+	sha256sums = 44d5ab0d5f1195166b351ec59680cc8f4c0eb45da4d44263b138be0a91a512a1
 
 pkgname = aerc
 
