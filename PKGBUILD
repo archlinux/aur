@@ -1,6 +1,6 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="High-performance MySQL proxy with a GPL license"
 arch=('x86_64' 'amd64')
@@ -13,7 +13,7 @@ provides=('proxysql')
 source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz"
 	"proxysql.sysusers"
 	"proxysql.tmpfiles")
-sha256sums=('2340dfe14946b2057bebeaacf6b9e149e28fb397bd4f658f9a49b3f2241f6207'
+sha256sums=('06493dce04e29e81c5e1085070e8c0762f6900b8ab7055b0f80dc78a038e0861'
             '8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735'
             '6f48bd54c6b8592cd84006e991d3cbd8b38a460c6e72091acdca05f6781ae380')
 
