@@ -2,7 +2,7 @@
 
 pkgname=caffeinated
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple logind idle inhibitor"
 arch=("x86_64")
 url="https://github.com/electrickite/${pkgname}"

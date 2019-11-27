@@ -1,7 +1,7 @@
 pkgbase = caffeinated
 	pkgdesc = Simple logind idle inhibitor
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electrickite/caffeinated
 	arch = x86_64
 	license = MIT
