@@ -1,13 +1,11 @@
 pkgbase = batch_resolve
 	pkgdesc = Fast asynchronous DNS resolver
-	pkgver = 0.3.5
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/mersinvald/batch_resolve
 	arch = x86_64
 	license = MIT
 	depends = openssl
-	source = https://github.com/mersinvald/batch_resolve/releases/download/0.3.5/batch-resolve_0.3.5_amd64.deb
-	md5sums = 0840cfb4d7ad400aab0d10fb3e50b17f
 
 pkgname = batch_resolve
 
