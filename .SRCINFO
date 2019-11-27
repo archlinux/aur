@@ -1,13 +1,13 @@
 pkgbase = spnxclient
 	pkgdesc = ACS Sphinx client module
-	pkgver = 1.0.60.1
+	pkgver = 1.0.60.62
 	pkgrel = 0
 	url = http://sigursys.com/download_current.php
 	arch = any
 	license = custom
-	source = http://sigursys.com/dl/spnxclient_1.0.60.1-0_all.deb
+	source = http://sigursys.com/dl/spnxclient_1.0.60.62-0_all.deb
 	source = spnx-client.desktop
-	sha256sums = f7d1a465fa9291c75c2ad4fbc1d5441e600116f4875106baf838f293981f6c0b
+	sha256sums = 759478554a932c34c1f29794094c94147c22637e0a2a6e77980ba87f8bd42272
 	sha256sums = 6ba598b7bac9667cf3520222f1b2201f2fb7f37b96ee9c6de7222bd6bf360552
 
 pkgname = spnxclient
