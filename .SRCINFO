@@ -6,7 +6,7 @@ pkgbase = graal-bin
 	arch = x86_64
 	license = custom
 	depends = jdk8-graalvm-bin
-	optdepends = graal-native-image: plugin to generate native binary images (used to be bundled with this package before the 19.0.0 release)
+	optdepends = graal-native-image-bin: plugin to generate native binary images (used to be bundled with this package before the 19.0.0 release)
 	provides = graal
 	conflicts = graal
 
