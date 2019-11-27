@@ -21,10 +21,10 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20190919
-_pkgver="19Sep2019"
+pkgver=20191120
+_pkgver="20Nov2019"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
-pkgrel=3
+pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
 arch=('x86_64')
@@ -45,7 +45,7 @@ if (( $_ENABLE_INTEL_COMPILER )); then
     _feature_args+=('-DCMAKE_C_COMPILER=mpiicc')
     _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
     _feature_args+=('-DCMAKE_CXX_COMPILER=mpiicpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG -I${MKLROOT}/include')
     _feature_args+=('-DCMAKE_Fortran_COMPILER=mpiifort')
 fi
 if (( $_BUILD_DOC )); then
@@ -82,22 +82,10 @@ build() {
   make
 
   if (( $_BUILD_DOC )) ; then
-    # Generate ReStructuredText from Text files
     export PYTHONPATH=$PWD/../doc/utils/converters/
-    mkdir -p rst
-
-    for file in ../doc/src/*.txt
-    do
-      tmp=${file%.*} # Strips the '.txt' extension
-      fname=${tmp##*/} # Strips the path prefixing the file-name
-      ../doc/utils/converters/lammpsdoc/txt2rst.py ${file} > "rst/${fname}.rst"
-    done
-
     # Generate HTML from ReStructuredText files
     mkdir -p html
-    cp -r ../doc/src/* rst/
-
-    sphinx-build -b html -c "../doc/utils/sphinx-config" -d "doctrees" "rst" html
+    sphinx-build -b html -c "../doc/utils/sphinx-config" -d "doctrees" "../doc/src" html
   fi
 }
 
