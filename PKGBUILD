@@ -2,12 +2,12 @@
 
 pkgname=protonvpn-cli-ng
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")
 url="https://github.com/ProtonVPN/protonvpn-cli-ng"
 license=("GPLv3")
-depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools")
+depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools" "python-docopt" "python-requests")
 makedepends=("git")
 replaces=("protonvpn-cli")
 source=("git+https://github.com/ProtonVPN/protonvpn-cli-ng.git")

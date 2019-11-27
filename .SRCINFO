@@ -1,7 +1,7 @@
 pkgbase = protonvpn-cli-ng
 	pkgdesc = ProtonVPN CLI tool for protonvpn.com
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ProtonVPN/protonvpn-cli-ng
 	arch = any
 	license = GPLv3
@@ -11,6 +11,8 @@ pkgbase = protonvpn-cli-ng
 	depends = dialog
 	depends = python-pythondialog
 	depends = python-setuptools
+	depends = python-docopt
+	depends = python-requests
 	replaces = protonvpn-cli
 	source = git+https://github.com/ProtonVPN/protonvpn-cli-ng.git
 	md5sums = SKIP
