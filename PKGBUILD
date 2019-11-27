@@ -14,6 +14,7 @@ sha256sums=('3e5bcb57f2a7995ce4fd9c76c033050e487ea375ecf0e277dabc22159c8cfb31')
 build() {
   cd "$srcdir/Bonmin-$pkgver"
   COIN_SKIP_PROJECTS="Sample" \
+  CXXFLAGS="${CXXFLAGS} -I/usr/include/coin" \
   ./configure --prefix=/usr \
               --with-osi-lib="$(pkg-config --libs osi)" \
               --with-osi-incdir="/usr/include/coin/" \
