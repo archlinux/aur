@@ -59,23 +59,17 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.11.arch1.r859541.ae4815c57d21
+pkgver=v5.3.13.arch1.r859600.e04bb6cd44cd
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.3.11-arch1
+_srcver_tag=v5.3.13-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-    xmlto
-    kmod
-    inetutils
     bc
+    kmod
     libelf
-    python-sphinx
-    python-sphinx_rtd_theme
-    graphviz
-    imagemagick
     git
 )
 options=('!strip')
@@ -93,6 +87,8 @@ source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
+    d938db454691d69590eb081db22c507c9ebca5f8.patch
+    4932fe6b8e63b92f8252591b5381423c01bac552.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -100,14 +96,16 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'beb2a30558f3e5cc6aa56c8ec908309c40cf9fae02151d16bb7c229dc4f20fe5c26def36a06d12464edf84c25dfa04c4e9490599ca53d388b7735846c81114b8')
+            '9ce38cfa57475b74098229956a8b97a82bda8aeff831728542b4939e67c4af8e929c4cf8e27b0549829e5f011859369b2ab19b4fdfeb096afb339bc1bff8c622'
+            '9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0'
+            'a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 pkgver() {
-    cd "$_reponame"
+    cd $_reponame
     printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -119,23 +117,23 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Adding patches from Linux upstream kernel repository..."
+    msg2 "Pull releases from Linux stable upstream repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    # git pull --no-edit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
     git pull --no-edit upstream_stable ${_srcver_tag//-arch*/}
-    
-    # Revert broken commit for now, until bcachefs upstream fixes it
-    # https://github.com/koverstreet/bcachefs/issues/74
-    # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v5.2.1&id=c785529bebceeaf38db8ebf9b50ff3a173fb18c6
-    # block: fix .bi_size overflow
-    # git revert --no-edit c785529bebceeaf38db8ebf9b50ff3a173fb18c6
+    # git pull --no-edit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
 
-    msg2 "Pull stable releases from Arch vanilla kernel repository..."
-    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    git pull --no-edit arch_stable "$_srcver_tag"
+    # msg2 "Pull stable releases from Arch vanilla kernel repository..."
+    # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    # git pull --no-edit arch_stable "$_srcver_tag"
+    
+    msg2 "Patching with commit: 'ZEN: Add sysctl and CONFIG to disallow unprivileged CLONE_NEWUSER' ..."
+    patch -Np1 -i "$srcdir/d938db454691d69590eb081db22c507c9ebca5f8.patch"
+    
+    msg2 "Patching with commit: 'Bluetooth: hidp: Fix assumptions on the return value of hidp_send_message' ..."
+    patch -Np1 -i "$srcdir/4932fe6b8e63b92f8252591b5381423c01bac552.patch"
 
     # https://github.com/graysky2/kernel_gcc_patch
-    msg2 "Patching to enabled additional gcc CPU optimizatons..."
+    msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
     
     msg2 "Setting config..."
@@ -173,7 +171,7 @@ prepare() {
 
 build() {
     cd $_reponame
-    make bzImage modules htmldocs
+    make bzImage modules
 }
 
 _package() {
@@ -295,45 +293,9 @@ _package-headers() {
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
-    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel $_pkgdesc_extra"
-    depends=("$pkgbase=$pkgver")
-    provides=(
-        "$pkgbase-docs=$pkgver"
-        "linux-docs=$pkgver"
-    )
-
-    cd $_reponame
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    msg2 "Installing documentation..."
-    mkdir -p "$builddir"
-    cp -t "$builddir" -a Documentation
-
-    msg2 "Removing unneeded files..."
-    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-    msg2 "Moving HTML docs..."
-    local src dst
-    while read -rd '' src; do
-        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-        mkdir -p "${dst%/*}"
-        mv "$src" "$dst"
-        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-    done < <(find "$builddir/Documentation/output" -type f -print0)
-
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/share/doc"
-    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
-    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {

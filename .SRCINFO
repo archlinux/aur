@@ -1,29 +1,27 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.3.11.arch1.r859541.ae4815c57d21
+	pkgver = v5.3.13.arch1.r859600.e04bb6cd44cd
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
 	makedepends = git
 	options = !strip
 	source = git+https://github.com/koverstreet/bcachefs#branch=master
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
+	source = d938db454691d69590eb081db22c507c9ebca5f8.patch
+	source = 4932fe6b8e63b92f8252591b5381423c01bac552.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = beb2a30558f3e5cc6aa56c8ec908309c40cf9fae02151d16bb7c229dc4f20fe5c26def36a06d12464edf84c25dfa04c4e9490599ca53d388b7735846c81114b8
+	sha512sums = 9ce38cfa57475b74098229956a8b97a82bda8aeff831728542b4939e67c4af8e929c4cf8e27b0549829e5f011859369b2ab19b4fdfeb096afb339bc1bff8c622
+	sha512sums = 9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0
+	sha512sums = a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
@@ -33,17 +31,11 @@ pkgname = linux-bcachefs-git
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-git=v5.3.11.arch1.r859541.ae4815c57d21
+	provides = linux-bcachefs-git=v5.3.13.arch1.r859600.e04bb6cd44cd
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=v5.3.11.arch1.r859541.ae4815c57d21
-	provides = linux-bcachefs-git-headers=v5.3.11.arch1.r859541.ae4815c57d21
-	provides = linux-headers=v5.3.11.arch1.r859541.ae4815c57d21
-
-pkgname = linux-bcachefs-git-docs
-	pkgdesc = Kernel hacker's manual for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=v5.3.11.arch1.r859541.ae4815c57d21
-	provides = linux-bcachefs-git-docs=v5.3.11.arch1.r859541.ae4815c57d21
-	provides = linux-docs=v5.3.11.arch1.r859541.ae4815c57d21
+	depends = linux-bcachefs-git=v5.3.13.arch1.r859600.e04bb6cd44cd
+	provides = linux-bcachefs-git-headers=v5.3.13.arch1.r859600.e04bb6cd44cd
+	provides = linux-headers=v5.3.13.arch1.r859600.e04bb6cd44cd
 
