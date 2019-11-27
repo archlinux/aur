@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=20527.a65fab84f
+pkgver=20538.2f5f90ed1
 pkgrel=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=("git+https://gitlab.gnome.org/World/AbiWord.git"
 sha256sums=('SKIP'
             '5f80a2f94f9929cdba9809c5e1a87cd5d537a2518bb879bfb9eab51a71c8dac1'
             '2f26826e9d59d80dacd0dae4aceb815804eaa75954e47507a0897794f33e45be'
-            '3b98834cceb0aa69effe182568cbf38248ae729f7fb3b07d03483283b287c7b6')
+            '2644cb2ce1eb2ad1c4dbe6ba1711375f700d050dd5f6c73b1a128361cc82d351')
 
 pkgver() {
   cd AbiWord
@@ -37,12 +37,12 @@ prepare() {
   
   # Generate m4 file for configure
   find plugins -name plugin.m4 | xargs cat > plugin-list.m4
-  patch -Np0 < "$srcdir"/in_chroot.patch || true
+  git apply "$srcdir"/in_chroot.patch || true
 }
 
 build() {
   cd AbiWord
-  export CXXFLAGS+=" -O3"
+  export CXXFLAGS+=" -O3 "
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
 	      --enable-shared \

@@ -1,6 +1,8 @@
---- configure.ac	2018-08-17 13:18:28.010088365 +0200
-+++ configure.ac.new	2018-08-17 18:14:06.049959957 +0200
-@@ -6,6 +6,7 @@
+diff --git a/configure.ac b/configure.ac
+index a8aeb1ec7..14cb8a970 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -6,6 +6,7 @@ m4_define([abi_series], [abi_version_major.abi_version_minor])
  m4_define([abi_version], [abi_version_major.abi_version_minor.abi_version_micro])
  
  AC_INIT([abiword],[abi_version],[http://www.abisource.com/])
@@ -8,7 +10,7 @@
  AC_CANONICAL_HOST
  AC_CONFIG_HEADERS(config.h)
  AC_CONFIG_MACRO_DIR([m4])
-@@ -561,61 +562,6 @@
+@@ -561,68 +562,6 @@ if test "$abi_cv_icondir" = "" -o \
  fi
  AC_SUBST(ABIWORD_ICONDIR, "$abi_cv_icondir")
  
@@ -51,18 +53,25 @@
 -   -Wformat-security \
 -   -Wformat-overflow=2 \
 -   -Wheader-guard \
--   -Wimplicit-fallthrough=3 \
+-   -Wimplicit-fallthrough=2 \
 -   -Wlogical-not-parentheses \
 -   -Wmisleading-indentation \
 -   -Wmissing-noreturn \
 -   -Wno-overloaded-virtual \
+-   -Wparentheses-equality \
 -   -Wpointer-arith \
 -   -Wpointer-bool-conversion \
 -   -Wredundant-decls \
 -   -Wshadow \
 -   -Wsign-compare \
 -   -Wunreachable-code \
+-   -Wunreachable-code-loop-increment \
 -   -Wunused \
+-   -Wunused-const-variable \
+-   -Wunused-local-typedef \
+-   -Wunused-private-field \
+-   -Wunused-value \
+-   -Wunused-variable \
 -   -Wwrite-strings \
 -], [], [$ax_compiler_flags_test])
 -AC_LANG_POP
