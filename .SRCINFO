@@ -14,6 +14,7 @@ pkgbase = python-cq-editor
 	depends = python-pyqtgraph
 	depends = python-path.py
 	depends = python-requests
+	depends = spyder
 	source = https://github.com/CadQuery/CQ-editor/archive/0.1RC1.tar.gz
 	md5sums = 3e48fb0ead68ebffcaeef24a84999534
 
