@@ -1,6 +1,6 @@
 pkgbase = r-summarizedexperiment
 	pkgdesc = SummarizedExperiment container
-	pkgver = 1.12.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = r-summarizedexperiment
 	depends = r-genomicranges
 	depends = r-biobase
 	depends = r-delayedarray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedExperiment_1.12.0.tar.gz
-	sha1sums = dce89a434441bd3eebd17a00ba88d3a441235e49
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedExperiment_1.16.0.tar.gz
+	sha1sums = a56b0817ad6a3c182c0da68a5b6f5433907a24a3
 
 pkgname = r-summarizedexperiment
 
