@@ -1,6 +1,6 @@
 pkgbase = spotifyd-git
 	pkgdesc = A spotify playing daemon
-	pkgver = 0.2.20.c1afcda
+	pkgver = 0.2.20.1.gde16b40
 	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
@@ -14,9 +14,6 @@ pkgbase = spotifyd-git
 	depends = libvorbis
 	provides = spotifyd
 	conflicts = spotifyd
-	conflicts = spotifyd-pulseaudio
-	conflicts = spotifyd-bin
-	conflicts = spotifyd-pulseaudio-git
 	source = spotifyd::git+https://github.com/Spotifyd/spotifyd
 	sha256sums = SKIP
 
