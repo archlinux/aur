@@ -5,7 +5,7 @@
 
 set MODULE   "aocc"
 set BASE_DIR "/opt"
-set VERSION  "2.0.0"
+set VERSION  "2.1.0"
 set MDL_ROOT "$BASE_DIR/$MODULE"
 set MDL_TEXT "AMD Optimizing C/C++ Compiler"
 
@@ -15,6 +15,7 @@ prepend-path LIBRARY_PATH    $MDL_ROOT/lib
 prepend-path LD_LIBRARY_PATH $MDL_ROOT/lib32
 prepend-path LD_LIBRARY_PATH $MDL_ROOT/lib
 append-path  CPATH           $MDL_ROOT/include
+append-path  CPATH           $MDL_ROOT/lib/clang/9.0.0/include
 
 setenv       CC              clang
 setenv       OMPI_CC         clang

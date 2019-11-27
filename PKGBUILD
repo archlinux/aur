@@ -2,8 +2,8 @@
 # Manual download of '${pkgname}-compiler-${pkgver}.tar' required from upstream
 
 pkgname=aocc
-pkgver=2.0.0
-pkgrel=6
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -12,7 +12,7 @@ source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
 options=('staticlibs' '!strip' 'libtool')
 depends=('ncurses5-compat-libs' 'env-modules')
 install=aocc.install
-md5sums=("09d64260794b40901c77504317fbd0ad" "SKIP")
+md5sums=("8f0349c1138949c511a15bfa5850af10" "SKIP")
 
 aocc_prefix=/opt/aocc
 
@@ -22,7 +22,7 @@ package() {
 
 	# Cleanup
 	rm ${srcdir}/${pkgname}-compiler-${pkgver}/install.sh
-	# amdlibm seems to be an outdated version, use recent one from from aocl
+	# amdlibm seems to be an outdated version in aocc, use recent one from from aocl
 	find ${srcdir}/${pkgname}-compiler-${pkgver}/lib/ -name "*amdlibm*" -delete
 
 	cp -r ${srcdir}/${pkgname}-compiler-${pkgver}/* ${prefix}
