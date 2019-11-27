@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.5
 _branch=drm-next-${_kernel_rel}-wip
 _kernelname=${pkgbase#linux}
-pkgver=5.5.858368.49255d331c23
+pkgver=5.5.858404.ee5885e4a421
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -29,7 +29,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '3390c9937264bf3bcb577a947b61ca8b4547913b5c0fb7bc6eb232cbb2f4fcd9'
+            '4f1cd6d7b142b4a433a8de11df6051800b0c02967659755644752fb51e97a7a7'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
@@ -247,4 +247,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
