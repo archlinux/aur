@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-server-minimal
-pkgver=0.21.15
+pkgver=0.21.16
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback as server running under mpd user."
 arch=(i686 x86_64 armv7h)
@@ -13,11 +13,11 @@ makedepends=(boost meson)
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.conf")
-source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
+source=("${url}/download/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"{,.sig}
         "${_pkgname}.tmpfiles"
         "${_pkgname}.sysusers"
         "${_pkgname}.conf")
-sha256sums=('4595adba2d8aa80b5a912bbb5185578abac3623ccc7e4897286993e4650a5022'
+sha256sums=('30cf1bddf7d7388487276745ad3515f134e07f0c57f9f97cb2b5d3befd4a4d92'
             'SKIP'
             '93d5cd794c3b2709d24dd77900574683b04fa382c7eb0a2d26ddb51cbcf7adbf'
             '14d28690bb60d8d182499ebefa583fc42f425093ef00341be25bb66586aecf3d'
