@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------
-# Maintainer: Romain Bazile <gromain.baz at gmail dot com>
+# Maintainer: Romain Bazile <gromain.baz@gmail.com>
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-weatherrouting
-pkgver=1.10.1.r464.gc36d748
+pkgver=1.13.1.r0.gbceecc5
 pkgrel=1
 pkgdesc="Weather routing plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/weatherroute.html"
-source=("$pkgname::git+https://github.com/seandepagnier/weather_routing_pi.git")
+source=("$pkgname::git+https://github.com/rgleason/weather_routing_pi.git")
 sha1sums=('SKIP')
 
 pkgver() {
