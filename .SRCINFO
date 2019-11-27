@@ -16,6 +16,7 @@ pkgbase = r-rsamtools
 	depends = r-zlibbioc
 	depends = r-bitops
 	depends = r-biocparallel
+	depends = r-rhtslib
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsamtools_2.2.1.tar.gz
 	sha1sums = dc30829d270ca77fa29aaffa37b88060c1223320
 
