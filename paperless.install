@@ -11,6 +11,14 @@ post_install() {
     echo "Start/enable paperless webserver and file consumer"
     echo "  systemctl start paperless-webserver.service"
     echo "  systemctl start paperless-consumer.service"
+    echo
+    echo "CAVE: imagemagic's convert does not work on pdf files."
+    echo "  There is a security risc accociated with convert acting on e.g. pdf files"
+    echo "  https://bugs.archlinux.org/task/59778"
+    echo "  You can enable convert for pdf files or other files by following the description here"
+    echo "  https://bugs.archlinux.org/task/60580"
+    echo "  In case you decide not to enable convert for pdf files, consumption of files in"
+    echo "  paperless degrades"
 }
 
 post_upgrade() {
@@ -26,4 +34,13 @@ post_upgrade() {
     echo "     through your entire database and Decrypt All The Things."
     echo "  2: Remove PAPERLESS_PASSPHRASE from your paperless.conf file, or simply stop declaring it in"
     echo "     your environment."
+
+    echo
+    echo "CAVE: imagemagic's convert does not work on pdf files."
+    echo "  There is a security risc accociated with convert acting on e.g. pdf files"
+    echo "  https://bugs.archlinux.org/task/59778"
+    echo "  You can enable convert for pdf files or other files by following the description here"
+    echo "  https://bugs.archlinux.org/task/60580"
+    echo "  In case you decide not to enable convert for pdf files, consumption of files in"
+    echo "  paperless degrades"
 }
