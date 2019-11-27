@@ -1,7 +1,7 @@
 pkgbase = gols-git
 	pkgdesc = Tool to syncronize Garmin devices with online service
 	pkgver = 1.2.0.e10b48e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gols.readthedocs.io/
 	arch = any
 	license = BSD

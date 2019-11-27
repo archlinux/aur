@@ -1,9 +1,10 @@
 # Maintainer: dront78
 
 _pkgname=gols
+_pkgver=1.2.0
 pkgname=gols-git
 pkgver=1.2.0.e10b48e
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to syncronize Garmin devices with online service'
 url='https://gols.readthedocs.io/'
 license=('BSD')
@@ -16,7 +17,7 @@ provides=('gols')
 
 pkgver() {
   cd "${_pkgname}"
-  echo ${pkgver}.`git rev-parse --short HEAD`
+  echo ${_pkgver}.`git rev-parse --short HEAD`
 }
 
 package() {
