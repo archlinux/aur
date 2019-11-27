@@ -1,5 +1,5 @@
 pkgbase = linux-rc
-	pkgver = 5.3.13rc1
+	pkgver = 5.4.1rc1
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -9,22 +9,20 @@ pkgbase = linux-rc
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.3.13-rc1.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.3.13-rc1.sign
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.12.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.12.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.4.1-rc1.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/patch-5.4.1-rc1.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
 	source = config
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 3eb53cb8a22ab909c7aeb4d7c23673c07ca6fe0d68f9780265a69922a3f107bb
+	sha256sums = b268e03071c32a37528ade537ecd598d48915cd03f5c1586c3b46b8332a1d7f1
 	sha256sums = SKIP
-	sha256sums = 53bff6f89dca19f928043fb0d3434bfb4b6abbb1bf18b907cb731188bdac97a0
+	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = 10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1
-	sha256sums = 1594f81f1b1ed4f3d474aaa2ebfc03623fc0168d0243d1654c250fb7b32ad5d7
-	sha256sums = d81560f2dd07755d5d51dc1d0d2ee5d4a107c12a13f5d0a021411385813ae7dd
+	sha256sums = bbf6f0f69de9b1aefc2374da6b289a132b945e87a94ec85728097c677ebbac3f
+	sha256sums = b008f5e21bdbaaf95aecebe443761ee0a9adfb4dcf5729e384dcd53323bab149
 
 pkgname = linux-rc
 	pkgdesc = The release candidate kernel and modules
@@ -35,5 +33,5 @@ pkgname = linux-rc
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-rc-headers
-	pkgdesc = Header files and scripts for building modules for the linux-rc kernel
+	pkgdesc = Headers and scripts for building modules for the linux-rc kernel
 

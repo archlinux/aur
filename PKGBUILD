@@ -3,11 +3,18 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.3
+_srcname=linux-5.4
       url="https://www.kernel.org/"
-_major=5.3
-_minor=12
-_minorc=$((_minor+1))
+_major=5.4
+### on initial release this is null otherwise it is the current stable subversion
+### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
+_minor=
+### on initial release comment this out and set to =1
+#_minorc=$((_minor+1))
+_minorc=1
+### on initial release this is just $_major
+#_fullver=$_major.$_minor
+_fullver=$_major
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
@@ -21,27 +28,29 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/stable-review/"$_rcpatch".{xz,sign}
   # https://lkml.org/lkml/2019/8/23/712
   # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
-  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_major.$_minor.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('3eb53cb8a22ab909c7aeb4d7c23673c07ca6fe0d68f9780265a69922a3f107bb'
+sha256sums=('b268e03071c32a37528ade537ecd598d48915cd03f5c1586c3b46b8332a1d7f1'
             'SKIP'
-            '53bff6f89dca19f928043fb0d3434bfb4b6abbb1bf18b907cb731188bdac97a0'
+            'bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1'
-            '1594f81f1b1ed4f3d474aaa2ebfc03623fc0168d0243d1654c250fb7b32ad5d7'
-            'd81560f2dd07755d5d51dc1d0d2ee5d4a107c12a13f5d0a021411385813ae7dd')
+            'bbf6f0f69de9b1aefc2374da6b289a132b945e87a94ec85728097c677ebbac3f'
+            'b008f5e21bdbaaf95aecebe443761ee0a9adfb4dcf5729e384dcd53323bab149')
 
 _kernelname=${pkgbase#linux}
 
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
 prepare() {
-  cd linux-${_major}.${_minor}
+  cd linux-${_fullver}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -66,7 +75,8 @@ prepare() {
 }
 
 build() {
-  cd linux-${_major}.${_minor}
+  cd linux-${_fullver}
+
   make bzImage modules
 }
 
@@ -76,7 +86,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  cd linux-${_major}.${_minor}
+  cd linux-${_fullver}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -99,9 +109,9 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for the linux-rc kernel"
+  pkgdesc="Headers and scripts for building modules for the linux-rc kernel"
 
-  cd linux-${_major}.${_minor}
+  cd linux-${_fullver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
