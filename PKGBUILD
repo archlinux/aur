@@ -2,7 +2,7 @@
 # Contributor: George Kiselyov <i[dot]am[at]kiselyov-george[dot]ru>
 
 pkgname=spnxclient
-pkgver=1.0.59.4
+pkgver=1.0.60.1
 pkgrel=0
 pkgdesc="ACS Sphinx client module"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://sigursys.com/download_current.php"
 license=('custom')
 source=("http://sigursys.com/dl/spnxclient_${pkgver}-${pkgrel}_all.deb"
         "spnx-client.desktop")
-sha256sums=('73fc1fd64d407a41a03401a8a4e71161a7fefceeee97674945eb70e436741601'
+sha256sums=('f7d1a465fa9291c75c2ad4fbc1d5441e600116f4875106baf838f293981f6c0b'
             '6ba598b7bac9667cf3520222f1b2201f2fb7f37b96ee9c6de7222bd6bf360552')
 
 prepare() {
