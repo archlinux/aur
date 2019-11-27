@@ -3,12 +3,12 @@
 pkgname=mullvad-vpn-bin-beta
 pkgver=2019.9.stable
 _pkgver=2019.9
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('gconf' 'gtk3' 'libnotify' 'libappindicator-gtk2' 'libxss' 'nss')
+depends=('gtk3' 'libnotify' 'libappindicator-gtk2' 'libxss' 'nss')
 provides=("${pkgname%-bin-beta}")
 conflicts=("${pkgname%-bin-beta}")
 install="${pkgname%-bin-beta}.install"
@@ -19,9 +19,9 @@ validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signin
 
 package() {
 	tar -xvf data.tar.xz -C "$pkgdir"
-	
+
 	ln -s "/opt/Mullvad VPN/mullvad-gui" "$pkgdir/usr/bin/${pkgname%-bin-beta}"
-	
+
 	install -Dm644 "$pkgdir/opt/Mullvad VPN/resources/mullvad-daemon.service" \
 		"$pkgdir/usr/lib/systemd/system/mullvad-daemon.service"
 }
