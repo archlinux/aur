@@ -1,0 +1,16 @@
+pkgbase = opencpn-plugin-celestial-navigation
+	pkgdesc = Implements nautical almanac for sun, moon, planets, and various navigational stars. Plugin for OpenCPN.
+	pkgver = 2.3.r10.gc4ad761
+	pkgrel = 1
+	url = https://opencpn.org/OpenCPN/plugins/celestialnav.html
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = opencpn
+	source = opencpn-plugin-celestial-navigation::git+https://github.com/seandepagnier/celestial_navigation_pi.git
+	sha1sums = SKIP
+
+pkgname = opencpn-plugin-celestial-navigation
+
