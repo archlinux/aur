@@ -1,7 +1,7 @@
 # Maintainer: Midov <midov@midov.pl>
 
 pkgname=pantalaimon
-pkgver=0.2
+pkgver=0.3
 pkgrel=4
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
