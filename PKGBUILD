@@ -2,16 +2,17 @@
 pkgbase=python-sphinx-click
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Sphinx extension that automatically documents click applications"
 arch=('i686' 'x86_64')
 url="https://sphinx-click.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-sphinx')
-checkdepends=('python-coverage' 'python2-coverage' 'python2-sphinx' 'python-click' 'python2-click')
+#checkdepends=('python-coverage' 'python2-coverage' 'python2-sphinx' 'python-click' 'python2-click')
+checkdepends=('python-pytest' 'python2-pytest' 'python2-sphinx' 'python-click' 'python2-click')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1fb18f64123fa583d2dc7ef3e04ba583')
+md5sums=('a3d1b7af95a2284d71bee6d9b513acf1')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -36,11 +37,13 @@ build() {
 check() {
     msg "Checking Python3"
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py test
+#   python setup.py test
+    pytest
 
     msg "Checking Python2"
     cd ${srcdir}/${_pyname}-${pkgver}-py2
-    python2 setup.py test
+#   python2 setup.py test
+    pytest2
 }
 
 package_python2-sphinx-click() {
@@ -67,6 +70,7 @@ package_python-sphinx-click-doc() {
     pkgdesc="Documentation for sphinx-click"
     cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
