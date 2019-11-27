@@ -1,39 +1,26 @@
 # Maintainer: Stefan Cocora <stefan dot cocora at gmail dot com>
-# Maintainer: Brad Erhart <brae dot 04+aur at gmail dot com >
-# Maintainer: Michael Beaumont
-# Maintainer: aps42 <arch at andre-sterba dot de>
-# Contributor:
+# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
+# Maintainer: Michael Beaumont <mjboamail at gmail dot com>
+# Maintainer: André Sterba <arch at andre hypen sterba dot de>
 
-_pkgauthor=GoogleContainerTools
-_upstream_pkgname=skaffold
 pkgname=skaffold-bin
+_pkgname="${pkgname%-bin}"
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications."
+pkgrel=2
+pkgdesc='Command line tool that facilitates continuous development for Kubernetes applications'
 arch=('x86_64')
-_goos="linux"
-_goarch="amd64"
-groups=()
-depends=()
-makedepends=()
-provides=("skaffold-bin")
-conflicts=("skaffold" "skaffold-git")
-replaces=("skaffold" "skaffold-git")
-backup=()
-options=()
-install=
-url="https://github.com/${_pkgauthor}/${_upstream_pkgname}"
-license=("Apache")
-_doc_html="index.html"
-_doc_pdf="index.pdf"
-### https://github.com/GoogleContainerTools/skaffold/releases/download/v0.19.0/skaffold-linux-amd64
-source=("${_upstream_pkgname}-${_goos}-${_goarch}::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/v${pkgver}/${_upstream_pkgname}-linux-${_goarch}"
-  "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/master/LICENSE")
-sha256sums=('f53e84288e044a3281e43adbc571a03271b7ee1d7b21781cc2a47248501e3964'
-            '43a2aa523a99dddb6c131e67e11334493e64c67f03b0d8f6745b6b3f34157d65')
+_goos='linux'
+_goarch='amd64'
+url='https://skaffold.dev'
+license=('Apache')
+optdepends=('bash-completion: for tab completion')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname-$pkgver::https://storage.googleapis.com/$_pkgname/releases/v$pkgver/$_pkgname-$_goos-$_goarch")
+sha256sums=('f53e84288e044a3281e43adbc571a03271b7ee1d7b21781cc2a47248501e3964')
 
 package() {
-
-  install -Dm755 "${srcdir}/${_upstream_pkgname}-${_goos}-${_goarch}" "${pkgdir}/usr/bin/${_upstream_pkgname}"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_upstream_pkgname}/LICENSE"
+	install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
+	"$pkgdir/usr/bin/$_pkgname" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+	"$pkgdir/usr/bin/$_pkgname" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
