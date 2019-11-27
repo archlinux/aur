@@ -1,12 +1,12 @@
 # Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=spotifyd-git
-pkgver=0.2.3.8.gd2b2d39
+pkgver=0.2.20.1.gde16b40
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 depends=('flac' 'libogg' 'libsndfile' 'libvorbis')
 makedepends=('git' 'cargo')
-conflicts=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-bin' 'spotifyd-pulseaudio-git')
+conflicts=('spotifyd')
 provides=('spotifyd')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
