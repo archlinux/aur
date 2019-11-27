@@ -5,7 +5,7 @@ pkgname=uksmd-git
 _repouser=post-factum
 _reponame=uksmd
 pkgver=0.0.0.r15.42f4ff8
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
@@ -33,5 +33,5 @@ package() {
 	make DESTDIR="${pkgdir}" PREFIX="/usr" install
 
 	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "distro/${_reponame}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -Dm644 "distro/${_reponame}.service" "${pkgdir}/usr/lib/systemd/system/${_reponame}.service"
 }
