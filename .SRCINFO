@@ -1,7 +1,7 @@
 pkgbase = umps
 	pkgdesc = Virtual machine simulator based around the MIPS R2/3000 microprocessor.
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mps.sourceforge.net/
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,9 @@ pkgbase = umps
 	depends = libsigc++
 	depends = cross-mipsel-linux-gnu-gcc
 	source = https://sourceforge.net/projects/mps/files/uMPS2/umps-2.0.1.tar.gz
-	md5sums = SKIP
+	source = 0001-upstream-fixes.patch
+	md5sums = 60b72c2f8e2e5ab58de4277649e5e4ce
+	md5sums = b8145ca1b9a4db35adb1fb2f43eabc5f
 
 pkgname = umps
 
