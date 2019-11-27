@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-git
-pkgver=5.4.r4234.gc2da5bdc66a3
+pkgver=5.4.r5280.g89d57dddd7d3
 pkgrel=1
 pkgdesc='Linux git'
 url="https://www.kernel.org"

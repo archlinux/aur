@@ -1,6 +1,6 @@
 pkgbase = linux-git
 	pkgdesc = Linux git
-	pkgver = 5.4.r4234.gc2da5bdc66a3
+	pkgver = 5.4.r5280.g89d57dddd7d3
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
