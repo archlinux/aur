@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abcl-git
-pkgver=3232.91f3c21b
+pkgver=3248.6134fc10
 pkgrel=1
 pkgdesc="Full implementation of the Common Lisp language in the JVM"
 arch=('any')
@@ -12,11 +12,12 @@ makedepends=('ant' 'net-tools' 'subversion' 'java-environment>=11')
 provides=('abcl' 'common-lisp')
 conflicts=('abcl')
 source=("abcl.git::git+https://gitlab.common-lisp.net/abcl/abcl.git" abcl.sh)
-md5sums=('SKIP' 'd51ffd115b32f9a47f849fc7630ced4f')
+md5sums=('SKIP'
+         'd51ffd115b32f9a47f849fc7630ced4f')
 
 pkgver() {
   cd ${pkgname%-git}.git
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
