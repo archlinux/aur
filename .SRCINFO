@@ -1,13 +1,13 @@
 pkgbase = r-rlang
 	pkgdesc = Functions for Base Types and Core R and 'Tidyverse' Features
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/rlang/index.html
 	arch = x86_64
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/rlang_0.4.0.tar.gz
-	md5sums = 51dfcd0c8e46902a6be97d41639910d5
+	source = http://cran.r-project.org/src/contrib/rlang_0.4.2.tar.gz
+	md5sums = 048b5aa06cfa642b924fd42e7592e4d3
 
 pkgname = r-rlang
 
