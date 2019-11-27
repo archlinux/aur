@@ -1,7 +1,7 @@
 pkgbase = feeluown
 	pkgdesc = FeelUOwn Music Player
 	pkgver = 3.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/cosven/FeelUOwn
 	arch = any
 	license = GPL3
