@@ -7,6 +7,7 @@ pkgbase = r-rhtslib
 	license = LGPL (>= 2)
 	depends = r
 	depends = r-zlibbioc
+	options = staticlibs
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhtslib_1.18.0.tar.gz
 	sha1sums = cc264f13d48810127cc86dd798d1da540d02ffed
 

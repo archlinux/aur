@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="high-throughput sequencing library"
 url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
 arch=("x86_64")
+options=('staticlibs')
 license=('LGPL (>= 2)')
 depends=('r' 'r-zlibbioc')
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
