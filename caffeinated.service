@@ -1,0 +1,10 @@
+[Unit]
+Description=Caffeinated idle inhibitor
+Documentation=https://github.com/electrickite/caffeinated
+
+[Service]
+ExecStart=/usr/bin/caffeinated
+Restart=always
+
+[Install]
+WantedBy=default.target

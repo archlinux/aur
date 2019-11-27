@@ -1,0 +1,16 @@
+pkgbase = caffeinated
+	pkgdesc = Simple logind idle inhibitor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/electrickite/caffeinated
+	arch = x86_64
+	license = MIT
+	depends = libbsd
+	depends = systemd
+	source = https://github.com/electrickite/caffeinated/archive/0.1.0.tar.gz
+	source = caffeinated.service
+	sha256sums = 55cd0faf04cf35a99931ca173abc98b6ae4a8bb8cf6b3b393c55a2df67e53560
+	sha256sums = 29b1952dbd1c1b52e82535c1845f843dc427bad4b0831acd9f46c375d4731151
+
+pkgname = caffeinated
+
