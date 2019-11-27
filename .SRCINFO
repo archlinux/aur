@@ -1,34 +1,35 @@
 pkgbase = r-dbplyr
 	pkgdesc = A dplyr Back End for Databases
-	pkgver = 1.2.2
+	pkgver = 1.4.2
 	pkgrel = 1
-	url = https://cran.r-project.org/package=dbplyr
+	url = https://cran.r-project.org/package=${_cranname}
 	arch = any
 	license = MIT
-	depends = r
+	license = custom
+	depends = r>=3.1
 	depends = r-assertthat>=0.2.0
-	depends = r-dbi>=0.7
-	depends = r-dplyr>=0.7.4
+	depends = r-dbi>=1.0.0
+	depends = r-dplyr>=0.8.0
 	depends = r-glue>=1.2.0
-	depends = r-purrr>=0.2.4
+	depends = r-purrr>=0.2.5
 	depends = r-r6>=2.2.2
-	depends = r-rlang>=0.1.6
-	depends = r-tibble>=1.4.1
-	depends = r-tidyselect>=0.2.2
+	depends = r-rlang>=0.2.0
+	depends = r-tibble>=1.4.2
+	depends = r-tidyselect>=0.2.4
 	optdepends = r-bit64
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-lahman
 	optdepends = r-nycflights13
-	optdepends = r-rmarkdown
 	optdepends = r-rmariadb
+	optdepends = r-rmarkdown
 	optdepends = r-rmysql
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/dbplyr_1.2.2.tar.gz
-	md5sums = 235c957d5912cfc989d0bd44513c2c37
+	source = https://cran.r-project.org/src/contrib/dbplyr_1.4.2.tar.gz
+	md5sums = 622481e9289eb6d588e8c530a0e1fc84
 
 pkgname = r-dbplyr
 
