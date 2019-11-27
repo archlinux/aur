@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-ck
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = edf3e3de13ff0ee40da422ba168c03a3f351229aabb01829853da3b08720ea78
+	sha256sums = bbf6f0f69de9b1aefc2374da6b289a132b945e87a94ec85728097c677ebbac3f
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c
 	sha256sums = b008f5e21bdbaaf95aecebe443761ee0a9adfb4dcf5729e384dcd53323bab149
