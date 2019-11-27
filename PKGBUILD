@@ -2,7 +2,7 @@
 # Contributor: Scott Dickson <scottfoesho@gmail.com>
 
 pkgname=cops
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Calibre OPDS (and HTML) PHP Server : web-based light alternative to Calibre content server / Calibre2OPDS to serve ebooks'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('composer')
 backup=("etc/webapps/$pkgname/config_local.php")
 install="$pkgname.install"
 source=("https://github.com/seblucas/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c1964310a50a532a8fd745d2a4ed82bfbf74745997be31c43a049ba5b8f54b08')
+sha256sums=('37242164867ec9b68597f0036580459afc2ef16b6669bc7c2cbb524bf5a91389')
 
 prepare () {
     cd "$pkgname-$pkgver"

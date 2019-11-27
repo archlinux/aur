@@ -1,6 +1,6 @@
 pkgbase = cops
 	pkgdesc = Calibre OPDS (and HTML) PHP Server : web-based light alternative to Calibre content server / Calibre2OPDS to serve ebooks
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/seblucas/cops
 	install = cops.install
@@ -15,8 +15,8 @@ pkgbase = cops
 	optdepends = nginx: Web server to run COPS
 	optdepends = cherokee: Web server to run COPS
 	backup = etc/webapps/cops/config_local.php
-	source = https://github.com/seblucas/cops/archive/1.1.2.tar.gz
-	sha256sums = c1964310a50a532a8fd745d2a4ed82bfbf74745997be31c43a049ba5b8f54b08
+	source = https://github.com/seblucas/cops/archive/1.1.3.tar.gz
+	sha256sums = 37242164867ec9b68597f0036580459afc2ef16b6669bc7c2cbb524bf5a91389
 
 pkgname = cops
 
