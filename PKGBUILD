@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=rabs
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=4
 epoch=
 pkgdesc="Generic imperative build system"
