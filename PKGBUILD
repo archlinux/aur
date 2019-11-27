@@ -1,6 +1,6 @@
 # Maintainer: Nick Levesque <nick.levesque@gmail.com>
 pkgname=fwup
-pkgver=v1.5.0.r0.g3d440b2
+pkgver=v1.5.1.r0.g7aaf679
 pkgrel=1
 pkgdesc="Configurable embedded Linux firmware update creator and runner"
 arch=('any')
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/fhunleth/fwup#tag=v1.5.0')
+source=('git+https://github.com/fhunleth/fwup#tag=v1.5.1')
 noextract=()
 md5sums=('SKIP')
 
