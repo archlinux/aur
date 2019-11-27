@@ -1,18 +1,19 @@
 pkgbase = r-clipr
-	pkgdesc = Read and Write from the System Clipboard
-	pkgver = 0.4.1
+	pkgdesc = Read and Write from the System Clipboard.
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=clipr
-	arch = any
-	license = GPL3
+	arch = i686
+	arch = x86_64
+	license = GPL-3
 	depends = r
-	optdepends = xclip
-	optdepends = xsel
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
-	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/clipr_0.4.1.tar.gz
-	md5sums = af6df212dd9551808cdb92444e3e8a36
+	source = http://cran.r-project.org/src/contrib/clipr_0.7.0.tar.gz
+	md5sums = 2309a44a587573a739119e98d0f5e3b7
 
 pkgname = r-clipr
 
