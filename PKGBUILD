@@ -3,7 +3,7 @@
 # Co-Maintainer: Nils Czernia <nils at czserver dot de>
 
 pkgname=matomo
-pkgver=3.12.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="real time web analytics platform"
 arch=("any")
@@ -18,8 +18,8 @@ install="$pkgname.install"
 source=("https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz"
         "https://builds.matomo.org/${pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${pkgname}/piwik.js" "usr/share/webapps/${pkgname}/matomo.js")
-sha256sums=("3998687c23fe5601cefd9e24dc6b673a11425c115974d1388c99cbf00fce6bf8"
-            "17a7ae770274a5bc4b65bae02d7652695278c47ddf2262d22a933c2deb0c4861")
+sha256sums=("a82b66a51bb788781f1cb71376d361482d2857c647a46c042dfc1bb456c49240"
+            "7dae314ab80dd328c72024eaabd3851d99d0882135ca5607e08a32d3ac82895a")
 
 validpgpkeys=("814E346FA01A20DBB04B6807B5DBD5925590A237")
 

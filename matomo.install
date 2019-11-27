@@ -17,7 +17,7 @@ pre_upgrade() {
     mv /usr/share/webapps/matomo/tmp /var/lib/webapps/matomo/tmp
     chown -R http:http /var/lib/webapps/matomo
     # No changes needed in /usr/share/webapps/matomo/config, it’ll upgrade cleanly.
-    echo 'matomo 3.5.1-1 onward has some location and permissions changes to be aware'
+    echo 'matomo 3.5.1-1 onward has some location and permission changes to be aware'
     echo 'of. Everything necessary is moved to the new locations, so you have lost'
     echo 'nothing, and everything should continue to work just fine with no changes.'
     echo 'This is really just a FYI.'
