@@ -6,7 +6,7 @@
 # $ curl -s https://bluejeans.com/downloads | grep 'desktop/linux'
 
 pkgname=bluejeans
-pkgver=1.37.22
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
@@ -70,24 +70,16 @@ depends=('alsa-lib'
          'xz'
          'zlib')
 install=bluejeans.install
-source=(https://swdl.bluejeans.com/desktop/linux/${pkgver%.*}/${pkgver}/bluejeans-${pkgver}.x86_64.rpm)
+source=(https://swdl.bluejeans.com/desktop-app/linux/${pkgver}/BlueJeans.rpm)
 
-sha256sums=('821fac8ab2fa18a018968143a3ca6f0e1aa2f03e3061676e07e73c2adff80cc2')
+sha256sums=('c1d213d5556f4238adaba163b2ff35549c66c44a3657377622af9c46112663c7')
 
 package() {
   # add bluejeans wrapper to /usr/bin
   mkdir -p "${pkgdir}/usr/bin"
-  chmod +x "opt/bluejeans/bluejeans"
-  ln -nsf "/opt/bluejeans/bluejeans" "${pkgdir}/usr/bin/bluejeans"
+  ln -nsf "/opt/BlueJeans/bluejeans-v2" "${pkgdir}/usr/bin/bluejeans"
 
-  # install desktop file and icons
-  mkdir -p "${pkgdir}/usr/share/applications/"
-  mv "opt/bluejeans/bluejeans.desktop" "${pkgdir}/usr/share/applications/"
-  mv "opt/bluejeans/icons" "${pkgdir}/usr/share/"
-
-  # hack for libudev.so.0
-  ln -nsf "/usr/lib/libudev.so.1" "opt/bluejeans/libudev.so.0"
-
-  # put the rest in /opt
-  mv "opt" "${pkgdir}"
+  # move the rest of the files into the package directory
+  mv "opt" "${pkgdir}/"
+  mv "usr/share" "${pkgdir}/usr/"
 }
