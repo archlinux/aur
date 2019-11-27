@@ -1,6 +1,6 @@
 pkgbase = python-occ
 	pkgdesc = A python library whose purpose is to provide 3D modeling features
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/tpaviot/pythonocc-core
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-occ
 	makedepends = swig
 	depends = oce
 	depends = python
-	source = https://github.com/tpaviot/pythonocc-core/archive/0.18.1.tar.gz
-	md5sums = 2201367bee43b08bfd389c661e932eb9
+	source = https://github.com/tpaviot/pythonocc-core/archive/0.18.2.tar.gz
+	md5sums = dbff673c9fc61af78d0c6d34be1e498c
 
 pkgname = python-occ
 
