@@ -14,11 +14,13 @@ conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.freedesktop.org/xorg/app/fonttosfnt.git'
 	'0001-let-freetype-handle-ISO-8859-1-mapping.patch'
 	'0002-allow-ISO-646.1991-IRV-as-well-adobe-standard-for-bd.patch'
-	'0003-check-for-freetype-NULL-atoms.patch')
+	'0003-check-for-freetype-NULL-atoms.patch'
+	'0004-improve-guess-font-size.patch')
 md5sums=('SKIP'
          'c9a2934334f46681f1a6131d4fd13077'
          '1b542636d9a95d9bb6095c12aa20eb3a'
-         '9ba2b5498590e75859099cd57c970ac3')
+         '9ba2b5498590e75859099cd57c970ac3'
+         '1152c9c998813c003df379813aac2c7c')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
