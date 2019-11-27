@@ -1,14 +1,14 @@
 pkgbase = termshark-bin
 	pkgdesc = A terminal UI for tshark, inspired by Wireshark
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/gcla/termshark
 	arch = x86_64
 	license = MIT
 	depends = wireshark-cli
 	provides = termshark
-	source = https://github.com/gcla/termshark/releases/download/v1.0.0/termshark_1.0.0_linux_x64.tar.gz
-	sha256sums = a21e19960a0b7eee08ea8a0679890600cbfe2af83afad5d3980926a45dab6bbe
+	source = https://github.com/gcla/termshark/releases/download/v2.0.0/termshark_2.0.0_linux_x64.tar.gz
+	sha256sums = 8fe396f36b220f74d05cb26210b631822ba3bf0cd90e7762c7f20a1b4fe39e62
 
 pkgname = termshark-bin
 
