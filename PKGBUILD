@@ -3,12 +3,12 @@
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn
 pkgver=2019.9
-pkgrel=5
+pkgrel=6
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('gtk3' 'libnotify' 'libappindicator-gtk2' 'libxss' 'nss')
+depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 install="$pkgname.install"
 source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
 sha256sums=('4ba5b1c87cb5afdadbcfb37413bdd7ea72df139dd01815e9ca0f1c54f81f03e1'
