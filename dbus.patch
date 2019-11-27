@@ -1,0 +1,11 @@
+diff --unified --text openlp/setup.py openlp.new/setup.py
+--- openlp/setup.py	2019-11-27 22:22:05.477556034 +0100
++++ openlp.new/setup.py	2019-11-27 22:23:13.180384336 +0100
+@@ -100,7 +100,6 @@
+         'appdirs',
+         'beautifulsoup4',
+         'chardet',
+-        'dbus-python; platform_system=="Linux"',
+         'lxml',
+         'Mako',
+         'pymediainfo >= 2.2',
