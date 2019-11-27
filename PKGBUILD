@@ -3,8 +3,8 @@
 pkgbase=spotifyd-bin
 pkgname=('spotifyd-bin' 'spotifyd-bin-slim')
 pkgver=0.2.20
-pkgrel=1
-conflicts=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris' 'spotifyd-git' 'spotifyd-pulseaudio-git')
+pkgrel=2
+conflicts=('spotifyd')
 provides=('spotifyd')
 depends=('alsa-lib')
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
