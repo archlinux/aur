@@ -1,0 +1,23 @@
+pkgbase = envelope
+	pkgdesc = Personal budget manager
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/cjfloss/envelope
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = vala
+	depends = granite
+	depends = libgee
+	depends = sqlite
+	provides = envelope
+	conflicts = envelope
+	options = strip
+	source = envelope-0.0.4.tar.gz::https://github.com/cjfloss/envelope/archive/0.0.4.tar.gz
+	sha256sums = c72eb03cb65a8b1de52858a8fcbc46698abac84f8fef866312049cc86e218d4a
+
+pkgname = envelope
+
