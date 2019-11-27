@@ -1,18 +1,17 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=karlyriceditor
-pkgver=2.2
+pkgver=3.2
 pkgrel=1
 pkgdesc="A program which lets you edit and synchronize lyrics with karaoke songs in various formats."
 arch=('i686' 'x86_64')
-url="https://www.ulduzsoft.com/linux/karaoke-lyrics-editor/"
+url="https://github.com/gyunaev/karlyriceditor"
 license=('GPL')
-depends=('qt5-base' 'desktop-file-utils')
-source=('openssl-1.1.X.patch' "karlyriceditor-$pkgver.tar.gz::https://sourceforge.net/projects/karlyriceditor/files/$pkgver/karlyriceditor-$pkgver.tar.gz/download?nowrap")
-md5sums=('7d510835a99d36362b7ba0cb81e734a8' 'b59ac716a34bfb07e0c21cd61e01ca9e')
+depends=('ffmpeg' 'qt5-multimedia' 'desktop-file-utils')
+source=("karlyriceditor-$pkgver.tar.gz::https://github.com/gyunaev/karlyriceditor/archive/$pkgver.tar.gz")
+sha256sums=('67aa863f7e34b8fd76dfc74615da3ff8b761a138be651bcb55d03d54626bddae')
 install=$pkgname.install
 
 build() {
-  patch -p0 < openssl-1.1.X.patch
   cd karlyriceditor-$pkgver
   qmake
   make
