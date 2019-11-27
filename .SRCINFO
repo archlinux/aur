@@ -1,7 +1,7 @@
 pkgbase = pantheon-onboarding
 	pkgdesc = Onboarding app for new users in Pantheon Shell
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/elementary/onboarding
 	arch = any
 	groups = pantheon-stable
@@ -10,10 +10,11 @@ pkgbase = pantheon-onboarding
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
+	depends = pantheon-agent-geoclue2
 	provides = pantheon-onboarding
 	conflicts = pantheon-onboarding-git
-	source = pantheon-onboarding-1.0.1.tar.gz::https://github.com/elementary/onboarding/archive/1.0.1.tar.gz
-	sha256sums = f705c0e79b7bf3320cd1df57f38945f2a338e3a3d03809fc913af7efaa25afe8
+	source = pantheon-onboarding-1.1.0.tar.gz::https://github.com/elementary/onboarding/archive/1.1.0.tar.gz
+	sha256sums = f76bd6bd2a5fabc18c9a15345cae507f0ee5c2952cbb228a6385372abc44a490
 
 pkgname = pantheon-onboarding
 
