@@ -1,6 +1,6 @@
 pkgbase = r-genomicranges
 	pkgdesc = Representation and manipulation of genomic intervals and variables defined along a genome
-	pkgver = 1.34.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = r-genomicranges
 	depends = r-s4vectors
 	depends = r-iranges
 	depends = r-genomeinfodb
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicRanges_1.34.0.tar.gz
-	sha1sums = 8c5b4e1bbaa6908145514e3ef2c725789a43395d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicRanges_1.38.0.tar.gz
+	sha1sums = 6f91ff141e94be81671131f3cd0f5569e3635f26
 
 pkgname = r-genomicranges
 
