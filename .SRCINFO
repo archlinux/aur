@@ -1,0 +1,23 @@
+pkgbase = python-nnpy
+	pkgdesc = nanomsg bindings for Python
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://pypi.org/project/nnpy/
+	arch = any
+	license = MIT
+	makedepends = nanomsg
+	makedepends = python-cffi
+	makedepends = python-setuptools
+	makedepends = python2-cffi
+	makedepends = python2-setuptools
+	source = python-nnpy-1.4.2.tar.gz::https://github.com/nanomsg/nnpy/archive/1.4.2.tar.gz
+	sha256sums = fcfc4115429cae1872a51abe94bb01e2de6d851c5ce82d415d85f0e60a128549
+
+pkgname = python-nnpy
+	depends = nanomsg
+	depends = python-cffi
+
+pkgname = python2-nnpy
+	depends = nanomsg
+	depends = python2-cffi
+
