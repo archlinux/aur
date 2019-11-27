@@ -1,0 +1,12 @@
+[Unit]
+Description=Swarm daemon
+After=network.target
+
+[Service]
+User=bzz
+Group=bzz
+ExecStart=/usr/local/bin/swarm --password $SWARM_PASSWORD
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,13 +1,138 @@
-## v0.5.1 (Unreleased)
+## v0.5.3
+
+### Notes
+
+- This release brings a change in the Swarm retrieval protocol that blocks the delivery of unsolicited chunks
+- A critical bug that caused the size of the Swarm node to overflow its designated storage size was fixed
+- A limit on the number of peers being synced to on bin zero has been introduced to the stream protocol
+- A lookahead buffered reader was introduced in order to speed up downloads by prefetching chunks
+- A data migration was introduced in order to rename an index in the local store
+- Tags are now persisted across node sessions, so you can keep track over your uploads when you restart your node
+- Numerous data races have been fixed
+- Push sync is now enabled by default
+- Garbage collection and fetcher timeouts have changed, so you should be getting an overall better user experience with this version
+
+### Features
+
+- When uploading a file from the landing page at localhost:8500, progress bars would now be shown to indicate the progress of the upload
+
+### Commits
+
+[#1980](https://github.com/ethersphere/swarm/pull/1980) storage/localstore: add subscriptions wait group before closing leveldb
+[#1979](https://github.com/ethersphere/swarm/pull/1979) network: increase fetcher timeout
+[#1978](https://github.com/ethersphere/swarm/pull/1978) localstore: change gc batch size
+[#1977](https://github.com/ethersphere/swarm/pull/1977) cmd/swarm: disable USB devices
+[#1973](https://github.com/ethersphere/swarm/pull/1973) localstore: fix subscribe push iterator tag value
+[#1972](https://github.com/ethersphere/swarm/pull/1972) stream: limit the number of peers we sync with on bin 0
+[#1969](https://github.com/ethersphere/swarm/pull/1969) smoke: remove redundant check for bail flag
+[#1970](https://github.com/ethersphere/swarm/pull/1970) localstore: fix data races on subscriptions
+[#1968](https://github.com/ethersphere/swarm/pull/1968) smoke: retry failed upload
+[#1959](https://github.com/ethersphere/swarm/pull/1959) api: Add bzz-feed-raw scheme to retrieve arbitary feed update
+[#1962](https://github.com/ethersphere/swarm/pull/1962) pss, network: remove spamming loglines
+[#1963](https://github.com/ethersphere/swarm/pull/1963) retrieval: change loglevel of chunk retrieval errors
+[#1934](https://github.com/ethersphere/swarm/pull/1934) swap: use p2ptest for protocol tests
+[#1960](https://github.com/ethersphere/swarm/pull/1960) cmd/swarm: add pprof custom profiles through flags
+[#1952](https://github.com/ethersphere/swarm/pull/1952) network/stream: fix flaky tests and first delivered batch of chunks for an unwanted stream
+[#1957](https://github.com/ethersphere/swarm/pull/1957) api/config: enable pushsync by default
+[#1919](https://github.com/ethersphere/swarm/pull/1919) bzzeth: Phase2 of bzz eth protocol
+[#1945](https://github.com/ethersphere/swarm/pull/1945) cmd/swarm: swap --sync-mode flag with --no-sync flag
+[#1947](https://github.com/ethersphere/swarm/pull/1947) api/http/langos: ensure only one second peek
+[#1915](https://github.com/ethersphere/swarm/pull/1915) pushsync, localstore: decouple push/pull indexes for tag increment
+[#1940](https://github.com/ethersphere/swarm/pull/1940) localstore: fix index leak when NN chunks enter localstore
+[#1922](https://github.com/ethersphere/swarm/pull/1922) swap: always allow debt-reducing messages
+[#1883](https://github.com/ethersphere/swarm/pull/1883) swap: segregate api code and tests
+[#1907](https://github.com/ethersphere/swarm/pull/1907) cmd/swarm-smoke-pss: initial pss smoke tests
+[#1926](https://github.com/ethersphere/swarm/pull/1926) integration-tests: config for set of integration tests for stable swarm
+[#1944](https://github.com/ethersphere/swarm/pull/1944) swap: fix a rare panic in TestMultiChequeSimulation
+[#1913](https://github.com/ethersphere/swarm/pull/1913) swap: exchange chain id on handshake
+[#1942](https://github.com/ethersphere/swarm/pull/1942) swap: also wait for the debit counter to reach maxMsgsInt64
+[#1774](https://github.com/ethersphere/swarm/pull/1774) network: Kademlia Load Balancing
+[#1876](https://github.com/ethersphere/swarm/pull/1876) api/http: lookahead buffer
+[#1937](https://github.com/ethersphere/swarm/pull/1937) swap: fixed bug which needs cheques to be confirmed
+[#1930](https://github.com/ethersphere/swarm/pull/1930) swap: fix instabilities in simulation tests
+[#1873](https://github.com/ethersphere/swarm/pull/1873) swap: improve balance tests
+[#1887](https://github.com/ethersphere/swarm/pull/1887) swap: introduce pending cheques, drop peers on io errors
+[#1927](https://github.com/ethersphere/swarm/pull/1927) network/stream: add mutex to avoid unsynchronized access to streamInfoRes
+[#1923](https://github.com/ethersphere/swarm/pull/1923) swarm: shutdown pushsync before pss
+[#1924](https://github.com/ethersphere/swarm/pull/1924) network/stream: fix slice append bug
+[#1914](https://github.com/ethersphere/swarm/pull/1914) chunk: fix tag Sent value on load, don't persist done tags
+[#1916](https://github.com/ethersphere/swarm/pull/1916) pss: Pushsync and PSS fixes
+[#1863](https://github.com/ethersphere/swarm/pull/1863) swap: expand RPC calls for cheque info querying
+[#1892](https://github.com/ethersphere/swarm/pull/1892) Swap available balance
+[#1833](https://github.com/ethersphere/swarm/pull/1833) network/kademlia: SugestPeer funcionality. Variable number of min peers per bin
+[#1801](https://github.com/ethersphere/swarm/pull/1801) network/hive: move message handlers from Peer to Hive
+[#1912](https://github.com/ethersphere/swarm/pull/1912) shed: allow to change the index name for easier migrations
+[#1909](https://github.com/ethersphere/swarm/pull/1909) storage/localstore: do not later batch in setSync if moveToGc is false
+[#1900](https://github.com/ethersphere/swarm/pull/1900) pss, pss/internal/ticker: fix data races
+[#1901](https://github.com/ethersphere/swarm/pull/1901) network: fix a data race on Hive.addPeer function in tests
+[#1894](https://github.com/ethersphere/swarm/pull/1894) swarm: enable tag persistence across sessions
+[#1908](https://github.com/ethersphere/swarm/pull/1908) api,storage: add index size rpc call for debugging
+[#1906](https://github.com/ethersphere/swarm/pull/1906) chunk: align tag struct for 32bit arch
+[#1905](https://github.com/ethersphere/swarm/pull/1905) pusher: db.Set before check for synced
+[#1904](https://github.com/ethersphere/swarm/pull/1904) pushsync: fix finish root span
+[#1881](https://github.com/ethersphere/swarm/pull/1881) pushsync: split sync to chunksWorker and receiptsWorker
+[#1902](https://github.com/ethersphere/swarm/pull/1902) network/retrieval: fix race condition where a retrieve request has been
+[#1880](https://github.com/ethersphere/swarm/pull/1880) chunk, pushsync: do not increment synced tags in pushsync
+[#1803](https://github.com/ethersphere/swarm/pull/1803) swap: use the SimpleSwapFactory for deployment and verification
+[#1898](https://github.com/ethersphere/swarm/pull/1898) api/http: fix bufferedReadSeeker Seek method
+[#1896](https://github.com/ethersphere/swarm/pull/1896) netkwork/hive: addPeer function assigned after launching goroutine connectInitialPeers
+[#1878](https://github.com/ethersphere/swarm/pull/1878) storage/pin: fix getAllChunksFromDB test function
+[#1891](https://github.com/ethersphere/swarm/pull/1891) state: avoid has call and remove error shadowing in Get
+[#1875](https://github.com/ethersphere/swarm/pull/1875) retrieve: block unsolicited chunk deliveries
+[#1715](https://github.com/ethersphere/swarm/pull/1715) swarm: add pull request template
+[#1890](https://github.com/ethersphere/swarm/pull/1890) build, .travis.yml, Makefile, README.md: remove GO111MODULE=on
+[#1889](https://github.com/ethersphere/swarm/pull/1889) build: configure golangci-lint timeout in .golangci.yml
+[#1888](https://github.com/ethersphere/swarm/pull/1888) testutil: remove pre Go 1.13 support
+[#1844](https://github.com/ethersphere/swarm/pull/1844) network: Reconnect to the same peers on startup
+[#1861](https://github.com/ethersphere/swarm/pull/1861) pss: Limit by time the retries of messages in the outbox
+[#1860](https://github.com/ethersphere/swarm/pull/1860) pss: Limit the number of workers forwarding messages in outbox
+[#1806](https://github.com/ethersphere/swarm/pull/1806) swarm, swap: add addresses to logs
+[#1870](https://github.com/ethersphere/swarm/pull/1870) pss: fix concurrent map read and map write on pubKeyRWPool
+[#1737](https://github.com/ethersphere/swarm/pull/1737) Incentives first sim
+[#1874](https://github.com/ethersphere/swarm/pull/1874) chunk: align Tag fields for atomic operations on 32bit architectures
+[#1871](https://github.com/ethersphere/swarm/pull/1871) simulation/examples: disable docker test from running locally
+[#1828](https://github.com/ethersphere/swarm/pull/1828) api, chunk, storage: anonymous uploads
+[#1859](https://github.com/ethersphere/swarm/pull/1859) api/http: add HTML Progress Bar
+
+
+## v0.5.2 (October 07, 2019)
+
+### Notes
+
+- This release includes a small fix to avoid connections to the default bootnodes when not using the default testnet.
+
+### Commits
+
+* [#1865](https://github.com/ethersphere/swarm/pull/1865) cmd/swarm: nullify bootnodes before check for network id
+* [#1862](https://github.com/ethersphere/swarm/pull/1862) cmd/swarm: only use the default bootnodes on the default network id
+
+## v0.5.1 (October 03, 2019)
+
+### Notes
+
+- This release just includes some minor bugfixes.
+- If you have a push sync enabled cluster, you now need to provide the `--progress` flag to `swarm up` if you want to see the progress bar.
+
+### Commits
+
+* [#1853](https://github.com/ethersphere/swarm/pull/1853) cmd/swarm: fix progress bars for encrypted upload
+* [#1842](https://github.com/ethersphere/swarm/pull/1842) swap: query cheque information through RPC call
+* [#1827](https://github.com/ethersphere/swarm/pull/1827) swap: message price
+* [#1850](https://github.com/ethersphere/swarm/pull/1850) cmd/swarm: remove --no-track, add --progress flag
+* [#1851](https://github.com/ethersphere/swarm/pull/1851) api/client: use a separate http client with cookie jar for sticky session
+* [#1852](https://github.com/ethersphere/swarm/pull/1852) chunk, cmd/swarm: return last tag
+* [#1846](https://github.com/ethersphere/swarm/pull/1846) network: fix hive autoconnect param that was added and caused regression in test
+* [#1841](https://github.com/ethersphere/swarm/pull/1841) network/stream: move from v2
+
 
 ## v0.5.0 (September 30, 2019)
 
- ### Notes
+### Notes
 
  - This release is not backward compatible with the previous versions of Swarm. Please update your nodes.
  - Ubuntu PPA support has been removed. We will add support for multiple software distribution platforms at a later stage. In the meanwhile you can still find the Swarm binaries at the [official download page](https://swarm-gateways.net/bzz:/swarm.eth/downloads/).
 
- ### Features
+### Features
 
  - **Content Pinning:** You can now pin content to your local swarm node. This way you can guarantee that certain content stays on your node. You can enable pinning by setting the `--enable-pinning` flag. For more information, read the [documentation](https://swarm-guide.readthedocs.io/en/latest/dapp_developer/index.html#pinning-content).
 
@@ -18,7 +143,7 @@ The following features are **experimental** and are **not enabled by default on 
  - **SWAP:** A first version of of the SWarm Accounting Protocol (SWAP) is implemented. SWAP is a tit-for-tat incentive system where nodes account how much data they request and serve to their peers. If a node consumes significantly more than it provides, it pays for the consumed data using a L2 payment system: the chequebook. You can try SWAP on a SWAP enabled network with the flags `--swap --swap-backend-url=<evm_endpoint>` or learn more in the [SW3 paper](https://www.overleaf.com/read/yszmsdqyqbvc) , [Swap, Swear, and Swindle Games video](https://www.youtube.com/watch?v=9Cgyhsjsfbg) or [this article](https://www.rifos.org/blog/rif-storage-the-first-chunks/). The economics of this system is still in a highly experimental state.
 - **BzzEth:** This is a new protocol that enables Ethereum and Swarm nodes to communicate with each other and help Ethereum nodes distribute blockchain data and state data over Swarm, enabling various functionalities like state syncing via Swarm and light client support. This release includes the preliminary phase of supporting blockchain on Swarm. This is experimental work that can be trialled with a dedicated version of the Ethereum Trinity client. For more information check out [Ethereum header chain over Swarm](https://github.com/ethersphere/user-stories/issues/9).
 
- ### Commits
+### Commits
 * [#1814](https://github.com/ethersphere/swarm/pull/1814) cmd/swarm: add cli UI for tag progress on pushsync
 * [#1793](https://github.com/ethersphere/swarm/pull/1793) cmd/swarm-smoke: add flag to bail on error
 * [#1835](https://github.com/ethersphere/swarm/pull/1835) p2p: fix tests due to Drop signature change
