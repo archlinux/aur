@@ -65,23 +65,17 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.3.11.1
+pkgver=5.4.arch1
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v${pkgver%.*}-arch${pkgver##*.}
+_srcver_tag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srcver_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-    xmlto
-    kmod
-    inetutils
     bc
+    kmod
     libelf
-    python-sphinx
-    python-sphinx_rtd_theme
-    graphviz
-    imagemagick
     git
 )
 options=('!strip')
@@ -100,7 +94,7 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     0005-glitched-pds.patch
-    0005-v5.3_undead-pds099o.patch
+    0005-v5.4_undead-pds099o.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -109,9 +103,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '983f4092f53b7b1a77905cde23faefabe7c598bdee2ebeaa36a5f89d2c74215dccdc2769e52c1d80bea52f6884748294db4886e93642a238a10a577b31b572a7'
+            '33dcc59453069bb27758b0c68f39b3f4ee0c3988eec29bf2506e01012c64beafe5fe1b5c7012896d5024d4968b74dde09f8e9f8654b951a32364dda5a766839b'
             'a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae'
-            '2aef8b8949fec12d237facc57d5feddf0e7c1c878c94fb4eb8a845c110d5cfcc83492e73475de04ce98069e9ab1bb6b4a0a4559d445fbf264442dd8b0af9a8f1')
+            'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -131,7 +125,7 @@ prepare() {
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
     msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.3 by TkG"
-    for MyPatch in 0005-v5.3_undead-pds099o.patch 0005-glitched-pds.patch
+    for MyPatch in 0005-v5.4_undead-pds099o.patch 0005-glitched-pds.patch
     do
         patch -Np1 -i "$srcdir/$MyPatch"
     done
@@ -189,7 +183,7 @@ prepare() {
 
 build() {
     cd $_reponame
-    make bzImage modules htmldocs
+    make bzImage modules
 }
 
 _package() {
@@ -311,45 +305,9 @@ _package-headers() {
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
-    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel $_pkgdesc_extra"
-    depends=("$pkgbase=$pkgver")
-    provides=(
-        "$pkgbase-docs=$pkgver"
-        "linux-docs=$pkgver"
-    )
-
-    cd $_reponame
-    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-    msg2 "Installing documentation..."
-    mkdir -p "$builddir"
-    cp -t "$builddir" -a Documentation
-
-    msg2 "Removing unneeded files..."
-    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-    msg2 "Moving HTML docs..."
-    local src dst
-    while read -rd '' src; do
-        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-        mkdir -p "${dst%/*}"
-        mv "$src" "$dst"
-        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-    done < <(find "$builddir/Documentation/output" -type f -print0)
-
-    msg2 "Adding symlink..."
-    mkdir -p "$pkgdir/usr/share/doc"
-    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
-}
-
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
-    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {

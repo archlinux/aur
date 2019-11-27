@@ -1,34 +1,28 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.3.11.1
+	pkgver = 5.4.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.3.11-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.4-arch1
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.3.11-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.4-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 0005-glitched-pds.patch
-	source = 0005-v5.3_undead-pds099o.patch
+	source = 0005-v5.4_undead-pds099o.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 983f4092f53b7b1a77905cde23faefabe7c598bdee2ebeaa36a5f89d2c74215dccdc2769e52c1d80bea52f6884748294db4886e93642a238a10a577b31b572a7
+	sha512sums = 33dcc59453069bb27758b0c68f39b3f4ee0c3988eec29bf2506e01012c64beafe5fe1b5c7012896d5024d4968b74dde09f8e9f8654b951a32364dda5a766839b
 	sha512sums = a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae
-	sha512sums = 2aef8b8949fec12d237facc57d5feddf0e7c1c878c94fb4eb8a845c110d5cfcc83492e73475de04ce98069e9ab1bb6b4a0a4559d445fbf264442dd8b0af9a8f1
+	sha512sums = d44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377
 
 pkgname = linux-pds
 	pkgdesc = The Linux kernel and modules ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
@@ -38,17 +32,11 @@ pkgname = linux-pds
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.3.11.1
+	provides = linux-pds=5.4.arch1
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.11.1
-	provides = linux-pds-headers=5.3.11.1
-	provides = linux-headers=5.3.11.1
-
-pkgname = linux-pds-docs
-	pkgdesc = Kernel hacker's manual for the Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.3.11.1
-	provides = linux-pds-docs=5.3.11.1
-	provides = linux-docs=5.3.11.1
+	depends = linux-pds=5.4.arch1
+	provides = linux-pds-headers=5.4.arch1
+	provides = linux-headers=5.4.arch1
 
