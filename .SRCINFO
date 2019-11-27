@@ -1,24 +1,28 @@
 pkgbase = spotifyd-bin
 	pkgdesc = A spotify playing daemon
-	pkgver = 0.2.19
+	pkgver = 0.2.20
 	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
-	arch = armv7h
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
 	depends = alsa-lib
 	provides = spotifyd
 	conflicts = spotifyd
 	conflicts = spotifyd-pulseaudio
+	conflicts = spotifyd-dbus-mpris
 	conflicts = spotifyd-git
 	conflicts = spotifyd-pulseaudio-git
-	source_armv7h = https://github.com/Spotifyd/spotifyd/releases/download/v0.2.19/spotifyd-2019-10-06-armv6-slim.zip
-	source_armv7h = spotifyd.service
-	sha256sums_armv7h = d948b1be14f3ac71b3eb3be8416ac03cc1c5faea0c742cd4a724c3ee42ce2206
-	sha256sums_armv7h = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
-	source_x86_64 = https://github.com/Spotifyd/spotifyd/releases/download/v0.2.19/spotifyd-2019-10-06-x86-slim.zip
-	source_x86_64 = spotifyd.service
-	sha256sums_x86_64 = e51314fcc96e5890ff3b5ef2f202eeb52524f0e305acb9db9487ab8e1bd649a7
-	sha256sums_x86_64 = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
+	source = spotifyd-bin-0.2.20.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v0.2.20/spotifyd-linux-slim.tar.gz
+	source = spotifyd.service
+	sha256sums = db45c8df7eff78500f1f0b330f054ce095d7e2cb901f9f3dbb4931c96c8dcc7b
+	sha256sums = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
 
 pkgname = spotifyd-bin
+	pkgdesc = A spotify playing daemon - slim distribution
+
+pkgname = spotifyd-bin-slim
+	pkgdesc = A spotify playing daemon - slim distribution
 
