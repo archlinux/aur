@@ -1,32 +1,36 @@
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
 # GitHub: https://github.com/pschmitt/aur-pagekite
 pkgname=pagekite
-pkgver=0.5.8e
+pkgver=1.0.0.190721
 pkgrel=1
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
 url='http://pagekite.org'
-license=('GPL')
-depends=('python2' 'python2-setuptools' 'python2-socksipychain')
+license=('AGPL3')
+depends=('python2' 'python2-socksipychain')
+makedepends=('python2-setuptools')
 provides=('pagekite')
 conflicts=('python2-pagekite')
 options=(!emptydirs zipman)
 source=("https://pagekite.net/pk/src/$pkgname-$pkgver.tar.gz")
-md5sums=('c229116687cf66ba6f4a929befc32f69')
+sha256sums=('f0237a9eec485a75c60d2d876eab54f9f5695fe4125a26918b26cb3b1a569b78')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+
   # Config files
   for configfile in etc/pagekite.d/*
   do
     install -m 644 -D $configfile $pkgdir/etc/pagekite.d/$(basename $configfile)
   done
+
   # Man pages
   for manpage in doc/*.1
   do
     install -m 644 -D $manpage $pkgdir/usr/share/man/man1/$(basename $manpage)
   done
+
   # logrotate
   install -m 644 -D etc/logrotate.d/pagekite.debian $pkgdir/etc/logrotate.d/pagekite
 }
