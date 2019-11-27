@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Nu includes custom libraries
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nushell/
+# Add lib directory to path for loading plugins
+export PATH=$PATH:/usr/lib/nushell/
+
+exec /usr/lib/nushell/nu "$@"
