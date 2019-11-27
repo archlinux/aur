@@ -3,34 +3,29 @@
 
 pkgname=nushell
 cargoname=nu
-pkgver=0.5.0
-pkgver_underscore=0_5_0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 makedepends=('rustup')
 depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A shell for the GitHub era"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/archive/$pkgver_underscore.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
 url="http://nushell.sh"
 license=('MIT')
-sha256sums=('46c9c0ba95c464c70c8a4c099962873e5baa1b9bee3413645a0cc245701047da')
+sha256sums=('90cdd83410d23e32fd47457d227b00cb2c8f607ac38020360eea0e385b693707')
 
 build() {
   return 0
 }
 
 package() {
-  cd "$pkgname-$pkgver_underscore"
+  cd "$pkgname-$pkgver"
 
-  cargo +beta install \
+  cargo install \
 	--all-features \
 	--locked \
 	--root "${pkgdir}"/usr \
-	--path "./" \
-   || ( >&2 echo $'\nInstall Cargo Beta compiler:'\
-		$'\n\n\trustup install beta    (no root required)'\
-		$'\n\nThen try building nushell again.'\
-       && false )
+	--path "./" 
 }
 
