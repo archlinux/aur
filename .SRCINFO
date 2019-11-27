@@ -1,13 +1,13 @@
 pkgbase = r-rcppparallel
 	pkgdesc = Parallel Programming Tools for 'Rcpp'
-	pkgver = 4.4.2
+	pkgver = 4.4.4
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/RcppParallel/index.html
+	url = https://CRAN.R-project.org/package=RcppParallel
 	arch = x86_64
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/RcppParallel_4.4.2.tar.gz
-	md5sums = 7b327a8497cde8df49e85745fe66e5f8
+	source = http://cran.r-project.org/src/contrib/RcppParallel_4.4.4.tar.gz
+	md5sums = 44d1379503c68b20f3506af023b7599d
 
 pkgname = r-rcppparallel
 
