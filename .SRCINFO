@@ -1,6 +1,6 @@
 pkgbase = python-objection
 	pkgdesc = runtime mobile exploration
-	pkgver = 1.7.5
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/sensepost/objection
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python-objection
 	depends = python-prompt_toolkit
 	depends = python-delegator
 	depends = nodejs
-	source = https://github.com/sensepost/objection/archive/1.7.5.tar.gz
-	sha256sums = f3caee908f98e3ed2fe5c4e1555c2a85e371aadde8d273b033f5bcbd52617419
+	source = https://github.com/sensepost/objection/archive/1.8.2.tar.gz
+	sha256sums = e32e97e98401bb4708918f752d40009ee2de80444e5ec9297d099e853375dcf1
 
 pkgname = python-objection
 

@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-objection
-pkgver=1.7.5
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="runtime mobile exploration"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPLv3')
 depends=(python python-flask python-click python-frida python-frida-tools python-tabulate python-prompt_toolkit python-delegator nodejs)
 makedepends=('python-setuptools')
 source=(https://github.com/sensepost/objection/archive/${pkgver}.tar.gz)
-sha256sums=('f3caee908f98e3ed2fe5c4e1555c2a85e371aadde8d273b033f5bcbd52617419')
+sha256sums=('e32e97e98401bb4708918f752d40009ee2de80444e5ec9297d099e853375dcf1')
 
 prepare() {
   cd "$srcdir/objection-$pkgver/"
