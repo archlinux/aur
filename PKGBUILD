@@ -1,13 +1,13 @@
 # Constributor: intel <intel@ss4200>
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgname=flacsync  
+pkgname=flacsync
 pkgver=0.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Recursively mirror a directory tree of FLAC audio files to AAC/OGG"
 url="https://github.com/cmcginty/flacsync"
 arch=('any')
 license=('GPL')
-depends=('python2' 'python2-setuptools' 'python-imaging' 'mutagen' 'flac')
+depends=('python2' 'python2-setuptools' 'python2-pillow' 'python2-mutagen' 'flac')
 optdepends=('neroaacenc: AAC encoding'
             'neroaactag: AAC tagging'
             'vorbis-tools: OGG Vorbis encoding and tagging'
