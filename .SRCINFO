@@ -1,10 +1,11 @@
 pkgbase = concourse-fly-bin
 	pkgdesc = A command line interface that runs a build in a container with ATC.
 	pkgver = 5.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://concourse-ci.org/fly.html
 	arch = x86_64
 	license = Apache
+	optdepends = zsh-completions: auto completion for fly on zsh shell
 	provides = concourse-fly
 	conflicts = concourse-fly
 	conflicts = concourse-fly-git
