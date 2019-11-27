@@ -4,8 +4,8 @@
 pkgname=nushell-bin
 pkgver=0.6.0
 _underscoredpkgver=0_6_0
-pkgrel=1
-depends=('openssl-1.0' 'zlib')
+pkgrel=2
+depends=('zlib')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64')
 pkgdesc="A shell for the GitHub era"
