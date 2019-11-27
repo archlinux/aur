@@ -2,7 +2,7 @@
 pkgname=python-pymanopt
 _pkgname=pymanopt
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python toolbox for optimization on manifolds with support for automatic differentiation"
 _pypiname="pymanopt"
 #_github="pymanopt/pymanopt"

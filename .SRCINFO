@@ -1,7 +1,7 @@
 pkgbase = python-pymanopt
 	pkgdesc = Python toolbox for optimization on manifolds with support for automatic differentiation
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pymanopt.github.io
 	arch = x86_64
 	license = MIT
