@@ -1,8 +1,8 @@
 # Maintainer: Abdelhakim Qbaich <abdelhakim@qbaich.com>
 
 pkgname=rars
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="RISC-V Assembler and Runtime Simulator"
 arch=('any')
 url="https://github.com/TheThirdOne/$pkgname"
@@ -12,7 +12,7 @@ source=("https://github.com/TheThirdOne/$pkgname/releases/download/v$pkgver/$pkg
         "https://raw.githubusercontent.com/TheThirdOne/$pkgname/v$pkgver/License.txt"
         "$pkgname.sh")
 noextract=("$pkgname${pkgver//./_}.jar")
-sha256sums=('360efec6c23fbbdd64976d1fc3c534789ebcdd158ef3e2c60487c3d84505cb01'
+sha256sums=('d3f5d3d835e72acdae243f5b18511e0bd8fda917db379b2699337aabfe37ed07'
             'ee3e447d4d5b1f3ed6bc8a71939d06637338fb247777b3e3b60b6202d0712652'
             'ab5b088335e5f189eaffa3399e764d85ad5069bb266a68a5640d2732504c5b56')
 

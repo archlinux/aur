@@ -1,16 +1,16 @@
 pkgbase = rars
 	pkgdesc = RISC-V Assembler and Runtime Simulator
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://github.com/TheThirdOne/rars
 	arch = any
 	license = MIT
 	depends = java-runtime
-	noextract = rars1_3_1.jar
-	source = https://github.com/TheThirdOne/rars/releases/download/v1.3.1/rars1_3_1.jar
-	source = https://raw.githubusercontent.com/TheThirdOne/rars/v1.3.1/License.txt
+	noextract = rars1_4.jar
+	source = https://github.com/TheThirdOne/rars/releases/download/v1.4/rars1_4.jar
+	source = https://raw.githubusercontent.com/TheThirdOne/rars/v1.4/License.txt
 	source = rars.sh
-	sha256sums = 360efec6c23fbbdd64976d1fc3c534789ebcdd158ef3e2c60487c3d84505cb01
+	sha256sums = d3f5d3d835e72acdae243f5b18511e0bd8fda917db379b2699337aabfe37ed07
 	sha256sums = ee3e447d4d5b1f3ed6bc8a71939d06637338fb247777b3e3b60b6202d0712652
 	sha256sums = ab5b088335e5f189eaffa3399e764d85ad5069bb266a68a5640d2732504c5b56
 
