@@ -1,4 +1,4 @@
-# Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
+# Maintainer: Mark Wagie <yochanan dot marqos at gmail.com>
 # Co-Maintainer: telans <telans@protonmail.com>
 
 pkgname=mullvad-vpn-beta-bin
