@@ -1,6 +1,6 @@
 pkgbase = python-dash-core-components
 	pkgdesc = Dash UI core components suite
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://plot.ly/products/dash
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-dash-core-components
 	checkdepends = python-dash
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/d/dash_core_components/dash_core_components-1.5.0.tar.gz
-	sha256sums = 231131d2f01576c87971a1b7efb7beeaa859148a8c819b644c1998708ab44349
+	source = https://pypi.org/packages/source/d/dash_core_components/dash_core_components-1.5.1.tar.gz
+	sha256sums = fadd16a2b4ea8abc60b72c08b5a9d6c1a86eb1f56e926be67773259f47eb9048
 
 pkgname = python-dash-core-components
 
