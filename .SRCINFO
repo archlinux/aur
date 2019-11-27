@@ -1,0 +1,18 @@
+pkgbase = python-occ-cadquery-git
+	pkgdesc = A python library whose purpose is to provide 3D modeling features -- CadQuery's fork
+	pkgver = r929.701e924
+	pkgrel = 1
+	url = https://github.com/CadQuery/pythonocc-core
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = swig
+	depends = oce
+	depends = python
+	conflicts = python-occ
+	source = git://github.com/CadQuery/pythonocc-core.git
+	md5sums = SKIP
+
+pkgname = python-occ-cadquery-git
+
