@@ -10,7 +10,7 @@ pkgdesc="A fork of Nicotine, a graphical client for Soulseek."
 arch=('any')
 url="http://nicotine-plus.org/"
 license=('GPL3')
-depends=('pygtk' 'gtk2' 'mutagen')
+depends=('pygtk' 'gtk2' 'python2-mutagen')
 makedepends=('git' 'python2')
 optdepends=('miniupnpc: UPnP support'
 	'python2-geoip: for geo-blocker'
