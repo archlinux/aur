@@ -16,11 +16,11 @@ pkgbase = yuzu-mainline-git
 	depends = qt5-multimedia
 	depends = qt5-tools
 	depends = libxkbcommon-x11
+	depends = libfdk-aac
 	optdepends = qt5-wayland: for Wayland support
 	provides = yuzu
 	provides = yuzu-cmd
 	conflicts = yuzu-git
-	replaces = yuzu-canary-git
 	source = yuzu::git+https://github.com/yuzu-emu/yuzu-mainline
 	md5sums = SKIP
 
