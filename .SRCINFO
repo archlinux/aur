@@ -1,6 +1,6 @@
 pkgbase = r-delayedarray
 	pkgdesc = Delayed operations on array-like objects
-	pkgver = 0.8.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/DelayedArray.html
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = r-delayedarray
 	depends = r-s4vectors
 	depends = r-biocparallel
 	depends = r-matrixstats
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedArray_0.8.0.tar.gz
-	sha1sums = 5e1481fdfbc8d4e4966aed238f750c3e01849863
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/DelayedArray_0.12.0.tar.gz
+	sha1sums = 53a087be70db65f2775f319b8d71e4489e0a52cf
 
 pkgname = r-delayedarray
 
