@@ -1,10 +1,11 @@
 pkgbase = concourse-bin
 	pkgdesc = Concourse is a pipeline-based CI system written in Go.
 	pkgver = 5.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://concourse-ci.org
 	arch = x86_64
 	license = Apache
+	optdepends = zsh-completions: auto completion for concourse on zsh shell
 	provides = concourse
 	conflicts = concourse
 	conflicts = concourse-git
