@@ -28,7 +28,7 @@ pkgbase = pantalaimon
 	depends = python-future
         source = https://github.com/matrix-org/pantalaimon/archive/0.2.tar.gz
         source = pantalaimon.service
-        sha256sums = 30eb448eacf6c02078bd3c58513bc426ec09fa9930833e711270eaa8abc13756
+        sha256sums = 23030e5f8ef9c5e7770cb470c3320822024615ee2ee3d7f54dbb1c7701d1f427
         sha256sums = cf693e0324a7f2965bc9e64ab2c3d75137e7993503ddb3ae3dddc84af6c0b0e9
 
 pkgname = pantalaimon
