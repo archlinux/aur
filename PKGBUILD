@@ -10,6 +10,7 @@ url="https://pecl.php.net/package/memcached"
 license=('PHP')
 provides=("php-memcached=${pkgver}-${pkgrel}")
 depends=('php71>=7.1.32-1' 'libmemcached')
+checkdepends=('memcached')
 backup=('etc/php71/conf.d/memcached.ini')
 source=("https://pecl.php.net/get/memcached-${pkgver}.tgz")
 sha512sums=('df1d2c2182c6d3565b929bb55e25a5285c0d5cf8b0fbb75417d756898970abc2b9c4d87e8bb8382d9d4fd62227de3838996c971525fb8a90bf503f025fc6f9f7')
