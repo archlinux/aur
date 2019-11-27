@@ -2,7 +2,7 @@
 pkgname=python-atari-py
 _pkgname=atari-py
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A python interface for the Arcade Learning Environment (Modified by OpenAI)"
 arch=('any')
 _github='openai/atari-py'
