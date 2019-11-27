@@ -1,8 +1,8 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.1.22.r143.0183e4b
-pkgrel=2
+pkgver=0.2.0.r339.ecd8853
+pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://stian.cubic.org/project-ocp.php"
@@ -22,7 +22,7 @@ makedepends=('git')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
 install=$pkgname.install
-source=("${_name}::git://git.code.sf.net/p/opencubicplayer/code")
+source=("${_name}::git://github.com/mywave82/opencubicplayer.git")
 md5sums=('SKIP')
 
 pkgver() {
