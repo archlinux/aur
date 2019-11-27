@@ -1,6 +1,6 @@
 pkgbase = yaegi
 	pkgdesc = Yaegi is Another Elegant Go Interpreter
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/containous/yaegi
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = yaegi
 	arch = aarch64
 	license = Apache
 	makedepends = go
-	source = yaegi-0.6.2.tar.gz::https://github.com/containous/yaegi/archive/v0.6.2.tar.gz
-	md5sums = 0644fe3913febf3e95c3902eb30dc55a
+	source = yaegi-0.7.0.tar.gz::https://github.com/containous/yaegi/archive/v0.7.0.tar.gz
+	md5sums = e9891fe2d3a90806aac89ba9f61b8ca7
 
 pkgname = yaegi
 
