@@ -70,11 +70,37 @@ index 0cb4f41..a60f736 100644
  }
  
  void
+diff --git i/tests/location.c w/tests/location.c
+index 207ed3f..ced3406 100644
+--- i/tests/location.c
++++ w/tests/location.c
+@@ -30,10 +30,8 @@ test_location_basic (void)
+ {
+   g_autoptr(XdpPortal) portal = NULL;
+ 
+-#ifndef HAVE_GEOCLUE
+   g_test_skip ("Skipping tests that require geoclue");
+   return;
+-#endif
+ 
+   portal = xdp_portal_new ();
+ 
+@@ -67,10 +65,8 @@ test_location_accuracy (void)
+ {
+   g_autoptr(XdpPortal) portal = NULL;
+ 
+-#ifndef HAVE_GEOCLUE
+   g_test_skip ("Skipping tests that require geoclue");
+   return;
+-#endif
+ 
+   portal = xdp_portal_new ();
+ 
 diff --git i/tests/openuri.c w/tests/openuri.c
-index f55e064..3477dfa 100644
+index cacf1f8..c252696 100644
 --- i/tests/openuri.c
 +++ w/tests/openuri.c
-@@ -247,28 +247,30 @@ test_open_uri_lockdown (void)
+@@ -328,28 +328,30 @@ test_open_uri_lockdown (void)
    g_autofree char *path = NULL;
  
    xdp_impl_lockdown_set_disable_application_handlers (lockdown, TRUE);
