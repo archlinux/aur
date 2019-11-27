@@ -5,7 +5,7 @@ pkgbase = r-dbi
 	url = https://cran.r-project.org/package=DBI
 	arch = any
 	license = LGPL
-	depends = r
+	depends = r>=3.0.0
 	optdepends = r-blob
 	optdepends = r-covr
 	optdepends = r-hms
