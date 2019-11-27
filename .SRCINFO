@@ -1,13 +1,13 @@
 pkgbase = r-formatr
 	pkgdesc = Format R Code Automatically
-	pkgver = 1.5
+	pkgver = 1.7
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/formatR/index.html
 	arch = x86_64
 	license = GPL3
 	depends = r
-	source = http://cran.r-project.org/src/contrib/formatR_1.5.tar.gz
-	md5sums = 8ea060a12258480ee5ccb33bb522894c
+	source = http://cran.r-project.org/src/contrib/formatR_1.7.tar.gz
+	md5sums = 1b223bdb396ef14597e8a449c53af2fb
 
 pkgname = r-formatr
 
