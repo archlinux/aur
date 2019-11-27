@@ -1,7 +1,7 @@
 # Maintainer: Maikel Llamaret Heredia "llamaret" <llamaret@webmisolutions.com>
 
 pkgname=videomorph
-pkgver=1.4.1
+pkgver=1.4.1-1
 pkgrel=1
 pkgdesc="Small GUI wrapper for FFMPEG based on PyQt5"
 arch=('i686' 'x86_64')
