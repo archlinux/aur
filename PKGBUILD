@@ -1,15 +1,16 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
+# Co-maintainer: Brendan Szymanski <bscubed@pm.me>
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r12401.e77d2b210
+pkgver=r13198.6df6caaf5
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu/"
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
-conflicts=('yuzu-canary-git')
+conflicts=('yuzu-mainline-git')
 depends=('shared-mime-info'
          'desktop-file-utils'
          'sdl2'
