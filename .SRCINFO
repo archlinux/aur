@@ -1,6 +1,6 @@
 pkgbase = fwup
 	pkgdesc = Configurable embedded Linux firmware update creator and runner
-	pkgver = v1.5.0.r0.g3d440b2
+	pkgver = v1.5.1.r0.g7aaf679
 	pkgrel = 1
 	url = https://github.com/fhunleth/fwup
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = fwup
 	depends = autoconf
 	provides = fwup
 	conflicts = fwup
-	source = git+https://github.com/fhunleth/fwup#tag=v1.5.0
+	source = git+https://github.com/fhunleth/fwup#tag=v1.5.1
 	md5sums = SKIP
 
 pkgname = fwup
