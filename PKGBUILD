@@ -24,6 +24,10 @@ prepare() {
   cmake $flags ..
 }
 
+check(){
+  cd ${_pkgname}-${pkgver}/build
+}
+
 build() {
   cd ${_pkgname}-${pkgver}/build
   make
