@@ -2,13 +2,13 @@
 
 pkgname=rolisteam
 _pkgname=rolisteam
-pkgver=1.8.2
+pkgver=1.9.1
 pkgrel=2
 pkgdesc="Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players."
 arch=('i686' 'x86_64')
 url="http://www.rolisteam.org"
 license=(GPL)
-depends=('qt5-base' 'qt5-multimedia' 'zlib')
+depends=('qt5-base' 'qt5-multimedia' 'zlib' 'qt5-webengine')
 makedepends=('qt5-tools' 'gcc' 'git')
 source=("git+https://github.com/Rolisteam/rolisteam.git#tag=v${pkgver}"
         "rolisteam.desktop")
