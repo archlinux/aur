@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=('any')
 url="https://github.com/CadQuery/cadquery"
-license=('Apache 2.0')
-depends=('python-occ')
+license=('Apache')
+depends=('python-occ-cadquery-git')
 source=("https://github.com/CadQuery/cadquery/archive/${pkgver}.tar.gz")
 md5sums=('562d66e73cd8d3f8fa97cfdda8aa1b5d')
 
