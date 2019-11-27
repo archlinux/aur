@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Co-Maintainer: telans <telans@protonmail.com>
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
