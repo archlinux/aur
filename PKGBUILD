@@ -2,7 +2,7 @@
 pkgname=sealcrypto
 pkgver=3.4.5
 pkgrel=1
-pkgdesc='Simple Encrypted Arithmetic Library'
+pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
 url="https://sealcrypto.org/"
 license=('MIT')
@@ -16,7 +16,7 @@ build() {
   tar xf ${pkgver}.tar.gz
   cd SEAL-${pkgver}/native/src
   cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr .
-  make
+  make -j
 }
 
 package() {

@@ -1,5 +1,5 @@
 pkgbase = sealcrypto
-	pkgdesc = Simple Encrypted Arithmetic Library
+	pkgdesc = Microsoft library for fully homomorphic encryption
 	pkgver = 3.4.5
 	pkgrel = 1
 	url = https://sealcrypto.org/
