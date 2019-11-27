@@ -5,7 +5,7 @@
 # Author: Wintershade <Wintershade AT google mail DOT com>
 
 pkgname=rpm-org
-pkgver=4.15.0
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="RPM Package Manager - RPM.org fork, used in major RPM distros"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ _pkgver=$pkgver
 
 source=(https://ftp.osuosl.org/pub/rpm/releases/rpm-$_base_pkgver/rpm-$pkgver.tar.bz2
 	rpmextract.sh rpmlib-filesystem-check.patch bfdfix.patch)
-sha1sums=('879fb5c560323aecae8314a3303cd8e7e1294705'
+sha1sums=('dc131f568877efbf2faa391a20f74a34119acee2'
           '74849919207885ae024f1ab8ed68a76474d67ad7'
           '0c5fa516dde1f10211af896c729e4b00c313e12b'
           '456d4a2c9f71c2e3bfa5011800855a73a55aa5bc')
