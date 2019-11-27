@@ -4,12 +4,12 @@
 pkgname=mullvad-vpn-beta
 pkgver=2019.9.stable
 _pkgver=2019.9
-pkgrel=3
+pkgrel=4
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
-depends=('gtk3' 'libnotify' 'libappindicator-gtk2' 'libxss' 'nss')
+depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
