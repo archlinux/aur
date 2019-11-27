@@ -1,8 +1,8 @@
 pkgbase = r-xvector
 	pkgdesc = Representation and manipulation of external sequences
-	pkgver = 0.22.0
+	pkgver = 0.26.0
 	pkgrel = 1
-	url = https://bioconductor.org/packages/release/bioc/html/BiocGenerics.html
+	url = https://bioconductor.org/packages/release/bioc/html/XVector.html
 	arch = x86_64
 	license = Artistic-2.0
 	depends = r
@@ -10,8 +10,8 @@ pkgbase = r-xvector
 	depends = r-s4vectors
 	depends = r-iranges
 	depends = r-zlibbioc
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/XVector_0.22.0.tar.gz
-	sha1sums = e74aa54ce1e73d10b3bcc0f638ae3a4f182925ce
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/XVector_0.26.0.tar.gz
+	sha1sums = 3407297a685f182c9fd34fbaa988ffc8e183872e
 
 pkgname = r-xvector
 
