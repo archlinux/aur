@@ -1,7 +1,7 @@
 pkgbase = openmodelica-git
 	pkgdesc = The Open Source Modelica Suite
-	pkgver = 1.14.0.dev.r334.g4e226ae04
-	pkgrel = 3
+	pkgver = 1.16.0.dev.r65.g236638037
+	pkgrel = 1
 	url = https://openmodelica.org
 	arch = i686
 	arch = x86_64
@@ -29,7 +29,6 @@ pkgbase = openmodelica-git
 	depends = python
 	depends = gtkglext
 	depends = ruby
-	depends = coin-or-ipopt
 	depends = qjson
 	depends = suitesparse
 	depends = boost-libs

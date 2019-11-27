@@ -2,13 +2,13 @@
 # Contributor: Xwang <xwaang1976@gmail.com>
 
 pkgname=openmodelica-git
-pkgver=1.14.0.dev.r334.g4e226ae04
-pkgrel=3
+pkgver=1.16.0.dev.r65.g236638037
+pkgrel=1
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
-depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'coin-or-ipopt' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools' 'gnuplot')
+depends=('java-environment' 'lpsolve' 'hdf5-openmpi' 'omniorb' 'openscenegraph' 'libatomic_ops' 'python' 'gtkglext' 'ruby' 'qjson' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-svg' 'qt5-tools' 'gnuplot')
 makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr2' 'subversion' 'lib32-expat' 'lib32-ncurses' 'lib32-readline')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
@@ -44,7 +44,7 @@ package() {
     cd "$srcdir/$pkgname"  
     make install DESTDIR=${pkgdir}
    
-    install -D -m644 "OMEdit/OMEdit/OMEditGUI/Resources/icons/omedit.ico" "${pkgdir}/usr/share/openmodelica/icons/omedit.ico"
+    install -D -m644 "OMEdit/OMEditLIB/Resources/icons/omedit.ico" "${pkgdir}/usr/share/openmodelica/icons/omedit.ico"
     install -D -m644 "OMNotebook/OMNotebook/OMNotebookGUI/Resources/OMNotebook_icon.ico" "${pkgdir}/usr/share/openmodelica/icons/omnotebook.ico"
     install -D -m644 "OMOptim/OMOptim/GUI/Resources/omoptim.ico" "${pkgdir}/usr/share/openmodelica/icons/omoptim.ico"
     install -D -m644 "OMShell/OMShell/OMShellGUI/Resources/omshell.ico" "${pkgdir}/usr/share/openmodelica/icons/omshell.ico"
