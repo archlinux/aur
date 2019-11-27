@@ -25,7 +25,8 @@ prepare() {
 }
 
 check(){
-  cd ${_pkgname}-${pkgver}/build
+  cd ${_pkgname}-${pkgver}/test
+  python run_tests.py
 }
 
 build() {
