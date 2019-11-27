@@ -1,6 +1,6 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = http://www.winehq.com
 	install = wine.install
@@ -129,15 +129,15 @@ pkgbase = wine-stable
 	optdepends = lib32-v4l-utils
 	optdepends = lib32-vkd3d
 	optdepends = lib32-vulkan-icd-loader
-	provides = wine=4.0.2
+	provides = wine=4.0.3
 	conflicts = wine
 	options = staticlibs
-	source = https://dl.winehq.org/wine/source/4.0/wine-4.0.2.tar.xz
-	source = https://dl.winehq.org/wine/source/4.0/wine-4.0.2.tar.xz.sign
+	source = https://dl.winehq.org/wine/source/4.0/wine-4.0.3.tar.xz
+	source = https://dl.winehq.org/wine/source/4.0/wine-4.0.3.tar.xz.sign
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	sha512sums = 14cb7eeba188562b73125c668f2020e1df6802e486552e422d3aa75b95f6fccedc0f87868f7e58ce71697941ff49757981ec93b9ef288da37ca8570658f194fc
+	sha512sums = a8fde0bcf600eaec56c3ce58c9aa992386784c85cf1c93aa84d50aff4c842b12a6b099c23391d3ad9a0059f3dc9069c0f8e00fad293305ba8a33afc70bf26e14
 	sha512sums = SKIP
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
