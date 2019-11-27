@@ -1,5 +1,5 @@
 _npmname=verdaccio
-_npmver=4.3.3
+_npmver=4.3.5
 
 pkgname=$_npmname
 pkgver=$_npmver
@@ -13,7 +13,7 @@ optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz
         verdaccio.sysusers
         verdaccio.tmpfiles)
-sha256sums=('349d3278a3823127c59218cc4ca4631966ac6318c7520fad4cb5c2fe7a17f6d7'
+sha256sums=('9c8817dbfb04b8a92cce23d33f4ec9a7e5230a82419715dabf3d3c18bf40e96f'
             '75d544a5f25ca4c18743b1c879a8db0b9d9ae72ac41043a922733f19df394235'
             '833b7223a643a4e1550c8b85b23b7c9e7337c46bc9bf9daa0a0b33a627ddc990')
 
