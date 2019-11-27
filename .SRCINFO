@@ -1,6 +1,6 @@
 pkgbase = r-shortread
 	pkgdesc = FASTQ input and manipulation
-	pkgver = 1.40.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/ShortRead.html
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = r-shortread
 	depends = r-hwriter
 	depends = r-zlibbioc
 	depends = r-latticeextra
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ShortRead_1.40.0.tar.gz
-	sha1sums = 2bf569ce7b65710a90da3688086a056cf68f9e9e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ShortRead_1.44.0.tar.gz
+	sha1sums = 5a60229c2eb98dcbdc13cc4c99cd693887d171fd
 
 pkgname = r-shortread
 
