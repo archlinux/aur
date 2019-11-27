@@ -1,0 +1,21 @@
+pkgbase = spotifyd-bin-full
+	pkgdesc = A spotify playing daemon - full distribution
+	pkgver = 0.2.20
+	pkgrel = 1
+	url = https://github.com/Spotifyd/spotifyd
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = libpulse
+	depends = dbus
+	provides = spotifyd
+	conflicts = spotifyd
+	source = spotifyd-bin-full-0.2.20.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v0.2.20/spotifyd-linux-full.tar.gz
+	source = spotifyd.service
+	sha256sums = e53a984a1280424e4679cf531b3eb896e1243f5cd3042df602ffe0ffcc3f1f4c
+	sha256sums = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
+
+pkgname = spotifyd-bin-full
+
