@@ -1,6 +1,6 @@
 pkgbase = pantheon-agent-geoclue2
 	pkgdesc = Geoclue2 Agent for Pantheon. The location services agent appears whenever an application wants to request permission to use location services.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/elementary/pantheon-agent-geoclue2
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = pantheon-agent-geoclue2
 	conflicts = pantheon-agent-geoclue2-git
 	conflicts = pantheon-geoclue2-agent
 	conflicts = pantheon-geoclue2-agent-git
-	source = pantheon-agent-geoclue2-1.0.2.tar.gz::https://github.com/elementary/pantheon-agent-geoclue2/archive/1.0.2.tar.gz
-	md5sums = 7569d61131f667666bdee6633b7f730b
+	source = pantheon-agent-geoclue2-1.0.3.tar.gz::https://github.com/elementary/pantheon-agent-geoclue2/archive/1.0.3.tar.gz
+	sha256sums = 5f75c205db68ea533de59433f6877dc64aebb1d7189dbf5734a2cd9398c8c9a9
 
 pkgname = pantheon-agent-geoclue2
 
