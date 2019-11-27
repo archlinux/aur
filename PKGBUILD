@@ -1,22 +1,22 @@
 # Maintainer: Radoslaw Mejer <radmen @ radmen.info>
 
 pkgname=stoplight-studio-appimage
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="The modern editor for API Architects and Technical Writers."
 arch=('x86_64')
 url='https://stoplight.io/studio/'
 license=('custom')
 source=(
-  "https://github.com/stoplightio/studio/releases/download/v${pkgver}/stoplight-studio-linux-x86_64.AppImage"
+  "stoplight-studio-linux-x86_64-${pkgver}.AppImage::https://github.com/stoplightio/studio/releases/download/v${pkgver}/stoplight-studio-linux-x86_64.AppImage"
   "stoplight-studio.desktop"
 )
 sha256sums=(
-  "e8955f0ddd5ad6987202aeafe589cc5ad96b11ecab58171530157c1c4df93a58"
+  "cc058787cb0518500dd2db8b6853afa784a89f92f8e10f937a10df5af6e8d668"
   "SKIP"
 )
 options=(!strip)
-_filename="./stoplight-studio-linux-${arch}.AppImage"
+_filename="./stoplight-studio-linux-${arch}-${pkgver}.AppImage"
 
 prepare() {
   cd "${srcdir}"
