@@ -1,15 +1,14 @@
 pkgbase = mcrcon
 	pkgdesc = Console based remote console (rcon) client for Minecraft servers
-	pkgver = 0.0.5
+	pkgver = 0.6.1
 	pkgrel = 1
-	url = https://sourceforge.net/projects/mcrcon/
+	url = https://github.com/Tiiffi/mcrcon
 	arch = i686
 	arch = x86_64
 	license = ZLIB
-	makedepends = unzip
-	noextract = mcrcon-0.0.5-src.zip
-	source = https://sourceforge.net/projects/mcrcon/files/0.0.5/mcrcon-0.0.5-src.zip
-	md5sums = 162643de87103b0bd2a58529f123fc79
+	depends = glibc
+	source = https://github.com/Tiiffi/mcrcon/archive/v0.6.1.tar.gz
+	sha256sums = 3a8a7185835cb474edad248a5db240f047b24a903f034aac31900f6abcd58b25
 
 pkgname = mcrcon
 

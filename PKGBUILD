@@ -3,28 +3,23 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=mcrcon
-pkgver=0.0.5
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Console based remote console (rcon) client for Minecraft servers"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/mcrcon/"
+url="https://github.com/Tiiffi/mcrcon"
 license=('ZLIB')
-source=(https://sourceforge.net/projects/mcrcon/files/${pkgver}/mcrcon-${pkgver}-src.zip)
-noextract=('mcrcon-0.0.5-src.zip')
-makedepends=('unzip')
-
-prepare() {
-  unzip -qo "$srcdir/mcrcon-${pkgver}-src.zip"
-}
+depends=('glibc')
+source=("https://github.com/Tiiffi/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('3a8a7185835cb474edad248a5db240f047b24a903f034aac31900f6abcd58b25')
 
 build() {
-  echo gcc -std=gnu99 $CFLAGS -o mcrcon mcrcon.c
-  gcc -std=gnu99 $CFLAGS -o mcrcon mcrcon.c
+	cd "$pkgname-$pkgver"
+	make LINKER="$LDFLAGS"
 }
 
 package() {
-  install -m 755 -D mcrcon "$pkgdir/usr/bin/mcrcon"
-  install -m 644 -D LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	cd "$pkgname-$pkgver"
+	make PREFIX="$pkgdir/usr/" install
+	install -m 644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-md5sums=('162643de87103b0bd2a58529f123fc79')
