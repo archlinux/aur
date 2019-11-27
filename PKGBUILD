@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.keystore-explorer.org/"
 license=('GPL')
 depends=('java-runtime')
+conflicts=('keystore-explorer')
 install=${pkgname}.install
 source=("https://github.com/kaikramer/${_reponame}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.zip"
         "${_reponame}.desktop")

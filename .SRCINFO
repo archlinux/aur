@@ -9,6 +9,7 @@ pkgbase = keystore-explorer-bin
 	license = GPL
 	depends = java-runtime
 	source = https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.1/kse-541.zip
+	conflicts = keystore-explorer
 	source = keystore-explorer.desktop
 	md5sums = d21de02af032ebcca0a0bb53f8d8c96c
 	md5sums = dfaa247ab726fe2e44368101399b508d
