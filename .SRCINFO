@@ -15,7 +15,7 @@ pkgbase = mit8
 	replaces = mit30
 	options = strip
 	source = https://www.iztech.ru/content/files/mit8-latest-x86_64.tar.gz
-	md5sums = 5ce26d3aa83ffc7b70017d11203bb39d
+	md5sums = 5da6ad5ca39bdeb4427a70f9ac795e13
 
 pkgname = mit8
 
