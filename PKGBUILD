@@ -3,7 +3,7 @@
 _pkgname=spyder3
 pkgbase=spyder-git
 pkgname=$_pkgname-git
-pkgver=4.0.0rc1.r120.gdbc198597
+pkgver=4.0.0rc3.r1.g2d607299c
 pkgrel=1
 pkgdesc="The Scientific Python Development Environment (Python 3 version)"
 arch=('any')
@@ -16,6 +16,7 @@ depends=('jupyter-nbconvert'
          'python-chardet'
          'python-cloudpickle'
          'python-diff-match-patch'
+         'python-intervaltree'
          'python-jedi'
          'python-keyring'
          'python-language-server'

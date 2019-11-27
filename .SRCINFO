@@ -1,6 +1,6 @@
 pkgbase = spyder-git
 	pkgdesc = The Scientific Python Development Environment (Python 3 version)
-	pkgver = 4.0.0rc1.r120.gdbc198597
+	pkgver = 4.0.0rc3.r1.g2d607299c
 	pkgrel = 1
 	url = https://www.spyder-ide.org/
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = spyder-git
 	depends = python-chardet
 	depends = python-cloudpickle
 	depends = python-diff-match-patch
+	depends = python-intervaltree
 	depends = python-jedi
 	depends = python-keyring
 	depends = python-language-server
