@@ -14,11 +14,11 @@ sha256sums=('062d5f05139742dbebe54c6a460fc5c90bcd6f6c6502978bd0c79fe3268ea12f'
             'cf693e0324a7f2965bc9e64ab2c3d75137e7993503ddb3ae3dddc84af6c0b0e9')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+	cd pantalaimon-crypto_debug
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd pantalaimon-crypto_debug
 	python setup.py install --prefix=/usr --root="$pkgdir"
 	install -D -m 644 "${srcdir}/pantalaimon.service" ${pkgdir}/usr/lib/systemd/user/pantalaimon.service
 }
