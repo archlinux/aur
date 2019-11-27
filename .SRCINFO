@@ -1,0 +1,14 @@
+pkgbase = legacyfox
+	pkgdesc = Legacy bootstrapped extensions for Firefox 65 and beyond
+	pkgver = latest
+	pkgrel = 1
+	url = https://gir.st/blog/legacyfox.htm
+	arch = any
+	license = MPL
+	makedepends = git
+	depends = firefox
+	source = git+https://github.com/girst/legacyfox
+	sha256sums = SKIP
+
+pkgname = legacyfox
+
