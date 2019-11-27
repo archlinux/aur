@@ -1,7 +1,7 @@
 pkgbase = python-pandoc-imagine
 	pkgdesc = Imagine is a pandoc filter that will turn codeblocks tagged with certain classes into images or ascii art..
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hertogp/imagine
 	arch = any
 	license = MIT
@@ -14,7 +14,9 @@ pkgbase = python-pandoc-imagine
 
 pkgname = python-pandoc-imagine
 	depends = python-pandocfilters>=1.4
+	depends = python-six>=1.10
 
 pkgname = python2-pandoc-imagine
 	depends = python2-pandocfilters>=1.4
+	depends = python2-six>=1.10
 
