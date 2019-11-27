@@ -3,7 +3,7 @@
 pkgbase=python-tesserocr
 pkgname=('python-tesserocr' 'python2-tesserocr')
 _module='tesserocr'
-pkgver=2.3.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython"
 url="https://github.com/sirfz/tesserocr"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-${pkgver}.tar.gz")
-md5sums=('99e2001affe861ae3a5aa2e9f233e2d7')
+md5sums=('8c620e7978f4f303f4db52918ef01f27')
 
 prepare() {
     cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
