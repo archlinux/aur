@@ -1,14 +1,14 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.1.5
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
 url="http://www.shadowofthewyrm.org/"
 license=('MIT')
 groups=()
-depends=('xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
+depends=('sdl2' 'sdl2_image' 'xerces-c' 'zlib' 'ncurses' 'lua51' 'boost' 'gtest')
 makedepends=('premake' 'git')
 checkdepends=()
 provides=(sotw)
@@ -24,6 +24,7 @@ validpgpkeys=()
 
 build() {
 	cd shadow-of-the-wyrm
+	sed -i -e 's/'"\"SDL2\""'/'"\"SDL2\", \"SDL2_image\""'/g' premake4.lua
 	git checkout master
 	premake4 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
 	make config=release
