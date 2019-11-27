@@ -1,13 +1,13 @@
-# Maintainer: exprez135 <exprez135 at latour dot 33mail dot com>
+# Maintainer: exprez135 <exprezdev at pm dot me>
 
 pkgname=protonvpn-cli-ng
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")
 url="https://github.com/ProtonVPN/protonvpn-cli-ng"
 license=("GPLv3")
-depends=("openvpn" "python3" "dialog")
+depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools")
 makedepends=("git")
 replaces=("protonvpn-cli")
 source=("git+https://github.com/ProtonVPN/protonvpn-cli-ng.git")
