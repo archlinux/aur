@@ -1,17 +1,17 @@
 # ---------------------------------------------------------------
-# Maintainer: Romain Bazile <gromain.baz at gmail dot com>
+# Maintainer: Romain Bazile <gromain.baz@gmail.com>
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-polar
-pkgver=1.1008.r6.g9d8188e
-pkgrel=2
+pkgver=1.1008.ov42.r0.g3bfb59c
+pkgrel=1
 pkgdesc="Polar creation plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
 license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/polar.html"
-source=("$pkgname::git+https://github.com/ptulp/polar_pi.git")
+source=("$pkgname::git+https://github.com/rgleason/polar_pi.git")
 sha1sums=('SKIP')
 
 pkgver() {
