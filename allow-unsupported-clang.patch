@@ -1,0 +1,26 @@
+--- src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs.old	2019-11-26 21:47:43.158191012 -0500
++++ src/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs	2019-11-26 21:48:30.800848886 -0500
+@@ -174,14 +174,6 @@
+ 			{
+ 				throw new BuildException("Unable to build: no compatible clang version found. Please run Setup.sh");
+ 			}
+-			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
+-			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 80 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
+-			{
+-				throw new BuildException(
+-					string.Format("This version of the Unreal Engine can only be compiled with clang 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
+-						CompilerVersionString)
+-					);
+-			}
+ 
+ 			// trust lld only for clang 5.x and above (FIXME: also find if present on the system?)
+ 			// NOTE: with early version you can run into errors like "failed to compute relocation:" and others
+@@ -565,7 +557,7 @@
+ 				Result += " -fsanitize=undefined";
+ 			}
+ 
+-			Result += " -Wall -Werror";
++			Result += " -Wall";
+ 
+ 			if (!CompileEnvironment.Architecture.StartsWith("x86_64") && !CompileEnvironment.Architecture.StartsWith("i686"))
+ 			{

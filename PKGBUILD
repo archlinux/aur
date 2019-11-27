@@ -1,16 +1,13 @@
 # Maintainer: Dylan Ferris <dylan@psilly.com>
 
 # You must register at unrealengine.com and link your github account to access this private repo.
-# @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
+# See the wiki for more info: https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
 # The source is over 8 GiB, with an extra 3 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
-# Allows enlargement of /tmp to fit Unreal.
-# set enlargetmp to any value.
-
 pkgname='unreal-engine'
 install="$pkgname.install"
-pkgver=4.23.0
+pkgver=4.23.1
 # shellcheck disable=SC2034
 {
   pkgrel=1
@@ -28,16 +25,20 @@ pkgver=4.23.0
     'Makefile'
     'ignore-clang50-install.patch'
     'use-arch-mono.patch'
+    'allow-unsupported-clang.patch'
   )
 
-sha256sums=('SKIP'
-            '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
-            '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
-            '9654226ef3318389aa8fe15f3d4d14e7ac2113520ee5ebf2899d42273a2a6fb0'
-            '71a7304deebb00234c323eed9a73cdbd022099ba65f62fc90e78069eceed1f5d'
-            '6b30adf71eeabaf1b2b669aa56c9deba145a4fe7bdd2e77f44b0cb7423162bc0')
+  sha256sums=(
+    'SKIP'
+    '46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118'
+    '1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279'
+    '9654226ef3318389aa8fe15f3d4d14e7ac2113520ee5ebf2899d42273a2a6fb0'
+    '71a7304deebb00234c323eed9a73cdbd022099ba65f62fc90e78069eceed1f5d'
+    '6b30adf71eeabaf1b2b669aa56c9deba145a4fe7bdd2e77f44b0cb7423162bc0'
+    'bc4837ead8c89b7e4df2a14aedd62d23f47e7fca08c3f429a267ec4c3b3412d3'
+  )
 
-  # Package is 3 Gib smaller with "strip" but it's skipped because it takes a long time and generates many warnings
+  # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
   options=(strip staticlibs)
 }
 
@@ -50,6 +51,7 @@ prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" ignore-clang50-install.patch
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
   patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
+  patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" allow-unsupported-clang.patch
 
   cp "$srcdir/Makefile" "$srcdir/UnrealEngine/Makefile"
 
@@ -76,7 +78,7 @@ prepare() {
   echo "Running setup"
   ./Setup.sh
 
-  echo "generating project files"
+  echo "Generating project files"
   ./GenerateProjectFiles.sh -makefile
 }
 
@@ -87,7 +89,7 @@ build() {
   # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
 
-  # -j1 to force one  make job; the first time fails if there are multiple jobs
+  # -j1 to force one make job; the first time fails if there are multiple jobs
   make -j1
 }
 
