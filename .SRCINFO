@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-plasma-integration
 	pkgdesc = plasma browser integration addon for firefox.
-	pkgver = 1.6.1
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = firefox-extension-plasma-integration
 	license = GPLV3
 	depends = firefox
 	depends = plasma-browser-integration
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3392927/plasma_integration-1.6.1-fx.xpi
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3392927/plasma_integration-1.7-fx.xpi
 	sha512sums = 7cf6aa1f8297044052acddb3355f1f86d5d996103568f212244edc5f1c7ce9caa7408fb6cb1652d31ab75e2bc205a6036cbfa224492e5092b1122d9e2e22489a
 
 pkgname = firefox-extension-plasma-integration
