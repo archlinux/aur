@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="V2RayA是一个支持全局透明代理的V2Ray Linux客户端。"
@@ -13,13 +13,10 @@ makedepends=('go>=2:1.11.3-1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mzz2017/V2RayA/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-prepare() {
-    export GO111MODULE=on
-    export GOPROXY=https://goproxy.io
-}
-
 build() {
     cd "V2RayA-$pkgver/service"
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.io
     go build -ldflags="-X V2RayA/global.Version=$pkgver" -o v2raya
 }
 
