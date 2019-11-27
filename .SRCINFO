@@ -7,7 +7,9 @@ pkgbase = keeper-password-manager
 	license = Custom
 	depends = xdg-utils
 	source = https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_14.9.9_amd64.deb
+	source = LICENSE
 	sha512sums = 60437f858e3f6332870cd2ea979ede137847a5e62971858cae97d0d786344e7852c6c115d91ef3509fe5cfdea5bdbb90f27106fddc60dbdeb5369ab602891038
+	sha512sums = 9bd161a552aba146ee89ab930b8a444442d3cb4bba8cf5e94d1a04bfe2c99fae8372d0d04d5b01fe489578429e9fd020cb567e005b1a267fcb51a0bc4cb2f7b2
 
 pkgname = keeper-password-manager
 

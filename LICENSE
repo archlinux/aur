@@ -1,0 +1,176 @@
+ General
+
+Keeper Security, Inc. ("Keeper Security") provides, markets and sells Keeper®, a mobile and desktop security software program to individuals, municipalities, educational institutions, financial institutions and general businesses. Keeper allows end users to enter, store, secure, backup, share and restore confidential and sensitive "micro-data" and "files" on computers and mobile devices for the purpose of protecting this information from the public. Micro-data is a term that applies to short strings of data that are critical to end users (e.g. website logins, passwords, social security numbers, bank account numbers, access codes, pin codes and private notes). Files may include private documents, personal photos and videos. Keeper utilizes strong encryption using a 256-bit cipher and is approved for export by the U.S. Department of Commerce Bureau of Industry and Security under license #5D992. Keeper is herein referred to as "Keeper", "System" or "Software".
+
+Please read these Terms of Use carefully. The following are the terms of use for your subscription to Keeper and use of the Software. By using Keeper software you accept these terms of use. These terms of use are not assignable by you to anyone else.
+Copyright, Patent and Trademark Information
+
+Keeper, and the information which it contains, is the property of Keeper Security and is protected from unauthorized copying and dissemination by United States copyright law, trademark law, international conventions and other intellectual property laws. By way of example only, and not as a limitation, "Keeper", "Password Keeper", "Keeper DNA", "KeeperChat", "BreachWatch" and the Keeper logos are registered trademarks of Keeper Security, under the applicable laws of the United States and/or other countries. Apple, the Apple logo and Mac are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc. Google Play is a trademark of Google Inc. Amazon Web Services, and the "Powered by Amazon Web Services" logo are trademarks of Amazon.com, Inc. or its affiliates in the United States and/or other countries. Other Software or service names or logos appearing in the Software are either trademarks or registered trademarks of Keeper Security, and/or their respective owners. The absence of a Software or service name or logo from this list does not constitute a waiver of Keeper Security's trademark or other intellectual property rights concerning that name or logo.
+
+Keeper is protected by U.S. patent numbers 8,656,504, 9,294,476, 9,465,786, 8,868,932, 8,738,934, and 5,743,954. Additional patents pending.
+Responsibilities & Restrictions
+
+Keeper software is used by millions of people globally to protect and store their passwords and private information. The Software may only be used for lawful purposes and as accordingly, you agree to not misuse Keeper. When using the Software, you agree:
+
+Not to upload, post, email or transmit otherwise any material that contains software viruses, trojan horses, worms, files or programs intended to interrupt, destroy, deface or limit the use, access or functionality of the Software.
+
+Not to upload, post, email or transmit otherwise any material that is illegal, pornographic, abusive or obscene.
+
+Not to upload, post, email or transmit otherwise any material that violates the privacy or intellectual property rights of others.
+
+Not to "Reverse Engineer", change, modify, hack, translate, copy, distribute, pledge, assign, transfer, make derivative works, exploit, encumber or crack any portion of the Software.
+
+Unless you are an authorized reseller of the Software, you may not display, copy, reproduce, license or distribute the Software, any component thereof, any documentation provided in connection with the Software, or any content, including but not limited to newsletters distributed to you by Keeper Security in connection with the Software.
+
+Keeper Security, in its sole discretion, may remove content and block user access to any content that it determines to be illegal, threatening, pornographic, abusive, obscene or in violation of another party's intellectual property.
+Your Master Password
+
+You hereby understand that upon using the Software, you will be required to create a "Master Password." The Master Password will be used by you and only you.
+
+You are responsible for maintaining the security of your Master Password and Keeper records entered, imported and exported using the Software. Keeper Security has no knowledge of your Master Password and will not ask or be permitted to ask for your Master Password. Keeper Security, will not under any circumstances, have access to your Master Password or the records stored in Keeper.
+
+You agree to not issue your Master Password to any third parties and shall not, under any circumstances, issue your Master Password to any customer support representative of Keeper Security in the event you contact Keeper Security for Software assistance. Generally, you will agree to not share your Master Password with any employee, agent, officer or director of Keeper Security. Keeper Security shall not be responsible for the actions of any individuals who misuse or misappropriate your Keeper information or other any of your assets using your Master Password or the information stored in Keeper.
+
+Please remember your Master Password. If you lose or forget your Master Password, Keeper Security will not be able to assist you in gaining access to your records since Keeper Security does not have access to or knowledge of your Master Password. Again, it is imperative to not forget your Master Password since this is required to gain access to your records stored in Keeper.
+Maintenance of Your Keeper Records
+
+Micro-data and files stored in your Keeper vault are referred to as "Keeper Records." Keeper Security will maintain an encrypted binary file of your Keeper records on Keeper Security's Cloud Security Vault™, provided that you are a paid-subscriber of the Software. The binary is created when you backup your records and is stored in the event that you need to recover your information due to local system crash, damage, loss or hack attempt that results in the self-destruction of your records. The Cloud Security Vault is also used to enable seamless synchronization of your records on your devices where Keeper is installed.
+
+If your subscription expires and you choose not to renew your subscription within 90 days, Keeper Security reserves the right to delete any Keeper records contained in your account that have files (e.g. documents, photos, videos, etc.) contained in them. Notice will be sent to you prior to termination based on the email address associated with your Keeper account. Expired user accounts convert to a Free User account.
+
+A Free User of the software is permitted to use Keeper on one mobile device without the ability to backup, restore, share or save their records outside of the one mobile device. If the device or data is lost or stolen, a Free User will not be able to restore their records. Free User accounts are allowed to upload and store five (5) files in their Keeper vault subject to a maximum storage size of 100MB. After this file limit, a Free User will be required to purchase a paid storage plan.
+
+Free User accounts are allowed to have up to two (2) vault records that contain Two-Factor TOTP codes. To use more Two-Factor codes within vault records a Free User will be required to purchase a paid Keeper plan (such as Unlimited, Family, Business, or Enterprise).
+
+If you are a free user who has not utilized the Software within 12 months, Keeper Security reserves the right to terminate and delete your account. Notice will be sent to you prior to termination based on the email address associated with your Keeper account.
+
+All users of the Software are required to adopt and maintain the Privacy Policy, which may be modified by Keeper Security from time to time.
+
+Violation of these responsibilities and restrictions may result in the termination of this Agreement.
+Software and Support
+
+Keeper requires an Internet connection to function on Cloud-based software platforms such as web browsers and browser extensions. Your information created in Keeper is encrypted with 256-bit AES ciphers and transmitted to Keeper's Cloud Security Vault using a 256-bit encrypted TLS connection. Keeper employees do not have access to your records. We cannot help you retrieve your records if you forget your Master Password. Information such as your IP address and login information is utilized for your security and protection.
+
+The Software provided is subject to this Agreement, as it may be amended by Keeper Security Inc., and any guidelines, rules or operating policies that Keeper Security Inc. may establish and post from time to time (this "Agreement" including without limitation Keeper Security Inc.'s Privacy Policy, as linked from all email generated from Keeper Security Inc. or otherwise furnished to you (the "Policy" (unless otherwise stated, all references to the Agreement shall include the Policy).
+Age of Use
+
+The Software is available only to persons who can form legally binding contracts under applicable law. Without limiting the foregoing, the Software is not available to individuals under the age of 18. By using the Software, you represent that you are over the age of 18. If you do not qualify, you are not permitted to use the Software. If you are using Keeper in your capacity as an employee under an administered program, you must have authorization to use the Software by your administrator.
+
+Periodically, you may provide Keeper support staff with remote access to view your computer screen only for the purpose of troubleshooting issues that arise in your use of your Software. Keeper Security will not have access to your Master Password or your data. You hereby waive any claim for damages from any problems that may arise from such access, including without limitation any disruption or damage caused by Keeper Security or its personnel.
+Subscription Fees, Payment Terms and Refund Policy
+Subscription Fees
+
+The fees charged by Keeper Security are referred to as Subscription Fees. The Software is subject to annual Subscription Fees to operate the Software on more than one mobile device or computer or to gain access to enhanced features which include, without limitation: Importing / exporting records, synchronizing records to multiple devices or computers, restoring or backing up records and file storage.
+
+When you sign up for Keeper, you can use all premium features such as secure cloud storage, sync, backup and sharing - free of charge for 30 days. After 30 days, you can continue using the premium features for an annual subscription. Upon upgrading from the free version of Keeper or by purchasing the paid version of Keeper with expanded features and benefits, you will be subject to annual Subscription Fees in accordance with the Fee Schedule as shown on the website. You will be required to submit payment annually in advance for the Software. Access to the paid-version of Keeper will be disabled until payment is received. Subscription Fees are billed and collected in advance based on your subscription plan. Third-party application stores may offer an auto-renewable monthly payment plan for the Software. This option will include a 7-day free trial. After 7 days, you can continue using the premium features for a monthly subscription.
+Referral Program
+
+Keeper Security’s referral program provides our customers with an opportunity for them to convert their referral points into cash-donations to qualified charitable organizations. These charities cover disaster recovery, child education, healthcare, hunger and poverty. Keeper Security provides a list of charitable organizations inside the application. When a customer accrues 50 points, Keeper Security will donate the computed amount in currency to a charity selected by the customer. Keeper Security reserves the right, in its sole discretion, to add, change or remove a charitable organization from its list at anytime. By participating in Keeper Security’s referral program, you acknowledge that all charitable contributions are being made by Keeper Security at its sole expense and accordingly, it shall receive any relevant tax deductions.
+Channel Partners, Mobile Operators & Resellers
+
+You are responsible for reviewing the Fee Schedule from time to time and remaining aware of the fees charged by Keeper Security. The Fee Schedule, including subscription quantities and pricing, is subject to change at any time in Keeper Security's sole discretion. Keeper Security will use good-faith efforts to notify you via email prior to effectuating any change to the Fee Schedule. If you receive special discounts through a Channel Partner or Value Added Reseller of the Software, those discounts may not be available if you cease to continue to be a customer of the Channel Partner or Value Added Reseller, in which case Keeper Security's standard subscription fees will apply. Keeper Security may rely on information provided by the applicable Channel Partner or Value Added Reseller, if any, with respect to the status of your account.
+Payment
+
+As a condition for using Keeper, you must provide us with payment. Payment for Software shall be made by a valid credit card, debit card or charge card (collectively referred to as "Charge Card") as accepted by Keeper Security and having sufficient payment to cover the Subscription Fees, as charged to you. Payment methods such as check, wire transfer or other trade format must be negotiated directly with and approved by Keeper Security. Keeper reserves the right to auto-bill and charge you for recurring Subscription Fees. You are responsible for paying amounts billed by Keeper Security to your Charge Card for Subscription Fees. Business customers using Keeper may also issue payment by wire, ACH or by other means for amounts exceeding USD$10,000.
+Invalid or Cancelled Payments
+
+In the event that you cancel your Charge Card or it is otherwise terminated, you must immediately provide us with a new, valid Charge Card number. You authorize us from time to time, to undertake steps to determine whether the Charge Card number you have provided to us is a valid number. In the event that you do not provide us with a current valid Charge Card number with sufficient credit upon request during the effective period of this Agreement, you will be in violation of this Agreement and we may terminate this Agreement with you. In the event that you provide us with a debit card number instead of a credit card number, you authorize us to make all charges described in this Agreement to your debit card account. If the annual payment option is selected or if you have previously provided your Charge Card for payment, you hereby authorize Keeper Security to charge your card for such amounts on a regular monthly or annual basis at the beginning of each billing cycle. If Keeper Security is for any reason unable to effect automatic payment via your Charge Card, Keeper Security will attempt to notify you via email and your Keeper account will be disabled until payment is received.
+Upgrades
+
+You may upgrade your account at any time. If you are upgrading your subscription you will only be charged for the remainder of your annual subscription. The full amount of the new plan will be charged annually thereafter. You agree to pay all fees, taxes and charges incurred in connection with your Keeper subscription at the rates in effect when the charges were incurred. A standard annual billing cycle is 365 days.
+Pricing Changes
+
+Keeper may change the pricing of its products at anytime. Pricing changes will be published on Keeper's website or in third-party application stores. All fees and charges incurred in connection with your username and password will be billed to the payment method designated during the registration process. You are responsible for any fees or charges incurred to access the Keeper website through an Internet access provider or third-party service.
+Refunds
+
+You may cancel your account at any time. Since the Software is delivered in full at the time of purchase and we cannot uninstall it from your device(s), you will not be issued a refund.
+Right to Disable Access
+
+Keeper Security, in its sole discretion, may immediately disable your access to the Software without a refund or recourse if it believes you have violated any of the policies listed above or elsewhere in this Agreement.
+Uninstall Instructions
+
+In the event you need to uninstall Keeper from your device, please visit the FAQ page (https://keepersecurity.com/faq.html).
+Compliance with Laws; Monitoring
+
+You shall use the Software only in compliance with this Agreement. You agree to not use this Software as a means or in a manner that violates any local, state or federal laws in the United States as well as in your country of use.
+Indemnification
+
+You hereby agree to defend, indemnify and hold harmless Keeper Security, its business partners, third-party suppliers, providers, licensors, officers, directors, employees, distributors and agents against any damages, losses, liabilities, settlements, and expenses (including without limitation costs and reasonable attorneys' fees) in connection with any claim or action that (i) arises from any alleged breach of this Agreement, (ii) arises from the content or effects of any messages you distribute using the Software or (iii) otherwise arises from or relates to your use of the Software. In addition, you acknowledge and agree that Keeper Security has the right to seek damages when you use the Software for unlawful purposes, in an unlawful manner, and/or in a manner inconsistent with the terms of this Agreement, and that such damages may include, without limitation, direct, indirect, special, incidental, cover, reliance and/or consequential damages.
+Intellectual Property Rights in Your Content
+
+You agree that you will not use the Software to upload or transmit any contact lists, communications or content of any type that infringe, misappropriate or violate any rights of any party. By submitting ideas, concepts, inventions or content to this website or using them in connection with the Software, you agree that such submission is non-confidential for all purposes. If you make any such submission, you agree that you will not send or transmit to Keeper Security or to any third party using the Software, any communication or content that infringes or violates any rights of any party. If you submit any business information, ideas, concepts or inventions or content to Keeper Security by email, you agree such submission is non-confidential for all purposes. If you make any submission to Keeper Security or if you submit any business information, idea, concept or invention to Keeper Security by email, you automatically grant or warrant that the owner of such content or intellectual property has expressly granted Keeper Security a non-exclusive, royalty-free, perpetual, irrevocable, worldwide license to use, reproduce, create derivative works from, modify, publish, edit, translate, distribute, perform, and display such content in any manner.
+Security Notification & Disclosure Policy
+
+Keeper Security takes extensive measures to protect and safeguard its internal infrastructure, Software, intellectual property, stakeholders and its customers.
+
+In using the Software, you may provide information about yourself or your employer (such as name, contact information, or other registration information) to Keeper Security. Keeper Security may use this information and any technical information about your use of the Software to tailor its presentations to you, facilitate your movement through the Software or communicate separately with you. If you purchased the Software as a result of solicitation by a channel partner of Keeper Security, Keeper Security may share your information with the channel partner and the channel partner may share related information with Keeper Security. Keeper Security will not provide your contact information to companies you have not authorized for that purpose unless required by law.
+
+Please read our Privacy Policy. If you are a security researcher or security expert, please read Keeper's Vulnerability Reporting and Bug Bounty Program documented on the Security Disclosure page of our website. Be advised that any notifications made to Keeper Security by you, involving a purported security vulnerability of our Software and/or infrastructure will be investigated and acted upon swiftly for timely remediation. Keeper welcomes collaboration with security researchers on potential opportunities of responsible disclosure. Please contact us at security@keepersecurity.com.
+
+Keeper welcomes input and feedback about it’s Software and systems from security researchers. The unauthorized access to Keeper Security's systems, Software and/or a user’s device which runs Keeper is against the law. Furthermore, the threat of maliciously disclosing or actual malicious disclosure of any purported weakness, security flaw or degradation of our Software or systems (which are proprietary and property of Keeper Security) will be treated as a breach and unauthorized access to Keeper systems.
+Warranty Disclaimer and Remedies
+
+You agree to use Keeper at your own risk. Keeper Security does not warrant that Keeper will be uninterrupted or error free nor does it make any warranty as to the results that may be obtained from its use. The Software is provided "as is" and Keeper Security disclaims all warranties, express or implied, including without limitation, implied warranties of merchantability, fitness for a particular purpose and non-infringement.
+
+Your sole and exclusive remedy for any failure or non-performance of the Software shall be for Keeper Security to use commercially reasonable efforts to adjust or repair the Software. Keeper Security regularly makes fixes, enhancements and upgrades to its Software for the benefit of all customers on paid subscription plans.
+Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, TORT, CONTRACT OR OTHERWISE, SHALL KEEPER SECURITY OR ANY OF ITS UNDERLYING SERVICE PROVIDERS, BUSINESS PARTNERS, INFORMATION PROVIDERS, ACCOUNT PROVIDERS, LICENSORS, OFFICERS, DIRECTORS, EMPLOYEES, DISTRIBUTORS OR AGENTS; BE LIABLE TO YOU OR ANY OTHER PERSON FOR ANY MONEY DAMAGES, WHETHER DIRECT, INDIRECT, SPECIAL, INCIDENTAL, COVER, RELIANCE OR CONSEQUENTIAL DAMAGES, EVEN IF KEEPER SECURITY SHALL HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY OTHER PARTY.
+
+IN THE EVENT THAT, NOTWITHSTANDING THE FOREGOING, KEEPER SECURITY IS FOUND LIABLE TO YOU FOR DAMAGES FROM ANY CAUSE WHATSOEVER, AND REGARDLESS OF THE FORM OF THE ACTION [WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), SOFTWARE LIABILITY OR OTHERWISE], THE MAXIMUM AGGREGATE LIABILITY OF KEEPER SECURITY TO YOU ARISING IN CONNECTION WITH THIS AGREEMENT SHALL BE LIMITED TO THE AMOUNT YOU PAID FOR THE SOFTWARE IN THE TWELVE (12) MONTHS PRIOR TO THE ACCRUAL OF THE APPLICABLE CLAIM, LESS ANY DAMAGES PREVIOUSLY PAID BY KEEPER SECURITY TO YOU IN THAT TWELVE (12) MONTH PERIOD. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION AND EXCLUSION MAY NOT APPLY TO YOU.
+Restricted Persons, Export of Software or Technical Data
+
+You hereby warrant that you are not a "Restricted Person". For purposes of this Agreement, you are a "Restricted Person" if you or any officer, director, or controlling shareholder of the entity on behalf of which you are using the Software is (1) a national of or an entity existing under the laws of Cuba, Iran, Sudan, Syria or any other country with which U.S. persons are prohibited from engaging in transactions, as may be determined from time to time by the U.S. Treasury Department; (2) designated as a Specially Designated National or institution of primary money laundering concern by the U.S. Treasury Department; (3) listed on the Denied Persons List or Terrorists List or Entity List by the U.S. Commerce Department; (4) engaged in nuclear, missile, chemical or biological weapons activities to which U.S. persons may not contribute without a U.S. Government license; or (5) owned, controlled, or acting on behalf of a Restricted Person. If you become a Restricted Person during the term of this Agreement, you shall notify Keeper Security within twenty-four (24) hours, and Keeper Security shall have the right to terminate any further obligations to you, effective immediately and with no further liability to you, but without prejudice to your outstanding obligations to Keeper Security.
+
+You agree that you shall not utilize the Software to conduct or facilitate any transaction with any Restricted Person, except as may be expressly authorized in advance in writing by the U.S. Government. You may not remove or export from the United States or allow the export or re-export of the Software, or any direct Software thereof, including technical data, in violation of any restrictions, laws, or regulations of the United States or any other applicable country.
+Links to Third-Party Websites
+
+This Software permits users to link to non-Keeper Security, third-party websites. These links are provided to you as a convenience, and Keeper Security is not responsible for the content of any linked website. Any non-Keeper Security website accessed from this website is independent from Keeper Security, and Keeper Security has no control over the content of that website. In addition, a link to any non-Keeper Security website does not imply that Keeper Security endorses or accepts any responsibility for the content or use of such website.
+No Implied Endorsements
+
+In no event shall any reference to any third party or third-party Software or service be construed as an approval or endorsement by Keeper Security of that third party or of any Software or service provided by a third party.
+Copyrights
+
+If you believe any materials accessible on or from Keeper Security's website infringe your copyright, you may request removal of those materials from the website by contacting Keeper Security's copyright agent and providing the following information:
+
+1. Identification of the copyrighted work that you believe to be infringed. Please describe the work, and where possible include a copy or the location (e.g., URL) of an authorized version of the work.
+
+2. Your name, address, telephone number and email address.
+
+3. A statement that you have a good faith belief that the complained of use of the materials is not authorized by the copyright owner, its agent, or the law.
+
+4. A statement that the information that you have supplied is accurate, and indicating that "under penalty of perjury," you are the copyright owner or are authorized to act on the copyright owner's behalf.
+
+5. A signature or the electronic equivalent from the copyright holder or authorized representative.
+
+Keeper Security's agent for copyright issues relating to this web site is as follows:
+
+Keeper Security, Inc.
+Intellectual Property Administrator
+820 W. Jackson Boulevard
+Suite 400
+Chicago, IL 60607
+
+
++1 312.971.5702 Tel
+support@keepersecurity.com
+
+In an effort to protect the rights of copyright owners, Keeper Security maintains a policy for the termination of Keeper subscribers who are repeat infringers.
+Privacy Policy
+
+Keeper Security's Privacy Policy is located at https://keepersecurity.com/privacypolicy.html. By using our Software, you accept and agree to all terms, provisions and conditions of our Privacy Policy.
+Entire Agreement
+
+If any provision of the Agreement is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that this Agreement will otherwise remain in full force, in effect and enforceable.
+Waivers, Severability, Modifications & Notifications
+
+Keeper Security and you agree that this Agreement is the complete and exclusive statement of the mutual understanding of the parties, supersedes and cancels all previous written and oral agreements, communications, and other understandings relating to the subject matter of this Agreement, and that all waivers and modifications must be in writing signed by both parties, except as otherwise provided herein. No delay or omission by either party in exercising any right or remedy under this Agreement or existing at law or equity shall be considered a waiver of such right or remedy. Keeper Security reserves the right to modify this agreement at anytime and will publish the most updated version on our website. Your continued use of the Software shall bind you under the modified and revised terms of use. Keeper Security reserves the right to contact you by email, at the device-level or within the Keeper Software application to notify you of material events or important changes related to your account.
+No Agency
+
+No agency, partnership, joint venture or employment is created by your use of Keeper. You do not have any authority of any kind to bind Keeper Security in any respect whatsoever.
+Governing Law, Venue & Jurisdiction
+
+The Agreement shall be governed by the laws of the State of Illinois in the United States of America. Jurisdiction for any legal actions in connection with the Agreement shall be brought in the state or federal courts located in Chicago, Illinois in Cook County.
+Additional Information
+
+If you have any questions about the use of Keeper software or these Terms of Use, please contact us at support@keepersecurity.com or by mail at: CRM Management, Keeper Security, Inc., 820 W. Jackson Blvd, Suite 400, Chicago, IL 60607.
