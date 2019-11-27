@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/python-neovim-git/
+/*.pkg.tar.xz
