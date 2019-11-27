@@ -1,0 +1,21 @@
+pkgbase = python-cq-editor
+	pkgdesc = CadQuery GUI editor based on PyQT
+	pkgver = 0.1RC1
+	pkgrel = 1
+	url = https://github.com/CadQuery/CQ-editor
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = python-setuptools
+	depends = python-cadquery
+	depends = python-pyqt5
+	depends = python-qtconsole
+	depends = python-logbook
+	depends = python-pyparsing
+	depends = python-pyqtgraph
+	depends = python-path.py
+	depends = python-requests
+	source = https://github.com/CadQuery/CQ-editor/archive/0.1RC1.tar.gz
+	md5sums = 3e48fb0ead68ebffcaeef24a84999534
+
+pkgname = python-cq-editor
+
