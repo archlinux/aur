@@ -3,7 +3,7 @@
 pkgname=jaesve-git
 _pkgname=jaesve
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI utility for stream converting JSON objects to a series of CSV values"
 url="https://github.com/bazaah/jaesve"
 license=("MIT")

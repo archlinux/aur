@@ -1,7 +1,7 @@
 pkgbase = jaesve-git
 	pkgdesc = A CLI utility for stream converting JSON objects to a series of CSV values
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazaah/jaesve
 	arch = x86_64
 	license = MIT
