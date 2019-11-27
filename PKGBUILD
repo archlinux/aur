@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.3.13-arch1
+_srcver=5.4-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -70,29 +70,25 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(kmod inetutils bc libelf)
 options=('!strip')
-_ckpatch="patch-5.3-ck${_ckpatchversion}"
+_ckpatch="patch-5.4-ck${_ckpatchversion}"
 _gcc_more_v='20190822'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.3/5.3-ck${_ckpatchversion}/$_ckpatch.xz"
-  fix.systemd-detect-virt.patch::https://github.com/ckolivas/linux/commit/6e346c7b4258ac03ec308741e8e28e0da3abf911.patch
+  "http://ck.kolivas.org/patches/5.0/5.4/5.4-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('9f04e53f03d0ead6561195fb71aac18cbee419112ed54f9d4fc1515a5fa5c92f'
+sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1'
+            'edf3e3de13ff0ee40da422ba168c03a3f351229aabb01829853da3b08720ea78'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
-            '5b66761eae4efa4cb967aba9d4e555aa320cf5c004f0848e6bfbcb75ef66fbf1'
-            '01367272cd82cafc24ae04d309d5c738352949727dc2a37f8578c14c7a90b9f0'
-            'cb38c0468a9ee0507e97e48be4a51116c1db952b7599906f2c36933b03e1ca34'
-            '4b4d388e0cb6b2448d644463e4693bb08122716117aafa411ce78305da305642')
+            'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
+            'b008f5e21bdbaaf95aecebe443761ee0a9adfb4dcf5729e384dcd53323bab149')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -129,15 +125,9 @@ prepare() {
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
   msg2 "Patching with ck patchset..."
-  
-  # fix ck1 patchset for 5.2.18
-  sed -i -e '/^-CFLAGS/ s,+=,:=,' -i -e '/^+CFLAGS/ s,+=,:=,' ../"${_ckpatch}"
 
   # ck patchset itself
   patch -Np1 -i ../"${_ckpatch}"
-
-  # systemd-detect-virt fix from CK merged but not yet released
-  patch -Np1 -i ../fix.systemd-detect-virt.patch
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
@@ -217,7 +207,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   depends=('linux-ck') # added to keep kernel and headers packages matched
   provides=("linux-ck-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
