@@ -1,14 +1,14 @@
 pkgbase = r-s4vectors
 	pkgdesc = S4 implementation of vector-like and list-like objects
-	pkgver = 0.20.1
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/S4Vectors.html
 	arch = x86_64
 	license = Artistic-2.0
 	depends = r
 	depends = r-biocgenerics
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.20.1.tar.gz
-	sha1sums = 55d6783b6feb9fe743c07d8b11d226c47fb336d6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.24.0.tar.gz
+	sha1sums = 9e96c9ff857ae4243d346b66e9281404dc3292c1
 
 pkgname = r-s4vectors
 
