@@ -13,7 +13,7 @@ pkgbase = linux-git
 	source = git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux
 	source = config
 	sha256sums = SKIP
-	sha256sums = edf3e3de13ff0ee40da422ba168c03a3f351229aabb01829853da3b08720ea78
+	sha256sums = 0d01621e8af435d01734cf0644ad8b898329f9a3e1f0037d22a9ab0969d52466
 
 pkgname = linux-git
 	pkgdesc = The Linux git kernel and modules
