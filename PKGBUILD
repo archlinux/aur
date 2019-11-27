@@ -3,28 +3,29 @@
 # Previous Maintainer: Michael Smith <michael at diglumi dot com>
 # Previous Maintainer: Marcin Skory <armitage at q84fh dot net>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
+
 pkgname=gargoyle
-pkgver=2019.1
+pkgver=2019.1.1
 pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h')
 url="http://ccxvii.net/gargoyle/"
 #alternative url="http://ccxvii.net/gargoyle/"
 license=('GPL')
-depends=('gtk2' 'sdl_mixer' 'sdl_sound' 'libvorbis' 'freetype2')
+depends=('gtk2' 'sdl2_mixer' 'sdl2' 'libvorbis' 'freetype2')
 #sdl_image ?
 makedepends=('ftjam' 'pkgconfig' 'desktop-file-utils')
 provides=('gargoyle')
 conflicts=('gargoyle-mod')
 replaces=('gargoyle-mod')
 #backup=()
-groups=(inform)
+#groups=(inform)
 source=("https://github.com/garglk/garglk/archive/${pkgver}.tar.gz" \
 	"gargoyle.sh" \
 	"gargoyle.install" \
 	"gargoyle.xml")
 install=${pkgname}.install
-sha512sums=('59f32be9e5faa542e5d12a03466a92503f15023add1da5370645e15ef5b6c1eb2696456b0f9fcc924a5341b40cc98e9e7bcb1aec0ea05acfd66ccc412e39cbb7'
+sha512sums=('0d1f2724bd6227142eb67c146557a992a6d62af172398c9961511ce5c080e517d1e12ca9bc6be27c1893e404026256257bf3a04cb05923723c0886f111adc4e3'
             'fbfd04e6d62e469b62263f1fb92b314e825784982be3be9f0e506fe6ff7d367704db907c88ec60fc492f35eaa3548fc3a65fd67d8c4c2be7e35ed87a6c9c3489'
             '1fa602865745c1c9801178ee9b24be86215f2af4f9ee3f4f3b3c0606a87aba32a67c9c5343b481332c8fc97ff6c1a5e447f074d116c0cc5b255af35098096e6e'
             'c9924abc48b6dc5025fb83c040a3bdd2a324302d67683645a4fd1d1f3bcfe92c58a9db71c1e41a26afe8a3144e1cdafbc060df2261d93ddac29a9144ae22db71')
