@@ -1,6 +1,7 @@
 # Maintainer: Thomas Kuther <tom@kuther.net>
 # Maintainer: Alexandre Berthaud <alexandre at berthaud dot me>
-pkgname=keystore-explorer
+pkgname=keystore-explorer-bin
+_reponame=keystore-explorer
 _pkgname=kse
 pkgver=5.4.1
 _pkgver=${pkgver//./}
@@ -11,8 +12,8 @@ url="http://www.keystore-explorer.org/"
 license=('GPL')
 depends=('java-runtime')
 install=${pkgname}.install
-source=("https://github.com/kaikramer/${pkgname}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.zip"
-        "${pkgname}.desktop")
+source=("https://github.com/kaikramer/${_reponame}/releases/download/v${pkgver}/${_pkgname}-${_pkgver}.zip"
+        "${_reponame}.desktop")
 md5sums=('d21de02af032ebcca0a0bb53f8d8c96c'
          'dfaa247ab726fe2e44368101399b508d')
 
@@ -38,7 +39,7 @@ package() {
   for i in 16 32 48 128; do
     install -D -m644 icons/kse_${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/kse.png"
   done
-  install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+  install -D -m644 "${srcdir}/${_reponame}.desktop" "${pkgdir}/usr/share/applications"
 }
 
 
