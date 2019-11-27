@@ -4,10 +4,10 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.6.4
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
-depends=('cblas' 'fftw' 'boost-libs' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
-makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'boost' 'python' 'ocl-icd' 'cuda' 'git')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
+makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'git' 'ninja' 'boost1.69')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
@@ -30,8 +30,7 @@ build() {
 
   cd build
   cmake .. \
-      -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
-      -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
+      -GNinja \
       -DGOOGLETEST_VERSION=1.9.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -45,7 +44,7 @@ build() {
       -DCMAKE_BUILD_TYPE=Release \
       -DCUDA_HOST_COMPILER=/usr/bin/gcc
 
-  make
+  ninja
 }
 
 # check() {
@@ -62,5 +61,5 @@ package() {
 
   cd build
 
-  make DESTDIR="${pkgdir}/" install
+  DESTDIR="${pkgdir}/" ninja install
 }
