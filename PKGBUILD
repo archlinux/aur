@@ -1,6 +1,6 @@
 pkgname=batch_resolve
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast asynchronous DNS resolver"
 arch=('x86_64')
 url="https://github.com/mersinvald/batch_resolve"
@@ -25,3 +25,4 @@ package() {
   chmod -x $pkgdir/etc/batch_resolve.toml
 }
 
+md5sums=('27fb723320d9908d2f84368f42325517')
