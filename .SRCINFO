@@ -1,6 +1,6 @@
 pkgbase = r-iranges
 	pkgdesc = Infrastructure for manipulating intervals on sequences
-	pkgver = 2.16.0
+	pkgver = 2.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/IRanges.html
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = r-iranges
 	depends = r-utils
 	depends = r-biocgenerics
 	depends = r-s4vectors
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.16.0.tar.gz
-	sha1sums = 69864216912bf9109202777d37f6e1bee5940196
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.20.1.tar.gz
+	sha1sums = 6cd7971d8e408836c090d87b1ddd94e0aca6a685
 
 pkgname = r-iranges
 
