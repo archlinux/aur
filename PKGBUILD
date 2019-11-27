@@ -3,15 +3,15 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-plugin-climatology
-pkgver=1.4.r69.g5c8e992
-pkgrel=2
+pkgver=1.4.2.ov50.r0.gc4e6050
+pkgrel=1
 pkgdesc="Climatology plugin for OpenCPN"
 arch=('x86_64' 'aarch64')
 license=("GPL3")
 depends=('opencpn')
 makedepends=('cmake' 'git')
 url="https://opencpn.org/OpenCPN/plugins/climatology.html"
-source=("$pkgname::git+https://github.com/seandepagnier/climatology_pi.git")
+source=("$pkgname::git+https://github.com/rgleason/climatology_pi.git")
 sha1sums=('SKIP')
 
 pkgver() {
