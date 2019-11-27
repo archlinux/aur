@@ -1,11 +1,10 @@
 pkgbase = ballerina
 	pkgdesc = an open source programming language and platform for cloud-era application programmers to easily write software that just works
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ballerina.io/
 	arch = any
 	license = Apache
-	depends = java-runtime
 	depends = jre8-openjdk
 	optdepends = docker
 	optdepends = bash
