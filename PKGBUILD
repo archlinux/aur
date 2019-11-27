@@ -1,3 +1,6 @@
+# Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
+# Co-Maintainer: telans <telans@protonmail.com>
+
 pkgname=mullvad-vpn-beta-bin
 pkgver=2019.9.stable
 _pkgver=2019.9
