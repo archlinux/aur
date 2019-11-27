@@ -1,7 +1,7 @@
 pkgbase = joplin
 	pkgdesc = Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS.
 	pkgver = 1.0.174
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joplin.cozic.net
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = joplin
 	makedepends = python
 	depends = nodejs
 	depends = gconf
+	depends = libxss
 	provides = joplin
 	provides = joplin-cli
 	source = joplin.desktop
