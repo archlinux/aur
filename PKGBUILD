@@ -2,26 +2,26 @@
 
 pkgname=python-neovim-git
 _pkgname=python-neovim-git
-pkgver=0.2.6.r5.g3777747
+pkgver=0.4.0.r0.ga5ee340
 pkgrel=1
 pkgdesc="Python client to neovim, git version. Use this to keep up with neovim-git"
 arch=('any')
 license=('Apache2')
-url='http://github.com/neovim/python-client'
+url='http://github.com/neovim/pynvim'
 depends=('python'
-         'python-msgpack'
-         'python-greenlet'
-         'python-cffi'
-         'python-click'
-         'python-setuptools'
-         )
+  'python-msgpack'
+  'python-greenlet'
+  'python-cffi'
+  'python-click'
+  'python-setuptools'
+)
 conflicts=(
   'python-neovim'
 )
-provides=('python-neovim')
+provides=('python-neovim' 'python-pynvim')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/neovim/python-client.git"
-        "LICENSE::https://raw.githubusercontent.com/neovim/python-client/master/LICENSE")
+source=("$pkgname::git+https://github.com/neovim/pynvim.git"
+  "LICENSE::https://raw.githubusercontent.com/neovim/python-client/master/LICENSE")
 sha256sums=('SKIP' '297a62ff61eb84f532ff5a8181860d925b710d4458f204e56c90b1da997c8711')
 
 if [ -n "$VIRTUAL_ENV" ]; then
