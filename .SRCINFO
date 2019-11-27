@@ -1,43 +1,28 @@
 pkgbase = linux-git
-	pkgver = 5.4.r3800.g2be7d348fe92
+	pkgdesc = Linux git
+	pkgver = 5.4.r4234.gc2da5bdc66a3
 	pkgrel = 1
-	url = http://www.kernel.org/
-	arch = i686
+	url = https://www.kernel.org
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = docbook-xsl
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
-	makedepends = git
+	makedepends = kmod
 	makedepends = libelf
+	makedepends = git
 	options = !strip
 	source = git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux
 	source = config
-	source = config.x86_64
-	source = linux-git.preset
 	sha256sums = SKIP
-	sha256sums = becc0c98cff692dee9500f19d38882636caf4c58d5086c7725690a245532f5dc
-	sha256sums = f5c48fe919bd841fc87839c73f5021d859a4ba614ffc832fed790e64a0d58f58
-	sha256sums = 95fcfdfcb9d540d1a1428ce61e493ddf2c2a8ec96c8573deeadbb4ee407508c7
+	sha256sums = edf3e3de13ff0ee40da422ba168c03a3f351229aabb01829853da3b08720ea78
 
 pkgname = linux-git
-	pkgdesc = The Linux kernel and modules (git version)
-	install = linux.install
+	pkgdesc = The Linux git kernel and modules
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux
-	backup = etc/mkinitcpio.d/linux-git.preset
+	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
-	provides = linux-headers
-
-pkgname = linux-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
-	provides = linux-docs
+	pkgdesc = Headers and scripts for building modules for the Linux git kernel
 
