@@ -1,0 +1,14 @@
+pkgbase = r-rhtslib
+	pkgdesc = high-throughput sequencing library
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://bioconductor.org/packages/release/bioc/html/Rhtslib.html
+	arch = x86_64
+	license = LGPL (>= 2)
+	depends = r
+	depends = r-zlibbioc
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhtslib_1.18.0.tar.gz
+	sha1sums = cc264f13d48810127cc86dd798d1da540d02ffed
+
+pkgname = r-rhtslib
+
