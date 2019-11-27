@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-dash-table
-pkgver=4.4.1
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="A First-Class Interactive DataTable for Dash"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python python-dash)
 makedepends=(python-setuptools)
 source=(https://github.com/plotly/dash-table/archive/v${pkgver}.tar.gz)
-sha256sums=('30edb179bf5d5eaa24c0f2411d3bb94ddba6bd2abcbc0981301ed015e8ba7bd8')
+sha256sums=('6bc934adeb496380bca587eaa0eaccc98f74468530d7d2adbbd9ad6c9a1b3390')
 
 prepare() {
   cd "$srcdir/dash-table-$pkgver"
