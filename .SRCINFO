@@ -1,14 +1,14 @@
 pkgbase = r-oo
 	pkgdesc = R Object-Oriented Programming with or without References
-	pkgver = 1.22.0
+	pkgver = 1.23.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/R.oo/index.html
+	url = https://CRAN.R-project.org/package=R.R.oo
 	arch = x86_64
 	license = LGPL3
 	depends = r
 	depends = r-methodss3
-	source = http://cran.r-project.org/src/contrib/R.oo_1.22.0.tar.gz
-	md5sums = 09b2691f2e5c4f46b14c30c198dc56ec
+	source = http://cran.r-project.org/src/contrib/R.oo_1.23.0.tar.gz
+	md5sums = 1607ded50e667083e1a435ac527bdbde
 
 pkgname = r-oo
 
