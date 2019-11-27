@@ -1,6 +1,6 @@
 pkgbase = r-genomeinfodb
 	pkgdesc = Utilities for manipulating chromosome and other 'seqname' identifiers
-	pkgver = 1.18.2
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomeInfoDb.html
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = r-genomeinfodb
 	depends = r-biocgenerics
 	depends = r-s4vectors
 	depends = r-rcurl
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.18.2.tar.gz
-	sha1sums = 011ce8d8f8927d613567f9fd2722efafb2d766d4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.22.0.tar.gz
+	sha1sums = c27306ac3004f1529002029687488593964930d5
 
 pkgname = r-genomeinfodb
 
