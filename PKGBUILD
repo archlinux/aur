@@ -1,7 +1,7 @@
 # Maintainer: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 pkgname=projfs
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A FUSE filesystem which does projection of directory content through a custom command. Capable of doing audio/video transparent transcoding (e.g. any music file to mp3).'
 url='https://github.com/renyuneyun/projfs'
 license=('Apache')
@@ -19,4 +19,5 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname/example_projection.yml" "$pkgdir/usr/share/projfs/$pkgname/"
 }
