@@ -1,7 +1,7 @@
 pkgbase = newmat-beta
 	pkgdesc = C++ matrix library
 	pkgver = 11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.robertnz.net
 	arch = i686
 	arch = x86_64

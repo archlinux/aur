@@ -1,4 +1,3 @@
- 	boolean.h 	boolean class definition
   	controlw.h 	control word definition file
   	include.h 	details of include files and options
   	myexcept.h 	general exception handler definitions

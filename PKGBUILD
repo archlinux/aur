@@ -2,7 +2,7 @@
 
 pkgname=newmat-beta
 pkgver=11
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ matrix library"
 url="http://www.robertnz.net"
 arch=('i686' 'x86_64')
