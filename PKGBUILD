@@ -7,15 +7,14 @@ pkgdesc='Apple-designed serif typeface based on essential aspects of historical 
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
-makedepends=('p7zip' 'dmg2img' 'cpio' 'xar' 'gzip')
+makedepends=('p7zip')
 source=('https://developer.apple.com/design/downloads/NY-Font.dmg')
 md5sums=('59e9c38d6e75e97ef3558b99f0928b29')
 
 prepare() {
-  dmg2img NY-Font.dmg NY-Font.img
-  7z x NY-Font.img
-  xar -xf "NYFonts/NY Fonts.pkg"
-  cat NYFonts.pkg/Payload | gunzip -dc | cpio -i
+  7z x NY-Font.dmg
+  7z x "NYFonts/NY Fonts.pkg"
+  7z x "Payload~"
 }
 
 package() {
