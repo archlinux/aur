@@ -11,12 +11,13 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - carbon: 8
 #   - dubnium: 10
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-pkgver=1.39.2
+_electron=electron6
+pkgver=1.40.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=('electron4' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons')
 makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
@@ -31,10 +32,10 @@ source=("$_pkgname::git+https://github.com/Microsoft/vscode.git#tag=$pkgver"
         'transparent.diff')
 sha512sums=('SKIP'
             '814c9554427183cd893a33cd2cbe91f6e0ea71921ef0717c86217b1d3058d265f9ff7a9ace3e7b76f122e60b7686475cf4d999e581a1845face3033afb9f745f'
-            'dfd9ca38e6510c9ad59fb24c1141fdfeb136f457392aee79b0bc2ff378c4c54d81a06728ba3ec4039d57dfcd730c26686585de9b4032a21ee8151a4f05195c15'
+            '0e75ee88274cbaf48c59ef6f363f6b8ac2ea83f8b17a61155008db773b709a1f0233754fa63a136ec0417313ba90a7eb17db000ec22a38ca8840d8ba6c47cab1'
             '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
             'b267dcedaf51067a782d0f14007663b706973c1538f7fb91f093475134c2145fd0ffd5ed2b47ad7f01c6167a78a4af285d2818d7850fc67a7f7a473324824664'
-            '09e417a861d8c84855714253a65aeb954575a1ca51f5ef0fc6bc2aaa6fee9ba507325ce9ed2d450ba070d461456ef5fa60993ac68fc89f21c7d2f9ebe6631266')
+            '2c1ac7f17399fddfb8330f8f05a79cb27d5e15180ced60400d5abae75207ce4f6c9684054e3b7cde549376782349350bfae71f3191f0cf25b64885bf2e2d3e8f')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
@@ -58,6 +59,9 @@ esac
 prepare() {
   cd $_pkgname
 
+  # Change electron binary name to the target electron
+  sed -i "s|exec electron |exec $_electron |" ../code.sh
+
   # This patch no longer contains proprietary modifications.
   # See https://github.com/Microsoft/vscode/issues/31168 for details.
   patch -p0 < ../product_json.diff
@@ -75,7 +79,7 @@ prepare() {
   patch -p1 < ../enable-proposed-apis.diff
 
   # Build native modules for system electron
-  local _target=$(</usr/lib/electron4/version)
+  local _target=$(</usr/lib/$_electron/version)
   sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc
 
   # Patch appdata and desktop file
@@ -89,11 +93,13 @@ prepare() {
           s|@@URLPROTOCOL@@|vscode|g
           s|inode/directory;||' resources/linux/code{.appdata.xml,.desktop,-url-handler.desktop}
 
-  # Add missing exectable name to bash completion
-  sed -i 's|complete -F _code code|complete -F _code code code-oss|' resources/completions/bash/code
-  # Create new zsh completion file for our binary
+  # Add completitions for code-oss
+  cp resources/completions/bash/code resources/completions/bash/code-oss
   cp resources/completions/zsh/_code resources/completions/zsh/_code-oss
-  sed -i 's|#compdef code|#compdef code code-oss|' resources/completions/zsh/_code-oss
+  
+  # Patch completitions with correct names
+  sed -i 's|@@APPNAME@@|code|g' resources/completions/{bash/code,zsh/_code}
+  sed -i 's|@@APPNAME@@|code-oss|g' resources/completions/{bash/code-oss,zsh/_code-oss}
 
   # Fix bin path
   sed -i "s|return path.join(path.dirname(execPath), 'bin', \`\${product.applicationName}\`);|return '/usr/bin/code';|g
@@ -132,7 +138,7 @@ package() {
   install -dm 755 "$pkgdir"/usr/lib/$_pkgname
   cp -r --no-preserve=ownership --preserve=mode VSCode-linux-$_vscode_arch/resources/app/* "$pkgdir"/usr/lib/$_pkgname/
 
-  # replace statically included binary with system copy
+  # Replace statically included binary with system copy
   ln -sf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
 
   # Install binary
@@ -147,8 +153,9 @@ package() {
   install -Dm 644 VSCode-linux-$_vscode_arch/resources/app/resources/linux/code.png "$pkgdir"/usr/share/pixmaps/code-oss.png
 
   # Install bash and zsh completions
-  install -Dm 644 $_pkgname/resources/completions/bash/code "$pkgdir"/usr/share/bash-completion/completions/code-oss
-  ln -s code-oss "$pkgdir"/usr/share/bash-completion/completions/code
+  install -Dm 644 $_pkgname/resources/completions/bash/code "$pkgdir"/usr/share/bash-completion/completions/code
+  install -Dm 644 $_pkgname/resources/completions/bash/code-oss "$pkgdir"/usr/share/bash-completion/completions/code-oss
+  install -Dm 644 $_pkgname/resources/completions/zsh/_code "$pkgdir"/usr/share/zsh/site-functions/_code
   install -Dm 644 $_pkgname/resources/completions/zsh/_code-oss "$pkgdir"/usr/share/zsh/site-functions/_code-oss
 
   # Install license files
