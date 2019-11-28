@@ -1,6 +1,6 @@
 pkgbase = mplayer-vc
 	pkgdesc = Script for full-screen viewing of local video in mplayer via console. Autor Yury Pakin
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 2
 	url = http://forum.russ2.com/index.php?showtopic=4431
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = mplayer-vc
 	depends = mediainfo
 	depends = filesystem
 	depends = mplayer
-	source = http://altlinuxclub.ru/arhiv/mplayer-vc-0.3.0.tar.gz
-	md5sums = 93fe06947995f2411e3ae39a11d7dfb3
+	source = http://altlinuxclub.ru/arhiv/mplayer-vc-0.4.0.tar.gz
+	md5sums = cb98e3dc84cddcddec8ffeb7bb2a2c16
 
 pkgname = mplayer-vc
 
