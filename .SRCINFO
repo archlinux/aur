@@ -1,7 +1,7 @@
 pkgbase = qnotero
 	pkgdesc = A Qt application which provides access to your Zotero references
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ealbiter/qnotero
 	arch = any
 	license = GPL

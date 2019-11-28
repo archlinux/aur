@@ -2,7 +2,7 @@
 #Contributor: Thomas Jost  <schnouki at schnouki _ net>
 pkgname=qnotero
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt application which provides access to your Zotero references"
 arch=(any)
 url="https://github.com/ealbiter/qnotero"
