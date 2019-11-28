@@ -5,7 +5,7 @@ _gituser="pitkali"
 _gitrepo="pos-tip"
 
 pkgname=emacs-pos-tip-git
-pkgver=0.4.6.8.g051e08f
+pkgver=0.4.6.r10.gc9ced6c
 pkgrel=1
 pkgdesc="Show tooltip at point"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags | tr - .
+  git describe --tags | sed 's+-+.r+'|tr - .
 }
 
 build() {
