@@ -5,7 +5,7 @@
 # Thanks: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=gtkwave-gtk3-tcl
-pkgver=3.3.100
+pkgver=3.3.103
 pkgrel=1
 pkgdesc='A wave viewer which reads LXT, LXT2, VZT, GHW, FST and VCD/EVCD files (GTK+ 3 version, with Tcl/Tk support)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=("http://gtkwave.sourceforge.net/${pkgname%-tcl}-${pkgver}.tar.gz"
         "http://gtkwave.sourceforge.net/${pkgname%%-*}.pdf"
         "gtkwave.install")
 
-md5sums=('9b15510fbda1960f84cbc4e2cb0a16b5'
+md5sums=('6134d39af77077c15f43c97e55b6f94e'
          'SKIP'
          'ccbede6bf65569f5688f5254389eec53')
 
@@ -90,4 +90,3 @@ package() {
   install -D -m644 "$srcdir/gtkwave.pdf" \
     "$pkgdir/usr/share/doc/gtkwave/gtkwave.pdf"
 }
-
