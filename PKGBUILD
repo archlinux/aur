@@ -12,7 +12,7 @@ arch=('x86_64')
 url='http://github.com/florianbegusch/gummi'
 license=('MIT')
 depends=('texlive-core' 'gtkspell' 'gtksourceview2' 'poppler-glib')
-makedepends=('glib2' 'gtk2' 'pango' 'poppler' 'intltool' 'setconf' 'git')
+makedepends=('glib2' 'gtk2' 'pango' 'poppler' 'intltool' 'setconf' 'git' 'automake' 'autogen' 'autoconf' 'pkgconf')
 source=("git+ssh://git@github.com/florianbegusch/gummi#tag=$pkgver")
 md5sums=('SKIP')
 
