@@ -1,0 +1,17 @@
+pkgbase = python-marshmallow-polyfield
+	pkgdesc = An extension to marshmallow to allow for polymorphic fields
+	pkgver = 5.7
+	pkgrel = 1
+	url = https://github.com/Bachmann1234/marshmallow-polyfield
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-coverage
+	depends = python-coveralls
+	depends = flake8
+	depends = python-marshmallow
+	source = python-marshmallow-polyfield-5.7.tar.gz::https://github.com/Bachmann1234/marshmallow-polyfield/archive/v5.7.tar.gz
+	sha256sums = 74f82e13adc002f0a1dbaa1fd7e2d0c5ca6f33791564e34a5ecb5eb736a9ef9a
+
+pkgname = python-marshmallow-polyfield
+
