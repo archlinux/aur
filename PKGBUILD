@@ -3,7 +3,7 @@
 # Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
 _pkgname=multilockscreen
 pkgname=${_pkgname}-git
-pkgver=r117.48e03f0
+pkgver=r129.974e8c4
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = multilockscreen-git
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = r117.48e03f0
+	pkgver = r129.974e8c4
 	pkgrel = 1
 	url = https://github.com/jeffmhubbard/multilockscreen
 	install = multilockscreen.install
