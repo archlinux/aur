@@ -23,6 +23,7 @@ conflicts=('plex-media-server-plexpass')
 install='plex-media-server.install'
 source=('plexmediaserver.conf.d'
         'plexmediaserver.service'
+        'plexmediaserver.hook'
         'plex.sysusers'
         'plex.tmpfiles'
         'terms.txt')
@@ -33,6 +34,7 @@ source_x86_64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkg
 
 sha256sums=('398ba7958598609453f5289b3d5f2389d2756158b340cf28e83c39d9ed60280b'
             '348075917da3bac9659d047a45c264c556475e66779ecd84cf00d178a5b7bebf'
+            'c5b06ebe73a90ecf76719e3a950916e5f4c527bf4c47ffb17a6f6df297b747a9'
             'c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557'
             'b7ff6525a3c7a8be885edc85bb523095f8e25ddb38873127e2a4e97b28f2c7ad'
             'dbfb5a9a7146a975863c0932f1a68c4b040ec5d7e693361f39ddfbf60885e631')
@@ -56,6 +58,7 @@ package() {
   install -D -m 644 "${srcdir}/plex.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/plex.conf"
 
   install -D -m 644 "${srcdir}/terms.txt" "${pkgdir}/usr/share/licenses/${pkgname}/terms.txt"
+  install -D -m 644 "${srcdir}/plexmediaserver.hook" "${pkgdir}/usr/share/doc/${pkgname}/plexmediaserver.hook"
 }
 
 # vim: ts=2 sw=2 et:
