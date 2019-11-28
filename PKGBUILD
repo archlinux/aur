@@ -4,7 +4,7 @@ pkgver=0.10.0
 pkgrel=1
 pkgdesc='Mozilla WebThings Gateway add-on bindings for Python'
 arch=('any')
-url='https://github.com/mozilla-iot/gateway-addon-python/'
+url='https://github.com/mozilla-iot/gateway-addon-python'
 license=('MPL2')
 depends=(
   'python-jsonschema'
@@ -13,20 +13,20 @@ depends=(
 )
 makedepends=('git' 'python-setuptools')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-iot/gateway-addon-python/archive/v${pkgver}.tar.gz"
+  "git+${url}.git"
 )
 sha256sums=(
-  'b288d3e5adaa9de103e8e340c82889f6afa9dfee1b1e6d01d175c55ccf1cc0f3'
+  'SKIP'
 )
 
 build() {
-  cd "${srcdir}/gateway-addon-python-${pkgver}"
-  git init
+  cd "${srcdir}/gateway-addon-python"
+  git checkout "v${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/gateway-addon-python-${pkgver}"
+  cd "${srcdir}/gateway-addon-python"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
