@@ -3,7 +3,7 @@
 
 pkgname=fs2_open-git
 pkgver=3.8.1.c109dc6ac
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
@@ -51,7 +51,7 @@ package () {
 	binary=`find fs2_open*`
 	cd ../..
 	rev=`git rev-parse --short HEAD`
-	install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 Copying.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev}"
 	msg "The output binary will be called '${binary}_${rev}'"
