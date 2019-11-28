@@ -1,4 +1,5 @@
-# Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
+# Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
+# Contributor: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 # Contributor: Sam S. <smls75@gmail.com>
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 
