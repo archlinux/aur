@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ls_extended-git
-pkgver=1.1.0.r26.geeec8e2
+pkgver=1.1.0.r27.gd87c350
 pkgrel=1
 pkgdesc='ls with coloring and icons from git'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
 license=('custom:BSD')
-makedepends=('ccp4m' 'git')
+makedepends=('git')
 optdepends=('nerd-fonts-complete: for icon support')
 depends=('glibc' 'ttf-nerd-fonts-symbols')
 conflicts=('ls_extended')
