@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt	2019-05-10 11:37:55.000000000 +0200
++++ package.new/CMakeLists.txt	2019-11-28 21:24:16.426643205 +0100
+@@ -4,7 +4,7 @@
+ project(domoticz)
+ 
+ ## required min. libBoost version
+-SET(DOMO_MIN_LIBBOOST_VERSION 106000)
++SET(DOMO_MIN_LIBBOOST_VERSION 1.71)
+ ##
+ 
+ MACRO(Gitversion_GET_REVISION dir variable)

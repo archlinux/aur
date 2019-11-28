@@ -1,21 +1,25 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Jaron Viëtor <thulinma@thulinma.com>
+# Previous maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=domoticz
-pkgver=4.9700
+pkgver=4.10717
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://www.domoticz.com"
 license=('GPL')
-depends=('openzwave' 'libusb-compat' 'curl' 'sqlite' 'boost-libs' 'lua' 'mosquitto')
-makedepends=('git' 'cmake' 'boost')
+depends=('libusb-compat' 'curl' 'sqlite' 'boost-libs' 'lua' 'mosquitto')
+makedepends=('git' 'cmake' 'boost' 'python')
 install='domoticz.install'
 source=("https://github.com/domoticz/domoticz/archive/${pkgver}.tar.gz"
-        'domoticz.service')
-sha256sums=('c31f185a1ffac01b86a77bf33e059a4403d814e826c9d6639c63c2e9afa55a46'
-            '52ea28893fc70a278a728f975c249ace48e48f595c9da01895bde115e8e6b255')
+        'domoticz.service' 'boostver.patch')
+sha256sums=('c053a2161942529f56b748945ec297dcd67f449e68029fc886893a528891ad86'
+            '52ea28893fc70a278a728f975c249ace48e48f595c9da01895bde115e8e6b255'
+            'b8c136ec718696a1d70d18245c0a3bad490d6f23b0000a53369ab5eb84ca5128')
 
 prepare() {
+  cd $pkgname-$pkgver
+  patch --forward --strip=1 --input="${srcdir}/boostver.patch"
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
 }
 
@@ -31,6 +35,7 @@ build() {
   -DUSE_STATIC_BOOST=NO \
   -DUSE_STATIC_LIBSTDCXX=NO \
   -DUSE_OPENSSL_STATIC=NO \
+  -DUSE_PYTHON=NO \
   ..
 }
 
