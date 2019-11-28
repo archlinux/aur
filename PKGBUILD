@@ -16,29 +16,29 @@ sha256sums=(
 )
 
 prepare() {
-  cp -a nnpy-$pkgver{,-py2}
-  find nnpy-$pkgver-py2 -name \*.py -exec sed -i '1s/python$/&2/' {} +
+  cp -a nnpy-${pkgver}{,-py2}
+  find "nnpy-${pkgver}-py2" -name \*.py -exec sed -i '1s/python$/&2/' {} +
 }
 
 build() {
-  cd "$srcdir"/nnpy-$pkgver
+  cd "${srcdir}/nnpy-${pkgver}"
   python setup.py build
 
-  cd "$srcdir"/nnpy-$pkgver-py2
+  cd "${srcdir}/nnpy-${pkgver}-py2"
   python2 setup.py build
 }
 
 package_python-nnpy() {
   depends=('nanomsg' 'python-cffi')
 
-  cd nnpy-$pkgver
+  cd "${srcdir}/nnpy-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-nnpy() {
   depends=('nanomsg' 'python2-cffi')
 
-  cd nnpy-$pkgver-py2
+  cd "${srcdir}/nnpy-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
