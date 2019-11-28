@@ -1,0 +1,53 @@
+Index: libinstpatch-1.1.0/CMakeLists.txt
+===================================================================
+--- libinstpatch-1.1.0.orig/CMakeLists.txt
++++ libinstpatch-1.1.0/CMakeLists.txt
+@@ -176,19 +176,19 @@ set (INSTPATCH_INSTALL_TARGET "libinstpa
+ # pkg-config support
+ if ( UNIX OR MINGW OR WIN32)
+     set ( prefix "${CMAKE_INSTALL_PREFIX}" )
+-    set ( exec_prefix "\${prefix}" )
+-    set ( libdir "\${exec_prefix}/${LIB_INSTALL_DIR}${LIB_SUFFIX}" )
+-    set ( includedir "\${prefix}/${INCLUDE_INSTALL_DIR}/${INSTPATCH_INSTALL_TARGET}" )
++    set ( exec_prefix "${CMAKE_INSTALL_PREFIX}" )
++    set ( libdir "${LIB_INSTALL_DIR}" )
++    set ( includedir "${INCLUDE_INSTALL_DIR}/${INSTPATCH_INSTALL_TARGET}" )
+     # stamp library name with version current value (for Windows only)
+     if(MINGW OR WIN32)
+         set ( lib_output_name ${INSTPATCH_INSTALL_TARGET} )
+     else(MINGW OR WIN32)
+-        set ( lib_output_name instpatch )
++        set ( lib_output_name instpatch-1.0 )
+     endif(MINGW OR WIN32)
+     configure_file ( libinstpatch-1.0.pc.in
+         ${CMAKE_BINARY_DIR}/libinstpatch-1.0.pc IMMEDIATE @ONLY )
+     install ( FILES ${CMAKE_BINARY_DIR}/libinstpatch-1.0.pc
+-              DESTINATION ${LIB_INSTALL_DIR}${LIB_SUFFIX}/pkgconfig )
++              DESTINATION ${LIB_INSTALL_DIR}/pkgconfig )
+ endif ( UNIX OR MINGW OR WIN32)
+ 
+ # Extra targets for Unix build environments
+Index: libinstpatch-1.1.0/libinstpatch/CMakeLists.txt
+===================================================================
+--- libinstpatch-1.1.0.orig/libinstpatch/CMakeLists.txt
++++ libinstpatch-1.1.0/libinstpatch/CMakeLists.txt
+@@ -353,7 +353,7 @@ else( MINGW OR WIN32 )
+   set_target_properties ( libinstpatch
+     PROPERTIES
+       PREFIX ""
+-      OUTPUT_NAME "libinstpatch"
++      OUTPUT_NAME "libinstpatch-1.0"
+       VERSION ${LIB_VERSION_INFO}
+       SOVERSION ${LIB_VERSION_CURRENT}
+   )
+@@ -366,8 +366,8 @@ endif ( IPATCH_CPPFLAGS )
+ 
+ install ( TARGETS libinstpatch
+   RUNTIME DESTINATION ${BIN_INSTALL_DIR}
+-  LIBRARY DESTINATION ${LIB_INSTALL_DIR}${LIB_SUFFIX}
+-  ARCHIVE DESTINATION ${LIB_INSTALL_DIR}${LIB_SUFFIX}
++  LIBRARY DESTINATION ${LIB_INSTALL_DIR}
++  ARCHIVE DESTINATION ${LIB_INSTALL_DIR}
+   FRAMEWORK DESTINATION ${FRAMEWORK_INSTALL_DIR}
+   BUNDLE DESTINATION ${BUNDLE_INSTALL_DIR}
+ )

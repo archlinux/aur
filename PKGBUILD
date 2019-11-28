@@ -5,10 +5,8 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=libinstpatch
-pkgver=1.0.0
-pkgsvnver=+svn386
+pkgver=1.1.0
 pkgrel=1
-epoch=
 pkgdesc="Instrument patch library"
 arch=('x86_64' 'i386')
 url="http://swamiproject.org"
@@ -25,20 +23,21 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://download.savannah.gnu.org/releases/gsequencer/1.4.x/$pkgname-$pkgver$pkgsvnver.tar.bz2")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/swami/libinstpatch/archive/v$pkgver.tar.gz" libinstpatch-cmake-fixes.patch)
 noextract=()
-md5sums=('3e90da59e1d088ff9dbb270a1349cd99')
+md5sums=('707ac830039f9cfa1686f213c7a03724' '4cccbb5ff98cb9151548cde16166044e')
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	patch -p1 --input=${srcdir}/libinstpatch-cmake-fixes.patch
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DINCLUDE_INSTALL_DIR=/usr/include -DLIB_INSTALL_DIR=/usr/lib ..
 	make
 }
 
