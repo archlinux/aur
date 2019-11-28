@@ -7,15 +7,14 @@ pkgdesc='System font for iOS, macOS, and tvOS. Sourced directly from Apple.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
-makedepends=('p7zip' 'dmg2img' 'cpio' 'xar' 'gzip')
+makedepends=('p7zip')
 source=('https://developer.apple.com/design/downloads/SF-Font-Pro.dmg')
 md5sums=('da1f767a3d185cac4efe9003aefc082a')
 
 prepare() {
-  dmg2img SF-Font-Pro.dmg SF-Font-Pro.img
-  7z x SF-Font-Pro.img
-  xar -xf "SanFranciscoPro/San Francisco Pro.pkg"
-  cat SanFranciscoPro.pkg/Payload | gunzip -dc | cpio -i
+  7z x SF-Font-Pro.dmg
+  7z x SanFranciscoPro/San\ Francisco\ Pro.pkg
+  7z x "Payload~"
 }
 
 package() {
