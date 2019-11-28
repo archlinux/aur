@@ -16,25 +16,25 @@ sha256sums=(
 )
 
 prepare() {
-  cp -a singleton-decorator-$pkgver{,-py2}
-  find singleton-decorator-$pkgver-py2 -name \*.py -exec sed -i '1s/python$/&2/' {} +
+  cp -a singleton-decorator-${pkgver}{,-py2}
+  find "singleton-decorator-${pkgver}-py2" -name \*.py -exec sed -i '1s/python$/&2/' {} +
 }
 
 build() {
-  cd "$srcdir"/singleton-decorator-$pkgver
+  cd "${srcdir}/singleton-decorator-${pkgver}"
   python setup.py build
 
-  cd "$srcdir"/singleton-decorator-$pkgver-py2
+  cd "${srcdir}/singleton-decorator-${pkgver}-py2"
   python2 setup.py build
 }
 
 package_python-singleton-decorator() {
-  cd singleton-decorator-$pkgver
+  cd "${srcdir}/singleton-decorator-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
 package_python2-singleton-decorator() {
-  cd singleton-decorator-$pkgver-py2
+  cd "${srcdir}/singleton-decorator-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
