@@ -1,7 +1,7 @@
 pkgbase = deepin-wine
 	pkgdesc = Deepin Wine
-	pkgver = 2.18_18
-	pkgrel = 2
+	pkgver = 2.18_22
+	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = deepin-wine
 	depends = lib32-libldap
 	depends = p7zip
 	optdepends = lib32-freetype2-infinality-ultimate: for better font view
-	noextract = deepin-wine_2.18-18_all.deb
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine_2.18-18_all.deb
-	md5sums = 765612a15ce251c7c293ce171a83f6b7
+	noextract = deepin-wine_2.18-22~rc0_all.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-wine_2.18-22~rc0_all.deb
+	md5sums = b4fb39687b22df9c641397f0ca35cab4
 
 pkgname = deepin-wine
 
