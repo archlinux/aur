@@ -14,7 +14,7 @@
 pkgname=plex-media-server-plexpass
 pkgver=1.18.2.2058
 _pkgsum=e67a4e892
-pkgrel=1
+pkgrel=2
 pkgdesc='The back-end media server component of Plex.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://plex.tv/'
@@ -27,6 +27,7 @@ conflicts=('plex-media-server')
 install='plex-media-server.install'
 source=('plexmediaserver.conf.d'
         'plexmediaserver.service'
+        'plexmediaserver.hook'
         'plex.sysusers'
         'plex.tmpfiles'
         'terms.txt')
@@ -37,6 +38,7 @@ source_x86_64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkg
 
 sha256sums=('16c4d1c2d5c40dff1e57a24b90fcb4fd6a32702bce569de4a3f23128920d3c67'
             'b2c5105e4d31d1810d4d3b1d837008ef6223bf69a987352786f294274cb9a404'
+            'c5b06ebe73a90ecf76719e3a950916e5f4c527bf4c47ffb17a6f6df297b747a9'
             'c597bee0bcbb59ed791651555a904e5f7e9d2e82f6c6986b6352e5fc38e5b557'
             'b7ff6525a3c7a8be885edc85bb523095f8e25ddb38873127e2a4e97b28f2c7ad'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
@@ -60,6 +62,7 @@ package() {
   install -D -m 644 "${srcdir}/plex.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/plex.conf"
 
   install -D -m 644 "${srcdir}/terms.txt" "${pkgdir}/usr/share/licenses/${pkgname}/terms.txt"
+  install -D -m 644 "${srcdir}/plexmediaserver.hook" "${pkgdir}/usr/share/doc/${pkgname}/plexmediaserver.hook"
 }
 
 # vim: ts=2 sw=2 et:
