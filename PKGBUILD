@@ -58,8 +58,7 @@ package_mingw-w64-lapack()
     rm "$pkgdir"/usr/${_arch}/*/lib*lapacke*
     rm "$pkgdir"/usr/${_arch}/lib/pkgconfig/*blas.pc
     rm "$pkgdir"/usr/${_arch}/lib/pkgconfig/*lapacke.pc
-    rm "$pkgdir"/usr/${_arch}/include/cblas*
-    rm "$pkgdir"/usr/${_arch}/include/lapacke*
+    rm -r "$pkgdir"/usr/${_arch}/include/
     rm -r "$pkgdir"/usr/${_arch}/lib/cmake/cblas*
     rm -r "$pkgdir"/usr/${_arch}/lib/cmake/lapacke*
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
