@@ -9,6 +9,7 @@ pkgbase = spaceclones-git
 	makedepends = cmake
 	depends = sfml
 	depends = fontconfig
+	depends = ttf-liberation
 	provides = spaceclones
 	conflicts = spaceclones
 	source = spaceclones-git::git+https://github.com/L603/SpaceClones.git
