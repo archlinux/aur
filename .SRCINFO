@@ -8,6 +8,7 @@ pkgbase = coin-or-coinmumps
 	groups = coin-or
 	license = custom
 	makedepends = gcc-fortran
+	makedepends = wget
 	depends = coin-or-coinmetis
 	depends = blas
 	source = https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/1.6.1.tar.gz

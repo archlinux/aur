@@ -7,7 +7,7 @@ url="https://github.com/coin-or-tools/ThirdParty-MUMPS/"
 license=('custom')
 groups=('coin-or')
 depends=('coin-or-coinmetis' 'blas')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'wget')
 source=("https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/$pkgver.tar.gz")
 sha256sums=('394e44905a418c2162f75e46dbaeecbba9237d3dc8e179c4c55ece83b30e051a')
 
