@@ -8,7 +8,7 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea-qt
-pkgver=49.0.0
+pkgver=50.0.0
 pkgrel=1
 pkgdesc="Powerful text editor for Linux and *BSD."
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'gcc-libs' 'aspell' 'hunspell' 'poppler-qt5' 'djvulibre' 'desktop-file-utils')
 makedepends=('cmake')
 source=(https://github.com/psemiletov/tea-qt/archive/$pkgver.tar.gz)
-md5sums=(57b14ce4e400103bfe0683703a1d304a)
+md5sums=(1d02006563a6235bed250ef631ff5aa9)
 
 build() {
   mkdir -p "${srcdir}/tea-qt-${pkgver}/b"
