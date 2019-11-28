@@ -1,22 +1,20 @@
 pkgbase = lib32-zbar
 	pkgdesc = Application and library for reading bar codes from various sources. 32bit libraries only version
-	pkgver = 0.22
+	pkgver = 0.23
 	pkgrel = 1
 	url = https://github.com/procxx/zbar
 	arch = x86_64
 	license = LGPL
-	makedepends = lib32-imagemagick
-	makedepends = lib32-libxv
-	makedepends = lib32-python2
-	makedepends = lib32-gtk2
-	makedepends = pygtk
-	makedepends = lib32-v4l-utils
+	makedepends = docbook-xsl
 	makedepends = xmlto
 	depends = zbar
-	source = zbar-0.22.tar.gz::https://github.com/mchehab/zbar/archive/0.22.tar.gz
-	source = imagemagick7.patch
-	sha512sums = bef1078f7fe0c943e2ca7348f45e3bb5744e807c5135051fccf2c4499d52515558e98f61620e2ef2c993f35b8104d886d0639b7f0e6f8979caa5dcc49df7c931
-	sha512sums = 43987414a6432b9e7da329f5a416f389d29bfc3417a6edc65a46b2677ade7dbb8c150df90c8b42464a6cb17c4732509fb8d3672387dafe9fd17a5def78a5ef63
+	depends = lib32-imagemagick
+	depends = lib32-v4l-utils
+	depends = lib32-dbus
+	depends = lib32-libsm
+	depends = lib32-libxv
+	source = zbar-0.23.tar.gz::https://github.com/mchehab/zbar/archive/0.23.tar.gz
+	sha512sums = bc2667a2a5a5f2e9fd3f39e57bf1d7f860b20a0b5faffc38791d222a6ff0414aff880295ce5ccb92acce7250503f2a7f48ac12651cf82cfb1933b302da26e393
 
 pkgname = lib32-zbar
 
