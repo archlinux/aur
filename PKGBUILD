@@ -25,29 +25,29 @@ md5sums=('77358478fd58efa6366accae99b8b04c'
          'b14615c73753ceffbcc96d5e08f3c18d')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   sed -i "s#${prefix}/man#${prefix}/share/man#" configure
   # fix #37310
   # https://bugzilla.redhat.com/show_bug.cgi?id=1006100#c
-  patch -Np1 -i $srcdir/fix-CVE-2013-4342.patch
+  patch -Np1 -i "$srcdir"/fix-CVE-2013-4342.patch
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --sbindir=/usr/bin --without-libwrap
   CFLAGS+=' -I/usr/include/tirpc' LDFLAGS+=' -ltirpc' make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr DAEMONDIR=$pkgdir/usr/bin install
+  cd $pkgname-$pkgver
+  make prefix="$pkgdir/usr" DAEMONDIR="$pkgdir/usr/bin" install
   
-  install -Dm644 $srcdir/xinetd.conf $pkgdir/etc/xinetd.conf
-  install -Dm644 $srcdir/servers $pkgdir/etc/xinetd.d/servers
-  install -Dm644 $srcdir/services $pkgdir/etc/xinetd.d/services
+  install -Dm644 "$srcdir"/xinetd.conf "$pkgdir"/etc/xinetd.conf
+  install -Dm644 "$srcdir"/servers "$pkgdir"/etc/xinetd.d/servers
+  install -Dm644 "$srcdir"/services "$pkgdir"/etc/xinetd.d/services
 
   # install systemd files
-  install -Dm644 $srcdir/xinetd.service $pkgdir/usr/lib/systemd/system/xinetd.service
+  install -Dm644 "$srcdir"/xinetd.service "$pkgdir"/usr/lib/systemd/system/xinetd.service
   # install license
-  install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/$pkgname/COPYRIGHT
+  install -Dm644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
 }
