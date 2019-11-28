@@ -1,54 +1,46 @@
 pkgname=mingw-w64-coin-or-ipopt
-pkgver=3.12.13
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Ipopt"
 license=('EPL')
 groups=('mingw-w64-coin-or')
-depends=('mingw-w64-lapack')
+depends=('mingw-w64-lapack' 'mingw-w64-coin-or-coinasl' 'mingw-w64-coin-or-coinmumps')
 makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'wget')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
-sha256sums=('aac9bb4d8a257fdfacc54ff3f1cbfdf6e2d61fb0cf395749e3b0c0664d3e7e96')
+sha256sums=('dc392396be28c4a0d49bfab399320cb3f70db5b8f090028a883d826a47744ecf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "$srcdir/Ipopt-$pkgver"
-  pushd ThirdParty/ASL && ./get.ASL && popd
-  pushd ThirdParty/Metis && ./get.Metis && popd
-  pushd ThirdParty/Mumps && ./get.Mumps && popd
-
-  # see mingw-w64-coin-or-pkg-config
-  sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Ipopt/configure
-  sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Ipopt/configure
-
-  # run ASL configuration exe through wine
-  sed -i "s|./a.out >arith.h|\$(MINGW_TARGET)-wine ./a.exe >arith.h|g" ThirdParty/ASL/solvers/makefile.u
+  cd "$srcdir/Ipopt-releases-$pkgver"
 }
 
 build() {
-  cd "$srcdir/Ipopt-$pkgver"
+  cd "$srcdir/Ipopt-releases-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --with-blas-incdir=/usr/${_arch}/include --with-blas-lib="-lblas" \
       --with-lapack-incdir=/usr/${_arch}/include --with-lapack-lib="-llapack" \
-      lt_cv_deplibs_check_method=pass_all ..
-    make MINGW_TARGET=${_arch}
+      lt_cv_deplibs_check_method=pass_all --without-hsl --disable-java ..
+    make
     popd
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/Ipopt-$pkgver/build-${_arch}
-    PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
+    cd "$srcdir"/Ipopt-releases-$pkgver/build-${_arch}
     make DESTDIR="$pkgdir"/ install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+    # for compatibility
+    install -d "$pkgdir"/usr/${_arch}/include/coin
+    cp -r "$pkgdir"/usr/${_arch}/include/coin-or/* "$pkgdir"/usr/${_arch}/include/coin
   done
 }
 
