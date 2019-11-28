@@ -1,6 +1,6 @@
 pkgbase = gitea-git
 	pkgdesc = Painless self-hosted Git service. Community managed fork of Gogs.
-	pkgver = v1.11.0_dev_43_g05e437f8f
+	pkgver = v1.11.0_dev_339_g54dab5aed
 	pkgrel = 1
 	url = https://gitea.io/
 	install = gitea.install

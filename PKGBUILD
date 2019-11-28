@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.11.0_dev_43_g05e437f8f
+pkgver=v1.11.0_dev_339_g54dab5aed
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -50,10 +50,12 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${_pkgname}
   # Change default repos path for ArchLinux
-  patch -Np1 -i ../../gitea-arch-defaults.patch
+  patch -Np1 -i ../gitea-arch-defaults.patch
   # Fix LDFLAGS not being passed correctly
-  patch -Np1 -i ../../gitea-ldflags.patch
+  patch -Np1 -i ../gitea-ldflags.patch
 
+  # Workaround for https://github.com/golang/go/issues/33326
+  export GOPATH="${srcdir}/gopath"
   # Make sure we rebuild the mod file from Gopkg.toml to pick up any changes.
   rm -f go.mod
   go mod init || true
