@@ -1,0 +1,17 @@
+pkgbase = mynt-eye-s-sdk
+	pkgdesc = Cross-platform library for Mynt Eye Standard cameras
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/slightech/MYNT-EYE-S-SDK
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = cuda
+	depends = opencv
+	depends = v4l-utils
+	source = mynt-eye-s-sdk-2.4.1::git+https://github.com/slightech/MYNT-EYE-S-SDK.git#tag=v2.4.1
+	sha256sums = SKIP
+
+pkgname = mynt-eye-s-sdk
+
