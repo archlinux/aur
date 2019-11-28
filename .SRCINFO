@@ -1,51 +1,31 @@
 pkgbase = python-scikit-build
 	pkgdesc = Improved build system generator for CPython C, C++, Cython and Fortran extensions
 	pkgver = 0.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/scikit-build/scikit-build
-	arch = any
+	arch = x86_64
 	license = MIT
-	checkdepends = cython2>=0.25.1
-	checkdepends = cython>=0.25.1
-	checkdepends = flake8>=3.0.4
-	checkdepends = python-path.py>=11.5.0
-	checkdepends = python2-path.py>=11.5.0
-	checkdepends = python-pytest-cov>=2.7.1
-	checkdepends = python2-pytest-cov>=2.7.1
-	checkdepends = python-pytest-mock>=1.10.4
-	checkdepends = python2-pytest-mock>=1.10.4
-	checkdepends = python-pytest-runner>=5.1
-	checkdepends = python2-pytest-runner>=5.1
-	checkdepends = python-pytest-virtualenv>=1.2.5
-	checkdepends = python2-pytest-virtualenv>=1.2.5
-	checkdepends = python-pytest>=4.5.0
-	checkdepends = python2-pytest>=4.5.0
-	checkdepends = python-requests
-	checkdepends = python2-requests
-	checkdepends = python-six>=1.10.0
-	checkdepends = python2-six>=1.10.0
-	checkdepends = python-virtualenv
-	checkdepends = python2-virtualenv
-	checkdepends = python2-flake8>=3.0.4
-	checkdepends = python2-pathlib2
+	checkdepends = cython
+	checkdepends = flake8
 	checkdepends = gcc-fortran
 	checkdepends = git
 	checkdepends = ninja
+	checkdepends = python-path.py
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-virtualenv
+	checkdepends = python-requests
+	checkdepends = python-six
+	checkdepends = python-virtualenv
 	depends = cmake
+	depends = python-distro
 	depends = python-packaging
-	depends = python2-packaging
-	depends = python-setuptools>=28.0.0
-	depends = python2-setuptools>=28.0.0
-	depends = python-wheel>=0.29.0
-	depends = python2-wheel>=0.29.0
+	depends = python-setuptools
+	depends = python-wheel
 	source = https://files.pythonhosted.org/packages/source/s/scikit-build/scikit-build-0.10.0.tar.gz
 	sha256sums = 7342017cc82dd6178e3b19377389b8a8d1f8b429d9cdb315cfb1094e34a0f526
 
 pkgname = python-scikit-build
-	depends = python-setuptools
-	depends = python-wheel
-
-pkgname = python2-scikit-build
-	depends = python2-setuptools
-	depends = python2-wheel
 
