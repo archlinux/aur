@@ -1,7 +1,7 @@
 pkgbase = envconsul-git
 	pkgdesc = Launch a subprocess with environment variables using data from @hashicorp Consul and Vault.
 	pkgver = v0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hashicorp/envconsul.git
 	arch = any
 	license = MPL2
