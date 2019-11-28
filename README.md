@@ -1,16 +1,15 @@
-# pagekite
+# pagekite-aur
 
 ## Description
 
-AUR package for Pagekite
+AUR package for PageKite
 
 ## Installation
 
 ```bash
-wget https://raw.github.com/pschmitt/aur-pagekite/master/PKGBUILD
 makepkg -si
 ```
 
 ## Links
-* Upstream: http://pagekite.org
+* Upstream: https://pagekite.net/wiki/OpenSource/
 * AUR: https://aur.archlinux.org/packages/pagekite
