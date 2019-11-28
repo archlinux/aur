@@ -1,14 +1,14 @@
 # Maintainer: albakham <contact@geber.ga>
 
 pkgname=utopia
-pkgver=1.0.5345
+pkgver=1.0.5389
 pkgrel=1
 pkgdesc='Beta client for Utopia, an "Anti Orwellian Ecosystem"'
 arch=('x86_64')
 url='https://beta.u.is'
 license=('')
 source=(https://update.u.is/downloads/linux/utopia-latest.amd64.deb)
-sha256sums=('671728e169f506a8555c96afd76da21301c64c71b38dc8354fa90ed2138f4b93')
+sha256sums=('c75de75f80f77433733c1169e7fe886f12c8980348cd634edcf26574fee5385f')
 
 build() {
 
