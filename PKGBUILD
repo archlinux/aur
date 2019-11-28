@@ -3,7 +3,7 @@
 _pkgbasename=mediainfo-gui
 pkgname=mediainfo-gui-qt
 pkgver=19.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Supplies technical and tag information about a video or audio file (Qt GUI interface)"
 arch=("i686" "x86_64")
 url="https://mediaarea.net/en/MediaInfo"

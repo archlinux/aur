@@ -9,5 +9,5 @@ Keywords=media info;metadata;tag;video;audio;subtitles;chapters;codec;mkv;mpeg;m
 [Desktop Action mediainfo-gui]
 Name=MediaInfo
 GenericName=Media Analyzer
-Exec=mediainfo-gui %u
+Exec=mediainfo-gui %U
 Icon=mediainfo
