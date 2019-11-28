@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd /opt/ssb-patchwork
-exec electron4 index.js "$@"
+exec electron6 index.js "$@"
