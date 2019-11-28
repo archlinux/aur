@@ -5,7 +5,7 @@ pkgbase=python-better-exceptions
 _pkgbase='better-exceptions'
 pkgname=(python-better-exceptions python2-better-exceptions)
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Pretty and useful exceptions in Python, automatically"
 arch=('any')
 url='https://github.com/Qix-/better-exceptions'
@@ -29,7 +29,6 @@ build() {
 
 package_python-better-exceptions() {
   depends=('python')
-  makedepends=('python-setuptools')
   conflicts=('python-better-exceptions-git')
 
   cd "$srcdir/$_pkgbase-$pkgver"
@@ -39,7 +38,6 @@ package_python-better-exceptions() {
 
 package_python2-better-exceptions() {
   depends=('python2')
-  makedepends=('python2-setuptools')
   conflicts=('python2-better-exceptions-git')
 
   cd "$srcdir/$_pkgbase-$pkgver"
