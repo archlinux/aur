@@ -9,7 +9,8 @@ pkgname=icecat
 pkgver=68.2.0
 a_pkgver=( ${pkgver//./ } )
 #_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
-pkgrel=3
+pkgrel=4
+_gnu=3
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -27,12 +28,12 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip)
 
 #source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
-source=(https://gitlab.com/anto.trande/icecat/-/archive/master/icecat-master.tar.gz
+source=(https://gitlab.com/anto.trande/icecat/-/archive/v${pkgver}-gnu${_gnu}/icecat-v${pkgver}-gnu${_gnu}.tar.bz2
         icecat.desktop icecat-safe.desktop
         "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368"
         "patch-bindgen-rust1390.patch::https://svnweb.freebsd.org/ports/head/www/firefox-esr/files/patch-bindgen-rust1390?revision=516995&view=co&pathrev=516995")
 
-sha256sums=('5d12ab0a0dd8a77c0364a13642205cebe8b2f450469d40c841c50cf803882c83'
+sha256sums=('9869e39ba5c762c67e24e8c535fde0ce5374aa536a8375078f52181d66dc5a5b'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
@@ -41,7 +42,7 @@ sha256sums=('5d12ab0a0dd8a77c0364a13642205cebe8b2f450469d40c841c50cf803882c83'
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 prepare() {
-  cd icecat-master
+  cd ${pkgname}-v${pkgver}-gnu${_gnu}
 
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
@@ -128,7 +129,7 @@ END
 }
 
 build() {
-  cd icecat-master/output/icecat-${pkgver}
+  cd ${pkgname}-v${pkgver}-gnu${_gnu}/output/icecat-${pkgver}
 
   # LTO needs more open files
   ulimit -n 4096
@@ -144,7 +145,7 @@ build() {
 }
 
 package () {
-  cd icecat-master/output/icecat-${pkgver}
+  cd ${pkgname}-v${pkgver}-gnu${_gnu}/output/icecat-${pkgver}
 
   # Remove cose.manifest and cose.sig cause march install fails
   find obj-x86_64-pc-linux-gnu/dist/bin/browser/extensions -name cose.manifest -delete
