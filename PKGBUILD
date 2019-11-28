@@ -8,54 +8,58 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.7.4.dev50+ge26bb24
+pkgver=0.8.1.dev14+gbbd28c6
 pkgrel=1
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
 url='https://github.com/whipper-team/whipper'
 license=('GPL3')
 depends=(
-    'accuraterip-checksum'          # for accuraterip-checksum calculation
     'cdrdao'                        # for session, TOC, pregap, and ISRC extraction
     'flac'                          # for reading flac files
     'libcdio-paranoia'              # for the actual ripping
     'libsndfile'                    # for reading wav files
-    'python2-mutagen'               # for metadata handling
-    'python2-musicbrainzngs'        # for metadata lookup
-    'python2-gobject'
-    'python2-pycdio'                # for storing drive identification in config file
-    'python2-requests'              # for retrieving AccurateRip database entries
-    'python2-setuptools'            # for plugin support
+    'python-mutagen'                # for metadata handling
+    'python-musicbrainzngs'         # for metadata lookup
+    'python-gobject'
+    'python-pycdio'                 # for storing drive identification in config file
+    'python-requests'               # for retrieving AccurateRip database entries
+    'python-ruamel-yaml'            # for generating and reading logs
+    'python-setuptools'             # for plugin support
     'sox'                           # for track peak detection'
     )
 makedepends=(
     'git'
-    'python2-setuptools-scm'        # for VCS(/SCM) versioning
+    'python-setuptools-scm'        # for VCS(/SCM) versioning
     )
 checkdepends=(
-    'python2-twisted'
+    'python-twisted'
     )
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'accuraterip-checksum')
+conflicts=("${pkgname%-git}" 'accuraterip-checksum')
 source=("git+${url}.git#branch=develop")
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    python2 setup.py --version
+    python3 setup.py --version
 }
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    python2 setup.py build
+    python3 setup.py build
 }
 
 check() {
     cd "$srcdir/${pkgname%-git}"
-    python2 -m unittest discover
+    python3 -m venv --system-site-packages --clear test-venv
+    source ./test-venv/bin/activate
+    python3 setup.py install --skip-build
+    python3 -m unittest discover
+    deactivate
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    python2 setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
+    python3 setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
 }
