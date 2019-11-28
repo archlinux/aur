@@ -1,6 +1,6 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
-	pkgver = 5.3.13
+	pkgver = 5.4
 	pkgrel = 1
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
@@ -8,15 +8,15 @@ pkgbase = linux-usermode
 	makedepends = bc
 	makedepends = inetutils
 	depends = coreutils
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.13.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.13.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
 	source = config
 	source = 70-uml.hook
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 9f04e53f03d0ead6561195fb71aac18cbee419112ed54f9d4fc1515a5fa5c92f
+	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = 616ce4015a3d56c49bc5f839eed4c021483b08f730b36c9a7172724bed2cbdce
+	sha256sums = e5a61795b1222eb06bffc96252535a7d13c3c6c995aea731d86bbad6298c38fd
 	sha256sums = 452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c
 
 pkgname = linux-usermode
