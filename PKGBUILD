@@ -32,5 +32,5 @@ package() {
 		cp "$_srcdir/system/$_servicename" "$_serviceloc/$_servicename"
 	fi
 	mkdir -p "$pkgdir/usr/share/doc/$_pkgname/examples"
-	cp "$_srcdir/examples/${_pkgname}rc" "$pkgdir/usr/share/doc/$_pkgname/examples/${_pkgname}rc"	
+	cp "$_srcdir/examples/config" "$pkgdir/usr/share/doc/$_pkgname/examples/config"
 }
