@@ -1,7 +1,7 @@
 pkgbase = webkitgtk-bin
 	pkgdesc = Legacy Web content engine for GTK+ 3 (precompiled).
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webkitgtk.org/
 	arch = x86_64
 	license = custom
