@@ -1,6 +1,6 @@
 pkgbase = python-elpy
 	pkgdesc = Package to bring powerful Python editing to Emacs. Python library only.
-	pkgver = 1.31.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://github.com/jorgenschaefer/elpy
 	install = python-elpy.install
@@ -13,8 +13,8 @@ pkgbase = python-elpy
 	optdepends = python-rope: refactory library support
 	optdepends = yapf: Python style guide checker
 	options = !emptydirs
-	source = https://github.com/jorgenschaefer/elpy/archive/1.31.0.tar.gz
-	md5sums = f859c237de3bb690076fe728bc384641
+	source = https://github.com/jorgenschaefer/elpy/archive/1.32.0.tar.gz
+	md5sums = 2f4c6c996e61bf0d66921af2fee67a42
 
 pkgname = python-elpy
 
