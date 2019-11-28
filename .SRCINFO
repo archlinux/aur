@@ -12,7 +12,7 @@ pkgbase = python2-revolut
 	depends = python2-dateutil
 	depends = python2-pyjwt
 	source = https://github.com/emesik/revolut-python/archive/v0.6.tar.gz
-	md5sums = 9bfc19f1a0fed6ec984344d5030ee6a4
+	md5sums = 1b5b117b66020d68c5ac8a491b802ffa
 
 pkgname = python2-revolut
 
