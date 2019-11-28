@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Open CASCADE Community Edition: patches/improvements/experiments contributed by users over the official Open CASCADE library."
 url="https://github.com/tpaviot/oce"
 arch=('i686' 'x86_64')
-license=('GPLv2.1')
+license=('GPL')
 makedepends=('cmake')
 depends=('intel-tbb' 'gl2ps' 'freeimage' 'tk' 'glu')
 source=(https://github.com/tpaviot/${pkgname}/archive/OCE-${pkgver}.tar.gz 99_oce.sh 99_oce.conf)
@@ -27,9 +27,14 @@ build() {
   flags=""
   flags="$flags -DOCE_INSTALL_PREFIX=/opt/oce"
   flags="$flags -DOCE_MULTITHREAD_LIBRARY:STRING=TBB"
-  flags="$flags -DOCE_WITH_GL2PS=ON"
+  flags="$flags -DOCE_WITH_GL2PS=OFF"
   flags="$flags -DOCE_WITH_FREEIMAGE=ON"
-  flags="$flags -DOCE_DRAW=ON"
+  flags="$flags -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+  flags="$flags -DOCE_TESTING=OFF"
+  flags="$flags -DOCE_USE_PCH=OFF"
+  flags="$flags -DOCE_COPY_HEADERS_BUILD=ON"
+  flags="$flags -DOCE_WITH_VTK=OFF"
+  flags="$flags -DOCE_ENABLE_DEB_FLAG=OFF"
   cmake $flags .. 
   make
 }
