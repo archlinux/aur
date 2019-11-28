@@ -2,13 +2,14 @@
 
 pkgname=oilshell
 pkgver=0.7.pre6
-pkgrel=1
+pkgrel=2
 pkgdesc='Oil, a new unix shell'
 arch=('x86_64')
 url='http://www.oilshell.org/'
 depends=('readline')
 license=('APACHE')
 options=(!strip)
+install=oilshell.install
 source=("https://www.oilshell.org/download/oil-${pkgver}.tar.xz")
 sha256sums=('7ba71ca026f77d9dae2fe1a53da36d965dffd1eed389079c964b928673cf0efa')
 

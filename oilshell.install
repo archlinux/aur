@@ -1,0 +1,4 @@
+post_install() {
+    echo "Remember to create \`~/.config/oil' directory to store command history and"
+    echo "the oshrc file. See the oilshell manual for more information."
+}
