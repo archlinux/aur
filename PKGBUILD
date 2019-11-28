@@ -1,8 +1,8 @@
 # Maintainer: Lev Levitsky <levlev at mail dot ru>
 pkgname=python-catboost
 _name=${pkgname#python-}
-_py=cp37
-pkgver=0.18.1
+_py=cp38
+pkgver=0.20
 pkgrel=1
 pkgdesc="Fast, scalable, high performance gradient boosting on decision trees"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-wheel' 'python-pip')
 optdepends=('python-ipywidgets: visualization in Jupyter')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-none-manylinux1_x86_64.whl")
-sha256sums=('6ec835044722c7273a7f86d17d70827244e051dd345f9f9be8974d64b9df998f')
+sha256sums=('d521e45638b83eab48376bb11e4dc3cb94674af3e6c08c4291fd707a59b7e4f0')
 
 package() {
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
