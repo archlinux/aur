@@ -1,15 +1,16 @@
 pkgbase = ocaml-sexplib0
 	pkgdesc = Library containing the definition of S-expressions and some base converters
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/janestreet/sexplib0
 	arch = x86_64
 	license = MIT
 	makedepends = dune
+	depends = glibc
 	depends = ocaml
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.12/files/sexplib0-v0.12.0.tar.gz
-	sha512sums = 104f8526a147cfa6ecf168c8ee10a78ad3133c0a8a3714dc9dffd6358152752b337262b857c89170e07071ae669724da6f5556304c5abb3e9ce505ec700b7ad8
+	source = https://ocaml.janestreet.com/ocaml-core/v0.13/files/sexplib0-v0.13.0.tar.gz
+	sha512sums = cf9dc665919a06fdddcecdfbf5fcd1b41c20acad5d18f31302f248df4c55b6cb4cf734b73f786a9169a316d0024fe243b83868ad7d881f4ccff5a8ad746a28ca
 
 pkgname = ocaml-sexplib0
 
