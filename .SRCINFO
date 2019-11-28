@@ -1,11 +1,10 @@
 pkgbase = ls_extended
 	pkgdesc = ls with coloring and icons
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Electrux/ls_extended
 	arch = x86_64
 	license = custom:BSD
-	makedepends = ccp4m
 	depends = glibc
 	depends = ttf-nerd-fonts-symbols
 	optdepends = nerd-fonts-complete: for icon support
