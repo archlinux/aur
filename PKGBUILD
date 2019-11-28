@@ -9,7 +9,7 @@
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -94,11 +94,16 @@ pkgver() {
   git describe --tags | sed 's/^n//'
 }
 
+prepare() {
+  cd ffmpeg
+
+  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+}
 build() {
   cd ffmpeg
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-debug \
     --disable-static \
     --disable-stripping \
