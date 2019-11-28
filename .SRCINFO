@@ -1,0 +1,15 @@
+pkgbase = coin-or-coinmetis
+	pkgdesc = COIN-OR autotools harness to build Metis
+	pkgver = 1.3.8
+	pkgrel = 1
+	url = https://github.com/coin-or-tools/ThirdParty-Metis/
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = custom
+	depends = glibc
+	source = https://github.com/coin-or-tools/ThirdParty-Metis/archive/releases/1.3.8.tar.gz
+	sha256sums = SKIP
+
+pkgname = coin-or-coinmetis
+
