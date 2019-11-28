@@ -1,12 +1,14 @@
 pkgbase = sotw-dev
 	pkgdesc = Shadow Of The Wyrm by Julian Day - Development branch.
 	pkgver = development
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.shadowofthewyrm.org/
 	arch = x86_64
 	license = MIT
 	makedepends = premake
 	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
 	depends = xerces-c
 	depends = zlib
 	depends = ncurses
