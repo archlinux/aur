@@ -1,0 +1,67 @@
+From 96dffb2645fa08d744fcf6b172d2d88cc542389a Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Sun, 10 Nov 2019 01:10:41 +0300
+Subject: [PATCH] Redefine CONFIG_NF_NAT_NEEDED on newer kernels.
+
+New kernels since commit torvalds/linux@4806e97 do not use NF_NAT_NEEDED
+to signify that NAT support is enabled. Redefine CONFIG_NF_NAT_NEEDED if
+it's supposed to be defened by old logic.
+
+Reference:
+  https://github.com/torvalds/linux/commit/4806e975729f99c7908d1688a143f1e16d464e6c
+
+Reported-by: k0ste @ github
+Fixes #129.
+---
+ configure | 32 +++++++++++++++++++++++++++++++-
+ 1 file changed, 31 insertions(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index 8aae8bf..567ec8b 100755
+--- a/configure
++++ b/configure
+@@ -460,13 +460,43 @@ kconfig() {
+     echo "! Attention: $1 is undefined in your kernel configuration"
+     echo "!   Without this option enabled $2 will not work."
+     echo
++    return 1
++  fi
++  return 0
++}
++
++# Respond to change in https://github.com/torvalds/linux/commit/4806e975729f99
++nf_nat_needed() {
++  local INC=include/linux/netfilter.h
++
++  echo -n "Checking for presence of $INC... "
++  if [ "$KSRC" -a -e $KSRC/$INC ]; then
++    echo Yes
++    INC=$KSRC/$INC
++  elif [ -e $KDIR/$INC ]; then
++    echo Yes
++    INC=$KDIR/$INC
++  else
++    echo No
++    return 1
++  fi
++  echo -n "netfilter.h uses CONFIG_NF_NAT_NEEDED... "
++  if grep -q CONFIG_NF_NAT_NEEDED $INC; then
++    echo Yes
++  else
++    echo No
++    return 1
+   fi
+ }
+ 
+ kernel_check_config() {
+   kconfig CONFIG_SYSCTL			"sysctl interface"
+   kconfig CONFIG_PROC_FS		"proc interface"
+-  kconfig CONFIG_NF_NAT_NEEDED		"natevents"
++  if nf_nat_needed; then
++    kconfig CONFIG_NF_NAT_NEEDED	"natevents"
++  else
++    kconfig CONFIG_NF_NAT		"natevents" && KOPTS="$KOPTS -DCONFIG_NF_NAT_NEEDED"
++  fi
+   kconfig CONFIG_NF_CONNTRACK_EVENTS	"natevents"
+   kconfig CONFIG_IPV6			"IPv6"
+   kconfig CONFIG_IP6_NF_IPTABLES	"ip6tables target"

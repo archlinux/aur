@@ -1,0 +1,43 @@
+From 15190633ff9689d530543e8a31e1c05ca7e07985 Mon Sep 17 00:00:00 2001
+From: ABC <abc@openwall.com>
+Date: Sun, 10 Nov 2019 05:47:50 +0300
+Subject: [PATCH] murmur3: Add FALLTHROUGH statement to the switch.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In file included from /tmp/ipt-netflow/ipt_NETFLOW.c:78:
+/tmp/ipt-netflow/murmur3.h: In function ‘murmur3’:
+/tmp/ipt-netflow/murmur3.h:35:14: warning: this statement may fall through [-Wimplicit-fallthrough=]
+   35 |   case 3: k1 ^= tail[2] << 16;
+      |           ~~~^~~~~~~~~~~~~~~~
+/tmp/ipt-netflow/murmur3.h:36:3: note: here
+   36 |   case 2: k1 ^= tail[1] << 8;
+      |   ^~~~
+/tmp/ipt-netflow/murmur3.h:36:14: warning: this statement may fall through [-Wimplicit-fallthrough=]
+   36 |   case 2: k1 ^= tail[1] << 8;
+      |           ~~~^~~~~~~~~~~~~~~
+/tmp/ipt-netflow/murmur3.h:37:3: note: here
+   37 |   case 1: k1 ^= tail[0];
+      |   ^~~~
+
+Reported-by: k0ste @ github in #129
+---
+ murmur3.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/murmur3.h b/murmur3.h
+index 57a6006..4e3377b 100644
+--- a/murmur3.h
++++ b/murmur3.h
+@@ -32,8 +32,8 @@ static inline uint32_t murmur3(const void *key, const uint32_t len, const uint32
+ 	}
+ 	tail = (const uint8_t*)blocks;
+ 	switch (len & 3) {
+-		case 3: k1 ^= tail[2] << 16;
+-		case 2: k1 ^= tail[1] << 8;
++		case 3: k1 ^= tail[2] << 16; /* FALLTHROUGH */
++		case 2: k1 ^= tail[1] << 8;  /* FALLTHROUGH */
+ 		case 1: k1 ^= tail[0];
+ 			h1 ^= rotl32(k1 * c1, 15) * c2;
+ 	}
