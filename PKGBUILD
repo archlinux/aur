@@ -2,7 +2,7 @@
 pkgname=python-archiveis
 _name=archiveis
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple Python wrapper for the archive.is capturing service.'
 arch=('any')
 url="https://github.com/pastpages/archiveis"
