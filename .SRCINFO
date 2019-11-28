@@ -1,0 +1,17 @@
+pkgbase = jolly
+	pkgdesc = Static image gallery generator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/prior99/jolly
+	arch = any
+	license = GPL3
+	makedepends = yarn
+	depends = nodejs
+	depends = zsh
+	provides = jolly
+	options = !strip
+	source = https://gitlab.com/prior99/jolly/-/archive/0.1.0/jolly-0.1.0.tar.gz
+	sha256sums = 42b874530de376facb5138fc7a5ae2d8f5d7aae8192e57abbc1ce3708fe2a516
+
+pkgname = jolly
+
