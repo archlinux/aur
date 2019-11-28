@@ -2,7 +2,7 @@
 
 _pkgname=ncspot
 pkgname="${_pkgname}-git"
-pkgver=0.0.0.251.5eff818
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Cross-platform ncurses Spotify client written in Rust, inspired by ncmpc and the likes."
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags 2>/dev/null || echo "0.0.0-$(git rev-list --count HEAD)-$(git describe --always )" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 build() {
