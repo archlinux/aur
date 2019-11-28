@@ -1,0 +1,17 @@
+pkgbase = jackstrobe-git
+	pkgdesc = Simple strobe tuner using JACK and Qt 5
+	pkgver = r8.87dc213
+	pkgrel = 1
+	url = https://github.com/jessecrossen/jackstrobe
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	depends = jack
+	depends = qt5-base
+	provides = jackstrobe
+	conflicts = jackstrobe
+	source = git+https://github.com/jessecrossen/jackstrobe
+	md5sums = SKIP
+
+pkgname = jackstrobe-git
+
