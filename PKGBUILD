@@ -1,18 +1,18 @@
-# Maintainer: Brad Erhart <brae.04+aur@gmail.com>
+# Maintainer: Brad Erhart <brae dot 04 plus aur at gmail dot com>
 
 pkgname=zapier-platform-cli
 pkgver=9.0.0
-pkgrel=1
-pkgdesc="This CLI is your gateway to creating custom applications on the Zapier platform"
+pkgrel=2
+pkgdesc='Gateway to creating custom applications on the Zapier platform'
 arch=('x86_64')
-url="https://zapier.github.io/zapier-platform-cli/cli"
+url='https://platform.zapier.com/cli'
 license=('UNLICENSED')
 depends=('nodejs')
 makedepends=('npm' 'jq')
+provides=("${pkgname%-platform-cli}")
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('d72e10645bc322f059fa624e6b24d7ce93a9146abb9f64403140a91024f61537')
 noextract=("$pkgname-$pkgver.tgz")
-options=('!strip')
+sha256sums=('d72e10645bc322f059fa624e6b24d7ce93a9146abb9f64403140a91024f61537')
 
 package() {
 	npm install --cache "${srcdir}/npm-cache" -g --user root --prefix "$pkgdir"/usr "$srcdir"/$noextract
