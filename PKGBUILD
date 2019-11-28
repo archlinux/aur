@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=osmtogeojson
-pkgver=3.0.0b3
-_npmver=3.0.0-beta.3
-pkgrel=2
+pkgver=3.0.0b4
+_npmver=3.0.0-beta.4
+pkgrel=1
 pkgdesc="Convert OSM data to GeoJSON"
 arch=(any)
 url="https://github.com/tyrasd/osmtogeojson#readme"
@@ -23,4 +23,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha1sums=('499f91feaa612ec845df420f107e2e6bc28f0563')
+sha1sums=('00e270af7c080bd3bc503bd612fa5b90a1c95d50')
