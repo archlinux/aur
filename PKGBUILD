@@ -7,6 +7,7 @@ url="https://github.com/coin-or-tools/ThirdParty-ASL/"
 license=('MIT')
 groups=('coin-or')
 depends=('glibc')
+makedepends=('wget')
 source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgver.tar.gz")
 sha256sums=('c6fa24ab952243f10f5231d49a46c206d239cffe5793f0ae46651adcc4da0b45')
 

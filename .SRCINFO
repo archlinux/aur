@@ -7,6 +7,7 @@ pkgbase = coin-or-coinasl
 	arch = x86_64
 	groups = coin-or
 	license = MIT
+	makedepends = wget
 	depends = glibc
 	source = https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/1.4.1.tar.gz
 	sha256sums = c6fa24ab952243f10f5231d49a46c206d239cffe5793f0ae46651adcc4da0b45
