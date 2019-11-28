@@ -1,6 +1,6 @@
 pkgbase = simplelock
 	pkgdesc = Fast and simple wrapper over i3lock with multiple modes. Supports xkcd and unsplash
-	pkgver = r3.bc8f7c3
+	pkgver = r6.c916526
 	pkgrel = 1
 	url = https://github.com/rhnvrm/simplelock
 	arch = any
