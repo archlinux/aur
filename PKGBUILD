@@ -5,7 +5,7 @@ pkgname=remmina-appindicator
 _pkgname=remmina
 epoch=1
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='remote desktop client written in GTK+ (compiled with appindicator)'
 arch=(x86_64)
 url=https://www.remmina.org/
@@ -38,11 +38,16 @@ makedepends=(
     telepathy-glib
 )
 
-replaces=(
+provides=(
     remmina-plugins
     remmina
 )
-provides=(
+
+conflicts=(
+    remmina-plugins
+    remmina
+)
+replaces=(
     remmina-plugins
     remmina
 )

@@ -1,7 +1,7 @@
 pkgbase = remmina-appindicator
 	pkgdesc = remote desktop client written in GTK+ (compiled with appindicator)
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.remmina.org/
 	arch = x86_64
@@ -29,6 +29,8 @@ pkgbase = remmina-appindicator
 	optdepends = xorg-server-xephyr: XDMCP plugin
 	provides = remmina-plugins
 	provides = remmina
+	conflicts = remmina-plugins
+	conflicts = remmina
 	replaces = remmina-plugins
 	replaces = remmina
 	source = remmina-1.3.6.tar.gz::https://github.com/FreeRDP/Remmina/archive/v1.3.6.tar.gz
