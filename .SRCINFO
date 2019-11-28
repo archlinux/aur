@@ -1,14 +1,13 @@
 pkgbase = pdf2laser
-	pkgdesc = CLI tool printing pdf files to an Epilog laser cutter over the network
-	pkgver = 0.4.0
+	pkgdesc = Tool for printing PDF to an Epilog laser cutter over the network
+	pkgver = 0.5.0
 	pkgrel = 1
-	epoch = 0
 	url = https://github.com/zellio/pdf2laser
 	arch = x86_64
 	license = GPL3
 	depends = ghostscript
-	source = https://github.com/zellio/pdf2laser/archive/v0.4.0.tar.gz
-	sha512sums = 257e084e724ec2ad32a0541b1cc12403d54aca2a66c760670c8c345342115e59b2e68be5913a02f3253709de88172865ab5e499c53a12ded8f4c3cf0c013013d
+	source = https://github.com/zellio/pdf2laser/archive/v0.5.0.tar.gz
+	sha256sums = 34920cb0a1e16acd879468536889d211daf2ebf2fce5f4d742d85179eb18616d
 
 pkgname = pdf2laser
 
