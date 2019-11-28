@@ -14,5 +14,5 @@ source=('precompiled.tar.gz::https://dl.dropboxusercontent.com/s/aiw75lcurs35e7r
 sha256sums=('1aaeee74467d90dfaef57d23a434efd9b9b3f703dc8a689ada888b9e7c0717e0')
 
 package() {
-  cp -Rfp $srcdir/precompiled/* $pkgdir/
+  cp -Rfp $srcdir/usr $pkgdir/
 }
