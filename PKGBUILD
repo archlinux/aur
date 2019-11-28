@@ -21,14 +21,19 @@ pkgver() {
   echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  cargo fetch --locked
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
-  cargo build --release
+  cargo build --release --locked
 }
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
