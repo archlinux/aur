@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname="fmedia"
 pkgname="${_pkgname}-git"
-pkgver=v1.1.r0.145441b
+pkgver=v1.12.1.r0.d7c611d
 pkgrel=1
 pkgdesc="fast media player/recorder/converter"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="http://fmedia.firmdev.com/"
 license=('unknown')
 groups=()
 depends=('sqlite')
-makedepends=('git' 'svn' 'flac' 'mpg123' 'libjpeg9' 'unzip' 'jdk8-openjdk' 'dos2unix' 'cmake')
+makedepends=('git' 'svn' 'flac' 'mpg123' 'libjpeg9' 'libpulse' 'unzip' 'jdk8-openjdk' 'dos2unix' 'cmake')
 provides=("${pkgname}" "fmedia")
 conflicts=("${pkgname}" "fmedia")
 replaces=()
