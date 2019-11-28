@@ -1,14 +1,14 @@
 # Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 
 pkgname=rclone-browser
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.7.0
+pkgrel=0
 pkgdesc='Simple cross-platform GUI for rclone'
 url='https://github.com/kapitainsky/RcloneBrowser'
 arch=('i686' 'x86_64')
 license=('custom:Public Domain')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kapitainsky/RcloneBrowser/archive/${pkgver}.tar.gz")
-sha256sums=('1c19227c5d857455e767c4b78610121c5bd2288b1b6317c2607e3fe414ad3c23')
+sha256sums=('add7eb35fa521e87eddf9cfb36ddd11983f6fc78f520c3a887d353b574e3f083')
 makedepends=('cmake')
 depends=('qt5-base' 'rclone')
 
