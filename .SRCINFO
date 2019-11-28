@@ -1,7 +1,7 @@
 pkgbase = mlpack
 	pkgdesc = A fast, flexible, scalable C++ machine learning library
-	pkgver = 3.2.1
-	pkgrel = 3
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = https://mlpack.org/
 	arch = x86_64
 	license = BSD
@@ -18,7 +18,7 @@ pkgbase = mlpack
 	depends = python-pandas>=0.15.0
 	optdepends = openmp: parallel computation support
 	source = https://www.mlpack.org/files/mlpack-3.2.1.tar.gz
-	sha256sums = 3fa25157a0a6e91fd5ba223ebd911e5d86c0664d969ea3f7768d823448562f36
+	sha256sums = 7aef8c27645c9358262fec9ebba380720a086789d6519d5d1034346412a52ad6
 
 pkgname = mlpack
 
