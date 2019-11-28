@@ -1,7 +1,7 @@
 pkgbase = xygrib-git
 	pkgdesc = Grib reader and weather visualization software. Zygrib fork.
 	pkgver = 1.2.6.1.r74.ga47fee3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opengribs.org/
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,9 @@ pkgbase = xygrib-git
 	provides = xygrib
 	conflicts = xygrib
 	source = xygrib-git::git+https://github.com/opengribs/XyGrib.git
+	source = xygrib.install
 	sha1sums = SKIP
+	sha1sums = 58925746bf6ac941ab34e268517581f1e01e9cff
 
 pkgname = xygrib-git
 
