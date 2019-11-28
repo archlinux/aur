@@ -1,6 +1,6 @@
 pkgbase = domoticz
 	pkgdesc = Web based home automation
-	pkgver = 4.9700
+	pkgver = 4.10717
 	pkgrel = 1
 	url = http://www.domoticz.com
 	install = domoticz.install
@@ -13,17 +13,19 @@ pkgbase = domoticz
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	depends = openzwave
+	makedepends = python
 	depends = libusb-compat
 	depends = curl
 	depends = sqlite
 	depends = boost-libs
 	depends = lua
 	depends = mosquitto
-	source = https://github.com/domoticz/domoticz/archive/4.9700.tar.gz
+	source = https://github.com/domoticz/domoticz/archive/4.10717.tar.gz
 	source = domoticz.service
-	sha256sums = c31f185a1ffac01b86a77bf33e059a4403d814e826c9d6639c63c2e9afa55a46
+	source = boostver.patch
+	sha256sums = c053a2161942529f56b748945ec297dcd67f449e68029fc886893a528891ad86
 	sha256sums = 52ea28893fc70a278a728f975c249ace48e48f595c9da01895bde115e8e6b255
+	sha256sums = b8c136ec718696a1d70d18245c0a3bad490d6f23b0000a53369ab5eb84ca5128
 
 pkgname = domoticz
 
