@@ -1,0 +1,14 @@
+pkgbase = python-kitty
+	pkgdesc = Fuzzing framework written in python
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = python-kitty::git+https://github.com/cisco-sas/kitty#tag=v0.7.4
+	sha256sums = SKIP
+
+pkgname = python-kitty
+
