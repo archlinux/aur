@@ -3,7 +3,7 @@ _pkgname=envconsul
 pkgname=${_pkgname}-git
 _pkgver=0.9.1
 pkgver=v${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Launch a subprocess with environment variables using data from @hashicorp Consul and Vault."
 arch=('any')
 url="https://github.com/hashicorp/envconsul.git"
@@ -14,10 +14,11 @@ source=("https://github.com/hashicorp/${_pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
 
 prepare() {
+  umask 022
+  chmod -R u+w .
   mkdir -p ${_pkgname}-${_pkgver}/gopath
   export GOPATH="${srcdir}/${_pkgname}-${_pkgver}/gopath"
   export PATH="$PATH:$GOPATH/bin"
-  chmod -R u+w ${srcdir}
 }
 
 build() {
