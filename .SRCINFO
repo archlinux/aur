@@ -1,0 +1,22 @@
+pkgbase = xygrib
+	pkgdesc = Grib reader and weather visualization software. Zygrib fork.
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://opengribs.org/
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = bzip2
+	makedepends = libpng
+	depends = libnova
+	depends = qwt
+	depends = proj
+	depends = qt5-base
+	depends = openjpeg2
+	source = https://github.com/opengribs/XyGrib/archive/v1.2.6.1.tar.gz
+	sha1sums = 8e3431ed6a5ef114d77ac57029129a26a381f696
+
+pkgname = xygrib
+
