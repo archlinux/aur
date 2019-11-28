@@ -1,4 +1,4 @@
-pkgbase = pseint
+pkgbase = pseint-bin
 	pkgdesc = A tool for learning programming basis with a simple spanish pseudocode
 	pkgver = 20191127
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = pseint
 	source_x86_64 = https://razaoinfo.dl.sourceforge.net/project/pseint/20191127/pseint-l64-20191127.tgz
 	sha256sums_x86_64 = f63b7c56145f357f99aa856bcf3cafdacaae011a0a3c90f868ce3198b9833f08
 
-pkgname = pseint
+pkgname = pseint-bin
 
