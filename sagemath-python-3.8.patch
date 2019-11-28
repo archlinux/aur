@@ -12,10 +12,10 @@ index d1d7c2ed98..c32f29448c 100644
                  pass
  
 diff --git a/src/sage/all.py b/src/sage/all.py
-index c87c9372e9..89bbe94c4f 100644
+index 42dca175d2..b4f544b664 100644
 --- a/src/sage/all.py
 +++ b/src/sage/all.py
-@@ -313,7 +313,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
+@@ -316,7 +316,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
  # However, be sure to keep OUR deprecation warnings
  warnings.filterwarnings('default', category=DeprecationWarning,
      message=r'[\s\S]*See https\?://trac.sagemath.org/[0-9]* for details.')
@@ -376,10 +376,10 @@ index be7e0c46d0..d470fdcc5b 100644
          ::
  
 diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-index d8850c1fac..816f529c07 100644
+index 99ad85b695..4d2642366a 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-@@ -2949,8 +2949,8 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3146,8 +3146,8 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: D6 = DynamicalSystem_projective([y^2,x^2])
              sage: D6.automorphism_group()
              [
@@ -390,7 +390,7 @@ index d8850c1fac..816f529c07 100644
              ]
          """
          alg = kwds.get('algorithm', None)
-@@ -3368,13 +3368,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3565,13 +3565,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y,z> = ProjectiveSpace(K,2)
              sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
              sage: f.periodic_points(1)
@@ -409,7 +409,7 @@ index d8850c1fac..816f529c07 100644
  
          ::
  
-@@ -4915,7 +4915,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5112,7 +5112,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: f.rational_periodic_points()
              doctest:warning
              ...
@@ -418,7 +418,7 @@ index d8850c1fac..816f529c07 100644
          """
          from sage.misc.superseded import deprecation
          deprecation(28109, "use sage.dynamics.arithmetic_dynamics.projective_ds.all_periodic_points instead")
-@@ -5275,8 +5275,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5472,8 +5472,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
               (w^2 + w - 25/16 : 1),
               (-w : 1),
               (-w^2 + 29/16 : 1),
@@ -428,7 +428,7 @@ index d8850c1fac..816f529c07 100644
               (-w^2 + 21/16 : 1),
               (w^2 - 21/16 : 1),
               (w^2 + w - 33/16 : 1),
-@@ -5404,8 +5404,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5601,8 +5601,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: g = f.conjugate(m)
              sage: f.conjugating_set(g) # long time
              [
@@ -877,10 +877,10 @@ index dd9bd70691..7fc600db96 100644
  
      def interact(self):
 diff --git a/src/sage/matroids/linear_matroid.pyx b/src/sage/matroids/linear_matroid.pyx
-index 0330595de5..3482eaebb7 100644
+index e72f7748d9..3c28dfb00e 100644
 --- a/src/sage/matroids/linear_matroid.pyx
 +++ b/src/sage/matroids/linear_matroid.pyx
-@@ -3671,8 +3671,8 @@ cdef class BinaryMatroid(LinearMatroid):
+@@ -3673,8 +3673,8 @@ cdef class BinaryMatroid(LinearMatroid):
          ....:                         labels=False), groundset='abcdefghijkl')
          sage: N._projection_partition()
          2 x 12 BinaryMatrix
@@ -1206,10 +1206,10 @@ index a1956ac9a2..42728b7414 100644
          TESTS:
  
 diff --git a/src/sage/schemes/affine/affine_point.py b/src/sage/schemes/affine/affine_point.py
-index ff48a609c9..344f0eac83 100644
+index 080509beb7..2385f1eae3 100644
 --- a/src/sage/schemes/affine/affine_point.py
 +++ b/src/sage/schemes/affine/affine_point.py
-@@ -106,7 +106,7 @@ class SchemeMorphism_point_affine(SchemeMorphism_point):
+@@ -153,7 +153,7 @@ class SchemeMorphism_point_affine(SchemeMorphism_point):
              sage: A.<x,y> = AffineSpace(QQ, 2)
              sage: hash(A([1, 1]))
              1300952125                      # 32-bit
@@ -1218,7 +1218,7 @@ index ff48a609c9..344f0eac83 100644
          
          ::
  
-@@ -211,7 +211,7 @@ class SchemeMorphism_point_affine_field(SchemeMorphism_point_affine):
+@@ -258,7 +258,7 @@ class SchemeMorphism_point_affine_field(SchemeMorphism_point_affine):
             sage: X = A.subscheme(x - y)
             sage: hash(X([1, 1]))
             1300952125                      # 32-bit
@@ -1348,7 +1348,7 @@ index 968293a1c5..d38a245629 100644
              Projective Space of dimension 2 over Complex Field with 53 bits of precision
  
 diff --git a/src/sage/schemes/projective/projective_point.py b/src/sage/schemes/projective/projective_point.py
-index 07c2318b25..756c7054f1 100644
+index 2d0ae5b9f3..fcd8118f81 100644
 --- a/src/sage/schemes/projective/projective_point.py
 +++ b/src/sage/schemes/projective/projective_point.py
 @@ -371,10 +371,10 @@ class SchemeMorphism_point_projective_ring(SchemeMorphism_point):
@@ -1377,7 +1377,7 @@ index 07c2318b25..756c7054f1 100644
  
          TESTS::
  
-@@ -1042,10 +1042,10 @@ class SchemeMorphism_point_projective_field(SchemeMorphism_point_projective_ring
+@@ -1098,10 +1098,10 @@ class SchemeMorphism_point_projective_field(SchemeMorphism_point_projective_ring
              sage: P.<x,y> = ProjectiveSpace(QQ, 1)
              sage: hash(P([1/2, 1]))
              -1503642134                     # 32-bit
@@ -1391,18 +1391,9 @@ index 07c2318b25..756c7054f1 100644
          P = copy(self)
          P.normalize_coordinates()
 diff --git a/src/sage/schemes/riemann_surfaces/riemann_surface.py b/src/sage/schemes/riemann_surfaces/riemann_surface.py
-index a1cb20567b..c296ca8593 100644
+index a1cb20567b..c9f5df7334 100644
 --- a/src/sage/schemes/riemann_surfaces/riemann_surface.py
 +++ b/src/sage/schemes/riemann_surfaces/riemann_surface.py
-@@ -344,7 +344,7 @@ class RiemannSurface(object):
-     EXAMPLES::
- 
-         sage: from sage.schemes.riemann_surfaces.riemann_surface import RiemannSurface
--        sage: R.<z,w> = QQ[]
-+        sage: 
-         sage: f = w^2 - z^3 + 1
-         sage: RiemannSurface(f)
-         Riemann surface defined by polynomial f = -z^3 + w^2 + 1 = 0, with 53 bits of precision
 @@ -354,7 +354,7 @@ class RiemannSurface(object):
          sage: S = RiemannSurface(f, prec=100); S
          Riemann surface defined by polynomial f = -z^3 + w^2 + 1 = 0, with 100 bits of precision

@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.0.beta6.r0.g232ae1bddc
+pkgver=9.0.beta7.r0.gd48a21c149
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
             '1336f8ce3ef2fbc7531da90b60b83cf8b7713cbf726cff6fdbbd30f085c31074'
             '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
-            '4550cb7b6449acd59beed80e75bb7a0abc62e2c9593f4b1ccdc3f8f711621994')
+            '8c12a35fd5859b868335ace10a4b23b94172b576710c4f51371fe52a18375ebb')
 
 pkgver() {
   cd sage
@@ -120,8 +120,8 @@ package_sagemath-git() {
   mkdir -p "$pkgdir"/usr/bin
   cp bin/{sage,math-readline} "$pkgdir"/usr/bin
   for _i in cachegrind callgrind cleaner coverage coverageall cython eval fixdoctests grep grepdoc inline-fortran ipynb2rst \
-    ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run \
-    run-cython runtests startuptime.py sws2rst valgrind version.sh
+    ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python run \
+    run-cython runtests startuptime.py valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done
