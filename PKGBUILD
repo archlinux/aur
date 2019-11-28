@@ -2,7 +2,7 @@
 _name=pptk
 pkgname=python-$_name-git
 pkgver=r49.697c09a
-pkgrel=3
+pkgrel=4
 pkgdesc="Python package for visualizing and processing 2-d/3-d point clouds"
 arch=('x86_64')
 url="https://github.com/heremaps/pptk.git"
@@ -38,6 +38,7 @@ prepare() {
 	cd "$srcdir/$_name"
 	sed -i 's,.*,,g' pptk/libs/CMakeLists.txt
 	sed -i 's,PythonLibs 2.7 REQUIRED,PythonLibs 3.5 REQUIRED,' CMakeLists.txt
+	sed -i 's,../libs/qt_plugins,/usr/lib/qt/plugins,' pptk/viewer/qt.conf
 	cmake . \
 		-DEigen_INCLUDE_DIR:FILEPATH="/usr/include/eigen3" \
 		-DNumpy_INCLUDE_DIR="$(python -c 'import numpy; print("%s/numpy" % numpy.get_include())')" \
@@ -60,6 +61,5 @@ package() {
 	_py_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ./dist/*.whl
 	python -O -m compileall "${pkgdir}/usr/lib/python${_py_version}/site-packages/$_name"
-	ln -s /usr/lib/qt/plugins "${pkgdir}/usr/lib/python${_py_version}/site-packages/$_name/libs/qt_plugins"
 }
 
