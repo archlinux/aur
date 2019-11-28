@@ -1,6 +1,6 @@
 # Maintainer: Rohan Verma <hello@rohanverma.net>
 pkgname=simplelock
-pkgver=r6.c916526
+pkgver=r7.85ceea7
 pkgrel=1
 pkgdesc="Fast and simple wrapper over i3lock with multiple modes. Supports xkcd and unsplash"
 arch=('any')
