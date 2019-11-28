@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1
+Name=QUsb2snes
+Comment=A Qt based webserver for usb2snes
+Exec=/usr/bin/QUsb2Snes
+Icon=QUsb2snes.png
+Terminal=false
+Categories=Network;Game;Utility;

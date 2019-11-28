@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1
+Name=QFile2snes
+Comment=A Qt based file manager for usb2snes
+Exec=/usr/bin/QFile2Snes
+Icon=QFile2Snes.png
+Terminal=false
+Categories=Network;Game;Utility;
