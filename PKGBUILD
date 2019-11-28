@@ -6,12 +6,12 @@
 pkgname=mercurial-python3
 _pkgname=mercurial
 pkgver=5.2
-pkgrel=0
+pkgrel=1
 pkgdesc='A scalable distributed SCM tool - built with Python 3'
 arch=(x86_64)
 url="https://www.mercurial-scm.org/"
 license=(GPL)
-provides=(mercurial)
+provides=(mercurial=$pkgver)
 conflicts=(mercurial)
 depends=(python)
 optdepends=('tk: for the hgk GUI')
