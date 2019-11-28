@@ -1,16 +1,16 @@
 pkgbase = deepin-libwine
 	pkgdesc = Deepin Libwine
-	pkgver = 2.18_21
+	pkgver = 2.18_22
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = i686
 	arch = x86_64
 	license = Proprietary
 	makedepends = tar
-	noextract = deepin-libwine_2.18-21_i386.deb
+	noextract = deepin-libwine_2.18-22~rc0_i386.deb
 	options = !strip
-	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-libwine_2.18-21_i386.deb
-	md5sums = 0069e07adbf75ac5cb77b5952189722c
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-wine/deepin-libwine_2.18-22~rc0_i386.deb
+	md5sums = dded650ea9224f67b1fa12606608fdc6
 
 pkgname = deepin-libwine
 
