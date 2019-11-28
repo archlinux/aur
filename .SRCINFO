@@ -1,0 +1,16 @@
+pkgbase = lstune-git
+	pkgdesc = LS Tune strobe tuner
+	pkgver = r6.849dc19
+	pkgrel = 1
+	url = https://github.com/craigeaton/lstune
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-multimedia
+	provides = lstune
+	conflicts = lstune
+	source = git+https://github.com/craigeaton/lstune
+	md5sums = SKIP
+
+pkgname = lstune-git
+
