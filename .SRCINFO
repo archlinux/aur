@@ -1,7 +1,7 @@
 pkgbase = crates
 	pkgdesc = Challenging and fun three dimensional puzzle game.
-	pkgver = 0.7.1
-	pkgrel = 7
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://github.com/octaspire/crates
 	arch = x86_64
 	license = GPL
@@ -11,9 +11,9 @@ pkgbase = crates
 	depends = libgl
 	depends = sdl_mixer
 	backup = usr/share/crates/resources/config.lua
-	source = https://github.com/octaspire/crates/archive/7eef3f61362903fb06fb6609bd001fef22e6c93f.zip
+	source = https://github.com/octaspire/crates/archive/v0.7.2.tar.gz
 	source = crates.desktop
-	md5sums = 1bd8a585f8e22b0dc8a1df140ab9661c
+	md5sums = 61043b902e320bc7c058881e593fcf7a
 	md5sums = 22b3dc83195f5d05d175e6298123d496
 
 pkgname = crates
