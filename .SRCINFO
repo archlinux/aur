@@ -1,0 +1,13 @@
+pkgbase = xygrib-maps
+	pkgdesc = High resolution maps for XyGrib, about 100Mb.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://opengribs.org/en/xygrib
+	arch = any
+	license = GPL3
+	depends = xygrib
+	source = https://github.com/opengribs/XyGrib/releases/download/v1.1.1/XyGrib___High_Resolution_Maps.tar.gz
+	sha1sums = 7849cd9361757ae89c48f0e74ce340c7faf15015
+
+pkgname = xygrib-maps
+
