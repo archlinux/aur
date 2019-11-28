@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-base
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Full standard library replacement for OCaml"
 arch=('x86_64')
@@ -11,20 +11,19 @@ depends=('ocaml' 'ocaml-sexplib0')
 makedepends=('dune')
 options=('!strip')
 source=("https://github.com/janestreet/base/archive/v${pkgver}.tar.gz")
-sha512sums=('d36a1cf6ffe91b7c51a53deedec529f27c235a01d99934e22cafa7554f91e1fe8e4599ca2c4483fe8910a80b8ee013877bd1e87ee65e0361648f22fb3a8b46c7')
+sha512sums=('f753057ed5bda069c5ab535ad98e7277c8326923000dc9f164602973861fb00340d1976d48777f193bc8c0d5bd56a6c47d5b760d4833244047bff1304083e4e8')
 
 build() {
   cd "${srcdir}/base-${pkgver}"
 
-  dune build
+  dune build --profile release
 }
 
 
 package() {
   cd "${srcdir}/base-${pkgver}"
 
-  mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
-  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+  dune install --destdir "${pkgdir}"
   install -Dm755 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
