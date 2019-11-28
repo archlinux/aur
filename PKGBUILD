@@ -16,7 +16,7 @@ depends=(
     'python-yaml'
     'python-pyaml'
     'python-appdirs'
-    'python-datrie'
+    'python-datrie-git'
     'python-jsonschema'
     'python-docutils'
     'python-gitpython'
