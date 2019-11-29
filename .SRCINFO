@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-lapack
 	pkgdesc = Linear Algebra PACKage (mingw-w64)
 	pkgver = 3.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.netlib.org/lapack
 	arch = any
 	license = LGPL
