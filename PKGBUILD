@@ -2,11 +2,11 @@
 
 pkgname=adom-noteye
 pkgver=3.3.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam"
 arch=("x86_64")
 url="http://www.adom.de/"
-conflicts=('adom' 'adom-restricted' 'adom-noteye')
+conflicts=('adom' 'adom-restricted')
 provides=('adom')
 depends=('ncurses' 'mesa' 'sdl_image' 'sdl_net' 'sdl_mixer' 'lua51' 'libbsd' 
     'libmad' 'libpng12')
@@ -29,7 +29,7 @@ sha256sums_x86_64=(
 package() {
     # Copy entire contents of the archive to /opt
     install -d "${pkgdir}/opt"
-    cp -R "${srcdir}/adom" "${pkgdir}/opt/"
+    cp -R "${srcdir}/opt/adom" "${pkgdir}/opt/"
 
     # Since the adom binary uses a relative RPATH, it's either
     # this or patching the binary

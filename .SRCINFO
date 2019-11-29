@@ -1,7 +1,7 @@
 pkgbase = adom-noteye
 	pkgdesc = A roguelike game with a quest-centric, plot driven structure (+ GUI) - Please consider buying the game on Steam
 	pkgver = 3.3.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.adom.de/
 	arch = x86_64
 	license = custom:adom
@@ -17,7 +17,6 @@ pkgbase = adom-noteye
 	provides = adom
 	conflicts = adom
 	conflicts = adom-restricted
-	conflicts = adom-noteye
 	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/x86_64/adom_noteye_64_3.3.3.tar.xz
 	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/common/adom.sh
 	source_x86_64 = https://repo.sshadm.in/archlinux/eldios/common/LICENSE
