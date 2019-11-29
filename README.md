@@ -58,6 +58,16 @@ Boot it:
 
 	sudo systemctl enable --now systemd-nspawn@github-actions.service
 
+### Limits
+
+Limit the memory consumption of your container to 2 GiB:
+
+	systemctl set-property systemd-nspawn@myContainer.service MemoryMax=2G
+
+Limit the CPU time usage to roughly the equivalent of 2 cores:
+
+	systemctl set-property systemd-nspawn@myContainer.service CPUQuota=200%
+
 ### Attaching Shell
 
 	sudo machinectl shell github-actions
