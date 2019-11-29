@@ -1,14 +1,17 @@
 pkgbase = keeper-password-manager
 	pkgdesc = Keeper is the world's #1 most downloaded password keeper and secure digital vault for protecting and managing your passwords and other secret information.
-	pkgver = 14.9.9
+	pkgver = 14.9.10
 	pkgrel = 1
 	url = https://keepersecurity.com
 	arch = x86_64
 	license = Custom
-	depends = xdg-utils
-	source = https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_14.9.9_amd64.deb
+	depends = libsecret
+	depends = nss
+	depends = libxss
+	depends = gtk3
+	source = https://keepersecurity.com/desktop_electron/Linux/repo/deb/keeperpasswordmanager_14.9.10_amd64.deb
 	source = LICENSE
-	sha512sums = 60437f858e3f6332870cd2ea979ede137847a5e62971858cae97d0d786344e7852c6c115d91ef3509fe5cfdea5bdbb90f27106fddc60dbdeb5369ab602891038
+	sha512sums = 359fdd89b5ca4b4d7bbdf48df4d37dea0c960f6dc8db7da24290b3b0cb56f8a12228c0256be181948730cd127126278dbf91feb838c28e9480da62ecd748ab0e
 	sha512sums = 9bd161a552aba146ee89ab930b8a444442d3cb4bba8cf5e94d1a04bfe2c99fae8372d0d04d5b01fe489578429e9fd020cb567e005b1a267fcb51a0bc4cb2f7b2
 
 pkgname = keeper-password-manager
