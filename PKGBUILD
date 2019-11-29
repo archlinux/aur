@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154
 
 pkgname=clickhouse-static
-pkgver=19.16.3.6
+pkgver=19.17.4.11
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
@@ -27,14 +27,14 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'libgsasl.tgz::https://github.com/ClickHouse-Extras/libgsasl/archive/3b8948a.tar.gz'
   'libhdfs3.tgz::https://github.com/ClickHouse-Extras/libhdfs3/archive/e2131aa.tar.gz'
   'librdkafka.tgz::https://github.com/edenhill/librdkafka/archive/6160ec2.tar.gz'
-  'libunwind.tgz::https://github.com/ClickHouse-Extras/libunwind/archive/5afe6d8.tar.gz'
+  'libunwind.tgz::https://github.com/ClickHouse-Extras/libunwind/archive/68cffcb.tar.gz'
   'libxml2.tgz::https://github.com/GNOME/libxml2/archive/18890f47.tar.gz'
   'llvm.tgz::https://github.com/ClickHouse-Extras/llvm/archive/163def2.tar.gz'
   'lz4.tgz::https://github.com/lz4/lz4/archive/7a4e3b1f.tar.gz'
   'mariadb-connector-c.tgz::https://github.com/ClickHouse-Extras/mariadb-connector-c/archive/1801630.tar.gz'
   'orc.tgz::https://github.com/apache/orc/archive/5981208.tar.gz'
   'poco.tgz::https://github.com/ClickHouse-Extras/poco/archive/6216cc0.tar.gz'
-  'protobuf.tgz::https://github.com/ClickHouse-Extras/protobuf/archive/1273537.tar.gz'
+  'protobuf.tgz::https://github.com/ClickHouse-Extras/protobuf/archive/0795fa6.tar.gz'
   'rapidjson.tgz::https://github.com/Tencent/rapidjson/archive/01950eb7.tar.gz'
   're2.tgz::https://github.com/google/re2/archive/7cf8b88.tar.gz'
   'simdjson.tgz::https://github.com/lemire/simdjson/archive/e9be643.tar.gz'
@@ -47,7 +47,7 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
   'zstd.tgz::https://github.com/facebook/zstd/archive/25559750.tar.gz'
 )
 sha256sums=(
-  3a7ea35a21ab5e618e5c9b8ea8b8d0e5e7140e82cfd7756178cbbe4711d0be7a # clickhouse sources
+  b80de40efbb0353e98fe04594cbb2b38302cb9817b9efec138b81b3e8e56da4c # clickhouse sources
   80837520237b40e27c36edb5b71127dd9051e3bcb93e26d7fa3301f2e0563e3f # arrow.tgz
   fd586532ea7c0f297f36f1fa076da6ca421abc5d2dee05f96175267a753e7154 # base64.tgz
   18a057463753f377524d2223b38c32319a704f1f220b1fd307dabeceed6f3bd1 # boost.tgz
@@ -64,14 +64,14 @@ sha256sums=(
   c41328df4d1b79f9043ad86219320d12af18dedcacbe76aa6115f906c28c6381 # libgsasl.tgz
   6744b54d9465db5bdc844a1ccd5e93fc35c804652978d304fd59772ef25ab18d # libhdfs3.tgz
   6dd22b23e544c7c2f433e666701f7fa92636194111dccdbe90a54b69ce826e45 # librdkafka.tgz
-  00846b9d9d28296103d29c7b9c8a48366bb932445048fa54a9a280dff5e25e49 # libunwind.tgz
+  4fbd4aea4060a2f5a200111a5586274b633fd936af50d0833fcd1dd0a2b704ce # libunwind.tgz
   2c3d9a93e651b02fef59489e796546a16df9010288905e62598816eaa2c7eb33 # libxml2.tgz
   86389e971f15512ae6952584cf4c4a471a72a7489e8063cfba5e0c6b3af826a4 # llvm.tgz
   b4ac86c2d511e836455a5732cbc4d6f472b9334998b04c3ea203f9fc88abaa30 # lz4.tgz
   3316dd42dc0c0d688fe3dbab840c84d157dcd04c9abbc563eb0c98c217a6cf59 # mariadb-connector-c.tgz
   3207d094a85a4b2fed16fd7fda8720449e83931010efe04104986bd1e0053e1c # orc.tgz
   b750be8035351a7afe9e0717b23725a06bb478c4e5619615d94f2cb713ca5cb7 # poco.tgz
-  92a47cda264ef66dbaa28608e830a560871311b2f5558a91ea34ce27747cbfb7 # protobuf.tgz
+  74db58c7e7445d7f454b2da0209d191f9677553c19872437fb42d10a0e95a26b # protobuf.tgz
   fcbbd610196f3e4f550ebb3a6bb2359b56cab969a2dce65e33a1bc8504a38168 # rapidjson.tgz
   2e1d268c4340fc86206756f265f5910608c6d8e07a3668a955191c486afb072b # re2.tgz
   c23d33ee945b4441a10e19f7f69e58ef5946e69251a5e220962becdc77e5a871 # simdjson.tgz
