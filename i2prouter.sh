@@ -147,11 +147,6 @@ _graceful() {
     fi
 }
 
-_status() {
-    [[ "$pid" ]] &&
-        echo "I2P Router is running: PID:$pid" || echo "I2P Router is not running."
-}
-
 _dump() {
     if [[ "$pid" ]]; then
         echo "Dumping threads..."
@@ -164,9 +159,22 @@ _dump() {
 }
 #-----------------------------------------------------------------------------
 
+[[ "$1" != @(console|start|stop|graceful|restart|dump) ]] && {
+    echo "Usage: $(basename $0) [command]"
+    echo
+    echo "Commands:"
+    echo "  console     Launch in the current console"
+    echo "  start       Start in the background as a daemon process"
+    echo "  stop        Stop if running as a daemon or in another console"
+    echo "  graceful    Stop gracefully, may take up to 11 minutes for all tunnels to close"
+    echo "  restart     Restart the JVM"
+    echo "  dump        Request a Java thread dump if running"
+    exit
+}
+
 check_user "$@"
-init_vars
 check_if_running
+init_vars
 
 case "$1" in
      'console') _console
@@ -179,21 +187,6 @@ case "$1" in
                 ;;
      'restart') _restart
                 ;;
-      'status') _status
-                ;;
         'dump') _dump
                 ;;
-
-    *)  echo "Usage: $(basename $0) [command]"
-        echo
-        echo "Commands:"
-        echo "  console     Launch in the current console"
-        echo "  start       Start in the background as a daemon process"
-        echo "  stop        Stop if running as a daemon or in another console"
-        echo "  graceful    Stop gracefully, may take up to 11 minutes for all tunnels to close"
-        echo "  restart     Restart the JVM"
-        echo "  status      Query the current status"
-        echo "  dump        Request a Java thread dump if running"
-        echo
-        ;;
 esac

@@ -16,18 +16,22 @@ pkgbase = i2p-bin
 	backup = opt/i2p/wrapper.config
 	source = https://launchpad.net/i2p/trunk/0.9.43/+download/i2pinstall_0.9.43.jar
 	source = https://launchpad.net/i2p/trunk/0.9.43/+download/i2pinstall_0.9.43.jar.sig
+	source = https://raw.githubusercontent.com/i2p/i2p.i2p/master/installer/resources/bash-completion/eepget
 	source = i2prouter.service
 	source = i2p.tmpfiles
-	source = i2prouter.sh
 	source = wrapper.config
 	source = router.config
+	source = i2prouter.bash
+	source = i2prouter.sh
 	sha256sums = e5eb3db08dcc594e2fb01ada63303ff48096a454db1c7659c928ddb07736c84a
 	sha256sums = SKIP
+	sha256sums = 925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d
 	sha256sums = 644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876
 	sha256sums = df26da04c8415ac24ec73b0dd08d3459a8964553bb77e5da5ab9833b0a31d865
-	sha256sums = ae1ff9026f0a9180718249e6d8a973ffe03501bf55491cb3866d72230e89dc8a
 	sha256sums = 5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed
 	sha256sums = 7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2
+	sha256sums = 7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a
+	sha256sums = b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8
 
 pkgname = i2p-bin
 
