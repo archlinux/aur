@@ -2,9 +2,9 @@
 
 pkgname=libupnp18
 _pkgname=libupnp
-pkgver=1.8.4
+pkgver=1.8.6
 _pkgver=1.8
-pkgrel=4
+pkgrel=1
 pkgdesc='A separate installation of libupnp 1.8 branch'
 url='http://pupnp.sourceforge.net/'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('pkgconfig' 'make' 'gcc' 'binutils' 'autoconf' 'automake' 'fakeroot')
 provides=( libupnp=${pkgver} )
 source=(https://downloads.sourceforge.net/sourceforge/pupnp/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('188d3f786d92fe14191f17634d2d87847eee7d2b568a5257ea23262fec9973d6')
+sha256sums=('65faf240f8ccee50cc0e7fe7fb21dcd79f743fc227a9b652b091f50f6956c2c7')
 
 prepare() {
   cd ${_pkgname}-${pkgver}

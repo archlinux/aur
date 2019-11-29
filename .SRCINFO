@@ -1,7 +1,7 @@
 pkgbase = libupnp18
 	pkgdesc = A separate installation of libupnp 1.8 branch
-	pkgver = 1.8.4
-	pkgrel = 4
+	pkgver = 1.8.6
+	pkgrel = 1
 	url = http://pupnp.sourceforge.net/
 	arch = x86_64
 	license = BSD
