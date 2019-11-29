@@ -1,4 +1,5 @@
-# Maintainer: Michael Armbruster <michael at armbrust dot me>
+# Maintainer: Tod Jackson <tod.jackson@gmail.com>
+# Contributor: Michael Armbruster <michael at armbrust dot me>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
