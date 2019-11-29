@@ -30,6 +30,10 @@ _path="Rambox-${pkgver}-linux"
 package() {
     install -d ${pkgdir}/{opt/rambox,usr/{bin,share/pixmaps}}
     cp -R ${srcdir}/${_path}/* ${pkgdir}/opt/${_pkgname}/
+
+    # fix crash on some systems due to https://github.com/ramboxapp/community-edition/issues/2481
+    chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
+
     install -Dm755 $srcdir/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
     install -Dm644 $srcdir/${_pkgname}.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
     desktop-file-install ${srcdir}/${_pkgname}.desktop --dir ${pkgdir}/usr/share/applications/
