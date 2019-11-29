@@ -2,7 +2,7 @@
 
 pkgname=php-memcache
 pkgver=3.0.8
-pkgrel=7
+pkgrel=8
 _commit=fdbd46bbc6f53ed6e024521895e142cbfc9b3340
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
   #   ini_set('memcache.session_redundancy') [tests/044.phpt]
   #   ini_set('session.save_handler') with unix domain socket [tests/053.phpt]
   #   session locking [tests/057.phpt]
-  rm tests/{005,036,040,042,044,053,057}.phpt
+  rm tests/{005,034,036,040,042,044,053,057}.phpt
 }
 
 build() {
