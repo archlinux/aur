@@ -1,9 +1,0 @@
-post_install() {
-  echo 'NOTE: You need to participate in the Steam client beta for this'
-  echo 'NOTE: compatibility tool to get picked up properly. See'
-  echo 'NOTE: https://support.steampowered.com/kb_article.php?ref=7021-EIAH-8669'
-}
-
-post_upgrade() {
-  post_install
-}

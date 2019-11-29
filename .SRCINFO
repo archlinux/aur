@@ -1,9 +1,8 @@
 pkgbase = boxtron
-	pkgdesc = Compatibility tool to run DOS games on Steam through native Linux DOSBox – NOTE: Won’t work as intended until next Steam beta cycle!
+	pkgdesc = Compatibility tool to run DOS games on Steam through native Linux DOSBox
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dreamer/boxtron
-	install = boxtron.install
 	arch = i686
 	arch = x86_64
 	license = GPL
