@@ -2,18 +2,18 @@
 # Maintainer: Tod Jackson <tod.jackson@gmail.com>
 pkgname=comix
 pkgver=4.0.4
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="A user-friendly, customizable comic/image viewer"
 arch=('any')
 url="https://sourceforge.net/projects/comix"
 license=('GPL2')
-depends=('unrar' 'python2-pillow' 'pygtk')
-makedepends=('tar' 'pygtk' 'python2-pillow')
+depends=('pygtk' 'python2-pillow' 'unrar')
+makedepends=('pygtk' 'python2-pillow')
 optdepends=('gconf')
 conflicts=('mcomix')
 source=("https://downloads.sourceforge.net/project/comix/comix/comix-4.0.4/comix-4.0.4.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcomix%2Ffiles%2F")
-md5sums=('029227a77b122f7080ee0280d41bee78')
+sha256sums=('9352169de856957a16de76867fbd7dc711648edfbac7ce76191b55e5f6cd546a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/src"
