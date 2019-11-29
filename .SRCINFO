@@ -35,7 +35,6 @@ pkgbase = kalliope
 	depends = python-pip
 	depends = cblas
 	depends = python-gevent
-	depends = python-gtts
 	depends = python-sox
 	depends = python-speechrecognition
 	depends = python-configurationutil
@@ -47,6 +46,8 @@ pkgbase = kalliope
 	depends = python-tableutil
 	depends = python-conversionutil
 	depends = python-openpyxl
+	depends = python-flask-cors
+	depends = python-gtts
 	source = https://github.com/kalliope-project/kalliope/archive/v0.5.5.tar.gz
 	sha256sums = 3b2dbee3e380d3942491684a5c6dd00ab173dda3472faf71f08e138c8946cfbd
 
