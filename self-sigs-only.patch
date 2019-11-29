@@ -1,0 +1,56 @@
+From: Werner Koch <wk@gnupg.org>
+Date: Thu, 4 Jul 2019 13:45:39 +0000 (+0200)
+Subject: gpg: Add "self-sigs-only" and "import-clean" to the keyserver options.
+X-Git-Url: http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commitdiff_plain;h=23c978640812d123eaffd4108744bdfcf48f7c93
+
+gpg: Add "self-sigs-only" and "import-clean" to the keyserver options.
+
+* g10/gpg.c (main): Change default.
+--
+
+Due to the DoS attack on the keyeservers we do not anymore default to
+import key signatures.  That makes the keyserver unsuable for getting
+keys for the WoT but it still allows to retriev keys - even if that
+takes long to download the large keyblocks.
+
+To revert to the old behavior add
+
+  keyserver-optiions  no-self-sigs-only,no-import-clean
+
+to gpg.conf.
+
+GnuPG-bug-id: 4607
+Signed-off-by: Werner Koch <wk@gnupg.org>
+---
+
+diff --git a/doc/gpg.texi b/doc/gpg.texi
+index 8feab8218..9513a4e0f 100644
+--- a/doc/gpg.texi
++++ b/doc/gpg.texi
+@@ -1917,6 +1917,11 @@ are available for all keyserver types, some common options are:
+ 
+ @end table
+ 
++The default list of options is: "self-sigs-only, import-clean,
++repair-keys, repair-pks-subkey-bug, export-attributes,
++honor-pka-record".
++
++
+ @item --completes-needed @var{n}
+ @opindex compliant-needed
+ Number of completely trusted users to introduce a new
+diff --git a/g10/gpg.c b/g10/gpg.c
+index 66e47dde5..0bbe72394 100644
+--- a/g10/gpg.c
++++ b/g10/gpg.c
+@@ -2424,7 +2424,9 @@ main (int argc, char **argv)
+     opt.import_options = IMPORT_REPAIR_KEYS;
+     opt.export_options = EXPORT_ATTRIBUTES;
+     opt.keyserver_options.import_options = (IMPORT_REPAIR_KEYS
+-					    | IMPORT_REPAIR_PKS_SUBKEY_BUG);
++					    | IMPORT_REPAIR_PKS_SUBKEY_BUG
++                                            | IMPORT_SELF_SIGS_ONLY
++                                            | IMPORT_CLEAN);
+     opt.keyserver_options.export_options = EXPORT_ATTRIBUTES;
+     opt.keyserver_options.options = KEYSERVER_HONOR_PKA_RECORD;
+     opt.verify_options = (LIST_SHOW_UID_VALIDITY

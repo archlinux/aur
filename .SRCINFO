@@ -1,6 +1,6 @@
 pkgbase = gnupg-scdaemon-shared-access
 	pkgdesc = This package adds shared-access option that uses PCSC_SHARE_SHARED for pcsc_connect in scdaemon when using pcsc backend for smartcard access
-	pkgver = 2.2.17
+	pkgver = 2.2.18
 	pkgrel = 1
 	url = https://www.gnupg.org/
 	install = install
@@ -25,20 +25,22 @@ pkgbase = gnupg-scdaemon-shared-access
 	optdepends = pcsclite: scdaemon
 	provides = gnupg
 	provides = dirmngr
-	provides = gnupg=2.2.17
-	provides = gnupg2=2.2.17
+	provides = gnupg=2.2.18
+	provides = gnupg2=2.2.18
 	conflicts = gnupg
 	conflicts = dirmngr
 	conflicts = gnupg2
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.17.tar.bz2
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.17.tar.bz2.sig
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.18.tar.bz2
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.18.tar.bz2.sig
+	source = self-sigs-only.patch
 	source = scdaemon_shared-access.patch
 	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
 	validpgpkeys = 46CC730865BB5C78EBABADCF04376F3EE0856959
 	validpgpkeys = 031EC2536E580D8EA286A9F22071B08A33BD3F06
 	validpgpkeys = D238EA65D64C67ED4C3073F28A861B1C7EFD60D9
-	sha256sums = afa262868e39b651a2db4c071fba90415154243e83a830ca00516f9a807fd514
+	sha256sums = 30d37ce2ca55b2b9b61480b2a175a3b22066ab41cd3f84688448919b566dec0a
 	sha256sums = SKIP
+	sha256sums = 0130c43321c16f53ab2290833007212f8a26b1b73bd4edc2b2b1c9db2b2d0218
 	sha256sums = aa46b372830dd8ed355a86a1677c50c6be8178f847c09b7291f47a1dc3ea02dc
 
 pkgname = gnupg-scdaemon-shared-access
