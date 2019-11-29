@@ -1,12 +1,11 @@
 pkgbase = linux-rt-bfq
 	pkgdesc = Linux RT-BFQ-dev
 	pkgver = 5.2.21.rt13
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
 	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
 	makedepends = python-sphinx
@@ -54,6 +53,6 @@ pkgname = linux-rt-bfq-headers
 	depends = linux-rt-bfq
 
 pkgname = linux-rt-bfq-docs
-	pkgdesc = Kernel hacker's manual for the Linux RT-BFQ-dev kernel
+	pkgdesc = Documentation for the Linux RT-BFQ-dev kernel
 	depends = linux-rt-bfq
 

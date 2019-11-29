@@ -54,13 +54,13 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=6
+pkgrel=7
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -310,27 +310,19 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
+    pkgdesc="Documentation for the $pkgdesc kernel"
     depends=('linux-rt-bfq')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  msg2 "Removing unneeded files..."
-  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-  msg2 "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
