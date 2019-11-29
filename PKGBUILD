@@ -2,10 +2,11 @@
 pkgname=pseint-bin
 pkgver=20191127
 pkgrel=2
-pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
+pkgdesc="Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español"
 arch=('x86_64')
 url="http://pseint.sourceforge.net"
 license=('GPL')
+conflicts=('pseint')
 groups=()
 depends=('libpng12' 'glu')
 makedepends=()
