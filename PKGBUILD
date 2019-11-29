@@ -1,4 +1,4 @@
-# Maintainer: Milk Brewster (milkii on Freenode)
+# Maintainer: Milk Brewster <milkii@freenode.irc>
 pkgname=beast-git
 pkgver=r9082.ddddc1e05
 pkgrel=1
@@ -12,8 +12,8 @@ depends=()
 makedepends=('gcc' 'libgnomecanvas' 'libvorbis' 'flac' 'libmad' 'npm' 'fluidsynth' 'python-pandocfilters')
 checkdepends=()
 optdepends=()
-provides=('beast' 'beast-git')
-conflicts=('beast' 'beast-git')
+provides=()
+conflicts=()
 replaces=()
 backup=()
 options=()

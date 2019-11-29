@@ -13,10 +13,6 @@ pkgbase = beast-git
 	makedepends = npm
 	makedepends = fluidsynth
 	makedepends = python-pandocfilters
-	provides = beast
-	provides = beast-git
-	conflicts = beast
-	conflicts = beast-git
 	source = git+https://github.com/tim-janik/beast
 	md5sums = SKIP
 
