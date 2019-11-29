@@ -8,6 +8,7 @@ arch=('any')
 url="https://maebert.github.io/jrnl"
 license=('MIT')
 depends=('python-parsedatetime>=1.2'
+         'python-yaml>=5.1.2'
          'python-pytz>=2013b'
          'python-six>=1.6.1'
          'python-tzlocal>=1.1'

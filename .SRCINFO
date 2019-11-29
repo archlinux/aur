@@ -6,6 +6,7 @@ pkgbase = jrnl
 	arch = any
 	license = MIT
 	depends = python-parsedatetime>=1.2
+	depends = python-yaml>=5.1.2
 	depends = python-pytz>=2013b
 	depends = python-six>=1.6.1
 	depends = python-tzlocal>=1.1
