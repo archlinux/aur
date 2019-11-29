@@ -24,6 +24,9 @@ sha512sums=('711cdb99e6dc34e6cc843ef31befd2db49bfe0463f3da9550663ced9febb362cdf2
 package() {
 	mkdir -p "$pkgdir/opt/$provides" 
 	cp -r "$srcdir/." "$pkgdir/opt/$provides"
+	
+	install -m755 -d ${pkgdir}/usr/lib/systemd/system || return 1
+	install -m644  $startdir/github-actions.service ${pkgdir}/usr/lib/systemd/system || return 1
 }
 
 pre_install() {
