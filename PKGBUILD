@@ -1,5 +1,5 @@
 # Maintainer: Cristophero <cristophero.alvarado@gmail.com>
-pkgname=pseint-bin
+pkgname=pseint
 pkgver=20191127
 pkgrel=1
 pkgdesc="Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español"
@@ -10,8 +10,8 @@ groups=()
 depends=('libpng12' 'glu')
 makedepends=()
 optdepends=()
-source_i686=(https://razaoinfo.dl.sourceforge.net/project/pseint/${pkgver}/$pkgname-l32-${pkgver}.tgz)
-source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/pseint/${pkgver}/$pkgname-l64-${pkgver}.tgz)
+source_i686=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l32-${pkgver}.tgz)
+source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l64-${pkgver}.tgz)
 noextract=()
 sha256sums_x86=("fd0cff776b6a97dc22d1852503d65d23bb0171bdace751f8ef38b86ffd821d74")
 sha256sums_x86_64=("f63b7c56145f357f99aa856bcf3cafdacaae011a0a3c90f868ce3198b9833f08")
