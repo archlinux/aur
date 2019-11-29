@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=btrfs-snapshot
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
@@ -9,16 +9,21 @@ url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
 depends=('bash' 'btrfs-progs')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('9a51bc8dfa9effd692da9449d0bc6275707784387703d6277d0695564937b0c7')
+sha256sums=('77eede63b03607679275786914f1be2994bb2513df94482f4aa51c066576fbef')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+
+    sed -e 's|\(^_f_functions\)=.*|\1=/usr/lib/btrfs-snapshot/functions|' \
+        -e 's|\(^_d_configs\)=.*|\1=/etc/btrfs-snapshot|' \
+        -e "s|%VERSION%|$pkgver|g" \
+        -i btrfs-snapshot
+}
 
 package() {
     cd "$pkgname-$pkgver"
 
-    sed "s|\(^_f_functions\)=.*|\1=/usr/lib/btrfs-snapshot/functions|
-         s|\(^_d_configs\)=.*|\1=/etc/btrfs-snapshot|
-         s|%VERSION%|$pkgver|g" \
-            btrfs-snapshot | install -Dm755 /dev/stdin \
-                "$pkgdir/usr/bin/btrfs-snapshot"
+    install -Dm755 btrfs-snapshot "$pkgdir/usr/bin/btrfs-snapshot"
 
     install -Dm644 functions "$pkgdir/usr/lib/btrfs-snapshot/functions"
     install -dm755 "$pkgdir/etc/btrfs-snapshot"
