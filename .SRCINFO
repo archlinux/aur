@@ -1,10 +1,11 @@
 pkgbase = tuir
 	pkgdesc = Terminal UI for Reddit, forked from discontinued rtv
 	pkgver = 1.28.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ajak/tuir/
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-beautifulsoup4
 	depends = python-decorator
