@@ -1,6 +1,6 @@
 pkgbase = msbuild
 	pkgver = 16.4+xamarinxplat.2019.09.09.15.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	arch = armv7h
@@ -16,7 +16,7 @@ pkgbase = msbuild
 	source = license_check_is_case_sensitive.diff
 	source = case_sensitive_dotnetbits.patch
 	sha256sums = 84c2e6021c43ba9dacc530d3d1bd6ed38e4f6b088a5e014f0ac4225843895d28
-	sha256sums = c4c0e4f578913ce44b0a9660367dd5437ef77849ced4d0b55509ff1666a5afee
+	sha256sums = 58b13f2f93d45ebe0cbf3864f4e2567b7f8d7caab265e8234f293985e2029bb0
 	sha256sums = a13ecb4125c673372d87a3b7d957fc8716a3c3e74cd08e9e354b5dcf170ed453
 	sha256sums = 3a12a9c33ad5938e8af24d2985241053602f4efc94a4818a00a17da32ce4aba5
 	sha256sums = aaa827b13abfb150572915d3daaa6b7140a7b4c12cda48aa76fed0f830a8bee1
