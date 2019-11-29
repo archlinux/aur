@@ -1,7 +1,7 @@
 # Maintainer: Severin Kaderli <severin.kaderli@gmail.com>
 _pkgname=pegasus-frontend
 pkgname=${_pkgname}-git
-pkgver=alpha12.r39.gdd58baf
+pkgver=alpha13.r30.g7648b41
 pkgrel=1
 pkgdesc="A cross platform, customizable graphical frontend for launching emulators and managing your game collection."
 arch=('i686' 'x86_64')
@@ -10,15 +10,19 @@ license=('GPL3')
 makedepends=(
     'git'
     'qt5-tools'
+    'qt5-quickcontrols'
+    'qt5-gamepad'
+    'qt5-svg'
+    'qt5-multimedia'
+    'qt5-graphicaleffects'
+    'qt5-declarative'
+    'qt5-imageformats'
+    'sdl2'
 )
 depends=(
     'qt-gstreamer'
     'fontconfig'
     'openssl-1.0'
-    'qt5-svg'
-    'qt5-multimedia'
-    'qt5-gamepad'
-    'qt5-graphicaleffects'
 )
 optdepends=(
     'polkit'
@@ -27,7 +31,7 @@ provides=('pegasus-frontend')
 conflicts=('pegasus-frontend')
 source=(
     "${_pkgname}::git+https://github.com/mmatyas/pegasus-frontend.git"
-    "git+https://github.com/mmatyas/pegasus-frontend-translations.git#branch=master"
+    "git+https://github.com/mmatyas/pegasus-frontend-translations.git"
     "git+https://github.com/mmatyas/pegasus-theme-grid.git"
     "git+https://github.com/mmatyas/SortFilterProxyModel.git"
 )
@@ -55,16 +59,18 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}"
     mkdir -p ./build && cd build
+
     qmake .. \
+        USE_SDL_GAMEPAD=1 \
         INSTALL_BINDIR=/usr/bin \
+        INSTALL_DOCDIR=/usr/share/doc/pegasus-frontend \
         INSTALL_ICONDIR=/usr/share/pixmaps \
-        INSTALL_DESKTOPDIR=/usr/share/applications
+        INSTALL_DESKTOPDIR=/usr/share/applications \
+        INSTALL_APPSTREAMDIR=/app/share/metainfo
     make
 }
 
 package() {
     cd "${srcdir}/${_pkgname}/build"
     make INSTALL_ROOT="${pkgdir}/" install
-    install -Dm644 "../README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "../LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
