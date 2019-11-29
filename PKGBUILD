@@ -4,11 +4,12 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: James Rayner <iphitus@gmail.com>
+# Contributor: Alex Luberg <alex@luberg.me>
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
 pkgver=435.27.08
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
@@ -38,6 +39,10 @@ prepare() {
     cd "${_pkg}"
 
     bsdtar -xf nvidia-persistenced-init.tar.bz2
+
+    # Fixing regex pattern for Module.symvers
+    sed -i "s/${TAB}vmlinux/${TAB}*vmlinux/g" kernel/conftest.sh
+    sed -i "s/TAB='    '/TAB='\\\t'/g" kernel/conftest.sh
 
     sed -i "s/static int nv_drm_vma_fault(struct vm_fault \*vmf)/#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 1, 0)\nstatic int nv_drm_vma_fault(struct vm_fault \*vmf)\n#else\nstatic vm_fault_t nv_drm_vma_fault(struct vm_fault \*vmf)\n#endif/g" kernel/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 
@@ -243,6 +248,13 @@ package_nvidia-vulkan-utils() {
     install -D -m644 NVIDIA_Changelog "${pkgdir}/usr/share/doc/nvidia/NVIDIA_Changelog"
     cp -r html "${pkgdir}/usr/share/doc/nvidia/"
     ln -s nvidia "${pkgdir}/usr/share/doc/nvidia-vulkan-utils"
+
+    # new power management support
+    install -D -m644 nvidia-suspend.service "${pkgdir}/usr/lib/systemd/system/nvidia-suspend.service"
+    install -D -m644 nvidia-hibernate.service "${pkgdir}/usr/lib/systemd/system/nvidia-hibernate.service"
+    install -D -m644 nvidia-resume.service "${pkgdir}/usr/lib/systemd/system/nvidia-resume.service"
+    install -D -m755 nvidia "${pkgdir}/usr/lib/systemd/system-sleep/nvidia"
+    install -D -m755 nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
 
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
