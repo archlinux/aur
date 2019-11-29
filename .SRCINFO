@@ -1,14 +1,14 @@
 pkgbase = psuinfo
 	pkgdesc = A psutil-based command to display customizable system info, intended for Tint2 or other panels
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/psuinfo
 	arch = x86_64
 	license = GPL3
 	depends = python
 	depends = python-psutil
 	source = https://github.com/nwg-piotr/psuinfo/archive/v1.1.tar.gz
-	md5sums = a163c69a438cc216ab278aeb623ba14d
+	md5sums = ddbcfab6a6a9111fe3ea9e57186e9833
 
 pkgname = psuinfo
 
