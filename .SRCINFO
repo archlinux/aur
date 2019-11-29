@@ -1,7 +1,7 @@
 pkgbase = httptoolkit
 	pkgdesc = Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.
 	pkgver = 0.1.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://httptoolkit.tech/
 	arch = x86_64
 	license = GPL3
@@ -9,3 +9,4 @@ pkgbase = httptoolkit
 	md5sums = 09c2772d8fe3f1e280fa51e5cd5b9138
 
 pkgname = httptoolkit
+
