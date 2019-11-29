@@ -2,3 +2,8 @@ post_install() {
   echo "A sample config is included at /usr/share/vkBasalt/vkBasalt.conf.example"
   echo "Please copy it over to ~/.local/share/vkBasalt/vkBasalt.conf to have vkBasalt use it"
 }
+
+post_upgrade() {
+  echo "The config file example at /usr/share/vkBasalt/vkBasalt.conf.example may have been updated."
+  echo "You may want to check it for anything new you would like to use, in your own user config file at ~/.local/share/vkBasalt/vkBasalt.conf ."
+}
