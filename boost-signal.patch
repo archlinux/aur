@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2019-11-28 17:13:57.476923621 -0500
++++ CMakeLists.txt	2019-11-28 17:14:04.723590095 -0500
+@@ -3,7 +3,7 @@
+ 
+ find_package(catkin REQUIRED nav_msgs nodelet openslam_gmapping roscpp tf rosbag_storage)
+ 
+-find_package(Boost REQUIRED signals)
++find_package(Boost REQUIRED)
+ 
+ include_directories(${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
+ 
