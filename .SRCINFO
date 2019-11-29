@@ -13,8 +13,8 @@ pkgbase = libupnp18
 	makedepends = automake
 	makedepends = fakeroot
 	depends = glibc
-	provides = libupnp=1.8.4
-	source = https://downloads.sourceforge.net/sourceforge/pupnp/libupnp-1.8.4.tar.bz2
+	provides = libupnp=1.8.6
+	source = https://downloads.sourceforge.net/sourceforge/pupnp/libupnp-1.8.6.tar.bz2
 	sha256sums = 188d3f786d92fe14191f17634d2d87847eee7d2b568a5257ea23262fec9973d6
 
 pkgname = libupnp18
