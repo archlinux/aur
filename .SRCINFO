@@ -1,0 +1,14 @@
+pkgbase = zinjai
+	pkgdesc = IDE simple, rápido y completo para C++.
+	pkgver = 20191006
+	pkgrel = 1
+	url = http://zinjai.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = libpng12
+	depends = glu
+	source = https://ufpr.dl.sourceforge.net/project/zinjai/zinjai-20191006/zinjai-l64-20191006.tgz
+	sha256sums = c2864bce6e433a320bffea3f26ae0fa589126fd349bf0d10867b08ba342ca516
+
+pkgname = zinjai
+
