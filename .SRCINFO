@@ -6,7 +6,7 @@ pkgbase = python-configurationutil
 	arch = any
 	license = custom:PSF
 	makedepends = python-setuptools
-	depends = python
+	depends = python-jsonschema
 	source = https://pypi.io/packages/source/c/configurationutil/configurationutil-3.7.2.tar.gz
 	sha512sums = SKIP
 
