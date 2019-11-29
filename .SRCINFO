@@ -7,6 +7,7 @@ pkgbase = python-logging-helper
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-better-exceptions
+	depends = python-future
 	source = https://pypi.io/packages/source/l/logging_helper/logging_helper-1.8.6.tar.gz
 	sha256sums = 270b7b57f163528709a162d48388518d8a109d33b014fd44893a493841549942
 
