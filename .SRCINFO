@@ -1,0 +1,24 @@
+pkgbase = ros-melodic-carrot-planner
+	pkgdesc = ROS - This planner attempts to find a legal place to put a carrot for the robot to follow. It does this by moving back along the vector between the robot and the goal point.
+	pkgver = 1.16.3
+	pkgrel = 1
+	url = https://wiki.ros.org/carrot_planner
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-tf2-geometry-msgs
+	depends = eigen
+	depends = ros-melodic-base-local-planner
+	depends = ros-melodic-costmap-2d
+	depends = ros-melodic-nav-core
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-tf2
+	depends = ros-melodic-tf2-ros
+	source = ros-melodic-carrot-planner-1.16.3.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.3.tar.gz
+	sha256sums = 23a6f3202fec00b07bb419453eed2591dd63fffa5da2fc78fb29620c9f2bdced
+
+pkgname = ros-melodic-carrot-planner
+
