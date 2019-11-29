@@ -1,6 +1,6 @@
 pkgbase = icqdesktop
 	pkgdesc = Official ICQ desktop client for Linux (binary version)
-	pkgver = 10.0.6611
+	pkgver = 10.0.7456
 	pkgrel = 1
 	url = https://icq.com/linux/
 	arch = i686
