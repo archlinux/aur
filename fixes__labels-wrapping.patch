@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtklabel.c
+Index: src/gtk+-3.24.13/gtk/gtklabel.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtklabel.c
-+++ src/gtk+-3.24.12/gtk/gtklabel.c
+--- src.orig/gtk+-3.24.13/gtk/gtklabel.c
++++ src/gtk+-3.24.13/gtk/gtklabel.c
 @@ -3685,6 +3685,14 @@ gtk_label_get_preferred_layout_size (Gtk
    GtkLabelPrivate *priv = label->priv;
    PangoLayout *layout;

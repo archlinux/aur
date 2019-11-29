@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkdialog.c
+Index: src/gtk+-3.24.13/gtk/gtkdialog.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkdialog.c
-+++ src/gtk+-3.24.12/gtk/gtkdialog.c
+--- src.orig/gtk+-3.24.13/gtk/gtkdialog.c
++++ src/gtk+-3.24.13/gtk/gtkdialog.c
 @@ -700,12 +700,12 @@ update_spacings (GtkDialog *dialog)
  
    /* don't set spacing when buttons are linked */
@@ -17,10 +17,10 @@ Index: src/gtk+-3.24.12/gtk/gtkdialog.c
        _gtk_container_set_border_width_set (GTK_CONTAINER (priv->action_area), FALSE);
      }
  }
-Index: src/gtk+-3.24.12/gtk/gtkmessagedialog.c
+Index: src/gtk+-3.24.13/gtk/gtkmessagedialog.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkmessagedialog.c
-+++ src/gtk+-3.24.12/gtk/gtkmessagedialog.c
+--- src.orig/gtk+-3.24.13/gtk/gtkmessagedialog.c
++++ src/gtk+-3.24.13/gtk/gtkmessagedialog.c
 @@ -37,6 +37,7 @@
  #include "gtkintl.h"
  #include "gtkprivate.h"
@@ -92,10 +92,10 @@ Index: src/gtk+-3.24.12/gtk/gtkmessagedialog.c
    atk_obj = gtk_widget_get_accessible (GTK_WIDGET (dialog));
    if (GTK_IS_ACCESSIBLE (atk_obj))
      {
-Index: src/gtk+-3.24.12/gtk/ui/gtkmessagedialog.ui
+Index: src/gtk+-3.24.13/gtk/ui/gtkmessagedialog.ui
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/ui/gtkmessagedialog.ui
-+++ src/gtk+-3.24.12/gtk/ui/gtkmessagedialog.ui
+--- src.orig/gtk+-3.24.13/gtk/ui/gtkmessagedialog.ui
++++ src/gtk+-3.24.13/gtk/ui/gtkmessagedialog.ui
 @@ -6,6 +6,7 @@
      <property name="resizable">0</property>
      <property name="type-hint">dialog</property>

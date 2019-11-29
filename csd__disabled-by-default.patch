@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkwindow.c
+Index: src/gtk+-3.24.13/gtk/gtkwindow.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkwindow.c
-+++ src/gtk+-3.24.12/gtk/gtkwindow.c
+--- src.orig/gtk+-3.24.13/gtk/gtkwindow.c
++++ src/gtk+-3.24.13/gtk/gtkwindow.c
 @@ -4158,6 +4158,14 @@ gtk_window_enable_csd (GtkWindow *window
      }
  

@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkwindow.c
+Index: src/gtk+-3.24.13/gtk/gtkwindow.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkwindow.c
-+++ src/gtk+-3.24.12/gtk/gtkwindow.c
+--- src.orig/gtk+-3.24.13/gtk/gtkwindow.c
++++ src/gtk+-3.24.13/gtk/gtkwindow.c
 @@ -8004,7 +8004,7 @@ gtk_window_state_event (GtkWidget
    GtkWindow *window = GTK_WINDOW (widget);
    GtkWindowPrivate *priv = window->priv;

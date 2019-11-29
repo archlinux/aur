@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkplacessidebar.c
+Index: src/gtk+-3.24.13/gtk/gtkplacessidebar.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkplacessidebar.c
-+++ src/gtk+-3.24.12/gtk/gtkplacessidebar.c
+--- src.orig/gtk+-3.24.13/gtk/gtkplacessidebar.c
++++ src/gtk+-3.24.13/gtk/gtkplacessidebar.c
 @@ -633,6 +633,7 @@ open_home (GtkPlacesSidebar *sidebar)
  static void
  add_special_dirs (GtkPlacesSidebar *sidebar)
@@ -46,10 +46,10 @@ Index: src/gtk+-3.24.12/gtk/gtkplacessidebar.c
    sidebar->hostnamed_cancellable = g_cancellable_new ();
    g_dbus_proxy_new_for_bus (G_BUS_TYPE_SYSTEM,
                              G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES,
-Index: src/gtk+-3.24.12/gtk/ui/gtkfilechooserwidget.ui
+Index: src/gtk+-3.24.13/gtk/ui/gtkfilechooserwidget.ui
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/ui/gtkfilechooserwidget.ui
-+++ src/gtk+-3.24.12/gtk/ui/gtkfilechooserwidget.ui
+--- src.orig/gtk+-3.24.13/gtk/ui/gtkfilechooserwidget.ui
++++ src/gtk+-3.24.13/gtk/ui/gtkfilechooserwidget.ui
 @@ -16,7 +16,8 @@
                  <property name="visible">1</property>
                  <property name="hscrollbar-policy">never</property>

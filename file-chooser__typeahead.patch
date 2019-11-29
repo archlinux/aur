@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkfilechooserwidget.c
+Index: src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkfilechooserwidget.c
-+++ src/gtk+-3.24.12/gtk/gtkfilechooserwidget.c
+--- src.orig/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
++++ src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
 @@ -1419,7 +1419,7 @@ gtk_file_chooser_widget_key_press_event
            return TRUE;
          }

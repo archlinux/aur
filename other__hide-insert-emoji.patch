@@ -1,8 +1,8 @@
-Index: src/gtk+-3.24.12/gtk/gtkentry.c
+Index: src/gtk+-3.24.13/gtk/gtkentry.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkentry.c
-+++ src/gtk+-3.24.12/gtk/gtkentry.c
-@@ -9619,7 +9619,8 @@ popup_targets_received (GtkClipboard
+--- src.orig/gtk+-3.24.13/gtk/gtkentry.c
++++ src/gtk+-3.24.13/gtk/gtkentry.c
+@@ -9626,7 +9626,8 @@ popup_targets_received (GtkClipboard
            g_signal_connect_swapped (menuitem, "activate",
                                      G_CALLBACK (gtk_entry_insert_emoji), entry);
            gtk_widget_show (menuitem);
@@ -12,10 +12,10 @@ Index: src/gtk+-3.24.12/gtk/gtkentry.c
          }
  
        g_signal_emit (entry, signals[POPULATE_POPUP], 0, menu);
-Index: src/gtk+-3.24.12/gtk/gtktextview.c
+Index: src/gtk+-3.24.13/gtk/gtktextview.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtktextview.c
-+++ src/gtk+-3.24.12/gtk/gtktextview.c
+--- src.orig/gtk+-3.24.13/gtk/gtktextview.c
++++ src/gtk+-3.24.13/gtk/gtktextview.c
 @@ -9537,7 +9537,8 @@ popup_targets_received (GtkClipboard
            g_signal_connect_swapped (menuitem, "activate",
                                      G_CALLBACK (gtk_text_view_insert_emoji), text_view);

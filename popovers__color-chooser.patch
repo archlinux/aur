@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkcolorswatch.c
+Index: src/gtk+-3.24.13/gtk/gtkcolorswatch.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkcolorswatch.c
-+++ src/gtk+-3.24.12/gtk/gtkcolorswatch.c
+--- src.orig/gtk+-3.24.13/gtk/gtkcolorswatch.c
++++ src/gtk+-3.24.13/gtk/gtkcolorswatch.c
 @@ -349,6 +349,17 @@ do_popup (GtkColorSwatch *swatch)
  {
    if (swatch->priv->popover == NULL)

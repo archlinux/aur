@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkscrolledwindow.c
+Index: src/gtk+-3.24.13/gtk/gtkscrolledwindow.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkscrolledwindow.c
-+++ src/gtk+-3.24.12/gtk/gtkscrolledwindow.c
+--- src.orig/gtk+-3.24.13/gtk/gtkscrolledwindow.c
++++ src/gtk+-3.24.13/gtk/gtkscrolledwindow.c
 @@ -4448,7 +4448,7 @@ gtk_scrolled_window_update_use_indicator
  
    use_indicators = overlay_scrolling && priv->overlay_scrolling;
@@ -11,10 +11,10 @@ Index: src/gtk+-3.24.12/gtk/gtkscrolledwindow.c
      use_indicators = FALSE;
  
    if (priv->use_indicators != use_indicators)
-Index: src/gtk+-3.24.12/gtk/gtksettings.c
+Index: src/gtk+-3.24.13/gtk/gtksettings.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtksettings.c
-+++ src/gtk+-3.24.12/gtk/gtksettings.c
+--- src.orig/gtk+-3.24.13/gtk/gtksettings.c
++++ src/gtk+-3.24.13/gtk/gtksettings.c
 @@ -61,7 +61,7 @@
  #ifdef GDK_WINDOWING_QUARTZ
  #define PRINT_PREVIEW_COMMAND "open -a /Applications/Preview.app %f"
@@ -24,10 +24,10 @@ Index: src/gtk+-3.24.12/gtk/gtksettings.c
  #endif
  
  /**
-Index: src/gtk+-3.24.12/gtk/org.gtk.Settings.FileChooser.gschema.xml
+Index: src/gtk+-3.24.13/gtk/org.gtk.Settings.FileChooser.gschema.xml
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/org.gtk.Settings.FileChooser.gschema.xml
-+++ src/gtk+-3.24.12/gtk/org.gtk.Settings.FileChooser.gschema.xml
+--- src.orig/gtk+-3.24.13/gtk/org.gtk.Settings.FileChooser.gschema.xml
++++ src/gtk+-3.24.13/gtk/org.gtk.Settings.FileChooser.gschema.xml
 @@ -133,7 +133,7 @@
        </description>
      </key>

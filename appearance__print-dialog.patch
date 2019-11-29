@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkprintunixdialog.c
+Index: src/gtk+-3.24.13/gtk/gtkprintunixdialog.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkprintunixdialog.c
-+++ src/gtk+-3.24.12/gtk/gtkprintunixdialog.c
+--- src.orig/gtk+-3.24.13/gtk/gtkprintunixdialog.c
++++ src/gtk+-3.24.13/gtk/gtkprintunixdialog.c
 @@ -750,6 +750,11 @@ gtk_print_unix_dialog_init (GtkPrintUnix
    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
    widget = gtk_dialog_get_widget_for_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
@@ -14,10 +14,10 @@ Index: src/gtk+-3.24.12/gtk/gtkprintunixdialog.c
  
    /* Treeview auxiliary functions need to be setup here */
    gtk_tree_model_filter_set_visible_func (priv->printer_list_filter,
-Index: src/gtk+-3.24.12/gtk/ui/gtkprintunixdialog.ui
+Index: src/gtk+-3.24.13/gtk/ui/gtkprintunixdialog.ui
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/ui/gtkprintunixdialog.ui
-+++ src/gtk+-3.24.12/gtk/ui/gtkprintunixdialog.ui
+--- src.orig/gtk+-3.24.13/gtk/ui/gtkprintunixdialog.ui
++++ src/gtk+-3.24.13/gtk/ui/gtkprintunixdialog.ui
 @@ -48,6 +48,7 @@
      <property name="step-increment">1</property>
    </object>

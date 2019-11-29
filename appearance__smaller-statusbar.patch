@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/ui/gtkstatusbar.ui
+Index: src/gtk+-3.24.13/gtk/ui/gtkstatusbar.ui
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/ui/gtkstatusbar.ui
-+++ src/gtk+-3.24.12/gtk/ui/gtkstatusbar.ui
+--- src.orig/gtk+-3.24.13/gtk/ui/gtkstatusbar.ui
++++ src/gtk+-3.24.13/gtk/ui/gtkstatusbar.ui
 @@ -5,8 +5,8 @@
      <property name="spacing">2</property>
      <property name="margin-start">10</property>

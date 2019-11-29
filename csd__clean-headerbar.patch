@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkheaderbar.c
+Index: src/gtk+-3.24.13/gtk/gtkheaderbar.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkheaderbar.c
-+++ src/gtk+-3.24.12/gtk/gtkheaderbar.c
+--- src.orig/gtk+-3.24.13/gtk/gtkheaderbar.c
++++ src/gtk+-3.24.13/gtk/gtkheaderbar.c
 @@ -300,6 +300,27 @@ _gtk_header_bar_update_window_buttons (G
  
    priv->titlebar_icon = NULL;
@@ -59,10 +59,10 @@ Index: src/gtk+-3.24.12/gtk/gtkheaderbar.c
  }
  
  /**
-Index: src/gtk+-3.24.12/gtk/gtkwindow.c
+Index: src/gtk+-3.24.13/gtk/gtkwindow.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkwindow.c
-+++ src/gtk+-3.24.12/gtk/gtkwindow.c
+--- src.orig/gtk+-3.24.13/gtk/gtkwindow.c
++++ src/gtk+-3.24.13/gtk/gtkwindow.c
 @@ -4168,6 +4168,8 @@ on_titlebar_title_notify (GtkHeaderBar *
    const gchar *title;
  

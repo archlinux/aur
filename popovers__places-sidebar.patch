@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkplacessidebar.c
+Index: src/gtk+-3.24.13/gtk/gtkplacessidebar.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkplacessidebar.c
-+++ src/gtk+-3.24.12/gtk/gtkplacessidebar.c
+--- src.orig/gtk+-3.24.13/gtk/gtkplacessidebar.c
++++ src/gtk+-3.24.13/gtk/gtkplacessidebar.c
 @@ -64,6 +64,7 @@
  #include "gtkgesturelongpress.h"
  #include "gtkbox.h"

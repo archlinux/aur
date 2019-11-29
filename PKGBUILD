@@ -5,12 +5,12 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="811bc6d9df014e576e95e45af9ac43e4108fb55a"
-_gtkver=3.24.12
+__arch_pkg_commit="dd59624b448ca6f6e48d4f1268fd3c871a20ae76"
+_gtkver=3.24.13
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
-pkgver=${_gtkver}+81
+pkgver=${_gtkver}
 pkgrel=1
 pkgdesc="GTK3 patched for classic desktops like XFCE or MATE. Please see README."
 url="https://github.com/krumelmonster/gtk3-mushrooms"
@@ -35,7 +35,6 @@ install=gtk3.install
 source=(
 	# Patch files.
 	series
-	plus81.patch.xz
 	appearance__buttons-menus-icons.patch
 	appearance__disable-backdrop.patch
 	appearance__file-chooser.patch
@@ -69,30 +68,29 @@ source=(
 
 	README.md
 )
-sha256sums=('9a48bcbde6ecf1dace9c50ba926850f228858e5634d9235325b1534b8ce4d007'
-            '3eac62f5f38fd36ccedf33e3618737d427b294b525a51feaef0faa7227ebaec9'
-            '728075255a559f0ec2cbde78c0fdcb9bdaa6859f21cdd8e0070595233822029e'
-            '795f745545a7d0c899c27d0832e15a1376f6e34fa1ef9c2ceada5f7f575cbb79'
-            '8ead5c4a6fbad9b1fbf81bf67ed2e1b8a8ce8d25d459c0fff9372937963b4f95'
-            '78f4086512d3bac999b62651b952412aa5270d7822c88e9c14900f53a93b42f4'
-            '768e6b45dd1c21f035c714d49e4d41ac082833054ac83060b601dbdae6a890dc'
-            'b1922fc4e99691ebaa4c0becc1f6fd6bcfe286f4451c946c4bec51c352b04e61'
-            '4803ff9b5a279516db5c099b1ffb18860906ce5bbcace16a8021e8cce7859c81'
-            '554772d3f8bf7232d1bbbf724d83a0e1e21c2e404721e6c9dfd4a4e4c3372a42'
-            '14e98ac6b7a54653ee550a855b928f6f47645710ca5ebc7593d27953a28b115a'
-            'fcf825d83ef4ff58440e6f0f6ba0fcd75069777ca8c82c7f6c427dc911e44374'
-            '150fa6b5e95a65ff22f80b58dadc683b6e69abe6dad4f1d8389451329df35a1e'
-            '85854e99c0c52ebccc7ee9a8e70cbbe04ea892c85290195a11a551bb1a096b2f'
-            '2b1d2f8791ca9b0e46f8a33e8ef5e266995f9914fd43792471a34073565650bc'
-            '701b57eb831345fa89ce88105d1b43d61de144bfc613f33dbb027c526a101985'
-            '98b0815e5f5610adaa0c192e2860efb77678d37ae095a88869c17397f8ce9b60'
-            '2a6541d70fe85fc0044e754423c6813c307a80ec5aa5a58df77acb8181f1ff81'
-            'e930370d96697981cbf13af18f36f2146c3e2279ae3d59b8a5837410c99c8ef8'
-            '73e832b83e51aed6f662d7b7ee60ae471b3d28796250cbd40ec3a32c49b89831'
-            'ddd05293726f3c87db96662c1ffa2ac5a33e00f7dc198be4cd483ed559e94be8'
-            '22a092521ea7e156d4532e6c6aaddba5fe51b6ca91345665e7369cef56ac2e1c'
+sha256sums=('4935ec23cbd0150bd479fc457861d3a665354509c3ff933997827c7141c8657c'
+            'c39e5150702006ecabbb88c14e2319153296e9cf5c8e0278ebcf7fc66603c85a'
+            'cefc28b73ab294c7b09d784341c9bbd659ce4c8381e255e394f68f5b20373425'
+            '6aa86c7375a29ead4444e669f3ff880c4512591f1c939195c379203b323917f4'
+            '1b2e522770c61a18ee68ce99510a03e452c9bcda3e39ced585059e7b29ebdc36'
+            'e51bc1aba0e98f1af8a6f6b04b66ab519f3e0933bd52cf724dc4d00bc064f5cc'
+            '31ed9560b395a4a7cb46acd54f429426ecc4b7463b1ee46046786c8ccbe44f5b'
+            'de363c448870f78f6b953fb2d1c945c361bfd3ff9c5f5e1bc98a886a5aa436cf'
+            '1a2941de50f881fe2e91fc2816c08be6d30349fc2e5f2483f027ee553ec7cb30'
+            '679d1c28981afdfa8ded5e6f89765a1a1fe7f2beab74e14b58bcc823cb581fdf'
+            '58a891b6c364090d56a14a84b1e55fc7993c3f0c071fce69f257b452cab03308'
+            '3281ff1522634f77471bb97e709dd3dfcb88f1907c85a6d8c7c962c7b2b30575'
+            '69ca5447db5443ef9539033cb72dfd08b0a62f034757a8aeefa9b57657fc6e60'
+            'dcaa4d091721a1493b7e0c70c5b15d94af459905b9c9ef76d33d5211b6136645'
+            '2497ffb697f5ac9fc55c67674b672200548955ff0a3c73d6f9c5b2256e2a6138'
+            '724e18f309576d27bc17b70f3719fb8db7d82917d99f04f37da420219e769c93'
+            'af9b112d1140c7f8028bc8150b5b42bb8b8397c590bc15017c9a1f5feee22dae'
+            'eef29d471bd9645b41b6ecbb1042d669290c0550c9afb990f16d75b372f2c524'
+            'ec552ded4e07ab4325ba946d9bfb86b3d109cdecb3fd574a4b263bca1ffc6295'
+            '57ad303c97252d9d43ac651318f17c718074b7822e553256e28a57a83a71a733'
+            '55bf4c426ee0a9c637832229e188cfa3bd0be48a190289a0aa5fbc4b78b5bca3'
             'ba93f62e249f2713dbfe6c82de1be4ac655264d6407ed3dc5e05323027520f31'
-            '1384eba5614fed160044ae0d32369e3df7b4f517b03f4b1f24d383e528f4be83'
+            '4c775c38cf1e3c534ef0ca52ca6c7a890fe169981af66141c713e054e68930a9'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
             '1d2e3c41c7de03a31d717b09e053c88cbaca2ae74eefd982549c49de81c21ada')

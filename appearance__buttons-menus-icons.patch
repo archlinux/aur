@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.12/gtk/gtkbutton.c
+Index: src/gtk+-3.24.13/gtk/gtkbutton.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkbutton.c
-+++ src/gtk+-3.24.12/gtk/gtkbutton.c
+--- src.orig/gtk+-3.24.13/gtk/gtkbutton.c
++++ src/gtk+-3.24.13/gtk/gtkbutton.c
 @@ -2164,6 +2164,27 @@ gtk_button_set_label (GtkButton   *butto
    g_return_if_fail (GTK_IS_BUTTON (button));
  
@@ -30,10 +30,10 @@ Index: src/gtk+-3.24.12/gtk/gtkbutton.c
  
    new_label = g_strdup (label);
    g_free (priv->label_text);
-Index: src/gtk+-3.24.12/gtk/gtkmenuitem.c
+Index: src/gtk+-3.24.13/gtk/gtkmenuitem.c
 ===================================================================
---- src.orig/gtk+-3.24.12/gtk/gtkmenuitem.c
-+++ src/gtk+-3.24.12/gtk/gtkmenuitem.c
+--- src.orig/gtk+-3.24.13/gtk/gtkmenuitem.c
++++ src/gtk+-3.24.13/gtk/gtkmenuitem.c
 @@ -1010,6 +1010,20 @@ gtk_menu_item_new_with_label (const gcha
  GtkWidget*
  gtk_menu_item_new_with_mnemonic (const gchar *label)
