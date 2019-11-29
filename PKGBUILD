@@ -61,7 +61,7 @@ _lucjanver=5.4
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
-source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git"
+source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
