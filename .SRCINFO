@@ -1,0 +1,26 @@
+pkgbase = ros-melodic-rosserial-server
+	pkgdesc = ROS - A more performance- and stability-oriented server alternative implemented in C++ to rosserial_python.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://wiki.ros.org/rosserial_server
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-rosserial-msgs
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-topic-tools
+	depends = ros-melodic-rosserial-msgs
+	depends = ros-melodic-rosserial-python
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-topic-tools
+	source = ros-melodic-rosserial-server-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
+	source = io-service.patch
+	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
+	sha256sums = 3020b8961dd3cbe295fdac0b86a43d4da6b8d76b07337d46ba54d12cee4e1cb0
+
+pkgname = ros-melodic-rosserial-server
+
