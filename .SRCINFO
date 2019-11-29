@@ -1,11 +1,12 @@
 pkgbase = python-nipype
 	pkgdesc = Neuroimaging in python pipelines and interfaces
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/prov/
 	arch = any
 	license = Apache
 	makedepends = python-sphinx
+	depends = python-etelemetry
 	depends = python-filelock
 	depends = python-matplotlib
 	depends = python-numpy
