@@ -27,11 +27,15 @@ package() {
 }
 
 pre_install() {
-	useradd -m -s /bin/zsh github
+	useradd $provides || true
 }
 
 post_install() {
-	chown -R github:github /opt/github
+	chown -R $provides:$provides /opt/$provides
+}
+
+pre_upgrade() {
+	pre_install
 }
 
 post_upgrade() {
@@ -39,6 +43,6 @@ post_upgrade() {
 }
 
 post_remove() {
-	userdel -f github
+	userdel -f $provides
 	rm -rf /opt/$provides
 }
