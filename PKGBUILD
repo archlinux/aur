@@ -1,7 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-pkgver=4.11.8
+_pkgver=4.11-9
+pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
 pkgrel=1
@@ -9,7 +10,6 @@ pkgdesc="Compatibility tool for Steam Play based on Wine and additional componen
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
 license=('GPL')
-groups=()
 depends=(
   fontconfig      lib32-fontconfig
   lcms2           lib32-lcms2
@@ -96,10 +96,8 @@ optdepends=(
 makedepends=(${makedepends[@]} ${depends[@]})
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-backup=()
-options=()
 source=(
-    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-4.11-8
+    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_pkgver
     wine-valve::git+https://github.com/ValveSoftware/wine.git
     ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -115,8 +113,8 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    SKIP #7e0231e4edab976d3cb48e1c74c08c3825b7a7d71f077987742e1f6987540b07
-    SKIP #f9ea33b2658e4cf3f2d0fc1289b1688162b2169cba0b65cfe80e0bb1d638054f
+    e9506ddf7edc5135a5e3568fea5bbf29af5948fbf45d2d89620a5a1f2b5dc6a4
+    7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782
 )
 
 prepare() {
@@ -166,7 +164,7 @@ package() {
     mv dist "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"
 
     find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" -type f -exec chmod 644 {} \;
-    chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{wine{,64},wine{,64}-preloader,wineserver}}
+    chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
 
     ln -s /usr/share/wine/mono "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
     ln -s /usr/share/wine/gecko "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
