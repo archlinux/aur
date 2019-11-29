@@ -2,7 +2,7 @@
 # Contributor: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=gamess
-pkgver=2019R1
+pkgver=2019R2
 pkgrel=1
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
@@ -16,7 +16,7 @@ install=${pkgname}.install
 # and put into the current directory.
 source=("local://gamess-current.tar.gz"
         "opt.patch")
-sha256sums=('2faabb66a61323249e66a993b65c5c237058d7c5d9bca4de49b3ad680b2006a6'
+sha256sums=('2e12f71210249d379f196ba6a3b479f9fb962de82ae2f1130af9022aba44ddea'
             '145c0f1624db736e0d587ec896151a8b33d11d4fe4c6a429c824cdbfe83db4c3')
 
 prepare() {
@@ -36,12 +36,11 @@ build() {
                                     --fortran_version=8.2 \
                                     --math=openblas \
                                     --mathlib_path=/usr/lib
-  # Unfortunately, parallel build was broken in 2019R1.
-  make -j1
+  make
 }
 
 check() {
-  msg2 "Please, wait for the computation of 47 test examples to end."
+  msg2 "Please, wait for the computation of 47 test examples to finish."
   msg2 "It is going to take about 5 min depending on your CPU frequency."
   cd $srcdir/$pkgname
   
@@ -51,7 +50,7 @@ check() {
   mkdir scr
   sed -i '/set USERSCR=/c\set USERSCR=$PWD\/scr' rungms
   
-  # Start testing on 1 CPU core.
+  # Start testing with the use of 1 CPU core.
   ./runall 00
   tests/standard/checktst
   rm -r scr
