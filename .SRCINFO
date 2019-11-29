@@ -1,7 +1,7 @@
 pkgbase = protonvpn-applet
 	pkgdesc = Unofficial basic systray applet for protonvpn-cli written in python + PyQt5
-	pkgver = 0.0.4
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/seadanda/protonvpn-applet
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = protonvpn-applet
 	depends = python
 	depends = libnotify
 	depends = python-pyqt5
-	depends = protonvpn-cli
+	depends = protonvpn-cli-ng
 	depends = gobject-introspection
-	source = https://github.com/seadanda/protonvpn-applet/archive/0.0.4.tar.gz
-	md5sums = c785449878d3c9afca0526e88451de45
+	source = https://github.com/seadanda/protonvpn-applet/archive/0.1.0.tar.gz
+	md5sums = b3ae3f4094563b5e1959b6f99f490107
 
 pkgname = protonvpn-applet
 
