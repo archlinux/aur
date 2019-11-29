@@ -86,7 +86,7 @@ fi
 
 ################################################################################
 
-if [[ $LTO = "YES" ]] && [[ $CLANG != "YES" ]]; then
+if [[ $LTO == "YES" ]] && [[ $CLANG != "YES" ]]; then
   CFLAGS+=" -flto -fuse-linker-plugin"
   CXXFLAGS+=" -flto -fuse-linker-plugin"
 else
@@ -94,7 +94,7 @@ else
   CXXFLAGS+=" -flto"
 fi
 
-if [[ $CLANG = "YES" ]]; then
+if [[ $CLANG == "YES" ]]; then
   export CC="/usr/bin/clang" ;
   export CXX="/usr/bin/clang++" ;
   export CPP="/usr/bin/clang -E" ;
@@ -106,34 +106,34 @@ if [[ $CLANG = "YES" ]]; then
   makedepends+=( 'clang' 'lld' 'llvm') ;
 fi
 
-if [[ $NOTKIT = "YES" ]]; then
+if [[ $NOTKIT == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
-elif [[ $LUCID = "YES" ]]; then
+elif [[ $LUCID == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' );
-elif [[ $GTK2 = "YES" ]]; then
+elif [[ $GTK2 == "YES" ]]; then
   depends+=( 'gtk2' );
 else
   depends+=( 'gtk3' );
 fi
 
-if [[ $M17N = "YES" ]]; then
+if [[ $M17N == "YES" ]]; then
   depends+=( 'm17n-lib' );
 fi
 
-if [[ $MAGICK = "YES" ]]; then
+if [[ $MAGICK == "YES" ]]; then
   depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX = "YES" ]]; then
+elif [[ ! $NOX == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
 else
   depends+=();
 fi
 
-if [[ $CAIRO = "YES" ]]; then
+if [[ $CAIRO == "YES" ]]; then
   depends+=( 'cairo' );
 fi
 
-if [[ $XWIDGETS = "YES" ]]; then
-  if [[ $GTK2 = "YES" ]] || [[ $LUCID = "YES" ]] || [[ $NOTKIT = "YES" ]] || [[ $CLI = "YES" ]]; then
+if [[ $XWIDGETS == "YES" ]]; then
+  if [[ $GTK2 == "YES" ]] || [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
     echo "";
     echo "";
     echo "Xwidgets support *requires* gtk+3!!!";
@@ -145,7 +145,7 @@ if [[ $XWIDGETS = "YES" ]]; then
   fi
 fi
 
-if [[ $DOCS_PDF = "YES" ]]; then
+if [[ $DOCS_PDF == "YES" ]]; then
   makedepends+=( 'texlive-core' );
 fi
 ################################################################################
@@ -167,7 +167,7 @@ prepare() {
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
-if [[ $CHECK = "YES" ]]; then
+if [[ $CHECK == "YES" ]]; then
 check() {
   cd "$srcdir/emacs-git"
   make check
@@ -198,49 +198,49 @@ build() {
 
 ################################################################################
 
-if [[ $CLANG = "YES" ]]; then
+if [[ $CLANG == "YES" ]]; then
   _conf+=(
     '--enable-autodepend'
  );
 fi
 
-if [[ $LTO = "YES" ]]; then
+if [[ $LTO == "YES" ]]; then
   _conf+=(
     '--enable-link-time-optimization'
   );
 fi
 
-if [[ $CLI = "YES" ]]; then
+if [[ $CLI == "YES" ]]; then
   _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' );
-elif [[ $NOTKIT = "YES" ]]; then
+elif [[ $NOTKIT == "YES" ]]; then
   _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
-elif [[ $LUCID = "YES" ]]; then
+elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
-elif [[ $GTK2 = "YES" ]]; then
+elif [[ $GTK2 == "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
 else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 fi
 
-if [[ ! $M17N = "YES" ]]; then
+if [[ ! $M17N == "YES" ]]; then
   _conf+=( '--without-m17n-flt' );
 fi
 
-if [[ $MAGICK = "YES" ]]; then
+if [[ $MAGICK == "YES" ]]; then
   _conf+=( '--with-imagemagick');
 else
   _conf+=();
 fi
 
-if [[ $CAIRO = "YES" ]]; then
+if [[ $CAIRO == "YES" ]]; then
   _conf+=( '--with-cairo' );
 fi
 
-if [[ $XWIDGETS = "YES" ]]; then
+if [[ $XWIDGETS == "YES" ]]; then
   _conf+=( '--with-xwidgets' );
 fi
 
-if [[ $NOGZ = "YES" ]]; then
+if [[ $NOGZ == "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
 ################################################################################
@@ -249,7 +249,7 @@ fi
 
   # Use gold with gcc, unconditionally.
   #
-  if [[ ! $CLANG = "YES" ]]; then
+  if [[ ! $CLANG == "YES" ]]; then
     export LD=/usr/bin/ld.gold
     export CFLAGS+=" -fuse-ld=gold";
     export CXXFLAGS+=" -fuse-ld=gold";
@@ -273,10 +273,10 @@ fi
   #cd ../
 
   # Optional documentation formats.
-  if [[ $DOCS_HTML = "YES" ]]; then
+  if [[ $DOCS_HTML == "YES" ]]; then
     make html;
   fi
-  if [[ $DOCS_PDF = "YES" ]]; then
+  if [[ $DOCS_PDF == "YES" ]]; then
     make pdf;
   fi
 
@@ -288,13 +288,13 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # Install optional documentation formats
-  if [[ $DOCS_HTML = "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
-  if [[ $DOCS_PDF = "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
+  if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
+  if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
 
-  if [[ $NOGZ = "YES" ]]; then
+  if [[ $NOGZ == "YES" ]]; then
     mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1};
   else
     mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
