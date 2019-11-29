@@ -54,11 +54,12 @@ MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
 		  #are doing.
                   # -->>If you just *believe* you need it, you don't.<<--
 NOGZ="YES"        # Don't compress .el files.
+ZSTDPACK="YES"    # Compress install bundle with zstd.
 ################################################################################
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=27.0.50.139564
+pkgver=27.0.50.139618
 pkgrel=1
 pkgdesc="GNU Emacs. Development master."
 arch=('x86_64') # Arch Linux only. Derivative users are on their own.
@@ -76,10 +77,12 @@ source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
 ################################################################################
 
+if [[ $ZSTDPACK == "YES" ]]; then 
 # Guess why!
 COMPRESSZST=(zstd -c -z -q -T0 -19 -)
 PKGEXT='.pkg.tar.zst'
 SRCEXT='.src.tar.zst'
+fi
 
 ################################################################################
 
