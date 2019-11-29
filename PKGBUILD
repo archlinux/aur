@@ -163,10 +163,10 @@ build() {
 _package() {
 	cd "$srcdir/$pkgname/python"
 	python setup.py install --root="$pkgdir"/ --optimize=1 --with-cython --skip-build
-	mv $pkgdir/usr/$pkgbase/* $pkgdir/usr/lib/python3.7/site-packages/$pkgbase/
+	mv $pkgdir/usr/$pkgbase/* $pkgdir/usr/lib/python3.8/site-packages/$pkgbase/
 	rmdir $pkgdir/usr/$pkgbase
 
-	cp -r $srcdir/$pkgname/include $pkgdir/usr/lib/python3.7/site-packages/$pkgbase/
+	cp -r $srcdir/$pkgname/include $pkgdir/usr/lib/python3.8/site-packages/$pkgbase/
 
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
