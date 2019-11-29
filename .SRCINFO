@@ -1,10 +1,12 @@
 pkgbase = python-blpapi
-	pkgdesc = The Bloomberg API (BLPAPI) is a set of freely available software development kits (SDKs) that allow software developers to create applications that consume market data. Python SDK.
+	pkgdesc = Python binding to the Bloomberg SDK (BLPAPI)
 	pkgver = 3.12.2
 	pkgrel = 1
 	url = http://www.bloomberglabs.com/
 	arch = x86_64
 	license = custom
+	depends = python
+	depends = blpapi_cpp
 	source = https://bloomberg.bintray.com/pip/simple/blpapi/blpapi-3.12.2.tar.gz
 	sha256sums = d6676adcfb2e8e9fd3a485525b7efd5634cec94d783bdfe3d3f49e3fa31b4a4e
 
