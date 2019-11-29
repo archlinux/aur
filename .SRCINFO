@@ -1,0 +1,29 @@
+pkgbase = ros-melodic-depthimage-to-laserscan
+	pkgdesc = ROS - depthimage_to_laserscan
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://wiki.ros.org/depthimage_to_laserscan
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = gtest
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-nodelet
+	makedepends = ros-melodic-image-transport
+	makedepends = ros-melodic-image-geometry
+	makedepends = ros-melodic-dynamic-reconfigure
+	depends = eigen
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-nodelet
+	depends = ros-melodic-image-transport
+	depends = ros-melodic-image-geometry
+	depends = ros-melodic-dynamic-reconfigure
+	source = ros-melodic-depthimage-to-laserscan-1.0.8.tar.gz::https://github.com/ros-perception/depthimage_to_laserscan/archive/1.0.8.tar.gz
+	sha256sums = 00c5e46c74a7dec99fa3bf75a60f36f9fc2da72aaaff6bc6bebea7c17927fe8e
+
+pkgname = ros-melodic-depthimage-to-laserscan
+
