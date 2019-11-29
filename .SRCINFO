@@ -1,8 +1,9 @@
 pkgbase = github-actions
 	pkgdesc = GitHub Actions self-hosted runner tools.
 	pkgver = 2.161.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://help.github.com/en/actions
+	install = PKGBUILD
 	arch = x86_64
 	license = custom
 	provides = github-actions
