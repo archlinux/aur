@@ -1,9 +1,9 @@
-# Bjoern Franke <bjo@nord-west.org>
+# Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=gajim-plugin-urlimagepreview
 _pkgname=url_image_preview
 pkgver=2.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Gajim plugin which displays a preview of links to images"
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/urlimagepreviewplugin"
@@ -16,8 +16,8 @@ package() {
   cd ${srcdir}/${_pkgname}
 
   # Install the plugin
-  install -d ${pkgdir}/usr/lib/python3.7/site-packages/gajim/data/plugins/${_pkgname}
-  cp -r * ${pkgdir}/usr/lib/python3.7/site-packages/gajim/data/plugins/${_pkgname}/
+  install -d ${pkgdir}/usr/lib/python3.8/site-packages/gajim/data/plugins/${_pkgname}
+  cp -r * ${pkgdir}/usr/lib/python3.8/site-packages/gajim/data/plugins/${_pkgname}/
 }
 
 # vim:set ts=2 sw=2 et:
