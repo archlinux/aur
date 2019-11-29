@@ -5,7 +5,7 @@
 pkgname=hostapd-noscan
 _pkgname="hostapd"
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with \"noscan\" patch)"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://w1.fi/hostapd/"
@@ -20,7 +20,7 @@ source=("https://w1.fi/releases/$_pkgname-$pkgver.tar.gz"
         "hostapd-noscan.patch")
 sha256sums=('881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7'
             '87445203a518864e704b85fa970d90940e9a5d9b401ceb802d11caab6c07a495'
-            'd9a8b44915ed71211f27533b9b075e22423d2fab27013f5ca89f1eec150459b2'
+            '989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e'
             'f2a57f118d5884bdc5eaba3828545742775e763eade4837668f8cd3dec8bb812')
 
 prepare() {
