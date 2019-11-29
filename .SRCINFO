@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libgpg-error
 	pkgdesc = Support library for libgcrypt (mingw-w64)
 	pkgver = 1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnupg.org
 	arch = any
 	license = LGPL
@@ -16,6 +16,7 @@ pkgbase = mingw-w64-libgpg-error
 	source = 02-fix-symbollist-on.mingw.patch
 	source = 05-w32-gen.all.patch
 	source = 07-windows-build.patch
+	source = gawk5.diff
 	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
 	validpgpkeys = 031EC2536E580D8EA286A9F22071B08A33BD3F06
 	sha256sums = babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c
@@ -24,6 +25,7 @@ pkgbase = mingw-w64-libgpg-error
 	sha256sums = 364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91
 	sha256sums = 9ccdc567810d58526888fd11c5f7d01101627011840b7b75a91e96aa9e71f49d
 	sha256sums = ff73e4bde792f5c84c99810b83467d20247856076a92e5940f9fd64a8815187d
+	sha256sums = b3f12474986a0fe7340013e3dbe963acf303d76f53c440ef38e8233f4cb7928f
 
 pkgname = mingw-w64-libgpg-error
 
