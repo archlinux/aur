@@ -1,18 +1,18 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=ubports-installer
-pkgver=0.3.2b
+pkgver=0.4.11b
 _ver=${pkgver/b/-beta}
-pkgrel=2
+pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
 arch=('x86_64' 'i686')
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
-depends=('android-tools' 'android-udev' 'electron4')
+depends=('android-tools' 'android-udev' 'electron4' 'e2fsprogs')
 makedepends=('jq' 'npm' 'moreutils')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ubports/ubports-installer/archive/$_ver.tar.gz")
-sha512sums=('0c105b3686d09a9d55b8fa54d0c98fab59a363bb249c2ce7fa4695a0651c573a023337f672bc6dc582cf8c8c50c1f9a87e05f101ed517beef93c643dac198b5d')
+sha512sums=('5367c004a59b4a2bd1a716c059610a4c725a24625b81e930e1a540af85631b6891b2cbf049460dd08b3d4e1878d5e221b71ae4fce6f3007c2495994a54501c9f')
 
 prepare() {
     local cache="$srcdir/npm-cache"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$_ver"
-    node build.js --package dir --os linux
+    node build.js -o linux -p dir -n
 }
 
 package() {
@@ -57,4 +57,9 @@ Categories=Utility" > "$srcdir/ubports-installer.desktop"
 
     cd "$srcdir/$pkgname-$_ver/dist/linux-unpacked/resources"
     install -Dm644 app.asar "$pkgdir/usr/share/ubports-installer/app.asar"
+
+    mkdir -p "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/platform-tools/linux"
+    ln -s /usr/bin/adb "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/platform-tools/linux/adb"
+    ln -s /usr/bin/fastboot "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/platform-tools/linux/fastboot"
+    ln -s /usr/bin/mke2fs "$pkgdir/usr/share/ubports-installer/app.asar.unpacked/platform-tools/linux/mke2fs"
 }
