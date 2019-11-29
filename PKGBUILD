@@ -1,6 +1,6 @@
 pkgname="figma-linux"
 pkgver="0.6.1"
-pkgrel="7"
+pkgrel="8"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64")
 url="https://github.com/Figma-Linux/figma-linux"
@@ -16,6 +16,6 @@ package() {
 
   pacman -Up "figma-linux-${pkgver}.pacman"
 
-  rm -rf "${pkgdir}/usr/bin/figma-linux"
+  mkdir -p "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/figma-linux" "${pkgdir}/usr/bin/figma-linux"
 }
