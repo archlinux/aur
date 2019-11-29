@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.arch1
+pkgver=5.4.1.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -76,6 +76,11 @@ makedepends=(
     bc
     kmod
     libelf
+    xmlto
+    python-sphinx
+    python-sphinx_rtd_theme
+    graphviz
+    imagemagick
     git
 )
 options=('!strip')
@@ -103,7 +108,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '33dcc59453069bb27758b0c68f39b3f4ee0c3988eec29bf2506e01012c64beafe5fe1b5c7012896d5024d4968b74dde09f8e9f8654b951a32364dda5a766839b'
+            '5a2a28a3cbcb0424060798b64b59a388f9a0831d882e260e5c28739e74f1a6df1906e9bb82f85cae2fae1dd62c86468111383097824aae4868c7c968a453248a'
             'a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae'
             'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377')
 
@@ -183,7 +188,7 @@ prepare() {
 
 build() {
     cd $_reponame
-    make bzImage modules
+    make bzImage modules htmldocs
 }
 
 _package() {
@@ -305,9 +310,32 @@ _package-headers() {
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
+_package-docs() {
+    pkgdesc="Documentation for the $pkgdesc kernel"
+
+    cd $_srcname
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+    msg2 "Installing documentation..."
+    local src dst
+    while read -rd '' src; do
+        dst="${src#Documentation/}"
+        dst="$builddir/Documentation/${dst#output/}"
+        install -Dm644 "$src" "$dst"
+    done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+
+    msg2 "Adding symlink..."
+    mkdir -p "$pkgdir/usr/share/doc"
+    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+
+    msg2 "Fixing permissions..."
+    chmod -Rc u=rwX,go=rX "$pkgdir"
+}
+
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
+    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
