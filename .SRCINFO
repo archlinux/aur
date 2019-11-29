@@ -1,6 +1,6 @@
 pkgbase = parastoo-fonts
 	pkgdesc = A beautiful Persian font based on Gandom font.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/rastikerdar/parastoo-font
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = parastoo-fonts
 	depends = fontconfig
 	provides = ttf-parastoo
 	conflicts = ttf-parastoo
-	source = parastoo-fonts-2.0.0.zip::https://github.com/rastikerdar/parastoo-font/releases/download/v2.0.0/parastoo-font-v2.0.0.zip
-	sha256sums = 2db1de89f339d842bd493db637c58b46a9e8da6c44c4efb9bdc559e168b7cb99
+	source = parastoo-fonts-2.0.1.zip::https://github.com/rastikerdar/parastoo-font/releases/download/v2.0.1/parastoo-font-v2.0.1.zip
+	sha256sums = cfa4622b7733330d898e7f228924e5952f14fb62091cf9ddebdc3633b673e43f
 
 pkgname = parastoo-fonts
 
