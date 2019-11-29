@@ -23,7 +23,6 @@ pkgbase = i2p
 	source = i2prouter.bash
 	source = i2prouter.sh
 	source = gettext-0.20.patch::https://github.com/i2p/i2p.i2p/commit/eef6c5cb33d8292ce247fcd49578cc9fa1acf6cb.patch
-	validpgpkeys = 2D3D2D03910C6504C1210C65EE60C0C8EE7256A8
 	sha256sums = beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c
 	sha256sums = SKIP
 	sha256sums = 644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876
