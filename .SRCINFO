@@ -1,6 +1,6 @@
 pkgbase = telefuel-desktop
 	pkgdesc = Telefuel desktop app
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://telefuel.com/
 	install = telefuel-desktop.install
@@ -22,7 +22,7 @@ pkgbase = telefuel-desktop
 	options = !strip
 	options = !emptydirs
 	source = https://desktop-downloads.s3.amazonaws.com/Telefuel+Linux.zip
-	sha256sums = 0bea54dd40a9659b3c88286005e042d225ede0523a5e2bfc176ae41f1e7d2c43
+	sha256sums = cc985030d7ad67c1ee26618b05aeca1ab258fc9d5e53e5d00dc361e43a6ed8dc
 
 pkgname = telefuel-desktop
 

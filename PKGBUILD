@@ -2,7 +2,7 @@
 # Contributor: Semyon Bochkaryov <squizduos@gmail.com>
 
 pkgname=telefuel-desktop
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Telefuel desktop app"
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
     "https://desktop-downloads.s3.amazonaws.com/Telefuel+Linux.zip"
 )
 sha256sums=(
-    "0bea54dd40a9659b3c88286005e042d225ede0523a5e2bfc176ae41f1e7d2c43"
+    "cc985030d7ad67c1ee26618b05aeca1ab258fc9d5e53e5d00dc361e43a6ed8dc"
 )
 
 build() {
