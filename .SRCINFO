@@ -1,12 +1,11 @@
 pkgbase = linux-uksm
 	pkgdesc = Linux UKSM
 	pkgver = 5.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dolohow/uksm
 	arch = x86_64
 	license = GPL2
 	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
 	makedepends = python-sphinx
@@ -44,6 +43,6 @@ pkgname = linux-uksm-headers
 	depends = linux-uksm
 
 pkgname = linux-uksm-docs
-	pkgdesc = Kernel hacker's manual for the Linux UKSM kernel
+	pkgdesc = Documentation for the Linux UKSM kernel
 	depends = linux-uksm
 
