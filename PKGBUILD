@@ -1,7 +1,7 @@
 # Maintainer: Miguel Useche <migueluseche@skatox.com>
 # Contributor: mncarbone <mncarbone@gmail.com>
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
-pkgname=pseint
+pkgname=pseint-bin
 pkgver=20191127
 pkgrel=1
 pkgdesc="Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español."
