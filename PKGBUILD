@@ -6,7 +6,7 @@ arch=(any)
 url="https://bitbucket.org/daycoder/uiutil"
 license=('custom:PSF')
 makedepends=('python-setuptools')
-depends=('python')
+depends=('python-pillow')
 source=("https://pypi.io/packages/source/u/uiutil/uiutil-$pkgver.tar.gz")
 sha512sums=('SKIP')
 

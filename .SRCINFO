@@ -6,7 +6,7 @@ pkgbase = python-uiutil
 	arch = any
 	license = custom:PSF
 	makedepends = python-setuptools
-	depends = python
+	depends = python-pillow
 	source = https://pypi.io/packages/source/u/uiutil/uiutil-1.36.3.tar.gz
 	sha512sums = SKIP
 
