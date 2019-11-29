@@ -1,12 +1,12 @@
 pkgbase = sensu-go-cli
 	pkgdesc = Sensu Go CLI
-	pkgver = 5.13.1
+	pkgver = 5.15.0
 	pkgrel = 1
 	url = https://sensu.io
 	arch = x86_64
 	license = MIT
-	source = sensu-go-cli-5.13.1-5957_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/sensu-go-cli_5.13.1-5957_amd64.deb/download.deb
-	sha1sums = f9fda640aaf37bbbb7436ac5de4296130c66e86f
+	source = sensu-go-cli-5.15.0-7782_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/sensu-go-cli_5.15.0-7782_amd64.deb/download.deb
+	sha1sums = a79a40fbfdee52080a43bf6ee097042c86aeeb2e
 
 pkgname = sensu-go-cli
 
