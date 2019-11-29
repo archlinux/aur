@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libsigrokdecode4dsl-git
-pkgver=0.98.r9.gb31f432
+pkgver=1.01.r31.gb018742
 pkgrel=1
 pkgdesc='A library which provides the basic sigrok protocol decoders for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd DSView
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
