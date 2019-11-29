@@ -2,9 +2,9 @@
 pkgname=nagelfar
 _pkgver_main=1
 _pkgver_sub=3
-_pkgver_subsub=0
-pkgver="${_pkgver_main}.${_pkgver_sub}.${_pkgver_subsub}"
+_pkgver_subsub=1
 _pkgver="${_pkgver_main}${_pkgver_sub}${_pkgver_subsub}"
+pkgver="${_pkgver_main}.${_pkgver_sub}.${_pkgver_subsub}"
 pkgrel=1
 epoch=
 pkgdesc="Tcl syntax checker"
@@ -25,9 +25,9 @@ install=
 changelog=
 source=("http://downloads.sourceforge.net/nagelfar/Rel_${_pkgver}/${pkgname}${_pkgver}.tar.gz" nagelfar-paths.patch doc-syntaxdatabase.patch)
 noextract=()
-md5sums=('b6405edd980c714d39e425f8311368b2'
-         '53bcf49957b3a79c87c411e89824b6c5'
-         '48f75a0c131cc17df6b38a2f5967c7e4')
+sha256sums=('13d8c6bc48d8ccf1db336680509bbf037939478a3c4538f9c9576a2d72b4c6be'
+            '204d48c2f9937d3093d4e511a9f5f8eba90606fb6d9923c877a538c7f44de727'
+            'ee5f6908a522bde6b94e6be56024857ecb71cc779f58ca067966299f4016057c')
 validpgpkeys=()
 
 
