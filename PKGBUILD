@@ -2,7 +2,7 @@
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview-git
-pkgver=0.98.r9.gb31f432
+pkgver=1.01.r31.gb018742
 pkgrel=1
 pkgdesc='GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc.'
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd DSView
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
