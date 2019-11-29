@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.9'
-pkgrel='9'
+pkgrel='10'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -95,6 +95,8 @@ package() {
     mkdir -p "$pkgdir/usr/share/eruption/static/js"
     mkdir -p "$pkgdir/usr/share/eruption/static/font"
     mkdir -p "$pkgdir/usr/share/eruption/static/img"
+    mkdir -p "$pkgdir/usr/share/eruption/static/img/bg"
+    mkdir -p "$pkgdir/usr/share/eruption/static/img/icons"
     
     install -m 644 "templates/about.html.tera" "$pkgdir/usr/share/eruption/templates/"
     install -m 644 "templates/base.html.tera" "$pkgdir/usr/share/eruption/templates/"
@@ -105,8 +107,8 @@ package() {
     
     install -m 644 "static/css/animate.css" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/style.css" "$pkgdir/usr/share/eruption/static/css/"
-    install -m 644 "static/css/themes/eruption/colors.css" "$pkgdir/usr/share/eruption/static/css/"
-    install -m 644 "static/css/themes/metal/colors.css" "$pkgdir/usr/share/eruption/static/css/"
+    install -m 644 "static/css/themes/eruption/colors.css" "$pkgdir/usr/share/eruption/static/css/themes/eruption/"
+    install -m 644 "static/css/themes/metal/colors.css" "$pkgdir/usr/share/eruption/static/css/themes/metal/"
     install -m 644 "static/css/bootstrap.css" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/bootstrap.css.map" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/bootstrap.min.css" "$pkgdir/usr/share/eruption/static/css/"
@@ -141,8 +143,8 @@ package() {
     install -m 644 "static/font/CuteFont-Regular.woff2" "$pkgdir/usr/share/eruption/static/font/"
     install -m 644 "static/img/bg_direction_nav.png" "$pkgdir/usr/share/eruption/static/img/"
     install -m 644 "static/img/glyphicons-halflings.png" "$pkgdir/usr/share/eruption/static/img/"
-    install -m 644 "static/img/bg/bg-1.jpg" "$pkgdir/usr/share/eruption/static/img/"
-    install -m 644 "static/img/icons/eruption.png" "$pkgdir/usr/share/eruption/static/img/"
+    install -m 644 "static/img/bg/bg-1.jpg" "$pkgdir/usr/share/eruption/static/img/bg/"
+    install -m 644 "static/img/icons/eruption.png" "$pkgdir/usr/share/eruption/static/img/icons/"
     install -m 644 "static/img/favicon.png" "$pkgdir/usr/share/eruption/static/img/"
     install -m 644 "static/js/animate.js" "$pkgdir/usr/share/eruption/static/js/"
     install -m 644 "static/js/custom.js" "$pkgdir/usr/share/eruption/static/js/"
