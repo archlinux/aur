@@ -125,7 +125,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # https://github.com/graysky2/kernel_gcc_patch
-    msg2 "Patching to enabled additional gcc CPU optimizatons..."
+    msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
