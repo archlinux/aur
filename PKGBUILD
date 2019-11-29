@@ -7,7 +7,7 @@ arch=('any')
 url="http://www.boost.org/"
 license=('custom')
 depends=('mingw-w64-zstd' 'mingw-w64-bzip2')
-makedepends=('mingw-w64-gcc' 'bzip2' 'zlib' 'python2')
+makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "boost-mingw.patch")
@@ -36,7 +36,7 @@ using gcc : mingw64 : ${_arch:3}-g++
         <archiver>${_arch:3}-ar
 ;
 EOF
-    ./bootstrap.sh --with-toolset=gcc --with-python=/usr/bin/python2
+    ./bootstrap.sh --with-toolset=gcc
     popd
   done
 }
@@ -45,7 +45,7 @@ package() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     pushd "build-${_arch:3}"
-    ./b2 -d+2 -q ${MAKEFLAGS} \
+    ./b2 -d2 -q ${MAKEFLAGS} \
       target-os=windows \
       variant=release \
       threading=multi \
@@ -56,6 +56,7 @@ package() {
       --user-config=user-config.jam \
       --without-python --without-mpi --without-graph_parallel \
       cxxflags="-std=c++14 -D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
+      linkflags="-Wl,-O1,--sort-common,--as-needed -fstack-protector" \
       address-model=${_arch:0:2} \
       architecture=x86 \
       binary-format=pe \
