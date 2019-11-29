@@ -2,7 +2,7 @@
 
 pkgname=github-actions
 pkgver=2.161.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GitHub Actions self-hosted runner tools.'
 arch=('x86_64')
 url='https://help.github.com/en/actions'
