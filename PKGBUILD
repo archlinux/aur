@@ -4,7 +4,7 @@
 
 _pkgbase=libbluray
 pkgname=lib32-${_pkgbase}
-pkgver=1.1.0
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback (32 bit)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('gcc-multilib' 'apache-ant' 'java-environment')
 optdepends=('java-runtime: BD-J library')
 provides=('libbluray.so')
 source=("ftp://ftp.videolan.org/pub/videolan/$_pkgbase/$pkgver/$_pkgbase-$pkgver.tar.bz2")
-sha512sums=('9e1c8408ded0548584cf9d01fdf8153bb713cae5bfc8ff4cb6ace92cddcb2f8546d08db960507e4be8a79741c6196176726da7befac4244f887ab72b35136e9d')
+sha512sums=('5a82af6c1840a1dcb31d06d90203c68e2c4f0bbadc9212eb0bb2776d42b0ab3793a769ebe07b3051be151e8b15876874d5a0658292f72b7126dd915a1ada3fe7')
 
 build() {
   export CC='gcc -m32'
@@ -25,7 +25,8 @@ build() {
   ./configure --libdir=/usr/lib32 \
     --prefix=/usr \
     --with-java9 \
-    --disable-doxygen-doc
+    --disable-doxygen-doc \
+    --disable-bdjava-jar
   make
 }
 
