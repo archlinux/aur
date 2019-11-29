@@ -20,7 +20,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=70.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -76,6 +76,10 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         7002_system_av1_support.patch
         # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
         0001-Use-remoting-name-for-GDK-application-names.patch
+        # Update Bindgen to fix building with rust 1.39
+        0001-Update-bindgen.patch.xz
+        # Fix building with python 3.8
+        0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch.xz
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -123,6 +127,14 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i "$srcdir"/0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # Update Bindgen to fix building with rust 1.39
+  xzcat "$srcdir"/0001-Update-bindgen.patch.xz | patch -Np1
+
+  # Fix building with python 3.8
+  xzcat "$srcdir"/\
+0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch.xz  | \
+    patch -Np1
   
   if [[ $_pgo ]] ; then
     # add missing rule for pgo builds
@@ -235,4 +247,6 @@ md5sums=('SKIP'
          '8d0c0ebc805e4e52a3cb2c0dc64ea2de'
          'f867ae41a722630cc5567e2dcc51676d'
          'd87270bfe02ea30e2fde3fcae5daf18d'
-         '0ffabb81dd8a5fe98bb8afe47d6541d3')
+         '0ffabb81dd8a5fe98bb8afe47d6541d3'
+         '0c91cd2a5abc6474dd24912bea80bf23'
+         '35b553936e674cd8538fd97d6414b046')
