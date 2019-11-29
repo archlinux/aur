@@ -1,0 +1,16 @@
+pkgbase = sdbus-cpp
+	pkgdesc = sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/Kistler-Group/sdbus-cpp
+	arch = i686
+	arch = x86_64
+	license = LGPLv2.1
+	makedepends = cmake
+	depends = systemd-libs
+	conflicts = sdbus-cpp-git
+	source = sdbus-cpp::git+https://github.com/Kistler-Group/sdbus-cpp.git#tag=v0.7.5
+	sha256sums = SKIP
+
+pkgname = sdbus-cpp
+
