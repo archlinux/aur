@@ -1,6 +1,3 @@
-# Maintainer: Pierre-Nick Durette <pndurette at gmail dot com>
-# Contributor: Tembleking <tembleking at gmail dot com>
-
 pkgname=python-gtts
 pkgver=2.0.4
 pkgrel=1
@@ -8,7 +5,7 @@ pkgdesc="Module and command line utility to save spoken text to mp3 via the Goog
 arch=('any')
 url="https://github.com/pndurette/gTTS"
 license=('MIT')
-depends=('python' 'python-gtts-token' 'python-requests')
+depends=('python-six' 'python-beautifulsoup4' 'python-click' 'python-gtts-token' 'python-requests')
 makedepends=('python-setuptools')
 source=("https://github.com/pndurette/gTTS/archive/v${pkgver}.tar.gz")
 md5sums=('e58abfd0e01104574af8ca9bb28e0b8e')
@@ -23,4 +20,3 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
