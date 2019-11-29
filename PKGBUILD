@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.9'
-pkgrel='10'
+pkgrel='11'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -92,6 +92,8 @@ package() {
     # Web-Frontend
     mkdir -p "$pkgdir/usr/share/eruption/templates"
     mkdir -p "$pkgdir/usr/share/eruption/static/css"
+    mkdir -p "$pkgdir/usr/share/eruption/static/css/themes/eruption"
+    mkdir -p "$pkgdir/usr/share/eruption/static/css/themes/metal"
     mkdir -p "$pkgdir/usr/share/eruption/static/js"
     mkdir -p "$pkgdir/usr/share/eruption/static/font"
     mkdir -p "$pkgdir/usr/share/eruption/static/img"
