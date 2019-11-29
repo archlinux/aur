@@ -42,8 +42,8 @@ if [ -z ${use_pds+x} ]; then
 fi
 
 pkgbase=linux-xanmod
-pkgver=5.4.0
-xanmod=0
+pkgver=5.4.1
+xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -61,7 +61,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        choose-gcc-optimization.sh
 )
 
-sha256sums=('7c328cd003a4d4a4ad2e538418c018775c573dbc7851cb7b8efa0ab39ef4550b'
+sha256sums=('1240394d34ea2a4458f3d325ef01401606d6701f6d2d8fa602381a657764540a'
             '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748')
 
 export KBUILD_BUILD_HOST=archlinux
