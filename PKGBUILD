@@ -23,14 +23,18 @@ options=(!strip)
 _gitname=i2p.i2p
 _commit=master
 
+#mirror: https://gitlab.com/I2P/i2p.i2p.git
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
-        'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
+        'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
+        'i2prouter.bash' 'i2prouter.sh')
 
 sha256sums=('SKIP'
-            'ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd'
-            'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
+            '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
+            'df26da04c8415ac24ec73b0dd08d3459a8964553bb77e5da5ab9833b0a31d865'
             '5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0'
-            '41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99')
+            '4ee28e022dccaf99043aa2735f05b7270b8eccf040c67f7ef48e114b5ca6e971'
+            '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
+            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8')
 
 pkgver() {
     cd "$_gitname"
@@ -63,6 +67,7 @@ fi
 
 build() {
     export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/default}"
+
     build_jbigi
     build_jcpuid
 
@@ -80,34 +85,38 @@ package() {
     cd "$pkgdir"
 
     install -dm755 "usr/bin"
-    install -dm755 "opt/i2p/.tmp"
+    install -dm755 "opt/i2p"
 
     cp -r "$srcdir/$_gitname"/pkg-temp/* "opt/i2p"
+
+    install -Dm644 "$srcdir/i2prouter.service" "usr/lib/systemd/system/i2prouter.service"
+    install -Dm644 "$srcdir/i2p.tmpfiles"      "usr/lib/tmpfiles.d/i2p.conf"
+    echo 'u i2p - "I2P Router" /opt/i2p /bin/sh' |
+    install -Dm644 /dev/stdin                  "usr/lib/sysusers.d/i2p.conf"
 
     install -Dm644 "$srcdir/router.config"     "opt/i2p/router.config"
     install -Dm644 "$srcdir/wrapper.config"    "opt/i2p/wrapper.config"
     install -Dm755 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
-    install -Dm644 "$srcdir/i2prouter.service" "usr/lib/systemd/system/i2prouter.service"
+
+    install -Dm644 "$srcdir/i2prouter.bash"    "usr/share/bash-completion/completions/i2prouter"
+    install -Dm644 "$srcdir/$_gitname/installer/resources/bash-completion/eepget" \
+                                               "usr/share/bash-completion/completions/eepget"
+
     install -Dm644 "opt/i2p/man/eepget.1"      "usr/share/man/man1/eepget.1"
     install -Dm644 "opt/i2p/LICENSE.txt"       "usr/share/licenses/i2p/LICENSE"
     mv opt/i2p/licenses/*                      "usr/share/licenses/i2p/"
 
     ln -s /opt/i2p/{eepget,i2prouter} "usr/bin/"
     chmod +x opt/i2p/{eepget,i2prouter}
-
-    chmod  -x opt/i2p/*.config
-    chmod 755 opt/i2p
-    chown  -R 985:985 opt/i2p
-
-    echo 'u i2p 985 "I2P Router" /opt/i2p /bin/sh' |
-    install -Dm644 /dev/stdin "usr/lib/sysusers.d/i2p.conf"
-    echo 'd /run/i2p 0700 i2p i2p' |
-    install -Dm644 /dev/stdin "usr/lib/tmpfiles.d/i2p.conf"
+    chmod -x opt/i2p/*.config
 
     sed -i opt/i2p/{eepget,wrapper.config} \
         -e 's:%INSTALL_PATH:/opt/i2p:g'
+
+    # dont automatically start the webserver (3) or open a webbrowser (4)
     sed -i opt/i2p/clients.config \
         -e "s:clientApp.3.startOnLoad=.*:clientApp.3.startOnLoad=false:" \
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
+
     rm -r opt/i2p/{osid,postinstall.sh,runplain.sh,INSTALL-headless.txt,LICENSE.txt,licenses,man,lib/wrapper}
 }

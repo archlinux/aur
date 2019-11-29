@@ -22,14 +22,18 @@ pkgbase = i2p-dev
 	backup = opt/i2p/wrapper.config
 	source = git+https://github.com/i2p/i2p.i2p.git#commit=master
 	source = i2prouter.service
-	source = i2prouter.sh
+	source = i2p.tmpfiles
 	source = wrapper.config
 	source = router.config
+	source = i2prouter.bash
+	source = i2prouter.sh
 	sha256sums = SKIP
-	sha256sums = ff9942ca43715b5095b0118e306c8aec1af7c68c18e8959dba10d86eac8efbfd
-	sha256sums = ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53
+	sha256sums = 644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876
+	sha256sums = df26da04c8415ac24ec73b0dd08d3459a8964553bb77e5da5ab9833b0a31d865
 	sha256sums = 5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0
-	sha256sums = 41756375ef2e8323147cec31a8675b2bc11109451f9185c036ff32d26d6c9b99
+	sha256sums = 4ee28e022dccaf99043aa2735f05b7270b8eccf040c67f7ef48e114b5ca6e971
+	sha256sums = 7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a
+	sha256sums = b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8
 
 pkgname = i2p-dev
 
