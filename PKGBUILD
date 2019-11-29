@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-torchaudio-git
 _pkgname=audio
-pkgver=r172.fc9fb93
+pkgver=r222.bdf9255
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('any')
