@@ -1,8 +1,8 @@
 # Maintainer: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint-bin
 pkgver=20191127
-pkgrel=2
-pkgdesc="Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español"
+pkgrel=1
+pkgdesc="Una herramienta para aprender las bases de la programación en Español-27-11-2019"
 arch=('x86_64')
 url="http://pseint.sourceforge.net"
 license=('GPL')

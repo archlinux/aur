@@ -1,7 +1,7 @@
 pkgbase = pseint-bin
-	pkgdesc = Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español
+	pkgdesc = Una herramienta para aprender las bases de la programación en Español-27-11-2019
 	pkgver = 20191127
-	pkgrel = 2
+	pkgrel = 1
 	url = http://pseint.sourceforge.net
 	arch = x86_64
 	license = GPL
