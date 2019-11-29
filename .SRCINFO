@@ -1,7 +1,7 @@
 pkgbase = rambox-bin
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rambox.pro/
 	arch = i686
 	arch = x86_64
