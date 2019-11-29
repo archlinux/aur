@@ -1,6 +1,6 @@
 pkgbase = hydrogen-drumkits
 	pkgdesc = Hydrogen drum kits
-	pkgver = 20180818
+	pkgver = 20191129
 	pkgrel = 1
 	url = https://sourceforge.net/projects/hydrogen/
 	changelog = ChangeLog

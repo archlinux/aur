@@ -3,7 +3,7 @@
 # Contributor: Artem Borisovskiy
 
 pkgname=hydrogen-drumkits
-pkgver=20180818
+pkgver=20191129
 pkgrel=1
 pkgdesc='Hydrogen drum kits'
 arch=(any)
