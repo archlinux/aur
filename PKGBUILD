@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-caps-viewer
-pkgver=2.02
+pkgver=2.03
 pkgrel=1
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')
 source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz")
-sha1sums=('bd4edf5510968bd5c9c2bce0deb4c048b7ddf966')
+sha1sums=('2cecf6fa42a21060171c974af607a79ad490162c')
 makedepends=(qt5-base)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
 
