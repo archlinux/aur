@@ -1,8 +1,8 @@
 pkgbase = python-qiskit-ibmq-provider
 	pkgdesc = Module for accessing the quantum devices and simulators at IBMQ
 	pkgver = 0.4.3
-	pkgrel = 1
-	url = https://github.com/Qiskit/qiskit-aqua
+	pkgrel = 2
+	url = https://github.com/Qiskit/qiskit-ibmq-provider
 	arch = x86_64
 	license = Apache
 	makedepends = python-setuptools
