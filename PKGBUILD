@@ -1,13 +1,13 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.12.4
+_oomox_ver=1.12.5
 _oomox_theme_ver=1.10
 _materia_theme_ver=20191017
 #_materia_cmt=f1ad3125eea55f4fe88ceab1be83bd51ee5eba48
 _arc_theme_ver=20190910
 _archdroid_icons_ver=1.0.2
 _gnome_colors_icons_ver=5.5.5
-_oomoxify_ver=1.1.4
+_oomoxify_ver=1.2
 _base16_cmt=2ddee2a03653850ed2166e7766636bf1dfb21ca5
 _numix_icons_cmt=1029e86ec58c387a5b3523380ee17f223f7e2de4
 _numix_folders_icons_cmt=24e5f6c6603e7f798553d2f24a00de107713c333
@@ -84,13 +84,13 @@ source=(
     "suru-plus-icon-theme-${_suru_plus_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v${_suru_plus_icons_ver}.tar.gz"
     "suru-plus-aspromauros-icon-theme-${_suru_plus_aspromauros_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus-aspromauros/archive/v${_suru_plus_aspromauros_icons_ver}.tar.gz"
 )
-md5sums=('0188b431217371eb0428dc1eae5e7c71'
+md5sums=('bbfbd1dd7263a6ebf3a8275f33a5ba0e'
          '13945f05eba3b85e6d63fec1ff60380a'
          '96cb7002228eaf9d91ddde285452daec'
          'd6f731276110588d05b95bd2e0b4cb2f'
          'cb669130685dcbf03a8f7f5738c71dc6'
          '8b4a9a1837211a3caf661ab825d66cb0'
-         'ce59deac7097e169d44bba34e95a8b46'
+         '4f5164a1e0492f4ae1829c8290da43d6'
          'e3b999f86cef486ff90c4911514f3de3'
          '9df0d2aae9a4b8e2e170c9aeb7effc4f'
          '3fcb07cefe43a6a2fe4d977f124624ec'
