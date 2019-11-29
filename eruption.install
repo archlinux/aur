@@ -2,7 +2,7 @@ post_install() {
     systemctl preset eruption
     systemctl reload dbus.service
     udevadm control --reload-rules
-    udevadm trigger -s usb
+    systemctl try-restart eruption.service || udevadm trigger -s usb
 }
 
 pre_remove() {
