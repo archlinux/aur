@@ -1,0 +1,25 @@
+pkgbase = ros-melodic-laser-proc
+	pkgdesc = ROS - laser_proc
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://wiki.ros.org/laser_proc
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-rosconsole
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-nodelet
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-rosconsole
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-nodelet
+	source = ros-melodic-laser-proc-0.1.5.tar.gz::https://github.com/ros-perception/laser_proc/archive/0.1.5.tar.gz
+	sha256sums = 8e55ab274ba4b135a22d3d855649f7c21a8db300db185fffe5d96746c7bebb7d
+
+pkgname = ros-melodic-laser-proc
+
