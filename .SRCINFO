@@ -1,14 +1,14 @@
 pkgbase = reliao
 	pkgdesc = 爱奇艺之家热聊
-	pkgver = 3.9.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://home.iqiyi.com/app/download/index.html
 	arch = x86_64
 	license = custom
 	depends = gtk2
 	depends = libxss
-	source = https://hotchat-dl.iqiyi.com/version/linux/reliao_3.9.0_amd64.deb
-	md5sums = 79c7b4858acb1170c3dde3170630ac81
+	source = https://hotchat-dl.iqiyi.com/version/linux/reliao_4.0.0_amd64.deb
+	md5sums = 80a16a5f5af33991fd95880781e828f8
 
 pkgname = reliao
 
