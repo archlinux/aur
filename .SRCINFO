@@ -1,12 +1,11 @@
 pkgbase = linux-aufs
 	pkgdesc = Linux AUFS
 	pkgver = 5.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sfjro/aufs5-standalone
 	arch = x86_64
 	license = GPL2
 	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
 	makedepends = python-sphinx
@@ -44,6 +43,6 @@ pkgname = linux-aufs-headers
 	depends = linux-aufs
 
 pkgname = linux-aufs-docs
-	pkgdesc = Kernel hacker's manual for the Linux AUFS kernel
+	pkgdesc = Documentation for the Linux AUFS kernel
 	depends = linux-aufs
 
