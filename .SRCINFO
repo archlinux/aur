@@ -1,7 +1,7 @@
 pkgbase = ipe
 	pkgdesc = The extensible drawing editor
 	pkgver = 7.2.13
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ipe.otfried.org/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ipe
 	depends = freetype2
 	depends = zlib
 	depends = poppler
-	depends = python2
+	depends = hicolor-icon-theme
 	conflicts = ipe
 	source = http://dl.bintray.com/otfried/generic/ipe/7.2/ipe-7.2.13-src.tar.gz
 	source = ipe.bash-completion
