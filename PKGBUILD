@@ -1,7 +1,7 @@
 # Maintainer: Kyle Fuller <kyle@fuller.li>
 
 pkgname=drafter
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='API Blueprint Parser'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("https://github.com/apiaryio/drafter/releases/download/v$pkgver/drafter-$pkgver.tar.gz")
-sha256sums=('35e9ca58acbf7dc2e8c48a8bf16bc7a4efbdc2dedaeedb258e0ad80c14496d78')
+sha256sums=('243032f9ff202bffdc10b382a435f59b0110be8da1029f8c4208b8c22bd37f06')
 
 prepare() {
   mkdir -p "${srcdir}/build"
@@ -20,7 +20,7 @@ build() {
   cd "${srcdir}/build"
 
   cmake -DCMAKE_INSTALL_PREFIX=/usr "${srcdir}/drafter-${pkgver}"
-  make drafter drafter-cli
+  make drafter
 }
 
 package() {
