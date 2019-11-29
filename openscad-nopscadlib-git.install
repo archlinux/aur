@@ -1,0 +1,14 @@
+post_install() {
+ cat << EOF
+
+  ##  NOTE  ############################################################
+  #                                                                    #
+  # NopSCADlib installed in: /usr/share/openscad/libraries/nopscadlib/ #
+  #                                                                    #
+  # In OpenSCAD, import the desired files with this template:          #
+  # use <nopscadlib/SOMETHING.scad>                                    #
+  #                                                                    #
+  ######################################################################
+
+EOF
+}
