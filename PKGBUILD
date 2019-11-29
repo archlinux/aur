@@ -290,7 +290,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
+    pkgdesc="Documentation for the $pkgdesc kernel"
     depends=('linux-next-git')
 
   cd $_srcname

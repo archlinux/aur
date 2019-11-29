@@ -35,6 +35,6 @@ pkgname = linux-next-git-headers
 	depends = linux-next-git
 
 pkgname = linux-next-git-docs
-	pkgdesc = Kernel hacker's manual for the Linux NEXT kernel
+	pkgdesc = Documentation for the Linux NEXT kernel
 	depends = linux-next-git
 
