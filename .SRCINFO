@@ -33,10 +33,6 @@ pkgbase = anja-git
 	depends = libsamplerate
 	depends = libsndfile
 	depends = ttf-linux-libertine
-	provides = anja
-	provides = anja-git
-	conflicts = anja
-	conflicts = anja-git
 	source = git+https://github.com/milasudril/anja
 	md5sums = SKIP
 
