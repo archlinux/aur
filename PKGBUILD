@@ -7,7 +7,7 @@ pkgver=20180818
 pkgrel=1
 pkgdesc='Hydrogen drum kits'
 arch=(any)
-url='http://www.hydrogen-music.org/hcms/node/16'
+url='https://sourceforge.net/projects/hydrogen/'
 license=('GPL2')
 depends=(hydrogen)
 changelog=ChangeLog
@@ -44,7 +44,8 @@ _drumkits=(
     'circAfrique v4'
 )
 
-_host='https://datapacket.dl.sourceforge.net'
+_subhost='netcologne'
+_host="https://$_subhost.dl.sourceforge.net"
 _path='/project/hydrogen/Sound Libraries/Main sound libraries'
 _base=$_host$_path
 
