@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.13.arch1.r859600.e04bb6cd44cd
+pkgver=v5.3.14.arch1.r859692.b38ab57cca97
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.3.13-arch1
+_srcver_tag=v5.3.14-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -70,6 +70,11 @@ makedepends=(
     bc
     kmod
     libelf
+    xmlto
+    python-sphinx
+    python-sphinx_rtd_theme
+    graphviz
+    imagemagick
     git
 )
 options=('!strip')
@@ -96,7 +101,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '9ce38cfa57475b74098229956a8b97a82bda8aeff831728542b4939e67c4af8e929c4cf8e27b0549829e5f011859369b2ab19b4fdfeb096afb339bc1bff8c622'
+            '221652eced3ada8fd6a1be9ecbf0e9a553330f20bb9e080d340a28359759a364e9a14c6a789857599f223ec98b4800e2c1f3cbf2e8f012ba789cb23116439acd'
             '9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0'
             'a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c')
 
@@ -171,7 +176,7 @@ prepare() {
 
 build() {
     cd $_reponame
-    make bzImage modules
+    make bzImage modules htmldocs
 }
 
 _package() {
@@ -293,9 +298,32 @@ _package-headers() {
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
+_package-docs() {
+    pkgdesc="Documentation for the $pkgdesc kernel"
+
+    cd $_srcname
+    local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+    msg2 "Installing documentation..."
+    local src dst
+    while read -rd '' src; do
+        dst="${src#Documentation/}"
+        dst="$builddir/Documentation/${dst#output/}"
+        install -Dm644 "$src" "$dst"
+    done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
+
+    msg2 "Adding symlink..."
+    mkdir -p "$pkgdir/usr/share/doc"
+    ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+
+    msg2 "Fixing permissions..."
+    chmod -Rc u=rwX,go=rX "$pkgdir"
+}
+
 pkgname=(
     "$pkgbase"
     "$pkgbase-headers"
+    "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {

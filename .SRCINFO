@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.3.13.arch1.r859600.e04bb6cd44cd
+	pkgver = v5.3.14.arch1.r859692.b38ab57cca97
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -8,6 +8,11 @@ pkgbase = linux-bcachefs-git
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
 	makedepends = git
 	options = !strip
 	source = git+https://github.com/koverstreet/bcachefs#branch=master
@@ -19,7 +24,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 9ce38cfa57475b74098229956a8b97a82bda8aeff831728542b4939e67c4af8e929c4cf8e27b0549829e5f011859369b2ab19b4fdfeb096afb339bc1bff8c622
+	sha512sums = 221652eced3ada8fd6a1be9ecbf0e9a553330f20bb9e080d340a28359759a364e9a14c6a789857599f223ec98b4800e2c1f3cbf2e8f012ba789cb23116439acd
 	sha512sums = 9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0
 	sha512sums = a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c
 
@@ -31,11 +36,14 @@ pkgname = linux-bcachefs-git
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-git=v5.3.13.arch1.r859600.e04bb6cd44cd
+	provides = linux-bcachefs-git=v5.3.14.arch1.r859692.b38ab57cca97
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=v5.3.13.arch1.r859600.e04bb6cd44cd
-	provides = linux-bcachefs-git-headers=v5.3.13.arch1.r859600.e04bb6cd44cd
-	provides = linux-headers=v5.3.13.arch1.r859600.e04bb6cd44cd
+	depends = linux-bcachefs-git=v5.3.14.arch1.r859692.b38ab57cca97
+	provides = linux-bcachefs-git-headers=v5.3.14.arch1.r859692.b38ab57cca97
+	provides = linux-headers=v5.3.14.arch1.r859692.b38ab57cca97
+
+pkgname = linux-bcachefs-git-docs
+	pkgdesc = Documentation for the Linux kernel
 
