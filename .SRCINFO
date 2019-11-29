@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-libbacktrace-git
+	pkgdesc = Library to produce symbolic backtraces (mingw-w64)
+	pkgver = r21.5a99ff7
+	pkgrel = 1
+	url = https://github.com/ianlancetaylor/libbacktrace
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-configure
+	makedepends = git
+	depends = mingw-w64-zlib
+	provides = mingw-w64-libbacktrace
+	conflicts = mingw-w64-libbacktrace
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/ianlancetaylor/libbacktrace.git
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libbacktrace-git
+
