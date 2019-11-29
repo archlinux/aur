@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.9'
-pkgrel='11'
+pkgrel='12'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -40,6 +40,8 @@ package() {
     mkdir -p "$pkgdir/usr/share/doc/eruption"
     mkdir -p "$pkgdir/usr/lib/eruption/scripts"
     mkdir -p "$pkgdir/usr/lib/eruption/scripts/lib"
+    
+    mkdir -p "$pkgdir/var/lib/eruption/profiles"
     
     mkdir -p "$pkgdir/usr/lib/systemd/system"
     mkdir -p "$pkgdir/usr/lib/systemd/system-preset"
@@ -88,6 +90,10 @@ package() {
     install -m 644 "src/scripts/sysmon.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    
+    install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
     
     # Web-Frontend
     mkdir -p "$pkgdir/usr/share/eruption/templates"
