@@ -12,7 +12,7 @@ url="https://geti2p.net"
 license=('GPL2')
 arch=('any')
 depends=('java-runtime>=8' 'java-service-wrapper')
-makedepends=('java-environment>=8' 'apache-ant')
+makedepends=('java-environment>=8' 'ant')
 #optdepends=('gtk2: for rrd graphs')
 conflicts=('i2p-bin' 'i2p-dev')
 backup=('opt/i2p/wrapper.config')
