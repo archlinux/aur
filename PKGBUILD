@@ -1,6 +1,4 @@
-# Maintainer: Miguel Useche <migueluseche@skatox.com>
-# Contributor: mncarbone <mncarbone@gmail.com>
-# Contributor: Cristophero <cristophero.alvarado@gmail.com>
+# Maintainer: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint-bin
 pkgver=20191127
 pkgrel=1
@@ -10,9 +8,7 @@ url="http://pseint.sourceforge.net"
 license=('GPL')
 groups=()
 depends=('libpng12' 'glu')
-makedepends=()
-optdepends=()
-source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l64-${pkgver}.tgz)
+source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/pseint/${pkgver}/pseint-l64-${pkgver}.tgz)
 noextract=()
 sha256sums_x86_64=("f63b7c56145f357f99aa856bcf3cafdacaae011a0a3c90f868ce3198b9833f08")
 
