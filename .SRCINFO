@@ -1,14 +1,15 @@
 pkgbase = pseint-bin
-	pkgdesc = Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español.
+	pkgdesc = Una herramienta para aprender las bases de la programación mediante pseudocodigo en Español
 	pkgver = 20191127
 	pkgrel = 1
-	pkgdest = 1
 	url = http://pseint.sourceforge.net
+	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = libpng12
 	depends = glu
-	source_x86_64 = https://razaoinfo.dl.sourceforge.net/project/pseint/20191127/pseint-l64-20191127.tgz
+	source_i686 = https://razaoinfo.dl.sourceforge.net/project/pseint/20191127/pseint-bin-l32-20191127.tgz
+	source_x86_64 = https://razaoinfo.dl.sourceforge.net/project/pseint/20191127/pseint-bin-l64-20191127.tgz
 	sha256sums_x86_64 = f63b7c56145f357f99aa856bcf3cafdacaae011a0a3c90f868ce3198b9833f08
 
 pkgname = pseint-bin
