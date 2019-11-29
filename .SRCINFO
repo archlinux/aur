@@ -1,7 +1,7 @@
 pkgbase = boxtron
 	pkgdesc = Compatibility tool to run DOS games on Steam through native Linux DOSBox
-	pkgver = 0.5.2
-	pkgrel = 3
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/dreamer/boxtron
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = boxtron
 	depends = timidity++
 	optdepends = steam: The Steam client
 	optdepends = soundfont-fluid: required for MIDI support, but another soundfont can be used
-	source = git+https://github.com/dreamer/boxtron.git#tag=v0.5.2
+	source = git+https://github.com/dreamer/boxtron.git#tag=v0.5.3
 	sha512sums = SKIP
 
 pkgname = boxtron
