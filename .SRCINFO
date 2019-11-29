@@ -1,0 +1,18 @@
+pkgbase = kodi-addon-game-libretro-genplus
+	pkgdesc = Genesis Plus GX Libretro wrapper for Kodi's Game API
+	pkgver = 1.7.4.7
+	pkgrel = 1
+	url = https://github.com/kodi-game/game.libretro.genplus
+	arch = x86_64
+	groups = kodi-addons
+	groups = kodi-addons-game
+	license = GPL
+	makedepends = cmake
+	makedepends = kodi-dev
+	depends = kodi-addon-game-libretro
+	depends = libretro-genesis-plus-gx
+	source = kodi-addon-game-libretro-genplus-1.7.4.7.tar.gz::https://github.com/kodi-game/game.libretro.genplus/archive/1.7.4.7-Leia.tar.gz
+	sha512sums = 39617c5221b54537e8229d0f7f07791bb4a76c3fb3c578cbf0fcf669d8296304aded81cecb76ac5eaac64a77c7c7e67eae4c83cf9328278ec1edfb88a9e440d5
+
+pkgname = kodi-addon-game-libretro-genplus
+
