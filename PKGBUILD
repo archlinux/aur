@@ -4,7 +4,7 @@
 
 pkgname=latex-template-springer
 pkgver=20191006
-pkgrel=2
+pkgrel=3
 pkgdesc="Springer templates for LNCS proceedings (llncs), monographs (svmono), multiauthor volumes (svmult), journals (svjour3), and other lecture notes (svmultln)"
 arch=('any')
 url="https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines"
@@ -33,25 +33,23 @@ package() {
   done
   install -m 0644 -D ${srcdir}/LaTeX_DL_468198_${SVJOUR3VER}/spphys.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/spphys.bst
 
-  for _SVMONO in instruct.pdf quickstart.pdf refguide.pdf styles/* templates/*; do
-    [[ ${_SVMONO} == *"/*" ]] && install -m 755 -d ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/${_SVMONO#/*}
-    install -m 0644 -D ${srcdir}/${_SVMONO} ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/${_SVMONO%\*}
-  done
+  install_tex svmono.zip svmono
+  install_tex svmult.zip svmult
+  install_tex llncs2e.zip llncs
 
-  for _SVMULT in instruct.pdf quickstart.pdf refguide.pdf styles/* templates/*; do
-    [[ ${_SVMULT} == *"/*" ]] && install -m 755 -d ${pkgdir}/usr/share/texmf-dist/tex/latex/svmult/${_SVMULT#/*}
-    install -m 0644 -D ${srcdir}/${_SVMULT} ${pkgdir}/usr/share/texmf-dist/tex/latex/svmult/${_SVMULT%\*}
-  done
+  bstdir=${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
+  install -m 755 -d ${bstdir}
+  find ${pkgdir}/usr/share/texmf-dist/tex/latex/ -name \*.bst -exec mv {} ${bstdir} \;
+}
 
-  for _LLNCS in readme.txt llncs.cls llncsdoc.pdf; do
-    install -m 0644 -D ${srcdir}/${_LLNCS} ${pkgdir}/usr/share/texmf-dist/tex/latex/llncs/${_LLNCS}
-  done
-  install -m 0644 -D ${srcdir}/splncs04.bst ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/splncs04.bst
+install_tex() {
+  zipname=$1
+  dirname=$2
 
-  find ${pkgdir}/usr/share/texmf-dist/tex/latex/ -name \*.bst -exec mv {} ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/ \;
-  # XXX: BSTs have disappeared from the latest version of svmono... Go figure...
-  #mv ${pkgdir}/usr/share/texmf-dist/tex/latex/svmono/*.bst \
-  # ${pkgdir}/usr/share/texmf-dist/bibtex/bst/springer/
+  destdir=${pkgdir}/usr/share/texmf-dist/tex/latex/${dirname}/
+  install -m 755 -d ${destdir}
+  unzip ${srcdir}/${zipname} -d ${destdir}
+
 }
 
 md5sums=('SKIP'
