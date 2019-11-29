@@ -1,19 +1,18 @@
 pkgbase = lib32-sratom
 	pkgdesc = An LV2 Atom RDF serialisation library (32-bit)
-	pkgver = 0.6.2
-	pkgrel = 2
+	pkgver = 0.6.4
+	pkgrel = 1
 	url = https://drobilla.net/software/sratom/
 	arch = x86_64
 	license = custom:ISC
-	makedepends = lv2
-	makedepends = python2
-	depends = lib32-lv2
+	makedepends = lib32-lv2
+	makedepends = waf
 	depends = lib32-sord
 	depends = sratom
-	source = https://download.drobilla.net/sratom-0.6.2.tar.bz2
-	source = https://download.drobilla.net/sratom-0.6.2.tar.bz2.sig
+	source = https://download.drobilla.net/sratom-0.6.4.tar.bz2
+	source = https://download.drobilla.net/sratom-0.6.4.tar.bz2.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
-	sha512sums = 356e1dfde07fcc3eff99186ff79501557572f5d73338fd096bf639a82d1d4fe3c0e790627c8eb088053e4a2aeed4e548aca0a5572d1ab26316cfdb13374f10ac
+	sha512sums = 6462d8d33ed7ddaa2aea267fab14c9a15bfc077a4f8d26eb493be4c48c95d8dcec614f540bd82fe22aecca641771326a44d175c3991cd473ae371062c78aaac3
 	sha512sums = SKIP
 
 pkgname = lib32-sratom
