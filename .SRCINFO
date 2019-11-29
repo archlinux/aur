@@ -1,0 +1,16 @@
+pkgbase = clash-scripts
+	pkgdesc = some scripts for clash.
+	pkgver = 20191129.r5.4d0be4a
+	pkgrel = 1
+	url = https://github.com/Howard-00/clash-scripts
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = clash
+	optdepends = go-tun2socks: udp relay support
+	backup = etc/clash-scripts/env
+	source = git+https://github.com/Howard-00/clash-scripts
+	md5sums = SKIP
+
+pkgname = clash-scripts
+
