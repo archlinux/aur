@@ -3,7 +3,7 @@
 
 pkgname=kicad-packages3d
 _pkgname=kicad-packages3D
-pkgver=5.1.4
+pkgver=5.1.5
 pkgrel=1
 pkgdesc="KiCad 3D package libraries"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('cmake')
 options=('!strip')
 conflicts=('kicad-packages3d-git' 'kicad-library-git' 'kicad-library' 'kicad-library-3d')
 source=("https://github.com/KiCad/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('80cc03bca0f78948ed32ed5c5636c692725b85fde859863c02fd5df81f5f4a02')
+sha256sums=('b1c35e686865faf8a9b08d3843b188e90b4088f0b1e5f3f0393fac833a22a749')
 
 build() {
   cd "$srcdir"
