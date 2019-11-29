@@ -6,7 +6,7 @@ url="https://bitbucket.org/davisowb/fdutil"
 arch=(any)
 license=('MIT')
 makedepends=('python-setuptools')
-depends=(python-pyperclip python-logging-helper python-conversionutil python-watchdog python-dominate)
+depends=(python-pyperclip python-logging-helper python-conversionutil python-watchdog python-dominate python-future)
 source=("https://pypi.io/packages/source/f/fdutil/fdutil-${pkgver}.tar.gz")
 sha256sums=('adf56d3b76af134456eb2edfc4f009adf6e276d6915d80ac6f9ed799f9472b4c')
 

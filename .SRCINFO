@@ -11,6 +11,7 @@ pkgbase = python-fdutil
 	depends = python-conversionutil
 	depends = python-watchdog
 	depends = python-dominate
+	depends = python-future
 	source = https://pypi.io/packages/source/f/fdutil/fdutil-1.13.0.tar.gz
 	sha256sums = adf56d3b76af134456eb2edfc4f009adf6e276d6915d80ac6f9ed799f9472b4c
 
