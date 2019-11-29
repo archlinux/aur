@@ -1,18 +1,19 @@
 pkgname=mingw-w64-boost
 pkgver=1.71.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
 license=('custom')
-depends=('mingw-w64-zstd' 'mingw-w64-bzip2')
-makedepends=('mingw-w64-gcc')
+depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-libbacktrace-git')
+makedepends=('mingw-w64-gcc' 'mingw-w64-wine')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
-        "boost-mingw.patch")
+        "boost-mingw.patch" "jam-wine.patch")
 sha256sums=('d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee'
-            '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc')
+            '11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc'
+            '8af7d7fb6e45b0ded273415824ff56878a73800a067188327cf0fa351352bec1')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
@@ -22,6 +23,9 @@ prepare() {
 
   # https://svn.boost.org/trac/boost/ticket/7262
   patch -Np0 -i "${srcdir}"/boost-mingw.patch
+
+  # run jam exes through wine (eg for libbacktrace detection)
+  patch -p1 -i "${srcdir}"/jam-wine.patch
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
@@ -45,6 +49,7 @@ package() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     pushd "build-${_arch:3}"
+    export BOOST_CROSSCOMPILING_EMULATOR=/usr/bin/${_arch:3}-wine
     ./b2 -d2 -q ${MAKEFLAGS} \
       target-os=windows \
       variant=release \
