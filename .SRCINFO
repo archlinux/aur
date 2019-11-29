@@ -1,19 +1,19 @@
 pkgbase = lib32-lilv
 	pkgdesc = A C library interface to the LV2 plug-in standard (32-bit)
-	pkgver = 0.24.4
+	pkgver = 0.24.6
 	pkgrel = 1
 	url = https://drobilla.net/software/lilv/
 	arch = x86_64
 	license = custom:ISC
 	makedepends = lib32-libsndfile
-	makedepends = lv2
-	makedepends = python
+	makedepends = lib32-lv2
+	makedepends = waf
 	depends = lib32-sratom
 	depends = lilv
-	source = https://download.drobilla.net/lilv-0.24.4.tar.bz2
-	source = https://download.drobilla.net/lilv-0.24.4.tar.bz2.sig
+	source = https://download.drobilla.net/lilv-0.24.6.tar.bz2
+	source = https://download.drobilla.net/lilv-0.24.6.tar.bz2.sig
 	validpgpkeys = 907D226E7E13FA337F014A083672782A9BF368F3
-	sha512sums = cb909c83dbac36b51a206fe508aec51e52ddf068f9a159d053888594402def8d140aae0d9e1e1866e722396f7ec8dea4b86d4c1b958f56eb3193b78307918a89
+	sha512sums = 0cf89d7dac97727e744579d3f4f4b330f56cf72f1a30bd03abfd645233aaf04e9bbf2abf460a0e4b963ed40e1ae78ed5f36127553bdab16e3e7dd3e93b70cdad
 	sha512sums = SKIP
 
 pkgname = lib32-lilv
