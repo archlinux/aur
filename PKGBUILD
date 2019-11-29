@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.9'
-pkgrel='3'
+pkgrel='4'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -90,10 +90,10 @@ package() {
     install -m 644 "src/scripts/temperature.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     
-    install -m 644 "support/templates/about.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    install -m 644 "support/templates/base.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    install -m 644 "support/templates/detail.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    install -m 644 "support/templates/documentation.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    install -m 644 "support/templates/profiles.html.tera" "$pkgdir/usr/share/eruption/templates/"
-    install -m 644 "support/templates/settings.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/about.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/base.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/detail.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/documentation.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/profiles.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/settings.html.tera" "$pkgdir/usr/share/eruption/templates/"
 }
