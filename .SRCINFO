@@ -1,6 +1,6 @@
 pkgbase = python-flask-restinpeace
 	pkgdesc = Create Flask REST APIs in peace.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/kynikos/lib.py.flask-rip
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-flask-restinpeace
 	depends = python-apispec
 	depends = python-apispec-webframeworks
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/f/flask-restinpeace/flask-restinpeace-1.3.0.tar.gz
-	sha256sums = 8736202546ab649116298912693839d68c3c8f639b5acb0c230e6aefd5ba4e19
+	source = https://files.pythonhosted.org/packages/source/f/flask-restinpeace/flask-restinpeace-1.4.0.tar.gz
+	sha256sums = 02f86682c7d3e5486a3d4a68015b95299ebc18db9b1f2ba0960ff10317aad3d8
 
 pkgname = python-flask-restinpeace
 

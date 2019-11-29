@@ -3,7 +3,7 @@
 _name='flask-restinpeace'
 
 pkgname="python-${_name}"
-pkgver='1.3.0'
+pkgver='1.4.0'
 pkgrel=1
 pkgdesc="Create Flask REST APIs in peace."
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python-flask-marshmallow'
          'python-yaml')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('8736202546ab649116298912693839d68c3c8f639b5acb0c230e6aefd5ba4e19')
+sha256sums=('02f86682c7d3e5486a3d4a68015b95299ebc18db9b1f2ba0960ff10317aad3d8')
 
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
