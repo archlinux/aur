@@ -1477,3 +1477,30 @@ Sat Sep 21 01:46:39 2019 +0200
      2019-08-06 8937dc20 actionless chore(plugins: icons: papirus): update submodule (tag: 20190802+ 35 commits)
      2019-08-05 640618b4 actionless chore(plugins: oomoxify): update submodule (replace new red color on disliked Radar/Discover song)
      2019-07-30 f8146b51 actionless chore(packaging: flatpak): sync with git@github.com:flathub/com.github.themix_project.Oomox.git
+
+
+Fri Nov 29 13:01:39 2019 +0100
+-------------------------------------------------
+1.12.5          Release 1.12.5
+    
+    Notable changes:
+     2019-11-04 81111f8f actionless chore(colors: featured): add new theme
+     2019-11-04 06498e93 Abhishek Keshri chore(colors: contributed): create BWnB (#275)
+     2019-11-04 bf76917e actionless fix(colors: retro): use more reasonable terminal palettes
+     2019-11-04 2b14e799 actionless feat(gui: preset_list): case-insensitive sorting
+     2019-11-04 16763a76 actionless chore(plugins: oomoxify): update submodule (more btn-fg and gray-bg fixes)
+     2019-10-27 3346d307 actionless chore(plugins: oomoxify): update submodule (alpha values; scrollbar; album header background)
+     2019-10-27 bc321e79 actionless chore(colors: featured): feature new `gigavolt` theme from base16 repo
+     2019-10-27 2c5d9ea1 actionless chore(plugins: oomoxify): update submodule (use SEL_FG from theme)
+     2019-10-27 e870c4b6 actionless chore(plugins: base16): update submodule (sync mirror)
+     2019-10-27 60510bf5 actionless fix(plugins: suru*: change_color.sh): generated theme display name
+     2019-10-27 842c9c66 actionless chore(plugins: icons: suru_aspromauros): update submodule (tag: v3.0)
+     2019-10-27 a24c1803 actionless chore(plugins: icons: suru): update submodule (tag: v30.0)
+     2019-10-27 3646361d actionless chore(plugins: icons: papirus): update submodule (tag: 20191009 +86 commits)
+     2019-10-27 0a872444 actionless chore(plugins: icons: numix): update submodule (release 19.09.20)
+     2019-10-27 6de3e5a2 actionless chore(plugins: arc, oomox, spotify): update submodule (sync)
+     2019-10-27 64b7ebd6 actionless chore(plugins: theme: materia): update submobule (tag: v20191017)
+     2019-10-25 926e9bf6 actionless chore(plugins: oomoxify): update submodule (button borders)
+     2019-10-20 84099afa Gideon Wolfe fix({scripted-,}colors: xresources-reverse): highlighted text color (SEL_FG) (#270)
+     2019-09-27 1917b273 Heimen Stoffels chore(colors): Add Fluent theme (#263)
+     2019-09-27 7ad926d9 Heimen Stoffels chor(colors): add 4Amos theme (#264)
