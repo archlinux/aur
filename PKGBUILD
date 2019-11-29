@@ -2,13 +2,15 @@
 
 pkgname=vulkan-caps-viewer
 pkgver=2.03
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan Hardware Capability Viewer'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')
-source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz")
-sha1sums=('2cecf6fa42a21060171c974af607a79ad490162c')
+source=("https://github.com/SaschaWillems/VulkanCapsViewer/archive/$pkgver.tar.gz"
+        "git+https://github.com/KhronosGroup/Vulkan-Headers")
+sha1sums=('2cecf6fa42a21060171c974af607a79ad490162c'
+          'SKIP')
 makedepends=(qt5-base)
 depends=(vulkan-icd-loader qt5-base qt5-x11extras)
 
@@ -24,8 +26,7 @@ prepare() {
   fi
 
   #HACK: github doesn't package submodules...
-  git clone --depth 1 https://github.com/KhronosGroup/Vulkan-Headers \
-    VulkanCapsViewer-$pkgver/Vulkan-Headers
+  cp -r Vulkan-Headers/include VulkanCapsViewer-$pkgver/Vulkan-Headers/
 
   #HACK: the last commit of 2.02 explicitely breaks the build; probably wasn't intended to be pushed out
   sed 's#"/Vulkan-Headers/include"#"./Vulkan-Headers/include"#' \
