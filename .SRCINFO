@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-rosserial-arduino
+	pkgdesc = ROS - rosserial for Arduino/AVR platforms.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://wiki.ros.org/rosserial_arduino
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	depends = arduino-avr-core
+	depends = ros-melodic-rospy
+	depends = ros-melodic-rosserial-msgs
+	depends = ros-melodic-rosserial-client
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-rosserial-python
+	source = ros-melodic-rosserial-arduino-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
+	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
+
+pkgname = ros-melodic-rosserial-arduino
+
