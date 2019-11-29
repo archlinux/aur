@@ -1,7 +1,7 @@
 pkgbase = gajim-plugin-urlimagepreview
 	pkgdesc = Gajim plugin which displays a preview of links to images
 	pkgver = 2.3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dev.gajim.org/gajim/gajim-plugins/wikis/urlimagepreviewplugin
 	arch = any
 	license = GPL
