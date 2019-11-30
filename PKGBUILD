@@ -6,7 +6,7 @@
 _pkgbase=libbluray
 pkgname=lib32-${_pkgbase}
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to access Blu-Ray disks for video playback (32 bit)"
 arch=('x86_64')
 url="http://www.videolan.org/developers/libbluray.html"
@@ -20,6 +20,7 @@ sha512sums=('5a82af6c1840a1dcb31d06d90203c68e2c4f0bbadc9212eb0bb2776d42b0ab3793a
 
 build() {
   export CC='gcc -m32'
+  export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   cd $_pkgbase-$pkgver
   
@@ -27,7 +28,8 @@ build() {
     --prefix=/usr \
     --with-java9 \
     --disable-doxygen-doc \
-    --disable-bdjava-jar
+    --disable-bdjava-jar \
+    --host=i686-unknown-linux-gnu
   make
 }
 
