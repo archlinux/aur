@@ -1,6 +1,6 @@
 # Maintainer: Pest <ppest@protonmail.com>
 pkgname=devault
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="QT Desktop wallet for the dvt blockchain"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(${pkgname}-${pkgver}::\
 https://github.com/devaultcrypto/devault/archive/v${pkgver}.tar.gz)
 depends=('boost-libs' 'qt5-base' 'qrencode' 'zeromq' 'miniupnpc' 'hicolor-icon-theme' 'libevent')
 makedepends=('python' 'boost' 'qt5-tools')
-md5sums=('966f4e65b97cf7d2eb60438e466c4e2f')
+md5sums=('9d35572930e4aeec7089d9cf930ab50a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

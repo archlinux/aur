@@ -1,6 +1,6 @@
 pkgbase = devault
 	pkgdesc = QT Desktop wallet for the dvt blockchain
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/devaultcrypto/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = devault
 	depends = miniupnpc
 	depends = hicolor-icon-theme
 	depends = libevent
-	source = devault-1.1.1::https://github.com/devaultcrypto/devault/archive/v1.1.1.tar.gz
-	md5sums = 966f4e65b97cf7d2eb60438e466c4e2f
+	source = devault-1.1.2::https://github.com/devaultcrypto/devault/archive/v1.1.2.tar.gz
+	md5sums = 9d35572930e4aeec7089d9cf930ab50a
 
 pkgname = devault
 
