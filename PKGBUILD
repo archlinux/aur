@@ -1,26 +1,18 @@
 # Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
 _pythonname=deepdiff
 pkgname=python-${_pythonname}
-pkgver=4.0.2
+pkgver=4.0.9
 pkgrel=1
 pkgdesc="Deep Difference of dictionaries, iterables, strings and other objects. It will recursively look for all the changes."
 arch=('any')
 url="https://github.com/seperman/${_pythonname}"
 license=('MIT')
-depends=('python' 'python-jsonpickle' 'python-orderedset')
+depends=('python' 'python-jsonpickle' 'python-ordered-set')
 optdepends=('python-mmh3: murmurhash3 for faster hashing')
 source=("https://pypi.io/packages/source/d/${_pythonname}/${_pythonname}-${pkgver}.tar.gz")
-sha1sums=('10990b97fb3da4a8873c50e92f0dde3b08bb9750')
-sha256sums=('f263bf42d3b4eaac8359100f59497e98ae40ea256402b9c75e8c20add9fdbdb0')
-sha512sums=('06ba3ff0b6d105d7dd1d6c8551aa04ca19652f064ff52602bb1a67f4301a6858439b16f2bc72a4969fa042108db2f722e248fb3f65ee71fd586fe698a214fff4')
-
-prepare() {
-  cd "$srcdir/${_pythonname}-${pkgver}"
-  sed -i 's@ordered_set@orderedset@' "${_pythonname}/base.py"
-  sed -i 's@ordered_set@orderedset@' "${_pythonname}/diff.py"
-  sed -i 's@ordered_set@orderedset@' "${_pythonname}/helper.py"
-  sed -i 's@ordered_set@orderedset@' "${_pythonname}/model.py"
-}
+sha1sums=('d87779ca5ed3409e7c5a60136140b39acaf1cf08')
+sha256sums=('5e2343398e90538edaa59c0c99207e996a3a834fdc878c666376f632a760c35a')
+sha512sums=('61238cd97d47b5c25e7e840681399de5538c1e7f48657a4f95748f90c276fd2badc48a71ad0280d22376094d5de875bad354c72867f3406dc6999ae8cbb0e7ae')
 
 build() {
   cd "$srcdir/${_pythonname}-${pkgver}"
