@@ -8,9 +8,9 @@ pkgbase = mystiq
 	license = GPL3
 	depends = ffmpeg
 	depends = qt5-base
-	depends = sox
-	depends = libnotify
-	depends = mplayer
+	optdepends = sox: audio speed adjusting support
+	optdepends = libnotify: display desktop notifications
+	optdepends = mplayer: video cutting preview
 	source = https://github.com/llamaret/mystiq/archive/v0.3.0.tar.gz
 	sha256sums = 4ef30a4af13950464bd38911852f0368cace1706e9d5de2334b0db2269de57de
 

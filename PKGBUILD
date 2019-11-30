@@ -7,7 +7,10 @@ pkgdesc="Qt5/C++ FFmpeg Media Converter"
 arch=('i686' 'x86_64')
 url='https://github.com/llamaret/mystiq/'
 license=('GPL3')
-depends=('ffmpeg' 'qt5-base' 'sox' 'libnotify' 'mplayer')
+depends=('ffmpeg' 'qt5-base')
+optdepends=('sox: audio speed adjusting support'
+				'libnotify: display desktop notifications'
+				'mplayer: video cutting preview')
 source=('https://github.com/llamaret/mystiq/archive/v0.3.0.tar.gz')
 sha256sums=('4ef30a4af13950464bd38911852f0368cace1706e9d5de2334b0db2269de57de')
 
