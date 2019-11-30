@@ -1,7 +1,7 @@
 pkgbase = firefox-esr52
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release 52.x with NPAPI support
 	pkgver = 52.9.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
@@ -57,6 +57,7 @@ pkgbase = firefox-esr52
 	source = vendor.js
 	source = distribution.ini
 	source = gcc9_format-overflow.patch
+	source = glibc-gettid-wrapper.patch
 	validpgpkeys = 2B90598A745E992F315E22C58AB132963A06537A
 	sha256sums = c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6
 	sha256sums = 9efd02ff78c31f8690a12401faac2605dffcac12eaf11e1791ec4221570c2746
@@ -72,6 +73,7 @@ pkgbase = firefox-esr52
 	sha256sums = 3c039dbfdcf63022812b51f35289b176b26b4a9933da073f8788fde02be9fdcd
 	sha256sums = 8ae5b7cd1f7092f13859b632e1e5f69948b2801e0459fdf29c745c89f8eeb823
 	sha256sums = b66a84af7cc1809fe9dd0d7737f6043be2919ebe0a2c752cca483d67957ad431
+	sha256sums = e2f6353d2021bb2490acd7216762cd5bae41eb55a82e245813a62a7024c01229
 
 pkgname = firefox-esr52
 

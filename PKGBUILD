@@ -5,7 +5,7 @@
 
 pkgname=firefox-esr52
 pkgver=52.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Standalone web browser from mozilla.org, Extended Support Release 52.x with NPAPI support'
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -34,7 +34,8 @@ source=("https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefo
         "mozconfig"
         "vendor.js"
         "distribution.ini"
-        "gcc9_format-overflow.patch")
+        "gcc9_format-overflow.patch"
+        "glibc-gettid-wrapper.patch")
 sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             '9efd02ff78c31f8690a12401faac2605dffcac12eaf11e1791ec4221570c2746'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
@@ -48,7 +49,8 @@ sha256sums=('c01d09658c53c1b3a496e353a24dad03b26b81d3b1d099abc26a06f81c199dd6'
             '1c17c99ffc7ddf83d79ee76a91927a55a45bb6bd459bcff3baf79c5ad5748645'
             '3c039dbfdcf63022812b51f35289b176b26b4a9933da073f8788fde02be9fdcd'
             '8ae5b7cd1f7092f13859b632e1e5f69948b2801e0459fdf29c745c89f8eeb823'
-            'b66a84af7cc1809fe9dd0d7737f6043be2919ebe0a2c752cca483d67957ad431')
+            'b66a84af7cc1809fe9dd0d7737f6043be2919ebe0a2c752cca483d67957ad431'
+            'e2f6353d2021bb2490acd7216762cd5bae41eb55a82e245813a62a7024c01229')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -103,6 +105,10 @@ prepare() {
   # https://forum.palemoon.org/viewtopic.php?t=21745
   # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=925781
   patch -Np1 -i "${srcdir}/gcc9_format-overflow.patch"
+
+  # Fix for gettid() wrapper in newer glibc
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1533969
+  patch -Np1 -i "${srcdir}/glibc-gettid-wrapper.patch"
 }
 
 build() {

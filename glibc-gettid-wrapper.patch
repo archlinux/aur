@@ -1,0 +1,32 @@
+--- a/tools/profiler/core/platform.h	2017-04-10 19:13:25.000000000 -0700
++++ b/tools/profiler/core/platform.h	2019-11-23 13:26:09.765046334 -0800
+@@ -59,16 +59,13 @@
+ #include <vector>
+ #include "StackTop.h"
+ 
+-// We need a definition of gettid(), but Linux libc implementations don't
++// We need a definition of gettid(), but old Linux libc implementations don't
+ // provide a wrapper for it (except for Bionic)
+ #if defined(__linux__)
+ #include <unistd.h>
+ #if !defined(__BIONIC__)
+ #include <sys/syscall.h>
+-static inline pid_t gettid()
+-{
+-  return (pid_t) syscall(SYS_gettid);
+-}
++#define gettid() static_cast<pid_t>(syscall(SYS_gettid))
+ #endif
+ #endif
+ 
+--- a/tools/profiler/core/GeckoSampler.cpp	2017-04-10 19:13:25.000000000 -0700
++++ b/tools/profiler/core/GeckoSampler.cpp	2019-11-23 14:17:39.549385223 -0800
+@@ -67,7 +67,7 @@
+ 
+ #if defined(LINUX) || defined(XP_MACOSX)
+ #include <sys/types.h>
+-pid_t gettid();
++//pid_t gettid();
+ #endif
+ 
+ #if defined(__arm__) && defined(ANDROID)
