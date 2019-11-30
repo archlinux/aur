@@ -26,17 +26,28 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
-    cd Mstran-pure/
-    sudo pip3 install pytesseract tesseract pillow meson
-}
+        cd Mstran-pure/;
+        sudo pip3 install pytesseract tesseract pillow meson mysql_connector_repackaged \
+            Pillow pytesseract requests setuptools SocksiPy_branch sysv_ipc termcolor \
+            mysql-connector-python
+    }
 
 build() {
-    cd Mstran-pure/src
-    bash prepare.sh
-    make
+
+    cd Mstran-pure/src;
+    bash prepare.sh;
+    make;
+    cd ../gnome-screenshot;
+    bash install.sh;
+
+    cd ../baidu-translate
+    sudo ./setup.py install
+
+    cd ../google-translate
+    sudo ./setup.py install
 }
 
 package() {
-    cd $srcdir/Mstran-pure/src
-    make install
+    cd $srcdir/Mstran-pure/src;
+    make install;
 }
