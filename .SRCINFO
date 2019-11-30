@@ -1,6 +1,6 @@
 pkgbase = libt3key
 	pkgdesc = Terminal key sequence database library.
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = http://os.ghalkes.nl/t3/libt3key.html
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libt3key
 	depends = libxcb
 	options = !libtool
 	source = http://os.ghalkes.nl/dist/libt3key-0.2.9.tar.bz2
-	md5sums = efa24934d3aa7ac8705013f76bf907d2
+	md5sums = 07ed46d03220154c0341b45d5ee346f4
 
 pkgname = libt3key
 

@@ -1,6 +1,6 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
 pkgname=libt3key
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="Terminal key sequence database library."
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('efa24934d3aa7ac8705013f76bf907d2')
+md5sums=('07ed46d03220154c0341b45d5ee346f4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
