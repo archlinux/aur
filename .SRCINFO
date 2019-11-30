@@ -1,0 +1,17 @@
+pkgbase = torf-cli
+	pkgdesc = A tool for creating, reading and editing torrent files
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/rndusr/torf-cli/
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-torf
+	depends = python-xdg
+	source = torf-cli-3.0.1.tar.gz::https://github.com/rndusr/torf-cli/archive/v3.0.1.tar.gz
+	sha256sums = f25b861200b5cd747d0fb73c1ee566b49b04d7433ae11734d1860431cd0561cb
+
+pkgname = torf-cli
+
