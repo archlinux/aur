@@ -1,0 +1,24 @@
+pkgbase = clang70
+	pkgdesc = C language family frontend for LLVM, version 7.0 (installed under /opt/llvm70)
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = python-sphinx
+	depends = llvm70
+	depends = python
+	options = staticlibs
+	source = https://releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
+	source = https://releases.llvm.org/7.0.1/cfe-7.0.1.src.tar.xz
+	sha256sums = a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b
+	sha256sums = a45b62dde5d7d5fdcdfa876b0af92f164d434b06e9e89b5d0b1cbc65dfe3f418
+
+pkgname = clang70
+
