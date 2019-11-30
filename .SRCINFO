@@ -1,0 +1,27 @@
+pkgbase = frama-c-git
+	pkgdesc = source-code analysis of c software
+	pkgver = 19.1.r1.g17683929
+	pkgrel = 1
+	url = http://frama-c.com
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = ocaml
+	makedepends = ocaml-num
+	makedepends = alt-ergo
+	makedepends = ltl2ba
+	makedepends = ocaml-ocamlgraph
+	makedepends = libxslt
+	makedepends = jemalloc
+	makedepends = why3
+	makedepends = doxygen
+	makedepends = ocaml-yojson
+	depends = glibc
+	depends = ncurses
+	depends = ocaml-findlib
+	source = git+https://github.com/Frama-C/Frama-C-snapshot
+	sha256sums = SKIP
+
+pkgname = frama-c-git
+
