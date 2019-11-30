@@ -8,8 +8,7 @@ pkgdesc='Convert Nintendo 3DS files to the CIA format'
 arch=('any')
 url="https://github.com/ihaveamac/3dsconv"
 license=('MIT')
-depends=('python-pyaes')
-makedepends=('python-setuptools')
+depends=('python-pyaes' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ihaveamac/3dsconv/archive/v${pkgver}.tar.gz")
 sha256sums=('3e8d15f22a81189cb24459e3bd659b38e9f92ae957a4fae6f00af194ba0645f7')
 

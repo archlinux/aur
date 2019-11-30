@@ -5,8 +5,8 @@ pkgbase = 3dsconv
 	url = https://github.com/ihaveamac/3dsconv
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = python-pyaes
+	depends = python-setuptools
 	source = 3dsconv-4.2.tar.gz::https://github.com/ihaveamac/3dsconv/archive/v4.2.tar.gz
 	sha256sums = 3e8d15f22a81189cb24459e3bd659b38e9f92ae957a4fae6f00af194ba0645f7
 
