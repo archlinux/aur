@@ -1,0 +1,15 @@
+pkgbase = pash
+	pkgdesc = A simple password manager using GPG written in POSIX sh
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/dylanaraps/pash
+	arch = any
+	license = MIT
+	depends = gnupg
+	depends = tree
+	depends = xclip
+	source = https://github.com/dylanaraps/pash/archive/2.3.0.tar.gz
+	sha256sums = 7ee6a649d80350b8b52b1b7ad78d687775a3cc145fecbd3a75d34865c31dd7ef
+
+pkgname = pash
+
