@@ -2,7 +2,7 @@
 
 pkgname=sdbus-cpp
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++"
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ sha256sums=('SKIP')
 
 build() {
     cmake "$srcdir/${pkgname}" \
+        -DCMAKE_INSTALL_PREFIX=/ \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_CODE_GEN=ON \
         -DBUILD_DOXYGEN_DOC=ON
