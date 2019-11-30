@@ -1,25 +1,27 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: FichteFoll <fichtefoll2@googlemail.com>
 
-pkgname=aegisub-git
-pkgver=3.2.2.r323.f6a2ac08a
+pkgname=aegisub-ttools-meson-git
+_srcname=aegisub-ttools
+pkgver=3.2.2.r440.9ebfbf456
 pkgrel=1
-pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
+pkgdesc='A general-purpose subtitle editor with ASS/SSA support (TypesettingTools fork, meson branch)'
 arch=('x86_64')
 url='http://www.aegisub.org'
 license=('GPL' 'BSD')
-depends=('alsa-lib' 'boost-libs' 'fftw' 'fontconfig' 'gcc-libs' 'glibc'
-         'hunspell' 'icu' 'libgl' 'libpulse' 'uchardet' 'wxgtk3' 'zlib'
-         'libass.so' 'libffms2.so')
-makedepends=('autoconf-archive' 'boost' 'git' 'intltool' 'lua' 'mesa')
+depends=('gcc-libs' 'glibc' 'boost-libs'
+         'fontconfig' 'icu' 'libgl' 'wxgtk3' 'zlib' 'libass.so'
+         # optional by the build system, but don't make much sense to exclude
+         'alsa-lib' 'libffms2.so' 'fftw' 'hunspell' 'uchardet'
+         # 'luajit' # Arch's luajit isn't compiled in 5.2 mode
+         )  # I think it depends on something else here too, but not sure what
+makedepends=('boost' 'git' 'intltool' 'lua' 'mesa' 'meson')
 provides=('aegisub')
 conflicts=('aegisub')
-source=('aegisub::git+https://github.com/Aegisub/Aegisub.git'
-        'git+https://github.com/Aegisub/assdraw.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=("$_srcname::git+https://github.com/TypesettingTools/Aegisub.git#branch=meson")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd aegisub
+  cd "$_srcname"
 
   tag='v3.2.2'
 
@@ -27,31 +29,25 @@ pkgver() {
 }
 
 prepare() {
-  cd aegisub
 
-  sed 's/$(LIBS_BOOST) $(LIBS_ICU)/$(LIBS_BOOST) $(LIBS_ICU) -pthread/' -i tools/Makefile
+  cd "$_srcname"
 
-  cp -f /usr/share/aclocal/ax_boost_{chrono,filesystem,locale,regex,system,thread}.m4 m4macros/
+  #patch -p1 < ../fix_version.patch
 
-  ./autogen.sh
+  arch-meson builddir -Dportaudio=disabled -Dopenal=disabled
 }
 
 build() {
-  cd aegisub
+  cd "$_srcname"
 
-  ./configure \
-    --prefix='/usr' \
-    --with-wx-config='/usr/bin/wx-config-gtk3' \
-    --without-{portaudio,openal,oss} \
-    --disable-update-checker
-  make
+  ninja -C builddir
 }
 
 package() {
-  cd aegisub
+  cd "$_srcname"
 
-  make DESTDIR="${pkgdir}" install
-  install -Dm 644 LICENCE -t "${pkgdir}"/usr/share/licenses/aegisub-git/
+  DESTDIR="${pkgdir}" ninja -C builddir install
+  install -Dm 644 LICENCE -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
