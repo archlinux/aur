@@ -1,5 +1,5 @@
 diff --git a/build/Jamfile.v2 b/build/Jamfile.v2
-index 6d6d85a..2e53a9e 100644
+index 6d6d85a..745162d 100644
 --- a/libs/stacktrace/build/Jamfile.v2
 +++ b/libs/stacktrace/build/Jamfile.v2
 @@ -15,6 +15,7 @@ lib dl ;
@@ -10,7 +10,7 @@ index 6d6d85a..2e53a9e 100644
  
  
  local LIBBACKTRACE_PATH = [ modules.peek : LIBBACKTRACE_PATH ] ;
-@@ -25,9 +26,12 @@ lib backtrace
+@@ -25,9 +26,11 @@ lib backtrace
    : <include>$(LIBBACKTRACE_PATH)/include 
    ;
  
@@ -20,7 +20,6 @@ index 6d6d85a..2e53a9e 100644
  {
 -      $(>) > $(<)
 +   $(BOOST_CROSSCOMPILING_EMULATOR) $(>) > $(<)
-+   ls $(<)
  }
  
  rule mp-run-simple ( sources + : args * : input-files * : requirements * : target-name )
