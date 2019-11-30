@@ -4,7 +4,7 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost-desktop
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Mattermost Desktop application for Linux"
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ license=('Apache')
 depends=('electron')
 makedepends=('npm' 'git')
 source=(
-    "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
     "${pkgname}.sh"
     "${pkgname/-/.}"
 )
 sha512sums=(
-    '8e0a0c904db387dad872aca5430e38927d99445cb53f0afe5ccf0fb783ae53684bc40a338ccac3a78cc0bf578488cddf4580dbc76f131864bfc648667da97c05'
+    '40e871e0699b1e0ba7670024a368498d7477b5716ff3523ab04bb9c1567bb577cfc220071f6d0228ec2b1fdfe4caeaeba859fe47faf47c76e8f0dd135ef3cf78'
     '7cce5fad5a923fbde106d0e67ce42d599a2d21358eca3c339d5c9e0a19a0ac057bbf2db23f5ee3628d625afcd4b128b9b9041ace4f1892a0e1d2bbd0a9c677b9'
     'b8f24df883b71df4177155246fd5858ad785f75be4f7dfc674380674b48a45342b1f5ee217a20708f74ed8d2119d837bae4a3fd48d1b62d60d55644e36411266'
 )
