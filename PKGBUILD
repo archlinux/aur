@@ -1,5 +1,5 @@
 # Maintainer : Colin Berry <colinb969{at}gmail{dot}com>
-# Maintainer : oshaboy <noamgilor{at}protonmail{dot}com
+# Maintainer : oshaboy <noamgilor{at}protonmail{dot}com>
 pkgname=flashpoint-bin
 pkgver=6.3
 pkgrel=2.0
