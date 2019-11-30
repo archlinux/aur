@@ -1,7 +1,7 @@
 pkgbase = ocaml-psmt2-frontend
 	pkgdesc = A simple parser and type-checker for polomorphic extension of the SMT-LIB 2 language
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Coquera/psmt2-frontend
 	arch = x86_64
 	license = Apache2
