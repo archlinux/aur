@@ -6,10 +6,10 @@ pkgbase = python-websharecli
 	arch = any
 	license = GPL3
 	depends = python
-	depends = python-pyaml
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-xmltodict
+	depends = python-yaml
 	source = https://github.com/tomaskrizek/websharecli/archive/v1.1.1/websharecli-1.1.1.tar.gz
 	sha256sums = f1f075b5648dfa841407d19e8ed402914a8c4f20d6866b9da7718053594af901
 
