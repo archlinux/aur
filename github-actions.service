@@ -3,9 +3,9 @@ Description=GitHub Actions Listener Daemon
 
 [Service]
 User=github-actions
-WorkingDirectory=~
+WorkingDirectory=/opt/github-actions
 Type=exec
-ExecStart=./run.sh
+ExecStart=/opt/github-actions/run.sh
 
 [Install]
 WantedBy=multi-user.target
