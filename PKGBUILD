@@ -1,12 +1,12 @@
 # Maintainer: zer0def <zer0def on freenode>
 pkgname=libpurple-signald-git
 pkgver=r29.2266145
-pkgrel=1
+pkgrel=2
 pkgdesc='Pidgin libpurple bridge to signald.'
 url='https://github.com/hoehermann/libpurple-signald'
 license=('GPL3')
 arch=('any')
-depends=('json-glib' 'libpurple' 'signald-git')
+depends=('json-glib' 'libpurple' 'signald')
 source=("${pkgname}::git+https://github.com/hoehermann/libpurple-signald")
 sha512sums=('SKIP')
 
