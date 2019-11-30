@@ -1,6 +1,6 @@
 pkgbase = nbfc-git
 	pkgdesc = Cross-platform fan control service for notebooks (Development version)
-	pkgver = 1.6.3.r25.g5fde12a
+	pkgver = 1.6.3.r30.g94af6c5
 	pkgrel = 1
 	url = https://github.com/hirschmann/nbfc
 	install = nbfc-git.install
