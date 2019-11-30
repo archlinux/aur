@@ -8,6 +8,12 @@ irssi autorun scripts:
 
     ln -s /usr/share/irssi/scripts/notify.pl ~/.irssi/scripts/autorun/
 
+Background Task
+---------------
+
+    systemctl daemon-reload --user
+    systemctl --user enable notify-listener --now
+
 Remote Access
 -------------
 

@@ -1,7 +1,7 @@
 pkgbase = irssi-libnotify-git
 	pkgdesc = libnotify plugin for irssi
-	pkgver = r42.74198b5
-	pkgrel = 1
+	pkgver = r59.7ada59a
+	pkgrel = 2
 	url = https://github.com/stickster/irssi-libnotify
 	install = irssi-libnotify-git.install
 	arch = any
