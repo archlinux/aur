@@ -1,9 +1,10 @@
 post_install() {
   echo
-  echo 'This release brings Persistent Storage support.'
+  echo 'New program names aui-mkiso, aui-mkusb, aui-mkpersistent.'
   echo
-  echo 'To create a Live USB supporting Persistent Storage:'
-  echo 'mkauipers <usb device> <iso image>'
+  echo 'use aui-mkiso to build an iso'
+  echo 'use aui-mkusb to create a Live USB'
+  echo 'use aui-mkpersistent to create a Live USB with persistent storage support'
   echo
 }
 
