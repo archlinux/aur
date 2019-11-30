@@ -36,6 +36,8 @@ package() {
   # copy configuration file and create symlink in /etc
   install -dm 770 "$pkgdir/var/lib/mailman"
   install -Dm 644 "mailman.cfg" "$pkgdir/var/lib/mailman/var/etc/mailman.cfg"
+  mkdir "$pkgdir/etc"
+  ln -s "$pkgdir/var/lib/mailman/var/etc/mailman.cfg" "$pkgdir/etc/mailman.cfg"
 
   cd "$srcdir/mailman-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
