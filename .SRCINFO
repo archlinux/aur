@@ -1,6 +1,6 @@
 pkgbase = termius-app
 	pkgdesc = Desktop SSH Client
-	pkgver = 4.9.7
+	pkgver = 5.0.6 
 	pkgrel = 1
 	url = https://www.termius.com/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = termius-app
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	noextract = Termius.deb
-	source = Termius.deb::https://www.termius.com/download/linux/Termius.deb
-	md5sums = 66d31362d123a4f49855d6a1a255864a
+	noextract = termius-app-5.0.6.deb
+	source = termius-app-5.0.6.deb::https://www.termius.com/download/linux/Termius.deb
+	md5sums = b9d44ae5ca75a352070be23a6e9c70f6 
 
 pkgname = termius-app
 
