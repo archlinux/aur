@@ -1,0 +1,18 @@
+pkgbase = mstran
+	pkgver = version
+	pkgrel = 1.0
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = libxtst
+	depends = libx11
+	depends = xdotool
+	depends = python-pip
+	depends = tesseract
+	depends = meson
+	source = git+https://github.com/poemdistance/Mstran-pure.git
+	md5sums = SKIP
+
+pkgname = mstran
+
