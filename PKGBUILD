@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=qssh-git
-pkgver=r126.83c376f
+pkgver=r136.8a076a2
 pkgrel=1
 pkgdesc='A Qt based implementation of SSH and SFTP'
 arch=('i686' 'x86_64')
@@ -28,6 +28,6 @@ build() {
 package() {
   cd QSsh
   make INSTALL_ROOT="$pkgdir" install
-  install -vDm 644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 
 }
