@@ -62,8 +62,8 @@ package() {
     npm run package:linux --cache "${srcdir}/npm-cache"
 
     install -d "${pkgdir}/usr/lib"
-    # The star in the unpackaged is needed for i686 or ARM platforms.
-    cp -r release/linux*unpacked/resources "${pkgdir}/usr/lib/${pkgname}"
+    # The wildcard in the unpackaged is needed for i686 or ARM platforms.
+    install -Dm644 release/linux*unpacked/resources/app.asar "${pkgdir}/usr/lib/${pkgname}/app.asar"
 
     install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 resources/linux/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
