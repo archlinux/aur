@@ -1,15 +1,15 @@
 # Maintainer: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 pkgname=yaml-bindings-git
-pkgver=r344.dec452c
+pkgver=r393.879eac8
 pkgrel=1
 pkgdesc='Tooling for devicetree validation using YAML and jsonschema'
 arch=(any)
-url="https://github.com/robherring/yaml-bindings"
+url="https://github.com/devicetree-org/dt-schema"
 license=('BSD')
 depends=('python' 'python-ruamel-yaml' 'python-jsonschema' 'python-rfc3987')
 makedepends=('python-setuptools')
-source=('yaml-bindings::git+https://github.com/robherring/yaml-bindings')
+source=('yaml-bindings::git+https://github.com/devicetree-org/dt-schema.git')
 sha1sums=('SKIP')
 
 pkgver() {
