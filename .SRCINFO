@@ -9,6 +9,7 @@ pkgbase = ashes-git
 	makedepends = git
 	depends = libxrandr
 	depends = mesa
+	depends = vulkan-headers
 	provides = ashes
 	conflicts = ashes
 	source = git+https://github.com/DragonJoker/Ashes.git
