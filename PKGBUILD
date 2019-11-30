@@ -3,7 +3,7 @@
 # Contributor: mitts <mittens2001@opmbx.org>
 
 pkgname=gmusicproxy
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Stream Google Play Music using any media-player"
 arch=('any')
@@ -38,7 +38,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('2fdd26f21e4a6a3d2563f4e847bde64e'
-	'dcb085039110ab6a87e944865a4fccdb'
-	'f7c765324710c59738db0b8a9c124982'
-'73f91c48628136882893a3dbb1919bae')
+md5sums=('d39fd4b977eee2559fc0bbf8ed410c09'
+         'dcb085039110ab6a87e944865a4fccdb'
+         'f7c765324710c59738db0b8a9c124982'
+         '73f91c48628136882893a3dbb1919bae')
