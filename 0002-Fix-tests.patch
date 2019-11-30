@@ -1,0 +1,27 @@
+commit 12928b832c8354a9d81fe984e378f60353cca3b3
+Author: Daniel García <dani-garcia@users.noreply.github.com>
+Date:   Sat Nov 30 23:30:35 2019 +0100
+
+    Fix broken tests
+
+diff --git a/src/api/core/two_factor/email.rs b/src/api/core/two_factor/email.rs
+index 0a78ca2..5b1565d 100644
+--- a/src/api/core/two_factor/email.rs
++++ b/src/api/core/two_factor/email.rs
+@@ -321,14 +321,14 @@ mod tests {
+ 
+     #[test]
+     fn test_token() {
+-        let result = generate_token(19).unwrap();
++        let result = crypto::generate_token(19).unwrap();
+ 
+         assert_eq!(result.chars().count(), 19);
+     }
+ 
+     #[test]
+     fn test_token_too_large() {
+-        let result = generate_token(20);
++        let result = crypto::generate_token(20);
+ 
+         assert!(result.is_err(), "too large token should give an error");
+     }
