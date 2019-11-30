@@ -1,0 +1,10 @@
+--- UnixSystemIncludes.h
++++ UnixSystemIncludes_new.h
+@@ -31,7 +31,6 @@
+ #include <utime.h>
+ #include <execinfo.h>
+ #include <signal.h>
+-#include <sys/sysctl.h>
+ #if PLATFORM_ENABLE_VECTORINTRINSICS
+ #include <xmmintrin.h>
+ #endif // PLATFORM_RASPBERRY

@@ -1,0 +1,10 @@
+--- UnrealEngine.orig/Engine/Source/Runtime/Launch/Launch.Build.cs
++++ UnrealEngine/Engine/Source/Runtime/Launch/Launch.Build.cs
+@@ -183,6 +183,7 @@ public class Launch : ModuleRules
+ 
+ 			PrivateDependencyModuleNames.AddRange(new string[] {
+ 					"SourceControl",
++					"EditorStyle",
+ 					"UnrealEd",
+ 					"DesktopPlatform",
+ 					"PIEPreviewDeviceProfileSelector",

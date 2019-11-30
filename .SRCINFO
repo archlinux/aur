@@ -25,6 +25,8 @@ pkgbase = unreal-engine
 	source = ignore-clang50-install.patch
 	source = use-arch-mono.patch
 	source = allow-unsupported-clang.patch
+	source = remove-sysctl-include.patch
+	source = add-editorstyle-dependency.patch
 	sha256sums = SKIP
 	sha256sums = 46871ed662a3c97698be609d27da280d9000ec97183f1fa6592986f9910a2118
 	sha256sums = 1dd876fa48c6fb4fcd4ccbdb8ed4ceccfa294685911e91be58bbc5e95726c279
@@ -32,6 +34,8 @@ pkgbase = unreal-engine
 	sha256sums = 71a7304deebb00234c323eed9a73cdbd022099ba65f62fc90e78069eceed1f5d
 	sha256sums = 6b30adf71eeabaf1b2b669aa56c9deba145a4fe7bdd2e77f44b0cb7423162bc0
 	sha256sums = bc4837ead8c89b7e4df2a14aedd62d23f47e7fca08c3f429a267ec4c3b3412d3
+	sha256sums = 2672d6d5faf6b855fc2bfd56d215b4fd2a00fd9791ad9d484b6446194867b67d
+	sha256sums = 8efbf29ab755bb4fe4c4a423ffb22668dd0e66c7cbc3fc05033ba350b451cfd5
 
 pkgname = unreal-engine
 

@@ -26,6 +26,8 @@ pkgver=4.23.1
     'ignore-clang50-install.patch'
     'use-arch-mono.patch'
     'allow-unsupported-clang.patch'
+    'remove-sysctl-include.patch'
+    'add-editorstyle-dependency.patch'
   )
 
   sha256sums=(
@@ -36,6 +38,8 @@ pkgver=4.23.1
     '71a7304deebb00234c323eed9a73cdbd022099ba65f62fc90e78069eceed1f5d'
     '6b30adf71eeabaf1b2b669aa56c9deba145a4fe7bdd2e77f44b0cb7423162bc0'
     'bc4837ead8c89b7e4df2a14aedd62d23f47e7fca08c3f429a267ec4c3b3412d3'
+    '2672d6d5faf6b855fc2bfd56d215b4fd2a00fd9791ad9d484b6446194867b67d'
+    '8efbf29ab755bb4fe4c4a423ffb22668dd0e66c7cbc3fc05033ba350b451cfd5'
   )
 
   # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
@@ -52,6 +56,8 @@ prepare() {
   patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/SetupMono.sh" use-arch-mono.patch
   patch "$srcdir/UnrealEngine/Setup.sh" recompile-version-selector.patch
   patch "$srcdir/UnrealEngine/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs" allow-unsupported-clang.patch
+  patch "$srcdir/UnrealEngine/Engine/Source/Runtime/Core/Public/Unix/UnixSystemIncludes.h" remove-sysctl-include.patch
+  patch "$srcdir/UnrealEngine/Engine/Source/Runtime/Launch/Launch.Build.cs" add-editorstyle-dependency.patch
 
   cp "$srcdir/Makefile" "$srcdir/UnrealEngine/Makefile"
 
