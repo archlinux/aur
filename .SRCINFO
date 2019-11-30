@@ -1,0 +1,14 @@
+pkgbase = clip-history
+	pkgdesc = A clipboard manager that simply keeps a list of everything copied
+	pkgver = 0.6
+	pkgrel = 0
+	arch = any
+	license = MIT
+	depends = python3
+	depends = xsel
+	depends = python-gobject
+	source = https://github.com/TAAPArthur/clip-history/archive/v0.6.tar.gz
+	md5sums = 9466bcc600c111f9018f5bddde57838f
+
+pkgname = clip-history
+
