@@ -1,0 +1,15 @@
+pkgbase = milcheck
+	pkgdesc = A small binary that displays the status of your pacman mirrorlist in your terminal, written in Rust
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/doums/milcheck
+	arch = x86_64
+	license = custom:Mozilla Public License v2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = https://github.com/doums/milcheck/archive/v0.1.7.tar.gz
+	sha256sums = 67577d03c39c106ed3f080cf60a4d6a428ef71b55f6b0035f36be375a6fdc26d
+
+pkgname = milcheck
+
