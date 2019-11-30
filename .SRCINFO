@@ -1,0 +1,15 @@
+pkgbase = ocaml-psmt2-frontend
+	pkgdesc = A simple parser and type-checker for polomorphic extension of the SMT-LIB 2 language
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/Coquera/psmt2-frontend
+	arch = x86_64
+	license = Apache2
+	makedepends = ocaml
+	makedepends = ocaml-menhir
+	depends = ocaml
+	source = ocaml-psmt2-frontend-0.2.tar.gz::https://github.com/OCamlPro-Coquera/psmt2-frontend/archive/0.2.tar.gz
+	sha256sums = 59c25982fcdae1128dea6f260e76bbfd1dd4fe45b34aa168ae084281f4941303
+
+pkgname = ocaml-psmt2-frontend
+
