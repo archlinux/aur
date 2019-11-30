@@ -1,0 +1,16 @@
+pkgbase = boost-stacktrace-backtrace
+	pkgdesc = Boost.stacktrace backtrace variant
+	pkgver = 1.71.0
+	pkgrel = 1
+	url = https://www.boost.org/
+	arch = x86_64
+	license = custom
+	depends = boost
+	depends = libbacktrace-git
+	provides = libboost_stacktrace_backtrace.so
+	options = staticlibs
+	source = https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2
+	sha256sums = d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee
+
+pkgname = boost-stacktrace-backtrace
+
