@@ -1,7 +1,7 @@
 pkgbase = python-patch-ng
 	pkgdesc = Library to parse and apply unified diffs forked from python-patch.
 	pkgver = 1.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/conan-io/python-patch/
 	arch = any
 	license = MIT
