@@ -1,0 +1,12 @@
+post_install() {
+    echo
+    echo "  See /etc/fonts/conf.avail/75-mutant-standard-emoji.conf for how to enforce rendering emojis via JoyPixels"
+    echo "  It conflicts with other fonts, so either symlink it to /etc/fonts/conf.d/ or copy and modify as needed."
+    echo
+}
+
+post_remove() {
+    echo
+    echo "  Make sure to remove /etc/fonts/conf.d/75-mutant-standard-emoji.conf if you created it earlier"
+    echo
+}

@@ -1,0 +1,17 @@
+pkgbase = ttf-mutant-emoji
+	pkgdesc = A new kind of emoji set - more flexible, inclusive and fun!
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://mutant.tech
+	install = ttf-mutant-emoji.install
+	arch = any
+	license = custom:CC BY-NC-SA 4.0
+	depends = fontconfig
+	provides = emoji-font
+	source = https://mutant.tech/dl/0.4.1/mtnt_0.4.1_font_sbixot.zip
+	source = 75-mutant-standard-emoji.conf
+	md5sums = bd4e25c08904f283a1a18aa21e7a82e1
+	md5sums = 609aaef8b63b3193bc02440307a0a4f3
+
+pkgname = ttf-mutant-emoji
+
