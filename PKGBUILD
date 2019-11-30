@@ -11,13 +11,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of (another) binary repository (i686 and x86_64).
 
-_name=SubtitleComposer
-pkgname=${_name,,}-git
+_name=subtitlecomposer
+pkgname=${_name}-git
 pkgver=0.7.0
 pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
-url="https://github.com/maxrd2/${_name}"
+url="https://invent.kde.org/kde/${_name}"
 license=('GPL')
 depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg')
 makedepends=('extra-cmake-modules' 'git')
@@ -39,10 +39,10 @@ optdepends=('gstreamer: GStreamer videoplayer backend'
             'ruby: scripting'
             'python: scripting')
 
-conflicts=(${_name,,})
-provides=(${_name,,})
+conflicts=(${_name})
+provides=(${_name})
 
-source=("git+https://github.com/maxrd2/${_name}.git")
+source=("git+https://invent.kde.org/kde/${_name}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -57,8 +57,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF \
-    -DAPP_VERSION="${pkgver}"
+    -DBUILD_TESTING=OFF
   make
 }
 
