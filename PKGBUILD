@@ -2,15 +2,15 @@
 
 pkgname=python-patch-ng
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to parse and apply unified diffs forked from python-patch.'
 arch=('any')
 url="https://github.com/conan-io/python-patch/"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'fakeroot')
-source=('https://github.com/conan-io/python-patch-ng/archive/1.17.1.tar.gz'
-        'https://raw.githubusercontent.com/conan-io/python-patch-ng/1.17.1/LICENSE')
+source=("https://github.com/conan-io/python-patch-ng/archive/${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/conan-io/python-patch-ng/${pkgver}/LICENSE")
 md5sums=('7e5612deaa2cec54e9a924b09cbd2c6a'
          '505d9f4b8b27052bef960af06bfdfe01')
 
