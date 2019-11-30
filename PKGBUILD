@@ -8,7 +8,7 @@ _pkgname=gnome-shell
 pkgver=3.34.1+14+g7e8884a60
 pkgrel=1
 epoch=1
-pkgdesc="Next generation desktop shell"
+pkgdesc="Ebadoo-shell es una variante estetica."
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
@@ -40,8 +40,6 @@ prepare() {
 
   git remote add ebadoo https://gitlab.com/ebadoo/gnome-shell || true
   git fetch ebadoo
-
-  git cherry-pick -n 184ce007^..c328f4f3
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
