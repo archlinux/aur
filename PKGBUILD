@@ -8,7 +8,7 @@ url='http://frama-c.com'
 arch=('x86_64')
 license=('LGPL')
 depends=('glibc' 'ncurses' 'ocaml-findlib' 'ocaml-ocamlgraph' 'ocaml-zarith'
-         'ocaml-yojson')
+         'ocaml-yojson' 'gtksourceview2')
 # Because Arch's lablgtk2 package no longer includes lablgnomecanvas.cmxa we
 # can't build the GUI.
 makedepends=('git' 'ocaml' 'ocaml-num' 'alt-ergo' 'ltl2ba' 'libxslt' 'jemalloc'

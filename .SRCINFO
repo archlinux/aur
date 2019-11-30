@@ -20,6 +20,7 @@ pkgbase = frama-c-git
 	depends = ocaml-ocamlgraph
 	depends = ocaml-zarith
 	depends = ocaml-yojson
+	depends = gtksourceview2
 	source = git+https://github.com/Frama-C/Frama-C-snapshot
 	sha256sums = SKIP
 
