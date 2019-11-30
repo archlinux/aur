@@ -1,0 +1,16 @@
+pkgbase = privkey2qr
+	pkgdesc = Generate QR codes for storing private keys offline.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~craftyguy/privkey2qr
+	arch = x86_64
+	license = GPL3
+	makedepends = scdoc
+	depends = python3
+	depends = qrencode
+	provides = privkey2qr
+	source = https://git.sr.ht/~craftyguy/privkey2qr/archive/1.0.tar.gz
+	sha512sums = a02d1cab94c674c9e6f2aa324c87afa56878f14d8858fbd5a5d145ea7c8e02c9daeb1d5588caa035e909c29a5587c155e1bcb45b01a8f01cf8040822e9025d4b
+
+pkgname = privkey2qr
+
