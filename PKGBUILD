@@ -93,6 +93,13 @@ prepare() {
   # Comment: Crash fix for st_theme_get_custom_stylesheets
   git_cp_by_msg '!536' 'st-theme: Use CRStyleSheet app_data instead of hash map' 'st-theme: Use glib auto free/ptr features'
 
+  # Title: Some fixes for setting key focus of the closeDialog
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/786
+  # Type: 3
+  # Status: 2
+  # Comment:
+  git cherry-pick -n 184ce007^..c328f4f3
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
