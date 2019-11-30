@@ -1,0 +1,14 @@
+pkgbase = fiji-plugin-multistackreg-bin
+	pkgdesc = MultiStackReg plugin for Fiji (JAR distribution)
+	pkgver = 1.45
+	pkgrel = 1
+	url = http://bradbusse.net/sciencedownloads.html
+	arch = any
+	license = unknown
+	depends = fiji-bin
+	noextract = MultiStackReg1.45_.jar
+	source = http://bradbusse.net/MultiStackReg1.45_.jar
+	sha256sums = 75ae1f6f8722779a7c293a0a855fe8b6d5b12db655e4168d7427d5c790e992bc
+
+pkgname = fiji-plugin-multistackreg-bin
+
