@@ -1,4 +1,4 @@
-# Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
+# Maintainer: Lorenz Steinert <lorenz AT steinerts DOT de>
 
 pkgname=('python2-flufl-bounce')
 _pkgbase='flufl.bounce'
@@ -6,7 +6,7 @@ pkgver=3.0
 pkgrel=1
 pkgdesc="Email bounce detectors"
 arch=(any)
-url="https://launchpad.net/flufl.bounce"
+url="https://gitlab.com/warsaw/flufl.bounce"
 license=('LGPL')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/f/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
