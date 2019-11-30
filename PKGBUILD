@@ -52,4 +52,6 @@ package() {
     make install;
     sudo rm "/tmp/yaourt-tmp-"$USER"/aur-mstran/src/Mstran-pure/baidu-translate" -rf
     sudo rm "/tmp/yaourt-tmp-"$USER"/aur-mstran/src/Mstran-pure/google-translate" -rf
+    sudo rm "/home/"$USER"/.cache/aurman/mstran/src/Mstran-pure/baidu-translate" -rf
+    sudo rm "/home/"$USER"/.cache/aurman/mstran/src/Mstran-pure/google-translate" -rf
 }
