@@ -6,8 +6,16 @@ pkgdesc="A library for rendering LaTeX formulae as images using an actual LaTeX 
 url="https://hackage.haskell.org/package/latex-formulae-hakyll"
 license=('BSD')
 arch=('x86_64' 'i686' 'aarch64')
-depends=('ghc-libs' 'haskell-errors' 'haskell-transformers-compat' 'haskell-transformers-base' 'haskell-juicypixels')
-makedepends=('ghc' 'haskell-errors' 'haskell-transformers-compat' 'haskell-transformers-base' 'haskell-juicypixels')
+depends=('ghc-libs'
+         'haskell-errors'
+         'haskell-transformers-compat'
+         'haskell-transformers-base'
+         'haskell-juicypixels')
+makedepends=('ghc'
+             'haskell-errors'
+             'haskell-transformers-compat'
+             'haskell-transformers-base'
+             'haskell-juicypixels')
 source=(${pkgname}-${pkgver}.tar.gz::"https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
         cabal.patch)
 sha256sums=('60b706f55f6cbfc8ef73eecf089a1d59ff939ac8a2c8f208af8f96211a067968'
