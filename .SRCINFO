@@ -1,6 +1,6 @@
 pkgbase = libt3widget
 	pkgdesc = A C++ terminal dialog toolkit.
-	pkgver = 1.0.3
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = http://os.ghalkes.nl/t3/libt3widget.html
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = libt3widget
 	optdepends = libxcb: for integration with the X11 clipboard
 	options = !libtool
 	source = http://os.ghalkes.nl/dist/libt3widget-1.0.3.tar.bz2
-	md5sums = 2fa44caead18bb27fd530225a03ec7c1
+	md5sums = a2928af8d1c71f2e4a3a1bf4b265fa99
 
 pkgname = libt3widget
 
