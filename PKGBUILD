@@ -29,7 +29,7 @@ prepare() {
         cd Mstran-pure/;
         sudo pip3 install pytesseract tesseract pillow meson mysql_connector_repackaged \
             Pillow pytesseract requests setuptools SocksiPy_branch sysv_ipc termcolor \
-            mysql-connector-python
+            mysql-connector-python beautifulsoup4
     }
 
 build() {
