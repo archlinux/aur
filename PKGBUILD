@@ -6,13 +6,13 @@
 
 pkgname=lib32-libbsd
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides useful functions commonly found on BSD systems like strlcpy()'
 arch=('x86_64')
 url='http://libbsd.freedesktop.org'
 license=('custom')
 depends=('lib32-glibc' 'libbsd')
-makedepends=('gcc-multilib')
+makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("https://libbsd.freedesktop.org/releases/libbsd-${pkgver}.tar.xz")
 sha256sums=('34b8adc726883d0e85b3118fa13605e179a62b31ba51f676136ecb2d0bc1a887')
 

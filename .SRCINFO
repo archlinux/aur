@@ -1,11 +1,12 @@
 pkgbase = lib32-libbsd
 	pkgdesc = Provides useful functions commonly found on BSD systems like strlcpy()
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libbsd.freedesktop.org
 	arch = x86_64
 	license = custom
 	makedepends = gcc-multilib
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = libbsd
 	source = https://libbsd.freedesktop.org/releases/libbsd-0.10.0.tar.xz
