@@ -1,6 +1,6 @@
 pkgbase = python2-django-rest-framework
 	pkgdesc = Awesome web-browsable Web APIs
-	pkgver = 3.9.4
+	pkgver = 3.10.3
 	pkgrel = 1
 	url = https://github.com/tomchristie/django-rest-framework
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python2-django-rest-framework
 	optdepends = python2-django-crispy-forms: Improved HTML display for filtering
 	optdepends = python2-coreapi: Schema generation support
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/d/djangorestframework/djangorestframework-3.9.4.tar.gz
-	sha512sums = bfa269b1ca95c1d35d97f3fcdcf821778f2c2ba14ce79288b776ecff369922603ba9a2292a59ca8ad263eb3eef675420a2bb2e609e11e53e503a78bd365b2913
+	source = https://files.pythonhosted.org/packages/source/d/djangorestframework/djangorestframework-3.10.3.tar.gz
+	sha512sums = bd1a8c9dd639d34f88911cee4d02252e608c26cfec5f1c96ae3250f359c6c962612bf56718cd3d74d680b3733bcc86664b94c9241cbf184984a30827c34ba4d8
 
 pkgname = python2-django-rest-framework
 
