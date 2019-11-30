@@ -1,12 +1,12 @@
 pkgname=pix-image-viewer-git
-pkgver=0.1.0.6.gce1d4c5
+pkgver=0.2.6.108.g54e4f24
 pkgrel=1
 pkgdesc="Desktop image viewer. View thousands of images in a zoomable, pannable grid."
 arch=('x86_64' 'i686')
 url="https://github.com/google/pix-image-viewer"
 license=('Apache-2.0')
 depends=()
-makedepends=('cargo' 'git' 'clang')
+makedepends=('cargo' 'git')
 optdepends=()
 provides=('pix-image-viewer')
 conflicts=('pix-image-viewer')

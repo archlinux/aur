@@ -1,6 +1,6 @@
 pkgbase = pix-image-viewer-git
 	pkgdesc = Desktop image viewer. View thousands of images in a zoomable, pannable grid.
-	pkgver = 0.1.0.6.gce1d4c5
+	pkgver = 0.2.6.108.g54e4f24
 	pkgrel = 1
 	url = https://github.com/google/pix-image-viewer
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = pix-image-viewer-git
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = git
-	makedepends = clang
 	provides = pix-image-viewer
 	conflicts = pix-image-viewer
 	source = pix-image-viewer-git::git+https://github.com/google/pix-image-viewer
