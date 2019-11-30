@@ -1,8 +1,8 @@
-# Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
+## Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
 pkgname=octoprint
 pkgver=1.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
 url="http://octoprint.org/"
@@ -12,7 +12,6 @@ depends=(
 		python2-babel
 		python2-backports.ssl_match_hostname
 		python2-blinker
-		python2-certifi
 		python2-chardet
 		python2-feedparser
 		python2-frozendict
