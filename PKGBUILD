@@ -9,7 +9,7 @@ url="https://github.com/DragonJoker/Ashes"
 license=('MIT')
 
 provides=('ashes')
-depends=('libxrandr' 'mesa', 'vulkan-headers')
+depends=('libxrandr' 'mesa' 'vulkan-headers')
 makedepends=('cmake' 'git')
 conflicts=('ashes')
 
