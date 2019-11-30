@@ -2,7 +2,7 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.1-RELEASE
+_swiftver=5.1.2-RELEASE
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
@@ -16,55 +16,52 @@ makedepends=('git' 'cmake' 'ninja' 'swig3' 'clang>=5.0' 'python2-six' 'perl'
 
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
-    "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
-    "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
-    "swift-clang-tools-extra-${_swiftver}.tar.gz::https://github.com/apple/swift-clang-tools-extra/archive/swift-${_swiftver}.tar.gz"
-    "swift-libcxx-${_swiftver}.tar.gz::https://github.com/apple/swift-libcxx/archive/swift-${_swiftver}.tar.gz"
-    "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
+    "llvm-project-${_swiftver}.tar.gz::https://github.com/apple/llvm-project/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-llbuild-${_swiftver}.tar.gz::https://github.com/apple/swift-llbuild/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
-    "swift-compiler-rt-${_swiftver}.tar.gz::https://github.com/apple/swift-compiler-rt/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "glibc-includes.patch"
     "repl_swift-dl.patch"
+    "swiftpm-glibc.patch"
+    "swift-tests-glibc.patch"
 )
-sha256sums=('04cbf97859cc691840a2c18354329e12f051226758b99f4a025d0bcca99ed4df'
-            '3ed973401d62a9610c8d9be8afbb28d04f50340a773be48af6965033e80e0411'
-            '3d704763df8e17af5559839484c29681c19e16e9801734c33cd4e12ffaba6cdf'
-            'f1f383106fd3589bc9566225015cfa88e671231f9e8695773f0012a93f9853c6'
-            'cf5a1dfe5d6fbfaaa26bc4b98c2033c48c513d06b9a1d5ae7180871d144caa0c'
-            'ca01ed89c886565155cd55129fa1d27d7486df031a409b2709f90937d4f81349'
-            'f0c6fdb8a81a9d422fbc47dc9e6408556b25198f50a0fddcb3aeccdaff56bcfd'
-            'cbd228619d1172f7f6d38983f0419226baa1cfbecc6afac891856fcb46ba4920'
-            '830d79d777841c28c6b270083c3fd305bc1ba736086ad9790dee1673a23a6aee'
-            'adaaec994d18067a49596b0720b0c163da3a1915f20a619221834292b0e2af68'
-            '9176e1334e2b8b6715c4d071be1337554438096b9f29d62f90aecfb5230148fa'
-            'da24d299eecc10e7d4b40a24e0700ca2f73da622795ecf6f4a5da4d33c486662'
-            'f2eb728ce1d4be21bb0e8bf7e099b6654a45ce8ff8dee6050e868822d7bbcd95'
-            'faad37015993a8713d10fd281e17d8bf308196c8cc4ecc45dc962e22141718cf'
+sha256sums=('1a366fd001df4f6d0da61361f3574ca01a63f3f551b2ccc21939aa570b61b59e'
+            'd045b1d42933f4d34b24f5434438bbdce4a18341964be019ff5d3f0ed56653fe'
+            '2d0919a443536161ac7e059ac3922b70f63c3e46a26efc4b5f8ac824caf09d2e'
+            '61629212db265d849db5fa2b2b770385713938a38fdfb3bb7cff120a748f946a'
+            '74e61207f4d0ac67fe5bc69d16591df1bc29cbcaeb0ccfdf480d43bfc5c5608a'
+            '47d7a4a76527258f3400c82bf6cc1166a8073817e3a048735bada02ed06c556b'
+            'a9072240be0b1f2ffcc48189fe940f8ba031182beb2acd3cd82031cec4320f80'
+            'f88b18c05b06e25108cf16e3277fee63bc057535779a9e12c544c18169a613e3'
+            'dc74061269e6b0ad83f1cfd10a1e8ddba193a6f4c4d5cb2e3e906932d5a4d457'
             '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
-            '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e')
+            '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e'
+            '957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707'
+            'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55')
 
 prepare() {
     # Use python2 where appropriate
     find "$srcdir" -type f -print0 | \
          xargs -0 sed -i 's|/usr/bin/env python$|&2|;s|/usr/bin/python$|&2|'
-    find "$srcdir/swift-lldb-swift-${_swiftver}" -name Makefile -print0 | \
+    find "$srcdir/llvm-project-swift-${_swiftver}/lldb" -name Makefile -print0 | \
          xargs -0 sed -i 's|python-config|python2-config|g'
     sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
          "$srcdir/swift-swift-${_swiftver}/CMakeLists.txt"
     sed -i '/^cmake_minimum_required/a set(Python_ADDITIONAL_VERSIONS 2.7)' \
-         "$srcdir/swift-lldb-swift-${_swiftver}/CMakeLists.txt"
+         "$srcdir/llvm-project-swift-${_swiftver}/lldb/CMakeLists.txt"
     sed -i 's/\<python\>/&2/' \
          "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
 
     # Use directory names which build-script expects
-    for sdir in llvm clang clang-tools-extra libcxx lldb cmark llbuild \
-                compiler-rt
+    for sdir in llvm clang clang-tools-extra libcxx lldb compiler-rt
+    do
+        ln -sf llvm-project-swift-${_swiftver}/${sdir} ${sdir}
+    done
+    for sdir in cmark llbuild
     do
         rm -rf ${sdir}
         mv swift-${sdir}-swift-${_swiftver} ${sdir}
@@ -84,6 +81,11 @@ prepare() {
 
     # repl_swift requires -ldl
     ( cd lldb && patch -p1 -i "$srcdir/repl_swift-dl.patch" )
+
+    # Fix compile/test errors with newer glibc (2.30)
+    # See https://github.com/apple/swift-package-manager/pull/2408
+    ( cd swiftpm && patch -p1 -i "$srcdir/swiftpm-glibc.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/swift-tests-glibc.patch" )
 }
 
 _common_build_params=(
