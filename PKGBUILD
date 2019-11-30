@@ -3,14 +3,14 @@
 pkgname=freefem
 pkgver=4.4.2
 _pkgver=4.4-2
-pkgrel=2
+pkgrel=3
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack'
 	 'arpack' 'parmetis' 'python')
-makedepends=('texlive-core' 'gcc-fortran')
+makedepends=('texlive-core' 'gcc-fortran' 'unzip')
 conflicts=('freefem++')
 provides=('freefem++')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v$pkgver.tar.gz")

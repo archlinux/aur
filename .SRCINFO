@@ -1,12 +1,13 @@
 pkgbase = freefem
 	pkgdesc = A PDE oriented language using the finite element method
 	pkgver = 4.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freefem.org/index.html
 	arch = x86_64
 	license = LGPL
 	makedepends = texlive-core
 	makedepends = gcc-fortran
+	makedepends = unzip
 	depends = fftw
 	depends = freeglut
 	depends = glu
