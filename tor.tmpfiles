@@ -1,2 +1,3 @@
 d /var/lib/tor 0700 tor tor - -
 d /var/log/tor 0700 tor tor - -
+d /etc/tor     0700 tor tor - -

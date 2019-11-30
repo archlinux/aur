@@ -30,15 +30,22 @@ ExcludeNodes $bbefffa108ad16b8e5f0323cf086811c17190bba, $2d5e2ca4b22809379b36028
              $28151be14cb5c22a236163c3e97409d6fd607356, $1b777f2c879c76fc529d1ec63508aad0e1759e79, \
              $53c4c4e1741ca61ad4f09cc9eae8abe1fd92f08b
 
-## A list of identity fingerprints and country codes of nodes to use for the first hop in your normal circuits.
+## A list of identity fingerprints and country codes of nodes to use for the
+## first hop in your normal circuits.
 ## Normal circuits include all circuits except for direct connections to directory servers.
-## The Bridge option overrides this option; if you have configured bridges and UseBridges is 1, the Bridges
-## are used as your entry nodes.
+## The Bridge option overrides this option; if you have configured bridges and UseBridges
+## is 1, the Bridges are used as your entry nodes.
 #EntryNodes
 
-## A list of identity fingerprints, country codes, and address patterns of nodes to use as exit node---that is
-## a node that delivers traffic for you outside the Tor network.
+## A list of identity fingerprints, country codes, and address patterns of nodes to
+## use as exit node, that is a node that delivers traffic for you outside the Tor network.
 #ExitNodes
+
+## https://wikipedia.org/wiki/Five_Eyes
+#ExcludeExitNodes {au}, {ca}, {gb}, {nz}, {us}
+#NodeFamily {au}, {ca}, {gb}, {nz}, {us}
+#PathsNeededToBuildCircuits 0.95
+
 
 # Country                               Abbrev
 # ASCENSION ISLAND                      {ac}

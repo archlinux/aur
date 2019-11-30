@@ -1,0 +1,11 @@
+## Stream isolation provides an easy way to separate different Tor circuits
+## and make different applications use isolated streams.
+
+## Dont share circuits with streams targeting a different destination address
+#SocksPort 127.0.0.1:9150 IsolateDestAddr
+
+## If a host has both an IPv4 and an IPv6 address, prefer to connect to it via IPv6
+#SocksPort 127.0.0.1:9151 PreferIPv6 NoIPv4Traffic
+
+## Only connect to .onion addresses in response to SOCKS5 requests on this connection
+#SocksPort 127.0.0.1:9152 OnionTrafficOnly
