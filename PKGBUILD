@@ -1,4 +1,4 @@
-# Contributor: Liam Timms <timms5000@gmail.com>
+# Maintainer: Liam Timms <timms5000@gmail.com>
 
 pkgname=python-dcm2bids
 _name=${pkgname/python-/}
