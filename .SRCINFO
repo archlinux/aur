@@ -1,6 +1,6 @@
 pkgbase = deepin.com.qq.office
 	pkgdesc = Deepin Wine TIM 2.0.0
-	pkgver = 2.0.0deepin4
+	pkgver = 2.0.0_4
 	pkgrel = 2
 	url = http://office.qq.com/
 	arch = i686
