@@ -41,8 +41,8 @@ build() {
 package() {
     cd ${_hkgname}-${pkgver}
     runghc Setup.hs copy --destdir="${pkgdir}"
-    mkdir -p ${pkgdir}/usr/share/licenses/haskell-clay
-    mv "${pkgdir}/usr/share/doc/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/haskell-clay"
+    mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
+    mv "${pkgdir}/usr/share/doc/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m744 register.sh   "${pkgdir}/usr/share/haskell/register/${pkgname}.sh"
     install -D -m744 unregister.sh "${pkgdir}/usr/share/haskell/unregister/${pkgname}.sh"
 }
