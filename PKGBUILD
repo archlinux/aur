@@ -2,7 +2,7 @@
 # Contributor: Falke Carlsen "cogitantium" <falke dot cs at gmail dot com>
 _pkgname=spotirec
 pkgname=${_pkgname}-git
-pkgver=r124.47298a3
+pkgver=r156.17cac19
 pkgrel=1
 pkgdesc="Create playlist of recommended tracks on Spotify"
 arch=('any')

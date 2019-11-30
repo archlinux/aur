@@ -1,6 +1,6 @@
 pkgbase = spotirec-git
 	pkgdesc = Create playlist of recommended tracks on Spotify
-	pkgver = r124.47298a3
+	pkgver = r156.17cac19
 	pkgrel = 1
 	url = https://github.com/Badgie/spotirec
 	arch = any
