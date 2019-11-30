@@ -1,12 +1,13 @@
 pkgbase = renderdoc
 	pkgdesc = OpenGL and Vulkan debugging tool
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baldurk/renderdoc
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = python
 	depends = libx11
 	depends = libxcb
 	depends = mesa
