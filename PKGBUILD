@@ -4,11 +4,11 @@
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 
 pkgname=mma
-pkgver=16.06
-pkgrel=2
+pkgver=19.08
+pkgrel=1
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
-depends=('python2>=2.5.0')
+depends=('python')
 optdepends=('timidity++: Synthesize MIDI files')
 license=('GPL')
 arch=('any')
@@ -16,16 +16,10 @@ install=mma.install
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --user-agent Mozilla/4.0 -o %o %u')
 source=("http://www.mellowood.ca/mma/mma-bin-$pkgver.tar.gz"
   mmarc)
-sha1sums=('f6b81c1c44dfab61efade2ef7818da2493b6c927'
+sha1sums=('30592c7bee836b81982d9534738d086af7769587'
           '3c03107c2a1b380f66ed68458d9b9def8371c0f6')
 options=(!strip)
 backup=(etc/mmarc)
-
-build () {
-  cd "$srcdir/$pkgname-bin-$pkgver"
-
-  for file in $(grep -rl 'env python *$' .); do sed -i 's/env python *$/env python2/g' $file ;done
-}
 
 package () {
   cd "$srcdir/$pkgname-bin-$pkgver"
