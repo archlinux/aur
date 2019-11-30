@@ -1,16 +1,16 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zencjk
-pkgver=5.3.10.1
+pkgver=5.4.1.zen2
 pkgrel=1
 pkgdesc='Linux ZEN'
-_srctag=v${pkgver%.*}-zen${pkgver##*.}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf
-  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
@@ -26,8 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '26539413aaf3f39a9e576abdc771eaa4e074e94ba4460103822e7bfbe6685fbd'
-            '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2')
+            '0f54f8053a3b150ba0484b4a2663bb58e51bfb628523042aaee762f49496db67')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -170,26 +169,18 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  msg2 "Removing unneeded files..."
-  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-  msg2 "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
