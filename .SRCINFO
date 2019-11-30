@@ -1,0 +1,19 @@
+pkgbase = tinybasic
+	pkgdesc = Tom Pitmann's TinyBasic Interpreter written in C
+	pkgver = 1
+	pkgrel = 1
+	url = www.ittybittycomputers.com
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = gcc
+	depends = glibc
+	source = http://www.ittybittycomputers.com/IttyBitty/TinyBasic/TinyBasic.c
+	sha256sums = ab42de60f46a1617a6abd4797b52af624bfa9f255aacc72d9bf97bfa0e5541c8
+
+pkgname = tinybasic
+
