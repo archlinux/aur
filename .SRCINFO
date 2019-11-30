@@ -1,0 +1,19 @@
+pkgbase = k-meleon-bin-wine
+	pkgdesc = A Firefox Based Browser (runs through wine)
+	pkgver = 75.1
+	pkgrel = 1
+	url = http://kmeleonbrowser.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = p7zip
+	depends = wine
+	optdepends = wine-mono
+	optdepends = wine_gecko
+	source = https://netix.dl.sourceforge.net/project/kmeleon/k-meleon/75.1/K-Meleon75.1.7z
+	source = https://a.fsdn.com/allura/p/kmeleon/icon?1499965860
+	sha256sums = 451af1cfcd32981668dc91d5c4daed093704af83edd82f458dfa34dcea1d1a56
+	sha256sums = 3d728db875f17ac7387b6dcdc5f39a10610170990076c67b866c7cae287fb960
+
+pkgname = k-meleon-bin-wine
+
