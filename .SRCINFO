@@ -1,6 +1,6 @@
 pkgbase = neomutt-autocrypt
 	pkgdesc = A version of neomutt with added autocrypt
-	pkgver = 20191111
+	pkgver = 20191129
 	pkgrel = 1
 	url = https://neomutt.org/
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = neomutt-autocrypt
 	optdepends = python: keybase.py
 	provides = neomutt
 	conflicts = neomutt
-	source = neomutt-autocrypt-20191111.tar.gz::https://github.com/neomutt/neomutt/archive/20191111.tar.gz
-	sha256sums = 29b9e9d7293157a8575808eb2ceb62ffb2f31be206405abc64fc37a4425e36f4
+	source = neomutt-autocrypt-20191129.tar.gz::https://github.com/neomutt/neomutt/archive/20191129.tar.gz
+	sha256sums = c339e17b676d0a9a8db6dd1c9acac3db4b217c6b19050e5a1eec99b1b0b59a2f
 
 pkgname = neomutt-autocrypt
 

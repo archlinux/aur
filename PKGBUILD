@@ -7,7 +7,7 @@ pkgname=neomutt-autocrypt
 _srcname=neomutt
 # This package should mirror community/neomutt,
 # except for added autocrypt
-pkgver=20191111
+pkgver=20191129
 pkgrel=1
 pkgdesc='A version of neomutt with added autocrypt'
 url='https://neomutt.org/'
@@ -22,7 +22,7 @@ optdepends=('python: keybase.py')
 makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m')
 _github='https://github.com/neomutt/neomutt'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/$pkgver.tar.gz")
-sha256sums=('29b9e9d7293157a8575808eb2ceb62ffb2f31be206405abc64fc37a4425e36f4')
+sha256sums=('c339e17b676d0a9a8db6dd1c9acac3db4b217c6b19050e5a1eec99b1b0b59a2f')
 
 build() {
     cd "$_srcname-$pkgver"
