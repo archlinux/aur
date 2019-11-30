@@ -2,15 +2,15 @@
 
 pkgname=('python-flufl-bounce')
 _pkgbase='flufl.bounce'
-pkgver=2.3
+pkgver=3.0
 pkgrel=1
 pkgdesc="Email bounce detectors"
 arch=(any)
-url="https://launchpad.net/flufl.bounce"
+url="https://gitlab.com/warsaw/flufl.bounce"
 license=('LGPL')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/f/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('6a2b7265af291eac41cb1022442ee65ff1c1f5af307bf8820a3f38cc86d29f99')
+sha256sums=('a2c549fc40a58ddfa9dfd115fe43d5cac4f042e45bacef3be7fb993e1496b34c')
 makedepends=('python-setuptools')
 
 package_python-flufl-bounce() {
