@@ -2,8 +2,8 @@
 # vim: ft=sh
 
 pkgname=baikal
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='Lightweight CalDAV+CardDAV server'
 url='http://sabre.io/baikal/'
 arch=('any')
@@ -12,18 +12,17 @@ depends=('php')
 optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
         'baikal.install'
-        'Fixed-getcontenttype-being-null.patch::https://github.com/sabre-io/dav/commit/7badab41ca48b2705426907d533aca374ba6401f.patch')
-sha1sums=('47398b00cad4330bfac9df8abc03df896e2d206f'
+        'Port-to-PHP-74.patch::https://patch-diff.githubusercontent.com/raw/sabre-io/Baikal/pull/852.patch')
+sha1sums=('c971ee72540d85d747caf8bccd8bcfecf3502873'
           'deb948e61c3cd8d6ad560321f78c0b288f7a6210'
-          '955a7957e013b6f643d53b5d6c648c52d42550b9')
+          '39bcef492e415cf305afddd5d7918d861fde7b8a')
 options=('!strip')
 install=baikal.install
 
 prepare() {
-  cd "${srcdir}/baikal/vendor/sabre/dav"
+  cd "${srcdir}/baikal"
 
-  # fix https://github.com/sabre-io/Baikal/issues/819 / https://github.com/sabre-io/dav/issues/1178
-  patch -p1 -i "$srcdir/Fixed-getcontenttype-being-null.patch"
+  patch -p1 -i "$srcdir/Port-to-PHP-74.patch"
 }
 
 package() {
