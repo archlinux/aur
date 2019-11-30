@@ -1,0 +1,26 @@
+pkgbase = haskell-latex-formulae-image
+	pkgdesc = A library for rendering LaTeX formulae as images using an actual LaTeX installation
+	pkgver = 0.1.1.4
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/latex-formulae-hakyll
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD
+	makedepends = ghc
+	makedepends = haskell-errors
+	makedepends = haskell-transformers-compat
+	makedepends = haskell-transformers-base
+	makedepends = haskell-juicypixels
+	depends = ghc-libs
+	depends = haskell-errors
+	depends = haskell-transformers-compat
+	depends = haskell-transformers-base
+	depends = haskell-juicypixels
+	source = haskell-latex-formulae-image-0.1.1.4.tar.gz::https://hackage.haskell.org/packages/archive/latex-formulae-image/0.1.1.4/latex-formulae-image-0.1.1.4.tar.gz
+	source = cabal.patch
+	sha256sums = 60b706f55f6cbfc8ef73eecf089a1d59ff939ac8a2c8f208af8f96211a067968
+	sha256sums = 1a791e369c47f6f438c9db40151ab65a69e22af801c07f8645f82b86f0b6642b
+
+pkgname = haskell-latex-formulae-image
+
