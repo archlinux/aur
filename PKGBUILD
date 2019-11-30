@@ -1,6 +1,6 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-lwp-useragent-cached'
-pkgver='0.07'
+pkgver='0.08'
 pkgrel='1'
 pkgdesc="LWP::UserAgent with simple caching mechanism"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('perl-libwww')
 makedepends=('perl-test-mock-lwp-dispatch>=0.02')
 url='https://metacpan.org/release/LWP-UserAgent-Cached'
 source=("https://cpan.metacpan.org/authors/id/O/OL/OLEG/LWP-UserAgent-Cached-${pkgver}.tar.gz")
-sha512sums=('1a83d6b8125d3312aae1a7d49ad231a4ffd5e3a0ea4421f0c2679efad2874ab537eb33fdb3814e3bc5b856b1b88262004ca076a9e84d5e2bb34ea396e0a79d54')
+sha512sums=('5c1c18d3a54257aac6f266298d63c4cec9e6c6cbdfe6470cbf02676fc327a9c71238158b08036852c4971787fd8b7b67b85eaa4016687bc6c815a68037e15c47')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
