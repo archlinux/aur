@@ -3,7 +3,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=3_31_4.r2.g95154f3a9
+pkgver=3.34.0.r108.ga6ddd2dd0
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 arch=(any)
@@ -32,8 +32,8 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${pkgname}
-	# cutting off 'ORCA_' prefix that presents in the git tag	
-	printf "%s" "$(git describe --long | sed 's/^ORCA_//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+	# cutting off 'ORCA_' prefix that presents in the git tag
+	git describe --long | sed 's/^ORCA_//;s/\([^-]*-g\)/r\1/;s/_/-/g;s/-/./g'
 }
 
 build() {
