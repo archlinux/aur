@@ -1,4 +1,4 @@
-#Maintainer: oshaboy <noamgilor{at}protonmail{dot}com
+#Maintainer: oshaboy <noamgilor{at}protonmail{dot}com>
 
 pkgname=tinybasic
 pkgver=1
