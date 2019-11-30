@@ -1,0 +1,18 @@
+pkgbase = python-fastjsonschema
+	pkgdesc = Fastest Python implementation of JSON schema
+	pkgver = 2.14.1
+	pkgrel = 1
+	url = https://github.com/horejsek/python-fastjsonschema
+	arch = any
+	license = BSD3
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://github.com/horejsek/python-fastjsonschema/archive/v2.14.1.tar.gz
+	md5sums = ee4cb3758fc3b0778f5783695b5b4e2a
+
+pkgname = python-fastjsonschema
+	depends = python
+
+pkgname = python2-fastjsonschema
+	depends = python2
+
