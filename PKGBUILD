@@ -1,7 +1,7 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
 pkgname=('mailman-core')
-pkgver=3.2.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A mailing list management system"
 arch=(any)
@@ -23,7 +23,7 @@ source=("mailman-${pkgver}.tar.gz::https://gitlab.com/mailman/mailman/-/archive/
         'mailman.sysusers'
         'mailman.service'
         'mailman.cfg')
-sha256sums=('6f1fcff0d258bdaecbd995c822a24da06e95a6c658986a08d26ec58c21102660'
+sha256sums=('17b9765b75e13b933df27aff01d634bd2ab6574bd4ee3b248b4f9ee9ed8dffc4'
             'a99bf88267184fee0568856ac09bb682224ee67029cfc20f603a43fe5f053dad'
             '81048cb6a27490fb36881b2eb88567b2ea2271b481dd0254fe9a398e6ca9beaf'
             'f48dac59786be58c6a8b5fe2a12f4f356872d87600be64506f22066508847f3a')
