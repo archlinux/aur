@@ -19,7 +19,7 @@ url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
 makedepends=('clang' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
 options=('!strip')
-source=('git+https://gitlab.com/xdevs23/linux-nitrous.git/'
+source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v5.4+'
         # standard config files for mkinitcpio ramdisk
         "${_srcname}.preset")
 sha256sums=('SKIP'
@@ -129,6 +129,8 @@ _package() {
 
   # add System.map
   install -D -m644 System.map "${pkgdir}/boot/System.map-${_kernver}"
+
+  rm -f "${pkgdir}/"*.pkg.tar*
 }
 
 _package-headers() {
@@ -250,6 +252,8 @@ _package-headers() {
 
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+  rm -f "${pkgdir}/"*.pkg.tar*
 }
 
 _package-docs() {
