@@ -1,0 +1,18 @@
+pkgbase = otf-fira-mono-italic-git
+	pkgdesc = Italic and bold-italic version of Fira Mono
+	pkgver = 7205478c
+	pkgrel = 1
+	url = https://github.com/Avi-D-coder/fira-mono-italic
+	install = otf.install
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git+https://github.com/Avi-D-coder/fira-mono-italic.git
+	source = otf.install
+	md5sums = SKIP
+	md5sums = ae560f6f3cc2687fbfaec8073567ee2f
+
+pkgname = otf-fira-mono-italic-git
+
