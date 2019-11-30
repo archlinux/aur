@@ -1,15 +1,16 @@
 pkgbase = fittotcx-git
-	pkgdesc = This program takes a FIT file and converts it into an TCX file and output the result to the standard output
-	pkgver = r19.310452e
+	pkgdesc = Converts a Garmin FIT file into TCX format outputting the result to standard output.
+	pkgver = r25.f8525b4
 	pkgrel = 1
 	url = https://github.com/Tigge/FIT-to-TCX
-	arch = i686
-	arch = x86_64
-	license = custom:fittotcx
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python2
 	depends = python2-lxml
 	depends = python2-fitparse-git
-	source = git+https://github.com/Tigge/FIT-to-TCX
+	source = fittotcx::git+https://github.com/Tigge/FIT-to-TCX
 	md5sums = SKIP
 
 pkgname = fittotcx-git

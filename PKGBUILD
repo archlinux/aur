@@ -1,27 +1,35 @@
-# Maintainer: André <andre-arch@delorus.de>
+# Maintainer: James Morris <james at jwm hyphen art dot net>
+# Contributer: André <andre-arch at delorus dot de>
 pkgname=fittotcx-git
-_gitname=FIT-to-TCX
-pkgver=r19.310452e
+pkgver=r25.f8525b4
 pkgrel=1
-pkgdesc="This program takes a FIT file and converts it into an TCX file and output the result to the standard output"
-arch=('i686' 'x86_64')
-source=(git+https://github.com/Tigge/FIT-to-TCX)
+pkgdesc="Converts a Garmin FIT file into TCX format outputting the result to standard output."
+arch=('any')
 url="https://github.com/Tigge/FIT-to-TCX"
-license=("custom:fittotcx")
+license=('MIT')
 depends=('python2' 'python2-lxml' 'python2-fitparse-git')
+makedepends=('git' 'python-setuptools')
+source=("${pkgname%-git}"::git+https://github.com/Tigge/FIT-to-TCX)
 md5sums=('SKIP')
 
-pkgver() {
-  cd "${_gitname}"
+pkgver(){
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd "$srcdir/$_gitname"
-
+prepare(){
+  cd "$srcdir/${pkgname%-git}"
   sed -i-e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" fittotcx/program.py
-
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-
-  install -Dm644 LICENCE ${pkgdir}/usr/share/licenses/fittotcx/LICENSE
 }
+
+build(){
+  cd "$srcdir/${pkgname%-git}"
+  python2 setup.py build
+}
+
+package(){
+  cd "$srcdir/${pkgname%-git}"
+  python2 setup.py install --root="${pkgdir}"  --optimize=1 --skip-build
+  install -Dm644 LICENCE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
+}
+
