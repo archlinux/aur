@@ -37,7 +37,7 @@ build() {
 	cd "$pkgname-$pkgver"
 	mkdir build
 	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DINCLUDE_INSTALL_DIR=/usr/include -DLIB_INSTALL_DIR=/usr/lib ..
+	cmake -DINTROSPECTION_ENABLED=off -DCMAKE_INSTALL_PREFIX=/usr -DINCLUDE_INSTALL_DIR=/usr/include -DLIB_INSTALL_DIR=/usr/lib ..
 	make
 }
 
