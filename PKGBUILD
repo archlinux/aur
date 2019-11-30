@@ -2,12 +2,16 @@
 
 pkgname=emacs-markdown-preview-mode
 pkgver=0.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Minor mode to preview markdown output as you save"
 arch=('any')
 url="https://github.com/ancane/markdown-preview-mode"
 license=('GPL3')
-depends=('emacs' 'discount' 'emacs-markdown-preview-mode' 'emacs-websocket' 'emacs-web-server')
+depends=('emacs'
+         'discount'
+         'emacs-markdown-mode'
+         'emacs-websocket'
+         'emacs-web-server')
 makedepends=()
 source=("https://github.com/ancane/markdown-preview-mode/archive/v${pkgver}.tar.gz")
 install=${pkgname}.install
