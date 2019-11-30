@@ -50,4 +50,6 @@ build() {
 package() {
     cd $srcdir/Mstran-pure/src;
     make install;
+    sudo rm "/tmp/yaourt-tmp-"$USER"/aur-mstran/src/Mstran-pure/baidu-translate" -rf
+    sudo rm "/tmp/yaourt-tmp-"$USER"/aur-mstran/src/Mstran-pure/google-translate" -rf
 }
