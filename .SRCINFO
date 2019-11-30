@@ -1,0 +1,18 @@
+pkgbase = python2-lazr-delegates
+	pkgdesc = Easily write objects that delegate behavior
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://launchpad.net/lazr.delegates
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/l/lazr.delegates/lazr.delegates-2.0.4.tar.gz
+	sha256sums = dded302c7bfce579aad8d5e2f2e3672dc920cc8d91015a9045d7ab240ba2b6e5
+
+pkgname = python2-lazr-delegates
+	depends = python2
+	depends = python2-setuptools
+	depends = python2-zope-interface
+	depends = python2-nose
+
