@@ -1,4 +1,5 @@
-# Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
+# Maintainer: Alad Wenter <alad@archlinux.org>
+# Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=alt-ergo
 pkgver=2.3.0
 pkgrel=2
