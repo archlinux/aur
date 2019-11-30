@@ -1,0 +1,14 @@
+--- dune.orig	2019-11-30 19:04:21.781276400 +0100
++++ dune	2019-11-30 19:03:52.531276564 +0100
+@@ -1,9 +1,9 @@
+ (env
+  (dev
+-  (flags (:standard -bin-annot -w -22))
++  (flags (:standard -bin-annot -w -22 -warn-error -A))
+   (ocamlopt_flags -g -O3 -unbox-closures))
+  (release
+-  (flags (:standard -bin-annot -w -22))
++  (flags (:standard -bin-annot -w -22 -warn-error -A))
+   (ocamlopt_flags -O3 -unbox-closures))
+ )
+ 
