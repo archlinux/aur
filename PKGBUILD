@@ -1,6 +1,6 @@
 pkgname=mingw-w64-libbacktrace-git
 pkgver=r21.5a99ff7
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to produce symbolic backtraces (mingw-w64)"
 arch=('any')
 url="https://github.com/ianlancetaylor/libbacktrace"
@@ -22,6 +22,7 @@ pkgver() {
 
 prepare () {
   cd "libbacktrace"
+  curl -L https://github.com/ianlancetaylor/libbacktrace/pull/28.patch | patch -p1
   # dont allow undefined symbols to build the dll
   sed -i "83ilibbacktrace_la_LDFLAGS = -no-undefined" Makefile.am
   # unknown macro AM_ENABLE_MULTILIB
@@ -36,14 +37,6 @@ build() {
     OBJCOPY=/usr/bin/${_arch}-objcopy ${_arch}-configure ..
     make
     popd
-  done
-}
-
-check() {
-  cd "libbacktrace"
-  for _arch in ${_architectures}; do
-    cd "$srcdir/libbacktrace/build-${_arch}"
-    make check
   done
 }
 
