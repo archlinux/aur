@@ -1,6 +1,6 @@
 pkgbase = rainbowstream
 	pkgdesc = A smart and nice Twitter client on terminal
-	pkgver = 1.4.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = http://www.rainbowstream.org/
 	arch = any
@@ -17,10 +17,10 @@ pkgbase = rainbowstream
 	depends = python-pocket
 	provides = rainbowstream
 	conflicts = rainbowstream
-	source = rainbowstream-1.4.0.tar.gz::https://files.pythonhosted.org/packages/source/r/rainbowstream/rainbowstream-1.4.0.tar.gz
+	source = rainbowstream-1.5.2.tar.gz::https://files.pythonhosted.org/packages/source/r/rainbowstream/rainbowstream-1.5.2.tar.gz
 	source = setup.py.patch
 	source = rainbow.py.patch
-	sha512sums = a07dd123b791e1dd2ca8333d38497f8322b9f0d0594b269f8e3add170b4799dd568153b40eefbf16eefbe2b7f43335f1c7b95d8ca1c8e9fa6cff032e6c5b9d2f
+	sha512sums = 0957413264c33e69662b4ea43fdbf27431b87e2f5ecfd0da8d960be40ef4a82ace538784418d83d26b2412c833a69ea17849abb95b3c40a7d3890823828ecea9
 	sha512sums = d5203f37697dbff3fe745fa4a0236dd22f5565c833e3dd17e3c762706ab8b2758e6b56d2147e021c7ccb370f1bc97fb42cae602a3fc31213af03b1482fca5a9b
 	sha512sums = 4298b90e5f34228e09a52910738c393da6f5c350c43dabe367ffb9ac5efea64b56e80da9c46044d7ddd2145fb440efcbeb3b75d4bffc9067d39d573279070821
 
