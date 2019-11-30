@@ -1,6 +1,6 @@
 pkgbase = tea-qt
 	pkgdesc = Powerful text editor for Linux and *BSD.
-	pkgver = 50.0.0
+	pkgver = 50.0.1
 	pkgrel = 1
 	url = http://semiletov.org/tea/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = tea-qt
 	depends = poppler-qt5
 	depends = djvulibre
 	depends = desktop-file-utils
-	source = https://github.com/psemiletov/tea-qt/archive/50.0.0.tar.gz
-	md5sums = 1d02006563a6235bed250ef631ff5aa9
+	source = https://github.com/psemiletov/tea-qt/archive/50.0.1.tar.gz
+	md5sums = 6d2e2c92c53a2162a1609975cbe29acb
 
 pkgname = tea-qt
 
