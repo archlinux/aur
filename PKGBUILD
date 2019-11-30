@@ -37,5 +37,5 @@ build() {
 package() {
     cd 'ShaderWriter'
     cmake --build . --target install
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/ashes-git/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/shaderwriter-git/LICENSE"
 }
