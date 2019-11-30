@@ -1,0 +1,19 @@
+pkgbase = openrc-xdm
+	pkgdesc = OpenRC display manager init script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DemonSinusa/openrc-xdm
+	install = openrc-xdm.install
+	arch = any
+	license = GPL2
+	depends = xorg-server
+	depends = xorg-xinit
+	depends = openrc
+	provides = openrc-xdm
+	conflicts = init-displaymanager
+	backup = etc/openrc/conf.d/xdm
+	source = https://github.com/DemonSinusa/openrc-xdm/archive/1.0.tar.gz
+	sha256sums = 7db010fedce2ee9948c837feeb50dbe0d09cd036f2eb34dbb20713cf4d4294e0
+
+pkgname = openrc-xdm
+

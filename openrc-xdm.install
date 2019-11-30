@@ -1,0 +1,3 @@
+post_install() {
+	echo "	==> Edit /etc/openrc/conf.d/xdm to set DM."
+}
