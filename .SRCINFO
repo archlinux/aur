@@ -1,6 +1,6 @@
 pkgbase = kickoff-player-git
 	pkgdesc = Stream football matches and channels with acestream and sopcast
-	pkgver = r218.1d74322
+	pkgver = r222.4577d60
 	pkgrel = 1
 	url = https://github.com/jonian/kickoff-player
 	arch = any
