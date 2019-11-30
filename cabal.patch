@@ -1,0 +1,13 @@
+diff --git a/latex-formulae-hakyll.cabal b/latex-formulae-hakyll.cabal
+index 52db8c7..393a1bc 100644
+--- a/latex-formulae-hakyll.cabal
++++ b/latex-formulae-hakyll.cabal
+@@ -26,7 +26,7 @@ library
+   exposed-modules:     Hakyll.Contrib.LaTeX
+   -- other-modules:       
+   -- other-extensions:    
+-  build-depends:       base >=4.7 && <4.12
++  build-depends:       base >=4.7 && <5 
+                ,       latex-formulae-image >= 0.1.1.0  && < 0.2  
+                ,       latex-formulae-pandoc >= 0.2.0.1 && < 0.3
+                ,       hakyll >= 4.6 && < 4.13
