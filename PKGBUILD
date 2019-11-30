@@ -1,6 +1,6 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='ashes-git'
-pkgver=r367.e2b4a8a5
+pkgver=r371.b279dcf2
 pkgrel=1
 pkgdesc='Drop-in replacement for Vulkan shared library, for older hardware compatibility'
 
@@ -17,8 +17,11 @@ source=('git+https://github.com/DragonJoker/Ashes.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd 'Ashes' 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd 'Ashes'
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
