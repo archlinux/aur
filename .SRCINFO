@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
-	pkgver = 0.9.14.0
-	pkgrel = 6
+	pkgver = 0.9.14.1
+	pkgrel = 1
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -23,13 +23,13 @@ pkgbase = compiz
 	depends = metacity
 	depends = glu
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
-	provides = compiz-core=0.9.14.0
-	provides = compiz-bcop=0.9.14.0
-	provides = ccsm=0.9.14.0
-	provides = compiz-plugins-main=0.9.14.0
-	provides = compiz-plugins-extra=0.9.14.0
-	provides = compizconfig-python=0.9.14.0
-	provides = libcompizconfig=0.9.14.0
+	provides = compiz-core=0.9.14.1
+	provides = compiz-bcop=0.9.14.1
+	provides = ccsm=0.9.14.1
+	provides = compiz-plugins-main=0.9.14.1
+	provides = compiz-plugins-extra=0.9.14.1
+	provides = compizconfig-python=0.9.14.1
+	provides = libcompizconfig=0.9.14.1
 	conflicts = compiz-core
 	conflicts = compiz-gtk
 	conflicts = compiz-bcop
@@ -40,22 +40,18 @@ pkgbase = compiz
 	conflicts = compizconfig-python
 	conflicts = libcompizconfig
 	conflicts = simple-ccsm
-	source = https://launchpad.net/compiz/0.9.14/0.9.14.0/+download/compiz-0.9.14.0.tar.xz
+	source = https://launchpad.net/compiz/0.9.14/0.9.14.1/+download/compiz-0.9.14.1.tar.xz
 	source = focus-prevention-disable.patch
 	source = gtk-extents.patch
 	source = reverse-unity-config.patch
 	source = screenshot-launch-fix.patch
 	source = no-compile-gschemas.patch
-	source = ccsm-unicode-fix.patch
-	source = ccsm-escape-fix.patch
-	sha256sums = 52cd6a90ffe987bd0415fda23c34e1f3284aa34c4d8b4eefb160fbf4d1f33a2c
+	sha256sums = 2505602b6c93d6565e681473df4157634268533c6874c3cdc9493b73b301ac52
 	sha256sums = f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b
 	sha256sums = 16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9
 	sha256sums = 6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b
 	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
 	sha256sums = 4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a
-	sha256sums = 78ab98cb0904cab84d57028f3c07defc5e3596dcd8c0f691bcb57a85f9e0c06e
-	sha256sums = 033c3be1f54238d07b4ed400d34b2260247ed7269fa281e98eb551b08b9a9188
 
 pkgname = compiz
 
