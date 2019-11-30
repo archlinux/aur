@@ -1,0 +1,22 @@
+pkgbase = libnma-git
+	pkgdesc = Necessary for Network Manager UI
+	pkgver = 1.8.27.dev.r5.fa19e6ee
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libnma
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = mobile-broadband-provider-info
+	makedepends = iso-codes
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	depends = gcr
+	depends = libnm
+	provides = libnma
+	conflicts = libnma
+	source = git+https://gitlab.gnome.org/GNOME/libnma
+	sha256sums = SKIP
+
+pkgname = libnma-git
+
