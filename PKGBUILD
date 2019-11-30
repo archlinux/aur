@@ -2,8 +2,9 @@
 pkgname='mpxmanager'
 pkgver='1.1.0'
 pkgrel=1
-pkgdesc='My Personal XWindow Manager'
+pkgdesc='A MPX/Xi2 aware window manager'
 arch=('any')
+url="github.com/TAAPArthur/MPXManager"
 license=('MIT')
 options=(staticlibs !strip)
 depends=('xorg-server' 'libxi' 'libx11' 'libxcb' 'xcb-util-wm' )
