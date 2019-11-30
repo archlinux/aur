@@ -2,8 +2,8 @@
 _pkgname=Kimi
 _pkgvariant=dark
 pkgname=kimi-dark-gtk-theme-git
-pkgver=latest
 pkgrel=1
+pkgver=r64.921cca8
 pkgdesc='Kimi is a Gtk3.20+ theme'
 arch=(any)
 url='https://github.com/EliverLara/Kimi'
