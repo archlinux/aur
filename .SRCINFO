@@ -1,6 +1,6 @@
 pkgbase = python-django-otp
 	pkgdesc = A pluggable framework for adding two-factor authentication to Django using one-time passwords
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/django-otp/django-otp
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-otp
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	optdepends = python-qrcode: For OTP setup with QR code
-	source = django-otp-0.7.3.tar.gz::https://files.pythonhosted.org/packages/source/d/django-otp/django-otp-0.7.3.tar.gz
-	sha512sums = affb9350db71ac9a7ece68276b1cc91e3b128eedf45081d1f589f573e47e99b6afc08e63ed68a3e33f76a6bfdcad6ad9096c8db466a12fa793f383277ceef622
+	source = django-otp-0.7.4.tar.gz::https://files.pythonhosted.org/packages/source/d/django-otp/django-otp-0.7.4.tar.gz
+	sha512sums = 8bd6f0303bd6a53b6a75bd4f227138655646cbac4a184a9d5ca24b0a696f588c3016565403ceba76ff24d4beec5f315ae1eda16af46400acec987bd7c220a804
 
 pkgname = python-django-otp
 	depends = python
