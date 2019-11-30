@@ -1,15 +1,15 @@
-# Maintainer: Alexander Görtz <aur@nyloc.de>
+# Maintainer: Oskar Roesler <arch-ros@oskar-roesler.de>
 
-pkgname=qtcreator-ros-git
-pkgver=0.1.alpha.r68.g2bd6745
+pkgname=qtcreator-ros
+pkgver=0.3.10
 pkgrel=1
 pkgdesc="ROS related plugins for Qt Creator"
 url="https://github.com/ros-industrial/ros_qtc_plugin"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'aarch64' 'armv7h')
 license=('Apache')
 depends=('qtcreator' 'qtermwidget' 'yaml-cpp')
 makedepends=('qt5-tools' 'qtcreator-src')
-source=("${pkgname}"::"git+https://github.com/ros-industrial/ros_qtc_plugin.git"
+source=("${pkgname}"::"https://github.com/ros-industrial/ros_qtc_plugin/archive/0.3.10.tar.gz"
         "0000-floor-include-math.patch")
 sha256sums=('SKIP'
             '0668aacb960563aaad8d5b93a160ab8043ec39eec5772cfd4ce93b38d86ac448')
