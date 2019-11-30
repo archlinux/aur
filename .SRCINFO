@@ -1,6 +1,6 @@
 pkgbase = tilde
 	pkgdesc = An intuitive text editor for the terminal.
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = http://os.ghalkes.nl/tilde.html
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tilde
 	depends = libt3config>=0.2.6
 	options = !libtool
 	source = http://os.ghalkes.nl/dist/tilde-1.0.0.tar.bz2
-	md5sums = b1a72d3a413c3eb073e5eb9ab5778761
+	md5sums = ef508c8170af75b565942560fcd1106d
 
 pkgname = tilde
 
