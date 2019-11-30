@@ -13,6 +13,7 @@ url="https://github.com/mattermost/desktop"
 license=('Apache')
 depends=("electron${_electronMajorVersion}")
 makedepends=('npm' 'git' 'jq')
+#optdepends=('hunspell: spell checking')
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
     "${pkgname}.sh"
@@ -49,6 +50,20 @@ prepare() {
         --arg electronVersion "$electronVersion" \
         electron-builder.json > electron-builder-new.json
     mv electron-builder-new.json electron-builder.json
+
+    # Mattermost Desktop is using simple-spellchecker which prevents to bind on
+    # the system Arch Linux hunspell dictionnaries. This is due to the fact
+    # simple-spellchecker comes with its own set of dictionnaries. They differ
+    # from the hunspell dictionnaries in the sense of, hunspell's dictionnaries
+    # have additional pieces of info attributed to each line.
+    # e.g. in /usr/share/hunspell/fr_FR.dic, "ordinateur" (computer in English)
+    # ordinateur/S*() po:nom is:mas
+    # simple-spellcheck expects a line with:
+    # ordinateur
+    # instead
+    #
+    # Asking upstream to switch to electron-spellchecker will fix the issue.
+    # https://github.com/electron-userland/electron-spellchecker
 }
 
 build() {
