@@ -1,7 +1,7 @@
 pkgbase = gmenu
 	pkgdesc = desktop application launcher
-	pkgver = 0.2.3
-	pkgrel = 2
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://git.sr.ht/~tslocum/gmenu
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = gmenu
 	license = MIT
 	makedepends = go-pie
 	makedepends = gtk3
-	source = https://git.sr.ht/~tslocum/gmenu/archive/v0.2.3.tar.gz
-	sha256sums = 6f2ff530a8aa664bf835d84607396bab12509e6c2dd38e78f525b9a6215a068e
+	source = https://git.sr.ht/~tslocum/gmenu/archive/v0.2.4.tar.gz
+	sha256sums = 9a770da4076e20e58347358baa09487405ca62fc50e586a93a58e362b53170c3
 
 pkgname = gmenu
 
