@@ -2,7 +2,7 @@
 
 pkgname=('python-lazr-smtptest')
 _pkgbase='lazr.smtptest'
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A framework for testing SMTP-based applications and libraries"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://launchpad.net/lazr.smtptest"
 license=('LGPL')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/l/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('9dca1890677a7fd022b1e36ea52dd22cea8bd3a3f2decb5b9625207b8ebf6e15')
+md5sums=('e8e62cae9d3484e5efd6e26939648ae9')
 makedepends=('python-setuptools')
 
 package_python-lazr-smtptest() {

@@ -1,14 +1,14 @@
 pkgbase = python-lazr-smtptest
 	pkgdesc = A framework for testing SMTP-based applications and libraries
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://launchpad.net/lazr.smtptest
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/l/lazr.smtptest/lazr.smtptest-2.0.3.tar.gz
-	sha256sums = 9dca1890677a7fd022b1e36ea52dd22cea8bd3a3f2decb5b9625207b8ebf6e15
+	source = https://pypi.python.org/packages/source/l/lazr.smtptest/lazr.smtptest-2.0.4.tar.gz
+	md5sums = e8e62cae9d3484e5efd6e26939648ae9
 
 pkgname = python-lazr-smtptest
 	depends = python
