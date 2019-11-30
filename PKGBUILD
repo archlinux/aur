@@ -1,7 +1,7 @@
 # Maintainer: Ismo Toijala <ismo.toijala@gmail.com>
 pkgname=python-simpleeval
 _name=${pkgname#python-}
-pkgver=0.9.6
+pkgver=0.9.10
 pkgrel=2
 pkgdesc="A simple, safe single expression evaluator library."
 arch=(any)
@@ -18,7 +18,7 @@ source=(
 	"https://raw.githubusercontent.com/danthedeckie/simpleeval/${pkgver}/LICENCE"
 )
 sha256sums=(
-	848fdb9ee5f30cf93b9f0d840db6e7562633d20abf7d67c2382a0a2162a79410
+	692055488c2864637f6c2edb5fa48175978a2a07318009e7cf03c9790ca17bea
 	91efc982fa45add893fa80ec3ab1524f31e50a1386adba1424ddcf432359850a
 )
 
