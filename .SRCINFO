@@ -1,0 +1,15 @@
+pkgbase = python2-flufl-i18n
+	pkgdesc = A high level API for Python internationalization
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://gitlab.com/warsaw/flufl.i18n
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/f/flufl.i18n/flufl.i18n-2.0.2.tar.gz
+	sha256sums = 500976b41cc21a6a927dabce189865e14e4593c9982ab193b50a749b8a6e4fb3
+
+pkgname = python2-flufl-i18n
+	depends = python2
+
