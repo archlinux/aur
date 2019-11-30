@@ -2,13 +2,13 @@
 
 pkgname=mkchromecast-git
 _gitname=mkchromecast
-pkgver=r1125.40c73f91
-pkgrel=1
+pkgver=r1173.2731d8d1
+pkgrel=2
 pkgdesc="Cast Audio/Video to your Google Cast and Sonos Devices"
 arch=('any')
 url="http://mkchromecast.com"
 license=('MIT')
-depends=('gi' 'mutagen' 'pavucontrol' 'pulseaudio' 'python' 'python-flask' 'python-netifaces' 'python-psutil' 'python-pychromecast-git' 'python-requests' 'python-setuptools' 'python-pyqt5' 'python-yaml' 'python-werkzeug' 'sox' 'lame' 'flac' 'faac')
+depends=('gi' 'python-mutagen' 'pavucontrol' 'pulseaudio' 'python' 'python-flask' 'python-netifaces' 'python-psutil' 'python-pychromecast-git' 'python-requests' 'python-setuptools' 'python-pyqt5' 'python-yaml' 'python-werkzeug' 'sox' 'lame' 'flac' 'faac')
 makedepends=('git' 'python-setuptools' 'python-pip')
 optdepends=('alsa-utils: to cast with ALSA'
             'ffmpeg: for ffmpeg backend and/or to cast with ALSA'
