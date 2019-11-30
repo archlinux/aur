@@ -1,6 +1,6 @@
 pkgbase = samim-fonts
 	pkgdesc = A beautiful Persian font based on Vazir font.
-	pkgver = 4.0.3
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://github.com/rastikerdar/samim-font
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = samim-fonts
 	conflicts = ttf-samim
 	conflicts = samim-fonts
 	replaces = ttf-samim
-	source = samim-fonts-4.0.3.zip::https://github.com/rastikerdar/samim-font/releases/download/v4.0.3/samim-font-v4.0.3.zip
-	sha256sums = a12206e9b1d0c99a061e115193ea45f402ea4c5cfcc40108d8c317e790e34866
+	source = samim-fonts-4.0.4.zip::https://github.com/rastikerdar/samim-font/releases/download/v4.0.4/samim-font-v4.0.4.zip
+	sha256sums = 8a5a79bd6e4b71a5051203a9a5b206745b989ab9db4fa32a0150635de8a8668a
 
 pkgname = samim-fonts
 
