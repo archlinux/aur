@@ -7,6 +7,7 @@ pkgbase = mingw-w64-coin-or-coinmetis
 	groups = mingw-w64-coin-or
 	license = custom
 	makedepends = mingw-w64-configure
+	makedepends = wget
 	depends = mingw-w64-crt
 	options = !buildflags
 	options = !strip
