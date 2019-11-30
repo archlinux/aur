@@ -6,7 +6,7 @@ _module="$_name"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A support library for building plugins systems in Python."
 arch=("any")
 url="http://pluginbase.pocoo.org/"
