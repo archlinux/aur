@@ -1,13 +1,13 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=alt-ergo
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SMT solver for software verification'
 arch=('x86_64')
 license=('custom:CeCILL-C')
 url='https://alt-ergo.ocamlpro.com'
 depends=('gtksourceview2' 'ocaml-zarith' 'ocaml-zip' 'ocaml-num' 'ocaml-menhir'
-         'ocaml-ocplib-simplex-git' 'ocaml-psmt2-frontend-git')
+         'ocaml-ocplib-simplex' 'ocaml-psmt2-frontend')
 makedepends=('lablgtk2' 'dune')
 source=("https://github.com/OCamlPro/alt-ergo/archive/$pkgver.tar.gz"
         "non_fatal_warnings.patch")
