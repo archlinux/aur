@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'openblas-lapack' 'arpack' 'parmetis' 'python')
-makedepends=('git' 'texlive-core')
+makedepends=('git' 'texlive-core' 'gcc-fortran' 'unzip')
 provides=('freefem' 'freefem++')
 conflicts=('freefem' 'freefem++')
 source=('FreeFem::git+https://github.com/FreeFem/FreeFem-sources.git#branch=develop')
