@@ -9,6 +9,8 @@ pkgbase = ocaml-psmt2-frontend-git
 	makedepends = ocaml
 	makedepends = ocaml-menhir
 	depends = ocaml
+	provides = ocaml-psmt2-frontend
+	conflicts = ocaml-psmt2-frontend
 	options = !strip
 	options = staticlibs
 

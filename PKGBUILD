@@ -8,7 +8,8 @@ license=('Apache2')
 depends=('ocaml')
 makedepends=('ocaml' 'ocaml-menhir')
 options=(!strip staticlibs)
-
+provides=('ocaml-psmt2-frontend')
+conflicts=('ocaml-psmt2-frontend')
 
 # TODO: update from Coquera to mewpull when PR #4 is merged.
 _gitroot="https://github.com/Coquera/psmt2-frontend.git"
