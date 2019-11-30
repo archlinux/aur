@@ -8,12 +8,11 @@ url="github.com/TAAPArthur/MPXManager"
 license=('MIT')
 options=(staticlibs !strip)
 depends=('xorg-server' 'libxi' 'libx11' 'libxcb' 'xcb-util-wm' )
-makedepends=('git' 'help2man')
 optdepends=('xorg-server-xvfb: testing')
-makedepends=('git' 'help2man')
-md5sums=('SKIP')
-source=( "$pkgname-$pkgver.tar.gz::https://github.com/TAAPArthur/MPXManager/archive/$pkgver.tar.gz")
+makedepends=('help2man')
+md5sums=('c242af6c10a1826125c7f497cead860d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TAAPArthur/MPXManager/archive/$pkgver.tar.gz")
 package() {
-  cd "MPXManager"
+  cd "MPXManager-$pkgver"
   make DESTDIR=$pkgdir install -j 8
 }
