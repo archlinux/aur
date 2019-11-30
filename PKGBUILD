@@ -1,7 +1,7 @@
 # Maintainer: Tomas Krizek <tomas.krizek@mailbox.org>
 _pkgname=websharecli
 pkgname=python-${_pkgname}
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="CLI utility to download from webshare.cz"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   'python-yaml'
 )
 source=("https://github.com/tomaskrizek/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('f1f075b5648dfa841407d19e8ed402914a8c4f20d6866b9da7718053594af901')
+sha256sums=('28041765b060190d177d4ba89213f3f45f4910fa26c8e6f4a2d2fcbeeab73fe2')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
