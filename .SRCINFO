@@ -1,0 +1,21 @@
+pkgbase = mpxmanager
+	pkgdesc = My Personal XWindow Manager
+	pkgver = 1.1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = help2man
+	depends = xorg-server
+	depends = libxi
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util-wm
+	optdepends = xorg-server-xvfb: testing
+	options = staticlibs
+	options = !strip
+	source = mpxmanager-1.1.0.tar.gz::https://github.com/TAAPArthur/MPXManager/archive/1.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = mpxmanager
+
