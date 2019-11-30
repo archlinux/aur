@@ -27,6 +27,6 @@ prepare() {
 }
 
 package() {
-  VIVALDI_VERSION=$(grep VIVALDI_VERSION /opt/vivaldi/vivaldi | head -1 | sed "s/'//g" | cut -d. -f-2 | cut -d= -f2)
+  VIVALDI_VERSION=$(cat /opt/vivaldi/vivaldi | perl -ne '/(?:VIVALDI_VERSION=.)(\d*\.\d*)/ and print "$1";')
   install -Dm644 "$srcdir/usr/lib/chromium-browser/libffmpeg.so" "$pkgdir/opt/vivaldi/libffmpeg.so.$VIVALDI_VERSION"
 }
