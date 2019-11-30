@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=('libdragon-git' 'libdragon-tools-git')
-pkgver=r172.5c21f8c
+pkgver=r209.5cc5336
 pkgrel=1
 url="http://www.dragonminded.com/n64dev/libdragon"
 arch=('x86_64')
@@ -18,9 +18,6 @@ pkgver() {
 
 build(){
   cd libdragon
-  export LIBDRAGON_VERSION_MAJOR=$(grep '"version":' package.json | cut -d\" -f4 | cut -d. -f1)
-  export LIBDRAGON_VERSION_MINOR=$(grep '"version":' package.json | cut -d\" -f4 | cut -d. -f2)
-  export LIBDRAGON_VERSION_REVISION=$(grep '"version":' package.json | cut -d\" -f4 | cut -d. -f3)
   N64_INST=/usr make
   N64_INST=/usr make tools
 }
