@@ -4,12 +4,12 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-pkgver=1.38.0.r1831.g3d3202804b
+pkgver=1.38.0.r4227.g55e3649e40
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=('electron' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+depends=('electron6' 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
@@ -21,7 +21,7 @@ source=("git+https://github.com/Microsoft/vscode"
         "code-liveshare.diff")
 sha512sums=('SKIP'
             'a97cbc79d76d2dad2ced74d66fa57b9a0aa3d82767d420b520bbaaf007c03ac60d61134668895ab4a8bd38951974c42afc59c03105ccc892742b34fee9b2c509'
-            '9bd93ec7ba946c005d3a12ea71ae2903593d17d3e4dcf55b4a5b612ebc82237338f0aaec59613eb77f355b0116aeb31320d0d32cd993233f140479ced44dfdbf'
+            '61da100b86e334f5a4880c1e612e5b9e7f61dda22aa8c52eec519f90efa25e298b361ee80c6c6ceceba4bc03de0e0addae47a0925b3fcbe6f50fc4324a652d01'
             '8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40'
             '0bd10ca06dea22854e47fc45d833756ee8d7bf714c88f63feef44e0b0b5da052fba3c27d001865e3389f391cd7b888d92dc0ba44029fa5c736225da3cf2f9a46')
 
@@ -67,7 +67,7 @@ prepare() {
     patch -p1 -i "${srcdir}/code-liveshare.diff"
 
     # Build native modules for system electron
-    local _target=$(</usr/lib/electron/version)
+    local _target=$(</usr/lib/electron6/version)
     sed -i "s/^target .*/target \"${_target//v/}\"/" .yarnrc
 
     # Patch appdata and desktop file

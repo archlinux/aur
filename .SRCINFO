@@ -1,6 +1,6 @@
 pkgbase = code-git
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor - git latest
-	pkgver = 1.38.0.r1831.g3d3202804b
+	pkgver = 1.38.0.r4227.g55e3649e40
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = code-git
 	makedepends = python2
 	makedepends = yarn
 	makedepends = nodejs-lts-dubnium
-	depends = electron
+	depends = electron6
 	depends = libsecret
 	depends = libx11
 	depends = libxkbfile
@@ -27,7 +27,7 @@ pkgbase = code-git
 	source = code-liveshare.diff
 	sha512sums = SKIP
 	sha512sums = a97cbc79d76d2dad2ced74d66fa57b9a0aa3d82767d420b520bbaaf007c03ac60d61134668895ab4a8bd38951974c42afc59c03105ccc892742b34fee9b2c509
-	sha512sums = 9bd93ec7ba946c005d3a12ea71ae2903593d17d3e4dcf55b4a5b612ebc82237338f0aaec59613eb77f355b0116aeb31320d0d32cd993233f140479ced44dfdbf
+	sha512sums = 61da100b86e334f5a4880c1e612e5b9e7f61dda22aa8c52eec519f90efa25e298b361ee80c6c6ceceba4bc03de0e0addae47a0925b3fcbe6f50fc4324a652d01
 	sha512sums = 8ec47e497287d67f37e7b669af416f43d5cdbd4574892867d7b95996ef5de53640b5bc919b06b177e1fd91cb005579d6ed0c17325117b9914ba7cf28f5f06e40
 	sha512sums = 0bd10ca06dea22854e47fc45d833756ee8d7bf714c88f63feef44e0b0b5da052fba3c27d001865e3389f391cd7b888d92dc0ba44029fa5c736225da3cf2f9a46
 
