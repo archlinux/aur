@@ -1,6 +1,6 @@
 pkgbase = libt3highlight
 	pkgdesc = A syntax highlighting library.
-	pkgver = 0.4.9
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = http://os.ghalkes.nl/t3/libt3highlight.html
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libt3highlight
 	depends = pcre2
 	options = !libtool
 	source = http://os.ghalkes.nl/dist/libt3highlight-0.4.6.tar.bz2
-	md5sums = eba93e8dadf991d353ed5de8ea63bd9e
+	md5sums = 183285cb9ef6c94abde9e7b5b30bf599
 
 pkgname = libt3highlight
 

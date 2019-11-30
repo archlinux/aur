@@ -2,7 +2,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=libt3highlight
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A syntax highlighting library."
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('eba93e8dadf991d353ed5de8ea63bd9e')
+md5sums=('183285cb9ef6c94abde9e7b5b30bf599')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
