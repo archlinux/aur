@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=pacman-hooks-desbma-git
-pkgver=r22.57e0eb5
+pkgver=r23.0e49f77
 pkgrel=1
 pkgdesc='Various personal Pacman hooks'
 arch=('x86_64')
