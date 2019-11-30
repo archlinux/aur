@@ -1,0 +1,15 @@
+pkgbase = python-lexdata
+	pkgdesc = Python bot framework for Lexemes on Wikidata
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://nudin.github.io/LexData/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-requests
+	source = https://github.com/Nudin/LexData/archive/v0.1.10.tar.gz
+	sha256sums = 259824d10551da8a1a4bddfd6e9a1a354f07ca38ca902eb6a17fff35bbf2b13a
+
+pkgname = python-lexdata
+
