@@ -6,14 +6,10 @@ pkgbase = python-flufl-lock
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/f/flufl.lock/flufl.lock-2.4.1.tar.gz
 	sha256sums = 72639aca3ef0379aef125c7346b042691c3452152843f301801b3c2ddcac1032
 
 pkgname = python-flufl-lock
 	depends = python
-
-pkgname = python2-flufl-lock
-	depends = python2
 
