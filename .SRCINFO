@@ -1,0 +1,12 @@
+pkgbase = lean3-bin
+	pkgdesc = Lean Theorem Prover
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/leanprover/lean
+	arch = x86_64
+	license = Apache
+	source = https://github.com/leanprover/lean/releases/download/v3.4.2/lean-3.4.2-linux.tar.gz
+	md5sums = b8f164b0af837b2597a4ca93fed331b2
+
+pkgname = lean3-bin
+
