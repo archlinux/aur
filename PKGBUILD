@@ -12,7 +12,7 @@ url="https://gitlab.com/mailman/django-mailman3"
 license=('GPLv3')
 options=(!emptydirs)
 source=("https://gitlab.com/mailman/django-mailman3/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('3b870fcaf7b92b73a0af2a9bc05c4b50b5242fea50568c5eb8bf968fd0ac7088')
+sha256sums=('74f671f809f34de5919aef23dc63685c3c4ba1c651431c98e2272726f0ef5177')
 
 package() {
   cd "${srcdir}/django-mailman3-${pkgver}-${_commit}"
