@@ -1,4 +1,5 @@
-# Maintainer: xsmile <>
+# Maintainer: mehalter <micah at mehalter.com>
+# Contributor: xsmile <>
 
 pkgname=myetherwallet
 _pkgname=MyEtherWallet
