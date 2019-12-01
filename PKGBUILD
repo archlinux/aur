@@ -8,12 +8,12 @@ _singleapplication=3.0.18
 
 pkgname=optimus-manager-qt
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu"
 arch=('x86_64')
 url="https://github.com/Shatur95/optimus-manager-qt"
 license=('GPL3')
-depends=('qt5-base' 'qt5-x11extras' 'optimus-manager>=1.2.2')
+depends=('qt5-base' 'qt5-svg' 'qt5-x11extras' 'optimus-manager>=1.2.2')
 makedepends=('qt5-tools' 'libxrandr')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/Shatur95/optimus-manager-qt/archive/$pkgver.tar.gz"
         SingleApplication-$_singleapplication.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz")
