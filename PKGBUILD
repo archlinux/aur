@@ -4,7 +4,7 @@
 pkgname=asbru-cm-gtk3-git
 _pkgname=${pkgname%-gtk3-git}
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL3')
 pkgdesc="A free and open-source connection manager. GTK3 depelopment branch. GIT version"
