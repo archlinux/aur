@@ -1,8 +1,9 @@
-# Maintainer: Ivy Foster <code@escondida.tk>
+# Maintainer: mehalter <micah at mehalter.com>
+# Contributor: Ivy Foster <code@escondida.tk>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 pkgname=translate-shell-git
-pkgver=0.9.6.6.r3.g0060b10
+pkgver=0.9.6.11.0115103
 pkgrel=1
 pkgdesc='A command-line interface and interactive shell for Google Translate.'
 arch=(i686 x86_64)
