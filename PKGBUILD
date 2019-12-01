@@ -1,28 +1,79 @@
 # Maintainer: telans <telans@protonmail.com>
 # Co-Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
-
 pkgname=mullvad-vpn-beta
 pkgver=2019.9.stable
 _pkgver=2019.9
-pkgrel=4
-pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
+pkgrel=5
+pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
+makedepends=('git' 'cargo' 'npm')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$_pkgver/MullvadVPN-${_pkgver}_amd64.deb"{,.asc})
-sha256sums=('4ba5b1c87cb5afdadbcfb37413bdd7ea72df139dd01815e9ca0f1c54f81f03e1'
-            'SKIP')
-validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$_pkgver"
+        "${pkgname%-beta}.desktop")
+sha256sums=('SKIP'
+            '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2')
+
+prepare() {
+	cd "$srcdir/mullvadvpn-app"
+	git submodule update --init --recursive
+}
+
+build() {
+	cd "$srcdir/mullvadvpn-app"
+
+	# Build mullvad-daemon
+	cargo build --release --locked
+
+	# Build Electron GUI app
+	cd gui
+	npm install --cache "$srcdir/npm-cache"
+}
+
+check() {
+	cd "$srcdir/mullvadvpn-app"
+	cargo test --release --locked
+
+	cd gui
+	npm test
+}
 
 package() {
-	tar -xvf data.tar.xz -C "$pkgdir"
+	cd "$srcdir/mullvadvpn-app"
+	install -dm755 "$pkgdir/opt/Mullvad VPN"
+	cp -a dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
+
+	install -Dm644 target/release/libtalpid_openvpn_plugin.so -t \
+		"$pkgdir/opt/Mullvad VPN/resources"
+	install -m755 target/release/{mullvad-daemon,mullvad-problem-report} -t \
+		"$pkgdir/opt/Mullvad VPN/resources"
+	install -Dm644 dist/linux-unpacked/resources/mullvad-daemon.service -t \
+		"$pkgdir/usr/lib/systemd/system"
+	install -Dm755 target/release/mullvad -t "$pkgdir/usr/bin"
+
+	ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" \
+		"$pkgdir/usr/bin/mullvad-problem-report"
 
 	ln -s "/opt/Mullvad VPN/mullvad-gui" "$pkgdir/usr/bin/${pkgname%-beta}"
 
-	install -Dm644 "$pkgdir/opt/Mullvad VPN/resources/mullvad-daemon.service" \
-		"$pkgdir/usr/lib/systemd/system/mullvad-daemon.service"
+	install -Dm644 "$srcdir/${pkgname%-beta}.desktop" -t \
+		"$pkgdir/usr/share/applications"
+
+	for icon_size in 16 48; do
+		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+		install -d $pkgdir/$icons_dir
+		install -m644 dist/.icon-set/icon_${icon_size}x${icon_size}.png \
+			$pkgdir$icons_dir/${pkgname%-beta}.png
+	done
+
+	for icon_size in 32 64 128 256 512 1024; do
+		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+		install -d $pkgdir/$icons_dir
+		install -m644 dist/.icon-set/icon_${icon_size}.png \
+			$pkgdir$icons_dir/${pkgname%-beta}.png
+	done
 }
