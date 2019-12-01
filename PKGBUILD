@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <devel at sciunto dot org>
 
 pkgname=mat2
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Metadata anonymisation toolkit"
 arch=('any')

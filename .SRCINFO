@@ -1,6 +1,6 @@
 pkgbase = mat2
 	pkgdesc = Metadata anonymisation toolkit
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://0xacab.org/jvoisin/mat2
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mat2
 	depends = mailcap
 	optdepends = ffmpeg
 	optdepends = bubblewrap
-	source = git+https://0xacab.org/jvoisin/mat2.git#tag=0.9.0?signed
+	source = git+https://0xacab.org/jvoisin/mat2.git#tag=0.10.0?signed
 	validpgpkeys = 9FCDEE9E1A381F311EA62A7404D041E8171901CC
 	sha256sums = SKIP
 
