@@ -1,7 +1,7 @@
 # Maintainer: Frederick Gnodtke <fgnodtke at cronosx dot de>
 
 pkgname=jolly
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Static image gallery generator."
 arch=('any')
@@ -11,10 +11,9 @@ depends=(
     'nodejs'
     'zsh')
 makedepends=('yarn')
-provides=('jolly')
 source=("https://gitlab.com/prior99/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=('!strip')
-sha256sums=('42b874530de376facb5138fc7a5ae2d8f5d7aae8192e57abbc1ce3708fe2a516')
+sha256sums=('c7a639105656de72e9cee52b7e44878ebe0e4e0996f41892b1d31135f844715e')
 
 _jsdir=${pkgname}-${pkgver}
 
