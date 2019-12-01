@@ -7,5 +7,5 @@ Name=Stone Soup
 GenericName=Crawl Stone Soup
 Comment=Community maintained variant of Linley's Dungeon Crawl - git version
 Icon=stone-soup-tiles-git.png
-Exec=crawl
+Exec=/usr/share/bin/crawl
 Categories=Game;ArcadeGame
