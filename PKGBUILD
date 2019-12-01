@@ -1,19 +1,19 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=imagine-git
-pkgver=0.5.0.r0.g7bea16d
-pkgrel=1.5
+pkgver=0.5.1.r0.g20d46c3
+pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=("x86_64")
 url="https://github.com/meowtec/Imagine"
 license=("MIT")
-depends=("electron2" "imagemagick" "gconf")
+depends=("electron" "imagemagick" "gconf")
 makedepends=("git" "npm")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
 options=(!strip)
-source=("${pkgname}::git+$url.git#tag=v0.5.0"
+source=("${pkgname}::git+$url.git#tag=v0.5.1"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
