@@ -1,10 +1,12 @@
 pkgbase = mtg
 	pkgdesc = Bullshit-free MTProto proxy for Telegram
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/9seconds/mtg
 	install = mtg.install
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	depends = glibc
