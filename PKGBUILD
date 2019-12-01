@@ -1,7 +1,7 @@
-# Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
+# Maintainer: Alex Hirzel <alex at hirzel period us>
 pkgname=albert-lite
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/albertlauncher"
@@ -18,6 +18,7 @@ makedepends=(
   'gcc'
   'qt5-svg'
   'muparser'
+  'python'
 )
 optdepends=('muparser: Calculator plugin')
 source=(

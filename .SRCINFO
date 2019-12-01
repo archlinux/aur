@@ -1,7 +1,7 @@
 pkgbase = albert-lite
 	pkgdesc = A sophisticated standalone keyboard launcher. Without QML and VirtualBox dependencies
 	pkgver = 0.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albertlauncher
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = albert-lite
 	makedepends = gcc
 	makedepends = qt5-svg
 	makedepends = muparser
+	makedepends = python
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = qt5-charts
