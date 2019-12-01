@@ -4,11 +4,11 @@
 # Contributor: itsme <mymail@ishere.ru>
 
 pkgname=debops
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
-url="http://debops.org/"
+url="https://debops.org/"
 license=('GPL3')
 depends=('python' 'ansible' 'python-future' 'util-linux' 'encfs' 'gnupg')
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=('python-setuptools')
 conflicts=('depops-git')
 source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('a77d5efcbf777fe1bdcbd5679487bb448f6e4a1ea536f192849f1e613b97e80c562e7b348885ade4b88b0c422148c9bd5cea4ecc0f6bd0d5773094379365c166')
+sha512sums=('8812450a997c13e54133c4ee6dcd23e9313fb173d05220414956447c19afa1c90ede3cc2226046b60624a20b0c8fe2c3769a9acb16b8716b744d2b253e4bb211')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
