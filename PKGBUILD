@@ -3,13 +3,13 @@
 pkgname=tuxedo-keyboard
 _pkgbase=tuxedo-keyboard
 pkgver=2.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
 license=("GPL")
 arch=('x86_64') 
-makedepends=('git' 'linux-headers' 'gcc' 'make')
-depends=('dkms')
+makedepends=('gcc' 'make')
+depends=('git' 'dkms' 'linux-headers')
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-wmi' 'tuxedo-wmi-dkms')
 replaces=('tuxedo-keyboard-dkms')
 source=('git+https://github.com/tuxedocomputers/tuxedo-keyboard.git' 'tuxedo_keyboard.conf')
