@@ -1,4 +1,3 @@
-# $Id$
 # Maintainer: soloturn@gmail.com
 
 _basename=libdecoration
@@ -9,7 +8,7 @@ pkgdesc="Help Wayland clients draw window decorations for them."
 arch=('i686' 'x86_64')
 url="https://gitlab.gnome.org/jadahl/libdecoration"
 license=('jonas')
-makedepends=('meson' 'ninja' 'git')
+makedepends=('git' 'meson' 'ninja')
 conflicts=("$_basename")
 provides=("$_basename")
 
@@ -26,4 +25,6 @@ package() {
   pwd
   DESTDIR="${pkgdir}" ninja -C build install
 }
+
+# vim: ts=2 sw=2 et:
 
