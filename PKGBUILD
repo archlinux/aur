@@ -3,7 +3,7 @@
 pkgname=obs-nvfbc-git
 _pkgname=obs-nvfbc
 pkgver=r18.7fa7706
-pkgrel=1
+pkgrel=2
 pkgdesc="OBS Studio source plugin for NVIDIA FBC API"
 arch=('x86_64')
 license=('LGPL2.0')
@@ -11,7 +11,7 @@ url="https://gitlab.com/fzwoch/obs-nvfbc"
 provides=('obs-nvfbc')
 conflicts=('obs-nvfbc')
 depends=('obs-studio')
-makedeps=('meson')
+makedepends=('meson')
 source=(git+https://gitlab.com/fzwoch/obs-nvfbc.git)
 sha256sums=('SKIP')
 
