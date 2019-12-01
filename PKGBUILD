@@ -1,5 +1,5 @@
 pkgname=dosbox-x-sdl2
-pkgver=0.82.23
+pkgver=0.82.24
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ optdepends=()
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz
         dosbox-x.png
         dosbox-x.desktop)
-sha256sums=('53c8141ba3cd4cfffe1047bc962037ee66599bc93d23b52f4614288661caf00f'
+sha256sums=('1d0d6bedc277a62913137a07c7b65569e1072e64d153b5725d8bcdadcfbf206a'
             'ad9fa0e16081a4c899e3f59bb5c04ddb13948311ddda54e976acb164d6e72235'
             '1fbd80a6d985806af3d7a5d197f9dd75f61964e8b63ef544ed9a44f1e2df55f2')
 
