@@ -1,7 +1,7 @@
 pkgbase = xava-git
-	pkgdesc = X11 Audio Visualizer for Alsa/Pulseaudio
+	pkgdesc = X11 Audio Visualizer for Alsa/Pulseaudio/FIFO
 	pkgver = 0.6.2.1.r0.g960965b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nikp123/xava
 	arch = any
 	license = MIT
