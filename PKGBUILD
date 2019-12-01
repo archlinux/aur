@@ -27,7 +27,8 @@ check() {
   export PYTHONDONTWRITEBYTECODE=1 
 
   cd "$srcdir/${_name}-${pkgver}"
-  export PYTHONPATH="$PWD/_skbuild/linux-$CARCH-3.7/setuptools/lib"
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  export PYTHONPATH="$PWD/_skbuild/linux-$CARCH-${python_version}/setuptools/lib"
   python runtests.py --coverage --no-build
 }
 

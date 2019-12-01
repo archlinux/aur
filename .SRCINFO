@@ -1,7 +1,7 @@
 pkgbase = python-slycot
 	pkgdesc = Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations.
 	pkgver = 0.3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/python-control/Slycot
 	arch = i686
 	arch = x86_64
