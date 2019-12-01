@@ -4,7 +4,7 @@
 _pkgname=projecteur
 _gitname=Projecteur
 pkgname=projecteur-git
-pkgver=0.7alpha.2.r192.1de2631
+pkgver=0.7alpha.9.r199.b9b7050
 pkgrel=1
 pkgdesc="Linux Desktop Application for the Logitech Spotlight device."
 arch=('x86_64')
