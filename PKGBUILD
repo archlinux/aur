@@ -1,7 +1,7 @@
 # Contributor: Tonich <tonich-chuvack@mail.ru>
 
 pkgname=openrc-xdm
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="OpenRC display manager init script"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ backup=( etc/openrc/conf.d/xdm )
 conflicts=('init-displaymanager')
 source=($pkgname-$pkgver::https://github.com/DemonSinusa/$pkgname/archive/$pkgver.tar.gz)
 install=openrc-xdm.install
-sha256sums=('7db010fedce2ee9948c837feeb50dbe0d09cd036f2eb34dbb20713cf4d4294e0')
+sha256sums=('a36c1c2df0b09c48b030f2815226c1b4d929bbeeba4188c4e0d5a85da2905a6d')
 
 _inst_initd(){
     install -Dm755 "$1.initd" "${pkgdir}/etc/openrc/init.d/$1"
