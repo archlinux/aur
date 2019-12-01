@@ -3,12 +3,13 @@
 pkgname=maptool-jar
 _pkgname=MapTool
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
 depends=('java-runtime-jre=10')
+optdepends=('gvfs: access virtual filesystem')
 provides=('maptool')
 conflicts=('maptool')
 source=(
