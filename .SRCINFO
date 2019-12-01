@@ -1,0 +1,15 @@
+pkgbase = python2-robot-detection
+	pkgdesc = Library for detecting if a HTTP User Agent header is likely to be a bot
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/robot-detection
+	arch = any
+	license = GPL
+	makedepends = python2-setuptools
+	options = !emptydirs
+	source = https://github.com/rory/robot-detection/archive/v0.4.0.tar.gz
+	sha256sums = 9fa0423a890fd5856e5494076ba6e67abd2f4173d91c8b292819dfaa815b5060
+
+pkgname = python2-robot-detection
+	depends = python2
+
