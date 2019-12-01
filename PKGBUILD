@@ -4,15 +4,15 @@
 _pkgname=PuLP
 pkgbase=python-pulp
 pkgname=(python-pulp python2-pulp)
-pkgver=1.6.8
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="A Linear Programming modeler written in Python"
 arch=("any")
 license=("BSD")
 url="https://github.com/coin-or/pulp"
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/b5/87/71293d89377341551f2f331d259c0b7e7324b60ce37c597d0a42f0ebc18d/$_pkgname-$pkgver.tar.gz")
-sha512sums=('e78b33f331144f458a585fda396b5c9d1d09e25199d29fc2de39027d6cbee74dfa3325878c77ca01164102adf22ee5bb31beea5af54500c1ad917cedb2dbf783')
+source=("https://files.pythonhosted.org/packages/e4/33/2882343b235326f6a1b8c6208ade294e3f4efd12d635af7e36eb27b69202/$_pkgname-$pkgver.tar.gz")
+sha512sums=('21a67e5e8b8911e472f5dd1525dc9cdccd26ad3c85b3c8070d2f69b91bc47cbb47751e72a152f0efefaafcf7c07e4d8215962f05a14cb14ce113f4399b514d52')
 
 prepare() {
 	for _python in python python2; do
@@ -49,6 +49,5 @@ package_python2-pulp() {
 	depends=('python2-pyparsing')
 	_package_for_python_version python2
 
-	# Uncomment the following line if you want to install both versions at the same time:
-	# rm "$pkgdir"/usr/bin/pulp{,doc}test
+	rm "$pkgdir"/usr/bin/pulptest
 }
