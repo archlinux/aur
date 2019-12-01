@@ -1,7 +1,7 @@
 pkgbase = freshrss
 	pkgdesc = A free, self-hostable aggregator…
 	pkgver = 1.15.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://freshrss.org/
 	install = freshrss.install
 	arch = any
