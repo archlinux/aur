@@ -5,7 +5,7 @@
 #export LG2=en
 
 pkgname=i2p
-pkgver=0.9.43
+pkgver=0.9.44
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -28,23 +28,20 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
-        'i2prouter.bash' 'i2prouter.sh'
-        gettext-0.20.patch::'https://github.com/i2p/i2p.i2p/commit/eef6c5cb33d8292ce247fcd49578cc9fa1acf6cb.patch')
+        'i2prouter.bash' 'i2prouter.sh')
 
-sha256sums=('beb2a3c62efce826cd5aa3e296b483143ad2c581ddb038677f960f7d110df81c'
+sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
             'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'df26da04c8415ac24ec73b0dd08d3459a8964553bb77e5da5ab9833b0a31d865'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
-            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8'
-            'a3be87c6ed2a253a393ef39b47bb0c8d91bbbd80111557e412753e78c590e5b8')
+            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8')
 
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch -Np1 -i "$srcdir/gettext-0.20.patch"
-}
+# prepare() {
+#     cd "$pkgname-$pkgver"
+# }
 
 build() {
     cd "$pkgname-$pkgver"
