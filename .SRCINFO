@@ -1,6 +1,6 @@
 pkgbase = xmrig
 	pkgdesc = High Perf CryptoNote CPU and GPU (OpenCL, CUDA) miner.
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = xmrig
 	backup = etc/xmrig/xmrig.conf
 	source = xmrig.service
 	source = xmrig.sysusers
-	source = https://github.com/xmrig/xmrig/archive/v5.0.1.tar.gz
+	source = https://github.com/xmrig/xmrig/archive/v5.1.0.tar.gz
 	sha256sums = 1c4fa2898b1252507e885c4bfa2d8d5b20bce2069cb5f703bb084066d560a770
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
-	sha256sums = c94398d326713ea19a4dd066ec462fc829254dcfa192fc9d0b77f78c8d41d186
+	sha256sums = 2a9b62a5b6de20e61d1541633bb70d6183382e83bcfa75846c33892e66423e3d
 
 pkgname = xmrig
 
