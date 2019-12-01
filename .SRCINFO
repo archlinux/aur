@@ -13,9 +13,11 @@ pkgbase = linux-zen-git
 	source = linux-zen.conf
 	source = linux-zen.preset
 	source = git://github.com/damentz/zen-kernel.git#branch=5.4/master
+	source = allow-disable-msr-lockdown.patch
 	sha256sums = 6373073ad943e068478ef1373be4eb2a7e473da8743d946f1f50cd364685ab87
 	sha256sums = 18fe6b2664a9a740544c4cb990efe5ec933d6e64caf9e5d0a6ced92af0027c2d
 	sha256sums = SKIP
+	sha256sums = 2f4bedb64dde14045196702644f0c82ddb1271e3c5392657dd71c40af82ff3f1
 
 pkgname = linux-zen-git
 	install = linux-zen.install

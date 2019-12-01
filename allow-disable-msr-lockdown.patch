@@ -1,0 +1,70 @@
+From 750fac45443c3bd472dd6e6c0fdca9cba08abfc4 Mon Sep 17 00:00:00 2001
+From: Matt Parnell <parwok@gmail.com>
+Date: Sat, 30 Nov 2019 19:05:19 -0600
+Subject: [PATCH] For Intel CPUs, some of the MDS mitigations utilize the new
+ "flush" MSR, and while this isn't something normally used in userspace, it
+ does cause false positives for the "Forshadow" vulnerability.
+
+Additionally, Intel CPUs use MSRs for voltage and frequency controls,
+which in
+many cases is useful for undervolting to avoid excess heat.
+
+Signed-off-by: Matt Parnell <mparnell@gmail.com>
+---
+ arch/x86/kernel/msr.c     |  5 ++++-
+ security/lockdown/Kconfig | 12 ++++++++++++
+ 2 files changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/arch/x86/kernel/msr.c b/arch/x86/kernel/msr.c
+index 1547be359d7f..4adce59455c3 100644
+--- a/arch/x86/kernel/msr.c
++++ b/arch/x86/kernel/msr.c
+@@ -80,10 +80,11 @@ static ssize_t msr_write(struct file *file, const char __user *buf,
+ 	int err = 0;
+ 	ssize_t bytes = 0;
+ 
++#if defined(LOCK_DOWN_DENY_RAW_MSR)
+ 	err = security_locked_down(LOCKDOWN_MSR);
+ 	if (err)
+ 		return err;
+-
++#endif
+ 	if (count % 8)
+ 		return -EINVAL;	/* Invalid chunk size */
+ 
+@@ -135,9 +136,11 @@ static long msr_ioctl(struct file *file, unsigned int ioc, unsigned long arg)
+ 			err = -EFAULT;
+ 			break;
+ 		}
++#if defined(LOCK_DOWN_DENY_RAW_MSR)
+ 		err = security_locked_down(LOCKDOWN_MSR);
+ 		if (err)
+ 			break;
++#endif
+ 		err = wrmsr_safe_regs_on_cpu(cpu, regs);
+ 		if (err)
+ 			break;
+diff --git a/security/lockdown/Kconfig b/security/lockdown/Kconfig
+index e84ddf484010..2d51a9f20415 100644
+--- a/security/lockdown/Kconfig
++++ b/security/lockdown/Kconfig
+@@ -44,4 +44,16 @@ config LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY
+ 	 code to read confidential material held inside the kernel are
+ 	 disabled.
+ 
++config LOCK_DOWN_DENY_RAW_MSR
++    bool "Lock down and deny raw MSR access"
++    depends on LOCK_DOWN_KERNEL_FORCE_CONFIDENTIALITY
++    default y
++    help
++      Some Intel based systems require raw MSR access to use the flush
++      MSR for MDS mitigation confirmation. Raw access can also be used
++      to undervolt many Intel CPUs.
++
++      Say Y to prevent access or N to allow raw MSR access for such
++      cases.
++
+ endchoice
+-- 
+2.24.0
+
