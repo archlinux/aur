@@ -1,16 +1,16 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=cheqlist
 _pyname=cheqlist
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A simple Qt checklist.'
 arch=('any')
 url='https://github.com/Kwpolska/cheqlist'
 license=('BSD')
-depends=('python' 'python-setuptools' 'python-pyqt5')
+depends=('python' 'python-setuptools' 'pyside2')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('c27a559ce88e16d7037ab3cf681aa11d')
+md5sums=('c01b37ccc89d057b8634b0ce3de50775')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
