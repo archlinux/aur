@@ -1,6 +1,6 @@
 pkgbase = zedenv-grub
 	pkgdesc = zedenv plugin for GRUB (ALPHA)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = http://github.com/johnramsden/zedenv-grub
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = zedenv-grub
 	depends = python-setuptools
 	depends = python-click
 	depends = python-pyzfscmds
+	depends = zedenv
 	conflicts = zedenv-grub-git
-	source = zedenv-grub-0.1.7.tar.gz::https://github.com/johnramsden/zedenv-grub/archive/v0.1.7-alpha.tar.gz
-	md5sums = 371feecd1f0880a5d7aeb46f6866c265
+	source = zedenv-grub-0.1.8.tar.gz::https://github.com/johnramsden/zedenv-grub/archive/v0.1.8-alpha.tar.gz
+	md5sums = 2da64b90f04a903b088519c638d23f23
 
 pkgname = zedenv-grub
 
