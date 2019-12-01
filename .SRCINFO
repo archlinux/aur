@@ -1,0 +1,18 @@
+pkgbase = jpeg2png-git
+	pkgdesc = A free engine capable of running Age of Kings.
+	pkgver = r144.04054a2
+	pkgrel = 1
+	url = https://github.com/sandsmark/jpeg2png
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = libjpeg
+	depends = libpng
+	provides = jpeg2png
+	conflicts = jpeg2png
+	source = git+https://github.com/sandsmark/jpeg2png.git
+	md5sums = SKIP
+
+pkgname = jpeg2png-git
+
