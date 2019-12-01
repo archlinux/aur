@@ -1,9 +1,9 @@
-# Maintainer: François Magimel <magimel.francois@gmail.com>
+# Maintainer: François Magimel <magimel.francois at gmail dit com>
 # Contributor: doorknob60 <doorknob60 at gmail dot com>
 
 pkgname=fofix
 pkgver=3.121
-pkgrel=11
+pkgrel=12
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://github.com/fofix/fofix"
 arch=(any)
