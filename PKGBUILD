@@ -24,9 +24,9 @@ source=('http://gdlp01.c-wss.com/gds/2/0100006902/01/cnijfilter2-5.20-1-deb.tar.
 
 sha1sums=('9fff089de350b02e4b1e29a39ff54f9ed7a22771'
          '4cf0ab10c1e8b4df13db18c4c1e47b8c643c0fd3'
-         '3657e73ea9255451b4765482285f3154863a09f4'
-         'a850d282cbb8dce08fd7d10e94fcaa0f05469ad9'
-         '2425b1c07eb684cf22763f02b5f7ca7a74dec604')
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 _printDrvSrc='cnijfilter2-5.20-1-deb'
 _scanDrvSrc='scangearmp2-3.20-1-deb'
