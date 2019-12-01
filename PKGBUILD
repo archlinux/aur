@@ -1,7 +1,7 @@
 # Maintainer: Jens Rudolf <jens.rudolf@gmx.net>
 pkgname=linuxband
 pkgver=12.02.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI front-end for MMA - Musical MIDI Accompaniment"
 arch=(x86_64)
 url="http://linuxband.org"
@@ -25,5 +25,9 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
+
+	# Change shebang to use python2 instead of python
+	sed -i '1s/python/python2/' target/linuxband
+
 	make DESTDIR="$pkgdir/" install
 }
