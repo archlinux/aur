@@ -1,0 +1,16 @@
+pkgbase = crunchyroll-guest-pass-finder
+	pkgdesc = Automatically get Crunchyroll guest passes for free
+	pkgver = 2.1
+	pkgrel = 0
+	url = https://github.com/TAAPArthur/CrunchyrollGuestPassFinder
+	arch = any
+	license = MIT
+	depends = python3
+	depends = python-selenium
+	optdepends = firefox: to use Firefox driver (default)
+	optdepends = geckodriver: to use Firefox driver (default)
+	source = https://github.com/TAAPArthur/CrunchyrollGuestPassFinder/archive/v2.1.tar.gz
+	md5sums = a8017de9bf7c8c6f8e620720f5fd5824
+
+pkgname = crunchyroll-guest-pass-finder
+
