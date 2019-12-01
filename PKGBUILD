@@ -3,11 +3,12 @@
 # Contributor: Kevin Van Lierde <kevin.van.lierde@gmail.com>
 pkgname=tuxedo-backlight-control
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 url=https://github.com/webketje/tuxedo-backlight-control
 source=('git+https://github.com/webketje/tuxedo-backlight-control')
+depends=('tuxedo-keyboard')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 pkgdesc='GUI utility built on top of TUXEDO Keyboard. Provides a bash CLI (backlight) and a minimal Python UI.'
