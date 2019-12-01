@@ -1,0 +1,14 @@
+pkgbase = libvdwxc
+	pkgdesc = A library for vdW-DF exchange-correlation functionals
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://libvdwxc.org/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc-fortran
+	depends = fftw-mpi
+	source = https://gitlab.com/libvdwxc/libvdwxc/-/archive/0.4.0/libvdwxc-0.4.0.tar.bz2
+	sha256sums = 5fcd37253489931b94ce865bb4e6942250665e269057a50bd532c8697ac19dc7
+
+pkgname = libvdwxc
+
