@@ -1,6 +1,6 @@
 pkgbase = arch-headless
 	pkgdesc = Modify your arch ISO for a headless (and keyboardless) computer.
-	pkgver = 1.14
+	pkgver = 1.16
 	pkgrel = 0
 	url = http://github.com/wiemag/arch-headless
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = arch-headless
 	depends = gawk
 	depends = sed
 	depends = util-linux
-	source = https://github.com/wiemag/arch-headless/archive/v1.14.tar.gz
-	md5sums = 4121e77baf2f237a82b785c5676da92f
+	source = https://github.com/wiemag/arch-headless/archive/v1.16.tar.gz
+	md5sums = d06c34b48ed264258801bfaa19bcdb3b
 
 pkgname = arch-headless
 

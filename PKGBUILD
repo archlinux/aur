@@ -1,6 +1,6 @@
 # Wiesław Magusiak <w.magusiak@gmail.com>
 pkgname=arch-headless
-pkgver=1.14
+pkgver=1.16
 pkgrel=0
 pkgdesc="Modify your arch ISO for a headless (and keyboardless) computer."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ install=
 changelog=
 source=(https://github.com/wiemag/arch-headless/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('4121e77baf2f237a82b785c5676da92f')
+md5sums=('d06c34b48ed264258801bfaa19bcdb3b')
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/"
 	install -d -m 755 ${pkgdir}/usr/bin
