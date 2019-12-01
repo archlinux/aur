@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://u.is'
 license=('')
 source=(https://update.u.is/downloads/linux/utopia-latest.amd64.deb)
-sha256sums=('4dd71c748edac41c087950297a54b74cb6b38fdfe013ea34207cf4abad6a6691')
+sha256sums=('670d7ab9548c8ff0094e3e350ec34e62ccda12e92082e04f56a7d187dd021ce5')
 
 build() {
 
