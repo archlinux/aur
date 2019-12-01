@@ -1,6 +1,6 @@
 pkgbase = xmrig-bin
 	pkgdesc = Monero cryptocurrency CPU miner, HTTP API enabled, with default donation level
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/xmrig/xmrig
 	install = xmrig.install
@@ -9,13 +9,14 @@ pkgbase = xmrig-bin
 	license = GPL
 	depends = glibc
 	optdepends = monero: wallet
+	optdepends = xmrig-cuda: CUDA plugin to mine on NVidia GPU
 	provides = xmrig
 	conflicts = xmrig
 	replaces = xmrig
-	source = https://github.com/xmrig/xmrig/releases/download/v5.0.1/xmrig-5.0.1-xenial-x64.tar.gz
-	source = https://raw.githubusercontent.com/xmrig/xmrig/v5.0.1/README.md
-	md5sums = ae1d2aef3fb9808cf68cd2a5334b2605
-	md5sums = 5ea59462c852286746050b0ab6d32a51
+	source = https://github.com/xmrig/xmrig/releases/download/v5.1.0/xmrig-5.1.0-xenial-x64.tar.gz
+	source = https://raw.githubusercontent.com/xmrig/xmrig/v5.1.0/README.md
+	md5sums = 4404e786ff8636d2184261bd61072e9d
+	md5sums = 9579101c49e73625325237bff5066335
 
 pkgname = xmrig-bin
 
