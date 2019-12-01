@@ -1,6 +1,6 @@
 pkgbase = python2-responses
 	pkgdesc = A utility library for mocking out the `requests` Python library.
-	pkgver = 0.10.6
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://github.com/getsentry/responses
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = python2-responses
 	depends = python2-cookies
 	depends = python2-six
 	depends = python2-mock
-	source = python2-responses-0.10.6.tar.gz::https://github.com/getsentry/responses/archive/0.10.6.tar.gz
-	sha512sums = 7fee4150de9b477ca2fb01e71ee9dffae0e3e2138502af54c39bb9291d950d5feb6a6f8db3e37a8a58b6561d625ae8e42a90921463ecb0c5a0f9213466047334
+	source = python2-responses-0.10.7.tar.gz::https://github.com/getsentry/responses/archive/0.10.7.tar.gz
+	sha512sums = 7c58d19ae4e16d6403c05c430b92e407ff12a90377bef09a63cd9da206651714217f77bf2a457cdc4d7aab017f64cd4251c195e7f09cf98efd3cc16755141a55
 
 pkgname = python2-responses
 
