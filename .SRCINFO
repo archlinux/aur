@@ -1,6 +1,6 @@
 pkgbase = utopia
 	pkgdesc = Client for Utopia, an "Anti Orwellian Ecosystem"
-	pkgver = 1.0.5418
+	pkgver = 1.0.5434
 	pkgrel = 1
 	url = https://u.is
 	arch = x86_64

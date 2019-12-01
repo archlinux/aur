@@ -1,7 +1,7 @@
 # Maintainer: albakham <contact@geber.ga>
 
 pkgname=utopia
-pkgver=1.0.5418
+pkgver=1.0.5434
 pkgrel=1
 pkgdesc='Client for Utopia, an "Anti Orwellian Ecosystem"'
 arch=('x86_64')
