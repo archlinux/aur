@@ -1,21 +1,21 @@
 pkgbase = octopus
-	pkgdesc = A scientific program aimed at ab initio virtual experimentation
-	pkgver = 6.0
-	pkgrel = 2
-	url = http://www.tddft.org/programs/octopus/
-	arch = i686
+	pkgdesc = Real-space Time-Dependent Density Functional Theory code
+	pkgver = 9.1
+	pkgrel = 1
+	url = https://octopus-code.org
 	arch = x86_64
-	license = GPL
-	makedepends = gcc
+	license = LGPL
+	checkdepends = procps-ng
 	makedepends = gcc-fortran
-	depends = gsl
-	depends = fftw
-	depends = arpack
-	depends = libxc
+	makedepends = sed
+	depends = scalapack
 	depends = gd
-	depends = libyaml
-	source = http://www.tddft.org/programs/octopus/download/6.0/octopus-6.0.tar.gz
-	sha256sums = 4a802ee86c1e06846aa7fa317bd2216c6170871632c9e03d020d7970a08a8198
+	depends = gsl
+	depends = libxc
+	depends = libvdwxc
+	depends = perl
+	source = https://gitlab.com/octopus-code/octopus/-/archive/9.1/octopus-9.1.tar.bz2
+	sha256sums = 2d3322855d38ec417418b7293df87469c7c85a428f2de46238008f0d1c07ee32
 
 pkgname = octopus
 
