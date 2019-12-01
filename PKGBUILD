@@ -1,6 +1,6 @@
 # Maintainer: Simon Hanna <simon dot hanna AT serve-me DOT info>
 
-pkgname=('python-django-gravatar' 'python2-django-gravatar')
+pkgname=('python-django-gravatar')
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="Includes helper methods for interacting with gravatars outside of template code"
@@ -10,20 +10,13 @@ license=('MIT')
 options=(!emptydirs)
 source=("https://github.com/twaddington/django-gravatar/archive/${pkgver}.tar.gz")
 sha256sums=('849a4ffdb99c333f69709a54bccc12dd266e1db7a8f352eb0ebcc97e65161782')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 
 package_python-django-gravatar() {
   depends=('python-django')
   cd "$srcdir/django-gravatar-$pkgver"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1
-}
-
-package_python2-django-gravatar() {
-  depends=('python2-django')
-  cd "$srcdir/django-gravatar-$pkgver"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
