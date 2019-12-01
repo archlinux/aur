@@ -5,19 +5,19 @@ pkgname=uksmd-git
 _repouser=post-factum
 _reponame=uksmd
 pkgver=0.0.0.r15.42f4ff8
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
 depends=(procps-ng)
-source=(${pkgname}::git+https://gitlab.com/post-factum/uksmd.git)
+source=(${_reponame}::git+https://gitlab.com/post-factum/uksmd.git)
 sha256sums=('SKIP')
 conflicts=("${_reponame}")
 provides=("${_reponame}")
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${_reponame}"
   printf "0.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
