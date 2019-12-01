@@ -3,11 +3,12 @@
 pkgname=maptool-bin
 _pkgname=MapTool
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
+optdepends=('gvfs: access virtual filesystem')
 provides=('maptool')
 conflicts=('maptool')
 source=("https://github.com/RPTools/maptool/releases/download/${pkgver}/maptool-${pkgver}.deb")
