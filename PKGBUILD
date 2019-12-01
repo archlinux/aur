@@ -5,7 +5,7 @@
 
 pkgname=ebadoo-shell
 _pkgname=gnome-shell
-pkgver=3.34.1+14+g7e8884a63
+pkgver=3.34.1+14+g7e8884a64
 pkgrel=1
 epoch=1
 pkgdesc="Ebadoo-shell es una variante estetica."
