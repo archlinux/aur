@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Launch application
-exec electron /opt/cabal-desktop-git/app.asar "$@"
+exec electron5 /opt/cabal-desktop-git/app.asar "$@"
