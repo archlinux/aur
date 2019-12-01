@@ -1,7 +1,7 @@
 pkgbase = vpn-unlimited
 	pkgdesc = VPN Unlimited client application
 	pkgver = 4.23
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.vpnunlimitedapp.com
 	arch = x86_64
 	license = custom:"Copyright (c) 2017 KeepSolid Inc."
