@@ -43,6 +43,19 @@ steps:
   when:
     event: tag
 
+- name: publish-github
+  image: plugins/github-release
+  volumes:
+    - name: build-products
+      path: /tmp/products
+  settings:
+    api_key:
+      from_secret: github_token
+    files: /tmp/products/*
+    prerelease: yes
+  when:
+    event: tag
+
 - name: publish-server
   image: appleboy/drone-scp
   volumes:
@@ -77,19 +90,6 @@ steps:
     port: 22
     script:
       - ./update_mbp_repo_bce.sh
-  when:
-    event: tag
-
-- name: publish-github
-  image: plugins/github-release
-  volumes:
-    - name: build-products
-      path: /tmp/products
-  settings:
-    api_key:
-      from_secret: github_token
-    files: /tmp/products/*
-    prerelease: yes
   when:
     event: tag
 
