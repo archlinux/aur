@@ -12,7 +12,7 @@ url="https://gitlab.com/mailman/postorius"
 license=('LGPL')
 options=(!emptydirs)
 source=("postorius-${pkgver}.tar.gz::https://gitlab.com/mailman/postorius/repository/archive.tar.gz?ref=${pkgver}")
-sha256sums=('5cc8cf50fe7a40a98483bf38434ce60f86741371abdedc9155eb9008e69e60c6')
+sha256sums=('db3728bb950fba0c3e37420eb059fd042a536342910443a8d6f71b86c079514e')
 
 package() {
   cd "$srcdir/postorius-$pkgver-$_commit"

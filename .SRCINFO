@@ -10,7 +10,7 @@ pkgbase = python-django-postorius
 	depends = python-django-mailman3
 	options = !emptydirs
 	source = postorius-1.3.0.tar.gz::https://gitlab.com/mailman/postorius/repository/archive.tar.gz?ref=1.3.0
-	sha256sums = 5cc8cf50fe7a40a98483bf38434ce60f86741371abdedc9155eb9008e69e60c6
+	sha256sums = db3728bb950fba0c3e37420eb059fd042a536342910443a8d6f71b86c079514e
 
 pkgname = python-django-postorius
 
