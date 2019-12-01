@@ -1,7 +1,7 @@
 # Maintainer: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 pkgname=emacs-use-package
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="A use-package declaration for simplifying your .emacs"
 url="https://github.com/jwiegley/use-package"
@@ -11,7 +11,7 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-use-package')
 source=("https://github.com/jwiegley/use-package/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f26f1b35e47612c8b5ccc956cc0288b581a59bcc9cdcb8370123c904d7b17a3a')
 
 build() {
   cd "${srcdir}/use-package-${pkgver}"
