@@ -1,21 +1,22 @@
 pkgbase = rippled
 	pkgdesc = Ripple peer-to-peer network daemon
-	pkgver = 1.2.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ripple/rippled
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
 	makedepends = cmake
-	makedepends = boost<1.69
+	makedepends = boost
 	makedepends = clang
 	makedepends = doxygen
 	depends = protobuf
-	depends = boost-libs<1.69
+	depends = boost-libs
+	depends = openssl
 	backup = etc/opt/ripple/rippled.cfg
 	backup = etc/opt/ripple/validators.txt
-	source = https://github.com/ripple/rippled/archive/1.2.2.zip
-	sha256sums = 3e686061ee1821f417ff8e2afa6b036454a39e8a73435b70ffa89a320c83f11b
+	source = https://github.com/ripple/rippled/archive/1.4.0.zip
+	sha256sums = ca4626c7e94b28db9c0fcdbaf3ea135199d09fa8c1a841006a6c952845d63cca
 
 pkgname = rippled
 
