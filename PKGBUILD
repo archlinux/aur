@@ -25,7 +25,7 @@ build() {
 
 package() {
   cd $srcdir/${_pkgname}/kits/xed-install-base-*-lin-x86-64
-  mkdir -p "$pkgdir/usr/include"
-  cp -r include "$pkgdir/usr/include/intel"
+  mkdir -p "$pkgdir/usr"
+  cp -r include "$pkgdir/usr/"
   cp -r lib "$pkgdir/usr/"
 }
