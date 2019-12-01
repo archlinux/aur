@@ -1,13 +1,13 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname="numnastics"
 pkgname="${_pkgname}-git"
-pkgver=r2.3d956cc
+pkgver=r10.77ad778
 pkgrel=1
 pkgdesc="A number puzzle audio game"
 arch=('any')
 url="https://gitlab.com/stormdragon2976/numnastics"
 license=('GPL3')
-depends=('python' 'python-pygame' 'python-requests' 'python-xdg')
+depends=('python' 'python-pygame' 'python-pyperclip' 'python-requests' 'python-xdg')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

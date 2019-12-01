@@ -1,6 +1,6 @@
 pkgbase = numnastics-git
 	pkgdesc = A number puzzle audio game
-	pkgver = r2.3d956cc
+	pkgver = r10.77ad778
 	pkgrel = 1
 	url = https://gitlab.com/stormdragon2976/numnastics
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = numnastics-git
 	makedepends = git
 	depends = python
 	depends = python-pygame
+	depends = python-pyperclip
 	depends = python-requests
 	depends = python-xdg
 	provides = numnastics
