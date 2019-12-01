@@ -2,8 +2,8 @@
 
 pkgname=('python-django-hyperkitty')
 _pkgbase=hyperkitty
-_commit=105de6f29f85adb86ededb77cd3f88a856bbfc52/
-pkgver=1.0.3
+_commit=154d90c73a1f84ecd217117f1a6959fffc072434
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Django app that provides a web user interface to access GNU Mailman archives"
 arch=(any)
@@ -18,7 +18,7 @@ license=('GPL')
 options=(!emptydirs)
 install=
 source=("${_pkgbase}-${pkgver}.tar.gz::https://gitlab.com/mailman/hyperkitty/repository/archive.tar.gz?ref=v${pkgver}")
-sha256sums=('c1615b0c98a2611f64e1f1f18f0b57a1d8ef3aaf8d7b14f2f563ae93244c04a3')
+sha256sums=('0937047661e48080a06d53fbb35260bc69bc7f37c06eb408838e750744ca3235')
 
 package() {
   cd "$srcdir/$_pkgbase-v$pkgver-$_commit"
