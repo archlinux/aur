@@ -1,0 +1,16 @@
+pkgbase = python-django-postorius
+	pkgdesc = A Django app that provides a web user interface to access GNU Mailman
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitlab.com/mailman/postorius
+	arch = any
+	license = LGPL
+	makedepends = python2-setuptools
+	depends = python
+	depends = python-django-mailman3
+	options = !emptydirs
+	source = postorius-1.3.0.tar.gz::https://gitlab.com/mailman/postorius/repository/archive.tar.gz?ref=1.3.0
+	sha256sums = 5cc8cf50fe7a40a98483bf38434ce60f86741371abdedc9155eb9008e69e60c6
+
+pkgname = python-django-postorius
+
