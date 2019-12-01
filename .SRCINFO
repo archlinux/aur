@@ -1,6 +1,6 @@
 pkgbase = prototool-git
 	pkgdesc = Your Swiss Army Knife for Protocol Buffers
-	pkgver = 1.4.0.r1.g1c2c34f
+	pkgver = 1.9.0.r2.g0d05c76
 	pkgrel = 1
 	url = https://github.com/uber/prototool
 	arch = x86_64

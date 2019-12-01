@@ -1,6 +1,6 @@
 # Maintainer: David Flemström <david.flemstrom@gmail.com>
 pkgname=prototool-git
-pkgver=1.4.0.r1.g1c2c34f
+pkgver=1.9.0.r2.g0d05c76
 pkgrel=1
 pkgdesc="Your Swiss Army Knife for Protocol Buffers"
 arch=(x86_64)
@@ -16,21 +16,12 @@ pkgver() {
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  export GO111MODULE=on
-  cd "$pkgname"
-  go get -d .
-}
-
 build() {
   export GO111MODULE=on
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-trimpath"
   cd "$pkgname"
-  go build \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    -o prototool \
-    ./cmd/prototool
+  go build -o prototool ./cmd/prototool
   go run ./internal/cmd/gen-prototool-bash-completion/main.go > prototool-bash-completion
   go run ./internal/cmd/gen-prototool-zsh-completion/main.go > prototool-zsh-completion
   mkdir -p prototool-manpages
