@@ -1,0 +1,11 @@
+pkgbase = python-iperf3
+	pkgdesc = A python library to interface with the ipef3 command-line tool
+	pkgver = 0.1.11
+	pkgrel = 1
+	url = https://github.com/thiezn/iperf3-python
+	arch = any
+	license = GPL
+	makedepends = python-pip
+
+pkgname = python-iperf3
+
