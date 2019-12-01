@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=('any')
 url="https://www.openssl.org"
@@ -29,7 +29,9 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
+  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
+  export CFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
+  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
 
   cd "${srcdir}/openssl-${_pkgver}"
   for _arch in ${_architectures}; do
