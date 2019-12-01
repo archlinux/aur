@@ -1,0 +1,17 @@
+pkgbase = git-branch-diff-git
+	pkgdesc = git branch-diff command
+	pkgver = r3.67debc1
+	pkgrel = 1
+	url = https://gitlab.com/mcoffin/git-branch-diff
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = scdoc
+	depends = bash
+	provides = git-branch-diff
+	conflicts = git-branch-diff
+	source = git-branch-diff::git+https://gitlab.com/mcoffin/git-branch-diff.git#branch=master
+	sha256sums = SKIP
+
+pkgname = git-branch-diff-git
+

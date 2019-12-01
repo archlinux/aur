@@ -1,0 +1,4 @@
+/pkg
+/src
+/git-branch-diff
+/*.pkg.tar*
