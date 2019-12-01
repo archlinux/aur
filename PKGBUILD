@@ -1,79 +1,36 @@
-# Maintainer : George Eleftheriou <eleftg>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: George Eleftheriou <eleftg>
 # Contributor: Xwang <xwaang1976@gmail.com>
  
-_pkgname=SU2
+_PkgName=SU2
 pkgname=su2
-pkgver=6.1.0
-pkgrel=2
-pkgdesc="Open-source collection of software tools written in C++ for performing Partial Differential Equation (PDE) analysis and solving PDE-constrained optimization problems"
+pkgver=7.0.0
+pkgrel=1
+pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://su2code.github.io"
-license=('LGPL')
-depends=('python' 'openmpi')
-makedepends=('swig' 'hdf5-openmpi' 'libaec-static' 'jsoncpp'
-    'openblas-lapack-static')
+license=('LGPL2.1')
+depends=('gcc-fortran' 'openmpi' 'python')
+makedepends=('awk')
 arch=('x86_64')
-source=("https://github.com/su2code/SU2/archive/v${pkgver}.tar.gz"
-        build_system.patch)
-install="${pkgname}".install
-sha512sums=(
-    '7765b88d3e01a7ca968d6b19d662ce6952fe7f6a60055297d9f6aa5adb69f6709d5f9ea16c00467f58d43a65aad25fd7f19674517f586bb776c75fa9401612d5'
-    'a311064dcacba95eb81271f99e5f4d178a9d772ebf389d7b678a06bce420691aaf714e8625fb72edf7289ae2976a2d04373f7186cf1331ab68abd3129bde0619')
+source=("https://github.com/su2code/SU2/archive/v$pkgver.tar.gz")
+sha256sums=('6207dcca15eaebc11ce12b2866c937b4ad9b93274edf6f23d0487948ac3963b8')
 
 prepare() {
-    mkdir -p build
-
-    echo 'export SU2_RUN="/opt/'"${pkgname}"'/bin"' > su2_env.sh
-    echo 'export PATH=${PATH}:${SU2_RUN}' >> su2_env.sh
-    echo 'export PYTHONPATH=${PYTHONPATH}:${SU2_RUN}' >> su2_env.sh
-
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -p1 < "${srcdir}"/build_system.patch
-    autoreconf -f -i
+    cd $srcdir/$_PkgName-$pkgver
+    autoreconf -if
+    PYTHON_VERSION=$( python --version ) | awk '{print $2}' | cut -c -3
 }
 
 build() {
-    cd build
-
-    "${srcdir}/${_pkgname}-${pkgver}"/configure \
-    --prefix="/opt/${pkgname}" \
-    --enable-mpi \
-    --enable-PY_WRAPPER \
-    --enable-complex \
-    --enable-normal \
-    --enable-tecio \
-    --enable-metis \
-    --enable-parmetis \
-    --enable-cgns \
-    --with-cc=/usr/bin/mpicc \
-    --with-cxx=/usr/bin/mpicxx \
-    --with-HDF5-lib=/usr/lib \
-    --with-HDF5-include=/usr/include \
-    --with-SZIP-lib=/usr/lib \
-    --with-SZIP-include=/usr/include \
-    --with-ZLIB-lib=/usr/lib \
-    --with-ZLIB-include=/usr/include \
-    --with-Jsoncpp-lib=/usr/lib \
-    --with-Jsoncpp-include=/usr/include \
-    --with-LAPACK-lib=/usr/lib \
-    --with-LAPACK-include=/usr/include
- 
-    # Automatic differentiation is controlled by a python script
-    # which calls configure like:
-    # ./preconfigure.py --enable-autodiff
-    # and is supposed to download the 3rd party headers needed
-    # but is quite limited in terms of config options
-    #
-    # ... hence disabling for now ...
-    #--enable-codi-reverse \
-
+    cd $srcdir/$_PkgName-$pkgver
+    ./configure --prefix=/usr --enable-mpi
     make
 }
 
 package() {
-    cd "${srcdir}/build"
-    # sadly DESTDIR does not work so we have to use prefix
-    # make DESTDIR="${pkgdir}" install
-    make prefix="${pkgdir}/opt/${pkgname}" install
-    install -D -m644 "${srcdir}/su2_env.sh" "${pkgdir}/etc/profile.d/su2_env.sh"
-    install -D -m644 "${srcdir}/${_pkgname}-${pkgver}/COPYING" "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    cd $srcdir/$_PkgName-$pkgver
+    make DESTDIR=$pkgdir install
+    install -dm755 $pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages
+    cd $pkgdir/usr/bin
+    mv *.py FSI SU2 -t $pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages
 }
