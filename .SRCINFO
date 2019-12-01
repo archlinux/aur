@@ -1,0 +1,15 @@
+pkgbase = unbird
+	pkgdesc = Extract code from Bird-style Literate Programming files
+	pkgver = r2.3234264
+	pkgrel = 1
+	url = https://github.com/gkbrk/unbird
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	provides = unbird
+	conflicts = unbird
+	source = unbird::git+https://github.com/gkbrk/unbird
+	sha512sums = SKIP
+
+pkgname = unbird
+
