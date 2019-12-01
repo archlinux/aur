@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=git-branch-diff-git
-pkgver=r3.67debc1
+pkgver=0.1.0.r0.e5038ec
 pkgrel=1
 pkgdesc="git branch-diff command"
 arch=(any)
@@ -34,10 +34,10 @@ pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# Git, tags available
-	# printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | tr -d 'v')"
 
 	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	# printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
