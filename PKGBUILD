@@ -1,6 +1,6 @@
 # Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=blender-plugin-animation-nodes-git
-pkgver=2.1.5.r5357.1b013502
+pkgver=2.1.5.r5344.b75b9435
 pkgrel=1
 pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
 arch=('any')
