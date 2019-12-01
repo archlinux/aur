@@ -8,6 +8,7 @@ url='https://github.com/azat/popt'
 license=('GPL')
 provides=(popt)
 conflicts=(popt)
+options=('staticlibs')
 makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make')
 source=('git+https://github.com/azat/popt#branch=patched')
 md5sums=(SKIP)

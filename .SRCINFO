@@ -13,6 +13,7 @@ pkgbase = popt-deb
 	makedepends = make
 	provides = popt
 	conflicts = popt
+	options = staticlibs
 	source = git+https://github.com/azat/popt#branch=patched
 	md5sums = SKIP
 
