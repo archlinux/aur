@@ -2,8 +2,8 @@
 # Contributor: Bertrand Ciroux <bertrand.ciroux@gmail.com>
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-appimage-git
-pkgver=0.19_18775
-pkgrel=2
+pkgver=0.19_18811
+pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
