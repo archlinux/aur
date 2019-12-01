@@ -3,13 +3,13 @@
 pkgname=haskell-alsa-core
 _hkgname=alsa-core
 pkgver=0.5.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides access to ALSA infrastructure"
 url=https://hackage.haskell.org/package/alsa-core
 license=('BSD')
 arch=('i686' 'x86_64')
 depends=('ghc-libs' 'haskell-base' 'haskell-extensible-exceptions')
-makedepends=('ghc')
+makedepends=('ghc' 'alsa-lib')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha256sums=('eb50495ef05ecc7c06a0147da7f0d3efde832a44d23caaf5172dc114882270ab')
 
