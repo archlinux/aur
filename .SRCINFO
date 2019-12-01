@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-bcachefs
 	pkgdesc = Linux
-	pkgver = v5.4_rc8_303
+	pkgver = v5.4.1_307_g00408c31cf7f
 	pkgrel = 2
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -35,11 +35,11 @@ pkgname = linux-mainline-bcachefs
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=v5.4_rc8_303
+	provides = linux-mainline-bcachefs=v5.4.1_307_g00408c31cf7f
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-mainline-bcachefs=v5.4_rc8_303
-	provides = linux-mainline-bcachefs-headers=v5.4_rc8_303
-	provides = linux-headers=v5.4_rc8_303
+	depends = linux-mainline-bcachefs=v5.4.1_307_g00408c31cf7f
+	provides = linux-mainline-bcachefs-headers=v5.4.1_307_g00408c31cf7f
+	provides = linux-headers=v5.4.1_307_g00408c31cf7f
 

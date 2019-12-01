@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
-pkgver=v5.4_rc8_303
+pkgver=v5.4.1_307_g00408c31cf7f
 pkgrel=2
 pkgdesc="Linux"
 _srcver_tag=v5.4
@@ -120,7 +120,7 @@ prepare() {
 
     export EDITOR=true
 
-    git rebase origin/master
+    git rebase $(git tag | grep -v rc | tail -n1)
 
     patch -p1 -i ../0007-v5.3-fsync.patch
 
