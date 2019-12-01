@@ -2,8 +2,8 @@
 # Contributor: doorknob60 <doorknob60 at gmail dot com>
 
 pkgname=fofix
-pkgver=3.121
-pkgrel=12
+pkgver=3.122
+pkgrel=1
 pkgdesc="Frets on Fire X (FoFiX). Highly improved version of Frets on Fire"
 url="https://github.com/fofix/fofix"
 arch=(any)
@@ -21,22 +21,13 @@ depends=(
 )
 replaces=('fofix')
 source=(
-  'https://github.com/fofix/fofix/archive/Release_3.121.tar.gz'
+  'https://github.com/fofix/fofix/archive/v3.122.tar.gz'
   'fofix.desktop'
   'fofix.png'
 )
-md5sums=('ed38bef0e72bfecdd67818f80f487e36'
+md5sums=('e8ec6f5e9fa4c39bd5b23a0c9fd8f864'
          'e26fc0ae8f5ca5d9bdbeb34535bacd9a'
          'f886a7fdfa7592b50aa9f62901910e03')
-
-build() {
-    cd ${srcdir}/${pkgname}-Release_${pkgver}
-
-    # patchs, waiting for a new version
-    sed -i 's/import Image/try:\n    from PIL import Image\nexcept ImportError:\n    import Image/' src/Video.py  # @8cdf04
-    sed -i 's/dispatch.sysex_event(sysex_data)//' src/midi/MidiFileParser.py  # @19d39b3
-    sed -i 's/string = image.tostring/string = image.tobytes/' src/Texture.py  # @da2a21d
-}
 
 package() {
     install -d $pkgdir/usr/
@@ -48,7 +39,7 @@ package() {
     cd ${srcdir}
     cp fofix.desktop ${pkgdir}/usr/share/applications/
     cp fofix.png ${pkgdir}/usr/share/pixmaps/
-    mv ${srcdir}/${pkgname}-Release_${pkgver} $pkgdir/opt/fofix
+    mv ${srcdir}/${pkgname}-${pkgver} $pkgdir/opt/fofix
     cd $pkgdir/usr/bin/
     echo "#!/bin/sh" > fofix
     echo "cd /opt/fofix/src/" >> fofix
