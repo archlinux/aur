@@ -1,0 +1,19 @@
+pkgbase = bcalm-git
+	pkgdesc = constructs compacted de Bruijn graph from sequencing data
+	pkgver = 2.2.0.r49.g890ea4a
+	pkgrel = 1
+	url = https://github.com/GATB/bcalm
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	depends = python
+	provides = bcalm
+	conflicts = bcalm
+	source = git+https://github.com/GATB/bcalm.git
+	source = git+https://github.com/GATB/gatb-core.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = bcalm-git
+
