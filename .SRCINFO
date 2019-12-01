@@ -1,0 +1,14 @@
+pkgbase = xsane-xrandr
+	pkgdesc = Utility script to create and manage user defined monitors
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/TAAPArthur/xsane-xrandr
+	arch = any
+	license = MIT
+	depends = xorg-xrandr
+	optdepends = python3: for the configure command
+	source = https://github.com/TAAPArthur/xsane-xrandr/archive/v1.0.tar.gz
+	md5sums = 8b3d453061671839218de64b931ad5e4
+
+pkgname = xsane-xrandr
+
