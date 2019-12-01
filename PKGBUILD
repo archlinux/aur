@@ -1,17 +1,19 @@
-# Maintainer: orumin <dev@orum.in>
+# Maintainer: Tod Jackson <tod.jackson@gmail.com>
+# Contributor: orumin <dev@orum.in>
+# Contributor: adam900710
 
 _basename=gst-libav
 pkgname="lib32-$_basename"
-pkgver=1.14.4
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework ffmpeg Plugin (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(GPL)
-depends=('lib32-gst-plugins-base-libs' 'bzip2')
-makedepends=(python autoconf-archive git valgrind-multilib yasm)
+depends=('gst-plugins-base-libs' 'lib32-gst-plugins-base-libs' 'bzip2')
+makedepends=(python autoconf-archive git lib32-gcc-libs valgrind-multilib yasm)
 provides=("lib32-gst-ffmpeg=$pkgver-$pkgrel")
-_commit=1c21e61bc18cdbf94ee6510f837a7ddc65c8831e  # tags/1.14.4^0
+_commit=fe08c26641592f058b6fa0da9a1f86fc0b24cb0c  # tags/1.16.1^0
 source=("git+https://anongit.freedesktop.org/git/gstreamer/gst-libav#commit=$_commit"
         "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common"
         "git+https://git.videolan.org/git/ffmpeg" "git://git.libav.org/gas-preprocessor")
