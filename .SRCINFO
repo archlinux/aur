@@ -1,6 +1,6 @@
 pkgbase = msbuild-16-bin
 	pkgdesc = Xamarin implementation of the Microsoft build system
-	pkgver = 16.3_xamarinxplat.2019.08.08.00.55_0xamarin2_ubuntu1804b1
+	pkgver = 16.4_xamarinxplat.2019.09.09.15.03_0xamarin5_ubuntu1804b1
 	pkgrel = 1
 	url = https://github.com/mono/msbuild
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = msbuild-16-bin
 	depends = mono>=5.0.0
 	provides = msbuild
 	conflicts = msbuild
-	source = msbuild-amd64-v16.3+xamarinxplat.2019.08.08.00.55-0xamarin2+ubuntu1804b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_16.3+xamarinxplat.2019.08.08.00.55-0xamarin2+ubuntu1804b1_all.deb
-	sha256sums = 964f17280478373027f9f597e311aeb1a7080a94a22d4ba9fea88be0a94bfdb1
+	source = msbuild-amd64-v16.4+xamarinxplat.2019.09.09.15.03-0xamarin5+ubuntu1804b1.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/msbuild/msbuild_16.4+xamarinxplat.2019.09.09.15.03-0xamarin5+ubuntu1804b1_all.deb
+	sha256sums = 47804a0ff3b7531d3c5e1d7b733189354761e08593e6d927b868b3c3f219aef3
 
 pkgname = msbuild-16-bin
 
