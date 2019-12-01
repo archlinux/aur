@@ -2,7 +2,7 @@
 
 pkgbase=linux-froidzen
 pkgver=5.4.1.zen2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -27,7 +27,9 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0f54f8053a3b150ba0484b4a2663bb58e51bfb628523042aaee762f49496db67')
+            'c79d776a2052027638dcc1c17d1bc1eca17f2b2cc484e1bee89c9277b50f66bc'
+            '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2'
+            'b5452ebec7960f7ef5be7e79e1b5eb5df10658007abd26be27b1b95a3b1aa753')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
