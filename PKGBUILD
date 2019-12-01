@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.0.9
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=('x86_64')
@@ -24,6 +24,7 @@ depends=(
   lib32-libsndfile
   lib32-portaudio
   lib32-readline
+  lib32-sdl2
 )
 makedepends=(
   cmake
@@ -31,12 +32,7 @@ makedepends=(
 )
 optdepends=('pulseaudio: PulseAudio sound support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('bfe82ccf1bf00ff5cfc18e2d9d1e5d95c6bd169a76a2dec14898d1ee0e0fac8a')
-
-prepare() {
-  cd "${_name}-${pkgver}"
-  mkdir -vp build
-}
+sha256sums=('526addc6d8445035840d3af7282d3ba89567df209d28e183da04a1a877da2da3')
 
 build() {
   cd "${_name}-${pkgver}"
@@ -65,5 +61,4 @@ package() {
   make -C build DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
-
 # vim: ts=2 sw=2 et:
