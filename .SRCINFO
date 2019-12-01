@@ -1,13 +1,15 @@
 pkgbase = tuxedo-plymouth-one
 	pkgdesc = TUXEDO style plymouth theme
 	pkgver = 1.0.1.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-plymouth-one
+	install = tuxedo-plymouth-one.install
 	arch = any
 	license = GPLv2
 	depends = plymouth
 	source = git+https://github.com/tuxedocomputers/tuxedo-plymouth-one
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = tuxedo-plymouth-one
 
