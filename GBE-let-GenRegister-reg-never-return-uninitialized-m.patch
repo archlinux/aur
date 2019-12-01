@@ -1,0 +1,37 @@
+From e837f9f4c6133d8ef56923ffbdbca224b1d7aa23 Mon Sep 17 00:00:00 2001
+From: Michael Lass <bevan@bi-co.net>
+Date: Sun, 1 Dec 2019 13:05:45 +0100
+Subject: [PATCH] GBE: let GenRegister::reg() never return uninitialized memory
+
+GenRegister::reg() is called throughout the code, not only on virtual
+but also on physical registers. For the latter, value.reg is not
+initialized and therefore reg() returns uninitialized memory, leading to
+undefined behavior. Make sure to always return initialized memory by
+returning a valid ir::Register, even for physical registers.
+
+Fixes https://gitlab.freedesktop.org/beignet/beignet/issues/12
+---
+ backend/src/backend/gen_register.hpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/backend/src/backend/gen_register.hpp b/backend/src/backend/gen_register.hpp
+index 6c73f5e6..78846c91 100644
+--- a/backend/src/backend/gen_register.hpp
++++ b/backend/src/backend/gen_register.hpp
+@@ -243,7 +243,12 @@ namespace gbe
+     }
+ 
+     /*! Return the IR virtual register */
+-    INLINE ir::Register reg(void) const { return ir::Register(value.reg); }
++    INLINE ir::Register reg(void) const {
++      if (this->physical)
++        return ir::Register();
++      else
++        return ir::Register(value.reg);
++    }
+ 
+     /*! For immediates or virtual register */
+     union {
+-- 
+2.24.0
+
