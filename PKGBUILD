@@ -1,15 +1,15 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=heimer-git
-pkgver=1.11.0.r0.g6a36683
-pkgrel=1.2
+pkgver=1.12.0.r0.g4dbcdce
+pkgrel=1
 pkgdesc="simple cross-platform mind map and note-taking tool written in Qt."
 arch=("x86_64")
 url="https://github.com/juzzlin/heimer"
 license=("GPL3")
 depends=("qt5-tools")
 makedepends=("git" "cmake")
-source=("${pkgname}::git+$url.git#tag=1.11.0")
+source=("${pkgname}::git+$url.git#tag=1.12.0")
 md5sums=('SKIP')
 
 pkgver() {
