@@ -1,0 +1,24 @@
+From 60f9462c5a57789fc7d9ac3be595422366ec3a2d Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sun, 1 Dec 2019 14:45:41 +0100
+Subject: [PATCH 2/2] Add missing algorithm header to main.cpp
+
+---
+ img4tool/main.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/img4tool/main.cpp b/img4tool/main.cpp
+index dc2474e..6f9fc66 100644
+--- a/img4tool/main.cpp
++++ b/img4tool/main.cpp
+@@ -12,6 +12,7 @@
+ #include <getopt.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <algorithm>
+ 
+ #include <libgeneral/macros.h>
+ #include "img4tool.hpp"
+-- 
+2.24.0
+

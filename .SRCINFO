@@ -1,6 +1,6 @@
 pkgbase = img4tool-git
 	pkgdesc = Tool for manipulating IMG4, IM4M and IM4P files
-	pkgver = r162.d514ce5
+	pkgver = r168.dd53076
 	pkgrel = 1
 	url = https://github.com/tihmstar/img4tool
 	arch = x86_64
@@ -13,7 +13,11 @@ pkgbase = img4tool-git
 	provides = img4tool
 	conflicts = img4tool
 	source = git+https://github.com/tihmstar/img4tool.git
+	source = 0001-Fix-31-add-missing-algorithm-header.patch
+	source = 0002-Add-missing-algorithm-header-to-main.cpp.patch
 	sha256sums = SKIP
+	sha256sums = 656580f345b286f2f9b5c1b91e2a819b2dea580cb3a9b4a22ccb4befd7ea42b0
+	sha256sums = d95f9c542b65b36df5ebf7cf3ed374222cc77ad92235cb0a98e986e964e36fff
 
 pkgname = img4tool-git
 
