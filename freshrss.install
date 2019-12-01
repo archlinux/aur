@@ -1,7 +1,18 @@
 post_install() {
-  # Make data writable by webserver
-  chown -R http:http /usr/share/webapps/freshrss/data
+  chown -R http:http /var/lib/webapps/freshrss
   echo 'You can now configure your (PHP compatible) web server to run FreshRSS'
+}
+
+pre_upgrade() {
+  # Move data dir to new location if needed
+  if [ ! -L /usr/share/webapps/freshrss/data ] ; then
+    # dir not yet symlinked
+    install -dm 700 /var/lib/webapps/freshrss
+    mv /usr/share/webapps/freshrss/data /var/lib/webapps/freshrss/data
+    chown -R http:http /var/lib/webapps/freshrss
+
+    echo 'Datadir has been automatically moved to /var/lib/webapps/freshrss/data'
+  fi
 }
 
 post_upgrade() {
