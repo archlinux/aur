@@ -1,0 +1,16 @@
+pkgbase = python-tcafe-attending-bot
+	pkgdesc = Auto attending bot for TCafe
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isac322/tcafe-attending-bot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	depends = python-beautifulsoup4
+	depends = python-xdg
+	source = https://github.com/isac322/tcafe-attending-bot/archive/0.1.0.tar.gz
+	md5sums = 3dcfae682d8bf51cbfa387e29bf9b194
+
+pkgname = python-tcafe-attending-bot
+
