@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Fabien Devaux <fdev31@gmail.com>
+# Maintainer: Krzysztof Sobczyk <sobczyk.kris@gmail.com>
 pkgname=ideamaker
 pkgver=3.4.2.3140
 pkgrel=1
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://s3.amazonaws.com/ideamaker/linux/ideaMaker_${pkgver}-ubuntu_amd64.deb")
 noextract=()
-sha512sums=('362e5372258cca516ea6898609ead3cf04b11b1f2a6603b3a882c58ca199685f3762687498839290f534d8da831e3dd6ff7fb885d886c664184f04c33fb6d2ff')
+sha512sums=('1e37b30e4d18fa4e51f7c446c28c6cd862f7f1bf91122d058d2b0eb872b65bb59f363a607f0f9234962783e23804225164a084b18bfee405782db8b0245c48af')
 validpgpkeys=()
 
 package() {
