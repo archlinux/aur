@@ -3,7 +3,7 @@
 
 pkgname=python2-pyramid
 pkgver=1.10.4
-pkgrel=1.0.1
+pkgrel=2
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
