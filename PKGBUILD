@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=freeoffice
-pkgver=971
+pkgver=973
 pkgrel=1
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("http://www.softmaker.net/down/softmaker-${pkgname}-${pkgver}-amd64.tgz"
         "${pkgname}-textmaker.desktop"
         "${pkgname}-planmaker.desktop"
         "${pkgname}-presentations.desktop")
-sha256sums=('8e10f946f92ec24aa3fa649c24bc0a778a2e03e479b1810667c4c77597bc66c0'
+sha256sums=('45add0f3bba4061b04567811b59f75ad2ab53cb97095682b46d0d1e0ac274c75'
             '0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69'
             'c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c'
             'e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4'
