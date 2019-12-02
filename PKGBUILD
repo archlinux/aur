@@ -1,4 +1,5 @@
 # Maintainer: Robinhuett <aur at tripp dot xyz>
+# co-Maintainer: offlinehoster <archlinux at offlinehoster dot de>
 
 pkgname=kiss-gui
 pkgver=2.0.19
@@ -26,3 +27,4 @@ package() {
   install -D "$srcdir/kissfc-chrome-gui-$pkgver/images/icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -D "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
+
