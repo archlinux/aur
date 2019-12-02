@@ -2,8 +2,8 @@
 
 pkgname=libsafec
 _pkgname=safeclib
-pkgver=29102019
-_gitver=6d168df
+pkgver=08112019
+_gitver=gad76c7
 pkgrel=1
 _pkgver="${pkgver}.0-${_gitver}"
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -15,7 +15,7 @@ makedepends=('clang' 'git')
 license=('MIT')
 # https://github.com/rurban/safeclib/archive/v17102019.tar.gz
 source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b5e8baf406eddb45df5693614ebd7cb1c8bbed3dda7aecfec893d3fd612a4122')
+sha256sums=('aa8ec42bf5c4218c021d47c93e587130a6531f3de7f4cb48eb02a565f97bc07e')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
