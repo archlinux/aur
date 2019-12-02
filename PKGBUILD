@@ -1,9 +1,9 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.16.2
+pkgver=2.17.0
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -16,14 +16,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         rocketchat-desktop
         rocketchat-desktop.desktop
         fix-build.patch
-        fix-spellchecking.patch
-        patch-node-spellchecker.patch)
-sha512sums=('79a1431f72236eff1a421ed88b4f5168c480efcf36fd58b9a34c13366084b814c6ea50507bbfe24bebf0de5a55e7bd6c9ae0c1af9ca6824c4ad157c0938afd5c'
+        fix-spellchecking.patch)
+sha512sums=('a8e304c97f12879b8f9f4535cb9c5fefccd8cc6acb5f6456a4f2119a34d7df8952575e7187841893a327497730d2fe1cd95e756d059fcaf2ad83a6e0196cd55d'
             '1f0f7197012421ff42d2936f73e697e35eef8c57fb9fed59ee022f9d170d6496407f89e426526fba8451fe304b3a8de1724d1cd14bd85d781bbf6aa9ca078d7d'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26'
             'f614b29f3fb330e870edd51a3f1b9ca05c72c2c937a5a4d23797947751d55f8ac8db217f8edbe277e721c1a07f5bc84fd0be7a4903a7d991f7a9eb9625f34ce9'
-            '030f7088dcff15cfe6f7f16814f800d92a833f2ac53eb373554587b64979f77081013c93dd7559b8198aa8aa2bf871e422c6c86d579936c7378670dac52944e8'
-            'b0fd7d0835bb4a15d7a2e4313a9b5e8b98143bf0c93b47e4430b2c5237a410ac1946016ee9441dd379b8c1a1b5db1ee99a13c384b539785b6604e27442c5fa09')
+            '030f7088dcff15cfe6f7f16814f800d92a833f2ac53eb373554587b64979f77081013c93dd7559b8198aa8aa2bf871e422c6c86d579936c7378670dac52944e8')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
     _distname="linux-ia32-unpacked"
@@ -39,11 +37,6 @@ prepare() {
 
     cd "$_srcname"
     yarn upgrade "electron@$(sed '/^v/ d' /usr/lib/electron/version)" --non-interactive --cache-folder "$srcdir/yarn-cache"
-
-    # Patching node-spellchecker to work with Electron 7
-    # https://github.com/atom/node-spellchecker/issues/127
-    # https://github.com/atom/node-spellchecker/pull/128
-    patch -N -p1 -d node_modules/spellchecker -i "$srcdir/patch-node-spellchecker.patch"
 }
 
 build() {
