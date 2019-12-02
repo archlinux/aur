@@ -7,7 +7,7 @@
 pkgname=darktable-rc
 epoch=2
 pkgver=3.0.0rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to organize and develop raw images (RC/Stable version)"
 arch=(x86_64)
 url="https://darktable.org"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
     cd build
-    cmake ../${pkgname}-${pkgver/rc/~rc} \
+    cmake ../darktable-${pkgver/rc/~rc} \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DCMAKE_BUILD_TYPE=Release \
