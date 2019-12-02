@@ -10,7 +10,7 @@ pkgdesc='VHDL simulator - GCC back-end'
 url='https://github.com/ghdl/ghdl'
 license=('GPLv2')
 
-provides=('ghdl')
+provides=("ghdl=$pkgver" "ghdl-git=$pkgver")
 conflicts=('ghdl' 'ghdl-llvm-git' 'ghdl-mcode-git')
 makedepends=('gcc-ada' 'git')
 install=ghdl.install
