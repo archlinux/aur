@@ -1,0 +1,26 @@
+pkgbase = python-tslearn-git
+	pkgdesc = A machine learning toolkit dedicated to time-series data. Version from the latest commit.
+	pkgver = r837.1721482
+	pkgrel = 1
+	url = https://github.com/rtavenar/tslearn
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = cython>=0.17
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = cython
+	depends = python-scikit-learn
+	optdepends = python-tensorflow
+	optdepends = python-keras-applications
+	optdepends = python-keras-preprocessing
+	provides = python-tslearn
+	conflicts = python-tslearn
+	options = !emptydirs
+	source = git://github.com/rtavenar/tslearn.git
+	sha256sums = SKIP
+
+pkgname = python-tslearn-git
+
