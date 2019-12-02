@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.2.5001.r1361.g5b19513f7e
+pkgver=v1.2.5019.r1893.gc0a1f4396e
 _gwtver=2.8.2
 _ginver=2.1.2
 _clangver=3.8.0
@@ -17,8 +17,8 @@ pkgdesc="A new integrated development environment (IDE) for R programming langua
 arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
-depends=('r>=2.11.1' 'boost-libs>=1.5' 'openssl' 'mathjax' 'pandoc' 'clang')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
+depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang')
+makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git://github.com/rstudio/rstudio.git'
@@ -51,7 +51,7 @@ prepare () {
 	    cd "${srcdir}/${_gitname}/dependencies/common"
 	    install -d pandoc libclang/{3.5,builtin-headers}
 
-	    ln -sfT "/usr/share/mathjax" mathjax-26
+	    ln -sfT "/usr/share/mathjax2" mathjax-27
 	    ln -sfT "/usr/bin/pandoc" pandoc/pandoc
 	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
 	    ln -sfT "/usr/lib/libclang.so" libclang/3.5/libclang.so

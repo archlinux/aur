@@ -1,6 +1,6 @@
 pkgbase = rstudio-server-git
 	pkgdesc = A new integrated development environment (IDE) for R programming language
-	pkgver = v1.2.5001.r1361.g5b19513f7e
+	pkgver = v1.2.5019.r1893.gc0a1f4396e
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-server-git.install
@@ -8,8 +8,8 @@ pkgbase = rstudio-server-git
 	arch = x86_64
 	license = AGPL3
 	makedepends = git
-	makedepends = cmake>=2.8
-	makedepends = boost>=1.5
+	makedepends = cmake>=3.4.3
+	makedepends = boost>=1.69
 	makedepends = jdk8-openjdk
 	makedepends = apache-ant
 	makedepends = unzip
@@ -18,10 +18,10 @@ pkgbase = rstudio-server-git
 	makedepends = pam
 	makedepends = zlib
 	makedepends = wget
-	depends = r>=2.11.1
-	depends = boost-libs>=1.5
+	depends = r>=3.0.1
+	depends = boost-libs>=1.69
 	depends = openssl
-	depends = mathjax
+	depends = mathjax2
 	depends = pandoc
 	depends = clang
 	conflicts = rstudio-server
