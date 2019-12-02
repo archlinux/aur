@@ -1,7 +1,4 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Patched package maintainer: Saren Arterius <saren@wtako.net>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Flamelab <panosfilip@gmail.com
+# Maintainer: Fernando Guevara <admin@ebadoo.com>
 
 pkgname=ebadoo-shell
 _pkgname=gnome-shell
