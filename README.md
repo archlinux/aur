@@ -30,7 +30,7 @@ Then start it up:
 
 You might want to combine this with a container. To create a container (including some suggested packages):
 
-	pacstrap -c github-actions base ruby clang pkg-build vim
+	pacstrap -c github-actions base ruby clang pkg-build vim sudo
 
 Then, import it:
 
@@ -39,24 +39,26 @@ Then, import it:
 Configure it:
 
 	$ cat /etc/systemd/nspawn/github-actions.nspawn 
-	[Exec]
-	Boot=true
-	PrivateUsers=no
-
 	[Network]
 	Private=no
 	VirtualEthernet=no
 
 	[Files]
 	TemporaryFileSystem=/tmp
-	
-	# Expose GPU:
-	Bind=/dev/nvidia0
-	Bind=/dev/nvidiactl
 
 Boot it:
 
 	sudo systemctl enable --now systemd-nspawn@github-actions.service
+
+Attach to the container and install the github-actions package:
+
+	machinectl shell github-actions
+	
+	cd /tmp
+	sudo -u nobody git clone https://aur.archlinux.org/github-actions.git
+	cd github-actions
+	sudo -u nobody makepkg -f
+	pacman -U github-actions*.xz
 
 ### Limits
 
@@ -68,9 +70,36 @@ Limit the CPU time usage to roughly the equivalent of 2 cores:
 
 	systemctl set-property systemd-nspawn@myContainer.service CPUQuota=200%
 
+#### ZFS Quotas
+
+To ensure that your disk is not consumed by badly behaving test or malicious code:
+
+	zfs create -o mountpoint=/var/lib/machines/github-actions -o quota=8G system/machines/github-actions
+
 ### Attaching Shell
 
 	sudo machinectl shell github-actions
+
+### Exposing Nvidia GPU
+
+Add the following to the `github-actions.nspawn` configuration:
+
+	[Files]
+	# Expose GPU:
+	Bind=/dev/nvidia0
+	Bind=/dev/nvidiactl
+
+Then, ensure the container unit can see the required devices:
+
+	sudo systemctl set-property systemd-nspawn@github-actions.service "DeviceAllow=/dev/nvidia0 rwm" "DeviceAllow=/dev/nvidiactl rwm"
+
+Finally, ensure the driver is a requirement of the container:
+
+	sudo systemctl add-requires systemd-nspawn@github-actions.service nvidia-persistenced.service
+
+You also may need the container to be running the same Linux kernel and drivers. For this, I use `linux-lts` and `nvidia-dkms` on both the host and container.
+
+You can test this setup using `nvidia-smi` which should show the same output in both the host and container.
 
 ## Contributing
 
