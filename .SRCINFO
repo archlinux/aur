@@ -1,0 +1,19 @@
+pkgbase = python2-pynput
+	pkgdesc = Python library to monitor and control user input devices
+	pkgver = 1.4.5
+	pkgrel = 1
+	url = https://github.com/moses-palmer/pynput
+	arch = any
+	license = LGPL3
+	makedepends = python2-setuptools
+	depends = python2-xlib
+	depends = python2-six
+	depends = python2-enum34
+	optdepends = python2-sphinx: build online documentation
+	source = python2-pynput-1.4.5.tar.gz::https://github.com/moses-palmer/pynput/archive/v1.4.5.tar.gz
+	source = python2-pynput.patch
+	sha512sums = c008b3cb40eadcb7413f0d7e0f67b8cb17794fa27f48fab1f17f4fb2f4cd6baf56bca7de461a13b93e90adf9ad55239d3e242f1f723f2e908bc6f917373ca608
+	sha512sums = fd25744095c3201335cf601ec7e514f4bb2943de777849b2e821168d4e61098ecc355cfa13eb07ede7c1b91fe63f694a1dd42b13b5d4b8796a593aa5acf908b9
+
+pkgname = python2-pynput
+
