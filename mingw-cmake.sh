@@ -22,5 +22,4 @@ PATH=${mingw_prefix}/bin:$PATH cmake \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_TOOLCHAIN_FILE=/usr/share/mingw/toolchain-@TRIPLE@.cmake \
     -DCMAKE_CROSSCOMPILING_EMULATOR=/usr/bin/@TRIPLE@-wine \
-    -DCMAKE_BUILD_TYPE=Release \
     "$@"
