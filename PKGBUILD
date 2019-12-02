@@ -3,7 +3,7 @@
 
 pkgname=python2-pyramid
 pkgver=1.10.4
-pkgrel=1
+pkgrel=1.0.1
 pkgdesc='Pyramid is a very general open source Python web framework.'
 arch=('any')
 url='http://www.pylonsproject.org/'
@@ -15,8 +15,8 @@ optdepends=(
          'python-chameleon: pserve/pcreate'
          'python-waitress: pserve/pcreate'
 	)
-depends=('python2' 'python2-mako' 'python2-webob' 'python2-repoze.lru' \
-  'python2-zope-deprecation' 'python2-zope-interface' 'python2-venusian' \
+depends=('python2' 'python2-mako' 'python2-webob' 'python-repoze.lru' \
+  'python-zope-deprecation' 'python2-zope-interface' 'python2-venusian' \
   'python2-translationstring' 'python2-setuptools' 'python2-hupper')
 
 
