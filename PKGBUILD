@@ -7,11 +7,12 @@
 pkgname=darktable-rc
 epoch=2
 pkgver=3.0.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to organize and develop raw images (RC/Stable version)"
 arch=(x86_64)
 url="https://darktable.org"
 license=(GPL3)
+conflicts=('darktable')
 depends=(pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes
          exiv2 flickcurl openjpeg2 graphicsmagick lua osm-gps-map libsecret openmp)
 makedepends=(cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
