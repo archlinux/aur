@@ -3,7 +3,7 @@
 
 pkgname=php-pam
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This extension provides PAM (Pluggable Authentication Modules) integration in PHP."
 arch=('i686' 'x86_64')
 url="https://github.com/amishmm/php-pam"
