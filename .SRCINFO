@@ -1,6 +1,6 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source Nintendo Switch emulator/debugger
-	pkgver = r13224.e3ee017e9
+	pkgver = r13236.560cfbc21
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu/
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = yuzu-git
 	provides = yuzu
 	provides = yuzu-cmd
 	conflicts = yuzu-mainline-git
+	conflicts = yuzu-canary-git
 	source = yuzu::git+https://github.com/yuzu-emu/yuzu
 	md5sums = SKIP
 

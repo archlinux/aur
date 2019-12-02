@@ -3,14 +3,14 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r13224.e3ee017e9
+pkgver=r13236.560cfbc21
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/yuzu-emu/yuzu/"
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
-conflicts=('yuzu-mainline-git')
+conflicts=('yuzu-mainline-git' 'yuzu-canary-git')
 depends=('shared-mime-info'
          'desktop-file-utils'
          'sdl2'
