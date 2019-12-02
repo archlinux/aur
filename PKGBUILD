@@ -1,25 +1,32 @@
 # Maintainer: techfreak <techfreak@matrix.org>
 pkgname=arch-sec-check-git 
-pkgver=1.1
+pkgver=r11.ecc5bc7
 pkgrel=1
 pkgdesc="Compares your local installed packages with the arch linux security database"
 arch=(any)
 url="https://gitlab.com/techfreak/arch-sec-check"
 license=(GPL2)
 depends=(openssl)
-makedepends=(git cargo rust)
+makedepends=(git rust)
 optdepends=()
 source=("git+${url}.git")
 sha256sums=('SKIP')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+
+pkgver() {
+  cd ${pkgname%-git}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd ${pkgname} 
-  cargo build --release
+  cd ${pkgname%-git} 
+  cargo build --release --locked
 }
 
 package() {
-  cd ${pkgname}
-  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${pkgname%-git}
+  install -Dm755 "target/release/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
 }
