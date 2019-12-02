@@ -1,14 +1,14 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=wdsaver
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc='Stop hard drive from too frequent head parking'
+pkgdesc='Prevent hard drive from too frequent head parking'
 arch=('x86_64')
 url="https://github.com/amishmm/wdsaver"
 license=('GPL')
 optdepends=('hdparm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amishmm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('266530d8ad164478b1866c70d7ab5e2d777adabcac1c7830c29ca2fa53f42a5a')
+sha256sums=('f054c5c99d0a05e403828b16149052c39ee1ef9433bbd6eee090090362e0d959')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
