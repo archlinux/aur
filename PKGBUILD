@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=mingw-w64-liblo
-pkgver=0.29
+pkgver=0.30
 pkgrel=1
 pkgdesc="A lightweight OSC (Open Sound Control) implementation (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/radarsat1/${pkgname##*-}/releases/download/${pkgver}/${pkgname##*-}-${pkgver}.tar.gz")
-sha512sums=('11e20725a049c55c02ef8cd106be5802507f3df95422d8dad10009bdd1237af7517e3261c7336c3005e21ae8fd1e663badef46e4bae006c7af70520bdb336c7c')
+sha512sums=('51132933cc23237b70ed08fa7986a4a9f838529b83807746b358bcc171f8bbce7f37115b7c855520c9219bae93c74e502aebfb90e44dabdc6d0a00b8335336e3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
