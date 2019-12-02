@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.37dev.git20190907
+pkgver=0.37dev.r4250.gd11ad228
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -24,21 +24,27 @@ source=(
 	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
 	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 )
-md5sums=(
+sha256sums=(
 	'SKIP'
-	'65b210b4bfe7e060051f799e0f994896'
-	'cb396f31b24aeeac49840b519741b0e1'
+	'64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c'
+	'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
 )
 
 pkgver() {
 	cd "${srcdir}/ghdl"
 
 	# GHDL version (extracted from configure)
-	_distver=`sed -n -e 's/^ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
-	# Date of the last git commit
-	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
+	local _distver=`sed -n -e 's/^ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
 
-	echo $_distver.git$_gitver;
+	# Date of the last git commit
+	#local _gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
+	# Revision number
+	local _gitrev=`git rev-list --count HEAD`
+	# Short hash oatest commit
+	local _githash=`git rev-parse --short HEAD`
+
+	#echo $_distver.git$_gitver;
+	echo $_distver.r$_gitrev.g$_githash;
 }
 
 prepare() {
@@ -135,9 +141,9 @@ build() {
 }
 
 package() {
-  local _xgcc="${srcdir}/gcc-build/gcc/xgcc"
-  local _machine=$(${_xgcc} -dumpmachine)
-  local _version=$(${_xgcc} -dumpversion)
+	local _xgcc="${srcdir}/gcc-build/gcc/xgcc"
+	local _machine=$(${_xgcc} -dumpmachine)
+	local _version=$(${_xgcc} -dumpversion)
 
 	# Install GHDL
 	cd "${srcdir}/gcc-build"
