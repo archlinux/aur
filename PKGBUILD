@@ -2,7 +2,7 @@
 
 pkgname=('vbextreme-bar')
 pkgdesc="vbextreme's statuts bar"
-pkgver=2.0_rc6
+pkgver=2.0_rc14
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/vbar'
