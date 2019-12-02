@@ -17,7 +17,7 @@ options=('!emptydirs' '!strip')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "http://isl.gforge.inria.fr/isl-$_islver.tar.xz")
 sha512sums=('a12dff52af876aee0fd89a8d09cdc455f35ec46845e154023202392adc164848faf8ee881b59b681b696e27c69fd143a214014db4214db62f9891a1c8365c040'
-            '87ebc2fd6d4325cdfa82295a659ed6dbd70760a776b733e5503bbf8baa8fe80d905879728e9c7f23d2f3bcd7e78c00a66ab166c013ae97b603f7c460c69668ec')
+            '7c3c9502ea07e4d47a823841837c3aa0b9d7ba0fe58deaf180734e44c18e53735ec783645da0bdc56b617c9e639b226cc03b40a947f852e1e787166a64f59424')
 
 if [[ -n "$_snapshot" ]]; then
   _basedir=gcc-$_snapshot
