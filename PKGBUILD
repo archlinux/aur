@@ -116,7 +116,7 @@ prepare() {
 			warning "Aborting!"
 			exit
 		fi
-	fi    
+	fi
 
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
@@ -150,7 +150,7 @@ prepare() {
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
             msg2 "No modprobed.db data found"
-            exit 1
+            exit
             fi
         fi
 
