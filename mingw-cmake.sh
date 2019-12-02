@@ -1,14 +1,10 @@
 #!/bin/sh
+
+source mingw-env @TRIPLE@
+
 mingw_prefix=/usr/@TRIPLE@
 
 export PKG_CONFIG_LIBDIR="${mingw_prefix}/lib/pkgconfig"
-
-default_mingw_compiler_flags="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-default_mingw_linker_flags="-Wl,-O1,--sort-common,--as-needed -fstack-protector"
-
-export CFLAGS="${MINGW_CFLAGS:-$default_mingw_compiler_flags $CFLAGS}"
-export CXXFLAGS="${MINGW_CXXFLAGS:-$default_mingw_compiler_flags $CXXFLAGS}"
-export LDFLAGS="${MINGW_LDFLAGS:-$default_mingw_linker_flags $LDFLAGS}"
 
 PATH=${mingw_prefix}/bin:$PATH cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=${mingw_prefix} \

@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-cmake
 	pkgdesc = CMake wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 32
+	pkgrel = 33
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
 	depends = cmake
 	depends = mingw-w64-gcc
 	depends = mingw-w64-pkg-config
+	depends = mingw-w64-environment
 	optdepends = mingw-w64-wine: runtime support
 	source = mingw-cmake.sh
 	source = mingw-cmake-py.sh
