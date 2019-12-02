@@ -12,7 +12,7 @@ pkgbase = mtgaprotracker
 	source = mtgap.desktop
 	sha256sums = 4d49ea7bf1d58659fa40f010cdd08a915a5e163288be60aaeb3307df20339225
 	sha256sums = 93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436
-	sha256sums = eabb8655ae69439f367469f118b3a76f2d11405ad95a44eb75a187c135f548ac
+	sha256sums = 145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048
 
 pkgname = mtgaprotracker
 
