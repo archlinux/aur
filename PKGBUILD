@@ -3,14 +3,14 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=vdr-epg-daemon
 pkgname=('epgd' 'mariadb-epglv')
-pkgver=1.1.146
-pkgrel=2
+pkgver=1.1.147
+pkgrel=1
 url='http://projects.vdr-developer.org/projects/vdr-epg-daemon'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('curl' 'git' 'imlib2' 'jansson' 'libarchive' 'libjpeg' 'libmariadbclient' 'libmicrohttpd' 'libxslt' 'python')
 source=("https://projects.vdr-developer.org/git/vdr-epg-daemon.git/snapshot/$pkgbase-$pkgver.tar.bz2")
-md5sums=('6a892aedd6af850be6880d702b9222d5')
+sha256sums=('d41ccc0d360959d7cfdc2d67250a626c5cba1a2b0a0e28e64fb77d92dbb10637')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
