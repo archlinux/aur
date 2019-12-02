@@ -1,6 +1,6 @@
 pkgbase = mbpfan-git
 	pkgdesc = A simple daemon to control fan speed on all MacBook/MacBook Pros
-	pkgver = 2.1.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/dgraziotin/mbpfan
 	install = mbpfan.install
