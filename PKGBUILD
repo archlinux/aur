@@ -33,6 +33,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "allow_run_current_when_classic.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/allow_run_current_when_classic.patch"
         "disable_some_telemetry.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/disable_some_telemetry.patch"
         "icon_mish_mash.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/icon_mish_mash.patch"
+        "Bug1500436.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/Bug1500436.patch"
+        "rust_1.39.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/rust_1.39.patch"
         )
 sha256sums=('SKIP'
             '346b791515d05645be86e0f3404187e6397a22460ad54eb27aaf3054d81c2cd8'
@@ -44,7 +46,9 @@ sha256sums=('SKIP'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             'c409dcc7b62f2efc47f7eed53760c7b073fba4b7023c1179ca560c8979aee43b'
             'eb798add6fa923ac7921c728ccbc3a984eeab9205b49ee6a3ef6f9a1cab468ac'
-            'ffb7e8a1191276f95faa321672b45f5b5b79c5452d2a8c8f921a30ac8843096a')
+            'ffb7e8a1191276f95faa321672b45f5b5b79c5452d2a8c8f921a30ac8843096a'
+            'd17a9f31f995047ce54ef63a3c2fc14809509c9bdfff9fd0b4e8a35793e080f9'
+            'eefc8a39b3de5259a955abace3cf224694485b1c0de55552bb5dc4b51951bc88')
 
 prepare() {
 
@@ -55,6 +59,8 @@ prepare() {
   patch -Np1 -i ../allow_run_current_when_classic.patch
   patch -Np1 -i ../disable_some_telemetry.patch
   patch -Np1 -i ../icon_mish_mash.patch
+  patch -Np1 -i ../Bug1500436.patch
+  patch -Np1 -i ../rust_1.39.patch
 
   cat >.mozconfig <<END
 export CC=clang
