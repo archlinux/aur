@@ -4,6 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Krzysztof Sobczyk <sobczyk.kris@gmail.com>
+# Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=ideamaker
 pkgver=3.4.2.3140
 pkgrel=1
