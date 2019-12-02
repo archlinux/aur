@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.9'
-pkgrel='12'
+pkgrel='13'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -72,6 +72,10 @@ package() {
     
     install -m 644 "src/scripts/afterglow.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/afterglow.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/batique.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/batique.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/fire.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/fire.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/gaming.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/gaming.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/gradient.lua" "$pkgdir/usr/lib/eruption/scripts/"
@@ -85,7 +89,7 @@ package() {
     install -m 644 "src/scripts/raindrops.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/raindrops.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/shockwave.lua" "$pkgdir/usr/lib/eruption/scripts/"
-    install -m 644 "src/scripts/shockwave.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/showckwave.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/sysmon.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/sysmon.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua" "$pkgdir/usr/lib/eruption/scripts/"
