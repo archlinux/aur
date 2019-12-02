@@ -4,8 +4,6 @@ source mingw-env @TRIPLE@
 
 mingw_prefix=/usr/@TRIPLE@
 
-export PKG_CONFIG_LIBDIR="${mingw_prefix}/lib/pkgconfig"
-
 PATH=${mingw_prefix}/bin:$PATH cmake \
     -DCMAKE_INSTALL_PREFIX:PATH=${mingw_prefix} \
     -DCMAKE_INSTALL_LIBDIR:PATH=lib \
