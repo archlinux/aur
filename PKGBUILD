@@ -63,7 +63,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=5.4.1-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -78,6 +78,10 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.4/5.4-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
+  0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
+  0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
+  0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -85,10 +89,14 @@ validpgpkeys=(
 )
 sha256sums=('a7d48bb324d53e421ffbe4da40087b3c0c5112707e5f3d827c30118542c74fd9'
             'SKIP'
-            'bbf6f0f69de9b1aefc2374da6b289a132b945e87a94ec85728097c677ebbac3f'
+            'b7f23bbc09b6c571b76f851f0389386a6f3a64f3d7b1b8509c8550228b0f4537'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            'b008f5e21bdbaaf95aecebe443761ee0a9adfb4dcf5729e384dcd53323bab149')
+            '8919d8cbab83ccc810d8c7eaf6ebb18be8ae011da90a11d98732c2537af11d11'
+            'f1481e4c6d84de265552eea9ef2e2fa13bf26774becc2f2c36619af1f56bcee4'
+            '88c7e90ac7a1b73b3707feacd23b66feaa4c2cc5bc39ef2807b2301274db3ad2'
+            '786da96d5cc273331bf8a155b0552edcc26d79f194a016c7e4f1c1266aabafc2'
+            '2d51be4ede2c19a3163899fd783a213cf9f837867915b004e0c70c548e0d96c9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
