@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=GAPID
+Comment=Graphics API Debugger
+Exec=gapid
+Icon=gapid
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics;Development;

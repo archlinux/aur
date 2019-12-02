@@ -1,0 +1,20 @@
+pkgbase = gapid-bin
+	pkgdesc = Graphics API Debugger - GAPID is a collection of tools that allows you to inspect, tweak and replay calls from an application to a graphics driver
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://gapid.dev
+	arch = x86_64
+	license = apache
+	depends = java-runtime
+	depends = libx11
+	provides = gapid
+	conflicts = gapid
+	source = gapid.desktop
+	source = gapid.sh
+	sha256sums = 6ad0f976e6f3dc57af3e81d271a9ebc54ea06fbf73e879c3d12caa81f2cbcb10
+	sha256sums = 2b480553d47bbe4e8f62c15223ce0555ce72f6e947abe9d117d2b3cf7b57dcb2
+	source_x86_64 = https://github.com/google/gapid/releases/download/v1.6.1/gapid-1.6.1-linux.zip
+	sha256sums_x86_64 = db003498c43ff9ac50fb65bdc09b8777e1b21e94ad205f0355eaecd0c853953e
+
+pkgname = gapid-bin
+
