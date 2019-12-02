@@ -1,6 +1,6 @@
 pkgbase = freeaoe-git
 	pkgdesc = A free engine capable of running Age of Kings.
-	pkgver = r837.8443fcc
+	pkgver = r869.18e5b66
 	pkgrel = 1
 	url = https://github.com/sandsmark/freeaoe
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = freeaoe-git
 	depends = genieutils-git>=5
 	depends = sfml
 	depends = mini_al-git
+	optdepends = ageofconquerors-trial-data: Game data files
 	provides = freeaoe
 	conflicts = freeaoe
 	source = git+https://github.com/sandsmark/freeaoe.git

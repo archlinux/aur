@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=freeaoe-git
-pkgver=r837.8443fcc
+pkgver=r869.18e5b66
 pkgrel=1
 _abiver=5
 pkgdesc='A free engine capable of running Age of Kings.'
@@ -12,6 +12,7 @@ depends=("genieutils-git>=${_abiver}" 'sfml' 'mini_al-git')
 makedepends=('git')
 conflicts=(freeaoe)
 provides=(freeaoe)
+optdepends=('ageofconquerors-trial-data: Game data files')
 source=('git+https://github.com/sandsmark/freeaoe.git')
 md5sums=('SKIP')
 
@@ -29,6 +30,7 @@ build() {
     cmake ../freeaoe \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DDEFAULT_DATA_PATH=/usr/share/ageofconquerors-trial/ \
 
     make
 }
