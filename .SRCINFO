@@ -1,6 +1,6 @@
 pkgbase = clipto.pro-bin
 	pkgdesc = Effortless, super fast and flexible notes taking app and clipboard manager.
-	pkgver = 1.6.0
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://clipto.pro
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = clipto.pro-bin
 	depends = gtk3
 	provides = clipto.pro
 	conflicts = clipto.pro
-	source = https://github.com/clipto-pro/Desktop/releases/download/v1.6.0/clipto.pro-1.6.0.AppImage
+	source = https://github.com/clipto-pro/Desktop/releases/download/v1.7.3/clipto.pro-1.7.3.AppImage
 	source = clipto.pro
-	sha256sums = 763adca35b462bc86bc12c20882d9a26d0fbe285c173ed64403758ffca011c95
+	sha256sums = c854c509575954d1b4bdeb877f1034210864f1b18510da849ae0d50c975dd694
 	sha256sums = e868d6a6f625aa77cd9027401ccdf5d0809c8cb221be77bfe7c57802e3890475
 
 pkgname = clipto.pro-bin
