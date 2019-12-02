@@ -1,7 +1,7 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 pkgname=python-verboselogs
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Verbose logging level for Python's logging module"
 url="https://github.com/xolox/python-verboselogs"
 license=('MIT')
