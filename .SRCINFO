@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.2.5001.r1361
+	pkgver = 1.2.5019.r1893
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = rstudio-desktop-git
 	makedepends = patchelf
 	makedepends = wget
 	depends = boost-libs
-	depends = r>=2.11.1
+	depends = r>=3.0.1
 	depends = hunspell-en_US
-	depends = mathjax
+	depends = mathjax2
 	depends = pandoc
 	depends = clang
 	depends = qt5-sensors

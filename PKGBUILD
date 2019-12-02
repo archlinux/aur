@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.5001.r1361
+pkgver=1.2.5019.r1893
 _gwtver=2.8.2
 _ginver=2.1.2
 pkgrel=1
@@ -11,7 +11,7 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs' 'r>=2.11.1' hunspell-en_US mathjax pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
+depends=('boost-libs' 'r>=3.0.1' hunspell-en_US mathjax2 pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns)
 makedepends=(git 'cmake>=3.1.0' 'boost' desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget)
 optdepends=('git: for git support'
             'subversion: for subversion support'
@@ -44,7 +44,7 @@ prepare() {
     install -d pandoc
  
     ln -sfT /usr/share/myspell/dicts dictionaries
-    ln -sfT /usr/share/mathjax mathjax-26
+    ln -sfT /usr/share/mathjax2 mathjax-27
     ln -sfT /usr/bin/pandoc pandoc/pandoc
     ln -sfT /usr/bin/pandoc-citeproc pandoc/pandoc-citeproc
  
