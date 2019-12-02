@@ -1,0 +1,16 @@
+@@ -98,13 +98,13 @@
+     <div class="tab" id="settings">
+       <div class="settingRow">
+         <div class="pretty p-switch p-fill">
++          <input class="settings" data-setting="autorun" type="checkbox" value="1" disabled/>
+-          <input class="settings" data-setting="autorun" type="checkbox" value="1" />
+           <div class="state p-danger"><label>Start with Windows</label></div>
+         </div>
+       </div>
+       <div class="settingRow">
+         <div class="pretty p-switch p-fill">
++          <input class="settings" data-setting="minimized" type="checkbox" value="1" disabled/>
+-          <input class="settings" data-setting="minimized" type="checkbox" value="1" />
+           <div class="state p-danger"><label>Start Minimized</label></div>
+         </div>
+       </div>

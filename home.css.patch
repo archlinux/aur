@@ -1,0 +1,8 @@
+@@ -93,6 +93,7 @@
+   vertical-align: top;
+   -webkit-app-region: none;
+   opacity: 0.8;
++  display: none;
+ }
+ 
+ .buttonClose:hover {
