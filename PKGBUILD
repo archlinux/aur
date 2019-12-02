@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=0.37dev.git20190925
+pkgver=0.37dev.r4250.gd11ad228
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - LLVM back-end'
@@ -15,7 +15,7 @@ makedepends=('gcc-ada' 'git' 'llvm' 'clang')
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
 )
-md5sums=(
+sha256sums=(
 	'SKIP'
 )
 
@@ -23,11 +23,17 @@ pkgver() {
 	cd "${srcdir}/ghdl"
 
 	# GHDL version (extracted from configure)
-	_distver=`sed -n -e 's/^ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
-	# Date of the last git commit
-	_gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
+	local _distver=`sed -n -e 's/^ghdl_version=.*"\(.*\)".*/\1/p' configure | tr -d '-'`
 
-	echo $_distver.git$_gitver;
+	# Date of the last git commit
+	#local _gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
+	# Revision number
+	local _gitrev=`git rev-list --count HEAD`
+	# Short hash oatest commit
+	local _githash=`git rev-parse --short HEAD`
+
+	#echo $_distver.git$_gitver;
+	echo $_distver.r$_gitrev.g$_githash;
 }
 
 build() {
