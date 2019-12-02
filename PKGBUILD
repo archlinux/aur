@@ -6,10 +6,10 @@ pkgver=2.0_rc6
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/vbar'
-replaces=(vbar-i3wm vbar-dwm)
-conflicts=(vbar-i3wm vbar-dwm)
+replaces=(vbextreme-bar-git vbar-i3wm vbar-dwm)
+conflicts=(vbextreme-bar-git vbar-i3wm vbar-dwm)
 license=('GPLv3')
-makedepends=('gperf' 'meson')
+makedepends=('tcc' 'gperf' 'meson')
 source=("https://github.com/vbextreme/vbar/archive/v${pkgver//_/-}.tar.gz")
 sha256sums=('SKIP')
 
