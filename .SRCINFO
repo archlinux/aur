@@ -10,6 +10,8 @@ pkgbase = python-panflute
 	depends = python-click
 	depends = python-yaml
 	depends = python-shutilwhich
+	source = https://github.com/sergiocorreia/panflute/archive/v1.12.2.tar.gz
+	sha256sums = 950e25b9273d743baa4b49f4cfd1b24e3e32f721a3f44dc5bce1c7c2c74581b0
 
 pkgname = python-panflute
 
