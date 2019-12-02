@@ -1,7 +1,7 @@
 pkgbase = stash-electron-git
 	pkgdesc = Stash Team Secret Manager
 	pkgver = 1.2.1pre
-	pkgrel = 46
+	pkgrel = 48
 	url = https://github.com/Doccrazy/stash-electron
 	arch = x86_64
 	license = GPL-3.0
@@ -14,9 +14,9 @@ pkgbase = stash-electron-git
 	depends = libsecret
 	depends = libcurl-gnutls
 	conflicts = stash-electron
-	source = stash-electron-git_1.2.1pre-46_amd64.deb::https://bintray.com/doccrazy/deb/download_file?file_path=stash-electron-git_1.2.1pre-46_amd64.deb
+	source = stash-electron-git_1.2.1pre-48_amd64.deb::https://bintray.com/doccrazy/deb/download_file?file_path=stash-electron-git_1.2.1pre-48_amd64.deb
 	source = LICENSE
-	sha256sums = cff8659f729f75182511afcc0a50f92c7af09a2f6c3481882113e39e19e443b6
+	sha256sums = 5083a58f430da76e2dfda0be4f38aba3cd80ee228ad9517fcea9894a3fb8e633
 	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
 
 pkgname = stash-electron-git
