@@ -1,7 +1,8 @@
+# Contributor: Thor K. Høgås <thor at roht.no>
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn
 pkgver=50200.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based chat client for MatterMost"
 arch=('x86_64')
 url="https://github.com/matterhorn-chat/matterhorn"
@@ -9,7 +10,7 @@ license=('BSD')
 provides=('matterhorn')
 conflicts=('matterhorn-git' 'matterhorn-bin')
 depends=('gmp' 'zlib')
-makedepends=('cabal-install' 'ghc8.2')
+makedepends=('cabal-install' 'ghc')
 source=("https://github.com/matterhorn-chat/matterhorn/archive/${pkgver}.tar.gz")
 sha1sums=('e63297435cedd9ce2cf7631ada3609f9b63deb7e')
 
@@ -17,7 +18,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   rm -f cabal.project
   cabal new-update
-  cabal new-build -j -w /usr/bin/ghc-8.2
+  cabal new-build -j --enable-shared --enable-executable-dynamic --ghc-options=-dynamic
 }
 
 package() {
