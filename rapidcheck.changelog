@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-r993.d9482c6
+r997.4df0260
 ------------
 
 Fix
@@ -17,6 +17,22 @@ Fix
 
 Other
 ~~~~~
+- Merge pull request #241 from
+  hanst99/fix/missing_includes_and_signed_unsigned_comparison. [emil-e]
+
+  Add missing includes and fix signed/unsigned comparison
+- Add missing includes and fix signed/unsigned comparison. [Hannes
+  Steffenhagen]
+
+  Random was using `std::ostream` without `<iosfwd>` and `std::hash`
+  without `<functional>`. In BitStream.hpp, if `SourceType` was unsigned
+  then the comparison to `numBits` (which returns `signed int`) would
+  cause a warning (which makes the code not compile because the
+  CMakeLists.txt sets -Werror on gcc/clang).
+- Merge pull request #239 from gpyalt/master. [emil-e]
+
+  Fix some typos in generators_ref.md
+- Update generators_ref.md. [gpyalt]
 - Merge pull request #237 from parbo/rtti-option. [emil-e]
 
   Add option for using rtti

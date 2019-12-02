@@ -1,7 +1,7 @@
 # Maintainer: Bart Verhagen <bart at verhagenconsultancy dot be>
 pkgname=('rapidcheck')
 pkgbase='rapidcheck'
-pkgver=r993.d9482c6
+pkgver=r997.4df0260
 pkgrel=1
 epoch=
 pkgdesc="QuickCheck clone for C++ with the goal of being simple to use with as little boilerplate as possible."
@@ -13,14 +13,14 @@ depends=()
 makedepends=(cmake)
 checkdepends=()
 optdepends=()
-provides=('rapidcheck=r993.d9482c6')
+provides=('rapidcheck=r997.4df0260')
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=rapidcheck.changelog
-source=("rapidcheck::git+$url.git#commit=d9482c683429fe79122e3dcab14c9655874aeb8e")
+source=("rapidcheck::git+$url.git#commit=4df02602aae74ff1711611b64630d3fd8ae40571")
 noextract=()
 validpgpkeys=()
 
