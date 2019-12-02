@@ -9,7 +9,8 @@ url='https://github.com/vbextreme/vbar'
 replaces=(vbextreme-bar-git vbar-i3wm vbar-dwm)
 conflicts=(vbextreme-bar-git vbar-i3wm vbar-dwm)
 license=('GPLv3')
-makedepends=('tcc' 'gperf' 'meson')
+makedepends=('gperf' 'meson')
+depends=('tcc')
 source=("https://github.com/vbextreme/vbar/archive/v${pkgver//_/-}.tar.gz")
 sha256sums=('SKIP')
 
