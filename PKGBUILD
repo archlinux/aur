@@ -3,7 +3,7 @@
 # Contributor: fstirlitz <felix dot von dot s at posteo dot de>
 
 pkgname=libxmlbird
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc='XML parsing library written in Vala'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('glib2')
 makedepends=('vala' 'python')
 source=(https://birdfont.org/xmlbird-releases/${pkgname}-${pkgver}.tar.xz{,.sig})
-sha512sums=('f265d9899a3f88fde21bdee63877441e2b7bc7f94c6c04cb6ea8b24fc1c03b37023ffec6a43d93ea447720fe3268890b5ca5b53fc72030bf54ad440654f4e0c0'
+sha512sums=('da06d6368b9f0cc91e24810ac687c3ff2c892e069821b04db8632606d5911c8c9d33fa91cf8b7974f3dce605a0ec9be85c49104bd44fdfb4ff89a5d5acef31b7'
             'SKIP')
 validpgpkeys=('FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4') # Johan Mattsson <gmail: johan dot mattsson dot m>
 
