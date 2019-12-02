@@ -1,7 +1,7 @@
 # Maintainer: Carter Green <crtrgreen at gmail dot com>
 pkgname=mssql-cli
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive command line query tool for SQL Server"
 arch=(any)
 url="https://github.com/dbcli/mssql-cli"
@@ -18,7 +18,10 @@ package() {
   cd "$srcdir"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
   msg2 "Removing non-existant required static libraries..."
-  sed -i '/\.a": {/,+2d' "${pkgdir}/usr/lib/python3.7/site-packages/mssqlcli/mssqltoolsservice/bin/MicrosoftSqlToolsServiceLayer.deps.json"
+  local deps_path="${pkgdir}$(python --version | \
+    awk -F'[ .]' '{ printf "/usr/lib/python%s.%s/site-packages/mssqlcli/mssqltoolsservice/bin/MicrosoftSqlToolsServiceLayer.deps.json",
+      $2, $3 }')"
+  sed -i '/\.a": {/,+2d' "$deps_path"
   msg2 "Generating .pyo files..."
   python -O -m compileall "$pkgdir"
 }
