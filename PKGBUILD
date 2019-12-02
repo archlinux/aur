@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-openh264
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)"
 arch=(any)
 url="http://www.openh264.org/"
@@ -16,8 +16,12 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 
 build() {
-  source mingw-env ${_arch}
   for _arch in ${_architectures}; do
+    unset CPPFLAGS
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+    source mingw-env ${_arch}
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/openh264-${pkgver}" "${srcdir}/build-${_arch}"
 
@@ -27,7 +31,7 @@ build() {
     else
       _targetarch="x86_64"
     fi
-    make OS=mingw_nt ARCH=${_targetarch} CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar
+    make OS=mingw_nt ARCH=${_targetarch}
     popd	
   done
 }
@@ -42,7 +46,7 @@ package() {
       _targetarch="x86_64"
     fi
 
-    make OS=mingw_nt ARCH=${_targetarch} CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar DESTDIR="${pkgdir}" PREFIX="/usr/${_arch}" install
+    make OS=mingw_nt ARCH=${_targetarch} DESTDIR="${pkgdir}" PREFIX="/usr/${_arch}" install
  
     install -Dm755 h264dec.exe "$pkgdir"/usr/${_arch}/bin/h264dec.exe
     install -Dm755 h264enc.exe "$pkgdir"/usr/${_arch}/bin/h264enc.exe
