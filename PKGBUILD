@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kyoutubetomp3
-pkgver=3.8.2.3082
+pkgver=3.9.0.3230
 pkgrel=1
 pkgdesc="Extract audio from YouTube, Vimeo, Facebook and other online video hosting services."
 arch=('x86_64')
@@ -13,10 +13,10 @@ source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${p
         "${pkgname}.desktop"
         "${pkgname}.png"
         "fix_symlink_path.patch")
-sha256sums=('a34d1d77673ea406b2d3cf594f7d35b363ddf5acb078cd73d6014993cb0137f8'
+sha256sums=('3581ee9566667a9ddff69902b9272ff7b40654381f7c95adea488c91eb41ad67'
             '386dfa4085efcd9403c4387c7be4dd0f9762c726555b5ebd0126dcd225bcf828'
             'b25f830bb1fe559ea9f0b35cc9eb8ab75e2e40d09b8755f937451f5ddeeec2fd'
-            'a1316af1c5f93b90cc9791ffb222c1ecec21fa9267bae2f65666e39ed6a960a4')
+            '1bc2c992e21bae6c51f3176f4c3e04577b3297ea98ffc45fb56ce802423cf6cb')
 
 prepare() {
   cd "${pkgname}"
