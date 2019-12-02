@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-librtmp0
 	pkgdesc = Toolkit for RTMP streams (mingw-w64)
 	pkgver = 2.4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://rtmpdump.mplayerhq.hu/
 	arch = any
 	license = GPL2
 	license = LGPL2.1
 	makedepends = mingw-w64-gcc
 	makedepends = git
+	makedepends = mingw-w64-environment
 	depends = mingw-w64-crt
 	depends = mingw-w64-zlib
 	depends = mingw-w64-openssl-1.0

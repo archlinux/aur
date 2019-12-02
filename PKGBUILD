@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-librtmp0
 pkgver=2.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Toolkit for RTMP streams (mingw-w64)"
 arch=('any')
 url='http://rtmpdump.mplayerhq.hu/'
 license=('GPL2' 'LGPL2.1')
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-openssl-1.0')
-makedepends=('mingw-w64-gcc' 'git')
+makedepends=('mingw-w64-gcc' 'git' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
 _commit='fa8646daeb19dfd12c181f7d19de708d623704c0'
 source=("git://git.ffmpeg.org/rtmpdump#commit=${_commit}"
@@ -24,11 +24,8 @@ prepare() {
 
 
 build() {
-  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
-  export CFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-  export CXXFLAGS=${CFLAGS}
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
   for _arch in ${_architectures}; do
+    source mingw-env ${_arch}
     export C_INCLUDE_PATH="/usr/${_arch}/include/openssl-1.0"
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/rtmpdump" "${srcdir}/build-${_arch}"
@@ -43,11 +40,8 @@ build() {
 }
 
 package() {
-  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
-  export CFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-  export CXXFLAGS=${CFLAGS}
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
   for _arch in ${_architectures}; do
+    source mingw-env ${_arch}
     cd "${srcdir}/build-${_arch}"
     make install DESTDIR="${pkgdir}" SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
 
