@@ -1,6 +1,6 @@
 pkgbase = clash-dashboard-git
 	pkgdesc = web port of clash
-	pkgver = 20191101.5aecab9
+	pkgver = 20191202.66ef301
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash-dashboard
 	install = clash-dashboard.install
