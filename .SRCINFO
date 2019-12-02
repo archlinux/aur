@@ -1,6 +1,6 @@
 pkgbase = c-icap-modules
 	pkgdesc = Modules for C-ICAP server
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = http://c-icap.sourceforge.net/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = c-icap-modules
 	backup = etc/c-icap/virus_scan.conf
 	backup = etc/c-icap/vscan-local.conf
 	backup = etc/c-icap/srv_url_check.conf
-	source = http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-0.5.3.tar.gz
-	sha256sums = 6e2f87a60379ffde26947c6e82ff0c7f614bc005588bf1efb40c74f69c82f925
+	source = http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-0.5.4.tar.gz
+	sha256sums = 87409920c66027204e9cca5f20e137b63cd12daf6dfcd85c1fa62ab2bd1c57cc
 
 pkgname = c-icap-modules
 

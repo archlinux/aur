@@ -1,6 +1,6 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap-modules
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Modules for C-ICAP server'
 depends=('c-icap' 'clamav')
@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='http://c-icap.sourceforge.net/'
 license=('GPL' 'LGPL')
 source=("http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-${pkgver}.tar.gz")
-sha256sums=('6e2f87a60379ffde26947c6e82ff0c7f614bc005588bf1efb40c74f69c82f925')
+sha256sums=('87409920c66027204e9cca5f20e137b63cd12daf6dfcd85c1fa62ab2bd1c57cc')
 backup=('etc/c-icap/clamav_mod.conf'
         'etc/c-icap/clamd_mod.conf'
         'etc/c-icap/virus_scan.conf'
