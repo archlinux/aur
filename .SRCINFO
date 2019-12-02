@@ -1,0 +1,17 @@
+pkgbase = docker-rootless
+	pkgdesc = Run the Docker daemon as a non-root user (Rootless mode)
+	pkgver = 1
+	pkgrel = 1
+	url = https://docs.docker.com/engine/security/rootless/
+	install = docker-rootless.install
+	arch = x86_64
+	license = Apache
+	depends = docker
+	provides = docker-rootless
+	source = https://master.dockerproject.org/linux/x86_64/docker-rootless-extras.tgz
+	source = docker.service
+	md5sums = 943e113aedab4ee159977d9d16f7e712
+	md5sums = 30a7a07f461b6c9f2f068a9505ba79bc
+
+pkgname = docker-rootless
+
