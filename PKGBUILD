@@ -1,7 +1,7 @@
 # Maintainer: Storm Dragon <stormdragon2976@gmail.com>
 _pkgname="numnastics"
 pkgname="${_pkgname}-git"
-pkgver=r10.77ad778
+pkgver=r13.1b666c1
 pkgrel=1
 pkgdesc="A number puzzle audio game"
 arch=('any')
@@ -21,6 +21,11 @@ sha512sums=('SKIP'
 pkgver() {
     cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${_pkgname}"
+    git submodule update --init
 }
 
 package() {
