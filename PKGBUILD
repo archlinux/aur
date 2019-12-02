@@ -1,13 +1,13 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-pytss-git
-pkgver=r4.d28d577
+pkgver=r10.9f8aba8
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
 depends=('python-setuptools' 'tpm2-tss')
-makedepends=('git' 'swig3')
+makedepends=('git' 'swig')
 checkdepends=('ibm-sw-tpm2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -24,9 +24,6 @@ prepare() {
 	git submodule init
 	git config submodule.tpm2_pytss/swig.url "$srcdir/tpm2-swig"
 	git submodule update
-
-	# https://github.com/tpm2-software/tpm2-pytss/issues/4
-	sed --in-place '/super().run()/i\        self.swig = "swig-3"' setup.py
 }
 
 build() {
