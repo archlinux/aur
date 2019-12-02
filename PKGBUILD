@@ -21,7 +21,7 @@ source=(
 )
 sha384sums=('b8bf646f8c599cb8adfa2ab1363f36592a1ecb10b819617cecc970ac7a30b8d5ef912e9af5c1d55a9282478d8a55b80e'
             '4f7c463e0723e3cfd6ed146e0db6b44627065af077aaca9765b60c9347752e32032752f04883da89b9f65523ca5c28e8'
-            '832521f6e13705d7abc99a94ab2a6cb8e1d8087444cdc283b9adc9ec2011da9a16242994af2ba6f339c7e455ba5df4ad'
+            '6c47f8b81858cfccc96a0e18dd56dbb23c72baa165650d145898eea8d8f3493a9179f7c8c9afd651ed99e713c9106238'
             '338763e008464bebb1f11e62d3a4839d7af43c800f772be6d51a345f6e1e83fa4d5929c1e4b363dd9af2073dda420821'
             'b3c355692709a1d9f4a1712f963ab87b1437e8d40fe0bb43dbc433f29ff9b06cc630bff357d33e5da6a351bee9dbd98f')
 
@@ -35,9 +35,9 @@ prepare() {
   patch -Np1 -i "$srcdir"/'0002-cmake-python-link.patch'
   
   cd DSView
-  sed -i 's#install(FILES icons/logo.png DESTINATION share/${PROJECT_NAME} RENAME logo.png)##;
-          s#install(FILES DreamSourceLab.rules DESTINATION /etc/udev/rules.d/)##' \
-    CMakeLists.txt
+  sed -i 's#install(FILES icons/logo.png DESTINATION share/${PROJECT_NAME} RENAME logo.png)##; 
+          s#install(FILES DreamSourceLab.rules DESTINATION /etc/udev/rules.d/)##; 
+          s#install(FILES DSView.desktop DESTINATION /usr/share/applications/)##' CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_SKIP_RPATH=1 .
 }
 
