@@ -2,12 +2,12 @@
 
 pkgname=curlie
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A frontend to curl that adds the ease of use of httpie'
 arch=('x86_64')
 url="https://curlie.io/"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 depends=('curl')
 source=("git+https://github.com/rs/curlie.git#tag=v$pkgver")
 sha256sums=('SKIP')
