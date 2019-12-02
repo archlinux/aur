@@ -20,6 +20,7 @@ pkgbase = linux-aufs
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.3/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.3/arch-patches-v4-sep/0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch
 	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 08b5fd495c89214573d7ac29df38d25b9483c830b5791d11adb9c8130f02646bd44c12890e5f6755b7d0f6a73ec410490b390dfd6edfc29738ab745c355c6e88
 	sha512sums = SKIP
