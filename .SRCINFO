@@ -1,12 +1,13 @@
 pkgbase = mingw-w64-configure
 	pkgdesc = configure wrapper for MinGW (mingw-w64)
 	pkgver = 0.1.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
 	depends = mingw-w64-gcc
 	depends = mingw-w64-pkg-config
+	depends = mingw-w64-environment
 	source = mingw-configure.sh
 	md5sums = SKIP
 

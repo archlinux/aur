@@ -1,10 +1,10 @@
 
 pkgname=mingw-w64-configure
 pkgver=0.1.1
-pkgrel=8
-arch=(any)
+pkgrel=9
+arch=('any')
 pkgdesc="configure wrapper for MinGW (mingw-w64)"
-depends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+depends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-environment')
 license=("GPL")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-configure.sh")
@@ -24,4 +24,3 @@ package() {
     install -m 755 ${_arch}-configure "${pkgdir}"/usr/bin/
   done
 }
-
