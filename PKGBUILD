@@ -7,7 +7,7 @@ url='http://www.netlib.org/f2c/index.html'
 license=('custom')
 arch=('any')
 depends=('mingw-w64-crt')
-makedepends=('mingw-w64-gcc')
+makedepends=('mingw-w64-gcc' 'mingw-w64-environment')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.netlib.org/f2c/libf2c.zip" libf2c-1.patch)
 noextract=("libf2c.zip")
@@ -31,8 +31,9 @@ prepare() {
 build() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
-    cp -r libf2c build-${_arch} && pushd build-${_arch}   
-    make -f makefile.u CC=${_arch}-gcc AR=${_arch}-ar LD=${_arch}-ld RANLIB=${_arch}-ranlib CFLAGS='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -DUSE_CLOCK'
+    cp -r libf2c build-${_arch} && pushd build-${_arch}
+    source mingw-env ${_arch}
+    make -f makefile.u CFLAGS="${CFLAGS} -DUSE_CLOCK"
     popd
   done
 }
