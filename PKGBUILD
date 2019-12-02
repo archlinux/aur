@@ -64,12 +64,12 @@ prepare() {
     #
     # Asking upstream to switch to electron-spellchecker will fix the issue.
     # https://github.com/electron-userland/electron-spellchecker
-}
 
-build() {
-    cd "desktop-${pkgver}"
+    # Install dependencies should be in prepare(), that way we don't need an
+    # internet connection during build().
+    # We don't need to run "npm run build" because that target is run by "npm
+    # run package:linux" any way.
     npm install --cache "${srcdir}/npm-cache"
-    npm run build --cache "${srcdir}/npm-cache"
 }
 
 package() {
