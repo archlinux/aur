@@ -41,11 +41,9 @@ build() {
   cd "$srcdir"
   for _arch in ${_architectures}; do
     cp -r SuiteSparse-${pkgver} build-${_arch} && pushd build-${_arch}
+    source mingw-env ${_arch}
     make \
-      UNAME=Windows CC=${_arch}-gcc CXX=${_arch}-g++ F77=${_arch}-gfortran \
-      AR=${_arch}-ar RANLIB=${_arch}-ranlib BLAS="-lblas -lgfortran -lquadmath" \
-      CFLAGS="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
-      LDFLAGS="-fstack-protector" \
+      UNAME=Windows BLAS="-lblas -lgfortran -lquadmath" \
       CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" JOBS=2
@@ -56,12 +54,10 @@ build() {
 package() {
   for _arch in ${_architectures}; do
     install -dm755 "${pkgdir}"/usr/${_arch}/{bin,lib,include/suitesparse}
-    cd "${srcdir}"/build-${_arch} 
+    cd "${srcdir}"/build-${_arch}
+    source mingw-env ${_arch}
     make install \
-      UNAME=Windows CC=${_arch}-gcc CXX=${_arch}-g++ F77=${_arch}-gfortran \
-      AR=${_arch}-ar RANLIB=${_arch}-ranlib BLAS="-lblas -lgfortran -lquadmath" \
-      CFLAGS="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" \
-      LDFLAGS="-fstack-protector" \
+      UNAME=Windows BLAS="-lblas -lgfortran -lquadmath" \
       CHOLMOD_CONFIG='-DNPARTITION' \
       CMAKE_OPTIONS="-DCMAKE_INSTALL_PREFIX=\"/usr/${_arch}\" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=\"/usr/share/mingw/toolchain-${_arch}.cmake\"" \
       MY_METIS_LIB="-lmetis" \
