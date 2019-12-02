@@ -1,6 +1,12 @@
-## DSLogic
-# 2a0e:0001
-ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", ENV{ID_MM_DEVICE_IGNORE}="1"
-ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", ENV{MTP_NO_PROBE}="1"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", GROUP="plugdev", MODE="0660"
-
+# DreamSourceLab DSLogic
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0001", TAG+="uaccess"
+# DreamSourceLab DSLogic Pro
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0003", TAG+="uaccess"
+# DreamSourceLab DScope
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0002", TAG+="uaccess"
+# DreamSourceLab DScope20
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0022", TAG+="uaccess"
+# DreamSourceLab DSLogic Plus
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0020", TAG+="uaccess"
+# DreamSourceLab DSLogic Basic
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0021", TAG+="uaccess"
