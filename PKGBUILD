@@ -5,7 +5,7 @@
 _pipname=pantable
 pkgname=python-$_pipname
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CSV Tables in Markdown: Pandoc Filter for CSV Tables"
 arch=(any)
 url="https://github.com/ickc/$_pipname"
@@ -26,4 +26,7 @@ package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
   mkdir -p "$pkgdir/$sitepackages"
   cp -r "$srcdir/$_pipname"/* "$pkgdir/$sitepackages"
+  install -d "$pkgdir/usr/bin"
+  ln -s {$(python -c "import site; print(site.getsitepackages()[0]+'/bin')"),$pkgdir/usr/bin}/pantable
+  ln -s {$(python -c "import site; print(site.getsitepackages()[0]+'/bin')"),$pkgdir/usr/bin}/pantable2csv
 }
