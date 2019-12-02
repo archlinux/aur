@@ -1,13 +1,13 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-openh264
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)"
 arch=(any)
 url="http://www.openh264.org/"
 license=("BSD")
 depends=('mingw-w64-gcc')
-makedepends=('nasm')
+makedepends=('nasm' 'mingw-w64-environment')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/cisco/openh264/archive/v${pkgver}.tar.gz")
 sha256sums=('73c35f80cc487560d11ecabb6d31ad828bd2f59d412f9cd726cc26bfaf4561fd')
@@ -16,10 +16,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 
 build() {
-  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
-  export CFLAGS="-pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-  export CXXFLAGS=${CFLAGS}
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
+  source mingw-env ${_arch}
   for _arch in ${_architectures}; do
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/openh264-${pkgver}" "${srcdir}/build-${_arch}"
