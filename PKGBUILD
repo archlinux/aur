@@ -2,7 +2,7 @@
 # Contributer: grimi <grimi at poczta dot fm>
 
 pkgname=matcha-icon-theme
-pkgver=20190814
+pkgver=20191202
 pkgrel=1
 pkgdesc="A Matcha icon theme based on Arc"
 arch=('any')

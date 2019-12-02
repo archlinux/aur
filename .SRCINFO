@@ -1,12 +1,12 @@
 pkgbase = matcha-icon-theme
 	pkgdesc = A Matcha icon theme based on Arc
-	pkgver = 20190814
+	pkgver = 20191202
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1187179
 	arch = any
 	license = GPL3
 	depends = gtk-update-icon-cache
-	source = matcha-icon-theme-20190814.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1517242250/s/e13267e5f275d8a3060ba2806331a4d4ae9921a9e3ac747d25418ca00065c635edd5039613ca659e0c6dc853c6fb89c1eec4fa3dfa834ace0053016634e40334/t/1565810531/Matcha-icon-theme.tar.xz
+	source = matcha-icon-theme-20191202.tar.xz::https://dl.opendesktop.org/api/files/downloadfile/id/1517242250/s/db6098b882e718cb348869d01650d468cdb97c7b507fa5a4726bc0b02e0dbbd079c367b89ac4f2f0ac09cbdb88dc44efaf458fb9c6c64d7f0e9318c7ca8e909e/t/1575298922/Matcha-icon-theme.tar.xz
 	sha256sums = 067193e09a3ec9058717bd93b9a64e74dcd66f6ff9c60e5193d1729a39fe3086
 
 pkgname = matcha-icon-theme
