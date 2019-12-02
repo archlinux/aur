@@ -1,7 +1,7 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
 pkgname=papis-rofi-git
 _name=${pkgname//-git}
-provides=('python-papis-rofi')
+provides=('papis-rofi')
 _pkgver=0.2.0
 pkgver=0.2.0.r5.2cb5b88
 pkgrel=1

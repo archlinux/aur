@@ -9,7 +9,7 @@ pkgbase = papis-rofi-git
 	depends = python
 	depends = papis
 	depends = python-papis-python-rofi
-	provides = python-papis-rofi
+	provides = papis-rofi
 	source = git+https://github.com/papis/papis-rofi.git
 	sha256sums = SKIP
 
