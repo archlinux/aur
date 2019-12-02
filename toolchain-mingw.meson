@@ -12,10 +12,10 @@ cmake = '@TRIPLE@-cmake'
 
 [properties]
 root = '@TRIPLE@'
-c_args = ['-Wp,-D_FORTIFY_SOURCE=2', '-fno-plt', '-fexceptions', '--param=ssp-buffer-size=4']
-cpp_args = ['-Wp,-D_FORTIFY_SOURCE=2', '-fno-plt', '-fexceptions', '--param=ssp-buffer-size=4']
-c_link_args = ['-Wl,-O1,--sort-common,--as-needed', '-fstack-protector', '-lssp']
-cpp_link_args = ['-Wl,-O1,--sort-common,--as-needed', '-fstack-protector', '-lssp']
+c_args = ['-D_FORTIFY_SOURCE=2', '-O2', '-pipe', '-fno-plt', '-fexceptions', '--param=ssp-buffer-size=4']
+cpp_args = ['-D_FORTIFY_SOURCE=2', '-O2', '-pipe', '-fno-plt', '-fexceptions', '--param=ssp-buffer-size=4']
+c_link_args = ['-Wl,-O1,--sort-common,--as-needed', '-fstack-protector']
+cpp_link_args = ['-Wl,-O1,--sort-common,--as-needed', '-fstack-protector']
 needs_exe_wrapper = true
 
 [host_machine]
