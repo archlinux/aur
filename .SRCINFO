@@ -1,0 +1,17 @@
+pkgbase = snapbak2
+	pkgdesc = A very simple tarsnap frontend
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~craftyguy/snapbak2
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-dateutil
+	depends = tarsnap
+	provides = snapbak2
+	conflicts = snapbak2
+	source = https://git.sr.ht/~craftyguy/snapbak2/archive/0.1.tar.gz
+	sha512sums = 8ce15941ffb194b7f3ad0898ad04722c7dc3efad2f1c40dbca7a214185a5eddb910dd71771207fd673399d2a36d69e0e5ec61a0313f8c9c3ae6f1f5698f5edc9
+
+pkgname = snapbak2
+
