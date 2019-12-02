@@ -64,7 +64,7 @@ install=
 changelog=
 source=("ftp://ftp.ourproject.org/pub/wdune/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('2c373a17abb2ec0d1fd4f8f80477271e')
+md5sums=('90b9e044c49a08af4c767d1b0f5fd14e')
 validpgpkeys=()
 
 build() {
