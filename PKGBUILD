@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=libsigrok4dsl-git
-pkgver=1.01.r31.gb018742
+pkgver=1.01.r33.gce65e84
 pkgrel=1
 pkgdesc='A library which provides the basic API for DreamSourceLab hardware'
 url='https://github.com/DreamSourceLab/DSView'
@@ -9,7 +9,10 @@ arch=(i686 x86_64)
 license=(GPL3)
 depends=(libzip libusb libserialport)
 makedepends=(git)
-source=(git://github.com/DreamSourceLab/DSView.git) #branch=develop
+conflicts=(libsigrok4dsl)
+provides=(libsigrok4dsl)
+replaces=(libsigrok4dsl)
+source=(git://github.com/DreamSourceLab/DSView.git)
 sha1sums=('SKIP')
 
 pkgver() {
