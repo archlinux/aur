@@ -1,6 +1,6 @@
 pkgname=gnome-shell-extension-paperwm-git
 _pkgname=PaperWM
-pkgver=r1303.88eacec
+pkgver=r1448.13729b7
 pkgrel=1
 pkgdesc="A gnome shell extension providing scrollable tiling of windows and per monitor workspaces."
 arch=('any')
