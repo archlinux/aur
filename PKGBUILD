@@ -1,12 +1,11 @@
 # Maintainer:  JP-Ellis <josh@jpellis.me>
-pkgname=python-papis-rofi-git
-_name=${pkgname#python-}
-_name=${_name//-git}
+pkgname=papis-rofi-git
+_name=${pkgname//-git}
 provides=('python-papis-rofi')
-_pkgver=0.1.1
-pkgver=0.1.1.r2.5a60ed2
+_pkgver=0.2.0
+pkgver=0.2.0.r5.2cb5b88
 pkgrel=1
-pkgdesc="Create simple GUIs using the Rofi application (fork for papis)"
+pkgdesc="Rofi interface for papis"
 arch=('any')
 url="https://pypi.org/project/papis-rofi/"
 license=('GPL')
