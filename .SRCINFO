@@ -1,7 +1,7 @@
 pkgbase = foxitreader
 	pkgdesc = A fast, secure and complete PDF viewer
 	pkgver = 2.4.4.0911
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.foxitsoftware.com/products/pdf-reader/
 	arch = x86_64
 	license = custom:EULA
@@ -25,7 +25,7 @@ pkgbase = foxitreader
 	source = foxitreader.patch
 	source = foxitreader-excluded_files
 	sha256sums = 6b579bd4ecdf86f7e70a009886c511da0b5085b831b0d6afc42442cabc249b90
-	sha256sums = 58574d4b9aa4c3658b9188cafd89ad0f09c1c1b3aa86743080d0f4b1d6576541
+	sha256sums = 4ca287e0c47f46df4185be7ff273c0cced304672ebc750aad6236590e1a772e6
 	sha256sums = ee0f65819d00fea89f40112c769c704c7b663ff852e9d1d6e36d1b6d054d9c05
 	sha256sums = e558529c6dbea047eee744b011ffcc214547c503896b14211ebf5f6309ef4e9f
 
