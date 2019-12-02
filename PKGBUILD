@@ -102,7 +102,7 @@ fi
 [ -n "$_cryptsetup" ] && makedepends+=('cryptsetup')
 
 if [ -n "$_clear" ]; then
-  local _clrrel=267
+  local _clrrel=268
   source+=("clearlinux::git+https://github.com/clearlinux-pkgs/${_pkgbase}#tag=${pkgver%.*}-${_clrrel}")
   sha512sums+=('SKIP')
 fi
