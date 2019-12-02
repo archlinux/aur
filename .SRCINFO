@@ -1,0 +1,13 @@
+pkgbase = ageofconquerors-trial-data
+	pkgdesc = Data files from Age of Empires II: The Conquerors Demo
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.ageofempires.com/
+	arch = any
+	license = custom
+	makedepends = cabextract
+	source = https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe
+	sha1sums = a0b27848a70bcda203837573445de6e243920170
+
+pkgname = ageofconquerors-trial-data
+
