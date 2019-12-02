@@ -13,18 +13,21 @@ depends=('python'
          'python-chardet'
          'python-click'
          'python-colorama'
+         'python-doi'
          'python-filetype'
          'python-habanero'
          'python-isbnlib'
+         'python-lxml'
          'python-prompt_toolkit'
+         'python-pyaml'
+         'python-pygments'
          'python-pylibgen'
          'python-pyparsing'
-         'python-pygments'
-         'python-pyaml'
-         'python-slugify'
          'python-requests'
+         'python-slugify'
+         'python-tqdm'
         )
-optdepends=('python-papis-rofi: integration with rofi')
+optdepends=('papis-rofi: integration with rofi')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('6a1070ea9a8345dde9cb5d9ccda582e2592520f987d0cfefa6f95d714bf5fd42')
 noextract=()
