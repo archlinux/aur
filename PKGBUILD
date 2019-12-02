@@ -2,9 +2,9 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=7.2.0
-_pkgtimestamp=1525200006720
-_pkgbuild=1641
+pkgver=7.4.0
+_pkgtimestamp=1525200006740
+_pkgbuild=566
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -17,7 +17,7 @@ install=crashplan-pro.install
 source=(https://download.code42.com/installs/agent/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('0805b11e475868f0cc840a64200a5d198998765590af08820437c691258f10b2'
+sha256sums=('c4b5103f924a914f38e37551439b0b3ca8241fe23a3c97a91fc250e9abd80c82'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c')
 
