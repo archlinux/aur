@@ -13,8 +13,8 @@ pkgbase = libcomps
 	depends = libxml2
 	depends = zlib
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/libcomps/archive/0.1.12/libcomps-0.1.12.tar.gz
-	md5sums = 1fd641428842b90a73ec56305daf12e0
+	source = https://github.com/rpm-software-management/libcomps/archive/libcomps-0.1.12.tar.gz
+	md5sums = 6793b581f759e587b6c3dbbd45e32e84
 
 pkgname = libcomps
 
