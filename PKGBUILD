@@ -19,7 +19,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
-    ${_arch}-configure --with-blas-lib='-lblas' --with-lapack-lib='-llapack' --with-glpk-lib='-lglpk' \
+    LIBS="-lssp" ${_arch}-configure --with-blas-lib='-lblas' --with-lapack-lib='-llapack' --with-glpk-lib='-lglpk' \
       lt_cv_deplibs_check_method=pass_all ..
     make
     popd
