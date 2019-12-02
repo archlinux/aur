@@ -1,0 +1,8 @@
+===> In what directory would you like to place the install? (leave blank to use '~/lib/azure-cli'):
+./azure-cli
+
+===> In what directory would you like to place the 'az' executable? (leave blank to use '~/bin'):
+./bin
+
+===> Modify profile to update your $PATH and enable shell/tab completion now? (Y/n):
+n
