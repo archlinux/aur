@@ -1,20 +1,12 @@
-@@ -31,8 +31,8 @@
-       nodeIntegration: true,
-       devTools: electronIsDev,
-     },
-+    show: true,
-+    frame: true,
--    show: false,
--    frame: false,
-     title: 'MTGA Pro Tracker',
-     icon: appIcoImg,
-     resizable: false,
-@@ -45,7 +45,7 @@
-     withHomeWindow(w => w.focus());
+@@ -51,11 +51,6 @@
+     mainWindow = undefined;
    });
  
-+  mainWindow.setMenuBarVisibility(true);
--  mainWindow.setMenuBarVisibility(false);
- 
-   mainWindow.on('closed', () => {
-     mainWindow = undefined;
+-  mainWindow.on('minimize', (event: Electron.Event) => {
+-    event.preventDefault();
+-    withHomeWindow(w => w.hide());
+-  });
+-
+   mainWindow.loadURL(HOME_WINDOW_WEBPACK_ENTRY).catch(err =>
+     error('Failure to load url in main window', err, {
+       entry: HOME_WINDOW_WEBPACK_ENTRY,
