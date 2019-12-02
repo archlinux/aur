@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-giflib
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A library for reading and writing gif images (mingw-w64)"
 arch=(any)
 url="http://sourceforge.net/projects/giflib/"
@@ -28,25 +28,30 @@ prepare() {
 }
 
 build() {
-  export CPPFLAGS="-D_FORTIFY_SOURCE=2"
-  export CFLAGS="-pipe -fno-plt -fexceptions --param=ssp-buffer-size=4"
-  export CXXFLAGS=${CFLAGS}
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector -lssp"
-  
   for _arch in ${_architectures}; do
+    unset CPPFLAGS
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+    source mingw-env ${_arch}
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/giflib-${pkgver}" "${srcdir}/build-${_arch}"
 
     pushd build-${_arch}
-    make CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar
+    make CC=${CC} CXX=${CXX} AR=${AR}
     popd
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
+    unset CPPFLAGS
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+    source mingw-env ${_arch}
     cd "${srcdir}/build-${_arch}"
-    make CC=${_arch}-gcc CXX=${_arch}-g++ AR=${_arch}-ar DESTDIR="${pkgdir}" PREFIX="/usr/${_arch}" install INSTALLABLE="gif2rgb.exe gifbuild.exe giffix.exe giftext.exe giftool.exe gifclrmp.exe"
+    make CC=${CC} CXX=${CXX} AR=${AR} DESTDIR="${pkgdir}" PREFIX="/usr/${_arch}" install INSTALLABLE="gif2rgb.exe gifbuild.exe giffix.exe giftext.exe giftool.exe gifclrmp.exe"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-all "$pkgdir"/usr/${_arch}/bin/*.exe
