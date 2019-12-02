@@ -2,8 +2,8 @@
 
 _pkgname=shcrt
 pkgname=$_pkgname-git
-pkgver=r23.bd960a6
-pkgrel=2
+pkgver=r36.f1ff4b3
+pkgrel=1
 pkgdesc="Replace proprietary SecureCRT software with a Bash script that parses its configs"
 arch=('any')
 depends=('bash' 'easybashgui' 'python' 'python-pycrypto')
@@ -27,6 +27,7 @@ package() {
   
   install -dm755 "$pkgdir/usr/lib/shcrt"
   install -m755 shcrt "$pkgdir/usr/lib/shcrt/shcrt"
+  install -m644 sftp_runners.sh "$pkgdir/usr/lib/shcrt/sftp_runners.sh"
   install -m755 crt2foss.py "$pkgdir/usr/lib/shcrt/crt2foss.py"
   install -m755 SecureCRTCipher.py "$pkgdir/usr/lib/shcrt/SecureCRTCipher.py"
 
