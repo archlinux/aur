@@ -24,8 +24,8 @@ prepare() {
 
 
 build() {
+  source mingw-env
   for _arch in ${_architectures}; do
-    source mingw-env ${_arch}
     export C_INCLUDE_PATH="/usr/${_arch}/include/openssl-1.0"
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/rtmpdump" "${srcdir}/build-${_arch}"
@@ -40,8 +40,8 @@ build() {
 }
 
 package() {
+  source mingw-env
   for _arch in ${_architectures}; do
-    source mingw-env ${_arch}
     cd "${srcdir}/build-${_arch}"
     make install DESTDIR="${pkgdir}" SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
 
