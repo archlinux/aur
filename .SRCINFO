@@ -1,7 +1,7 @@
 pkgbase = surfshark-vpn
 	pkgdesc = Surfshark VPN client
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://surfshark.com/download/linux
 	arch = x86_64
 	license = custom:surfshark
