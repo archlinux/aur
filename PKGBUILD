@@ -23,4 +23,7 @@ package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
   mkdir -p "$pkgdir/$sitepackages"
   cp -r "$srcdir/$_pipname"/* "$pkgdir/$sitepackages"
+  install -d "$pkgdir/usr/bin"
+  ln -s {$sitepackages,$pkgdir/usr}/bin/panfl
+  ln -s {$sitepackages,$pkgdir/usr}/bin/panflute
 }
