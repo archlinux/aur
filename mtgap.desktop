@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MTGA Pro Tracker
+Comment=Automatically uploads collection, decks, battles, draft and inventory from your game client
+Icon=/usr/share/icons/mtgap.png
+Exec=mtgap
+Terminal=false
+Categories=Network;Games;
