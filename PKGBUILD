@@ -6,11 +6,11 @@
 buildarch=8
 
 pkgbase=linux-raspberrypi4-aarch64
-_commit=eb29974a6a67148fb0efe46c16aaefa152ccace4
+_commit=c078c64fecb325ee86da705b91ed286c90aae3f6
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4"
-pkgver=4.19.85
+pkgver=4.19.86
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -24,7 +24,7 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('32322cef89aae62bae0c1c236553d3e5'
+md5sums=('412996f9a5d1641e625fa49b0018fee7'
          'f37e04e5bcd9187eefbac4b748029e04'
          '60bc3624123c183305677097bcd56212'
          '40a6543a2dee5d54c4489f03ff8c2a25'
