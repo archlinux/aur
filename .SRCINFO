@@ -1,0 +1,13 @@
+pkgbase = wdsaver
+	pkgdesc = Stop hard drive from too frequent head parking
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/amishmm/wdsaver
+	arch = x86_64
+	license = GPL
+	optdepends = hdparm
+	source = wdsaver-1.1.tar.gz::https://github.com/amishmm/wdsaver/archive/v1.1.tar.gz
+	sha256sums = 266530d8ad164478b1866c70d7ab5e2d777adabcac1c7830c29ca2fa53f42a5a
+
+pkgname = wdsaver
+
