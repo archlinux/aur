@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
-_major=5.3
-_minor=14
+_major=5.4
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -61,24 +61,22 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_bfq_rev_path="bfq-reverts-sep"
-_bfq_rev_patch_1="0001-Revert-block-bfq-push-up-injection-only-after-settin.patch"
-_bfq_rev_patch_2="0002-Revert-block-bfq-deschedule-empty-bfq_queues-not-ref.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
-_bfq_rel="r2K191119"
+_bfq_rel="r2K191202"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_1}"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch_2}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
          # the main kernel config files
         'config')
 
@@ -331,15 +329,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('08b5fd495c89214573d7ac29df38d25b9483c830b5791d11adb9c8130f02646bd44c12890e5f6755b7d0f6a73ec410490b390dfd6edfc29738ab745c355c6e88'
+sha512sums=('bde6dc6ff03ea5319029b269f58e4c099d2a0f04105944b475bcc143db6d53855501fdc6eefd6cc3f84fb674297bed8a5ed70dbbd26178d0ae4e4f3a7c976b46'
             'SKIP'
-            'efcbf8d75018b601f92ed4a189db661c9805d2fcb5516053422129eed78aee3d219be6715e088455d31a8d407b78e33fa2981e7cbb17dd4ac2bd0655a5b7e7ef'
-            'd56d0c23b8d72d6112f143e1d394d0e22bddd27baba11afd8731c4912c1942ecc5be4fdf539ee7e098109700c8450796dbf0de59c4f449f12e842487a5760fa8'
-            'b23bdbadf79f89893ccea500dc29f501763103d581bdd744a1247046fc992b541a114448804d3e0260bcbcc8df07c3b79988905289c88899a16944619e907978'
+            '43e412d47cceeddf92f4032919dc81cb07ccf5f9f778073b9cee09767c6ccd36580b189a2907d205ab63e6d81ee1eec3bdfa7adf51e2643218d1dba0924042ba'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
-            '3d1a3cb812328b615823cc95f16525c61f687b0abec1a1bce885a3b62153a4ee8f7546222d6a4592cd96f599837108f63de9f0c971c3bfd1ae83bfabce1015dd'
-            'a19d0619404c2815a647942d556d17d9c02c0e2ec6a6461200c61962f27e4d3dcf6577fc426073025c58ee2114de2a96ee6172a0935629dff7a1af1ab7be2b2a')
+            '73cc26b83de333deaea9c0109f39823173aef0f78609368539ce535bae5ae11c38dedeeb6d7df81d8ffecb798227b557d939b2e7794da0e67c2b7d3e4463bd17'
+            'dc031d45654121219871553b4738e8f6dba033a1ff925a1f5dd53cd6fbeb5b798e8fd3e2fe27d31f0c83de946c2758ae6bd0ec824b9de639d817e15edc2045ab'
+            '59c5df61bce28ffab84001933bc3faf1c899acad76a3ace0511e45c122bbdd84e7eec5b0e72a154d767ca468c8ab642ed7fab7c9c041bc3f0f74160293b749b1'
+            '6717ded760d5a651244342b4f434abd584b89b1d35f75dd239eded29e49e64b83edfd1946823e4832bc145724ac87238075a338d98ad251290278c89b2d7fa3f'
+            '9580183e4ef1155a64ed669e7787d5296d8ad164490a58840b11d269aaa099bb52d8cabaedc67e668200953b5f75ebaff09aee0fb744bf9695514e298da1220b'
+            '32e5e87332efb4e410caea7c0ea275922d1e991cf7c1dc9d7bcd5aebf47a6336039fe44f13b08a76ff5426b01254ae84c6e3ee872b65cdea708a3c9793b9d783')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
