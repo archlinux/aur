@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.9'
-pkgrel='14'
+pkgrel='15'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -72,6 +72,8 @@ package() {
     
     install -m 644 "src/scripts/afterglow.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/afterglow.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/afterhue.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/afterhue.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/batique.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/batique.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/fire.lua" "$pkgdir/usr/lib/eruption/scripts/"
@@ -94,6 +96,8 @@ package() {
     install -m 644 "src/scripts/sysmon.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/water.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/water.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
