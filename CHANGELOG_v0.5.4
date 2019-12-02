@@ -1,4 +1,20 @@
-## v0.5.3
+## v0.5.5 (Unreleased)
+
+## v0.5.4 (November 29, 2019)
+
+### Notes
+
+- This release fixes a possible error with the data migration that was introduced in 0.5.3 and an optimization that mitigates I/O bottlenecks when syncing
+- Users can directly use this version from previous versions, there's no explicit need to run 0.5.3 before running 0.5.4
+
+### Commits
+
+* [#1993](https://github.com/ethersphere/swarm/pull/1993) stream: avoid repeated SetSyncPull for chunk
+* [#1980](https://github.com/ethersphere/swarm/pull/1980) localstore: skip tag not found on migration
+* [#1980](https://github.com/ethersphere/swarm/pull/1980) shed: RenameIndex return true if index is already renamed
+
+
+## v0.5.3 (November 27, 2019)
 
 ### Notes
 
@@ -18,81 +34,81 @@
 
 ### Commits
 
-[#1980](https://github.com/ethersphere/swarm/pull/1980) storage/localstore: add subscriptions wait group before closing leveldb
-[#1979](https://github.com/ethersphere/swarm/pull/1979) network: increase fetcher timeout
-[#1978](https://github.com/ethersphere/swarm/pull/1978) localstore: change gc batch size
-[#1977](https://github.com/ethersphere/swarm/pull/1977) cmd/swarm: disable USB devices
-[#1973](https://github.com/ethersphere/swarm/pull/1973) localstore: fix subscribe push iterator tag value
-[#1972](https://github.com/ethersphere/swarm/pull/1972) stream: limit the number of peers we sync with on bin 0
-[#1969](https://github.com/ethersphere/swarm/pull/1969) smoke: remove redundant check for bail flag
-[#1970](https://github.com/ethersphere/swarm/pull/1970) localstore: fix data races on subscriptions
-[#1968](https://github.com/ethersphere/swarm/pull/1968) smoke: retry failed upload
-[#1959](https://github.com/ethersphere/swarm/pull/1959) api: Add bzz-feed-raw scheme to retrieve arbitary feed update
-[#1962](https://github.com/ethersphere/swarm/pull/1962) pss, network: remove spamming loglines
-[#1963](https://github.com/ethersphere/swarm/pull/1963) retrieval: change loglevel of chunk retrieval errors
-[#1934](https://github.com/ethersphere/swarm/pull/1934) swap: use p2ptest for protocol tests
-[#1960](https://github.com/ethersphere/swarm/pull/1960) cmd/swarm: add pprof custom profiles through flags
-[#1952](https://github.com/ethersphere/swarm/pull/1952) network/stream: fix flaky tests and first delivered batch of chunks for an unwanted stream
-[#1957](https://github.com/ethersphere/swarm/pull/1957) api/config: enable pushsync by default
-[#1919](https://github.com/ethersphere/swarm/pull/1919) bzzeth: Phase2 of bzz eth protocol
-[#1945](https://github.com/ethersphere/swarm/pull/1945) cmd/swarm: swap --sync-mode flag with --no-sync flag
-[#1947](https://github.com/ethersphere/swarm/pull/1947) api/http/langos: ensure only one second peek
-[#1915](https://github.com/ethersphere/swarm/pull/1915) pushsync, localstore: decouple push/pull indexes for tag increment
-[#1940](https://github.com/ethersphere/swarm/pull/1940) localstore: fix index leak when NN chunks enter localstore
-[#1922](https://github.com/ethersphere/swarm/pull/1922) swap: always allow debt-reducing messages
-[#1883](https://github.com/ethersphere/swarm/pull/1883) swap: segregate api code and tests
-[#1907](https://github.com/ethersphere/swarm/pull/1907) cmd/swarm-smoke-pss: initial pss smoke tests
-[#1926](https://github.com/ethersphere/swarm/pull/1926) integration-tests: config for set of integration tests for stable swarm
-[#1944](https://github.com/ethersphere/swarm/pull/1944) swap: fix a rare panic in TestMultiChequeSimulation
-[#1913](https://github.com/ethersphere/swarm/pull/1913) swap: exchange chain id on handshake
-[#1942](https://github.com/ethersphere/swarm/pull/1942) swap: also wait for the debit counter to reach maxMsgsInt64
-[#1774](https://github.com/ethersphere/swarm/pull/1774) network: Kademlia Load Balancing
-[#1876](https://github.com/ethersphere/swarm/pull/1876) api/http: lookahead buffer
-[#1937](https://github.com/ethersphere/swarm/pull/1937) swap: fixed bug which needs cheques to be confirmed
-[#1930](https://github.com/ethersphere/swarm/pull/1930) swap: fix instabilities in simulation tests
-[#1873](https://github.com/ethersphere/swarm/pull/1873) swap: improve balance tests
-[#1887](https://github.com/ethersphere/swarm/pull/1887) swap: introduce pending cheques, drop peers on io errors
-[#1927](https://github.com/ethersphere/swarm/pull/1927) network/stream: add mutex to avoid unsynchronized access to streamInfoRes
-[#1923](https://github.com/ethersphere/swarm/pull/1923) swarm: shutdown pushsync before pss
-[#1924](https://github.com/ethersphere/swarm/pull/1924) network/stream: fix slice append bug
-[#1914](https://github.com/ethersphere/swarm/pull/1914) chunk: fix tag Sent value on load, don't persist done tags
-[#1916](https://github.com/ethersphere/swarm/pull/1916) pss: Pushsync and PSS fixes
-[#1863](https://github.com/ethersphere/swarm/pull/1863) swap: expand RPC calls for cheque info querying
-[#1892](https://github.com/ethersphere/swarm/pull/1892) Swap available balance
-[#1833](https://github.com/ethersphere/swarm/pull/1833) network/kademlia: SugestPeer funcionality. Variable number of min peers per bin
-[#1801](https://github.com/ethersphere/swarm/pull/1801) network/hive: move message handlers from Peer to Hive
-[#1912](https://github.com/ethersphere/swarm/pull/1912) shed: allow to change the index name for easier migrations
-[#1909](https://github.com/ethersphere/swarm/pull/1909) storage/localstore: do not later batch in setSync if moveToGc is false
-[#1900](https://github.com/ethersphere/swarm/pull/1900) pss, pss/internal/ticker: fix data races
-[#1901](https://github.com/ethersphere/swarm/pull/1901) network: fix a data race on Hive.addPeer function in tests
-[#1894](https://github.com/ethersphere/swarm/pull/1894) swarm: enable tag persistence across sessions
-[#1908](https://github.com/ethersphere/swarm/pull/1908) api,storage: add index size rpc call for debugging
-[#1906](https://github.com/ethersphere/swarm/pull/1906) chunk: align tag struct for 32bit arch
-[#1905](https://github.com/ethersphere/swarm/pull/1905) pusher: db.Set before check for synced
-[#1904](https://github.com/ethersphere/swarm/pull/1904) pushsync: fix finish root span
-[#1881](https://github.com/ethersphere/swarm/pull/1881) pushsync: split sync to chunksWorker and receiptsWorker
-[#1902](https://github.com/ethersphere/swarm/pull/1902) network/retrieval: fix race condition where a retrieve request has been
-[#1880](https://github.com/ethersphere/swarm/pull/1880) chunk, pushsync: do not increment synced tags in pushsync
-[#1803](https://github.com/ethersphere/swarm/pull/1803) swap: use the SimpleSwapFactory for deployment and verification
-[#1898](https://github.com/ethersphere/swarm/pull/1898) api/http: fix bufferedReadSeeker Seek method
-[#1896](https://github.com/ethersphere/swarm/pull/1896) netkwork/hive: addPeer function assigned after launching goroutine connectInitialPeers
-[#1878](https://github.com/ethersphere/swarm/pull/1878) storage/pin: fix getAllChunksFromDB test function
-[#1891](https://github.com/ethersphere/swarm/pull/1891) state: avoid has call and remove error shadowing in Get
-[#1875](https://github.com/ethersphere/swarm/pull/1875) retrieve: block unsolicited chunk deliveries
-[#1715](https://github.com/ethersphere/swarm/pull/1715) swarm: add pull request template
-[#1890](https://github.com/ethersphere/swarm/pull/1890) build, .travis.yml, Makefile, README.md: remove GO111MODULE=on
-[#1889](https://github.com/ethersphere/swarm/pull/1889) build: configure golangci-lint timeout in .golangci.yml
-[#1888](https://github.com/ethersphere/swarm/pull/1888) testutil: remove pre Go 1.13 support
-[#1844](https://github.com/ethersphere/swarm/pull/1844) network: Reconnect to the same peers on startup
-[#1861](https://github.com/ethersphere/swarm/pull/1861) pss: Limit by time the retries of messages in the outbox
-[#1860](https://github.com/ethersphere/swarm/pull/1860) pss: Limit the number of workers forwarding messages in outbox
-[#1806](https://github.com/ethersphere/swarm/pull/1806) swarm, swap: add addresses to logs
-[#1870](https://github.com/ethersphere/swarm/pull/1870) pss: fix concurrent map read and map write on pubKeyRWPool
-[#1737](https://github.com/ethersphere/swarm/pull/1737) Incentives first sim
-[#1874](https://github.com/ethersphere/swarm/pull/1874) chunk: align Tag fields for atomic operations on 32bit architectures
-[#1871](https://github.com/ethersphere/swarm/pull/1871) simulation/examples: disable docker test from running locally
-[#1828](https://github.com/ethersphere/swarm/pull/1828) api, chunk, storage: anonymous uploads
-[#1859](https://github.com/ethersphere/swarm/pull/1859) api/http: add HTML Progress Bar
+* [#1980](https://github.com/ethersphere/swarm/pull/1980) storage/localstore: add subscriptions wait group before closing leveldb
+* [#1979](https://github.com/ethersphere/swarm/pull/1979) network: increase fetcher timeout
+* [#1978](https://github.com/ethersphere/swarm/pull/1978) localstore: change gc batch size
+* [#1977](https://github.com/ethersphere/swarm/pull/1977) cmd/swarm: disable USB devices
+* [#1973](https://github.com/ethersphere/swarm/pull/1973) localstore: fix subscribe push iterator tag value
+* [#1972](https://github.com/ethersphere/swarm/pull/1972) stream: limit the number of peers we sync with on bin 0
+* [#1969](https://github.com/ethersphere/swarm/pull/1969) smoke: remove redundant check for bail flag
+* [#1970](https://github.com/ethersphere/swarm/pull/1970) localstore: fix data races on subscriptions
+* [#1968](https://github.com/ethersphere/swarm/pull/1968) smoke: retry failed upload
+* [#1959](https://github.com/ethersphere/swarm/pull/1959) api: Add bzz-feed-raw scheme to retrieve arbitary feed update
+* [#1962](https://github.com/ethersphere/swarm/pull/1962) pss, network: remove spamming loglines
+* [#1963](https://github.com/ethersphere/swarm/pull/1963) retrieval: change loglevel of chunk retrieval errors
+* [#1934](https://github.com/ethersphere/swarm/pull/1934) swap: use p2ptest for protocol tests
+* [#1960](https://github.com/ethersphere/swarm/pull/1960) cmd/swarm: add pprof custom profiles through flags
+* [#1952](https://github.com/ethersphere/swarm/pull/1952) network/stream: fix flaky tests and first delivered batch of chunks for an unwanted stream
+* [#1957](https://github.com/ethersphere/swarm/pull/1957) api/config: enable pushsync by default
+* [#1919](https://github.com/ethersphere/swarm/pull/1919) bzzeth: Phase2 of bzz eth protocol
+* [#1945](https://github.com/ethersphere/swarm/pull/1945) cmd/swarm: swap --sync-mode flag with --no-sync flag
+* [#1947](https://github.com/ethersphere/swarm/pull/1947) api/http/langos: ensure only one second peek
+* [#1915](https://github.com/ethersphere/swarm/pull/1915) pushsync, localstore: decouple push/pull indexes for tag increment
+* [#1940](https://github.com/ethersphere/swarm/pull/1940) localstore: fix index leak when NN chunks enter localstore
+* [#1922](https://github.com/ethersphere/swarm/pull/1922) swap: always allow debt-reducing messages
+* [#1883](https://github.com/ethersphere/swarm/pull/1883) swap: segregate api code and tests
+* [#1907](https://github.com/ethersphere/swarm/pull/1907) cmd/swarm-smoke-pss: initial pss smoke tests
+* [#1926](https://github.com/ethersphere/swarm/pull/1926) integration-tests: config for set of integration tests for stable swarm
+* [#1944](https://github.com/ethersphere/swarm/pull/1944) swap: fix a rare panic in TestMultiChequeSimulation
+* [#1913](https://github.com/ethersphere/swarm/pull/1913) swap: exchange chain id on handshake
+* [#1942](https://github.com/ethersphere/swarm/pull/1942) swap: also wait for the debit counter to reach maxMsgsInt64
+* [#1774](https://github.com/ethersphere/swarm/pull/1774) network: Kademlia Load Balancing
+* [#1876](https://github.com/ethersphere/swarm/pull/1876) api/http: lookahead buffer
+* [#1937](https://github.com/ethersphere/swarm/pull/1937) swap: fixed bug which needs cheques to be confirmed
+* [#1930](https://github.com/ethersphere/swarm/pull/1930) swap: fix instabilities in simulation tests
+* [#1873](https://github.com/ethersphere/swarm/pull/1873) swap: improve balance tests
+* [#1887](https://github.com/ethersphere/swarm/pull/1887) swap: introduce pending cheques, drop peers on io errors
+* [#1927](https://github.com/ethersphere/swarm/pull/1927) network/stream: add mutex to avoid unsynchronized access to streamInfoRes
+* [#1923](https://github.com/ethersphere/swarm/pull/1923) swarm: shutdown pushsync before pss
+* [#1924](https://github.com/ethersphere/swarm/pull/1924) network/stream: fix slice append bug
+* [#1914](https://github.com/ethersphere/swarm/pull/1914) chunk: fix tag Sent value on load, don't persist done tags
+* [#1916](https://github.com/ethersphere/swarm/pull/1916) pss: Pushsync and PSS fixes
+* [#1863](https://github.com/ethersphere/swarm/pull/1863) swap: expand RPC calls for cheque info querying
+* [#1892](https://github.com/ethersphere/swarm/pull/1892) Swap available balance
+* [#1833](https://github.com/ethersphere/swarm/pull/1833) network/kademlia: SugestPeer funcionality. Variable number of min peers per bin
+* [#1801](https://github.com/ethersphere/swarm/pull/1801) network/hive: move message handlers from Peer to Hive
+* [#1912](https://github.com/ethersphere/swarm/pull/1912) shed: allow to change the index name for easier migrations
+* [#1909](https://github.com/ethersphere/swarm/pull/1909) storage/localstore: do not later batch in setSync if moveToGc is false
+* [#1900](https://github.com/ethersphere/swarm/pull/1900) pss, pss/internal/ticker: fix data races
+* [#1901](https://github.com/ethersphere/swarm/pull/1901) network: fix a data race on Hive.addPeer function in tests
+* [#1894](https://github.com/ethersphere/swarm/pull/1894) swarm: enable tag persistence across sessions
+* [#1908](https://github.com/ethersphere/swarm/pull/1908) api,storage: add index size rpc call for debugging
+* [#1906](https://github.com/ethersphere/swarm/pull/1906) chunk: align tag struct for 32bit arch
+* [#1905](https://github.com/ethersphere/swarm/pull/1905) pusher: db.Set before check for synced
+* [#1904](https://github.com/ethersphere/swarm/pull/1904) pushsync: fix finish root span
+* [#1881](https://github.com/ethersphere/swarm/pull/1881) pushsync: split sync to chunksWorker and receiptsWorker
+* [#1902](https://github.com/ethersphere/swarm/pull/1902) network/retrieval: fix race condition where a retrieve request has been
+* [#1880](https://github.com/ethersphere/swarm/pull/1880) chunk, pushsync: do not increment synced tags in pushsync
+* [#1803](https://github.com/ethersphere/swarm/pull/1803) swap: use the SimpleSwapFactory for deployment and verification
+* [#1898](https://github.com/ethersphere/swarm/pull/1898) api/http: fix bufferedReadSeeker Seek method
+* [#1896](https://github.com/ethersphere/swarm/pull/1896) netkwork/hive: addPeer function assigned after launching goroutine connectInitialPeers
+* [#1878](https://github.com/ethersphere/swarm/pull/1878) storage/pin: fix getAllChunksFromDB test function
+* [#1891](https://github.com/ethersphere/swarm/pull/1891) state: avoid has call and remove error shadowing in Get
+* [#1875](https://github.com/ethersphere/swarm/pull/1875) retrieve: block unsolicited chunk deliveries
+* [#1715](https://github.com/ethersphere/swarm/pull/1715) swarm: add pull request template
+* [#1890](https://github.com/ethersphere/swarm/pull/1890) build, .travis.yml, Makefile, README.md: remove GO111MODULE=on
+* [#1889](https://github.com/ethersphere/swarm/pull/1889) build: configure golangci-lint timeout in .golangci.yml
+* [#1888](https://github.com/ethersphere/swarm/pull/1888) testutil: remove pre Go 1.13 support
+* [#1844](https://github.com/ethersphere/swarm/pull/1844) network: Reconnect to the same peers on startup
+* [#1861](https://github.com/ethersphere/swarm/pull/1861) pss: Limit by time the retries of messages in the outbox
+* [#1860](https://github.com/ethersphere/swarm/pull/1860) pss: Limit the number of workers forwarding messages in outbox
+* [#1806](https://github.com/ethersphere/swarm/pull/1806) swarm, swap: add addresses to logs
+* [#1870](https://github.com/ethersphere/swarm/pull/1870) pss: fix concurrent map read and map write on pubKeyRWPool
+* [#1737](https://github.com/ethersphere/swarm/pull/1737) Incentives first sim
+* [#1874](https://github.com/ethersphere/swarm/pull/1874) chunk: align Tag fields for atomic operations on 32bit architectures
+* [#1871](https://github.com/ethersphere/swarm/pull/1871) simulation/examples: disable docker test from running locally
+* [#1828](https://github.com/ethersphere/swarm/pull/1828) api, chunk, storage: anonymous uploads
+* [#1859](https://github.com/ethersphere/swarm/pull/1859) api/http: add HTML Progress Bar
 
 
 ## v0.5.2 (October 07, 2019)

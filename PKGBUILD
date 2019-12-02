@@ -1,6 +1,6 @@
 # Maintainer: Louis Holbrook <dev@holbrook.no>
 pkgname=go-swarm
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 epoch=
 pkgdesc="Censorship resistant storage and communication infrastructure for a truly sovereign digital society"
@@ -18,14 +18,14 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-changelog="CHANGELOG_v0.5.3"
+changelog="CHANGELOG_v0.5.4"
 source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 	"v${pkgver}.tar.gz.sig"
 	"swarm-resources.tar.gz"
 	"swarm-resources.tar.gz.sig"
 	"README")
 noextract=()
-md5sums=("3dce1d3ef634a74999d6f97f2709cb9b"
+md5sums=("0b123c44f2f69a32899fef10c656dbe8"
 	"SKIP"
 	"19eea4bf47a58afb05fc3eaef209ec84"
 	"SKIP"
