@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-librtmp0
 pkgver=2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Toolkit for RTMP streams (mingw-w64)"
 arch=('any')
 url='http://rtmpdump.mplayerhq.hu/'
