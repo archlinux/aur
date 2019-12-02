@@ -1,5 +1,5 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
-pkgname=('python-pynput' 'python2-pynput')
+pkgname='python-pynput'
 pkgver=1.4.5
 pkgrel=1
 _name=pynput
@@ -11,7 +11,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moses-palmer/${_name}/a
         "python-pynput.patch")
 sha512sums=('c008b3cb40eadcb7413f0d7e0f67b8cb17794fa27f48fab1f17f4fb2f4cd6baf56bca7de461a13b93e90adf9ad55239d3e242f1f723f2e908bc6f917373ca608'
             'fd25744095c3201335cf601ec7e514f4bb2943de777849b2e821168d4e61098ecc355cfa13eb07ede7c1b91fe63f694a1dd42b13b5d4b8796a593aa5acf908b9')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
+depends=('python-xlib' 'python-six')
+optdepends=('python-sphinx: build online documentation')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -24,15 +26,6 @@ build() {
 }
 
 package_python-pynput() {
-    depends=('python-xlib' 'python-six')
-    optdepends=('python-sphinx: build online documentation')
     cd "$srcdir/${_name}-${pkgver}"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build;
-}
-
-package_python2-pynput() {
-    depends=('python2-xlib' 'python2-six' 'python2-enum34')
-    optdepends=('python2-sphinx: build online documentation')
-    cd "$srcdir/${_name}-${pkgver}"
-    python2 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build;
 }
