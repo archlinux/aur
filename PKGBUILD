@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-session-git
-pkgver=1.10.r2.ga1b801f
+pkgver=1.10.r7.gc0fd053
 pkgrel=1
 pkgdesc="X Desktop Environment Display and Session Management"
 groups=('xde-git')
@@ -29,8 +29,9 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./configure
-  make
+  # gtk2 is using deprecated glib2 declarations
+  ./configure CFLAGS="-Wno-deprecated-declarations $CFLAGS"
+  make CFLAGS="-Wno-deprecated-declarations $CFLAGS"
 }
 
 package() {
