@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v
 	"${_pkgname}.desktop")
 sha256sums=('4d49ea7bf1d58659fa40f010cdd08a915a5e163288be60aaeb3307df20339225' 
 	    '93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436'
-	    'eabb8655ae69439f367469f118b3a76f2d11405ad95a44eb75a187c135f548ac')
+	    '145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -50,7 +50,7 @@ package(){
 	mkdir -p "${pkgdir}/opt/"
 	cp -a "${pkgname}-linux-${_dir_arch}" "${pkgdir}/opt/"
 
-	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/statics/icon.ico" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/statics/icon.ico" "${pkgdir}/usr/share/icons/${_pkgname}.ico"
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm755 "${srcdir}/runmtgap.sh" "${pkgdir}/usr/bin/mtgap"
 }
