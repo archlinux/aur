@@ -1,13 +1,13 @@
-# Maintainer: Ainola
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=lazy-ips-git
-pkgver=r2.9048f9f
-pkgrel=4
-pkgdesc="Patch ROMs with IPS files."
+pkgver=r16.8a71de5
+pkgrel=1
+pkgdesc="IPS patcher for Linux"
 arch=('any')
 url="https://github.com/btimofeev/lazy_ips"
 license=('GPL3')
-depends=('pygtk')
+depends=('python-gobject')
 makedepends=('git' 'gendesk')
 provides=('lazy-ips')
 conflicts=('lazy-ips')
@@ -15,7 +15,7 @@ source=("git+https://github.com/btimofeev/lazy_ips.git")
 sha256sums=('SKIP')
 
 prepare() {
-    gendesk -n --pkgname="$pkgname" \
+    gendesk -n \
             --name="Lazy IPS" \
             --pkgdesc="$pkgdesc" \
             --exec=/usr/bin/lazy-ips \
@@ -28,6 +28,13 @@ pkgver() {
 }
 
 package() {
-    install -Dm755 lazy_ips/lazy_ips.py "$pkgdir/usr/bin/lazy-ips"
+    for file in lazy_ips.py lazy_ips_cli.py patch_ips.py; do
+        install -Dm755 "lazy_ips/$file" -t "$pkgdir/usr/share/lazy-ips/"
+    done
+    install -dm755 "$pkgdir/usr/bin/"
+    ln -s /usr/share/lazy-ips/lazy_ips.py "$pkgdir/usr/bin/lazy-ips"
+    ln -s /usr/share/lazy-ips/lazy_ips_cli.py "$pkgdir/usr/bin/lazy-ips-cli"
+
     install -Dm644 lazy-ips.desktop -t "$pkgdir/usr/share/applications/"
+    install -Dm644 lazy_ips/README.md -t "$pkgdir/usr/share/doc/lazy-ips"
 }
