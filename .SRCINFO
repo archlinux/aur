@@ -1,6 +1,6 @@
 pkgbase = php-oauth
 	pkgdesc = PHP extension to provide OAuth consumer and provider bindings.
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = http://www.php.net/manual/en/intro.oauth.php
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = php-oauth
 	license = BSD
 	depends = php
 	backup = etc/php/conf.d/oauth.ini
-	source = http://pecl.php.net/get/oauth-2.0.3.tgz
-	sha256sums = cb4b65bed8854f01bdf741e23f0a27cdc29618d588d8222a7bb0519b0332b4ae
+	source = http://pecl.php.net/get/oauth-2.0.4.tgz
+	sha256sums = 6180266f63afdcaca2f6c8221bd865443175cd4317763a4141909723dd1e5c15
 
 pkgname = php-oauth
 
