@@ -1,15 +1,15 @@
 pkgbase = openapi-generator-cli
 	pkgdesc = OpenAPI Generator CLI + bash completion
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	url = https://openapi-generator.tech/
 	arch = any
 	license = Apache
-	noextract = openapi-generator-cli-4.2.1.jar
-	source = http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.2.1/openapi-generator-cli-4.2.1.jar
-	source = https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v4.2.1/scripts/openapi-generator-cli-completion.bash
+	noextract = openapi-generator-cli-4.2.2.jar
+	source = http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.2.2/openapi-generator-cli-4.2.2.jar
+	source = https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v4.2.2/scripts/openapi-generator-cli-completion.bash
 	source = openapi-generator-cli
-	md5sums = 33ddd8681dd508df43b9dca5ff5a983d
+	md5sums = b9e00661022eb9bc81a5178892fdc177
 	md5sums = fada86f59eb92ad50983d250bf0319a3
 	md5sums = 9c6bf97fc32c0b8e289068d81cf96b33
 
