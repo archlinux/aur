@@ -12,7 +12,6 @@ url="https://github.com/sergiocorreia/$_pipname"
 license=(BSD3)
 makedepends=("python" "python-pip")
 depends=("python-click"
-         "python-future"
          "python-yaml"
          "python-shutilwhich")
 

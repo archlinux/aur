@@ -8,7 +8,6 @@ pkgbase = python-panflute
 	makedepends = python
 	makedepends = python-pip
 	depends = python-click
-	depends = python-future
 	depends = python-yaml
 	depends = python-shutilwhich
 
