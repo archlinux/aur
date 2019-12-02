@@ -9,6 +9,7 @@ pkgbase = dssim-c-git
 	makedepends = ninja
 	makedepends = meson
 	depends = libpng
+	provides = dssim
 	source = git+https://github.com/kornelski/dssim#branch=dssim1-c
 	sha256sums = SKIP
 

@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/pornel/dssim/"
 license=(AGPL)
 depends=('libpng')
+provides=('dssim')
 makedepends=('git' 'ninja' 'meson')
 source=('git+https://github.com/kornelski/dssim#branch=dssim1-c')
 sha256sums=('SKIP')
