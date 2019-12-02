@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-librtmp0
 pkgver=2.4
-pkgrel=6
+pkgrel=7
 pkgdesc="Toolkit for RTMP streams (mingw-w64)"
 arch=('any')
 url='http://rtmpdump.mplayerhq.hu/'
@@ -24,8 +24,13 @@ prepare() {
 
 
 build() {
-  source mingw-env
   for _arch in ${_architectures}; do
+    unset CPPFLAGS
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+    source mingw-env ${_arch}
+
     export C_INCLUDE_PATH="/usr/${_arch}/include/openssl-1.0"
     [[ -d "build-${_arch}" ]] && rm -rf "build-${_arch}"
     cp -rf "$srcdir/rtmpdump" "${srcdir}/build-${_arch}"
@@ -33,17 +38,22 @@ build() {
     pushd build-${_arch}	
     sed -i "s/^LIB_OPENSSL.*/LIB_OPENSSL=-L\/usr\/${_arch}\/lib\/openssl-1.0 -lssl -lcrypto \$\(LIBZ\)/g" Makefile
     sed -i "s/^LIB_OPENSSL.*/LIB_OPENSSL=-L\/usr\/${_arch}\/lib\/openssl-1.0 -lssl -lcrypto \$\(LIBZ\)/g" librtmp/Makefile
-    make SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
+    make SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${CC} LD=${LD}
     popd	
   
   done
 }
 
 package() {
-  source mingw-env
   for _arch in ${_architectures}; do
+    unset CPPFLAGS
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+    source mingw-env ${_arch}
+
     cd "${srcdir}/build-${_arch}"
-    make install DESTDIR="${pkgdir}" SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${_arch}-cc LD=${_arch}-ld 
+    make install DESTDIR="${pkgdir}" SYS=mingw prefix="/usr/${_arch}" CRYPTO=OPENSSL XCFLAGS="$CFLAGS" XLDFLAGS="$LDFLAGS" CC=${CC} LD=${LD}
 
     rm -rf "$pkgdir"/usr/${_arch}/man
     find "$pkgdir"/usr/${_arch}/bin -type l -delete
