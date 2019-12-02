@@ -1,7 +1,7 @@
 pkgbase = nrf5x-command-line-tools
 	pkgdesc = Tools for programming Nordic nRF51, nRF52 and nRF91 MCU using J-Link
-	pkgver = 10.2.1
-	pkgrel = 2
+	pkgver = 10.5.0
+	pkgrel = 0
 	url = https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = nrf5x-command-line-tools
 	depends = jlink-software-and-documentation
 	provides = nrfjprog
 	conflicts = nrfjprog
-	source_i686 = https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRFCommandLineTools1021Linuxi386tar.gz
-	md5sums_i686 = 6f05f33e3b5ddeded20de6a68de9504c
-	source_x86_64 = https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRFCommandLineTools1021Linuxamd64tar.gz
-	md5sums_x86_64 = 43d6e89d934be59ca41a5d7df7d10752
+	source_i686 = https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRFCommandLineTools1050Linuxi386tar.gz
+	md5sums_i686 = 321b0246bd4f4030c4ac1cbc8c08c1bb
+	source_x86_64 = https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRFCommandLineTools1050Linuxamd64tar.gz
+	md5sums_x86_64 = b4dfc7055e440f3bec401c5515f7c215
 
 pkgname = nrf5x-command-line-tools
 
