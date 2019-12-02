@@ -1,7 +1,7 @@
 pkgbase = dsview
 	pkgdesc = Client software that supports the DreamSourceLab logic analyzer
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dreamsourcelab.com/
 	arch = i686
 	arch = x86_64

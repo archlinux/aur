@@ -1,10 +1,10 @@
-# Maintainer: Thomas Krug <t.krug@elektronenpumpe.de>
-# Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 # Maintainer: Cody Schafer <aur@codyps.com>
+# Maintainer: Jake <aur@ja-ke.tech>
+# Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=dsview
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
 url="http://www.dreamsourcelab.com/"
