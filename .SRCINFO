@@ -1,0 +1,17 @@
+pkgbase = atlassian-plugin-sdk-6-3-10
+	pkgdesc = Atlassian plugin software developer kit version 6.3.10
+	pkgver = 6.3.10
+	pkgrel = 1
+	url = https://marketplace.atlassian.com/plugins/atlassian-plugin-sdk-tgz
+	arch = i686
+	arch = x86_64
+	license = Apache License 2.0
+	depends = java-environment
+	provides = atlassian-plugin-sdk
+	conflicts = atlassian-plugin-sdk
+	conflicts = atlassian-plugin-sdk-latest
+	source = https://maven.atlassian.com/public/com/atlassian/amps/atlassian-plugin-sdk/6.3.10/atlassian-plugin-sdk-6.3.10.tar.gz
+	md5sums = b643450720a2e47fd7348f3ffc994c12
+
+pkgname = atlassian-plugin-sdk-6-3-10
+
