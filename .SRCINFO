@@ -1,12 +1,12 @@
 pkgbase = octant-bin
 	pkgdesc = A web-based, highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
-	pkgver = 0.8.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/vmware-tanzu/octant
 	arch = x86_64
 	license = apache
-	source = octant-0.8.0.tar.gz::https://github.com/vmware-tanzu/octant/releases/download/v0.8.0/octant_0.8.0_Linux-64bit.tar.gz
-	sha256sums = 2d49cb6923fc8c2c5a0d5fb2323f4f58bb60fbf09dc6c520695bfa816cd5f73a
+	source = octant-0.9.1.tar.gz::https://github.com/vmware-tanzu/octant/releases/download/v0.9.1/octant_0.9.1_Linux-64bit.tar.gz
+	sha256sums = 13e608cafce5f1cf27c8857660dc25c7ec336f0102388ef7c8fda87339deb156
 
 pkgname = octant-bin
 

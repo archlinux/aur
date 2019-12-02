@@ -3,13 +3,13 @@
 pkgname=octant-bin
 _srcname=octant
 pkgdesc="A web-based, highly extensible platform for developers to better understand the complexity of Kubernetes clusters."
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/vmware-tanzu/octant"
 license=('apache')
 source=("$_srcname-$pkgver.tar.gz::https://github.com/vmware-tanzu/octant/releases/download/v${pkgver}/${_srcname}_${pkgver}_Linux-64bit.tar.gz")
-sha256sums=('2d49cb6923fc8c2c5a0d5fb2323f4f58bb60fbf09dc6c520695bfa816cd5f73a')
+sha256sums=('13e608cafce5f1cf27c8857660dc25c7ec336f0102388ef7c8fda87339deb156')
 
 package() {
     cd ${srcdir}
