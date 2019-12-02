@@ -1,5 +1,5 @@
 pkgname=godot-mono
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine."
 arch=('i686' 'x86_64')
