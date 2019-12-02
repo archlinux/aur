@@ -11,7 +11,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-pkgver=r2057.d92fa963
+pkgver=r2066.cc850163
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
