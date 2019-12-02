@@ -1,0 +1,17 @@
+pkgbase = ammonite-git
+	pkgdesc = Scala Scripting
+	pkgver = r2253.fe66234e
+	pkgrel = 1
+	url = http://ammonite.io
+	arch = any
+	license = MIT
+	makedepends = mill
+	makedepends = scala
+	depends = bash
+	depends = java-environment
+	replaces = $_pkgname
+	source = git+https://github.com/lihaoyi/ammonite.git
+	md5sums = SKIP
+
+pkgname = ammonite-git
+
