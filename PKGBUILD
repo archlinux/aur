@@ -4,7 +4,7 @@
 
 _pipname=panflute
 pkgname=python-$_pipname
-pkgver=1.11.2
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Pythonic Pandoc filters"
 arch=(any)

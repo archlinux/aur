@@ -1,6 +1,6 @@
 pkgbase = python-panflute
 	pkgdesc = Pythonic Pandoc filters
-	pkgver = 1.11.2
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/sergiocorreia/panflute
 	arch = any
