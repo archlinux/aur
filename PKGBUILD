@@ -1,7 +1,7 @@
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
 
 pkgname="tableplus"
-pkgver=0.1_7
+pkgver=0.1_8
 pkgrel=1
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha Release)"
 arch=("x86_64")
@@ -9,13 +9,13 @@ url="https://tableplus.com/linux/install"
 license=("custom")
 depends=("libpqxx" "mariadb-libs" "libnm" "libsoup" "gtksourceview3")
 provides=("libmysqlclient20")
-conflicts=("libmysqlclient")
+conflicts=("libmysqlclient20")
 source=("$pkgname-$pkgver.deb::https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver//_/-}_amd64.deb"
         "libmysqlclient.deb::http://mirrors.kernel.org/ubuntu/pool/main/m/mysql-5.7/libmysqlclient20_5.7.28-0ubuntu0.16.04.2_amd64.deb"
         "LICENSE"
         "LICENSE-MYSQL")
 noextract=("$pkgname-$pkgver.deb" "libmysqlclient.deb")
-sha256sums=("c06fe4bbba826db11b00912c25fd1b68f2a89786bc85ed92f438a562f360b383"
+sha256sums=("00d08d9cd78203c956f57718a1bcaa9343d92b300f2b02f229aa32622d1d5fb8"
             "e2eccedd672eb92ebcee71200fe766378c85ec584d6da59271ba8567a0b7dfd2"
             "76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb"
             "62a7999ee37586e22392c758721dea5e95bf942223a285f19ad57e41ae5fa6d2")
