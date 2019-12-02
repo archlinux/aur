@@ -1,6 +1,6 @@
 pkgbase = xperia-flashtool
 	pkgdesc = A S1 protocol flashing software for Sony Xperia phones
-	pkgver = 0.9.26.0
+	pkgver = 0.9.28.0
 	pkgrel = 1
 	url = http://www.flashtool.net/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xperia-flashtool
 	depends = glib2
 	depends = mono
 	options = !strip
-	source = http://url.muflone.com/xperia-flashtool-0.9.26.0-linux.tar.7z
+	source = http://url.muflone.com/xperia-flashtool-0.9.28.0-linux.tar.xz
 	source = xperia-flashtool.sh
-	sha256sums = 93a12ca5d8381579031b9a4a03c74652d8fd3a5089c5153e23ebb1d1256def6d
+	sha256sums = 6562f58662a23c3320701dd0bcc0024d6dcd13fd6a3fc2af49ac21829ab5ede2
 	sha256sums = b6b91cec623461e7b31bc3250045071350237962388ecd6df46bb437bc536803
 
 pkgname = xperia-flashtool
