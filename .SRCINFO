@@ -1,6 +1,6 @@
 pkgbase = arch-sec-check-git
 	pkgdesc = Compares your local installed packages with the arch linux security database
-	pkgver = r11.ecc5bc7
+	pkgver = 1.1.0.14.g10b6d63
 	pkgrel = 1
 	url = https://gitlab.com/techfreak/arch-sec-check
 	arch = any

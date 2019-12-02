@@ -1,6 +1,6 @@
 # Maintainer: techfreak <techfreak@matrix.org>
 pkgname=arch-sec-check-git 
-pkgver=r11.ecc5bc7
+pkgver=1.1.0.14.g10b6d63
 pkgrel=1
 pkgdesc="Compares your local installed packages with the arch linux security database"
 arch=(any)
@@ -16,7 +16,8 @@ conflicts=("${pkgname%-git}")
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
