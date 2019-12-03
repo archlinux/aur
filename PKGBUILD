@@ -156,7 +156,10 @@ prepare() {
     -i 'Makefile'
 
   # make clean for ptyx forgets a few things
-  sed -e 's:rm -f ptymod\.o:rm -f ptyx.mod.o ptyx.o ptymod.o:g' -i 'ptyx/Makefile'
+  sed -e 's:rm -f ptymod\.o:rm -f ptyx.mod.o ptyx.o ptymod.o:g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=$(PWD) &:g' \
+    -i 'ptyx/Makefile'
 
   # Remove CRLF line endings from some files
   sed -e 's:\r$::g' -i 'tp_ver.h' 'ptyx/ptyx.h'
