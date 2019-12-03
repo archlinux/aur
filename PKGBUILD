@@ -1,7 +1,7 @@
 # Maintainer: David Wu <xdavidwuph@gmail.com>
 
 pkgname=kali-undercover
-pkgver=2019.4.3
+pkgver=2020.1.0
 pkgrel=1
 pkgdesc='Kali Undercover Mode'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('xfce4-whiskermenu-plugin: for menu on undercover mode'
             'libnotify: for settings restored notification'
             'psmisc: for clearing existing notificaion')
 source=(https://gitlab.com/kalilinux/packages/${pkgname}/-/archive/kali/${pkgver}/${pkgname}-kali-${pkgver}.tar.gz)
-sha256sums=('00b2444add23802044e65587be906958b2c97052490ba7df79b76f3887a317a7')
+sha256sums=('34fcab349709f72f8218c7b9a6dc92884eb21c78ecbe118b921a16d237805a63')
 
 package() {
   cd ${pkgname}-kali-${pkgver}
