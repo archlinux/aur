@@ -1,6 +1,6 @@
 pkgbase = xfdashboard
 	pkgdesc = Maybe a Gnome shell like dashboard for Xfce
-	pkgver = 0.7.6
+	pkgver = 0.7.7
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/applications/xfdashboard/start
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = xfdashboard
 	depends = libwnck3
 	depends = clutter
 	depends = garcon
-	source = https://github.com/gmc-holle/xfdashboard/archive/0.7.6.tar.gz
-	sha256sums = 31d5772a0e0f2df2ef488cb18a1d2e5dd443dd300c7b3d1f0e6cfbb60a78cd29
+	source = https://github.com/gmc-holle/xfdashboard/archive/0.7.7.tar.gz
+	sha256sums = d27a78bf7eaefc6cfbfd8b00dcce65efbca25e8257885d4f40df16c7ab610864
 
 pkgname = xfdashboard
 
