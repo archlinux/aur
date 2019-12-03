@@ -1,8 +1,8 @@
 pkgbase = ros-melodic-rgbd-launch
 	pkgdesc = ROS - Launch files to open an RGBD device and load all nodelets to convert raw depth/RGB/IR streams to depth images, disparity images, and (registered) point clouds.
 	pkgver = 2.2.2
-	pkgrel = 2
-	url = https://www.wiki.ros.org/rgbd_launch
+	pkgrel = 3
+	url = https://wiki.ros.org/rgbd_launch
 	arch = any
 	license = BSD
 	makedepends = cmake

@@ -1,13 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Launch files to open an RGBD device and load all nodelets to convert raw depth/RGB/IR streams to depth images, disparity images, and (registered) point clouds."
-url='https://www.wiki.ros.org/rgbd_launch'
+url='https://wiki.ros.org/rgbd_launch'
 
 pkgname='ros-melodic-rgbd-launch'
 pkgver='2.2.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-image-proc
@@ -24,13 +23,6 @@ ros_depends=(ros-melodic-image-proc
   ros-melodic-nodelet)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/rgbd_launch/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/rgbd_launch-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="rgbd_launch-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rgbd_launch/archive/${pkgver}.tar.gz")
 sha256sums=('2e4bebe8e9f2d9e23f6e0678f6e0f594cd3616f3db0724075bde7219637e6baa')
@@ -52,7 +44,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
