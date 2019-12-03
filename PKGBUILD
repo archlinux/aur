@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=flit
-pkgver=1.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
@@ -11,9 +11,11 @@ depends=(python python-pytoml python-requests python-requests_download python-do
 makedepends=('python-pip')
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('1d93f7a833ed8a6e120ddc40db5c4763bc39bccc75c05081ec8285ece718aefb')
+sha256sums=('494e0806840fe896fe31ce2a413583115324f12177ecaf7427f157caa9b9c5b2')
 noextract=("$_wheel")
 
 package() {
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
+	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	mkdir -p "$site"
+	unzip "$_wheel" -d "$site"
 }
