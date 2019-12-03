@@ -49,6 +49,7 @@ post_install() {
 
   echo "Install all core plugins"
   dokku plugin:install --core
+  sed -i 's/ syslog dokku$/ root dokku/g' /etc/logrotate.d/dokku
 
   echo "Ensure proper sshcommand path"
   echo /usr/bin/dokku > "${DOKKU_ROOT}/.sshcommand"
