@@ -3,8 +3,8 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.0.9'
-pkgrel='15'
+pkgver='0.0.10'
+pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -86,6 +86,8 @@ package() {
     install -m 644 "src/scripts/heartbeat.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/impact.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/impact.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/multigradient.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/multigradient.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/rainbow.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/rainbow.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/raindrops.lua" "$pkgdir/usr/lib/eruption/scripts/"
