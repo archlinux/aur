@@ -1,0 +1,30 @@
+pkgbase = otf-archivo
+	pkgdesc = A grotesque sans-serif typeface family from Omnibus-Type.
+	pkgver = 1.003
+	pkgrel = 1
+	url = https://www.omnibus-type.com/fonts/archivo/
+	arch = any
+	license = custom:OFL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Bold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-BoldItalic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Italic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Medium.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-MediumItalic.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Regular.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-SemiBold.otf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-SemiBoldItalic.otf
+	sha256sums = 1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf
+	sha256sums = 031963ab7d05e0a1211cb276892310159005390c6fa31fd37802c737bc08929d
+	sha256sums = 5a170b166132d92a1044e7c70fb9f2a4d6bbaf2170fc0f6f01a89e94dd30de89
+	sha256sums = 19321c1c3153b382b43d56f23ac92d163d4227962d8a40e7634d9105d6f658c0
+	sha256sums = c9ac55d3da1c9f2e303a6b5766b6a6f1f32a6905307013ecfea1cdc44a624062
+	sha256sums = e4c42697f418208409e905d71819ed4a88fb70cc236e8c950f5266c90d85b80b
+	sha256sums = 5ffce038754e66ad03acf427a8fe8efc38cbb321f2d246118ed7c7fa3eab6dc1
+	sha256sums = cf992e9747f6f7a522469532e85d805827260b7df32189512b3d363676fcd0a4
+	sha256sums = 40de11782ee135e542363e912e6560cc77bfd7d981013668ffd1ac2534486209
+
+pkgname = otf-archivo
+
