@@ -1,6 +1,6 @@
 pkgbase = gst-plugins-good-git
 	pkgdesc = GStreamer Multimedia Framework Good Plugins
-	pkgver = 1.15.0.1.17695.0fbde2a07
+	pkgver = 1.16.0.r258.g0998c1643
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
@@ -12,8 +12,10 @@ pkgbase = gst-plugins-good-git
 	makedepends = speex
 	makedepends = flac
 	makedepends = libraw1394
+	makedepends = qt5-base
+	makedepends = qt5-declarative
 	depends = libpulse
-	depends = jack
+	depends = jack2
 	depends = libsoup
 	depends = gst-plugins-base-git
 	depends = wavpack
@@ -29,11 +31,15 @@ pkgbase = gst-plugins-good-git
 	depends = libxdamage
 	depends = v4l-utils
 	depends = cairo
-	provides = gst-plugins-good=1.15.0.1.17695.0fbde2a07
+	depends = lame
+	depends = mpg123
+	depends = qt5-wayland
+	depends = twolame
+	provides = gst-plugins-good=1.16.0.r258.g0998c1643
 	conflicts = gst-plugins-good
-	options = !libtool
-	options = !emptydirs
 	source = git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-good.git
+	source = gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gst-plugins-good-git

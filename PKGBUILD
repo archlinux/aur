@@ -3,7 +3,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=gst-plugins-good-git
-pkgver=1.15.0.1.17695.0fbde2a07
+pkgver=1.16.0.r258.g0998c1643
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Good Plugins"
 arch=('i686' 'x86_64')
@@ -11,26 +11,39 @@ license=('LGPL')
 provides=('gst-plugins-good='$pkgver)
 conflicts=('gst-plugins-good')
 url="http://gstreamer.freedesktop.org/"
-depends=('libpulse' 'jack' 'libsoup' 'gst-plugins-base-git' 'wavpack' 'aalib' 'taglib' 'libdv' 'libshout' 'libvpx' 'gdk-pixbuf2' 'libcaca' 'libavc1394' 'libiec61883' 'libxdamage' 'v4l-utils' 'cairo')
-makedepends=('git' 'meson' 'gstreamer' 'speex' 'flac' 'libraw1394')
-options=(!libtool !emptydirs)
+depends=('libpulse' 'jack2' 'libsoup' 
+        'gst-plugins-base-git' 'wavpack' 'aalib' 
+        'taglib' 'libdv' 'libshout' 'libvpx' 
+        'gdk-pixbuf2' 'libcaca' 'libavc1394' 
+        'libiec61883' 'libxdamage' 'v4l-utils' 
+        'cairo' 'lame' 'mpg123' 
+        'qt5-wayland' 'twolame'
+      )
+makedepends=('git' 'meson' 'gstreamer' 
+             'speex' 'flac' 'libraw1394'
+             'qt5-base' 'qt5-declarative')
+options=()
+source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-good.git'
+        'gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git')
+sha256sums=('SKIP'
+            'SKIP')
 
-source=('git+https://anongit.freedesktop.org/git/gstreamer/gst-plugins-good.git')
-sha256sums=('SKIP')
+prepare(){
+  cd gst-plugins-good
 
-_gitname='gst-plugins-good'
+  git submodule init
+  git config --local submodule.common.url "$srcdir/gst-common"
+  git submodule update
+}
 
 pkgver() {
-  cd $_gitname
-  version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(\[GStreamer Good Plug-ins\],\[//' | sed 's/\],\[http:\/\/bugzilla.gnome.org\/enter_bug.cgi?product=GStreamer\],\[gst-plugins-good\])//')
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-
-  echo $version.$revision.$hash
+  cd gst-plugins-good
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson $_gitname build
+  arch-meson gst-plugins-good build \
+    -Ddoc=disabled
   ninja -C build
 }
 
