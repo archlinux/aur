@@ -1,15 +1,19 @@
-# Contributor: Figo.zhang <figo1802@gmail.com>
-
 pkgname=cminpack
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A C/C++ rewrite of the MINPACK software"
 arch=('i686' 'x86_64')
 url='http://devernay.free.fr/hacks/cminpack/cminpack.html'
 license=('BSD')
+depends=('cblas')
 makedepends=('cmake')
 source=("http://devernay.free.fr/hacks/cminpack/cminpack-${pkgver}.tar.gz")
 md5sums=('2c7f81105f94ea9268617a1748cc3506')
+
+prepare() {
+  cd $srcdir/cminpack-${pkgver}
+  curl -L https://github.com/devernay/cminpack/pull/21.patch | patch -p1
+}
 
 build() {
   cd $srcdir/cminpack-${pkgver}
