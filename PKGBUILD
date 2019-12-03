@@ -1,5 +1,5 @@
 pkgname=reaper-bin
-pkgver=5.99
+pkgver=5.0
 pkgrel=1
 conflicts=(reaper)
 
