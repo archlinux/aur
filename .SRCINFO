@@ -1,28 +1,27 @@
 pkgbase = linux
 	pkgdesc = Linux
-	pkgver = 5.3.13.1
+	pkgver = 5.4.1.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.3.13-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.4.1-arch1
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
+	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.3.13-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.4.1-arch1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1
+	sha256sums = b7f23bbc09b6c571b76f851f0389386a6f3a64f3d7b1b8509c8550228b0f4537
 
 pkgname = linux
 	pkgdesc = The Linux kernel and modules
@@ -36,5 +35,5 @@ pkgname = linux-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 
 pkgname = linux-docs
-	pkgdesc = Kernel hacker's manual for the Linux kernel
+	pkgdesc = Documentation for the Linux kernel
 
