@@ -11,7 +11,7 @@ _fullname="$pkgname-$_fullver"
 _web_buildid="156-e1595151b12c68"
 _web_desktop_ver="3.104.2-1b12c68"
 _web_tv_ver="4.15.0-e159515"
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -20,11 +20,13 @@ depends=('mpv' 'qt5-webengine' 'libcec' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrol
 makedepends=('cmake')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${_fullver}.tar.gz"
         "buildid-${_web_buildid}.cmake::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/buildid.cmake"
-        "https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz"{,.sha1}
-        "https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz"{,.sha1}
+        "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz"
+        "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz.sha1"
+        "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz"
+        "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz.sha1"
         'plex-media-player.desktop')
-noextract=("web-client-desktop-${_web_desktop_ver}.tar.xz"
-           "web-client-tv-${_web_tv_ver}.tar.xz")
+noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"
+           "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz")
 sha512sums=('0aef1e6d9df5304a9468ad498dc0b1b924cd13f025418c9b819e014193458772d914c2072568da6b38704a5cf67bb2d789f7a9ea630913a131071dd610f0052d'
             '29dbf36b3fe337b66c4ba94e1f48b5750b1939d9f8881b196bdb7c65d2066ddee2390b872b47a51da4b279cf31324d3bc103f4b870f7e85845fef5e160edb04b'
             '383c1ca84e537677ec8f07ac2e2c908437ae165cf87e1893affd60b2dd6679bf2ffde1d7cdd978357da53b4aa09f23caed07a6cb5aaad71976bd2350f72d4268'
@@ -42,8 +44,12 @@ prepare() {
            CMakeModules/VersionConfiguration.cmake
 
     mkdir -p build/dependencies
-    for f in "buildid-${_web_buildid}.cmake" "web-client-desktop-${_web_desktop_ver}.tar.xz"{,.sha1} "web-client-tv-${_web_tv_ver}.tar.xz"{,.sha1}; do
+    for f in "buildid-${_web_buildid}.cmake"; do
         ln -sf "${srcdir}/${f}" "build/dependencies/${f}"
+    done
+    for f in "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"{,.sha1} "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz"{,.sha1}; do
+        target="${f/-${_web_buildid}-/-}"
+        ln -sf "${srcdir}/${f}" "build/dependencies/${target}"
     done
 }
 
