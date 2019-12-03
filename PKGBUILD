@@ -3,7 +3,7 @@
 
 pkgname=gst-libav-git
 _gitname=gst-libav
-pkgver=1.17.0.1.2239.2596e5b
+pkgver=1.16.0.r30.g5a9f3d4
 pkgrel=1
 pkgdesc="Gstreamer libav Plugin"
 arch=('i686' 'x86_64')
@@ -37,11 +37,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  version=$(grep AC_INIT configure.ac | sed 's/AC_INIT(GStreamer libav, //' | sed 's/,//')
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
-  
-  echo $version.$revision.$hash
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

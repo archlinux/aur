@@ -1,6 +1,6 @@
 pkgbase = gst-libav-git
 	pkgdesc = Gstreamer libav Plugin
-	pkgver = 1.17.0.1.2239.2596e5b
+	pkgver = 1.16.0.r30.g5a9f3d4
 	pkgrel = 1
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
