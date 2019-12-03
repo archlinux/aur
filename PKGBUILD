@@ -3,9 +3,9 @@
 
 pkgname=myetherwallet
 _pkgname=MyEtherWallet
-pkgver=5.2.4
+pkgver=5.2.5
 _pkgversuffix=
-pkgrel=2
+pkgrel=1
 pkgdesc='Client-side interface for interacting with the Ethereum blockchain'
 arch=(any)
 depends=(xdg-utils)
@@ -15,7 +15,7 @@ source=($url/releases/download/v$pkgver$_pkgversuffix/$_pkgname-v$pkgver$_pkgver
         myetherwallet.desktop
         myetherwallet
         LICENSE)
-sha256sums=('13f9fc118eaf78d601aa6afb8fcef5f8b7b2e54ff63475c968c9df1c5995094e'
+sha256sums=('1bf0ee18e5f107db0c2db53c74a8af8b21c937b3307f7ce77a532ba3180f51f1'
             'SKIP'
             'b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9'
             '814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5'
