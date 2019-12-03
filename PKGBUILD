@@ -10,10 +10,10 @@ url="https://github.com/jonaylor89/JAZ"
 license=("MIT")
 install=""
 changelog=""
-source=()
+source=(https://github.com/jonaylor89/JAZ/archive/v0.0.2.tar.gz)
 validpgpkeys=()
 noextract=()
-md5sums=()
+md5sums=('a3536692737f87ae9b7a1046209a3fe4')
 sha1sums=()
 sha256sums=()
 sha384sums=()
@@ -35,13 +35,14 @@ pkgver() {
 }
 
 build() {
-    cargo build --release
+    cd JAZ-0.0.2/ 
+    cargo build --release --locked
 }
 
 package() {
     cd ..
     usrdir="$pkgdir/usr"
     mkdir -p $usrdir
-    cargo install --path . --root "$usrdir"
+    cargo install --path src/JAZ-0.0.2/ --root "$usrdir"
     rm -f $usrdir/.crates.toml
 }

@@ -6,6 +6,8 @@ pkgbase = jaz
 	url = https://github.com/jonaylor89/JAZ
 	arch = x86_64
 	license = MIT
+	source = https://github.com/jonaylor89/JAZ/archive/v0.0.2.tar.gz
+	md5sums = a3536692737f87ae9b7a1046209a3fe4
 
 pkgname = jaz
 
