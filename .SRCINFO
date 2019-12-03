@@ -1,6 +1,6 @@
 pkgbase = i5sing
 	pkgdesc = 中国原创音乐基地5sing桌面客户端
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/i5sing/i5SING
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = i5sing
 	provides = i5sing
 	conflicts = i5sing-git
 	conflicts = i5sing-bin
-	source = i5sing-0.2.0.src.tar.gz::https://github.com/i5sing/i5SING/archive/v0.2.0.tar.gz
-	sha256sums = eb15cfe6b88a6b786fede60346dbe334a8b14073a18e41b118ce7475c4a45ad3
+	source = i5sing-0.2.1.src.tar.gz::https://github.com/i5sing/i5SING/archive/v0.2.1.tar.gz
+	sha256sums = 03f29f3cedec73dbd579f718e451cdd4c0a8f298599318225d5ce49c982febbf
 
 pkgname = i5sing
 

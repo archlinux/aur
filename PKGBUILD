@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=i5sing
 _name=i5SING
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='中国原创音乐基地5sing桌面客户端'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ conflicts=('i5sing-git' 'i5sing-bin')
 depends=('electron4')
 makedepends=('yarn')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/i5sing/i5SING/archive/v$pkgver.tar.gz")
-sha256sums=('eb15cfe6b88a6b786fede60346dbe334a8b14073a18e41b118ce7475c4a45ad3')
+sha256sums=('03f29f3cedec73dbd579f718e451cdd4c0a8f298599318225d5ce49c982febbf')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
@@ -26,7 +26,7 @@ build() {
 
 package() {
 	cd "$srcdir/$_name-$pkgver/out/$pkgname-linux-x64"
-    
+
     # Install app
     install -Dm644 resources/app.asar "$pkgdir/usr/share/i5sing/app.asar"
 
