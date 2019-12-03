@@ -1,17 +1,18 @@
-# Maintainer: Jiabao Lin <me at leolin dot cn>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Jiabao Lin <me at leolin dot cn>
 # Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
 # Contributor: Alexander Baldeck <lex@tentriplenine.com>
 
 pkgname=charles
-pkgver=4.2.8
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(any)
 url="http://www.charlesproxy.com"
 license=('custom' 'custom:bounce' 'APACHE')
 depends=('java-runtime>=8' 'hicolor-icon-theme')
-source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}.tar.gz)
-md5sums=('3606787140b11364f67187088aa4bdea')
+source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}_amd64.tar.gz)
+md5sums=('edaf31c511808943400d58f0d44f61d7')
 
 build() {
   cd "$srcdir/$pkgname"

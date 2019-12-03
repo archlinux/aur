@@ -1,6 +1,6 @@
 pkgbase = charles
 	pkgdesc = Web debugging proxy application
-	pkgver = 4.2.8
+	pkgver = 4.5.4
 	pkgrel = 1
 	url = http://www.charlesproxy.com
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = charles
 	license = APACHE
 	depends = java-runtime>=8
 	depends = hicolor-icon-theme
-	source = http://www.charlesproxy.com/assets/release/4.2.8/charles-proxy-4.2.8.tar.gz
-	md5sums = 3606787140b11364f67187088aa4bdea
+	source = http://www.charlesproxy.com/assets/release/4.5.4/charles-proxy-4.5.4_amd64.tar.gz
+	md5sums = edaf31c511808943400d58f0d44f61d7
 
 pkgname = charles
 
