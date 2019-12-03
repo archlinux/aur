@@ -6,7 +6,7 @@ url='http://gazebosim.org/tutorials?cat=connect_ros'
 pkgname='ros-melodic-gazebo-ros'
 pkgver='2.8.5'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(ros-melodic-tf
@@ -40,8 +40,16 @@ depends=(${ros_depends[@]}
   python)
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
+        "spawn_model.patch")
+
+sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed'
+            '8d561d1634519ad8a4bf937320f39e9c36248ec64862f766a7a16b010b0bfdb2')
+
+prepare() {
+    cd "${srcdir}/${_dir}/scripts/"
+    patch -uN spawn_model ../../../spawn_model.patch || return 1
+}
 
 build() {
   # Use ROS environment variables

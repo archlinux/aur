@@ -1,0 +1,11 @@
+--- spawn_model.orig	2019-12-03 11:34:25.700629656 -0500
++++ spawn_model	2019-12-03 11:35:04.107297965 -0500
+@@ -22,7 +22,7 @@
+ import os
+ import argparse
+ import xml
+-from urlparse import urlsplit, SplitResult
++from urllib.parse import urlsplit, SplitResult
+ from gazebo_ros import gazebo_interface
+ from gazebo_msgs.msg import ModelStates
+ from gazebo_msgs.srv import DeleteModel
