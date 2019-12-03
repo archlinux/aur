@@ -1,5 +1,6 @@
 *
 !.gitignore
+!LICENSE
 !README.md
 !PKGBUILD
 !.SRCINFO
