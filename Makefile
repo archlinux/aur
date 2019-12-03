@@ -1,4 +1,4 @@
-default: build
+default: clean build
 
 build: namcap
 	makepkg
