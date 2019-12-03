@@ -1,0 +1,12 @@
+pkgbase = generate-ipv6-address
+	pkgdesc = Perform IPv6 address generation
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.irif.fr/~jch/software/ahcp/ahcp-generate-address.html
+	arch = x86_64
+	license = MIT
+	source = https://www.irif.fr/~jch/software/files/generate-ipv6-address-0.1.tar.gz
+	sha256sums = e1356d245d5f891fa39b796a8a2deefdaa89f08130dc97a378738ca5ed9a20fa
+
+pkgname = generate-ipv6-address
+
