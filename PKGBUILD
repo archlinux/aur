@@ -2,8 +2,8 @@
 
 pkgname=beef-git
 _pkgname=beef
-pkgver=20190926.d6972adf
-pkgrel=3
+pkgver=20191203.dff44bc8
+pkgrel=1
 pkgdesc="The Browser Exploitation Framework"
 arch=('x86_64')
 url="http://beefproject.com/"
@@ -18,9 +18,9 @@ source=("${pkgname}::git+${_url}.git"
 )
 install=${pkgname}.install
 sha256sums=('SKIP'
-  '417e0c0c5f0b7004373e9bd6a232e6befc5be50fc6f4f5c7b9bf19b15fe3ee68'
-  'c68c4369c27992d1d3dae817c9933a555e7975956dae46e3fcfb3fc665dcf785'
-  '98d72df13e4f61271afd623070a5e81c9edf2e5b4f39d71b45f3279e255649a0')
+            '42a7a649294a9937cf30cab0924a8fd39ec92c1323cb10c99d7693f75b2940f3'
+            'c68c4369c27992d1d3dae817c9933a555e7975956dae46e3fcfb3fc665dcf785'
+            '98d72df13e4f61271afd623070a5e81c9edf2e5b4f39d71b45f3279e255649a0')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -36,7 +36,7 @@ build() {
     echo
   fi
 
-  bundle${RUBYSUFFIX} install --without test development --path vendor/bundle
+  bundle install --without test development --path vendor/bundle
 }
 
 package() {
