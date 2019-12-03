@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-preview-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
-	pkgver = 1.2.5019
+	pkgver = 1.2.5031
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = openssl-1.0
 	optdepends = pandoc: markdown support
 	optdepends = pandoc-citeproc: markdown support
-	provides = rstudio-desktop=1.2.5019
+	provides = rstudio-desktop=1.2.5031
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/rstudio-1.2.5019-amd64.deb
-	md5sums_x86_64 = f86811fce50b48850fed259d6ce7ef13
+	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/rstudio-1.2.5031-amd64.deb
+	md5sums_x86_64 = ce272f21eeead9f7714600dcee68e505
 
 pkgname = rstudio-desktop-preview-bin
 
