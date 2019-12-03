@@ -1,15 +1,15 @@
 pkgbase = bootstrap
 	pkgdesc = Open source toolkit for developing with HTML, CSS, and JS
-	pkgver = 4.3.1
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://getbootstrap.com/
 	install = bootstrap.install
 	arch = any
 	license = MIT
 	depends = jquery
-	source = https://github.com/twbs/bootstrap/releases/download/v4.3.1/bootstrap-4.3.1-dist.zip
+	source = https://github.com/twbs/bootstrap/releases/download/v4.4.1/bootstrap-4.4.1-dist.zip
 	source = LICENSE
-	sha256sums = 888ffd30b7e192381e2f6a948ca04669fdcc2ccc2ba016de00d38c8e30793323
+	sha256sums = bffa7c741abd4a8558c0946138729f7dcb643491547a0b135fdb77e148b9bfbd
 	sha256sums = eaf003ef9d4321de625381657eaa69e0093fa6ab00c0201e3fd4847dd9878461
 
 pkgname = bootstrap
