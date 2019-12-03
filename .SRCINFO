@@ -1,6 +1,6 @@
 pkgbase = asf
 	pkgdesc = Steam cards farmer.
-	pkgver = 4.1.0.3
+	pkgver = 4.1.0.7
 	pkgrel = 2
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
@@ -10,9 +10,9 @@ pkgbase = asf
 	arch = i686
 	license = Apache
 	makedepends = unzip
-	noextract = asf-4.1.0.3-x86_64.zip
-	noextract = asf-4.1.0.3-arm.zip
-	noextract = asf-4.1.0.3-i686.zip
+	noextract = asf-4.1.0.7-x86_64.zip
+	noextract = asf-4.1.0.7-arm.zip
+	noextract = asf-4.1.0.7-i686.zip
 	options = staticlibs
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config
@@ -26,19 +26,19 @@ pkgbase = asf
 	sha256sums = c6e89b39537f64e10195c6be5ee98fe66ed564d3126cc2140eaa49d53b68be8c
 	sha256sums = e63a92fd8008c40dab963161bdac967b57146553c00f114469c204ac6e1795b2
 	sha256sums = 2807b65c35959b0a0a255850facecc0286b7afdb5aa9b7b9315bf0165e87b0e0
-	source_x86_64 = asf-4.1.0.3-x86_64.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.3/ASF-linux-x64.zip
+	source_x86_64 = asf-4.1.0.7-x86_64.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.7/ASF-linux-x64.zip
 	depends_x86_64 = dotnet-host>=3.0
 	depends_x86_64 = libunwind
 	depends_x86_64 = openssl-1.0
-	sha256sums_x86_64 = e61550b5e961a602a68e399dd08fe84855087810602937cd50be148c1c1bdc45
-	source_arm = asf-4.1.0.3-arm.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.3/ASF-linux-arm.zip
+	sha256sums_x86_64 = c6724e90c94fc23669e5ebc6f9d76ea12f4db7d7b784e74f59741b68697f3646
+	source_arm = asf-4.1.0.7-arm.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.7/ASF-linux-arm.zip
 	depends_arm = dotnet-host>=3.0
 	depends_arm = libunwind
 	depends_arm = openssl-1.0
-	sha256sums_arm = 6b34766976b1fabc10b6ffa2eddb2f41c9030bf9d0f9f9d6e242a0f6c3d591ea
-	source_i686 = asf-4.1.0.3-i686.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.3/ASF-generic.zip
+	sha256sums_arm = 772e01fc51bdefd6a5d7f2a5e91d99ff28311a59f77eb63d629e835cab1d7eb8
+	source_i686 = asf-4.1.0.7-i686.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.7/ASF-generic.zip
 	depends_i686 = dotnet-runtime>=3.0
-	sha256sums_i686 = c9dedc65c03bf18dbbe8f24a49f0796d05ad610dcec47d73ae337324f500b62d
+	sha256sums_i686 = bb03cb0a8e09b9dce46ef2609ecbd138b9950cb605e71a10356119f8e7330db5
 
 pkgname = asf
 

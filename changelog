@@ -1,4 +1,11 @@
-2019-11-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2019-12-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.0.7-1:
+    Added MarkBotMessagesAsRead to BotBehaviour (#1482).
+    Improved redeeming in Forwarding + Distributing scenarios (#1504).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+ 2019-11-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.0.3-2:
     pkg: preserve staticlibs (*.a) files
 2019-11-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
