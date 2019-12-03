@@ -2,8 +2,8 @@
 
 pkgname=ttf-halfeighties
 pkgver=20191127.01
-pkgrel=1
-pkgdesc="A raster monospace sans serif typeface from famous Sega titles around mid to late 1980s."
+pkgrel=2
+pkgdesc="A raster monospace sans serif typeface from (famous) Sega titles around mid to late 1980s."
 url="https://notabug.org/HarvettFox96/${pkgname}"
 license=("OFL-1.1")
 arch=("any")
