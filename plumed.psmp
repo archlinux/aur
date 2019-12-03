@@ -9,7 +9,9 @@ AR          = ar -r
 DFLAGS      = -D__FFTW3                                                             \
               -D__LIBINT -D__LIBINT_MAX_AM=6 -D__LIBDERIV_MAX_AM1=5 -D__MAX_CONTR=4 \
               -D__parallel -D__SCALAPACK                                            \
+              -D__LIBXSMM                                                           \
               -D__LIBXC                                                             \
+              -D__SPGLIB                                                            \
               -D__PLUMED2
 #
 INCS        = -I/usr/include
@@ -23,11 +25,13 @@ FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS) -ffree-form -ffree-line-length-none
 #
 LDFLAGS     = $(FCFLAGS)
 #
-LIBS        = -lscalapack -lblas -llapack                                           \
+LIBS        = -lxsmmf -lxsmm                                                        \
+              -lscalapack -lblas -llapack                                           \
               -lfftw3 -lfftw3_threads                                               \
               /usr/lib/libderiv.a                                                   \
               /usr/lib/libint.a                                                     \
               -lxcf03 -lxc                                                          \
+              -lsymspg                                                              \
               -lplumed                                                              \
               -lstdc++ -lpthread -lm -ldl -lz
 #

@@ -3,14 +3,14 @@
 
 pkgname=cp2k
 pkgver=6.1.0
-pkgrel=5
+pkgrel=6
 _version="psmp"
 pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('fftw' 'cp2k-data' 'scalapack' 'libxc' 'libint')
-makedepends=('gcc' 'gcc-fortran' 'python2' 'make' 'sed')
+depends=('fftw' 'cp2k-data' 'scalapack' 'libxc' 'libint' 'libxsmm' 'spglib')
+makedepends=('gcc-fortran' 'python2' 'make' 'sed')
 optdepends=('cuda: GPU calculations support'
             'plumed-mpi: enhanced sampling support')
 provides=("$pkgname")
@@ -21,10 +21,10 @@ source=("https://github.com/cp2k/cp2k/archive/v$pkgver.tar.gz"
         "cuda.$_version"
         "plumed.$_version")
 sha256sums=('d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae'
-            'f11714771bf7abf162559e7a7d0c9bb8d3bca7286e3381d2d0a586d51af316bb'
-            '1c7ec39e9c6f8499ae52352a77dee36b7acd71aa9d5db6cfc7ecb4c430e410b6'
-            'c44269f40c73f15061fd855412507b8d7c0b158ffb3ba6b9d498f67b68756e0c'
-            'e1310d0afecbaed27fb44ebd15000f1fd43ff1955241c2d21e7ed86a2c582541')
+            'd26e4b6fdfb2078500dec63cf3e4957fd0465cf25cd7bb116d6ee1800613d305'
+            '466f6f82b6e92b5ad2a5ff3a8faab346ff4cd8205f04572bb1d63dc2c0af9dc7'
+            'f53e90b5129f43b4842aa90f76e38faff2236a6df1cd14deed6310adf8fd7fac'
+            '368fd4effa3bd5750728993e31416cd7187d8dec7648e621e17aa076d2d72a9a')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
