@@ -1,0 +1,9 @@
+post_install() {
+  if ! getent passwd ma1sd > /dev/null 2>&1; then
+    useradd -m -d /var/lib/ma1sd -s /usr/bin/nologin ma1sd
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
