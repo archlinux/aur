@@ -1,7 +1,7 @@
 pkgbase = python-authy
 	pkgdesc = A module for using the Twilio Authy REST API
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.2.4
+	pkgrel = 1
 	url = https://github.com/twilio/authy-python
 	arch = any
 	license = MIT
@@ -14,8 +14,8 @@ pkgbase = python-authy
 	depends = python-mock
 	depends = python-bumpversion
 	options = !emptydirs
-	source = https://github.com/twilio/authy-python/archive/v2.2.3.tar.gz
-	sha256sums = a52eee2f776730d58bd1e521b57de985ef08b83f36a9b1ef18bfc8926485103b
+	source = https://github.com/twilio/authy-python/archive/v2.2.4.tar.gz
+	sha256sums = 93e28646dd54eb960a522f948f93bef0ca61f073145b7d4d5aa9fe726e640513
 
 pkgname = python-authy
 
