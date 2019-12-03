@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=matrix-nio
-pkgver=0.2
+pkgver=0.6
 pkgrel=1
 pkgdesc="A Python Matrix client library, designed according to sans I/O "\
 "principles"
@@ -16,8 +16,8 @@ source=(
     $pkgname-$pkgver.tar.gz::https://github.com/poljar/matrix-nio/archive/$pkgver.tar.gz
 )
 provides=('matrix-nio')
-conflicts=('matrix-nio-git')
-md5sums=('7ae5f6cd1cb9110e121732a5de3a5048')
+conflicts=('matrix-nio-git' 'python-nio')
+sha256sums=('ce1a95d52376c8e30c7c546b39d2d5d7ff5ec09408af911ed0a64452619fd4a4')
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
