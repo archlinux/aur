@@ -1,0 +1,12 @@
+--- tableplus.desktop	2019-12-02 23:58:03.415281852 -0500
++++ tableplus.desktop	2019-12-02 23:59:37.970475525 -0500
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=TablePlus
+ Type=Application
+-Exec=/usr/local/bin/tableplus
++Exec=env LD_LIBRARY_PATH=/opt/tableplus/resource/library/ /usr/local/bin/tableplus
+ Icon=/opt/tableplus/resource/image/logo.png
+-Terminal=false
+\ No newline at end of file
++Terminal=false

@@ -1,6 +1,6 @@
 pkgbase = tableplus
 	pkgdesc = Modern, native, and friendly GUI tool for relational databases (Alpha Release)
-	pkgver = 0.1_8
+	pkgver = 0.1_12
 	pkgrel = 1
 	url = https://tableplus.com/linux/install
 	arch = x86_64
@@ -10,18 +10,12 @@ pkgbase = tableplus
 	depends = libnm
 	depends = libsoup
 	depends = gtksourceview3
-	provides = libmysqlclient20
-	conflicts = libmysqlclient20
-	noextract = tableplus-0.1_8.deb
-	noextract = libmysqlclient.deb
-	source = tableplus-0.1_8.deb::https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_0.1-8_amd64.deb
-	source = libmysqlclient.deb::http://mirrors.kernel.org/ubuntu/pool/main/m/mysql-5.7/libmysqlclient20_5.7.28-0ubuntu0.16.04.2_amd64.deb
+	source = https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_0.1-12_amd64.deb
 	source = LICENSE
-	source = LICENSE-MYSQL
-	sha256sums = 00d08d9cd78203c956f57718a1bcaa9343d92b300f2b02f229aa32622d1d5fb8
-	sha256sums = e2eccedd672eb92ebcee71200fe766378c85ec584d6da59271ba8567a0b7dfd2
+	source = tableplus.desktop.patch
+	sha256sums = 27b0794c1513ed7e57a52e55ee1653f61bd04ae5532867957d766262b3f83a8f
 	sha256sums = 76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb
-	sha256sums = 62a7999ee37586e22392c758721dea5e95bf942223a285f19ad57e41ae5fa6d2
+	sha256sums = 4608c2cc7da84cf6d5f9943cf729e890bdb9198dbd391ba11fd1e4669068368f
 
 pkgname = tableplus
 
