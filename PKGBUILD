@@ -2,7 +2,7 @@
 
 pkgname=pingo-bin
 pkgver=0.99.beta63
-pkgrel=1
+pkgrel=2
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (unix binary)'
 arch=('x86_64')
 url='https://css-ig.net/pingo'
@@ -12,11 +12,11 @@ conflicts=('pingo')
 options=('!strip')
 source=("pingo-nix64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-nix64.zip')
 noextract=("pingo-nix64-${pkgver}.zip")
-sha256sums=('aa9507882f35ef77d08d42d6b5dc3f41983d97e1f6d4d170a295fd9e50110d31')
+sha256sums=('7885ae9c743048e328a9625d6eacc5351fcb09d1a964e25a1d1197cb144094c4')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.120 \
+                        Chrome/78.0.3904.108 \
                         Safari/537.36"
 
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/\\ /g')"
