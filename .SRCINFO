@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-cybersuntzu
+	pkgdesc = #Cyber Sun Tzu fortune cookie file
+	pkgver = 1
+	pkgrel = 1
+	url = https://twitter.com/suntzucyber
+	arch = any
+	groups = fortune-mods
+	license = custom:PublicDomain
+	depends = fortune-mod
+	source = cybersuntzu
+	sha256sums = 21c1e38e68925ff46214b7d1fbeb2f2b578bc88bdc0c9cd97d29d80a3c45567d
+
+pkgname = fortune-mod-cybersuntzu
+
