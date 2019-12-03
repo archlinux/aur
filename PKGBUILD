@@ -2,7 +2,7 @@
 # Maintainer: Zephyr Headley <headleyjz@vcu.edu>
 
 pkgname=jaz
-pkgver=untagged.bb6c30731c22f278cf49.r0.g19fb239
+pkgver=0.0.2
 pkgrel=1
 epoch=0
 pkgdesc="Find secrets hidden in commits"
