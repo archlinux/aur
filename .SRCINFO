@@ -1,7 +1,7 @@
 pkgbase = foxitreader
 	pkgdesc = A fast, secure and complete PDF viewer
 	pkgver = 2.4.4.0911
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.foxitsoftware.com/products/pdf-reader/
 	arch = x86_64
 	license = custom:EULA
@@ -21,7 +21,7 @@ pkgbase = foxitreader
 	depends = desktop-file-utils
 	optdepends = gtk2: use GTK+ dialogs under GTK+ based desktop environments
 	source = http://cdn09.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/2.4/en_us/FoxitReader.enu.setup.2.4.4.0911.x64.run.tar.gz
-	source = https://www.foxitsoftware.com/products/pdf-reader/eula.html
+	source = eula.html
 	source = foxitreader.patch
 	source = foxitreader-excluded_files
 	sha256sums = 6b579bd4ecdf86f7e70a009886c511da0b5085b831b0d6afc42442cabc249b90

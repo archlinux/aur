@@ -5,7 +5,7 @@
 pkgname=foxitreader
 pkgver=2.4.4.0911
 _foxitrevision=r057d814
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('x86_64')
 url="https://www.foxitsoftware.com/products/pdf-reader/"
@@ -15,7 +15,7 @@ depends=('libsecret' 'libxslt' 'libxcomposite' 'libgl' 'libxrender' 'gstreamer0.
 makedepends=('p7zip' 'chrpath')
 optdepends=('gtk2: use GTK+ dialogs under GTK+ based desktop environments')
 source=("http://cdn09.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/${pkgver%.*.*}/en_us/FoxitReader.enu.setup.${pkgver}.x64.run.tar.gz"
-        "https://www.foxitsoftware.com/products/pdf-reader/eula.html"
+        "eula.html"
         "${pkgname}.patch"
         "${pkgname}-excluded_files")
 sha256sums=('6b579bd4ecdf86f7e70a009886c511da0b5085b831b0d6afc42442cabc249b90'
