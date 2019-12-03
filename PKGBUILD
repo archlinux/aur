@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=electron-fiddle
 _name=fiddle
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="The easiest way to get started with Electron"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('electron')
 makedepends=('npm')
 provides=('electron-fiddle')
 source=("$_name-$pkgver.src.tar.gz::https://github.com/electron/fiddle/archive/v$pkgver.tar.gz")
-sha256sums=('1643abcb6109f9d9a83c77eb64ef112aedd60669540b1f6f76bb230af965e9af')
+sha256sums=('e0452b4581afe40a3179b358d8d3e90dd13a3faf6a1382068136cf0361c09da2')
 
 prepare() {
 	local cache="$srcdir/npm-cache"
@@ -29,7 +29,7 @@ build() {
 package() {
 	cd "$srcdir/$_name-$pkgver/out/Electron Fiddle-linux-x64/resources"
 	install -Dm644 app.asar "$pkgdir/usr/lib/electron-fiddle/app.asar"
-	
+
 	cd "$srcdir/$_name-$pkgver/assets/icons"
 	install -Dm644 fiddle.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/electron-fiddle.svg"
 
