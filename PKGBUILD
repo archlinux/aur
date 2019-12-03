@@ -1,8 +1,9 @@
-# Contributor: Francesco Di Battista <teme.[nospace]84 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Maintainer: An Nguyen (stk) <an@linux.com>
+# Original Contributor: Francesco Di Battista <teme.[nospace]84 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-sys-meminfo'
-pkgver='0.98'
+pkgver='0.99'
 pkgrel='1'
 pkgdesc="Perl extension for return the total amount of physical memory"
 arch=('any')
@@ -11,10 +12,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Sys-MemInfo'
-source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCRESTO/Sys-MemInfo-0.98.tar.gz')
-md5sums=('a5636cf6ae8f1b32253b3ca6fa63653b')
-sha512sums=('06f3d5d5678832c688dae6b50392cfe549a105359be5d868d020bbb34839216ded7138cac1788d398330deaf260789e91a7a2c3f4998af1ddedf33006c31e1d4')
-_distdir="Sys-MemInfo-0.98"
+source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCRESTO/Sys-MemInfo-0.99.tar.gz')
+md5sums=('88f0632691d7de91cbed95ba1ff29025')
+sha512sums=('ad0f8a12db7f7c643d0eb2d68fb1dcbff43928b786d390243e89d88537bd99360f88af177678ce5141e3870224da80ea5a432c465e8c7ec384abd21014c0e1c0')
+_distdir="Sys-MemInfo-0.99"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
