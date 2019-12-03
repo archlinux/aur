@@ -1,0 +1,18 @@
+Description: Fix include path in RendererBackend.cpp
+Author: Tobias Frost <tobi@debian.org>
+Forwarded: https://github.com/RobertBeckebans/RBDOOM-3-BFG/pull/435
+Applied-Upstream: Yes
+Last-Update: 2019-10-15
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/neo/renderer/RenderBackend.cpp
++++ b/neo/renderer/RenderBackend.cpp
+@@ -31,7 +31,7 @@
+ #pragma hdrstop
+ #include "precompiled.h"
+ 
+-#include "../../framework/Common_local.h"
++#include "framework/Common_local.h"
+ #include "RenderCommon.h"
+ #include "Framebuffer.h"
+ 

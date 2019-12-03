@@ -1,11 +1,11 @@
 Description: Fix several spelling errors found by lintian
 Author: Tobias Frost <tobi@debian.org>
-Forwarded: <URL|no|not-needed, useless if you have a Bug field, optional>
-Last-Update: 2016-10-15
+Forwarded: https://github.com/RobertBeckebans/RBDOOM-3-BFG/pull/354
+Last-Update: 2018-04-04
 ---
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
---- a/base/renderprogs/SMAA.inc
-+++ b/base/renderprogs/SMAA.inc
+--- a/base/renderprogs/SMAA.inc.hlsl
++++ b/base/renderprogs/SMAA.inc.hlsl
 @@ -228,14 +228,14 @@
   *      - DX10.1:   D3D10_STANDARD_MULTISAMPLE_PATTERN or
   *      - DX11:     D3D11_STANDARD_MULTISAMPLE_PATTERN
@@ -301,7 +301,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  		"        // better interleave arithmetic and memory accesses):\n"
  		"        d = abs(round(mad(SMAA_RT_METRICS.zz, d, -pixcoord.xx)));\n"
  		"\n"
-@@ -10542,7 +10542,7 @@
+@@ -10545,7 +10545,7 @@
  		"\n"
  		"Doom 3 BFG Edition GPL Source Code\n"
  		"Copyright (C) 1993-2012 id Software LLC, a ZeniMax Media company. \n"
@@ -310,7 +310,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  		"\n"
  		"This file is part of the Doom 3 BFG Edition GPL Source Code (\"Doom 3 BFG Edition Source Code\").  \n"
  		"\n"
-@@ -12320,7 +12320,7 @@
+@@ -12324,7 +12324,7 @@
  		"	float L = ( 1.0 - exp( -Yr * exposure ) );\n"
  		"	color.rgb *= L;\n"
  		"	\n"
@@ -383,7 +383,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  	// all parms are read as idWinStr's but will be fixed up later
 --- a/README.txt
 +++ b/README.txt
-@@ -324,7 +324,7 @@
+@@ -349,7 +349,7 @@
  r_useHDR [0 or 1] - Use High Dynamic Range lighting
  
  r_hdrAutoExposure [0 or 1] - Adaptive tonemapping with HDR
@@ -392,3 +392,25 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  	
  r_exposure [0 .. 1] - Default 0.5, Controls brightness and affects HDR exposure key
  	This is what you change in the video brightness options
+--- a/doomclassic/doom/doominterface.cpp
++++ b/doomclassic/doom/doominterface.cpp
+@@ -182,7 +182,7 @@
+ 
+ 		lastTicRun = iTime;
+ 	} else {
+-		printf( "Skipping this frame becase it's not time to run a tic yet.\n" );
++		printf( "Skipping this frame because it's not time to run a tic yet.\n" );
+ 	}
+ 
+ 	return bAllFinished;
+--- a/neo/renderer/ImageManager.cpp
++++ b/neo/renderer/ImageManager.cpp
+@@ -427,7 +427,7 @@
+ 			{
+ 				image->referencedOutsideLevelLoad = ( !insideLevelLoad && !preloadingMapImages );
+ 				image->ActuallyLoadImage( false );	// load is from front end
+-				declManager->MediaPrint( "%ix%i %s (reload for mixed referneces)\n", image->GetUploadWidth(), image->GetUploadHeight(), image->GetName() );
++				declManager->MediaPrint( "%ix%i %s (reload for mixed references)\n", image->GetUploadWidth(), image->GetUploadHeight(), image->GetName() );
+ 			}
+ 			return image;
+ 		}
