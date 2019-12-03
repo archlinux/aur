@@ -1,0 +1,12 @@
+pkgbase = cmu-sans-font-ttf
+	pkgdesc = CMU Sans Serif is a sans-serif font, with regular and demi-condensed widths.
+	pkgver = 1
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/cmu-sans-serif
+	arch = any
+	license = OFL
+	source = https://fontlibrary.org/assets/downloads/cmu-sans-serif/0da0d92e6bacf5e091c1ae85c4da581d/cmu-sans-serif.zip
+	md5sums = 0da0d92e6bacf5e091c1ae85c4da581d
+
+pkgname = cmu-sans-font-ttf
+
