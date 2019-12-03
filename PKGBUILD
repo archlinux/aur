@@ -7,18 +7,7 @@ pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
 url="https://github.com/streamlink/streamlink-twitch-gui"
 license=("MIT")
-depends=(
-	"alsa-lib"
-	"gconf"
-	"glib2"
-	"gtk3"
-	"libxtst"
-	"nss"
-	"streamlink"
-)
-makedepends=(
-	"rsync"
-)
+depends=("gtk3" "libxss" "nss" "streamlink")
 provides=("streamlink-twitch-gui")
 conflicts=("streamlink-twitch-gui-git")
 options=(!strip)
@@ -44,15 +33,9 @@ package() {
 		"${srcdir}/LICENSE" \
 		"./credits.html"
 
-	# copy application content and ignore certain files and dirs
-	rsync -a \
-		--exclude "start.sh" \
-		--exclude "add-menuitem.sh" \
-		--exclude "remove-menuitem.sh" \
-		--exclude "credits.html" \
-		--exclude "icons" \
-		"./" \
-		"${pkgdir}/opt/${pkgname}/"
+	# copy application content and remove unneeded files and dirs
+	cp -a "./" "${pkgdir}/opt/${pkgname}/"
+	rm -r "${pkgdir}/opt/${pkgname}/"{{add,remove}-menuitem.sh,credits.html,icons/}
 
 	# create custom start script and disable version check
 	cat > "${pkgdir}/usr/bin/${pkgname}" <<-EOF
