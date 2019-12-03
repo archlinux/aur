@@ -10,6 +10,10 @@ license=('GPL')
 url="https://github.com/haskell/haskell-mode"
 install=${pkgname}.install
 makedepends=('emacs' 'git')
+optdepends=(
+    'stylish-haskell: code formatting support'
+    'hasktags: tags generation support'
+    )
 provides=('emacs-haskell-mode')
 source=("${pkgname}::git://github.com/haskell/haskell-mode")
 md5sums=('SKIP')
