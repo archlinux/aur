@@ -3,7 +3,7 @@
 
 pkgname=python2-neovim-git
 _pkgname=python2-neovim-git
-pkgver=0.1.3.r0.g720b3d5
+pkgver=0.4.0.r0.ga5ee340
 pkgrel=1
 pkgdesc="Python client to neovim, git version. Use this to keep up with neovim-git"
 arch=('any')
@@ -23,7 +23,7 @@ conflicts=(
 )
 provides=('python2-neovim')
 makedepends=('git')
-source=("$pkgname::git://github.com/neovim/python-client.git"
+source=("$pkgname::git+https://github.com/neovim/pynvim.git"
         "LICENSE::https://raw.githubusercontent.com/neovim/python-client/master/LICENSE")
 sha256sums=('SKIP' '297a62ff61eb84f532ff5a8181860d925b710d4458f204e56c90b1da997c8711')
 
