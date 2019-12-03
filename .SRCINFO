@@ -1,7 +1,7 @@
 pkgbase = lazy-ips-git
 	pkgdesc = IPS patcher for Linux
 	pkgver = r16.8a71de5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/btimofeev/lazy_ips
 	arch = any
 	license = GPL3

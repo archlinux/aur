@@ -2,7 +2,7 @@
 
 pkgname=lazy-ips-git
 pkgver=r16.8a71de5
-pkgrel=1
+pkgrel=2
 pkgdesc="IPS patcher for Linux"
 arch=('any')
 url="https://github.com/btimofeev/lazy_ips"
@@ -17,6 +17,7 @@ sha256sums=('SKIP')
 prepare() {
     gendesk -n \
             --name="Lazy IPS" \
+            --pkgname="$pkgname" \
             --pkgdesc="$pkgdesc" \
             --exec=/usr/bin/lazy-ips \
             --categories='Utility;FileTools'
