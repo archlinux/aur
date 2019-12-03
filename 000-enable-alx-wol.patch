@@ -273,11 +273,9 @@ index e42d7e0..a7fb6c8 100644
  bool alx_get_phy_info(struct alx_hw *hw);
  void alx_update_hw_stats(struct alx_hw *hw);
  
-diff --git a/main.c b/main.c
-index e3538ba..7d0f5c8 100644
---- a/main.c
-+++ b/main.c
-@@ -1069,6 +1069,7 @@ static int alx_init_sw(struct alx_priv *alx)
+--- a/main.c	2019-12-03 16:51:19.119352509 +0800
++++ b/main.c"	2019-12-03 16:57:16.477599479 +0800
+@@ -1069,6 +1069,7 @@
  	alx->dev->max_mtu = ALX_MAX_FRAME_LEN(ALX_MAX_FRAME_SIZE);
  	alx->tx_ringsz = 256;
  	alx->rx_ringsz = 512;
@@ -285,10 +283,10 @@ index e3538ba..7d0f5c8 100644
  	hw->imt = 200;
  	alx->int_mask = ALX_ISR_MISC;
  	hw->dma_chnl = hw->max_dma_chnl;
-@@ -1342,6 +1343,65 @@ static int alx_stop(struct net_device *netdev)
- 	__alx_stop(netdev_priv(netdev));
+@@ -1343,6 +1344,66 @@
  	return 0;
  }
+ 
 +static int __alx_shutdown(struct pci_dev *pdev, bool *wol_en)
 +{
 +	struct alx_priv *alx = pci_get_drvdata(pdev);
@@ -348,23 +346,23 @@ index e3538ba..7d0f5c8 100644
 +		dev_err(&pdev->dev, "shutdown fail %d\n", err);
 +	}
 +}
- 
++
  static void alx_link_check(struct work_struct *work)
  {
-@@ -1838,6 +1898,8 @@ static int alx_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	struct alx_priv *alx;
+@@ -1836,6 +1897,7 @@
  		goto out_unmap;
  	}
  
 +	device_set_wakeup_enable(&pdev->dev, hw->sleep_ctrl);
-+
  	netdev_info(netdev,
  		    "Qualcomm Atheros AR816x/AR817x Ethernet [%pM]\n",
  		    netdev->dev_addr);
-@@ -1880,12 +1942,21 @@ static void alx_remove(struct pci_dev *pdev)
+@@ -1878,37 +1940,70 @@
  static int alx_suspend(struct device *dev)
  {
- 	struct pci_dev *pdev = to_pci_dev(dev);
--	struct alx_priv *alx = pci_get_drvdata(pdev);
+ 	struct alx_priv *alx = dev_get_drvdata(dev);
++   struct pci_dev *pdev = alx->hw.pdev;
 +	int err;
 +	bool wol_en;
  
@@ -387,23 +385,23 @@ index e3538ba..7d0f5c8 100644
  	return 0;
  }
  
-@@ -1893,26 +1964,48 @@ static int alx_resume(struct device *dev)
+ static int alx_resume(struct device *dev)
  {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct alx_priv *alx = pci_get_drvdata(pdev);
-+        struct net_device *netdev = alx->dev;
+ 	struct alx_priv *alx = dev_get_drvdata(dev);
++	struct net_device *netdev = alx->dev;
  	struct alx_hw *hw = &alx->hw;
++   struct pci_dev *pdev = hw->pdev;
  	int err;
  
-+        pci_set_power_state(pdev, PCI_D0);
-+        pci_restore_state(pdev);
-+        pci_save_state(pdev);
++  pci_set_power_state(pdev, PCI_D0);
++  pci_restore_state(pdev);
++  pci_save_state(pdev);
 +
-+        pci_enable_wake(pdev, PCI_D3hot, 0);
-+        pci_enable_wake(pdev, PCI_D3cold, 0);
++  pci_enable_wake(pdev, PCI_D3hot, 0);
++  pci_enable_wake(pdev, PCI_D3cold, 0);
 +
-+	hw->link_speed = SPEED_UNKNOWN;
-+        alx->int_mask = ALX_ISR_MISC;
++  hw->link_speed = SPEED_UNKNOWN;
++  alx->int_mask = ALX_ISR_MISC;
 +
 +	alx_reset_pcie(hw);
  	alx_reset_phy(hw);
@@ -411,33 +409,32 @@ index e3538ba..7d0f5c8 100644
 -	if (!netif_running(alx->dev))
 -		return 0;
 -	netif_device_attach(alx->dev);
++  err = alx_reset_mac(hw);
++  if (err) {
++    netif_err(alx, hw, alx->dev,
++									"resume:reset_mac fail %d\n", err);
++    return -EIO;
++  }
  
 -	rtnl_lock();
 -	err = __alx_open(alx, true);
 -	rtnl_unlock();
-+       err = alx_reset_mac(hw);
-+       if (err) {
-+               netif_err(alx, hw, alx->dev,
-+                                "resume:reset_mac fail %d\n", err);
-+               return -EIO;
-+       }
++  err = alx_setup_speed_duplex(hw, hw->adv_cfg, hw->flowctrl);
++	if (err) {
++		netif_err(alx, hw, alx->dev,
++    							"resume:setup_speed_duplex fail %d\n", err);
++    return -EIO;
++  }
++  
++	if (netif_running(netdev)) {
++		err = __alx_open(alx, true);
++    if (err)
++      return err;
++  }
  
 -	return err;
-+       err = alx_setup_speed_duplex(hw, hw->adv_cfg, hw->flowctrl);
-+       if (err) {
-+               netif_err(alx, hw, alx->dev,
-+                                 "resume:setup_speed_duplex fail %d\n", err);
-+               return -EIO;
-+       }
-+
-+       if (netif_running(netdev)) {
-+               err = __alx_open(alx, true);
-+               if (err)
-+                       return err;
-+       }
-+
-+       netif_device_attach(netdev);
-+       return err;
++  netif_device_attach(netdev);
++  return err;
  }
  
 -static SIMPLE_DEV_PM_OPS(alx_pm_ops, alx_suspend, alx_resume);
@@ -447,7 +444,7 @@ index e3538ba..7d0f5c8 100644
  #endif
  
  
-@@ -1958,6 +2051,8 @@ static pci_ers_result_t alx_pci_error_slot_reset(struct pci_dev *pdev)
+@@ -1954,6 +2049,8 @@
  	}
  
  	pci_set_master(pdev);
@@ -456,7 +453,7 @@ index e3538ba..7d0f5c8 100644
  
  	alx_reset_pcie(hw);
  	if (!alx_reset_mac(hw))
-@@ -2007,11 +2102,19 @@ static const struct pci_device_id alx_pci_tbl[] = {
+@@ -2003,11 +2100,20 @@
  	{}
  };
  
@@ -466,6 +463,7 @@ index e3538ba..7d0f5c8 100644
 +#else
 +#define ALX_PM_OPS      NULL
 +#endif
++
 +
  static struct pci_driver alx_driver = {
  	.name        = alx_drv_name,
