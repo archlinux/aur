@@ -1,0 +1,20 @@
+pkgbase = midimonster-git
+	pkgdesc = Multi-protocol translation software (ArtNet, MIDI, OSC, JACK MIDI/CV ...)
+	pkgver = v0.1.r0.g30feadd
+	pkgrel = 1
+	url = https://github.com/cbdevnet/midimonster
+	arch = x86_64
+	arch = i686
+	license = BSD
+	depends = pkg-config
+	depends = gcc
+	depends = make
+	depends = alsa-lib
+	depends = libevdev
+	depends = lua
+	depends = jack
+	source = git+https://github.com/cbdevnet/midimonster
+	sha256sums = SKIP
+
+pkgname = midimonster-git
+
