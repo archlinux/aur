@@ -5,9 +5,8 @@ url='https://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-msgs'
 pkgver='2.8.5'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -28,16 +27,11 @@ ros_depends=(ros-melodic-std-msgs
   ros-melodic-message-runtime)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/gazebo_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_msgs"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
+        "spawn_model.patch")
+sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed'
+            'a8a83abda169cca6a7709dc618f0b74a270f55ce274ac0108eec5df09f3bb3e8')
 
 build() {
   # Use ROS environment variables
@@ -62,6 +56,10 @@ build() {
         -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
+
+  # Patch a file after compilation
+  cd "${srcdir}/build/devel/lib/python3.8/site-packages/gazebo_msgs/srv/"
+  patch -uN _SpawnModel.py ${srcdir}/../spawn_model.patch || return 1
 }
 
 package() {

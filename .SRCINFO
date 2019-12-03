@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gazebo-msgs
 	pkgdesc = ROS - Message and service data structures for interacting with Gazebo from ROS.
 	pkgver = 2.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/tutorials?cat=connect_ros
 	arch = any
 	license = BSD
@@ -21,7 +21,9 @@ pkgbase = ros-melodic-gazebo-msgs
 	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-message-runtime
 	source = ros-melodic-gazebo-msgs-2.8.5.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.8.5.tar.gz
+	source = spawn_model.patch
 	sha256sums = 0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed
+	sha256sums = a8a83abda169cca6a7709dc618f0b74a270f55ce274ac0108eec5df09f3bb3e8
 
 pkgname = ros-melodic-gazebo-msgs
 

@@ -1,0 +1,84 @@
+--- _SpawnModel.py.orig	2019-12-03 12:29:52.077438274 -0500
++++ _SpawnModel.py	2019-12-03 12:31:37.704109431 -0500
+@@ -93,19 +93,19 @@
+     try:
+       _x = self.model_name
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+       _x = self.model_xml
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+       _x = self.robot_namespace
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+@@ -113,7 +113,7 @@
+       buff.write(_get_struct_7d().pack(_x.initial_pose.position.x, _x.initial_pose.position.y, _x.initial_pose.position.z, _x.initial_pose.orientation.x, _x.initial_pose.orientation.y, _x.initial_pose.orientation.z, _x.initial_pose.orientation.w))
+       _x = self.reference_frame
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+@@ -183,19 +183,19 @@
+     try:
+       _x = self.model_name
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+       _x = self.model_xml
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+       _x = self.robot_namespace
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+@@ -203,7 +203,7 @@
+       buff.write(_get_struct_7d().pack(_x.initial_pose.position.x, _x.initial_pose.position.y, _x.initial_pose.position.z, _x.initial_pose.orientation.x, _x.initial_pose.orientation.y, _x.initial_pose.orientation.z, _x.initial_pose.orientation.w))
+       _x = self.reference_frame
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+@@ -333,7 +333,7 @@
+       buff.write(_get_struct_B().pack(self.success))
+       _x = self.status_message
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
+@@ -375,7 +375,7 @@
+       buff.write(_get_struct_B().pack(self.success))
+       _x = self.status_message
+       length = len(_x)
+-      if python3 or type(_x) == unicode:
++      if type(_x) == str:
+         _x = _x.encode('utf-8')
+         length = len(_x)
+       buff.write(struct.pack('<I%ss'%length, length, _x))
