@@ -157,6 +157,8 @@ prepare() {
   sed -e 's:lib/:usr/lib/:g' \
       -e '# Forgot to clean a few things and some new files for gcc8' \
       -e '/\*\.o\.cmd/ s:^.*$:& *.symvers *.order *.mod.c .*.ko.cmd .*.o.d .cache.mk\n\trm -rf .tmp_versions:g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=$(PWD) &:g' \
     -i 'pserial/Makefile' 'pparport26/Makefile'
   ! test -s 'pserial/Makefile.Arch' || echo "${}"
   ! test -s 'pparport26/Makefile.Arch' || echo "${}"
