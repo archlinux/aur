@@ -1,7 +1,7 @@
 pkgbase = swift-language
 	pkgdesc = The Swift programming language and debugger
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://swift.org/
 	arch = i686
 	arch = x86_64
@@ -38,6 +38,7 @@ pkgbase = swift-language
 	source = repl_swift-dl.patch
 	source = swiftpm-glibc.patch
 	source = swift-tests-glibc.patch
+	source = cmark-python38.patch
 	sha256sums = ad7f569ca505f349b4e499ed781f53030afe068644c72e76a5d6fbb7b5b80b86
 	sha256sums = d045b1d42933f4d34b24f5434438bbdce4a18341964be019ff5d3f0ed56653fe
 	sha256sums = 2d0919a443536161ac7e059ac3922b70f63c3e46a26efc4b5f8ac824caf09d2e
@@ -51,6 +52,7 @@ pkgbase = swift-language
 	sha256sums = 0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e
 	sha256sums = 957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707
 	sha256sums = e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55
+	sha256sums = d5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc
 
 pkgname = swift
 	pkgdesc = The Swift programming language compiler and tools

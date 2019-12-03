@@ -4,7 +4,7 @@ pkgbase=swift-language
 pkgname=(swift swift-lldb)
 _swiftver=5.1.2-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -28,6 +28,7 @@ source=(
     "repl_swift-dl.patch"
     "swiftpm-glibc.patch"
     "swift-tests-glibc.patch"
+    "cmark-python38.patch"
 )
 sha256sums=('ad7f569ca505f349b4e499ed781f53030afe068644c72e76a5d6fbb7b5b80b86'
             'd045b1d42933f4d34b24f5434438bbdce4a18341964be019ff5d3f0ed56653fe'
@@ -41,7 +42,8 @@ sha256sums=('ad7f569ca505f349b4e499ed781f53030afe068644c72e76a5d6fbb7b5b80b86'
             '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
             '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e'
             '957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707'
-            'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55')
+            'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55'
+            'd5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc')
 
 prepare() {
     # Use python2 where appropriate
@@ -86,6 +88,9 @@ prepare() {
     # See https://github.com/apple/swift-package-manager/pull/2408
     ( cd swiftpm && patch -p1 -i "$srcdir/swiftpm-glibc.patch" )
     ( cd swift && patch -p1 -i "$srcdir/swift-tests-glibc.patch" )
+
+    # Fix Python 3.8 compatibility in unit tests
+    ( cd cmark && patch -p1 -i "$srcdir/cmark-python38.patch" )
 }
 
 _common_build_params=(
