@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -25,10 +25,12 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368'
-        '0001-Update-bindgen.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Update-bindgen.patch?h=packages/firefox&id=08a9a094518eb248492fbc9980ada5993c4c2079')
-sha256sums=('adc64c38108cca995562528a5cce9bfe75888dbb42c1bb7d31f5ba970b9504fd'
+        '0001-Update-bindgen.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Update-bindgen.patch?h=packages/firefox&id=55921cf43980d878015a44731aedac5642d0ccb8'
+        '0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch?h=packages/firefox&id=55921cf43980d878015a44731aedac5642d0ccb8')
+sha256sums=('930785beeb58e917a7ed231c1d23ad7fd20945836cbaa9f2dc2173ea90f15797'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
-            '97cf9112c0e2fa1373220b7396265360f86efd4d96587a85eb2e269f7412ebe3')
+            '832d895c90d346fe4acf25b8b8ba9a62bea595fe5fcdeaf545c8e952393993fc'
+            '58890388e02af41055e1ec9797b7c094dee499a5219dc9c532c6cfccf2cce972')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -62,10 +64,9 @@ END
 
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
 
-  # Make it compile with Rust 1.39
+  # Make it compile with Rust 1.39 and Python 3.8
   patch -Np1 -i "$srcdir/0001-Update-bindgen.patch"
-  sed -i 's/0643459b6ebeeed83aecd7604f0ea29c06bea7ce6c1cd9acd4988d27ace1ec53/09bf0ef660a0add1768bd1158ec863b4b7ef7404cb43def2738307ec6423df1f/' \
-    third_party/rust/unicode-xid-0.1.0/.cargo-checksum.json
+  patch -Np1 -i "$srcdir/0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i "$srcdir/0001-Use-remoting-name-for-GDK-application-names.patch"
