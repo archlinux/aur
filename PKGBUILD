@@ -2,14 +2,14 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=libt3widget
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A C++ terminal dialog toolkit."
 arch=('x86_64' 'i686')
 url="http://os.ghalkes.nl/t3/$pkgname.html"
 license=('GPL3')
 groups=()
-depends=('libtranscript>=0.2.2' 'libt3key>=0.2.0' 'libt3window>=0.3.1' 'libsigc++' 'gpm' 'pcre2')
+depends=('libtranscript>=0.2.2' 'libt3key>=0.2.0' 'libt3window>=0.4.0' 'libsigc++' 'gpm' 'pcre2')
 makedepends=('libxcb')
 optdepends=('libxcb: for integration with the X11 clipboard')
 conflicts=()
@@ -20,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('a2928af8d1c71f2e4a3a1bf4b265fa99')
+md5sums=('9f99670096687c3a73c30ec1b0058aa2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
