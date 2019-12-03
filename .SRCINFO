@@ -26,7 +26,7 @@ pkgbase = r-testthat
 	optdepends = r-vctrs
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/testthat_2.3.0.tar.gz
-	md5sums = 67e54e6aae63a32b21799133591a34ef
+	md5sums = 80902ddc45eb994b49287b0bfaa2f6e6
 
 pkgname = r-testthat
 
