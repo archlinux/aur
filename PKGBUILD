@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
+# Contributor: David Birks <david at tellus dot space>
 pkgname=mullvad-vpn
 pkgver=2019.9
 pkgrel=7
@@ -12,13 +13,18 @@ depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 makedepends=('git' 'cargo' 'npm')
 install="$pkgname.install"
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
+        'git+https://github.com/mullvad/mullvadvpn-app-binaries.git'
         "$pkgname.desktop")
 sha256sums=('SKIP'
+            'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2')
 
 prepare() {
+	# Point the submodule to our local copy
 	cd "$srcdir/mullvadvpn-app"
-	git submodule update --init --recursive
+	git submodule init dist-assets/binaries
+	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
+	git submodule update
 }
 
 build() {
@@ -30,6 +36,7 @@ build() {
 	# Build Electron GUI app
 	cd gui
 	npm install --cache "$srcdir/npm-cache"
+	npm run pack:linux
 }
 
 check() {

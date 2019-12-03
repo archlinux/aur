@@ -14,7 +14,9 @@ pkgbase = mullvad-vpn
 	depends = libxss
 	depends = nss
 	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2019.9
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git
 	source = mullvad-vpn.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2
 
