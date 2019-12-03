@@ -2,8 +2,8 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 
 pkgname=kube-prompt
-pkgver=1.0.9
-_gitrev=e384176
+pkgver=1.0.10
+_gitrev=43bcffa
 pkgrel=1
 license=('MIT')
 pkgdesc='An interactive kubernetes client featuring auto-complete using go-prompt'
@@ -14,7 +14,7 @@ makedepends=('git' 'go')
 provides=("$pkgname")
 conflicts=("${pkgname}-git")
 source=("$pkgname::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2f8bd1a655135ce00e3834eb6d5f92dc7e8272794356e18d08c7d6dfa790819651960b120cb33936d728681fd019ef1191e261b05c95cb3fa640ea3b42033c51')
+sha512sums=('ae904714536e17bbd1fc971b544811a925e286ededd4b5a5491dc6d836773ed9b23ca85bbb9c54e1d606018dabcf5e6f7079af9a2a9bf8c87bc7c34872ef0b24')
 
 build() {
   cd "$pkgname-$pkgver"
