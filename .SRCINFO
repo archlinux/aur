@@ -1,0 +1,22 @@
+pkgbase = kali-undercover
+	pkgdesc = Kali Undercover Mode
+	pkgver = 2019.4.3
+	pkgrel = 1
+	url = https://gitlab.com/kalilinux/packages/kali-undercover/
+	arch = any
+	license = GPL3
+	depends = python-gobject
+	depends = xfce4-session
+	depends = xfce4-panel
+	depends = xfdesktop
+	depends = xfwm4
+	depends = ttf-liberation
+	optdepends = xfce4-whiskermenu-plugin: for menu on undercover mode
+	optdepends = xfce4-notifyd: for settings restored notification
+	optdepends = libnotify: for settings restored notification
+	optdepends = psmisc: for clearing existing notificaion
+	source = https://gitlab.com/kalilinux/packages/kali-undercover/-/archive/kali/2019.4.3/kali-undercover-kali-2019.4.3.tar.gz
+	sha256sums = 00b2444add23802044e65587be906958b2c97052490ba7df79b76f3887a317a7
+
+pkgname = kali-undercover
+
