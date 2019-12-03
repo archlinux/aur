@@ -1,17 +1,16 @@
-# Maintainer: Jan Hambrecht <jaham at gmx dot net>
+# Maintainer: Jesus Alvarez <jeezusjr at gmail dot com>
+# Creator: Jan Hambrecht <jaham at gmx dot net>
 
 pkgname=spacenavd
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The spacenav project provides a free, compatible alternative, to the proprietary 3Dconnexion device driver and SDK, for their 3D input devices (called 'space navigator', 'space pilot', 'space traveller', etc)."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://spacenav.sourceforge.net/"
 license=('GPL')
 optdepends=("libx11")
 provides=('spacenavd')
 backup=('etc/spnavrc')
-options=()
-install=
 source=(http://downloads.sourceforge.net/spacenav/$pkgname-$pkgver.tar.gz spacenavd spacenavd.service)
 
 md5sums=('7e2c04fb8dbb7d39b9ee7b64565e0c4f'
