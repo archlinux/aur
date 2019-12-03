@@ -1,7 +1,7 @@
 pkgbase = sonic
 	pkgdesc = Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://github.com/valeriansaliou/sonic
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = sonic
 	makedepends = clang
 	makedepends = llvm
 	makedepends = rustup
-	source = sonic-1.2.2.src.tar.gz::https://github.com/valeriansaliou/sonic/archive/v1.2.2.tar.gz
+	source = sonic-1.2.3.src.tar.gz::https://github.com/valeriansaliou/sonic/archive/v1.2.3.tar.gz
 	source = sonic.sysusers
-	sha256sums = d9fa4e43f809b2fdc2799ae00db7e4745087ac6dad520a9be2b40a687e3db4ca
+	sha256sums = d47e031135d101d52f8d6998ddeb092df9ddfac36b8051efd004249bdb43fda5
 	sha256sums = 1bec735cc0560927eb8ca43494bc0f1b2ec34296357fe1a861ce10ed3828a704
 
 pkgname = sonic
