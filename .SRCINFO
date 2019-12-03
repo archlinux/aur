@@ -1,0 +1,17 @@
+pkgbase = treefrog-framework-git
+	pkgdesc = High-speed C++ MVC Framework for Web Application
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://www.treefrogframework.org
+	arch = x86_64
+	arch = x86
+	license = BSD3
+	depends = mongo-c-driver
+	depends = qt5-tools
+	depends = qt5-xmlpatterns
+	depends = qt5-declarative
+	source = git+https://github.com/treefrogframework/treefrog-framework.git#commit=d4465fd0058fffb16018a7b93a61b80ca742b139
+	md5sums = SKIP
+
+pkgname = treefrog-framework-git
+
