@@ -1,7 +1,7 @@
 pkgbase = xmind-zen
 	pkgdesc = XMind ZEN - The most popular mind mapping software
 	pkgver = 10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmind.net/
 	arch = x86_64
 	license = custom
@@ -9,7 +9,7 @@ pkgbase = xmind-zen
 	depends = nss
 	depends = libxtst
 	depends = alsa-lib
-	depends = gtk
+	depends = gtk3
 	source = https://dl2.xmind.cn/XMind-ZEN-for-Linux-amd-64bit-10.0.0-201911260056.deb
 	source = xmind.xml
 	sha256sums = 6c8283e23d9d57d3eb3b8f3bddf8208d99e6c6ecffe537e69293027bd0c56ed0
