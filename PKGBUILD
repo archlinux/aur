@@ -144,6 +144,8 @@ prepare() {
       -e 's: /lib/: /usr/lib/:g' \
       -e '# Cut some of the warnings we dont want to fix' \
       -e '#s:^CC+=.*$:& -Wno-misleading-indentation:g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=$(PWD) &:g' \
     -i 'Makefile'
   ! test -s 'Makefile.Arch' || echo "${}"
 
