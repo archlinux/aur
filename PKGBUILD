@@ -1,37 +1,36 @@
 # Maintainer: Raphael Scholer <rascholer@gmail.com>
+# Maintainer: m8D2 <omui (at) proton mail (dot) com>
 
-_pkgname="elementary-xfce"
-pkgname="${_pkgname}-icons"
-pkgver=0.13.1
+pkgname="elementary-xfce-icons"
+pkgver=0.14
 pkgrel=1
 pkgdesc='Elementary icon theme with improved Xfce support'
 arch=('any')
-url="https://github.com/shimmerproject/${_pkgname}"
-license=('GPL2')
-makedepends=('gtk3' 'optipng')
-depends=('adwaita-icon-theme')
-conflicts=("${pkgname}-git")
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b46402629660908ec1e266b41186ee0e8662bd3a6b537e3ca5c66e5074136c11')
+url="https://github.com/shimmerproject/elementary-xfce"
+license=(GPL2)
+makedepends=(gtk3 optipng)
+depends=(adwaita-icon-theme)
+conflicts=(elementary-xfce-icons-git)
+source=("${url}/archive/v$pkgver.tar.gz")
+sha256sums=('e978f8f4e62387291943f8ae4e95362798415e199a9113252660d1c1dd0db8d6')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+    cd "elementary-xfce-$pkgver"
 
-  ./configure --prefix="/usr/"
-  make -j1
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+    cd "elementary-xfce-$pkgver"
 
-  make DESTDIR="${pkgdir}" install
+    make DESTDIR="$pkgdir" install
 
-  # Remove unnecessary files.
-  find "${pkgdir}/usr/share/icons" \
-  \( \
-    -name 'AUTHORS' \
-    -o -name 'CONTRIBUTORS' \
-    -o -name 'LICENSE' \
-  \) -delete
+    # Remove unnecessary files.
+    find "$pkgdir/usr/share/icons" \
+    \( \
+      -name 'AUTHORS' \
+      -o -name 'CONTRIBUTORS' \
+      -o -name 'LICENSE' \
+    \) -delete
 }
-# vim:set ts=2 sw=2 et:
