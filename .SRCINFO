@@ -1,6 +1,6 @@
 pkgbase = python-undervolt
 	pkgdesc = Undervolt Intel CPUs under Linux
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/georgewhewell/undervolt
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-undervolt
 	makedepends = python-setuptools
 	depends = python
 	conflicts = undervolt
-	source = https://files.pythonhosted.org/packages/source/u/undervolt/undervolt-0.2.9.tar.gz
-	sha256sums = e554ccf1cc90080f96806dff2e74e2acf8e6937c332e1b4be26568ae322edb22
+	source = https://files.pythonhosted.org/packages/source/u/undervolt/undervolt-0.2.10.tar.gz
+	sha256sums = b4a368dd9b6b8755efdc1a74919686fec836680a7e4eae3c97d367c6e54f5d60
 
 pkgname = python-undervolt
 
