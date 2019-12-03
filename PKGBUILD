@@ -87,7 +87,10 @@ _fn_patch_km() {
   chmod 755 *.sh
 
   # Fix umbrella makefile
-  sed -e 's:/lib/:/usr/lib/:g' -i 'Makefile'
+  sed -e 's:/lib/:/usr/lib/:g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=:g' \
+    -i 'Makefile'
 
   # Branding in dmesg
   sed -e '/printk/ s@DRV_VERS@& " Arch Linux'" https://aur.archlinux.org/packages/${pkgname}/"'" @g' -i "${_origmodname}.c"
@@ -115,6 +118,7 @@ _fn_patch_km() {
       -e 's:""${DESTDIR}":"${DESTDIR}:g' \
     -i 'install.sh'
   ! test -s 'install.Arch.sh' || echo "${}"
+
 }
 
 prepare() {
