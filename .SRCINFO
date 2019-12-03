@@ -1,6 +1,6 @@
 pkgbase = grip
 	pkgdesc = A cd-player and ripper for the Gnome desktop
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://sourceforge.net/projects/grip/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = grip
 	depends = id3lib
 	depends = cdparanoia
 	optdepends = yelp: to display the help and notices
-	source = http://downloads.sourceforge.net/sourceforge/grip/grip-4.0.0.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/grip/grip-4.0.1.tar.gz
 	sha1sums = 07e849ff7553f9a4ad5d7808a0f66623a6a2541e
 
 pkgname = grip

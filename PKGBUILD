@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=grip
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A cd-player and ripper for the Gnome desktop"
 arch=('i686' 'x86_64')
