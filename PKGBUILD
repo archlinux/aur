@@ -89,6 +89,8 @@ prepare() {
       -e '# Change to kernel built in make clean' \
       -e 's/^clean:/clean_orig:/g' \
       -e 's/^clean_orig:/clean:\n\t@$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean\n\n&/g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=$(PWD) &:g' \
     -i 'driver/kernel2.6/Makefile'
 
   set +u
