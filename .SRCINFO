@@ -1,6 +1,6 @@
 pkgbase = cmake-format
 	pkgdesc = Source code formatter for CMake listfiles
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/cheshirekow/cmake_format
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = cmake-format
 	depends = python-setuptools
 	depends = python-yaml
 	depends = python-jinja
-	source = cmake-format-0.6.0.tar.gz::https://github.com/cheshirekow/cmake_format/archive/v0.6.0.tar.gz
-	sha512sums = 051a6dddb156a7faf5cd97a8d8fc580f9c00aaf5191e28c887d563121465b1c679f154d0d6b6989a7ed3df744c4bd3b90b0ff50354cc3a6c47961946da25f9d9
+	source = cmake-format-0.6.2.tar.gz::https://github.com/cheshirekow/cmake_format/archive/v0.6.2.tar.gz
+	sha512sums = 0e7626b2a59b1a1f08d06b84b4d0a4c1d415a57d72ad5d6ba5b5aeea93c73242ff95421cdca59f5776ce50a024d3e5478304fd6b83f8be85643fc3a697654d64
 
 pkgname = cmake-format
 
