@@ -7,7 +7,7 @@ pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha R
 arch=("x86_64")
 url="https://tableplus.com/linux/install"
 license=("custom")
-depends=("libpqxx" "mariadb-libs" "libnm" "libsoup" "gtksourceview3")
+depends=("libpqxx" "mariadb-libs" "libnm" "libsoup" "gtksourceview3" "libgee")
 source=("https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver//_/-}_amd64.deb"
         "LICENSE"
         "tableplus.desktop.patch")

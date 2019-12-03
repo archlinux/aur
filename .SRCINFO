@@ -10,6 +10,7 @@ pkgbase = tableplus
 	depends = libnm
 	depends = libsoup
 	depends = gtksourceview3
+	depends = libgee
 	source = https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_0.1-12_amd64.deb
 	source = LICENSE
 	source = tableplus.desktop.patch
