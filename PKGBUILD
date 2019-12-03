@@ -2,7 +2,7 @@
 pkgname=cocomusic
 _name=CoCoMusic
 nodeversion=8
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A simple music player built by electron and vue"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('electron4')
 makedepends=('npm' 'jq' 'moreutils' 'nvm')
 provides=('cocomusic')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/xtuJSer/CoCoMusic/archive/V$pkgver.tar.gz")
-sha256sums=('f75ea3359e3b41f32afefda7b5a99eb3ee737a0970cb66160f954e5facdc1fdd')
+sha256sums=('6b1b6ee5610718ffc87cab41f7452b97b99152c7352a57257250aba70f55a41c')
 
 prepare() {
 	cd "$_name-$pkgver"

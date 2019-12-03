@@ -1,6 +1,6 @@
 pkgbase = cocomusic
 	pkgdesc = A simple music player built by electron and vue
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/xtuJSer/CoCoMusic
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = cocomusic
 	makedepends = nvm
 	depends = electron4
 	provides = cocomusic
-	source = cocomusic-2.0.5.src.tar.gz::https://github.com/xtuJSer/CoCoMusic/archive/V2.0.5.tar.gz
-	sha256sums = f75ea3359e3b41f32afefda7b5a99eb3ee737a0970cb66160f954e5facdc1fdd
+	source = cocomusic-2.0.6.src.tar.gz::https://github.com/xtuJSer/CoCoMusic/archive/V2.0.6.tar.gz
+	sha256sums = 6b1b6ee5610718ffc87cab41f7452b97b99152c7352a57257250aba70f55a41c
 
 pkgname = cocomusic
 
