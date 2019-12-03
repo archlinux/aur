@@ -379,7 +379,10 @@ prepare() {
   fi
 
   # new folder in gcc 8
-  sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' -i driver/*/Makefile*
+  sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=:g' \
+    -i driver/*/Makefile*
 
   # Branding in dmesg
   sed -e 's@ please visit [^"]\+"@ please visit https://aur.archlinux.org/packages/dgrp/"@g' \
