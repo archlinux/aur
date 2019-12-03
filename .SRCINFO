@@ -1,4 +1,4 @@
-pkgbase = ecflow
+pkgbase = ecflow4
 	pkgdesc = ecFlow 4 - workflow manager from ECMWF
 	pkgver = 4.17.0
 	pkgrel = 1
@@ -18,5 +18,5 @@ pkgbase = ecflow
 	source = https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-4.17.0-Source.tar.gz
 	sha256sums = 93d7bf7625ac8f87f4b87aaf2ff5b91a1dd45dbac32a669a88ff6e5fbcc62b8d
 
-pkgname = ecflow
+pkgname = ecflow4
 

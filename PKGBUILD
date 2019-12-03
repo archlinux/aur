@@ -1,5 +1,5 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
-pkgname=ecflow
+pkgname=ecflow4
 pkgver=4.17.0
 pkgrel=1
 pkgdesc="ecFlow 4 - workflow manager from ECMWF"
@@ -41,3 +41,4 @@ package()
 }
 
 # vim:set ts=2 sw=2 et:
+
