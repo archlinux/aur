@@ -1,25 +1,25 @@
 # Maintainer: Bruce Zhang
 pkgname=firecamp
-pkgver=0.6.9
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="firecamp, A campsite for developers."
 arch=('x86_64')
 url="https://firecamp.app/"
 license=('unknown')
 depends=('electron')
-makedepends=('squashfs-tools' 'asar')
+makedepends=('p7zip' 'asar')
 provides=('firecamp')
 options=('!strip')
 source=(
-    "manual://firecamp_$pkgver.snap"
+    "$pkgname-$pkgver.orig.appimage::https://firecamp.ams3.digitaloceanspaces.com/versions/linux/Firecamp-$pkgver.AppImage"
     'runner.patch'
 )
-sha256sums=('141b0da5c9900b457a283f08929906a9b0d38a1c9ca1478b9a2d898dae77017d'
+sha256sums=('54bad3be477a5920c52667241dd9ff3e81a3c8118a8aab57fce253f516e1a282'
             'f22a12c6b3ee55161ac9e8debadba48263fad338c13b6700d06261c2346426dd')
 
 prepare() {
 	cd "$srcdir"
-	unsquashfs -f -d firecamp "firecamp_$pkgver.snap"
+	7z x "$pkgname-$pkgver.orig.appimage" -ofirecamp
 	cd firecamp/resources
 	asar e app.asar app
 	patch -u app/electron.js -i "$srcdir/runner.patch"
