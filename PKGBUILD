@@ -3,7 +3,7 @@
 
 pkgname=gst-plugins-ugly-git
 pkgver=1.16.0.r16.g3cd445a4
-pkgrel=1
+pkgrel=2
 pkgdesc='GStreamer Multimedia Framework Ugly Plugins (git version)'
 arch=('x86_64')
 url='https://gstreamer.freedesktop.org/'
@@ -15,8 +15,8 @@ depends=(
     # AUR:
         'gstreamer-git' 'gst-plugins-base-git'
 )
-makedepends=('git' 'meson' 'python' 'gtk-doc')
-provides=("gst-plugins-ugly=${pkgver%%.r*}")
+makedepends=('git' 'meson' 'python')
+provides=('gst-plugins-ugly')
 conflicts=('gst-plugins-ugly')
 source=('git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git'
         'gst-common'::'git+https://gitlab.freedesktop.org/gstreamer/common.git')
