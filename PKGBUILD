@@ -3,7 +3,7 @@
 # Original Maintainer: Christian Rebischke <Chris.Rebischke@archlinux.org>
 # Original Maintainer: dront78 <dront78@gmail.com>
 pkgname=systemtap
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc="Infrastructure to simplify the gathering of information about the running Linux system"
 url="http://sourceware.org/systemtap/"
@@ -15,8 +15,8 @@ optdepends=('sqlite3: for storing results in a database')
 source=("${pkgname}-${pkgver}.tar.gz::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://sourceware.org/systemtap/ftp/releases/${pkgname}-${pkgver}.tar.gz.asc"
         )
-sha512sums=('fbd606d9842ac63af6e607613a112b08d7593da74ad0398716cdc46f74a977a8e6b9fae92e1f63779ccfc94cffa25f29dee2ae44f67ecc4cedae630e50a2e7b6'
-            '755a11b6024bb15c6415532352fd62a824266edeb5ab3e1ef6cfa31259f8bf7d9a92fcf7476c307cd7d4188ff20cefe86558b2a6e4c099987e1041bd1f98031e')
+sha512sums=('50d426e8c3d976fd635f6867fb4202832be455d869178a384159d1b2cd2a25642b07da2bd3184081b13bfb95df48a97f430b06713eaee0d0f67e27f43266cfd6'
+            'ddb3217d9bbe7b9531b3d7ce24d88766e65629bd720228c0f8f96edc82216e13e5f0d0f30c8012cb85bf5ac7401f5a551aa69fc0505a29475ed61c548b4cdcf4')
 install='systemtap.install'
 validpgpkeys=('F75E6545B9F8AA15AA932A444DE16D68FDBFFFB8')  # "Serhei Makarov (for Red Hat 2018..onwards) <smakarov@redhat.com>" 
 
