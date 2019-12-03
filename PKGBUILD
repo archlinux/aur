@@ -11,7 +11,7 @@ url="http://sourceforge.net/projects/grip/"
 depends=('vte' 'curl' 'libgnomeui' 'id3lib' 'cdparanoia')
 optdepends=('yelp: to display the help and notices')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('07e849ff7553f9a4ad5d7808a0f66623a6a2541e')
+sha1sums=('cd3e895d065f233f58be7df13b0c99078e184861')
 
 build() {
   cd ${pkgname}-${pkgver}
