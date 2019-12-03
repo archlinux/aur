@@ -1,5 +1,5 @@
---- a/bin/cpupower-gui-helper.py.in
-+++ b/bin/cpupower-gui-helper.py.in
+--- a/cpupower_gui/cpupower-gui-helper.py.in
++++ b/cpupower_gui/cpupower-gui-helper.py.in
 @@ -229,7 +229,7 @@
      )
      def update_cpu_settings(self, cpu, freq_min_hw, freq_max_hw, governor, sender=None):
