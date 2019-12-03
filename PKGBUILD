@@ -14,7 +14,8 @@ url='https://www.giuspen.com/cherrytree/'
 license=('GPL3')
 depends=('python2-gtksourceview2' 'python2-dbus')
 optdepends=('python2-pyenchant: for spell checking support'
-            'p7zip: for password protection support')
+            'p7zip: for password protection support'
+	    'enchant-hspell: spell checking')
 source=(https://www.giuspen.com/software/$pkgname-$pkgver.tar.xz)
 
 build() {

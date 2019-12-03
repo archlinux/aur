@@ -9,6 +9,7 @@ pkgbase = cherrytree
 	depends = python2-dbus
 	optdepends = python2-pyenchant: for spell checking support
 	optdepends = p7zip: for password protection support
+	optdepends = enchant-hspell: spell checking
 	source = https://www.giuspen.com/software/cherrytree-0.38.9.tar.xz
 	md5sums = 98ad1d7f1f4fa8d28400444a70b6b8a5
 
