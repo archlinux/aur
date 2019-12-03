@@ -1,0 +1,11 @@
+pkgbase = javassist
+	pkgdesc = Java bytecode engineering toolkit since 1999
+	pkgver = r3.26.0_GA
+	pkgrel = 1
+	url = https://www.javassist.org/
+	arch = x86_64
+	source = git://github.com/jboss-javassist/javassist.git
+	sha256sums = SKIP
+
+pkgname = javassist
+
