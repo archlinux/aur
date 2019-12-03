@@ -1,6 +1,6 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=forked-daapd
-pkgver=26.5
+pkgver=27.0
 pkgrel=1
 pkgdesc="iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')

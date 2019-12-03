@@ -1,6 +1,6 @@
 pkgbase = forked-daapd
 	pkgdesc = iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd).
-	pkgver = 26.5
+	pkgver = 27.0
 	pkgrel = 1
 	url = https://github.com/ejurgensen/forked-daapd
 	install = forked-daapd.install
@@ -25,7 +25,7 @@ pkgbase = forked-daapd
 	depends = json-c
 	depends = libwebsockets
 	backup = etc/forked-daapd.conf
-	source = https://github.com/ejurgensen/forked-daapd/archive/26.5.tar.gz
+	source = https://github.com/ejurgensen/forked-daapd/archive/27.0.tar.gz
 	source = forked-daapd.install
 	source = forked-daapd.service
 	source = http://www.antlr3.org/download/antlr-3.4-complete.jar
