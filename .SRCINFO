@@ -1,6 +1,6 @@
 pkgbase = python-gammapy
 	pkgdesc = A Python package for gamma-ray astronomy
-	pkgver = 0.14
+	pkgver = 0.15
 	pkgrel = 1
 	url = https://gammapy.org/
 	arch = i686
@@ -16,10 +16,11 @@ pkgbase = python-gammapy
 	checkdepends = python-sphinx
 	checkdepends = python-yaml
 	checkdepends = python-click
+	checkdepends = python-pydantic
 	makedepends = cython
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.14.tar.gz
-	md5sums = 5dd2681d8c72e8ee453301eaae0bda80
+	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.15.tar.gz
+	md5sums = 49b0ef74115dc9e345b1f95e96b390d9
 
 pkgname = python-gammapy
 	depends = python>=3.6
@@ -27,7 +28,7 @@ pkgname = python-gammapy
 	depends = python-astropy>=3.2
 	depends = python-regions>=0.4
 	depends = python-click>=7.0
-	depends = python-jsonschema>=3.0
+	depends = python-pydantic>=1.0
 	optdepends = python-reproject: For image reprojection
 	optdepends = python-iminuit: For fitting by optimization
 	optdepends = python-pandas: For working with tables
