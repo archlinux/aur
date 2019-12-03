@@ -5,7 +5,7 @@
  Version=1.0
  Name=FreeCAD Conda
 -Exec=AppRun
-+Exec=/usr/bin/freecad
++Exec=/usr/bin/freecad %F
  Icon=freecad_conda
  Type=Application
  Categories=Engineering;
