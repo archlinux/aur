@@ -2,7 +2,7 @@
 _pkgname=TelegramUserMapBot
 pkgname=python-${_pkgname,,}-git
 pkgrel=2
-pkgver=r29.e2ab1e7
+pkgver=r37.0454e3c
 pkgdesc="A Telegram Bot to collect location information from users and export the coordinates to a map service."
 url="https://github.com/Thaodan/$_pkgname"
 arch=('any')
