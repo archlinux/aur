@@ -5,16 +5,16 @@ pkgname1=skycoin
 projectname=skycoin
 githuborg=SkycoinProject
 pkgdesc="Skycoin Cryptocurrency Wallet"
-pkgver=0.26.0
+pkgver=0.27.0
 pkggopath="github.com/${githuborg}/${pkgname1}"
-pkgrel=5
+pkgrel=1
 arch=('any')
 url="https://${pkggopath}"
 license=()
 makedepends=(dep git go gcc)
 source=("${url}/archive/v${pkgver}.tar.gz"
 "https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key")
-sha256sums=('60f7f2a7c33dbe754ffc74b86de7c2a759e246a83953d4d52fb869d1b3fa1ee2'
+sha256sums=('2e6c47f058f6f459e6572e6acf3e34403cf14fdc0f2511a4238b7280aae2d026'
 '41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
 
 case "$CARCH" in
@@ -38,9 +38,9 @@ prepare() {
 	#verify PKGBUILD signature
 	gpg --verify ../PKGBUILD.sig ../PKGBUILD
 	# https://wiki.archlinux.org/index.php/Go_package_guidelines
-	mkdir -p ${srcdir}/go/src/github.com/${pkgname1}/ ${srcdir}/go/bin
-	ln -rTsf ${srcdir}/${pkgname1}-${pkgver} ${srcdir}/go/src/github.com/${pkgname1}/${pkgname1}
-	cd ${srcdir}/go/src/github.com/${pkgname1}/${pkgname1}
+	mkdir -p ${srcdir}/go/src/github.com/${githuborg}/ ${srcdir}/go/bin
+	ln -rTsf ${srcdir}/${pkgname1}-${pkgver} ${srcdir}/go/src/github.com/${githuborg}/${pkgname1}
+	cd ${srcdir}/go/src/github.com/${githuborg}/${pkgname1}
 	#git submodule --quiet update --init --recursive
 	export GOPATH="${srcdir}"/go
 	export GOBIN=${GOPATH}/bin
@@ -67,7 +67,7 @@ build() {
 export GOPATH="${srcdir}"/go
 export GOBIN=${GOPATH}/bin
 export PATH=${GOPATH}/bin:${PATH}
-cd ${srcdir}/go/src/github.com/${pkgname1}/${pkgname1}/cmd
+cd ${srcdir}/go/src/github.com/${githuborg}/${pkgname1}/cmd
 go install \
   -gcflags "all=-trimpath=${GOPATH}" \
   -asmflags "all=-trimpath=${GOPATH}" \
