@@ -1,7 +1,7 @@
 pkgbase = alx-wol-dkms
 	pkgdesc = The alx kernel module with a patch enabling WoL applied
 	pkgver = 5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bugzilla.kernel.org/show_bug.cgi?id=61651
 	arch = i686
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = alx-wol-dkms
 	optdepends = linux-headers: Needed for build the module for Arch kernel
 	optdepends = linux-lts-headers: Needed for build the module for LTS Arch kernel
 	optdepends = linux-zen-headers: Needed for build the module for ZEN Arch kernel
-	source = alx.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/alx.h?h=v5.3.4-arch1
-	source = ethtool.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/ethtool.c?h=v5.3.4-arch1
-	source = hw.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.c?h=v5.3.4-arch1
-	source = hw.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.h?h=v5.3.4-arch1
-	source = main.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/main.c?h=v5.3.4-arch1
-	source = reg.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/reg.h?h=v5.3.4-arch1
+	source = alx.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/alx.h?h=v5.4.1-arch1
+	source = ethtool.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/ethtool.c?h=v5.4.1-arch1
+	source = hw.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.c?h=v5.4.1-arch1
+	source = hw.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/hw.h?h=v5.4.1-arch1
+	source = main.c::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/main.c?h=v5.4.1-arch1
+	source = reg.h::https://git.archlinux.org/linux.git/plain/drivers/net/ethernet/atheros/alx/reg.h?h=v5.4.1-arch1
 	source = 000-enable-alx-wol.patch
 	source = Kbuild
 	source = dkms.conf
@@ -24,9 +24,9 @@ pkgbase = alx-wol-dkms
 	sha256sums = 9980a7719f34ed8b1120891196a97afba515f9a6cb9c9646d0a2cdb7a3e89708
 	sha256sums = bf9ac0fa98031523e05d5d62c08ee116fd4a437f66538c95eac18adda10ff89b
 	sha256sums = fcc0306b37382cf8e2f75eafb6bd8696a4a5e360110e5cfe800485f4eebe55aa
-	sha256sums = 036e151038cbe583cf8043caad0c38dcb60b37d67b34526bc3c86944b3145e24
+	sha256sums = bb980667d213a6c8b0ffbb5cf15d6271f698c59f3916185df442988f9c218b1b
 	sha256sums = 88a23ab8e6fe814efe81910bd8806f5988d367a628458154edaebdf4ccbe4902
-	sha256sums = 3d0549a45f78595bfdcd9d6e14f115ecc159583a39d51b23aa3c9852630823d0
+	sha256sums = 998e9de58134ab612c378970de95771c5bc18ef530d6548fe823065a1612ee17
 	sha256sums = 8a62bb5adf6e554f470f88f8da58da0ce05cb8276ab56fb45ed5d31c71665d39
 	sha256sums = f3aefc85fd246a74ee2be831c15b6440d22c497e84fba1f57e152c82f2946d1a
 
