@@ -103,6 +103,9 @@ prepare() {
     -i 'install.sh'
   test ! -s 'install.sh.Arch' || echo "${}"
 
+  # Fix /var/run
+  sed -e 's:/var/run/:/run/:g' -i 'nslink.service'
+
   # Switch to python2
   sed -e '# Why using local on just this one?' \
       -e 's:/usr/local/bin/python:/usr/bin/python:g' \
@@ -123,7 +126,10 @@ prepare() {
   sed -e 's:^[^#]:#&:g' -i 'nslink.conf'
 
   # Fix makefile
-  sed -e 's:=/lib/modules:=/usr/lib/modules:g' -i 'Makefile'
+  sed -e 's:=/lib/modules:=/usr/lib/modules:g' \
+      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
+      -e 's:SUBDIRS=:M=:g' \
+    -i 'Makefile'
 
   # Correct group and chmod for serial
   sed -e '/getgrnam/ s:"tty":"uucp":g' \
