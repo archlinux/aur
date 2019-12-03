@@ -1,4 +1,4 @@
-pkgbase = mullvad-vpn
+pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop
 	pkgver = 2019.9.stable
 	pkgrel = 5
@@ -22,5 +22,5 @@ pkgbase = mullvad-vpn
 	sha256sums = SKIP
 	sha256sums = 121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2
 
-pkgname = mullvad-vpn
+pkgname = mullvad-vpn-beta
 

@@ -1,7 +1,7 @@
 # Maintainer: telans <telans@protonmail.com>
 # Co-Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
 # Contributor: David Birks <david at tellus dot space>
-pkgname=mullvad-vpn
+pkgname=mullvad-vpn-beta
 pkgver=2019.9.stable
 _pkgver=2019.9
 pkgrel=5
