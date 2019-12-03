@@ -1,7 +1,7 @@
 Streamlink Twitch GUI package for Arch Linux
 ====
 
-Arch User Repository (AUR) package:
+Arch User Repository (AUR) package:  
 [`streamlink-twitch-gui`][pkg-AUR]
 
 
@@ -27,13 +27,13 @@ yay -S streamlink-twitch-gui
 
 ## Issues and pull requests
 
-All package related issues belong into the AUR comments section:
+All package related issues belong into the AUR comments section:  
 [`streamlink-twitch-gui`][pkg-AUR]
 
-Package pull requests can be submitted on GitHub:
+Package pull requests can be submitted on GitHub:  
 https://github.com/streamlink/streamlink-twitch-gui-aur/
 
-Issues related to Streamlink Twitch GUI itself belong on the project's issue tracker:
+Issues related to Streamlink Twitch GUI itself belong on the project's issue tracker:  
 https://github.com/streamlink/streamlink-twitch-gui/
 
 
