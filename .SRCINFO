@@ -1,6 +1,6 @@
 pkgbase = midimonster-git
 	pkgdesc = Multi-protocol translation software (ArtNet, MIDI, OSC, JACK MIDI/CV ...)
-	pkgver = v0.1.r0.g30feadd
+	pkgver = v0.1.r1.ga0831a2
 	pkgrel = 1
 	url = https://github.com/cbdevnet/midimonster
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 _pkgname=midimonster
 pkgname=${_pkgname}-git
-pkgver=v0.1.r0.g30feadd
+pkgver=v0.1.r1.ga0831a2
 pkgrel=1
 pkgdesc="Multi-protocol translation software (ArtNet, MIDI, OSC, JACK MIDI/CV ...)"
 arch=('x86_64' 'i686')
