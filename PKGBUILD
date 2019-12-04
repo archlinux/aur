@@ -12,7 +12,7 @@ pkgver=1.1.4
 pkgrel=7
 pkgdesc="Audio recording, processing and playing tools."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=2.9.7')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('643dac1ecf0f31c870b4bd9ce7bbd98c')
+sha256sums=('1cc95684b48bc2b2681036b65ed78fe5bc6323ca94b43dea6c005303dd7320e4')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
