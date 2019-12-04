@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hand AT viess.mn>
 
 pkgname='xmrig-proxy'
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
@@ -9,13 +9,12 @@ url='https://github.com/xmrig/xmrig-proxy'
 depends=('libuv')
 makedepends=('cmake' 'libuv')
 optdepends=('monero: XMR wallet'
-            'xmrig-bin: XMR CPU miner - binary'
             'xmrig: XMR CPU miner')
 license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3c4d3e2eda9ccaad9c790a55e8b60d56697de6d990cb25ef8b548afd2140652e')
+sha256sums=('d47460bc7757cdd3dd29a45a02d39d077967fa5ba4d88a4da21964d18b0aedcd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
