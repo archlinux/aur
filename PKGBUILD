@@ -9,8 +9,8 @@ pkgver() {
     "$(git tag -l | grep -P '.+\..+\.\d+' | sed -r 's/([0-9\.]+)(-.+)?/\1/g' | sort -Vr | sed 1q)" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.1.0.r245.813b690
-pkgrel=1
+pkgver=1.1.0.r259.73c4fe3
+pkgrel=2
 
 pkgdesc='An improved sequence editor for interactive git-rebase'
 arch=('x86_64')
@@ -42,10 +42,10 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  install -dm755 "$pkgdir"/usr/{bin,share/{doc,man/man1,licenses/"${pkgname%-git}"}}
-  install -m755 target/release/interactive-rebase-tool -t"$pkgdir/usr/bin/"
-  install -m644 {README,CHANGELOG,CODE_OF_CONDUCT}.md  -t"$pkgdir/usr/share/doc/"
-  install -m644 src/interactive-rebase-tool.1          -t"$pkgdir/usr/share/man/man1/"
+  install -Dm755 target/release/interactive-rebase-tool -t"$pkgdir/usr/bin/"
+  install -Dm644 {README,CHANGELOG,CODE_OF_CONDUCT}.md  -t"$pkgdir/usr/share/doc/${pkgname%-git}/"
+  install -Dm644 LICENSE THIRD_PARTY_LICENSES           -t"$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 src/interactive-rebase-tool.1          -t"$pkgdir/usr/share/man/man1/"
 }
 
 
