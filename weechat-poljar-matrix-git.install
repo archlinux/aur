@@ -1,5 +1,4 @@
-
-post_install() {
+_install_update_msg() {
     echo "In order to use this plugin after installation, you'll need to run the following commands as the user that is running weechat:"
     echo ""
     echo "    $ ln -s /usr/lib/weechat/python/matrix/   ~/.weechat/python/"
@@ -8,17 +7,19 @@ post_install() {
     echo "If you want the script to be loaded on start-up, you'll also need to symlink it into the autoload folder:"
     echo ""
     echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/autoload/"
+    echo ""
+    echo "Optional scripts, like matrix_decrypt, matrix_sso_helper, and matrix_upload are available in the following directory:"
+    echo ""
+    echo "    /usr/lib/weechat/python/matrix/contrib/"
+    echo ""
+    echo "    Symlink these files or add this directory to your \$PATH to use these scripts."
     echo ""
 }
 
+post_install() {
+    _install_update_msg
+}
+
 post_upgrade() {
-    echo "In order to use this plugin after installation, you'll need to run the following commands as the user that is running weechat:"
-    echo ""
-    echo "    $ ln -s /usr/lib/weechat/python/matrix/   ~/.weechat/python/"
-    echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/"
-    echo ""
-    echo "If you want the script to be loaded on start-up, you'll also need to symlink it into the autoload folder:"
-    echo ""
-    echo "    $ ln -s /usr/lib/weechat/python/matrix.py ~/.weechat/python/autoload/"
-    echo ""
+    _install_update_msg
 }

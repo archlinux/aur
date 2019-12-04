@@ -1,7 +1,7 @@
 # Maintainer: Slash <youremail@domain.com>
 
 pkgname=weechat-poljar-matrix-git
-pkgver=r690.b26dc83
+pkgver=r701.6d58ff0
 pkgrel=1
 pkgdesc="Python plugin for Weechat to communicate over the Matrix protocol"
 arch=('any')
@@ -27,6 +27,12 @@ package() {
 
     # Install plugin scripts
     make WEECHAT_HOME="${pkgdir}/usr/lib/weechat" install
+
+    # Install contrib scripts
+    for script in contrib/*; do
+        install -D -m 644 "${script}" \
+            "${pkgdir}/usr/lib/weechat/python/matrix/${script}"
+    done;
 
     # Install License
     install -D -m 644 'LICENSE' \
