@@ -1,7 +1,7 @@
 # Maintainer: Kevin McCormack <HarlemSquirrel@gmail.com>
 
 pkgname=xmr-stak-opencl-amd
-pkgver=2.10.7
+pkgver=2.10.8
 pkgrel=1
 pkgdesc='Unified All-in-one Monero miner (AMD)'
 arch=('x86_64')
