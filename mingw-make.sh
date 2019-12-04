@@ -2,4 +2,4 @@
 
 source mingw-env @TRIPLE@
 
-make "$@"
+make AR=@TRIPLE@-ar AS=@TRIPLE@-as CC=@TRIPLE@-gcc CXX=@TRIPLE@-g++ CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" LD=@TRIPLE@-ld LDFLAGS="${LDFLAGS}" RANLIB=@TRIPLE@-ranlib F77=@TRIPLE@-gfortran F90=@TRIPLE@-gfortran F95=@TRIPLE@-gfortran "$@"
