@@ -1,13 +1,14 @@
-# Maintainer: archlinux.info:tdy
+# Maintianer: milkii on Freenode
+# Creator: archlinux.info:tdy
 
 pkgname=konfyt-git
-pkgver=r12.e96abbf
+pkgver=r181.81b5295
 pkgrel=1
 pkgdesc="A digital keyboard workstation - search for SFZs/soundfonts, create layered patches on the fly, and more"
 arch=(i686 x86_64)
 url=https://github.com/noedigcode/konfyt
 license=(GPL3)
-depends=(qt4 carla)
+depends=(carla)
 makedepends=(git)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -21,7 +22,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  qmake-qt4 ${pkgname%-git}.pro
+  qmake ${pkgname%-git}.pro
   make
 }
 
