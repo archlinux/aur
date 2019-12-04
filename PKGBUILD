@@ -3,7 +3,7 @@
 pkgname=emacs-rich-minority
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="Project Interaction Library for Emacs"
+pkgdesc="Emacs package for hiding and/or highlighting the list of minor-modes in the mode-line."
 arch=(any)
 url="https://github.com/Malabarba/rich-minority"
 license=('GPL3')
