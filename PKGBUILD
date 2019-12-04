@@ -19,9 +19,9 @@
 
 pkgname=trilinos-git
 _pkgname=Trilinos
-pkgver=12.12.0.gd3b096f4f1
+pkgver=12.12.11145.g7a152b4248
 pkgrel=1
-pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
+pkgdesc="Algorithms for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('x86_64')
 url="https://github.com/trilinos/Trilinos"
 license=('LGPL3')
@@ -29,7 +29,7 @@ depends=('lapack' 'openmpi' 'python2' 'boost')
 provides=('trilinos')
 conflicts=('trilinos')
 source=(git+${url}.git)
-makedepends=('git' 'python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake' 'libmatio' 'netcdf')
+makedepends=('git' 'python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake' 'libmatio' 'netcdf' 'ccache')
 # gcc-fortran gcc-fortran-multilib
 md5sums=('SKIP')
 options=('ccache')
@@ -62,7 +62,7 @@ build() {
       -DTrilinos_ENABLE_PyTrilinos:BOOL=ON \
       -DPyTrilinos_DOCSTRINGS:BOOL=OFF \
       -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
-      -DCMAKE_INSTALL_PREFIX:PATH=/opt/trilinos \
+      -DCMAKE_INSTALL_PREFIX:PATH=/usr \
       -DTPL_ENABLE_Netcdf=ON          \
       -DTPL_ENABLE_QT=OFF              \
       -DTPL_ENABLE_GLM=OFF              \
@@ -72,11 +72,12 @@ build() {
   make
 }
 
+check() {
+    cd $srcdir/${_pkgname}/build
+    ctest
+}
+
 package() {
     cd $srcdir/${_pkgname}/build
     make install DESTDIR=$pkgdir
-
-    mkdir -p "${pkgdir}/etc/profile.d"
-    echo "export TRILINOS_DIR=/opt/trilinos" > "${pkgdir}/etc/profile.d/trilinos.sh"
-    chmod +x "${pkgdir}/etc/profile.d/trilinos.sh"
 }
