@@ -5,19 +5,21 @@
 _pkgname=mailnag
 pkgname=$_pkgname-git
 pkgver=20191123.r744.1ec3bc9
-pkgrel=1
+pkgrel=2
 pkgdesc='An extensible mail notification daemon'
 arch=('any')
 url='https://github.com/pulb/mailnag'
 license=('GPL')
-depends=('python2-gobject' 'python2-httplib2' 'python2-xdg' 'python2-dbus' 'libnotify' 'gst-plugins-base' 'gtk3' 'gdk-pixbuf2')
+depends=('python-gobject' 'python-httplib2' 'python-xdg' 'python-dbus' 'libnotify' 'gst-plugins-base' 'gtk3' 'gdk-pixbuf2')
 makedepends=('gettext' 'git')
+
 optdepends=(
   'mailnag-goa-plugin-git: GNOME Online Accounts integration'
   'libgnome-keyring: save password storage in GNOME 3'
   'gnome-keyring: save password storage in GNOME 3'
   'networkmanager: network connectivity detection'
 )
+
 source=("git+$url")
 sha512sums=('SKIP')
 conflicts=("$_pkgname")
@@ -30,5 +32,5 @@ pkgver() {
 
 package() {
   cd $_pkgname
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
 }
