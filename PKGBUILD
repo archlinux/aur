@@ -13,7 +13,7 @@ pkgver=0.4.5
 pkgrel=3
 pkgdesc="A mostly MATLAB-compatible fuzzy logic toolkit for Octave."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.2.4')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('9f9e88a7d7c4dd2e3ba6958982af75aa')
+sha256sums=('b4c24ac48662ce413599721d2565e9eabf23ead6b9b36863d33740920aec4133')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
