@@ -1,6 +1,6 @@
 pkgbase = python-wtforms-components
 	pkgdesc = Additional fields, validators and widgets for WTForms
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://wtforms-components.readthedocs.io
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-wtforms-components
 	depends = python-infinity
 	depends = python-intervals
 	depends = python-validators
-	source = https://github.com/kvesteri/wtforms-components/archive/0.10.3.tar.gz
-	sha256sums = ba0b82a5055156ea75d926b197329574894f873d4166a30c81d99a7410ae3a08
+	source = python-wtforms-components-0.10.4.tar.gz::https://github.com/kvesteri/wtforms-components/archive/0.10.4.tar.gz
+	sha256sums = fab1b0e4e28ca214e353942de944b0b43132dff10f888e2546531817c52b5909
 
 pkgname = python-wtforms-components
 

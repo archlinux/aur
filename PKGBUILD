@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-wtforms-components
 _pkgname=wtforms-components
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc='Additional fields, validators and widgets for WTForms'
 arch=('any')
@@ -10,8 +10,8 @@ license=('BSD')
 depends=('python-colour' 'python-dateutil' 'python-infinity' 'python-intervals' 'python-validators')
 checkdepends=('python-pytest' 'python-wtforms-test')
 
-source=("https://github.com/kvesteri/wtforms-components/archive/$pkgver.tar.gz")
-sha256sums=('ba0b82a5055156ea75d926b197329574894f873d4166a30c81d99a7410ae3a08')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kvesteri/wtforms-components/archive/$pkgver.tar.gz")
+sha256sums=('fab1b0e4e28ca214e353942de944b0b43132dff10f888e2546531817c52b5909')
 
 build() {
     cd "$srcdir/${_pkgname}-${pkgver}"
