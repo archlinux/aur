@@ -1,6 +1,6 @@
 pkgbase = python-tld
 	pkgdesc = Extracts the top level domain (TLD) from the URL given
-	pkgver = 0.9.6
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://github.com/barseghyanartur/tld
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-tld
 	depends = python
 	depends = python-six
 	options = !emptydirs
-	source = https://github.com/barseghyanartur/tld/archive/0.9.6.tar.gz
-	sha256sums = 0daea01164b81c2ce0fbd880548b8fe665d3ab92ac877567c1cfca99bbe05dbd
+	source = https://github.com/barseghyanartur/tld/archive/0.10.tar.gz
+	sha256sums = 800cdd8350b94c883fe88f09780ec86b5a9b09964b5256ee33cd95bf0b0622a4
 
 pkgname = python-tld
 
