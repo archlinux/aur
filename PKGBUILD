@@ -13,7 +13,7 @@ pkgver=0.1.2
 pkgrel=2
 pkgdesc="Common Gatway Interface for Octave"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('0b37a42a23c17963946092939d80c158')
+sha256sums=('4187eb2abec69c5735527fe3d6a25b2010fccede199fe556e242677ed991cf43')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
