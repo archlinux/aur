@@ -1,7 +1,7 @@
 pkgbase = idazki-desktop
 	pkgdesc = Idazki Desktop application of Izenpe CA
-	pkgver = 3.2.2
-	pkgrel = 2
+	pkgver = 3.2.6
+	pkgrel = 1
 	url = http://www.izenpe.eus
 	install = idazki-desktop.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = idazki-desktop
 	source = http://www.izenpe.com/contenidos/informacion/idazki_izenpe/es_def/adjuntos/idazki-desktop-linux64.run
 	source = idazki-desktop.desktop.patch
 	source = idazki-delegado.desktop.patch
-	sha256sums = 38b984a828fd52656fb61f4c7fba81dcc8f6e50d2e6883e7c3c942edc384b1b7
+	sha256sums = 7cb84c1db5e60d8c82f9660848c0f109169558884566538a3a19d7c1e45cc545
 	sha256sums = bb6634429b75a64e3cc04c6415ebea72cababbe8bffce9dfaedf59d6b09281a7
 	sha256sums = 9cbab6ae4e506ab57223fabac18a7da9160ccb3d9f1a07b37e9999a8993ffb75
 
