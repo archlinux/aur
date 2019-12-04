@@ -3,8 +3,8 @@
 _pkgname=brightnessctl
 pkgname="$_pkgname-logind"
 pkgver=0.4
-pkgrel=3
-pkgdesc="Lightweight brightness control tool"
+pkgrel=4
+pkgdesc="Lightweight brightness control tool (compiled to use logind)"
 arch=('x86_64')
 url='https://github.com/Hummer12007/brightnessctl'
 license=('MIT')
