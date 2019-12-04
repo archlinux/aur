@@ -1,0 +1,12 @@
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7e35b42591c058b91282f95ce3b2cf0c05ffe93d
+--- a/Makefile
++++ b/Makefile
+@@ -35,7 +35,7 @@ endif
+ PWD := $(shell pwd)
+
+ default:
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
++	$(MAKE) -C $(KDIR) M=$(PWD) modules
+
+ clean:
+ 	rm -f *.o
