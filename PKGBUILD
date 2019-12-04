@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 # PGP key is on keyservers
 pkgname=librepcb-nightly
-pkgver=0.1.3unstable.38812d348b835e3add1c60a7b1a956d2490cafac
+pkgver=0.1.4unstable.ac1eff31
 pkgrel=1
 pkgdesc="A free EDA software to develop printed circuit boards (nightly build)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ package() {
 pkgver() {
   cd "$srcdir/$_dirname"
   _version=$(bin/librepcb-cli --version | grep 'LibrePCB CLI Version' | sed 's/LibrePCB CLI Version //' | sed 's/-//g')
-  _revision=$(bin/librepcb-cli --version | grep 'Git Revision' | sed 's/Git Revision //')
+  _revision=$(bin/librepcb-cli --version | grep 'Git Revision' | sed 's/Git Revision //' | cut -c -8)
   printf "$_version.$_revision"
 }
 
