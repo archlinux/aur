@@ -1,0 +1,17 @@
+pkgbase = pier
+	pkgdesc = A Linux script management CLI written in Rust
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/BenSchZA/pier
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	provides = pier
+	conflicts = pier-git
+	source = pier-0.2.0.tar.gz::https://github.com/BenSchZA/pier/archive/v0.2.0.tar.gz
+	sha384sums = 5fdb4893741fffc824b6f5e726f6a6efae2afc5371375fbc4ecd39565cd7541f3a492f04b4d4edcba3ad86494a509e7e
+
+pkgname = pier
+
