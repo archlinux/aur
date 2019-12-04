@@ -39,7 +39,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2565.036ad6e9
+pkgver=r2585.1386c6b3
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -61,6 +61,7 @@ source=(
 	'git+https://github.com/chardet/chardet.git'
 	'git+https://github.com/davidhalter/jedi.git'
 	'git+https://github.com/davidhalter/parso.git'
+  'git+https://github.com/davidhalter/typeshed.git'
 	'git+https://github.com/kjd/idna.git'
 	'git+https://github.com/micbou/regex.git'
 	'git+https://github.com/Pylons/waitress.git'
@@ -74,7 +75,7 @@ source=(
 	'omnisharp.patch'
 	'rls.patch')
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 			'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 			'266b90d50bff43b6d0a011462239dcf261f5a97a5b1f110b4a7e063670963dae' 
 			'cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215')
@@ -156,6 +157,9 @@ prepare() {
 
 	local ycmdRequestsDeps=("python-certifi" "chardet" "idna" "requests" "urllib3")
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/requests_deps" "${ycmdRequestsDeps[@]}"
+  
+  local jedi=("typeshed")
+  gitprepare "YouCompleteMe/third_party/ycmd/third_party/jedi_deps/jedi" "jedi/third_party/" "${jedi[@]}"
 
 	if [[ "$_gocode" == "y" ]]; then
 		ycmd+=("go-completer")
