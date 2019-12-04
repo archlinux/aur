@@ -1,13 +1,13 @@
 # Maintainer: Alex Dewar <alex.dewar@gmx.co.uk>
 pkgname=arsdk3
 pkgver=3.14.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The SDK for Parrot Bebop drones"
 arch=('x86_64')
 url="http://developer.parrot.com/docs/SDK3/"
 license=('custom')
 source=('git+https://github.com/Parrot-Developers/arsdk_manifests')
-options=(!emptydirs)
+options=(!emptydirs staticlibs)
 md5sums=('SKIP')
 makedepends=('repo' 'python' 'python2')
 
