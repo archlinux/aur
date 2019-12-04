@@ -1,0 +1,14 @@
+pkgbase = emacs-smart-mode-line
+	pkgdesc = A powerful and beautiful mode-line for Emacs.
+	pkgver = 2.13
+	pkgrel = 1
+	url = https://github.com/Malabarba/smart-mode-line
+	arch = any
+	license = GPL3
+	depends = emacs
+	depends = emacs-rich-minority
+	source = https://github.com/Malabarba/smart-mode-line/archive/2.13.tar.gz
+	sha256sums = 4b7dbebf0a6a501208bcf82950b7c08aac86ae69419d1fc1d55e77c85cafdc69
+
+pkgname = emacs-smart-mode-line
+
