@@ -4,7 +4,7 @@
 _pkgname=mailnag-goa-plugin
 pkgname=$_pkgname-git
 pkgver=20191104.r15.a8ccbe7
-pkgrel=1
+pkgrel=2
 pkgdesc='Mailnag GNOME Online Accounts Plugin'
 arch=('any')
 url='https://github.com/pulb/mailnag-goa-plugin'
@@ -22,5 +22,5 @@ pkgver() {
 
 package() {
   cd $_pkgname
-  python2 setup.py install --root="$pkgdir"
+  python setup.py install --root="$pkgdir"
 }
