@@ -34,15 +34,10 @@ pkgver() {
     (git describe --long --tags || echo "$pkgver") | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cd JAZ-0.0.2/ 
-    cargo build --release --locked
-}
-
 package() {
     cd ..
     usrdir="$pkgdir/usr"
     mkdir -p $usrdir
-    cargo install --path src/JAZ-0.0.2/ --root "$usrdir"
+    cargo install --locked --path src/JAZ-0.0.2/ --root "$usrdir"
     rm -f $usrdir/.crates.toml
 }
