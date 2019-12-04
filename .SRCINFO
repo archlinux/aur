@@ -1,6 +1,6 @@
 pkgbase = naru
 	pkgdesc = A configurable fuzzy selector with support for multiple selections
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ohjames/naru
 	arch = i686

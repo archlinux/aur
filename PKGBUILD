@@ -1,6 +1,6 @@
 # Maintainer: James Pike <jpike@chilon.net>
 pkgname=naru
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
