@@ -4,7 +4,7 @@
 pkgname=imagewriter
 pkgver=1.10.1432200249.1d253d9
 _release=1.7
-pkgrel=8
+pkgrel=9
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
 arch=('i686' 'x86_64')
 url='https://github.com/openSUSE/imagewriter'
