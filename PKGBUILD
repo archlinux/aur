@@ -10,8 +10,9 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-common-git calibre-git calibre-python3-git)
-pkgver=4.4.0.r3.g8d07d6bf55
+pkgver=4.5.0.r38.g281ddb8678
 pkgrel=1
+_dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
 arch=('i686' 'x86_64')
 url="https://calibre-ebook.com/"
@@ -20,17 +21,19 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
           'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'pyqtwebengine' 'regex')
 _py3_deps=("${_py_deps[@]}" 'zeroconf')
-depends=('chmlib' 'hunspell' 'icu' 'jxrlib' 'libmtp' 'libusbx' 'libwmf' 'mathjax2' 'mtdev' 'optipng'
-         'podofo' 'qt5-svg' 'udisks2')
+depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
+         'libwmf' 'mathjax2' 'mtdev' 'optipng' 'podofo' 'qt5-svg' 'udisks2')
 makedepends=('git' "${_py_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
              'sip' 'xdg-utils' 'rapydscript-ng') #'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
+        "dictionaries-${_dictionaries_commit}.tar.gz::https://github.com/LibreOffice/dictionaries/archive/${_dictionaries_commit}.tar.gz"
         "calibre-alternatives.sh"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
+            'ccfdb3ba622d59c99b305abfdc824a8e2f96f1930fe6f4e7f183297bc80ad3e8'
             '20dc4ff196423a7c7c8f644cb83fcfe07b4b5a64ba4addeb0750f94cd7aa9e8e'
             'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
@@ -74,7 +77,9 @@ build() {
     LANG='en_US.UTF-8' python2 setup.py iso3166
     LANG='en_US.UTF-8' python2 setup.py translations
     LANG='en_US.UTF-8' python2 setup.py gui
-    LANG='en_US.UTF-8' python2 setup.py resources --path-to-mathjax /usr/share/mathjax2 --system-mathjax
+    LANG='en_US.UTF-8' python2 setup.py resources \
+        --path-to-mathjax /usr/share/mathjax2 --system-mathjax \
+        --path-to-hyphenation "${srcdir}"/dictionaries-${_dictionaries_commit}
 
     LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py build
 
