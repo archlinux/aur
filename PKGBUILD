@@ -8,14 +8,14 @@
 
 _pack=linear-algebra
 pkgname=octave-$_pack
-pkgver=2.2.2
-pkgrel=4
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Additional linear algebra code, including general SVD and matrix functions."
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
 license=('custom')
 groups=('octave-forge')
-depends=('octave>=3.2.3' 'octave-general>=1.3.0')
+depends=('octave>=4.0.0')
 makedepends=()
 optdepends=()
 backup=()
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('702461982f6028addf00bac1d0b31538')
+md5sums=('1fea4114fa4a143b6a78a02e11352370')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
