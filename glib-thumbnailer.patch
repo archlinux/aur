@@ -1,9 +1,9 @@
 diff --git a/gio/glocalfileinfo.c b/gio/glocalfileinfo.c
-index f46d4d6db..20b57f741 100644
+index 487f8cc1a..b0e6db728 100644
 --- a/gio/glocalfileinfo.c
 +++ b/gio/glocalfileinfo.c
-@@ -64,6 +64,12 @@
- #endif
+@@ -66,6 +66,12 @@
+ #include "glib-private.h"
  
  #include "thumbnail-verify.h"
 +#ifdef HAVE_DBUS1
@@ -15,24 +15,24 @@ index f46d4d6db..20b57f741 100644
  
  #ifdef G_OS_WIN32
  #include <windows.h>
-@@ -101,6 +107,16 @@ struct ThumbMD5Context {
+@@ -103,6 +109,16 @@ struct ThumbMD5Context {
  	unsigned char in[64];
  };
  
 +#ifdef FREEDESKTOP_THUMBNAILER
 +typedef struct
 +{
-+    GMainLoop *mainloop;
-+    guint32 handle;
-+    gboolean success;
-+    const char *error_message;
++  GMainLoop *mainloop;
++  guint32 handle;
++  gboolean success;
++  const char *error_message;
 +} ThumbnailerState;
 +#endif /* FREEDESKTOP_THUMBNAILER */
 +
  #ifndef G_OS_WIN32
  
  typedef struct {
-@@ -1307,16 +1323,132 @@ get_content_type (const char          *basename,
+@@ -1355,16 +1371,130 @@ get_content_type (const char          *basename,
    
  }
  
@@ -52,13 +52,11 @@ index f46d4d6db..20b57f741 100644
 +  if (g_strcmp0 (signal_name, "Error") == 0)
 +    {
 +      g_variant_get (parameters, "(uasis)", &signal_handle, NULL, NULL, &state->error_message);
-+      //g_assert (signal_handle == state->handle);
 +      state->success = FALSE;
 +    }
 +  else if (g_strcmp0 (signal_name, "Ready") == 0)
 +    {
 +      g_variant_get (parameters, "(u^as)", &signal_handle, &uris);
-+      //g_assert (signal_handle == state->handle);
 +      state->success = TRUE;
 +    }
 +  else if (g_strcmp0 (signal_name, "Finished") == 0)
@@ -90,7 +88,6 @@ index f46d4d6db..20b57f741 100644
 +      NULL,
 +      NULL,
 +      &error);
-+  g_assert_no_error (error);
 +
 +  proxy = g_dbus_proxy_new_sync (connection,
 +                                 G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
@@ -114,7 +111,7 @@ index f46d4d6db..20b57f741 100644
 +
 +  g_main_context_push_thread_default (thread_context);
 +  result = g_dbus_proxy_call_sync (proxy,
-+                                   "Queue",
++                                  "Queue",
 +                                   g_variant_new("(^as^asssu)",
 +                                                 uris,
 +                                                 mime_types,
@@ -150,6 +147,7 @@ index f46d4d6db..20b57f741 100644
 +}
 +#endif /* FREEDESKTOP_THUMBNAILER */
 +
++
  /* @stat_buf is the pre-calculated result of stat(path), or %NULL if that failed. */
  static void
  get_thumbnail_attributes (const char     *path,
@@ -166,7 +164,7 @@ index f46d4d6db..20b57f741 100644
  
    uri = g_filename_to_uri (path, NULL, NULL);
  
-@@ -1335,6 +1467,7 @@ get_thumbnail_attributes (const char     *path,
+@@ -1383,6 +1513,7 @@ get_thumbnail_attributes (const char     *path,
        _g_file_info_set_attribute_byte_string_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_PATH, filename);
        _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
                                                  thumbnail_verify (filename, uri, stat_buf));
@@ -174,7 +172,7 @@ index f46d4d6db..20b57f741 100644
      }
    else
      {
-@@ -1348,6 +1481,7 @@ get_thumbnail_attributes (const char     *path,
+@@ -1396,6 +1527,7 @@ get_thumbnail_attributes (const char     *path,
            _g_file_info_set_attribute_byte_string_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_PATH, filename);
            _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
                                                      thumbnail_verify (filename, uri, stat_buf));
@@ -182,7 +180,7 @@ index f46d4d6db..20b57f741 100644
          }
        else
          {
-@@ -1363,9 +1497,32 @@ get_thumbnail_attributes (const char     *path,
+@@ -1411,9 +1543,32 @@ get_thumbnail_attributes (const char     *path,
                _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED, TRUE);
                _g_file_info_set_attribute_boolean_by_id (info, G_FILE_ATTRIBUTE_ID_THUMBNAIL_IS_VALID,
                                                          thumbnail_verify (filename, uri, stat_buf));
@@ -215,7 +213,7 @@ index f46d4d6db..20b57f741 100644
    g_free (basename);
    g_free (filename);
    g_free (uri);
-@@ -1725,6 +1882,18 @@ _g_local_file_info_get (const char             *basename,
+@@ -1767,6 +1922,18 @@ _g_local_file_info_get (const char             *basename,
  
    info = g_file_info_new ();
  
@@ -234,7 +232,7 @@ index f46d4d6db..20b57f741 100644
    /* Make sure we don't set any unwanted attributes */
    g_file_info_set_attribute_mask (info, attribute_matcher);
    
-@@ -1865,7 +2034,9 @@ _g_local_file_info_get (const char             *basename,
+@@ -1901,7 +2068,9 @@ _g_local_file_info_get (const char             *basename,
        _g_file_attribute_matcher_matches_id (attribute_matcher,
  					    G_FILE_ATTRIBUTE_ID_STANDARD_ICON) ||
        _g_file_attribute_matcher_matches_id (attribute_matcher,
@@ -245,7 +243,7 @@ index f46d4d6db..20b57f741 100644
      {
        char *content_type = get_content_type (basename, path, stat_ok ? &statbuf : NULL, is_symlink, symlink_broken, flags, FALSE);
  
-@@ -1982,9 +2153,9 @@ _g_local_file_info_get (const char             *basename,
+@@ -2018,9 +2187,9 @@ _g_local_file_info_get (const char             *basename,
                                              G_FILE_ATTRIBUTE_ID_THUMBNAILING_FAILED))
      {
        if (stat_ok)

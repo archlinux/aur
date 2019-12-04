@@ -4,7 +4,7 @@
 
 pkgname=glib2-patched-thumbnailer
 pkgver=2.62.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy911/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
             '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
             'e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3'
             '5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6'
-            '9ea789788962a941af83b99949ddc21d7d19d820f2170f58691ca83e53afb158')
+            '9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74')
 
 pkgver() {
   cd glib
