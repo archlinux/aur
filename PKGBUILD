@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cuda-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=21
+pkgrel=22
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDA backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -61,7 +61,7 @@ prepare() {
 
 build() {
     cd build
-    PATH+=":/opt/cuda/bin" CC=gcc-8 CXX=g++-8 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe python upgrade_net_proto_text upgrade_net_proto_binary
+    PATH+=":/opt/cuda/bin" CC=gcc-8 CXX=g++-8 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe python
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
