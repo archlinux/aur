@@ -5,7 +5,7 @@ pkgname=php-zstd
 _pkgname=php-ext-zstd
 pkgdesc='Zstd Extension for PHP'
 pkgver='0.7.4'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://github.com/kjdev/php-ext-zstd'
 license=('MIT')
@@ -24,11 +24,6 @@ build() {
   cd "$_pkgname-$pkgver"
   ./configure --prefix=/usr --with-libzstd
   make
-}
-
-check() {
-  cd "$_pkgname-$pkgver"
-  NO_INTERACTION=1 make -k test
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = php-zstd
 	pkgdesc = Zstd Extension for PHP
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kjdev/php-ext-zstd
 	arch = x86_64
 	license = MIT
