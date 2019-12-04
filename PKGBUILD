@@ -42,6 +42,7 @@ cd "$srcdir/$pkgname"
     cd OMOptim
     autoconf
     ./configure --prefix=/usr/ CXX=g++
+    make
 }
  
 package() {  
