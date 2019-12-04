@@ -1,22 +1,21 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot com>
 
 pkgname=softflowd
-pkgver=0.9.9
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="open source netflow probe"
 url='http://www.mindrot.org/projects/softflowd/'
 license=("BSD")
 arch=('i686' 'x86_64')
 makedepends=('automake')
 
-source=("https://github.com/Thermicorp/softflowd/archive/softflowd-${pkgver}.tar.gz")
+source=("https://github.com/irino/softflowd/archive/softflowd-${pkgver}.tar.gz")
 
-sha256sums=('835a52c641e2e4bfc3afae0f5c667ad69d0af35fded4ff4d20ea2904f8b6cad2')
+sha256sums=('98aa66026d730211b45fe89670cd6ce50959846d536880b82f5afbca6281e108')
 
 prepare() {
 	cd ${srcdir}/softflowd-softflowd-${pkgver}
-	touch config.h.in
-	autoreconf
+  autoreconf -if
 	
 }
 build() {
