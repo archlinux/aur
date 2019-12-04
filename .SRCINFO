@@ -7,10 +7,10 @@ pkgbase = xerox-workcentre-6515-6510
 	license = custom
 	makedepends = unrar
 	depends = cups
-	source = xerox-workcentre-6515-6510.exe::http://download.support.xerox.com/pub/drivers/6510/drivers/win10/ar/Phaser_6510_5.662.0.0_PPD_English.exe
 	source = LICENSE
-	sha256sums = 29b83d7276b167fdb0cbbd1e110b424658ca1e93b781cab674d6a93a2df5f7a9
+	source = xerox-workcentre-6515-6510.exe::http://download.support.xerox.com/pub/drivers/6510/drivers/win10/ar/Phaser_6510_5.662.0.0_PPD_English.exe
 	sha256sums = 98ec516f5a59dc7b664f8c646efe3eb3f956c3b6de97779359ca1f5ffe849083
+	sha256sums = 29b83d7276b167fdb0cbbd1e110b424658ca1e93b781cab674d6a93a2df5f7a9
 
 pkgname = xerox-workcentre-6515-6510
 
