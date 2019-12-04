@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -29,9 +29,9 @@ optdepends=('trilinos: support for trilinos'
   'suitesparse: support for the suitesparse sparse matrix libraries'
   )
 install=petsc.install
-source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz
+source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-lite-${pkgver/_/-}.tar.gz
         test_optdepends.sh)
-sha256sums=('d874b2e198c4cb73551c2eca1d2c5d27da710be4d00517adb8f9eb3d6d0375e8'
+sha256sums=('c30bf8a005e850d1db137b7807a1b780286f70e650e5eba251061133ebd27f63'
             'f127806175b681f4e9cb64aeba4f3fabd9eb92ef945f5542677b255cb3d85913')
 
 _install_dir=/opt/petsc/${_config}
@@ -89,27 +89,11 @@ package() {
 
   export PETSC_DIR=${_install_dir}
 
-  # Note: the hyperlinks between documentation, tutorials and examples are
-  # not perfect yet
-
-  # documentation
-  mkdir -p ${pkgdir}/usr/share/doc/$pkgname/
-  cp -r ${_build_dir}/docs ${pkgdir}/usr/share/doc/$pkgname/
-
-  # src for tutorials
-  #find ./src -path '*examples*' -type f -exec \
-  #  install -Dm 644 "{}" "${pkgdir}/usr/share/doc/$pkgname/{}" \;
-
-  # html versions of header files
-  mkdir -p ${pkgdir}/usr/share/doc/$pkgname/include
-  cp -r ${_build_dir}/include/*.html ${pkgdir}/usr/share/doc/$pkgname/include/
-
   # install licence (even though there is no such word as licenses)
-  install -Dm 644 ${_build_dir}/docs/copyright.html ${pkgdir}/usr/share/licenses/$pkgname/copyright.html
+  install -Dm 644 ${_build_dir}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
 
   mkdir -p ${pkgdir}/etc/profile.d
   echo "export PETSC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/petsc.sh
-  #echo "export PETSC_ARCH=${_petsc_arch}" >> ${pkgdir}/etc/profile.d/petsc.sh
   chmod +x ${pkgdir}/etc/profile.d/petsc.sh
 
   # show where the shared libraries are
@@ -118,6 +102,5 @@ package() {
 
   # install pkgconfig settings
   #mkdir -p "${pkgdir}"/usr/share/pkgconfig
-  #ln -s "${pkgdir}${_install_dir}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
   install -Dm 644 "${_build_dir}/${_petsc_arch}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
 }
