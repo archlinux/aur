@@ -1,6 +1,6 @@
 pkgbase = surge-synthesizer
 	pkgdesc = Surge Synthesizer plugin
-	pkgver = 1.6.3
+	pkgver = 1.6.4.1
 	pkgrel = 1
 	url = https://surge-synthesizer.github.io
 	arch = x86_64
