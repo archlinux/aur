@@ -1,22 +1,24 @@
 # Maintainer Mircea Mihalea <mircea at mihalea dot ro>
 
 pkgname=bitwarden-pyro-git
-pkgver=v1.0.0.r0.g22284b8
-pkgrel=2
+pkgver=v1.1.0.r0.g5374a8f
+pkgrel=1
 pkgdesc="Bitwarden python interface built with Rofi"
 url="https://github.com/mihalea/bitwarden-pyro"
 depends=('python' 'python-yaml' 'keyutils' 'rofi' 'libnotify' 'bitwarden-cli')
 makedepends=('python-setuptools')
 optdepends=('xdotool: Provide auto typing for X11'
-						'ydotool-git: Provide auto typing for Wayland'
-						'xclip: Provide clipboard interaction with X11'
-						'xorg-xset: Alternative for clipoard interaction with X11'
-						'wl-clipboard: Provide clipboard interaction with Wayland')
+            'ydotool-git: Provide auto typing for Wayland'
+            'xclip: Provide clipboard interaction with X11'
+            'xorg-xset: Alternative for clipoard interaction with X11'
+            'wl-clipboard: Provide clipboard interaction with Wayland'
+            'slop: Provide window selection for auto typing'
+            'wmctrl: Provide window focusing for auto typing')
 license=('MIT')
 arch=('any')
 provides=('bwpyro')
 conflicts=('bwpyro')
-source=("git+https://github.com/mihalea/${pkgname%-git}.git#tag=v1.0.0")
+source=("git+https://github.com/mihalea/${pkgname%-git}.git#tag=v1.1.0")
 md5sums=('SKIP')
 
 pkgver() {
