@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.3.14.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.3.12-871
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.3.14-874
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
