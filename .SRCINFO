@@ -1,6 +1,6 @@
 pkgbase = emacs-org-mode
 	pkgdesc = Emacs Org Mode
-	pkgver = 9.2.6
+	pkgver = 9.3
 	pkgrel = 1
 	url = http://orgmode.org/
 	install = emacs-org-mode.install
@@ -9,8 +9,8 @@ pkgbase = emacs-org-mode
 	depends = emacs
 	optdepends = java-runtime: For using ditaa.jar in the contrib directory
 	optdepends = zsh: for using dir2org.zsh in the contrib directory
-	source = http://orgmode.org/org-9.2.6.tar.gz
-	sha256sums = e2f026d0ad611aeb38a9a42681b46fd4344e2593f94e9b9ab7c65c5625811a81
+	source = http://orgmode.org/org-9.3.tar.gz
+	sha256sums = 9d5f1e1540126793506866b23d24e4de80a96f9bdf312c89c4ede4b1c898d0c4
 
 pkgname = emacs-org-mode
 
