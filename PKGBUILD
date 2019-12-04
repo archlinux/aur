@@ -1,5 +1,5 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
-pkgname=nodejs-contentful-cli
+pkgname=contentful-cli
 pkgver=1.2.1
 pkgrel=1
 pkgdesc="The official Contentful command line interface"

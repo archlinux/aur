@@ -1,4 +1,4 @@
-pkgbase = nodejs-contentful-cli
+pkgbase = contentful-cli
 	pkgdesc = The official Contentful command line interface
 	pkgver = 1.2.1
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = nodejs-contentful-cli
 	source = https://registry.npmjs.org/contentful-cli/-/contentful-cli-1.2.1.tgz
 	sha256sums = 92cdbff4d67265f92490224b45450fea475a04cdda796d072e0f05079c072f2e
 
-pkgname = nodejs-contentful-cli
+pkgname = contentful-cli
 
