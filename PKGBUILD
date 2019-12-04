@@ -13,7 +13,7 @@ pkgver=1.0.0
 pkgrel=4
 pkgdesc="The package contains code for basic functions in Fuzzy Logic for Octave."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=2.9.7')
@@ -24,11 +24,11 @@ options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 _archive_patched=$_pack-$pkgver-patched.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive"
+source=("https://downloads.sourceforge.net/octave/$_archive"
 		"fl_compose.patch")
 noextract=("$_archive")
-md5sums=('930dd490d1d306e361a8529cb4c8ce54'
-         'ccc0b8e4e4d694ab4f6128e92eb67c33')
+sha256sums=('5ec025ecdc05aede186fad48c28fe8053888e6571ba557a22173649f7c0c0a1d'
+            'c957966877e08b5c7e21a57c57b713f8c30ddc65227b5ac1f3347ce835b11a97')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
