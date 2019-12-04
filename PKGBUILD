@@ -1,12 +1,12 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=pacman-systemd-inhibit
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Inhibit system shutdown, reboot etc. when pacman is upgrading the system'
 arch=('x86_64')
 url="https://github.com/amishmm/pacman-systemd-inhibit"
 license=('GPL')
-depends=('pacman')
+depends=('pacman' 'systemd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/amishmm/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('74b8017d8e76efcd38b142d2efb0c25223f7950b932d3666e55a7574dad689e5')
 
