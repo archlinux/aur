@@ -13,7 +13,7 @@ pkgver=0.10.1
 pkgrel=1
 pkgdesc="Genetic optimization code"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.4.0')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('da883ac3e2d6a967baa85dd0331f662b')
+sha256sums=('6d6ca5fece43958e4ad5a5c88dccebf5976d5b29f21b7bab1608bcd8af0e7202')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
