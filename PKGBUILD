@@ -1,19 +1,17 @@
 # Maintainer: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=14.0.3238.1
-_prodver=${pkgver}-19
+pkgver=15.0.2000.5
+_prodver=${pkgver}-5
 pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
 license=('unknown')
 depends=(python2-configparser numactl sssd 'openssl-1.0>=1.0.2.l')
-source=("https://packages.microsoft.com/rhel/7/mssql-server-2017/${pkgname}-${_prodver}.x86_64.rpm"
-        "openssl_version_workaround.service")
+source=("https://packages.microsoft.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('cedc65fb122520eb7e8e7bc90057a5a6b813d41ded416fecf0534e9cd0f80d6b'
-            'ef29e36c5303feef18f671b9ef4a62b00c4a90dfe0c8496e390f3d623772f1c3')
+sha256sums=('09de140c0ca7a9b8f97c0db580e2ac2d406c7ac9ad85017bac3e72721f361fef')
 
 install=$pkgname.install
 
