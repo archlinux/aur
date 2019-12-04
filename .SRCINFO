@@ -1,0 +1,14 @@
+pkgbase = elgato-gchd
+	pkgdesc = This project provides a userspace driver to natively support the Elgato Game Capture HD under Linux and Mac OS X. This is an unofficial driver and in no way supported by Elgato.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/tolga9009/elgato-gchd
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	source = elgato-gchd::git+https://github.com/tolga9009/elgato-gchd.git
+	md5sums = SKIP
+
+pkgname = elgato-gchd
+
