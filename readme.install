@@ -1,7 +1,7 @@
 post_install() {
   getent group kodi > /dev/null || groupadd -g 420 kodi
   if ! getent passwd kodi > /dev/null; then
-    useradd -c 'kodi user' -u 420 -g kodi -G audio,input,network,optical,uucp,video \
+    useradd -c 'kodi user' -u 420 -g kodi -G audio,network,optical,uucp,video \
       -d /var/lib/kodi -s /usr/bin/nologin kodi
     passwd -l kodi > /dev/null
     [[ ! -d /var/lib/kodi/.kodi ]] &&
@@ -11,13 +11,15 @@ post_install() {
 }
 
 post_upgrade() {
-  usermod -g kodi -aG audio,input,network,optical,uucp,video kodi
+  usermod -g kodi -aG audio,network,optical,uucp,video kodi
 }
 
 post_remove() {
-  echo "==> Optionally delete the kodi user if you are certain no processes are running under it."
-  echo "==> userdel kodi"
-  echo "==> groupdel kodi"
+  echo "==> Optionally delete the kodi user and its home directory"
+  echo "==>   if you are certain no processes are running under it."
+  echo "==>   userdel kodi"
+  echo "==>   groupdel kodi"
+  echo "==>   rm -rf /var/lib/kodi"
 }
 
 # vim:set ts=2 sw=2 et:
