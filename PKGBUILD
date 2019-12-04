@@ -3,15 +3,15 @@
 _pkgname=cld3
 _reponame=$_pkgname
 pkgname=python-${_pkgname}-git
-pkgver=0.2.2.20181228
-pkgrel=3
+pkgver=0.2.3.20190830
+pkgrel=1
 pkgdesc='Python bindings for cld3 (Compact Language Detector v3)'
 arch=('i686' 'x86_64')
-url='https://github.com/Elizafox/cld3'
+url='https://github.com/iamthebot/cld3'
 license=('Apache')
 depends=('python' 'protobuf')
 makedepends=('git' 'python-setuptools' 'cython')
-source=('git+https://github.com/Elizafox/cld3.git')
+source=('git+https://github.com/iamthebot/cld3.git')
 md5sums=('SKIP')
 
 pkgver() {
