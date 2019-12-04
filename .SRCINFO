@@ -1,0 +1,14 @@
+pkgbase = lua-lpeglabel-git
+	pkgdesc = An extension of LPeg that supports labeled failures
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/sqmedeiros/lpeglabel
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	source = lua-lpeglabel-git::git+https://github.com/sqmedeiros/lpeglabel
+	sha1sums = SKIP
+
+pkgname = lua-lpeglabel-git
+
