@@ -1,7 +1,7 @@
 pkgbase = nftables-git
 	pkgdesc = Netfilter tables userspace tools
-	pkgver = 0.9.2
-	pkgrel = 3
+	pkgver = 0.9.3
+	pkgrel = 1
 	url = https://netfilter.org/projects/nftables/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = nftables-git
 	depends = readline
 	depends = ncurses
 	depends = jansson
+	optdepends = python: Python bindings
 	provides = nftables
 	conflicts = nftables
 	backup = etc/nftables.conf
