@@ -4,13 +4,15 @@
 
 pkgname=rr
 pkgver=5.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
 depends=('gdb' 'capnproto')
 makedepends=('git' 'cmake' 'gdb' 'ninja')
+options=(!strip)
+
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
 	https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
@@ -46,6 +48,9 @@ build() {
 package() {
 	cd $pkgname-$pkgver/build
 	DESTDIR="${pkgdir}" cmake --build . -- -v install
+	if check_option 'debug' n; then
+		find "${pkgdir}/usr/bin" -type f -executable -exec strip $STRIP_BINARIES {} + || :
+	fi
 	cd ..
 	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
 }
