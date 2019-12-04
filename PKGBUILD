@@ -20,8 +20,8 @@ license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 makedepends=(binutils libmpc doxygen python subversion flex)
 options=(!emptydirs)
-source=(ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
+source=(https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz
+        https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2
         bz84080.patch)
 sha256sums=('b81946e7f01f90528a1f7352ab08cc602b9ccc05d4e44da4bd501c5a189ee661'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
