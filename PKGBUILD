@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-ubuntu-bin
 _pkgname=thunderbird
-pkgver=68.2.1
+pkgver=68.2.2
 pkgrel=1
 _ubuntuver="$pkgver+build1-0ubuntu0.19.10.1_amd64"
 pkgdesc="Standalone mail and news reader from mozilla.org Ubuntu patches (binary)"
@@ -16,7 +16,7 @@ provides=('thunderbird' 'thunderbird-ubuntu')
 conflicts=('thunderbird' 'thunderbird-ubuntu')
 
 source=("http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu/pool/main/t/thunderbird/thunderbird_$_ubuntuver.deb")
-sha256sums=('dbea72583b831524a0eddfc4770b6ec27d2839ee4a6cb86ab09cca3bd7410474')
+sha256sums=('6dcb9fc73da5b23a45374f304adca75ab1efe538787fa324f2f1d95b11d53f34')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
