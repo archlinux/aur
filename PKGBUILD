@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_major=5.3
-_minor=14
+_major=5.4
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,8 +72,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_uksm_path}/${_uksm_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
          # the main kernel config files
         'config')
 
@@ -326,13 +329,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('08b5fd495c89214573d7ac29df38d25b9483c830b5791d11adb9c8130f02646bd44c12890e5f6755b7d0f6a73ec410490b390dfd6edfc29738ab745c355c6e88'
+sha512sums=('bde6dc6ff03ea5319029b269f58e4c099d2a0f04105944b475bcc143db6d53855501fdc6eefd6cc3f84fb674297bed8a5ed70dbbd26178d0ae4e4f3a7c976b46'
             'SKIP'
-            'b0a5fd9934cb3878ea6cb6563443fa83158f97ca1467a31b0269617d93b609ca84fb62cf3c96eadf6659f59a39cf91f71d9f174f7e222eac89aa0d1ae7de42f7'
+            'c9aa593db5c142cbc60c60fb15dc780c11af03a6607301250c27d5042b14481f1ea7edfc87bde70019d2bcd1f1d53c05c3291f94b9e66795c81fade740419818'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
-            '3d1a3cb812328b615823cc95f16525c61f687b0abec1a1bce885a3b62153a4ee8f7546222d6a4592cd96f599837108f63de9f0c971c3bfd1ae83bfabce1015dd'
-            'cedb5db72c759e37d667dab7158dc285b1ae7269f27b210edf88cd07717fa73401c3f4231a9cdb8ad8331546f6ba9e857b3ab689140ebbb9a08744875ad455ac')
+            '73cc26b83de333deaea9c0109f39823173aef0f78609368539ce535bae5ae11c38dedeeb6d7df81d8ffecb798227b557d939b2e7794da0e67c2b7d3e4463bd17'
+            'dc031d45654121219871553b4738e8f6dba033a1ff925a1f5dd53cd6fbeb5b798e8fd3e2fe27d31f0c83de946c2758ae6bd0ec824b9de639d817e15edc2045ab'
+            '59c5df61bce28ffab84001933bc3faf1c899acad76a3ace0511e45c122bbdd84e7eec5b0e72a154d767ca468c8ab642ed7fab7c9c041bc3f0f74160293b749b1'
+            '6717ded760d5a651244342b4f434abd584b89b1d35f75dd239eded29e49e64b83edfd1946823e4832bc145724ac87238075a338d98ad251290278c89b2d7fa3f'
+            '9580183e4ef1155a64ed669e7787d5296d8ad164490a58840b11d269aaa099bb52d8cabaedc67e668200953b5f75ebaff09aee0fb744bf9695514e298da1220b'
+            'ffc278f3ec3ffee58491c9a9de86e1889ec6190c5179fa1b439fc317664c89d64fc138e05df57fb1d94c60c9d1416439457d6c3b0b5b7ec7ca37f652b4f22ac2')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
