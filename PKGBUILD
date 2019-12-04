@@ -3,7 +3,7 @@
 
 pkgname="pastel-git"
 _pkgname="pastel"
-pkgver=r310.282f462
+pkgver=0.6.1.310.g282f462
 pkgrel=1
 pkgdesc="A command-line tool to generate, analyze, convert and manipulate colors"
 arch=("i686" "x86_64" "arm" "aarch64")
@@ -18,10 +18,7 @@ sha384sums=("SKIP")
 
 pkgver() {
     cd "$_pkgname"
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {

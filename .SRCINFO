@@ -1,6 +1,6 @@
 pkgbase = pastel-git
 	pkgdesc = A command-line tool to generate, analyze, convert and manipulate colors
-	pkgver = r310.282f462
+	pkgver = 0.6.1.310.g282f462
 	pkgrel = 1
 	url = https://github.com/sharkdp/pastel
 	arch = i686
