@@ -1,18 +1,17 @@
-# Maintainer: Husam Bilal <husam212@gmail.com>
+# Maintainer: Husam Bilal <me@husam.dev>
 # Contributor: henning mueller <henning@orgizm.net>
 
 pkgname=ruby-libvirt
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Ruby bindings for libvirt.'
 arch=(i686 x86_64)
 license=(GPL)
 url=http://libvirt.org/ruby/
 depends=(ruby libvirt)
-makedepends=(rubygems)
-source=(
-  http://libvirt.org/ruby/download/$pkgname-$pkgver.tgz
-)
+makedepends=(rubygems ruby-rake)
+source=(http://libvirt.org/ruby/download/$pkgname-$pkgver.tgz)
+sha256sums=('4e1495d64af5ce9edba80f973a2e2eb125946c0fa266c8f9d75f1e7a98fc5d60')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
@@ -30,4 +29,3 @@ package() {
     -i "$pkgdir$_gemdir" \
     pkg/$pkgname-$pkgver.gem
 }
-sha256sums=('6d4bb093dc8bab0ec7cb827a95f0a61157238e694c04393597e9380b03229a0a')
