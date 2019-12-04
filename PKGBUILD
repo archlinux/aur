@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=79.0.3921.0
+pkgver=80.0.3955.4
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('b8b50d2c1708d5c29ed0d4c92ee4bba3807932811479edbf91625e367e4815d8f0fef9c6471c4823a37acc63138e648ac262c3282f1456241ca10007bb48ec2c')
+sha512sums=('f676ab4b9ec1373f6427b5f868b4604a7a8788a2cf7b06d2c6c4dcbd87c41332085a343062f291bdb79dce5df86a4435ec99021907fd6596078fa3d0d1d4d39f')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -42,14 +42,7 @@ build() {
   export CC="clang"
   export CXX="clang++"
 
-  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_hevc_demuxing=true enable_ac3_eac3_audio_demuxing=true use_gnome_keyring=false use_sysroot=false use_gold=false use_allocator=\"none\" linux_use_bundled_binutils=false fatal_linker_warnings=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false is_clang=true clang_use_chrome_plugins=true is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=false use_lld=false use_jumbo_build=false"
-
-  #(
-    #cd third_party/ffmpeg
-    #chromium/scripts/build_ffmpeg.py linux x64 --branding ChromeOS
-    #chromium/scripts/copy_config.sh
-    #chromium/scripts/generate_gn.py
-  #)
+  local args="ffmpeg_branding=\"ChromeOS\" proprietary_codecs=true enable_platform_hevc=true enable_platform_ac3_eac3_audio=true enable_platform_mpeg_h_audio=true enable_platform_dolby_vision=true enable_mse_mpeg2ts_stream_parser=true use_gnome_keyring=false use_sysroot=false use_gold=false linux_use_bundled_binutils=false treat_warnings_as_errors=false enable_nacl=false enable_nacl_nonsfi=false clang_use_chrome_plugins=true is_component_build=true is_debug=false symbol_level=0 use_custom_libcxx=true"
 
   gn gen out/Release -v --args="$args" --script-executable=/usr/bin/python2
 
