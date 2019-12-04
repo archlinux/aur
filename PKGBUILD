@@ -3,7 +3,7 @@
 
 pkgname=spacenavd
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The spacenav project provides a free, compatible alternative, to the proprietary 3Dconnexion device driver and SDK, for their 3D input devices (called 'space navigator', 'space pilot', 'space traveller', etc)."
 arch=('x86_64')
 url="http://spacenav.sourceforge.net/"
@@ -28,4 +28,5 @@ package() {
   make DESTDIR="${pkgdir}" install || return 1
   install -D -m755 ${srcdir}/spacenavd ${pkgdir}/etc/rc.d/spacenavd || return 1
   install -D -m644 ${srcdir}/spacenavd.service ${pkgdir}/etc/systemd/system/spacenavd.service || return 1
+  install -D -m644 ${srcdir}/$pkgname-$pkgver/doc/example-spnavrc ${pkgdir}/etc/spnavrc || return 1
 }
