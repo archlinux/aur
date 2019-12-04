@@ -1,13 +1,12 @@
 pkgbase = konfyt-git
 	pkgdesc = A digital keyboard workstation - search for SFZs/soundfonts, create layered patches on the fly, and more
-	pkgver = r12.e96abbf
+	pkgver = r181.81b5295
 	pkgrel = 1
 	url = https://github.com/noedigcode/konfyt
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = qt4
 	depends = carla
 	provides = konfyt
 	conflicts = konfyt
