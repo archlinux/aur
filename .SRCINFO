@@ -1,13 +1,13 @@
 pkgbase = pantalaimon
         pkgdesc = Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon. 
         pkgver = 0.3.1
-        pkgrel = 2
+        pkgrel = 3
         url = https://github.com/matrix-org/pantalaimon
         arch = any
         license = Apache
         depends = python
         depends = libolm
-        depends = matrix-nio
+        depends = python-nio
         depends = python-prompt_toolkit
         depends = python-janus
         depends = python-peewee
