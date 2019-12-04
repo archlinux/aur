@@ -1,6 +1,7 @@
 pkgbase = git-mr
+	pkgdesc = Checkout GitLab merge requests / GitHub pull requests locally
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/glensc/git-mr/
 	arch = any
 	license = MIT

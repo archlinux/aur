@@ -1,8 +1,8 @@
 pkgname=git-mr
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=(any)
-pkgdesc=""
+pkgdesc="Checkout GitLab merge requests / GitHub pull requests locally"
 license=("MIT")
 depends=('git')
 # makedepends=()
