@@ -1,0 +1,25 @@
+pkgbase = liboqs-git
+	pkgdesc = C library for quantum-safe cryptography.
+	pkgver = 0.2.0.r18.gb4b26228
+	pkgrel = 1
+	url = https://github.com/open-quantum-safe/liboqs
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gcc
+	makedepends = openssl
+	makedepends = python-pytest
+	makedepends = unzip
+	makedepends = libxslt
+	makedepends = doxygen
+	makedepends = graphviz
+	provides = liboqs
+	conflicts = liboqs
+	source = git+https://github.com/open-quantum-safe/liboqs.git
+	md5sums = SKIP
+
+pkgname = liboqs-git
+
