@@ -5,21 +5,21 @@
 
 pkgname=openmpi3
 _pkgname=openmpi
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='High performance message passing library (MPI), version 3'
 url='https://www.open-mpi.org'
 arch=('x86_64')
 license=('custom:OpenMPI')
-depends=('libltdl' 'hwloc' 'openssh' 'zlib' 'libnl')
+depends=('libltdl' 'hwloc<2' 'openssh' 'zlib' 'libnl')
 makedepends=('inetutils' 'valgrind' 'gcc-fortran')
 optdepends=('gcc-fortran: fortran support')
 conflicts=('openmpi')
 provides=("openmpi=${pkgver}")
 options=('staticlibs')
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('17a69e0054db530c7dc119f75bd07d079efa147cf94bf27e590905864fe379d6')
-sha512sums=('5b4aafffc79fd85cb94a11a6e2fac563b142ac532191009eb35826c432ed3c391a6616e2ca92eacbf36137468eadb7c0f7ddc787034bc95c4214232ed5128338')
+sha256sums=('fbf0075b4579685eec8d56d34d4d9c963e6667825548554f5bf308610af72133')
+sha512sums=('040591c8715717568b1af60f4710e4bf31fab84ac1919dc29bf6f42c2a5aa65ad0b13850033a8ef94363f391511061de729c837867822ea02366e51b90bcddd4')
 
 build() {
   cd ${_pkgname}-${pkgver}
