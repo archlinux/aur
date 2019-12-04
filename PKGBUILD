@@ -5,9 +5,9 @@ pkgdesc="A package for solving ordinary differential equations and differential 
 url="http://www.jmodelica.org/assimulo"
 arch=('i686' 'x86_64')
 license=('LGPL')
-makedepends=('python-setuptools' 'cython' 'gcc-fortran' 'sundials' 'lapack')
+makedepends=('python-setuptools' 'cython' 'gcc-fortran' 'sundials' 'lapack' 'git')
 depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
-source=("Assimulo-${pkgver}::svn+https://svn.jmodelica.org/assimulo/tags/Assimulo-${pkgver}" sundials5.patch)
+source=("Assimulo-${pkgver}::git+https://github.com/modelon/Assimulo.git#branch=Assimulo-${pkgver}.x" sundials5.patch)
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {

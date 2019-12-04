@@ -11,11 +11,12 @@ pkgbase = python-assimulo
 	makedepends = gcc-fortran
 	makedepends = sundials
 	makedepends = lapack
+	makedepends = git
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = lapack
 	depends = sundials
-	source = Assimulo-3.1::svn+https://svn.jmodelica.org/assimulo/tags/Assimulo-3.1
+	source = Assimulo-3.1::git+https://github.com/modelon/Assimulo.git#branch=Assimulo-3.1.x
 	source = sundials5.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
