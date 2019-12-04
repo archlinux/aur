@@ -1,0 +1,14 @@
+pkgbase = brightnessctl-logind
+	pkgdesc = Lightweight brightness control tool
+	pkgver = 0.4
+	pkgrel = 3
+	url = https://github.com/Hummer12007/brightnessctl
+	arch = x86_64
+	license = MIT
+	provides = brightnessctl
+	conflicts = brightnessctl
+	source = brightnessctl-0.4.tar.gz::https://github.com/Hummer12007/brightnessctl/archive/0.4.tar.gz
+	sha512sums = f0e1abe4dd7fc66a7990c0c42ecd9af079ba397fb0a49d339c5927fe639edbce4c30ecfcd16c3e0bf58de2eb4ca611dd1e1ce40eec9f95fe3960189c5e5396d8
+
+pkgname = brightnessctl-logind
+
