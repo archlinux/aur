@@ -12,7 +12,7 @@ pkgver=1.3.1
 pkgrel=1
 pkgdesc="The BSLTL package is a free collection of OCTAVE/MATLAB routines for working with the biospeckle laser technique."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.8.0' 'octave-control>=2.2.3' 'octave-signal>=1.2.2')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('b2dc9a2750ab6e0bf0a5cb150c93c637')
+sha256sums=('4bb7ae78decc0d7f71bb553ba1270a3b69efaabed00a70c66ac5157fc8f01945')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

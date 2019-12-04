@@ -2,7 +2,7 @@ pkgbase = octave-bsltl
 	pkgdesc = The BSLTL package is a free collection of OCTAVE/MATLAB routines for working with the biospeckle laser technique.
 	pkgver = 1.3.1
 	pkgrel = 1
-	url = http://octave.sourceforge.net/bsltl/
+	url = https://octave.sourceforge.net/bsltl/
 	install = octave-bsltl.install
 	arch = any
 	groups = octave-forge
@@ -11,8 +11,8 @@ pkgbase = octave-bsltl
 	depends = octave-control>=2.2.3
 	depends = octave-signal>=1.2.2
 	noextract = bsltl-1.3.1.tar.gz
-	source = http://downloads.sourceforge.net/octave/bsltl-1.3.1.tar.gz
-	md5sums = b2dc9a2750ab6e0bf0a5cb150c93c637
+	source = https://downloads.sourceforge.net/octave/bsltl-1.3.1.tar.gz
+	sha256sums = 4bb7ae78decc0d7f71bb553ba1270a3b69efaabed00a70c66ac5157fc8f01945
 
 pkgname = octave-bsltl
 
