@@ -3,7 +3,7 @@
 
 pkgname=jaz
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Find secrets hidden in commits"
 url="https://github.com/jonaylor89/JAZ"
