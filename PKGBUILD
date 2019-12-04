@@ -21,11 +21,11 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-director-python-plugin"
          "${pkgbase}-filedaemon-python-plugin"
          "${pkgbase}-storage-python-plugin"
-         "${pkgbase}-web-ui")
+         "${pkgbase}-webui")
 
 pkgmajor=18
 pkgver=18.2.6
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -43,7 +43,7 @@ prepare() {
 
 build() {
   cd $pkgbase
-  mkdir build
+  mkdir -p build
   cd build
 
   cmake .. \
@@ -458,7 +458,7 @@ package_bareos-storage-python-plugin() {
   done
 }
 
-package_bareos-web-ui() {
+package_bareos-webui() {
   pkgdesc="${pkgdesc} - Webui (Bareos web administration)"
   depends=('php' 'php-fpm' 'jansson')
   optdepend=('nginx' 'apache')
