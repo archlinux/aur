@@ -1,7 +1,7 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=docker-rootless
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Run the Docker daemon as a non-root user (Rootless mode)"
 arch=('x86_64')
 url="https://docs.docker.com/engine/security/rootless/"
