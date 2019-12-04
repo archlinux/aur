@@ -1,14 +1,14 @@
 pkgbase = r-e1071
 	pkgdesc = Functions for latent class analysis, short time Fourier transform, fuzzy clustering, support vector machines, shortest path computation, bagged clustering, naive Bayes classifier, ...
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/web/packages/e1071
 	arch = x86_64
 	license = GPL
 	depends = r
 	replaces = r-cran-e1071
-	source = https://cran.r-project.org/src/contrib/e1071_1.7-2.tar.gz
-	sha512sums = df5637ec31adee28466282841aab9fbaaa8c349fc641d17905a16fe8027f16fe6816e2d21aeae50dfb76a1236c6ca1eaf60dd1a15f52ddc9d50a7ab06698e062
+	source = https://cran.r-project.org/src/contrib/e1071_1.7-3.tar.gz
+	sha512sums = 4b1f9641a6af320a067da6f1db40dd7a514caa29d73ffc085992dbfa9d3192ec2c1273795ed7b6aa428ec6cdb8355a5d712e88f07855ff9851e17eb4e2fc96a3
 
 pkgname = r-e1071
 
