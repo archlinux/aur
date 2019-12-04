@@ -1,7 +1,7 @@
 pkgbase = multitime
 	pkgdesc = Time command execution over multiple executions
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tratt.net/laurie/src/multitime
 	arch = x86_64
 	license = MIT
