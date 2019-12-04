@@ -80,12 +80,12 @@ _opt_defaultmode='666' # default: 666
 set -u
 pkgname='npreal2'
 #pkgver='1.18.49'; _commit='6d9ef0dbafd487595c4f5e4e5e64c1faba98d060'
-pkgver='1.19'; _build='17110917'
-pkgrel='2'
+pkgver='5.0'; # _build='17110917'
+pkgrel='1'
 pkgdesc='real tty driver for Moxa NPort serial console terminal server'
 _pkgdescshort="Moxa NPort ${pkgname} TTY driver"
 arch=('i686' 'x86_64')
-url='https://www.moxa.com/support/sarch_result.aspx?type=soft&prod_id=237&type_id=9' # Moxa NPort 5110
+url='https://www.moxa.com/en/products/industrial-edge-connectivity/serial-device-servers/terminal-servers/nport-6100-6200-series'
 #url="https://github.com/rchovan/${pkgname}"
 license=('GPL' 'custom')
 depends=('glibc' 'gawk' 'perl' 'psmisc' 'openssl')
@@ -93,7 +93,8 @@ depends=('glibc' 'gawk' 'perl' 'psmisc' 'openssl')
 backup=("etc/npreal2/npreal2d.cf")
 install="${pkgname}-install.sh"
 _srcdir='moxa'
-source=("https://www.moxa.com/drivers/IDC_SW/DeviceServer/Driver/NPort%20Real%20TTY%20Driver%20for%20Linux/Mainline/ver${pkgver}/npreal2_mainline_v${pkgver}_build_${_build}.tgz")
+#source=("https://www.moxa.com/drivers/IDC_SW/DeviceServer/Driver/NPort%20Real%20TTY%20Driver%20for%20Linux/Mainline/ver${pkgver}/npreal2_mainline_v${pkgver}_build_${_build}.tgz")
+source=("https://www.moxa.com/Moxa/media/PDIM/S100000217/moxa-real-tty-drivers-for-linux-5.x.x-driver-v${pkgver}.tgz")
 #_srcdir="${pkgname}"
 #source=("git+${url}.git#commit=${_commit}")
 #_srcdir="${pkgname}-${_commit}"
@@ -102,13 +103,12 @@ source+=('npreal2.sh')
 _patches=(
   #'0000-SSL-destroy-cf-configuration.patch'
   '0001-mxmknod-folder-fix-and-chgrp-uucp.patch'
-  '0002-kernel-5.0.0-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
+  # '0002-kernel-5.0.0-access_ok.patch' # https://lkml.org/lkml/2019/1/4/418
 )
 source+=("${_patches[@]}")
-sha256sums=('f99f38ef5618469a1d6f4824e41856616ee65ab8359069daa70d8d481f364462'
+sha256sums=('33da5d4b1ff9853e9d58c7905f1fdf09a3e284658f42437210155c4c913f4dad'
             '7241767fa8dead2dbe4cf4db32d39f5cf9d95b08f60daf79822ae306727af372'
-            '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605'
-            '211f3b0ba50452bfe6d39076eb1a60a7557dd038288fb8dcd4374886f4c2844e')
+            '7039ca0740be34a641424e3f57b896902f61fdfd2bfcc26e8e954035849e9605')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -144,8 +144,8 @@ prepare() {
       -e 's: /lib/: /usr/lib/:g' \
       -e '# Cut some of the warnings we dont want to fix' \
       -e '#s:^CC+=.*$:& -Wno-misleading-indentation:g' \
-      -e '# Switch SUBDIRS= to M= for Kernel 5.4' \
-      -e 's:SUBDIRS=:M=$(PWD) &:g' \
+      -e '# Add back SUBDIRS= for dkms detection' \
+      -e '/ modules/ s: M=: SUBDIRS=$(PWD)&:g' \
     -i 'Makefile'
   ! test -s 'Makefile.Arch' || echo "${}"
 
@@ -183,6 +183,8 @@ prepare() {
       -e 's:^LINUX_DIS=:#&:g' \
       -e '# Enable SSL' \
       -e 's:^read check:check="Y" # &:g' \
+      -e '# Disable interactive response to kernel version mismatch' \
+      -e 's:^read any:#&:g' \
     -i 'mxinst'
   ! test -s 'mxinst.Arch' || echo "${}"
 
@@ -195,6 +197,8 @@ prepare() {
       -e '# Move config file in mx utils. Another sed will provide this #define' \
       -e '/npreal2d.cf/ s:DRIVERPATH:CONFIGPATH:g' \
     -i mx*.c
+  # force the use of systemd
+  sed -e 's:^int isinitproc:static int isinitproc() { return 0; }\nstatic &_disabled:g' -i 'mxaddsvr.c' 'mxdelsvr.c' 'mxloadsvr.c' 'mxsetsec.c'
   sed -e '# Move config file in mx daemons' \
       -e '/npreal2d.cf/ s:workpath:"/etc/npreal2":g' \
       -e '# Move log file' \
@@ -214,7 +218,7 @@ prepare() {
 
   #cp -p 'npreal2.c'{,.orig}; false
   #diff -pNau5 'npreal2.c'{.orig,} > '0002-kernel-5.0.0-access_ok.patch'
-  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
+  #patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-access_ok.patch"
 
   # Apply PKGBUILD options
   sed -e 's:^\(ttymajor\)=.*:'"\1=${_opt_ttymajor}:g" \

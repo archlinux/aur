@@ -1,6 +1,6 @@
 _tp_config="/etc/npreal2/npreal2d.cf"
 _tp_configps="${_tp_config}.pacsave"
-_tp_log='/var/log/npreal2d.log'
+#_tp_log='/var/log/npreal2d.log'
 
 post_upgrade() {
   set -u
