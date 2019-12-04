@@ -1,13 +1,13 @@
 pkgbase = hyphen-eu-es
 	pkgdesc = Basque hyphenation rules
-	pkgver = 1.2
-	pkgrel = 2
-	url = http://extensions.libreoffice.org/extensions/xuxen-5-zuzentzaile-ortografikoa
+	pkgver = 5.1
+	pkgrel = 1
+	url = http://xuxen.eus
 	arch = any
 	license = GPL
 	optdepends = hyphen: offers hyphenation library functions
-	source = http://extensions.libreoffice.org/extensions/xuxen-5-zuzentzaile-ortografikoa/1.2/@@download/file/xuxen_openoffice_libreoffice.oxt
-	sha256sums = e3ba62d4107c780a91fd4afb5e021e4c89ebed25d387d567be353fdf9407951f
+	source = http://xuxen.eus/static/installer/xuxen_5.1_libreoffice.oxt
+	sha256sums = b7cee2616885c0ccebfa7e2342ab23e4311e0a998b8d8fc3f23c771b3903c0da
 
 pkgname = hyphen-eu-es
 

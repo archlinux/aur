@@ -1,15 +1,15 @@
 # Maintainer: Christian Pinedo <chr.pinedo@gmail.com>
 
 pkgname=hyphen-eu-es
-pkgver=1.2
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="Basque hyphenation rules"
 arch=('any')
-url="http://extensions.libreoffice.org/extensions/xuxen-5-zuzentzaile-ortografikoa"
+url="http://xuxen.eus"
 license=('GPL')
 optdepends=("hyphen: offers hyphenation library functions")
-source=("$url/$pkgver/@@download/file/xuxen_openoffice_libreoffice.oxt")
-sha256sums=('e3ba62d4107c780a91fd4afb5e021e4c89ebed25d387d567be353fdf9407951f')
+source=("$url/static/installer/xuxen_${pkgver}_libreoffice.oxt")
+sha256sums=('b7cee2616885c0ccebfa7e2342ab23e4311e0a998b8d8fc3f23c771b3903c0da')
 
 package() {
     install -D -m644 ${srcdir}/eu_hyph.dic ${pkgdir}/usr/share/hyphen/hyph_eu_ES.dic
