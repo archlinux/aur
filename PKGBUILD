@@ -28,7 +28,8 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
-        'i2prouter.bash' 'i2prouter.sh')
+        'i2prouter.bash' 'i2prouter.sh'
+        upstream-fixes.patch::'https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch')
 
 sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
             'SKIP'
@@ -37,11 +38,14 @@ sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
-            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8')
+            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8'
+            'ad7cf01d7fcc7107dc3360ad4b3f488cdcf2bab64c7d271d2ced89c2f942f613')
 
-# prepare() {
-#     cd "$pkgname-$pkgver"
-# }
+prepare() {
+    cd "$pkgname-$pkgver"
+    sed 's|BUILD = 1|BUILD = 0|' -i ../upstream-fixes.patch
+    patch -Np1 -i ../upstream-fixes.patch
+}
 
 build() {
     cd "$pkgname-$pkgver"
