@@ -1,0 +1,15 @@
+pkgbase = lib32-sndio
+	pkgdesc = A small audio and MIDI framework part of the OpenBSD project (32 bit)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = http://www.sndio.org
+	arch = x86_64
+	license = ISC
+	depends = alsa-lib
+	depends = libbsd
+	backup = etc/default/sndiod
+	source = http://www.sndio.org/sndio-1.6.0.tar.gz
+	sha256sums = 99e0064ac11aceab24c73ed4630a31de401ff2f37689565b7b375682476f5bc1
+
+pkgname = lib32-sndio
+
