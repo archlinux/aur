@@ -1,6 +1,6 @@
 pkgbase = virtboard
 	pkgdesc = Basic keyboard, blazing the path of modern Wayland keyboards
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/virtboard
 	arch = i686
@@ -11,9 +11,11 @@ pkgbase = virtboard
 	makedepends = git
 	makedepends = pkg-config
 	makedepends = meson
-	conflicts = virtboard-git
-	source = https://source.puri.sm/Librem5/virtboard/-/archive/v0.0.5/virtboard-v0.0.5.tar.gz
-	sha256sums = e026f41c7aa589293458d1ab177b1f5c328f2ad2825b0a1b8ce197407fcb72f1
+	depends = wayland
+	depends = libxkbcommon
+	depends = cairo
+	source = https://source.puri.sm/Librem5/virtboard/-/archive/v0.0.6/virtboard-v0.0.6.tar.gz
+	sha256sums = 0844d00b0cda6080d6a2c5b8e047ddf087c5f5f267a628d154033c7844b41181
 
 pkgname = virtboard
 
