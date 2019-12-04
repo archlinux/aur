@@ -13,7 +13,7 @@ pkgver=1.1.2
 pkgrel=1
 pkgdesc="Econometrics functions including MLE and GMM based techniques."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=4.4.0' 'octave-optim')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('58260361c0c7df3830388d9ba94a4586')
+sha256sums=('e2cca501f6b16ba4f2d5b4374dc3c80bd164472a30291dfd51947990263a3deb')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
