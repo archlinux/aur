@@ -1,13 +1,13 @@
 pkgbase = curlie
 	pkgdesc = A frontend to curl that adds the ease of use of httpie
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://curlie.io/
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = curl
-	source = git+https://github.com/rs/curlie.git#tag=v1.2.0
+	source = git+https://github.com/rs/curlie.git#tag=v1.3.1
 	sha256sums = SKIP
 
 pkgname = curlie
