@@ -1,34 +1,29 @@
 # Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot+org>
-# Contributor: Valentin Huélamo (birdtray.desktop)
+# Contributor: Valentin Huélamo (birdtray.desktop, now upstreamed)
+# Contributor: Kr1ss <kr1ss.x#yandex#com> (cmake)
 
 pkgname=birdtray
-pkgver=1.6
-_commit=2ad1a944dcd084ff1ea874b94d07be2bb8a77c18
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/gyunaev/birdtray"
-license=('GPL')
+license=('GPL-3.0')
 depends=(qt5-x11extras sqlite3)
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${_commit}.tar.gz"
-        birdtray.desktop)
-sha1sums=('6996de307b48627df9b40c7dedef6a7e34e7cec7'
-          'f3398822d8cf6671f06b5e065b623083294d6f11')
+makedepends=(cmake qt5-tools)
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/RELEASE_${pkgver}.tar.gz")
+sha1sums=('a11cc398b8f1aa0e4c5d5ae50c0cd87d6d1b6a2a')
 
 build() {
   mkdir -p build && cd build
-  qmake-qt5 ../$pkgname-$_commit/src
+  cmake ../$pkgname-RELEASE_$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/lib/birdtray
-  install -d "$pkgdir"/usr/include/birdtray
-  install -d "$pkgdir"/usr/share/applications
-
-  install birdtray.desktop "$pkgdir"/usr/share/applications/birdtray.desktop
-  install build/birdtray   "$pkgdir"/usr/bin/birdtray
-  install -m644 build/*.o  "$pkgdir"/usr/lib/birdtray/
-  install -m644 build/*.h  "$pkgdir"/usr/include/birdtray/
+  cd build
+  make DESTDIR="$pkgdir" install
+  install -Dm644 ../$pkgname-RELEASE_$pkgver/README.md -t"$pkgdir/usr/share/doc/$pkgname/"
 }
