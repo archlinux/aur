@@ -1,6 +1,6 @@
 # Maintainer: nepda <aur@nepda.eu>
 pkgname="php-interbase"
-pkgver=7.3.4
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="Interbase PHP extension"
 arch=("i686" "x86_64")
@@ -9,7 +9,7 @@ license=("PHP")
 depends=("php" "libfbclient")
 source=("http://www.php.net/distributions/php-${pkgver}.tar.bz2"
 	"interbase.ini")
-md5sums=("efb58aea95a66738d871f83ec55fec6f"
+md5sums=(""
 	 "1294b282b70e9c1bf4f267b74f491baa")
 
 build() {
