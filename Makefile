@@ -1,6 +1,6 @@
 default: build
 
-build: namcap
+build: clean namcap
 	makepkg
 	makepkg --printsrcinfo > .SRCINFO
 
