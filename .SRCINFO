@@ -6,6 +6,7 @@ pkgbase = mingw-w64-suitesparse
 	arch = any
 	license = GPL
 	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-make
 	depends = mingw-w64-lapack
 	depends = mingw-w64-metis
 	options = !buildflags
