@@ -4,22 +4,22 @@
 pkgbase=linux-rc
 pkgrel=1
 _srcname=linux-5.4
-      url="https://www.kernel.org/"
 _major=5.4
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=
+_minor=1
 ### on initial release comment this out and set to =1
-#_minorc=$((_minor+1))
-_minorc=1
+_minorc=$((_minor+1))
+#_minorc=1
 ### on initial release this is just $_major
-#_fullver=$_major.$_minor
-_fullver=$_major
+_fullver=$_major.$_minor
+#_fullver=$_major
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
 license=(GPL2)
+url="https://www.kernel.org/"
 makedepends=(
        kmod inetutils bc libelf
 )
@@ -31,17 +31,25 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
+  0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
+  0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
+  0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('b268e03071c32a37528ade537ecd598d48915cd03f5c1586c3b46b8332a1d7f1'
+sha256sums=('90b17529ea9de447ef2185768387ac9ff9b96f8f66f4f90503fa577be4b6b06f'
             'SKIP'
-            'bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
+            'a7d48bb324d53e421ffbe4da40087b3c0c5112707e5f3d827c30118542c74fd9'
             'SKIP'
-            'bbf6f0f69de9b1aefc2374da6b289a132b945e87a94ec85728097c677ebbac3f'
-            'b008f5e21bdbaaf95aecebe443761ee0a9adfb4dcf5729e384dcd53323bab149')
+            'b7f23bbc09b6c571b76f851f0389386a6f3a64f3d7b1b8509c8550228b0f4537'
+            '8919d8cbab83ccc810d8c7eaf6ebb18be8ae011da90a11d98732c2537af11d11'
+            'f1481e4c6d84de265552eea9ef2e2fa13bf26774becc2f2c36619af1f56bcee4'
+            '88c7e90ac7a1b73b3707feacd23b66feaa4c2cc5bc39ef2807b2301274db3ad2'
+            '786da96d5cc273331bf8a155b0552edcc26d79f194a016c7e4f1c1266aabafc2'
+            '2d51be4ede2c19a3163899fd783a213cf9f837867915b004e0c70c548e0d96c9')
 
 _kernelname=${pkgbase#linux}
 
