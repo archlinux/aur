@@ -1,15 +1,15 @@
 # Maintainer: Christian Pinedo <chr.pinedo@gmail.com>
 
 pkgname=hunspell-eu-es
-pkgver=1.2
-pkgrel=2
+pkgver=5.1
+pkgrel=1
 pkgdesc="Basque hunspell dictionary"
 arch=('any')
-url="http://extensions.libreoffice.org/extensions/xuxen-5-zuzentzaile-ortografikoa"
+url="http://xuxen.eus"
 license=('GPL')
 optdepends=("hunspell: the spell checking libraries and apps")
-source=("$url/$pkgver/@@download/file/xuxen_openoffice_libreoffice.oxt")
-sha256sums=('e3ba62d4107c780a91fd4afb5e021e4c89ebed25d387d567be353fdf9407951f')
+source=("$url/static/hunspell/xuxen_${pkgver}_hunspell.zip")
+sha256sums=('074c815acb08a22ebbc1d5d7708c88ca5f0eca971cb719de0240ddc38ae1c607')
 
 package() {
     install -D -m644 ${srcdir}/eu_ES.dic ${pkgdir}/usr/share/hunspell/eu_ES.dic

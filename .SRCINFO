@@ -1,13 +1,13 @@
 pkgbase = hunspell-eu-es
 	pkgdesc = Basque hunspell dictionary
-	pkgver = 1.2
-	pkgrel = 2
-	url = http://extensions.libreoffice.org/extensions/xuxen-5-zuzentzaile-ortografikoa
+	pkgver = 5.1
+	pkgrel = 1
+	url = http://xuxen.eus
 	arch = any
 	license = GPL
 	optdepends = hunspell: the spell checking libraries and apps
-	source = http://extensions.libreoffice.org/extensions/xuxen-5-zuzentzaile-ortografikoa/1.2/@@download/file/xuxen_openoffice_libreoffice.oxt
-	sha256sums = e3ba62d4107c780a91fd4afb5e021e4c89ebed25d387d567be353fdf9407951f
+	source = http://xuxen.eus/static/hunspell/xuxen_5.1_hunspell.zip
+	sha256sums = 074c815acb08a22ebbc1d5d7708c88ca5f0eca971cb719de0240ddc38ae1c607
 
 pkgname = hunspell-eu-es
 
