@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='MultiStackReg plugin for Fiji (JAR distribution)'
 arch=(any)
 url='http://bradbusse.net/sciencedownloads.html'
-license=('unknown')
+license=('CCPL:by-sa')
 # Both fiji-bin and fiji-binary exist in the AUR, but fiji-bin seems more
 # up-to-date. They don't have a common provides= we could depend on here.
 depends=('fiji-bin')
