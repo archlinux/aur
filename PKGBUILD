@@ -42,8 +42,7 @@ install="${pkgname}-install.sh"
 _verwatch=('http://downloads.comtrol.com/rport_express/drivers/Linux/' '.*>rocketport_infinity_express-linux-\([0-9\.]\+\)\.tar\.gz.*' 'f')
 _srcdir="rocketport_infinity_express-linux-${pkgver}"
 source=("http://downloads.comtrol.com/rport_express/drivers/Linux/rocketport_infinity_express-linux-${pkgver}.tar.gz")
-sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8'
-            '2aadc9ba118bd778b2afc1a2f0f006ef5142983a64c8aa522c15d5d78ece6e53')
+sha256sums=('cdf12c6c93740afd842522be4fc055282d6e1d32a92f3b3a0e3bae4fa01c0fe8')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -53,7 +52,7 @@ fi
 
 _opt_LEGACY_VER=''
 # Install both versions so dkms gets the right version for each kernel
-if [ "${_opt_DKMS}" -ne 0 ]; then
+if [ "${_opt_DKMS}" -ne 0 ] && false; then
   # 2.10 supports Kernels 2.6.33 through 4.14.x
   # >=2.16 supports Kernels 4.15 through 4.17.x.
   _opt_LEGACY_VER='2.10'
