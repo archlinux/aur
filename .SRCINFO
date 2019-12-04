@@ -1,6 +1,6 @@
 pkgbase = fonttosfnt-git
 	pkgdesc = Convert a set of bdf or pcf fonts into a bitmap only sfnt (otb)
-	pkgver = r83.c214ab0
+	pkgver = r86.cfb4d64
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/app/fonttosfnt
 	arch = x86_64
@@ -16,15 +16,7 @@ pkgbase = fonttosfnt-git
 	provides = fonttosfnt
 	conflicts = fonttosfnt
 	source = git+https://gitlab.freedesktop.org/xorg/app/fonttosfnt.git
-	source = 0001-let-freetype-handle-ISO-8859-1-mapping.patch
-	source = 0002-allow-ISO-646.1991-IRV-as-well-adobe-standard-for-bd.patch
-	source = 0003-check-for-freetype-NULL-atoms.patch
-	source = 0004-improve-guess-font-size.patch
 	md5sums = SKIP
-	md5sums = c9a2934334f46681f1a6131d4fd13077
-	md5sums = 1b542636d9a95d9bb6095c12aa20eb3a
-	md5sums = 9ba2b5498590e75859099cd57c970ac3
-	md5sums = 1152c9c998813c003df379813aac2c7c
 
 pkgname = fonttosfnt-git
 
