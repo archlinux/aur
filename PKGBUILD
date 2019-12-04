@@ -13,7 +13,7 @@ pkgver=1.1.2
 pkgrel=3
 pkgdesc="divand performs an n-dimensional variational analysis (interpolation) of arbitrarily located observations."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.4.0')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('8899789261182be98760f1622ab9627a')
+sha256sums=('afaa9069daef3ae0fd9a9bb1031b7c2fbc03e7e7951245eef9d4b53364f9aa5a')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
