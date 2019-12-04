@@ -1,6 +1,6 @@
 pkgbase = aspnet-runtime-2.1
 	pkgdesc = The ASP.NET Core runtime version 2.1
-	pkgver = 2.1.13
+	pkgver = 2.1.14
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -14,15 +14,15 @@ pkgbase = aspnet-runtime-2.1
 	makedepends = llvm
 	makedepends = lttng-ust
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/88fdaf6f-08ea-4d1c-856d-60f78a7d733a/2e70e89c45dc9a8d701b544edc2bb5a1/aspnetcore-runtime-2.1.13-linux-x64.tar.gz
-	sha512sums_x86_64 = 1d73b177782f6ae593dd56078d479d879dd470324113eb5a8a3ddeb12dbdcd6b0c0ee0fc722c8106c5117fc08d14a44f2f6fd3a47319df08ec1eb74af8a69c22
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/39d580d6-da0b-42e3-9bbe-3fd2efec71ac/594ae2dde78da0e8b9e1cc7476cee470/aspnetcore-runtime-2.1.13-linux-arm.tar.gz
-	sha512sums_armv7h = 8d41a285e30733303b0a92a0d83c65a534597be46da280d60a2f759dff90b6e9d1222002d0c32cbe02856e0d3fe2e37d111b370cc30d35b162cc3c483d512744
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/22e9f27e-12cd-4ba9-86ce-113cbe7c55c2/a1097e49b4da2c1949919e752264f691/aspnetcore-runtime-2.1.14-linux-x64.tar.gz
+	sha512sums_x86_64 = 85728bd9701a6db5743c495aaf87c859b697300b668afc01d0edd3814ce50929219c5a70745ee8bd9b2c478613cbba323c5e5834c7c5f0af792712f8070df763
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/9c563df7-736b-49ce-bd17-e739f3765541/e93dd1eff909e59a7ba72784a64dc031/aspnetcore-runtime-2.1.14-linux-arm.tar.gz
+	sha512sums_armv7h = f4500187bf135254a03b5eb4105b8ce20f71d71e0f08c2c2ec914920f80435b7b36351c3f9c15504d0b1c2187b904c8283db67a2b60ebff374b058641153aaac
 
 pkgname = aspnet-runtime-2.1
 	pkgdesc = The ASP.NET Core runtime version 2.1
 	arch = x86_64
 	arch = armv7h
-	depends = dotnet-runtime=2.1.13
-	provides = aspnet-runtime=2.1.13
+	depends = dotnet-runtime=2.1.14
+	provides = aspnet-runtime=2.1.14
 
