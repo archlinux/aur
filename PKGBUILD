@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -12,8 +12,8 @@ depends=(gcr
          libhandy
          libnm
          libsecret
-         upower
-         wlroots)
+         phoc
+         upower)
 makedepends=(ctags
              git
              libhandy
