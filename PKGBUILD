@@ -1,15 +1,17 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034
 pkgname=luxcorerender
 pkgver=2.2
+_name=LuxCore-${pkgname}_v${pkgver}
 #_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="LuxCoreRender is a physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(oidn openimageio boost-libs blosc embree glfw gtk3 opencl-icd-loader)
+depends=(openimagedenoise openimageio boost-libs blosc embree glfw gtk3 opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "pyside2: for pyluxcoretools gui")
 makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
@@ -26,7 +28,7 @@ sha256sums=('35b74e5d3e682dc2826d939c66a1c225354c5eb137c86f10930d1caf70a4629b'
             '495d183aef045e53ec8c53aa08cdcc082fb4e69ccb0857693cb0cf2684db0760')
 
 prepare() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}
+  cd ${srcdir}/${_name}
   for patch in ${srcdir}/*.patch; do
     msg2  "apply $patch..."
     patch -Np1 -i $patch
@@ -35,19 +37,18 @@ prepare() {
 
 build() {
   _pyver=$(python -c "from sys import version_info; print(\"%d%d\" % (version_info[0],version_info[1]))")
-  cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}
   mkdir -p build && cd build
-  cmake -DPYTHON_V=${_pyver} ..
+  cmake -DPYTHON_V=${_pyver} ${srcdir}/${_name}
   make
 }
 
 package() {
-  cd ${srcdir}/LuxCore-${pkgname}_v${_pkgver}/build
+  cd ${srcdir}/build
 
   install -d -m755 ${pkgdir}/usr/{bin,include,lib}
   install -m755 bin/* ${pkgdir}/usr/bin
   install -m644 lib/* ${pkgdir}/usr/lib
-  cp -a ../include ${pkgdir}/usr
+  cp -a ${srcdir}/${_name}/include ${pkgdir}/usr
   for file in ${pkgdir}/usr/include/*/*.in; do mv $file ${file%.in}; done
 
   # install pyluxcore to the Python search path
@@ -56,5 +57,4 @@ package() {
   install -d -m755 ${pkgdir}/${_pypath}
   mv ${pkgdir}/usr/lib/pyluxcore.so ${pkgdir}/${_pypath}
 }
-
 # vim:set ts=2 sw=2 et:
