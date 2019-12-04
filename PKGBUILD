@@ -6,7 +6,7 @@
 pkgbase=virtualbox-modules-uksm
 pkgname=('virtualbox-host-modules-uksm')
 pkgver=6.0.14
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -26,7 +26,7 @@ build() {
 package_virtualbox-host-modules-uksm() {
 	pkgdesc='Host kernel modules for VirtualBox running under linux-uksm.'
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-uksm>=5.3' 'linux-uksm<5.4')
+	depends=('linux-uksm>=5.4' 'linux-uksm<5.5')
 	
 	cd "/var/lib/dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
         install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m0644 *
