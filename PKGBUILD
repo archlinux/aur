@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=435.21
-pkgrel=4
-_goodkver=5.3
-_badkver=5.4
+pkgver=440.36
+pkgrel=1
+_goodkver=5.4
+_badkver=5.5
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -22,7 +22,7 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('7f65c51324ab650448a86b05a0106c60')
+md5sums=('52c480e1e14bc6b2ffe7ad9482d519f1')
 
 
 
@@ -62,5 +62,7 @@ package() {
   install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
  
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
+
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
 }
 
