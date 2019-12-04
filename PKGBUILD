@@ -30,7 +30,7 @@ package() {
 
     # Install contrib scripts
     for script in contrib/*; do
-        install -D -m 644 "${script}" \
+        install -D -m 755 "${script}" \
             "${pkgdir}/usr/lib/weechat/python/matrix/${script}"
     done;
 
