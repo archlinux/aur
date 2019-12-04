@@ -2,23 +2,22 @@
 # Contributor:
 
 pkgname=nnn-git
-pkgver=2.5.r50.gc07288e
+pkgver=2.8.r2.gc139178
 pkgrel=1
-pkgdesc='A lightweight terminal file browser'
+pkgdesc="The fastest terminal file manager ever written."
 arch=(x86_64)
 url='https://github.com/jarun/nnn'
 license=(BSD)
 depends=('bash')
 optdepends=(
-  'atool: for previews of archives'
-  'findutils: (xargs) GNU utilities to locate files'
-  'fzy: app launcher, subtree search'
-  'lftp: sophisticated command line based FTP client'
-  'mediainfo: for viewing information about media files'
-  'moreutils: (vidir) batch rename dir entries'
-  'patool: command line archive file manager'
-  'perl-image-exiftool: for viewing information about media files'
-  'sshfs: mount, unmount remote over SSHFS'
+  'atool: for more archive formats'
+  'libarchive: for more archive formats'
+  'zip: for zip archive format'
+  'unzip: for zip archive format'
+  'trash-cli: to trash files'
+  'sshfs: mount remotes'
+  'rclone: mount remotes'
+  'fuse2: unmount remotes'
   'xdg-utils: desktop opener'
 )
 makedepends=(git)
@@ -43,11 +42,11 @@ build() {
 
 package() {
   cd nnn
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 
-  install -Dm644 misc/auto-completion/fish/nnn.fish "$pkgdir"/usr/share/fish/vendor_completions.d/nnn.fish
-  install -Dm644 misc/auto-completion/bash/nnn-completion.bash "$pkgdir"/usr/share/bash-completion/completions/nnn
-  install -Dm644 misc/auto-completion/zsh/_nnn "$pkgdir"/usr/share/zsh/site-functions/_nnn
+  install -Dm644 misc/auto-completion/fish/nnn.fish "${pkgdir}/usr/share/fish/vendor_completions.d/nnn.fish"
+  install -Dm644 misc/auto-completion/bash/nnn-completion.bash "${pkgdir}/usr/share/bash-completion/completions/nnn"
+  install -Dm644 misc/auto-completion/zsh/_nnn "${pkgdir}/usr/share/zsh/site-functions/_nnn"
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
