@@ -2,8 +2,10 @@
 
 pkgname=dpt-rp1-py-git
 _name=${pkgname%-git}
-pkgver=0.1.6r210.6faf448
+pkgver=0.1.6.r4.g6faf448
 pkgrel=1
+# changed pkgver(), remove after next release (>1.6.0)
+epoch=1
 pkgdesc='Python package to manage a Sony DPT-RP1'
 url='https://github.com/janten/dpt-rp1-py'
 arch=('any')
@@ -17,9 +19,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}"
-  version=$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
   # remove 'v' at start of tag, which is not part of the published package version
-  echo ${vesion:1}
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
