@@ -1,7 +1,7 @@
 pkgbase = blender-2.80-git
 	pkgdesc = Maintenance version of Blender 2.80-release branch
 	pkgver = 2.80.r89282.f6cb5f54494
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blender.org/
 	install = blender.install
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = blender-2.80-git
 	depends = libxi
 	depends = openimageio
 	depends = opencolorio
-	depends = oidn
+	depends = openimagedenoise
 	depends = openvdb
 	depends = opencollada
 	depends = opensubdiv
