@@ -1,0 +1,24 @@
+--- Pentablet_Driver.sh	2018-05-17 11:09:26.000000000 +0200
++++ Pentablet_Driver.sh.new	2019-12-03 23:26:07.648552499 +0100
+@@ -1,10 +1,15 @@
+ #!/bin/sh
+-appname=`basename $0 | sed s,\.sh$,,`
+-dirname=`dirname $0`
++if [[ -L $0 ]]; then
++    script_launch="$(readlink -f $0)"
++else
++    script_launch="$0"
++fi
++appname="$( basename "${script_launch}" | sed s,\.sh$,, )"
++dirname="$( dirname "${script_launch}" )"
+ tmp="${dirname#?}"
+ if [ "${dirname%$tmp}" != "/" ]; then
+-dirname=$PWD/$dirname
++    dirname="$PWD/$dirname"
+ fi
+-LD_LIBRARY_PATH=$dirname/lib
+-export LD_LIBRARY_PATH
+-$dirname/$appname "$@"
++LD_LIBRARY_PATH="/usr/lib:/usr/lib/qt/plugins"
++export "LD_LIBRARY_PATH"
++pkexec "$dirname/$appname" "$@"

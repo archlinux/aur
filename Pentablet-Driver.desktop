@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=XP-Pen Beta driver
+Type=Application
+Exec=/usr/share/xp-pen-tablet-beta-driver/Pentablet_Driver.sh  %F
+Terminal=false
+Icon=/usr/share/xp-pen-tablet-beta-driver/images/XP-Pen_logo.jpg
+Comment=XP-Pen (Official) Linux (Beta) driver
+Categories=GNOME;GTK;X-XFCE;Settings;HardwareSettings;
+OnlyShowIn=GNOME;Settings;XFCE
+Hidden=false
+X-GNOME-Autostart-enabled=false
+GenericName=

@@ -1,0 +1,25 @@
+pkgbase = xp-pen-tablet-beta-driver
+	pkgdesc = XP-Pen (Official) Linux (Beta) driver
+	pkgver = 20190820
+	pkgrel = 1
+	url = https://www.xp-pen.fr/download-292.html
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = gcc-libs
+	depends = libusb
+	depends = icu
+	depends = polkit
+	source = https://download01.xp-pen.com/file/2019/08/Linux%20Beta%20Driver(20190820).zip
+	source = Pentablet_Driver.sh.patch
+	source = Pentablet-Driver.desktop
+	source = https://66.media.tumblr.com/avatar_df104055a5e0_128.pnj
+	source = Pentablet-Driver.policy
+	sha256sums = 0cbc31f65589a58416d50b0a7a2e10de343053f2e41810dd01bf559fd6477c54
+	sha256sums = ca3111e8500d5b38c45a903c57dbd841c26a43b0f8d1fc2e8e653f59e4714d10
+	sha256sums = d5315a3bd32eefe14234f3fc32815b0e04c46709a3a56fa9014af42704d24ba0
+	sha256sums = af868161c23ad2df4780ab2220d1bce078587d4b9912a1d61722a18d37e36a74
+	sha256sums = dbd471f5d87d73c1e331912457f7d3efe7e19aedaa7ca48b2492797690afc841
+
+pkgname = xp-pen-tablet-beta-driver
+
