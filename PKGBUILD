@@ -11,7 +11,7 @@ depends=('alembic' 'libgl' 'python' 'desktop-file-utils' 'hicolor-icon-theme' 'o
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng' 'python-numpy')
 optdepends=('cuda: CUDA support in Cycles'
             'optix: OptiX support in Cycles'
-            'oidn: Intel Open Image Denoise support in compositing')
+            'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 provides=('blender')
 conflicts=('blender')
@@ -28,7 +28,11 @@ source=('git://git.blender.org/blender.git' \
         'blender-translations.git::git://git.blender.org/blender-translations.git' \
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git' \
         blender.desktop)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          '47e5bbe93fc221066882947211ff7812')
 
 pkgver() {
@@ -54,7 +58,7 @@ if [ "$_OPTIX_PKG" != "" ]; then
 fi
 
 # check for open image denoise
-_OIDN_PKG=`pacman -Qq oidn 2>/dev/null` || true
+_OIDN_PKG=`pacman -Qq openimagedenoise 2>/dev/null` || true
 if [ "$_OIDN_PKG" != "" ]; then
     _EXTRAOPTS="$_EXTRAOPTS \
     -DWITH_OPENIMAGEDENOISE=ON"
