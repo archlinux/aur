@@ -12,7 +12,7 @@ pkgver=1.1.5
 pkgrel=4
 pkgdesc="Package for solving Diffusion Advection Reaction (DAR) Partial Differential Equations "
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=3.8.0' 'octave-fpl' 'octave-msh')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('b25450de30820c2662d5134470d9ee0f')
+sha256sums=('e899c65e6c7fb0babdb0e2fb7990bae1f6ccf9b3dc1e19b4f58501242be2e078')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
