@@ -13,7 +13,7 @@ pkgver=1.0.7
 pkgrel=2
 pkgdesc="The Octave-FITS package provides functions for reading, and writing FITS (Flexible Image Transport System) files.  This package uses the libcfitsio library."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.0.0')
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('d22753e297827a43a44b6ff534246b17')
+sha256sums=('95124173f852498cb71acc97712af104027669f60c4f972bbcd8c59b2b2f4b49')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
