@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=oidn-git
-pkgver=0.8.1.r10.g5020aed
+pkgver=1.1.0.r0.gc58c521
 #_fragment="#tag=v${pkgver}"
 pkgrel=1
 pkgdesc="Intel(R) Open Image Denoise library"
@@ -8,6 +8,8 @@ arch=('x86_64')
 url="http://www.openimagedenoise.org/"
 license=('Apache')
 depends=(intel-tbb python)
+provides=(openimagedenoise)
+conflicts=(openimagedenoise)
 makedepends=(git cmake)
 source=("${pkgname%-git}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
         "git+https://github.com/OpenImageDenoise/mkl-dnn.git"

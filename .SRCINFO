@@ -1,6 +1,6 @@
 pkgbase = oidn-git
 	pkgdesc = Intel(R) Open Image Denoise library
-	pkgver = 0.8.1.r10.g5020aed
+	pkgver = 1.1.0.r0.gc58c521
 	pkgrel = 1
 	url = http://www.openimagedenoise.org/
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = oidn-git
 	makedepends = cmake
 	depends = intel-tbb
 	depends = python
+	provides = openimagedenoise
+	conflicts = openimagedenoise
 	source = oidn::git+https://github.com/OpenImageDenoise/oidn.git
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
 	source = git+https://github.com/OpenImageDenoise/oidn-weights.git
