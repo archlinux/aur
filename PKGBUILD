@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=forked-daapd
 pkgver=27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="iTunes-compatible media server, originally intended as a rewrite of Firefly Media Server (mt-daapd)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/ejurgensen/forked-daapd"
@@ -50,7 +50,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   echo "$PATH"
   autoreconf -i
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-itunes --enable-chromecast --enable-lastfm --with-websockets --sbindir=/usr/bin
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-itunes --enable-chromecast --enable-lastfm --with-libwebsockets --sbindir=/usr/bin
   make
   export PATH="$OLD_PATH"
 }
