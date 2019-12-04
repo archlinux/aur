@@ -2,13 +2,13 @@
 
 pkgname=orcaqm
 pkgver=4.2.1
+_openmpi_ver=3.1.4
 pkgrel=1
 pkgdesc="ORCA is an ab initio, DFT, and semi-empirical SCF-MO package"
 url="https://orcaforum.kofo.mpg.de/app.php/portal"
 license=("custom")
 arch=(x86_64)
-_openmpi_ver=3.1.4
-depends=("openmpi=${_openmpi_ver}")
+depends=("openmpi>=3" "openmpi<4")
 makedepends=('xz')
 # Due to licensing issues you must register and download the package from the ORCA url and put it in the PKGBUILD folder!
 source=("local://orca_${pkgver//./_}_linux_x86-64_shared_openmpi${_openmpi_ver//./}.tar.xz"
