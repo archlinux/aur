@@ -1,0 +1,60 @@
+Index: setup.py
+===================================================================
+--- setup.py	(revision 900)
++++ setup.py	(working copy)
+@@ -378,7 +378,7 @@
+                     with open(os.path.join(os.path.join(self.incdirs,'sundials'), 'sundials_config.h')) as f:
+                         for line in f:
+                             if "SUNDIALS_PACKAGE_VERSION" in line or "SUNDIALS_VERSION" in line:
+-                                sundials_version = tuple([int(f) for f in line.split()[-1][1:-1].split(".")])
++                                sundials_version = tuple([int(f) for f in line.split()[-1][1:-1].split('-dev')[0].split(".")])
+                                 L.debug('SUNDIALS %d.%d found.'%(sundials_version[0], sundials_version[1]))
+                                 break
+                     with open(os.path.join(os.path.join(self.incdirs,'sundials'), 'sundials_config.h')) as f:
+Index: src/lib/sundials_includes.pxd
+===================================================================
+--- src/lib/sundials_includes.pxd	(revision 900)
++++ src/lib/sundials_includes.pxd	(working copy)
+@@ -190,8 +190,10 @@
+         realtype **cols
+     ctypedef _DlsMat* DlsMat
+     cdef realtype* DENSE_COL(DlsMat A, int j)
+-    
+-IF SUNDIALS_VERSION >= (2,6,3):
++
++IF SUNDIALS_VERSION >= (5,0,0):
++    pass
++ELIF SUNDIALS_VERSION >= (2,6,3):
+     cdef extern from "sundials/sundials_sparse.h":
+         cdef struct _SlsMat:
+             int M
+Index: src/solvers/kinsol.pyx
+===================================================================
+--- src/solvers/kinsol.pyx	(revision 900)
++++ src/solvers/kinsol.pyx	(working copy)
+@@ -31,7 +31,9 @@
+ 
+ #Various C includes transfered to namespace
+ from sundials_includes cimport N_Vector, realtype, N_VectorContent_Serial, DENSE_COL, sunindextype
+-from sundials_includes cimport memcpy, N_VNew_Serial, DlsMat, SlsMat, SUNMatrix, SUNMatrixContent_Dense, SUNMatrixContent_Sparse
++from sundials_includes cimport memcpy, N_VNew_Serial, DlsMat, SUNMatrix, SUNMatrixContent_Dense, SUNMatrixContent_Sparse
++IF SUNDIALS_VERSION < (5,0,0):
++    from sundials_includes cimport SlsMat
+ from sundials_includes cimport malloc, free, N_VCloneVectorArray_Serial
+ from sundials_includes cimport N_VConst_Serial, N_VDestroy_Serial
+ 
+Index: src/solvers/sundials.pyx
+===================================================================
+--- src/solvers/sundials.pyx	(revision 900)
++++ src/solvers/sundials.pyx	(working copy)
+@@ -35,7 +35,9 @@
+ 
+ #Various C includes transfered to namespace
+ from sundials_includes cimport N_Vector, realtype, N_VectorContent_Serial, DENSE_COL, sunindextype
+-from sundials_includes cimport memcpy, N_VNew_Serial, DlsMat, SlsMat, SUNMatrix, SUNMatrixContent_Dense, SUNMatrixContent_Sparse
++from sundials_includes cimport memcpy, N_VNew_Serial, DlsMat, SUNMatrix, SUNMatrixContent_Dense, SUNMatrixContent_Sparse
++IF SUNDIALS_VERSION < (5,0,0):
++    from sundials_includes cimport SlsMat
+ from sundials_includes cimport malloc, free, N_VCloneVectorArray_Serial
+ from sundials_includes cimport N_VConst_Serial, N_VDestroy_Serial
+ 
