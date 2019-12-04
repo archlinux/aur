@@ -2,16 +2,16 @@
 # shellcheck disable=SC2034
 _name="luxcorerender"
 _ver_tag="luxcorerender_v2.2"
-{ IFS='.'; read _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
+{ IFS='.'; read -r _ver_major _ver_minor; ((_ver_minor++)); unset IFS; } <<<${_ver_tag#luxcorerender_v}
 pkgname=${_name}-git
-pkgver=2.3.r109.g537cedd54
+pkgver=2.3.r219.gd23b0ee41
 epoch=2
 pkgrel=1
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends=(oidn openimageio boost-libs blosc embree glfw gtk3 opencl-icd-loader)
+depends=(openimagedenoise openimageio boost-libs blosc embree glfw gtk3 opencl-icd-loader)
 optdepends=("opencl-driver: for gpu acceleration"
             "pyside2: for pyluxcoretools gui")
 makedepends=(boost git doxygen cmake pyside2-tools opencl-headers)
@@ -62,5 +62,4 @@ package() {
   install -d -m755 ${pkgdir}/${_pypath}
   mv ${pkgdir}/usr/lib/pyluxcore.so ${pkgdir}/${_pypath}
 }
-
 # vim:set ts=2 sw=2 et:

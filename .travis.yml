@@ -23,7 +23,6 @@ archlinux:
   packages:
   - ccache
   - moreutils
-  - oidn
   - bc
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.

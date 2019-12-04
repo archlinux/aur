@@ -1,6 +1,6 @@
 pkgbase = luxcorerender-git
 	pkgdesc = Physically correct, unbiased rendering engine.
-	pkgver = 2.3.r109.g537cedd54
+	pkgver = 2.3.r219.gd23b0ee41
 	pkgrel = 1
 	epoch = 2
 	url = https://www.luxcorerender.org/
@@ -12,7 +12,7 @@ pkgbase = luxcorerender-git
 	makedepends = cmake
 	makedepends = pyside2-tools
 	makedepends = opencl-headers
-	depends = oidn
+	depends = openimagedenoise
 	depends = openimageio
 	depends = boost-libs
 	depends = blosc
