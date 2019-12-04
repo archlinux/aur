@@ -1,13 +1,13 @@
 # Maintainer: telans <telans@protonmail.com>
 # Co-Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
 # Contributor: David Birks <david at tellus dot space>
-# Contributor: Linus Färnstrand <https://github.com/faern>
-# Contributor: Emīls Piņķis <https://github.com/pinkisemils>
-# Contributor: Andrej Mihajlov <https://github.com/pronebird>
+# Contributor: Linus Färnstrand <linus at mullvad dot net>
+# Contributor: Emīls Piņķis <emil at mullvad dot net>
+# Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 pkgver=2019.9.stable
 _pkgver=2019.9
-pkgrel=7
+pkgrel=8
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -18,11 +18,11 @@ install="${pkgname%-beta}.install"
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$_pkgver"
         'git+https://github.com/mullvad/mullvadvpn-app-binaries.git'
         "${pkgname%-beta}.desktop"
-        'relays.json.tar.xz') # file too large, had to compress
+        'update-relays.sh')
 sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
-            '1d2c77dac7fefefc9a120781f7679731b046f82492a9e8dc447122bbf2973f10')
+            '2ad702e141e8c3e5ea48a83fa8513fbcf64ba194da681122d6da408bd2736d25')
 
 prepare() {
 	# Point the submodule to our local copy
@@ -36,6 +36,9 @@ prepare() {
 build() {
 	cd "$srcdir/mullvadvpn-app"
 
+	# Remove old Rust build artifacts
+	cargo clean --release --locked
+
 	# Build mullvad-daemon
 	cargo build --release --locked
 
@@ -46,8 +49,8 @@ build() {
 	cp target/release/{mullvad,mullvad-daemon,mullvad-problem-report} \
 		dist-assets/
 
-	# TODO: Generate relays.json instead of copying it from .deb
-	cp "$srcdir/relays.json" dist-assets/
+	# Update relay list & generate relays.json
+	../update-relays.sh
 
 	# Build Electron GUI app
 	cd gui

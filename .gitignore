@@ -7,4 +7,4 @@
 !.SRCINFO
 !mullvad-vpn.desktop
 !mullvad-vpn.install
-!relays.json.tar.xz
+!update-relays.sh
