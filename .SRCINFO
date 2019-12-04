@@ -1,7 +1,7 @@
 pkgbase = bitwarden-pyro-git
 	pkgdesc = Bitwarden python interface built with Rofi
 	pkgver = v1.0.0.r0.g22284b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mihalea/bitwarden-pyro
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = bitwarden-pyro-git
 	optdepends = xdotool: Provide auto typing for X11
 	optdepends = ydotool-git: Provide auto typing for Wayland
 	optdepends = xclip: Provide clipboard interaction with X11
-	optdepends = xset: Alternative for clipoard interaction with X11
+	optdepends = xorg-xset: Alternative for clipoard interaction with X11
 	optdepends = wl-clipboard: Provide clipboard interaction with Wayland
 	provides = bwpyro
 	conflicts = bwpyro
