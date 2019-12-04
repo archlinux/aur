@@ -7,7 +7,6 @@ pkgbase = mingw-w64-make
 	license = GPL
 	depends = mingw-w64-gcc
 	depends = mingw-w64-environment
-	optdepends = mingw-w64-wine: runtime support
 	source = mingw-make.sh
 	sha256sums = SKIP
 
