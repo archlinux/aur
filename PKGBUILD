@@ -1,9 +1,10 @@
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2019.2.2
-_pkgver=2019.2.2
-pkgrel=2
+pkgver=2019.3.0
+_pkgver=2019.3
+pkgrel=1
 pkgdesc="Free, Easy & Professional Tool to Learn Programming with Python"
 arch=('x86_64')
 url="https://www.jetbrains.com/pycharm-edu/"
@@ -11,19 +12,20 @@ provides=('pycharm-edu')
 license=('Apache')
 depends=('giflib' 'ttf-font' 'libxtst' 'libxslt')
 makedepends=('python2-setuptools' 'python-setuptools')
+options=(!strip)
 source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython2: For enhanced interactive Python shell v2'
             'ipython: For enhanced interactive Python shell v3')
-sha256sums=('304e76e886b162492c843f005de56d87f1dc9a7fac10c2cac1b2e2cc62b50ed6'
+sha256sums=('063f4c860f80d96e9ce5b79c0380c7bdcf2a94218f7c9a0779101a4b6e19dba2'
             '2934fbe579bcc3d6e9d66f9ee80286e36773fe59aafaef9d15bbb45a0a59c58b')
 
 build() {
   cd pycharm-edu-$_pkgver
 
   # compile PyDev debugger used by PyCharm to speedup debugging
-  #python2 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
-  #python3 helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
+  python2 plugins/python-ce/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
+  python3 plugins/python-ce/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
   
   rm -rf bin/fsnotifier{,-arm} lib/libpty/linux/x86
 }
