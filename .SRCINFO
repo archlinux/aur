@@ -1,13 +1,13 @@
 pkgbase = python2-peewee
 	pkgdesc = a little orm
 	pkgver = 3.9.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://pypi.python.org/pypi/peewee/
 	arch = x86_64
 	license = MIT
 	checkdepends = python2-apsw
 	checkdepends = python2-flask
-	checkdepends = python2-psycopg2-binary
+	checkdepends = python2-psycopg2
 	makedepends = python2-setuptools
 	makedepends = cython2
 	makedepends = sqlite
