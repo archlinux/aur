@@ -12,7 +12,7 @@ pkgver=1.3.0
 pkgrel=4
 pkgdesc="Algorithms for smoothing noisy data"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0' 'octave-optim>=1.0.3')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('d8fc52ed097b5096f5e7ea16dc5ab343')
+sha256sums=('012bd7a9681619ed33d8643f3785ba9b17a82febab9b242674fe79746bc31b60')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
