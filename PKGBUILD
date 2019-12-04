@@ -2,7 +2,7 @@
 # Contributor:	Ondřej Surý <ondrej@sury.org>
 
 pkgname=knot-resolver
-pkgver=4.2.2
+pkgver=4.3.0
 pkgrel=1
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
@@ -22,6 +22,7 @@ depends=(
     'lua51-socket'
     'luajit'
     'systemd'
+    'libcap-ng'
 )
 optdepends=(
     'lua51-basexx: experimental_dot_auth module',
@@ -38,7 +39,7 @@ makedepends=(
 
 source=("https://secure.nic.cz/files/${pkgname}/${pkgname}-${pkgver}.tar.xz")
 
-sha256sums=('03b68dff16429aed7a5b0cea7189276c8056e8ecd567b678c2595d48d9a51458')
+sha256sums=('0ca0f171ae2b2d76830967a5150eb0fa496b48b2a48f41b2be65d3743aaece25')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
