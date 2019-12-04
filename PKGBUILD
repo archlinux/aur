@@ -4,19 +4,21 @@
 # Advance features cannot be registered or activated under KVM/QEMU/OVMF
 _wacomEnabled=yes
 pkgname=hgsreceiver-bin
-pkgver=7.5.0
+pkgver=7.7
 pkgrel=1
 pkgdesc="HP remote RGS receiver"
 arch=('x86_64')
 url="https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR"
 license=('custom:"HP"')
 depends=('lib32-glu' 'dmidecode')
-makedepends=('')
+#makedepends=('')
 options=('emptydirs')
-source=("file://RGS_Linux_64_Receiver_v7.5_L25793-001.tar.gz")
-md5sums=('0d72ec806fe89e0aa4974f825c91dd17')
+noextract=()
+source=("file://RGS_Linux_64_Sender_and_Receiver_v7.7_L64934-001.tar.gz")
+md5sums=('3bb5751a61424f2fff3d5e43a1578eb8')
 
 prepare() {
+bsdtar xf RGS_Linux_64_Sender_and_Receiver_v7.7_L64934-001.tar.gz
 bsdtar xf rhel6/receiver/*.rpm
 }
 
