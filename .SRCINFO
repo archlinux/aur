@@ -1,11 +1,12 @@
 pkgbase = mongrel2
 	pkgdesc = Application, language, and network architecture agnostic web server
 	pkgver = 1.12.2
-	pkgrel = 1
-	url = http://mongrel2.org
+	pkgrel = 2
+	url = https://mongrel2.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	depends = sqlite3
 	depends = zeromq
 	source = https://github.com/mongrel2/mongrel2/releases/download/v1.12.2/mongrel2-v1.12.2.tar.bz2
