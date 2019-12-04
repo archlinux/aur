@@ -1,6 +1,6 @@
 pkgbase = dpt-rp1-py-git
 	pkgdesc = Python package to manage a Sony DPT-RP1
-	pkgver = 0.1.0r72.9d7aec5
+	pkgver = 0.1.6r210.6faf448
 	pkgrel = 1
 	url = https://github.com/janten/dpt-rp1-py
 	arch = any
@@ -11,6 +11,12 @@ pkgbase = dpt-rp1-py-git
 	depends = python-requests
 	depends = python-pbkdf2
 	depends = python-urllib3
+	depends = python-yaml
+	depends = python-anytree
+	depends = python-fusepy
+	depends = python-zeroconf
+	provides = dpt-rp1-py
+	conflicts = dpt-rp1-py
 	source = git+https://github.com/janten/dpt-rp1-py.git
 	md5sums = SKIP
 

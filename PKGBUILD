@@ -10,6 +10,8 @@ arch=('any')
 license=('MIT')
 depends=('python-httpsig' 'python-requests' 'python-pbkdf2' 'python-urllib3' 'python-yaml' 'python-anytree' 'python-fusepy' 'python-zeroconf')
 makedepends=('git' 'python-setuptools')
+conflicts=('dpt-rp1-py')
+provides=('dpt-rp1-py')
 source=("git+https://github.com/janten/${_name}.git")
 md5sums=('SKIP')
 
