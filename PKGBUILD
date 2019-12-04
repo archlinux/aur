@@ -22,7 +22,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
 sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
-            '2ad702e141e8c3e5ea48a83fa8513fbcf64ba194da681122d6da408bd2736d25')
+            'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
 
 prepare() {
 	# Point the submodule to our local copy
