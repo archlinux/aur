@@ -14,7 +14,7 @@ makedepends=('ninja' 'meson' 'glslang' 'git' 'wine')
 provides=("dxvk-bin" "dxvk-git" "dxvk-wine32-git" "dxvk-wine64-git" "dxvk-win32-git" "dxvk-win64-git" "dxvk-mingw-git" "dxvk-winelib-git" "dxvk")
 conflicts=("dxvk-git" "dxvk-wine32-git" "dxvk-wine64-git" "dxvk-win32-git" "dxvk-win64-git" "dxvk-winelib-git" "dxvk")
 
-source=("git+https://github.com/doitsujin/dxvk.git#tag=$pkgver")
+source=("git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 build() {
