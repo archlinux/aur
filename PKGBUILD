@@ -12,7 +12,7 @@ pkgver=1.3.5
 pkgrel=3
 pkgdesc="Collection of routines to export data produced by Finite Elements or Finite Volume Simulations in formats used by some visualization programs."
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.2.3')
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('3de5eca51ac2f862d65b8e48f095fd48')
+sha256sums=('da13b8044e0ffb91f488427c4d3f3fdefb8d208753f572ef4d3b53972c547731')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
