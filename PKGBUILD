@@ -9,8 +9,8 @@
 
 _pack=optics
 pkgname=octave-$_pack
-pkgver=0.1.3
-pkgrel=3
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Functions covering various aspects of optics"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('35dd0ddd1be099eb0e245a9cd6af98bd')
+md5sums=('952a3ac11d704e17ae1eb584ee9cab3b')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
