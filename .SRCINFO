@@ -20,6 +20,7 @@ pkgbase = phosh
 	depends = libsecret
 	depends = phoc
 	depends = upower
+	depends = virtboard
 	source = git+https://source.puri.sm/Librem5/phosh.git#tag=v0.1.4
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP

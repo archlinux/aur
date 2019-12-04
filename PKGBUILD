@@ -13,7 +13,8 @@ depends=(gcr
          libnm
          libsecret
          phoc
-         upower)
+         upower
+         virtboard)
 makedepends=(ctags
              git
              libhandy
