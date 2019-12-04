@@ -1,0 +1,14 @@
+--- lua-lsp-git/lua-lsp/log.lua	2019-12-04 18:26:12.576185972 +0900
++++ lua-lsp-git/lua-lsp/log.lua	2019-12-04 18:26:21.019519194 +0900
+@@ -1,5 +1,5 @@
+ local rpc     = require 'lua-lsp.rpc'
+-local inspect = require 'inspect'
++local inspect = require 'luainspect'
+
+ local log = {}
+
+@@ -159,4 +159,3 @@ setmetatable(log, {
+ })
+
+ return log
+-

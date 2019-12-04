@@ -1,0 +1,17 @@
+pkgbase = lua-lsp-git
+	pkgdesc = A Lua language server
+	pkgver = 0
+	pkgrel = 20190922
+	url = https://github.com/Alloyed/lua-lsp
+	arch = any
+	license = MIT
+	depends = lua-dkjson
+	depends = lua-luainspect-git
+	depends = lua-lpeglabel-git
+	source = lua-lsp-git::git+https://github.com/Alloyed/lua-lsp
+	source = luainspect.patch
+	sha1sums = SKIP
+	sha1sums = da00ccf057c111fe9c6e0b51113526e697953e4c
+
+pkgname = lua-lsp-git
+
