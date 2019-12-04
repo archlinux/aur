@@ -4,10 +4,10 @@
 ## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD directory. Also, uncomment the lines that reference the license file if you want an easy install process.
 
 pkgname=mixbus
-pkgver=5.3.0
+pkgver=5.3.22
 pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://harrisonconsoles.com/site/$pkgname.html"
 license=('EULA, GPLv2')
 depends=('glibc' 'xorg-server')
