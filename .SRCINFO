@@ -11,7 +11,7 @@ pkgbase = docker-rootless
 	source = https://master.dockerproject.org/linux/x86_64/docker-rootless-extras.tgz
 	source = docker.service
 	md5sums = 943e113aedab4ee159977d9d16f7e712
-	md5sums = 30a7a07f461b6c9f2f068a9505ba79bc
+	md5sums = c5158588c36fc80cf85835258f8cd345
 
 pkgname = docker-rootless
 

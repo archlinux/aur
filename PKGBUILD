@@ -15,7 +15,7 @@ source=(
 )
 md5sums=(
 	"943e113aedab4ee159977d9d16f7e712"
-	"30a7a07f461b6c9f2f068a9505ba79bc"
+	"c5158588c36fc80cf85835258f8cd345"
 )
 
 package() {
