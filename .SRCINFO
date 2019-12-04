@@ -1,7 +1,7 @@
 pkgbase = linux-bfq
 	pkgdesc = Linux BFQ-dev
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-bfq
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.1.tar.sign
-	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.4/bfq-dev-lucjan/5.4-bfq-dev-lucjan-v11-r2K191202.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.4/bfq-dev-lucjan/5.4-bfq-dev-lucjan-v11-r2K191204.patch
 	source = https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.4/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.4/arch-patches-v2-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
