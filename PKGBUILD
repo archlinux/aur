@@ -1,8 +1,8 @@
 # Maintainer: Michael Migliore <mcmigliore+aur@gmail.com>
 
 pkgname=f3d
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='A fast and minimalist 3D viewer'
 arch=('x86_64')
 url="https://gitlab.kitware.com/${pkgname}/${pkgname}"
@@ -11,7 +11,7 @@ depends=('vtk-raytracing-git')
 makedepends=('cmake')
 provides=('f3d')
 source=("https://gitlab.kitware.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('de08cd2342c1a11e25787931fec0af8dfb9b3cff2ed27675d0df10f962ab6fdc')
+sha256sums=('aa9d2d29fb1e8f4d9f2f741832dd7e721c65d77340d63065af8289fb58dbb1cc')
 
 build() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
