@@ -1,6 +1,6 @@
 pkgbase = ss-face
 	pkgdesc = A light weight shadowsocks-libev client GUI.
-	pkgver = 2.0.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/df543/Shadowsocks-Face
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = ss-face
 	license = GPL
 	depends = qt5-base
 	depends = shadowsocks-libev
-	source = ss-face-2.0.1.tar.gz::https://codeload.github.com/df543/Shadowsocks-Face/tar.gz/2.0.1
-	sha1sums = 1bd5c8285e491f224feb0d2808503433c5a29bd9
+	source = ss-face-2.1.1.tar.gz::https://codeload.github.com/df543/Shadowsocks-Face/tar.gz/2.1.1
+	sha1sums = 51ad67ae5d0eadb5378a6ca1b77e32230509a6ba
 
 pkgname = ss-face
 
