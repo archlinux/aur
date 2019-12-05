@@ -1,11 +1,11 @@
 pkgbase = xmind-zen-electron
 	pkgdesc = XMind - The most popular mind mapping software
 	pkgver = 10.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmind.net/zen/
 	arch = x86_64
 	license = custom
-	depends = electron
+	depends = electron5
 	provides = xmind-zen
 	provides = xmind
 	conflicts = xmind-zen
