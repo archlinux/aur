@@ -1,6 +1,6 @@
 pkgbase = miasm-git
 	pkgdesc = Machine code manipulation library
-	pkgver = 0.1.1.dev136
+	pkgver = 0.1.1.dev253
 	pkgrel = 1
 	url = https://miasm.re/
 	arch = any

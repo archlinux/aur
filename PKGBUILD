@@ -3,7 +3,7 @@
 pkgbase='miasm-git'
 pkgbasename='miasm'
 pkgname=('python-miasm-git' 'python2-miasm-git')
-pkgver=0.1.1.dev136
+pkgver=0.1.1.dev253
 pkgrel=1
 pkgdesc='Machine code manipulation library'
 arch=('any')
