@@ -3,7 +3,7 @@
 
 pkgname=evdi
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
 url="https://github.com/DisplayLink/evdi"
