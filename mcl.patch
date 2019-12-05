@@ -1,0 +1,10 @@
+--- db.py.orig	2019-12-05 11:43:29.175868445 +0100
++++ db.py	2019-12-05 11:47:08.686732314 +0100
+@@ -746,6 +746,7 @@
+         return res
+ 
+     def __remove_fact(self, fact_id):
++        fact_id = int(fact_id)
+         statements = ["DELETE FROM fact_tags where fact_id = ?",
+                       "DELETE FROM facts where id = ?"]
+         self.execute(statements, [(fact_id,)] * 2)
