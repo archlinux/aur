@@ -15,11 +15,10 @@ diff --git a/src/sage/all.py b/src/sage/all.py
 index 42dca175d2..b4f544b664 100644
 --- a/src/sage/all.py
 +++ b/src/sage/all.py
-@@ -316,7 +316,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
+@@ -316,6 +316,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
  # However, be sure to keep OUR deprecation warnings
  warnings.filterwarnings('default', category=DeprecationWarning,
-     message=r'[\s\S]*See https\?://trac.sagemath.org/[0-9]* for details.')
--
+     message=r'[\s\S]*See https\?://trac\.sagemath\.org/[0-9]* for details.')
 +# Python 3.8 deprecation warnings
 +warnings.filterwarnings('ignore', category=DeprecationWarning,
 +    message='.*PY_SSIZE_T_CLEAN.*')
@@ -390,21 +389,23 @@ index 99ad85b695..4d2642366a 100644
              ]
          """
          alg = kwds.get('algorithm', None)
-@@ -3565,13 +3565,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3672,13 +3672,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y,z> = ProjectiveSpace(K,2)
              sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
-             sage: f.periodic_points(1)
+             sage: f.preperiodic_points(0,1)
 -            [(-s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 3*s + 1 : s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 4*s - 1 : 1),
--             (-2*s^5 + 4*s^4 - 5*s^3 + 3*s^2 - 4*s : -2*s^5 + 5*s^4 - 7*s^3 + 6*s^2 - 7*s + 3 : 1),
--             (-s^5 + 3*s^4 - 4*s^3 + 4*s^2 - 4*s + 2 : -s^5 + 2*s^4 - 2*s^3 + s^2 - s : 1),
+-            (-2*s^5 + 4*s^4 - 5*s^3 + 3*s^2 - 4*s : -2*s^5 + 5*s^4 - 7*s^3 + 6*s^2 - 7*s + 3 : 1),
+-            (-s^5 + 3*s^4 - 4*s^3 + 4*s^2 - 4*s + 2 : -s^5 + 2*s^4 - 2*s^3 + s^2 - s : 1),
+-            (s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 3*s - 1 : -s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 4*s + 2 : 1),
+-            (2*s^5 - 6*s^4 + 9*s^3 - 8*s^2 + 7*s - 4 : 2*s^5 - 5*s^4 + 7*s^3 - 5*s^2 + 6*s - 2 : 1),
+-            (1 : 1 : 1),
+-            (s^5 - 2*s^4 + 2*s^3 + s : s^5 - 3*s^4 + 4*s^3 - 3*s^2 + 2*s - 1 : 1)]
 +            [(2*s^5 - 6*s^4 + 9*s^3 - 8*s^2 + 7*s - 4 : 2*s^5 - 5*s^4 + 7*s^3 - 5*s^2 + 6*s - 2 : 1),
-              (s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 3*s - 1 : -s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 4*s + 2 : 1),
--             (2*s^5 - 6*s^4 + 9*s^3 - 8*s^2 + 7*s - 4 : 2*s^5 - 5*s^4 + 7*s^3 - 5*s^2 + 6*s - 2 : 1),
++             (s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 3*s - 1 : -s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 4*s + 2 : 1),
 +             (-s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 3*s + 1 : s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 4*s - 1 : 1),
 +             (-2*s^5 + 4*s^4 - 5*s^3 + 3*s^2 - 4*s : -2*s^5 + 5*s^4 - 7*s^3 + 6*s^2 - 7*s + 3 : 1),
 +             (s^5 - 2*s^4 + 2*s^3 + s : s^5 - 3*s^4 + 4*s^3 - 3*s^2 + 2*s - 1 : 1),
-              (1 : 1 : 1),
--             (s^5 - 2*s^4 + 2*s^3 + s : s^5 - 3*s^4 + 4*s^3 - 3*s^2 + 2*s - 1 : 1)]
++             (1 : 1 : 1),
 +             (-s^5 + 3*s^4 - 4*s^3 + 4*s^2 - 4*s + 2 : -s^5 + 2*s^4 - 2*s^3 + s^2 - s : 1)]
  
          ::

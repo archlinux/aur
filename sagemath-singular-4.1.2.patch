@@ -1,78 +1,71 @@
-diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
-index 87342e8..9a0d37d 100644
---- a/src/sage/libs/singular/function.pyx
-+++ b/src/sage/libs/singular/function.pyx
-@@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
-             Traceback (most recent call last):
-             ...
-             RuntimeError: error in Singular function call 'size':
--            Wrong number of arguments (got 2 arguments, arity code is 300)
-+            Wrong number of arguments (got 2 arguments, arity code is 302)
-             sage: size('foobar', ring=P)
-             6
- 
-@@ -1666,17 +1666,17 @@ def singular_function(name):
-         Traceback (most recent call last):
-         ...
-         RuntimeError: error in Singular function call 'factorize':
--        Wrong number of arguments (got 0 arguments, arity code is 303)
-+        Wrong number of arguments (got 0 arguments, arity code is 305)
-         sage: factorize(f, 1, 2)
-         Traceback (most recent call last):
-         ...
-         RuntimeError: error in Singular function call 'factorize':
--        Wrong number of arguments (got 3 arguments, arity code is 303)
-+        Wrong number of arguments (got 3 arguments, arity code is 305)
-         sage: factorize(f, 1, 2, 3)
-         Traceback (most recent call last):
-         ...
-         RuntimeError: error in Singular function call 'factorize':
--        Wrong number of arguments (got 4 arguments, arity code is 303)
-+        Wrong number of arguments (got 4 arguments, arity code is 305)
- 
-     The Singular function ``list`` can be called with any number of
-     arguments::
 diff --git a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
-index 8f6576b477..deaf0f5769 100644
+index f78b522dc4..1b6c26ac03 100644
 --- a/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_element_letterplace.pyx
-@@ -446,7 +446,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -24,7 +24,6 @@ from cpython.object cimport PyObject_RichCompare
+ # Define some singular functions
+ lib("freegb.lib")
+ poly_reduce = singular_function("NF")
+-singular_system=singular_function("system")
+ 
+ #####################
+ # Free algebra elements
+@@ -444,9 +443,10 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+         cdef int i
+         if P.monomial_divides(s_poly,p_poly):
              return True
++        # current_ring has one additional variable if the variables have weights
++        realngens = A._current_ring.ngens() / A.degbound()
          for i from 0 <= i < p_d-s_d:
-             s_poly = singular_system("stest",s_poly,1,
+-            s_poly = singular_system("stest",s_poly,1,
 -                                     A._degbound,A.__ngens,ring=P)
-+                                     ring=P)
++            s_poly = s_poly.shift(realngens)
              if P.monomial_divides(s_poly,p_poly):
                  return True
          return False
-@@ -600,7 +600,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -600,7 +600,9 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
          # we must put the polynomials into the same ring
          left._poly = A._current_ring(left._poly)
          right._poly = A._current_ring(right._poly)
 -        rshift = singular_system("stest",right._poly,left._poly.degree(),A._degbound,A.__ngens, ring=A._current_ring)
-+        rshift = singular_system("stest",right._poly,left._poly.degree(), ring=A._current_ring)
++        # current_ring has one additional variable if the variables have weights
++        realngens = A._current_ring.ngens() / A.degbound()
++        rshift = right._poly.shift(left._poly.degree()*realngens)
          return FreeAlgebraElement_letterplace(A,left._poly*rshift, check=False)
  
      def __pow__(FreeAlgebraElement_letterplace self, int n, k):
-@@ -628,7 +628,7 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+@@ -626,10 +628,11 @@ cdef class FreeAlgebraElement_letterplace(AlgebraElement):
+         self._poly = A._current_ring(self._poly)
+         cdef int d = self._poly.degree()
          q = p = self._poly
++        # current_ring has one additional variable if the variables have weights
++        realngens = A._current_ring.ngens() / A.degbound()
          cdef int i
          for i from 0<i<n:
 -            q = singular_system("stest",q,d,A._degbound,A.__ngens,
-+            q = singular_system("stest",q,d,
-                                      ring=A._current_ring)
+-                                     ring=A._current_ring)
++            q = q.shift(d*realngens)
              p *= q
          return FreeAlgebraElement_letterplace(A, p, check=False)
+ 
 diff --git a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
-index 7a8400052e..b3474fa07c 100644
+index 7a8400052e..edbbd5767a 100644
 --- a/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
 +++ b/src/sage/algebras/letterplace/free_algebra_letterplace.pyx
-@@ -683,7 +683,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
+@@ -113,7 +113,6 @@ from sage.rings.noncommutative_ideals import IdealMonoid_nc
+ # Define some singular functions
+ lib("freegb.lib")
+ poly_reduce = singular_function("NF")
+-singular_system=singular_function("system")
+ 
+ # unfortunately we can not set Singular attributes for MPolynomialRing_libsingular
+ # Hence, we must constantly work around Letterplace's sanity checks,
+@@ -683,7 +682,7 @@ cdef class FreeAlgebra_letterplace(Algebra):
          degbound = self._degbound
          cdef list G = [C(x._poly) for x in g]
          for y in G:
 -            out.extend([y]+[singular_system("stest",y,n+1,degbound,ngens,ring=C) for n in xrange(d-y.degree())])
-+            out.extend([y]+[singular_system("stest",y,n+1,ring=C) for n in xrange(d-y.degree())])
++            out.extend([y]+[y.shift(ngens*(n+1)) for n in xrange(d-y.degree())])
          return C.ideal(out)
  
      ###########################
@@ -99,4 +92,166 @@ index 5776c58cf7..e4ad267bd4 100644
          libsingular_options['redTail'] = bck[0]
          libsingular_options['redSB'] = bck[1]
          self.__GB = A.ideal(out,side='twosided',coerce=False)
-
+diff --git a/src/sage/combinat/root_system/hecke_algebra_representation.py b/src/sage/combinat/root_system/hecke_algebra_representation.py
+index 6498afbeaa..b1ad7ea6fa 100644
+--- a/src/sage/combinat/root_system/hecke_algebra_representation.py
++++ b/src/sage/combinat/root_system/hecke_algebra_representation.py
+@@ -745,7 +745,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
+              -2121 + 212,
+              (q2/(q1-q2))*2121 + (q2/(-q1+q2))*121 + (q2/(-q1+q2))*212 - 12 + ((-q2)/(-q1+q2))*21 + 2,
+              ((-q2^2)/(-q1^2+q1*q2-q2^2))*2121 - 121 + (q2^2/(-q1^2+q1*q2-q2^2))*212 + 21,
+-             ((q1^2+q2^2)/(-q1^2+q1*q2-q2^2))*2121 + ((-q1^2-q2^2)/(-q1^2+q1*q2-q2^2))*121 + ((-q2^2)/(-q1^2+q1*q2-q2^2))*212 + (q2^2/(-q1^2+q1*q2-q2^2))*12 - 21 + 1,
++             ((-q1^2-q2^2)/(q1^2-q1*q2+q2^2))*2121 + ((-q1^2-q2^2)/(-q1^2+q1*q2-q2^2))*121 + ((-q2^2)/(-q1^2+q1*q2-q2^2))*212 + (q2^2/(-q1^2+q1*q2-q2^2))*12 - 21 + 1,
+              2121,
+              (q2/(-q1+q2))*2121 + ((-q2)/(-q1+q2))*121 - 212 + 12,
+              -2121 + 121]
+diff --git a/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py b/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
+index 3ae5effddb..898a1fe636 100644
+--- a/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
++++ b/src/sage/combinat/root_system/non_symmetric_macdonald_polynomials.py
+@@ -555,8 +555,7 @@ class NonSymmetricMacdonaldPolynomials(CherednikOperatorsEigenvectors):
+         B[(1, 0, 0)]
+ 
+         sage: E[-omega[1]]
+-        B[(-1, 0, 0)] + ((-q*q1^6-q*q1^5*q2-q1*q2^5-q2^6)/(-q^3*q1^6-q^2*q1^5*q2-q*q1*q2^5-q2^6))*B[(1, 0, 0)] + ((-q1-q2)/(-q*q1-q2))*B[(0, -1, 0)]
+-        + ((q1+q2)/(q*q1+q2))*B[(0, 1, 0)] + ((-q1-q2)/(-q*q1-q2))*B[(0, 0, -1)] + ((-q1-q2)/(-q*q1-q2))*B[(0, 0, 1)]
++        B[(-1, 0, 0)] + ((q*q1^6+q*q1^5*q2+q1*q2^5+q2^6)/(q^3*q1^6+q^2*q1^5*q2+q*q1*q2^5+q2^6))*B[(1, 0, 0)] + ((q1+q2)/(q*q1+q2))*B[(0, -1, 0)] + ((q1+q2)/(q*q1+q2))*B[(0, 1, 0)] + ((q1+q2)/(q*q1+q2))*B[(0, 0, -1)] + ((q1+q2)/(q*q1+q2))*B[(0, 0, 1)]
+ 
+         sage: E[omega[2]]
+         ((-q1*q2^3-q2^4)/(q*q1^4-q2^4))*B[(1, 0, 0)] + B[(0, 1, 0)]
+@@ -567,14 +566,7 @@ class NonSymmetricMacdonaldPolynomials(CherednikOperatorsEigenvectors):
+         + ((-q1*q2-q2^2)/(q*q1^2-q2^2))*B[(0, 0, -1)] + ((q1*q2+q2^2)/(-q*q1^2+q2^2))*B[(0, 0, 1)]
+ 
+         sage: E[-omega[1]-omega[2]]
+-        ((-q^3*q1^6-q^3*q1^5*q2-2*q^2*q1^6-3*q^2*q1^5*q2+q^2*q1^4*q2^2+2*q^2*q1^3*q2^3+q*q1^5*q2+2*q*q1^4*q2^2-q*q1^3*q2^3-2*q*q1^2*q2^4+q*q1*q2^5+q*q2^6-q1^3*q2^3-q1^2*q2^4+2*q1*q2^5+2*q2^6)/(-q^4*q1^6-q^3*q1^5*q2+q^3*q1^4*q2^2-q*q1^2*q2^4+q*q1*q2^5+q2^6))*B[(0, 0, 0)] + B[(-1, -1, 0)]
+-        + ((q*q1^4+q*q1^3*q2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(-1, 1, 0)] + ((q1+q2)/(q*q1+q2))*B[(-1, 0, -1)] + ((-q1-q2)/(-q*q1-q2))*B[(-1, 0, 1)]
+-        + ((q*q1^4+q*q1^3*q2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(1, -1, 0)]
+-        + ((-q^2*q1^6-q^2*q1^5*q2-q*q1^5*q2+q*q1^3*q2^3+q1^5*q2+q1^4*q2^2-q1^3*q2^3-q1^2*q2^4+q1*q2^5+q2^6)/(-q^4*q1^6-q^3*q1^5*q2+q^3*q1^4*q2^2-q*q1^2*q2^4+q*q1*q2^5+q2^6))*B[(1, 1, 0)]
+-        + ((-q*q1^4-2*q*q1^3*q2-q*q1^2*q2^2+q1^3*q2+q1^2*q2^2-q1*q2^3-q2^4)/(-q^3*q1^4-q^2*q1^3*q2-q*q1*q2^3-q2^4))*B[(1, 0, -1)]
+-        + ((-q*q1^4-2*q*q1^3*q2-q*q1^2*q2^2+q1^3*q2+q1^2*q2^2-q1*q2^3-q2^4)/(-q^3*q1^4-q^2*q1^3*q2-q*q1*q2^3-q2^4))*B[(1, 0, 1)] + ((q1+q2)/(q*q1+q2))*B[(0, -1, -1)]
+-        + ((-q1-q2)/(-q*q1-q2))*B[(0, -1, 1)] + ((q*q1^4+2*q*q1^3*q2+q*q1^2*q2^2-q1^3*q2-q1^2*q2^2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(0, 1, -1)]
+-        + ((q*q1^4+2*q*q1^3*q2+q*q1^2*q2^2-q1^3*q2-q1^2*q2^2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(0, 1, 1)]
++        ((q^3*q1^6+q^3*q1^5*q2+2*q^2*q1^6+3*q^2*q1^5*q2-q^2*q1^4*q2^2-2*q^2*q1^3*q2^3-q*q1^5*q2-2*q*q1^4*q2^2+q*q1^3*q2^3+2*q*q1^2*q2^4-q*q1*q2^5-q*q2^6+q1^3*q2^3+q1^2*q2^4-2*q1*q2^5-2*q2^6)/(q^4*q1^6+q^3*q1^5*q2-q^3*q1^4*q2^2+q*q1^2*q2^4-q*q1*q2^5-q2^6))*B[(0, 0, 0)] + B[(-1, -1, 0)] + ((q*q1^4+q*q1^3*q2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(-1, 1, 0)] + ((q1+q2)/(q*q1+q2))*B[(-1, 0, -1)] + ((-q1-q2)/(-q*q1-q2))*B[(-1, 0, 1)] + ((q*q1^4+q*q1^3*q2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(1, -1, 0)] + ((q^2*q1^6+q^2*q1^5*q2+q*q1^5*q2-q*q1^3*q2^3-q1^5*q2-q1^4*q2^2+q1^3*q2^3+q1^2*q2^4-q1*q2^5-q2^6)/(q^4*q1^6+q^3*q1^5*q2-q^3*q1^4*q2^2+q*q1^2*q2^4-q*q1*q2^5-q2^6))*B[(1, 1, 0)] + ((q*q1^4+2*q*q1^3*q2+q*q1^2*q2^2-q1^3*q2-q1^2*q2^2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(1, 0, -1)] + ((q*q1^4+2*q*q1^3*q2+q*q1^2*q2^2-q1^3*q2-q1^2*q2^2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(1, 0, 1)] + ((q1+q2)/(q*q1+q2))*B[(0, -1, -1)] + ((q1+q2)/(q*q1+q2))*B[(0, -1, 1)] + ((q*q1^4+2*q*q1^3*q2+q*q1^2*q2^2-q1^3*q2-q1^2*q2^2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(0, 1, -1)] + ((q*q1^4+2*q*q1^3*q2+q*q1^2*q2^2-q1^3*q2-q1^2*q2^2+q1*q2^3+q2^4)/(q^3*q1^4+q^2*q1^3*q2+q*q1*q2^3+q2^4))*B[(0, 1, 1)]
+ 
+         sage: E[omega[1]-omega[2]]
+         ((q^3*q1^7+q^3*q1^6*q2-q*q1*q2^6-q*q2^7)/(q^3*q1^7-q^2*q1^5*q2^2+q*q1^2*q2^5-q2^7))*B[(0, 0, 0)] + B[(1, -1, 0)]
+@@ -812,7 +804,7 @@ class NonSymmetricMacdonaldPolynomials(CherednikOperatorsEigenvectors):
+         ((-q*q1*q2^3-q*q2^4)/(q^2*q1^4-q2^4))*B[(0, 0)] + B[(1, 0)]
+ 
+         sage: E[2*omega[2]]      # long time # not checked against Bogdan's notes, but a good self-consistency test
+-        ((-q^12*q1^6-q^12*q1^5*q2+2*q^10*q1^5*q2+5*q^10*q1^4*q2^2+3*q^10*q1^3*q2^3+2*q^8*q1^5*q2+4*q^8*q1^4*q2^2+q^8*q1^3*q2^3-q^8*q1^2*q2^4+q^8*q1*q2^5+q^8*q2^6-q^6*q1^3*q2^3+q^6*q1^2*q2^4+4*q^6*q1*q2^5+2*q^6*q2^6+q^4*q1^3*q2^3+3*q^4*q1^2*q2^4+4*q^4*q1*q2^5+2*q^4*q2^6)/(-q^12*q1^6-q^10*q1^5*q2-q^8*q1^3*q2^3+q^6*q1^4*q2^2-q^6*q1^2*q2^4+q^4*q1^3*q2^3+q^2*q1*q2^5+q2^6))*B[(0, 0)] + ((q^7*q1^2*q2+2*q^7*q1*q2^2+q^7*q2^3+q^5*q1^2*q2+2*q^5*q1*q2^2+q^5*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(-1, 0)] + ((q^6*q1*q2+q^6*q2^2)/(-q^6*q1^2+q2^2))*B[(-1, -1)] + ((q^6*q1^2*q2+2*q^6*q1*q2^2+q^6*q2^3+q^4*q1^2*q2+2*q^4*q1*q2^2+q^4*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(-1, 1)] + ((q^3*q1*q2+q^3*q2^2)/(-q^6*q1^2+q2^2))*B[(-1, 2)] + ((-q^7*q1^3-q^7*q1^2*q2+q^7*q1*q2^2+q^7*q2^3+2*q^5*q1^2*q2+4*q^5*q1*q2^2+2*q^5*q2^3+2*q^3*q1^2*q2+4*q^3*q1*q2^2+2*q^3*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(1, 0)] + ((-q^6*q1^2*q2-2*q^6*q1*q2^2-q^6*q2^3-q^4*q1^2*q2-2*q^4*q1*q2^2-q^4*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(1, -1)] + ((q^8*q1^3+q^8*q1^2*q2+q^6*q1^3+q^6*q1^2*q2-q^6*q1*q2^2-q^6*q2^3-2*q^4*q1^2*q2-4*q^4*q1*q2^2-2*q^4*q2^3-q^2*q1^2*q2-3*q^2*q1*q2^2-2*q^2*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(1, 1)] + ((-q^5*q1^2-q^5*q1*q2+q^3*q1*q2+q^3*q2^2+q*q1*q2+q*q2^2)/(-q^6*q1^2+q2^2))*B[(1, 2)] + ((-q^6*q1^2-q^6*q1*q2+q^4*q1*q2+q^4*q2^2+q^2*q1*q2+q^2*q2^2)/(-q^6*q1^2+q2^2))*B[(2, 0)] + ((q^3*q1*q2+q^3*q2^2)/(-q^6*q1^2+q2^2))*B[(2, -1)] + ((-q^5*q1^2-q^5*q1*q2+q^3*q1*q2+q^3*q2^2+q*q1*q2+q*q2^2)/(-q^6*q1^2+q2^2))*B[(2, 1)] + B[(2, 2)] + ((-q^7*q1^2*q2-2*q^7*q1*q2^2-q^7*q2^3-q^5*q1^2*q2-2*q^5*q1*q2^2-q^5*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(0, -1)] + ((q^7*q1^3+q^7*q1^2*q2-q^7*q1*q2^2-q^7*q2^3-2*q^5*q1^2*q2-4*q^5*q1*q2^2-2*q^5*q2^3-2*q^3*q1^2*q2-4*q^3*q1*q2^2-2*q^3*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(0, 1)] + ((-q^6*q1^2-q^6*q1*q2+q^4*q1*q2+q^4*q2^2+q^2*q1*q2+q^2*q2^2)/(-q^6*q1^2+q2^2))*B[(0, 2)]
++        ((-q^12*q1^6-q^12*q1^5*q2+2*q^10*q1^5*q2+5*q^10*q1^4*q2^2+3*q^10*q1^3*q2^3+2*q^8*q1^5*q2+4*q^8*q1^4*q2^2+q^8*q1^3*q2^3-q^8*q1^2*q2^4+q^8*q1*q2^5+q^8*q2^6-q^6*q1^3*q2^3+q^6*q1^2*q2^4+4*q^6*q1*q2^5+2*q^6*q2^6+q^4*q1^3*q2^3+3*q^4*q1^2*q2^4+4*q^4*q1*q2^5+2*q^4*q2^6)/(-q^12*q1^6-q^10*q1^5*q2-q^8*q1^3*q2^3+q^6*q1^4*q2^2-q^6*q1^2*q2^4+q^4*q1^3*q2^3+q^2*q1*q2^5+q2^6))*B[(0, 0)] + ((q^7*q1^2*q2+2*q^7*q1*q2^2+q^7*q2^3+q^5*q1^2*q2+2*q^5*q1*q2^2+q^5*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(-1, 0)] + ((-q^6*q1*q2-q^6*q2^2)/(q^6*q1^2-q2^2))*B[(-1, -1)] + ((q^6*q1^2*q2+2*q^6*q1*q2^2+q^6*q2^3+q^4*q1^2*q2+2*q^4*q1*q2^2+q^4*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(-1, 1)] + ((-q^3*q1*q2-q^3*q2^2)/(q^6*q1^2-q2^2))*B[(-1, 2)] + ((q^7*q1^3+q^7*q1^2*q2-q^7*q1*q2^2-q^7*q2^3-2*q^5*q1^2*q2-4*q^5*q1*q2^2-2*q^5*q2^3-2*q^3*q1^2*q2-4*q^3*q1*q2^2-2*q^3*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(1, 0)] + ((q^6*q1^2*q2+2*q^6*q1*q2^2+q^6*q2^3+q^4*q1^2*q2+2*q^4*q1*q2^2+q^4*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(1, -1)] + ((q^8*q1^3+q^8*q1^2*q2+q^6*q1^3+q^6*q1^2*q2-q^6*q1*q2^2-q^6*q2^3-2*q^4*q1^2*q2-4*q^4*q1*q2^2-2*q^4*q2^3-q^2*q1^2*q2-3*q^2*q1*q2^2-2*q^2*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(1, 1)] + ((q^5*q1^2+q^5*q1*q2-q^3*q1*q2-q^3*q2^2-q*q1*q2-q*q2^2)/(q^6*q1^2-q2^2))*B[(1, 2)] + ((-q^6*q1^2-q^6*q1*q2+q^4*q1*q2+q^4*q2^2+q^2*q1*q2+q^2*q2^2)/(-q^6*q1^2+q2^2))*B[(2, 0)] + ((-q^3*q1*q2-q^3*q2^2)/(q^6*q1^2-q2^2))*B[(2, -1)] + ((-q^5*q1^2-q^5*q1*q2+q^3*q1*q2+q^3*q2^2+q*q1*q2+q*q2^2)/(-q^6*q1^2+q2^2))*B[(2, 1)] + B[(2, 2)] + ((q^7*q1^2*q2+2*q^7*q1*q2^2+q^7*q2^3+q^5*q1^2*q2+2*q^5*q1*q2^2+q^5*q2^3)/(-q^8*q1^3-q^6*q1^2*q2+q^2*q1*q2^2+q2^3))*B[(0, -1)] + ((q^7*q1^3+q^7*q1^2*q2-q^7*q1*q2^2-q^7*q2^3-2*q^5*q1^2*q2-4*q^5*q1*q2^2-2*q^5*q2^3-2*q^3*q1^2*q2-4*q^3*q1*q2^2-2*q^3*q2^3)/(q^8*q1^3+q^6*q1^2*q2-q^2*q1*q2^2-q2^3))*B[(0, 1)] + ((q^6*q1^2+q^6*q1*q2-q^4*q1*q2-q^4*q2^2-q^2*q1*q2-q^2*q2^2)/(q^6*q1^2-q2^2))*B[(0, 2)]
+         sage: E.recursion(2*omega[2])
+         [0, 1, 0, 2, 1, 0, 2, 1, 0]
+ 
+@@ -997,7 +989,7 @@ class NonSymmetricMacdonaldPolynomials(CherednikOperatorsEigenvectors):
+         sage: L0 = E.keys()
+         sage: omega = L0.fundamental_weights()
+         sage: E[2*omega[2]]
+-        ((q*q1+q*q2)/(q*q1+q2))*B[(1, 2, 1)] + ((q*q1+q*q2)/(q*q1+q2))*B[(2, 1, 1)] + B[(2, 2, 0)]
++        ((-q*q1-q*q2)/(-q*q1-q2))*B[(1, 2, 1)] + ((-q*q1-q*q2)/(-q*q1-q2))*B[(2, 1, 1)] + B[(2, 2, 0)]
+         sage: for d in range(4):                                    # long time (9s)
+         ....:     for weight in IntegerVectors(d,3).map(list).map(L0):
+         ....:         eigenvalues = E.eigenvalues(E[L0(weight)])
+diff --git a/src/sage/combinat/sf/macdonald.py b/src/sage/combinat/sf/macdonald.py
+index 0d32a8dfbf..5e48f87aad 100644
+--- a/src/sage/combinat/sf/macdonald.py
++++ b/src/sage/combinat/sf/macdonald.py
+@@ -483,7 +483,7 @@ class Macdonald(UniqueRepresentation):
+             sage: Ht = Sym.macdonald().Ht()
+             sage: s = Sym.schur()
+             sage: Ht(s([2,1]))
+-            ((-q)/(-q*t^2+t^3+q^2-q*t))*McdHt[1, 1, 1] + ((q^2+q*t+t^2)/(-q^2*t^2+q^3+t^3-q*t))*McdHt[2, 1] + (t/(-q^3+q^2*t+q*t-t^2))*McdHt[3]
++            (q/(q*t^2-t^3-q^2+q*t))*McdHt[1, 1, 1] + ((-q^2-q*t-t^2)/(q^2*t^2-q^3-t^3+q*t))*McdHt[2, 1] + (t/(-q^3+q^2*t+q*t-t^2))*McdHt[3]
+             sage: Ht(s([2]))
+             ((-q)/(-q+t))*McdHt[1, 1] + (t/(-q+t))*McdHt[2]
+         """
+@@ -899,7 +899,7 @@ class MacdonaldPolynomials_generic(sfa.SymmetricFunctionAlgebra_generic):
+             sage: Q._multiply(Q[1],Q[2])
+             McdQ[2, 1] + ((q^2*t-q^2+q*t-q+t-1)/(q^2*t-1))*McdQ[3]
+             sage: Ht._multiply(Ht[1],Ht[2])
+-            ((-q^2+1)/(-q^2+t))*McdHt[2, 1] + ((-t+1)/(q^2-t))*McdHt[3]
++            ((q^2-1)/(q^2-t))*McdHt[2, 1] + ((t-1)/(-q^2+t))*McdHt[3]
+         """
+         return self( self._s(left)*self._s(right) )
+ 
+diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
+index b649ab1e64..3742260aa9 100644
+--- a/src/sage/libs/singular/function.pyx
++++ b/src/sage/libs/singular/function.pyx
+@@ -1257,7 +1257,7 @@ cdef class SingularFunction(SageObject):
+             Traceback (most recent call last):
+             ...
+             RuntimeError: error in Singular function call 'size':
+-            Wrong number of arguments (got 2 arguments, arity code is 300)
++            Wrong number of arguments (got 2 arguments, arity code is 302)
+             sage: size('foobar', ring=P)
+             6
+ 
+@@ -1671,17 +1671,17 @@ def singular_function(name):
+         Traceback (most recent call last):
+         ...
+         RuntimeError: error in Singular function call 'factorize':
+-        Wrong number of arguments (got 0 arguments, arity code is 303)
++        Wrong number of arguments (got 0 arguments, arity code is 305)
+         sage: factorize(f, 1, 2)
+         Traceback (most recent call last):
+         ...
+         RuntimeError: error in Singular function call 'factorize':
+-        Wrong number of arguments (got 3 arguments, arity code is 303)
++        Wrong number of arguments (got 3 arguments, arity code is 305)
+         sage: factorize(f, 1, 2, 3)
+         Traceback (most recent call last):
+         ...
+         RuntimeError: error in Singular function call 'factorize':
+-        Wrong number of arguments (got 4 arguments, arity code is 303)
++        Wrong number of arguments (got 4 arguments, arity code is 305)
+ 
+     The Singular function ``list`` can be called with any number of
+     arguments::
+diff --git a/src/sage/rings/polynomial/multi_polynomial_element.py b/src/sage/rings/polynomial/multi_polynomial_element.py
+index e5d692150c..f4027eb11e 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_element.py
++++ b/src/sage/rings/polynomial/multi_polynomial_element.py
+@@ -2147,7 +2147,7 @@ def degree_lowest_rational_function(r, x):
+     ::
+ 
+         sage: r = f/g; r
+-        (-b*c^2 + 2)/(a*b^3*c^6 - 2*a*c)
++        (-2*b*c^2 - 1)/(2*a*b^3*c^6 + a*c)
+         sage: degree_lowest_rational_function(r,a)
+         -1
+         sage: degree_lowest_rational_function(r,b)
+diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+index 0311cd71bb..e8e9ea9109 100644
+--- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
++++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
+@@ -2588,6 +2588,15 @@ cdef class MPolynomial_libsingular(MPolynomial):
+         """
+         return  singular_polynomial_str_with_changed_varnames(self._poly, self._parent_ring, varnames)
+ 
++    def shift(self, int n):
++        r = self.parent()
++        olddict = self.dict()
++        newdict = dict()
++        for key in olddict:
++            newkey = key[-n:]+key[:-n]
++            newdict[newkey] = olddict[key]
++        return r(newdict)
++
+     def degree(self, MPolynomial_libsingular x=None, int std_grading=False):
+         """
+         Return the maximal degree of this polynomial in ``x``, where
+diff --git a/src/sage/schemes/curves/projective_curve.py b/src/sage/schemes/curves/projective_curve.py
+index b5bd3c8c3e..0b26733ede 100644
+--- a/src/sage/schemes/curves/projective_curve.py
++++ b/src/sage/schemes/curves/projective_curve.py
+@@ -1873,7 +1873,7 @@ class ProjectivePlaneCurve_prime_finite_field(ProjectivePlaneCurve_finite_field)
+             sage: C = Curve(f); pts = C.rational_points()
+             sage: D = C.divisor([ (3, pts[0]), (-1,pts[1]), (10, pts[5]) ])
+             sage: C.riemann_roch_basis(D)
+-            [(-x - 2*y)/(-2*x - 2*y), (-x + z)/(x + y)]
++            [(-2*x + y)/(x + y), (-x + z)/(x + y)]
+ 
+ 
+         .. NOTE::
