@@ -1,7 +1,7 @@
 # Maintainer: Peter Trotman <${firstname}${lastname}@gmail.com>
 
 pkgname='zecwallet'
-pkgver=0.7.6
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A z-Addr first full node and UI wallet for zcash'
 arch=('x86_64')
