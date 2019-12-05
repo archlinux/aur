@@ -1,63 +1,82 @@
-# Maintainer: Philipp 'TamCore' B. <philipp {at} tamcore {dot} eu>
-# Contributor: Idares <idares at seznam dot cz>
-# Contributor: Enrico Morelli <morelli@cerm.unifi.it>
-# Contributor: Vadym Abramchuk <abramm@gmail.com>
-# Contributor: karol_007 <karol.blazewicz@gmail.com>
+# Maintainer:  Robin "miup" Cerny <miup@miup.ch>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 
-pkgname=zabbix-agent-lts
-pkgver=3.0.14
+pkgname=(zabbix-agent-lts)
+pkgver=4.0.15
 pkgrel=1
-pkgdesc="Software designed for monitoring availability and performance of IT infrastructure components"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.zabbix.com"
-license=('GPL')
-backup=('etc/zabbix/zabbix_agent.conf'
-        'etc/zabbix/zabbix_agentd.conf'
-		)
-install="zabbix-agent.install"
-source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
-        "zabbix-agent.install"
-		"zabbix-agentd.service"
-		"zabbix-agentd.tmpfiles"
-		)
-provides=(zabbix-agent)
-replaces=(zabbix-agent)
-conflicts=(zabbix-agent)
+url='https://www.zabbix.com/'
+license=(GPL)
+source=(https://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz
+        zabbix-agent.{service,sysusers,tmpfiles})
 
-sha512sums=('b024de610b86bd45fc0be655e8275daf53b1de813e13a1e78cfad149b1191a7f118862646f5ded43938bc489ff0b0f325de36d4b2c076ce6fe768ee4234eb944'
-            '2a918643877e102a1e7055b423efa800ab45c5566b0329bddeeae019aed8d8cd3989b7303640e5d28b37c49e612a4287ab7f8745771dd7ebcaac2f1abf2e0645'
-            '95cb6edb45e8dd45120657bb2a9fef1b3fca3950059820deb7cb5b55efd0ff00ef08f2da539c6ceed98f80421b77fa35079ccb1673d21c7bec94f78e7f111359'
-            '3c63a2791e6ac77cb3144eb47a275cc8748f5c8943a076052300d6964994b95b18d60f504584fdcb683739dc514261402895e3f30ae2fbdb218acbc42c3d72df')
+sha512sums=('39e70b9cbd1f1d8c659cb44ef25265563a45ddd575eaffa6a5c2a71f4566bb8a1f5e6c9b79699a5535a845307f7adfbfa1f10b184d38803f2b6403db38b89e58'
+            '8c1fa2676bc0ef91bc39ec5f97b4d3ba5c365d063420455a3785121a54e120bc5afeacde42a48f4509c115f940dcc3b6c2f43044a7fbfb421182fc93b22a2444'
+            '3ab3ac1acc7e35c8896157aef601ebc30815237ac5252cbd0c1ecb26eeaf9eccf5c49938ae8c85bb79a6f95f607f082f6b80ed660829599ec03aa626cca6d3dc'
+            'ca6b4779de23829dfdd80ee21e924fbe4e2754f4e693bed4b1a2aa846cd87d150e399b1169d7fe58d30c50ed837c1b8254e580de420267d0a1834d6dc409c43d')
 
+prepare() {
+  cd $srcdir/zabbix-$pkgver
+  sed -i \
+    -e '/^LogFile=.*/d' \
+    -e 's/# LogType=file/LogType=system/' \
+    conf/zabbix_agentd.conf
 
-build() {
-	cd $srcdir/zabbix-$pkgver
-	./configure \
-		--prefix=/usr \
-		--bindir=/usr/bin \
-		--sbindir=/usr/bin \
-		--sysconfdir=/etc/zabbix \
-		--enable-ipv6 \
-		--with-libcurl \
-		--with-openssl \
-		--enable-agent
-	make
+  autoreconf -fi
 }
 
-package() {
-	cd $srcdir/zabbix-$pkgver
-	make DESTDIR=$pkgdir install
+build() {
+  _configure_flags=(
+    --disable-static
+    --prefix=/usr
+    --infodir=/usr/share/info
+    --mandir=/usr/share/man
+    --sysconfdir=/etc/zabbix
+    --enable-agent
+    --enable-ipv6
+    --with-ldap
+    --with-libcurl
+    --with-libxml2
+    --with-net-snmp
+    --with-openssl
+    --with-ssh2
+    --with-unixodbc
+  )
 
-	install -d -m0750 $pkgdir/var/log/zabbix
+  cd $srcdir/zabbix-$pkgver
+  ./configure ${_configure_flags[@]}
+  make clean
+  make
+}
 
-	install -D -m0644 $srcdir/zabbix-agentd.service $pkgdir/usr/lib/systemd/system/zabbix-agentd.service
+package_zabbix-agent-lts() {
+  pkgdesc='Monitoring agent for Zabbix'
+  depends=(curl pcre)
+  backup=(etc/zabbix/zabbix_agentd.conf)
 
-	# change pid file location
-	sed -i 's:# PidFile=.*:PidFile=/run/zabbix/zabbix_agentd.pid:' $pkgdir/etc/zabbix/zabbix_agentd.conf
-	# change log file location
-	sed -i 's:^LogFile=.*:LogFile=/var/log/zabbix/zabbix_agentd.log:' $pkgdir/etc/zabbix/zabbix_agentd.conf
+  cd $srcdir/zabbix-$pkgver
+  install -Dm755 src/zabbix_agent/zabbix_agentd "$pkgdir/usr/bin/zabbix_agentd"
+  install -Dm755 src/zabbix_sender/zabbix_sender "$pkgdir/usr/bin/zabbix_sender"
 
-	# tmpfile
-	install -D -m 0644 $srcdir/zabbix-agentd.tmpfiles $pkgdir/usr/lib/tmpfiles.d/zabbix-agentd.conf
+  install -Dm644 conf/zabbix_agentd.conf "$pkgdir/etc/zabbix/zabbix_agentd.conf"
+  chown 172:172 "$pkgdir/etc/zabbix/zabbix_agentd.conf"
+
+  install -Dm644 conf/zabbix_agentd/userparameter_examples.conf \
+	"$pkgdir/usr/share/zabbix-agent/userparameter_examples.conf"
+  install -Dm644 conf/zabbix_agentd/userparameter_mysql.conf \
+	"$pkgdir/usr/share/zabbix-agent/userparameter_mysql.conf"
+
+  install -Dm644 man/zabbix_agentd.man \
+	"$pkgdir/usr/share/man/man8/zabbix_agentd.8"
+  install -Dm644 man/zabbix_sender.man \
+	"$pkgdir/usr/share/man/man1/zabbix_sender.1"
+
+  install -Dm644 "$srcdir/zabbix-agent.service" \
+	"$pkgdir/usr/lib/systemd/system/zabbix-agent.service"
+  install -Dm644 "$srcdir/zabbix-agent.sysusers" \
+	"$pkgdir/usr/lib/sysusers.d/zabbix-agent.conf"
+  install -Dm644 "$srcdir/zabbix-agent.tmpfiles" \
+	"$pkgdir/usr/lib/tmpfiles.d/zabbix-agent.conf"
 }
 
