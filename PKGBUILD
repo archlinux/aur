@@ -4,7 +4,7 @@
 pkgname=golden-cheetah-dev
 pkgver=3.5
 pkgrel=191016
-_devversion=RC1
+_devversion=RC2
 pkgdesc="Cycling Power Analysis Software. Development version."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
@@ -15,7 +15,7 @@ optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libusb-compat' '
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/GoldenCheetah/GoldenCheetah/archive/V$pkgver-$_devversion.tar.gz
 gcconfig.pri GoldenCheetah.desktop gc.png)
-md5sums=('f2ad28568853f0cbc30f1d04835f34c4'
+md5sums=('2d33ea003fb0d1251ca784622dead764'
          'c9046d48dcff232fcdd6b04ab77db6db'
          '5a83da03adf4b4ea14ec459061699c0c'
          'e1fb382b4a7316da1ffd435e45e50c4a')
