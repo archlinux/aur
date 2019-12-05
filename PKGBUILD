@@ -26,9 +26,4 @@ package() {
 
 	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	_systemdbasedir="$pkgdir/usr/lib/systemd/system"
-
-	install -Dm644 tcafe_auto_attender.service "$_systemdbasedir/tcafe_auto_attender.service"
-	install -Dm644 tcafe_auto_attender.timer "$_systemdbasedir/tcafe_auto_attender.timer"
 }
