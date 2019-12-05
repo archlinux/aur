@@ -2,8 +2,8 @@
 
 _pkgbasename=dav1d
 pkgname=lib32-$_pkgbasename
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (32 bit)'
 url='https://code.videolan.org/videolan/dav1d/'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
       )
 makedepends=(
       'meson'
+      'meson-cross-x86-linux-gnu'
       'ninja'
       'nasm'
       'doxygen'
@@ -24,7 +25,7 @@ makedepends=(
       )
 provides=('libdav1d.so')
 source=(https://downloads.videolan.org/pub/videolan/${_pkgbasename}/${pkgver}/${_pkgbasename}-${pkgver}.tar.xz{,.asc})
-sha512sums=('8ed44b3d747f01b87b34f86fada824dfb7f86c16168af641fe754c767af5714e9fe212b6eea2bc11b5b041460184c78f755e10d4947e46bc70d95e1bd750f79d'
+sha512sums=('255e592256e47305921f8331f3ea7f9792e2c62b981f62a0ee05a342c3c1073ef4b469092252442c9d67294c0d69b03c127a49a73519aee0e37ab6d89e3000c3'
             'SKIP')
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
@@ -35,12 +36,9 @@ prepare() {
 }
 
 build() {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
   cd ${_pkgbasename}-${pkgver}
   arch-meson build \
+    --cross-file x86-linux-gnu \
     --libdir=/usr/lib32
 
   ninja -C build
