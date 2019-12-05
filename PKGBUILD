@@ -2,7 +2,7 @@
 
 pkgname=php-uopz-git
 pkgver=v6.1.1.r1.gb6b05fd
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP User Operations for Zend"
 arch=('i686' 'x86_64')
 url="https://github.com/krakjoe/uopz"
