@@ -1,10 +1,11 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
 pkgname=contentful-cli
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The official Contentful command line interface"
 arch=("i686" "x86_64")
 url="https://github.com/contentful/contentful-cli"
+depends=('nodejs')
 makedepends=('npm')
 license=('MIT')
 _npmname=contentful-cli
