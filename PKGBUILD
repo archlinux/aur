@@ -16,6 +16,11 @@ build() {
   make
 }
 
+check() {
+  cd mescc-tools-Release_$pkgver
+  make test
+}
+
 package() {
   cd mescc-tools-Release_$pkgver
   make PREFIX=/usr DESTDIR=$pkgdir install
