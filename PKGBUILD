@@ -22,7 +22,7 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-gtk-engines: libclearlooks.so library'
             'lib32-ffmpeg: extra codec support (x264)')
 conflicts=('bin32-firefox')
-source=("https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
+source=("https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2"
         'firefox32.desktop' 'firefox32-safe.desktop' 'mozplugin.patch')
 md5sums=('9aa18888b7812670208490609d75c9bc'
          '467b7e46030ee36d7a0e0752d0fa5480'
