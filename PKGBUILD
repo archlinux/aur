@@ -2,7 +2,7 @@
 
 pkgname="procs-git"
 _pkgname="procs"
-pkgver=v0.8.14.r1.gf85713f
+pkgver=0.8.15.400.gf85713f
 pkgrel=1
 pkgdesc="A modern replacement for ps written by Rust"
 arch=("i686" "x86_64")
@@ -17,10 +17,7 @@ sha384sums=("SKIP")
 
 pkgver() {
     cd "$_pkgname"
-    ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {

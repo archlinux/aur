@@ -1,6 +1,6 @@
 pkgbase = procs-git
 	pkgdesc = A modern replacement for ps written by Rust
-	pkgver = v0.8.14.r1.gf85713f
+	pkgver = 0.8.15.400.gf85713f
 	pkgrel = 1
 	url = https://github.com/dalance/procs
 	arch = i686
