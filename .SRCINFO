@@ -1,6 +1,6 @@
 pkgbase = perl-mail-milter-authentication-handler-arc
 	pkgdesc = Authentication Milter Module for validation of ARC signatures
-	pkgver = 2.20181013
+	pkgver = 2.20191205
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Mail-Milter-Authentication-Handler-ARC
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-mail-milter-authentication-handler-arc
 	depends = perl
 	depends = perl-mail-milter-authentication
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Mail/Mail-Milter-Authentication-Handler-ARC-2.20181013.tar.gz
-	sha256sums = 2751e001f7a08960011f7784e48064eaac5d1e3d045cce742ac87e226ec8240a
+	source = http://cpan.perl.org/modules/by-module/Mail/Mail-Milter-Authentication-Handler-ARC-2.20191205.tar.gz
+	sha256sums = 458bbb1141fb862a9a7b544bfbee4df84a70da60a5c01cfbe207bb62934cf889
 
 pkgname = perl-mail-milter-authentication-handler-arc
 

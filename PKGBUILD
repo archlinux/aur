@@ -3,7 +3,7 @@
 _perlmod='Mail-Milter-Authentication-Handler-ARC'
 _modnamespace=Mail
 pkgname=perl-mail-milter-authentication-handler-arc
-pkgver=2.20181013
+pkgver=2.20191205
 pkgrel=1
 pkgdesc="Authentication Milter Module for validation of ARC signatures"
 arch=("any")
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-mail-milter-authentication')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('2751e001f7a08960011f7784e48064eaac5d1e3d045cce742ac87e226ec8240a')
+sha256sums=('458bbb1141fb862a9a7b544bfbee4df84a70da60a5c01cfbe207bb62934cf889')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
