@@ -1,6 +1,6 @@
 # Maintainer: techfreak <techfreak@matrix.org>
 pkgname=arch-sec-check-git 
-pkgver=1.1.2.16.g7c5688d
+pkgver=1.1.3.17.g55d3d26
 pkgrel=1
 pkgdesc="Compares your local installed packages with the arch linux security database"
 arch=(any)
