@@ -5,13 +5,13 @@
 # - Mirror: https://github.com/timvisee/ffsend/blob/master/pkg/aur/ffsend/PKGBUILD
 
 pkgname=ffsend
-pkgver=0.2.56
+pkgver=0.2.57
 pkgrel=1
 pkgdesc="Easily and securely share files from the command line. A Firefox Send client."
 url="https://gitlab.com/timvisee/ffsend"
 license=('GPL3')
-source=("ffsend-v$pkgver.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.56/ffsend-v0.2.56.tar.gz")
-sha256sums=('cf9656ee9e9ad03fc20594b98681850a9fee9d18a0296bb84ce9136c3abf71b1')
+source=("ffsend-v$pkgver.tar.gz::https://gitlab.com/timvisee/ffsend/-/archive/v0.2.57/ffsend-v0.2.57.tar.gz")
+sha256sums=('2bae90e4801495b5f366c0696f61cc70aa6c7ce8e6a8aa1e22dfb456c384e9e3')
 arch=('x86_64' 'i686')
 provides=('ffsend')
 depends=('ca-certificates')
