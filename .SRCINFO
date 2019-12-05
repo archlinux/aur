@@ -1,6 +1,6 @@
 pkgbase = libayatana-indicator
 	pkgdesc = Ayatana Indicators Shared Library
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-indicator
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = libayatana-indicator
 	depends = glib2
 	depends = ayatana-ido
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.6.2.tar.gz
-	sha512sums = 47a89a4f59d547e4aeeeba245ec7df360e18dc9f8a8c256cbeaf2a95e335f2734873457b2b0fdef8c2fdeaf780dda38cfe020c335a3447a2175914d580aeb8de
+	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.6.3.tar.gz
+	sha512sums = 5cd78d228d7c2afef229fa06dc9b0778b06fc2752dee0192c65d5140afbc28533b9862bc62ddb27f61f9f8fb26dfb736403202b2b4f90622fe892c61d621b888
 
 pkgname = libayatana-indicator-gtk2
 	pkgdesc = Ayatana Indicators Shared Library (GTK+ 2 library)
