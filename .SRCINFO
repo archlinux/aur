@@ -1,0 +1,24 @@
+pkgbase = fprintd-libfprint2
+	pkgdesc = D-Bus service to access fingerprint readers, modified for libfprint2
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
+	arch = x86_64
+	groups = fprint
+	license = GPL
+	makedepends = intltool
+	makedepends = gtk-doc
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = python-dbusmock
+	depends = libfprint-git
+	depends = dbus-glib
+	depends = polkit
+	conflicts = fprintd
+	source = git+https://gitlab.freedesktop.org/libfprint/fprintd.git#commit=9e32cd525724f21eebf2336a06b13a39c6616ab0
+	source = disable-systemd-protection.patch
+	sha256sums = SKIP
+	sha256sums = 4854d32d6579de31fd59b4df02f6a29db2e266dedfe9edda13bedcda1b083be1
+
+pkgname = fprintd-libfprint2
+
