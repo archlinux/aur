@@ -1,0 +1,1172 @@
+diff --git a/Telegram/SourceFiles/platform/linux/linux_libnotify.cpp b/Telegram/SourceFiles/platform/linux/linux_libnotify.cpp
+deleted file mode 100644
+index 657c46075..000000000
+--- a/Telegram/SourceFiles/platform/linux/linux_libnotify.cpp
++++ /dev/null
+@@ -1,110 +0,0 @@
+-/*
+-This file is part of Telegram Desktop,
+-the official desktop application for the Telegram messaging service.
+-
+-For license and copyright information please follow this link:
+-https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+-*/
+-#include "platform/linux/linux_libnotify.h"
+-
+-#include "platform/linux/linux_libs.h"
+-
+-namespace Platform {
+-namespace Libs {
+-namespace {
+-
+-bool loadLibrary(QLibrary &lib, const char *name, int version) {
+-    DEBUG_LOG(("Loading '%1' with version %2...").arg(QLatin1String(name)).arg(version));
+-    lib.setFileNameAndVersion(QLatin1String(name), version);
+-    if (lib.load()) {
+-        DEBUG_LOG(("Loaded '%1' with version %2!").arg(QLatin1String(name)).arg(version));
+-        return true;
+-    }
+-    lib.setFileNameAndVersion(QLatin1String(name), QString());
+-    if (lib.load()) {
+-        DEBUG_LOG(("Loaded '%1' without version!").arg(QLatin1String(name)));
+-        return true;
+-    }
+-    LOG(("Could not load '%1' with version %2 :(").arg(QLatin1String(name)).arg(version));
+-    return false;
+-}
+-
+-} // namespace
+-
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-f_notify_init notify_init = nullptr;
+-f_notify_uninit notify_uninit = nullptr;
+-f_notify_is_initted notify_is_initted = nullptr;
+-//f_notify_get_app_name notify_get_app_name = nullptr;
+-//f_notify_set_app_name notify_set_app_name = nullptr;
+-f_notify_get_server_caps notify_get_server_caps = nullptr;
+-f_notify_get_server_info notify_get_server_info = nullptr;
+-
+-f_notify_notification_new notify_notification_new = nullptr;
+-//f_notify_notification_update notify_notification_update = nullptr;
+-f_notify_notification_show notify_notification_show = nullptr;
+-//f_notify_notification_set_app_name notify_notification_set_app_name = nullptr;
+-f_notify_notification_set_timeout notify_notification_set_timeout = nullptr;
+-//f_notify_notification_set_category notify_notification_set_category = nullptr;
+-//f_notify_notification_set_urgency notify_notification_set_urgency = nullptr;
+-//f_notify_notification_set_icon_from_pixbuf notify_notification_set_icon_from_pixbuf = nullptr;
+-f_notify_notification_set_image_from_pixbuf notify_notification_set_image_from_pixbuf = nullptr;
+-//f_notify_notification_set_hint notify_notification_set_hint = nullptr;
+-//f_notify_notification_set_hint_int32 notify_notification_set_hint_int32 = nullptr;
+-//f_notify_notification_set_hint_uint32 notify_notification_set_hint_uint32 = nullptr;
+-//f_notify_notification_set_hint_double notify_notification_set_hint_double = nullptr;
+-f_notify_notification_set_hint_string notify_notification_set_hint_string = nullptr;
+-//f_notify_notification_set_hint_byte notify_notification_set_hint_byte = nullptr;
+-//f_notify_notification_set_hint_byte_array notify_notification_set_hint_byte_array = nullptr;
+-//f_notify_notification_clear_hints notify_notification_clear_hints = nullptr;
+-f_notify_notification_add_action notify_notification_add_action = nullptr;
+-f_notify_notification_clear_actions notify_notification_clear_actions = nullptr;
+-f_notify_notification_close notify_notification_close = nullptr;
+-f_notify_notification_get_closed_reason notify_notification_get_closed_reason = nullptr;
+-
+-void startLibNotify() {
+-	DEBUG_LOG(("Loading libnotify"));
+-
+-	QLibrary lib_notify;
+-	if (!loadLibrary(lib_notify, "notify", 4)) {
+-		if (!loadLibrary(lib_notify, "notify", 5)) {
+-			if (!loadLibrary(lib_notify, "notify", 1)) {
+-				return;
+-			}
+-		}
+-	}
+-
+-	load(lib_notify, "notify_init", notify_init);
+-	load(lib_notify, "notify_uninit", notify_uninit);
+-	load(lib_notify, "notify_is_initted", notify_is_initted);
+-//	load(lib_notify, "notify_get_app_name", notify_get_app_name);
+-//	load(lib_notify, "notify_set_app_name", notify_set_app_name);
+-	load(lib_notify, "notify_get_server_caps", notify_get_server_caps);
+-	load(lib_notify, "notify_get_server_info", notify_get_server_info);
+-
+-	load(lib_notify, "notify_notification_new", notify_notification_new);
+-//	load(lib_notify, "notify_notification_update", notify_notification_update);
+-	load(lib_notify, "notify_notification_show", notify_notification_show);
+-//	load(lib_notify, "notify_notification_set_app_name", notify_notification_set_app_name);
+-	load(lib_notify, "notify_notification_set_timeout", notify_notification_set_timeout);
+-//	load(lib_notify, "notify_notification_set_category", notify_notification_set_category);
+-//	load(lib_notify, "notify_notification_set_urgency", notify_notification_set_urgency);
+-//	load(lib_notify, "notify_notification_set_icon_from_pixbuf", notify_notification_set_icon_from_pixbuf);
+-	load(lib_notify, "notify_notification_set_image_from_pixbuf", notify_notification_set_image_from_pixbuf);
+-//	load(lib_notify, "notify_notification_set_hint", notify_notification_set_hint);
+-//	load(lib_notify, "notify_notification_set_hint_int32", notify_notification_set_hint_int32);
+-//	load(lib_notify, "notify_notification_set_hint_uint32", notify_notification_set_hint_uint32);
+-//	load(lib_notify, "notify_notification_set_hint_double", notify_notification_set_hint_double);
+-	load(lib_notify, "notify_notification_set_hint_string", notify_notification_set_hint_string);
+-//	load(lib_notify, "notify_notification_set_hint_byte", notify_notification_set_hint_byte);
+-//	load(lib_notify, "notify_notification_set_hint_byte_array", notify_notification_set_hint_byte_array);
+-//	load(lib_notify, "notify_notification_clear_hints", notify_notification_clear_hints);
+-	load(lib_notify, "notify_notification_add_action", notify_notification_add_action);
+-	load(lib_notify, "notify_notification_clear_actions", notify_notification_clear_actions);
+-	load(lib_notify, "notify_notification_close", notify_notification_close);
+-	load(lib_notify, "notify_notification_get_closed_reason", notify_notification_get_closed_reason);
+-}
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+-
+-} // namespace Libs
+-} // namespace Platform
+diff --git a/Telegram/SourceFiles/platform/linux/linux_libnotify.h b/Telegram/SourceFiles/platform/linux/linux_libnotify.h
+deleted file mode 100644
+index 6dcfd676a..000000000
+--- a/Telegram/SourceFiles/platform/linux/linux_libnotify.h
++++ /dev/null
+@@ -1,120 +0,0 @@
+-/*
+-This file is part of Telegram Desktop,
+-the official desktop application for the Telegram messaging service.
+-
+-For license and copyright information please follow this link:
+-https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+-*/
+-#pragma once
+-
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-extern "C" {
+-#undef signals
+-#include <gtk/gtk.h>
+-#define signals public
+-} // extern "C"
+-
+-namespace Platform {
+-namespace Libs {
+-
+-void startLibNotify();
+-
+-constexpr gint NOTIFY_EXPIRES_DEFAULT = -1;
+-constexpr gint NOTIFY_EXPIRES_NEVER = 0;
+-
+-struct NotifyNotification;
+-typedef enum {
+-        NOTIFY_URGENCY_LOW,
+-        NOTIFY_URGENCY_NORMAL,
+-        NOTIFY_URGENCY_CRITICAL,
+-} NotifyUrgency;
+-
+-using NotifyActionCallback = void (*)(NotifyNotification *notification, char *action, gpointer user_data);
+-
+-using f_notify_init = gboolean (*)(const char *app_name);
+-extern f_notify_init notify_init;
+-
+-using f_notify_uninit = void (*)(void);
+-extern f_notify_uninit notify_uninit;
+-
+-using f_notify_is_initted = gboolean (*)(void);
+-extern f_notify_is_initted notify_is_initted;
+-
+-//using f_notify_get_app_name = const char* (*)(void);
+-//extern f_notify_get_app_name notify_get_app_name;
+-
+-//using f_notify_set_app_name = void (*)(const char *app_name);
+-//extern f_notify_set_app_name notify_set_app_name;
+-
+-using f_notify_get_server_caps = GList* (*)(void);
+-extern f_notify_get_server_caps notify_get_server_caps;
+-
+-using f_notify_get_server_info = gboolean (*)(char **ret_name, char **ret_vendor, char **ret_version, char **ret_spec_version);
+-extern f_notify_get_server_info notify_get_server_info;
+-
+-using f_notify_notification_new = NotifyNotification* (*)(const char *summary, const char *body, const char *icon);
+-extern f_notify_notification_new notify_notification_new;
+-
+-//using f_notify_notification_update = gboolean (*)(NotifyNotification *notification, const char *summary, const char *body, const char *icon);
+-//extern f_notify_notification_update notify_notification_update;
+-
+-using f_notify_notification_show = gboolean (*)(NotifyNotification *notification, GError **error);
+-extern f_notify_notification_show notify_notification_show;
+-
+-//using f_notify_notification_set_app_name = void (*)(NotifyNotification *notification, const char *app_name);
+-//extern f_notify_notification_set_app_name notify_notification_set_app_name;
+-
+-using f_notify_notification_set_timeout = void (*)(NotifyNotification *notification, gint timeout);
+-extern f_notify_notification_set_timeout notify_notification_set_timeout;
+-
+-//using f_notify_notification_set_category = void (*)(NotifyNotification *notification, const char *category);
+-//extern f_notify_notification_set_category notify_notification_set_category;
+-
+-//using f_notify_notification_set_urgency = void (*)(NotifyNotification *notification, NotifyUrgency urgency);
+-//extern f_notify_notification_set_urgency notify_notification_set_urgency;
+-
+-//using f_notify_notification_set_icon_from_pixbuf = void (*)(NotifyNotification *notification, GdkPixbuf *icon);
+-//extern f_notify_notification_set_icon_from_pixbuf notify_notification_set_icon_from_pixbuf;
+-
+-using f_notify_notification_set_image_from_pixbuf = void (*)(NotifyNotification *notification, GdkPixbuf *pixbuf);
+-extern f_notify_notification_set_image_from_pixbuf notify_notification_set_image_from_pixbuf;
+-
+-//using f_notify_notification_set_hint = void (*)(NotifyNotification *notification, const char *key, GVariant *value);
+-//extern f_notify_notification_set_hint notify_notification_set_hint;
+-
+-//using f_notify_notification_set_hint_int32 = void (*)(NotifyNotification *notification, const char *key, gint value);
+-//extern f_notify_notification_set_hint_int32 notify_notification_set_hint_int32;
+-
+-//using f_notify_notification_set_hint_uint32 = void (*)(NotifyNotification *notification, const char *key, guint value);
+-//extern f_notify_notification_set_hint_uint32 notify_notification_set_hint_uint32;
+-
+-//using f_notify_notification_set_hint_double = void (*)(NotifyNotification *notification, const char *key, gdouble value);
+-//extern f_notify_notification_set_hint_double notify_notification_set_hint_double;
+-
+-using f_notify_notification_set_hint_string = void (*)(NotifyNotification *notification, const char *key, const char *value);
+-extern f_notify_notification_set_hint_string notify_notification_set_hint_string;
+-
+-//using f_notify_notification_set_hint_byte = void (*)(NotifyNotification *notification, const char *key, guchar value);
+-//extern f_notify_notification_set_hint_byte notify_notification_set_hint_byte;
+-
+-//using f_notify_notification_set_hint_byte_array = void (*)(NotifyNotification *notification, const char *key, const guchar *value, gsize len);
+-//extern f_notify_notification_set_hint_byte_array notify_notification_set_hint_byte_array;
+-
+-//using f_notify_notification_clear_hints = void (*)(NotifyNotification *notification);
+-//extern f_notify_notification_clear_hints notify_notification_clear_hints;
+-
+-using f_notify_notification_add_action = void (*)(NotifyNotification *notification, const char *action, const char *label, NotifyActionCallback callback, gpointer user_data, GFreeFunc free_func);
+-extern f_notify_notification_add_action notify_notification_add_action;
+-
+-using f_notify_notification_clear_actions = void (*)(NotifyNotification *notification);
+-extern f_notify_notification_clear_actions notify_notification_clear_actions;
+-
+-using f_notify_notification_close = gboolean (*)(NotifyNotification *notification, GError **error);
+-extern f_notify_notification_close notify_notification_close;
+-
+-using f_notify_notification_get_closed_reason = gint (*)(const NotifyNotification *notification);
+-extern f_notify_notification_get_closed_reason notify_notification_get_closed_reason;
+-
+-} // namespace Libs
+-} // namespace Platform
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+diff --git a/Telegram/SourceFiles/platform/linux/linux_libs.cpp b/Telegram/SourceFiles/platform/linux/linux_libs.cpp
+index 5071d63d1..d60734e7c 100644
+--- a/Telegram/SourceFiles/platform/linux/linux_libs.cpp
++++ b/Telegram/SourceFiles/platform/linux/linux_libs.cpp
+@@ -8,7 +8,6 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "platform/linux/linux_libs.h"
+ 
+ #include "platform/linux/linux_gdk_helper.h"
+-#include "platform/linux/linux_libnotify.h"
+ #include "platform/linux/linux_desktop_environment.h"
+ 
+ #include <QtGui/QGuiApplication>
+@@ -290,10 +289,6 @@ void start() {
+ 	} else {
+ 		LOG(("Could not load gtk-x11-2.0!"));
+ 	}
+-
+-	if (gtkLoaded) {
+-		startLibNotify();
+-	}
+ #endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+ }
+ 
+diff --git a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
+index d076b90f3..13c9d20aa 100644
+--- a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
+@@ -264,13 +264,6 @@ void MainWindow::psSetupTrayIcon() {
+ 			}
+ 			trayIcon->setIcon(icon);
+ 
+-			// This is very important for native notifications via libnotify!
+-			// Some notification servers compose several notifications with a "Reply"
+-			// action into one and after that a click on "Reply" button does not call
+-			// the specified callback from any of the sent notification - libnotify
+-			// just ignores ibus messages, but Qt tray icon at least emits this signal.
+-			connect(trayIcon, SIGNAL(messageClicked()), this, SLOT(showFromTray()));
+-
+ 			attachToTrayIcon(trayIcon);
+ 		}
+ 		updateIconCounters();
+diff --git a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
+index 9b0dc1d65..211abf9fc 100644
+--- a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
+@@ -7,389 +7,244 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ */
+ #include "platform/linux/notifications_manager_linux.h"
+ 
+-#include "window/notifications_utilities.h"
+-#include "platform/linux/linux_libnotify.h"
+-#include "platform/linux/linux_libs.h"
+ #include "history/history.h"
+ #include "lang/lang_keys.h"
+ #include "facades.h"
+ 
++#include <QtCore/QBuffer>
++#include <QtDBus/QDBusConnection>
++#include <QtDBus/QDBusReply>
++
+ namespace Platform {
+ namespace Notifications {
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-namespace {
+-
+-bool LibNotifyLoaded() {
+-	return (Libs::notify_init != nullptr)
+-		&& (Libs::notify_uninit != nullptr)
+-		&& (Libs::notify_is_initted != nullptr)
+-//		&& (Libs::notify_get_app_name != nullptr)
+-//		&& (Libs::notify_set_app_name != nullptr)
+-		&& (Libs::notify_get_server_caps != nullptr)
+-		&& (Libs::notify_get_server_info != nullptr)
+-		&& (Libs::notify_notification_new != nullptr)
+-//		&& (Libs::notify_notification_update != nullptr)
+-		&& (Libs::notify_notification_show != nullptr)
+-//		&& (Libs::notify_notification_set_app_name != nullptr)
+-		&& (Libs::notify_notification_set_timeout != nullptr)
+-//		&& (Libs::notify_notification_set_category != nullptr)
+-//		&& (Libs::notify_notification_set_urgency != nullptr)
+-//		&& (Libs::notify_notification_set_icon_from_pixbuf != nullptr)
+-		&& (Libs::notify_notification_set_image_from_pixbuf != nullptr)
+-//		&& (Libs::notify_notification_set_hint != nullptr)
+-//		&& (Libs::notify_notification_set_hint_int32 != nullptr)
+-//		&& (Libs::notify_notification_set_hint_uint32 != nullptr)
+-//		&& (Libs::notify_notification_set_hint_double != nullptr)
+-		&& (Libs::notify_notification_set_hint_string != nullptr)
+-//		&& (Libs::notify_notification_set_hint_byte != nullptr)
+-//		&& (Libs::notify_notification_set_hint_byte_array != nullptr)
+-//		&& (Libs::notify_notification_clear_hints != nullptr)
+-		&& (Libs::notify_notification_add_action != nullptr)
+-		&& (Libs::notify_notification_clear_actions != nullptr)
+-		&& (Libs::notify_notification_close != nullptr)
+-		&& (Libs::notify_notification_get_closed_reason != nullptr)
+-		&& (Libs::g_object_ref_sink != nullptr)
+-		&& (Libs::g_object_unref != nullptr)
+-		&& (Libs::g_list_free_full != nullptr)
+-		&& (Libs::g_error_free != nullptr)
+-		&& (Libs::g_signal_connect_data != nullptr)
+-		&& (Libs::g_signal_handler_disconnect != nullptr)
+-//		&& (Libs::gdk_pixbuf_new_from_data != nullptr)
+-		&& (Libs::gdk_pixbuf_new_from_file != nullptr);
+-}
+-
+-QString escapeHtml(const QString &text) {
+-	auto result = QString();
+-	auto copyFrom = 0, textSize = text.size();
+-	auto data = text.constData();
+-	for (auto i = 0; i != textSize; ++i) {
+-		auto ch = data[i];
+-		if (ch == '<' || ch == '>' || ch == '&') {
+-			if (!copyFrom) {
+-				result.reserve(textSize * 5);
+-			}
+-			if (i > copyFrom) {
+-				result.append(data + copyFrom, i - copyFrom);
+-			}
+-			switch (ch.unicode()) {
+-			case '<': result.append(qstr("&lt;")); break;
+-			case '>': result.append(qstr("&gt;")); break;
+-			case '&': result.append(qstr("&amp;")); break;
+-			}
+-			copyFrom = i + 1;
+-		}
+-	}
+-	if (copyFrom > 0) {
+-		result.append(data + copyFrom, textSize - copyFrom);
+-		return result;
+-	}
+-	return text;
+-}
+ 
+-class NotificationData {
+-public:
+-	NotificationData(const std::shared_ptr<Manager*> &guarded, const QString &title, const QString &body, const QStringList &capabilities, PeerId peerId, MsgId msgId)
+-	: _data(Libs::notify_notification_new(title.toUtf8().constData(), body.toUtf8().constData(), nullptr)) {
+-		if (valid()) {
+-			init(guarded, capabilities, peerId, msgId);
+-		}
+-	}
+-	bool valid() const {
+-		return (_data != nullptr);
+-	}
+-	NotificationData(const NotificationData &other) = delete;
+-	NotificationData &operator=(const NotificationData &other) = delete;
+-	NotificationData(NotificationData &&other) = delete;
+-	NotificationData &operator=(NotificationData &&other) = delete;
+-
+-	void setImage(const QString &imagePath) {
+-		auto imagePathNative = QFile::encodeName(imagePath);
+-		if (auto pixbuf = Libs::gdk_pixbuf_new_from_file(imagePathNative.constData(), nullptr)) {
+-			Libs::notify_notification_set_image_from_pixbuf(_data, pixbuf);
+-			Libs::g_object_unref(Libs::g_object_cast(pixbuf));
+-		}
+-	}
+-	bool show() {
+-		if (valid()) {
+-			GError *error = nullptr;
++constexpr auto kService = str_const("org.freedesktop.Notifications");
++constexpr auto kObjectPath = str_const("/org/freedesktop/Notifications");
++constexpr auto kInterface = kService;
+ 
+-			Libs::notify_notification_show(_data, &error);
+-			if (!error) {
+-				return true;
+-			}
++NotificationData::NotificationData(const std::shared_ptr<Manager*> &guarded, const QString &title, const QString &subtitle, const QString &msg, PeerId peerId, MsgId msgId)
++: _notificationInterface(str_const_toString(kService), str_const_toString(kObjectPath), str_const_toString(kInterface))
++, _specificationVersion(parseSpecificationVersion(getServerInformation()))
++, _weak(guarded)
++, _title(title)
++, _peerId(peerId)
++, _msgId(msgId) {
++	auto capabilities = getCapabilities();
++	auto capabilitiesEnd = capabilities.end();
+ 
+-			logError(error);
+-		}
+-		return false;
++	if (!_specificationVersion.isNull()) {
++		DEBUG_LOG(("Notification daemon specification version: %1").arg(_specificationVersion.toString()));
+ 	}
+ 
+-	bool close() {
+-		if (valid()) {
+-			GError *error = nullptr;
+-			Libs::notify_notification_close(_data, &error);
+-			if (!error) {
+-				return true;
++	if (!capabilities.empty()) {
++		QString capabilitiesString;
++
++		for (const auto &capability : capabilities) {
++			if (!capabilitiesString.isEmpty()) {
++				capabilitiesString += qstr(", ");
+ 			}
+ 
+-			logError(error);
++			capabilitiesString += capability;
+ 		}
+-		return false;
+-	}
+ 
+-	~NotificationData() {
+-		if (valid()) {
+-//			if (_handlerId > 0) {
+-//				Libs::g_signal_handler_disconnect(Libs::g_object_cast(_data), _handlerId);
+-//			}
+-//			Libs::notify_notification_clear_actions(_data);
+-			Libs::g_object_unref(Libs::g_object_cast(_data));
+-		}
++		DEBUG_LOG(("Notification daemon capabilities: %1").arg(capabilitiesString));
+ 	}
+ 
+-private:
+-	void init(const std::shared_ptr<Manager*> &guarded, const QStringList &capabilities, PeerId peerId, MsgId msgId) {
+-		if (capabilities.contains(qsl("append"))) {
+-			Libs::notify_notification_set_hint_string(_data, "append", "true");
+-		} else if (capabilities.contains(qsl("x-canonical-append"))) {
+-			Libs::notify_notification_set_hint_string(_data, "x-canonical-append", "true");
+-		}
++	if (ranges::find(capabilities, qsl("body-markup")) != capabilitiesEnd) {
++		_body = subtitle.isEmpty()
++				? msg.toHtmlEscaped()
++				: qsl("<b>%1</b>\n%2").arg(subtitle.toHtmlEscaped()).arg(msg.toHtmlEscaped());
++	} else {
++		_body = subtitle.isEmpty()
++				? msg
++				: qsl("%1\n%2").arg(subtitle).arg(msg);
++	}
+ 
+-		Libs::notify_notification_set_hint_string(_data, "desktop-entry", "kotatogramdesktop");
+-
+-		auto signalReceiver = Libs::g_object_cast(_data);
+-		auto signalHandler = G_CALLBACK(NotificationData::notificationClosed);
+-		auto signalName = "closed";
+-		auto signalDataFreeMethod = &NotificationData::notificationDataFreeClosure;
+-		auto signalData = new NotificationDataStruct(guarded, peerId, msgId);
+-		_handlerId = Libs::g_signal_connect_helper(signalReceiver, signalName, signalHandler, signalData, signalDataFreeMethod);
+-
+-		Libs::notify_notification_set_timeout(_data, Libs::NOTIFY_EXPIRES_DEFAULT);
+-
+-		if ((*guarded)->hasActionsSupport()) {
+-			auto label = tr::lng_notification_reply(tr::now).toUtf8();
+-			auto actionReceiver = _data;
+-			auto actionHandler = &NotificationData::notificationClicked;
+-			auto actionLabel = label.constData();
+-			auto actionName = "default";
+-			auto actionDataFreeMethod = &NotificationData::notificationDataFree;
+-			auto actionData = new NotificationDataStruct(guarded, peerId, msgId);
+-			Libs::notify_notification_add_action(actionReceiver, actionName, actionLabel, actionHandler, actionData, actionDataFreeMethod);
+-		}
++	if (ranges::find(capabilities, qsl("actions")) != capabilitiesEnd) {
++		// icon name according to https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
++		_actions << "mail-reply-sender" << tr::lng_notification_reply(tr::now);
++		connect(&_notificationInterface, SIGNAL(ActionInvoked(uint, QString)), this, SLOT(notificationClicked(uint)));
+ 	}
+ 
+-	void logError(GError *error) {
+-		LOG(("LibNotify Error: domain %1, code %2, message '%3'").arg(error->domain).arg(error->code).arg(QString::fromUtf8(error->message)));
+-		Libs::g_error_free(error);
++	if (ranges::find(capabilities, qsl("action-icons")) != capabilitiesEnd) {
++		_hints["action-icons"] = true;
+ 	}
+ 
+-	struct NotificationDataStruct {
+-		NotificationDataStruct(const std::shared_ptr<Manager*> &guarded, PeerId peerId, MsgId msgId)
+-		: weak(guarded)
+-		, peerId(peerId)
+-		, msgId(msgId) {
++	// suppress system sound if telegram sound activated, otherwise use system sound
++	if (ranges::find(capabilities, qsl("sound")) != capabilitiesEnd) {
++		if (Global::SoundNotify()) {
++			_hints["suppress-sound"] = true;
++		} else {
++			// sound name according to http://0pointer.de/public/sound-naming-spec.html
++			_hints["sound-name"] = "message-new-instant";
+ 		}
+-
+-		std::weak_ptr<Manager*> weak;
+-		PeerId peerId = 0;
+-		MsgId msgId = 0;
+-	};
+-	static void performOnMainQueue(NotificationDataStruct *data, FnMut<void(Manager *manager)> task) {
+-		const auto weak = data->weak;
+-		crl::on_main(weak, [=, task = std::move(task)]() mutable {
+-			task(*weak.lock());
+-		});
+-	}
+-	static void notificationDataFree(gpointer data) {
+-		auto notificationData = static_cast<NotificationDataStruct*>(data);
+-		delete notificationData;
+-	}
+-	static void notificationDataFreeClosure(gpointer data, GClosure *closure) {
+-		auto notificationData = static_cast<NotificationDataStruct*>(data);
+-		delete notificationData;
+-	}
+-	static void notificationClosed(Libs::NotifyNotification *notification, gpointer data) {
+-		auto closedReason = Libs::notify_notification_get_closed_reason(notification);
+-		auto notificationData = static_cast<NotificationDataStruct*>(data);
+-		performOnMainQueue(notificationData, [peerId = notificationData->peerId, msgId = notificationData->msgId](Manager *manager) {
+-			manager->clearNotification(peerId, msgId);
+-		});
+-	}
+-	static void notificationClicked(Libs::NotifyNotification *notification, char *action, gpointer data) {
+-		auto notificationData = static_cast<NotificationDataStruct*>(data);
+-		performOnMainQueue(notificationData, [peerId = notificationData->peerId, msgId = notificationData->msgId](Manager *manager) {
+-			manager->notificationActivated(peerId, msgId);
+-		});
+ 	}
+ 
+-	Libs::NotifyNotification *_data = nullptr;
+-	gulong _handlerId = 0;
++	if (ranges::find(capabilities, qsl("x-canonical-append")) != capabilitiesEnd) {
++		_hints["x-canonical-append"] = "true";
++	}
+ 
+-};
++	_hints["category"] = "im.received";
++	_hints["desktop-entry"] = "kotatogramdesktop";
+ 
+-using Notification = std::shared_ptr<NotificationData>;
++	connect(&_notificationInterface, SIGNAL(NotificationClosed(uint, uint)), this, SLOT(notificationClosed(uint)));
++}
+ 
+-QString GetServerName() {
+-	if (!LibNotifyLoaded()) {
+-		return QString();
+-	}
+-	if (!Libs::notify_is_initted() && !Libs::notify_init("Kotatogram Desktop")) {
+-		LOG(("LibNotify Error: failed to init!"));
+-		return QString();
+-	}
++bool NotificationData::show() {
++	QDBusReply<uint> notifyReply = _notificationInterface.call("Notify", str_const_toString(AppName), uint(0), "kotatogram", _title, _body, _actions, _hints, -1);
+ 
+-	gchar *name = nullptr;
+-	auto guard = gsl::finally([&name] {
+-		if (name) Libs::g_free(name);
+-	});
+-
+-	if (!Libs::notify_get_server_info(&name, nullptr, nullptr, nullptr)) {
+-		LOG(("LibNotify Error: could not get server name!"));
+-		return QString();
+-	}
+-	if (!name) {
+-		LOG(("LibNotify Error: successfully got empty server name!"));
+-		return QString();
++	if (notifyReply.isValid()) {
++		_notificationId = notifyReply.value();
++	} else {
++		LOG(("Native notification error: %1").arg(notifyReply.error().message()));
+ 	}
+ 
+-	auto result = QString::fromUtf8(static_cast<const char*>(name));
+-	LOG(("Notifications Server: %1").arg(result));
+-
+-	return result;
++	return notifyReply.isValid();
+ }
+ 
+-auto LibNotifyServerName = QString();
++bool NotificationData::close() {
++	QDBusReply<void> closeReply = _notificationInterface.call("CloseNotification", _notificationId);
+ 
+-} // namespace
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+-
+-bool Supported() {
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-	static auto Checked = false;
+-	if (!Checked) {
+-		Checked = true;
+-		LibNotifyServerName = GetServerName();
++	if (!closeReply.isValid()) {
++		LOG(("Native notification error: %1").arg(closeReply.error().message()));
+ 	}
+ 
+-	return !LibNotifyServerName.isEmpty();
+-#else
+-	return false;
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
++	return closeReply.isValid();
+ }
+ 
+-std::unique_ptr<Window::Notifications::Manager> Create(Window::Notifications::System *system) {
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-	if (Global::NativeNotifications() && Supported()) {
+-		return std::make_unique<Manager>(system);
+-	}
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+-	return nullptr;
+-}
++void NotificationData::setImage(const QString &imagePath) {
++	QString imageKey;
+ 
+-void Finish() {
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-	if (Libs::notify_is_initted && Libs::notify_uninit) {
+-		if (Libs::notify_is_initted()) {
+-			Libs::notify_uninit();
++	if (!_specificationVersion.isNull()) {
++		const auto majorVersion = _specificationVersion.majorVersion();
++		const auto minorVersion = _specificationVersion.majorVersion();
++
++		if ((majorVersion == 1 && minorVersion >= 2) || majorVersion > 1) {
++			imageKey = "image-data";
++		} else if (majorVersion == 1 && minorVersion) {
++			imageKey = "image_data";
++		} else if ((majorVersion == 1 && minorVersion < 1) || majorVersion < 1) {
++			imageKey = "icon_data";
++		} else {
++			LOG(("Native notification error: unknown specification version"));
++			return;
+ 		}
++	} else {
++		LOG(("Native notification error: specification version is null"));
++		return;
+ 	}
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+-}
+ 
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-class Manager::Private {
+-public:
+-	using Type = Window::Notifications::CachedUserpics::Type;
+-	explicit Private(Type type)
+-	: _cachedUserpics(type) {
+-	}
++	auto image = QImage(imagePath).convertToFormat(QImage::Format_RGBA8888);
++	QByteArray imageBytes((const char*)image.constBits(), image.sizeInBytes());
+ 
+-	void init(Manager *manager);
++	ImageData imageData;
++	imageData.width = image.width();
++	imageData.height = image.height();
++	imageData.rowStride = image.bytesPerLine();
++	imageData.hasAlpha = true;
++	imageData.bitsPerSample = 8;
++	imageData.channels = 4;
++	imageData.data = imageBytes;
+ 
+-	void showNotification(
+-		not_null<PeerData*> peer,
+-		MsgId msgId,
+-		const QString &title,
+-		const QString &subtitle,
+-		const QString &msg,
+-		bool hideNameAndPhoto,
+-		bool hideReplyButton);
+-	void clearAll();
+-	void clearFromHistory(not_null<History*> history);
+-	void clearNotification(PeerId peerId, MsgId msgId);
++	_hints[imageKey] = QVariant::fromValue(imageData);
++}
+ 
+-	bool hasPoorSupport() const {
+-		return _poorSupported;
+-	}
+-	bool hasActionsSupport() const {
+-		return _actionsSupported;
++std::vector<QString> NotificationData::getServerInformation() {
++	std::vector<QString> serverInformation;
++	auto serverInformationReply = _notificationInterface.call("GetServerInformation");
++
++	if (serverInformationReply.type() == QDBusMessage::ReplyMessage) {
++		for (const auto &arg : serverInformationReply.arguments()) {
++			if (static_cast<QMetaType::Type>(arg.type()) == QMetaType::QString) {
++				serverInformation.push_back(arg.toString());
++			} else {
++				LOG(("Native notification error: all elements in GetServerInformation should be strings"));
++			}
++		}
++	} else if (serverInformationReply.type() == QDBusMessage::ErrorMessage) {
++		LOG(("Native notification error: %1").arg(QDBusError(serverInformationReply).message()));
++	} else {
++		LOG(("Native notification error: error while getting information about notification daemon"));
+ 	}
+ 
+-	~Private();
++	return serverInformation;
++}
+ 
+-private:
+-	QString escapeNotificationText(const QString &text) const;
+-	void showNextNotification();
++std::vector<QString> NotificationData::getCapabilities() {
++	QDBusReply<QStringList> capabilitiesReply = _notificationInterface.call("GetCapabilities");
+ 
+-	struct QueuedNotification {
+-		PeerData *peer = nullptr;
+-		MsgId msgId = 0;
+-		QString title;
+-		QString body;
+-		bool hideNameAndPhoto = false;
+-	};
++	if (capabilitiesReply.isValid()) {
++		return capabilitiesReply.value().toVector().toStdVector();
++	} else {
++		LOG(("Native notification error: %1").arg(capabilitiesReply.error().message()));
++	}
+ 
+-	QString _serverName;
+-	QStringList _capabilities;
++	return std::vector<QString>();
++}
+ 
+-	using QueuedNotifications = QList<QueuedNotification>;
+-	QueuedNotifications _queuedNotifications;
++QVersionNumber NotificationData::parseSpecificationVersion(const std::vector<QString> &serverInformation) {
++	if (serverInformation.size() >= 4) {
++		return QVersionNumber::fromString(serverInformation[3]);
++	} else {
++		LOG(("Native notification error: server information should have 4 elements"));
++	}
+ 
+-	using Notifications = QMap<PeerId, QMap<MsgId, Notification>>;
+-	Notifications _notifications;
++	return QVersionNumber();
++}
+ 
+-	Window::Notifications::CachedUserpics _cachedUserpics;
+-	bool _actionsSupported = false;
+-	bool _markupSupported = false;
+-	bool _poorSupported = false;
++void NotificationData::performOnMainQueue(FnMut<void(Manager *manager)> task) {
++	const auto weak = _weak;
++	crl::on_main(weak, [=, task = std::move(task)]() mutable {
++		task(*weak.lock());
++	});
++}
+ 
+-	std::shared_ptr<Manager*> _guarded;
++void NotificationData::notificationClosed(uint id) {
++	if (id == _notificationId) {
++		performOnMainQueue([peerId = _peerId, msgId = _msgId](Manager *manager) {
++			manager->clearNotification(peerId, msgId);
++		});
++	}
++}
+ 
+-};
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
++void NotificationData::notificationClicked(uint id) {
++	if (id == _notificationId) {
++		performOnMainQueue([peerId = _peerId, msgId = _msgId](Manager *manager) {
++			manager->notificationActivated(peerId, msgId);
++		});
++	}
++}
+ 
+-#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+-void Manager::Private::init(Manager *manager) {
+-	_guarded = std::make_shared<Manager*>(manager);
++QDBusArgument &operator<<(QDBusArgument &argument, const NotificationData::ImageData &imageData) {
++	argument.beginStructure();
++	argument << imageData.width << imageData.height << imageData.rowStride << imageData.hasAlpha << imageData.bitsPerSample << imageData.channels << imageData.data;
++	argument.endStructure();
++	return argument;
++}
+ 
+-	if (auto capabilities = Libs::notify_get_server_caps()) {
+-		for (auto capability = capabilities; capability; capability = capability->next) {
+-			auto capabilityText = QString::fromUtf8(static_cast<const char*>(capability->data));
+-			_capabilities.push_back(capabilityText);
+-		}
+-		Libs::g_list_free_full(capabilities, g_free);
++const QDBusArgument &operator>>(const QDBusArgument &argument, NotificationData::ImageData &imageData) {
++	argument.beginStructure();
++	argument >> imageData.width >> imageData.height >> imageData.rowStride >> imageData.hasAlpha >> imageData.bitsPerSample >> imageData.channels >> imageData.data;;
++	argument.endStructure();
++	return argument;
++}
+ 
+-		LOG(("LibNotify capabilities: %1").arg(_capabilities.join(qstr(", "))));
+-		if (_capabilities.contains(qsl("actions"))) {
+-			_actionsSupported = true;
+-		} else if (_capabilities.contains(qsl("body-markup"))) {
+-			_markupSupported = true;
+-		}
+-	} else {
+-		LOG(("LibNotify Error: could not get capabilities!"));
++auto NotificationDaemonRunning = false;
++bool Supported() {
++	static auto Checked = false;
++	if (!Checked) {
++		Checked = true;
++		NotificationDaemonRunning = QDBusInterface(str_const_toString(kService), str_const_toString(kObjectPath), str_const_toString(kInterface)).isValid();
+ 	}
+ 
+-	// Unity and other Notify OSD users handle desktop notifications
+-	// extremely poor, even without the ability to close() them.
+-	_serverName = LibNotifyServerName;
+-	Assert(!_serverName.isEmpty());
+-	if (_serverName == qstr("notify-osd")) {
+-//		_poorSupported = true;
+-		_actionsSupported = false;
+-	}
++	return NotificationDaemonRunning;
+ }
+ 
+-QString Manager::Private::escapeNotificationText(const QString &text) const {
+-	return _markupSupported ? escapeHtml(text) : text;
++std::unique_ptr<Window::Notifications::Manager> Create(Window::Notifications::System *system) {
++	if (Global::NativeNotifications() && Supported()) {
++		return std::make_unique<Manager>(system);
++	}
++	return nullptr;
+ }
+ 
+ void Manager::Private::showNotification(
+@@ -400,93 +255,43 @@ void Manager::Private::showNotification(
+ 		const QString &msg,
+ 		bool hideNameAndPhoto,
+ 		bool hideReplyButton) {
+-	auto titleText = escapeNotificationText(title);
+-	auto subtitleText = escapeNotificationText(subtitle);
+-	auto msgText = escapeNotificationText(msg);
+-	if (_markupSupported && !subtitleText.isEmpty()) {
+-		subtitleText = qstr("<b>") + subtitleText + qstr("</b>");
+-	}
+-	auto bodyText = subtitleText.isEmpty() ? msgText : (subtitleText + '\n' + msgText);
+-
+-	QueuedNotification notification;
+-	notification.peer = peer;
+-	notification.msgId = msgId;
+-	notification.title = titleText;
+-	notification.body = bodyText;
+-	notification.hideNameAndPhoto = hideNameAndPhoto;
+-	_queuedNotifications.push_back(notification);
+-
+-	showNextNotification();
+-}
+-
+-void Manager::Private::showNextNotification() {
+-	// Show only one notification at a time in Unity / Notify OSD.
+-	if (_poorSupported) {
+-		for (auto b = _notifications.begin(); !_notifications.isEmpty() && b->isEmpty();) {
+-			_notifications.erase(b);
+-		}
+-		if (!_notifications.isEmpty()) {
+-			return;
+-		}
+-	}
+-
+-	QueuedNotification data;
+-	while (!_queuedNotifications.isEmpty()) {
+-		data = _queuedNotifications.front();
+-		_queuedNotifications.pop_front();
+-		if (data.peer) {
+-			break;
+-		}
+-	}
+-	if (!data.peer) {
+-		return;
+-	}
+-
+-	auto peerId = data.peer->id;
+-	auto msgId = data.msgId;
+ 	auto notification = std::make_shared<NotificationData>(
+ 		_guarded,
+-		data.title,
+-		data.body,
+-		_capabilities,
+-		peerId,
++		title,
++		subtitle,
++		msg,
++		peer->id,
+ 		msgId);
+-	if (!notification->valid()) {
+-		return;
+-	}
+ 
+-	const auto key = data.hideNameAndPhoto
++	const auto key = hideNameAndPhoto
+ 		? InMemoryKey()
+-		: data.peer->userpicUniqueKey();
+-	notification->setImage(_cachedUserpics.get(key, data.peer));
++		:peer->userpicUniqueKey();
++	notification->setImage(_cachedUserpics.get(key, peer));
+ 
+-	auto i = _notifications.find(peerId);
++	auto i = _notifications.find(peer->id);
+ 	if (i != _notifications.cend()) {
+ 		auto j = i->find(msgId);
+ 		if (j != i->cend()) {
+ 			auto oldNotification = j.value();
+ 			i->erase(j);
+ 			oldNotification->close();
+-			i = _notifications.find(peerId);
++			i = _notifications.find(peer->id);
+ 		}
+ 	}
+ 	if (i == _notifications.cend()) {
+-		i = _notifications.insert(peerId, QMap<MsgId, Notification>());
++		i = _notifications.insert(peer->id, QMap<MsgId, Notification>());
+ 	}
+-	_notifications[peerId].insert(msgId, notification);
++	_notifications[peer->id].insert(msgId, notification);
+ 	if (!notification->show()) {
+-		i = _notifications.find(peerId);
++		i = _notifications.find(peer->id);
+ 		if (i != _notifications.cend()) {
+ 			i->remove(msgId);
+ 			if (i->isEmpty()) _notifications.erase(i);
+ 		}
+-		showNextNotification();
+ 	}
+ }
+ 
+ void Manager::Private::clearAll() {
+-	_queuedNotifications.clear();
+-
+ 	auto temp = base::take(_notifications);
+ 	for_const (auto &notifications, temp) {
+ 		for_const (auto notification, notifications) {
+@@ -496,14 +301,6 @@ void Manager::Private::clearAll() {
+ }
+ 
+ void Manager::Private::clearFromHistory(not_null<History*> history) {
+-	for (auto i = _queuedNotifications.begin(); i != _queuedNotifications.end();) {
+-		if (i->peer == history->peer) {
+-			i = _queuedNotifications.erase(i);
+-		} else {
+-			++i;
+-		}
+-	}
+-
+ 	auto i = _notifications.find(history->peer->id);
+ 	if (i != _notifications.cend()) {
+ 		auto temp = base::take(i.value());
+@@ -513,8 +310,6 @@ void Manager::Private::clearFromHistory(not_null<History*> history) {
+ 			notification->close();
+ 		}
+ 	}
+-
+-	showNextNotification();
+ }
+ 
+ void Manager::Private::clearNotification(PeerId peerId, MsgId msgId) {
+@@ -525,8 +320,6 @@ void Manager::Private::clearNotification(PeerId peerId, MsgId msgId) {
+ 			_notifications.erase(i);
+ 		}
+ 	}
+-
+-	showNextNotification();
+ }
+ 
+ Manager::Private::~Private() {
+@@ -534,22 +327,13 @@ Manager::Private::~Private() {
+ }
+ 
+ Manager::Manager(Window::Notifications::System *system) : NativeManager(system)
+-, _private(std::make_unique<Private>(Private::Type::Rounded)) {
+-	_private->init(this);
++, _private(std::make_unique<Private>(this, Private::Type::Rounded)) {
+ }
+ 
+ void Manager::clearNotification(PeerId peerId, MsgId msgId) {
+ 	_private->clearNotification(peerId, msgId);
+ }
+ 
+-bool Manager::hasPoorSupport() const {
+-	return _private->hasPoorSupport();
+-}
+-
+-bool Manager::hasActionsSupport() const {
+-	return _private->hasActionsSupport();
+-}
+-
+ Manager::~Manager() = default;
+ 
+ void Manager::doShowNativeNotification(
+@@ -577,7 +361,6 @@ void Manager::doClearAllFast() {
+ void Manager::doClearFromHistory(not_null<History*> history) {
+ 	_private->clearFromHistory(history);
+ }
+-#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+ 
+ } // namespace Notifications
+ } // namespace Platform
+diff --git a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.h b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.h
+index f40204a56..1f87dbe28 100644
+--- a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.h
++++ b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.h
+@@ -8,6 +8,11 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #pragma once
+ 
+ #include "platform/platform_notifications_manager.h"
++#include "window/notifications_utilities.h"
++
++#include <QtDBus/QDBusInterface>
++#include <QtDBus/QDBusArgument>
++#include <QtDBus/QDBusMetaType>
+ 
+ namespace Platform {
+ namespace Notifications {
+@@ -23,16 +28,62 @@ inline bool SkipToast() {
+ inline void FlashBounce() {
+ }
+ 
+-void Finish();
++class NotificationData : public QObject {
++	Q_OBJECT
++
++public:
++	NotificationData(const std::shared_ptr<Manager*> &guarded, const QString &title, const QString &subtitle, const QString &msg, PeerId peerId, MsgId msgId);
++
++	NotificationData(const NotificationData &other) = delete;
++	NotificationData &operator=(const NotificationData &other) = delete;
++	NotificationData(NotificationData &&other) = delete;
++	NotificationData &operator=(NotificationData &&other) = delete;
++
++	bool show();
++	bool close();
++	void setImage(const QString &imagePath);
++
++	struct ImageData {
++		int width, height, rowStride;
++		bool hasAlpha;
++		int bitsPerSample, channels;
++		QByteArray data;
++	};
++
++private:
++	QDBusInterface _notificationInterface;
++	QVersionNumber _specificationVersion;
++	std::weak_ptr<Manager*> _weak;
++
++	QString _title;
++	QString _body;
++	QStringList _actions;
++	QVariantMap _hints;
++
++	uint _notificationId;
++	PeerId _peerId;
++	MsgId _msgId;
++
++	std::vector<QString> getServerInformation();
++	std::vector<QString> getCapabilities();
++	QVersionNumber parseSpecificationVersion(const std::vector<QString> &serverInformation);
++
++	void performOnMainQueue(FnMut<void(Manager *manager)> task);
++
++private slots:
++	void notificationClosed(uint id);
++	void notificationClicked(uint id);
++};
++
++using Notification = std::shared_ptr<NotificationData>;
++
++QDBusArgument &operator<<(QDBusArgument &argument, const NotificationData::ImageData &imageData);
++const QDBusArgument &operator>>(const QDBusArgument &argument, NotificationData::ImageData &imageData);
+ 
+ class Manager : public Window::Notifications::NativeManager {
+ public:
+ 	Manager(Window::Notifications::System *system);
+-
+ 	void clearNotification(PeerId peerId, MsgId msgId);
+-	bool hasPoorSupport() const;
+-	bool hasActionsSupport() const;
+-
+ 	~Manager();
+ 
+ protected:
+@@ -53,5 +104,38 @@ private:
+ 
+ };
+ 
++class Manager::Private {
++public:
++	using Type = Window::Notifications::CachedUserpics::Type;
++	explicit Private(Manager *manager, Type type)
++	: _cachedUserpics(type)
++	, _guarded(std::make_shared<Manager*>(manager)) {
++		qDBusRegisterMetaType<NotificationData::ImageData>();
++	}
++
++	void showNotification(
++		not_null<PeerData*> peer,
++		MsgId msgId,
++		const QString &title,
++		const QString &subtitle,
++		const QString &msg,
++		bool hideNameAndPhoto,
++		bool hideReplyButton);
++	void clearAll();
++	void clearFromHistory(not_null<History*> history);
++	void clearNotification(PeerId peerId, MsgId msgId);
++
++	~Private();
++
++private:
++	using Notifications = QMap<PeerId, QMap<MsgId, Notification>>;
++	Notifications _notifications;
++
++	Window::Notifications::CachedUserpics _cachedUserpics;
++	std::shared_ptr<Manager*> _guarded;
++};
++
+ } // namespace Notifications
+ } // namespace Platform
++
++Q_DECLARE_METATYPE(Platform::Notifications::NotificationData::ImageData)
+diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+index 68d07a55b..cc70426a1 100644
+--- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -229,7 +229,6 @@ void start() {
+ }
+ 
+ void finish() {
+-	Notifications::Finish();
+ }
+ 
+ void RegisterCustomScheme() {
+diff --git a/Telegram/gyp/telegram/sources.txt b/Telegram/gyp/telegram/sources.txt
+index e3ccb66db..1977e6f2f 100644
+--- a/Telegram/gyp/telegram/sources.txt
++++ b/Telegram/gyp/telegram/sources.txt
+@@ -605,8 +605,6 @@
+ <(src_loc)/platform/linux/linux_desktop_environment.h
+ <(src_loc)/platform/linux/linux_gdk_helper.cpp
+ <(src_loc)/platform/linux/linux_gdk_helper.h
+-<(src_loc)/platform/linux/linux_libnotify.cpp
+-<(src_loc)/platform/linux/linux_libnotify.h
+ <(src_loc)/platform/linux/linux_libs.cpp
+ <(src_loc)/platform/linux/linux_libs.h
+ <(src_loc)/platform/linux/file_utilities_linux.cpp

@@ -1,27 +1,9 @@
-diff --git a/Telegram/SourceFiles/core/launcher.cpp b/Telegram/SourceFiles/core/launcher.cpp
-index 7768510a0..a832d023f 100644
---- a/Telegram/SourceFiles/core/launcher.cpp
-+++ b/Telegram/SourceFiles/core/launcher.cpp
-@@ -278,6 +278,13 @@ int Launcher::exec() {
- 	Platform::start();
- 	Ui::DisableCustomScaling();
- 
-+	// I don't know why path is not in QT_PLUGIN_PATH by default
-+	QCoreApplication::addLibraryPath("/usr/lib/qt/plugins");
-+	// without this Telegram doesn't start on Ubuntu 17.04 due GTK errors
-+	setenv("QT_STYLE_OVERRIDE", "breeze", false);
-+	// Telegram doesn't start when extraordinary theme is set, see launchpad.net/bugs/1680943
-+	unsetenv("QT_QPA_PLATFORMTHEME");
-+
- 	auto result = executeApplication();
- 
- 	DEBUG_LOG(("Kotatogram finished, result: %1").arg(result));
 diff --git a/Telegram/SourceFiles/qt_functions.cpp b/Telegram/SourceFiles/qt_functions.cpp
 new file mode 100644
-index 000000000..4fdbe0b68
+index 000000000..5a9117773
 --- /dev/null
 +++ b/Telegram/SourceFiles/qt_functions.cpp
-@@ -0,0 +1,97 @@
+@@ -0,0 +1,99 @@
 +/****************************************************************************
 +**
 +** Copyright (C) 2015 The Qt Company Ltd.
@@ -58,6 +40,7 @@ index 000000000..4fdbe0b68
 +// For QTextItemInt declaraion
 +#include <private/qtextengine_p.h>
 +
++#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
 +/* TODO: find a dynamic library with these symbols. */
 +
 +/* Debian maintainer: this function is taken from qfiledialog.cpp */
@@ -83,6 +66,7 @@ index 000000000..4fdbe0b68
 +
 +    return f.split(sep);
 +}
++#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
 +
 +/* Debian maintainer: this constructor is taken from qtextengine.cpp for TextPainter::drawLine */
 +QTextItemInt::QTextItemInt(const QGlyphLayout &g, QFont *font, const QChar *chars_, int numChars, QFontEngine *fe, const QTextCharFormat &format)
@@ -119,79 +103,24 @@ index 000000000..4fdbe0b68
 +    if (f->d->strikeOut || charFormat.fontStrikeOut())
 +        flags |= QTextItem::StrikeOut;
 +}
-diff --git a/Telegram/SourceFiles/qt_static_plugins.cpp b/Telegram/SourceFiles/qt_static_plugins.cpp
-index cc1a767cf..1f2330cb5 100644
---- a/Telegram/SourceFiles/qt_static_plugins.cpp
-+++ b/Telegram/SourceFiles/qt_static_plugins.cpp
-@@ -7,26 +7,18 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
- */
- #include <QtCore/QtPlugin>
- 
-+#ifdef Q_OS_WIN || Q_OS_MAC
- Q_IMPORT_PLUGIN(QWebpPlugin)
- 
- #if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
- Q_IMPORT_PLUGIN(QJpegPlugin)
- Q_IMPORT_PLUGIN(QGifPlugin)
- #endif // Qt 5.8.0
-+#endif // Q_OS_WIN | Q_OS_MAC
- 
- #ifdef Q_OS_WIN
- Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
- #elif defined Q_OS_MAC // Q_OS_WIN
- Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)
- Q_IMPORT_PLUGIN(QGenericEnginePlugin)
--#elif defined Q_OS_LINUX // Q_OS_WIN | Q_OS_MAC
--Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)
--Q_IMPORT_PLUGIN(QConnmanEnginePlugin)
--Q_IMPORT_PLUGIN(QGenericEnginePlugin)
--Q_IMPORT_PLUGIN(QNetworkManagerEnginePlugin)
--Q_IMPORT_PLUGIN(QComposePlatformInputContextPlugin)
--Q_IMPORT_PLUGIN(QIbusPlatformInputContextPlugin)
--Q_IMPORT_PLUGIN(QFcitxPlatformInputContextPlugin)
--Q_IMPORT_PLUGIN(QHimePlatformInputContextPlugin)
--Q_IMPORT_PLUGIN(NimfInputContextPlugin)
--#endif // Q_OS_WIN | Q_OS_MAC | Q_OS_LINUX
-+#endif // Q_OS_WIN | Q_OS_MAC
-Submodule Telegram/ThirdParty/libtgvoip contains modified content
-diff --git a/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp b/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp
-index 1d03579..f48c18e 100644
---- a/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp
-+++ b/Telegram/ThirdParty/libtgvoip/libtgvoip.gyp
-@@ -14,7 +14,7 @@
-         'variables': {
-           'tgvoip_src_loc': '.',
-           'special_build_target%': '',
--          'linux_path_opus_include%': '<(DEPTH)/../../../Libraries/opus/include',
-+          'linux_path_opus_include%': '/usr/include/opus',
-         },
-         'include_dirs': [
-           '<(tgvoip_src_loc)/webrtc_dsp',
+diff --git a/Telegram/gyp/Telegram.gyp b/Telegram/gyp/Telegram.gyp
+index b141322a9..f2da2eb3d 100644
+--- a/Telegram/gyp/Telegram.gyp
++++ b/Telegram/gyp/Telegram.gyp
+@@ -75,10 +75,7 @@
+       '<(submodules_loc)/codegen/codegen.gyp:codegen_style',
+       '<(submodules_loc)/lib_base/lib_base.gyp:lib_base',
+       '<(submodules_loc)/lib_ui/lib_ui.gyp:lib_ui',
+-      '<(third_party_loc)/libtgvoip/libtgvoip.gyp:libtgvoip',
+       '<(submodules_loc)/lib_lottie/lib_lottie.gyp:lib_lottie',
+-      'tests/tests.gyp:tests',
+-      'utils.gyp:Updater',
+       'lib_export.gyp:lib_export',
+       'lib_storage.gyp:lib_storage',
+       'lib_ffmpeg.gyp:lib_ffmpeg',
 Submodule Telegram/gyp/helpers contains modified content
-diff --git a/Telegram/gyp/helpers/PrecompiledHeader.cmake b/Telegram/gyp/helpers/PrecompiledHeader.cmake
-index 9508bd8..15952e5 100644
---- a/Telegram/gyp/helpers/PrecompiledHeader.cmake
-+++ b/Telegram/gyp/helpers/PrecompiledHeader.cmake
-@@ -114,7 +114,7 @@ function(add_precompiled_header _target _input)
-       set(_compiler_FLAGS "@${_pch_c_flags_file}")
-       add_custom_command(
-         OUTPUT "${_output_c}"
--        COMMAND "${CMAKE_C_COMPILER}" ${_compiler_FLAGS} -x c-header -o "${_output_c}" -c "${_pchfile}"
-+        COMMAND "${CMAKE_C_COMPILER}" ${_compiler_FLAGS} "$(C_DEFINES)" "$(C_INCLUDES)" "$(C_FLAGS)" -x c-header -o "${_output_c}" -c "${_pchfile}"
-         DEPENDS "${_pchfile}" "${_pch_c_flags_file}"
-         IMPLICIT_DEPENDS C "${_pch_header}"
-         COMMENT "Precompiling ${_name} for ${_target} (C)")
-@@ -125,7 +125,7 @@ function(add_precompiled_header _target _input)
-       set(_compiler_FLAGS "@${_pch_cpp_flags_file}")
-       add_custom_command(
-         OUTPUT "${_output_cxx}"
--        COMMAND "${CMAKE_CXX_COMPILER}" ${_compiler_FLAGS} -x c++-header -o "${_output_cxx}" -c "${_pchfile}"
-+        COMMAND "${CMAKE_CXX_COMPILER}" ${_compiler_FLAGS} "$(CXX_DEFINES)" "$(CXX_INCLUDES)" "$(CXX_FLAGS)" -x c++-header -o "${_output_cxx}" -c "${_pchfile}"
-         DEPENDS "${_pchfile}" "${_pch_cpp_flags_file}"
-         IMPLICIT_DEPENDS CXX "${_pch_header}"
-         COMMENT "Precompiling header ${_name} for ${_target} (C++)")
 diff --git a/Telegram/gyp/helpers/common/linux.gypi b/Telegram/gyp/helpers/common/linux.gypi
-index 12b91b0..507a6b9 100644
+index 12b91b0..28a4a13 100644
 --- a/Telegram/gyp/helpers/common/linux.gypi
 +++ b/Telegram/gyp/helpers/common/linux.gypi
 @@ -11,7 +11,6 @@
@@ -202,7 +131,15 @@ index 12b91b0..507a6b9 100644
            '-W',
            '-fPIC',
            '-Wno-unused-variable',
-@@ -87,7 +86,6 @@
+@@ -42,6 +41,7 @@
+         '<(linux_path_breakpad)/include/breakpad',
+         '<(linux_path_opus_include)',
+         '<(linux_path_range)/include',
++        '/usr/include/tgvoip',
+       ],
+       'library_dirs': [
+         '/usr/local/lib',
+@@ -87,7 +87,6 @@
        ],
        'defines': [
          '_REENTRANT',
@@ -210,21 +147,8 @@ index 12b91b0..507a6b9 100644
          'QT_PLUGIN',
        ],
        'cflags_c': [
-diff --git a/Telegram/gyp/helpers/modules/openssl.gypi b/Telegram/gyp/helpers/modules/openssl.gypi
-index 91f1a99..03c4533 100644
---- a/Telegram/gyp/helpers/modules/openssl.gypi
-+++ b/Telegram/gyp/helpers/modules/openssl.gypi
-@@ -58,7 +58,7 @@
-       }]],
-     }], [ 'build_linux', {
-       'include_dirs': [
--        '/usr/local/desktop-app/openssl-1.1.1/include',
-+        '/usr/include/openssl',
-       ],
-     }],
-   ],
 diff --git a/Telegram/gyp/helpers/modules/qt.gypi b/Telegram/gyp/helpers/modules/qt.gypi
-index e329211..5e67752 100644
+index e329211..e7f7db9 100644
 --- a/Telegram/gyp/helpers/modules/qt.gypi
 +++ b/Telegram/gyp/helpers/modules/qt.gypi
 @@ -14,27 +14,17 @@
@@ -232,7 +156,7 @@ index e329211..5e67752 100644
                  'qt_version%': '5.6.2',
                }, {
 -                'qt_version%': '5.12.5',
-+                'qt_version%': '<!(pkg-config --modversion Qt5Core)',
++                'qt_version%': '<!(pkg-config 2> /dev/null --modversion Qt5Core)',
                }]
              ],
            },
@@ -328,9 +252,13 @@ index e329211..5e67752 100644
    ],
    'library_dirs': [
      '<(qt_loc)/lib',
-@@ -236,24 +202,12 @@
-         '<(DEPTH)/helpers/platform/linux/linux_glibc_wraps.gyp:linux_glibc_wraps',
+@@ -232,36 +198,17 @@
+       'library_dirs': [
+         '<(qt_loc)/plugins/platforminputcontexts',
        ],
+-      'dependencies': [
+-        '<(DEPTH)/helpers/platform/linux/linux_glibc_wraps.gyp:linux_glibc_wraps',
+-      ],
        'libraries': [
 -        '-lcomposeplatforminputcontextplugin',
 -        '-libusplatforminputcontextplugin',
@@ -340,20 +268,20 @@ index e329211..5e67752 100644
          '<@(qt_libs_release)',
 -        '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
 -        '<(linux_path_xkbcommon)/lib/libxkbcommon-x11.a',
-         '<(PRODUCT_DIR)/obj.target/helpers/platform/linux/liblinux_glibc_wraps.a',
+-        '<(PRODUCT_DIR)/obj.target/helpers/platform/linux/liblinux_glibc_wraps.a',
          #'<(linux_lib_ssl)', # added in lib_ton
          #'<(linux_lib_crypto)', # added in lib_ton
 -        '<!@(python -c "for s in \'<(linux_lib_icu)\'.split(\' \'): print(s)")',
 -        '-lxcb',
-         '-lX11',
+-        '-lX11',
 -        '-lX11-xcb',
 -        '-ldbus-1',
          '-ldl',
 -        '-lgthread-2.0',
-         '-lglib-2.0',
+-        '-lglib-2.0',
          '-lpthread',
        ],
-@@ -261,7 +215,6 @@
+       'include_dirs': [
          '<(qt_loc)/mkspecs/linux-g++',
        ],
        'ldflags': [
@@ -375,29 +303,26 @@ index 33cc236..de933d3 100644
        # Silence "Note: No relevant classes found. No output generated."
        '--no-notes',
 diff --git a/Telegram/gyp/telegram/linux.gypi b/Telegram/gyp/telegram/linux.gypi
-index ba6bc45e8..73af2b27d 100644
+index ba6bc45e8..3808592ac 100644
 --- a/Telegram/gyp/telegram/linux.gypi
 +++ b/Telegram/gyp/telegram/linux.gypi
-@@ -19,9 +19,11 @@
-         #'xkbcommon',
+@@ -20,28 +20,20 @@
        ],
      },
-+    'library_dirs': [
-+      '/usr/lib',
-+      '/usr/lib/openssl',
-+    ],
      'libraries': [
 -      '-Wl,-Bstatic',
 -      '-lbreakpad_client',
++      '-ltgvoip',
++      '-lrlottie',
        '-llzma',
++      '-llz4',
        '-lopenal',
        '-lavformat',
-@@ -29,19 +31,10 @@
+       '-lavcodec',
        '-lswresample',
        '-lswscale',
        '-lavutil',
-+      '-lminizip',
-       '-lopus',
+-      '-lopus',
 -      '-lva-x11',
 -      '-lva-drm',
 -      '-lva',
@@ -410,78 +335,94 @@ index ba6bc45e8..73af2b27d 100644
 -      '-lXrender',
 -      '<(linux_lib_ssl)',
 -      '<(linux_lib_crypto)',
++      '-lminizip',
++      '-lssl',
 +      '-lcrypto',
  #      '<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))',
      ],
      'cflags_cc': [
-@@ -53,7 +46,6 @@
-       '-Wl,-wrap,secure_getenv',
-       '-Wl,-wrap,clock_gettime',
+@@ -49,11 +41,7 @@
+       '-Wno-maybe-uninitialized',
+     ],
+     'ldflags': [
+-      '-Wl,-wrap,aligned_alloc',
+-      '-Wl,-wrap,secure_getenv',
+-      '-Wl,-wrap,clock_gettime',
        '-Wl,--no-as-needed,-lrt',
 -      '-Wl,-Bstatic',
      ],
      'configurations': {
        'Release': {
-@@ -77,9 +69,8 @@
+@@ -71,15 +59,12 @@
+       },
+     },
+     'conditions': [
+-      [ '"<!(uname -p)" != "x86_64"', {
+-        'ldflags': [
+-          '-Wl,-wrap,__divmoddi4',
++      ['not_need_gtk!="True"', {
++        'libraries': [
++          '-lX11',
          ],
-       }], ['not_need_gtk!="True"', {
+-      }], ['not_need_gtk!="True"', {
          'cflags_cc': [
 -          '<!(pkg-config 2> /dev/null --cflags gtk+-2.0)',
 -          '<!(pkg-config 2> /dev/null --cflags glib-2.0)',
 -          '<!(pkg-config 2> /dev/null --cflags dee-1.0)',
-+          '<!(pkg-config 2> /dev/null --cflags appindicator3-0.1)',
 +          '<!(pkg-config 2> /dev/null --cflags gtk+-3.0)',
          ],
        }], ['<!(pkg-config ayatana-appindicator3-0.1; echo $?) == 0', {
          'cflags_cc': [ '<!(pkg-config --cflags ayatana-appindicator3-0.1)' ],
 diff --git a/Telegram/gyp/telegram/sources.txt b/Telegram/gyp/telegram/sources.txt
-index e3ccb66db..1bf5886d8 100644
+index e3ccb66db..4d8181281 100644
 --- a/Telegram/gyp/telegram/sources.txt
 +++ b/Telegram/gyp/telegram/sources.txt
-@@ -842,7 +842,7 @@
+@@ -838,19 +838,10 @@
+ <(src_loc)/mainwindow.h
+ <(src_loc)/observer_peer.cpp
+ <(src_loc)/observer_peer.h
+-<(src_loc)/qt_static_plugins.cpp
++<(src_loc)/qt_functions.cpp
  <(src_loc)/settings.cpp
  <(src_loc)/settings.h
  
 -platforms: !win
-+platforms: win mac osx
- <(minizip_loc)/crypt.h
- <(minizip_loc)/ioapi.c
- <(minizip_loc)/ioapi.h
-@@ -859,3 +859,6 @@ platforms: mac
- <(sp_media_key_tap_loc)/SPMediaKeyTap.h
- <(sp_media_key_tap_loc)/SPInvocationGrabbing/NSObject+SPInvocationGrabbing.m
- <(sp_media_key_tap_loc)/SPInvocationGrabbing/NSObject+SPInvocationGrabbing.h
-+
-+platforms: linux
-+<(src_loc)/qt_functions.cpp
-diff --git a/Telegram/gyp/tests/tests.gyp b/Telegram/gyp/tests/tests.gyp
-index 43ae1d696..05fe0fbba 100644
---- a/Telegram/gyp/tests/tests.gyp
-+++ b/Telegram/gyp/tests/tests.gyp
-@@ -140,8 +140,7 @@
+-<(minizip_loc)/crypt.h
+-<(minizip_loc)/ioapi.c
+-<(minizip_loc)/ioapi.h
+-<(minizip_loc)/zip.c
+-<(minizip_loc)/zip.h
+-<(minizip_loc)/unzip.c
+-<(minizip_loc)/unzip.h
+-
+ platforms: win
+ <(res_loc)/winrc/Telegram.rc
+ 
+Submodule Telegram/lib_lottie contains modified content
+diff --git a/Telegram/lib_lottie/lib_lottie.gyp b/Telegram/lib_lottie/lib_lottie.gyp
+index 74ce7de..812b094 100644
+--- a/Telegram/lib_lottie/lib_lottie.gyp
++++ b/Telegram/lib_lottie/lib_lottie.gyp
+@@ -21,11 +21,9 @@
+     },
+     'dependencies': [
+       '<(submodules_loc)/lib_base/lib_base.gyp:lib_base',
+-      '<(submodules_loc)/lib_rlottie/lib_rlottie.gyp:lib_rlottie',
+     ],
+     'export_dependent_settings': [
+       '<(submodules_loc)/lib_base/lib_base.gyp:lib_base',
+-      '<(submodules_loc)/lib_rlottie/lib_rlottie.gyp:lib_rlottie',
+     ],
+     'direct_dependent_settings': {
+       'include_dirs': [
+@@ -57,7 +55,6 @@
+     'conditions': [['lottie_use_cache', {
+       'dependencies': [
+         '../gyp/lib_ffmpeg.gyp:lib_ffmpeg',
+-        '../gyp/lib_lz4.gyp:lib_lz4',
        ],
-     }], [ 'build_linux', {
-       'libraries': [
--        '<(linux_lib_ssl)',
--        '<(linux_lib_crypto)',
-+        'crypto',
-       ],
-     }]],
-   }],
-diff --git a/Telegram/gyp/utils.gyp b/Telegram/gyp/utils.gyp
-index 7d5dafaba..e250edb2b 100644
---- a/Telegram/gyp/utils.gyp
-+++ b/Telegram/gyp/utils.gyp
-@@ -73,8 +73,7 @@
-       }],
-       [ 'build_linux', {
-         'libraries': [
--          '<(linux_lib_ssl)',
--          '<(linux_lib_crypto)',
-+          'crypto',
-           'lzma',
-         ],
-       }],
+       'export_dependent_settings': [
+         '../gyp/lib_ffmpeg.gyp:lib_ffmpeg',
 Submodule Telegram/lib_ui contains modified content
 diff --git a/Telegram/lib_ui/gyp/qrc_rule.gypi b/Telegram/lib_ui/gyp/qrc_rule.gypi
 index eb4654c..22cb8f5 100644
@@ -497,13 +438,14 @@ index eb4654c..22cb8f5 100644
        '-no-compress',
        '<(RULE_INPUT_PATH)',
 diff --git a/Telegram/lib_ui/qt_conf/linux.qrc b/Telegram/lib_ui/qt_conf/linux.qrc
-index b9f5692..990e7fa 100644
+index b9f5692..8a9bbb3 100644
 --- a/Telegram/lib_ui/qt_conf/linux.qrc
 +++ b/Telegram/lib_ui/qt_conf/linux.qrc
-@@ -1,6 +1,5 @@
+@@ -1,7 +1,4 @@
  <RCC>
-   <qresource prefix="/qt/etc">
+-  <qresource prefix="/qt/etc">
 -    <file alias="qt.conf">qt_linux.conf</file>
-   </qresource>
+-  </qresource>
    <qresource prefix="/fc">
      <file>fc-custom.conf</file>
+   </qresource>

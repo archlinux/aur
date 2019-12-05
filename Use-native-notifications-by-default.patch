@@ -1,0 +1,13 @@
+diff --git a/Telegram/SourceFiles/facades.cpp b/Telegram/SourceFiles/facades.cpp
+index 7f1a9505b..9500a37ba 100644
+--- a/Telegram/SourceFiles/facades.cpp
++++ b/Telegram/SourceFiles/facades.cpp
+@@ -378,7 +378,7 @@ struct Data {
+ 	bool DesktopNotify = true;
+ 	bool RestoreSoundNotifyFromTray = false;
+ 	DBINotifyView NotifyView = dbinvShowPreview;
+-	bool NativeNotifications = false;
++	bool NativeNotifications = Platform::IsLinux();
+ 	int NotificationsCount = 3;
+ 	Notify::ScreenCorner NotificationsCorner = Notify::ScreenCorner::BottomRight;
+ 	bool NotificationsDemoIsShown = false;

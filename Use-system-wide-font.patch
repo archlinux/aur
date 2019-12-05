@@ -1,0 +1,100 @@
+Submodule Telegram/lib_ui contains modified content
+diff --git a/Telegram/lib_ui/gyp/qrc_rule.gypi b/Telegram/lib_ui/gyp/qrc_rule.gypi
+index eb4654c..f22d752 100644
+--- a/Telegram/lib_ui/gyp/qrc_rule.gypi
++++ b/Telegram/lib_ui/gyp/qrc_rule.gypi
+@@ -5,11 +5,6 @@
+ # https://github.com/desktop-app/legal/blob/master/LEGAL
+ 
+ {
+-  'variables': {
+-    'qrc_files': [
+-      '<(submodules_loc)/lib_ui/fonts/fonts.qrc',
+-    ],
+-  },
+   'conditions': [
+     [ 'build_linux', {
+       'variables': {
+diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
+index ad3a9e3..bf3d89f 100644
+--- a/Telegram/lib_ui/ui/style/style_core_font.cpp
++++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
+@@ -15,7 +15,6 @@
+ #include <QtGui/QFontDatabase>
+ 
+ void style_InitFontsResource() {
+-	Q_INIT_RESOURCE(fonts);
+ #ifdef Q_OS_WIN
+ 	Q_INIT_RESOURCE(win);
+ #elif defined Q_OS_MAC // Q_OS_WIN
+@@ -93,14 +92,6 @@ enum {
+ 
+ 	FontTypesCount,
+ };
+-QString FontTypeNames[FontTypesCount] = {
+-	"DAOpenSansRegular",
+-	"DAOpenSansRegularItalic",
+-	"DAOpenSansBold",
+-	"DAOpenSansBoldItalic",
+-	"DAOpenSansSemibold",
+-	"DAOpenSansSemiboldItalic",
+-};
+ int32 FontTypeFlags[FontTypesCount] = {
+ 	0,
+ 	FontItalic,
+@@ -109,14 +100,6 @@ int32 FontTypeFlags[FontTypesCount] = {
+ 	0,
+ 	FontItalic,
+ };
+-QString FontTypeWindowsFallback[FontTypesCount] = {
+-	"Segoe UI",
+-	"Segoe UI",
+-	"Segoe UI",
+-	"Segoe UI",
+-	"Segoe UI Semibold",
+-	"Segoe UI Semibold",
+-};
+ 
+ bool Started = false;
+ QString Overrides[FontTypesCount];
+@@ -147,40 +130,6 @@ void StartFonts() {
+ 
+ 	style_InitFontsResource();
+ 
+-	bool areGood[FontTypesCount] = { false };
+-	for (auto i = 0; i != FontTypesCount; ++i) {
+-		const auto name = FontTypeNames[i];
+-		const auto flags = FontTypeFlags[i];
+-		areGood[i] = LoadCustomFont(":/gui/fonts/" + name + ".ttf", name, flags);
+-		Overrides[i] = name;
+-#ifdef Q_OS_WIN
+-		// Attempt to workaround a strange font bug with Open Sans Semibold not loading.
+-		// See https://github.com/telegramdesktop/tdesktop/issues/3276 for details.
+-		// Crash happens on "options.maxh / _t->_st->font->height" with "division by zero".
+-		// In that place "_t->_st->font" is "semiboldFont" is "font(13 "Open Sans Semibold").
+-		const auto fallback = FontTypeWindowsFallback[i];
+-		if (!areGood[i]) {
+-			if (ValidateFont(fallback, flags)) {
+-				Overrides[i] = fallback;
+-				UI_LOG(("Fonts Info: Using '%1' instead of '%2'.").arg(fallback).arg(name));
+-			}
+-		}
+-		// Disable default fallbacks to Segoe UI, see:
+-		// https://github.com/telegramdesktop/tdesktop/issues/5368
+-		//
+-		//QFont::insertSubstitution(name, fallback);
+-#endif // Q_OS_WIN
+-	}
+-#ifdef Q_OS_MAC
+-	auto list = QStringList();
+-	list.append(".SF NS Text");
+-	list.append("Helvetica Neue");
+-	list.append("Lucida Grande");
+-	for (const auto &name : FontTypeNames) {
+-		QFont::insertSubstitutions(name, list);
+-	}
+-#endif // Q_OS_MAC
+-
+ 	if (!CustomMainFont.isEmpty() && ValidateFont(CustomMainFont)) {
+ 		Overrides[FontTypeRegular] = CustomMainFont;
+ 		Overrides[FontTypeRegularItalic] = CustomMainFont;

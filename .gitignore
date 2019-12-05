@@ -16,5 +16,7 @@ libtgvoip/
 lz4/
 rlottie/
 src/
+pkg/
 variant/
 xxHash/
+a196b0aba723de85ee573594d9ad420412b6391a.patch

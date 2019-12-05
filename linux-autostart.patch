@@ -1,0 +1,89 @@
+diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+index 68d07a55b..a967950f7 100644
+--- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -393,6 +393,48 @@ bool psShowOpenWithMenu(int x, int y, const QString &file) {
+ }
+ 
+ void psAutoStart(bool start, bool silent) {
++	auto home = getHomeDir();
++	if (home.isEmpty() || cAlphaVersion() || cExeName().isEmpty()) return;
++
++	if(start) {
++		DEBUG_LOG(("App Info: placing autostart .desktop file"));
++		if (QDir(home + qsl(".config/")).exists()) {
++			QString autostart = home + qsl(".config/autostart/");
++			if (!QDir(autostart).exists()) QDir().mkpath(autostart);
++
++			QString path = cWorkingDir() + qsl("tdata/"), file = path + qsl("kotatogramdesktop.desktop");
++			QDir().mkpath(path);
++			QFile f(file);
++			if (f.open(QIODevice::WriteOnly)) {
++				QTextStream s(&f);
++				s.setCodec("UTF-8");
++				s << "[Desktop Entry]\n";
++				s << "Version=1.0\n";
++				s << "Name=" << str_const_toString(AppName) << "\n";
++				s << "Comment=Experimental Telegram Desktop fork\n";
++				s << "TryExec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << "\n";
++				s << "Exec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << " -autostart\n";
++				s << "Icon=kotatogram\n";
++				s << "Terminal=false\n";
++				s << "StartupWMClass=" << QCoreApplication::instance()->applicationName() << "\n";
++				s << "Type=Application\n";
++				s << "Categories=Network;InstantMessaging;Qt;\n";
++				s << "MimeType=x-scheme-handler/tg;\n";
++				s << "Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;\n";
++				s << "X-GNOME-UsesNotifications=true\n";
++				f.close();
++
++
++				if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))) + " --delete-original " + EscapeShell(QFile::encodeName(file)))) {
++					RunShellCommand("update-desktop-database " + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))));
++				}
++			} else {
++				LOG(("App Error: Could not open '%1' for write").arg(file));
++			}
++		}
++	} else {
++		QFile::remove(home + qsl(".config/autostart/kotatogramdesktop.desktop"));
++	}
+ }
+ 
+ void psSendToMenu(bool send, bool silent) {
+diff --git a/Telegram/SourceFiles/settings/settings_advanced.cpp b/Telegram/SourceFiles/settings/settings_advanced.cpp
+index 0a41abef7..529be612e 100644
+--- a/Telegram/SourceFiles/settings/settings_advanced.cpp
++++ b/Telegram/SourceFiles/settings/settings_advanced.cpp
+@@ -354,7 +354,7 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
+ 	}
+ 
+ #ifndef OS_WIN_STORE
+-	if (Platform::IsWindows()) {
++	if (Platform::IsWindows() || Platform::IsLinux()) {
+ 		const auto minimizedToggled = [] {
+ 			return cStartMinimized() && !Global::LocalPasscode();
+ 		};
+@@ -365,9 +365,6 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
+ 		const auto minimized = addSlidingCheckbox(
+ 			tr::lng_settings_start_min(tr::now),
+ 			minimizedToggled());
+-		const auto sendto = addCheckbox(
+-			tr::ktg_settings_add_sendto(tr::now),
+-			cSendToMenu());
+ 
+ 		autostart->checkedChanges(
+ 		) | rpl::filter([](bool checked) {
+@@ -404,6 +401,12 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
+ 		) | rpl::start_with_next([=] {
+ 			minimized->entity()->setChecked(minimizedToggled());
+ 		}, minimized->lifetime());
++	}
++
++	if (Platform::IsWindows()) {
++		const auto sendto = addCheckbox(
++			tr::ktg_settings_add_sendto(tr::now),
++			cSendToMenu());
+ 
+ 		sendto->checkedChanges(
+ 		) | rpl::filter([](bool checked) {
