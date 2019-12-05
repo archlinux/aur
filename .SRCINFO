@@ -1,0 +1,15 @@
+pkgbase = php71-igbinary
+	pkgdesc = php71 extension igbinary
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://pecl.php.net/package/igbinary
+	arch = x86_64
+	license = PHP
+	makedepends = php71
+	depends = php71
+	backup = etc/php71/conf.d/igbinary.ini
+	source = http://pecl.php.net/get/igbinary-3.0.1.tgz
+	md5sums = fb3b2f7fa306ca582afd9f382c409a24
+
+pkgname = php71-igbinary
+
