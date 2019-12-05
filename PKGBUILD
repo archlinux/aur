@@ -3,7 +3,7 @@ _name=xmind-zen
 pkgname="$_name-electron"
 pkgver=10.0.0
 release_date=201911260056
-pkgrel=2
+pkgrel=3
 pkgdesc="XMind - The most popular mind mapping software"
 arch=('x86_64')
 url="https://www.xmind.net/zen/"
@@ -11,8 +11,14 @@ license=('custom')
 depends=('electron5')
 provides=("$_name" xmind)
 conflicts=("$_name" xmind)
-source=("$_name-$pkgver-$release_date.orig.rpm::https://dl3.xmind.net/XMind-ZEN-for-Linux-x86-64bit-$pkgver-$release_date.rpm")
-sha256sums=('1821384afb6b0cf9f80eba7e7c529a4754ce59b3d192af16d173b9a317730131')
+source=(
+	"$_name-$pkgver-$release_date.orig.rpm::https://dl3.xmind.net/XMind-ZEN-for-Linux-x86-64bit-$pkgver-$release_date.rpm"
+	xmind.xml
+)
+sha256sums=(
+	'1821384afb6b0cf9f80eba7e7c529a4754ce59b3d192af16d173b9a317730131'
+	'SKIP'
+)
 
 prepare() {
 	cd "$srcdir"
@@ -26,6 +32,7 @@ package() {
 	cd "$srcdir/usr/share"
 	find . -type f -exec install -Dm644 {} "$pkgdir/usr/share/{}" \;
 	install -Dm755 "$srcdir/XMind.sh" "$pkgdir/usr/bin/XMind"
+	install -Dm644 "$srcdir/xmind.xml" "$pkgdir/usr/share/mime/packages/xmind.xml"
 
 	cd "$srcdir/opt/XMind ZEN/resources"
 	install -Dm644 app.asar "$pkgdir/usr/share/XMind/app.asar"
