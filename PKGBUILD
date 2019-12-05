@@ -3,14 +3,14 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 # Based on hplip from [extra]
 
-pkgname=hplip-minimal
-pkgver=3.19.6
+pkgname='hplip-minimal'
+pkgver=3.19.11
 pkgrel=1
-pkgdesc="The HP printer drivers, and not much else"
+pkgdesc='The HP printer drivers, and not much else'
 arch=('i686' 'x86_64' 'armv6h')
 url="https://hplipopensource.com"
-license=('GPL')
-depends=('ghostscript>=8.64-6')
+license=('GPL2' 'custom')
+depends=('python-dbus' 'python-distro' 'ghostscript>=8.64-6' 'libidn' 'libjpeg-turbo')
 makedepends=('cups' 'libusb')
 optdepends=(
   'cups: for printing support'
@@ -19,46 +19,49 @@ optdepends=(
 conflicts=('hplip')
 options=('!docs')
 source=("https://downloads.sourceforge.net/hplip/hplip-${pkgver}.tar.gz")
-md5sums=('2796dd80255e4f583e253cebe3959765')
-sha256sums=('fcdaedee9ed17d2e70f3aff9558a452d99443d1b93d6623132faf3f3ae61d66d')
+md5sums=('8e48067b21b59df3806dc321d22c93b9')
+sha256sums=('3d75773eead54ecf850eb9cdbfae3cb55ae0fc030dd3a7b5c524b72244f5d551')
 
 prepare() {
   cd "hplip-${pkgver}"
-
-  # https://bugs.archlinux.org/task/30085 - hack found in Gentoo
-  # Use system foomatic-rip for hpijs driver instead of foomatic-rip-hplip
-  # The hpcups driver does not use foomatic-rip
-  local _i
-  for _i in ppd/hpcups/*.ppd.gz ; do
-    rm -f "${_i}.temp"
-    gunzip -c "${_i}" | sed -e 's/foomatic-rip-hplip/foomatic-rip/g' | gzip > "${_i}.temp"
-    mv "${_i}.temp" "${_i}"
-  done
-
-  export AUTOMAKE='automake --foreign'
-  autoreconf --force --install
 }
 
 build() {
   cd "hplip-${pkgver}"
 
-  ./configure --prefix=/usr --disable-qt4 --disable-doc-build --disable-dbus-build --disable-network-build \
-              --disable-scan-build --disable-fax-build --disable-foomatic-rip-hplip-install \
-              --enable-foomatic-ppd-install --enable-new-hpcups --disable-cups-drv-install \
-              --enable-cups-ppd-install --enable-pp-build
-  make -j1
+ AUTOMAKE='automake --foreign' \
+ autoreconf --force --install
+ export CFLAGS+=" $(python3-config --includes)" # Fix build with python 3.8
+ ./configure --prefix=/usr \
+             --disable-qt5 \
+             --disable-qt4 \
+             --enable-new-hpcups \
+             --disable-cups-drv-install \
+             --enable-pp-build \
+             --disable-doc-build \
+             --disable-dbus-build \
+             --disable-network-build \
+             --disable-scan-build \
+             --disable-fax-build \
+             --disable-foomatic-rip-hplip-install \
+             --enable-foomatic-ppd-install \
+             --enable-cups-ppd-install
+ make -s -j1
 }
 
 package() {
-  cd "hplip-${pkgver}"
-  make -j1 DESTDIR="${pkgdir}/" install
+ cd "hplip-${pkgver}"
+ make -j1 DESTDIR="${pkgdir}/" install
 
-  # remove config provided by sane and autostart of hp-daemon
-  rm -rf "${pkgdir}"/etc/{sane.d,xdg}
+ # remove config provided by sane and autostart of hp-daemon
+ rm -rf "${pkgdir}"/etc/{sane.d,xdg}
 
-  # remove HAL .fdi file because HAL is no longer used
-  rm -rf "${pkgdir}"/usr/share/hal
+ # remove HAL .fdi file because HAL is no longer used
+ rm -vrf "${pkgdir}"/usr/share/hal
 
-  # remove rc script
-  rm -rf "${pkgdir}"/etc/init.d
+ # remove rc script
+ rm -vrf "${pkgdir}"/etc/init.d
+
+ # add mixed license file
+ install -Dt "${pkgdir}"/usr/share/licenses/${pkgname} -m644 COPYING
 }
