@@ -1,24 +1,29 @@
+# Maintainer: Stick <stick@stma.is>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
-pkgname=cups-xerox-phaser-6500
-pkgver=1.0.0
+
+pkgname=xerox-workcentre-6505
+pkgver=1.0
 pkgrel=1
-_rpmname=Xerox-Phaser-6500-Linux.rpm
-pkgdesc="CUPS driver for the Xerox Phaser 6500 series"
-url="http://www.support.xerox.com/support/phaser-6500/downloads/engb.html?operatingSystem=linux&fileLanguage=en_GB"
+pkgdesc="CUPS driver for the Xerox WorkCentre 6505"
+url='https://www.support.xerox.com/support/workcentre-6505/downloads/enus.html?operatingSystem=linux'
 license=('custom')
-arch=('i686' 'x86_64')
+arch=('any')
 depends=('cups')
-makedepends=('rpmextract' 'libtool')
-source=(http://download.support.xerox.com/pub/drivers/6500/drivers/linux/en_GB/Xerox-Phaser-6500-Linux.rpm)
-md5sums=('aad7730c2a9f7f755d66cb477d8f732a')
+makedepends=('rpmextract')
+source=("$pkgname.rpm::http://download.support.xerox.com/pub/drivers/WC6505/drivers/linux/en_GB/Xerox-WorkCentre-6505-Linux.rpm"
+        "LICENSE")
+sha256sums=('c833ba8e00a73d1e633ad7a47bd7f08b516f17a6783e90550ff616f09fd16489'
+            'c13727c7e2e002709fca9a32d69b99c95e70122fadd860bccd5f0a963ea01273')
 
 build() {
-  cd "$srcdir"
-  rpmextract.sh "$_rpmname" || return 1
+	cd "$srcdir" || exit
+	rpmextract.sh "$pkgname.rpm" || exit
 }
 
 package() {
-  cd "$srcdir"
-  cp -r usr "$pkgdir"
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	cp LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$srcdir" || exit
+	cp -r usr "$pkgdir"
 }
 
