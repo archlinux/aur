@@ -8,7 +8,7 @@
 
 pkgname=mingw-w64-libssh
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
 license=('LGPL')
@@ -18,10 +18,12 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64
 options=(!strip !buildflags staticlibs)
 #cmocka
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc}
-        mingw-pkgconfig.patch)
+        mingw-pkgconfig.patch
+        staticlibfix.patch)
 sha256sums=('1970a8991374fc8cbdcb7fcc3683fe8f8824aa37d575f38cfb75fe0fe50fd9ad'
             'SKIP'
-            '10e57a3c226374b42656a11411fb8803a6afc9f76a3b71ca72649a1c9c1b10d1')
+            '10e57a3c226374b42656a11411fb8803a6afc9f76a3b71ca72649a1c9c1b10d1'
+            'befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -37,9 +39,39 @@ prepare() {
   cd "${srcdir}/libssh-${pkgver}"
 
   patch -p1 -i ${srcdir}/mingw-pkgconfig.patch
+
+  # Should be included in next release:
+  # https://bugs.libssh.org/T198
+  # https://gitlab.com/libssh/libssh-mirror/merge_requests/73/diffs
+  patch -p1 -i ${srcdir}/staticlibfix.patch
 }
 
 build() {
+  #static build
+  for _arch in ${_architectures}; do
+    mkdir -p "${srcdir}"/build-${_arch}-static && cd "${srcdir}"/build-${_arch}-static
+
+    version=$(cat /usr/${_arch}/include/openssl/opensslv.h | grep "OPENSSL_VERSION_TEXT" | sed 's/^[^\"]*"OpenSSL //' | sed 's/ .*$//')
+    libssl=$(ls /usr/${_arch}/bin/libssl-*.dll)
+    libcrypto=$(ls /usr/${_arch}/bin/libcrypto-*.dll)
+
+    ${_arch}-cmake ../libssh-${pkgver} \
+      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DWITH_GSSAPI=OFF \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DBUILD_STATIC_LIB:BOOL=ON \
+      -DOPENSSL_FOUND:BOOL=ON \
+      -DOPENSSL_INCLUDE_DIR:FILEPATH=/usr/${_arch}/include/ \
+      -DOPENSSL_SSL_LIBRARY:FILEPATH="$libssl" \
+      -DOPENSSL_CRYPTO_LIBRARY:FILEPATH="$libcrypto" \
+      -DOPENSSL_VERSION:STRING="$version" \
+      -DUNIT_TESTING=OFF \
+      -DWITH_EXAMPLES=OFF
+
+    make
+  done
+
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
 
@@ -71,6 +103,13 @@ check() {
 }
 
 package(){
+  # install static library
+  for _arch in ${_architectures}; do
+    cd "${srcdir}"/build-${_arch}-static
+
+    make DESTDIR="${pkgdir}" install
+  done
+
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
 
