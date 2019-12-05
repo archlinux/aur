@@ -1,8 +1,8 @@
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
 
 pkgname=tableplus
-pkgver=0.1_18
-pkgrel=4
+pkgver=0.1_20
+pkgrel=1
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
 url="https://tableplus.com/"
@@ -12,7 +12,7 @@ source=('LICENSE'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver//_/-}_amd64.deb"
 )
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            '288d60d1019212badc0a01eb4ab6f67f97b88a17c581c07f6eb224c8d5adc050'
+            '097a847e781bb708898bea104c19897a7f2da6c1ccaa4bd98e27ac3efb343dda'
 )
 
 prepare() {
