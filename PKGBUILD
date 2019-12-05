@@ -1,6 +1,6 @@
 # Maintainer: Amir Mohammadi <183.amir@gmail.com>
 pkgname=gahshomar
-pkgver=4.4.1
+pkgver=5.0.0.rc1
 pkgrel=0
 pkgdesc="A Persian (Jalali/Farsi) calendar"
 arch=(i686 x86_64)
@@ -8,21 +8,20 @@ url="https://gahshomar.github.io/gahshomar/"
 license=('GPL3')
 replaces=('persian-calendar')
 conflicts=('persian-calendar')
-depends=('python-gobject' 'jcal-git' 'libpeas')
-makedepends=('intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection')
-optdepends=('libappindicator-gtk3: for the app indicator plugin'
-			'gnome-shell: for the gnome-shell extension')
+depends=('python-gobject' 'libappindicator-gtk3')
+makedepends=('meson' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection')
+optdepends=('gnome-shell: for the gnome-shell extension')
 install=gahshomar.install
-source=($pkgname-$pkgver.tar.gz::https://github.com/Gahshomar/gahshomar/releases/download/v$pkgver/gahshomar-$pkgver.tar.gz)
-md5sums=('e268babec06a94ca90c7240a889e875e')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Gahshomar/gahshomar/archive/v$pkgver.tar.gz)
+md5sums=('1556d5a7277c17c70fe11b661a1415f0')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-	./configure --prefix=/usr --disable-schemas-compile
-	make
+	meson --prefix /usr --buildtype=plain . build
+	ninja -C build
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
-	make DESTDIR="${pkgdir}" install
+    cd $srcdir/$pkgname-$pkgver
+    DESTDIR="$pkgdir" ninja -C build install
 }
