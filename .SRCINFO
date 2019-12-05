@@ -1,5 +1,5 @@
 pkgbase = diskus-git
-	pkgdesc = A command-line tool to generate, analyze, convert and manipulate colors
+	pkgdesc = A minimal, fast alternative to 'du -sh'
 	pkgver = 0.6.0.85.g90fa0e3
 	pkgrel = 1
 	url = https://github.com/sharkdp/diskus
