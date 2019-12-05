@@ -18,15 +18,15 @@ source=("https://inkscape.org/gallery/item/13330/inkscape-0.92.4_A6N0YOn.tar.bz2
 sha256sums=('57ec2da8177b36614a513e2822efd73af721e690f7ddc6bd0a5fbb1525b4515e')
 
 prepare() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	./autogen.sh
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  ./autogen.sh
 
-	sed -i 's|/usr/bin/python\>|/usr/bin/python2|g' cxxtest/*.py
-	sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
-	sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
-	sed -i 's|python -c|python2 -c|g' configure share/extensions/uniconv*.py
-	sed -i 's|"python"|"python2"|g' src/main.cpp
-	sed -i 's| abs(| std::fabs(|g' src/ui/tools/flood-tool.cpp
+  sed -i 's|/usr/bin/python\>|/usr/bin/python2|g' cxxtest/*.py
+  sed -i 's|/usr/bin/env python\>|/usr/bin/env python2|g' share/*/{test/,}*.py
+  sed -i 's|"python" },|"python2" },|g' src/extension/implementation/script.cpp
+  sed -i 's|python -c|python2 -c|g' configure share/extensions/uniconv*.py
+  sed -i 's|"python"|"python2"|g' src/main.cpp
+  sed -i 's| abs(| std::fabs(|g' src/ui/tools/flood-tool.cpp
 
   # Fix build with poppler 0.71
   sed -e 's|gTrue|true|g' -e 's|gFalse|false|g' -e 's|GBool|bool|g' -i src/extension/internal/pdfinput/pdf-parser.*
@@ -39,23 +39,23 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
-	export FREETYPE_CONFIG="/usr/bin/pkg-config freetype2"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  export PKG_CONFIG_PATH='/usr/lib/imagemagick6/pkgconfig'
+  export FREETYPE_CONFIG="/usr/bin/pkg-config freetype2"
 
-	./configure \
-		--prefix=/usr \
-		--with-python \
-		--with-perl \
-		--enable-lcms \
-		--enable-poppler-cairo \
-		--disable-strict-build \
-		--disable-dependency-tracking \
+  ./configure \
+    --prefix=/usr \
+    --with-python \
+    --with-perl \
+    --enable-lcms \
+    --enable-poppler-cairo \
+    --disable-strict-build \
+    --disable-dependency-tracking \
     --enable-gtk3-experimental
-	make
+  make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
