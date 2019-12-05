@@ -1,16 +1,19 @@
-pkgbase = xerox-workcentre-6505
-	pkgdesc = CUPS driver for the Xerox WorkCentre 6505
-	pkgver = 1.0
+pkgbase = xerox-workcentre-6515
+	pkgdesc = CUPS driver for the Xerox WorkCentre 6515
+	pkgver = 5.20.661.4639
 	pkgrel = 1
-	url = https://www.support.xerox.com/support/workcentre-6505/downloads/enus.html?operatingSystem=linux
-	arch = any
+	url = https://www.support.xerox.com/support/workcentre-6515/downloads/enus.html?operatingSystem=linux
+	arch = i686
+	arch = x86_64
 	license = custom
 	makedepends = rpmextract
 	depends = cups
-	source = xerox-workcentre-6505.rpm::http://download.support.xerox.com/pub/drivers/WC6505/drivers/linux/en_GB/Xerox-WorkCentre-6505-Linux.rpm
 	source = LICENSE
-	sha256sums = c833ba8e00a73d1e633ad7a47bd7f08b516f17a6783e90550ff616f09fd16489
 	sha256sums = c13727c7e2e002709fca9a32d69b99c95e70122fadd860bccd5f0a963ea01273
+	source_i686 = xerox-workcentre-6515.rpm::http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxi686-5.20.661.4639.rpm
+	sha256sums_i686 = 630da30b503f80fb685158771ad3064f05c9be821cdb409ef87506efc185dd15
+	source_x86_64 = xerox-workcentre-6515.rpm::http://download.support.xerox.com/pub/drivers/CQ8580/drivers/linux/pt_BR/Xeroxv5Pkg-Linuxx86_64-5.20.661.4639.rpm
+	sha256sums_x86_64 = 82e1a45bbd2bf23ae10e3b78366e6ad4a51c7bb2dcdb0cef20e8d17d9abbad4c
 
-pkgname = xerox-workcentre-6505
+pkgname = xerox-workcentre-6515
 
