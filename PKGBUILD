@@ -1,8 +1,8 @@
 # Maintainer: Guillaume Hayot <ghayot[at]postblue[dot]info>
 pkgbase=libayatana-appindicator
 pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp" "python2-${pkgbase}")
-pkgver=0.5.3
-pkgrel=4
+pkgver=0.5.4
+pkgrel=1
 pkgdesc='Ayatana Application Indicators Shared Library'
 url='https://github.com/AyatanaIndicators/libayatana-appindicator'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('mate-common' 'gtk-doc' 'dbus-glib' 'gobject-introspection' 'gtk-sh
              'libayatana-indicator-gtk'{2,3} 'libdbusmenu-gtk'{2,3} 'mono' 'pygtk' 'vala' 'python2')
 options=('!emptydirs')
 source=("https://github.com/AyatanaIndicators/$pkgbase/archive/$pkgver.tar.gz")
-sha512sums=('194944fc8720313be60d0791149ec79d0eba994ed2775421932b8c16526ef4c1933c073dea2373b310b99e5f1c25532b8971dc43ae41aad13f502b3aa7422cc0')
+sha512sums=('009f8615993e8e13add85727e504304fdfd9c9e070e3d08d10123739860b444efa5913cef905034e16a5f6c024188d2db8274045d40d0c93985fabde2a995740')
 
 prepare() {
   cp -ra ${pkgbase}-${pkgver}{,-py2}
