@@ -1,0 +1,17 @@
+pkgbase = xmind-zen-electron
+	pkgdesc = XMind - The most popular mind mapping software
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://www.xmind.net/zen/
+	arch = x86_64
+	license = custom
+	depends = electron
+	provides = xmind-zen
+	provides = xmind
+	conflicts = xmind-zen
+	conflicts = xmind
+	source = xmind-zen-10.0.0-201911260056.orig.rpm::https://dl3.xmind.net/XMind-ZEN-for-Linux-x86-64bit-10.0.0-201911260056.rpm
+	sha256sums = 1821384afb6b0cf9f80eba7e7c529a4754ce59b3d192af16d173b9a317730131
+
+pkgname = xmind-zen-electron
+
