@@ -1,0 +1,31 @@
+# Maintainer: Vlad V. Voronenkov <vladvoronenkov at yandex dot ru>
+pkgname=gerris
+pkgver=2013.12.06
+pkgrel=1
+epoch=
+pkgdesc="A system for the solution of the partial differential equations describing fluid flow (CFD)"
+arch=('i686' 'x86_64')
+url="http://gfs.sourceforge.net"
+license=('GPL3')
+groups=()
+depends=('python' 'gts'  'gsl' 'netcdf' 'ode' 'fftw>=3' 'ffmpeg')
+makedepends=('python'  'gts'  'm4'  'gsl' 'netcdf' 'ode' 'fftw>=3' 'ffmpeg')
+
+
+
+source=("http://gerris.dalembert.upmc.fr/gerris/gerris-snapshot.tar.gz")
+noextract=()
+md5sums=('7814c664fcc7a4d3b457405384c22c5b')
+
+build() {
+	cd "gerris-snapshot-131206"
+	./configure --prefix=/usr --disable-mpi
+	make
+}
+
+
+
+package() {
+	cd "gerris-snapshot-131206"
+	make DESTDIR="$pkgdir/" install
+}
