@@ -9,7 +9,7 @@
 
 pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.17
+pkgver=19.18
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -24,9 +24,11 @@ optdepends=('cblas: for BLAS support'
             'libpng: for PNG support'
             'neon: for neon support'
             'sqlite: for sqlite support'
-            'ccache-ext: for ccache support during compiling')
+            'ccache-ext: for ccache support during compiling'
+            'python-numpy: for running numpy based tests'
+            'python2-numpy: for running numpy based tests')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('24772f9b2b99cf59a85fd1243ca1327cbf7340d83395b32a6c16a3a16136327b')
+sha256sums=('521b9fbcb90c328063c439f6ccb3c95d9ababd25b208cbd1b915d9f5c4d2ab9b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -34,7 +36,7 @@ build() {
   _compiler_opts=()
   # Detecting whether certain cpu optimisations can be made
   # Note: from dlib version 19.17 the default is to enable all options, so this
-  # is a check if they need to be turned off 
+  # is a check if they need to be turned off
   if ! grep -q avx /proc/cpuinfo; then
     _compiler_opts+=( '--no' 'USE_AVX_INSTRUCTIONS' )
   fi
@@ -58,7 +60,7 @@ build() {
   _compiler_vars=()
   if [[ -f "/usr/lib/ccache/bin/nvcc-ccache" ]]; then
     _compiler_vars+=( '--set' 'CUDA_NVCC_EXECUTABLE=/usr/lib/ccache/bin/nvcc-ccache' )
-    _compiler_vars+=( '--set' 'CUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc-7' )
+    _compiler_vars+=( '--set' 'CUDA_HOST_COMPILER=/usr/lib/ccache/bin/gcc' )
   else
     _compiler_vars+=( '--set' 'CUDA_HOST_COMPILER=/opt/cuda/bin/gcc' )
   fi
@@ -68,6 +70,19 @@ build() {
 
   # Compiling for Python 2
   python2 setup.py build "${_compiler_opts[@]}" "${_compiler_vars[@]}"
+}
+
+
+check() {
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	
+	# The PYTHONPATH is cleared to avoid custom user paths getting in the way
+	# of importing the right versions of packages
+  # Tests for Python 3
+  PYTHONPATH="" python setup.py test
+
+  # Tests for Python 2
+  PYTHONPATH="" python2 setup.py test
 }
 
 package_python-dlib-cuda() {
