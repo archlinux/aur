@@ -1,6 +1,6 @@
 pkgbase = safe
 	pkgdesc = SAFE - Single App For Everything.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/abstra-llc/safe#readme
@@ -10,7 +10,7 @@ pkgbase = safe
 	makedepends = git
 	makedepends = npm
 	depends = electron
-	source = git+https://github.com/abstra-llc/safe#tag=v0.1.0
+	source = git+https://github.com/abstra-llc/safe#tag=v0.2.0
 	source = safe.desktop
 	source = safe.sh
 	sha512sums = SKIP
