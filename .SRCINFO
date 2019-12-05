@@ -14,7 +14,7 @@ pkgbase = skypeforlinux-preview-bin
 	depends = libsecret
 	depends = nss
 	depends = glibc>=2.28-4
-	optdepends = gnome-keyring
+	optdepends = org.freedesktop.secrets
 	provides = skypeforlinux
 	provides = skype
 	conflicts = skypeforlinux
