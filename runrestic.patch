@@ -1,0 +1,10 @@
+--- setup.py	2019-11-04 13:14:01.000000000 -0800
++++ setup.py.fixed	2019-12-05 09:07:32.278069389 -0800
+@@ -48,6 +48,6 @@
+         'runrestic.tools'
+     ],
+     package_data={'runrestic.config': ['*.json']},
+-    install_requires=['jsonschema==3.0.*,>=3.0.0', 'toml==0.10.*,>=0.10.0'],
++    install_requires=['jsonschema==3.*,>=3.0.0', 'toml==0.10.*,>=0.10.0'],
+     extras_require={'dev': ['ipdb']},
+ )
