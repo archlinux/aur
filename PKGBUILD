@@ -28,7 +28,7 @@ source=(
 noextract=()
 md5sums=()
 sha256sums=(
-    '328d578892ac0509d56a792dd88b5c19f074e6e267c5d9598466cf44a2b94a57'
+    '4c3aa6517ff16b1df037bc84ec4a325877e0604f24cd208251cacc52fe56359b'
 )
 package() {
     DESTDIR="${pkgdir}/usr/bin"
