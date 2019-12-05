@@ -1,6 +1,6 @@
 pkgbase = doh-client
 	pkgdesc = doh-client is a DNS over HTTPS client
-	pkgver = 1.4.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/LinkTed/doh-client
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = doh-client
 	makedepends = rust
 	makedepends = git
 	depends = ca-certificates-utils
-	source = git+https://github.com/LinkTed/doh-client.git#tag=v1.4.5
+	source = git+https://github.com/LinkTed/doh-client.git#tag=v2.0.0
 	md5sums = SKIP
 
 pkgname = doh-client
