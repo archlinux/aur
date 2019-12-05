@@ -1,6 +1,6 @@
 # Maintainer: df543 <df543@protonmail.com>
 pkgname=ss-face
-pkgver=2.0.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A light weight shadowsocks-libev client GUI."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ depends=(
   'shadowsocks-libev'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/df543/Shadowsocks-Face/tar.gz/${pkgver}")
-sha1sums=('1bd5c8285e491f224feb0d2808503433c5a29bd9')
+sha1sums=('51ad67ae5d0eadb5378a6ca1b77e32230509a6ba')
 
 build() {
   cd "$srcdir/Shadowsocks-Face-$pkgver"
