@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mingw-w64-dav1d
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git' 'nasm' 'doxygen')
 source=(https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz{,.asc}
         mingw-w64-stripping-fix.patch)
-sha512sums=('0ed67219127c2a3dc3151d9e427c5f3dab4e3272a8fdcd17ceae032b81992a1f250045d45b0e0c5c500ebf11e8387fd47f8bf8c4c319577c887daab49a651504'
+sha512sums=('255e592256e47305921f8331f3ea7f9792e2c62b981f62a0ee05a342c3c1073ef4b469092252442c9d67294c0d69b03c127a49a73519aee0e37ab6d89e3000c3'
             'SKIP'
             '04dba9898475550243b6edd7dade239f67c132f0bc5c0f2ac57b60de1c9d22b5c3e4cec16aa00ad505b47d36142278bf36a1efc6c7f424c039cf1a7c87cb3cbf')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
