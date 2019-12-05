@@ -56,10 +56,10 @@ pkgver () {
 }
 
 prepare() {
-     cd tor
+    cd tor
 
-     [[ $_with_rust ]] &&
-        git submodule update --init --recursive
+    [[ $_with_rust ]] &&
+       git submodule update --init --recursive
 
     ./autogen.sh
 }
