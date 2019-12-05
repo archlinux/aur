@@ -5,7 +5,7 @@
 
 pkgname=jhbuild
 pkgver=3.35.2+23+g75b39363
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -21,7 +21,7 @@ _commit=75b39363
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/jhbuild.git#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            '0e603739e9f91ce60cbd882f73e9ad03aa4244aaa2f8723d9fcf6e5b254769b1')
+            '75f1d28a3b52f7889476f17c985a3c82d07c488283f591448dac6732be3db693')
 
 pkgver() {
   cd $pkgname
@@ -76,4 +76,4 @@ depends+=(
     perl-sgmls # required by gnome-color-manager
     docbook-sgml # required by gnome-color-manager
     unicode-character-database # required by ibus
-) 
+)

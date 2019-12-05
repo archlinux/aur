@@ -1,8 +1,7 @@
 Arguments needed to smoothly build modules without further config by the user
 
 Details:
- - telepathy-mission-control: requires Python 2, by expects tries 'python' bin
- - ibus: fails due wrong UCD directory
+ - ibus: fails due to wrong UCD directory
  - gst-plugins-bad: might try to enable vulkan extension when some very common
                     packages are installed, but vulkan-headers is not.
 
@@ -10,13 +9,12 @@ diff --git a/jhbuild/defaults.jhbuildrc b/jhbuild/defaults.jhbuildrc
 index bb211464..c94d8f04 100644
 --- a/jhbuild/defaults.jhbuildrc
 +++ b/jhbuild/defaults.jhbuildrc
-@@ -91,7 +91,12 @@ repos = {}
+@@ -91,7 +91,11 @@ repos = {}
  cvsroots = {}
  svnroots = {}
  branches = {}
 -module_autogenargs = {}
 +module_autogenargs = {
-+    'telepathy-mission-control': 'PYTHON=/usr/bin/python2',
 +    'ibus': '--with-ucd-dir=/usr/share/unicode/',
 +}
  module_cmakeargs = {}
