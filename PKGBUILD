@@ -4,14 +4,14 @@ pkgbase=python-pymisp
 _pyname=PyMISP
 pkgname=('python-pymisp' 'python2-pymisp')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-pkgver=2.4.117
+pkgver=2.4.119
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
 url="https://github.com/MISP/PyMISP/"
 license=('custom')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/MISP/PyMISP/archive/v${pkgver}.tar.gz")
-sha512sums=('b8c9436567f37491704d5f2b69b073003292caed5322ba8c2acf85e63ee1fc6afe8c162d40fd1717c99bf140fc0b51ca2a4534f014b666b18f6fd00976905075')
+sha512sums=('02859e31c47689aac8416e36c6ce06d4599b58ea9c60ee8bebff7d445249819e09cd02246da0951b7d779b37f1d2773e270cb9da01b8991a16b9ce1280653f6b')
 
 package_python-pymisp() {
   depends=('python' 'python-jsonschema' 'python-requests' 'python-dateutil' 'python-deprecated' 'python-cachetools')
