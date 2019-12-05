@@ -1,6 +1,6 @@
 # Maintainer: Lukas Spies <luspi (AT) gmx _DOT_ de>
 pkgname=mingw-w64-graphicsmagick
-pkgver=1.3.31
+pkgver=1.3.33
 pkgrel=1
 pkgdesc="Image processing system (mingw-w64)"
 arch=('any')
@@ -9,13 +9,12 @@ license=('GPL')
 optdepends=('mingw-w64-jasper: jp2 module'
 		'mingw-w64-libpng: png module'
 		'mingw-w64-libxml2: msl, svg, url modules'
-		'mingw-w64-libtiff: ps2, ps3, tiff modules'
-		'mingw-w64-ghostscript: pdf, ps modules')
+		'mingw-w64-libtiff: ps2, ps3, tiff modules')
 makedepends=('mingw-w64-configure' 'mingw-w64-pcre' 'mingw-w64-libpng' 'mingw-w64-libxml2' 'mingw-w64-libtiff')
 depends=('mingw-w64-crt' 'mingw-w64-freetype2' 'mingw-w64-lcms2' 'mingw-w64-bzip2' 'mingw-w64-xz' 'mingw-w64-libtool')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/1.3/GraphicsMagick-$pkgver.tar.xz")
-md5sums=('6f55c300c95f83e638ad2570a1e397ac')
+sha256sums=('130cb330a633580b5124eba5c125bbcbc484298423a97b9bed37ccd50d6dc778')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
