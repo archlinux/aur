@@ -1,6 +1,6 @@
 pkgbase = cura-git
 	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = 4.4.beta.r183.gebea5fbd1
+	pkgver = 4.4.0.r201.g19da7b932
 	pkgrel = 1
 	url = https://github.com/Ultimaker/Cura
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = cura-git
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = python-protobuf
+	depends = python-requests
+	depends = python-certifi
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
