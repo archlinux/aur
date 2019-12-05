@@ -3,7 +3,7 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r13236.560cfbc21
+pkgver=r13238.2f79cc3ef
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -48,6 +48,9 @@ build() {
 	
 	# Hopefully temporary fix for a compilation error involving fmt
 	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
+	
+	# Flag to disable pre-compiled headers so boost can build properly
+	CXXFLAGS+=" -DENABLE_PRECOMPILED_HEADERS=OFF"
 	
 	mkdir -p build
 	cd build
