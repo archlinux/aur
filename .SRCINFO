@@ -9,8 +9,12 @@ pkgbase = python-tcafe-attending-bot
 	depends = python-aiohttp
 	depends = python-beautifulsoup4
 	depends = python-xdg
-	source = https://github.com/isac322/tcafe-attending-bot/archive/0.1.0.tar.gz
-	md5sums = 3dcfae682d8bf51cbfa387e29bf9b194
+	source = https://github.com/isac322/tcafe-attending-bot/archive/v0.1.0.tar.gz
+	source = tcafe-attending-bot.service
+	source = tcafe-attending-bot.timer
+	md5sums = b34178fae9cec668a3fc60cc021f0740
+	md5sums = b5220259c812f40008c32ba2197eaaa6
+	md5sums = 92f1e03e3305dd4b1ed4c5fc86f22d95
 
 pkgname = python-tcafe-attending-bot
 

@@ -36,6 +36,6 @@ package() {
 
   _systemdbasedir="$pkgdir/usr/lib/systemd/system"
 
-  install -Dm644 tcafe-attending-bot.service "$_systemdbasedir/tcafe-attending-bot.service"
-  install -Dm644 tcafe-attending-bot.timer "$_systemdbasedir/tcafe-attending-bot.timer"
+  install -Dm644 ../tcafe-attending-bot.service "$_systemdbasedir/tcafe-attending-bot.service"
+  install -Dm644 ../tcafe-attending-bot.timer "$_systemdbasedir/tcafe-attending-bot.timer"
 }
