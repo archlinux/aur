@@ -2,26 +2,30 @@
 
 pkgname=kotatogram-desktop-bin
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=(GPL3)
 depends=(
-    desktop-file-utils
-    glib2
-    hicolor-icon-theme
-    libdbus
-    libx11
+	desktop-file-utils
+	glib2
+	hicolor-icon-theme
+	libdbus
+	libx11
 )
 makedepends=(
-    chrpath
+	chrpath
 )
 optdepends=(
-    'libappindicator-gtk2: to hide Kotatogram in the tray bar (GTK2-based desktop environment)'
-    'libappindicator-gtk3: to hide Kotatogram in the tray bar (GTK3-based desktop environment)'
-    'libappindicator-sharp: to hide Kotatogram in the tray bar (Unity-based desktop environment)'
-    'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
+	'gtk2: GTK2-based desktop environment integration'
+	'gtk3: GTK3-based desktop environment integration'
+	'libappindicator-gtk2: to hide Kotatogram in the tray bar (GTK2-based desktop environment)'
+	'libappindicator-gtk3: to hide Kotatogram in the tray bar (GTK3-based desktop environment)'
+	'libayatana-appindicator-gtk2: to hide Kotatogram in the tray bar (GTK2-based desktop environment, modern fork)'
+	'libayatana-appindicator-gtk3: to hide Kotatogram in the tray bar (GTK3-based desktop environment, modern fork)'
+	'libnotify: desktop notifications'
+	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
 conflicts=('kotatogram-desktop' 'telegram-desktop' 'telegram-desktop-bin')
 provides=('kotatogram-desktop')
