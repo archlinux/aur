@@ -3,11 +3,10 @@ pkgbase = gerris
 	pkgver = 2013.12.06
 	pkgrel = 1
 	url = http://gfs.sourceforge.net
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = python
-	makedepends = gts
+	makedepends = gts>=0.7.6.121130
 	makedepends = m4
 	makedepends = gsl
 	makedepends = netcdf
@@ -15,7 +14,7 @@ pkgbase = gerris
 	makedepends = fftw>=3
 	makedepends = ffmpeg
 	depends = python
-	depends = gts
+	depends = gts>=0.7.6.121130
 	depends = gsl
 	depends = netcdf
 	depends = ode

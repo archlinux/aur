@@ -4,12 +4,12 @@ pkgver=2013.12.06
 pkgrel=1
 epoch=
 pkgdesc="A system for the solution of the partial differential equations describing fluid flow (CFD)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://gfs.sourceforge.net"
 license=('GPL3')
 groups=()
-depends=('python' 'gts'  'gsl' 'netcdf' 'ode' 'fftw>=3' 'ffmpeg')
-makedepends=('python'  'gts'  'm4'  'gsl' 'netcdf' 'ode' 'fftw>=3' 'ffmpeg')
+depends=('python' 'gts>=0.7.6.121130'  'gsl' 'netcdf' 'ode' 'fftw>=3' 'ffmpeg')
+makedepends=('python'  'gts>=0.7.6.121130'  'm4'  'gsl' 'netcdf' 'ode' 'fftw>=3' 'ffmpeg')
 
 
 
