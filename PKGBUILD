@@ -2,13 +2,13 @@
 
 pkgname=norbert
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line NBT editor."
 arch=(any)
 url="https://github.com/DMBuce/norbert"
 license=('GPL2')
 groups=()
-depends=(python python-nbt)
+depends=(python python-nbt asciidoc)
 makedepends=('git')
 backup=()
 options=()
