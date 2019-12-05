@@ -1,7 +1,7 @@
 pkgbase = emacs-use-package
 	pkgdesc = A use-package declaration for simplifying your .emacs
 	pkgver = 2.4
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/jwiegley/use-package
 	arch = any
 	license = GPL2
