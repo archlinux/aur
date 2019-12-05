@@ -1,0 +1,4 @@
+*.zip
+rlottie-tdesktop-*.tar*
+pkg/
+src/

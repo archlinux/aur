@@ -1,0 +1,16 @@
+pkgbase = rlottie-tdesktop
+	pkgdesc = A platform independent standalone library that plays Lottie Animation (tdesktop fork)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/desktop-app/rlottie
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = meson
+	depends = gcc-libs
+	provides = rlottie
+	conflicts = rlottie
+	source = https://github.com/desktop-app/rlottie/archive/c490c7a098b9b3cbc3195b00e90d6fc3989e2ba2.zip
+	sha512sums = 7da1a9bb6b02de85cba24bba58d81fb0f8c54eeace24454ac7337c8be63a9314a7996adbd841213c8c67162984253544fcc87059bcf0277c2a911cf182747aae
+
+pkgname = rlottie-tdesktop
+
