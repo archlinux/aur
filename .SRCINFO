@@ -1,0 +1,17 @@
+pkgbase = deepin.com.weixin.work
+	pkgdesc = Deepin Wine Weixin Work
+	pkgver = 2.8.10.2010deepin0
+	pkgrel = 1
+	url = https://work.weixin.qq.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine
+	conflicts = deepin-wxwork
+	noextract = deepin.com.weixin.work_2.8.10.2010deepin0_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.weixin.work/deepin.com.weixin.work_2.8.10.2010deepin0_i386.deb
+	md5sums = a82495943fe4b748cf2b740704f1ec45
+
+pkgname = deepin.com.weixin.work
+
