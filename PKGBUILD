@@ -6,14 +6,14 @@
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-git
 epoch=1
-pkgver=4.13.4+26+gfab274c
+pkgver=xfce+4.14.0+63+gac0302b
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
-depends=('libxfce4util>=4.12.0' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
-         'hicolor-icon-theme' 'gtk3')
+depends=('libxfce4util>=4.12.0' 'gtk3' 'xfconf' 'libsm' 'libgtop'
+         'startup-notification' 'hicolor-icon-theme')
 makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git' 'vala' 'glade')
 optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver%%+*}")
@@ -39,7 +39,6 @@ build() {
     --enable-gtk-doc \
     --disable-debug \
     --enable-maintainer-mode \
-    --disable-gladeui \
     --with-vendor-info='Arch Linux'
   make
 }
