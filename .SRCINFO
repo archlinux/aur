@@ -23,6 +23,7 @@ pkgbase = theshell-blueprint
 	depends = ts-bt
 	depends = ts-bugreport
 	depends = pulseaudio-qt
+	depends = libtdesktopenvironment
 	optdepends = alsa-utils: for volume controls
 	conflicts = ts-startsession
 	replaces = ts-startsession

@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 
 'networkmanager' 'xorg-xbacklight' 'redshift' 
 'libcups' 'qt5-base' 'ts-qtplatform' 'qt5-charts'
-'qt5-location' 'kscreen' 'ts-bt' 'ts-bugreport' 'pulseaudio-qt')
+'qt5-location' 'kscreen' 'ts-bt' 'ts-bugreport' 'pulseaudio-qt' 'libtdesktopenvironment')
 optdepends=('alsa-utils: for volume controls')
 makedepends=('git' 'qt5-tools')
 conflicts=('ts-startsession')
