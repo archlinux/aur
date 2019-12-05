@@ -12,6 +12,7 @@ Environment="ASF_PATH=/var/lib/asf"
 ExecStart=/usr/bin/dotnet /usr/lib/asf/ArchiSteamFarm.dll --process-required --no-restart
 ProtectSystem=true
 ReadWritePaths=/var/lib/asf
+SyslogIdentifier=asf
 
 [Install]
 WantedBy=multi-user.target
