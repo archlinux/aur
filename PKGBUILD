@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.6.2.r2.g75536ec
+pkgver=1.6.2.r12.g391f1f7
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -22,12 +22,13 @@ changelog="${pkgname}.Changelog"
 _srcdir="${pkgname%-git}"
 source=(
   'git+https://github.com/DisplayLink/evdi/'
-  'relro.patch'
+  'https://crazy.dev.frugalware.org/evdi-all-in-one-fixes.patch'
+  #'relro.patch'
 )
 md5sums=('SKIP'
-         '05e64dd295a66c030139d0c8f6f7013b')
+         '7f6104e6e8df04574b2bf1f12d9a51ee')
 sha256sums=('SKIP'
-            'ff03b5a804af826e6b0678cd4d821b5ecd2c5bf04ea7c465751f83b28e928786')
+            '211f791455046c580277a86dfc129255268c033f87eee93bc0e72569f1df8aa8')
 
 pkgver() {
   set -u
@@ -40,13 +41,16 @@ prepare() {
   set -u
   cd "${_srcdir}"
   local _src
-  for _src in "${source[@]}"; do
-    _src="${_src%%::*}"
+  for _src in "${source[@]%%::*}"; do
     _src="${_src##*/}"
     if [[ "${_src}" = *.patch ]]; then
+      set +u; msg2 "Patch ${_src}"; set -u
       patch -Np1 -i "../${_src}"
     fi
   done
+
+  # Fix build for kernel 5.4
+  sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i 'module/Makefile'
   set +u
 }
 
@@ -63,7 +67,19 @@ build() {
 package() {
   set -u
   cd "${_srcdir}"
-  install -Dpm755 "library/lib${pkgname%-git}.so" -t "${pkgdir}/usr/lib/"
+  install -Dpm755 "library/lib${pkgname%-git}.so"* -t "${pkgdir}/usr/lib/"
+  pushd "${pkgdir}/usr/lib/" > /dev/null
+  local _libs=(*.so*)
+  if [ "${#_libs[@]}" -ne 1 ]; then
+    set +u
+    echo "Too many libs"
+    false
+  fi
+  _libs="${_libs[0]}"
+  local _libase="${_libs%.so*}.so"
+  ln -s "${_libs}" "${_libase}"
+  ln -s "${_libs}" "${_libase}.0" # bad soname
+  popd > /dev/null
 
   local _DKMS="${pkgdir}/usr/src/${pkgname%-git}-${_pkgver}"
   install -Dpm644 module/* -t "${_DKMS}/"
