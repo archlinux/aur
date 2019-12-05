@@ -19,7 +19,7 @@ optdepends=('bzip2: bzip2 support'
 makedepends=('cmake' 'gcc' 'make')
 provides=(${_basename}=${pkgver})
 conflicts=(${_basename})
-source=("git://github.com/seqan/seqan3.git")
+source=("seqan3::git+https://github.com/seqan/seqan3.git")
 md5sums=('SKIP')
 
 prepare() {

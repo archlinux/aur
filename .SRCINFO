@@ -21,7 +21,7 @@ pkgbase = seqan3-git
 	optdepends = doxygen
 	provides = seqan3=3.0.0.r465.g4cdd84b2
 	conflicts = seqan3
-	source = git://github.com/seqan/seqan3.git
+	source = seqan3::git+https://github.com/seqan/seqan3.git
 	md5sums = SKIP
 
 pkgname = seqan3-git
