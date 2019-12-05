@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Redirect output to stderr.
+# exec 1>&2
+
+# Generate .SRCINFO file
+
+if git diff --cached --name-status | grep 'PKGBUILD$' > /dev/null; then
+	echo "Rebuilding .SRCINFO file"
+	makepkg --printsrcinfo > .SRCINFO
+	git add .SRCINFO
+else
+	echo "No update"
+fi
+

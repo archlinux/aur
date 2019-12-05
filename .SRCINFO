@@ -1,0 +1,24 @@
+pkgbase = dm-fotowelt-cewe
+	pkgdesc = an offline client for uploading and ordering photos at dm Drogerie Markt using cewe.de
+	pkgver = 7.0.1
+	pkgrel = 1
+	url = https://www.fotoparadies.de
+	install = dmfotowelt.install
+	arch = x86_64
+	license = custom:eula
+	makedepends = unzip
+	makedepends = coreutils
+	makedepends = less
+	makedepends = wget
+	depends = libx11
+	depends = curl
+	conflicts = mullerfoto-fotostar_de
+	conflicts = mullerfoto-fotostar_cz
+	conflicts = mullerfoto-fotostar_sk
+	source = dmfotowelt.desktop
+	source = cewefotoschau.desktop
+	md5sums = 2d026a7cae1ff88883377d0c0457426c
+	md5sums = 99cfd65346488726fd34d504b50693c6
+
+pkgname = dm-fotowelt-cewe
+

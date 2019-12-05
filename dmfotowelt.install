@@ -1,0 +1,22 @@
+post_install() {
+  echo '--------------------------------------------------'
+  echo 'You *MUST* read and agree to the license stored in'
+  echo '/usr/share/dm-fotowelt-cewe/EULA.txt before'
+  echo 'you start using it'
+  echo '--------------------------------------------------'
+
+  /bin/true
+}
+
+post_upgrade() {
+/bin/true
+}
+
+pre_remove() {
+/bin/true
+}
+
+op=$1
+shift
+
+$op "$@"

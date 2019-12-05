@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=dm Fotowelt
+Comment=Offline client for dm picture service provided by Cewe
+Exec=dm-Fotowelt
+Icon=dmfotowelt.xpm
+Categories=Graphics;Photography;
