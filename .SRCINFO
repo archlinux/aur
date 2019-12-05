@@ -1,0 +1,18 @@
+pkgbase = python-cint-git
+	pkgdesc = Wrapper for ctypes.c_* types so that the arithmetic operators works the same as in C.
+	pkgver = r48.db993da
+	pkgrel = 1
+	url = https://github.com/disconnect3d/cint
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-cint-git
+	conflicts = python-cint
+	conflicts = python-cint-git
+	source = python-cint-git::git+https://github.com/disconnect3d/cint
+	sha256sums = SKIP
+
+pkgname = python-cint-git
+
