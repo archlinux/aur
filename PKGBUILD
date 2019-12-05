@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cuda-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=24
+pkgrel=25
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDA backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -37,7 +37,6 @@ prepare() {
     CMAKE_BUILD_TYPE="Release" \
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
-    -DCMAKE_CXX_FLAGS="-std=c++03" \
     -DCPU_ONLY=OFF \
     -DUSE_NCCL=ON \
     -DUSE_CUDNN=OFF \
