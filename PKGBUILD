@@ -2,7 +2,7 @@
 
 pkgname=tableplus
 pkgver=0.1_18
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
 url="https://tableplus.com/"
@@ -14,7 +14,6 @@ source=('LICENSE'
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
             '288d60d1019212badc0a01eb4ab6f67f97b88a17c581c07f6eb224c8d5adc050'
 )
-validpgpkeys=('2A17818B38772786')
 
 prepare() {
     cd "$srcdir"
