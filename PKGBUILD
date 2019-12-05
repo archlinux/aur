@@ -2,9 +2,9 @@
 # Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
 
 pkgname=upwork
-pkgver=5.3.3.800
+pkgver=5.3.3.848
 _rawver=${pkgver//./_}
-_hashver="zh8y1qe7l33a9ip6"
+_hashver="ciy2bosj7ts6feza"
 pkgrel=1
 pkgdesc="Desktop App 64-bit Standard version"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=upwork.install
 #md5sums=('bb535c74d4673cee6437b04d33b32138' 'c99eddfeb02a2dc5272b82b276b88c8a')
 source=("LICENSE")
 md5sums=('bb535c74d4673cee6437b04d33b32138')
-md5sums_x86_64=('1cfc06687db2c71f7e2df40f22c4af2e')
+md5sums_x86_64=('112afcc80784ee5cd1837abf11479eee')
 # how to get links Prod, Beta, Alpha: grep "_getVersionToDownload" ~/.Upwork/Upwork/Logs/upwork.2*.log | tail -n 1
 source_x86_64=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb)
 
