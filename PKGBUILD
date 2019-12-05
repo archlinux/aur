@@ -2,7 +2,7 @@
 
 pkgname=tableplus
 pkgver=0.1_18
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
 url="https://tableplus.com/"
@@ -12,7 +12,7 @@ source=('LICENSE'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver//_/-}_amd64.deb"
 )
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            'd41e696b1e7265b9d9938c9241d692766719318934a16ff7080eb5f92ce1777c'
+            '288d60d1019212badc0a01eb4ab6f67f97b88a17c581c07f6eb224c8d5adc050'
 )
 validpgpkeys=('2A17818B38772786')
 
