@@ -15,9 +15,11 @@ package_python-mediainfodll() {
 	pkgdesc="Python 3 shared library for reading metadata from media files"
 	depends=('libmediainfo' 'python')
 
+	_pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+
 	cd "MediaInfoLib-$pkgver"
 	install -Dm644 "Source/MediaInfoDLL/MediaInfoDLL.py" \
-		"$pkgdir/usr/lib/python3.8/site-packages/MediaInfoDLL.py"
+		"$pkgdir/usr/lib/python$_pyver/site-packages/MediaInfoDLL.py"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -25,8 +27,10 @@ package_python2-mediainfodll() {
 	pkgdesc="Python 2 shared library for reading metadata from media files"
 	depends=('libmediainfo' 'python2')
 
+	_py2ver="$(python2 -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+
 	cd "MediaInfoLib-$pkgver"
 	install -Dm644 "Source/MediaInfoDLL/MediaInfoDLL.py" \
-		"$pkgdir/usr/lib/python2.7/site-packages/MediaInfoDLL.py"
+		"$pkgdir/usr/lib/python$_py2ver/site-packages/MediaInfoDLL.py"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
