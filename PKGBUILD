@@ -2,14 +2,14 @@
 
 _pkgname=weechat-discord
 pkgname=weechat-discord-git
-pkgver=r285.55eabd4
+pkgver=r314.1f71ff5
 pkgrel=1
 pkgdesc="Discord plugin for weechat"
 arch=('i686' 'x86_64')
 url="https://github.com/terminal-discord/weechat-discord"
 license=('MIT')
 depends=('weechat' 'openssl-1.0')
-makedepends=('git' 'rust')
+makedepends=('git' 'rust' 'clang')
 optdepends=()
 source=("${_pkgname}::git+https://github.com/terminal-discord/weechat-discord.git")
 md5sums=('SKIP')
