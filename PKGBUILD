@@ -34,7 +34,7 @@ package() {
   make PREFIX=/usr INSTALL_ROOT="$pkgdir" install
   cat >> "$_ininame" <<EOF
 ;extension=uopz.so
-;uopz.overloads = 1
+;uopz.disable = 1
 EOF
 
   install -vDm644 "$_ininame" "$pkgdir/$_inifile"
