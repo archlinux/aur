@@ -1,0 +1,14 @@
+pkgbase = python-opt-einsum
+	pkgdesc = Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/dgasmith/opt_einsum
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	provides = python-opt-einsum
+	source = https://files.pythonhosted.org/packages/source/o/opt_einsum/opt_einsum-3.1.0.tar.gz
+	sha256sums = edfada4b1d0b3b782ace8bc14e80618ff629abf53143e1e6bbf9bd00b11ece77
+
+pkgname = python-opt-einsum
+
