@@ -2,10 +2,10 @@
 #			Jake <aur@ja-ke.tech>
 
 pkgname=next
-pkgver=1.613
+pkgver=1.626
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.rc-aerobatics.eu/index_e.html"
 license=('custom')
 optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver'
@@ -13,44 +13,22 @@ optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joys
                 'antimicro: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
 
 install="${pkgname}.install"
-source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-x86-64bit-${pkgver/./}.zip"
+# https://www.cgm-online.com/cgi-bin/rc_sim_downloadcount.pl?name=next_linux
+source=("http://www.cgm-online.com/secure_rc-heli-simulator/cgm-rc-heli-simulator-linux-${pkgver/./}.zip"
         "next.desktop"
         "next.sh")
 
-sha512sums=('5b7a6b920948e08bc7f76d1e36fd3890142a60890ecafae88d407cda48824997a740a5d9c6e1cdc19cfb67545ba35f1059aee4c6ead5c9c450ac435df612f8ad'
+sha512sums=('003483b3e982899795b862a34f6730f0ba4997fd53d4a4c054f270e1757e422b1264baab523c005578fa8af46e7c724b590c32dabe237dbef6a685063cf823eb'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
-            '0012ea26bb1bd1c929d7957515bc0a7217d2beb8018507260b62e0754ecef7cfa198d1a35de904aa8e966bf18a851f0baf0631d6c17e1abde4cb579522d48496')
+            'c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669')
 
 
 prepare() {
   # rename the original directory to something sane and remove an OSX directory
   mv "neXt" "${pkgname}"
-  rm -r "__MACOSX"
 
   cd "${srcdir}/${pkgname}"
 
-  # Remove unneeded architecture/platform dependent files
-  msg2 "Removing unneeded files..."
-  find . -name '.DS_Store' -exec rm {} \;
-
-  if [ "${CARCH}" == 'i686' ]; then
-    msg2 "Removing 64 bit files..."
-    rm -r ./neXt_Data/Mono/x86_64
-    rm -r ./neXt_Data/Plugins/x86_64
-    rm ./neXt.x86_64
-    rm ./run_neXt_x64
-    rm ./joystick_config_x64
-  fi
-  if [ "${CARCH}" == "x86_64" ]; then
-    msg2 "Removing 32 bit files..."
-    rm -r ./neXt_Data/Mono/x86
-    rm -r ./neXt_Data/Plugins/x86
-    rm ./neXt.x86
-    rm ./run_neXt
-    rm ./joystick_config
-    
-  fi
-  
   tail -n 2 ReadMe.txt > License.txt
 }
 

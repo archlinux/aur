@@ -12,4 +12,4 @@ fi;
 
 
 cd /opt/next/
-./neXt.x86_64 || ./neXt.x86
+./neXt.x86_64
