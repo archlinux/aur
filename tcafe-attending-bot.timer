@@ -1,0 +1,10 @@
+[Unit]
+Description=TCafe auto attender timer
+
+[Timer]
+OnCalendar=daily
+AccuracySec=6h
+Persistent=yes
+
+[Install]
+WantedBy=multi-user.target

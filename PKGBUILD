@@ -12,18 +12,30 @@ url="https://github.com/$_author/$_pkgname"
 license=('MIT')
 depends=('python-aiohttp' 'python-beautifulsoup4' 'python-xdg')
 makedepends=('python-setuptools')
-source=("https://github.com/$_author/$_pkgname/archive/${pkgver//_/-}.tar.gz")
-md5sums=('3dcfae682d8bf51cbfa387e29bf9b194')
-
+source=(
+  "https://github.com/$_author/$_pkgname/archive/v${pkgver//_/-}.tar.gz"
+  'tcafe-attending-bot.service'
+  'tcafe-attending-bot.timer'
+)
+md5sums=(
+  'b34178fae9cec668a3fc60cc021f0740'
+  'b5220259c812f40008c32ba2197eaaa6'
+  '92f1e03e3305dd4b1ed4c5fc86f22d95'
+)
 
 build() {
-	cd "$_pkgname-${pkgver//_/-}"
-	python setup.py build
+  cd "$_pkgname-${pkgver//_/-}"
+  python setup.py build
 }
 
 package() {
-	cd "$_pkgname-${pkgver//_/-}"
+  cd "$_pkgname-${pkgver//_/-}"
 
-	python setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  _systemdbasedir="$pkgdir/usr/lib/systemd/system"
+
+  install -Dm644 tcafe-attending-bot.service "$_systemdbasedir/tcafe-attending-bot.service"
+  install -Dm644 tcafe-attending-bot.timer "$_systemdbasedir/tcafe-attending-bot.timer"
 }

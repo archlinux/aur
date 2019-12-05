@@ -1,0 +1,15 @@
+[Unit]
+Description=TCafe auto attender
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env python -m tcafe_attending_bot
+Nice=19
+StandardOutput=null
+StandardError=journal
+PrivateTmp=yes
+PrivateDevices=yes
+CapabilityBoundingSet=
+NoNewPrivileges=yes
