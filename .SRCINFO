@@ -1,0 +1,16 @@
+pkgbase = libtdesktopenvironment
+	pkgdesc = Common libraries for desktop integration for the- apps
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/libtdesktopenvironment
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = the-libs
+	depends = qt5-base
+	source = libtdesktopenvironment-1.0::git+https://github.com/vicr123/libtdesktopenvironment.git
+	sha256sums = SKIP
+
+pkgname = libtdesktopenvironment
+
