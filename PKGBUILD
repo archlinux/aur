@@ -2,7 +2,7 @@
 # Contributor: therealfarfetchd
 pkgname='ripcord'
 pkgver=0.4.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt-based Discord and Slack client'
 arch=('x86_64')
 depends=('harfbuzz' 'libgl')
@@ -41,7 +41,7 @@ package() {
   install -m644 squashfs-root/Ripcord_Icon.png "$pkgdir"/usr/share/icons/
   
   # .desktop file
-  sed -i 's/Exec=Ripcord/Exec=\/usr\/bin\/ripcord/' squashfs-root/Ripcord.desktop
+  sed -i 's/Exec=Ripcord/Exec=ripcord/' squashfs-root/Ripcord.desktop
   install -m644 squashfs-root/Ripcord.desktop "$pkgdir"/usr/share/applications
 
   # license
