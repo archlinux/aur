@@ -1,6 +1,6 @@
 pkgbase = python-ioisis
 	pkgdesc = I/O tools for converting ISIS data in Python
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/scieloorg/ioisis
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-ioisis
 	depends = python-jpype1
 	depends = python-ujson
 	options = !emptydirs
-	source = https://github.com/scieloorg/ioisis/archive/v0.1.1.tar.gz
-	sha256sums = 04461824b70282ac55335288c0a1d0ea7047ecb12e43df90b9fde43c5abc578f
+	source = https://github.com/scieloorg/ioisis/archive/v0.1.2.tar.gz
+	sha256sums = 1d0eb4c9b8e381d530f5754fd57dbd62246ae16cd1c63a5337e221333b100775
 
 pkgname = python-ioisis
 

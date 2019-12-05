@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python-ioisis')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="I/O tools for converting ISIS data in Python"
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-click' 'python-construct' 'python-jpype1' 'python-ujson')
 options=(!emptydirs)
-sha256sums=('04461824b70282ac55335288c0a1d0ea7047ecb12e43df90b9fde43c5abc578f')
+sha256sums=('1d0eb4c9b8e381d530f5754fd57dbd62246ae16cd1c63a5337e221333b100775')
 source=("$url/archive/v$pkgver.tar.gz")
 
 package() {
