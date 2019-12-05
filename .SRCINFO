@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta-bin
 	pkgdesc = The Mullvad VPN client app for desktop (latest/beta release)
-	pkgver = 2019.9.stable
-	pkgrel = 4
+	pkgver = 2019.10.beta2
+	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = mullvad-vpn-beta-bin
 	depends = nss
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.9/MullvadVPN-2019.9_amd64.deb
-	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.9/MullvadVPN-2019.9_amd64.deb.asc
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.10-beta2/MullvadVPN-2019.10-beta2_amd64.deb
+	source = https://github.com/mullvad/mullvadvpn-app/releases/download/2019.10-beta2/MullvadVPN-2019.10-beta2_amd64.deb.asc
 	validpgpkeys = A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF
-	sha256sums = 4ba5b1c87cb5afdadbcfb37413bdd7ea72df139dd01815e9ca0f1c54f81f03e1
+	sha256sums = 809f0b5a2bf9643f900d08be0f4741e6762cdfa2005715b479b2d95b8ecce4cd
 	sha256sums = SKIP
 
 pkgname = mullvad-vpn-beta-bin

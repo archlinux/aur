@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail.com>
 # Co-Maintainer: telans <telans@protonmail.com>
-
 pkgname=mullvad-vpn-beta-bin
-pkgver=2019.9.stable
-_pkgver=2019.9
-pkgrel=4
+_pkgver=2019.10
+_channel=beta
+pkgver=${_pkgver}.${_channel}2
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 provides=("${pkgname%-beta-bin}")
 conflicts=("${pkgname%-beta-bin}")
 install="${pkgname%-beta-bin}.install"
-source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$_pkgver/MullvadVPN-${_pkgver}_amd64.deb"{,.asc})
-sha256sums=('4ba5b1c87cb5afdadbcfb37413bdd7ea72df139dd01815e9ca0f1c54f81f03e1'
+source=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}2/MullvadVPN-${_pkgver}-${_channel}2_amd64.deb"{,.asc})
+sha256sums=('809f0b5a2bf9643f900d08be0f4741e6762cdfa2005715b479b2d95b8ecce4cd'
             'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
