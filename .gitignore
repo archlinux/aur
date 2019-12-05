@@ -1,0 +1,4 @@
+*.zip
+libtgvoip-*.tar*
+pkg/
+src/
