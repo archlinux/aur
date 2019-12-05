@@ -3,14 +3,14 @@ pkgbase=python-tenableio
 _pyname=Tenable.io-SDK-for-Python
 pkgname=('python-tenableio' 'python2-tenableio')
 makedepends=('python-setuptools' 'python2-setuptools')
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Python library to easily integrate with the tenable.io API"
 arch=('any')
 url="https://github.com/tenable/Tenable.io-SDK-for-Python/"
 license=('MIT')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/tenable/Tenable.io-SDK-for-Python/archive/v${pkgver}.tar.gz")
-sha512sums=('2286d87baa2e1e8111f1e5939c080ee5d58a3614e79984ae98aff68e57606e0c456d98c96c0556faced535b501ee400d21b8b1edd11ec8d499357e8052d7d83f')
+sha512sums=('a3f459e76b0d159c94a486f2f77d59d7355b409d01984ab629a0755bffa6f556dab996cd0b3cb982b8b874fa463281b96933e3da98c986eb9fee845c207da909')
 
 prepare() {
   cp -a ${_pyname}-${pkgver}{,-py2}
