@@ -1,6 +1,6 @@
 # Maintainer: Alexander Agura <agur4ik09@gmail.com>
 pkgname=find-the-command
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Advanced command-not-found hook for bash and zsh using the power of pacman"
 arch=('any')
@@ -13,7 +13,7 @@ backup=('usr/lib/systemd/system/pacman-files.service'
         'usr/lib/systemd/system/pacman-files.timer')
 install=find-the-command.install
 source=("https://github.com/agura-lex/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('03257191fdd5cb93ba2bb8115640847d')
+md5sums=('69ea3d114ec0af62380da253a3a7f86a')
 
 package() {
 	cd "$pkgname-$pkgver"
