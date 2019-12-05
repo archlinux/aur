@@ -20,12 +20,12 @@ sha256sums=('7827f570005a4adc801878fc0a9679fbe015239701a6f8ff7eb6761dfbd15950')
 
 build() {
     cd "${srcdir}/markdown-preview-mode-${pkgver}"
-    emacs -Q -batch -L . -f batch-byte-compile *.el
+    emacs -batch -L . -f batch-byte-compile *.el
 }
 
 package() {
     cd "${srcdir}/markdown-preview-mode-${pkgver}"
     install -d "${pkgdir}/usr/share/emacs/site-lisp/markdown-preview-mode"
     install -m644 *.el{c,} "${pkgdir}/usr/share/emacs/site-lisp/markdown-preview-mode/"
-    install -m644 *.html "${pkgdir}/usr/share/emacs/site-lisp/markdown-preview-    mode/"
+    install -m644 *.html "${pkgdir}/usr/share/emacs/site-lisp/markdown-preview-mode/"
 }
