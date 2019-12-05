@@ -18,7 +18,7 @@ source=(
   'tcafe-attending-bot.timer'
 )
 md5sums=(
-  '1b2dcb676824088058326ede02c95eab'
+  '912e3da851514b72e7e9d6529be33e19'
   'b5220259c812f40008c32ba2197eaaa6'
   '92f1e03e3305dd4b1ed4c5fc86f22d95'
 )
