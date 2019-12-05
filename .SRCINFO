@@ -1,0 +1,21 @@
+pkgbase = rtl88x2ce-dkms
+	pkgdesc = Realtek RTL88x2CE Driver (DKMS)
+	pkgver = 5.7.3_35403
+	pkgrel = 1
+	url = https://github.com/alanfox2000/realtek-linux/blob/master/RTL8822CE
+	arch = x86_64
+	arch = i686
+	license = unknown
+	depends = dkms
+	optdepends = linux-headers
+	optdepends = linux-zen-headers
+	provides = rtl88x2ce
+	source = rtl88x2ce-dkms-5.7.3_35403.src.7z::https://github.com/alanfox2000/realtek-linux/blob/master/RTL8822CE/RTL8822CE_WiFi_linux_v5.7.3_35403_COEX20190531-0e0e.20191028.7z?raw=true
+	source = dkms.conf
+	source = rtw88_blacklist.conf
+	sha1sums = a798b10d4f2c962c246f2c1bc695314e2b15e7b3
+	sha1sums = 2e10c6cfc44d93d95c231c78ed2b05c463649ed5
+	sha1sums = 18ecc64076501d396a2fabf4f1f31d3d1945b874
+
+pkgname = rtl88x2ce-dkms
+
