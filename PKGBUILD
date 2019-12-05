@@ -5,10 +5,10 @@
 
 pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
-_pkgver=9.2.0beta
-pkgver=9.2.0beta2
-pkgrel=1
-_commit=ba914695a862130dc433919e702ca4067589696f
+_pkgver=9.2.0rc
+pkgver=9.2.0rc
+pkgrel=2
+_commit=d3438153383aea330e43140a2a17f217d2e6f3cc
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -22,7 +22,7 @@ options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
         #"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-sha256sums=('a8ebda078b6262a5cdacef27c92031b698167328a1d75f9b6aa6dddcad8c3fce')
+sha256sums=('712cf258b72a4bfccf649072dab00b560b06d430b1eb6f279af774f3fe0aec6d')
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
@@ -76,7 +76,6 @@ package_pamac-common() {
 
 package_pamac-cli-src() {
   depends=('pamac-common')
-  provides=("pamac-cli=$pkgver-$pkgrel")
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-cli-dev')
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac" "$pkgdir/usr/bin/pamac"
@@ -84,7 +83,7 @@ package_pamac-cli-src() {
 
 package_pamac-gtk() {
   depends=('pamac-cli-src' 'gtk3>=3.22' 'pamac-tray-appindicator-src')
-  provides=("pamac=$pkgver-$pkgrel" "pamac-gtk=$pkgver-$pkgrel")
+  provides=("pamac=$pkgver-$pkgrel")
   replaces=('pamac')
   conflicts=('pamac' 'pamac-aur' 'pamac-gtk-dev')
   install=pamac-gtk.install
@@ -109,7 +108,6 @@ package_pamac-gtk() {
 package_pamac-tray-appindicator-src() {
   pkgdesc="Tray icon using appindicator which fits better in KDE"
   depends=('pamac-gtk' 'libappindicator-gtk3')
-  provides=("pamac-tray-appindicator=$pkgver-$pkgrel")
   conflicts=('pamac-tray-appindicator-dev' 'pamac-tray-appindicator-git')
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"

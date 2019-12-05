@@ -1,7 +1,7 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.2.0beta2
-	pkgrel = 1
+	pkgver = 9.2.0rc
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
@@ -26,8 +26,8 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.2.0beta2-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/ba914695a862130dc433919e702ca4067589696f/pamac-common-ba914695a862130dc433919e702ca4067589696f.tar.gz
-	sha256sums = a8ebda078b6262a5cdacef27c92031b698167328a1d75f9b6aa6dddcad8c3fce
+	source = pamac-9.2.0rc-2.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/d3438153383aea330e43140a2a17f217d2e6f3cc/pamac-common-d3438153383aea330e43140a2a17f217d2e6f3cc.tar.gz
+	sha256sums = 712cf258b72a4bfccf649072dab00b560b06d430b1eb6f279af774f3fe0aec6d
 
 pkgname = pamac-common
 	install = pamac-common.install
@@ -46,7 +46,7 @@ pkgname = pamac-common
 	depends = archlinux-appstream-data
 	depends = git
 	optdepends = 
-	provides = pamac-common=9.2.0beta2-1
+	provides = pamac-common=9.2.0rc-2
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-common-dev
@@ -54,7 +54,6 @@ pkgname = pamac-common
 
 pkgname = pamac-cli-src
 	depends = pamac-common
-	provides = pamac-cli=9.2.0beta2-1
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-cli-dev
@@ -64,8 +63,7 @@ pkgname = pamac-gtk
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
 	depends = pamac-tray-appindicator-src
-	provides = pamac=9.2.0beta2-1
-	provides = pamac-gtk=9.2.0beta2-1
+	provides = pamac=9.2.0rc-2
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
@@ -75,7 +73,6 @@ pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon using appindicator which fits better in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
-	provides = pamac-tray-appindicator=9.2.0beta2-1
 	conflicts = pamac-tray-appindicator-dev
 	conflicts = pamac-tray-appindicator-git
 
