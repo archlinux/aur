@@ -1,8 +1,8 @@
 diff --git a/src/sis_driver.c b/src/sis_driver.c
-index 4e51e2e..13e6e24 100644
+index 51c9660..b1490d3 100644
 --- a/src/sis_driver.c
 +++ b/src/sis_driver.c
-@@ -4140,7 +4140,7 @@ SISPreInit(ScrnInfoPtr pScrn, int flags)
+@@ -4166,7 +4166,7 @@ SISPreInit(ScrnInfoPtr pScrn, int flags)
  			      biossize = 0x8000;
  			      break;
  	     }
@@ -11,50 +11,6 @@ index 4e51e2e..13e6e24 100644
  	     if(readpci) {
  		pSiS->PciInfo->rom_size = biossize;
  		pci_device_read_rom(pSiS->PciInfo, pSiS->BIOS);
-@@ -8973,11 +8973,11 @@ SISScreenInit(SCREEN_INIT_ARGS_DECL)
- 	     case 24: refreshArea = SISRefreshArea24; break;
- 	     case 32: refreshArea = SISRefreshArea32; break;
- 	  }
--#if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
-+/*#if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
- 	  xf86DisableRandR();
- 	  xf86DrvMsg(pScrn->scrnIndex, X_INFO,
- 		"Driver rotation enabled, disabling RandR\n");
--#endif
-+#endif*/
-        } else if(pSiS->Reflect) {
-           switch(pScrn->bitsPerPixel) {
- 	  case 8:
-@@ -8986,11 +8986,11 @@ SISScreenInit(SCREEN_INIT_ARGS_DECL)
-              if(!pSiS->PointerMoved) pSiS->PointerMoved = pScrn->PointerMoved;
- 	     pScrn->PointerMoved = SISPointerMovedReflect;
- 	     refreshArea = SISRefreshAreaReflect;
--#if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
-+/*#if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
- 	     xf86DisableRandR();
- 	     xf86DrvMsg(pScrn->scrnIndex, X_INFO,
- 		  "Driver reflection enabled, disabling RandR\n");
--#endif
-+#endif*/
- 	     break;
- 	  default:
- 	     xf86DrvMsg(pScrn->scrnIndex, X_ERROR,
-@@ -9097,13 +9097,13 @@ SISScreenInit(SCREEN_INIT_ARGS_DECL)
-        pSiS->Rotate = 0;
-        pSiS->Reflect = 0;
-        pSiS->ShadowFB = FALSE;
--#if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
-+/*#if XF86_VERSION_CURRENT >= XF86_VERSION_NUMERIC(4,3,0,0,0)
-        if(pSiS->CRT1XOffs || pSiS->CRT1YOffs || pSiS->CRT2XOffs || pSiS->CRT2YOffs) {
- 	  xf86DisableRandR();
- 	  xf86DrvMsg(pScrn->scrnIndex, X_INFO,
- 		"MergedFB: CRT2Position offset used, disabling RandR\n");
-        }
--#endif
-+#endif*/
- #ifdef SISXINERAMA
-        if(pSiS->UseSiSXinerama) {
- 	  SiSnoPanoramiXExtension = FALSE;
 diff --git a/src/sis_vga.c b/src/sis_vga.c
 index 8b625d2..cf39d0c 100644
 --- a/src/sis_vga.c

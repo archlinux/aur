@@ -4,7 +4,7 @@
 # see https://bbs.archlinux.org/viewtopic.php?id=237632
 
 pkgname=xf86-video-sis
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="X.org SiS video driver"
 arch=('i686' 'x86_64')
@@ -19,14 +19,14 @@ groups=('xorg-drivers')
 validpgpkeys=('CDA92E38A7A7A82237E9AB61C922784178BFFDB0')
 # The above is the fingerprint for key-id C922784178BFFDB0
 # That key has been verified to belong to Kevin Brace, xorg developer
-source=(https://xorg.freedesktop.org/archive/individual/driver/$pkgname-$pkgver.tar.bz2{,.sig}
+source=(https://x.org/archive/individual/driver/$pkgname-$pkgver.tar.bz2{,.sig}
                 'fix_defines.patch::https://ptpb.pw/2MVt')
-md5sums=('b4ad0e572bffa609f75df787ea7b3d11'
+md5sums=('b8ec9c21758043b1480f11baec296f5d'
          'SKIP'
-         'd607e1ae3d9cc52096769eb55209ebab')
-sha512sums=('b8ad05b3faa24c6df65d825b576ddb8e2ce44705ce8b55d8cf0d9f37aa47a429ab43765d8daea57ff35c4cffed056fbec6dfe8ce95efcd6269cc7711115ea09c'
+         '21e11e901c326c572e058ce3a29b945a')
+sha512sums=('5aa101e5217f15667f2c94f7a76f4afcf47717b61f5d206ce65efe35dc3f674ca294f98ca8586971c6467f31decdd94d8255ebfc7dc220fac0179afc61995952'
             'SKIP'
-            'a3f2653f5937d300afdd8d12e4c73bc0447321c426f30dd0d47171bdc640b5996712342d21a63965ad3a280e89e9d46da2fe807eebaef61665710a6a276aa31e')
+            'db0122d541b6f9416469ab42e88958792f987803254fc3b98593f9fceddbf35ae083dc16ec22c1cf876da5d600a33949978e247723f7aa091da2559670df2b85')
 
 # source=("git+https://anongit.freedesktop.org/git/xorg/driver/xf86-video-sis.git#commit=$_commit"
 #        'fix_defines.patch::https://ptpb.pw/2MVt')
@@ -39,23 +39,23 @@ sha512sums=('b8ad05b3faa24c6df65d825b576ddb8e2ce44705ce8b55d8cf0d9f37aa47a429ab4
 # }
 
 prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i ../fix_defines.patch
-  autoreconf -vfi
+    cd $pkgname-$pkgver
+    patch -Np1 -i ../fix_defines.patch
+    autoreconf -vfi
 }
 
 build() {
-  cd $pkgname-$pkgver
-  export CFLAGS=${CFLAGS/-fno-plt}
-  export CXXFLAGS=${CXXFLAGS/-fno-plt}
-  export LDFLAGS=${LDFLAGS/,-z,now}
-  ./configure --prefix=/usr
-  make
+    cd $pkgname-$pkgver
+    export CFLAGS=${CFLAGS/-fno-plt}
+    export CXXFLAGS=${CXXFLAGS/-fno-plt}
+    export LDFLAGS=${LDFLAGS/,-z,now}
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+    cd $pkgname-$pkgver
+    make DESTDIR="$pkgdir" install
 
-  install -Dt  "$pkgdir"/usr/share/licenses/$pkgname "$srcdir"/$pkgname-$pkgver/COPYING
+    install -Dt  "$pkgdir"/usr/share/licenses/$pkgname "$srcdir"/$pkgname-$pkgver/COPYING
 }
