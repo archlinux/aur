@@ -1,13 +1,14 @@
 pkgbase = norbert
 	pkgdesc = A command line NBT editor.
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DMBuce/norbert
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = python
 	depends = python-nbt
+	depends = asciidoc
 	source = norbert::git://github.com/DMBuce/norbert.git#tag=0.5
 	md5sums = SKIP
 
