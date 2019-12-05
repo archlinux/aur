@@ -118,7 +118,7 @@ diff --git a/src/sage/combinat/growth.py b/src/sage/combinat/growth.py
 index cb9efbbb22..48eee6b42e 100644
 --- a/src/sage/combinat/growth.py
 +++ b/src/sage/combinat/growth.py
-@@ -1691,7 +1691,7 @@ class Rule(UniqueRepresentation):
+@@ -1707,7 +1707,7 @@ class Rule(UniqueRepresentation):
          EXAMPLES::
  
              sage: from sage.combinat.growth import Rule
@@ -355,7 +355,7 @@ diff --git a/src/sage/dynamics/arithmetic_dynamics/generic_ds.py b/src/sage/dyna
 index be7e0c46d0..d470fdcc5b 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/generic_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/generic_ds.py
-@@ -468,13 +468,13 @@ class DynamicalSystem(SchemeMorphism_polynomial):
+@@ -476,13 +476,13 @@ class DynamicalSystem(SchemeMorphism_polynomial):
              sage: f.periodic_points(3,minimal=False, R=N)
              [(0 : 1),
               (a : 1),
@@ -378,7 +378,7 @@ diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/d
 index 99ad85b695..4d2642366a 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-@@ -3146,8 +3146,8 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3147,8 +3147,8 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: D6 = DynamicalSystem_projective([y^2,x^2])
              sage: D6.automorphism_group()
              [
@@ -410,7 +410,26 @@ index 99ad85b695..4d2642366a 100644
  
          ::
  
-@@ -5112,7 +5112,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -3894,13 +3894,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+             sage: P.<x,y,z> = ProjectiveSpace(K,2)
+             sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
+             sage: f.periodic_points(1)
+-            [(-s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 3*s + 1 : s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 4*s - 1 : 1),
+-             (-2*s^5 + 4*s^4 - 5*s^3 + 3*s^2 - 4*s : -2*s^5 + 5*s^4 - 7*s^3 + 6*s^2 - 7*s + 3 : 1),
+-             (-s^5 + 3*s^4 - 4*s^3 + 4*s^2 - 4*s + 2 : -s^5 + 2*s^4 - 2*s^3 + s^2 - s : 1),
++            [(2*s^5 - 6*s^4 + 9*s^3 - 8*s^2 + 7*s - 4 : 2*s^5 - 5*s^4 + 7*s^3 - 5*s^2 + 6*s - 2 : 1),
+              (s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 3*s - 1 : -s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 4*s + 2 : 1),
+-             (2*s^5 - 6*s^4 + 9*s^3 - 8*s^2 + 7*s - 4 : 2*s^5 - 5*s^4 + 7*s^3 - 5*s^2 + 6*s - 2 : 1),
++             (-s^5 + 3*s^4 - 5*s^3 + 4*s^2 - 3*s + 1 : s^5 - 2*s^4 + 3*s^3 - 3*s^2 + 4*s - 1 : 1),
++             (-2*s^5 + 4*s^4 - 5*s^3 + 3*s^2 - 4*s : -2*s^5 + 5*s^4 - 7*s^3 + 6*s^2 - 7*s + 3 : 1),
++             (s^5 - 2*s^4 + 2*s^3 + s : s^5 - 3*s^4 + 4*s^3 - 3*s^2 + 2*s - 1 : 1),
+              (1 : 1 : 1),
+-             (s^5 - 2*s^4 + 2*s^3 + s : s^5 - 3*s^4 + 4*s^3 - 3*s^2 + 2*s - 1 : 1)]
++             (-s^5 + 3*s^4 - 4*s^3 + 4*s^2 - 4*s + 2 : -s^5 + 2*s^4 - 2*s^3 + s^2 - s : 1)]
+ 
+         ::
+ 
+@@ -5497,7 +5497,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: f.rational_periodic_points()
              doctest:warning
              ...
@@ -419,7 +438,7 @@ index 99ad85b695..4d2642366a 100644
          """
          from sage.misc.superseded import deprecation
          deprecation(28109, "use sage.dynamics.arithmetic_dynamics.projective_ds.all_periodic_points instead")
-@@ -5472,8 +5472,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5941,8 +5941,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
               (w^2 + w - 25/16 : 1),
               (-w : 1),
               (-w^2 + 29/16 : 1),
@@ -429,7 +448,7 @@ index 99ad85b695..4d2642366a 100644
               (-w^2 + 21/16 : 1),
               (w^2 - 21/16 : 1),
               (w^2 + w - 33/16 : 1),
-@@ -5601,8 +5601,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -6070,8 +6070,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: g = f.conjugate(m)
              sage: f.conjugating_set(g) # long time
              [
@@ -585,7 +604,7 @@ diff --git a/src/sage/geometry/lattice_polytope.py b/src/sage/geometry/lattice_p
 index fe36a712f5..2383bade13 100644
 --- a/src/sage/geometry/lattice_polytope.py
 +++ b/src/sage/geometry/lattice_polytope.py
-@@ -1911,8 +1911,8 @@ class LatticePolytopeClass(SageObject, collections.Hashable):
+@@ -1927,8 +1927,8 @@ class LatticePolytopeClass(SageObject, collections.Hashable):
              sage: D = L.hasse_diagram()
              sage: D.neighbors(face)
              [1-d face of 2-d lattice polytope in 2-d lattice M,
@@ -596,7 +615,7 @@ index fe36a712f5..2383bade13 100644
  
          However, you can achieve some of this functionality using
          :meth:`facets`, :meth:`facet_of`, and :meth:`adjacent` methods::
-@@ -3917,7 +3917,7 @@ class LatticePolytopeClass(SageObject, collections.Hashable):
+@@ -3933,7 +3933,7 @@ class LatticePolytopeClass(SageObject, collections.Hashable):
  
              sage: p = lattice_polytope.cross_polytope(2).polar()
              sage: p.traverse_boundary()
@@ -696,7 +715,7 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 9f7e1f418e..0ec459e7d3 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5152,7 +5152,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5153,7 +5153,7 @@ class GenericGraph(GenericGraph_pyx):
          This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
  
              sage: g.layout(layout = "planar", save_pos = True)
@@ -705,7 +724,7 @@ index 9f7e1f418e..0ec459e7d3 100644
          """
          deprecation(24494, 'This method is replaced by the method layout. '
                             'Please use layout(layout="planar", save_pos=True) '
-@@ -5206,25 +5206,25 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5207,25 +5207,25 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -744,7 +763,7 @@ index 9f7e1f418e..0ec459e7d3 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5750,17 +5750,17 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5751,17 +5751,17 @@ class GenericGraph(GenericGraph_pyx):
              sage: T = graphs.TetrahedralGraph()
              sage: T.faces({0: [1, 3, 2], 1: [0, 2, 3], 2: [0, 3, 1], 3: [0, 1, 2]})
              [[(0, 1), (1, 2), (2, 0)],
@@ -1270,7 +1289,7 @@ diff --git a/src/sage/schemes/product_projective/homset.py b/src/sage/schemes/pr
 index f1508cf794..1ec855b01a 100644
 --- a/src/sage/schemes/product_projective/homset.py
 +++ b/src/sage/schemes/product_projective/homset.py
-@@ -110,7 +110,7 @@ class SchemeHomset_points_product_projective_spaces_field(SchemeHomset_points_pr
+@@ -117,7 +117,7 @@ class SchemeHomset_points_product_projective_spaces_field(SchemeHomset_points_pr
              sage: P.<x,y,z,w> = ProductProjectiveSpaces([1,1], NumberField(u^2 - 2, 'v'))
              sage: X = P.subscheme([x^2 - y^2, z^2 - 2*w^2])
              sage: X(P.base_ring()).points()

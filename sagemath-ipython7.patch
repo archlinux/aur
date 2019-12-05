@@ -2205,7 +2205,7 @@ index 8b8c98cb15..6823e13b26 100644
              sage: pos = g.layout(layout='planar', save_pos=True, test=True)
              sage: pos[0]
 @@ -5225,7 +5225,7 @@ class GenericGraph(GenericGraph_pyx):
-             [3, 64]
+             [93, 14]
              sage: g = graphs.CycleGraph(7)
              sage: g.layout(layout='planar', save_pos=True, test=True)
 -            {0: [0, 5], 1: [1, 4], 2: [5, 1], 3: [3, 1], 4: [1, 0], 5: [2, 1], 6: [1, 3]}
@@ -2734,23 +2734,15 @@ diff --git a/src/sage/graphs/partial_cube.py b/src/sage/graphs/partial_cube.py
 index 7174a23662..fba9755ff2 100644
 --- a/src/sage/graphs/partial_cube.py
 +++ b/src/sage/graphs/partial_cube.py
-@@ -113,12 +113,12 @@ def breadth_first_level_search(G, start):
-         sage: list(sage.graphs.partial_cube.breadth_first_level_search(H, '00'))
+@@ -110,7 +110,7 @@ def breadth_first_level_search(G, start):
+     EXAMPLES::
+ 
+         sage: H = digraphs.DeBruijn(3,2)
+-        sage: list(sage.graphs.partial_cube.breadth_first_level_search(H, '00'))
++        sage: list(sage.graphs.partial_cube.breadth_first_level_search(H, '00')) # random
          [{'00': {'01', '02'}},
           {'01': {'10', '11', '12'}, '02': {'20', '21', '22'}},
--         {'10': set(),
-+         {'22': set(),
-           '11': set(),
--          '12': set(),
--          '20': set(),
-           '21': set(),
--          '22': set()}]
-+          '12': set(),
-+          '20': set(),
-+          '10': set()}]
- 
-     """
-     neighbors = G.neighbor_out_iterator
+          {'10': set(),
 diff --git a/src/sage/graphs/schnyder.py b/src/sage/graphs/schnyder.py
 index 241288a4de..391317fae5 100644
 --- a/src/sage/graphs/schnyder.py
@@ -4422,8 +4414,8 @@ index 9818f2ada9..e87f5d1f74 100644
              {N(-2): 2, N(1): 1}
          """
 @@ -1955,7 +1955,7 @@ class SchemeMorphism_fan_fiber_component_toric_variety(SchemeMorphism):
-             N(1, -3) (9, 2)
              N(-1, 2) (11, 1)
+             N(1, -3) (9, 2)
              sage: f._ray_index_map
 -            {N(-3, 4): 10, N(-1, 2): 11, N(0, 1): 5, N(1, 0): 4, N(2, -6): 9}
 +            {N(1, 0): 4, N(0, 1): 5, N(-3, 4): 10, N(2, -6): 9, N(-1, 2): 11}
