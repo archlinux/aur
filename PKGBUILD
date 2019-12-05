@@ -2,7 +2,7 @@
 pkgname=trinnity-caffe-cudnn-git
 _srcname=trinnity-caffe
 pkgver=1.0
-pkgrel=23
+pkgrel=24
 pkgdesc="Caffe 1.0 with triNNity extensions (CUDNN backend)"
 arch=('x86_64')
 url="https://bitbucket.org/STG-TCD/trinnity-caffe"
@@ -18,7 +18,7 @@ depends=(
 optdepends=('openblas: OpenBLAS for backend linear algebra ops',
             'cblas: Use CBLAS for  backend linear algebra ops'
 )
-makedepends=('cmake' 'gcc8' 'opencv')
+makedepends=('cmake' 'opencv')
 provides=('caffe')
 conflicts=('trinnity-caffe-cuda-git' 'trinnity-caffe-git')
 source=("${_srcname}"::"git+https://bitbucket.org/STG-TCD/trinnity-caffe.git")
@@ -32,11 +32,12 @@ prepare() {
     mkdir -p build
     cd build
     PATH+=":/opt/cuda/bin/" \
-    CC=gcc-8 \
-    CXX=g++-8 \
+    CC=gcc \
+    CXX=g++ \
     CMAKE_BUILD_TYPE="Release" \
     CMAKE_PARALLEL_LEVEL=`grep processor /proc/cpuinfo | wc -l` \
     cmake \
+    -DCMAKE_CXX_FLAGS="-std=c++03" \
     -DCPU_ONLY=OFF \
     -DUSE_NCCL=ON \
     -DUSE_CUDNN=ON \
@@ -61,7 +62,7 @@ prepare() {
 
 build() {
     cd build
-    PATH+=":/opt/cuda/bin" CC=gcc-8 CXX=g++-8 make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe python
+    PATH+=":/opt/cuda/bin" CC=gcc CXX=g++ CXX_FLAGS="-std=c++03" make -j`grep processor /proc/cpuinfo | wc -l` clean caffe caffeproto pycaffe python
     cp ${srcdir}/${_srcname}/LICENSE .
 }
 
