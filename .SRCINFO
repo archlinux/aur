@@ -12,8 +12,10 @@ pkgbase = evdi
 	depends = libdrm
 	source = evdi-1.6.4-1.tar.gz::https://github.com/DisplayLink/evdi/archive/v1.6.4.tar.gz
 	source = relro.patch
+	source = evdi-1.6.4-kernel-5.4.x.patch
 	md5sums = 67d8ab1bb7a4ca013c5435df42ace5dc
 	md5sums = 05e64dd295a66c030139d0c8f6f7013b
+	md5sums = 1938ebead0b2c64f11591970a554fffc
 
 pkgname = evdi
 

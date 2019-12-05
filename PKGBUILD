@@ -20,10 +20,12 @@ options=()
 install=$pkgname.install
 changelog=$pkgname.Changelog
 source=($pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/DisplayLink/evdi/archive/v$pkgver.tar.gz
-        relro.patch)
+        relro.patch
+        evdi-1.6.4-kernel-5.4.x.patch)
 noextract=()
 md5sums=('67d8ab1bb7a4ca013c5435df42ace5dc'
-         '05e64dd295a66c030139d0c8f6f7013b')
+         '05e64dd295a66c030139d0c8f6f7013b'
+         '1938ebead0b2c64f11591970a554fffc')
 
 prepare() {
   cd "$pkgname-$pkgver"
