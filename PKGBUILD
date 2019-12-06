@@ -1,6 +1,6 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=lrexrepl
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 rockrel=1
 pkgdesc="Commandline tool: Search and Replace in multiple files using Regular Expressions and Lua"
@@ -17,4 +17,4 @@ package() {
 	install -Dm755 lrexrepl "$pkgdir/usr/bin/lrexrepl"
 }
 
-md5sums=('45432d2704627298edd8e8c88238744a')
+md5sums=('768e574732160bc9ee6aa1eb7ccddb5d')
