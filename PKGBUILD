@@ -32,9 +32,6 @@ prepare() {
 	# Enable wifi monitor
 	sed -i '/^CONFIG_WIFI_MONITOR/c\CONFIG_WIFI_MONITOR = y' Makefile
 
-	# Enable WAPI
-	sed -i '/^CONFIG_WAPI_SUPPORT/c\CONFIG_WAPI_SUPPORT = y' Makefile
-
 	# Disable debug
 	sed -i '/^CONFIG_RTW_DEBUG/c\CONFIG_RTW_DEBUG = n' Makefile
 }
