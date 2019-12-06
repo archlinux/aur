@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=archipelago
-pkgver=3.2.0
+pkgver=3.8.1
 epoch=1
 pkgrel=1
 pkgdesc="An open-source terminal emulator built on web technology"
@@ -10,15 +10,17 @@ url="https://github.com/npezza93/archipelago"
 license=("MIT")
 conflicts=('archipelago-bin')
 depends=('nodejs' 'libxkbfile' 'libx11')
-makedepends=("git" "yarn" 'node-gyp' 'python2' 'libx11' 'rpm-org')
+makedepends=("git" "yarn" 'python2' 'libpng'
+             'libx11' 'node-gyp' 'libxtst')
 source=("https://github.com/npezza93/archipelago/archive/v$pkgver.tar.gz")
-sha512sums=('6a4fbf877b18e00ae057a333165533c1168d009be2c00be8eccb764304b4320734a0d01a6d1511c6dc77e9e745595f9ec16e3a9a980622c75a282ff06807e50f')
+sha512sums=('aaa926a4b149c5289437b7d01d1ac969d47a55eb1727923db6a3d7ac693170bf005773dac81d2aabafef4e3a813568d762a01ed6cb213d524949469a035d7139')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
   yarn install --ignore-engines
   yarn run compile
-  yarn run build
+  yarn run pack
+  ./node_modules/.bin/electron-builder --linux deb
 }
 
 package() {

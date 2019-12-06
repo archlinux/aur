@@ -1,6 +1,6 @@
 pkgbase = archipelago
 	pkgdesc = An open-source terminal emulator built on web technology
-	pkgver = 3.2.0
+	pkgver = 3.8.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/npezza93/archipelago
@@ -8,16 +8,17 @@ pkgbase = archipelago
 	license = MIT
 	makedepends = git
 	makedepends = yarn
-	makedepends = node-gyp
 	makedepends = python2
+	makedepends = libpng
 	makedepends = libx11
-	makedepends = rpm-org
+	makedepends = node-gyp
+	makedepends = libxtst
 	depends = nodejs
 	depends = libxkbfile
 	depends = libx11
 	conflicts = archipelago-bin
-	source = https://github.com/npezza93/archipelago/archive/v3.2.0.tar.gz
-	sha512sums = 6a4fbf877b18e00ae057a333165533c1168d009be2c00be8eccb764304b4320734a0d01a6d1511c6dc77e9e745595f9ec16e3a9a980622c75a282ff06807e50f
+	source = https://github.com/npezza93/archipelago/archive/v3.8.1.tar.gz
+	sha512sums = aaa926a4b149c5289437b7d01d1ac969d47a55eb1727923db6a3d7ac693170bf005773dac81d2aabafef4e3a813568d762a01ed6cb213d524949469a035d7139
 
 pkgname = archipelago
 
