@@ -15,7 +15,8 @@ conflicts=('anbox-image')
 source=("https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img")
 
 # opengapps
-_OPENGAPPS_RELEASEDATE="$(curl -s https://api.github.com/repos/opengapps/x86_64/releases/latest | head -n 10 | grep tag_name | grep -o "\"[0-9][0-9]*\"" | grep -o "[0-9]*")"
+_OPENGAPPS_RELEASEDATE=20191126
+#_OPENGAPPS_RELEASEDATE="$(curl -s https://api.github.com/repos/opengapps/x86_64/releases/latest | head -n 10 | grep tag_name | grep -o "\"[0-9][0-9]*\"" | grep -o "[0-9]*")"
 _OPENGAPPS_FILE="open_gapps-x86_64-7.1-mini-${_OPENGAPPS_RELEASEDATE}.zip"
 _OPENGAPPS_URL="https://downloads.sourceforge.net/project/opengapps/x86_64/${_OPENGAPPS_RELEASEDATE}/${_OPENGAPPS_FILE}"
 source+=("${_OPENGAPPS_URL}")
@@ -27,14 +28,14 @@ source+=("houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
 
 noextract=("${_OPENGAPPS_FILE}")
 md5sums=('26874452a6521ec2e37400670d438e33'
-         'SKIP'
-         'SKIP'
+         '500d464073c55b93cf1da47556c0ff4d'
+         'cb102226dd721ced49e4d2ac835213d5'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad')
-         
+
 prepare() {
 	# verify OpenGApps against provided md5 file
-	if [ `md5sum "${_OPENGAPPS_FILE}" | awk '{print $1}'` = `cat "${_OPENGAPPS_FILE}".md5 | awk '{print $1}'` ] 
+	if [ `md5sum "${_OPENGAPPS_FILE}" | awk '{print $1}'` = `cat "${_OPENGAPPS_FILE}".md5 | awk '{print $1}'` ]
 	then
 		echo 'OpenGApps md5sums passed'
 	else
@@ -45,7 +46,7 @@ prepare() {
 
 build () {
 	cd "${srcdir}"
-	
+
 	# unsquash anbox image
 	unsquashfs android_amd64.img
 
@@ -130,7 +131,7 @@ build () {
 
 package() {
 	cd "${srcdir}"
-	
+
 	# set owner
 	chown -R 100000:100000 ./squashfs-root/system/priv-app/{Phonesky,GoogleLoginService,GoogleServicesFramework,PrebuiltGmsCore}
 	chown -R 100000:100000 ./squashfs-root/system/lib/{libhoudini.so,arm}
@@ -139,8 +140,8 @@ package() {
 
 	# squash image
 	mksquashfs squashfs-root android.img -b 131072 -comp xz -Xbcj x86
-	
-	#install image	
+
+	#install image
 	install -Dm644 ./android.img "${pkgdir}/"var/lib/anbox/android.img
 }
 
