@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=70.0.1
+pkgver=71.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -25,13 +25,13 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         $pkgname.cfg.patch
-        "no-relinking.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/no-relinking.patch?h=packages/firefox"
+        "mozinfo_py38.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch?h=packages/firefox"
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('f2e9bb26af7682b31e82fdfc3a4b3e04fd1caa8b004469ea608185d33e35691b'
+sha256sums=('78304cd58229e7103b56b34718aad051c9a4db30c266512a64f501ba58da7fbe'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
-            '2dc9d1aa5eb7798c89f46478f254ae61e4122b4d1956d6044426288627d8a014'
+            '33f5aec0bba83b23410176c5351425d2ad949d7f0bf409a579be25bebb773fce'
             'SKIP'
             'SKIP')
 prepare() {
@@ -41,9 +41,8 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
-  # TODO: do we need this for our LibreWolf ~uild?
-  # Avoid relinking during buildsymbols
-  patch -Np1 -i ../no-relinking.patch
+  # Make it compile with Python 3.8
+  patch -Np1 -i ../mozinfo_py38.patch
 
   # NOTE:
   # unlock some prefs I deem worthy of keeping unlocked or slightly less restricted
@@ -152,7 +151,7 @@ END
     xvfb-run -a -n 92 -s "-screen 0 1600x1200x24" \
     ./mach python build/pgo/profileserver.py
 
-  if ! compgen -G '*.profraw' >&2; then
+  if [[ ! -s merged.profdata ]]; then
     error "No profile data produced."
     return 1
   fi
@@ -170,7 +169,7 @@ END
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build
