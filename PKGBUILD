@@ -27,16 +27,16 @@ prepare() {
 	cd "$srcdir/RTL8822CE_WiFi_linux_v$_allver/driver/rtl88x2CE_WiFi_linux_v$_dver"
 
 	# Enable WOWLAN
-	sed -i '/CONFIG_WOWLAN/c\CONFIG_WOWLAN = y' Makefile
+	sed -i '/^CONFIG_WOWLAN/c\CONFIG_WOWLAN = y' Makefile
 
 	# Enable wifi monitor
-	sed -i '/CONFIG_WIFI_MONITOR/c\CONFIG_WIFI_MONITOR = y' Makefile
+	sed -i '/^CONFIG_WIFI_MONITOR/c\CONFIG_WIFI_MONITOR = y' Makefile
 
 	# Enable WAPI
-	sed -i '/CONFIG_WAPI_SUPPORT/c\CONFIG_WAPI_SUPPORT = y' Makefile
+	sed -i '/^CONFIG_WAPI_SUPPORT/c\CONFIG_WAPI_SUPPORT = y' Makefile
 
 	# Disable debug
-	sed -i '/CONFIG_RTW_DEBUG/c\CONFIG_RTW_DEBUG = n' Makefile
+	sed -i '/^CONFIG_RTW_DEBUG/c\CONFIG_RTW_DEBUG = n' Makefile
 }
 
 package() {
