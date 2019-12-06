@@ -98,7 +98,6 @@ source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    0005-glitched-ondemand-pds.patch
     0005-v5.4_undead-pds099o.patch
     0005-glitched-pds.patch
 )
@@ -110,7 +109,6 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             '5a2a28a3cbcb0424060798b64b59a388f9a0831d882e260e5c28739e74f1a6df1906e9bb82f85cae2fae1dd62c86468111383097824aae4868c7c968a453248a'
-            '02f856f9ca1825ca5180589726b10f8595db2a67931b8ea46f78a9fd93d2b5a52bb7e62be72b9df9cc6e9167ea230f25668c48e33dd87bf5a4924a7ac4b49264'
             'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377'
             'af8e0a8f1e9ad587c01a945d50d03ed3fc593036ca20c641353a6496317716120bd5015aea25a9f1aad936b95f69a39e3d60db5b66499790d1dc9358ce81da28')
 
@@ -131,8 +129,8 @@ prepare() {
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.3 by TkG"
-    for MyPatch in 0005-glitched-ondemand-pds.patch 0005-v5.4_undead-pds099o.patch 0005-glitched-pds.patch
+    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.4 by TkG"
+    for MyPatch in 0005-v5.4_undead-pds099o.patch 0005-glitched-pds.patch
     do
         patch -Np1 -i "$srcdir/$MyPatch"
     done
