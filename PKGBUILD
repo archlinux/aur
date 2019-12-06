@@ -9,7 +9,7 @@ pkgname=icecat
 pkgver=68.3.0
 a_pkgver=( ${pkgver//./ } )
 #_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
-pkgrel=1
+pkgrel=2
 _gnu=-gnu1
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -98,6 +98,7 @@ ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
+ac_add_options --disable-elf-hack
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
