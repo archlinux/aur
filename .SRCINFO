@@ -1,8 +1,8 @@
 pkgbase = jlink-software-and-documentation
 	pkgdesc = Segger JLink software & documentation pack for Linux
-	pkgver = 6.56
+	pkgver = 6.56b
 	pkgrel = 0
-	epoch = 21
+	epoch = 22
 	url = https://www.segger.com/jlink-software.html
 	install = jlink-software-and-documentation.install
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = jlink-software-and-documentation
 	conflicts = j-link-software-and-documentation
 	replaces = j-link-software-and-documentation
 	options = !strip
-	source_i686 = JLink_Linux_656_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V656_i386.tgz
-	md5sums_i686 = a43af04206353a7a4d232cfee9ce9bb1
-	source_x86_64 = JLink_Linux_656_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V656_x86_64.tgz
-	md5sums_x86_64 = 3f726c22baec1262e173bbf0dbe8c3ad
+	source_i686 = JLink_Linux_656b_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V656b_i386.tgz
+	md5sums_i686 = fba8e2c93812ed4854a0e12aec306d5c
+	source_x86_64 = JLink_Linux_656b_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V656b_x86_64.tgz
+	md5sums_x86_64 = ed1b2b27dbc2555cd05dba16381c8a6e
 
 pkgname = jlink-software-and-documentation
 
