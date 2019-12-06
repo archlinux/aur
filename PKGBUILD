@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
 
 pkgname=kotlin-language-server
-pkgver=0.3.0
-_commit=6ccc0bea196a88b242b90fe87477cb978d46d7ef
+pkgver=0.4.0
+_commit=e45d6bda999d3a7bea130f985c425452db1f16fd
 pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
