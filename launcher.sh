@@ -1,4 +1,4 @@
 #!/bin/bash
-
-cd /usr/share/java/java-language-server/bin
-./launcher "$@"
+set -e
+cd /usr/share/java/java-language-server/
+./lang_server_linux.sh "$@"

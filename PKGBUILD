@@ -2,8 +2,8 @@
 
 pkgname=java-language-server-git
 _pkgname=java-language-server
-pkgver=0.2.19.r1227.ce5b939
-pkgrel=2
+pkgver=0.2.30.r1589.2f2a9d4c
+pkgrel=1
 pkgdesc="Java language server using the Java compiler API"
 arch=('any')
 url="https://github.com/georgewfraser/java-language-server.git"
@@ -15,7 +15,8 @@ makedepends=('git' 'maven')
 source=("${_pkgname}::git+${url}"
         "launcher.sh")
 sha256sums=('SKIP'
-            '2010843d40c0612dd7884d53645435001190623c471b43a2e71d5434e9bca6e3')
+            '26eb4214d744c16cd4e8976e495f6cad8c7c98d4ffad3ec79b71b6241e0a1bbf')
+
 
 pkgver() {
   cd "$_pkgname"
@@ -26,9 +27,9 @@ pkgver() {
 }
 
 build() {
-    export JAVA_HOME="/usr/lib/jvm/default"
     cd "${srcdir}/${_pkgname}"
-    ./scripts/link_mac.sh
+    ./scripts/link_linux.sh
+    mvn package -DskipTests
 }
 
 package() {
@@ -36,7 +37,7 @@ package() {
       "${pkgdir}/usr/share/java" \
       "${pkgdir}/usr/bin"
     cp -r \
-      "${srcdir}/${_pkgname}/dist/mac" \
+      "${srcdir}/${_pkgname}/dist" \
       "${pkgdir}/usr/share/java/java-language-server"
     install \
       "${srcdir}/launcher.sh" \
