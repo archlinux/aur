@@ -20,16 +20,16 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.4.1
+pkgver=5.4.2
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-arch${pkgver##*.}
+_srctag=v${pkgver}-arch${pkgrel}
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf
-  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
@@ -48,8 +48,8 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('4a536b063cd2bb205d192534edc685f1e2fe1856f37a6691d8062e7255176c48'
-            '3acc13b209c53573cc590f171fbb9328b202978e59027ebbd204940b149191db'
+sha256sums=('d2ddb19955f6367b08fc3d26b466420c391ac77cddeb37dbeafebcb41bafcd06'
+            'ccc2959135ccc7a335649e6453a71b842cef56bd02d082cd420de23b79073b1d'
             'd3405db8ab0557a8d4ca28c15052413abefe0ae267016c3708dfaed2dae8a858'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
@@ -115,7 +115,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules with the PDS-mq CPU scheduler"
+  pkgdesc="The $pkgdesc kernel and modules with the BMQ CPU scheduler"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
