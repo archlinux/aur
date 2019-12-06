@@ -1,7 +1,7 @@
 # Maintainer: piernov <piernov@piernov.org>
 
 pkgname=python-ruptures-git
-pkgver=r29.6761024
+pkgver=r213.b98fdc8
 pkgrel=1
 pkgdesc="change point detection in Python"
 arch=('any')
@@ -13,7 +13,7 @@ source=("git+https://github.com/deepcharles/ruptures.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
+	cd ruptures
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

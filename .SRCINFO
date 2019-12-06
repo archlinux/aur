@@ -1,6 +1,6 @@
 pkgbase = python-ruptures-git
 	pkgdesc = change point detection in Python
-	pkgver = r29.6761024
+	pkgver = r213.b98fdc8
 	pkgrel = 1
 	url = https://github.com/deepcharles/ruptures
 	arch = any
