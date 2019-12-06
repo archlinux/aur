@@ -1,6 +1,6 @@
 pkgbase = ptxdist
 	pkgdesc = Embedded Linux build system
-	pkgver = 2019.11.0
+	pkgver = 2019.12.0
 	pkgrel = 1
 	url = http://www.ptxdist.org
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = ptxdist
 	depends = patch
 	depends = python2
 	depends = wget
-	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2019.11.0.tar.bz2
-	md5sums = b408412b947cd1c45b4fd21440c4d801
-	sha512sums = 1241d00596470e65f352730066a529386cf5423ad20315d1ed76d848ec76c4641f2e42f9d97c73595ed83f28e858cb87e6c18dc155bc142a53cc861c4f9a9949
+	source = http://www.pengutronix.de/software/ptxdist/download/ptxdist-2019.12.0.tar.bz2
+	md5sums = eb0c32013dff482195deabb0ce9d0c6d
+	sha512sums = ea59e48d0fb399c5870babc0cc25c53be964f04514c5605ebc281a0b132cbcad19bc6ad924ab244b183e07a550d424d4b8c27a4f92e065b61da6a1a3321d8ff8
 
 pkgname = ptxdist
 
