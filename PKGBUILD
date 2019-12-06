@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-pass
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 arch=(x86_64)
 pkgdesc="Plasma applet for the Pass password manager"
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(plasma-workspace)
 makedepends=(extra-cmake-modules)
 source=(https://download.kde.org/stable/$pkgname/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('9821c5ad80e4370dce002855bd0300d234feec249258b01fafd9e3a9241cbc66'
+sha256sums=('a9789142c1b487f41e245bde9179d7857972c521df906e58176e0b0c0c3cdc39'
             'SKIP')
 validpgpkeys=('0ABDFA55A4E6BEA99A83EA974D69557AECB13683') # Daniel Vrátil <dvratil@kde.org>
 
@@ -20,8 +20,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname-$pkgver \
-   -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ../$pkgname-$pkgver
   make
 }
 

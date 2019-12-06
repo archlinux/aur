@@ -1,16 +1,16 @@
 pkgbase = plasma-pass
 	pkgdesc = Plasma applet for the Pass password manager
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://www.dvratil.cz/2018/05/plasma-pass/
 	arch = x86_64
 	license = GPL
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
-	source = https://download.kde.org/stable/plasma-pass/plasma-pass-1.0.0.tar.xz
-	source = https://download.kde.org/stable/plasma-pass/plasma-pass-1.0.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma-pass/plasma-pass-1.1.0.tar.xz
+	source = https://download.kde.org/stable/plasma-pass/plasma-pass-1.1.0.tar.xz.sig
 	validpgpkeys = 0ABDFA55A4E6BEA99A83EA974D69557AECB13683
-	sha256sums = 9821c5ad80e4370dce002855bd0300d234feec249258b01fafd9e3a9241cbc66
+	sha256sums = a9789142c1b487f41e245bde9179d7857972c521df906e58176e0b0c0c3cdc39
 	sha256sums = SKIP
 
 pkgname = plasma-pass
