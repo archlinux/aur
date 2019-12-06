@@ -1,7 +1,7 @@
 pkgbase = zelda-roth
 	pkgdesc = 'Zelda: Return of the Hylian' is a fan-made Zelda Game (english version)
 	pkgver = 6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zeldaroth.fr/
 	arch = i686
 	arch = x86_64

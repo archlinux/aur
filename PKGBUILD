@@ -2,7 +2,7 @@
 
 pkgname=zelda-roth
 pkgver=6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="'Zelda: Return of the Hylian' is a fan-made Zelda Game (english version)"
 url="http://www.zeldaroth.fr/"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ prepare() {
   # use user's $HOME for saves and load data from /usr/share/zelda-roth
   patch -Np0 < $pkgname-datafolders.patch
 
-  # add our $CFLAGS
+  # set our $CFLAGS
   cd ZeldaROTH_US-src-linux/src
-  sed 's|CFLAGS  =|CFLAGS  +=|' -i Makefile
+  sed 's|CFLAGS  =.*|CFLAGS  += -I/usr/include/SDL|' -i Makefile
 
   # create an icon
   convert data/images/logos/fond.png -thumbnail '48x48' -background transparent \
