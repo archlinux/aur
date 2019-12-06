@@ -1,7 +1,7 @@
 pkgbase = emacs-websocket
 	pkgdesc = A websocket implementation in elisp, for emacs.
 	pkgver = 1.12
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/ahyatt/emacs-websocket
 	arch = any
 	license = GPL2
