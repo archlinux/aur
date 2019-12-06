@@ -1,0 +1,18 @@
+pkgbase = starship-git
+	pkgdesc = The cross-shell prompt for astronauts
+	pkgver = 0.27.0.580.g1de281e
+	pkgrel = 1
+	url = https://github.com/starship/starship
+	arch = x86_64
+	license = ISC
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	optdepends = powerline-fonts: powerline symbols for terminals
+	optdepends = nerd-fonts-complete: popular collections such as Font Awesome & fonts such as Hack
+	conflicts = starship
+	source = starship::git+https://github.com/starship/starship.git
+	sha256sums = SKIP
+
+pkgname = starship-git
+
