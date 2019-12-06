@@ -4,7 +4,7 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.10'
-pkgrel='0'
+pkgrel='1'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -78,6 +78,8 @@ package() {
     install -m 644 "src/scripts/batique.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/fire.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/fire.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/fireworks.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/fireworks.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/gaming.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/gaming.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/gradient.lua" "$pkgdir/usr/lib/eruption/scripts/"
