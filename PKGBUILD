@@ -4,7 +4,8 @@ pkgver=0.6
 pkgrel=1
 pkgdesc="Peertube command line viewer inspired by youtube-viewer"
 arch=('x86_64')
-url="https://gitlab.com/SostheneGuedon/peertube-viewer" license=('GPL')
+url="https://gitlab.com/SostheneGuedon/peertube-viewer" 
+license=('GPL')
 md5sums=('e0c48b96a9d0c346cc30862047d2aa45')
 depends=(
   'curl'
