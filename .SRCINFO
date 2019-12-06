@@ -19,3 +19,4 @@ pkgbase = heroku-cli
 	sha512sums = a092ee175c8a6158040d440b1b69089381ad1f6ef9a026fbe079dcddc642ca3cb29a2f653288a725e7c999f86f622c7e343afe8c55343b26d6ac641608274bdd
 
 pkgname = heroku-cli
+

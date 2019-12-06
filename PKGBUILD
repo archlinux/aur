@@ -1,4 +1,5 @@
 # Maintainer: Sampson Crowley <sampsonsprojects@gmail.com>
+# Contributor: Rhys Kenwell <redrield+aur@gmail.com>
 
 pkgname=heroku-cli
 pkgver=7.35.0
