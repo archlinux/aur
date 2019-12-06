@@ -1,0 +1,14 @@
+pkgbase = nodejs-markdown-toc
+	pkgdesc = generate markdown TOC (table of contents)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/jonschlinkert/markdown-toc
+	arch = any
+	license = custom
+	makedepends = npm
+	depends = nodejs
+	source = markdown-toc-1.2.0.tar.gz::https://github.com/jonschlinkert/markdown-toc/archive/1.2.0.tar.gz
+	md5sums = 16bc26b1cc25976c624b36939967c5aa
+
+pkgname = nodejs-markdown-toc
+
