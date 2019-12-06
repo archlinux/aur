@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-audio-common
 	pkgdesc = ROS - Common code for working with audio in ROS.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/audio_common
 	arch = any
 	license = BSD
