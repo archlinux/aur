@@ -1,30 +1,24 @@
 # Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
 
 pkgname=java-language-server
-pkgver=0.2.24
-_commit=4615ec3f224069a0c24e71afaae1b8f12c458aca
+pkgver=0.2.30
 pkgrel=1
 pkgdesc="Java language server using the Java compiler API"
 arch=(any)
-url="https://github.com/georgewfraser/java-language-server.git"
+url="https://github.com/georgewfraser/java-language-server"
 license=('MIT')
-conflicts=('java-language-server-git')
 provides=('java-language-server')
 depends=('java-runtime')
-makedepends=('git' 'maven')
-source=("${pkgname}::git+${url}#commit=$_commit"
+makedepends=('maven')
+source=("${url}/archive/v${pkgver}.tar.gz"
         "launcher.sh")
-sha256sums=('SKIP'
-            '2010843d40c0612dd7884d53645435001190623c471b43a2e71d5434e9bca6e3')
+sha256sums=('90fe1ca3c6731fcda6234c36cc604e29e99ba707ccb3e2cd3aeb1c8ffa9bb9c2'
+            '26eb4214d744c16cd4e8976e495f6cad8c7c98d4ffad3ec79b71b6241e0a1bbf')
 
 build() {
-    cd "${srcdir}/${pkgname}"
-
-    # Temporary hack allowing us to link stable version 0.2.13, fixed in master
-    export JAVA_HOME="/usr/lib/jvm/default"
-    sed -i '/^JAVA_HOME=.*$/d' ./scripts/link_mac.sh ./scripts/patch_gson.sh
-
-    ./scripts/link_mac.sh
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./scripts/link_linux.sh
+    mvn package -DskipTests
 }
 
 package() {
@@ -32,7 +26,7 @@ package() {
       "${pkgdir}/usr/share/java" \
       "${pkgdir}/usr/bin"
     cp -r \
-      "${srcdir}/${pkgname}/dist/mac" \
+      "${srcdir}/${pkgname}-${pkgver}/dist" \
       "${pkgdir}/usr/share/java/java-language-server"
     install \
       "${srcdir}/launcher.sh" \
