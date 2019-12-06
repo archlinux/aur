@@ -9,7 +9,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=python-kflash
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-based cross-platform Kendryte K210 UART ISP Utility"
 arch=(any)
 url="https://github.com/kendryte/kflash.py"
@@ -25,6 +25,11 @@ options=(!emptydirs)
 install=
 source=("https://github.com/kendryte/kflash.py/archive/v$pkgver.tar.gz")
 sha512sums=('0bd05acc3b3118186757b293c3b8b95c4590f69c07cd6b6b3802795ba3406cb6cedf6dea57fdfaad89e8939f23dfc95f921572fa089fd3649a4153265b9bdf0b')
+
+prepare() {
+  cd "$srcdir/kflash.py-$pkgver"
+  sed -i "s/enum34\([^']*\)/enum34\1;python_version < \"3.4\"/g" setup.py
+}
 
 package() {
   cd "$srcdir/kflash.py-$pkgver"
