@@ -29,8 +29,8 @@ source+=("houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
 
 noextract=("${_OPENGAPPS_FILE}")
 md5sums=('26874452a6521ec2e37400670d438e33'
-         '500d464073c55b93cf1da47556c0ff4d'
-         'cb102226dd721ced49e4d2ac835213d5'
+         'SKIP'
+         'SKIP'
          '7ebf618b1af94a02322d9f2d2610090b'
          '5ca37e1629edb7d13b18751b72dc98ad')
 
