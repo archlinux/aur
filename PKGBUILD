@@ -8,24 +8,24 @@ pkgbase=gdal-hdf4
 _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
-pkgname=('gdal-hdf4' 'python-gdal-hdf4' 'python2-gdal-hdf4')
-pkgver=3.0.0
-pkgrel=2.0
+pkgname=('gdal-hdf4' 'python-gdal-hdf4')
+pkgver=3.0.2
+pkgrel=1.0
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('x86_64')
 url="http://www.gdal.org/"
 license=('custom')
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c')
-makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-numpy' 'python2-numpy')
+makedepends=('perl' 'swig' 'chrpath' 'doxygen' 'python-numpy' 'boost')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
-            'perl:  perl binding support')
+            'perl: perl binding support')
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal)
-sha256sums=('ad316fa052d94d9606e90b20a514b92b2dd64e3142dfdbd8f10981a5fcd5c43e'
+sha256sums=('c3765371ce391715c8f28bd6defbc70b57aa43341f6e94605f04fe3c92468983'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed')
 
 prepare() {
@@ -53,7 +53,6 @@ build() {
   make man
 
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-  python2 setup.py build
   python3 setup.py build
 }
 
@@ -85,28 +84,6 @@ package_python-gdal-hdf4 () {
   cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
   python3 setup.py install --root="$pkgdir" --optimize=1
   install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
-
-  install -dm755 "${pkgdir}"/usr/share/licenses
-  ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
-}
-
-package_python2-gdal-hdf4 () {
-  pkgdesc="Python 2 bindings for GDAL, with support to HDF4 format"
-  provides=("python2-gdal")
-  conflicts=("python2-gdal")
-  depends=("gdal-hdf4=$pkgver" 'python2-numpy')
-  optdepends=()
-
-  cd "${srcdir}"/$_pkgbase-$pkgver/swig/python
-
-# python2 fixes
-  for file in {,osgeo/,samples/,scripts/}*.py; do
-      sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
-  done
-
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm755 -t "${pkgdir}"/usr/bin scripts/*.py
-  for file in "${pkgdir}"/usr/bin/*; do mv "${file}" "${file%.py}2.py"; done
 
   install -dm755 "${pkgdir}"/usr/share/licenses
   ln -s $_pkgbase "${pkgdir}"/usr/share/licenses/$pkgname
