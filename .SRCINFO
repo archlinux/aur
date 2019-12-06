@@ -1,6 +1,6 @@
 pkgbase = prometheus-push-gateway-bin
 	pkgdesc = Prometheus push acceptor for ephemeral and batch jobs
-	pkgver = 0.8.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/prometheus/pushgateway
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = prometheus-push-gateway-bin
 	license = Apache
 	source = prometheus-push-gateway.service
 	sha256sums = fe0ec9b3f18f2f35177fdf8dd8bd5ef0cee3189b65051b4239ad2ba1f5e9961c
-	source_x86_64 = https://github.com/prometheus/pushgateway/releases/download/v0.8.0/pushgateway-0.8.0.linux-amd64.tar.gz
-	sha256sums_x86_64 = 6949866ba9ad0cb88d3faffd4281f17df79281398b4dbd0ec3aab300071681ca
-	source_arm = https://github.com/prometheus/pushgateway/releases/download/v0.8.0/pushgateway-0.8.0.linux-armv5.tar.gz
-	sha256sums_arm = 5c3f7037de7c14aa33b86496ce4e52a46a64a09845c0f8376f0d48d1d728ed75
-	source_armv6h = https://github.com/prometheus/pushgateway/releases/download/v0.8.0/pushgateway-0.8.0.linux-armv6.tar.gz
-	sha256sums_armv6h = 3c1cadaee2fa556516ef17b460452c2a65d11dd88cdf4937dcf504d6ad66c594
-	source_armv7h = https://github.com/prometheus/pushgateway/releases/download/v0.8.0/pushgateway-0.8.0.linux-armv7.tar.gz
-	sha256sums_armv7h = 0cfd42bc74a5fdf1cd083253e76f104e4cb54f28d6ac397d8619313cec8d2a13
+	source_x86_64 = https://github.com/prometheus/pushgateway/releases/download/v1.0.0/pushgateway-1.0.0.linux-amd64.tar.gz
+	sha256sums_x86_64 = 5dc6472806ba143b9b6b54f79e5362db3b517acf92e524923fcaf4f184908505
+	source_arm = https://github.com/prometheus/pushgateway/releases/download/v1.0.0/pushgateway-1.0.0.linux-armv5.tar.gz
+	sha256sums_arm = c3b3659598c3f5a5a31298b538f269061587db5ca5bb352408e9a1212ec3bbab
+	source_armv6h = https://github.com/prometheus/pushgateway/releases/download/v1.0.0/pushgateway-1.0.0.linux-armv6.tar.gz
+	sha256sums_armv6h = 4a30f617c3ef7afd6bc53d38ef476b115092734fbb9d6aa85ad2bc1e5418cba2
+	source_armv7h = https://github.com/prometheus/pushgateway/releases/download/v1.0.0/pushgateway-1.0.0.linux-armv7.tar.gz
+	sha256sums_armv7h = 86d8bf2414fac520234260d9bafb0bae8913cbadc17dbaa939636c84ecabe92c
 
 pkgname = prometheus-push-gateway-bin
 
