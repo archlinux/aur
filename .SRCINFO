@@ -1,6 +1,6 @@
 pkgbase = libratbag-git
 	pkgdesc = A DBus daemon to configure gaming mice - git version
-	pkgver = 0.9.905.r30.cdd7010
+	pkgver = 0.11.r7.47cc5fc
 	pkgrel = 1
 	url = https://github.com/libratbag/libratbag
 	arch = x86_64
@@ -17,10 +17,13 @@ pkgbase = libratbag-git
 	depends = glib2
 	depends = libevdev
 	depends = libudev.so
+	depends = libunistring
+	depends = json-glib
 	depends = python
 	depends = python-evdev
+	optdepends = linux: Linux 5.2 is required for Logitech wireless devices
 	provides = libratbag
-	provides = libratbag=0.9.905.r30.cdd7010
+	provides = libratbag=0.11.r7.47cc5fc
 	provides = ratbagd
 	provides = liblur
 	conflicts = libratbag
