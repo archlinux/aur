@@ -2,7 +2,7 @@
 pkgname=aragon-cli
 _npmscope=@aragon
 _npmname=cli
-pkgver=6.4.1
+pkgver=6.4.3
 pkgrel=1
 pkgdesc="CLI for creating and publishing Aragon apps"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('nodejs')
 makedepends=('nodejs' 'npm')
 source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmscope}/${_npmname}-${pkgver}.tgz")
-sha256sums=('cef0a3be23222e1adf1e84253e9dcbeb93816c74b14203ed29d3d0a3614624de')
+sha256sums=('e0bf239352173141a80337cac941a1afa682c52f0b76e88337edce5db2bf8141')
 noextract=('${_npmname}-${pkgver}.tgz')
 
 package() {
