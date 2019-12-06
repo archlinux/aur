@@ -1,36 +1,36 @@
 post_install() {
-    if [ ! -f /etc/gingertechengine/checks.json ]; then
+    if [ ! -f /etc/gogios/checks.json ]; then
         echo "Making default check file"
-        cp /etc/gingertechengine/example.json /etc/gingertechengine/checks.json
+        cp /etc/gogios/example.json /etc/gogios/checks.json
     fi
     
-    if [ ! -f /etc/gingertechengine/gogios.toml ]; then
+    if [ ! -f /etc/gogios/gogios.toml ]; then
         echo "Making default config"
-        cp /etc/gingertechengine/gogios.sample.toml /etc/gingertechengine/gogios.toml
+        cp /etc/gogios/gogios.sample.toml /etc/gogios/gogios.toml
     fi
 
-    if [ ! -f /opt/gingertechengine/js/current.json ]; then
+    if [ ! -f /opt/gogios/js/current.json ]; then
 	echo "Making current results file"
-	cp /etc/gingertechengine/checks.json /opt/gingertechengine/js/current.json
+	cp /etc/gogios/checks.json /opt/gogios/js/current.json
     fi
 
-    if [ ! -f /var/log/gingertechnology ]; then
-	mkdir /var/log/gingertechnology
+    if [ ! -f /var/log/gogios ]; then
+	mkdir /var/log/gogios
     fi
     
     if id "gogios" >/dev/null 2>&1; then
         echo "gogios user already exists"
     else
 	mkdir -p /var/spool/gogios
-        useradd --system --user-group --home-dir /var/spool/gogios --shell /sbin/nologin gogios
+        useradd --system --user-group --home-dir /var/spool/gogios --create-home --shell /sbin/nologin gogios
 	chown gogios:gogios /var/spool/gogios
     fi
     
-    chown gogios:gogios -R /var/log/gingertechnology
-    chmod 0764 -R /var/log/gingertechnology
-    chown gogios:gogios -R /usr/lib/gingertechengine
-    chown gogios:gogios -R /etc/gingertechengine
-    chown gogios:gogios -R /opt/gingertechengine
+    chown gogios:gogios -R /var/log/gogios
+    chmod 0764 -R /var/log/gogios
+    chown gogios:gogios -R /usr/lib/gogios
+    chown gogios:gogios -R /etc/gogios
+    chown gogios:gogios -R /opt/gogios
 }
 
 post_upgrade() {
