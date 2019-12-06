@@ -1,7 +1,7 @@
 pkgbase = emacs-projectile
 	pkgdesc = Project Interaction Library for Emacs
 	pkgver = 2.0.0
-	pkgrel = 7
+	pkgrel = 9
 	url = https://github.com/bbatsov/projectile
 	arch = any
 	license = GPL3
