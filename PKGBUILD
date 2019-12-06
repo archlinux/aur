@@ -22,8 +22,6 @@ sha256sums=("2ee8b30221228739a26ccd4a0663fc16274899032203c6533773cddaeb5f389a"
             "86f34a8d9ddfdcfad5cc5e170a729cee7bca61102fbe0b10746b7f83b19d45bc"
             "1db635df7d84f73694303eba423acd75da892e084cf35c4e260bd5c6b56fcc1e")
 
-prepare() {}
-
 package() {
   cd "${srcdir}"
 
