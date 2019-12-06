@@ -6,10 +6,6 @@ pkgbase = otf-san-francisco-pro
 	arch = any
 	license = custom
 	makedepends = p7zip
-	makedepends = dmg2img
-	makedepends = cpio
-	makedepends = xar
-	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/SF-Font-Pro.dmg
 	md5sums = da1f767a3d185cac4efe9003aefc082a
 
