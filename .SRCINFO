@@ -1,7 +1,7 @@
 pkgbase = libdecaf
 	pkgdesc = A 448-bit Edwards curve
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/ed448goldilocks/
 	arch = x86_64
 	license = MIT

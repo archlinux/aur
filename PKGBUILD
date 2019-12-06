@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=('libdecaf')
 pkgver='1.0.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="A 448-bit Edwards curve"
 url="https://sourceforge.net/projects/ed448goldilocks/"
 depends=()
