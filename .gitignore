@@ -1,6 +1,12 @@
+*.pkg.*
+balena-etcher/
+balena-etcher-*prepare.log
+balena-etcher-*package.log
+balena-etcher-*build.log
+etcher/
+etcher-*prepare.log
+etcher-*package.log
+etcher-*build.log
 pkg/
-src/
-*.tgz
-*.tar.xz
-etcher-git/
 scripts/
+src/
