@@ -1,7 +1,7 @@
 pkgbase = firefox-esr
 	pkgdesc = Standalone web browser from mozilla.org, Extended Support Release
 	pkgver = 68.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = x86_64
 	license = MPL
