@@ -1,14 +1,13 @@
 pkgbase = mingw-w64-giflib
 	pkgdesc = A library for reading and writing gif images (mingw-w64)
 	pkgver = 5.2.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/projects/giflib/
 	arch = any
 	license = MIT
 	makedepends = xmlto
 	makedepends = docbook-xsl
-	makedepends = make
-	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-make
 	depends = mingw-w64-crt
 	options = staticlibs
 	options = !strip
