@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-panon-git
 	pkgdesc = A Different Audio Spectrum Analyzer for KDE Plasma
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/rbn42/panon
 	arch = any
 	license = GPL3

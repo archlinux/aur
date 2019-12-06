@@ -5,7 +5,7 @@
 _basename=panon
 pkgname=plasma5-applets-${_basename}-git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Different Audio Spectrum Analyzer for KDE Plasma"
 arch=('any')
 url="http://github.com/rbn42/panon"
@@ -24,7 +24,7 @@ package() {
   git submodule update --init
 
   # Remove shader examples
-  rm ./kde/plasmoid/contents/shaders/example-*
+  rm -r ./kde/plasmoid/contents/shaders/example-* 
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_basename%-*}/LICENSE"
   install -Dm644 third_party/hsluv-glsl/LICENCE.md "$pkgdir/usr/share/licenses/${_basename%-*}/hsluv-glsl/LICENCE.md"
