@@ -6,10 +6,6 @@ pkgbase = otf-san-francisco-mono
 	arch = any
 	license = custom
 	makedepends = p7zip
-	makedepends = dmg2img
-	makedepends = cpio
-	makedepends = xar
-	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/SF-Mono.dmg
 	md5sums = d93f9f19c962547d18b72f532e91ecdd
 
