@@ -1,7 +1,7 @@
 pkgbase = python-pystache
 	pkgdesc = The mustache template engine written in python
 	pkgver = 0.5.4
-	pkgrel = 6
+	pkgrel = 7
 	url = http://github.com/defunkt/pystache
 	arch = any
 	license = MIT
