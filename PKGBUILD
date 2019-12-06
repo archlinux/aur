@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.14.arch1.r859692.b38ab57cca97
+pkgver=v5.3.15.arch1.r859832.ac127f6e3fa5
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.3.14-arch1
+_srcver_tag=v5.3.15-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -101,7 +101,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '221652eced3ada8fd6a1be9ecbf0e9a553330f20bb9e080d340a28359759a364e9a14c6a789857599f223ec98b4800e2c1f3cbf2e8f012ba789cb23116439acd'
+            'dc59a723ef1f7b946f6624e4b12ba2d41d6cfb52c0348c764db26712bf7c1e2c1bfcd5959701e913d0c62cf8bf550c1a2a3cfdd48e2bf3fba27edf05925dca8a'
             '9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0'
             'a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c')
 
