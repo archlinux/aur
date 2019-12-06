@@ -1,12 +1,12 @@
 pkgbase = mingw-w64-openh264
 	pkgdesc = OpenH264 is a codec library which supports H.264 encoding and decoding (mingw-w64)
 	pkgver = 2.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.openh264.org/
 	arch = any
 	license = BSD
 	makedepends = nasm
-	makedepends = mingw-w64-environment
+	makedepends = mingw-w64-make
 	depends = mingw-w64-gcc
 	options = !strip
 	options = !buildflags
