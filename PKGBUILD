@@ -13,7 +13,7 @@ optdepends=('sox: audio speed adjusting support'
 				'mplayer: video cutting preview')
 makedepends=('make' 'gcc' 'pkg-config' 'qt5-tools' 'fakeroot')				
 source=('https://github.com/llamaret/mystiq/archive/v0.3.2.tar.gz')
-sha256sums=('8883a2d6f448e7426fdd592c2d0ee8f64c7d778b1b1c203c83be6873c4d7b86b')
+sha256sums=('356bf97edc2c707bb817e6fac7a753bd005b28783e531b7e0773b74eb449966b')
 
 build() {
   cd "$srcdir/MystiQ-${pkgver}"
