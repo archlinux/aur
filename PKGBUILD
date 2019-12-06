@@ -9,18 +9,19 @@ _commit=HEAD
 _branch=master
 
 pkgname=rtorrent-pyro-git
-pkgver=20191003
+pkgver=20191206
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
 license=('GPL2')
 arch=('i686' 'x86_64' 'armv7h')
-depends=('libtorrent-pyro-git' 'ncurses' 'curl' 'xmlrpc-c')
-makedepends=('git' 'clang')
+depends=('openssl' 'ncurses' 'curl' 'xmlrpc-c')
+makedepends=('git')
 optdepends=('ttf-dejavu: for utf8 glyphs'
             'python2: for pyroscope tools')
 conflicts=('rtorrent' 'rtorrent-git' 'rtorrent-ps')
 provides=('rtorrent')
+replaces=('libtorrent-pyro-git')
 install='pyroscope.install'
 backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 
@@ -35,8 +36,10 @@ backup=('usr/share/doc/rtorrent/rtorrent.rc.sample')
 
 _url='https://raw.githubusercontent.com/chros73/rtorrent-ps-ch/master/patches'
 source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
+        "git://github.com/rakshasa/libtorrent.git#branch=$_branch"
         "https://github.com/skydrome/rtorrent/commit/c3697d3a82085194643e58e8ee06855e4d45a6dc.patch"
         "https://raw.githubusercontent.com/pyroscope/pyrocore/master/src/pyrocore/data/config/bash-completion"
+        "$_url/backport_lt_all_01-partially_done_and_choke_group_fix.patch"
         "$_url/command_pyroscope.cc"
         "$_url/ui_pyroscope.cc"
         "$_url/ui_pyroscope.h"
@@ -44,8 +47,10 @@ source=("git://github.com/rakshasa/rtorrent.git#branch=$_branch"
         "bootstrap.sh")
 
 md5sums=('SKIP'
+         'SKIP'
          '5d41e09f61e346a6c055e36c243f00b5'
          'efdb1a143d661dcda5a22e43bb28e36f'
+         '2a8eb09877e81e3e72bd544c27b45dbb'
          'd68073da455851d628b587b852b4b54a'
          '5befaa2e705a550a6dcd7f397060df81'
          '0e9791d796e2185279d7f109b064576b'
@@ -58,18 +63,25 @@ pkgver() {
 }
 
 prepare() {
-    cd rtorrent
-    #patch -Np1 -i "$startdir/rtorrent.patch"
+    cd libtorrent
+
+    for i in $srcdir/backport_lt*.patch; do
+        msg "Patching $(basename $i)"
+        patch -uNp1 -i "$i"
+    done
+
+    ./autogen.sh
+
+
+    cd ../rtorrent
 
     sed -i configure.ac \
         -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\nAC_DEFINE(RT_HEX_VERSION, 0x000908, version checks):"
     sed -i src/ui/download_list.cc \
         -e "s:rTorrent \" VERSION:rTorrent-PS g$(git rev-parse --short $_commit) \" VERSION:"
 
-    for i in $srcdir/*.patch; do
-        msg "Patching $(basename $i)"
-        patch -uNp1 -i "$i"
-    done
+    patch -uNp1 -i ../c3697d3a82085194643e58e8ee06855e4d45a6dc.patch
+
     for i in $srcdir/*.{cc,h}; do
         ln -sf "$i" src
     done
@@ -78,11 +90,24 @@ prepare() {
 }
 
 build() {
-    cd rtorrent
-    export CC=clang
-    export CXX=clang++
+    #export CC=clang
+    #export CXX=clang++
     export CXXFLAGS+=" -Wno-exceptions"
-    export libtorrent_LIBS="-L/usr/lib -ltorrent"
+    export PKG_CONFIG_PATH="$srcdir/build/lib/pkgconfig"
+
+    msg "Building libtorrent"
+    cd libtorrent
+
+    ./configure $_debug \
+        --prefix=/build \
+        --disable-shared --enable-static \
+        --with-posix-fallocate
+    make DESTDIR="$srcdir" install
+    sed "s|^prefix=.*|prefix=$srcdir/build|" -i ../build/lib/pkgconfig/libtorrent.pc
+
+
+    msg "Building rtorrent"
+    cd ../rtorrent
 
     ./configure $_debug \
         --prefix=/usr \

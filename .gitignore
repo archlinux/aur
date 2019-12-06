@@ -1,7 +1,10 @@
 src/
 pkg/
 rtorrent/
+libtorrent/
 rtorrent.patch
+libtorrent.patch
+*completion
 *.cc
 *.h
 *.pkg.tar
