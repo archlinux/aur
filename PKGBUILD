@@ -3,7 +3,7 @@
 _prefix=/opt/Unity
 
 pkgname=unity-editor
-pkgver=2019.2.14f1
+pkgver=2019.2.15f1
 pkgrel=1
 epoch=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -35,12 +35,12 @@ optdepends=("${pkgname}-doc"
             "unityhub"
             "jq: needed for UnityHub integration helpers --register/--deregister")
 install=${pkgname}.install
-source=("2019.2.14f1.tar.xz::https://download.unity3d.com/download_unity/49dd4e9fa428/LinuxEditorInstaller/Unity.tar.xz"
+source=("2019.2.15f1.tar.xz::https://download.unity3d.com/download_unity/dcb72c2e9334/LinuxEditorInstaller/Unity.tar.xz"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}-icon.png"
         "eula.txt")
-md5sums=("538e9c25ca0bb77f56e9c4e4b93072ec"
+md5sums=("277343c01c7b2e4425f3290bc7897de0"
          'a8fe2e41f06489dd09f651b08ec87125'
          'ee60f0d4d3c3fa9e0a52da085b1f3be6'
          '723f9e556821810682a6d1f4be540a74'
