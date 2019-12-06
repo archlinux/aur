@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-tuw-airskin-msgs
 	pkgdesc = ROS - The tuw_airskin_msgs package.
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuw-robotics/tuw_msgs
 	arch = any
 	license = BSD
