@@ -22,7 +22,7 @@ pkgdesc='Google Compute Engine guest environment'
 arch=('any')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
-depends=('google-compute-engine-oslogin' 'python-boto' 'python-distro' 'python-setuptools')
+depends=('ethtool' 'google-compute-engine-oslogin' 'inetutils' 'python-boto' 'python-distro' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/v$pkgver.tar.gz")
 sha256sums=('3a8fd0fcede35552e7efd091a96d2697e7d149383b5fe54008c68d4f53f69951')
 
