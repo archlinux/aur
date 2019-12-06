@@ -1,19 +1,13 @@
 # Maintainer: N.Boughton, <nicholasboughton@gmail.com>
-pkgname=swnt
-pkgver=0.8.1
+pkgname=myzt
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Command line GM tools for Stars Without Number"
+pkgdesc="Command line GM tools for Mutant: Year Zero"
 arch=('x86_64')
-url="https://github.com/nboughton/swnt"
+url="https://github.com/nboughton/myzt"
 license=("MIT")
-optdepends=('hugo: export sectors as hugo sites')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nboughton/swnt/releases/download/v${pkgver}/${pkgname}.tar.gz")
-sha1sums=('d4c7564783bce5725f42f40f8ca8191e6a113610')
-
-#build() {
-#  cd "$srcdir/$pkgname-$pkgver"
-#  go build -v -o swnt
-#}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nboughton/myzt/releases/download/v${pkgver}/${pkgname}.tar.gz")
+sha1sums=('183361d4533de9446d2f1863c6b5ee52865f671a')
 
 package() {
   cd "$srcdir/build/"

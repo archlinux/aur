@@ -1,13 +1,12 @@
-pkgbase = swnt
-	pkgdesc = Command line GM tools for Stars Without Number
-	pkgver = 0.8.1
+pkgbase = myzt
+	pkgdesc = Command line GM tools for Mutant: Year Zero
+	pkgver = 0.0.2
 	pkgrel = 1
-	url = https://github.com/nboughton/swnt
+	url = https://github.com/nboughton/myzt
 	arch = x86_64
 	license = MIT
-	optdepends = hugo: export sectors as hugo sites
-	source = swnt-0.8.1.tar.gz::https://github.com/nboughton/swnt/releases/download/v0.8.1/swnt.tar.gz
-	sha1sums = d4c7564783bce5725f42f40f8ca8191e6a113610
+	source = myzt-0.0.2.tar.gz::https://github.com/nboughton/myzt/releases/download/v0.0.2/myzt.tar.gz
+	sha1sums = 183361d4533de9446d2f1863c6b5ee52865f671a
 
-pkgname = swnt
+pkgname = myzt
 
