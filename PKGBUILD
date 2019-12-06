@@ -1,12 +1,12 @@
 # Maintainer:  Malstrond <malstrond@gmail.com>
-# Contributor: Jose Riha <jose1711 gmail com>
+# Contributor: Jose Riha <jose1711@gmail.com>
 # Contributor: Bazon <bazonbloch@arcor.de> 
 # Contributor: Christian Bühler <christian@cbuehler.de>
 # Contributor: Zsolt Udvari <udvzsolt@gmail.com>
 
 pkgname=activdriver
-pkgver=5.18.12
-pkgrel=1
+pkgver=5.18.18
+pkgrel=0
 pkgdesc="Drivers for Promethean hardware"
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activdriver"
@@ -15,11 +15,11 @@ makedepends=('linux-headers>=5.0.1.arch1-1')
 optdepends=('activinspire: Prometheans presentation software'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
 install=$pkgname.install
-source_x86_64=("http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-0~Ubuntu~1804_amd64.deb"
-               "activdriver.install")
-md5sums_x86_64=('d09c1be7e554f6682b1ad574ceb81ae8'
-                '8a8a6ddd6741a80a5839593ed385cd9a')
-                
+source=("http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/$pkgname/${pkgname}_$pkgver-0~Ubuntu~1804_amd64.deb"
+        "activdriver.install")
+md5sums=('cad12d9ea55b6df0344375a311e75659'
+         '8a8a6ddd6741a80a5839593ed385cd9a')
+
 prepare() {
   # Extract the source
   bsdtar -xf data.tar.xz
@@ -48,7 +48,7 @@ build() {
   echo "Attention!"
   echo "This build will fail if run in a directory with space(s) in its path due to an error in the upstream makefile."
   echo " "
-  make -C /lib/modules/$(uname -r)/build SUBDIRS="$srcdir"/usr/src/promethean/kernel modules
+  make -C /lib/modules/$(uname -r)/build M="$srcdir"/usr/src/promethean/kernel modules
   BUILD=release make -C usr/src/promethean/activlc
 }
 

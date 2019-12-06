@@ -1,7 +1,7 @@
 pkgbase = activdriver
 	pkgdesc = Drivers for Promethean hardware
-	pkgver = 5.18.12
-	pkgrel = 1
+	pkgver = 5.18.18
+	pkgrel = 0
 	url = https://support.prometheanworld.com/product/activdriver
 	install = activdriver.install
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = activdriver
 	makedepends = linux-headers>=5.0.1.arch1-1
 	optdepends = activinspire: Prometheans presentation software
 	optdepends = activtools: Tools for Promethean hardware, e.g. calibration or systray monitor
-	source_x86_64 = http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/activdriver/activdriver_5.18.12-0~Ubuntu~1804_amd64.deb
-	source_x86_64 = activdriver.install
-	md5sums_x86_64 = d09c1be7e554f6682b1ad574ceb81ae8
-	md5sums_x86_64 = 8a8a6ddd6741a80a5839593ed385cd9a
+	source = http://activsoftware.co.uk/linux/repos/driver/ubuntu/pool/oss/a/activdriver/activdriver_5.18.18-0~Ubuntu~1804_amd64.deb
+	source = activdriver.install
+	md5sums = cad12d9ea55b6df0344375a311e75659
+	md5sums = 8a8a6ddd6741a80a5839593ed385cd9a
 
 pkgname = activdriver
 
