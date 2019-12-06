@@ -2,7 +2,7 @@
 pkgname=python-pystache
 _pkgname=pystache
 pkgver=0.5.4
-pkgrel=5
+pkgrel=6
 pkgdesc="The mustache template engine written in python"
 arch=("any")
 url="http://github.com/defunkt/pystache"
@@ -24,7 +24,7 @@ check() {
 	mkdir test_dir
 	cd "$_pkgname-$pkgver"
 	python setup.py install --root=../test_dir
-	PYTHONPATH=../test_dir/usr/lib/python3.7/site-packages/ \
+	PYTHONPATH=../test_dir/usr/lib/python*/site-packages/ \
 		../test_dir/usr/bin/pystache-test .
 }
 
