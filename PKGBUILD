@@ -1,28 +1,40 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh-staging
-pkgver=0.7.3.RC
-pkgrel=5
-_commit="a6de4caa519983dbbd1fab79f90d53dc1badaf71"
+pkgver=0.7.4.RC
+pkgrel=1
+_commit="fab88cb995b7cdc46815f46a3d4699c34fdefbe3"
 pkgdesc="Graphical interface for applications management ( AppImage, Flatpak, Snap and AUR ) (staging is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
-depends=('python' 'python-pip' 'python-pyqt5' 'python-requests' 'python-colorama')
-optdepends=('flatpak: for Flatpak support' 
-            'snapd: for Snap support' 
-            'pacman: for AUR support' 
-            'wget: for AUR and AppImage support' 
-            'sqlite3: for AppImage support'
-            'git: to downgrade AUR packages'
-            'aria2: faster AppImages and AUR source downloads'
+depends=('python' 'python-pyqt5' 'python-requests' 'python-colorama')
+optdepends=('flatpak: required for Flatpak support' 
+            'snapd: required for Snap support' 
+            'sqlite3: required for AppImage support'
+            'wget: required for AppImage and AUR support'
+            'pacman: required for AUR support'             
+            'binutils: required for AUR support'
+            'git: to allow AUR packages downgrading'            
+            'autoconf: may be required to compile some AUR packages'
+            'automake: may be required to compile some AUR packages'
+            'bison: may be required to compile some AUR packages'
+            'fakeroot: may be required to compile some AUR packages'
+            'flex: may be required to compile some AUR packages'
+            'gcc: may be required to compile some AUR packages'
+            'm4: may be required to compile some AUR packages'
+            'lib32-fakeroot: may be required to compile some AUR packages'
+            'make: may be required to compile some AUR packages'
+            'patch: may be required to compile some AUR packages'
+            'pkgconf: may be required to compile some AUR packages'            
             'ccache: can improve AUR packages compilation speed' 
+            'aria2: faster AppImages and AUR source downloads'
             'breeze: for KDE Plasma main theme be available')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('d784f44c1d7885f43ca020e550e0cc0ee699383d163c90b458cc285b32a7c49e1e90f9dbff7058ee398acf8b2d3ff6108e2926c628b22b172bdb80955e423a0d')
+sha512sums=('6c074542de156d33fe59cb28c3fcd51993c6b49910708929c7c20fec0bb1614cfcfa4c08cecddf3d0100289a43d2377141f630f7100825904a9fb58dfebd7d28')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
