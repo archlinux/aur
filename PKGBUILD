@@ -2,7 +2,7 @@
 # Contributor: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
 _pkgbase=v4l2loopback
 pkgname=v4l2loopback-dkms
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="v4l2-loopback device"
 url="https://github.com/umlaeute/v4l2loopback"
@@ -12,9 +12,7 @@ depends=('dkms')
 makedepends=('help2man' 'linux-headers')
 conflicts=("${_pkgbase}")
 source=("https://github.com/umlaeute/v4l2loopback/archive/v$pkgver.tar.gz")
-sha256sums=(
-'6d2c27a69d982bf39d7330b92f084fd0388beef486879320ccf263e4716cd549'
-)
+sha256sums=('3f6bb14b80865ec8df557c26fd2c5ba91d726580773a75a62aa2959864ef70ba')
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
