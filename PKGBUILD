@@ -3,7 +3,7 @@
 
 pkgname=openmodelica-git
 pkgver=1.16.0.dev.r66.gd7cc1e91f
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -55,4 +55,6 @@ package() {
     install -D -m644 "OMShell/OMShell/OMShellGUI/Resources/omshell.ico" "${pkgdir}/usr/share/openmodelica/icons/omshell.ico"
     install -D -m644 "OMPlot/OMPlot/OMPlotGUI/Resources/icons/omplot.ico" "${pkgdir}/usr/share/openmodelica/icons/omplot.ico"
     install -D -m644 "OMCompiler/COPYING" "${pkgdir}/usr/share/licenses/openmodelica/LICENSE"
+	cd OMOptim
+	make install DESTDIR=${pkgdir}
 }
