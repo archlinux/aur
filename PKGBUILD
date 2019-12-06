@@ -2,7 +2,7 @@
 
 pkgname=zelda-nsq
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="'Zelda: Navi's Quest is a fan-made Zelda Game (english version)"
 url="http://www.zeldaroth.fr/"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ prepare() {
   # use user's $HOME for saves and load data from /usr/share/zelda-nsq
   patch -Np0 < $pkgname-datafolders.patch
 
-  # add our $CFLAGS
+  # set our $CFLAGS
   cd ZeldaNSQ_US-src-linux
-  sed 's|CFLAGS =|CFLAGS +=|' -i makefile
+  sed 's|CFLAGS =.*|CFLAGS += -I/usr/include/SDL|' -i makefile
 
   # create an icon
   convert data/images/title/titre.png -thumbnail '48x48' -background transparent \
