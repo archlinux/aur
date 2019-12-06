@@ -1,6 +1,6 @@
 pkgbase = mystiq
 	pkgdesc = Qt5/C++ FFmpeg Media Converter
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 0
 	url = https://github.com/llamaret/mystiq/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = mystiq
 	optdepends = sox: audio speed adjusting support
 	optdepends = libnotify: display desktop notifications
 	optdepends = mplayer: video cutting preview
-	source = https://github.com/llamaret/mystiq/archive/v0.3.1.tar.gz
-	sha256sums = 4d8d3cecab9a28ea1f5a541423764e1f1dda6aa78a5cb70046f164536abe88f8
+	source = https://github.com/llamaret/mystiq/archive/v0.3.2.tar.gz
+	sha256sums = 8883a2d6f448e7426fdd592c2d0ee8f64c7d778b1b1c203c83be6873c4d7b86b
 
 pkgname = mystiq
 
