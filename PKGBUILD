@@ -4,7 +4,7 @@ _name=rtl88x2ce
 pkgver=5.7.3_35403
 _allver="${pkgver}_COEX20190531-0e0e.20191028"
 _dver="${pkgver}.20191028_COEX20190531-0e0e"
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtek RTL88x2CE Driver (DKMS)"
 arch=('x86_64' 'i686')
 url="https://github.com/alanfox2000/realtek-linux/blob/master/RTL8822CE"
@@ -24,6 +24,19 @@ sha1sums=('a798b10d4f2c962c246f2c1bc695314e2b15e7b3'
 prepare() {
 	cd "$srcdir/RTL8822CE_WiFi_linux_v$_allver/driver"
 	tar zxf "rtl88x2CE_WiFi_linux_v$_dver.tar.gz"
+	cd "$srcdir/RTL8822CE_WiFi_linux_v$_allver/driver/rtl88x2CE_WiFi_linux_v$_dver"
+
+	# Enable WOWLAN
+	sed -i 's/^CONFIG_WOWLAN/CONFIG_WOWLAN = y/' Makefile
+
+	# Enable wifi monitor
+	sed -i 's/^CONFIG_WIFI_MONITOR/CONFIG_WIFI_MONITOR = y/' Makefile
+
+	# Enable WAPI
+	sed -i 's/^CONFIG_WAPI_SUPPORT/CONFIG_WAPI_SUPPORT = y/' Makefile
+
+	# Disable debug
+	sed -i 's/^CONFIG_RTW_DEBUG/CONFIG_RTW_DEBUG = n/' Makefile
 }
 
 package() {
