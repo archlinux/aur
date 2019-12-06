@@ -1,7 +1,7 @@
 pkgbase = zelda-olb
 	pkgdesc = 'Zelda: Oni Link Begins' is a fan-made Zelda Game (english version)
 	pkgver = 3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zeldaroth.fr/
 	arch = i686
 	arch = x86_64
