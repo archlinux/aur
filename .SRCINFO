@@ -1,14 +1,14 @@
 pkgbase = vtk-raytracing-git
 	pkgdesc = A software system for 3D computer graphics, image processing, and visualization
 	pkgver = 8.2.0.3790.g0c788fab33
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vtk.org
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = git
 	depends = ospray
-	depends = oidn
+	depends = openimagedenoise
 	depends = libxt
 	depends = double-conversion
 	depends = glew

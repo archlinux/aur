@@ -2,12 +2,12 @@
 
 pkgname=vtk-raytracing-git
 pkgver=8.2.0.3790.g0c788fab33
-pkgrel=1
+pkgrel=2
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization'
 arch=('x86_64')
 url="http://vtk.org"
 license=('BSD')
-depends=('ospray' 'oidn' 'libxt' 'double-conversion' 'glew' 'hdf5' 'proj')
+depends=('ospray' 'openimagedenoise' 'libxt' 'double-conversion' 'glew' 'hdf5' 'proj')
 makedepends=('cmake' 'git')
 provides=('vtk')
 conflicts=('vtk')
