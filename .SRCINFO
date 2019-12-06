@@ -14,7 +14,7 @@ pkgbase = rtl88x2ce-dkms
 	source = dkms.conf
 	source = rtw88_blacklist.conf
 	sha1sums = a798b10d4f2c962c246f2c1bc695314e2b15e7b3
-	sha1sums = 2e10c6cfc44d93d95c231c78ed2b05c463649ed5
+	sha1sums = 7aa512c830c044506581158cca931da411017ad0
 	sha1sums = 18ecc64076501d396a2fabf4f1f31d3d1945b874
 
 pkgname = rtl88x2ce-dkms

@@ -18,7 +18,7 @@ source=(
 	rtw88_blacklist.conf
 )
 sha1sums=('a798b10d4f2c962c246f2c1bc695314e2b15e7b3'
-          '2e10c6cfc44d93d95c231c78ed2b05c463649ed5'
+          '7aa512c830c044506581158cca931da411017ad0'
           '18ecc64076501d396a2fabf4f1f31d3d1945b874')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 	tar zxf "rtl88x2CE_WiFi_linux_v$_dver.tar.gz"
 	cd "$srcdir/RTL8822CE_WiFi_linux_v$_allver/driver/rtl88x2CE_WiFi_linux_v$_dver"
 
-	# Enable soft ap
+	# Enable SoftAP
 	sed -i '/^\/\*#define CONFIG_IOCTL_CFG80211/c\#define CONFIG_IOCTL_CFG80211' include/autoconf.h
 	sed -i 's|\/\*\#define RTW_USE_CFG80211_STA_EVENT\*\/|\#define RTW_USE_CFG80211_STA_EVENT|' include/autoconf.h
 
