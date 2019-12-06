@@ -1,6 +1,6 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=restclient-cpp
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A simple REST client for C++"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('curl')
 options=()
 source=("https://github.com/mrtazz/$pkgname/archive/$pkgver.tar.gz")
-sha384sums=('fe32848366110d5247bad1a7450817ed26dbaabc0b2b7d5bd3407c3a68efb5ea319f2edc1c0cda4fed4574d9bcb55b6b')
+sha384sums=('1e2ade997e524c6867fafbb74626b26b778a0856743aedaf32fbd48e25f5a335c53555eb8af96e6dbd87b6447df1c04d')
 
 build() {
     cd "$pkgname-$pkgver"
