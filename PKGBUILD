@@ -1,10 +1,11 @@
-# Maintainer: gilbus <aur(AT)tinkershell.eu>
+# Maintainer:Francois Menning <f.menning@pm.me>
+# Contributor: gilbus <aur(AT)tinkershell.eu>
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=thermald
 _pkgname=thermal_daemon
-pkgver=1.9
-pkgrel=2
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="The Linux Thermal Daemon program from 01.org"
 arch=('x86_64')
 url="https://01.org/linux-thermal-daemon"
@@ -13,7 +14,7 @@ makedepends=('systemd' 'python')
 depends=('dbus-glib' 'libxml2')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/intel/${_pkgname}/archive/v${pkgver}.tar.gz"
         'modules-load-thermald.conf')
-sha256sums=('d8f40bce80fb8303a0c103d2531d0e4cc1caad0a8d027cd26a1b5b10cdaae4e3'
+sha256sums=('aaf5ffdc12344eef2417b41b433094bb30e4ebf321f0140b090f97bfcf24ea1f'
             '0155e1eb459306d251a5a049ffc6c11e144fa8caa75901ac5fa20bd52e05d515')
 
 build() {
