@@ -26,6 +26,10 @@ prepare() {
 	tar zxf "rtl88x2CE_WiFi_linux_v$_dver.tar.gz"
 	cd "$srcdir/RTL8822CE_WiFi_linux_v$_allver/driver/rtl88x2CE_WiFi_linux_v$_dver"
 
+	# Enable soft ap
+	sed -i '/^\/\*#define CONFIG_IOCTL_CFG80211/c\#define CONFIG_IOCTL_CFG80211' include/autoconf.h
+	sed -i 's|\/\*\#define RTW_USE_CFG80211_STA_EVENT\*\/|\#define RTW_USE_CFG80211_STA_EVENT|' include/autoconf.h
+
 	# Enable WOWLAN
 	sed -i '/^CONFIG_WOWLAN/c\CONFIG_WOWLAN = y' Makefile
 
