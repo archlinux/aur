@@ -1,6 +1,6 @@
 pkgbase = spin-git
 	pkgdesc = Explicit state logic model checking tool
-	pkgver = 6.5.0.r6.gcbb780d
+	pkgver = 6.5.1.r2.gab88911
 	pkgrel = 1
 	url = https://spinroot.com/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = spin-git
 	optdepends = ispin: GUI for Spin
 	provides = spin
 	conflicts = spin
-	source = spin-git::git+https://github.com/nimble-code/Spin.git
+	source = spin-git::git+https://github.com/kyechou/Spin.git
 	sha512sums = SKIP
 
 pkgname = spin-git

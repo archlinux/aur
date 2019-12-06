@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=spin-git
-pkgver=6.5.0.r6.gcbb780d
+pkgver=6.5.1.r2.gab88911
 pkgrel=1
 pkgdesc='Explicit state logic model checking tool'
 depends=('glibc')
@@ -14,7 +14,7 @@ url='https://spinroot.com/'
 license=('custom:BSD3')
 provides=('spin')
 conflicts=('spin')
-source=("$pkgname"::'git+https://github.com/nimble-code/Spin.git')
+source=("$pkgname"::'git+https://github.com/kyechou/Spin.git')
 sha512sums=('SKIP')
 
 pkgver() {
