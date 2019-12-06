@@ -1,6 +1,6 @@
 pkgname="figma-linux"
 pkgver="0.6.1"
-pkgrel="13"
+pkgrel="14"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64")
 url="https://github.com/Figma-Linux/figma-linux"
@@ -26,11 +26,11 @@ package() {
   cd "${srcdir}"
 
   install -D "${srcdir}"/figma.desktop "${pkgdir}"/usr/share/applications/figma.desktop
-  install -D "${srcdir}"/256x256.png "${pkgdir}"/usr/share/pixmaps/figma.png
+  install -D "${srcdir}"/256x256.png "${pkgdir}"/usr/share/pixmaps/figma-linux.png
 
   for size in 48 64 128 256; do
     install -D "${srcdir}/${size}x${size}.png" \
-               "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/figma.png"
+               "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/figma-linux.png"
   done
 
   mkdir -p "${pkgdir}/opt/${pkgname}"
