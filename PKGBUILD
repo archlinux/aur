@@ -134,10 +134,10 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  # march cannot be tuned, otherwise clang segfaults
-  CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-  CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-  LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
+  # -fno-plt with cross-LTO causes obscure LLVM errors
+  # LLVM ERROR: Function Import: link error
+  #CFLAGS="${CFLAGS/-fno-plt/}"
+  #CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
