@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.1.arch1
+pkgver=5.4.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -98,8 +98,9 @@ source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    0005-glitched-pds.patch
+    0005-glitched-ondemand-pds.patch
     0005-v5.4_undead-pds099o.patch
+    0005-glitched-pds.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -109,8 +110,9 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             '5a2a28a3cbcb0424060798b64b59a388f9a0831d882e260e5c28739e74f1a6df1906e9bb82f85cae2fae1dd62c86468111383097824aae4868c7c968a453248a'
-            'a5ff06602840327e10d623c195b7e1676f967e5aa04de04e9435766fab2b596a44da21f808bfdd632dcf64800456337b7b4c03de2a268980238a310b3644ceae'
-            'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377')
+            '02f856f9ca1825ca5180589726b10f8595db2a67931b8ea46f78a9fd93d2b5a52bb7e62be72b9df9cc6e9167ea230f25668c48e33dd87bf5a4924a7ac4b49264'
+            'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377'
+            'af8e0a8f1e9ad587c01a945d50d03ed3fc593036ca20c641353a6496317716120bd5015aea25a9f1aad936b95f69a39e3d60db5b66499790d1dc9358ce81da28')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -130,7 +132,7 @@ prepare() {
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
     msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.3 by TkG"
-    for MyPatch in 0005-v5.4_undead-pds099o.patch 0005-glitched-pds.patch
+    for MyPatch in 0005-glitched-ondemand-pds.patch 0005-v5.4_undead-pds099o.patch 0005-glitched-pds.patch
     do
         patch -Np1 -i "$srcdir/$MyPatch"
     done
