@@ -1,7 +1,7 @@
 pkgbase = zelda-3t
 	pkgdesc = 'Zelda: Time to Triumph' is a fan-made Zelda Game (english version)
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zeldaroth.fr/
 	arch = i686
 	arch = x86_64

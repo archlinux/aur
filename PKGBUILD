@@ -2,7 +2,7 @@
 
 pkgname=zelda-3t
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="'Zelda: Time to Triumph' is a fan-made Zelda Game (english version)"
 url="http://www.zeldaroth.fr/"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ prepare() {
   # use user's $HOME for saves and load data from /usr/share/zelda-3t
   patch -Np0 < $pkgname-datafolders.patch
 
-  # add our $CFLAGS
+  # set our $CFLAGS
   cd Zelda3T_US-src-linux/src
-  sed 's|CFLAGS  =|CFLAGS  +=|' -i Makefile
+  sed 's|CFLAGS  =.*|CFLAGS  += -I/usr/include/SDL|' -i Makefile
 
   # create an icon
   convert data/images/logos/fond.png -thumbnail '48x48' -background transparent \
