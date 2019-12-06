@@ -1,0 +1,14 @@
+pkgbase = macbook-lighter-radeon
+	pkgdesc = Macbook screen/keyboard backlight CLI and auto-adjust on ambient light for Radeon GPUs
+	pkgver = v0.0.2.9.g0050e61
+	pkgrel = 1
+	url = https://github.com/mark-rodgers/macbook-lighter-radeon
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bc
+	source = git+https://github.com/mark-rodgers/macbook-lighter-radeon.git
+	md5sums = SKIP
+
+pkgname = macbook-lighter-radeon
+
