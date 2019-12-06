@@ -1,6 +1,6 @@
 pkgname="figma-linux"
 pkgver="0.6.1"
-pkgrel="15"
+pkgrel="16"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64")
 url="https://github.com/Figma-Linux/figma-linux"
@@ -16,7 +16,7 @@ source=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}
 depends=("unzip")
 noextract=("figma-linux-${pkgver}.zip")
 sha256sums=("2ee8b30221228739a26ccd4a0663fc16274899032203c6533773cddaeb5f389a"
-            "2751b7d32601c695cca42ca8a09b4d0a4317afa36af797b5ede621d045e0570f"
+            "3f87a98dad8c5b76d350d9fa7858f1d5586c1e21c78a675a9e3899ab294add38"
             "72d0c9df5b81a7666a05751a38fe096f629096be73792355f6069024cf7c0412"
             "780219a3792c5c4160829e7a8023e16f78e12c807762d7217a9db90e43a3f777"
             "86f34a8d9ddfdcfad5cc5e170a729cee7bca61102fbe0b10746b7f83b19d45bc"
