@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-pcre
 pkgver=8.43
-pkgrel=2
+pkgrel=3
 pkgdesc="A library that implements Perl 5-style regular expressions (mingw-w64)"
 arch=(any)
 url="http://www.pcre.org/"
@@ -19,8 +19,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
 	cd "$srcdir/pcre-$pkgver"
+  LDFLAGS="-lssp"
   for _arch in ${_architectures}; do
-    unset LDFLAGS
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --enable-unicode-properties \

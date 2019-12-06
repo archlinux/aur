@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-pcre
 	pkgdesc = A library that implements Perl 5-style regular expressions (mingw-w64)
 	pkgver = 8.43
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pcre.org/
 	arch = any
 	license = BSD
