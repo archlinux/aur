@@ -1,31 +1,16 @@
 pkgbase = google-compute-engine
-	pkgver = 20190801
+	pkgdesc = Google Compute Engine guest environment
+	pkgver = 20191121
 	pkgrel = 1
 	url = https://github.com/GoogleCloudPlatform/compute-image-packages
 	arch = any
-	arch = x86_64
 	license = Apache
-	makedepends = curl
-	makedepends = json-c
-	makedepends = pam
-	makedepends = python-boto
-	makedepends = python-distro
-	makedepends = python-setuptools
-	source = google-compute-engine-20190801.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/20190801.tar.gz
-	sha256sums = 495ce6e44034b26cbcf619aeebe2cb83334ee801b2130ba2f20d4468483d3ce8
-
-pkgname = google-compute-engine
-	pkgdesc = Google Compute Engine guest environment
-	arch = any
 	depends = google-compute-engine-oslogin
 	depends = python-boto
 	depends = python-distro
 	depends = python-setuptools
+	source = google-compute-engine-20191121.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/v20191121.tar.gz
+	sha256sums = 3a8fd0fcede35552e7efd091a96d2697e7d149383b5fe54008c68d4f53f69951
 
-pkgname = google-compute-engine-oslogin
-	pkgdesc = Google Compute Engine OS login support
-	arch = x86_64
-	depends = curl
-	depends = json-c
-	depends = pam
+pkgname = google-compute-engine
 

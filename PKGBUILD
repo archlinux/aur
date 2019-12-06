@@ -15,32 +15,23 @@
 # Maintainer: Lorenzo Castelli <lcastelli@google.com>
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
-pkgname=('google-compute-engine' 'google-compute-engine-oslogin')
-pkgver=20190801
+pkgname='google-compute-engine'
+pkgver=20191121
 pkgrel=1
-arch=('any' 'x86_64')
+pkgdesc='Google Compute Engine guest environment'
+arch=('any')
 url='https://github.com/GoogleCloudPlatform/compute-image-packages'
 license=('Apache')
-makedepends=('curl' 'json-c' 'pam' 'python-boto' 'python-distro' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/$pkgver.tar.gz")
-sha256sums=('495ce6e44034b26cbcf619aeebe2cb83334ee801b2130ba2f20d4468483d3ce8')
+depends=('google-compute-engine-oslogin' 'python-boto' 'python-distro' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/v$pkgver.tar.gz")
+sha256sums=('3a8fd0fcede35552e7efd091a96d2697e7d149383b5fe54008c68d4f53f69951')
 
 build() {
-	cd "compute-image-packages-$pkgver/packages"
-	pushd python-google-compute-engine
+	cd "compute-image-packages-$pkgver/packages/python-google-compute-engine"
 	python setup.py build
-	popd
-
-	pushd google-compute-engine-oslogin
-	make
-	popd
 }
 
-package_google-compute-engine() {
-	pkgdesc='Google Compute Engine guest environment'
-	arch=('any')
-	depends=('google-compute-engine-oslogin' 'python-boto' 'python-distro' 'python-setuptools')
-
+package() {
 	cd "compute-image-packages-$pkgver/packages"
 	pushd python-google-compute-engine
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
@@ -54,13 +45,4 @@ package_google-compute-engine() {
 	install -m755 -Dt "$pkgdir/usr/bin" usr/bin/*
 	ln -s /usr/bin/google_set_hostname "$pkgdir/etc/dhclient-exit-hooks"
 	popd
-}
-
-package_google-compute-engine-oslogin() {
-	pkgdesc='Google Compute Engine OS login support'
-	arch=('x86_64')
-	depends=('curl' 'json-c' 'pam')
-
-	cd "compute-image-packages-$pkgver"/packages/google-compute-engine-oslogin
-	make DESTDIR="$pkgdir/" NSS_INSTALL_PATH=/usr/lib PAM_INSTALL_PATH=/usr/lib/security install
 }
