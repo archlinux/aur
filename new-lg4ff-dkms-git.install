@@ -1,3 +1,18 @@
+# https://wiki.archlinux.org/index.php/Dynamic_Kernel_Module_Support
+# https://git.archlinux.org/pacman.git/plain/proto/proto.install
+
+post_install() {
+  dkms install -m new-lg4ff -v ${1%%-*}
+}
+
+pre_upgrade() {
+  pre_remove ${2%%-*}
+}
+
+post_upgrade() {
+  post_install ${1%%-*}
+}
+
 pre_remove() {
-	dkms remove new/lg4ff --all
+  dkms remove -m new-lg4ff -v ${1%%-*} --all
 }
