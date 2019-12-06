@@ -1,7 +1,7 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=libreoffice-slim-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A slimmed down Git version of LibreOffice"
 arch=('x86_64' 'i386')
 url="https://www.libreoffice.org/community/developers/"
@@ -33,13 +33,10 @@ prepare() {
   build_date=$(date +%Y%m%d)
   ./autogen.sh\
     --disable-odk\
-    --enable-epm\
     --with-package-format=archive\
-    --disable-gtk3\
-    --disable-systray\
     --disable-cups\
     --enable-release-build\
-    --enable-python=internal\
+    --enable-python=fully-internal\
     --with-galleries=no\
     --with-java=no\
     --without-fonts\
