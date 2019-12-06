@@ -1,7 +1,7 @@
 pkgbase = rtl88x2ce-dkms
 	pkgdesc = Realtek RTL88x2CE Driver (DKMS)
 	pkgver = 5.7.3_35403
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alanfox2000/realtek-linux/blob/master/RTL8822CE
 	arch = x86_64
 	arch = i686
