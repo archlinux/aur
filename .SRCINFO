@@ -6,10 +6,6 @@ pkgbase = otf-new-york
 	arch = any
 	license = custom
 	makedepends = p7zip
-	makedepends = dmg2img
-	makedepends = cpio
-	makedepends = xar
-	makedepends = gzip
 	source = https://developer.apple.com/design/downloads/NY-Font.dmg
 	md5sums = 59e9c38d6e75e97ef3558b99f0928b29
 
