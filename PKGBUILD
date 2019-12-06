@@ -5,18 +5,18 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.23.0.63655.g7dcce72eb7
+pkgver=1.23.99.64536.g19f6be78c4
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
-depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi'
+depends=('avahi' 'curl' 'fontconfig' 'fribidi'
          'gst-plugins-base-libs' 'luajit' 'libexif' 'libgl' 'libinput'
          'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler'
-         'shared-mime-info' 'mailcap' 'ttf-font' 'scim' 'libibus' 'glib2'
+         'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
 makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot' 'python2' 'procps-ng')
@@ -70,7 +70,6 @@ build() {
     -Dbindings= \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
-    -Decore-imf-loaders-disabler= \
     . build
 
   ninja -j $J -C build
