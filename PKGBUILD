@@ -1,13 +1,13 @@
 # Maintainer: Oscar Rainford <oscar@fourbytes.me>
 pkgname=vpncloud
-pkgver=0.6.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
 url=""
 license=('GPL')
 groups=()
-depends=('libsystemd' 'start-stop-daemon')
+depends=('libsystemd')
 makedepends=('rust' 'cargo' 'git')
 checkdepends=()
 optdepends=()
@@ -18,19 +18,13 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+https://github.com/dswd/vpncloud.rs.git#tag=v0.6.0'
-        'git+https://github.com/jedisct1/libsodium.git#tag=1.0.10')
+source=('git+https://github.com/dswd/vpncloud.rs.git#tag=v1.1.0')
 noextract=()
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
 
 prepare() {
         cd vpncloud.rs
-
-        # Pull submodules
-        git submodule init
-        git config submodule.libsodium.url $srcdir/libsodium
-        git submodule update
 }
 
 build() {
@@ -44,9 +38,9 @@ package() {
         cd vpncloud.rs
         
         install -d $pkgdir/etc/vpncloud
-        install -m600 deb/vpncloud/example.net $pkgdir/etc/vpncloud/example.net
+        install -m600 assets/example.net.disabled $pkgdir/etc/vpncloud/example.net.disabled
 
-        install -D -m644 deb/vpncloud/debian/vpncloud.service $pkgdir/usr/lib/systemd/system/vpncloud.service
-        install -D -m755 deb/vpncloud/vpncloud-control $pkgdir/usr/bin/vpncloud-control
+	install -D -m644 assets/vpncloud.1 $pkgdir/usr/share/man/man1/vpncloud.1
+        install -D -m644 assets/vpncloud@.service $pkgdir/usr/lib/systemd/system/vpncloud@.service
         install -D -m755 target/release/vpncloud $pkgdir/usr/bin/vpncloud
 }
