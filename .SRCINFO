@@ -1,6 +1,6 @@
 pkgbase = goss-bin
 	pkgdesc = Quick and Easy server testing/validation
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://goss.rocks
 	arch = i686
@@ -9,16 +9,16 @@ pkgbase = goss-bin
 	license = Apache
 	provides = goss
 	provides = dgoss
-	source = https://github.com/aelsabbahy/goss/releases/download/v0.3.7/dgoss
-	source = https://raw.githubusercontent.com/aelsabbahy/goss/v0.3.7/LICENSE
-	sha1sums = c8846d680660b2e108c1aa4b575dca5a7bdeb65b
+	source = https://github.com/aelsabbahy/goss/releases/download/v0.3.8/dgoss
+	source = https://raw.githubusercontent.com/aelsabbahy/goss/v0.3.8/LICENSE
+	sha1sums = 5d564e9639eadf1aafbfd58255bd873371e2468e
 	sha1sums = 669a1e53b9dd9df3474300d3d959bb85bad75945
-	source_i686 = https://github.com/aelsabbahy/goss/releases/download/v0.3.7/goss-linux-386
-	sha1sums_i686 = 8d47d1d2a3900c866d8b7a2de016f353fd1e1ec9
-	source_x86_64 = https://github.com/aelsabbahy/goss/releases/download/v0.3.7/goss-linux-amd64
-	sha1sums_x86_64 = aa430743d916413ac1b84919df968f57dd7a9413
-	source_arm = https://github.com/aelsabbahy/goss/releases/download/v0.3.7/goss-linux-arm
-	sha1sums_arm = f3ab80d88f1cf10d95fef759d7617c8bbc0726f0
+	source_i686 = https://github.com/aelsabbahy/goss/releases/download/v0.3.8/goss-linux-386
+	sha1sums_i686 = 3403b6be3ab6b991ee7dc0277ade6ed8b87bcee5
+	source_x86_64 = https://github.com/aelsabbahy/goss/releases/download/v0.3.8/goss-linux-amd64
+	sha1sums_x86_64 = dba8dd62559fb9d95f3e4c42ba40275166f35e9c
+	source_arm = https://github.com/aelsabbahy/goss/releases/download/v0.3.8/goss-linux-arm
+	sha1sums_arm = e7222e7ec2a1cec005f18a3889fc11239f840209
 
 pkgname = goss-bin
 
