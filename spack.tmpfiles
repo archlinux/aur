@@ -4,3 +4,4 @@ d /var/lib/spack/cache 0755 spack spack
 d /opt/spack/var/spack/junit-report 0755 spack spack
 d /opt/spack/var/spack/stage 0755 spack spack
 d /opt/spack/var/spack/repos 0755 spack spack
+d /opt/spack/var/spack/environments 0755 spack spack

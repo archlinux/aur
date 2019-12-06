@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=spack
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
@@ -16,9 +16,9 @@ source=(https://github.com/spack/spack/archive/v${pkgver}.tar.gz
         spack.sh
         spack.csh
         spack.binsh)
-sha256sums=('2091c77b25a48f06ad5cd3b75ddaf75cfb59a7060125cef708e32d5ad8c62c11'
+sha256sums=('30c1a3eb42429344107acdea132be34ed7529489a8dafac9640fbcc86bee0ce1'
             'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
-            '0eafdac44fc1379a98ee43e0def665cecded2b6182b0a2ae1754247155244fa8'
+            '1d0a241779d3d165ddf7c1350091eb96c6dec7cf1fa6141485585f4b72c968ea'
             'c9d79463721f5006ae6129e175ca8038bb13b9beb9b584a890662110fcf0579a'
             '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
             '163202be92788f98283d1b0b7c365d736a1675b16ef91f27d2a58617f17030f7'
