@@ -1,16 +1,18 @@
-# Maintainer: Alexander Blinne <alexander@blinne.net>
+# Maintainer: Laszlo Papp <lpapp@kde.org>
+# Contributor: Alexander Blinne <alexander@blinne.net>
 
 _pkgname=8188eu
 pkgname="${_pkgname}-dkms-git"
 _pkgver=1.0
-pkgver=1.0.a0619a0
-pkgrel=1
+pkgver=1.0.ab19e22
+pkgrel=2
 pkgdesc='Standalone driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
 url="https://github.com/lwfinger/rtl8188eu"
 license=('GPL')
 depends=('dkms')
-source=("${_pkgname}::git+${url}"
+_branch="v5.2.2.4"
+source=("${_pkgname}::git+${url}#branch=${_branch}"
         blacklist-r8188eu.conf)
 sha256sums=('SKIP'
             'edaeafe28410017fabb742d6ccdf060a945150fb56e41084adb7b9dd66739e2b')
