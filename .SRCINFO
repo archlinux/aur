@@ -9,6 +9,7 @@ pkgbase = mfgtools
 	depends = bzip2
 	depends = zlib
 	depends = libusb
+	depends = openssl
 	source = git+https://github.com/NXPmicro/mfgtools#tag=uuu_1.3.102
 	sha256sums = SKIP
 
