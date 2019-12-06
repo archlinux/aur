@@ -1,4 +1,111 @@
 
+uuu_1.3.102 / 2019-10-28
+========================
+
+  * fix CI build issue
+  * fix miss openssl include file
+  * http request require \r\n
+  * Use ubuntu 16.04 as prebuild image
+  * Add zip64 support
+
+uuu_1.3.96 / 2019-10-18
+=======================
+
+  * support static link openssl
+
+uuu_1.3.93 / 2019-10-11
+=======================
+
+  * Fix wait for ever at decompress bz2 sometime when download from http
+  * show http download progress for sync load
+  * Fix https download failure at finial transfer
+  * linux support basic https
+  * Fix crash when bz2 file is not exist at http link
+  * Enable https support for windows platform
+  * use get_file_buffer for zip file
+  * fix #136: fix decompress md5 file fail in zip
+  * libuuu: fix compiler warnings
+  * Make it possible to execute scripts from file with arguments with -b option.
+
+uuu_1.3.82 / 2019-09-19
+=======================
+
+  * fixed #123: implement timeout for wait known usb device apprear
+  * auto detect sdp interrupt out ep number
+  * add -lsusb to list known connected devices
+  * improved error handle when http download failure
+
+uuu_1.3.74 / 2019-09-04
+=======================
+
+  * improve http download process message
+
+uuu_1.3.72 / 2019-09-03
+=======================
+
+  * Fix linux build error
+  * Show download process
+  * auto added /* for bz2 file for buildin script
+  * http download and bz2 decompress at the same time
+  * Add basic http download support
+  * README: add cmake in list of required packages on Linux
+
+uuu_1.3.63 / 2019-08-27
+=======================
+
+  * treat EPIPE error as normal
+  * Fix FBK: ucp t:- filename
+
+uuu_1.3.61 / 2019-08-26
+=======================
+
+  * fix missed last chuck data of android sparse image
+
+uuu_1.3.59 / 2019-08-21
+=======================
+
+  * show uncompress tar.gz progress
+  * Added tar.gz format support
+  * added support for tar.bz2, as well as fixed the previous decompression issue with pbzip2
+  * delete 0001-static-link-c-lirary.patch
+  * Fix build error because libusb change output dir
+  * Remove msvc/libusb_static_2017.vcxproj
+  * update libusb v1.0.23-rc2
+  * set known file size flag after scan whole bz2 file
+  * Check memory resize return value
+  * added very simple tar support
+
+uuu_1.3.34 / 2019-07-25
+=======================
+
+  * use bit mask to decide loaded and known buffer size
+  * Change all to use shared_ptr for FileBuffer
+  * Fix Zip file download fail because missed wakeup
+  * build in appveyor visual studio 2019 image
+  * Change FileBuffer memory management
+  * fix linux build problem
+  * fix no display position when async decompress
+  * Added timestamp for each notification
+  * fix data currupt after decompress
+  * basic implement download and decompress at the same time
+  * Added coverity support
+  * fix a error for building  solution in vs2019
+  * add git clean before build uuu-static-link
+  * Remove qspi flash header check because old uboot have not built in setexpr
+  * use qsphdr dump check if qsphdr cmd exist
+  * Increase timeout for qspihdr command
+  * Added --skipfhdr to skip flex flash header
+  * fix windows build failure
+  * added nand build script
+  * Add dry run option to check if script is correct
+  * Update CMakeLists.txt
+  * fix appveryor build error
+  * Added DEBIAN_FRONTEND=noninteractive
+  * Add -D 'STATIC for appveryor
+  * allow true dynamic linking for Linux build
+  * Update README.md
+  * Fix issue when download uboot > 2MB by SPL SDP protocal.
+
 uuu_1.2.135 / 2019-05-28
 ========================
 
