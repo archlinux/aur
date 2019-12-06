@@ -1,7 +1,7 @@
 pkgbase = upmpdcli
 	pkgdesc = A UPnP Media Renderer front-end for the Music Player Daemon (MPD)
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lesbonscomptes.com/upmpdcli/
 	install = upmpdcli.install
 	arch = i686
@@ -19,7 +19,6 @@ pkgbase = upmpdcli
 	makedepends = recoll
 	makedepends = python-bottle
 	makedepends = python-mutagen
-	makedepends = mutagen
 	makedepends = aspell-en
 	makedepends = id3lib
 	makedepends = python-waitress
