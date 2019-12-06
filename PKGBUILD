@@ -1,4 +1,5 @@
 # Maintainer: Winston Astrachan <winston dot astrachan at gmail dot com>
+# Maintainer: Henry Pham <huy at tableplus dot com>
 
 pkgname=tableplus
 pkgver=0.1_24
