@@ -1,8 +1,8 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 pkgname=python-bundlewrap
 _pkgname=bundlewrap
-pkgver=3.6.1
-pkgrel=3
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Agent-less configuration management"
 arch=('any')
 url='https://bundlewrap.org/'
@@ -16,7 +16,7 @@ depends=('python-cryptography'
 	 'python-six')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('8c33bbf69750f75a9240c8e9d6bbfb9b6db8c3c62f8527481df0d8bf8c6bbadb')
+sha256sums=('3e6557dcb18f248dbf3384d73e75eeb1673601cd26a1797df3c570bff0197c81')
 
 build(){
   cd "$srcdir/bundlewrap-$pkgver"

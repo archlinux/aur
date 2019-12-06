@@ -1,6 +1,7 @@
 - Add tests:
   - Use github sources that have tests.
     use git commits as they are signed
+    and/or as developers to sign releases
   - add a function to run the checks:
     check(){
       [...]
