@@ -18,14 +18,15 @@ build() {
 }
 
 check() {
+	cd "$_pkgname-$pkgver"
 	# This package uses 2to3 to convert itself to Python 3 on the fly
 	# So we need to jump through some hoops here
-	rm -rf test_dir
-	mkdir test_dir
-	cd "$_pkgname-$pkgver"
-	python setup.py install --root=../test_dir
-	PYTHONPATH=../test_dir/usr/lib/python*/site-packages/ \
-		../test_dir/usr/bin/pystache-test .
+	test_dir="../test_dir"
+	rm -rf "$test_dir"
+	mkdir "$test_dir"
+	python setup.py install --root="$test_dir"
+	PYTHONPATH="$test_dir"/usr/lib/python*/site-packages/ \
+		"$test_dir"/usr/bin/pystache-test .
 }
 
 package() {
