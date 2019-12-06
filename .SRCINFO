@@ -1,14 +1,15 @@
 pkgbase = domterm-git
 	pkgdesc = Terminal emulator capable of display html and images from command output
-	pkgver = 1.0.r334.g404b06a
+	pkgver = 1.0.r496.g4bf07c7
 	pkgrel = 1
 	url = https://github.com/PerBothner/DomTerm
-	arch = any
+	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = vim
 	makedepends = asciidoctor
 	depends = json-c
+	depends = file
 	depends = qt5-webengine
 	depends = qt5-webchannel
 	depends = libwebsockets
