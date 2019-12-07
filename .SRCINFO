@@ -1,7 +1,7 @@
 pkgbase = libfido2
 	pkgdesc = Provides library functionality for FIDO 2.0, including communication with a device over USB
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.yubico.com/libfido2/
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,10 @@ pkgbase = libfido2
 	depends = openssl
 	depends = libcbor
 	depends = hidapi
-	source = git+https://github.com/Yubico/libfido2.git#tag=1.3.0
+	source = https://developers.yubico.com/libfido2/Releases/libfido2-1.3.0.tar.gz
+	source = https://developers.yubico.com/libfido2/Releases/libfido2-1.3.0.tar.gz.sig
+	validpgpkeys = EE90AE0D19774C8386628FAAB428949EF7914718
+	sha256sums = 0b2e3671c4c5d42fd5604a08e45f89f49592b97cf66d7d3bfbc7e6a4d5a0fec7
 	sha256sums = SKIP
 
 pkgname = libfido2
