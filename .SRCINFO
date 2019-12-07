@@ -1,11 +1,10 @@
 pkgbase = dte
-	pkgdesc = A small and easy to use console text editor
+	pkgdesc = A small, configurable console text editor
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://craigbarnes.gitlab.io/dte/
 	arch = x86_64
 	arch = i686
-	arch = armv7l
 	arch = armv7h
 	arch = aarch64
 	license = GPL2
