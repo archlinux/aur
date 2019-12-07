@@ -3,8 +3,8 @@
 pkgbase='offlinemsmtp'
 pkgname=('offlinemsmtp')
 _module='offlinemsmtp'
-pkgver='0.3.4'
-pkgrel=2
+pkgver='0.3.5'
+pkgrel=1
 pkgdesc='msmtp wrapper allowing for offline use'
 url='https://gitlab.com/sumner/offlinemsmtp'
 depends=(
@@ -15,8 +15,8 @@ depends=(
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/source/o/offlinemsmtp/offlinemsmtp-0.3.4.tar.gz')
-sha256sums=('562be15243e8c79924396826a09d2bc59b738b018c69dd38df13c7af6ab140c6')
+source=('https://files.pythonhosted.org/packages/source/o/offlinemsmtp/offlinemsmtp-0.3.5.tar.gz')
+sha256sums=('5f680b8dc418b49a115b1cf2a48515c06575e8c4b46c68300b90cc712994bbc1')
 replaces=('python-offlinemsmtp')
 
 build() {
