@@ -1,0 +1,13 @@
+pkgbase = axosnake-git
+	pkgdesc = a snake game written in rust with quicksilver
+	pkgver = r67.6caf3a1
+	pkgrel = 1
+	url = https://gitlab.com/nycex/axosnake
+	arch = any
+	license = MIT
+	depends = rust
+	source = git+https://gitlab.com/nycex/axosnake
+	sha256sums = SKIP
+
+pkgname = axosnake-git
+
