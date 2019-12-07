@@ -5,9 +5,9 @@ pkgbase = nbxplorer
 	url = https://github.com/dgarage/nbxplorer
 	arch = any
 	license = MIT
-	depends = dotnet-sdk
+	makedepends = dotnet-sdk-bin
+	depends = dotnet-sdk>=3.1.0
 	source = https://github.com/dgarage/nbxplorer/archive/stable.tar.gz
-	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
 	sha256sums = SKIP
 
 pkgname = nbxplorer
