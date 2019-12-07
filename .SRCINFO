@@ -1,6 +1,6 @@
 pkgbase = virtualbox-ext-oracle-5
-	pkgdesc = Oracle VM VirtualBox Extension Pack 5.x (latest)
-	pkgver = 5.x
+	pkgdesc = Oracle VM VirtualBox Extension Pack 5.2.34
+	pkgver = 5.2.34
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-ext-oracle.install
@@ -12,5 +12,5 @@ pkgbase = virtualbox-ext-oracle-5
 	options = !strip
 
 pkgname = virtualbox-ext-oracle-5
-	depends = virtualbox=5.x
+	depends = virtualbox=5.2.34
 
