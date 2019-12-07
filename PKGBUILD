@@ -7,8 +7,8 @@ pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
 _pkgver=9.2.0rc
 pkgver=9.2.0rc
-pkgrel=2
-_commit=d3438153383aea330e43140a2a17f217d2e6f3cc
+pkgrel=3
+_commit=a0c655ab4edaf8f83a13f993c4a6678a55251f38
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -22,7 +22,7 @@ options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
         #"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-sha256sums=('712cf258b72a4bfccf649072dab00b560b06d430b1eb6f279af774f3fe0aec6d')
+sha256sums=('db43c094229688fa20231941838b22ecf6f96375e0f7e3e9e46071630d3ab27b')
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
@@ -49,7 +49,6 @@ package_pamac-common() {
          'appstream-glib' 'archlinux-appstream-data' 'git')
   optdepends=()
   backup=('etc/pamac.conf')
-  provides=("pamac-common=$pkgver-$pkgrel")
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-common-dev')
   install=pamac-common.install
   cd "$srcdir/pamac-v$_pkgver"
