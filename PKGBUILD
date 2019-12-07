@@ -5,9 +5,8 @@ url='https://github.com/bosch-robotics-cr/tracetools'
 
 pkgname='ros-melodic-tracetools'
 pkgver='0.2.1'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('APLv2')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -19,16 +18,9 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=()
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/tracetools/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/bosch-robotics-cr/tracetools-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
-_dir="tracetools-${pkgver}"
+_dir="ros1_tracetools-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bosch-robotics-cr/tracetools/archive/${pkgver}.tar.gz")
-sha256sums=('81a2cbf033a7cb35d98f7d9fd088616a4106ca9c8292b0761cee4ae9c89c7ffe')
+sha256sums=('3a2aa03551d6de84939260bb4e02b528bec53de81f0bebf44cc4f4610470eaff')
 
 build() {
   # Use ROS environment variables
@@ -47,7 +39,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
