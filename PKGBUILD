@@ -2,7 +2,7 @@
 
 pkgname=libfido2
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides library functionality for FIDO 2.0, including communication with a device over USB"
 arch=('x86_64')
 url="https://developers.yubico.com/libfido2/"
