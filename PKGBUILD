@@ -3,7 +3,7 @@
 
 pkgname=ls_extended
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='ls with coloring and icons'
 arch=('x86_64')
 url="https://github.com/Electrux/ls_extended"
@@ -16,11 +16,6 @@ sha256sums=('3ea78c2deb89aa5b5047984815c52baa95e68668471c2ea2b1f9e9d46ce380c8')
 build() {
   cd "$pkgname-$pkgver"
   ./build.sh
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  ccp4m project test
 }
 
 package() {

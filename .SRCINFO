@@ -1,7 +1,7 @@
 pkgbase = ls_extended
 	pkgdesc = ls with coloring and icons
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Electrux/ls_extended
 	arch = x86_64
 	license = custom:BSD
