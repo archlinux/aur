@@ -7,6 +7,7 @@ pkgbase = xidlehook
 	license = MIT
 	makedepends = rust
 	makedepends = libxss
+	makedepends = python
 	depends = libpulse
 	source = https://gitlab.com/jD91mZM2/xidlehook/-/archive/0.8.1/xidlehook-0.8.1.tar.gz
 	sha256sums = 8b9baeb0feee95b6b4ad8cfcd089f2ec672f89e0ab94d09ba2f00e3a611d70b7
