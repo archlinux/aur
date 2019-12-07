@@ -1,11 +1,10 @@
 pkgbase = python-anndata2ri
 	pkgdesc = Converter between Python’s AnnData and R’s SingleCellExperiment.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theislab/anndata2ri
 	arch = any
 	license = GPL3
-	makedepends = python-pip
 	depends = python-anndata
 	depends = python-rpy2
 	depends = python-tzlocal
