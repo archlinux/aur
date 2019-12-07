@@ -1,7 +1,7 @@
 # Maintainer: Minzord
 
 pkgname=remakepkg
-pkgver=0.9.1
+pkgver=0.9.6
 pkgrel=1
 arch=(any)
 
@@ -17,7 +17,6 @@ conflicts=(makemetapkg)
 depends=(coreutils)
 makedepends=(asciidoc git)
 
-changelog='changelog'
 
 source=("git+https://gitlab.com/ayekat/pacman-hacks.git#tag=v$pkgver"
         'diffrepo.hook.example')
