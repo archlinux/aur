@@ -4,8 +4,8 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=2.17.68075
-pkgrel=2
+pkgver=2.18.68238
+pkgrel=0
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
@@ -16,9 +16,9 @@ optdepends=('bin32-jre: For using the equation editor'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
 source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}-1.amd64_amd64.deb"
         "inspire.sh"
-	    "activityplayer.sh"
+	"activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
-md5sums=('59e02cb9f8cd7636507cb4255a7268ec'
+md5sums=('4da7d0533928096ac6f74e37d3a41e88'
          '21ff8944ba388a6b5aab894839745132'
          '5222bd85f84f45cd1ebc6ccece49d586'
          'e0f2c4078eadd00de8f28159b273e576')
