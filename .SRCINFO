@@ -1,7 +1,7 @@
 pkgbase = haskell-clay
 	pkgdesc = CSS preprocessor as embedded Haskell.
-	pkgver = 0.13.2
-	pkgrel = 2
+	pkgver = 0.13.3
+	pkgrel = 1
 	url = https://hackage.haskell.org/package/clay
 	arch = x86_64
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = haskell-clay
 	license = BSD
 	makedepends = ghc
 	depends = ghc-libs
-	source = haskell-clay-0.13.2.tar.gz::https://hackage.haskell.org/packages/archive/clay/0.13.2/clay-0.13.2.tar.gz
-	sha256sums = d2f8832f9c64fd78313409574f237541bd91316d1f05f5642c8531984ac0bccb
+	source = haskell-clay-0.13.3.tar.gz::https://hackage.haskell.org/packages/archive/clay/0.13.3/clay-0.13.3.tar.gz
+	sha256sums = 5db3c4c4a40f377b808a1569c5f8aeeea3ecdd2191f4fbbcd0f22b23fdd254a4
 
 pkgname = haskell-clay
 

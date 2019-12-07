@@ -1,7 +1,7 @@
 pkgname=haskell-clay
 _hkgname=clay
-pkgver=0.13.2
-pkgrel=2
+pkgver=0.13.3
+pkgrel=1
 pkgdesc="CSS preprocessor as embedded Haskell."
 url="https://hackage.haskell.org/package/clay"
 license=('BSD')
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'aarch64')
 depends=('ghc-libs')
 makedepends=('ghc')
 source=(${pkgname}-${pkgver}.tar.gz::"https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha256sums=('d2f8832f9c64fd78313409574f237541bd91316d1f05f5642c8531984ac0bccb')
+sha256sums=('5db3c4c4a40f377b808a1569c5f8aeeea3ecdd2191f4fbbcd0f22b23fdd254a4')
 
 build() {
     cd ${_hkgname}-${pkgver}
