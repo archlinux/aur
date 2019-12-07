@@ -1,16 +1,16 @@
 pkgbase = otf-archivo-black
 	pkgdesc = A grotesque sans-serif typeface family from Omnibus-Type.
 	pkgver = 1.006
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/archivo-black/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://raw.githubusercontent.com/Omnibus-Type/ArchivoBlack/master/OFL.txt
+	source = otf-archivo-black-1.006-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/ArchivoBlack/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/ArchivoBlack/master/fonts/otf/ArchivoBlack-Italic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/ArchivoBlack/master/fonts/otf/ArchivoBlack-Regular.otf
-	sha256sums = 1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf
+	sha256sums = 000a3db5300ab7645fb1f861061987f7a4320939ae733d5c29aab3df6a281447
 	sha256sums = 86a87539036ee3d205ef10cc50f25fce5a33e84100708b02b6f78b6fc1994e87
 	sha256sums = 10e18da452766dee8542b40ed6055f0013ede6548bb84df6fa2fa278e4adea92
 
