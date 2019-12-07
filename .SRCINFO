@@ -1,12 +1,16 @@
 pkgbase = ratarmount-git
-	pkgdesc = Mount tar file using fuse with fast read-only random access
-	pkgver = 20190526
+	pkgdesc = Mount tar file using fuse with fast read-only random access (git version)
+	pkgver = 20191206
 	pkgrel = 1
 	url = https://github.com/mxmlnkn/ratarmount
 	arch = any
 	license = MIT
 	depends = python-fusepy
 	depends = python-msgpack
+	depends = python-rapidjson
+	depends = python-ujson
+	depends = python-simplejson
+	optdepends = python-indexed_gzip: Support for gzip-compressed tar files
 	source = git+https://github.com/mxmlnkn/ratarmount
 	md5sums = SKIP
 
