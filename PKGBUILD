@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-icu
 pkgver=65.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library (mingw-w64)"
 arch=('any')
 url="http://site.icu-project.org"
@@ -64,8 +64,6 @@ prepare() {
 build() {
   cd icu/source
   mkdir -p nativebuild && pushd nativebuild
-  CFLAGS=-fno-stack-protector
-  CPPFLAGS=-U_FORTIFY_SOURCE # link error with latest mingw-w64-git
   CC=gcc CXX=g++ ../configure --enable-static --disable-shared
   make
   popd
