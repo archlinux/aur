@@ -1,0 +1,13 @@
+pkgbase = python-indexed_gzip
+	pkgdesc = Fast random access of gzip files in Python
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = https://github.com/pauldmccarthy/indexed_gzip
+	arch = x86_64
+	license = zlib
+	depends = python
+	source = https://files.pythonhosted.org/packages/90/c2/d286c11cac7612127331cd085235b8343cc632c290497117cd13aea922f1/indexed_gzip-0.8.10.tar.gz
+	md5sums = ab951f7a9006099f08ef6f543bfb9b64
+
+pkgname = python-indexed_gzip
+
