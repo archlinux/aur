@@ -5,7 +5,7 @@
 pkgname=muttprint
 pkgver=0.73_4
 _mainver=0.73
-pkgrel=4
+pkgrel=5
 arch=("i686" "x86_64")
 pkgdesc="An app to print email from CLI mail clients, mutt in particular"
 license=("GPL")
@@ -27,6 +27,8 @@ prepare(){
    patch -p1 < ../muttprint_0.73-4.diff
    patch -p1 < ../regex.patch
    patch -p1 < ../two_edge.patch
+   # fix sample configs
+   find . -type f -name 'sample*' -exec sed -i 's/-P$PRINTER/-p$PRINTER/' {} \;
    # convert images (and make pics/ build work)
    cd pics/ && \
      convert -flop BabyTuX.eps BabyTuX.eps

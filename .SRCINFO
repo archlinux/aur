@@ -1,7 +1,7 @@
 pkgbase = muttprint
 	pkgdesc = An app to print email from CLI mail clients, mutt in particular
 	pkgver = 0.73_4
-	pkgrel = 4
+	pkgrel = 5
 	url = http://muttprint.sf.net
 	arch = i686
 	arch = x86_64
