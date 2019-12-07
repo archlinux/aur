@@ -7,7 +7,7 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2019.9
-pkgrel=10
+pkgrel=11
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -23,6 +23,8 @@ sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
             'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
+validpgpkeys=('A6A4778440D27368967A7A3578CEAA8CB72E4467')
+             # tagger Linus Färnstrand <linus at mullvad dot net> 1570795216 +0200
 
 prepare() {
 	# Point the submodule to our local copy
@@ -31,6 +33,9 @@ prepare() {
 	git config submodule.mullvadvpn-app-binaries.url \
 		"$srcdir/mullvadvpn-app-binaries"
 	git submodule update
+
+	# Verify git tag
+	git tag -v "$pkgver"
 }
 
 build() {
