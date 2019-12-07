@@ -27,6 +27,7 @@ pkgbase = tauon-music-box
 	depends = alsa-plugins
 	depends = gstreamer
 	depends = gst-plugins-base
+	depends = python-dbus
 	optdepends = ffmpeg: File transcoding
 	optdepends = noto-fonts-cjk: Matching font for CJK characters
 	optdepends = p7zip: 7z archive extraction support
