@@ -1,7 +1,7 @@
 pkgbase = otf-asap
 	pkgdesc = A contemporary sans-serif typeface family from Omnibus-Type.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/asap/
 	arch = any
 	license = custom:OFL
@@ -16,7 +16,7 @@ pkgbase = otf-asap
 	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/otf/Asap-Regular.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/otf/Asap-SemiBold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Asap/master/fonts/otf/Asap-SemiBoldItalic.otf
-	sha256sums = 1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf
+	sha256sums = 4c510861f0b2d6665fb0ff8130cec24f1537ad644b3af32b02f28b13d82511a1
 	sha256sums = d72efbbff1dbdab5445f7a116aa29f93f5c549270c0acda9b0915acd50050f41
 	sha256sums = c6f66c4b0cb0bfdbba092d3290a5fb495e2238d2271ebed0b88c74e0ad255c8c
 	sha256sums = a0c7fd714951e3defe69cd40ec967a58be1dab012e1fb6b6bf977338fdb369d1
