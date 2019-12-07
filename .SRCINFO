@@ -1,7 +1,7 @@
 pkgbase = what
 	pkgdesc = Display network utilization by process, connection and remote address
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imsnif/what
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = what
 	makedepends = rust
 	makedepends = cargo
 	source = https://github.com/imsnif/what/archive/0.4.0.tar.gz
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = a8bfa43e3e55bb262aef458e9b0a8858c77f13521ddd2998d500a5acd9a9ed9c
 
 pkgname = what
 
