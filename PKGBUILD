@@ -23,7 +23,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DPDFLATEX_COMPILER=0 \
-      -DGLUT_glut_LIBRARY=/usr/${_arch}/lib/libfreeglut.dll.a \
+      -DGLUT_glut_LIBRARY_RELEASE=/usr/${_arch}/lib/libfreeglut.dll.a \
       -DGLUT_LIBRARIES=/usr/${_arch}/lib/libfreeglut.dll.a ..
     make
     popd
