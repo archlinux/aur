@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-grenze
 pkgver=1.001
-pkgrel=1
+pkgrel=2
 pkgdesc='A hybrid typeface family between Roman and Blackletter styles from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/grenze/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Black.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-BlackItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Bold.otf'
@@ -26,7 +26,7 @@ source=('https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/OFL.txt'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-SemiBoldItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-Thin.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Grenze/master/fonts/otf/Grenze-ThinItalic.otf')
-sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
+sha256sums=('3b84fe60cf47615bda9710f47d81f8935544b021f0a4846b2518489b2d2ea1a4'
             '93cfb54cf9ae4640a73ecfd754498f891bd1f3c691327e1bbdfcb9c05c51064f'
             '6a6a08cf36e69b4af07b5812abfd488233e465893631ab18f17eea806b89f697'
             '3e62d0d7625fac6e95fe7908245bbbeaa2e2b9de054cf659f49389b0ed5be57e'
@@ -49,5 +49,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
