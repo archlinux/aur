@@ -1,6 +1,6 @@
 # Maintainer: Aram Drevekenin <aram@poor.dev>
 pkgname=what
-pkgver=0.3.7
+pkgver=0.4.0
 pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -8,7 +8,7 @@ pkgdesc="Display network utilization by process, connection and remote address"
 url="https://github.com/imsnif/what"
 source=("https://github.com/imsnif/$pkgname/archive/$pkgver.tar.gz")
 license=('MIT')
-sha256sums=("b60f002bd095cad88dd1cd1b4bcbcf65482e52d73fdff961455133b8a4ee4666")
+sha256sums=("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855")
 
 check() {
   cd "$pkgname-$pkgver"
