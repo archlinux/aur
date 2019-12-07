@@ -1,30 +1,34 @@
 pkgbase = python-pytest-qt
 	pkgdesc = Pytest plugin for Qt (PyQt4, PyQt5 and PySide) application testing
-	pkgver = 3.2.2
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://pytest-qt.readthedocs.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python2-pytest
-	checkdepends = python-pyqt5
-	checkdepends = python2-pyqt5
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
+	makedepends = python-pytest
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	source = https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-3.2.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-3.3.0.tar.gz
 	source = correct_underline.patch
-	md5sums = f35eee66fdfee776dd4523ab09c2da73
+	md5sums = 9618bf1a043fd12d8912b8f5b4da0bb3
 	md5sums = 0273d3ad485751e5e61f49f914f86b5e
 
 pkgname = python-pytest-qt
 	depends = python-pytest>=2.7
+	optdepends = python-pyqt5: Work with PyQt5
+	optdepends = pyside2: Work with PySide2
+	optdepends = python-pyqt4: Work with PyQt4
+	optdepends = python-pyside: Work with PySide
 	optdepends = python-pytest-qt-doc: Documentation for pytest-qt
 
 pkgname = python2-pytest-qt
 	depends = python2-pytest>=2.7
+	optdepends = python2-pyqt5: Work with PyQt5
+	optdepends = python2-pyqt4: Work with PyQt4
+	optdepends = python2-pyside: Work with PySide
 	optdepends = python-pytest-qt-doc: Documentation for pytest-qt
 
 pkgname = python-pytest-qt-doc
