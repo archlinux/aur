@@ -3,14 +3,15 @@
 
 pkgname=nccl
 pkgver=2.5.6
-pkgrel=1
+_upstr_pkgrel=2
+pkgrel=2
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cuda')
-source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#tag=v${pkgver}-1")
+source=("$pkgname"::"git+https://github.com/NVIDIA/nccl.git#tag=v${pkgver}-${_upstr_pkgrel}")
 sha256sums=('SKIP')
 
 prepare() {
