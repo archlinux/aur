@@ -21,12 +21,12 @@ pkgname=engrampa-thunar-gtk2
 _pkgname=engrampa
 _ver=1.23
 pkgver=${_ver}.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Archive manipulator from MATE without Caja dependency (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gtk2' 'gzip' 'libarchive' 'tar' 'unzip' 'zip')
+depends=('gtk3' 'gzip' 'libarchive' 'tar' 'unzip' 'zip')
 makedepends=('intltool' 'itstool')
 optdepends=('p7zip: 7Z and ARJ archive support'
             'unace: ACE archive support'
@@ -36,12 +36,12 @@ provides=('engrampa')
 conflicts=('engrampa' 'engrampa-dev' 'engrampa-thunar')
 replaces=('engrampa')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.xz"
-        'fr-rpm-bsdtar.patch'
-        '002-add-firefox-addon-mimetype.patch')
-sha256sums=(
-	'cb59d732c4bd8f0cdefacc5cd50dd9a54b23c80c4703cb2e530edcd07429bf43'
-	'dc05c3b3fbc8242d1c85b58f756f998d644d920c8444d0872e9ffef1ce297f77'
-    '24c7a9a57a1f9e933a560e9cdac94475b283e5abe35ef18aee1e75597886dafb'
+       # 'fr-rpm-bsdtar.patch'
+       # '002-add-firefox-addon-mimetype.patch'
+)
+sha256sums=('cb59d732c4bd8f0cdefacc5cd50dd9a54b23c80c4703cb2e530edcd07429bf43'
+	# 'dc05c3b3fbc8242d1c85b58f756f998d644d920c8444d0872e9ffef1ce297f77'
+    # '24c7a9a57a1f9e933a560e9cdac94475b283e5abe35ef18aee1e75597886dafb'
 )
 
 prepare() {
