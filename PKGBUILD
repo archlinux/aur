@@ -15,6 +15,7 @@ url="https://www.openssl.org"
 license=('BSD')
 depends=('mingw-w64-zlib')
 makedepends=('mingw-w64-gcc'
+             'mingw-w64-environment'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})

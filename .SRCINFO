@@ -6,6 +6,7 @@ pkgbase = mingw-w64-openssl
 	arch = any
 	license = BSD
 	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-environment
 	makedepends = perl
 	depends = mingw-w64-zlib
 	options = !strip
