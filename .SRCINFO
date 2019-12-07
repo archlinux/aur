@@ -1,6 +1,6 @@
 pkgbase = gitfs
 	pkgdesc = Version controlled file system
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = http://www.presslabs.com/gitfs/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = gitfs
 	depends = python-fusepy
 	depends = python-pygit2
 	depends = python-raven
-	source = gitfs-0.5.1.tar.gz::https://github.com/PressLabs/gitfs/archive/0.5.1.tar.gz
-	sha256sums = 7b81970847b0958707e1d7a403a417d888a56888d89a12cfbc52d4f6f3085d8e
+	source = gitfs-0.5.2.tar.gz::https://github.com/PressLabs/gitfs/archive/0.5.2.tar.gz
+	sha256sums = 921e24311e3b8ea3a5448d698a11a747618ee8dd62d5d43a85801de0b111cbf3
 
 pkgname = gitfs
 
