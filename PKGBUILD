@@ -2,14 +2,14 @@
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 pkgname=tfenv
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("x86_64")
 url="https://github.com/tfutils/tfenv"
 license=('MIT')
 groups=()
-depends=()
+depends=("unzip")
 makedepends=()
 checkdepends=()
 optdepends=()
