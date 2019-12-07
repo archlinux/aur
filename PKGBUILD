@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-rosario
 pkgver=1.100
-pkgrel=1
+pkgrel=2
 pkgdesc='A sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/rosario/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-BoldItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Italic.otf'
@@ -16,7 +16,7 @@ source=('https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/OFL.txt'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-Regular.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-SemiBold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Rosario/master/fonts/otf/Rosario-SemiBoldItalic.otf')
-sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
+sha256sums=('944998f475ee63b332a19137840d9e334c94ec6300f8091a5049a647798ca33a'
             'e77b03174db63ea9455cfec859d09035d946d96f9c668bad179321491b839a74'
             '0fdf1d087b579e26c02529e00f6f8522770a6f6e86093e2a5c6207194254f6f5'
             '4c13479bd33f0f4de873c3f4a9f5032d7e7192c8db3dd06c69415e3d7f83064d'
@@ -29,5 +29,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
