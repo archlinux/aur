@@ -1,7 +1,7 @@
 # Maintainer: Hetsh <aur@hetsh.de>
 
 pkgname=mcsctl
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit template.'
 arch=('any')
@@ -12,13 +12,16 @@ provides=('mcsctl')
 conflicts=('mcsctl-git')
 install="$pkgname.install"
 source=("https://github.com/Hetsh/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('adc9c7a0bf871c212834cdd2b70ea5387e55ee0cb440e4ef74ba7d5bbb903f8a')
+sha256sums=('66905358136543205027112ef879d19a171332419e9b57a65445dbafb0a1bb04')
 
 package() {
-	install -Dm 644 "$srcdir/$pkgname-$pkgver/mcs@.service" "$pkgdir/usr/lib/systemd/system/mcs@.service"
-	install -Dm 755 "$srcdir/$pkgname-$pkgver/mcsctl.sh" "$pkgdir/usr/bin/mcsctl"
+	work_dir="$pkgname-$pkgver"
+	install -Dm 644 "$work_dir/mcs@.service" "$pkgdir/usr/lib/systemd/system/mcs@.service"
+	install -Dm 755 "$work_dir/mcsctl.sh" "$pkgdir/usr/bin/mcsctl"
+	install -Dm 644 "$work_dir/mcs-update@.timer" "$pkgdir/usr/lib/systemd/system/mcs-update@.timer"
+	install -Dm 644 "$work_dir/mcs-update@.service" "$pkgdir/usr/lib/systemd/system/mcs-update@.service"
 	
 	# Generate an example config file from default options inside the mcsctl script
-	sed -n '/\# Mutable config/,/\# \/Mutable config/p' "$srcdir/$pkgname-$pkgver/mcsctl.sh" | head -n -1 | tail -n +2 > "$srcdir/$pkgname-$pkgver/mcsctl.conf.bak"
-	install -Dm 644 "$srcdir/$pkgname-$pkgver/mcsctl.conf.bak" "$pkgdir/etc/mcsctl.conf.bak"
+	sed -n '/\# Mutable config/,/\# \/Mutable config/p' "$work_dir/mcsctl.sh" | head -n -1 | tail -n +2 > "$srcdir/$pkgname-$pkgver/mcsctl.conf.bak"
+	install -Dm 644 "$srcdir/$work_dir/mcsctl.conf.bak" "$pkgdir/etc/mcsctl.conf.bak"
 }
