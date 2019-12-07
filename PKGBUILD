@@ -1,15 +1,16 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgdesc="ROS - Core libraries used by MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-core'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
   ros-melodic-moveit-resources
+  ros-melodic-angles
 )
 
 makedepends=(

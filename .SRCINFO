@@ -1,13 +1,14 @@
 pkgbase = ros-melodic-moveit-core
 	pkgdesc = ROS - Core libraries used by MoveIt!.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-moveit-resources
+	makedepends = ros-melodic-angles
 	makedepends = pkg-config
 	depends = ros-melodic-eigen-stl-containers
 	depends = ros-melodic-geometric-shapes
