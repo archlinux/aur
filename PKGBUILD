@@ -1,10 +1,11 @@
 # vim:set ts=2 sw=2 et:
-# Maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
+# Maintainer: Martin Rys <https://rys.pw/#contact_me>
+# Previous maintainer: Bijaya Dangol <dangoldbj23@gmail.com>
 
 pkgname=python-hsaudiotag3k
 _reponame=hsaudiotag3k
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Read metadata (tags) of mp3, mp4, wma, ogg, flac and aiff files (python3 version)"
 url="https://pypi.python.org/pypi/hsaudiotag3k"
 arch=(any)
