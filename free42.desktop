@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Free42
+Exec=/usr/bin/free42
+Icon=free42
+Terminal=false
+Type=Application
+Categories=Utility;Calculator;
