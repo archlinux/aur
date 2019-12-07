@@ -1,7 +1,7 @@
 pkgbase = ayatana-indicator-sound
 	pkgdesc = Ayatana system sound indicator
-	pkgver = git_r2634
-	pkgrel = 3
+	pkgver = git_r2706
+	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = ayatana-indicator-sound
 	makedepends = qt5-base
 	makedepends = qt5-declarative
 	makedepends = systemd
+	makedepends = gobject-introspection
 	depends = pulseaudio
 	depends = libayatana-indicator-gtk3
 	depends = glib2
