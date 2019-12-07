@@ -1,7 +1,7 @@
 pkgbase = beignet-git
 	pkgdesc = An open source OpenCL implementation for Intel IvyBridge & Haswell iGPUs
 	pkgver = 1.0.0.r1395.g419c0417
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/beignet
 	arch = x86_64
 	license = LGPL
@@ -19,7 +19,6 @@ pkgbase = beignet-git
 	provides = opencl-intel
 	provides = opencl-driver
 	conflicts = beignet
-	conflicts = opencl-intel
 	source = git+https://github.com/intel/beignet.git
 	source = GBE-let-GenRegister-reg-never-return-uninitialized-m.patch
 	source = llvm8.patch
