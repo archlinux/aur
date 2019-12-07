@@ -1,0 +1,30 @@
+diff --unified --recursive --text a/mkinitcpio b/mkinitcpio
+--- a/mkinitcpio	2019-12-07 01:05:10.293236383 +0100
++++ b/mkinitcpio	2019-12-07 02:47:29.735948757 +0100
+@@ -245,6 +245,26 @@
+         error "Image generation FAILED: %s" "$errmsg"
+     elif (( _builderrors == 0 )); then
+         msg "Image generation successful"
++        sleep .1
++        if [ ! -d "${out%/*}" ]; then
++            error "Directory \"${out%/*}\" not found!"
++        else
++            gpg=(/usr/bin/gpg --homedir /usr/lib/initcpio/sign)
++            if [ ! -f $out.sig ] || ! `${gpg[@]} --verify "$out.sig" "$out" 1>/dev/null 2>&1`; then
++                msg "Signing updated $out ..."
++                ${gpg[@]} --detach-sign "$out"
++                [ $? -gt 0 ] && error "$out is not signed!"
++            fi
++            kernelimg=/boot/vmlinuz-${out#*-}
++            kernelimg=${kernelimg%.img}
++            kernelimg=${kernelimg%-fallback}
++            if [ ! -f ${kernelimg}.sig ] || ! `${gpg[@]} --verify ${kernelimg}.sig "$kernelimg" 1>/dev/null 2>&1`; then
++                msg "Signing updated kernel $kernelimg ..."
++                ${gpg[@]} --detach-sign "$kernelimg"
++                [ $? -gt 0 ] && error "$kernelimg is not signed!"
++            fi
++            /usr/bin/gpgconf --kill gpg-agent 1>/dev/null 2>&1
++        fi
+     fi
+ }
+ 

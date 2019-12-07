@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+pushd /usr/lib/initcpio/sign
+gpg-agent --daemon --max-cache-ttl 1
+keys=(`gpg --homedir . --list-keys --with-colons | awk -F: '/^pub:/ { print $5 }' | tr '\n' ' '`)
+
+if [[ $keys != "" ]]; then
+  echo "found $keys"
+else
+  gpg --homedir . --gen-key
+  [ $? -ne 0 ] && 1>&2 echo "you need to generate a GPG keypair to use for signing in /usr/lib/initcpio/sign" && exit 1
+  gpg --homedir . --export > ~/boot.key
+fi
+
+if [ ! -f ./passphrase ] && `read pass`; then
+  echo "$pass" > passphrase
+fi
+
+chmod 600 passphrase 2>&1 1>/dev/null
+
+if (( ${#args[@]} )); then
+    mkinitcpio "${args[@]}"
+fi

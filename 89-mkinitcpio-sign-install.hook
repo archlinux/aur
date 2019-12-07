@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Checking for a keypair to sign images with
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mkinitcpio-sign-install
+NeedsTargets

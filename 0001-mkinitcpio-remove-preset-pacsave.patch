@@ -1,0 +1,59 @@
+diff --git a/libalpm/scripts/mkinitcpio-remove b/libalpm/scripts/mkinitcpio-remove
+index 86838e4..17b4b31 100644
+--- a/libalpm/scripts/mkinitcpio-remove
++++ b/libalpm/scripts/mkinitcpio-remove
+@@ -2,6 +2,20 @@
+ 
+ package=0
+ 
++process_preset() {
++    if [[ -n "${pkgbase}" && -e $preset ]]; then
++        if ! cmp $preset > /dev/null 2>&1 <(sed "s|%PKGBASE%|${pkgbase}|g" /usr/share/mkinitcpio/hook.preset); then
++            if [[ ! -e $preset.pacsave ]]; then
++                # save the preset as pacsave
++                mv $preset $preset.pacsave && return 0
++            fi
++        else
++            # remove the preset
++            rm $preset && return 0
++        fi
++    fi
++}
++
+ while read -r line; do
+     if [[ $line != */vmlinuz ]]; then
+         # triggers when it's a change to usr/lib/initcpio/*
+@@ -23,17 +37,25 @@ while read -r line; do
+         # remove the installed kernel
+         rm $kernel
+     fi
+-    if [[ -e $preset ]]; then
+-        # remove the preset
+-        rm $preset
++
++    process_preset "${pkgbase}" $preset
++
++    if [[ -e $initramfs ]]; then
++        # remove the main image
++        rm $initramfs
+     fi
+-    if [[ -e $initramfs && -e $fallback_initramfs ]]; then
+-        # remove the images
+-        rm $initramfs $fallback_initramfs
++    if [[ -e $fallback_initramfs ]]; then
++        # remove the fallback image
++        rm $fallback_initramfs
+     fi
+ done
+ 
+ if (( package )) && compgen -G /etc/mkinitcpio.d/"*.preset" > /dev/null; then
+-    # remove all presets
+-    rm /etc/mkinitcpio.d/*.preset
++    shopt -s nullglob
++    for preset in /etc/mkinitcpio.d/*.preset; do
++        pkgbase=${preset##*/}
++        pkgbase=${pkgbase%.preset}
++        process_preset "${pkgbase}" $preset
++    done
++    shopt -u nullglob
+ fi

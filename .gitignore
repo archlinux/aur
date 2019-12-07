@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!0001-mkinitcpio-remove-preset-pacsave.patch
+!0002-mkinitcpio-sign-when-done.patch
+!gpg.conf
+!mkinitcpio-sign-install
+!mkinitcpio.install
+!89-mkinitcpio-sign-install.hook
