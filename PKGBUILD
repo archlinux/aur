@@ -4,6 +4,9 @@
 # Contributor: Rob McCathie <korrode AT gmail>
 # Contributor: n00b <dannyurvt (at) gmail.com>
 #
+# Now uses gtk3!!!!
+# gtk2 version is depracrated in new releases
+#
 # MATE Engrampa package:
 #   without Caja dependency and with Thunar integration
 #   with some non-GTK3 changes backported from subsequent upstream versions
@@ -16,10 +19,10 @@
 
 pkgname=engrampa-thunar-gtk2
 _pkgname=engrampa
-_ver=1.20
-pkgver=${_ver}.0
+_ver=1.23
+pkgver=${_ver}.2
 pkgrel=0
-pkgdesc="Archive manipulator from MATE without Caja dependency (GTK2 version)"
+pkgdesc="Archive manipulator from MATE without Caja dependency (GTK3 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -36,7 +39,7 @@ source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgname}-${pkgver}.tar.
         'fr-rpm-bsdtar.patch'
         '002-add-firefox-addon-mimetype.patch')
 sha256sums=(
-	'd5daac72a67a5e5b3d317f0031cc59e63c89c9b5fcc689932e192812e22860de'
+	'cb59d732c4bd8f0cdefacc5cd50dd9a54b23c80c4703cb2e530edcd07429bf43'
 	'dc05c3b3fbc8242d1c85b58f756f998d644d920c8444d0872e9ffef1ce297f77'
     '24c7a9a57a1f9e933a560e9cdac94475b283e5abe35ef18aee1e75597886dafb'
 )
@@ -44,11 +47,11 @@ sha256sums=(
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     # this patch 'depends' on libarchive
-    patch -Np1 -i "${srcdir}/fr-rpm-bsdtar.patch"
+    # patch -Np1 -i "${srcdir}/fr-rpm-bsdtar.patch"
     # patch to apply some non-GTK3 changes from subsequent upstream versions
     # patch -Np1 -i "${srcdir}/001-engrampa-${_patchver}-changes.patch"
     # patch to add Firefox Addon .xpi mimetype
-    patch -Np1 -i "${srcdir}/002-add-firefox-addon-mimetype.patch"
+    # patch -Np1 -i "${srcdir}/002-add-firefox-addon-mimetype.patch"
 }
 
 build() {
@@ -56,12 +59,12 @@ build() {
     ./configure \
         --prefix=/usr \
         --libexecdir=/usr/lib/${_pkgname} \
-        --with-gtk=2.0 \
         --disable-packagekit \
-        --disable-caja-actions -without-cajadir
+        --disable-caja-actions \
+        -without-cajadir
 
-    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    # https://bugzilla.gnome.org/show_bug.cgi?id=656231
+    # sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
     make
 }

@@ -1,6 +1,6 @@
 pkgbase = engrampa-thunar-gtk2
-	pkgdesc = Archive manipulator from MATE without Caja dependency (GTK2 version)
-	pkgver = 1.20.0
+	pkgdesc = Archive manipulator from MATE without Caja dependency (GTK3 version)
+	pkgver = 1.23.2
 	pkgrel = 0
 	url = http://mate-desktop.org
 	arch = i686
@@ -23,10 +23,10 @@ pkgbase = engrampa-thunar-gtk2
 	conflicts = engrampa-dev
 	conflicts = engrampa-thunar
 	replaces = engrampa
-	source = http://pub.mate-desktop.org/releases/1.20/engrampa-1.20.0.tar.xz
+	source = http://pub.mate-desktop.org/releases/1.23/engrampa-1.23.2.tar.xz
 	source = fr-rpm-bsdtar.patch
 	source = 002-add-firefox-addon-mimetype.patch
-	sha256sums = d5daac72a67a5e5b3d317f0031cc59e63c89c9b5fcc689932e192812e22860de
+	sha256sums = cb59d732c4bd8f0cdefacc5cd50dd9a54b23c80c4703cb2e530edcd07429bf43
 	sha256sums = dc05c3b3fbc8242d1c85b58f756f998d644d920c8444d0872e9ffef1ce297f77
 	sha256sums = 24c7a9a57a1f9e933a560e9cdac94475b283e5abe35ef18aee1e75597886dafb
 
