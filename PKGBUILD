@@ -1,12 +1,13 @@
 # Maintainer: Dylan Baker <dylan@pnwbakers.com>
 pkgname=meson-cross-x86-linux-gnu
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Meson cross file for x86 Linux"
 arch=('any')
 url="https://github.com/Oxalin/meson-cross-x86-linux-gnu"
 license=('')
 depends=('meson')
+makedepends=('git')
 source=("git://github.com/Oxalin/meson-cross-x86-linux-gnu.git#tag=${pkgver}")
 sha256sums=("SKIP")
 
