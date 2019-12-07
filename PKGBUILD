@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-chivo
 pkgver=1.007
-pkgrel=1
+pkgrel=2
 pkgdesc='A neo-grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/chivo/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Black.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-BlackItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Bold.otf'
@@ -22,7 +22,7 @@ source=('https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/OFL.txt'
         'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Regular.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-Thin.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Chivo/master/fonts/otf/Chivo-ThinItalic.otf')
-sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
+sha256sums=('2dc4ff442c2dadcdd69513a3229bb1548880e4de76849965db85a567d96e26ca'
             '6d4004332aaded4a33e21dc0cef06cd7020cf7111de8aeb0118bcac9ebef56e3'
             '7bb21ff83e24096566db45f295aa9276233af3ce6ab4e296295fe8e85d4561ff'
             'c448b41b230c75aaaade4427bd3fd883e931a9601665bb009d3512d73c1a0b1c'
@@ -41,5 +41,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
