@@ -1,13 +1,13 @@
 pkgbase = otf-archivo
 	pkgdesc = A grotesque sans-serif typeface family from Omnibus-Type.
 	pkgver = 1.003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.omnibus-type.com/fonts/archivo/
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt
+	source = otf-archivo-1.003-2-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt
 	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Bold.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-BoldItalic.otf
 	source = https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Italic.otf

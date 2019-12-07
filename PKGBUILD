@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-archivo
 pkgver=1.003
-pkgrel=1
+pkgrel=2
 pkgdesc='A grotesque sans-serif typeface family from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/archivo/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-BoldItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Archivo/master/fonts/otf/Archivo-Italic.otf'
@@ -29,5 +29,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
