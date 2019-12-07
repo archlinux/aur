@@ -1,14 +1,14 @@
-# Maintainer: Deon Spengler <deon[at]spengler[dot]co[dot]za>
+# Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=ddcutil
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Query and change Linux monitor settings using DDC/CI and USB.'
 url='http://ddcutil.com/'
 license=('GPL2')
 depends=(glib2 libusb udev libdrm libxrandr)
 source=(https://github.com/rockowitz/ddcutil/archive/v${pkgver}.tar.gz)
-sha256sums=('56a520a68e00e519a3ea5562238b2a67c0b9c4133a9b61983fe82b24e7066222')
+sha256sums=('445478a226d3fc46c6c058e503bba416948dad1152736b3c91326e60bbfc9025')
 arch=('x86_64')
 
 build() {
