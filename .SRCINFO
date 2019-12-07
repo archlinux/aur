@@ -1,0 +1,15 @@
+pkgbase = k8sh-git
+	pkgdesc = A simple, easily extensible shell for navigating your kubernetes clusters
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Comcast/k8sh
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = bash
+	provides = k8sh
+	source = git+https://github.com/Comcast/k8sh
+	md5sums = SKIP
+
+pkgname = k8sh-git
+
