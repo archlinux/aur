@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-sansita
 pkgver=1.006
-pkgrel=1
+pkgrel=2
 pkgdesc='A typeface exploring typography and calligraphy from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/sansita/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Black.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-BlackItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Bold.otf'
@@ -20,7 +20,7 @@ source=('https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/OFL.txt'
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Medium.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-MediumItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Sansita/master/fonts/otf/Sansita-Regular.otf')
-sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
+sha256sums=('075f043ac4f61522cf01be3557066b546ae59cfb51dee5048cf9bc231796c023'
             '807ee006fe4bcbb01bc20f86fea7606953f7ad9c718c728472f1129a456b5ccf'
             'ee3a00bab9265c10ff5cb880597163b194d13a63ee354be69c904478fd34915e'
             'a11b6c41ba40bb0c42ee161ee5a93611450462ab4336a4239b5fa004163486be'
@@ -37,5 +37,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
