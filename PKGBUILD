@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - ROS tools for those who live in Emacs."
-url='https://www.wiki.ros.org/rosemacs'
+url='https://wiki.ros.org/rosemacs'
 
 pkgname='ros-melodic-rosemacs'
 pkgver='0.4.13'
@@ -17,13 +17,6 @@ ros_depends=()
 depends=(${ros_depends[@]}
   emacs)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/rosemacs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/code-iai-release/ros_emacs_utils-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="ros_emacs_utils-${pkgver}/rosemacs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/code-iai/ros_emacs_utils/archive/${pkgver}.tar.gz")
 sha256sums=('14c8463b3c354a53659843c82af416a4ff6713747f04da98e8fc39de90c8ec6c')
@@ -45,7 +38,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
         -DPYTHON_BASENAME=-python2.7 \
