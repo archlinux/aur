@@ -1,6 +1,6 @@
 pkgbase = kawaii-player-git
 	pkgdesc = An Audio/Video Manager and Front End for mpv/mplayer along with functionalities of portable media server
-	pkgver = v4.0.0.1.r76.gb8cd928
+	pkgver = v4.2.0.1.r32.g68ce806
 	pkgrel = 1
 	arch = any
 	license = GPL3
