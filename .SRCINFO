@@ -5,6 +5,9 @@ pkgbase = snoopy
 	url = http://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy
 	arch = x86_64
 	license = custom: non-professional use only
+	depends = gtk2
+	depends = libsm
+	depends = libpng12
 	provides = snoopy=2017.12.13
 	source = snoopy-stable-linux-64-2017-12-13.tgz::https://www-dssz.informatik.tu-cottbus.de/track/download.php?id=206
 	source = runscript.sh
