@@ -5,7 +5,7 @@
 # Contributor: Earnest <zibeon@gmail.com>
 
 pkgname=spin
-pkgver=6.5.1
+pkgver=6.5.2
 pkgrel=1
 pkgdesc='Tool for the formal verification of distributed software systems'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('tcl: ispin graphical interface'
             'swarm: improved performance on large verification problems'
             'ispin: GUI for Spin')
 source=("https://github.com/nimble-code/Spin/archive/version-${pkgver}.tar.gz")
-sha512sums=('e852d4a5ba92d58350dc1624e6d204e918e31dd22ce4bf15275390d56a679fee29f0fb662de0a00f7c303b7287357c5a4c11a01ebd178712a9229aa830393a93')
+sha512sums=('ff1d378076995fa5a8b66dd31d19d8bad6296b968183180251d267c926c20775edda927a31f466199e01231f6233c3a5166fd51ec44b02d570070e857d8ba7f9')
 
 build() {
   cd Spin-version-${pkgver}/Src
