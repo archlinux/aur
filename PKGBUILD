@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
+  mkdir build
 }
 
 build() {
