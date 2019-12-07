@@ -4,7 +4,7 @@
 pkgname=nccl
 pkgver=2.5.6
 _upstr_pkgrel=2
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
