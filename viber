@@ -1,2 +1,0 @@
-#!/bin/sh
-LD_PRELOAD=libcurl.so.3 exec /opt/viber/Viber
