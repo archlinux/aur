@@ -6,13 +6,14 @@ url='https://wiki.ros.org/srdfdom'
 pkgname='ros-melodic-srdfdom'
 pkgver='0.5.1'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdfdom-py
   ros-melodic-urdf
   ros-melodic-catkin
-  ros-melodic-cmake-modules)
+  ros-melodic-cmake-modules
+  ros-melodic-rostest)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost
