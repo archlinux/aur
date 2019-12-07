@@ -1,12 +1,12 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=purple-gowhatsapp-git
 _pkgname=purple-gowhatsapp
-pkgver=r90.6d997ae
+pkgver=r107.6ce9bf3
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp"
 arch=('x86_64' 'i686')
 url="https://github.com/hoehermann/purple-gowhatsapp"
-license=('GPLv2')
+license=('GPLv3')
 groups=()
 depends=('libpurple')
 makedepends=('git' 'go')
@@ -27,12 +27,12 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  make update-dep
+  GOPATH="$srcdir/gopath" make update-dep
 }
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make
+  GOPATH="$srcdir/gopath" make
 }
 
 
