@@ -1,8 +1,8 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=blugon
-pkgdesc="simple, highly configurable Blue Light Filter for X"
-pkgver=1.11.3
+pkgdesc="simple and configurable Blue Light Filter for X"
+pkgver=1.11.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
