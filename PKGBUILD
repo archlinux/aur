@@ -13,7 +13,7 @@ url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
-makedepends=('git' 'cargo' 'npm' 'rpm-tools')
+makedepends=('git' 'cargo' 'npm' 'rpm')
 install="$pkgname.install"
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         'git+https://github.com/mullvad/mullvadvpn-app-binaries.git'
