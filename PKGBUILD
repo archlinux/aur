@@ -3,13 +3,13 @@
 
 _pkgname=libglvnd
 pkgname=$_pkgname-git
-pkgver=1.2.0.r8.g58f1c0d
+pkgver=1.3.0.r6.gf455878
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
 url="https://github.com/NVIDIA/libglvnd"
 license=('custom:BSD-like')
-makedepends=('libxext' 'libx11' 'glproto' 'python' 'git')
+makedepends=('libxext' 'libx11' 'glproto' 'python' 'meson' 'git')
 provides=('libgl' 'libegl' 'libgles' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/NVIDIA/libglvnd.git"
@@ -23,19 +23,17 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
-  ./autogen.sh
-  ./configure --prefix=/usr \
-    --disable-gles1
-  make
+  arch-meson $_pkgname build \
+     -D gles1=false
+
+  ninja -C build
 }
 
 package() {
   # libglvnd needs mesa for indirect rendering
   depends=('libxext' 'mesa' 'opengl-driver')
 
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
   
-  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
