@@ -20,7 +20,7 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname"
+	cd "treefrog-framework"
 	
 	include_dir="$(pwd)/include"
 	include_dir=$(echo $include_dir | sed 's./.\\/.g')
@@ -65,7 +65,7 @@ check() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "treefrog-framework"
 	cd src
 	make INSTALL_ROOT="${pkgdir}" install
 	cd ../tools/
