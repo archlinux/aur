@@ -1,10 +1,8 @@
 # Maintainer: milk on freenode
-
-pkgname=soundfont-sunshine-perc
+pkgname="soundfont-sunshine-perc"
 pkgdesc="Five drum/percussion soundfonts from Sunshine Studios. Non-commercial use only."
 pkgver=1
 pkgrel=1
-pkgdesc=""
 arch=('any')
 url="http://mugglinworks.com/soundfonts/"
 license=('custom')
