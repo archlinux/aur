@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-stable-linux-64-${pkgver//./-}.tgz::http://www-dssz.informatik.tu-cottbus.de/track/download.php?id=206"
+source=("$pkgname-stable-linux-64-${pkgver//./-}.tgz::https://www-dssz.informatik.tu-cottbus.de/track/download.php?id=206"
         "runscript.sh"
         "snoopy.desktop"
         "snoopy.png")
