@@ -1,10 +1,11 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
-# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 11/07/2019
+# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 07/12/2019
 
 
 pkgname=devolo-dlan-cockpit
-pkgver=5.0.4
-pkgrel=2
+pkgver=5.1.1
+pkgrel=1
+name=software-devolo-cockpit-linux-v${pkgver//./-}.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
@@ -18,14 +19,12 @@ else
   _arch="i386"
 fi 
 
-source=("https://www.devolo.de/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/devolo-cockpit-v${pkgver//./-}-linux.run"
-  'devolonetsvc.service')
-
+source=("https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/$name" 'devolonetsvc.service')
 
 build() {
   cd $srcdir
-  skip=$(grep -a -m1 -n "HERE_BE_DRAG[O]NS" "devolo-cockpit-v${pkgver//./-}-linux.run" | cut -d: -f1)
-  tail "devolo-cockpit-v${pkgver//./-}-linux.run" -n +$((skip+1)) | tar -x -C .
+  skip=$(grep -a -m1 -n "HERE_BE_DRAG[O]NS" $name | cut -d: -f1)
+  tail $name -n +$((skip+1)) | tar -x -C .
   ar x "devolo-dlan-cockpit_${pkgver}-0_${_arch}.deb"
   find . -name "adobeair*${_arch}.deb" -print | xargs ar x
   tar xJf data.tar.xz
@@ -42,6 +41,6 @@ package() {
   	install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
  }
  
- 
-sha256sums=('b439ebdbc4a883b6a7f39afdcaa0d5e143713bcef2d2966c87bd8a27df82c22f'
+
+sha256sums=('edd7862136f7bb40d9d45fb6f2b4513e8f973a1aae0ab0031ac54f7e498f8136'
          '6f187ca5c7a599b5394ea09cd68885168dbd19b5bd72df5ce083e721e2f0a12c')
