@@ -1,0 +1,15 @@
+pkgbase = google-compute-engine-oslogin
+	pkgdesc = Google Compute Engine OS login support
+	pkgver = 20191018
+	pkgrel = 1
+	url = https://github.com/GoogleCloudPlatform/guest-oslogin
+	arch = x86_64
+	license = Apache
+	depends = curl
+	depends = json-c
+	depends = pam
+	source = google-compute-engine-oslogin-20191018.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/5a710bbee227f4413c51eefa180e1fbeebd1d11b.tar.gz
+	sha256sums = 31b1409193b49f9cbaf72c00be5f9624cf9e0aa70ac0dc7cf6b5177c7e1b1ebf
+
+pkgname = google-compute-engine-oslogin
+
