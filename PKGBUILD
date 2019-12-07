@@ -1,6 +1,6 @@
 # Maintainer: pappy <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_pkgver=$(curl -q http://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT)
+_pkgver=5.2.34
 
 pkgname=virtualbox-ext-oracle-5
 pkgver=$_pkgver
