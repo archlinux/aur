@@ -3,13 +3,13 @@
 
 _pkgname=lib32-libglvnd
 pkgname=$_pkgname-git
-pkgver=1.2.0.r8.g58f1c0d
+pkgver=1.3.0.r6.gf455878
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
 url="https://github.com/NVIDIA/libglvnd"
 license=('custom:BSD-like')
-makedepends=('lib32-libx11' 'lib32-libxext' 'glproto' 'python' 'git')
+makedepends=('lib32-libx11' 'lib32-libxext' 'glproto' 'python' 'meson' 'git')
 provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://github.com/NVIDIA/libglvnd.git")
@@ -25,21 +25,19 @@ build() {
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cd libglvnd
-  ./autogen.sh
-  ./configure --prefix=/usr \
-    --libdir=/usr/lib32/ \
-    --build=i686-unknown-linux-gnu \
-    --disable-gles1
-  make
+  arch-meson libglvnd build \
+    --libdir=/usr/lib32 \
+    -D headers=false \
+    -D gles1=false
+
+    ninja -C build
 }
 
 package() {
   # lib32-libglvnd needs lib32-mesa for indirect rendering
-  depends=('lib32-libxext' 'libglvnd' 'lib32-mesa' 'lib32-opengl-driver')
+  depends=('lib32-libxext' 'libglvnd-git' 'lib32-mesa' 'lib32-opengl-driver')
 
-  cd libglvnd
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja -C build install
 
   rm -r "$pkgdir"/usr/include
 
