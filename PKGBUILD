@@ -2,10 +2,10 @@
 
 pkgname=anbox-image-gapps-rooted
 pkgver=2018.07.19
-pkgrel=5
-pkgdesc='Android image for running in Anbox with Houdini, OpenGApps and SuperSU'
+pkgrel=6
+pkgdesc="Android image for running in Anbox with Houdini, OpenGApps and SuperSU"
 arch=('x86_64')
-url='https://anbox.io/'
+url="https://anbox.io/"
 license=('custom')
 makedepends=(
     'curl'
@@ -19,19 +19,25 @@ provides=(
 conflicts=(
     'anbox-image'
 )
-gapps_rel=$(curl -s -L https://api.github.com/repos/opengapps/x86_64/releases/latest | head -n 10 | grep tag_name | sed -r 's/.*\"([0-9]+)\".*/\1/')
-gapps_src='https://downloads.sourceforge.net/project/opengapps/x86_64/'${gapps_rel}'/open_gapps-x86_64-7.1-pico-'${gapps_rel}'.zip'
-gapps_md5=$(curl -s -L ${gapps_src}.md5 | sed -r 's/^([0-9a-z]+).*/\1/')
+_gapps_rel="20191126"
+_gapps_src="https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
+_gapps_md5="$(curl -s -L $_gapps_src.md5 | sed -r 's/^([0-9a-z]+).*/\1/')"
+_gapps_list=(
+    'gsfcore-all'
+    'gsflogin-all'
+    'gmscore-x86_64'
+    'vending-x86_64'
+)
 source=(
-    'http://build.anbox.io/android-images/'${pkgver//./\/}'/android_amd64.img'
-    'houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs'
-    'houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs'
-    'http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip'
-    'media_codecs.xml'
-    'media_codecs_google_video.xml'
-    'media_codecs_google_audio.xml'
-    'media_codecs_google_telephony.xml'
-    ${gapps_src}
+    "http://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
+    "houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
+    "houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs"
+    "http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip"
+    "media_codecs.xml"
+    "media_codecs_google_video.xml"
+    "media_codecs_google_audio.xml"
+    "media_codecs_google_telephony.xml"
+    "$_gapps_src"
 )
 md5sums=(
     '26874452a6521ec2e37400670d438e33'
@@ -42,17 +48,11 @@ md5sums=(
     '599598e70060eb74c119cf7dac0ce466'
     '43193761081a04ca18a28d4a6e039950'
     '91f5f3e5c31f8e221ae8f318527dcb83'
-    ${gapps_md5}
-)
-gapps_list=(
-    'gsfcore-all'
-    'gsflogin-all'
-    'gmscore-x86_64'
-    'vending-x86_64'
+    "$_gapps_md5"
 )
 
 build () {
-    cd ${srcdir}
+    cd "$srcdir"
 
     # unpack anbox image
     mkdir -p squashfs-root
@@ -147,7 +147,7 @@ build () {
     cp media_codec*.xml ./squashfs-root/system/etc/
 
     # install gapps
-    for i in ${gapps_list[*]}; do
+    for i in ${_gapps_list[*]}; do
         mkdir -p $i
         rm -rf ./$i/*
         tar --lzip -xvf ./Core/$i.tar.lz
@@ -156,10 +156,10 @@ build () {
 }
 
 package() {
-    cd ${srcdir}
+    cd "$srcdir"
 
     # repack image
     mksquashfs ./squashfs-root ./android.img -noappend -b 131072 -comp xz -Xbcj x86
 
-    install -Dm 644 ./android.img ${pkgdir}/var/lib/anbox/android.img
+    install -Dm 644 ./android.img "$pkgdir/var/lib/anbox/android.img"
 }
