@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-saira
 pkgver=0.072
-pkgrel=1
+pkgrel=2
 pkgdesc='A contemporary sans-serif typeface system from Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/saira/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Saira/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/otf/Saira-Black.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/otf/Saira-BlackItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/Saira/fonts/otf/Saira-Bold.otf'
@@ -81,7 +81,7 @@ source=('https://raw.githubusercontent.com/Omnibus-Type/Saira/master/OFL.txt'
         'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/SairaSemiCondensed/fonts/otf/SairaSemiCondensed-Thin.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/SairaSemiCondensed/fonts/otf/SairaSemiCondensed-ThinItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Saira/master/SairaStencilOne/fonts/otf/SairaStencilOne-Regular.otf')
-sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
+sha256sums=('c0c26ff8d8a496ed8ce9f2b02de435fde52919846cdac10a5e5cbcbaf2b06620'
             '24a732206393f90a9882b59aa78235579b1a31e361773dd8d4987ac12a373cab'
             'b0ac7b378be6d98e2f2df9adff3bdf74a3ea92adcf1e631ed61b26dc0986498f'
             '69c6abbb47b77659635c70af87b993634966963773817ceea18187f5dd070529'
@@ -159,5 +159,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
