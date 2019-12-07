@@ -2,7 +2,7 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2-git
-pkgver=609.092487ec
+pkgver=643.72b120f8
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
@@ -27,9 +27,7 @@ build() {
   esy install
   esy bootstrap
   esy build
-  cd node
-  node install.js
-  cd ..
+  node install-node-deps.js
   esy x Oni2 -f --checkhealth
   esy create-release
 }
