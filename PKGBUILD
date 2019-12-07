@@ -1,13 +1,13 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=otf-manuale
 pkgver=1.001
-pkgrel=1
+pkgrel=2
 pkgdesc='A serif typeface for editorial typography in print and online by Omnibus-Type.'
 arch=('any')
 url='https://www.omnibus-type.com/fonts/manuale/'
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
-source=('https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/OFL.txt'
+source=("${pkgname}-${pkgver}-${pkgrel}-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/OFL.txt"
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Bold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-BoldItalic.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-ExtraBold.otf'
@@ -20,7 +20,7 @@ source=('https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/OFL.txt'
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Regular.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-Semibold.otf'
         'https://raw.githubusercontent.com/Omnibus-Type/Manuale/master/fonts/otf/Manuale-SemiboldItalic.otf')
-sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
+sha256sums=('6f5869d0892d8c06cabcccce3726cacc849bd0a96b83bef5850402ab2b9fce71'
             'e59dec2cd10f9db1ab18c4e00b522e1aa9afb25d42009823dfb2ac841a187342'
             '1f9b46d33ce29e5f34c5b1ab20f42a049aa16b208693a6d41b7cb090fd41666a'
             '3a6c31ad38e6702aa2b0202f63542c49a4a99a198d71ecd75f419a3bc06e2ed0'
@@ -37,5 +37,5 @@ sha256sums=('1f19fae3e59d403f53162b0b161eb345ebee3080757fc754e4e3c022e8ab3bdf'
 package() {
     install -d ${pkgdir}/usr/share/fonts/${pkgname}/
     install -m644 ${srcdir}/*.otf ${pkgdir}/usr/share/fonts/${pkgname}/
-    install -D -m644 ${srcdir}/OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
+    install -D -m644 ${pkgname}-${pkgver}-${pkgrel}-OFL.txt ${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt
 }
