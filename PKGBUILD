@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-current-git
-pkgver=68.0+04cd81779251
+pkgver=68.0+eca185a483d6
 pkgrel=1
 pkgdesc="More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE"
 arch=('i686' 'x86_64')
