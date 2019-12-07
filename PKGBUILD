@@ -1,7 +1,7 @@
 # Maintainer: Edgar Toll <edjopato@gmail.com>
 pkgname=snoopy
 pkgver=2017.12.13
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="software tool to design and animate hierarchical graphs, among others Petri nets"
 arch=("x86_64")
