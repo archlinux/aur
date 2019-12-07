@@ -2,14 +2,14 @@
 
 pkgname='beancount-cryptoassets'
 pkgdesc='Price sources for Beancount that provide prices for various cryptoassets'
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 arch=('any')
 url="https://github.com/xuhcc/beancount-cryptoassets"
 license=('GPL')
 depends=('beancount')
 source=("https://github.com/xuhcc/beancount-cryptoassets/archive/v${pkgver}.tar.gz")
-sha256sums=('86cf49e96c9a07d94b38631b94ff82cce2553f521ab6297a64c3c58c822a00bb')
+sha256sums=('2c7c099fe42dc02171d4c2850f37310dec8c61865f8ac4ae51e200888d774f75')
 
 package () {
     cd "${pkgname}-${pkgver}"
