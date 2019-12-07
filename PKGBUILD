@@ -1,7 +1,7 @@
 # Maintainer: Alexander Samoylenko <lxmnk@tuta.io>
 pkgname=xidlehook
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="xautolock rewrite in Rust, with a few extra features"
 url="https://gitlab.com/jD91mZM2/xidlehook"
 arch=("x86_64")
