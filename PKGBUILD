@@ -1,5 +1,4 @@
 # Maintainer: Robert Manner <the_manni at users.sf.net>
-
 _lang=eng-hun
 pkgname=dict-freedict-${_lang}
 pkgver=0.2.1
