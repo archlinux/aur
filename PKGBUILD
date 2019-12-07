@@ -1,8 +1,8 @@
 # Maintainer: Alexander Fasching <fasching.a91@gmail.com>
 pkgname=direwolf-git
 _pkgname=direwolf
-pkgver=1.5.beta4.r103.gd5cec4d
-pkgrel=2
+pkgver=1.5.beta4.r105.gf08ed51
+pkgrel=1
 pkgdesc="Software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/wb2osz/direwolf"
@@ -13,17 +13,14 @@ provides=('direwolf')
 conflicts=('direwolf')
 source=('git+https://github.com/wb2osz/direwolf.git#branch=dev'
         '0001-Add-build-option-for-udev-path.patch'
-        '0002-Fix-ptrdiff_t-error.patch'
         'direwolf.service'
         'direwolf-kiss.service')
 sha1sums=('SKIP'
           'c768819622aa10092a1dc3481e4f2340b9674593'
-          'db8b403e4b5f88dc025f8eaa9ff20307ae9d24b4'
           '66366c7a4e8d3768013f9036f2681a86d4b8ad88'
           'eea3a3fb334645cd8a1e2604dc6c6b024148722a')
 sha256sums=('SKIP'
             '3c80f0350df3959a759906722837514aedb0488e008a6ba5081cd727fce7e2ad'
-            'ba7e6f0fa27ed19cc8615feeaefd887d5c45c6ce9ec5cf5d861bc216969b06de'
             'a1efe2bb96470bc52faa747708b195a685dc454f3d9c91f6bf4d39ab94d3608a'
             '2a2e4acc769a20afebdfdcd21640fd17b0c4217ceb7ecb3378f9ee5c45fadc68')
 
@@ -35,7 +32,6 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     git apply ../0001-Add-build-option-for-udev-path.patch
-    git apply ../0002-Fix-ptrdiff_t-error.patch
 }
 
 build() {
