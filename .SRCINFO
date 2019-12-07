@@ -16,9 +16,8 @@ pkgbase = gnome-firmware
 	depends = fwupd
 	depends = libxmlb
 	depends = libsoup
-	provides = gnome-firmware-updater
-	conflicts = gnome-firmware-updater
-	source = gnome-firmware::git+https://gitlab.gnome.org/hughsie/gnome-firmware-updater.git#commit=6abef18306271aafe0e9834bced8aa637063b8cb
+	replaces = gnome-firmware-updater
+	source = gnome-firmware::git+https://gitlab.gnome.org/hughsie/gnome-firmware-updater.git#tag=3.34.0
 	sha256sums = SKIP
 
 pkgname = gnome-firmware
