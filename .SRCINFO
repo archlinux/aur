@@ -1,7 +1,7 @@
 pkgbase = neomutt-autocrypt
 	pkgdesc = A version of community/neomutt with added autocrypt
 	pkgver = 20191129
-	pkgrel = 5
+	pkgrel = 6
 	url = https://neomutt.org/
 	arch = x86_64
 	license = GPL
