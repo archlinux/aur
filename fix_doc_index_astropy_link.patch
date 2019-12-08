@@ -1,0 +1,12 @@
+diff -ura a/docs/index.rst b/docs/index.rst
+--- a/docs/index.rst	2017-10-24 00:54:21.000000000 +0800
++++ b/docs/index.rst	2019-12-09 00:58:09.911329672 +0800
+@@ -26,7 +26,7 @@
+   plots (airmass, parallactic angle, sky maps).
+ * Determining observability of sets of targets given an arbitrary set of
+   constraints (i.e., altitude, airmass, moon separation/illumination, etc.).
+-* `Astropy`_ powered!
++* `Astropy <astropy.org>`_ powered!
+ 
+ Links
+ =====

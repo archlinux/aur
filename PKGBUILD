@@ -16,13 +16,16 @@ makedepends=('python-setuptools'
              'python-astroquery'
              'graphviz')
 checkdepends=('python-pytest-astropy' 'python-pytest-mpl')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a113c9a7f3107a433e3c4bf22e238259')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'fix_doc_index_astropy_link.patch')
+md5sums=('a113c9a7f3107a433e3c4bf22e238259'
+         'be56be5926b43589b273c16544c5241a')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i -e '/auto_use/s/True/False/' setup.cfg
+    patch -Np1 -i "${srcdir}/fix_doc_index_astropy_link.patch"
 }
 
 build() {

@@ -16,7 +16,9 @@ pkgbase = python-astroplan
 	makedepends = python-astroquery
 	makedepends = graphviz
 	source = https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-0.6.tar.gz
+	source = fix_doc_index_astropy_link.patch
 	md5sums = a113c9a7f3107a433e3c4bf22e238259
+	md5sums = be56be5926b43589b273c16544c5241a
 
 pkgname = python-astroplan
 	depends = python>=3.5
