@@ -51,7 +51,7 @@ build() {
     [[ ${_arch} == i686-w64-mingw32 ]] && underscore_flag='-DUSER_LABEL_PREFIX_UNDERSCORE'
     export CFLAGS="$underscore_flag"
     export CXXFLAGS="$underscore_flag"
-    ${_arch}-configure \
+    LIBS="-lssp" ${_arch}-configure \
       --disable-java \
       --disable-native-java \
       --disable-csharp \
