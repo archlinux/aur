@@ -4,22 +4,23 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi
-_pkgver=5.3.3
+_pkgver="5.4.1-beta.2"
+# use beta because of electron 7 compatibility
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.'
 arch=(x86_64 i686)
 url='https://getferdi.com/'
 license=(Apache)
-depends=(electron4)
+depends=(electron)
 conflicts=('ferdi-git')
 makedepends=(expac git npm python2)
 source=("git+https://github.com/getferdi/$pkgname#tag=v$_pkgver"
         'ferdi.desktop'
         'ferdi.sh')
 sha512sums=('SKIP'
-            'e09649fd9daa2b8391ae7a60e3f81c056269d71afc22fe891c89611eb6c927a2b3b9e0bc69aeb859d75bb8bc7a104197d9f956345bd227a5ac995ef93a2bb68c'
-            '54586148db4c1df88099485beae49f7a069fdcbca35ebb4fb3df3a15963f295712d8d9dfeddb1402b3676447eb2e9ea07b28808b0c611fca72617e32777ea7e8')
+            'SKIP'
+            'SKIP')
 
 prepare() {
   # Prepare Python 2 for later
