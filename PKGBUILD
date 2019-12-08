@@ -1,7 +1,7 @@
 # Maintainer Mircea Mihalea <mircea at mihalea dot ro>
 
 pkgname=bitwarden-pyro-git
-pkgver=v1.1.1.r0.gea4fa2e
+pkgver=v1.1.2.r0.g117724b
 pkgrel=1
 pkgdesc="Bitwarden python interface built with Rofi"
 url="https://github.com/mihalea/bitwarden-pyro"
@@ -18,7 +18,7 @@ license=('MIT')
 arch=('any')
 provides=('bwpyro')
 conflicts=('bwpyro')
-source=("git+https://github.com/mihalea/${pkgname%-git}.git#tag=v1.1.1")
+source=("git+https://github.com/mihalea/${pkgname%-git}.git#tag=v1.1.2")
 md5sums=('SKIP')
 
 pkgver() {

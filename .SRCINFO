@@ -1,6 +1,6 @@
 pkgbase = bitwarden-pyro-git
 	pkgdesc = Bitwarden python interface built with Rofi
-	pkgver = v1.1.1.r0.gea4fa2e
+	pkgver = v1.1.2.r0.g117724b
 	pkgrel = 1
 	url = https://github.com/mihalea/bitwarden-pyro
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = bitwarden-pyro-git
 	optdepends = wmctrl: Provide window focusing for auto typing
 	provides = bwpyro
 	conflicts = bwpyro
-	source = git+https://github.com/mihalea/bitwarden-pyro.git#tag=v1.1.1
+	source = git+https://github.com/mihalea/bitwarden-pyro.git#tag=v1.1.2
 	md5sums = SKIP
 
 pkgname = bitwarden-pyro-git
