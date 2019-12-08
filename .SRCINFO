@@ -1,0 +1,14 @@
+pkgbase = brother-hll3270cdw-lpr-bin
+	pkgdesc = LPR driver for Brother HL-L3270CDW printer
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hll3270cdw_us_eu_as
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103926/hll3270cdwpdrv-1.0.2-0.i386.deb
+	md5sums = c5a011c34dcfe55d43585bcac9e852bb
+
+pkgname = brother-hll3270cdw-lpr-bin
+
