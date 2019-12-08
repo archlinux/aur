@@ -1,5 +1,5 @@
 pkgbase = secure-delete
-	pkgdesc = Secure file, disk, swap, memory erasure utilities
+	pkgdesc = Secure file, disk, swap, memory erasure utilities(Fork of THC util)
 	pkgver = 3.1a
 	pkgrel = 1
 	url = https://github.com/GIJack/secure_delete
