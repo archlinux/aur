@@ -16,4 +16,3 @@ package() {
     cd "$srcdir/$pkgname"
     make DESTDIR="$pkgdir/" install
 }
-
