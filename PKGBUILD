@@ -2,7 +2,7 @@
 pkgbase=python-astroplan
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="A python package to help astronomers plan observations"
 arch=('i686' 'x86_64')
@@ -13,10 +13,11 @@ makedepends=('python-setuptools'
              'python-pytz'
              'python-astropy-helpers'
              'python-sphinx-astropy'
-             'python-astroquery')
+             'python-astroquery'
+             'graphviz')
 checkdepends=('python-pytest-astropy' 'python-pytest-mpl')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('db3afc36fbe8458475c10cc32aab735c')
+md5sums=('a113c9a7f3107a433e3c4bf22e238259')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,6 +30,7 @@ build() {
     python setup.py build --use-system-libraries --offline
 
     msg "Building Docs"
+    python -c "from astroplan import download_IERS_A; download_IERS_A()"
     python setup.py build_docs
 }
 
@@ -56,6 +58,7 @@ package_python-astroplan-doc() {
     pkgdesc="Documentation for Python astroplan module"
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }

@@ -1,6 +1,6 @@
 pkgbase = python-astroplan
 	pkgdesc = A python package to help astronomers plan observations
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://astroplan.readthedocs.io
 	arch = i686
@@ -14,8 +14,9 @@ pkgbase = python-astroplan
 	makedepends = python-astropy-helpers
 	makedepends = python-sphinx-astropy
 	makedepends = python-astroquery
-	source = https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-0.5.tar.gz
-	md5sums = db3afc36fbe8458475c10cc32aab735c
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/a/astroplan/astroplan-0.6.tar.gz
+	md5sums = a113c9a7f3107a433e3c4bf22e238259
 
 pkgname = python-astroplan
 	depends = python>=3.5

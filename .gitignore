@@ -2,5 +2,7 @@ src
 pkg
 *.src.tar.gz
 *.tar.gz
+*.tar.bz2
 *.part
 *.pkg.tar.xz
+*.log
