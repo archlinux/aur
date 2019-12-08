@@ -1,5 +1,5 @@
---- mapsoft-20191110-alt1/SConstruct.orig	2018-11-29 11:36:12.955661421 +0300
-+++ mapsoft-20191110-alt1/SConstruct	2018-11-29 11:38:21.523645029 +0300
+--- mapsoft-20191201-alt1/SConstruct.orig	2018-11-29 11:36:12.955661421 +0300
++++ mapsoft-20191201-alt1/SConstruct	2018-11-29 11:38:21.523645029 +0300
 @@ -17,6 +17,7 @@
  # Create environment, add some methods
  
