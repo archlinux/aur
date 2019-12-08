@@ -1,0 +1,21 @@
+pkgbase = orbterm-git
+	pkgdesc = Orbital Terminal, compatible with Redox and Linux - git version
+	pkgver = 0.3.6.r4.g4ffdd27
+	pkgrel = 1
+	url = https://gitlab.redox-os.org/redox-os/orbterm
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = sdl2
+	provides = orbterm
+	source = orbterm-git::git+https://gitlab.redox-os.org/redox-os/orbterm
+	sha256sums = SKIP
+
+pkgname = orbterm-git
