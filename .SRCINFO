@@ -1,11 +1,12 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 3.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat/cheat
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
+	makedepends = git
 	optdepends = fzf: for Fuzzy Finder integration
 	optdepends = bash-completion: for bash completions
 	optdepends = fish: for fish completions
