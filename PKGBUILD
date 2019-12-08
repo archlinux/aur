@@ -1,12 +1,13 @@
-#Maintainer: Benjamin Chretien <chretien at lirmm dot fr>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 pkgdesc="Flexible Collision Library."
 url='https://github.com/flexible-collision-library'
 pkgname=fcl
 pkgver=0.5.0
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
-makedepends=('cmake')
+makedepends=('cmake' 'octomap')
 depends=('boost' 'libccd')
 optdepends=('octomap: collision detection with octrees'
             'tinyxml: support for global penetration depth test'
@@ -26,11 +27,6 @@ build() {
 
   make
 }
-
-#check() {
-#    cd "${srcdir}/build/test"
-#    make test
-#}
 
 package() {
   cd "${srcdir}/build"

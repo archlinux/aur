@@ -1,12 +1,13 @@
 pkgbase = fcl
 	pkgdesc = Flexible Collision Library.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flexible-collision-library
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = octomap
 	depends = boost
 	depends = libccd
 	optdepends = octomap: collision detection with octrees
