@@ -1,11 +1,12 @@
-# Maintainer: Mike Tigas <mike at tig dot as>
+# Maintainer: Minzord <minzord@protonmail.com<
+# Ex-Maintainer: Mike Tigas <mike at tig dot as>
 # Ex-Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Ex-Maintainer: end222 <pabloorduna98 at gmail dot com>
 # Ex-Maintainer: Jean Lucas <jean at 4ray dot co>
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=tor-browser-dev
-pkgver=9.5a2
+pkgver=9.5a3
 pkgrel=1
 pkgdesc="Tor Browser Bundle (alpha version; locale-aware international PKGBUILD)"
 arch=('i686' 'x86_64')
