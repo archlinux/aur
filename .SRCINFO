@@ -1,0 +1,15 @@
+pkgbase = qtcreator-plugin-layoutsupport-git
+	pkgdesc = Layout support for additional plugins for Qt Creator.
+	pkgver = r12.7616472
+	pkgrel = 1
+	url = https://github.com/Longhanks/qtcreator-plugin-layoutsupport
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	source = qtcreator-plugin-layoutsupport-git::git+https://github.com/Longhanks/qtcreator-plugin-layoutsupport.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-plugin-layoutsupport-git
+
