@@ -1,0 +1,7 @@
+/src/
+/pkg/
+/*.pkg.*
+
+/JSONTestSuite/
+/libfyaml/
+/yaml-test-suite/
