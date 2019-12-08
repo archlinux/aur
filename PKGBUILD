@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=sardi-icons
-pkgver=19.11
+pkgver=19.12
 pkgrel=1
 _destname="/usr/share/icons/"
 pkgdesc="Sardi is an icon collection for any linux distro with 6 different circular icons and 10 different kind of folders. "
