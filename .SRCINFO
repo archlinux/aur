@@ -1,7 +1,7 @@
 pkgbase = ocaml-csv
 	pkgdesc = OCaml CSV parsing library
-	pkgver = 2.2
-	pkgrel = 3
+	pkgver = 2.3
+	pkgrel = 1
 	url = https://github.com/Chris00/ocaml-csv
 	arch = i686
 	arch = x86_64
@@ -11,13 +11,14 @@ pkgbase = ocaml-csv
 	makedepends = ocamlbuild
 	makedepends = ocaml-lwt
 	makedepends = opam
+	makedepends = ocaml-uutf
 	depends = ocaml
 	options = !libtool
 	options = !strip
 	options = zipman
-	source = https://github.com/Chris00/ocaml-csv/archive/2.2.tar.gz
-	md5sums = ce8f8fbf965b5a58cb3f92e98113a9ec
-	sha256sums = ba9130c8a1a360d6f58f8206470b3be24b8e9626755335e0313922dc4cdea329
+	source = https://github.com/Chris00/ocaml-csv/archive/2.3.tar.gz
+	md5sums = 1d2e565c0f7214254efe3dfde566c048
+	sha256sums = e795287c086997ab3ca57e3d8e0c2fdbf6d5c977bef54249943432f1c932ad81
 
 pkgname = ocaml-csv
 
