@@ -15,7 +15,7 @@ pkgbase = brlcad
 	depends = libxft
 	depends = libxi
 	source = build.patch
-	source = brlcad-7.30.2::svn+https://svn.code.sf.net/p/brlcad/code/brlcad/branches/RELEASE#revision=r72838
+	source = brlcad-7.30.2::svn+svn://svn.code.sf.net/p/brlcad/code/brlcad/branches/RELEASE#revision=r72838
 	sha256sums = SKIP
 	sha256sums = SKIP
 

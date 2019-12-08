@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 depends=('libgl' 'libxft' 'libxi')
 makedepends=('cmake' 'subversion')
 install="${pkgname}.install"
-source=('build.patch' "${pkgname}-${pkgver}::svn+https://svn.code.sf.net/p/${pkgname}/code/${pkgname}/branches/RELEASE#revision=r72838")
+source=('build.patch' "${pkgname}-${pkgver}::svn+svn://svn.code.sf.net/p/${pkgname}/code/${pkgname}/branches/RELEASE#revision=r72838")
 sha256sums=('SKIP' 'SKIP')
 
 
