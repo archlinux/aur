@@ -1,19 +1,23 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vmaf-git
-pkgver=1.3.15.r36.g7e04231
+pkgver=1.3.15.r79.g12386f2
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
 license=('Apache')
 depends=('gcc-libs')
-makedepends=('git')
+makedepends=('git' 'meson')
 provides=('vmaf' 'libvmaf-git')
 conflicts=('vmaf' 'libvmaf-git')
 replaces=('libvmaf-git')
 source=('git+https://github.com/Netflix/vmaf.git')
 sha256sums=('SKIP')
+
+prepare() {
+    mkdir -p vmaf/libvmaf/build
+}
 
 pkgver() {
     cd vmaf
@@ -21,20 +25,21 @@ pkgver() {
 }
 
 build() {
-    make -C vmaf
+    arch-meson vmaf/libvmaf/build vmaf/libvmaf
+    ninja -v -C vmaf/libvmaf/build
+}
+
+check() {
+    ninja -v -C vmaf/libvmaf/build test
 }
 
 package() {
-    make -C vmaf DESTDIR="$pkgdir" INSTALL_PREFIX='/usr' install
+    DESTDIR="$pkgdir" ninja -v -C vmaf/libvmaf/build install
     
-    # binary executables
-    install -D -m755 vmaf/src/libvmaf/vmaf{,ossexec} -t "${pkgdir}/usr/bin"
-    local _file
-    for _file in moment ms_ssim psnr ssim
+    local _bin
+    install -D -m755 vmaf/libvmaf/build/tools/vmaf -t "${pkgdir}/usr/bin"
+    for _bin in moment ms_ssim psnr ssim
     do
-        install -D -m755 vmaf/src/libvmaf/${_file} "${pkgdir}/usr/bin/vmaf-${_file}"
+        install -D -m755 "vmaf/libvmaf/build/tools/${_bin}" "${pkgdir}/usr/bin/vmaf-${_bin}"
     done
-    
-    # fix prefixes on pkgconfig file
-    sed -i 's|/usr/local|/usr|g' "${pkgdir}/usr/lib/pkgconfig/libvmaf.pc"
 }
