@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-dark-git
 	pkgdesc = A dark version of bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)
-	pkgver = 4.1.7.r1156.gb8449837c
+	pkgver = 4.2.0.r20.gf9422a293
 	pkgrel = 1
 	url = http://www.qbittorrent.org/
 	arch = i686
