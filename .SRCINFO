@@ -1,0 +1,16 @@
+pkgbase = kindr
+	pkgdesc = Kinematics and Dynamics for Robotics
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ANYbotics/kindr
+	arch = i686
+	arch = x86_64
+	license = BSD 3-Clause
+	makedepends = cmake
+	makedepends = gcc
+	depends = eigen
+	source = https://github.com/ANYbotics/kindr/archive/1.2.0.tar.gz
+	sha256sums = 05731cfe83b59e8efbc1f84f38105e7bdb3a38c0b30030c2a80c5f0c3870fb5d
+
+pkgname = kindr
+
