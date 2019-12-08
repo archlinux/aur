@@ -45,6 +45,7 @@ class CrossFileGenerator:
 
 	def get_properties_section(self):
 		return {'root':"'{}'".format(self.arch),
+			'sys_root':"'/usr/{}'".format(self.arch),
 			'c_args':[f for f in self.cflags.split(" ") if f],
 			'cpp_args':[f for f in self.cxxflags.split(" ") if f],
 			'c_link_args':[f for f in self.ldflags.split(" ") if f],
@@ -70,7 +71,7 @@ if __name__ == '__main__':
 	required.add_argument('--output-file', type=str, required=True, help='Write the generated cross file to this path')
 	optional.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS,
 						help='show this help message and exit')
-	optional.add_argument("--need-exe-wrapper", dest='need_exe_wrapper', action='store_true', help="Add wine as exec wrapper")
+	optional.add_argument("--need-exe-wrapper", dest='need_exe_wrapper', action='store_true', help="Add wine as exe wrapper")
 	args = parser.parse_args()
 	generator = CrossFileGenerator(args.arch, args.output_file, args.need_exe_wrapper)
 	generator.generate()
