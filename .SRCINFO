@@ -1,6 +1,6 @@
 pkgbase = selinux-sandbox
 	pkgdesc = sandboxing tool for SELinux
-	pkgver = 2.9
+	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = selinux-sandbox
 	depends = libcap-ng
 	depends = selinux-python
 	conflicts = policycoreutils<2.7
-	source = https://github.com/SELinuxProject/selinux/releases/download/20190315/selinux-sandbox-2.9.tar.gz
-	sha256sums = 01915f57f08642751dea550a87f82a6f2fcec754be48dcfa28266c14bd044262
+	source = https://github.com/SELinuxProject/selinux/releases/download/20191204/selinux-sandbox-3.0.tar.gz
+	sha256sums = 66fb4ea3a9e3d1e6004f13666b8390be751dd226a8496b995ed0332788758d0a
 
 pkgname = selinux-sandbox
 
