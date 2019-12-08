@@ -1,0 +1,18 @@
+pkgbase = sd-git
+	pkgdesc = Intuitive find & replace CLI
+	pkgver = 0.6.5.161.g03a10c1
+	pkgrel = 1
+	url = https://github.com/chmln/sd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = sd
+	conflicts = sd
+	source = sd::git+https://github.com/chmln/sd.git
+	sha256sums = SKIP
+
+pkgname = sd-git
+
