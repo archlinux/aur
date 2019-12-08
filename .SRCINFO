@@ -1,7 +1,7 @@
 pkgbase = qemu-user-static-bin
 	pkgdesc = A generic and open source machine emulator, statically linked
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.qemu.org
 	arch = x86_64
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = qemu-user-static-bin
 	provides = qemu-user
 	conflicts = qemu-user-static
 	conflicts = qemu-user
-	source = qemu-user-static_4.1-1+b4_amd64.deb::http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_4.1-1+b4_amd64.deb
-	sha256sums = 2015a082c6cc474b258638ebd6877dad9f96667d0cd88440b47e7d30a34370a9
+	source = qemu-user-static_4.1-3_amd64.deb::http://ftp.debian.org/debian/pool/main/q/qemu/qemu-user-static_4.1-3_amd64.deb
+	sha256sums = SKIP
 
 pkgname = qemu-user-static-bin
 
