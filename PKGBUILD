@@ -2,7 +2,7 @@
 
 pkgname=qtcreator-plugin-layoutsupport-git
 pkgver=r12.7616472
-pkgrel=4
+pkgrel=5
 pkgdesc="Layout support for additional plugins for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-layoutsupport"
@@ -38,5 +38,5 @@ package() {
 
     make DESTDIR="$pkgdir/" install
 
-    install -D -m644 "$srcdir"/$pkgname/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 "$srcdir"/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
