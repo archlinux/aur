@@ -1,11 +1,13 @@
 {
   "port": 3030,
   "noUpload": "true",
+  "writeLogs": "true",
   "storage": {
     "albumArtDirectory":"/var/lib/mstream/album-art",
-    "dbDirectory":"/var/lib/mstream/"
+    "dbDirectory":"/var/lib/mstream/",
+    "logsDirectory": "/var/log/mstream/"
   },
   "folders": {
-    "media": "/var/lib/mstream/media"
+    "media": { "root": "/var/lib/mstream/media"}
   }
 }
