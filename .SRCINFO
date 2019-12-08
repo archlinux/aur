@@ -1,7 +1,7 @@
 pkgbase = qtcreator-plugin-onedark-git
 	pkgdesc = OneDark style additions for Qt Creator.
 	pkgver = r31.e3da192
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Longhanks/qtcreator-plugin-onedark
 	arch = x86_64
 	license = MIT
