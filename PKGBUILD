@@ -5,7 +5,7 @@ _branch=master
 _use_gh_api=true
 _gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
 pkgname=${_pkgname,,}-git
-pkgver=0.6.0.r10.g83ae9d7
+pkgver=0.6.0.r23.gc2f3630
 pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=(x86_64)
@@ -13,6 +13,7 @@ url='https://github.com/BourgeoisLab/GPXLab'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
+optdepends=('qt5-translations: for Qt5 dialog translations')
 if [ "${_use_gh_api}" = true ]; then
   makedepends+=('jq')
 else
