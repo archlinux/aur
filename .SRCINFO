@@ -1,14 +1,14 @@
 pkgbase = python-backoff
 	pkgdesc = Function decoration for backoff and retry.
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/litl/backoff
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/b/backoff/backoff-1.9.2.tar.gz
-	sha512sums = 33bc0565eff99e1ce20693a52f9caea90d863c77412ca15b0ea75ae9da56591340f8832c4f8f6ae083baab63b3ba93fd8320c37d49fbaec88cdad80a75b2c9c0
+	source = https://files.pythonhosted.org/packages/source/b/backoff/backoff-1.10.0.tar.gz
+	sha512sums = 87f64612ec1d6f80d2f173846af196bd347f1fcc6c6f93275dd1cb3b5486789f3c6e98e1080ed6f3b13e28c1b056fb1baa6da73639d4b9b460fedf68bb012422
 
 pkgname = python-backoff
 
