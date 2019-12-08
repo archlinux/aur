@@ -12,7 +12,6 @@ source=('https://developer.apple.com/design/downloads/SF-Mono.dmg')
 md5sums=('d93f9f19c962547d18b72f532e91ecdd')
 
 prepare() {
-  dmg2img SF-Mono.dmg SF-Mono.img
   7z x SF-Mono.dmg
   7z x "SFMonoFonts/SF Mono Fonts.pkg"
   7z x "Payload~"
