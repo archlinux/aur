@@ -2,10 +2,10 @@
 
 pkgname=python-leapmotion
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Leapmotion python interface, compiled for python 3"
 arch=('i686' 'x86_64')
-makedepends=('swig' 'leap-motion-sdk' 'python-setuptools')
+makedepends=('swig3' 'leap-motion-sdk' 'python-setuptools')
 depends=('python' 'leap-motion-sdk')
 url="https://developer.leapmotion.com/downloads"
 license=('unknown')
