@@ -1,0 +1,15 @@
+pkgbase = lazy-ips
+	pkgdesc = IPS patcher for Linux
+	pkgver = 20191208
+	pkgrel = 1
+	url = https://github.com/btimofeev/lazy_ips
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = gendesk
+	depends = python-gobject
+	source = lazy-ips-20191208.tar.gz::https://github.com/btimofeev/lazy_ips/archive/v20191208.tar.gz
+	sha256sums = 24c8cc95aaaa72019d43ded7df3abc62669545839f61b5643cfb13a508a2cc03
+
+pkgname = lazy-ips
+
