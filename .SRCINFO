@@ -1,14 +1,14 @@
 pkgbase = python-eliot
 	pkgdesc = Logging that tells you why it happened
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://eliot.readthedocs.io
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python>3.5.2
-	source = eliot-1.10.0.tar.gz::https://github.com/itamarst/eliot/archive/1.10.0.tar.gz
-	md5sums = a2ac64be535f357e1be7572c1b3fbf57
+	source = eliot-1.11.0.tar.gz::https://github.com/itamarst/eliot/archive/1.11.0.tar.gz
+	md5sums = f6b1d2a98ebeff2eb50ce1ba6b2b952e
 
 pkgname = python-eliot
 
