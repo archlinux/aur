@@ -1,6 +1,6 @@
 pkgbase = balena-cli
 	pkgdesc = balena.io command line interface
-	pkgver = 11.19.0
+	pkgver = 11.19.1
 	pkgrel = 1
 	url = https://balena.io/
 	arch = i686
@@ -12,10 +12,10 @@ pkgbase = balena-cli
 	depends = nodejs>=6.0.0
 	optdepends = python: balena-preload
 	replaces = resin-cli
-	noextract = balena-cli-11.19.0.tgz
+	noextract = balena-cli-11.19.1.tgz
 	options = !strip
-	source = http://registry.npmjs.org/balena-cli/-/balena-cli-11.19.0.tgz
-	sha256sums = d25b892b24b69b7c149206d120ed5f438c2f06de2f1687f88283feb21c809d93
+	source = http://registry.npmjs.org/balena-cli/-/balena-cli-11.19.1.tgz
+	sha256sums = ee102ac814330f4452f04a5126edc152de6d1fb8302c515f56c894e4039f9caf
 	optdepends_x86_64 = lib32-glibc: emulated builds
 
 pkgname = balena-cli
