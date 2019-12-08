@@ -1,6 +1,6 @@
 
 pkgname=ttf-senty-free
-pkgver=20191104.fa2f7e91
+pkgver=20191208.b4d05d7c
 pkgrel=1
 pkgdesc="Senty Chinese handwritten font collection from Hanyi."
 arch=('any')
@@ -16,6 +16,7 @@ source=(
 'https://www.sentyfont.com/index_htm_files/HanyiSentyFingerPainting.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyFlorCalligraphy.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyGarden.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentyGraffiti.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyJournal.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyJoy.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyLotus.ttf'
@@ -24,6 +25,7 @@ source=(
 'https://www.sentyfont.com/index_htm_files/HanyiSentySIlkRoad.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySpringBrush.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentySpringTrip.ttf'
+'https://www.sentyfont.com/index_htm_files/HanyiSentySuciTablet.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyTang.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyTriumphCalligraphy.ttf'
 'https://www.sentyfont.com/index_htm_files/HanyiSentyVimalkirti.ttf'
@@ -49,6 +51,7 @@ sha256sums=(
 'b68210ace178c7c1a6eea71592d5e85d2dfb7c3a741e694342991b865e85dff8'
 '54b11e8f91184994d44fc8426791acd10eb0e2e572d1f16631378f9d4b237e3d'
 '55c68887b2cc8f6013cf7830af571fc6622f8001d4b1d7901c95e6697e6a9f8e'
+'d65fecde4aff5a4c28b6d2b0aeb01a6fed73a3da3aeda923dd4ddf9578bc3b73'
 '5aa6a76adefff1955e6a96bc68ca3ad21f76a22b7f7fc9cabf88354a32e814da'
 '2e25b9956ac5e904a06da770bb1efcc158542c045bbdbcf1c93e9cddb8dd8bd9'
 'e37fe124ae521036de2bafc40cfb24433346fed729020d56ce26d5a392424435'
@@ -57,6 +60,7 @@ sha256sums=(
 '049b38f3f002d90d434e24e0e1779c9c671af83f206028bad317c0ba42b09f7c'
 '101f2347ab4956cc2765e62a1f8e61c229e176637fefcf4caeea98a5b1d08ee4'
 'a655168643187466006f42bc60d214212a71be28d66672a218a020cc0eed0191'
+'25187a720258c6b4715a8f98dc94114322ede7356227b0a3258b6cc5cbc1d3a8'
 '2475f1eca03c008a785bd0ce2b533c517899a3ba42452524f0eee68c3f6ac203'
 '41b7c2d66406a27d8c16a5aed3d2cfabd34d45e6776cb4a3a20a72ff36641a83'
 '1d1cbbe37f5259e592a64a73c4b158f39c86ad8ea25d05cadf62043262a4e598'
