@@ -2,8 +2,8 @@
 
 pkgname=qtcreator-plugin-icontheme-git
 pkgver=r20.1fef9ee
-pkgrel=1
-pkgdesc="Client-side decorated unified title-/toolbar for Qt Creator."
+pkgrel=2
+pkgdesc="Custom icon theme for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-icontheme"
 license=('MIT')
