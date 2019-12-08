@@ -1,6 +1,6 @@
 pkgbase = dict-freedict-hun-eng
-	pkgdesc = Hungarian - English dictionaries for dictd from Freedict.org
-	pkgver = 0.3.1
+	pkgdesc = Hungarian - English dictionary for dictd from Freedict.org
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://www.freedict.org
 	install = freedict-hun-eng.install
@@ -10,8 +10,8 @@ pkgbase = dict-freedict-hun-eng
 	optdepends = dict-freedict-eng-hun: Dictionary for the reversed direction.
 	options = !strip
 	options = !zipman
-	source = https://downloads.sourceforge.net/project/freedict/Hungarian%20-%20English/0.3.1/freedict-hun-eng-0.3.1.tar.bz2
-	md5sums = dd4098c8041eb8b4dfe59dd0934bfd1c
+	source = https://download.freedict.org/dictionaries/hun-eng/0.4.1/freedict-hun-eng-0.4.1.dictd.tar.xz
+	md5sums = da311a9863649416df0281af6652a922
 
 pkgname = dict-freedict-hun-eng
 
