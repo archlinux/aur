@@ -1,0 +1,24 @@
+pkgbase = virtualbox-ext-oracle-5-test-build
+	pkgdesc = Oracle VM VirtualBox Extension Pack Test Build 5.2.35_135314
+	pkgver = 5.2.35_135314
+	pkgrel = 1
+	url = https://www.virtualbox.org/
+	install = virtualbox-ext-oracle-5-test-build.install
+	arch = x86_64
+	license = custom:PUEL
+	depends = virtualbox>=5.2.35
+	depends = virtualbox<6
+	optdepends = rdesktop: client to connect vm via RDP
+	provides = virtualbox-ext-oracle-5
+	provides = virtualbox-ext-oracle-5.2
+	conflicts = virtualbox-ext-oracle
+	conflicts = virtualbox-ext-oracle-5
+	conflicts = virtualbox-ext-oracle-5.0
+	conflicts = virtualbox-ext-oracle-5.2
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-5.2.35-135314.vbox-extpack
+	options = !strip
+	source = http://www.virtualbox.org/download/testcase/Oracle_VM_VirtualBox_Extension_Pack-5.2.35-135314.vbox-extpack
+	sha256sums = 738efcef9791196d7e292919bd9c2322960780b4881d4984f40103d2e37b082f
+
+pkgname = virtualbox-ext-oracle-5-test-build
+
