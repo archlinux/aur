@@ -2,7 +2,7 @@
 
 pkgname=qtcreator-plugin-onedark-git
 pkgver=r31.e3da192
-pkgrel=1
+pkgrel=2
 pkgdesc="OneDark style additions for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-onedark"
@@ -35,7 +35,8 @@ build() {
 
 package() {
     cd build
-    make DESTDIR="$pkgdir/" install
 
-    install -D -m644 "${srcdir}/$pkgname/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    make INSTALL_ROOT="$pkgdir/usr/" install
+
+    install -D -m644 "$srcdir"/$pkgname/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE"
 }
