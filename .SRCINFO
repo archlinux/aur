@@ -1,0 +1,13 @@
+pkgbase = k2tf-bin
+	pkgdesc = Kubernetes YAML to Terraform HCL converter
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/sl1pm4t/k2tf
+	arch = x86_64
+	license = Mozilla
+	provides = k2tf
+	source = https://github.com/sl1pm4t/k2tf/releases/download/v0.2.5/k2tf_0.2.5_linux_x86_64.tar.gz
+	sha256sums = 946a1100d6aa56b841051bfaa342d9edf3640ece4c56c6c5af94096d5bf4cca9
+
+pkgname = k2tf-bin
+
