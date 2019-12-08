@@ -15,13 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-_srcbasever=5.3-gnu
-_srcver=5.3.8-gnu
-_srcname=linux-${_srcbasever%-*}
-pkgver=${_srcver//-/_}
+pkgver=5.3.13_gnu
 pkgrel=1
-rcnver=5.3.7
-rcnrel=armv7-x13
+pkgdesc='Linux-libre'
+rcnver=5.3.10
+rcnrel=armv7-x15
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -31,9 +29,10 @@ makedepends=(
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # for linux-libre-chromebook
 options=('!strip')
+_srcname=linux-5.3
 source=(
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/$_srcbasever/linux-libre-$_srcbasever.tar.xz"{,.sign}
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/$_srcver/patch-$_srcbasever-$_srcver.xz"{,.sign}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver//_/-}/patch-${_srcname##*-}-gnu-${pkgver//_/-}.xz"{,.sign}
   "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_"{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
   config.i686 config.x86_64 config.armv7h    # the main kernel config files
   linux-armv7h.preset                        # armv7h preset file for mkinitcpio ramdisk
@@ -58,7 +57,7 @@ source_armv7h=(
   # Note: For stability reasons, AUFS has been removed in the RCN patch.
   # We are supporting AUFS in linux-libre-pck through PCK patch.
   # See https://wiki.parabola.nu/PCK for further details.
-  "https://repo.parabola.nu/other/rcn-libre/patches/${rcnver}/rcn-libre-${rcnver}-$rcnrel.patch"{,.sig}
+  "https://repo.parabola.nu/other/rcn-libre/patches/$rcnver/rcn-libre-$rcnver-$rcnrel.patch"{,.sig}
 
   # Arch Linux ARM patches
   0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
@@ -77,7 +76,7 @@ validpgpkeys=(
 )
 sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b7967a8988bd9e36d4e728cc573a36e6eac056dbcab2f9aa742f18cbb4fb3164f'
             'SKIP'
-            'eca168c4c460bf8d8fbf322e1aa9c6b509f205c7597142967648c09402de95c8438ae302b4920c8f120192b1a54286f0fb860955c66414f3a3c376e41f246391'
+            '3e9c95825f6852a0721a940c80b01b9772c17ae1680c1ce5a151e4f5b577a4a50f030aa0f2fbbc2b53b898b081bf33e67bfdeb513fe5535f95c4b479452264c3'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -85,10 +84,10 @@ sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b796
             'SKIP'
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
-            'dd1034b6af98180cdc0428649845f5313db2858024b3a4c82cc86442136cf3b736ce561497525008651d2b50b3d2d760f0134782a71b8668c5e18eef347bcd4f'
-            '53e6861e6f97eb7b8217df23d2d4fa670aeb8921e279c3522b39eda2d5e70fb09cb72e04538ab3cd3d160a853183c9abbdcf5595c2582f5be60991c98efe1d16'
+            'cf0eb007e3fef712d0aa8cfc4d26fb1ffaa83f359ab1111b455cedeae29dee5a6a61e032657c776deaad5d400241a0963cb4a8b0725e096847fac21963e6e973'
+            'ef6f0518b61f06da233118684998e10f07f221a2d4658ef82c161ebb354e82f263bbbb4e9ebf210103d693c428065375b64a13fdb990094a3e04868aa700ccc6'
             '0e80454eb0672d10d9497ef716a6474d3efc6ccdc4052fbd28146176167ca0d292124fc19e2b348bd31433dc046ed95ea40d61b49237ad72c6230d76fadb3419'
-            'aca591b5a2e838754e3c5fd2c0e50098ad54c2d0f990de5bf9cff8608e881daf0e37132294ed1a0e0a7b9e1c194c0b89f95da001d94febdb25a01c409060e3ac'
+            '03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
             'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
@@ -96,7 +95,7 @@ sha512sums=('85d83c973ef96ab414354414da70ab3e1c3df19c3088458498cec1594952878b796
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
             '5c48b0092ab6a31453e27e6345347fd2d066e1c306c4c8a9144260bf37d0d13879b5cfe688906a06627d39a40a37e229e5300a479b2c9159e93e05ea7adc6b0a'
             'b07d84cac1c784f5652a4681efd54ef89ce9cb0778bd2a633709b7150f9fb59db978dc290b92bcb69b8d211471c22a0be2a81a129318cd7efff601a3c591483c')
-sha512sums_armv7h=('f465d4229c82280040dbbe4f24a99bf0318298659218e66e1c05645d5921f01c74517eb9a4401928d6b1a221d2c09e360d270b08b0285864a8eaac022796ce0a'
+sha512sums_armv7h=('ffb94962db829fb1f86e3da3558f469dd51d12bb352f17a82daa67a03497b52409b2f53e52eb36569e7be8b3fa7460c3b3ce3ebe3589e8a202c45cbbde0d3162'
                    'SKIP'
                    '9724026836feefa67acb9644acf3ee89d465734af50b6637b8232b705c6259035d485cd1a1f0f08d189921eb75ad095b3e1f7f7e5e0e52302352c453f03ac820'
                    '41f9f7d58bb29311e09dd58105d173fb2e2a955c0e7d632bc8788c2f0a803a45281dfd2be1712d6ec93b58b9f440f3f8398f234bd7ded1c49b1c33b328478203'
@@ -119,17 +118,17 @@ esac
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
 
-  # add upstream patch
-  if [ "$_srcbasever" != "$_srcver" ]; then
-    patch -p1 -i ../patch-$_srcbasever-$_srcver
+  if [ "${_srcname##*-}-gnu" != "${pkgver//_/-}" ]; then
+    msg2 "Applying upstream patch..."
+    patch -p1 -i ../patch-${_srcname##*-}-gnu-${pkgver//_/-}
   fi
 
-  # add freedo as boot logo
+  msg2 "Adding freedo as boot logo..."
   install -m644 -t drivers/video/logo \
     ../logo_linux_{clut224.ppm,vga16.ppm,mono.pbm}
 
@@ -176,11 +175,11 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase^} kernel and modules"
+  pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-libre-firmware: firmware images needed for some devices')
-  provides=("LINUX-ABI_VERSION=${_srcver%%-*}")
+  provides=("LINUX-ABI_VERSION=${pkgver%%_*}")
 
   cd $_srcname
   local kernver="$(<version)"
@@ -203,7 +202,7 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  # armv7h kernels presets only work with ALL_kver=$kernver
+  # armv7h presets only work with ALL_kver=$kernver
   if [ "$CARCH" = "armv7h" ]; then
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
 
@@ -217,7 +216,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase^} kernel"
+  pkgdesc="Header files and scripts for building modules for $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -316,8 +315,8 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase^} kernel"
-  
+  pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
+
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -325,8 +324,8 @@ _package-docs() {
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
+  msg2 "Removing unneeded files..."
+  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
 
   msg2 "Moving HTML docs..."
   local src dst
@@ -346,16 +345,15 @@ _package-docs() {
 }
 
 _package-chromebook() {
-  pkgdesc="Kernel image sign for ${pkgbase^} - Chromebooks"
-  depends=(linux-libre=${_srcver%%-*})
-  provides=("${_replacesarchkernel[@]/%/-armv7-chromebook=${_srcver%%-*}}")
+  pkgdesc="Kernel image sign for $pkgdesc - Chromebooks"
+  depends=(linux-libre=${pkgver%%_*})
+  provides=("${_replacesarchkernel[@]/%/-armv7-chromebook=${pkgver%%_*}}")
   conflicts=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
   replaces=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
   install=linux-chromebook.install
 
   cd $_srcname
 
-  msg2 "Setting options for device tree compiler..."
   cp ../kernel.its .
   mkimage -D "-I dts -O dtb -p 2048" -f kernel.its kernel.itb
   dd if=/dev/zero of=bootloader.bin bs=512 count=1
