@@ -1,6 +1,6 @@
 pkgbase = bitw-git
-	pkgdesc = Minimalist BitWarden client with Secret Service API implementation
-	pkgver = r40.8c8d0e9
+	pkgdesc = Minimalist BitWarden client with Secret Service API implementation - git version
+	pkgver = r46.17ac675
 	pkgrel = 1
 	url = https://github.com/mvdan/bitw
 	arch = x86_64
@@ -11,8 +11,9 @@ pkgbase = bitw-git
 	arch = aarch64
 	license = BSD
 	makedepends = git
-	makedepends = go
-	source = bitw::git+https://github.com/mvdan/bitw
+	makedepends = go-pie
+	provides = bitw
+	source = bitw-git::git+https://github.com/mvdan/bitw
 	sha256sums = SKIP
 
 pkgname = bitw-git
