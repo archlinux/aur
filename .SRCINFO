@@ -1,7 +1,7 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 3.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cheat/cheat
 	arch = x86_64
 	license = MIT

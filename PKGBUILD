@@ -3,7 +3,7 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
 pkgver=3.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64')
 url="https://github.com/cheat/cheat"
@@ -66,7 +66,7 @@ package() {
         -type f \
         -perm 644 \
         -exec \
-            install -Dm644 "{}" \
+            install -m644 "{}" \
             "$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
 	install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/cheat"
 }
