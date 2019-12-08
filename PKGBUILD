@@ -1,4 +1,4 @@
-# Maintainer: Emin Pandžić <poisonimy at protonmail dot com>
+# Maintainer: Nicole Watterson <poisonimy at protonmail dot com>
 pkgname=liboqs-git
 pkgver=0.2.0.r18.gb4b26228
 pkgrel=1
