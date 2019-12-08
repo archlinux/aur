@@ -1,0 +1,14 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!*.install
+!ChangeLog
+
+# common wing-man files
+!*.diff
+!*.patch
+
+
