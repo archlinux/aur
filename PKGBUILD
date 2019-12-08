@@ -1,3 +1,4 @@
+# Maintainer: Julien Machiels <julien.machiels@protonmail.com>
 # Maintainer: Erik Sonnleitner <es@delta-xi.net>
 pkgname=ripme-git
 _pkgname=ripme
@@ -7,11 +8,11 @@ pkgdesc="Automated picture album downloader for various websites"
 arch=('i686' 'x86_64')
 url="https://github.com/RipMeApp/ripme.git"
 license=('MIT')
-depends=('java-runtime-headless')
+depends=('java-runtime')
 makedepends=('git' 'maven')
 source=('ripme::git+http://github.com/ripmeapp/ripme#branch=master')
 provides=('ripme')
-conflicts=('ripme')
+conflicts=('ripme' 'ripme-headless-git')
 md5sums=('SKIP')
 
 build() {
