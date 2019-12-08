@@ -1,0 +1,16 @@
+pkgbase = fcitx-dbus-commit-string
+	pkgdesc = An add-on for fcitx to commit string via D-Bus
+	pkgver = v1.0.r0.g48a3951
+	pkgrel = 1
+	url = https://github.com/amosbird/fcitx-dbus-commit-string
+	arch = x86_64
+	license = custom:MIT
+	makedepends = cmake
+	depends = fcitx>=4.2.9.2
+	depends = dbus>=1.1.0
+	provides = fcitx-dbus-commit-string=v1.0-1
+	source = fcitx-dbus-commit-string::git+https://github.com/amosbird/fcitx-dbus-commit-string.git
+	md5sums = SKIP
+
+pkgname = fcitx-dbus-commit-string
+
