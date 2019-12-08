@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.3.2.24472
+pkgver=4.3.3.24545
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://www.scootersoftware.com'
@@ -22,8 +22,8 @@ depends=('fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' '
 makedepends=('sed')
 source_x86_64=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("http://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('db0d68128cfc4db7e253256340bc682584e45d5c127cbed2f3f9344e388c99f2')
-sha256sums_x86_64=('648f4cc6195d0ddb0dd135913adfcb11333f5bd3dc81beaa11a533dd455ea0f6')
+sha256sums_i686=('8ce5e2f2b9364044d441e0fcc94dcfbaba1e5784dcc09aead0805fe81b5c6fce')
+sha256sums_x86_64=('9d9a7e9c01b3e2b1ade8528a1367eb1280eaf57b16f3fa47785aa079c0f55c1f')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -54,8 +54,6 @@ options=('!strip') # Do not strip binaries because it breaks them down
   sed -i 's|/usr/|${PREFIX}/usr/|g' install.sh
   sed -i 's|${PREFIX}/usr/bin|/usr/bin|g' install.sh
   sed -i '/-h \/lib64/{N;N;d;}' install.sh
-  sed -i 's|/ext/ld.so.conf.d|/etc/ld.so.conf.d|g' install.sh
-  sed -i 's|/etc/ld.so.conf.d|${PREFIX}/etc/ld.so.conf.d|g' install.sh
   sed -i "/ldconfig$/d" install.sh
  }
 
@@ -77,7 +75,6 @@ package_bcompare() {
 
   # Prepare the directory skeleton needed for install.sh
   cp -r "${_install_dir}/bin"  "${pkgdir}/"
-  cp -r "${_install_dir}/etc"  "${pkgdir}/"
   cp -r "${_install_dir}/lib"  "${pkgdir}/"
   cp -r "${_install_dir}/usr"  "${pkgdir}/"
 
@@ -89,7 +86,6 @@ package_bcompare() {
   mv bin lib usr/
 
   # Fix wrong paths
-  sed -i "s|"${_install_dir}"|/usr|g" etc/ld.so.conf.d/bcompare.conf
   sed -i "s|"${_install_dir}"|/usr|g" usr/bin/bcompare
 
   # Remove KDE, Gnome and Xfce files
