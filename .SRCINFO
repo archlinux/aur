@@ -1,0 +1,13 @@
+pkgbase = alienware-alpha-wmi
+	pkgdesc = A simple script for controlling the lights on the Alienware Alpha/Steam Machine taken from SteamOS
+	pkgver = 2.58
+	pkgrel = 1
+	url = http://repo.steampowered.com/
+	arch = any
+	license = BSD-2
+	depends = sudo
+	source = http://repo.steampowered.com/steamos/pool/main/s/steamos-base-files/steamos-base-files_2.58.tar.xz
+	md5sums = 4d46e47f14de407199ba00e88ad3b538
+
+pkgname = alienware-alpha-wmi
+
