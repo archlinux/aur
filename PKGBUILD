@@ -6,7 +6,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.1122.0_7_g8da65fc90
+pkgver=2019.1205.0_15_g52a0d9801
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
