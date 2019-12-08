@@ -7,7 +7,7 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2019.9
-pkgrel=11
+pkgrel=12
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -15,8 +15,9 @@ license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 makedepends=('git' 'cargo' 'npm' 'rpm')
 install="$pkgname.install"
+_commit='85f5f891ca36ff6e55d5fa22d685694726a61d12'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
-        'git+https://github.com/mullvad/mullvadvpn-app-binaries.git'
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
         "$pkgname.desktop"
         'update-relays.sh')
 sha256sums=('SKIP'
@@ -24,7 +25,7 @@ sha256sums=('SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
             'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
 validpgpkeys=('A6A4778440D27368967A7A3578CEAA8CB72E4467')
-             # tagger Linus Färnstrand <linus at mullvad dot net> 1570795216 +0200
+             # Linus Färnstrand (code signing key) <linus at mullvad dot net>
 
 prepare() {
 	# Point the submodule to our local copy
@@ -35,7 +36,11 @@ prepare() {
 	git submodule update
 
 	# Verify git tag
-	git tag -v "$pkgver"
+	git verify-tag "$pkgver"
+
+	# Verify git commit
+	#cd "$srcdir/mullvadvpn-app-binaries"
+	#git verify-commit "$_commit"
 }
 
 build() {
