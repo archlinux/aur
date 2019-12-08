@@ -1,8 +1,7 @@
-# Maintainer: Alexander Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
-# Former Maintainer (thanks man!) : Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Christopher Vittal ("viralstitch") <chris@vittal.dev>
 
 pkgname=htslib
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
@@ -13,6 +12,7 @@ provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
 source=(https://github.com/samtools/htslib/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha256sums=('7ae44dd9faeb4c4293e9bb4815164ac28c6c6fae81fed4791df2fa878f57a972')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -42,5 +42,3 @@ package() {
   # htslib shared library comes installed as 0644
   chmod +x $pkgdir/usr/lib/libhts.so.*.*
 }
-
-md5sums=('2ac92c9c3eef9986345ac69a05dd4d24')
