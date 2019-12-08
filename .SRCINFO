@@ -1,33 +1,27 @@
 pkgbase = libselinux
 	pkgdesc = SELinux library and simple utilities
-	pkgver = 2.9
-	pkgrel = 4
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	groups = selinux
 	license = custom
-	makedepends = python2
 	makedepends = python
 	makedepends = ruby
 	makedepends = xz
 	makedepends = swig
-	depends = libsepol>=2.8
+	depends = libsepol>=3.0
 	depends = pcre
-	optdepends = python2: python2 bindings
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libselinux=2.9-4
+	provides = selinux-usr-libselinux=3.0-1
 	conflicts = selinux-usr-libselinux
-	source = https://github.com/SELinuxProject/selinux/releases/download/20190315/libselinux-2.9.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/20191204/libselinux-3.0.tar.gz
 	source = libselinux.tmpfiles.d
-	source = 0001-libselinux-Use-Python-distutils-to-install-SELinux-p.patch
-	source = 0001-libselinux-Fix-security_get_boolean_names-build-erro.patch
-	sha256sums = 1bccc8873e449587d9a2b2cf253de9b89a8291b9fbc7c59393ca9e5f5f4d2693
+	sha256sums = 2ea2b30f671dae9d6b1391cbe8fb2ce5d36a3ee4fb1cd3c32f0d933c31b82433
 	sha256sums = afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc
-	sha256sums = 47e8c4b6c67d1778bd0a8de782ea6d2406e8de3ad13064c85d53deba222100af
-	sha256sums = 9a0bcf7b8e2ec60fe954d2bbcd527f3b5d34e4cdb898ab19cd8b2ef869eed241
 
 pkgname = libselinux
 
