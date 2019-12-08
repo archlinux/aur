@@ -2,7 +2,7 @@
 
 pkgname=qtcreator-plugin-csd-git
 pkgver=r48.6d5462f
-pkgrel=4
+pkgrel=5
 pkgdesc="Client-side decorated unified title-/toolbar for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-csd"
@@ -38,5 +38,5 @@ package() {
 
     make DESTDIR="$pkgdir/" install
 
-    install -D -m644 "$srcdir"/$pkgname/LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 "$srcdir"/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
