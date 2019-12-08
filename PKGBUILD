@@ -3,12 +3,12 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
 pkgver=3.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('x86_64')
 url="https://github.com/cheat/cheat"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go-pie' 'git')
 optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions'
             'fish: for fish completions')
@@ -22,10 +22,6 @@ sha256sums=('ca503a7125a753cea84da6367f28dd07153513ecabef8d9761c1bc3c543ce240'
             'SKIP')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	git submodule init
-	git config submodule.cheatsheats.url "$srcdir/cheatsheets"
-	git submodule update
 
 	# create gopath
 	mkdir -p "$srcdir/gopath"
@@ -64,7 +60,13 @@ package() {
 		"$pkgdir/usr/share/fish/completions/cheat.fish"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -dm644 "$pkgdir/usr/share/$pkgname/cheatsheets/community"
-	cp "$srcdir/"cheatsheets/* "$pkgdir/usr/share/$pkgname/cheatsheets/community"
-	install -Dm744 "$srcdir/conf.yml" -t "$pkgdir/etc/cheat"
+    install -dm755 "${pkgdir}/usr/share/cheat/cheatsheets/community"
+    find "$srcdir/cheatsheets" \
+        -maxdepth 1 \
+        -type f \
+        -perm 644 \
+        -exec \
+            install -Dm644 "{}" \
+            "$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
+	install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/cheat"
 }
