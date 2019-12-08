@@ -1,18 +1,19 @@
 pkgbase = mingw-w64-meson
 	pkgdesc = Meson wrapper for MinGW (mingw-w64)
 	pkgver = 1
-	pkgrel = 16
+	pkgrel = 17
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = any
 	license = GPL
+	makedepends = mingw-w64-environment
 	depends = meson
 	depends = mingw-w64-gcc
 	depends = mingw-w64-pkg-config
 	optdepends = mingw-w64-wine: Set NEED_WINE env variable in your PKGBUILD to use wine support in meson
 	optdepends = mingw-w64-cmake
-	source = toolchain-mingw.meson
+	source = toolchain_generator.py
 	source = meson-mingw-wrapper
-	sha256sums = a611b990aff3b6755f1f61a3724ec94ad629c68a662b1a3863d03e8efc6d1100
+	sha256sums = e7635c6cbb1c4c99fc41910083febfb3d0f7d4b6995537a2fb7ab55322ee2910
 	sha256sums = c91f2bbcafad7b742f13c6bd46324a03b70066b348621ce6a20f4a05005985ef
 
 pkgname = mingw-w64-meson
