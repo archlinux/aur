@@ -9,7 +9,7 @@ _srcname=neomutt
 # This package should mirror community/neomutt,
 # except for added autocrypt
 pkgver=20191129
-pkgrel=3
+pkgrel=4
 pkgdesc='A version of community/neomutt with added autocrypt'
 url='https://neomutt.org/'
 license=('GPL')
@@ -23,15 +23,12 @@ optdepends=('python: keybase.py')
 makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m')
 _github='https://github.com/neomutt/neomutt'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/$pkgver.tar.gz"
-        "fix-vfolder-segfault.patch"
 	"default-ca-certificates.patch")
 sha256sums=('c339e17b676d0a9a8db6dd1c9acac3db4b217c6b19050e5a1eec99b1b0b59a2f'
-            'fa6e03ea6ef031804bf4175c4ad0b9089fdb2552bc8271255e93d457c54adfe0'
 	    '410a364ae8249c969fc321f0f50ecb4603e9443bd73b31f58c8487e6b8b510e0')
 
 prepare() {
     cd "$_srcname-$pkgver"
-    patch -Np1 -i "$srcdir/fix-vfolder-segfault.patch"
     patch -Np1 -i "$srcdir/default-ca-certificates.patch"
 }
 
