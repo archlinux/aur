@@ -16,7 +16,7 @@ optdepends=(
 )
 install=freedict-${_lang}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-md5sums=('f429bd13a10033b0c26b1674cb02a5ad')
+md5sums=('da311a9863649416df0281af6652a922')
 
 package()
 {
