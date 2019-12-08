@@ -18,7 +18,7 @@ else
   _carch="${CARCH}"
 fi
 
-_version=72.0a1
+_version=73.0a1
 declare -A _build_id
 _build_id=(
 	[id]="$(curl https://ftp.mozilla.org/pub/${_name}/${_channel}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${_carch}.checksums | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
