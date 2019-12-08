@@ -10,10 +10,9 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-# Can be from either systemd or systemd-stable
-_commit='e51d9bf9e5ac5a6618c175cd9b5cfdc6733cd5d1'
-pkgver=243.162
-pkgrel=2
+_tag='ec298e702b87e2859f7f7864f51eef3360daf163' # git rev-parse v${pkgver}
+pkgver=244
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -35,8 +34,7 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 # you need to update the remotes of the git repositories, for example with the following commands:
 #   git -C systemd-stable remote set-url origin https://github.com/systemd/systemd-stable
 #   git -C systemd remote set-url origin https://github.com/systemd/systemd
-source=(# fragment is latest tag for source verification, final merge in prepare()
-        "git+https://github.com/systemd/systemd-stable#tag=v${pkgver%.*}?signed"
+source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -58,7 +56,7 @@ source=(# fragment is latest tag for source verification, final merge in prepare
         '30-systemd-update.hook')
 sha512sums=('SKIP'
             'SKIP'
-            '9348683829190628e25b7b3300fd880c426d555bde330d5fc5150a9a54b3ad9d4d1f2e69ea1dc6d6f086693dacc53c5af30f1fa7ad9b479791fd77bcdafa430e'
+            'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             '01de24951a05d38eca6b615a7645beb3677ca0e0f87638d133649f6dc14dcd2ea82594a60b793c31b14493a286d1d11a0d25617f54dbfa02be237652c8faa691'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -88,9 +86,6 @@ prepare() {
 
   # add upstream repository for cherry-picking
   git remote add -f upstream ../systemd
-  # merge the latest stable commit (fast-foward only to make sure
-  # the verified tag is in)
-  git merge --ff-only "${_commit}"
 
   local _c
   for _c in "${_backports[@]}"; do
@@ -104,17 +99,6 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
-}
-
-pkgver() {
-  cd "${pkgbase/-selinux}-stable"
-
-  # TODO: Switch to upstream versioning post v243!
-
-  local _version _count
-  _version='v243'
-  _count="$(git rev-list --count ${_version}..)"
-  printf '%s.%s' "${_version#v}" "${_count}"
 }
 
 build() {
