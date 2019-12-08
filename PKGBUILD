@@ -2,12 +2,12 @@
 
 pkgname=qtcreator-plugin-csd-git
 pkgver=r48.6d5462f
-pkgrel=1
+pkgrel=2
 pkgdesc="Client-side decorated unified title-/toolbar for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-csd"
 license=('MIT')
-depends=('qtcreator' 'qtcreator-plugin-layoutsupport' 'qtcreator-plugin-onedark')
+depends=('qtcreator' 'qtcreator-plugin-layoutsupport-git' 'qtcreator-plugin-onedark-git')
 makedepends=('git' 'qtcreator-src')
 source=("$pkgname"::git+https://github.com/Longhanks/qtcreator-plugin-csd.git)
 sha256sums=('SKIP')
