@@ -61,22 +61,6 @@ exists(/usr/lib/libftd2xx.so) {
     D2XX_LIBS    = /usr/lib/libftd2xx.so
 }
 
-# If you want Twitter support you must install a QT OAUTH library kQoAUTH
-#     http://github.com/kypeli/kQOAuth (Version >= 0.98 - tested with 0.98))
-# Set path to the root of the OAUTH installation
-# If you installed in /usr/local/kqoauth then set
-# KQOAUTH_INSTALL = /usr/local/kqoauth
-# This will automatically set:
-# KQOAUTH_INCLUDE = $${KQOAUTH_INSTALL}/src
-# KQOAUTH_LIBS    = $${KQOAUTH_INSTALL}/lib/libkqoauthd0.a   // if in DEBUG mode
-# KQOAUTH_LIBS    = $${KQOAUTH_INSTALL}/lib/libkqoauth0.a    // if in RELEASE mode
-# You may override the INCLUDE and LIB files if you like.
-# You *must* define KQOAUTH_INSTALL to use this feature.
-
-KQOAUTH_INSTALL = yes
-#KQOAUTH_INCLUDE = kqoauth
-#KQOAUTH_LIBS = kqoauth/libkqoauth.a
-
 # If you want 3D plotting, you need to install qwtplot3d
 #     http://qwtplot3d.sourceforge.net/
 # If you are running Linux and have font problems, download
@@ -95,15 +79,6 @@ exists(/usr/lib/libqwtplot3d.a) {
     QWT3D_INCLUDE = /usr/include/qwtplot3d/
     QWT3D_LIBS    = /usr/lib/libqwtplot3d.a 
 }
-
-
-# For TrainingPeaks.com upload/download you need to install the Qt Soap add-on
-#     http://qt.nokia.com/products/appdev/add-on-products/catalog/4/Utilities/qtsoap
-# If qtsoap.pri is install in /usr/local/qtsolutions/soap/ then set
-# QTSOAP_INSTALL = /usr/local/qtsolutions/soap
-# By default we use a copy of Qt Soap in the GIT repository.
-# You *must* define QTSOAP_INSTALL to use a different version than this.
-#QTSOAP_INSTALL = 
 
 # If you want support for Google Earth .kml files then you need
 # to install the Google libkml library
@@ -137,11 +112,11 @@ exists(/usr/lib/libkmldom.so) {
 # ICAL_LIBS    = $${ICAL_INSTALL}/lib/libical.a
 # You may override the INCLUDE and LIB files if you like.
 # You *must* define ICAL_INSTALL to use this feature.
-#packagesExist(libical) {
-#    ICAL_INSTALL = yes
-#    ICAL_INCLUDE = /usr/include/
-#    ICAL_LIBS    = -lical -licalss -licalvcal -lpthread
-#}
+packagesExist(libical) {
+    ICAL_INSTALL = yes
+    ICAL_INCLUDE = /usr/include/
+    ICAL_LIBS    = -lical -licalss -licalvcal -lpthread
+}
 
 # If you want support for using USB1 sticks in Train View on Windows
 # then install the SiLabs USBXpress Software Development Kit (SDK)
