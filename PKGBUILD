@@ -60,7 +60,7 @@ build() {
     popd
     # shared build
     mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
-    ${_arch}-configure \
+    LDFLAGS=-lssp ${_arch}-configure \
       --with-glib \
       --with-freetype \
       --with-cairo \
