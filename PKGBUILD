@@ -9,7 +9,7 @@ _srcname=neomutt
 # This package should mirror community/neomutt,
 # except for added autocrypt
 pkgver=20191129
-pkgrel=4
+pkgrel=5
 pkgdesc='A version of community/neomutt with added autocrypt'
 url='https://neomutt.org/'
 license=('GPL')

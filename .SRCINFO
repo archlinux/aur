@@ -1,7 +1,7 @@
 pkgbase = neomutt-autocrypt
 	pkgdesc = A version of community/neomutt with added autocrypt
 	pkgver = 20191129
-	pkgrel = 3
+	pkgrel = 5
 	url = https://neomutt.org/
 	arch = x86_64
 	license = GPL
@@ -27,10 +27,8 @@ pkgbase = neomutt-autocrypt
 	provides = neomutt
 	conflicts = neomutt
 	source = neomutt-autocrypt-20191129.tar.gz::https://github.com/neomutt/neomutt/archive/20191129.tar.gz
-	source = fix-vfolder-segfault.patch
 	source = default-ca-certificates.patch
 	sha256sums = c339e17b676d0a9a8db6dd1c9acac3db4b217c6b19050e5a1eec99b1b0b59a2f
-	sha256sums = fa6e03ea6ef031804bf4175c4ad0b9089fdb2552bc8271255e93d457c54adfe0
 	sha256sums = 410a364ae8249c969fc321f0f50ecb4603e9443bd73b31f58c8487e6b8b510e0
 
 pkgname = neomutt-autocrypt
