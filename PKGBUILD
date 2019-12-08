@@ -9,7 +9,7 @@
 _gitname=geany-plugins
 pkgname=$_gitname-git
 pkgver=1.36.0.r19.g0bfe89d1
-pkgrel=1
+pkgrel=2
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
 url='https://plugins.geany.org/'
@@ -17,7 +17,7 @@ license=('GPL')
 depends=('geany' 'ctpl' 'gpgme' 'gtkspell3' 'libgit2' 'lua51' 'webkit2gtk' 'vte3')
 makedepends=('git' 'intltool' 'python')
 provides=("$_gitname")
-conflicts=("$_gitname-svn" "$_gitname")
+conflicts=("$_gitname-svn" "$_gitname" 'geany-plugin-markdown')
 source=("git+https://github.com/geany/geany-plugins.git")
 md5sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = geany-plugins-git
 	pkgdesc = Various plugins for Geany
 	pkgver = 1.36.0.r19.g0bfe89d1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plugins.geany.org/
 	arch = x86_64
 	arch = i686
@@ -20,6 +20,7 @@ pkgbase = geany-plugins-git
 	provides = geany-plugins
 	conflicts = geany-plugins-svn
 	conflicts = geany-plugins
+	conflicts = geany-plugin-markdown
 	source = git+https://github.com/geany/geany-plugins.git
 	md5sums = SKIP
 
