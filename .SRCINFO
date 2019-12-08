@@ -1,0 +1,14 @@
+pkgbase = python-pycode-similar
+	pkgdesc = A simple plagiarism detection tool for python code
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/fyrestone/pycode_similar
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pycode_similar/pycode_similar-1.3.tar.gz
+	sha256sums = b3419acb9815336dd00ee2a538a7bb2459b1e7d919dda8f576bbb67b5a2546c6
+
+pkgname = python-pycode-similar
+
