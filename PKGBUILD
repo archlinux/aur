@@ -9,17 +9,13 @@ arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('chromaprint' 'faad2' 'gcc-libs' 'glibc' 'glib2' 'hidapi' 'libFLAC.so'
-'libglvnd' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmodplug' 'libmp4v2' 'libogg'
-'libportaudio.so' 'libportmidi.so' 'librubberband.so' 'libshout' 'libsndfile'
-'libtcmalloc.so' 'libusb-1.0.so' 'libvorbis.so' 'libvorbisenc.so'
-'libvorbisfile.so' 'libx11' 'opusfile' 'protobuf' 'qt5-base' 'qt5-script'
-'qt5-svg' 'qt5-x11extras' 'qtkeychain' 'soundtouch' 'sqlite' 'taglib' 'upower'
-'wavpack')
+depends=('chromaprint' 'faad2' 'hidapi' 'libid3tag' 'liblilv-0.so' 'libmad' 'libmp4v2' 'libogg' 'libportaudio.so' 
+'libportmidi.so' 'librubberband.so' 'libshout' 'opusfile' 'protobuf' 'qt5-script'
+'qt5-svg' 'qt5-x11extras' 'soundtouch' 'taglib' 'upower')
 makedepends=('git' 'glu' 'lv2' 'qt5-tools' 'scons' 'vamp-plugin-sdk')
-checkdepends=('xorg-server-xvfb')
-provides=("mixxx")
-conflicts=(${mixxx%-*})
+#checkdepends=('xorg-server-xvfb')
+provides=('mixxx')
+conflicts=('mixxx')
 source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git#branch=2.2"
         "${pkgname%-*}-scons-python3.patch::https://github.com/mixxxdj/mixxx/commit/73d02e58bcd.patch"
         "${pkgname%-*}-list-fix.patch::https://github.com/mixxxdj/mixxx/commit/03fad27e1f0.patch")
@@ -43,12 +39,12 @@ build() {
   export SCONSFLAGS="-j $(nproc)"
   scons qtdir=/usr/lib/qt \
 		prefix=/usr install_root="$pkgdir/usr" \
-		virtualize=0 \
-		opus=1 \
-		optimize=native \
 		build=release \
 		faad=1 \
 		modplug=1	
+		optimize=native \
+		opus=1 \
+		virtualize=0
 }
 
 #check() {
