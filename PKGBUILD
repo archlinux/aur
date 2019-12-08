@@ -1,7 +1,8 @@
 # Maintainer: Oliver Gatti
 # Contributor: Andrew Titmuss <andrew@coffeetocode.me>
+
 pkgname=scangearmp2
-pkgver=3.70
+pkgver=3.90
 pkgrel=1
 pkgdesc="Canon ScanGear MP v2 scanner driver."
 arch=('i686' 'x86_64')
@@ -11,10 +12,10 @@ depends=('gtk2' 'libusb')
 
 provides=('scangearmp2')
 
-source=("http://gdlp01.c-wss.com/gds/3/0100009933/01/scangearmp2-source-3.70-1.tar.gz" \
+source=("http://gdlp01.c-wss.com/gds/7/0100010487/01/scangearmp2-source-3.90-1.tar.gz" \
 	scangearmp2.desktop)
-sha256sums=('6d5c5b72d671bf8014260b060298e66e4b1fd1e1be475b5a7dbf4f9f9fc3edbc'
-            'bd600fd9f4e95172f3b0fe343fc10c86e62b51a5b1e69e28d331b8b653baad64')
+sha256sums=('eda14ffe3110bf329a50b00a5546f353e5daa5ee5d3dffd442ddfaf9c280d682'
+            'd9b449d6c78c92f296acef85209b30c7d80b8bac692f135d071730ef0051d64b')
 
 [[ "$CARCH" == "x86_64" ]] && _arch="64" || _arch="32"
 
