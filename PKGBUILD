@@ -56,10 +56,6 @@ _subarch=31
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
-# Enable ACS override patch (patch needs to be enabled with kernel command line options)
-# https://wiki.archlinux.org/index.php/PCI_passthrough_via_OVMF#Bypassing_the_IOMMU_groups_(ACS_override_patch)
-_enable_acs_override="y"
-
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.3
@@ -68,7 +64,7 @@ _srcname=linux-${_major}
 _clr=${_major}.14-874
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -83,6 +79,7 @@ source=(
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   'add-acs-overrides.patch::https://aur.archlinux.org/cgit/aur.git/plain/add-acs-overrides.patch?h=linux-vfio'
+  'futex-wait-multiple-5.2.1.patch::https://aur.archlinux.org/cgit/aur.git/plain/futex-wait-multiple-5.2.1.patch?h=linux-fsync'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -107,6 +104,15 @@ prepare() {
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
+
+    local src
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        msg2 "Applying patch $src..."
+        patch -Np1 < "../$src"
+    done
 
     ### Setting config
         msg2 "Setting config..."
@@ -162,12 +168,6 @@ prepare() {
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
         patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
-        fi
-
-    ### Enable ACS override patch
-        if [ "${_enable_acs_override}" = "y" ]; then
-        msg2 "Enabling ACS override patch..."
-        patch -Np1 -i "$srcdir/add-acs-overrides.patch"
         fi
 
     ### Get kernel version
@@ -333,7 +333,8 @@ sha256sums=('78f3c397513cf4ff0f96aa7d09a921d003e08fa97c09e0bb71d88211b40567b2'
             '205c9ec3d4ab126bb0f7c7c7a66f97ea89fdbbfa2145c49490c86709648ff538'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
-            'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1')
+            'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
+            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
