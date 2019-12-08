@@ -1,6 +1,6 @@
 pkgbase = icqdesktop-bin
 	pkgdesc = Official ICQ client for Linux (binary version)
-	pkgver = 10.0.6108
+	pkgver = 10.0.7855
 	pkgrel = 1
 	url = https://icq.com/linux/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = icqdesktop-bin
 	depends = libxcursor
 	depends = libxinerama
 	depends = libxrandr
-	source = https://r.mail.ru/clo20842175/exe.icq.com/x64/icq.tar.xz
-	source = icq.png::https://raw.githubusercontent.com/mailru/icqdesktop/master/gui/resources/main_window/logo_200.png
+	source = hhttps://hb.bizmrg.com/icq-www/linux/x64/icq.tar.xz
+	source = icq.png::https://raw.githubusercontent.com/mail-ru-im/im-desktop/master/gui/resources/main_window/logo_small_200.png
 	source = icq.desktop
-	sha256sums = 811994fe1b4f020d955a07872bdced26586af4c4a70aa840cb27d529a55e84d7
-	sha256sums = 892b6553c9a9319d75682fe762ed56ea0ea956f8d60d74a07879de44a18735d3
+	sha256sums = 4ac69d0e837a832ed92b5edbb892d7900a521bff7b622ff1b6b51ad1ccf53213
+	sha256sums = 646e5bfbe01b867a6398cfd2ba49c2e3a16da2596e77fd2137f9d4e1d4ebfd7d
 	sha256sums = 6f67421a78c5ea09af1e05b713a9d468fe1e2bda73e4fd20d7ec54c3184f2676
 
 pkgname = icqdesktop-bin
