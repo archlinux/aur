@@ -1,0 +1,25 @@
+pkgbase = moodledesktop-bin
+	pkgdesc = Moodle Desktop is our solution to accessing your Moodle courses on desktop or Surface tablets.
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://download.moodle.org/desktop/
+	arch = x86_64
+	arch = i686
+	license = Apache
+	license = custom: electron
+	license = custom: chromium
+	depends = gtk3
+	depends = libegl
+	depends = libgles
+	depends = libxss
+	depends = nss
+	depends = opera-ffmpeg-codecs
+	provides = moodledesktop
+	conflicts = moodledesktop
+	source_x86_64 = https://download.moodle.org/desktop/linux/moodledesktop-linux-64-v372.tar.gz
+	sha256sums_x86_64 = d93fa684e0f233271631131999b288564ba5d44b6833f312697f60c5e6bffcba
+	source_i686 = https://download.moodle.org/desktop/linux/moodledesktop-linux-32-v372.tar.gz
+	sha256sums_i686 = 8165914a24ca2815199a961998f86b9f39651b4f1130fe1dd80f079d14e0cb74
+
+pkgname = moodledesktop-bin
+
