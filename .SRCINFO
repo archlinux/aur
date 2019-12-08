@@ -1,0 +1,18 @@
+pkgbase = feh-git
+	pkgdesc = Fast and light imlib2-based image viewer
+	pkgver = 3.3.r0.g7774f62
+	pkgrel = 1
+	url = https://github.com/derf/feh
+	arch = x86_64
+	license = custom:MIT
+	makedepends = libxt
+	depends = imlib2
+	depends = curl
+	depends = libxinerama
+	depends = libexif
+	optdepends = imagemagick: support more file formats
+	source = feh-git::git+https://github.com/derf/feh-git.git
+	md5sums = SKIP
+
+pkgname = feh-git
+
