@@ -8,7 +8,7 @@ _wl_project=${_orgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=0.9.1.r5.g4629f19c
+pkgver=0.9.1.r5.g5c76397a
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=(x86_64)
@@ -16,12 +16,14 @@ url='https://www.openorienteering.org/apps/mapper/'
 license=('GPL3')
 depends=('qt5-base>=5.6' 'polyclipping>=6.1.3a' 'proj>=4.9.2' 'gdal')
 makedepends=('cmake>=3.2' 'qt5-tools>=5.6' 'doxygen' 'libcups')
+checkdepends=('qt5-imageformats')
 if [ "${_use_gh_api}" = true ]; then
   makedepends+=('jq')
 else
   makedepends+=('git')
 fi
-optdepends=('qt5-imageformats: Support for TIFF etc.')
+optdepends=('qt5-imageformats: Support for TIFF etc.'
+            'qt5-translations: for Qt5 dialog translations')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 install=${pkgname//-git}.install
