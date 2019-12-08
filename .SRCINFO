@@ -1,6 +1,6 @@
 pkgbase = zps
 	pkgdesc = A small utility for listing and cleaning up zombie processes.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/orhun/zps
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zps
 	makedepends = cmake
 	provides = zps
 	conflicts = zps
-	source = https://github.com/orhun/zps/archive/1.2.1.tar.gz
+	source = https://github.com/orhun/zps/archive/1.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = zps
