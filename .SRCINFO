@@ -1,7 +1,7 @@
 pkgbase = mat2
 	pkgdesc = Metadata anonymisation toolkit
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://0xacab.org/jvoisin/mat2
 	arch = any
 	license = GPL3
