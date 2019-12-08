@@ -2,10 +2,10 @@
 # Maintainer: Matheus <wlion@protonmail.com>
 
 pkgname=fedora-firefox-wayland-bin
-pkgver=71.0
-pkgrel=7
+pkgver=70.0.1
+pkgrel=4
 # fedora version
-fc="fc31"
+fc="fc29"
 pkgdesc="Fedora's firefox build with wayland enabled by default"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -20,9 +20,11 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech')
 
-source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm")
+source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm"
+		"https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/29/Everything/x86_64/os/Packages/l/libvpx-1.7.0-7.fc29.x86_64.rpm")
 
-sha512sums=('4fc9d3d74d929c7be08c0761faed082581cc3a97a8f0ae36edc38f231cd97d0f401d35983b20246c143ded2ecbf2323f44e16775016079635b155a8f12479630')
+md5sums=('45573d639497edf9ffaa3b3c155bae8d'
+         '25c72e7f95169902a92472ebbe75fc55')
 
 prepare() {
   # remove a bit of fedora's custom sutff 

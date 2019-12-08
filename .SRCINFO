@@ -1,7 +1,7 @@
 pkgbase = fedora-firefox-wayland-bin
 	pkgdesc = Fedora's firefox build with wayland enabled by default
-	pkgver = 71.0
-	pkgrel = 7
+	pkgver = 70.0.1
+	pkgrel = 4
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -28,11 +28,15 @@ pkgbase = fedora-firefox-wayland-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	provides = firefox
+	provides = libvpx=1.7
 	conflicts = firefox
+	conflicts = libvpx=1.7
 	options = !emptydirs
 	options = !strip
-	source = https://kojipkgs.fedoraproject.org/packages/firefox/71.0/7.fc31/x86_64/firefox-71.0-7.fc31.x86_64.rpm
-	sha512sums = 4fc9d3d74d929c7be08c0761faed082581cc3a97a8f0ae36edc38f231cd97d0f401d35983b20246c143ded2ecbf2323f44e16775016079635b155a8f12479630
+	source = https://kojipkgs.fedoraproject.org/packages/firefox/70.0.1/4.fc29/x86_64/firefox-70.0.1-4.fc29.x86_64.rpm
+	source = https://download-ib01.fedoraproject.org/pub/fedora/linux/releases/29/Everything/x86_64/os/Packages/l/libvpx-1.7.0-7.fc29.x86_64.rpm
+	md5sums = 45573d639497edf9ffaa3b3c155bae8d
+	md5sums = 25c72e7f95169902a92472ebbe75fc55
 
 pkgname = fedora-firefox-wayland-bin
 
