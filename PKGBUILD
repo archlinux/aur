@@ -1,6 +1,7 @@
 # Maintainer: Robert Manner <the_manni at users.sf.net>
+
 _lang=eng-hun
-pkgname=dict-freedict-${_lang}
+pkgname=dict-freedict-eng-hun
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="English - Hungarian dictionary for dictd from Freedict.org"
@@ -15,7 +16,7 @@ optdepends=(
 )
 install=freedict-${_lang}.install
 source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.dictd.tar.xz")
-md5sums=('b8cbb0514098db551cfe044bf1f1e68a')
+md5sums=('0c90c8ce3624358e7b0e52cb7f9ecc54')
 
 package()
 {
