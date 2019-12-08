@@ -1,14 +1,13 @@
 pkgbase = hamsket-bin
 	pkgdesc = Forked Free and Open Source messaging and emailing app that combines common web applications into one
 	pkgver = 0.5.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheGoddessInari/hamsket
 	arch = x86_64
 	license = GPL3
 	depends = alsa-lib
 	depends = bash
 	depends = desktop-file-utils
-	depends = gconf
 	depends = gtk2
 	depends = libnotify
 	depends = libxtst
