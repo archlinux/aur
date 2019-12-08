@@ -22,6 +22,10 @@ sha256sums=('ca503a7125a753cea84da6367f28dd07153513ecabef8d9761c1bc3c543ce240'
             'SKIP')
 
 prepare() {
+	cd "$pkgname-$pkgver"
+	git submodule init
+	git config submodule.cheatsheats.url "$srcdir/cheatsheets"
+	git submodule update
 
 	# create gopath
 	mkdir -p "$srcdir/gopath"
@@ -29,11 +33,8 @@ prepare() {
 
 	# fetch dependencies
 	msg "Fetching Go dependencies"
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	go get -d ./...
-	
-	cd "$srcdir/cheatsheets"
-	git submodule init
 }
 
 build() {
@@ -62,7 +63,7 @@ package() {
 	install -Dm755 "scripts/$pkgname-autocompletion.fish" \
 		"$pkgdir/usr/share/fish/completions/cheat.fish"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	
+
 	install -dm644 "$pkgdir/usr/share/$pkgname/cheatsheets/community"
 	cp "$srcdir/"cheatsheets/* "$pkgdir/usr/share/$pkgname/cheatsheets/community"
 	install -Dm744 "$srcdir/conf.yml" -t "$pkgdir/etc/cheat"
