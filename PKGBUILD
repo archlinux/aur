@@ -13,7 +13,7 @@ license=('custom')
 url="https://www.freedesktop.org/wiki/Openchrome/"
 depends=('libdrm' 'libxvmc' 'systemd-libs')
 optdepends=('unichrome-dri')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'systemd')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'systemd' 'libxv')
 #             'git')
 conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25'
            'xf86-video-via' 'xf86-video-unichrome' 'openchrome')
