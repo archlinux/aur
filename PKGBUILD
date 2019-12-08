@@ -3,7 +3,7 @@
 # Contributor: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=peazip-gtk2-portable
-pkgver=6.9.2
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies"
 arch=(x86_64)
@@ -15,14 +15,14 @@ conflicts=('peazip-gtk2' 'peazip-qt')
 options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip_portable-$pkgver.LINUX.x86_64.GTK2.tar.gz")
-sha256sums=('e3014e432cb3038ca18740613a4fb82d411b238259b48f376138ba3466ae01ae')
+sha256sums=('ab06c868a35858efbfe3e1f2e98b6939162dca79305262f0a5cdfedf1d63badc')
 
 package() {
   _srcpea="$srcdir/peazip_portable-$pkgver.LINUX.x86_64.GTK2"
   _pkgres="$pkgdir/opt/$pkgname/res"
   install -Dm755 "$_srcpea/peazip" "$pkgdir/opt/$pkgname/peazip"
   install -Dm644 "$_srcpea/copying.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
-  install -Dm644 "$_srcpea/peazip_help.pdf" "$pkgdir/usr/share/doc/$pkgname/peazip_help.pdf"
+  install -Dm644 "$_srcpea/peazip_help.pdf" "$pkgdir/opt/$pkgname/peazip_help.pdf"
   install -Dm644 "$_srcpea/FreeDesktop_integration/peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
   cp "$_srcpea/FreeDesktop_integration/peazip-alt(multilingual).desktop" "$srcdir/peazip.desktop"
 
