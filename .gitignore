@@ -1,0 +1,4 @@
+src/
+zstd/
+pkg/
+*.tar*

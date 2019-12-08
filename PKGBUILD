@@ -1,8 +1,8 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd-git
 _pkgname=zstd
-pkgver=1.1.0.r0.g83543a7
-pkgrel=2
+pkgver=1.4.4.r152.g49c6d492
+pkgrel=1
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64')
 url='https://github.com/facebook/zstd'
@@ -33,19 +33,4 @@ package() {
     make PREFIX="/usr" DESTDIR="$pkgdir/" install
     install -D -m755 contrib/pzstd/pzstd "$pkgdir/usr/bin/pzstd"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-    install -D -m644 PATENTS "${pkgdir}/usr/share/licenses/${_pkgname}/PATENTS"
 }
-
-check() {
-    cd "$srcdir/$_pkgname"
-
-    # The distribution includes a full test suite which unfortunately takes
-    # several minutes to run. Here we just perform a quick smoke test.
-    (
-        file="$(mktemp)"
-        trap "rm $file" exit
-        dd if=/dev/urandom of="$file" bs=4M count=1 status=none
-        <"$file" ./zstd - - | ./zstd -d - - | cmp "$file" -
-    )
-}
-
