@@ -1,8 +1,8 @@
 pkgbase = any-proxy-git
 	pkgdesc = A transparent proxy written in Golang
 	pkgver = 1.2
-	pkgrel = 2
-	url = https://github.com/julianxhokaxhiu/go-any-proxy
+	pkgrel = 3
+	url = https://github.com/ryanchapman/go-any-proxy.git
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -11,7 +11,7 @@ pkgbase = any-proxy-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/julianxhokaxhiu/go-any-proxy
+	source = git+https://github.com/ryanchapman/go-any-proxy
 	md5sums = SKIP
 
 pkgname = any-proxy-git
