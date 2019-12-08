@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Utility;X-SuSE-SyncUtility;
+Type=Application
+Exec=sh /usr/bin/cells-sync-bin-ui-launcher.sh
+Terminal=false
+Name=Cells Sync
+Comment=Cells Sync is a desktop synchronization client for Pydio Cells server
+GenericName=Folder Sync
+Icon=cells-sync-bin.png
+Keywords=cells-sync;syncing;file;sharing;

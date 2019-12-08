@@ -1,0 +1,10 @@
+[Unit]
+Description=Cells Sync is a desktop synchronization client for Pydio Cells server
+Documentation=https://github.com/pydio/cells-sync
+
+[Service]
+ExecStart=/usr/bin/cells-sync start --headless
+Restart=always
+
+[Install]
+WantedBy=default.target
