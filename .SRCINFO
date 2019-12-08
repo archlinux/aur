@@ -1,0 +1,25 @@
+pkgbase = libfyaml-git
+	pkgdesc = A fancy 1.2 YAML and JSON parser/writer.
+	pkgver = v0.3.r59.gc09ea10
+	pkgrel = 1
+	url = https://github.com/pantoniou/libfyaml
+	arch = x86_64
+	license = MIT
+	checkdepends = libyaml
+	checkdepends = check
+	makedepends = git
+	makedepends = python
+	makedepends = python-virtualenv
+	makedepends = python-pip
+	provides = libfyaml
+	provides = libfyaml=v0.3.r59.gc09ea10
+	conflicts = libfyaml
+	source = git+https://github.com/pantoniou/libfyaml.git
+	source = git+https://github.com/nst/JSONTestSuite.git
+	source = git+https://github.com/yaml/yaml-test-suite.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = libfyaml-git
+
