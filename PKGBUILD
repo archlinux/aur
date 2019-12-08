@@ -33,7 +33,6 @@ package() {
 		"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 	install -Dm644 "$srcdir/$pkgname.tmpfiles" \
 		"$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-	install -d "$pkgdir/var/lib/$pkgname"
 
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
@@ -41,4 +40,4 @@ package() {
 md5sums=('4225479932648ca186f35ba3d41509be'
          'dcb085039110ab6a87e944865a4fccdb'
          'f7c765324710c59738db0b8a9c124982'
-         '73f91c48628136882893a3dbb1919bae')
+         'da20784900831708c51edb58778f61cd')

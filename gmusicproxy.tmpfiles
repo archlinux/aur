@@ -1,2 +1,2 @@
-d /var/lib/gmusicproxy 700 gmusicproxy gmusicproxy
+d /var/lib/gmusicproxy 755 gmusicproxy gmusicproxy
 
