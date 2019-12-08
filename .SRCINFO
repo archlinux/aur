@@ -1,18 +1,18 @@
 pkgbase = certbot-dns-vultr
 	pkgdesc = Cerbot hooks for Vultr DNS
 	pkgver = 20190506
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/oefd/certbot-dns-vultr
 	arch = any
 	license = MIT
+	depends = certbot
 	depends = python
 	depends = python-certifi
 	depends = python-chardet
 	depends = python-idna
 	depends = python-requests
 	depends = python-urllib3
-	depends = certbot
-	source = https://raw.githubusercontent.com/oefd/certbot-dns-vultr/5acb7e2b6d66f21decb3a37ed0d7ec808eefe844/vultr-hook.py
-	sha256sums = 43c495691b0eb56d11f1d63beb6ecd5d24c8b7c4919af1282db1d3269c551e0f
+	source = certbot-dns-vultr-20190506-4.tar.gz::https://github.com/oefd/certbot-dns-vultr/archive/5acb7e2b6d66f21decb3a37ed0d7ec808eefe844.tar.gz
+	sha256sums = afd6998a24c52d87f95610de1da8038e9b6701b0532ba0e40d50d17e8d2ddcfb
 
 pkgname = certbot-dns-vultr
