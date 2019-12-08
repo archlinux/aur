@@ -8,7 +8,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2019.10
 _channel=beta
 pkgver=${_pkgver}.${_channel}2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -18,8 +18,9 @@ makedepends=('git' 'cargo' 'npm' 'rpm')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
+_commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2"
-        'git+https://github.com/mullvad/mullvadvpn-app-binaries.git'
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
         "${pkgname%-beta}.desktop"
         'update-relays.sh')
 sha256sums=('SKIP'
@@ -27,7 +28,7 @@ sha256sums=('SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
             'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
 validpgpkeys=('A6A4778440D27368967A7A3578CEAA8CB72E4467')
-              # tagger Linus Färnstrand <linus at mullvad dot net> 1575553382 +0100
+              # Linus Färnstrand (code signing key) <linus at mullvad dot net>
 
 prepare() {
 	# Point the submodule to our local copy
@@ -38,7 +39,11 @@ prepare() {
 	git submodule update
 
 	# Verify git tag
-	git tag -v "${_pkgver}-${_channel}2"
+	git verify-tag "${_pkgver}-${_channel}2"
+
+	# Verify git commit
+	cd "$srcdir/mullvadvpn-app-binaries"
+	git verify-commit "$_commit"
 }
 
 build() {
