@@ -1,7 +1,7 @@
 pkgbase = neomutt-autocrypt
 	pkgdesc = A version of community/neomutt with added autocrypt
-	pkgver = 20191129
-	pkgrel = 6
+	pkgver = 20191207
+	pkgrel = 1
 	url = https://neomutt.org/
 	arch = x86_64
 	license = GPL
@@ -24,11 +24,15 @@ pkgbase = neomutt-autocrypt
 	depends = kyotocabinet
 	depends = sqlite
 	optdepends = python: keybase.py
+	optdepends = ca-certificates: default CA certificates
 	provides = neomutt
 	conflicts = neomutt
-	source = neomutt-autocrypt-20191129.tar.gz::https://github.com/neomutt/neomutt/archive/20191129.tar.gz
+	source = neomutt-autocrypt-20191207.tar.gz::https://github.com/neomutt/neomutt/archive/20191207.tar.gz
+	source = neomutt-autocrypt-20191207.tar.gz.sig::https://github.com/neomutt/neomutt/releases/download/20191207/20191207.tar.gz.sig
 	source = default-ca-certificates.patch
-	sha256sums = c339e17b676d0a9a8db6dd1c9acac3db4b217c6b19050e5a1eec99b1b0b59a2f
+	validpgpkeys = 86C2397270DD7A561263CA4E5FAF0A6EE7371805
+	sha256sums = 1618873bd43915d437c5957f19ec2c4ecef6954a5aa647009b98f574ec63410e
+	sha256sums = SKIP
 	sha256sums = 410a364ae8249c969fc321f0f50ecb4603e9443bd73b31f58c8487e6b8b510e0
 
 pkgname = neomutt-autocrypt

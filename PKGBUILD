@@ -8,8 +8,8 @@ pkgname=neomutt-autocrypt
 _srcname=neomutt
 # This package should mirror community/neomutt,
 # except for added autocrypt
-pkgver=20191129
-pkgrel=6
+pkgver=20191207
+pkgrel=1
 pkgdesc='A version of community/neomutt with added autocrypt'
 url='https://neomutt.org/'
 license=('GPL')
@@ -19,13 +19,17 @@ depends=('glibc' 'gpgme' 'lua' 'notmuch-runtime' 'krb5' 'gnutls'
 	 'sqlite')
 provides=('neomutt')
 conflicts=('neomutt')
-optdepends=('python: keybase.py')
+optdepends=('python: keybase.py'
+            'ca-certificates: default CA certificates')
 makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m')
 _github='https://github.com/neomutt/neomutt'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/$pkgver.tar.gz"
-	"default-ca-certificates.patch")
-sha256sums=('c339e17b676d0a9a8db6dd1c9acac3db4b217c6b19050e5a1eec99b1b0b59a2f'
+        "$pkgname-$pkgver.tar.gz.sig::$_github/releases/download/$pkgver/$pkgver.tar.gz.sig"
+	'default-ca-certificates.patch')
+sha256sums=('1618873bd43915d437c5957f19ec2c4ecef6954a5aa647009b98f574ec63410e'
+            'SKIP'
 	    '410a364ae8249c969fc321f0f50ecb4603e9443bd73b31f58c8487e6b8b510e0')
+validpgpkeys=('86C2397270DD7A561263CA4E5FAF0A6EE7371805') # Richard Russon (flatcap) <rich@flatcap.org>
 
 prepare() {
     cd "$_srcname-$pkgver"
