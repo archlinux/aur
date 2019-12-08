@@ -1,6 +1,6 @@
 pkgbase = borgit
 	pkgdesc = Write your Borg backup jobs with sourced bash configuration files
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://eomanis.duckdns.org/permshare/borgit/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = borgit
 	depends = bash
 	depends = coreutils
 	depends = borg
-	source = https://eomanis.duckdns.org/permshare/borgit/borgit-0.0.2.tar.gz
-	sha384sums = 81c53bf9a7c60f82115937d679435bc1d40914a814ffcf62adb9deff1e595667dd026783afec0e1d4e93761a19f19daa
+	source = https://eomanis.duckdns.org/permshare/borgit/borgit-0.0.3.tar.gz
+	sha384sums = cfdd4856a2b1b87922a08cfa9bea2c210b0a349a25042a87f00ca065c7e1d39a8460ec62f65fabed29d1e36715afd082
 
 pkgname = borgit
 
