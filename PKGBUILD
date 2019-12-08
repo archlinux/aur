@@ -1,28 +1,25 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='mongodb-compass-isolated'
-pkgver='1.19.12'
+pkgver='1.20.1'
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom')
-depends=('electron3' 'libsecret')
-optdepends=('gnome-keyring')
-source=(
-	'https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.19.12.x86_64.rpm'
-	'launch.sh'
-)
-sha256sums=(
-	'63a6f7f72ce176d4f0568fa1443e65f995562c342c75ca67566f190dc7798d7e'
-	'a9e2a135358cbbb57be58dcbd7e6a906ab894ed6ac2f166ee688f9ee80accc87'
-)
+depends=('electron3-bin' 'krb5' 'libsecret')
+source=("$pkgname-$pkgver-$pkgrel::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.20.1.x86_64.rpm"
+		'launch.sh')
+sha256sums=('e88cf95562e4229a24e156114cbb3ed0d57e1fe84e523de6b87f405eeea0d88e'
+            '1bf3dd5e9363e750f4099acab9c8e22af7dc8645215d3fc4ed13abb0d38c5137')
 
 package() {
-	install -Dm644 "$srcdir/usr/share/mongodb-compass-isolated/resources/app.asar" "$pkgdir/usr/lib/mongodb-compass-isolated/app.asar"
-	cp -r "$srcdir/usr/share/mongodb-compass-isolated/resources/app.asar.unpacked/" "$pkgdir/usr/lib/mongodb-compass-isolated/app.asar.unpacked/"
-	install -Dm755 "$srcdir/launch.sh" "$pkgdir/usr/bin/mongodb-compass-isolated"
-	install -Dm644 "$srcdir/usr/share/mongodb-compass-isolated/LICENSE" "$pkgdir/usr/share/licenses/mongodb-compass-isolated/LICENSE"
-	install -Dm644 "$srcdir/usr/share/mongodb-compass-isolated/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/mongodb-compass-isolated/LICENSES.chromium.html"
-	install -Dm644 "$srcdir/usr/share/applications/mongodb-compass-isolated.desktop" "$pkgdir/usr/share/applications/mongodb-compass-isolated.desktop"
-	install -Dm644 "$srcdir/usr/share/pixmaps/mongodb-compass-isolated.png" "$pkgdir/usr/share/pixmaps/mongodb-compass-isolated.png"
+	cd "$srcdir/"
+	install -Dm644 "usr/share/$pkgname/resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
+	install -dm755 "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
+	cp -r --no-preserve=ownership --preserve=mode "usr/share/$pkgname/resources/app.asar.unpacked/"* "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
+	install -Dm755 "launch.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "usr/share/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "usr/share/$pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+	install -Dm644 "usr/share/applications/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "usr/share/pixmaps/$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
