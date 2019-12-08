@@ -1,13 +1,13 @@
-# Maintainer: antonin <antonin dot guyot75 at gmail dot com>
+# Maintainer: antonin <antonin dot guyot at icloud dot com>
 pkgname=vultr-cli
-pkgver=0.1.2
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="The Vultr Command Line Interface"
 arch=('i686' 'x86_64')
 license=('Apache 2.0')
 makedepends=('go' 'git')
 source=( "https://github.com/vultr/$pkgname/archive/v${pkgver}.tar.gz" )
-sha256sums=('ebf98ab885e0bb5de0f4448af26919df3d2db2114672aea4d2941f88e0f87410')
+sha256sums=('119868d5e670e16d9f366af6a6a02f5106d326852977e2e1772485dc980ff445')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
