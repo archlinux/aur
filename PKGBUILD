@@ -3,26 +3,22 @@
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
 license=('custom')
 depends=('htslib')
-optdepends=('luajit: needed for r2plot.lua vcfutils.lua'
-            'python2: needed for varfilter.py')
-options=('staticlibs')
+optdepends=('luajit: needed for r2plot.lua vcfutils.lua')
 source=(https://github.com/samtools/samtools/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
+sha256sums=('7b9ec5f05d61ec17bd9a82927e45d8ef37f813f79eb03fe06c88377f1bd03585')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
   # prevent shipped htslib to be used
   rm -rf htslib-$pkgver || exit 1
-
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \
-      -i misc/varfilter.py
 }
 
 build() {
@@ -53,9 +49,5 @@ package() {
   install -d $pkgdir/usr/include/bam
   install -Dm644 *.h $pkgdir/usr/include/bam
 
-  install -Dm644 libbam.a $pkgdir/usr/lib/libbam.a
-
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
-md5sums=('cca9a40d9b91b007af2ff905cb8b5924')
