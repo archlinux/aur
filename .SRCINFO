@@ -1,6 +1,6 @@
 pkgbase = sigma
 	pkgdesc = Generic Signature Format for SIEM Systems
-	pkgver = 0.14
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/Neo23x0/sigma
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = sigma
 	depends = python-argparse
 	depends = python-urllib3
 	depends = python-pymisp
-	source = sigma-0.14.tar.gz::https://github.com/Neo23x0/sigma/archive/0.14.tar.gz
+	source = sigma-0.15.0.tar.gz::https://github.com/Neo23x0/sigma/archive/0.15.0.tar.gz
 	source = pymisp.patch
-	sha256sums = 0b14552591dc6a976861d403597da194e57b16ac90dd5d728709b1538efe8122
+	sha256sums = c98d586af5c44e4f3d882564bb2e58da1e67e764c835a70fa6fe621546b8615c
 	sha256sums = f6489322336e0e72d967fd22be157365676626a27e1f7da19df88d9efeff2eb7
 
 pkgname = sigma
