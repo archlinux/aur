@@ -13,9 +13,9 @@ SHAREDIR="$HOME/.eve"
 
 check_elv() {
 	ELBIN=$(getdate $LAUNCHER/evelauncher)
-	ELBIN=$(expr $ELBIN / 60 \* 60)
+	ELBIN=$(expr $ELBIN / 180 \* 180)
 	ELARC=$(getdate $SETUPDIR/lib/evelauncher-$ELVER.tar.?z)
-	ELARC=$(expr $ELARC / 60 \* 60)
+	ELARC=$(expr $ELARC / 180 \* 180)
 	if [ "$ELBIN" -lt "$ELARC" ] ;then
 	    if [ -d "$LAUNCHER" ] ;then
 		rm -rf $LAUNCHER
@@ -84,7 +84,7 @@ check_wine() {
 	env WINEPREFIX=$WINEPREFIX \
 	    WINEDEBUG=-all \
 	    WINEDLLOVERRIDES="mscoree,mshtml=d" \
-	    $WINEPATH/wineboot
+	    $WINEPATH/wine wineboot
 	env WINEPREFIX=$WINEPREFIX \
 	    $WINEPATH/wine reg add \
 	    'HKCU\Software\Wine\FileOpenAssociations' \
@@ -120,7 +120,7 @@ desktop_msg() {
 
 getdate() {
     printf $(ls -l --time-style=+%s $1 2>/dev/null | cut -d' ' -f6) \
-	2>/dev/null || printf 60
+	2>/dev/null || printf 180
 }
 
 getval() {

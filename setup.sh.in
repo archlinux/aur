@@ -60,7 +60,7 @@ build_lib() {
 	else
 	    echo "Curl not found. Curl are needed for downloading evelauncher binaries."
 	    echo " Please install curl with your Package Manager."
-	    printf "\nExiting.\n\n"
+	    printf "\nLeaving.\n\n"
 	    exit 0
 	fi
 	printf "\nDownload evelauncher-$elver.tar.gz...\n\n"
@@ -69,7 +69,7 @@ build_lib() {
     rcsum="$(sha256sum ./evelauncher-$elver.tar.gz| cut -d' ' -f1)"
     if [ "$rcsum" != "$elcsum" ] ;then
 	printf "\n\nError: Checksum from evelauncher-$elver.tar.gz doesn't match!"
-	printf "\nExiting.\n\n"
+	printf "\nLeaving.\n\n"
 	exit 0
     fi
     printf "\nExtract evelauncher-$elver.tar.gz..."
@@ -77,7 +77,7 @@ build_lib() {
     echo "done."
     printf "\nClean up evelauncher directory..."
     cd evelauncher/
-    rm -f ./*.a ./*.la ./*.prl
+    rm -f ./*.a ./*.la ./*.prl ./libxcb*
     chmod 0755 ./*
     chmod 0644 ./*.qm ./*.conf ./errorpage/*
     echo "done."
@@ -112,7 +112,7 @@ check_req() {
     else
 	echo "Wine not found. Please install Wine with your Package Manager."
 	echo "WineHQ or Developer Version are recommended."
-	printf "\nExiting.\n\n"
+	printf "\nLeaving.\n\n"
 	exit 0
     fi
     if [ -x "$(which winetricks 2>/dev/null)" ] ;then
@@ -120,7 +120,7 @@ check_req() {
     else
 	echo "Winetricks not found. Winetricks are required."
 	echo " Please install Winetricks with your Package Manager."
-	printf "\nExiting.\n\n"
+	printf "\nLeaving.\n\n"
 	exit 0
     fi
 }
@@ -137,7 +137,7 @@ key=""
 
 if [ $(id -u) -ne 0 ] ;then
     printf "\nEVE Online Launcher Setup need root permissions."
-    printf "\nExiting.\n\n"
+    printf "\nLeaving.\n\n"
     exit 0
 fi
 

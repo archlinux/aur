@@ -65,7 +65,7 @@ check_req() {
 	printf "\nFollowing requirements are missing:\n"
 	printf "\n$req\n"
 	printf "\nPlease install these requirements with your Package Manager.\n"
-	printf "\nExiting.\n\n"
+	printf "\nLeaving.\n\n"
 	exit 0
     fi
 }
@@ -79,7 +79,7 @@ key=""
 
 if [ $(id -u) -ne 0 ] ;then
     printf "\nEVE Online Launcher Setup need root permissions."
-    printf "\nExiting.\n\n"
+    printf "\nLeaving.\n\n"
     exit 0
 fi
 

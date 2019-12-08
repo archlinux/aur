@@ -32,7 +32,7 @@ if [ ! -f "./makeself-2.4.0.run" ] ;then
     if [ ! -x "$(which curl)" ] ;then
 	echo "Curl not found. Curl are needed for downloading makeself build tool."
 	echo " Please install curl with your Package Manager."
-	printf "\nExiting.\n\n"
+	printf "\nLeaving.\n\n"
 	exit 0
     fi
     printf "\nGet makeself...\n\n"
@@ -41,7 +41,7 @@ fi
 rcsum="$(sha256sum ./makeself-2.4.0.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then
     printf "\n\nError: Checksum from makeself-2.4.0.run doesn't match!"
-    printf "\nExiting.\n\n"
+    printf "\nLeaving.\n\n"
     exit 0
 fi
 

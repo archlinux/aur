@@ -13,6 +13,7 @@ BCKUPDIR=$(xdg-user-dir DOCUMENTS 2>/dev/null || true)/EVE
 USERCONF=wineenv/drive_c/users/$(whoami)/Local\ Settings/Application\ Data/CCP/EVE
 
 cd $SHAREDIR
-tar czf $BCKUPDIR/eve_userconf_$(date +%F).tar.gz --exclude=cache --exclude=Browser "$USERCONF"
+tar czf $BCKUPDIR/eve_userconf_$(date +%F).tar.gz \
+    --exclude=cache --exclude=Browser --exclude=history.txt "$USERCONF"
 
 desktop_msg "User configuration in $BCKUPDIR stored."
