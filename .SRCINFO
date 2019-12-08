@@ -1,13 +1,13 @@
 pkgbase = google-font-download
-	pkgdesc = Google web font downloader
+	pkgdesc = Google Fonts web font downloader
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neverpanic/google-font-download
 	arch = any
 	license = BSD
 	depends = curl
 	depends = ncurses
-	source = https://github.com/neverpanic/google-font-download/archive/1.4.2.tar.gz
+	source = google-font-download-1.4.2-2.tar.gz::https://github.com/neverpanic/google-font-download/archive/1.4.2.tar.gz
 	sha256sums = 7779cc4cbad7504c823c7db5a07a48f7e7b553ee82b1f1d8c88237f1b95336dc
 
 pkgname = google-font-download
