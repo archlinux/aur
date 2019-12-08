@@ -1,6 +1,6 @@
 pkgbase = sardi-orb-colora-mixing-icons-git
 	pkgdesc = Based on Sardi Orb Colora you can use the modularity to combine elements and create a new icon theme.
-	pkgver = 19.10
+	pkgver = 19.12
 	pkgrel = 1
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
