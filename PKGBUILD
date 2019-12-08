@@ -3,7 +3,7 @@
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 
 pkgname=ferdi-bin
-pkgver=5.3.3
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
 arch=('x86_64')
