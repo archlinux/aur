@@ -1,0 +1,20 @@
+pkgbase = readonly-cache
+	pkgdesc = https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Read-only_cache + golang http server & more
+	pkgver = 0.0.2
+	pkgrel = 1
+	arch = any
+	makedepends = go
+	conflicts = skyminer
+	source = aur-local.sh
+	source = aur-remote-config.sh
+	source = readonly-cache.sh
+	source = readonly-cache.service
+	source = readonlycache.go
+	sha256sums = d476b95a400c9fc252f5402d9e911c36ff26675c9ee68e42f4b4696c65c9dd44
+	sha256sums = 3c7a25664ecaaef35a1b48081f350cd50d571d81e514861aa54c8b84d432efd4
+	sha256sums = 64153502b466979a987ba074bb3881095846d1af35de9b71eed029389ac085f8
+	sha256sums = ccfe41daa38a45b0498cc6dd9f6636db4a7e835ee5c48c3e952cac038006b5f4
+	sha256sums = 8aff1be292e5102b3ff4418af4a3d758b3c68d5fca89c7ca6ba18631bb7b180b
+
+pkgname = readonly-cache
+

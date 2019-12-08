@@ -1,0 +1,10 @@
+[Unit]
+Description=readonly cache service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/readonly-cache
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
