@@ -1,11 +1,13 @@
 pkgbase = dlib-git
 	pkgdesc = General purpose C++ library using contract programming and modern C++ techniques
-	pkgver = r7572.0072afbc
+	pkgver = r7718.b0e3c360
 	pkgrel = 1
 	url = http://www.dlib.net/
 	arch = i686
 	arch = x86_64
 	license = Boost Software License
+	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	optdepends = cblas: for BLAS support
 	optdepends = cuda: for CUDA support
