@@ -1,7 +1,7 @@
 pkgbase = libsemanage
 	pkgdesc = SELinux binary policy manipulation library
-	pkgver = 2.9
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://userspace.selinuxproject.org
 	install = libsemanage.install
 	arch = i686
@@ -9,21 +9,19 @@ pkgbase = libsemanage
 	groups = selinux
 	license = LGPL2.1
 	makedepends = flex
-	makedepends = python2
 	makedepends = python
 	makedepends = ruby
 	makedepends = swig
-	depends = libselinux>=2.8
+	depends = libselinux>=3.0
 	depends = audit
-	optdepends = python2: python2 bindings
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libsemanage=2.9-2
+	provides = selinux-usr-libsemanage=3.0-1
 	conflicts = selinux-usr-libsemanage
 	options = !emptydirs
-	source = https://github.com/SELinuxProject/selinux/releases/download/20190315/libsemanage-2.9.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/20191204/libsemanage-3.0.tar.gz
 	source = semanage.conf
-	sha256sums = 2576349d344492e73b468059767268dec1dabd8c35f3c7222c3ec2448737bc1c
+	sha256sums = a497b0720d54eac427f1f3f618eed417e50ed8f4e47ed0f7a1d391bd416e84cf
 	sha256sums = 5b0e6929428e095b561701ccdfa9c8b0c3d70dad3fc46e667eb46a85b246a4a0
 
 pkgname = libsemanage
