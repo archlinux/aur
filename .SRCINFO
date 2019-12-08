@@ -1,12 +1,12 @@
 pkgbase = python-frontmatter
 	pkgdesc = parse and manage posts with YAML frontmatter
-	pkgver = 0.4.5
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://pypi.org/project/mailto-uri/
+	url = https://pypi.org/project/python-frontmatter/
 	arch = any
-	license = GPL3
-	source = https://files.pythonhosted.org/packages/source/p/python-frontmatter/python-frontmatter-0.4.5.tar.gz
-	md5sums = 8967ad0b11d5da481752014cdc54a3d9
+	license = MIT
+	source = https://files.pythonhosted.org/packages/source/p/python-frontmatter/python-frontmatter-0.5.0.tar.gz
+	md5sums = 3b2acbcc68646e9e9868f3b10f7e6782
 
 pkgname = python-frontmatter
 

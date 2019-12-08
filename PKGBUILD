@@ -3,14 +3,14 @@
 # shellcheck disable=2148
 
 pkgname='python-frontmatter'
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="parse and manage posts with YAML frontmatter"
 arch=('any')
-url="https://pypi.org/project/mailto-uri/"
+url="https://pypi.org/project/python-frontmatter/"
 license=('MIT')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('8967ad0b11d5da481752014cdc54a3d9')
+md5sums=('3b2acbcc68646e9e9868f3b10f7e6782')
 
 build() {
   # shellcheck disable=2154
