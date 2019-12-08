@@ -1,0 +1,19 @@
+pkgbase = python-plantuml-git
+	pkgdesc = python interface to a plantuml web service instead of having to run java locally
+	pkgver = r14.93e1aac
+	pkgrel = 1
+	url = https://github.com/dougn/python-plantuml
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	depends = python-httplib2
+	optdepends = plantuml: to use a local plantuml
+	provides = python-plantuml
+	conflicts = python-plantuml
+	source = git+https://github.com/dougn/python-plantuml.git
+	md5sums = SKIP
+
+pkgname = python-plantuml-git
+
