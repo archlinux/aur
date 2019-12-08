@@ -2,7 +2,7 @@
 # Maintainer: erik dubois <erik.dubois@gmail.com>
 pkgname=sardi-orb-colora-mint-y-icons-git
 _pkgname=sardi-orb-colora-mint-y-icons
-pkgver=368.2d0e34ff
+pkgver=380.1597dde1
 pkgrel=1
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Sardi-Orb-Colora as main icon set"
 arch=('any')
