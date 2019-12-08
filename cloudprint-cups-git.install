@@ -1,5 +1,5 @@
 post_install() {
-	echo 'Run "sudo /usr/share/cloudprint-cups/setupcloudprint.py" to set up.'
+	echo 'Run setupcloudprint to connect to your Google account'
 }
 
 post_upgrade() {

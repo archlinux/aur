@@ -1,24 +1,22 @@
 pkgbase = cloudprint-cups-git
-	pkgdesc = Google Cloud Print driver for CUPS, allows printing to printers hosted on Google Cloud Print. (git version)
-	pkgver = 20160502.r15.gad53b23
-	pkgrel = 3
+	pkgdesc = Google Cloud Print driver for CUPS, allows printing to printers hosted on GCP - git version
+	pkgver = 20160502.r16.g1f27903
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/simoncadman/CUPS-Cloud-Print
-	install = cloudprint-cups.install
+	install = cloudprint-cups-git.install
 	arch = any
 	license = GPL3
-	makedepends = cups
 	makedepends = git
+	depends = cups
+	depends = ghostscript
+	depends = imagemagick
 	depends = python2
-	depends = python2-pycups
 	depends = python2-httplib2
+	depends = python2-pycups
 	depends = python2-six
 	provides = cloudprint-cups
-	provides = cupscloudprint
-	conflicts = cloudprint-cups
-	conflicts = cupscloudprint
-	options = !emptydirs
-	source = cloudprint-cups-git::git://github.com/simoncadman/CUPS-Cloud-Print.git#branch=capabilities-fix
+	source = cloudprint-cups-git::git+https://github.com/simoncadman/CUPS-Cloud-Print#branch=capabilities-fix
 	sha256sums = SKIP
 
 pkgname = cloudprint-cups-git
