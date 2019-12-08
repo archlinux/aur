@@ -13,6 +13,8 @@ changelog="CHANGELOG"
 # Dependencies
 depends=("jq" "streamlink" "wget")
 makedepends=("scdoc")
+optdepends=('mpv: for watching streams'
+            'vlc: for watching streams')
 
 # Download information
 _packagesig="${url}/blob/master/signatures/${pkgver}.tar.gz.sig"
