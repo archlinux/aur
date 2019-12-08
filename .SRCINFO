@@ -1,0 +1,16 @@
+pkgbase = qtcreator-plugin-tabs-git
+	pkgdesc = Tabs for Qt Creator.
+	pkgver = r27.9fec48c
+	pkgrel = 1
+	url = https://github.com/Longhanks/qtcreator-plugin-tabs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	depends = qtcreator-plugin-layoutsupport-git
+	source = qtcreator-plugin-tabs-git::git+https://github.com/Longhanks/qtcreator-plugin-tabs.git
+	sha256sums = SKIP
+
+pkgname = qtcreator-plugin-tabs-git
+
