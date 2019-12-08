@@ -10,7 +10,7 @@ _wl_project=${_pkgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.18.r0.g3721084
+pkgver=7.18.r13.gec0b0ad
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=(x86_64)
@@ -24,7 +24,8 @@ else
   makedepends+=('git')
 fi
 optdepends=('qt5-imageformats: Support for GeoTIFF images'
-            'qt5-pbfimageplugin: Support for PBF vector maps')
+            'qt5-pbfimageplugin: Support for PBF vector maps'
+            'qt5-translations: for Qt5 dialog translations')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
 if [ "${_use_gh_api}" = true ]; then
