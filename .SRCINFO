@@ -1,7 +1,7 @@
 pkgbase = clearine-git
 	pkgdesc = Beautiful Logout UI for X11 window manager
-	pkgver = 0.7.r2.g35e1a78
-	pkgrel = 1
+	pkgver = 0.7
+	pkgrel = 3
 	url = https://github.com/okitavera/clearine
 	arch = any
 	license = MIT
