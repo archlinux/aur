@@ -1,9 +1,8 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 
-_commit=v0.11.0
 pkgname=i3status-rust
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Resourcefriendly and feature-rich replacement for i3status, written in pure Rust'
 arch=('x86_64')
@@ -16,8 +15,8 @@ optdepends=('alsa-utils: for the volume block'
             'powerline-fonts: for all themes using the Powerline arrow char'
             'speedtest-cli: for the speedtest block'
             'ttf-font-awesome: for the Awesome icons')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha512sums=('343bec093b69f3966d2b342f30a1595bf443146afdeb03f70e60dbea352b1093fd1b917c7a2eb882c1ded7137dc32f8f7baa82d57372cd281fcc46ca7f247f91')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('e7d654a9612a8ab66d37022093a5a10e378fa93e4622ac799499643abdeddb29373c4f89318ce5bf6596f46a0522af23f833bcaae99560fe59815a9248e3d5df')
 
 build() {
   cd $pkgname-$pkgver
