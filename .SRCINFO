@@ -1,16 +1,16 @@
 pkgbase = elvish-bin
 	pkgdesc = A friendly and expressive Unix shell.
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elves/elvish
 	install = elvish.install
 	arch = x86_64
 	license = custom:2-clause BSD
 	depends = glibc
 	provides = elvish
-	source = https://dl.elv.sh/elvish-linux-amd64-0.12.tar.gz
+	source = https://dl.elv.sh/linux-amd64/elvish-v0.12.tar.gz
 	source = LICENSE
-	sha256sums = 3dabcce5b8c4c6a277ff5b31793dab728fef952180c82099de7303ee43a001bc
+	sha256sums = 20ef74019eb1318ec40656a08a9925e6f65075c7e988dfaed70b5420bf086c64
 	sha256sums = 1912e3785c0eb8d78e0ceed945b32596c11d0f9088aa5c1ad8f18f134f08c500
 
 pkgname = elvish-bin
