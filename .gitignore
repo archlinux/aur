@@ -5,6 +5,7 @@
 !0001-mkinitcpio-remove-preset-pacsave.patch
 !0002-mkinitcpio-sign-when-done.patch
 !gpg.conf
+!gpg-agent.conf
 !mkinitcpio-sign-install
 !mkinitcpio.install
 !89-mkinitcpio-sign-install.hook

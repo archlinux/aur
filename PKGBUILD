@@ -19,15 +19,16 @@ conflicts=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
 source=("https://sources.archlinux.org/other/${pkgname%-sign-patch}/${pkgname%-sign-patch}-$pkgver.tar.gz"{,.sig}
         "0001-mkinitcpio-remove-preset-pacsave.patch"
-        "gpg.conf" "89-mkinitcpio-sign-install.hook" "mkinitcpio-sign-install"
+        "gpg.conf" "gpg-agent.conf" "89-mkinitcpio-sign-install.hook" "mkinitcpio-sign-install"
         "0002-mkinitcpio-sign-when-done.patch")
 install=mkinitcpio.install
 sha256sums=('e6bff1cb78b677538eb9aace900b715fd59de8fc210b74fb9d899dfaa32bc354'
             'SKIP'
             '845569fa760f70c868ecb3dc8ae9667287970526dddaf403fdafcb716e8b3d51'
             'f6eebbd610dcb91288d39b93e4f7f7f47e1c13abaab2d379607d78d417bfd0c7'
+            '899983ccc567d84ab5d059e87ea4be322e429a2dd18c33f2e443ff5faf890f3d'
             'cb094c11de6d4ad903484dea41ef456a4a92c788e570ff8f21214021de7e4f14'
-            'dc555d3c8d774556732362ae707704b09b86c21c55f53f5c68215ca1d3b24b0a'
+            '3f0f42849fbb20c2d74ed9a7192d0e63770db5421377f3f4c227216d4f42a071'
             '5dc8d9ae28979ea09a6b2ba0192a211421b0a40518a8763bdc86c4f841926590')
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53'   # Dave Reisner
               '86CFFCA918CF3AF47147588051E8B148A9999C34'   # Evangelos Foutras
