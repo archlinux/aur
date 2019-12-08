@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=v10spell-git
-pkgver=r16.g75bfc6e
+pkgver=r22.gaf08869
 pkgrel=1
 epoch=
 pkgdesc='The spell program from the Tenth Edition Research UNIX system.'
@@ -40,8 +40,9 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  make PREFIX="${pkgdir}/usr" install
+  make PREFIX="${pkgdir}/usr" LIBDIR="${pkgdir}/usr/lib/v10spell" install
   install -D -m644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
   install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+  install -D -m644 spell.pdf $pkgdir/usr/share/doc/${pkgname%-*}/spell.pdf
 }
 
