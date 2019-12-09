@@ -1,6 +1,6 @@
 pkgbase = mini-diary-git
 	pkgdesc = Simple and secure journal app
-	pkgver = 2.5.0.r0.g490c483
+	pkgver = 2.5.1.r0.g1749c43
 	pkgrel = 1
 	url = https://github.com/samuelmeuli/mini-diary
 	install = mini-diary-git.install
@@ -12,7 +12,7 @@ pkgbase = mini-diary-git
 	depends = electron
 	provides = mini-diary-git
 	conflicts = mini-diary-git
-	source = mini-diary-git::git+https://github.com/samuelmeuli/mini-diary.git#commit=490c4832af406db2f377e25439bb60c84e2cb5ee
+	source = mini-diary-git::git+https://github.com/samuelmeuli/mini-diary.git#tag=v2.5.1
 	source = mini-diary-git.sh
 	source = mini-diary-git.desktop
 	source = mini-diary-git.install

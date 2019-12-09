@@ -1,7 +1,7 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=mini-diary-git
-pkgver=2.5.0.r0.g490c483
+pkgver=2.5.1.r0.g1749c43
 pkgrel=1
 pkgdesc="Simple and secure journal app"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("git" "npm" "imagemagick")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
-source=("${pkgname}::git+$url.git#commit=490c4832af406db2f377e25439bb60c84e2cb5ee"
+source=("${pkgname}::git+$url.git#tag=v2.5.1"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
