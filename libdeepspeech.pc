@@ -1,5 +1,5 @@
 Name: libdeepspeech
 Description: A TensorFlow implementation of Baidu's DeepSpeech architecture - C++ native client + devel files.
-Version: 0.5.1
-Libs: /usr/lib/libdeepspeech.so.0.5.1
+Version: 0.6.0
+Libs: /usr/lib/libdeepspeech.so.0.6.0
 Cflags: -I/usr/include
