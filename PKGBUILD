@@ -35,5 +35,5 @@ build() {
 
 package() {
         cd "$srcdir/go/bin"
-    	install -DT "$pkgname-$pkgver" "$pkgdir/usr/bin/vultr-cli"
+    	install -DT "$pkgname" "$pkgdir/usr/bin/vultr-cli"
 }
