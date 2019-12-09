@@ -2,7 +2,7 @@
 # Contributor: TheGoliath
 pkgname=squidguard
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
 arch=('x86_64')
 url="http://www.squidguard.org"
@@ -18,7 +18,7 @@ source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$
 sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e')
 
 prepare() {
-  cd "squidGuard-$pkgver/src"
+  cd "$pkgname-$pkgver/src"
 
   patch -i "${srcdir}/squidguard-patch.diff"
 }
