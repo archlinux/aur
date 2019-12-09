@@ -4,7 +4,7 @@ _pkgname=wedder
 pkgname="${_pkgname}-git"
 pkgdesc="Current weather info for status bars like polybar"
 
-pkgver=1.0.5.r2.gaeb4b6b
+pkgver=1.0.6.r0.g5842573
 pkgrel=1
 arch=("any")
 
