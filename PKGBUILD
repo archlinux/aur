@@ -6,7 +6,7 @@
 
 pkgname=dbeaver-ce
 pkgver=6.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An universal database tool for developers and database administrators. Community Edition"
 arch=('x86_64')
 url="https://github.com/dbeaver/dbeaver"
@@ -30,7 +30,7 @@ package() {
 
     cp -r $srcdir/dbeaver usr/share/$pkgname
     chmod +x usr/share/$pkgname/dbeaver
-    cp opt/$pkgname/icon.xpm usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm
+    cp usr/share/$pkgname/icon.xpm usr/share/icons/hicolor/48x48/apps/${pkgname}.xpm
     ln -s /usr/share/${pkgname}/dbeaver usr/bin/dbeaver-ce
     install -m 644 $srcdir/dbeaver-ce.desktop $pkgdir/usr/share/applications/
 }
