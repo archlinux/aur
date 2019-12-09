@@ -1,0 +1,15 @@
+pkgbase = intel-dnnl
+	pkgdesc = Deep Neural Network Library (DNNL)
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/intel/mkl-dnn
+	arch = x86_64
+	license = APACHE
+    replaces = mkl-dnn
+	makedepends = cmake>=2.8.11
+	makedepends = doxygen>=1.8.5
+	source = intel-dnnl-1.1.1.tar.gz::https://github.com/intel/mkl-dnn/archive/v1.1.1.tar.gz
+	sha256sums = a31b08a89473bfe3bd6ed542503336d21b4177ebe4ccb9a97810808f634db6b6
+
+pkgname = intel-dnnl
+
