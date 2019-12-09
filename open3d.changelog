@@ -1,8 +1,0 @@
-2018-05-01 Dylon Edwards <deltaecho at archlinux dot us>
-	* open3d 0.1.1 Changed to the official repository at open3d.org
-
-2018-04-29 Dylon Edwards <deltaecho at archlinux dot us>
-	* open3d 0.1.2 Fixed source location for future project location (see: https://github.com/Open-3D/Open3D/issues/31)
-
-2018-04-28 Dylon Edwards <deltaecho at archlinux dot us>
-	* open3d 0.1.2
