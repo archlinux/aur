@@ -2,8 +2,8 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2019.10
-pkgrel=3
+pkgver=2019.12
+pkgrel=0
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -24,7 +24,7 @@ replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=f80144efd74f252d18ff8b26fbaea26e5ee03147
+_commit=8864e433baf07e995e7047e840d8f94d8f1b2496
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
@@ -32,12 +32,9 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.1"
         jack-system-ports.patch
         no-plt.diff
-        "waterfox-classic-kde-2019.10.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/waterfox-classic-kde-2019.10.patch"
+        "waterfox-classic-kde-2019.12.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/waterfox-classic-kde-2019.12.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
-        pgo_fix_missing_kdejs.patch
-        "restore_ua_overrides.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/restore_ua_overrides.patch"
-        "bmo1480003.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/bmo1480003.patch"
-        rust_1.39.patch)
+        pgo_fix_missing_kdejs.patch)
 sha256sums=('SKIP'
             'b0ec717b10494dad234a10c9ba9c2a89ed52fd0afbc3b98bb8c4f9c5dd4755a0'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -45,12 +42,9 @@ sha256sums=('SKIP'
             '3b3089733bde4c0f945b0da4043950717af7f3993dd0b9eb3ca769c27c194422'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            '6a74ac7235014aa78793a2cf15d870bb3bdd79b7eced35f993ad323563b056d7'
+            '0ec569e42cc6e6dab4bbb2d078210acf57bcbe6f16afb2dbeb5b6ff9d0809c87'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            'e179856821d463be8ceb75313fa8eb44be7d8580c81b4897e867fefc3e89a864'
-            '56e5ed40df1cb84606e9d095b05e5e8d9a397198a1eb6491e208d5f888266ee7'
-            'e5a1cc8d651744252910f9b3090d0f284445d8a480a14ec649411c487083a3c7')
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e')
 
 prepare() {
   mkdir path
@@ -70,11 +64,6 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
 
-  patch -Np1 -i ../restore_ua_overrides.patch
-
-  patch -Np1 -i ../bmo1480003.patch
-
-  patch -Np1 -i ../rust_1.39.patch
 
   cat >.mozconfig <<END
 export CC=clang
@@ -171,7 +160,7 @@ END
   #patch -Np1 -i "../firefox-kde-$_patchrev.patch"
   #patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
   #patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
-  patch -Np1 -i "../waterfox-classic-kde-2019.10.patch"
+  patch -Np1 -i "../waterfox-classic-kde-2019.12.patch"
   patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
 
   # https://bugs.archlinux.org/task/52183
