@@ -1,6 +1,6 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
-	pkgver = 6.5.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://cupy.chainer.org
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = python-cupy
 	depends = python-numpy
 	depends = python-six
 	depends = python-fastrlock
-	source = https://github.com/cupy/cupy/archive/v6.5.0.tar.gz
-	md5sums = 9c0f9c75eb82a9701fa162e7edbf75b5
+	source = https://github.com/cupy/cupy/archive/v7.0.0.tar.gz
+	md5sums = 97f918e9311555102ac0cfb262f242d5
 
 pkgname = python-cupy
 
