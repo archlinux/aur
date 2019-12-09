@@ -5,7 +5,7 @@ pkgname=( ${_hydrajoy}-git $_sixense_sdk )
 pkgver=r7.61d5da4
 #pkgver_hydrajoy-git=r7.61d5da4
 #pkgver_sixense-sdk=20111215 # Using date from readme for now
-pkgrel=1
+pkgrel=2
 _giturl="https://github.com/yomboprime/${_hydrajoy}"
 arch=(x86_64)
 url=${_giturl}
@@ -45,6 +45,8 @@ package_sixense-sdk () {
   license=('custom')
   
   mkdir -p "${pkgdir}"/usr/lib/
+  mkdir -p "${pkgdir}"/usr/lib32/
+  cp ${srcdir}/${_hydrajoy}/lib/sixense/lib/linux/release/{libsixense.so,libsixense_utils.so} "${pkgdir}"/usr/lib32/
   cp ${srcdir}/${_hydrajoy}/lib/sixense/lib/linux_x64/release/{libsixense_x64.so,libsixense_utils_x64.so} "${pkgdir}"/usr/lib/
   
   mkdir -p "${pkgdir}"/usr/include/
