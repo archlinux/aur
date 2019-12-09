@@ -1,6 +1,6 @@
 pkgname="figma-linux"
 pkgver="0.6.1"
-pkgrel="17"
+pkgrel="18"
 pkgdesc="The collaborative interface design tool. Unofficial Figma desktop client for Linux"
 arch=("x86_64")
 url="https://github.com/Figma-Linux/figma-linux"
@@ -8,7 +8,7 @@ license=('GPL2')
 conflicts=("figma-bin")
 replaces=("figma-bin")
 source=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}/figma-linux-${pkgver}.zip"
-        "figma.desktop"
+        "figma-linux.desktop"
         "24x24.png"
         "36x36.png"
         "48x48.png"
@@ -23,7 +23,7 @@ source=("https://github.com/Figma-Linux/figma-linux/releases/download/v${pkgver}
 depends=("unzip")
 noextract=("figma-linux-${pkgver}.zip")
 sha256sums=("2ee8b30221228739a26ccd4a0663fc16274899032203c6533773cddaeb5f389a"
-            "3f87a98dad8c5b76d350d9fa7858f1d5586c1e21c78a675a9e3899ab294add38"
+            "2751b7d32601c695cca42ca8a09b4d0a4317afa36af797b5ede621d045e0570f"
             "c94eaaf01a82688ab7951ea1d1085f50c3ebed588993d68c173139db848b21c6"
             "40b456b40c557395b1d9cedd035c7d14a169f8207d60441177e1f3c0582768da"
             "72d0c9df5b81a7666a05751a38fe096f629096be73792355f6069024cf7c0412"
@@ -39,7 +39,7 @@ sha256sums=("2ee8b30221228739a26ccd4a0663fc16274899032203c6533773cddaeb5f389a"
 package() {
   cd "${srcdir}"
 
-  install -D "${srcdir}"/figma.desktop "${pkgdir}"/usr/share/applications/figma.desktop
+  install -D "${srcdir}"/figma-linux.desktop "${pkgdir}"/usr/share/applications/figma-linux.desktop
   install -D "${srcdir}"/256x256.png "${pkgdir}"/usr/share/pixmaps/figma-linux.png
 
   for size in 24 36 48 64 72 96 128 192 256 384 512; do
