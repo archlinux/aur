@@ -1,6 +1,6 @@
 #Maintainer: max-k <max-k AT post DOT com>
 pkgname=ampache
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="PHP web based audio/video streaming application and file manager"
 arch=('any')
@@ -18,7 +18,7 @@ _sourcebase="https://github.com/${pkgname}/${pkgname}/releases/download"
 source=("${_sourcebase}/${pkgver}/${pkgname}-${pkgver}_all.zip"
         "nginx-example.conf"
         "${pkgname}.install")
-sha256sums=('f55c877cada5bdd056413c63b1a36cec3d047651d164197cf3e90a75e9fae4ec'
+sha256sums=('d5ba74310240e634af959507f2c620af1c27dff63abaf9623384e5e073bac55a'
             'd579f125fc85b6862dc2bd950b6aa3a4ffdad219323b8ee2c93282c8f223c3eb'
             '218f6293f3b63310bba36c6903f907a2b5594013d4d64d206d7ac45c85b1ed26')
 options=(!strip)
