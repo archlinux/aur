@@ -1,41 +1,29 @@
-# Maintainer:  sudokode <sudokode@gmail.com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: sudokode <sudokode@gmail.com>
 # Contributor: Marcin Kulik <m@kulik.com>
 
 name=asciinema
 pkgname=asciinema-git
-pkgver=1.0.0.r8.g365b36c
-pkgrel=2
+pkgver=2.0.0.r67.g350d5e9
+pkgrel=1
 pkgdesc="Record and share your terminal sessions, the right way"
 arch=('any')
-url="https://github.com/sickill/$name"
+url="https://github.com/asciinema/$name"
 license=('MIT')
-makedepends=('git' 'gcc-go')
+makedepends=('git' 'python')
 conflicts=("$name")
-source=("$pkgname::git+https://github.com/sickill/${name}.git")
+source=("$pkgname::git+https://github.com/asciinema/${name}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-
   git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
-}
-
-prepare() {
-  cd $pkgname
-
-  GOPATH="$srcdir" go get -v -d
-}
-
-build() {
-  cd $pkgname
-
-  GOPATH="$srcdir" make build
 }
 
 package() {
   cd $pkgname
 
-  make DESTDIR="$pkgdir" install
+  python setup.py install --root="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:

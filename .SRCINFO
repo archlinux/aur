@@ -1,14 +1,14 @@
 pkgbase = asciinema-git
 	pkgdesc = Record and share your terminal sessions, the right way
-	pkgver = 1.0.0.r8.g365b36c
-	pkgrel = 2
-	url = https://github.com/sickill/asciinema
+	pkgver = 2.0.0.r67.g350d5e9
+	pkgrel = 1
+	url = https://github.com/asciinema/asciinema
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = gcc-go
+	makedepends = python
 	conflicts = asciinema
-	source = asciinema-git::git+https://github.com/sickill/asciinema.git
+	source = asciinema-git::git+https://github.com/asciinema/asciinema.git
 	sha256sums = SKIP
 
 pkgname = asciinema-git
