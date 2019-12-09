@@ -1,7 +1,7 @@
 # Maintainer: Vlad Panazan <brgdvz@gmail.com>
 
 pkgname=i3status-rust-bin
-pkgver=0.10.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 url="https://github.com/greshake/i3status-rust"
@@ -21,10 +21,11 @@ optdepends=('alsa-utils: For the volume block'
             'upower: For the battery block')
 provides=('i3status-rust')
 conflicts=('i3status-rust')
-source=("https://github.com/greshake/i3status-rust/releases/download/v${pkgver}/i3status-rs")
-sha256sums=('e01cf84eec2c5804c793a3ef6ae41a95ce81959af792707a62abad96325a81b2')
+source=("https://github.com/greshake/i3status-rust/releases/download/v${pkgver}/i3status-rust_${pkgver}_amd64.deb")
+sha256sums=('7c0c5f353419d2cc613eeede1bf36213310009a5135eaaea477c9615f31f4c22')
 
 package() {
-  install -Dm755 i3status-rs "$pkgdir/usr/bin/i3status-rs"
+  tar -xJf data.tar.xz -C "${pkgdir}"
+  # install -Dm755 i3status-rs "$pkgdir/usr/bin/i3status-rs"
 }
 
