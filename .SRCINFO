@@ -1,13 +1,13 @@
 pkgbase = kodi-logger
 	pkgdesc = Keeps track of every video you watch on kodi.
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/graysky2/kodi-logger
 	arch = any
 	license = MIT
 	depends = diffutils
-	source = kodi-logger-1.7.tar.gz::https://github.com/graysky2/kodi-logger/archive/v1.7.tar.gz
-	sha256sums = 0fb7cab759fd72c03dc541d02119abb9a61ca2465b69401e0165e4f4b01eb5d3
+	source = kodi-logger-1.8.tar.gz::https://github.com/graysky2/kodi-logger/archive/v1.8.tar.gz
+	sha256sums = e6b4dc22526f742d2f141379e4744fe26e9561bc888ba3fd50a7ba17b49bbf8a
 
 pkgname = kodi-logger
 
