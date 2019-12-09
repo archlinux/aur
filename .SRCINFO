@@ -1,6 +1,6 @@
 pkgbase = spot
 	pkgdesc = A C++11 library for omega automata manipulation and model checking.
-	pkgver = 2.8.2
+	pkgver = 2.8.4
 	pkgrel = 1
 	url = https://spot.lrde.epita.fr/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = spot
 	depends = glibc
 	depends = sh
 	depends = python
-	source = http://www.lrde.epita.fr/dload/spot/spot-2.8.2.tar.gz
-	sha256sums = 88ff7e40c2fbf029196249566bf670806443d4770d814b9cd2e98fa4a817990a
+	source = http://www.lrde.epita.fr/dload/spot/spot-2.8.4.tar.gz
+	sha256sums = 3f71df2874a3dbc92983c5bf060fba0eb0ed13acaadc9af3542ab793a0de50f9
 
 pkgname = spot
 
