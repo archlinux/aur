@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenJDK with DCEVM Java 8 Console
+Comment=OpenJDK with DCEVM Java 8 Monitoring & Management Console
+Keywords=java;console;monitoring
+Exec=/usr/lib/jvm/java-8-openjdk-dcevm/bin/jconsole
+Terminal=false
+Type=Application
+Categories=Application;System;

@@ -1,0 +1,55 @@
+pkgbase = jdk8-openjdk-dcevm
+	pkgdesc = OpenJDK Java 8 development kit with DCEVM patches (Trava build)
+	pkgver = 8.u232.b09
+	pkgrel = 1
+	url = https://github.com/TravaOpenJDK/trava-jdk-8-dcevm
+	install = install_jdk8-openjdk-dcevm.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	provides = jre8-openjdk-headless=8.u232.b09
+	provides = jre-openjdk-headless=8.u232.b09
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	provides = jre8-openjdk=8.u232.b09
+	provides = jre-openjdk=8.u232.b09
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+	provides = jdk8-openjdk=8.u232.b09
+	provides = jdk-openjdk=8.u232.b09
+	provides = openjdk8-src=8.u232.b09
+	provides = openjdk-src=8.u232.b09
+	backup = etc/jdk8-openjdk-dcevm/amd64/jvm.cfg
+	backup = etc/jdk8-openjdk-dcevm/calendars.properties
+	backup = etc/jdk8-openjdk-dcevm/content-types.properties
+	backup = etc/jdk8-openjdk-dcevm/flavormap.properties
+	backup = etc/jdk8-openjdk-dcevm/images/cursors/cursors.properties
+	backup = etc/jdk8-openjdk-dcevm/logging.properties
+	backup = etc/jdk8-openjdk-dcevm/management/jmxremote.access
+	backup = etc/jdk8-openjdk-dcevm/management/jmxremote.password
+	backup = etc/jdk8-openjdk-dcevm/management/management.properties
+	backup = etc/jdk8-openjdk-dcevm/management/snmp.acl
+	backup = etc/jdk8-openjdk-dcevm/net.properties
+	backup = etc/jdk8-openjdk-dcevm/psfont.properties.ja
+	backup = etc/jdk8-openjdk-dcevm/psfontj2d.properties
+	backup = etc/jdk8-openjdk-dcevm/security/java.policy
+	backup = etc/jdk8-openjdk-dcevm/security/java.security
+	backup = etc/jdk8-openjdk-dcevm/sound.properties
+	source = https://github.com/TravaOpenJDK/trava-jdk-8-dcevm/releases/download/dcevm8u232b09/java8-openjdk-dcevm-linux.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	sha256sums = SKIP
+	sha256sums = 05b34bc3f9e94639c5678448cb3e1c5df82759ed5b8a984da4560e13e0aba81e
+	sha256sums = d24381a9f670110a3c0b02c5ae0636095418384562204a8a2f4eb7945f4c1a9b
+
+pkgname = jdk8-openjdk-dcevm
+
