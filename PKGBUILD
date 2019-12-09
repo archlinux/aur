@@ -5,7 +5,7 @@
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
 pkgver="1.9.2"
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -41,11 +41,7 @@ sha256sums=(
 
 package_kata-runtime() {
   depends=(qemu kata-proxy=${pkgver} kata-shim=${pkgver} kata-ksm-throttler=${pkgver} kata-containers-image=${pkgver} kata-linux-container=${pkgver})
-  optdepends=(
-      "nemu"
-      "firecracker-git"  # only until the package sets it's `provides` field
-      #"acrn"  # some day?
-  )
+  optdepends=('firecracker<0.19.0') # `acrn` some day?
   install=kata-runtime.install
 
   install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}/usr/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
@@ -74,10 +70,10 @@ package_kata-ksm-throttler() {
 }
 
 package_kata-containers-image() {
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_1.9.2_agent_ba81eb84dd.img
-  ln -sf kata-containers-image_clearlinux_1.9.2_agent_ba81eb84dd.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_1.9.2_agent_ba81eb84dd.initrd
-  ln -sf kata-containers-initrd_alpine_1.9.2_agent_ba81eb84dd.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver}_agent_ba81eb84dd.img
+  ln -sf kata-containers-image_clearlinux_${pkgver}_agent_ba81eb84dd.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver}_agent_ba81eb84dd.initrd
+  ln -sf kata-containers-initrd_alpine_${pkgver}_agent_ba81eb84dd.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
 }
 
 package_kata-linux-container() {
