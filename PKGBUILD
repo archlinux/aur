@@ -3,8 +3,9 @@
 _gemname=faraday
 pkgname=ruby-$_gemname-fastlane
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='HTTP/REST API client library.'
+provides=(ruby-faraday=$pkgver)
 arch=(any)
 url='https://lostisland.github.io/faraday'
 license=(MIT)
