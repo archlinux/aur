@@ -1,7 +1,7 @@
 pkgbase = sgminer-gm
 	pkgdesc = A multi-algo GPU miner from genesismining.
 	pkgver = 5.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicehash/sgminer-gm
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = sgminer-gm
 	depends = pkg-config
 	depends = automake
 	depends = autoconf
-	optdepends = ncurses5-compat: For ncurses formatted screen output
 	optdepends = opencl-nvidia: OpenCL implementation for NVIDIA
 	optdepends = opencl-catalyst: OpenCL implementation for AMD
 	provides = sgminer

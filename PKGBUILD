@@ -2,15 +2,14 @@
 #
 pkgname=sgminer-gm
 pkgver=5.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-algo GPU miner from genesismining."
 arch=('i686' 'x86_64')
 url="https://github.com/nicehash/sgminer-gm"
 license=('GPL3')
 depends=('curl' 'ocl-icd' 'libtool' 'pkg-config' 'automake' 'autoconf')
 makedepends=('opencl-headers')
-optdepends=('ncurses5-compat: For ncurses formatted screen output'
-            'opencl-nvidia: OpenCL implementation for NVIDIA'
+optdepends=('opencl-nvidia: OpenCL implementation for NVIDIA'
             'opencl-catalyst: OpenCL implementation for AMD')
 provides=('sgminer' 'sgminer-gm')
 conflicts=('sgminer')
