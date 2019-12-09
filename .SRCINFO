@@ -1,0 +1,24 @@
+pkgbase = monkeyspank-git
+	pkgdesc = A reaction based audio game
+	pkgver = r13.1b666c1
+	pkgrel = 1
+	url = https://gitlab.com/stormdragon2976/monkeyspank
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pygame
+	depends = python-pyperclip
+	depends = python-requests
+	depends = python-xdg
+	provides = monkeyspank
+	conflicts = monkeyspank
+	source = git+https://gitlab.com/stormdragon2976/monkeyspank.git
+	source = monkeyspank.desktop
+	source = monkeyspank.sh
+	sha512sums = SKIP
+	sha512sums = e7e577621eab2ce2db567f0132cc0b981f4136f460c90c57c18abdd0ba8c092d65d58ce7d13d824b003540fe98cfb110462418b6619fedd1b1ec64d98e06ce92
+	sha512sums = e19c347d7fbf93d2d069f938d3cc1112c35e543d97a292a295cf1b8e114ae56c92977ead7a2bd673630f7b343d256f1ba7cf3a2c3b059d6d1e481bbedcc882ca
+
+pkgname = monkeyspank-git
+
