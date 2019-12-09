@@ -1,14 +1,14 @@
 pkgbase = tonelib-zoom-bin
 	pkgdesc = ToneLib Zoom – change and save all the settings in your Zoom(r) guitar pedal
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tonelib.net/zoom-quick-start/
 	arch = x86_64
 	license = custom
 	depends = webkit2gtk
 	optdepends = jack: JACK output
 	source = https://www.tonelib.net/download/ToneLib-Zoom-amd64.deb
-	sha256sums = fed488890860327558200d5658d0d58782631e695d63d3ed7dbaa9b5e2b80c9c
+	sha256sums = e59252ce93d096b33af724a993784265266c2a23987d1ceec69be7a1dff05a20
 
 pkgname = tonelib-zoom-bin
 
