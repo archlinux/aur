@@ -17,5 +17,4 @@ MANM_ROFF=mandoc_roff
 # catman(8) is disabled by default.
 BUILD_CATMAN=1
 
-# _FORTIFY_SOURCE doesn't work unless an optimisation level is specified.
-CFLAGS="$CFLAGS -O2"
+

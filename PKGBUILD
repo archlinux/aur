@@ -3,7 +3,7 @@
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=mandoc-cvs
-pkgver=20190612
+pkgver=20191111
 pkgrel=1
 pkgdesc='A suite of tools compiling mdoc from the OpenBSD project'
 license=('custom: ISC')
@@ -16,7 +16,7 @@ conflicts=('man')
 source=('configure.local'
         'mandoc.service'
         'mandoc.timer')
-sha256sums=('f0e8ddb61d063bec02a6a1f73f5d979bb548e7aabcf0a27c0d5c29c4194bfc8e'
+sha256sums=('8d1301ac6e52653fedda5b862428f0b21976664005c7b3da24bf4e411d7bb56d'
             '2091411d5f87a3c371a5ba74b4773d1e454046446fa2cb045485979e52419bb6'
             '74d6a02b97a17fffddcc0a3dc830e811348b1f6c6b84f867882c776d50f00ea4')
 
@@ -38,8 +38,12 @@ pkgver() {
 }
 
 build() {
-  cp "${srcdir}/configure.local" $pkgname
   cd $pkgname
+  cat "$srcdir/configure.local" - <<EOF > configure.local
+CPPFLAGS="$CPPFLAGS"
+CFLAGS="$CFLAGS"
+LDFLAGS="$LDFLAGS"
+EOF
   ./configure
   make
 }
