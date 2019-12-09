@@ -2,13 +2,13 @@
 
 pkgname=cmake-language-server
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python based cmake language server"
 arch=('any')
 url="https://github.com/regen100/cmake-language-server"
 license=('MIT')
 groups=()
-depends=("python-pygls" "python-pyparsing")
+depends=("python-pygls" "python-pyparsing" "cmake")
 makedepends=("python-setuptools")
 optdepends=()
 provides=()
