@@ -1,7 +1,7 @@
 pkgbase = dbeaver-ee
 	pkgdesc = A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support
-	pkgver = 6.2.0
-	pkgrel = 2
+	pkgver = 6.3.0
+	pkgrel = 1
 	url = http://dbeaver.com/
 	install = dbeaver-ee.install
 	arch = i686
@@ -10,16 +10,16 @@ pkgbase = dbeaver-ee
 	depends = java-runtime>=1.8
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	noextract = dbeaver-ee-6.2.0-linux.gtk.x86.tar.gz
-	noextract = dbeaver-ee-6.2.0-linux.gtk.x86_64.tar.gz
+	noextract = dbeaver-ee-6.3.0-linux.gtk.x86.tar.gz
+	noextract = dbeaver-ee-6.3.0-linux.gtk.x86_64.tar.gz
 	source = dbeaver-ee.desktop
 	source = dbeaver-ee.install
 	sha256sums = 453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_i686 = http://dbeaver.com/files/6.2.0/dbeaver-ee-6.2.0-linux.gtk.x86.tar.gz
-	sha256sums_i686 = 7eac5deba1df66bc619b1a13b9bf5cdd272046c7f11bdb28482d5ee580dc6995
-	source_x86_64 = http://dbeaver.com/files/6.2.0/dbeaver-ee-6.2.0-linux.gtk.x86_64.tar.gz
-	sha256sums_x86_64 = c8429bab34d41809e0d80b54daed3f32a38154f0ff7acd828dd46e8a4b356c93
+	source_i686 = http://dbeaver.com/files/6.3.0/dbeaver-ee-6.3.0-linux.gtk.x86.tar.gz
+	sha256sums_i686 = bf57b634c444d03e7b88c386be9ce7f2ae8655370a8b61f8eff1f6c53eb86f08
+	source_x86_64 = http://dbeaver.com/files/6.3.0/dbeaver-ee-6.3.0-linux.gtk.x86_64.tar.gz
+	sha256sums_x86_64 = 02bd34e7692e9822361bdc8a4ef9bca2e4598a41bf750b7d3fe12dddd306cf5c
 
 pkgname = dbeaver-ee
 
