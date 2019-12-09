@@ -8,7 +8,7 @@ license=("Images belong to there respected Owners I do not take credit for any i
 arch=(any)
 #depends=
 optdepends=("gnome-shell>=3.30: theme was specifically tuned for GNOME 3.30")
-source=("git+https://github.com/Austcool-Walker/macbuntu-theme.git")
+source=("git+https://try.gogs.io/Austcool-Walker/macbuntu-theme.git")
 sha512sums=('SKIP')
 
 prepare() {
