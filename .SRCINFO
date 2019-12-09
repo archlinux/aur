@@ -139,6 +139,7 @@ pkgbase = wine-valve-git
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
+	options = !buildflags
 	source = wine-valve-git::git+https://github.com/ValveSoftware/wine.git#branch=proton_4.11
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf

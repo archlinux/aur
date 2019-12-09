@@ -53,8 +53,7 @@ makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'libxslt'               'lib32-libxslt'
     'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
     'vulkan-icd-loader'     'lib32-vulkan-icd-loader'
-    'samba'
-    'opencl-headers'
+    'samba'		    'opencl-headers'
     'vulkan-headers'
 )
 optdepends=(
@@ -80,7 +79,7 @@ optdepends=(
     'samba'
     'dosbox'
 )
-options=('staticlibs')
+options=('staticlibs' '!buildflags')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/ValveSoftware/wine.git#branch=proton_4.11"
         '30-win32-aliases.conf'
