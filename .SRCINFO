@@ -1,21 +1,29 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
-	pkgver = 147_9
-	pkgrel = 3
-	epoch = 1
+	pkgver = 150_10
+	pkgrel = 1
 	url = http://parsec.tv
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	depends = gcc-libs
 	depends = libglvnd
 	depends = libxext
 	depends = libxcb
 	optdepends = libva: For hardware accelerated decoding
 	provides = parsec
-	conflicts = parsec
-	source = https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb
-	source = parsecd.service
-	md5sums = e4baa31eb9a2f5aaad28148014165626
-	md5sums = 5e1c21b8e2d186d137e25dfe7d5c1a6f
+	source_x86_64 = https://builds.parsecgaming.com/package/parsec-linux.deb
+	sha256sums_x86_64 = 4f465a0aab40abb09017362e67edb875098506dd802ead84ee6535459f6641f3
+	source_arm = https://builds.parsecgaming.com/package/parsec-rpi.deb
+	sha256sums_arm = 3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f
+	source_armv6h = https://builds.parsecgaming.com/package/parsec-rpi.deb[@]
+	sha256sums_armv6h = [@]
+	source_armv7h = https://builds.parsecgaming.com/package/parsec-rpi.deb[@]
+	sha256sums_armv7h = [@][@]
+	source_aarch64 = https://builds.parsecgaming.com/package/parsec-rpi.deb[@]
+	sha256sums_aarch64 = [@][@]
 
 pkgname = parsec-bin
 

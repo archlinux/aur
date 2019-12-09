@@ -1,9 +1,0 @@
-[Unit]
-Description=Parsec Daemon
-
-[Service]
-ExecStart=/usr/bin/parsecd app_daemon=1
-
-[Install]
-WantedBy=default.target
-

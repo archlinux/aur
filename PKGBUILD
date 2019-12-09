@@ -1,34 +1,31 @@
-# Maintainer : E5ten <e5ten.arch@gmail.com>
-# Contributor : Shawn Dellysse sdellysse@gmail.com
+# Maintainer : tadly <me@tadly.de>
 
 pkgname=parsec-bin
-pkgver=147_9
-pkgrel=3
-pkgdesc="Remotely connect to a gaming pc for a low latency remote computing experience"
-url=http://parsec.tv
-arch=('x86_64')
+pkgver=150_10
+pkgrel=1
+pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
+url='http://parsec.tv'
+arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 provides=('parsec')
-conflicts=('parsec')
-epoch=1
 depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb')
 optdepends=('libva: For hardware accelerated decoding')
-source=("https://s3.amazonaws.com/parsec-build/package/parsec-linux.deb"
-		'parsecd.service')
-md5sums=('e4baa31eb9a2f5aaad28148014165626'
-         '5e1c21b8e2d186d137e25dfe7d5c1a6f')
-package() {
-	mkdir -p $pkgdir/usr/bin
-	mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
-	mkdir -p $pkgdir/usr/share/applications
-	mkdir -p $pkgdir/usr/share/parsec/skel
-	mkdir -p $pkgdir/usr/lib/systemd/user
-	bsdtar xf $srcdir/data.tar.xz
-	install -Dm755 $srcdir/usr/bin/parsecd $pkgdir/usr/bin/
-	install -Dm755 $srcdir/usr/share/applications/parsec.desktop $pkgdir/usr/share/applications/
-	install -Dm644 $srcdir/usr/share/icons/hicolor/256x256/apps/parsec.png $pkgdir/usr/share/icons/hicolor/256x256/apps/
-	install -Dm644 $srcdir/parsecd.service $pkgdir/usr/lib/systemd/user/
-	ln -s /usr/bin/parsecd $pkgdir/usr/bin/parsec
-	cp $srcdir/usr/share/parsec/skel/appdata.json $pkgdir/usr/share/parsec/skel/appdata.json
-	cp $srcdir/usr/share/parsec/skel/parsecd-${pkgver//_/-}.so $pkgdir/usr/share/parsec/skel/parsecd-${pkgver//_/-}.so
-}
 
+source_x86_64=('https://builds.parsecgaming.com/package/parsec-linux.deb')
+sha256sums_x86_64=('4f465a0aab40abb09017362e67edb875098506dd802ead84ee6535459f6641f3')
+
+source_arm=('https://builds.parsecgaming.com/package/parsec-rpi.deb')
+sha256sums_arm=('3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f')
+
+source_armv6h=($source_arm[@])
+sha256sums_armv6h=($sha256sums_armv6h[@])
+
+source_armv7h=($source_arm[@])
+sha256sums_armv7h=($sha256sums_armv6h[@])
+
+source_aarch64=($source_arm[@])
+sha256sums_aarch64=($sha256sums_armv6h[@])
+
+package() {
+    tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    chmod 755 "${pkgdir}/usr/"
+}
