@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Pantheon Lite
-Comment=This session provides elementary-lite experience
+Comment=Replace gala with openbox (& picom)
 Exec=/usr/bin/pantheon-session-qq lite
 TryExec=openbox
 Icon=/usr/share/pixmaps/openbox.png

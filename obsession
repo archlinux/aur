@@ -1,7 +1,0 @@
-#!/bin/bash
-#An additional script for setting certain options
-
-[[ $(pidof openbox) ]] || exit
-
-#Default, empty background comes out gray. Black is cooler.
-[[ -n "$(command -v hsetroot)" ]] && exec hsetroot -solid "#000000"

@@ -8,6 +8,9 @@
   <item label="Reconfigure Openbox">
     <action name="Reconfigure" />
   </item>
+  <item label="Restart Openbox">
+    <action name="Restart"/>
+  </item
   <separator />
   <item label="Log Out">
     <action name="Exit">

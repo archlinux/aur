@@ -1,11 +1,11 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=compton
+Name=picom (dbus enabled)
 GenericName=X compositor
 Comment=A X compositor
 Categories=Utility;
-TryExec=compton
-Exec=compton --dbus
+TryExec=picom
+Exec=picom --dbus
 # Icon=xcompmgr
 # Thanks to quequotion for providing this file!

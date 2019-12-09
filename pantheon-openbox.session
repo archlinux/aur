@@ -1,5 +1,5 @@
 [GNOME Session]
 Name=Pantheon
-RequiredComponents=openbox;compton-dbus;obsession;io.elementary.cerbere;
+RequiredComponents=openbox;io.elementary.cerbere;
 FallbackSession=openbox
 DesktopNames=Pantheon

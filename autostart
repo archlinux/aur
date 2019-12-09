@@ -1,0 +1,15 @@
+#Black void background
+[[ -n "$(command -v hsetroot)" ]] && hsetroot -solid "#000000" &
+
+#Pantheon Lite components
+if [[ echo "${XDG_CURRENT_DESKTOP}" == "Pantheon" ]]; then
+
+  #Start a compositor; kill to reduce resource usage.
+  [[ -n "$(command -v picom)" ]] && picom --dbus &
+
+  #Initiate wingpanel if cerbere failed
+  [[ -z "$(pidof wingpanel)" ]] && wingpanel &
+
+  #Initiate plank if cerbere failed
+  [[ -z "$(pidof plank)" ]] && plank &
+fi

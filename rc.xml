@@ -296,7 +296,7 @@
     </keybind>
     <keybind key="W-n">
       <action name="Execute">
-        <command>compton-inverter focused</command>
+        <command>picom-inverter focused</command>
       </action>
     </keybind>
   </keyboard>
@@ -338,12 +338,12 @@
       </mousebind>
       <mousebind action="Click" button="A-Up">
         <action name="Execute">
-          <command>compton-trans -c +5</command>
+          <command>picom-trans -c +5</command>
         </action>
       </mousebind>
       <mousebind action="Click" button="A-Down">
         <action name="Execute">
-          <command>compton-trans -c -5</command>
+          <command>picom-trans -c -5</command>
         </action>
       </mousebind>
       <mousebind action="Click" button="Button6">
