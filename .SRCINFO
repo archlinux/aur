@@ -1,6 +1,6 @@
 pkgbase = v2raya
 	pkgdesc = V2RayA是一个支持全局透明代理的V2Ray Linux客户端。
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/mzz2017/V2RayA
 	install = .INSTALL
@@ -13,7 +13,7 @@ pkgbase = v2raya
 	makedepends = go>=2:1.11.3-1
 	depends = glibc
 	depends = v2ray
-	source = v2raya-0.4.6.tar.gz::https://github.com/mzz2017/V2RayA/archive/v0.4.6.tar.gz
+	source = v2raya-0.4.7.tar.gz::https://github.com/mzz2017/V2RayA/archive/v0.4.7.tar.gz
 	sha512sums = SKIP
 
 pkgname = v2raya
