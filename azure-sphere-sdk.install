@@ -1,0 +1,7 @@
+post_install() { cat <<EOT
+Add users who should manage 'azsphere' devices to
+the 'azsphere' group with:
+
+        # usermod -a -G azsphere USERNAME
+EOT
+}

@@ -1,0 +1,3 @@
+# Grant ownership of Azure Sphere (MT3620) USB devices to the azsphere group
+
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="6011", ATTRS{idProduct}=="0403", ATTRS{product}=="MSFT MT3620 Std Interface", GROUP="azsphere"

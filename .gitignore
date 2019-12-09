@@ -1,0 +1,6 @@
+*.pkg.tar.xz
+*.tar.gz
+*.pgp
+azurespheresdk/
+pkg/
+src/

@@ -1,0 +1,27 @@
+pkgbase = azure-sphere-sdk
+	pkgdesc = Azure Sphere SDK Preview for Linux
+	pkgver = 19.09Beta
+	pkgrel = 1
+	url = https://aka.ms/AzureSphereSDK
+	install = azure-sphere-sdk.install
+	arch = x86_64
+	license = custom
+	depends = cmake
+	depends = curl
+	depends = flex
+	depends = libmpc
+	depends = net-tools
+	depends = ninja
+	optdepends = minicom: for serial communication with the Sphere board
+	optdepends = code: for software development
+	options = !strip
+	options = staticlibs
+	source = azure-sphere-sdk-19.09Beta.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Preview_Bundle.tar.gz
+	source = azure-sphere-sdk.udev
+	source = azure-sphere-sdk.sysusers
+	sha256sums = 6518bb29ef7d6c40701ef1420bbd3dcf068236939f0e8e11c30769857dd34837
+	sha256sums = 649ec04bdd0c052838bf3364fdd32313264891c4f7f60039cb644ef79c3c589f
+	sha256sums = 323c5e51b6bcf92c7e024cfd6bd6843cb57531317c6ef887b1bced81e920d43e
+
+pkgname = azure-sphere-sdk
+
