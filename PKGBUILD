@@ -2,8 +2,8 @@
 
 pkgname=bauh-staging
 pkgver=0.7.4.RC
-pkgrel=1
-_commit="fab88cb995b7cdc46815f46a3d4699c34fdefbe3"
+pkgrel=2
+_commit="e25eaafb13a1174cc5e5138efc823b8c923672e8"
 pkgdesc="Graphical interface for applications management ( AppImage, Flatpak, Snap and AUR ) (staging is a testing branch which receives updates frequently and may not be working properly)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -13,6 +13,8 @@ optdepends=('flatpak: required for Flatpak support'
             'snapd: required for Snap support' 
             'sqlite3: required for AppImage support'
             'wget: required for AppImage and AUR support'
+            'fuse2: may be required for AppImage support'
+            'fuse3: may be required for AppImage support'
             'pacman: required for AUR support'             
             'binutils: required for AUR support'
             'git: to allow AUR packages downgrading'            
@@ -34,7 +36,7 @@ makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('6c074542de156d33fe59cb28c3fcd51993c6b49910708929c7c20fec0bb1614cfcfa4c08cecddf3d0100289a43d2377141f630f7100825904a9fb58dfebd7d28')
+sha512sums=('e97bf214bc4793abeb410e0b725a3065d110e47f08fd4ac491ef86b32ca8afbc20c67f273c6831e091b62456342a0c07ea4ba2b3ac574a8399adc49c959962a4')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"

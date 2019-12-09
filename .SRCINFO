@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for applications management ( AppImage, Flatpak, Snap and AUR ) (staging is a testing branch which receives updates frequently and may not be working properly)
 	pkgver = 0.7.4.RC
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -17,6 +17,8 @@ pkgbase = bauh-staging
 	optdepends = snapd: required for Snap support
 	optdepends = sqlite3: required for AppImage support
 	optdepends = wget: required for AppImage and AUR support
+	optdepends = fuse2: may be required for AppImage support
+	optdepends = fuse3: may be required for AppImage support
 	optdepends = pacman: required for AUR support
 	optdepends = binutils: required for AUR support
 	optdepends = git: to allow AUR packages downgrading
@@ -36,8 +38,8 @@ pkgbase = bauh-staging
 	optdepends = breeze: for KDE Plasma main theme be available
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/fab88cb995b7cdc46815f46a3d4699c34fdefbe3.tar.gz
-	sha512sums = 6c074542de156d33fe59cb28c3fcd51993c6b49910708929c7c20fec0bb1614cfcfa4c08cecddf3d0100289a43d2377141f630f7100825904a9fb58dfebd7d28
+	source = https://github.com/vinifmor/bauh/archive/e25eaafb13a1174cc5e5138efc823b8c923672e8.tar.gz
+	sha512sums = e97bf214bc4793abeb410e0b725a3065d110e47f08fd4ac491ef86b32ca8afbc20c67f273c6831e091b62456342a0c07ea4ba2b3ac574a8399adc49c959962a4
 
 pkgname = bauh-staging
 
