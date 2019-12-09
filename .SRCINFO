@@ -1,0 +1,14 @@
+pkgbase = python-generate_mac
+	pkgdesc = Python Library for Generating Ethernet MAC addresses
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GIJack/python-generate_mac
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	depends = python
+	source = python-generate_mac-1.0.0.tar.gz::https://github.com/GIJack/python-generate_mac/archive/1.0.0.tar.gz
+	sha256sums = a794c99069a1370d3ce4e6b3091aa06c6154a2f7da06ca73d909d3e46cbfa458
+
+pkgname = python-generate_mac
+
