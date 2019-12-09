@@ -4,8 +4,8 @@
 pkgname=firefox-ubuntu-bin
 _pkgname=firefox
 pkgver=71.0
-pkgrel=1
-_ubuntuver="$pkgver+build2-0ubuntu0.19.10.1_amd64"
+pkgrel=2
+_ubuntuver="$pkgver+build5-0ubuntu0.19.10.1_amd64"
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
@@ -31,8 +31,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=('firefox' 'firefox-ubuntu')
 conflicts=('firefox' 'firefox-ubuntu')
 
-source=("http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-sha256sums=('4a36692675d41a997d3b5e3148db01f324e20ad5cc34974d75af8752c3063a52')
+source=("http://security.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
+sha256sums=('f7026083ac2aef7519e73f976f8751aa393d6d66fdcacfee882ba3049473dc54')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
