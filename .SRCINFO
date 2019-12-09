@@ -1,0 +1,14 @@
+pkgbase = termkeyboard-git
+	pkgdesc = A program to inject keyboard events through terminal (git)
+	pkgver = r14.8e310a0
+	pkgrel = 1
+	url = https://github.com/chaitu236/TermKeyboard
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = libtermkey
+	source = termkeyboard-git::git+https://github.com/chaitu236/TermKeyboard.git
+	md5sums = SKIP
+
+pkgname = termkeyboard-git
+
