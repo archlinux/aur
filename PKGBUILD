@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('be92f0169747c99282da71e951a8fbe72fef2058ee95a207ad484b5307b5003c')
+sha256sums=('ab1c0d371a10b615eccfcead71bb79832245d788f4834cc6b278c03c3872d593')
 
 
 build(){
