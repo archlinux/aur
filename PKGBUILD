@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.D.2019.03.29
+pkgver=0.D.2019.12.09
 _pkgver=0.D
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 license=("CCPL:by-sa")
 conflicts=('cataclysm-dda')
 conflicts=('cataclysm-dda' 'cataclysm-dda-ncurses' 'cataclysm-dda-tiles')
-depends=('ncurses' 'lua')
+depends=('ncurses')
 makedepends=('sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'freetype2' 'git')
 optdepends=('sdl2_image: for tiles'
             'sdl2_ttf: for tiles'
@@ -38,14 +38,12 @@ pkgver() {
 prepare() {
   cd "Cataclysm-DDA-master"
   sed -i 's/ncursesw5-config/ncursesw6-config/' Makefile
-  #sed -i 's|"\(l.*h\)"|"lua5.1/\1"|' src/catalua.{h,cpp}
 }
 
 build() {
   cd "Cataclysm-DDA-master"
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 LUA=1
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XGD_DIR=1 LUA=1 TILES=1 SOUND=1
-  #LUA_BINARY="/usr/bin/lua5.1"
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1
+  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 TILES=1 SOUND=1
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 
@@ -58,11 +56,11 @@ package() {
 
   # no DESTDIR
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 \
+  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 \
   install
 
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 LUA=1 TILES=1 SOUND=1 \
+  RELEASE=1 ZLEVELS=1 USE_HOME_DIR=1 TILES=1 SOUND=1 \
   install
 
   # Icon
