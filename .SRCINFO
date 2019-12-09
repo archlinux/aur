@@ -1,13 +1,13 @@
 pkgbase = freedesktop-templates-libreoffice
 	pkgdesc = LibreOffice Templates for the “Create New...” menu
-	pkgver = 6.1.5_3
-	pkgrel = 1
+	pkgver = 6.3.3
+	pkgrel = 3
 	arch = any
 	license = unknown
 	depends = dolphin
 	depends = libreoffice
-	source = http://ftp.debian.org/debian/pool/main/libr/libreoffice/libreoffice-kde5_6.1.5-3_amd64.deb
-	sha256sums = 6673947a51e9c67caf2128098f56150b89611064468c47cbb6d95f540241b533
+	source = http://ftp.debian.org/debian/pool/main/libr/libreoffice/libreoffice-kde5_6.3.3-3_amd64.deb
+	sha256sums = 798d6389b87343a69369156e30ec2c7b8afcffae7eb1f5bba06be9359af8d6e4
 
 pkgname = freedesktop-templates-libreoffice
 
