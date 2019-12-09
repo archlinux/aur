@@ -1,7 +1,7 @@
 pkgbase = dbeaver-ce
 	pkgdesc = An universal database tool for developers and database administrators. Community Edition
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbeaver/dbeaver
 	install = dbeaver-ce.install
 	arch = x86_64
