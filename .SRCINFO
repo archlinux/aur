@@ -1,0 +1,21 @@
+pkgbase = python-minkowskiengine
+	pkgdesc = Auto-diff library for generalized sparse convolutions
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/StanfordVL/MinkowskiEngine
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytorch-cuda
+	depends = python-torchvision
+	depends = python-numpy
+	depends = cuda
+	depends = cudnn
+	depends = cblas
+	depends = intel-tbb
+	source = https://github.com/StanfordVL/MinkowskiEngine/archive/v0.3.0.tar.gz
+	sha512sums = 7a5b1cfae709937b86c844d8ce6b340ff3fc2fc044d495099f16b4e592180da071122ed5fb87a662dbb78ef1c7af9887312a66a77630e8b1402f96770668073b
+
+pkgname = python-minkowskiengine
+
