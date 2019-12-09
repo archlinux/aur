@@ -1,7 +1,7 @@
 pkgbase = i3status-rust
 	pkgdesc = Resourcefriendly and feature-rich replacement for i3status, written in pure Rust
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greshake/i3status-rust
 	arch = x86_64
 	license = GPL3
