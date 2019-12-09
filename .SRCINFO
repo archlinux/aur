@@ -1,0 +1,16 @@
+pkgbase = python-jupyter-http-over-ws
+	pkgdesc = Jupyter support for HTTP-over-ws
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/googlecolab/jupyter_http_over_ws
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = jupyter-notebook
+	depends = python-six
+	depends = python-tornado
+	source = https://pypi.org/packages/source/j/jupyter_http_over_ws/jupyter_http_over_ws-0.0.6.tar.gz
+	sha256sums = 3c721e2514ef8c3e19c2cb8b0c0ef88f0e08448fd79bc1ef4a809a897c47b02f
+
+pkgname = python-jupyter-http-over-ws
+
