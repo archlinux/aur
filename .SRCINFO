@@ -1,0 +1,22 @@
+pkgbase = clweather
+	pkgdesc = small weather forecast script for the command line
+	pkgver = 1.2.r4.g5710eb0
+	pkgrel = 1
+	url = https://gitlab.com/0vv1/clweather
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	depends = python
+	depends = python-argparse
+	depends = python-requests
+	optdepends = nerd-fonts-ANY: to get the Unicode symbols of Weather Icons OR
+	optdepends = ttf-nerd-fonts-ANY: to get correct Unicode symbols OR
+	optdepends = otf-nerd-fonts-ANY: to get correct Unicode symbols
+	provides = clweather
+	conflicts = clweather
+	source = git+https://gitlab.com/0vv1/clweather.git
+	md5sums = SKIP
+
+pkgname = clweather
+
