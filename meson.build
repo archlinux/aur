@@ -5,7 +5,7 @@ libalpm = dependency('libalpm')
 json = dependency('json-glib-1.0')
 libsoup = dependency('libsoup-2.4')
 polkit = dependency('polkit-gobject-1')
-libnotify = dependency('libnotify')
+#libnotify = dependency('libnotify')
 appstream = dependency('appstream-glib')
 
 # gtk3 = dependency('gtk+-3.0', version : '>=3.22')
