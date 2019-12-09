@@ -3,7 +3,7 @@
 
 pkgname=clweather
 _pkgname=clweather.py
-pkgver=1.2.r4.g5710eb0
+pkgver=1.2.r0.gbcca994
 pkgrel=1
 pkgdesc="small weather forecast script for the command line"
 arch=('any')
