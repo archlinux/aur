@@ -8,7 +8,7 @@ pkgbase = python2-lazr-smtptest
 	makedepends = python2-setuptools
 	options = !emptydirs
 	source = https://pypi.python.org/packages/source/l/lazr.smtptest/lazr.smtptest-2.0.4.tar.gz
-	sha256sums = e8e62cae9d3484e5efd6e26939648ae9
+	md5sums = e8e62cae9d3484e5efd6e26939648ae9
 
 pkgname = python2-lazr-smtptest
 	depends = python2

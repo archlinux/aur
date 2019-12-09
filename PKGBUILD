@@ -10,7 +10,7 @@ url="https://launchpad.net/lazr.smtptest"
 license=('LGPL')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/l/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('e8e62cae9d3484e5efd6e26939648ae9')
+md5sums=('e8e62cae9d3484e5efd6e26939648ae9')
 makedepends=('python2-setuptools')
 
 package_python2-lazr-smtptest() {
