@@ -10,6 +10,7 @@ pkgbase = cmake-language-server-git
 	makedepends = git
 	depends = python-pygls
 	depends = python-pyparsing
+	depends = cmake
 	provides = cmake-language-server
 	conflicts = cmake-language-server
 	source = cmake-language-server-git::git+https://github.com/regen100/cmake-language-server.git
