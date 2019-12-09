@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nawk-git
-pkgver=20190910.r97.34a6f41
+pkgver=20191208.r117.af86dac
 pkgrel=1
 epoch=
 pkgdesc='The version of awk described in "The AWK Programming Language".'
@@ -19,11 +19,9 @@ backup=()
 options=('!makeflags')
 changelog=
 install=
-source=("$pkgname::git+$url" manpage-naming.patch)
+source=("$pkgname::git+$url")
 noextract=()
-md5sums=('SKIP' 'f79cfc163176b6b06891f4dbeadc218f')
-sha1sums=('SKIP' 'a729df9321d409402c023937260e5627fa72f811')
-sha256sums=('SKIP' '5f0e0e737626b5060559a1a97dfc191875d6b2f784aa4fe2256add03d38f968b')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -34,7 +32,9 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -Np1 awk.1 ../manpage-naming.patch
+  sed -i 's/^\.TH AWK/.TH NAWK/;s/awk/nawk/g;s/Awk/Nawk/' awk.1
+  sed -i '/^\.CT .*/d;/^\.TF .*/d' awk.1
+
 }
 
 build() {
