@@ -1,16 +1,16 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=smbmap
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='SMB enumeration tool'
 arch=('any')
 url='https://github.com/ShawnDEvans/smbmap'
 license=('GPL')
 depends=('impacket')
-checkdepends=('python2')
+checkdepends=('python')
 source=("https://github.com/ShawnDEvans/smbmap/archive/${pkgver}.tar.gz")
-sha256sums=('b1f5145a3dde44c5dc32aa7ed7a6517f37def216b15ef1b5a68b5074b1491f4d')
+sha256sums=('277d922baea97734c86950cf8363d00c9e01af06f275b34ed9153959a6651b07')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
