@@ -1,0 +1,10 @@
+pkgbase = skyminer
+	pkgdesc = skyminer bootstrapping package *INSTALL IN CHROOT ONLY*
+	pkgver = 0.0.2
+	pkgrel = 1
+	arch = any
+	source = skyminer.tar.gz
+	sha256sums = 2070fefb48775a672069dc3f811896b3d64f6776f0aaef26d768d003f271f19a
+
+pkgname = skyminer
+
