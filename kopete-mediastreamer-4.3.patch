@@ -1,0 +1,84 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 55556be4a..8e63c2cee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -92,8 +92,8 @@ set_package_properties(Libgadu PROPERTIES DESCRIPTION "A library providing suppo
+ find_package(LibMeanwhile QUIET)
+ set_package_properties(LibMeanwhile PROPERTIES DESCRIPTION "A library for protocol support for connection to sametime servers" URL "http://meanwhile.sourceforge.net/" TYPE OPTIONAL PURPOSE "Required for the meanwhile protocol")
+ 
+-find_package(LiboRTP QUIET)
+-set_package_properties(LiboRTP PROPERTIES DESCRIPTION "oRTP provides an API to send rtp packets" URL "http://www.linphone.org/index.php/eng/code_review/ortp/" TYPE OPTIONAL PURPOSE "Required for the Jabber protocol with libjingle support")
++find_package(ortp QUIET)
++set_package_properties(ortp PROPERTIES DESCRIPTION "oRTP provides an API to send rtp packets" URL "http://www.linphone.org/index.php/eng/code_review/ortp/" TYPE OPTIONAL PURPOSE "Required for the Jabber protocol with libjingle support")
+ 
+ find_package(LibOTR QUIET)
+ set_package_properties(LibOTR PROPERTIES DESCRIPTION "Library to encrypt messages with off-the-record encryption" URL "http://www.cypherpunks.ca/otr/" TYPE OPTIONAL PURPOSE "Required for the OTR plugin")
+@@ -107,8 +107,8 @@ set_package_properties(LibXml2 PROPERTIES DESCRIPTION "Libraries used to develop
+ find_package(LibXslt QUIET)
+ set_package_properties(LibXslt PROPERTIES DESCRIPTION "A library to transform XML files into other XML files" URL "http://www.xmlsoft.org/XSLT/" TYPE OPTIONAL PURPOSE "Required for the Webpresence plugin")
+ 
+-find_package(Mediastreamer QUIET)
+-set_package_properties(Mediastreamer PROPERTIES DESCRIPTION "A streaming enginer specialized for voice/video telephony applications" URL "http://www.linphone.org/index.php/eng/code_review/mediastreamer2/" TYPE OPTIONAL PURPOSE "Required for the Jabber protocol with libjingle support")
++find_package(Mediastreamer2 QUIET)
++set_package_properties(Mediastreamer2 PROPERTIES DESCRIPTION "A streaming enginer specialized for voice/video telephony applications" URL "http://www.linphone.org/index.php/eng/code_review/mediastreamer2/" TYPE OPTIONAL PURPOSE "Required for the Jabber protocol with libjingle support")
+ 
+ find_package(OpenSSL QUIET)
+ set_package_properties(OpenSSL PROPERTIES DESCRIPTION "OpenSSL implementation of SSL" URL "https://www.openssl.org/" TYPE OPTIONAL PURPOSE "Required for the Jabber protocol with libjingle support")
+diff --git a/protocols/CMakeLists.txt b/protocols/CMakeLists.txt
+index 89d36a4e4..5f13ff9d9 100644
+--- a/protocols/CMakeLists.txt
++++ b/protocols/CMakeLists.txt
+@@ -22,7 +22,7 @@ option(WITH_skype "Enable Kopete Skype protocol" ON)
+ set(BUILD_JINGLE FALSE)
+ 
+ if(OPENSSL_FOUND OR WIN32)
+-  if(EXPAT_FOUND AND LIBORTP_FOUND AND SRTP_FOUND AND JSONCPP_FOUND AND MEDIASTREAMER_FOUND AND WITH_libjingle)
++  if(EXPAT_FOUND AND ORTP_FOUND AND SRTP_FOUND AND JSONCPP_FOUND AND MEDIASTREAMER2_FOUND AND WITH_libjingle)
+     message(STATUS "Building jabber libjingle support")
+     set(BUILD_LIBJINGLE TRUE)
+   else()
+diff --git a/protocols/jabber/libjingle/CMakeLists.txt b/protocols/jabber/libjingle/CMakeLists.txt
+index af7c1c3af..de7596615 100644
+--- a/protocols/jabber/libjingle/CMakeLists.txt
++++ b/protocols/jabber/libjingle/CMakeLists.txt
+@@ -286,8 +286,8 @@ set ( call_LIBS
+ 	${SRTP_LIBRARY}
+ 	${JSONCPP_LIBRARY}
+ 	${EXPAT_LIBRARY}
+-	${MEDIASTREAMER_LIBRARIES}
+-	${LIBORTP_LIBRARY}
++	${MEDIASTREAMER2_LIBRARIES}
++	${ORTP_LIBRARIES}
+ 	${CMAKE_THREAD_LIBS_INIT}
+ 	${CMAKE_DL_LIBS}
+ )
+diff --git a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
+index bd11027e0..6f9e05a0a 100644
+--- a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
++++ b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.cc
+@@ -34,11 +34,9 @@
+ #ifdef HAVE_LINPHONE
+ 
+ // LinphoneMediaEngine is a Linphone implementation of MediaEngine
+-extern "C" {
+ #include <mediastreamer2/mediastream.h>
+ #include <mediastreamer2/mssndcard.h>
+ #include <mediastreamer2/msfilter.h>
+-}
+ 
+ #include "talk/session/phone/linphonemediaengine.h"
+ 
+diff --git a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h
+index 6105ab8cb..f5b5c3b14 100644
+--- a/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h
++++ b/protocols/jabber/libjingle/talk/session/phone/linphonemediaengine.h
+@@ -35,9 +35,7 @@
+ #include <string>
+ #include <vector>
+ 
+-extern "C" {
+ #include <mediastreamer2/mediastream.h>
+-}
+ 
+ #include "talk/base/scoped_ptr.h"
+ #include "talk/session/phone/codec.h"
