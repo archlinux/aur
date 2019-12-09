@@ -18,13 +18,13 @@ source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$
 sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e')
 
 prepare() {
-  cd "$pkgname-$pkgver/src"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -i "${srcdir}/squidguard-patch.diff"
 }
 
 build() {
-  cd "squidGuard-$pkgver"
+  cd "squidguard-$pkgver"
   sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
   ./configure \
 	--prefix=/usr \
@@ -36,6 +36,6 @@ build() {
 }
 
 package() {
-  cd "squidGuard-$pkgver"
+  cd "squidguard-$pkgver"
   make DESTDIR="$pkgdir" install
 }
