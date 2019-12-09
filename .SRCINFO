@@ -1,6 +1,6 @@
 pkgbase = queryit
 	pkgdesc = A very basic setupless terminal based SQL query
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hugopl/queryit
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = queryit
 	depends = gc
 	depends = libevent
 	depends = pcre
-	source = queryit-0.2.1.tar.gz::https://github.com/hugopl/queryit/archive/v0.2.1.tar.gz
-	sha256sums = a0295668e76ba47812b5754a91bd337c583358cf83971be8a4a09a023cb978d1
+	source = queryit-0.3.0.tar.gz::https://github.com/hugopl/queryit/archive/v0.3.0.tar.gz
+	sha256sums = cc42b15c9be92042f8257abb458bdf8c3cc32b64894523c934fab6445c327930
 
 pkgname = queryit
 
