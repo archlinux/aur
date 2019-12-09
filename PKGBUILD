@@ -2,7 +2,7 @@
 # Contributor: TheGoliath
 pkgname=squidguard
 pkgver=1.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
 arch=('x86_64')
 url="http://www.squidguard.org"
