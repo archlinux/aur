@@ -1,7 +1,7 @@
 # Maintainer: rnestler
 
 pkgname=reboot-arch-btw
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Check if you need to reboot due to an updated kernel'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 depends=('dbus')
 replaces=('kernel-updated')
 source=("https://github.com/rnestler/reboot-arch-btw/archive/v${pkgver}.tar.gz")
-sha256sums=('64ba53fab74bfbf9befc4ea38fb96f065bef150487c9d158b6a21a6c57d7d9cd')
+sha256sums=('e6c95594782f3e16c3b427b65d0c243f0f4faeb2d84788c7c6454946b2d9e518')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
