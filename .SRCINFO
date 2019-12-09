@@ -1,16 +1,16 @@
 pkgbase = synology-cloud-sync-decryption-tool
 	pkgdesc = A desktop tool to decrypt data encrypted by Cloud Sync
-	pkgver = 016
+	pkgver = 018
 	pkgrel = 1
 	url = https://www.synology.com/en-global/releaseNote/SynologyCloudSyncDecryptionTool
 	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = qt5-base
-	source_i686 = https://global.download.synology.com/download/Tools/SynologyCloudSyncDecryptionTool/016/Linux/i686/SynologyCloudSyncDecryptionTool-016.tar.gz
-	md5sums_i686 = c87bda656d560f6d33ed8c825bf682e4
-	source_x86_64 = https://global.download.synology.com/download/Tools/SynologyCloudSyncDecryptionTool/016/Linux/x86_64/SynologyCloudSyncDecryptionTool-016_x64.tar.gz
-	md5sums_x86_64 = 608b1adbea3069a18d8830edbf9706e5
+	source_i686 = https://global.download.synology.com/download/Tools/SynologyCloudSyncDecryptionTool/018/Linux/i686/SynologyCloudSyncDecryptionTool-018.tar.gz
+	md5sums_i686 = cc9cc5531ec33f3ee888bd3d4772d016
+	source_x86_64 = https://global.download.synology.com/download/Tools/SynologyCloudSyncDecryptionTool/018/Linux/x86_64/SynologyCloudSyncDecryptionTool-018_x64.tar.gz
+	md5sums_x86_64 = db128e6984441fd1cccf3149945777da
 
 pkgname = synology-cloud-sync-decryption-tool
 
