@@ -19,7 +19,7 @@ pkgbase = anbox-image-gapps-rooted
 	source = media_codecs_google_video.xml
 	source = media_codecs_google_audio.xml
 	source = media_codecs_google_telephony.xml
-	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20191126/open_gapps-x86_64-7.1-pico-20191126.zip
+	source = https://downloads.sourceforge.net/project/opengapps/x86_64/20191208/open_gapps-x86_64-7.1-pico-20191208.zip
 	md5sums = 26874452a6521ec2e37400670d438e33
 	md5sums = 7ebf618b1af94a02322d9f2d2610090b
 	md5sums = 5ca37e1629edb7d13b18751b72dc98ad
@@ -28,7 +28,7 @@ pkgbase = anbox-image-gapps-rooted
 	md5sums = 599598e70060eb74c119cf7dac0ce466
 	md5sums = 43193761081a04ca18a28d4a6e039950
 	md5sums = 91f5f3e5c31f8e221ae8f318527dcb83
-	md5sums = fa9c50052676c8318edf21708962859b
+	md5sums = 50c0467c018f5dd2d13dcf11dd6f68af
 
 pkgname = anbox-image-gapps-rooted
 
