@@ -1,30 +1,24 @@
 pkgbase = squidguard
 	pkgdesc = Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid.
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.squidguard.org
 	install = squidguard.install
-	arch = i686
 	arch = x86_64
+	groups = 
 	license = GPL
 	depends = db
-	depends = libldap>=2.4.7
 	depends = bison
 	depends = flex
 	depends = squid
-	optdepends = liburi-perl
 	optdepends = openldap
-	optdepends = perl-libwww
 	optdepends = squid>=3.4.0
-	optdepends = squidguard-doc
 	options = !strip
 	options = !emptydirs
 	backup = etc/logrotate.d/squidguard
 	backup = etc/squidguard/squidGuard.conf.default
-	source_i686 = http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_i386.deb
-	sha512sums_i686 = 86bb1d849bd3fabc6e0cbe954bfbcbee537b6cfe225ee48436e8f6f4cb9332835ce8ef1845d6dcaae6e4145cb583a45e631463e116650786e020fe75050a78f9
-	source_x86_64 = http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_amd64.deb
-	sha512sums_x86_64 = 107b4fe5630656a052da5b07e3da3294b105a9a1481bde9ff738c7bb6380c35801e0f62819cb6ec2bd014ce8695bf904838ac0bc09c203e3faac637f9cc13532
+	source = https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/1.6.0-1/squidguard_1.6.0.orig.tar.gz
+	sha512sums = d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e
 
 pkgname = squidguard
 

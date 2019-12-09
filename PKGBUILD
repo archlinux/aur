@@ -2,36 +2,40 @@
 # Contributor: TheGoliath
 pkgname=squidguard
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Filter and redirector plugin for Squid. SquidGuard is a free, flexible and ultra fast filter, redirector and access controller plugin for squid."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.squidguard.org"
 license=('GPL')
 groups=('')
-depends=('db' 'libldap>=2.4.7' 'bison' 'flex' 'squid')
-optdepends=('liburi-perl'
-            'openldap'
-            'perl-libwww'
-            'squid>=3.4.0'
-            'squidguard-doc')
+depends=('db' 'bison' 'flex' 'squid')
+optdepends=('openldap'
+            'squid>=3.4.0')
 backup=('etc/logrotate.d/squidguard' 'etc/squidguard/squidGuard.conf.default')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_i686=("http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_i386.deb")
-source_x86_64=("http://ftp.br.debian.org/debian/pool/main/s/squidguard/squidguard_1.6.0-1_amd64.deb")
-sha512sums_i686=('86bb1d849bd3fabc6e0cbe954bfbcbee537b6cfe225ee48436e8f6f4cb9332835ce8ef1845d6dcaae6e4145cb583a45e631463e116650786e020fe75050a78f9')
-sha512sums_x86_64=('107b4fe5630656a052da5b07e3da3294b105a9a1481bde9ff738c7bb6380c35801e0f62819cb6ec2bd014ce8695bf904838ac0bc09c203e3faac637f9cc13532')
+source=("https://launchpad.net/debian/+archive/primary/+sourcefiles/squidguard/$pkgver-1/squidguard_$pkgver.orig.tar.gz")
+sha512sums=('d6e934f550cd777d58abda5f4fd905ccc396afc28e1ddb0bb842a9a3364cbe43db5c30834fe1ed7d93623a361dde50362a79ac2b660382c7e81b4f067f2ac65e')
 
-package(){
+prepare() {
+  cd "squidGuard-$pkgver/src"
 
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+  patch -i "${srcdir}/squidguard-patch.diff"
+}
 
-	# Fix directories structure differencies
-	cd "${pkgdir}"
+build() {
+  cd "squidGuard-$pkgver"
+  sed -i '19,24 s/@[se]/$(DESTDIR)&/; /SQUIDUSER/d; 51d' Makefile.in
+  ./configure \
+	--prefix=/usr \
+	--with-sg-config=/etc/squidGuard/squidGuard.conf \
+	--with-sg-logdir=/var/log/squidGuard \
+	--with-sg-dbhome=/var/lib/squidGuard/db \
 
-	mkdir usr/bin 2> /dev/null; mv usr/sbin/* usr/bin; rm -rf usr/sbin
+  make
+}
 
-	cd ..
-
+package() {
+  cd "squidGuard-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
