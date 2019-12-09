@@ -32,7 +32,7 @@ $ docker run --runtime=kata --rm busybox date
 
 """
 
-- to run Kata with Firecracker, due to Firecracker's limitations, you have to set your Docker storage driver (ref: https://docs.docker.com/storage/storagedriver/select-storage-driver/ ) to 'devicemapper'
+- to run Kata with Firecracker, due to Firecracker's limitations, you have to set your Docker storage driver (ref: https://docs.docker.com/storage/storagedriver/select-storage-driver/ ) to 'devicemapper' in /etc/docker/daemon.json
 """
 {
     "storage-driver": "devicemapper"

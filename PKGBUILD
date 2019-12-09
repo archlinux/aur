@@ -19,6 +19,7 @@ __default_suffix="-7.1"
 #__shim_suffix="-7.1"
 #__ksm_throttler_suffix="-7.1"
 #__img_suffix="-7.1"
+__img_sha="ba81eb84dd"
 #__linux_container_suffix="-7.1"
 
 source=(
@@ -66,14 +67,14 @@ package_kata-ksm-throttler() {
   sed -i 's/libexec/lib/' ${pkgdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
   install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/kata-ksm-throttler
   install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/trigger/virtcontainers/vc
-  install -d -m 0755 ${pkgdir}/var/lib/vc/{sbs,uuid}
+  install -d -m 0755 ${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}
 }
 
 package_kata-containers-image() {
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver}_agent_ba81eb84dd.img
-  ln -sf kata-containers-image_clearlinux_${pkgver}_agent_ba81eb84dd.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver}_agent_ba81eb84dd.initrd
-  ln -sf kata-containers-initrd_alpine_${pkgver}_agent_ba81eb84dd.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver}_agent_${__img_sha}.img
+  ln -sf kata-containers-image_clearlinux_${pkgver}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver}_agent_${__img_sha}.initrd
+  ln -sf kata-containers-initrd_alpine_${pkgver}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
 }
 
 package_kata-linux-container() {
