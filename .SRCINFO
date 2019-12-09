@@ -1,0 +1,55 @@
+pkgbase = jdk11-openjdk-dcevm
+	pkgdesc = OpenJDK Java 11 development kit with DCEVM patches (Trava build)
+	pkgver = 11.0.5.u5
+	pkgrel = 1
+	url = https://github.com/TravaOpenJDK/trava-jdk-11-dcevm
+	install = install_jdk11-openjdk-dcevm.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
+	provides = jre11-openjdk-headless=11.0.5.u5
+	provides = jre-openjdk-headless=11.0.5.u5
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = jre11-openjdk=11.0.5.u5
+	provides = jre-openjdk=11.0.5.u5
+	provides = java-environment=11
+	provides = java-environment-openjdk=11
+	provides = jdk11-openjdk=11.0.5.u5
+	provides = jdk-openjdk=11.0.5.u5
+	provides = openjdk11-src=11.0.5.u5
+	provides = openjdk-src=11.0.5.u5
+	backup = etc/jdk11-openjdk-dcevm/net.properties
+	backup = etc/jdk11-openjdk-dcevm/logging.properties
+	backup = etc/jdk11-openjdk-dcevm/security/java.security
+	backup = etc/jdk11-openjdk-dcevm/security/policy/limited/exempt_local.policy
+	backup = etc/jdk11-openjdk-dcevm/security/policy/limited/default_US_export.policy
+	backup = etc/jdk11-openjdk-dcevm/security/policy/limited/default_local.policy
+	backup = etc/jdk11-openjdk-dcevm/security/policy/unlimited/default_US_export.policy
+	backup = etc/jdk11-openjdk-dcevm/security/policy/unlimited/default_local.policy
+	backup = etc/jdk11-openjdk-dcevm/security/policy/README.txt
+	backup = etc/jdk11-openjdk-dcevm/security/java.policy
+	backup = etc/jdk11-openjdk-dcevm/management/management.properties
+	backup = etc/jdk11-openjdk-dcevm/management/jmxremote.access
+	backup = etc/jdk11-openjdk-dcevm/management/jmxremote.password.template
+	backup = etc/jdk11-openjdk-dcevm/sound.properties
+	source = https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-11.0.5+5/java11-openjdk-dcevm-linux.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 78ff7c57d14eb7a62008ab6275a0e66070bfb6dbd2055cd0e31c508a6324c4ee
+	sha256sums = 428325db0d1483e73bf075fa6ef06c7a50dcbf452651751e93c4c0cb018c127a
+	sha256sums = a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c
+	sha256sums = bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148
+
+pkgname = jdk11-openjdk-dcevm
+

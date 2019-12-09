@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenJDK with DCEVM Java 11 Shell
+Comment=OpenJDK with DCEVM Java 11 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-11-openjdk-dcevm/bin/jshell
+Terminal=true
+Type=Application
+Categories=Application;System;
