@@ -1,0 +1,12 @@
+pkgbase = ttf-aniron
+	pkgdesc = Aniron is a Lord of the rings font family with 4 styles that was created by Pete Klassen in 2004.
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.fontspace.com/pete-klassen/aniron
+	arch = any
+	license = custom
+	source = ttf-aniron-1.zip::https://www.fontspace.com/download/2247/cda438b3958a41d0b7191b89b8d9f5c7/pete-klassen_aniron.zip
+	md5sums = d77b9bccc44012c9169103eb69fbcffd
+
+pkgname = ttf-aniron
+
