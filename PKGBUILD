@@ -3,10 +3,10 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-_jqueryver=1.9.1
+_jqueryver=1.12.4
 pkgname=etherpad-lite
-pkgver=1.7.5
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
@@ -30,8 +30,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archiv
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('06f36711648e33ce72db2c5906b6701c8f0e5315f5f65b4f8a0497956ddad376cab20e35bd61b447e6a0a87da6f1b53622ab2478909177afa73652b04867aa5d'
-            'd62700e7a1ff41f9d6326ca024ba2be1d391bc8fbb2aeae0f427d74837899b230940bf7c2df3d193f5300a68bb3686706d4c31328234b5cda026a1bf52ef9e70'
+sha512sums=('47dc18dcb2ebcf2cd3320e79519f0a1809ae49c1bffb2089c169e7cfc58f331fc9511fdb1f7894f4605db4a5bf28680ec39b4430860bdd62a3a989d7e1cbdd38'
+            '8cac69ec91c437aa5e126ce683a6bb5c904e44d4c1d084c3d8f8bee85524735e8f09a340257d9a859d5e8e7d69d6e637ecfc728ab9ffd0e30d65b2136c48378f'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
             'b0ee72e0ab370992bd0bf5cd980d53e9222950027a0bf4a41c8085aaec8b93442d0359ef684946f61e005026ad6de5da39ab78c4d54589ecef7d27f1d76410dd')
@@ -43,8 +43,10 @@ prepare() {
   # write dirty.db to StateDirectory by default
   sed -i 's/var\/dirty.db/\/var\/lib\/etherpad-lite\/dirty.db/g' \
     settings.json.template
-  # create empty APIKEY.txt, SESSIONKEY.txt and credentials.json
-  touch {APIKEY,SESSIONKEY}.txt credentials.json
+  # create empty APIKEY.txt, SESSIONKEY.txt
+  touch {APIKEY,SESSIONKEY}.txt
+  # create a valid (but empty credentials.json file
+  echo "{}" > credentials.json
   # create needed symlink because setup is weird
   mkdir -v node_modules && cd node_modules
   ln -vs ../src "ep_${pkgname}"
@@ -73,10 +75,10 @@ build() {
          -delete
   find . -type d \
           \( \
-         -iname '*/man' -o \
-         -iname '*/man1' -o \
-         -iname '*/man5' -o \
-         -iname '*/man7' \
+         -iwholename '*/man1' -o \
+         -iwholename '*/man5' -o \
+         -iwholename '*/man7' -o \
+         -iwholename '*/man' \
          \) \
          -delete
 }
