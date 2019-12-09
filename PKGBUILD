@@ -18,7 +18,7 @@ conflicts=(dbeaver dbeaver-ee)
 source=("$pkgname-$pkgver-linux.gtk.x86_64.tar.gz::https://github.com/dbeaver/dbeaver/releases/download/$pkgver/$pkgname-$pkgver-linux.gtk.x86_64.tar.gz"
 		dbeaver-ce.desktop dbeaver-ce.install)
 sha256sums=('4a086f0182d349bbcc8d9c927e293d7b937eef90b8dcffff47db41e9a6c8421e'
-            'f1dd2cd13732d00a36d95218d59423689112b343b2212744f6c7b6893381ce78'
+            'f100de471b371c729262611f87ef3f5ad21b8f555758c679302dabd524ebf997'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
 
 package() {
