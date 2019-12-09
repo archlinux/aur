@@ -62,7 +62,7 @@ _minor=4
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_pfrel=1
+_pfrel=2
 _kernelname=-pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -657,7 +657,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             '4892f282722393b0987a0c27455512e2b184b6c0e80c4e0bb30128d6eadfd099'
             '64e7983069efd8b9ea66f985cc76b6e17fff3ddfb2690f028dc0a048bed8e452'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '943b19be36b3a1aca5fe110d75c67d19f62941ce977460f6c11727d775aa9324'
+            'f4713c2fc74890ab1523601021d804be15afd15d8e84ec96e0dfde449bf6d26a'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
