@@ -1,12 +1,15 @@
 pkgbase = cpupower-gui-git
 	pkgdesc = A GUI utility to set CPU frequency limits
-	pkgver = 0.6.1.r5.g4c39dc7
+	pkgver = 0.7.2.r1.ge150dae
 	pkgrel = 1
-	url = https://gitlab.com/vagnum08/cpupower-gui
+	url = https://github.com/vagnum08/cpupower-gui
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = autoconf-archive
+	makedepends = meson
+	makedepends = pkg-config
+	makedepends = appstream-glib
+	makedepends = desktop-file-utils
 	depends = python
 	depends = gtk3
 	depends = hicolor-icon-theme
@@ -17,8 +20,10 @@ pkgbase = cpupower-gui-git
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	provides = cpupower-gui
 	conflicts = cpupower-gui
-	source = cpupower-gui::git+https://gitlab.com/vagnum08/cpupower-gui.git
+	source = cpupower-gui::git+https://github.com/vagnum08/cpupower-gui.git
+	source = fix-dbus.patch
 	md5sums = SKIP
+	md5sums = 8904610ac7990f088fb96b1eb312c2fa
 
 pkgname = cpupower-gui-git
 

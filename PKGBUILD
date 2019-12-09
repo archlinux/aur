@@ -1,21 +1,23 @@
 # Maintainer: vagnum08 <vagnum08@gmail.com>
 
 pkgname=cpupower-gui-git
-pkgver=0.6.1.r5.g4c39dc7
+pkgver=0.7.2.r1.ge150dae
 pkgrel=1
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
-url="https://gitlab.com/vagnum08/cpupower-gui"
+url="https://github.com/vagnum08/cpupower-gui"
 license=('GPL')
 depends=('python' 'gtk3' 'hicolor-icon-theme' 'polkit' 'python-dbus' 'python-gobject')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
                       'lxsession: needed for authentification in Xfce, LXDE etc.')
-makedepends=('git' 'autoconf-archive')
+makedepends=('git' 'meson' 'pkg-config' 'appstream-glib' 'desktop-file-utils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://gitlab.com/vagnum08/cpupower-gui.git")
+source=("${pkgname%-git}::git+https://github.com/vagnum08/cpupower-gui.git"
+              "fix-dbus.patch")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '8904610ac7990f088fb96b1eb312c2fa')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -23,19 +25,21 @@ pkgver() {
 
 }
 
-build() {
-	cd "$srcdir/${pkgname%-git}"
-	./autogen.sh
-	./configure --prefix=/usr
-	make
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    patch -Np1 -i ../fix-dbus.patch
+    # Fix systemd lib path
+    sed -i "s@'/lib'@'lib'@" data/services/meson.build
 }
 
-check() {
-	cd "$srcdir/${pkgname%-git}"
-	make -k check
+
+build() {
+  meson --prefix /usr --buildtype=plain "$srcdir/${pkgname%-git}" build
+  ninja -C build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 }
+
+
