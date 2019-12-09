@@ -1,0 +1,18 @@
+pkgbase = dust-git
+	pkgdesc = A more intuitive version of du in rust
+	pkgver = 0.4.2.148.ga6839c0
+	pkgrel = 1
+	url = https://github.com/bootandy/dust
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = dust
+	conflicts = dust
+	source = dust::git+https://github.com/bootandy/dust.git
+	sha256sums = SKIP
+
+pkgname = dust-git
+
