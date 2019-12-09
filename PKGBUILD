@@ -1,10 +1,11 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
-pkgname=sway-git
-_pkgname=sway
-pkgver=r5942.3f77591b
+# Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: Drew DeVault <sir@cmpwn.com>
+pkgname=sway-xdg-shell-v6-git
+_pkgname=sway-xdg-shell-v6
+pkgver=r6136.b739bf10
 pkgrel=1
 license=("MIT")
-pkgdesc="i3-compatible Wayland compositor"
+pkgdesc="i3-compatible Wayland compositor (with xdg-shell-v6 unstable protocol)"
 makedepends=("meson" "git" "scdoc" "wayland-protocols" "ninja")
 depends=(
 	"json-c" "pcre" "wlroots-git" "cairo" "pango" "gdk-pixbuf2" "pam"
@@ -32,6 +33,8 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
+  # Revert "Remove xdg-shell v6 support"
+  git revert --no-edit 7488d33d42cfc29c5fbeb02888b1d718bd84d4d0
 }
 
 build() {

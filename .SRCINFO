@@ -1,6 +1,6 @@
-pkgbase = sway-git
-	pkgdesc = i3-compatible Wayland compositor
-	pkgver = r5942.3f77591b
+pkgbase = sway-xdg-shell-v6-git
+	pkgdesc = i3-compatible Wayland compositor (with xdg-shell-v6 unstable protocol)
+	pkgver = r6136.b739bf10
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -29,8 +29,8 @@ pkgbase = sway-git
 	conflicts = sway
 	options = debug
 	options = !strip
-	source = sway::git+https://github.com/swaywm/sway.git
+	source = sway-xdg-shell-v6::git+https://github.com/swaywm/sway.git
 	sha512sums = SKIP
 
-pkgname = sway-git
+pkgname = sway-xdg-shell-v6-git
 
