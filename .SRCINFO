@@ -1,0 +1,22 @@
+pkgbase = geany-git
+	pkgdesc = Fast and lightweight IDE (git version)
+	pkgver = 1.36.0.37.g5cc69b3d6
+	pkgrel = 1
+	url = http://github.com/geany/geany
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = intltool
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = geany
+	conflicts = geany
+	source = git://github.com/geany/geany.git
+	md5sums = SKIP
+
+pkgname = geany-git
+
