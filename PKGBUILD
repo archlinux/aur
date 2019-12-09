@@ -7,12 +7,12 @@
 
 pkgname=geogebra-5
 pkgver=5.0.569.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('any')
 url='http://www.geogebra.org/'
 license=('GPL3' 'CCPL:by-sa' 'CCPL:by-nc')
-depends=('desktop-file-utils' 'gsl' 'hicolor-icon-theme' 'java-runtime=8'
+depends=('desktop-file-utils' 'gsl' 'hicolor-icon-theme' 'java-runtime'
          'shared-mime-info' 'xdg-utils')
 provides=("${pkgname//-5/}")
 conflicts=("${pkgname//-5/}")

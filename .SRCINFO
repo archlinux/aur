@@ -1,7 +1,7 @@
 pkgbase = geogebra-5
 	pkgdesc = Dynamic mathematics software with interactive graphics, algebra and spreadsheet
 	pkgver = 5.0.569.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.geogebra.org/
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = geogebra-5
 	depends = desktop-file-utils
 	depends = gsl
 	depends = hicolor-icon-theme
-	depends = java-runtime=8
+	depends = java-runtime
 	depends = shared-mime-info
 	depends = xdg-utils
 	provides = geogebra
