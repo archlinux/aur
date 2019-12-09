@@ -1,0 +1,16 @@
+pkgbase = kiwiirc-bin
+	pkgdesc = A hand-crafted web-based IRC client that you can enjoy
+	pkgver = 19.04.24.1
+	pkgrel = 1
+	url = https://kiwiirc.com/
+	arch = x86_64
+	license = APACHE
+	provides = kiwiirc
+	conflicts = kiwiirc
+	source = https://kiwiirc.com/downloads/kiwiirc_19.04.24.1_linux_amd64.zip
+	source = kiwiirc.service
+	sha256sums = bfa8deb775d992b8117add52ef062ff68824269d55d3e1a7815a771ed49a8923
+	sha256sums = aaa2dea2d414dd5e2cf9a7929592a735a333f654e676a7450ea14bcbd32b63f3
+
+pkgname = kiwiirc-bin
+

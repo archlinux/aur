@@ -1,0 +1,8 @@
+[Unit]
+Description=Kiwi IRC server
+
+[Service]
+ExecStart=/usr/bin/kiwiirc --config=/etc/kiwiirc/config.conf
+
+[Install]
+WantedBy=multi-user.target
