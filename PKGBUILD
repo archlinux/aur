@@ -1,6 +1,6 @@
 # Maintainer: Amiad <amiadb at gmail dot com>
 
-pkgname=geany-git
+pkgname=geany-gtk2-git
 pkgver=1.36.0.37.g5cc69b3d6
 pkgrel=1
 pkgdesc="Fast and lightweight IDE (git version)"
@@ -9,8 +9,8 @@ url="http://github.com/geany/geany"
 license=('GPL2')
 depends=('gtk2' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git' 'automake' 'autoconf' 'intltool')
-conflicts=('geany')
-provides=('geany')
+conflicts=('geany' 'geany-git' 'geany-gtk3-git')
+provides=('geany' 'geany-git' 'geany-gtk3-git')
 source=("git://github.com/geany/geany.git")
 md5sums=('SKIP')
 
