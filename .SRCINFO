@@ -1,6 +1,6 @@
 pkgbase = deezloader-remix-bin
 	pkgdesc = Deezloader Remix is an improved version of Deezloader based on the Reborn branch. With this app you can download songs, playlists and albums directly from Deezer's Server in a single and well packaged app.
-	pkgver = 4.2.2
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://notabug.org/RemixDevs/DeezloaderRemix
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = deezloader-remix-bin
 	license = GPL3
 	conflicts = deezloader-remix-git
 	options = !strip
-	source_x86_64 = deezloader-remix.appimage::https://www.dropbox.com/s/vx39czo691ndtfr/Deezloader_Remix_4.2.2-x86_64.appimage?dl=0
-	md5sums_x86_64 = 64f784e408c7d07fc468aa66cedde0d8
-	source_i686 = deezloader-remix.appimage::https://www.dropbox.com/s/jgsi2f4eyap4qg2/Deezloader_Remix_4.2.2-i386.appimage?dl=0
-	md5sums_i686 = c2d85c932886bef5d57d1d5ede6293e0
+	source_x86_64 = deezloader-remix.appimage::https://www.dropbox.com/s/nmznos9sxg72nlf/Deezloader_Remix_4.3.0-x86_64.appimage?dl=0
+	md5sums_x86_64 = 8ab7860b602e311ff9571a5b371f193f
+	source_i686 = deezloader-remix.appimage::https://www.dropbox.com/s/glzljv2t8eugz7g/Deezloader_Remix_4.3.0-i386.appimage?dl=0
+	md5sums_i686 = 88a041670e8760f1d68daea13889e341
 
 pkgname = deezloader-remix-bin
 
