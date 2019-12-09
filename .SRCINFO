@@ -1,6 +1,6 @@
 pkgbase = resvg-qt
 	pkgdesc = SVG rendering library and CLI (Linked against Qt)
-	pkgver = 0.6.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/RazrFalcon/resvg
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = resvg-qt
 	depends = qt5-base
 	provides = resvg
 	conflicts = resvg
-	source = resvg-qt-0.6.1.tar.gz::https://github.com/RazrFalcon/resvg/archive/v0.6.1.tar.gz
-	sha256sums = 63786673eb6848e82c25c7f76e54d962d2da623e322efc45ed802837fef26c9c
+	source = resvg-qt-0.8.0.tar.gz::https://github.com/RazrFalcon/resvg/archive/v0.8.0.tar.gz
+	sha256sums = f204d4c49622d5bf5467e04ec16cd9e67cab957ea3d44a499915675cc1196bc3
 
 pkgname = resvg-qt
 
