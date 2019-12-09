@@ -1,12 +1,15 @@
 pkgbase = vcsteg
 	pkgdesc = Real Steganography with TrueCrypt
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
-	url = http://keyj.emphy.de/real-steganography-with-truecrypt/
+	url = https://keyj.emphy.de/real-steganography-with-truecrypt/
 	arch = any
 	license = custom:FOSS
-	depends = python2
+	depends = python
 	provides = vcsteg
+	provides = tcsteg
+	provides = vcsteg3
+	provides = tcsteg3
 	conflicts = tcsteg
 	conflicts = tcsteg2
 	conflicts = tcsteg.py
@@ -15,8 +18,12 @@ pkgbase = vcsteg
 	conflicts = vcsteg2
 	conflicts = vcsteg.py
 	conflicts = vcsteg2.py
-	source = vcsteg.py
-	sha256sums = 19130a705f2337dccd5f9633576d3f616b56fa47b909a2ac6005796eec82f7a7
+	conflicts = vcsteg3
+	conflicts = vcsteg3.py
+	conflicts = tcsteg3
+	conflicts = tcsteg3.py
+	source = https://keyj.emphy.de/files/tcsteg3.py
+	sha256sums = d6b506865c8cb15d081c8fe77e4e18ec1f9e89cef1f9c400bf6a47a6447e0784
 
 pkgname = vcsteg
 
