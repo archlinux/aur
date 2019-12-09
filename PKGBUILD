@@ -2,27 +2,28 @@
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=rstudio-desktop
-pkgver=1.2.5001
+pkgver=1.2.5019
 _gwtver=2.8.1
 _ginver=2.1.2
 _clangver=3.6.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source and enterprise-ready professional software for the R community"
 arch=(i686 x86_64)
 url="http://www.rstudio.com/"
 license=(AGPL)
 # TODO: what to remove? extra-x86_64-build says
-# - it doesn’t need mathjax, pandoc, clang, qt5-{sensors,svg,xmlpatterns}
+# - it doesn’t need mathjax, clang, qt5-{sensors,svg,xmlpatterns}
 # - and qt5-{base,declarative,location}, pango, shared-mime-info are auto-included
 depends=(
-	'r>=2.11.1' 'boost-libs>=1.63'
-	pango shared-mime-info mathjax pandoc clang
-	qt5-base qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns
+	'r>=3.0.1' 'boost-libs>=1.63'
+	pango shared-mime-info mathjax clang
+	'qt5-base>=5.12.5' qt5-declarative qt5-location qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns
 )
+optdepends=(pandoc)
 # java-environment=8 prevents:
 #    [ERROR] Hint: Check that your module inherits 'com.google.gwt.core.Core'
 #    either directly or indirectly (most often by inheriting module 'com.google.gwt.user.User')
-makedepends=('cmake>=2.8' 'boost>=1.63' 'java-environment=8' apache-ant openssl pam)
+makedepends=('cmake>=3.4.3' 'boost>=1.69' 'java-environment=8' 'patchelf>=0.9' apache-ant openssl pam)
 conflicts=(rstudio-desktop-bin rstudio-desktop-git rstudio-desktop-preview-bin)
 source=(
 	"rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/tarball/v$pkgver"
@@ -33,7 +34,7 @@ source=(
 )
 noextract=('core-dictionaries.zip' "gin-$_ginver.zip")
 sha256sums=(
-	'68d530c6ee724946f3a2f1ee53de8529c9953abf4bc69ba344629fe9d8582a17'
+	'104becf4394484adf53d92611c68db884a6adef52e643fc371183f8106b67970'
 	'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
 	'0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7'
 	'4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494'

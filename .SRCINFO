@@ -1,42 +1,43 @@
 pkgbase = rstudio-desktop
 	pkgdesc = Open source and enterprise-ready professional software for the R community
-	pkgver = 1.2.5001
-	pkgrel = 2
+	pkgver = 1.2.5019
+	pkgrel = 1
 	url = http://www.rstudio.com/
 	arch = i686
 	arch = x86_64
 	license = AGPL
-	makedepends = cmake>=2.8
-	makedepends = boost>=1.63
+	makedepends = cmake>=3.4.3
+	makedepends = boost>=1.69
 	makedepends = java-environment=8
+	makedepends = patchelf>=0.9
 	makedepends = apache-ant
 	makedepends = openssl
 	makedepends = pam
-	depends = r>=2.11.1
+	depends = r>=3.0.1
 	depends = boost-libs>=1.63
 	depends = pango
 	depends = shared-mime-info
 	depends = mathjax
-	depends = pandoc
 	depends = clang
-	depends = qt5-base
+	depends = qt5-base>=5.12.5
 	depends = qt5-declarative
 	depends = qt5-location
 	depends = qt5-sensors
 	depends = qt5-svg
 	depends = qt5-webengine
 	depends = qt5-xmlpatterns
+	optdepends = pandoc
 	conflicts = rstudio-desktop-bin
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview-bin
 	noextract = core-dictionaries.zip
 	noextract = gin-2.1.2.zip
-	source = rstudio-1.2.5001.tar.gz::https://github.com/rstudio/rstudio/tarball/v1.2.5001
+	source = rstudio-1.2.5019.tar.gz::https://github.com/rstudio/rstudio/tarball/v1.2.5019
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.1.zip
 	source = https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip
 	source = boost-1.70.patch::https://github.com/rstudio/rstudio/commit/217ce0962734ae85621fd82f0eed86129c991a79.patch
-	sha256sums = 68d530c6ee724946f3a2f1ee53de8529c9953abf4bc69ba344629fe9d8582a17
+	sha256sums = 104becf4394484adf53d92611c68db884a6adef52e643fc371183f8106b67970
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
 	sha256sums = 0b7af89fdadb4ec51cdb400ace94637d6fe9ffa401b168e2c3d372392a00a0a7
 	sha256sums = 4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494
