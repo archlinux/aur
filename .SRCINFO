@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = http://photutils.readthedocs.io/
 	arch = i686
@@ -14,14 +14,13 @@ pkgbase = python-photutils
 	makedepends = python-scikit-image
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-0.7.1.tar.gz
-	md5sums = 493fb6157d8a076f0cc7620a845d8d3c
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-0.7.2.tar.gz
+	md5sums = 7f60e260f1c7d3a12efc401bc29fd4bb
 
 pkgname = python-photutils
 	depends = python>=3.5
 	depends = python-numpy>=1.13
 	depends = python-astropy>=2.0
-	depends = python-six
 	optdepends = python-scipy>=0.19: To power a variety of features in several modules (strongly recommended)
 	optdepends = python-scikit-image>=0.14.2: Used in deblend_sources for deblending segmented sources
 	optdepends = python-scikit-learn>=0.19: Used in DBSCANGroup to create star groups

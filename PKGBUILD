@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('cython>=0.28'
              'graphviz')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('493fb6157d8a076f0cc7620a845d8d3c')
+md5sums=('7f60e260f1c7d3a12efc401bc29fd4bb')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -40,7 +40,7 @@ check() {
 }
 
 package_python-photutils() {
-    depends=('python>=3.5' 'python-numpy>=1.13' 'python-astropy>=2.0' 'python-six')
+    depends=('python>=3.5' 'python-numpy>=1.13' 'python-astropy>=2.0')
     optdepends=('python-scipy>=0.19: To power a variety of features in several modules (strongly recommended)'
                 'python-scikit-image>=0.14.2: Used in deblend_sources for deblending segmented sources'
                 'python-scikit-learn>=0.19:  Used in DBSCANGroup to create star groups'
