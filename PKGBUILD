@@ -1,8 +1,13 @@
-# Contributor: 3ED <kas1987@o2.pl>
+# Maintainer: 3ED <krzysztofas /at/ protonmail>
 
+pkgname=(
+	poc
+	mp3cue mp3cut mp3length
+	pob-2250 pob-3119 pob-fec
+	poc-2250 poc-3119 poc-fec poc-http
+	pogg-http)
 pkgbase=poc
-pkgname=poc
-true && pkgname=(poc mp3cue mp3cut mp3length pob-2250 pob-3119 pob-fec poc-2250 poc-3119 poc-fec poc-http pogg-http)
+pkgdesc='a mp3 command-line editing and streaming tools'
 pkgver=0.4.1
 pkgrel=7
 arch=('i686' 'x86_64')
@@ -10,22 +15,23 @@ license=('custom')
 depends=('glibc')
 groups=('poc')
 makedepends=('flex' 'bison')
-url="http://www.bl0rg.net/software/poc/"
-source=("http://www.bl0rg.net/software/poc/$pkgbase-$pkgver.tar.gz"
-        "patch-x86_64.diff")
+url='https://bl0rg.net/software/poc/'
+source=('https://bl0rg.net/software/poc/poc-0.4.1.tar.gz'
+        'patch-x86_64.diff')
 sha256sums=('a8f8be5281b80f9bb1dd0d330ec59e608d557351f6e6ad5b3d14932f7b952d29'
             '1f02a2d2db9bc2d00beeef4099df3276bc80e603c5b5aa45969d8d25f919c2b4')
 
-DLAGENTS=('http::/usr/bin/wget -c -t 3 --waitretry=3 --no-check-certificate -O %o %u')
-
+prepare() {
+	test "$CARCH" = "x86_64" \
+		&& cd "$srcdir/$pkgbase-$pkgver" \
+		&& patch -Np0 < "$srcdir/patch-x86_64.diff"
+}
 
 build() {
 	cd "$srcdir/$pkgbase-$pkgver"
-
-	[ "$CARCH" = "x86_64" ] && patch -Np0 < "$srcdir/patch-x86_64.diff"
-
 	make
 }
+
 
 package_mp3cue() {
   _pkgname=mp3cue
@@ -135,7 +141,3 @@ package_poc() {
   depends=(mp3cue mp3cut mp3length pob-2250 pob-3119 pob-fec poc-2250 poc-3119 poc-fec poc-http pogg-http)
   pkgdesc="a mp3 command-line editing and streaming tools (metapackage)"
 }
-
-# AUR
-depends=('glibc')
-pkgdesc="poc includes mp3cue, a mp3 CUE cutter, and mp3cut, a mp3 command-line editing and streaming tool"
