@@ -1,0 +1,5 @@
+post_install() {
+  echo "make sure that your vimrc contains:"
+  echo " syntax on"
+  echo " filetype plugin on"
+}
