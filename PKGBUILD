@@ -2,26 +2,24 @@
 
 _gemname=tty-spinner
 pkgname=ruby-$_gemname
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A terminal spinner for tasks that have non-deterministic time frame."
-arch=('any')
-url="http://github.com/piotrmurach/tty-spinner"
-license=('MIT')
+arch=(any)
+url='http://github.com/piotrmurach/tty-spinner'
+license=(MIT)
 depends=(
-  'ruby'
+  ruby
   'ruby-tty-cursor>=0.7' 'ruby-tty-cursor<1'
 )
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b4848988b0a4799dd129d3b29c3f34f66ea91dfa')
+sha1sums=('e5e9140ef4ea075dad1f0c6e41985c384b8931e2')
 
 package() {
-  cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
-  rm "$pkgdir$_gemdir/cache/$_gemname-$pkgver.gem"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
-
-# vim:set ts=2 sw=2 et:
