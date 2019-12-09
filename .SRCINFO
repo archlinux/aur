@@ -1,0 +1,17 @@
+pkgbase = ruby-faraday-fastlane
+	pkgdesc = HTTP/REST API client library.
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://lostisland.github.io/faraday
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = multipart-post>=1.2
+	depends = multipart-post<3
+	noextract = faraday-0.17.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/faraday-0.17.1.gem
+	sha1sums = 2fe4c94cc0bf270ccb8e4632f6250bf65a96e7ca
+
+pkgname = ruby-faraday-fastlane
+
