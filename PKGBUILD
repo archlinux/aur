@@ -1,22 +1,22 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: farawayer <farwayer@gmail.com>
 
-pkgname=ruby-cfpropertylist
 _gemname=CFPropertyList
-pkgver=3.0.1
+pkgname=ruby-cfpropertylist
+pkgver=3.0.2
 pkgrel=1
-pkgdesc="A module to read, write and manipulate property lists as defined by Apple."
-arch=('any')
-url="http://github.com/ckruse/CFPropertyList/"
-license=('MIT')
-depends=('ruby')
-source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-sha512sums=('0201c92d6f97b0bebe6a11fc8d23cd6fb6d33c3a4a916595b37a50bfdc74b137e253942af87a0a8463f1465b028cab6e220a05f4753f3d248e575bbce3099337')
-noextract=(${_gemname}-${pkgver}.gem)
+pkgdesc='This is a module to read, write and manipulate both binary and XML property lists as defined by apple.'
+arch=(any)
+url='https://github.com/ckruse/CFPropertyList'
+license=(MIT)
+depends=(ruby)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('72550ed38a936579f279db523679639d9574a4ea')
 
 package() {
-  cd "${srcdir}"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --no-user-install --ignore-dependencies \
-    -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
-
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

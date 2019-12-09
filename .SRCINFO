@@ -1,14 +1,15 @@
 pkgbase = ruby-cfpropertylist
-	pkgdesc = A module to read, write and manipulate property lists as defined by Apple.
-	pkgver = 3.0.1
+	pkgdesc = This is a module to read, write and manipulate both binary and XML property lists as defined by apple.
+	pkgver = 3.0.2
 	pkgrel = 1
-	url = http://github.com/ckruse/CFPropertyList/
+	url = https://github.com/ckruse/CFPropertyList
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = CFPropertyList-3.0.1.gem
-	source = http://rubygems.org/downloads/CFPropertyList-3.0.1.gem
-	sha512sums = 0201c92d6f97b0bebe6a11fc8d23cd6fb6d33c3a4a916595b37a50bfdc74b137e253942af87a0a8463f1465b028cab6e220a05f4753f3d248e575bbce3099337
+	noextract = CFPropertyList-3.0.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/CFPropertyList-3.0.2.gem
+	sha1sums = 72550ed38a936579f279db523679639d9574a4ea
 
 pkgname = ruby-cfpropertylist
 
