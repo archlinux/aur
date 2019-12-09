@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2019.01.29.f6c6675.r2.g17d380b1
+pkgver=2019.12.06.f8778c4.r0.gf8778c44
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ optdepends=('u3d: for U3D and IDTF file support'
 install="${pkgname}.install"
 source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel"
+        "revert-external.patch"
         "plugin_dir.patch"
         "shaders_dir.patch"
         "external.patch"
@@ -33,12 +34,13 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "meshlab.desktop")
 sha256sums=('SKIP'
             'SKIP'
+            'aeef11fabc93d3dc1b804a400081f35b428ed5cbe270282298dd84b831eb5b96'
             '0072605f6547f92f0d0c3abd18ec904d325185a5b6feac500ec0cb34e38b72b4'
             '736c7afac25bc7b23703082c4d79a9981782038d23e39b646adfeae345d44374'
-            '4897153f5edc8e36961d4251d8ea0b4cf3514ebf1258f6ffd7a933f02d594162'
-            'a2b539e42a2468b95ecf5d08c269f3bbc5d9672840e3743e5facbd7a90b9564c'
-            'b2ae4862d98723c20be2312da2e5e73f3d59e9cc202f677b51e89270671bdf42'
-            '8b14d074da7d037814ffc901b3c03e9a2fa91f1b44ec0d83b7aeef4f380aa185'
+            '21e9f2fc1c971fbd00cb9d40e773c07ba24de0482197fd1b4ca42908f2097fc9'
+            '86d6c8c5133fc0823a11289ab9e19c850e4564535c2026787e2da00d7d2b184b'
+            'e37a51fe244764b644764387a1d24dcd7262b6aee12386e1d9baa771bf4f8287'
+            '7c048e5b70bb7be3530392dab606713b04878304ce0a6cde6156b9a84b3261f5'
             '48229a56e8b61b8a0c21062e1cfe0ae2417f7609aa1a2ad29debdd636cadae3d'
             '5a041c414777036ebd8925108a9bb51f66ab435324ff4671012bdcb806fcf400'
             '865b318f4196b1a34b17867dc18e116ef5f702b4905bb2d536609eb79af1c1bc'
@@ -58,28 +60,30 @@ prepare() {
   # remove bundled headers and libraries
   rm -fr meshlab/src/external/{inc,lib}
 
+  msg "revert upstram patch to external lib"
+  patch -Np1 -i ${srcdir}/revert-external.patch
   msg "truncate external lib"
-  patch -Np1 -i ../external.patch
+  patch -Np1 -i ${srcdir}/external.patch
   msg "fix rpath"
-  patch -Np1 -i ../rpath.patch
+  patch -Np1 -i ${srcdir}/rpath.patch
   msg "fix meshalbserver missing -lGLU"
-  patch -Np1 -i ../meshlabserver_GLU.patch
+  patch -Np1 -i ${srcdir}/meshlabserver_GLU.patch
   msg "using system mpir lib"
-  patch -Np1 -i ../mpir.patch
+  patch -Np1 -i ${srcdir}/mpir.patch
   msg "using system muparser lib"
-  patch -Np1 -i ../muparser.patch
+  patch -Np1 -i ${srcdir}/muparser.patch
   msg "using system levmar lib"
-  patch -Np1 -i ../levmar.patch
+  patch -Np1 -i ${srcdir}/levmar.patch
   msg "using system 3ds lib"
-  patch -Np1 -i ../3ds.patch
+  patch -Np1 -i ${srcdir}/3ds.patch
   msg "put plugins in /usr/lib/mashlab"
-  patch -Np1 -i ../plugin_dir.patch
+  patch -Np1 -i ${srcdir}/plugin_dir.patch
   msg "put shaders in /usr/shade/meshlab"
-  patch -Np1 -i ../shaders_dir.patch
+  patch -Np1 -i ${srcdir}/shaders_dir.patch
   msg "qt(5.11) compatibility"
-  patch -Np1 -i ../qt5.11.patch
+  patch -Np1 -i ${srcdir}/qt5.11.patch
   msg "fix muparser unicode string"
-  patch -Np1 -i ../muparser_drop_unicode.patch
+  patch -Np1 -i ${srcdir}/muparser_drop_unicode.patch
   cd ${srcdir}/vcglib
 }
 

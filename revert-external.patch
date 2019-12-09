@@ -1,0 +1,455 @@
+From 8660a924bb8c990dab6aea3a72a62cae3be7066a Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Tue, 10 Dec 2019 00:05:33 +0100
+Subject: [PATCH] Revert "Use some system libraries if desired."
+
+This reverts commit d4564c341d0f2793b93518946676c8a3c6698d2c.
+---
+ src/common/common.pro                               | 13 ++++---------
+ src/external/external.pro                           | 11 ++++-------
+ src/general.pri                                     |  5 ++---
+ src/meshlab/meshlab.pro                             |  8 ++------
+ src/meshlabplugins/edit_align/edit_align.pro        |  9 +++------
+ src/meshlabplugins/filter_plymc/plymc.pro           |  5 ++---
+ src/meshlabplugins/io_3ds/io_3ds.pro                | 11 ++++++-----
+ src/meshlabplugins/io_ctm/io_ctm.pro                |  3 +--
+ .../render_radiance_scaling.pro                     |  7 +------
+ src/meshlabserver/meshlabserver.pro                 |  6 +-----
+ .../edit_ocme/src/ocme/ocme_builder.pro             |  5 ++---
+ .../filter_multiscale_align.pro                     |  5 ++---
+ src/plugins_unsupported/edit_arc3D/edit_arc3D.pro   | 12 +++++++++++-
+ src/plugins_unsupported/edit_fit/edit_fit.pro       |  7 ++-----
+ src/plugins_unsupported/editpaint/editpaint.pro     |  5 +----
+ .../filter_rangemap/filter_rangemap.pro             |  7 ++-----
+ src/plugins_unsupported/io_epoch/io_epoch.pro       |  7 ++++++-
+ src/plugins_unsupported/render_rm/render_rm.pro     |  7 ++-----
+ src/shared.pri                                      |  6 ++----
+ 19 files changed, 56 insertions(+), 83 deletions(-)
+
+diff --git a/src/common/common.pro b/src/common/common.pro
+index 007e7003..cf4cccff 100644
+--- a/src/common/common.pro
++++ b/src/common/common.pro
+@@ -1,6 +1,7 @@
+ include (../general.pri)
+ EXIF_DIR = ../external/jhead-2.95
+ 
++GLEWCODE = $$GLEWDIR/src/glew.c
+ 
+ win32-msvc2005:DESTDIR = ../distrib
+ win32-msvc2008:DESTDIR = ../distrib
+@@ -43,11 +44,8 @@ fi;\
+ INCLUDEPATH *= ../.. \
+     $$VCGDIR \
+     $$EIGENDIR \
++    $$GLEWDIR/include \
+     $$EXIF_DIR
+-!CONFIG(system_glew) {
+-	INCLUDEPATH *= $$GLEWDIR/include
+-	GLEWCODE = $$GLEWDIR/src/glew.c
+-}
+ TEMPLATE = lib
+ 
+ linux:CONFIG += dll
+@@ -71,6 +69,7 @@ QT += script
+ 
+ TARGET = common
+ DEPENDPATH += .
++DEFINES += GLEW_STATIC
+ 
+ win32-msvc:DEFINES += _CRT_SECURE_NO_WARNINGS
+ 
+@@ -103,11 +102,7 @@ SOURCES += 	filterparameter.cpp \
+ 			mlapplication.cpp \
+ 			scriptsyntax.cpp \
+ 			searcher.cpp \
++			$$GLEWCODE \
+ 			meshlabdocumentxml.cpp \
+ 			meshlabdocumentbundler.cpp \
+ 			ml_shared_data_context.cpp 
+-
+-!CONFIG(system_glew) {
+-	SOURCES += $$GLEWCODE
+-	DEFINES += GLEW_STATIC
+-}
+diff --git a/src/external/external.pro b/src/external/external.pro
+index 966e9888..7bd97f60 100644
+--- a/src/external/external.pro
++++ b/src/external/external.pro
+@@ -2,14 +2,11 @@ config += debug_and_release
+ 
+ TEMPLATE      = subdirs
+ 
+-SUBDIRS	= 	muparser_v225/src \
++SUBDIRS	= 	bzip2-1.0.5/bzip2-1.0.5.pro \
++			muparser_v225/src \
+ 			levmar-2.3/levmar-2.3.pro \
+ 			structuresynth-1.5/structuresynth.pro \
++			OpenCTM-1.0.3/openctm.pro \
+ 			jhead-2.95/jhead-2.95.pro \
++			lib3ds-1.3.0/lib3ds/lib3ds.pro 
+ #			openkinect/openkinect.pro
+-
+-!CONFIG(system_bzip2)   SUBDIRS	+= 	bzip2-1.0.5/bzip2-1.0.5.pro
+-!CONFIG(system_openctm) SUBDIRS	+= 	OpenCTM-1.0.3/openctm.pro
+-!CONFIG(system_lib3ds)  SUBDIRS	+= 	lib3ds-1.3.0/lib3ds/lib3ds.pro
+-
+-# Can't easily make muparser conditional because of the fact it relies on the _UNICODE define
+diff --git a/src/general.pri b/src/general.pri
+index 1c4f9aea..36193c5a 100644
+--- a/src/general.pri
++++ b/src/general.pri
+@@ -6,9 +6,8 @@
+ DEFINES += MESHLAB_SCALAR=float
+ 
+ VCGDIR   = ../../../vcglib
+-CONFIG(system_eigen3): EIGENDIR = /usr/include/eigen3
+-!CONFIG(system_eigen3):EIGENDIR = $$VCGDIR/eigenlib
+-!CONFIG(system_glew):  GLEWDIR = ../external/glew-2.1.0
++EIGENDIR = $$VCGDIR/eigenlib
++GLEWDIR = ../external/glew-2.1.0
+ 
+ CONFIG += c++11
+ 
+diff --git a/src/meshlab/meshlab.pro b/src/meshlab/meshlab.pro
+index 3e7a99be..5f542b87 100644
+--- a/src/meshlab/meshlab.pro
++++ b/src/meshlab/meshlab.pro
+@@ -10,8 +10,8 @@ INCLUDEPATH *= . \
+ 	../.. \
+     $$VCGDIR \
+     $$EIGENDIR \
++    $$GLEWDIR/include \
+ 	$$EXIF_DIR
+-!CONFIG(system_glew): INCLUDEPATH *= $$GLEWDIR/include
+ DEPENDPATH += $$VCGDIR \
+     $$VCGDIR/vcg \
+     $$VCGDIR/wrap
+@@ -65,6 +65,7 @@ SOURCES = main.cpp \
+ 	$$VCGDIR/wrap/gui/trackball.cpp \
+     $$VCGDIR/wrap/gui/trackmode.cpp \
+ 	$$VCGDIR/wrap/gui/coordinateframe.cpp \
++	#$$GLEWDIR/src/glew.c \
+     glarea_setting.cpp \
+ 	filterthread.cpp 
+ 
+@@ -156,11 +157,6 @@ win32-g++:LIBS        	+= -L../external/lib/win32-gcc -ljhead -L../distrib -lcom
+ linux:LIBS += -L$$PWD/../external/lib/linux-g++ -ljhead -L../distrib -lcommon -lGLU
+ linux:QMAKE_RPATHDIR += ../distrib
+ 
+-!CONFIG(system_glew) {
+-	INCLUDEPATH *= $$GLEWDIR/include
+-}
+-CONFIG(system_glew): LIBS += -lGLEW
+-
+ # uncomment in your local copy only in emergency cases.
+ # We should never be too permissive
+ # win32-g++:QMAKE_CXXFLAGS += -fpermissive
+diff --git a/src/meshlabplugins/edit_align/edit_align.pro b/src/meshlabplugins/edit_align/edit_align.pro
+index f1009822..2637cf0b 100644
+--- a/src/meshlabplugins/edit_align/edit_align.pro
++++ b/src/meshlabplugins/edit_align/edit_align.pro
+@@ -32,12 +32,9 @@ SOURCES       = edit_align_factory.cpp \
+                 ../../meshlab/stdpardialog.cpp \
+                 $$VCGDIR/wrap/ply/plylib.cpp\
+                 $$VCGDIR/wrap/gui/trackball.cpp\
+-                $$VCGDIR/wrap/gui/trackmode.cpp
+-
+-!CONFIG(system_glew): SOURCES += $$GLEWCODE
+-CONFIG(system_glew) {
+-    linux: LIBS += -lGLEW
+-}
++                $$VCGDIR/wrap/gui/trackmode.cpp \
++                $$GLEWCODE 
++    
+                 
+ INCLUDEPATH += ../../external
+ 
+diff --git a/src/meshlabplugins/filter_plymc/plymc.pro b/src/meshlabplugins/filter_plymc/plymc.pro
+index 282fa9ed..b6094191 100755
+--- a/src/meshlabplugins/filter_plymc/plymc.pro
++++ b/src/meshlabplugins/filter_plymc/plymc.pro
+@@ -1,6 +1,7 @@
+ TARGET = plymc
+ DEPENDPATH += .
+-INCLUDEPATH += ../../../../vcglib
++INCLUDEPATH += ../../../../vcglib \
++    ../../code/lib/glew/include
+ CONFIG += console \
+     stl \
+     debug_and_release
+@@ -23,7 +24,5 @@ HEADERS = plymc.h \
+     simplemeshprovider.h \
+     ../../meshlab/alnParser.h
+ 
+-!CONFIG(system_glew): INCLUDEPATH *= ../../code/lib/glew/include
+-
+ #macx-g++:DEFINES += NDEBUG
+ 
+diff --git a/src/meshlabplugins/io_3ds/io_3ds.pro b/src/meshlabplugins/io_3ds/io_3ds.pro
+index 620d2653..fd1b44f9 100644
+--- a/src/meshlabplugins/io_3ds/io_3ds.pro
++++ b/src/meshlabplugins/io_3ds/io_3ds.pro
+@@ -8,14 +8,13 @@ HEADERS		= meshio.h \
+ 			import_3ds.h \
+ 			io_3ds.h 
+ 				
+-SOURCES       += 	meshio.cpp
++SOURCES       += 	meshio.cpp \
++			
++DEFINES += LIB3DS_STATIC
+ 
+ TARGET        = io_3ds
+ 
+-!CONFIG(system_lib3ds) {
+-	INCLUDEPATH *= ../../external/lib3ds-1.3.0/
+-	DEFINES += LIB3DS_STATIC
+-}
++INCLUDEPATH += ../../external/lib3ds-1.3.0/
+ 
+ # Notes on the paths of lib3ds files.
+ # Once you have compiled the library put the lib files in a dir named lib/XXX/ 
+@@ -29,6 +28,8 @@ win32-msvc2008:LIBS	+= ../../external/lib/win32-msvc2008/3ds.lib
+ win32-g++:LIBS		+= ../../external/lib/win32-gcc/lib3ds.a
+ linux-g++:LIBS += -l3ds
+ 
++# unix:LIBS		+= -L../../../../code/lib/lib3ds-1.3.0/lib3ds/lib/unix -l3ds
++
+ # mac:LIBS -= -l3ds 
+ # mac:LIBS += ../../../../code/lib/lib3ds-1.3.0/lib/mac/lib3ds.a
+ 
+diff --git a/src/meshlabplugins/io_ctm/io_ctm.pro b/src/meshlabplugins/io_ctm/io_ctm.pro
+index 5a0586c6..7265e035 100644
+--- a/src/meshlabplugins/io_ctm/io_ctm.pro
++++ b/src/meshlabplugins/io_ctm/io_ctm.pro
+@@ -3,10 +3,9 @@ HEADERS += io_ctm.h \
+     $$VCGDIR/wrap/io_trimesh/import_ctm.h \
+     $$VCGDIR/wrap/io_trimesh/export_ctm.h
+ SOURCES += io_ctm.cpp
++INCLUDEPATH += ../../external/OpenCTM-1.0.3/lib
+ TARGET = io_ctm
+ 
+-!CONFIG(system_openctm): INCLUDEPATH *= ../../external/OpenCTM-1.0.3/lib
+-
+ win32-msvc.net:QMAKE_CXXFLAGS += /DOPENCTM_STATIC
+ win32-msvc2005:QMAKE_CXXFLAGS += /DOPENCTM_STATIC
+ win32-msvc2008:QMAKE_CXXFLAGS += /DOPENCTM_STATIC
+diff --git a/src/meshlabplugins/render_radiance_scaling/render_radiance_scaling.pro b/src/meshlabplugins/render_radiance_scaling/render_radiance_scaling.pro
+index bc1b6670..ed7b1fb4 100644
+--- a/src/meshlabplugins/render_radiance_scaling/render_radiance_scaling.pro
++++ b/src/meshlabplugins/render_radiance_scaling/render_radiance_scaling.pro
+@@ -1,12 +1,7 @@
+ include (../../shared.pri)
+ 
+ HEADERS       = textureParams.h textureFormat.h texture2D.h framebufferObject.h gpuShader.h gpuProgram.h radianceScalingRenderer.h shaderDialog.h
+-SOURCES       = textureParams.cpp textureFormat.cpp framebufferObject.cpp gpuShader.cpp gpuProgram.cpp radianceScalingRenderer.cpp shaderDialog.cpp
+-
+-!CONFIG(system_glew): SOURCES += $$GLEWCODE
+-CONFIG(system_glew) {
+-    linux: LIBS += -lGLEW
+-}
++SOURCES       = textureParams.cpp textureFormat.cpp framebufferObject.cpp gpuShader.cpp gpuProgram.cpp radianceScalingRenderer.cpp shaderDialog.cpp $$GLEWCODE
+ 
+ TARGET        = render_radiance_scaling
+ FORMS         = shaderDialog.ui
+diff --git a/src/meshlabserver/meshlabserver.pro b/src/meshlabserver/meshlabserver.pro
+index 66accaec..e97962a1 100644
+--- a/src/meshlabserver/meshlabserver.pro
++++ b/src/meshlabserver/meshlabserver.pro
+@@ -1,8 +1,6 @@
+ include (../general.pri)
+ 
+-INCLUDEPATH += . .. $$VCGDIR $$EIGENDIR
+-
+-!CONFIG(system_glew): INCLUDEPATH *= $$GLEWDIR/include
++INCLUDEPATH += . .. $$VCGDIR $$EIGENDIR $$GLEWDIR/include
+ 
+ HEADERS        = 
+ 
+@@ -46,8 +44,6 @@ win32-msvc2010:DEFINES += GLEW_STATIC
+ win32-msvc2012:DEFINES += GLEW_STATIC
+ win32-msvc2015:DEFINES += GLEW_STATIC
+ 
+-CONFIG(system_glew):LIBS += -lGLEW
+-
+ #DEFINES += GLEW_STATIC
+ 
+ # This removes the need of XSERVER to run meshlabserver
+diff --git a/src/plugins_experimental/edit_ocme/src/ocme/ocme_builder.pro b/src/plugins_experimental/edit_ocme/src/ocme/ocme_builder.pro
+index e7ead0eb..c920a177 100755
+--- a/src/plugins_experimental/edit_ocme/src/ocme/ocme_builder.pro
++++ b/src/plugins_experimental/edit_ocme/src/ocme/ocme_builder.pro
+@@ -6,8 +6,7 @@ GLEWDIR = ../../../../external/glew-1.5.1
+ win32-msvc2005:DEFINES += GLEW_STATIC
+ win32-msvc2008:DEFINES += GLEW_STATIC 
+ 
+-INCLUDEPATH  *= ../.. $$VCGDIR
+-!CONFIG(system_glew): INCLUDEPATH *= $$GLEWDIR/include
++INCLUDEPATH  *= ../.. $$VCGDIR $$GLEWDIR/include
+ DEPENDPATH += $$VCGDIR
+ 
+ # the following line is to hide the hundred of warnings about the deprecated
+@@ -110,7 +109,7 @@ QMAKE_CXXFLAGS_RELEASE += -DNDEBUG
+ LIBS +=    -lGLEW 
+ LIBS +=    -lkyotocabinet
+ 
+-!CONFIG(system_glew): QMAKE_LIBDIR += $$GLEWDIR/lib
++QMAKE_LIBDIR += $$GLEWDIR/lib
+ QMAKE_LIBDIR += ../../../../external/kyotocabinet-1.2.34
+ 
+ 
+diff --git a/src/plugins_experimental/filter_multiscale_align/filter_multiscale_align.pro b/src/plugins_experimental/filter_multiscale_align/filter_multiscale_align.pro
+index f5d5832d..bb0995b4 100644
+--- a/src/plugins_experimental/filter_multiscale_align/filter_multiscale_align.pro
++++ b/src/plugins_experimental/filter_multiscale_align/filter_multiscale_align.pro
+@@ -14,9 +14,8 @@ SOURCES     += filter_multiscale_align.cpp \
+ TARGET       = filter_multiscale_align
+ 
+ ## Dependencies
+-INCLUDEPATH += lib
+-!CONFIG(system_eigen3): INCLUDEPATH *= $$VCGDIR/eigenlib   #needed by Grenaille
+-CONFIG(system_eigen3):  INCLUDEPATH *= $$EIGENDIR   #needed by Grenaille
++INCLUDEPATH += lib \
++               $$VCGDIR/eigenlib   #needed by Grenaille
+ 
+ 
+ unix: QMAKE_CXXFLAGS += -DQ_OS_LINUX
+diff --git a/src/plugins_unsupported/edit_arc3D/edit_arc3D.pro b/src/plugins_unsupported/edit_arc3D/edit_arc3D.pro
+index 604cccb2..37ac72a9 100644
+--- a/src/plugins_unsupported/edit_arc3D/edit_arc3D.pro
++++ b/src/plugins_unsupported/edit_arc3D/edit_arc3D.pro
+@@ -38,7 +38,17 @@ win32-g++:LIBS	+= ../../external/lib/win32-gcc/libbz2.a
+ linux-g++:LIBS	+= -lbz2
+ mac:LIBS   += -lbz2
+ 
+-!CONFIG(system_bzip2):INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2005:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2008:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2010:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2012:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2013:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2015:INCLUDEPATH += ../../external/bzip2-1.0.5
++
++win32-g++:INCLUDEPATH  += ../../external/bzip2-1.0.5
++linux-g++:INCLUDEPATH	+= ../../external/bzip2-1.0.5
++linux-g++-32:INCLUDEPATH	+= ../../external/bzip2-1.0.5
++linux-g++-64:INCLUDEPATH	+= ../../external/bzip2-1.0.5
+ 
+ 
+ CONFIG(release, debug|release) {
+diff --git a/src/plugins_unsupported/edit_fit/edit_fit.pro b/src/plugins_unsupported/edit_fit/edit_fit.pro
+index 3338c831..85bf9e24 100644
+--- a/src/plugins_unsupported/edit_fit/edit_fit.pro
++++ b/src/plugins_unsupported/edit_fit/edit_fit.pro
+@@ -13,11 +13,8 @@ HEADERS       = edit_fit_factory.h \
+ SOURCES       = edit_fit_factory.cpp \
+ 				editfit.cpp\
+   				fittoolbox.cpp\
+-  				primitive.cpp
+-!CONFIG(system_glew): SOURCES += $$GLEWCODE
+-CONFIG(system_glew) {
+-    linux: LIBS += -lGLEW
+-}
++  				primitive.cpp\
++				$$GLEWCODE				
+ 
+ FORMS 	  += fittoolbox.ui
+ 
+diff --git a/src/plugins_unsupported/editpaint/editpaint.pro b/src/plugins_unsupported/editpaint/editpaint.pro
+index 8d022b20..93bf48b2 100755
+--- a/src/plugins_unsupported/editpaint/editpaint.pro
++++ b/src/plugins_unsupported/editpaint/editpaint.pro
+@@ -8,11 +8,8 @@ HEADERS   = edit_paint_factory.h \
+ 			 
+ SOURCES   = edit_paint_factory.h \
+ 			editpaint.cpp \
++			$$GLEWCODE  \
+ 			paintbox.cpp
+-!CONFIG(system_glew): SOURCES += $$GLEWCODE
+-CONFIG(system_glew) {
+-    linux: LIBS += -lGLEW
+-}
+ 	
+ TARGET = editpaint
+ 
+diff --git a/src/plugins_unsupported/filter_rangemap/filter_rangemap.pro b/src/plugins_unsupported/filter_rangemap/filter_rangemap.pro
+index 24f279c2..c4119b60 100644
+--- a/src/plugins_unsupported/filter_rangemap/filter_rangemap.pro
++++ b/src/plugins_unsupported/filter_rangemap/filter_rangemap.pro
+@@ -3,11 +3,8 @@ include (../../shared.pri)
+ HEADERS       = filter_rangemap.h
+ 
+ SOURCES       = filter_rangemap.cpp \ 
+-		../../meshlab/filterparameter.cpp
+-!CONFIG(system_glew): SOURCES += $$GLEWCODE
+-CONFIG(system_glew) {
+-    linux: LIBS += -lGLEW
+-}
++		../../meshlab/filterparameter.cpp \
++		$$GLEWCODE
+ 
+ TARGET        = filter_rangemap
+ 
+diff --git a/src/plugins_unsupported/io_epoch/io_epoch.pro b/src/plugins_unsupported/io_epoch/io_epoch.pro
+index 7824f246..933ed59b 100644
+--- a/src/plugins_unsupported/io_epoch/io_epoch.pro
++++ b/src/plugins_unsupported/io_epoch/io_epoch.pro
+@@ -32,7 +32,12 @@ win32-msvc2008:LIBS	   += ../../external/lib/win32-msvc2008/bz2.lib
+ win32-g++:LIBS	+= ../../external/lib/win32-gcc/libbz2.a
+ linux-g++:LIBS	+= -lbz2
+ 
+-!CONFIG(system_bz2): INCLUDEPATH  *= ../../external/bzip2-1.0.5
++win32-msvc2005:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-msvc2008:INCLUDEPATH += ../../external/bzip2-1.0.5
++win32-g++:INCLUDEPATH  += ../../external/bzip2-1.0.5
++linux-g++:INCLUDEPATH	+= ../../external/bzip2-1.0.5
++linux-g++-32:INCLUDEPATH	+= ../../external/bzip2-1.0.5
++linux-g++-64:INCLUDEPATH	+= ../../external/bzip2-1.0.5
+ 
+ mac:LIBS   += -lbz2
+ 
+diff --git a/src/plugins_unsupported/render_rm/render_rm.pro b/src/plugins_unsupported/render_rm/render_rm.pro
+index 24d21686..575116e1 100644
+--- a/src/plugins_unsupported/render_rm/render_rm.pro
++++ b/src/plugins_unsupported/render_rm/render_rm.pro
+@@ -16,11 +16,8 @@ SOURCES  = rmmeshrender.cpp \
+            glstateholder.cpp \
+            parser/RmPass.cpp \
+            parser/RmXmlParser.cpp \
+-           parser/UniformVar.cpp
+-!CONFIG(system_glew): SOURCES += $$GLEWCODE
+-CONFIG(system_glew) {
+-    linux: LIBS += -lGLEW
+-}
++           parser/UniformVar.cpp \
++		   $$GLEWCODE
+ 
+ FORMS    = rmShadowDialog.ui
+ 
+diff --git a/src/shared.pri b/src/shared.pri
+index 4a10924b..2d51ad89 100644
+--- a/src/shared.pri
++++ b/src/shared.pri
+@@ -2,8 +2,7 @@
+ 
+ include (general.pri)
+ VCGDIR = ../$$VCGDIR
+-# only adjust relative path if we're not using system Eigen
+-!CONFIG(system_eigen3):EIGENDIR = ../$$EIGENDIR
++EIGENDIR = ../$$EIGENDIR
+ 
+ TEMPLATE      = lib
+ CONFIG       += plugin
+@@ -28,8 +27,7 @@ win32-msvc2013:DEFINES += GLEW_STATIC _USE_MATH_DEFINES
+ win32-msvc2015:DEFINES += GLEW_STATIC _USE_MATH_DEFINES
+ win32-msvc:DEFINES += GLEW_STATIC _USE_MATH_DEFINES
+ 
+-INCLUDEPATH  *= ../.. $$VCGDIR $$EIGENDIR
+-!CONFIG(system_glew): INCLUDEPATH *=  ../$$GLEWDIR/include
++INCLUDEPATH  *= ../.. $$VCGDIR $$EIGENDIR ../$$GLEWDIR/include
+ DEPENDPATH += ../.. $$VCGDIR
+ 
+ # the following line is to hide the hundred of warnings about the deprecated
+-- 
+2.24.0
+

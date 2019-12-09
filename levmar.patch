@@ -1,20 +1,3 @@
-diff --git a/src/meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro b/src/meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro
-index 808b0b21..b02cdcff 100644
---- a/src/meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro
-+++ b/src/meshlabplugins/filter_isoparametrization/filter_isoparametrization.pro
-@@ -53,9 +53,9 @@ win32-msvc2010:LIBS	+= ../../external/lib/win32-msvc2010/levmar.lib
- win32-msvc2012:LIBS	+= ../../external/lib/win32-msvc2012/levmar.lib
- win32-msvc2015:LIBS	+= ../../external/lib/win32-msvc2015/levmar.lib
- win32-g++:LIBS		+= -L../../external/lib/win32-gcc -llevmar
--linux-g++:LIBS		+= -L$$PWD/../../external/lib/linux-g++ -llevmar
--linux-g++-32:LIBS		+= -L$$PWD/../../external/lib/linux-g++-32 -llevmar
--linux-g++-64:LIBS		+= -L$$PWD/../../external/lib/linux-g++-64 -llevmar
-+linux-g++:LIBS		+= -llevmar
-+linux-g++-32:LIBS		+=  -llevmar
-+linux-g++-64:LIBS		+=  -llevmar
- macx:LIBS += $$MACLIBDIR/liblevmar.a
- 
- # Please never ever uncomment this...
 diff --git a/src/meshlabplugins/filter_mutualinfoxml/levmarmethods.h b/src/meshlabplugins/filter_mutualinfoxml/levmarmethods.h
 index 484d6dbf..8c0ae176 100644
 --- a/src/meshlabplugins/filter_mutualinfoxml/levmarmethods.h
@@ -41,22 +24,6 @@ index c45992b2..4d7b7405 100644
  
  #include <iostream>
  #include <fstream>
-diff --git a/src/meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro b/src/meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
-index ce494321..6eb7596b 100644
---- a/src/meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
-+++ b/src/meshlabplugins/edit_mutualcorrs/edit_mutualcorrs.pro
-@@ -29,8 +29,8 @@ win32-msvc:  LIBS += ../../external/lib/win32-msvc/levmar.lib
- win32-msvc2013:  LIBS += ../../external/lib/win32-msvc2013/levmar.lib
- win32-msvc2015:  LIBS += ../../external/lib/win32-msvc2015/levmar.lib
- win32-g++:LIBS += -L../../external -llevmar
--linux-g++:LIBS += -L$$PWD/../../external/lib/linux-g++ -llevmar
--linux-g++-32:LIBS += -L$$PWD/../../external/lib/linux-g++-32 -llevmar
--linux-g++-64:LIBS += -L$$PWD/../../external/lib/linux-g++-64 -llevmar
-+linux-g++:LIBS += -llevmar
-+linux-g++-32:LIBS += -llevmar
-+linux-g++-64:LIBS += -llevmar
- macx:LIBS            += $$MACLIBDIR/liblevmar.a
- 
 diff --git a/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h b/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h
 index 484d6dbf..8c0ae176 100644
 --- a/src/meshlabplugins/edit_mutualcorrs/levmarmethods.h
