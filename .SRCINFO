@@ -1,0 +1,16 @@
+pkgbase = gridsome-cli
+	pkgdesc = A command line tool for creating new Gridsome projects.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/gridsome/gridsome/tree/master/packages/cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = gridsome
+	source = https://registry.npmjs.org/@gridsome/cli/-/cli-0.3.1.tgz
+	md5sums = d9f4d0f6d1e8839b191abc0526d766eb
+
+pkgname = gridsome-cli
+
