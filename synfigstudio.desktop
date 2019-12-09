@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Synfig Studio
+Exec=synfigstudio
+Icon=synfigstudio
+Categories=Graphics;
+MimeType=application/x-sif;
