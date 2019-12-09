@@ -11,8 +11,8 @@ There are a few caveats to its usage, that need to be explained.
 - This package installed Clean/iTasks globally, which renders it unusable for
   most tasks.
 - As such the package provides two things,
-  # a script called `clenv` is provided that essentially creates a copy of the
+  - a script called `clenv` is provided that essentially creates a copy of the
     distribution in the user's home directory.
-  # the clm/cpm binaries are wrapped in a script detects the _local clean environment_
+  - the clm/cpm binaries are wrapped in a script detects the _local clean environment_
     and correctly sets some environment variables to make the clm/cpm tools use
     this.

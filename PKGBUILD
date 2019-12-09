@@ -1,8 +1,8 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 pkgname=clean-itasks-dev-bin
-pkgver=20191021
-pkgrel=2
+pkgver=20191209
+pkgrel=1
 pkgdesc="Provides the functional programming language Clean and the iTasks system."
 arch=('x86_64')
 url="https://clean.cs.ru.nl"
@@ -12,27 +12,29 @@ conflicts=('clean-lang' 'clean-lang-bin')
 provides=('clean-lang' 'clean-lang-bin')
 replaces=('clean-lang' 'clean-lang-bin')
 install=clean-env.install
-source=('https://ftp.cs.ru.nl/Clean/builds/linux-x64/clean-bundle-complete-linux-x64-latest.tgz'
+source=("https://ftp.cs.ru.nl/Clean/builds/linux-x64/clean-bundle-complete-linux-x64-${pkgver}.tgz"
         'clm-wrapper.sh'
         'cpm-wrapper.sh'
         'clenv.sh'
         'README.md')
-sha256sums=('2420fab49df9e325bd379659d9a3b86bbed7b420329330ee92e52a09a35a2c09'
+sha256sums=('b0939bcc5a4bf4e4d649c53a1677b3e940d86e467b0a5ab88dcbda659c98ef26'
             '27ab09f375d07b2d05c2c4367a47c60b05593059d6e6edc0434ee7d66b5119b8'
             'f8303a73262dc163459019916f45bfeb558fb7bebbf2fde372fa839f44b0de03'
             '6f839935dab80a4c687dc7bcb980682d56c1c2dadfff6937c1b69c04d36a5f9b'
-            'c26f925dfcd093674f35efc6e3d2c6e921dde292dd48aef3eed4f7af443ad378')
+            'f14afbd04e301269efbf7418677c3ad8d79b92f92e884e4f1146bc655117014b')
 
-pkgver() {
-	cd "${pkgname/-itasks-dev-bin/}-bundle-complete"
-
-    # extract timestamp from TGZ, truncate and use as version number
-    #tar -t -v --full-time -f clean-bundle-complete-linux-x64-latest.tgz | head -n1 \
-    #    | cut -d' ' -f10 | tr -d '-'
-
-    # or alternatively get it directly from the Info file
-    head -n1 Info/clean-bundle-complete-info.txt | cut -d' ' -f4
-}
+# originally clean packages were not dated, so pkgver had to be determined from
+# a version file within the archive. We are keeping this for the moment.
+#pkgver() {
+#	cd "${pkgname/-itasks-dev-bin/}-bundle-complete"
+#
+#    # extract timestamp from TGZ, truncate and use as version number
+#    #tar -t -v --full-time -f clean-bundle-complete-linux-x64-latest.tgz | head -n1 \
+#    #    | cut -d' ' -f10 | tr -d '-'
+#
+#    # or alternatively get it directly from the Info file
+#    head -n1 Info/clean-bundle-complete-info.txt | cut -d' ' -f4
+#}
 
 package() {
 	cd "${pkgname/-itasks-dev-bin/}-bundle-complete"
