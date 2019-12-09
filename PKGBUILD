@@ -17,7 +17,7 @@ conflicts=("${pkgname}")
 _filename=${_pkgname}-${pkgver}.jar
 source=("${_filename}::https://projectlombok.org/downloads/lombok.jar")
 
-sha256sums=('0396952823579b316a0fe85cbd871bbb3508143c2bcbd985dd7800e806cb24fc')
+sha256sums=('2836e954823bfcbad45e78c18896e3d01058e6f643749810c608b7005ee7b2fa')
 
 build() {
     cd "${srcdir}"
