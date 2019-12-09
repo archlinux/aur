@@ -1,0 +1,5 @@
+src
+pkg
+*.xz
+*.tar.gz
+updateSRCINFO.sh

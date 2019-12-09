@@ -1,0 +1,20 @@
+pkgbase = evdi-4.19
+	pkgdesc = A Linux® kernel (4.19-LTS, <5.4) module that enables management of multiple screens.
+	pkgver = 1.6.4
+	pkgrel = 2
+	url = https://github.com/DisplayLink/evdi
+	install = evdi-4.19.install
+	changelog = evdi-4.19.Changelog
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = libdrm
+	conflicts = evdi
+	source = evdi-4.19-1.6.4-2.tar.gz::https://github.com/DisplayLink/evdi/archive/v1.6.4.tar.gz
+	source = relro.patch
+	md5sums = 67d8ab1bb7a4ca013c5435df42ace5dc
+	md5sums = 05e64dd295a66c030139d0c8f6f7013b
+
+pkgname = evdi-4.19
+
