@@ -1,5 +1,5 @@
 pkgname=ravi
-pkgver=1.0.beta2
+pkgver=1.0.beta2.1.r25.gde42b8b
 pkgrel=1
 pkgdesc='A derivative of Lua 5.3 with limited optional static typing and LLVM and libgccjit based JIT compilers'
 arch=(i686 x86_64)
@@ -7,8 +7,13 @@ url='https://github.com/dibyendumajumdar/ravi'
 license=(MIT)
 depends=(llvm)
 makedepends=(cmake git)
-source=('git+https://github.com/dibyendumajumdar/ravi.git#commit=5b15a2ffceb4478db1181ab195418f3e022bbf83')
+source=('git+https://github.com/dibyendumajumdar/ravi.git')
 sha1sums=('SKIP')
+
+pkgver() {
+  cd ravi
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd ravi
