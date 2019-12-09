@@ -1,6 +1,6 @@
 pkgbase = chroma
 	pkgdesc = Abstract puzzle game.
-	pkgver = 1.15
+	pkgver = 1.17
 	pkgrel = 1
 	url = http://www.level7.org.uk/chroma/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = chroma
 	depends = sdl_image
 	depends = ncurses
 	depends = freetype2
-	source = http://www.level7.org.uk/chroma/download/chroma-1.15.tar.bz2
+	source = http://www.level7.org.uk/chroma/download/chroma-1.17.tar.bz2
 	source = chroma.desktop
-	md5sums = 525ff7f06d43af04cc0bf318b6810c16
+	md5sums = d42c291ebccad5350896978d1cc2d28e
 	md5sums = 90932d9a42f1545c3ba59ae38afb7732
 
 pkgname = chroma
