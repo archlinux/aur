@@ -1,0 +1,40 @@
+pkgbase = daemon-engine
+	pkgdesc = The standalone engine that powers the multiplayer first person shooter Unvanquished.
+	pkgver = 0.51.1
+	pkgrel = 1
+	url = http://unvanquished.net
+	arch = x86_64
+	arch = i686
+	license = BSD
+	license = GPL3
+	makedepends = cmake
+	depends = zlib
+	depends = gmp
+	depends = nettle
+	depends = geoip
+	depends = curl
+	depends = sdl2
+	depends = glew
+	depends = libpng
+	depends = libjpeg>=8.0.0
+	depends = libwebp>=0.2.0
+	depends = freetype2
+	depends = openal
+	depends = libogg
+	depends = libvorbis
+	depends = libtheora
+	depends = opusfile
+	depends = ncurses
+	source = daemon_0.51.1.tar.gz::https://github.com/DaemonEngine/Daemon/archive/v0.51.1.tar.gz
+	source = breakpad_15fbc760aa1e4db2a3b36493ff3b4cf49e3df282.tar.gz::https://github.com/DaemonEngine/breakpad/archive/15fbc760aa1e4db2a3b36493ff3b4cf49e3df282.tar.gz
+	source = crunch_559a1b045b50b5f716294b47325c0170c8236dbc.tar.gz::https://github.com/DaemonEngine/crunch/archive/559a1b045b50b5f716294b47325c0170c8236dbc.tar.gz
+	source = recast_6b68934d6d2715501e01b1e115413cefaa0aa7d3.tar.gz::https://github.com/DaemonEngine/recastnavigation/archive/6b68934d6d2715501e01b1e115413cefaa0aa7d3.tar.gz
+	source = naclsdk_linux64-4.tar.bz2::https://dl.unvanquished.net/deps/linux64-4.tar.bz2
+	md5sums = 589523f6028bcd3869505b6a3968c411
+	md5sums = 256f388e18018f638958a47f53f2a8d9
+	md5sums = 356bbda9890f48dca1db3b80001d40c0
+	md5sums = 2b1989f17e3ae0cab77cae8d397deafb
+	md5sums = 2ba12c71625919ddc282172b74fa4887
+
+pkgname = daemon-engine
+
