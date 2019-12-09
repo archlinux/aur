@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20190508
+pkgver=20191209
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -83,7 +83,7 @@ package() {
 
   install -Dm 644 "$srcdir/bitcoin/contrib/init/bitcoind.service" -t "$pkgdir/usr/lib/systemd/system"
   sed -i 's/StateDirectory/#StateDirectory/g' "$pkgdir/usr/lib/systemd/system/bitcoind.service"
-  sed 's|\-daemon|\-daemon \-reindex|;s|Description=.*|Description=Bitcoin daemon (reindex)|' "$srcdir/bitcoin/contrib/init/bitcoind.service" >"$pkgdir/usr/lib/systemd/system/bitcoind-reindex.service"
+  sed 's|\-daemon|\-daemon \-reindex|;s|Description=.*|Description=Bitcoin daemon (reindex)|' "$pkgdir/usr/lib/systemd/system/bitcoind.service" >"$pkgdir/usr/lib/systemd/system/bitcoind-reindex.service"
 
   install -Dm 644 "$srcdir/bitcoin-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/bitcoin.conf"
 
