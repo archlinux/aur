@@ -1,6 +1,6 @@
 pkgbase = ebadoo-shell
 	pkgdesc = Ebadoo-shell es una variante estetica.
-	pkgver = 3.34.1+14+g7e8884a68
+	pkgver = 3.34.1+14+g7e8884a69
 	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
@@ -38,7 +38,7 @@ pkgbase = ebadoo-shell
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=3.34.1+14+g7e8884a68
+	provides = gnome-shell=3.34.1+14+g7e8884a69
 	conflicts = gnome-shell
 	source = git+https://gitlab.com/ebadoo/gnome-shell.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
