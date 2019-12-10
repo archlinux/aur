@@ -6,7 +6,6 @@ pkgbase = battery-monitor
 	arch = any
 	license = GPL3
 	depends = acpi
-	depends = python
 	depends = python-gobject
 	depends = libnotify
 	depends = libappindicator-gtk3
