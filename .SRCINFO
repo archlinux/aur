@@ -1,25 +1,19 @@
 pkgbase = mystiq
-	pkgdesc = Qt5/C++ FFmpeg Media Converter
-	pkgver = 0.3.2
-	pkgrel = 0
-	url = https://github.com/llamaret/mystiq/
-	arch = i686
+	pkgdesc = FFmpeg GUI front-end based on Qt5.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://mystiq.swlx.info/
 	arch = x86_64
 	license = GPL3
-	makedepends = make
-	makedepends = gcc
-	makedepends = pkg-config
 	makedepends = qt5-tools
-	makedepends = fakeroot
-	depends = ffmpeg
-	depends = qt5-base
-	depends = qt5-multimedia
 	depends = qt5-declarative
-	optdepends = sox: audio speed adjusting support
-	optdepends = libnotify: display desktop notifications
-	optdepends = mplayer: video cutting preview
-	source = https://github.com/llamaret/mystiq/archive/v0.3.2.tar.gz
-	sha256sums = 356bf97edc2c707bb817e6fac7a753bd005b28783e531b7e0773b74eb449966b
+	depends = qt5-multimedia
+	depends = ffmpeg
+	depends = libnotify
+	depends = sox
+	replaces = qwinff
+	source = https://github.com/llamaret/MystiQ/archive/v0.4.0.tar.gz
+	sha256sums = 645c6fb366ddf820d3b672bdd8b82bd71cfc6c3f838646bb9587f94b4d7849ba
 
 pkgname = mystiq
 
