@@ -1,7 +1,7 @@
 pkgbase = meteo-gtk
 	pkgdesc = A forecast application using OpenWeatherMap API
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/bitseater/meteo
 	arch = any
 	license = GPL3

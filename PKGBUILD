@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=meteo-gtk
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A forecast application using OpenWeatherMap API"
 arch=('any')
 url="https://gitlab.com/bitseater/meteo"
@@ -16,7 +16,7 @@ sha256sums=('22d8132e9c3bc62b3ec090275abd8b211d9d99b89812dc69e987cd315f898d0d')
 
 build() {
 	cd "${pkgname%-gtk}-$pkgver"
-	meson . build --prefix /usr
+	arch-meson . build
 	ninja -C build
 }
 
