@@ -1,0 +1,34 @@
+pkgbase = gtest-py3
+	pkgdesc = Google Test - C++ testing utility
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/google/googletest
+	arch = x86_64
+	license = BSD
+	makedepends = python
+	makedepends = cmake
+	makedepends = gcc-libs
+	makedepends = sh
+	source = googletest-release-1.8.1.tar.gz::https://github.com/google/googletest/archive/release-1.8.1.tar.gz
+	source = gtest-1.8.1-libversion.patch
+	source = gtest-1.8.1-null-pointer.patch
+	sha512sums = e6283c667558e1fd6e49fa96e52af0e415a3c8037afe1d28b7ff1ec4c2ef8f49beb70a9327b7fc77eb4052a58c4ccad8b5260ec90e4bceeac7a46ff59c4369d7
+	sha512sums = e9bd9d65f6e54f71be0026b84c6543a71f9e3d5c0da92eb7f01df3f5937871eff2b8177e3680fec8d733888327eda5f5f3caaf88a3263ada542cdd2b42475ac5
+	sha512sums = afa75f975d8aed453c901245dae753939958d8b72e3e5c52995efe7980f44de4fd1ea08f1b0a4cc927443d858de0a1fe34a919512ce05ae443bfb9600b08f029
+
+pkgname = gtest-py3
+	pkgdesc = Google Test - C++ testing utility based on the xUnit framework (like JUnit)
+	depends = gcc-libs
+	depends = sh
+	provides = gtest
+	conflicts = gtest
+
+pkgname = gmock-py3
+	pkgdesc = Google Mock - A library for writing and using C++ mock classes
+	depends = python
+	depends = gtest
+	depends = gcc-libs
+	depends = sh
+	provides = gmock
+	conflicts = gmock
+
