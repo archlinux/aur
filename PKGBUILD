@@ -3,7 +3,7 @@
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=19.30.934563
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
