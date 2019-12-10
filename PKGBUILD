@@ -1,8 +1,8 @@
 # Maintainer : tadly <me@tadly.de>
 
 pkgname=parsec-bin
-pkgver=150_10
-pkgrel=2
+pkgver=150_11
+pkgrel=1
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
 url='http://parsec.tv'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
