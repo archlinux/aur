@@ -19,5 +19,5 @@ package() {
     install -Dm755 "kubedee" "${pkgdir}/usr/share/kubedee/kubedee"
     install -Dm644 "lib.bash" "${pkgdir}/usr/share/kubedee/lib.bash"
     ln -s ../share/kubedee/kubedee "${pkgdir}/usr/bin/kubedee"
-    cp -dr --no-preserve=ownership manifests/ "${pkgdir}/usr/share/kubedee/"
+    install -Dm644 -t "${pkgdir}/usr/share/kubedee/manifests/" manifests/*
 }
