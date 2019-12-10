@@ -3,7 +3,7 @@
 
 pkgname=snapper
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
 url="http://snapper.io"
@@ -12,35 +12,26 @@ depends=('btrfs-progs' 'libxml2' 'dbus' 'boost-libs' 'acl')
 makedepends=('boost' 'lvm2' 'libxslt' 'docbook-xsl' 'pam' 'git' 'systemd')
 optdepends=('pam: pam_snapper')
 backup=('etc/conf.d/snapper')
-source=("https://github.com/openSUSE/snapper/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('1d49e81246af26f63a1a15f4121dc28d1e75abf939c0f32d780cba000640ef89')
+source=("https://github.com/openSUSE/snapper/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+        "conf-d.patch"
+        "cron-rename.patch"
+        "drift-file-path.patch"
+        "macro-iterator-fix.patch"
+        "usr-paths.patch")
+sha256sums=('1d49e81246af26f63a1a15f4121dc28d1e75abf939c0f32d780cba000640ef89'
+            '267118a198583fc1ff10f376e108c0600844e0b1370e44ac4674b20332bff106'
+            'df980fe0faa6a21f8df59b90d486e50e4fc766de808049e77a52d1a73d139b82'
+            '093c7993e466a0cf9c0794a971825f5f1b40047512857bc124ed0d63dbb306d6'
+            'c894c041964eeb55d461d1476486b878851556892b93a6fa1738743f46027e9d'
+            'a49de7878ee5420bec934542699e9b57861666686d05406dc863f6a557f7f253')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-
-  # cron names
-  sed -e 's@suse.de-snapper@snapper@g' -i scripts/Makefile.am
-
-  # fix sysconf dir
-  sed -e 's@/etc/sysconfig@/etc/conf.d@g' -i scripts/*snapper*
-
-  # fix pam plugin install location
-  sed -i -e 's@shell echo /@shell echo /usr/@g' pam/Makefile.am
-
-  # dbus policy files in /usr/share/dbus-1
-  sed -i -e 's@/etc/dbus-1/@/usr/share/dbus-1/@' data/Makefile.am
-
-  # all in /usr/bin
-  sed -i -e 's@/usr/sbin@/usr/bin@g' data/org.opensuse.Snapper.service
-
-  # NTP drift file location
-  sed -i -e 's@/var/lib/ntp/drift/ntp.drift@/var/lib/ntp/ntp.drift@' data/base.txt
-
-  # man pages sysconfig location
-  sed -i -e 's@/etc/sysconfig@/etc/conf.d@g' doc/*
-
-  # swap macro errors
-  sed -i -e '/#include <vector>/i #include <iterator>' {snapper,client,dbus}/*.{h,cc}
+  patch -p1 -i "$srcdir/conf-d.patch"
+  patch -p1 -i "$srcdir/cron-rename.patch"
+  patch -p1 -i "$srcdir/drift-file-path.patch"
+  patch -p1 -i "$srcdir/macro-iterator-fix.patch"
+  patch -p1 -i "$srcdir/usr-paths.patch"
 }
 
 build() {
@@ -65,4 +56,6 @@ package() {
   make DESTDIR="$pkgdir" install
   install -Dm644 data/sysconfig.snapper \
     "$pkgdir"/etc/conf.d/snapper
+
+  rm -rf "$pkgdir/usr/lib/snapper/testsuite/"
 }

@@ -1,0 +1,37 @@
+diff --git a/data/Makefile.am b/data/Makefile.am
+index e2036ba..c80b269 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -18,7 +18,7 @@ install-data-local:
+ 	install -D -m 644 lvm.txt $(DESTDIR)/etc/snapper/filters/lvm.txt
+ 	install -D -m 644 x11.txt $(DESTDIR)/etc/snapper/filters/x11.txt
+ 
+-	install -D -m 644 org.opensuse.Snapper.conf $(DESTDIR)/etc/dbus-1/system.d/org.opensuse.Snapper.conf
++	install -D -m 644 org.opensuse.Snapper.conf $(DESTDIR)/usr/share/dbus-1/system.d/org.opensuse.Snapper.conf
+ 	install -D -m 644 org.opensuse.Snapper.service $(DESTDIR)/usr/share/dbus-1/system-services/org.opensuse.Snapper.service
+ 
+ 	install -D -m 644 timeline.service $(DESTDIR)/usr/lib/systemd/system/snapper-timeline.service
+diff --git a/data/org.opensuse.Snapper.service b/data/org.opensuse.Snapper.service
+index 39d7333..6c49474 100644
+--- a/data/org.opensuse.Snapper.service
++++ b/data/org.opensuse.Snapper.service
+@@ -1,5 +1,5 @@
+ # DBus service activation config
+ [D-BUS Service]
+ Name=org.opensuse.Snapper
+-Exec=/usr/sbin/snapperd
++Exec=/usr/bin/snapperd
+ User=root
+diff --git a/pam/Makefile.am b/pam/Makefile.am
+index befccf8..dd1652c 100644
+--- a/pam/Makefile.am
++++ b/pam/Makefile.am
+@@ -8,7 +8,7 @@ AM_CFLAGS = -D_GNU_SOURCE -Wwrite-strings
+ 
+ AM_CPPFLAGS = -I$(top_srcdir) $(DBUS_CFLAGS)
+ 
+-securelibdir = $(shell echo /`basename $(libdir)`/security)
++securelibdir = $(shell echo /usr/`basename $(libdir)`/security)
+ 
+ securelib_LTLIBRARIES = pam_snapper.la
+ 

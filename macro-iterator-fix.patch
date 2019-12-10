@@ -1,0 +1,264 @@
+diff --git a/client/Command.h b/client/Command.h
+index 9ce7760..53cb601 100644
+--- a/client/Command.h
++++ b/client/Command.h
+@@ -23,6 +23,7 @@
+ #define SNAPPER_CLI_COMMAND_H
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ 
+ #include "client/GlobalOptions.h"
+diff --git a/client/Options.h b/client/Options.h
+index 10bfe1d..f94688f 100644
+--- a/client/Options.h
++++ b/client/Options.h
+@@ -23,6 +23,7 @@
+ #define SNAPPER_CLI_OPTIONS_H
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ 
+ #include "client/utils/GetOpts.h"
+diff --git a/client/cleanup.cc b/client/cleanup.cc
+index e1d5f5b..0c2a084 100644
+--- a/client/cleanup.cc
++++ b/client/cleanup.cc
+@@ -22,6 +22,7 @@
+ 
+ 
+ #include <iostream>
++#include <iterator>
+ #include <vector>
+ 
+ #include "dbus/DBusMessage.h"
+diff --git a/client/commands.h b/client/commands.h
+index 11cbc0e..9db78dd 100644
+--- a/client/commands.h
++++ b/client/commands.h
+@@ -22,6 +22,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <map>
+ 
+diff --git a/client/proxy.h b/client/proxy.h
+index 606105e..828a786 100644
+--- a/client/proxy.h
++++ b/client/proxy.h
+@@ -25,6 +25,7 @@
+ 
+ 
+ #include <memory>
++#include <iterator>
+ #include <vector>
+ #include <list>
+ #include <map>
+diff --git a/client/types.h b/client/types.h
+index 9217eac..86fc101 100644
+--- a/client/types.h
++++ b/client/types.h
+@@ -22,6 +22,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <map>
+ 
+diff --git a/dbus/DBusMessage.h b/dbus/DBusMessage.h
+index 09190d0..bf5c519 100644
+--- a/dbus/DBusMessage.h
++++ b/dbus/DBusMessage.h
+@@ -28,6 +28,7 @@
+ #include <dbus/dbus.h>
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <list>
+ #include <map>
+diff --git a/snapper/Acls.h b/snapper/Acls.h
+index 6aa5d7e..4bed783 100644
+--- a/snapper/Acls.h
++++ b/snapper/Acls.h
+@@ -22,6 +22,7 @@
+ #define SNAPPER_ACLS_H
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <sys/acl.h>
+ 
+diff --git a/snapper/AppUtil.h b/snapper/AppUtil.h
+index 75947a1..3b52d65 100644
+--- a/snapper/AppUtil.h
++++ b/snapper/AppUtil.h
+@@ -32,6 +32,7 @@
+ #include <string>
+ #include <list>
+ #include <map>
++#include <iterator>
+ #include <vector>
+ #include <stdexcept>
+ #include <chrono>
+diff --git a/snapper/AsciiFile.h b/snapper/AsciiFile.h
+index 63e0abb..930333a 100644
+--- a/snapper/AsciiFile.h
++++ b/snapper/AsciiFile.h
+@@ -25,6 +25,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <map>
+ 
+diff --git a/snapper/BtrfsUtils.h b/snapper/BtrfsUtils.h
+index dd3dd17..65dc21a 100644
+--- a/snapper/BtrfsUtils.h
++++ b/snapper/BtrfsUtils.h
+@@ -27,6 +27,7 @@
+ 
+ #include <stdint.h>
+ #include <string>
++#include <iterator>
+ #include <vector>
+ 
+ 
+diff --git a/snapper/Compare.h b/snapper/Compare.h
+index 0b56c85..fbff80c 100644
+--- a/snapper/Compare.h
++++ b/snapper/Compare.h
+@@ -25,6 +25,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <functional>
+ 
+diff --git a/snapper/Enum.h b/snapper/Enum.h
+index f2abd7f..279d370 100644
+--- a/snapper/Enum.h
++++ b/snapper/Enum.h
+@@ -25,6 +25,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <algorithm>
+ #include <exception>
+diff --git a/snapper/File.h b/snapper/File.h
+index ade271b..9cf7547 100644
+--- a/snapper/File.h
++++ b/snapper/File.h
+@@ -27,6 +27,7 @@
+ #include <sys/stat.h>
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ 
+ 
+diff --git a/snapper/FileUtils.h b/snapper/FileUtils.h
+index 21eed79..c318251 100644
+--- a/snapper/FileUtils.h
++++ b/snapper/FileUtils.h
+@@ -26,6 +26,7 @@
+ 
+ #include <fcntl.h>
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <functional>
+ #include <boost/thread.hpp>
+diff --git a/snapper/Filesystem.h b/snapper/Filesystem.h
+index fb8f020..dcd904d 100644
+--- a/snapper/Filesystem.h
++++ b/snapper/Filesystem.h
+@@ -26,6 +26,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <utility>
+ 
+diff --git a/snapper/LvmCache.cc b/snapper/LvmCache.cc
+index f610b60..f62d32c 100644
+--- a/snapper/LvmCache.cc
++++ b/snapper/LvmCache.cc
+@@ -20,6 +20,7 @@
+ 
+ #include "config.h"
+ 
++#include <iterator>
+ #include <vector>
+ #include <boost/algorithm/string.hpp>
+ 
+diff --git a/snapper/LvmCache.h b/snapper/LvmCache.h
+index 5d5e3e3..24a2abf 100644
+--- a/snapper/LvmCache.h
++++ b/snapper/LvmCache.h
+@@ -24,6 +24,7 @@
+ #include <map>
+ #include <set>
+ #include <string>
++#include <iterator>
+ #include <vector>
+ 
+ #include <boost/noncopyable.hpp>
+diff --git a/snapper/Snapper.h b/snapper/Snapper.h
+index cd36e75..49cafb7 100644
+--- a/snapper/Snapper.h
++++ b/snapper/Snapper.h
+@@ -25,6 +25,7 @@
+ #define SNAPPER_SNAPPER_H
+ 
+ 
++#include <iterator>
+ #include <vector>
+ #include <boost/noncopyable.hpp>
+ 
+diff --git a/snapper/SnapperTypes.h b/snapper/SnapperTypes.h
+index 6b482ce..f670a78 100644
+--- a/snapper/SnapperTypes.h
++++ b/snapper/SnapperTypes.h
+@@ -25,6 +25,7 @@
+ 
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <ostream>
+ #include <boost/algorithm/string.hpp>
+diff --git a/snapper/SystemCmd.h b/snapper/SystemCmd.h
+index 3d38604..a11a3a4 100644
+--- a/snapper/SystemCmd.h
++++ b/snapper/SystemCmd.h
+@@ -28,6 +28,7 @@
+ #include <stdio.h>
+ 
+ #include <string>
++#include <iterator>
+ #include <vector>
+ #include <list>
+ #include <boost/noncopyable.hpp>
+diff --git a/snapper/XAttributes.h b/snapper/XAttributes.h
+index 434b4d9..014fe4d 100644
+--- a/snapper/XAttributes.h
++++ b/snapper/XAttributes.h
+@@ -24,6 +24,7 @@
+ 
+ #include <stdint.h>
+ #include <map>
++#include <iterator>
+ #include <vector>
+ #include <string>
+ #include <ostream>
