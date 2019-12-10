@@ -1,4 +1,4 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgdesc="ROS - amcl is a probabilistic localization system for a robot moving in 2D."
 url='https://wiki.ros.org/amcl'
 
@@ -19,7 +19,8 @@ ros_makedepends=(ros-melodic-catkin
   ros-melodic-tf2
   ros-melodic-tf2-geometry-msgs
   ros-melodic-tf2-msgs
-  ros-melodic-tf2-ros)
+  ros-melodic-tf2-ros
+  ros-melodic-sensor-msgs)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
@@ -33,12 +34,6 @@ ros_depends=(ros-melodic-dynamic-reconfigure
   ros-melodic-tf2-msgs
   ros-melodic-tf2-ros)
 depends=(${ros_depends[@]})
-
-# Git version (e.g. for debugging)
-# _tag=release/melodic/amcl/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-${pkgver}/amcl"

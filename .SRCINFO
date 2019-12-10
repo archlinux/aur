@@ -19,6 +19,7 @@ pkgbase = ros-melodic-amcl
 	makedepends = ros-melodic-tf2-geometry-msgs
 	makedepends = ros-melodic-tf2-msgs
 	makedepends = ros-melodic-tf2-ros
+	makedepends = ros-melodic-sensor-msgs
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-nav-msgs
