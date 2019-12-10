@@ -1,7 +1,7 @@
 pkgbase = nemo-folder-icons
 	pkgdesc = Nemo extension that makes changing folders icons easy!
 	pkgver = 3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bilelmoussaoui/nautilus-folder-icons
 	arch = i686
 	arch = x86_64

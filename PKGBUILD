@@ -2,7 +2,7 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail.com>
 pkgname=nemo-folder-icons
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Nemo extension that makes changing folders icons easy!'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
 	cd "nautilus-folder-icons-$pkgver"
-	meson builddir --prefix=/usr -Dfile_manager=nemo
+	arch-meson builddir -Dfile_manager=nemo
 }
 
 package() {
