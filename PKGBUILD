@@ -6,16 +6,19 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
 license=('GPL')
 depends=('qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' \
          'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1'  \
-         'qt5-gamepad' 'lua51-utf8' 'lua51-lcf' 'ttf-font' 'pugixml' 'lua-yajl')
+         'qt5-gamepad' 'lua51-utf8'  'ttf-font' 'pugixml' 'lua-yajl')
 makedepends=('boost' 'qt5-tools')
-conflicts=('mudlet-dev' 'mudlet-git' 'mudlet-deb')
+optdepends=('discord-rpc-api: discord integration'
+            'ttf-bitstream-vera: default font'
+            'ttf-ubuntu-font-family: default font')
+conflicts=('mudlet-git')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
@@ -23,8 +26,7 @@ sha256sums=('4496d1ab8cdbec8bebf4932b7cbd64df5318d01e591ca4cb1d65cfbfd2401c70')
 
 prepare() {
     cd "$srcdir/src"
-    sed -i 's,QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";,QString path = "/usr/share/mudlet/lua/LuaGlobal.lua";,' TLuaInterpreter.cpp
-    sed -i 's;"mudlet.app/Contents/Resources/mudlet-lua/lua/";"mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/lua/";' mudlet-lua/lua/LuaGlobal.lua
+    #Fix missing includes
     sed -i '29 a #include <QFileInfo>' TMedia.h
     sed -i '29 a #include <QJsonDocument>' TMedia.h
     sed -i '29 a #include <QJsonObject>' TMedia.h

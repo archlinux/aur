@@ -1,7 +1,7 @@
 pkgbase = mudlet
 	pkgdesc = A modern MUD client with a graphical user inteface and built in Lua scripting
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mudlet.org
 	arch = i686
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = mudlet
 	depends = lrexlib-pcre5.1
 	depends = qt5-gamepad
 	depends = lua51-utf8
-	depends = lua51-lcf
 	depends = ttf-font
 	depends = pugixml
 	depends = lua-yajl
-	conflicts = mudlet-dev
+	optdepends = discord-rpc-api: discord integration
+	optdepends = ttf-bitstream-vera: default font
+	optdepends = ttf-ubuntu-font-family: default font
 	conflicts = mudlet-git
-	conflicts = mudlet-deb
 	source = https://www.mudlet.org/wp-content/files/Mudlet-4.4.0.tar.xz
 	sha256sums = 4496d1ab8cdbec8bebf4932b7cbd64df5318d01e591ca4cb1d65cfbfd2401c70
 
