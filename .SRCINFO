@@ -1,7 +1,7 @@
 pkgbase = imeditor
 	pkgdesc = Simple & versatile image editor.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://imeditor.github.io
 	arch = any
 	license = GPL3
