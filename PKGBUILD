@@ -3,21 +3,23 @@ pkgname=btcpayserver
 pkgdesc="https://github.com/btcpayserver"
 pkgver='stable'
 pkgpath="github.com/$pkgname/$pkgname"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkgpath}"
 license=(MIT)
-makedepends=(dotnet-sdk)
+makedepends=('dotnet-host-bin' 'dotnet-runtime' 'dotnet-runtime-bin' 'dotnet-sdk' 'dotnet-sdk-bin' 'aspnet-runtime-2.1' 'aspnet-runtime-bin')
 source=("$url/archive/stable.tar.gz")
 sha256sums=('SKIP')
-validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
 
 build() {
 mv $srcdir/$pkgname-$pkgver $srcdir/$pkgname
 cd $srcdir/$pkgname
 ./build.sh
 #set absolute path in run.sh
-echo -e '#!/bin/bash \n #launch btcpayserver \n dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@' > run.sh
+echo -e '#!/bin/bash
+#launch btcpayserver
+dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@
+' > run.sh
 chmod +x run.sh
 }
 
