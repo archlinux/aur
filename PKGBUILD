@@ -1,12 +1,12 @@
 # Maintainer: Jan de Groot  <jgc@archlinux.org>
 pkgname=libwnck
 pkgver=2.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Window Navigator Construction Kit"
 arch=('x86_64')
 license=('LGPL')
 depends=('gtk2' 'startup-notification' 'libxres')
-makedepends=('libxt' 'intltool' 'gobject-introspection' 'python2')
+makedepends=('libxt' 'intltool' 'gobject-introspection')
 url="https://www.gnome.org/"
 source=(https://download.gnome.org/sources/${pkgname}/${pkgver:0:4}/${pkgname}-${pkgver}.tar.xz
         WindowActionMenu-unset-window-and-stop-async-events-on-dispose.patch)
