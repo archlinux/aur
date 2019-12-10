@@ -2,7 +2,7 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoin-qt-git
-pkgver=v2.0.0.2.r0.gb68d80f
+pkgver=v2.0.0.2.r2.gcb69996
 pkgrel=1
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoin-qt')
 conflicts=('curecoin-qt')
-depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost-libs' 'openssl-1.0')
-makedepends=('boost' 'db' 'git')
+depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost1.69-libs' 'openssl-1.0')
+makedepends=('boost1.69' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
         "0001-miniupnpc.patch"
         "curecoin.desktop")
