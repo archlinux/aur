@@ -1,10 +1,10 @@
 pkgbase = python-google-i18n-address
-	pkgdesc = Library providing a mutable, self-balancing interval tree for Python.
+	pkgdesc = I18n address data packaged for Python
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mirumee/google-i18n-address.git
 	arch = any
-	license = Apache
+	license = custom
 	makedepends = python-setuptools
 	depends = python
 	source = google-i18n-address-2.3.5.tar.gz::https://github.com/mirumee/google-i18n-address/archive/2.3.5.tar.gz
