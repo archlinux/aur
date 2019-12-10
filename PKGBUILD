@@ -1,7 +1,7 @@
 # Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
 pkgname=waterfox-current-bin
 pkgver=2019.10
-pkgrel=2
+pkgrel=3
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
 url="https://www.waterfoxproject.org/"
@@ -27,5 +27,5 @@ package() {
 	ln -s /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
 }
 
-sha256sums=('5f8ba20330972933914bcfc52c59d7d61db5ada8f417d1c2a31497c8c8f12bc4'
+sha256sums=('4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d'
             '03b0ab4e89787fbbc513c55f9c85c8cd7e2063c2bcd66cbe3ca4e2b56fcf31d1')

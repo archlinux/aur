@@ -1,7 +1,7 @@
 pkgbase = waterfox-current-bin
 	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
 	pkgver = 2019.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
 	license = MPL
@@ -19,7 +19,7 @@ pkgbase = waterfox-current-bin
 	conflicts = waterfox-current
 	source = waterfox-current.desktop
 	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-2019.10.en-US.linux-x86_64.tar.bz2
-	sha256sums = 5f8ba20330972933914bcfc52c59d7d61db5ada8f417d1c2a31497c8c8f12bc4
+	sha256sums = 4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d
 	sha256sums = 03b0ab4e89787fbbc513c55f9c85c8cd7e2063c2bcd66cbe3ca4e2b56fcf31d1
 
 pkgname = waterfox-current-bin
