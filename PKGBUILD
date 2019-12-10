@@ -9,7 +9,7 @@
 
 pkgname=python37
 pkgver=3.7.5
-pkgrel=2
+pkgrel=3
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -69,10 +69,8 @@ build() {
   # PGO should be done with -O3
   CFLAGS="${CFLAGS/-O2/-O3}"
 
-  # Disable bundled pip & setuptools
   ./configure --prefix=/usr \
               --enable-shared \
-              --with-threads \
               --with-computed-gotos \
               --enable-optimizations \
               --with-lto \
@@ -82,7 +80,7 @@ build() {
               --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --without-ensurepip
+              --with-ensurepip
 
   # Obtain next free server number for xvfb-run; this even works in a chroot environment.
   export servernum=99
