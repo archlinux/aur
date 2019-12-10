@@ -9,6 +9,7 @@ url="https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams"
 license=('custom')
 depends=("gtk3" "libxss" "alsa-lib" "libxtst" "libsecret" "nss" "glibc>=2.28-4")
 optdepends=("gnome-keyring")
+conflicts=('teams-insiders')
 source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('28d8a0e644a4bb9d4ee9295953b97b7fa6558b8a9d1d28363a594f5cde1c05dc')
