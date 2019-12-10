@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler <dopsi@dopsi.ch>
 pkgname=radicale-dovecot-auth
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dovecot auth for radicale"
 arch=("any")
 url="https://github.com/Arvedui/radicale-dovecot-auth"

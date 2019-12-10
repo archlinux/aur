@@ -1,7 +1,7 @@
 pkgbase = radicale-dovecot-auth
 	pkgdesc = Dovecot auth for radicale
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arvedui/radicale-dovecot-auth
 	arch = any
 	license = GPL
