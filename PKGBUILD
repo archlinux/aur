@@ -1,7 +1,7 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-#_branch=maint-0.4.1 # stable
+#_branch=maint-0.4.2 # stable
 _with_rust=1
 #_malloc=jemalloc # tcmalloc
 
