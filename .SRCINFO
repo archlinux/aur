@@ -1,0 +1,15 @@
+pkgbase = txt2tags3
+	pkgdesc = A text formatting and conversion tool - New version 3
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/jendrikseipp/txt2tags
+	arch = any
+	license = GPL
+	depends = python
+	conflicts = txt2tags
+	conflicts = txt2tags-git
+	source = https://github.com/jendrikseipp/txt2tags/archive/3.3.tar.gz
+	sha256sums = d7083e3e9b02cb90b5439ab19ca279710f6e36008db79bde349a6e30c253a225
+
+pkgname = txt2tags3
+
