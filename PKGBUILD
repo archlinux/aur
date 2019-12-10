@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gnome-network-displays
 pkgver=0.90.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Miracast implementation for GNOME"
 arch=('any')
 url="https://github.com/benzea/gnome-network-displays"
@@ -15,7 +15,7 @@ sha256sums=('d0fe4d6bf76761f1ea5eb9598fb168ba6e0da3616fa7027b9cd2b86cdab97459')
 
 build() {
 	cd "$pkgname-$pkgver"
-	meson --prefix /usr --buildtype=plain . build
+	arch-meson . build
 	ninja -C build
 }
 
