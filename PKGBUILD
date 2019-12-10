@@ -44,7 +44,7 @@ check() {
 }
 
 package_python-astroplan() {
-    depends=('python>=3.5' 'python-numpy>=1.10' 'python-astropy>=1.3' 'python-pytz')
+    depends=('python>=3.5' 'python-numpy>=1.10' 'python-astropy>=1.3' 'python-pytz' 'python-six')
     optdepends=('python-matplotlib: Plotting support'
 #               'python-pytest-mpl: Testing the plot function'
                 'python-astroquery: Astroquery support'
