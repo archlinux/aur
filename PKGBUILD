@@ -1,11 +1,11 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
+# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgdesc="ROS - Converts a 3D Point Cloud into a 2D laser scan."
 url='https://wiki.ros.org/perception_pcl'
 
 pkgname='ros-melodic-pointcloud-to-laserscan'
 pkgver='1.4.1'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-sensor-msgs
@@ -25,7 +25,8 @@ ros_depends=(ros-melodic-tf2-sensor-msgs
   ros-melodic-roscpp
   ros-melodic-tf2-ros
   ros-melodic-tf2
-  ros-melodic-message-filters)
+  ros-melodic-message-filters
+  ros-melodic-laser-geometry)
 depends=(${ros_depends[@]})
 
 _dir="pointcloud_to_laserscan-${pkgver}"
@@ -50,9 +51,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
