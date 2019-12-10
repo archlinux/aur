@@ -1,0 +1,9 @@
+pkgbase = ya_test_pkg
+	pkgdesc = Yet another test pkg
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = custom
+
+pkgname = ya_test_pkg
+
