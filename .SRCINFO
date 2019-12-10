@@ -1,7 +1,7 @@
 pkgbase = basicanalysis
 	pkgdesc = Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).
-	pkgver = 0.3.6
-	pkgrel = 3
+	pkgver = 0.3.6.20180531
+	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = any
 	license = LGPL2.1
