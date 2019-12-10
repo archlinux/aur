@@ -1,12 +1,13 @@
 pkgbase = scrcpy
 	pkgdesc = Display and control your Android device
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Genymobile/scrcpy
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = meson
+	depends = android-tools
 	depends = ffmpeg
 	depends = sdl2
 	optdepends = android-tools: required if adb is not already installed
