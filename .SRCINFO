@@ -1,0 +1,15 @@
+pkgbase = nodejs-tslide
+	pkgdesc = Terminal SlideDeck, supporting markdown.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/dominictarr/tslide
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = tslide-1.5.0.tgz
+	source = https://registry.npmjs.org/tslide/-/tslide-1.5.0.tgz
+	sha256sums = f2e719a44d1c9efc7e257393fa53248f780e9373e6363d4575b4e8c4ba353179
+
+pkgname = nodejs-tslide
+
