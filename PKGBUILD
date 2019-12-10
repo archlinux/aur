@@ -1,7 +1,7 @@
 # Contributor: Andrew Rabert <ar@nullsum.net>
 
 pkgname=scrcpy
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc='Display and control your Android device'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('meson')
 optdepends=('android-tools: required if adb is not already installed')
 source=("https://github.com/Genymobile/scrcpy/archive/v${pkgver}.tar.gz"
         "https://github.com/Genymobile/scrcpy/releases/download/v${pkgver}/scrcpy-server-v${pkgver}")
-sha256sums=('86fccd2190a14c7f3024edf922229919803dee774f91c85fdee54029e179f270'
-            'ff3a454012e91d9185cfe8ca7691cea16c43a7dcc08e92fa47ab9f0ea675abd1')
+sha256sums=('95aab189448582870d8e7d8a27a2c9b40838bd45ee2737be0f255f7a11647870'
+            'b6595262c230e9773fdb817257abcc8c6e6e00f15b1c32b6a850ccfd8176dc10')
 
 src_name="scrcpy-${pkgver}"
 src_server="scrcpy-server-v${pkgver}"
