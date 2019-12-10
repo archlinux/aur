@@ -1,0 +1,29 @@
+[Unit]
+After=network.target
+Description="Delay tolerant routing daemon"
+
+[Service]
+Type=simple
+User=dtn7
+Group=dtn7
+WorkingDirectory=/var/lib/dtn7
+ExecStart=/usr/bin/dtnd /etc/dtn7/configuration.toml
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

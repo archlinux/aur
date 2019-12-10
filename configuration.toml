@@ -1,0 +1,95 @@
+# The core is the main module of the delay-tolerant networking daemon.
+[core]
+# Path to the bundle storage. Bundles will be saved in this directory to be
+# present after restarting dtnd.
+store = "store"
+# Allow inspection of forwarding bundles, containing an administrative record.
+# This allows deletion of stored bundles after being received.
+inspect-all-bundles = true
+# The node's ID, which should be a dtn-URI. Each node's endpoint ID should be
+# an URI based on the given node-id.
+node-id = "dtn://alpha/"
+
+# Configure the format and verbosity of dtnd's logging.
+[logging]
+# Should be one of, sorted from silence to verbose:
+# panic,fatal,error,warn,info,debug,trace
+level = "info"
+# Show the calling method and its file in the logs
+report-caller = false
+# Could be "text" for human readable output or "json".
+format = "text"
+
+# The peer/neighbor discovery searches the (local) network for other dtnd nodes
+# and tries to establish a connection to the promoted CLAs.
+[discovery]
+ipv4 = true
+ipv6 = true
+# Interval between two messages in seconds, defaults to 10.
+interval = 30
+
+# Enable the REST-like API to transmit and receive bundles.
+[simple-rest]
+# Name/endpoint ID of this node, could also be used for a CLA.
+node = "dtn://alpha/"
+# Bind the web server to port 8080 on the localhost (v4).
+# - Create a outbounding bundle to dtn:foobar, containing "hello world"
+#   Payload must be base64 encoded
+#   $ curl -d "{\"Destination\":\"dtn:host\", \"Payload\":\"`base64 <<< "hello world"`\"}" http://localhost:8080/send/
+# - Fetch received bundles. Payload is base64 encoded.
+#   $ curl http://localhost:8080/fetch/
+listen = "127.0.0.1:8080"
+
+# Each listen is another convergence layer adapter (CLA). Multiple [[listen]]
+# blocks are usable.
+[[listen]]
+# Protocol to use, one of tcpcl, mtcp, bbc.
+protocol = "tcpcl"
+# Address to bind this CLA to.
+endpoint = ":4556"
+
+# rf95 lora convergence layer
+# only uncomment when modem is present, daemon crashes otherwise
+#[[listen]]
+#protocol = "bbc"
+#endpoint = "bbc://rf95modem/dev/ttyUSB0"
+
+# Multiple [[peers]] might be configured.
+#[[peer]]
+# The name/endpoint ID of this peer.
+#node = "dtn://beta/"
+# Protocol to use, one of tcpcl, mtcp.
+#protocol = "tcpcl"
+# Address to connect to this CLA.
+#endpoint = "10.0.0.2:4556"
+
+# Another peer example..
+#[[peer]]
+#node = "dtn://gamma/"
+#protocol = "mtcp"
+#endpoint = "[fc23::2]:35037"
+
+# Specify routing algorithm
+[routing]
+# can be either "epidemic", "spray", "binary_sparay", "dtlsr", "prophet"
+algorithm = "epidemic"
+
+# config for spray routing
+[routing.sprayconf]
+multiplicity = 10
+
+# config for dtlsr
+[routing.dtlsrconf]
+recomputetime = "30s"
+broadcasttime = "30s"
+purgetime = "10m"
+
+# config for prophet
+[routing.prophetconf]
+# pinit ist the prophet initialisation constant (default value provided by the PROPHET-paper)
+pinit = 0.75
+# beta is the prophet scaling factor for transitive predictability (default value provided by the PROPHET-paper)
+beta = 0.25
+# gamma is the prophet ageing factor (default value provided by the PROPHET-paper)
+gamma = 0.98
+ageinterval = "1m"
