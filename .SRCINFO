@@ -1,0 +1,15 @@
+pkgbase = latex-padova
+	pkgdesc = Beamer theme of the University of Padua
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://andrea.burattin.net/stuff/tema-latex-beamer-padova/
+	install = latex-padova.install
+	arch = any
+	depends = texlive-core
+	provides = pkgname
+	conflicts = pkgname
+	source = https://andrea.burattin.net/public-files/stuff/tema-latex-beamer-padova/beamer_padova-0.4.zip
+	md5sums = 51195ecbf99f1c46ff04bf71eca3296a
+
+pkgname = latex-padova
+
