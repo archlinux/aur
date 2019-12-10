@@ -1,12 +1,13 @@
 pkgbase = vpn-slice
 	pkgdesc = vpnc-script replacement for easy and secure split-tunnel VPN setup
 	pkgver = 0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dlenski/vpn-slice
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
+	depends = python-setproctitle
 	depends = bind-tools
 	depends = iproute2
 	depends = iptables
