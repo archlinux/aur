@@ -4,7 +4,7 @@
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
 license=('apache')
@@ -14,7 +14,7 @@ provides=('kubeadm')
 source=(
   "https://raw.githubusercontent.com/kubernetes/kubernetes/release-${pkgver%.*}/build/debs/10-kubeadm.conf"
 )
-sha256sums=('3b6e4cb3ac34a6df6dd60ce45c9ebf035fc3ec160dc001b28afb7cca1c11ef06')
+sha256sums=('8af7f7910fd8710ce02af03170e109c6dc6d4d74eb2cc06f90530be4f0090b65')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
