@@ -6,8 +6,8 @@ pkgbase = latex-padova
 	install = latex-padova.install
 	arch = any
 	depends = texlive-core
-	provides = pkgname
-	conflicts = pkgname
+	provides = latex-padova
+	conflicts = latex-padova
 	source = https://andrea.burattin.net/public-files/stuff/tema-latex-beamer-padova/beamer_padova-0.4.zip
 	md5sums = 51195ecbf99f1c46ff04bf71eca3296a
 
