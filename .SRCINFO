@@ -1,0 +1,52 @@
+pkgbase = teams-for-linux-official-bin
+	pkgdesc = Microsoft Teams is cloud-based team collaboration software that is part of the Office 365 suite of applications. The core capabilities in Microsoft Teams include business messaging, calling, video meetings and file sharing.
+	pkgver = 1.2.00.32451
+	pkgrel = 1
+	url = https://teams.microsoft.com/downloads
+	arch = x86_64
+	license = custom
+	depends = alsa-lib>=1.0.16,
+	depends = at-spi2-atk>=2.5.3,
+	depends = glibc>=2.17,
+	depends = cairo>=1.6.0,
+	depends = cups>=1.4.0,
+	depends = expat>=2.0.1,
+	depends = gdk-pixbuf2>=2.22.0,
+	depends = glib2>=2.35.8,
+	depends = gtk3>=3.9.10,
+	depends = nspr>=4.9,
+	depends = nss>=3.22,
+	depends = pango>=1.4.0,
+	depends = libsecret>=0.7,
+	depends = libutil-linux>=2.16
+	depends = libx11>=1.4.99,
+	depends = libxcb>=1.6,
+	depends = libxcomposite>=0.3,
+	depends = libxcursor>=1.1.2,
+	depends = libxdamage>=1.1,
+	depends = libxext>=0,
+	depends = libxfixes>=0,
+	depends = libxi>=1.2.99,
+	depends = libxkbfile>=0,
+	depends = libxrandr>=1.2.99,
+	depends = libxrender>=0,
+	depends = libxss>=0,
+	depends = libxtst>=0,
+	depends = fontconfig>=2.11.0,
+	depends = dbus>=1.6.18,
+	depends = gcc-libs>=4.8.1,
+	source = LICENSE
+	source = teams-for-linux-official-bin-1.2.00.32451-Release::https://packages.microsoft.com/repos/ms-teams/dists/stable/Release
+	source = teams-for-linux-official-bin-1.2.00.32451-Release.sig::https://packages.microsoft.com/repos/ms-teams/dists/stable/Release.gpg
+	validpgpkeys = EB3E94ADBE1229CF,
+	validpgpkeys = BC528686B50D79E339D3721CEB3E94ADBE1229CF
+	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+	sha512sums = 36bf8dc232f1c40a58d475d07bd7b9078f41e24e5c8a538d29784af8bc155047d78ecd939962f3326f422b246c8a907a0fdcdaf31a74f231166802477c87e2fc
+	sha512sums = SKIP
+	source_x86_64 = teams-for-linux-official-bin-1.2.00.32451-x86_64.deb::https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.2.00.32451_amd64.deb
+	source_x86_64 = teams-for-linux-official-bin-1.2.00.32451-x86_64-Packages::https://packages.microsoft.com/repos/ms-teams/dists/stable/main/binary-amd64/Packages
+	sha512sums_x86_64 = 2e921c0ebd2306b6f61f5ecd448206922394a19339e8c14023aa1778444a649bf4730c71362263e53bb833caed05907203d782221429e853d76695695835e407
+	sha512sums_x86_64 = ec956a9abdd35e3d9b116cd2b30cae99286203e5496a4d0646ccb5f9d16a6b2239ca88586895421b31aaf9dd2e0c9928966db44066dcd7b1a7f1047fcc5e6d0f
+
+pkgname = teams-for-linux-official-bin
+

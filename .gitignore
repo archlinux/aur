@@ -1,0 +1,6 @@
+/src
+/pkg
+
+/teams-for-linux-official-bin*
+
+*.asc
