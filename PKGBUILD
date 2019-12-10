@@ -15,10 +15,10 @@ source=("https://github.com/llamaret/MystiQ/archive/v${pkgver}.tar.gz")
 sha256sums=('645c6fb366ddf820d3b672bdd8b82bd71cfc6c3f838646bb9587f94b4d7849ba')
 
 build() {
-   cd ${_pkgname}-${pkgver}
-
-   /usr/lib/qt5/bin/qmake DEFINES+=NO_NEW_VERSION_CHECK mystiq.pro
-   make
+  cd ${_pkgname}-${pkgver}
+  qmake mystiq.pro
+  make 
+  strip mystiq
 }
 
 package() {
