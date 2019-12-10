@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=stilo-themes-git
-pkgver=3.32.3.r15.g4cc08af
+pkgver=3.34.1.r7.g730fbea
 pkgrel=1
 pkgdesc="Minimalistic GTK themes"
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	meson --prefix /usr build
+	arch-meson build
 	ninja -C build
 }
 
