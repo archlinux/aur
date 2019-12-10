@@ -2,16 +2,16 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoind-git
-pkgver=v2.0.0.1.r1.gb307e32
-pkgrel=2
+pkgver=v2.0.0.2.r2.gcb69996
+pkgrel=1
 pkgdesc="Headless daemon for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
 url="https://curecoin.net/"
 license=('MIT')
 provides=('curecoind')
 conflicts=('curecoind')
-depends=('miniupnpc' 'boost-libs' 'openssl-1.0')
-makedepends=('boost' 'db' 'git')
+depends=('miniupnpc' 'boost1.69-libs' 'openssl-1.0')
+makedepends=('boost1.69' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
         "boost.patch")
 
