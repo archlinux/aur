@@ -1,13 +1,13 @@
 pkgbase = repotool
 	pkgdesc = An arch linux repository management tool
-	pkgver = 1.1.6
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/coNQP/repotool
 	arch = any
 	license = GPLv3
 	makedepends = git
 	depends = python
-	source = git+https://github.com/coNQP/repotool.git#tag=1.1.6
+	source = git+https://github.com/coNQP/repotool.git#tag=1.1.8
 	md5sums = SKIP
 
 pkgname = repotool
