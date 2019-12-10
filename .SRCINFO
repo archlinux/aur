@@ -1,21 +1,21 @@
 pkgbase = bcwc-pcie-git
 	pkgdesc = Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam.
-	pkgver = r254.a22f248
-	pkgrel = 3
+	pkgver = 0.0.0
+	pkgrel = 4
 	url = https://github.com/patjak/bcwc_pcie
 	arch = x86_64
 	license = unknown
-	makedepends = linux-headers
 	makedepends = git
 	depends = kmod
 	depends = facetimehd-firmware
 	depends = dkms
 	optdepends = linux-headers: Building with the stock kernel
+	optdepends = linux-lts-headers: Building with the lts kernel
 	provides = bcwc-pcie
 	provides = bcwc-pcie-dkms
 	replaces = bcwc-pcie
 	replaces = bcwc-pcie-dkms
-	source = bcwc-pcie-git::git+https://github.com/patjak/bcwc_pcie.git#branch=mainline
+	source = bcwc-pcie-git::git+https://github.com/patjak/bcwc_pcie.git
 	source = bcwc-pcie.modprobe.conf
 	source = bcwc-pcie.modules-load.conf
 	md5sums = SKIP

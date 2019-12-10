@@ -2,3 +2,4 @@
 /pkg/
 /*.tar*
 /bcwc-pcie-git/
+/*.log
