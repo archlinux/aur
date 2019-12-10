@@ -1,0 +1,21 @@
+pkgbase = arcanist-stable
+	pkgdesc = The command line interface for Phabricator
+	pkgver = conduit.5.r1649.gbac20284
+	pkgrel = 1
+	url = https://www.phacility.com/phabricator/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = libphutil
+	depends = php
+	depends = python
+	optdepends = git: Git VCS support
+	optdepends = subversion: Subversion VCS support
+	optdepends = mercurial: Mercurial VCS support
+	provides = arcanist=conduit.5.r1649.gbac20284
+	conflicts = arcanist
+	source = git+https://github.com/phacility/arcanist.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = arcanist-stable
+
