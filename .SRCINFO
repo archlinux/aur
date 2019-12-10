@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-ru
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (ru)
-	pkgver = 72.0a1
+	pkgver = 73.0a1
 	pkgrel = 1
 	url = http://nightly.mozilla.org/
 	arch = i686
@@ -29,12 +29,12 @@ pkgbase = firefox-nightly-ru
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha512sums = 02bd8c8c717e6796fb1772f51c1bfd78ff3ca7c5355c08b9568dc36cb72b8b84330d20522653eedda12bdec1517cd4074a4bc5d51a8667880121e946b85c11ec
 	sha512sums = 5ed67bde39175d4d10d50ba5b12063961e725e94948eadb354c0588b30d3f97d2178b66c1af466a6e7bd208ab694227a1391c4141f88d3da1a1178454eba5308
-	source_i686 = 20191027-firefox-72.0a1.ru.linux.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-72.0a1.ru.linux-i686.tar.bz2
-	source_i686 = 20191027-firefox-72.0a1.ru.linux.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-72.0a1.ru.linux-i686.tar.bz2.asc
+	source_i686 = 20191211-firefox-73.0a1.ru.linux.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-73.0a1.ru.linux-i686.tar.bz2
+	source_i686 = 20191211-firefox-73.0a1.ru.linux.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-73.0a1.ru.linux-i686.tar.bz2.asc
 	sha512sums_i686 = SKIP
 	sha512sums_i686 = SKIP
-	source_x86_64 = 20191027-firefox-72.0a1.ru.linux.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-72.0a1.ru.linux-x86_64.tar.bz2
-	source_x86_64 = 20191027-firefox-72.0a1.ru.linux.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-72.0a1.ru.linux-x86_64.tar.bz2.asc
+	source_x86_64 = 20191211-firefox-73.0a1.ru.linux.tar.bz2::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-73.0a1.ru.linux-x86_64.tar.bz2
+	source_x86_64 = 20191211-firefox-73.0a1.ru.linux.tar.bz2.asc::https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-73.0a1.ru.linux-x86_64.tar.bz2.asc
 	sha512sums_x86_64 = SKIP
 	sha512sums_x86_64 = SKIP
 

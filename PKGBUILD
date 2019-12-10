@@ -2,12 +2,12 @@
 # Contributor: McModder <mcmodder @ mcmodder.ru>
 # Contributor: Denis Vadimov <me @ bloody.pw>
 
-_version=72.0a1
+_version=73.0a1
 _baseurl="https://download-installer.cdn.mozilla.net/pub/firefox/nightly/latest-mozilla-central-l10n/"
 _date="$(date +%Y%m%d)"
 _filename="firefox-${_version}.ru.linux"
 pkgname=firefox-nightly-ru
-pkgver=72.0a1
+pkgver=73.0a1
 pkgrel=1
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (ru)'
 arch=('i686' 'x86_64')
