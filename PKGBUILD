@@ -2,7 +2,7 @@
 pkgname='mcxx'
 _bundlepkgname='ompss'
 pkgdesc='Mercurium is a C/C++/Fortran source-to-source compilation infrastructure aimed at fast prototyping developed by the Programming Models group at the Barcelona Supercomputing Center.'
-pkgver='2.3.0'
+pkgver='2.3.0.20190627'
 _bundlepkgver='19.06'
 pkgrel='1'
 arch=('i686' 'x86_64')
@@ -18,11 +18,11 @@ sha512sums=(159efc17ba446f3f2205a8c0580ed10fab263f8bdb7306d5444d1fc6a592f80d749c
 [[ ! -z "$LDFLAGS" ]] && export LDFLAGS="$LDFLAGS,--no-as-needed"
 
 prepare() {
-	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-$pkgver"
+	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
 }
 
 build() {
-	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-$pkgver"
+	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
 
 	# WORKAROUND: Force gperf files to be regenerated, to avoid build errors
 	#             (declaration mismatches due to unsigned int / gperf_length_t)
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-$pkgver"
+	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
 
 	make DESTDIR="$pkgdir/" install
 }
