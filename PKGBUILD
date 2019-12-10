@@ -5,7 +5,7 @@
 _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for Realtek RTL8152/RTL8153 Based USB Ethernet Adapters"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -19,7 +19,7 @@ source=(
     'dkms.conf'
 )
 sha512sums=('2722996e957b508fa8c0964ca18fc97812637e550314c8523c9d51d30237d8a84f9c4cc328f6050b5f0c9bf281badf7bbbff758bc80e2496781837ce4a2f85db'
-            '2272d18f24a940fb878245849a0950d560b97ece8d492ebfe7ccf53f8ac6093b6b9da2b45c5ea3f99c77b36ffbd75337aa560cfd84428052f5436a9cda7c1605')
+            '04d93f2297be0ffbd9ad8611ee619406af26f8fc987686e7150a68d4e8d9d94d104b76583a3190699587fd568c995e31c96332afa77b880a972eb24861ba5dea')
 
 package() {
 	install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
