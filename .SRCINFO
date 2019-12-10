@@ -1,7 +1,7 @@
 pkgbase = gnome-web-shortcuts-extension-git
 	pkgdesc = Adds a 'Create web link...' menu item to Nautilus, which makes it simple to create URL shortcut files in directories
 	pkgver = r16.2d89c1e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/sthursfield/gnome-web-shortcuts-extension
 	install = gnome-web-shortcuts-extension.install
 	arch = any

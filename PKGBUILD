@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=gnome-web-shortcuts-extension-git
 pkgver=r16.2d89c1e
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds a 'Create web link...' menu item to Nautilus, which makes it simple to create URL shortcut files in directories"
 arch=('any')
 url="https://gitlab.gnome.org/sthursfield/gnome-web-shortcuts-extension"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-git}"
-	meson . build --prefix /usr
+	arch-meson . build
 	ninja -C build
 }
 
