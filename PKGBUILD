@@ -2,7 +2,7 @@
 
 pkgname=parsec-bin
 pkgver=150_11
-pkgrel=1
+pkgrel=2
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
 url='http://parsec.tv'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb')
 optdepends=('libva: For hardware accelerated decoding')
 
 source_x86_64=('https://builds.parsecgaming.com/package/parsec-linux.deb')
-sha256sums_x86_64=('4f465a0aab40abb09017362e67edb875098506dd802ead84ee6535459f6641f3')
+sha256sums_x86_64=('0741a0b535e676853a50d3ff1a6f6b2355fff127b6a0c0e503ad83818ef7bc74')
 
 source_arm=('https://builds.parsecgaming.com/package/parsec-rpi.deb')
 sha256sums_arm=('3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f')
