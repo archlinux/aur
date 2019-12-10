@@ -11,8 +11,9 @@ license=("GPL2")
 provides=("ofono")
 conflicts=("ofono")
 depends=("bluez" "dbus" "glib2" "udev" "mobile-broadband-provider-info")
-source=("$pkgname::git+https://git.kernel.org/pub/scm/network/ofono/ofono.git")
-sha256sums=("SKIP")
+source=("$pkgname::git+https://git.kernel.org/pub/scm/network/ofono/ofono.git"
+  git://git.kernel.org/pub/scm/libs/ell/ell.git)
+sha256sums=("SKIP" "SKIP")
 
 pkgver() {
   cd "$pkgname"
