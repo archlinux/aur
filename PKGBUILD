@@ -1,29 +1,38 @@
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at protonmail dot com>
+# Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
 pkgname=martinize-git
-pkgver=0.1.0
+pkgver=v0.3.1.r8.2a50f80
 pkgrel=1
 pkgdesc="Describe and apply transformation on molecular structures and topologies"
 arch=('any')
 url="https://github.com/marrink-lab/vermouth-martinize"
 license=('Apache')
-depends=('python>=3.5')
-makedepends=()
+depends=('python>=3.5' 'python-pbr' 'python-setuptools>=30.3.0' 'python-numpy'
+		 'python-networkx')
+makedepends=('git')
 checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
+optdepends=('python-sphinx: docs generation'
+			'python-scipy: pairwise distance calculation')
+provides=('martinize')
+conflicts=('martinize')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}_${pkgver}::git+https://github.com/marrink-lab/vermouth-martinize.git")
+source=("${pkgname}::git+https://github.com/marrink-lab/vermouth-martinize.git")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+
 package() {
-        cd ${pkgname}_${pkgver}
+        cd ${srcdir}/${pkgname}
         /usr/bin/env python3 setup.py install --prefix="$pkgdir/usr/"
 }

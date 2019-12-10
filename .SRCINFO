@@ -1,12 +1,18 @@
 pkgbase = martinize-git
 	pkgdesc = Describe and apply transformation on molecular structures and topologies
-	pkgver = 0.1.0
+	pkgver = v0.3.1.r8.2a50f80
 	pkgrel = 1
 	url = https://github.com/marrink-lab/vermouth-martinize
 	arch = any
 	license = Apache
 	depends = python>=3.5
-	source = martinize-git_0.1.0::git+https://github.com/marrink-lab/vermouth-martinize.git
+	depends = python-pbr 
+	depends = python-setuptools>=30.3.0 
+	depends = python-numpy: docs generation
+	depends = python-networkx: pairwise distance calculation
+	optdepends = python-sphinx
+	optdepends = python-scipy
+	source = martinize-git::git+https://github.com/marrink-lab/vermouth-martinize.git
 	md5sums = SKIP
 
 pkgname = martinize-git
