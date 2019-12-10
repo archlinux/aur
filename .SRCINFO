@@ -1,7 +1,7 @@
 pkgbase = lavalauncher-git
 	pkgdesc = A simple launcher panel for Wayland
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~leon_plickat/lavalauncher
 	arch = x86_64
 	license = GPL3

@@ -2,8 +2,8 @@
 # Contributor:
 
 pkgname=lavalauncher-git
-pkgver=r38.gd95f906
-pkgrel=1
+pkgver=1.1
+pkgrel=2
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
 url='https://git.sr.ht/~leon_plickat/lavalauncher'
