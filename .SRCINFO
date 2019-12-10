@@ -1,6 +1,6 @@
 pkgbase = clusteringsuite
 	pkgdesc = Automatically expose the main performance trends in applications' computation structure (from BSC).
-	pkgver = 2.6.9
+	pkgver = 2.6.9.20190920
 	pkgrel = 1
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = i686
