@@ -11,6 +11,7 @@ pkgbase = numnastics-git
 	depends = python-pyperclip
 	depends = python-requests
 	depends = python-xdg
+	depends = speech-dispatcher
 	provides = numnastics
 	conflicts = numnastics
 	source = git+https://gitlab.com/stormdragon2976/numnastics.git
