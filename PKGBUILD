@@ -4,8 +4,8 @@
 
 pkgname=picom-git
 _gitname=picom
-pkgver=1242_Next.114.g43b2173_2019.10.23
-pkgrel=3
+pkgver=1283_Next.2.g37532e5_2019.12.10
+pkgrel=1
 pkgdesc="X compositor (fork of compton) (git-version)"
 arch=(i686 x86_64)
 url="https://github.com/yshui/${_gitname}"
@@ -33,7 +33,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  meson --buildtype=release . build --prefix=/usr -Dbuild_docs=true
+  meson --buildtype=release . build --prefix=/usr -Dwith_docs=true
   ninja -C build
 }
 
