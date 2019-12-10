@@ -2,7 +2,7 @@
 
 pkgname=kubebox
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Kubebox - Terminal and Web console for Kubernetes"
 arch=('x86_64')
 url="https://github.com/astefanutti/kubebox"
@@ -34,5 +34,4 @@ package() {
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "$pkgdir"
-	install -Dm 644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
