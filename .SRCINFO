@@ -1,6 +1,6 @@
 pkgbase = metronome-git
 	pkgdesc = Metronome IM XMPP Server Development
-	pkgver = 3.12.1
+	pkgver = 3.13.0
 	pkgrel = 1
 	url = https://metronome.im/
 	arch = i686

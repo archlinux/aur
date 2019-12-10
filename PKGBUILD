@@ -3,7 +3,7 @@
 # Co-Maintainer: Maxime “pep” Buquet <archlinux@bouah.net>
 
 pkgname=metronome-git
-pkgver=3.12.1
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Metronome IM XMPP Server Development"
 arch=('i686' 'x86_64')
@@ -29,8 +29,8 @@ pkgver() {
 build() {
   cd "$srcdir/$_repo"
   ./configure --ostype=linux --prefix=/usr \
-  --with-lua-include=/usr/include/lua5.1 --with-lua=/usr/bin/lua5.1 \
-  --with-lua-lib=/usr/lib/lua/5.1 --lua-suffix=5.1 \
+  --with-lua-include=/usr/include/lua5.2 --with-lua=/usr/bin/lua5.2 \
+  --with-lua-lib=/usr/lib/lua/5.2 --lua-suffix=5.2 \
   --sysconfdir=/etc/metronome --datadir=/var/lib/metronome
   make
 }
