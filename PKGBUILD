@@ -3,7 +3,7 @@
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor-git
-pkgver=32.6bcd225
+pkgver=35.495045e
 pkgrel=1
 pkgdesc="Zen monitor is monitoring software for AMD Zen-based CPUs"
 arch=('x86_64' 'i686')
