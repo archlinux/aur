@@ -1,7 +1,7 @@
 pkgbase = vgrive
 	pkgdesc = Google Drive client made in Vala
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bcedu/VGrive
 	arch = x86_64
 	license = GPL3
