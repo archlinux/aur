@@ -12,6 +12,7 @@ pkgbase = evdi-4.19
 	depends = libdrm
 	depends = linux-lts
 	depends = linux-lts-headers
+	provides = evdi
 	conflicts = evdi
 	source = evdi-1.6.4-2.tar.gz::https://github.com/DisplayLink/evdi/archive/v1.6.4.tar.gz
 	source = relro.patch
