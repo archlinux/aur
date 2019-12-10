@@ -1,12 +1,12 @@
 pkgbase = gsctl-bin
 	pkgdesc = The Giant Swarm command line interface
-	pkgver = 0.17.4
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://github.com/giantswarm/gsctl/
 	arch = x86_64
 	license = apache
-	source = gsctl-0.17.4.tar.gz::https://github.com/giantswarm/gsctl/releases/download/0.17.4/gsctl-0.17.4-linux-amd64.tar.gz
-	sha256sums = 98b5634ec44658c122a5d7e53dfb837916da1e952918ba7132af0b984cfb49ea
+	source = gsctl-0.17.5.tar.gz::https://github.com/giantswarm/gsctl/releases/download/0.17.5/gsctl-0.17.5-linux-amd64.tar.gz
+	sha256sums = 03bf43c328264103a4785c9098470a770aba0414aab1473d3a49e7e2bcf6720a
 
 pkgname = gsctl-bin
 
