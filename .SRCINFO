@@ -1,0 +1,13 @@
+pkgbase = scalafmt-native-bin
+	pkgdesc = Code formatter for Scala
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://scalameta.org/scalafmt/
+	arch = any
+	license = Apache-2.0
+	depends = java-runtime
+	source = scalafmt-native-bin-2.3.2.zip::https://github.com/scalameta/scalafmt/releases/download/v2.3.2/scalafmt-linux.zip
+	sha256sums = a0c0a57543a21243e38bde648e83fb3833ffd55fe8c056d8e8b7b5ab1724fa43
+
+pkgname = scalafmt-native-bin
+
