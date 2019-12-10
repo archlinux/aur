@@ -1,9 +1,9 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.17.0
+pkgver=2.17.1
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         rocketchat-desktop.desktop
         fix-build.patch
         fix-spellchecking.patch)
-sha512sums=('a8e304c97f12879b8f9f4535cb9c5fefccd8cc6acb5f6456a4f2119a34d7df8952575e7187841893a327497730d2fe1cd95e756d059fcaf2ad83a6e0196cd55d'
+sha512sums=('48bfd2a15ff68c45f3451118424bcdbc7224d108bf779cca23a1aa2346ae7c9c39afac9b6f12e69af0262406843246d75753574047b4dd5c388408aa178f4935'
             '1f0f7197012421ff42d2936f73e697e35eef8c57fb9fed59ee022f9d170d6496407f89e426526fba8451fe304b3a8de1724d1cd14bd85d781bbf6aa9ca078d7d'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26'
             'f614b29f3fb330e870edd51a3f1b9ca05c72c2c937a5a4d23797947751d55f8ac8db217f8edbe277e721c1a07f5bc84fd0be7a4903a7d991f7a9eb9625f34ce9'
