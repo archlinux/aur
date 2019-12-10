@@ -1,7 +1,7 @@
 pkgbase = tableplus
 	pkgdesc = Modern, native, and friendly GUI tool for relational databases (Alpha)
 	pkgver = 0.1.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tableplus.com/
 	arch = x86_64
 	license = custom
