@@ -4,7 +4,7 @@
 # PRs welcome at: https://github.com/ActivityWatch/aur-activitywatch-bin
 
 pkgname=activitywatch-bin
-pkgver='0.8.3'
+pkgver='0.8.4'
 pkgrel=1
 epoch=
 pkgdesc="Log what you do on your computer. Simple, extensible, no third parties."
@@ -29,9 +29,14 @@ package() {
 
     # Symlink executables to /usr/bin
     mkdir -p $pkgdir/usr/bin
-    execnames=("aw-server" "aw-watcher-afk" "aw-watcher-window" "aw-qt")
-    for execname in "${execnames[@]}"; do
-        ln -s /opt/activitywatch/$execname $pkgdir/usr/bin/$execname
+    execnames=("aw-qt")
+    for name in "${execnames[@]}"; do
+        ln -s /opt/activitywatch/$name $pkgdir/usr/bin/$name
+    done
+
+    modulenames=("aw-server" "aw-watcher-afk" "aw-watcher-window")
+    for name in "${modulenames[@]}"; do
+        ln -s /opt/activitywatch/$name/$name $pkgdir/usr/bin/$name
     done
 
     # Add .desktop file for autostart

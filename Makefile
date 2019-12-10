@@ -1,7 +1,9 @@
 package:
 	makepkg
 
-srcinfo:
+srcinfo: .SRCINFO
+
+.SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
