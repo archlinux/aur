@@ -1,15 +1,15 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 # Contributor: Frank Phillips <frankalso[at]gmail[dot]com>
 pkgname=fatrace
-pkgver=0.13
+pkgver=0.15
 pkgrel=1
 pkgdesc="Reports file access events from all running processes."
-arch=('i686' 'x86_64')
-url="http://launchpad.net/fatrace"
+arch=('x86_64')
+url="https://launchpad.net/fatrace"
 license=('GPL')
 depends=('python' 'powertop')
-source=(http://launchpad.net/fatrace/trunk/${pkgver}/+download/$pkgname-$pkgver.tar.bz2)
-sha256sums=('7d8b0670896b10600c89caedeec52c26237260d5a20fdea7049cd97f57213043')
+source=(https://launchpad.net/fatrace/trunk/${pkgver}/+download/$pkgname-$pkgver.tar.xz)
+sha256sums=('f9447115428c0b88abf05438559c1c4b1a3aec6d69fc09dc469c295249b419ad')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
