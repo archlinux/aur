@@ -47,9 +47,6 @@ prepare() {
   # Backport https://bugs.python.org/issue36044 to 3.7
   patch -p1 -i ../0002-smaller-pgo-test-suite.patch
 
-  # https://bugs.python.org/issue34587
-  sed -i -e "s|testCongestion|disabled_&|" Lib/test/test_socket.py
-
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py
 
