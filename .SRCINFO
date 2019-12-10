@@ -1,6 +1,6 @@
 pkgbase = python-scipy-mkl-bin
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering - with Intel MKL - prebuilt binaries from Anaconda
-	pkgver = 1.3.1.0.py38h7c811a0.0
+	pkgver = 1.3.2.0.py38h7c811a0.0
 	pkgrel = 0
 	url = http://www.scipy.org/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = python-scipy-mkl-bin
 	provides = python-scipy
 	provides = python-scipy-mkl
 	conflicts = python-scipy
-	source = https://repo.anaconda.com/pkgs/main/linux-64/scipy-1.3.1-py38h7c811a0_0.tar.bz2
+	source = https://repo.anaconda.com/pkgs/main/linux-64/scipy-1.3.2-py38h7c811a0_0.tar.bz2
 	source = https://repo.anaconda.com/pkgs/main/linux-64/libgfortran-ng-7.3.0-hdf63c60_0.tar.bz2
-	sha256sums = 2787a141b1b962cae3f580d492e7ab38d359f795674346ee6fa5d4dc3712ca42
+	sha256sums = 5a01f95b60ba3a7b6babd589d08aed300692e5d46f6434e38e94019c1cd47f46
 	sha256sums = 83c6fdb30a240fbaa09f5d2e2ae8f092759cb710bc3fa628ccb18934fc237b7f
 
 pkgname = python-scipy-mkl-bin
