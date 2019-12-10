@@ -1,13 +1,12 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='perl-lwp-useragent-cached'
 pkgver='0.08'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="LWP::UserAgent with simple caching mechanism"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-libwww')
-makedepends=('perl-test-mock-lwp-dispatch>=0.02')
 url='https://metacpan.org/release/LWP-UserAgent-Cached'
 source=("https://cpan.metacpan.org/authors/id/O/OL/OLEG/LWP-UserAgent-Cached-${pkgver}.tar.gz")
 sha512sums=('5c1c18d3a54257aac6f266298d63c4cec9e6c6cbdfe6470cbf02676fc327a9c71238158b08036852c4971787fd8b7b67b85eaa4016687bc6c815a68037e15c47')
