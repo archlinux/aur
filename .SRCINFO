@@ -1,21 +1,21 @@
 pkgbase = motrix-git
-	pkgdesc = elegent downloading tool frontend for aria2c,using vue(git version)
-	pkgver = git20190216
+	pkgdesc = A full-featured download manager
+	pkgver = 1.4.1.r534.2744db2
 	pkgrel = 1
-	url = https://github.com/agalwood/Motrix
-	arch = x86_64
+	url = https://motrix.app/
+	arch = any
 	license = MIT
-	makedepends = npm
+	makedepends = gendesk
 	makedepends = git
-	makedepends = fakeroot
-	depends = bash
-	depends = tar
+	makedepends = npm
+	makedepends = python2
+	depends = aria2
+	depends = electron
+	depends = nodejs
+	provides = motrix=1.4.1.r534.2744db2
 	conflicts = motrix
-	replaces = motrix
-	source = Motrix.desktop
-	source = aria2.conf
-	md5sums = SKIP
-	md5sums = SKIP
+	source = motrix::git+https://github.com/agalwood/Motrix.git
+	sha256sums = SKIP
 
 pkgname = motrix-git
 
