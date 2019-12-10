@@ -1,8 +1,9 @@
 pkgbase = omnetpp-qt
 	pkgdesc = OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: QT version
-	pkgver = 6.0pre4
+	pkgver = 6.0pre5
 	pkgrel = 1
 	url = http://www.omnetpp.org
+	install = omnetpp-qt.install
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -21,7 +22,7 @@ pkgbase = omnetpp-qt
 	depends = tcl
 	depends = tk
 	depends = blt
-	depends = jdk8-openjdk
+	depends = jdk-openjdk
 	depends = openmpi
 	depends = libpcap
 	depends = doxygen
@@ -33,10 +34,10 @@ pkgbase = omnetpp-qt
 	conflicts = omnetpp
 	source = OMNeT++.desktop
 	source = omnetpp.sh
-	source = omnetpp-6.0pre4-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.0pre4/omnetpp-6.0pre4-src-linux.tgz
+	source = omnetpp-6.0pre5-src-linux.tgz::https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.0pre5/omnetpp-6.0pre5-src-linux.tgz
 	sha512sums = a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8
 	sha512sums = facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1
-	sha512sums = 5b4d331ee9c81f8d22f6d204e9b2622755e1564fc786c4328d7a28c7b71592dd556b58eb94ba929a7a91bf714d0f43cde0006bfe2d9fc1a99bc2007551055234
+	sha512sums = aa5a93dceb0f20c41b10d5c529d6e3d837ed7f200f0b9cba274c1b91f07ab1cfaf499473dcb6591a9e9357b8465b92e06b7831ad66b04f564a1bc6bfdc61cacc
 
 pkgname = omnetpp-qt
 
