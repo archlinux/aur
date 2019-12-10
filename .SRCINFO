@@ -1,7 +1,7 @@
 pkgbase = kubedee-git
 	pkgdesc = Multi-node Kubernetes clusters on LXD
-	pkgver = v0.4.0.r21.35b1703
-	pkgrel = 1
+	pkgver = 0.4.0.r25.7c82291
+	pkgrel = 2
 	url = https://github.com/schu/kubedee
 	arch = any
 	license = APACHE

@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def on github>
 pkgname=kubedee-git
-pkgver=v0.4.0.r21.35b1703
-pkgrel=1
+pkgver=0.4.0.r25.7c82291
+pkgrel=2
 pkgdesc='Multi-node Kubernetes clusters on LXD'
 arch=('any')
 url=https://github.com/schu/kubedee
@@ -17,7 +17,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"
     printf '%s.r%s.%s' \
-        "${GITTAG}" \
+        "${GITTAG#v}" \
         "$(git rev-list --count ${GITTAG}..)" \
         "$(git rev-parse --short HEAD)"
 }
