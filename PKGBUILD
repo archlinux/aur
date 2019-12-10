@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=formiko
-pkgver=1.4.0
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="reStructuredText editor and live previewer"
 url="https://github.com/ondratu/formiko"
@@ -12,7 +12,7 @@ depends=('gobject-introspection-runtime' 'gtk3' 'gtksourceview3' \
 	 'hicolor-icon-theme' 'python' 'python-docutils' 'python-gobject' 'webkit2gtk')
 optdepends=('python-recommonmark: for Common Mark support (MarkDown)')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ondratu/formiko/archive/${pkgver}.tar.gz")
-sha256sums=('cdf01210ce0303baa018e2abe8fdca8ac64599b0fe1bdb6bf3a163263ec8b21f')
+sha256sums=('993e0dfdf9cba1a0c9d75da4926f7df9664823885c873f7f5bb4b5bd4e9a7711')
 
 package() {
   cd $pkgname-$pkgver 

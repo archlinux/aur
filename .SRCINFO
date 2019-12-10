@@ -1,6 +1,6 @@
 pkgbase = formiko
 	pkgdesc = reStructuredText editor and live previewer
-	pkgver = 1.4.0
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/ondratu/formiko
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = formiko
 	depends = python-gobject
 	depends = webkit2gtk
 	optdepends = python-recommonmark: for Common Mark support (MarkDown)
-	source = formiko-1.4.0.tar.gz::https://github.com/ondratu/formiko/archive/1.4.0.tar.gz
-	sha256sums = cdf01210ce0303baa018e2abe8fdca8ac64599b0fe1bdb6bf3a163263ec8b21f
+	source = formiko-1.4.3.tar.gz::https://github.com/ondratu/formiko/archive/1.4.3.tar.gz
+	sha256sums = 993e0dfdf9cba1a0c9d75da4926f7df9664823885c873f7f5bb4b5bd4e9a7711
 
 pkgname = formiko
 
