@@ -7,7 +7,7 @@ pkgdesc="A reaction based audio game"
 arch=('any')
 url="https://gitlab.com/stormdragon2976/${_pkgname}"
 license=('GPL3')
-depends=('python' 'python-pygame' 'python-pyperclip' 'python-requests' 'python-xdg')
+depends=('python' 'python-pygame' 'python-pyperclip' 'python-requests' 'python-xdg' 'speech-dispatcher')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    git submodule update --init
+    git submodule update --init --remote --merge
 }
 
 package() {

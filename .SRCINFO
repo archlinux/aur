@@ -1,6 +1,6 @@
 pkgbase = monkeyspank-git
 	pkgdesc = A reaction based audio game
-	pkgver = r13.1b666c1
+	pkgver = r15.5469af2
 	pkgrel = 1
 	url = https://gitlab.com/stormdragon2976/monkeyspank
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = monkeyspank-git
 	depends = python-pyperclip
 	depends = python-requests
 	depends = python-xdg
+	depends = speech-dispatcher
 	provides = monkeyspank
 	conflicts = monkeyspank
 	source = git+https://gitlab.com/stormdragon2976/monkeyspank.git
