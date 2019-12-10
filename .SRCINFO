@@ -1,7 +1,7 @@
 pkgbase = nanox
 	pkgdesc = Nanos++ is a runtime designed to serve as runtime support in parallel environments. It is mainly used to support OmpSs, a extension to OpenMP developed at BSC.
-	pkgver = 0.15
-	pkgrel = 2
+	pkgver = 0.15.20190627
+	pkgrel = 1
 	url = https://pm.bsc.es/ompss
 	arch = i686
 	arch = x86_64
