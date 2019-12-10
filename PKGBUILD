@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=imcompressor
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
 url="https://github.com/Huluti/ImCompressor"
@@ -13,7 +13,7 @@ sha256sums=('81aa7dba77de73809352c70b4c13314954510750007415a865304863d505cd73')
 
 build() {
 	cd "ImCompressor-$pkgver"
-	meson --prefix /usr --buildtype=plain _build
+	arch-meson _build
 	ninja -C _build
 }
 
