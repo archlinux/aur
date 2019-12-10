@@ -1,14 +1,15 @@
 # Maintainer: Luis Sarmiento < Luis.Sarmiento-ala-nuclear.lu.se >
 pkgname='geant4'
-pkgver=10.5.1
-_pkgver=10.05.p01
-pkgrel=2
+pkgver=10.6.0
+_pkgver=10.06
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions."
-depends=('cmake>=3.3'
+depends=('cmake>=3.8'
          'xerces-c'
          'qt5-base'
          'glu'
-#         'soxt'
+         #         'soxt'
+         'zlib'
         )
 conflicts=('geant4_devel')
 optdepends=('java-environment: for histogram visualizations and
@@ -35,7 +36,7 @@ options=('!emptydirs')
 install="${pkgname}.install"
 source=("http://cern.ch/geant4-data/releases/${pkgname}.${_pkgver}.tar.gz"
   "${pkgname}.install")
-sha256sums=('f4a292220500fad17e0167ce3153e96e3410ecbe96284e572dc707f63523bdff'
+sha256sums=('1424c5a0e37adf577f265984956a77b19701643324e87568c5cb69adc59e3199'
             '173be29c04cb4aae249cbb59a2fc01549150db6bca314aac9dd9e24c603d3f5b')
 
 ## Remove this if you want to keep an even smaller package
@@ -47,32 +48,25 @@ build() {
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
+  # until SoXt fails to build because of coin, support for Invertor is droped
   env -i \
       QT_SELECT=5 \
       PATH=/usr/bin \
       cmake \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=RELEASE \
       -DGEANT4_BUILD_MULTITHREADED=ON \
-      -DGEANT4_BUILD_CXXSTD=14 \
-      -DGEANT4_INSTALL_DATA=OFF \
-      -DGEANT4_USE_GDML=ON \
       -DGEANT4_USE_G3TOG4=ON \
+      -DGEANT4_USE_GDML=ON \
       -DGEANT4_USE_QT=ON \
-      -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
-      -DGEANT4_USE_XM=ON \
       -DGEANT4_USE_OPENGL_X11=ON \
       -DGEANT4_USE_RAYTRACER_X11=ON \
-      -DGEANT4_USE_SYSTEM_CLHEP=OFF \
-      -DGEANT4_USE_SYSTEM_EXPAT=ON \
+      -DGEANT4_USE_INVENTOR=OFF \
+      -DGEANT4_USE_XM=ON \
       -DGEANT4_USE_SYSTEM_ZLIB=ON \
-      -DCMAKE_INSTALL_LIBDIR=lib \
+      -DGEANT4_BUILD_CXXSTD=14 \
       ../${pkgname}.${_pkgver}
 
   G4VERBOSE=1 make
-
-# until SoXt stays broken/orphan support for Invertor is removed
-#      -DGEANT4_USE_INVENTOR=ON \
 
 }
 
@@ -114,3 +108,68 @@ package() {
   install -m755 ${srcdir}/geant4.profile.sh  ${pkgdir}/etc/profile.d/geant4.sh
   install -m755 ${srcdir}/geant4.profile.csh ${pkgdir}/etc/profile.d/geant4.csh
 }
+
+# http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/InstallationGuide/html/installguide.html#geant4-build-options
+#
+# |----------------------------------+---------------------------+--------|
+# | option                           | default                   | set to |
+# |----------------------------------+---------------------------+--------|
+# | CMAKE_INSTALL_PREFIX             | /usr/local                | /usr   |
+# | CMAKE_BUILD_TYPE                 | Release                   |        |
+# | GEANT4_BUILD_MULTITHREADED       | OFF                       | ON     |
+# | GEANT4_INSTALL_DATA              | OFF                       |        |
+# | GEANT4_INSTALL_DATADIR           | CMAKE_INSTALL_DATAROOTDIR |        |
+# | GEANT4_USE_G3TOG4                | OFF                       | ON     |
+# | GEANT4_USE_GDML                  | OFF                       | ON     |
+# | GEANT4_USE_QT                    | OFF                       | ON     |
+# | GEANT4_USE_OPENGL_X11            | OFF                       | ON     |
+# | GEANT4_USE_RAYTRACER_X11         | OFF                       | ON     |
+# | GEANT4_USE_OPENGL_WIN32          | OFF                       |        |
+# | GEANT4_USE_INVENTOR              | OFF                       | OFF    |
+# | GEANT4_USE_XM                    | OFF                       | ON     |
+# | GEANT4_USE_SYSTEM_CLHEP          | OFF                       |        |
+# | GEANT4_USE_SYSTEM_EXPAT          | ON                        |        |
+# | GEANT4_USE_SYSTEM_ZLIB           | OFF                       | ON     |
+# |----------------------------------+---------------------------+--------|
+# | BUILD_SHARED_LIBS                | ON                        |        |
+# | BUILD_STATIC_LIBS                | OFF                       |        |
+# | CMAKE_INSTALL_BINDIR             | bin                       |        |
+# | CMAKE_INSTALL_INCLUDEDIR         | include                   |        |
+# | CMAKE_INSTALL_LIBDIR             | lib(+?SUFFIX)             |        |
+# | CMAKE_INSTALL_DATAROOTDIR        | share                     |        |
+# | GEANT4_INSTALL_DATA_TIMEOUT      | 1500                      |        |
+# | GEANT4_INSTALL_EXAMPLES          | ON                        |        |
+# | GEANT4_BUILD_CXXSTD              | 11 (UNIX)                 | 14     |
+# | GEANT4_BUILD_MSVC_MP             | OFF                       |        |
+# | GEANT4_BUILD_TLS_MODEL           | initial-exec              |        |
+# | GEANT4_BUILD_STORE_TRAJECTORY    | ON                        |        |
+# | GEANT4_BUILD_VERBOSE_CODE        | ON                        |        |
+# | GEANT4_ENABLE_TESTING            | OFF                       |        |
+# | GEANT4_USE_NETWORKDAWN           | OFF                       |        |
+# | GEANT4_USE_NETWORKVRML           | OFF                       |        |
+# | GEANT4_USE_FREETYPE              | OFF                       |        |
+# | GEANT4_USE_HDF5                  | OFF                       |        |
+# | GEANT4_USE_USOLIDS               | OFF                       |        |
+# | GEANT4_USE_TIMEMORY              | OFF                       |        |
+# | GEANT4_INSTALL_PACKAGE_CACHE     | ON                        |        |
+# | CMAKE_PREFIX_PATH                |                           |        |
+# | XERCESC_ROOT_DIR                 |                           |        |
+# | XERCESC_INCLUDE_DIR              |                           |        |
+# | XERCESC_LIBRARY                  |                           |        |
+# | INVENTOR_INCLUDE_DIR             |                           |        |
+# | INVENTOR_LIBRARY                 |                           |        |
+# | INVENTOR_SOWIN_LIBRARY           |                           |        |
+# | INVENTOR_SOXT_INCLUDE_DIR        |                           |        |
+# | INVENTOR_SOXT_LIBRARY            |                           |        |
+# | MOTIF_INCLUDE_DIR                |                           |        |
+# | MOTIF_LIBRARIES                  |                           |        |
+# | GEANT4_USE_SYSTEM_CLHEP_GRANULAR |                           |        |
+# | CLHEP_ROOT_DIR                   |                           |        |
+# | CLHEP_INCLUDE_DIR                |                           |        |
+# | CLHEP_LIBRARY                    |                           |        |
+# | EXPAT_INCLUDE_DIR                |                           |        |
+# | EXPAT_LIBRARY                    |                           |        |
+# | ZLIB_INCLUDE_DIR                 |                           |        |
+# | ZLIB_LIBRARY                     |                           |        |
+# |----------------------------------+---------------------------+--------|
+
