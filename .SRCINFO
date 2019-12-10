@@ -1,0 +1,21 @@
+pkgbase = gocryptotrader-git
+	pkgdesc = A cryptocurrency trading bot supporting multiple exchanges written in Golang.
+	pkgver = r1105.473092a6
+	pkgrel = 1
+	url = https://github.com/thrasher-corp/gocryptotrader
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = make
+	provides = gocryptotrader-git
+	conflicts = gocryptotrader-git
+	source = gocryptotrader::git+https://github.com/thrasher-corp/gocryptotrader
+	md5sums = SKIP
+
+pkgname = gocryptotrader-git
+
