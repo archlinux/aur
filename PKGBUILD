@@ -62,8 +62,14 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/jcelerier/Qt-Color-Widgets.git"
 "git+https://github.com/jcelerier/phantomstyle.git"
 "git+https://anongit.kde.org/scratch/mart/desktopqqc2style.git"
+"git+https://github.com/jcelerier/rubberband.git"
+"git+https://github.com/jcelerier/libsamplerate.git"
+"git+https://github.com/OculusVR/Flicks.git"
 )
 sha256sums=(
+'SKIP'
+'SKIP'
+'SKIP'
 'SKIP'
 'SKIP'
 'SKIP'
@@ -161,9 +167,12 @@ build() {
     git config submodule.3rdparty/websocketpp.url $srcdir/websocketpp
     git config submodule.3rdparty/whereami.url $srcdir/whereami
     git config submodule.3rdparty/wiiuse.url $srcdir/wiiuse
+    git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
+    git config submodule.3rdparty/rubberband.url $srcdir/rubberband
     git config submodule.CMake/cmake-modules.url $srcdir/cmake-modules
   )
 
+  git checkout musical2
   git submodule update --init --recursive
 
   mkdir -p "$srcdir/build"
