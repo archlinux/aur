@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosemacs'
 pkgname='ros-melodic-rosemacs'
 pkgver='0.4.13'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)

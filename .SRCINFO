@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosemacs
 	pkgdesc = ROS - ROS tools for those who live in Emacs.
 	pkgver = 0.4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosemacs
 	arch = any
 	license = BSD
