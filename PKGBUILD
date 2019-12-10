@@ -6,18 +6,17 @@
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
 license=('GPL')
-depends=('qt5-base' 'qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51' \
-         'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' 'lrexlib-pcre5.1'  \
-         'qt5-gamepad' 'lua51-utf8'  'ttf-font' 'pugixml' 'lua-yajl')
+depends=('qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51-filesystem' 'luazip5.1' 'lua51-sql-sqlite' \
+         'lrexlib-pcre5.1' 'qt5-gamepad' 'lua51-utf8'  'ttf-font' 'pugixml' 'lua-yajl')
 makedepends=('boost' 'qt5-tools')
 optdepends=('discord-rpc-api: discord integration'
             'ttf-bitstream-vera: default font'
-            'ttf-ubuntu-font-family: default font')
+            'ttf-ubuntu-font-family: default font')     
 conflicts=('mudlet-git')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
@@ -48,14 +47,9 @@ build() {
 
 package() {
     cd $srcdir/src
-    mkdir -p ${pkgdir}/usr/bin
-    mkdir -p ${pkgdir}/usr/share/mudlet/lua/geyser
+    make INSTALL_ROOT="$pkgdir" install
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/pixmaps
-
-    install -m 755 mudlet ${pkgdir}/usr/bin/mudlet
-    install -m 644 mudlet-lua/lua/*.lua ${pkgdir}/usr/share/mudlet/lua
-    install -m 644 mudlet-lua/lua/geyser/* ${pkgdir}/usr/share/mudlet/lua/geyser
     install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
-    install -m 644 ../mudlet.png ${pkgdir}/usr/share/pixmaps
+    install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps
 }
