@@ -1,0 +1,14 @@
+pkgbase = strace-parser
+	pkgdesc = Strace parser written in Rust
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://gitlab.com/gitlab-com/support/toolbox/strace-parser
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = strace-parser-0.5.2.tar.gz::https://gitlab.com/gitlab-com/support/toolbox/strace-parser/-/archive/v0.5.2/strace-parser-v0.5.2.tar.gz
+	sha512sums = c2146190945cac207580b6602f59abd1871f15896cbed394cfeda482620573e86c11880b7abfbcbf4c2065e6e52990eafc67146cbc1ad7bd2ff9bb6ba964d128
+
+pkgname = strace-parser
+
