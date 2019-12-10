@@ -1,0 +1,14 @@
+pkgbase = lavacli
+	pkgdesc = Command line interface for LAVA
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://git.lavasoftware.org/lava/lavacli
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://git.lavasoftware.org/lava/lavacli/-/archive/v0.9.9/lavacli-v0.9.9.tar.gz
+	sha256sums = 45b7a7ca29f7a875a000c4f033714dacafb7b36122828cfc4ac212ec01a24d95
+
+pkgname = lavacli
+
