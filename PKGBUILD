@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=organizer-git
 pkgver=0.201.r0.g87e988e
-pkgrel=1
+pkgrel=2
 pkgdesc="Python GTK app to organize your files"
 arch=('any')
 url="https://gitlab.gnome.org/aviwad/organizer"
 license=('GPL3')
-depends=('python' 'gtk3' 'libhandy' 'python-gobject')
+depends=('gtk3' 'libhandy' 'python-gobject')
 makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	meson . build --prefix /usr
+	arch-meson . build
 	ninja -C build
 }
 
