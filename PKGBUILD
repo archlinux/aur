@@ -5,7 +5,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=5.0.0.231.g74dfa15abe
+pkgver=5.5.0.354.gbcf3e3a284
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ depends=('e2fsprogs' 'gnutls' 'iptables' 'libxml2' 'parted' 'polkit' 'python'
 	 'curl' 'libsasl' 'libgcrypt' 'libgpg-error' 'openssl' 'libxcb' 'gcc-libs'
 	 'iproute2' 'libnl' 'libx11' 'numactl' 'gettext' 'ceph-libs' 'libssh2' 'netcf' 'perl-xml-xpath')
 makedepends=('pkgconfig' 'lvm2' 'linux-api-headers' 'dnsmasq' 'rpcsvc-proto'
-	     'libiscsi' 'perl-xml-xpath' 'libxslt' 'git' 'xhtml-docs')
+	     'libiscsi' 'perl-xml-xpath' 'libxslt' 'git' 'xhtml-docs' 'rsync')
 optdepends=('ebtables: required for default NAT networking'
 	    'dnsmasq: required for default NAT/DHCP for guests'
 	    'bridge-utils: for bridged networking'
