@@ -17,7 +17,16 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
+
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+
+  sed -i -e "s|^\(SyslogIdentifie.*\)|#\1|g" \
+         -e "s|^\(.*=syslog\)|#\1|g" \
+         -e "s|/usr/local/bin|/usr/bin|g" examples/service_scripts/nebula.service
 }
 
 build() {
