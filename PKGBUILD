@@ -6,7 +6,7 @@ url='https://www.wiki.ros.org/actionlib'
 pkgname='ros-melodic-actionlib'
 pkgver='1.12.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -39,7 +39,7 @@ ros_depends=(
 
 depends=(
 	${ros_depends[@]}
-	wxpython
+	python-wxpython
 	boost
 )
 
