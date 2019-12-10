@@ -1,7 +1,7 @@
 pkgbase = ofono-git
 	pkgdesc = Infrastructure for building mobile telephony (GSM/UMTS) applications
 	pkgver = 1.23.r52.g665e9c9a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/ofono
 	arch = x86_64
 	license = GPL2
