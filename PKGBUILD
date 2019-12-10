@@ -1,20 +1,20 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='folding'
 pkgdesc='Combined instrumentation and sampling for instantaneous metric evolution with low overhead (from BSC).'
-pkgver='1.3.2'
-pkgrel='7'
+pkgver='1.3.2.20180801'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('GPL3')
 depends=(boost qt5-base libbsctools r clang python)
 makedepends=(gcc-fortran)
-source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2"
+source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         python3-ports.patch)
 sha512sums=(df54700a1eee506f7b7b8d08f74805d576d1455fe3e31de368d0a98bd3bc7114eef4c32d73462ac9cab2f5a9f273c27cc8538e9cfbf9b044c8ef66d3881a7f3d
             f62af324cfe585605dbdfdb87fa7877cb794ba854c1445193710f22ce3cb92effcfcb7c6b8e32286f927bd0804478580b6358b62f15cba789359862bc0589aa1)
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	# WORKAROUND: The configure/make scripts check if static version (.a) of the libbsctools libraries
 	#             are installed, and fail to detect libbsctools if they aren't.
@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	# NOTE: The following optional features are NOT enabled:
 	# * LaTeX documentation
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	make prefix="$pkgdir/usr/" install
 
