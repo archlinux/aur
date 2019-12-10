@@ -1,0 +1,15 @@
+pkgbase = gcc-arm-none-eabi-bin-49
+	pkgdesc = GNU Tools for ARM Embedded Processors 4.9
+	pkgver = 4.9_2015_q3_update
+	pkgrel = 1
+	url = https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update
+	arch = x86_64
+	license = custom
+	depends = lib32-glibc
+	options = !strip
+	options = staticlibs
+	source = https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-linux.tar.bz2
+	sha256sums = c50078bfbd29e6c15615900e746f4d0acde917338e55860b0f145f57387c12ab
+
+pkgname = gcc-arm-none-eabi-bin-49
+
