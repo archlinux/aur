@@ -1,4 +1,5 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
+# Contributor: Carlo De Pieri <depieri.carlo@gmail.com>
 # Contributor: Tobias Kunze <r@rixx.de>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -23,11 +24,15 @@ optdepends=('sqlite'
             'tk: for tkinter')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         dont-make-libpython-readonly.patch
-        0001-compileall-Fix-ddir-when-recursing.patch)
+        0001-compileall-Fix-ddir-when-recursing.patch
+        0002-smaller-pgo-test-suite.patch
+        )
 sha512sums=('f4f3879881f260f58dbb041fb0f2f210d4b70b02a739e41e50e6fea67d31855a7a29ce4ebef66bfde3d0edf54b946a48f78490f986da965357b835d4dbb3f414'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
-            'ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff')
+            'ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff'
+            '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1'
+            )
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
 prepare() {
@@ -38,6 +43,9 @@ prepare() {
 
   # FS#59997
   patch -p1 -i ../0001-compileall-Fix-ddir-when-recursing.patch
+
+  # Backport https://bugs.python.org/issue36044 to 3.7
+  patch -p1 -i ../0002-smaller-pgo-test-suite.patch
 
   # https://bugs.python.org/issue34587
   sed -i -e "s|testCongestion|disabled_&|" Lib/test/test_socket.py
@@ -85,9 +93,6 @@ build() {
 
 package() {
   cd Python-${pkgver}
-
-  # Hack to avoid building again
-  sed -i 's/^all:.*$/all: build_all/' Makefile
 
   # PGO should be done with -O3
   CFLAGS="${CFLAGS/-O2/-O3}"
