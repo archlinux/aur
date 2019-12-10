@@ -3,7 +3,7 @@
 pkgname=stsauth
 pkgver=0.4.1
 pkgdesc="CLI tool for fetching AWS tokens. Creates a temporary AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY that can be used with cli tools such as awscli, ansible, terraform and more."
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/cshamrick/stsauth"
 license=(MIT)
