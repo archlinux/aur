@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-libbatch
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = http://www.salome-platform.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-python
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = libbatch-2.4.2::git+git://git.salome-platform.org/tools/libbatch.git#tag=V2_4_2
+	sha256sums = SKIP
+
+pkgname = mingw-w64-libbatch
+
