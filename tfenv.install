@@ -1,0 +1,8 @@
+post_upgrade() {
+        if [ -d "/usr/local/lib/tfenv/versions" ]; then
+                echo "Detected old tfenv paths. Moving..."
+                mv /usr/local/lib/tfenv/version{,s} /var/lib/tfenv/
+		rm -r /usr/local/lib/tfenv
+        fi
+}
+
