@@ -1,19 +1,19 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='wxparaver'
 pkgdesc='Expressive powerful and flexible trace visualizer for post-mortem trace analysis (from BSC).'
-pkgver='4.8.2'
-pkgrel='2'
+pkgver='4.8.2.20190930'
+pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(wxgtk3 webkit2gtk boost libxml2 zlib)
-source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-$pkgver-src.tar.bz2"
+source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         "wxParaver.desktop")
 sha512sums=(be4c9eeb22ec05b3aa6f89612a41be80fbd1a87266974a33b35148b401de329f9d0bd6e5bdf313d912d7618bb3eed7313e38511365957c6c173be38b29c2f841
             f1b000ea660765bbd454d9ae54d360233389121e54f8bcab241420b42aefa4f679735500efd43afdcd932f3a7bd339f00ff299f755a62163c1c3e34bd6920f6e)
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	# WORKAROUND: By default, it seems that the wxParaver depends on an existing -kernel/-api installation
 	cd src/wxparaver
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	# Arch's wx-config is named differently for GTK2/GTK3
 	./configure \
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	make DESTDIR="$pkgdir/" install
 
