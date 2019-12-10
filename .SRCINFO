@@ -1,0 +1,19 @@
+pkgbase = sway-alttab-bin
+	pkgdesc = Simple Alt-Tab daemon for SwayWM
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/reisub0/sway-alttab
+	arch = x86_64
+	license = MIT
+	depends = sway
+	depends = gcc-libs
+	depends = glibc
+	source = LICENSE::https://raw.githubusercontent.com/reisub0/sway-alttab/master/LICENSE
+	source = sway-alttab::https://github.com/reisub0/sway-alttab/releases/download/v1.1.0/sway-alttab
+	md5sums = 3c87776c3d12e38215b96b2803959de5
+	md5sums = a3e8212dc2dbf7fe44c5383da698edda
+	sha512sums = 248b3dcdc6d5744d418254681afc46d077ac6cb0395b826b328d6d8867803e2683260a881ef8c283be24890dfa13c55b5137b99c06060f67d4413b4544b39935
+	sha512sums = f217998a2a51d3a472dcd0698debc644536497565f7a72b0bdafc921f3b7d4e13068c71baf6c4574a27fcd5d72f9902ed97cc63115ebf67e0fb6ac2eafc6cf91
+
+pkgname = sway-alttab-bin
+
