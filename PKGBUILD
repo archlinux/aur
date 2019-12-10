@@ -1,7 +1,8 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
+
 pkgname=pymol-git
 _pkgname=pymol
-pkgver=r4456.dc015754
+pkgver=r4593.4948dd0f
 pkgrel=1
 pkgdesc="Molecular visualization system on an Open Source foundation"
 arch=('x86_64')
@@ -14,13 +15,13 @@ optdepends=('python-pmw: pmw based UI'
 			'ffmpeg: MPEG encoding')
 conflicts=('pymol')
 provides=('pymol')
-source=("git+https://github.com/schrodinger/pymol-open-source.git"
-		${_pkgname}.png::"https://c.fsdn.com/allura/p/pymol/icon")
+source=(${pkgname}::'git+https://github.com/schrodinger/pymol-open-source.git'
+		${_pkgname}.png::'https://c.fsdn.com/allura/p/pymol/icon')
 md5sums=('SKIP'
 		 'SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}-open-source/"
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -31,16 +32,16 @@ prepare() {
           --categories="Science;Chemistry"
 
   # suppress non-zero exit code that breaks makepkg
-  sed -i '/sys.exit/ s,2,0,' "${srcdir}/${_pkgname}-open-source/setup.py"
+  sed -i '/sys.exit/ s,2,0,' "${srcdir}/${pkgname}/setup.py"
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-open-source/"
+  cd "${srcdir}/${pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-open-source/"
+  cd "${srcdir}/${pkgname}"
   python setup.py install --prefix=/usr --root="${pkgdir}"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 "${srcdir}/pymol.desktop" "${pkgdir}/usr/share/applications/pymol.desktop"

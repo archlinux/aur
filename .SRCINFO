@@ -1,6 +1,6 @@
 pkgbase = pymol-git
 	pkgdesc = Molecular visualization system on an Open Source foundation
-	pkgver = r4456.dc015754
+	pkgver = r4593.4948dd0f
 	pkgrel = 1
 	url = https://pymol.org/
 	arch = x86_64
