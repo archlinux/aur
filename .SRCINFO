@@ -1,6 +1,6 @@
 pkgbase = emonoda
 	pkgdesc = A set of tools to organize and manage your torrents
-	pkgver = 2.1.27
+	pkgver = 2.1.28
 	pkgrel = 1
 	url = https://github.com/mdevaev/emonoda
 	arch = any
