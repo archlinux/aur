@@ -1,9 +1,10 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Yuanji <self@gimo.me>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-pypdf2
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility to read and write PDFs with Python'
 arch=(any)
 url='https://mstamy2.github.com/PyPDF2'
@@ -21,5 +22,6 @@ build() {
 package(){
   cd PyPDF2-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m755 Scripts/pdfcat "$pkgdir"/usr/bin/pdfcat
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
