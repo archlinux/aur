@@ -1,0 +1,14 @@
+pkgbase = python-profimp
+	pkgdesc = generates tree of import profiles
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/boris-42/profimp
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-pbr
+	source = https://files.pythonhosted.org/packages/source/p/profimp/profimp-0.1.0.tar.gz
+	sha256sums = d18e0145e131092a5d467e3a04a9034064856dfd5e1860ed6354dd844c9e0d54
+
+pkgname = python-profimp
+
