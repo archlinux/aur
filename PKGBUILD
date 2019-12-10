@@ -4,7 +4,7 @@
 
 pkgname=pantheon-lite
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantheon Lite Session (Gala replaced with openbox & picom)'
 arch=('any')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016'
@@ -26,7 +26,7 @@ sha512sums=('1f950c641343e766cdd5b222dcac8f596e197fd5a9e3659a2bfce9da7020cf8575b
             '3f1e515717bca482f4250645845baf73fadee81219684a6f3c5490f1cce48c129c5e0a32df55f26b556298e41545eca4b7d4bdea96556ca42380ff6d79acafbb'
             'd93a0d7ddf70ee10d14b7f1e46257fb432cbfd9fcce7ab3b6bc3443876e0dad6453e0bcda3cf148e0dab47ce5d1d79ae22ef2921bbde46ff7f555a25a1e7bbae'
             '809ba5d0637a0ffbd0506b1b5d7e0500d5e53f06aae27d8180202c4d89d86d43661aac1dd78a3ecc5395385358c61da0b7e82857e41ab2e9be8dc6b56ba81dce'
-            '3c8f56e6722903c4a4ce79ad58c3092023bf5835a59213ccfa5811b6729bcbaa4a65e6d3f86e350eba95706f54c1b90eefcd5fef570518392ac5f91cb6cfe7e8')
+            '01070c3553605e0148cfe67b4f02401c8b8d43084f785f141ccf3735d9a0d56c856c286693f535f3635ce68fb29ea625b9f302fb9c33402a8f7f6a3b2e359244')
 
 package() {
   install -Dm644 {,"${pkgdir}"/usr/share/xsessions/}pantheon-openbox.desktop

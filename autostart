@@ -2,7 +2,7 @@
 [[ -n "$(command -v hsetroot)" ]] && hsetroot -solid "#000000" &
 
 #Pantheon Lite components
-if [[ echo "${XDG_CURRENT_DESKTOP}" == "Pantheon" ]]; then
+if [[ "$(echo ${XDG_CURRENT_DESKTOP})" == "Pantheon" ]]; then
 
   #Start a compositor; kill to reduce resource usage.
   [[ -n "$(command -v picom)" ]] && picom --dbus &
