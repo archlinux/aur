@@ -1,0 +1,17 @@
+Description: Fix inline function declaration without definition
+Author: Simon Richter <sjr@debian.org>
+Last-Update: 2012-12-29
+
+--- libopenusb-1.1.7.orig/src/openusb.h.in
++++ libopenusb-1.1.7/src/openusb.h.in
+@@ -647,8 +647,8 @@ int32_t openusb_set_default_timeout(open
+  *
+  *   Return Values  - Converted data
+  */
+-inline uint16_t openusb_le16_to_cpu(uint16_t data);
+-inline uint32_t openusb_le32_to_cpu(uint32_t data);
++uint16_t openusb_le16_to_cpu(uint16_t data);
++uint32_t openusb_le32_to_cpu(uint32_t data);
+ #define	openusb_cpu_to_le16	openusb_le16_to_cpu
+ #define	openusb_cpu_to_le32	openusb_le32_to_cpu
+ 

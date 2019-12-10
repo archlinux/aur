@@ -1,0 +1,20 @@
+pkgbase = libopenusb
+	pkgdesc = An MT-safe libusb0
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://sourceforge.net/projects/openusb
+	arch = x86_64
+	license = LGPL
+	makedepends = systemd
+	depends = glibc
+	depends = systemd-libs
+	provides = libopenusb.so
+	source = https://master.dl.sourceforge.net/project/openusb/libopenusb/libopenusb-1.1.11/libopenusb-1.1.11.tar.gz
+	source = fix-parallel-builds-of-documentation.patch
+	source = fix-inline-function-declariation-without-definition.patch
+	md5sums = a9dc01c88db0c6688fc92cf7ae0eb9ca
+	md5sums = 657348a9113f2dfe39a2ac687d5d0237
+	md5sums = f5ab870d39e8bda7e677e824d292e7ed
+
+pkgname = libopenusb
+

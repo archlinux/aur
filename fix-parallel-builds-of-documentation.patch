@@ -1,0 +1,37 @@
+Description: Fix parallel builds of documentation
+Author: Simon Richter <sjr@debian.org>
+Last-Update: 2012-12-28
+
+--- libopenusb-1.1.7.orig/doc/Makefile.am
++++ libopenusb-1.1.7/doc/Makefile.am
+@@ -34,11 +34,10 @@ manual.ps.gz: $(xml_files) website.dsl
+ 	gzip manual.ps
+ 
+ html/index.html: $(xml_files) website.dsl
+-	rm -rf html
+-	mkdir html
++	mkdir -p html
+ 	@JADE@ -t xml -d website.dsl\#html $(XMLDCL) manual.xml
+ 
+ html/openusb_guide.html: $(xml_files) website.dsl
+-	test -d html || mkdir html
++	mkdir -p html
+ 	@JADE@ -V nochunks -t xml -d website.dsl\#html $(XMLDCL) manual.xml > html/openusb_guide.html
+ 
+--- libopenusb-1.1.7.orig/doc/Makefile.in
++++ libopenusb-1.1.7/doc/Makefile.in
+@@ -411,12 +411,11 @@ manual.ps.gz: $(xml_files) website.dsl
+ 	gzip manual.ps
+ 
+ html/index.html: $(xml_files) website.dsl
+-	rm -rf html
+-	mkdir html
++	mkdir -p html
+ 	@JADE@ -t xml -d website.dsl\#html $(XMLDCL) manual.xml
+ 
+ html/openusb_guide.html: $(xml_files) website.dsl
+-	test -d html || mkdir html
++	mkdir -p html
+ 	@JADE@ -V nochunks -t xml -d website.dsl\#html $(XMLDCL) manual.xml > html/openusb_guide.html
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
