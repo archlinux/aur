@@ -1,7 +1,7 @@
 pkgbase = gcc-arm-none-eabi-bin-49
 	pkgdesc = GNU Tools for ARM Embedded Processors 4.9
 	pkgver = 4.9_2015_q3_update
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update
 	arch = x86_64
 	license = custom
