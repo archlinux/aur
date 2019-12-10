@@ -1,9 +1,10 @@
-# Maintainer: zer0def <zer0def on freenode>
+# Maintainer: zer0def <zer0def@github>
 pkgname=signald-git
 pkgver=0.8.1.r1.3faee48
-pkgrel=1
+pkgrel=2
 pkgdesc='An unofficial daemon that facilitates communication with the Signal messaging app.'
-url='https://git.callpipe.com/finn/signald'
+#url='https://git.callpipe.com/finn/signald'
+url='https://gitlab.com/thefinn93/signald'
 license=('GPL3')
 arch=('any')
 makedepends=('git' 'java-environment-openjdk' 'gradle')

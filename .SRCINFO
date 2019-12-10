@@ -1,8 +1,8 @@
 pkgbase = signald-git
 	pkgdesc = An unofficial daemon that facilitates communication with the Signal messaging app.
 	pkgver = 0.8.1.r1.3faee48
-	pkgrel = 1
-	url = https://git.callpipe.com/finn/signald
+	pkgrel = 2
+	url = https://gitlab.com/thefinn93/signald
 	install = signald-git.install
 	arch = any
 	license = GPL3
