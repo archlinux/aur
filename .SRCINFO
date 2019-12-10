@@ -1,7 +1,7 @@
 pkgbase = starship
 	pkgdesc = The cross-shell prompt for astronauts
 	pkgver = 0.28.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://starship.rs/
 	arch = x86_64
 	license = ISC
