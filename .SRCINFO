@@ -13,6 +13,7 @@ pkgbase = teams-insiders
 	depends = nss
 	depends = glibc>=2.28-4
 	optdepends = gnome-keyring
+	conflicts = teams
 	noextract = teams-insiders_1.2.00.32955_amd64.deb
 	source = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_1.2.00.32955_amd64.deb
 	sha256sums = 91051626448368d971fabb4ac9ce94fa378ce32764dca99311341c46a01d5e28
