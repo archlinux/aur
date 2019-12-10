@@ -1,8 +1,8 @@
 # Maintainer: Rodrigo Gryzinski <rogryza@gmail.com>
 
 pkgname='spotify-tui-bin'
-pkgver=v0.10.0
-pkgrel=1
+pkgver=0.10.0
+pkgrel=2
 pkgdesc="Spotify client for the terminal written in Rust"
 arch=('x86_64')
 url='https://github.com/Rigellute/spotify-tui'
