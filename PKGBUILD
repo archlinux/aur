@@ -2,9 +2,9 @@
 
 pkgname=cuberite
 _pkgver=1.12
-_build_i686=1035
-_build_x86_64=1060
-_build_arm=1017
+_build_i686=1036
+_build_x86_64=1061
+_build_arm=1018
 pkgver="${_pkgver}b${_build_x86_64}"
 pkgrel=1
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
@@ -30,9 +30,9 @@ sha512sums=('4a84419f3a532d2c34cef0a77cd30dded10a771b9d89e7d9d2b2af18808ff037dba
             'afc35227b91bc302e095c84c30ee85114e4b97220e8ee6acf8e7250306bee969e2cd4d57b4d2afd1e43298b32fc7ecaa543bdf6fead8c0f218cfc37aa51b524e'
             '9282301a67a612a4b757324274b6deea16d57e919b3c367a92414d7b74fe0ec4f5e54748ccf0ff14f6c62e8dbc5cb211afebfff8ad5abe63945afccf9484378f'
             '7e762bf68cb77eeb87c6221d4977198b70c86c842480301b8088a963a73bccbd2eeac84fab9fd82bf1b75c3743145a58500cb49e93de345e7b40912e14f57b5b')
-sha512sums_i686=('698ca52e0650a6e10ae0c83034d1e916e66c70f40a6c62378cfab949e29988c0a6fe0fc69e2e3c1bfbb48d5f40c04c2caff01e8841c9a67f22b63a5dc8787907')
-sha512sums_x86_64=('7389dc521f4837b22cfc47dd00e50bce7f1ff0062ef025cf8f41f0e5b46b8e6d17140f159787b43fa05d5861fee261f858ffce2af09cce74cb5ad8fbf98c2056')
-sha512sums_armv7h=('ed0514f776757ecc3aa186351aefd7c8e4a0d92d46a53021a40296fbeb1c7be5dea2ba26df679941b5d0992e54e496729826efda393e8dd8c6a5f7209d645873')
+sha512sums_i686=('f3e416da4ed2b5758d70674e1fb38f45020ddf17ccb29bcfee96781370d5a49cf74f3ac4c738d7416834f8c1586c13bde89f9721f9f129880357cc90ac8c13ff')
+sha512sums_x86_64=('22e136aaa81bbccb8e6e42fc48474dbe37b84984bd8b2c5d6ceb1fdce3d96c29bf62fbffa871b3a38c33691de94406b5205abd6f199fa0904cd785157a41f578')
+sha512sums_armv7h=('2012beecb970d6879ac7d8b8ffe74a6f183da6ae193154130d8a26f10f7dc59f53d50016108f54ae727a442adea6ab07293ba25ead1724cc38238c218b069378')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
