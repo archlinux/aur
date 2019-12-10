@@ -169,6 +169,7 @@ build() {
     git config submodule.3rdparty/wiiuse.url $srcdir/wiiuse
     git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
     git config submodule.3rdparty/rubberband.url $srcdir/rubberband
+    git config submodule.3rdparty/Flicks.url $srcdir/Flicks
     git config submodule.CMake/cmake-modules.url $srcdir/cmake-modules
   )
 
