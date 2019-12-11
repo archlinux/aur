@@ -1,16 +1,16 @@
 pkgbase = ruby-json
 	pkgdesc = This is a JSON implementation as a Ruby extension in C
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://rubygems.org/gems/json
 	arch = x86_64
 	license = Ruby
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = json-2.2.0.gem
+	noextract = json-2.3.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/json-2.2.0.gem
-	sha256sums = 9dd1437156773f72c096058ec837faac1b00077121a3fd574e68f895ea3aa96b
+	source = https://rubygems.org/downloads/json-2.3.0.gem
+	sha256sums = b61691fd2087ac37141b75ff4287ce2c3f17251c713e97ef73b43b4bb2e0355b
 
 pkgname = ruby-json
 
