@@ -1,7 +1,7 @@
-pkgbase=('python-gmusicapi-git')
-pkgname=('python-gmusicapi-git')
+#Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
-pkgver='11.0.0'
+pkgname='python-gmusicapi-git'
+pkgver=12.1.1.r3.g57f84b6
 pkgrel=1
 pkgdesc="An unofficial api for Google Play Music."
 
@@ -27,11 +27,17 @@ depends=(
     'python-protobuf>=3.0.0'
     'python-decorator>=3.3.1'
 )
+
 makedepends=('python-setuptools' 'git')
 license=('BSD')
 arch=('any')
-source=("${pkgname}::git+$url#tag=${_gitver}")
+source=("${pkgname}::git+$url")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd "${pkgname}"

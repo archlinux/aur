@@ -1,6 +1,6 @@
 pkgbase = python-gmusicapi-git
 	pkgdesc = An unofficial api for Google Play Music.
-	pkgver = 11.0.0
+	pkgver = 12.1.1.r3.g57f84b6
 	pkgrel = 1
 	url = https://github.com/simon-weber/gmusicapi
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-gmusicapi-git
 	depends = python-protobuf>=3.0.0
 	depends = python-decorator>=3.3.1
 	provides = python-gmusicapi
-	source = python-gmusicapi-git::git+https://github.com/simon-weber/gmusicapi#tag=11.0.0
+	source = python-gmusicapi-git::git+https://github.com/simon-weber/gmusicapi
 	sha256sums = SKIP
 
 pkgname = python-gmusicapi-git
