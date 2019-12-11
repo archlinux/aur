@@ -1,7 +1,7 @@
 pkgname=mingw-w64-libbatch
 pkgver=2.4.2
 pkgrel=1
-pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
+pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - libBatch library"
 url="http://www.salome-platform.org"
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')

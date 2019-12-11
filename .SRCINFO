@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-libbatch
-	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module
+	pkgdesc = Generic platform for Pre and Post-Processing for numerical simulation - libBatch library
 	pkgver = 2.4.2
 	pkgrel = 1
 	url = http://www.salome-platform.org
