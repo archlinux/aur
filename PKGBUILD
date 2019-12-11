@@ -4,7 +4,7 @@
 pkgname=nushell
 cargoname=nu
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 makedepends=('rustup')
 depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
@@ -28,5 +28,6 @@ package() {
 	--locked \
 	--root "${pkgdir}"/usr \
 	--path "./" 
+  rm "${pkgdir}"/usr/.crates.toml
 }
 
