@@ -2,7 +2,7 @@
 # Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
 pkgname=python-liquidctl-rc
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=()
 provides=(python-liquidctl)
 conflicts=(python-liquidctl)
 source=("https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-${pkgver}.tar.gz")
-sha256sums=('6092a6fae477908c80adc825b290e39f0b26e604593884da23d40e892e553309')
+sha256sums=('bb742947c15f4a3987685641c0dd73184c4a40add5ad818ced68e5ace3631b6b')
 
 build() {
   cd "${srcdir}/liquidctl-${pkgver}"
