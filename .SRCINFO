@@ -12,6 +12,7 @@ pkgbase = chamfer-git
 	makedepends = shaderc
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
+	depends = xcb-util-cursor
 	depends = glm
 	depends = vulkan-icd-loader
 	depends = boost
