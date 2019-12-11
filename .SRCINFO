@@ -1,7 +1,7 @@
 pkgbase = franz-bin
 	pkgdesc = Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://meetfranz.com
 	arch = x86_64
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = franz-bin
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	optdepends = gnome-keyring
+	optdepends = org.freedesktop.secrets
 	conflicts = franz
 	options = !strip
 	options = !emptydirs

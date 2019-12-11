@@ -3,13 +3,13 @@
 
 pkgname=franz-bin
 pkgver=5.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Franz is a free messaging app for services like WhatsApp, Slack, Messenger and many more'
 arch=('x86_64')
 url='https://meetfranz.com'
 license=('Apache')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
-optdepends=('gnome-keyring')
+optdepends=('org.freedesktop.secrets')
 conflicts=('franz')
 options=('!strip' '!emptydirs')
 source=("https://github.com/meetfranz/franz/releases/download/v${pkgver//_/-}/franz_${pkgver//_/-}_amd64.deb"
