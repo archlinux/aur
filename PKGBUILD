@@ -1,8 +1,8 @@
 # Maintainer: dncrash <dncrash at gmail dot com>
 
 pkgname="molecule"
-pkgver=2.20.2
-pkgrel=3
+pkgver=3.0a4
+pkgrel=1
 pkgdesc='aids in the development and testing of Ansible roles.'
 url='https://github.com/metacloud/molecule'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=('python-docker: docker driver'
             'python-vagrant: vagrant driver'
             'python-shade: openstack driver')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/metacloud/molecule/archive/${pkgver}.tar.gz")
-sha256sums=('e8e466e7d84e89f2580141fdd9ce061de3f235829a4f67206e6e2013468b2833')
+sha256sums=('7b81fcb7816639426c619d10b2a768913f7d5152340df7fb2277ef84482551e6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -56,7 +56,7 @@ package() {
   export PBR_VERSION="${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp -R molecule/cookiecutter "${pkgdir}/usr/lib/python3.7/site-packages/${pkgname}"
+  cp -R molecule/cookiecutter "${pkgdir}/usr/lib/python3.8/site-packages/${pkgname}"
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
