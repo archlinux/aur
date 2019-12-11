@@ -1,8 +1,8 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-pyscipopt')
+pkgbase='python-pyscipopt'
 pkgname=('python-pyscipopt' 'python2-pyscipopt')
-pkgver=2.1.5
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='A Python Interface to the SCIP Optimization Suite.'
 arch=('any')
@@ -28,4 +28,4 @@ package_python2-pyscipopt() {
 	python2 setup.py install --root=${pkgdir} --optimize=1
 }
 
-md5sums=('6b9336652fa350fb682298cb3034f006')
+md5sums=('d0ba7042aec3c8f246b74034ef42656a')
