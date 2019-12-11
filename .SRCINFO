@@ -1,8 +1,8 @@
 pkgbase = teams
 	pkgdesc = Microsoft Teams for Linux is your chat-centered workspace in Office 365
 	pkgver = 1.2.00.32451
-	pkgrel = 2
-	url = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams
+	pkgrel = 3
+	url = https://teams.microsoft.com/downloads
 	arch = x86_64
 	license = custom
 	depends = gtk3
@@ -13,7 +13,9 @@ pkgbase = teams
 	depends = nss
 	depends = glibc>=2.28-4
 	optdepends = org.freedesktop.secrets
+	conflicts = ms-teams
 	conflicts = teams-insiders
+	replaces = ms-teams
 	noextract = teams_1.2.00.32451_amd64.deb
 	source = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.2.00.32451_amd64.deb
 	sha256sums = 28d8a0e644a4bb9d4ee9295953b97b7fa6558b8a9d1d28363a594f5cde1c05dc
