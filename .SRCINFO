@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-cache_purge
 	pkgdesc = Nginx mainline module with ability to purge content from FastCGI, proxy, SCGI and uWSGI caches
 	pkgver = 2.5
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/nginx-modules/ngx_cache_purge
 	arch = i686
 	arch = x86_64
