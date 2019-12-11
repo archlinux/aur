@@ -4,3 +4,4 @@ src
 *.log
 *.tar.gz
 *.pkg.tar.xz
+*.pkg.tar.zst
