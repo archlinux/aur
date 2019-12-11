@@ -3,7 +3,7 @@
 
 pkgname=waterfox-classic-bin
 pkgver=2019.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy oriented Firefox fork."
 arch=('x86_64')
 url="https://www.waterfoxproject.org"
@@ -24,10 +24,10 @@ package() {
 
     # Install the desktop and the icon files.
     install -m644 "${srcdir}"/waterfox-classic.desktop "${pkgdir}"/usr/share/applications/
-    install -m644 "${srcdir}"/waterfox/browser/chrome/icons/default/default128.png "${pkgdir}"/usr/share/pixmaps/waterfox-classic-icon.png
+    install -m644 "${srcdir}"/waterfox-classic/browser/chrome/icons/default/default128.png "${pkgdir}"/usr/share/pixmaps/waterfox-classic-icon.png
 
     # Copy the directory to /opt
-    cp -r waterfox "${pkgdir}"/opt/waterfox-classic
+    cp -r waterfox-classic "${pkgdir}"/opt/waterfox-classic
 
     # Symlink the binary to /usr/bin
     ln -s /opt/waterfox-classic/waterfox "${pkgdir}"/usr/bin/waterfox-classic
