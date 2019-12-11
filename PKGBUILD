@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=welle.io-soapysdr
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy (including SoapySDR)"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("cmake" "gcc")
 provides=("${pkgname%-soapysdr}")
 conflicts=("${pkgname%-soapysdr}")
 source=("${pkgname%-soapysdr}-${pkgver}.tar.gz::https://github.com/AlbrechtL/${pkgname%-soapysdr}/archive/v${pkgver}.tar.gz")
-sha256sums=("abfe999b6788ae57dfaaebea5e1db912565d60cc287c9eec4636b0e10eab4f9d")
+sha256sums=("ff7aa2e7f96b647ea8495209f483e726b7219c825a2699f4871986a7b0dd303a")
 
 build() {
   mkdir -p "${srcdir}/${pkgname%-soapysdr}-${pkgver}/build"
