@@ -1,7 +1,7 @@
 pkgbase = dropbox-cli
 	pkgdesc = Command line interface for Dropbox
 	pkgver = 2019.02.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dropbox.com
 	install = dropbox-cli.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dropbox-cli
 	depends = dropbox
 	depends = python
 	source = dropbox-cli-2019.02.14.py::https://linux.dropbox.com/packages/dropbox.py
-	sha256sums = 6a0288ca53c65c525e7efd30a3b89e2219ac41d1a66fe8e8ac64c3320de69929
+	sha256sums = 7490de2dd5666d2300624b4fd7fe45e4ad7c7bdf4e7d0c51fe83bfae65052945
 
 pkgname = dropbox-cli
 
