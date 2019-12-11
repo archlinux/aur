@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-headers-more
 pkgver=0.33
-pkgrel=22
+pkgrel=23
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.4
