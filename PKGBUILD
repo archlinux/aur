@@ -3,14 +3,14 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin-git
-pkgver=10.3.7.r489.g7203f463f4
+pkgver=10.4.0.r304.gf1fc6ef59f
 pkgrel=1
 pkgdesc='The Free Software Media Browser'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('dotnet-runtime' 'ffmpeg' 'sqlite')
-makedepends=('git' 'dotnet-sdk')
+depends=('dotnet-runtime>=3' 'aspnet-runtime>=3' 'ffmpeg' 'sqlite')
+makedepends=('git' 'dotnet-sdk>=3' 'yarn')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
@@ -33,13 +33,14 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd jellyfin
-  ln -sf "$srcdir"/jellyfin-web/src ./MediaBrowser.WebDashboard/jellyfin-web
-}
-
 build(){
-  cd jellyfin
+  cd jellyfin-web
+
+  yarn install
+
+  cp -r dist/. "$srcdir"/jellyfin/MediaBrowser.WebDashboard/jellyfin-web
+
+  cd ../jellyfin
 
   # Disable dotnet telemetry
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
