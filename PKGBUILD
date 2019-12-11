@@ -1,7 +1,7 @@
 # Maintainer: kXuan <kxuanobj@gmail.com>
 
 pkgname=envoyproxy
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('bazel' 'cmake' 'git' 'go' 'ninja' 'perl' 'python')
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
 )
-sha512sums=('5308d8b46b6ff64aa2d6665878c67eda99af16fbb8f93cd93547d1a898108c9d8d171bfd10fa555a8c4b9bd7860b168dde5d6f85659bf5017b8f37e121c53d95')
+sha512sums=('883f6b27929d1807d968f8ba97b6931dbbe60ba2761e1af663ed7839889c153c6410867883bc97ba481f40162ea96e66f9505b042cd6ae6dacece653513e0e43')
 
 prepare() {
   cd "envoy-$pkgver"
