@@ -1,7 +1,7 @@
 pkgbase = alilang
-	pkgdesc = Alilang
+	pkgdesc = Alilang is an integrated software for access to Alibaba intranet. https://alilang.alibaba-inc.com/portal/help.htm?language=en
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://alilang.alibaba-inc.com
 	install = alilang.install
 	arch = x86_64

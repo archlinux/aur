@@ -2,8 +2,8 @@
 pkgname=alilang
 _pkgname=${pkgname//-/_}
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Alilang"
+pkgrel=3
+pkgdesc="Alilang is an integrated software for access to Alibaba intranet. https://alilang.alibaba-inc.com/portal/help.htm?language=en"
 arch=('x86_64')
 url="https://alilang.alibaba-inc.com"
 license=('none')
