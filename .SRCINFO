@@ -1,6 +1,6 @@
 pkgbase = uftrace
 	pkgdesc = Tool to trace and analyze execution of a program written in C/C++
-	pkgver = 0.9
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/namhyung/uftrace
 	arch = armv6h
@@ -8,9 +8,16 @@ pkgbase = uftrace
 	arch = aarch64
 	arch = x86_64
 	license = GPL2
+	makedepends = pandoc
+	depends = libelf
+	depends = python2
+	depends = ncurses
+	depends = pkgconf
+	depends = luajit
+	depends = capstone
 	options = !emptydirs
-	source = git+https://github.com/namhyung/uftrace.git#tag=v0.9
-	md5sums = SKIP
+	source = git+https://github.com/namhyung/uftrace.git#tag=v0.9.3
+	sha256sums = SKIP
 
 pkgname = uftrace
 

@@ -1,14 +1,14 @@
 # Maintainer: YOUNG HO CHA <ganadist@gmail.com>
 pkgname=uftrace
-pkgver=0.9
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Tool to trace and analyze execution of a program written in C/C++"
 arch=(armv6h armv7h aarch64 x86_64)
 url="https://github.com/namhyung/uftrace"
 license=('GPL2')
 groups=()
-depends=()
-makedepends=()
+depends=(libelf python2 ncurses pkgconf luajit capstone)
+makedepends=(pandoc)
 optdepends=()
 provides=()
 conflicts=()
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("git+https://github.com/namhyung/$pkgname.git#tag=v$pkgver")
 noextract=()
-md5sums=('SKIP') #autofill using updpkgsums
+sha256sums=('SKIP')
 
 build() {
   mkdir -p "$pkgname"/build
