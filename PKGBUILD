@@ -1,7 +1,7 @@
 # Maintainer: kusakata <shohei atmark kusakata period com>
 
 pkgname=formiko-git
-pkgver=1.3.0.1.g2bc545c
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="reStructuredText editor and live previewer"
 url="https://github.com/ondratu/formiko"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 	    
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | tr - .
+  git describe --tags | sed 's+-+.r+'|tr - .
 }
 
 package() {
