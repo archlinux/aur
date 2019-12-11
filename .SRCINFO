@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-memc
 	pkgdesc = Extended version of the standard memcached module for mainline nginx
 	pkgver = 0.19
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/openresty/memc-nginx-module
 	arch = i686
 	arch = x86_64

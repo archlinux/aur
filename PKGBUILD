@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-memc
 pkgver=0.19
-pkgrel=13
+pkgrel=14
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.4
