@@ -13,7 +13,7 @@ optdepends=('bash-completion: command-line autocomplete with bash')
 source=("https://github.com/tdewolff/minify/releases/download/v${pkgver}/minify_${pkgver}_linux_amd64.tar.gz"
         "https://raw.githubusercontent.com/tdewolff/minify/master/cmd/minify/minify_bash_tab_completion")
 sha256sums=('e936a81d5fa8f44907298116f8bca9c4c3dca0d51c055ae0f97d43b67cafacda'
-            '25f25a205ca071471daab6b1c8eeb16e0b1c8609844b158b85c76344eb4bbc31')
+            '2410022ab77254225eb11ac34f4ee473aaa0d8add7d868e2a22af5964f89f1cf')
 
 package() {
   install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
