@@ -1,14 +1,14 @@
 pkgbase = tsuru
 	pkgdesc = Command-line tool for application developers managing apps, services or workloads through Tsuru.
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/tsuru/tsuru-client
 	arch = any
 	license = BSD
 	makedepends = go
-	provides = tsuru=1.7.3
-	source = tsuru-client.tar.gz::https://github.com/tsuru/tsuru-client/archive/1.7.3.tar.gz
-	sha256sums = 9e8adceba8d4f65df120f27be474cb4602e757920a5cc1c6bc4ddaa09d58ec02
+	provides = tsuru=1.7.4
+	source = tsuru-client.tar.gz::https://github.com/tsuru/tsuru-client/archive/1.7.4.tar.gz
+	sha256sums = 5f5d5367780cca4f27531ed18e5ffdd1824a86764946f8652d1e13722ca1a9fb
 
 pkgname = tsuru
 
