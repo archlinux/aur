@@ -2,13 +2,13 @@
 
 pkgname=sysdig-inspect
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful opensource interface for container troubleshooting and security investigation"
 arch=('x86_64')
 url="https://github.com/draios/sysdig-inspect"
 license=('custom')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libsecret' 'libxss' 'libxtst' 'nss')
-optdepends=('gnome-keyring')
+optdepends=('org.freedesktop.secrets')
 source=("https://download.sysdig.com/stable/sysdig-inspect/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('1e7cee08fef190c4041c193ee28c740dc33344c5a69c7fc1e08a6181b7bd9b5c')
