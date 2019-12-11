@@ -2,7 +2,7 @@
 
 pkgname=slimbookbattery
 pkgver=3.10beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Slimbook Battery. Is a battery optimization application for portable devices that can increase the battery life by 50%. For this purpose, the third-party software (TLP and others) is used to manage and configure the system resources."
 arch=('any')
 url="http://slimbook.es"
