@@ -2,13 +2,13 @@
 
 pkgname=mongodb-compass
 pkgver=1.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The MongoDB GUI"
 arch=('x86_64')
 url="https://www.mongodb.com/products/compass"
 license=('custom')
-depends=('alsa-lib' 'gtk2' 'libsecret' 'libxss' 'libxtst' 'nss')
-optdepends=('gnome-keyring')
+depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
+optdepends=('org.freedesktop.secrets')
 source=("https://downloads.mongodb.com/compass/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('6a870b63bed19ce04cefdd18fde2c0b4f2e96d10afdf246b50cd0e405e1fc66c')
