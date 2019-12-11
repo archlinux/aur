@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-memc
 pkgver=0.19
-pkgrel=14
+pkgrel=15
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.17.4
+_nginxver=1.17.6
 
 pkgdesc='Extended version of the standard memcached module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('62854b365e66670ef4f1f8cc79124f914551444da974207cd5fe22d85710e555'
+sha256sums=('3cb4a5314dc0ab0a4e8a7b51ae17c027133417a45cc6c5a96e3dd80141c237b6'
             'SKIP'
             '8c2bdbe875e4f5225d0778bfb09a2668f9281d7de6218c7b462a7ba2cee06fe8')
 
