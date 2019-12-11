@@ -1,15 +1,15 @@
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
-_pkgname=tale
+_pkgname=talk-cli
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r13.g8cea41d
+pkgver=0.0.9.r0.g64530cc
 pkgrel=1
-pkgdesc="An experimental version control system."
+pkgdesc="A command line interface for using Nextcloud Talk."
 arch=('i686' 'x86_64')
-url="https://gitlab.com/severinkaderli/tale"
+url="https://gitlab.com/severinkaderli/talk-cli"
 license=('MIT')
-makedepends=('maven' 'git' 'graal-native-image-bin')
-conflicts=('tale')
-source=('git+https://gitlab.com/severinkaderli/tale')
+makedepends=('cargo' 'git')
+conflicts=('talk-cli')
+source=('git+https://gitlab.com/severinkaderli/talk-cli')
 md5sums=('SKIP')
 
 pkgver() {
@@ -19,12 +19,17 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    JAVA_HOME="/usr/lib/jvm/java-8-graal/" mvn -Dmaven.test.skip=true package
+    cargo build --release --locked
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dm755 "target/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"   
+    install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+    install -Dm644 "target/completions/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+    install -Dm644 "target/completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+    install -Dm644 "target/completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/completions/${_pkgname}.fish"
+    
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
