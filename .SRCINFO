@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass
 	pkgdesc = The MongoDB GUI
-	pkgver = 1.19.12
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mongodb-compass
 	depends = libxtst
 	depends = nss
 	optdepends = gnome-keyring
-	noextract = mongodb-compass_1.19.12_amd64.deb
-	source = https://downloads.mongodb.com/compass/mongodb-compass_1.19.12_amd64.deb
-	sha256sums = 606229cf6ca29e670eb83ac66275454f8690c860dca61dbe04f34bb99cc50a88
+	noextract = mongodb-compass_1.20.1_amd64.deb
+	source = https://downloads.mongodb.com/compass/mongodb-compass_1.20.1_amd64.deb
+	sha256sums = 6a870b63bed19ce04cefdd18fde2c0b4f2e96d10afdf246b50cd0e405e1fc66c
 
 pkgname = mongodb-compass
 
