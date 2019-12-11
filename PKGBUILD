@@ -4,7 +4,7 @@ VERSION=3.3
 
 pkgname=${TXT2TAGS}3
 pkgver=$VERSION.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A text formatting and conversion tool - New version 3"
 arch=('any')
@@ -22,6 +22,6 @@ check() {
 
 package() {
 	cd "$srcdir/$TXT2TAGS-$VERSION"
-	python3 setup.py install
+	python3 setup.py install --root="$pkgdir/"
 }
 

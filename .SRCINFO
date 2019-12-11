@@ -1,7 +1,7 @@
 pkgbase = txt2tags3
 	pkgdesc = A text formatting and conversion tool - New version 3
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jendrikseipp/txt2tags
 	arch = any
 	license = GPL
