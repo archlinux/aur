@@ -2,7 +2,7 @@
 pkgname=alilang
 _pkgname=${pkgname//-/_}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Alilang"
 arch=('x86_64')
 url="https://alilang.alibaba-inc.com"

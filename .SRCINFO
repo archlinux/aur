@@ -1,13 +1,13 @@
 pkgbase = alilang
 	pkgdesc = Alilang
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alilang.alibaba-inc.com
 	install = alilang.install
 	arch = x86_64
 	license = none
-	depends = gksu
 	depends = qtwebkit
+	depends = openssl
 	source = https://alilang.alibaba-inc.com/alilang/alilang.deb
 	md5sums = 05c59383a8c7c8f27f55ccd37c7e3558
 
