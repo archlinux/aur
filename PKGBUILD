@@ -1,10 +1,10 @@
-# Maintainer: Fraser P. Newton <fpnewton90 at gmail dot com>
+# Maintainer: Fraser P. Newton <fpnewton90@gmail.com>
 
 pkgname=moonlight-embedded-git
-pkgver=2.4.7.498.212eac6
+pkgver=2.4.10.522.ecf09e8
 pkgrel=1
 pkgdesc="Gamestream client for embedded devices"
-arch=('armv6h' 'armv7h')
+arch=('armv6h' 'armv7h' 'x86_64')
 url="https://github.com/irtimmer/moonlight-embedded"
 license=('GPL')
 depends=('curl' 'avahi' 'curl' 'libevdev' 'enet' 'ffmpeg')
