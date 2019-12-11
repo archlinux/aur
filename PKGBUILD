@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-ndk
 pkgver=0.3.0
-pkgrel=32
+pkgrel=33
 
 _modname="ngx_devel_kit"
 _nginxver=1.17.4

@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-ndk
 	pkgdesc = Module for mainline nginx that adds generic tools that module developers can use
 	pkgver = 0.3.0
-	pkgrel = 32
+	pkgrel = 33
 	url = https://github.com/simpl/ngx_devel_kit
 	arch = i686
 	arch = x86_64
