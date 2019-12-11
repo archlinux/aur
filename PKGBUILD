@@ -1,0 +1,59 @@
+# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Contributer: Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=openssl-weak-ciphers
+_pkgname=openssl
+_ver=1.1.1d
+# use a pacman compatible version scheme
+pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+pkgrel=1
+pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with weak ciphers enabled)'
+arch=('x86_64')
+url='https://www.openssl.org'
+license=('custom:BSD')
+depends=('perl')
+optdepends=('ca-certificates')
+provides=("openssl=$pkgver")
+conflicts=('openssl')
+backup=('etc/ssl/openssl.cnf')
+source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
+        'ca-dir.patch')
+sha256sums=('1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2'
+            'SKIP'
+            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+
+prepare() {
+	cd "$srcdir/$_pkgname-$_ver"
+
+	# set ca dir to /etc/ssl by default
+	patch -p0 -i "$srcdir/ca-dir.patch"
+}
+
+build() {
+	cd "$srcdir/$_pkgname-$_ver"
+
+	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
+	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
+		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 enable-weak-ssl-ciphers \
+		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+
+	make depend
+	make
+}
+
+check() {
+	cd "$srcdir/$_pkgname-$_ver"
+	# the test fails due to missing write permissions in /etc/ssl
+	# revert this patch for make test
+	patch -p0 -R -i "$srcdir/ca-dir.patch"
+	make test
+	patch -p0 -i "$srcdir/ca-dir.patch"
+}
+
+package() {
+	cd "$srcdir/$_pkgname-$_ver"
+	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
