@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-ndk-set-misc
 	pkgdesc = Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)
 	pkgver = 0.31+0.3.0
-	pkgrel = 32
+	pkgrel = 33
 	url = https://github.com/openresty/set-misc-nginx-module
 	arch = i686
 	arch = x86_64
