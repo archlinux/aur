@@ -6,10 +6,13 @@ _nginxver=1.17.6
 
 pkgname=nginx-mainline-mod-brotli-git
 pkgver=r43.e505dce
-pkgrel=2
+pkgrel=1
 pkgdesc="Brotli compression filter module for mainline nginx"
 arch=('i686' 'x86_64')
 depends=("nginx-mainline=$_nginxver" 'brotli')
+makedepends=('git')
+provides=('nginx-mainline-mod-brotli')
+conflicts=('nginx-mainline-mod-brotli')
 url="https://github.com/google/ngx_brotli"
 license=('CUSTOM')
 

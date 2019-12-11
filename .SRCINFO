@@ -1,13 +1,16 @@
 pkgbase = nginx-mainline-mod-brotli-git
 	pkgdesc = Brotli compression filter module for mainline nginx
 	pkgver = r43.e505dce
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/google/ngx_brotli
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
+	makedepends = git
 	depends = nginx-mainline=1.17.6
 	depends = brotli
+	provides = nginx-mainline-mod-brotli
+	conflicts = nginx-mainline-mod-brotli
 	source = https://nginx.org/download/nginx-1.17.6.tar.gz
 	source = https://nginx.org/download/nginx-1.17.6.tar.gz.asc
 	source = ngx_brotli::git+https://github.com/google/ngx_brotli.git
