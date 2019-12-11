@@ -1,8 +1,8 @@
 pkgbase = libxc
-	pkgdesc = library of exchange-correlation functionals for density-functional theory
+	pkgdesc = A library of exchange-correlation functionals for density-functional theory
 	pkgver = 4.3.4
-	pkgrel = 3
-	url = http://www.tddft.org/programs/octopus/wiki/index.php/Libxc
+	pkgrel = 4
+	url = https://www.tddft.org/programs/libxc
 	arch = i686
 	arch = x86_64
 	license = MPL2
