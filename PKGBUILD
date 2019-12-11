@@ -3,7 +3,7 @@
 _pkgname=neurdflib
 pkgname=python-$_pkgname
 _name=${pkgname#python-}
-pkgver=5.0.0.post1
+pkgver=5.0.1
 pkgrel=2
 pkgdesc="Temporary package from nipype waiting for merge into the primary rdflib repo"
 url="https://github.com/RDFLib/rdflib/pull/649"
@@ -12,9 +12,9 @@ license=('BSD')
 depends=('python')
 provides=("python-neurdflib")
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/fb/ab/a2b0b79bd532b93acc8012fc032c0b56cbbc2fdba02816d82fa8c6fccf2e/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('65ef138f7a20f646b5257d312e14c624a83abdac4df234e5edcc77dc63bef5e1')
+source=("https://files.pythonhosted.org/packages/ef/3f/1bd3f7cbebd2707bde56f99d2df62d771470dce52f8142d3c4cecde3dd34/${_pkgname}-${pkgver}.tar.gz")
 
+sha256sums=('d34493cee15029ff5db16157429585ff863ba5542675a4d8a94a0da1bc6e3a50')
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py build
