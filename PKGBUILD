@@ -3,7 +3,7 @@
 pkgbase=php-xapian
 pkgname=('php-xapian')
 _realname=xapian-bindings
-pkgver=1.4.13
+pkgver=1.4.14
 epoch=1
 pkgrel=1
 pkgdesc="PHP bindings for Xapian"
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 build() {
   cd "$srcdir/${_realname}-$pkgver"
   ./configure XAPIAN_CONFIG=/usr/bin/xapian-config \
-    --prefix=/usr --with-php
+    --prefix=/usr --with-php7
   make
 }
 
