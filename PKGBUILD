@@ -7,7 +7,7 @@ pkgdesc="Alilang"
 arch=('x86_64')
 url="https://alilang.alibaba-inc.com"
 license=('none')
-depends=('gksu' 'qtwebkit')
+depends=('qtwebkit' 'openssl')
 source=("https://alilang.alibaba-inc.com/alilang/alilang.deb")
 
 pkgver() {
