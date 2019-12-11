@@ -1,7 +1,7 @@
 pkgbase = satoshipay-stellar-wallet
 	pkgdesc = Wallet for the Stellar payment network by SatoshiPay.
 	pkgver = 0.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://solarwallet.io
 	arch = x86_64
 	license = GPL3
