@@ -2,42 +2,30 @@
 _orgname=BourgeoisLab
 _pkgname=GPXLab
 pkgname=${_pkgname,,}
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Program to show and manipulate GPS tracks'
 arch=(x86_64)
 url='https://github.com/BourgeoisLab/GPXLab'
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('qt5-tools')
+optdepends=('qt5-translations: for Qt5 dialog translations')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
-source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz"
-        "fix-quit-shortcut.diff")
-sha256sums=('9b563dbdec884405c740bca63c57f275f2962ed0d84c3bc5ad8872141a65f7ff'
-            'SKIP')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-
-  patch -Np1 < ../fix-quit-shortcut.diff
-}
+source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('cb9fbcde4688c388b781c90b7c48a60a76c5d5bed14e5040e55a13a3f810aa0e')
 
 build() {
   cd ${_pkgname}-${pkgver}
 
   lrelease GPXLab/GPXLab.pro
-  qmake GPXLab.pro
+  qmake PREFIX=/usr GPXLab.pro
   make
 }
 
 package() {
   cd ${_pkgname}-${pkgver}
 
-  install -Dm755 bin/GPXLab ${pkgdir}/usr/bin/${pkgname}
-  install -Dm644 GPXLab/locale/*.qm -t ${pkgdir}/usr/share/${pkgname}/translations
-  install -Dm644 doc/gpxlab.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-  install -Dm644 pkg/gpxlab.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -Dm644 pkg/gpxlab.xml ${pkgdir}/usr/share/mime/packages/${pkgname}.xml
-  install -Dm644 pkg/appdata.xml ${pkgdir}/usr/share/metainfo/${pkgname}.appdata.xml
+  make INSTALL_ROOT="${pkgdir}" install
 }
