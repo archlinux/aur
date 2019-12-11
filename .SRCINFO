@@ -1,15 +1,17 @@
 pkgbase = neru-icon-classic-theme
 	pkgdesc = Classic theme icons Neru
 	pkgver = 2.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/chistota/neru-icon-classic-theme
 	arch = any
 	license = LGPL3
 	depends = gtk-update-icon-cache
 	source = neru-icon-classic-theme-2.7.tar.gz::https://github.com/chistota/neru-icon-classic-theme/archive/v2.7.tar.gz
-	source = neru-2.7.patch
+	source = https://raw.githubusercontent.com/basigur/neru-icon-classic-theme/master/scriptspkg/neru-origin/patch.diff
+	source = https://raw.githubusercontent.com/basigur/neru-icon-classic-theme/master/scriptspkg/neru-origin/fixlink.sh
 	sha256sums = f03e19d145cc7582933ac2c89cfccfd73e2a63f776fab0838629d7b98dcebfb2
-	sha256sums = 9e7218102d2569847c6c46944426a9a855e320be02b55493c53ca95861f9023b
+	sha256sums = f1f263093bd6835d752e635916534dbbfc0e68eee54fb421cc700ae532965be4
+	sha256sums = f1e919344448e9277bb4539efe3e11da0ab3744a75fc75582c7a9545ccee3f77
 
 pkgname = neru-icon-classic-theme
 
