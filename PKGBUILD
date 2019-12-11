@@ -15,6 +15,9 @@ conflicts=(${pkgname%-git})
 source=($pkgname::git+$url.git)
 sha256sums=('SKIP')
 
+# Keep downloaded dependencies inside srcdir
+GOFLAGS=-mod=vendor
+
 pkgver() {
   cd $pkgname
 
@@ -32,21 +35,20 @@ prepare() {
 build() {
   cd $pkgname
 
-  GOPATH="$srcdir/build" go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS -X main.Build=$(date -u '+%Y%m%d%H%M%S' -d @${SOURCE_DATE_EPOCH})" \
-    -o ./nebula ./cmd/nebula
+  # Keep downloaded dependencies inside srcdir
+  GOPATH="$srcdir/build"
+  go mod vendor
+  chmod -R +w "$GOPATH"
 
-  GOPATH="$srcdir/build" go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS -X main.Build=$(date -u '+%Y%m%d%H%M%S' -d @${SOURCE_DATE_EPOCH})" \
-    -o ./nebula-cert ./cmd/nebula-cert
+  for cmd in nebula-cert nebula-service nebula; do
+    go build -trimpath -ldflags "-extldflags $LDFLAGS -X main.Build=$pkgver" -o ./$cmd ./cmd/$cmd
+  done
 }
 
 #check() {
 #  cd $pkgname
 #
-#  GOPATH="$srcdir/build" go test -v ./...
+#  go test -v ./...
 #}
 
 package() {
@@ -55,6 +57,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 examples/config.yml "$pkgdir/etc/nebula/config.yml.example"
   install -Dm644 examples/service_scripts/nebula.service "$pkgdir//usr/lib/systemd/system/nebula.service"
-  install -Dm755 nebula "$pkgdir/usr/bin/nebula"
-  install -Dm755 nebula-cert "$pkgdir/usr/bin/nebula-cert"
+  for cmd in nebula-cert nebula-service nebula; do
+    install -Dm755 $cmd "$pkgdir/usr/bin/$cmd"
+  done
 }
