@@ -1,6 +1,6 @@
 pkgbase = ferdi
 	pkgdesc = Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.
-	pkgver = 5.4.1
+	pkgver = 5.4.1_beta.2
 	pkgrel = 1
 	url = https://getferdi.com/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ferdi
 	makedepends = git
 	makedepends = npm
 	makedepends = python2
-	depends = electron4
+	depends = electron
 	conflicts = ferdi-git
-	source = git+https://github.com/getferdi/ferdi/releases/tag/v5.4.1-beta.2
+	source = git+https://github.com/getferdi/ferdi#tag=v5.4.1-beta.2
 	source = ferdi.desktop
 	source = ferdi.sh
 	sha512sums = SKIP

@@ -37,8 +37,8 @@ prepare() {
     src/index.js
 
   # Adjust the electron version to use when building
-  electron_version="`expac %v electron4 | cut -d'-' -f1`"
-  sed -i "s|\(\s\+\"electron4\":\).*,|\1 \"$electron_version\",|" package.json
+  # electron_version="`expac %v electron4 | cut -d'-' -f1`"
+  # sed -i "s|\(\s\+\"electron4\":\).*,|\1 \"$electron_version\",|" package.json
 
   # Adjust node-sass version to avoid build issues
   npm install "node-sass@4.12.0"
