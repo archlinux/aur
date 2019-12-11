@@ -3,7 +3,7 @@
 # Contributor: Laurent Hofer <laurenth at laurenth dot net>
 
 pkgname=brickd
-pkgver=2.4.0
+pkgver=2.4.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="a brick daemon for tinkerforge brick(let)s"
@@ -12,8 +12,8 @@ license=("GPL2")
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('libusb')
 source=(https://github.com/Tinkerforge/${pkgname}/archive/v${_pkgver}.zip https://github.com/Tinkerforge/daemonlib/archive/${pkgname}-${_pkgver}.zip brickd.install)
-md5sums=('fa2e92a535b4bc3d806fe1ae8753880d'
-         '6f2d9740802ba265452b287e15633f1e'
+md5sums=('580315dda2d3c48d6600251440bab494'
+         '0ca536db4800629da8e82dde35fd48df'
          '662008543bf92defdf9318ede29a93cd')
 install='brickd.install'
 build() {
