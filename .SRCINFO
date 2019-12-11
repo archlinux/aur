@@ -1,0 +1,14 @@
+pkgbase = otf-mplus
+	pkgdesc = M+, the japanese outline font families designed by Coji Morishita.
+	pkgver = 063_OTF
+	pkgrel = 1
+	url = https://mplus-fonts.osdn.jp/about-en.html
+	arch = any
+	license = custom
+	depends = fontconfig
+	conflicts = ttf-mplus
+	source = https://osdn.net/projects/mplus-fonts/downloads/62344/063-OTF.tar.xz
+	sha256sums = b1a98b24e034ff26d7cb957d904f1d49bbffc004c732eadc822e140b99f98ce1
+
+pkgname = otf-mplus
+
