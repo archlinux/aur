@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-echo
 pkgver=0.61
-pkgrel=25
+pkgrel=26
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.4

@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-echo
 	pkgdesc = Directives "echo", "sleep", "time" and more (module for mainline nginx)
 	pkgver = 0.61
-	pkgrel = 25
+	pkgrel = 26
 	url = https://github.com/openresty/echo-nginx-module
 	arch = i686
 	arch = x86_64
