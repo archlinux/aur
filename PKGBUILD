@@ -1,5 +1,4 @@
-# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
-# Contributor:
+# Maintainer: Leon Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 
 pkgname=lavalauncher-git
 pkgver=1.1
