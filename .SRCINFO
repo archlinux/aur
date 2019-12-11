@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-dav-ext
 	pkgdesc = Nginx mainline module with support for missing PROPFIND and OPTIONS WebDAV methods
 	pkgver = 3.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/arut/nginx-dav-ext-module
 	arch = i686
 	arch = x86_64

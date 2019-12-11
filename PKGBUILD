@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-dav-ext
 pkgver=3.0.0
-pkgrel=9
+pkgrel=10
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.4
