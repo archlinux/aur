@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-passenger
 pkgver=6.0.2
-pkgrel=7
+pkgrel=8
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.4

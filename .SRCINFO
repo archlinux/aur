@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-passenger
 	pkgdesc = Fast and robust web server and application server for Ruby, Python and Node.js (module for mainline nginx)
 	pkgver = 6.0.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.phusionpassenger.com
 	arch = i686
 	arch = x86_64
