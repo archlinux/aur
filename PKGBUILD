@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=varken
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="A standalone application to aggregate data from the Plex ecosystem into InfluxDB using Grafana for a frontend."
 arch=('any')
@@ -24,7 +24,7 @@ source=("varken-${pkgver}.tar.gz::https://github.com/Boerderij/Varken/archive/${
         'varken.sysusers'
         'varken.tmpfiles')
 
-sha256sums=('db4fa37c11b59649e03cf07a9df8388b31b4b45790e2adcef71f882579904260'
+sha256sums=('c001e3890c9bd67412754bd70aa67d537ff4e46dee27cc6845609ffdfa15f4f2'
             '87557de0d204223d5fa74c3d8da79dbe13be739e57d20c027291f1a487c34bb6'
             'ba43aebc95499e93a03d7abf1e1671d72d734725e8a0f2c35ccce3f5ec9b72e2'
             '75805db8a147673b0b3ea11fe46cc9e8b96b76e7877bc17878d4fc6d57ae014c')
