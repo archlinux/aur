@@ -2,11 +2,11 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.14.4.2281
+pkgver=1.15.0.2508
 #### Minecraft version to build. Just change this to build a different branch.
 #### Makepkg will automatically (unless --holdver is specified) select the most
 #### recent Spigot version for this Minecraft version.
-_pkgver=1.14.4
+_pkgver=1.15
 _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
@@ -50,26 +50,12 @@ sha256sums=('67b989f24444c12c0417fa0e6c44ddd44d8bfa3b3811a61c1c7b586a592a8027'
 pkgver() {
   _build="$(curl "https://hub.spigotmc.org/versions/$_pkgver.json" 2> /dev/null | \
            grep '"name"' | sed 's/.*: "\([^"]*\)",/\1/')"
-  echo "$_pkgver.${_build//-/_}"
+  # Force three version numbers. %d becomes 0 if too few arguments
+  printf "%d.%d.%d." ${_pkgver//./ }
+  echo "${_build//-/_}"
 }
 
 build() {
-  cat > old_send_command.sh <<EOF
-#!/bin/sh
-REPL="/usr/bin/craftbukkit-mcrcon"
-echo "This script is deprecated and will be removed." 2>&1
-echo "Use \$REPL instead" 2>&1
-echo
-exec "\$REPL" "\$@"
-EOF
-  cat > old_backup.sh <<EOF
-#!/bin/sh
-REPL="/usr/share/doc/$pkgname/backup.sh"
-echo "This script is deprecated and will be removed." 2>&1
-echo "Use \$REPL instead" 2>&1
-echo
-exec "\$REPL" "\$@"
-EOF
   MAVEN_OPTS="-Dmaven.repo.local=$srcdir/m2/repository" \
       java -jar "BuildTools-${_buildtoolver}.jar" --rev "$_build"
 }
@@ -99,6 +85,4 @@ package() {
   install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   install -dm755 "$pkgdir/srv/craftbukkit/"
-  install -m755 "$srcdir/old_backup.sh" "$pkgdir/srv/craftbukkit/backup.sh"
-  install -m755 "$srcdir/old_send_command.sh" "$pkgdir/srv/craftbukkit/send_command.sh"
 }

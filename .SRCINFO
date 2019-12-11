@@ -1,6 +1,6 @@
 pkgbase = craftbukkit-spigot
 	pkgdesc = CraftBukkit, Spigot, and vanilla Minecraft servers
-	pkgver = 1.14.4.2281
+	pkgver = 1.15.0.2508
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = craftbukkit-spigot.install
@@ -10,8 +10,8 @@ pkgbase = craftbukkit-spigot
 	depends = java-runtime-headless<=12
 	depends = fontconfig
 	optdepends = mcrcon: Notify users before shutdown and consistent backups
-	provides = craftbukkit=1.14.4
-	provides = minecraft-server=1.14.4
+	provides = craftbukkit=1.15
+	provides = minecraft-server=1.15
 	conflicts = bukkit
 	conflicts = craftbukkit
 	conflicts = craftbukkit-stable
