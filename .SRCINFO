@@ -1,13 +1,13 @@
 pkgbase = fdk-aac-enc
 	pkgdesc = AAC encoder frontend for FDK-AAC library
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/opencore-amr/
 	arch = x86_64
 	license = custom
-	depends = libfdk-aac>=2.0.0
-	source = https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.0.tar.gz
-	sha256sums = f7d6e60f978ff1db952f7d5c3e96751816f5aef238ecf1d876972697b85fd96c
+	depends = libfdk-aac>=2.0.1
+	source = https://downloads.sourceforge.net/opencore-amr/fdk-aac-2.0.1.tar.gz
+	sha256sums = 840133aa9412153894af03b27b03dde1188772442c316a4ce2a24ed70093f271
 
 pkgname = fdk-aac-enc
 
