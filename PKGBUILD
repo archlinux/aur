@@ -1,7 +1,7 @@
 # Maintainer: YOUNG HO CHA <ganadist@gmail.com>
 pkgname=uftrace
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to trace and analyze execution of a program written in C/C++"
 arch=(armv6h armv7h aarch64 x86_64)
 url="https://github.com/namhyung/uftrace"
@@ -17,9 +17,10 @@ backup=()
 options=(!emptydirs)
 install=
 changelog=
-source=("git+https://github.com/namhyung/$pkgname.git#tag=v$pkgver")
+source=("https://github.com/namhyung/uftrace/archive/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('SKIP')
+# Use updpkgsums to update the checksum
+sha256sums=('d801d72e3cdd83c510aeecc5160482d879498cf08fffd21e64f84151001e18ea')
 
 build() {
   mkdir -p "$pkgname"/build
