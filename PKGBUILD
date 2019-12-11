@@ -2,7 +2,7 @@
 
 pkgname=ms-teams
 pkgver=1.2.00.32451
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365.
  Instantly access all your team’s content from a single place where messages, files, people and tools live together."
 arch=('x86_64')

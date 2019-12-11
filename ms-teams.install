@@ -21,7 +21,7 @@ _update() {
 
 post_install() {
     _update
-    note "The binary is called 'teams-insider'."
+    note "The binary is called 'teams'."
 }
 
 
