@@ -1,14 +1,14 @@
 pkgbase = flashplayer-standalone-debug
 	pkgdesc = Standalone, debug version of Adobe Flash Player
-	pkgver = 32.0.0.293
+	pkgver = 32.0.0.303
 	pkgrel = 1
 	url = https://www.adobe.com/support/flashplayer/debug_downloads.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = flashplayer-standalone-debug-32.0.0.293-1.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_sa_linux_debug.x86_64.tar.gz
-	md5sums = d3c59fa1bc6efe3809d2e23472d64682
+	source = flashplayer-standalone-debug-32.0.0.303-1.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_sa_linux_debug.x86_64.tar.gz
+	md5sums = 37e8fe6423f4d4a255911e1b4d12b269
 	depends_i686 = gtk2
 	depends_i686 = libxt
 	depends_i686 = nss
