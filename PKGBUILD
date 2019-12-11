@@ -1,16 +1,14 @@
 # Maintainer: Genesis <tofupedia.fr@gmail.com>
 
-# To disable the popup asking for system integration at each startup :
-# `touch $HOME/.local/share/appimagekit/no_desktopintegration`
-
 pkgname=ankama-launcher
 pkgver=2.10.31
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-game portal for all Ankama games.'
 url='https://www.ankama.com/en/launcher'
 
 arch=('i686' 'x86_64')
 license=('custom:Ankama License')
+install='ankama-launcher.install'
 depends=('zlib' 'bash')
 makedepends=('p7zip')
 optdepends=('wine: to play Dofus'
@@ -19,7 +17,7 @@ options=('!strip')
 source=('ankama-launcher')
 source_i686=("${pkgname}-${pkgver}-i686.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-i386.AppImage")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
-md5sums=('f86043ac6089eddc756942c15a555179')
+md5sums=('e6a225e04a4a4105059af02873cf65a5')
 md5sums_i686=('64c1dd6b072d3d95b9c38bd6e60eec61')
 md5sums_x86_64=('3793bfded627af12e6062895a4604649')
 
@@ -37,8 +35,9 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "ankama-launcher.AppImage" "${pkgdir}/opt/appimages/ankama-launcher.AppImage"
-    install -Dm755 "ankama-launcher"          "${pkgdir}/usr/bin/ankama-launcher"
-    install -Dm644 "ankama-launcher.desktop"  "${pkgdir}/usr/share/applications/ankama-launcher.desktop"
-    install -Dm644 "ankama-launcher.png"      "${pkgdir}/usr/share/pixmaps/ankama-launcher.png"
+    install -dm775 -ggames "${pkgdir}/opt/ankama-launcher"
+    install -Dm775 -ggames "ankama-launcher.AppImage" "${pkgdir}/opt/ankama-launcher/ankama-launcher.AppImage"
+    install -Dm755 "ankama-launcher"                  "${pkgdir}/usr/bin/ankama-launcher"
+    install -Dm644 "ankama-launcher.desktop"          "${pkgdir}/usr/share/applications/ankama-launcher.desktop"
+    install -Dm644 "ankama-launcher.png"              "${pkgdir}/usr/share/pixmaps/ankama-launcher.png"
 }

@@ -1,0 +1,35 @@
+post_install() {
+  chgrp -R games /opt/ankama-launcher
+  chmod -R g+w /opt/ankama-launcher
+
+  cat <<END
+
+The launcher files are installed under the group "games". Please add your user
+to this group with "usermod -a -G games", otherwise the launcher will not be able to
+auto-update itself properly.
+
+To disable the popup asking for system integration at each startup, execute
+"touch \$HOME/.local/share/appimagekit/no_desktopintegration".
+
+END
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat <<END
+
+The launcher has been removed, but the files and games it installed are still there. If you want to
+remove the launcher completely, have a look at the directories used
+by the launcher and remove them :
+- \$HOME/.config/Ankama/zaap
+- \$HOME/.config/zaap
+- \$HOME/.config/Dofus\\ Retro
+- \$HOME/.cache/zaap-updater
+Also, some games are using Wine, you might want to also take a look at your default Wine
+installation directory as there might also be leftover files there.
+
+END
+}
