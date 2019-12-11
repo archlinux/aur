@@ -1,11 +1,12 @@
 # $Id$
 # Maintainer: zer0def <zer0def@github>
-# Contributor: Kaushal M <kshlmster@gmail.com>
+# Contributor: Kaushal M <kshlmster cat gmail dog com>
+# Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.9.2"
-pkgrel=3
+pkgver="1.9.3"
+pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -13,13 +14,13 @@ license=('Apache')
 
 __dlbase="https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}"
 __linux_container_ver="4.19.75.54"
-__default_suffix="-7.1"
+__default_suffix="-8.1"
 #__runtime_suffix="-7.1"
 #__proxy_suffix="-7.1"
 #__shim_suffix="-7.1"
 #__ksm_throttler_suffix="-7.1"
 #__img_suffix="-7.1"
-__img_sha="ba81eb84dd"
+__img_sha="dfec5d93dc"
 #__linux_container_suffix="-7.1"
 
 source=(
@@ -32,12 +33,12 @@ source=(
 )
 
 sha256sums=(
-  'b5f47b9d905d4d265b6ded744a0413b1a5b1c24b4adec66449095afa5ab8e6ee'
-  '772500f64cfb7cd046e4d46c440e00bab665a276bf4d2cfea6016a7141ae5434'
-  '60615672c1aa926fafc591abd0a78302b7b78fea2f0e6f2dd810746dd5bc8b6b'
-  '96c49d80cbcf5575534cf8bd9e6fcff6c4f5667be729521d313fe172bae37bce'
-  '7b7529b8b92e63c0a1c00a2273688299e8d8001dce9820d3ad9b73e06d293476'
-  'a78fcecac7afb9e7c2e81bc84a73287f9ff471ba7300978aacb0a6b88598494f'
+  '35693291fad2a02b2da3c20c6b65d54a3978e72f00ac0d529c80353a8a6c05bc'
+  '5c73509718b28fc39a0b36d3327158b6e96ba5ec93e84635c88404bc3945c2db'
+  '87b1508af6ab12a4c45c663ecfd46e78b3e5395c6977565e9a6ffc74e2230d65'
+  'dc84d6ea9c5548b9553b485186926648f0200f407b4489258881ecef9330803d'
+  '5ba3fbd5b94927dc59ab1621e51b12e401951b11773fa965fbd5fd84d4da0b7a'
+  '487112757a6b1683af853e878bb10b56fa8d424320bc6b506aaac49aac0c06e8'
 )
 
 package_kata-runtime() {
