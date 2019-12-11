@@ -8,6 +8,7 @@ depends=('cmake>=3.8'
          'xerces-c'
          'qt5-base'
          'glu'
+         'openmotif'
          #         'soxt'
          'zlib'
         )
