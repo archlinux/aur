@@ -39,10 +39,11 @@ cd "$srcdir/$pkgname"
 	./configure --prefix=/usr/ CC=clang CXX=clang++ --with-UMFPACK 
     make
     # from there compiles OMOptim
-    cd OMOptim
-    autoconf
-    ./configure --prefix=/usr/ CXX=g++
-    make
+	# uncomment to compile OMOptim
+    #cd OMOptim
+    #autoconf
+    #./configure --prefix=/usr/ CXX=g++
+    #make
 }
  
 package() {  
@@ -55,6 +56,7 @@ package() {
     install -D -m644 "OMShell/OMShell/OMShellGUI/Resources/omshell.ico" "${pkgdir}/usr/share/openmodelica/icons/omshell.ico"
     install -D -m644 "OMPlot/OMPlot/OMPlotGUI/Resources/icons/omplot.ico" "${pkgdir}/usr/share/openmodelica/icons/omplot.ico"
     install -D -m644 "OMCompiler/COPYING" "${pkgdir}/usr/share/licenses/openmodelica/LICENSE"
-	cd OMOptim
-	make install DESTDIR=${pkgdir}
+	# uncomment to install OMOptim
+	#cd OMOptim
+	#make install DESTDIR=${pkgdir}
 }
