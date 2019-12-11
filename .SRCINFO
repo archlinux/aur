@@ -1,6 +1,6 @@
 pkgbase = python-multidict-gns3
 	pkgdesc = Asyncio-based multidict implementation for Python (GNS3)
-	pkgver = 4.5.2
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/aio-libs/multidict
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = python-multidict-gns3
 	depends = python
 	provides = python-multidict
 	conflicts = python-multidict
-	source = python-multidict-gns3-4.5.2.tar.gz::https://github.com/aio-libs/multidict/archive/v4.5.2.tar.gz
-	sha256sums = 5caa32ec9fd170b589c804e9e741da5226473174eab6af813bc0183db1f52c1b
+	source = python-multidict-gns3-4.7.0.tar.gz::https://github.com/aio-libs/multidict/archive/v4.7.0.tar.gz
+	sha256sums = 3d3ebb6eb98758711b2175e45d16720f4fb7bfa2b5af64d7fb7c7bbfcfcf8e7c
 
 pkgname = python-multidict-gns3
 
