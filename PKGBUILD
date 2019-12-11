@@ -5,7 +5,7 @@
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
 pkgver=4.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
 url='http://www.samba.org'
@@ -15,7 +15,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap'
              'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt'
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive' 'lib32-libaio'
              'lib32-libnsl' 'lib32-libtirpc' 'perl-parse-yapp'
-             'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient')
+             'lib32-jansson' 'rpcsvc-proto' 'smbclient' 'libwbclient' 'lib32-ncurses')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
 sha256sums=('700c734b51610e2feaa0d6744f9bec0c0d8917bca8cc78d5b63a4591f32866a5')
 
@@ -97,7 +97,7 @@ package_lib32-smbclient() {
   depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
            'lib32-libgcrypt' 'lib32-libwbclient' 'lib32-pam' 'lib32-systemd'
            'lib32-talloc' 'lib32-tdb' 'lib32-ldb'
-           'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient')
+           'lib32-libaio' 'perl-parse-yapp' 'lib32-jansson' 'smbclient' 'lib32-ncurses')
 
   cd staging
 

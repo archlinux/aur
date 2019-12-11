@@ -1,7 +1,7 @@
 pkgbase = lib32-smbclient
 	pkgdesc = Tools to access a server's filespace and printers via SMB
 	pkgver = 4.10.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.samba.org
 	arch = x86_64
 	license = GPL3
@@ -27,6 +27,7 @@ pkgbase = lib32-smbclient
 	makedepends = rpcsvc-proto
 	makedepends = smbclient
 	makedepends = libwbclient
+	makedepends = lib32-ncurses
 	source = https://www.samba.org/samba/samba/ftp/stable/samba-4.10.10.tar.gz
 	sha256sums = 700c734b51610e2feaa0d6744f9bec0c0d8917bca8cc78d5b63a4591f32866a5
 
@@ -51,4 +52,5 @@ pkgname = lib32-smbclient
 	depends = perl-parse-yapp
 	depends = lib32-jansson
 	depends = smbclient
+	depends = lib32-ncurses
 
