@@ -4,7 +4,7 @@
 
 pkgname=python-snakeviz
 _pythonname=snakeviz
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A viewer for Python profiling data that runs as a web application in your browser. It is inspired by the wxPython profile viewer RunSnakeRun.'
 arch=('any')
@@ -12,7 +12,7 @@ url="http://jiffyclub.github.io/snakeviz"
 license=('CUSTOM')
 depends=('python' 'python-tornado' 'python-jinja')
 source=("$_pythonname-$pkgver.tar.gz::https://github.com/jiffyclub/snakeviz/archive/v$pkgver.tar.gz")
-sha256sums=('75a5a0f59e2dd1f93adffbc71364e61f860d8274dfdbd46b94322598ebe1c197')
+sha256sums=('c7432fbcad585f451ace93d02cc89e6e2d22f0b0aa75c5f9109cd3c231e81336')
 options=(!emptydirs)
 
 package() {
