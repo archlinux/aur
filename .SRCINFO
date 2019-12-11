@@ -10,6 +10,7 @@ pkgbase = monkeyspank-git
 	depends = python-pygame
 	depends = python-pyperclip
 	depends = python-requests
+	depends = python-setproctitle
 	depends = python-xdg
 	depends = speech-dispatcher
 	provides = monkeyspank
