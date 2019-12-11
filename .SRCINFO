@@ -1,6 +1,6 @@
 pkgbase = fiji-binary
 	pkgdesc = ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing.
-	pkgver = 20170530
+	pkgver = 20191119
 	pkgrel = 1
 	url = http://fiji.sc/
 	install = fiji.install
@@ -9,10 +9,10 @@ pkgbase = fiji-binary
 	license = GPL
 	depends = java-runtime>=8
 	optdepends = java3d: For the 3D viewer plugin.
-	source = https://downloads.imagej.net/fiji/Life-Line/fiji-nojre-20170530.zip
+	source = https://downloads.imagej.net/fiji/latest/fiji-nojre.zip
 	source = fiji.desktop
 	source = fiji.install
-	sha256sums = cf9fb45c48b22a7888b479968477f1f7a300a9c833e47244cbe0d1e93890bd20
+	sha256sums = SKIP
 	sha256sums = 788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc
 	sha256sums = 6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1
 

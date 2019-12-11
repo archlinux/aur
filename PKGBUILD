@@ -2,8 +2,8 @@
 # Contributors: dreieck, jacopo
 
 pkgname="fiji-binary"
-pkgver="20170530"
-pkgrel="1"
+pkgver=20191119
+pkgrel=1
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
 arch=('i686' 'x86_64')
 url='http://fiji.sc/'
@@ -13,24 +13,24 @@ depends=('java-runtime>=8')
 optdepends=('java3d: For the 3D viewer plugin.')
 install=fiji.install
 
-## Life-line build (comment this lines when building lifeline build)
-source=("https://downloads.imagej.net/fiji/Life-Line/fiji-nojre-${pkgver}.zip"
-        "fiji.desktop"
-        "fiji.install")
-sha256sums=('cf9fb45c48b22a7888b479968477f1f7a300a9c833e47244cbe0d1e93890bd20'
-            '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
-            '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
-
-## Latest build (uncomment next lines to install latest build insted life-line)
-# pkgver() {
-#   wget -q -O - https://downloads.imagej.net/fiji/latest/ | grep fiji-nojre.zip | sed -E 's/^.*([0-9]{4}-[0-9]{2}-[0-9]{2}).*$/\1/' | sed 's/-//g'
-# }
-# source=("https://downloads.imagej.net/fiji/latest/fiji-nojre.zip"
+## Life-line build (uncomment these lines when building the lifeline version)
+# source=("https://downloads.imagej.net/fiji/Life-Line/fiji-nojre-${pkgver}.zip"
 #         "fiji.desktop"
 #         "fiji.install")
-# sha256sums=('SKIP'
+# sha256sums=('cf9fb45c48b22a7888b479968477f1f7a300a9c833e47244cbe0d1e93890bd20'
 #             '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
 #             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
+
+# Latest build
+ pkgver() {
+   wget -q -O - https://downloads.imagej.net/fiji/latest/ | grep fiji-nojre.zip | sed -E 's/^.*([0-9]{4}-[0-9]{2}-[0-9]{2}).*$/\1/' | sed 's/-//g'
+ }
+ source=("https://downloads.imagej.net/fiji/latest/fiji-nojre.zip"
+         "fiji.desktop"
+         "fiji.install")
+ sha256sums=('SKIP'
+             '788a32dd0b24f482e78d5ec3209e9d5b3493a59e1da6edf82b1373e87c0320bc'
+             '6dcc861af9328076282893ffcecc77a7fee448cec51fb7ccd51c5cece9740fa1')
 
 
 _userexecutable="fiji" # That name to be presented to the user.
