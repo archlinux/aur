@@ -1,4 +1,5 @@
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
+# Last Version: curl -s 'https://oligarchy.co.uk/xapian/?C=M;O=D' | grep -oh '>[0-9]*\.[0-9]*\.[0-9]*\/<' |  grep -oh '[0-9]*\.[0-9]*\.[0-9]*' | head -n 1 
 
 pkgbase=php-xapian
 pkgname=('php-xapian')
