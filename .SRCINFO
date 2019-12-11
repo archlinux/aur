@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-pagespeed
 	pkgdesc = PageSpeed module for mainline nginx
 	pkgver = 1.13.35.2
-	pkgrel = 22
+	pkgrel = 23
 	url = https://www.ngxpagespeed.com/
 	arch = i686
 	arch = x86_64
