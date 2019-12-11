@@ -1,6 +1,6 @@
 pkgbase = evmone
 	pkgdesc = Fast Ethereum Virtual Machine implementation
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ethereum/evmone/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = evmone
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = git
-	source = git+https://github.com/ethereum/evmone.git#tag=v0.3.0
+	source = git+https://github.com/ethereum/evmone.git#tag=v0.4.0
 	md5sums = SKIP
 
 pkgname = evmone

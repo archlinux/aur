@@ -1,6 +1,6 @@
 # Maintainer: Marenz <aur@supradigital.org>
 pkgname=evmone
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Fast Ethereum Virtual Machine implementation"
 arch=('any')
