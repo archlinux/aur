@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sherlock-git
-pkgver=20191201.132e37c
+pkgver=20191208.6d28376
 pkgrel=1
 pkgdesc="Find usernames across social networks"
 arch=('any')
