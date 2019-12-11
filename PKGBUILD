@@ -1,7 +1,8 @@
-#Maintainer Jens Staal <staal1978@gmail.com>
+#Maintainer Matthijs Tadema <M dot J dot Tadema at pm dot me>
+#Previous Maintainer Jens Staal <staal1978@gmail.com>
 
 pkgname=ugene-bin
-pkgver=1.31.0
+pkgver=33.0
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite (binary release)"
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('qt5-script' 'qt5-svg' 'qt5-webkit' 'glu' 'procps-ng' 'python')
 provides=('ugene')
 conflicts=('ugene')
 source=("http://ugene.unipro.ru/downloads/ugene-$pkgver-x86-64.tar.gz")
-sha256sums=('ece7b43b78e08e726655a2d67f2fb292d88cf84d7105dbec873f7f3a39de6f50')
+sha256sums=('7f902a6812ba5c888726d0fdc3abafed4f53079d02ce3d125010db0400647d83')
 
 package() {
     cd "$srcdir/ugene-$pkgver"
