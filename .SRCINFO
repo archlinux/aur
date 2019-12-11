@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-srcache
 	pkgdesc = Transparent subrequest-based caching layout for arbitrary nginx locations (module for mainline nginx)
 	pkgver = 0.31
-	pkgrel = 29
+	pkgrel = 30
 	url = https://github.com/openresty/srcache-nginx-module
 	arch = i686
 	arch = x86_64
