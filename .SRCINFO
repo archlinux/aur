@@ -1,0 +1,18 @@
+pkgbase = kdeplasma-applets-ultimate-gmailfeed
+	pkgdesc = A plasmoid for Plasma 5. It provides a list of your unread emails from your Gmail inbox. You also get notified when you receive new messages.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/Intika-KDE-Plasmoids/plasmoid-ultimate-gmail-feed
+	install = kdeplasma-applets-ultimate-gmailfeed.install
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = hicolor-icon-theme
+	depends = knotifications
+	depends = qt5-xmlpatterns
+	source = https://github.com/Intika-KDE-Plasmoids/plasmoid-ultimate-gmail-feed/archive/v2.1.tar.gz
+	sha256sums = 87abf725324322a4df94f6fb6403b1f9043d8d4e667b08a9fb98aa949de6c2f4
+
+pkgname = kdeplasma-applets-ultimate-gmailfeed
+
