@@ -20,7 +20,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=71.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -251,4 +251,4 @@ md5sums=('SKIP'
          'd87270bfe02ea30e2fde3fcae5daf18d'
          '0ffabb81dd8a5fe98bb8afe47d6541d3'
          '3016656551d00f4f22dc2eaccc71ee14'
-         'f4a8a7f7480c74556ffb8fea3c5fe51a')
+         '58fb2ea7e65f05c0d1149c8c3fbecf4d')
