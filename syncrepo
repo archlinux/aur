@@ -55,7 +55,7 @@ rsync_cmd() {
 
 
 # first check if there was a change by comparing the lastupdate files
-if [[ -z "$FORCE_SYNC" ]] && [[ -f "$TARGET/lastupdate" ]] && (($(curl -Ls "$LASTUPDATE_URL")>$(<"$TARGET/lastupdate"))); then
+if [[ -z "$FORCE_SYNC" ]] && [[ -f "$TARGET/lastupdate" ]] && (($(curl -Ls "$LASTUPDATE_URL")<=$(<"$TARGET/lastupdate"))); then
 	echo "lastupdate file has not changed, not syncing." 
 	if tty -s; then
 		echo "To force sync use: $0 --force"
