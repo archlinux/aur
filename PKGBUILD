@@ -1,6 +1,6 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
 pkgname=leftwm-git
-pkgver=20fb3cb
+pkgver=91aa674
 pkgrel=1
 epoch=1
 pkgdesc="Leftwm - A tiling window manager for the adventurer"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm"
 license=('MIT')
 depends=()
-makedepends=('cargo' 'rust' 'git')
+makedepends=('rustup' 'git')
 optdepends=('dmenu: default launcher'
             'feh: used to set background images'
             'lemonbar: light weight bar'
