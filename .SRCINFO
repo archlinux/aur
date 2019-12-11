@@ -1,6 +1,6 @@
 pkgbase = welle.io
 	pkgdesc = An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://www.welle.io
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = welle.io
 	depends = qt5-multimedia
 	depends = rtl-sdr
 	optdepends = airspy
-	source = welle.io-2.0.tar.gz::https://github.com/AlbrechtL/welle.io/archive/v2.0.tar.gz
-	sha256sums = abfe999b6788ae57dfaaebea5e1db912565d60cc287c9eec4636b0e10eab4f9d
+	source = welle.io-2.1.tar.gz::https://github.com/AlbrechtL/welle.io/archive/v2.1.tar.gz
+	sha256sums = ff7aa2e7f96b647ea8495209f483e726b7219c825a2699f4871986a7b0dd303a
 
 pkgname = welle.io
 
