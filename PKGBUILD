@@ -7,8 +7,8 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
 license=('LGPL')
@@ -20,7 +20,7 @@ options=(!strip !buildflags staticlibs)
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc}
         mingw-pkgconfig.patch
         staticlibfix.patch)
-sha256sums=('1970a8991374fc8cbdcb7fcc3683fe8f8824aa37d575f38cfb75fe0fe50fd9ad'
+sha256sums=('2c8b5f894dced58b3d629f16f3afa6562c20b4bdc894639163cf657833688f0c'
             'SKIP'
             '10e57a3c226374b42656a11411fb8803a6afc9f76a3b71ca72649a1c9c1b10d1'
             'befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8')
