@@ -1,16 +1,17 @@
-pkgbase = talk-cli-git
-	pkgdesc = A command line interface for using Nextcloud Talk.
-	pkgver = 0.0.9.r0.g64530cc
+pkgbase = tale-git
+	pkgdesc = An experimental version control system.
+	pkgver = 0.0.1.r13.g8cea41d
 	pkgrel = 1
-	url = https://gitlab.com/severinkaderli/talk-cli
+	url = https://gitlab.com/severinkaderli/tale
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
+	makedepends = maven
 	makedepends = git
-	conflicts = rom-manager
-	source = git+https://gitlab.com/severinkaderli/talk-cli
+	makedepends = native-image-jdk11-bin
+	conflicts = tale
+	source = git+https://gitlab.com/severinkaderli/tale
 	md5sums = SKIP
 
-pkgname = talk-cli-git
+pkgname = tale-git
 
