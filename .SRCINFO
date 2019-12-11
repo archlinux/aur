@@ -1,6 +1,6 @@
 pkgbase = python-distributed
 	pkgdesc = Python library for distributed computing
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = http://distributed.readthedocs.org/en/stable/
 	arch = any
@@ -32,8 +32,8 @@ pkgbase = python-distributed
 	optdepends = python-asyncssh: Computing cluster using SSH communication
 	optdepends = python-pytorch: Support for tensors and dynamic neural networks
 	optdepends = python-ipywidgets: Extra widgets in diagnostic pages
-	source = 2.8.1.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/2.8.1
-	sha256sums = f3fab1d6f8484c4a19f7d07ca4d1ecfaf86ded126ffe8e8675a1743d460c70c1
+	source = 2.9.0.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/2.9.0
+	sha256sums = be5ebfa7f20ef09846486694c63483486143767c1595e4a75daf22a18fa516de
 
 pkgname = python-distributed
 
