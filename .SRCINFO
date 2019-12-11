@@ -1,6 +1,6 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 4.0.11
+	pkgver = 4.0.12
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	arch = any
@@ -36,8 +36,8 @@ pkgbase = electron-cash
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
-	source = electron-cash-4.0.11.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.0.11.tar.gz
-	sha256sums = 3e22344b0c912c746b6f0b901689e2449f891667bfb6776e164282066af96d59
+	source = electron-cash-4.0.12.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.0.12.tar.gz
+	sha256sums = 8b5b7dcc7b1420659f6d5b1fa38e0c631a9b8abf4e8451c4dca6d8381bbfdb14
 
 pkgname = electron-cash
 
