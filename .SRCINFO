@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-geoip2
 	pkgdesc = GeoIP2 module for mainline nginx
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leev/ngx_http_geoip2_module
 	arch = i686
 	arch = x86_64
