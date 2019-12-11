@@ -1,6 +1,6 @@
 pkgbase = libstoragemgmt
 	pkgdesc = A library for storage management
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/libstorage/libstoragemgmt
 	arch = any
@@ -9,14 +9,14 @@ pkgbase = libstoragemgmt
 	makedepends = chrpath
 	makedepends = valgrind
 	makedepends = python-pywbem
-	makedepends = libconfig
 	depends = libxml2
 	depends = icu
 	depends = sqlite
 	depends = openssl
+	depends = libconfig
 	optdepends = arcconf: support for Microsemi (Adaptec) controllers
-	source = https://github.com/libstorage/libstoragemgmt/releases/download/1.8.1/libstoragemgmt-1.8.1.tar.gz
-	sha256sums = ad917d94c39d822235c75d87685ec1e23b669b758330fb92b59c74b4d3b8549a
+	source = https://github.com/libstorage/libstoragemgmt/releases/download/1.8.2/libstoragemgmt-1.8.2.tar.gz
+	sha256sums = fb636b9cc3d004578726d915353b1cffe578414c4b4dd5830ee49d562cf0a958
 
 pkgname = libstoragemgmt
 
