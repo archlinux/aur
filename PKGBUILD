@@ -2,7 +2,7 @@
 # Contributor: Albakham <contact@geber.ga>
 
 pkgname=protonmail-desktop
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Unofficial app that emulates a native client for the ProtonMail e-mail service"
 arch=(any)
@@ -14,7 +14,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/protonmail-desktop/application/archive/v$pkgver.tar.gz
         $pkgname.sh
         $pkgname.desktop)
-sha256sums=('cce2d6754a1f459b24e8b64b0c16da36f944a1d622a00cb44712554f29eeab51'
+sha256sums=('830a00ea5092d44d35eacd3ca340de87a562767bce6a740606840a672f8643e1'
             'f830633b18a59b7d2a7787e9f0b4d8de802522e0c7732d1032ced354ab861532'
             '4482041b9daabaf1ad4225e775cdb694078f1e17d026a3f9dbe72731b3bbec0d')
 
@@ -30,7 +30,7 @@ build() {
 package() {
   mkdir -p "$pkgdir"/usr/{lib,share/pixmaps}
   cp -r application-$pkgver "$pkgdir/usr/lib/$pkgname"
-  ln -s ../../lib/$pkgname/app/static/Icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  ln -s ../../lib/$pkgname/app/images/Icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
   install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 application-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
