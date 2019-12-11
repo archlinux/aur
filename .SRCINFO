@@ -1,6 +1,6 @@
 pkgbase = xplayer-git
 	pkgdesc = Simple media player. X-Apps Project (git version).
-	pkgver = 2.0.2.r0.g49b054a
+	pkgver = 2.2.3.r0.gb3f42a4
 	pkgrel = 1
 	url = https://github.com/linuxmint/xplayer
 	arch = i686
@@ -30,9 +30,7 @@ pkgbase = xplayer-git
 	provides = xplayer
 	conflicts = xplayer
 	source = xplayer-git::git+https://github.com/linuxmint/xplayer.git
-	source = xplayer_issues_147.patch
 	md5sums = SKIP
-	md5sums = 533653d8352f0afcac5c4542f1bc0d84
 
 pkgname = xplayer-git
 

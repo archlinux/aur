@@ -2,7 +2,7 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=2.0.2.r0.g49b054a
+pkgver=2.2.3.r0.gb3f42a4
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,21 +18,13 @@ provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/xplayer'
 
-source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git"
-        'xplayer_issues_147.patch')
-md5sums=('SKIP'
-        '533653d8352f0afcac5c4542f1bc0d84')
+source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	patch --strip=1 --input="${srcdir}/xplayer_issues_147.patch"
-}
-
 
 build() {
     cd ${srcdir}/${pkgname}
