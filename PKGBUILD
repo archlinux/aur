@@ -1,8 +1,8 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=mingw-w64-libgit2
-pkgver=0.28.3 
-pkgrel=2
+pkgver=0.28.4
+pkgrel=1
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
 arch=(i686 x86_64)
 depends=(mingw-w64-{crt,curl,libssh2,openssl,zlib})
@@ -17,7 +17,7 @@ source=(
     aclapi-include-case.patch
 )
 sha256sums=(
-    'ee5344730fe11ce7c86646e19c2d257757be293f5a567548d398fb3af8b8e53b'
+    '30f3877469d09f2e4a21be933b4e2800560d16646028dd800744dc5f7fb0c749'
     'e9dcef212732027605e8720e76c6f9fa731a528f131feaa86a137c56e906ea25'
 )
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
