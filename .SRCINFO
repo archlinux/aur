@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-redis2
 	pkgdesc = Redis 2.0 protocol module for mainline nginx
 	pkgver = 0.14
-	pkgrel = 28
+	pkgrel = 29
 	url = https://github.com/openresty/redis2-nginx-module
 	arch = i686
 	arch = x86_64
