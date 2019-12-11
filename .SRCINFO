@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-modsecurity-git
 	pkgdesc = ModSecurity v3 Nginx Connector (module for mainline nginx)
-	pkgver = v1.0.0.58.gd7101e1
-	pkgrel = 8
+	pkgver = v1.0.0.65.gc6fd138
+	pkgrel = 1
 	url = https://github.com/SpiderLabs/ModSecurity-nginx
 	arch = i686
 	arch = x86_64
