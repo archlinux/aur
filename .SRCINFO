@@ -1,6 +1,6 @@
 pkgbase = python-pytest-astropy
 	pkgdesc = Metapackage for all the testing machinery used by the Astropy Project
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/astropy/pytest-astropy
 	arch = i686
@@ -13,8 +13,9 @@ pkgbase = python-pytest-astropy
 	depends = python-pytest-openfiles>=0.3.1
 	depends = python-pytest-arraydiff>=0.1
 	depends = python-pytest-astropy-header
-	source = https://files.pythonhosted.org/packages/source/p/pytest-astropy/pytest-astropy-0.6.0.tar.gz
-	md5sums = c36b297bd42e75b18a5e711438a33bf3
+	depends = python-hypothesis
+	source = https://files.pythonhosted.org/packages/source/p/pytest-astropy/pytest-astropy-0.7.0.tar.gz
+	md5sums = c76ffcedd809bdc6a9e8559ab80ac475
 
 pkgname = python-pytest-astropy
 
