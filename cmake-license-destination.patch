@@ -1,0 +1,11 @@
+--- a/easy_profiler_core/CMakeLists.txt
++++ b/easy_profiler_core/CMakeLists.txt
+@@ -309,7 +309,7 @@
+     LICENSE.MIT
+     LICENSE.APACHE
+     DESTINATION
+-    .
++    share/licenses/easy_profiler/
+ )
+ 
+ install(

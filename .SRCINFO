@@ -1,6 +1,6 @@
 pkgbase = easy_profiler
 	pkgdesc = Lightweight cross-platform profiler library for c++
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/yse/easy_profiler
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = easy_profiler
 	arch = arm
 	license = MIT
 	makedepends = cmake
-	source = easy_profiler-2.0.1.tar.gz::https://github.com/yse/easy_profiler/archive/v2.0.1.tar.gz
-	source = cmake-destination.patch
-	md5sums = f5d17cd937ba39d3b2584b003a71e6a7
-	md5sums = 2e3f68c068787b71c2746b237550036d
+	source = easy_profiler-2.1.0.tar.gz::https://github.com/yse/easy_profiler/archive/v2.1.0.tar.gz
+	source = cmake-license-destination.patch
+	md5sums = 11cf4ffdfcec905752aa820bea27648a
+	md5sums = 6f251eca4ba10416dfb70c639baac4d7
 
 pkgname = easy_profiler
 
