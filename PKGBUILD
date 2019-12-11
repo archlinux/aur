@@ -2,14 +2,14 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=tilde
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An intuitive text editor for the terminal."
 arch=('x86_64' 'i686')
 url="http://os.ghalkes.nl/$pkgname.html"
 license=('GPL3')
 groups=()
-depends=('libtranscript>=0.2.0' 'libt3widget>=1.0.0' 'libt3highlight>=0.4.0' 'libt3config>=0.2.6')
+depends=('libtranscript>=0.2.0' 'libt3widget>=1.2.0' 'libt3highlight>=0.4.0' 'libt3config>=1.0.0')
 makedepends=()
 optdepends=()
 conflicts=()
@@ -20,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('ef508c8170af75b565942560fcd1106d')
+md5sums=('dc5b7c4457dd64d585985f68dd3741ac')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
