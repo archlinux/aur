@@ -1,0 +1,18 @@
+pkgbase = plantuml-markdown
+	pkgdesc = PlantUML plugin for Python-Markdown
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/mikitex70/plantuml-markdown
+	changelog = CHANGELOG.md
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-markdown
+	depends = pymdown-extensions
+	depends = plantuml
+	depends = python-plantuml-git
+	source = https://github.com/mikitex70/plantuml-markdown/archive/3.2.0.tar.gz
+	md5sums = 9a47170d83b3ce7a720984913da10fb2
+
+pkgname = plantuml-markdown
+
