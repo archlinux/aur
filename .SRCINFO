@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-brotli-git
 	pkgdesc = Brotli compression filter module for mainline nginx
 	pkgver = r43.e505dce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/ngx_brotli
 	arch = i686
 	arch = x86_64

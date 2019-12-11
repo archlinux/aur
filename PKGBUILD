@@ -1,11 +1,12 @@
 # Maintainer: Francois Menning <f.menning@pm.me>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _modname="ngx_brotli"
 _nginxver=1.17.6
 
 pkgname=nginx-mainline-mod-brotli-git
 pkgver=r43.e505dce
-pkgrel=1
+pkgrel=2
 pkgdesc="Brotli compression filter module for mainline nginx"
 arch=('i686' 'x86_64')
 depends=("nginx-mainline=$_nginxver" 'brotli')
@@ -13,12 +14,12 @@ url="https://github.com/google/ngx_brotli"
 license=('CUSTOM')
 
 source=(
-    https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
-    "$_modname::git+https://github.com/google/ngx_brotli.git"
+  https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
+  "$_modname::git+https://github.com/google/ngx_brotli.git"
 )
 
 validpgpkeys=(
-    'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
+  'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
 sha256sums=('3cb4a5314dc0ab0a4e8a7b51ae17c027133417a45cc6c5a96e3dd80141c237b6'
