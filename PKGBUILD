@@ -6,7 +6,7 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.34.0
+pkgver=3.34.2
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ groups=('gnome')
 # Fedora patches: http://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='http://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='f31'
-_fcommit='1a86ac292ce107d6ca14204e6ea00578fc1e4d6c'
+_fcommit='c64c5b74e173e7c00fa742273e1f03398b8abb74'
 _fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
 _fpatchfile2='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
@@ -34,9 +34,9 @@ source=(
 	"${_fpatchfile2}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile2}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
-sha256sums=('85a60f8344118669396504e28245e7e03bc7d80e6749367148266b7763de8a71'
+sha256sums=('3bd723f4058ec014da4715db4181b7d73eccc797b85ad5e6236996951c01803d'
             '672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769'
-            '8416baeeadf2ed8ec56c0b122faf75e4abbd520ff698ebca196eb3f301f05be5'
+            'e0f021894063cc4e0eb667079c03a848c95e9584fc43a05077e827f7c34a3b03'
             'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9')
 
 prepare () {
