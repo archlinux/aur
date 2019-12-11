@@ -4,14 +4,14 @@
 
 pkgname=slack-desktop
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom')
 depends=('alsa-lib' 'gtk3' 'libcurl-compat' 'libsecret' 'libxss' 'libxtst'
          'nss' 'glibc>=2.28-4' 'xdg-utils')
-optdepends=('gnome-keyring')
+optdepends=('org.freedesktop.secrets')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb"
         "${pkgname}.patch")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
