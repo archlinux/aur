@@ -1,0 +1,22 @@
+From 00b176d02b0d79db9aea5e3122013c0ae46567d1 Mon Sep 17 00:00:00 2001
+From: Christian Mauderer <oss@c-mauderer.de>
+Date: Wed, 11 Dec 2019 15:31:45 +0100
+Subject: [PATCH] No install.
+
+---
+ build.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.sh b/build.sh
+index b1bc341..f7f8a48 100755
+--- a/build.sh
++++ b/build.sh
+@@ -34,4 +34,4 @@ tar -zxvf squashfs4.3.tar.gz
+ cd squashfs4.3
+ patch -p0 < ../patches/patch0.txt
+ cd squashfs-tools
+-make && $SUDO make install
++make
+-- 
+2.24.0
+
