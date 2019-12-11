@@ -3,7 +3,7 @@ pkgver=2.4.2
 pkgrel=1
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
-depends=('mingw-w64-python')
+depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 arch=('any')
@@ -22,7 +22,7 @@ build() {
   cd "$srcdir/libbatch-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake-py38 \
+    ${_arch}-cmake -DLIBBATCH_PYTHON_WRAPPING=OFF \
       -DPTHREAD_LIBRARY=/usr/${_arch}/lib/libwinpthread.dll.a \
       ..
     make
