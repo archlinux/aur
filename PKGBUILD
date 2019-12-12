@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2019.3'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A cross-platform C# IDE by JetBrains.'
 arch=('any')
