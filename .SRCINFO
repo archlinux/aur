@@ -1,14 +1,14 @@
 pkgbase = shopify-themekit-bin
 	pkgdesc = A cross-platform tool for building Shopify Themes
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/Shopify/themekit
 	arch = x86_64
 	license = MIT
 	conflicts = shopify-themekit
 	conflicts = discount
-	source = theme-x86_64-1.0.1::https://shopify-themekit.s3.amazonaws.com/v1.0.1/linux-amd64/theme
-	sha256sums = 401e2c5594e382626546b1296b454f87d6df9b30f10dc1f430fd72b9f873d2c2
+	source = theme-x86_64-1.0.2::https://shopify-themekit.s3.amazonaws.com/v1.0.2/linux-amd64/theme
+	sha256sums = 21a058bc47555ec343088c9322187bb0ad57e4055454f509c0751c092af6b12b
 
 pkgname = shopify-themekit-bin
 
