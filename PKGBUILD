@@ -1,5 +1,5 @@
 # Maintainer: Emanuel Fernandes <efernandes@tektorque.com>
-# http://go.rapidminer.com/rm-studio-download-linux
+# Maintainer: Rodrigo Fuentealba <dev-rfc83@protonmail.com>
 
 pkgname=rapidminer-studio
 pkgver=9.5.1
