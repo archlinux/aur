@@ -1,6 +1,7 @@
 # Maintainer: telans <telans@protonmail.com>
 # Co-Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
 # Contributor: David Birks <david at tellus dot space>
+# Contributor: Jeff Henson <jeff at henson dot io>
 # Contributor: Linus Färnstrand <linus at mullvad dot net>
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
@@ -19,15 +20,15 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.desktop"
         'update-relays.sh')
 sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
             'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
-validpgpkeys=('A6A4778440D27368967A7A3578CEAA8CB72E4467')
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
 
 prepare() {
@@ -37,13 +38,6 @@ prepare() {
 	git config submodule.mullvadvpn-app-binaries.url \
 		"$srcdir/mullvadvpn-app-binaries"
 	git submodule update
-
-	# Verify git tag
-	git verify-tag "${_pkgver}-${_channel}"
-
-	# Verify git commit
-	cd "$srcdir/mullvadvpn-app-binaries"
-	git verify-commit "$_commit"
 }
 
 build() {
