@@ -1,20 +1,8 @@
---- config-orig.m4	2018-08-14 17:01:54.000000000 +0300
-+++ config.m4	2018-09-04 17:57:44.525777935 +0300
-@@ -17,7 +17,7 @@
- 
- AC_DEFUN([AC_PDO_OCI_VERSION],[
-   AC_MSG_CHECKING([Oracle version])
--  PDO_OCI_LCS_BASE=$PDO_OCI_LIB_DIR/libclntsh.$SHLIB_SUFFIX_NAME
-+  PDO_OCI_LCS_BASE=$PDO_OCI_LIB_DIR/lib/libclntsh.$SHLIB_SUFFIX_NAME
-   PDO_OCI_LCS=`ls $PDO_OCI_LCS_BASE.*.1 2> /dev/null | $PHP_PDO_OCI_TAIL1`  # Oracle 10g, 11g, 12c etc
-   if test -f "$PDO_OCI_LCS"; then
-     dnl Oracle 10g, 11g 12c etc.  The x.2 version libraries are named x.1 for drop in compatibility
-@@ -99,7 +99,7 @@
-     OCISDKMANINC=`echo "$PDO_OCI_LIB_DIR" | $PHP_PDO_OCI_SED -e 's!^\(.*\)/lib[/]*$!\1/include!'`
-     
-     dnl Header directory for Instant Client SDK zip file install
--    OCISDKZIPINC=$PDO_OCI_LIB_DIR/sdk/include
-+    OCISDKZIPINC=$PDO_OCI_LIB_DIR/include
- 
-     
-     if test -f "$OCISDKRPMINC/oci.h" ; then
+16c16
+<   PDO_OCI_LCS_BASE=$PDO_OCI_LIB_DIR/libclntsh.$SHLIB_SUFFIX_NAME
+---
+>   PDO_OCI_LCS_BASE=$PDO_OCI_LIB_DIR/lib/libclntsh.$SHLIB_SUFFIX_NAME
+107c107
+<     OCISDKZIPINC=$PDO_OCI_LIB_DIR/sdk/include
+---
+>     OCISDKZIPINC=$PDO_OCI_LIB_DIR/include

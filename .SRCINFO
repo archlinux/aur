@@ -1,15 +1,15 @@
 pkgbase = php-pdo-oci
 	pkgdesc = PDO driver for OCI8
-	pkgver = 7.3.7
-	pkgrel = 2
+	pkgver = 7.4.0
+	pkgrel = 1
 	url = https://github.com/php/php-src/tree/master/ext/pdo_oci
 	arch = x86_64
 	license = PHP
-	depends = php>=7.3.0
+	depends = php>=7.4.0
 	depends = php-oci8>=2.1.0
 	conflicts = php-pdo-oci-git
 	backup = etc/php/conf.d/${_extname}.ini
-	source = https://github.com/php/php-src/archive/php-7.3.7.tar.gz
+	source = https://github.com/php/php-src/archive/php-7.4.0.tar.gz
 	source = patch.diff
 	md5sums = SKIP
 	md5sums = SKIP
