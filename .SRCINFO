@@ -1,0 +1,17 @@
+pkgbase = python-dwdweather2
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/panodata/dwdweather2
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-tqdm
+	depends = python-dateutil
+	depends = python-requests
+	depends = python-requests-cache
+	depends = python-beautifulsoup4
+	source = dwdweather2-0.11.1.tar.gz::https://github.com/panodata/dwdweather2/archive/0.11.1.tar.gz
+	sha256sums = 89797a675e0f2a8b8f8b89ffc8d283c6ea58a099fa4d9f39defd7ce52d256466
+
+pkgname = python-dwdweather2
+
