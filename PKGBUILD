@@ -5,7 +5,7 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=crossover
-pkgver=18.5.0
+pkgver=19.0.0
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("https://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('483bc68ff6af4bac0b7e6dcc959e168670a26a102301db311d74b8bc7a51ebeb')
+sha256sums=('a7caa04292a1c941e0c1c143957b5e741d11b7ae5cae8f43ce21f13dd9929506')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
@@ -39,7 +39,6 @@ optdepends_i686=(
     'gsm: Lets Windows applications use the GSM codec for audio compression and decompression.'
     'gstreamer0.10: This is needed by some games and multimedia applications.'
     'gstreamer0.10-base: This is needed by some games and multimedia applications.'
-    'isdn4k-utils: (libcapi)Provides support for some ISDN cards. Very few applications need this.'
     'libcups: Needed to print to printers managed by the CUPS system, which is most likely the case. It is strongly recommended for office-type applications.'
     'libdbus: This is needed for Windows applications to automatically detect CD-ROM and USB key insertion.'
     'libexif: Some applications need to parse EXIF and read their data tags.'

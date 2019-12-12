@@ -12,7 +12,7 @@ post_install() {
     fi
     
     echo "Creating menus and file associations, please wait..."
-    /opt/cxoffice/bin/cxmenu --crossover --install
+    /opt/cxoffice/bin/cxmenu --crossover --install --filter "StartMenu/CrossOver"
     /opt/cxoffice/bin/cxassoc --crossover --install
     echo "Done!"
     echo
