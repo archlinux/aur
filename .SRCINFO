@@ -1,0 +1,15 @@
+pkgbase = gmad-git
+	pkgdesc = Garry's Mod Addon Creator and Extractor
+	pkgver = v1.1
+	pkgrel = 1
+	url = https://github.com/garrynewman/gmad
+	arch = x86_64
+	makedepends = premake
+	provides = gmad
+	source = gmad::git+https://github.com/garrynewman/gmad.git#branch=master
+	source = bootil::git+https://github.com/garrynewman/bootil.git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = gmad-git
+
