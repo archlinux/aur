@@ -1,7 +1,7 @@
 pkgbase = i-nex
 	pkgdesc = System information tool like hardinfo, sysinfo
-	pkgver = 7.6.0
-	pkgrel = 5
+	pkgver = 7.6.1
+	pkgrel = 1
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = i-nex
 	depends = libcpuid
 	depends = lsb-release
 	depends = curl
-	depends = pastebinit
 	depends = procps-ng
 	conflicts = i-nex-git
 	backup = etc/i-nex/Database/i2c/devices.json
@@ -33,10 +32,8 @@ pkgbase = i-nex
 	backup = etc/i-nex/Database/intel.json
 	backup = etc/i-nex/Database/Opteron.json
 	backup = etc/i-nex/Database/Xeon.json
-	source = https://github.com/i-nex/I-Nex/archive/7.6.0.tar.gz
-	source = fix-compilation.patch
-	sha256sums = ad18bb753daa2d17432a0211aef7b19bc1416d5deea4a14a751802a3da998ea8
-	sha256sums = 3f2a24e0cbdcccdb2f872c3910d689753d6981dc08c0d896b6d6b5700408ec1d
+	source = https://github.com/i-nex/I-Nex/archive/7.6.1.tar.gz
+	sha256sums = 81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960
 
 pkgname = i-nex
 
