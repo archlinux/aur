@@ -2,8 +2,8 @@
 _pkgname=dwdweather2
 pkgname=python-${_pkgname}
 pkgver=0.11.1
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Client to access weather data from Deutscher Wetterdienst (DWD), the federal meteorological service in Germany"
 arch=('x86_64')
 url="https://github.com/panodata/dwdweather2"
 license=('MIT')

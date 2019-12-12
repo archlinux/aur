@@ -1,6 +1,7 @@
 pkgbase = python-dwdweather2
+	pkgdesc = Client to access weather data from Deutscher Wetterdienst (DWD), the federal meteorological service in Germany
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/panodata/dwdweather2
 	arch = x86_64
 	license = MIT
