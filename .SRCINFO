@@ -1,6 +1,6 @@
 pkgbase = lwks-beta
 	pkgdesc = Lightworks is a professional video editing suite
-	pkgver = 14.6.0.0.117868
+	pkgver = 2020.1.118776
 	pkgrel = 1
 	url = http://www.lwks.com/
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = lwks-beta
 	provides = lightworks
 	conflicts = lightworks
 	conflicts = lwks
-	source = http://downloads.lwks.com/Lightworks-14.6.0.0-Beta-117868.deb
-	sha256sums = 84ed9fc8419adda589809adb1bfa43c8f69681b0e04893fdc4b027d00d6aed89
+	source = http://downloads.lwks.com/Lightworks-2020.1-Beta-118776.deb
+	sha256sums = db4615b9b555a24e0e69faf50b35b0d59181b8035e0670ae195a6f46537c7580
 
 pkgname = lwks-beta
 
