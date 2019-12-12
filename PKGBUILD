@@ -4,7 +4,7 @@
 # Contributor: David Danier <david.danier@team23.de>
 
 pkgname=solr6
-pkgver=6.6.2
+pkgver=6.6.6
 pkgrel=1
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
@@ -25,7 +25,7 @@ options=(!strip)
 validpgpkeys=('052C5B48A480B9CEA9E218A5F98C13CFA5A135D8'  # "Jim Ferenczi (CODE SIGNING KEY) <jimczi@apache.org>"
               '2085660D9C1FCCACC4A479A3BF160FF14992A24C'  # "Ishan Chattopadhyaya <ishan@apache.org>"
               'D84A760EFB229AC156D5082ECDDE30C37F3DE8DA')
-sha256sums=('a41594888a30394df8819c36ceee727dd2ed0a7cd18b41230648f1ef1a8b0cd2'
+sha256sums=('149ec1a7ee950867ab6257a1a96246df79ccda983983389dc639220f3447b6e8'
             'SKIP'
             'e4ca86de2ef9425913280deeeec42d6e8ff310b08ea55d9156193ceef3c847bd'
             'a336c1a16742b100b3d28fe49722366477bb805e262f36b83cc2fdd9e85d5bf9')
