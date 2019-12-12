@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.0.1
+	pkgver = 1.1.20
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -23,16 +23,12 @@ pkgbase = brave
 	optdepends = pepper-flash: Adobe Flash support
 	optdepends = libgnome-keyring: Enable GNOME keyring support
 	optdepends = sccache: For faster builds
-	source = git+https://github.com/brave/brave-browser.git#tag=v1.0.1
+	source = git+https://github.com/brave/brave-browser.git#tag=v1.1.20
 	source = brave-vaapi-enable.patch
 	source = chromium-vaapi-fix.patch
 	source = brave-launcher
 	source = brave-browser.desktop
-	source = add-missing-include-for-unique_ptr.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/add-missing-include-for-unique_ptr.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
 	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
-	source = chromium-widevine.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
-	source = dns_util-make-DohUpgradeEntry-non-const.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/dns_util-make-DohUpgradeEntry-non-const.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
-	source = fix-shutdown-crash-in-ProfileManager.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-shutdown-crash-in-ProfileManager.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
 	source = fix-spammy-unique-font-matching-log.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-spammy-unique-font-matching-log.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
 	source = icu65.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu65.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
 	sha256sums = SKIP
@@ -40,11 +36,7 @@ pkgbase = brave
 	sha256sums = 7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
 	sha256sums = 2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488
-	sha256sums = 49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
-	sha256sums = d081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b
-	sha256sums = 69694ab12a5ced389916c0c5e8c7bdc191544f576b134ddfb2fe9d4ed9ec4494
-	sha256sums = 4f81612c28957987f7344d8ce2b95a4a63136a8319c9751819436b11c62df057
 	sha256sums = 6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19
 	sha256sums = 1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41
 
