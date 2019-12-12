@@ -2,15 +2,15 @@
 
 pkgname=python-miflora
 _pkgname=miflora
-pkgver=0.4
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc="Library for Xiaomi Mi plant sensor"
-url="https://github.com/open-homeautomation/miflora"
+url="https://pypi.org/project/miflora"
 arch=("any")
 license=("MIT")
 depends=("python" "python-btlewrap")
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/open-homeautomation/miflora/archive/v${pkgver}.tar.gz)
-sha512sums=("8a22c98422030b02c0ec271ce9634211b71f1869fb384560394a29146de2c844a77e29c9f38ed2c9696c9185d4d0b00861f6832cb9ed5d28848e3a9aaba94de1")
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/m/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('d19faeecdc75732c09f7912b9c234e0841c6a9a761e01592b5a542a10815d5a970edc09fc1c264d9cd31264975217c721b8be111fa2aa29a26b06e1f745ca44c')
 
 build() {
   cd ${_pkgname}-${pkgver}
