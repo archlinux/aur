@@ -14,8 +14,3 @@ pkgname = python-aspy-yaml
 	depends = python
 	depends = python-yaml
 
-pkgname = python2-aspy-yaml
-	pkgdesc = Python 2 extensions to pyyaml
-	depends = python2
-	depends = python-yaml
-

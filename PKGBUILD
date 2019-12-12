@@ -2,7 +2,7 @@
 # Contributor: Serkan Hosca <serkan@hosca.com>
 
 pkgbase=python-aspy-yaml
-pkgname=(python-aspy-yaml python2-aspy-yaml)
+pkgname=(python-aspy-yaml)
 pypi_name=aspy.yaml
 pkgver=1.3.0
 pkgrel=1
@@ -15,15 +15,12 @@ source=("https://pypi.io/packages/source/a/${pypi_name}/${pypi_name}-${pkgver}.t
 md5sums=('1959a34873a6bdc1fba807023804867e')
 
 prepare() {
-  cp -a ${pypi_name}-${pkgver}{,-python2}
+  cp -a ${pypi_name}-${pkgver}
 }
 
 build() {
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}/${pypi_name}-${pkgver}-python2"
-  python2 setup.py build
 }
 
 package_python-aspy-yaml() {
@@ -32,14 +29,6 @@ package_python-aspy-yaml() {
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
-}
-
-package_python2-aspy-yaml() {
-  pkgdesc='Python 2 extensions to pyyaml'
-  depends=('python2' 'python-yaml')
-
-  cd "${srcdir}/${pypi_name}-${pkgver}-python2"
-  python2 setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
