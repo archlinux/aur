@@ -1,6 +1,6 @@
 pkgbase = labplot-git
 	pkgdesc = KDE Application for interactive graphing and analysis of scientific data, build from git
-	pkgver = 2.7.0.r21.gdb85858bb
+	pkgver = 2.7.0.r43.g3d5066e07
 	pkgrel = 1
 	url = https://labplot.kde.org/
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = labplot-git
 	makedepends = kdesignerplugin
 	makedepends = kdoctools
 	makedepends = git
-	depends = cantor
 	depends = netcdf
 	depends = cfitsio
 	depends = fftw
