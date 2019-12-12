@@ -6,7 +6,7 @@
 SUMO_HOME='/usr/share/sumo'
 pkgname=('sumo' 'sumo-doc')
 pkgbase=sumo
-pkgver=1.3.1
+pkgver=1.4.0
 _pkgver="${pkgver//./_}"
 pkgrel=2
 pkgdesc="Traffic simulation modelling road vehicles, public transport and pedestrians."
@@ -18,7 +18,7 @@ makedepends=('cmake' 'help2man' 'swig' 'gtest')
 source=("https://github.com/eclipse/sumo/archive/v${_pkgver}.tar.gz"
         "${pkgbase}.desktop")
 
-sha256sums=('a1c1f62792b8024fd3ba7a7c6b86cc6196922720c65ee50eed67ac7e2b79c6e0'
+sha256sums=('5e37cd3420601052eed5af33688803453841a1e59b0cac90b48db236f61d1354'
             'd9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213')
 
 prepare() {
@@ -46,8 +46,6 @@ build() {
 # }
 
 package_sumo() {
-    # I can't see how is backup useful?
-    # backup=("etc/profile.d/sumo.sh")
     optdepends=('java-runtime-common: for executing Jar files like TraCI4J'
                 "python2: for executing various python scripts in $SUMO_HOME/tools")
 
