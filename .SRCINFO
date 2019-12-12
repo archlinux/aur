@@ -1,6 +1,6 @@
 pkgbase = ros-kinetic-moveit-ros-perception
 	pkgdesc = ROS - Components of MoveIt connecting to perception.
-	pkgver = 0.9.15
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://moveit.ros.org
 	arch = any
@@ -41,10 +41,12 @@ pkgbase = ros-kinetic-moveit-ros-perception
 	depends = glut
 	depends = glew
 	depends = mesa-libgl
-	source = ros-kinetic-moveit-ros-perception-0.9.15-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_perception/0.9.15-0.tar.gz
+	source = ros-kinetic-moveit-ros-perception-1.0.2-0.tar.gz::https://github.com/ros-gbp/moveit-release/archive/release/kinetic/moveit_ros_perception/1.0.2-0.tar.gz
 	source = moveit_ros_perception_boost.patch
-	sha256sums = ac7f565766ee1c96434711462dd6b82235b3668c2cec91724aa8b745081c46cb
+	source = package.xml_version.patch
+	sha256sums = f0c7751a685c9e3d5c6760f3f87ef393d8022a11698ace7209670e8538708e4b
 	sha256sums = 69d478cedc9f31464063ace7ea346f2ac218def046154a0b8bb84fcb1b1a94a8
+	sha256sums = 7160a9d44ffe169f5b9f6750f0d21cd12ab3fe06d38fe77bb7551bd73a059006
 
 pkgname = ros-kinetic-moveit-ros-perception
 

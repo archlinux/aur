@@ -1,0 +1,17 @@
+*** a/package.xml	2019-12-12 22:38:43.395610271 +0100
+--- b/package.xml	2019-12-12 22:38:25.368926599 +0100
+***************
+*** 1,6 ****
+  <package>
+    <name>moveit_ros_perception</name>
+!   <version>0.9.17</version>
+    <description>Components of MoveIt! connecting to perception</description>
+  
+    <author email="isucan@google.com">Ioan Sucan</author>
+--- 1,6 ----
+  <package>
+    <name>moveit_ros_perception</name>
+!   <version>1.0.2</version>
+    <description>Components of MoveIt! connecting to perception</description>
+  
+    <author email="isucan@google.com">Ioan Sucan</author>
