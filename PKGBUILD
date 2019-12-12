@@ -5,8 +5,8 @@ _module="$_name"
 
 pkgname=("python-$_module" "python2-$_module")
 pkgdesc="Airspeed is a powerful and easy-to-use templating engine for Python that aims for a high level of compatibility with the popular Velocity library for Java"
-pkgver="0.5.11"
-pkgrel=2
+pkgver="0.5.13"
+pkgrel=1
 url="https://github.com/purcell/airspeed"
 license=('BSD')
 arch=('any')

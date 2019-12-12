@@ -1,13 +1,13 @@
 pkgbase = python-airspeed
 	pkgdesc = Airspeed is a powerful and easy-to-use templating engine for Python that aims for a high level of compatibility with the popular Velocity library for Java
-	pkgver = 0.5.11
-	pkgrel = 2
+	pkgver = 0.5.13
+	pkgrel = 1
 	url = https://github.com/purcell/airspeed
 	arch = any
 	license = BSD
 	makedepends = python-pbr>=1.9
 	makedepends = python2-pbr>=1.9
-	source = https://github.com/purcell/airspeed/archive/0.5.11.tar.gz
+	source = https://github.com/purcell/airspeed/archive/0.5.13.tar.gz
 	md5sums = 2b807aab48510aef3cab2224d745d895
 
 pkgname = python-airspeed
