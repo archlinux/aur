@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aisleriot-git
-pkgver=3.22.9.r26.g0183c06d
+pkgver=3.22.10.r3.g2ce4a2ce
 pkgrel=1
 pkgdesc="A collection of patience games written in guile scheme"
 url="https://wiki.gnome.org/Apps/Aisleriot"
@@ -11,9 +11,10 @@ license=('GPL')
 depends=('guile' 'gtk3' 'qt5-svg')
 provides=('aisleriot')
 conflicts=('aisleriot')
-makedepends=('appdata-tools' 'libkdegames' 'gnome-common' 'git' 'meson')
-optdepends=('pysolfc: PySol card sets'
-            'pysolfc-cardsets: PySol card sets')
+makedepends=('appdata-tools' 'gnome-common' 'git' 'meson')
+optdepends=('pysolfc: for PySol card sets'
+            'pysolfc-cardsets: for PySol card sets'
+	   'libkdegames: for KDE cardsets ')
 options=('!strip' '!emptydirs')
 source=("git+https://gitlab.gnome.org/GNOME/aisleriot.git")
 sha256sums=('SKIP')
