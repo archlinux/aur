@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-boost
 	pkgdesc = Free peer-reviewed portable C++ source libraries (mingw-w64)
-	pkgver = 1.71.0
-	pkgrel = 4
+	pkgver = 1.72.0
+	pkgrel = 1
 	url = http://www.boost.org/
 	arch = any
 	license = custom
@@ -13,10 +13,10 @@ pkgbase = mingw-w64-boost
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2
+	source = https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.bz2
 	source = boost-mingw.patch
 	source = jam-wine.patch
-	sha256sums = d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee
+	sha256sums = 59c9b274bc451cf91a9ba1dd2c7fdcaf5d60b1b3aa83f2c9fa143417cc660722
 	sha256sums = 11a5c39852e0513d871a0f74c2f1224efc602a0404db7cd83190712e49a6d3bc
 	sha256sums = 5ca770bf155dbed4f96b1fcd358d515ad77a1ca7ae5e6d6b180939beceff05af
 
