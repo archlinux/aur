@@ -12,7 +12,7 @@ source=(
     "https://github.com/symfony/cli/releases/download/v${pkgver}/symfony_linux_amd64.gz"
 )
 noextract=('symfony_linux_amd64.gz')
-sha256sums=('d8717433d2e511863bdbd5d239aeb9024a04cf0e34de155cf27e3a36f1cc9402')
+sha256sums=('f89cc5c8b56ae44d8c1334f91cea9068d80a5c870b9c80a4e396dbab6b13de98')
 depends=('gzip')
 
 prepare() {
