@@ -2,7 +2,7 @@
 
 pkgname=flit
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
 url="http://$pkgname.readthedocs.io"
@@ -27,4 +27,5 @@ package() {
 	unzip "$_wheel_cli" -d "$site"
 	unzip "$_wheel_core" -d "$site"
 	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel_cli"
+	chmod 644 "$site/"*.dist-info/*
 }
