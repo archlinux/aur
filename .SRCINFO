@@ -1,7 +1,7 @@
 pkgbase = python-hgapi
 	pkgdesc = Python API to Mercurial using the command-line interface
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/haard/hgapi
 	arch = any
 	license = MIT
