@@ -1,15 +1,14 @@
 # $Id$
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-
 pkgname=python-setuptools-docs
-pkgver=38.2.4
+pkgver=42.0.2
 pkgrel=1
 pkgdesc="Documentation for Python Setuptools module."
 arch=('any')
 url='https://github.com/pypa/setuptools'
 license=('MIT')
 source=("$pkgname-$pkgver.zip::https://readthedocs.org/projects/setuptools/downloads/htmlzip/latest/")
-sha256sums=('cd4827caee9d64584ca434e1b67b44b6594028b38c00e140ebcab9c3d77ad66e')
+sha256sums=('1df5702c866aea6e5b3932ac426ea172d01dfe50f488f270841b58d74f77be6a')
 
 package()
 {
