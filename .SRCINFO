@@ -1,0 +1,26 @@
+pkgbase = python-arcgis
+	pkgdesc = ArcGIS API for Python
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://developers.arcgis.com/python/
+	arch = x86_64
+	license = custom
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-pyshp
+	depends = python-matplotlib
+	depends = jupyter-notebook
+	depends = python-ipywidgets
+	depends = jupyter-widgetsnbextension
+	depends = python-keyring
+	optdepends = python-beautifulsoup4: OAuth2 authenticating support
+	optdepends = python-dill: needed to create Python toolboxes from methods
+	source = https://files.pythonhosted.org/packages/source/a/arcgis/arcgis-1.7.0.tar.gz
+	source = LICENSE.pdf::http://www.esri.com/LEGAL/pdfs/mla_e204_e300/english.pdf
+	sha512sums = 784c3e98fde24d4f805db77a40e4a911a5459ae45b5562ca1c55c523f1d85cfbf44cb8fabe0f2b2f852d241b339b8c66e0ca68c745f36f0835283180867fdd55
+	sha512sums = a3df14c41af501e198468faa379f8f9101510476acde2f91697879677e6f587275310def73a2765043731f5fe785817081e8e8b9e132122eaf59bb6309be61f2
+
+pkgname = python-arcgis
+
