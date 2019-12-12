@@ -1,7 +1,7 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 
 pkgname=xenontrade
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc='Path of Exile trading overlay'
 arch=(x86_64)
