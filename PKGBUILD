@@ -2,7 +2,7 @@
 # Contributor: Frederick Gnodtke <frederick@gnodtke.net>
 
 pkgname=onivim2-git
-pkgver=643.72b120f8
+pkgver=657.4a7fa181
 pkgrel=1
 pkgdesc='Native, lightweight modal code editor'
 arch=('any')
@@ -12,8 +12,11 @@ makedepends=('git' 'esy' 'ragel' 'nodejs' 'wget' 'bzip2' 'esy' 'fontconfig' 'fus
               'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama' 'libxrandr'
               'libxt' 'libxxf86vm' 'm4' 'nodejs' 'ragel' 'wget' 'fuse2')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/onivim/oni2.git#branch=master")
-sha512sums=('SKIP')
+install='onivim2.install'
+source=("${pkgname}::git+https://github.com/onivim/oni2.git#branch=master"
+        onivim2.install)
+sha512sums=('SKIP'
+            '2378a4ee00d60eee252fb2c06ccb79ce011e2d3ae45efefbfdf47eaea85659bf8332cc3553bc53b595928eef858937efc92d5f1c282a27c507200424e1d537be')
 
 pkgver() {
   cd ${pkgname}
@@ -54,6 +57,6 @@ package() {
   # fix permissions
   find "${pkgdir}" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}"/opt/onivim2/AppRun \
-    "${pkgdir}"/opt/onivim2/usr/bin/{Oni2*,node,rg} \
+    "${pkgdir}"/opt/onivim2/usr/bin/{Oni2*,node,rg,rls} \
     "${pkgdir}"/opt/onivim2/usr/lib/*
 }
