@@ -7,8 +7,6 @@ pkgbase = python-timezonefinder
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/source/t/timezonefinder/timezonefinder-4.1.0.tar.gz
 	source = python3.patch
 	sha256sums = 0569558a0343e5c0ff6a6d92dc30725ddedec13b6b57fa642c70121dd33496a3
@@ -16,7 +14,4 @@ pkgbase = python-timezonefinder
 
 pkgname = python-timezonefinder
 	depends = python-numpy
-
-pkgname = python2-timezonefinder
-	depends = python2-numpy
 
