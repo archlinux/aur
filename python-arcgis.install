@@ -1,0 +1,11 @@
+post_install=(
+    jupyter nbextension enable --py --sys-prefix ${_pkgname}-map-ipywidget
+)
+
+pre_upgrade=(
+    jupyter nbextension disable --py --sys-prefix ${_pkgname}-map-ipywidget
+)
+
+post_upgrade=(
+    jupyter nbextension enable --py --sys-prefix ${_pkgname}-map-ipywidget
+)

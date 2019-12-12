@@ -1,7 +1,7 @@
 pkgbase = python-arcgis
 	pkgdesc = ArcGIS API for Python
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.arcgis.com/python/
 	arch = x86_64
 	license = custom
@@ -12,6 +12,7 @@ pkgbase = python-arcgis
 	depends = python-pyshp
 	depends = python-matplotlib
 	depends = jupyter-notebook
+	depends = jupyterlab
 	depends = python-ipywidgets
 	depends = jupyter-widgetsnbextension
 	depends = python-keyring

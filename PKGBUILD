@@ -2,7 +2,7 @@
 _pkgname=arcgis
 pkgname=python-${_pkgname}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ArcGIS API for Python"
 arch=('x86_64')
 url="https://developers.arcgis.com/python/"
@@ -14,6 +14,7 @@ depends=(
     'python-pyshp'
     'python-matplotlib'
     'jupyter-notebook'
+    'jupyterlab'
     'python-ipywidgets'
     'jupyter-widgetsnbextension'
     'python-keyring'
@@ -40,5 +41,5 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm644 "${srcdir}/LICENSE.pdf" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
