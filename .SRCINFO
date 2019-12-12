@@ -1,7 +1,7 @@
 pkgbase = python-sphinxcontrib-fulltoc
 	pkgdesc = Include a full table of contents in your Sphinx HTML sidebar
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sphinx-contrib/fulltoc
 	arch = any
 	license = GPL

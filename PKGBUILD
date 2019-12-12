@@ -4,7 +4,7 @@ pkgbase='python-sphinxcontrib-fulltoc'
 pkgname=('python-sphinxcontrib-fulltoc'
          'python2-sphinxcontrib-fulltoc')
 pkgver='1.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Include a full table of contents in your Sphinx HTML sidebar"
 arch=('any')
 url="https://github.com/sphinx-contrib/fulltoc"
