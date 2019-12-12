@@ -6,8 +6,8 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2019.9
-pkgrel=12
+pkgver=2019.10
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 makedepends=('git' 'cargo' 'npm' 'rpm')
 install="$pkgname.install"
-_commit='85f5f891ca36ff6e55d5fa22d685694726a61d12'
+_commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
         "$pkgname.desktop"
@@ -39,8 +39,8 @@ prepare() {
 	git verify-tag "$pkgver"
 
 	# Verify git commit
-	#cd "$srcdir/mullvadvpn-app-binaries"
-	#git verify-commit "$_commit"
+	cd "$srcdir/mullvadvpn-app-binaries"
+	git verify-commit "$_commit"
 }
 
 build() {
