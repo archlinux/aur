@@ -1,7 +1,7 @@
 pkgbase = python-django-markupfield
 	pkgdesc = An implementation of a custom MarkupField for Django
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamesturk/django-markupfield
 	arch = any
 	license = BSD
