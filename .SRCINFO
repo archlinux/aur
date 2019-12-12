@@ -1,7 +1,7 @@
 pkgbase = uftrace
 	pkgdesc = Tool to trace and analyze execution of a program written in C/C++
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/namhyung/uftrace
 	arch = armv6h
 	arch = armv7h
