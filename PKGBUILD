@@ -6,7 +6,7 @@
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-git
 epoch=1
-pkgver=4.14.0+63+gac0302b
+pkgver=4.15.0+22+g13712f6
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('i686' 'x86_64')
