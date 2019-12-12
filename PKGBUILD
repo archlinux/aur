@@ -3,7 +3,7 @@
 pkgname=('python-django-crontab' 'python2-django-crontab')
 pkgdesc="Dead simple crontab powered job scheduling for django"
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 url="https://github.com/kraiz/django-crontab"
 license=('MIT')
 arch=('any')
