@@ -12,7 +12,7 @@ license=('BSD')
 arch=('any')
 makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
 source=("https://github.com/purcell/airspeed/archive/$pkgver.tar.gz")
-md5sums=('2b807aab48510aef3cab2224d745d895')
+md5sums=('d14ab42cb70a7f04ac6bafc12a50f82c')
 
 build() {
     cd "$_name-$pkgver"
