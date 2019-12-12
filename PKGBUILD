@@ -3,7 +3,7 @@
 
 pkgname=peru
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for fetching code"
 arch=('any')
 depends=('git' 'python' 'python-docopt' 'python-yaml')
