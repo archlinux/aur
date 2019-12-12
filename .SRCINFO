@@ -1,11 +1,10 @@
 pkgbase = nbopen
 	pkgdesc = Opens an Jupyter notebook in the best available server
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/takluyver/nbopen
 	arch = any
 	license = BSD
-	makedepends = flit
 	makedepends = install-wheel-scripts
 	depends = python
 	depends = jupyter
