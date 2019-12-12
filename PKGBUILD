@@ -4,7 +4,7 @@
 pkgname=php-oci8
 _extname=oci8
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP extension for OCI8"
 arch=('x86_64')
 url="https://pecl.php.net/package/${_extname}"
