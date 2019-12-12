@@ -6,9 +6,9 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2019.10
-_channel=beta
-pkgver=${_pkgver}.${_channel}2
-pkgrel=3
+_channel=stable
+pkgver=${_pkgver}.${_channel}
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}2"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit"
         "${pkgname%-beta}.desktop"
         'update-relays.sh')
@@ -39,7 +39,7 @@ prepare() {
 	git submodule update
 
 	# Verify git tag
-	git verify-tag "${_pkgver}-${_channel}2"
+	git verify-tag "${_pkgver}-${_channel}"
 
 	# Verify git commit
 	cd "$srcdir/mullvadvpn-app-binaries"

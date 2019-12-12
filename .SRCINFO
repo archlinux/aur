@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (latest/beta release)
-	pkgver = 2019.10.beta2
-	pkgrel = 3
+	pkgver = 2019.10.stable
+	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mullvad-vpn-beta
 	depends = nss
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2019.10-beta2
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2019.10
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=0c1a0aca41492fbb9ef1f187122e2f5bda0927ba
 	source = mullvad-vpn.desktop
 	source = update-relays.sh
