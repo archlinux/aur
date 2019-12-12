@@ -6,10 +6,10 @@
 pkgname=simgear
 pkgver=2019.1.1
 _pkgver=${pkgver%.*}
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=(x86_64)
-depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph34')
+depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'mesa')
 license=("GPL")
 url="http://www.flightgear.org/"

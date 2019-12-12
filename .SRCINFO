@@ -1,7 +1,7 @@
 pkgbase = simgear
 	pkgdesc = A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications.
 	pkgver = 2019.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.flightgear.org/
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = simgear
 	depends = glut
 	depends = freealut
 	depends = plib
-	depends = openscenegraph34
+	depends = openscenegraph
 	options = makeflags
 	options = staticlibs
 	source = https://downloads.sourceforge.net/project/flightgear/release-2019.1/simgear-2019.1.1.tar.bz2
