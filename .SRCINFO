@@ -1,10 +1,12 @@
 pkgbase = python-sphinxcontrib-autoprogram
 	pkgdesc = This contrib extension provides an automated way to document CLI programs
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sphinx-contrib/autoprogram
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/93/d4/ded802ffad1fd1870d3abbb7cfa1c31b059dc46c68f6a66b73360621f6c3/sphinxcontrib-autoprogram-0.1.5.tar.gz
 	md5sums = 79ff83740db65b55c623c4ed676562a6
 
