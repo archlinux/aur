@@ -1,7 +1,7 @@
 pkgbase = python-pyephem
 	pkgdesc = PyEphem provides scientific-grade astronomical computations
 	pkgver = 3.7.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rhodesmill.org/pyephem/
 	arch = i686
 	arch = x86_64
