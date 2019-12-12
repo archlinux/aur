@@ -1,6 +1,6 @@
 pkgbase = motrix-git
 	pkgdesc = A full-featured download manager
-	pkgver = 1.4.1.r534.2744db2
+	pkgver = 1.4.1.r543.4240dee
 	pkgrel = 1
 	url = https://motrix.app/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = motrix-git
 	depends = aria2
 	depends = electron
 	depends = nodejs
-	provides = motrix=1.4.1.r534.2744db2
+	provides = motrix=1.4.1.r543.4240dee
 	conflicts = motrix
 	source = motrix::git+https://github.com/agalwood/Motrix.git
 	sha256sums = SKIP
