@@ -1,6 +1,6 @@
 pkgbase = python-django-polymorphic
 	pkgdesc = Polymorphic Models for Django
-	pkgver = 2.0.3
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/django-polymorphic/django-polymorphic
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-django-polymorphic
 	makedepends = python-setuptools
 	makedepends = python2
 	makedepends = python2-setuptools
-	source = https://github.com/django-polymorphic/django-polymorphic/archive/v2.0.3.tar.gz
-	sha256sums = b50ab67303f785b7f12da93afe450e04d63af58403bcca88f779b16bf098ce14
+	source = https://github.com/django-polymorphic/django-polymorphic/archive/v2.1.2.tar.gz
+	sha256sums = d20ea36b77840a39f277f4ee8643c295c9d439dc6f7f1571282f2487acc2ccdb
 
 pkgname = python-django-polymorphic
 	depends = python-django
