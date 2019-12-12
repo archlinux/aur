@@ -2,16 +2,16 @@
 
 pkgname=calligra-plan
 pkgdesc="A project management application intended for managing moderately large projects with multiple resources"
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 arch=(x86_64)
 url='https://www.calligra-suite.org/'
 license=(FDL1.2 GPL2 LGPL)
-depends=(kinit kcmutils akonadi-contacts kdiagram kactivities kholidays kcalendarcore khtml qca)
+depends=(kinit akonadi-contacts kdiagram kactivities kholidays kcalendarcore khtml qca)
 makedepends=(extra-cmake-modules kdoctools boost)
 conflicts=('calligra<3.1.0')
 source=("https://download.kde.org/stable/calligra/$pkgver/calligraplan-$pkgver.tar.xz"{,.sig})
-sha256sums=('03abab499676e269a5462628190df01ec9f24cb9452d0085adf5741cb0d335a8'
+sha256sums=('e10c6f4a6fbf40da422d98d5138201f7db52236181c25641402e4ae4b0add336'
             'SKIP')
 validpgpkeys=(05D00A8B73A686789E0A156858B9596C722EA3BD  # Boudewijn Rempt <foundation@krita.org>
               42A60D06F449E895F40F09C01638B8A616108B8A) # Dag Andersen <danders@get2net.dk>
