@@ -1,6 +1,6 @@
 pkgbase = souffle
 	pkgdesc = Soufflé is a translator of declarative Datalog programs into the C++ language
-	pkgver = 1.6.1
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/souffle-lang/souffle
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = souffle
 	depends = mcpp
 	provides = souffle
 	conflicts = souffle-git
-	source = https://github.com/souffle-lang/souffle/archive/1.6.1.zip
-	md5sums = 3135f0bfd20d45e8352132e27a8e00e4
+	source = https://github.com/souffle-lang/souffle/archive/1.7.1.zip
+	md5sums = 30f6420e5ce9aafca32b5c2099a89237
 
 pkgname = souffle
 
