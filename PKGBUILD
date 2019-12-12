@@ -4,7 +4,7 @@
 _pkgname=async-timeout
 pkgname=python-"$_pkgname"-gns3
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Asyncio-compatible timeout class (GNS3)'
 arch=('any')
 url="https://github.com/aio-libs/async-timeout"
