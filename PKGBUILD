@@ -2,7 +2,7 @@
 # Contributor: kappa <kappacurve@gmail.com>
 
 pkgname=wings3d
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(gendesk imagemagick)
 optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         "$pkgname.sh")
-sha256sums=('4325a4c58df77a2b109cbd0046b427e2d3f151d5526f8c2f0848e04db48b95f5'
+sha256sums=('95ecf84a8f49bc00b983643e7ccd807f64a3b8b88253037a8ccefbe7a3bedff8'
             '8e5e8f31d47ea55a0e9d311b7cc0eaac4e6050ac40506d3548b6ebae5d3618be')
 _p=${pkgname%3d}-$pkgver
 
