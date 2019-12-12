@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=instalooter
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Another API-less Instagram pictures and videos downloader'
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-contexter' 'python-mock' 'python-parameterized'
 optdepends=('python-piexif: to add EXIF metadata to downloaded pictures'
             'python-pillow: to add EXIF metadata to downloaded pictures')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('7a50cea27bb813a5907f9377ed1faf144800cd3ffdd4d0a3c875f347f21d670e')
+sha256sums=('aa65caaff3b43bd05288476765282165c7ca78e9de2e8ab9b796977b73d0320a')
 
 build() {
   cd $pkgname-$pkgver
