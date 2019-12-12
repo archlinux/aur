@@ -1,0 +1,13 @@
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cd /usr/share/jed/lib
+  rm *.slc *.dfa
+}
+
+post_install() {
+  cd /usr/share/jed/lib
+  /usr/bin/jed -batch -n -l preparse.sl
+}
