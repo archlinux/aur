@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://icq.com/linux/"
 license=("Apache")
 depends=('libxcursor' 'libxinerama' 'libxrandr')
-source=('hhttps://hb.bizmrg.com/icq-www/linux/x64/icq.tar.xz'
+source=('https://hb.bizmrg.com/icq-www/linux/x64/icq.tar.xz'
         'icq.png::https://raw.githubusercontent.com/mail-ru-im/im-desktop/master/gui/resources/main_window/logo_small_200.png'
         'icq.desktop')
 sha256sums=('4ac69d0e837a832ed92b5edbb892d7900a521bff7b622ff1b6b51ad1ccf53213'
