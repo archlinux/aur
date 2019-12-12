@@ -1,6 +1,6 @@
 pkgbase = pygobject-tutorial-git
 	pkgdesc = The PyGObject Tutorial in html format.
-	pkgver = r227.f8d443c
+	pkgver = r229.db51eb6
 	pkgrel = 1
 	url = https://github.com/sebp/PyGObject-Tutorial
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgbase=pygobject-tutorial-git
 pkgname=('pygobject-tutorial-git' 'pygobject-tutorial-devhelp-git')
-pkgver=r227.f8d443c
+pkgver=r229.db51eb6
 pkgrel=1
 pkgdesc="The PyGObject Tutorial in html format."
 arch=('any')
