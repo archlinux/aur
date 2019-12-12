@@ -1,7 +1,7 @@
 # Maintainer: Hiroshi Hatake <cosmo0920.wp[at]gmail.com>
 
 pkgname=mroonga
-pkgver=9.09
+pkgver=9.10
 pkgrel=1
 pkgdesc="Fast fulltext search on MySQL(MariaDB and groonga bundled package)."
 mariadbver=10.3.18
@@ -98,7 +98,7 @@ package() {
     install -Dm644 ../mariadb.service "$pkgdir"/usr/lib/systemd/system/mysqld.service
     install -Dm644 ../mariadb-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/mysql.conf
 }
-sha1sums=('0d5b53b8d48468f5275715d3be2e89658d4c47f0'
+sha1sums=('4f8f3df3deff24a36e471e82e84c34724cc0b3c4'
           '922a317edd6f44baacc49831ca278e7a9878a363'
           '4bc34244fc4b578c155c8cd569d952a97a476f10'
           '206e9f7ba5357027becc2491e0987442f684d63e'
