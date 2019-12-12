@@ -4,7 +4,7 @@
 
 pkgname=lab
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub-like tool for GitLab (tagged release)"
 arch=('x86_64')
 url="https://zaquestion.github.io/lab/"
@@ -26,7 +26,7 @@ build () {
     go build \
         -gcflags "all=-trimpath=$PWD" \
         -asmflags "all=-trimpath=$PWD" \
-        -ldflags "-extldflags $LDFLAGS"
+        -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver"
 }
 
 package() {
