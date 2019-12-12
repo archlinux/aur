@@ -38,6 +38,8 @@ build() {
   # Keep downloaded dependencies inside srcdir
   GOPATH="$srcdir/build"
   go mod vendor
+
+  # Allow cleanup (makepkg --clean)
   chmod -R +w "$GOPATH"
 
   for cmd in nebula-cert nebula-service nebula; do
