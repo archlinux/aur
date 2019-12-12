@@ -1,13 +1,13 @@
 pkgbase = r-spam
 	pkgdesc = SPArse Matrix
-	pkgver = 2.4.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spam
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = LGPL2
 	makedepends = gcc-fortran
-	depends = r
+	depends = r>=3.1
 	depends = r-dotcall64
 	optdepends = r-spam64
 	optdepends = r-fields
@@ -17,8 +17,8 @@ pkgbase = r-spam
 	optdepends = r-truncdist
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = http://cran.r-project.org/src/contrib/spam_2.4-0.tar.gz
-	md5sums = cb6959bb0c00ae005f1f0e8d57027d1c
+	source = http://cran.r-project.org/src/contrib/spam_2.5-1.tar.gz
+	md5sums = c6dc0cc6c2701ff7ca67d5b4b4bbc87e
 
 pkgname = r-spam
 
