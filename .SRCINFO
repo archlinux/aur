@@ -1,0 +1,20 @@
+pkgbase = niftyseg-git
+	pkgdesc = Programs to perform EM based segmentation of images in nifti or analyse format
+	pkgver = 1.0.r331.2782377
+	pkgrel = 1
+	url = https://github.com/KCL-BMEIS/NiftySeg
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = bash
+	depends = eigen
+	depends = zlib
+	provides = niftyseg=1.0.r331.2782377
+	conflicts = niftyseg
+	source = NiftySeg::git+https://github.com/KCL-BMEIS/NiftySeg.git
+	sha512sums = SKIP
+
+pkgname = niftyseg-git
+
