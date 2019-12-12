@@ -1,7 +1,7 @@
 pkgbase = python-habitipy
 	pkgdesc = A set of scripts to interact with Habitica
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ASMfreaK/habitipy
 	arch = any
 	license = MIT
