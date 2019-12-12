@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem
-pkgver=4.4.2
-_pkgver=4.4-2
-pkgrel=3
+pkgver=4.4.3
+_pkgver=4.4-3
+pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
@@ -13,12 +13,12 @@ depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack'
 makedepends=('texlive-core' 'gcc-fortran' 'unzip')
 conflicts=('freefem++')
 provides=('freefem++')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v$pkgver.tar.gz")
-sha256sums=('27f1ae979605bb3a85c231ca1b9621279a67fc1534318365ebb60638abc3409b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz")
+sha256sums=('57db0e1d8fc14b25265ebe155a9f748216b8a74e0d6af65b567b1beaade698b0')
 options=('!makeflags')
 
 prepare() {
-  cd FreeFem-sources-${pkgver}
+  cd FreeFem-sources-${_pkgver}
 
   autoreconf -i
   ./configure --prefix=/usr \
@@ -34,17 +34,17 @@ prepare() {
 }
 
 build() {
-  cd FreeFem-sources-${pkgver}
+  cd FreeFem-sources-${_pkgver}
   make 
 }
 
 check() {
-  cd FreeFem-sources-${pkgver}
+  cd FreeFem-sources-${_pkgver}
   make check || true
 }
 
 package() {
-  cd FreeFem-sources-${pkgver}
+  cd FreeFem-sources-${_pkgver}
   make -d DESTDIR="$pkgdir" install || true
 
   find "$pkgdir"/usr/lib/ff++/ -name "*.h" -exec chmod o+r {} \;

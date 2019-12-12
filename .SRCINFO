@@ -1,7 +1,7 @@
 pkgbase = freefem
 	pkgdesc = A PDE oriented language using the finite element method
-	pkgver = 4.4.2
-	pkgrel = 3
+	pkgver = 4.4.3
+	pkgrel = 1
 	url = https://freefem.org/index.html
 	arch = x86_64
 	license = LGPL
@@ -22,8 +22,8 @@ pkgbase = freefem
 	provides = freefem++
 	conflicts = freefem++
 	options = !makeflags
-	source = freefem-4.4.2.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v4.4.2.tar.gz
-	sha256sums = 27f1ae979605bb3a85c231ca1b9621279a67fc1534318365ebb60638abc3409b
+	source = freefem-4.4.3.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v4.4-3.tar.gz
+	sha256sums = 57db0e1d8fc14b25265ebe155a9f748216b8a74e0d6af65b567b1beaade698b0
 
 pkgname = freefem
 
