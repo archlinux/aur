@@ -1,5 +1,5 @@
 pkgbase = candybox
-	pkgdesc = Text Based Game
+	pkgdesc = Text Based Incremental Game
 	pkgver = 1
 	pkgrel = 1
 	url = https://github.com/candybox2
