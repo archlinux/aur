@@ -1,8 +1,9 @@
+# Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 # Maintainer: Christopher A. Williamson
 # Maintainer: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin
 _pkgname=ramboxpro
-pkgver=1.1.6
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -15,7 +16,7 @@ options=('!emptydirs')
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/RamboxPro-${pkgver}-linux-x64.deb")
 sha256sums=('49caf20d36575fc2f8a4011049682885493428770f8cf2ae9297203ba50f7407'
-            'f2b065d86b5ed1416163b901b2a19b731a71f9c51347445696ef8575b99626c6')
+            'c0656ffc27b7d38a7aaa6646675cba5a39aaac56918b94d851434e6476d4fed0')
 
 build() {
     rm -rf "${srcdir}/root"
