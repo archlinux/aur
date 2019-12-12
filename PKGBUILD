@@ -2,7 +2,7 @@
 
 pkgname=candybox
 pkgver=1
-pkgrel=2
+pkgrel=2.01
 pkgdesc="Text Based Incremental Game"
 arch=('any')
 url="https://github.com/candybox2"
@@ -13,7 +13,7 @@ makedepends=(git)
 source=("git+https://github.com/candybox2/candybox.git")
 sha256sums=('SKIP')
 
-desktop_entry="[Desktop Entry]\nType=Link\nIcon=/usr/share/pixmaps/candybox.ico\nName=Candy Box\nURL=/usr/bin/candybox\nTerminal=false\nHidden=false\nCategories=Game\nComment=Incremental Game By Aniwey"
+desktop_entry="[Desktop Entry]\nType=Link\nIcon=/usr/share/pixmaps/candybox.ico\nName=Candy Box\nExec=/usr/bin/candybox\nTerminal=false\nHidden=false\nCategories=Game\nComment=Incremental Game By Aniwey"
 build(){
 	echo -e '#!/bin/sh\nchromium -app="file:///opt/candybox/index.html"' >| ${srcdir}/candybox.sh
 	echo -e $desktop_entry >| ${srcdir}/Candy\ Box.desktop
