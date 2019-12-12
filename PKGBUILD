@@ -3,14 +3,14 @@
 _prefix=/opt/UnityBeta
 
 pkgname=unity-editor-beta-language-ja
-pkgver=2019.3.0f1
+pkgver=2019.3.0f3
 pkgrel=1
 pkgdesc="Japanese Language Pack (Preview)"
 arch=('x86_64')
 url='https://unity3d.com/'
 license=('custom')
 depends=('unity-editor-beta')
-source=("2019.3.0f1.ja::https://new-translate.unity3d.jp/v1/live/54/2019.3/ja")
+source=("2019.3.0f3.ja::https://new-translate.unity3d.jp/v1/live/54/2019.3/ja")
 md5sums=("SKIP")
 options=(!strip)
 PKGEXT='.pkg.tar' # Prevent compressing of the final package
