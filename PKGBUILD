@@ -3,8 +3,8 @@
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
-pkgver=2019.9
-pkgrel=6
+pkgver=2019.10
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -14,9 +14,9 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
 source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
-sha256sums=('4ba5b1c87cb5afdadbcfb37413bdd7ea72df139dd01815e9ca0f1c54f81f03e1'
+sha256sums=('78ade70b2400352a9e764e314811d3c2a758d6489b492160a12513771d5c9359'
             'SKIP')
-validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
+validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin at mullvad dot net>
 
 package() {
 	tar -xvf data.tar.xz -C "$pkgdir"
