@@ -1,6 +1,6 @@
 pkgbase = studio-3t
 	pkgdesc = The professional workspace for MongoDB (formerly known as MongoChef)
-	pkgver = 2019.6.1
+	pkgver = 2019.7.1
 	pkgrel = 1
 	url = https://studio3t.com
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = studio-3t
 	depends = gtk2
 	provides = studio-3t
 	replaces = mongochef
-	source = studio-3t-2019.6.1.tar.gz::https://download.studio3t.com/studio-3t/linux/2019.6.1/studio-3t-linux-x64.tar.gz
-	sha256sums = 5bf301cd0507cfcc5cc71ffc385b04e2a76d422e3c106c520e2e338421c80cf5
+	source = studio-3t-2019.7.1.tar.gz::https://download.studio3t.com/studio-3t/linux/2019.7.1/studio-3t-linux-x64.tar.gz
+	sha256sums = 98c94a1ed665d0460e3a69b18888c70187cca00f81dd298b0fc4674fedf763b9
 
 pkgname = studio-3t
 
