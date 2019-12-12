@@ -1,7 +1,7 @@
 pkgbase = muttprint
 	pkgdesc = An app to print email from CLI mail clients, mutt in particular
 	pkgver = 0.73_4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://muttprint.sf.net
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = muttprint
 	source = two_edge.patch
 	md5sums = 39b76058b838e3078df93236eda2c316
 	md5sums = 4a97e45b6df024272a8683403c9b73e6
-	md5sums = c0eb6dcfc195c95edf5e27c414f8290a
+	md5sums = 3e338bb7dbe33401e59dc53ca830508d
 	md5sums = 11846b8ebfba2b784ae64fb32abb7cfd
 
 pkgname = muttprint
