@@ -1,6 +1,6 @@
 pkgbase = video-contact-sheet
 	pkgdesc = A script to create contact sheets (preview images) from videos.
-	pkgver = 1.13.3
+	pkgver = 1.13.4
 	pkgrel = 1
 	url = http://p.outlyer.net/vcs/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = video-contact-sheet
 	optdepends = lsdvd: needed for DVD support
 	optdepends = perl: needed for DVD support
 	backup = etc/vcs.conf
-	source = http://p.outlyer.net/vcs/files/vcs-1.13.3.tar.gz
-	sha256sums = d27147dd515588123f78ee536b01f1ec51a2ec422f21473b2b9430a64166e7cc
+	source = http://p.outlyer.net/vcs/files/vcs-1.13.4.tar.gz
+	sha256sums = dc1d6145e10eeed61d16c3591cfe3496a6ac392c9c2f7c2393cbdb0cf248544b
 
 pkgname = video-contact-sheet
 

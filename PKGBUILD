@@ -1,6 +1,6 @@
-# Maintainer: Blaine Story <theblainestory at gmail com>
+# Maintainer: Blaine Story <aur at blainestory com>
 pkgname=video-contact-sheet
-pkgver=1.13.3
+pkgver=1.13.4
 pkgrel=1
 pkgdesc="A script to create contact sheets (preview images) from videos."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 backup=('etc/vcs.conf')
 
 source=("http://p.outlyer.net/vcs/files/vcs-${pkgver}.tar.gz")
-sha256sums=('d27147dd515588123f78ee536b01f1ec51a2ec422f21473b2b9430a64166e7cc')
+sha256sums=('dc1d6145e10eeed61d16c3591cfe3496a6ac392c9c2f7c2393cbdb0cf248544b')
 
 
 package() {
