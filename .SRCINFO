@@ -1,0 +1,26 @@
+pkgbase = openvslam-git
+	pkgdesc = A Versatile Visual SLAM Framework
+	pkgver = r428.e069085
+	pkgrel = 1
+	url = https://github.com/xdspacelab/openvslam
+	arch = x86_64
+	license = BSD2
+	makedepends = cmake
+	makedepends = git
+	depends = dbow2-openvslam-git
+	depends = eigen
+	depends = g2o
+	depends = intel-tbb
+	depends = metis
+	depends = openblas
+	depends = opencv
+	depends = openmp
+	depends = pangolin
+	depends = suitesparse
+	depends = yaml-cpp
+	provides = openvslam
+	source = openvslam-git-r428.e069085::git+https://github.com/xdspacelab/openvslam.git
+	sha256sums = SKIP
+
+pkgname = openvslam-git
+
