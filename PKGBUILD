@@ -3,7 +3,7 @@
 pkgname=python-imolecule
 pkgdesc="View molecules in the IPython notebook"
 pkgver=0.1.13
-pkgrel=1
+pkgrel=2
 url="https://github.com/patrickfuller/imolecule/"
 license=('GPL')
 arch=('any')
