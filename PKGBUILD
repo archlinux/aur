@@ -3,7 +3,7 @@
 # Contributor: Niklas <dev@n1klas.net>
 
 pkgname=qt5-mqtt
-_qtver=5.13.2
+_qtver=5.14.0
 pkgver=${_qtver/-/}
 pkgrel=1
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0"
@@ -12,7 +12,7 @@ url="http://qt-project.org/"
 license=(GPL3 custom)
 depends=(qt5-base)
 makedepends=(git)
-source=("git://code.qt.io/qt/qtmqtt.git#tag=v$pkgver")
+source=("git://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
 sha512sums=('SKIP')
 _pkgfqn=${pkgname/5-/}
 
