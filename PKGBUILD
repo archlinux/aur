@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd 'enroot'
-  CPPFLAGS="-DALLOW_SPECULATION -DINHERIT_FDS" make prefix='' exec_prefix=/usr datarootdir=/usr/share
+  CPPFLAGS="-DALLOW_SPECULATION -DINHERIT_FDS" make -j "$(nproc)" prefix='' exec_prefix=/usr datarootdir=/usr/share
 }
 
 package() {
