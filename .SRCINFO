@@ -1,0 +1,18 @@
+pkgbase = dbow2-openvslam-git
+	pkgdesc = Enhanced hierarchical bag-of-word library for C++ (modified to read/write in binary format)
+	pkgver = r39.adff102
+	pkgrel = 1
+	url = https://github.com/shinsumicco/DBoW2
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = git
+	depends = opencv
+	provides = dbow2
+	conflicts = dbow2-free
+	conflicts = dbow2-git
+	source = dbow2::git+https://github.com/shinsumicco/DBoW2.git
+	sha256sums = SKIP
+
+pkgname = dbow2-openvslam-git
+
