@@ -1,5 +1,5 @@
 pkgname=dpdk
-pkgver=19.08
+pkgver=19.11
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
@@ -10,7 +10,7 @@ depends=(numactl libelf libpcap)
 makedepends=(linux-headers python-pyelftools)
 checkdepends=()
 source=(http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz)
-sha1sums=('7035e9d1514658101f96c8b3dd9fd7f96e3c4be0')
+sha1sums=('435b0b3a5da6d7417d318050e5b50ac400354c60')
 
 prepare() {
   cd dpdk-$pkgver
