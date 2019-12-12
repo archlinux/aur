@@ -23,7 +23,7 @@ fi
 _reponame=brave-browser
 pkgname=brave
 pkgver=1.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -32,34 +32,39 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
 makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
-            'libgnome-keyring: Enable GNOME keyring support'
+            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
+            'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
-source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
+source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
         'brave-vaapi-enable.patch'
         'chromium-vaapi-fix.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=b8f5b855df7d8d165921e217ac124cc7652944bd
+arch_revision=becfa71f57e28821900f1ec06b2863f1886fbf60
 for Patches in \
-  chromium-skia-harmony.patch \
+  launch_manager.h-uses-std-vector.patch \
+  include-algorithm-to-use-std-lower_bound.patch \
+  icu65.patch \
   fix-spammy-unique-font-matching-log.patch \
-  icu65.patch
+  chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
 
-sha256sums=('SKIP'
+sha256sums=('0e4977f7e4f891dca2e2326c2892cea57b79d1765476959fe7932ceda08649bc'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
-            '7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9'
+            'c9caa800028a725484a327f4464b1689fc91d5bf0c0ca69259a1a1421f03e073'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
+            '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
+            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
             '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
-            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 prepare() {
     # Apply Brave patches
-    cd "${_reponame}"
+    cd "${_reponame}-${pkgver}"
     patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
 
     # Hack to prioritize python2 in PATH
@@ -75,7 +80,11 @@ prepare() {
 
     msg2 "Apply Chromium patches..."
     cd src/
-    #patch -Np1 -i "${srcdir}/chromium-vaapi-fix.patch"
+    patch -Np1 -i "${srcdir}/chromium-vaapi-fix.patch"
+
+    # https://crbug.com/819294
+    patch -Np1 -i "${srcdir}/launch_manager.h-uses-std-vector.patch"
+    patch -Np1 -i "${srcdir}/include-algorithm-to-use-std-lower_bound.patch"
 
     # https://crbug.com/1014272
     patch -Np1 -i "${srcdir}/icu65.patch"
@@ -91,7 +100,7 @@ prepare() {
 }
 
 build() {
-    cd "${_reponame}"
+    cd "${_reponame}-${pkgver}"
 
     export CC=clang
     export CXX=clang++
@@ -121,7 +130,7 @@ package() {
     install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"
 
     # Copy necessary release files
-    cd "${_reponame}/src/out/Release"
+    cd "${_reponame}-${pkgver}/src/out/Release"
     cp -a --reflink=auto \
         locales \
         resources \
@@ -137,9 +146,9 @@ package() {
     cd "${srcdir}"
     install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
     install -Dm0644 -t "${pkgdir}/usr/share/applications/" "${_reponame}.desktop"
-    install -Dm0644 "${_reponame}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/LICENSE"
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
+    install -Dm0644 "${_reponame}-${pkgver}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}-${pkgver}/LICENSE"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}-${pkgver}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
 }
 
 # vim:set ts=4 sw=4 et:
