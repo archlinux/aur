@@ -5,21 +5,21 @@
 
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-devel
-pkgver=4.13.7
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('libxfce4util' 'gtk2' 'xfconf' 'libsm' 'startup-notification'
+depends=('libxfce4util' 'xfconf' 'libsm' 'startup-notification'
          'hicolor-icon-theme' 'gtk3')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala' 'glade')
 optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b932359b47a5f8bdeae4441728abd19980c1a77f9912bc6cf8a50028b0687b08')
+sha256sums=('f9b6c95a871892348d317e9c0d24d3a2de6af6ca8e4f687d0a412c029c9984e1')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -32,7 +32,6 @@ build() {
     --disable-static \
     --enable-gtk-doc \
     --disable-debug \
-    --disable-gladeui \
     --enable-gladeui2 \
     --with-vendor-info='Arch Linux' \
     --enable-maintainer-mode
