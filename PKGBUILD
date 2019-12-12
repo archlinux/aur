@@ -2,8 +2,8 @@
 # Co-Maintainer: telans <telans@protonmail.com>
 pkgname=mullvad-vpn-beta-bin
 _pkgver=2019.10
-_channel=beta
-pkgver=${_pkgver}.${_channel}2
+_channel=stable
+pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -13,10 +13,10 @@ depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
 provides=("${pkgname%-beta-bin}")
 conflicts=("${pkgname%-beta-bin}")
 install="${pkgname%-beta-bin}.install"
-source=("https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-${_channel}2/MullvadVPN-${_pkgver}-${_channel}2_amd64.deb"{,.asc})
-sha256sums=('809f0b5a2bf9643f900d08be0f4741e6762cdfa2005715b479b2d95b8ecce4cd'
+source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$_pkgver/MullvadVPN-${_pkgver}_amd64.deb"{,.asc})
+sha256sums=('78ade70b2400352a9e764e314811d3c2a758d6489b492160a12513771d5c9359'
             'SKIP')
-validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
+validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin at mullvad dot net>
 
 package() {
 	tar -xvf data.tar.xz -C "$pkgdir"
