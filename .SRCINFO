@@ -6,11 +6,11 @@ pkgbase = nginx-mainline-mod-nchan
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = nginx-mainline=1.17.4
+	depends = nginx-mainline=1.17.6
 	source = https://github.com/slact/nchan/archive/v1.2.6.tar.gz
-	source = http://nginx.org/download/nginx-1.17.4.tar.gz
+	source = http://nginx.org/download/nginx-1.17.6.tar.gz
 	sha256sums = 277f35e479f80f04f76b70549d0ec7abdf8f1658cf46538ea9b0adf3e8b1ad50
-	sha256sums = 62854b365e66670ef4f1f8cc79124f914551444da974207cd5fe22d85710e555
+	sha256sums = 3cb4a5314dc0ab0a4e8a7b51ae17c027133417a45cc6c5a96e3dd80141c237b6
 
 pkgname = nginx-mainline-mod-nchan
 
