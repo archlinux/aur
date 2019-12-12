@@ -1,83 +1,83 @@
 # Contributor: Mark Foxwell <fastfret79@archlinux.org.uk>
-# Maintainer: skydrome <skydrome@i2pmail.org>
+# Maintainer: skydrome <skydrome@protonmail.com>
 
 pkgname=privoxy-cvs
-pkgver=20130420
+pkgver=3.0.28.r84.gc880e655
 pkgrel=1
 pkgdesc="A web proxy with advanced filtering capabilities. CVS version"
+url='https://www.privoxy.org'
 arch=('i686' 'x86_64')
-url='http://www.privoxy.org'
 license=('GPL2')
-optdepends=('logrotate')
-makedepends=('cvs')
 conflicts=('privoxy')
 provides=('privoxy')
-backup=('etc/privoxy/'{config,trust,user.filter,default.filter}
-        'etc/privoxy/user.action')
-install='privoxy.install'
-source=('privoxy.logrotate.d'
-        'privoxy.service')
-md5sums=('61a9436114bcad89d75f2f7468d0d429'
-         '358e614190247fc1671bbcadddf500db')
+backup=('etc/privoxy/'{config,trust,user.{filter,action}}
+        'etc/logrotate.d/privoxy')
 
-_cvsroot=":pserver:anonymous:@ijbswa.cvs.sourceforge.net:/cvsroot/ijbswa"
-_cvsmod="current"
+depends=('pcre' 'zlib')
+makedepends=('git')
+
+source=("git+https://www.privoxy.org/git/privoxy.git"
+        'privoxy.logrotate'
+        'privoxy.sysusers'
+        'privoxy.tmpfiles'
+        'privoxy.service')
+
+md5sums=('SKIP'
+         '658a64f757375f9a60f8a57abb2cca04'
+         '83f740b8e874f485a8f89b92a67b8768'
+         '43754f6b09cf8fb84c3a460b9df09c9f'
+         '2f7ea763b6348e14b4d3f07fb87eea52')
+
+pkgver () {
+    cd privoxy
+    git describe --long |sed 's/^v_//;s/\([^-]*-g\)/r\1/;s/[_-]/./g'
+}
+
+prepare() {
+    cd privoxy
+    mv -f configure.{in,ac}
+    autoreconf -v
+}
 
 build() {
-    cd "$srcdir"
+    cd privoxy
+    export CFLAGS=${CFLAGS/-flto=thin }
 
-    msg "Connecting to CVS server..."
-    if [[ -d "$_cvsmod/CVS" ]]; then
-        cd "$_cvsmod"
-        cvs -z3 update -d
-    else
-        cvs -z3 -d "$_cvsroot" co -f "$_cvsmod"
-        cd "$_cvsmod"
-    fi
-    msg "CVS checkout done or server timeout"
-
-    [[ -d "$srcdir/$_cvsmod-build" ]] && rm -rf "$srcdir/${_cvsmod}-build"
-    cp -r "$srcdir/$_cvsmod" "$srcdir/${_cvsmod}-build"
-
-    cd "$srcdir/${_cvsmod}-build"
-    msg "Starting make..."
-
-    autoheader
-    autoconf
-    ./configure --enable-compression
+     ./configure \
+         --prefix=/usr \
+         --sysconfdir=/etc/privoxy \
+         --enable-compression
     make
+
+    sed -i config \
+        -e 's+^confdir \.+confdir /etc/privoxy+
+            s+^logdir \.+logdir /var/log/privoxy+
+            s+^#\?user-manual .*+user-manual /usr/share/doc/privoxy/user-manual/+'
 }
 
 package() {
-    cd "$srcdir/${_cvsmod}-build"
+    cd privoxy
 
-    make install \
-        prefix="$pkgdir/usr" \
-        SBIN_DEST="$pkgdir/usr/bin" \
-        MAN_DEST="$pkgdir/usr/share/man/man1" \
-        CONF_BASE="$pkgdir/etc/privoxy" \
-        VAR_DEST="$pkgdir/var" \
-        GROUP=privoxy USER=privoxy
+    install -Dm755 {,"$pkgdir"/usr/bin/}privoxy
+    install -Dm644 {,"$pkgdir"/usr/share/man/man1/}privoxy.1
 
-    # Don't overwrite existing log files!
-    rm "${pkgdir}/var/log/privoxy/"*
+    # config
+    install -d "$pkgdir"/etc/privoxy
+    install -m644 config trust *.{action,filter} "$pkgdir"/etc/privoxy
+    find templates -type f -exec install -Dm644 '{}' "$pkgdir"/etc/privoxy/'{}' \;
 
-    # Fix config paths.
-    sed -i "${pkgdir}/etc/privoxy/config" \
-        -e 's|^confdir.*$|confdir /etc/privoxy|' \
-        -e 's|^logdir.*$|logdir /var/log/privoxy|' \
-        -e '/^user-manual/s|.*|#user-manual /usr/share/doc/privoxy/user-manual/|' \
-        -e 's|logfile logfile|privoxy.log|'
+    # docs
+    d="$pkgdir"/usr/share/doc/privoxy
+    cd doc/webserver
+    install -Dm644 {privoxy-,"$d"/}index.html
+    install -m644 p_doc.css ../../{AUTHORS,README,ChangeLog} "$d"
+    install -Dm644 {,"$d"/user-manual/}p_doc.css
+    find user-manual developer-manual faq man-page \( -name '*.html' -o -name '*.jpg' \) \
+        -exec install -Dm644 '{}' "$d"/'{}' \;
 
-    # Fix permissions.
-    find "${pkgdir}/etc/privoxy/" -type d |xargs chmod 700
-    find "${pkgdir}/etc/privoxy/" -type f |xargs chmod 600
-    chmod 700 "${pkgdir}/var/log/privoxy/"
-
-    # avoid conflict with filesystem>=2012.06
-    rmdir "$pkgdir/var/run"
-
-    # systemd unit file
-    install -Dm644 "${srcdir}/privoxy.service"     "${pkgdir}/usr/lib/systemd/system/privoxy.service"
-    install -Dm644 "${srcdir}/privoxy.logrotate.d" "${pkgdir}/etc/logrotate.d/privoxy"
+    # systemd
+    install -Dm644 "$srcdir/privoxy.logrotate" "$pkgdir/etc/logrotate.d/privoxy"
+    install -Dm644 "$srcdir/privoxy.service"   "$pkgdir/usr/lib/systemd/system/privoxy.service"
+    install -Dm644 "$srcdir/privoxy.tmpfiles"  "$pkgdir/usr/lib/tmpfiles.d/privoxy.conf"
+    install -Dm644 "$srcdir/privoxy.sysusers"  "$pkgdir/usr/lib/sysusers.d/privoxy.conf"
 }

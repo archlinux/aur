@@ -1,0 +1,9 @@
+/var/log/privoxy/privoxy.log {
+    missingok
+    notifempty
+    create 0640 privoxy privoxy
+    compress
+    postrotate
+        killall -HUP privoxy 2>/dev/null || true
+    endscript
+}

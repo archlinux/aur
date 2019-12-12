@@ -3,10 +3,11 @@ Description=Privoxy Web Proxy With Advanced Filtering Capabilities
 After=network.target
 
 [Service]
-Type=forking
-PIDFile=/run/privoxy.pid
-ExecStart=/usr/bin/privoxy --pidfile /run/privoxy.pid --user privoxy.privoxy /etc/privoxy/config
+Type=simple
+User=privoxy
+ExecStart=/usr/bin/privoxy --no-daemon /etc/privoxy/config
 SuccessExitStatus=15
+PrivateDevices=yes
 
 [Install]
 WantedBy=multi-user.target
