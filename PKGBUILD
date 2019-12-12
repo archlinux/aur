@@ -3,7 +3,7 @@
 
 pkgname=protonmail-desktop
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial app that emulates a native client for the ProtonMail e-mail service"
 arch=(any)
 url="https://github.com/protonmail-desktop/application"

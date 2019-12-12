@@ -1,7 +1,7 @@
 pkgbase = protonmail-desktop
 	pkgdesc = Unofficial app that emulates a native client for the ProtonMail e-mail service
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/protonmail-desktop/application
 	arch = any
 	license = MIT
