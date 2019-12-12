@@ -1,6 +1,6 @@
 pkgbase = higan-bsnes
 	pkgdesc = Nintendo SNES emulator, faster official flavor of higan
-	pkgver = 112
+	pkgver = 113
 	pkgrel = 1
 	url = http://byuu.org/
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = higan-bsnes
 	depends = libudev.so
 	conflicts = bsnes
 	conflicts = bsnes-classic
-	source = https://download.byuu.org/bsnes_v112-source.zip
-	sha256sums = 012bb38ae778ef5bc32eda067ec7b574441a0c46c4e0f612488163f3fe23e629
+	source = https://download.byuu.org/bsnes_v113-source.zip
+	sha256sums = 0b0ddefcfb367db4ce3c994e82f72f529ba2a18a94ea7f8954818a84c61371ac
 
 pkgname = higan-bsnes
 
