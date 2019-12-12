@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated
 	pkgdesc = The official GUI for MongoDB - Isolated Edition
-	pkgver = 1.20.1
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = mongodb-compass-isolated
 	depends = electron3-bin
 	depends = krb5
 	depends = libsecret
-	source = mongodb-compass-isolated-1.20.1-1::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.20.1.x86_64.rpm
+	source = mongodb-compass-isolated-1.20.2-1::https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.20.2.x86_64.rpm
 	source = launch.sh
-	sha256sums = e88cf95562e4229a24e156114cbb3ed0d57e1fe84e523de6b87f405eeea0d88e
+	sha256sums = fd02e297bd0faa85e84c6460fba2e70275e6b8ed85b4c35385a0eb03798e9386
 	sha256sums = 1bf3dd5e9363e750f4099acab9c8e22af7dc8645215d3fc4ed13abb0d38c5137
 
 pkgname = mongodb-compass-isolated
