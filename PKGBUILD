@@ -5,8 +5,8 @@
 
 pkgbase=virtualbox-modules-aufs
 pkgname=('virtualbox-host-modules-aufs')
-pkgver=6.0.14
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -35,6 +35,6 @@ package_virtualbox-host-modules-aufs() {
         find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 	
         # systemd module loading
-        printf '%s\n' vboxdrv vboxpci vboxnetadp vboxnetflt |
+        printf '%s\n' vboxdrv vboxnetadp vboxnetflt |
         install -D -m0644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
