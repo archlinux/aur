@@ -1,5 +1,7 @@
 # /bin/bash
 set -e
+rm -rf src
+rm -rf pkg
 updpkgsums
 makepkg -si
 makepkg --printsrcinfo > .SRCINFO
