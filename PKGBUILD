@@ -2,7 +2,7 @@
 _name=openvslam
 pkgname=${_name}-git
 pkgver=r428.e069085
-pkgrel=1
+pkgrel=2
 pkgdesc="A Versatile Visual SLAM Framework"
 arch=('x86_64')
 url="https://github.com/xdspacelab/openvslam"
@@ -40,7 +40,9 @@ prepare() {
 	cmake .. \
 		-DCMAKE_BUILD_TYPE:STRING='Release' \
 		-DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-		-DCMAKE_CXX_FLAGS:STRING='-w'
+		-DCMAKE_CXX_FLAGS:STRING='-w' \
+		-DUSE_PANGOLIN_VIEWER:BOOL=ON \
+		-DINSTALL_PANGOLIN_VIEWER:BOOL=ON
 }
 
 build() {
