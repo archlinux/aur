@@ -1,0 +1,19 @@
+pkgbase = lowres-nx-git
+	pkgdesc = Fantasy Game Console and Basic Interpreter
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/timoinutilis/lowres-nx
+	arch = x86_64
+	arch = i686
+	license = LGPLv3
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = sed
+	depends = sdl2
+	depends = glibc
+	source = git+git://github.com/timoinutilis/lowres-nx.git
+	sha256sums = SKIP
+
+pkgname = lowres-nx-git
+
