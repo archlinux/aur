@@ -1,8 +1,9 @@
 # Maintainer: Łukasz Pożarlik <lpozarlik@gmail.com>
 
 pkgname=('python-django-bootstrap4' 'python2-django-bootstrap4')
+_name='django-bootstrap4'
 pkgdesc="Bootstrap 4 integration with Django"
-pkgver=0.0.8
+pkgver=1.1.0
 pkgrel=1
 url="https://github.com/zostera/django-bootstrap4"
 license=('BSD-3-Clause')
@@ -11,8 +12,8 @@ makedepends=('python'
   'python-setuptools' 
   'python2' 
   'python2-setuptools')
-source=("https://github.com/zostera/django-bootstrap4/archive/v${pkgver}.tar.gz")
-sha256sums=('1e3717cbff1a18f18887bd827780b17a8e6e10bb8343059cfba10ab26ff3b16e')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('180edf28d8dcdcee56ca8d7919147c3c98031ecc898c063b228f9855746de80a')
 
 build() {
   cp -r ${srcdir}/django-bootstrap4-${pkgver} ${srcdir}/django-bootstrap4-${pkgver}-py2
