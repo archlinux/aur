@@ -1,6 +1,6 @@
 pkgbase = python-poxls-git
 	pkgdesc = Convert between Excel and PO files
-	pkgver = 1.4.2.r1.g24b7c5c
+	pkgver = 1.5.0.r0.g2dc5a94
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/poxls
 	arch = any
