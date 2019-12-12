@@ -4,7 +4,7 @@
 
 pkgname=python-hupper
 _pkgname=hupper
-pkgver=1.9
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Integrated process monitor for developing servers"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-watchdog' 'python-pytest-cov' 'python-pytest-runner')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9267eb73156e99b7bdeb6cd60ce14b2adc2562263245b52be47b70ef51ba88bc')
+sha256sums=('91adcce2dbfeb43b18e1cee9b0a9bb7d92b2f064dd0e513abd0eb6092034adfc')
 
 build(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
