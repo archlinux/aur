@@ -1,0 +1,13 @@
+diff --git a/webmacs/minibuffer/__init__.py b/webmacs/minibuffer/__init__.py
+index 8ee3b13..80d1e13 100644
+--- a/webmacs/minibuffer/__init__.py
++++ b/webmacs/minibuffer/__init__.py
+@@ -65,7 +65,7 @@ class Popup(QTableView):
+         # Split the columns width, nicer when we have at least two of them.
+         cols = self.model().columnCount()
+         if cols > 0:
+-            col_width = w / cols
++            col_width = w // cols
+             for i in range(cols):
+                 self.setColumnWidth(i, col_width)
+ 
