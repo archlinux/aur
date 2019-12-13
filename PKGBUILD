@@ -27,7 +27,7 @@ build() {
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DPENTOBI_BUILD_KDE_THUMBNAILER=ON \
     -DPENTOBI_BUILD_TESTS=ON
-  make VERBOSE=1
+  make
 }
 
 check() {
