@@ -2,7 +2,7 @@
 # Maintainer: Jack Deng
 pkgname=thief-book
 _name=Thief-Book
-pkgver=3.1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='一款真正的跨平台摸鱼神器'
 arch=('x86_64' 'i686')
