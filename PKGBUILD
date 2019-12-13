@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Contributor: Juan Tascon <juan at horlux dot org>
 pkgname=wtfutil-bin
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Personal information dashboard for your terminal"
 arch=('i686' 'x86_64' 'aarch64' 'armv6h')
@@ -13,10 +13,10 @@ source_i686=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pk
 source_x86_64=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pkgver}_linux_arm64.tar.gz")
 source_armv6h=("https://github.com/wtfutil/wtf/releases/download/v$pkgver/wtf_${pkgver}_linux_armv6.tar.gz")
-sha256sums_i686=('6beb79b0993b3722dbbde60bb96cb5594e5e3c7704599515396eb10ca4c4a2ef')
-sha256sums_x86_64=('78392b40a3e46f2212ca0cb89e5782096ed5ceea2f8c1243eddd7e59190f33b6')
-sha256sums_aarch64=('891ab947dc2bc81bac4f7360b79efa700c05a5511a6924d3321b57c25f4f7636')
-sha256sums_armv6h=('1aacb7ec0a19f0f349e9b4a0d9f234e3866b4dee171a626c7fd9b066c70cdbc4')
+sha256sums_i686=('0e4bdb5cd00bea7d03406c6d0c947b9bbc9e21ec9acb8b93084bd2cb2aca88d2')
+sha256sums_x86_64=('04fb7b147cef5f4ab18f6f6c340a565d8aa5b6623fd316a3d576f227128221af')
+sha256sums_aarch64=('b18e86bdc27b122227461faf595136ede9cca771aadce94aa63c3b536746886b')
+sha256sums_armv6h=('7a24820c36f5c59c37b6309656e5e3873d16884540f0ee8c1d8e4928badaea29')
 
 package() {
 	cd $(find . -name "wtf_$pkgver_*" -type d | sed 1q)
