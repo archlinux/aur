@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=namecoin-core
-pkgver=0.18.1
+pkgver=0.19.0.1
 pkgrel=4
 pkgdesc="Namecoin Core headless P2P node"
 arch=('i686' 'x86_64' 'armv7h')
@@ -70,9 +70,6 @@ package() {
   install -Dm 755 share/rpcauth/rpcauth.py $pkgdir/usr/bin/namecoin-rpcauth
 
   # Rename files left over from forking, because conflict with btc packages
-  mv $pkgdir/usr/share/man/man1/{bitcoind,namecoind}.1
-  mv $pkgdir/usr/share/man/man1/{bitcoin,namecoin}-tx.1
-  mv $pkgdir/usr/share/man/man1/{bitcoin,namecoin}-cli.1
   mv $pkgdir/usr/share/doc/namecoin/{bitcoin,namecoin}-conf.md
 
   msg2 'Installing namecoin.conf...'
@@ -93,7 +90,7 @@ package() {
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
 
-sha256sums=('7117a0a0b8f48d49e4abf3577660f8a4eb9a4dea753281d19d9470725fc75d8e'
+sha256sums=('a9d403822a7ff470f9bf1467e6833af53af7c80a8c696eb259f16b105cba7ad3'
             '97e7b8e5d402eef231e20b62436d830a955c87f389b20ea663bf5a6b8f7b0ff7'
             'ea48c1dda89c153ea526f07ffa2c46a6813f5075003d5a4098c3675aacb55673'
             '9ce8f53b5c791eb0c9fe930bd483d23228c2e6ee2ccee9a70af53af4615abfa1'
