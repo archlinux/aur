@@ -1,17 +1,19 @@
 pkgbase = php-box
 	pkgdesc = An application for building and managing Phars
-	pkgver = 3.8.0
-	pkgrel = 3
-	url = https://github.com/humbug/box
+	pkgver = 2.7.5
+	pkgrel = 1
+	url = https://github.com/box-project/box2
 	install = php-box.install
 	arch = any
 	license = MIT
-	makedepends = make
-	makedepends = php-composer
-	makedepends = git
-	depends = php>=7.2
-	source = php-box::git+https://github.com/humbug/box.git#tag=3.8.0
-	sha512sums = SKIP
+	depends = php>=5.3.3
+	source = https://github.com/box-project/box2/releases/download/2.7.5/box-2.7.5.phar
+	source = https://github.com/box-project/box2/releases/download/2.7.5/box-2.7.5.phar.sig
+	source = https://raw.github.com/box-project/box2/2.7.5/LICENSE
+	validpgpkeys = 32E4B74757B1D65234FC389F293D771241515FE8
+	sha256sums = 28b4b798ad4dcf8fbf9cd68aaff495d4bbeaec4363f5f319a222829d9b6abdfe
+	sha256sums = SKIP
+	sha256sums = ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12
 
 pkgname = php-box
 

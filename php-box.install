@@ -1,6 +1,6 @@
 post_install() {
   echo
-  echo "php-box is installed as executable 'box'."
+  echo "php-box is installed as executable 'php-box'."
   if ! /usr/bin/php -i | grep Phar >/dev/null; then
     echo
     echo "[WARNING] the Phar extension of php must be enabled."
