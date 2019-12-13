@@ -10,6 +10,7 @@ url="https://vysor.io"
 license=('custom')
 provides=('vysor')
 conflicts=('vysor')
+makedepends=('fuse2')
 source=("https://github.com/koush/vysor.io/releases/download/continuous/Vysor_${pkgver}.AppImage"
         "vysor.sh")
 sha256sums=('c46407fe1ae6ec03ca16b8bbe83039c47ea2f961cbad5fbd18366a033259ccc9'
