@@ -18,7 +18,7 @@ md5sums=('SKIP'
          'c5a2c0b91c2709e070d7ebcb75621354'
          'd7446a4c8d44880b1c772493a7f170c6')
 #set branch to build with WSJTX_TAG variable, or a specific version eg. wsjtx-1.9.0
-_wsjtx_tag=master
+_wsjtx_tag=wsjtx-2.1.2
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
