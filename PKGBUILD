@@ -1,7 +1,7 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-minimap-git
-pkgver=r19.5c6f1e9
+pkgver=r20.cb32482
 pkgrel=1
 pkgdesc="Minimap for Qt Creator."
 arch=('x86_64')
@@ -21,7 +21,7 @@ prepare() {
     mkdir -p build
 }
 
-build() {        
+build() {
     cd build
 
     cmake "$srcdir/$pkgname" \
