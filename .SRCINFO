@@ -1,6 +1,6 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application
-	pkgver = 4.5.0.r38.g281ddb8678
+	pkgver = 4.6.0.r6.g15e247f88a
 	pkgrel = 1
 	url = https://calibre-ebook.com/
 	arch = i686
@@ -57,6 +57,7 @@ pkgbase = calibre-git
 	makedepends = sip
 	makedepends = xdg-utils
 	makedepends = rapydscript-ng
+	makedepends = python2-sphinx
 	depends = chmlib
 	depends = hunspell
 	depends = hyphen
@@ -89,7 +90,7 @@ pkgname = calibre-common-git
 	optdepends = poppler: required for converting pdf to html
 	provides = calibre-common
 	conflicts = calibre-common
-	conflicts = calibre<4.5.0.r38.g281ddb8678
+	conflicts = calibre<4.6.0.r6.g15e247f88a
 
 pkgname = calibre-git
 	pkgdesc = Ebook management application (python2 build)

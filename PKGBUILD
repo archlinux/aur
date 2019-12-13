@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-common-git calibre-git calibre-python3-git)
-pkgver=4.5.0.r38.g281ddb8678
+pkgver=4.6.0.r6.g15e247f88a
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
@@ -24,7 +24,7 @@ _py3_deps=("${_py_deps[@]}" 'zeroconf')
 depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
          'libwmf' 'mathjax2' 'mtdev' 'optipng' 'podofo' 'qt5-svg' 'udisks2')
 makedepends=('git' "${_py_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
-             'sip' 'xdg-utils' 'rapydscript-ng') #'python2-sphinx')
+             'sip' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
 checkdepends=('xorg-server-xvfb')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
@@ -80,12 +80,9 @@ build() {
     LANG='en_US.UTF-8' python2 setup.py resources \
         --path-to-mathjax /usr/share/mathjax2 --system-mathjax \
         --path-to-hyphenation "${srcdir}"/dictionaries-${_dictionaries_commit}
+    LANG='en_US.UTF-8' python2 setup.py man_pages
 
     LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py build
-
-    # manpages simply don't build at the moment:
-    # https://github.com/sphinx-doc/sphinx/issues/5150
-    #LANG='en_US.UTF-8' python2 setup.py man_pages
 
     # This tries to download new user-agent data, so pre-seed a
     # recently-generated copy to allow offline builds.
@@ -123,7 +120,7 @@ package_calibre-common-git() {
 
     install -Dm755 "${srcdir}"/calibre-alternatives.sh "${pkgdir}"/usr/bin/calibre-alternatives
 
-    #cp -a man-pages/ "${pkgdir}/usr/share/man"
+    cp -a man-pages/ "${pkgdir}/usr/share/man"
 
     # not needed at runtime
     rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
