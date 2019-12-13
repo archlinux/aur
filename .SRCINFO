@@ -1,6 +1,6 @@
 pkgbase = nfft
 	pkgdesc = Library for computing Non-uniform Fast Fourier Transforms.
-	pkgver = 3.5.0
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://www-user.tu-chemnitz.de/~potts/nfft/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = nfft
 	license = GPL2
 	depends = fftw
 	optdepends = openmp: for OpenMP support
-	provides = nfft=3.5.0
+	provides = nfft=3.5.1
 	conflicts = nfft-git
-	source = https://github.com/NFFT/nfft/releases/download/3.5.0/nfft-3.5.0.tar.gz
-	sha256sums = 5f78a9d2a675aee7ace55c96bdf1b54f049e05a1dd50697757bdc609a8586a07
+	source = https://github.com/NFFT/nfft/releases/download/3.5.1/nfft-3.5.1.tar.gz
+	sha256sums = bb95b2c240c6d972d4bb20740751a8efeba8b48b3be1d61fd59883909776fee3
 
 pkgname = nfft
 
