@@ -1,6 +1,6 @@
 pkgbase = vim-vimteractive
 	pkgdesc = Send commands from text files to interactive programs via vim
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/williamjameshandley/vimteractive
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = vim-vimteractive
 	license = GPL
 	depends = vim
 	options = !emptydirs
-	source = https://github.com/williamjameshandley/vimteractive/archive/2.1.0.tar.gz
-	sha256sums = 3fa7c92853a8f11c44294c4bf1c825b12cd164a49117c4c74b53ca3ce05628d8
+	source = https://github.com/williamjameshandley/vimteractive/archive/2.2.0.tar.gz
+	sha256sums = 200db8e90ab8d99e9f3107494d27809e39198e1438974e7b6b85e1eb32d6ab31
 
 pkgname = vim-vimteractive
 
