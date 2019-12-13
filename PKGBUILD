@@ -1,30 +1,23 @@
 # Maintainer: h8red  h8red at yandex dot ru
-# Contributor: Blaž Tomažič <blaz.tomazic@gmail.com>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Kevin Piche <kevin@archlinux.org>
-# Contributor: Manolis Tzanidakis <manolis@archlinux.org>
+# Contributor: Mattia Dongili <Mattia Dongili>
 
 pkgname=cpufreqd
 pkgver=2.4.2
-pkgrel=10
+pkgrel=11
 pkgdesc="A small daemon to adjust cpu speed (and indeed voltage)"
 arch=('i686' 'x86_64')
-url="http://www.linux.it/~malattia/wiki/index.php/Cpufreqd"
+url="http://kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils.html"
 license=('GPL2')
-depends=('cpupower' 'lm_sensors')
+depends=('lm_sensors' 'cpufrequtils')
 makedepends=('autoconf')
 backup=('etc/cpufreqd.conf')
 options=('!libtool')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2"
-        'cpufreqd'
+source=("http://deb.debian.org/debian/pool/main/c/cpufreqd/cpufreqd_2.4.2.orig.tar.bz2"
         'cpufreqd.service'
-        'cpufreqd_acpi_battery.c.patch'
-        'cpupower.patch')
-md5sums=('2ca80a77849c9a69b81e27c1843c97f5'
-         '4d0fafbdb5f1b7313fdeb6f1250ef34f'
+        '619913.patch')
+md5sums=('038a3254044ead9944d9a04bcc94b5f4'
          '4213dced234d7700dd012d3f63349cd1'
-         'd0df76dce1bc6cc021b199f820b748b9'
-         '7debc75713aff93e0545b80821099810')
+         '4183ae46467f27f5815f151b136183f5')
 
 build() {
   cd ${srcdir}
@@ -32,11 +25,7 @@ build() {
 
   cd ${pkgname}-${pkgver}
 
-  #patch acpi
-  patch -p0 < ${srcdir}/cpufreqd_acpi_battery.c.patch
-
-  #patch for cpupower support
-  patch -p0 < ${srcdir}/cpupower.patch
+  patch -p1 < ${srcdir}/619913.patch
   autoreconf -i
 
   ./configure --prefix=/usr \
@@ -48,6 +37,5 @@ package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install || return 1
 
-  install -Dm755 ${srcdir}/cpufreqd ${pkgdir}/etc/rc.d/cpufreqd || return 1
   install -Dm644 ${srcdir}/cpufreqd.service ${pkgdir}/usr/lib/systemd/system/cpufreqd.service || return 1
 }
