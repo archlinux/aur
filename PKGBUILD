@@ -1,6 +1,6 @@
 # Maintainer:anon at sansorgan.es 
 # Contributor: Jack Rosenthal
-# Contributor: David Florness <edwargix@gmail.com>
+# Contributor: David Florness <edwargix at gmail dot com>
 pkgname=threelayout
 _keymap=3l
 pkgver=45.d3c9798
