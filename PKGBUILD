@@ -6,7 +6,7 @@ pkgdesc="A lightweight, embeddable software-defined radio framework built on Lua
 arch=('i686' 'x86_64' 'armv7h')
 url="http://luaradio.io"
 license=('MIT')
-depends=('luajit' 'liquid-dsp-git')
+depends=('luajit')
 optdepends=('libvolk' 'fftw')
 source=("git+https://github.com/vsergeev/luaradio.git#tag=v$pkgver")
 md5sums=('SKIP')
