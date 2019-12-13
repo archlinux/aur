@@ -1,5 +1,5 @@
 pkgname=dpdk-lts
-pkgver=18.11.2
+pkgver=19.11
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=(x86_64 i686)
@@ -13,11 +13,11 @@ source=(
     "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
 sha256sums=(
-    '266bb2d149b16252335b106c7ca394434ecaa1fbfd59fc3789375e556746761a'
+    '467133968843677bb1c276bb74a3458aa7c002cc21e295c51e3bd65497b112ab'
 )
 
 prepare() {
-  cd dpdk-stable-$pkgver
+  cd dpdk-$pkgver
   make T=x86_64-native-linuxapp-gcc config
 
   sed -ri 's,(RTE_MACHINE=).*,\1default,'    build/.config
@@ -32,18 +32,18 @@ prepare() {
 }
 
 build() {
-  cd dpdk-stable-$pkgver
+  cd dpdk-$pkgver
   make T=x86_64-native-linuxapp-gcc
 }
 
 check() {
-  cd dpdk-stable-$pkgver
+  cd dpdk-$pkgver
   # tests fail
   make test T=x86_64-native-linuxapp-gcc
 }
 
 package() {
-  cd dpdk-stable-$pkgver
+  cd dpdk-$pkgver
   make DESTDIR="$pkgdir" prefix=/usr sbindir=bin install T=x86_64-native-linuxapp-gcc
   cp -a "$pkgdir"/lib/ "$pkgdir"/usr/ && rm -rf "$pkgdir"/lib/
 }
