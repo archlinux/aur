@@ -2,7 +2,7 @@
 
 pkgname=ebadoo-shell
 _pkgname=ebadoo-shell
-pkgver=3.34.2+14+g7e8884a70
+pkgver=3.34.2+14+g7e8884a71
 pkgrel=1
 epoch=1
 pkgdesc="Ebadoo-shell es una variante estetica."
