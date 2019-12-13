@@ -1,8 +1,8 @@
 # Maintainer: Leonid Koftun <leonid.koftun@gmail.com>
 
 pkgname=kafkactl
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Command Line Tool for managing Apache Kafka'
 arch=('i686' 'x86_64')
 url="https://github.com/deviceinsight/kafkactl"
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 depends=('glibc')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('99b19bd0fb33dc46d62034962934a9cb8463efd2cc422f35f2c6a64bc0deeb2c')
+sha256sums=('098f1edde2feb6fc37e41d4a40bb56f8daba6fde1557d9a9f2ce84b7517338e7')
 
 build() {
   cd $pkgname-$pkgver
