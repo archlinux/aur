@@ -2,7 +2,7 @@
 
 pkgname=parsec-bin
 pkgver=150_11
-pkgrel=2
+pkgrel=3
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
 url='http://parsec.tv'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -24,6 +24,8 @@ sha256sums_armv7h=($sha256sums_arm)
 
 source_aarch64=($source_arm)
 sha256sums_aarch64=($sha256sums_arm)
+
+options=('!strip')
 
 package() {
     tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
