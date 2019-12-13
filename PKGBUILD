@@ -51,7 +51,7 @@ _major=5.4
 _minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -72,11 +72,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0006-ACPI-EC-Rework-flushing-of-pending-work.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0007-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
          # the main kernel config files
         'config')
 
@@ -333,11 +335,13 @@ sha512sums=('bbdf4179c5263f313aac56a75ebe14da6d05128b27b3d84305743605745bb0ffa87
             'SKIP'
             '10c9bbb02c6a0afe869efae97fe6133062110f46c973fd7b60cdd8a88f14de7646d206d5c2bbbf1170ca0aa9cf7c2d0daab477d12c074dc18e9b98075cd2b57c'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '73cc26b83de333deaea9c0109f39823173aef0f78609368539ce535bae5ae11c38dedeeb6d7df81d8ffecb798227b557d939b2e7794da0e67c2b7d3e4463bd17'
-            'dc031d45654121219871553b4738e8f6dba033a1ff925a1f5dd53cd6fbeb5b798e8fd3e2fe27d31f0c83de946c2758ae6bd0ec824b9de639d817e15edc2045ab'
-            '59c5df61bce28ffab84001933bc3faf1c899acad76a3ace0511e45c122bbdd84e7eec5b0e72a154d767ca468c8ab642ed7fab7c9c041bc3f0f74160293b749b1'
-            '6717ded760d5a651244342b4f434abd584b89b1d35f75dd239eded29e49e64b83edfd1946823e4832bc145724ac87238075a338d98ad251290278c89b2d7fa3f'
-            '9580183e4ef1155a64ed669e7787d5296d8ad164490a58840b11d269aaa099bb52d8cabaedc67e668200953b5f75ebaff09aee0fb744bf9695514e298da1220b'
+            '890cf5a8fd001c3529a9a8652f255d51fcaa868804c8c2650a34b368dff5232f24d0d75806e126c86deeb5a5d5edc55ffb57b13c017ba666e8fa2216fe18a0e1'
+            'ad10d448be778ecbd9fa2ed634a035ca845955701015ff5b55d6f73cbf5a732eff60cf3fe53e9b22af45f952b255076227fd7705fbc5aa92f097ad58bd469884'
+            'fbcc401f218a6bcdbf96e2122a02c0556c0a0daa9df1300e901af6ea26b0b8e18584ecd24ecb40e5cef89761f06083bd2a2f18d9071f0595811c12f5004a7d35'
+            '74a659ed3372d445be6ff381b323a97ae1e498d08581bf240dca13f308f1f493d871a600970375dd88b1261fb7fabe1380cf92827a8fd0eb11ec34cbf43a0647'
+            'e7cc1f442e8b974f39718b24665145ee80e349344f385a004e14db8e1e0ee2cd779cf99fe841f4fa9cb5d742d7ddc007bd1ec72dfcfc0f94fe5e104a6e4d5c41'
+            'f515ced714a132dd2479b9ba35389e1f5d65916c43a8479535450a7cc6a24c6165165f35c8606d2773f9fa5a3f5fd6f9d1ffb5776036381148ed1c7c8d79fc50'
+            'b7afd662a5f5ec9adb6b54e96dea68ff8b93331a331425a42ba84a045d2b3a1dde8a105cf81c51cc115668c73464ce60a1c595763a141aeb1ab3aac12317fa08'
             'baef92c6a9a0d946f233c93c0b09cc0e55b9b98c6e815f45ebb0579843455b63150c2b0473b70c9389a5de8b5360a43b4a66e44922c61251c26267e7a2461116')
 
 validpgpkeys=(
