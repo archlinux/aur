@@ -1,6 +1,6 @@
 pkgbase = aconfmgr-git
 	pkgdesc = A configuration manager for Arch Linux
-	pkgver = r629.8c22856
+	pkgver = r634.ca09eea
 	pkgrel = 1
 	url = https://github.com/CyberShadow/aconfmgr
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = aconfmgr-git
 	makedepends = git
 	depends = bash
 	depends = pacman
+	depends = grep
 	depends = gawk
 	depends = diffutils
 	depends = pacutils

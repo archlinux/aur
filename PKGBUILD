@@ -1,7 +1,7 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=aconfmgr-git
-pkgver=r629.8c22856
+pkgver=r634.ca09eea
 pkgrel=1
 pkgdesc="A configuration manager for Arch Linux"
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
   # "Optional" in the sense that without these, `aconfmgr --help` will
   # run but they will be needed to actually save/restore
   # configurations
-  'pacman' 'gawk' 'diffutils' 'pacutils'
+  'pacman' 'grep' 'gawk' 'diffutils' 'pacutils'
 )
 makedepends=('git')
 optdepends=(
