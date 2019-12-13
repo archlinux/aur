@@ -1,6 +1,6 @@
 pkgbase = ebadoo-desktop-schemas
 	pkgdesc = Custom settings schemas for ebadoo-shell
-	pkgver = 3.34.0.r0.g56d24d4
+	pkgver = 3.34.1.r0.ebb001
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = ebadoo-desktop-schemas
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	provides = gsettings-desktop-schemas=3.34.0.r0.g56d24d4
+	provides = gsettings-desktop-schemas=3.34.1.r0.ebb001
 	conflicts = gsettings-desktop-schemas
 	replaces = gsettings-desktop-schemas
-	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git
+	source = git+https://gitlab.com/ebadoo/ebadoo-desktop-schemas.git
 	sha256sums = SKIP
 
 pkgname = ebadoo-desktop-schemas

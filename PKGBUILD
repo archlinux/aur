@@ -1,7 +1,7 @@
 # Maintainer: Andrey Vetrov <admin@ebadoo.com>
 
 pkgname=ebadoo-desktop-schemas
-pkgver=3.34.0.r0.g56d24d4
+pkgver=3.34.1.r0.ebb001
 pkgrel=1
 pkgdesc="Custom settings schemas for ebadoo-shell"
 arch=(any)
@@ -12,7 +12,7 @@ conflicts=('gsettings-desktop-schemas')
 replaces=('gsettings-desktop-schemas')
 depends=('glib2' 'dconf')
 makedepends=('gobject-introspection' 'git' 'meson')
-source=("git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git")
+source=("git+https://gitlab.com/ebadoo/ebadoo-desktop-schemas.git")
 sha256sums=('SKIP')
 
 pkgver() {
