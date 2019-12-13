@@ -20,8 +20,7 @@ sha256sums_armv6h=('7a24820c36f5c59c37b6309656e5e3873d16884540f0ee8c1d8e4928bada
 
 package() {
 	cd $(find . -name "wtf_$pkgver_*" -type d | sed 1q)
-	install -Dm755 "${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE.md"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-bin}/README.md"
-	install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/${pkgname%-bin}/CHANGELOG.md"
+	install -Dm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+	install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
+	install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
 }
