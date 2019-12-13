@@ -1,7 +1,7 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
-	pkgver = 6.0.14
-	pkgrel = 2
+	pkgver = 6.1.0
+	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-bin.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = virtualbox-bin
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
 	optdepends = linux-headers: build the module for Arch kernel
 	optdepends = linux-lts-headers: build the module for LTS Arch kernel
-	provides = virtualbox=6.0.14
+	provides = virtualbox=6.1.0
 	provides = virtualbox-sdk
 	provides = VIRTUALBOX-HOST-MODULES
 	provides = virtualbox-host-dkms
@@ -31,13 +31,13 @@ pkgbase = virtualbox-bin
 	conflicts = virtualbox-host-modules-arch
 	replaces = virtualbox_bin
 	replaces = virtualbox-sun
-	noextract = VirtualBoxSDK-6.0.14-133895.zip
+	noextract = VirtualBoxSDK-6.1.0-135406.zip
 	options = !strip
 	options = !emptydirs
 	backup = etc/vbox/vbox.cfg
 	backup = etc/conf.d/vboxweb
-	source = http://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0.14-133895-Linux_amd64.run
-	source = https://download.virtualbox.org/virtualbox/6.0.14/VirtualBoxSDK-6.0.14-133895.zip
+	source = http://download.virtualbox.org/virtualbox/6.1.0/VirtualBox-6.1.0-135406-Linux_amd64.run
+	source = https://download.virtualbox.org/virtualbox/6.1.0/VirtualBoxSDK-6.1.0-135406.zip
 	source = VBoxAuth-r79806.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=79806
 	source = VBoxAuthPAM-r79806.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=79806
 	source = VBoxAuthSimple-r79806.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=79806
@@ -48,9 +48,8 @@ pkgbase = virtualbox-bin
 	source = do_dkms
 	source = dkms.conf
 	source = 013-Makefile.patch
-	source = 016-linux-5-4.patch
-	sha256sums = e6a63037caf3bc5ced1bb384b2a7fcf86b9fca5a467101ece4c5f7bf38edc4fe
-	sha256sums = c7b848034939fa65be095752109009ad0c3733e5d10c09fd26b5addaf58ba159
+	sha256sums = ab2d021fac9651ee95ac2268aeea684faa547fad40448eb3e07ee52f193f0bab
+	sha256sums = c2731de9a92a370d41279d77ff5d9c324aff9a9c855d827d445bb621fae12df6
 	sha256sums = 584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e
 	sha256sums = 600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114
 	sha256sums = 452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49
@@ -59,9 +58,8 @@ pkgbase = virtualbox-bin
 	sha256sums = 656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56
 	sha256sums = 12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651
 	sha256sums = cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a
-	sha256sums = e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801
+	sha256sums = 63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388
 	sha256sums = 268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424
-	sha256sums = 25ab9f415130a53d2fc879e0cdfc5848e36f8077d24bce67f962ec913bcb63b2
 
 pkgname = virtualbox-bin
 
