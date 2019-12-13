@@ -10,4 +10,3 @@ source = kscript-2.9.0.bin.zip::https://github.com/holgerbrandl/kscript/releases
 sha256sums = 3d62b0db226566506a2531d765547595867230cd5d44dbedc65301cadfecdaaf
 
 pkgname = kscript
-
