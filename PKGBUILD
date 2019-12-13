@@ -1,34 +1,39 @@
+# Maintainer Adrià Arrufat <swiftscythe@gmail.com>
+# Contributor yochananmarqos 
+
 pkgname=powerline-go
-pkgver=1.13.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
 url="https://github.com/justjanne/powerline-go"
 license=('GPL3')
-makedepends=('git' 'go')
-source=($pkgname::"https://github.com/justjanne/powerline-go/archive/v${pkgver}.tar.gz")
-sha256sums=('0c0d8a2aca578391edc0120f6cbb61f9ef5571190c07a978932348b0489d00ea')
+makedepends=('go-pie' 'dep')
+optdepends=('powerline-fonts')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/justjanne/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('25d54855473c13348423d56406ebd0edc9318b3d4518d151994d90e49f496cb8')
 
 prepare() {
-  export GOPATH="${srcdir}/go"
-  mkdir -p "${GOPATH}/src"
+  mkdir -p gopath/src/github.com/justjanne
+    ln -rTsf "$pkgname-$pkgver" "gopath/src/github.com/justjanne/$pkgname"
+    export GOPATH="$srcdir"/gopath
 
-  if [[ ! -e "${GOPATH}/src/${pkgname}-${pkgver}" ]]; then
-    ln -s "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${pkgname}-${pkgver}"
-  fi
+    cd "gopath/src/github.com/justjanne/$pkgname"
+    dep init
+    dep ensure
 }
 
 build() {
-  export GOPATH="${srcdir}/go"
-  cd "${GOPATH}/src/${pkgname}-${pkgver}"
-  go get
-  go build
+  cd "$pkgname-$pkgver"
+    go build \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-extldflags=-zrelro" \
+    -ldflags "-extldflags=-znow" \
+    .
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -m755 -D powerline-go-${pkgver} "${pkgdir}/usr/bin/powerline-go"
+  cd "$pkgname-$pkgver"
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
-
