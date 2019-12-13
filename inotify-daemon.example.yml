@@ -1,0 +1,9 @@
+# This is an example. For a more complete  list of what is possible
+# see  /opt/inotify-daemon/README.md
+# or consult the man-pages
+---
+- path: /etc
+  action:
+    command: ls
+    parameter: ["-al"] 
+  mode: C
