@@ -12,7 +12,7 @@ provides=('thief-book')
 depends=('electron2')
 makedepends=('jq' 'moreutils' 'yarn')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/cteamx/Thief-Book/archive/$pkgver.tar.gz")
-sha256sums=('1b4fe1d17a4640753a568b79c7eebb6b4d53ff6d92c088af72cb21bf3531ba00')
+sha256sums=('c8c69c4ff933390269d0187628912f8d8f281fc1ced53c545be5051000739f5e')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
