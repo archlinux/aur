@@ -6,13 +6,13 @@ githuborg=pterodactyl
 pkgdesc="Open-source game server management panel"
 pkgver=0.7.15
 pkgpath="github.com/${githuborg}/${pkgname1}"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkgpath}"
 license=()
 makedepends=()
 #https://pterodactyl.io/community/installation-guides/daemon/debian10.html#install-requirements
-depends=(mariadb mariadb-clients php redis composer)
+depends=(mariadb mariadb-clients php php-gd php-fpm redis composer)
 source=("${url}/releases/download/v${pkgver}/${pkgname1}.tar.gz")
 sha256sums=('0beb6e5c5056255fc34eb199127a24d412bd66d3a6622b311b763adb14629c4b')
 
