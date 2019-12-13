@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
+# Maintainer: anon at sansorgan.es  
 
 pkgname=python-bempp-git
 _pkgname=bempp
