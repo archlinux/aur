@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=2.21.10
+pkgver=3.0.16
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -18,34 +18,32 @@ license=('MIT')
 depends=('python'
          # documented in requirements.in
          'python-feedparser>=5.2.1'
-         'python-sqlalchemy>=1.0.9'
-         'python-yaml'
+         'python-sqlalchemy>=1.3.10'
+         'python-yaml>=4.2b1'
          'python-beautifulsoup4>=4.5'
          'python-html5lib>=0.11'
          'python-pyrss2gen'
          'python-pynzb'
-         'python-rpyc'
-         'python-jinja'
-         'python-requests>=2.16.3'
+         'python-rpyc>=4.0'
+         'python-jinja>=2.10'
+         'python-requests>=2.20.0'
          'python-dateutil>=2.5.3'
          'python-jsonschema>=2.0'
-         'python-path.py'
-         'python-guessit'
-         'python-rebulk'
+         'python-guessit>=3.1.0'
+         'python-rebulk>=2.0.0'
          'python-apscheduler>=3.2.0'
          'python-terminaltables>=3.1.0'
          'python-colorclass>=2.2.0'
-         'python-cherrypy>=3.7.0'
+         'python-cherrypy>=18.0.0'
          'python-flask>=0.7'
          'python-flask-restful>=0.3.3'
-         'python-flask-restplus'
+         'python-flask-restplus>=0.10.1'
          'python-flask-compress>=1.2.1'
          'python-flask-login>=0.4.0'
          'python-flask-cors>=2.1.2'
          'python-pyparsing>=2.0.3'
          'python-zxcvbn'
-         'python-future>=0.15.2'
-         'python-progressbar'
+         'python-progressbar>=2.5'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#
@@ -56,7 +54,7 @@ makedepends=('python-paver'
              'python-setuptools'
              )
 
-source=("https://github.com/Flexget/Flexget/archive/${pkgver}.tar.gz"
+source=("https://github.com/Flexget/Flexget/archive/v${pkgver}.tar.gz"
         'flexget.service'
         'flexget@.service'
         "http://download.flexget.com/ChangeLog"
@@ -99,7 +97,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('d4484bcf72a27702de350d713a84e3fcf24114034865235bde7b576260f21612'
+sha256sums=('23fba92cd18f3c43b1e43ae87f4066708c6da5948a957666a028577d39222354'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
