@@ -5,6 +5,7 @@ pkgbase = vysor-appimage
 	url = https://vysor.io
 	arch = x86_64
 	license = custom
+	makedepends = fuse2
 	provides = vysor
 	conflicts = vysor
 	options = !strip
