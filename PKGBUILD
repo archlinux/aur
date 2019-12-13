@@ -1,10 +1,10 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=python-omemo-backend-signal
-_tag=v0.2.4-beta
+_tag=v0.2.5-beta
 pkgname=${_pkgname}
-pkgver=0.2.4.beta
-pkgrel=4
+pkgver=0.2.5.beta
+pkgrel=1
 pkgdesc="A backend for python-omemo offering compatibility with libsignal."
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
