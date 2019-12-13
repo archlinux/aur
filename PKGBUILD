@@ -35,7 +35,7 @@ prepare() {
 
   git cherry-pick --abort || true
 
-  git remote add ebadoo https://gitlab.com/ebadoo/gnome-shell || true
+  git remote add ebadoo https://gitlab.com/ebadoo/ebadoo-shell || true
   git fetch ebadoo
 
   git submodule init
