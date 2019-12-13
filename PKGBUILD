@@ -2,8 +2,8 @@
 # Contributors: WSDMatty, Crotok, SantoZ, Det, Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=ungoogled-chromium-bin
-pkgver=78.0.3904.108
-pkgrel=3
+pkgver=79.0.3945.79
+pkgrel=1
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=("x86_64")
 url="https://ungoogled-software.github.io/"
@@ -23,7 +23,7 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
             'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
 source=("https://download.opensuse.org/repositories/home:/justkidding/Arch/x86_64/ungoogled-chromium-${pkgver}-1-x86_64.pkg.tar.xz")
-sha256sums=("61cdc55e81391cb54c41c319fc2f99f3c431807951ad5f16abd586f371df60f6")
+sha256sums=("d5b691f2983c4bb0cb772f99f84f32879c66764097b494898126f235dded2060")
 
 package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr"    
