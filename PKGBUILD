@@ -17,7 +17,7 @@ depends=('glibc'
 	 'alsa-lib'
          'python3')
 optdepends=('gsettings-desktop-schemas: For web search support')
-source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/master/JabRef-portable_linux.tar.gz
+source=(Jabref-${pkgver}.tgz::https://builds.jabref.org/master/JabRef-5.0-portable_linux.tar.gz
         https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
         jabref.sh
         JabRef.desktop
