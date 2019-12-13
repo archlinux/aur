@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk-bin
-pkgver=2019.Q4.3
+pkgver=2019.Q4.4
 pkgrel=1
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader')
 conflicts=('amdvlk' 'amdvlk-deb' 'amdvlk-git')
 provides=('amdvlk' 'vulkan-driver')
 source=(https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${pkgver}/amdvlk_${pkgver}_amd64.deb)
-sha256sums=('1706564c402c289e922dbfdbc6bcbd24d0a94ae0ba4cd6a61ea4e681e48c42c6')
+sha256sums=('37ed8298a84f25855c8d2d8e8dacd2da2a32b03b7e932b644585ba2a7a8bbef5')
 
 build() {
   ar -x ${srcdir}/amdvlk_${pkgver}_amd64.deb
