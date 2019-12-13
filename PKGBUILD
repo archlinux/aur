@@ -1,18 +1,21 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=webthings-gateway
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='WebThings Gateway by Mozilla'
 url='https://iot.mozilla.org/gateway/'
 arch=('x86_64')
 license=('MPL2')
 depends=(
-  'nodejs>=8.0.0'  # carbon (8.x) is what our other distros use
-  'nodejs<13.0.0'  # we only test up to 12.x
+  'nodejs>=8.0.0'        # carbon (8.x) is what our other distros use
+  'nodejs<13.0.0'        # we only test up to 12.x
   'pagekite'
   'python-adapt-parser'
+  'python-argparse'      # this is really a dependency of python-adapt-parser
   'python-gateway-addon'
   'python-pip'
+  'python-pyee'          # this is really a dependency of python-adapt-parser
+  'python-six'           # this is really a dependency of python-adapt-parser
 )
 makedepends=(
   'git'
@@ -47,7 +50,7 @@ sha256sums=(
   '60a275bf3a4b93defcc2a47a0833e9baf2e019443f401a4399e81277f8c9bf5c'
   'e8f4faa6fb1778157d9927d730038ef0f5520c6c3c5cc33222f155d9979238a5'
   '68685a10449c51fd8fa48fc8a4c399b36e22148a58d939e8f4b99a91c37c34e8'
-  '0ebd9e60fc5d2a3333814859369249f052aae2c8097b6f4a206a3e89e39c99b3'
+  'e516c724bce5fa9ab9f0652f903c778609dd5b8a7682b169b881a8c0fcb41bbf'
   '38ac347a82f61525e762ba3dd129faf2eb5af03371599626bef7fc66e8bf8a32'
 )
 install="${pkgname}.install"

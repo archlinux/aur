@@ -11,6 +11,11 @@ if [ ! -d "/etc/webthings-gateway" ]; then
 fi
 
 cd /opt/webthings-gateway
-su -c "node build/gateway.js" webthings
+setpriv \
+  --reuid=webthings \
+  --regid=webthings \
+  --init-groups \
+  --inh-caps=-all \
+  node build/gateway.js
 
 # vim:set ts=2 sw=2 et ft=sh:
