@@ -1,8 +1,8 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-onedark-git
-pkgver=r31.e3da192
-pkgrel=4
+pkgver=r32.bfca810
+pkgrel=1
 pkgdesc="OneDark style additions for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-onedark"
@@ -21,7 +21,7 @@ prepare() {
     mkdir -p build
 }
 
-build() {        
+build() {
     cd build
 
     cmake "$srcdir/$pkgname" \
