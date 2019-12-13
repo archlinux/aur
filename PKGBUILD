@@ -1,8 +1,8 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-csd-git
-pkgver=r48.6d5462f
-pkgrel=5
+pkgver=r49.ab93808
+pkgrel=1
 pkgdesc="Client-side decorated unified title-/toolbar for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-csd"
@@ -21,7 +21,7 @@ prepare() {
     mkdir -p build
 }
 
-build() {        
+build() {
     cd build
 
     cmake "$srcdir/$pkgname" \
