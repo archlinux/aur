@@ -1,9 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=webmacs-docs-git
-pkgver=r521.9a529ea
+pkgver=r791.35f1743
 pkgrel=1
-_pythonver=3.6
 pkgdesc="browser for keyboard-based web navigation"
 arch=('any')
 url="https://github.com/parkouss/webmacs"
