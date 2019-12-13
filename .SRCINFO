@@ -1,7 +1,7 @@
 pkgbase = wsjtx-superbuild-git
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - Superbuild/git version, hamlib not required
 	pkgver = r35.491536f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://physics.princeton.edu/pulsar/k1jt/wsjtx.html
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = wsjtx-superbuild-git
 	makedepends = git
 	makedepends = asciidoc
 	makedepends = asciidoctor
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-serialport
