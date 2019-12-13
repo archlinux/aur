@@ -1,6 +1,6 @@
 pkgbase = powerline-rs
 	pkgdesc = powerline-shell rewritten in Rust. Inspired by powerline-go.
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jD91mZM2/powerline-rs
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = powerline-rs
 	makedepends = cmake
 	optdepends = bash-completion: Bash completion for powerline-rs
 	optdepends = fish: Fish completion for powerline-rs
-	source = https://github.com/jD91mZM2/powerline-rs/archive/0.1.9.tar.gz
-	sha256sums = 3ca53f4a2a1a8e76983d2671d697bb57d5c3984aa095b2402e124ef2b98add1f
+	source = https://github.com/jD91mZM2/powerline-rs/archive/0.2.0.tar.gz
+	sha256sums = f6dc770dc4499cccddf3da82d2b014a055226c136706377a9b2aad67d32de6d0
 
 pkgname = powerline-rs
 

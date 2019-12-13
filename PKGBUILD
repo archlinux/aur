@@ -1,12 +1,12 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname="powerline-rs"
 pkgdesc="powerline-shell rewritten in Rust. Inspired by powerline-go."
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 url="https://github.com/jD91mZM2/powerline-rs"
 license=("MIT")
 source=("https://github.com/jD91mZM2/powerline-rs/archive/$pkgver.tar.gz")
-sha256sums=('3ca53f4a2a1a8e76983d2671d697bb57d5c3984aa095b2402e124ef2b98add1f')
+sha256sums=('f6dc770dc4499cccddf3da82d2b014a055226c136706377a9b2aad67d32de6d0')
 arch=("x86_64" "i386" "arm" "armv6h" "armv7h" "aarch64")
 makedepends=("rust" "libgit2" "cmake") # cmake is used by libgit2-sys
 optdepends=(
