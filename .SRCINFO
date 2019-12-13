@@ -1,14 +1,14 @@
 pkgbase = k10ctl
 	pkgdesc = Change voltage and frequency settings of AMD K10 CPUs
 	pkgver = 090709
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/k10ctl/
 	install = k10ctl.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = bash
-	source = http://dl.sourceforge.net/k10ctl/latest
+	source = k10ctl.tar.bz2
 	source = k10ctl.sh
 	source = k10ctl.rc
 	source = k10ctl.conf

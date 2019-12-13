@@ -2,14 +2,14 @@
 # Contributor: Thomas Haider <t.haider@deprecate.de> 
 pkgname=k10ctl
 pkgver=090709
-pkgrel=1
+pkgrel=2
 pkgdesc="Change voltage and frequency settings of AMD K10 CPUs"
 arch=(i686 x86_64)
 depends=('bash')
 url="http://sourceforge.net/projects/k10ctl/"
 license=('GPL3')
 install=${pkgname}.install
-source=(http://dl.sourceforge.net/k10ctl/latest \
+source=(k10ctl.tar.bz2 \
 	    ${pkgname}.sh \
 		${pkgname}.rc \
 		${pkgname}.conf \
