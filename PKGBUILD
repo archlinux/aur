@@ -1,8 +1,8 @@
-# Maintainer: Josh Hoffer <hoffer.joshua@gmail.com>
+# Maintainer: anon at sansorgan.es 
 # Past-Maintainer: CUI Hao <cuihao.leo@gmail.com>
 
 pkgname=seismic-unix
-pkgver=44.16
+pkgver=44.18
 pkgrel=1
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
@@ -21,7 +21,7 @@ makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'openmotif' 'glu' 
 #source=("ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_$pkgver.tgz")
 #sha1sums=('2456bfa4145ba5e8c03d9ffe85173b6657972bb3')
 #source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
-source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/index.php/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R16.tgz")
+source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/index.php/s/WgXpRba4DPPaiNK/download")
 md5sums=("SKIP")
 install=seismic-unix.install
 
@@ -89,4 +89,4 @@ setenv PATH \${PATH}:\${CWPROOT}/bin
 EOF
     chmod 755 "$pkgdir/etc/profile.d/$pkgname"{.sh,.csh}
 }
-md5sums=('dc786ef7b95cf7924716e8479838a13e')
+md5sums=('2b4d9f3a09dbecca1919f4edf44fffc5')
