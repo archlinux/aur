@@ -2,7 +2,7 @@
 
 pkgname=docker-machine-driver-kvm2
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minikube-maintained KVM driver for docker-machine"
 url="https://github.com/kubernetes/minikube"
 license=('Apache')
@@ -18,7 +18,5 @@ source=("${pkgname}_${pkgver}::https://github.com/kubernetes/minikube/releases/d
 sha256sums=('5dc0cc5a73304c7ee0263aee2d1d3e296738154389e0a7bac82009194527f505')
 
 package() {
-	cd "$srcdir"
-	install -d "$pkgdir/usr/bin"
-	install -m755 "$pkgname_$pkgver" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "${pkgname}_${pkgver}" "$pkgdir/usr/bin/$pkgname"
 }
