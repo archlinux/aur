@@ -1,12 +1,12 @@
 pkgbase = devspace-bin
 	pkgdesc = Client-only, open-source dev tool for Kubernetes
-	pkgver = 4.3.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://devspace.cloud
 	arch = x86_64
 	license = apache
-	source = devspace-bin-4.3.1::https://github.com/devspace-cloud/devspace/releases/download/v4.3.1/devspace-linux-amd64
-	sha256sums = 152babd89b903df0e995a4ee29898f95f9bd012cf7b8c663b5f7793b3891a85b
+	source = devspace-bin-4.3.2::https://github.com/devspace-cloud/devspace/releases/download/v4.3.2/devspace-linux-amd64
+	sha256sums = 92c85f86ef30c00a22d9840bc393aa19da75c0b1d4d8355ada2d5e36f5926bcd
 
 pkgname = devspace-bin
 
