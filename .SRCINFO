@@ -1,6 +1,6 @@
 pkgbase = gfeeds-git
 	pkgdesc = News reader for GNOME
-	pkgver = 0.11.r1.g39463b1
+	pkgver = 0.12.r25.ga7c4d1c
 	pkgrel = 1
 	url = https://gitlab.com/gabmus/gnome-feeds
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = gfeeds-git
 	depends = python-html5lib
 	depends = python-gobject
 	depends = gobject-introspection
+	depends = python-readability-lxml
 	provides = gfeeds
 	provides = gnome-feeds
 	conflicts = gnome-feeds
