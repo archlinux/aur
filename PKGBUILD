@@ -7,7 +7,9 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://luaradio.io"
 license=('MIT')
 depends=('luajit')
-optdepends=('libvolk' 'fftw')
+optdepends=('liquid-dsp: acceleration'
+            'libvolk: acceleration'
+            'fftw: acceleration')
 source=("git+https://github.com/vsergeev/luaradio.git#tag=v$pkgver")
 md5sums=('SKIP')
 
