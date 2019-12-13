@@ -1,7 +1,7 @@
 pkgbase = pwninit
 	pkgdesc = pwninit - automate starting binary exploit challenges
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 0
 	url = https://github.com/io12/pwninit
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pwninit
 	makedepends = cargo
 	depends = elfutils
 	provides = pwninit
-	source = https://github.com/io12/pwninit/archive/2.1.0.tar.gz
-	md5sums = fe53d58b56820e9ee2dfc31750a28546
+	source = https://github.com/io12/pwninit/archive/2.1.1.tar.gz
+	md5sums = 79ef76d29f4cc9ee66672fbd20ef3131
 
 pkgname = pwninit
