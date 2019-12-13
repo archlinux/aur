@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer <hoffer.joshua@gmail.com>
+# Maintainer: anon at sansorgan.es 
 _pkgname=paraview-nightly
 pkgname=paraview-nightly-bin
 pkgver=5.7.0.r662.g3e20962
