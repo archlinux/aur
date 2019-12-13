@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 pkgname='monero-wallet-qt-git'
-_monerover=0.14.1.2
-pkgver=0.14.1.2
+_monerover=0.15.0.1
+pkgver=0.15.0.1
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://getmonero.org/"
@@ -11,7 +11,7 @@ provides=('monero-wallet-qt')
 conflicts=('monero-wallet-qt')
 
 depends=("libmonero-wallet>=$_monerover"
-'openssl' 'boost-libs>=1.45'  'libunwind' 'readline' 'unbound' 'hidapi'
+'openssl' 'boost-libs>=1.45'  'libunwind' 'readline' 'unbound' 'hidapi' 'randomx'
 'qt5-base' 'qt5-declarative' 'qt5-graphicaleffects'
 'qt5-location' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-tools' 'qt5-webchannel'
 'qt5-webengine' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-svg')

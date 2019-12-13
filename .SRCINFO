@@ -1,6 +1,6 @@
 pkgbase = monero-wallet-qt-git
 	pkgdesc = Official QT GUI wallet for Monero, a private, secure, untraceable peer-to-peer currency
-	pkgver = 0.14.1.2
+	pkgver = 0.15.0.1
 	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
@@ -9,13 +9,14 @@ pkgbase = monero-wallet-qt-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
-	depends = libmonero-wallet>=0.14.1.2
+	depends = libmonero-wallet>=0.15.0.1
 	depends = openssl
 	depends = boost-libs>=1.45
 	depends = libunwind
 	depends = readline
 	depends = unbound
 	depends = hidapi
+	depends = randomx
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-graphicaleffects
