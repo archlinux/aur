@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com >
+# Maintainer: anon at sansorgan.es 
 pkgbase=dune-core
 pkgname=('dune-common' 'dune-geometry' 'dune-localfunctions' 'dune-istl' 'dune-grid' 'dune-uggrid')
 pkgver=2.6.0
