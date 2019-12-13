@@ -1,10 +1,10 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=python-omemo
-_tag=v0.10.5-beta
+_tag=v0.11.0-beta
 pkgname=python-omemo-syndace
-pkgver=0.10.5.beta
-pkgrel=3
+pkgver=0.11.0.beta
+pkgrel=1
 pkgdesc="An open python implementation of the OMEMO Multi-End Message and Object Encryption protocol"
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
