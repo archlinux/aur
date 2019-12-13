@@ -2,7 +2,7 @@
 
 pkgname=clash-dashboard-git
 _pkgname=clash-dashboard
-pkgver=20191205.6b41cbe
+pkgver=20191213.83d1bcc
 pkgrel=1
 pkgdesc="web port of clash"
 arch=('any')
