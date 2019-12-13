@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_pkgver=4.11-9
+_pkgver=4.11-10
 pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
@@ -17,6 +17,7 @@ depends=(
   libxcursor      lib32-libxcursor
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
+  libpulse        lib32-libpulse
   libxi           lib32-libxi
   gettext         lib32-gettext
   freetype2       lib32-freetype2
@@ -54,12 +55,13 @@ makedepends=(autoconf ncurses bison perl fontforge flex
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  vkd3d                 lib32-vkd3d
+#  vkd3d                 lib32-vkd3d
   sdl2                  lib32-sdl2
   libgphoto2
   sane
   gsm
-  vulkan-headers
+#  vulkan-headers
+#  spirv-headers
   samba
   opencl-headers
   git
@@ -75,7 +77,6 @@ optdepends=(
   mpg123                lib32-mpg123
   openal                lib32-openal
   v4l-utils             lib32-v4l-utils
-  libpulse              lib32-libpulse
   alsa-plugins          lib32-alsa-plugins
   alsa-lib              lib32-alsa-lib
   libjpeg-turbo         lib32-libjpeg-turbo
@@ -85,7 +86,7 @@ optdepends=(
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
-  vkd3d                 lib32-vkd3d
+#  vkd3d                 lib32-vkd3d
   sdl2                  lib32-sdl2
   libgphoto2
   sane
@@ -99,9 +100,12 @@ conflicts=("${pkgname%-git}")
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_pkgver
     wine-valve::git+https://github.com/ValveSoftware/wine.git
-    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
+    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
+    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
@@ -113,21 +117,24 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    e9506ddf7edc5135a5e3568fea5bbf29af5948fbf45d2d89620a5a1f2b5dc6a4
-    7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782
+    SKIP
+    SKIP
+    SKIP
+    SKIP #'956ad6f7f734254f4860b69024c8ec6e0669a2c34fba48dc1afad75f3e6514df'
+    '7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782'
 )
 
 prepare() {
     [ ! -d build ] && mkdir build
 
     cd proton
-    for submodule in ffmpeg openvr FAudio fonts/liberation-fonts; do
+    for submodule in ffmpeg openvr SPIRV-Headers Vulkan-Headers FAudio fonts/liberation-fonts; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url ../"${submodule#*/}"
         git submodule update "${submodule}"
     done
 
-    for submodule in wine; do
+    for submodule in wine vkd3d; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url ../"${submodule#*/}"-valve
         git submodule update "${submodule}"
@@ -144,7 +151,22 @@ build() {
         --with-ffmpeg \
         --build-name="${pkgname%-git}"
 
-    export CFLAGS="${CFLAGS/-O3/-O2}"
+    # From d9vk PKGBUILD
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling either AVX (and AVX2 as a side-effect) or tree
+    # vectorization fixes the issue. I am not sure which one is better
+    # to disable so below you can choose. Append either of these flags.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    export CFLAGS+=" -mno-avx"
+    #export CFLAGS+=" -fno-tree-vectorize"
+    #export CFLAGS="${CFLAGS/-O3/-O2}"
+    # From wine-staging PKGBUILD
+    # Doesn't compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/ -fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
 
