@@ -5,6 +5,7 @@ pkgbase = lepton-snippet-manager-appimage
 	url = https://hackjutsu.com/Lepton/
 	arch = x86_64
 	license = MIT
+	makedepends = fuse2
 	provides = lepton-snippet-manager
 	conflicts = lepton-snippet-manager
 	options = !strip

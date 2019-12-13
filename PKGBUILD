@@ -10,6 +10,7 @@ url="https://hackjutsu.com/Lepton/"
 license=('MIT')
 provides=('lepton-snippet-manager')
 conflicts=('lepton-snippet-manager')
+makedepends=('fuse2')
 source=("https://github.com/hackjutsu/Lepton/releases/download/v${pkgver}/Lepton-${pkgver}-${arch}.AppImage"
         "lepton-snippet-manager.sh")
 sha256sums=('caf9f1dc381f919826c683159b5d7662e4955cb587a4e50949dbdc2f5265ef39'
