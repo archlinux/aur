@@ -1,6 +1,6 @@
 pkgbase = pgbackrest
 	pkgdesc = Reliable PostgreSQL Backup & Restore
-	pkgver = 2.19
+	pkgver = 2.20
 	pkgrel = 1
 	url = https://github.com/pgbackrest/pgbackrest
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = pgbackrest
 	depends = xz
 	depends = perl
 	backup = etc/pgbackrest/pgbackrest.conf
-	source = https://github.com/pgbackrest/pgbackrest/archive/release/2.19.tar.gz
-	sha256sums = a9d9d7619406a9effe0fe884c5fad21b65b4aca165b9d867afb48e3a182ee8ad
+	source = https://github.com/pgbackrest/pgbackrest/archive/release/2.20.tar.gz
+	sha256sums = 8a3b4e166b34c1ba213143ab502e575ae893f33c0e89b0eb58d45136254c1b4d
 
 pkgname = pgbackrest
 
