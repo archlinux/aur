@@ -1,7 +1,7 @@
 # Maintainer: Johannes Graën <johannes SPIRALGALAXY selfnet FULLSTOP de>
 
 pkgname=jabref-latest
-pkgver=20191121
+pkgver=20191213
 pkgrel=1
 pkgdesc="GUI frontend for BibTeX, written in Java; latest master version from git"
 arch=('x86_64')
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
 
 
 pkgver() {
-  curl --silent --head head https://builds.jabref.org/master/JabRef-portable_linux.tar.gz \
+  curl --silent --head https://builds.jabref.org/master/JabRef-5.0-portable_linux.tar.gz \
     | grep "Last-Modified" | cut -d' ' -f2- | date -f - +%Y%m%d
 }
 
