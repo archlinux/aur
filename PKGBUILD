@@ -1,6 +1,6 @@
 # Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
-pkgname="switch-lan-play"
-pkgver=v0.2.1.r0.g1c26ca6
+pkgname="switch-lan-play-git"
+pkgver=v0.2.1.r23.g200e767
 pkgrel=1
 epoch=0
 pkgdesc="A program for connecting to switch-lan-play servers-see url for more info"
@@ -8,13 +8,13 @@ arch=(any)
 url="https://github.com/spacemeowx2/switch-lan-play"
 license=('GPL3')
 groups=()
-depends=(libpcap)
-makedepends=(cmake)
+depends=("libpcap")
+makedepends=("cmake")
 checkdepends=()
 optdepends=()
 provides=()
 conflicts=()
-replaces=()
+replaces=("switch-lan-play")
 backup=()
 options=()
 install=
@@ -46,7 +46,7 @@ build()	{
 	make
 }
 package() {
-	cd switch-lan-play/build
+	cd $pkgname/build
 	make DESTDIR="$pkgdir/" install
 }
 
