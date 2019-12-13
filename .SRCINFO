@@ -1,0 +1,15 @@
+pkgbase = youtube-dl-mp4-git
+	pkgdesc = MP4 alias for youtube-dl
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/azizyus/youtube-dl-mp4
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glut
+	depends = glu
+	source = git+https://gitlab.com/azizyus/youtube-dl-mp4.git
+	md5sums = SKIP
+
+pkgname = youtube-dl-mp4-git
+
