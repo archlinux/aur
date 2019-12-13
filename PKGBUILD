@@ -1,8 +1,8 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-layoutsupport-git
-pkgver=r12.7616472
-pkgrel=5
+pkgver=r13.2598965
+pkgrel=1
 pkgdesc="Layout support for additional plugins for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-layoutsupport"
@@ -21,7 +21,7 @@ prepare() {
     mkdir -p build
 }
 
-build() {        
+build() {
     cd build
 
     cmake "$srcdir/$pkgname" \
