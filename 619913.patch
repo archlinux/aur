@@ -1,0 +1,55 @@
+From: Roland Hieber <rohieb@rohieb.name>
+Subject: Use power_now instead of current_now to read power from sysfs
+
+Apparently, current_now was renamed to power_now around kernel 2.6.36. The fix
+in this patch first tries to read from the new file name, if this does not
+exist, it tries the old name.
+
+Bug: 644567
+Author: niko2gare <http://sourceforge.net/users/niko2gare/>
+Origin: http://sourceforge.net/tracker/?func=detail&aid=3172707&group_id=58904&atid=489239
+Last-Update: 2012-10-12
+
+Modification to avoid checking closed battery
+From: Bernd Rinn (z-bb)
+Origin: https://bugs.launchpad.net/ubuntu/+source/cpufreqd/+bug/733507/+attachment/3022414/+files/cpufreqd-bug%23733507.patch
+Index: cpufreqd/src/cpufreqd_acpi_battery.c
+===================================================================
+--- cpufreqd.orig/src/cpufreqd_acpi_battery.c	2013-03-23 21:37:28.268379010 +0900
++++ cpufreqd/src/cpufreqd_acpi_battery.c	2013-03-23 21:38:23.392952250 +0900
+@@ -36,6 +36,7 @@
+ #define PRESENT		"present"
+ #define STATUS		"status"
+ #define CURRENT_NOW	"current_now"
++#define POWER_NOW	"power_now"
+ 
+ struct battery_info {
+ 	int capacity;
+@@ -145,9 +146,13 @@
+ 	binfo->status = get_class_device_attribute(binfo->cdev, STATUS);
+ 	if (!binfo->status)
+ 		return -1;
+-	binfo->current_now = get_class_device_attribute(binfo->cdev, CURRENT_NOW);
+-	if (!binfo->current_now)
+-		return -1;
++	binfo->current_now = get_class_device_attribute(binfo->cdev, POWER_NOW);
++	if (!binfo->current_now) {
++		/* try the "current_now" name */
++		binfo->current_now = get_class_device_attribute(binfo->cdev, CURRENT_NOW);
++		if (!binfo->current_now)
++			return -1;
++	}
+ 
+ 	/* read the last full capacity, this is not going to change
+ 	 * very often, so no need to poke it later */
+@@ -311,6 +316,10 @@
+ 
+ 	/* Read battery informations */
+ 	for (i = 0; i < bat_dir_num; i++) {
++		if (!info[i].open) {
++			clog(LOG_INFO, "Skipping %s (closed)\n", info[i].cdev->name);
++			continue;
++		}
+ 
+ 		if (read_int(info[i].present, &info[i].is_present) != 0) {
+ 			clog(LOG_INFO, "Skipping %s\n", info[i].cdev->name);
