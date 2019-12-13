@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer <hoffer dot joshua at gmail dot com >
+# Maintainer:anon at sansorgan.es 
 # Contributor: Jack Rosenthal
 # Contributor: David Florness <edwargix@gmail.com>
 pkgname=threelayout
