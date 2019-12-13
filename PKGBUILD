@@ -2,7 +2,7 @@
 # Contributor: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ url="https://build2.org/"
 license=('MIT')
 makedepends=(wget)
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
-sha256sums=('653bb75f31ca05760eba62bb6727d11a9f0d8ce4aa2fc1fb996d7ef6e76a4938')
+sha256sums=('a0ecf9930b873242a0164653411caca2cc5c095abda5ee7bda800f1b0f93e396')
 
 build() {
   cd build2-toolchain-$pkgver
