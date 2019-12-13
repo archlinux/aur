@@ -1,8 +1,8 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-icontheme-git
-pkgver=r20.1fef9ee
-pkgrel=2
+pkgver=r21.174a8ed
+pkgrel=1
 pkgdesc="Custom icon theme for Qt Creator."
 arch=('x86_64')
 url="https://github.com/Longhanks/qtcreator-plugin-icontheme"
@@ -21,7 +21,7 @@ prepare() {
     mkdir -p build
 }
 
-build() {        
+build() {
     cd build
 
     cmake "$srcdir/$pkgname" \
