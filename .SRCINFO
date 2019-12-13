@@ -1,7 +1,7 @@
 pkgbase = hdsentinel
 	pkgdesc = A freeware, closed source, SMART analysis tool
 	pkgver = 0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.hdsentinel.com/hdslin.php
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hdsentinel
 	arch = armv7h
 	license = unknown
 	source = https://www.hdsentinel.com/hdslin/hdsentinel-018-x64.gz
-	md5sums = f68fe99c6392d9b2d15a5f260d595da2
+	md5sums = 442E28842F71D033D89FB5C4A3928BD9
 
 pkgname = hdsentinel
 
