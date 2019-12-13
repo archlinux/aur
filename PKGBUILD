@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
+# Maintainer: anon at sansorgan.es
 
 pkgname=taoup
 pkgdesc='TAO (The Art) of Unix Programming (and related systemic epiphanies)'
