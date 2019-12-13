@@ -1,6 +1,5 @@
 blink_symbol_level=0
 custom_toolchain="//build/toolchain/linux/unbundle:default"
-enable_ac3_eac3_audio_demuxing=true
 enable_iterator_debugging=false
 fatal_linker_warnings=false
 ffmpeg_branding="Chrome"
@@ -33,6 +32,7 @@ use_system_libopenjpeg2=true
 use_system_zlib=true
 use_vaapi=true
 enable_swiftshader=false
+icu_use_data_file=false
 use_ozone=true
 ozone_platform_wayland=true
 ozone_platform_x11=true
