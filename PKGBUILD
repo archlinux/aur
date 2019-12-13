@@ -37,7 +37,6 @@ prepare() {
 
   git remote add ebadoo https://gitlab.com/ebadoo/ebadoo-shell || true
   git fetch ebadoo
-
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
