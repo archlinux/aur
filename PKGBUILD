@@ -1,7 +1,7 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-tabs-git
-pkgver=r28.69e72e4
+pkgver=r29.6d750a0
 pkgrel=1
 pkgdesc="Tabs for Qt Creator."
 arch=('x86_64')
