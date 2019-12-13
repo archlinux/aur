@@ -14,10 +14,6 @@ depends=('python')
 source=("https://pypi.io/packages/source/a/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
 md5sums=('1959a34873a6bdc1fba807023804867e')
 
-prepare() {
-  cp -a ${pypi_name}-${pkgver}
-}
-
 build() {
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py build
@@ -31,4 +27,3 @@ package_python-aspy-yaml() {
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build
 }
 
-# vim: set ft=sh ts=4 sw=4 noet:
