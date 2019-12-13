@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.0-arch1 Kernel Configuration
+# Linux/x86 5.4.3-arch1 Kernel Configuration
 #
 
 #
@@ -6787,7 +6787,7 @@ CONFIG_SND_YMFPCI=m
 #
 CONFIG_SND_HDA=m
 CONFIG_SND_HDA_INTEL=m
-CONFIG_SND_HDA_INTEL_DETECT_DMIC=y
+# CONFIG_SND_HDA_INTEL_DETECT_DMIC is not set
 CONFIG_SND_HDA_HWDEP=y
 CONFIG_SND_HDA_RECONFIG=y
 CONFIG_SND_HDA_INPUT_BEEP=y
