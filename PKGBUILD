@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.4.2
-pkgver=5.4.v.2
+gitver=v5.4.3
+pkgver=5.4.v.3
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +23,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	'5012_enable-cpu-optimizations-for-gcc91.patch')
 sha256sums=('SKIP'
             #config.x86_64
-            '1237db07522177bd469fdd8f5b36f78de3677ff837e3aa286dd7e048795e4ab7'
+            '95b0f26c84b7fc681a1119b36aa02b1e9b20e579eef81cf6bc78bd5b8b996c50'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
