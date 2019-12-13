@@ -1,11 +1,12 @@
 # Maintainer: Bruce Zhang
+# Maintainer: Jack Deng
 pkgname=thief-book
 _name=Thief-Book
 pkgver=3.1.0
 pkgrel=1
 pkgdesc='一款真正的跨平台摸鱼神器'
 arch=('x86_64' 'i686')
-url='https://github.com/cteams/Thief-Book'
+url='https://github.com/cteamx/Thief-Book'
 license=('MIT')
 provides=('thief-book')
 depends=('electron2')
