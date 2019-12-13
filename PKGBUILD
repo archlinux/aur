@@ -1,4 +1,4 @@
-#Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
+#Maintainer:anon at sansorgan.es 
 
 pkgname=molecular-workbench
 pkgdesc='Modeling tool for designing and conducting computational experiments across science.'
