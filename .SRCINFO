@@ -1,7 +1,7 @@
 pkgbase = amidst-beta
 	pkgdesc = Advanced Minecraft Interface and Data/Structure Tracking
-	pkgver = 4.3_beta6
-	pkgrel = 3
+	pkgver = 4.4_beta1
+	pkgrel = 1
 	url = https://github.com/toolbox4minecraft/amidst
 	changelog = ChangeLog
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = amidst-beta
 	optdepends = minecraft: the game itself
 	provides = amidst
 	conflicts = amidst
-	noextract = amidst-v4-3-beta6.jar
-	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.3-beta6/amidst-v4-3-beta6.jar
+	noextract = amidst-v4-4-beta1.jar
+	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.4-beta1/amidst-v4-4-beta1.jar
 	source = amidst.desktop
-	md5sums = f73a99d61f4a50b8492447f3917ed268
+	md5sums = b48fe73ae5027d68ad8a3c0c1aeb5451
 	md5sums = 3c6900ac68e3175768322e684f9f1bcb
 
 pkgname = amidst-beta

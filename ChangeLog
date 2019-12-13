@@ -1,3 +1,17 @@
+2019-12-13 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
+
+	* 4.4_beta1-1 :
+	Version bump.
+	See https://github.com/toolbox4minecraft/amidst/releases/tag/v4.4-beta1
+
+	Upstream changelog:
+	- added support up to Minecraft 1.15
+	- added Buried Treasures
+	- fixed incorrect Mineshaft, Stronghold and spawn points locations
+	- various bugfixes
+	- add -profile CLI argument to select a starting profile
+	- add -seed and -world-type CLI arguments to select a starting seed
+
 2019-05-18 Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 
 	* 4.3_beta6-3 :

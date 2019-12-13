@@ -3,11 +3,11 @@
 
 _pkgname=amidst
 pkgname=${_pkgname}-beta
-_version='4.3-beta6'
+_version='4.4-beta1'
 pkgver=${_version//-/_}
 _jarver="v${_version}"
 _jarfile="${_pkgname}-${_jarver/./-}.jar"
-pkgrel=3
+pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 license=('GPL3')
@@ -20,7 +20,7 @@ noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-md5sums=('f73a99d61f4a50b8492447f3917ed268'
+md5sums=('b48fe73ae5027d68ad8a3c0c1aeb5451'
          '3c6900ac68e3175768322e684f9f1bcb')
 
 prepare() {
