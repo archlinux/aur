@@ -1,0 +1,16 @@
+pkgbase = lodepng
+	pkgdesc = PNG encoder and decoder in C and C++, without dependecies.
+	pkgver = 20191109
+	pkgrel = 1
+	url = https://lodev.org/lodepng
+	arch = x86_64
+	license = ZLIB
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/lvandeve/lodepng.git
+	source = CMakeLists.txt
+	sha256sums = SKIP
+	sha256sums = 70ba9558661bc182cf98c07c990fd4c4629612e5c1021b87e38e897c430a72ac
+
+pkgname = lodepng
+
