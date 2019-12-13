@@ -1,7 +1,7 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=fpaste
-pkgver=0.3.9.2
+pkgver=0.4.0.1
 pkgrel=2
 pkgdesc='A cli frontend for the fpaste.org pastebin'
 arch=('any')
@@ -16,4 +16,4 @@ package() {
 	install -D -m644 'docs/man/en/fpaste.1' "$pkgdir/usr/share/man/man1/fpaste.1"
 }
 
-sha256sums=('f3209772af898d58df586dcf408eceb20d7d1ab42c8ed2689a4e0140e25c4052')
+sha256sums=('a3de49a1a872d83ebc35e0f78e22693694da86fb4d1aad6811f3260693b5f7e6')
