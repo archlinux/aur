@@ -1,4 +1,4 @@
-# Maintainer: Andrey Vetrov <admin@ebadoo.com>
+# Maintainer: Fernando Guevara <admin@ebadoo.com>
 
 pkgname=ebadoo-desktop-schemas
 pkgver=3.34.0.r0.ebb001
@@ -16,17 +16,16 @@ source=("git+https://gitlab.com/ebadoo/ebadoo-desktop-schemas.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname:0:25}
-  # git describe --tags | sed 's/-/+/g'
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd ${pkgname:0:25}
+  cd $pkgname
 }
 
 build() {
-  arch-meson ${pkgname:0:25} build
+  arch-meson $pkgname build
   ninja -C build
 }
 
