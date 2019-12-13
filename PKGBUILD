@@ -2,7 +2,7 @@
 # Contributor: Vladimir Panteleev <arch-pkg at thecybershadow dot net>
 
 pkgname=rtags
-pkgver=2.34
+pkgver=2.37
 pkgrel=1
 pkgdesc='A client/server application that indexes C/C++ code'
 arch=('i686' 'x86_64')
