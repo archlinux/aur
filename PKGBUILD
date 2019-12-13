@@ -2,7 +2,7 @@
 
 pkgname=dat-gateway-git
 _name=${pkgname%%-git}
-pkgver=2.1.2beta
+pkgver=2.3.0beta.g08df37e
 pkgrel=1
 pkgdesc="In-memory Dat to HTTP gateway"
 arch=(any)
@@ -21,17 +21,9 @@ options=(!strip)
 
 pkgver() {
   cd "$_name"
-  printf "%s.r%s" \
+  printf "%s.g%s" \
   	$(cat package.json | sed -n 's/.*"version":\s* "\([^"]\+\)".*/\1/p' | sed 's/-//g') \
   	$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd "$srcdir/$_name"
-
-  # Fix infinite refresh Issue #18
-  git remote add up https://github.com/garbados/dat-gateway.git
-  git pull --no-edit up refs/pull/19/head
 }
 
 package(){
