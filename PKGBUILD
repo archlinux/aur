@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer < hoffer.joshua@gmail.com > 
+# Maintainer:anon at sansorgan.es 
 pkgname=awx
 pkgver=9.0.0
 pkgrel=1
