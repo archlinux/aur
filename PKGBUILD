@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://gitlab.com/azizyus/youtube-dl-mp4"
 license=('MIT')
 makedepends=('git')
-depends=('youtube-dl'')
+depends=('youtube-dl')
 source=('git+https://gitlab.com/azizyus/youtube-dl-mp4.git')
 md5sums=('SKIP')
 

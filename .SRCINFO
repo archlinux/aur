@@ -6,8 +6,7 @@ pkgbase = youtube-dl-mp4-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = glut
-	depends = glu
+	depends = youtube-dl
 	source = git+https://gitlab.com/azizyus/youtube-dl-mp4.git
 	md5sums = SKIP
 
