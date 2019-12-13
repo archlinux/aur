@@ -20,7 +20,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-source=("git+https://gitlab.com/ebadoo/gnome-shell.git"
+source=("git+https://gitlab.com/ebadoo/ebadoo-shell.git"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
             'SKIP')

@@ -40,7 +40,7 @@ pkgbase = ebadoo-shell
 	provides = gnome-shell
 	provides = gnome-shell=3.34.2+14+g7e8884a70
 	conflicts = gnome-shell
-	source = git+https://gitlab.com/ebadoo/gnome-shell.git
+	source = git+https://gitlab.com/ebadoo/ebadoo-shell.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
