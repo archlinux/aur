@@ -1,7 +1,7 @@
 # Maintainer: Andreas Schulz <andi.schulz@me.com>
 
 pkgname=qtcreator-plugin-tabs-git
-pkgver=r27.9fec48c
+pkgver=r28.69e72e4
 pkgrel=1
 pkgdesc="Tabs for Qt Creator."
 arch=('x86_64')
@@ -21,7 +21,7 @@ prepare() {
     mkdir -p build
 }
 
-build() {        
+build() {
     cd build
 
     cmake "$srcdir/$pkgname" \

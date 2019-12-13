@@ -1,6 +1,6 @@
 pkgbase = qtcreator-plugin-tabs-git
 	pkgdesc = Tabs for Qt Creator.
-	pkgver = r27.9fec48c
+	pkgver = r28.69e72e4
 	pkgrel = 1
 	url = https://github.com/Longhanks/qtcreator-plugin-tabs
 	arch = x86_64
