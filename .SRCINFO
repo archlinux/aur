@@ -1,7 +1,7 @@
 pkgbase = python-mediafile
 	pkgdesc = Simple interface to the metadata tags for many audio file formats
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/beetbox/mediafile
 	arch = any
 	license = MIT
@@ -14,9 +14,9 @@ pkgbase = python-mediafile
 	checkdepends = python2-enum34
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-0.2.0.tar.gz
-	source = mediafile-0.2.0-LICENSE::https://github.com/beetbox/mediafile/raw/v0.2.0/LICENSE
-	sha256sums = a59ec09142fd352648596de18836af765c6e59b25e95fc2f5aa72b6f082b3ddf
+	source = https://files.pythonhosted.org/packages/source/m/mediafile/mediafile-0.3.0.tar.gz
+	source = mediafile-0.3.0-LICENSE::https://github.com/beetbox/mediafile/raw/v0.3.0/LICENSE
+	sha256sums = 7cbdb67907e65089c81d304002c8404798b630e609796b291503d0853edcc0da
 	sha256sums = 0b308ae66aaa1412ebbe645bec4002fd262d91e9cdf67b6f198026677ddfafcc
 
 pkgname = python-mediafile

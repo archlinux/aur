@@ -3,8 +3,8 @@
 pkgbase=python-mediafile
 _name=${pkgbase#python-}
 pkgname=($pkgbase ${pkgbase/python-/python2-})
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc='Simple interface to the metadata tags for many audio file formats'
 url="https://github.com/beetbox/$_name"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-nose' 'python-six' 'python-mutagen'
               'python2-nose' 'python2-six' 'python2-mutagen' 'python2-enum34')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$_name-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE")
-sha256sums=('a59ec09142fd352648596de18836af765c6e59b25e95fc2f5aa72b6f082b3ddf'
+sha256sums=('7cbdb67907e65089c81d304002c8404798b630e609796b291503d0853edcc0da'
             '0b308ae66aaa1412ebbe645bec4002fd262d91e9cdf67b6f198026677ddfafcc')
 
 prepare() {
