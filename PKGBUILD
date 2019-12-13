@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer < hoffer dot joshua at gmail dot com > 
+# Maintainer: anon at sansorgan.es
 pkgname=ug
 pkgver=3.13.0
 pkgrel=1
