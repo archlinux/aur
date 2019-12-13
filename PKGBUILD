@@ -2,15 +2,15 @@
 
 pkgname=ebadoo-shell
 _pkgname=ebadoo-shell
-pkgver=3.34.2+14+g7e8884a74
+pkgver=3.34.2+14+g7e8884a75
 pkgrel=1
 epoch=1
 pkgdesc="Ebadoo-shell es una variante estetica."
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
-depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
-         gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
+depends=(ebadoo-desktop-schemas accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
+         gnome-themes-extra libcanberra-pulse libcroco libgdm libsecret
          mutter nm-connection-editor unzip gstreamer libibus gnome-autoar)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc)
