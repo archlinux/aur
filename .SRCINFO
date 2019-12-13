@@ -1,0 +1,15 @@
+pkgbase = expressvpn-gui
+	pkgdesc = Unofficial linux GUI for expressvpn CLI
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/vojko.pribudic/expressvpn-gui
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = pyside2
+	depends = expressvpn
+	source = https://gitlab.com/vojko.pribudic/expressvpn-gui/-/archive/v0.1/expressvpn-gui-v0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = expressvpn-gui
+
