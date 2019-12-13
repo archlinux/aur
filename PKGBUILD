@@ -1,8 +1,8 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_tag=v0.4.7-beta
+_tag=v0.5.0-beta
 pkgname=python-xeddsa
-pkgver=0.4.7.beta
+pkgver=0.5.0.beta
 pkgrel=2
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
