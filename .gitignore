@@ -1,0 +1,5 @@
+pkg/
+src/
+switch-lan-play-git/
+*.tar.xz
+
