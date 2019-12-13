@@ -5,7 +5,7 @@ _gitname=webwatcher
 _author=kjlaw89
 pkgname=("${_gitname}-git")
 pkgver=r24.3d3099f
-pkgrel=1
+pkgrel=2
 pkgdesc="Know when your websites are misbehaving! An app designed for elementary OS"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
@@ -14,8 +14,8 @@ depends=('gtk3' 'granite'
          'glib2' 'json-glib' 'libsoup' 'libappindicator-gtk3' 'libunity' 'sqlite')
 optdepends=()
 makedepends=('git' 'meson' 'vala')
-provides=("$_pkgname")
-conflicts=("$_gitname")
+provides=("${_gitname}")
+conflicts=("${_gitname}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 

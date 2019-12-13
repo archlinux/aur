@@ -1,7 +1,7 @@
 pkgbase = webwatcher-git
 	pkgdesc = Know when your websites are misbehaving! An app designed for elementary OS
 	pkgver = r24.3d3099f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kjlaw89/webwatcher
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = webwatcher-git
 	depends = libappindicator-gtk3
 	depends = libunity
 	depends = sqlite
+	provides = webwatcher
 	conflicts = webwatcher
 	source = git+https://github.com/kjlaw89/webwatcher.git
 	md5sums = SKIP
