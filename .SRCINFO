@@ -1,6 +1,6 @@
 pkgbase = vala-language-server-alpha
 	pkgdesc = Basic Language Server for Vala primarily targeting VSCode.
-	pkgver = v1.0.4.r0.g2bdd82b
+	pkgver = 1.0.4.r0.g2bdd82b
 	pkgrel = 1
 	url = https://github.com/DerKoun/bsnes-hd
 	arch = x86_64
