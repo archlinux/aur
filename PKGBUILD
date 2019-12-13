@@ -1,7 +1,8 @@
 # Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 # Contributor: me at oguzkaganeren dot com dot tr
+
 pkgname=vscodium-bin
-pkgver=1.40.2
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
@@ -23,7 +24,7 @@ source=(
        )
 noextract=("${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86'
-            '957da1c6445c759a8cf400dccfac05ecb0ee8e27224acf7da1e02a38c4308f17')
+            'f56ca012fb45cf95c1d2fcff9eea088ad03614ac1c3ea664f8cdff5f53505dda')
 
 prepare() {
     mkdir -p ${srcdir}/${pkgname}
@@ -41,5 +42,3 @@ package() {
     install -D -m644 ${srcdir}/${pkgname}/resources/app/resources/linux/code.png \
             ${pkgdir}/usr/share/pixmaps/vscodium.png
 }
-sha256sums=('5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86'
-            '957da1c6445c759a8cf400dccfac05ecb0ee8e27224acf7da1e02a38c4308f17')
