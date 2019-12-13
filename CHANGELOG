@@ -1,3 +1,6 @@
+1.1.4-2 (December 7, 2019)
+    Add mpv and vlc to optdepends
+
 1.1.4-1 (December 7, 2019)
     Update -g and -t options to list everything at once like the -c option, instead of listing lines one by one
 
