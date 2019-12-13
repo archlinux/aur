@@ -1,4 +1,4 @@
-# Maintainer: Vanya Sergeev <vsergeev@gmail.com>
+# Maintainer: Vanya Sergeev <v@sergeev.io>
 pkgname=luaradio
 pkgver=0.5.1
 pkgrel=1
