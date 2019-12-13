@@ -9,7 +9,8 @@ license=('MIT')
 depends=('luajit')
 optdepends=('liquid-dsp: acceleration'
             'libvolk: acceleration'
-            'fftw: acceleration')
+            'fftw: acceleration'
+            'gnuplot: plotting support')
 source=("git+https://github.com/vsergeev/luaradio.git#tag=v$pkgver")
 md5sums=('SKIP')
 
