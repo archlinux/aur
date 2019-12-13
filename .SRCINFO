@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
-	pkgver = 435.27.08
-	pkgrel = 2
+	pkgver = 440.43.01
+	pkgrel = 1
 	url = https://developer.nvidia.com/vulkan-driver
 	arch = x86_64
 	license = custom
@@ -9,29 +9,29 @@ pkgbase = nvidia-vulkan
 	makedepends = linux
 	makedepends = linux-headers
 	options = !strip
-	source = NVIDIA-Linux-x86_64-435.27.08.run::https://developer.nvidia.com/vulkan-beta-4352708-linux
+	source = NVIDIA-Linux-x86_64-440.43.01.run::https://developer.nvidia.com/vulkan-beta-4404301-linux
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-vulkan-utils.sysusers
-	sha512sums = 9323f73849775115dbfdc753da3ea48ba28d2481a8f7f54516f8ba3d5dc57b9d5cc34fa838f724793b2f48e3272c7009721523404a877ec7b08a071b52eb6298
+	sha512sums = 453baadfbb52d33c23e3d49f13998bd969143bb3bce01a87db8d7034cf3b96bbc0f369968f022c6c2bd18382f797dc43cdaeabca4f7ddb63316d0dbeb8c30e3a
 	sha512sums = c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48
 	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
 
 pkgname = nvidia-vulkan
 	pkgdesc = NVIDIA drivers for linux (vulkan developer branch)
 	depends = linux
-	depends = nvidia-vulkan-utils=435.27.08
+	depends = nvidia-vulkan-utils=440.43.01
 	depends = libglvnd
-	provides = nvidia=435.27.08
+	provides = nvidia=440.43.01
 	conflicts = nvidia
 
 pkgname = nvidia-vulkan-dkms
 	pkgdesc = NVIDIA driver sources for linux (vulkan developer branch)
 	depends = dkms
-	depends = nvidia-vulkan-utils=435.27.08
+	depends = nvidia-vulkan-utils=440.43.01
 	depends = libglvnd
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
-	provides = nvidia=435.27.08
+	provides = nvidia=440.43.01
 	conflicts = nvidia
 
 pkgname = nvidia-vulkan-utils
@@ -44,7 +44,7 @@ pkgname = nvidia-vulkan-utils
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = xorg-server-devel: nvidia-xconfig
 	optdepends = opencl-nvidia-vulkan: OpenCL support
-	provides = nvidia-utils=435.27.08
+	provides = nvidia-utils=440.43.01
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = nvidia-libgl
@@ -59,7 +59,7 @@ pkgname = opencl-nvidia-vulkan
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
-	provides = opencl-nvidia=435.27.08
+	provides = opencl-nvidia=440.43.01
 	conflicts = opencl-nvidia
 
 pkgname = lib32-nvidia-vulkan-utils
@@ -69,7 +69,7 @@ pkgname = lib32-nvidia-vulkan-utils
 	depends = lib32-libglvnd
 	depends = nvidia-vulkan-utils
 	optdepends = lib32-opencl-nvidia-vulkan
-	provides = lib32-nvidia-utils=435.27.08
+	provides = lib32-nvidia-utils=440.43.01
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver
 	provides = lib32-nvidia-libgl
@@ -83,7 +83,7 @@ pkgname = lib32-opencl-nvidia-vulkan
 	depends = lib32-gcc-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = lib32-opencl-driver
-	provides = lib32-opencl-nvidia=435.27.08
+	provides = lib32-opencl-nvidia=440.43.01
 	conflicts = lib32-opencl-nvidia
 	conflicts = lib32-opencl-nvidia-390xx
 
