@@ -1,0 +1,26 @@
+Build the static library archive even without libtool
+
+Index: cpufrequtils/Makefile
+===================================================================
+--- cpufrequtils.orig/Makefile	2012-05-06 14:54:58.573929641 +0900
++++ cpufrequtils/Makefile	2012-05-06 14:55:30.049333295 +0900
+@@ -193,7 +193,10 @@
+ 	@ln -sf $@ libcpufreq.so
+ 	@ln -sf $@ libcpufreq.so.$(LIB_MIN)
+ 
+-libcpufreq: libcpufreq.so.$(LIB_MAJ)
++libcpufreq.a: $(LIB_OBJS)
++	$(QUIET) $(AR) rcs $@ $(LIB_OBJS)
++
++libcpufreq: libcpufreq.so.$(LIB_MAJ) libcpufreq.a
+ 
+ cpufreq-%: libcpufreq.so.$(LIB_MAJ) $(UTIL_SRC)
+ 	$(QUIET) $(CC) $(CPPFLAGS) $(CFLAGS) -I. -I./lib/ -c -o utils/$@.o utils/$*.c
+@@ -237,6 +240,7 @@
+ install-lib:
+ 	$(INSTALL) -d $(DESTDIR)${libdir}
+ 	$(CP) libcpufreq.so* $(DESTDIR)${libdir}/
++	$(CP) libcpufreq.a $(DESTDIR)${libdir}/
+ 	$(INSTALL) -d $(DESTDIR)${includedir}
+ 	$(INSTALL_DATA) lib/cpufreq.h $(DESTDIR)${includedir}/cpufreq.h
+ 

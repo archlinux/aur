@@ -1,0 +1,531 @@
+From f87d9bf4c62d6d7017c35357f425038f25b0e3e9 Mon Sep 17 00:00:00 2001
+From: Dominik Brodowski <linux@dominikbrodowski.net>
+Date: Wed, 9 Mar 2011 14:54:43 +0100
+Subject: [PATCH 4/8] i18n: Catalan
+
+Signed-off-by: Dominik Brodowski <linux@dominikbrodowski.net>
+---
+ Makefile |    2 +-
+ po/ca.po |  415 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ po/cs.po |    3 +-
+ po/de.po |    3 +-
+ po/fr.po |    3 +-
+ po/it.po |    3 +-
+ po/pt.po |    2 +-
+ 7 files changed, 425 insertions(+), 6 deletions(-)
+ create mode 100644 po/ca.po
+
+Index: cpufrequtils/Makefile
+===================================================================
+--- cpufrequtils.orig/Makefile	2012-05-06 13:29:57.000000000 +0900
++++ cpufrequtils/Makefile	2012-05-06 13:30:41.865796974 +0900
+@@ -60,7 +60,7 @@
+ 
+ PACKAGE =			cpufrequtils
+ PACKAGE_BUGREPORT =		cpufreq@vger.kernel.org
+-LANGUAGES = 			de fr it cs pt
++LANGUAGES = 			de fr it cs pt ca
+ 
+ 
+ # Directory definitions. These are default and most probably
+Index: cpufrequtils/po/ca.po
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ cpufrequtils/po/ca.po	2012-05-06 13:30:41.869796865 +0900
+@@ -0,0 +1,415 @@
++# Catalan translation of cpufrequtil package
++# Copyright (C) 20042009,2011
++# This file is distributed under the same license as the cpufrequtil package.
++# Sergi Casbas <sergi.debian@qscsoft.net>, 2011.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: debian Squeezy\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2011-03-09 14:53+0100\n"
++"PO-Revision-Date: 2011-03-05 21:10+0100\n"
++"Last-Translator: Sergi Casbas <sergi.debian@qscsoft.net>\n"
++"Language-Team: Catalan <>\n"
++"Language: ca\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=utf-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: \n"
++
++#: utils/info.c:36
++#, c-format
++msgid "Couldn't count the number of CPUs (%s: %s), assuming 1\n"
++msgstr "No es pot comptar el nombre total de CPUs (%s: %s), se n'assumeix 1\n"
++
++#: utils/info.c:68
++#, c-format
++msgid ""
++"          minimum CPU frequency  -  maximum CPU frequency  -  governor\n"
++msgstr ""
++"          mínima freqüència de CPU  -  màxima freqüència de CPU  -  "
++"governador\n"
++
++#: utils/info.c:156
++#, c-format
++msgid "couldn't analyze CPU %d as it doesn't seem to be present\n"
++msgstr "No es pot analitzar la CPU %d ja que sembla que no està present.\n"
++
++#: utils/info.c:160
++#, c-format
++msgid "analyzing CPU %d:\n"
++msgstr "analitzant la CPU %d:\n"
++
++#: utils/info.c:167
++#, c-format
++msgid "  no or unknown cpufreq driver is active on this CPU\n"
++msgstr "Controlador cpufreq inactiu o desconegut per aquesta CPU\n"
++
++#: utils/info.c:169
++#, c-format
++msgid "  driver: %s\n"
++msgstr "   controlador:%s\n"
++
++#: utils/info.c:175
++#, c-format
++msgid "  CPUs which run at the same hardware frequency: "
++msgstr "  CPUs que necessiten anar a la mateixa freqüència:"
++
++#: utils/info.c:186
++#, c-format
++msgid "  CPUs which need to have their frequency coordinated by software: "
++msgstr ""
++"  CPUs que necessiten les seves freqüències coordinades per programari:"
++
++#: utils/info.c:197
++#, c-format
++msgid "  maximum transition latency: "
++msgstr "   màxima latència de transició: "
++
++#: utils/info.c:203
++#, c-format
++msgid "  hardware limits: "
++msgstr "  límits del maquinari: "
++
++#: utils/info.c:212
++#, c-format
++msgid "  available frequency steps: "
++msgstr "  salts de freqüència disponibles:"
++
++#: utils/info.c:225
++#, c-format
++msgid "  available cpufreq governors: "
++msgstr "  governadors cpufreq disponibles: "
++
++#: utils/info.c:236
++#, c-format
++msgid "  current policy: frequency should be within "
++msgstr "  la directiva de freqüència ha de ser entre "
++
++#: utils/info.c:238
++#, c-format
++msgid " and "
++msgstr " i "
++
++#: utils/info.c:242
++#, c-format
++msgid ""
++"The governor \"%s\" may decide which speed to use\n"
++"                  within this range.\n"
++msgstr ""
++"EL governadors \"%s\" decidirà la freqüencial a fer servir\n"
++"                  dins d'aquest rang.\n"
++
++#: utils/info.c:249
++#, c-format
++msgid "  current CPU frequency is "
++msgstr "  la freqüència actual de la CPU és "
++
++#: utils/info.c:252
++#, c-format
++msgid " (asserted by call to hardware)"
++msgstr " (executat per crides al maquinari)"
++
++#: utils/info.c:260
++#, c-format
++msgid "  cpufreq stats: "
++msgstr "  estadístiques del cpufreq: "
++
++#: utils/info.c:440 utils/set.c:31
++#, c-format
++msgid "Report errors and bugs to %s, please.\n"
++msgstr "Si us plau, Informi del errors i bugs a %s.\n"
++
++#: utils/info.c:444
++#, c-format
++msgid "Usage: cpufreq-info [options]\n"
++msgstr "Forma d'ús: cpufreq-info [options]\n"
++
++#: utils/info.c:445 utils/set.c:37
++#, c-format
++msgid "Options:\n"
++msgstr "Opcions:\n"
++
++#: utils/info.c:446
++#, c-format
++msgid ""
++"  -c CPU, --cpu CPU    CPU number which information shall be determined "
++"about\n"
++msgstr ""
++"  -c CPU, --cpu CPU    número de la CPU de la que s'en vol determinar la "
++"informació\n"
++
++#: utils/info.c:447
++#, c-format
++msgid "  -e, --debug          Prints out debug information\n"
++msgstr "  -e, --debug          Mostra informació de depuració\n"
++
++#: utils/info.c:448
++#, c-format
++msgid ""
++"  -f, --freq           Get frequency the CPU currently runs at, according\n"
++"                       to the cpufreq core *\n"
++msgstr ""
++"  -f, --freq           Freqüència a la que funciona la CPU d'acord amb\n"
++"                       el nucli del cpufreq *\n"
++
++#: utils/info.c:450
++#, c-format
++msgid ""
++"  -w, --hwfreq         Get frequency the CPU currently runs at, by reading\n"
++"                       it from hardware (only available to root) *\n"
++msgstr ""
++"  -w, --hwfreq         Freqüència actual de la CPU llegida per maquinari\n"
++"                        (només disponible per al root) *\n"
++
++#: utils/info.c:452
++#, c-format
++msgid ""
++"  -l, --hwlimits       Determine the minimum and maximum CPU frequency "
++"allowed *\n"
++msgstr ""
++"  -l, --hwlimits       Determina les freqüències mínima i màxima permeses de "
++"la UPC *\n"
++
++#: utils/info.c:453
++#, c-format
++msgid "  -d, --driver         Determines the used cpufreq kernel driver *\n"
++msgstr ""
++"  -d, --driver         Determina el controlador de cpufreq del nucli a "
++"emprar *\n"
++
++#: utils/info.c:454
++#, c-format
++msgid "  -p, --policy         Gets the currently used cpufreq policy *\n"
++msgstr "  -p, --policy         Retorna la directiva del cpufreq actual *\n"
++
++#: utils/info.c:455
++#, c-format
++msgid "  -g, --governors      Determines available cpufreq governors *\n"
++msgstr ""
++"  -g, --governors      Determina els governadors de cpufreq disponibles *\n"
++
++#: utils/info.c:456
++#, c-format
++msgid ""
++"  -r, --related-cpus   Determines which CPUs run at the same hardware "
++"frequency *\n"
++msgstr ""
++"  -r, --related-cpus   Determina quines CPU0s funcionen a la mateixa "
++"freqüencial per maquinari *\n"
++
++#: utils/info.c:457
++#, c-format
++msgid ""
++"  -a, --affected-cpus  Determines which CPUs need to have their frequency\n"
++"                       coordinated by software *\n"
++msgstr ""
++"  -a, --affected-cpus  Determina quines CPUs necessiten coordinar la seva\n"
++"                       freqüencial per programari *\n"
++
++#: utils/info.c:459
++#, c-format
++msgid "  -s, --stats          Shows cpufreq statistics if available\n"
++msgstr ""
++"  -s, --stats          Mostra els estadístiques disponibles del cpufreq\n"
++
++#: utils/info.c:460
++#, c-format
++msgid ""
++"  -y, --latency        Determines the maximum latency on CPU frequency "
++"changes *\n"
++msgstr ""
++"  -y, --latency        Determina la latència màxima en els canvis de "
++"freqüència de la CPU *\n"
++
++#: utils/info.c:461
++#, c-format
++msgid ""
++"  -o, --proc           Prints out information like provided by the /proc/"
++"cpufreq\n"
++"                       interface in 2.4. and early 2.6. kernels\n"
++msgstr ""
++"  -o, --proc           Mostra la informació proveïda per la interfície /proc/"
++"cpufreq\n"
++"                       dels kernel 2.4. i els primerencs del 2.6\n"
++
++#: utils/info.c:463
++#, c-format
++msgid ""
++"  -m, --human          human-readable output for the -f, -w, -s and -y "
++"parameters\n"
++msgstr ""
++"  -m, --human          sortida en format llegible per als humans per als "
++"paràmetres -f, -w, -s i -y\n"
++
++#: utils/info.c:464
++#, c-format
++msgid "  -h, --help           Prints out this screen\n"
++msgstr "  -h, --help           Mostra aquesta informació\n"
++
++#: utils/info.c:467
++#, c-format
++msgid ""
++"If no argument or only the -c, --cpu parameter is given, debug output about\n"
++"cpufreq is printed which is useful e.g. for reporting bugs.\n"
++msgstr ""
++"Si no s'especifica argument o només s'especifica el paràmetre -c, --cpu, es "
++"mostrarà\n"
++"la informació de depuració del cpufreq útil per exemple, per informar "
++"d'errors.\n"
++
++#: utils/info.c:469
++#, c-format
++msgid ""
++"For the arguments marked with *, omitting the -c or --cpu argument is\n"
++"equivalent to setting it to zero\n"
++msgstr ""
++"Per als arguments marcats amb un *, ometre l'argument -c o --cpu és\n"
++"equivalent a establir-lo a zero\n"
++
++#: utils/info.c:563
++#, c-format
++msgid ""
++"The argument passed to this tool can't be combined with passing a --cpu "
++"argument\n"
++msgstr ""
++"Aquesta eina no pot combinar el paràmetre subministrat amb el paràmetre --"
++"cpu.\n"
++
++#: utils/info.c:576
++#, c-format
++msgid ""
++"You can't specify more than one --cpu parameter and/or\n"
++"more than one output-specific argument\n"
++msgstr ""
++"No es pot especificar més d'un paràmetre --cpu i/o més d'un\n"
++"argument de sortida específic\n"
++
++#: utils/info.c:582 utils/set.c:95
++#, c-format
++msgid "invalid or unknown argument\n"
++msgstr "paràmetre invàlid o desconegut\n"
++
++#: utils/set.c:36
++#, c-format
++msgid "Usage: cpufreq-set [options]\n"
++msgstr "Forma d'ús: cpufreq-set [OPCIÓ]\n"
++
++#: utils/set.c:38
++#, c-format
++msgid ""
++"  -c CPU, --cpu CPU        number of CPU where cpufreq settings shall be "
++"modified\n"
++msgstr ""
++"  -c CPU, --cpu CPU        número de la CPU de la que s'en vol modificar la "
++"configuració\n"
++
++#: utils/set.c:39
++#, c-format
++msgid ""
++"  -d FREQ, --min FREQ      new minimum CPU frequency the governor may "
++"select\n"
++msgstr ""
++"  -d FREQ, --min FREQ      nova freqüència mínima de la CPU que el "
++"governador pot seleccionar\n"
++
++#: utils/set.c:40
++#, c-format
++msgid ""
++"  -u FREQ, --max FREQ      new maximum CPU frequency the governor may "
++"select\n"
++msgstr ""
++"  -u FREQ, --max FREQ      nova freqüència màixima de la CPU que el "
++"governador pot seleccionar\n"
++
++#: utils/set.c:41
++#, c-format
++msgid "  -g GOV, --governor GOV   new cpufreq governor\n"
++msgstr "  -g GOV, --governor GOV   Establir nou governador del cpufreq\n"
++
++#: utils/set.c:42
++#, c-format
++msgid ""
++"  -f FREQ, --freq FREQ     specific frequency to be set. Requires userspace\n"
++"                           governor to be available and loaded\n"
++msgstr ""
++"  -f FREQ, --freq FREQ     especifica la freqüencia a establir. Requereix el "
++"governador\n"
++"                           userspace disponible i carregat\n"
++
++#: utils/set.c:44
++#, c-format
++msgid "  -r, --related            Switches all hardware-related CPUs\n"
++msgstr ""
++"  -r, --related            Canvia el maquinari de les CPU relacionades\n"
++
++#: utils/set.c:45
++#, c-format
++msgid "  -h, --help               Prints out this screen\n"
++msgstr "  -h, --help           Mostra aquesta informació\n"
++
++#: utils/set.c:47
++#, c-format
++msgid ""
++"Notes:\n"
++"1. Omitting the -c or --cpu argument is equivalent to setting it to zero\n"
++"2. The -f FREQ, --freq FREQ parameter cannot be combined with any other "
++"parameter\n"
++"   except the -c CPU, --cpu CPU parameter\n"
++"3. FREQuencies can be passed in Hz, kHz (default), MHz, GHz, or THz\n"
++"   by postfixing the value with the wanted unit name, without any space\n"
++"   (FREQuency in kHz =^ Hz * 0.001 =^ MHz * 1000 =^ GHz * 1000000).\n"
++msgstr ""
++"Notes:\n"
++"1. Ometre l'argument -c or --cpu és equivalent a establir-lo a zero\n"
++"2. El paràmetre -f FREQ, --freq FREQ no pot ser combinat amb cap d'altre\n"
++"   excepte el paràmetre -c CPU, --cpu CPU\n"
++"3. Les FREQüències s'han de passar en Hz, kHz (defecte), MHz, GHz, or THz\n"
++"   postfixant al valor desitjat en nom de la unitat sense cap espai\n"
++"   (FREQuency in kHz =^ Hz * 0.001 =^ MHz * 1000 =^ GHz * 1000000).\n"
++
++#: utils/set.c:69
++#, c-format
++msgid ""
++"Error setting new values. Common errors:\n"
++"- Do you have proper administration rights? (super-user?)\n"
++"- Is the governor you requested available and modprobed?\n"
++"- Trying to set an invalid policy?\n"
++"- Trying to set a specific frequency, but userspace governor is not "
++"available,\n"
++"   for example because of hardware which cannot be set to a specific "
++"frequency\n"
++"   or because the userspace governor isn't loaded?\n"
++msgstr ""
++"Errors comuns al establir nous valors:\n"
++"- Disposes dels permisos administratius adequats? (super-user?)\n"
++"- Està el governador demanat disponible i provat al mod?\n"
++"- S'està intentant establir una directiva invàlida?\n"
++"- S'està intentant establir una freqüencia específica però el governador "
++"userspace no esta disponible,\n"
++"   per exemple perquè el maquinari no pot ser establert en una freqüència "
++"específica \n"
++"   o perquè el governador userspace no està carregat?\n"
++
++#: utils/set.c:183
++#, c-format
++msgid "wrong, unknown or unhandled CPU?\n"
++msgstr "CPU desconeguda, equivocada, o no manipulable?\n"
++
++#: utils/set.c:336
++#, c-format
++msgid ""
++"the -f/--freq parameter cannot be combined with -d/--min, -u/--max or\n"
++"-g/--governor parameters\n"
++msgstr ""
++"el paràmetre -f/--freq no és pot combinar amb els paràmetres -d/--,min\n"
++", -u/--max o -g/--governor\n"
++
++#: utils/set.c:342
++#, c-format
++msgid ""
++"At least one parameter out of -f/--freq, -d/--min, -u/--max, and\n"
++"-g/--governor must be passed\n"
++msgstr ""
++"S'ha de facilitar com a mínim un dels següents paràmetres f/--freq,\n"
++" -d/--min, -u/--max, o g/--governor\n"
+Index: cpufrequtils/po/cs.po
+===================================================================
+--- cpufrequtils.orig/po/cs.po	2012-05-06 13:29:57.000000000 +0900
++++ cpufrequtils/po/cs.po	2012-05-06 13:31:32.400356869 +0900
+@@ -9,10 +9,11 @@
+ msgstr ""
+ "Project-Id-Version: cs\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2008-07-17 11:29+0200\n"
++"POT-Creation-Date: 2011-03-09 14:53+0100\n"
+ "PO-Revision-Date: 2008-06-11 16:26+0200\n"
+ "Last-Translator: Karel Volný <kavol@seznam.cz>\n"
+ "Language-Team: Czech <diskuze@lists.l10n.cz>\n"
++"Language: cs\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+Index: cpufrequtils/po/de.po
+===================================================================
+--- cpufrequtils.orig/po/de.po	2012-05-06 13:29:57.000000000 +0900
++++ cpufrequtils/po/de.po	2012-05-06 13:32:00.659553761 +0900
+@@ -7,10 +7,11 @@
+ msgstr ""
+ "Project-Id-Version: cpufrequtils 006\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2009-08-09 11:53+0200\n"
++"POT-Creation-Date: 2011-03-09 14:53+0100\n"
+ "PO-Revision-Date: 2009-08-08 17:18+0100\n"
+ "Last-Translator:  <linux@dominikbrodowski.net>\n"
+ "Language-Team: NONE\n"
++"Language: \n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+Index: cpufrequtils/po/fr.po
+===================================================================
+--- cpufrequtils.orig/po/fr.po	2012-05-06 13:29:57.000000000 +0900
++++ cpufrequtils/po/fr.po	2012-05-06 13:32:35.194574779 +0900
+@@ -8,10 +8,11 @@
+ msgstr ""
+ "Project-Id-Version: cpufrequtils 0.1-pre2\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2008-07-17 11:29+0200\n"
++"POT-Creation-Date: 2011-03-09 14:53+0100\n"
+ "PO-Revision-Date: 2004-11-17 15:53+1000\n"
+ "Last-Translator: Bruno Ducrot <ducrot@poupinou.org>\n"
+ "Language-Team: NONE\n"
++"Language: \n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+Index: cpufrequtils/po/it.po
+===================================================================
+--- cpufrequtils.orig/po/it.po	2012-05-06 13:29:57.000000000 +0900
++++ cpufrequtils/po/it.po	2012-05-06 13:33:01.661825791 +0900
+@@ -8,10 +8,11 @@
+ msgstr ""
+ "Project-Id-Version: cpufrequtils 0.3\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2009-08-09 11:53+0200\n"
++"POT-Creation-Date: 2011-03-09 14:53+0100\n"
+ "PO-Revision-Date: 2009-08-15 12:00+0900\n"
+ "Last-Translator: Mattia Dongili <malattia@gmail.com>\n"
+ "Language-Team: NONE\n"
++"Language: \n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+Index: cpufrequtils/po/pt.po
+===================================================================
+--- cpufrequtils.orig/po/pt.po	2012-05-06 13:29:57.000000000 +0900
++++ cpufrequtils/po/pt.po	2012-05-06 13:33:24.845170668 +0900
+@@ -8,7 +8,7 @@
+ msgstr ""
+ "Project-Id-Version: cpufrequtils 004\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2009-08-09 11:53+0200\n"
++"POT-Creation-Date: 2011-03-09 14:53+0100\n"
+ "PO-Revision-Date: 2008-06-14 22:16-0400\n"
+ "Last-Translator: Claudio Eduardo <claudioeddy@gmail.com>\n"
+ "MIME-Version: 1.0\n"

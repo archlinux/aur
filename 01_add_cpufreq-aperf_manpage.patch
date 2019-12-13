@@ -1,0 +1,92 @@
+Add a manpage mostly taken from the source code comments and
+the command help output.
+
+Index: cpufrequtils/man/cpufreq-aperf.1
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ cpufrequtils/man/cpufreq-aperf.1	2012-05-06 13:29:37.943624564 +0900
+@@ -0,0 +1,44 @@
++.TH "cpufreq-aperf" "1" "0.1" "Mattia Dongili" ""
++.SH "NAME"
++.LP
++cpufreq\-aperf \- Calculates the average frequency over a time period
++.SH "SYNTAX"
++.LP
++cpufreq\-aperf [\fIoptions\fP]
++.SH "DESCRIPTION"
++.LP
++On latest processors exist two MSR registers refered to as:
++  - MPERF increasing with maxium (P0) frequency in C0
++  - APERF increasing with current/actual frequency in C0
++
++From this information the average frequency over a time period can be
++calculated and this is what this tool does.
++
++A nice falloff feature beside the average frequency is the time
++a processor core remained in C0 (working state) or any CX (sleep state)
++processor sleep state during the measured time period. This information
++can be determined from the fact that MPERF only increases in C0 state.
++.SH "OPTIONS"
++.LP
++.TP
++\fB\-c\fR \fB\-\-cpu\fR <\fICPU\fP>
++ The <\fICPU\fP> core to measure - default all cores.
++.TP
++\fB\-i\fR \fB\-\-interval\fR <\fIseconds\fP>
++Refresh rate - default 1 second.
++.TP
++\fB\-o\fR \fB\-\-once\fR
++Exit after one interval.
++.TP
++\fB\-h\fR \fB\-\-help\fR
++Prints the available options.
++.SH "REMARKS"
++.LP
++The msr driver must be loaded for this command to work.
++.SH "AUTHORS"
++.nf
++Thomas Renninger <trenn@suse.de>
++.fi
++.SH "SEE ALSO"
++.LP
++cpufreq\-set(1), cpufreq\-info(1)
+Index: cpufrequtils/man/cpufreq-info.1
+===================================================================
+--- cpufrequtils.orig/man/cpufreq-info.1	2012-05-06 11:56:21.215806103 +0900
++++ cpufrequtils/man/cpufreq-info.1	2012-05-06 13:29:37.943624564 +0900
+@@ -73,4 +73,4 @@
+ .fi
+ .SH "SEE ALSO"
+ .LP 
+-cpufreq\-set(1)
++cpufreq\-set(1), cpufreq-aperf(1)
+Index: cpufrequtils/man/cpufreq-set.1
+===================================================================
+--- cpufrequtils.orig/man/cpufreq-set.1	2012-05-06 11:56:21.215806103 +0900
++++ cpufrequtils/man/cpufreq-set.1	2012-05-06 13:29:37.943624564 +0900
+@@ -53,4 +53,4 @@
+ .fi
+ .SH "SEE ALSO"
+ .LP 
+-cpufreq\-info(1)
++cpufreq\-info(1), cpufreq-aperf(1)
+Index: cpufrequtils/Makefile
+===================================================================
+--- cpufrequtils.orig/Makefile	2012-05-06 11:56:21.215806103 +0900
++++ cpufrequtils/Makefile	2012-05-06 13:29:37.943624564 +0900
+@@ -248,6 +248,7 @@
+ install-man:
+ 	$(INSTALL_DATA) -D man/cpufreq-set.1 $(DESTDIR)${mandir}/man1/cpufreq-set.1
+ 	$(INSTALL_DATA) -D man/cpufreq-info.1 $(DESTDIR)${mandir}/man1/cpufreq-info.1
++	$(INSTALL_DATA) -D man/cpufreq-aperf.1 $(DESTDIR)${mandir}/man1/cpufreq-aperf.1
+ 
+ install-gmo:
+ 	$(INSTALL) -d $(DESTDIR)${localedir}
+@@ -270,6 +271,7 @@
+ 	- rm -f $(DESTDIR)${bindir}/cpufreq-aperf
+ 	- rm -f $(DESTDIR)${mandir}/man1/cpufreq-set.1
+ 	- rm -f $(DESTDIR)${mandir}/man1/cpufreq-info.1
++	- rm -f $(DESTDIR)${mandir}/man1/cpufreq-aperf.1
+ 	- for HLANG in $(LANGUAGES); do \
+ 		rm -f $(DESTDIR)${localedir}/$$HLANG/LC_MESSAGES/cpufrequtils.mo; \
+ 	  done;

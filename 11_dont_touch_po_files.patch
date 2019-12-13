@@ -1,0 +1,31 @@
+Do not update po files upon building and installing binaries.
+Use a separate target instead.
+
+Index: cpufrequtils/Makefile
+===================================================================
+--- cpufrequtils.orig/Makefile	2012-05-06 14:55:18.445553259 +0900
++++ cpufrequtils/Makefile	2012-05-06 14:55:26.589398186 +0900
+@@ -211,9 +211,9 @@
+ 	test -f $(PACKAGE).po && \
+ 	mv -f $(PACKAGE).po po/$(PACKAGE).pot
+ 
+-update-gmo: po/$(PACKAGE).pot
++update-po: po/$(PACKAGE).pot
+ 	 @for HLANG in $(LANGUAGES); do \
+-		echo -n "Translating $$HLANG "; \
++		echo -n "Updating $$HLANG "; \
+ 		if msgmerge po/$$HLANG.po po/$(PACKAGE).pot -o \
+ 		   po/$$HLANG.new.po; then \
+ 			mv -f po/$$HLANG.new.po po/$$HLANG.po; \
+@@ -221,6 +221,11 @@
+ 			echo "msgmerge for $$HLANG failed!"; \
+ 			rm -f po/$$HLANG.new.po; \
+ 		fi; \
++	done;
++
++update-gmo: po/$(PACKAGE).pot
++	 @for HLANG in $(LANGUAGES); do \
++		echo -n "Translating $$HLANG "; \
+ 		msgfmt --statistics -o po/$$HLANG.gmo po/$$HLANG.po; \
+ 	done;
+ 
