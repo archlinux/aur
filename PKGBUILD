@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer 
+# Maintainer: anon at sansorgan.es
 pkgname=madagascar
 pkgver=3.0.1
 pkgrel=2
