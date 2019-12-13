@@ -1,0 +1,14 @@
+pkgbase = pterodactyl-daemon
+	pkgdesc = Open-source server control and management daemon for pterodactyl-panel.
+	pkgver = 0.6.12
+	pkgrel = 1
+	url = https://github.com/pterodactyl/daemon
+	arch = any
+	depends = docker
+	depends = nodejs
+	depends = npm
+	source = https://github.com/pterodactyl/daemon/releases/download/v0.6.12/daemon.tar.gz
+	sha256sums = aef507f4b9f1272b678cf8b23c0cf0db58d1bba4e8a02d6744018f63db4ff66a
+
+pkgname = pterodactyl-daemon
+
