@@ -1,4 +1,3 @@
-# Maintainer: Josh Hoffer 
 _hkgname=terminal-progress-bar
 pkgname=haskell-terminal-progress-bar
 pkgver=0.4.1
