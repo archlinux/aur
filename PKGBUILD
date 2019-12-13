@@ -2,15 +2,15 @@
 
 pkgbase=python-iso3166
 pkgname=(python-iso3166 python2-iso3166)
-pkgver=1.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Self-contained ISO 3166-1 country definitions."
 arch=('any')
 url="https://github.com/deactivated/python-iso3166"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('060e12bcf8b5118aeaceadbc077c4a03085f71edeedcb39791b59f22add5d505')
+sha256sums=('fce7996caab1afdee49958e38440cdaa3816f5dd2532839ea01b5b7495ce74a3')
 
 prepare() {
   cp -a "$pkgbase-$pkgver"{,-python2}
