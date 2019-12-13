@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=cmake-format
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Source code formatter for CMake listfiles'
 arch=('any')
@@ -12,7 +12,7 @@ url='https://github.com/cheshirekow/cmake_format'
 license=('GPL3')
 depends=('python-setuptools' 'python-yaml' 'python-jinja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheshirekow/cmake_format/archive/v${pkgver}.tar.gz")
-sha512sums=('0e7626b2a59b1a1f08d06b84b4d0a4c1d415a57d72ad5d6ba5b5aeea93c73242ff95421cdca59f5776ce50a024d3e5478304fd6b83f8be85643fc3a697654d64')
+sha512sums=('64d185bafd31bf3c9d0580afbd65d75d4e614735e14bae912c00fecc73ef8d82c53ec23be3800f5894ab4e7d1313a4e6775563afdef77cef599adacd39bdadae')
 
 package() {
   cd "$srcdir/cmake_format-$pkgver"
