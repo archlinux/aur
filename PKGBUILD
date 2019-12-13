@@ -10,9 +10,9 @@
 pkgname=inotify-daemon # '-bzr', '-git', '-hg' or '-svn'
 pkgver=20191212.1.r1.gba16a8c
 pkgrel=1
-pkgdesc="A daemon to trigger system-tasks upon specific inotify-events."
+pkgdesc="A daemon to trigger system-tasks upon preconfigured inotify-events."
 arch=('i686' 'x86_64')
-url="http://matcha.cakeisaweso.me/ast/inotify-daemon.git'"
+url="http://matcha.cakeisaweso.me/ast/inotify-daemon"
 license=('GPL')
 groups=()
 depends=()
