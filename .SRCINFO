@@ -1,7 +1,7 @@
 pkgbase = pterodactyl-panel
 	pkgdesc = Open-source game server management panel
 	pkgver = 0.7.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pterodactyl/panel
 	arch = any
 	depends = mariadb

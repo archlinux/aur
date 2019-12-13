@@ -6,7 +6,7 @@ githuborg=pterodactyl
 pkgdesc="Open-source game server management panel"
 pkgver=0.7.15
 pkgpath="github.com/${githuborg}/${pkgname1}"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkgpath}"
 license=()
@@ -38,9 +38,9 @@ WantedBy=multi-user.target" > ${srcdir}/pteroq.service
 
 package() {
 	#https://pterodactyl.io/daemon/installing.html#installing-daemon-software
-	mkdir -p ${pkgdir}/var/www/
+	mkdir -p ${pkgdir}/var/www/${pkgname}
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	cd ${pkgdir}/var/www/
+	cd ${pkgdir}/var/www/${pkgname}
 	tar --strip-components=1 -xzvf ${srcdir}/panel.tar.gz
 	chmod -R 755 storage/* bootstrap/cache/
 	install -Dm644 ${srcdir}/pteroq.service ${pkgdir}/usr/lib/systemd/system/
