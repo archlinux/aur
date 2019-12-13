@@ -2,7 +2,7 @@
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <alex.branham@gmail.com>
-_cranver=2.3.0
+_cranver=2.3.1
 _cranname=testthat
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-testthat
@@ -20,14 +20,11 @@ md5sums=('80902ddc45eb994b49287b0bfaa2f6e6')
 
 build(){
     cd "${srcdir}"
-
     R CMD INSTALL testthat_"$_cranver".tar.gz -l "$srcdir"
 }
 
 package() {
     cd "${srcdir}"
-
     install -dm0755 "$pkgdir/usr/lib/R/library"
     cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
 }
-

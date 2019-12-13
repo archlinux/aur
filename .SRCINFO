@@ -1,6 +1,6 @@
 pkgbase = r-testthat
 	pkgdesc = Unit Testing for R
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testthat
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-testthat
 	optdepends = r-usethis
 	optdepends = r-vctrs
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/testthat_2.3.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/testthat_2.3.1.tar.gz
 	md5sums = 80902ddc45eb994b49287b0bfaa2f6e6
 
 pkgname = r-testthat
