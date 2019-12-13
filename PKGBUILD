@@ -3,7 +3,7 @@
 pkgname=g910-gkeys-git
 _appname=g910-gkeys
 _gitname=g910-gkey-macro-support
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='GKey support for Logitech G910 Keyboard on GNU/Linux'
 url='https://github.com/JSubelj/g910-gkey-macro-support'
