@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-data-chaps-flights-latest
 	pkgdesc = Flight timetable data from Galileo to be used with IDOS timetable browser
-	pkgver = 2019_11_6
+	pkgver = 2019_12_11
 	pkgrel = 1
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
@@ -9,8 +9,8 @@ pkgbase = idos-timetable-data-chaps-flights-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-browser
-	provides = idos-timetable-data-chaps-flights=2019_11_6
-	provides = idos-timetable-data-flights=2019_11_6
+	provides = idos-timetable-data-chaps-flights=2019_12_11
+	provides = idos-timetable-data-flights=2019_12_11
 	conflicts = idos-timetable-data-chaps-flights
 	source = letadla.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/LETADLA.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
