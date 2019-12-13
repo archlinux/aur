@@ -1,4 +1,4 @@
-# Maintiner: Josh Hoffer <hoffer.joshua@gmail.com>
+# Maintiner: anon at sansorgan.es
 # Contributor: Sean Anderson <seanga2@gmail.com>
 # Contributor: Daniel Bermond <danielbermond@yahoo.com>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
