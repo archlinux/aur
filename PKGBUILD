@@ -3,7 +3,7 @@
 
 pkgname=ungoogled-chromium-bin
 pkgver=79.0.3945.79
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=("x86_64")
 url="https://ungoogled-software.github.io/"
@@ -13,7 +13,7 @@ conflicts=("chromium" "iridium" "ungoogled-chromium")
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme' 'jsoncpp' 'openjpeg2' 're2'
-         'snappy' 'minizip')
+         'snappy' 'minizip' 'libxslt')
 optdepends=('pepper-flash: support for Flash content'
             'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
@@ -23,7 +23,7 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
             'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
 source=("https://download.opensuse.org/repositories/home:/justkidding/Arch/x86_64/ungoogled-chromium-${pkgver}-1-x86_64.pkg.tar.xz")
-sha256sums=("d5b691f2983c4bb0cb772f99f84f32879c66764097b494898126f235dded2060")
+sha256sums=("a551dcbfb4da835203f0fc1eeb172517cfa0369935873610ae56822ae66a4622")
 
 package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr"    
