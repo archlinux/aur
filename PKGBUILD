@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer
+# Maintainer: anon at sansorgan.es 
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Bartłomiej Piotrowski
 # Contributor: Brad Fanella <bradfanella@archlinux.us>
