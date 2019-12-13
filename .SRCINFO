@@ -1,6 +1,6 @@
 pkgbase = tmuxer-git
 	pkgdesc = Tmux layout generator and command executor
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/tjhop/tmuxer
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = tmuxer-git
 	depends = tmux
 	optdepends = openssh
 	provides = tmuxer
+	conflicts = tmuxer
 	source = tmuxer-git::git+https://github.com/tjhop/tmuxer.git
 	md5sums = SKIP
 
