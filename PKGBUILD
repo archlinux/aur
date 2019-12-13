@@ -1,14 +1,9 @@
-# Based on the file created for Arch Linux by:
-# Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Ionut Biru <ibiru@archlinux.org>
-# Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Adam Hani Schakaki (krzd) <krzd@krzd.net>
-# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
+# Maintainer: Andrey Vetrov <admin@ebadoo.com>
 
-pkgname=gsettings-desktop-schemas-git
+pkgname=ebadoo-desktop-schemas
 pkgver=3.34.0.r0.g56d24d4
 pkgrel=1
-pkgdesc="Shared GSettings schemas for the desktop"
+pkgdesc="Custom settings schemas for ebadoo-shell"
 arch=(any)
 url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
 license=(GPL)

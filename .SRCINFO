@@ -1,5 +1,5 @@
-pkgbase = gsettings-desktop-schemas-git
-	pkgdesc = Shared GSettings schemas for the desktop
+pkgbase = ebadoo-desktop-schemas
+	pkgdesc = Custom settings schemas for ebadoo-shell
 	pkgver = 3.34.0.r0.g56d24d4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
@@ -16,5 +16,5 @@ pkgbase = gsettings-desktop-schemas-git
 	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git
 	sha256sums = SKIP
 
-pkgname = gsettings-desktop-schemas-git
+pkgname = ebadoo-desktop-schemas
 
