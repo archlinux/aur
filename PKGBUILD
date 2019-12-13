@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=thief-book
 _name=Thief-Book
-pkgver=1.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='一款真正的跨平台摸鱼神器'
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('thief-book')
 depends=('electron2')
 makedepends=('jq' 'moreutils' 'yarn')
-source=("$pkgname-$pkgver.src.tar.gz::https://github.com/cteams/Thief-Book/archive/$pkgver.tar.gz")
-sha256sums=('1b4fe1d17a4640753a568b79c7eebb6b4d53ff6d92c088af72cb21bf3531ba00')
+source=("$pkgname-$pkgver.src.tar.gz::https://github.com/cteamx/Thief-Book/archive/$pkgver.tar.gz")
+sha256sums=('561b477d995925663131b3592ca893acceff5ee46e725d089f6d655299570ab6')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
