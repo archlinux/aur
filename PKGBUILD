@@ -1,8 +1,8 @@
 # Maintainer: Adrien Jussak <adrien.jussak@wascardev.com>
 
 pkgname=visual-paradigm
-pkgver=16.0
-pkgrel=20191108
+pkgver=16.1
+pkgrel=20191231
 pkgdesc="UML design application (Free 30-day trial)"
 arch=('x86_64')
 url='https://www.visual-paradigm.com/download/'
@@ -22,7 +22,7 @@ source=("https://$_server.visual-paradigm.com/visual-paradigm/vp$pkgver/$pkgrel/
   'visual-paradigm.png'
   'x-visual-paradigm.xml')
 
-sha256sums=('3fad23e098297908c60c39b4cb1e797de5a455dcd0e815330c1eef160aa0994d'
+sha256sums=('5b2a8548f77c94f91aaf2c8bb72ee6d5c7a9ab88764ab9cb92a9e4e85b2f98a0'
             'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
             'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
