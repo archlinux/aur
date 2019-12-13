@@ -1,0 +1,21 @@
+pkgbase = ebadoo-shell-extensions
+	pkgdesc = Extensions for EBADOO shell, including classic mode
+	pkgver = 3.34.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GnomeShell/Extensions
+	arch = any
+	groups = ebadoo-desktop
+	license = GPL
+	makedepends = meson
+	makedepends = git
+	makedepends = sassc
+	makedepends = js60
+	optdepends = gnome-menus: applications menu extension
+	source = git+https://gitlab.com/ebadoo/ebadoo-shell-extensions.git
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ebadoo-shell-extensions
+	depends = ebadoo-shell
+
