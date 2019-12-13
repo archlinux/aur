@@ -1,5 +1,3 @@
-# Contributor: sxe <sxxe@gmx.de>
-
 pkgname=flowblade-git
 _pkgname=flowblade
 pkgver=2.0.r15.ga3bd40b4
