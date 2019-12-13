@@ -1,4 +1,4 @@
-# Maintainer: Josh Hoffer 
+# Maintainer: anon at sansorgan.es
 _hkgname=arbtt
 pkgname=arbtt
 pkgver=0.10.2
