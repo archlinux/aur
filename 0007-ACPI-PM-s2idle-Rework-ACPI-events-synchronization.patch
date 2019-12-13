@@ -1,0 +1,78 @@
+From d29867e0b11ce1db3802aa6370ee4d40d43351db Mon Sep 17 00:00:00 2001
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
+Date: Thu, 28 Nov 2019 23:50:40 +0100
+Subject: [PATCH 7/8] ACPI: PM: s2idle: Rework ACPI events synchronization
+
+Note that the EC GPE processing need not be synchronized in
+acpi_s2idle_wake() after invoking acpi_ec_dispatch_gpe(), because
+that function checks the GPE status and dispatches its handler if
+need be and the SCI action handler is not going to run anyway at
+that point.
+
+Moreover, it is better to drain all of the pending ACPI events
+before restoring the working-state configuration of GPEs in
+acpi_s2idle_restore(), because those events are likely to be related
+to system wakeup, in which case they will not be relevant going
+forward.
+
+Rework the code to take these observations into account.
+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+ drivers/acpi/sleep.c | 26 +++++++++++++++++++-------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/acpi/sleep.c b/drivers/acpi/sleep.c
+index 2af937a8b1c5..6747a279621b 100644
+--- a/drivers/acpi/sleep.c
++++ b/drivers/acpi/sleep.c
+@@ -977,6 +977,16 @@ static int acpi_s2idle_prepare_late(void)
+ 	return 0;
+ }
+ 
++static void acpi_s2idle_sync(void)
++{
++	/*
++	 * The EC driver uses the system workqueue and an additional special
++	 * one, so those need to be flushed too.
++	 */
++	acpi_ec_flush_work();
++	acpi_os_wait_events_complete(); /* synchronize Notify handling */
++}
++
+ static void acpi_s2idle_wake(void)
+ {
+ 	/*
+@@ -1001,13 +1011,8 @@ static void acpi_s2idle_wake(void)
+ 		 * should be missed by canceling the wakeup here.
+ 		 */
+ 		pm_system_cancel_wakeup();
+-		/*
+-		 * The EC driver uses the system workqueue and an additional
+-		 * special one, so those need to be flushed too.
+-		 */
+-		acpi_os_wait_events_complete(); /* synchronize EC GPE processing */
+-		acpi_ec_flush_work();
+-		acpi_os_wait_events_complete(); /* synchronize Notify handling */
++
++		acpi_s2idle_sync();
+ 
+ 		rearm_wake_irq(acpi_sci_irq);
+ 	}
+@@ -1024,6 +1029,13 @@ static void acpi_s2idle_restore_early(void)
+ 
+ static void acpi_s2idle_restore(void)
+ {
++	/*
++	 * Drain pending events before restoring the working-state configuration
++	 * of GPEs.
++	 */
++	acpi_os_wait_events_complete(); /* synchronize GPE processing */
++	acpi_s2idle_sync();
++
+ 	s2idle_wakeup = false;
+ 
+ 	acpi_enable_all_runtime_gpes();
+-- 
+2.24.1
+

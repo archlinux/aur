@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.4.2-arch1
+_srcver=5.4.3-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -82,21 +82,25 @@ source=(
   0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
+  0006-ACPI-EC-Rework-flushing-of-pending-work.patch
+  0007-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('32f98256877ca6b016715ffffcf184f1603df9e17a324787f252cd602e03a557'
+sha256sums=('6731682f32e1b1ee53b0e7f66b8dc263d25a0e809e78e2139cb0ed77c378ee51'
             'SKIP'
-            'b7f23bbc09b6c571b76f851f0389386a6f3a64f3d7b1b8509c8550228b0f4537'
+            '5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
             '8919d8cbab83ccc810d8c7eaf6ebb18be8ae011da90a11d98732c2537af11d11'
             'f1481e4c6d84de265552eea9ef2e2fa13bf26774becc2f2c36619af1f56bcee4'
             '88c7e90ac7a1b73b3707feacd23b66feaa4c2cc5bc39ef2807b2301274db3ad2'
             '786da96d5cc273331bf8a155b0552edcc26d79f194a016c7e4f1c1266aabafc2'
-            '2d51be4ede2c19a3163899fd783a213cf9f837867915b004e0c70c548e0d96c9')
+            '2d51be4ede2c19a3163899fd783a213cf9f837867915b004e0c70c548e0d96c9'
+            'a2f99ed7314efcdd627bef8356a57554caa68d02d404eee28ca2c04fce2d906a'
+            '29e71325f9f3a9e2a6fc47f5309e3e0b03328239093f651eee47c52467e9e5bc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
