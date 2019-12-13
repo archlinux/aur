@@ -1,7 +1,7 @@
 pkgbase = python-onnx
 	pkgdesc = Open Neural Network Exchange
 	pkgver = 1.6.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://onnx.ai
 	arch = x86_64
 	license = MIT
