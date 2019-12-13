@@ -1,6 +1,6 @@
 # Maintainer: dekart811
 pkgname=vala-language-server-alpha
-pkgver=1.0.4
+pkgver=1.0.4.r0.g2bdd82b
 _gitver=v${pkgver}
 pkgrel=1
 pkgdesc='Basic Language Server for Vala primarily targeting VSCode.'
