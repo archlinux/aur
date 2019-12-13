@@ -8,13 +8,13 @@ arch=('any')
 url='https://github.com/holgerbrandl/kscript'
 license=('MIT')
 depends=('kotlin')
-source=("-.bin.zip::https://github.com/holgerbrandl//releases/download/v/--bin.zip")
+source=("${pkgname}-${pkgver}.bin.zip::https://github.com/holgerbrandl/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-bin.zip")
 sha256sums=('3d62b0db226566506a2531d765547595867230cd5d44dbedc65301cadfecdaaf')
 
 package() {
-    cd "/-/bin"
+    cd "${srcdir}/${pkgname}-${pkgver}/bin"
 
-    install -Dm 755 kscript "/usr/bin/kscript"
-    install -Dm 644 kscript.jar "/usr/bin/kscript.jar"
+    install -Dm 755 kscript "${pkgdir}/usr/bin/kscript"
+    install -Dm 644 kscript.jar "${pkgdir}/usr/bin/kscript.jar"
 }
 
