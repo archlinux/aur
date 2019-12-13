@@ -1,6 +1,6 @@
 pkgbase = mrpt
 	pkgdesc = Provides an extensive set of libraries, algorithms, and applications employed in a number of mobile robotics research areas.
-	pkgver = 1.5.6
+	pkgver = 1.5.8
 	pkgrel = 1
 	url = http://www.mrpt.org
 	install = mrpt.install
@@ -22,12 +22,16 @@ pkgbase = mrpt
 	optdepends = libusb: Kinect support
 	optdepends = pcl
 	optdepends = assimp
-	source = mrpt-1.5.6::git+https://github.com/MRPT/mrpt.git#tag=1.5.6
+	source = mrpt-1.5.8::git+https://github.com/MRPT/mrpt.git#tag=1.5.8
 	source = https://raw.githubusercontent.com/majorx234/mrpt_patch/master/mrpt_CmakeLists.patch
 	source = https://raw.githubusercontent.com/majorx234/FindNumPy.cmake/master/FindNumPy.cmake
+	source = opencv_and_opencv2-opt.patch
+	source = prevent_gtk3_linking.patch
 	sha256sums = SKIP
 	sha256sums = ec4f93431c098ef2515f6bb10358cb17dd3c804ebb295285792ad62f0826ab32
 	sha256sums = e8cbe6841595d594659d9a16464af2386efd0dce2947e8f348e2c47fad1d022f
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = mrpt
 

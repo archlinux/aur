@@ -1,0 +1,35 @@
+--- a/cmakemodules/script_wxwidgets.cmake
++++ b/cmakemodules/script_wxwidgets.cmake
+@@ -17,20 +17,20 @@
+ ENDIF(UNIX)
+ 
+ # Select wx toolkit options, like GTK2 vs GTK3, etc.
+ if(UNIX)
+ 	# If available, prefer gtk3:
+-	execute_process(
+-		COMMAND wx-config --selected-config --toolkit=gtk3
+-		RESULT_VARIABLE ret
+-		OUTPUT_QUIET
+-	)
+-	if(ret EQUAL "0")
+-		message(STATUS "wxWidgets: Found gtk3 version, using it.")
+-		set(wxWidgets_CONFIG_OPTIONS_DEFAULT "--toolkit=gtk3")
+-	else()
+-		message(STATUS "wxWidgets: No gtk3 version found, falling back to default (likely gtk2)")
+-	endif()
+-	unset(ret)
++#	execute_process(
++#		COMMAND wx-config --selected-config --toolkit=gtk3
++#		RESULT_VARIABLE ret
++#		OUTPUT_QUIET
++#	)
++#	if(ret EQUAL "0")
++#		message(STATUS "wxWidgets: Found gtk3 version, using it.")
++#		set(wxWidgets_CONFIG_OPTIONS_DEFAULT "--toolkit=gtk3")
++#	else()
++#		message(STATUS "wxWidgets: No gtk3 version found, falling back to default (likely gtk2)")
++#	endif()
++#	unset(ret)
+ 
+ 	set(wxWidgets_CONFIG_OPTIONS "${wxWidgets_CONFIG_OPTIONS_DEFAULT}" ON STRING "wxWidgets toolkit options")
+ endif()
