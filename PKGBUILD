@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r225.e218618
+pkgver=r237.ce9fd9f
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -118,15 +118,11 @@ package() {
 	sed -i '$ s|$|\nEnvironment="LIBGL_DRIVERS_PATH=/opt/google/cros-containers/lib"|' ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
-		${pkgdir}/usr/lib/systemd/user/sommelier@0.service.d/cros-sommelier-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-override.conf \
-		${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-override.conf
+		${pkgdir}/usr/lib/systemd/user/sommelier@.service.d/cros-sommelier-override.conf
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
+		${pkgdir}/usr/lib/systemd/user/sommelier-x@.service.d/cros-sommelier-x-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
 		${pkgdir}/usr/lib/systemd/user/sommelier@1.service.d/cros-sommelier-low-density-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
-		${pkgdir}/usr/lib/systemd/user/sommelier-x@0.service.d/cros-sommelier-x-override.conf
-	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-x-override.conf \
-		${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-x-override.conf
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier-config/cros-sommelier-low-density-override.conf \
 		${pkgdir}/usr/lib/systemd/user/sommelier-x@1.service.d/cros-sommelier-low-density-override.conf
 
