@@ -1,8 +1,10 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer:
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Ionut Biru <ibiru at archlinux dot org>
 # Contributor: Roman Kyrylych <Roman dot Kyrylych at gmail dot com>
-# Contributor: William Rea <sillywilly at gmail dto com>
+# Contributor: William Rea <sillywilly at gmail dot com>
 
 pkgname=gnome-schedule
 pkgver=2.3.0
@@ -18,13 +20,13 @@ source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('9992acb12ed52ec781d623fbc33c5dd3428ef863956fb8088b937c401cbe7b5a')
 
 build() {
-	cd $pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 	python2 -m compileall "$pkgdir"/usr/share/gnome-schedule/
 }
