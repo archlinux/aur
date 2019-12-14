@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.15.arch1.r859832.ac127f6e3fa5
+pkgver=v5.3.16.arch1.r859950.fba7e387ab67
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.3.15-arch1
+_srcver_tag=v5.3.16-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -122,12 +122,12 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    msg2 "Pull releases from Linux stable upstream repository..."
+    msg2 "Pull tag from Linux stable upstream repository..."
     git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
     git pull --no-edit upstream_stable ${_srcver_tag//-arch*/}
     # git pull --no-edit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
 
-    # msg2 "Pull stable releases from Arch vanilla kernel repository..."
+    # msg2 "Pull stable tag from Arch vanilla kernel repository..."
     # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
     # git pull --no-edit arch_stable "$_srcver_tag"
     

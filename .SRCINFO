@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = v5.3.15.arch1.r859832.ac127f6e3fa5
+	pkgver = v5.3.16.arch1.r859950.fba7e387ab67
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -36,13 +36,13 @@ pkgname = linux-bcachefs-git
 	depends = bcachefs-tools-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-git=v5.3.15.arch1.r859832.ac127f6e3fa5
+	provides = linux-bcachefs-git=v5.3.16.arch1.r859950.fba7e387ab67
 
 pkgname = linux-bcachefs-git-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
-	depends = linux-bcachefs-git=v5.3.15.arch1.r859832.ac127f6e3fa5
-	provides = linux-bcachefs-git-headers=v5.3.15.arch1.r859832.ac127f6e3fa5
-	provides = linux-headers=v5.3.15.arch1.r859832.ac127f6e3fa5
+	depends = linux-bcachefs-git=v5.3.16.arch1.r859950.fba7e387ab67
+	provides = linux-bcachefs-git-headers=v5.3.16.arch1.r859950.fba7e387ab67
+	provides = linux-headers=v5.3.16.arch1.r859950.fba7e387ab67
 
 pkgname = linux-bcachefs-git-docs
 	pkgdesc = Documentation for the Linux kernel
