@@ -10,6 +10,7 @@ pkgbase = ocaml-fdkaac-git
 	depends = ocaml
 	depends = libfdk-aac
 	options = !strip
+	options = !makeflags
 	source = ocaml-fdkaac-git::git+https://github.com/savonet/ocaml-fdkaac.git
 	md5sums = SKIP
 

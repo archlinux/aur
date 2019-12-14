@@ -8,7 +8,7 @@ url="https://github.com/savonet/ocaml-fdkaac"
 license=('GPL')
 depends=('ocaml' 'libfdk-aac')
 makedepends=('ocaml-findlib')
-options=('!strip')
+options=('!strip' '!makeflags')
 source=("${pkgname}::git+https://github.com/savonet/ocaml-fdkaac.git")
 
 pkgver() {
