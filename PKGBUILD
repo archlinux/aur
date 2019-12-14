@@ -3,7 +3,7 @@
 
 pkgname=spacman
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 _git_log_id=e6fd231c8fc71c3b444924df75613babbadea887
 pkgdesc="A Package Management Tool with Whitelist Package List."
 arch=('any')
