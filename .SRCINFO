@@ -10,6 +10,7 @@ pkgbase = ocaml-sedlex-git
 	depends = ocaml-gen-git
 	depends = ocaml-migrate-parsetree
 	depends = ocaml-ppx_tools_versioned
+	depends = ocaml-uchar
 	options = !strip
 	options = !makeflags
 	source = ocaml-sedlex-git::git+https://github.com/alainfrisch/sedlex

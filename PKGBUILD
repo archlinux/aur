@@ -1,5 +1,4 @@
 # Maintainer: robertfoster
-
 pkgname=ocaml-sedlex-git
 pkgver=r188.e4f029b
 pkgrel=1
@@ -7,7 +6,7 @@ pkgdesc='Unicode-friendly OCaml lexer generator'
 license=('MIT')
 arch=('i686' 'x86_64')
 url='https://github.com/alainfrisch/sedlex'
-depends=('ocaml' 'ocaml-gen-git' 'ocaml-migrate-parsetree' 'ocaml-ppx_tools_versioned' )
+depends=('ocaml' 'ocaml-gen-git' 'ocaml-migrate-parsetree' 'ocaml-ppx_tools_versioned' 'ocaml-uchar')
 source=("$pkgname::git+https://github.com/alainfrisch/sedlex")
 options=(!strip !makeflags)
 
