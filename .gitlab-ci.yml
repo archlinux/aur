@@ -2,7 +2,7 @@ image: "imrehg/archlinux-makepkg"
 
 before_script:
 - sudo pacman -Syu --noconfirm
-- yaourt --noconfirm -S r-e1071
+- yay --noconfirm -S r-e1071
 
 package:
   script:
