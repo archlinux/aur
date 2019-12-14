@@ -1,7 +1,7 @@
 pkgbase = optix
 	pkgdesc = A software development kit for achieving high performance ray tracing on the GPU.
 	pkgver = 7.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.nvidia.com/optix
 	arch = x86_64
 	license = custom:NVIDIA

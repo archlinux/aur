@@ -2,7 +2,7 @@
 
 pkgname=optix
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A software development kit for achieving high performance ray tracing on the GPU."
 arch=('x86_64')
 url="https://developer.nvidia.com/optix"
@@ -13,13 +13,10 @@ _script="NVIDIA-OptiX-SDK-$pkgver-linux64.sh"
 source=("file://$_script")
 sha512sums=('349baf367af7890afac87a879c8f7360cc9c93e984cf234216062af0a3cedce8fc6f3fd74240897d4b3854622ce1976a78433cbeadf6fa89c8e84d24e26eef89')
 
-if ! [ -f $_script ]
-then
+if ! [ -f $_script ]; then
     msg2 "Please manually download $_script to $PWD from https://developer.nvidia.com/designworks/optix/download."
     exit 1
 fi
-
-PKGEXT='.pkg.tar'
 
 package() {
     mkdir -p "$pkgdir/opt/optix"
