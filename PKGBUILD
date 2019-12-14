@@ -4,7 +4,7 @@
 
 pkgname=ocaml-camomile
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Comprehensive Unicode library for OCaml"
 arch=('i686' 'x86_64')
 url="https://github.com/yoriyuki/Camomile"
@@ -15,14 +15,19 @@ options=(!strip !makeflags staticlibs)
 
 build() {
 	cd Camomile-${pkgver}
-	jbuilder build @install
+        find . -name "*.mli" -exec sed -i 's,Pervasives.in_channel,Stdlib.in_channel,g' {} + 
+        find . -name "*.mli" -exec sed -i 's,Pervasives.out_channel,Stdlib.out_channel,g' {} +
+        find . -name "*.ml" -exec sed -i 's,Pervasives.in_channel,Stdlib.in_channel,g' {} +
+        find . -name "*.ml" -exec sed -i 's,Pervasives.out_channel,Stdlib.out_channel,g' {} +
+        find . -name "*.ml" -exec sed -i 's,Pervasives.compare,Stdlib.compare,g' {} +
+	dune build @install
 }
 
 package() {
 	cd Camomile-${pkgver}
-
+	
 	mkdir -p "$pkgdir"/usr/lib/ocaml
-	jbuilder install \
+	dune install \
 		--destdir="$pkgdir" \
 		--libdir="/usr/lib/ocaml"
 
