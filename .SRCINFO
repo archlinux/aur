@@ -1,0 +1,15 @@
+pkgbase = breeze-extra
+	pkgdesc = Breeze extra icons for GNOME & KDE
+	pkgver = 20191214
+	pkgrel = 1
+	url = https://store.kde.org/p/1184525/
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = breeze-extra::git+https://github.com/varlesh/breeze-extra.git#commit=d57f02d82c65923ebca473bc599fc6562dcb77db
+	sha256sums = SKIP
+
+pkgname = breeze-extra
+
+pkgname = breeze-extra-gnome
+
