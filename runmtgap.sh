@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd /opt/mtgaprotracker-linux-x64
-./mtgaprotracker
+./mtgaprotracker --no-sandbox
 cd -

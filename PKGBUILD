@@ -1,24 +1,24 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
-pkgver=2.0.15
-pkgrel=3
+pkgver=2.0.16
+pkgrel=1
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('electron')
 makedepends=('yarn')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v2.0.15.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v${pkgver}.tar.gz"
 	"runmtgap.sh" 
 	"${_pkgname}.desktop"
 	"home.html.patch"
 	"ipc_main.ts.patch"
 	"main_window.ts.patch")
-sha256sums=('4d49ea7bf1d58659fa40f010cdd08a915a5e163288be60aaeb3307df20339225' 
-	    '93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436'
+sha256sums=('e93e35cb6c5dc514339470a2a65d410e55ba9d282fc8b1dd87cc93645b478c6a' 
+	    '66e0832a5d7cb8433c8ac49307854ce80954d35ada6bf2b8251a198f8e5639cb'
 	    '145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048'
 	    'ff07b2ddf0391ac0e75b8e115e5a4953e32b39991d6022c2d2d310a9c3f61576'
-		'f8b5d6b87ee2e60518da29c1540d0ff444a64a0f1870bf4d65f2aab577336052'
+	    'f8b5d6b87ee2e60518da29c1540d0ff444a64a0f1870bf4d65f2aab577336052'
 	    '06bc1af01f8df685c1d6930f8882c668e25bf0f421659dd8021758824c976d19')
 
 prepare() {
@@ -29,8 +29,10 @@ prepare() {
 
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
-  yarn add @electron-forge/cli
   yarn install
+  yarn add @electron-forge/cli
+  yarn add @electron-forge/plugin-webpack
+  
 
 }
 
