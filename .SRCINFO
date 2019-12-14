@@ -1,7 +1,8 @@
 pkgbase = plastex-git
 	pkgdesc = Python-based LaTeX document processing framework
-	pkgver = 1.0.0.117.g7803cc5
-	pkgrel = 2
+	pkgver = 2.1.r7.rgb561804
+	pkgrel = 1
+	epoch = 1
 	url = http://tiarno.github.io/plastex/
 	arch = any
 	license = custom
