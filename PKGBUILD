@@ -1,8 +1,8 @@
 # Maintainer: aereaux <aidan@jmad.org>
 _pkgname=meli
 pkgname=${_pkgname}-git
-pkgver=pre.alpha.0.3.2.r5.gcd761b3
-pkgrel=2
+pkgver=alpha.0.4.2.r43.g17a0f31
+pkgrel=1
 pkgdesc="Experimental terminal mail client aiming for configurability and extensibility with sane defaults."
 arch=("x86_64")
 url="https://meli.delivery/"
