@@ -3,14 +3,14 @@
 _pkgname=glava
 pkgname=${_pkgname}-git
 pkgver=r329.3cc5e22
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL audio spectrum visualizer'
 arch=('x86_64')
 url='https://github.com/wacossusca34/glava'
 license=('GPL3')
 depends=('x-server' 'pulseaudio' 'libxext' 'libxcomposite' 'libxrender')
 makedepends=('git' 'meson' 'obs-studio')
-optdeps=('obs-studio: OBS integration')
+optdepends=('obs-studio: OBS integration')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=('git+https://github.com/wacossusca34/glava'
