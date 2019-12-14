@@ -1,3 +1,4 @@
+# Maintainer: Mahmoud Elswerky <mahmoud dot elswerky at gmail dot com>
 # Contributor: Chris Down <chris@chrisdown.name>
 # Contributor: Yung Wood <yung at yung.com.au>
 # Contributor: Joshua Stiefer <facedelajunk at gmail.com>
@@ -5,8 +6,8 @@
 # Contributor: Techlive Zheng <techlivezheng at gmail.com>
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Albert Westra <odsseywestra(at)gmail(dot)com>
-# Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
-# Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=lastpass-pocket
 pkgver=4.1.20
