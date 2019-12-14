@@ -1,0 +1,18 @@
+pkgbase = ocaml-gen-git
+	pkgdesc = Iterators for OCaml
+	pkgver = r141.7eb42b1
+	pkgrel = 1
+	url = https://github.com/c-cube/gen/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = ocaml-findlib
+	makedepends = dune
+	depends = ocaml
+	options = !strip
+	options = !makeflags
+	source = ocaml-gen-git::git+https://github.com/c-cube/gen
+	md5sums = SKIP
+
+pkgname = ocaml-gen-git
+
