@@ -1,6 +1,6 @@
 pkgbase = cherrytomato
 	pkgdesc = Easy to use, flexible PyQt5 Pomodoro Technique timer
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/yakimka/CherryTomato
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = cherrytomato
 	makedepends = python-setuptools
 	depends = python-pyqt5
 	depends = python-qroundprogressbar
-	source = https://github.com/yakimka/CherryTomato/archive/0.2.0.tar.gz
-	sha512sums = e3602575af555e27852cc2d07bab0e2f12f91194797ff14b653da0990d464908d711ea2890160a59e9c2f7ddf2170ee025b554a953bcec5834a9aa5c369cd69c
+	source = https://github.com/yakimka/CherryTomato/archive/0.3.0.tar.gz
+	sha512sums = 75970e4afc52cfd67b924cc163cac4b3502f825f231939c17188c888708ad66600428c1cd4e947b99efbb8a8a00016baac19fa395f682961ace8041ce8ac093e
 
 pkgname = cherrytomato
 
