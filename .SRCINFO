@@ -1,0 +1,17 @@
+pkgbase = rocketlauncher2-git
+	pkgdesc = Rocket Launcher 2.0 is a cross platform front end for all DOOM source ports.
+	pkgver = 0.1.0.2.r11.gbdb48cd
+	pkgrel = 1
+	url = https://github.com/Hypnotoad90/RocketLauncher2
+	arch = i686
+	arch = x86_64
+	license = GLP3
+	makedepends = qt5-base
+	makedepends = gendesk
+	makedepends = binutils
+	depends = qt5-base
+	source = git+https://github.com/Hypnotoad90/RocketLauncher2
+	md5sums = SKIP
+
+pkgname = rocketlauncher2-git
+
