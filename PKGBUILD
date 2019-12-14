@@ -15,7 +15,5 @@ sha256sums=('157a7ecc53ef1d011bb72b3e83424c9270a9dc3422fde9c603806c763eee9c73'
             '0ce8c27b9003008e6d371f9cddad8a343088f0f2e095830b168cb74d4dd7b439')
 
 package() {
-	install -Dm755 compare-save-for-later.nemo_action "$pkgdir/usr/share/nemo/actions/compare-save-for-later.nemo_action"
-	install -Dm755 compare-with-saved.nemo_action "$pkgdir/usr/share/nemo/actions/compare-with-saved.nemo_action"
-	install -Dm755 compare.sh "$pkgdir/usr/share/nemo/actions/compare.sh"
+	install -Dm755 "$srcdir/"* -t "$pkgdir/usr/share/nemo/actions"
 }
