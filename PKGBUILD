@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=debmirror
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc='Debian partial mirror script, with ftp and package pool support'
 url="https://salsa.debian.org/debian/${pkgname}"
@@ -10,20 +10,20 @@ license=('GPL')
 depends=('bzip2' 'perl-lockfile-simple' 'perl-libwww' 'rsync')
 optdepends=('diffutils' 'ed' 'gnupg' 'patch')
 source=("https://mirrors.edge.kernel.org/debian/pool/main/d/${pkgname}/${pkgname}_${pkgver}.tar.xz")
-sha512sums=('1f1343ee3ae955b73b4dc90a978f4489e5471dc27b73a0e4bf7f0aec1015b0aecc70e704d581f3a926f739c5296fe96225ec4cdafe59f3acc8139a0f880530d4')
+sha512sums=('faac538b7c981901765ad191dd3fdb917e53cf0bac5217f165da3c5661143a11cf46322295f097ad19dd9f08409979d1a121901ce367f8e160e22563febbb381')
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/work"
     make all
 }
 
 check() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/work"
     make check
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/work"
 
     # see https://packages.debian.org/fr/sid/all/debmirror/filelist
     install -Dm 755 debmirror ${pkgdir}/usr/bin/debmirror
