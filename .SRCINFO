@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-lts316-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (3.16 Kernel Modules)
 	pkgver = 1.1.8.421.g6bc14a626
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.openss7.org
 	arch = x86_64
 	arch = i686
