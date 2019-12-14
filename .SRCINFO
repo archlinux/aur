@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
-	pkgdesc = Linux ZEN
-	pkgver = 5.4.1.zen2
-	pkgrel = 2
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.4.1-zen2
+	pkgdesc = Linux ZEN with Patches
+	pkgver = 5.4.3.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.4.3-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.4.1-zen2
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.4.3-zen1
 	source = config
 	source = aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch
 	source = exfat-nofuse.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/0018-feature-exfat-nofuse.patch
@@ -23,12 +23,12 @@ pkgbase = linux-froidzen
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = c79d776a2052027638dcc1c17d1bc1eca17f2b2cc484e1bee89c9277b50f66bc
+	sha256sums = a46708844b8135fdcf69bb8c1d6cc6dcfc88530ea454a1edf611059c159b4233
 	sha256sums = 2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2
 	sha256sums = b5452ebec7960f7ef5be7e79e1b5eb5df10658007abd26be27b1b95a3b1aa753
 
 pkgname = linux-froidzen
-	pkgdesc = The Linux ZEN kernel and modules
+	pkgdesc = The Linux ZEN with Patches kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -36,8 +36,8 @@ pkgname = linux-froidzen
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-froidzen-headers
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN with Patches kernel
 
 pkgname = linux-froidzen-docs
-	pkgdesc = Documentation for the Linux ZEN kernel
+	pkgdesc = Documentation for the Linux ZEN with Patches kernel
 
