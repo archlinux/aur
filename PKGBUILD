@@ -1,4 +1,5 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Contributor: bitwave <aur@oomlu.de>
 
 pkgname=python-boofuzz
 pkgver=0.1.6
