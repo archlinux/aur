@@ -1,44 +1,44 @@
-diff --git a/build/assets/cache/js/route-naboo-ads.4648c843d81640e9f10b.js b/build/assets/cache/js/route-naboo-ads.4648c843d81640e9f10b.js
-index 05ddb28..6f9dfb6 100644
---- a/build/assets/cache/js/route-naboo-ads.4648c843d81640e9f10b.js
-+++ b/build/assets/cache/js/route-naboo-ads.4648c843d81640e9f10b.js
-@@ -8959,7 +8959,7 @@
-                       "button",
-                       {
-                         className: "sidebar-navbar-arrow",
--                        disabled: !this.state.canGoBack,
-+                        disabled: false,
-                         onClick: () => Nt.b.goBack(),
-                         type: "button"
-                       },
-@@ -8969,7 +8969,7 @@
-                       "button",
-                       {
-                         className: "sidebar-navbar-arrow",
--                        disabled: !this.state.canGoForward,
-+                        disabled: false,
-                         onClick: () => Nt.b.goForward(),
-                         type: "button"
-                       },
-diff --git a/build/assets/cache/js/route-naboo-no-ads.2705984b2916612d525c.js b/build/assets/cache/js/route-naboo-no-ads.2705984b2916612d525c.js
-index bc79d36..2dcc0de 100644
---- a/build/assets/cache/js/route-naboo-no-ads.2705984b2916612d525c.js
-+++ b/build/assets/cache/js/route-naboo-no-ads.2705984b2916612d525c.js
-@@ -7767,7 +7767,7 @@
-                       "button",
-                       {
-                         className: "sidebar-navbar-arrow",
--                        disabled: !this.state.canGoBack,
-+                        disabled: false,
-                         onClick: () => At.b.goBack(),
-                         type: "button"
-                       },
-@@ -7777,7 +7777,7 @@
-                       "button",
-                       {
-                         className: "sidebar-navbar-arrow",
--                        disabled: !this.state.canGoForward,
-+                        disabled: false,
-                         onClick: () => At.b.goForward(),
-                         type: "button"
-                       },
+diff --git a/build/assets/cache/js/route-naboo-ads.c007043143afdc84f25f.js b/build/assets/cache/js/route-naboo-ads.c007043143afdc84f25f.js
+index f3c374a..89e753c 100644
+--- a/build/assets/cache/js/route-naboo-ads.c007043143afdc84f25f.js
++++ b/build/assets/cache/js/route-naboo-ads.c007043143afdc84f25f.js
+@@ -9151,7 +9151,7 @@
+                   "button",
+                   {
+                     className: "sidebar-navbar-arrow",
+-                    disabled: !this.state.canGoBack,
++                    disabled: false,
+                     onClick: () => Nt.b.goBack(),
+                     type: "button"
+                   },
+@@ -9161,7 +9161,7 @@
+                   "button",
+                   {
+                     className: "sidebar-navbar-arrow",
+-                    disabled: !this.state.canGoForward,
++                    disabled: false,
+                     onClick: () => Nt.b.goForward(),
+                     type: "button"
+                   },
+diff --git a/build/assets/cache/js/route-naboo-no-ads.4ab546c58a76b38a80f3.js b/build/assets/cache/js/route-naboo-no-ads.4ab546c58a76b38a80f3.js
+index 5a8f6bf..4aeff4e 100644
+--- a/build/assets/cache/js/route-naboo-no-ads.4ab546c58a76b38a80f3.js
++++ b/build/assets/cache/js/route-naboo-no-ads.4ab546c58a76b38a80f3.js
+@@ -7959,7 +7959,7 @@
+                   "button",
+                   {
+                     className: "sidebar-navbar-arrow",
+-                    disabled: !this.state.canGoBack,
++                    disabled: false,
+                     onClick: () => Nt.b.goBack(),
+                     type: "button"
+                   },
+@@ -7969,7 +7969,7 @@
+                   "button",
+                   {
+                     className: "sidebar-navbar-arrow",
+-                    disabled: !this.state.canGoForward,
++                    disabled: false,
+                     onClick: () => Nt.b.goForward(),
+                     type: "button"
+                   },
