@@ -91,7 +91,7 @@ build() {
         -DPYTHON_VERSION=${_pyver} \
         ${_EXTRAOPTS[@]}
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  ((DISABLE_NINJA)) && make || ninja ${MAKEFLAGS:--j1} -d stats
+  ((DISABLE_NINJA)) && make || ninja $([ -v MAKEFLAGS ] || echo -j1) -d stats
 }
 
 package() {
