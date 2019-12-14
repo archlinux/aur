@@ -8,13 +8,13 @@
 pkgbase='firefox-beta-i18n'
 pkgname=("$pkgbase-all")
 pkgver=72.0b6
-pkgrel=1
+pkgrel=2
 pkgdesc="Language pack for Firefox Beta"
 arch=('any')
 url="http://www.mozilla.org/"
 license=('MPL' 'GPL')
 provides=("$pkgbase=$pkgver-$pkgrel")
-depends=("firefox>=$pkgver")
+depends=("firefox-beta>=$pkgver")
 source=()
 sha256sums=('7d36128a7061bacb21d7bfb3f70f11e97c388b0c3c1babd4056f04b52deda58a'
             '6a2b005710745d3d145b29b7cd7866a25c50fcff02980df56631b0b295e53ec5'
