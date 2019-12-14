@@ -6,12 +6,12 @@ githuborg=pterodactyl
 pkgdesc="Open-source server control and management daemon for pterodactyl-panel."
 pkgver=0.6.12
 pkgpath="github.com/${githuborg}/${pkgname1}"
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://${pkgpath}"
 license=()
 makedepends=()
-#https://pterodactyl.io/community/installation-guides/panel/debian10.html#server-configuration
+#https://pterodactyl.io/community/installation-guides/daemon/debian10.html#server-configuration
 depends=(docker nodejs npm)
 source=("${url}/releases/download/v${pkgver}/${pkgname1}.tar.gz")
 sha256sums=('aef507f4b9f1272b678cf8b23c0cf0db58d1bba4e8a02d6744018f63db4ff66a')
@@ -45,22 +45,20 @@ build() {
 }
 
 package() {
-	#https://pterodactyl.io/panel/getting_started.html#download-files
+	#https://pterodactyl.io/daemon/getting_started.html#download-files
 	mkdir -p ${pkgdir}/usr/bin/
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	mkdir -p ${pkgdir}/srv/daemon
-	mkdir -p ${pkgdir}/srv/daemon-data
-	npm install --cache "${srcdir}/npm-cache"  --only=production -g --user root --prefix ${pkgdir}/srv/daemon ${srcdir}/${pkgname1}.tar.gz #"$pkgdir"/usr
-	# Non-deterministic race in npm gives 777 permissions to random directories.
+	mkdir -p ${pkgdir}/srv/${pkgname1}
+	mkdir -p ${pkgdir}/srv/${pkgname1}-data
+	npm install --cache "${srcdir}/npm-cache"  --only=production -g --user root --prefix ${pkgdir}/srv/${pkgname1} ${srcdir}/${pkgname1}.tar.gz #"$pkgdir"/usr	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
-	find "${pkgdir}"/srv/daemon -type d -exec chmod 755 {} +
+	find "${pkgdir}"/srv/${pkgname1} -type d -exec chmod 755 {} +
 	# npm gives ownership of ALL FILES to build user
 	chown -R root:root "$pkgdir"
 	# https://bugs.archlinux.org/task/63396
-	#cd ${pkgdir}/srv/daemon
-	#tar --strip-components=1 -xzvf ${srcdir}/panel.tar.gz
-	#chmod -R 755 ${pkgdir}/srv/daemon/storage/* ${pkgdir}/srv/daemon/bootstrap/cache/
-	  install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/srv/daemon
-		ln -rTsf ${pkgdir}/srv/daemon/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+	cd ${pkgdir}/srv/${pkgname1}
+	tar --strip-components=1 -xzvf ${srcdir}/${pkgname1}.tar.gz
+		  install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/srv/${pkgname1}.sh
+		ln -rTsf ${pkgdir}/srv/${pkgname1}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 	install -Dm644 ${srcdir}/wings.service ${pkgdir}/usr/lib/systemd/system/
 }
