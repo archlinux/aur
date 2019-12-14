@@ -1,8 +1,8 @@
 read -r -d '' msg << TIP
 ================================\n
-You should execute this command for the first updating hosts: \e[1m adhost \e[0m \n
+Execute\e[1m adhost \e[0mfor updating hosts: \n
 -------------------------\n
-你应该执行这条命令进行第一次hosts升级：\e[1m adhost \e[0m\n
+执行\e[1m adhost \e[0m命令可升级hosts.\n
 ================================
 TIP
 

@@ -1,7 +1,7 @@
 pkgbase = adhosts
 	pkgdesc = google hosts and blocking ads hosts.用于科学上网和屏蔽广告的hosts.
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/levinit/adhosts
 	arch = any
 	license = GPL
