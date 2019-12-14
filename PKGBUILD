@@ -48,7 +48,7 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
 	'ocaml-vorbis'
 	'ocaml-xmlplaylist'
 )
-makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex' 'perl-xml-dom')
+makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex-git' 'perl-xml-dom')
 optdepends=('curl')
 source=("https://github.com/savonet/liquidsoap/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
 	$pkgname.service
