@@ -5,9 +5,8 @@ pkgbase = adhosts
 	url = https://github.com/levinit/adhosts
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = curl
-	source = git://github.com/levinit/adhosts.git
+	source = https://github.com/levinit/adhosts/archive/master.zip
 	md5sums = SKIP
 
 pkgname = adhosts

@@ -7,9 +7,8 @@ arch=(any)
 url="https://github.com/levinit/$pkgname"
 license=('GPL')
 depends=('curl')
-makedepends=('git')
 
-source=("git://github.com/levinit/$pkgname.git")
+source=("https://github.com/levinit/adhosts/archive/master.zip")
 md5sums=('SKIP')
 
 package() {
