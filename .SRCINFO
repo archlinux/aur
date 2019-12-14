@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Small, fast and VT100-compatible text editor
-	pkgver = 2.10.2
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = o
 	makedepends = git
 	makedepends = go
 	makedepends = upx
-	source = git+https://github.com/xyproto/o#tag=2.10.2
+	source = git+https://github.com/xyproto/o#tag=2.12.1
 	sha256sums = SKIP
 
 pkgname = o
