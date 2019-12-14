@@ -4,7 +4,7 @@
 pkgname=python-distributed
 _pkgname=distributed
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for distributed computing"
 arch=('any')
 depends=(
@@ -32,10 +32,14 @@ optdepends=(
   'python-pytorch: Support for tensors and dynamic neural networks'
   'python-ipywidgets: Extra widgets in diagnostic pages'
 )
-url="http://distributed.readthedocs.org/en/stable/"
+url="https://distributed.dask.org/"
 license=('BSD')
-source=("$pkgver.tar.gz::https://codeload.github.com/dask/distributed/tar.gz/$pkgver")
-sha256sums=('be5ebfa7f20ef09846486694c63483486143767c1595e4a75daf22a18fa516de')
+source=(
+  "https://files.pythonhosted.org/packages/source/d/distributed/distributed-$pkgver.tar.gz"
+)
+sha256sums=(
+  'b66a15d6c02c28dd07e815d09cd77dab8484004533d38895714a5f10c7e7e325'
+)
 
 build() {
   cd "$_pkgname-$pkgver"
