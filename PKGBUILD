@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.0.4+r1250+g04f7366a
+pkgver=9.1+r383+g59e88c6c
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
@@ -16,16 +16,20 @@ provides=(ghidra)
 conflicts=(ghidra)
 depends=('java-environment>=11' bash hicolor-icon-theme)
 makedepends=(git gradle unzip fop)
-source=(git+$_git
-        git+$_git-data
-        https://github.com/pxb1988/dex2jar/releases/download/$_d2j/dex-tools-$_d2j.zip
-        https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/android4me/AXMLPrinter2.jar
-        https://sourceforge.net/projects/yajsw/files/yajsw/yajsw-stable-$_yajsw/yajsw-stable-$_yajsw.zip
-        https://sourceforge.net/projects/catacombae/files/HFSExplorer/$_hfsx/hfsexplorer-${_hfsx/./_}-bin.zip
-        ghidra.desktop)
-noextract=(AXMLPrinter2.jar
-           yajsw-stable-$_yajsw.zip
-           hfsexplorer-${_hfsx/./_}-bin.zip)
+source=(
+  git+$_git
+  git+$_git-data
+  https://github.com/pxb1988/dex2jar/releases/download/$_d2j/dex-tools-$_d2j.zip
+  https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/android4me/AXMLPrinter2.jar
+  https://sourceforge.net/projects/yajsw/files/yajsw/yajsw-stable-$_yajsw/yajsw-stable-$_yajsw.zip
+  https://sourceforge.net/projects/catacombae/files/HFSExplorer/$_hfsx/hfsexplorer-${_hfsx/./_}-bin.zip
+  ghidra.desktop
+)
+noextract=(
+  AXMLPrinter2.jar
+  yajsw-stable-$_yajsw.zip
+  hfsexplorer-${_hfsx/./_}-bin.zip
+)
 sha512sums=('SKIP'
             'SKIP'
             'c4a6c72ea09b58a44fcb8918cfada600467f10f99a02b53d2436ac68295e73c8daf9ba0a8bc7160ba1e28e87f032ee034435ebe40af35b6e2fe9fa4607581358'
@@ -52,11 +56,10 @@ prepare() {
     ../AXMLPrinter2.jar \
     ../hfsx/lib/{csframework,hfsx*,iharder-base64}.jar \
     flatRepo
+  cp ../yajsw-stable-$_yajsw.zip Ghidra/Features/GhidraServer
 
   # YAJSW expects this symlink
   ln -s ghidra ../ghidra.bin
-  # and it's archive is used by GhidraServer
-  cp ../yajsw-stable-$_yajsw.zip Ghidra/Features/GhidraServer
 
   # Add FID datasets
   install -Dm 644 ../ghidra-data/FunctionID/*.fidb -t Ghidra/Features/FunctionID/src/main/fidb
@@ -73,6 +76,9 @@ build() {
 
   # Build native components
   gradle prebuildNatives_linux64
+
+  # Pre-compile language modules
+  gradle sleighCompile
 
   # Let's go
   gradle buildGhidra
@@ -92,8 +98,6 @@ package() {
 
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-headless
-
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/ghidra
 
   install -Dm 644 ../ghidra.desktop -t "$pkgdir"/usr/share/applications
   for i in 16 24 32 40 48 64 128 256; do
