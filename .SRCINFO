@@ -1,0 +1,19 @@
+pkgbase = ocaml-sedlex-git
+	pkgdesc = Unicode-friendly OCaml lexer generator
+	pkgver = r188.e4f029b
+	pkgrel = 1
+	url = https://github.com/alainfrisch/sedlex
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = ocaml
+	depends = ocaml-gen-git
+	depends = ocaml-migrate-parsetree
+	depends = ocaml-ppx_tools_versioned
+	options = !strip
+	options = !makeflags
+	source = ocaml-sedlex-git::git+https://github.com/alainfrisch/sedlex
+	md5sums = SKIP
+
+pkgname = ocaml-sedlex-git
+
