@@ -43,11 +43,11 @@ package() {
 	#https://pterodactyl.io/daemon/installing.html#installing-daemon-software
 	mkdir -p ${pkgdir}/var/www/ #${pkgname}
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	cp -r ${srcdir}/${pkgname1}-${pkgver} ${pkgdir}/var/www/${pkgname}
-	cd ${pkgdir}/var/www/${pkgname}
+	cp -r ${srcdir}/${pkgname1}-${pkgver} ${pkgdir}/var/www/${projectname}
+	cd ${pkgdir}/var/www/${projectname}
 
 	#tar --strip-components=1 -xzvf ${srcdir}/panel.tar.gz
-	chmod -R 755 ${pkgdir}/var/www/${pkgname}/storage/* ${pkgdir}/var/www/${pkgname}/bootstrap/cache/
-	cp ${pkgdir}/var/www/${pkgname}/.env.example ${pkgdir}/var/www/${pkgname}/.env
+	chmod -R 755 ${pkgdir}/var/www/${projectname}/storage/* ${pkgdir}/var/www/${projectname}/bootstrap/cache/
+	cp ${pkgdir}/var/www/${projectname}/.env.example ${pkgdir}/var/www/${projectname}/.env
 	install -Dm644 ${srcdir}/pteroq.service ${pkgdir}/usr/lib/systemd/system/
 }
