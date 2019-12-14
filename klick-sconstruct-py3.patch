@@ -1,0 +1,22 @@
+diff --git a/SConstruct b/SConstruct
+index 95f9c43..dc441cd 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -11,13 +11,13 @@ env = Environment(
+     ENV = os.environ,
+ )
+ 
+-if os.environ.has_key('CXX'):
++if 'CXX' in os.environ:
+     env.Replace(CXX = os.environ['CXX'])
+-if os.environ.has_key('CXXFLAGS'):
++if 'CXXFLAGS' in os.environ:
+     env.Append(CXXFLAGS = SCons.Util.CLVar(os.environ['CXXFLAGS']))
+-if os.environ.has_key('CPPFLAGS'):
++if 'CPPFLAGS' in os.environ:
+     env.Append(CXXFLAGS = SCons.Util.CLVar(os.environ['CPPFLAGS']))
+-if os.environ.has_key('LDFLAGS'):
++if 'LDFLAGS' in os.environ:
+     env.Append(LINKFLAGS = SCons.Util.CLVar(os.environ['LDFLAGS']))
+ 
+ # build options
