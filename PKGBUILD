@@ -1,12 +1,13 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=webthings-gateway
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='WebThings Gateway by Mozilla'
 url='https://iot.mozilla.org/gateway/'
 arch=('x86_64')
 license=('MPL2')
 depends=(
+  'lsb-release'
   'nodejs>=8.0.0'        # carbon (8.x) is what our other distros use
   'nodejs<13.0.0'        # we only test up to 12.x
   'pagekite'
@@ -58,12 +59,10 @@ install="${pkgname}.install"
 build() {
   # Build the gateway
   cd "${srcdir}/gateway-${pkgver}"
+  rm -rf ./node_modules package-lock.json
   npm --user root --cache "${srcdir}/npm-cache" install
   ./node_modules/.bin/webpack
-
-  # Now, install only the production dependencies
-  rm -rf node_modules
-  npm install --user root --cache "${srcdir}/npm-cache" --production
+  npm --cache "${srcdir}/npm-cache" prune --production
 
   # Remove references to $srcdir
   find node_modules -name package.json -exec sh -c '
