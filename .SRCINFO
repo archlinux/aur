@@ -1,6 +1,6 @@
 pkgbase = silos
 	pkgdesc = Web-app container, with multimedia apps (YouTube, Netflix, Twitch, VVVVID, and RaiPlay), productivity suites (Microsoft Office 365, Skype, Google Office, and Gmail), and others (WhatsApp web and Wikipedia)
-	pkgver = 0.1.28
+	pkgver = 0.1.29
 	pkgrel = 1
 	url = https://github.com/intersimone999/pyqtws
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = silos
 	depends = python-pyqtwebengine
 	depends = python-qtpy
 	depends = python-gobject
-	depends = python-pystray
+	optdepends = python-pystray: tray bar icon for some apps (e.g., WhatsApp)
 	source = git+https://github.com/intersimone999/pyqtws.git
 	sha256sums = SKIP
 
@@ -28,5 +28,4 @@ pkgname = silos
 	depends = python-pyqtwebengine
 	depends = python-qtpy
 	depends = python-gobject
-	depends = python-pystray
 
