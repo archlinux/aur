@@ -1,13 +1,13 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
 pkgver=2.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('electron')
-makedepends=('yarn')
+makedepends=('yarn' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v${pkgver}.tar.gz"
 	"runmtgap.sh" 
 	"${_pkgname}.desktop"
@@ -32,6 +32,7 @@ prepare() {
   yarn install
   yarn add @electron-forge/cli
   yarn add @electron-forge/plugin-webpack
+  npm rebuild
   
 
 }
