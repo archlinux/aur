@@ -7,7 +7,7 @@ pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios
 arch=('i686' 'x86_64')
 url="https://www.liquidsoap.info"
 license=('GPL')
-depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-ugly'
+depends=('fdk-aac-free' 'fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
 	'ocaml-alsa'
 	'ocaml-ao'
 	'ocaml-bjack'
@@ -17,7 +17,7 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins
 	'ocaml-dtools'
 	'ocaml-duppy'
 	'ocaml-faad'
-	'ocaml-fdkaac'
+	'ocaml-fdkaac-git'
 	'ocaml-ffmpeg'
 	'ocaml-flac'
 	'ocaml-frei0r'
@@ -48,7 +48,6 @@ depends=('fluidsynth' 'giflib' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins
 	'ocaml-vorbis'
 	'ocaml-xmlplaylist'
 )
-
 makedepends=('camlp4' 'libxml-perl' 'ocaml-findlib' 'ocaml-menhir' 'ocaml-pcre' 'ocaml-sedlex' 'perl-xml-dom')
 optdepends=('curl')
 source=("https://github.com/savonet/liquidsoap/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2"
