@@ -1,6 +1,6 @@
 pkgbase = scala-music
 	pkgdesc = Music software for experimentation with tunings and different kind of scales
-	pkgver = 2.42z
+	pkgver = 2.44m
 	pkgrel = 1
 	url = http://www.huygens-fokker.org/scala/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = scala-music
 	source = scala-music
 	source = Scala.desktop
 	source = scala-music.png
-	md5sums = 7f21a597bcb39243fa7524423dcd3abd
+	md5sums = ca6b87159c5b8a5cb37096cffda6f5f0
 	md5sums = 4a5be88fa48c52382b1da8e101d16d7d
 	md5sums = f9f67a3ae3037523db5e9bcd4b22fb99
 	md5sums = aed4e375f4acdd9d947a681c1deef49a
