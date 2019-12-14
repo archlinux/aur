@@ -1,0 +1,18 @@
+pkgbase = ocaml-lame-git
+	pkgdesc = OCaml bindings to the LAME mp3 encoder
+	pkgver = r76.d9fc714
+	pkgrel = 1
+	url = https://github.com/savonet/ocaml-lame
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml-findlib
+	depends = ocaml
+	depends = lame
+	options = !strip
+	options = !makeflags
+	source = ocaml-lame-git::git+https://github.com/savonet/ocaml-lame
+	md5sums = SKIP
+
+pkgname = ocaml-lame-git
+
