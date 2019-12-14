@@ -1,5 +1,5 @@
 pkgname=xmr-stak
-pkgver=2.10.7
+pkgver=2.10.8
 pkgrel=1
 pkgdesc="Unified All-in-one Monero miner (no cuda)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libmicrohttpd' 'openssl' 'hwloc' 'ocl-icd')
 source=("xmr-stak-$pkgver.tar.gz::https://github.com/fireice-uk/xmr-stak/archive/$pkgver.tar.gz"
         'no-donate.patch'
 	'xmr-stak.service')
-sha256sums=('48ac61304bce218e14a87fe9e21e230561b5d78f90603830fbaabe2aaafcb242'
+sha256sums=('bbbf85dc35a8b0b8ae5926640e36ef0b68a8a81804d45f11718c19bf53a41109'
             'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a'
             'e0cbee0dab1c730e5deff31eddef84a635b4c9f33ba2368a446e62acc084649a')
 
