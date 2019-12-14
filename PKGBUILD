@@ -3,7 +3,7 @@
 pkgname=php-smbclient
 _extname=smbclient
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP bindings for libsmbclient."
 arch=('i686' 'x86_64')
 url="https://github.com/eduardok/libsmbclient-php"
