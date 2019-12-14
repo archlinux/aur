@@ -1,7 +1,7 @@
 pkgbase = mapserver
 	pkgdesc = Platform for publishing spatial data and interactive mapping applications to the web
-	pkgver = 7.4.1
-	pkgrel = 1
+	pkgver = 7.4.2
+	pkgrel = 2
 	url = http://www.mapserver.org
 	arch = i686
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = mapserver
 	depends = swig3
 	depends = libsvg-cairo
 	depends = fribidi
-	source = http://download.osgeo.org/mapserver/mapserver-7.4.1.tar.gz
-	md5sums = 3a113a82fcf7dab97476c7585b0e9f39
+	source = http://download.osgeo.org/mapserver/mapserver-7.4.2.tar.gz
+	md5sums = 500c44fa1954af0c6a201ff4cae5235b
 
 pkgname = mapserver
 

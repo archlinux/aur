@@ -3,8 +3,8 @@
 # Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver
-pkgver=7.4.1
-pkgrel=1
+pkgver=7.4.2
+pkgrel=2
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
@@ -15,8 +15,7 @@ depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'li
 makedepends=('cfitsio')
 options=()
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('3a113a82fcf7dab97476c7585b0e9f39')
-
+md5sums=('500c44fa1954af0c6a201ff4cae5235b')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -56,7 +55,7 @@ build() {
 	-DWITH_MSSQL2008=OFF \
 	-DWITH_MYSQL=OFF \
 	-DWITH_OGR=ON \
-	-DWITH_ORACLESPATIAL=OFF \
+	-DWITH_ORACLESPATIAL=ON \
 	-DWITH_ORACLE_PLUGIN=OFF \
 	-DWITH_PERL=OFF \
 	-DWITH_PHP=OFF \
