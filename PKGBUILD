@@ -6,7 +6,7 @@
 # Contributor: Christopher Arndt <chris at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=6.0.pre0.r2532.gdceca00a69
+pkgver=6.0.pre0.r3048.g514c05a44e
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation"
 arch=('i686' 'x86_64')
@@ -14,10 +14,9 @@ url="http://ardour.org/"
 license=('GPL')
 groups=('pro-audio')
 depends=('aubio' 'gtkmm' 'liblo' 'liblrdf' 'lilv' 'suil' 'rubberband' 'taglib' 'libarchive' 'python')
-#makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
-makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+makedepends=('git' 'python2' 'boost' 'cppunit' 'doxygen' 'graphviz' 'itstool' 'lv2')
+provides=('ardour')
+conflicts=('ardour')
 source=("${pkgname%-*}::git://github.com/Ardour/ardour.git"
         'ardour.desktop')
 md5sums=('SKIP'
@@ -39,8 +38,7 @@ build() {
                         --cxx11 \
                         --freedesktop \
                         --ptformat \
-                        --no-phone-home \
-                        --beatbox
+                        --no-phone-home
 
   python2 waf build $MAKEFLAGS
 }
