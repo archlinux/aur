@@ -13,8 +13,8 @@ url="https://github.com/jedisct1/libsodium"
 license=('custom:ISC')
 depends=()
 optdepends=('libsodium: headers and pkg-config files')
-source=(https://download.libsodium.org/libsodium/releases/$_pkgname-$pkgver-stable.tar.gz)
-sha512sums=('eca6f6c981c896579db5cf1a270417f14d8c81f692fcec7ff6fd0d826b6d4264219adf0681a3f0fd6d2a43699d999abbf25b3e01b692ade1267a44b7fdd62c85')
+source=(https://download.libsodium.org/libsodium/releases/$_pkgname-$pkgver.tar.gz)
+sha512sums=('17e8638e46d8f6f7d024fe5559eccf2b8baf23e143fadd472a7d29d228b186d86686a5e6920385fe2020729119a5f12f989c3a782afbd05a8db4819bb18666ef')
 options=('staticlibs')
 
 build() {
