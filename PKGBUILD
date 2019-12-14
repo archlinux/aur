@@ -1,8 +1,8 @@
-#Maintainer AwesomeHaircut jesusbalbastro@gmail.com
+# Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 
 pkgname=feedthebeast
-pkgver=1.4.17
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
 arch=('any')
 url='http://feed-the-beast.com/'
@@ -11,11 +11,11 @@ license=('Apache')
 depends=('java-runtime' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu' 'libzip')
 makedepends=('libicns')
 source=("$pkgname"
-	"${pkgname}-$pkgver.jar"::"http://ftb.cursecdn.com/FTB2/launcher/FTB_Launcher.jar"
+	"${pkgname}-$pkgver.jar"::"https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar"
         "${pkgname}.desktop")
 noextract=("${pkgname}-$pkgver.jar")
 sha256sums=('35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0'
-            'f2ec575e3ffd92bac87caf8b306fc22d4ba78b19bf9577a2d915e9dedab2c030'
+            '47d6ce99fc052d12b587beaa11b94441336b8190525b30a9e45ee4622d2d6b50'
             '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d')
 
 package() {
