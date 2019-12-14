@@ -6,7 +6,7 @@
 pkgname=libsodium-static
 _pkgname=libsodium
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library (static library)"
 arch=('i686' 'x86_64')
 url="https://github.com/jedisct1/libsodium"
@@ -18,19 +18,19 @@ sha512sums=('17e8638e46d8f6f7d024fe5559eccf2b8baf23e143fadd472a7d29d228b186d8668
 options=('staticlibs')
 
 build() {
-  cd "$_pkgname-stable"
+  cd "$_pkgname-$pkgver"
 
   ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "$_pkgname-stable"
+  cd "$_pkgname-$pkgver"
   make check
 }
 
 package() {
-  cd "$_pkgname-stable"
+  cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   rm -rf "$pkgdir/usr/include/"
