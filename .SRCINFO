@@ -1,7 +1,7 @@
 pkgbase = pterodactyl-daemon
 	pkgdesc = Open-source server control and management daemon for pterodactyl-panel.
 	pkgver = 0.6.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pterodactyl/daemon
 	arch = any
 	depends = docker

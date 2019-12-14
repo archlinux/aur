@@ -6,7 +6,7 @@ githuborg=pterodactyl
 pkgdesc="Open-source server control and management daemon for pterodactyl-panel."
 pkgver=0.6.12
 pkgpath="github.com/${githuborg}/${pkgname1}"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkgpath}"
 license=()
@@ -58,7 +58,7 @@ package() {
 	# https://bugs.archlinux.org/task/63396
 	cd ${pkgdir}/srv/${pkgname1}
 	tar --strip-components=1 -xzvf ${srcdir}/${pkgname1}.tar.gz
-		  install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/srv/${pkgname1}.sh
+		  install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/srv/${pkgname1}/${pkgname}.sh
 		ln -rTsf ${pkgdir}/srv/${pkgname1}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
 	install -Dm644 ${srcdir}/wings.service ${pkgdir}/usr/lib/systemd/system/
 }
