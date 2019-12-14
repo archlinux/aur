@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer:
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Contributor: Konstantin Mochalov <incredible dot angst at gmail dot com>
 # Contributor: FredBezies <fredbezies at gmail dot com>
 # Contributor: Sean Bartell <archlinux at yotann dot org>
@@ -12,7 +13,7 @@ pkgdesc="One of the first graphical web browsers"
 url="https://github.com/yotann/ncsa-mosaic"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('openmotif' 'libjpeg' 'libpng' 'libxmu' 'libxpm' 'xorg-fonts-misc' 'xorg-fonts-100dpi' 
+depends=('openmotif' 'libjpeg' 'libpng' 'libxmu' 'libxpm' 'xorg-fonts-misc' 'xorg-fonts-100dpi'
          'xorg-fonts-75dpi')
 makedepends=('git')
 provides=("${pkgname%-git}" 'mosaic')
@@ -33,9 +34,9 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 src/Mosaic "$pkgdir/usr/bin/Mosaic"
-	install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/${pkgname%-git}/COPYRIGHT"
-	install -Dm644 desktop/Mosaic.png "$pkgdir/usr/share/icons/Mosaic.png"
-	install -Dm644 desktop/Mosaic.desktop "$pkgdir/usr/share/applications/Mosaic.desktop"
-	install -Dm644 docs/resources.html "$pkgdir/usr/share/doc/${pkgname%-git}/resources.html"
+	install -Dm755 src/Mosaic -t "$pkgdir/usr/bin"
+	install -Dm644 COPYRIGHT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+	install -Dm644 desktop/Mosaic.png -t "$pkgdir/usr/share/icons"
+	install -Dm644 desktop/Mosaic.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 docs/resources.html -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
