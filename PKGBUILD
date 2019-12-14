@@ -1,9 +1,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zencjk
-pkgver=5.4.2.zen1
+pkgver=5.4.3.zen1
 pkgrel=1
-pkgdesc='Linux ZEN'
+pkgdesc='Linux ZEN with CJK Patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0f54f8053a3b150ba0484b4a2663bb58e51bfb628523042aaee762f49496db67'
+            'a46708844b8135fdcf69bb8c1d6cc6dcfc88530ea454a1edf611059c159b4233'
             '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2')
 
 export KBUILD_BUILD_HOST=archlinux
