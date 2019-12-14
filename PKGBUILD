@@ -1,15 +1,15 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-ppx_deriving-git
-pkgver=20190909
-pkgrel=3
+pkgver=20191107
+pkgrel=1
 pkgdesc="Type-driven code generation for OCaml >=4.02"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_deriving'
 license=('MIT')
 provides=('ocaml-ppx_deriving')
 conflicts=('ocaml-ppx_deriving')
-depends=('ocaml' 'ocaml-migrate-parsetree' 'ocaml-ppx_derivers' 'ocaml-ppx_tools-git' 'ocaml-result')
+depends=('ocaml' 'ocaml-migrate-parsetree' 'ocaml-ppxfind' 'ocaml-ppx_derivers' 'ocaml-ppx_tools-git' 'ocaml-result')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'cppo')
 source=("${pkgname}::git://github.com/ocaml-ppx/ppx_deriving.git")
 md5sums=('SKIP')
