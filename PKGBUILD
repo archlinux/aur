@@ -1,4 +1,4 @@
-# Maintainer: Jenne <jc [dot] archlinux [at] jens-carl [dot] de>
+# Maintainer: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
 
 pkgname=lodepng
 pkgver=20191109
