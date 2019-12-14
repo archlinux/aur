@@ -1,15 +1,16 @@
-# Maintainer: Alex Forencich <alex@alexforencich.com>
+# Maintainer: Jonas Malaco <jonas@protocubo.io>
+# Contributor: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-pyusb-git python2-pyusb-git)
-pkgver=1.0.2.r4.g3ec29ca
-pkgrel=2
-pkgdesc="Easy USB access from Python"
+pkgver=1.0.2.r28.ga0fd5f6
+pkgrel=1
+pkgdesc="USB access for Python"
 arch=('any')
-url="http://sourceforge.net/apps/trac/pyusb/"
+url="https://github.com/pyusb/pyusb"
 license=('BSD')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
 provides=('python-pyusb')
 
-_gitroot='https://github.com/walac/pyusb'
+_gitroot='https://github.com/pyusb/pyusb'
 _gitname='pyusb'
 
 source=("$_gitname::git+$_gitroot")
@@ -30,7 +31,7 @@ package_python-pyusb-git() {
   conflicts=('python-pyusb')
 
   cd "$srcdir/$_gitname"
-  python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-pyusb-git() {
@@ -39,6 +40,5 @@ package_python2-pyusb-git() {
   conflicts=('python2-pyusb')
 
   cd "$srcdir/$_gitname"
-  python2 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
-
