@@ -1,16 +1,18 @@
 pkgbase = python-pydantic
 	pkgdesc = Data validation using Python type hinting
-	pkgver = 1.0
-	pkgrel = 1
+	pkgver = 1.2
+	pkgrel = 2
 	url = https://pydantic-docs.helpmanual.io/
 	arch = x86_64
 	license = MIT
+	checkdepends = python-pytest-cov
+	checkdepends = mypy
 	makedepends = cython
 	depends = python
 	optdepends = python-ujson: faster JSON parsing in pure Python
 	optdepends = python-email-validation: enable email validation
-	source = https://github.com/samuelcolvin/pydantic/archive/v1.0.tar.gz
-	sha256sums = 3da938c2a626ee7b2e70c4f35bd922e28cb08e04be83385d19873ff125357810
+	source = https://github.com/samuelcolvin/pydantic/archive/v1.2.tar.gz
+	sha256sums = 47600b2eb0a3f2dc834f85ae02919c8fd7f973c5ccc54f0e9f59958a42b67a9d
 
 pkgname = python-pydantic
 

@@ -3,7 +3,7 @@
 _name="pydantic"
 pkgname="python-${_name}"
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Data validation using Python type hinting"
 arch=("x86_64")
 url="https://pydantic-docs.helpmanual.io/"
