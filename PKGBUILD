@@ -6,7 +6,7 @@ githuborg=pterodactyl
 pkgdesc="Open-source game server management panel"
 pkgver=0.7.15
 pkgpath="github.com/${githuborg}/${pkgname1}"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkgpath}"
 license=()
@@ -17,7 +17,10 @@ source=("${url}/releases/download/v${pkgver}/${pkgname1}.tar.gz")
 sha256sums=('0beb6e5c5056255fc34eb199127a24d412bd66d3a6622b311b763adb14629c4b')
 
 build() {
-
+cd ${srcdir}/${pkgname1}-${pkgver}
+cp .env.example .env
+composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
+cd ${srcdir}
 echo -e "# Pterodactyl Queue Worker File
 # ----------------------------------
 [Unit]
@@ -38,10 +41,13 @@ WantedBy=multi-user.target" > ${srcdir}/pteroq.service
 
 package() {
 	#https://pterodactyl.io/daemon/installing.html#installing-daemon-software
-	mkdir -p ${pkgdir}/var/www/${pkgname}
+	mkdir -p ${pkgdir}/var/www/ #${pkgname}
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
+	cp -r ${srcdir}/${pkgname1}-${pkgver} ${pkgdir}/var/www/${pkgname}
 	cd ${pkgdir}/var/www/${pkgname}
-	tar --strip-components=1 -xzvf ${srcdir}/panel.tar.gz
-	chmod -R 755 storage/* bootstrap/cache/
+
+	#tar --strip-components=1 -xzvf ${srcdir}/panel.tar.gz
+	chmod -R 755 ${pkgdir}/var/www/${pkgname}/storage/* ${pkgdir}/var/www/${pkgname}/bootstrap/cache/
+	cp ${pkgdir}/var/www/${pkgname}/.env.example ${pkgdir}/var/www/${pkgname}/.env
 	install -Dm644 ${srcdir}/pteroq.service ${pkgdir}/usr/lib/systemd/system/
 }
