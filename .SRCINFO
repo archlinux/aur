@@ -1,0 +1,15 @@
+pkgbase = ttf-ferrite-core-git
+	pkgdesc = Ferrite Core display typeface by Froyo Tam
+	pkgver = r14.132820d
+	pkgrel = 1
+	url = https://github.com/froyotam/ferrite-core/
+	arch = any
+	license = Custom
+	makedepends = git
+	provides = ttf-ferrite-core
+	conflicts = ttf-ferrite-core
+	source = ttf-ferrite-core-git::git+https://github.com/froyotam/ferrite-core.git
+	sha256sums = SKIP
+
+pkgname = ttf-ferrite-core-git
+
