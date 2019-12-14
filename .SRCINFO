@@ -1,7 +1,7 @@
 pkgbase = kindd
-	pkgdesc = A Kindful dd gui written in qt quick
+	pkgdesc = A Kindful dd GUI written in Qt Quick
 	pkgver = 2.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/LinArcX/Kindd
 	arch = any
 	license = GPL3
