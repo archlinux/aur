@@ -1,7 +1,7 @@
 _reponame=ldoce5viewer-pyqt5
 pkgname=$_reponame-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LDOCE5 viewer ported to PyQt5 for retina (HiDPI) support. "
 license=(GPL3)
 conflicts=(ldoce5viewer-git ldoce5viewer)
@@ -14,6 +14,9 @@ md5sums=('SKIP')
 build() {
 	cd "${srcdir}/${_reponame}"
 	sed -i "s/import sip/import PyQt5.sip as sip/g" ldoce5viewer/qtgui/__init__.py
+  sed -i "s/from cgi import escape/from html import escape/g" ldoce5viewer/qtgui/indexer.py
+  sed -i "s/from cgi import escape/from html import escape/g" ldoce5viewer/ldoce5/extract.py
+  sed -i "s/from cgi import escape/from html import escape/g" ldoce5viewer/ldoce5/transform.py
 	make
 }
 
