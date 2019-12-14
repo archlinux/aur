@@ -1,15 +1,15 @@
 pkgbase = opensmtpd-filter-senderscore
 	pkgdesc = OpenSMTPD filter integration for Sender Score
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/poolpOrg/filter-senderscore
 	arch = i686
 	arch = x86_64
-	license = ISC
+	license = custom:ISC
 	makedepends = go
 	depends = glibc
-	source = opensmtpd-filter-senderscore-0.1.0.tar.gz::https://github.com/poolpOrg/filter-senderscore/archive/0.1.0.tar.gz
-	sha512sums = 1cb883afb10da5991c174ed00c3af1c7d5f3f33aacfa5f4eb19bd23b1c88737afcdbe41a79bd0712b988889ff1e6586a6f73777c052fc7c3ae3cae85e2cbbbca
+	source = opensmtpd-filter-senderscore-0.1.1.tar.gz::https://github.com/poolpOrg/filter-senderscore/archive/0.1.1.tar.gz
+	sha512sums = dc4b8a97c9a10080f7d19e7b358193e1c6bde857db79be7fadb7851aa433b700966509378dd40e1591111817a09371a3a39955b8d553773acf98385e4fc39986
 
 pkgname = opensmtpd-filter-senderscore
 
