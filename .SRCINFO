@@ -1,6 +1,6 @@
 pkgbase = veroroute
 	pkgdesc = Qt based Veroboard/Perfboard/PCB layout and routing application
-	pkgver = 1.71
+	pkgver = 1.72
 	pkgrel = 1
 	url = https://sourceforge.net/projects/veroroute
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = veroroute
 	license = GPLv3+
 	depends = qt5-base
 	depends = geda-gaf
-	source = https://downloads.sourceforge.net/project/veroroute/VeroRoute_V171_Src.zip
+	source = https://downloads.sourceforge.net/project/veroroute/VeroRoute_V172_Src.zip
 	source = veroroute.desktop.in
 	source = veroroute-clib.scm
-	sha256sums = 65b567ead5561ca1c8ee013bfd4ec7da26940518abe67923a79b047e8eed9d33
+	sha256sums = 97a87e1a72e414579fd9fb8dc8d0e7d95ba1bfff28bae918a3abed834b10cb10
 	sha256sums = b3dd5944f8330be2a4898d32e2ac3cbf97ea39e3a118b460a4dc313155a34f93
 	sha256sums = a722805c46998bff7709357babc2e609fbc4b0021b33c59aefa4f7fa0567aeeb
 
