@@ -3,9 +3,10 @@
 # Contributor: Kaushal M <kshlmster cat gmail dog com>
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 
-pkgbase=kata-containers
-pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
+pkgbase=kata-containers-bin
+pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image-bin kata-linux-container-bin)
 pkgver="1.10.0~rc0"
+_pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
@@ -42,13 +43,15 @@ sha256sums=(
   'd8c8c4dab6d304c67aa93028e6f5fe9152820aea4ae8c16810e28d77972eabfb'
 )
 
-package_kata-runtime() {
-  depends=(qemu kata-proxy=${pkgver} kata-shim=${pkgver} kata-ksm-throttler=${pkgver} kata-containers-image=${pkgver} kata-linux-container=${pkgver})
+package_kata-runtime-bin() {
+  depends=(qemu-headless kata-proxy=${pkgver} kata-shim=${pkgver} kata-ksm-throttler=${pkgver} kata-containers-image=${pkgver} kata-linux-container=${pkgver})
   optdepends=(
-    'firecracker'
-    #'cloud-hypervisor'
+    'firecracker<0.20.0'
+    'cloud-hypervisor<0.5.0'
     #'acrn'
   )
+  conflicts=('kata-runtime')
+  provides=('kata-runtime')
   install=kata-runtime.install
 
   install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}/usr/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
@@ -56,19 +59,25 @@ package_kata-runtime() {
   install -D -m 0644 {${srcdir},${pkgdir}}/usr/share/bash-completion/completions/kata-runtime
   install -D -m 0644 -t ${pkgdir}/usr/share/defaults/kata-containers ${srcdir}/usr/share/defaults/kata-containers/*.toml
 
-  sed -i -e 's/libexec/lib/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
+  sed -i 's/libexec/lib/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
   sed -i -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/configuration.toml ${pkgdir}/usr/bin/kata-collect-data.sh
 }
 
-package_kata-proxy() {
+package_kata-proxy-bin() {
+  conflicts=('kata-proxy')
+  provides=('kata-proxy')
   install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-containers/kata-proxy
 }
 
-package_kata-shim() {
+package_kata-shim-bin() {
+  conflicts=('kata-shim')
+  provides=('kata-shim')
   install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-containers/kata-shim
 }
 
-package_kata-ksm-throttler() {
+package_kata-ksm-throttler-bin() {
+  conflicts=('kata-ksm-throttler')
+  provides=('kata-ksm-throttler')
   install -D -m 0644 -t ${pkgdir}/usr/lib/systemd/system ${srcdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
   sed -i 's/libexec/lib/' ${pkgdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
   install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/kata-ksm-throttler
@@ -76,14 +85,18 @@ package_kata-ksm-throttler() {
   install -d -m 0755 ${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}
 }
 
-package_kata-containers-image() {
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver/\~/-}_agent_${__img_sha}.img
-  ln -sf kata-containers-image_clearlinux_${pkgver/\~/-}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver/\~/-}_agent_${__img_sha}.initrd
-  ln -sf kata-containers-initrd_alpine_${pkgver/\~/-}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
+package_kata-containers-image-bin() {
+  conflicts=('kata-containers-image')
+  provides=('kata-containers-image')
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_${__img_sha}.img
+  ln -sf kata-containers-image_clearlinux_${_pkgver}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_${__img_sha}.initrd
+  ln -sf kata-containers-initrd_alpine_${_pkgver}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
 }
 
-package_kata-linux-container() {
+package_kata-linux-container-bin() {
+  conflicts=('kata-linux-container')
+  provides=('kata-linux-container')
   for i in vmlinu{x,z}; do
     install -D -m 0644 {${srcdir},${pkgdir}}/usr/share/kata-containers/${i}-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.container
     ln -sf ${i}-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.container ${pkgdir}/usr/share/kata-containers/${i}.container
