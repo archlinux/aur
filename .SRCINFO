@@ -1,7 +1,7 @@
 pkgbase = mtgaprotracker
 	pkgdesc = Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client
 	pkgver = 2.0.16
-	pkgrel = 2
+	pkgrel = 7
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = mtgaprotracker
 	source = ipc_main.ts.patch
 	source = main_window.ts.patch
 	sha256sums = e93e35cb6c5dc514339470a2a65d410e55ba9d282fc8b1dd87cc93645b478c6a
-	sha256sums = 66e0832a5d7cb8433c8ac49307854ce80954d35ada6bf2b8251a198f8e5639cb
+	sha256sums = 93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436
 	sha256sums = 145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048
 	sha256sums = ff07b2ddf0391ac0e75b8e115e5a4953e32b39991d6022c2d2d310a9c3f61576
 	sha256sums = f8b5d6b87ee2e60518da29c1540d0ff444a64a0f1870bf4d65f2aab577336052

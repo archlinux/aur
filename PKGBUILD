@@ -1,7 +1,7 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
 pkgver=2.0.16
-pkgrel=2
+pkgrel=7
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v
 	"ipc_main.ts.patch"
 	"main_window.ts.patch")
 sha256sums=('e93e35cb6c5dc514339470a2a65d410e55ba9d282fc8b1dd87cc93645b478c6a' 
-	    '66e0832a5d7cb8433c8ac49307854ce80954d35ada6bf2b8251a198f8e5639cb'
+	    '93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436'
 	    '145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048'
 	    'ff07b2ddf0391ac0e75b8e115e5a4953e32b39991d6022c2d2d310a9c3f61576'
 	    'f8b5d6b87ee2e60518da29c1540d0ff444a64a0f1870bf4d65f2aab577336052'
@@ -32,7 +32,6 @@ prepare() {
   yarn install
   yarn add @electron-forge/cli
   yarn add @electron-forge/plugin-webpack
-  npm rebuild
   
 
 }
@@ -61,6 +60,11 @@ package(){
 	esac
 	mkdir -p "${pkgdir}/opt/"
 	cp -a "${pkgname}-linux-${_dir_arch}" "${pkgdir}/opt/"
+
+	#Dirty Workaround for logging. Should likely go somewhere else.
+	mkdir -p "${pkgdir}/opt/${pkgname}-linux-${_dir_arch}/undefined/MTGAproTracker"
+	chgrp users -R "${pkgdir}/opt/${pkgname}-linux-${_dir_arch}/undefined"
+	chmod 775 -R "${pkgdir}/opt/${pkgname}-linux-${_dir_arch}/undefined"
 
 	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/src/statics/icon.ico" "${pkgdir}/usr/share/icons/${_pkgname}.ico"
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
