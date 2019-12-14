@@ -1,10 +1,10 @@
-# Maintainer: Mikael Blomstrand <gmail: chawlindel>
+# Maintainer: Mikael Blomstrand <gmail: kmbloms>
 # Contributor: MaryJaneInChain <gmail.com@maryjaneinchain>
 # Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=remarkable
 pkgver=1.87
-pkgrel=5
+pkgrel=6
 pkgdesc="A free fully featured markdown editor for Linux."
 arch=('any')
 url="http://remarkableapp.github.io"
