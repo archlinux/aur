@@ -1,5 +1,5 @@
 pkgname=brlcad
-pkgver=7.30.2
+pkgver=7.30.4
 pkgrel=0
 pkgdesc='An extensive 3D solid modeling system.'
 url='https://brlcad.org'
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 depends=('libgl' 'libxft' 'libxi')
 makedepends=('cmake' 'subversion')
 install="${pkgname}.install"
-source=('build.patch' "${pkgname}-${pkgver}::svn+svn://svn.code.sf.net/p/${pkgname}/code/${pkgname}/branches/RELEASE#revision=r72838")
+source=('build.patch' "${pkgname}-${pkgver}::svn+svn://svn.code.sf.net/p/${pkgname}/code/${pkgname}/tags/rel-${pkgver//./-}#revision=r74438")
 sha256sums=('SKIP' 'SKIP')
 
 
