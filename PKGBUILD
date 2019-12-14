@@ -5,7 +5,7 @@
 
 pkgbase=kata-containers
 pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.9.3"
+pkgver="1.10.0~rc0"
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers"
 arch=(x86_64)
@@ -13,14 +13,14 @@ url="https://katacontainers.io"
 license=('Apache')
 
 __dlbase="https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}"
-__linux_container_ver="4.19.75.54"
-__default_suffix="-8.1"
+__linux_container_ver="4.19.86.59"
+__default_suffix="-3.1"
 #__runtime_suffix="-7.1"
 #__proxy_suffix="-7.1"
 #__shim_suffix="-7.1"
 #__ksm_throttler_suffix="-7.1"
 #__img_suffix="-7.1"
-__img_sha="dfec5d93dc"
+__img_sha="8a4d901772"
 #__linux_container_suffix="-7.1"
 
 source=(
@@ -32,18 +32,23 @@ source=(
   "${__dlbase}/kata-linux-container-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.${CARCH}.rpm"
 )
 
+# sha256sum kata-{runtime,{proxy,shim}-bin,ksm-throttler,containers-image,linux-container}-*.rpm | awk '{print $1}' | xargs -n1 -I{} -- echo "'{}'"
 sha256sums=(
-  '35693291fad2a02b2da3c20c6b65d54a3978e72f00ac0d529c80353a8a6c05bc'
-  '5c73509718b28fc39a0b36d3327158b6e96ba5ec93e84635c88404bc3945c2db'
-  '87b1508af6ab12a4c45c663ecfd46e78b3e5395c6977565e9a6ffc74e2230d65'
-  'dc84d6ea9c5548b9553b485186926648f0200f407b4489258881ecef9330803d'
-  '5ba3fbd5b94927dc59ab1621e51b12e401951b11773fa965fbd5fd84d4da0b7a'
-  '487112757a6b1683af853e878bb10b56fa8d424320bc6b506aaac49aac0c06e8'
+  '5ba7a425d583a26860085bf3812b258b13f87495ccc769b12a9bbe289cbd1364'
+  '9e986dc42483509e69f7fd6e22dd6e00fc1aa6c60890aeb4fb9e0552ed9bcce7'
+  '512d515b6744aa7fbe91be7c388b4066c0443a3521649d2c44f43af9abc97ffc'
+  'a947effca82fd01f944418c94fb712684fafc65d4edf1aa3683617d0c80a15c1'
+  'e4938b9782e56adb91790f7082d56bd8a3dee6008642bbae987bceebaf3d5361'
+  'd8c8c4dab6d304c67aa93028e6f5fe9152820aea4ae8c16810e28d77972eabfb'
 )
 
 package_kata-runtime() {
   depends=(qemu kata-proxy=${pkgver} kata-shim=${pkgver} kata-ksm-throttler=${pkgver} kata-containers-image=${pkgver} kata-linux-container=${pkgver})
-  optdepends=('firecracker<0.19.0') # `acrn` some day?
+  optdepends=(
+    'firecracker'
+    #'cloud-hypervisor'
+    #'acrn'
+  )
   install=kata-runtime.install
 
   install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}/usr/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
@@ -72,10 +77,10 @@ package_kata-ksm-throttler() {
 }
 
 package_kata-containers-image() {
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver}_agent_${__img_sha}.img
-  ln -sf kata-containers-image_clearlinux_${pkgver}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver}_agent_${__img_sha}.initrd
-  ln -sf kata-containers-initrd_alpine_${pkgver}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver/\~/-}_agent_${__img_sha}.img
+  ln -sf kata-containers-image_clearlinux_${pkgver/\~/-}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
+  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver/\~/-}_agent_${__img_sha}.initrd
+  ln -sf kata-containers-initrd_alpine_${pkgver/\~/-}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
 }
 
 package_kata-linux-container() {
