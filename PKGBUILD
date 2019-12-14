@@ -53,7 +53,7 @@ prepare() {
     # anyways because meson sets its own optimization level.
     CFLAGS="${CFLAGS/ -O*([0-3])/}"
     # Doesn't compile with these flags in MingW so remove them.
-    # They are filtered in Wine PKGBUILDs too so remove them 
+    # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
     CFLAGS="${CFLAGS/ -fno-plt/}"
     LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
@@ -68,7 +68,7 @@ prepare() {
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
     # Patch enables async by default. YOU HAVE BEEN WARNED.
-    # patch -p1 -i ../dxvk-async.patch
+    #patch -p1 -i ../dxvk-async.patch
     # Uncomment to enable Mango HUD for dxvk
     #patch -p1 -i ../dxvk-mangohud.patch
 }
