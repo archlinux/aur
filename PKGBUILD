@@ -27,12 +27,14 @@ build() {
   rm -rf build && mkdir build
   cd build
   
+	#-DPYTHON_EXECUTABLE=/usr/bin/python2 \
+	#-DPYTHON_LIBRARIES=/usr/lib/python2.7 \
+	#-DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \  
+  
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-	-DPYTHON_EXECUTABLE=/usr/bin/python2 \
-	-DPYTHON_LIBRARIES=/usr/lib/python2.7 \
-	-DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \
+    -DPYTHON_EXECUTABLE=/usr/bin/python \
 	-DFRIBIDI_INCLUDE_DIR="/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/fribidi" \
 	-DCMAKE_PREFIX_PATH=/opt/v8 \
     -DWITH_CAIRO=ON \
