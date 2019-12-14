@@ -1,8 +1,8 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=lyricsx
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="free, open source, cross-platform software for editing lyrics"
 url="https://github.com/timxx/lyricsx"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-multimedia' 'desktop-file-utils')
 makedepends=('cmake' 'qt5-tools')
 install=${pkgname}.install
 source=("https://github.com/timxx/lyricsx/archive/v${pkgver}.tar.gz")
-sha256sums=('2fdebc7a7b2faeb56e3aeeb77f14d64573a6eb18153b53562004379bda58ec8d')
+sha256sums=('a9ea959e815eb35a1a2b6517b2d23fa785a2a024c0f8076aa422ed7af4ff3b37')
 
 prepare() {
     mkdir -p "${srcdir}/build"
