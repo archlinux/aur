@@ -1,91 +1,106 @@
-# $Id$
 # Maintainer: zer0def <zer0def@github>
 # Contributor: Kaushal M <kshlmster cat gmail dog com>
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
-
 pkgbase=kata-containers
-pkgname=(kata-runtime kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
-pkgver="1.10.0~rc0"
-pkgrel=1
+pkgname=(kata-ksm-throttler kata-proxy kata-runtime kata-shim kata-agent kata-containers-image kata-linux-container)
+pkgver=1.10.0~rc0
+_pkgver=${pkgver/\~/-}
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers"
-arch=(x86_64)
-url="https://katacontainers.io"
+arch=('x86_64')
+url="https://katacontainers.io/"
 license=('Apache')
-
-__dlbase="https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}"
-__linux_container_ver="4.19.86.59"
-__default_suffix="-3.1"
-#__runtime_suffix="-7.1"
-#__proxy_suffix="-7.1"
-#__shim_suffix="-7.1"
-#__ksm_throttler_suffix="-7.1"
-#__img_suffix="-7.1"
-__img_sha="8a4d901772"
-#__linux_container_suffix="-7.1"
-
+makedepends=('go-pie')
+_gh_org="github.com/kata-containers"
 source=(
-  "${__dlbase}/kata-runtime-${pkgver}${__runtime_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-proxy-bin-${pkgver}${__proxy_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-shim-bin-${pkgver}${__shim_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-containers-image-${pkgver}${__img_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-linux-container-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.${CARCH}.rpm"
+  "agent-${_pkgver}.tar.gz::https://${_gh_org}/agent/archive/${_pkgver}.tar.gz"
+  "ksm-throttler-${_pkgver}.tar.gz::https://${_gh_org}/ksm-throttler/archive/${_pkgver}.tar.gz"
+  "osbuilder-${_pkgver}.tar.gz::https://${_gh_org}/osbuilder/archive/${_pkgver}.tar.gz"
+  "proxy-${_pkgver}.tar.gz::https://${_gh_org}/proxy/archive/${_pkgver}.tar.gz"
+  "runtime-${_pkgver}.tar.gz::https://${_gh_org}/runtime/archive/${_pkgver}.tar.gz"
+  "shim-${_pkgver}.tar.gz::https://${_gh_org}/shim/archive/${_pkgver}.tar.gz"
+  "https://${_gh_org}/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz"
+)
+sha512sums=(
+  '5f90c4fc3d0115f5ba23ba98b9153ed1aa78636df78824261241a7a900717afb0c04c10a382b2bb4bf77321df3f6f77d5925cf80fa9b0824057b4ee1a2d17c13'
+  '67b588f722af369698d0d0f287d410a787d7a4b947708c8b767c7a0831ab8adb4c99031d29f451d50c4277d50452c2f9f643f7a415a9e5b77d1d4330a3f5a60f'
+  '2bb4a095653e922f1fe274793d56241e657856c9af36f53f4b2394be41f02068041fc1beedacaed246c63672bbeadb5a26fbefb24beaa5b96dc089511db1a9cd'
+  '0471b8e876c3a49772d56a72e99dd4d36ad5136bbefc212250c83a78f29f0f6e03cc5fd94d70fc61d2b07613ff19fc9a1dfde915364e15838b6b4f6916278e5a'
+  '93c1be4386563e246276f5e10a4a65f2fe084c5fbf9e79b65b0541f9ec72281119380bd94eb4022c573461b6b2ddbd3777b0b50de9645f54b5499e40107117d6'
+  '426baf82874b614347772d824f7e8a8c02505f41f060ebef931c6f2bc112b41ad4209703994e22808d35e046f8e9e750177a8a07fe596028081595b1ccf3c807'
+  'f0e69db2327f87234b053c554793ee28f0f102835e1778e85772d14c90c0caf63890541a780cc5439e08d39a419fa86bd5ff4750228c93f70f2511328afe1aa5'
 )
 
-# sha256sum kata-{runtime,{proxy,shim}-bin,ksm-throttler,containers-image,linux-container}-*.rpm | awk '{print $1}' | xargs -n1 -I{} -- echo "'{}'"
-sha256sums=(
-  '5ba7a425d583a26860085bf3812b258b13f87495ccc769b12a9bbe289cbd1364'
-  '9e986dc42483509e69f7fd6e22dd6e00fc1aa6c60890aeb4fb9e0552ed9bcce7'
-  '512d515b6744aa7fbe91be7c388b4066c0443a3521649d2c44f43af9abc97ffc'
-  'a947effca82fd01f944418c94fb712684fafc65d4edf1aa3683617d0c80a15c1'
-  'e4938b9782e56adb91790f7082d56bd8a3dee6008642bbae987bceebaf3d5361'
-  'd8c8c4dab6d304c67aa93028e6f5fe9152820aea4ae8c16810e28d77972eabfb'
-)
+prepare(){
+  mkdir -p "${srcdir}/src/${_gh_org}"
+  for i in agent ksm-throttler proxy runtime shim; do
+    rm -rf "${srcdir}/src/${_gh_org}/${i}"
+    mv "${srcdir}/${i}-${_pkgver}" "${srcdir}/src/${_gh_org}/${i}"
+  done
+}
 
-package_kata-runtime() {
-  depends=(qemu kata-proxy=${pkgver} kata-shim=${pkgver} kata-ksm-throttler=${pkgver} kata-containers-image=${pkgver} kata-linux-container=${pkgver})
+build(){
+  cd "${srcdir}/src/${_gh_org}/agent"
+  GOPATH="${srcdir}" LDFLAGS="" make
+
+  for i in ksm-throttler proxy runtime shim; do
+    echo "Building kata-${i}…"
+    cd "${srcdir}/src/${_gh_org}/${i}"
+    GOPATH="${srcdir}" make DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
+  done
+}
+
+package_kata-agent(){
+  cd "${srcdir}/src/${_gh_org}/agent"
+  GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
+}
+
+package_kata-ksm-throttler(){
+  cd "${srcdir}/src/${_gh_org}/ksm-throttler"
+  GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
+  install -d -m 0755 "${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}"
+}
+
+package_kata-proxy(){
+  cd "${srcdir}/src/${_gh_org}/proxy"
+  GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
+}
+
+package_kata-runtime(){
+  depends=('qemu-headless' "kata-ksm-throttler=${pkgver}" "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container=${pkgver}" "kata-containers-image=${pkgver}")
   optdepends=(
-    'firecracker'
-    #'cloud-hypervisor'
+    'firecracker<0.20.0'
+    'cloud-hypervisor<0.5.0'
     #'acrn'
   )
   install=kata-runtime.install
-
-  install -D -m 0755 -t ${pkgdir}/usr/bin ${srcdir}/usr/bin/{containerd-shim-kata-v2,kata-runtime,kata-collect-data.sh}
-  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-containers/kata-netmon
-  install -D -m 0644 {${srcdir},${pkgdir}}/usr/share/bash-completion/completions/kata-runtime
-  install -D -m 0644 -t ${pkgdir}/usr/share/defaults/kata-containers ${srcdir}/usr/share/defaults/kata-containers/*.toml
-
-  sed -i -e 's/libexec/lib/' ${pkgdir}/usr/share/defaults/kata-containers/*.toml ${pkgdir}/usr/bin/kata-collect-data.sh
-  sed -i -e 's/qemu-lite/qemu/' -e 's/qemu-vanilla/qemu/' ${pkgdir}/usr/share/defaults/kata-containers/configuration.toml ${pkgdir}/usr/bin/kata-collect-data.sh
+  cd "${srcdir}/src/${_gh_org}/runtime"
+  GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-proxy() {
-  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-containers/kata-proxy
+package_kata-shim(){
+  cd "${srcdir}/src/${_gh_org}/shim"
+  GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
 }
 
-package_kata-shim() {
-  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-containers/kata-shim
+package_kata-containers-image(){
+  install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
+    ${srcdir}/opt/kata/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_*.img \
+    ${srcdir}/opt/kata/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd
+  cd "${pkgdir}/usr/share/kata-containers/"
+  ln -s kata-containers-image_clearlinux_${_pkgver}_agent_*.img kata-containers.img
+  ln -s kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd kata-containers-initrd.img
 }
 
-package_kata-ksm-throttler() {
-  install -D -m 0644 -t ${pkgdir}/usr/lib/systemd/system ${srcdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
-  sed -i 's/libexec/lib/' ${pkgdir}/usr/lib/systemd/system/kata-{ksm,vc}-throttler.service
-  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/kata-ksm-throttler
-  install -D -m 0755 {${srcdir}/usr/libexec,${pkgdir}/usr/lib}/kata-ksm-throttler/trigger/virtcontainers/vc
-  install -d -m 0755 ${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}
-}
-
-package_kata-containers-image() {
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${pkgver/\~/-}_agent_${__img_sha}.img
-  ln -sf kata-containers-image_clearlinux_${pkgver/\~/-}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${pkgver/\~/-}_agent_${__img_sha}.initrd
-  ln -sf kata-containers-initrd_alpine_${pkgver/\~/-}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
-}
-
-package_kata-linux-container() {
-  for i in vmlinu{x,z}; do
-    install -D -m 0644 {${srcdir},${pkgdir}}/usr/share/kata-containers/${i}-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.container
-    ln -sf ${i}-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.container ${pkgdir}/usr/share/kata-containers/${i}.container
-  done
+package_kata-linux-container(){
+  install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
+    ${srcdir}/opt/kata/share/kata-containers/config-* \
+    ${srcdir}/opt/kata/share/kata-containers/vmlinux-* \
+    ${srcdir}/opt/kata/share/kata-containers/vmlinuz-*
+  cd "${pkgdir}/usr/share/kata-containers/"
+  ln -sf vmlinux-virtio-fs-* vmlinux-virtiofs.container
+  ln -sf vmlinuz-virtio-fs-* vmlinuz-virtiofs.container
+  # bash-specific behavior?
+  ln -s vmlinux-[0-9].[0-9]* vmlinux.container
+  ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
 }
