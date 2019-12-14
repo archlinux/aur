@@ -2,7 +2,7 @@
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 pkgname=tfenv
 pkgver=1.0.2
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("x86_64")
@@ -17,13 +17,12 @@ provides=("tfenv" "terraform")
 source=("https://github.com/tfutils/tfenv/archive/v${pkgver}.tar.gz")
 validpgpkeys=()
 install="${pkgname}.install"
+conflicts=("terraform")
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/var/lib/tfenv/libexec"
-	echo $srcdir
-	ls -lah
 	sed -i 's:TFENV_ROOT="$(cd "$(dirname "$(readlink_f "${0}")")/.." \&\& pwd)":TFENV_ROOT="$(cd "$(dirname "$(readlink_f "${0}")")/../../var/lib/tfenv" \&\& pwd)":' bin/tfenv
 	install -m755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -m755 "bin/terraform" "${pkgdir}/usr/bin/terraform"
