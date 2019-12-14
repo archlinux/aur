@@ -10,12 +10,16 @@ pkgbase = ebadoo-shell-extensions
 	makedepends = git
 	makedepends = sassc
 	makedepends = js60
+	depends = ebadoo-desktop-schemas
+	depends = ebadoo-shell
 	optdepends = gnome-menus: applications menu extension
+	provides = gnome-shell-extensions
+	provides = gnome-shell-extensions=3.34.2
+	conflicts = gnome-shell-extensions
 	source = git+https://gitlab.com/ebadoo/ebadoo-shell-extensions.git
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ebadoo-shell-extensions
-	depends = ebadoo-shell
 

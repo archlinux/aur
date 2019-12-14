@@ -8,8 +8,11 @@ url="https://wiki.gnome.org/Projects/GnomeShell/Extensions"
 arch=(any)
 license=(GPL)
 makedepends=(meson git sassc js60)
+depends=(ebadoo-desktop-schemas ebadoo-shell)
 optdepends=('gnome-menus: applications menu extension')
 groups=(ebadoo-desktop)
+conflicts=(gnome-shell-extensions)
+provides=(gnome-shell-extensions gnome-shell-extensions=$pkgver)
 source=("git+https://gitlab.com/ebadoo/ebadoo-shell-extensions.git"
         "git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git")
 sha256sums=('SKIP'
@@ -38,7 +41,5 @@ check() {
 }
 
 package() {
-  depends=(ebadoo-shell)
-
   DESTDIR="$pkgdir" meson install -C build
 } 
