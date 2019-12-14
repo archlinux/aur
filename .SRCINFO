@@ -1,6 +1,6 @@
 pkgbase = xcursor-retrosmart
 	pkgdesc = A retrosmart look collection of cursors for X.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/mdomlop/retrosmart-x11-cursors
 	changelog = ChangeLog
@@ -12,8 +12,8 @@ pkgbase = xcursor-retrosmart
 	optdepends = retrosmart-icon-theme: The corresponding icon theme
 	optdepends = retrosmart-xfwm4-themes: The corresponding themes for XFwm4
 	optdepends = retrosmart-openbox-themes: The corresponding themes for Openbox
-	source = xcursor-retrosmart-2.0.tar.gz::https://github.com/mdomlop/retrosmart-x11-cursors/archive/2.0.tar.gz
-	md5sums = fd4b533e218d101b3789ce14274f9c35
+	source = xcursor-retrosmart-2.1.tar.gz::https://github.com/mdomlop/retrosmart-x11-cursors/archive/2.1.tar.gz
+	md5sums = 5ad3072d1c1dbd9948e6f6c98176fdc3
 
 pkgname = xcursor-retrosmart
 
