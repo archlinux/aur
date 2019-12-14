@@ -1,0 +1,14 @@
+pkgbase = optar
+	pkgdesc = OPTical ARchiver - codec for encoding data on paper
+	pkgver = 1
+	pkgrel = 1
+	url = http://ronja.twibright.com/optar/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpng
+	source = http://ronja.twibright.com/optar.tgz
+	md5sums = aea10e42b36c7d788502f00f5d8a6c81
+
+pkgname = optar
+
