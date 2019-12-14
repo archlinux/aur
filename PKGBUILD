@@ -6,13 +6,13 @@
 
 pkgname=gitahead
 pkgrel=1
-pkgver=2.5.11
+pkgver=2.6.0
 pkgdesc='Graphical Git client that helps you understand and manage your source history'
 url='https://www.gitahead.com/'
 arch=('x86_64')
 license=('MIT')
 depends=('desktop-file-utils' 'qt5-base' 'git')
-makedepends=('cmake' 'ninja' 'git')
+makedepends=('cmake' 'ninja' 'git' 'qt5-tools' 'qt5-translations')
 source=(
   "git+https://github.com/gitahead/gitahead#tag=v${pkgver}"
   "gitahead.desktop"
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('SKIP'
             '022132e59ea2a1ca43df8ca1e20a1f851fca6e61afe4899814619ca241df7f19'
-            '375920168a4f59e41cbf412db787c223d54405799dfcec7dd6ae57eed9d97eb2')
+            '096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0')
 
 prepare() {
   cd "$srcdir/gitahead"
