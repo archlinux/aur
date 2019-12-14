@@ -6,25 +6,16 @@ pkgbase = python-sentry_sdk
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/getsentry/sentry-python/releases/download/0.13.5/sentry-sdk-0.13.5.tar.gz
-	source = https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE
-	sha256sums = c6b919623e488134a728f16326c6f0bcdab7e3f59e7f4c472a90eea4d6d8fe82
-	sha256sums = 59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c
-
-pkgname = python-sentry_sdk
 	depends = python-urllib3
 	depends = python-certifi
 	optdepends = python-flask
 	optdepends = python-blinker
 	optdepends = python-bottle
 	optdepends = python-falcon
+	source = https://github.com/getsentry/sentry-python/releases/download/0.13.5/sentry-sdk-0.13.5.tar.gz
+	source = https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE
+	sha256sums = c6b919623e488134a728f16326c6f0bcdab7e3f59e7f4c472a90eea4d6d8fe82
+	sha256sums = 59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c
 
-pkgname = python2-sentry_sdk
-	depends = python2-urllib3
-	depends = python2-certifi
-	optdepends = python2-flask
-	optdepends = python2-blinker
-	optdepends = python2-bottle
-	optdepends = python2-falcon
+pkgname = python-sentry_sdk
 
