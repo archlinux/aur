@@ -5,8 +5,8 @@ pkgbase = caja-mediainfo-tab
 	url = https://github.com/linux-man/caja-mediainfo-tab
 	arch = any
 	license = GPL3
-	depends = python2-mediainfodll
-	depends = python2-caja
+	depends = python-mediainfodll
+	depends = python-caja
 	source = caja-mediainfo-tab-1.0.1.tar.gz::https://github.com/linux-man/caja-mediainfo-tab/archive/v1.0.1.tar.gz
 	sha256sums = 86a6bec3be90c60fd514dec18068dd50f8465035969baf7ee5aa6681b5b7d971
 
