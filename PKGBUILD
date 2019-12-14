@@ -53,7 +53,7 @@ prepare() {
     # anyways because meson sets its own optimization level.
     CFLAGS="${CFLAGS/ -O*([0-3])/}"
     # Doesn't compile with these flags in MingW so remove them.
-    # They are also filtered in Wine PKGBUILDs so remove them 
+    # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
     CFLAGS="${CFLAGS/ -fno-plt/}"
     LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
