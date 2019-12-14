@@ -1,7 +1,7 @@
 [Unit]
 Description=Unified all-in-one Monero miner
 After=network-online.target
-AssertFileNotEmpty=/etc/xmr-stak/config.txt
+AssertFileNotEmpty=/etc/xmr-stak-rx/config.txt
 
 [Service]
 Environment=GPU_FORCE_64BIT_PTR=1
@@ -9,7 +9,7 @@ Environment=GPU_MAX_HEAP_SIZE=100
 Environment=GPU_USE_SYNC_OBJECTS=1
 Environment=GPU_MAX_ALLOC_PERCENT=100
 Environment=GPU_SINGLE_ALLOC_PERCENT=100
-ExecStart=/usr/bin/xmr-stak --cpu /etc/xmr-stak/cpu.txt --amd /etc/xmr-stak/amd.txt --nvidia /etc/xmr-stak/nvidia.txt -c /etc/xmr-stak/config.txt -C /etc/xmr-stak/pools.txt
+ExecStart=/usr/bin/xmr-stak-rx --cpu /etc/xmr-stak-rx/cpu.txt --amd /etc/xmr-stak-rx/amd.txt --nvidia /etc/xmr-stak-rx/nvidia.txt -c /etc/xmr-stak-rx/config.txt -C /etc/xmr-stak-rx/pools.txt
 DynamicUser=true
 Group=video
 CPUSchedulingPolicy=idle
@@ -26,7 +26,7 @@ RestrictRealtime=true
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 RestrictNamespaces=true
 PrivateUsers=true
-ConfigurationDirectory=xmr-stak
+ConfigurationDirectory=xmr-stak-rx
 
 [Install]
 WantedBy=multi-user.target

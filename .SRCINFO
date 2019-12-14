@@ -1,6 +1,6 @@
-pkgbase = xmr-stak
+pkgbase = xmr-stak-rx
 	pkgdesc = Unified All-in-one Monero miner (no cuda)
-	pkgver = 2.10.7
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/fireice-uk/xmr-stak
 	arch = x86_64
@@ -12,12 +12,10 @@ pkgbase = xmr-stak
 	depends = openssl
 	depends = hwloc
 	depends = ocl-icd
-	source = xmr-stak-2.10.7.tar.gz::https://github.com/fireice-uk/xmr-stak/archive/2.10.7.tar.gz
-	source = no-donate.patch
-	source = xmr-stak.service
-	sha256sums = 48ac61304bce218e14a87fe9e21e230561b5d78f90603830fbaabe2aaafcb242
-	sha256sums = b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a
-	sha256sums = e0cbee0dab1c730e5deff31eddef84a635b4c9f33ba2368a446e62acc084649a
+	source = xmr-stak-rx-1.0.3.tar.gz::https://github.com/fireice-uk/xmr-stak/archive/1.0.3-rx.tar.gz
+	source = xmr-stak-rx.service
+	sha256sums = 078eb347188569c2aa4b720b1d093802ef668de54aaa46cbf207b58931182498
+	sha256sums = a2feac52177bc7ac2f2f3cc846c19fd817b8962a2e4758b66c7954228536fd58
 
-pkgname = xmr-stak
+pkgname = xmr-stak-rx
 
