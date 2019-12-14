@@ -1,6 +1,6 @@
 pkgbase = spacman
 	pkgdesc = A Package Management Tool with Whitelist Package List.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/fkxxyz/spacman
 	arch = any

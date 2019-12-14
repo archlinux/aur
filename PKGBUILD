@@ -2,14 +2,14 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=spacman
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A Package Management Tool with Whitelist Package List."
 arch=('any')
 url="https://github.com/fkxxyz/${pkgname}"
 license=('GPL3')
 depends=('python')
-source=(${pkgname}::"https://raw.githubusercontent.com/fkxxyz/${pkgname}/master/${pkgname}.py")
+source=(${pkgname}::"https://github.com/fkxxyz/${pkgname}/raw/master/${pkgname}.py")
 md5sums=('SKIP')
 
 package() {
