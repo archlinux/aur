@@ -1,17 +1,15 @@
 pkgbase = multipass
 	pkgdesc = Broadcast X11 key events to multiple windows
-	pkgver = 17.09
-	pkgrel = 3
-	url = https://github.com/vain/multipass
+	pkgver = 18.06
+	pkgrel = 1
+	url = https://www.uninformativ.de/git/multipass
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = libx11
 	depends = libxft
-	source = https://github.com/vain/multipass/archive/v17.09.tar.gz
-	source = https://raw.githubusercontent.com/vain/multipass/master/LICENSE
-	sha256sums = 001f760bde3392e9289f03987c2a5dbc61e8adcc4b575cfad96da88b28ba18fe
-	sha256sums = SKIP
+	source = git+https://www.uninformativ.de/git/multipass.git
+	md5sums = SKIP
 
 pkgname = multipass
 
