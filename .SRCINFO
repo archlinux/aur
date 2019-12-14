@@ -1,7 +1,7 @@
 pkgbase = osgearth
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
-	pkgver = 2.10.1
-	pkgrel = 1
+	pkgver = 2.10.2
+	pkgrel = 2
 	url = http://www.osgearth.org
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,10 @@ pkgbase = osgearth
 	depends = rocksdb
 	depends = duktape
 	provides = osgearth
-	source = https://github.com/gwaldron/osgearth/archive/osgearth-2.10.1.tar.gz
-	md5sums = d780ccc0735130ff79b3f1b39e377960
+	source = https://github.com/gwaldron/osgearth/archive/osgearth-2.10.2.tar.gz
+	source = geos-3_8-support.patch
+	md5sums = 24f01afedb2eeac8154bf64772b7cbc7
+	md5sums = 590959bbe04444efc63f96f4b48db6ac
 
 pkgname = osgearth
 
