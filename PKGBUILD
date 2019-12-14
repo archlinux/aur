@@ -56,11 +56,11 @@ prepare() {
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
     CFLAGS="${CFLAGS/ -fno-plt/}"
-    LDFLAGS="${LDFLAGS/,-z,relro,-z,now/}"
-    sed -i build-win64.txt \
+    LDFLAGS="${LDFLAGS/,-z,now/}"
+    sed -i build-wine64.txt \
         -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
-    sed -i build-win32.txt \
+    sed -i build-wine32.txt \
         -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
     # Uncomment to enable dxvk async patch.
