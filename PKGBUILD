@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-winelib
-_tag=0.30
-pkgver=$_tag
+_tag=0.40-rc-p
+pkgver=${_tag//-/.}
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, winelib version"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine')
 provides=("d9vk")
 conflicts=("d9vk")
 source=(
-    "git+https://github.com/Joshua-Ashton/d9vk.git#tag=$pkgver"
+    "git+https://github.com/Joshua-Ashton/d9vk.git#tag=$_tag"
     "setup_d9vk"
     "dxvk-async.patch"
 )
