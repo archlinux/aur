@@ -7,7 +7,7 @@ pkgdesc="A swiss-army knife for multimedia streaming, notably used for netradios
 arch=('i686' 'x86_64')
 url="https://www.liquidsoap.info"
 license=('GPL')
-depends=('fdk-aac-free' 'fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
+depends=('fluidsynth' 'giflib' 'gst-plugins-good' 'gst-plugins-ugly'
 	'ocaml-alsa'
 	'ocaml-ao'
 	'ocaml-bjack'
