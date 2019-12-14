@@ -1,0 +1,14 @@
+pkgbase = bmp_header_dump
+	pkgdesc = A tool to dump BMP image headers.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ekardnam/bmp_header_dump
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = git
+	source = bmp_header_dump-1.0.tar.gz::https://github.com/ekardnam/bmp_header_dump/archive/v1.0.tar.gz
+	sha1sums = 1bf5b87929db68fc79a5907efcf78892f4575e6e
+
+pkgname = bmp_header_dump
+
