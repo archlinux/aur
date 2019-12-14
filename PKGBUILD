@@ -1,6 +1,6 @@
 # Maintainer: Bruce Zhang
 pkgname=firecamp
-pkgver=0.7.3
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="firecamp, A campsite for developers."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "$pkgname-$pkgver.orig.appimage::https://firecamp.ams3.digitaloceanspaces.com/versions/linux/Firecamp-$pkgver.AppImage"
     'runner.patch'
 )
-sha256sums=('54bad3be477a5920c52667241dd9ff3e81a3c8118a8aab57fce253f516e1a282'
+sha256sums=('06bbae83cd6c3c6f197e1b23a93b009cfc65333659a80b0963f3537b1db06d47'
             'f22a12c6b3ee55161ac9e8debadba48263fad338c13b6700d06261c2346426dd')
 
 prepare() {
