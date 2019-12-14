@@ -1,22 +1,24 @@
 pkgbase = dbeaver-ce
-	pkgdesc = An universal database tool for developers and database administrators. Community Edition
+	pkgdesc = DBeaver Community Edition
 	pkgver = 6.3.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/dbeaver/dbeaver
-	install = dbeaver-ce.install
 	arch = x86_64
 	license = GPL
-	depends = java-runtime>=1.6
+	depends = java-runtime>=1.8
 	depends = gtk2
 	depends = gtk-update-icon-cache
+	depends = libsecret
+	optdepends = dbeaver-plugin-office: export data in Microsoft Office Excel format
+	optdepends = dbeaver-plugin-svg-format: save diagrams in SVG format
 	conflicts = dbeaver
 	conflicts = dbeaver-ee
 	source = dbeaver-ce-6.3.0-linux.gtk.x86_64.tar.gz::https://github.com/dbeaver/dbeaver/releases/download/6.3.0/dbeaver-ce-6.3.0-linux.gtk.x86_64.tar.gz
+	source = dbeaver-ce-6.3.0-git::git+https://github.com/dbeaver/dbeaver.git#tag=6.3.0
 	source = dbeaver-ce.desktop
-	source = dbeaver-ce.install
 	sha256sums = 4a086f0182d349bbcc8d9c927e293d7b937eef90b8dcffff47db41e9a6c8421e
-	sha256sums = f100de471b371c729262611f87ef3f5ad21b8f555758c679302dabd524ebf997
-	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
+	sha256sums = SKIP
+	sha256sums = e73e524d2ce9ff9750d805ed2ef9f9bd4058910db05d5095aef275b71e4001e8
 
 pkgname = dbeaver-ce
 
