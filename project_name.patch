@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f98a4e2..55ba79d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,10 +45,10 @@ if(USE_ZLIB)
+     add_definitions(-DHAVE_ZLIB)
+ endif()
+ 
+-set(MINIZIP_PC ${CMAKE_CURRENT_BINARY_DIR}/minizip.pc)
++set(MINIZIP_PC ${CMAKE_CURRENT_BINARY_DIR}/minizip2.pc)
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/minizip.pc.cmakein ${MINIZIP_PC} @ONLY)
+ 
+-set(PROJECT_NAME libminizip)
++set(PROJECT_NAME libminizip2)
+ 
+ set(MINIZIP_SRC
+     mz_os.c

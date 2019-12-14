@@ -10,9 +10,14 @@ pkgbase = minizip-git
 	depends = glibc
 	depends = libbsd
 	depends = zlib
-	conflicts = minizip
 	source = git+https://github.com/nmoinvaz/minizip.git#commit=7bdfbf4
+	source = soversion.patch
+	source = project_name.patch
+	source = pc.patch
 	sha256sums = SKIP
+	sha256sums = 3a648c48b9af7536e03c13327bd2f680a297fc629045fd904e344674971f3569
+	sha256sums = 3268ec716b89004bbc8124b3213c3bc0d15289d7771bbac82cd4c6694e390b79
+	sha256sums = d45977c36a6c1b2eefbf39d829be8753cecd3d8910d1926ad842359da3b9a869
 
 pkgname = minizip-git
 

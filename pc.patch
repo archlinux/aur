@@ -1,0 +1,17 @@
+diff --git a/minizip.pc.cmakein b/minizip.pc.cmakein
+index bacb18a..22fa1ea 100644
+--- a/minizip.pc.cmakein
++++ b/minizip.pc.cmakein
+@@ -4,10 +4,10 @@ libdir=@INSTALL_LIB_DIR@
+ sharedlibdir=@INSTALL_LIB_DIR@
+ includedir=@INSTALL_INC_DIR@
+ 
+-Name: minizip
++Name: minizip2
+ Description: Minizip zip file manipulation library
+ Version: @VERSION@
+ 
+ Requires: zlib
+-Libs: -L${libdir} -L${sharedlibdir} -lminizip
++Libs: -L${libdir} -L${sharedlibdir} -lminizip2
+ Cflags: -I${includedir}
