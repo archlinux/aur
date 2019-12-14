@@ -1,5 +1,5 @@
 pkgbase = ocaml-fdkaac-git
-	pkgdesc = OCaml bingind for the fdk-aac library
+	pkgdesc = OCaml binding for the fdk-aac library
 	pkgver = r74.872fa6b
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-fdkaac

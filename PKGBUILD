@@ -2,7 +2,7 @@
 pkgname=ocaml-fdkaac-git
 pkgver=r74.872fa6b
 pkgrel=1
-pkgdesc="OCaml bingind for the fdk-aac library"
+pkgdesc="OCaml binding for the fdk-aac library"
 arch=('i686' 'x86_64')
 url="https://github.com/savonet/ocaml-fdkaac"
 license=('GPL')
