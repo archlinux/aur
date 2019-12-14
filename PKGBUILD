@@ -1,27 +1,29 @@
-# Maintainer: Michał Sałaban <michal@salaban.info>
+# Maintainer:
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Contributor: Michał Sałaban <michal at salaban dot info>
 pkgname=python2-sentry_sdk
 _pkgname=sentry-sdk
-pkgver=0.6.5
+pkgver=0.13.5
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/getsentry/sentry-python"
 license=('BSD')
 depends=('python2-urllib3' 'python2-certifi')
 makedepends=('python2-setuptools')
-optdepends=('python2-flask')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/sentry-sdk-$pkgver.tar.gz"
+optdepends=('python2-flask' 'python2-blinker' 'python2-bottle' 'python2-falcon')
+source=("$url/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE")
-md5sums=('ff4696ea62904211e34e71b9483d281d'
-         '0c79f8d3c91fc847350efd28bfe0a341')
+sha256sums=('c6b919623e488134a728f16326c6f0bcdab7e3f59e7f4c472a90eea4d6d8fe82'
+            '59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c')
 
 build() {
-	cd "$_pkgname-$pkgver"
-    python2 setup.py build
+	cd "$srcdir/$_pkgname-$pkgver"
+	python2 setup.py build
 }
 
 package() {
 	cd "$_pkgname-$pkgver"
 	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
