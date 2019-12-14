@@ -14,7 +14,7 @@
  }
 --- a/media/gpu/vaapi/vaapi_wrapper.h	2019-12-11 04:46:54.360029772 -0800
 +++ b/media/gpu/vaapi/vaapi_wrapper.h	2019-12-09 13:51:52.000000000 -0800
-@@ -115,9 +115,6 @@
+@@ -115,6 +115,9 @@
      bool yuv444 : 1;
    };
  
@@ -23,6 +23,8 @@
 +
    // Returns the type of the underlying VA-API implementation.
    static VAImplementation GetImplementationType();
+ 
+
 --- a/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 +++ b/media/gpu/vaapi/vaapi_video_decode_accelerator.cc
 @@ -635,6 +635,7 @@

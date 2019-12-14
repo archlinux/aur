@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
 	pkgver = 1.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom
@@ -21,24 +21,29 @@ pkgbase = brave
 	depends = libva
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
-	optdepends = libgnome-keyring: Enable GNOME keyring support
+	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
+	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
 	source = git+https://github.com/brave/brave-browser.git#tag=v1.1.20
 	source = brave-vaapi-enable.patch
 	source = chromium-vaapi-fix.patch
 	source = brave-launcher
 	source = brave-browser.desktop
-	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
-	source = fix-spammy-unique-font-matching-log.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-spammy-unique-font-matching-log.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
-	source = icu65.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu65.patch?h=packages/chromium&id=b8f5b855df7d8d165921e217ac124cc7652944bd
+	source = launch_manager.h-uses-std-vector.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/launch_manager.h-uses-std-vector.patch?h=packages/chromium&id=becfa71f57e28821900f1ec06b2863f1886fbf60
+	source = include-algorithm-to-use-std-lower_bound.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/include-algorithm-to-use-std-lower_bound.patch?h=packages/chromium&id=becfa71f57e28821900f1ec06b2863f1886fbf60
+	source = icu65.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/icu65.patch?h=packages/chromium&id=becfa71f57e28821900f1ec06b2863f1886fbf60
+	source = fix-spammy-unique-font-matching-log.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-spammy-unique-font-matching-log.patch?h=packages/chromium&id=becfa71f57e28821900f1ec06b2863f1886fbf60
+	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=becfa71f57e28821900f1ec06b2863f1886fbf60
 	sha256sums = SKIP
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
-	sha256sums = 7496762a1953b15a48d3e5503fb76d9835940afd850a45b7de976de9f51479f9
+	sha256sums = 5a5f71370a02a6406d5f072f21bd98b4ea56d458608942bf78b6ebd8dc201c5a
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
 	sha256sums = 2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488
-	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
-	sha256sums = 6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19
+	sha256sums = bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3
+	sha256sums = 1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73
 	sha256sums = 1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41
+	sha256sums = 6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19
+	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
 
 pkgname = brave
 

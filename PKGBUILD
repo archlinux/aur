@@ -35,7 +35,7 @@ optdepends=('cups: Printer support'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
-source=("https://github.com/brave/brave-browser/archive/v${pkgver}.tar.gz"
+source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
         'chromium-vaapi-fix.patch'
         'brave-launcher'
@@ -51,9 +51,9 @@ do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
 
-sha256sums=('0e4977f7e4f891dca2e2326c2892cea57b79d1765476959fe7932ceda08649bc'
+sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
-            'c9caa800028a725484a327f4464b1689fc91d5bf0c0ca69259a1a1421f03e073'
+            '5a5f71370a02a6406d5f072f21bd98b4ea56d458608942bf78b6ebd8dc201c5a'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
             'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
@@ -64,7 +64,7 @@ sha256sums=('0e4977f7e4f891dca2e2326c2892cea57b79d1765476959fe7932ceda08649bc'
 
 prepare() {
     # Apply Brave patches
-    cd "${_reponame}-${pkgver}"
+    cd "${_reponame}"
     patch -Np1 -i "${srcdir}/brave-vaapi-enable.patch"
 
     # Hack to prioritize python2 in PATH
@@ -100,7 +100,7 @@ prepare() {
 }
 
 build() {
-    cd "${_reponame}-${pkgver}"
+    cd "${_reponame}"
 
     export CC=clang
     export CXX=clang++
@@ -130,7 +130,7 @@ package() {
     install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"
 
     # Copy necessary release files
-    cd "${_reponame}-${pkgver}/src/out/Release"
+    cd "${_reponame}/src/out/Release"
     cp -a --reflink=auto \
         locales \
         resources \
@@ -146,9 +146,9 @@ package() {
     cd "${srcdir}"
     install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
     install -Dm0644 -t "${pkgdir}/usr/share/applications/" "${_reponame}.desktop"
-    install -Dm0644 "${_reponame}-${pkgver}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}-${pkgver}/LICENSE"
-    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}-${pkgver}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
+    install -Dm0644 "${_reponame}/src/brave/app/theme/brave/product_logo_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/LICENSE"
+    install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_reponame}/src/brave/components/brave_sync/extension/brave-sync/node_modules/electron/dist/LICENSES.chromium.html"
 }
 
 # vim:set ts=4 sw=4 et:
