@@ -1,14 +1,17 @@
 pkgbase = python-boofuzz
-	pkgver = 0.1.5
+	pkgdesc = A fork and successor of the Sulley Fuzzing Framework
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/jtpereyda/boofuzz
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/b/boofuzz/boofuzz-0.1.5.tar.gz
-	md5sums = 0f04453f8a0c6c08c3d0ca02db3cc495
+	depends = python-pyserial
+	depends = python-tornado
+	depends = python-pydot
+	source = python-boofuzz::git+https://github.com/jtpereyda/boofuzz#tag=v0.1.6
+	sha256sums = SKIP
 
 pkgname = python-boofuzz
-	depends = python
 
