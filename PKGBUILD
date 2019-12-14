@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=qmarkdowntextedit-git
-pkgver=r328.e566a3c
+pkgver=r362.0757bc2
 pkgrel=1
 pkgdesc='A Qt library and simple application for editing Markdown'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('qt5-base')
 conflicts=(qmarkdowntextedit)
 provides=(qmarkdowntextedit)
-source=('git+https://github.com/sandsmark/qmarkdowntextedit.git#branch=martin/install-target')
+source=('git+https://github.com/sandsmark/qmarkdowntextedit.git#branch=martin/standalone')
 md5sums=('SKIP')
 
 pkgver() {

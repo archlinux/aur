@@ -1,6 +1,6 @@
 pkgbase = qmarkdowntextedit-git
 	pkgdesc = A Qt library and simple application for editing Markdown
-	pkgver = r328.e566a3c
+	pkgver = r362.0757bc2
 	pkgrel = 1
 	url = https://github.com/pbek/qmarkdowntextedit
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = qmarkdowntextedit-git
 	depends = qt5-base
 	provides = qmarkdowntextedit
 	conflicts = qmarkdowntextedit
-	source = git+https://github.com/sandsmark/qmarkdowntextedit.git#branch=martin/install-target
+	source = git+https://github.com/sandsmark/qmarkdowntextedit.git#branch=martin/standalone
 	md5sums = SKIP
 
 pkgname = qmarkdowntextedit-git
