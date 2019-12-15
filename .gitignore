@@ -2,3 +2,4 @@
 kubelogin-*.zip
 pkg/
 src/
+*.part
