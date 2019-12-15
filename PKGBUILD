@@ -1,6 +1,6 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=protoc-gen-grpc-java
-pkgver=0.15.0
+pkgver=1.25.0
 pkgrel=1
 epoch=0
 pkgdesc="Protobuf gRPC compiler for Java."
@@ -16,17 +16,13 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-
-#source_x86_64=("http://central.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${pkgver}/protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe"{,.asc})
-#md5sums_x86_64=('efe26959a9af989402834eefac1ec78b'
-#                'SKIP')
-
-source_x86_64=("http://central.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${pkgver}/protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe")
-md5sums_x86_64=('efe26959a9af989402834eefac1ec78b')
-
-validpgpkeys=('54024A1AD00BE5EA')
+_source="http://central.maven.org/maven2/io/grpc/protoc-gen-grpc-java/${pkgver}/protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe"
+source=($_source $_source.asc)
+sha1sums=('52e4b308cae18ae37af4722eea3f6bc0e0b928c6'
+          'SKIP')
+validpgpkeys=('B02335AA54CCF21E52BBF9ABD9C565AA72BA2FDD')
 
 package() {
-    mkdir -p ${pkgdir}/usr/local/bin
-    install -Dm755 protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe ${pkgdir}/usr/local/bin
+    mkdir -p ${pkgdir}/usr/bin
+    install -Dm755 protoc-gen-grpc-java-${pkgver}-linux-x86_64.exe ${pkgdir}/usr/bin/${pkgname}
 }
