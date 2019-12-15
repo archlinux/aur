@@ -1,0 +1,17 @@
+pkgbase = kicad-library-digikey-git
+	pkgdesc = Part footprints and symbols for KiCAD from Digi-Key
+	pkgver = r228.0802230
+	pkgrel = 1
+	url = https://github.com/digikey/digikey-kicad-library
+	arch = any
+	license = CC-BY-SA 4.0
+	makedepends = git
+	depends = kicad
+	provides = kicad-library-digikey
+	conflicts = digikey-kicad-library
+	conflicts = kicad-digikey-library
+	source = git+https://github.com/digikey/digikey-kicad-library.git
+	md5sums = SKIP
+
+pkgname = kicad-library-digikey-git
+
