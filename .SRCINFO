@@ -1,6 +1,6 @@
 pkgbase = snap4arduino
 	pkgdesc = A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board.
-	pkgver = 1.2.7
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = http://snap4arduino.rocks/
 	arch = i686
@@ -14,12 +14,11 @@ pkgbase = snap4arduino
 	depends = gtk3
 	depends = gconf
 	depends = freetype2
-	provides = snap4arduino
 	options = !strip
-	source_i686 = https://github.com/bromagosa/Snap4Arduino/releases/download/1.2.7/Snap4Arduino_desktop-gnu-32_1.2.7.tar.gz
-	sha256sums_i686 = 4bf4b13bffdc5ef5e8dd0dc018155cca89f24b0c62c71e5d6aa17490585c4c0e
-	source_x86_64 = https://github.com/bromagosa/Snap4Arduino/releases/download/1.2.7/Snap4Arduino_desktop-gnu-64_1.2.7.tar.gz
-	sha256sums_x86_64 = f17bc1a0992001d29be2dd0e5dfcedca56d317719a7d8d057ea9d291906e3e72
+	source_i686 = Snap4Arduino_desktop-gnu-32_5.1.0.tar.gz::https://github.com/bromagosa/Snap4Arduino/releases/download/5.1.0/Snap4Arduino_desktop-gnu-32_5.1.0.tar.gz
+	sha256sums_i686 = 0b599275f5d1132335116967ff2983a434c4ae4260395b05292fbfa5562cc312
+	source_x86_64 = Snap4Arduino_desktop-gnu-64_5.1.0.tar.gz::https://github.com/bromagosa/Snap4Arduino/releases/download/5.1.0/Snap4Arduino_desktop-gnu-64_5.1.0.tar.gz
+	sha256sums_x86_64 = 52d32af4d73d4568a3bbb1f8f5392c77902a12993a4dc7cdc6575aa67f1da8a0
 
 pkgname = snap4arduino
 
