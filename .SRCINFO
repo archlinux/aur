@@ -1,7 +1,7 @@
 pkgbase = warsaw-bin
 	pkgdesc = Banking security tool developed by GAS Tecnologia
 	pkgver = 1.13.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dieboldnixdorf.com.br/warsaw
 	install = warsaw-bin.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = warsaw-bin
 	depends = libx11
 	depends = libstdc++296-bin
 	depends = zlib
+	optdepends = gtk2: required on first bank setup
 	provides = warsaw
 	conflicts = warsaw
 	options = !strip

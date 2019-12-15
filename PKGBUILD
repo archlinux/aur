@@ -3,12 +3,13 @@
 
 pkgname=warsaw-bin
 pkgver=1.13.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(i686 x86_64)
 url="https://www.dieboldnixdorf.com.br/warsaw"
 license=('custom')
 depends=('procps-ng' 'python2' 'python2-mini-amf' 'python2-unicodecsv' 'python2-pyopenssl' 'openssl' 'nss' 'zenity' 'gdk-pixbuf2' 'pango' 'glib2' 'libx11' 'libstdc++296-bin' 'zlib')
+optdepends=('gtk2: required on first bank setup')
 backup=('etc/init.d/warsaw' 'etc/init/warsaw.conf' 'etc/xdg/autostart/warsaw.desktop')
 options=('!strip')
 install=${pkgname}.install
