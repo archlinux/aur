@@ -1,0 +1,14 @@
+pkgbase = python2-levenshtein
+	pkgdesc = Python extension for computing string edit distances and similarities
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-Levenshtein/
+	arch = x86_64
+	license = GPL
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/p/python-Levenshtein/python-Levenshtein-0.12.0.tar.gz
+	sha512sums = 95df064490970618b003bccbef9071b1a2a3ee4645ac8e851f4205bd4e8123d21ee0ee733adfeec79085faa01ba39902e2a4a26bfb21b70678377579157df4a5
+
+pkgname = python2-levenshtein
+
