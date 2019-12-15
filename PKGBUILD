@@ -18,28 +18,24 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd idevicerestore
-
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd idevicerestore
-
 	for p in "${srcdir}"/*.patch; do
 		patch -Np1 -i "${p}"
 	done
-#	sed -re 's|automake|& --add-missing|' -i autogen.sh
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
 	cd idevicerestore
-
-	./autogen.sh --prefix=/usr
+	./configure --prefix=/usr
 	make
 }
 
 package() {
 	cd idevicerestore
-
 	make DESTDIR="$pkgdir" install
 }
