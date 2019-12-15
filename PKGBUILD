@@ -6,7 +6,7 @@
 
 pkgname=tahoe-lafs
 pkgver=1.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure, decentralized, and fault-tolerant filesystem."
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
 license=('GPL')
@@ -28,7 +28,7 @@ depends=('openssl>=1.0.2'
          'python2-simplejson>=3.1.3'
          'nevow>=0.12.0'
          'python2-zbase32>=1.1.5'
-         'zfec>=1.4.24'
+         'python2-zfec>=1.4.24'
          'pycryptopp>=0.6.0'
          'python2-cffi'
          'python2-enum34'
