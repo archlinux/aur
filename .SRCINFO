@@ -1,6 +1,6 @@
 pkgbase = qtwaw
 	pkgdesc = An application for WhatsApp Web with tray icon and notifications
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://gitlab.com/scarpetta/qtwaw
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = qtwaw
 	depends = qt5-webengine
 	depends = kdbusaddons
 	depends = knotifications
-	source = https://gitlab.com/scarpetta/qtwaw/-/archive/v1.5/qtwaw-v1.5.tar.gz
-	sha256sums = 8d2f177945fa2581b3bc71093278f32f805589cc3a2846a13a8a9f599db6b757
+	source = https://gitlab.com/scarpetta/qtwaw/-/archive/v1.6/qtwaw-v1.6.tar.gz
+	sha256sums = 37d75c5b50c583de7155212c49db45cf7db4904839bf5f8136f061eb570269a1
 
 pkgname = qtwaw
 
