@@ -2,6 +2,7 @@ pkgbase = kicad-rc
 	pkgdesc = Official KiCad release candidates and dev snapshots
 	pkgver = 5.1.5
 	pkgrel = 1
+	epoch = 0
 	url = http://kicad-pcb.org/
 	arch = any
 	license = GPL3
