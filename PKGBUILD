@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 # music add-on:
 # -------------
@@ -10,15 +10,14 @@
 _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
-_srcname=dxx-rebirth
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r202.gf6352e795
+pkgver=0.60.0.beta2.r575.gca383c1fe
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.dxx-rebirth.com/'
-license=('custom')
-depends=('sdl_mixer' 'physfs' 'glu' 'libpng')
+license=('GPL3' 'custom:Parallax')
+depends=('glu' 'libgl' 'libpng' 'sdl' 'sdl_mixer' 'physfs')
 makedepends=('git' 'scons')
 source=('git+https://github.com/dxx-rebirth/dxx-rebirth.git'
         'https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
@@ -32,40 +31,28 @@ sha256sums=('SKIP'
             'b27f7b9dc5f9c2744402c56c9499dfd9503c17e73a2a5223e745529d7867962f'
             'ace152182c70b9a7ae6f911bddbc239566220a287ab5419cab260d5af739bf16')
 
-_common_opts=('lto=1'
-              'sdlmixer=1'
-              'builddir=./build'
-              'prefix=/usr'
-              'opengl=yes'
-              'sdlmixer=yes'
-              'ipv6=yes'
-              'use_udp=yes'
-              'use_tracker=yes'
-              'screenshot=png'
-)
-_d1x_opts=('d1x=1'
-           'd2x=0'
-           'sharepath=/usr/share/d1x-rebirth'
-           "${_common_opts[@]}"
-)
-_d2x_opts=('d1x=0'
-           'd2x=1'
-           'sharepath=/usr/share/d2x-rebirth'
-           "${_common_opts[@]}"
-)
-
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
+    cd dxx-rebirth
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
+    local -a _common_opts=(
+        "$MAKEFLAGS"
+        'lto=1'
+        'sdlmixer=1'
+        'builddir=./build'
+        'prefix=/usr'
+        'opengl=yes'
+        'sdlmixer=yes'
+        'ipv6=yes'
+        'use_udp=yes'
+        'use_tracker=yes'
+        'screenshot=png')
     
-    scons "${_d1x_opts[@]}"
-    scons "${_d2x_opts[@]}"
+    cd dxx-rebirth
+    scons "${_common_opts[@]}" 'd1x=1' 'd2x=0' 'sharepath=/usr/share/d1x-rebirth'
+    scons "${_common_opts[@]}" 'd1x=0' 'd2x=1' 'sharepath=/usr/share/d2x-rebirth'
 }
 
 package_d1x-rebirth-git() {
@@ -73,22 +60,21 @@ package_d1x-rebirth-git() {
     provides=('d1x-rebirth')
     conflicts=('d1x-rebirth')
     
-    cd "$_srcname"
-    
-    scons install DESTDIR="$pkgdir" "${_d1x_opts[@]}"
+    # binary executable
+    install -D -m755 dxx-rebirth/build/d1x-rebirth/d1x-rebirth -t "${pkgdir}/usr/bin"
     
     # add-ons
-    install -D -m644 "${srcdir}/d1xr-hires.dxa"           "${pkgdir}/usr/share/d1x-rebirth/d1xr-hires.dxa"
-    install -D -m644 "${srcdir}/d1xr-${_music}-music.dxa" "${pkgdir}/usr/share/d1x-rebirth/d1xr-${_music}-music.dxa"
+    install -D -m644  d1xr-hires.dxa            -t "${pkgdir}/usr/share/d1x-rebirth"
+    install -D -m644 "d1xr-${_music}-music.dxa" -t "${pkgdir}/usr/share/d1x-rebirth"
     
     # desktop file
-    install -D -m644 d1x-rebirth/d1x-rebirth.desktop "${pkgdir}/usr/share/applications/d1x-rebirth.desktop"
+    install -D -m644 dxx-rebirth/d1x-rebirth/d1x-rebirth.desktop -t "${pkgdir}/usr/share/applications"
     
     # icon
-    install -D -m644 d1x-rebirth/d1x-rebirth.xpm "${pkgdir}/usr/share/pixmaps/d1x-rebirth.xpm"
+    install -D -m644 dxx-rebirth/d1x-rebirth/d1x-rebirth.xpm -t "${pkgdir}/usr/share/pixmaps"
     
     # license
-    install -D -m644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 dxx-rebirth/COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_d2x-rebirth-git() {
@@ -96,19 +82,18 @@ package_d2x-rebirth-git() {
     provides=('d2x-rebirth')
     conflicts=('d2x-rebirth')
     
-    cd "$_srcname"
-    
-    scons install DESTDIR="$pkgdir" "${_d2x_opts[@]}"
+    # binary executable
+    install -D -m755 dxx-rebirth/build/d2x-rebirth/d2x-rebirth -t "${pkgdir}/usr/bin"
     
     # add-on
-    install -D -m644 "${srcdir}/d2xr-${_music}-music.dxa" "${pkgdir}/usr/share/d2x-rebirth/d2xr-${_music}-music.dxa"
+    install -D -m644 "d2xr-${_music}-music.dxa" -t "${pkgdir}/usr/share/d2x-rebirth"
     
     # desktop file
-    install -D -m644 d2x-rebirth/d2x-rebirth.desktop "${pkgdir}/usr/share/applications/d2x-rebirth.desktop"
+    install -D -m644 dxx-rebirth/d2x-rebirth/d2x-rebirth.desktop -t "${pkgdir}/usr/share/applications"
     
     # icon
-    install -D -m644 d2x-rebirth/d2x-rebirth.xpm "${pkgdir}/usr/share/pixmaps/d2x-rebirth.xpm"
+    install -D -m644 dxx-rebirth/d2x-rebirth/d2x-rebirth.xpm -t "${pkgdir}/usr/share/pixmaps"
     
     # license
-    install -D -m644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 dxx-rebirth/COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
