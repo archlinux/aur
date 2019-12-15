@@ -13,7 +13,7 @@ optdepends=('mesecons-git')
 makedepends=()
 provides=("$_gitname")
 conflicts=()
-source=("$_gitname::git+https://github.com/minetest-mods/pipeworks")
+source=("$_gitname::git+https://gitlab.com/VanessaE/pipeworks.git")
 sha512sums=('SKIP')
 
 pkgver() {

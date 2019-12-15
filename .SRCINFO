@@ -8,7 +8,7 @@ pkgbase = minetest-mod-pipeworks-git
 	depends = minetest-common>=0.4.13
 	optdepends = mesecons-git
 	provides = minetest-mod-pipeworks
-	source = minetest-mod-pipeworks::git+https://github.com/minetest-mods/pipeworks
+	source = minetest-mod-pipeworks::git+https://gitlab.com/VanessaE/pipeworks.git
 	sha512sums = SKIP
 
 pkgname = minetest-mod-pipeworks-git
