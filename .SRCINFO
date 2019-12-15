@@ -6,19 +6,18 @@ pkgbase = libplist-git
 	url = http://www.libimobiledevice.org/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	makedepends = gcc
+	license = GPL2
+	license = LGPL2.1
+	makedepends = python
+	makedepends = cython
+	makedepends = autoconf-archive
 	makedepends = git
-	makedepends = make
-	makedepends = cmake
-	makedepends = swig
+	makedepends = python-setuptools
 	depends = glib2
-	depends = libxml2
-	depends = python2
 	provides = libplist
 	conflicts = libplist
-	source = git+https://git.libimobiledevice.org/libplist.git
-	md5sums = SKIP
+	source = git+https://github.com/libimobiledevice/libplist
+	sha256sums = SKIP
 
 pkgname = libplist-git
 
