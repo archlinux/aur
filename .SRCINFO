@@ -1,0 +1,15 @@
+pkgbase = muparser-aur
+	pkgdesc = muparser - Fast Math Parser Library
+	pkgver = 2.2.6.1
+	pkgrel = 1
+	url = muparser.beltoforion.de
+	install = .INSTALL
+	arch = i686
+	arch = x86_64
+	depends = gcc-libs
+	provides = muparser
+	source = https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz
+	sha256sums = d2562853d972b6ddb07af47ce8a1cdeeb8bb3fa9e8da308746de391db67897b3
+
+pkgname = muparser-aur
+

@@ -1,0 +1,6 @@
+post_install() {
+	ldconfig
+}
+post_remove() {
+	ldconfig
+}
