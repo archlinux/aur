@@ -2,11 +2,11 @@
 
 pkgname=python-minkowskiengine-git
 _pkgname=MinkowskiEngine
-pkgver=r188.e260dc4
+pkgver=r195.fe836bd
 pkgrel=1
 pkgdesc="Auto-diff library for generalized sparse convolutions"
 url="https://github.com/StanfordVL/MinkowskiEngine"
-depends=('python' 'python-pytorch-cuda' 'python-numpy' 'cuda' 'cudnn' 'cblas' 'intel-tbb')
+depends=('python' 'python-pytorch-cuda' 'python-numpy' 'cuda' 'cudnn' 'cblas')
 optdepends=(
     'python-torchvision: Sample code dependency'
 )
