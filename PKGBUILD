@@ -1,7 +1,8 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=procdump
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc='Generate coredumps based off performance triggers'
 arch=('x86_64')
@@ -9,7 +10,7 @@ url=https://github.com/Microsoft/ProcDump-for-Linux
 license=('MIT')
 depends=('gdb')
 source=("$url/archive/$pkgver/ProcDump-for-Linux-$pkgver.tar.gz")
-sha512sums=('730fe4c16913fe853ac8b67ab7d79161f38b8051d4e02f9285ba7a35eb7f3ab1c6872ff8955f074213876bf08bdfadfaccf5e06275eb3a747607245e6bf33818')
+sha512sums=('93350c0c38f14361422994a3170369a8987adbc68ff9aec47f7f7bb3b05c331f6e5723b75e9783b6cae9d1a9f9b05966f7e4dd391055f10cba49ec1472e3c8be')
 
 build() {
   cd ProcDump-for-Linux-$pkgver
