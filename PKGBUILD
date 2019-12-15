@@ -3,7 +3,7 @@
 pkgname=cppcheck-nox
 _pkgname=cppcheck
 pkgver=1.89
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for static C/C++ code analysis without the GUI"
 arch=('i686' 'x86_64')
 url="http://cppcheck.sourceforge.net/"
@@ -18,13 +18,14 @@ md5sums=('3bc61e54f13639c60a3fc698edb18d61')
 build() {
   cd "${_pkgname}-${pkgver}"
 
-  LANG='en_US.UTF-8' make MATCHCOMPILER=yes SRCDIR=build CFGDIR=/usr/share/cppcheck/cfg HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function"
+  LANG='en_US.UTF-8' 
+  make MATCHCOMPILER=yes FILESDIR=/usr/share/cppcheck CFGDIR=/usr/share/cppcheck/cfg HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG -Wall -Wno-sign-compare -Wno-unused-function"
   make DB2MAN=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/manpages/docbook.xsl CFGDIR=/usr/share/cppcheck/cfg man
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  LANG='en_US.UTF-8' make MATCHCOMPILER=yes DESTDIR=${pkgdir} FILESDIR=/usr/share/cppcheck CFGDIR=/usr/share/cppcheck/cfg SRCDIR=build HAVE_RULES=yes install
+  LANG='en_US.UTF-8' make MATCHCOMPILER=yes DESTDIR=${pkgdir} FILESDIR=/usr/share/cppcheck CFGDIR=/usr/share/cppcheck/cfg HAVE_RULES=yes install
 
   install -D -p -m 644 cppcheck.1 "${pkgdir}"/usr/share/man/man1/cppcheck.1
 

@@ -1,7 +1,7 @@
 pkgbase = cppcheck-nox
 	pkgdesc = A tool for static C/C++ code analysis without the GUI
 	pkgver = 1.89
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cppcheck.sourceforge.net/
 	arch = i686
 	arch = x86_64
