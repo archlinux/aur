@@ -3,3 +3,4 @@ pkg/
 *.pkg.tar.xz
 *.pkg.tar
 *.src.tar.gz
+Savage2-*-linux-x64-installer.run

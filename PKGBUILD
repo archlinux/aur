@@ -1,38 +1,32 @@
-# Contributor: Slash <demodevil5 [at] yahoo [dot] com>
+# Maintainer: Slash <demodevil5 [at] yahoo [dot] com>
 # Contributor: Ali H. Caliskan <ali.h.caliskan@gmail.com>
 # Contributor: Xavier <shiningxc[at]gmail[dot]com>
 
 pkgname=savage2
-pkgver=2.1.0.8
+pkgver=2.1.1.1
 pkgrel=1
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://savage2.com/'
 license=('custom: "Savage 2"')
-depends=('mesa' 'libxml2')
+depends=('mesa' 'libxml2' 'glu')
 makedepends=('unzip')
 install=savage2.install
-source=("http://savage2.s2games.com/downloads/Savage2-${pkgver}-linux-installer.run" \
+source=("http://masterserver1.talesofnewerth.com/download/Savage2-${pkgver}-linux-x64-installer.run" \
 'savage2.launcher' 'savage2.desktop' 's2editor.desktop' 's2mviewer.desktop' 'savage2.sh')
-md5sums=('d049386d1f1fcc262c95275582a0dcd0'
+md5sums=('4826a5db0a6f8c6e8add2176c11c49e2'
          'f08e9499ff5f10b5e5e98454aa595db5'
          'a6957bb87da35d58df86d84a6dca1479'
          'b082a33fd1a580d3c70d80bbbfb0bffe'
          '177155e2c2c4e1382ce9b1343e26b5c7'
          '4acf06412dbd5ebbec89d1c5f2c99b4f')
-[ "$CARCH" = "x86_64" ] && source[0]="http://savage2.s2games.com/downloads/Savage2-${pkgver}-linux-x64-installer.run"
-[ "$CARCH" = "x86_64" ] && md5sums[0]='e126bcfd808a785766a33231f40b066a'
 PKGEXT='.pkg.tar'
 
 package() {
     cd "${srcdir}"
 
-    # Installer name varies between architectures
-    if [ "$CARCH" = "i686" ]; then
-        _installer_name="Savage2-${pkgver}-linux-installer.run"
-    else
-        _installer_name="Savage2-${pkgver}-linux-x64-installer.run"
-    fi
+    # Installer name
+    _installer_name="Savage2-${pkgver}-linux-x64-installer.run"
 
     # Create Destination Directory
     install -d "${pkgdir}/opt/savage2"
