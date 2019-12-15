@@ -2,7 +2,7 @@
 # Co-Maintainer: kekonn <ketsukonn@gmail.com>
 
 pkgname=d9vk-bin
-pkgver=0.40
+pkgver=0.40.1
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase. Binary version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://github.com/Joshua-Ashton/d9vk/releases/download/$pkgver/d9vk-$pkgver.tar.gz"
     "setup_d9vk"
 )
-sha256sums=('ea6c2d9c4e4a7adb63469ebe79290b4637f0912f21858887efd0a8f116e6677a'
+sha256sums=('6bfcf05d68207b140dbfaa938f8e3807d938466682b531d6daa36b22fa0a6d03'
             '7147644664ef33d04f7b18683c47be95b5664c57cf6d63fdc019d915deebd37a')
 
 package() {
