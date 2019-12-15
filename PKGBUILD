@@ -6,13 +6,13 @@ githuborg=pterodactyl
 pkgdesc="Open-source server control and management daemon for pterodactyl-panel."
 pkgver=0.6.12
 pkgpath="github.com/${githuborg}/${pkgname1}"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkgpath}"
 license=()
 makedepends=()
 #https://pterodactyl.io/community/installation-guides/daemon/debian10.html#server-configuration
-depends=(docker nodejs npm)
+depends=(docker nodejs-lts-dubnium npm53)
 source=("${url}/releases/download/v${pkgver}/${pkgname1}.tar.gz")
 sha256sums=('aef507f4b9f1272b678cf8b23c0cf0db58d1bba4e8a02d6744018f63db4ff66a')
 
@@ -42,23 +42,32 @@ build() {
 	sudo npm start
 	' > ${srcdir}/${pkgname}.sh
 	chmod +x ${srcdir}/${pkgname}.sh
+	echo -e "#!/usr/bin/bash
+	#set up pterodactyl daemon config.json
+	sudo nano /srv/daemon/config/core.json" >  ${srcdir}/${pkgname}-config.sh
+	chmod +x ${srcdir}/${pkgname}-config.sh
 }
 
 package() {
 	#https://pterodactyl.io/daemon/getting_started.html#download-files
 	mkdir -p ${pkgdir}/usr/bin/
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
-	mkdir -p ${pkgdir}/srv/${pkgname1}
+	mkdir -p ${pkgdir}/srv/${pkgname1}/npm-cache
 	mkdir -p ${pkgdir}/srv/${pkgname1}-data
-	npm install --cache "${srcdir}/npm-cache"  --only=production -g --user root --prefix ${pkgdir}/srv/${pkgname1} ${srcdir}/${pkgname1}.tar.gz #"$pkgdir"/usr	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
+	cd ${pkgdir}/srv/${pkgname1}
+	tar --strip-components=1 -xzvf ${srcdir}/${pkgname1}.tar.gz
+	#npm install --cache "${srcdir}/npm-cache" -g --user root --prefix ${pkgdir}/srv/${pkgname1} ${srcdir}/${pkgname1}.tar.gz #"$pkgdir"/usr	# Non-deterministic race in npm gives 777 permissions to random directories.
+	npm install --only=production --user root #--cache "${srcdir}/npm-cache" -g #--prefix ${pkgdir}/srv/${pkgname1} #${srcdir}/${pkgname1}.tar.gz #"$pkgdir"/usr	# Non-deterministic race in npm gives 777 permissions to random directories.
+	#npm install --cache "${srcdir}/npm-cache"  --only=production -g --user root --prefix ${pkgdir}/srv/${pkgname1} shs2 ssh2-streams chokidar mmagic fsevents
 	find "${pkgdir}"/srv/${pkgname1} -type d -exec chmod 755 {} +
 	# npm gives ownership of ALL FILES to build user
 	chown -R root:root "$pkgdir"
 	# https://bugs.archlinux.org/task/63396
-	cd ${pkgdir}/srv/${pkgname1}
-	tar --strip-components=1 -xzvf ${srcdir}/${pkgname1}.tar.gz
-		  install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/srv/${pkgname1}/${pkgname}.sh
-		ln -rTsf ${pkgdir}/srv/${pkgname1}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+	#install scripts & systemd service
+  install -Dm755 ${srcdir}/${pkgname}.sh ${pkgdir}/srv/${pkgname1}/${pkgname}.sh
+	ln -rTsf ${pkgdir}/srv/${pkgname1}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+	install -Dm755 ${srcdir}/${pkgname}-config.sh ${pkgdir}/srv/${pkgname1}/${pkgname}-config.sh
+	ln -rTsf ${pkgdir}/srv/${pkgname1}/${pkgname}-config.sh ${pkgdir}/usr/bin/${pkgname}-config
 	install -Dm644 ${srcdir}/wings.service ${pkgdir}/usr/lib/systemd/system/
 }
