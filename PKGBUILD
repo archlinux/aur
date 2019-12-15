@@ -3,8 +3,8 @@
 # Contributor: Daenyth <Daenyth+Arch [at] gmail [dot] com>
 pkgname=rakudo
 pkgver=2019.11
-pkgrel=1
-pkgdesc="Perl6 compiler for MoarVM"
+pkgrel=2
+pkgdesc="Raku compiler for MoarVM"
 arch=('i686' 'x86_64')
 url='http://rakudo.org/'
 license=(PerlArtistic)

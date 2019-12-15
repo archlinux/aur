@@ -1,7 +1,7 @@
 pkgbase = rakudo
-	pkgdesc = Perl6 compiler for MoarVM
+	pkgdesc = Raku compiler for MoarVM
 	pkgver = 2019.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rakudo.org/
 	arch = i686
 	arch = x86_64
