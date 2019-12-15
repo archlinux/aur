@@ -1,19 +1,20 @@
-# Maintainer: Thomas Hine <thomas @ thomashine.xyz>
-pkgname=obs-ndi
-_pkgname=${pkgname%-bin}
-pkgver=4.6.0
-_pkgbuild=1
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+
+pkgname=obs-ndi-bin
+_pkgname=obs-ndi
+pkgver=4.7.1
 pkgrel=1
+_pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
 license=('LGPL2.0')
 url="https://github.com/Palakis/obs-ndi"
 provides=('obs-ndi')
 conflicts=('obs-ndi-git')
-depends=('obs-studio' 'ndi-sdk' 'avahi')
+depends=('obs-studio' 'avahi')
 
-source=("${url}/releases/download/${pkgver}/${pkgname}_${pkgver}-${_pkgbuild}_amd64.deb")
-sha256sums=('eaf0d451527037b0e1b9af5ad69a3aaffc7b583819a45d6f774e846cd2253e03')
+source=(https://github.com/Palakis/"$_pkgname"/releases/download/"$pkgver"/obs-ndi_"$pkgver"-"$_pkgrel"_amd64.deb)
+sha256sums=('de9e4382ec7d490752ddaaa16f7f1042607bfe29da884c54967e058d3691b0b7')
 
 package() {
 	cd "${srcdir}"
