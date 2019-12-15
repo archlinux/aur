@@ -1,0 +1,14 @@
+pkgbase = python-calcmass
+	pkgdesc = A molar mass calculator
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/wsyxbcl/Calcmass
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = python-calcmass-1.5.1.tar.gz::https://github.com/wsyxbcl/Calcmass/archive/1.5.1.tar.gz
+	sha512sums = 90e90effb7a34167d6a93c57d272728127c23d88f482eeb0a30e763d393e9a728ea4b363269cdf5972f51fc4c63e721ce0e0a50de2fff1e8cfc1704bda31c545
+
+pkgname = python-calcmass
+	depends = python
+
