@@ -2,7 +2,7 @@
 
 pkgname=kicad-footprints
 _pkgver="5.1.5"
-pkgver=${_pkgver//-}
+pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Official KiCad footprint libraries -- stable and RC releases"
 arch=('any')
