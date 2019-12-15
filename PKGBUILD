@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=iortcw-it
-pkgver=1.51b
+pkgver=1.51c
 pkgrel=1
 pkgdesc="Return to Castle Wolfenstein Single Player Italian Language File"
 arch=('any')
