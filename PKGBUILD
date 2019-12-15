@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/AndrewCrewKuznetsov/xneur-devel"
 license=('GPL')
 groups=()
-depends=('libglade' "xneur-devel-git>=$pkgver" 'gconf' 'xorg-xprop')
+depends=('libglade' "xneur-devel-git=$pkgver" 'gconf' 'xorg-xprop' '')
 makedepends=('git')
 checkdepends=()
 optdepends=()
@@ -29,6 +29,7 @@ build() {
     cd "$srcdir/xneur-devel/gxneur"
     #./autogen.sh --prefix=/usr
     #sed -i 's/TODO//' Makefile
+    touch README
     ./autogen.sh --prefix=/usr --with-gtk=gtk2 --without-xosd
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
     cmake --build build
