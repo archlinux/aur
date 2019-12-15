@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-lightning
 	pkgdesc = Rapid research framework for PyTorch. The researcher's version of Keras
 	pkgver = 0.5.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/williamFalcon/pytorch-lightning
 	arch = any
 	license = Apache
