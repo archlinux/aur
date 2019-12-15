@@ -1,10 +1,10 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-smcp')
+pkgbase='python-smcp'
 pkgname=('python-smcp' 'python2-smcp')
 pkgdesc="A Python solver for sparse matrix cone programs."
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='http://smcp.readthedocs.io'
 license=('gpl3')
