@@ -1,9 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net>
-# Contributor: Caleb Cushing <xenoterracide@gmail.com>
-# Contributor: Attila Bukor <r1pp3rj4ck@w4it.eu>
 
 pkgname=apache-cxf
-pkgver=3.3.2
+pkgver=3.3.4
 pkgrel=1
 pkgdesc='open source services framework'
 arch=('any')
@@ -39,5 +37,5 @@ package() {
   install -m 644  "${srcdir}/apache-cxf.sh" "${pkgdir}/etc/profile.d"
 }
 
-sha256sums=('f97a385436173597211edcd8e1648d5fa4aaaa00ce1f4fa1a7537a7944aba1be'
+sha256sums=('0cbf41a05e3caaf0d4e1e9654e272cc3b9d5e016308585dac2d3e49ed4123957'
             'c52ba86604138776e50f6fc9506e21ad6f30064a54a0aaef3d5316245b14e668')
