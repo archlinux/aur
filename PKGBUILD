@@ -1,25 +1,34 @@
-# Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
-pkgname='java-freehep-vectorgraphics'
-_pkgname='vectorgraphics'
-pkgver='2.1.1'
-pkgrel=2
-pkgdesc='A Image and Vector Graphics package which enables Java programs to generate image and vector graphics in a variety of formats'
-depends=('java-runtime')
-arch=('i686' 'x86_64')
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: eolianoe <eolianoe At GoogleMAIL DoT com>
+
+_pkgname=freehep-vectorgraphics
+pkgname=java-$_pkgname
+pkgver=2.4
+pkgrel=1
+pkgdesc='A vector graphics package'
+arch=('x86_64')
 license=('LGPL2.1')
-url='http://java.freehep.org/vectorgraphics/'
-source=(ftp://ftp.slac.stanford.edu/software/freehep/VectorGraphics/v${pkgver}/${_pkgname}-${pkgver}-bin.tar.gz)
-sha256sums=('f507586f3834258564e43759c1ef72c7abf1648e89f07ef4b2e4cbdcb6fed587')
+depends=('java-runtime')
+makedepends=('maven')
+url="https://freehep.github.io"
+source=("https://codeload.github.com/freehep/$_pkgname/tar.gz/$_pkgname-$pkgver")
+sha256sums=('ec24182331283c3b81393c446cbd743a95e24901809dc755a930956798468dee')
+
+prepare() {
+  find $srcdir/$_pkgname-$_pkgname-$pkgver -name "pom.xml" \
+    -exec sed -i "s/2.3.1-SNAPSHOT/2.4/g" {} +
+}
+
+build() {
+  cd $srcdir/$_pkgname-$_pkgname-$pkgver
+  mvn -DskipTests=true clean package
+}
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  install -Dm644 "LICENSE.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-
-  cd lib
-  for file in `find . -maxdepth 1 -regex ".*\.jar" | xargs`; do
-    install -Dm644 "${file}" \
-      "${pkgdir}/usr/share/java/${_pkgname}/${file}"
+  install -dm755 $pkgdir/usr/share/java
+  cd $srcdir/$_pkgname-$_pkgname-$pkgver
+  for file in `find . -maxdepth 3 -name "freehep*.jar" | xargs`; do
+    install -Dm644 ${file} \
+      $pkgdir/usr/share/java/$( echo $file | sed "s@/target@@g" )
   done
 }

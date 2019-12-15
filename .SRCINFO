@@ -1,14 +1,14 @@
 pkgbase = java-freehep-vectorgraphics
-	pkgdesc = A Image and Vector Graphics package which enables Java programs to generate image and vector graphics in a variety of formats
-	pkgver = 2.1.1
-	pkgrel = 2
-	url = http://java.freehep.org/vectorgraphics/
-	arch = i686
+	pkgdesc = A vector graphics package
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://freehep.github.io
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = maven
 	depends = java-runtime
-	source = ftp://ftp.slac.stanford.edu/software/freehep/VectorGraphics/v2.1.1/vectorgraphics-2.1.1-bin.tar.gz
-	sha256sums = f507586f3834258564e43759c1ef72c7abf1648e89f07ef4b2e4cbdcb6fed587
+	source = https://codeload.github.com/freehep/freehep-vectorgraphics/tar.gz/freehep-vectorgraphics-2.4
+	sha256sums = ec24182331283c3b81393c446cbd743a95e24901809dc755a930956798468dee
 
 pkgname = java-freehep-vectorgraphics
 
