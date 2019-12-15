@@ -1,7 +1,7 @@
 pkgbase = d1x-rebirth
 	pkgdesc = An enhanced engine to play with Descent1 data.
 	pkgver = 20191121
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dxx-rebirth.com/
 	install = d1x-rebirth.install
 	arch = x86_64

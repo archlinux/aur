@@ -4,7 +4,7 @@
 
 pkgname=d1x-rebirth
 pkgver=20191121
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhanced engine to play with Descent1 data."
 arch=('x86_64')
 url="http://www.dxx-rebirth.com/"
@@ -22,7 +22,6 @@ md5sums=('049cae350eab9da1c3bb2561cedadf27'
 
 build() {
 	cd "dxx-rebirth_$pkgver-src"
-	sed -ie "/^PREFIX =/s|/usr/local/|/usr/|" SConstruct
 	scons sharepath="/usr/share/$pkgname" d1x=1
 }
 
