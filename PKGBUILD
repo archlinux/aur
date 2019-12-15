@@ -17,7 +17,7 @@ license=('BSD')
 depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit'
   'openmpi' 'python' 'libxt' 'libharu' 'proj' 'glew' 'netcdf' 'libusb')
 makedepends=('cmake' 'gl2ps' 'python')
-optdepends=('cuda' 'openni2' 'python2-sphinx')
+optdepends=('cuda' 'openni2' 'python-sphinx')
 source=("pcl-${pkgver}.tar.gz"::"https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz"
         "https://github.com/PointCloudLibrary/pcl/commit/dbadf4143bdc503203da0d87a786752a60d29e76.patch"
         "https://github.com/PointCloudLibrary/pcl/commit/9f7a246f962aa26740b8ded6f45e8a8ae944d588.patch")
