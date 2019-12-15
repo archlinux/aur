@@ -1,10 +1,10 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-chompack')
+pkgbase='python-chompack'
 pkgname=('python-chompack' 'python2-chompack')
 pkgdesc="A Python library for chordal matrix computations."
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='http://chompack.readthedocs.io'
 license=('gpl3')
