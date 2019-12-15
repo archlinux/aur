@@ -1,5 +1,5 @@
 pkgbase = rustotpony
-	pkgdesc = 🐴 RusTOTPony — CLI manager of one-time password generators aka Google Authenticator
+	pkgdesc = RusTOTPony — CLI manager of one-time password generators aka Google Authenticator
 	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/zebradil/rustotpony
