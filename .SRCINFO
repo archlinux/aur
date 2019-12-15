@@ -1,7 +1,7 @@
 pkgbase = xkb-switch-i3-git
 	pkgdesc = Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)
 	pkgver = 1.6.0.r7.g69fe11f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zebradil/xkb-switch-i3
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = xkb-switch-i3-git
 	depends = libxkbfile
 	depends = i3-wm
 	depends = libsigc++
+	depends = libjsoncpp
 	provides = xkb-switch
 	conflicts = xkb-switch
 	source = git+https://github.com/zebradil/xkb-switch-i3.git#branch=master
