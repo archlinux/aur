@@ -1,12 +1,12 @@
 pkgbase = ruby-http-cookie
 	pkgdesc = A Ruby library to handle HTTP cookies in a way both compliant with RFCs and compatible with today's major browsers.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sparklemotion/http-cookie
 	arch = any
 	license = MIT
 	makedepends = rubygems
-	makedepends = rdoc
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-domain_name
 	noextract = http-cookie-1.0.3.gem
