@@ -1,6 +1,6 @@
 pkgbase = hidviz
 	pkgdesc = Tool for in-depth analysis of USB HID devices communication
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/ondrejbudai/hidviz
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = hidviz
 	depends = cmake
 	provides = hidviz
 	conflicts = hidviz
-	source = http://hidviz.org/releases/hidviz-0.1.4.tar.gz
-	sha256sums = a68f5626b184c76cc54bd60735b6fbe715d86958f9a4ef3147b30b9bb8dbff9b
+	source = http://hidviz.org/releases/hidviz-0.1.5.tar.gz
+	sha256sums = bb5ea7c595ecf35e4311edbad040b5eb7061ea1ee0c47a550d2ef1dc1dec22ef
 
 pkgname = hidviz
 
