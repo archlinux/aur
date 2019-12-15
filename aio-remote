@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ ! -r ~/.config/aio-remote/config.ini ]]; then
+	install -Dm644 /usr/share/doc/aio-remote/config.ini.example ~/.config/aio-remote/config.ini
+fi
+
+cd ~/.config/aio-remote
+

@@ -1,17 +1,19 @@
 pkgbase = aio-remote
 	pkgdesc = All In One remote to control any application using an android app.
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aioremote.net
 	arch = any
 	license = unknown
-	depends = java-environment
-	depends = bash
+	makedepends = wget
+	depends = java-runtime=8
 	optdepends = bluez: for bluetooth support
 	source = aio-remote.desktop
 	source = aio-remote.png
-	md5sums = de3ff5e5931c17a46a0719d773a58afe
-	md5sums = 2b70bbd76e20a9181470a7f415f2c9cf
+	source = aio-remote
+	md5sums = fcebc46b9245b7a40cff4b58e66635f7
+	md5sums = 84d303db6c7a90e2d2e46371e4fcef8f
+	md5sums = 3e67e3b48e5e9a77a49dc8d1576e3392
 
 pkgname = aio-remote
 
