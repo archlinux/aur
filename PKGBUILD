@@ -3,8 +3,8 @@
 # Contributor: David Herrmann <dh.herrmann@googlemail.com>
 pkgname=kmscon-patched-git
 _gitname=kmscon
-pkgver=0.0.0
-pkgrel=5
+pkgver=8.r39.gc73ccd2
+pkgrel=1
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS) (forked and patched version)'
 arch=('x86_64' 'armv7h')
 url='https://github.com/Aetf/kmscon'
