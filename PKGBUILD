@@ -11,7 +11,7 @@ url="http://www.libimobiledevice.org"
 license=('LGPL3')
 depends=('libirecovery-git' 'libimobiledevice-git' 'libzip' 'openssl' 'curl')
 makedepends=('git')
-source=("git+https://git.libimobiledevice.org/idevicerestore.git"
+source=("git+https://github.com/libimobiledevice/idevicerestore"
         "0001-configure.ac-check-for-pthreads.patch")
 sha256sums=('SKIP'
             'c259a9f977de42fbfde75ad0c9a4d813b7d39bf217ee416902409403cd6d7931')
