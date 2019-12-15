@@ -2,13 +2,13 @@
 
 pkgname=langmix-git
 pkgver=v0.1.r21.g5a06813
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract and merge multilingual subtitles into one file"
 arch=('any')
 url="https://github.com/radioxoma/langmix"
 license=('MIT')
 groups=()
-depends=('python-pysrt' 'ffmpeg')
+depends=('python-pysrt')
 makedepends=('git' 'python-setuptools')
 checkdepends=()
 optdepends=('ffmpeg: extract subtitles to SRT')
