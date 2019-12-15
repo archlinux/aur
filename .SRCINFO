@@ -1,6 +1,6 @@
 pkgbase = ldpl-git
 	pkgdesc = COBOL inspired language, designed to be expressive, fast, readable and easy to learn.
-	pkgver = 3.0.5.r21.72d49f8
+	pkgver = 4.4.r41.d27b8e4
 	pkgrel = 1
 	url = https://www.ldpl-lang.org/
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = ldpl-git
 	conflicts = ldpl
 	source = git+https://github.com/Lartu/ldpl.git
 	source = dont-do-mandb.patch
+	source = lpm-flags.patch
 	md5sums = SKIP
-	md5sums = dc344057eee2032c7b49562b507db99a
+	md5sums = 2764e75489cfc352d2bad67f554d2cc6
+	md5sums = c4cb95cca6596d629299ac58e0d0e551
 
 pkgname = ldpl-git
 

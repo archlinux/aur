@@ -1,0 +1,25 @@
+From f35d26ded650c80f3f18b179db524c9aa723e4b9 Mon Sep 17 00:00:00 2001
+From: Ignacio Losiggio <iglosiggio@dc.uba.ar>
+Date: Sun, 15 Dec 2019 18:06:10 -0300
+Subject: [PATCH] makefile: Make lpm flags configurable
+
+---
+ src/makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/makefile b/src/makefile
+index 7cb45fa..052d582 100644
+--- a/src/makefile
++++ b/src/makefile
+@@ -34,7 +34,7 @@ endif
+ 
+ all: $(OBJS) ldpl.1
+ 	$(CXX) -g $(OBJS) -o $(OUT) $(LFLAGS) $(CROSS)
+-	./ldpl ../lpm/lpm.ldpl -o=lpm
++	./ldpl ../lpm/lpm.ldpl -f="$(LPMFLAGS)" -o=lpm
+ 
+ ldpl.o: ldpl.cpp ldpl_lib.cpp
+ 	awk -f lib-to-string.awk ldpl_lib.cpp > ldpl_included_lib.cpp
+-- 
+2.24.1
+
