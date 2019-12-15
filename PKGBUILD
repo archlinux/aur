@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-git
-pkgver=5.0.0.r228.ge73dc9355
+pkgver=5.0.0.r413.g46c14aeac
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation - Git version"
 arch=('x86_64' 'aarch64')
