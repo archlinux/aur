@@ -1,6 +1,6 @@
 pkgbase = python2-translate-toolkit-lib
 	pkgdesc = A toolkit to convert between various different translation formats, help process and validate localisations
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://toolkit.translatehouse.org/
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python2-translate-toolkit-lib
 	depends = python2-lxml
 	depends = python2-six
 	depends = python2-diff-match-patch
-	optdepends = gaupol: for po2sub
-	source = translate-toolkit-2.3.1.tar.gz::https://github.com/translate/translate/archive/2.3.1.tar.gz
-	sha256sums = 0b2d79f0023ce545c6240829624ce1e1ce54ea7bc7913428880345ff423fd999
+	depends = python2-cheroot
+	source = translate-toolkit-2.4.0.tar.gz::https://github.com/translate/translate/archive/2.4.0.tar.gz
+	sha256sums = 7f1d6a9566bb512fd88d51bd8bc920f42e379c91a4686761dbe89762f8a3a51d
 
 pkgname = python2-translate-toolkit-lib
 
