@@ -1,36 +1,47 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Gabriel Martinez < reitaka at gmail dot com >
 # Contributor: Adam Eberlin < ae at adameberlin dot com >
 
 pkgname=libplist-git
 epoch=1
-pkgver=1.12.r83.g5b0184a
+pkgver=2.1.0.r11.g878d0d8
 pkgrel=1
 pkgdesc="A library to handle Apple Property List format whereas it's binary or XML"
 url="http://www.libimobiledevice.org/"
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('glib2' 'libxml2' 'python2')
-makedepends=('gcc' 'git' 'make' 'cmake' 'swig')
+license=('GPL2' 'LGPL2.1')
+depends=('glib2')
+makedepends=('python' 'cython' 'autoconf-archive' 'git' 'python-setuptools')
 provides=('libplist')
 conflicts=('libplist')
-source=("git+https://git.libimobiledevice.org/libplist.git")
-md5sums=('SKIP')
+source=("git+https://github.com/libimobiledevice/libplist")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd libplist
+	git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+	cd libplist
+	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
 	cd libplist
-
-	PYTHON=/usr/bin/python2 ./autogen.sh --prefix=/usr
+	./configure --prefix=/usr
 	make
+}
+
+check() {
+	cd libplist
+	make check
 }
 
 package() {
 	cd libplist
-
 	make DESTDIR="$pkgdir" install
+	install -Dm644 cython/plist.pxd -t "${pkgdir}/usr/include/plist/cython"
 }
