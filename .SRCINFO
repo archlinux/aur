@@ -1,6 +1,6 @@
-pkgbase = simple-http-server
+pkgbase = simple-http-server-git
 	pkgdesc = Simple http server in Rust
-	pkgver = 0.4.7
+	pkgver = r145.3483193
 	pkgrel = 1
 	url = https://github.com/TheWaWaR/simple-http-server
 	arch = i686
@@ -10,8 +10,12 @@ pkgbase = simple-http-server
 	license = MIT
 	makedepends = cargo
 	depends = openssl-1.0
-	source = https://crates.io/api/v1/crates/simple-http-server/0.4.7/download
-	sha384sums = 00479097e8fa191a4e6ec41b762fde7f5e8ac956a1391f2ea30dcea51b134d9e22a520f810ff72222f7a9033a77e0467
+	provides = simple-http-server
+	conflicts = simple-http-server
+	source = git+https://github.com/TheWaWaR/simple-http-server.git
+	source = simple-http-server@.service
+	sha384sums = SKIP
+	sha384sums = 70a1a58c192e9bdaa3f5c7a3457bc42ccf3b010134c827380f6db540f518eb9ecad27250ad47fb9a3cb22f5b0c3ef8ac
 
-pkgname = simple-http-server
+pkgname = simple-http-server-git
 
