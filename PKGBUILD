@@ -13,8 +13,8 @@ provides=('xkb-switch')
 arch=('i686' 'x86_64')
 url="https://github.com/zebradil/${_pkgname}"
 license=('GPL3')
-depends=('libx11' 'libxkbfile')
-makedepends=('git' 'cmake')
+depends=('libx11' 'libxkbfile' 'i3-wm')
+makedepends=('git' 'cmake' 'libsigc++')
 source=(
     "git+https://github.com/zebradil/${_pkgname}.git#branch=master"
     "git+https://github.com/drmgc/i3ipcpp.git"
