@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=peerflix-server
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Streaming torrent client for node.js with web ui"
 arch=('i686' 'x86_64')
