@@ -49,6 +49,6 @@ GRUB_DISABLE_RECOVERY=true
 # Uncomment to get a beep at GRUB start
 #GRUB_INIT_TUNE="480 440 1"
 
-# Uncomment to make GRUB remember the last selection. This requires to
-# set 'GRUB_DEFAULT=saved' above.
+# Uncomment to make GRUB remember the last selection. This requires
+# setting 'GRUB_DEFAULT=saved' above.
 #GRUB_SAVEDEFAULT="true"

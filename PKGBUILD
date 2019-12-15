@@ -11,7 +11,7 @@ _GRUB_EMU_BUILD="0"
 
 _GRUB_EXTRAS_COMMIT="136763a4cc9ca3a4f59d05b79eede2159d6f441e"
 _GNULIB_COMMIT="9ce9be2ef0cb1180e35dfe9dfbbe90d774b374bd"
-_UNIFONT_VER="12.1.02"
+_UNIFONT_VER="12.1.04"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
 [[ "${CARCH}" == "i686" ]] && _EFI_ARCH="i386"
@@ -23,7 +23,7 @@ pkgname='grub-libzfs'
 pkgdesc='GNU GRand Unified Bootloader (2) - libzfs support'
 _pkgver=2.04
 pkgver=${_pkgver/-/}
-pkgrel=2
+pkgrel=3
 epoch=2
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
@@ -61,7 +61,7 @@ validpgpkeys=('E53D497F3FA42AD8C9B4D1E835A93B74E82E4209'  # Vladimir 'phcoder' S
 source=("git+https://git.savannah.gnu.org/git/grub.git#tag=grub-${_pkgver}?signed"
         "git+https://git.savannah.gnu.org/git/grub-extras.git#commit=${_GRUB_EXTRAS_COMMIT}"
         "git+https://git.savannah.gnu.org/git/gnulib.git#commit=${_GNULIB_COMMIT}"
-        "https://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
+        "http://unifoundry.com/pub/unifont/unifont-${_UNIFONT_VER}/font-builds/unifont-${_UNIFONT_VER}.bdf.gz"{,.sig}
         '0003-10_linux-detect-archlinux-initramfs.patch'
         '0004-add-GRUB_COLOR_variables.patch'
         'grub.default')
@@ -69,13 +69,15 @@ source=("git+https://git.savannah.gnu.org/git/grub.git#tag=grub-${_pkgver}?signe
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '04d652be1e28a6d464965c75c71ac84633085cd0960c2687466651c34c94bd89'
+            'bab15252ad82d20d5b107965f3b31de9efbce82f0a3f0b7bbf6dd142e42b0710'
             'SKIP'
             '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            'b8fe532668cb12c34d2a26221298f2459fac7c5578a14476a2af8c20aed5c101')
+            '690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3')
 
 _backports=(
+	# grub-mkconfig: Use portable "command -v" to detect installed programs
+	'28a7e597de0d5584f65e36f9588ff9041936e617'
 )
 
 _configure_options=(
