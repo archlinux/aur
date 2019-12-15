@@ -1,6 +1,8 @@
 # Maintainer: Otto Sabart <aur@seberm.com>
 # Maintainer: arjan5 <aur@anymore.nl>
 
+# Ref.: https://github.com/QubesOS/qubes-app-linux-usb-proxy/blob/master/archlinux/PKGBUILD
+
 pkgname=qubes-usb-proxy
 pkgver=1.0.24
 pkgrel=1
