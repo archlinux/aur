@@ -1,6 +1,6 @@
 pkgbase = raspberrypi-stop-initramfs
 	pkgdesc = Prevent kernel updates on RPix from generating useless kernel images
-	pkgver = 2
+	pkgver = 3
 	pkgrel = 1
 	install = readme.install
 	arch = armv6h
