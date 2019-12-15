@@ -1,7 +1,7 @@
 pkgbase = opendrop
 	pkgdesc = An open Apple AirDrop implementation
-	pkgver = 0.10.2
-	pkgrel = 3
+	pkgver = 0.10.3
+	pkgrel = 1
 	url = https://github.com/seemoo-lab/opendrop
 	arch = any
 	license = GPL
@@ -16,8 +16,8 @@ pkgbase = opendrop
 	depends = python-libarchive-c
 	depends = python-netifaces
 	depends = owlink
-	source = https://files.pythonhosted.org/packages/source/o/opendrop/opendrop-0.10.2.tar.gz
-	sha256sums = 02768ba9f3daf72a81273545215b1997e9e6975af985a3b1a67e223b2c0bd61f
+	source = https://github.com/seemoo-lab/opendrop/archive/v0.10.3.tar.gz
+	sha256sums = d9de0d24977569410e4d4304842589ba9216edd1ea8ff4f03c9edcd7711e1006
 
 pkgname = opendrop
 
