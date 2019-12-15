@@ -4,4 +4,4 @@ Type=Application
 Name=AIO Remote
 Comment=All In One Remote
 Exec=aio-remote
-Icon=/usr/share/aio-remote/aio-remote.png
+Icon=aio-remote

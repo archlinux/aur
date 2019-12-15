@@ -1,18 +1,20 @@
 # Maintainer: Connor Reeder <connor.reeder@ymail.com>
 
 pkgname=aio-remote
-pkgrel=1
+pkgrel=2
 pkgver=3.5.0
 pkgdesc="All In One remote to control any application using an android app."
 arch=("any")
 url="https://aioremote.net"
 license=('unknown')
-depends=("java-environment" "bash")
+depends=("java-runtime=8")
+makedepends=("wget")
 optdepends=('bluez: for bluetooth support')
-source=("$pkgname.desktop" "$pkgname.png")
+source=("$pkgname.desktop" "$pkgname.png" "$pkgname")
 noextract=()
-md5sums=('de3ff5e5931c17a46a0719d773a58afe'
-         '2b70bbd76e20a9181470a7f415f2c9cf')
+md5sums=('fcebc46b9245b7a40cff4b58e66635f7'
+         '84d303db6c7a90e2d2e46371e4fcef8f'
+         '3e67e3b48e5e9a77a49dc8d1576e3392')
 
 prepare() {
 	echo "Determining latest version..."
@@ -26,9 +28,7 @@ prepare() {
 	find . -name "config.ini" -exec mv {} . \;
 	echo $latest_url | sed 's/_linux.zip$//' | sed 's/^.*AioRemoteDesktop//' > version.txt
 	echo ${jar_file} > jar_file.txt
-	echo '#!/bin/bash' >> aio-remote
-	echo "cd /usr/share/${pkgname}" >> aio-remote
-	echo "java -jar ${jar_file}" >> aio-remote
+	echo "exec /usr/bin/java -jar /usr/share/java/${pkgname}/${jar_file}" >> ${srcdir}/aio-remote
 }
 pkgver() {
 	cat version.txt
@@ -36,9 +36,9 @@ pkgver() {
 
 package() {
 	local jar_file=$(cat jar_file.txt)
-	install -Dm644 ${jar_file} "$pkgdir/usr/share/$pkgname/${jar_file}"
-	install -Dm644 "config.ini" "$pkgdir/usr/share/$pkgname/config.ini"
-	install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/${pkgname}/${pkgname}.png"
+	install -Dm644 ${jar_file} "$pkgdir/usr/share/java/$pkgname/${jar_file}"
+	install -Dm644 "config.ini" "$pkgdir/usr/share/doc/$pkgname/config.ini.example"
+	install -Dm644 "${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
 	install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
 	install -Dm644 ${pkgname}.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
