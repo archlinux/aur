@@ -1,0 +1,3 @@
+post_install() {
+echo "Note: This game is known to not work well on certain window managers -- ratpoison inparticular. If you experience issues, try switching window managers or using a full fledged desktop environment such as mate or gnome."
+}

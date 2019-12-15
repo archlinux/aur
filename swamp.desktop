@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Swamp
+Comment=First person audio shooter
+Exec=swamp
+Terminal=false
+Icon=swamp
+Type=Application
+Categories=Wine;Game;Games;
