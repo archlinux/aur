@@ -1,7 +1,7 @@
 pkgbase = xampp
 	pkgdesc = A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages
-	pkgver = 7.3.11
-	pkgrel = 3
+	pkgver = 7.3.12
+	pkgrel = 1
 	url = http://www.apachefriends.org/
 	install = xampp.install
 	arch = x86_64
@@ -26,10 +26,10 @@ pkgbase = xampp
 	sha256sums = 567dcfe99dde385cd93da38ea2ffa9ae9b350d8b4019debc1fb22b3154df4206
 	sha256sums = 731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a
 	sha256sums = 3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e
-	source_x86_64 = https://www.apachefriends.org/xampp-files/7.3.11/xampp-linux-x64-7.3.11-0-installer.run
+	source_x86_64 = https://www.apachefriends.org/xampp-files/7.3.12/xampp-linux-x64-7.3.12-0-installer.run
 	source_x86_64 = org.freedesktop.xampp-manager.policy
 	source_x86_64 = xampp-manager-polkit
-	sha256sums_x86_64 = 53710f3d8c5a0b4d145382243093fde927c28a6dc3cf8e3af5bbe2b1c03465ad
+	sha256sums_x86_64 = 0bfb680f0745df93bea7a90de44357ff7729c2c29f7aa9880d9987f7ba539be4
 	sha256sums_x86_64 = 4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418
 	sha256sums_x86_64 = 210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b
 
