@@ -26,15 +26,17 @@ md5sums=('SKIP')
 
 validpgpkeys=()
 
-build() {
+prepare() {
+    if test ! -h /usr/include/enchant; then
+        echo "You have to check if enchant1.6 is installed"
+        echo "And /usr/include/enchant is a symlink to /usr/include/enchant1.6"
+        echo "ln -s /usr/include/enchant1.6 /usr/include/enchant"
+	exit 127
+    fi
 
-	if test ! -h /usr/include/enchant; then
-		echo "You have to check if enchant1.6 is installed"
-		echo "And /usr/include/enchant is a symlink to /usr/include/enchant1.6"
-		echo "ln -s /usr/include/enchant1.6 /usr/include/enchant"
-		exit 127
-	fi
+}
 
+build() {	
 	cd "$srcdir/xneur-devel/xneur"
         #./autogen.sh --prefix=/usr/ --sysconfdir=/etc --without-xosd --with-gtk=gtk2
 	#./configure --prefix=/usr/ --sysconfdir=/etc --without-xosd --with-gtk=gtk2
