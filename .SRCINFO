@@ -1,12 +1,14 @@
 pkgbase = python2-opensubtitles-git
-	pkgdesc = wrapper to the common methods at OpenSubtitles.org
-	pkgver = 20131117
+	pkgdesc = Simple module to access to the OpenSubtitles.org subtitles database. This class is a wrapper for the common methods used by the OpenSubtitles API.
+	pkgver = 66.ceac6ebad440
 	pkgrel = 1
 	url = https://github.com/agonzalezro/python-opensubtitles
 	arch = any
-	license = BSD
+	license = ISC
 	depends = python2
 	depends = python2-setuptools
+	source = python2-opensubtitles::git+https://github.com/agonzalezro/python-opensubtitles.git
+	sha512sums = SKIP
 
 pkgname = python2-opensubtitles-git
 

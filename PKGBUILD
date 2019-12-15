@@ -1,41 +1,26 @@
-# Maintainer: Sabart Otto - Seberm <seberm[at]gmail[dot].com
- 
+# Maintainer: Sabart Otto - Seberm <seberm@seberm.com
+
 pkgname=python2-opensubtitles-git
-pkgver=20131117
+_gitname=${pkgname%-git*}
+pkgver='66.ceac6ebad440'
 pkgrel=1
-pkgdesc="wrapper to the common methods at OpenSubtitles.org"
+pkgdesc="Simple module to access to the OpenSubtitles.org subtitles database. This class is a wrapper for the common methods used by the OpenSubtitles API."
 url="https://github.com/agonzalezro/python-opensubtitles"
 arch=('any')
-license=('BSD')
-install=''
-source=()
+license=('ISC')
 depends=('python2' 'python2-setuptools')
 optdepends=()
 conflicts=()
-provides=''
 makedepends=()
+provides=()
+source=("$_gitname::git+https://github.com/agonzalezro/python-opensubtitles.git")
+sha512sums=('SKIP')
 
-_gitname="python-opensubtitles"
-_gitroot="https://github.com/agonzalezro/${_gitname}.git"
- 
- 
-build() {
-  cd $srcdir
-  msg "Connecting to GIT (${_gitroot}) ..."
- 
-  if [ -d $_gitname ]; then
-    cd $_gitname && git pull origin
-    msg "The local files of ${_gitname} were updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
- 
-  msg "GIT checkout done or server timeout"
- 
-  cd $srcdir/${_gitname}/
-  python2 setup.py build
+pkgver() {
+  cd "$srcdir/$_gitname"
+  echo $(git rev-list --count master).$(git rev-parse --short master)
 }
- 
+
 package() {
     cd $srcdir/${_gitname}
     python2 setup.py install -f --root="$pkgdir"
