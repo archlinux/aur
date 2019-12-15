@@ -1,7 +1,7 @@
 pkgbase = gmsh
 	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities.
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gmsh.info/
 	arch = x86_64
 	license = custom
