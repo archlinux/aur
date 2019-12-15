@@ -2,19 +2,19 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=teeworlds-git
-pkgver=0.7.2.4167.3c165cce0
+pkgver=0.7.3.4706.65c1d46f5
 pkgrel=1
 pkgdesc='Multiplayer 2D shooter'
 arch=('x86_64')
-url="http://teeworlds.com"
+url="https://teeworlds.com"
 license=('custom')
 depends=('alsa-lib' 'glu' 'mesa' 'gcc-libs' 'sdl2' 'freetype2')
 makedepends=('python' 'git' 'bam' 'imagemagick')
 provides=('teeworlds')
 conflicts=('teeworlds')
-source=(git+https://github.com/teeworlds/teeworlds.git
-        git+https://github.com/teeworlds/teeworlds-translation.git
-        git+https://github.com/teeworlds/teeworlds-maps.git)
+source=('git+https://github.com/teeworlds/teeworlds.git'
+        'git+https://github.com/teeworlds/teeworlds-translation.git'
+        'git+https://github.com/teeworlds/teeworlds-maps.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
@@ -57,11 +57,12 @@ package() {
   install -m644 other/teeworlds.appdata.xml   "$pkgdir/usr/share/metainfo/"
   install -m644 other/teeworlds.desktop       "$pkgdir/usr/share/applications/"
 
-   # install client and server icon files according to the imagem size
+   # Install client and server icon files according to the image size
   for num in 0 1 2 3 4 5; do
     _s=$(file "$srcdir/teeworlds-$num.png" | cut -d' ' -f5)
     [[ $_s == ?(-)+([0-9]) ]]  # is it a number?
     _s=${_s}x${_s}
-    install -Dm644 "$srcdir/teeworlds-$num.png" "$pkgdir/usr/share/icons/hicolor/$_s/apps/teeworlds.png"
+    install -Dm644 "$srcdir/teeworlds-$num.png" \
+        "$pkgdir/usr/share/icons/hicolor/$_s/apps/teeworlds.png"
   done
 }

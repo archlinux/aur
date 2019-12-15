@@ -1,8 +1,8 @@
 pkgbase = teeworlds-git
 	pkgdesc = Multiplayer 2D shooter
-	pkgver = 0.7.2.4167.3c165cce0
+	pkgver = 0.7.3.4706.65c1d46f5
 	pkgrel = 1
-	url = http://teeworlds.com
+	url = https://teeworlds.com
 	arch = x86_64
 	license = custom
 	makedepends = python
