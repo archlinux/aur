@@ -2,8 +2,9 @@
 
 pkgname=kicad-rc
 _pkgver="5.1.5"
-pkgver=${_pkgver/-rc/.}
+pkgver=${_pkgver//-/_}
 pkgrel=1
+epoch=0
 pkgdesc="Official KiCad release candidates and dev snapshots"
 arch=('any')
 url="http://kicad-pcb.org/"
