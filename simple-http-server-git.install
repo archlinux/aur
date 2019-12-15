@@ -1,0 +1,5 @@
+# arg 1:  the new package version
+post_install() {
+    echo 'Paths must be escaped when starting Systemd service'
+    echo 'example: systemctl start simple-http-server@$(systemd-escape -p /path/to/directory)'
+}

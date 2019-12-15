@@ -3,7 +3,7 @@ Description=Simple http server in Rust
 After=network.target network-online.target nss-lookup.target
 
 [Service]
-WorkingDirectory=%i
+WorkingDirectory=%f
 ExecStart=/usr/bin/simple-http-server -p 80
 
 [Install]

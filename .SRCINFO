@@ -3,6 +3,7 @@ pkgbase = simple-http-server-git
 	pkgver = r145.3483193
 	pkgrel = 1
 	url = https://github.com/TheWaWaR/simple-http-server
+	install = simple-http-server-git.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -15,7 +16,7 @@ pkgbase = simple-http-server-git
 	source = git+https://github.com/TheWaWaR/simple-http-server.git
 	source = simple-http-server@.service
 	sha384sums = SKIP
-	sha384sums = 70a1a58c192e9bdaa3f5c7a3457bc42ccf3b010134c827380f6db540f518eb9ecad27250ad47fb9a3cb22f5b0c3ef8ac
+	sha384sums = a92987285f702de7eb5c34261e1c7d187b63c151db91fe6428c94428f24f771f0d38139d30febc4dfbfc76a8a697312f
 
 pkgname = simple-http-server-git
 

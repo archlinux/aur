@@ -13,11 +13,12 @@ depends=('openssl-1.0')
 makedepends=('cargo')
 conflicts=('simple-http-server')
 provides=('simple-http-server')
+install=simple-http-server-git.install
 options=()
 source=("git+https://github.com/TheWaWaR/$_pkgname.git"
         "simple-http-server@.service")
 sha384sums=('SKIP'
-            '70a1a58c192e9bdaa3f5c7a3457bc42ccf3b010134c827380f6db540f518eb9ecad27250ad47fb9a3cb22f5b0c3ef8ac')
+            'a92987285f702de7eb5c34261e1c7d187b63c151db91fe6428c94428f24f771f0d38139d30febc4dfbfc76a8a697312f')
 
 pkgver() {
     cd "$_pkgname"
@@ -33,5 +34,5 @@ build() {
 
 package() {
     install -Dm755 "$_pkgname/target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm755 ./simple-http-server@.service "$pkgdir/usr/lib/systemd/system/simple-http-server@.service"
+    install -Dm644 ./simple-http-server@.service "$pkgdir/usr/lib/systemd/system/simple-http-server@.service"
 }
