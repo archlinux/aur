@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cargo-c
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/lu-zero/cargo-c/archive/v${pkgver}.tar.gz")
-sha256sums=('e6712c9327ed46af5fbc19d1b9b35f90cdb4e58c42fdc0facf9b56f3e22b0763')
+sha256sums=('cf6804ad9c9f55cfb90b46e080c388931fdd5ac07a6d7f784342fcb83df1548c')
 
 prepare() {
     # https://github.com/lu-zero/cargo-c/issues/44
