@@ -1,8 +1,8 @@
 ## Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=hqplayer-embedded
-_debpkgver=4.12.2-39
-pkgver=4.12.2
+_debpkgver=4.13.0-43
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
@@ -24,8 +24,10 @@ package() {
       install -Dm755 "$srcdir/usr/bin/start-uac-gadget.sh" \
     "$pkgdir/usr/bin/start-uac-gadget.sh"
     
-     install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
-    "$pkgdir/etc/hqplayer/hqplayerd.xml"
+     #install -Dm644 "$srcdir/etc/hqplayer/hqplayerd.xml" \
+    #"$pkgdir/etc/hqplayer/hqplayerd.xml"
+    
+     mkdir -p "$pkgdir/etc/hqplayer"
     
      install -Dm644 "$srcdir/usr/share/doc/hqplayerd/readme.txt.gz" \
     "$pkgdir/usr/share/doc/hqplayerd/readme.txt.gz"
