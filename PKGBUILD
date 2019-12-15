@@ -3,8 +3,8 @@
 # Co-Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=bcwc-pcie-git
-pkgver=0.0.0
-pkgrel=4
+pkgver=r242.ea832ac
+pkgrel=1
 pkgdesc="Reverse engineered Linux driver for the Broadcom 1570 PCIe webcam."
 arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
