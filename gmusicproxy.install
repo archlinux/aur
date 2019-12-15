@@ -1,7 +1,7 @@
 post_install() {
 cat << EOF
 Please run:
-	1) sudo -ui gmusicproxy
+	1) sudo su gmusicproxy
         2) GMusicProxy --oauth
 	to enter your Google Music credentials.
 	Only required at first time run.
