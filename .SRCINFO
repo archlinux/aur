@@ -1,11 +1,12 @@
 pkgbase = alsa-midi-latency-test-git
 	pkgdesc = Measure the roundtrip time of MIDI messages
-	pkgver = r163.9625c46
+	pkgver = r165.673a3f5
 	pkgrel = 1
 	url = https://github.com/koppi/alsa-midi-latency-test
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = git
+	depends = alsa-lib
 	source = alsa-midi-latency-test-git::git+https://github.com/koppi/alsa-midi-latency-test.git
 	md5sums = SKIP
 

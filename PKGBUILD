@@ -1,12 +1,13 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
 pkgname=alsa-midi-latency-test-git
-pkgver=r163.9625c46
+pkgver=r165.673a3f5
 pkgrel=1
 pkgdesc="Measure the roundtrip time of MIDI messages "
 url="https://github.com/koppi/alsa-midi-latency-test"
 arch=('x86_64')
 license=('GPL-2.0')
+depends=('alsa-lib')
 makedepends=('git')
 source=(
     "$pkgname"::"git+https://github.com/koppi/alsa-midi-latency-test.git"
