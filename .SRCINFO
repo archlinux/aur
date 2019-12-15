@@ -1,7 +1,7 @@
 pkgbase = touchpad-indicator-git
 	pkgdesc = An indicator for the touchpad
 	pkgver = r104.871c375
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/atareao/Touchpad-Indicator
 	arch = any
@@ -11,7 +11,6 @@ pkgbase = touchpad-indicator-git
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = lsb-release
-	depends = gconf
 	depends = librsvg
 	depends = python-xlib
 	depends = python-pyudev
