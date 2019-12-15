@@ -1,0 +1,15 @@
+pkgbase = java-freehep-io
+	pkgdesc = Extensions for java.io
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = http://freehep.github.io/freehep-io
+	arch = any
+	license = LGPL2.1
+	makedepends = maven
+	depends = jdk8-openjdk
+	depends = java-runtime
+	source = https://github.com/freehep/freehep-io/archive/freehep-io-2.2.2.tar.gz
+	sha256sums = dd66232e8c484d35a732f05e04834d520a04769f4bc86c6eeaee764bf96f511b
+
+pkgname = java-freehep-io
+
