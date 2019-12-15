@@ -1,7 +1,7 @@
 pkgbase = python-gateway-addon
 	pkgdesc = Mozilla WebThings Gateway add-on bindings for Python
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla-iot/gateway-addon-python
 	arch = any
 	license = MPL2

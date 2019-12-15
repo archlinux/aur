@@ -1,6 +1,0 @@
-*.log
-*.tar.gz
-*.tar.xz
-/gateway-addon-python
-/pkg
-/src
