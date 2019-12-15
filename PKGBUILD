@@ -4,13 +4,13 @@
 pkgname=kamerka
 pkgver=0.20
 pkgdesc="Take photos using your webcam and shiny animated QML interface"
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('i686' 'x86_64')
 url="http://dos1.github.io/kamerka/"
 license=('GPL')
 makedepends=('cmake')
-depends=('kdeclarative' 'qt5-base' 'kdelibs4support' 'kwidgetsaddons' 'phonon-qt5' 'kio' 'kcoreaddons' 'kconfig' 'ki18n' 'knotifications' 'qt5-declarative' 'qt5-script' 'v4l-utils' 'qimageblitz')
+depends=('kdeclarative' 'qt5-base' 'kdelibs4support' 'kwidgetsaddons' 'phonon-qt5' 'kio' 'kcoreaddons' 'kconfig' 'ki18n' 'knotifications' 'qt5-declarative' 'qt5-script' 'v4l-utils' 'qimageblitz' 'kdesignerplugin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dos1/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('a87612851fba9222f6454aaa08694f1ae5a2483a708198a761262789fd246467')
 

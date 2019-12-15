@@ -1,7 +1,7 @@
 pkgbase = kamerka
 	pkgdesc = Take photos using your webcam and shiny animated QML interface
 	pkgver = 0.20
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://dos1.github.io/kamerka/
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = kamerka
 	depends = qt5-script
 	depends = v4l-utils
 	depends = qimageblitz
+	depends = kdesignerplugin
 	source = kamerka-0.20.tar.gz::https://github.com/dos1/kamerka/archive/0.20.tar.gz
 	sha256sums = a87612851fba9222f6454aaa08694f1ae5a2483a708198a761262789fd246467
 
