@@ -1,10 +1,10 @@
 # Maintainer: Isai Alcântara <isfalcantara[at]gmail[dot]com>
 pkgname=otf-mplus
 _pkgname=mplus
-pkgver=063_OTF
-_pkgver=${pkgver/_/-}
-pkgrel=1
-pkgdesc="M+, the japanese outline font families designed by Coji Morishita."
+_pkgver=063-OTF
+pkgver=TESTFLIGHT_${_pkgver/-/_}
+pkgrel=2
+pkgdesc="M+ - The japanese outline font families designed by Coji Morishita."
 arch=('any')
 url="https://mplus-fonts.osdn.jp/about-en.html"
 license=('custom')

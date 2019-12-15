@@ -1,7 +1,7 @@
 pkgbase = otf-mplus
-	pkgdesc = M+, the japanese outline font families designed by Coji Morishita.
-	pkgver = 063_OTF
-	pkgrel = 1
+	pkgdesc = M+ - The japanese outline font families designed by Coji Morishita.
+	pkgver = TESTFLIGHT_063_OTF
+	pkgrel = 2
 	url = https://mplus-fonts.osdn.jp/about-en.html
 	arch = any
 	license = custom
