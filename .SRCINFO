@@ -1,13 +1,13 @@
 pkgbase = kubernetes-cni-bin
 	pkgdesc = Kubernetes.io kubernetes-cni binary
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.5
+	pkgrel = 1
 	url = http://kubernetes.io
 	arch = x86_64
 	license = apache
 	conflicts = kubernetes
-	source_x86_64 = https://packages.cloud.google.com/apt/pool/kubernetes-cni_0.6.0-00_amd64_43460dd3c97073851f84b32f5e8eebdc84fadedb5d5a00d1fc6872f30a4dd42c.deb
-	sha256sums_x86_64 = 43460dd3c97073851f84b32f5e8eebdc84fadedb5d5a00d1fc6872f30a4dd42c
+	source_x86_64 = https://packages.cloud.google.com/apt/pool/kubernetes-cni_0.7.5-00_amd64_b38a324bb34f923d353203adf0e048f3b911f49fa32f1d82051a71ecfe2cd184.deb
+	sha256sums_x86_64 = b38a324bb34f923d353203adf0e048f3b911f49fa32f1d82051a71ecfe2cd184
 
 pkgname = kubernetes-cni-bin
 
