@@ -1,7 +1,7 @@
 # Maintainer: vagnum08 <vagnum08@gmail.com>
 
 pkgname=cpupower-gui-git
-pkgver=0.7.2.r1.ge150dae
+pkgver=0.7.2.r9.gfb6f977
 pkgrel=1
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
@@ -13,23 +13,14 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
 makedepends=('git' 'meson' 'pkg-config' 'appstream-glib' 'desktop-file-utils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/vagnum08/cpupower-gui.git"
-              "fix-dbus.patch")
+source=("${pkgname%-git}::git+https://github.com/vagnum08/cpupower-gui.git")
 noextract=()
-md5sums=('SKIP'
-         '8904610ac7990f088fb96b1eb312c2fa')
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
-}
-
-prepare() {
-    cd "$srcdir/${pkgname%-git}"
-    patch -Np1 -i ../fix-dbus.patch
-    # Fix systemd lib path
-    sed -i "s@'/lib'@'lib'@" data/services/meson.build
 }
 
 
