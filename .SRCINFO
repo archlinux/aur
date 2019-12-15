@@ -1,6 +1,6 @@
 pkgbase = hqplayer
 	pkgdesc = The high-end upsampling multichannel software HD-audio player
-	pkgver = 3.25.5
+	pkgver = 3.25.6
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hqplayer
 	depends = qt5-script
 	depends = qt5-quickcontrols
 	optdepends = evince: hqplayer manual reading
-	source = http://www.signalyst.com/bins/hqplayer_3.25.5-87_amd64.deb
+	source = http://www.signalyst.com/bins/hqplayer_3.25.6-88_amd64.deb
 	source = copyright
 	sha256sums = SKIP
 	sha256sums = 15fb909211ec2fef1f7fa9af779f22cb236031c1cdab213f9461fa5626f69965
