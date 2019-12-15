@@ -1,0 +1,390 @@
+diff --git a/tensorflow/workspace.bzl b/tensorflow/workspace.bzl
+index 0fb9e9fd29..eb5b5796c4 100644
+--- a/tensorflow/workspace.bzl
++++ b/tensorflow/workspace.bzl
+@@ -397,6 +397,7 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
+       ],
+       sha256 = "202cd7ddf8473343c1fccc735b2b7c0059f070f9584ae06daa3b11bb0c04778f",
+       strip_prefix = "nsync-912045960b78dcbbdbe1bc677c5f8f9940f142cc",
++      patch_file = clean_dep("//third_party:gcc9.patch"),
+   ) 
+ 
+   tf_http_archive(
+diff --git a/third_party/gcc9.patch b/third_party/gcc9.patch
+new file mode 100644
+index 0000000000..9dba157b79
+--- /dev/null
++++ b/third_party/gcc9.patch
+@@ -0,0 +1,372 @@
++From 436617053d0f39a1019a371c3a9aa599b3cb2cea Mon Sep 17 00:00:00 2001
++From: Mike Burrows <m3b@google.com>
++Date: Tue, 3 Sep 2019 16:28:02 -0700
++Subject: [PATCH] Suppress compiler warnings on newer compilers that have
++ additional checks.
++
++GCC 8.0 in C++ mode introduced a warning if memset() is used to zero a struct,
++even if it POD.  This causes the compiler to be chatty if nsync is build using g++.
++Most of the changes are to cast the pointer argument to memset() to "void *" to avoid
++the warning.
++
++GCC 8.0 in C++ mode also started warning if a C-style cast changed the
++"constness" of the data.  I'd accidentally done this in testing/testing.c; now fixed.
++
++NetBSD has started using C99-style designated initializers in the standard pthread
++initializer constants even if using C89; clang 8.0 warns about this.  This
++change turns the warning off in the netbsd/clang Makefiles.
++---
++ builds/x86_32.netbsd.clang.atm-c11/Makefile |  2 +-
++ builds/x86_32.netbsd.clang/Makefile         |  2 +-
++ internal/counter.c                          |  2 +-
++ internal/cv.c                               |  2 +-
++ internal/mu.c                               |  2 +-
++ internal/note.c                             |  2 +-
++ testing/cv_mu_timeout_stress_test.c         |  6 +++---
++ testing/cv_test.c                           |  6 +++---
++ testing/cv_wait_example_test.c              |  2 +-
++ testing/mu_starvation_test.c                |  2 +-
++ testing/mu_test.c                           | 16 ++++++++--------
++ testing/mu_wait_example_test.c              |  2 +-
++ testing/mu_wait_test.c                      |  2 +-
++ testing/once_test.c                         |  2 +-
++ testing/pingpong_test.c                     |  2 +-
++ testing/testing.c                           |  6 +++---
++ testing/testing.h                           |  1 +
++ 17 files changed, 30 insertions(+), 29 deletions(-)
++
++diff --git a/builds/x86_32.netbsd.clang.atm-c11/Makefile b/builds/x86_32.netbsd.clang.atm-c11/Makefile
++index 980a8a6..4ea2b37 100644
++--- a/builds/x86_32.netbsd.clang.atm-c11/Makefile
+++++ b/builds/x86_32.netbsd.clang.atm-c11/Makefile
++@@ -1,6 +1,6 @@
++ CC=clang
++ PLATFORM_CPPFLAGS=-DNSYNC_ATOMIC_C11 -I../../platform/c11 -D_POSIX_C_SOURCE=200809L -I../../platform/clang -I../../platform/netbsd -I../../platform/x86_32 -I../../platform/posix -pthread
++-PLATFORM_CFLAGS=-Werror -Wall -Wextra -ansi -pedantic -Wno-unneeded-internal-declaration
+++PLATFORM_CFLAGS=-Werror -Wall -Wextra -ansi -pedantic -Wno-unneeded-internal-declaration -Wno-c99-extensions
++ PLATFORM_LDFLAGS=-pthread
++ MKDEP=${CC} -M
++ PLATFORM_C=../../platform/posix/src/nsync_semaphore_mutex.c ../../platform/posix/src/per_thread_waiter.c ../../platform/posix/src/yield.c ../../platform/posix/src/time_rep.c ../../platform/posix/src/nsync_panic.c
++diff --git a/builds/x86_32.netbsd.clang/Makefile b/builds/x86_32.netbsd.clang/Makefile
++index 46557fd..e761ed1 100644
++--- a/builds/x86_32.netbsd.clang/Makefile
+++++ b/builds/x86_32.netbsd.clang/Makefile
++@@ -1,6 +1,6 @@
++ CC=clang
++ PLATFORM_CPPFLAGS=-D_POSIX_C_SOURCE=200809L -I../../platform/clang -I../../platform/netbsd -I../../platform/x86_32 -I../../platform/posix -pthread
++-PLATFORM_CFLAGS=-Werror -Wall -Wextra -ansi -pedantic -Wno-unneeded-internal-declaration
+++PLATFORM_CFLAGS=-Werror -Wall -Wextra -ansi -pedantic -Wno-unneeded-internal-declaration -Wno-c99-extensions
++ PLATFORM_LDFLAGS=-pthread
++ MKDEP=${CC} -M
++ PLATFORM_C=../../platform/posix/src/nsync_semaphore_mutex.c ../../platform/posix/src/per_thread_waiter.c ../../platform/posix/src/yield.c ../../platform/posix/src/time_rep.c ../../platform/posix/src/nsync_panic.c
++diff --git a/internal/counter.c b/internal/counter.c
++index 59b3828..83af450 100644
++--- a/internal/counter.c
+++++ b/internal/counter.c
++@@ -36,7 +36,7 @@ struct nsync_counter_s_ {
++ nsync_counter nsync_counter_new (uint32_t value) {
++ 	nsync_counter c = (nsync_counter) malloc (sizeof (*c));
++ 	if (c != NULL) {
++-		memset (c, 0, sizeof (*c));
+++		memset ((void *) c, 0, sizeof (*c));
++ 		ATM_STORE (&c->value, value);
++ 	}
++ 	return (c);
++diff --git a/internal/cv.c b/internal/cv.c
++index 4aeb5ff..1d63bb2 100644
++--- a/internal/cv.c
+++++ b/internal/cv.c
++@@ -27,7 +27,7 @@ NSYNC_CPP_START_
++ 
++ /* Initialize *cv. */
++ void nsync_cv_init (nsync_cv *cv) {
++-        memset (cv, 0, sizeof (*cv));
+++        memset ((void *) cv, 0, sizeof (*cv));
++ }
++ 
++ /* Wake the cv waiters in the circular list pointed to by
++diff --git a/internal/mu.c b/internal/mu.c
++index 8dbe648..83d6595 100644
++--- a/internal/mu.c
+++++ b/internal/mu.c
++@@ -27,7 +27,7 @@ NSYNC_CPP_START_
++ 
++ /* Initialize *mu. */
++ void nsync_mu_init (nsync_mu *mu) {
++-	memset (mu, 0, sizeof (*mu));
+++	memset ((void *) mu, 0, sizeof (*mu));
++ }
++ 
++ /* Release the mutex spinlock. */
++diff --git a/internal/note.c b/internal/note.c
++index 6181c09..6e526a4 100644
++--- a/internal/note.c
+++++ b/internal/note.c
++@@ -171,7 +171,7 @@ nsync_note nsync_note_new (nsync_note parent,
++ 			   nsync_time abs_deadline) {
++ 	nsync_note n = (nsync_note) malloc (sizeof (*n));
++ 	if (n != NULL) {
++-		memset (n, 0, sizeof (*n));
+++		memset ((void *) n, 0, sizeof (*n));
++ 		nsync_dll_init_ (&n->parent_child_link, n);
++ 		set_expiry_time (n, abs_deadline);
++ 		if (!nsync_note_is_notified (n) && parent != NULL) {
++diff --git a/testing/cv_mu_timeout_stress_test.c b/testing/cv_mu_timeout_stress_test.c
++index 934152e..64e5570 100644
++--- a/testing/cv_mu_timeout_stress_test.c
+++++ b/testing/cv_mu_timeout_stress_test.c
++@@ -494,7 +494,7 @@ static void test_cv_timeout_stress (testing t) {
++ 	nsync_time deadline;
++ 	deadline = nsync_time_add (nsync_time_now (), nsync_time_ms (5000));
++ 	do {
++-		memset (&s, 0, sizeof (s));
+++		memset ((void *) &s, 0, sizeof (s));
++ 		s.loop_count = loop_count;
++ 		s.cv_threads_per_value = 4;
++ 		s.cv_reader_threads_per_value = 2;
++@@ -514,7 +514,7 @@ static void test_mu_timeout_stress (testing t) {
++ 	nsync_time deadline;
++ 	deadline = nsync_time_add (nsync_time_now (), nsync_time_ms (5000));
++ 	do {
++-		memset (&s, 0, sizeof (s));
+++		memset ((void *) &s, 0, sizeof (s));
++ 		s.loop_count = loop_count;
++ 		s.cv_threads_per_value = 0;
++ 		s.cv_reader_threads_per_value = 0;
++@@ -534,7 +534,7 @@ static void test_mu_cv_timeout_stress (testing t) {
++ 	nsync_time deadline;
++ 	deadline = nsync_time_add (nsync_time_now (), nsync_time_ms (5000));
++ 	do {
++-		memset (&s, 0, sizeof (s));
+++		memset ((void *) &s, 0, sizeof (s));
++ 		s.loop_count = loop_count;
++ 		s.cv_threads_per_value = 4;
++ 		s.cv_reader_threads_per_value = 1;
++diff --git a/testing/cv_test.c b/testing/cv_test.c
++index 22d3bb2..b0aa31a 100644
++--- a/testing/cv_test.c
+++++ b/testing/cv_test.c
++@@ -40,7 +40,7 @@ static cv_queue *cv_queue_new (int limit) {
++ 	cv_queue *q;
++ 	int size = offsetof (struct cv_queue_s, data) + sizeof (q->data[0]) * limit;
++ 	q = (cv_queue *) malloc (size);
++-	memset (q, 0, size);
+++	memset ((void *) q, 0, size);
++ 	q->limit = limit;
++ 	return (q);
++ }
++@@ -470,7 +470,7 @@ static void test_cv_debug (testing t) {
++ 	int buflen;
++ 	struct debug_state xs;
++ 	struct debug_state *s = &xs;
++-	memset (s, 0, sizeof (*s));
+++	memset ((void *) s, 0, sizeof (*s));
++ 
++ 	/* Use nsync_*_debugger to check that they work. */
++ 	tmp = nsync_mu_debugger (&s->mu);
++@@ -697,7 +697,7 @@ static void test_cv_transfer (testing t) {
++ 						TEST_LOG (t, ("transfer waiters %d wakeup_type %d  cv_writers %d  ccs_reader %d\n",
++ 							      waiters, wakeup_type, cv_writers, ccs_reader));
++ 					}
++-					memset (cvt, 0, sizeof (*cvt));
+++					memset ((void *) cvt, 0, sizeof (*cvt));
++ 
++ 					/* Start the waiter threads that use condition variables. */
++ 					for (i = 0; i < waiters-1; i++) {
++diff --git a/testing/cv_wait_example_test.c b/testing/cv_wait_example_test.c
++index 66a3d0b..ab34cb5 100644
++--- a/testing/cv_wait_example_test.c
+++++ b/testing/cv_wait_example_test.c
++@@ -146,7 +146,7 @@ static void example_cv_wait (testing t) {
++ 		"five\n"
++ 		"timeout 1s\n";
++ 
++-	memset (&q, 0, sizeof (q));
+++	memset ((void *) &q, 0, sizeof (q));
++ 	memset (&output, 0, sizeof (output));
++ 
++ 	closure_fork (closure_add_and_wait_cv (&add_and_wait_cv, &q,
++diff --git a/testing/mu_starvation_test.c b/testing/mu_starvation_test.c
++index 7960a03..addfa0b 100644
++--- a/testing/mu_starvation_test.c
+++++ b/testing/mu_starvation_test.c
++@@ -36,7 +36,7 @@ typedef struct starve_data_s {
++ 
++ /* initialize *sd */
++ static void starve_data_init (starve_data *sd, int threads) {
++-	memset (sd, 0, sizeof (*sd));
+++	memset ((void *) sd, 0, sizeof (*sd));
++ 	sd->not_yet_started = threads;
++ 	sd->not_yet_done = threads;
++ 	sd->start = nsync_time_now ();
++diff --git a/testing/mu_test.c b/testing/mu_test.c
++index a855cb8..f71d96d 100644
++--- a/testing/mu_test.c
+++++ b/testing/mu_test.c
++@@ -110,7 +110,7 @@ static void test_mu_nthread (testing t) {
++ 	do {
++ 		int i;
++ 		test_data td;
++-		memset (&td, 0, sizeof (td));
+++		memset ((void *) &td, 0, sizeof (td));
++ 		td.t = t;
++ 		td.n_threads = 5;
++ 		td.loop_count = loop_count;
++@@ -149,7 +149,7 @@ static void test_mutex_nthread (testing t) {
++ 	do {
++ 		int i;
++ 		test_data td;
++-		memset (&td, 0, sizeof (td));
+++		memset ((void *) &td, 0, sizeof (td));
++ 		td.t = t;
++ 		td.n_threads = 5;
++ 		td.loop_count = loop_count;
++@@ -190,7 +190,7 @@ static void test_rwmutex_nthread (testing t) {
++ 	do {
++ 		int i;
++ 		test_data td;
++-		memset (&td, 0, sizeof (td));
+++		memset ((void *) &td, 0, sizeof (td));
++ 		td.t = t;
++ 		td.n_threads = 5;
++ 		td.loop_count = loop_count;
++@@ -243,7 +243,7 @@ static void test_try_mu_nthread (testing t) {
++ 	do {
++ 		int i;
++ 		test_data td;
++-		memset (&td, 0, sizeof (td));
+++		memset ((void *) &td, 0, sizeof (td));
++ 		td.t = t;
++ 		td.n_threads = 5;
++ 		td.loop_count = loop_count;
++@@ -275,7 +275,7 @@ typedef struct counter_s {
++ /* Return a counter with initial value "initial". */
++ static counter *counter_new (int initial) {
++ 	counter *c = (counter *) malloc (sizeof (*c));
++-	memset (c, 0, sizeof (*c));
+++	memset ((void *) c, 0, sizeof (*c));
++ 	c->value = initial;
++ 	return (c);
++ }
++@@ -1017,7 +1017,7 @@ static void contended_state_run_test (contended_state *cs, testing t,
++    nsync_mu locks, with small critical sections.  */
++ static void benchmark_mu_contended (testing t) {
++ 	contended_state cs;
++-	memset (&cs, 0, sizeof (cs));
+++	memset ((void *) &cs, 0, sizeof (cs));
++ 	contended_state_run_test (&cs, t, &cs.mu, (void (*) (void*))&nsync_mu_lock,
++ 				  (void (*) (void*))&nsync_mu_unlock);
++ }
++@@ -1026,7 +1026,7 @@ static void benchmark_mu_contended (testing t) {
++    pthread_mutex_t locks, with small critical sections.  */
++ static void benchmark_mutex_contended (testing t) {
++ 	contended_state cs;
++-	memset (&cs, 0, sizeof (cs));
+++	memset ((void *) &cs, 0, sizeof (cs));
++ 	pthread_mutex_init (&cs.mutex, NULL);
++ 	contended_state_run_test (&cs, t, &cs.mutex, &void_pthread_mutex_lock,
++ 				  &void_pthread_mutex_unlock);
++@@ -1037,7 +1037,7 @@ static void benchmark_mutex_contended (testing t) {
++    pthread_rwlock_t locks, with small critical sections.  */
++ static void benchmark_wmutex_contended (testing t) {
++ 	contended_state cs;
++-	memset (&cs, 0, sizeof (cs));
+++	memset ((void *) &cs, 0, sizeof (cs));
++ 	pthread_rwlock_init (&cs.rwmutex, NULL);
++ 	contended_state_run_test (&cs, t, &cs.rwmutex, &void_pthread_rwlock_wrlock,
++ 				  &void_pthread_rwlock_unlock);
++diff --git a/testing/mu_wait_example_test.c b/testing/mu_wait_example_test.c
++index 110339b..053568d 100644
++--- a/testing/mu_wait_example_test.c
+++++ b/testing/mu_wait_example_test.c
++@@ -145,7 +145,7 @@ static void example_mu_wait (testing t) {
++ 		"five\n"
++ 		"timeout 1s\n";
++ 
++-	memset (&q, 0, sizeof (q));
+++	memset ((void *) &q, 0, sizeof (q));
++ 	memset (&output, 0, sizeof (output));
++ 
++ 	closure_fork (closure_add_and_wait_mu (&add_and_wait_mu, &q, nsync_time_ms (500),
++diff --git a/testing/mu_wait_test.c b/testing/mu_wait_test.c
++index 5c8b2b4..58fce7a 100644
++--- a/testing/mu_wait_test.c
+++++ b/testing/mu_wait_test.c
++@@ -39,7 +39,7 @@ static mu_queue *mu_queue_new (int limit) {
++ 	mu_queue *q;
++ 	int size = offsetof (struct mu_queue_s, data) + sizeof (q->data[0]) * limit;
++ 	q = (mu_queue *) malloc (size);
++-	memset (q, 0, size);
+++	memset ((void *) q, 0, size);
++ 	q->limit = limit;
++ 	return (q);
++ }
++diff --git a/testing/once_test.c b/testing/once_test.c
++index ec302f7..17ba823 100644
++--- a/testing/once_test.c
+++++ b/testing/once_test.c
++@@ -94,7 +94,7 @@ static void test_once_run (testing t) {
++         for (i = 0; i != 250; i++) {
++                 struct once_test_s *s =
++ 			(struct once_test_s *) malloc (sizeof (*s));
++-                memset (s, 0, sizeof (*s));
+++                memset ((void *) s, 0, sizeof (*s));
++                 s->counter = 0;
++                 s->done = nsync_counter_new (N);
++                 s->t = t;
++diff --git a/testing/pingpong_test.c b/testing/pingpong_test.c
++index 7aa9520..442abdd 100644
++--- a/testing/pingpong_test.c
+++++ b/testing/pingpong_test.c
++@@ -44,7 +44,7 @@ typedef struct ping_pong_s {
++ } ping_pong;
++ 
++ static void ping_pong_init (ping_pong *pp, int limit) {
++-	memset (pp, 0, sizeof (*pp));
+++	memset ((void *) pp, 0, sizeof (*pp));
++ 	pthread_mutex_init (&pp->mutex, NULL);
++ 	pthread_rwlock_init (&pp->rwmutex, NULL);
++ 	pthread_cond_init (&pp->cond[0], NULL);
++diff --git a/testing/testing.c b/testing/testing.c
++index 7d0ac81..ad89921 100644
++--- a/testing/testing.c
+++++ b/testing/testing.c
++@@ -137,7 +137,7 @@ testing_base testing_new (int argc, char *argv[], int flags) {
++ 	int i;
++ 	int argn;
++ 	testing_base tb = (testing_base)malloc (sizeof (*tb));
++-	memset (tb, 0, sizeof (*tb));
+++	memset ((void *) tb, 0, sizeof (*tb));
++ 	tb->flags = flags;
++ 	tb->fp = stderr;
++ 	tb->argc = argc;
++@@ -298,7 +298,7 @@ CLOSURE_DECL_BODY1 (testing, testing)
++ /* Return whether there's a "spare thread"; that is, whether the current count
++    of child threads is less than the allowed parallelism.  */
++ static int spare_thread (const void *v) {
++-	const testing_base tb = (const testing_base) v;
+++	const_testing_base tb = (const_testing_base) v;
++ 	return (tb->child_count < tb->parallelism);
++ }
++ 
++@@ -348,7 +348,7 @@ void testing_run_ (testing_base tb, void (*f) (testing t), const char *name, int
++ 	    (tb->include_pat == NULL || match (tb->include_pat, name)) &&
++ 	    (tb->exclude_pat == NULL || !match (tb->exclude_pat, name))) {
++ 		testing t = (testing) malloc (sizeof (*t));
++-		memset (t, 0, sizeof (*t));
+++		memset ((void *) t, 0, sizeof (*t));
++ 		nsync_dll_init_ (&t->siblings, t);
++ 		t->base = tb;
++ 		t->f = f;
++diff --git a/testing/testing.h b/testing/testing.h
++index b83d292..d78049e 100644
++--- a/testing/testing.h
+++++ b/testing/testing.h
++@@ -16,6 +16,7 @@
++ #define NSYNC_TESTING_TESTING_H_
++ 
++ typedef struct testing_base_s *testing_base;
+++typedef const struct testing_base_s *const_testing_base;
++ typedef struct testing_s *testing;
++ 
++ /* Return a newly initialized testing_base. */

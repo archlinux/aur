@@ -1,7 +1,7 @@
 pkgbase = tensorflow-computecpp
 	pkgdesc = Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)
 	pkgver = 1.9
-	pkgrel = 3
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/codeplaysoftware/tensorflow
 	arch = x86_64
@@ -9,16 +9,30 @@ pkgbase = tensorflow-computecpp
 	makedepends = git
 	makedepends = opencl-icd-loader
 	makedepends = computecpp
-	makedepends = bazel
+	makedepends = cmake
+	makedepends = opencl-headers
 	makedepends = python-numpy
 	makedepends = python-pip
 	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = java-environment=8
 	depends = opencl-icd-loader
 	depends = computecpp
 	options = !ccache
-	source = git+https://github.com/codeplaysoftware/tensorflow#tag=computecpp_1.0.1
-	sha512sums = SKIP
+	source = git+https://github.com/codeplaysoftware/tensorflow
+	source = https://archive.org/download/archlinux_pkg_bazel/bazel-0.17.2-1-x86_64.pkg.tar.xz
+	source = python37.patch
+	source = py37.diff
+	source = gcc1.diff
+	source = gcc2.diff
+	source = gcc3.diff
+	sha256sums = SKIP
+	sha256sums = 758e10caff4c1cb496d1cf49d6f4da2969b610b174276fb734b8502686d07ddd
+	sha256sums = ef54b3783a05b5604cd8f448136567686806ad3a5759978f48549256807a8394
+	sha256sums = b3997091bc7a32f9e8c062a88e9148273090ebf66aeebb5dc055baa41b7aae7e
+	sha256sums = 7d9f32a46cac83ec1a7308ac380226cdf40f98830c869bcdf5feb7bf110abf9a
+	sha256sums = 10de738141852cfebae9847b746ae9b58f3b3985561cccede929d8fbdba93551
+	sha256sums = 742abe5d8bfd3f7ce33778a08cbb233337db56238d11ac2ad07171b0d6097bfb
 
 pkgname = tensorflow-computecpp
 	provides = tensorflow

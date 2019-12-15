@@ -1,0 +1,31 @@
+diff --git a/tensorflow/workspace.bzl b/tensorflow/workspace.bzl
+index c4f6bd5ebd..a95ba8070f 100644
+--- a/tensorflow/workspace.bzl
++++ b/tensorflow/workspace.bzl
+@@ -370,6 +370,7 @@ def tf_workspace(path_prefix="", tf_repo_name=""):
+       urls = PROTOBUF_urls,
+       sha256 = PROTOBUF_sha256,
+       strip_prefix = PROTOBUF_strip_prefix,
++      patch_file = clean_dep("//third_party/protobuf:gcc9.patch"),
+   )
+ 
+   # We need to import the protobuf library under the names com_google_protobuf
+diff --git a/third_party/protobuf/gcc9.patch b/third_party/protobuf/gcc9.patch
+new file mode 100644
+index 0000000000..fbef873a85
+--- /dev/null
++++ b/third_party/protobuf/gcc9.patch
+@@ -0,0 +1,13 @@
++diff --git a/BUILD b/BUILD
++index 19f07c5..25adc4b 100644
++--- a/BUILD
+++++ b/BUILD
++@@ -35,7 +35,7 @@ COPTS = select({
++         "-Wno-sign-compare",
++         "-Wno-unused-function",
++         # Prevents ISO C++ const string assignment warnings for pyext sources.
++-        "-Wno-writable-strings",
+++        "-Wno-write-strings",
++     ],
++ })
++ 
