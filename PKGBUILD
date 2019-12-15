@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=moarvm
 _pkgname=MoarVM
-pkgver=2019.07.1
+pkgver=2019.11
 pkgrel=1
 pkgdesc="Runtime built for the 6model object system."
 arch=('i686' 'x86_64')
@@ -10,15 +10,8 @@ license=(PerlArtistic)
 depends=('glibc')
 makedepends=('perl>=5.8')
 options=('!makeflags')
-source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz"
-        'permission-check.patch')
-sha512sums=('c8ffaf962191a60f643e6e1b765ec700664988ffc629765c273baf32d2748763480f9fd7a2d978b7f99d3ba4bf962775f4dca40053ace2ddd8cd0bffbd977d84'
-            'c0b692508632976a8f3d872473346178ae9d416953ab3ca3adf7d333656d5a5234aefecbda5534ebc9c8c832d34587602390f6eb78611f7e55e9adb1e792bebe')
-
-prepare() {
-	cd $_pkgname-$pkgver
-	patch -p1 < "$srcdir"/permission-check.patch
-}
+source=("http://moarvm.com/releases/$_pkgname-$pkgver.tar.gz")
+sha512sums=('d7d7d21ff0e3896b7cb869ea1298f9ff1b041b68062ac509d4571246f96985de0ad48d881f7c988e1ed470c4c5f859f36916bfd764cbc0e988c249682b0b8b41')
 
 build() {
 	cd $_pkgname-$pkgver
