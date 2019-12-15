@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosserial_client'
 pkgname='ros-melodic-rosserial-client'
 pkgver='0.8.0'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,8 +31,15 @@ depends=(
 )
 
 _dir="rosserial-${pkgver}/rosserial_client"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rosserial/archive/${pkgver}.tar.gz")
-sha256sums=('e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rosserial/archive/${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}-c5e90cd.patch"::"https://github.com/ros-drivers/rosserial/commit/c5e90cdd34aafca9783addbd8e83364b0fef4579.patch")
+sha256sums=('e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576'
+            '247974d9711161ab2a11ec281256b1c68b72238dd70f4f0d01fd845a6ff2e399')
+
+prepare() {
+	cd ${srcdir}/${_dir}/..
+	patch -p1 < "${srcdir}/${pkgname}-${pkgver}-c5e90cd.patch"
+}
 
 build() {
 	# Use ROS environment variables.
