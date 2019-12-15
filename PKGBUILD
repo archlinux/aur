@@ -2,7 +2,7 @@
 # Contributor: Orestis Floros <orestisf1993@gmail.com>
 # Contributor: Doron Behar <doron.behar@gmail.com>
 
-_repo_name=xkb-switch-i3
+_pkgname=xkb-switch-i3
 
 pkgname=xkb-switch-i3-git
 pkgver=1.6.0.r7.g69fe11f
@@ -11,12 +11,12 @@ pkgdesc='Program that allows to query and change the XKB layout state (with i3wm
 conflicts=('xkb-switch')
 provides=('xkb-switch')
 arch=('i686' 'x86_64')
-url="https://github.com/zebradil/${_repo_name}"
+url="https://github.com/zebradil/${_pkgname}"
 license=('GPL3')
 depends=('libx11' 'libxkbfile')
 makedepends=('git' 'cmake')
 source=(
-    "git+https://github.com/zebradil/${_repo_name}.git#branch=master"
+    "git+https://github.com/zebradil/${_pkgname}.git#branch=master"
     "git+https://github.com/drmgc/i3ipcpp.git"
 )
 sha1sums=(
@@ -25,12 +25,12 @@ sha1sums=(
 )
 
 pkgver() {
-    cd "${_repo_name}"
+    cd "${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${_repo_name}"
+    cd "${srcdir}/${_pkgname}"
     git submodule init
     git config "submodule.i3ipc++.url" "${srcdir}/i3ipcpp"
     git submodule update
@@ -40,6 +40,6 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${_repo_name}"
+    cd "${srcdir}/${_pkgname}"
     make DESTDIR="$pkgdir/" install
 }
