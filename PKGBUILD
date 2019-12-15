@@ -4,11 +4,11 @@
 _pkgname=freehep-vectorgraphics
 pkgname=java-$_pkgname
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A vector graphics package'
-arch=('x86_64')
+arch=('any')
 license=('LGPL2.1')
-depends=('java-runtime')
+depends=('jdk8-openjdk')
 makedepends=('maven')
 url="https://freehep.github.io"
 source=("https://codeload.github.com/freehep/$_pkgname/tar.gz/$_pkgname-$pkgver")
