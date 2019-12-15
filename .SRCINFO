@@ -1,0 +1,32 @@
+pkgbase = qubes-vm-xen
+	pkgdesc = QubesOS component
+	pkgver = 4.8.5
+	pkgrel = 14
+	url = http://qubes-os.org/
+	arch = x86_64
+	license = GPL
+	makedepends = wget
+	makedepends = make
+	makedepends = gcc
+	makedepends = patch
+	makedepends = git
+	makedepends = bin86
+	makedepends = dev86
+	makedepends = iasl
+	makedepends = yajl
+	makedepends = pkg-config
+	makedepends = openssl
+	makedepends = pixman
+	depends = python2
+	depends = bridge-utils
+	depends = python2-lxml
+	depends = libutil-linux
+	depends = lzo
+	depends = libsystemd
+	depends = yajl
+	provides = xen-qubes-vm-essentials
+	source = https://github.com/QubesOS/qubes-vmm-xen/archive/v4.8.5-14.tar.gz
+	sha512sums = f151d45ccccf0298285a43de26cbd043f32e6f90728d7c16a40c1ffce56bcdb68d9b6494f30ccb4f28b5e6da2da1a880af9d34b4225c8cae9b221b33e1001eae
+
+pkgname = qubes-vm-xen
+
