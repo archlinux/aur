@@ -11,13 +11,12 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of (another) binary repository (i686 and x86_64).
 
-_name=SubtitleComposer
-pkgname=${_name,,}
+pkgname=subtitlecomposer
 pkgver=0.7.0
-pkgrel=1
-pkgdesc="A KDE subtitle editor"
+pkgrel=3
+pkgdesc='A KDE subtitle editor'
 arch=('i686' 'x86_64')
-url="https://github.com/maxrd2/${_name}"
+url="https://invent.kde.org/kde/${pkgname}"
 license=('GPL')
 depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg')
 makedepends=('extra-cmake-modules')
@@ -39,18 +38,11 @@ optdepends=('gstreamer: GStreamer videoplayer backend'
             'ruby: scripting'
             'python: scripting')
 
-source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz"
-        '0001-Use-target_link_libraries-instead-of-qt5_use_modules.patch::https://github.com/Martchus/subtitlecomposer/commit/cca0ff13c5bab516c073f9457277bdbf5fe1fd9a.patch')
-sha256sums=('90dee806df0ee57f4098d417f62014b4533dbf5598d5535c9da1066536c1ed41'
-            '8952257e4798ba009e721a1a8b5f929b03de8e733dbfa201b20fd8edd83cea99')
-
-#prepare() {
-#  cd ${srcdir}/${_name}-${pkgver}
-#  patch -p1 -i "$srcdir/0001-Use-target_link_libraries-instead-of-qt5_use_modules.patch"
-#}
+source=("https://invent.kde.org/kde/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('5292006e551793f63d0db68c775eb63030c863f9815fabb0387ca0db5cdbfd77')
 
 build() {
-  cd ${srcdir}/${_name}-${pkgver}
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -62,6 +54,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_name}-${pkgver}
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname}-v${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
