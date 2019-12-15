@@ -1,6 +1,6 @@
 pkgbase = syslog-ng-nosystemd
 	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
-	pkgver = 3.24.1
+	pkgver = 3.25.1
 	pkgrel = 1
 	url = https://www.syslog-ng.com/products/open-source-log-management/
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = syslog-ng-nosystemd
 	optdepends = python: for Python-based plugins
 	optdepends = net-snmp: for the SNMP plugin
 	optdepends = syslog-ng-openrc: syslog-ng openrc initscript
-	provides = syslog-ng=3.24.1
+	provides = syslog-ng=3.25.1
 	conflicts = syslog-ng
 	conflicts = syslog-ng-eudev
 	conflicts = eventlog
@@ -49,13 +49,13 @@ pkgbase = syslog-ng-nosystemd
 	backup = etc/syslog-ng/syslog-ng.conf
 	backup = etc/conf.d/initscripts/syslog-ng
 	backup = etc/logrotate.d/syslog-ng
-	source = https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.24.1/syslog-ng-3.24.1.tar.gz
+	source = https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.25.1/syslog-ng-3.25.1.tar.gz
 	source = syslog-ng.conf
 	source = syslog-ng.conf.d
 	source = syslog-ng.logrotate
 	source = syslog-ng.rc
-	sha256sums = d4d0a0357b452be96b69d6f741129275530d8f0451e35adc408ad5635059fa3d
-	sha256sums = afda99cf191bce4ddd4455bc94e2b0846b41f885cc23e56de83a9ecafb4ae6ff
+	sha256sums = 34cb9673bcde58d543890e6c1189f466f938e199f227c524a6fa2f47f4db6817
+	sha256sums = 756534d743eee66efba0b52f62a0227b040148c909eff5e82c63bfeb8c1a54f2
 	sha256sums = fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61
 	sha256sums = 93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317
 	sha256sums = db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063
