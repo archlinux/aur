@@ -1,24 +1,26 @@
-From 060e7ca67db116c3fbc1fda557b527008055586d Mon Sep 17 00:00:00 2001
-From: Ignacio Losiggio <iglosiggio@gmail.com>
-Date: Sun, 26 May 2019 20:25:19 -0300
+From 44f29b040df7d736c42d1f4f7f38dab924340d97 Mon Sep 17 00:00:00 2001
+From: Ignacio Losiggio <iglosiggio@dc.uba.ar>
+Date: Sun, 15 Dec 2019 17:33:14 -0300
 Subject: [PATCH] makefile: Do not attempt to refresh the system mandb
 
 ---
- src/makefile | 1 -
- 1 file changed, 1 deletion(-)
+ src/makefile | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/src/makefile b/src/makefile
-index e2a623c..ab9a424 100644
+index e5b9b17..a191898 100644
 --- a/src/makefile
 +++ b/src/makefile
-@@ -44,7 +44,6 @@ install: ldpl ../man/ldpl.1
- 	install -m 775 ldpl $(DESTDIR)$(PREFIX)/bin/
+@@ -54,9 +54,6 @@ install: ldpl ldpl.1
+ 	install -m 775 lpm $(DESTDIR)$(PREFIX)/bin/
  	install -d $(DESTDIR)$(PREFIX)/share/man/man1/
- 	install ../man/ldpl.1 $(DESTDIR)$(PREFIX)/share/man/man1/
+ 	install ldpl.1 $(DESTDIR)$(PREFIX)/share/man/man1/
+-ifneq ($(shell uname -s),Darwin)
 -	mandb
+-endif
  
  uninstall:
  	rm $(DESTDIR)$(PREFIX)/bin/ldpl
 -- 
-2.21.0
+2.24.1
 

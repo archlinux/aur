@@ -1,6 +1,6 @@
 # Maintainer: Ignacio Losiggio <iglosiggio@dc.uba.ar>
 pkgname=ldpl-git
-pkgver=3.0.5.r21.72d49f8
+pkgver=4.4.r41.d27b8e4
 pkgrel=1
 pkgdesc="COBOL inspired language, designed to be expressive, fast, readable and easy to learn."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git' 'awk')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/Lartu/ldpl.git" "dont-do-mandb.patch")
-md5sums=('SKIP' 'dc344057eee2032c7b49562b507db99a')
+md5sums=('SKIP' '2764e75489cfc352d2bad67f554d2cc6')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
