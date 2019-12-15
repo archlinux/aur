@@ -1,8 +1,8 @@
 # Maintainer: Genesis <tofupedia.fr@gmail.com>
 
 pkgname=ankama-launcher
-pkgver=2.10.31
-pkgrel=2
+pkgver=2.11.4
+pkgrel=1
 pkgdesc='A multi-game portal for all Ankama games.'
 url='https://www.ankama.com/en/launcher'
 
@@ -15,11 +15,11 @@ optdepends=('wine: to play Dofus'
             'java-environment: to play Wakfu')
 options=('!strip')
 source=('ankama-launcher')
-source_i686=("${pkgname}-${pkgver}-i686.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-i386.AppImage")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://ankama.akamaized.net/zaap/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
+source_i686=("${pkgname}-${pkgver}-i686.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-i386.AppImage")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.AppImage::https://launcher.cdn.ankama.com/installers/production/Ankama%20Launcher-Setup-x86_64.AppImage")
 md5sums=('e6a225e04a4a4105059af02873cf65a5')
-md5sums_i686=('64c1dd6b072d3d95b9c38bd6e60eec61')
-md5sums_x86_64=('3793bfded627af12e6062895a4604649')
+md5sums_i686=('7bf454b0e3020969e4e2173fa6dd0071')
+md5sums_x86_64=('fb9f96aecbac089fc7ffded874461ec2')
 
 prepare() {
     cd "${srcdir}"
