@@ -1,7 +1,7 @@
-# Maintainer: Felix Kauselmann <licorn at gmail dot com>
+# Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=3809.r3.178b812ec8
+pkgver=3945.r2.5dccce5c7d
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
