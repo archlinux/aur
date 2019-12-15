@@ -6,7 +6,7 @@ _pkgname=xkb-switch-i3
 
 pkgname=xkb-switch-i3-git
 pkgver=1.6.0.r7.g69fe11f
-pkgrel=1
+pkgrel=2
 pkgdesc='Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)'
 conflicts=('xkb-switch')
 provides=('xkb-switch')
