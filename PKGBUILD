@@ -3,14 +3,14 @@
 
 pkgname=bcn3duranium-git
 pkgver=3.0.3.503.gc0186e3e6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/BCN3D/Uranium"
 arch=('any')
 license=('GPL3')
 provides=('uranium' 'uranium-git' 'bcn3duranium')
 conflicts=('uranium')
-depends=('pyqt5-common' 'qt5-quickcontrols'
+depends=('python2-pyqt5' 'qt5-quickcontrols'
          'python' 'python-pyqt5' 'python-numpy' 'python-shapely' 'python-scipy'
          'libarcus-git')
 makedepends=('cmake' 'git')

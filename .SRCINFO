@@ -1,13 +1,13 @@
 pkgbase = bcn3duranium-git
 	pkgdesc = A Python framework for building Desktop applications.
 	pkgver = 3.0.3.503.gc0186e3e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BCN3D/Uranium
 	arch = any
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	depends = pyqt5-common
+	depends = python2-pyqt5
 	depends = qt5-quickcontrols
 	depends = python
 	depends = python-pyqt5
