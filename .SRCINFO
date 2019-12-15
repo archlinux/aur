@@ -1,6 +1,6 @@
 pkgbase = cgoban3
-	pkgdesc = Kiseido Go and SGF client
-	pkgver = 3.5.23b2
+	pkgdesc = A KGS client and SGF editor
+	pkgver = 3.5.23
 	pkgrel = 1
 	url = https://gokgs.com/
 	install = cgoban3.install
@@ -10,17 +10,16 @@ pkgbase = cgoban3
 	depends = java-runtime
 	depends = bash
 	noextract = cgoban.jar
-	noextract = CGoban-3-5-23b2.jar
-	source = https://storage.googleapis.com/download.gokgs.com/cgoban-beta/CGoban-3-5-23b2.jar
+	source = http://files.gokgs.com/javaBin/cgoban.jar
 	source = cgoban3
 	source = cgoban3.png
 	source = cgoban3.desktop
 	source = cgoban3-edit.desktop
-	sha256sums = d399bf582240135680523c14676d61accccdc1fd4bc433b948b4bba005cfd7d4
+	sha256sums = 9be59cad85f4bc29bfd1d0df3601916ac7748d1470b9a75aca2fdf94310c3c6b
 	sha256sums = f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98
 	sha256sums = a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510
-	sha256sums = 8f53df2158eb96c434312b901563b4879fcea36c461f2ca99cb5cabff38ec04f
-	sha256sums = a6b770b7727aae6e0699d0dce7cec84057a83670512bb17edc24753c030df55d
+	sha256sums = b781072cbb5ac56c102992c92307153c14842c5d9e7a6a6bbf7e397d7b714598
+	sha256sums = 909931d5694a205a05c602250b6b6c319cf599799dc9b1d69df0becfb768406d
 
 pkgname = cgoban3
 

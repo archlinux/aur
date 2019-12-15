@@ -1,39 +1,30 @@
-# PKGBUILD: 22-Fev-2017
-# Maintainer:  dysphoria <>
+# Maintainer: TH Campbell (dysphoria) <thcampbell (at) protonmail (dot) com>
 # Contributor: Jonathan Schaeffer <Joschaeffer@gmail.com>
 
 pkgname=cgoban3
-pkgver=3.5.23b2
+pkgver=3.5.23
 pkgrel=1
-pkgdesc='Kiseido Go and SGF client'
+pkgdesc='A KGS client and SGF editor'
 url='https://gokgs.com/'
 arch=('any')
 license=('Freeware')
 depends=('desktop-file-utils' 'java-runtime' 'bash')
 install=cgoban3.install
 source=(
-        # 'http://files.gokgs.com/javaBin/cgoban.jar'
-        "https://storage.googleapis.com/download.gokgs.com/cgoban-beta/CGoban-${pkgver//./-}.jar"
+        'http://files.gokgs.com/javaBin/cgoban.jar'
         'cgoban3'
         'cgoban3.png'
         'cgoban3.desktop'
         'cgoban3-edit.desktop'
        )
-sha256sums=('d399bf582240135680523c14676d61accccdc1fd4bc433b948b4bba005cfd7d4'
+sha256sums=('9be59cad85f4bc29bfd1d0df3601916ac7748d1470b9a75aca2fdf94310c3c6b'
             'f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98'
             'a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510'
-            '8f53df2158eb96c434312b901563b4879fcea36c461f2ca99cb5cabff38ec04f'
-            'a6b770b7727aae6e0699d0dce7cec84057a83670512bb17edc24753c030df55d')
+            'b781072cbb5ac56c102992c92307153c14842c5d9e7a6a6bbf7e397d7b714598'
+            '909931d5694a205a05c602250b6b6c319cf599799dc9b1d69df0becfb768406d')
 noextract=(
            'cgoban.jar'
-           "CGoban-${pkgver//./-}.jar"
           )
-
-prepare() {
-        cd ${srcdir}
-
-        mv -f "CGoban-${pkgver//./-}.jar" 'cgoban.jar'
-}
 
 package() {
         cd ${srcdir}
