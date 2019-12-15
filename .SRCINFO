@@ -1,7 +1,7 @@
 pkgbase = liquidsoap
 	pkgdesc = A swiss-army knife for multimedia streaming, notably used for netradios and webtvs
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.liquidsoap.info
 	install = liquidsoap.install
 	arch = i686
@@ -35,7 +35,7 @@ pkgbase = liquidsoap
 	depends = ocaml-gd4o
 	depends = ocaml-gstreamer
 	depends = ocaml-inotify
-	depends = ocaml-yojson
+	depends = ocaml-yojson-git
 	depends = ocaml-ladspa
 	depends = ocaml-lame-git
 	depends = ocaml-lastfm
