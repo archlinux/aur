@@ -1,7 +1,7 @@
 pkgbase = libtgvoip
 	pkgdesc = VoIP library for Telegram clients
 	pkgver = 2.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/telegramdesktop/libtgvoip
 	arch = x86_64
 	license = Unlicense
@@ -9,8 +9,8 @@ pkgbase = libtgvoip
 	depends = opus
 	optdepends = alsa-lib: for alsa support
 	optdepends = libpulse: for pulseaudio support
-	source = https://github.com/telegramdesktop/libtgvoip/archive/4dabb67eff8756e1ee0ad6e27a0a0478ea65b6d4.zip
-	sha512sums = befefbc7c7386423c0db3e049ad5406f3686d2cfbd35fc83ed9b72f9347fcd0c8187fc765595379cd81fcf47f46798377a8975c2e1c3231907a82ee684dd27da
+	source = https://github.com/telegramdesktop/libtgvoip/archive/303dcacc2ad0428fd165c71455056d3f8f884d6f.zip
+	sha512sums = f369a99fc8cc39a6b62c81fa8513bfe187d3c91a747cd12fee0dfddec6ef26eac6c24b124e4212304796e679286cf5eaa303a731620a08e230a5f0ded71857b9
 
 pkgname = libtgvoip
 
