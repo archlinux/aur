@@ -1,6 +1,6 @@
 pkgbase = emacs-solidity-mode-git
 	pkgdesc = Solidity mode package for Emacs
-	pkgver = 0.1.8r69.b5d95ef
+	pkgver = 0.1.9.r112
 	pkgrel = 1
 	url = https://github.com/ethereum/emacs-solidity
 	arch = any

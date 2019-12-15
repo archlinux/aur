@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-solidity-mode-git
-pkgver=0.1.8r69.b5d95ef
+pkgver=0.1.9.r112
 pkgrel=1
 pkgdesc='Solidity mode package for Emacs'
 url='https://github.com/ethereum/emacs-solidity'
@@ -14,7 +14,7 @@ depends=('emacs')
 
 pkgver() {
   cd ${pkgname}
-  printf "%sr%s.%s" "$(awk '/;; Version:/ {print $3}' solidity-mode.el)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$(awk '/;; Version:/ {print $3}' solidity-mode.el)" "$(git rev-list --count HEAD)"
 }
 
 package() {
