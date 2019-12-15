@@ -6,7 +6,10 @@ pkgver=r188.e260dc4
 pkgrel=1
 pkgdesc="Auto-diff library for generalized sparse convolutions"
 url="https://github.com/StanfordVL/MinkowskiEngine"
-depends=('python' 'python-pytorch-cuda' 'python-torchvision' 'python-numpy' 'cuda' 'cudnn' 'cblas' 'intel-tbb')
+depends=('python' 'python-pytorch-cuda' 'python-numpy' 'cuda' 'cudnn' 'cblas' 'intel-tbb')
+optdepends=(
+    'python-torchvision: Sample code dependency'
+)
 makedepends=('python-setuptools' 'git')
 license=('MIT')
 arch=('x86_64')
