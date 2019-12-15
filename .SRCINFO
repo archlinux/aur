@@ -12,7 +12,8 @@ pkgbase = xneur-devel-git
 	depends = gtk2
 	depends = libnotify
 	depends = gstreamer>=1.14.4
-	optdepends = hunspell-LANG
+	optdepends = hunspell-ru
+	optdepends = hunspell-en_US
 	provides = xneur=0.21.0
 	provides = xnconfig=0.21.0
 	conflicts = xneur
