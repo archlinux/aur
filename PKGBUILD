@@ -3,7 +3,7 @@
 pkgname=inkdrop
 _pkgname=inkdrop
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Note-taking App with Robust Markdown Editor"
 arch=('x86_64')
 url="https://www.inkdrop.info/"
@@ -16,7 +16,7 @@ source=(
     'inkdrop.desktop'
 )
 md5sums=(
-    '7958b69a1fc0f069fde15b334314c2aa'
+    'f9c4790ca2e4463da42369533fe03781'
     'af55c435a39d56a0b9e6ffe03683d340'
 )
 source_x86_64=(${_pkgname}-${pkgver}.zip::https://d3ip0rje8grhnl.cloudfront.net/v${pkgver}/Inkdrop-${pkgver}-Linux.zip)
