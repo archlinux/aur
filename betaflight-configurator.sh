@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nw /usr/share/betaflight-configurator/ "$@"
+nw --disable-features=nw2 /usr/share/betaflight-configurator/ "$@"
