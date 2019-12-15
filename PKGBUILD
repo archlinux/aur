@@ -1,4 +1,4 @@
-# Maintainer: Eugene Dvoretsky <radioxoma@gmail.com>
+# Maintainer: Eugene Dvoretsky <radioxoma at gmail com>
 
 pkgname=langmix-git
 pkgver=v0.1.r21.g5a06813
