@@ -1,6 +1,6 @@
 pkgbase = d9vk-winelib-git
 	pkgdesc = A d3d9 to vk layer based off DXVK's codebase, winelib version
-	pkgver = 0.40.r0.654329864
+	pkgver = 0.40.1.r4.0f35b84ea
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64
