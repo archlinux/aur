@@ -1,0 +1,17 @@
+diff --git a/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp b/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp
+index 823cccaaf..5618443c7 100644
+--- a/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/file_utilities_linux.cpp
+@@ -18,9 +18,12 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "facades.h"
+ 
+ #include <QtCore/QProcess>
++
++#ifndef TDESKTOP_DISABLE_GTK_INTEGRATION
+ #include <private/qguiapplication_p.h>
+ 
+ QStringList qt_make_filter_list(const QString &filter);
++#endif // !TDESKTOP_DISABLE_GTK_INTEGRATION
+ 
+ namespace Platform {
+ namespace File {

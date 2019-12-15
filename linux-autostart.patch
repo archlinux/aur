@@ -1,8 +1,8 @@
 diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-index 68d07a55b..a967950f7 100644
+index 68d07a55b..762d04ca6 100644
 --- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-@@ -393,6 +393,48 @@ bool psShowOpenWithMenu(int x, int y, const QString &file) {
+@@ -393,6 +393,55 @@ bool psShowOpenWithMenu(int x, int y, const QString &file) {
  }
  
  void psAutoStart(bool start, bool silent) {
@@ -15,34 +15,41 @@ index 68d07a55b..a967950f7 100644
 +			QString autostart = home + qsl(".config/autostart/");
 +			if (!QDir(autostart).exists()) QDir().mkpath(autostart);
 +
-+			QString path = cWorkingDir() + qsl("tdata/"), file = path + qsl("kotatogramdesktop.desktop");
-+			QDir().mkpath(path);
-+			QFile f(file);
-+			if (f.open(QIODevice::WriteOnly)) {
-+				QTextStream s(&f);
-+				s.setCodec("UTF-8");
-+				s << "[Desktop Entry]\n";
-+				s << "Version=1.0\n";
-+				s << "Name=" << str_const_toString(AppName) << "\n";
-+				s << "Comment=Experimental Telegram Desktop fork\n";
-+				s << "TryExec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << "\n";
-+				s << "Exec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << " -autostart\n";
-+				s << "Icon=kotatogram\n";
-+				s << "Terminal=false\n";
-+				s << "StartupWMClass=" << QCoreApplication::instance()->applicationName() << "\n";
-+				s << "Type=Application\n";
-+				s << "Categories=Network;InstantMessaging;Qt;\n";
-+				s << "MimeType=x-scheme-handler/tg;\n";
-+				s << "Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;\n";
-+				s << "X-GNOME-UsesNotifications=true\n";
-+				f.close();
-+
-+
-+				if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))) + " --delete-original " + EscapeShell(QFile::encodeName(file)))) {
++			QString autostartFilePath = cExeDir() + qsl("../share/") + QCoreApplication::instance()->applicationName() + qsl("/autostart/kotatogramdesktop.desktop");
++			if (QFile(autostartFilePath).exists()) {
++				if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))) + " " + EscapeShell(QFile::encodeName(autostartFilePath)))) {
 +					RunShellCommand("update-desktop-database " + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))));
 +				}
 +			} else {
-+				LOG(("App Error: Could not open '%1' for write").arg(file));
++				QString path = cWorkingDir() + qsl("tdata/"), file = path + qsl("kotatogramdesktop.desktop");
++				QDir().mkpath(path);
++				QFile f(file);
++				if (f.open(QIODevice::WriteOnly)) {
++					QTextStream s(&f);
++					s.setCodec("UTF-8");
++					s << "[Desktop Entry]\n";
++					s << "Version=1.0\n";
++					s << "Name=" << str_const_toString(AppName) << "\n";
++					s << "Comment=Experimental Telegram Desktop fork\n";
++					s << "TryExec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << "\n";
++					s << "Exec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << " -autostart\n";
++					s << "Icon=kotatogram\n";
++					s << "Terminal=false\n";
++					s << "StartupWMClass=" << QCoreApplication::instance()->applicationName() << "\n";
++					s << "Type=Application\n";
++					s << "Categories=Network;InstantMessaging;Qt;\n";
++					s << "MimeType=x-scheme-handler/tg;\n";
++					s << "Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;\n";
++					s << "X-GNOME-UsesNotifications=true\n";
++					f.close();
++
++
++					if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))) + " --delete-original " + EscapeShell(QFile::encodeName(file)))) {
++						RunShellCommand("update-desktop-database " + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))));
++					}
++				} else {
++					LOG(("App Error: Could not open '%1' for write").arg(file));
++				}
 +			}
 +		}
 +	} else {

@@ -302,11 +302,33 @@ index 33cc236..de933d3 100644
  
        # Silence "Note: No relevant classes found. No output generated."
        '--no-notes',
+diff --git a/Telegram/gyp/lib_storage.gyp b/Telegram/gyp/lib_storage.gyp
+index d32757623..19423c2b4 100644
+--- a/Telegram/gyp/lib_storage.gyp
++++ b/Telegram/gyp/lib_storage.gyp
+@@ -22,9 +22,6 @@
+       'pch_source': '<(src_loc)/storage/storage_pch.cpp',
+       'pch_header': '<(src_loc)/storage/storage_pch.h',
+     },
+-    'defines': [
+-      'XXH_INLINE_ALL',
+-    ],
+     'dependencies': [
+       '<(submodules_loc)/lib_base/lib_base.gyp:lib_base',
+     ],
+@@ -33,7 +30,6 @@
+     ],
+     'include_dirs': [
+       '<(src_loc)',
+-      '<(third_party_loc)/xxHash',
+     ],
+     'sources': [
+       '<(src_loc)/storage/storage_clear_legacy.cpp',
 diff --git a/Telegram/gyp/telegram/linux.gypi b/Telegram/gyp/telegram/linux.gypi
-index ba6bc45e8..3808592ac 100644
+index ba6bc45e8..6a096a1d9 100644
 --- a/Telegram/gyp/telegram/linux.gypi
 +++ b/Telegram/gyp/telegram/linux.gypi
-@@ -20,28 +20,20 @@
+@@ -20,28 +20,21 @@
        ],
      },
      'libraries': [
@@ -316,6 +338,7 @@ index ba6bc45e8..3808592ac 100644
 +      '-lrlottie',
        '-llzma',
 +      '-llz4',
++      '-lxxhash',
        '-lopenal',
        '-lavformat',
        '-lavcodec',
@@ -341,7 +364,7 @@ index ba6bc45e8..3808592ac 100644
  #      '<!(pkg-config 2> /dev/null --libs <@(pkgconfig_libs))',
      ],
      'cflags_cc': [
-@@ -49,11 +41,7 @@
+@@ -49,11 +42,7 @@
        '-Wno-maybe-uninitialized',
      ],
      'ldflags': [
@@ -353,7 +376,7 @@ index ba6bc45e8..3808592ac 100644
      ],
      'configurations': {
        'Release': {
-@@ -71,15 +59,12 @@
+@@ -71,15 +60,12 @@
        },
      },
      'conditions': [

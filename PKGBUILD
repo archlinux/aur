@@ -2,7 +2,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -14,6 +14,7 @@ depends=(
 	openal
 	xz
 	lz4
+	xxhash
 	zlib
 	minizip
 	openssl
@@ -29,7 +30,6 @@ makedepends=(
 	ninja
 	range-v3
 )
-optdepends=('ttf-opensans: default Open Sans font family')
 conflicts=('kotatogram-desktop-bin' 'telegram-desktop' 'telegram-desktop-bin')
 source=(
 	"$pkgname-$pkgver-$pkgrel::git+$url.git#tag=k$pkgver"
@@ -53,12 +53,15 @@ source=(
 	"lib_ui::git+https://github.com/kotatogram/lib_ui.git"
 
 	"tdesktop.patch"
+	"fix-unneeded-private-header.patch"
 	"Use-system-wide-font.patch"
+	"Use-system-wide-font-families.patch"
 	"Parse-Semibold-Fontnames.patch"
 	"QtDBus-Notifications-Implementation.patch"
 	"system-tray-icon.patch"
 	"linux-autostart.patch"
 	"Use-native-notifications-by-default.patch"
+	"baloons-follows-text-width-on-adaptive-layout.patch"
 	"https://github.com/kotatogram/kotatogram-desktop/commit/a196b0aba723de85ee573594d9ad420412b6391a.patch"
 
 	"CMakeLists.inj"
@@ -82,13 +85,16 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '5c14fb1fa8f7864f4e9c74dd7f5aa8c6a3dea0029ccf07afbd3bdd8fbf700919d57ca4e5e3faf4950d41458766cf909da6976b6ba49b6268ea8cd9f8e539aad1'
+            '60218287270a1186feac9fd40e8e53b35c62c89042a8ae7429059ad72f55920beaa6a3fb25533a9471bffbeb39526632836b7428047a2a5e4502c4417f0bebbf'
+            '75bd6e0159b20e7110c72c2562d99fe94a6593dd037826955f28e5ebc64486f0ef04e10afce7961589be42d5cf7d10614a66f98d0dbf861322f0c25c7750a2a0'
             '2548ce368b63e526635060b376e911bd51cd3d2983a8096583f8a71137e9d3f4523f5ee3b3d658d55d7b5497aadc4bee1a2ef53a52f99c67c02be92e0a7ed638'
+            'ff3db03e97db75fe2c83897332b27ff7e487fc43e8a297a1ed48ddebe2de37a155a45a8f2366e2c2d962db1463ad01538a6648afa73f61fe3b0d19ed70532b71'
             'a239a44a5859d03baad86bbeb46795d829cbcd7e67f0d0d49ef855c0421cf9b6d7c1c6d112a266cfec491e93228025235fefd86716bfd0f1c9da3f060c1604c7'
             '8394097bf41e4767b1b3f7978c4f00efa058714f71e8fcec79eae9c2b47849749f307e793fb31c4b35bed5450ad91599f033fc6f360d41ddf01195fffdca817f'
             '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a'
-            '63d143cc7accf0d953061d19f34debb0209298a05bafa7ebd3851e4cf8f3a2c7beabdfbebd96434738604140c2196b883148e54c333537942d4d3c81e82517a9'
+            'aaef50685b8871f32820e6cca2014aa986500ddcf34f4e99216081310e8622a242420a7d1ce30e277af85eb3f1d1e73c5a67dab9e02b42ef03ae6d76381fe635'
             '14064af25fda0fcd31a0dc7626687eaf61c329e9100fb55a8a0a455600a63a761e864056088aa486afdd053eccad0a55f8b332151eeb46c90a2c562a64a0a36e'
+            'ab3e3d627b542f88fde13b0b0db431c59e3b22ee360f916e71cf9b6b96b124b5042e64c9d0bdddb9c9acd9141a3fd254137dfad11fb5605a85cc1df9d8be4df4'
             '067145e8823b330adc91533c4da6c2dd7babd66a22acbe06ad10920e3139467364d9e658ed6c86837cf11e252c1d8c5a2ff1af2feddb46998e4d018328555ff7'
             '98236f7f161c8bad1152a77505f9c3eebae06ffc0420ed476e101359a92d01438dd6ce6062e0b110b76f2d6d09f59accf4b1969699b8af5a3650ecb0c31929c5')
 
@@ -150,6 +156,9 @@ build() {
 package() {
 	install -dm755 "$pkgdir/usr/bin"
 	install -m755 "$srcdir/$pkgname-$pkgver-$pkgrel/out/Release/Telegram" "$pkgdir/usr/bin/kotatogram-desktop"
+
+	install -d "$pkgdir/usr/share/KotatogramDesktop/autostart"
+	install -m644 "$srcdir/autostart.desktop" "$pkgdir/usr/share/KotatogramDesktop/autostart/kotatogramdesktop.desktop"
 
 	install -d "$pkgdir/usr/share/applications"
 	install -m644 "$srcdir/$pkgname-$pkgver-$pkgrel/lib/xdg/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
