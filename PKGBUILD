@@ -1,8 +1,8 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=440.36
-pkgrel=2
+pkgver=440.44
+pkgrel=1
 _goodkver=5.4
 _badkver=5.5
 _modver=${_goodkver}-pf
@@ -22,7 +22,7 @@ conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('52c480e1e14bc6b2ffe7ad9482d519f1')
+md5sums=('130056896f8e4f9e0a69615d2ffb579c')
 
 
 
