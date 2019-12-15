@@ -5,7 +5,7 @@
 _name="mapcatcher"
 _python="python2"
 pkgname="gmapcatcher"
-pkgver="0.8.0.8"
+pkgver="0.8.0.9"
 pkgrel="1"
 pkgdesc="Offline maps viewer"
 arch=('any')
@@ -13,12 +13,11 @@ url="https://github.com/heldersepu/GMapCatcher"
 license=('GPL2')
 depends=('python2' 'pygtk' 'gtk2' 'python2-cairo' 'python2-gobject2')
 conflicts=('gmapcatcher-svn')
-provides=('gmapcatcher')
 source=("${pkgname}.png"
         "${_name}_${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=('d3421d3a2ad41f0d9de1e1aa76366a8c6a1811da80f29d1dba2b853662ee29d1'
-            '5097cb79ca7d604159a60c813b986a42769d711257854e8e95077deb48d69a37')
+            'aaedf4701ae686c301316ee947c6066c260938deb94891e0f83e758e62767e46')
 
 _gmapcatcher_desktop="[Desktop Entry]
 Name=GMapCatcher
@@ -69,4 +68,4 @@ package() {
     install -m644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=4 et syn=sh ft=sh:
