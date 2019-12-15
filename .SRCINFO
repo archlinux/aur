@@ -1,6 +1,6 @@
 pkgbase = pump.io
 	pkgdesc = A stream server that does most of what people really want from a social network
-	pkgver = 5.1.1
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = http://pump.io
 	install = pump.io.install
@@ -15,8 +15,10 @@ pkgbase = pump.io
 	conflicts = pumpio-git
 	conflicts = pumpio
 	backup = etc/webapps/pump.io/pump.io.json
-	source = https://github.com/pump-io/pump.io/archive/v5.1.1.tar.gz
-	md5sums = 8ecae3256a522f91ad3328ce3181c13f
+	source = https://github.com/pump-io/pump.io/archive/v5.1.3.tar.gz
+	source = pump.io.sysusers
+	md5sums = 74e64ddc3afbc376ee1490a44f8c28dd
+	md5sums = 6e86aca928cf55108fcc8b7403cd2b39
 
 pkgname = pump.io
 
