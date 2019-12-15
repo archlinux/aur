@@ -1,17 +1,18 @@
+# Maintainer: Otto Sabart <aur@seberm.com>
 # Maintainer: arjan5 <aur@anymore.nl>
 
 pkgname=qubes-usb-proxy
-pkgver=1.0.18
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="The Qubes service for proxying USB devices"
-arch=("x86_64" "i686")
+arch=("x86_64")
 url="https://qubes-os.org"
 license=('GPL')
-depends=('sh' 'qubes-vm-core')
+depends=('sh' 'qubes-vm-core' 'usbutils')
 makedepends=(pkg-config make gcc)
 
 source=(https://github.com/QubesOS/qubes-app-linux-usb-proxy/archive/v${pkgver}.tar.gz)
-sha256sums=('5e7107810301e949acd2e5204cf12320e73a792b77d420f0f22b6f26b72c992f')
+sha512sums=('109885b4a44b2834318fe1a33abe39367642166202aad5d2c1170cd8b7ad056d89b329ba670523f244f6e3291404661c565be8015b38b8be5e493c91370e9d61')
 
 _srcname=qubes-app-linux-usb-proxy-${pkgver}
 
