@@ -11,12 +11,12 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=19.3.0_devel.116318.16233797f49
-pkgrel=1
+pkgver=20.0.0_devel.118529.c06ba835895
+pkgrel=2
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libgcrypt' 'lib32-systemd'
-             'mesa-git' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr')
+             'mesa-git' 'lib32-libglvnd' 'wayland-protocols' 'lib32-wayland' 'meson' 'lib32-libva' 'lib32-libxrandr' 'lib32-vulkan-icd-loader')
 depends=('mesa-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-elfutils'
            'lib32-libunwind' 'lib32-lm_sensors' 'glslang')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
@@ -108,7 +108,7 @@ build () {
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland,drm,surfaceless \
         -D dri-drivers=i915,i965,r200,r100,nouveau \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
         -D vulkan-drivers=amd,intel \
         -D dri3=true \
         -D egl=true \
@@ -122,7 +122,7 @@ build () {
         -D gallium-xa=true \
         -D gallium-xvmc=false \
         -D gbm=true \
-        -D gles1=true \
+        -D gles1=false \
         -D gles2=true \
         -D glvnd=true \
         -D glx=dri \
@@ -139,16 +139,22 @@ build () {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
 
-  # remove files provided by mesa-git
-  rm -rf "$pkgdir"/etc
-  rm -rf "$pkgdir"/usr/include
-  rm -rf "$pkgdir"/usr/share/glvnd/
-  rm -rf "$pkgdir"/usr/share/drirc.d/
-  rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+    # remove files provided by mesa-git
+    rm -rf "$pkgdir"/etc
+    rm -rf "$pkgdir"/usr/include
+    rm -rf "$pkgdir"/usr/share/glvnd/
+    rm -rf "$pkgdir"/usr/share/drirc.d/
+    rm -rf "$pkgdir"/usr/share/vulkan/explicit_layer.d/
+  
+    # remove script file from /usr/bin
+    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
+    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
+    rmdir "${pkgdir}/usr/bin"
 
-  # indirect rendering
-  ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
-  install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
+
+    # indirect rendering
+    ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
+    install -Dt  "$pkgdir"/usr/share/licenses/$pkgbase/ -m644 "$srcdir"/LICENSE 
 }
