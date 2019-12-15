@@ -1,6 +1,6 @@
 pkgbase = jackett
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.12.1198
+	pkgver = 0.12.1213
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	install = jackett.install
@@ -18,12 +18,12 @@ pkgbase = jackett
 	sha256sums = 9d8f9d73e5fa2b2877dde010c0d8ca6fbf47f03eb1f01b02f846026a949a0dcf
 	sha256sums = d005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590
 	sha256sums = 64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1
-	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.12.1198.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1198/Jackett.Binaries.LinuxAMDx64.tar.gz
-	sha256sums_x86_64 = acf224aa85006cc4b7f900f5b4bd13a769b49604318792c45966903bc9c3dc7c
-	source_aarch64 = Jackett.Binaries.LinuxARM64-0.12.1198.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1198/Jackett.Binaries.LinuxARM64.tar.gz
-	sha256sums_aarch64 = c7b9b7c2b371e9073cff7c77a5fe3961e4545e822be598ee527874e1674ca46e
-	source_armv7h = Jackett.Binaries.LinuxARM32-0.12.1198.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1198/Jackett.Binaries.LinuxARM32.tar.gz
-	sha256sums_armv7h = 805997ad60680ef2d3e6ff613d6649def38354c4caf91c2eee182f4e5c403a50
+	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.12.1213.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1213/Jackett.Binaries.LinuxAMDx64.tar.gz
+	sha256sums_x86_64 = f3d93bb74eb81b9fbe417e817169034567a0e9e10fcb37a56cae1f8c5852e3b8
+	source_aarch64 = Jackett.Binaries.LinuxARM64-0.12.1213.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1213/Jackett.Binaries.LinuxARM64.tar.gz
+	sha256sums_aarch64 = 6c54b2ffbb80decc036af720e0aca6038796c0ebdb1e77273bc974d0c141d594
+	source_armv7h = Jackett.Binaries.LinuxARM32-0.12.1213.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1213/Jackett.Binaries.LinuxARM32.tar.gz
+	sha256sums_armv7h = e0a64099c549e97c08388f389c2aab4b826fb6f15e3b86a3509e5312f7b248e8
 
 pkgname = jackett
 
