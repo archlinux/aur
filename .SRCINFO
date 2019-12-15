@@ -5,7 +5,7 @@ pkgbase = minetest-mod-pipeworks-git
 	url = https://forum.minetest.net/viewtopic.php?id=2155
 	arch = any
 	license = WTFPL
-	depends = minetest-common>=0.4.13
+	depends = minetest-common
 	optdepends = mesecons-git
 	provides = minetest-mod-pipeworks
 	source = minetest-mod-pipeworks::git+https://gitlab.com/VanessaE/pipeworks.git
