@@ -1,0 +1,13 @@
+pkgbase = gcmc
+	pkgdesc = G-code meta-compiler
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = http://www.vagrearg.org/content/gcmc
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = http://www.vagrearg.org/gcmc/gcmc-1.8.3.tar.gz
+	sha512sums = e9ba4a0b8a43a27cddc5e569e7668a1e3b2650e97910169476527487ec1cc870a4e8baa80046e206b6435806721639854c9bb3070d1feac522f2c4510c3c4631
+
+pkgname = gcmc
+
