@@ -4,8 +4,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 _pkgname=kgraphviewer
 pkgname=kgraphviewer-git
-pkgver=0.0.0
-pkgrel=2
+pkgver=2.4.3a.r29.g9a80c71
+pkgrel=1
 pkgdesc='A Graphviz dot graph file viewer for KDE'
 arch=(x86_64)
 url='http://www.kde.org/applications/graphics/kgraphviewer/'
