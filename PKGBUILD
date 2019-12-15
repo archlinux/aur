@@ -2,14 +2,15 @@
 
 pkgname=o
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
-makedepends=(git go upx)
+makedepends=(git go-pie upx)
 source=("git+$url#tag=$pkgver")
 sha256sums=('SKIP')
+options=(!strip)
 
 build() {
   cd "$pkgname"
