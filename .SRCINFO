@@ -2,13 +2,20 @@ pkgbase = directx-shader-compiler
 	pkgdesc = A compiler for HLSL to DXIL (DirectX Intermediate Language).
 	pkgver = 1.4.1907
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/microsoft/DirectXShaderCompiler
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = git
+	conflicts = directx-shader-compiler-git
 	source = https://github.com/microsoft/DirectXShaderCompiler/archive/v1.4.1907.tar.gz
+	source = https://github.com/KhronosGroup/SPIRV-Headers/archive/1.4.2.tar.gz
+	source = https://github.com/KhronosGroup/SPIRV-Tools/archive/v2019.4.tar.gz
+	md5sums = 2605740814353381474792cb8e6f7112
+	md5sums = acbd2ca28d01ff86596378be18d37c6c
+	md5sums = c666f17aa0338af05918270885f81a6c
+	sha256sums = b741e15920618e1df07931dd8c3156a940acc86732615f702041e71e91df178d
+	sha256sums = 7dbdd805aeb142b153b8dccd8c70d705e55664a576ca58abca37f36ad5ab3244
+	sha256sums = 2ab4fa3dbff0aa263da9576beefa5d080ebaf3672b1215025504115d614caab5
 
 pkgname = directx-shader-compiler
 
