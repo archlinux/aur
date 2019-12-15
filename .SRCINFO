@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosserial-client
 	pkgdesc = ROS - Generalized client side source for rosserial.
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosserial_client
 	arch = any
 	license = BSD
@@ -15,7 +15,9 @@ pkgbase = ros-melodic-rosserial-client
 	depends = ros-melodic-tf
 	depends = ros-melodic-rosunit
 	source = ros-melodic-rosserial-client-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
+	source = ros-melodic-rosserial-client-0.8.0-c5e90cd.patch::https://github.com/ros-drivers/rosserial/commit/c5e90cdd34aafca9783addbd8e83364b0fef4579.patch
 	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
+	sha256sums = 247974d9711161ab2a11ec281256b1c68b72238dd70f4f0d01fd845a6ff2e399
 
 pkgname = ros-melodic-rosserial-client
 
