@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python' 'redis')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b61808d7e97b7cd5a92ed574937a079c9387fdadd22bfbfa7ad2fd319ecc26e3')
+sha256sums=('15f8af30b044c771aee6787e5ec24694c048184c7b9e54c3b60c750a4b93273a')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"

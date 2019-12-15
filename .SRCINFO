@@ -9,7 +9,7 @@ pkgbase = python-aioredis
 	depends = python
 	depends = redis
 	source = https://pypi.io/packages/source/a/aioredis/aioredis-1.3.1.tar.gz
-	sha256sums = b61808d7e97b7cd5a92ed574937a079c9387fdadd22bfbfa7ad2fd319ecc26e3
+	sha256sums = 15f8af30b044c771aee6787e5ec24694c048184c7b9e54c3b60c750a4b93273a
 
 pkgname = python-aioredis
 
