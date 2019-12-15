@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Do nothing if minecraft crashed
+if [ -z "$MAINPID" ]; then
+  exit
+fi
+
 . "$RUNTIME_DIR/vars"
 
 if [ "$rcon" = true ]; then
@@ -16,7 +21,6 @@ fi
 # specify an ExecStop in order to notify users of the impending shutdown. We
 # can also go ahead and use the cleaner stop command.
 
-PID="$(cat "$RUNTIME_DIR/pid")"
 # We also double-check that mcrcon is still installed, because it could have
 # been uninstalled since vars was generated and it is very important that we do
 # a graceful shutdown
@@ -25,11 +29,11 @@ if [ "$rcon" = true -a -x /usr/bin/mcrcon ]; then
   # shutdown hook which prevents some final log statements from being written.
   /usr/bin/mcrcon -H localhost -P "$port" -p "$password" stop > /dev/null
 else
-  kill "$PID"
+  kill "$MAINPID"
 fi
 
 # Wait for server shutdown
 for (( X=0; X<60; X++ )); do
-  ps -p "$PID" > /dev/null || break
+  ps -p "$MAINPID" > /dev/null || break
   sleep .5
 done

@@ -12,7 +12,7 @@ _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
 _buildtoolver=103
-pkgrel=1
+pkgrel=2
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="https://www.spigotmc.org/"
@@ -32,18 +32,16 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "backup.sh"
         "init-rcon.sh"
         "notify-shutdown.sh"
-        "start_server.sh"
         "readme.md"
         "sysusers.conf")
 sha256sums=('67b989f24444c12c0417fa0e6c44ddd44d8bfa3b3811a61c1c7b586a592a8027'
-            'cf72cf4af41000c9d04d00722097e609b57cd57d12a7eb3fd8b90ed7f408f4fd'
-            '58a675cf0bd3c514f9e65a67e5ef1d7c688a70d23afe4da5bfebea5e622b6b35'
+            '4ad26fa4df8c8f83e51b74bb0db4d78641a41fbad7c5e285b41493a6fd3019ac'
+            '75677d50e67eae3aa3dd402b672ef9db7f3e34b626231b10ac8dbf04af23d6e5'
             '16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c'
             'ea0a2185d4e846ed964fac7b60ff2ef10a978cecce65604a5fb2e7ed42b612af'
             '2b758beb056019daa92caf19a9d35f33ab2c90b4f422e5ab4f0791c72a3f7ed0'
             '492c06eb11f26d3eff6742b88f2024be85eff05cf80d57a691cd3420ebdcb26c'
-            '5f4d945f461d33d634f64ebbefd83a55cc0619afd829a726b00b27269f4b1520'
-            'dea0b5e4a2a5331413463f71b51e3c681c98c10e0bbfa1beb16c14e24fd6ae13'
+            '8e0e95065746d0309b60bb253879cd040b9adf76666830c28121c9610bb1e499'
             'd111d53bf0ec0579f48afb2775181861d60d704a45a8acf4575fcd95106cd102'
             'c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575')
 
@@ -69,7 +67,6 @@ package() {
   install -Dm644 "$srcdir/work/minecraft_server.${_pkgver}.jar" "$pkgdir/usr/share/java/$pkgname/minecraft.jar"
 
   install -Dm755 "$srcdir/init-rcon.sh" "$pkgdir/usr/share/$pkgname/init-rcon.sh"
-  install -Dm755 "$srcdir/start_server.sh" "$pkgdir/usr/share/$pkgname/start_server.sh"
   install -Dm755 "$srcdir/notify-shutdown.sh" "$pkgdir/usr/share/$pkgname/notify-shutdown.sh"
 
   install -Dm755 "$srcdir/backup.sh" "$pkgdir/usr/share/doc/$pkgname/backup.sh"

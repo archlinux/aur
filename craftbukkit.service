@@ -6,12 +6,10 @@ User=craftbukkit
 Group=craftbukkit
 RuntimeDirectory=craftbukkit
 WorkingDirectory=/srv/craftbukkit
-PIDFile=/run/craftbukkit/pid
 Environment=JAVA_ARGS=-Xmx1G RUNTIME_DIR=/run/craftbukkit
 ExecStartPre=/usr/share/craftbukkit-spigot/init-rcon.sh
-ExecStart=/usr/share/craftbukkit-spigot/start_server.sh /usr/bin/java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar
+ExecStart=/usr/bin/java $JAVA_ARGS -jar /usr/share/java/craftbukkit-spigot/%p.jar --noconsole
 ExecStop=/usr/share/craftbukkit-spigot/notify-shutdown.sh
-Type=forking
 PrivateTmp=true
 SuccessExitStatus=143
 
