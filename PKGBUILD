@@ -2,19 +2,25 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: eworm <arch@eworm.de>
 # Contributor: pisuka <tekmon@gmail.com>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 
 pkgbase=lightdm-git
-pkgname=('lightdm-git' 'liblightdm-qt4-git' 'liblightdm-qt5-git')
-pkgver=1.28.0.r7.g7241fd81
+pkgname=('lightdm-git' 'liblightdm-qt5-git')
+pkgver=1.30.0.r9.g03f21898
 pkgrel=1
 pkgdesc='A lightweight display manager'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/lightdm'
 license=('GPL3' 'LGPL3')
-makedepends=('git' 'gobject-introspection' 'gtk-doc' 'intltool' 'itstool'
-             'libxklavier' 'polkit' 'qt4' 'qt5-base' 'systemd' 'yelp-tools')
+makedepends=('git' 'gobject-introspection' 'gtk-doc'
+             'intltool' 'itstool' 'glib2' 'libxcb' 'libgcrypt'
+             'vala' 'libx11' 'libxdmcp' 'pam'
+             'libxklavier' 'polkit' 'qt5-base'
+             'systemd' 'yelp-tools')
+
 source=("git+https://github.com/CanonicalLtd/lightdm"
         'lightdm.service'
+        'lightdm.sysusers'
         'lightdm.tmpfiles'
         'lightdm.pam'
         'lightdm-autologin.pam'
@@ -23,6 +29,7 @@ source=("git+https://github.com/CanonicalLtd/lightdm"
         'Xsession')
 sha256sums=('SKIP'
             '0d2adba25cdbe59e97ffd302083db9d5e23920780f41e04f64512cd6b633289a'
+            'fd93291bfc9985f0a1bb288472866aa0a9bcd259e024c3a29d20ca158bc08403'
             'b29521fbd7a48a8f60b93ecca3b30c30bcb71560de8033c8d39b25c22c6f696f'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0'
             '33e3c3d6e16c8d30756754ea3f31f5457c5be0343686aad287692be34958984a'
@@ -40,15 +47,16 @@ prepare() {
   cd $srcdir/lightdm
 
   patch -Np1 -i ../lightdm-default-config.patch
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $srcdir/lightdm
 
-  export MOC4='moc-qt4'
   export MOC5='moc-qt5'
 
-  ./autogen.sh \
+  ./configure \
     --prefix='/usr' \
     --libexecdir='/usr/lib/lightdm' \
     --localstatedir='/var' \
@@ -57,14 +65,17 @@ build() {
     --with-greeter-session='lightdm-gtk-greeter' \
     --with-greeter-user='lightdm' \
     --disable-static \
+    --enable-gtk-doc \
     --disable-tests
    make
 }
 
 package_lightdm-git() {
-depends=('libxklavier' 'polkit' 'systemd')
+depends=('libxklavier' 'polkit' 'systemd' 'glib2'
+         'libgcrypt' 'libx11' 'libxcb' 'pam' 'libxdmcp')
 optdepends=('xorg-server-xephyr: LightDM test mode'
-            'accountsservice: limit visible accounts')
+            'accountsservice: limit visible accounts'
+            'lightdm-gtk-greeter: GTK greeter')
 provides=('lightdm')
 conflicts=('lightdm')
 backup=('etc/apparmor.d/lightdm-guest-session'
@@ -75,7 +86,6 @@ backup=('etc/apparmor.d/lightdm-guest-session'
         'etc/pam.d/lightdm'
         'etc/pam.d/lightdm-autologin'
         'etc/pam.d/lightdm-greeter')
-install='lightdm.install'
 
   cd $srcdir/lightdm
 
@@ -85,44 +95,19 @@ install='lightdm.install'
   rm -rf "${pkgdir}"/etc/init
   rm -rf "${pkgdir}"/usr/include/lightdm-qt{,5}-*
 
-  install -dm 755 "${pkgdir}"/var/cache/lightdm
-  install -dm 770 "${pkgdir}"/var/lib/lightdm{,-data}
-  install -dm 711 "${pkgdir}"/var/log/lightdm
-  chmod +t "${pkgdir}"/var/{cache/lightdm,lib/lightdm{,-data}}
-  echo 'GDK_CORE_DEVICE_EVENTS=true' > "${pkgdir}"/var/lib/lightdm/.pam_environment
-  chmod 644 "${pkgdir}"/var/lib/lightdm/.pam_environment
-  chown 620:620 -R "${pkgdir}"/var/lib/lightdm{,-data}
-  chgrp 620 "${pkgdir}"/var/log/lightdm
-
 # PAM
   install -m 644 ../lightdm.pam "${pkgdir}"/etc/pam.d/lightdm
   install -m 644 ../lightdm-autologin.pam "${pkgdir}"/etc/pam.d/lightdm-autologin
 
 # PolicyKit
-  install -dm 700 -o polkitd "${pkgdir}"/usr/share/polkit-1/rules.d
+  install -dm 750 -g 102 "${pkgdir}"/usr/share/polkit-1/rules.d
   install -m 644 ../lightdm.rules "${pkgdir}"/usr/share/polkit-1/rules.d/lightdm.rules
 
 # Systemd
-  install -dm 755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d}
+  install -dm 755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d,sysusers.d}
   install -m 644 ../lightdm.service "${pkgdir}"/usr/lib/systemd/system/lightdm.service
   install -m 644 ../lightdm.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lightdm.conf
-}
-
-package_liblightdm-qt4-git() {
-pkgdesc='LightDM Qt client library'
-depends=('lightdm' 'qt4')
-provides=('liblightdm-qt4')
-conflicts=('liblightdm-qt4')
-options=('!emptydirs')
-
-  cd $srcdir/lightdm
-
-  make DESTDIR="${pkgdir}" -C liblightdm-gobject install
-  make DESTDIR="${pkgdir}" -C liblightdm-qt install
-  make DESTDIR="${pkgdir}" -C liblightdm-gobject uninstall
-  find "${pkgdir}" -type d -name *qt5* -exec rm -rf {} +
-  find "${pkgdir}" -type f  -name *qt5* -exec rm {} +
-  find "${pkgdir}" -type l  -name *qt5* -exec rm {} +
+  install -m 644 ../lightdm.sysusers "${pkgdir}"/usr/lib/sysusers.d/lightdm.conf
 }
 
 package_liblightdm-qt5-git() {
