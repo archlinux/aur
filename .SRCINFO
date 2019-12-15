@@ -1,6 +1,6 @@
 pkgbase = d9vk-winelib
 	pkgdesc = A d3d9 to vk layer based off DXVK's codebase, winelib version
-	pkgver = 0.40
+	pkgver = 0.40.1
 	pkgrel = 1
 	url = https://github.com/Joshua-Ashton/d9vk
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = d9vk-winelib
 	depends = bash
 	provides = d9vk
 	conflicts = d9vk
-	source = git+https://github.com/Joshua-Ashton/d9vk.git#tag=0.40
+	source = git+https://github.com/Joshua-Ashton/d9vk.git#tag=0.40.1
 	source = setup_d9vk
 	source = dxvk-async.patch
 	source = dxvk-mangohud.patch

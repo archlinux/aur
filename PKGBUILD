@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=d9vk-winelib
-_tag=0.40
+_tag=0.40.1
 pkgver=${_tag//-/_}
 pkgrel=1
 pkgdesc="A d3d9 to vk layer based off DXVK's codebase, winelib version"
@@ -47,6 +47,9 @@ prepare() {
     # Adjust optimization level in meson arguments. This is ignored
     # anyways because meson sets its own optimization level.
     CFLAGS="${CFLAGS/ -O*([0-3])/}"
+    # Filter fstack-protector flag for MingW.
+    # https://github.com/Joshua-Ashton/d9vk/issues/476
+    #CFLAGS="${CFLAGS/ -fstack-protector*/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
