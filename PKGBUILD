@@ -1,27 +1,70 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=4.1.4
+pkgver=4.2.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
-url='https://ffmpeg.org/'
+url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
-depends=('alsa-lib' 'aom' 'bzip2' 'fontconfig' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'jack' 'lame' 'libavc1394' 'libdrm' 'libiec61883' 'libmodplug'
-         'libomxil-bellagio' 'libpulse' 'libraw1394' 'libsoxr' 'libssh' 'libtheora'
-         'libvdpau' 'libwebp' 'libx11' 'libxcb' 'libxext' 'libxml2' 'libxv'
-         'opencore-amr' 'openjpeg2' 'opus' 'sdl2' 'speex' 'v4l-utils' 'xz' 'zlib'
-         'libass.so' 'libbluray.so' 'libfreetype.so' 'libva-drm.so' 'libva.so'
-         'libva-x11.so' 'libvidstab.so' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so'
-         'libx264.so' 'libx265.so' 'libxvidcore.so')
+depends=(
+    'alsa-lib'
+    'aom'
+    'bzip2'
+    'fontconfig'
+    'fribidi'
+    'gmp'
+    'gnutls'
+    'gsm'
+    'jack'
+    'lame'
+    'libass.so'
+    'libavc1394'
+    'libbluray.so'
+    'libdav1d.so'
+    'libdrm'
+    'libfreetype.so'
+    'libiec61883'
+    'libmodplug'
+    'libomxil-bellagio'
+    'libpulse'
+    'libraw1394'
+    'libsoxr'
+    'libssh'
+    'libtheora'
+    'libva.so'
+    'libva-drm.so'
+    'libva-x11.so'
+    'libvdpau'
+    'libvidstab.so'
+    'libvorbisenc.so'
+    'libvorbis.so'
+    'libvpx.so'
+    'libwebp'
+    'libx11'
+    'libx264.so'
+    'libx265.so'
+    'libxcb'
+    'libxext'
+    'libxml2'
+    'libxv'
+    'libxvidcore.so'
+    'opencore-amr'
+    'openjpeg2'
+    'opus'
+    'sdl2'
+    'speex'
+    'v4l-utils'
+    'xz'
+    'zlib'
+)
 makedepends=(
     # official repositories:
        'nasm' 'ffnvcodec-headers' 'ladspa'
     # AUR:
-        'blackmagic-decklink-sdk'
+        'decklink-sdk'
 )
 optdepends=('ladspa: LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -29,19 +72,11 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        'ffmpeg-decklink-sdk-11.patch'
         'LICENSE')
-sha256sums=('f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1'
+sha256sums=('cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4'
             'SKIP'
-            '96500257c72c664a9e7417d9aee3d0b2a4436f836e9733dcf1c9c30926b642df'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-
-prepare() {
-    cd "ffmpeg-${pkgver}"
-    
-    patch -Np1 -i "${srcdir}/ffmpeg-decklink-sdk-11.patch"
-}
 
 build() {
     cd "ffmpeg-${pkgver}"
@@ -61,6 +96,7 @@ build() {
         --enable-libaom \
         --enable-libass \
         --enable-libbluray \
+        --enable-libdav1d \
         --enable-libdrm \
         --enable-libfreetype \
         --enable-libfribidi \
@@ -101,10 +137,7 @@ build() {
 }
 
 package() {
-    cd "ffmpeg-${pkgver}"
-    
-    make DESTDIR="$pkgdir" install
-    
-    install -D -m755 tools/qt-faststart  -t "${pkgdir}/usr/bin"
-    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    make -C "ffmpeg-${pkgver}" DESTDIR="$pkgdir" install
+    install -D -m755 "ffmpeg-${pkgver}/tools/qt-faststart" -t "${pkgdir}/usr/bin"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
