@@ -1,6 +1,6 @@
 pkgbase = rakudo
 	pkgdesc = Perl6 compiler for MoarVM
-	pkgver = 2019.07.1
+	pkgver = 2019.11
 	pkgrel = 1
 	url = http://rakudo.org/
 	arch = i686
@@ -8,16 +8,14 @@ pkgbase = rakudo
 	groups = perl6
 	license = PerlArtistic
 	makedepends = perl>=5.8
-	depends = nqp>=2019.07.1
+	depends = nqp>=2019.11
 	provides = rakudo-moarvm
 	provides = perl6
 	conflicts = rakudo-moarvm
 	replaces = rakudo-moarvm
 	options = !makeflags
-	source = http://rakudo.org/downloads/rakudo/rakudo-2019.07.1.tar.gz
-	source = stale-files.patch
-	sha512sums = aedb26c8145eefb53471cf96a15b04f6759d43c68e11d7942c693ea2122583dd243e9dfe288d6fb11131eb2bd4e9d0c735986e241c5a35ca126dc7f10d6c4a8d
-	sha512sums = 0029f675ff757966024f84259af9d3fd67ccf1b7703356dcad801ab76da92cbb91bdd47e96f4ea4a14ba618cf4cb2f3717ab93bbfc8f40fe8238832b762684f6
+	source = http://rakudo.org/downloads/rakudo/rakudo-2019.11.tar.gz
+	sha512sums = 6d058fe1e1630023f14ac910ade75f22b963f9eb8e524a8c9006a6df8e0764f283f2c8bd4af4a303b2151e6078fccd8b3cb6c388f70e38d6e9465505eefafdb4
 
 pkgname = rakudo
 
