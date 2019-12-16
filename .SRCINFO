@@ -1,20 +1,19 @@
 pkgbase = leftwm
 	pkgdesc = Leftwm - A tiling window manager for the adventurer
-	pkgver = 0.1.10
+	pkgver = 0.2.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/leftwm/leftwm
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	makedepends = rust
+	makedepends = rustup
 	makedepends = git
 	optdepends = dmenu: default launcher
 	optdepends = feh: used to set background images
 	optdepends = lemonbar: light weight bar
 	optdepends = polybar: light weight bar
-	source = leftwm::git+https://github.com/leftwm/leftwm.git#tag=0.1.10
+	source = leftwm::git+https://github.com/leftwm/leftwm.git#tag=0.2.1
 	md5sums = SKIP
 
 pkgname = leftwm
