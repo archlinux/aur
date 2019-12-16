@@ -9,7 +9,7 @@ url="https://github.com/oefd/$pkgname"
 license=('MIT')
 depends=('certbot' 'python' 'python-certifi' 'python-chardet' 'python-idna' 'python-requests' 'python-urllib3')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-md5sums=('88501cab06d6dfd7da76619bc9f6b55a')
+sha256sums=('afd6998a24c52d87f95610de1da8038e9b6701b0532ba0e40d50d17e8d2ddcfb')
 
 package() {
 	cd "$srcdir/$pkgname-$_commit/"
