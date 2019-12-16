@@ -2,8 +2,8 @@
 
 _pkgname=yarn-completion
 pkgname=yarn-completion-git
-pkgver=v0.15.0.r3.gcbcb7b5
-pkgrel=3
+pkgver=v0.16.0.r0.g2821c67
+pkgrel=1
 pkgdesc='Bash completion for Yarn'
 url='https://github.com/dsifford/yarn-completion'
 arch=('any')
