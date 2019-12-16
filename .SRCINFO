@@ -1,13 +1,13 @@
 pkgbase = cmakeed
 	pkgdesc = CMake plugin for Eclipse
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/15knots/cmakeed
 	arch = any
 	license = EPL
 	depends = eclipse-common
-	source = https://dl.bintray.com/15knots/p2-zip/CMakeEd-1.12.0.zip
-	md5sums = 31e635cf103de9f11d555ea0ced592a7
+	source = https://dl.bintray.com/15knots/p2-zip/CMakeEd-1.13.0.zip
+	md5sums = 582c8a164634974e5fd044c3ec7c59d5
 
 pkgname = cmakeed
 
