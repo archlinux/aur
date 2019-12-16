@@ -3,7 +3,7 @@
 _pkgname=neovim
 pkgname=neovim-nightly
 epoch=1
-pkgver=0.5.0+20191215
+pkgver=0.5.0+20191216
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
 arch=('x86_64')
