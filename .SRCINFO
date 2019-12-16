@@ -1,7 +1,7 @@
 pkgbase = dxvk-winelib
 	pkgdesc = Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, Winelib version
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = zlib/libpng
@@ -16,6 +16,7 @@ pkgbase = dxvk-winelib
 	depends = bash
 	provides = dxvk
 	provides = d9vk
+	provides = dxvk=1.5
 	conflicts = dxvk
 	conflicts = d9vk
 	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.5
