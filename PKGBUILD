@@ -5,7 +5,8 @@ _pkgver=4.11-10
 pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
-pkgrel=1
+_dxvkver=1.5
+pkgrel=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -28,10 +29,9 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  wine_gecko=$_geckover
-  wine-mono-bin=$_monover
-  dxvk
-  d9vk
+  "wine_gecko=$_geckover"
+  "wine-mono-bin=$_monover"
+  "dxvk>=$_dxvkver"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex
   'gcc>=4.5.0-2'
@@ -120,7 +120,7 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    SKIP #'956ad6f7f734254f4860b69024c8ec6e0669a2c34fba48dc1afad75f3e6514df'
+    'd2ac28b6a409b2f8ae93b9d27ba462bb0823a22852bc9cf9c72f3f90caf17efd'
     '7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782'
 )
 
@@ -191,19 +191,11 @@ package() {
     ln -s /usr/share/wine/mono "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
     ln -s /usr/share/wine/gecko "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
 
-    for i in d3d10_1.dll d3d10core.dll d3d10.dll d3d11.dll dxgi.dll
+    for i in d3d9.dll d3d10_1.dll d3d10core.dll d3d10.dll d3d11.dll dxgi.dll
     do
         ln -s "/usr/share/dxvk/x32/$i" \
             "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib/wine/dxvk/
         ln -s "/usr/share/dxvk/x64/$i" \
-            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib64/wine/dxvk/
-    done
-
-    for i in d3d9.dll
-    do 
-        ln -s "/usr/share/d9vk/x32/$i" \
-            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib/wine/dxvk/
-        ln -s "/usr/share/d9vk/x64/$i" \
             "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib64/wine/dxvk/
     done
 }

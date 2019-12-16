@@ -1,7 +1,7 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
 	pkgver = 4.11.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
 	license = GPL
@@ -96,8 +96,7 @@ pkgbase = proton-native
 	makedepends = steam-native-runtime
 	makedepends = wine_gecko=2.47
 	makedepends = wine-mono-bin=4.9.4
-	makedepends = dxvk
-	makedepends = d9vk
+	makedepends = dxvk>=1.5
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
@@ -131,8 +130,7 @@ pkgbase = proton-native
 	depends = steam-native-runtime
 	depends = wine_gecko=2.47
 	depends = wine-mono-bin=4.9.4
-	depends = dxvk
-	depends = d9vk
+	depends = dxvk>=1.5
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -195,7 +193,7 @@ pkgbase = proton-native
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = d2ac28b6a409b2f8ae93b9d27ba462bb0823a22852bc9cf9c72f3f90caf17efd
 	sha256sums = 7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782
 
 pkgname = proton-native
