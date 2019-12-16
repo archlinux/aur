@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.30.0.r102.g8a0929973d
+pkgver=0.30.0.r324.gd07b7f068d
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=(
          'aribb24'
          'bzip2'
          'celt'
-         'cmocka'
          'dav1d'
          'desktop-file-utils'
          'fontconfig'
@@ -266,6 +265,7 @@ prepare() {
     '--enable-libcaca'
     '--enable-libcdio'
     '--enable-libcelt'
+    '--enable-libdav1d'
     '--enable-libdc1394'
     '--enable-libdrm'
     '--enable-libfdk-aac'
@@ -335,7 +335,6 @@ prepare() {
     '--prefix=/usr'
     '--confdir=/etc/mpv'
     '--htmldir=/usr/share/doc/mpv/html'
-    '--enable-test'
     '--disable-build-date'
     '--lua=luajit'
     '--enable-alsa'
@@ -393,19 +392,21 @@ prepare() {
     '--enable-zlib'
   )
 
-    # '--enable-vaapi-glx'
+    # ffmpeg: removed or can't build
     # '--disable-vapoursynth-lazy'
-    # '--enable-omx-rpi'
-    # '--enable-libdav1d'
+    # [N] '--enable-omx-rpi'
     # '--enable-libsmbclient'
-    # '--enable-avresample'
+    # [D] '--enable-avresample'
 
-    # '--enable-zsh-comp'
-    # '--enable-audio-input'
-    # '--enable-dvdread'
-    # '--enable-libv4l2'
-    # '--enable-tv'
-    # '--enable-tv-v4l2'
+    # mpv: removed or can't build
+    # [R] '--enable-zsh-comp'
+    # [R] '--enable-audio-input'
+    # [R] '--enable-dvdread'
+    # [R] '--enable-libv4l2'
+    # [R] '--enable-tv'
+    # [R] '--enable-tv-v4l2'
+    # [R] '--enable-vaapi-glx'
+    # [O] '--enable-test'
 
 
   local _ffmpeg_cflags=''
