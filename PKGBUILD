@@ -1,19 +1,22 @@
-# Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
-# Contributor: Limao Luo <luolimao+AUR@gmail.com>
-# Contributor: Thomas Dziedzic <gostrc@gmail.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer Adria Arrufat <swiftscythe@gmail.com>
+# Contributor Limao Luo <luolimao+AUR@gmail.com>
+# Contributor Thomas Dziedzic <gostrc@gmail.com>
+# Contributor Jan de Groot <jgc@archlinux.org>
+# Contributor Giovanni Scafora <giovanni@archlinux.org>
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.4.2
+pkgver=3.4.3+106+g4859c2d5e
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
-license=(GPL2)
-url=http://www.rhythmbox.org
-depends=(dconf desktop-file-utils gst-plugins-base gst-plugins-good libsoup json-glib libnotify libpeas media-player-info totem-plparser tdb webkit2gtk libgudev)
-makedepends=(itstool intltool brasero gobject-introspection vala grilo libdmapsharing lirc libgpod libmtp gtk-doc yelp-tools)
+license=(GPL)
+url="https://wiki.gnome.org/Apps/Rhythmbox"
+depends=(dconf gst-plugins-base gst-plugins-good libsoup json-glib libnotify libpeas
+         media-player-info totem-plparser tdb python-gobject libgudev grilo)
+makedepends=(itstool intltool brasero gobject-introspection vala grilo libdmapsharing lirc libgpod
+             libmtp gtk-doc yelp-tools git)
+checkdepends=(check xorg-server-xvfb)
 optdepends=('gst-plugins-ugly: Extra media codecs'
             'gst-plugins-bad: Extra media codecs'
             'gst-libav: Extra media codecs'
@@ -23,16 +26,16 @@ optdepends=('gst-plugins-ugly: Extra media codecs'
             'lirc: LIRC plugin'
             'libgpod: Portable Players - iPod plugin'
             'libmtp: Portable Players - MTP plugin'
-            'python-mako: Context pane plugin')
+            'gvfs-mtp: Portable Players - Android plugin')
+options=('!emptydirs')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
-options=(!emptydirs)
-source=($pkgname::git+https://git.gnome.org/browse/$_pkgname)
+source=($pkgname::git+https://gitlab.gnome.org/GNOME/$_pkgname)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --always | sed 's|-|+|g;s|v||'
+    cd $pkgname
+    git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
@@ -46,18 +49,28 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    ./configure --prefix=/usr --sysconfdir=/etc \
-        --libexecdir=/usr/lib/rhythmbox \
-	MOZILLA_PLUGINDIR=/usr/lib/epiphany/plugins \
-        --localstatedir=/var --disable-static \
-        --enable-daap --enable-python --enable-vala \
-	--enable-gtk-doc --disable-werror
+    cd $pkgname
+    ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib/rhythmbox \
+    --disable-browser-plugin \
+    --disable-static \
+    --disable-more-warnings \
+    --enable-daap \
+    --enable-gtk-doc \
+    --enable-python \
+    --enable-vala \
+
+    # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
     make
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd $pkgname
     make DESTDIR="$pkgdir" install
     rm -r "$pkgdir/usr/lib/rhythmbox/sample-plugins"
     rm -r "$pkgdir/usr/lib/rhythmbox/plugins/rbzeitgeist"
