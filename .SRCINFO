@@ -1,7 +1,7 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
 	pkgver = 10.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
@@ -40,7 +40,9 @@ pkgbase = gazebo
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
 	source = http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-10.1.0.tar.bz2
+	source = fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw
 	sha256sums = 8a1fcf8697704928c9cda610a9ce81f563f211bdfb2f1fdb458193ffb36c4287
+	sha256sums = 4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72
 
 pkgname = gazebo
 

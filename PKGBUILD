@@ -8,7 +8,7 @@
 
 pkgname=gazebo
 pkgver=10.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -30,8 +30,15 @@ optdepends=('bullet: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'ignition-cmake')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2")
-sha256sums=('8a1fcf8697704928c9cda610a9ce81f563f211bdfb2f1fdb458193ffb36c4287')
+source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2"
+        "fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw")
+sha256sums=('8a1fcf8697704928c9cda610a9ce81f563f211bdfb2f1fdb458193ffb36c4287'
+            '4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch --strip=1 --input=../fix-openal.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
