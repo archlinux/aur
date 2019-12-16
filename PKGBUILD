@@ -4,7 +4,7 @@
 
 pkgname=gtk-3-fortran-git
 pkgver=r536.6173c1f
-pkgrel=1
+pkgrel=2
 pkgdesc="A binding of the GTK+ 3.x libraries for Fortran 95/2003"
 arch=('i686' 'x86_64')
 url="https://github.com/jerryd/gtk-fortran/wiki"
@@ -30,10 +30,11 @@ prepare() {
 build() {
   cd gtk-fortran
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DNO_BUILD_EXAMPLES=y
-  make -j1
+  make
 }
 
 package() {
   cd gtk-fortran
   make DESTDIR="$pkgdir" install
 }
+

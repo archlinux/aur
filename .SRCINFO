@@ -1,7 +1,7 @@
 pkgbase = gtk-3-fortran-git
 	pkgdesc = A binding of the GTK+ 3.x libraries for Fortran 95/2003
 	pkgver = r536.6173c1f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jerryd/gtk-fortran/wiki
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = gtk-3-fortran-git
 	makedepends = gcc-fortran
 	makedepends = git
 	depends = gtk3
+    depends = plplot
 	provides = gtk-3-fortran
 	conflicts = gtk-3-fortran
 	source = git+https://github.com/jerryd/gtk-fortran.git#branch=gtk3
