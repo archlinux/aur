@@ -2,7 +2,7 @@
 # Maintainer: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
 pkgbase='vim-git'
 pkgname=('vim-git' 'vim-git-runtime')
-pkgver=10857.a07549008
+pkgver=10985.5e5a98d7d
 pkgrel=1
 pkgdesc="VIM: Vi IMproved"
 arch=('i686' 'x86_64')
@@ -10,7 +10,6 @@ url="http://github.com/vim/vim"
 license=('GPL')
 depends=('gpm' 'ruby' 'lua' 'python2' 'python' 'acl')
 optdepends=()
-conflicts=('vim' 'vim-runtime')
 backup=()
 options=()
 source=("git://github.com/vim/vim.git")
@@ -52,6 +51,8 @@ build() {
 }
 
 package_vim-git-runtime() {
+  provides=('vim-runtime')
+  conflicts=('vim-runtime')
   pkgdesc+=' (shared runtime)'
   optdepends=('sh: support for some tools and macros'
               'python: demoserver example tool'
@@ -74,6 +75,8 @@ package_vim-git-runtime() {
 }
 
 package_vim-git() {
+  provides=('vim')
+  conflicts=('vim')
   cd "$srcdir/vim"
 
   make -j1 VIMRCLOC=/etc DESTDIR="${pkgdir}" install
