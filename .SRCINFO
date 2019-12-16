@@ -1,11 +1,12 @@
 pkgbase = devtools-git
 	pkgdesc = Tools for Arch Linux package maintainers
-	pkgver = 20190912
+	pkgver = 20191212
 	pkgrel = 1
 	url = https://git.archlinux.org/devtools.git/
 	arch = any
 	license = GPL
 	makedepends = asciidoc
+	makedepends = git
 	depends = namcap
 	depends = openssh
 	depends = subversion
@@ -14,7 +15,7 @@ pkgbase = devtools-git
 	depends = git
 	depends = bzr
 	depends = mercurial
-	provides = devtools=20190912
+	provides = devtools=20191212
 	conflicts = devtools
 	source = devtools-git::git+https://git.archlinux.org/devtools.git
 	md5sums = SKIP
