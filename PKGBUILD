@@ -1,7 +1,7 @@
-# Maintainer: Ashley Bone <aur DOT ashley DOT bone AT gmail DOT com>
+# Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 pkgname='organizr-git'
 _pkgname='organizr'
-pkgver=r1556.4c51e50
+pkgver=r2028.cdc55ce8
 pkgrel=1
 pkgdesc='HTPC/HomeLab services organizer (git version).'
 arch=('any')
@@ -12,9 +12,10 @@ optdepends=('fail2ban')
 provides=('organizr')
 conflicts=('organizr')
 install='organizr.install'
-source=("${pkgname}::git+https://github.com/causefx/Organizr.git#branch=v2-develop" "organizr.install")
+source=("${pkgname}::git+https://github.com/causefx/Organizr.git#branch=v2-master" "organizr.install" "organizr.tmpfiles")
 sha256sums=('SKIP'
-	    'c4f08e6f1569ea9d82ae14bd5ec6cd5c0a8d762b52c7331bd75024092efaa390')
+            'ae58bcf26a81ac31bc73cc01cf41ce8451b4a279032caee51e4a10470f74bb9f'
+	    '6a496d0eebd685ddb499eb20d6f12e18c825c9e07e27c0ffe04b10b2fc0706e5')
 
 pkgver() {
     cd "${pkgname}"
@@ -22,7 +23,7 @@ pkgver() {
 }
 
 package() {
-    install -dm 755 "${pkgdir}/usr/share/webapps/${_pkgname}/Organizr"
-    install -dm 755 "${pkgdir}/var/lib/${_pkgname}"
-    cp -r "${srcdir}/${pkgname}/"* "${pkgdir}/usr/share/webapps/${_pkgname}/Organizr"
+    install -D -m 644 "${srcdir}/organizr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/organizr.conf"
+    install -dm 755 "${pkgdir}/opt/${_pkgname}"
+    cp -r "${srcdir}/${pkgname}/"* "${pkgdir}/opt/${_pkgname}/"
 }

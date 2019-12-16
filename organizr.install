@@ -1,5 +1,6 @@
 post_install() {
-    post_upgrade
+    chown -R http:http /opt/organizr
+    chown -R http:http /var/lib/organizr
 
     echo '-------------------------------------------------------------------------------'
     echo 'Once you have added Organizr to your web server configuration, browse to'
@@ -12,6 +13,23 @@ post_install() {
 }
 
 post_upgrade() {
-    chown -R http:http /usr/share/webapps/organizr
+    chown -R http:http /opt/organizr
     chown -R http:http /var/lib/organizr
+
+    if [[ -d /usr/share/webapps/organizr ]] && [[ ! -e /opt/organizr/api/config/config.php ]]; then
+	echo '-------------------------------------------------------------------------------'
+	echo 'NOTE: Organizr has been moved to /opt/organizr. An old installation in'
+	echo '/usr/share/webapps/organizr has been detected.  Use the following command to'
+	echo 'move your configuration to the new location:'
+	echo '  sudo mv /usr/share/webapps/organizr/Organizr/api/config/config.php /opt/organizr/api/config'
+	echo
+	echo 'If you installed any custom tab images, move those with:'
+	echo '  sudo mv /usr/share/webapps/organizr/Organizr/plugins/images/tabs/* /opt/organizr/plugins/images/tabs'
+	echo
+	echo 'Please adjust the paths in your webserver and PHP configs to reflect the new'
+	echo 'location.  Note that previously files were installed to /usr/share/webapps/organizr/Organizr.'
+	echo 'The extra Organizr subdirectory has been eliminated and the package is installed directly'
+	echo 'to /opt/organizr.'
+	echo '-------------------------------------------------------------------------------'
+    fi
 }
