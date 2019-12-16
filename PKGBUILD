@@ -2,8 +2,8 @@
 _pkgname='orbterm'
 pkgname="$_pkgname-git"
 pkgver='0.3.6.r4.g4ffdd27'
-pkgrel='1'
-pkgdesc='Orbital Terminal, compatible with Redox and Linux - git version'
+pkgrel='2'
+pkgdesc='The default terminal for RedoxOS, compatible with Linux - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$_pkgname"
 license=('MIT')

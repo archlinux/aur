@@ -1,7 +1,7 @@
 pkgbase = orbterm-git
-	pkgdesc = Orbital Terminal, compatible with Redox and Linux - git version
+	pkgdesc = The default terminal for RedoxOS, compatible with Linux - git version
 	pkgver = 0.3.6.r4.g4ffdd27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.redox-os.org/redox-os/orbterm
 	arch = x86_64
 	arch = i686
