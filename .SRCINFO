@@ -1,7 +1,7 @@
 pkgbase = gnome-network-displays
 	pkgdesc = Miracast implementation for GNOME
-	pkgver = 0.90.1
-	pkgrel = 4
+	pkgver = 0.90.2
+	pkgrel = 1
 	url = https://github.com/benzea/gnome-network-displays
 	arch = any
 	license = GPL3
@@ -17,8 +17,8 @@ pkgbase = gnome-network-displays
 	depends = x264
 	depends = xdg-desktop-portal
 	replaces = gnome-screencast
-	source = gnome-network-displays-0.90.1.tar.gz::https://github.com/benzea/gnome-network-displays/archive/v0.90.1.tar.gz
-	sha256sums = d0fe4d6bf76761f1ea5eb9598fb168ba6e0da3616fa7027b9cd2b86cdab97459
+	source = gnome-network-displays-0.90.2.tar.gz::https://github.com/benzea/gnome-network-displays/archive/v0.90.2.tar.gz
+	sha256sums = 232af8e63d0108c1eee2112afc25c074da26a7e27e3f25dd4a70ea8f4c6fb112
 
 pkgname = gnome-network-displays
 
