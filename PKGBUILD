@@ -1,7 +1,7 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail com>
 
 pkgname=langmix-git
-pkgver=v0.2.r2.gabb47b8
+pkgver=v0.2.r3.g6f9e278
 pkgrel=1
 pkgdesc="Extract and merge multilingual subtitles into one file"
 arch=('any')
@@ -31,6 +31,6 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm755 "$srcdir/$pkgname/extractors/ffmpeg-extractsrt.sh" "$pkgdir/usr/bin/ffmpeg-extractsrt"
+  install -Dm755 "$srcdir/$pkgname/extractors/langmix-extractsrt.sh" "$pkgdir/usr/bin/langmix-extractsrt"
   install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }

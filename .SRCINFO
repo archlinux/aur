@@ -1,6 +1,6 @@
 pkgbase = langmix-git
 	pkgdesc = Extract and merge multilingual subtitles into one file
-	pkgver = v0.2.r2.gabb47b8
+	pkgver = v0.2.r3.g6f9e278
 	pkgrel = 1
 	url = https://github.com/radioxoma/langmix
 	arch = any
