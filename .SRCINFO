@@ -1,14 +1,14 @@
 pkgbase = wps-office-extension-lithuanian-dictionary
 	pkgdesc = Lithuanian dictionary for WPS Office
 	pkgver = 20140224
-	pkgrel = 3
-	url = http://wps-community.org/download/dicts
+	pkgrel = 4
+	url = https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts
 	arch = any
 	groups = wps-office-extensions
 	license = custom
 	makedepends = unzip
 	depends = wps-office
-	source = http://wps-community.org/download/dicts/lt_LT.zip
+	source = https://github.com/wps-community/wps_community_website/raw/master/root/download/dicts/lt_LT.zip
 	sha512sums = a9e2fe0440f53d3ac89bff1339cc45f8d433947edeeaf5b3530544b0bed90f4f7ec0d3da42c98346ae1772051c527b914cd2eb238373fa0100054cff9b77c539
 
 pkgname = wps-office-extension-lithuanian-dictionary
