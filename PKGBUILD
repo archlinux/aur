@@ -1,13 +1,13 @@
 # Maintainers: Perry Hung <perry@leaflabs.com> Florent Thiery <fthiery@gmail.com> Théo Le Calvar <tlc@kher.nl>
 pkgname=decklink
 pkgver=11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
 license=('custom')
 makedepends=('curl')
-depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt5-base' 'qt5-svg')
+depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt5-base' 'qt5-svg' 'dkms')
 options=('!strip' 'staticlibs')
 
 [ "$CARCH" = "i686" ] && _arch='i386'
