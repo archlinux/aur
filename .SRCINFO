@@ -15,8 +15,8 @@ pkgbase = chat-bin
 	conflicts = chat-bin
 	conflicts = chat-irc-bin
 	conflicts = chat-irc-git
-	source = https://ahbnr.de/jenkins/job/chat/lastSuccessfulBuild/artifact/chat
-	source = https://ahbnr.de/jenkins/job/chat/lastSuccessfulBuild/artifact/version
+	source = https://ahbnr.de/jenkins/job/chat/32/artifact/chat
+	source = https://ahbnr.de/jenkins/job/chat/32/artifact/version
 	md5sums = SKIP
 	md5sums = SKIP
 

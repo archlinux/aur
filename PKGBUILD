@@ -15,7 +15,7 @@ provides=('chat')
 backup=()
 options=()
 install=
-source=('https://ahbnr.de/jenkins/job/chat/lastSuccessfulBuild/artifact/chat' 'https://ahbnr.de/jenkins/job/chat/lastSuccessfulBuild/artifact/version')
+source=('https://ahbnr.de/jenkins/job/chat/32/artifact/chat' 'https://ahbnr.de/jenkins/job/chat/32/artifact/version')
 noextract=()
 md5sums=('SKIP' 'SKIP')
 
