@@ -1,7 +1,7 @@
 pkgbase = orbterm
-	pkgdesc = Orbital Terminal, compatible with Redox and Linux
+	pkgdesc = The default terminal for RedoxOS, compatible with Linux
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.redox-os.org/redox-os/orbterm
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = orbterm
 	makedepends = cargo
 	makedepends = rust
 	depends = sdl2
-	source = orbterm-0.3.6-1.tar.gz::https://gitlab.redox-os.org/redox-os/orbterm/-/archive/0.3.6/orbterm-0.3.6.tar.gz
+	source = orbterm-0.3.6-2.tar.gz::https://gitlab.redox-os.org/redox-os/orbterm/-/archive/0.3.6/orbterm-0.3.6.tar.gz
 	sha256sums = c2962e9fca39f3ce51f5dafe4077112cc4ee292f19aa978cac89e6320c36be8c
 
 pkgname = orbterm

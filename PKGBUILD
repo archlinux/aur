@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='orbterm'
 pkgver='0.3.6'
-pkgrel='1'
-pkgdesc='Orbital Terminal, compatible with Redox and Linux'
+pkgrel='2'
+pkgdesc='The default terminal for RedoxOS, compatible with Linux'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$pkgname"
 license=('MIT')
