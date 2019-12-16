@@ -1,17 +1,17 @@
 pkgbase = mopidy-gmusic
 	pkgdesc = Mopidy extension for playing music from Google Play Music
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mopidy/mopidy-gmusic
 	arch = any
 	license = APACHE
-	makedepends = python2-setuptools
-	depends = python2-setuptools
+	makedepends = python-setuptools
+	depends = python-setuptools
 	depends = mopidy>=1.0.0
-	depends = python2-pykka>=1.1.0
-	depends = python2-gmusicapi>=10.1.0
-	depends = python2-requests>=2.0
-	depends = python2-cachetools>=1.0.0
+	depends = python-pykka>=1.1.0
+	depends = python-gmusicapi>=10.1.0
+	depends = python-requests>=2.0
+	depends = python-cachetools>=1.0.0
 	source = https://github.com/mopidy/mopidy-gmusic/archive/v3.0.0.tar.gz
 	md5sums = 6c95f059dfd8189f259c67e517adc38b
 
