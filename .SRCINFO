@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop
 	pkgdesc = Experimental Telegram Desktop fork with option to select custom fonts.
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL3
@@ -27,7 +27,7 @@ pkgbase = kotatogram-desktop
 	conflicts = kotatogram-desktop-bin
 	conflicts = telegram-desktop
 	conflicts = telegram-desktop-bin
-	source = kotatogram-desktop-1.1.1-4::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.1.1
+	source = kotatogram-desktop-1.1.1-5::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.1.1
 	source = Catch2::git+https://github.com/catchorg/Catch2.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
@@ -55,8 +55,8 @@ pkgbase = kotatogram-desktop
 	source = linux-autostart.patch
 	source = Use-native-notifications-by-default.patch
 	source = baloons-follows-text-width-on-adaptive-layout.patch
-	source = https://github.com/kotatogram/kotatogram-desktop/commit/a196b0aba723de85ee573594d9ad420412b6391a.patch
 	source = CMakeLists.inj
+	source = autostart.desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -85,8 +85,8 @@ pkgbase = kotatogram-desktop
 	sha512sums = aaef50685b8871f32820e6cca2014aa986500ddcf34f4e99216081310e8622a242420a7d1ce30e277af85eb3f1d1e73c5a67dab9e02b42ef03ae6d76381fe635
 	sha512sums = 14064af25fda0fcd31a0dc7626687eaf61c329e9100fb55a8a0a455600a63a761e864056088aa486afdd053eccad0a55f8b332151eeb46c90a2c562a64a0a36e
 	sha512sums = ab3e3d627b542f88fde13b0b0db431c59e3b22ee360f916e71cf9b6b96b124b5042e64c9d0bdddb9c9acd9141a3fd254137dfad11fb5605a85cc1df9d8be4df4
-	sha512sums = 067145e8823b330adc91533c4da6c2dd7babd66a22acbe06ad10920e3139467364d9e658ed6c86837cf11e252c1d8c5a2ff1af2feddb46998e4d018328555ff7
 	sha512sums = 98236f7f161c8bad1152a77505f9c3eebae06ffc0420ed476e101359a92d01438dd6ce6062e0b110b76f2d6d09f59accf4b1969699b8af5a3650ecb0c31929c5
+	sha512sums = 610ce239e1e8ae6cfaaccc507eb2ca174f38e340ceec8f56bec4da1a6e390b516c56be5c82a90674e92d0958ac7c8f2fdba560b044f30fb165b522a58bfb600a
 
 pkgname = kotatogram-desktop
 

@@ -2,7 +2,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -62,9 +62,9 @@ source=(
 	"linux-autostart.patch"
 	"Use-native-notifications-by-default.patch"
 	"baloons-follows-text-width-on-adaptive-layout.patch"
-	"https://github.com/kotatogram/kotatogram-desktop/commit/a196b0aba723de85ee573594d9ad420412b6391a.patch"
 
 	"CMakeLists.inj"
+	"autostart.desktop"
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
 sha512sums=('SKIP'
@@ -95,8 +95,8 @@ sha512sums=('SKIP'
             'aaef50685b8871f32820e6cca2014aa986500ddcf34f4e99216081310e8622a242420a7d1ce30e277af85eb3f1d1e73c5a67dab9e02b42ef03ae6d76381fe635'
             '14064af25fda0fcd31a0dc7626687eaf61c329e9100fb55a8a0a455600a63a761e864056088aa486afdd053eccad0a55f8b332151eeb46c90a2c562a64a0a36e'
             'ab3e3d627b542f88fde13b0b0db431c59e3b22ee360f916e71cf9b6b96b124b5042e64c9d0bdddb9c9acd9141a3fd254137dfad11fb5605a85cc1df9d8be4df4'
-            '067145e8823b330adc91533c4da6c2dd7babd66a22acbe06ad10920e3139467364d9e658ed6c86837cf11e252c1d8c5a2ff1af2feddb46998e4d018328555ff7'
-            '98236f7f161c8bad1152a77505f9c3eebae06ffc0420ed476e101359a92d01438dd6ce6062e0b110b76f2d6d09f59accf4b1969699b8af5a3650ecb0c31929c5')
+            '98236f7f161c8bad1152a77505f9c3eebae06ffc0420ed476e101359a92d01438dd6ce6062e0b110b76f2d6d09f59accf4b1969699b8af5a3650ecb0c31929c5'
+            '610ce239e1e8ae6cfaaccc507eb2ca174f38e340ceec8f56bec4da1a6e390b516c56be5c82a90674e92d0958ac7c8f2fdba560b044f30fb165b522a58bfb600a')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver-$pkgrel"
@@ -127,6 +127,8 @@ prepare() {
 	for i in $srcdir/*.patch; do
 		patch -Np1 -i "$i"
 	done
+
+	git cherry-pick -n 'a196b0aba723de85ee573594d9ad420412b6391a'
 }
 
 build() {
