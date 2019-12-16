@@ -1,35 +1,26 @@
+# Maintainer: Thom Wiggers
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=qwbfs
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross platform WBFS file system manager"
 arch=('i686' 'x86_64')
 url="https://github.com/pasnox/qwbfsmanager"
 license=('GPL2')
-# Also 'openssl', but already satisfied:
-depends=('qt5-base' 'hicolor-icon-theme')
+depends=('qt4')
 makedepends=('git')
-source=("qwbfs::git+https://github.com/pasnox/qwbfsmanager.git#tag=v1.2.6"
-        "fresh::git+https://github.com/pasnox/fresh.git#commit=264d665965c0f439bc91e7f51c31e2b76eea8753"
-        "qmake-extensions::git+https://github.com/pasnox/qmake-extensions.git#commit=b60b99bccbfda40136c8aa1a54770543519feda8")
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+source=("qwbfs::git+https://github.com/pasnox/qwbfsmanager.git#tag=v1.2.6")
+sha1sums=('SKIP')
 
 prepare() {
   cd "$srcdir/qwbfs"
-  git submodule init
-  git config submodule.fresh.git.url "$srcdir/fresh"
-  git submodule update
-
-  cd "fresh.git"
-  git submodule init
-  git config submodule.qmake-extensions.git.url "$srcdir/qmake-extensions"
-  git submodule update
+  git submodule update --init --recursive
 }
 
 build() {
   cd "$srcdir/qwbfs"
 
-  qmake PREFIX=/usr
+  qmake-qt4 PREFIX=/usr
   make
 }
 
@@ -46,3 +37,10 @@ package() {
   cp qwbfs/resources/qwbfsmanager.png \
      "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 }
+
+## README
+# This package still has some major issues, because it's basically a dead project
+# based on the long-deprecated qt4 framework.
+#
+# You will probably need to set the environment variable QT_X11_NO_MITSHM=1 before
+# you can launch qwbfsmanager and actually read the screens.
