@@ -2,8 +2,8 @@
 
 _gitname=CuteMarkEd
 pkgname=cutemarked-git
-pkgver=0.0.0
-pkgrel=2
+pkgver=0.11.2.r97.gdf584c4
+pkgrel=1
 pkgdesc="Qt Markdown Editor"
 url="https://github.com/cloose/CuteMarkEd"
 arch=('i686' 'x86_64')
