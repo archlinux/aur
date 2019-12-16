@@ -8,7 +8,7 @@ arch=('x86_64' 'i386' 'armv7l' 'aarch64')
 url="https://github.com/MCJack123/craftos2"
 license=('MIT')
 groups=()
-depends=('craftos-pc>=2.2' 'sdl>=2.0.8')
+depends=('craftos-pc>=2.2' 'sdl2>=2.0.8')
 makedepends=()
 checkdepends=()
 optdepends=()

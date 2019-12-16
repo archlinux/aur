@@ -8,7 +8,7 @@ pkgbase = craftos-pc-ccemux
 	arch = aarch64
 	license = MIT
 	depends = craftos-pc>=2.2
-	depends = sdl>=2.0.8
+	depends = sdl2>=2.0.8
 	source = https://github.com/MCJack123/craftos2/archive/v2.2.tar.gz
 	md5sums = 6aee4aa7a3b74d8e9738f42ded967d4107bb1b6f4eead29b67cf4b5c307112a5
 
