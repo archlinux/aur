@@ -72,7 +72,7 @@ Index: src/gtk+-3.24.13/gtk/gtkwindow.c
    gtk_window_set_title_internal (self, title, FALSE);
  }
  
-@@ -9353,6 +9355,7 @@ static void
+@@ -9360,6 +9362,7 @@ static void
  gtk_window_do_popup (GtkWindow      *window,
                       GdkEventButton *event)
  {

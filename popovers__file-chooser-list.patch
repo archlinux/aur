@@ -10,43 +10,62 @@ Index: src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
  #include "gtkclipboard.h"
  #include "gtkcomboboxtext.h"
  #include "gtkdragsource.h"
-@@ -2268,6 +2269,10 @@ append_separator (GtkWidget *box)
+@@ -2268,15 +2269,9 @@ append_separator (GtkWidget *box)
  {
    GtkWidget *separator;
  
+-  separator = g_object_new (GTK_TYPE_SEPARATOR,
+-                            "orientation", GTK_ORIENTATION_HORIZONTAL,
+-                            "visible", TRUE,
+-                            "margin-start", 12,
+-                            "margin-end", 12,
+-                            "margin-top", 6,
+-                            "margin-bottom", 6,
+-                            NULL);
+-  gtk_container_add (GTK_CONTAINER (box), separator);
 +  separator = gtk_separator_menu_item_new ();
 +  gtk_widget_set_visible (GTK_WIDGET (separator), TRUE);
 +  gtk_menu_shell_append (GTK_MENU_SHELL (box), separator);
-+  return separator;
-   separator = g_object_new (GTK_TYPE_SEPARATOR,
-                             "orientation", GTK_ORIENTATION_HORIZONTAL,
-                             "visible", TRUE,
-@@ -2289,6 +2294,14 @@ add_button (GtkWidget   *box,
+ 
+   return separator;
+ }
+@@ -2289,12 +2294,14 @@ add_button (GtkWidget   *box,
  {
    GtkWidget *item;
  
+- item = g_object_new (GTK_TYPE_MODEL_BUTTON,
+-                       "visible", TRUE,
+-                       "action-name", action,
+-                       "text", label,
+-                       NULL);
+-  gtk_container_add (GTK_CONTAINER (box), item);
 +  if (g_str_match_string ("toggle", action, TRUE))
 +    item = gtk_check_menu_item_new_with_mnemonic (label);
 +  else
 +    item = gtk_image_menu_item_new_with_mnemonic (label);
++
 +  g_object_set (G_OBJECT (item), "action-name", action, NULL);
 +  gtk_widget_set_visible (GTK_WIDGET (item), TRUE);
 +  gtk_menu_shell_append (GTK_MENU_SHELL (box), item);
-+  return item;
-  item = g_object_new (GTK_TYPE_MODEL_BUTTON,
-                        "visible", TRUE,
-                        "action-name", action,
-@@ -2313,6 +2326,9 @@ file_list_build_popover (GtkFileChooserW
-   g_object_set (box, "margin", 10, NULL);
-   gtk_widget_show (box);
-   gtk_container_add (GTK_CONTAINER (priv->browse_files_popover), box);
+ 
+   return item;
+ }
+@@ -2308,11 +2315,9 @@ file_list_build_popover (GtkFileChooserW
+   if (priv->browse_files_popover)
+     return;
+ 
+-  priv->browse_files_popover = gtk_popover_new (priv->browse_files_tree_view);
+-  box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+-  g_object_set (box, "margin", 10, NULL);
+-  gtk_widget_show (box);
+-  gtk_container_add (GTK_CONTAINER (priv->browse_files_popover), box);
 +  priv->browse_files_popover = gtk_menu_new ();
 +  gtk_menu_attach_to_widget (GTK_MENU (priv->browse_files_popover), GTK_WIDGET (priv->browse_files_tree_view), NULL);
 +  box = priv->browse_files_popover;
  
    priv->visit_file_item = add_button (box, _("_Visit File"), "item.visit");
    priv->open_folder_item = add_button (box, _("_Open With File Manager"), "item.open");
-@@ -2329,6 +2345,12 @@ file_list_build_popover (GtkFileChooserW
+@@ -2329,6 +2334,12 @@ file_list_build_popover (GtkFileChooserW
    priv->type_column_item = add_button (box, _("Show T_ype Column"), "item.toggle-show-type");
    priv->show_time_item = add_button (box, _("Show _Time"), "item.toggle-show-time");
    priv->sort_directories_item = add_button (box, _("Sort _Folders before Files"), "item.toggle-sort-dirs-first");
