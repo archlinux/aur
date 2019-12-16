@@ -2,8 +2,8 @@
 
 pkgname=openra-ca-git
 _pkgname=${pkgname/-git}
-pkgver=96.git.fc3cf0b
-pkgrel=2
+pkgver=10.git.8c8f42f
+pkgrel=1
 pkgdesc="A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods"
 arch=('any')
 url="https://github.com/Inq8/CAmod"
@@ -45,7 +45,7 @@ package() {
     cd $srcdir/CAmod
     mkdir -p $pkgdir/usr/{lib/openra-ca/mods,bin,share/pixmaps,share/doc/packages/openra-ca,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-ca
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-ca
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll,*.dll.config,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch*.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ca
     cp -r mods/ca $pkgdir/usr/lib/openra-ca/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-ca/mods
     install -Dm755 $srcdir/openra-ca $pkgdir/usr/bin/openra-ca
