@@ -14,7 +14,7 @@ _EXTRAMODULES=$(readlink -f /usr/lib/modules/"$_cur_kernel/extramodules")
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -29,9 +29,9 @@ source=(
 	kernel.patch
 )
 
-sha256sums=('e55483c0a78d4ae7e76819677127c650d839072e9d98d4f864dc7091547d6c86'
+sha256sums=('756c634258748eb2242f086b7a06bc49d380fbbea658ecc962061aabc667e21c'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
-            '27c7f3ed2dbd4894c02aa578ed121f64727770a2a49ad83c87bc06888f8385fc')
+            '9651ebd2a58204138818db4bddad8b0f826cae7aa45fd8b024e3cc184c8f55f0')
 
 build() {
 	msg2 "Module will be installed to: $_EXTRAMODULES"
