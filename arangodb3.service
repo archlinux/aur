@@ -16,14 +16,18 @@ Description=ArangoDB
 After=sysinit.target sockets.target timers.target paths.target slices.target network.target syslog.target
 
 [Service]
-PrivateTmp=yes
 Type=simple
 User=arangodb
 Group=arangodb
+ReadWritePaths=/var/log/arangodb3 /var/tmp/arangodb3 /var/lib/arangodb3
+LogsDirectory=arangodb3
+LogsDirectoryMode=0770
 Restart=on-failure
-PIDFile=/run/arangodb3/arangod.pid
+RuntimeDirectory=arangodb3
+RuntimeDirectoryMode=0755
+PIDFile=arangodb3/arangod.pid
 ExecStartPre=/usr/bin/arangod --pid-file /run/arangodb3/arangod.pid --server.rest-server false --database.auto-upgrade true
-ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /run/arangodb3/arangod.pid --temp.path /var/tmp/arangod3
+ExecStart=/usr/bin/arangod -c /etc/arangodb3/arangod.conf --pid-file /run/arangodb3/arangod.pid --temp.path /var/tmp/arangodb3
 
 
 [Install]
