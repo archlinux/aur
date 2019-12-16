@@ -1,14 +1,14 @@
 pkgbase = wps-office-extension-greek-dictionary
 	pkgdesc = Greek dictionary for WPS Office
 	pkgver = 20131121
-	pkgrel = 3
-	url = http://wps-community.org/download/dicts
+	pkgrel = 4
+	url = https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts
 	arch = any
 	groups = wps-office-extensions
 	license = custom
 	makedepends = unzip
 	depends = wps-office
-	source = http://wps-community.org/download/dicts/el_GR.zip
+	source = https://github.com/wps-community/wps_community_website/raw/master/root/download/dicts/el_GR.zip
 	sha512sums = 5accb2626164a2c11046b166a4aaf47cb02565159946037597c26dac46208549647fb4b3d96c3beb225412b78a113e8587d56c1a070e2137a11c1b6e2fb104d9
 
 pkgname = wps-office-extension-greek-dictionary
