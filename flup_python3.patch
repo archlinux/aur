@@ -1,5 +1,5 @@
---- a/lib/python3.7/site-packages/flup-1.0.3-py3.7.egg/flup/server/paste_factory.py	2019-06-22 14:36:32.738706639 -0400
-+++ b/lib/python3.7/site-packages/flup-1.0.3-py3.7.egg/flup/server/paste_factory.py	2019-06-22 14:51:07.064597983 -0400
+--- a/lib/python3.8/site-packages/flup-1.0.3-py3.8.egg/flup/server/paste_factory.py	2019-06-22 14:36:32.738706639 -0400
++++ b/lib/python3.8/site-packages/flup-1.0.3-py3.8.egg/flup/server/paste_factory.py	2019-06-22 14:51:07.064597983 -0400
 @@ -4,7 +4,7 @@
  from flup.server import NoDefault
 

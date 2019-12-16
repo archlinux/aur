@@ -1,7 +1,7 @@
 # Maintainer : Immae <ismael.bouya@normalesup.org>
 
 pkgname=mediagoblin-git
-pkgver=0.9.0.r255.g09cd88b0
+pkgver=0.9.0.r284.gb8922642
 pkgrel=1
 pkgdesc='A free software media publishing platform'
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             'ac914d60886d9bf53d3f40b8b00a60d46ada1cac9130210e045a4776d898e884'
             '9adf338f5dbfb94ee7ae29433091b6991a1fa39a6135a8295f9f1cc1fde0edc1'
             'abb6c4c4e54d4372adfe67ab22371ad625505098311955e5ae8e34102b059d47'
-            '361507f41b732beeb124805096b8c5d34ac220cee763ca0863b265524a7f84f6')
+            'e03e3187c8351384d59f7ddd9ae49c149124c6be3ccd0df737233b4330027676')
 
 pkgver() {
   cd "$srcdir/mediagoblin"
