@@ -1,0 +1,19 @@
+pkgbase = perl-data-entropy
+	pkgdesc = Contains the Data::Entropy module, a collection of fundamental algorithms that use entropy.
+	pkgver = 0.007
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Entropy
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-crypt-rijndael
+	depends = perl-http-lite
+	depends = perl-data-float
+	depends = perl-params-classify
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Data-Entropy-0.007.tar.gz
+	md5sums = 8608fdbf690fc21caf170310134c892b
+	sha512sums = f845fabcac67ab16d44f8bbefa0fc09df171efd6cd9ae2f2ee7e189cbb707cf074705763a022941cbfdda5ab4e03b85eacdb7942a504644a40970c42b5a7e0b9
+
+pkgname = perl-data-entropy
+
