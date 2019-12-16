@@ -1,7 +1,7 @@
 pkgbase = flashpoint-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint - Infinity Edition.
 	pkgver = 6.3
-	pkgrel = 2.0
+	pkgrel = 2.1
 	url = http://bluemaxima.org/flashpoint/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = flashpoint-bin
 	depends = gtk3
 	optdepends = wine: non-native game support
 	source = https://bluepload.unstable.life/selif/flashpoint-linux-x64-20191112.tar.gz
-	sha256sums = acc22863f71e257b7dda162643aa941689f52f342af6657a51ab1f49b833272c
+	md5sums = 313d585f60cb4d7a0c834e0ff693729c
 
 pkgname = flashpoint-bin
 
