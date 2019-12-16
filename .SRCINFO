@@ -1,0 +1,22 @@
+pkgbase = glew-egl-glx
+	pkgdesc = The OpenGL Extension Wrangler Library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://glew.sourceforge.net
+	arch = x86_64
+	license = BSD
+	license = MIT
+	license = GPL
+	depends = libxmu
+	depends = libxi
+	depends = glu
+	provides = glew
+	conflicts = glew
+	conflicts = glew-wayland
+	source = https://downloads.sourceforge.net/glew/glew-2.1.0.tgz
+	source = egl+glx.patch
+	sha256sums = 04de91e7e6763039bc11940095cd9c7f880baba82196a7765f727ac05a993c95
+	sha256sums = 73ad84f9e69fb5630fda13cd95f420f4c751ab9fbc3ea5b5aadd1184d27e0601
+
+pkgname = glew-egl-glx
+
