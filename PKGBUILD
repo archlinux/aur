@@ -2,14 +2,14 @@
 # Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 pkgname="torque"
 pkgver=6.1.1.1
-pkgrel=1
+pkgrel=2
 linknum="3212"
 pkgdesc='An open source resource manager providing control over batch jobs and distributed compute nodes'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.adaptivecomputing.com/products/open-source/torque/"
 license=('custom')
-depends=('openssh' 'libxml2' 'tk' 'boost-libs')
-makedepends=('make' 'boost')
+depends=('openssh' 'libxml2' 'tcl' 'boost-libs')
+makedepends=('make' 'boost' 'tk')
 backup=(var/spool/torque/server_name var/spool/torque/mom_priv/config var/spool/torque/serv_priv/{nodes,serverdb})
 options=(!libtool)
 install=torque.install
