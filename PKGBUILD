@@ -8,7 +8,7 @@ url="https://github.com/SSLMate/$pkgname"
 license=('MPL2')
 makedepends=('git' 'go-pie')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('ea377ae70a0a754c6ec07ec63d23a0fd4b41be714d9e67a8603a858edc7309fa')
+md5sums=('f84ecff61c52602c2cf964fd6ed83163')
 
 _gopath="$pkgname-$pkgver-$pkgrel-gopath"
 
