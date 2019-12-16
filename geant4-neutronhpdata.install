@@ -3,9 +3,9 @@
 _varname='G4NEUTRONHPDATA'
 _packagename='geant4-neutronhpdata'
 _foldername='G4NDL'
-_dataversion=4.5
 
 _add() {
+    _dataversion=${1}
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
     echo "setenv ${_varname} /usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.csh
 }
@@ -19,13 +19,15 @@ pre_install() {
     _remove
 }
 post_install() {
-    _add
+    _fullversion=${1::-2}
+    _add ${_fullversion}
 }
 pre_upgrade() {
     _remove
 }
 post_upgrade() {
-    _add
+    _fullversion=${1::-2}
+    _add ${_fullversion}
 }
 pre_remove() {
     _remove
