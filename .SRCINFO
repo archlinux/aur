@@ -5,7 +5,9 @@ pkgbase = netease-cloud-music
 	url = http://music.163.com/
 	arch = x86_64
 	license = custom
+	source = http://d1.music.126.net/dmusic/netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb
 	source = http://music.163.com/html/web2/service.html
+	md5sums = 1f47c7dc3d9ce46da8099e539ee8a74d
 	md5sums = SKIP
 
 pkgname = netease-cloud-music
