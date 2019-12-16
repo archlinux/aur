@@ -1,5 +1,5 @@
 pkgbase = element
-	pkgdesc = Element Audio Plugin Host.
+	pkgdesc = A modular LV2/VST3 audio plugin host.
 	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://github.com/kushview/Element
@@ -35,6 +35,7 @@ pkgbase = element
 	depends = sord
 	depends = suil
 	depends = sratom
+	optdepends = lua: For Lua Scripting
 	conflicts = element-git
 	source = https://github.com/kushview/Element/releases/download/0.42.0/element-0.42.0.tar.gz
 	sha256sums = 6a413cd3a91fd558e69dd4e4ae04988eeff3f7aa51d82c0c38cfb43ed64f1b17
