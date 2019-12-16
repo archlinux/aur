@@ -1,0 +1,24 @@
+pkgbase = chat-bin
+	pkgdesc = Simple p2p cli chat application.
+	pkgver = r49.1bcb047
+	pkgrel = 1
+	url = https://github.com/ahbnr/chat
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = curl
+	depends = glibc>=2.28
+	depends = zlib>=1.2.11
+	depends = gmp>=6.1.2
+	provides = chat
+	conflicts = chat-git
+	conflicts = chat-bin
+	conflicts = chat-irc-bin
+	conflicts = chat-irc-git
+	source = https://ahbnr.de/jenkins/job/chat/lastSuccessfulBuild/artifact/chat
+	source = https://ahbnr.de/jenkins/job/chat/lastSuccessfulBuild/artifact/version
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = chat-bin
+
