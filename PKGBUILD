@@ -35,7 +35,7 @@
 pkgname=zoneminder-git
 _pkgname=zoneminder
 pkgver=1.33.15.r14276.5e4c3e1ed
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete surveillance solution allowing capture, analysis, recording and monitoring of any CCTV or security cameras'
 arch=('x86_64')
 url='https://github.com/ZoneMinder/ZoneMinder'
@@ -82,19 +82,12 @@ source=("git://github.com/$_pkgname/$_pkgname.git"
 sha256sums=('SKIP'
             '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
             'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
-            # zoneminder-nginx.conf
-            'be503e5cedf42383122a1f96a6e00e25d473f8c1c536c000db748dbde12c88b0'
-            # zoneminder-httpd.conf
-            '0753527da658bb4025509c03923f21f7995cedb09008d64f1568fd1d5c2ec46b'
-            # zoneminder-php.ini
-            '479f290d3c92938cd929020ad140d613814b912b4302c2758be6446ebfb8a4ac'
-            # zoneminder.service
+            'f176e0262e3ad0a93b73760ba01eee47f97b3e51c58ebbd82c0dc31eadafc274'
+            '091b9167cb381b8a81c57dfd19f68e35b7319ed1f7a41814daa2a26d97776c6b'
+            'c02653c52acb790a95d4d28166a087077eb25ae2921590c890247c0396f13b62'
             '3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0'
-            # zoneminder-tmpfile.conf
             'b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0'
-            # fcgiwrap-multiwatch.service
-            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260'
-)
+            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260')
 
 pkgver() {
     cd "$_pkgname"
