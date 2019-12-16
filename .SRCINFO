@@ -1,0 +1,16 @@
+pkgbase = wine-installer-git
+	pkgdesc = A metapackage that provides desktop files and menus to Wine.
+	pkgver = r6.a751092
+	pkgrel = 1
+	url = https://github.com/linuxmint/wine-installer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = wine
+	optdepends = winetricks: Script to install various redistributable runtime libraries in Wine.
+	conflicts = wine-installer
+	source = wine-installer-git::git+https://github.com/linuxmint/wine-installer.git
+	sha256sums = SKIP
+
+pkgname = wine-installer-git
+
