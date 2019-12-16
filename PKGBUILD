@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-ccemux
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc=""
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
