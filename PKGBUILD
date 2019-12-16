@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,9 +22,17 @@ makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86"
+        "fb4e6985e142da56bad143d70600cd3695c91757.patch")
 md5sums=('19d7b591503ab2190d5720dc5a64023c'
-         'SKIP')
+         'SKIP'
+         '602f27d34747518f0a913c740cc5a48f')
+
+prepare() {
+  cd $pkgname-$pkgver
+  # fix for virtualbox 6.1
+  patch -p1 -i "$srcdir/fb4e6985e142da56bad143d70600cd3695c91757.patch"
+}
 
 build() {
   cd $pkgname-$pkgver
