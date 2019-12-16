@@ -1,6 +1,6 @@
 pkgbase = python-pysvn
 	pkgdesc = The Pythonic interface to Subversion
-	pkgver = 1.9.10
+	pkgver = 1.9.11
 	pkgrel = 1
 	url = https://pysvn.sourceforge.io/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = python-pysvn
 	depends = subversion
 	depends = apr
 	conflicts = pysvn<=1.7.4-3
-	source = https://downloads.sourceforge.net/project/pysvn/pysvn/V1.9.10/pysvn-1.9.10.tar.gz
-	md5sums = 066555d1a8561829e903dc375ea6db10
+	source = https://downloads.sourceforge.net/project/pysvn/pysvn/V1.9.11/pysvn-1.9.11.tar.gz
+	md5sums = 89ef47afb72590b18f57d36261d18762
 
 pkgname = python-pysvn
 

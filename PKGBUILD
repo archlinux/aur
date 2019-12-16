@@ -3,7 +3,7 @@
 # Contributor: Viacheslav Chimishuk <voice@root.ua>
 
 pkgname=python-pysvn
-pkgver=1.9.10
+pkgver=1.9.11
 _pycxxver=7.1.3
 pkgrel=1
 pkgdesc="The Pythonic interface to Subversion"
@@ -13,7 +13,7 @@ conflicts=('pysvn<=1.7.4-3')
 arch=('i686' 'x86_64')
 license=('Apache')
 source=("https://downloads.sourceforge.net/project/pysvn/pysvn/V${pkgver}/pysvn-${pkgver}.tar.gz")
-md5sums=('066555d1a8561829e903dc375ea6db10')
+md5sums=('89ef47afb72590b18f57d36261d18762')
 
 build() {
   cd "$srcdir/pysvn-$pkgver/Source"
