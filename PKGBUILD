@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.4.6
+pkgver=1.5
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'wine' 'mingw-w64-gcc')
-provides=("dxvk")
-conflicts=("dxvk")
+provides=('dxvk' 'd9vk')
+conflicts=('dxvk' 'd9vk')
 source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
     "setup_dxvk"
@@ -28,6 +28,10 @@ sha256sums=(
 
 prepare() {
     cd dxvk
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    #patch -p1 -i ../extraopts.patch
+    # Filter known bad flags before applying optimizations
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
     # combination of AVX instructions and tree vectorization (implied by O3),
@@ -39,16 +43,15 @@ prepare() {
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     CFLAGS+=" -mno-avx"
-    # CFLAGS+=" -fno-tree-vectorize"
-    # Patch crossfiles with extra optimizations from makepkg.conf
-    # If building fails, comment the line below to disable them.
-    #patch -p1 -i ../extraopts.patch
-    # Adjust optimization level in meson arguments. This is ignored
-    # anyways because meson sets its own optimization level.
-    CFLAGS="${CFLAGS/ -O*([0-3])/}"
+    #CFLAGS+=" -fno-tree-vectorize"
     # Filter fstack-protector flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    CFLAGS="${CFLAGS/ -fstack-protector*/}"
+    CFLAGS+=" -fno-stack-protector"
+    #CFLAGS="${CFLAGS// -fstack-protector+(-all|-strong)/}"
+    #CFLAGS="${CFLAGS// -fstack-protector+(?=[ ])/}"
+    # Adjust optimization level in meson arguments. This is ignored
+    # anyway because meson sets its own optimization level.
+    CFLAGS="${CFLAGS// -O+([0-3s]|fast)/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
@@ -60,12 +63,14 @@ prepare() {
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${CFLAGS// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${LDFLAGS// /\',\'}\'|g"
+
     # Uncomment to enable dxvk async patch.
     # Enable at your own risk. If you don't know what it is,
     # and its implications, leave it as is. You have been warned.
     # I am not liable if anything happens to you by using it.
     # Patch enables async by default. YOU HAVE BEEN WARNED.
     #patch -p1 -i ../dxvk-async.patch
+
     # Uncomment to enable Mango HUD for dxvk
     #patch -p1 -i ../dxvk-mangohud.patch
 }
