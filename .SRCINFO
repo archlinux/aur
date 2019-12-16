@@ -1,14 +1,14 @@
 pkgbase = wps-office-extension-polish-dictionary
 	pkgdesc = Polish dictionary for WPS Office
 	pkgver = 20160202
-	pkgrel = 5
-	url = http://wps-community.org/download/dicts
+	pkgrel = 6
+	url = https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts
 	arch = any
 	groups = wps-office-extensions
 	license = custom
 	makedepends = unzip
 	depends = wps-office
-	source = http://wps-community.org/download/dicts/pl_PL.zip
+	source = https://github.com/wps-community/wps_community_website/raw/master/root/download/dicts/pl_PL.zip
 	sha512sums = 0644ced38e363060d86cdf4e64699442ccb5420c70baa8e14474aa3875d2e11f02372234151152f0a58be66ead25964ce47b1e1314e874c643815ec8b956a7b5
 
 pkgname = wps-office-extension-polish-dictionary
