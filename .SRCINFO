@@ -1,7 +1,7 @@
 pkgbase = libtsm-git
 	pkgdesc = Terminal-emulator State Machine
-	pkgver = 0.0.0
-	pkgrel = 3
+	pkgver = 3.r17.gb73acb4
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/kmscon/libtsm
 	arch = i686
 	arch = x86_64

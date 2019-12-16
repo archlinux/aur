@@ -1,8 +1,8 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dot xyz>
 pkgname=libtsm-git
 _gitname=libtsm
-pkgver=0.0.0
-pkgrel=3
+pkgver=3.r17.gb73acb4
+pkgrel=1
 pkgdesc="Terminal-emulator State Machine"
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
