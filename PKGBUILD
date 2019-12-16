@@ -19,8 +19,8 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/MCJack123/craftos2/archive/v2.2.tar.gz"
-        "https://github.com/MCJack123/craftos2-lua/archive/v2.2.tar.gz")
+source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
+        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.2.tar.gz")
 noextract=()
 sha256sums=('6aee4aa7a3b74d8e9738f42ded967d4107bb1b6f4eead29b67cf4b5c307112a5'
             '221595821d583ef9669a83bc061d49b761c460ead17f12862646b5caeddd7a3c')
