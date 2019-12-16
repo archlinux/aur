@@ -2,7 +2,7 @@
 pkgname=mit8
 orgname=Iztech
 pkgver=3.0.50
-pkgrel=3
+pkgrel=4
 pkgdesc="Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
@@ -12,7 +12,7 @@ replaces=("mit30")
 arch=("x86_64")
 options=("strip")
 source=("$url/content/files/$pkgname-latest-x86_64.tar.gz")
-md5sums=("8c4e0433c1f1ef2d5f1a59e0db2000c0")
+md5sums=("1540c1d43e52b2b79d9aead60718fb56")
 
 
 package() {
