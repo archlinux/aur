@@ -21,8 +21,8 @@ pkgbase = torque
 	backup = var/spool/torque/mom_priv/config
 	backup = var/spool/torque/serv_priv/nodes
 	backup = var/spool/torque/serv_priv/serverdb
-	source = torque-6.1.1.1.tar.gz::http://www.adaptivecomputing.com/index.php?wpfb_dl=3212
-	md5sums = ec4979262e5f259e539873b208a191dd
+	source = file://torque-6.1.1.1.tar.gz
+	md5sums = SKIP
 
 pkgname = torque
 

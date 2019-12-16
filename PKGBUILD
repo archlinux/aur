@@ -3,7 +3,6 @@
 pkgname="torque"
 pkgver=6.1.1.1
 pkgrel=2
-linknum="3212"
 pkgdesc='An open source resource manager providing control over batch jobs and distributed compute nodes'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.adaptivecomputing.com/products/open-source/torque/"
@@ -13,8 +12,8 @@ makedepends=('make' 'boost' 'tk')
 backup=(var/spool/torque/server_name var/spool/torque/mom_priv/config var/spool/torque/serv_priv/{nodes,serverdb})
 options=(!libtool)
 install=torque.install
-source=("torque-"$pkgver".tar.gz"::'http://www.adaptivecomputing.com/index.php?wpfb_dl='$linknum)
-md5sums=('ec4979262e5f259e539873b208a191dd')
+source=("file://torque-"$pkgver".tar.gz")
+md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
