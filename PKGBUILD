@@ -16,7 +16,7 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/protonmail-desktop/applicati
         $pkgname.desktop)
 sha256sums=('830a00ea5092d44d35eacd3ca340de87a562767bce6a740606840a672f8643e1'
             'f830633b18a59b7d2a7787e9f0b4d8de802522e0c7732d1032ced354ab861532'
-            '4482041b9daabaf1ad4225e775cdb694078f1e17d026a3f9dbe72731b3bbec0d')
+            '780f8d0502fb1488df8ffee6e39403680376a1a0eebb0d6728002897aebe0e03')
 
 build() {
   cd application-$pkgver
