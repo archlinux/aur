@@ -14,7 +14,7 @@ url="https://github.com/zebradil/${_pkgname}"
 license=('MIT')
 source=("${url}/releases/download/${pkgver}/${_binname}-linux")
 # source=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_${_arch}.tgz")
-sha256sums=("7fd4c34398a63dcf3189db91ba2dbe9c1d8b96a0a04814ef56b8e764b145e608")
+sha256sums=('0d81343de559a4b75a5c254eade829aca2ba6f4a418b7d403207d7e48740ea66')
 
 package() {
   install -Dm755 "${srcdir}/${_binname}-linux" "${pkgdir}/usr/bin/${_binname}"
