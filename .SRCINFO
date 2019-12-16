@@ -13,6 +13,6 @@ pkgbase = certbot-dns-vultr
 	depends = python-requests
 	depends = python-urllib3
 	source = certbot-dns-vultr-20190506-4.tar.gz::https://github.com/oefd/certbot-dns-vultr/archive/5acb7e2b6d66f21decb3a37ed0d7ec808eefe844.tar.gz
-	sha256sums = afd6998a24c52d87f95610de1da8038e9b6701b0532ba0e40d50d17e8d2ddcfb
+	md5sums = 88501cab06d6dfd7da76619bc9f6b55a
 
 pkgname = certbot-dns-vultr
