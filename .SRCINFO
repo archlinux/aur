@@ -1,6 +1,6 @@
 pkgbase = element
 	pkgdesc = Element Audio Plugin Host.
-	pkgver = 0.42.0.r0.gad065721
+	pkgver = 0.42.0
 	pkgrel = 1
 	url = https://github.com/kushview/Element
 	arch = x86_64
@@ -20,8 +20,9 @@ pkgbase = element
 	depends = python
 	depends = suil
 	depends = xorg-xrandr
-	source = element::git+https://github.com/kushview/Element.git#tag=0.42.0
-	sha256sums = SKIP
+	conflicts = element-git
+	source = https://github.com/kushview/Element/releases/download/0.42.0/element-0.42.0.tar.gz
+	sha256sums = 6a413cd3a91fd558e69dd4e4ae04988eeff3f7aa51d82c0c38cfb43ed64f1b17
 
 pkgname = element
 
