@@ -4,13 +4,13 @@ _gitname=exo
 arch=(x86_64)
 pkgdesc="eXo music player based on mocp, with QT5 graphics"
 pkgver=9.0
-pkgrel=2
+pkgrel=3
 source=(git://github.com/Feresey/exo)
 url=https://github.com/loimu/exo
 sha1sums=('SKIP')
 license=(GPL)
-makedepends=(gcc cmake)
-depends=(liblastfm-qt5 python desktop-file-utils hicolor-icon-theme)
+makedepends=(gcc cmake git)
+depends=(liblastfm-qt5 hicolor-icon-theme python)
 optdepends=("python-notify2: for moc-osd")
 
 prepare() {
