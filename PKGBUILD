@@ -14,7 +14,7 @@ install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
 sha256sums=('716161821ae9f3d0565fbf3c2cf34f4e02e3e519eb419a82236eef22c2c4367d'
-            'a862b5382ad5329ea1e4788dc28a746f2e20413b05f97210757c078858793a5e')
+            '6cceb92f5ce8ffff1630d39d1fe7f2f8dc3be431ff3506914eb3e3655bb9e7a4')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
