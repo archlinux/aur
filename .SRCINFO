@@ -1,6 +1,6 @@
 pkgbase = grub-theme-vimix-git
 	pkgdesc = Vimix grub theme
-	pkgver = 20191003
+	pkgver = 20191216
 	pkgrel = 1
 	url = https://github.com/vinceliuice/grub2-themes
 	arch = any
