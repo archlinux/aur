@@ -9,15 +9,15 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=shadow-selinux
-pkgver=4.7
-pkgrel=3
+pkgver=4.8
+pkgrel=1
 pkgdesc="Password and account management tool suite with support for shadow files and PAM - SELinux support"
 arch=('x86_64')
 url='https://github.com/shadow-maint/shadow'
 license=('BSD')
 groups=('selinux')
 depends=('bash' 'pam-selinux' 'acl' 'audit' 'libaudit.so' 'libsemanage')
-makedepends=('git' 'libxslt' 'docbook-xsl' 'gnome-doc-utils')
+makedepends=('git' 'itstool' 'libxslt' 'docbook-xsl')
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -61,8 +61,6 @@ prepare() {
   cd "${pkgname/-selinux}"
 
   local backports=(
-    edf7547ad5aa650be868cf2dac58944773c12d75
-    e293aa9cfca0619a63616af75532637dab60d49d
   )
 
   for commit in "${backports[@]}"; do
@@ -80,8 +78,9 @@ build() {
     --sbindir=/usr/bin \
     --libdir=/usr/lib \
     --mandir=/usr/share/man \
-    --enable-man \
     --sysconfdir=/etc \
+    --enable-man \
+    --disable-account-tools-setuid \
     --with-libpam \
     --with-group-name-max-length=32 \
     --with-audit \
