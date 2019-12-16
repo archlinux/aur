@@ -1,8 +1,8 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail com>
 
 pkgname=langmix-git
-pkgver=v0.1.r21.g5a06813
-pkgrel=2
+pkgver=v0.2.r2.gabb47b8
+pkgrel=1
 pkgdesc="Extract and merge multilingual subtitles into one file"
 arch=('any')
 url="https://github.com/radioxoma/langmix"
