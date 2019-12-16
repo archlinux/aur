@@ -1,7 +1,7 @@
 # Maintainer: Luke Street <luke.street@encounterpc.com>
 
 pkgname=gnome-shell-extension-gamemode-git
-pkgver=4.r1.g0bee01f
+pkgver=4.r2.ge7cd644
 pkgrel=1
 pkgdesc="GNOME Shell extension for Feral Interactive's GameMode"
 arch=('any')
@@ -23,8 +23,6 @@ conflicts+=("$_gitname")
 pkgver() {
   cd ${_gitname:-$pkgname}
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -ne 0 ] && \
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
