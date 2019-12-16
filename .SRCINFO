@@ -1,6 +1,6 @@
 pkgbase = path-of-building-git
 	pkgdesc = An offline build planner for Path of Exile using PoBFrontent
-	pkgver = 1.4.152.r895.37
+	pkgver = 1.4.156.r996.37.479
 	pkgrel = 1
 	url = https://github.com/Openarl/PathOfBuilding
 	arch = x86_64
@@ -14,14 +14,23 @@ pkgbase = path-of-building-git
 	depends = luajit
 	depends = libgl
 	depends = curl
+	noextract = PathOfBuilding-runtime-src.zip
 	source = git+https://github.com/Openarl/PathOfBuilding
 	source = git+https://github.com/philroberts/pobfrontend
 	source = git+https://github.com/Lua-cURL/Lua-cURLv3
+	source = https://github.com/Openarl/PathOfBuilding/files/1167199/PathOfBuilding-runtime-src.zip
 	source = PathOfBuilding.sh
+	source = PathOfBuilding-force-disable-devmode.patch
+	source = pobfrontend-writable-user-dir.patch
+	source = lzip-linux.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 6d21872a2b2bdbfaebb20de5cac28ac402316e5314c97a89049320ff13c2f622
 	sha256sums = 02b44b44872bae4725bc6de600f4592ce33b26e90fa0f392922004ee15898446
+	sha256sums = 38a09a82f06c2d8738f674c5d2818e5f9580bb25611212507814c97ac25adbd1
+	sha256sums = 58a47220d0d1b0209734fc42c0f7dc603c231985eb52f393a7c28598200503e1
+	sha256sums = 9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd
 
 pkgname = path-of-building-git
 
