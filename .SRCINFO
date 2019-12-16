@@ -1,16 +1,18 @@
 pkgbase = ldpl
 	pkgdesc = COBOL inspired language, designed to be expressive, fast, readable and easy to learn.
-	pkgver = 3.0.5
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://www.ldpl-lang.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = awk
 	depends = gcc-libs
-	source = https://github.com/Lartu/ldpl/archive/3.0.5.tar.gz
+	source = https://github.com/Lartu/ldpl/archive/4.4.tar.gz
 	source = dont-do-mandb.patch
-	md5sums = 3d60f6535919e79b736da0fa2a69bcc9
-	md5sums = dc344057eee2032c7b49562b507db99a
+	source = lpm-flags.patch
+	md5sums = 13fa289ccd761a36702fe37b51f90378
+	md5sums = 97bd2394689ba8c4c161edde2317eefd
+	md5sums = c4cb95cca6596d629299ac58e0d0e551
 
 pkgname = ldpl
 

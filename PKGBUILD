@@ -1,6 +1,6 @@
 # Maintainer: Ignacio Losiggio <iglosiggio@dc.uba.ar>
 pkgname=ldpl
-pkgver=3.0.5
+pkgver=4.4
 pkgrel=1
 pkgdesc="COBOL inspired language, designed to be expressive, fast, readable and easy to learn."
 arch=('x86_64')
@@ -9,17 +9,20 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('awk')
 source=("https://github.com/Lartu/$pkgname/archive/$pkgver.tar.gz"
-        "dont-do-mandb.patch")
-md5sums=('3d60f6535919e79b736da0fa2a69bcc9' 'dc344057eee2032c7b49562b507db99a')
+        "dont-do-mandb.patch" "lpm-flags.patch")
+md5sums=('13fa289ccd761a36702fe37b51f90378'
+         '97bd2394689ba8c4c161edde2317eefd'
+         'c4cb95cca6596d629299ac58e0d0e551')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/dont-do-mandb.patch"
+	patch -p1 -i "$srcdir/lpm-flags.patch"
 }
 
 build() {
 	cd "$pkgname-$pkgver/src"
-	make LFLAGS="$LDFLAGS"
+	make LFLAGS="$LDFLAGS" LPMFLAGS="$CXXFLAGS $LDFLAGS"
 }
 
 package() {
