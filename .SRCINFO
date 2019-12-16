@@ -1,6 +1,6 @@
 pkgbase = pdftag
 	pkgdesc = A simple metadata editor for PDFs
-	pkgver = 1.0.5+3+g4e83d15
+	pkgver = 1.0.5+4+g3c1d224
 	pkgrel = 1
 	url = https://github.com/arrufat/pdftag
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = pdftag
 	makedepends = meson
 	depends = poppler-glib
 	depends = gtk3
-	source = git://github.com/arrufat/pdftag.git#commit=4e83d1527b8b8d6f22e8b22087cc9c042a6fde4f
+	source = git://github.com/arrufat/pdftag.git#commit=3c1d224634e87ded61d70e11fdb4c567f4ca6acb
 	md5sums = SKIP
 
 pkgname = pdftag
