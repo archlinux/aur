@@ -32,5 +32,5 @@ build() {
 package() {
     cd $srcdir/oomd
     ninja -C build install
-    install -Dm644 $srcdir/oomd/etc/desktop.json $pkgdir/etc/desktop.json.example
+    install -Dm644 $srcdir/oomd/src/oomd/etc/desktop.json $pkgdir/etc/desktop.json.example
 }
