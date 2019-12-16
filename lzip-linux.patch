@@ -1,0 +1,70 @@
+--- a/lzip.cpp	2016-05-17 22:53:16.000000000 +0200
++++ b/lzip.cpp	2019-12-16 17:58:11.855288565 +0100
+@@ -1,17 +1,18 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-#include <io.h>
+ 
+-#include "_lib/zlib.h"
++#include "zlib.h"
+ 
+ extern "C" {
+-#include "_lib\lua.h"
+-#include "_lib\lauxlib.h"
+-#include "_lib\lualib.h"
+-#include "_lib\luajit.h"
++#include "lua.h"
++#include "lauxlib.h"
++#include "lualib.h"
++#include "luajit.h"
+ }
+ 
++#if defined(WIN32)
++#define DLLEXPORT __declspec(dllexport)
+ #if defined(_WIN64) 
+ #pragma comment(lib, "_lib\\lua51_64")
+ #else
+@@ -26,6 +27,9 @@
+ #else
+ #pragma comment(lib, "_lib\\zlib32MT")
+ #endif
++#else
++#define DLLEXPORT __attribute__((visibility("default")))
++#endif
+ 
+ typedef unsigned char byte;
+ typedef unsigned int dword;
+@@ -656,7 +660,7 @@
+ 	if (n < 1) {
+ 		luaL_error(L, "Usage: zipFile:Read(count) or zipFile:read(\"*a\")");
+ 	}
+-	int count;
++	int count = 0;
+ 	if (lua_isnumber(L, 1)) {
+ 		count = lua_tointeger(L, 1);
+ 	} else {
+@@ -673,6 +677,7 @@
+ 	byte* buf = new byte[count];
+ 	lzf->file->Read(buf, count);
+ 	lua_pushlstring(L, (char*)buf, count);
++    delete[] buf;
+ 	return 1;
+ }
+ 
+@@ -683,7 +688,7 @@
+ 	return 1;
+ }
+ 
+-extern "C" __declspec(dllexport) int luaopen_lzip(lua_State* L)
++extern "C" DLLEXPORT int luaopen_lzip(lua_State* L)
+ {
+ 	lua_settop(L, 0);
+ 	lua_newtable(L); // Library table
+@@ -742,4 +747,4 @@
+ 	lua_pop(L, 2);
+ 
+ 	return 1;
+-}
+\ No newline at end of file
++}

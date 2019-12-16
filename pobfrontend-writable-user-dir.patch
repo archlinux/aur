@@ -1,0 +1,25 @@
+diff --git a/pobwindow.hpp b/pobwindow.hpp
+index cd88f54..7edec7f 100644
+--- a/pobwindow.hpp
++++ b/pobwindow.hpp
+@@ -2,6 +2,7 @@
+ #include <QDir>
+ #include <QOpenGLWindow>
+ #include <QPainter>
++#include <QStandardPaths>
+ #include <memory>
+ 
+ #include "main.h"
+@@ -30,10 +31,11 @@ public:
+ //        theformat.setAlphaBufferSize(8);
+ //        std::cout << theformat.hasAlpha() << std::endl;
+ //        setFormat(theformat);
++        QString AppDataLocation = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+         scriptPath = QDir::currentPath();
+         scriptWorkDir = QDir::currentPath();
+         basePath = QDir::currentPath();
+-        userPath = QDir::currentPath();
++        userPath = AppDataLocation;
+ 
+         fontFudge = 0;
+     }

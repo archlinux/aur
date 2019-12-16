@@ -1,0 +1,13 @@
+diff --git a/Launch.lua b/Launch.lua
+index 0673314..3126c1e 100644
+--- a/Launch.lua
++++ b/Launch.lua
+@@ -51,7 +51,7 @@ function launch:OnInit()
+ 	if localManXML and not self.versionBranch and not self.versionPlatform then
+ 		-- Looks like a remote manifest, so we're probably running from a repository
+ 		-- Enable dev mode to disable updates and set user path to be the script path
+-		self.devMode = true
++		self.devMode = false
+ 	end
+ 	RenderInit()
+ 	ConPrintf("Loading main script...")
