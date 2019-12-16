@@ -2,7 +2,7 @@
 pkgname=geant4-ledata
 _dataname="G4EMLOW"
 pkgver=7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files for low energy electromagnetic processes"
 url="http://geant4.cern.ch/"
 arch=('any')
