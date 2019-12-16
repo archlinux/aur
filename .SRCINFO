@@ -1,0 +1,18 @@
+pkgbase = amdgpu-fancontrol-git
+	pkgdesc = Control AMD Radeon graphics cards fan PWM
+	pkgver = r11.5461b36
+	pkgrel = 1
+	url = https://github.com/grmat/amdgpu-fancontrol
+	install = amdgpu-fancontrol.install
+	arch = any
+	license = GPL
+	depends = systemd
+	depends = bc
+	provides = amdgpu-fancontrol
+	conflicts = amdgpu-fancontrol
+	backup = etc/amdgpu-fancontrol.cfg
+	source = git+https://github.com/grmat/amdgpu-fancontrol.git
+	sha512sums = SKIP
+
+pkgname = amdgpu-fancontrol-git
+

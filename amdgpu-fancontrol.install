@@ -1,0 +1,4 @@
+post_install() {
+	echo -e "amdgpu-fancontrol need to be configured before being started. For further information, read the following wiki page: https://wiki.archlinux.org/index.php/Fan_speed_control#fancurve_script"
+	echo -e "\033[1;31mPlease don't just run it naively and keep in mind that nobody not responsible for failures.\033[0m"
+}
