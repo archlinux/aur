@@ -1,7 +1,7 @@
 pkgbase = openann-git
 	pkgdesc = An open source library for artificial neural networks. Git version
-	pkgver = 0.0.0
-	pkgrel = 2
+	pkgver = 1.1.0.r57.g7e525cb
+	pkgrel = 1
 	url = https://github.com/OpenANN/OpenANN
 	arch = i686
 	arch = x86_64

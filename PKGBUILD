@@ -2,8 +2,8 @@
 
 pkgname=('openann-git' 'openann-doc-git')
 _gitname=OpenANN
-pkgver=0.0.0
-pkgrel=2
+pkgver=1.1.0.r57.g7e525cb
+pkgrel=1
 pkgdesc="An open source library for artificial neural networks. Git version"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenANN/OpenANN"
@@ -27,21 +27,23 @@ pkgver() {
 
 prepare() {
   cd $_gitname
+
   patch -p1 -i ../use-system-alglib.patch
-  mkdir build
 
-  cd lib
-  sh setup.sh CMA-ESpp
-}
+  # cd lib
+  # sh setup.sh CMA-ESpp
 
-build() {
-  cd $_gitname/build
-
+  mkdir build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DBUILD_PYTHON=OFF \
         -DALWAYS_BUILD_DOCUMENTATION=ON \
         ..
+}
+
+build() {
+  cd $_gitname/build
+
   make
 }
 
