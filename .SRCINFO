@@ -1,6 +1,6 @@
 pkgbase = hattrick_organizer
 	pkgdesc = A manager assistent for the online football manager Hattrick
-	pkgver = 1.437.2.1081
+	pkgver = 2.0.2.1458
 	pkgrel = 1
 	url = https://sourceforge.net/projects/ho1
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = hattrick_organizer
 	license = LGPL
 	makedepends = libarchive
 	depends = java-runtime
-	source = https://github.com/akasolace/HO/releases/download/1.437/HO_1.437.2.1081.deb
-	md5sums = 36b61f601e75034c4880abdc45f37298
+	source = https://github.com/akasolace/HO/releases/download/2.0/HO_2.0.2.1458.deb
+	md5sums = 5d1fbf5386c003b74c5b9c8b7e57bcb5
 
 pkgname = hattrick_organizer
 
