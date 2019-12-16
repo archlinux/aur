@@ -14,8 +14,8 @@ depends=('geant4>=10.4.0')
 install="${pkgname}.install"
 source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
-md5sums=('495439cf600225753d7bd99825e5c6bc'
-         '1bdfaeb17d49f24396e5d20671b81636')
+sha256sums=('dd7e27ef62070734a4a709601f5b3bada6641b111eb7069344e4f99a01d6e0a6'
+            '601b810b46781f951a8064beef1a7acac7b17006fca67b252b9f0622bd514110')
 
 ## Remove this if you want to keep an even smaller package
 ## No need to wait for compression when just installing it.
