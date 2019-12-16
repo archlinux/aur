@@ -1,0 +1,16 @@
+pkgbase = libphutil-stable
+	pkgdesc = A collection of PHP utility classes
+	pkgver = conduit.5.r1417.g1750586f
+	pkgrel = 1
+	url = https://www.phacility.com/phabricator/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = php
+	provides = libphutil=conduit.5.r1417.g1750586f
+	conflicts = libphutil
+	source = git+https://github.com/phacility/libphutil.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = libphutil-stable
+
