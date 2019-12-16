@@ -1,0 +1,13 @@
+[Unit]
+Description=Simple CGI server launched in multiple parallel instances via spawn-fcgi and multiwatch
+After=nss-user-lookup.target
+Conflicts=fcgiwrap.socket
+
+[Service]
+ExecStartPre=/usr/bin/rm -f /run/fcgiwrap.sock
+ExecStart=/usr/bin/spawn-fcgi -n -s /run/fcgiwrap.sock -u http -g http -M 660 -- /usr/bin/multiwatch -f 10 -- /usr/bin/fcgiwrap
+ExecStop=/usr/bin/killall -w -s 2 /usr/bin/fcgiwrap
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

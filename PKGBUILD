@@ -1,151 +1,186 @@
-# Maintainer: Mesmer <mesmer@fisica.if.uff.br>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Mesmer <mesmer@fisica.if.uff.br>
 # Contributor: Troy Will <troydwill at gmail dot com>
 # Contributor: /dev/rs0                  </dev/rs0@secretco.de.com>
 # Contributor: Jacek Burghardt           <jacek@hebe.us>
 # Contributor: Vojtech Aschenbrenner     <v@asch.cz>
 # Contributor: Jason Gardner             <buhrietoe@gmail.com>
 # Contributor: Ross melin                <rdmelin@gmail.com>
-# Contributor (Parabola): Márcio Silva   <coadde@lavabit.com>
-# Contributor (Parabola): André Silva    <emulatorman@lavabit.com>
+# Contributor: (Parabola): Márcio Silva   <coadde@lavabit.com>
+# Contributor: (Parabola): André Silva    <emulatorman@lavabit.com>
 # Contributor: Charles Spence IV         <cspence@unomaha.edu>
-# Contributor: Joe Julian                <me@joejulian.name>     
+# Contributor: Joe Julian                <me@joejulian.name>
 # Orginally based on a Debian Squeeze package
-_pkgname=zoneminder
+# Update to 1.33.15 - based on https://aur.archlinux.org/packages/zoneminder/ by Alexandros Michalopoulos (Nocifer)
+
+### Important notes for version 1.32.x ###
+#
+# 1) git-clone for CakePHP and Crud sources was replaced with published precompiled packages, as follows:
+# - CakePHP-Enum-Behaviour is pulled from the ZoneMinder repo, because a change is needed that has not yet been merged upstream.
+# - Crud is pulled from its official repo, since Pull Request #582 has been merged as required by the ZoneMinder devs.
+#
+# 2) By default, ZoneMinder now runs at localhost:8095 instead of localhost/zm (this can be changed by editing the provided conf files).
+#
+# 3) Apache was switched out in favor of Nginx, but remains as an optional dependency.
+
+#######################################################################################################################
+#                                                                                                                     #
+#  If you're upgrading from a release older than 1.32.0:                                                              #
+#                                                                                                                     #
+#  Due to the many breaking changes in new releases (both upstream and in the packaging), it's recommended to backup  #
+#  any existing ZoneMinder databases and perform a clean installation. Failure to do so may have very weird results.  #
+#                                                                                                                     #
+#######################################################################################################################
+
 pkgname=zoneminder-git
-pkgver=1.30.4.r899.g36683d15d
+_pkgname=zoneminder
+pkgver=1.33.15.r14276.5e4c3e1ed
 pkgrel=1
-pkgdesc='Capture, analyse, record and monitor video security cameras'
-arch=( i686 x86_64 mips64el arm armv7h )
-backup=( etc/zm.conf )
-url="https://github.com/ZoneMinder/ZoneMinder/releases"
-license=( GPL )
-depends=(
-    mariadb perl-dbd-mysql perl-dbi
-    apache php php-apache php-gd php-mcrypt perl-php-serialization
-    perl-libwww perl-net-sftp-foreign
-    ffmpeg vlc perl-sys-mmap
-    gnutls polkit
-    perl-expect perl-archive-zip perl-date-manip
-    perl-mime-lite perl-mime-tools perl-crypt-ssleay
-    perl-sys-meminfo
-    perl-sys-cpu
+pkgdesc='A complete surveillance solution allowing capture, analysis, recording and monitoring of any CCTV or security cameras'
+arch=('x86_64')
+url='https://github.com/ZoneMinder/ZoneMinder'
+license=('GPL2')
+depends=('polkit' 'ffmpeg' 'libmp4v2'
+         'php-apcu' 'php-fpm' 'php-gd'
+         'perl-archive-zip' 'perl-data-dump' 'perl-date-manip' 'perl-dbd-mysql' 'perl-device-serialport' 'perl-file-slurp' 'perl-image-info'
+         'perl-libwww' 'perl-mime-lite' 'perl-mime-tools' 'perl-number-bytes-human' 'perl-sys-meminfo' 'perl-sys-mmap'
+         #Needed for upgrade with zmupdate.pl
+         'perl-crypt-eksblowfish' 'perl-data-entropy'
+         # Needed for ONVIF support
+         'perl-class-load' 'perl-data-uuid' 'perl-io-socket-multicast' 'perl-soap-wsdl' 'perl-xml-parser' 'perl-datetime'
+         # Needed for SSL support
+         'perl-lwp-protocol-https'
+         # Apparently needed for Telemetry support
+         'perl-json-maybexs'
+         # Unverified dependencies. So far not installing them hasn't raised any red flags, but I can't be 100% sure whether they're leftovers from
+         # previous ZoneMinder incarnations or if they're needed for proper operation during runtime, so for the time being I'm leaving them in.
+         'perl-net-sftp-foreign' 'perl-php-serialization' 'perl-sys-cpu' 'perl-uri-encode'
+         # Remove the following line if you don't need Nginx
+         'nginx-mainline' 'fcgiwrap' 'spawn-fcgi' 'multiwatch'
+         # Remove the following line if you don't need MariaDB
+         'mariadb'
 )
-makedepends=(
-    cmake netpbm git
-)
-optdepends=(
-    netpbm
-    cambozola
-    perl-time-modules
-    perl-x10
-    perl-astro-suntime
-)
+
+makedepends=('cmake')
+optdepends=('apache: alternative web server'
+            'vlc: provides libvlc (may achieve better performance with some camera models)')
+conflicts=('zoneminder-git')
+backup=("etc/nginx/sites-available/$_pkgname.conf"
+        "etc/httpd/conf/extra/$_pkgname.conf"
+        "etc/php/conf.d/$_pkgname.ini")
 install=$_pkgname.install
-     
-source=(
-    git://github.com/$_pkgname/$_pkgname.git
-    git://github.com/FriendsOfCake/crud.git
-    httpd-zoneminder.conf
-    zoneminder.service
-    zoneminder-tmpfile.conf
+source=("git://github.com/$_pkgname/$_pkgname.git"
+        "https://github.com/FriendsOfCake/crud/archive/v3.2.0.tar.gz"
+        "https://github.com/ZoneMinder/CakePHP-Enum-Behavior/archive/1.0-zm.tar.gz"
+        "zoneminder-nginx.conf"
+        "zoneminder-httpd.conf"
+        "zoneminder-php.ini"
+        "zoneminder.service"
+        "zoneminder-tmpfile.conf"
+        "fcgiwrap-multiwatch.service"
 )
-# Because the source is not static, skip Git checksum:
 sha256sums=('SKIP'
-            'SKIP'
-            'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
-            '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
-            'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
-           )
-     
+            '55be29e1eccb44d4ad0db8b23c37cec50f5341f8e498583d472ed1f0493876e3'
+            'dbd231e97b950c698f0f501d6a53c7291c9985e766b09e3afe00cfe69a969f44'
+            # zoneminder-nginx.conf
+            'be503e5cedf42383122a1f96a6e00e25d473f8c1c536c000db748dbde12c88b0'
+            # zoneminder-httpd.conf
+            '0753527da658bb4025509c03923f21f7995cedb09008d64f1568fd1d5c2ec46b'
+            # zoneminder-php.ini
+            '479f290d3c92938cd929020ad140d613814b912b4302c2758be6446ebfb8a4ac'
+            # zoneminder.service
+            '3e4de227e3154dffa887f2286c339ab3cf456f6d74a400b2786192b7e2b129c0'
+            # zoneminder-tmpfile.conf
+            'b69ac1deaaf3cf84b4ae4dbab794e1b062823de817f1e3a816ccf5438db440c0'
+            # fcgiwrap-multiwatch.service
+            'e95f9bef77aef647dd633bd9ad75dc099b6d7184684e133f2f20702de83a6260'
+)
+
 pkgver() {
     cd "$_pkgname"
-    # See https://wiki.archlinux.org/index.php/VCS_package_guidelines#The_pkgver.28.29_function
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf $(<version) && printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare () {
-    cd $srcdir/$_pkgname
-    git submodule init
-    git config submodule.web/api/app/Plugin/Crud.url $srcdir/crud
-    git config submodule.web/api/app/Plugin/Crud.branch 3.0
-    git submodule update
+    cd $_pkgname
+
+    # Move extra PHP plugins into place
+    cp -R $srcdir/crud-3.2.0/*                          web/api/app/Plugin/Crud
+    cp -R $srcdir/CakePHP-Enum-Behavior-1.0-zm/*        web/api/app/Plugin/CakePHP-Enum-Behavior
+
+    # Fix the launcher
+    sed -i 's|localhost/zm|localhost:8095|g' misc/$_pkgname.desktop.in
 }
 
 build() {
-    cd $srcdir/$_pkgname
-
-    # ZM_PERL_SUBPREFIX=/lib/perl5 flag added to force Perl modules
-    # to /usr/lib/perl5/ on non i686 architectures
-    
+    cd $_pkgname
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
-          -DZM_PERL_SUBPREFIX=/lib/perl5 \
-          -DZM_WEBDIR=/srv/http/zoneminder \
-          -DZM_CGIDIR=/srv/http/cgi-bin \
-          -DZM_WEB_USER=http \
-          -DZM_CONTENTDIR=/var/cache/zoneminder \
-          -DZM_LOGDIR=/var/log/zoneminder \
-          -DZM_RUNDIR=/run/zoneminder \
-          -DZM_TMPDIR=/var/lib/zoneminder/temp \
-          -DZM_SOCKDIR=/var/lib/zoneminder/sock .
-     
-    make V=0
+          -DZM_CONFIG_DIR=/etc/$_pkgname \
+          -DZM_CONFIG_SUBDIR=/etc/$_pkgname/conf.d \
+          -DZM_RUNDIR=/run/$_pkgname \
+          -DZM_SOCKDIR=/run/$_pkgname \
+          -DZM_LOGDIR=/var/log/$_pkgname \
+          -DZM_TMPDIR=/var/tmp/$_pkgname \
+          -DZM_CONTENTDIR=/var/lib/$_pkgname \
+          -DZM_CACHEDIR=/var/lib/$_pkgname/cache \
+          -DZM_WEBDIR=/srv/$_pkgname/www \
+          -DZM_CGIDIR=/srv/$_pkgname/cgi-bin \
+          -DZM_WEB_USER=http .
+    make -j$(nproc)
 }
      
 package() {
+    cd $_pkgname
 
-    cd $srcdir/$_pkgname
+    make DESTDIR=$pkgdir install
 
-    DESTDIR=$pkgdir make install
+    # Set Polkit directory permissions in accordance with Arch policy
+    chmod 750                           $pkgdir/usr/share/polkit-1/rules.d
+    chown root:polkitd                  $pkgdir/usr/share/polkit-1/rules.d
 
-    # Change Polkit directory permissions to Arch Linux policy
-    chmod -v 700 $pkgdir/usr/share/polkit-1/rules.d/
-    chown -v polkitd $pkgdir/usr/share/polkit-1/rules.d/
+    # Create ZM_LOGDIR
+    install -dm775 -o http -g http      $pkgdir/var/log/$_pkgname
 
-    # BEGIN CREATE_ZONEMINDER_DIRECTORIES
-    mkdir -pv           $pkgdir/var/{cache/zoneminder,log/zoneminder}
-    chown -Rv http.http $pkgdir/var/{cache/zoneminder,log/zoneminder}
+    # Create ZM_CONTENTDIR and its subfolders
+    install -dm775 -o http -g http      $pkgdir/var/lib/$_pkgname/{cache,events,images}
     
-    # corresponds to -DZM_SOCKDIR=/var/lib/zoneminder/sock
-    mkdir -pv          $pkgdir/var/lib/zoneminder/sock
-    chown -v http.http $pkgdir/var/lib/zoneminder/sock
+    # Link ZM_CGIDIR and ZM_CACHEDIR inside ZM_WEBDIR and set correct permissions
+    ln -sf /srv/$_pkgname/cgi-bin        $pkgdir/srv/$_pkgname/www
+    ln -sf /var/lib/$_pkgname/cache      $pkgdir/srv/$_pkgname/www
+    chown -Rh http:http                 $pkgdir/srv/$_pkgname
+
+    # Link ZM_WEBDIR/api/app/tmp to ZM_TMPDIR
+    ln -sf /var/tmp/$_pkgname            $pkgdir/srv/$_pkgname/www/api/app/tmp
     
-    # corresponds to -DZM_TMPDIR=/var/lib/zoneminder/temp
-    mkdir -pv          $pkgdir/var/lib/zoneminder/temp
-    chown -v http.http $pkgdir/var/lib/zoneminder/temp
+    # Temporary fix for hardcoded /zm/ links (credit goes to @Kubax on AUR)
+    ln -sf /srv/$_pkgname/www            $pkgdir/srv/$_pkgname/www/zm
     
-    chown -v  http.http $pkgdir/etc/zm.conf 
-    chmod 0700          $pkgdir/etc/zm.conf
-    # END CREATE_ZONEMINDER_DIRECTORIES
+    # Set correct permissions for ZM_CONFIG_DIR & ZM_CONFIG_SUBDIR
+    chmod -R 755                        $pkgdir/etc/$_pkgname
+    chmod 644                           $pkgdir/etc/$_pkgname/zm.conf
+    chmod 644                           $pkgdir/etc/$_pkgname/conf.d/*
 
-    # Make content directories in /var/cache/zoneminder and to link them in /srv/http/zoneminder
-    for i in events images temp; do
-        mkdir              $pkgdir/var/cache/$_pkgname/$i
-        chown -v http.http $pkgdir/var/cache/$_pkgname/$i
-        ln -s                     /var/cache/$_pkgname/$i $pkgdir/srv/http/$_pkgname/$i
-        chown -v --no-dereference http.http               $pkgdir/srv/http/$_pkgname/$i
-    done
+    # Install Nginx conf file
+    install -Dm644 $srcdir/$_pkgname-nginx.conf              $pkgdir/etc/nginx/sites-available/$_pkgname.conf
 
-    # Create a link to the Zoneminder cgi binaries
-    ln -sv /srv/http/cgi-bin $pkgdir/srv/http/$_pkgname
+    # Install Apache conf file
+    install -Dm644 $srcdir/$_pkgname-httpd.conf              $pkgdir/etc/httpd/conf/extra/$_pkgname.conf
 
-    chown -h http.http $pkgdir/srv/http/{cgi-bin,$_pkgname,$_pkgname/cgi-bin}
+    # Install PHP-FPM ini file
+    install -Dm644 $srcdir/$_pkgname-php.ini                 $pkgdir/etc/php/conf.d/$_pkgname.ini
 
-    # Link Cambozola
-    # ln -s /usr/share/cambozola/cambozola.jar $pkgdir/srv/http/$_pkgname
+    # Install systemd service
+    install -Dm644 $srcdir/$_pkgname.service                 $pkgdir/usr/lib/systemd/system/$_pkgname.service
 
-    # Install configuration files
-    mkdir -p                                        $pkgdir/etc/httpd/conf/extra
-    install -D -m 644 $srcdir/httpd-$_pkgname.conf  $pkgdir/etc/httpd/conf/extra
-    
-    mkdir -p                                        $pkgdir/usr/lib/systemd/system
-    install -D -m 644 $srcdir/$_pkgname.service     $pkgdir/usr/lib/systemd/system
-    
-    install -D -m 644 COPYING                       $pkgdir/usr/share/license/$_pkgname
-    install -D -m 644 db/zm*.sql                    $pkgdir/usr/share/$_pkgname/db
-    
-    mkdir -p                                        $pkgdir/usr/share/doc/$_pkgname
-    # install -D -m 644 $srcdir/README              $pkgdir/usr/share/doc/$_pkgname
+    # Install systemd tmpfile
+    install -Dm644 $srcdir/$_pkgname-tmpfile.conf            $pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf
 
-    install -Dm644 ../zoneminder-tmpfile.conf "$pkgdir"/usr/lib/tmpfiles.d/zoneminder.conf
+    # Install fcgiwrap-multiwatch service
+    install -Dm644 $srcdir/fcgiwrap-multiwatch.service      $pkgdir/usr/lib/systemd/system/fcgiwrap-multiwatch.service
 
+    # Install logrotate conf file
+    install -Dm644 misc/logrotate.conf                      $pkgdir/etc/logrotate.d/$_pkgname
+
+    # Copy default database schemas
+    install -Dm644 db/zm*.sql                               $pkgdir/usr/share/$_pkgname/db
 }

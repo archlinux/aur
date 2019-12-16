@@ -38,30 +38,35 @@ post_install() {
 
   Zoneminder database setup:
   --------------------------
+  Initialize and start mariadb if you haven't done it already https://wiki.archlinux.org/index.php/MariaDB#Installation
   Zoneminder operation requires a database named 'zm' which is defined in /usr/share/zoneminder/db/zm_create.sql
   
   Create the Zoneminder database (with a password):
-    "mysqladmin --defaults-file=/etc/mysql/my.cnf -p -f reload"
-    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/mysql/my.cnf -p"
-    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/my.cnf -p mysql"
+    "mysqladmin --defaults-file=/etc/my.cnf -p -f reload"
+    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/my.cnf -p"
+    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/my.cnf -p mysql"
   (or without a password):
-    "mysqladmin --defaults-file=/etc/mysql/my.cnf -f reload"
-    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/mysql/my.cnf"
-    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/mysql/my.cnf mysql"
+    "mysqladmin --defaults-file=/etc/my.cnf -f reload"
+    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/my.cnf"
+    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/my.cnf mysql"
 
   PHP configuration
   -----------------
   * Check and make sure these are uncommented in /etc/php/php.ini:
-    extension=ftp.so
-    extension=gd.so
-    extension=gettext.so
-    extension=mcrypt.so
-    extension=openssl.so
-    extension=pdo_mysql.so
-    extension=sockets.so
-    extension=zip.so
+    extension=ftp
+    extension=gd
+    extension=gettext
+    extension=pdo_mysql
+    extension=sockets
+    extension=zip
   * Set your timezone in php.ini:
     date.timezone = <your_country>/<your_city>
+
+  Nginx configuration
+  -------------------
+  sudo mkdir /etc/nginx/sites-enabled
+  sudo mv /etc/nginx/sites-available/zoneminder.conf /etc/nginx/sites-enabled/
+  Add "include       /etc/nginx/sites-enabled/zoneminder.conf;" to the http section in /etc/nginx/nginx.conf
 
   Apache configuration
   --------------------
@@ -71,6 +76,14 @@ post_install() {
     "Include /etc/httpd/conf/extra/php7_module.conf"
     "Include /etc/httpd/conf/extra/httpd-zoneminder.conf"
 
+  Starting
+  --------
+  Enable & Start the following:
+  mariadb.service
+  nginx.service
+  php-fpm.service
+  fcgiwrap-multiwatch.service
+  zoneminder.service
 EOF
 }
 
@@ -95,13 +108,13 @@ post_remove() {
     cat << EOF
 Note:
 ==> To clean Zoneminder mysql database, run as root (with password):
-==> "echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf -p mysql"
-==> "echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf -p mysql"
-==> "mysqladmin --defaults-file=/etc/mysql/my.cnf -p -f drop zm"
+==> "echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/my.cnf -p mysql"
+==> "echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/my.cnf -p mysql"
+==> "mysqladmin --defaults-file=/etc/my.cnf -p -f drop zm"
 ==> (or without password):
-==> "echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf mysql"
-==> "echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/mysql/my.cnf mysql"
-==> "mysqladmin --defaults-file=/etc/mysql/my.cnf -f drop zm"
+==> "echo 'delete from user where User="zmuser";' | mysql --defaults-file=/etc/my.cnf mysql"
+==> "echo 'delete from db where User="zmuser";' | mysql --defaults-file=/etc/my.cnf mysql"
+==> "mysqladmin --defaults-file=/etc/my.cnf -f drop zm"
 
 ==> Disable http with php if it isn't needed with others servers, 
 ==> comment or remove that lines in /etc/httpd/conf/httpd.conf:
@@ -113,14 +126,12 @@ Note:
 
 ==> Disable php with mysql if it isn't needed with others servers, 
 ==> comment that lines in /etc/php/php.ini:
-    # extension=ftp.so
-    # extension=gd.so
-    # extension=gettext.so
-    # extension=mcrypt.so
-    # extension=openssl.so
-    # extension=pdo_mysql.so
-    # extension=sockets.so
-    # extension=zip.so
+    # extension=ftp
+    # extension=gd
+    # extension=gettext
+    # extension=pdo_mysql
+    # extension=sockets
+    # extension=zip
     # "date.timezone = <my_country>/<my_city>"
 
 ==> Remove log files and "zoneminder" directory in "/var/log/zoneminder".
