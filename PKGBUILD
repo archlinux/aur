@@ -98,7 +98,7 @@ options=("!strip")
 PKGEXT='.pkg.tar'
 
 prepare() {
-    warning "Building Mathematica takes more than 18GiB of space for `makepkg`, and another 9GiB for the pkg tarball."
+    warning "Building Mathematica takes more than 18GiB of space for 'makepkg', and another 9GiB for the pkg tarball."
     warning "Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work."
 
     if [ $(echo "${srcdir}" | wc -w) -ne 1 ]; then
