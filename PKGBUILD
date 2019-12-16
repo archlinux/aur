@@ -2,14 +2,14 @@
 
 pkgname=('python2-wand')
 pkgver=0.4.4.380068e
-pkgrel=4
+pkgrel=5
 rev=380068e9cc1268a8c20e2fa13621058a68d55cb3
 arch=('i686' 'x86_64')
 url="https://github.com/dahlia/wand"
 license=('MIT')
 pkgdesc="Python interface for ImageMagick library (Python 2 build)"
-depends=('python2' 'imagemagick6')
-makedepends=('python2' 'imagemagick6')
+depends=('python2' 'libmagick6')
+makedepends=('python2' 'libmagick6')
 
 #source=(https://github.com/dahlia/pywand/archive/${pkgver}.tar.gz)
 #sha512sums=('6083f69e539d8b95774c2b3b27f51ac3642fa81dbdf25170141cc3da2fa640b57ba26cf92d16768be4ae345f26a10d289cfc598c2a9bb99625b105a99feba438')
