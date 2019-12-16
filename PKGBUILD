@@ -1,10 +1,10 @@
 # Maintainer: helix <stargr[at]gmail[dot]com>
 pkgname=wps-office-extension-english-uk-dictionary
 pkgver=20140307
-pkgrel=4
-pkgdesc='https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts'
+pkgrel=5
+pkgdesc='English (UK) dictionary for WPS Office'
 arch=('any')
-url='http://wps-community.org/download/dicts'
+url='https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts'
 license=('custom')
 depends=('wps-office')
 groups=('wps-office-extensions')
