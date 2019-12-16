@@ -1,4 +1,5 @@
-# Maintainer: Fabien Dubosson <fabien.dubosson@gmail.com>
+# Maintainer: Frederick Zhang <frederick888@tsundere.moe>
+# Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname="q"
 pkgver="1.7.1"
