@@ -8,6 +8,6 @@ pkgbase = certspotter
 	makedepends = git
 	makedepends = go-pie
 	source = certspotter-0.9-4.tar.gz::https://github.com/SSLMate/certspotter/archive/0.9.tar.gz
-	md5sums = f84ecff61c52602c2cf964fd6ed83163
+	sha256sums = ea377ae70a0a754c6ec07ec63d23a0fd4b41be714d9e67a8603a858edc7309fa
 
 pkgname = certspotter
