@@ -1,4 +1,5 @@
-# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Maintainer: Jackson McClintock <jacksondm33@gmail.com>
+# Contributor: Immae <ismael.bouya@normalesup.org>
 
 pkgname=mediagoblin-git
 pkgver=0.9.0.r284.gb8922642
