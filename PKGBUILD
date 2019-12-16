@@ -1,20 +1,21 @@
-# Maintainer: portaloffreedom
+# maintainer: thom wiggers
+# Submitter: portaloffreedom
 
-_pkgsrcname=python-vlc
 pkgname=python-vlc
-pkgver=3.0.102
+pkgver=3.0.7110
 pkgrel=1
 pkgdesc="VLC bindings for python"
 url="http://wiki.videolan.org/PythonBinding"
 license=("GPL2")
 arch=("any")
 depends=('python' 'vlc')
-source=("https://pypi.python.org/packages/a4/54/0d2797e4b1c4891004ffaae22510419ec25b2b318385dde31f45060a7e79/$_pkgsrcname-$pkgver.tar.gz")
-md5sums=('7223e009debc7cca65471223a7678437')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/a8/51/299f4804c43f99d718ed43a63b1ea0712932e25b6bbe1ee1817cb8e954f7/python-vlc-3.0.7110.tar.gz")
 
 package() {
-  cd $srcdir/${_pkgsrcname}-$pkgver
-  python3 setup.py install --root $pkgdir
+  cd $srcdir/$pkgname-$pkgver
+  python setup.py install --root $pkgdir
 }
 
 
+sha256sums=('821bca0dbe08fbff97a65e56ff2318ad7d499330876579c39f01f3fb38c7b679')
