@@ -1,7 +1,7 @@
 pkgbase = redis-desktop-manager
 	pkgdesc = Open source cross-platform Redis Desktop Manager based on Qt 5
 	pkgver = 2019.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://redisdesktop.com/
 	arch = x86_64
 	license = GPL3
