@@ -1,0 +1,15 @@
+pkgbase = go-jsonnet-git
+	pkgdesc = Implementation of Jsonnet in pure Go
+	pkgver = v0.14.0.r13.g0959f85
+	pkgrel = 1
+	url = https://github.com/google/go-jsonnet
+	arch = x86_64
+	license = Apache
+	depends = go>=1.11
+	provides = jsonnet
+	conflicts = jsonnet
+	source = git+https://github.com/google/go-jsonnet
+	sha512sums = SKIP
+
+pkgname = go-jsonnet-git
+
