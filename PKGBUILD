@@ -6,8 +6,8 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevelop-git
-pkgver=0.0.0
-pkgrel=7
+pkgver=5.4.5.r162.g0f53e24006
+pkgrel=1
 pkgdesc="A C/C++ development environment for KDE. (Git version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
