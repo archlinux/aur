@@ -11,7 +11,7 @@ depends=('glib2' 'vte3')
 makedepends=('cmake')
 conflicts=('miniterm-git')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('cf2a27400b191f3796b7832ffb699309')
+sha256sums=('c5a2f93978826a978f952c20b7b68a7f4f670891075195268c93ab80d5753541')
 
 _sourcedirectory="$pkgname-$pkgver"
 
