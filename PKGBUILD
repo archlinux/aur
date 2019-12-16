@@ -15,6 +15,8 @@ source=(
 md5sums=('1f47c7dc3d9ce46da8099e539ee8a74d'
          'SKIP')
 
+DLAGENTS=("http::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 package() {
   cd ${srcdir}
   tar -xvf data.tar.xz -C ${pkgdir}
