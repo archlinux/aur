@@ -1,7 +1,7 @@
 pkgbase = nanopb-git
 	pkgdesc = Protocol Buffers with small code size
 	pkgver = r912.0ffccc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nanopb/nanopb
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = nanopb-git
 	makedepends = cmake
 	makedepends = git
 	source = git+https://github.com/nanopb/nanopb.git
+	source = protoc-gen-nanopb
 	md5sums = SKIP
+	md5sums = 7a2b8dc8978e9cc38ec19cc080e3690d
 
 pkgname = nanopb-git
 
