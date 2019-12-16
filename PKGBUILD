@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-md5sums=('6bd76d173b3da08d45f5f438c583a2f9')
+sha256sums=('6510e0bd2bf57cd842906ec2fee531fb4ca6f38a29bde45bdfa7570396c9f8d0')
 
 _sourcedirectory="$pkgname-$_commit"
 
