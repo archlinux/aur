@@ -1,52 +1,44 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="4.1.0.7"
-pkgrel=2
+pkgver="4.1.1.3"
+pkgrel=1
 pkgdesc="Steam cards farmer."
-arch=('x86_64' 'arm' 'i686')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
-depends_x86_64=('dotnet-host>=3.0' 'libunwind' 'openssl-1.0')
-depends_arm=('dotnet-host>=3.0' 'libunwind' 'openssl-1.0')
-depends_i686=('dotnet-runtime>=3.0')
-makedepends=('unzip')
+depends=('aspnet-runtime>=3.1')
+makedepends=('dotnet-sdk>=3.1')
 changelog=changelog
 backup=('var/lib/asf/config/ASF.json' 'usr/lib/asf/NLog.config')
-options=('staticlibs')
 install=install
-source=("${pkgname}.sh"
+source=("https://github.com/JustArchi/ArchiSteamFarm/archive/${pkgver}.tar.gz"
+        "${pkgname}.sh"
         "service"
         "service.user"
         "ASF.json"
         "NLog.config")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-x64.zip")
-source_arm=("${pkgname}-${pkgver}-arm.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-arm.zip")
-source_i686=("${pkgname}-${pkgver}-i686.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-generic.zip")
-sha256sums=('8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
-            '4b32dd8aa10dd862d63862a8e14fca04afa9e7b2c155344bc8adfcddb0a76d52'
-            'c6e89b39537f64e10195c6be5ee98fe66ed564d3126cc2140eaa49d53b68be8c'
+sha256sums=('efabe61de903512f2666aaf6529aa356f7a6605b871cddf00c4c92f865634240'
+            '8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd'
+            'ba1ff85e55e56d71dbdd0d898244ff7725bced8625f29c5389e28525e6cdb987'
+            'b627c8d4b3ba7f194a44749bd401b33bae601b9570da98e457737a6f9cfa408f'
             'e63a92fd8008c40dab963161bdac967b57146553c00f114469c204ac6e1795b2'
             '2807b65c35959b0a0a255850facecc0286b7afdb5aa9b7b9315bf0165e87b0e0')
-sha256sums_x86_64=('c6724e90c94fc23669e5ebc6f9d76ea12f4db7d7b784e74f59741b68697f3646')
-sha256sums_arm=('772e01fc51bdefd6a5d7f2a5e91d99ff28311a59f77eb63d629e835cab1d7eb8')
-sha256sums_i686=('bb03cb0a8e09b9dce46ef2609ecbd138b9950cb605e71a10356119f8e7330db5')
-noextract=("${source_x86_64[@]%%::*}" "${source_arm[@]%%::*}" "${source_i686[@]%%::*}")
 
-prepare() {
-    unzip -d "${srcdir}/asf" ${pkgname}-${pkgver}-${CARCH}.zip
+build() {
+    cd ArchiSteamFarm-${pkgver}
+    export DOTNET_CLI_TELEMETRY_OPTOUT=1
+    ./cc.sh
 }
 
 package() {
+    cd ArchiSteamFarm-${pkgver}/out
     install -d -m 755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -rdp --no-preserve=ownership "${srcdir}/asf" "${pkgdir}/usr/lib"
+    cp -rdp --no-preserve=ownership . "${pkgdir}/usr/lib/asf"
     find "${pkgdir}/usr/lib/${pkgname}" -type f -exec chmod 644 {} \;
     find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} \;
 
     install -d -m 755 "${pkgdir}/var/lib/${pkgname}/config"
-    mv "${pkgdir}/usr/lib/${pkgname}/config" "${pkgdir}/var/lib/${pkgname}"
-    ln -sf "/var/lib/${pkgname}/config" "${pkgdir}/usr/lib/${pkgname}/config"
-
     install -D -m644 "${srcdir}/ASF.json" "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
     install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 

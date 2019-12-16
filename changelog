@@ -1,3 +1,14 @@
+2019-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.1.3-1:
+    [!] ASF is now based on .NET Core 3.1 runtime.
+    [!] OS-specific packages are now trimmed and bundled.
+    Added Steam Winter Sale 2019 with appID of 1195670 to sales blacklist.
+    Fixed small regression introduced in V4.1.0.7 related to friend requests plugins module.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: switch from binaries to compiling source code
+    pkg: asf is now identified as such in the logs instead of the generic 'dotnet'
 2019-12-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.0.7-1:
     Added MarkBotMessagesAsRead to BotBehaviour (#1482).
