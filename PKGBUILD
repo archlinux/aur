@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='apache-orc'
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A columnar storage for Hadoop workloads."
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=()
 makedepends=('cmake' 'lz4-static' 'protobuf-static' 'snappy-static' 'zlib-static' 'zstd-static')
 source=("orc-$pkgver.tar.gz::https://github.com/apache/orc/archive/rel/release-$pkgver.tar.gz"
   "cmake.patch")
-sha256sums=('92948388c7b188e2e1f3b880cae2c87571a9f8f312c32f58f64f5ab59bcdadfe'
-            'e670220ab16b05c7d847d3631d459a165ae07c2714725603ce30f5060ca98ea6')
+sha256sums=('8aa0acc0ff6f22e319eb160919c0d7c983257698b96e755d9e7e8f4861e7dbce'
+            '6583b28d5a10c5eea222779f68545e1a00cb75c3d4e55bd57b6e6377ac580c62')
 
 prepare() {
   cd "$srcdir"
