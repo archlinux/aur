@@ -3,9 +3,9 @@
 _varname='G4PIIDATA'
 _packagename='geant4-piidata'
 _foldername='G4PII'
-_dataversion=1.3
 
 _add() {
+    _dataversion=${1}
     echo "export ${_varname}=/usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.sh
     echo "setenv ${_varname} /usr/share/${_packagename}/${_foldername}${_dataversion}" >> /etc/profile.d/geant4.csh
 }
@@ -19,13 +19,15 @@ pre_install() {
     _remove
 }
 post_install() {
-    _add
+    _version=${1::-2}
+    _add ${_version}
 }
 pre_upgrade() {
     _remove
 }
 post_upgrade() {
-    _add
+    _version=${1::-2}
+    _add ${_version}
 }
 pre_remove() {
     _remove
