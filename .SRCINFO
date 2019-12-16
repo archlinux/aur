@@ -1,7 +1,7 @@
 pkgbase = python-cld3-git
 	pkgdesc = Python bindings for cld3 (Compact Language Detector v3)
 	pkgver = 0.2.3.20190830
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/iamthebot/cld3
 	arch = i686
 	arch = x86_64
