@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Reuße <seb@wirrsal.net>
 pkgname=pixterm-git
 _gitname=pixterm
-pkgver=v1.1.1.r0.g0604f32
+pkgver=v1.3.0.r0.g9fb6cf8
 pkgrel=1
 pkgdesc="Draw images in your ANSI terminal with true color"
 arch=(x86_64 i686)
@@ -21,11 +21,8 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_gitname"
-    export GOPATH="$srcdir/gopath"
-    [ -d "$GOPATH" ] || mkdir "$srcdir"/gopath
-    go get -d
-    go build
+    cd "$srcdir/$_gitname/cmd/pixterm"
+    go build -o ../../pixterm
 }
 
 package() {
