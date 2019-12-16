@@ -2,7 +2,7 @@
 pkgname=mit8
 orgname=Iztech
 pkgver=3.0.50
-pkgrel=1
+pkgrel=2
 pkgdesc="Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех"
 url="https://www.iztech.ru"
 license=(custom)
