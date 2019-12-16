@@ -10,8 +10,7 @@ pkgbase = asf
 	arch = aarch64
 	license = Apache
 	makedepends = dotnet-sdk>=3.1
-	makedepends = aspnet-runtime>=3.1
-	depends = dotnet-runtime>=3.1
+	depends = aspnet-runtime>=3.1
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config
 	source = https://github.com/JustArchi/ArchiSteamFarm/archive/4.1.1.3.tar.gz
