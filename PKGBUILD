@@ -14,7 +14,7 @@ depends=('libpng' 'gconf')
 optdepends=('google-chrome')
 md5sums=('77e6b631478c63c2df5809822a0af916')
 
-source=("${pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux64.zip")
+source=("${pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/chromedriver_linux64.zip")
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
