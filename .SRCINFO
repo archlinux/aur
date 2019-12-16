@@ -1,0 +1,27 @@
+pkgbase = element
+	pkgdesc = Element Audio Plugin Host.
+	pkgver = 0.42.0.r0.gad065721
+	pkgrel = 1
+	url = https://github.com/kushview/Element
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = boost
+	depends = freetype2
+	depends = ladspa
+	depends = libxcomposite
+	depends = libxcursor
+	depends = libxext
+	depends = libxinerama
+	depends = lilv
+	depends = lv2
+	depends = python
+	depends = suil
+	depends = xorg-xrandr
+	source = element::git+https://github.com/kushview/Element.git#tag=0.42.0
+	sha256sums = SKIP
+
+pkgname = element
+
