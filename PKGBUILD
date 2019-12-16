@@ -8,7 +8,7 @@ url="https://github.com/neverpanic/$pkgname"
 license=('BSD')
 depends=('curl' 'ncurses')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('89e470bfae9c84624903756d397700f0')
+sha256sums=('7779cc4cbad7504c823c7db5a07a48f7e7b553ee82b1f1d8c88237f1b95336dc')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver/"
