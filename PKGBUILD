@@ -2,7 +2,7 @@
 
 pkgname=devtools-git
 _pkgname=devtools
-pkgver=20190912
+pkgver=20191212
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 url='https://git.archlinux.org/devtools.git/'
 depends=('namcap' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
          'git' 'bzr' 'mercurial')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'git')
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname)
 source=("$pkgname::git+https://git.archlinux.org/devtools.git")
