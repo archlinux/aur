@@ -35,7 +35,7 @@ prepare() {
 build() {
 	cd "craftos2-$pkgver"
 	./configure --prefix=/usr
-	make plugin-linux
+	make linux-plugin
 }
 
 check() {
