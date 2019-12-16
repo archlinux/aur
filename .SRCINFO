@@ -1,7 +1,7 @@
 pkgbase = wps-office-extension-english-uk-dictionary
-	pkgdesc = English (UK) dictionary for WPS Office
+	pkgdesc = https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts
 	pkgver = 20140307
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wps-community.org/download/dicts
 	arch = any
 	groups = wps-office-extensions
