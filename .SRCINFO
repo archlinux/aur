@@ -1,6 +1,6 @@
 pkgbase = organizr-git
 	pkgdesc = HTPC/HomeLab services organizer (git version).
-	pkgver = r1556.4c51e50
+	pkgver = r2028.cdc55ce8
 	pkgrel = 1
 	url = https://github.com/causefx/Organizr
 	install = organizr.install
@@ -10,10 +10,12 @@ pkgbase = organizr-git
 	optdepends = fail2ban
 	provides = organizr
 	conflicts = organizr
-	source = organizr-git::git+https://github.com/causefx/Organizr.git#branch=v2-develop
+	source = organizr-git::git+https://github.com/causefx/Organizr.git#branch=v2-master
 	source = organizr.install
+	source = organizr.tmpfiles
 	sha256sums = SKIP
-	sha256sums = c4f08e6f1569ea9d82ae14bd5ec6cd5c0a8d762b52c7331bd75024092efaa390
+	sha256sums = ae58bcf26a81ac31bc73cc01cf41ce8451b4a279032caee51e4a10470f74bb9f
+	sha256sums = 6a496d0eebd685ddb499eb20d6f12e18c825c9e07e27c0ffe04b10b2fc0706e5
 
 pkgname = organizr-git
 
