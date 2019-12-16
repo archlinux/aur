@@ -1,14 +1,14 @@
 pkgbase = wps-office-extension-portuguese-brazilian-dictionary
 	pkgdesc = Portuguese (Brazilian) dictionary for WPS Office
 	pkgver = 20131121
-	pkgrel = 3
-	url = http://wps-community.org/download/dicts
+	pkgrel = 4
+	url = https://github.com/wps-community/wps_community_website/tree/master/root/download/dicts
 	arch = any
 	groups = wps-office-extensions
 	license = custom
 	makedepends = unzip
 	depends = wps-office
-	source = http://wps-community.org/download/dicts/pt_BR.zip
+	source = https://github.com/wps-community/wps_community_website/raw/master/root/download/dicts/pt_BR.zip
 	sha512sums = 019510653442d6573160bba3a83167d6705f21cb60831259dcd3cfb9e1fb19d0c1ab9958c81ab83570920bdbeaf652ce788cb36989fd440208c24bfa5304521d
 
 pkgname = wps-office-extension-portuguese-brazilian-dictionary
