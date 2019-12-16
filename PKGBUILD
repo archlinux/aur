@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.102.3
+pkgver=0.103.0
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -43,7 +43,7 @@ optdepends=(
   'python-lxml: Meteo France integration'
 )
 source=(
-  git+https://github.com/home-assistant/home-assistant.git#tag=0ea91fbf2d1fbba6710ad603672f46ec9432eb61
+  git+https://github.com/home-assistant/home-assistant.git#tag=56718218026585e06129d2e3a54391ec9bae95ae
   home-assistant.service
   home-assistant.sysusers
   home-assistant.tmpfiles
