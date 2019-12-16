@@ -1,6 +1,6 @@
 # Maintainer: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=5599
-shortpkgver=10.2
+heidisqlrelease=5781
+shortpkgver=10.3
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
 pkgrel=2
@@ -15,8 +15,8 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_64_P
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('c7168af8bbbc0b45c689de3da112c4b0'
-         '91a1d2dddf1483f98895516d9924eeeb'
+md5sums=('f68fc479a152a655e70d67ba4b4566aa'
+         '2ccb0c16fb61414b4cf2affbda9aa5fa'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
          '9c65ae391e4980c639b34580b817962f')
