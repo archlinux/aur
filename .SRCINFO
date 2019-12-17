@@ -1,0 +1,14 @@
+pkgbase = ifmetric
+	pkgdesc = A tool to adjust the routing metric for a network interface
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://0pointer.de/lennart/projects/ifmetric/
+	arch = x86_64
+	license = GPL2
+	source = http://0pointer.de/lennart/projects/ifmetric/ifmetric-0.3.tar.gz
+	source = https://deb.debian.org/debian/pool/main/i/ifmetric/ifmetric_0.3-5.debian.tar.xz
+	sha256sums = 0fa8510a4e34e555f136f9df81d26618313f2d69a4880c0fb5967f19502f1aec
+	sha256sums = 5aa7b4df05e88edfd3704e3255c588da0b74ab984b2abaca4d1a14c0a65aa4e7
+
+pkgname = ifmetric
+
