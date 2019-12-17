@@ -11,7 +11,7 @@ pkgbase = aurpkg
 	depends = curl
 	depends = git
 	source = aurpkg-1.2.4.tar.gz::https://github.com/DD3Boh/aurpkg/archive/1.2.4.tar.gz
-	sha256sums = 5abd72d9d12c12aadc26542d873b988f72048f3c0f3cf1e3414d498f0a87e8a7
+	sha256sums = SKIP
 
 pkgname = aurpkg
 

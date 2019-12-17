@@ -13,7 +13,7 @@ depends=('curl' 'git')
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('5abd72d9d12c12aadc26542d873b988f72048f3c0f3cf1e3414d498f0a87e8a7')
+sha256sums=('SKIP')
 noextract=()
 
 package() {
