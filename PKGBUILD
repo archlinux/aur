@@ -2,7 +2,7 @@
 
 pkgname=python-onnx
 pkgver=1.6.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Open Neural Network Exchange'
 arch=('x86_64')
 url='https://onnx.ai'
@@ -41,6 +41,8 @@ get_pyver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
+  # fix build with protobuf 3.11, see https://github.com/onnx/onnx/pull/2482/files
+  sed -i 's/${ONNX_DLLEXPORT_STR}${CMAKE_CURRENT_BINARY_DIR})/${CMAKE_CURRENT_BINARY_DIR})/' "${srcdir}/${pkgname}/CMakeLists.txt"
 }
 
 build() {
