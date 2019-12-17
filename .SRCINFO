@@ -7,6 +7,7 @@ pkgbase = nodejs-hackmyresume
 	depends = nodejs
 	depends = npm
 	optdepends = phantomjs: PDF support
+	optdepends = python-weasyprint: PDF support
 	optdepends = wkhtmltopdf: PDF support
 	noextract = hackmyresume-1.9.0-beta.tgz
 	source = http://registry.npmjs.org/hackmyresume/-/hackmyresume-1.9.0-beta.tgz
