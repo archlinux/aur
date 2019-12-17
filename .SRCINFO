@@ -1,12 +1,13 @@
 pkgbase = java-language-server
 	pkgdesc = Java language server using the Java compiler API
 	pkgver = 0.2.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/georgewfraser/java-language-server
 	arch = any
 	license = MIT
 	makedepends = maven
-	depends = java-runtime
+	makedepends = java-environment=13
+	depends = java-runtime=13
 	provides = java-language-server
 	source = https://github.com/georgewfraser/java-language-server/archive/v0.2.30.tar.gz
 	source = launcher.sh
