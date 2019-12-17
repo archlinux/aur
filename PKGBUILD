@@ -13,10 +13,10 @@ makedepends=(pkg-config make)
 source=(https://github.com/Rudd-O/qubes-pass/archive/v${pkgver}.tar.gz)
 sha256sums=('cc481bde42f58828544ae72c1356402c2e0e79d5f6b86f046c81151ce4c16a0d')
 
-_srcname=${pkgname}-${pkgver}
+_srcname="${pkgname}-${pkgver}"
 
 package() {
-    cd "$srcdir/$_srcname/"
-    make install-client DESTDIR=$pkgdir
+    cd "${srcdir}/${_srcname}/"
+    make install-client DESTDIR="$pkgdir"
 }
 
