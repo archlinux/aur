@@ -1,11 +1,11 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-fontpens')
+pkgname='python-fontpens'
 _pkgname='fontPens'
 pkgver='0.2.4'
 pkgrel=1
 pkgdesc='A collection of classes implementing the pen protocol for manipulating glyphs.'
 url='https://pypi.org/project/fontPens/'
-checkdepends=('python-fontmath' 'python-fontparts' 'python-pytest' 'python-unicodedata2>=12.0.0')
+checkdepends=('python-fontmath' 'python-fontparts' 'python-pytest' 'python>=3.8')
 depends=('python' 'python-fonttools')
 makedepends=('python-setuptools')
 optdepends=()

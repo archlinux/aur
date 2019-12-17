@@ -8,7 +8,7 @@ pkgbase = python-fontpens
 	checkdepends = python-fontmath
 	checkdepends = python-fontparts
 	checkdepends = python-pytest
-	checkdepends = python-unicodedata2>=12.0.0
+	checkdepends = python>=3.8
 	makedepends = python-setuptools
 	depends = python
 	depends = python-fonttools
