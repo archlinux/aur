@@ -3,13 +3,13 @@
 # Contributor: JP-Ellis <josh at jpellis dot me>
 pkgname=lhapdf
 pkgver=6.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A particle physics tool for evaluating PDFs from discretised data files"
 arch=('x86_64')
 url="https://lhapdf.hepforge.org/"
 license=('GPL3')
 makedepends=('cython')
-depends=('python' 'python2')
+depends=('python')
 install=lhapdf.install
 source=("https://www.hepforge.org/archive/lhapdf/LHAPDF-${pkgver}.tar.gz"
         'fix_typo.patch')
