@@ -2,7 +2,7 @@
 
 pkgname=beef-git
 _pkgname=beef
-pkgver=20191217.4435a02d
+pkgver=20191217.6d05f8c4
 pkgrel=1
 pkgdesc="The Browser Exploitation Framework"
 arch=('x86_64')

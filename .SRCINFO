@@ -1,6 +1,6 @@
 pkgbase = beef-git
 	pkgdesc = The Browser Exploitation Framework
-	pkgver = 20191217.4435a02d
+	pkgver = 20191217.6d05f8c4
 	pkgrel = 1
 	url = http://beefproject.com/
 	install = beef-git.install
