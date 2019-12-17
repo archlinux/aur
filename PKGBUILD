@@ -1,7 +1,7 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
 pkgver=2.0.17
-pkgrel=7
+pkgrel=1
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
 arch=('i686' 'x86_64')
