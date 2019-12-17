@@ -1,0 +1,44 @@
+post_install() {
+  cat <<EOF
+
+To use kata-runtime with docker,
+- add the following config to /etc/docker/daemon.json
+"""
+{
+    "runtimes": {
+      "kata": {
+        "path": "/usr/bin/kata-runtime"
+      }
+    }
+}
+"""
+  and restart the docker daemon
+
+- run containers with the "--runtime=kata" options to use kata-runtime
+"""
+$ docker run --runtime=kata --rm busybox date
+"""
+
+- to set Kata as the default runtime, add '"default-runtime": "kata"' to /etc/docker/daemon.json and restart the docker daemon
+"""
+{
+    "default-runtime": "kata",
+    "runtimes": {
+      "kata": {
+        "path": "/usr/bin/kata-runtime"
+      },
+    }
+}
+
+"""
+
+- to run Kata with Firecracker, due to Firecracker's limitations, you have to set your Docker storage driver (ref: https://docs.docker.com/storage/storagedriver/select-storage-driver/ ) to 'devicemapper' in /etc/docker/daemon.json
+"""
+{
+    "storage-driver": "devicemapper"
+}
+"""
+
+EOF
+
+}

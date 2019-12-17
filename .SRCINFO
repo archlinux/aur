@@ -1,0 +1,60 @@
+pkgbase = kata-containers-git
+	pkgdesc = Lightweight virtual machines for containers
+	pkgver = 1.10.0~rc0~runtime.r31.3ea682d6
+	pkgrel = 1
+	url = https://katacontainers.io/
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	source = agent::git+https://github.com/kata-containers/agent
+	source = ksm-throttler::git+https://github.com/kata-containers/ksm-throttler
+	source = osbuilder::git+https://github.com/kata-containers/osbuilder
+	source = proxy::git+https://github.com/kata-containers/proxy
+	source = runtime::git+https://github.com/kata-containers/runtime
+	source = shim::git+https://github.com/kata-containers/shim
+	source = https://github.com/kata-containers/runtime/releases/download/1.10.0-rc0/kata-static-1.10.0-rc0-x86_64.tar.xz
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = f0e69db2327f87234b053c554793ee28f0f102835e1778e85772d14c90c0caf63890541a780cc5439e08d39a419fa86bd5ff4750228c93f70f2511328afe1aa5
+
+pkgname = kata-ksm-throttler-git
+	provides = kata-ksm-throttler
+	conflicts = kata-ksm-throttler
+
+pkgname = kata-proxy-git
+	provides = kata-proxy
+	conflicts = kata-proxy
+
+pkgname = kata-runtime-git
+	install = kata-runtime.install
+	depends = qemu-headless
+	depends = kata-ksm-throttler=1.10.0~rc0~runtime.r31.3ea682d6
+	depends = kata-proxy=1.10.0~rc0~runtime.r31.3ea682d6
+	depends = kata-shim=1.10.0~rc0~runtime.r31.3ea682d6
+	depends = kata-linux-container=1.10.0~rc0~runtime.r31.3ea682d6
+	depends = kata-containers-image=1.10.0~rc0~runtime.r31.3ea682d6
+	optdepends = firecracker
+	optdepends = cloud-hypervisor
+	provides = kata-runtime
+	conflicts = kata-runtime
+
+pkgname = kata-shim-git
+	provides = kata-shim
+	conflicts = kata-shim
+
+pkgname = kata-agent-git
+	provides = kata-agent
+	conflicts = kata-agent
+
+pkgname = kata-containers-image-git
+	provides = kata-containers-image
+	conflicts = kata-containers-image
+
+pkgname = kata-linux-container-git
+	provides = kata-linux-container
+	conflicts = kata-linux-container
+
