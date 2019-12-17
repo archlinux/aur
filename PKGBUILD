@@ -2,14 +2,14 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r7032
+pkgver=r7041
 pkgrel=1
 pkgdesc="Digital DJ mixing software. Git master branch (development/alpha)."
 arch=('i686' 'x86_64')
 url="http://www.mixxx.org/"
 license=('GPL2')
 groups=('pro-audio')
-depends=('libmad' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'taglib' 'libmp4v2' 
+depends=('libmad' 'qt5-script' 'qt5-svg' 'qt5-x11extras' 'taglib' 'libmp4v2' 'lv2' 
 'rubberband' 'portaudio' 'portmidi' 'protobuf' 'libshout' 'libid3tag' 'opusfile' 'chromaprint' 'lilv' 'upower')
 makedepends=('git' 'scons' 'pkgconfig' 'glu' 'qt5-tools')
 provides=('mixxx')
