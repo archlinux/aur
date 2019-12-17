@@ -1,0 +1,14 @@
+pkgbase = aspectj
+	pkgdesc = seamless aspect-oriented extension to the Java™ programming language
+	pkgver = 1.9.5
+	pkgrel = 1
+	url = https://projects.eclipse.org/projects
+	arch = any
+	license = Eclipse Public License 1.0
+	depends = jre11-openjdk
+	conflicts = aspectj-git
+	source = aspectj_1.9.5.jar::http://ftp.fau.de/eclipse/tools/aspectj/aspectj-1.9.5.jar
+	sha256sums = 335820a6772587873dfdcc614a772ecbb4731b4ffb99eb8ad953cde39f9cf825
+
+pkgname = aspectj
+
