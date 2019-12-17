@@ -9,7 +9,7 @@ pkgbase = python-defcon
 	makedepends = python-setuptools
 	depends = python
 	depends = python-fonttools
-	depends = python-unicodedata2=12.0.0
+	depends = python>=3.8
 	source = https://pypi.org/packages/source/d/defcon/defcon-0.6.0.zip
 	sha256sums = 52e461961b4b68ae6883f8a14a0d82f2d09f2de7a526b95c7d1b195c10ca745f
 

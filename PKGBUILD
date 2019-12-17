@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A set of UFO based objects for use in font editing applications.'
 url="https://pypi.org/project/defcon/"
 checkdepends=('python-pytest')
-depends=('python' 'python-fonttools' 'python-unicodedata2=12.0.0')
+depends=('python' 'python-fonttools' 'python>=3.8')
 makedepends=('python-setuptools')
 optdepends=()
 license=('MIT')
