@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.5.9
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Gtk2 application for searching and streaming videos from YouTube."
 arch=('any')
