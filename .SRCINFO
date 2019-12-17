@@ -1,14 +1,14 @@
 pkgbase = python-astropy-helpers-doc
 	pkgdesc = Documentation for Astropy helpers
-	pkgver = 4.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://astropy-helpers.readthedocs.io/
 	arch = any
 	license = BSD
-	makedepends = python-astropy-helpers=4.0
+	makedepends = python-astropy-helpers=4.0.1
 	makedepends = python-sphinx-astropy
-	source = https://github.com/astropy/astropy-helpers/archive/v4.0.tar.gz
-	md5sums = d0ab7da10691eca1859b8de471395ff9
+	source = https://github.com/astropy/astropy-helpers/archive/v4.0.1.tar.gz
+	md5sums = 8123d2d1389d986ff266f37d7d65bec2
 
 pkgname = python-astropy-helpers-doc
 
