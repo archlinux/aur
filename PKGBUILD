@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-notifications
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='Notifications indicator for Wingpanel'
 arch=(x86_64)
@@ -22,8 +22,14 @@ makedepends=(
   meson
   vala
 )
-source=(git+https://github.com/elementary/wingpanel-indicator-notifications.git#tag=${pkgver})
+source=(git+https://github.com/elementary/wingpanel-indicator-notifications.git#tag=3b8478801756e58bb3651d8d48044e4073d4665c)
 sha256sums=(SKIP)
+
+pkgver() {
+  cd wingpanel-indicator-notifications
+
+  git describe --tags
+}
 
 build() {
   arch-meson wingpanel-indicator-notifications build
