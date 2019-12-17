@@ -1,7 +1,7 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=omgf
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Use Git Flow with ease – maintain branches, semantic versioning, releases, and changelog with a single command."
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/InternetGuru/omgf'
 license=('GPL-3')
 depends=('git')
 source=("https://github.com/InternetGuru/omgf/archive/v${pkgver}.tar.gz")
-md5sums=('bc5b8ef9c3634a39d4250cf3d8ae280c')
+md5sums=('9f1c891c448f97709b4223f740c642e0')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

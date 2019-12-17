@@ -1,13 +1,13 @@
 pkgbase = omgf
 	pkgdesc = Use Git Flow with ease – maintain branches, semantic versioning, releases, and changelog with a single command.
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/InternetGuru/omgf
 	arch = any
 	license = GPL-3
 	depends = git
-	source = https://github.com/InternetGuru/omgf/archive/v2.1.1.tar.gz
-	md5sums = bc5b8ef9c3634a39d4250cf3d8ae280c
+	source = https://github.com/InternetGuru/omgf/archive/v2.2.0.tar.gz
+	md5sums = 9f1c891c448f97709b4223f740c642e0
 
 pkgname = omgf
 
