@@ -40,6 +40,7 @@ package() {
   make ARCH=x86_64 INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
   # image
+  mkdir -p "${pkgdir}/opt/wsl-kernel"
   make ARCH=x86_64 INSTALL_PATH="${pkgdir}/opt/wsl-kernel" install
   cp arch/x86/boot/bzImage "${pkgdir}/opt/wsl-kernel/."
 
