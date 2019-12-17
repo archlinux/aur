@@ -1,6 +1,6 @@
 pkgbase = 389-console
 	pkgdesc = A Java based remote management console used for managing 389 Administration Server and 389 Directory Server.
-	pkgver = 1.1.18
+	pkgver = 1.1.19
 	pkgrel = 1
 	url = http://port389.org
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = 389-console
 	depends = bash
 	depends = idm-console-framework
 	depends = java-environment
-	source = https://fedorapeople.org/groups/389ds/binaries/389-console-1.1.18.tar.bz2
-	sha1sums = ad6929bc9391d7b725aa8246fce5cc22225829b3
+	source = https://releases.pagure.org/389-console/389-console-1.1.19.tar.bz2
+	source = commons.patch
+	sha256sums = 974ede78f3023b8292ed9599cafdae878b811bdc6dfa6e1a201f43391d1a979b
+	sha256sums = 710426750971db777d9dc1cfcb0b0f9ba3136409dbff9c4bd8da54c722780c39
 
 pkgname = 389-console
 

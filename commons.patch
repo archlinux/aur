@@ -1,0 +1,14 @@
+diff -u build.properties.orig build.properties
+--- build.properties.orig	2019-02-12 08:56:58.470228310 -0500
++++ build.properties	2019-02-12 08:57:14.990665433 -0500
+@@ -34,8 +34,8 @@
+ console.mcc.name=idm-console-mcc
+ console.nmclf.name=idm-console-nmclf
+ 
+-apache.codec.jar.name=apache-commons-codec.jar
+-apache.lang.jar.name=apache-commons-lang.jar
++apache.codec.jar.name=commons-codec.jar
++apache.lang.jar.name=commons-lang.jar
+ jss.jar.name=jss4.jar
+ ldapjdk.jar.name=ldapjdk.jar
+ slf4j.jar.name=slf4j-api.jar
