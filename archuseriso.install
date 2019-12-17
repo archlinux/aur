@@ -1,0 +1,11 @@
+post_install() {
+  echo
+  echo 'This release brings encryption, see aui-mkpersistent command for help.'
+  echo
+  echo 'archuseriso command was renamed aui-mkiso'
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
