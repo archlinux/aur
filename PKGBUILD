@@ -8,14 +8,17 @@ pkgrel=3
 arch=('any')
 url="https://${pkgpath}"
 license=(MIT)
-makedepends=()
-depends=('dotnet-host-bin' 'dotnet-runtime' 'dotnet-runtime-bin' 'dotnet-sdk' 'dotnet-sdk-bin' 'aspnet-runtime-2.1' 'aspnet-runtime-bin')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+makedepends=('dotnet-host-bin' 'dotnet-runtime' 'dotnet-runtime-bin' 'dotnet-sdk' 'dotnet-sdk-bin' 'aspnet-runtime-2.1' 'aspnet-runtime-bin')
+depends=(${makedepends} 'bitcoin-daemon')
+source=("${url}/archive/${pkgver}.tar.gz"
+"nbxplorer.service")
+sha256sums=('SKIP'
+            '198e6e0ba127402b549c88b2748f80026a511b9b956291803a64355571d859dd')
 
 build() {
 mv ${srcdir}/${pkgcaps}-${pkgver} ${srcdir}/${pkgname}
 cd ${srcdir}/${pkgname}
+cp -b ../nbxplorer.service nbxplorer.service
 ./build.sh
 #set absolute path in run.sh
 echo -e '#!/bin/bash
@@ -23,21 +26,6 @@ echo -e '#!/bin/bash
 dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/nbxplorer/NBXplorer/NBXplorer.csproj" -- $@
 ' > run.sh
 chmod +x run.sh
-
-echo -e '[Unit]
-Description=NBXplorer service
-After=network.target
-After=network-online.target
-After=bitcoind.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/nbxplorer
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-' > nbxplorer.service
 }
 
 package() {
