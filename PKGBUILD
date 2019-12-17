@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks."
-url='https://www.wiki.ros.org/actionlib'
+url='https://wiki.ros.org/actionlib'
 
 pkgname='ros-melodic-actionlib'
 pkgver='1.12.0'
