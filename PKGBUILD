@@ -1,42 +1,68 @@
-# Maintainer: Damian Nowak <damian.nowak@atlashost.eu>
-# Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
-# Contributor: Ernie Brodeur <ebrodeur@ujami.net>
-# Contributor: Rogof <fake.bios at gmail>
-# Contributor: m4.rc0 <m4.rc0 at o2 (dot) pl>
-# Contributor: Bjørn Madsen <bm@aeons.dk>
-pkgname='rubymine-eap'
-_pkgname='RubyMine'
-_pkgver='2016.1'
-_pkgbuild='RC'
-pkgver="${_pkgver}_${_pkgbuild}"
-pkgrel='1'
-pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)"
+# Maintainer: Axel Navarro <navarroaxel at gmail>
+pkgname=rubymine-eap
+pkgver=193.5233.108
+_pkgname=RubyMine
+_pkgver=2019.3
+pkgrel=1
+pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
 options=('!strip')
-url="http://www.jetbrains.com/rubymine"
+url="http://www.jetbrains.com/ruby"
 license=('custom')
-depends=('java-runtime')
-source=(http://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}-${_pkgbuild}.tar.gz
-        rubymine-eap
-        rubymine-eap.desktop)
-sha256sums=('321a62910cae96e1251fb7f3e2f54397218d8167e5e6bfe83d99380d2e2f6104'
-            '5907872548a4698c4a58a229296ff519031fba30b070257ff1a5e308faaff3c3'
-            'bcb9d042247f8595befddca2feec3188350a0d89ba31ee6d4dd2c18ca4b854fc')
-PKGEXT='.pkg.tar.gz' # prevent a time-consuming compression with xz
+depends=('desktop-file-utils' 'gtk-update-icon-cache')
+optdepends=('ruby: Ruby run/debug support')
+install=rubymine.install
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
+        rubymine-eap.desktop
+        rubymine.install)
+sha256sums=('f268a08d92e57362410f5089b9151ada776198a21f49c1096df0b20b948c79f7'
+            '9df77c9f1d25a0ed49a7f4d0f88515f9da8384a76faf0c545743d1e09309aff6'
+            'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${_pkgver}"
+
+    #Remove non-linux libs
+    rm -rf "lib/libpty/macosx"
+    rm -rf "lib/libpty/win"
+
+    #Remove bin/libs if architecture doesn't match
+    if [[ $CARCH = 'i686' ]]; then
+        rm -f "bin/fsnotifier64"
+        rm -f "bin/libbreakgen64.so"
+        rm -f "bin/libyjpagent-linux64.so"
+        rm -f "bin/rubymine64.vmoptions"
+        rm -rf "lib/libpty/linux/x86_64"
+    fi
+    if [[ $CARCH = 'x86_64' ]]; then
+        rm -f "bin/fsnotifier"
+        rm -f "bin/libbreakgen.so"
+        rm -f "bin/libyjpagent-linux.so"
+        rm -f "bin/rubymine.vmoptions"
+        rm -rf "lib/libpty/linux/x86"
+    fi
+}
 
 package() {
-  cd "${srcdir}"
+    cd "${srcdir}"
+    [ $CARCH == "x86_64" ] && SUFFIX=64
 
-  realsrcdir="${_pkgname}-${_pkgver}/"
+    #Pre-packaged program files
+    install -d -m 755 "${pkgdir}/usr/share"
+    cp -a "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/usr/share/${pkgname}"
 
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -r ${srcdir}/${realsrcdir}* "${pkgdir}/opt/${pkgname}"
+    #Desktop application
+    install -Dm644 "${pkgdir}/usr/share/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 "rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
+    install -d -m 755 "${pkgdir}/usr/bin"
+    ln -s "/usr/share/${pkgname}/bin/rubymine.sh" "${pkgdir}/usr/bin/jetbrains-${pkgname}"
 
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/usr/share/pixmaps"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m 644 "${startdir}/rubymine-eap.desktop" "${pkgdir}/usr/share/applications/rubymine-eap.desktop"
-  install -m 644 "${pkgdir}/opt/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-  install -m 755 "${startdir}/rubymine-eap" "${pkgdir}/usr/bin/rubymine-eap"
+    #License
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
+        install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
+
+    #Java config
+    sed -i 's/lcd/on/' "${pkgdir}/usr/share/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
+    echo "-Dswing.aatext=true" >> "${pkgdir}/usr/share/$pkgname/bin/rubymine${SUFFIX}.vmoptions"
 }
