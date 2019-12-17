@@ -8,7 +8,7 @@ pkgbase = elephant
 	depends = java-environment
 	depends = bash
 	source = https://github.com/jusu/Elephant/releases/download/V55/elephant55_jar.zip
-	sha256sums = 102acda3fcba85436a3af6b3d150da7d2f843fcd8bfc698c213a127a83c77842
+	sha256sums = ce9364be1c1a9b84dbbe6fce15b9dc8fc282b974bf8bf03f3361315e0929bd15
 
 pkgname = elephant
 
