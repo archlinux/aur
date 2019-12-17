@@ -5,7 +5,7 @@
 
 pkgname=soci-git
 pkgname_=soci
-pkgver=3.2.3.r695.gd081e124
+pkgver=4.0.0.r0.g3742c894
 pkgrel=1
 pkgdesc="Database access library for C++"
 arch=('x86_64')
@@ -19,9 +19,9 @@ optdepends=('instantclient-basic: support for oracle databases'
             'sqlite3: support for sqlite databases'
             'unixodbc: support for ODBC databases'
             'boost')
-provides=('soci')
+provides=("soci=$pkgver")
 conflicts=('soci')
-source=("git+https://github.com/SOCI/soci.git")
+source=("git+https://github.com/SOCI/soci.git#branch=release/4.0")
 sha1sums=('SKIP')
 
 pkgver() {
