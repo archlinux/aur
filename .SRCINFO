@@ -10,7 +10,7 @@ pkgbase = bzrtp-git
 	depends = libxml2
 	depends = mbedtls
 	depends = bctoolbox>=4.3.0
-	provides = bzrtp
+	provides = bzrtp=4.4.0.alpha.r1.g947d708
 	conflicts = bzrtp
 	source = git+https://github.com/BelledonneCommunications/bzrtp.git
 	sha256sums = SKIP

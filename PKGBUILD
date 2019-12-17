@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/BelledonneCommunications/bzrtp"
 license=('GPL2')
 conflicts=('bzrtp')
-provides=('bzrtp')
+provides=("bzrtp=$pkgver")
 depends=('libxml2' 'mbedtls' 'bctoolbox>=4.3.0')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/bzrtp.git")
