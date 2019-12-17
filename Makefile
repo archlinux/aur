@@ -7,4 +7,4 @@ help:
 	@echo "clean - clean this repository"
 
 clean:
-	rm -rfv ./src ./pkg ./v*.tar.gz ./qubes-usb-proxy-*.pkg.tar.xz
+	rm -rfv ./src ./pkg ./v*.tar.gz ./qubes-usb-proxy-*.pkg.tar.xz qubes-usb-proxy

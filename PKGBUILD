@@ -4,21 +4,24 @@
 # Ref.: https://github.com/QubesOS/qubes-app-linux-usb-proxy/blob/master/archlinux/PKGBUILD
 
 pkgname=qubes-usb-proxy
+_gitname=${pkgname%-git*}
 pkgver=1.0.24
 pkgrel=1
 pkgdesc="The Qubes service for proxying USB devices"
 arch=("x86_64")
-url="https://qubes-os.org"
+url="https://www.qubes-os.org/doc/usb-devices/"
 license=('GPL')
 depends=('sh' 'qubes-vm-core' 'usbutils')
-makedepends=(pkg-config make gcc)
+makedepends=('pkg-config' 'make' 'gcc')
+validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
+              '0064428F455451B3EBE78A7F063938BA42CFA724'  # Marek Marczykowski-Górecki
+              '427F11FD0FAA4B080123F01CDDFA1A3E36879494'  # Qubes Master Signing Key
+)
 
-source=(https://github.com/QubesOS/qubes-app-linux-usb-proxy/archive/v${pkgver}.tar.gz)
-sha512sums=('109885b4a44b2834318fe1a33abe39367642166202aad5d2c1170cd8b7ad056d89b329ba670523f244f6e3291404661c565be8015b38b8be5e493c91370e9d61')
-
-_srcname=qubes-app-linux-usb-proxy-${pkgver}
+source=("$_gitname::git+https://github.com/QubesOS/qubes-app-linux-usb-proxy.git?signed#tag=v${pkgver}")
+sha512sums=('SKIP')
 
 package() {
-    cd "$srcdir/$_srcname/"
-    make install-vm DESTDIR=$pkgdir
+    cd "${srcdir}/${_gitname}/"
+    make install-vm DESTDIR="$pkgdir"
 }
