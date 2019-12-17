@@ -1,14 +1,16 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-agent
-_pkgname=sensu-agent
 pkgver=5.15.0
-_pkgver="${pkgver}-7782"
-pkgrel=1
+_pkgbuild=7782
+_pkgver="${pkgver}-${_pkgbuild}"
+pkgrel=2
 pkgdesc="Sensu Go Agent"
 arch=('x86_64')
 url='https://sensu.io'
 license=('MIT')
-source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/ubuntu/cosmic/${pkgname}_${_pkgver}_amd64.deb/download.deb"
+provides=("${pkgname/-go-/-}")
+conflicts=("${pkgname/-go-/-}")
+source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/${pkgname}_${_pkgver}_amd64.deb/download.deb"
         "sensu.sysusers"
         "sensu.tmpfiles")
 sha1sums=('41ba1bd1f620d0b5c4b7f7b047ed9ccc365962d4'
@@ -19,18 +21,18 @@ prepare() {
     cd "${srcdir}"
     tar xaf data.tar.gz
     # change /usr/sbin to /usr/bin
-    sed -i 's/\/usr\/sbin\//\/usr\/bin\//g' "${srcdir}/usr/share/${pkgname}-${pkgver}/${_pkgname}.service"
+    sed -i 's/\/usr\/sbin\//\/usr\/bin\//g' "${srcdir}/usr/share/${pkgname}-${pkgver}/${pkgname/-go-/-}.service"
 }
 
 # TODO: better build from source
 # build() {}
 
 package() {
-    install -Dm755 "${srcdir}/usr/sbin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/usr/sbin/${pkgname/-go-/-}" "${pkgdir}/usr/bin/${pkgname/-go-/-}"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/LICENSE.txt"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname}-${pkgver}/README.txt" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/README.txt"
-    install -Dm644 "${srcdir}/usr/share/doc/${pkgname}-${pkgver}/agent.yml.example" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/agent.yml.example"
-    install -Dm644 "${srcdir}/usr/share/${pkgname}-${pkgver}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+    install -Dm644 "${srcdir}/usr/share/doc/${pkgname}-${pkgver}/${pkgname/sensu-go-/}.yml.example" "${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/${pkgname/sensu-go-/}.yml.example"
+    install -Dm644 "${srcdir}/usr/share/${pkgname}-${pkgver}/${pkgname/-go-/-}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname/-go-/-}.service"
     install -Dm644 "sensu.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     install -Dm644 "sensu.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
