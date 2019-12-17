@@ -1,0 +1,23 @@
+pkgbase = nvidia-vpf-git
+	pkgdesc = NVIDIA Video Processing Framework (git version)
+	pkgver = r4.g9630e0d
+	pkgrel = 1
+	url = https://github.com/NVIDIA/VideoProcessingFramework/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = nvidia-sdk
+	depends = cuda
+	depends = nvidia-utils
+	depends = ffmpeg
+	depends = python
+	provides = nvidia-vpf
+	conflicts = nvidia-vpf
+	source = git+https://github.com/NVIDIA/VideoProcessingFramework.git
+	source = 010-nvidia-vpf-git-fix-install.patch
+	sha256sums = SKIP
+	sha256sums = 04931025174a113df620b46a824b6b41437782533a0e9b7ce945f539208b72ae
+
+pkgname = nvidia-vpf-git
+
