@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/BelledonneCommunications/ortp"
 license=('GPL3')
 conflicts=('ortp')
-provides=('ortp')
+provides=("ortp=$pkgver")
 depends=('bctoolbox>=4.3.0')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/ortp.git")
