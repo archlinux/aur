@@ -1,7 +1,5 @@
-# Maintainer: Jonathan Steel <jsteel at aur.archlinux.org>
-
 pkgname=xf86-input-mtrack
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="An Xorg driver for multitouch trackpads and clickpads"
 arch=('i686' 'x86_64')
@@ -13,7 +11,7 @@ backup=('etc/X11/xorg.conf.d/10-mtrack.conf')
 source=(10-mtrack.conf
         $url/archive/v$pkgver.tar.gz)
 md5sums=('ffb540330d92957e0da28af5a005136e'
-      '25b886ca93021f729ff374a76f029a7a')
+         'f935f526835ec4e6b9eb9e52d77c9ca1')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
