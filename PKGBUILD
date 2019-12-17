@@ -2,13 +2,13 @@
 
 _pkgname='autodl-irssi'
 pkgname="${_pkgname}-community"
-pkgver=2.5.0
+pkgver=2.6.1
 pkgrel=1
-pkgdesc='Community fork of the plugin for irssi which monitors IRC announce channels and downloads torrents based on user defined filters.'
+pkgdesc='Community fork plugin for irssi to monitor IRC channels and filter for torrents.'
 arch=('any')
 url='https://github.com/autodl-community/autodl-irssi'
 license=('MPL')
-changelog='CHANGELOG.md'
+changelog=CHANGELOG.md
 depends=('irssi'
          'perl-archive-zip'
          'perl-net-ssleay'
@@ -23,7 +23,7 @@ provides=("${_pkgname}")
 replaces=("autodl-irssi-svn")
 conflicts=("autodl-irssi-svn")
 source=("https://github.com/autodl-community/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('693c4f677b2400283ac536e96506c3d2')
+md5sums=('e094903c29a6d60d35018e5a65e98fda')
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
