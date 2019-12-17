@@ -1,0 +1,14 @@
+pkgbase = aws-cli-v2
+	pkgdesc = Experimental v2 of the AWS CLI
+	pkgver = latest
+	pkgrel = 1
+	url = https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
+	arch = i686
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = unzip
+	source = awscliv2.zip::https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip
+	sha1sums = SKIP
+
+pkgname = aws-cli-v2
+
