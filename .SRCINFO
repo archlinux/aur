@@ -1,0 +1,19 @@
+pkgbase = pace-cli-git
+	pkgdesc = A simple pacman.conf CLI editor
+	pkgver = 1.3.1.r0.g310d18d
+	pkgrel = 1
+	url = https://gitlab.com/softwareperonista/pace
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	makedepends = git
+	makedepends = polkit
+	depends = glib2
+	optdepends = polkit
+	conflicts = pace
+	source = git+https://gitlab.com/softwareperonista/pace.git
+	sha256sums = SKIP
+
+pkgname = pace-cli-git
+
