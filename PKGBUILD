@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=ikos
-pkgver=2.2
+pkgver=3.0
 pkgrel=1
 pkgdesc='Static analyzer for C and C++ developed by NASA'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -12,6 +12,7 @@ depends=('gmp'
          'python'
          'python-pygments'
          'sqlite'
+         'intel-tbb'
          'llvm'
          'llvm-libs'
          'clang'
@@ -19,7 +20,7 @@ depends=('gmp'
 makedepends=('cmake'
              'boost')
 source=("https://github.com/nasa-sw-vnv/ikos/releases/download/v$pkgver/ikos-$pkgver.tar.gz")
-sha256sums=('4946d479cc8eb00b38960087c14982598b508077187162ec3b9771a82d21d4a5')
+sha256sums=('bd42e84061c207ea7ca7f0c7d7aafa3cce72e951d33953b0ed8d68133b17c8b6')
 
 prepare() {
   cd "$srcdir/ikos-$pkgver"
