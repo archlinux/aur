@@ -111,7 +111,7 @@ prepare() {
   fi
 
   # Let's user choose microarchitecture optimization in GCC
-  ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
