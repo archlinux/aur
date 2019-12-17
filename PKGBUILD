@@ -70,6 +70,8 @@ package() {
 
   msg2 "Installing boot image..."
   make ARCH=x86_64 INSTALL_PATH="${modulesdir}" install
+  mkdir -p "${pkgdir}/opt/linux-wsl/"
+  cp -a "${modulesdir}/vmlinuz" "${pkgdir}/opt/linux-wsl/bzImage"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
