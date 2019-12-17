@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-keyboard
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Wingpanel Keyboard Indicator'
 arch=(x86_64)
-url='https://github.com/elementary/wingpanel-indicator-keyboard'
+url=https://github.com/elementary/wingpanel-indicator-keyboard
 license=(GPL3)
 groups=(pantheon)
 depends=(
@@ -20,8 +20,14 @@ makedepends=(
   vala
   wingpanel
 )
-source=(git+https://github.com/elementary/wingpanel-indicator-keyboard.git#tag=${pkgver})
+source=(git+https://github.com/elementary/wingpanel-indicator-keyboard.git#tag=04f84477d22da586a4668a16ab4b35cc05d34d93)
 sha256sums=(SKIP)
+
+pkgver() {
+  cd wingpanel-indicator-keyboard
+
+  git describe --tags
+}
 
 build() {
   arch-meson wingpanel-indicator-keyboard build
