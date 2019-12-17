@@ -9,6 +9,7 @@ url="https://github.com/hacksalot/HackMyResume"
 license=()
 depends=('nodejs' 'npm')
 optdepends=("phantomjs: PDF support"
+            "python-weasyprint: PDF support"
             "wkhtmltopdf: PDF support")
 source=("http://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
