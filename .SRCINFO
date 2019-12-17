@@ -1,8 +1,8 @@
 pkgbase = samba-mounter-git
 	pkgdesc = User space mount tool for samba
-	pkgver = 147.3240cc9
+	pkgver = 158.7f5915f
 	pkgrel = 1
-	url = https://cgit.kde.org/scratch/afiestas/samba-mounter.git
+	url = https://cgit.kde.org/samba-mounter.git
 	arch = i686
 	arch = x86_64
 	license = GPL
