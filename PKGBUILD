@@ -119,8 +119,8 @@ package() {
     # which are copies of files elsewhere
     find . -path licensedir -prune -o -path stubdom/ioemu -prune -o \
       -path dist -prune -o -name COPYING -o -name LICENSE | while read file; do
-      mkdir -p licensedir/`dirname $file`
-      install -m 644 $file licensedir/$file
+      mkdir -p "licensedir/`dirname $file`"
+      install -m 644 "$file" "licensedir/$file"
     done
     ############ all done now ############
 
