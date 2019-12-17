@@ -13,6 +13,7 @@ pkgbase = non-mixer-lv2-git
 	depends = ladspa
 	depends = liblrdf
 	depends = lv2
+	depends = lilv
 	provides = non-mixer
 	provides = non-mixer-lv2-git
 	conflicts = non-mixer
