@@ -1,0 +1,20 @@
+pkgbase = gnome-authenticator
+	pkgdesc = Two-Factor Authentication for GNOME
+	pkgver = 3.32.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Authenticator
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gobject-introspection
+	depends = python-pyopt
+	depends = python-pillow
+	depends = pyzbar
+	depends = python-favicon
+	depends = python-yoyo-migrations
+	source = git+https://gitlab.gnome.org/World/Authenticator.git#commit=d6c8d61d2568d92d3ad7d1ae5c7743f9919fb2b8
+	sha256sums = SKIP
+
+pkgname = gnome-authenticator
+
