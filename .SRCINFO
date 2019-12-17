@@ -1,0 +1,32 @@
+pkgbase = pulseaudio-dlna-python3-git
+	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio
+	pkgver = 0.5.2.r152.gb0db813
+	pkgrel = 1
+	url = https://github.com/masmu/pulseaudio-dlna
+	arch = x86_64
+	license = GPL3
+	depends = python-chardet
+	depends = python-dbus
+	depends = python-docopt
+	depends = python-gobject
+	depends = python-lxml
+	depends = python-netifaces
+	depends = python-notify2
+	depends = python-psutil
+	depends = python-pychromecast
+	depends = python-pyroute2
+	depends = python-requests
+	depends = python-setproctitle
+	depends = python-setuptools
+	optdepends = faac: AAC transcoding support
+	optdepends = ffmpeg: multiple formats support
+	optdepends = flac: FLAC transcoding support
+	optdepends = lame: MP3 transcoding support
+	optdepends = opus-tools: OPUS transcoding support
+	optdepends = sox: WAV transcoding support
+	optdepends = vorbis-tools: OGG transcoding support
+	source = git+https://github.com/masmu/pulseaudio-dlna.git#branch=python3
+	sha512sums = SKIP
+
+pkgname = pulseaudio-dlna-python3-git
+
