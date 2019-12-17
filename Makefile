@@ -3,10 +3,10 @@ KDIR	:= /usr/lib/modules/$(KVERSION)/build
 PWD	:= $(shell pwd)
 
 all:
-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
 .PHONY: clean
 
 clean:
-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
 

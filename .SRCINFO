@@ -1,6 +1,6 @@
 pkgbase = ia32_aout-dkms
 	pkgdesc = ia32_aout kernel module, for running an a.out binary format (DKMS)
-	pkgver = 5.0
+	pkgver = 5.4
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = ia32_aout-dkms
 	provides = ia32_aout
 	conflicts = ia32_aout
 	options = !strip
-	source = https://raw.githubusercontent.com/torvalds/linux/v5.0/arch/x86/ia32/ia32_aout.c
+	source = https://raw.githubusercontent.com/torvalds/linux/v5.4/arch/x86/ia32/ia32_aout.c
 	source = Makefile
 	source = dkms.conf
 	sha1sums = 3a6f6cf2955f4aef862589bb7b48d22ac2fe8053
-	sha1sums = 12bf91fd45d97f76316d242f482bd8b22c77d37e
+	sha1sums = 843ea355c7475bd77408814e2a48a53af4856d8d
 	sha1sums = 42244650cd11033033f49a7909e5825584afd0cb
 
 pkgname = ia32_aout-dkms
