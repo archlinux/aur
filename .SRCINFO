@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-sound
 	pkgdesc = Wingpanel Sound Indicator
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-sound
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = wingpanel-indicator-sound
 	depends = libnotify
 	depends = libpulse
 	depends = libwingpanel-2.0.so
-	source = wingpanel-indicator-sound::git+https://github.com/elementary/wingpanel-indicator-sound.git#tag=2.1.3
+	source = wingpanel-indicator-sound::git+https://github.com/elementary/wingpanel-indicator-sound.git#tag=002003d872ec7c2f0f1509ad5da9b1d31e26ff20
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-sound

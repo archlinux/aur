@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-sound
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Wingpanel Sound Indicator'
 arch=(x86_64)
@@ -28,8 +28,14 @@ makedepends=(
   meson
   vala
 )
-source=(wingpanel-indicator-sound::git+https://github.com/elementary/wingpanel-indicator-sound.git#tag=${pkgver})
+source=(wingpanel-indicator-sound::git+https://github.com/elementary/wingpanel-indicator-sound.git#tag=002003d872ec7c2f0f1509ad5da9b1d31e26ff20)
 sha256sums=(SKIP)
+
+pkgver() {
+  cd wingpanel-indicator-sound
+
+  git describe --tags
+}
 
 build() {
   arch-meson wingpanel-indicator-sound build
