@@ -1,9 +1,11 @@
-# Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
+# Maintainer : Marcin Dąbrowski <mardab@zoho.eu>
 
 pkgname="yaoqiang-bpmn-editor"
-_pkgver_major=4.1
-_pkgver_minor=10
-pkgver="${_pkgver_major}.${_pkgver_minor}"
+_pkgver_major=5
+_pkgver_minor=4
+_pkgver_patch=0
+pkgver_no_patch="${_pkgver_major}.${_pkgver_minor}"
+pkgver="${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}"
 pkgrel=1
 pkgdesc="An open source graphical editor for business process diagrams, compliant with OMG specifications (BPMN 2.0)."
 arch=(any)
@@ -15,18 +17,16 @@ depends=(java-environment)
 source=('yaoqiang-bpmn-editor'
     'yaoqiang-bpmn-editor.desktop'
     'yaoqiang-bpmn-editor.png'
-    "http://downloads.sourceforge.net/project/bpmn/${_pkgver_major}-${_curver_license}/${pkgname}-${pkgver}.zip")
-sha256sums=('e07d0a5de0f58ae849db7f273df0625cfe45d3416ece0511968c7951177e3cd0'
+    "https://downloads.sourceforge.net/project/bpmn/${_pkgver_major}-${_curver_license}/binaries/${pkgver_no_patch}/${pkgname}-${pkgver}.jar")
+sha256sums=('72ef1b95536ab3064a0958388d92d18beefa8613cd72219d4adff24a7bc39743'
     '58d987538c56e8e0b542dd025803230c25265cd45d6040f9f398cc68ab4ad7ac'
     '038fd8a5e1f9518645fdb8382d704ed5297b89350c5fcace9f63213edb6d380e'
-    '05e44fb2125504404b0579c97daa23f9fd98c47d94de2cca23eb9ecfc1ab0efe')
+    '64ea0bcd983ddc771d95b0c925e26070d040358c4f38045fe34bdbde70af020e')
 
 build() {
     # prepare the application files
     mkdir -p ${srcdir}/opt/${pkgname}
-    cp -r ${srcdir}/yaoqiang-${pkgver}/* ${srcdir}/opt/${pkgname}
-    cp ${srcdir}/${pkgname}.png ${srcdir}/opt/${pkgname}
-    cp ${srcdir}/${pkgname} ${srcdir}/opt/${pkgname}
+    cp ${srcdir}/${pkgname}* ${srcdir}/opt/${pkgname}
 }
 
 package() {

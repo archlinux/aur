@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /opt/yaoqiang-bpmn-editor/yaoqiang.jar
+java -jar /opt/yaoqiang-bpmn-editor/yaoqiang-bpmn-editor-5.4.0.jar
