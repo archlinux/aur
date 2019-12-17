@@ -7,4 +7,4 @@ help:
 	@echo "clean - clean this repository"
 
 clean:
-	rm -rfv ./src ./pkg ./v*.tar.gz ./*.pkg.tar.xz qubes-vmm-xen
+	rm -rfv ./src ./pkg ./v*.tar.gz ./*.pkg.tar.xz qubes-vm-xen
