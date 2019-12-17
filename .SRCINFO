@@ -1,7 +1,7 @@
 pkgbase = fiji-bin
 	pkgdesc = ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing.
-	pkgver = 20191119.2057
-	pkgrel = 2
+	pkgver = 20191216.2110
+	pkgrel = 1
 	epoch = 2
 	url = http://fiji.sc/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fiji-bin
 	makedepends = gendesk
 	depends = freetype2
 	depends = libnet
-	source = https://downloads.imagej.net/fiji/archive/20191119-2057/fiji-linux64.tar.gz
+	source = https://downloads.imagej.net/fiji/archive/20191216-2110/fiji-linux64.tar.gz
 	sha256sums = 2b864e84ef1a99ff3d0daa2768b9e500fbc2d49981b13a6f56d069d914ff694a
 
 pkgname = fiji-bin
