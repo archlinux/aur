@@ -3,16 +3,14 @@ pkgname=btcpayserver
 pkgdesc="https://github.com/btcpayserver"
 pkgver='stable'
 pkgpath="github.com/${pkgname}/${pkgname}"
-pkgrel=4
+pkgrel=5
 arch=('any')
 url="https://${pkgpath}"
 license=(MIT)
 makedepends=('dotnet-host-bin' 'dotnet-runtime' 'dotnet-runtime-bin' 'dotnet-sdk' 'dotnet-sdk-bin' 'aspnet-runtime-2.1' 'aspnet-runtime-bin')
 depends=(${makedepends} 'nbxplorer')
-source=("$url/archive/stable.tar.gz"
-"btcpayserver.service")
-sha256sums=('SKIP'
-            '17cabc9ce74302daad6199dd6d4f86a25fa983c64528bd905c1357b156529411')
+source=("$url/archive/stable.tar.gz")
+sha256sums=('SKIP')
 
 build() {
 mv ${srcdir}/${pkgname}-${pkgver} ${srcdir}/${pkgname}
@@ -24,6 +22,28 @@ echo -e '#!/bin/bash
 dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@
 ' > run.sh
 chmod +x run.sh
+
+echo -e '#!/bin/bash
+#launch nbxplorer
+nohup dotnet run --no-launch-profile --no-build -c Release -p "/usr/lib/btcpayserver/BTCPayServer/BTCPayServer.csproj" -- $@ > /dev/null 2>&1 &sleep 3
+' > run1.sh
+chmod +x run1.sh
+
+echo -e '[Unit]
+Description=Btcpayserver
+After=network.target
+After=nbxplorer.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/btcpayserver-nohup
+RemainAfterExit=yes
+Restart=on-failure
+#User=
+
+[Install]
+WantedBy=multi-user.target
+' > btcpayserver.service
 }
 
 package() {
