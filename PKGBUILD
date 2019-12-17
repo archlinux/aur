@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Grim Cabrita <grimkriegor@krutt.org>
 
 pkgname=kotlin-language-server
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
 url="https://github.com/fwcd/KotlinLanguageServer"
@@ -12,7 +12,7 @@ provides=('kotlin-language-server')
 depends=('java-runtime')
 makedepends=('git')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('adccd90b2f7abd17d0e955aacbb12057577819f06810adfdce2f20a27320a8b8')
+sha256sums=('ddca071ab9c376d95e1b969e16fd69b91e1d25f903cbcf3c2647f303699549eb')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
