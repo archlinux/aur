@@ -1,43 +1,9 @@
-diff --git a/Telegram/SourceFiles/boxes/fonts_box.cpp b/Telegram/SourceFiles/boxes/fonts_box.cpp
-index 314de645d..700e9148d 100644
---- a/Telegram/SourceFiles/boxes/fonts_box.cpp
-+++ b/Telegram/SourceFiles/boxes/fonts_box.cpp
-@@ -111,7 +111,7 @@ void FontsBox::resetToDefault() {
- 	const auto resetFonts = [=] {
- 		cSetMainFont(QString());
- 		cSetSemiboldFont(QString());
--		cSetSemiboldFontIsBold(false);
-+		cSetSemiboldFontIsBold(true);
- 		cSetMonospaceFont(QString());
- 		KotatoSettings::Write();
- 		App::restart();
-diff --git a/Telegram/SourceFiles/settings.cpp b/Telegram/SourceFiles/settings.cpp
-index a3b8b1d17..8837d0864 100644
---- a/Telegram/SourceFiles/settings.cpp
-+++ b/Telegram/SourceFiles/settings.cpp
-@@ -208,7 +208,7 @@ rpl::producer<> UpdatedRecentEmoji() {
- }
- 
- QString gMainFont, gSemiboldFont, gMonospaceFont;
--bool gSemiboldFontIsBold = false;
-+bool gSemiboldFontIsBold = true;
- 
- rpl::variable<int> gStickerHeight = 128;
- void SetStickerHeight(int height) {
 Submodule Telegram/lib_ui contains modified content
 diff --git a/Telegram/lib_ui/ui/style/style_core.cpp b/Telegram/lib_ui/ui/style/style_core.cpp
-index 3f9b003..cbba4d0 100644
+index 3f9b003..e63410b 100644
 --- a/Telegram/lib_ui/ui/style/style_core.cpp
 +++ b/Telegram/lib_ui/ui/style/style_core.cpp
-@@ -8,6 +8,7 @@
- 
- #include "ui/effects/animation_value.h"
- #include "ui/painter.h"
-+#include "ui/ui_log.h"
- #include "styles/style_basic.h"
- #include "styles/palette.h"
- 
-@@ -55,10 +56,6 @@ void ResolveMonospaceFont() {
+@@ -55,10 +55,6 @@ void ResolveMonospaceFont() {
  	if (!CustomMonospaceFont.isEmpty()) {
  		tryFont(CustomMonospaceFont);
  	}
@@ -49,7 +15,7 @@ index 3f9b003..cbba4d0 100644
  		const auto type = QFontDatabase::FixedFont;
  		family = QFontDatabase::systemFont(type).family();
 diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
-index ad3a9e3..15b617e 100644
+index ad3a9e3..db09e46 100644
 --- a/Telegram/lib_ui/ui/style/style_core_font.cpp
 +++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
 @@ -216,7 +216,12 @@ QString GetPossibleEmptyOverride(const QString &familyName, int32 flags) {
@@ -66,3 +32,12 @@ index ad3a9e3..15b617e 100644
  	return result.isEmpty() ? familyName : result;
  }
  
+@@ -253,7 +258,7 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
+ 	f.setPixelSize(size);
+ 	if (_flags & FontBold) {
+ 		f.setBold(true);
+-	} else if (fontFamilies[family] == "Open Sans Semibold" && CustomSemiboldIsBold) {
++	} else if (fontFamilies[family] == "Open Sans Semibold" && (CustomSemiboldIsBold || GetPossibleEmptyOverride(fontFamilies[family], flags).isEmpty())) {
+ 		f.setBold(true);
+ 	}
+ 	f.setItalic(_flags & FontItalic);
