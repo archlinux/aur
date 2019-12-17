@@ -1,0 +1,13 @@
+pkgbase = wxbin2c
+	pkgdesc = A command line tool to create C files from binary files.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/iggyvolz/wxbin2c
+	arch = x86_64
+	license = custom:beerware
+	makedepends = gcc
+	source = wxbin2c-1.0.tar.gz::https://github.com/iggyvolz/wxbin2c/archive/1.0.tar.gz
+	sha256sums = e24fcb9d821a47641421b80c22542808d9b6b4aa53df1ec6796299ba9f5d09f5
+
+pkgname = wxbin2c
+
