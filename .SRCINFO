@@ -9,6 +9,7 @@ pkgbase = xf86-input-mtrack
 	makedepends = xorg-server-devel
 	makedepends = resourceproto
 	makedepends = glproto
+	makedepends = pixman
 	depends = mtdev
 	depends = libxss
 	backup = etc/X11/xorg.conf.d/10-mtrack.conf
