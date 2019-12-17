@@ -4,16 +4,15 @@
 
 _pkgname=samba-mounter
 pkgname=samba-mounter-git
-pkgver=147.3240cc9
+pkgver=158.7f5915f
 pkgrel=1
 pkgdesc="User space mount tool for samba"
-url="https://cgit.kde.org/scratch/afiestas/samba-mounter.git"
+url="https://cgit.kde.org/samba-mounter.git"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('kauth' 'cifs-utils' 'smbclient' 'kcmutils' 'kconfig' 'kio' 'ki18n' 'solid')
 makedepends=('cmake' 'git' 'extra-cmake-modules')
 provides=('samba-mounter' 'samba-mounter-frameworks-git')
-
 source=("git://anongit.kde.org/samba-mounter.git")
 sha256sums=('SKIP')
 
