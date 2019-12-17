@@ -1,7 +1,7 @@
 _npmname=hackmyresume
-_npmver=1.8.0
+_npmver=1.9.0-beta
 pkgname=nodejs-hackmyresume
-pkgver=${_npmver}
+pkgver=${_npmver/-/_}
 pkgrel=1
 pkgdesc="Generate polished résumés and CVs in HTML, Markdown, LaTeX, MS Word, PDF, plain text, JSON, XML, YAML, smoke signal, and carrier pigeon."
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=("phantomjs: PDF support"
             "wkhtmltopdf: PDF support")
 source=("http://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha256sums=(d152f56cd813da72a7f0caeab9f68ab36fd1863f5344ab5911568876464a6b71)
+sha256sums=('c9c23dd946712642309275ad12d15bb1753e0e4235e27c5542181dd3ddfe0ba6')
 
 package() {
   cd ${srcdir}
