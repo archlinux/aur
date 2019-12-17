@@ -4,4 +4,4 @@ src/
 *.xz
 
 # source files
-vmd*
+vmd*.tar.gz

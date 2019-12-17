@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.9.4a38
+Name=VMD
+Comment=Visual Molecular Dynamics
+Exec=vmd %f
+Icon=vmd
+Terminal=true
+Type=Application
+Categories=Tcl;Science;Chemistry
+StartupNotify=true
