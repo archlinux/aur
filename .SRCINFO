@@ -1,6 +1,6 @@
 pkgbase = dibi-git
 	pkgdesc = Lightweight GUI for MySQL with performance in mind
-	pkgver = r10.4fbb81d
+	pkgver = r12.2baa1f0
 	pkgrel = 1
 	url = https://github.com/janza/dibi
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = dibi-git
 	license = GPL3
 	depends = python-mysqlclient
 	depends = python-pyqt5
+	depends = python-sshtunnel
 	source = dibi::git+https://github.com/janza/dibi.git
 	sha1sums = SKIP
 

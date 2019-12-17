@@ -1,13 +1,13 @@
 # Maintainer: josip <me@josip.dev>
 pkgname=dibi-git
 _pkgname=dibi
-pkgver=r10.4fbb81d
+pkgver=r12.2baa1f0
 pkgrel=1
 pkgdesc="Lightweight GUI for MySQL with performance in mind"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/janza/dibi"
 license=('GPL3')
-depends=('python-mysqlclient' 'python-pyqt5')
+depends=('python-mysqlclient' 'python-pyqt5' 'python-sshtunnel')
 source=("${pkgname%-*}::git+https://github.com/janza/dibi.git")
 sha1sums=("SKIP")
 
