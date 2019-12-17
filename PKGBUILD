@@ -3,7 +3,7 @@ pkgname=btcpayserver
 pkgdesc="https://github.com/btcpayserver"
 pkgver='stable'
 pkgpath="github.com/${pkgname}/${pkgname}"
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://${pkgpath}"
 license=(MIT)
@@ -56,8 +56,11 @@ cp -r ${srcdir}/${pkgname}/ ${pkgdir}/usr/lib/
 #symlinking run.sh to /usr/bin
 ln -rTsf ${pkgdir}/usr/lib/${pkgname}/run.sh ${pkgdir}/usr/bin/${pkgname}
 chmod 755 ${pkgdir}/usr/bin/${pkgname}
+#symlinking run1.sh to /usr/bin/btcpayserver-nohup
+ln -rTsf $pkgdir/usr/lib/${pkgname}/run1.sh ${pkgdir}/usr/bin/${pkgname}-nohup
+chmod 755 ${pkgdir}/usr/bin/${pkgname}-nohup
 #inatll systemd service
-install -Dm644 ${srcdir}/btcpayserver.service ${pkgdir}/usr/lib/systemd/system/btcpayserver.service
+install -Dm644 ${pkgdir}/usr/lib/${pkgname}/btcpayserver.service ${pkgdir}/usr/lib/systemd/system/btcpayserver.service
 #install the lisence
 install -Dm644 ${pkgdir}/usr/lib/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

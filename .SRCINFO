@@ -1,7 +1,7 @@
 pkgbase = btcpayserver
 	pkgdesc = https://github.com/btcpayserver
 	pkgver = stable
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/btcpayserver/btcpayserver
 	arch = any
 	license = MIT
