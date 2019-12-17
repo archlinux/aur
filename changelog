@@ -1,3 +1,12 @@
+2019-12-17 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.1.4-1:
+    Single file publish has been disabled also on Unix OSes due to issue #1544, fixing ASF running under multiple users. Sadly it probably won't come back in the near future.
+    Fixed generic-netf variant not working properly under mono since HomeDirectory enhancements done as part of 3.1 runtime upgrade.
+    Fixed custom plugins not working by default with trimmed OS-specific ASF builds. OS-specific builds remain trimmed, but now come with the minimum required assemblies to run the required plugins initialization.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: simplified messages displayed in journald by dropping redondant time and process id
 2019-12-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.1.3-1:
     [!] ASF is now based on .NET Core 3.1 runtime.
