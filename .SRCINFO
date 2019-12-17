@@ -1,0 +1,24 @@
+pkgbase = ompl-git
+	pkgdesc = The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms (git)
+	pkgver = r4625.31c3689d
+	pkgrel = 1
+	url = http://ompl.kavrakilab.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = python
+	depends = python-matplotlib
+	optdepends = py++: Python binding
+	optdepends = ode: Plan using the Open Dynamics Engine
+	optdepends = eigen: For an informed sampling technique
+	provides = ompl
+	conflicts = ompl
+	source = git+https://github.com/ompl/ompl.git
+	sha512sums = SKIP
+
+pkgname = ompl-git
+
