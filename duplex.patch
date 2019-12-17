@@ -1,0 +1,151 @@
+diff --unified --recursive --text duplex_0_3_1_1/dplx duplex_0_3_1_1new/dplx
+--- duplex_0_3_1_1/dplx	2018-03-24 01:45:23.000000000 +0000
++++ duplex_0_3_1_1new/dplx	2019-12-17 20:37:58.669987000 +0000
+@@ -40,8 +40,8 @@
+ 
+ function mypath () {
+   ## Get the real path of the calling script
+-  ##  From: https://stackoverflow.com/questions/59895/getting-the-source-directory-of-a-bash-script-from-within/246128#246128
+-  my_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
++  ##  From: https://stackoverflow.com/a/1482133
++  my_path="$( cd "$( dirname "$(readlink -f "$0")" )" && pwd)"
+ }
+ 
+ ## Set current print strategy
+@@ -96,13 +96,13 @@
+ e=""            # Null string so duplex is called
+ ## e="echo "     #For debugging - disable call to duplex
+ duplex="${script_path}/duplex" # Production version
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ 
+ ## Access the duplexpr configuration file
+ if [[ ! -r  $config ]] ## debug
+ then
+-  echo "Missing config file ${config}"
+-  exit "${script_error}"
++  mkdir -p "${HOME}/.config/duplex"
++  cp "${script_path}/dot.duplexpr" "$config"
+ fi
+ 
+ source "${config}"
+diff --unified --recursive --text duplex_0_3_1_1/dprint duplex_0_3_1_1new/dprint
+--- duplex_0_3_1_1/dprint	2018-03-24 01:45:23.000000000 +0000
++++ duplex_0_3_1_1new/dprint	2019-12-17 20:38:09.046422000 +0000
+@@ -75,7 +75,7 @@
+ ORIENTATION="-R"    ## portrait printing
+ 
+ script_name="$(basename $0)"  ## path stripped name of this script
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ ## Access the duplexpr configuration file
+ if [[ ! -r  "${config}" ]]
+ then
+diff --unified --recursive --text duplex_0_3_1_1/dprintf duplex_0_3_1_1new/dprintf
+--- duplex_0_3_1_1/dprintf	2018-03-24 01:45:23.000000000 +0000
++++ duplex_0_3_1_1new/dprintf	2019-12-17 20:38:19.606187000 +0000
+@@ -33,7 +33,7 @@
+   exit 1
+ fi
+ 
+-config="${HOME}/.duplexpr"
++config=${HOME}/.config/duplex/duplexpr.conf"
+ 
+ ## Access the duplexpr configuration file
+ if [[ ! -r  $config ]] ## debug
+diff --unified --recursive --text duplex_0_3_1_1/duplex duplex_0_3_1_1new/duplex
+--- duplex_0_3_1_1/duplex	2018-03-24 01:45:23.000000000 +0000
++++ duplex_0_3_1_1new/duplex	2019-12-17 20:38:42.552342000 +0000
+@@ -339,7 +339,7 @@
+ 
+ script_error=9
+ fake_print_job_number=0 ## for use with fake version of lp for testing
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ 
+ ## enscript parameters
+ ## In moderate point sizes (12+), the header font may need to be proportional
+diff --unified --recursive --text duplex_0_3_1_1/kmprb duplex_0_3_1_1new/kmprb
+--- duplex_0_3_1_1/kmprb	2018-08-02 08:10:39.000000000 +0100
++++ duplex_0_3_1_1new/kmprb	2019-12-17 20:39:04.201859000 +0000
+@@ -344,7 +344,7 @@
+ yyes="OK"
+ yno="Cancel"
+ 
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ default_batch_size=16 ## Offer this batch size by default if there are at least that many sheets to print
+                       ## defined here in case it's not in the config file
+ 
+diff --unified --recursive --text duplex_0_3_1_1/kmprbatches duplex_0_3_1_1new/kmprbatches
+--- duplex_0_3_1_1/kmprbatches	2018-07-31 08:46:45.000000000 +0100
++++ duplex_0_3_1_1new/kmprbatches	2019-12-17 20:39:25.561383000 +0000
+@@ -166,7 +166,7 @@
+ 
+ ##source $HOME/bin/bash_trace ##  debug - TRACE
+ tp='/tmp'
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ script_error=9
+ dsptime_error=30 ## yad timeout error messages
+ dsptime_short=5 ## yad timeout error messages
+diff --unified --recursive --text duplex_0_3_1_1/kmprb_one duplex_0_3_1_1new/kmprb_one
+--- duplex_0_3_1_1/kmprb_one	2018-03-24 01:47:48.000000000 +0000
++++ duplex_0_3_1_1new/kmprb_one	2019-12-17 20:39:37.401119000 +0000
+@@ -186,7 +186,7 @@
+ script_path="${my_path}"  ## make sure we can find other scripts
+ yyes="OK"
+ yno="Cancel"
+-config="${HOME}/.duplexpr"
++config=${HOME}/.config/duplex/duplexpr.conf"
+ 
+ trap 'user_abort' 2  ## Call user_abort() if user presses ctrl-c
+ 
+diff --unified --recursive --text duplex_0_3_1_1/krmpq duplex_0_3_1_1new/krmpq
+--- duplex_0_3_1_1/krmpq	2018-08-02 08:16:48.000000000 +0100
++++ duplex_0_3_1_1new/krmpq	2019-12-17 20:39:54.840730000 +0000
+@@ -70,7 +70,7 @@
+ dsptime_long=10  ## yad timeout for exception messages
+ dsptime_error=30 ## yad timeout for error messages
+ 
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ rc=0  ## return code if not set elsewhere
+ 
+ ## Access the duplexpr configuration file
+diff --unified --recursive --text duplex_0_3_1_1/mprb duplex_0_3_1_1new/mprb
+--- duplex_0_3_1_1/mprb	2018-06-11 09:38:45.000000000 +0100
++++ duplex_0_3_1_1new/mprb	2019-12-17 20:40:14.853617000 +0000
+@@ -394,7 +394,7 @@
+ yyes="OK"
+ yno="Cancel"
+ 
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ 
+ ## enscript parameters
+ ## In moderate point sizes (12+), the header font may need to be proportional
+diff --unified --recursive --text duplex_0_3_1_1/pqnext duplex_0_3_1_1new/pqnext
+--- duplex_0_3_1_1/pqnext	2018-07-22 11:24:17.000000000 +0100
++++ duplex_0_3_1_1new/pqnext	2019-12-17 20:40:27.470003000 +0000
+@@ -46,7 +46,7 @@
+   shift
+ fi
+ 
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ 
+ ## Access the duplexpr configuration file
+ if [[ ! -r  "${config}" ]]
+diff --unified --recursive --text duplex_0_3_1_1/rmpq duplex_0_3_1_1new/rmpq
+--- duplex_0_3_1_1/rmpq	2018-07-30 08:49:42.000000000 +0100
++++ duplex_0_3_1_1new/rmpq	2019-12-17 20:40:40.033056000 +0000
+@@ -24,7 +24,7 @@
+ }
+ 
+ script_name=$(basename $0)  ## path stripped name of this script
+-config="${HOME}/.duplexpr"
++config="${HOME}/.config/duplex/duplexpr.conf"
+ 
+ e="" ## Actually delete files
+ ##e="echo " ## debug - just say we did - DRYRUN

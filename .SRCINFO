@@ -1,0 +1,21 @@
+pkgbase = duplex
+	pkgdesc = Duplex Printing Emulation System
+	pkgver = 0.3.1.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/duplexpr/
+	arch = any
+	license = GPL2
+	depends = cups
+	depends = yad
+	depends = enscript
+	depends = poppler
+	depends = ghostscript
+	optdepends = xclip: Clipboard support
+	optdepends = trash-cli: Move to trash support
+	source = https://sourceforge.net/projects/duplexpr/files/duplex_0_3_1_1.tar.gz
+	source = duplex.patch
+	sha512sums = b9ba396e672ede5f436f0b1e124f84fe8f28fdf109652c5ae1be4ef4c52493d444586db54860753cbbc6ec1623fa190603abcd4a0d13597f620b49caf5503feb
+	sha512sums = 2d5864ee4821073ed0216d248dc455a70cd98f454034c38075203205ab42e98cd02c7c33d0f73298642d3437bf7142d229b2c56e9881783db9e6efa754bc66e4
+
+pkgname = duplex
+
