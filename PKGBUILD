@@ -30,6 +30,7 @@ build() {
 		prefix=/usr install_root="$pkgdir/usr" \
 		build=release \
 		faad=1 \
+		ffmpeg=1 \
 		modplug=1 \
 		opus=1 \
 		optimize=native \
