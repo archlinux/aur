@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel.deval at gmail dot com>
 # Contributor: Universebenzene <universebenzene at sina dot com>
 pkgname=('python-astropy-helpers')
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Utilities used for building the Astropy python library for astronomy"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/a/astropy-helpers/astropy-helpers-${pkgver}.tar.gz"
         'use_system_astropy_helpers.patch')
-md5sums=('4a7a681e797ff1c4aae8d3875a2516fe'
+md5sums=('e626e395b4eac6784acb45c5f56e6706'
          '9b061a3f373546f797fcc658483d7e2b')
 
 prepare() {
