@@ -7,6 +7,7 @@ pkgver=${_tag%%-*}
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/microsoft/WSL2-Linux-Kernel"
+pkgdesc="Microsoft's Windows Subsystem for Linux 2 (WSL2) kernel"
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme

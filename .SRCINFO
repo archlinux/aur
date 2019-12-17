@@ -1,4 +1,5 @@
 pkgbase = linux-wsl
+	pkgdesc = Microsoft's Windows Subsystem for Linux 2 (WSL2) kernel
 	pkgver = 4.19.84
 	pkgrel = 1
 	url = https://github.com/microsoft/WSL2-Linux-Kernel
