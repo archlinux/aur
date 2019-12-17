@@ -1,0 +1,25 @@
+pkgbase = openchrom
+	pkgdesc = Visualization and Analysis of mass spectrometric and chromatographic data
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://lablicate.com/platform/openchrom
+	arch = x86_64
+	license = EPL
+	makedepends = maven
+	depends = jdk8-openjdk
+	depends = java-runtime
+	depends = gtk2
+	depends = libglvnd
+	depends = libnet
+	depends = libxtst
+	depends = alsa-lib
+	depends = python
+	conflicts = openchrom-git
+	conflicts = openchrom-bin
+	source = openchrom-1.4.0.tar.gz::https://github.com/OpenChrom/openchrom/archive/GSTL-1.1.0.tar.gz
+	source = https://github.com/eclipse/chemclipse/archive/GSTL-1.1.0.tar.gz
+	sha256sums = 48569ffc115205e3ad23a87018cdb318ebb2feaab538abd1f6463c28e35c342e
+	sha256sums = 8bf9eed1a3eb617112e7d34b994280d633ac8bee4929f4f8e727e13f83fba03d
+
+pkgname = openchrom
+
