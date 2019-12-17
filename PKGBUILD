@@ -4,7 +4,7 @@
 
 pkgname=edb-debugger
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EDB (Evan's Debugger) is a cross platform AArch32/x86/x86-64 debugger, inspired by Ollydbg."
 arch=('i686' 'x86_64')
 url='http://www.codef00.com/projects#debugger'
@@ -13,19 +13,22 @@ depends=('qt5-xmlpatterns' 'qt5-svg' 'capstone>=3.0')
 makedepends=('boost>=1.35.0' 'cmake')
 optdepends=('graphviz')
 source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz"
-        'edb.desktop')
+        'edb.desktop'
+        'plugin_path.patch')
 sha256sums=('f13de8fd3f26fa1210fb0ff50ff756c2de8de51e75770a57aca35df06d6a0187'
-            'f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6')
+            'f3e725642c6b87d5a7fd25331a9560d4f9803c22566875b722bc27e275f311a6'
+            'f216174d68ef7c26f29a58e409261c5b36af6593fe1778f6b2ad284095662b10')
 
 prepare() {
   cd "edb-debugger"
+  patch -p1 -i ../plugin_path.patch
 }
 
 build() {
   cd "edb-debugger"
   [ ! -d build ] && mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" ..
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DDEFAULT_PLUGIN_PATH="/usr/lib/edb/" ..
   make
 }
 
