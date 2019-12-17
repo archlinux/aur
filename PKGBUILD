@@ -5,7 +5,7 @@
 
 pkgname=ortp-git
 _pkgname=ortp
-pkgver=1.0.2.r67.g74feb19
+pkgver=4.4.0.alpha.r1.g079d9f1
 pkgrel=1
 pkgdesc="A Real-time Transport Protocol (RTP) library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/BelledonneCommunications/ortp"
 license=('GPL3')
 conflicts=('ortp')
 provides=('ortp')
-depends=('bctoolbox-git')
+depends=('bctoolbox>=4.3.0')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/ortp.git")
 sha256sums=('SKIP')
@@ -26,7 +26,6 @@ pkgver() {
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
       -DENABLE_STATIC="NO" \
       -DCMAKE_SKIP_INSTALL_RPATH=ON .
   make
