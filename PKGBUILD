@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-fontparts')
+pkgname='python-fontparts'
 _pkgname='fontParts'
-pkgver='0.9.1'
+pkgver='0.9.2'
 pkgrel=1
 pkgdesc='The replacement for RoboFab.'
 url='https://github.com/robotools/fontParts'
@@ -12,7 +12,7 @@ optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('7c02ad82e46eed0d7bdc639af215c623854ec79770953e116ebff8611a65c161')
+sha256sums=('134077ecba448ee30d102ce3fb870bcaf3ac5935d08c9ec8ef81e75cef6d9f43')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
