@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-session
 	pkgdesc = Session indicator for Wingpanel
-	pkgver = 2.2.4
+	pkgver = 2.2.6
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-session
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wingpanel-indicator-session
 	depends = gtk3
 	depends = libgranite.so
 	depends = libwingpanel-2.0.so
-	source = git+https://github.com/elementary/wingpanel-indicator-session.git#tag=2.2.4
+	source = git+https://github.com/elementary/wingpanel-indicator-session.git#tag=3cb90c169cc4f7710dcea9a39ad9bd9d3c4d7461
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-session
