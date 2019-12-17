@@ -2,8 +2,8 @@
 # This script is licensed under the MIT license.
 
 pkgname=gpmdp
-pkgver=4.6.1
-pkgrel=2
+pkgver=4.7.0
+pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
@@ -17,18 +17,19 @@ license=('MIT')
 case $CARCH in
     'x86_64')
         _arch='amd64'
-        md5sums=('aca6d73ddfed0f4256176163b0139578'
-                 'b776561dd313eb1ded6356247cfffa89')
+		md5sums=('ab8c3e7894596a039e8a5c41fd0af8e9'
+         		 'b776561dd313eb1ded6356247cfffa89')
     ;;
     'i686')
         _arch='i386'
-        md5sums=('d72cae1e1b4a9fa9036de01b26c0cc20'
-                 'b776561dd313eb1ded6356247cfffa89')
+		md5sums=('3ba7679d8b76e1dad1d1ce336746c0be'
+         		 'b776561dd313eb1ded6356247cfffa89')
 	;;
 esac
 
-source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v${pkgver}/google-play-music-desktop-player_${pkgver}_${_arch}.deb"
-	"gpmdp.desktop")
+
+source=("https://3727-40008106-gh.circle-artifacts.com/0/home/circleci/project/dist/installers/debian/google-play-music-desktop-player_4.6.1_$_arch.deb"
+		"gpmdp.desktop")
 
 package() {
     # Extract
