@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=158
+_minor=159
 _srcname=linux-${_major}
 _clr=${_major}.154-80
 pkgbase=linux-clear-lts2017
@@ -116,7 +116,7 @@ prepare() {
 
         # Power management and ACPI options
         scripts/config --enable HIBERNATION \
-                       --enable ACPI_REV_OVERRIDE_POSSIBLE  \
+                       --enable ACPI_REV_OVERRIDE_POSSIBLE \
                        --enable ACPI_TABLE_UPGRADE
 
         # Enable loadable module support
@@ -320,7 +320,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'd2aca7884fea41915d72c627df196e635f51c1aa16d24f5e17f257683cb07571'
+            '6900f2c69c780871910d5841e3aba46ca3d1429e031b3795ef995c2a27e85010'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
