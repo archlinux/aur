@@ -9,11 +9,16 @@ pkgbase = balena-cli
 	makedepends = npm
 	makedepends = python2
 	makedepends = jq
-	depends = nodejs>=6.0.0
-	optdepends = python: balena-preload
+	makedepends = coffeescript
+	makedepends = git
+	depends = nodejs>=8.0.0
+	depends = nodejs<13.0.0
+	depends = gawk
+	depends = sed
+	depends = make
+	optdepends = python2: balena-preload
 	replaces = resin-cli
 	noextract = balena-cli-11.20.1.tgz
-	options = !strip
 	source = https://registry.npmjs.org/balena-cli/-/balena-cli-11.20.1.tgz
 	sha256sums = 1e6d051765e0c6cfcc046a208d4f2ea80f46556772db8312b04564ace64bee05
 	optdepends_x86_64 = lib32-glibc: emulated builds
