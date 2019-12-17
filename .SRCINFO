@@ -1,0 +1,14 @@
+pkgbase = japi-compliance-checker
+	pkgdesc = A tool for checking backward API/ABI compatibility of a Java library
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://lvc.github.io/japi-compliance-checker/
+	arch = any
+	license = LGPL
+	depends = perl
+	depends = java-environment
+	source = https://github.com/lvc/japi-compliance-checker/archive/2.4.tar.gz
+	sha256sums = 0fd8ff8539a6f4a2c30379999befc1f9003fbb513f778b018a722360ab8c2229
+
+pkgname = japi-compliance-checker
+
