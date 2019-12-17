@@ -2,7 +2,7 @@
 
 _pkgname='mangl'
 pkgname="${_pkgname}-git"
-pkgver=20191123.a85b3f6
+pkgver=1.0.r3.g845acd7
 pkgrel=1
 pkgdesc="graphical man page viewer"
 arch=('x86_64')
@@ -17,20 +17,14 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	git log -1 --format='%cd.%h' --date=short | tr -d -
+    cd "$srcdir/${_pkgname}"
+    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
-  cd mandoc
+  cd "$srcdir/${_pkgname}/mandoc"
   ./configure --prefix=/usr --exec_prefix=/usr
-  cd "$srcdir/${_pkgname}"
-  make
-}
-
-check() {
-	true
+  make -C ..
 }
 
 package() {
