@@ -1,6 +1,6 @@
 pkgbase = qhot-git
 	pkgdesc = Hot reload for nested QML files!
-	pkgver = 437003b
+	pkgver = a6ae642
 	pkgrel = 1
 	url = https://github.com/patrickelectric/qhot
 	arch = i686
