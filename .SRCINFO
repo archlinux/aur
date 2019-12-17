@@ -1,14 +1,14 @@
 pkgbase = belcard-git
 	pkgdesc = A library for working with vCards
-	pkgver = 4.3.0.alpha.r1.g0cd3b7c
+	pkgver = 4.4.0.alpha.r1.g45b0a20
 	pkgrel = 1
 	url = http://www.linphone.org/
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	depends = belr-git
-	provides = belcard
+	depends = belr>=4.3
+	provides = belcard=4.4.0.alpha.r1.g45b0a20
 	conflicts = belcard
 	source = git+https://github.com/BelledonneCommunications/belcard.git
 	sha256sums = SKIP
