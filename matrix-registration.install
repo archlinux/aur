@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# arg 1:  the new package version
+post_install() {
+	if [[ ! -e /var/lib/matrix-registration/config.yaml ]]; then
+		cat <<-EOF
+		==> A configuration file called config.yaml needs to be created before you can start
+		    the matrix-registration server.
+
+		    You can start from /etc/matrix-registration/config.sample.yaml.
+		EOF
+	fi
+}

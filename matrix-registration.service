@@ -1,0 +1,15 @@
+[Unit]
+Description=A token based matrix registration api.
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m matrix_registration --config-path /etc/matrix-registration/config.yaml api
+WorkingDirectory=/var/lib/matrix-registration
+DynamicUser=true
+ConfigurationDirectory=matrix-registration
+StateDirectory=matrix-registration
+
+[Install]
+WantedBy=multi-user.target
