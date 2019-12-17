@@ -1,14 +1,14 @@
 pkgbase = libcello
 	pkgdesc = cello is a library that brings higher level programming to C
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://libcello.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = gcc
-	source = https://github.com/orangeduck/Cello/archive/v2.0.3.tar.gz
-	sha256sums = 1afcae06f5efc10ea161737a862073ff5679c964540bca7cd719539609d0633c
+	source = https://github.com/orangeduck/Cello/archive/2.1.0.tar.gz
+	sha256sums = c138d974325fcb9640307c8b2d5dcc2d7127a1ccc5589d6c0794f86a5cb4001d
 
 pkgname = libcello
 
