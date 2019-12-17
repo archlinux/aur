@@ -1,13 +1,12 @@
 pkgbase = uranium-git
 	pkgdesc = A Python framework for building Desktop applications.
-	pkgver = 4.3.0.213.g39aa6abc
+	pkgver = 4.4.0.103.g78fa9ab2
 	pkgrel = 1
 	url = https://github.com/Ultimaker/Uranium
 	arch = any
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	depends = pyqt5-common
 	depends = qt5-quickcontrols
 	depends = python
 	depends = python-certifi

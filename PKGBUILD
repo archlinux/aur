@@ -2,7 +2,7 @@
 # Original Author: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=uranium-git
-pkgver=4.3.0.213.g39aa6abc
+pkgver=4.4.0.103.g78fa9ab2
 pkgrel=1
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL3')
 provides=('uranium')
 conflicts=('uranium')
-depends=('pyqt5-common' 'qt5-quickcontrols'
+depends=('qt5-quickcontrols'
          'python'
          'python-certifi'
          'python-cryptography'
