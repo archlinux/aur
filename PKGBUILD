@@ -6,15 +6,15 @@
 
 pkgname=mediastreamer-git
 _pkgname=mediastreamer2
-pkgver=2.16.1.r636.g67d34195
+pkgver=4.4.0.alpha.r2.g1119a608
 pkgrel=1
 pkgdesc="A modular sound and video processing and streaming library"
 arch=('x86_64')
 url="https://github.com/BelledonneCommunications/mediastreamer2"
 license=('GPL')
 conflicts=('mediastreamer')
-provides=('mediastreamer')
-depends=('bctoolbox-git' 'bcg729-git' 'bcmatroska2-git' 'ffmpeg' 'glew' 'libjpeg-turbo' 'libsrtp' 'libupnp' 'libxv' 'mbedtls' 'ortp-git' 'zxing-cpp')
+provides=("mediastreamer=$pkgver")
+depends=('bctoolbox>=4.3' 'bcg729-git' 'bcmatroska2-git' 'bzrtp>=4.3' 'ffmpeg' 'glew' 'libjpeg-turbo' 'libsrtp' 'libxv' 'mbedtls' 'ortp>=4.3' 'zxing-cpp')
 makedepends=('cmake' 'doxygen' 'git')
 source=("git+https://github.com/BelledonneCommunications/mediastreamer2.git")
 sha256sums=('SKIP')
@@ -27,7 +27,6 @@ pkgver() {
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
       -DENABLE_STATIC="NO" \
       -DENABLE_STRICT="NO" \
       -DENABLE_ZRTP="YES" \
