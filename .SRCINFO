@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-bluetooth
 	pkgdesc = Wingpanel Bluetooth Indicator
-	pkgver = 2.1.2
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-bluetooth
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = wingpanel-indicator-bluetooth
 	depends = gtk3
 	depends = libgranite.so
 	depends = libwingpanel-2.0.so
-	source = git+https://github.com/elementary/wingpanel-indicator-bluetooth.git#tag=2.1.2
+	source = git+https://github.com/elementary/wingpanel-indicator-bluetooth.git#tag=64ac0db83952ee99ae46915bbb527b06168d79fb
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-bluetooth

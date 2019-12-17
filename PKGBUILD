@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-bluetooth
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='Wingpanel Bluetooth Indicator'
 arch=(x86_64)
-url='https://github.com/elementary/wingpanel-indicator-bluetooth'
+url=https://github.com/elementary/wingpanel-indicator-bluetooth
 license=(GPL3)
 groups=(pantheon)
 depends=(
@@ -21,8 +21,14 @@ makedepends=(
   vala
   wingpanel
 )
-source=(git+https://github.com/elementary/wingpanel-indicator-bluetooth.git#tag=${pkgver})
+source=(git+https://github.com/elementary/wingpanel-indicator-bluetooth.git#tag=64ac0db83952ee99ae46915bbb527b06168d79fb)
 sha256sums=(SKIP)
+
+pkgver() {
+  cd wingpanel-indicator-bluetooth
+
+  git describe --tags
+}
 
 build() {
   arch-meson wingpanel-indicator-bluetooth build
