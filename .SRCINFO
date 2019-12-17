@@ -10,6 +10,7 @@ pkgbase = linux-xanmod
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
+	makedepends = cpio
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz

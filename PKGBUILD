@@ -51,7 +51,7 @@ arch=(x86_64)
 
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf
+  xmlto kmod inetutils bc libelf cpio
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
