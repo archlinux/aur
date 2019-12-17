@@ -1,7 +1,7 @@
 pkgbase = btcpayserver
 	pkgdesc = https://github.com/btcpayserver
 	pkgver = stable
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/btcpayserver/btcpayserver
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = btcpayserver
 	depends = nbxplorer
 	source = https://github.com/btcpayserver/btcpayserver/archive/stable.tar.gz
 	source = btcpayserver.service
-	sha256sums = 8a3e18656dea329e73bd1e7d7028f47108dc50cd36c8d392c92db5d764cbf7f9
+	sha256sums = SKIP
 	sha256sums = 17cabc9ce74302daad6199dd6d4f86a25fa983c64528bd905c1357b156529411
 
 pkgname = btcpayserver

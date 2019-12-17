@@ -3,7 +3,7 @@ pkgname=btcpayserver
 pkgdesc="https://github.com/btcpayserver"
 pkgver='stable'
 pkgpath="github.com/${pkgname}/${pkgname}"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkgpath}"
 license=(MIT)
@@ -11,7 +11,7 @@ makedepends=('dotnet-host-bin' 'dotnet-runtime' 'dotnet-runtime-bin' 'dotnet-sdk
 depends=(${makedepends} 'nbxplorer')
 source=("$url/archive/stable.tar.gz"
 "btcpayserver.service")
-sha256sums=('8a3e18656dea329e73bd1e7d7028f47108dc50cd36c8d392c92db5d764cbf7f9'
+sha256sums=('SKIP'
             '17cabc9ce74302daad6199dd6d4f86a25fa983c64528bd905c1357b156529411')
 
 build() {
