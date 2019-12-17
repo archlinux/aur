@@ -16,9 +16,8 @@ pkgbase = kubernetes-helm
 	provides = kubernetes-helm
 	conflicts = kubernetes-helm-bin
 	conflicts = kubernetes-helm
-	conflicts = kubernetes-helm3
 	conflicts = kubernetes-helm-git
-	source = git+https://github.com/helm/helm#tag=v3.0.1
+	source = git+https://github.com/helm/helm#tag=v3.0.2
 	md5sums = SKIP
 
 pkgname = kubernetes-helm
