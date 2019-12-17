@@ -25,8 +25,11 @@ pkgbase = qubes-vm-xen
 	depends = libsystemd
 	depends = yajl
 	provides = xen-qubes-vm-essentials
-	source = https://github.com/QubesOS/qubes-vmm-xen/archive/v4.8.5-14.tar.gz
-	sha512sums = f151d45ccccf0298285a43de26cbd043f32e6f90728d7c16a40c1ffce56bcdb68d9b6494f30ccb4f28b5e6da2da1a880af9d34b4225c8cae9b221b33e1001eae
+	source = qubes-vm-xen::git+https://github.com/QubesOS/qubes-vmm-xen.git?signed#tag=v4.8.5-14
+	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
+	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
+	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494
+	sha512sums = SKIP
 
 pkgname = qubes-vm-xen
 
