@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=ikos-git
-pkgver=2.1.r237.bf4ac4a
+pkgver=3.0.r409.72c70c7
 pkgrel=1
 pkgdesc='Static analyzer for C and C++ developed by NASA'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,6 +13,7 @@ depends=('gmp'
          'python'
          'python-pygments'
          'sqlite'
+         'intel-tbb'
          'llvm'
          'llvm-libs'
          'clang'
