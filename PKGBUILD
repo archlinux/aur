@@ -10,10 +10,9 @@ arch=('x86_64' 'i686')
 url="https://github.com/doitsujin/dxvk"
 license=('zlib/libpng')
 arch=('x86_64')
-provides=("dxvk" "d9vk")
-replaces=('d9vk-bin')
+provides=("dxvk" "d9vk" "dxvk=$pkgver")
 depends=('vulkan-icd-loader' 'wine>=3.10' 'lib32-vulkan-icd-loader')
-conflicts=("dxvk-git")
+conflicts=('d9vk-mingw-git' 'd9vk-bin' 'd9vk-winelib-git' "dxvk-git")
 options=(!strip)
 source=("https://github.com/doitsujin/dxvk/releases/download/v$pkgver/dxvk-$pkgver.tar.gz"
 )

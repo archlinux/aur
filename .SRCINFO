@@ -10,8 +10,11 @@ pkgbase = dxvk-bin
 	depends = lib32-vulkan-icd-loader
 	provides = dxvk
 	provides = d9vk
+	provides = dxvk=1.5
+	conflicts = d9vk-mingw-git
+	conflicts = d9vk-bin
+	conflicts = d9vk-winelib-git
 	conflicts = dxvk-git
-	replaces = d9vk-bin
 	options = !strip
 	source = https://github.com/doitsujin/dxvk/releases/download/v1.5/dxvk-1.5.tar.gz
 	sha256sums = 90cfae0bb43fed1e46442d20e2ab3bf448ebdff1e9f4f59841dc922aa3a36d3b
