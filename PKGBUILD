@@ -4,7 +4,7 @@
 
 pkgname=rime-data
 _gitname=plum
-pkgver=2019.11.16
+pkgver=2019.12.18
 pkgrel=1
 pkgdesc="Rime schema repository from plum"
 arch=('x86_64')
