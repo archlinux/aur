@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/p2rkw/$pkgname"
 license=('GPL2')
 depends=('mtdev' 'libxss')
-makedepends=('xorg-server-devel' 'resourceproto' 'glproto')
+makedepends=('xorg-server-devel' 'resourceproto' 'glproto' 'pixman')
 backup=('etc/X11/xorg.conf.d/10-mtrack.conf')
 source=(10-mtrack.conf
         $url/archive/v$pkgver.tar.gz)
