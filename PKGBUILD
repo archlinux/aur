@@ -2,6 +2,7 @@
 # Maintainer: Olivier Medoc <o_medoc@yahoo.fr>
 
 pkgname=qubes-vm-xen
+_gitname=${pkgname%-git*}
 pkgver='4.8.5'
 pkgrel=14
 epoch=
@@ -21,16 +22,20 @@ backup=()
 options=()
 install=
 changelog=
-
-source=("https://github.com/QubesOS/qubes-vmm-xen/archive/v${pkgver}-${pkgrel}.tar.gz" )
 noextract=()
-sha512sums=('f151d45ccccf0298285a43de26cbd043f32e6f90728d7c16a40c1ffce56bcdb68d9b6494f30ccb4f28b5e6da2da1a880af9d34b4225c8cae9b221b33e1001eae')
+validpgpkeys=('0AF64C3B1F1214B38C8C57861FA2DBE674387CC3'  # Otto Sabart
+              '0064428F455451B3EBE78A7F063938BA42CFA724'  # Marek Marczykowski-Górecki
+              '427F11FD0FAA4B080123F01CDDFA1A3E36879494'  # Qubes Master Signing Key
+)
+
+source=("$_gitname::git+https://github.com/QubesOS/qubes-vmm-xen.git?signed#tag=v${pkgver}-${pkgrel}")
+sha512sums=('SKIP')
 
 
 build() {
     export PYTHON=/usr/bin/python2
 
-    cd "${srcdir}/qubes-vmm-xen-${pkgver}-${pkgrel}"
+    cd "${srcdir}/${_gitname}/"
     make get-sources
     make verify-sources
     tar -xvzf "xen-${pkgver}.tar.gz"
@@ -57,14 +62,14 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/qubes-vmm-xen-${pkgver}-${pkgrel}"
-    cd xen-$pkgver
+    cd "${srcdir}/${_gitname}/"
+    cd "xen-${pkgver}"
 
     export OCAML_TOOLS=n
     export PYTHON=python2
 
     # Note: Archlinux removed use of directory such as /sbin /bin /usr/sbin (https://mailman.archlinux.org/pipermail/arch-dev-public/2012-March/022625.html)
-    make DESTDIR=$pkgdir LIBDIR=/usr/lib/ SBINDIR=/usr/bin prefix=/usr install-tools
+    make DESTDIR="$pkgdir" LIBDIR=/usr/lib/ SBINDIR=/usr/bin prefix=/usr install-tools
 
     # Remove unwated stuff
 
