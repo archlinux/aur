@@ -1,6 +1,6 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=7
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v
 	"home.html.patch"
 	"ipc_main.ts.patch"
 	"main_window.ts.patch")
-sha256sums=('e93e35cb6c5dc514339470a2a65d410e55ba9d282fc8b1dd87cc93645b478c6a' 
+sha256sums=('d2af4008f68f7cbdd5ebbd2412a148a688a342982e0b17b363e8feef6a7ee700' 
 	    '93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436'
 	    '145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048'
 	    'ff07b2ddf0391ac0e75b8e115e5a4953e32b39991d6022c2d2d310a9c3f61576'
