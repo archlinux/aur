@@ -1,6 +1,6 @@
 pkgbase = python-loguru
 	pkgdesc = Python logging made (stupidly) simple
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Delgan/loguru
 	arch = any

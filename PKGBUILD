@@ -1,7 +1,7 @@
 # Submitter: Nbiba Bedis <bedisnbiba@gmail.com>
 
 pkgname=('python-loguru')
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Python logging made (stupidly) simple'
 arch=('any')
