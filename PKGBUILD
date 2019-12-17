@@ -61,10 +61,10 @@ _localmodcfg=
 _major=5.4
 _minor=3
 _srcname=linux-${_major}
-_clr=${_major}.2-875
+_clr=${_major}.3-877
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -81,6 +81,7 @@ source=(
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
   'futex-wait-multiple-5.2.1.patch::https://aur.archlinux.org/cgit/aur.git/plain/futex-wait-multiple-5.2.1.patch?h=linux-fsync'
   'Revert-e1000e-5.4.patch'
+  'Fix-dump_tree-hierarchy-print-always-active.patch::https://lkml.org/lkml/diff/2019/10/6/918/1'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -101,7 +102,7 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0123|^Patch0130|^Patch0004|^Patch0009|^Patch0015' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec | grep -Ev '^Patch0123|^Patch0130' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -128,8 +129,7 @@ prepare() {
                        --undefine RT_GROUP_SCHED
 
         # Power management and ACPI options
-        scripts/config --enable HIBERNATION \
-                       --enable ACPI_REV_OVERRIDE_POSSIBLE  \
+        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                        --enable ACPI_TABLE_UPGRADE
 
         # Enable loadable module support
@@ -336,7 +336,8 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
-            'f774eb33e8457d2f64852200654cc8c9e0f7ebe1264771c0b6dbc221ec3b9a3f')
+            'f774eb33e8457d2f64852200654cc8c9e0f7ebe1264771c0b6dbc221ec3b9a3f'
+            '0c1c32cbf75af13baa250b87224564cc60d8480a7e0d9886ae7d664ca725be30')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
