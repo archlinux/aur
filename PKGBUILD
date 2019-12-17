@@ -17,35 +17,62 @@ options=('!strip')
 source=(https://github.com/microsoft/WSL2-Linux-Kernel/archive/${_tag}.tar.gz)
 md5sums=('7de558b96bad270e64aa1fa589f0ed90')
 
-_kernelname=${_tag##*-}-grey
 _src_prefix="WSL2-Linux-Kernel-"
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=grey
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd "$_src_prefix$_tag"
+  cd "${_src_prefix}${_tag}"
+
+  msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "$_kernelname" > localversion.20-pkg
-  cp Microsoft/config-wsl arch/x86/x86_64_defconfig
-  make ARCH=x86_64 defconfig
+  echo "-$pkgrel" > localversion.10-pkgrel
+  #echo "${pkgbase#linux}" > localversion.20-pkgname
+
+  msg2 "Setting config..."
+  cp Microsoft/config-wsl .config
+  make ARCH=x86_64 olddefconfig
+  
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
-  cd "$_src_prefix$_tag"
+  cd "${_src_prefix}${_tag}"
   make ARCH=x86_64 bzImage modules
 }
 
 package() {
-  cd "$_src_prefix$_tag"
-  # modules
+  cd "${_src_prefix}${_tag}"
+  
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local builddir="$pkgdir/usr/lib/modules/$kernver/build"
+  
+  msg2 "Installing modules..."
   make ARCH=x86_64 INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
 
-  # image
-  mkdir -p "${pkgdir}/opt/wsl-kernel"
-  make ARCH=x86_64 INSTALL_PATH="${pkgdir}/opt/wsl-kernel" install
-  cp arch/x86/boot/bzImage "${pkgdir}/opt/wsl-kernel/."
+  # remove build and source links
+  rm "$modulesdir"/{source,build}
 
   # headers
-  make ARCH=x86_64 INSTALL_HDR_PATH="${pkgdir}/usr" headers_install
+  msg2 "Installing headers..."
+  make ARCH=x86_64 INSTALL_HDR_PATH="${builddir}" headers_install
+  find "${builddir}" -name "..install.cmd" -type f -delete
+
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
+  install -Dt "$builddir/kernel" -m644 kernel/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  cp -t "$builddir" -a scripts
+
+  msg2 "Installing boot image..."
+  make ARCH=x86_64 INSTALL_PATH="${modulesdir}" install
+
+  msg2 "Fixing permissions..."
+  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
