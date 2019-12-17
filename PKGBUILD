@@ -3,7 +3,7 @@
 _pkgname='mangl'
 pkgname="${_pkgname}-git"
 pkgver=1.0.r3.g845acd7
-pkgrel=1
+pkgrel=2
 pkgdesc="graphical man page viewer"
 arch=('x86_64')
 url="https://github.com/zigalenarcic/mangl"
