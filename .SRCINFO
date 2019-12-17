@@ -1,19 +1,19 @@
 pkgbase = saxon-he
 	pkgdesc = XSLT 2.0 / XPath 2.0 and 3.0 / XQuery 1.0 and 3.0 processor for Java - Home Edition
-	pkgver = 9.9.0.1
+	pkgver = 9.9.1.6
 	pkgrel = 1
-	url = http://saxon.sourceforge.net/
+	url = http://saxon.sourceforge.net
 	arch = any
 	license = MPL
 	depends = java-runtime-headless
 	provides = java-saxon
 	conflicts = java-saxon
-	source = http://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-0-1J.zip
+	source = https://downloads.sourceforge.net/saxon/SaxonHE9-9-1-6J.zip
 	source = saxon-xslt.sh
 	source = saxon-xquery.sh
-	md5sums = 674b75477c3bca16e1018280e707bf7b
-	md5sums = 4197e2b5278a02e0aa7d383d9dc4f11d
-	md5sums = 1a37078990f913ce7c37eb3a1bd39283
+	sha256sums = e94d8bbbb9a3a3dc9518c1923c436b2eb5ddc0e74bfd0bec1a07ac63e0e31b92
+	sha256sums = 355cf52e3e3b35e4db5dd098fbd57335d20ed10ae070c57a6de214859d04719f
+	sha256sums = dd42ecae1ef7ff371642148b4ed49fadee0d5b2333c14e138edaae7269ab2199
 
 pkgname = saxon-he
 
