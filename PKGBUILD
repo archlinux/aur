@@ -9,8 +9,6 @@ url="https://github.com/KiCad"
 license=('GPL')
 makedepends=('cmake' 'git')
 options=('!strip')
-conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-footprints')
-provides=('kicad-footprints')
 
 source=("git://github.com/KiCad/kicad-symbols.git"
 	"git://github.com/KiCad/kicad-footprints.git"
@@ -46,7 +44,10 @@ build() {
 }
 
 package_kicad-library-git() {
-  pkgdesc="Kicad component libraries, footprint libraries and templates"
+  pkgdesc="Kicad component libraries, footprint libraries and templates from git"
+  conflicts=('kicad-library-bzr' 'kicad-library' 'kicad-footprints' 'kicad-footprints-git' 'kicad-symbols-git' 'kicad-templates-git')
+  provides=('kicad-library')
+  
   cd "$srcdir/kicad-symbols"
   make DESTDIR="$pkgdir" install
 
@@ -58,7 +59,10 @@ package_kicad-library-git() {
 }
 
 package_kicad-library-3d-git() {
-  pkgdesc="Kicad 3D render model libraries"
+  pkgdesc="Kicad 3D render model libraries from git"
+  conflicts=('kicad-library-3d')
+  provides=('kicad-library-3d')
+  
   cd "$srcdir/kicad-packages3D/"
   make DESTDIR="$pkgdir" install
 }
