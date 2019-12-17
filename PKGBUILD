@@ -1,7 +1,8 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-backend
 pkgver=5.15.0
-_pkgver="${pkgver}-7782"
+_pkgbuild=7782
+_pkgver="${pkgver}-${_pkgbuild}"
 pkgrel=1
 pkgdesc="Sensu Go Backend"
 arch=('x86_64')
