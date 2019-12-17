@@ -1,15 +1,4 @@
 [Desktop Entry]
-<<<<<<< HEAD
-Version=8.5
-Name=RubyMine Kusunoki EAP
-Icon=rubymine-eap
-GenericName=Ruby and Rails IDE with the full stack of essential developer tools
-Comment=Ruby and Rails IDE with the full stack of essential developer tools
-Exec=/usr/bin/rubymine-eap
-Terminal=false
-Type=Application
-Categories=Development
-=======
 Name=RubyMine
 Comment=Ruby and Rails IDE with the full stack of essential developer tools.
 GenericName=Ruby and Rails IDE with the full stack of essential developer tools.
@@ -19,4 +8,3 @@ Terminal=false
 Type=Application
 Categories=Development;IDE;Ruby
 StartupWMClass=jetbrains-rubymine-eap
->>>>>>> 281e832... 193.5233.108
