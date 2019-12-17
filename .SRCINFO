@@ -1,6 +1,6 @@
 pkgbase = unity-editor-windows
 	pkgdesc = Allows building your Unity projects for the Windows platform
-	pkgver = 2019.2.15f1
+	pkgver = 2019.2.16f1
 	pkgrel = 1
 	url = https://unity3d.com/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = unity-editor-windows
 	makedepends = cpio
 	depends = unity-editor
 	options = !strip
-	source = 2019.2.15f1.2.15f1.pkg::https://download.unity3d.com/download_unity/dcb72c2e9334/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2019.2.15f1.pkg
-	md5sums = f28598e529c4ae027e6f46173d8679a0
+	source = 2019.2.16f1.2.16f1.pkg::https://download.unity3d.com/download_unity/b9898e2d04a4/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-2019.2.16f1.pkg
+	md5sums = 63306e4737e3ea5cd9a81a286b12c0ad
 
 pkgname = unity-editor-windows
 
