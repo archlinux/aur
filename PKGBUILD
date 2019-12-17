@@ -2,7 +2,7 @@
 
 pkgname=signal-desktop
 _pkgname=Signal-Desktop
-pkgver=1.29.0
+pkgver=1.29.1
 pkgrel=1
 pkgdesc='Electron application that links with Signal on mobile'
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=(
   $pkgname.desktop
   openssl-linking.patch
 )
-sha512sums=('2a0923762574906e78029b0a7db0fe86559f64f42e985aac9d2cc6e1a8a65ab8cbeb0f400f5c5b7ba9e508e0fa160386961507fe30ab7f9c472c4f7019ddaa0e'
+sha512sums=('09c843074eefe66e5452a230e1e47925c1e436a23d4feedeb4dd9a17c8dbccbf093ad8c106af3f34443c379d007d54d9aa019717c2bbee6249ff3c80d1ae0393'
             'c5ec0bf524e527ecf94207ef6aa1f2671346e115ec15de6d063cde0960151813752a1814e003705fc1a99d4e2eae1b3ca4d03432a50790957186e240527cc361'
             '2c10d4cc6c0b9ca650e786c1e677f22619a78c93465f27fc4cf4831f1cfe771f3b9885a416e381a9e14c3aea5d88cb3545264046188db72d54b8567266811e51')
 
