@@ -3,7 +3,7 @@
 
 pkgname=bzrtp-git
 _pkgname=bzrtp
-pkgver=4.3.0.alpha.r0.g55f5c1f
+pkgver=4.4.0.alpha.r1.g947d708
 pkgrel=1
 pkgdesc="Opensource implementation of ZRTP keys exchange protocol"
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/BelledonneCommunications/bzrtp"
 license=('GPL2')
 conflicts=('bzrtp')
 provides=('bzrtp')
-depends=('libxml2' 'mbedtls' 'bctoolbox-git')
+depends=('libxml2' 'mbedtls' 'bctoolbox>=4.3.0')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/BelledonneCommunications/bzrtp.git")
 sha256sums=('SKIP')
@@ -25,8 +25,7 @@ build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
       -DENABLE_STATIC=NO \
-      -DENABLE_STRICT=NO \
-      -DCMAKE_INSTALL_LIBDIR="/usr/lib" .
+      -DENABLE_STRICT=NO . 
   make
 }
 
