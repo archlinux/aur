@@ -1,6 +1,6 @@
 pkgbase = lazpaint-bin
 	pkgdesc = Image editor, like PaintBrush or Paint.Net, written in Lazarus (Free Pascal). Binary release (GTK2)
-	pkgver = 7.0.4
+	pkgver = 7.0.7
 	pkgrel = 1
 	url = http://sourceforge.net/projects/lazpaint/
 	arch = x86_64

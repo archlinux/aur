@@ -2,7 +2,7 @@
 
 pkgname=lazpaint-bin
 _pkgname=lazpaint
-pkgver=7.0.4
+pkgver=7.0.7
 pkgrel=1
 pkgdesc='Image editor, like PaintBrush or Paint.Net, written in Lazarus (Free Pascal). Binary release (GTK2)'
 arch=(x86_64)
