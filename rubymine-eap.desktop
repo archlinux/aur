@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=RubyMine
-Comment=Ruby and Rails IDE with the full stack of essential developer tools.
-GenericName=Ruby and Rails IDE with the full stack of essential developer tools.
+Name=RubyMine EAP
+Comment=Ruby and Rails IDE with the full stack of essential developer tools (EAP).
+GenericName=Ruby and Rails IDE with the full stack of essential developer tools (EAP).
 Exec=/usr/bin/jetbrains-rubymine-eap
 Icon=rubymine-eap
 Terminal=false
