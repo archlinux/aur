@@ -8,8 +8,8 @@ pkgbase = lime-git
 	makedepends = cmake
 	makedepends = git
 	depends = bctoolbox>=4.3
-	depends = soci>=4.0
-	provides = lime-4.4.0.alpha.r1.gfbdc8e6
+	depends = soci>=4.0.0
+	provides = lime=4.4.0.alpha.r1.gfbdc8e6
 	conflicts = lime
 	source = git+https://gitlab.linphone.org/BC/public/lime.git
 	sha256sums = SKIP
