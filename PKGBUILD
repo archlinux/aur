@@ -1,16 +1,17 @@
-# PKGBUILD: 2018-10-02
-# Maintainer:  Thayne McCombs <astrothayne at gmail dot com>
+# PKGBUILD: 2012-12-16
+# Maintainer:  Alex Zbarcea <alexz at apache dot org>
 
 pkgname=elephant
-pkgver=55
+pkgver=59
 pkgrel=1
 pkgdesc="Notetaker with a classic interface."
 url="http://elephant.mine.nu/"
 arch=('any')
 license=('Apache')
 depends=('java-environment' 'bash')
+#conflicts=('none')
 source=(https://github.com/jusu/Elephant/releases/download/V"$pkgver"/elephant"$pkgver"_jar.zip)
-sha256sums=('102acda3fcba85436a3af6b3d150da7d2f843fcd8bfc698c213a127a83c77842')
+sha256sums=('ce9364be1c1a9b84dbbe6fce15b9dc8fc282b974bf8bf03f3361315e0929bd15')
 
 package() {
     cd "$pkgdir"
@@ -23,7 +24,6 @@ package() {
 exec java -jar /usr/share/java/$pkgname/elephantapp.jar "\$@"
 EOF
   chmod 755 $pkgdir/usr/bin/elephant
-
 
   mkdir -p $pkgdir/usr/share/applications
   cat << EOF > $pkgdir/usr/share/applications/elephant.desktop
