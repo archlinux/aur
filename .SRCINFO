@@ -1,4 +1,5 @@
 pkgbase = kicad-library-git
+	pkgdesc = Kicad component libraries, footprint libraries, component 3d models and project templates from git
 	pkgver = r5733.be973eca
 	pkgrel = 1
 	url = https://github.com/KiCad
@@ -6,6 +7,15 @@ pkgbase = kicad-library-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
+	provides = kicad-library
+	provides = kicad-library-3d
+	conflicts = kicad-library-3d
+	conflicts = kicad-library-bzr
+	conflicts = kicad-library
+	conflicts = kicad-footprints
+	conflicts = kicad-footprints-git
+	conflicts = kicad-symbols-git
+	conflicts = kicad-templates-git
 	options = !strip
 	source = git://github.com/KiCad/kicad-symbols.git
 	source = git://github.com/KiCad/kicad-footprints.git
@@ -17,17 +27,4 @@ pkgbase = kicad-library-git
 	md5sums = SKIP
 
 pkgname = kicad-library-git
-	pkgdesc = Kicad component libraries, footprint libraries and templates from git
-	provides = kicad-library
-	conflicts = kicad-library-bzr
-	conflicts = kicad-library
-	conflicts = kicad-footprints
-	conflicts = kicad-footprints-git
-	conflicts = kicad-symbols-git
-	conflicts = kicad-templates-git
-
-pkgname = kicad-library-3d-git
-	pkgdesc = Kicad 3D render model libraries from git
-	provides = kicad-library-3d
-	conflicts = kicad-library-3d
 

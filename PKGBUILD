@@ -1,8 +1,10 @@
 # Maintainer: Grey Christoforo <firstname@lastname.net>
 
-pkgbase=kicad-library-git
-pkgname=('kicad-library-git' 'kicad-library-3d-git')
+pkgname=kicad-library-git
 pkgver=r5733.be973eca
+pkgdesc="Kicad component libraries, footprint libraries, component 3d models and project templates from git"
+conflicts=('kicad-library-3d' 'kicad-library-bzr' 'kicad-library' 'kicad-footprints' 'kicad-footprints-git' 'kicad-symbols-git' 'kicad-templates-git')
+provides=('kicad-library' 'kicad-library-3d')
 pkgrel=1
 arch=('any')
 url="https://github.com/KiCad"
@@ -43,11 +45,7 @@ build() {
   make
 }
 
-package_kicad-library-git() {
-  pkgdesc="Kicad component libraries, footprint libraries and templates from git"
-  conflicts=('kicad-library-bzr' 'kicad-library' 'kicad-footprints' 'kicad-footprints-git' 'kicad-symbols-git' 'kicad-templates-git')
-  provides=('kicad-library')
-  
+package() {
   cd "$srcdir/kicad-symbols"
   make DESTDIR="$pkgdir" install
 
@@ -56,14 +54,7 @@ package_kicad-library-git() {
 
   cd "$srcdir/kicad-templates/"
   make DESTDIR="$pkgdir" install
-}
 
-package_kicad-library-3d-git() {
-  pkgdesc="Kicad 3D render model libraries from git"
-  conflicts=('kicad-library-3d')
-  provides=('kicad-library-3d')
-  
   cd "$srcdir/kicad-packages3D/"
   make DESTDIR="$pkgdir" install
 }
-
