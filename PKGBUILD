@@ -1,15 +1,15 @@
 # Maintainer: zlowly <zlowly@gmail.com>
 pkgname=smartdns
-pkgver=1.2019.11.02
-pkgrel=2
+pkgver=1.2019.12.15
+pkgrel=1
 pkgdesc="Local DNS server that accepts DNS query requests from local clients, obtains DNS query results from multiple upstream DNS servers, and returns the fastest access results to clients."
 arch=("x86_64")
 url="https://github.com/pymumu/smartdns"
 license=("GPL3")
 depends=('openssl-1.0')
-source=("https://github.com/pymumu/smartdns/releases/download/release27/smartdns.$pkgver-1102.$CARCH-all.tar.gz" "$pkgname.patch")
+source=("https://github.com/pymumu/smartdns/releases/download/Release28/smartdns.$pkgver-1028.$CARCH-linux-all.tar.gz" "$pkgname.patch")
 backup=("etc/smartdns/smartdns.conf")
-md5sums=('511985eb9f8bea6b0f1b9fd1e19b6934'
+md5sums=('0d4d4660a8800a1e2fabb6faee1a0cb5'
          '2481e2bdb5bf5c140107fef66f13151f')
 prepare() {
   patch -p1 "$srcdir/$pkgname/systemd/smartdns.service" < "$pkgname.patch"
