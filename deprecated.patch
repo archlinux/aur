@@ -1,0 +1,79 @@
+diff --git a/src/app/logger/Logger.cpp b/src/app/logger/Logger.cpp
+index c7146342..09206551 100644
+--- a/src/app/logger/Logger.cpp
++++ b/src/app/logger/Logger.cpp
+@@ -202,7 +202,7 @@ void Logger::init (const shared_ptr<linphone::Config> &config) {
+   {
+     shared_ptr<linphone::LoggingService> loggingService = mInstance->mLoggingService = linphone::LoggingService::get();
+     loggingService->setLogLevel(linphone::LogLevel::Message);
+-    loggingService->setListener(make_shared<LinphoneLogger>(mInstance));
++    loggingService->addListener(make_shared<LinphoneLogger>(mInstance));
+   }
+ 
+   linphone::Core::setLogCollectionPath(Utils::appStringToCoreString(folder));
+diff --git a/src/components/assistant/AssistantModel.cpp b/src/components/assistant/AssistantModel.cpp
+index 9bb8f3e1..918e31e5 100644
+--- a/src/components/assistant/AssistantModel.cpp
++++ b/src/components/assistant/AssistantModel.cpp
+@@ -150,7 +150,7 @@ AssistantModel::AssistantModel (QObject *parent) : QObject(parent) {
+   mAccountCreator = core->createAccountCreator(
+     core->getConfig()->getString("assistant", "xmlrpc_url", DefaultXmlrpcUri)
+   );
+-  mAccountCreator->setListener(mHandlers);
++  mAccountCreator->addListener(mHandlers);
+ }
+ 
+ // -----------------------------------------------------------------------------
+diff --git a/src/components/chat/ChatModel.cpp b/src/components/chat/ChatModel.cpp
+index ebba5d24..78f7a55c 100644
+--- a/src/components/chat/ChatModel.cpp
++++ b/src/components/chat/ChatModel.cpp
+@@ -409,7 +409,7 @@ void ChatModel::removeAllEntries () {
+ 
+ void ChatModel::sendMessage (const QString &message) {
+   shared_ptr<linphone::ChatMessage> _message = mChatRoom->createMessage(Utils::appStringToCoreString(message));
+-  _message->setListener(mMessageHandlers);
++  _message->addListener(mMessageHandlers);
+ 
+   insertMessageAtEnd(_message);
+   mChatRoom->sendChatMessage(_message);
+@@ -435,7 +435,7 @@ void ChatModel::resendMessage (int id) {
+     case MessageStatusFileTransferError:
+     case MessageStatusNotDelivered: {
+       shared_ptr<linphone::ChatMessage> message = static_pointer_cast<linphone::ChatMessage>(entry.second);
+-      message->setListener(mMessageHandlers);
++      message->addListener(mMessageHandlers);
+       message->resend();
+ 
+       break;
+@@ -473,7 +473,7 @@ void ChatModel::sendFileMessage (const QString &path) {
+ 
+   shared_ptr<linphone::ChatMessage> message = mChatRoom->createFileTransferMessage(content);
+   message->setFileTransferFilepath(Utils::appStringToCoreString(path));
+-  message->setListener(mMessageHandlers);
++  message->addListener(mMessageHandlers);
+ 
+   createThumbnail(message);
+ 
+@@ -518,7 +518,7 @@ void ChatModel::downloadFile (int id) {
+   }
+ 
+   message->setFileTransferFilepath(Utils::appStringToCoreString(safeFilePath));
+-  message->setListener(mMessageHandlers);
++  message->addListener(mMessageHandlers);
+ 
+   if (!message->downloadFile())
+     qWarning() << QStringLiteral("Unable to download file of entry %1.").arg(id);
+diff --git a/src/components/sound-player/SoundPlayer.cpp b/src/components/sound-player/SoundPlayer.cpp
+index 7c02401a..2c2d4762 100644
+--- a/src/components/sound-player/SoundPlayer.cpp
++++ b/src/components/sound-player/SoundPlayer.cpp
+@@ -143,7 +143,7 @@ void SoundPlayer::buildInternalPlayer () {
+   mInternalPlayer = coreManager->getCore()->createLocalPlayer(
+     Utils::appStringToCoreString(settingsModel->getRingerDevice()), "", nullptr
+   );
+-  mInternalPlayer->setListener(mHandlers);
++  mInternalPlayer->addListener(mHandlers);
+ 
+   QObject::connect(settingsModel, &SettingsModel::ringerDeviceChanged, this, [this] {
+     rebuildInternalPlayer();

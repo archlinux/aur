@@ -1,0 +1,13 @@
+diff --git a/cmake/FindMinizip.cmake b/cmake/FindMinizip.cmake
+index 131bd051..c30ef9fd 100644
+--- a/cmake/FindMinizip.cmake
++++ b/cmake/FindMinizip.cmake
+@@ -36,7 +36,7 @@ if(MINIZIP_INCLUDE_DIRS)
+ endif()
+ 
+ find_library(MINIZIP_LIBRARIES
+-	NAMES minizip minizipd
++	NAMES minizip2
+ )
+ 
+ include(FindPackageHandleStandardArgs)

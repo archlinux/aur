@@ -9,18 +9,22 @@ arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
 depends=('bcg729-git' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
-    'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'minizip2-2.3.3'
-    'ortp-git' 'libsoup' 'libnotify' 'qt5-svg' 'qt5-graphicaleffects'
-    'qt5-quickcontrols' 'qt5-quickcontrols2')
-makedepends=('cmake' 'git' 'pkg-config' 'python-pystache' 'qt5-tools')
+    'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'minizip-git'
+    'ortp-git' 'libsoup' 'libnotify' 'qt5-svg' 'qt5-quickcontrols'
+    'qt5-quickcontrols2' 'qt5-graphicaleffects')
+makedepends=('cmake' 'git' 'python-pystache' 'qt5-tools')
 optdepends=('pulseaudio')
 options=('!emptydirs')
 provides=('linphone-desktop')
 conflicts=('linphone-desktop')
-source=("git+https://github.com/BelledonneCommunications/linphone-desktop.git"
-    "linker.patch")
+source=('git+https://github.com/BelledonneCommunications/linphone-desktop.git'
+    'cmake.patch'
+    'deprecated.patch'
+    'find_minizip2.patch')
 sha256sums=('SKIP'
-            '02c3d9dd31f7369cdbb2871c11cc46c7c86867b2b220c6ca1390ead320b6dcd0')
+            'f251ef179dc6c3fb22449f2a0bd2014c082642747e201a992b3eaf2db6e50544'
+            '93170eda1b55987c61171e18afb94182672302b03f34658b817fe8b46f1af545'
+            'c2dbf6e11105c010fdcc2cc90b0087ded595c05ba9a3324e1f57cc04383e8180')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -29,15 +33,15 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    patch -p1 < ../linker.patch
+    patch -p1 < ../cmake.patch
+    patch -p1 < ../deprecated.patch
+    patch -p1 < ../find_minizip2.patch
 }
 
 build() {
   cd $_pkgname
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_INSTALL_LIBDIR=lib \
-      -DMINIZIP_INCLUDE_DIRS=/usr/include/minizip2 \
-      -DMINIZIP_LIBRARIES=/usr/lib/minizip2/libminizip.so .
+      -DCMAKE_PREFIX_PATH=/usr .
   make
 }
 

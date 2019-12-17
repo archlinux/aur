@@ -1,0 +1,25 @@
+diff -urN linphone-desktop-orig/CMakeLists.txt linphone-desktop/CMakeLists.txt
+--- linphone-desktop-orig/CMakeLists.txt	2019-12-11 15:09:50.860066429 -0500
++++ linphone-desktop/CMakeLists.txt	2019-12-11 15:19:48.657454271 -0500
+@@ -97,17 +97,10 @@
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+-if (LINPHONE_BUILDER_GROUP_EXTERNAL_SOURCE_PATH_BUILDERS)
+-  include("${EP_linphone_CONFIG_DIR}/wrappers/cpp/LinphoneCxxConfig.cmake")
+-  include("${EP_bctoolbox_CONFIG_DIR}/BcToolboxConfig.cmake")
+-  include("${EP_belcard_CONFIG_DIR}/BelcardConfig.cmake")
+-  include("${EP_ms2_CONFIG_DIR}/Mediastreamer2Config.cmake")
+-else ()
+-  find_package(LinphoneCxx REQUIRED)
+-  find_package(BcToolbox REQUIRED)
+-  find_package(Belcard REQUIRED)
+-  find_package(Mediastreamer2 REQUIRED)
+-endif ()
++find_package(LinphoneCxx REQUIRED CONFIG)
++find_package(bctoolbox REQUIRED)
++find_package(belcard REQUIRED CONFIG)
++find_package(Mediastreamer2 REQUIRED CONFIG)
+ find_package(Minizip REQUIRED)
+ 
+ set(SOURCES
