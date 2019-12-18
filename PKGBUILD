@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ant-nebula-theme-git
 _pkgname=Ant-Nebula
-pkgver=r77.94168dd
+pkgver=r84.b90cd16
 pkgrel=1
 pkgdesc="Nebula variant of the Ant theme"
 arch=("any")
