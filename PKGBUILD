@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=hx-git
 pkgdesc="Futuristic take on hexdump."
-pkgrel=1
+pkgrel=2
 pkgver=v0.1.3.r20.g66f0a6d
 arch=('i686' 'x86_64')
 url="https://github.com/sitkevij/hex"
