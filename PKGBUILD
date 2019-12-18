@@ -1,7 +1,7 @@
-# Maintainer: Tony <tony@criticalstack.com>
+# Maintainer: Tony <tony@libpcap.net>
 
 pkgname=rocksdb-lite
-pkgver=6.2.2
+pkgver=6.5.2
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
@@ -11,10 +11,8 @@ depends=('gperftools' 'zlib' 'bzip2' 'lz4' 'snappy' 'gcc-libs')
 checkdepends=('python2')
 conflicts=('rocksdb')
 provides=('rocksdb')
-source=("https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz"
-		"fix-compile-warnings-treated-as-errors-for-gcc9.patch")
-sha256sums=('3e7365cb2a35982e95e5e5dd0b3352dc78573193dafca02788572318c38483fb'
-            '775b1099346843f0598168aff8d6621857012155234a2d50f87ed4bcad363c2d')
+source=("https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz")
+sha256sums=('a923e36aa1cdd1429ae93a0b26baf477c714060ce7dd1c52e873754e1468d7ff')
 
 prepare() {
   cd "${srcdir}/rocksdb-${pkgver}"
@@ -23,8 +21,6 @@ prepare() {
   if [ "$CARCH"  == "armv6h" ]; then
     sed -e 's/-momit-leaf-frame-pointer//' -i Makefile
   fi
-
-  patch -F3 -p1 -i "${srcdir}/fix-compile-warnings-treated-as-errors-for-gcc9.patch"
 }
 
 build() {
