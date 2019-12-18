@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtorrent-rasterbar-1_2-git
-pkgver=1.2.2.r1.g4b8f8d7e9
+pkgver=1.2.2.r57.g8378c0f55
 pkgrel=1
 pkgdesc="A feature complete C++ bittorrent library (git branch RC_1_2)"
 arch=('i686' 'x86_64')
@@ -41,4 +41,7 @@ package() {
 
   make -C "_build" DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libtorrent-rasterbar"
+
+  # work around invalid flag
+  sed -i -e 's|-lvals-NOTFOUND||g' "$pkgdir/usr/lib/pkgconfig/libtorrent-rasterbar.pc"
 }
