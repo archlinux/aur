@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=0.4.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -13,7 +13,7 @@ source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "$pkgname-$pkgver"
-  mkdir build
+  mkdir -p build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
@@ -29,4 +29,4 @@ check() {
   make test
 }
 
-sha256sums=('41753067d4611537319fa6afb874cd72b123e01e2e8eb902845728dd5d4039d6')
+sha256sums=('5be39eef67214dfaad610c7a2e4e1630b5c5d31c88fd64df78963417ac857764')
