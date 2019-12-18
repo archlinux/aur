@@ -8,10 +8,9 @@ pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
 url="http://www.linphone.org"
 license=('GPL')
-depends=('bcg729-git' 'belcard-git' 'belle-sip-git' 'belr-git' 'bzrtp-git'
-    'linphone-git' 'libpulse' 'libxv' 'mediastreamer-git' 'minizip-git'
-    'ortp-git' 'libsoup' 'libnotify' 'qt5-svg' 'qt5-quickcontrols'
-    'qt5-quickcontrols2' 'qt5-graphicaleffects')
+depends=('desktop-file-utils' 'linphone-git' 'minizip-git'
+    'qt5-quickcontrols'
+    'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg')
 makedepends=('cmake' 'git' 'python-pystache' 'qt5-tools')
 optdepends=('pulseaudio')
 options=('!emptydirs')
