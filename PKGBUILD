@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=openhardwaremonitor-git
 pkgver=0.8.0.r8.ge199e0c
-pkgrel=3
+pkgrel=4
 pkgdesc="An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer."
 arch=('any')
 url="http://openhardwaremonitor.org/"
