@@ -1,6 +1,6 @@
 pkgbase = aurpkg
 	pkgdesc = A simple shell script to build and install packages from AUR repositories
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/DD3Boh/aurpkg
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = aurpkg
 	license = GPL 3.0
 	depends = curl
 	depends = git
-	source = aurpkg-1.2.4.tar.gz::https://github.com/DD3Boh/aurpkg/archive/1.2.4.tar.gz
+	source = aurpkg-1.2.5.tar.gz::https://github.com/DD3Boh/aurpkg/archive/1.2.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = aurpkg

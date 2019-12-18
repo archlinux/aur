@@ -1,7 +1,7 @@
 # Maintainer: Davide Garberi <dade.garberi@gmail.com>
 # Contributor: gstux <gstux@protonmail.com>
 pkgname=aurpkg
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 epoch=
 pkgdesc="A simple shell script to build and install packages from AUR repositories"
