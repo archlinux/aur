@@ -1,7 +1,7 @@
 pkgbase = kata-containers-bin
-	pkgdesc = Lightweight virtual machines for containers
+	pkgdesc = Lightweight virtual machines for containers (binary-sourced from OBS)
 	pkgver = 1.10.0~rc0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
