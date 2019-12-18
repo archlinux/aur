@@ -1,9 +1,9 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=armitage-git
 gitname=armitage
 pkgver=1248.c8ca6c0
-pkgrel=1
+pkgrel=2
 pkgdesc="Metasploit GUI Front ened written in java"
 url="http://www.fastandeasyhacking.com/"
 arch=('any')
