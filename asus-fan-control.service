@@ -1,0 +1,9 @@
+[Unit]
+Description=ASUS laptops fan control
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/asus-fan-control
+
+[Install]
+WantedBy=multi-user.target

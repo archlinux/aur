@@ -1,0 +1,23 @@
+post_install(){
+    modprobe acpi_call || cat <<EOF
+Warning: failed to probe acpi_call module, you might to reboot your system or
+install the acpi_call version appropriate for your kernel
+EOF
+
+    echo 'Trying to get current fan speed policy...'
+    sudo asus-fan-control -get-temps
+
+    cat <<EOF
+If your model is absent in /usr/share/asus-fan-control/default-temps, you are advised
+to use 'asus-fan-control -set-temps:' to adjust fan speeds prior to enabling a systemd service,
+last used custom temps are stored at /etc/asus-fan-control/custom-temps
+
+To start asus-fan-control on boot:
+systemctl enable asus-fan-control
+EOF
+}
+
+pre_remove(){
+    systemctl disable asus-fan-control
+    echo 'You mihgt want to reboot your system to restore the default fan speed'
+}
