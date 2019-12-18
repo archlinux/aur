@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=clair-git
-pkgver=v2.0.0.r412.g94150ab1
+pkgver=v3.0.0.pre1.r9.g562bed36
 pkgrel=1
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=(x86_64)
