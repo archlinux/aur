@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=emerald-icon-theme-git
 pkgver=2018.02.02.r18.ge2d3520
