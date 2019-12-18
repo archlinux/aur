@@ -1,0 +1,11 @@
+[Unit]
+Description=Xilinx HW Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/opt/xilinx/HWSRVR/bin/hw_server
+
+[Install]
+WantedBy=multi-user.target

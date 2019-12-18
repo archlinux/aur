@@ -1,0 +1,17 @@
+pkgbase = xilinx-hw-server
+	pkgdesc = A software suite produced by Xilinx for synthesis and analysis of HDL designs, superseding Xilinx ISE with additional features for system on a chip development and high-level synthesis.
+	pkgver = 2019.2
+	pkgrel = 1
+	url = https://www.xilinx.com/products/design-tools/vivado.html
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = file://Xilinx_HW_Server_Lin_2019.2_1106_2127.tar.gz
+	source = install_config.txt
+	source = hwserver.service
+	md5sums = d26a93b008260514876ce996a1a4f6b8
+	md5sums = e7baf62a7c90cf1dad587961fc583ba6
+	md5sums = b4e824139733d66274d54048b9afc9a0
+
+pkgname = xilinx-hw-server
+
