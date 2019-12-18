@@ -33,10 +33,15 @@ index 511d2c95..4e95afca 100644
        "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples,*.d.ts}",
        "!**/node_modules/.bin",
 diff --git a/ts/components/emoji/lib.ts b/ts/components/emoji/lib.ts
-index edddb196..5986b743 100644
+index edddb196..0c7cbc0c 100644
 --- a/ts/components/emoji/lib.ts
 +++ b/ts/components/emoji/lib.ts
-@@ -72,7 +72,7 @@ const data = (untypedData as Array<EmojiData>).filter(
+@@ -68,11 +68,11 @@ export type EmojiData = {
+ };
+ 
+ const data = (untypedData as Array<EmojiData>).filter(
+-  emoji => emoji.has_img_apple
++  emoji => emoji.has_img_google
  );
  
  const makeImagePath = (src: string) => {
