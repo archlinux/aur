@@ -1,7 +1,7 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=libbass
-pkgver=2.4.14
-pkgrel=7
+pkgver=2.4.15
+pkgrel=1
 pkgdesc="BASS audio library"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.un4seen.com/"
@@ -10,7 +10,7 @@ depends=(alsa-lib unzip)
 
 source=("$pkgname-$pkgver.zip::http://dl.un4seen.com/files/bass24-linux.zip"
         LICENSE)
-sha256sums=('dedd4e84a6392616e6205dd0f4bb26574fe053f2c9872ecddf5e36f011d0dfdb'
+sha256sums=('65a85873f5c6057abe947e17616bd4e0de858ce42bb74f5f9716ea53e1571b25'
             'f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83')
 sha256sums_armv6h=('d59d58b5dbecab4e38848abb355368ea4ea6ed78e9a5a41164d1347bc844aea4')
 sha256sums_armv7h=('d59d58b5dbecab4e38848abb355368ea4ea6ed78e9a5a41164d1347bc844aea4')
