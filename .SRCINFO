@@ -1,0 +1,18 @@
+pkgbase = retrosmart-kdeplasma-welcomescreen
+	pkgdesc = A retrosmart look welcome screen for KDE Plasma.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mdomlop/retrosmart-kdeplasma-welcomescreen
+	changelog = ChangeLog
+	arch = any
+	license = GPL3
+	optdepends = xcursor-retrosmart: The corresponding X11 cursor theme
+	optdepends = retrosmart-aurorae-themes: The corresponding Aurorae themes
+	optdepends = retrosmart-icon-theme: The corresponding icon theme
+	optdepends = retrosmart-xfwm4-themes: The corresponding themes for XFwm4
+	optdepends = retrosmart-openbox-themes: The corresponding themes for Openbox
+	source = retrosmart-kdeplasma-welcomescreen-1.0.tar.gz::https://github.com/mdomlop/retrosmart-kdeplasma-welcomescreen/archive/1.0.tar.gz
+	md5sums = 1cd0e685b5cc73be643ae4ecdb71b063
+
+pkgname = retrosmart-kdeplasma-welcomescreen
+
