@@ -1,6 +1,6 @@
 pkgbase = standardnotes-desktop
 	pkgdesc = A standard notes app with an un-standard focus on longevity, portability, and privacy.
-	pkgver = 3.0.23
+	pkgver = 3.0.24
 	pkgrel = 1
 	url = https://standardnotes.org/
 	arch = x86_64
