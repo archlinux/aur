@@ -1,5 +1,4 @@
-# $Id$
-# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
+# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=ttf-fira-go
 pkgver=1.001
@@ -14,10 +13,9 @@ source=("https://github.com/bBoxType/FiraGO/archive/$_commit.zip")
 sha256sums=('44d2acf57da774dc067b464399ecc1298b0dffc16d74c827e0a8df40aaff360a')
 
 package() {
+	cd FiraGO-$_commit/Fonts/FiraGO_TTF_$_pkgver
 
-  cd FiraGO-$_commit/Fonts/FiraGO_TTF_$_pkgver
-
-  install -d "${pkgdir}"/usr/share/fonts/TTF
-  install -m644 */*.ttf "${pkgdir}"/usr/share/fonts/TTF
-  install -D -m644 ../../OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
+	install -d "${pkgdir}"/usr/share/fonts/TTF
+	install -m644 */*.ttf "${pkgdir}"/usr/share/fonts/TTF
+	install -D -m644 ../../OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
 }
