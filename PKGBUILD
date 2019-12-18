@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=juno-theme-git
 _pkgname=Juno
-pkgver=r37.14bd930
+pkgver=r44.faad240
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
