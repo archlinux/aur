@@ -1,6 +1,6 @@
 pkgbase = ant-dracula-theme-git
 	pkgdesc = Dracula variant of the Ant theme
-	pkgver = r65.542d4cc
+	pkgver = r72.a1e21c7
 	pkgrel = 1
 	url = https://github.com/EliverLara/Ant-Dracula
 	arch = any
