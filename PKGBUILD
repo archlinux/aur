@@ -1,5 +1,5 @@
 pkgname=papermc-git
-pkgver=1.15.1_dfd740cd
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies"
 arch=('any')
@@ -25,6 +25,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
+	
+	export MAVEN_OPTS="-Xmx2G"
+
 	./paper jar
 }
 
