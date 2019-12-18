@@ -1,0 +1,65 @@
+diff --git a/create-noto-emoji-patch.sh b/create-noto-emoji-patch.sh
+new file mode 100755
+index 00000000..b1692606
+--- /dev/null
++++ b/create-noto-emoji-patch.sh
+@@ -0,0 +1,4 @@
++#!/bin/bash
++# $1 out-path
++set -e
++exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
+diff --git a/package.json b/package.json
+index 511d2c95..4e95afca 100644
+--- a/package.json
++++ b/package.json
+@@ -62,7 +62,7 @@
+     "electron-mocha": "8.1.1",
+     "electron-notarize": "0.1.1",
+     "emoji-datasource": "4.1.0",
+-    "emoji-datasource-apple": "4.1.0",
++    "emoji-datasource-google": "4.1.0",
+     "emoji-regex": "8.0.0",
+     "filesize": "3.6.1",
+     "firstline": "1.2.1",
+@@ -291,8 +291,8 @@
+       "node_modules/**",
+       "!node_modules/emoji-datasource/emoji_pretty.json",
+       "!node_modules/emoji-datasource/*.png",
+-      "!node_modules/emoji-datasource-apple/emoji_pretty.json",
+-      "!node_modules/emoji-datasource-apple/img/apple/sheets*",
++      "!node_modules/emoji-datasource-google/emoji_pretty.json",
++      "!node_modules/emoji-datasource-google/img/google/sheets*",
+       "!node_modules/spellchecker/vendor/hunspell/**/*",
+       "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples,*.d.ts}",
+       "!**/node_modules/.bin",
+diff --git a/ts/components/emoji/lib.ts b/ts/components/emoji/lib.ts
+index edddb196..5986b743 100644
+--- a/ts/components/emoji/lib.ts
++++ b/ts/components/emoji/lib.ts
+@@ -72,7 +72,7 @@ const data = (untypedData as Array<EmojiData>).filter(
+ );
+ 
+ const makeImagePath = (src: string) => {
+-  return `node_modules/emoji-datasource-apple/img/apple/64/${src}`;
++  return `node_modules/emoji-datasource-google/img/google/64/${src}`;
+ };
+ 
+ const imageQueue = new PQueue({ concurrency: 10 });
+diff --git a/yarn.lock b/yarn.lock
+index 5029cabb..bceedf4a 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -2934,10 +2934,10 @@ elliptic@^6.0.0:
+     minimalistic-assert "^1.0.0"
+     minimalistic-crypto-utils "^1.0.0"
+ 
+-emoji-datasource-apple@4.1.0:
++emoji-datasource-google@4.1.0:
+   version "4.1.0"
+-  resolved "https://registry.yarnpkg.com/emoji-datasource-apple/-/emoji-datasource-apple-4.1.0.tgz#e6725311b115144a32fb60043416a755fea30bf5"
+-  integrity sha1-5nJTEbEVFEoy+2AENBanVf6jC/U=
++  resolved "https://registry.yarnpkg.com/emoji-datasource-google/-/emoji-datasource-google-4.1.0.tgz#d69be74d48c76ee2bb9fcb4e7920f27fa12dde9e"
++  integrity sha1-1pvnTUjHbuK7n8tOeSDyf6Et3p4=
+ 
+ emoji-datasource@4.1.0:
+   version "4.1.0"
