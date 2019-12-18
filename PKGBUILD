@@ -1,7 +1,7 @@
 # Maintainer: Stephen Brandt <stephen@stephenbrandt.com>
 
 pkgname=haguichi-git
-pkgver=1.4.1.r0.g0cec78d
+pkgver=1.4.2.r0.g2ebaea5
 pkgrel=1
 pkgdesc="Provides a user friendly GUI to control the Hamachi client on Linux (development version)"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
