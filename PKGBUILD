@@ -1,7 +1,7 @@
 # Maintainer: Kamil Śliwak <cameel2@gmail.com>
 
 _addon_name=google_search_link_fix
-_addon_version=1.6.8
+_addon_version=1.6.9
 _addon_id=351740
 _addon_filename="${_addon_name}-${_addon_version}-an+fx.xpi"
 _gecko_id="jid0-XWJxt5VvCXkKzQK99PhZqAn7Xbg@jetpack"
@@ -16,7 +16,8 @@ license=('MPL2')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('dcf5ba6e8a249f196063883c1259f4bdb90ee80fc7dd1c19497dfa48d0d4fe0c')
+sha256sums=('c62024e8f711217585731b00c083af13f921f8245ece72c766528eaba9895732')
+
 
 package() {
     cd "${srcdir}"
