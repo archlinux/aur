@@ -23,10 +23,10 @@ package() {
         mkdir -p $pkgdir/$dir
     done
 
-    install data/default-temps              $pkgdir/usr/share/asus-fan-control
-    install src/asus-fan-control            $pkgdir/usr/bin
-    install src/asus-fan-control-completion $pkgdir/usr/share/bash-completion/completions/asus-fan-control
-    install ../$pkgname.service             $pkgdir/usr/lib/systemd/system
+    install -m644 data/default-temps              $pkgdir/usr/share/asus-fan-control
+    install -m755 src/asus-fan-control            $pkgdir/usr/bin
+    install -m644 src/asus-fan-control-completion $pkgdir/usr/share/bash-completion/completions/asus-fan-control
+    install -m644 ../$pkgname.service             $pkgdir/usr/lib/systemd/system
     # Create a dummy config, so it can be properly tracked by pacman
     touch $pkgdir/etc/asus-fan-control/custom-temps
 }
