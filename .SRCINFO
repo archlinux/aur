@@ -1,6 +1,6 @@
 pkgbase = vnote
 	pkgdesc = A Vim-inspired note-taking application, especially for Markdown.
-	pkgver = 2.7.2
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://tamlok.github.io/vnote/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = vnote
 	makedepends = git
 	depends = qt5-webengine
 	depends = qt5-svg
-	source = git+https://github.com/tamlok/vnote.git#tag=v2.7.2
+	source = git+https://github.com/tamlok/vnote.git#tag=v2.8.1
 	source = git+https://github.com/chjj/marked.git
 	source = git+https://github.com/tamlok/hoedown.git
 	sha256sums = SKIP
