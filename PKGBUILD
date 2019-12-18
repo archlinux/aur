@@ -1,4 +1,4 @@
-# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
+# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Beini <bane@iki.fi>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: James Rayner <james@archlinux.org>
@@ -7,26 +7,26 @@
 pkgname=conky-git
 pkgver=1.11.5.r10.g26d23cb7
 pkgrel=1
-pkgdesc='Lightweight system monitor for X'
-url='https://github.com/brndnmtthws/conky'
+pkgdesc="Lightweight system monitor for X"
+url="https://github.com/brndnmtthws/${pkgname%-git}"
 license=('BSD' 'GPL')
 arch=('x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git')
 depends=('glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft'
          'imlib2' 'libxml2' 'libpulse' 'libxnvctrl')
-provides=('conky')
-conflicts=('conky')
-source=('conky::git+https://github.com/brndnmtthws/conky.git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 sha1sums=('SKIP')
 options=('!strip' 'debug')
 
 pkgver() {
-	cd conky
+	cd "${srcdir}/${pkgname}"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd conky
+	cd "${srcdir}/${pkgname}"
 
 	cmake \
 		-D CMAKE_BUILD_TYPE=Release \
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-	cd conky
+	cd "${srcdir}/${pkgname}"
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim

@@ -25,7 +25,7 @@ pkgbase = conky-git
 	conflicts = conky
 	options = !strip
 	options = debug
-	source = conky::git+https://github.com/brndnmtthws/conky.git
+	source = conky-git::git+https://github.com/brndnmtthws/conky.git
 	sha1sums = SKIP
 
 pkgname = conky-git
