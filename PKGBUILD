@@ -4,13 +4,13 @@
 
 _pkgname=lilv
 pkgname="${_pkgname}-git"
-pkgver=0.24.6.r1258.425af42
-pkgrel=2
+pkgver=0.24.7.r1260.d1c9d1b
+pkgrel=1
 pkgdesc="A C library interface to the LV2 plug-in standard with Python bindings (git version)"
 arch=('i686' 'x86_64')
 url="http://drobilla.net/software/lilv"
 license=("custom:ISC")
-depends=('lv2' 'python' 'sratom')
+depends=('lv2>=1.17.0' 'python' 'sratom')
 makedepends=('git' 'libsndfile')
 optdepends=(
     "bash-completion: completion for bash"
