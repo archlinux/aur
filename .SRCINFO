@@ -1,6 +1,6 @@
 pkgbase = bloop
 pkgdesc = Bloop gives you fast edit/compile/test workflows for Scala.
-pkgver = 1.4.0-RC1
+pkgver = 1.4.0rc1
 pkgrel = 1
 url = https://scalacenter.github.io/bloop/
 arch = any
