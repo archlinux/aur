@@ -1,0 +1,13 @@
+pkgbase = nyuu-bin
+	pkgdesc = Flexible usenet binary posting tool
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/animetosho/Nyuu
+	arch = x86_64
+	license = 
+	provides = nyuu
+	source = nyuu-0.3.8.tar.xz::https://github.com/animetosho/Nyuu/releases/download/v0.3.8/nyuu-v0.3.8-linux-amd64.tar.xz
+	sha256sums = 4195359cb8a66ffd207d310d39b177590f522fd8a421b1ec86f3c8c2c1a68ab0
+
+pkgname = nyuu-bin
+
