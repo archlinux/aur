@@ -1,0 +1,14 @@
+pkgbase = sortpictures-git
+	pkgdesc = Sort and organized pictures in subfolders by date
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/eathtespagheti/sortpicture
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = imagemagick
+	source = https://gitlab.com/eathtespagheti/sortpicture/raw/v0.1/sortpictures.sh
+	md5sums = de4b143e3e9fd15e20bb732825260714
+
+pkgname = sortpictures-git
+
