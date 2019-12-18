@@ -1,0 +1,17 @@
+pkgbase = openfast-git
+	pkgdesc = A wind turbine simulation tool by NREL
+	pkgver = v2.1.0.r184.ge4faf27b
+	pkgrel = 1
+	url = https://github.com/OpenFAST/openfast
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = lapack
+	depends = hdf5
+	depends = yaml-cpp
+	source = openfast-git::git+https://github.com/OpenFAST/openfast.git
+	sha512sums = SKIP
+
+pkgname = openfast-git
+
