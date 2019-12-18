@@ -5,7 +5,7 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-git
-pkgver=0.14.2.29.dev.r1.g833d510
+pkgver=0.15.0.8.dev.r0.g390e27e
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell"
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -33,5 +33,4 @@ build() {
 package() {
   cd "GameHub"
   DESTDIR="${pkgdir}" ninja -C build install
-  ln -s /usr/bin/com.github.tkashkin.gamehub "$pkgdir/usr/bin/gamehub"
 }
