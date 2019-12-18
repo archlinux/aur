@@ -1,6 +1,6 @@
 pkgbase = libimobiledevice-git
 	pkgdesc = Library that talks the protocols to support iPhone and iPod Touch devices on Linux
-	pkgver = 1.1.0.r789.g9f79242
+	pkgver = 1.1.0.r791.gd04f8ff
 	pkgrel = 1
 	epoch = 1
 	url = http://www.libimobiledevice.org/

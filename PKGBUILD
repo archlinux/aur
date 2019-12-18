@@ -6,7 +6,7 @@
 
 pkgname=libimobiledevice-git
 epoch=1
-pkgver=1.1.0.r789.g9f79242
+pkgver=1.2.0.r154.gd04f8ff
 pkgrel=1
 pkgdesc="Library that talks the protocols to support iPhone and iPod Touch devices on Linux"
 url="http://www.libimobiledevice.org/"
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd libimobiledevice
-	git describe --long | sed 's/-/.r/;s/-/./'
+	git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 prepare() {
