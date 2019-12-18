@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgdesc = Linux Xanmod
-	pkgver = 5.4.2
+	pkgver = 5.4.4
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = linux-xanmod
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/5.4.2-xanmod2.tar.gz
+	source = https://github.com/xanmod/linux/archive/5.4.4-xanmod3.tar.gz
 	source = choose-gcc-optimization.sh
-	sha256sums = 3bc21de5d3d6fe5f492fe3cd80c3f675b0acca5c0148bc669a91fc884561b86a
+	sha256sums = 511bc620abeeff0483496c05c3280b17d465c9b3269f6db059178af06b283823
 	sha256sums = 8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748
 
 pkgname = linux-xanmod
