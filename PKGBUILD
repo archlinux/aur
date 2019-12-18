@@ -1,6 +1,6 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
-# Maintainer: Christopher A. Williamson
-# Maintainer: Pascal Mathis <mail@pascalmathis.com>
+# Contributor: Christopher A. Williamson
+# Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin
 _pkgname=ramboxpro
 pkgver=1.2.1
