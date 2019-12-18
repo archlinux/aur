@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gotty-git
 pkgver=v2.0.0.alpha.3.r0.ga080c85
-pkgrel=2
+pkgrel=3
 pkgdesc='Share your terminal as a web application'
 url=https://github.com/yudai/gotty
 arch=('any')
