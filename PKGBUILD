@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=virusgotal-git
-pkgver=1.0.2.r4.g69509a2
+pkgver=1.0.2.r5.g295d2dc
 pkgrel=1
 pkgdesc='VirusTotal zero dependency command line client.'
 arch=(x86_64)
