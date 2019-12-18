@@ -1,10 +1,10 @@
 pkgbase = inxi
 	pkgdesc = Full featured CLI system information tool
 	pkgver = 3.0.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/smxi/inxi
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = coreutils
 	depends = pciutils
 	depends = perl
@@ -19,7 +19,9 @@ pkgbase = inxi
 	optdepends = mesa-demos: inxi -G glx info
 	optdepends = net-tools: inxi -i ip lan-deprecated
 	optdepends = perl-io-socket-ssl: -U; -w,-W; -i (if dig not installed)
+	optdepends = perl-cpanel-json-xs: --output json - required for export
 	optdepends = perl-json-xs: --output json - required for export (legacy)
+	optdepends = perl-xml-dumper: --output xml - Crude and raw
 	optdepends = systemd-sysvcompat: inxi -I runlevel
 	optdepends = sudo: inxi -Dx hddtemp-user;-o file-user
 	optdepends = tree: --debugger 20,21 /sys tree
@@ -28,9 +30,8 @@ pkgbase = inxi
 	optdepends = xorg-xdpyinfo: inxi -G multi screen resolution
 	optdepends = xorg-xprop: inxi -S desktop data
 	optdepends = xorg-xrandr: inxi -G single screen resolution
-	options = zipman
 	source = inxi-3.0.37.tar.gz::https://github.com/smxi/inxi/archive/3.0.37-1.tar.gz
-	sha256sums = bc16d8b975a8ed064949bc8209e0c01c204c01c9046076f62709366e672bea40
+	sha256sums = 7872af1b85dfb635d2fdebad575238aedf98432a7089200334a2fa31ac19ff24
 
 pkgname = inxi
 
