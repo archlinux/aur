@@ -1,7 +1,7 @@
 pkgbase = orion-git
 	pkgdesc = QML/C++-written desktop client for Twitch.tv
 	pkgver = 1.6.6.r21.gc2390ad
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alamminsalo/orion/
 	install = orion.install
 	arch = x86_64
