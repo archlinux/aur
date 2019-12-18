@@ -40,8 +40,8 @@ source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz"
         paraview.sh)
 sha256sums=('e41e597e1be462974a03031380d9e5ba9a7efcdb22e4ca2f3fec50361f310874'
             'dd2e23298ab5a07da0e799c3db313ed3f9d2a403d7228d50748206b535b6f65f'
-            '3beff972e7e9236f2e8ab596be8f893ae7e9346a140c4538d9e8d88c3378b916'
-            '8602b81c5d5aa979c97169d2e4313e822b4904bd56093f6c8d7de835a83aef03'
+            '50cc31d60bbb89a987a23e3ecf5dc986976753f34ea10d6cc226212794b54193'
+            '03a67c783e99e87a2f44f5df200b204d51fa3e7d0d5a56ef2360c85eb1685184'
             '862e79bdf72f5c3ec55d3373fc34d0e5da33b1597c54c4586bdf84641d0cc291')
 
 prepare() {
