@@ -27,19 +27,19 @@ check_dir() {
 }
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    bazel build //tensorflow_metadata:build_pip_package
+  cd "${srcdir}/${_name}-${pkgver}"
+  bazel build //tensorflow_metadata:build_pip_package
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    local _src_dir="bazel-bin/${pkgname}/proto/v0"/
-    local _dst_dir="${pkgdir}/usr/lib/python$(get_pyver)/site-packages/${pkgname}/proto/v0"
-    install -d "${_dst_dir}"
-    check_dir "${_src_dir}"
-    find "${_src_dir}" -maxdepth 1 -mindepth 1 -iname "*.py" -type f -print0 | while read -rd $'\0' _script; do
-      cp -nr "${_script}" "${_dst_dir}"/
-    done
+  cd "${srcdir}/${_name}-${pkgver}"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  local _src_dir="bazel-bin/${pkgname}/proto/v0"/
+  local _dst_dir="${pkgdir}/usr/lib/python$(get_pyver)/site-packages/${pkgname}/proto/v0"
+  install -d "${_dst_dir}"
+  check_dir "${_src_dir}"
+  find "${_src_dir}" -maxdepth 1 -mindepth 1 -iname "*.py" -type f -print0 | while read -rd $'\0' _script; do
+    cp -nr "${_script}" "${_dst_dir}"/
+  done
 }
