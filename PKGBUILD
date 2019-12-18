@@ -1,8 +1,8 @@
 pkgbase=kata-containers-git
-pkgname=(kata-ksm-throttler-git kata-proxy-git kata-runtime-git kata-shim-git kata-agent-git kata-containers-image-git kata-linux-container-git)
+pkgname=(kata-ksm-throttler-git kata-proxy-git kata-runtime-git kata-shim-git kata-agent-git)
 pkgver=1.10.0~rc0~runtime.r31.3ea682d6
 _pkgver=1.10.0-rc0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -16,12 +16,8 @@ source=(
   "proxy::git+https://${_gh_org}/proxy"
   "runtime::git+https://${_gh_org}/runtime"
   "shim::git+https://${_gh_org}/shim"
-  "https://${_gh_org}/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz"
 )
-sha512sums=(
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-  'f0e69db2327f87234b053c554793ee28f0f102835e1778e85772d14c90c0caf63890541a780cc5439e08d39a419fa86bd5ff4750228c93f70f2511328afe1aa5'
-)
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver(){
     cd "${srcdir}/src/${_gh_org}/runtime"
@@ -76,7 +72,7 @@ package_kata-proxy-git(){
 package_kata-runtime-git(){
   conflicts=('kata-runtime')
   provides=('kata-runtime')
-  depends=('qemu-headless' "kata-ksm-throttler=${pkgver}" "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container=${pkgver}" "kata-containers-image=${pkgver}")
+  depends=('qemu-headless' "kata-ksm-throttler=${pkgver}" "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container" "kata-containers-image")
   optdepends=(
     'firecracker'
     'cloud-hypervisor'
@@ -92,30 +88,4 @@ package_kata-shim-git(){
   provides=('kata-shim')
   cd "${srcdir}/src/${_gh_org}/shim"
   GOPATH="${srcdir}" make install DESTDIR="${pkgdir}" BINDIR="/usr/bin" PKGLIBEXECDIR="/usr/lib/kata-containers" LIBEXECDIR="/usr/lib"
-}
-
-package_kata-containers-image-git(){
-  conflicts=('kata-containers-image')
-  provides=('kata-containers-image')
-  install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
-    ${srcdir}/opt/kata/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_*.img \
-    ${srcdir}/opt/kata/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd
-  cd "${pkgdir}/usr/share/kata-containers/"
-  ln -s kata-containers-image_clearlinux_${_pkgver}_agent_*.img kata-containers.img
-  ln -s kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd kata-containers-initrd.img
-}
-
-package_kata-linux-container-git(){
-  conflicts=('kata-linux-container')
-  provides=('kata-linux-container')
-  install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
-    ${srcdir}/opt/kata/share/kata-containers/config-* \
-    ${srcdir}/opt/kata/share/kata-containers/vmlinux-* \
-    ${srcdir}/opt/kata/share/kata-containers/vmlinuz-*
-  cd "${pkgdir}/usr/share/kata-containers/"
-  ln -sf vmlinux-virtio-fs-* vmlinux-virtiofs.container
-  ln -sf vmlinuz-virtio-fs-* vmlinuz-virtiofs.container
-  # bash-specific behavior?
-  ln -s vmlinux-[0-9].[0-9]* vmlinux.container
-  ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
 }
