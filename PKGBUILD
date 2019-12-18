@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=4
+_minor=5
 _srcname=linux-${_major}
 _clr=${_major}.3-877
 pkgbase=linux-clear
@@ -69,7 +69,7 @@ pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
-makedepends=('bc' 'cpio' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
+makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20190822'
 source=(
@@ -331,7 +331,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '122fddb7e64187ac1c4cb00594901dfbff2c6bd94d4676c4f14f26cac03429b5'
+            '7ac5c8967fb99aa379148c1edd7bc98689972fecf916e77954cd36328f85b260'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0'
