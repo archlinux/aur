@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=79.0.3941.4
+pkgver=80.0.3987.7
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -47,6 +47,7 @@ makedepends=(
              'gperf'
              'ninja'
              'python2'
+             'python2-protobuf'
              'python'
              'yasm'
              'nasm'
@@ -63,10 +64,6 @@ optdepends=(
             'kwalletmanager: Needed for storing passwords in KWallet5'
             #
             'ttf-font: For some typography'
-            #
-            'libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users'
-            'libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users'
-            'libva-intel-driver: HW video acceleration for Intel G45 and HD users'
             )
 source=(
         #"https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
@@ -76,7 +73,6 @@ source=(
         # Patch form Gentoo.
 
         # Misc Patches.
-        'enable-vaapi.patch' # Use Saikrishna Arcot patch again :https://raw.githubusercontent.com/saiarcot895/chromium-ubuntu-build/a996c32c7ae7b369799b528daddb7be3c8b67de4/debian/patches/enable_vaapi_on_linux_2.diff'
         'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
@@ -89,7 +85,6 @@ sha256sums=(
             # Patch form Gentoo
 
             # Misc Patches
-            '45c5ceb13df8e6ba1411b71bed6ab3b3f7c9c427ce51305e2721215d7abe3a42'
             '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
@@ -150,8 +145,6 @@ _keeplibs=(
            'third_party/blink'
            'third_party/boringssl'
            'third_party/boringssl/src/third_party/fiat'
-           'third_party/boringssl/src/third_party/sike'
-           'third_party/boringssl/linux-x86_64/crypto/third_party/sike'
            'third_party/breakpad'
            'third_party/breakpad/breakpad/src/third_party/curl'
            'third_party/brotli'
@@ -187,11 +180,13 @@ _keeplibs=(
            'third_party/depot_tools'
            'third_party/depot_tools/third_party/six'
            'third_party/devscripts'
+           'third_party/devtools-frontend'
+           'third_party/devtools-frontend/src/third_party/axe-core'
+           'third_party/devtools-frontend/src/third_party/pyjson5'
            'third_party/dom_distiller_js'
            'third_party/emoji-segmenter'
            'third_party/ffmpeg'
            'third_party/flatbuffers'
-           'third_party/flot'
            'third_party/glslang'
            'third_party/google_input_tools'
            'third_party/google_input_tools/third_party/closure_library'
@@ -210,6 +205,7 @@ _keeplibs=(
            'third_party/libaom'
            'third_party/libaom/source/libaom/third_party/vector'
            'third_party/libaom/source/libaom/third_party/x86inc'
+           'third_party/libgifcodec'
            'third_party/libjingle'
            'third_party/libphonenumber'
            'third_party/libsecret'
@@ -220,7 +216,7 @@ _keeplibs=(
            'third_party/libvpx/source/libvpx/third_party/x86inc'
            'third_party/libwebm'
            'third_party/libwebp'
-           'third_party/libxml/chromium'
+           'third_party/libxml' #/chromium'
            'third_party/libyuv'
            'third_party/llvm'
            'third_party/lss'
@@ -264,7 +260,6 @@ _keeplibs=(
            'third_party/skia'
            'third_party/skia/include/third_party/skcms'
            'third_party/skia/include/third_party/vulkan'
-           'third_party/skia/third_party/gif'
            'third_party/skia/third_party/skcms'
            'third_party/skia/third_party/vulkan'
            'third_party/smhasher'
@@ -385,7 +380,7 @@ _use_system=(
              'libpng'
 #              'libvpx'       # Needs update.
 #              'libwebp'      # Needs update.
-             'libxml'
+#              'libxml'       # Needs fix
              'libxslt'
              'openh264'
              'opus'
@@ -433,11 +428,12 @@ prepare() {
   cd "${srcdir}/chromium-${pkgver}"
 
   # Force script incompatible with Python 3 to use /usr/bin/python2.
-  sed -i '1s|python$|&2|' \
-    -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
-    -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py \
-    -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
-    -i third_party/ffmpeg/chromium/scripts/generate_gn.py
+   sed -i '1s|python$|&2|' \
+     -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
+     -i third_party/ffmpeg/chromium/scripts/generate_gn.py \
+     -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
+     -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py
+
   export PNACLPYTHON=/usr/bin/python2
   sed 's|iteritems|items|g' -i build/linux/unbundle/remove_bundled_libraries.py
 
@@ -467,7 +463,7 @@ prepare() {
   sed -e 's|chromium-browser|chromium-dev|g' \
       -i chrome/browser/shell_integration_linux.cc \
       -i chrome/browser/ui/libgtkui/gtk_util.cc
-  sed -e 's|config_dir.Append("chromium|&-dev|' \
+  sed -e 's|chromium|&-dev|' \
       -i chrome/common/chrome_paths_linux.cc
   sed -e 's|/etc/chromium|&-dev|' \
       -e 's|/usr/share/chromium|&-dev|' \
@@ -497,10 +493,6 @@ prepare() {
       -i third_party/blink/renderer/core/xml/*.cc \
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
-
-  # Enable VAAPI.
-  patch -p1 -i "${srcdir}/enable-vaapi.patch"
-  sed 's|/dri/|/|g' -i media/gpu/vaapi/vaapi_wrapper.cc
 
   # Unbundle zlib
   sed 's|zlib:zlib_config|zlib:system_zlib|g' -i third_party/perfetto/gn/BUILD.gn
@@ -610,7 +602,6 @@ package() {
   _libs=(
          'swiftshader/libEGL.so'
          'swiftshader/libGLESv2.so'
-         'swiftshader/libvk_swiftshader_icd.json'
          'libvk_swiftshader.so'
          )
   if [ "${_use_wayland}" = "1" ]; then
@@ -627,22 +618,16 @@ package() {
 
   for i in "${_libs[@]}"; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
-    case "$i" in
-      swiftshader/libvk_swiftshader_icd.json)
-        ;;
-      *)
-        strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
-        ;;
-    esac
+    strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
 
   _blobs=(
-          'natives_blob.bin'
           'snapshot_blob.bin'
           'v8_context_snapshot.bin'
           'icudtl.dat' # https://crbug.com/678661.
           'MEIPreload/manifest.json'
           'MEIPreload/preloaded_data.pb'
+          'vk_swiftshader_icd.json'
           )
 
   if [ "${_use_wayland}" = "0" ]; then

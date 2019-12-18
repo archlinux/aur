@@ -1,6 +1,6 @@
 pkgbase = chromium-dev
 	pkgdesc = The open-source project behind Google Chrome (Dev Channel)
-	pkgver = 79.0.3941.4
+	pkgver = 80.0.3987.7
 	pkgrel = 1
 	url = http://www.chromium.org
 	install = chromium-dev.install
@@ -9,6 +9,7 @@ pkgbase = chromium-dev
 	makedepends = gperf
 	makedepends = ninja
 	makedepends = python2
+	makedepends = python2-protobuf
 	makedepends = python
 	makedepends = yasm
 	makedepends = nasm
@@ -34,19 +35,14 @@ pkgbase = chromium-dev
 	optdepends = kdialog: Needed for file dialogs in KF5
 	optdepends = kwalletmanager: Needed for storing passwords in KWallet5
 	optdepends = ttf-font: For some typography
-	optdepends = libva-vdpau-driver-chromium: HW video acceleration for NVIDIA users
-	optdepends = libva-mesa-driver: HW video acceleration for Nouveau, R600 and RadeonSI users
-	optdepends = libva-intel-driver: HW video acceleration for Intel G45 and HD users
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-79.0.3941.4.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-80.0.3987.7.tar.xz
 	source = git+https://github.com/foutrelis/chromium-launcher.git
 	source = chromium-dev.svg
-	source = enable-vaapi.patch
 	source = fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch
 	source = chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium
-	sha256sums = e5e841e8cdd133359acc7dbd0a2c0abe6046e0cc0a4527410866e6cef02de005
+	sha256sums = d8729238b1047ab2f2d2c1b86c4e9692d36ba5c6e6956212f301259f57a12048
 	sha256sums = SKIP
 	sha256sums = dd2b5c4191e468972b5ea8ddb4fa2e2fa3c2c94c79fc06645d0efc0e63ce7ee1
-	sha256sums = 45c5ceb13df8e6ba1411b71bed6ab3b3f7c9c427ce51305e2721215d7abe3a42
 	sha256sums = 1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
 

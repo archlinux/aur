@@ -4,5 +4,4 @@
 !PKGBUILD
 !chromium-dev.install
 !chromium-dev.svg
-!enable-vaapi.patch
 !chromium-skia-harmony-r1.patch
