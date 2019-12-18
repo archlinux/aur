@@ -1,0 +1,15 @@
+pkgbase = tensorflow_metadata
+	pkgdesc = Utilities for passing TensorFlow-related metadata between tools
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/tensorflow/metadata
+	arch = any
+	license = Apache
+	makedepends = bazel
+	makedepends = python-setuptools
+	depends = python-tensorflow
+	source = metadata-0.15.1::https://github.com/tensorflow/metadata/archive/v0.15.1.tar.gz
+	sha256sums = 0b321e2185891b066d2ab76d85f46e360fe3668ce97112c051116624fed87354
+
+pkgname = tensorflow_metadata
+
