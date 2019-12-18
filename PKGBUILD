@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-caffeine-plus-git
-pkgver=r184.a3c7d33
+pkgver=r174.a6fba34
 pkgrel=1
 pkgdesc="Disable screensaver and auto suspend"
 arch=('any')
