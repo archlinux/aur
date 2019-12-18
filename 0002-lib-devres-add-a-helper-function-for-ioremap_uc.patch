@@ -1,7 +1,7 @@
-From 72bc3d71be44797eeb76ad17f124877f19526313 Mon Sep 17 00:00:00 2001
+From d56ae3b8201b4634648de6a0df959d936c9fc0e6 Mon Sep 17 00:00:00 2001
 From: Tuowen Zhao <ztuowen@gmail.com>
 Date: Wed, 16 Oct 2019 15:06:28 -0600
-Subject: [PATCH 2/6] lib: devres: add a helper function for ioremap_uc
+Subject: [PATCH 2/9] lib: devres: add a helper function for ioremap_uc
 
 Implement a resource managed strongly uncachable ioremap function.
 
@@ -75,5 +75,5 @@ index 6a0e9bd6524a..17624d35e82d 100644
   * devm_ioremap_nocache - Managed ioremap_nocache()
   * @dev: Generic device to remap IO address for
 -- 
-2.24.0
+2.24.1
 

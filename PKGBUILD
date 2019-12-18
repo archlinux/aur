@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.4.3-arch1
+_srcver=5.4.4-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -82,25 +82,27 @@ source=(
   0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-  0006-ACPI-EC-Rework-flushing-of-pending-work.patch
-  0007-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+  0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+  0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch
+  0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('6731682f32e1b1ee53b0e7f66b8dc263d25a0e809e78e2139cb0ed77c378ee51'
+sha256sums=('3fa2aad785f8031246b25362d7542dac46aaaa91546fb41b6419fb759e43e6c2'
             'SKIP'
             '5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            '8919d8cbab83ccc810d8c7eaf6ebb18be8ae011da90a11d98732c2537af11d11'
-            'f1481e4c6d84de265552eea9ef2e2fa13bf26774becc2f2c36619af1f56bcee4'
-            '88c7e90ac7a1b73b3707feacd23b66feaa4c2cc5bc39ef2807b2301274db3ad2'
-            '786da96d5cc273331bf8a155b0552edcc26d79f194a016c7e4f1c1266aabafc2'
-            '2d51be4ede2c19a3163899fd783a213cf9f837867915b004e0c70c548e0d96c9'
-            'a2f99ed7314efcdd627bef8356a57554caa68d02d404eee28ca2c04fce2d906a'
-            '29e71325f9f3a9e2a6fc47f5309e3e0b03328239093f651eee47c52467e9e5bc')
+            '71908105e1606cee9e62c99ac89aca98e8a26ff3f9796c8ab36858632614e85a'
+            '6765399f9d0de2daf7121f96a09eafc646731eb2058a01420d882297e10dfae5'
+            'f922696f10cfbe7e5b0a95fb3d9333006d63a1c4dbfc280ae3b5d10c8c7208fb'
+            '8496a9be2c3b2e3cefa292d00d3f43a4e7c3b03c4508f9d38a6b21fa4684240d'
+            'e5a3ed9c900b7e69cec1090ff76171a1c00cf723a2fa9a07fdf95c194ef3738b'
+            '760b60334eff05b1ef20c800fdb1e2ff6c7f9264f5e5c396f644720a824a92d7'
+            '38c670bb8b9efaae54217a09b118d8b55ef183df134ae94f643d6e8e1ad6ac70'
+            'bc0d303b6f2e8a518414ff706322a39b460ae3acdbb5b0c3488e35794227d69a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
