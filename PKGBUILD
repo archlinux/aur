@@ -5,12 +5,12 @@
 pkgname=physlock-git
 _pkgname='physlock'
 pkgver=v13.r5.g4541222
-pkgrel=1
+pkgrel=2
 pkgdesc="lightweight linux console locking tool"
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/muennich/physlock"
-depends=('pam')
+depends=('pam' 'systemd-libs')
 makedepends=('git')
 provides=('physlock')
 conflicts=('physlock')

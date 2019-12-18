@@ -1,12 +1,13 @@
 pkgbase = physlock-git
 	pkgdesc = lightweight linux console locking tool
 	pkgver = v13.r5.g4541222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/muennich/physlock
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = pam
+	depends = systemd-libs
 	provides = physlock
 	conflicts = physlock
 	source = physlock::git+https://github.com/muennich/physlock.git
