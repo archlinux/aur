@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Lopez <contact@scotow.com>
 
 pkgname=notigo
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Send iOS/Android notifications using IFTTT's Webhook"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/scotow/${pkgname}"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/scotow/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('272291738bf554ffcdb1636c5be76868d24508b40f7447b5ced5d5e0ae6ddfd2')
+sha256sums=('bddfc256239cb629e52e4d6245a08effc8956f248271a2357e58b76ab5dad819')
 
 prepare(){
   mkdir -p src/github.com/scotow
