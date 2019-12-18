@@ -2,7 +2,7 @@
 
 pkgname=zafiro-icon-theme-git
 pkgver=1.0.r12.g98dcf69
-pkgrel=1
+pkgrel=2
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
 url="https://github.com/zayronxio/Zafiro-icons"
