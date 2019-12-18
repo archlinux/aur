@@ -8,50 +8,41 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.3.1.r392.g83e860eab
+pkgver=1.3.1.r963.gfb51e7733
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('chromaprint' 'crypto++' 'fftw' 'gcc-libs' 'glew' 'glib2' 'glibc'
-         'gst-plugins-base-libs' 'gstreamer' 'libcdio' 'libgl' 'libgpod'
-         'liblastfm' 'libmtp' 'libpulse' 'libx11' 'protobuf' 'qjson' 'qt4'
-         'sqlite' 'taglib' 'zlib')
-makedepends=('boost' 'cmake' 'mesa' 'sparsehash' 'git')
-optdepends=('gst-plugins-base: "Base" plugin libraries'
-            'gst-plugins-good: "Good" plugin libraries'
-            'gst-plugins-bad: "Bad" plugin libraries'
-            'gst-plugins-ugly: "Ugly" plugin libraries'
-            'gst-libav: Libav plugin'
-            'gvfs: Various devices support')
+depends=('crypto++' 'chromaprint' 'desktop-file-utils' 'glew' 'gst-plugins-base-libs' 'libmygpo-qt5' 'protobuf' 'qt5-x11extras')
+makedepends=('boost' 'cmake' 'git')
+optdepends=('libcdio: for CD support'
+                       'libgpod: for iPhone and iPod Touch support'
+                       'liblastfm-qt5: for LastFM support'
+                       'libmtp: for MTP support')
 conflicts=('clementine')
 provides=('clementine')
-source=("git+https://github.com/clementine-player/Clementine.git")
+replaces=('clementine-qt5-git')
+_name=Clementine
+source=("git+https://github.com/clementine-player/$_name.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/Clementine"
+    cd $srcdir/$_name
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "$srcdir/Clementine"
-}
-
 build() {
-    mkdir -p "$srcdir/clementine-build"
-    cd "$srcdir/clementine-build"
-    
-    cmake "$srcdir/Clementine" \
+    mkdir -p "$srcdir/build"
+    cd "$srcdir/build"
+    cmake "$srcdir/$_name" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_WERROR=off \
-        -DCMAKE_INSTALL_PREFIX="/usr"
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DENABLE_SPOTIFY_BLOB=off
     make
 }
 
 package() {
-    cd "$srcdir/clementine-build"
-    
+    cd "$srcdir/build"
     make DESTDIR="$pkgdir" install
 }
