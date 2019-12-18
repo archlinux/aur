@@ -3,7 +3,7 @@
 pkgname=zmeventnotification-git
 _pkgname=zmeventnotification
 pkgver=v4.6.1.r20.gf70308a
-pkgrel=1
+pkgrel=2
 pkgdesc='Event Notification Server sits along with ZoneMinder and offers real time notifications, support for push notifications as well as Machine Learning powered recognition + hooks'
 arch=('x86_64')
 url='https://github.com/pliablepixels/zmeventnotification'
@@ -45,7 +45,7 @@ prepare () {
 
     #zmeventnotification.ini
     sed -i "s|/etc/zm|/etc/zoneminder|" zmeventnotification.ini
-    sed -i "s|/var/lib|/opt|" zmeventnotification.ini
+    sed -i "s|/var/lib/zmeventnotification/bin/zm_detect_wrapper.sh|/opt/zmeventnotification/bin/zm_detect_wrapper.sh|" zmeventnotification.ini
     sed -i "s|/etc/apache2/ssl/yourportal|/etc/ssl/private|"  zmeventnotification.ini
 
     #secrets.ini
@@ -55,6 +55,9 @@ prepare () {
     #zm_detect_wrapper.sh
     sed -i "s|/etc/zm|/etc/zoneminder|" hook/zm_detect_wrapper.sh
     sed -i "s|/var/lib|/opt|" hook/zm_detect_wrapper.sh
+
+    #zmeventnotification.pl
+    sed -i "s|/etc/zm/zmeventnotification.ini|/etc/zoneminder/zmeventnotification.ini|" zmeventnotification.pl
 }
 
 build() {
@@ -68,7 +71,7 @@ package() {
     install -Dm 755 zmeventnotification.pl "${pkgdir}/usr/bin/zmeventnotification.pl"
 
     #Folder structure
-    mkdir -p "${pkgdir}/opt/zmeventnotification/push" 2>/dev/null
+    mkdir -p "${pkgdir}/var/lib/zmeventnotification/push" 2>/dev/null
     mkdir -p "${pkgdir}/opt/zmeventnotification/bin" 2>/dev/null
     mkdir -p "${pkgdir}/var/lib/zmeventnotification/images" 2>/dev/null
     mkdir -p "${pkgdir}/var/lib/zmeventnotification/known_faces" 2>/dev/null
