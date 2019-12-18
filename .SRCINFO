@@ -1,0 +1,29 @@
+pkgbase = tensorflow_datasets
+	pkgdesc = A collection of datasets ready to use with TensorFlow
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/tensorflow/datasets
+	arch = any
+	license = Apache
+	checkdepends = jupyter
+	checkdepends = mako
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	makedepends = bazel
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-attrs
+	depends = python-dill
+	depends = python-future
+	depends = python-promise
+	depends = python-requests
+	depends = python-tensorflow
+	depends = python-termcolor
+	depends = python-tqdm
+	depends = python-wrapt
+	depends = tensorflow_metadata
+	source = datasets-1.3.0::https://github.com/tensorflow/datasets/archive/v1.3.0.tar.gz
+	sha256sums = 8da3b40b5599f4dd007cf7305b9bdbe674db52174c5c16d2ad0f4f55ff6faedd
+
+pkgname = tensorflow_datasets
+
