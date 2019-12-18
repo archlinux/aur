@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.4.4
+	pkgver = 5.4.5
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.4.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.4.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.4/5.4-ck1/patch-5.4-ck1.xz
@@ -24,7 +24,7 @@ pkgbase = linux-ck
 	source = 0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 3fa2aad785f8031246b25362d7542dac46aaaa91546fb41b6419fb759e43e6c2
+	sha256sums = 568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0
 	sha256sums = SKIP
 	sha256sums = 5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
@@ -45,11 +45,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.4.4
+	provides = linux-ck=5.4.5
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.4.4
-	provides = linux-headers=5.4.4
+	provides = linux-ck-headers=5.4.5
+	provides = linux-headers=5.4.5
 
