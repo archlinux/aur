@@ -1,6 +1,6 @@
 pkgbase = lyx-git
 	pkgdesc = An advanced WYSIWYM document processor & LaTeX front-end
-	pkgver = 2.3.0beta1.r3021.g8acbcebf11
+	pkgver = 2.3.0beta1.r3250.g3a29ba795d
 	pkgrel = 1
 	url = http://www.lyx.org
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = lyx-git
 	optdepends = texlive-latexextra
 	provides = lyx
 	conflicts = lyx
+	replaces = 
 	source = lyx::git://git.lyx.org/lyx.git#branch=master
 	md5sums = SKIP
 
