@@ -4,15 +4,15 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.5.60
-pkgrel=2
+pkgver=1.5.70
+pkgrel=1
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 _github_url='https://github.com/balena-io/etcher'
 url='https://etcher.io'
 license=(Apache)
-depends=(electron3-bin gtk2 libxtst libxss gconf nss alsa-lib nodejs)
+depends=(electron6 gtk2 libxtst libxss gconf nss alsa-lib nodejs)
 makedepends=(npm python2 git jq)
 optdepends=('libnotify: for notifications'
             'speech-dispatcher: for text-to-speech')
@@ -28,7 +28,7 @@ source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git#tag=v${pk
         )
 sha256sums=('SKIP'
             'SKIP'
-            '135ce3deefb9f571b0a28abb7f6c678eea10546a537618b8a69c57012906a0eb'
+            '911cca26a477c0525085410c78cd9292dc4b6bd27fb7340034fe762d333a3f52'
             'c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754')
 
 prepare() {
@@ -41,8 +41,6 @@ prepare() {
 build() {
   cd "${_pkgname}"
   export NPM_VERSION=$(npm --version)
-  rm -rf node_modules
-  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   make electron-develop
   make webpack
   npm prune --production
@@ -51,6 +49,7 @@ build() {
 package() {
   cd "${_pkgname}"
 
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   _appdir="${pkgdir}/usr/lib/${pkgname}"
   install -d "${_appdir}"
 

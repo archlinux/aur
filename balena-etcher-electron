@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-exec electron3 /usr/lib/balena-etcher/lib/start.js "$@"
+exec electron6 /usr/lib/balena-etcher "$@"
