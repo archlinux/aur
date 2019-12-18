@@ -2,7 +2,7 @@
 
 pkgname=ttf-google-fonts-typewolf
 _commit='e4361d27e1a23e92b815de3ae00d588a184454ca'
-pkgver=19.11.git+e4361d2
+pkgver=19.12.git+37c0f8e
 pkgrel=1
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project."
 arch=('any')
