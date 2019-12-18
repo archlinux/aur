@@ -51,7 +51,7 @@ _major=5.4
 _minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,12 +72,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_uksm_path}/${_uksm_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch"
          # the main kernel config files
         'config')
 
@@ -334,12 +336,14 @@ sha512sums=('e3978c8c8b271693acded64a86a755248cd43b419b948c052c5c3041c7c0fc4d584
             'SKIP'
             'c9aa593db5c142cbc60c60fb15dc780c11af03a6607301250c27d5042b14481f1ea7edfc87bde70019d2bcd1f1d53c05c3291f94b9e66795c81fade740419818'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            'c89c8bfa12df7c9a468226743adc64d247de568e5c1265c9ddd869e22902235a0cc3d796bcea2c41405f1c4dd1ce41e15a74f93824924380dc3698b3b8d08efb'
-            '947298e90138591dd2f41c55aea38be9feb1a6a7abd7240c2114da072170e09ec725ba7ff5ab72f4449e8ffdc28eb3dac5f134b3a6e1a7372a5cea1d214d4c2c'
-            '08c3523d190abe9cd321e2b3331a4f84fadab1da46ab9f29ffc840ae62acf920c5315293950ed2ed9ff705d566a8f52416a544743429b8a399c509be177fead6'
-            'a5988be5bac5367cf1d8e5086843d63d81e36d319c06d0ab10dd50e3058ee61e06494eeaf298d704eb71b70958899bfa8bf58cbcc22f9a147f947213e7632e20'
-            'fc503def50ea2f890a529cc53b9a1352df5e49f4f0d46b36d7a1cf3643342cb3d6de74122b431b44c657a795448d6156d3111390213c38c0f33cca4d20320f0a'
-            '7907c62ddd79ea234a537547c97d7d9e06bce91f8faf25f800cd1d2d65f5e7e2bc341c2fdb987d942688e8a5f85f3ed876afe7dc3987c7e6419ce5bc9732761e'
+            '8833681c56ccb82509848f5307fd4d6c93f9790b1382f064b96512d95155986cad205fa4a03577ed2f786e7b4e35cf28c7f775ba2ac59a86d17cfa11b133280e'
+            'f86c81ec5d843d3e67097ddf66052efa7cf5866e7026450294cea505ebd073472735cebd9383aa58850f9767f808fc9cc29562f761a305619157f2d59bf2b9c9'
+            'ff1bf81285fe927a549061496e38bd37dbedc15fd2a90900aa4cb42f7dee8b6c648fd2fff8f2de1fe555d010f270e2287ee127d74572cf4c2d736057818b0683'
+            'caa3a162e828ed01f85455173078489c17373dbaabe7fd02bd30c0efa981c5cf8c564e47b1d23f7caf1bce4c426df62fdb72be11979eaa014a915a802cb86115'
+            'd6abab932ed1db2b25e0f3ef3aad643ca2c09c7b5d548bfa099ba391c65403359d6e8a5ba6a9ffaefcdad79809b28e16eba94ac2401b536af236ff82d4456655'
+            '925f2355f3134695d593bf211c224d7ee56b6f4e15e8a7ee95038b2690548981479df4c2d3c65897dd37ca3110da5dcf159cd230b4198f39324bf27c3e882552'
+            '68c0395cd3ce886fb04be23c50db0a9486ce18c7235a6f71d60b2d5f88f2629415db608992779bad68aca29c8ceac29af1e7907fd70a0691a634c312d7761e6d'
+            '45fdd20e0de9d60ae9b2d257970f9c591b2ae93cd3b63e38b156e5cb744587d21222fa4e32cd5415b9b924f0a259407e9c9fa6c6d1ae5d6accc3926cde4fe4ef'
             'da14f7326e5321b2c6ed35d52a1ac1c012934fa894815472c1f7d84e238c4182e1b45c3da173dc084b027020d0cc2dd140f91a76bfeafe1750dd375d7ef0e85a')
 
 validpgpkeys=(
