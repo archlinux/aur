@@ -2,9 +2,9 @@
 
 _githubname=tizonia-openmax-il
 pkgname=tizonia-all-git
-pkgver=0.18.0.r55.g28b2b257
+pkgver=0.19.0.r18.gc97eec7c
 pkgrel=1
-pkgdesc="Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Dirble Internet Radio, Plex servers and Chromecast devices."
+pkgdesc="Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Plex servers and Chromecast devices."
 arch=('x86_64')
 url="https://www.tizonia.org"
 license=('LGPL')
@@ -29,6 +29,7 @@ depends=(
     'boost-libs'
     'hicolor-icon-theme'
     'python-eventlet'
+    'python-levenshtein'
 
     # AUR:
     'log4c'
@@ -43,7 +44,8 @@ depends=(
 )
 provides=('tizonia-all')
 conflicts=('tizonia-all')
-source=("${pkgname}"::git+https://github.com/tizonia/${_githubname}.git#branch=develop)
+options=()
+source=("${pkgname}"::git+https://github.com/tizonia/${_githubname}.git)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -54,21 +56,16 @@ pkgver() {
     printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
-prepare() {
-  command -v tizonia &> /dev/null \
-      && { \
-      echo >&2 "Please uninstall tizonia-all or tizonia-all-git before proceeding." ; \
-      echo >&2 "See https://github.com/tizonia/tizonia-openmax-il/issues/485." ; \
-      exit 1; }
-  mkdir -p "$srcdir/path"
-  # Tizonia expects Python 2
-  ln -sf /usr/bin/python "$srcdir/path/python"
-  ln -sf /usr/bin/python-config "$srcdir/path/python-config"
-}
+# prepare() {
+  #command -v tizonia &> /dev/null \
+  #    && { \
+  #    echo >&2 "Please uninstall tizonia-all or tizonia-all-git before proceeding." ; \
+  #    echo >&2 "See https://github.com/tizonia/tizonia-openmax-il/issues/485." ; \
+  #    exit 1;
+  #    }
+#}
 
 build() {
-    export PATH="$srcdir/path:$PATH"
-    export PYTHON="/usr/bin/python"
     cd "$pkgname"
     autoreconf -ifs
     ./configure \
