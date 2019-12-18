@@ -3,7 +3,7 @@
 # Contributor: liberodark
 
 pkgname=guitar
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Open source Git GUI Client"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -12,10 +12,8 @@ license=(GPL)
 depends=(qt5-svg git file)
 makedepends=(ruby cmake qt5-tools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/soramimi/Guitar/archive/v${pkgver}.tar.gz"
-        "${pkgname}.desktop"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/guitar-zlib.patch")
-sha256sums=('195cb61012d5586d7e6f819f4d3b3caee2c35f0b806629c6ee1c894548ba0075'
-            '794c814a3181a3c0f69406876972df06d1e885033624aa5e6141cdf9ece2cfa7'
+sha256sums=('9155fc7c8f28972ecf40ad0badc5a519b50a28e92f54e4e6ea2570ec5ecdf957'
             'fe61f4003461995615ba62cc7b70f3c32872aba5b84129e35e590014f52db87e')
 
 prepare() {
@@ -34,6 +32,6 @@ build() {
 package() {
   cd "Guitar-${pkgver}"
   install -Dm755 "_bin/Guitar" "$pkgdir/usr/bin/$pkgname"
-  install -D "LinuxDesktop/Guitar.svg" "$pkgdir/usr/share/pixmaps/${pkgname}.svg"
-  install -D "$srcdir/guitar.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -D "LinuxDesktop/Guitar.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+  install -D "LinuxDesktop/guitar.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }
