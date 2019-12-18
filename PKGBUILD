@@ -109,13 +109,13 @@ package_intel_fpga_lite-base() {
 }
 
 package_intel_fpga_lite-ip() {
-    depends=("intel_fpga_lite-license=$pkgver-$pkgrel")
+    depends=("intel_fpga_lite-base=$pkgver-$pkgrel")
     mkdir -p "${pkgdir}${_inteldir}"
     mv "${srcdir}/install/ip" "${pkgdir}${_inteldir}"
 }
 
 package_intel_fpga_lite-modelsim_ase(){
-    depends=("intel_fpga_lite-license=$pkgver-$pkgrel")
+    depends=("intel_fpga_lite-base=$pkgver-$pkgrel")
     install -D -m755 modelsim-ase.sh "${pkgdir}/etc/profile.d/modelsim-ase.sh"
     install -D -m644 modelsim-ase.desktop "${pkgdir}/usr/share/applications/modelsim-ase.desktop"
     mkdir -p "${pkgdir}${_inteldir}"
@@ -123,13 +123,13 @@ package_intel_fpga_lite-modelsim_ase(){
 }
 
 package_intel_fpga_lite-nios2eds(){
-    depends=("intel_fpga_lite-license=$pkgver-$pkgrel")
+    depends=("intel_fpga_lite-base=$pkgver-$pkgrel")
     mkdir -p "${pkgdir}${_inteldir}"
     mv "${srcdir}/install/nios2eds" "${pkgdir}${_inteldir}"
 }
 
 package_intel_fpga_lite-quartus(){
-    depends=("intel_fpga_lite-license=$pkgver-$pkgrel" "intel_fpga_lite-ip=$pkgver-$pkgrel")
+    depends=("intel_fpga_lite-base=$pkgver-$pkgrel" "intel_fpga_lite-ip=$pkgver-$pkgrel")
 
     install -D -m755 quartus.sh "${pkgdir}/etc/profile.d/quartus.sh"
     install -D -m644 quartus.desktop "${pkgdir}/usr/share/applications/quartus.desktop"

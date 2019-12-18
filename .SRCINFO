@@ -47,16 +47,16 @@ pkgbase = intel_fpga_lite
 pkgname = intel_fpga_lite-base
 
 pkgname = intel_fpga_lite-ip
-	depends = intel_fpga_lite-license=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-1
 
 pkgname = intel_fpga_lite-modelsim_ase
-	depends = intel_fpga_lite-license=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-1
 
 pkgname = intel_fpga_lite-nios2eds
-	depends = intel_fpga_lite-license=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-1
 
 pkgname = intel_fpga_lite-quartus
-	depends = intel_fpga_lite-license=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-1
 	depends = intel_fpga_lite-ip=19.1.0.670-1
 
 pkgname = intel_fpga_lite-quartus-help
