@@ -3,7 +3,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=tmsu
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'go')
 provides=('tmsu')
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oniony/TMSU/archive/v$pkgver.tar.gz")
-sha256sums=('04e8a4c47532a4d8f673c3b3a921a47815c752b2ca1b564f6e1ed58a1b88a177')
+sha256sums=('0ac7f09336aaedf73623c4f486c05137c024a726c16dd32525463aee9d70b46a')
 
 build() {
   export GOPATH=/tmp
