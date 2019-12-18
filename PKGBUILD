@@ -1,4 +1,4 @@
-# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
+# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Jaden Peterson <jadenpeterson150@gmail.com>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: jeckhack <jeckhack/gmail/com>
@@ -14,7 +14,7 @@ pkgname=freetype2-cleartype
 pkgver=2.10.1
 pkgrel=1
 pkgdesc="Font rasterization library with ClearType patch"
-arch=(x86_64)
+arch=('x86_64')
 license=('GPL')
 url="https://www.freetype.org/"
 # adding harfbuzz for improved OpenType features auto-hinting
@@ -41,28 +41,28 @@ sha1sums=('79874ef4eaa52025126b71d836453b8279bdd331'
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 prepare() {
-  cd freetype-${pkgver}
-  # Patches from [extra]
-  patch -Np1 -i ../0001-Enable-table-validation-modules.patch
-  patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
-  patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
-  # Enable ClearType
-  patch -Np1 -i ../0007-cleartype.patch
+	cd freetype-${pkgver}
+	# Patches from [extra]
+	patch -Np1 -i ../0001-Enable-table-validation-modules.patch
+	patch -Np1 -i ../0002-Enable-infinality-subpixel-hinting.patch
+	patch -Np1 -i ../0003-Enable-long-PCF-family-names.patch
+	# Enable ClearType
+	patch -Np1 -i ../0007-cleartype.patch
 }
 
 build() {
-  cd freetype-${pkgver}
-  ./configure --prefix=/usr --disable-static
-  make
+	cd freetype-${pkgver}
+	./configure --prefix=/usr --disable-static
+	make
 }
 
 check() {
-  cd freetype-${pkgver}
-  make -k check
+	cd freetype-${pkgver}
+	make -k check
 }
 
 package() {
-  cd freetype-${pkgver}
-  make DESTDIR="${pkgdir}" install
+	cd freetype-${pkgver}
+	make DESTDIR="${pkgdir}" install
   install -Dt "${pkgdir}/etc/profile.d" -m644 ../freetype2.sh
 }
