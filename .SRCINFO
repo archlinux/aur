@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.4.3
+	pkgver = 5.4.4
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-v5.4.3-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-v5.4.3-arch1.tar.gz
+	source = linux-v5.4.4-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-v5.4.4-arch1.tar.gz
 	source = config
 	source = 0001_bmq_v5.4-r0.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.4/bmq_v5.4-r0.patch
 	source = 0002_enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = ce5953f1ef56302a4a89ef7049c1459413c17d9400904f4cf444d66b110e5cd5
+	sha256sums = 96050f02af21f761fb059c6a3db895ae21c86110dc4f8761899b48b073178374
 	sha256sums = 7eeeab7beeb27c69919cd431a77e2d05cb584eaf79ab775af7012a47fbed0b6d
 	sha256sums = d3405db8ab0557a8d4ca28c15052413abefe0ae267016c3708dfaed2dae8a858
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
@@ -34,11 +34,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.4.3
+	provides = linux-gc=5.4.4
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.4.3
-	provides = linux-headers=5.4.3
+	provides = linux-gc-headers=5.4.4
+	provides = linux-headers=5.4.4
 

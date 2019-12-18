@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.4.3
+pkgver=5.4.4
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver}-arch${pkgrel}
@@ -48,7 +48,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ce5953f1ef56302a4a89ef7049c1459413c17d9400904f4cf444d66b110e5cd5'
+sha256sums=('96050f02af21f761fb059c6a3db895ae21c86110dc4f8761899b48b073178374'
             '7eeeab7beeb27c69919cd431a77e2d05cb584eaf79ab775af7012a47fbed0b6d'
             'd3405db8ab0557a8d4ca28c15052413abefe0ae267016c3708dfaed2dae8a858'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
