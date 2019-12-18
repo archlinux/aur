@@ -1,0 +1,14 @@
+pkgbase = belr
+	pkgdesc = A library for working with vCards
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = http://www.linphone.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = bctoolbox>=4.3
+	source = belr-4.3.0.tar.gz::https://github.com/BelledonneCommunications/belr/archive/4.3.0.tar.gz
+	sha256sums = d801e0f60eb02c9e094c1ad5d69cab82cf42677efac0ea38729b470134683684
+
+pkgname = belr
+
