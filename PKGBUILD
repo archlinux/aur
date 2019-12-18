@@ -1,13 +1,13 @@
-# Maintainer: Vaporeon <vaporeon@vaporeon.io>
+# Maintainer: nyanpasu64 <nyanpasu64@tuta.io>
 
 pkgname=bsnes-plus-git
-pkgver=0.73r256.45bf3b1
+pkgver=0.73r595.e4edc7a
 pkgrel=1
 pkgdesc='debug-oriented fork of bsnes v073'
 arch=('i686' 'x86_64')
 url='https://github.com/devinacker/bsnes-plus'
 license=('GPL3')
-depends=('libao' 'libpulse' 'openal' 'qt4' 'sdl' 'zenity')
+depends=('libao' 'libpulse' 'openal' 'qt5-base' 'sdl' 'zenity')
 makedepends=('mesa' 'git')
 source=("git+${url}.git"
         'bsnes')
@@ -22,17 +22,13 @@ pkgver() {
 }
 
 build() {
-  export qtpath=/usr/lib/qt4
-
   cd "${srcdir}"/bsnes-plus/bsnes
 
   for p in {accuracy,compatibility}; do
     make profile="$p"
-    mv out/bsnes{,-$p}
-    make clean
   done
 
-  for l in {snesfilter,snesreader,supergameboy}; do
+  for l in {snesfilter,snesmusic,snesreader,supergameboy}; do
     cd "${srcdir}"/bsnes-plus/"$l"
     make
   done
@@ -45,6 +41,7 @@ package() {
   install -m 644 bsnes/data/bsnes.desktop "${pkgdir}"/usr/share/applications/
   install -m 644 bsnes/data/bsnes.png "${pkgdir}"/usr/share/pixmaps/
   install -m 644 snesfilter/libsnesfilter.so "${pkgdir}"/usr/lib/
+  install -m 644 snesmusic/libsnesmusic.so "${pkgdir}"/usr/lib/
   install -m 644 snesreader/libsnesreader.so "${pkgdir}"/usr/lib/
   install -m 644 supergameboy/libsupergameboy.so "${pkgdir}"/usr/lib/
 
