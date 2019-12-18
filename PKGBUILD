@@ -1,4 +1,5 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: fitu996 <fitu996 _at_ gmail _dot_ com>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=dvdisaster
 pkgver=0.79.5
@@ -9,8 +10,8 @@ url="http://www.dvdisaster.com/"
 license=('GPL')
 depends=('gtk2')
 options=('!makeflags')
-source=(http://dvdisaster.net/downloads/${pkgname}-${pkgver}.tar.bz2
-        ${pkgname}-${pkgver}.tar.bz2.sig::http://dvdisaster.net/downloads/${pkgname}-${pkgver}.tar.bz2.gpg)
+source=(${pkgname}-${pkgver}.tar.bz2::http://deb.debian.org/debian/pool/main/d/dvdisaster/${pkgname}_${pkgver}.orig.tar.bz2
+        ${pkgname}-${pkgver}.tar.bz2.sig::http://deb.debian.org/debian/pool/main/d/dvdisaster/${pkgname}_${pkgver}.orig.tar.bz2.asc)
 sha1sums=('23ccf697031280adb5bc3e17a0d5def0421fc28d'
           '43591a1a8c0e9594650251d6466e96b9aad671e7')
 validpgpkeys=('12B31535AF903ADE9E73BA7E5A590EFEF5F6C46C'
