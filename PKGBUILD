@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-bumblebee-status-git
 _gitname=gnome-shell-extension-bumblebee-status
