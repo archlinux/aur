@@ -1,13 +1,13 @@
 _reponame=ldoce5viewer-pyqt5
 pkgname=$_reponame-git
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="LDOCE5 viewer ported to PyQt5 for retina (HiDPI) support. "
 license=(GPL3)
 conflicts=(ldoce5viewer-git ldoce5viewer)
 arch=('i686' 'x86_64')
 url='https://github.com/purboo/ldoce5viewer-pyqt5'
-depends=(python-pyqt5 pyqt5-common python-lxml python-whoosh qt5-webkit qt5-multimedia gst-plugins-good gst-plugins-ugly python-gobject)
+depends=(python-pyqt5 python-lxml python-whoosh qt5-webkit qt5-multimedia gst-plugins-good gst-plugins-ugly python-gobject)
 source=("git://github.com/purboo/ldoce5viewer-pyqt5.git")
 md5sums=('SKIP')
 

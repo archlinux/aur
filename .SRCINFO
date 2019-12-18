@@ -1,13 +1,12 @@
 pkgbase = ldoce5viewer-pyqt5-git
 	pkgdesc = LDOCE5 viewer ported to PyQt5 for retina (HiDPI) support.
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/purboo/ldoce5viewer-pyqt5
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = python-pyqt5
-	depends = pyqt5-common
 	depends = python-lxml
 	depends = python-whoosh
 	depends = qt5-webkit
