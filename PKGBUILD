@@ -1,6 +1,6 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=aircall
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Aircall, electron included"
 arch=('x86_64' 'i686')
