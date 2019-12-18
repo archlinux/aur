@@ -2,17 +2,17 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 
 pkgname=craftbukkit-spigot
-pkgver=1.15.0.2508
+pkgver=1.15.1.2522
 #### Minecraft version to build. Just change this to build a different branch.
 #### Makepkg will automatically (unless --holdver is specified) select the most
 #### recent Spigot version for this Minecraft version.
-_pkgver=1.15
+_pkgver=1.15.1
 _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
 _buildtoolver=103
-pkgrel=2
+pkgrel=1
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="https://www.spigotmc.org/"
