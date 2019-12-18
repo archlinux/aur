@@ -2,7 +2,7 @@
 
 pkgname=emerald-icon-theme-git
 pkgver=2018.02.02.r18.ge2d3520
-pkgrel=1
+pkgrel=2
 pkgdesc="Fresh and simple personality icon theme"
 arch=('any')
 url="https://github.com/vinceliuice/emerald-icon-theme"
