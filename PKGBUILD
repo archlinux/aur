@@ -2,8 +2,8 @@
 # Contributor: Anatol Pomozov <anatol@google.com>
 
 pkgname=muduo
-pkgver=2.0.0
-pkgrel=5
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='A C++ non-blocking multi-threaded network library'
 url='https://github.com/chenshuo/muduo'
 license=(BSD)
@@ -12,7 +12,7 @@ depends=(protobuf)
 makedepends=(cmake boost)
 options=(staticlibs)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('bf7ae8bd9fd54567c93e12ddbfbc25a69fe6a50e625f02743e7268df3760dc13')
+sha256sums=('5f93c17f9f15cd67c3b5bc38dc30479f97031c5c2a953a02433ac519668ccb69')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
