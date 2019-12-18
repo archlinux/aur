@@ -3,12 +3,12 @@
 pkgname=(tensorflow_datasets)
 _name=datasets
 pkgver='1.3.0'
-pkgrel=1
+pkgrel=2
 url="https://github.com/tensorflow/datasets"
 pkgdesc="A collection of datasets ready to use with TensorFlow"
 depends=('python-attrs' 'python-dill' 'python-future' 'python-promise' 'python-requests'
-         'python-tensorflow' 'python-termcolor' 'python-tqdm' 'python-wrapt' 'tensorflow_metadata')
-makedepends=('bazel' 'python-setuptools' 'python-wheel')
+         'python-termcolor' 'python-tqdm' 'python-wrapt' 'tensorflow_metadata')
+makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('jupyter' 'mako' 'python-pytest' 'python-pytest-xdist')
 license=('Apache')
 arch=('any')
