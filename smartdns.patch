@@ -1,0 +1,24 @@
+--- smartdns.service.old	2019-09-24 10:41:44.487335094 +0800
++++ smartdns.service.new	2019-09-24 10:44:43.832401460 +0800
+@@ -1,17 +1,17 @@
+ [Unit]
+ Description=smart dns server
+ After=network.target 
++StartLimitBurst=0
++StartLimitIntervalSec=60
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/smartdns.pid
++PIDFile=/run/smartdns.pid
+ EnvironmentFile=/etc/default/smartdns
+-ExecStart=/usr/sbin/smartdns $SMART_DNS_OPTS
++ExecStart=/usr/bin/smartdns $SMART_DNS_OPTS
+ KillMode=process
+ Restart=always
+ RestartSec=2
+-StartLimitBurst=0
+-StartLimitIntervalSec=60
+ 
+ [Install]
+ WantedBy=multi-user.target
