@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-screenshot-git
 	pkgdesc = Gnome Shell extension for making and uploading screenshots
-	pkgver = r153.2107561
+	pkgver = r158.a12a8f2
 	pkgrel = 1
 	url = https://github.com/OttoAllmendinger/gnome-shell-screenshot
 	arch = any
