@@ -1,7 +1,7 @@
 pkgbase = skycoin-explorer
 	pkgdesc = Skycoin Blockchain Explorer. explorer.skycoin.com
 	pkgver = auogenerated
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/skycoinproject/skycoin-explorer
 	arch = any
 	makedepends = git
@@ -13,6 +13,7 @@ pkgbase = skycoin-explorer
 	source = https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key
 	sha256sums = SKIP
 	sha256sums = 41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14
+	sha256sums = PKGBUILD.sig
 
 pkgname = skycoin-explorer
 	options = !strip

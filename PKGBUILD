@@ -7,7 +7,7 @@ githuborg=skycoinproject
 pkgdesc="Skycoin Blockchain Explorer. explorer.skycoin.com"
 pkgver='auogenerated'
 pkggopath="github.com/${githuborg}/${pkgname}"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkggopath}"
 license=()
@@ -15,7 +15,8 @@ makedepends=(git go gcc npm node-gyp)
 source=("git+${url}.git#branch=${BRANCH:-develop}"
 "https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key")
 sha256sums=('SKIP'
-'41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
+'41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14'
+'PKGBUILD.sig')
 #validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC')
 gpg --import key
 #verify PKGBUILD signature
