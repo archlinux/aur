@@ -10,17 +10,19 @@ _cgipkgname='github.com/jung-kurt/caddy-cgi'
 # build some asm files needed by quic-go
 if `pacman -Qq gcc-go >/dev/null 2>/dev/null`
 then
-	USING_GCCGO=y
-	GOFLAGS="-gccgoflags -O2"
-	depends=('gcc-libs')
-	makedepends=('gcc-go>=9.1.0')
+	echo "gcc-go not supported yet."
+	exit 1
+#	USING_GCCGO=y
+#	GOFLAGS="-gccgoflags -O2"
+#	depends=('gcc-libs')
+#	makedepends=('gcc-go>=9.1.0')
 else
-	makedepends=('go>=1.12')
+	makedepends=('go>=1.13')
 fi
 
 pkgname=caddy-with-cgi
 _pkgbase=caddy
-pkgver=1.0.3
+pkgver=1.0.4
 _cgiver=1.11.4
 pkgrel=1
 pkgdesc='HTTP/2 Web Server with Automatic HTTPS, with caddy-cgi plugin and gcc-go support'
@@ -40,7 +42,7 @@ source=("https://$_gopkgname/archive/v$pkgver/$_pkgbase-$pkgver.tar.gz"
 	'caddy.conf'
 	'noquic_aesni.patch'
 	'plugins.patch')
-sha256sums=('c1c7b337a5008d28c1956fd4f057104a78d0e24b74c30867cea988369b61fed3'
+sha256sums=('bf81245d2b347c89a8e8aa358a224b722d55cb6e1c266bbdffbe6acc54d130a5'
 	'a1c3982093f599b11b05ed9040fb3c0d8da960023226c82f125dbbb0cac9634f'
 	'e679dd79fd92dc351fc190c7af529c73e3896986aaa6b7c0ae01e561398d6b85'
 	'6db7aec45e95bbbf770ce4d120a60d8e4992d2262a8ebf668521179279aa5ae7'
@@ -48,21 +50,21 @@ sha256sums=('c1c7b337a5008d28c1956fd4f057104a78d0e24b74c30867cea988369b61fed3'
 	'bd4d912d083be176727882ccc1bbe577a27cc160db09238e5edc05ba458aebce'
 	'80520b80ccabf077a3269f6a1bf55faa3811ef5adce115131b35ef2044d37b64'
 	'1c121388b2741bc8b02fe01950d2241e67fef5d2bd806486c108775007461c8a'
-	'bad12dd8ea996b4cd9dfeb60364fe266321da9dad93abe0f169f3f1b6f23f487')
+	'1ca21fbf9b865f340aa6e6e5be31d1a5a6c422d23ab9a5b9d37cda589bbf829c')
 
 prepare() {
 	export GO111MODULE=on
 	mv -Tv "$srcdir/caddy-cgi-$_cgiver" "$srcdir/$_pkgbase-$pkgver/caddy-cgi"
 	cd "$srcdir/$_pkgbase-$pkgver"
 	rm -v "$srcdir/$_pkgbase-$pkgver/caddy-cgi/go.mod" "$srcdir/$_pkgbase-$pkgver/caddy-cgi/go.sum"
-	patch -p0 -i "$srcdir/plugins.patch"
+	patch -p1 -i "$srcdir/plugins.patch"
 	# fix rewrite: rewrite the URI instead of just the path
 	# https://github.com/mholt/caddy/issues/2129
 	sed -i 's/URL.Path/URL.RequestURI()/g' caddyhttp/rewrite/rewrite.go
-	if [ "$USING_GCCGO" == y ]
-	then
-		patch -p1 -i "$srcdir/noquic_aesni.patch"
-	fi
+#	if [ "$USING_GCCGO" == y ]
+#	then
+#		true#patch -p1 -i "$srcdir/noquic_aesni.patch"
+#	fi
 	go mod download
 	go mod verify
 }

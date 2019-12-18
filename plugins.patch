@@ -1,8 +1,16 @@
---- caddy/caddymain/run.go	2017-07-31 20:51:58.634825901 +0800
-+++ caddy/caddymain/run.go	2017-07-31 20:26:02.553255919 +0800
-@@ -21,6 +21,7 @@
+commit 0ad54c2f6d4cd516e82eda4391e716e6137217b5
+Author: Iru Cai <mytbk920423@gmail.com>
+Date:   Wed Dec 18 09:28:53 2019 +0800
+
+    cgi
+
+diff --git a/caddy/caddymain/run.go b/caddy/caddymain/run.go
+index 163cbc84..242b61eb 100644
+--- a/caddy/caddymain/run.go
++++ b/caddy/caddymain/run.go
+@@ -40,6 +40,7 @@ import (
  
- 	"github.com/mholt/caddy/caddytls"
+ 	_ "github.com/caddyserver/caddy/caddyhttp" // plug in the HTTP server type
  	// This is where other plugins get plugged in (imported)
 +	_ "github.com/caddyserver/caddy/caddy-cgi"
  )
