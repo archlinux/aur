@@ -1,7 +1,7 @@
 pkgbase = sensu-agent
 	pkgdesc = Sensu Go Agent
 	pkgver = 5.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sensu.io
 	arch = x86_64
 	arch = armv7h
