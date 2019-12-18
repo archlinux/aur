@@ -1,7 +1,7 @@
 pkgbase = libelfin-git
 	pkgdesc = C++11 ELF/DWARF parser
 	pkgver = r148.ac45a09
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aclements/libelfin
 	arch = x86_64
 	license = MIT

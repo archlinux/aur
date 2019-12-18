@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libelfin-git
 pkgver=r148.ac45a09
-pkgrel=1
+pkgrel=2
 pkgdesc="C++11 ELF/DWARF parser"
 arch=(x86_64)
 url="https://github.com/aclements/libelfin"
