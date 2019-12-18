@@ -1,6 +1,6 @@
 pkgbase = system76-firmware-daemon-git
 	pkgdesc = System76 Firmware Daemon provides a daemon for installing firmware updates.
-	pkgver = 1.0.5.r16.g699fd04
+	pkgver = 1.0.6.r0.g95fa4da
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-firmware
 	install = system76-firmware-daemon.install
