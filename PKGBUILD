@@ -1,7 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 _pkgname=dupeguru
 pkgname="${_pkgname}-git"
-pkgver=4.0.3.r40.ga1cacbe7
+pkgver=4.0.4.r18.g2ea02bd7
 pkgrel=1
 pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
@@ -49,11 +49,14 @@ package() {
   python package.py --arch-pkg
   cd "build/${_pkgname}-arch"
 
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mv ${_pkgname}.desktop "${pkgdir}/usr/share/applications"
-
+  mkdir -p "${pkgdir}/usr/share"/{'applications',"${_pkgname}"}
   mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
-  cp -a * "${pkgdir}/usr/lib/${_pkgname}/"
+
+  cp -a -- * "${pkgdir}/usr/lib/${_pkgname}/"
+
+  mv "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications"
+  mv "${pkgdir}/usr/lib/${_pkgname}"/*.png "${pkgdir}/usr/share/${_pkgname}"
+
   chmod a+x "${pkgdir}/usr/lib/${_pkgname}/run.py"
 
   mkdir -p "${pkgdir}/usr/bin"
