@@ -1,6 +1,6 @@
 pkgbase = hexyl-git
 	pkgdesc = A command-line hex viewer
-	pkgver = 0.5.1.97
+	pkgver = 0.6.0.106
 	pkgrel = 1
 	url = https://github.com/sharkdp/hexyl
 	arch = i686
