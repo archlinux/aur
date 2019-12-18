@@ -1,9 +1,9 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gotop-git
 _pkgname=${pkgname%-git}
 pkgver=3.0.0.r43.g2cd92e1
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
 arch=(x86_64)
 url='https://github.com/cjbassi/gotop'
