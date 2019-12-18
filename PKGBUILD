@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ant-bloody-theme-git
 _pkgname=Ant-Bloody
-pkgver=r68.ce7b264
+pkgver=r77.cb7f94f
 pkgrel=1
 pkgdesc="Bloody variant of the Ant theme"
 arch=("any")
