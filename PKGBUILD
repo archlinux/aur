@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=detect-it-easy
-pkgver=2.04
+pkgver=2.05
 pkgrel=1
 pkgdesc="Detect It Easy is a packer identifier"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(custom)
 depends=(glibc)
 source=("https://github.com/horsicq/DIE-engine/releases/download/${pkgver}/die_lin64_portable_${pkgver}.tar.gz")
 install="$pkgname.install"
-sha256sums=('aabe103722bfc9a1a961719de432673f0db0ba63dc2f54a836de9431619b66a0')
+sha256sums=('8da38038323a0b3fd70089d8d6ce1cfe788b187e8466f006f0b6783dadee2594')
 
 package() {
 	install -dm755 "$pkgdir/usr/share/detect-it-easy"
