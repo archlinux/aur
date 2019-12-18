@@ -1,18 +1,18 @@
 # Maintainer: Guillaume Raffin <theelectronwill@gmail.com>
 # Generator: Bloop release utilities <https://github.com/scalacenter/bloop>
 pkgname=bloop
-pkgver=1.3.4
+pkgver=1.4.0-RC1
 pkgrel=1
 pkgdesc="Bloop gives you fast edit/compile/test workflows for Scala."
 arch=(any)
 url="https://scalacenter.github.io/bloop/"
 license=('Apache')
 depends=('java-environment>=8' 'python')
-source=("install-bloop-1.3.4.py::https://github.com/scalacenter/bloop/releases/download/v1.3.4/install.py")
-sha256sums=('4e95818e3c8815a1744b60c9aa63797d88602a5e8196cb84243b3f681cb4051d')
+source=("install-bloop-1.4.0-RC1.py::https://github.com/scalacenter/bloop/releases/download/v1.4.0-RC1/install.py")
+sha256sums=('01cdeb9c26944d73539d47e2ec4bf5f75c19438fa23c06ae83e8aa9479322e4e')
 
 build() {
-  python ./install-bloop-1.3.4.py --dest "$srcdir/bloop"
+  python ./install-bloop-1.4.0-RC1.py --dest "$srcdir/bloop"
   # fix paths
   sed -i "s|$srcdir/bloop|/usr/bin|g" bloop/systemd/bloop.service
   sed -i "s|$srcdir/bloop/xdg|/usr/share/pixmaps|g" bloop/xdg/bloop.desktop
