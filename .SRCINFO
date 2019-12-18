@@ -1,7 +1,7 @@
 pkgbase = vhdtool-git
 	pkgdesc = Manipulate VHD (Virtual Hard Disk) images the open-source way.
 	pkgver = r24.cafd9bf
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andreiw/vhdtool
 	arch = x86_64
 	license = GPL

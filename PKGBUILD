@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=vhdtool-git
 pkgver=r24.cafd9bf
-pkgrel=2
+pkgrel=3
 pkgdesc="Manipulate VHD (Virtual Hard Disk) images the open-source way."
 arch=(x86_64)
 url="https://github.com/andreiw/vhdtool"
