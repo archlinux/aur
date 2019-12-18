@@ -10,7 +10,7 @@
 # Contributor: Chris Cromer <chris@cromer.cl>
 
 pkgname=networkmanager-consolekit
-pkgver=1.20.8
+pkgver=1.22.0
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems and user applications"
@@ -19,7 +19,7 @@ license=('GPL' 'LGPL2.1')
 url="https://wiki.gnome.org/Projects/NetworkManager"
 depends=("libnm>=$pkgver" 'iproute2' 'polkit-consolekit' 'consolekit'
          'wpa_supplicant' 'libmm-glib' 'libnewt' 'libndp' 'libteam' 'bluez-libs'
-         'curl' 'libpsl' 'audit')
+         'curl' 'libpsl' 'audit' 'mobile-broadband-provider-info')
 makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
              "ppp=$_pppver" 'modemmanager' 'vala' 'perl-yaml' 'python-gobject'
              'git' 'jansson' 'glib2-docs' 'dhcpcd' 'iwd' 'dnsmasq')
@@ -37,7 +37,7 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 groups=('gnome')
 install=networkmanager.install
-_commit=4ef92efc07a929f13699a7d99b5af192b01948b1 # tags/1.20.8^0
+_commit=7fe734f8bc0661ff476204a034eb987df43ee461 # tags/1.22.0^0
 source=(#https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
         "git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         NetworkManager.conf
@@ -103,6 +103,7 @@ build() {
     --with-libaudit=yes \
     --with-libpsl \
     --with-modem-manager-1 \
+    --with-nm-cloud-setup=yes \
     --with-nmcli \
     --with-nmtui \
     --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
@@ -140,6 +141,8 @@ package() {
     "$pkgdir"/usr/lib/NetworkManager/conf.d/20-connectivity.conf
 
   # remove conflicting files from libnm, etc
+  shopt -s globstar
+
   rm "$pkgdir"/usr/lib/libnm*
   rm -r "$pkgdir"/usr/lib/girepository-1.0
   rm -r "$pkgdir"/usr/share/gir-1.0
@@ -147,4 +150,5 @@ package() {
   rm -r "$pkgdir"/usr/share/vala/vapi
   rm -r "$pkgdir"/usr/include
   rm -r "$pkgdir"/usr/lib/pkgconfig
+  rm -r "$pkgdir"/usr/lib/**/*nm-cloud-setup*
 }
