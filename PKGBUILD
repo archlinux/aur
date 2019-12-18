@@ -8,8 +8,9 @@ pkgdesc="Two-Factor Authentication for GNOME"
 arch=(x86_64)
 url="https://gitlab.gnome.org/World/Authenticator"
 license=(GPL3)
-depends=(python-pyopt python-pillow pyzbar python-favicon python-yoyo-migrations)
+depends=(python-pillow pyzbar python-yoyo-migrations python-pyfavicon python-pyotp)
 makedepends=(meson ninja gobject-introspection)
+provides=(authenticator)
 _commit=d6c8d61d2568d92d3ad7d1ae5c7743f9919fb2b8  # tags/3.32.2
 source=("git+https://gitlab.gnome.org/World/Authenticator.git#commit=$_commit")
 sha256sums=('SKIP')
