@@ -2,8 +2,8 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686)
@@ -17,20 +17,10 @@ optdepends=('qterminal: required for miral demos'
             'qt5-wayland: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos'
             'qtubuntu: opt requirement for miral demos')
-source=("https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz"
-        'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1087.patch'
-        'https://patch-diff.githubusercontent.com/raw/MirServer/mir/pull/1088.patch')
-sha256sums=('526f844a7ac8ca7ede2ec33f3e942e0c130a76b1cf453d05a4f3f36e31b1cda8'
-            'ec73c4694f2d0b5279979e96add335da286a51c413dfdaf19434d7218be46eef'
-            '1e1a1b188db2fa540c200bf66e15473230f91cdadffa3040985ec4b7503ce2bd')
+source=("https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz")
+sha256sums=('4e949ee64f35a1f55e16bef011a47c75ef06b243489e9010c017151758ebb744')
 
 BUILD_DIR=build
-
-prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -Np1 -i "${srcdir}/1087.patch"
-  patch -Np1 -i "${srcdir}/1088.patch"
-}
 
 build() {
   cd ${pkgname}-${pkgver}
