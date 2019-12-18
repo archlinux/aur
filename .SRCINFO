@@ -1,7 +1,7 @@
 pkgbase = queryit
 	pkgdesc = A very basic setupless terminal based SQL query
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hugopl/queryit
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = queryit
 	makedepends = libyaml>=0.2.0
 	makedepends = make
 	depends = termbox-git
-	depends = sqlite3>=3.30.1
+	depends = sqlite>=3.30.1
 	depends = gc
 	depends = libevent
 	depends = pcre
