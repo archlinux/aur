@@ -1,7 +1,7 @@
 pkgbase = nautilus-subliminal-git
 	pkgdesc = Subliminal integration within Nautilus file manager
 	pkgver = r14.4648e2e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Diaoul/nautilus-subliminal
 	arch = any
 	license = MIT
