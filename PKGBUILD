@@ -5,7 +5,7 @@
 # Contributor: Robert Stoffers <rstoffers@gmail.com>
 
 pkgname=gamehub
-_pkgver=0.14.2-1
+_pkgver=0.15.0-1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell"
@@ -16,7 +16,7 @@ depends=(gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxts
 makedepends=(meson ninja vala)
 options=(!strip debug)
 source=("GameHub-$pkgver.tar.gz::https://github.com/tkashkin/GameHub/archive/${_pkgver}-master.tar.gz")
-sha256sums=('fe230da7ab63211ba08b5b84fda8633784e3e503b71dc432096ee315d6b15dae')
+sha256sums=('0182a32b595451b6bebf6f8173b6a41690e1c2b2d1c0b1a07cfce2ea0e536302')
 
 build() {
   cd "GameHub-$_pkgver-master"
@@ -27,5 +27,4 @@ build() {
 package() {
   cd "GameHub-$_pkgver-master"
   DESTDIR="${pkgdir}" ninja -C build install
-  ln -s /usr/bin/com.github.tkashkin.gamehub "$pkgdir/usr/bin/gamehub"
 }

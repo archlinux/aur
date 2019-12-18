@@ -1,6 +1,6 @@
 pkgbase = gamehub
 	pkgdesc = Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell
-	pkgver = 0.14.2.1
+	pkgver = 0.15.0.1
 	pkgrel = 1
 	url = https://github.com/tkashkin/GameHub
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = gamehub
 	depends = libxtst
 	options = !strip
 	options = debug
-	source = GameHub-0.14.2.1.tar.gz::https://github.com/tkashkin/GameHub/archive/0.14.2-1-master.tar.gz
-	sha256sums = fe230da7ab63211ba08b5b84fda8633784e3e503b71dc432096ee315d6b15dae
+	source = GameHub-0.15.0.1.tar.gz::https://github.com/tkashkin/GameHub/archive/0.15.0-1-master.tar.gz
+	sha256sums = 0182a32b595451b6bebf6f8173b6a41690e1c2b2d1c0b1a07cfce2ea0e536302
 
 pkgname = gamehub
 
