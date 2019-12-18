@@ -1,6 +1,6 @@
 pkgbase = cups-nosystemd
 	pkgdesc = The CUPS Printing System - daemon package
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://www.cups.org/
 	install = cups-nosystemd.install
@@ -21,7 +21,7 @@ pkgbase = cups-nosystemd
 	makedepends = inetutils
 	depends = acl
 	depends = pam
-	depends = libcups>=2.3.0
+	depends = libcups>=2.3.1
 	depends = cups-filters
 	depends = bc
 	depends = dbus
@@ -29,8 +29,9 @@ pkgbase = cups-nosystemd
 	depends = libpaper
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = colord: for ICC color profile support
+	optdepends = logrotate: for logfile rotation support
 	optdepends = cups-openrc: cups openrc initscript
-	provides = cups=2.3.0
+	provides = cups=2.3.1
 	conflicts = cups
 	conflicts = cups-eudev
 	replaces = cups
@@ -43,13 +44,13 @@ pkgbase = cups-nosystemd
 	backup = etc/cups/subscriptions.conf
 	backup = etc/logrotate.d/cups
 	backup = etc/pam.d/cups
-	source = https://github.com/apple/cups/releases/download/v2.3.0/cups-2.3.0-source.tar.gz
+	source = https://github.com/apple/cups/releases/download/v2.3.1/cups-2.3.1-source.tar.gz
 	source = cups
 	source = cups.logrotate
 	source = cups.pam
 	source = cups-no-export-ssllibs.patch
 	source = cups-1.6.2-statedir.patch
-	sha256sums = acaf0229cf008ea8f06353ffd1bbd62d71dbe88990dd3330650ef87edb95a1a5
+	sha256sums = 1bca9d89507e3f68cbc84482fe46ae8d5333af5bc2b9061347b2007182ac77ce
 	sha256sums = 87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b
 	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5

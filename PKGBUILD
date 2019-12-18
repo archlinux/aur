@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ makedepends=('libtiff>=4.0.0' 'libpng>=1.5.7' 'xdg-utils' 'krb5' 'xinetd'
              'gzip' 'autoconf' 'avahi' 'gnutls' 'inetutils')
 optdepends=('xdg-utils: xdg .desktop file support'
             'colord: for ICC color profile support'
+            'logrotate: for logfile rotation support'
             'cups-openrc: cups openrc initscript')
 provides=("cups=${pkgver}")
 conflicts=('cups' 'cups-eudev')
@@ -35,7 +36,7 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-no-export-ssllibs.patch
         cups-1.6.2-statedir.patch
         )
-sha256sums=('acaf0229cf008ea8f06353ffd1bbd62d71dbe88990dd3330650ef87edb95a1a5'
+sha256sums=('1bca9d89507e3f68cbc84482fe46ae8d5333af5bc2b9061347b2007182ac77ce'
             '87cd833e7c07a36298341e35d5ce0534ce68fdf76ce3e9eda697e5455b963d1b'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -80,6 +81,7 @@ build() {
      --enable-dbus=yes \
      --with-dbusdir=/usr/share/dbus-1 \
      --enable-ssl=yes \
+     --enable-relro \
      --enable-threads \
      --enable-avahi \
      --enable-libpaper \
@@ -116,11 +118,6 @@ package() {
   touch "$pkgdir"/etc/cups/classes.conf
   touch "$pkgdir"/etc/cups/subscriptions.conf
   chgrp -R lp "$pkgdir"/etc/cups
-
-  # fix dbus policy location - --with-dbusdir doens't work
-  install -dm755 "$pkgdir"/usr/share/dbus-1/system.d
-  mv "$pkgdir"/etc/dbus-1/system.d/cups.conf ${pkgdir}/usr/share/dbus-1/system.d
-  rm -rf "$pkgdir"/etc/dbus-1
 
   # fix .desktop file
   sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' "$pkgdir"/usr/share/applications/cups.desktop
