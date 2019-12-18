@@ -1,8 +1,7 @@
 [Desktop Entry]
-Version=1.11.0.299
 Name=Velocidrone
-Exec=/opt/velocidrone/velocidrone.x86_64
-Icon=/opt/velocidrone/icon.png
+Exec=/usr/bin/velocidrone
+Icon=velocidrone.png
 Terminal=false
 Type=Application
 Categories=Game;

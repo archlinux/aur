@@ -1,22 +1,20 @@
 pkgbase = velocidrone
-	pkgdesc = Velocidrone: Fast paced FPV drone racing action with multiplayer and offline modes!
-	pkgver = 1.11.0.418
+	pkgdesc = a fast paced multi-player and single player FPV drone racing simulator
+	pkgver = 1
 	pkgrel = 1
-	url = http://www.velocidrone.com/
+	url = https://www.velocidrone.com/
 	arch = x86_64
 	license = proprietary
-	makedepends = wget
-	makedepends = unzip
-	depends = gcc-libs
-	depends = gtk2
-	optdepends = steam
-	noextract = velocidrone-1.11.0.418.zip
-	source = velocidrone-1.11.0.418.zip::gdrive://1-1GUMzEQVWmhunqapUMmZOH9I2fZCukM
+	makedepends = qt5-base
+	makedepends = boost
+	source = git+https://github.com/patchkit-net/patchkit-launcher-qt.git
+	source = debian_launcher.zip::local://Velocidrone%20Debian%20Launcher.zip
+	source = velocidrone.png::https://www.velocidrone.com/img/logo.png
 	source = velocidrone.desktop
-	source = https://www.velocidrone.com/img/logo.png
-	sha256sums = 4bed1615377317279bafc61f6ba57fa37f0ae969a37c62724f70c5814f94ffff
-	sha256sums = 66ab24798d6b40f2c69f42368b79205f1e39ace4d8880785bfeb47f7f20d98cb
-	sha256sums = dca386606781e552fc310bf414a911b335bb8d48114091f337d02db46befdee1
+	md5sums = SKIP
+	md5sums = 556d05b0af4bace44167549bec0e7542
+	md5sums = e176f8bb5bded2510b7368fcb7c99ce6
+	md5sums = 85bc86aef45aa4be289fac68506330de
 
 pkgname = velocidrone
 

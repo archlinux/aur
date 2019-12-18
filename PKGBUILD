@@ -1,31 +1,39 @@
-# Maintainer: Frans-Willem Hardijzer <fw@hardijzer.nl>
+# Maintainer: Sol Bekic <s+aur at s-ol dot nu>
 
-pkgname=velocidrone
-pkgver=1.11.0.418
+pkgname="velocidrone"
+pkgver=1
 pkgrel=1
-pkgdesc="Velocidrone: Fast paced FPV drone racing action with multiplayer and offline modes!"
+pkgdesc="a fast paced multi-player and single player FPV drone racing simulator"
+url="https://www.velocidrone.com/"
 arch=('x86_64')
-url="http://www.velocidrone.com/"
 license=('proprietary')
-makedepends=(wget unzip)
-depends=(gcc-libs gtk2)
-optdepends=(steam)
-conflicts=()
-_source_id=""
-DLAGENTS+=('gdrive::./gdrive-download.sh %u %o')
-source=(
-	"velocidrone-$pkgver.zip::gdrive://1-1GUMzEQVWmhunqapUMmZOH9I2fZCukM"
-	"velocidrone.desktop"
-	"https://www.velocidrone.com/img/logo.png")
-noextract=("velocidrone-$pkgver.zip")
-sha256sums=('4bed1615377317279bafc61f6ba57fa37f0ae969a37c62724f70c5814f94ffff'
-            '66ab24798d6b40f2c69f42368b79205f1e39ace4d8880785bfeb47f7f20d98cb'
-            'dca386606781e552fc310bf414a911b335bb8d48114091f337d02db46befdee1')
+makedepends=('qt5-base' 'boost')
+depends=()
+
+OPTIONS=(!strip)
+
+source=("git+https://github.com/patchkit-net/patchkit-launcher-qt.git"
+        "debian_launcher.zip::local://Velocidrone%20Debian%20Launcher.zip"
+        "velocidrone.png::https://www.velocidrone.com/img/logo.png"
+        "velocidrone.desktop")
+md5sums=('SKIP'
+         '556d05b0af4bace44167549bec0e7542'
+         'e176f8bb5bded2510b7368fcb7c99ce6'
+         '85bc86aef45aa4be289fac68506330de')
+
+build() {
+  cd patchkit-launcher-qt
+  export PK_LAUNCHER_BOOST_LIBDIR=/usr/lib
+  qmake # CONFIG+=debug
+  make
+}
 
 package() {
-	mkdir -p "$pkgdir/opt/velocidrone/"
-	unzip "$srcdir/velocidrone-$pkgver.zip" -d "$pkgdir/opt/velocidrone/"
-	chmod ugo+x "$pkgdir/opt/velocidrone/velocidrone.x86_64"
-	install -Dm644 "$srcdir/velocidrone.desktop" "${pkgdir}/usr/share/applications/$pkgname.desktop"
-	install -Dm 644 "$srcdir/logo.png" "${pkgdir}/opt/velocidrone/icon.png"
+  install -Dm755 patchkit-launcher-qt/app/Launcher "$pkgdir"/usr/share/velocidrone/Launcher
+  install -Dm644 launcher.dat                      "$pkgdir"/usr/share/velocidrone/launcher.dat
+  install -Dm644 velocidrone.png                   "$pkgdir"/usr/share/icons/hicolor/48x48/apps/velocidrone.png
+  install -Dm644 velocidrone.desktop               "$pkgdir"/usr/share/applications/velocidrone.desktop
+
+  mkdir -p "$pkgdir"/usr/bin
+  ln -s /usr/share/velocidrone/Launcher "$pkgdir"/usr/bin/velocidrone
 }
