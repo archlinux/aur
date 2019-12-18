@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
-pkgver=r40.321a51f
+pkgver=r47.406b031
 pkgrel=1
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
