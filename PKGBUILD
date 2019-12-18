@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nvidia-xrun-pm-git
 pkgver=0.3.2.r19.gaf3b734
-pkgrel=2
+pkgrel=3
 pkgdesc='Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch'
 arch=('x86_64')
 url='https://github.com/michelesr/nvidia-xrun-pm'
@@ -15,7 +15,7 @@ optdepends=()
 provides=('nvidia-xrun' 'nvidia-xrun-git' 'nvidia-xrun-pm')
 conflicts=('nvidia-xrun' 'nvidia-xrun-git' 'nvidia-xrun-pm')
 replaces=()
-backup=()
+backup=(etc/X11/nvidia-xorg.conf)
 options=()
 install=$pkgname.install
 source=("${pkgname}::git+${url}")
