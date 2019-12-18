@@ -4,12 +4,12 @@
 
 pkgname=samtools
 pkgver=1.10
-pkgrel=2
+pkgrel=3
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
 license=('custom')
-depends=('htslib=1.10')
+depends=('htslib>=1.10')
 optdepends=('luajit: needed for r2plot.lua vcfutils.lua')
 source=(https://github.com/samtools/samtools/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
 sha256sums=('7b9ec5f05d61ec17bd9a82927e45d8ef37f813f79eb03fe06c88377f1bd03585')
