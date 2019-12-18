@@ -5,7 +5,7 @@
 
 # Maintainer: Matt Coffin <mcoffin13 at gmail.com>
 pkgname=wl-clipboard-rs
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="A safe Rust reimplementation of the Wayland command-line copy/paste utilities"
@@ -17,7 +17,7 @@ makedepends=('git' 'cargo')
 provides=('wl-clipboard')
 conflicts=('wl-clipboard')
 source=("https://github.com/YaLTeR/wl-clipboard-rs/archive/v${pkgver}.tar.gz")
-sha512sums=('c14bc58d8bc93cb3d452d9f37e662f2c3fbbaaf9f6ed2e489e704b312972e6262055eb53bfa7f94e238c43e2d59e6312630afa9171d7292ce498e2e9697d949c')
+sha512sums=('01aecc5dcb299b0211b9b4902c559a688a89ea6c79c915f3d0ba9e96337a9f2d1451f75f289c17e764a1234e8527d5e6bceccb5778579e96223afaef8b543d47')
 
 build() {
 	cd "$pkgname-$pkgver"
