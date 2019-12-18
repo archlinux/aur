@@ -1,0 +1,16 @@
+pkgbase = python-pyzm-git
+	pkgdesc = ZoneMinder Python API and Logger
+	pkgver = r34.2b46698
+	pkgrel = 1
+	url = https://github.com/pliablepixels/pyzm
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = python-nose
+	makedepends = git
+	options = !emptydirs
+	source = git://github.com/pliablepixels/pyzm.git
+	sha256sums = SKIP
+
+pkgname = python-pyzm-git
+
