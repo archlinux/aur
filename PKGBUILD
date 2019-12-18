@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=breeze-adapta-cursor-theme-git
 _pkgname=Breeze-Adapta-Cursor
 pkgver=r32.1d24541
