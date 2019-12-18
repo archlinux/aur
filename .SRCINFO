@@ -1,7 +1,7 @@
 pkgbase = intel_fpga_lite
 	pkgdesc = Quartus Prime Lite Edition design software for Intel FPGA's. Split packages
 	pkgver = 19.1.0.670
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fpgasoftware.intel.com/?edition=lite
 	arch = x86_64
 	license = custom
@@ -39,7 +39,7 @@ pkgbase = intel_fpga_lite
 	source = 51-usbblaster.rules
 	sha256sums = 3546e90f6496b17c3c3e3e8582a3991940ad73ed112740428864460cfab6e40a
 	sha256sums = 16206c08cd04fb02318a20e053346c68e77275b324ca24cfb3da64b03420ab3c
-	sha256sums = f8ba2a84c6f7551bb4ab62d17f77e2814c70871ddb15f0276f1bf89cc6c674b8
+	sha256sums = f263e0c2d469564b51c131cc450e8ee6cd0a2f059153e01ac7e498e2f9d6a9c9
 	sha256sums = 363be8b0656b56f92c34ac0581a8a0f3bb1edaa9da361f50d1e60ec3334c13a7
 	sha256sums = a37738de447c50ca7bfe856466bd9567850ccf45ac6c3f0a6e63ef5bb863645f
 	sha256sums = dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b
@@ -47,38 +47,38 @@ pkgbase = intel_fpga_lite
 pkgname = intel_fpga_lite-base
 
 pkgname = intel_fpga_lite-ip
-	depends = intel_fpga_lite-base=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-2
 
 pkgname = intel_fpga_lite-modelsim_ase
-	depends = intel_fpga_lite-base=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-2
 
 pkgname = intel_fpga_lite-nios2eds
-	depends = intel_fpga_lite-base=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus
-	depends = intel_fpga_lite-base=19.1.0.670-1
-	depends = intel_fpga_lite-ip=19.1.0.670-1
+	depends = intel_fpga_lite-base=19.1.0.670-2
+	depends = intel_fpga_lite-ip=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-help
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-arria_lite
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-cyclone
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-cyclone10lp
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-cyclonev
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-max
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite-quartus-max10
-	depends = intel_fpga_lite-quartus=19.1.0.670-1
+	depends = intel_fpga_lite-quartus=19.1.0.670-2
 
 pkgname = intel_fpga_lite
 	depends = intel_fpga_lite-base

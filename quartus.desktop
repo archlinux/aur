@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
-Name=Quartus II
-Comment=Quartus II design software for Altera FPGA's
+Name=Quartus Prime
+Comment=Quartus Prime design software for Intel FPGA's
 Exec=_alteradir/quartus/bin/quartus --64bit
 Icon=_alteradir/quartus/adm/quartusii.png
 Terminal=false

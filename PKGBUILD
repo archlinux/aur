@@ -13,7 +13,7 @@ _patchver=.0
 _buildver=670
 _basever=.0.670
 pkgver=${_mainver}${_patchver}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Quartus Prime Lite Edition design software for Intel FPGA's. Split packages"
 arch=('x86_64')
 url="http://fpgasoftware.intel.com/?edition=lite"
@@ -34,7 +34,7 @@ source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_pat
         'quartus.sh' 'quartus.desktop' 'modelsim-ase.sh' 'modelsim-ase.desktop' '51-usbblaster.rules')
 sha256sums=('3546e90f6496b17c3c3e3e8582a3991940ad73ed112740428864460cfab6e40a'
             '16206c08cd04fb02318a20e053346c68e77275b324ca24cfb3da64b03420ab3c'
-            'f8ba2a84c6f7551bb4ab62d17f77e2814c70871ddb15f0276f1bf89cc6c674b8'
+            'f263e0c2d469564b51c131cc450e8ee6cd0a2f059153e01ac7e498e2f9d6a9c9'
             '363be8b0656b56f92c34ac0581a8a0f3bb1edaa9da361f50d1e60ec3334c13a7'
             'a37738de447c50ca7bfe856466bd9567850ccf45ac6c3f0a6e63ef5bb863645f'
             'dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b')
@@ -65,9 +65,10 @@ build() {
     find "${srcdir}/install/nios2eds/documents" -perm -o+w -exec chmod go-w {} \+
 
     # Replace altera directory in integration files
-    sed -i "s,_alteradir,${_alteradir},g" quartus.sh
-    sed -i "s,_alteradir,${_alteradir},g" quartus.desktop
-    sed -i "s,_alteradir,${_alteradir},g" modelsim-ase.desktop
+    sed -i "s,_inteldir,${_inteldir},g" quartus.sh
+    sed -i "s,_inteldir,${_inteldir},g" quartus.desktop
+    sed -i "s,_inteldir,${_inteldir},g" modelsim-ase.sh
+    sed -i "s,_inteldir,${_inteldir},g" modelsim-ase.desktop
     
     # Fix modelsim startup code for Linux Kernel >=4.0
     # see https://wiki.archlinux.org/index.php/Altera_Design_Software
