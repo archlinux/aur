@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-cpupower-git
 _gitname=cpupower
-pkgver=r116.e55687d
+pkgver=r122.8c26f16
 pkgrel=1
 pkgdesc="Gnome-Shell Extension for intel-pstate driver"
 arch=('any')
