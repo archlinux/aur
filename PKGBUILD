@@ -6,7 +6,7 @@
 # NOTE: If you plan on using the usbblaster make sure you are member of the plugdev group.
 #
 pkgbase=intel_fpga_lite
-pkgname=(${pkgbase}-{license,ip,modelsim_ase,nios2eds,quartus,quartus-help,quartus-arria_lite,quartus-cyclone,quartus-cyclone10lp,quartus-cyclonev,quartus-max,quartus-max10})
+pkgname=(${pkgbase}-{base,ip,modelsim_ase,nios2eds,quartus,quartus-help,quartus-arria_lite,quartus-cyclone,quartus-cyclone10lp,quartus-cyclonev,quartus-max,quartus-max10} ${pkgbase})
 _mainver=19.1
 # Keep dot in _patchver
 _patchver=.0
@@ -101,7 +101,7 @@ build() {
     mv "${srcdir}/install/quartus/common/devinfo/55nm" "${srcdir}/install/devinfo/"
 }
 
-package_intel_fpga_lite-license() {
+package_intel_fpga_lite-base() {
     # Copy license file
     install -D -m644 "${srcdir}/install/licenses/license.txt" "${pkgdir}/usr/share/licenses/intel_fpga_lite/LICENSE"
     mkdir -p "${pkgdir}${_inteldir}"
@@ -183,4 +183,8 @@ package_intel_fpga_lite-quartus-max10(){
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/55nm" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
+}
+
+package_intel_fpga_lite() {
+    depends=(${pkgbase}-{base,ip,modelsim_ase,nios2eds,quartus,quartus-help,quartus-arria_lite,quartus-cyclone,quartus-cyclone10lp,quartus-cyclonev,quartus-max,quartus-max10})
 }

@@ -44,7 +44,7 @@ pkgbase = intel_fpga_lite
 	sha256sums = a37738de447c50ca7bfe856466bd9567850ccf45ac6c3f0a6e63ef5bb863645f
 	sha256sums = dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b
 
-pkgname = intel_fpga_lite-license
+pkgname = intel_fpga_lite-base
 
 pkgname = intel_fpga_lite-ip
 	depends = intel_fpga_lite-license=19.1.0.670-1
@@ -79,4 +79,18 @@ pkgname = intel_fpga_lite-quartus-max
 
 pkgname = intel_fpga_lite-quartus-max10
 	depends = intel_fpga_lite-quartus=19.1.0.670-1
+
+pkgname = intel_fpga_lite
+	depends = intel_fpga_lite-base
+	depends = intel_fpga_lite-ip
+	depends = intel_fpga_lite-modelsim_ase
+	depends = intel_fpga_lite-nios2eds
+	depends = intel_fpga_lite-quartus
+	depends = intel_fpga_lite-quartus-help
+	depends = intel_fpga_lite-quartus-arria_lite
+	depends = intel_fpga_lite-quartus-cyclone
+	depends = intel_fpga_lite-quartus-cyclone10lp
+	depends = intel_fpga_lite-quartus-cyclonev
+	depends = intel_fpga_lite-quartus-max
+	depends = intel_fpga_lite-quartus-max10
 
