@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ant-theme-git
 _pkgname=Ant
-pkgver=r75.f62348f
+pkgver=r81.cbd8c0e
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look"
 arch=("any")
