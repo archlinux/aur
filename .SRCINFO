@@ -1,7 +1,7 @@
 pkgbase = ttf-breeze-sans
 	pkgdesc = A sans-serif typeface by Samsung, designed for Tizen.
 	pkgver = 20150728
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.tizen.org/design/platform/styles/typography
 	install = ttf-breeze-sans.install
 	arch = any
