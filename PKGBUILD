@@ -1,7 +1,7 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=platon
-pkgver=2019.12.09
+pkgver=2019.12.16
 pkgrel=1
 pkgdesc="A Multipurpose Crystallographic Tool"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs' 'libx11')
 makedepends=('gcc-fortran' 'gzip' 'tar')
 source=("https://www.platonsoft.nl/spek/xraysoft/unix/$pkgname.tar.gz")
-sha256sums=('36fea6e6483559fd21615314a05b7e7afaf6951ed8c0bc656fb797a840302f8d')
+sha256sums=('3f05cc40c9cf903195a2788d0e77497ee0e38b14b0869aba57ab60097628eb4e')
 
 build() {
     cd $pkgname
