@@ -9,6 +9,7 @@ pkgbase = python-p5
 	depends = glfw
 	depends = python-numpy
 	depends = python-vispy
+	depends = python-triangle
 	provides = python-p5
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/81/e7/f6baed714475b6368c8311a159a3410cc5701b7d0a7aaca163a9c3686033/p5-0.6.0.tar.gz
