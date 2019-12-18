@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-smart-referer
 	pkgdesc = Browser extension that automatically hides the referer when changing domains
-	pkgver = 0.2.10
+	pkgver = 0.2.15
 	pkgrel = 1
 	url = https://github.com/meh/smart-referer
 	arch = any
 	license = WTFPL
 	depends = firefox
-	noextract = smart_referer-0.2.10-an+fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/327417/smart_referer-0.2.10-an+fx.xpi
-	sha256sums = 7ab790b03620c76b65f501ca0005657f14f06129181a1446e0aa4e13a533b891
+	noextract = smart_referer-0.2.15-an+fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/327417/smart_referer-0.2.15-an+fx.xpi
+	sha256sums = 4751ab905c4d9d13b1f21c9fc179efed7d248e3476effb5b393268b46855bf1a
 
 pkgname = firefox-extension-smart-referer
 
