@@ -9,9 +9,11 @@ pkgbase = sensu-agent
 	source = sensu-agent-5.16.0_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/5.16.0/sensu-go_5.16.0_linux_armv7.tar.gz
 	source = sensu-agent-5.16.0_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/5.16.0/sensu-go_5.16.0_linux_amd64.tar.gz
 	source = sensu-agent.service
+	source = agent.yml.example
 	sha256sums = 8bc8da4a6a38b39b9611fe232a935936064b4186fb191d419b1543e2affc48cb
 	sha256sums = bad0512865be732b56eda0bb694ad4206e30d0a44934881c677ebd5453e82321
 	sha256sums = 7d8ca2731fe4a07beab0566d11ed47f0c069774752a96781ac7797697b3f7cc5
+	sha256sums = c9997fa4be0879bb73b7250863ce9737b422515cf9131626075ff313b4575eed
 
 pkgname = sensu-agent
 
