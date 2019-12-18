@@ -1,13 +1,14 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
 	makedepends = cpio
 	makedepends = git
+	makedepends = inetutils
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = xmlto
@@ -15,7 +16,7 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.5.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.4.3-877
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.4.4-879
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	source = futex-wait-multiple-5.2.1.patch::https://aur.archlinux.org/cgit/aur.git/plain/futex-wait-multiple-5.2.1.patch?h=linux-fsync
