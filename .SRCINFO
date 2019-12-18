@@ -1,6 +1,6 @@
 pkgbase = whatsapp-nativefier
 	pkgdesc = WhatsApp desktop built with nativefier (electron)
-	pkgver = 0.3.4940
+	pkgver = 0.3.9309
 	pkgrel = 1
 	url = https://web.whatsapp.com
 	arch = armv7l
@@ -12,6 +12,7 @@ pkgbase = whatsapp-nativefier
 	depends = gtk3
 	depends = libxss
 	depends = nss
+	optdepends = libindicator-gtk3
 	source = whatsapp-nativefier.png
 	source = whatsapp-nativefier.desktop
 	source = whatsapp-nativefier-inject.js
