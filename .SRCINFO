@@ -1,6 +1,6 @@
 pkgbase = openlitespeed
 	pkgdesc = A high-performance, lightweight, open source HTTP server
-	pkgver = 1.5.6
+	pkgver = 1.5.10
 	pkgrel = 3
 	url = https://openlitespeed.org/downloads/
 	install = openlitespeed.install
@@ -16,9 +16,9 @@ pkgbase = openlitespeed
 	depends = openssl
 	depends = libzip
 	provides = openlitespeed
-	source = https://openlitespeed.org/packages/openlitespeed-1.5.6.src.tgz
+	source = https://openlitespeed.org/packages/openlitespeed-1.5.10.src.tgz
 	source = openlitespeed.service
-	md5sums = 2daf624395aec0435c0eaf720dc552e3
+	md5sums = 7d0126687c01222047ee9c454c898e1d
 	md5sums = f4acf3cdbf449a457818982eb933d6f7
 
 pkgname = openlitespeed
