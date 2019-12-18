@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gobuster-git
-pkgver=v2.0.1.r15.g0e209e5
-pkgrel=3
+pkgver=v3.0.1.r11.gf7ed22d
+pkgrel=1
 pkgdesc="A directory/file & DNS busting tool."
 arch=('x86_64')
 url="https://github.com/OJ/gobuster"
