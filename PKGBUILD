@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=aminal-git
 pkgver=r423.8a56135
-pkgrel=1
+pkgrel=2
 pkgdesc="Golang terminal emulator from scratch"
 url="https://github.com/liamg/aminal"
 arch=('x86_64' 'i686')
