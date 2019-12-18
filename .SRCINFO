@@ -1,6 +1,6 @@
 pkgbase = lv2-git
 	pkgdesc = Plugin standard for audio systems (git version)
-	pkgver = 1.16.2.r1189.49777ff
+	pkgver = 1.17.0.r1192.06d3f56
 	pkgrel = 1
 	url = http://lv2plug.in/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = lv2-git
 	optdepends = python-pygments: for lv2specgen.py
 	optdepends = python-rdflib: for lv2specgen.py
 	provides = lv2
-	provides = lv2=1.16.2
+	provides = lv2=1.17.0
 	provides = lv2core
 	provides = lv2-svn
 	conflicts = lv2

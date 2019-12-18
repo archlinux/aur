@@ -3,7 +3,7 @@
 
 _pkgname=lv2
 pkgname="${_pkgname}-git"
-pkgver=1.16.2.r1189.49777ff
+pkgver=1.17.0.r1192.06d3f56
 pkgrel=1
 pkgdesc="Plugin standard for audio systems (git version)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,8 @@ conflicts=("${_pkgname}" "${_pkgname}-svn")
 replaces=('lv2core')
 source=("${_pkgname}::git+https://gitlab.com/lv2/lv2.git"
         'autowaf::git+https://gitlab.com/drobilla/autowaf.git')
-md5sums=('SKIP' 'SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 
 pkgver() {
