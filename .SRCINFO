@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-temporary-containers
 	pkgdesc = Browser extension that lets you open automatically managed disposable containers
-	pkgver = 1.3
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/stoically/temporary-containers
 	arch = any
 	license = MIT/X11
 	depends = firefox
-	noextract = temporary_containers-1.3-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/888648/temporary_containers-1.3-fx.xpi
-	sha256sums = 4379e7249763b3fc5bd77400e8d5b6e59d6c9d94f2308bd2dcfb94405e31574b
+	noextract = temporary_containers-1.7-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/888648/temporary_containers-1.7-fx.xpi
+	sha256sums = 3debb077593dc61a38bfb7d2efcb0e8cef747130996ff803954000a5c35bc10f
 
 pkgname = firefox-extension-temporary-containers
 
