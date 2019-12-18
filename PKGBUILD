@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=snow-theme-git
 _pkgname=snow
-pkgver=r33.23e27e4
+pkgver=r37.cfb1bc5
 pkgrel=1
 pkgdesc="Light Gtk theme with some gradients"
 arch=("any")
