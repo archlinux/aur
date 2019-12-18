@@ -1,7 +1,7 @@
 pkgbase = dbgl
 	pkgdesc = An open-source, free, multi-platform frontend for DOSBox
 	pkgver = 0.90
-	pkgrel = 1
+	pkgrel = 2
 	url = http://members.quicknet.nl/blankendaalr/dbgl/
 	arch = x86_64
 	license = GPL

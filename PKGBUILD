@@ -2,7 +2,7 @@
 
 pkgname=dbgl
 pkgver=0.90
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, free, multi-platform frontend for DOSBox"
 arch=('x86_64')
 url="http://members.quicknet.nl/blankendaalr/dbgl/"
