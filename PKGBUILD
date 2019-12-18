@@ -1,9 +1,9 @@
-# Maintainer: Amanoel Dawod <amanoel at outlook dot com>
+# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Jacob Humphrey (kaknife) <jacob.ryan.humphrey@gmail.com>
 
 pkgname=gnome-shell-extension-ubuntu-dock
 _pkgname=dash-to-dock-ubuntu-dock
-pkgver=66ubuntu19.10.2
+pkgver=67ubuntu19.10.1
 pkgrel=1
 pkgdesc="A dock for the Gnome Shell, default Ubuntu experience"
 arch=('any')
@@ -12,14 +12,14 @@ license=('GPL')
 depends=('gnome-shell')
 makedepends=('intltool' 'gettext')
 source=("https://github.com/micheleg/dash-to-dock/archive/ubuntu-dock-$pkgver.tar.gz")
-sha256sums=('e5d8f50b26422e26c71d5a906b6e72a553e09bcee21bad8e6796055b294bcfa5')
+sha256sums=('53182124f2af164fa4a0c66ccbfaee46fb011bed8d0c1936f71091a84c2c4f0c')
 
 build() {
-  cd ${_pkgname}-${pkgver}
-  make
+	cd ${_pkgname}-${pkgver}
+	make
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" VERSION="${pkgver}" install
+	cd ${_pkgname}-${pkgver}
+	make DESTDIR="${pkgdir}" VERSION="${pkgver}" install
 }

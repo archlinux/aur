@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ubuntu-dock
 	pkgdesc = A dock for the Gnome Shell, default Ubuntu experience
-	pkgver = 66ubuntu19.10.2
+	pkgver = 67ubuntu19.10.1
 	pkgrel = 1
 	url = https://github.com/micheleg/dash-to-dock/tree/ubuntu-dock
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = gnome-shell-extension-ubuntu-dock
 	makedepends = intltool
 	makedepends = gettext
 	depends = gnome-shell
-	source = https://github.com/micheleg/dash-to-dock/archive/ubuntu-dock-66ubuntu19.10.2.tar.gz
-	sha256sums = e5d8f50b26422e26c71d5a906b6e72a553e09bcee21bad8e6796055b294bcfa5
+	source = https://github.com/micheleg/dash-to-dock/archive/ubuntu-dock-67ubuntu19.10.1.tar.gz
+	sha256sums = 53182124f2af164fa4a0c66ccbfaee46fb011bed8d0c1936f71091a84c2c4f0c
 
 pkgname = gnome-shell-extension-ubuntu-dock
 
