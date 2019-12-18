@@ -1,4 +1,5 @@
-export PATH=$PATH:_alteradir/quartus/bin:_alteradir/modelsim_ase/bin
+export PATH=$PATH:_inteldir/quartus/bin:_inteldir/quartus/sopc_builder/bin
+export QUARTUS_ROOTDIR=/opt/altera/18.1/quartus/
 
 # Detect if a 64bit machine and activate quartus
 # depending on it.
