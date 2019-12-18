@@ -2,7 +2,7 @@
 
 pkgname=beef-git
 _pkgname=beef
-pkgver=20191217.6d05f8c4
+pkgver=20191218.516b787c
 pkgrel=1
 pkgdesc="The Browser Exploitation Framework"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${pkgname}::git+${_url}.git"
 )
 install=${pkgname}.install
 sha256sums=('SKIP'
-            '24d0b4231534251a7677f604b1cdcc3bf039afd5b632380dc15e7ad8418c8865'
+            'cca0d3045c6608a0b32a485a479d32def16228e4b384d8ecfff34372ae1d5be4'
             'c68c4369c27992d1d3dae817c9933a555e7975956dae46e3fcfb3fc665dcf785'
             '98d72df13e4f61271afd623070a5e81c9edf2e5b4f39d71b45f3279e255649a0')
 
