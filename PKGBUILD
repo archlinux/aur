@@ -3,15 +3,15 @@
 # Maintainer: Kevin Baxmann <kvbx@kvbx.de>
 
 pkgname=micronaut
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.2.8
+pkgrel=1
 pkgdesc="Application Framework"
 arch=('x86_64')
 url="https://github.com/micronaut-projects/micronaut-core"
 license=(Apache)
 depends=('java-environment>=8')
 source=(https://github.com/micronaut-projects/micronaut-core/archive/v${pkgver}.tar.gz)
-sha512sums=('385376e592b8bd3d31ec2df2023ba219c01b80cbb1e6d098a40d8dceba671bb9ba70d2dbfc3223f33b54fecbe4bfe3f3ca0293d8a7d427eae131983f18fa44c9')
+sha512sums=('1fbbf2b5009d51d32f67de7ec166faa8b45cc63a2ed4e8e8b439d1a16f1bba32d3eb3431659aa3e75487d3f6f62a0dbb52da4d36f2ea25156f703ab72d3adcb7')
 
 build() {
 
