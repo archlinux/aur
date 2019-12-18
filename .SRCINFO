@@ -1,12 +1,13 @@
 pkgbase = curl-http3
 	pkgdesc = An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3
 	pkgver = 7.67.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://curl.haxx.se
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = git
+	makedepends = go
 	makedepends = cmake
 	depends = ca-certificates
 	depends = openssl
