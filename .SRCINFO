@@ -1,14 +1,15 @@
 pkgbase = plasma5-applets-audio-device-switcher
 	pkgdesc = KDE Plasma 5 widget to change the default audio output device/sink
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/akrutzler/plasma-audio-device-switcher
 	arch = any
 	license = GPL2
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	depends = plasma-workspace
-	source = https://github.com/akrutzler/plasma-audio-device-switcher/archive/0.1.1.tar.gz
-	sha256sums = f42a04afbea630c712a95fd47065ce39ca535ddd0a63d5e92df4dc2e96b0cbb7
+	source = https://github.com/akrutzler/plasma-audio-device-switcher/archive/0.2.0.tar.gz
+	sha256sums = 13060951049042df53720475b6145a1b6f35c11021792ab474fb780fb53fa715
 
 pkgname = plasma5-applets-audio-device-switcher
 
