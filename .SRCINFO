@@ -1,13 +1,13 @@
 pkgbase = bus-pirate
 	pkgdesc = Software and firmware for an open source hacker multi-tool that talks to electronic stuff
 	pkgver = 2.3.8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://dangerousprototypes.com/docs/Bus_Pirate
 	install = bus-pirate.install
 	arch = any
 	license = CC-0
 	license = GPL
-	depends = pyqt5-common
+	depends = qt5-base
 	depends = python2
 	options = !strip
 	options = docs
