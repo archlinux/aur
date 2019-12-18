@@ -1,13 +1,13 @@
 pkgbase = php-docs
 	pkgdesc = Set of HTML documentation for PHP.
-	pkgver = 7.2.2
-	pkgrel = 4
+	pkgver = 7.4.0
+	pkgrel = 1
 	url = http://www.php.net/docs.php
 	arch = any
 	license = PHP
 	options = docs
 	options = !strip
-	source = php_manual_en-7.2.2.tar.gz::http://www.php.net/distributions/manual/php_manual_en.tar.gz
+	source = php_manual_en-7.4.0.tar.gz::http://www.php.net/distributions/manual/php_manual_en.tar.gz
 	sha256sums = SKIP
 
 pkgname = php-docs

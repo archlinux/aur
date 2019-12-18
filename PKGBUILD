@@ -1,12 +1,11 @@
-# Maintainer: Lucas Hoffmann <l-m-h at web dot de>
-# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Contributer: Lucas Hoffmann <l-m-h at web dot de>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: tardo <tardo@nagi-fanboi.net>
 # Contributor: Rohan Dhruva (rohandhruva at gmail dot com)
-
 pkgname=php-docs
-pkgver=7.2.2
-pkgrel=4
+pkgver=7.4.0
+pkgrel=1
 pkgdesc="Set of HTML documentation for PHP."
 arch=('any')
 url="http://www.php.net/docs.php"
