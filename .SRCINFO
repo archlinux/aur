@@ -1,7 +1,7 @@
 pkgbase = asf
 	pkgdesc = Steam cards farmer.
 	pkgver = 4.1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
 	changelog = changelog
@@ -10,16 +10,19 @@ pkgbase = asf
 	arch = aarch64
 	license = Apache
 	makedepends = dotnet-sdk>=3.1
+	makedepends = npm
 	depends = aspnet-runtime>=3.1
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config
 	source = https://github.com/JustArchi/ArchiSteamFarm/archive/4.1.1.4.tar.gz
+	source = asf-ASF-ui-575e11498d432ec37a08236b8801110addac676d.tar.gz::https://github.com/JustArchiNET/ASF-ui/archive/575e11498d432ec37a08236b8801110addac676d.tar.gz
 	source = asf.sh
 	source = service
 	source = service.user
 	source = ASF.json
 	source = NLog.config
 	sha256sums = 7da3b7954300ef6a69e1ab97f96ccc66c03ccd36165c90a54cb3e539c5741d1b
+	sha256sums = 16283371243377d768bc3ee8d175e7bc0f291178d419cf245478516cc72e2b78
 	sha256sums = 8d76996c1024b80704b25af8a8800ef3f8a8a518d19c2a1e85ba62b58b22cdfd
 	sha256sums = ba1ff85e55e56d71dbdd0d898244ff7725bced8625f29c5389e28525e6cdb987
 	sha256sums = b627c8d4b3ba7f194a44749bd401b33bae601b9570da98e457737a6f9cfa408f

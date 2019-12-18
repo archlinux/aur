@@ -1,3 +1,6 @@
+2019-12-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.1.4-2:
+    pkg: restore ASF-ui functions (thanks to Lucki)
 2019-12-17 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.1.4-1:
     Single file publish has been disabled also on Unix OSes due to issue #1544, fixing ASF running under multiple users. Sadly it probably won't come back in the near future.
