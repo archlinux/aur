@@ -1,7 +1,7 @@
 pkgbase = kata-containers
 	pkgdesc = Lightweight virtual machines for containers
 	pkgver = 1.10.0~rc0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
@@ -12,14 +12,12 @@ pkgbase = kata-containers
 	source = proxy-1.10.0-rc0.tar.gz::https://github.com/kata-containers/proxy/archive/1.10.0-rc0.tar.gz
 	source = runtime-1.10.0-rc0.tar.gz::https://github.com/kata-containers/runtime/archive/1.10.0-rc0.tar.gz
 	source = shim-1.10.0-rc0.tar.gz::https://github.com/kata-containers/shim/archive/1.10.0-rc0.tar.gz
-	source = https://github.com/kata-containers/runtime/releases/download/1.10.0-rc0/kata-static-1.10.0-rc0-x86_64.tar.xz
 	sha512sums = 5f90c4fc3d0115f5ba23ba98b9153ed1aa78636df78824261241a7a900717afb0c04c10a382b2bb4bf77321df3f6f77d5925cf80fa9b0824057b4ee1a2d17c13
 	sha512sums = 67b588f722af369698d0d0f287d410a787d7a4b947708c8b767c7a0831ab8adb4c99031d29f451d50c4277d50452c2f9f643f7a415a9e5b77d1d4330a3f5a60f
 	sha512sums = 2bb4a095653e922f1fe274793d56241e657856c9af36f53f4b2394be41f02068041fc1beedacaed246c63672bbeadb5a26fbefb24beaa5b96dc089511db1a9cd
 	sha512sums = 0471b8e876c3a49772d56a72e99dd4d36ad5136bbefc212250c83a78f29f0f6e03cc5fd94d70fc61d2b07613ff19fc9a1dfde915364e15838b6b4f6916278e5a
 	sha512sums = 93c1be4386563e246276f5e10a4a65f2fe084c5fbf9e79b65b0541f9ec72281119380bd94eb4022c573461b6b2ddbd3777b0b50de9645f54b5499e40107117d6
 	sha512sums = 426baf82874b614347772d824f7e8a8c02505f41f060ebef931c6f2bc112b41ad4209703994e22808d35e046f8e9e750177a8a07fe596028081595b1ccf3c807
-	sha512sums = f0e69db2327f87234b053c554793ee28f0f102835e1778e85772d14c90c0caf63890541a780cc5439e08d39a419fa86bd5ff4750228c93f70f2511328afe1aa5
 
 pkgname = kata-ksm-throttler
 
@@ -39,8 +37,4 @@ pkgname = kata-runtime
 pkgname = kata-shim
 
 pkgname = kata-agent
-
-pkgname = kata-containers-image
-
-pkgname = kata-linux-container
 
