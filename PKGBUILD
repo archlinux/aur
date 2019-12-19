@@ -8,8 +8,6 @@ url="https://github.com/dglava/firefox-dpms"
 license=('GPL3')
 depends=('python' 'python-pulse-control')
 makedepends=('git' 'python-setuptools')
-provides=('firefox-dpms')
-conflits=('firefox-dpms')
 source=('git+https://github.com/dglava/firefox-dpms.git')
 md5sums=('SKIP')
 

@@ -9,7 +9,6 @@ pkgbase = firefox-dpms-git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pulse-control
-	provides = firefox-dpms
 	source = git+https://github.com/dglava/firefox-dpms.git
 	md5sums = SKIP
 
