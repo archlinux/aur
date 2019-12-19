@@ -1,7 +1,7 @@
 pkgbase = kata-containers-git
 	pkgdesc = Lightweight virtual machines for containers (Git version)
 	pkgver = 1.10.0~rc0~runtime.r33.a198efcf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
@@ -30,9 +30,9 @@ pkgname = kata-proxy-git
 pkgname = kata-runtime-git
 	install = kata-runtime.install
 	depends = qemu-headless
-	depends = kata-ksm-throttler=1.10.0~rc0~runtime.r33.a198efcf
-	depends = kata-proxy=1.10.0~rc0~runtime.r33.a198efcf
-	depends = kata-shim=1.10.0~rc0~runtime.r33.a198efcf
+	depends = kata-ksm-throttler
+	depends = kata-proxy
+	depends = kata-shim
 	depends = kata-linux-container
 	depends = kata-containers-image
 	optdepends = firecracker

@@ -2,7 +2,7 @@ pkgbase=kata-containers-git
 pkgname=(kata-ksm-throttler-git kata-proxy-git kata-runtime-git kata-shim-git kata-agent-git)
 pkgver=1.10.0~rc0~runtime.r33.a198efcf
 _pkgver=1.10.0-rc0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (Git version)"
 arch=('x86_64')
 url="https://katacontainers.io/"
@@ -72,7 +72,7 @@ package_kata-proxy-git(){
 package_kata-runtime-git(){
   conflicts=('kata-runtime')
   provides=('kata-runtime')
-  depends=('qemu-headless' "kata-ksm-throttler=${pkgver}" "kata-proxy=${pkgver}" "kata-shim=${pkgver}" "kata-linux-container" "kata-containers-image")
+  depends=('qemu-headless' "kata-ksm-throttler" "kata-proxy" "kata-shim" "kata-linux-container" "kata-containers-image")
   optdepends=(
     'firecracker'
     'cloud-hypervisor'
