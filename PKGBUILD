@@ -3,7 +3,7 @@
 # Contributor: http://agelospanagiotakis.blogspot.gr/2009/07/gambas-basic-linux.html
 
 pkgname=gambas3-eortologioqt5
-_realname=EortologioQt5
+_realname=EortologioQt5-1.0.10
 pkgdesc="Ελληνικό Εορτολόγιο - Greek Feasts Calendar"
 pkgver=1.0.10
 pkgrel=1
@@ -25,9 +25,10 @@ build() {
 
 package() {
   cd "$srcdir/$_realname/"
+  pwd
 
   install -d "$pkgdir/usr/bin"
-  install -m755 EortologioQt5.gambas "$pkgdir/usr/bin/EortologioQt5"
+  install -m755 EortologioQt5-1.0.10.gambas "$pkgdir/usr/bin/EortologioQt5"
   ln -s "EortologioQt5" "$pkgdir/usr/bin/gambas3-eortologioqt5"
   install -D "EortologioQt5.png" "$pkgdir/usr/share/pixmaps/EortologioQt5.png"
   install -D "gambas3-eortologioqt5.desktop" "$pkgdir/usr/share/applications/gambas3-eortologioqt5.desktop"
@@ -41,5 +42,4 @@ package() {
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.svg" "$pkgdir/usr/share/icons/gnome/scalable/apps/EortologioQt5.1.0.svg"
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.png" "$pkgdir/usr/share/icons/EortologioQt5.1.0.png"
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/EortologioQt5.1.0.svg"
-  install -Dm644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/gambas3-eortologioqt5/license.txt"
 }
