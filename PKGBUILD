@@ -13,14 +13,14 @@
 
 pkgname=backupchecker
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully automated backup checker"
 arch=(any)
-url="https://github.com/backupchecker/backupchecker"
+url="https://pypi.org/project/backupchecker"
 license=('GPLv3')
 depends=('python>=3.4')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/backupchecker/backupchecker/archive/${pkgver}.tar.gz")
-md5sums=('fef485daae1b15f1180974d1f75f30e0')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/22/75/32b8dc7103c4b14555ab6842ff872a8766cbc0de564892cfe5c48128a0a1/backupchecker-1.9.tar.gz")
+md5sums=('19947800f68d29efce5becbfb6202c03')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
