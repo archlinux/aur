@@ -1,6 +1,6 @@
 pkgbase = pagmo
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model
-	pkgver = 2.11.4
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/esa/pagmo2
 	arch = i686
@@ -11,7 +11,8 @@ pkgbase = pagmo
 	optdepends = coin-or-ipopt: Ipopt optimizer support
 	optdepends = eigen: library for matrix math
 	optdepends = nlopt: NLopt optimizer support
-	source = https://github.com/esa/pagmo2/archive/v2.11.4.tar.gz
+	source = https://github.com/esa/pagmo2/archive/v2.12.0.tar.gz
+	sha512sums = b19ca4e4177ab603f368d7ff75919da98f495dc85d6faec351cce7ba2f6f7233cfcadcbd95e4a87a5b00e60ae805c662273d3651da726c8c02e3081ceb4c2954
 
 pkgname = pagmo
 
