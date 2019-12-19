@@ -1,0 +1,59 @@
+diff --git a/Makefile b/Makefile
+index f900c23b8291..387e83c4373e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -971,8 +971,8 @@ endif # INSTALL_MOD_STRIP
+ export mod_strip_cmd
+ 
+ # CONFIG_MODULE_COMPRESS, if defined, will cause module to be compressed
+-# after they are installed in agreement with CONFIG_MODULE_COMPRESS_GZIP
+-# or CONFIG_MODULE_COMPRESS_XZ.
++# after they are installed in agreement with CONFIG_MODULE_COMPRESS_GZIP,
++# CONFIG_MODULE_COMPRESS_XZ, or CONFIG_MODULE_COMPRESS_ZSTD.
+ 
+ mod_compress_cmd = true
+ ifdef CONFIG_MODULE_COMPRESS
+@@ -982,6 +982,9 @@ ifdef CONFIG_MODULE_COMPRESS
+   ifdef CONFIG_MODULE_COMPRESS_XZ
+     mod_compress_cmd = xz -f
+   endif # CONFIG_MODULE_COMPRESS_XZ
++  ifdef CONFIG_MODULE_COMPRESS_ZSTD
++    mod_compress_cmd = zstd -T0 -20 --ultra --rm -f
++  endif
+ endif # CONFIG_MODULE_COMPRESS
+ export mod_compress_cmd
+ 
+diff --git a/init/Kconfig b/init/Kconfig
+index a34064a031a5..345f068d0f62 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -2102,8 +2102,8 @@ config MODULE_COMPRESS
+ 	bool "Compress modules on installation"
+ 	help
+ 
+-	  Compresses kernel modules when 'make modules_install' is run; gzip or
+-	  xz depending on "Compression algorithm" below.
++	  Compresses kernel modules when 'make modules_install' is run; gzip,
++	  xz, or zstd depending on "Compression algorithm" below.
+ 
+ 	  module-init-tools MAY support gzip, and kmod MAY support gzip and xz.
+ 
+@@ -2125,7 +2125,7 @@ choice
+ 	  This determines which sort of compression will be used during
+ 	  'make modules_install'.
+ 
+-	  GZIP (default) and XZ are supported.
++	  GZIP (default), XZ, and ZSTD are supported.
+ 
+ config MODULE_COMPRESS_GZIP
+ 	bool "GZIP"
+@@ -2133,6 +2133,9 @@ config MODULE_COMPRESS_GZIP
+ config MODULE_COMPRESS_XZ
+ 	bool "XZ"
+ 
++config MODULE_COMPRESS_ZSTD
++	bool "ZSTD"
++
+ endchoice
+ 
+ config MODULE_ALLOW_MISSING_NAMESPACE_IMPORTS

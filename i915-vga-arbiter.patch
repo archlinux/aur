@@ -1,0 +1,186 @@
+From 7209b38ae2b81e6d79aecb77263580f8840e459a Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mark.weiman@markzz.com>
+Date: Wed, 7 Feb 2018 19:50:27 -0500
+Subject: [PATCH] i915: Add module option to support VGA arbiter on HD devices
+ (4.15)
+
+This is an updated version of Alex Williamson's patch from:
+https://lkml.org/lkml/2014/5/9/517
+I don't have i915 graphics, so this is completely untested.
+
+Original commit message follows:
+---
+Commit 81b5c7bc found that the current VGA arbiter support in i915
+only works for ancient GMCH-based IGD devices and attempted to update
+support for newer HD devices.  Unfortunately newer devices cannot
+completely opt-out of VGA arbitration like the old devices could.
+The VGA I/O space cannot be disabled internally.  The only way to
+route VGA I/O elsewhere is by disabling I/O at the device PCI command
+register.  This means that with commit 81b5c7bc and multiple VGA
+adapters, the VGA arbiter will report that multiple VGA devices are
+participating in arbitration, Xorg will notice this and disable DRI.
+Therefore, 81b5c7bc was reverted because DRI is more important than
+being correct.
+
+There is however an actual need for i915 to correctly participate in
+VGA arbitration; VGA device assignment.  If we want to use VFIO to
+assign a VGA device to a virtual machine, we need to be able to
+access the VGA resources of that device.  By adding an i915 module
+option we can allow i915 to continue with its charade by default, but
+also allow an easy path for users who require working VGA arbitration.
+Hopefully Xorg can someday be taught to behave better with multiple
+VGA devices.
+
+This also rolls in reverted commit 6e1b4fda, which corrected an
+ordering issue with 81b5c7bc by delaying the disabling of VGA memory
+until after vgacon->fbcon handoff.
+
+Signed-off-by: Mark Weiman <mark.weiman@markzz.com>
+---
+ drivers/gpu/drm/i915/i915_drv.c      | 22 +++++++++++++++++++---
+ drivers/gpu/drm/i915/i915_params.c   |  3 +++
+ drivers/gpu/drm/i915/i915_params.h   |  1 +
+ drivers/gpu/drm/i915/intel_display.c | 33 +++++++++++++++++++++++++++++++++
+ drivers/gpu/drm/i915/intel_drv.h     |  1 +
+ 5 files changed, 57 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
+index 2cf10d17acfb..794590a2dcf3 100644
+--- a/drivers/gpu/drm/i915/i915_drv.c
++++ b/drivers/gpu/drm/i915/i915_drv.c
+@@ -641,10 +641,20 @@ static int i915_load_modeset_init(struct drm_device *dev)
+ 	 * If we are a secondary display controller (!PCI_DISPLAY_CLASS_VGA),
+ 	 * then we do not take part in VGA arbitration and the
+ 	 * vga_client_register() fails with -ENODEV.
++	 *
++ 	 * NB. The set_decode callback here actually works on GMCH
++	 * devices, on newer HD devices we can only disable VGA MMIO space.
++	 * Disabling VGA I/O space requires disabling I/O in the PCI command
++	 * register.  Nonetheless, we like to pretend that we participate in
++	 * VGA arbitration and can dynamically disable VGA I/O space because
++	 * this makes X happy, even though it's a complete lie.
+ 	 */
+-	ret = vga_client_register(pdev, dev_priv, NULL, i915_vga_set_decode);
+-	if (ret && ret != -ENODEV)
+-		goto out;
++	if (!i915_modparams.enable_hd_vgaarb || !HAS_PCH_SPLIT(dev_priv)) {
++		ret = vga_client_register(pdev, dev, NULL,
++					  i915_vga_set_decode);
++		if (ret && ret != -ENODEV)
++			goto out;
++	}
+ 
+ 	intel_register_dsm_handler();
+ 
+@@ -686,6 +696,12 @@ static int i915_load_modeset_init(struct drm_device *dev)
+ 	if (ret)
+ 		goto cleanup_gem;
+ 
++	/*
++	 * Must do this after fbcon init so that
++	 * vgacon_save_screen() works during the handover.
++	 */
++	i915_disable_vga_mem(dev_priv);
++
+ 	/* Only enable hotplug handling once the fbdev is fully set up. */
+ 	intel_hpd_init(dev_priv);
+ 
+diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
+index b4faeb6aa2bd..fdf2ce69b34d 100644
+--- a/drivers/gpu/drm/i915/i915_params.c
++++ b/drivers/gpu/drm/i915/i915_params.c
+@@ -146,6 +146,9 @@ i915_param_named(disable_display, bool, 0400,
+ i915_param_named_unsafe(enable_cmd_parser, bool, 0400,
+ 	"Enable command parsing (true=enabled [default], false=disabled)");
+ 
++i915_param_named(enable_hd_vgaarb, bool, 0444,
++	"Enable support for VGA arbitration on Intel HD IGD. (default: false)");
++
+ i915_param_named(mmio_debug, int, 0600,
+ 	"Enable the MMIO debug code for the first N failures (default: off). "
+ 	"This may negatively affect performance.");
+diff --git a/drivers/gpu/drm/i915/i915_params.h b/drivers/gpu/drm/i915/i915_params.h
+index c7292268ed43..75577d34b0c8 100644
+--- a/drivers/gpu/drm/i915/i915_params.h
++++ b/drivers/gpu/drm/i915/i915_params.h
+@@ -56,6 +56,7 @@
+ 	/* leave bools at the end to not create holes */ \
+ 	param(bool, alpha_support, IS_ENABLED(CONFIG_DRM_I915_ALPHA_SUPPORT)) \
+ 	param(bool, enable_cmd_parser, true) \
++	param(bool, enable_hd_vgaarb, false) \
+ 	param(bool, enable_hangcheck, true) \
+ 	param(bool, fastboot, false) \
+ 	param(bool, prefault_disable, false) \
+diff --git a/drivers/gpu/drm/i915/intel_display.c b/drivers/gpu/drm/i915/intel_display.c
+index 50f8443641b8..06aebb05f23c 100644
+--- a/drivers/gpu/drm/i915/intel_display.c
++++ b/drivers/gpu/drm/i915/intel_display.c
+@@ -14379,6 +14379,36 @@ static void i915_disable_vga(struct drm_i915_private *dev_priv)
+ 	POSTING_READ(vga_reg);
+ }
+ 
++static void i915_enable_vga_mem(struct drm_i915_private *dev_priv)
++{
++	struct pci_dev *pdev = dev_priv->drm.pdev;
++
++	/* Enable VGA memory on Intel HD */
++	if (i915_modparams.enable_hd_vgaarb && HAS_PCH_SPLIT(dev_priv)) {
++		vga_get_uninterruptible(pdev, VGA_RSRC_LEGACY_IO);
++		outb(inb(VGA_MSR_READ) | VGA_MSR_MEM_EN, VGA_MSR_WRITE);
++		vga_set_legacy_decoding(pdev, VGA_RSRC_LEGACY_IO |
++						VGA_RSRC_LEGACY_MEM |
++						VGA_RSRC_NORMAL_IO |
++						VGA_RSRC_NORMAL_MEM);
++		vga_put(pdev, VGA_RSRC_LEGACY_IO);
++	}
++}
++
++void i915_disable_vga_mem(struct drm_i915_private *dev_priv)
++{
++	struct pci_dev *pdev = dev_priv->drm.pdev;
++	/* Disable VGA memory on Intel HD */
++	if (i915_modparams.enable_hd_vgaarb && HAS_PCH_SPLIT(dev_priv)) {
++		vga_get_uninterruptible(pdev, VGA_RSRC_LEGACY_IO);
++		outb(inb(VGA_MSR_READ) & ~VGA_MSR_MEM_EN, VGA_MSR_WRITE);
++		vga_set_legacy_decoding(pdev, VGA_RSRC_LEGACY_IO |
++						   VGA_RSRC_NORMAL_IO |
++						   VGA_RSRC_NORMAL_MEM);
++		vga_put(pdev, VGA_RSRC_LEGACY_IO);
++	}
++}
++
+ void intel_modeset_init_hw(struct drm_device *dev)
+ {
+ 	struct drm_i915_private *dev_priv = to_i915(dev);
+@@ -14877,6 +14907,7 @@ void i915_redisable_vga_power_on(struct drm_i915_private *dev_priv)
+ 	if (!(I915_READ(vga_reg) & VGA_DISP_DISABLE)) {
+ 		DRM_DEBUG_KMS("Something enabled VGA plane, disabling it\n");
+ 		i915_disable_vga(dev_priv);
++		i915_disable_vga_mem(dev_priv);
+ 	}
+ }
+ 
+@@ -15252,6 +15283,8 @@ void intel_modeset_cleanup(struct drm_device *dev)
+ {
+ 	struct drm_i915_private *dev_priv = to_i915(dev);
+ 
++	i915_enable_vga_mem(dev_priv);
++
+ 	flush_work(&dev_priv->atomic_helper.free_work);
+ 	WARN_ON(!llist_empty(&dev_priv->atomic_helper.free_list));
+ 
+diff --git a/drivers/gpu/drm/i915/intel_drv.h b/drivers/gpu/drm/i915/intel_drv.h
+index 5d77f75a9f9c..982fff761e9d 100644
+--- a/drivers/gpu/drm/i915/intel_drv.h
++++ b/drivers/gpu/drm/i915/intel_drv.h
+@@ -1340,6 +1340,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
+ 			   const char *name, u32 reg);
+ void lpt_disable_pch_transcoder(struct drm_i915_private *dev_priv);
+ void lpt_disable_iclkip(struct drm_i915_private *dev_priv);
++extern void i915_disable_vga_mem(struct drm_i915_private *dev_priv);
+ void intel_init_display_hooks(struct drm_i915_private *dev_priv);
+ unsigned int intel_fb_xy_to_linear(int x, int y,
+ 				   const struct intel_plane_state *state,
+-- 
+2.16.1
+

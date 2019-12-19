@@ -1,0 +1,53 @@
+pkgbase = linux-nc
+	pkgver = 5.4.4
+	pkgrel = 4
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	options = !strip
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.4.xz
+	source = config
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux.preset
+	source = add-acs-overrides.patch
+	source = 0007-v5.4-fsync.patch
+	source = 0008-add-zstd-kernel-compression.patch
+	source = 0009-add-zstd-compressed-modules.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
+	sha256sums = SKIP
+	sha256sums = 122fddb7e64187ac1c4cb00594901dfbff2c6bd94d4676c4f14f26cac03429b5
+	sha256sums = 9506b290fe5ec403f05a020e65e5b2540c11bf20b1a8ceb5bb8ca872bf3c464b
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5
+	sha256sums = 99d0102c8065793096b8ea2ccc01c41fa3dcb96855f9f6f2c583b2372208c6f9
+	sha256sums = 90917e09bb06fbed6853efe9e52f8c2ba4066fca44accdf7608222212561104a
+	sha256sums = 2d9260b80b43bbd605cf420d6bd53aa7262103dfd77196ba590ece5600b6dc0d
+	sha256sums = 0b7349ff2ee3828a70681f1619d5e1b3c69b44f503bfc5a926c6d0a9e5732f8d
+	sha256sums = a27ad8905df9d886a829b4ae62c62a8b20beb5829ea4af45692ffe8c5d0d94fd
+
+pkgname = linux-nc
+	pkgdesc = The Linux-nc kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-nc.preset
+
+pkgname = linux-nc-headers
+	pkgdesc = Header files and scripts for building modules for Linux-nc kernel
+
+pkgname = linux-nc-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-nc kernel
+

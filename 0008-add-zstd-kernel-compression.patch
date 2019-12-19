@@ -1,0 +1,3258 @@
+diff -uNr linux-5.4/arch/arm/boot/compressed/decompress.c linux-5.4-zstd/arch/arm/boot/compressed/decompress.c
+--- linux-5.4/arch/arm/boot/compressed/decompress.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/boot/compressed/decompress.c	2019-12-15 15:07:01.242285193 -0800
+@@ -42,10 +42,6 @@
+ #include "../../../../lib/decompress_unlzo.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_XZ
+ #define memmove memmove
+ #define memcpy memcpy
+diff -uNr linux-5.4/arch/arm/boot/compressed/Makefile linux-5.4-zstd/arch/arm/boot/compressed/Makefile
+--- linux-5.4/arch/arm/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/boot/compressed/Makefile	2019-12-15 15:07:01.242285193 -0800
+@@ -72,7 +72,6 @@
+ 
+ compress-$(CONFIG_KERNEL_GZIP) = gzip
+ compress-$(CONFIG_KERNEL_LZO)  = lzo
+-compress-$(CONFIG_KERNEL_LZMA) = lzma
+ compress-$(CONFIG_KERNEL_XZ)   = xzkern
+ compress-$(CONFIG_KERNEL_LZ4)  = lz4
+ 
+diff -uNr linux-5.4/arch/arm/configs/aspeed_g4_defconfig linux-5.4-zstd/arch/arm/configs/aspeed_g4_defconfig
+--- linux-5.4/arch/arm/configs/aspeed_g4_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/aspeed_g4_defconfig	2019-12-15 15:07:01.382282352 -0800
+@@ -8,7 +8,6 @@
+ CONFIG_LOG_BUF_SHIFT=16
+ CONFIG_CGROUPS=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+ # CONFIG_UID16 is not set
+diff -uNr linux-5.4/arch/arm/configs/aspeed_g5_defconfig linux-5.4-zstd/arch/arm/configs/aspeed_g5_defconfig
+--- linux-5.4/arch/arm/configs/aspeed_g5_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/aspeed_g5_defconfig	2019-12-15 15:07:01.422281540 -0800
+@@ -8,7 +8,6 @@
+ CONFIG_LOG_BUF_SHIFT=16
+ CONFIG_CGROUPS=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+ # CONFIG_UID16 is not set
+diff -uNr linux-5.4/arch/arm/configs/clps711x_defconfig linux-5.4-zstd/arch/arm/configs/clps711x_defconfig
+--- linux-5.4/arch/arm/configs/clps711x_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/clps711x_defconfig	2019-12-15 15:07:01.445614399 -0800
+@@ -2,7 +2,6 @@
+ CONFIG_SYSVIPC=y
+ CONFIG_LOG_BUF_SHIFT=14
+ CONFIG_BLK_DEV_INITRD=y
+-CONFIG_RD_LZMA=y
+ CONFIG_EMBEDDED=y
+ CONFIG_SLOB=y
+ CONFIG_JUMP_LABEL=y
+diff -uNr linux-5.4/arch/arm/configs/ezx_defconfig linux-5.4-zstd/arch/arm/configs/ezx_defconfig
+--- linux-5.4/arch/arm/configs/ezx_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/ezx_defconfig	2019-12-15 15:07:01.462280728 -0800
+@@ -4,8 +4,6 @@
+ CONFIG_LOG_BUF_SHIFT=14
+ CONFIG_SYSFS_DEPRECATED_V2=y
+ CONFIG_BLK_DEV_INITRD=y
+-CONFIG_RD_BZIP2=y
+-CONFIG_RD_LZMA=y
+ CONFIG_EXPERT=y
+ # CONFIG_COMPAT_BRK is not set
+ CONFIG_SLAB=y
+diff -uNr linux-5.4/arch/arm/configs/hisi_defconfig linux-5.4-zstd/arch/arm/configs/hisi_defconfig
+--- linux-5.4/arch/arm/configs/hisi_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/hisi_defconfig	2019-12-15 15:07:01.505613182 -0800
+@@ -1,7 +1,6 @@
+ CONFIG_NO_HZ=y
+ CONFIG_HIGH_RES_TIMERS=y
+ CONFIG_BLK_DEV_INITRD=y
+-CONFIG_RD_LZMA=y
+ CONFIG_ARCH_HISI=y
+ CONFIG_ARCH_HI3xxx=y
+ CONFIG_PARTITION_ADVANCED=y
+diff -uNr linux-5.4/arch/arm/configs/imote2_defconfig linux-5.4-zstd/arch/arm/configs/imote2_defconfig
+--- linux-5.4/arch/arm/configs/imote2_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/imote2_defconfig	2019-12-15 15:07:01.505613182 -0800
+@@ -3,8 +3,6 @@
+ CONFIG_LOG_BUF_SHIFT=14
+ CONFIG_SYSFS_DEPRECATED_V2=y
+ CONFIG_BLK_DEV_INITRD=y
+-CONFIG_RD_BZIP2=y
+-CONFIG_RD_LZMA=y
+ CONFIG_EXPERT=y
+ # CONFIG_COMPAT_BRK is not set
+ CONFIG_SLAB=y
+diff -uNr linux-5.4/arch/arm/configs/lpc18xx_defconfig linux-5.4-zstd/arch/arm/configs/lpc18xx_defconfig
+--- linux-5.4/arch/arm/configs/lpc18xx_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/lpc18xx_defconfig	2019-12-15 15:07:01.545612370 -0800
+@@ -2,8 +2,6 @@
+ CONFIG_HIGH_RES_TIMERS=y
+ CONFIG_PREEMPT=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/arch/arm/configs/vf610m4_defconfig linux-5.4-zstd/arch/arm/configs/vf610m4_defconfig
+--- linux-5.4/arch/arm/configs/vf610m4_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/configs/vf610m4_defconfig	2019-12-15 15:07:01.568945230 -0800
+@@ -1,7 +1,5 @@
+ CONFIG_NAMESPACES=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZ4 is not set
+ CONFIG_KALLSYMS_ALL=y
+diff -uNr linux-5.4/arch/arm/Kconfig linux-5.4-zstd/arch/arm/Kconfig
+--- linux-5.4/arch/arm/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/arm/Kconfig	2019-12-15 15:07:01.155620285 -0800
+@@ -90,7 +90,6 @@
+ 	select HAVE_IRQ_TIME_ACCOUNTING
+ 	select HAVE_KERNEL_GZIP
+ 	select HAVE_KERNEL_LZ4
+-	select HAVE_KERNEL_LZMA
+ 	select HAVE_KERNEL_LZO
+ 	select HAVE_KERNEL_XZ
+ 	select HAVE_KPROBES if !XIP_KERNEL && !CPU_ENDIAN_BE32 && !CPU_V7M
+diff -uNr linux-5.4/arch/m68k/configs/stmark2_defconfig linux-5.4-zstd/arch/m68k/configs/stmark2_defconfig
+--- linux-5.4/arch/m68k/configs/stmark2_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/m68k/configs/stmark2_defconfig	2019-12-15 15:07:01.592278090 -0800
+@@ -5,8 +5,6 @@
+ CONFIG_LOG_BUF_SHIFT=14
+ CONFIG_NAMESPACES=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/arch/mips/boot/compressed/decompress.c linux-5.4-zstd/arch/mips/boot/compressed/decompress.c
+--- linux-5.4/arch/mips/boot/compressed/decompress.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/mips/boot/compressed/decompress.c	2019-12-15 15:07:00.468967555 -0800
+@@ -52,18 +52,10 @@
+ #include "../../../../lib/decompress_inflate.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-#include "../../../../lib/decompress_bunzip2.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZ4
+ #include "../../../../lib/decompress_unlz4.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZO
+ #include "../../../../lib/decompress_unlzo.c"
+ #endif
+diff -uNr linux-5.4/arch/mips/boot/compressed/Makefile linux-5.4-zstd/arch/mips/boot/compressed/Makefile
+--- linux-5.4/arch/mips/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/mips/boot/compressed/Makefile	2019-12-15 15:07:00.462301024 -0800
+@@ -62,9 +62,7 @@
+ 	$(call if_changed,objcopy)
+ 
+ tool_$(CONFIG_KERNEL_GZIP)    = gzip
+-tool_$(CONFIG_KERNEL_BZIP2)   = bzip2
+ tool_$(CONFIG_KERNEL_LZ4)     = lz4
+-tool_$(CONFIG_KERNEL_LZMA)    = lzma
+ tool_$(CONFIG_KERNEL_LZO)     = lzo
+ tool_$(CONFIG_KERNEL_XZ)      = xzkern
+ 
+diff -uNr linux-5.4/arch/mips/boot/Makefile linux-5.4-zstd/arch/mips/boot/Makefile
+--- linux-5.4/arch/mips/boot/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/mips/boot/Makefile	2019-12-15 15:07:00.398968976 -0800
+@@ -24,9 +24,7 @@
+ hostprogs-y := elf2ecoff
+ 
+ suffix-y			:= bin
+-suffix-$(CONFIG_KERNEL_BZIP2)	:= bz2
+ suffix-$(CONFIG_KERNEL_GZIP)	:= gz
+-suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
+ suffix-$(CONFIG_KERNEL_LZO)	:= lzo
+ 
+ targets := vmlinux.ecoff
+@@ -54,20 +52,12 @@
+ # Compressed vmlinux images
+ #
+ 
+-extra-y += vmlinux.bin.bz2
+ extra-y += vmlinux.bin.gz
+-extra-y += vmlinux.bin.lzma
+ extra-y += vmlinux.bin.lzo
+ 
+-$(obj)/vmlinux.bin.bz2: $(obj)/vmlinux.bin FORCE
+-	$(call if_changed,bzip2)
+-
+ $(obj)/vmlinux.bin.gz: $(obj)/vmlinux.bin FORCE
+ 	$(call if_changed,gzip)
+ 
+-$(obj)/vmlinux.bin.lzma: $(obj)/vmlinux.bin FORCE
+-	$(call if_changed,lzma)
+-
+ $(obj)/vmlinux.bin.lzo: $(obj)/vmlinux.bin FORCE
+ 	$(call if_changed,lzo)
+ 
+@@ -77,23 +67,15 @@
+ 
+ targets += uImage
+ targets += uImage.bin
+-targets += uImage.bz2
+ targets += uImage.gz
+-targets += uImage.lzma
+ targets += uImage.lzo
+ 
+ $(obj)/uImage.bin: $(obj)/vmlinux.bin FORCE
+ 	$(call if_changed,uimage,none)
+ 
+-$(obj)/uImage.bz2: $(obj)/vmlinux.bin.bz2 FORCE
+-	$(call if_changed,uimage,bzip2)
+-
+ $(obj)/uImage.gz: $(obj)/vmlinux.bin.gz FORCE
+ 	$(call if_changed,uimage,gzip)
+ 
+-$(obj)/uImage.lzma: $(obj)/vmlinux.bin.lzma FORCE
+-	$(call if_changed,uimage,lzma)
+-
+ $(obj)/uImage.lzo: $(obj)/vmlinux.bin.lzo FORCE
+ 	$(call if_changed,uimage,lzo)
+ 
+@@ -122,7 +104,6 @@
+ 
+ targets += vmlinux.its
+ targets += vmlinux.gz.its
+-targets += vmlinux.bz2.its
+ targets += vmlinux.lzmo.its
+ targets += vmlinux.lzo.its
+ 
+@@ -142,19 +123,11 @@
+ $(obj)/vmlinux.gz.its: $(obj)/vmlinux.its.S $(VMLINUX) FORCE
+ 	$(call if_changed,cpp_its_S,gzip,vmlinux.bin.gz)
+ 
+-$(obj)/vmlinux.bz2.its: $(obj)/vmlinux.its.S $(VMLINUX)  FORCE
+-	$(call if_changed,cpp_its_S,bzip2,vmlinux.bin.bz2)
+-
+-$(obj)/vmlinux.lzma.its: $(obj)/vmlinux.its.S $(VMLINUX) FORCE
+-	$(call if_changed,cpp_its_S,lzma,vmlinux.bin.lzma)
+-
+ $(obj)/vmlinux.lzo.its: $(obj)/vmlinux.its.S $(VMLINUX) FORCE
+ 	$(call if_changed,cpp_its_S,lzo,vmlinux.bin.lzo)
+ 
+ targets += vmlinux.itb
+ targets += vmlinux.gz.itb
+-targets += vmlinux.bz2.itb
+-targets += vmlinux.lzma.itb
+ targets += vmlinux.lzo.itb
+ 
+ quiet_cmd_itb-image = ITB     $@
+diff -uNr linux-5.4/arch/mips/configs/ath25_defconfig linux-5.4-zstd/arch/mips/configs/ath25_defconfig
+--- linux-5.4/arch/mips/configs/ath25_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/mips/configs/ath25_defconfig	2019-12-15 15:07:01.595611355 -0800
+@@ -4,7 +4,6 @@
+ CONFIG_HIGH_RES_TIMERS=y
+ CONFIG_BLK_DEV_INITRD=y
+ # CONFIG_RD_GZIP is not set
+-# CONFIG_RD_BZIP2 is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/arch/mips/configs/pistachio_defconfig linux-5.4-zstd/arch/mips/configs/pistachio_defconfig
+--- linux-5.4/arch/mips/configs/pistachio_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/mips/configs/pistachio_defconfig	2019-12-15 15:07:01.678942997 -0800
+@@ -14,8 +14,6 @@
+ CONFIG_NAMESPACES=y
+ CONFIG_USER_NS=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+ CONFIG_CC_OPTIMIZE_FOR_SIZE=y
+diff -uNr linux-5.4/arch/mips/Kconfig linux-5.4-zstd/arch/mips/Kconfig
+--- linux-5.4/arch/mips/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/mips/Kconfig	2019-12-15 15:07:00.365636320 -0800
+@@ -1843,9 +1843,7 @@
+ config SYS_SUPPORTS_ZBOOT
+ 	bool
+ 	select HAVE_KERNEL_GZIP
+-	select HAVE_KERNEL_BZIP2
+ 	select HAVE_KERNEL_LZ4
+-	select HAVE_KERNEL_LZMA
+ 	select HAVE_KERNEL_LZO
+ 	select HAVE_KERNEL_XZ
+ 
+diff -uNr linux-5.4/arch/openrisc/configs/simple_smp_defconfig linux-5.4-zstd/arch/openrisc/configs/simple_smp_defconfig
+--- linux-5.4/arch/openrisc/configs/simple_smp_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/openrisc/configs/simple_smp_defconfig	2019-12-15 15:07:01.725608717 -0800
+@@ -4,8 +4,6 @@
+ CONFIG_LOG_BUF_SHIFT=14
+ CONFIG_BLK_DEV_INITRD=y
+ # CONFIG_RD_GZIP is not set
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/arch/parisc/boot/compressed/Makefile linux-5.4-zstd/arch/parisc/boot/compressed/Makefile
+--- linux-5.4/arch/parisc/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/parisc/boot/compressed/Makefile	2019-12-15 15:07:00.692296356 -0800
+@@ -9,8 +9,8 @@
+ GCOV_PROFILE := n
+ UBSAN_SANITIZE := n
+ 
+-targets := vmlinux.lds vmlinux vmlinux.bin vmlinux.bin.gz vmlinux.bin.bz2
+-targets += vmlinux.bin.xz vmlinux.bin.lzma vmlinux.bin.lzo vmlinux.bin.lz4
++targets := vmlinux.lds vmlinux vmlinux.bin vmlinux.bin.gz
++targets += vmlinux.bin.xz vmlinux.bin.lzo vmlinux.bin.lz4
+ targets += misc.o piggy.o sizes.h head.o real2.o firmware.o
+ targets += real2.S firmware.c
+ 
+@@ -63,20 +63,14 @@
+ vmlinux.bin.all-y := $(obj)/vmlinux.bin
+ 
+ suffix-$(CONFIG_KERNEL_GZIP)  := gz
+-suffix-$(CONFIG_KERNEL_BZIP2) := bz2
+ suffix-$(CONFIG_KERNEL_LZ4)  := lz4
+-suffix-$(CONFIG_KERNEL_LZMA)  := lzma
+ suffix-$(CONFIG_KERNEL_LZO)  := lzo
+ suffix-$(CONFIG_KERNEL_XZ)  := xz
+ 
+ $(obj)/vmlinux.bin.gz: $(vmlinux.bin.all-y)
+ 	$(call if_changed,gzip)
+-$(obj)/vmlinux.bin.bz2: $(vmlinux.bin.all-y)
+-	$(call if_changed,bzip2)
+ $(obj)/vmlinux.bin.lz4: $(vmlinux.bin.all-y)
+ 	$(call if_changed,lz4)
+-$(obj)/vmlinux.bin.lzma: $(vmlinux.bin.all-y)
+-	$(call if_changed,lzma)
+ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y)
+ 	$(call if_changed,lzo)
+ $(obj)/vmlinux.bin.xz: $(vmlinux.bin.all-y)
+diff -uNr linux-5.4/arch/parisc/boot/compressed/misc.c linux-5.4-zstd/arch/parisc/boot/compressed/misc.c
+--- linux-5.4/arch/parisc/boot/compressed/misc.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/parisc/boot/compressed/misc.c	2019-12-15 15:07:00.692296356 -0800
+@@ -42,18 +42,10 @@
+ #include "../../../../lib/decompress_inflate.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-#include "../../../../lib/decompress_bunzip2.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZ4
+ #include "../../../../lib/decompress_unlz4.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZO
+ #include "../../../../lib/decompress_unlzo.c"
+ #endif
+diff -uNr linux-5.4/arch/parisc/Kconfig linux-5.4-zstd/arch/parisc/Kconfig
+--- linux-5.4/arch/parisc/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/parisc/Kconfig	2019-12-15 15:07:00.652297168 -0800
+@@ -21,10 +21,8 @@
+ 	select BUILDTIME_EXTABLE_SORT
+ 	select HAVE_PCI
+ 	select HAVE_PERF_EVENTS
+-	select HAVE_KERNEL_BZIP2
+ 	select HAVE_KERNEL_GZIP
+ 	select HAVE_KERNEL_LZ4
+-	select HAVE_KERNEL_LZMA
+ 	select HAVE_KERNEL_LZO
+ 	select HAVE_KERNEL_XZ
+ 	select GENERIC_ATOMIC64 if !64BIT
+diff -uNr linux-5.4/arch/powerpc/configs/44x/fsp2_defconfig linux-5.4-zstd/arch/powerpc/configs/44x/fsp2_defconfig
+--- linux-5.4/arch/powerpc/configs/44x/fsp2_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/powerpc/configs/44x/fsp2_defconfig	2019-12-15 15:07:01.845606281 -0800
+@@ -9,7 +9,6 @@
+ CONFIG_IKCONFIG_PROC=y
+ CONFIG_LOG_BUF_SHIFT=16
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/arch/powerpc/configs/skiroot_defconfig linux-5.4-zstd/arch/powerpc/configs/skiroot_defconfig
+--- linux-5.4/arch/powerpc/configs/skiroot_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/powerpc/configs/skiroot_defconfig	2019-12-15 15:07:01.895605266 -0800
+@@ -16,8 +16,6 @@
+ CONFIG_LOG_BUF_SHIFT=20
+ CONFIG_BLK_DEV_INITRD=y
+ # CONFIG_RD_GZIP is not set
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+ CONFIG_CC_OPTIMIZE_FOR_SIZE=y
+diff -uNr linux-5.4/arch/s390/boot/compressed/decompressor.c linux-5.4-zstd/arch/s390/boot/compressed/decompressor.c
+--- linux-5.4/arch/s390/boot/compressed/decompressor.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/s390/boot/compressed/decompressor.c	2019-12-15 15:07:00.768961466 -0800
+@@ -42,18 +42,10 @@
+ #include "../../../../lib/decompress_inflate.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-#include "../../../../lib/decompress_bunzip2.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZ4
+ #include "../../../../lib/decompress_unlz4.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZO
+ #include "../../../../lib/decompress_unlzo.c"
+ #endif
+diff -uNr linux-5.4/arch/s390/boot/compressed/Makefile linux-5.4-zstd/arch/s390/boot/compressed/Makefile
+--- linux-5.4/arch/s390/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/s390/boot/compressed/Makefile	2019-12-15 15:07:00.768961466 -0800
+@@ -11,7 +11,7 @@
+ KASAN_SANITIZE := n
+ 
+ obj-y	:= $(if $(CONFIG_KERNEL_UNCOMPRESSED),,decompressor.o) piggy.o info.o
+-targets	:= vmlinux.lds vmlinux vmlinux.bin vmlinux.bin.gz vmlinux.bin.bz2
++targets	:= vmlinux.lds vmlinux vmlinux.bin vmlinux.bin.gz
+ targets += vmlinux.bin.xz vmlinux.bin.lzma vmlinux.bin.lzo vmlinux.bin.lz4
+ targets += info.bin $(obj-y)
+ 
+diff -uNr linux-5.4/arch/s390/Kconfig linux-5.4-zstd/arch/s390/Kconfig
+--- linux-5.4/arch/s390/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/s390/Kconfig	2019-12-15 15:07:00.765628201 -0800
+@@ -147,10 +147,8 @@
+ 	select HAVE_FUNCTION_TRACER
+ 	select HAVE_FUTEX_CMPXCHG if FUTEX
+ 	select HAVE_GCC_PLUGINS
+-	select HAVE_KERNEL_BZIP2
+ 	select HAVE_KERNEL_GZIP
+ 	select HAVE_KERNEL_LZ4
+-	select HAVE_KERNEL_LZMA
+ 	select HAVE_KERNEL_LZO
+ 	select HAVE_KERNEL_UNCOMPRESSED
+ 	select HAVE_KERNEL_XZ
+diff -uNr linux-5.4/arch/sh/boot/compressed/Makefile linux-5.4-zstd/arch/sh/boot/compressed/Makefile
+--- linux-5.4/arch/sh/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/sh/boot/compressed/Makefile	2019-12-15 15:07:00.872292703 -0800
+@@ -6,7 +6,6 @@
+ #
+ 
+ targets		:= vmlinux vmlinux.bin vmlinux.bin.gz \
+-		   vmlinux.bin.bz2 vmlinux.bin.lzma \
+ 		   vmlinux.bin.xz vmlinux.bin.lzo \
+ 		   head_$(BITS).o misc.o piggy.o
+ 
+@@ -64,10 +63,6 @@
+ 
+ $(obj)/vmlinux.bin.gz: $(vmlinux.bin.all-y) FORCE
+ 	$(call if_changed,gzip)
+-$(obj)/vmlinux.bin.bz2: $(vmlinux.bin.all-y) FORCE
+-	$(call if_changed,bzip2)
+-$(obj)/vmlinux.bin.lzma: $(vmlinux.bin.all-y) FORCE
+-	$(call if_changed,lzma)
+ $(obj)/vmlinux.bin.xz: $(vmlinux.bin.all-y) FORCE
+ 	$(call if_changed,xzkern)
+ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y) FORCE
+diff -uNr linux-5.4/arch/sh/boot/compressed/misc.c linux-5.4-zstd/arch/sh/boot/compressed/misc.c
+--- linux-5.4/arch/sh/boot/compressed/misc.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/sh/boot/compressed/misc.c	2019-12-15 15:07:00.942291282 -0800
+@@ -44,24 +44,12 @@
+ static unsigned long free_mem_ptr;
+ static unsigned long free_mem_end_ptr;
+ 
+-#ifdef CONFIG_HAVE_KERNEL_BZIP2
+-#define HEAP_SIZE	0x400000
+-#else
+ #define HEAP_SIZE	0x10000
+-#endif
+ 
+ #ifdef CONFIG_KERNEL_GZIP
+ #include "../../../../lib/decompress_inflate.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-#include "../../../../lib/decompress_bunzip2.c"
+-#endif
+-
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_XZ
+ #include "../../../../lib/decompress_unxz.c"
+ #endif
+diff -uNr linux-5.4/arch/sh/boot/Makefile linux-5.4-zstd/arch/sh/boot/Makefile
+--- linux-5.4/arch/sh/boot/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/sh/boot/Makefile	2019-12-15 15:07:00.852293109 -0800
+@@ -21,15 +21,12 @@
+ 
+ suffix-y := bin
+ suffix-$(CONFIG_KERNEL_GZIP)	:= gz
+-suffix-$(CONFIG_KERNEL_BZIP2)	:= bz2
+-suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
+ suffix-$(CONFIG_KERNEL_XZ)	:= xz
+ suffix-$(CONFIG_KERNEL_LZO)	:= lzo
+ 
+ targets := zImage vmlinux.srec romImage uImage uImage.srec uImage.gz \
+-	   uImage.bz2 uImage.lzma uImage.xz uImage.lzo uImage.bin
+-extra-y += vmlinux.bin vmlinux.bin.gz vmlinux.bin.bz2 vmlinux.bin.lzma \
+-	   vmlinux.bin.xz vmlinux.bin.lzo
++	   uImage.xz uImage.lzo uImage.bin
++extra-y += vmlinux.bin vmlinux.bin.gz vmlinux.bin.xz vmlinux.bin.lzo
+ subdir- := compressed romimage
+ 
+ $(obj)/zImage: $(obj)/compressed/vmlinux FORCE
+@@ -68,27 +65,15 @@
+ $(obj)/vmlinux.bin.gz: $(obj)/vmlinux.bin FORCE
+ 	$(call if_changed,gzip)
+ 
+-$(obj)/vmlinux.bin.bz2: $(obj)/vmlinux.bin FORCE
+-	$(call if_changed,bzip2)
+-
+-$(obj)/vmlinux.bin.lzma: $(obj)/vmlinux.bin FORCE
+-	$(call if_changed,lzma)
+-
+ $(obj)/vmlinux.bin.xz: $(obj)/vmlinux.bin FORCE
+ 	$(call if_changed,xzkern)
+ 
+ $(obj)/vmlinux.bin.lzo: $(obj)/vmlinux.bin FORCE
+ 	$(call if_changed,lzo)
+ 
+-$(obj)/uImage.bz2: $(obj)/vmlinux.bin.bz2
+-	$(call if_changed,uimage,bzip2)
+-
+ $(obj)/uImage.gz: $(obj)/vmlinux.bin.gz
+ 	$(call if_changed,uimage,gzip)
+ 
+-$(obj)/uImage.lzma: $(obj)/vmlinux.bin.lzma
+-	$(call if_changed,uimage,lzma)
+-
+ $(obj)/uImage.xz: $(obj)/vmlinux.bin.xz
+ 	$(call if_changed,uimage,xz)
+ 
+diff -uNr linux-5.4/arch/sh/configs/sdk7786_defconfig linux-5.4-zstd/arch/sh/configs/sdk7786_defconfig
+--- linux-5.4/arch/sh/configs/sdk7786_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/sh/configs/sdk7786_defconfig	2019-12-15 15:07:01.908938329 -0800
+@@ -29,8 +29,6 @@
+ CONFIG_PID_NS=y
+ CONFIG_NET_NS=y
+ CONFIG_BLK_DEV_INITRD=y
+-CONFIG_RD_BZIP2=y
+-CONFIG_RD_LZMA=y
+ CONFIG_RD_LZO=y
+ # CONFIG_COMPAT_BRK is not set
+ CONFIG_SLAB=y
+diff -uNr linux-5.4/arch/sh/Kconfig linux-5.4-zstd/arch/sh/Kconfig
+--- linux-5.4/arch/sh/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/sh/Kconfig	2019-12-15 15:07:00.842293312 -0800
+@@ -22,8 +22,6 @@
+ 	select HAVE_DEBUG_KMEMLEAK
+ 	select HAVE_KERNEL_GZIP
+ 	select CPU_NO_EFFICIENT_FFS
+-	select HAVE_KERNEL_BZIP2
+-	select HAVE_KERNEL_LZMA
+ 	select HAVE_KERNEL_XZ
+ 	select HAVE_KERNEL_LZO
+ 	select HAVE_UID16
+diff -uNr linux-5.4/arch/sh/Makefile linux-5.4-zstd/arch/sh/Makefile
+--- linux-5.4/arch/sh/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/sh/Makefile	2019-12-15 15:07:00.842293312 -0800
+@@ -209,7 +209,7 @@
+ libs-$(CONFIG_SUPERH32)		:= arch/sh/lib/	$(libs-y)
+ libs-$(CONFIG_SUPERH64)		:= arch/sh/lib64/ $(libs-y)
+ 
+-BOOT_TARGETS = uImage uImage.bz2 uImage.gz uImage.lzma uImage.xz uImage.lzo \
++BOOT_TARGETS = uImage uImage.bz2 uImage.gz uImage.xz uImage.lzo \
+ 	       uImage.srec uImage.bin zImage vmlinux.bin vmlinux.srec \
+ 	       romImage
+ PHONY += $(BOOT_TARGETS)
+@@ -240,8 +240,6 @@
+ 	@echo '  uImage.srec	           - Create an S-record for U-Boot'
+ 	@echo '  uImage.bin	           - Kernel-only image for U-Boot (bin)'
+ 	@echo '* uImage.gz	           - Kernel-only image for U-Boot (gzip)'
+-	@echo '  uImage.bz2	           - Kernel-only image for U-Boot (bzip2)'
+-	@echo '  uImage.lzma	           - Kernel-only image for U-Boot (lzma)'
+ 	@echo '  uImage.xz	           - Kernel-only image for U-Boot (xz)'
+ 	@echo '  uImage.lzo	           - Kernel-only image for U-Boot (lzo)'
+ endef
+diff -uNr linux-5.4/arch/unicore32/boot/compressed/Makefile linux-5.4-zstd/arch/unicore32/boot/compressed/Makefile
+--- linux-5.4/arch/unicore32/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/unicore32/boot/compressed/Makefile	2019-12-15 15:07:01.092288237 -0800
+@@ -22,9 +22,7 @@
+ 
+ # piggy.S and piggy.o
+ suffix_$(CONFIG_KERNEL_GZIP)	:= gzip
+-suffix_$(CONFIG_KERNEL_BZIP2)	:= bz2
+ suffix_$(CONFIG_KERNEL_LZO)	:= lzo
+-suffix_$(CONFIG_KERNEL_LZMA)	:= lzma
+ 
+ $(obj)/piggy.$(suffix_y): $(obj)/../Image FORCE
+ 	$(call if_changed,$(suffix_y))
+@@ -39,7 +37,7 @@
+ 			piggy.$(suffix_y) piggy.o piggy.S \
+ 
+ # Make sure files are removed during clean
+-extra-y		+= piggy.gzip piggy.bz2 piggy.lzo piggy.lzma
++extra-y		+= piggy.gzip piggy.lzo
+ 
+ # ?
+ LDFLAGS_vmlinux += -p
+diff -uNr linux-5.4/arch/unicore32/boot/compressed/misc.c linux-5.4-zstd/arch/unicore32/boot/compressed/misc.c
+--- linux-5.4/arch/unicore32/boot/compressed/misc.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/unicore32/boot/compressed/misc.c	2019-12-15 15:07:01.095621503 -0800
+@@ -88,18 +88,10 @@
+ #include "../../../../lib/decompress_inflate.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-#include "../../../../lib/decompress_bunzip2.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_LZO
+ #include "../../../../lib/decompress_unlzo.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ unsigned long decompress_kernel(unsigned long output_start,
+ 		unsigned long free_mem_ptr_p,
+ 		unsigned long free_mem_ptr_end_p)
+diff -uNr linux-5.4/arch/x86/boot/compressed/Makefile linux-5.4-zstd/arch/x86/boot/compressed/Makefile
+--- linux-5.4/arch/x86/boot/compressed/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/x86/boot/compressed/Makefile	2019-12-15 15:07:00.308970803 -0800
+@@ -7,13 +7,13 @@
+ # vmlinuz is:
+ #	decompression code (*.o)
+ #	asm globals (piggy.S), including:
+-#		vmlinux.bin.(gz|bz2|lzma|...)
++#		vmlinux.bin.(gz|zst|xz|...)
+ #
+ # vmlinux.bin is:
+ #	vmlinux stripped of debugging and comments
+ # vmlinux.bin.all is:
+ #	vmlinux.bin + vmlinux.relocs
+-# vmlinux.bin.(gz|bz2|lzma|...) is:
++# vmlinux.bin.(gz|zst|xz|...) is:
+ #	(see scripts/Makefile.lib size_append)
+ #	compressed vmlinux.bin.all + u32 size of vmlinux.bin.all
+ 
+@@ -23,8 +23,8 @@
+ # Prevents link failures: __sanitizer_cov_trace_pc() is not linked in.
+ KCOV_INSTRUMENT		:= n
+ 
+-targets := vmlinux vmlinux.bin vmlinux.bin.gz vmlinux.bin.bz2 vmlinux.bin.lzma \
+-	vmlinux.bin.xz vmlinux.bin.lzo vmlinux.bin.lz4
++targets := vmlinux vmlinux.bin vmlinux.bin.gz \
++	vmlinux.bin.xz vmlinux.bin.lzo vmlinux.bin.lz4 vmlinux.bin.zst
+ 
+ KBUILD_CFLAGS := -m$(BITS) -O2
+ KBUILD_CFLAGS += -fno-strict-aliasing $(call cc-option, -fPIE, -fPIC)
+@@ -134,23 +134,20 @@
+ 
+ $(obj)/vmlinux.bin.gz: $(vmlinux.bin.all-y) FORCE
+ 	$(call if_changed,gzip)
+-$(obj)/vmlinux.bin.bz2: $(vmlinux.bin.all-y) FORCE
+-	$(call if_changed,bzip2)
+-$(obj)/vmlinux.bin.lzma: $(vmlinux.bin.all-y) FORCE
+-	$(call if_changed,lzma)
+ $(obj)/vmlinux.bin.xz: $(vmlinux.bin.all-y) FORCE
+ 	$(call if_changed,xzkern)
+ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y) FORCE
+ 	$(call if_changed,lzo)
+ $(obj)/vmlinux.bin.lz4: $(vmlinux.bin.all-y) FORCE
+ 	$(call if_changed,lz4)
++$(obj)/vmlinux.bin.zst: $(vmlinux.bin.all-y) FORCE
++	$(call if_changed,zstd)
+ 
+ suffix-$(CONFIG_KERNEL_GZIP)	:= gz
+-suffix-$(CONFIG_KERNEL_BZIP2)	:= bz2
+-suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
+ suffix-$(CONFIG_KERNEL_XZ)	:= xz
+ suffix-$(CONFIG_KERNEL_LZO) 	:= lzo
+ suffix-$(CONFIG_KERNEL_LZ4) 	:= lz4
++suffix-$(CONFIG_KERNEL_ZSTD)	:= zst
+ 
+ quiet_cmd_mkpiggy = MKPIGGY $@
+       cmd_mkpiggy = $(obj)/mkpiggy $< > $@
+diff -uNr linux-5.4/arch/x86/boot/compressed/misc.c linux-5.4-zstd/arch/x86/boot/compressed/misc.c
+--- linux-5.4/arch/x86/boot/compressed/misc.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/x86/boot/compressed/misc.c	2019-12-15 15:07:00.308970803 -0800
+@@ -58,14 +58,6 @@
+ #include "../../../../lib/decompress_inflate.c"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-#include "../../../../lib/decompress_bunzip2.c"
+-#endif
+-
+-#ifdef CONFIG_KERNEL_LZMA
+-#include "../../../../lib/decompress_unlzma.c"
+-#endif
+-
+ #ifdef CONFIG_KERNEL_XZ
+ #include "../../../../lib/decompress_unxz.c"
+ #endif
+@@ -77,6 +69,10 @@
+ #ifdef CONFIG_KERNEL_LZ4
+ #include "../../../../lib/decompress_unlz4.c"
+ #endif
++
++#ifdef CONFIG_KERNEL_ZSTD
++#include "../../../../lib/decompress_unzstd.c"
++#endif
+ /*
+  * NOTE: When adding a new decompressor, please update the analysis in
+  * ../header.S.
+diff -uNr linux-5.4/arch/x86/boot/header.S linux-5.4-zstd/arch/x86/boot/header.S
+--- linux-5.4/arch/x86/boot/header.S	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/x86/boot/header.S	2019-12-15 15:07:00.302304271 -0800
+@@ -536,8 +536,14 @@
+ # the size-dependent part now grows so fast.
+ #
+ # extra_bytes = (uncompressed_size >> 8) + 65536
++#
++# ZSTD compressed data grows by at most 3 bytes per 128K, and only has a 22
++# byte fixed overhead but has a maximum block size of 128K, so it needs a
++# larger margin.
++#
++# extra_bytes = (uncompressed_size >> 8) + 131072
+ 
+-#define ZO_z_extra_bytes	((ZO_z_output_len >> 8) + 65536)
++#define ZO_z_extra_bytes	((ZO_z_output_len >> 8) + 131072)
+ #if ZO_z_output_len > ZO_z_input_len
+ # define ZO_z_extract_offset	(ZO_z_output_len + ZO_z_extra_bytes - \
+ 				 ZO_z_input_len)
+diff -uNr linux-5.4/arch/x86/include/asm/boot.h linux-5.4-zstd/arch/x86/include/asm/boot.h
+--- linux-5.4/arch/x86/include/asm/boot.h	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/x86/include/asm/boot.h	2019-12-15 15:07:00.308970803 -0800
+@@ -24,9 +24,9 @@
+ # error "Invalid value for CONFIG_PHYSICAL_ALIGN"
+ #endif
+ 
+-#ifdef CONFIG_KERNEL_BZIP2
+-# define BOOT_HEAP_SIZE		0x400000
+-#else /* !CONFIG_KERNEL_BZIP2 */
++#if defined(CONFIG_KERNEL_ZSTD)
++# define BOOT_HEAP_SIZE		 0x30000
++#else
+ # define BOOT_HEAP_SIZE		 0x10000
+ #endif
+ 
+diff -uNr linux-5.4/arch/x86/Kconfig linux-5.4-zstd/arch/x86/Kconfig
+--- linux-5.4/arch/x86/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/x86/Kconfig	2019-12-15 15:07:00.308970803 -0800
+@@ -173,12 +173,11 @@
+ 	select HAVE_IOREMAP_PROT
+ 	select HAVE_IRQ_EXIT_ON_IRQ_STACK	if X86_64
+ 	select HAVE_IRQ_TIME_ACCOUNTING
+-	select HAVE_KERNEL_BZIP2
+ 	select HAVE_KERNEL_GZIP
+ 	select HAVE_KERNEL_LZ4
+-	select HAVE_KERNEL_LZMA
+ 	select HAVE_KERNEL_LZO
+ 	select HAVE_KERNEL_XZ
++	select HAVE_KERNEL_ZSTD
+ 	select HAVE_KPROBES
+ 	select HAVE_KPROBES_ON_FTRACE
+ 	select HAVE_FUNCTION_ERROR_INJECTION
+diff -uNr linux-5.4/arch/xtensa/configs/cadence_csp_defconfig linux-5.4-zstd/arch/xtensa/configs/cadence_csp_defconfig
+--- linux-5.4/arch/xtensa/configs/cadence_csp_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/xtensa/configs/cadence_csp_defconfig	2019-12-15 15:07:01.948937517 -0800
+@@ -15,8 +15,6 @@
+ CONFIG_RELAY=y
+ CONFIG_BLK_DEV_INITRD=y
+ CONFIG_INITRAMFS_SOURCE="$$KERNEL_INITRAMFS_SOURCE"
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/arch/xtensa/configs/nommu_kc705_defconfig linux-5.4-zstd/arch/xtensa/configs/nommu_kc705_defconfig
+--- linux-5.4/arch/xtensa/configs/nommu_kc705_defconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/arch/xtensa/configs/nommu_kc705_defconfig	2019-12-15 15:07:01.958937314 -0800
+@@ -15,8 +15,6 @@
+ CONFIG_SCHED_AUTOGROUP=y
+ CONFIG_RELAY=y
+ CONFIG_BLK_DEV_INITRD=y
+-# CONFIG_RD_BZIP2 is not set
+-# CONFIG_RD_LZMA is not set
+ # CONFIG_RD_XZ is not set
+ # CONFIG_RD_LZO is not set
+ # CONFIG_RD_LZ4 is not set
+diff -uNr linux-5.4/.gitignore linux-5.4-zstd/.gitignore
+--- linux-5.4/.gitignore	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/.gitignore	2019-12-15 15:07:00.305637537 -0800
+@@ -44,6 +44,7 @@
+ *.tab.[ch]
+ *.tar
+ *.xz
++*.zst
+ Module.symvers
+ modules.builtin
+ modules.order
+diff -uNr linux-5.4/include/linux/decompress/unlzma.h linux-5.4-zstd/include/linux/decompress/unlzma.h
+--- linux-5.4/include/linux/decompress/unlzma.h	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/include/linux/decompress/unlzma.h	1969-12-31 16:00:00.000000000 -0800
+@@ -1,13 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0 */
+-#ifndef DECOMPRESS_UNLZMA_H
+-#define DECOMPRESS_UNLZMA_H
+-
+-int unlzma(unsigned char *, long,
+-	   long (*fill)(void*, unsigned long),
+-	   long (*flush)(void*, unsigned long),
+-	   unsigned char *output,
+-	   long *posp,
+-	   void(*error)(char *x)
+-	);
+-
+-#endif
+diff -uNr linux-5.4/include/linux/decompress/unzstd.h linux-5.4-zstd/include/linux/decompress/unzstd.h
+--- linux-5.4/include/linux/decompress/unzstd.h	1969-12-31 16:00:00.000000000 -0800
++++ linux-5.4-zstd/include/linux/decompress/unzstd.h	2019-12-15 15:06:59.968977703 -0800
+@@ -0,0 +1,26 @@
++/*
++ * Copyright (C) 2017 Facebook
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public
++ * License v2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ */
++
++#ifndef LINUX_DECOMPRESS_UNZSTD_H
++#define LINUX_DECOMPRESS_UNZSTD_H
++
++int unzstd(unsigned char *inbuf, long len,
++	   long (*fill)(void*, unsigned long),
++	   long (*flush)(void*, unsigned long),
++	   unsigned char *output,
++	   long *pos,
++	   void (*error_fn)(char *x));
++#endif
+diff -uNr linux-5.4/init/do_mounts_rd.c linux-5.4-zstd/init/do_mounts_rd.c
+--- linux-5.4/init/do_mounts_rd.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/init/do_mounts_rd.c	2019-12-15 15:07:01.265618053 -0800
+@@ -48,7 +48,6 @@
+  *	cramfs
+  *	squashfs
+  *	gzip
+- *	bzip2
+  *	lzma
+  *	xz
+  *	lzo
+diff -uNr linux-5.4/init/Kconfig linux-5.4-zstd/init/Kconfig
+--- linux-5.4/init/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/init/Kconfig	2019-12-15 15:07:02.112267535 -0800
+@@ -177,9 +177,6 @@
+ config HAVE_KERNEL_GZIP
+ 	bool
+ 
+-config HAVE_KERNEL_BZIP2
+-	bool
+-
+ config HAVE_KERNEL_LZMA
+ 	bool
+ 
+@@ -192,13 +189,16 @@
+ config HAVE_KERNEL_LZ4
+ 	bool
+ 
++config HAVE_KERNEL_ZSTD
++	bool
++
+ config HAVE_KERNEL_UNCOMPRESSED
+ 	bool
+ 
+ choice
+ 	prompt "Kernel compression mode"
+ 	default KERNEL_GZIP
+-	depends on HAVE_KERNEL_GZIP || HAVE_KERNEL_BZIP2 || HAVE_KERNEL_LZMA || HAVE_KERNEL_XZ || HAVE_KERNEL_LZO || HAVE_KERNEL_LZ4 || HAVE_KERNEL_UNCOMPRESSED
++	depends on HAVE_KERNEL_GZIP || HAVE_KERNEL_LZMA || HAVE_KERNEL_XZ || HAVE_KERNEL_LZO || HAVE_KERNEL_LZ4 || HAVE_KERNEL_ZSTD || HAVE_KERNEL_UNCOMPRESSED
+ 	help
+ 	  The linux kernel is a kind of self-extracting executable.
+ 	  Several compression algorithms are available, which differ
+@@ -206,41 +206,32 @@
+ 	  Compression speed is only relevant when building a kernel.
+ 	  Decompression speed is relevant at each boot.
+ 
+-	  If you have any problems with bzip2 or lzma compressed
++	  If you have any problems with lzma compressed
+ 	  kernels, mail me (Alain Knaff) <alain@knaff.lu>. (An older
+ 	  version of this functionality (bzip2 only), for 2.4, was
+ 	  supplied by Christian Ludwig)
+ 
+-	  High compression options are mostly useful for users, who
+-	  are low on disk space (embedded systems), but for whom ram
+-	  size matters less.
++	  High compression options tend to be more useful in most cases,
++	  as bootloaders are often egregiously slow to read the kernel
++	  from the disk/SD card/network/etc, overcoming any boot time
++	  savings you would get from faster decompression.
+ 
+-	  If in doubt, select 'gzip'
++	  If in doubt, select 'xz'
+ 
+ config KERNEL_GZIP
+ 	bool "Gzip"
+ 	depends on HAVE_KERNEL_GZIP
+ 	help
+-	  The old and tried gzip compression. It provides a good balance
+-	  between compression ratio and decompression speed.
+-
+-config KERNEL_BZIP2
+-	bool "Bzip2"
+-	depends on HAVE_KERNEL_BZIP2
+-	help
+-	  Its compression ratio and speed is intermediate.
+-	  Decompression speed is slowest among the choices.  The kernel
+-	  size is about 10% smaller with bzip2, in comparison to gzip.
+-	  Bzip2 uses a large amount of memory. For modern kernels you
+-	  will need at least 8MB RAM or more for booting.
++	  The old and tried gzip compression. You generally want it if
++	  some tool you use doesn't support more modern compressors.
+ 
+ config KERNEL_LZMA
+ 	bool "LZMA"
+ 	depends on HAVE_KERNEL_LZMA
+ 	help
+-	  This compression algorithm's ratio is best.  Decompression speed
+-	  is between gzip and bzip2.  Compression is slowest.
+-	  The kernel size is about 33% smaller with LZMA in comparison to gzip.
++	  An old version of xz, like it providing strong compression at slow
++	  speed. It lacks a header and support for filters or uncompressed
++	  blocks, thus it's usually better to pick xz.
+ 
+ config KERNEL_XZ
+ 	bool "XZ"
+@@ -261,9 +252,9 @@
+ 	bool "LZO"
+ 	depends on HAVE_KERNEL_LZO
+ 	help
+-	  Its compression ratio is the poorest among the choices. The kernel
+-	  size is about 10% bigger than gzip; however its speed
+-	  (both compression and decompression) is the fastest.
++	  Its compression ratio is pretty poor (but still better than
++	  LZ4). You want to pick ZSTD (similar speed but much better
++	  compression) or LZ4 (much better speed) instead.
+ 
+ config KERNEL_LZ4
+ 	bool "LZ4"
+@@ -277,6 +268,15 @@
+ 	  is about 8% bigger than LZO. But the decompression speed is
+ 	  faster than LZO.
+ 
++config KERNEL_ZSTD
++	bool "ZSTD"
++	depends on HAVE_KERNEL_ZSTD
++	help
++	  ZSTD is a compression algorithm targeting intermediate compression
++	  with fast decompression speed. It will compress better than GZIP and
++	  decompress around the same speed as LZO, but slower than LZ4. You
++	  will need at least 192 KB RAM or more for booting.
++
+ config KERNEL_UNCOMPRESSED
+ 	bool "None"
+ 	depends on HAVE_KERNEL_UNCOMPRESSED
+diff -uNr linux-5.4/kernel/configs/tiny.config linux-5.4-zstd/kernel/configs/tiny.config
+--- linux-5.4/kernel/configs/tiny.config	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/kernel/configs/tiny.config	2019-12-15 15:07:01.265618053 -0800
+@@ -1,7 +1,6 @@
+ # CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE is not set
+ CONFIG_CC_OPTIMIZE_FOR_SIZE=y
+ # CONFIG_KERNEL_GZIP is not set
+-# CONFIG_KERNEL_BZIP2 is not set
+ # CONFIG_KERNEL_LZMA is not set
+ CONFIG_KERNEL_XZ=y
+ # CONFIG_KERNEL_LZO is not set
+diff -uNr linux-5.4/lib/decompress_bunzip2.c linux-5.4-zstd/lib/decompress_bunzip2.c
+--- linux-5.4/lib/decompress_bunzip2.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/decompress_bunzip2.c	1969-12-31 16:00:00.000000000 -0800
+@@ -1,756 +0,0 @@
+-/*	Small bzip2 deflate implementation, by Rob Landley (rob@landley.net).
+-
+-	Based on bzip2 decompression code by Julian R Seward (jseward@acm.org),
+-	which also acknowledges contributions by Mike Burrows, David Wheeler,
+-	Peter Fenwick, Alistair Moffat, Radford Neal, Ian H. Witten,
+-	Robert Sedgewick, and Jon L. Bentley.
+-
+-	This code is licensed under the LGPLv2:
+-		LGPL (http://www.gnu.org/copyleft/lgpl.html
+-*/
+-
+-/*
+-	Size and speed optimizations by Manuel Novoa III  (mjn3@codepoet.org).
+-
+-	More efficient reading of Huffman codes, a streamlined read_bunzip()
+-	function, and various other tweaks.  In (limited) tests, approximately
+-	20% faster than bzcat on x86 and about 10% faster on arm.
+-
+-	Note that about 2/3 of the time is spent in read_unzip() reversing
+-	the Burrows-Wheeler transformation.  Much of that time is delay
+-	resulting from cache misses.
+-
+-	I would ask that anyone benefiting from this work, especially those
+-	using it in commercial products, consider making a donation to my local
+-	non-profit hospice organization in the name of the woman I loved, who
+-	passed away Feb. 12, 2003.
+-
+-		In memory of Toni W. Hagan
+-
+-		Hospice of Acadiana, Inc.
+-		2600 Johnston St., Suite 200
+-		Lafayette, LA 70503-3240
+-
+-		Phone (337) 232-1234 or 1-800-738-2226
+-		Fax   (337) 232-1297
+-
+-		http://www.hospiceacadiana.com/
+-
+-	Manuel
+- */
+-
+-/*
+-	Made it fit for running in Linux Kernel by Alain Knaff (alain@knaff.lu)
+-*/
+-
+-
+-#ifdef STATIC
+-#define PREBOOT
+-#else
+-#include <linux/decompress/bunzip2.h>
+-#endif /* STATIC */
+-
+-#include <linux/decompress/mm.h>
+-#include <linux/crc32poly.h>
+-
+-#ifndef INT_MAX
+-#define INT_MAX 0x7fffffff
+-#endif
+-
+-/* Constants for Huffman coding */
+-#define MAX_GROUPS		6
+-#define GROUP_SIZE   		50	/* 64 would have been more efficient */
+-#define MAX_HUFCODE_BITS 	20	/* Longest Huffman code allowed */
+-#define MAX_SYMBOLS 		258	/* 256 literals + RUNA + RUNB */
+-#define SYMBOL_RUNA		0
+-#define SYMBOL_RUNB		1
+-
+-/* Status return values */
+-#define RETVAL_OK			0
+-#define RETVAL_LAST_BLOCK		(-1)
+-#define RETVAL_NOT_BZIP_DATA		(-2)
+-#define RETVAL_UNEXPECTED_INPUT_EOF	(-3)
+-#define RETVAL_UNEXPECTED_OUTPUT_EOF	(-4)
+-#define RETVAL_DATA_ERROR		(-5)
+-#define RETVAL_OUT_OF_MEMORY		(-6)
+-#define RETVAL_OBSOLETE_INPUT		(-7)
+-
+-/* Other housekeeping constants */
+-#define BZIP2_IOBUF_SIZE		4096
+-
+-/* This is what we know about each Huffman coding group */
+-struct group_data {
+-	/* We have an extra slot at the end of limit[] for a sentinal value. */
+-	int limit[MAX_HUFCODE_BITS+1];
+-	int base[MAX_HUFCODE_BITS];
+-	int permute[MAX_SYMBOLS];
+-	int minLen, maxLen;
+-};
+-
+-/* Structure holding all the housekeeping data, including IO buffers and
+-   memory that persists between calls to bunzip */
+-struct bunzip_data {
+-	/* State for interrupting output loop */
+-	int writeCopies, writePos, writeRunCountdown, writeCount, writeCurrent;
+-	/* I/O tracking data (file handles, buffers, positions, etc.) */
+-	long (*fill)(void*, unsigned long);
+-	long inbufCount, inbufPos /*, outbufPos*/;
+-	unsigned char *inbuf /*,*outbuf*/;
+-	unsigned int inbufBitCount, inbufBits;
+-	/* The CRC values stored in the block header and calculated from the
+-	data */
+-	unsigned int crc32Table[256], headerCRC, totalCRC, writeCRC;
+-	/* Intermediate buffer and its size (in bytes) */
+-	unsigned int *dbuf, dbufSize;
+-	/* These things are a bit too big to go on the stack */
+-	unsigned char selectors[32768];		/* nSelectors = 15 bits */
+-	struct group_data groups[MAX_GROUPS];	/* Huffman coding tables */
+-	int io_error;			/* non-zero if we have IO error */
+-	int byteCount[256];
+-	unsigned char symToByte[256], mtfSymbol[256];
+-};
+-
+-
+-/* Return the next nnn bits of input.  All reads from the compressed input
+-   are done through this function.  All reads are big endian */
+-static unsigned int INIT get_bits(struct bunzip_data *bd, char bits_wanted)
+-{
+-	unsigned int bits = 0;
+-
+-	/* If we need to get more data from the byte buffer, do so.
+-	   (Loop getting one byte at a time to enforce endianness and avoid
+-	   unaligned access.) */
+-	while (bd->inbufBitCount < bits_wanted) {
+-		/* If we need to read more data from file into byte buffer, do
+-		   so */
+-		if (bd->inbufPos == bd->inbufCount) {
+-			if (bd->io_error)
+-				return 0;
+-			bd->inbufCount = bd->fill(bd->inbuf, BZIP2_IOBUF_SIZE);
+-			if (bd->inbufCount <= 0) {
+-				bd->io_error = RETVAL_UNEXPECTED_INPUT_EOF;
+-				return 0;
+-			}
+-			bd->inbufPos = 0;
+-		}
+-		/* Avoid 32-bit overflow (dump bit buffer to top of output) */
+-		if (bd->inbufBitCount >= 24) {
+-			bits = bd->inbufBits&((1 << bd->inbufBitCount)-1);
+-			bits_wanted -= bd->inbufBitCount;
+-			bits <<= bits_wanted;
+-			bd->inbufBitCount = 0;
+-		}
+-		/* Grab next 8 bits of input from buffer. */
+-		bd->inbufBits = (bd->inbufBits << 8)|bd->inbuf[bd->inbufPos++];
+-		bd->inbufBitCount += 8;
+-	}
+-	/* Calculate result */
+-	bd->inbufBitCount -= bits_wanted;
+-	bits |= (bd->inbufBits >> bd->inbufBitCount)&((1 << bits_wanted)-1);
+-
+-	return bits;
+-}
+-
+-/* Unpacks the next block and sets up for the inverse burrows-wheeler step. */
+-
+-static int INIT get_next_block(struct bunzip_data *bd)
+-{
+-	struct group_data *hufGroup = NULL;
+-	int *base = NULL;
+-	int *limit = NULL;
+-	int dbufCount, nextSym, dbufSize, groupCount, selector,
+-		i, j, k, t, runPos, symCount, symTotal, nSelectors, *byteCount;
+-	unsigned char uc, *symToByte, *mtfSymbol, *selectors;
+-	unsigned int *dbuf, origPtr;
+-
+-	dbuf = bd->dbuf;
+-	dbufSize = bd->dbufSize;
+-	selectors = bd->selectors;
+-	byteCount = bd->byteCount;
+-	symToByte = bd->symToByte;
+-	mtfSymbol = bd->mtfSymbol;
+-
+-	/* Read in header signature and CRC, then validate signature.
+-	   (last block signature means CRC is for whole file, return now) */
+-	i = get_bits(bd, 24);
+-	j = get_bits(bd, 24);
+-	bd->headerCRC = get_bits(bd, 32);
+-	if ((i == 0x177245) && (j == 0x385090))
+-		return RETVAL_LAST_BLOCK;
+-	if ((i != 0x314159) || (j != 0x265359))
+-		return RETVAL_NOT_BZIP_DATA;
+-	/* We can add support for blockRandomised if anybody complains.
+-	   There was some code for this in busybox 1.0.0-pre3, but nobody ever
+-	   noticed that it didn't actually work. */
+-	if (get_bits(bd, 1))
+-		return RETVAL_OBSOLETE_INPUT;
+-	origPtr = get_bits(bd, 24);
+-	if (origPtr >= dbufSize)
+-		return RETVAL_DATA_ERROR;
+-	/* mapping table: if some byte values are never used (encoding things
+-	   like ascii text), the compression code removes the gaps to have fewer
+-	   symbols to deal with, and writes a sparse bitfield indicating which
+-	   values were present.  We make a translation table to convert the
+-	   symbols back to the corresponding bytes. */
+-	t = get_bits(bd, 16);
+-	symTotal = 0;
+-	for (i = 0; i < 16; i++) {
+-		if (t&(1 << (15-i))) {
+-			k = get_bits(bd, 16);
+-			for (j = 0; j < 16; j++)
+-				if (k&(1 << (15-j)))
+-					symToByte[symTotal++] = (16*i)+j;
+-		}
+-	}
+-	/* How many different Huffman coding groups does this block use? */
+-	groupCount = get_bits(bd, 3);
+-	if (groupCount < 2 || groupCount > MAX_GROUPS)
+-		return RETVAL_DATA_ERROR;
+-	/* nSelectors: Every GROUP_SIZE many symbols we select a new
+-	   Huffman coding group.  Read in the group selector list,
+-	   which is stored as MTF encoded bit runs.  (MTF = Move To
+-	   Front, as each value is used it's moved to the start of the
+-	   list.) */
+-	nSelectors = get_bits(bd, 15);
+-	if (!nSelectors)
+-		return RETVAL_DATA_ERROR;
+-	for (i = 0; i < groupCount; i++)
+-		mtfSymbol[i] = i;
+-	for (i = 0; i < nSelectors; i++) {
+-		/* Get next value */
+-		for (j = 0; get_bits(bd, 1); j++)
+-			if (j >= groupCount)
+-				return RETVAL_DATA_ERROR;
+-		/* Decode MTF to get the next selector */
+-		uc = mtfSymbol[j];
+-		for (; j; j--)
+-			mtfSymbol[j] = mtfSymbol[j-1];
+-		mtfSymbol[0] = selectors[i] = uc;
+-	}
+-	/* Read the Huffman coding tables for each group, which code
+-	   for symTotal literal symbols, plus two run symbols (RUNA,
+-	   RUNB) */
+-	symCount = symTotal+2;
+-	for (j = 0; j < groupCount; j++) {
+-		unsigned char length[MAX_SYMBOLS], temp[MAX_HUFCODE_BITS+1];
+-		int	minLen,	maxLen, pp;
+-		/* Read Huffman code lengths for each symbol.  They're
+-		   stored in a way similar to mtf; record a starting
+-		   value for the first symbol, and an offset from the
+-		   previous value for everys symbol after that.
+-		   (Subtracting 1 before the loop and then adding it
+-		   back at the end is an optimization that makes the
+-		   test inside the loop simpler: symbol length 0
+-		   becomes negative, so an unsigned inequality catches
+-		   it.) */
+-		t = get_bits(bd, 5)-1;
+-		for (i = 0; i < symCount; i++) {
+-			for (;;) {
+-				if (((unsigned)t) > (MAX_HUFCODE_BITS-1))
+-					return RETVAL_DATA_ERROR;
+-
+-				/* If first bit is 0, stop.  Else
+-				   second bit indicates whether to
+-				   increment or decrement the value.
+-				   Optimization: grab 2 bits and unget
+-				   the second if the first was 0. */
+-
+-				k = get_bits(bd, 2);
+-				if (k < 2) {
+-					bd->inbufBitCount++;
+-					break;
+-				}
+-				/* Add one if second bit 1, else
+-				 * subtract 1.  Avoids if/else */
+-				t += (((k+1)&2)-1);
+-			}
+-			/* Correct for the initial -1, to get the
+-			 * final symbol length */
+-			length[i] = t+1;
+-		}
+-		/* Find largest and smallest lengths in this group */
+-		minLen = maxLen = length[0];
+-
+-		for (i = 1; i < symCount; i++) {
+-			if (length[i] > maxLen)
+-				maxLen = length[i];
+-			else if (length[i] < minLen)
+-				minLen = length[i];
+-		}
+-
+-		/* Calculate permute[], base[], and limit[] tables from
+-		 * length[].
+-		 *
+-		 * permute[] is the lookup table for converting
+-		 * Huffman coded symbols into decoded symbols.  base[]
+-		 * is the amount to subtract from the value of a
+-		 * Huffman symbol of a given length when using
+-		 * permute[].
+-		 *
+-		 * limit[] indicates the largest numerical value a
+-		 * symbol with a given number of bits can have.  This
+-		 * is how the Huffman codes can vary in length: each
+-		 * code with a value > limit[length] needs another
+-		 * bit.
+-		 */
+-		hufGroup = bd->groups+j;
+-		hufGroup->minLen = minLen;
+-		hufGroup->maxLen = maxLen;
+-		/* Note that minLen can't be smaller than 1, so we
+-		   adjust the base and limit array pointers so we're
+-		   not always wasting the first entry.  We do this
+-		   again when using them (during symbol decoding).*/
+-		base = hufGroup->base-1;
+-		limit = hufGroup->limit-1;
+-		/* Calculate permute[].  Concurrently, initialize
+-		 * temp[] and limit[]. */
+-		pp = 0;
+-		for (i = minLen; i <= maxLen; i++) {
+-			temp[i] = limit[i] = 0;
+-			for (t = 0; t < symCount; t++)
+-				if (length[t] == i)
+-					hufGroup->permute[pp++] = t;
+-		}
+-		/* Count symbols coded for at each bit length */
+-		for (i = 0; i < symCount; i++)
+-			temp[length[i]]++;
+-		/* Calculate limit[] (the largest symbol-coding value
+-		 *at each bit length, which is (previous limit <<
+-		 *1)+symbols at this level), and base[] (number of
+-		 *symbols to ignore at each bit length, which is limit
+-		 *minus the cumulative count of symbols coded for
+-		 *already). */
+-		pp = t = 0;
+-		for (i = minLen; i < maxLen; i++) {
+-			pp += temp[i];
+-			/* We read the largest possible symbol size
+-			   and then unget bits after determining how
+-			   many we need, and those extra bits could be
+-			   set to anything.  (They're noise from
+-			   future symbols.)  At each level we're
+-			   really only interested in the first few
+-			   bits, so here we set all the trailing
+-			   to-be-ignored bits to 1 so they don't
+-			   affect the value > limit[length]
+-			   comparison. */
+-			limit[i] = (pp << (maxLen - i)) - 1;
+-			pp <<= 1;
+-			base[i+1] = pp-(t += temp[i]);
+-		}
+-		limit[maxLen+1] = INT_MAX; /* Sentinal value for
+-					    * reading next sym. */
+-		limit[maxLen] = pp+temp[maxLen]-1;
+-		base[minLen] = 0;
+-	}
+-	/* We've finished reading and digesting the block header.  Now
+-	   read this block's Huffman coded symbols from the file and
+-	   undo the Huffman coding and run length encoding, saving the
+-	   result into dbuf[dbufCount++] = uc */
+-
+-	/* Initialize symbol occurrence counters and symbol Move To
+-	 * Front table */
+-	for (i = 0; i < 256; i++) {
+-		byteCount[i] = 0;
+-		mtfSymbol[i] = (unsigned char)i;
+-	}
+-	/* Loop through compressed symbols. */
+-	runPos = dbufCount = symCount = selector = 0;
+-	for (;;) {
+-		/* Determine which Huffman coding group to use. */
+-		if (!(symCount--)) {
+-			symCount = GROUP_SIZE-1;
+-			if (selector >= nSelectors)
+-				return RETVAL_DATA_ERROR;
+-			hufGroup = bd->groups+selectors[selector++];
+-			base = hufGroup->base-1;
+-			limit = hufGroup->limit-1;
+-		}
+-		/* Read next Huffman-coded symbol. */
+-		/* Note: It is far cheaper to read maxLen bits and
+-		   back up than it is to read minLen bits and then an
+-		   additional bit at a time, testing as we go.
+-		   Because there is a trailing last block (with file
+-		   CRC), there is no danger of the overread causing an
+-		   unexpected EOF for a valid compressed file.  As a
+-		   further optimization, we do the read inline
+-		   (falling back to a call to get_bits if the buffer
+-		   runs dry).  The following (up to got_huff_bits:) is
+-		   equivalent to j = get_bits(bd, hufGroup->maxLen);
+-		 */
+-		while (bd->inbufBitCount < hufGroup->maxLen) {
+-			if (bd->inbufPos == bd->inbufCount) {
+-				j = get_bits(bd, hufGroup->maxLen);
+-				goto got_huff_bits;
+-			}
+-			bd->inbufBits =
+-				(bd->inbufBits << 8)|bd->inbuf[bd->inbufPos++];
+-			bd->inbufBitCount += 8;
+-		};
+-		bd->inbufBitCount -= hufGroup->maxLen;
+-		j = (bd->inbufBits >> bd->inbufBitCount)&
+-			((1 << hufGroup->maxLen)-1);
+-got_huff_bits:
+-		/* Figure how how many bits are in next symbol and
+-		 * unget extras */
+-		i = hufGroup->minLen;
+-		while (j > limit[i])
+-			++i;
+-		bd->inbufBitCount += (hufGroup->maxLen - i);
+-		/* Huffman decode value to get nextSym (with bounds checking) */
+-		if ((i > hufGroup->maxLen)
+-			|| (((unsigned)(j = (j>>(hufGroup->maxLen-i))-base[i]))
+-				>= MAX_SYMBOLS))
+-			return RETVAL_DATA_ERROR;
+-		nextSym = hufGroup->permute[j];
+-		/* We have now decoded the symbol, which indicates
+-		   either a new literal byte, or a repeated run of the
+-		   most recent literal byte.  First, check if nextSym
+-		   indicates a repeated run, and if so loop collecting
+-		   how many times to repeat the last literal. */
+-		if (((unsigned)nextSym) <= SYMBOL_RUNB) { /* RUNA or RUNB */
+-			/* If this is the start of a new run, zero out
+-			 * counter */
+-			if (!runPos) {
+-				runPos = 1;
+-				t = 0;
+-			}
+-			/* Neat trick that saves 1 symbol: instead of
+-			   or-ing 0 or 1 at each bit position, add 1
+-			   or 2 instead.  For example, 1011 is 1 << 0
+-			   + 1 << 1 + 2 << 2.  1010 is 2 << 0 + 2 << 1
+-			   + 1 << 2.  You can make any bit pattern
+-			   that way using 1 less symbol than the basic
+-			   or 0/1 method (except all bits 0, which
+-			   would use no symbols, but a run of length 0
+-			   doesn't mean anything in this context).
+-			   Thus space is saved. */
+-			t += (runPos << nextSym);
+-			/* +runPos if RUNA; +2*runPos if RUNB */
+-
+-			runPos <<= 1;
+-			continue;
+-		}
+-		/* When we hit the first non-run symbol after a run,
+-		   we now know how many times to repeat the last
+-		   literal, so append that many copies to our buffer
+-		   of decoded symbols (dbuf) now.  (The last literal
+-		   used is the one at the head of the mtfSymbol
+-		   array.) */
+-		if (runPos) {
+-			runPos = 0;
+-			if (dbufCount+t >= dbufSize)
+-				return RETVAL_DATA_ERROR;
+-
+-			uc = symToByte[mtfSymbol[0]];
+-			byteCount[uc] += t;
+-			while (t--)
+-				dbuf[dbufCount++] = uc;
+-		}
+-		/* Is this the terminating symbol? */
+-		if (nextSym > symTotal)
+-			break;
+-		/* At this point, nextSym indicates a new literal
+-		   character.  Subtract one to get the position in the
+-		   MTF array at which this literal is currently to be
+-		   found.  (Note that the result can't be -1 or 0,
+-		   because 0 and 1 are RUNA and RUNB.  But another
+-		   instance of the first symbol in the mtf array,
+-		   position 0, would have been handled as part of a
+-		   run above.  Therefore 1 unused mtf position minus 2
+-		   non-literal nextSym values equals -1.) */
+-		if (dbufCount >= dbufSize)
+-			return RETVAL_DATA_ERROR;
+-		i = nextSym - 1;
+-		uc = mtfSymbol[i];
+-		/* Adjust the MTF array.  Since we typically expect to
+-		 *move only a small number of symbols, and are bound
+-		 *by 256 in any case, using memmove here would
+-		 *typically be bigger and slower due to function call
+-		 *overhead and other assorted setup costs. */
+-		do {
+-			mtfSymbol[i] = mtfSymbol[i-1];
+-		} while (--i);
+-		mtfSymbol[0] = uc;
+-		uc = symToByte[uc];
+-		/* We have our literal byte.  Save it into dbuf. */
+-		byteCount[uc]++;
+-		dbuf[dbufCount++] = (unsigned int)uc;
+-	}
+-	/* At this point, we've read all the Huffman-coded symbols
+-	   (and repeated runs) for this block from the input stream,
+-	   and decoded them into the intermediate buffer.  There are
+-	   dbufCount many decoded bytes in dbuf[].  Now undo the
+-	   Burrows-Wheeler transform on dbuf.  See
+-	   http://dogma.net/markn/articles/bwt/bwt.htm
+-	 */
+-	/* Turn byteCount into cumulative occurrence counts of 0 to n-1. */
+-	j = 0;
+-	for (i = 0; i < 256; i++) {
+-		k = j+byteCount[i];
+-		byteCount[i] = j;
+-		j = k;
+-	}
+-	/* Figure out what order dbuf would be in if we sorted it. */
+-	for (i = 0; i < dbufCount; i++) {
+-		uc = (unsigned char)(dbuf[i] & 0xff);
+-		dbuf[byteCount[uc]] |= (i << 8);
+-		byteCount[uc]++;
+-	}
+-	/* Decode first byte by hand to initialize "previous" byte.
+-	   Note that it doesn't get output, and if the first three
+-	   characters are identical it doesn't qualify as a run (hence
+-	   writeRunCountdown = 5). */
+-	if (dbufCount) {
+-		if (origPtr >= dbufCount)
+-			return RETVAL_DATA_ERROR;
+-		bd->writePos = dbuf[origPtr];
+-		bd->writeCurrent = (unsigned char)(bd->writePos&0xff);
+-		bd->writePos >>= 8;
+-		bd->writeRunCountdown = 5;
+-	}
+-	bd->writeCount = dbufCount;
+-
+-	return RETVAL_OK;
+-}
+-
+-/* Undo burrows-wheeler transform on intermediate buffer to produce output.
+-   If start_bunzip was initialized with out_fd =-1, then up to len bytes of
+-   data are written to outbuf.  Return value is number of bytes written or
+-   error (all errors are negative numbers).  If out_fd!=-1, outbuf and len
+-   are ignored, data is written to out_fd and return is RETVAL_OK or error.
+-*/
+-
+-static int INIT read_bunzip(struct bunzip_data *bd, char *outbuf, int len)
+-{
+-	const unsigned int *dbuf;
+-	int pos, xcurrent, previous, gotcount;
+-
+-	/* If last read was short due to end of file, return last block now */
+-	if (bd->writeCount < 0)
+-		return bd->writeCount;
+-
+-	gotcount = 0;
+-	dbuf = bd->dbuf;
+-	pos = bd->writePos;
+-	xcurrent = bd->writeCurrent;
+-
+-	/* We will always have pending decoded data to write into the output
+-	   buffer unless this is the very first call (in which case we haven't
+-	   Huffman-decoded a block into the intermediate buffer yet). */
+-
+-	if (bd->writeCopies) {
+-		/* Inside the loop, writeCopies means extra copies (beyond 1) */
+-		--bd->writeCopies;
+-		/* Loop outputting bytes */
+-		for (;;) {
+-			/* If the output buffer is full, snapshot
+-			 * state and return */
+-			if (gotcount >= len) {
+-				bd->writePos = pos;
+-				bd->writeCurrent = xcurrent;
+-				bd->writeCopies++;
+-				return len;
+-			}
+-			/* Write next byte into output buffer, updating CRC */
+-			outbuf[gotcount++] = xcurrent;
+-			bd->writeCRC = (((bd->writeCRC) << 8)
+-				^bd->crc32Table[((bd->writeCRC) >> 24)
+-				^xcurrent]);
+-			/* Loop now if we're outputting multiple
+-			 * copies of this byte */
+-			if (bd->writeCopies) {
+-				--bd->writeCopies;
+-				continue;
+-			}
+-decode_next_byte:
+-			if (!bd->writeCount--)
+-				break;
+-			/* Follow sequence vector to undo
+-			 * Burrows-Wheeler transform */
+-			previous = xcurrent;
+-			pos = dbuf[pos];
+-			xcurrent = pos&0xff;
+-			pos >>= 8;
+-			/* After 3 consecutive copies of the same
+-			   byte, the 4th is a repeat count.  We count
+-			   down from 4 instead *of counting up because
+-			   testing for non-zero is faster */
+-			if (--bd->writeRunCountdown) {
+-				if (xcurrent != previous)
+-					bd->writeRunCountdown = 4;
+-			} else {
+-				/* We have a repeated run, this byte
+-				 * indicates the count */
+-				bd->writeCopies = xcurrent;
+-				xcurrent = previous;
+-				bd->writeRunCountdown = 5;
+-				/* Sometimes there are just 3 bytes
+-				 * (run length 0) */
+-				if (!bd->writeCopies)
+-					goto decode_next_byte;
+-				/* Subtract the 1 copy we'd output
+-				 * anyway to get extras */
+-				--bd->writeCopies;
+-			}
+-		}
+-		/* Decompression of this block completed successfully */
+-		bd->writeCRC = ~bd->writeCRC;
+-		bd->totalCRC = ((bd->totalCRC << 1) |
+-				(bd->totalCRC >> 31)) ^ bd->writeCRC;
+-		/* If this block had a CRC error, force file level CRC error. */
+-		if (bd->writeCRC != bd->headerCRC) {
+-			bd->totalCRC = bd->headerCRC+1;
+-			return RETVAL_LAST_BLOCK;
+-		}
+-	}
+-
+-	/* Refill the intermediate buffer by Huffman-decoding next
+-	 * block of input */
+-	/* (previous is just a convenient unused temp variable here) */
+-	previous = get_next_block(bd);
+-	if (previous) {
+-		bd->writeCount = previous;
+-		return (previous != RETVAL_LAST_BLOCK) ? previous : gotcount;
+-	}
+-	bd->writeCRC = 0xffffffffUL;
+-	pos = bd->writePos;
+-	xcurrent = bd->writeCurrent;
+-	goto decode_next_byte;
+-}
+-
+-static long INIT nofill(void *buf, unsigned long len)
+-{
+-	return -1;
+-}
+-
+-/* Allocate the structure, read file header.  If in_fd ==-1, inbuf must contain
+-   a complete bunzip file (len bytes long).  If in_fd!=-1, inbuf and len are
+-   ignored, and data is read from file handle into temporary buffer. */
+-static int INIT start_bunzip(struct bunzip_data **bdp, void *inbuf, long len,
+-			     long (*fill)(void*, unsigned long))
+-{
+-	struct bunzip_data *bd;
+-	unsigned int i, j, c;
+-	const unsigned int BZh0 =
+-		(((unsigned int)'B') << 24)+(((unsigned int)'Z') << 16)
+-		+(((unsigned int)'h') << 8)+(unsigned int)'0';
+-
+-	/* Figure out how much data to allocate */
+-	i = sizeof(struct bunzip_data);
+-
+-	/* Allocate bunzip_data.  Most fields initialize to zero. */
+-	bd = *bdp = malloc(i);
+-	if (!bd)
+-		return RETVAL_OUT_OF_MEMORY;
+-	memset(bd, 0, sizeof(struct bunzip_data));
+-	/* Setup input buffer */
+-	bd->inbuf = inbuf;
+-	bd->inbufCount = len;
+-	if (fill != NULL)
+-		bd->fill = fill;
+-	else
+-		bd->fill = nofill;
+-
+-	/* Init the CRC32 table (big endian) */
+-	for (i = 0; i < 256; i++) {
+-		c = i << 24;
+-		for (j = 8; j; j--)
+-			c = c&0x80000000 ? (c << 1)^(CRC32_POLY_BE) : (c << 1);
+-		bd->crc32Table[i] = c;
+-	}
+-
+-	/* Ensure that file starts with "BZh['1'-'9']." */
+-	i = get_bits(bd, 32);
+-	if (((unsigned int)(i-BZh0-1)) >= 9)
+-		return RETVAL_NOT_BZIP_DATA;
+-
+-	/* Fourth byte (ascii '1'-'9'), indicates block size in units of 100k of
+-	   uncompressed data.  Allocate intermediate buffer for block. */
+-	bd->dbufSize = 100000*(i-BZh0);
+-
+-	bd->dbuf = large_malloc(bd->dbufSize * sizeof(int));
+-	if (!bd->dbuf)
+-		return RETVAL_OUT_OF_MEMORY;
+-	return RETVAL_OK;
+-}
+-
+-/* Example usage: decompress src_fd to dst_fd.  (Stops at end of bzip2 data,
+-   not end of file.) */
+-STATIC int INIT bunzip2(unsigned char *buf, long len,
+-			long (*fill)(void*, unsigned long),
+-			long (*flush)(void*, unsigned long),
+-			unsigned char *outbuf,
+-			long *pos,
+-			void(*error)(char *x))
+-{
+-	struct bunzip_data *bd;
+-	int i = -1;
+-	unsigned char *inbuf;
+-
+-	if (flush)
+-		outbuf = malloc(BZIP2_IOBUF_SIZE);
+-
+-	if (!outbuf) {
+-		error("Could not allocate output buffer");
+-		return RETVAL_OUT_OF_MEMORY;
+-	}
+-	if (buf)
+-		inbuf = buf;
+-	else
+-		inbuf = malloc(BZIP2_IOBUF_SIZE);
+-	if (!inbuf) {
+-		error("Could not allocate input buffer");
+-		i = RETVAL_OUT_OF_MEMORY;
+-		goto exit_0;
+-	}
+-	i = start_bunzip(&bd, inbuf, len, fill);
+-	if (!i) {
+-		for (;;) {
+-			i = read_bunzip(bd, outbuf, BZIP2_IOBUF_SIZE);
+-			if (i <= 0)
+-				break;
+-			if (!flush)
+-				outbuf += i;
+-			else
+-				if (i != flush(outbuf, i)) {
+-					i = RETVAL_UNEXPECTED_OUTPUT_EOF;
+-					break;
+-				}
+-		}
+-	}
+-	/* Check CRC and release memory */
+-	if (i == RETVAL_LAST_BLOCK) {
+-		if (bd->headerCRC != bd->totalCRC)
+-			error("Data integrity error when decompressing.");
+-		else
+-			i = RETVAL_OK;
+-	} else if (i == RETVAL_UNEXPECTED_OUTPUT_EOF) {
+-		error("Compressed file ends unexpectedly");
+-	}
+-	if (!bd)
+-		goto exit_1;
+-	if (bd->dbuf)
+-		large_free(bd->dbuf);
+-	if (pos)
+-		*pos = bd->inbufPos;
+-	free(bd);
+-exit_1:
+-	if (!buf)
+-		free(inbuf);
+-exit_0:
+-	if (flush)
+-		free(outbuf);
+-	return i;
+-}
+-
+-#ifdef PREBOOT
+-STATIC int INIT __decompress(unsigned char *buf, long len,
+-			long (*fill)(void*, unsigned long),
+-			long (*flush)(void*, unsigned long),
+-			unsigned char *outbuf, long olen,
+-			long *pos,
+-			void (*error)(char *x))
+-{
+-	return bunzip2(buf, len - 4, fill, flush, outbuf, pos, error);
+-}
+-#endif
+diff -uNr linux-5.4/lib/decompress.c linux-5.4-zstd/lib/decompress.c
+--- linux-5.4/lib/decompress.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/decompress.c	2019-12-15 15:07:02.115600801 -0800
+@@ -8,11 +8,11 @@
+ #include <linux/decompress/generic.h>
+ 
+ #include <linux/decompress/bunzip2.h>
+-#include <linux/decompress/unlzma.h>
+ #include <linux/decompress/unxz.h>
+ #include <linux/decompress/inflate.h>
+ #include <linux/decompress/unlzo.h>
+ #include <linux/decompress/unlz4.h>
++#include <linux/decompress/unzstd.h>
+ 
+ #include <linux/types.h>
+ #include <linux/string.h>
+@@ -22,12 +22,6 @@
+ #ifndef CONFIG_DECOMPRESS_GZIP
+ # define gunzip NULL
+ #endif
+-#ifndef CONFIG_DECOMPRESS_BZIP2
+-# define bunzip2 NULL
+-#endif
+-#ifndef CONFIG_DECOMPRESS_LZMA
+-# define unlzma NULL
+-#endif
+ #ifndef CONFIG_DECOMPRESS_XZ
+ # define unxz NULL
+ #endif
+@@ -37,6 +31,9 @@
+ #ifndef CONFIG_DECOMPRESS_LZ4
+ # define unlz4 NULL
+ #endif
++#ifndef CONFIG_DECOMPRESS_ZSTD
++# define unzstd NULL
++#endif
+ 
+ struct compress_format {
+ 	unsigned char magic[2];
+@@ -47,11 +44,10 @@
+ static const struct compress_format compressed_formats[] __initconst = {
+ 	{ {0x1f, 0x8b}, "gzip", gunzip },
+ 	{ {0x1f, 0x9e}, "gzip", gunzip },
+-	{ {0x42, 0x5a}, "bzip2", bunzip2 },
+-	{ {0x5d, 0x00}, "lzma", unlzma },
+ 	{ {0xfd, 0x37}, "xz", unxz },
+ 	{ {0x89, 0x4c}, "lzo", unlzo },
+ 	{ {0x02, 0x21}, "lz4", unlz4 },
++	{ {0x28, 0xb5}, "zstd", unzstd },
+ 	{ {0, 0}, NULL, NULL }
+ };
+ 
+@@ -73,7 +69,9 @@
+ 			break;
+ 
+ 	}
+-	if (name)
++	if (name) {
+ 		*name = cf->name;
++		printk("Decompressing using %s.\n", *name);
++	}
+ 	return cf->decompressor;
+ }
+diff -uNr linux-5.4/lib/decompress_unlzma.c linux-5.4-zstd/lib/decompress_unlzma.c
+--- linux-5.4/lib/decompress_unlzma.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/decompress_unlzma.c	1969-12-31 16:00:00.000000000 -0800
+@@ -1,679 +0,0 @@
+-/* Lzma decompressor for Linux kernel. Shamelessly snarfed
+- *from busybox 1.1.1
+- *
+- *Linux kernel adaptation
+- *Copyright (C) 2006  Alain < alain@knaff.lu >
+- *
+- *Based on small lzma deflate implementation/Small range coder
+- *implementation for lzma.
+- *Copyright (C) 2006  Aurelien Jacobs < aurel@gnuage.org >
+- *
+- *Based on LzmaDecode.c from the LZMA SDK 4.22 (http://www.7-zip.org/)
+- *Copyright (C) 1999-2005  Igor Pavlov
+- *
+- *Copyrights of the parts, see headers below.
+- *
+- *
+- *This program is free software; you can redistribute it and/or
+- *modify it under the terms of the GNU Lesser General Public
+- *License as published by the Free Software Foundation; either
+- *version 2.1 of the License, or (at your option) any later version.
+- *
+- *This program is distributed in the hope that it will be useful,
+- *but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- *Lesser General Public License for more details.
+- *
+- *You should have received a copy of the GNU Lesser General Public
+- *License along with this library; if not, write to the Free Software
+- *Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+- */
+-
+-#ifdef STATIC
+-#define PREBOOT
+-#else
+-#include <linux/decompress/unlzma.h>
+-#endif /* STATIC */
+-
+-#include <linux/decompress/mm.h>
+-
+-#define	MIN(a, b) (((a) < (b)) ? (a) : (b))
+-
+-static long long INIT read_int(unsigned char *ptr, int size)
+-{
+-	int i;
+-	long long ret = 0;
+-
+-	for (i = 0; i < size; i++)
+-		ret = (ret << 8) | ptr[size-i-1];
+-	return ret;
+-}
+-
+-#define ENDIAN_CONVERT(x) \
+-  x = (typeof(x))read_int((unsigned char *)&x, sizeof(x))
+-
+-
+-/* Small range coder implementation for lzma.
+- *Copyright (C) 2006  Aurelien Jacobs < aurel@gnuage.org >
+- *
+- *Based on LzmaDecode.c from the LZMA SDK 4.22 (http://www.7-zip.org/)
+- *Copyright (c) 1999-2005  Igor Pavlov
+- */
+-
+-#include <linux/compiler.h>
+-
+-#define LZMA_IOBUF_SIZE	0x10000
+-
+-struct rc {
+-	long (*fill)(void*, unsigned long);
+-	uint8_t *ptr;
+-	uint8_t *buffer;
+-	uint8_t *buffer_end;
+-	long buffer_size;
+-	uint32_t code;
+-	uint32_t range;
+-	uint32_t bound;
+-	void (*error)(char *);
+-};
+-
+-
+-#define RC_TOP_BITS 24
+-#define RC_MOVE_BITS 5
+-#define RC_MODEL_TOTAL_BITS 11
+-
+-
+-static long INIT nofill(void *buffer, unsigned long len)
+-{
+-	return -1;
+-}
+-
+-/* Called twice: once at startup and once in rc_normalize() */
+-static void INIT rc_read(struct rc *rc)
+-{
+-	rc->buffer_size = rc->fill((char *)rc->buffer, LZMA_IOBUF_SIZE);
+-	if (rc->buffer_size <= 0)
+-		rc->error("unexpected EOF");
+-	rc->ptr = rc->buffer;
+-	rc->buffer_end = rc->buffer + rc->buffer_size;
+-}
+-
+-/* Called once */
+-static inline void INIT rc_init(struct rc *rc,
+-				       long (*fill)(void*, unsigned long),
+-				       char *buffer, long buffer_size)
+-{
+-	if (fill)
+-		rc->fill = fill;
+-	else
+-		rc->fill = nofill;
+-	rc->buffer = (uint8_t *)buffer;
+-	rc->buffer_size = buffer_size;
+-	rc->buffer_end = rc->buffer + rc->buffer_size;
+-	rc->ptr = rc->buffer;
+-
+-	rc->code = 0;
+-	rc->range = 0xFFFFFFFF;
+-}
+-
+-static inline void INIT rc_init_code(struct rc *rc)
+-{
+-	int i;
+-
+-	for (i = 0; i < 5; i++) {
+-		if (rc->ptr >= rc->buffer_end)
+-			rc_read(rc);
+-		rc->code = (rc->code << 8) | *rc->ptr++;
+-	}
+-}
+-
+-
+-/* Called twice, but one callsite is in inline'd rc_is_bit_0_helper() */
+-static void INIT rc_do_normalize(struct rc *rc)
+-{
+-	if (rc->ptr >= rc->buffer_end)
+-		rc_read(rc);
+-	rc->range <<= 8;
+-	rc->code = (rc->code << 8) | *rc->ptr++;
+-}
+-static inline void INIT rc_normalize(struct rc *rc)
+-{
+-	if (rc->range < (1 << RC_TOP_BITS))
+-		rc_do_normalize(rc);
+-}
+-
+-/* Called 9 times */
+-/* Why rc_is_bit_0_helper exists?
+- *Because we want to always expose (rc->code < rc->bound) to optimizer
+- */
+-static inline uint32_t INIT rc_is_bit_0_helper(struct rc *rc, uint16_t *p)
+-{
+-	rc_normalize(rc);
+-	rc->bound = *p * (rc->range >> RC_MODEL_TOTAL_BITS);
+-	return rc->bound;
+-}
+-static inline int INIT rc_is_bit_0(struct rc *rc, uint16_t *p)
+-{
+-	uint32_t t = rc_is_bit_0_helper(rc, p);
+-	return rc->code < t;
+-}
+-
+-/* Called ~10 times, but very small, thus inlined */
+-static inline void INIT rc_update_bit_0(struct rc *rc, uint16_t *p)
+-{
+-	rc->range = rc->bound;
+-	*p += ((1 << RC_MODEL_TOTAL_BITS) - *p) >> RC_MOVE_BITS;
+-}
+-static inline void INIT rc_update_bit_1(struct rc *rc, uint16_t *p)
+-{
+-	rc->range -= rc->bound;
+-	rc->code -= rc->bound;
+-	*p -= *p >> RC_MOVE_BITS;
+-}
+-
+-/* Called 4 times in unlzma loop */
+-static int INIT rc_get_bit(struct rc *rc, uint16_t *p, int *symbol)
+-{
+-	if (rc_is_bit_0(rc, p)) {
+-		rc_update_bit_0(rc, p);
+-		*symbol *= 2;
+-		return 0;
+-	} else {
+-		rc_update_bit_1(rc, p);
+-		*symbol = *symbol * 2 + 1;
+-		return 1;
+-	}
+-}
+-
+-/* Called once */
+-static inline int INIT rc_direct_bit(struct rc *rc)
+-{
+-	rc_normalize(rc);
+-	rc->range >>= 1;
+-	if (rc->code >= rc->range) {
+-		rc->code -= rc->range;
+-		return 1;
+-	}
+-	return 0;
+-}
+-
+-/* Called twice */
+-static inline void INIT
+-rc_bit_tree_decode(struct rc *rc, uint16_t *p, int num_levels, int *symbol)
+-{
+-	int i = num_levels;
+-
+-	*symbol = 1;
+-	while (i--)
+-		rc_get_bit(rc, p + *symbol, symbol);
+-	*symbol -= 1 << num_levels;
+-}
+-
+-
+-/*
+- * Small lzma deflate implementation.
+- * Copyright (C) 2006  Aurelien Jacobs < aurel@gnuage.org >
+- *
+- * Based on LzmaDecode.c from the LZMA SDK 4.22 (http://www.7-zip.org/)
+- * Copyright (C) 1999-2005  Igor Pavlov
+- */
+-
+-
+-struct lzma_header {
+-	uint8_t pos;
+-	uint32_t dict_size;
+-	uint64_t dst_size;
+-} __attribute__ ((packed)) ;
+-
+-
+-#define LZMA_BASE_SIZE 1846
+-#define LZMA_LIT_SIZE 768
+-
+-#define LZMA_NUM_POS_BITS_MAX 4
+-
+-#define LZMA_LEN_NUM_LOW_BITS 3
+-#define LZMA_LEN_NUM_MID_BITS 3
+-#define LZMA_LEN_NUM_HIGH_BITS 8
+-
+-#define LZMA_LEN_CHOICE 0
+-#define LZMA_LEN_CHOICE_2 (LZMA_LEN_CHOICE + 1)
+-#define LZMA_LEN_LOW (LZMA_LEN_CHOICE_2 + 1)
+-#define LZMA_LEN_MID (LZMA_LEN_LOW \
+-		      + (1 << (LZMA_NUM_POS_BITS_MAX + LZMA_LEN_NUM_LOW_BITS)))
+-#define LZMA_LEN_HIGH (LZMA_LEN_MID \
+-		       +(1 << (LZMA_NUM_POS_BITS_MAX + LZMA_LEN_NUM_MID_BITS)))
+-#define LZMA_NUM_LEN_PROBS (LZMA_LEN_HIGH + (1 << LZMA_LEN_NUM_HIGH_BITS))
+-
+-#define LZMA_NUM_STATES 12
+-#define LZMA_NUM_LIT_STATES 7
+-
+-#define LZMA_START_POS_MODEL_INDEX 4
+-#define LZMA_END_POS_MODEL_INDEX 14
+-#define LZMA_NUM_FULL_DISTANCES (1 << (LZMA_END_POS_MODEL_INDEX >> 1))
+-
+-#define LZMA_NUM_POS_SLOT_BITS 6
+-#define LZMA_NUM_LEN_TO_POS_STATES 4
+-
+-#define LZMA_NUM_ALIGN_BITS 4
+-
+-#define LZMA_MATCH_MIN_LEN 2
+-
+-#define LZMA_IS_MATCH 0
+-#define LZMA_IS_REP (LZMA_IS_MATCH + (LZMA_NUM_STATES << LZMA_NUM_POS_BITS_MAX))
+-#define LZMA_IS_REP_G0 (LZMA_IS_REP + LZMA_NUM_STATES)
+-#define LZMA_IS_REP_G1 (LZMA_IS_REP_G0 + LZMA_NUM_STATES)
+-#define LZMA_IS_REP_G2 (LZMA_IS_REP_G1 + LZMA_NUM_STATES)
+-#define LZMA_IS_REP_0_LONG (LZMA_IS_REP_G2 + LZMA_NUM_STATES)
+-#define LZMA_POS_SLOT (LZMA_IS_REP_0_LONG \
+-		       + (LZMA_NUM_STATES << LZMA_NUM_POS_BITS_MAX))
+-#define LZMA_SPEC_POS (LZMA_POS_SLOT \
+-		       +(LZMA_NUM_LEN_TO_POS_STATES << LZMA_NUM_POS_SLOT_BITS))
+-#define LZMA_ALIGN (LZMA_SPEC_POS \
+-		    + LZMA_NUM_FULL_DISTANCES - LZMA_END_POS_MODEL_INDEX)
+-#define LZMA_LEN_CODER (LZMA_ALIGN + (1 << LZMA_NUM_ALIGN_BITS))
+-#define LZMA_REP_LEN_CODER (LZMA_LEN_CODER + LZMA_NUM_LEN_PROBS)
+-#define LZMA_LITERAL (LZMA_REP_LEN_CODER + LZMA_NUM_LEN_PROBS)
+-
+-
+-struct writer {
+-	uint8_t *buffer;
+-	uint8_t previous_byte;
+-	size_t buffer_pos;
+-	int bufsize;
+-	size_t global_pos;
+-	long (*flush)(void*, unsigned long);
+-	struct lzma_header *header;
+-};
+-
+-struct cstate {
+-	int state;
+-	uint32_t rep0, rep1, rep2, rep3;
+-};
+-
+-static inline size_t INIT get_pos(struct writer *wr)
+-{
+-	return
+-		wr->global_pos + wr->buffer_pos;
+-}
+-
+-static inline uint8_t INIT peek_old_byte(struct writer *wr,
+-						uint32_t offs)
+-{
+-	if (!wr->flush) {
+-		int32_t pos;
+-		while (offs > wr->header->dict_size)
+-			offs -= wr->header->dict_size;
+-		pos = wr->buffer_pos - offs;
+-		return wr->buffer[pos];
+-	} else {
+-		uint32_t pos = wr->buffer_pos - offs;
+-		while (pos >= wr->header->dict_size)
+-			pos += wr->header->dict_size;
+-		return wr->buffer[pos];
+-	}
+-
+-}
+-
+-static inline int INIT write_byte(struct writer *wr, uint8_t byte)
+-{
+-	wr->buffer[wr->buffer_pos++] = wr->previous_byte = byte;
+-	if (wr->flush && wr->buffer_pos == wr->header->dict_size) {
+-		wr->buffer_pos = 0;
+-		wr->global_pos += wr->header->dict_size;
+-		if (wr->flush((char *)wr->buffer, wr->header->dict_size)
+-				!= wr->header->dict_size)
+-			return -1;
+-	}
+-	return 0;
+-}
+-
+-
+-static inline int INIT copy_byte(struct writer *wr, uint32_t offs)
+-{
+-	return write_byte(wr, peek_old_byte(wr, offs));
+-}
+-
+-static inline int INIT copy_bytes(struct writer *wr,
+-					 uint32_t rep0, int len)
+-{
+-	do {
+-		if (copy_byte(wr, rep0))
+-			return -1;
+-		len--;
+-	} while (len != 0 && wr->buffer_pos < wr->header->dst_size);
+-
+-	return len;
+-}
+-
+-static inline int INIT process_bit0(struct writer *wr, struct rc *rc,
+-				     struct cstate *cst, uint16_t *p,
+-				     int pos_state, uint16_t *prob,
+-				     int lc, uint32_t literal_pos_mask) {
+-	int mi = 1;
+-	rc_update_bit_0(rc, prob);
+-	prob = (p + LZMA_LITERAL +
+-		(LZMA_LIT_SIZE
+-		 * (((get_pos(wr) & literal_pos_mask) << lc)
+-		    + (wr->previous_byte >> (8 - lc))))
+-		);
+-
+-	if (cst->state >= LZMA_NUM_LIT_STATES) {
+-		int match_byte = peek_old_byte(wr, cst->rep0);
+-		do {
+-			int bit;
+-			uint16_t *prob_lit;
+-
+-			match_byte <<= 1;
+-			bit = match_byte & 0x100;
+-			prob_lit = prob + 0x100 + bit + mi;
+-			if (rc_get_bit(rc, prob_lit, &mi)) {
+-				if (!bit)
+-					break;
+-			} else {
+-				if (bit)
+-					break;
+-			}
+-		} while (mi < 0x100);
+-	}
+-	while (mi < 0x100) {
+-		uint16_t *prob_lit = prob + mi;
+-		rc_get_bit(rc, prob_lit, &mi);
+-	}
+-	if (cst->state < 4)
+-		cst->state = 0;
+-	else if (cst->state < 10)
+-		cst->state -= 3;
+-	else
+-		cst->state -= 6;
+-
+-	return write_byte(wr, mi);
+-}
+-
+-static inline int INIT process_bit1(struct writer *wr, struct rc *rc,
+-					    struct cstate *cst, uint16_t *p,
+-					    int pos_state, uint16_t *prob) {
+-  int offset;
+-	uint16_t *prob_len;
+-	int num_bits;
+-	int len;
+-
+-	rc_update_bit_1(rc, prob);
+-	prob = p + LZMA_IS_REP + cst->state;
+-	if (rc_is_bit_0(rc, prob)) {
+-		rc_update_bit_0(rc, prob);
+-		cst->rep3 = cst->rep2;
+-		cst->rep2 = cst->rep1;
+-		cst->rep1 = cst->rep0;
+-		cst->state = cst->state < LZMA_NUM_LIT_STATES ? 0 : 3;
+-		prob = p + LZMA_LEN_CODER;
+-	} else {
+-		rc_update_bit_1(rc, prob);
+-		prob = p + LZMA_IS_REP_G0 + cst->state;
+-		if (rc_is_bit_0(rc, prob)) {
+-			rc_update_bit_0(rc, prob);
+-			prob = (p + LZMA_IS_REP_0_LONG
+-				+ (cst->state <<
+-				   LZMA_NUM_POS_BITS_MAX) +
+-				pos_state);
+-			if (rc_is_bit_0(rc, prob)) {
+-				rc_update_bit_0(rc, prob);
+-
+-				cst->state = cst->state < LZMA_NUM_LIT_STATES ?
+-					9 : 11;
+-				return copy_byte(wr, cst->rep0);
+-			} else {
+-				rc_update_bit_1(rc, prob);
+-			}
+-		} else {
+-			uint32_t distance;
+-
+-			rc_update_bit_1(rc, prob);
+-			prob = p + LZMA_IS_REP_G1 + cst->state;
+-			if (rc_is_bit_0(rc, prob)) {
+-				rc_update_bit_0(rc, prob);
+-				distance = cst->rep1;
+-			} else {
+-				rc_update_bit_1(rc, prob);
+-				prob = p + LZMA_IS_REP_G2 + cst->state;
+-				if (rc_is_bit_0(rc, prob)) {
+-					rc_update_bit_0(rc, prob);
+-					distance = cst->rep2;
+-				} else {
+-					rc_update_bit_1(rc, prob);
+-					distance = cst->rep3;
+-					cst->rep3 = cst->rep2;
+-				}
+-				cst->rep2 = cst->rep1;
+-			}
+-			cst->rep1 = cst->rep0;
+-			cst->rep0 = distance;
+-		}
+-		cst->state = cst->state < LZMA_NUM_LIT_STATES ? 8 : 11;
+-		prob = p + LZMA_REP_LEN_CODER;
+-	}
+-
+-	prob_len = prob + LZMA_LEN_CHOICE;
+-	if (rc_is_bit_0(rc, prob_len)) {
+-		rc_update_bit_0(rc, prob_len);
+-		prob_len = (prob + LZMA_LEN_LOW
+-			    + (pos_state <<
+-			       LZMA_LEN_NUM_LOW_BITS));
+-		offset = 0;
+-		num_bits = LZMA_LEN_NUM_LOW_BITS;
+-	} else {
+-		rc_update_bit_1(rc, prob_len);
+-		prob_len = prob + LZMA_LEN_CHOICE_2;
+-		if (rc_is_bit_0(rc, prob_len)) {
+-			rc_update_bit_0(rc, prob_len);
+-			prob_len = (prob + LZMA_LEN_MID
+-				    + (pos_state <<
+-				       LZMA_LEN_NUM_MID_BITS));
+-			offset = 1 << LZMA_LEN_NUM_LOW_BITS;
+-			num_bits = LZMA_LEN_NUM_MID_BITS;
+-		} else {
+-			rc_update_bit_1(rc, prob_len);
+-			prob_len = prob + LZMA_LEN_HIGH;
+-			offset = ((1 << LZMA_LEN_NUM_LOW_BITS)
+-				  + (1 << LZMA_LEN_NUM_MID_BITS));
+-			num_bits = LZMA_LEN_NUM_HIGH_BITS;
+-		}
+-	}
+-
+-	rc_bit_tree_decode(rc, prob_len, num_bits, &len);
+-	len += offset;
+-
+-	if (cst->state < 4) {
+-		int pos_slot;
+-
+-		cst->state += LZMA_NUM_LIT_STATES;
+-		prob =
+-			p + LZMA_POS_SLOT +
+-			((len <
+-			  LZMA_NUM_LEN_TO_POS_STATES ? len :
+-			  LZMA_NUM_LEN_TO_POS_STATES - 1)
+-			 << LZMA_NUM_POS_SLOT_BITS);
+-		rc_bit_tree_decode(rc, prob,
+-				   LZMA_NUM_POS_SLOT_BITS,
+-				   &pos_slot);
+-		if (pos_slot >= LZMA_START_POS_MODEL_INDEX) {
+-			int i, mi;
+-			num_bits = (pos_slot >> 1) - 1;
+-			cst->rep0 = 2 | (pos_slot & 1);
+-			if (pos_slot < LZMA_END_POS_MODEL_INDEX) {
+-				cst->rep0 <<= num_bits;
+-				prob = p + LZMA_SPEC_POS +
+-					cst->rep0 - pos_slot - 1;
+-			} else {
+-				num_bits -= LZMA_NUM_ALIGN_BITS;
+-				while (num_bits--)
+-					cst->rep0 = (cst->rep0 << 1) |
+-						rc_direct_bit(rc);
+-				prob = p + LZMA_ALIGN;
+-				cst->rep0 <<= LZMA_NUM_ALIGN_BITS;
+-				num_bits = LZMA_NUM_ALIGN_BITS;
+-			}
+-			i = 1;
+-			mi = 1;
+-			while (num_bits--) {
+-				if (rc_get_bit(rc, prob + mi, &mi))
+-					cst->rep0 |= i;
+-				i <<= 1;
+-			}
+-		} else
+-			cst->rep0 = pos_slot;
+-		if (++(cst->rep0) == 0)
+-			return 0;
+-		if (cst->rep0 > wr->header->dict_size
+-				|| cst->rep0 > get_pos(wr))
+-			return -1;
+-	}
+-
+-	len += LZMA_MATCH_MIN_LEN;
+-
+-	return copy_bytes(wr, cst->rep0, len);
+-}
+-
+-
+-
+-STATIC inline int INIT unlzma(unsigned char *buf, long in_len,
+-			      long (*fill)(void*, unsigned long),
+-			      long (*flush)(void*, unsigned long),
+-			      unsigned char *output,
+-			      long *posp,
+-			      void(*error)(char *x)
+-	)
+-{
+-	struct lzma_header header;
+-	int lc, pb, lp;
+-	uint32_t pos_state_mask;
+-	uint32_t literal_pos_mask;
+-	uint16_t *p;
+-	int num_probs;
+-	struct rc rc;
+-	int i, mi;
+-	struct writer wr;
+-	struct cstate cst;
+-	unsigned char *inbuf;
+-	int ret = -1;
+-
+-	rc.error = error;
+-
+-	if (buf)
+-		inbuf = buf;
+-	else
+-		inbuf = malloc(LZMA_IOBUF_SIZE);
+-	if (!inbuf) {
+-		error("Could not allocate input buffer");
+-		goto exit_0;
+-	}
+-
+-	cst.state = 0;
+-	cst.rep0 = cst.rep1 = cst.rep2 = cst.rep3 = 1;
+-
+-	wr.header = &header;
+-	wr.flush = flush;
+-	wr.global_pos = 0;
+-	wr.previous_byte = 0;
+-	wr.buffer_pos = 0;
+-
+-	rc_init(&rc, fill, inbuf, in_len);
+-
+-	for (i = 0; i < sizeof(header); i++) {
+-		if (rc.ptr >= rc.buffer_end)
+-			rc_read(&rc);
+-		((unsigned char *)&header)[i] = *rc.ptr++;
+-	}
+-
+-	if (header.pos >= (9 * 5 * 5)) {
+-		error("bad header");
+-		goto exit_1;
+-	}
+-
+-	mi = 0;
+-	lc = header.pos;
+-	while (lc >= 9) {
+-		mi++;
+-		lc -= 9;
+-	}
+-	pb = 0;
+-	lp = mi;
+-	while (lp >= 5) {
+-		pb++;
+-		lp -= 5;
+-	}
+-	pos_state_mask = (1 << pb) - 1;
+-	literal_pos_mask = (1 << lp) - 1;
+-
+-	ENDIAN_CONVERT(header.dict_size);
+-	ENDIAN_CONVERT(header.dst_size);
+-
+-	if (header.dict_size == 0)
+-		header.dict_size = 1;
+-
+-	if (output)
+-		wr.buffer = output;
+-	else {
+-		wr.bufsize = MIN(header.dst_size, header.dict_size);
+-		wr.buffer = large_malloc(wr.bufsize);
+-	}
+-	if (wr.buffer == NULL)
+-		goto exit_1;
+-
+-	num_probs = LZMA_BASE_SIZE + (LZMA_LIT_SIZE << (lc + lp));
+-	p = (uint16_t *) large_malloc(num_probs * sizeof(*p));
+-	if (p == NULL)
+-		goto exit_2;
+-	num_probs = LZMA_LITERAL + (LZMA_LIT_SIZE << (lc + lp));
+-	for (i = 0; i < num_probs; i++)
+-		p[i] = (1 << RC_MODEL_TOTAL_BITS) >> 1;
+-
+-	rc_init_code(&rc);
+-
+-	while (get_pos(&wr) < header.dst_size) {
+-		int pos_state =	get_pos(&wr) & pos_state_mask;
+-		uint16_t *prob = p + LZMA_IS_MATCH +
+-			(cst.state << LZMA_NUM_POS_BITS_MAX) + pos_state;
+-		if (rc_is_bit_0(&rc, prob)) {
+-			if (process_bit0(&wr, &rc, &cst, p, pos_state, prob,
+-					lc, literal_pos_mask)) {
+-				error("LZMA data is corrupt");
+-				goto exit_3;
+-			}
+-		} else {
+-			if (process_bit1(&wr, &rc, &cst, p, pos_state, prob)) {
+-				error("LZMA data is corrupt");
+-				goto exit_3;
+-			}
+-			if (cst.rep0 == 0)
+-				break;
+-		}
+-		if (rc.buffer_size <= 0)
+-			goto exit_3;
+-	}
+-
+-	if (posp)
+-		*posp = rc.ptr-rc.buffer;
+-	if (!wr.flush || wr.flush(wr.buffer, wr.buffer_pos) == wr.buffer_pos)
+-		ret = 0;
+-exit_3:
+-	large_free(p);
+-exit_2:
+-	if (!output)
+-		large_free(wr.buffer);
+-exit_1:
+-	if (!buf)
+-		free(inbuf);
+-exit_0:
+-	return ret;
+-}
+-
+-#ifdef PREBOOT
+-STATIC int INIT __decompress(unsigned char *buf, long in_len,
+-			      long (*fill)(void*, unsigned long),
+-			      long (*flush)(void*, unsigned long),
+-			      unsigned char *output, long out_len,
+-			      long *posp,
+-			      void (*error)(char *x))
+-{
+-	return unlzma(buf, in_len - 4, fill, flush, output, posp, error);
+-}
+-#endif
+diff -uNr linux-5.4/lib/decompress_unzstd.c linux-5.4-zstd/lib/decompress_unzstd.c
+--- linux-5.4/lib/decompress_unzstd.c	1969-12-31 16:00:00.000000000 -0800
++++ linux-5.4-zstd/lib/decompress_unzstd.c	2019-12-15 15:06:59.972310969 -0800
+@@ -0,0 +1,341 @@
++/*
++ * Copyright (C) 2017 Facebook
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public
++ * License v2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
++ */
++
++/*
++ * Important notes about in-place decompression
++ *
++ * At least on x86, the kernel is decompressed in place: the compressed data
++ * is placed to the end of the output buffer, and the decompressor overwrites
++ * most of the compressed data. There must be enough safety margin to
++ * guarantee that the write position is always behind the read position.
++ *
++ * The safety margin for ZSTD with a 128 KB block size is calculated below.
++ * Note that the margin with ZSTD is bigger than with GZIP or XZ!
++ *
++ * The worst case for in-place decompression is that the beginning of
++ * the file is compressed extremely well, and the rest of the file is
++ * uncompressible. Thus, we must look for worst-case expansion when the
++ * compressor is encoding uncompressible data.
++ *
++ * The structure of the .zst file in case of a compresed kernel is as follows.
++ * Maximum sizes (as bytes) of the fields are in parenthesis.
++ *
++ *    Frame Header: (18)
++ *    Blocks: (N)
++ *    Checksum: (4)
++ *
++ * The frame header and checksum overhead is at most 22 bytes.
++ *
++ * ZSTD stores the data in blocks. Each block has a header whose size is
++ * a 3 bytes. After the block header, there is up to 128 KB of payload.
++ * The maximum uncompressed size of the payload is 128 KB. The minimum
++ * uncompressed size of the payload is never less than the payload size
++ * (excluding the block header).
++ *
++ * The assumption, that the uncompressed size of the payload is never
++ * smaller than the payload itself, is valid only when talking about
++ * the payload as a whole. It is possible that the payload has parts where
++ * the decompressor consumes more input than it produces output. Calculating
++ * the worst case for this would be tricky. Instead of trying to do that,
++ * let's simply make sure that the decompressor never overwrites any bytes
++ * of the payload which it is currently reading.
++ *
++ * Now we have enough information to calculate the safety margin. We need
++ *   - 22 bytes for the .zst file format headers;
++ *   - 3 bytes per every 128 KiB of uncompressed size (one block header per
++ *     block); and
++ *   - 128 KiB (biggest possible zstd block size) to make sure that the
++ *     decompressor never overwrites anything from the block it is currently
++ *     reading.
++ *
++ * We get the following formula:
++ *
++ *    safety_margin = 22 + uncompressed_size * 3 / 131072 + 131072
++ *                 <= 22 + (uncompressed_size >> 15) + 131072
++ */
++
++#ifdef STATIC
++	/* Preboot environments #include "path/to/decompress_unzstd.c".
++	 * All of the source files we depend on must be #included.
++	 * zstd's only source dependeny is xxhash, which has no source
++	 * dependencies.
++	 *
++	 * zstd and xxhash both avoid declaring themselves as modules
++	 * when PREBOOT is defined.
++	 */
++#	define PREBOOT
++#	include "xxhash.c"
++#	include "zstd/entropy_common.c"
++#	include "zstd/fse_decompress.c"
++#	include "zstd/huf_decompress.c"
++#	include "zstd/zstd_common.c"
++#	include "zstd/decompress.c"
++#endif
++
++#include <linux/decompress/mm.h>
++#include <linux/kernel.h>
++#include <linux/zstd.h>
++
++/* 8 MB maximum window size */
++#define ZSTD_WINDOWSIZE_MAX	(1 << 23)
++/* Size of the input and output buffers in multi-call mdoe */
++#define ZSTD_IOBUF_SIZE		4096
++
++static int INIT handle_zstd_error(size_t ret, void (*error)(char *x))
++{
++	const int err = ZSTD_getErrorCode(ret);
++
++	if (!ZSTD_isError(ret))
++		return 0;
++
++	switch (err) {
++	case ZSTD_error_memory_allocation:
++		error("ZSTD decompressor ran out of memory");
++		break;
++	case ZSTD_error_prefix_unknown:
++		error("Input is not in the ZSTD format (wrong magic bytes)");
++		break;
++	case ZSTD_error_dstSize_tooSmall:
++	case ZSTD_error_corruption_detected:
++	case ZSTD_error_checksum_wrong:
++		error("ZSTD-compressed data is corrupt");
++		break;
++	default:
++		error("ZSTD-compressed data is probably corrupt");
++		break;
++	}
++	return -1;
++}
++
++/* Handle the case where we have the entire input and output in one segment.
++ * We can allocate less memory (no circular buffer for the sliding window),
++ * and avoid some memcpy() calls.
++ */
++static int INIT decompress_single(const u8 *in_buf, long in_len, u8 *out_buf,
++				  long out_len, long *in_pos,
++				  void (*error)(char *x))
++{
++	const size_t wksp_size = ZSTD_DCtxWorkspaceBound();
++	void *wksp = large_malloc(wksp_size);
++	ZSTD_DCtx *dctx = ZSTD_initDCtx(wksp, wksp_size);
++	int err;
++	size_t ret;
++
++	if (dctx == NULL) {
++		error("Out of memory while allocating ZSTD_DCtx");
++		err = -1;
++		goto out;
++	}
++	/* Find out how large the frame actually is, there may be junk at
++	 * the end of the frame that ZSTD_decompressDCtx() can't handle.
++	 */
++	ret = ZSTD_findFrameCompressedSize(in_buf, in_len);
++	err = handle_zstd_error(ret, error);
++	if (err)
++		goto out;
++	in_len = (long)ret;
++
++	ret = ZSTD_decompressDCtx(dctx, out_buf, out_len, in_buf, in_len);
++	err = handle_zstd_error(ret, error);
++	if (err)
++		goto out;
++
++	if (in_pos != NULL)
++		*in_pos = in_len;
++
++	err = 0;
++out:
++	if (wksp != NULL)
++		large_free(wksp);
++	return err;
++}
++
++static int INIT __unzstd(unsigned char *in_buf, long in_len,
++			 long (*fill)(void*, unsigned long),
++			 long (*flush)(void*, unsigned long),
++			 unsigned char *out_buf, long out_len,
++			 long *in_pos,
++			 void (*error)(char *x))
++{
++	ZSTD_inBuffer in;
++	ZSTD_outBuffer out;
++	ZSTD_frameParams params;
++	void *in_allocated = NULL;
++	void *out_allocated = NULL;
++	void *wksp = NULL;
++	size_t wksp_size;
++	ZSTD_DStream *dstream;
++	int err;
++	size_t ret;
++
++	if (out_len == 0)
++		out_len = LONG_MAX; /* no limit */
++
++	if (fill == NULL && flush == NULL)
++		/* We can decompress faster and with less memory when we have a
++		 * single chunk.
++		 */
++		return decompress_single(in_buf, in_len, out_buf, out_len,
++					 in_pos, error);
++
++	/* If in_buf is not provided, we must be using fill(), so allocate
++	 * a large enough buffer. If it is provided, it must be at least
++	 * ZSTD_IOBUF_SIZE large.
++	 */
++	if (in_buf == NULL) {
++		in_allocated = malloc(ZSTD_IOBUF_SIZE);
++		if (in_allocated == NULL) {
++			error("Out of memory while allocating input buffer");
++			err = -1;
++			goto out;
++		}
++		in_buf = in_allocated;
++		in_len = 0;
++	}
++	/* Read the first chunk, since we need to decode the frame header */
++	if (fill != NULL)
++		in_len = fill(in_buf, ZSTD_IOBUF_SIZE);
++	if (in_len < 0) {
++		error("ZSTD-compressed data is truncated");
++		err = -1;
++		goto out;
++	}
++	/* Set the first non-empty input buffer */
++	in.src = in_buf;
++	in.pos = 0;
++	in.size = in_len;
++	/* Allocate the output buffer if we are using flush(). */
++	if (flush != NULL) {
++		out_allocated = malloc(ZSTD_IOBUF_SIZE);
++		if (out_allocated == NULL) {
++			error("Out of memory while allocating output buffer");
++			err = -1;
++			goto out;
++		}
++		out_buf = out_allocated;
++		out_len = ZSTD_IOBUF_SIZE;
++	}
++	/* Set the output buffer */
++	out.dst = out_buf;
++	out.pos = 0;
++	out.size = out_len;
++
++	/* We need to know the window size to allocate the ZSTD_DStream.
++	 * Since we are streaming, we need to allocate a buffer for the sliding
++	 * window. The window size varies from 1 KB to ZSTD_WINDOWSIZE_MAX
++	 * (8 MB), so it is important to use the actual value so as not to
++	 * waste memory when it is smaller.
++	 */
++	ret = ZSTD_getFrameParams(&params, in.src, in.size);
++	err = handle_zstd_error(ret, error);
++	if (err)
++		goto out;
++	if (ret != 0) {
++		error("ZSTD-compressed data has an incomplete frame header");
++		err = -1;
++		goto out;
++	}
++	if (params.windowSize > ZSTD_WINDOWSIZE_MAX) {
++		error("ZSTD-compressed data has too large a window size");
++		err = -1;
++		goto out;
++	}
++
++	/* Allocate the ZSTD_DStream now that we know how much memory is
++	 * required.
++	 */
++	wksp_size = ZSTD_DStreamWorkspaceBound(params.windowSize);
++	wksp = large_malloc(wksp_size);
++	dstream = ZSTD_initDStream(params.windowSize, wksp, wksp_size);
++	if (dstream == NULL) {
++		error("Out of memory while allocating ZSTD_DStream");
++		err = -1;
++		goto out;
++	}
++	/* Decompression loop:
++	 * Read more data if necessary (error if no more data can be read).
++	 * Call the decompression function, which returns 0 when finished.
++	 * Flush any data produced if using flush().
++	 */
++	if (in_pos != NULL)
++		*in_pos = 0;
++	do {
++		/* If we need to reload data, either we have fill() and can
++		 * try to get more data, or we don't and the input is truncated.
++		 */
++		if (in.pos == in.size) {
++			if (in_pos != NULL)
++				*in_pos += in.pos;
++			in_len = fill ? fill(in_buf, ZSTD_IOBUF_SIZE) : -1;
++			if (in_len < 0) {
++				error("ZSTD-compressed data is truncated");
++				err = -1;
++				goto out;
++			}
++			in.pos = 0;
++			in.size = in_len;
++		}
++		/* Returns zero when the frame is complete */
++		ret = ZSTD_decompressStream(dstream, &out, &in);
++		err = handle_zstd_error(ret, error);
++		if (err)
++			goto out;
++		/* Flush all of the data produced if using flush() */
++		if (flush != NULL && out.pos > 0) {
++			if (out.pos != flush(out.dst, out.pos)) {
++				error("Failed to flush()");
++				err = -1;
++				goto out;
++			}
++			out.pos = 0;
++		}
++	} while (ret != 0);
++
++	if (in_pos != NULL)
++		*in_pos += in.pos;
++
++	err = 0;
++out:
++	if (in_allocated != NULL)
++		free(in_allocated);
++	if (out_allocated != NULL)
++		free(out_allocated);
++	if (wksp != NULL)
++		large_free(wksp);
++	return err;
++}
++
++#ifndef PREBOOT
++STATIC int INIT unzstd(unsigned char *buf, long len,
++		       long (*fill)(void*, unsigned long),
++		       long (*flush)(void*, unsigned long),
++		       unsigned char *out_buf,
++		       long *pos,
++		       void (*error)(char *x))
++{
++	return __unzstd(buf, len, fill, flush, out_buf, 0, pos, error);
++}
++#else
++STATIC int INIT __decompress(unsigned char *buf, long len,
++			     long (*fill)(void*, unsigned long),
++			     long (*flush)(void*, unsigned long),
++			     unsigned char *out_buf, long out_len,
++			     long *pos,
++			     void (*error)(char *x))
++{
++	return __unzstd(buf, len, fill, flush, out_buf, out_len, pos, error);
++}
++#endif
+diff -uNr linux-5.4/lib/Kconfig linux-5.4-zstd/lib/Kconfig
+--- linux-5.4/lib/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/Kconfig	2019-12-15 15:07:02.042268956 -0800
+@@ -311,9 +311,6 @@
+ 	select ZLIB_INFLATE
+ 	tristate
+ 
+-config DECOMPRESS_BZIP2
+-	tristate
+-
+ config DECOMPRESS_LZMA
+ 	tristate
+ 
+@@ -329,6 +326,10 @@
+ 	select LZ4_DECOMPRESS
+ 	tristate
+ 
++config DECOMPRESS_ZSTD
++	select ZSTD_DECOMPRESS
++	tristate
++
+ #
+ # Generic allocator support is selected if needed
+ #
+diff -uNr linux-5.4/lib/Makefile linux-5.4-zstd/lib/Makefile
+--- linux-5.4/lib/Makefile	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/Makefile	2019-12-15 15:07:02.065601816 -0800
+@@ -152,11 +152,10 @@
+ obj-$(CONFIG_RAID6_PQ) += raid6/
+ 
+ lib-$(CONFIG_DECOMPRESS_GZIP) += decompress_inflate.o
+-lib-$(CONFIG_DECOMPRESS_BZIP2) += decompress_bunzip2.o
+-lib-$(CONFIG_DECOMPRESS_LZMA) += decompress_unlzma.o
+ lib-$(CONFIG_DECOMPRESS_XZ) += decompress_unxz.o
+ lib-$(CONFIG_DECOMPRESS_LZO) += decompress_unlzo.o
+ lib-$(CONFIG_DECOMPRESS_LZ4) += decompress_unlz4.o
++lib-$(CONFIG_DECOMPRESS_ZSTD) += decompress_unzstd.o
+ 
+ obj-$(CONFIG_TEXTSEARCH) += textsearch.o
+ obj-$(CONFIG_TEXTSEARCH_KMP) += ts_kmp.o
+diff -uNr linux-5.4/lib/xxhash.c linux-5.4-zstd/lib/xxhash.c
+--- linux-5.4/lib/xxhash.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/xxhash.c	2019-12-15 15:06:59.988977298 -0800
+@@ -80,13 +80,11 @@
+ {
+ 	memcpy(dst, src, sizeof(*dst));
+ }
+-EXPORT_SYMBOL(xxh32_copy_state);
+ 
+ void xxh64_copy_state(struct xxh64_state *dst, const struct xxh64_state *src)
+ {
+ 	memcpy(dst, src, sizeof(*dst));
+ }
+-EXPORT_SYMBOL(xxh64_copy_state);
+ 
+ /*-***************************
+  * Simple Hash Functions
+@@ -151,7 +149,6 @@
+ 
+ 	return h32;
+ }
+-EXPORT_SYMBOL(xxh32);
+ 
+ static uint64_t xxh64_round(uint64_t acc, const uint64_t input)
+ {
+@@ -234,7 +231,6 @@
+ 
+ 	return h64;
+ }
+-EXPORT_SYMBOL(xxh64);
+ 
+ /*-**************************************************
+  * Advanced Hash Functions
+@@ -251,7 +247,6 @@
+ 	state.v4 = seed - PRIME32_1;
+ 	memcpy(statePtr, &state, sizeof(state));
+ }
+-EXPORT_SYMBOL(xxh32_reset);
+ 
+ void xxh64_reset(struct xxh64_state *statePtr, const uint64_t seed)
+ {
+@@ -265,7 +260,6 @@
+ 	state.v4 = seed - PRIME64_1;
+ 	memcpy(statePtr, &state, sizeof(state));
+ }
+-EXPORT_SYMBOL(xxh64_reset);
+ 
+ int xxh32_update(struct xxh32_state *state, const void *input, const size_t len)
+ {
+@@ -334,7 +328,6 @@
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL(xxh32_update);
+ 
+ uint32_t xxh32_digest(const struct xxh32_state *state)
+ {
+@@ -372,7 +365,6 @@
+ 
+ 	return h32;
+ }
+-EXPORT_SYMBOL(xxh32_digest);
+ 
+ int xxh64_update(struct xxh64_state *state, const void *input, const size_t len)
+ {
+@@ -439,7 +431,6 @@
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL(xxh64_update);
+ 
+ uint64_t xxh64_digest(const struct xxh64_state *state)
+ {
+@@ -494,7 +485,19 @@
+ 
+ 	return h64;
+ }
++
++#ifndef PREBOOT
++EXPORT_SYMBOL(xxh32_copy_state);
++EXPORT_SYMBOL(xxh64_copy_state);
++EXPORT_SYMBOL(xxh32);
++EXPORT_SYMBOL(xxh64);
++EXPORT_SYMBOL(xxh32_reset);
++EXPORT_SYMBOL(xxh64_reset);
++EXPORT_SYMBOL(xxh32_update);
++EXPORT_SYMBOL(xxh32_digest);
++EXPORT_SYMBOL(xxh64_update);
+ EXPORT_SYMBOL(xxh64_digest);
+ 
+ MODULE_LICENSE("Dual BSD/GPL");
+ MODULE_DESCRIPTION("xxHash");
++#endif
+diff -uNr linux-5.4/lib/zstd/decompress.c linux-5.4-zstd/lib/zstd/decompress.c
+--- linux-5.4/lib/zstd/decompress.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/zstd/decompress.c	2019-12-15 15:06:59.988977298 -0800
+@@ -2490,6 +2490,7 @@
+ 	}
+ }
+ 
++#ifndef PREBOOT
+ EXPORT_SYMBOL(ZSTD_DCtxWorkspaceBound);
+ EXPORT_SYMBOL(ZSTD_initDCtx);
+ EXPORT_SYMBOL(ZSTD_decompressDCtx);
+@@ -2529,3 +2530,4 @@
+ 
+ MODULE_LICENSE("Dual BSD/GPL");
+ MODULE_DESCRIPTION("Zstd Decompressor");
++#endif
+diff -uNr linux-5.4/lib/zstd/fse_decompress.c linux-5.4-zstd/lib/zstd/fse_decompress.c
+--- linux-5.4/lib/zstd/fse_decompress.c	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/zstd/fse_decompress.c	2019-12-15 15:06:59.992310563 -0800
+@@ -47,6 +47,7 @@
+ ****************************************************************/
+ #include "bitstream.h"
+ #include "fse.h"
++#include "zstd_internal.h"
+ #include <linux/compiler.h>
+ #include <linux/kernel.h>
+ #include <linux/string.h> /* memcpy, memset */
+@@ -60,14 +61,6 @@
+ 		enum { FSE_static_assert = 1 / (int)(!!(c)) }; \
+ 	} /* use only *after* variable declarations */
+ 
+-/* check and forward error code */
+-#define CHECK_F(f)                  \
+-	{                           \
+-		size_t const e = f; \
+-		if (FSE_isError(e)) \
+-			return e;   \
+-	}
+-
+ /* **************************************************************
+ *  Templates
+ ****************************************************************/
+diff -uNr linux-5.4/lib/zstd/zstd_internal.h linux-5.4-zstd/lib/zstd/zstd_internal.h
+--- linux-5.4/lib/zstd/zstd_internal.h	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/lib/zstd/zstd_internal.h	2019-12-15 15:06:59.992310563 -0800
+@@ -127,7 +127,13 @@
+ *  Shared functions to include for inlining
+ *********************************************/
+ ZSTD_STATIC void ZSTD_copy8(void *dst, const void *src) {
+-	memcpy(dst, src, 8);
++	/* zstd relies heavily on gcc being able to analyze and inline this
++	 * memcpy() call, since it is called in a tight loop. Preboot mode
++	 * is compiled in freestanding mode, which stops gcc from analyzing
++	 * memcpy(). Use __builtin_memcpy() to tell gcc to analyze this as a
++	 * regular memcpy().
++	 */
++	__builtin_memcpy(dst, src, 8);
+ }
+ /*! ZSTD_wildcopy() :
+ *   custom version of memcpy(), can copy up to 7 bytes too many (8 bytes if length==0) */
+@@ -137,6 +143,7 @@
+ 	const BYTE* ip = (const BYTE*)src;
+ 	BYTE* op = (BYTE*)dst;
+ 	BYTE* const oend = op + length;
++#if GCC_VERSION >= 70000 && GCC_VERSION < 70200
+ 	/* Work around https://gcc.gnu.org/bugzilla/show_bug.cgi?id=81388.
+ 	 * Avoid the bad case where the loop only runs once by handling the
+ 	 * special case separately. This doesn't trigger the bug because it
+@@ -144,6 +151,7 @@
+ 	 */
+ 	if (length <= 8)
+ 		return ZSTD_copy8(dst, src);
++#endif
+ 	do {
+ 		ZSTD_copy8(op, ip);
+ 		op += 8;
+diff -uNr linux-5.4/scripts/Makefile.lib linux-5.4-zstd/scripts/Makefile.lib
+--- linux-5.4/scripts/Makefile.lib	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/scripts/Makefile.lib	2019-12-15 15:07:02.065601816 -0800
+@@ -315,10 +315,10 @@
+ 
+ dtc-tmp = $(subst $(comma),_,$(dot-target).dts.tmp)
+ 
+-# Bzip2
++# Lzma
+ # ---------------------------------------------------------------------------
+ 
+-# Bzip2 and LZMA do not include size in file... so we have to fake that;
++# LZMA does not include size in file... so we have to fake that;
+ # append the size as a 32-bit littleendian number as gzip does.
+ size_append = printf $(shell						\
+ dec_size=0;								\
+@@ -397,6 +397,21 @@
+ quiet_cmd_xzmisc = XZMISC  $@
+       cmd_xzmisc = cat $(real-prereqs) | xz --check=crc32 --lzma2=dict=1MiB > $@
+ 
++# ZSTD
++# ---------------------------------------------------------------------------
++# Appends the uncompressed size of the data using size_append. The .zst
++# format has the size information available at the beginning of the file too,
++# but it's in a more complex format and it's good to avoid changing the part
++# of the boot code that reads the uncompressed size.
++# Note that the bytes added by size_append will make the zstd tool think that
++# the file is corrupt. This is expected.
++
++quiet_cmd_zstd = ZSTD    $@
++cmd_zstd = (cat $(filter-out FORCE,$^) | \
++	zstd -19 && \
++        $(call size_append, $(filter-out FORCE,$^))) > $@ || \
++	(rm -f $@ ; false)
++
+ # ASM offsets
+ # ---------------------------------------------------------------------------
+ 
+diff -uNr linux-5.4/usr/Kconfig linux-5.4-zstd/usr/Kconfig
+--- linux-5.4/usr/Kconfig	2019-11-24 16:32:01.000000000 -0800
++++ linux-5.4-zstd/usr/Kconfig	2019-12-15 15:07:02.112267535 -0800
+@@ -61,24 +61,6 @@
+ 	  Support loading of a gzip encoded initial ramdisk or cpio buffer.
+ 	  If unsure, say Y.
+ 
+-config RD_BZIP2
+-	bool "Support initial ramdisk/ramfs compressed using bzip2"
+-	default y
+-	depends on BLK_DEV_INITRD
+-	select DECOMPRESS_BZIP2
+-	help
+-	  Support loading of a bzip2 encoded initial ramdisk or cpio buffer
+-	  If unsure, say N.
+-
+-config RD_LZMA
+-	bool "Support initial ramdisk/ramfs compressed using LZMA"
+-	default y
+-	depends on BLK_DEV_INITRD
+-	select DECOMPRESS_LZMA
+-	help
+-	  Support loading of a LZMA encoded initial ramdisk or cpio buffer
+-	  If unsure, say N.
+-
+ config RD_XZ
+ 	bool "Support initial ramdisk/ramfs compressed using XZ"
+ 	depends on BLK_DEV_INITRD
+@@ -106,6 +88,15 @@
+ 	  Support loading of a LZ4 encoded initial ramdisk or cpio buffer
+ 	  If unsure, say N.
+ 
++config RD_ZSTD
++	bool "Support initial ramdisk/ramfs compressed using ZSTD"
++	default y
++	depends on BLK_DEV_INITRD
++	select DECOMPRESS_ZSTD
++	help
++	  Support loading of a ZSTD encoded initial ramdisk or cpio buffer.
++	  If unsure, say N.
++
+ choice
+ 	prompt "Built-in initramfs compression mode"
+ 	depends on INITRAMFS_SOURCE!=""
+@@ -118,8 +109,8 @@
+ 	  when building a kernel.  Decompression speed is relevant at
+ 	  each boot. Also the memory usage during decompression may become
+ 	  relevant on memory constrained systems. This is usually based on the
+-	  dictionary size of the algorithm with algorithms like XZ and LZMA
+-	  featuring large dictionary sizes.
++	  dictionary size of the algorithm with algorithms like XZ featuring
++	  large dictionary sizes.
+ 
+ 	  High compression options are mostly useful for users who are
+ 	  low on RAM, since it reduces the memory consumption during
+@@ -140,43 +131,15 @@
+ 	  on those architectures that support this. However, not compressing the
+ 	  initramfs may lead to slightly higher memory consumption during a
+ 	  short time at boot, while both the cpio image and the unpacked
+-	  filesystem image will be present in memory simultaneously
++	  filesystem image will be present in memory simultaneously.
+ 
+ config INITRAMFS_COMPRESSION_GZIP
+ 	bool "Gzip"
+ 	depends on RD_GZIP
+ 	help
+-	  Use the old and well tested gzip compression algorithm. Gzip provides
+-	  a good balance between compression ratio and decompression speed and
+-	  has a reasonable compression speed. It is also more likely to be
+-	  supported by your build system as the gzip tool is present by default
+-	  on most distros.
+-
+-config INITRAMFS_COMPRESSION_BZIP2
+-	bool "Bzip2"
+-	depends on RD_BZIP2
+-	help
+-	  It's compression ratio and speed is intermediate. Decompression speed
+-	  is slowest among the choices. The initramfs size is about 10% smaller
+-	  with bzip2, in comparison to gzip. Bzip2 uses a large amount of
+-	  memory. For modern kernels you will need at least 8MB RAM or more for
+-	  booting.
+-
+-	  If you choose this, keep in mind that you need to have the bzip2 tool
+-	  available to be able to compress the initram.
+-
+-config INITRAMFS_COMPRESSION_LZMA
+-	bool "LZMA"
+-	depends on RD_LZMA
+-	help
+-	  This algorithm's compression ratio is best but has a large dictionary
+-	  size which might cause issues in memory constrained systems.
+-	  Decompression speed is between the other choices. Compression is
+-	  slowest. The initramfs size is about 33% smaller with LZMA in
+-	  comparison to gzip.
+-
+-	  If you choose this, keep in mind that you may need to install the xz
+-	  or lzma tools to be able to compress the initram.
++	  Use the old and well tested gzip compression algorithm. Gzip doesn't
++	  provide very good compression nor speed, but it's the safest choice,
++	  with wide support.
+ 
+ config INITRAMFS_COMPRESSION_XZ
+ 	bool "XZ"
+@@ -185,20 +148,20 @@
+ 	  XZ uses the LZMA2 algorithm and has a large dictionary which may cause
+ 	  problems on memory constrained systems. The initramfs size is about
+ 	  30% smaller with XZ in comparison to gzip. Decompression speed is
+-	  better than that of bzip2 but worse than gzip and LZO. Compression is
+-	  slow.
++	  okayish but still slowest of all currently available algorithms.
++	  Compression is slow.
+ 
+-	  If you choose this, keep in mind that you may need to install the xz
+-	  tool to be able to compress the initram.
++	  Any modern distro provides xz in its default install, but on
++	  minimal build systems you might need to install xz-utils to be
++	  able to compress the initram.
+ 
+ config INITRAMFS_COMPRESSION_LZO
+ 	bool "LZO"
+ 	depends on RD_LZO
+ 	help
+ 	  It's compression ratio is the second poorest amongst the choices. The
+-	  kernel size is about 10% bigger than gzip. Despite that, it's
+-	  decompression speed is the second fastest and it's compression speed
+-	  is quite fast too.
++	  kernel size is about 10% bigger than gzip. Pick ZSTD instead, or LZ4
++	  if speed is paramount.
+ 
+ 	  If you choose this, keep in mind that you may need to install the lzop
+ 	  tool to be able to compress the initram.
+@@ -214,6 +177,17 @@
+ 	  If you choose this, keep in mind that most distros don't provide lz4
+ 	  by default which could cause a build failure.
+ 
++config INITRAMFS_COMPRESSION_ZSTD
++	bool "ZSTD"
++	depends on RD_ZSTD
++	help
++	  ZSTD is a compression algorithm targeting intermediate compression
++	  with fast decompression speed. It will compress better than GZIP and
++	  decompress around the same speed as LZO, but slower than LZ4.
++
++	  If you choose this, keep in mind that you may need to install the zstd
++	  tool to be able to compress the initram.
++
+ endchoice
+ 
+ config INITRAMFS_COMPRESSION
+@@ -221,15 +195,13 @@
+ 	string
+ 	default ""      if INITRAMFS_COMPRESSION_NONE
+ 	default ".gz"   if INITRAMFS_COMPRESSION_GZIP
+-	default ".bz2"  if INITRAMFS_COMPRESSION_BZIP2
+-	default ".lzma" if INITRAMFS_COMPRESSION_LZMA
+ 	default ".xz"   if INITRAMFS_COMPRESSION_XZ
+ 	default ".lzo"  if INITRAMFS_COMPRESSION_LZO
+ 	default ".lz4"  if INITRAMFS_COMPRESSION_LZ4
++	default ".zst"  if INITRAMFS_COMPRESSION_ZSTD
+ 	default ".gz"   if RD_GZIP
+ 	default ".lz4"  if RD_LZ4
+ 	default ".lzo"  if RD_LZO
+ 	default ".xz"   if RD_XZ
+-	default ".lzma" if RD_LZMA
+-	default ".bz2"  if RD_BZIP2
++	default ".zst"  if RD_ZSTD
+ 	default ""
