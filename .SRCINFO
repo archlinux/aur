@@ -1,0 +1,16 @@
+pkgbase = zsh-systemd-git
+	pkgdesc = The systemd plugin for Zshell provides many useful aliases for systemd.
+	pkgver = r1.0d6af3e
+	pkgrel = 1
+	url = https://github.com/le0me55i/zsh-systemd
+	install = zsh-systemd-git.install
+	arch = any
+	makedepends = git
+	depends = zsh
+	provides = zsh-systemd
+	conflicts = zsh-systemd
+	source = git+https://github.com/le0me55i/zsh-systemd.git
+	sha256sums = SKIP
+
+pkgname = zsh-systemd-git
+

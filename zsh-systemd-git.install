@@ -1,0 +1,8 @@
+post_install() {
+	cat<<<"
+To use, source the library from your .zshrc:
+	
+	source /usr/share/zsh/plugins/zsh-systemd/systemd.plugin.zsh
+"
+}
+
