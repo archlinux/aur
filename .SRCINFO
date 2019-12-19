@@ -1,0 +1,15 @@
+pkgbase = comparepdf
+	pkgdesc = Command-line tool for diffing pdf files visually or textually
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.qtrac.eu/comparepdf.html
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = poppler-qt5
+	source = https://github.com/tschoppi/comparepdf/archive/v1.0.2.tar.gz
+	sha512sums = c72f2ee8c689defc69ccad6750218bcbea3d200e88c868b0a60c1f649587bb22bcdcadee76808e040daf7da578d18757d032b7726d4cc2b9f31d06136d5a8313
+
+pkgname = comparepdf
+
