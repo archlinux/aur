@@ -1,7 +1,7 @@
 pkgbase = kraft
 	pkgdesc = A program suitable for all trades or crafts
-	pkgver = 0.82
-	pkgrel = 2
+	pkgver = 0.90
+	pkgrel = 1
 	url = http://www.volle-kraft-voraus.de/
 	arch = i686
 	arch = x86_64
@@ -13,12 +13,8 @@ pkgbase = kraft
 	depends = ctemplate
 	depends = python2-reportlab
 	depends = python2-pypdf2
-	source = https://github.com/dragotin/kraft/archive/v0.82.tar.gz
-	source = 0001-Fix-build-with-Qt-5.12-Strange-include-QtSql-problem.patch
-	source = 0002-Disalbe-nullptr-compiler-warning-which-shadows-real-.patch
-	sha256sums = 85d467118fcf2fe1d4fe171e2de759d4c7d70cf054f646676eb6d703f0fade48
-	sha256sums = 16b58ae1a839d35063a79938969f5a70e360bea362ae7275b5ae045fc3c47373
-	sha256sums = 91de8820cefc19230d67009c01157c4e23ee17ad856c280c7244822f151d5c9c
+	source = https://github.com/dragotin/kraft/archive/v0.90.tar.gz
+	sha256sums = 53d8e1afd6a0e9554a5bde44b654c11130f9ac43327759772351710ae1cb6f6b
 
 pkgname = kraft
 

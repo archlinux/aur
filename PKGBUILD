@@ -4,18 +4,15 @@
 # Contributor: shamrok <szamrok@gmail.com>
 
 pkgname=kraft
-pkgver=0.82
-pkgrel=2
+pkgver=0.90
+pkgrel=1
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
 depends=('boost' 'akonadi-contacts' 'ctemplate' 'python2-reportlab' 'python2-pypdf2')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
-        '0001-Fix-build-with-Qt-5.12-Strange-include-QtSql-problem.patch'
-        '0002-Disalbe-nullptr-compiler-warning-which-shadows-real-.patch'
-)
+source=("https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz")
 
 
 prepare() {
@@ -48,6 +45,4 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('85d467118fcf2fe1d4fe171e2de759d4c7d70cf054f646676eb6d703f0fade48'
-            '16b58ae1a839d35063a79938969f5a70e360bea362ae7275b5ae045fc3c47373'
-            '91de8820cefc19230d67009c01157c4e23ee17ad856c280c7244822f151d5c9c')
+sha256sums=('53d8e1afd6a0e9554a5bde44b654c11130f9ac43327759772351710ae1cb6f6b')
