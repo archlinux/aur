@@ -6,35 +6,32 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.6.dev.2.r13.g6af3d8b
-pkgrel=2
+pkgver=3.6.dev.3.r6.g9012bb0
+pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
 license=('GPL')
 groups=()
-depends=('gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
-makedepends=('ceres-solver' 'boost' 'git' 'cmake' 'eigen' )
+depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
+makedepends=('boost' 'git' 'cmake' 'eigen' )
 if [ "$_BUILD_CUDA" == "on" ] ; then 
   makedepends+=('cuda-sdk')
   optdepends=('cuda-toolkit: for cuda sfm/mvs acceleration')
 fi
-install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${fragment}"
         "nvm-export.patch"
         "gcc9.patch"
-        "${pkgname}.install"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
         "vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin"
         "vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin"
         )
-md5sums=('SKIP'
-         '1542bbbaa7951dbf0b2472354b4b493d'
-         'cff4ef88ae7e4cb0d08265f9e6715364'
-         'ebb1dc43e014a1e720a06422c6248a40'
-         '65b200a06e15205bda713c8553953c50'
-         '57e1c8073d9085631911e060c3802bd2'
-         '1c27e2a01d243f40f15595d93cfd0981')
+sha256sums=('SKIP'
+            'd8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36'
+            '531181351f30cfcb531fc961439152840048ff4fa71a27b1efae46421f1ab686'
+            'd37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2'
+            'd2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a'
+            'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
 
 pkgver() {
   cd "$pkgname"
