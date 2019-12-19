@@ -2,7 +2,7 @@
 # Contributor: qaz <fkxxyz@163.com>
 
 pkgname=arctime
-pkgver=2.2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="A Simple, powerful and efficient cross-platform subtitle production software"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ url="http://arctime.org"
 license=('custom')
 depends=('ffmpeg' 'java-runtime=8' 'vlc')
 source=(
-  "https://dl.arctime.cn/Arctime2.2.1/ARCTIME_PRO_2.2.1_LINUX.7z"
+  "https://dlhz.arctime.cn/ARCTIME_PRO_${pkgver}_LINUX.7z"
   16x16.png
   24x24.png
   32x32.png
@@ -25,10 +25,10 @@ package() {
   
   install -D ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   
-  install -d "${pkgdir}/usr/share/licenses/$pkgname"
-  touch "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-  
   cd ${srcdir}/ARCTIME_PRO_${pkgver}_LINUX
+  
+  install -D './tools/GPL LICENSE.txt' "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
+  
   pkghome="${pkgdir}/usr/share/${pkgname}"
   install -Dm644 ./ArcTime.jar "${pkghome}/ArcTime.jar"
   cp -r ./ArcTime_lib "${pkghome}/ArcTime_lib"
@@ -54,9 +54,10 @@ exec java -Xms128m -Xmx512m -jar ./ArcTime.jar
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('623bd4fec7b13f99320e6d7fcfb3458010294946ea2481c2b3b54bec3d8c841c'
+sha256sums=('875e6e7da8dfa228ff4daf738433348ec4f90202c94947eb61bad69632343f48'
             '9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677'
             '406a3953b7b5d54814f6613f23badc0eff04909688d67295371aeeead862ae85'
             'fcd6ecf0a786658968d0c8747b860b5238c0df73c873642dd7ce5fca186d2122'
             'c9bc9ac2ffdc703b672c1f918ea4d48479693bdc69dfd346a077547de47ce7d1'
-            '234004078ed6b0ab0e46905fa7a259c7e0a7da971012e0692cccaff96882df8a')
+            '509cd21579a352540e2a5a7fc12d1efb927d2247184e75765787d3aa0f39f05e')
+
