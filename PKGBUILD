@@ -1,18 +1,18 @@
 # Maintainer: exprez135 <exprezdev at pm dot me>
 
 pkgname=protonvpn-cli-ng
-pkgver=2.1.2
-pkgrel=4
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="ProtonVPN CLI tool for protonvpn.com"
 arch=("any")
 url="https://github.com/ProtonVPN/protonvpn-cli-ng"
 license=("GPLv3")
 depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools" "python-docopt" "python-requests")
 replaces=("protonvpn-cli")
-source=("https://github.com/ProtonVPN/protonvpn-cli-ng/archive/v2.1.2.tar.gz")
+source=("https://github.com/ProtonVPN/protonvpn-cli-ng/archive/v2.2.0.tar.gz")
 md5sums=("SKIP")
 
-_protonvpn_src_dir="protonvpn-cli-ng-2.1.2"
+_protonvpn_src_dir="protonvpn-cli-ng-2.2.0"
 
 package() {
     # Define paths
