@@ -1,6 +1,6 @@
 pkgbase = duplicity-dev
 	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm. Development version
-	pkgver = 0.8.00
+	pkgver = 0.8.08
 	pkgrel = 1
 	url = http://duplicity.nongnu.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = duplicity-dev
 	depends = python-requests
 	depends = python-urllib3
 	optdepends = python-azure
-	optdepends = python-b2
+	optdepends = python-b2sdk
 	optdepends = python-boto
 	optdepends = python-paramiko
 	optdepends = python-pydrive
@@ -20,11 +20,8 @@ pkgbase = duplicity-dev
 	optdepends = python-requests-oauthlib
 	provides = duplicity
 	conflicts = duplicity
-	source = https://code.launchpad.net/duplicity/0.8-series/0.8.00/+download/duplicity-0.8.00.tar.gz
-	source = https://code.launchpad.net/duplicity/0.8-series/0.8.00/+download/duplicity-0.8.00.tar.gz.sig
-	validpgpkeys = 9D95920CED4A8D5F8B086A9F8B6F8FF4E654E600
-	md5sums = e6a48e847e1778548133bc3723548723
-	md5sums = SKIP
+	source = https://code.launchpad.net/duplicity/0.8-series/0.8.08/+download/duplicity-0.8.08.tar.gz
+	sha512sums = 968ba458b896874ba1af41753927a01446649ea1864128f3a8ac62e31416656e36844ae62a3408e3d82588da3c23929c714bbdb01b6472a80c2f695801985a15
 
 pkgname = duplicity-dev
 
