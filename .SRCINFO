@@ -1,6 +1,6 @@
 pkgbase = perl-class-mix
 	pkgdesc = dynamic class mixing
-	pkgver = 0.005
+	pkgver = 0.006
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Class-Mix
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = perl-class-mix
 	license = GPL
 	depends = perl>=5.006
 	depends = perl-params-classify
+	depends = perl-module-build
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Class-Mix-0.005.tar.gz
-	md5sums = 7d6c4e70dea13678d845898a4a1565c0
-	sha512sums = 9486a8ec4f6b1a5483610cdac110eed219bb849e8895a350309167206f8caef4209abbbc340a467f4c3b2ca3afc6e2b49b66601110517b66684689f4d88d20c9
+	options = purge
+	source = http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Class-Mix-0.006.tar.gz
+	sha512sums = f1e52d189a57b4a6e4b7b093cd561881bcccec03dcf7286d69b592865343ab413ab35e42c14dd92ceb0089df1df33df4ff2a502026fde060ef246e77c8d21af1
 
 pkgname = perl-class-mix
 

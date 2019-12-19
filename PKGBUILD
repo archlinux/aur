@@ -1,50 +1,37 @@
+# Maintainer : Luis Aranguren <pizzaman@hotmail.com>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-class-mix'
-pkgver='0.005'
+pkgver='0.006'
 pkgrel='1'
 pkgdesc="dynamic class mixing"
+_dist='Class-Mix'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl>=5.006' 'perl-params-classify')
-makedepends=()
 url='http://search.cpan.org/dist/Class-Mix'
-source=('http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Class-Mix-0.005.tar.gz')
-md5sums=('7d6c4e70dea13678d845898a4a1565c0')
-sha512sums=('9486a8ec4f6b1a5483610cdac110eed219bb849e8895a350309167206f8caef4209abbbc340a467f4c3b2ca3afc6e2b49b66601110517b66684689f4d88d20c9')
-_distdir="Class-Mix-0.005"
+license=('PerlArtistic' 'GPL')
+depends=('perl>=5.006' 'perl-params-classify' 'perl-module-build')
+options=('!emptydirs' purge)
+source=("http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/$_dist-$pkgver.tar.gz")
+sha512sums=('f1e52d189a57b4a6e4b7b093cd561881bcccec03dcf7286d69b592865343ab413ab35e42c14dd92ceb0089df1df33df4ff2a502026fde060ef246e77c8d21af1')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+  /usr/bin/perl Build.PL
+  ./Build
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  ./Build test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
