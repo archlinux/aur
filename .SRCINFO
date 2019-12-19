@@ -10,7 +10,7 @@ pkgbase = zsh-extract-git
 	depends = zsh
 	provides = zsh-extract
 	conflicts = zsh-extract
-	source = git://github.com/le0me55i/zsh-extract
+	source = zsh-extract::git://github.com/le0me55i/zsh-extract
 
 pkgname = zsh-extract-git
 
