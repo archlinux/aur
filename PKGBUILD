@@ -1,5 +1,3 @@
-# Maintainer: David Roizenman <david@hmnd.io>
-
 pkgname=todoist
 pkgver=0.14.0
 pkgrel=1
