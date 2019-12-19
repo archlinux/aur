@@ -1,6 +1,6 @@
 pkgbase = aragon-cli
 	pkgdesc = CLI for creating and publishing Aragon apps
-	pkgver = 6.4.3
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/aragon/aragon-cli
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = aragon-cli
 	depends = nodejs
 	noextract = ${_npmname}-${pkgver}.tgz
 	options = !strip
-	source = http://registry.npmjs.org/@aragon/cli/-/@aragon/cli-6.4.3.tgz
-	sha256sums = e0bf239352173141a80337cac941a1afa682c52f0b76e88337edce5db2bf8141
+	source = http://registry.npmjs.org/@aragon/cli/-/@aragon/cli-7.0.0.tgz
+	sha256sums = d82169f61bb9c18154523133c05c6e7ee9028b311ec3ae7a1b251fec19b984a1
 
 pkgname = aragon-cli
 
