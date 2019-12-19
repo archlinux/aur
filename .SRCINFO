@@ -1,9 +1,9 @@
 pkgbase = cp210x
 	pkgdesc = Silicon Labs CP210x RS232 serial adaptor driver
 	pkgver = 2019.7.12
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = linux-headers
 	depends = linux
@@ -15,7 +15,8 @@ pkgbase = cp210x
 pkgname = cp210x
 
 pkgname = cp210x-dkms
+	arch = any
 	depends = dkms
-	provides = cp210x=2019.7.12-1
+	provides = cp210x=2019.7.12-3
 	conflicts = cp210x
 
