@@ -1,19 +1,19 @@
 pkgbase = colmap
 	pkgdesc = COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.6dev2
+	pkgver = 3.6dev3
 	pkgrel = 1
 	url = https://colmap.github.io/
-	install = colmap.install
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = ceres-solver
 	makedepends = boost
 	makedepends = git
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = cuda-sdk
 	depends = gflags
+	depends = ceres-solver
+	depends = cgal
 	depends = suitesparse
 	depends = freeglut
 	depends = glew
@@ -26,17 +26,15 @@ pkgbase = colmap
 	source = colmap::git+https://github.com/colmap/colmap.git#tag=3.6-dev.2
 	source = nvm-export.patch
 	source = gcc9.patch
-	source = colmap.install
 	source = vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin
 	source = vocabulary-tree-256K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words256K.bin
 	source = vocabulary-tree-1M.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words1M.bin
-	md5sums = SKIP
-	md5sums = 1542bbbaa7951dbf0b2472354b4b493d
-	md5sums = c14369d73fabb219537f6cb424c5edee
-	md5sums = ebb1dc43e014a1e720a06422c6248a40
-	md5sums = 65b200a06e15205bda713c8553953c50
-	md5sums = 57e1c8073d9085631911e060c3802bd2
-	md5sums = 1c27e2a01d243f40f15595d93cfd0981
+	sha256sums = SKIP
+	sha256sums = d8985b9af868edfc50f69257faf132f959398437758ccb6baa266a1bbddb3b36
+	sha256sums = ff3e0c03ee756c68ca8d120f46be0722cf15a41c64329062c5f87dddbf7b4392
+	sha256sums = d37d8f19ee0a49705c4c0b06967a08cedfed5cf86519eada3271497256732bc2
+	sha256sums = d2055600452a531b5b0a62aa5943e1a07195273dc4eeebcf23d3a924d881d53a
+	sha256sums = fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6
 
 pkgname = colmap
 
