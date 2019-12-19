@@ -4,11 +4,11 @@
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 
 pkgbase=kata-containers-bin
-pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image-bin kata-linux-container-bin)
+pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image kata-linux-container)
 pkgver="1.10.0~rc0"
 _pkgver=${pkgver/\~/-}
-pkgrel=2
-pkgdesc="Lightweight virtual machines for containers (binary-sourced from OBS)"
+pkgrel=3
+pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
@@ -20,27 +20,22 @@ __default_suffix="-3.1"
 #__proxy_suffix="-7.1"
 #__shim_suffix="-7.1"
 #__ksm_throttler_suffix="-7.1"
-#__img_suffix="-7.1"
-__img_sha="8a4d901772"
-#__linux_container_suffix="-7.1"
 
 source=(
   "${__dlbase}/kata-runtime-${pkgver}${__runtime_suffix:-${__default_suffix}}.${CARCH}.rpm"
   "${__dlbase}/kata-proxy-bin-${pkgver}${__proxy_suffix:-${__default_suffix}}.${CARCH}.rpm"
   "${__dlbase}/kata-shim-bin-${pkgver}${__shim_suffix:-${__default_suffix}}.${CARCH}.rpm"
   "${__dlbase}/kata-ksm-throttler-${pkgver}${__ksm_throttler_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-containers-image-${pkgver}${__img_suffix:-${__default_suffix}}.${CARCH}.rpm"
-  "${__dlbase}/kata-linux-container-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.${CARCH}.rpm"
+  "https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz"
 )
 
-# sha256sum kata-{runtime,{proxy,shim}-bin,ksm-throttler,containers-image,linux-container}-*.rpm | awk '{print $1}' | xargs -n1 -I{} -- echo "'{}'"
+# sha256sum kata-{runtime,{proxy,shim}-bin,ksm-throttler}-*.rpm | awk '{print $1}' | xargs -n1 -I{} -- echo "'{}'"
 sha256sums=(
   '5ba7a425d583a26860085bf3812b258b13f87495ccc769b12a9bbe289cbd1364'
   '9e986dc42483509e69f7fd6e22dd6e00fc1aa6c60890aeb4fb9e0552ed9bcce7'
   '512d515b6744aa7fbe91be7c388b4066c0443a3521649d2c44f43af9abc97ffc'
   'a947effca82fd01f944418c94fb712684fafc65d4edf1aa3683617d0c80a15c1'
-  'e4938b9782e56adb91790f7082d56bd8a3dee6008642bbae987bceebaf3d5361'
-  'd8c8c4dab6d304c67aa93028e6f5fe9152820aea4ae8c16810e28d77972eabfb'
+  '619c413c63c9e03837a433112f9432adf1bef69224b352ada2bdd0100f5a5a53'
 )
 
 package_kata-runtime-bin() {
@@ -85,20 +80,24 @@ package_kata-ksm-throttler-bin() {
   install -d -m 0755 ${pkgdir}/var/lib/vc/{firecracker,sbs,uuid}
 }
 
-package_kata-containers-image-bin() {
-  conflicts=('kata-containers-image')
-  provides=('kata-containers-image')
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_${__img_sha}.img
-  ln -sf kata-containers-image_clearlinux_${_pkgver}_agent_${__img_sha}.img ${pkgdir}/usr/share/kata-containers/kata-containers.img
-  install -D -m 0664 {${srcdir},${pkgdir}}/usr/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_${__img_sha}.initrd
-  ln -sf kata-containers-initrd_alpine_${_pkgver}_agent_${__img_sha}.initrd ${pkgdir}/usr/share/kata-containers/kata-containers-initrd.img
+package_kata-containers-image(){
+  install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
+    ${srcdir}/opt/kata/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_*.img \
+    ${srcdir}/opt/kata/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd
+  cd "${pkgdir}/usr/share/kata-containers/"
+  ln -s kata-containers-image_clearlinux_${_pkgver}_agent_*.img kata-containers.img
+  ln -s kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd kata-containers-initrd.img
 }
 
-package_kata-linux-container-bin() {
-  conflicts=('kata-linux-container')
-  provides=('kata-linux-container')
-  for i in vmlinu{x,z}; do
-    install -D -m 0644 {${srcdir},${pkgdir}}/usr/share/kata-containers/${i}-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.container
-    ln -sf ${i}-${__linux_container_ver}${__linux_container_suffix:-${__default_suffix}}.container ${pkgdir}/usr/share/kata-containers/${i}.container
-  done
+package_kata-linux-container(){
+  install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
+    ${srcdir}/opt/kata/share/kata-containers/config-* \
+    ${srcdir}/opt/kata/share/kata-containers/vmlinux-* \
+    ${srcdir}/opt/kata/share/kata-containers/vmlinuz-*
+  cd "${pkgdir}/usr/share/kata-containers/"
+  ln -sf vmlinux-virtio-fs-* vmlinux-virtiofs.container
+  ln -sf vmlinuz-virtio-fs-* vmlinuz-virtiofs.container
+  # bash-specific behavior?
+  ln -s vmlinux-[0-9].[0-9]* vmlinux.container
+  ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
 }
