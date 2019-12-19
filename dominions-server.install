@@ -1,0 +1,55 @@
+post_install() {
+  post_upgrade
+
+  systemctl daemon-reload
+}
+
+post_upgrade() {
+  if hash systemd-sysusers &> /dev/null; then
+    systemd-sysusers dominions.conf
+  fi
+
+  if hash systemd-tmpfiles &> /dev/null; then
+    systemd-tmpfiles --create dominions.conf
+  fi
+
+  mkdir -p /opt/dominions
+  mkdir -p /usr/share/dominions/config
+  mkdir -p /usr/share/dominions/maps
+  mkdir -p /var/log/dominions
+
+  chown dominions:dominions /usr/bin/dominions-server
+  chown -R dominions:dominions /usr/share/dominions
+  chown -R dominions:dominions /opt/dominions
+  chown -R dominions:dominions /var/log/dominions
+
+  cat <<EOF
+
+Post-install tasks:
+
+Install Dominions 5 for the server user using SteamCMD:
+
+  dominions install
+
+You will need your login information and a valid Dominions 5 CD key. SteamCMD may ask you to validate via Steam Guard.
+
+To begin setting up hosting, run 'dominions' without arguments for more information.
+EOF
+}
+
+post_remove() {
+  if systemctl is-active dominions-server &> /dev/null; then
+    systemctl stop dominions-server &> /dev/null
+  fi
+
+  systemctl daemon-reload &> /dev/null
+  systemctl reset-failed &> /dev/null
+
+  userdel dominions &> /dev/null
+
+  if [[ -s /usr/share/dominions/current ]]; then
+    rm /usr/share/dominions/current &> /dev/null
+  fi
+
+  rm -rf /run/dominions &> /dev/null
+}

@@ -1,4 +1,4 @@
-sudo pacman -R dom4-server <<< "Y"
+sudo pacman -R dominions-server <<< "Y"
 updpkgsums
 makepkg -cf
 makepkg --printsrcinfo > .SRCINFO

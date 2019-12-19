@@ -1,0 +1,282 @@
+#!/bin/bash
+
+# List all configured games.
+function list {
+  ls /usr/share/dominions/config | cut -d "." -f 1
+  echo
+
+  if [[ -s /usr/share/dominions/current ]]; then
+    echo "Currently hosting:"
+    echo $(</usr/share/dominions/current)
+  else
+    echo "Not hosting any games."
+  fi
+}
+
+# Install Dominions via SteamCMD.
+function install {
+  if [ ! $(find /opt/dominions -maxdepth 0 -type d -empty 2>/dev/null) ];then
+    echo "/opt/dominions is not empty. Is Dominions already installed?"
+    exit 0
+  fi
+
+  read -r -p "Steam username: " user
+  read -r -s -p "Steam password: " pass
+
+  echo
+  echo "Installing Dominions to /opt/dominions..."
+
+  sudo -u dominions steamcmd +login "$user" "$pass" +force_install_dir /opt/dominions +app_update 722060 validate +quit
+
+  read -r -p "Enter your Dominions license key: " key
+  echo "$key" | sudo -u dominions tee /opt/dominions/dom5key > /dev/null
+
+  echo "Copied license information to Dominions install directory."
+  echo "Installation complete. Use 'dominions config' to set up a game."
+}
+
+# Change the current hosted game by editing /usr/share/dominions/current.
+# Params:
+#   $1  game name
+function change {
+  if [[ -s /usr/share/dominions/current ]]; then
+    game=$(</usr/share/dominions/current)
+
+    if [[ $1 != "$game" ]]; then
+      read -r -n 2 -p "Currently hosting $game. Set up to host $1 instead? [Y/n] " ovr
+      if [[ $(echo "$ovr" | tr '[:upper:]' '[:lower:]') != y ]]; then
+        exit 0
+      fi
+      echo
+    fi
+  fi
+
+  echo "Setting $1 up for hosting."
+  echo
+  echo "$1" | sudo -u dominions tee /usr/share/dominions/current > /dev/null
+}
+
+# Load a properties file.
+# Params:
+#   $1  path to properties file
+function config {
+  if [[ -z $1 ]]; then
+    cat <<EOF
+Usage:
+
+  dominions config mygame
+EOF
+    exit 1
+  fi
+
+  if [[ -s "/usr/share/dominions/config/$1.properties" ]]; then
+    read -r -n 2 -p "$1 is already configured. Edit this game? [Y/n] " ovr
+    if [[ $(echo "$ovr" | tr '[:upper:]' '[:lower:]') != y ]]; then
+      exit 0
+    fi
+
+    echo
+  else
+    newgame=true
+    cat << EOF | sudo -u dominions tee "/usr/share/dominions/config/$1.properties" > /dev/null
+# See http://www.illwinter.com/dom5/startoptions.pdf for a full reference.
+# Sections 3-5, 3-6, and 3-7 are especially relevant. Switches should be
+# reproduced as given in the documentation, without any leading dashes (so to
+# pass the '--era 1' setting to the server, include the line 'era 1' in this
+# file).
+
+# SERVER INFO
+
+# Port number must be between 1024 and 65535, and forwarded in your router
+# config. Master password is not required but useful if you want to be able to
+# set dropped-out players to computer control.
+
+port 6666
+masterpass supersecure
+
+# GAME SETTINGS
+
+# The mapfile is required. Any .rgb or image files must have the same filename
+# and differ only in extension since the map data is automatically copied over.
+
+mapfile my_pretty_world.map
+hours 26
+era 1
+renaming
+storyevents
+hofsize 15
+requiredap 13
+thrones 2 8 1
+EOF
+  fi
+
+  sudo -u dominions "${EDITOR:-nano}" "/usr/share/dominions/config/$1.properties"
+
+  mapfile=$(grep -oP "^mapfile\s+\K.+" "/usr/share/dominions/config/$1.properties")
+  mapname=$(basename "$mapfile" .map)
+
+  if [ "$newgame" = true ]; then
+    if [[ -s "/usr/share/dominions/maps/$mapname.map" ]]; then
+      echo "Found existing $mapname.map"
+    elif [[ -s "$mapname.map" ]]; then
+      echo "Copying $mapname map files..."
+
+      sudo cp "$mapname".* /usr/share/dominions/maps
+    elif [[ -s "$HOME/dominions/maps/$mapname".map ]]; then
+      echo "Copying $mapname map files from $HOME/dominions/maps..."
+
+      sudo cp "$HOME/dominions/maps/$mapname".* /usr/share/dominions/maps
+    else
+      echo "Could not find $mapname.map in $(pwd) or $HOME/dominions/maps. Please ensure the map file(s) exist in one or the other location and try again."
+
+      exit 1;
+    fi
+
+    echo
+
+    change "$1"
+
+    cat <<EOF
+Done. Start the service to let players upload their pretenders.
+
+  sudo systemctl start dominions-server.service
+
+Once all pretenders have been uploaded, stop the service and set the game to ready.
+
+  dominions ready
+EOF
+  else
+    change "$1"
+
+    cat <<EOF
+Done. Restart the service to load the new configuration:
+
+  sudo systemctl restart dominions-server.service
+EOF
+  fi
+}
+
+# Set game start flag in properties file.
+# Params:
+#   $1  game name (optional; uses whatever's in current if not supplied)
+function ready {
+  if [[ ! -z $1 ]]; then
+    if [[ ! -s "/usr/share/dominions/config/$1.properties" ]]; then
+      echo "No game named '$1' found."
+
+      exit 1
+    fi
+
+    change "$1"
+  elif [[ ! -s /usr/share/dominions/current ]]; then
+    echo "No game configured. Use 'dominions config' to set up a game."
+
+    exit 1
+  fi
+
+  game=$(</usr/share/dominions/current)
+
+  if [[ ! -d "/usr/share/dominions/savedgames/$game" ]]; then
+    echo "No pretenders uploaded for $game. Start the service with systemctl to let players upload."
+
+    exit 1
+  fi
+
+  if [[ -s "/usr/share/dominions/savedgames/$game/ftherlnd" ]]; then
+    echo "$game has already been started. If the service is not running, start it with systemctl."
+
+    exit 0
+  fi
+
+  players=$(ls -l /usr/share/dominions/savedgames/$game/*.2h | wc -l)
+
+  if grep -qE "uploadtime|uploadmaxp" "/usr/share/dominions/config/$game.properties" ; then
+    echo "Upload flag already set for $game. Start the service with systemctl."
+
+    exit 0
+  fi
+
+  echo "Setting start flag for $game ($players players)"
+
+  echo "uploadmaxp $players" | sudo -u dominions tee -a "/usr/share/dominions/config/$game.properties" > /dev/null
+
+  cat <<EOF
+
+Flag set. Start or restart the dominions-server service to begin the game.
+
+  sudo systemctl restart dominions-server.service
+
+You may wish to enable it as well to ensure it restarts on boot.
+EOF
+}
+
+function delete {
+  if [[ -z $1 ]]; then
+    echo "Specify a game name to delete."
+    exit 0
+  fi
+
+  if [[ -s /usr/share/dominions/current ]]; then
+    game=$(</usr/share/dominions/current)
+
+    if [[ "$game" = "$1" ]]; then
+      read -r -n 2 -p "$game is currently being hosted. Really delete? [Y/n] " ovr
+      if [[ $(echo "$ovr" | tr '[:upper:]' '[:lower:]') != y ]]; then
+        exit 0
+      fi
+
+      sudo -u dominions rm /usr/share/dominions/current
+    fi
+  fi
+
+  # leave the mapfile in case something else is using it
+  sudo -u dominions rm "/usr/share/dominions/config/$1.properties"
+  sudo -u dominions rm -rf "/usr/share/dominions/savedgames/$1"
+
+  echo "Deleted $1."
+}
+
+case $1 in
+  "list")
+    list
+    ;;
+
+  "install")
+    install
+    ;;
+
+  "config" | "configure")
+    config "${@:2}"
+    ;;
+
+  "ready")
+    ready "${@:2}"
+    ;;
+
+  "delete")
+    delete "${@:2}"
+    ;;
+
+  *)
+    cat <<EOF
+Dominions Headless Server Interface
+
+This program manages Dominions installation and configuration for the headless server. Multiple games may be configured, but only one game can be actively hosted at once -- this is a true multiplayer server rather than a PBEM setup.
+
+The headless server itself is a systemd service and can be managed via systemctl.
+
+Usage:
+  dominions install        Install Dominions through SteamCMD
+  dominions list           List configured games
+  dominions config mygame  Configure a new game, or edit an existing one
+  dominions ready mygame   Sets the start flag for mygame after all pretenders have been uploaded
+  dominions delete mygame  Deletes mygame (this operation is irreversible!)
+
+Service commands:
+  sudo systemctl start dominions-server.service
+  sudo systemctl stop dominions-server.service
+  sudo systemctl restart dominions-server.service
+  systemctl status dominions-server.service
+EOF
+    ;;
+esac

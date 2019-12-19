@@ -1,0 +1,35 @@
+#!/bin/bash
+
+if [[ ! -s /usr/share/dominions/current ]]; then
+  echo "No game configured. Use 'dominions config' to set up a game."
+  exit 1
+fi
+
+game=$(</usr/share/dominions/current)
+
+if [[ ! -s /usr/share/dominions/config/$game.properties ]]; then
+  echo "Tried to load $game but configuration file is missing."
+  exit 1
+fi
+
+# Load config
+
+config="--tcpserver --textonly --noclientstart"
+
+while read -r line; do
+  if [[ -n $line && ! $line = \#* ]]; then
+    echo "Setting $line"
+
+    config="$config --$line"
+  fi
+done < "/usr/share/dominions/config/$game.properties"
+
+# Start server
+
+export DOM5_CONF=/usr/share/dominions
+
+echo "Final configuration:"
+echo "$config"
+echo "Starting game..."
+
+exec sh /opt/dominions/dom5.sh $config "$game" > /var/log/dominions/dominions.log

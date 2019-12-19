@@ -1,11 +1,11 @@
 [Unit]
-Description=Dominions 4 Headless Server
+Description=Dominions Headless Server
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/dom4-server
+ExecStart=/usr/bin/dominions-server
 Type=simple
-User=dom4
+User=dominions
 
 [Install]
 WantedBy=multi-user.target
