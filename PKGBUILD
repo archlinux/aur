@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python2-easyprocess
 pkgname=('python2-easyprocess' 'python-easyprocess-doc')
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="EasyProcess is an easy to use python subprocess interface."
 arch=('any')
 url="http://easyprocess.readthedocs.io/en/latest/"
 license=('BSD')
-makedepends=('python2' 'python2-setuptools' 'python2-sphinx')
+makedepends=('python2-setuptools' 'python2-sphinx')
 source=("https://files.pythonhosted.org/packages/source/E/EasyProcess/EasyProcess-${pkgver}.tar.gz")
-md5sums=('2e24425df68b9c6ca723b0a3dcdfce5a')
+md5sums=('2f41d0b795671e648ffb8e54bbe9e31b')
 
 build() {
     cd ${srcdir}/EasyProcess-${pkgver}
@@ -20,7 +20,7 @@ build() {
 }
 
 package_python2-easyprocess() {
-    depends=('python2>=2.6' 'python2-setuptools')
+    depends=('python2>=2.7' 'python2-setuptools')
     optdepends=('python-easyprocess-doc: Documentation for EasyProcess')
     cd ${srcdir}/EasyProcess-${pkgver}
 
@@ -33,6 +33,7 @@ package_python-easyprocess-doc() {
     pkgdesc="Documentation for EasyProcess"
     cd ${srcdir}/EasyProcess-${pkgver}/build/sphinx
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.txt
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
