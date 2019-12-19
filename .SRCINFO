@@ -1,4 +1,4 @@
-pkgbase = zsh-completion-generator-git
+pkgbase = zsh-completion-generator
 	pkgdesc = Plugin that generates completion functions automatically from getopt-style help texts.
 	pkgver = r35.6eb6392
 	pkgrel = 1
