@@ -17,9 +17,9 @@ makedepend=('gambas3-devel')
 source=(https://gitlab.com/psposito/EortologioGambas3/uploads/4e8e92be401b920a867e3827af71fe7b/EortologioQt5-1.0.10.tar.bz2\
         https://gitlab.com/psposito/EortologioGambas3/blob/master/gambas3-eortologioqt5.desktop\
         https://gitlab.com/psposito/EortologioGambas3/blob/master/EortologioQt5.png)
-md5sums=('3594940f64ebe5a1aeabe98b8283274a'
-	 '3ded13947160f69ea83bc9e6a2e21faf'
-         '74c4a34aef05e8666ba7554a5ac597eb')
+sha256sums=('af0e7102cfb8b602300fe137288ffd33fca3c7759eba4330c17923d1e57120ff'
+           'ba0179a3288933b78c7b5a46a07ac4045031891ed64ffbe05ee0f5684ea076a5'  
+           'e1436aa73c94159fa515477d5e76de9c7ed9bc9ca97a2fcbdb06e505ca77c88e')
 
 build() {
   cd "$srcdir/$_realname/"
