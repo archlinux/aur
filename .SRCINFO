@@ -1,18 +1,12 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
 	pkgver = 1.10.0~rc0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-runtime-1.10.0~rc0-3.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-proxy-bin-1.10.0~rc0-3.1.x86_64.rpm
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-shim-bin-1.10.0~rc0-3.1.x86_64.rpm
 	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-ksm-throttler-1.10.0~rc0-3.1.x86_64.rpm
 	source = https://github.com/kata-containers/runtime/releases/download/1.10.0-rc0/kata-static-1.10.0-rc0-x86_64.tar.xz
-	sha256sums = 5ba7a425d583a26860085bf3812b258b13f87495ccc769b12a9bbe289cbd1364
-	sha256sums = 9e986dc42483509e69f7fd6e22dd6e00fc1aa6c60890aeb4fb9e0552ed9bcce7
-	sha256sums = 512d515b6744aa7fbe91be7c388b4066c0443a3521649d2c44f43af9abc97ffc
 	sha256sums = a947effca82fd01f944418c94fb712684fafc65d4edf1aa3683617d0c80a15c1
 	sha256sums = 619c413c63c9e03837a433112f9432adf1bef69224b352ada2bdd0100f5a5a53
 
