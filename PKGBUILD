@@ -8,7 +8,7 @@
 
 # Maintainer: geekbeat <geekbeat@bitbucket.org>
 pkgname=inotify-daemon # '-bzr', '-git', '-hg' or '-svn'
-pkgver=20191212.1.r1.gba16a8c
+pkgver=20191219.2.r0.gc99fc44
 pkgrel=1
 pkgdesc="A daemon to trigger system-tasks upon preconfigured inotify-events."
 arch=('i686' 'x86_64')

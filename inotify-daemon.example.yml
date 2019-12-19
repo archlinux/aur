@@ -1,6 +1,5 @@
 # This is an example. For a more complete  list of what is possible
-# see  /opt/inotify-daemon/README.md
-# or consult the man-pages
+# consult the man-pages(inotify-daemon, inotify-daemon.service)
 ---
 - path: /etc
   action:
