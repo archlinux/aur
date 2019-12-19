@@ -20,7 +20,7 @@ pkgver () {
 }
 build() {
   cd img
-  echo $GOPROXY
+  export GOFLAGS=-mod=vendor
   make BUILDTAGS="seccomp noembed"
 }
 
