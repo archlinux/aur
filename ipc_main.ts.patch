@@ -1,9 +1,9 @@
-@@ -74,7 +74,7 @@
+@@ -81,7 +81,7 @@
        });
    });
  
 -  onMessageFromBrowserWindow('minimize-me', () => withHomeWindow(w => w.hide()));
 +  onMessageFromBrowserWindow('minimize-me', () => withHomeWindow(w => w.minimize()));
  
-   onMessageFromBrowserWindow('set-setting-autorun', newAutorun => {
-     const settings = settingsStore.get();
+   onMessageFromBrowserWindow('open-link', link => {
+     shell.openExternal(link).catch(err => {
