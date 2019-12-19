@@ -1,7 +1,7 @@
 pkgbase = zmeventnotification-git
 	pkgdesc = Event Notification Server sits along with ZoneMinder and offers real time notifications, support for push notifications as well as Machine Learning powered recognition + hooks
-	pkgver = v4.6.1.r20.gf70308a
-	pkgrel = 3
+	pkgver = v4.6.1.r58.geab8548
+	pkgrel = 4
 	url = https://github.com/pliablepixels/zmeventnotification
 	arch = x86_64
 	license = GPL

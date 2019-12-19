@@ -2,8 +2,8 @@
 
 pkgname=zmeventnotification-git
 _pkgname=zmeventnotification
-pkgver=v4.6.1.r20.gf70308a
-pkgrel=3
+pkgver=v4.6.1.r58.geab8548
+pkgrel=4
 pkgdesc='Event Notification Server sits along with ZoneMinder and offers real time notifications, support for push notifications as well as Machine Learning powered recognition + hooks'
 arch=('x86_64')
 url='https://github.com/pliablepixels/zmeventnotification'
@@ -38,29 +38,9 @@ pkgver() {
 
 prepare () {
     cd $_pkgname
-    #objectconfig.ini
-    sed -i "s|/etc/zm|/etc/zoneminder|" hook/objectconfig.ini
-    sed -i "s|/var/lib/zmeventnotification/models|/opt/zmeventnotification/models|" hook/objectconfig.ini
-    sed -i "s|models=yolo,face|models=yolo|" hook/objectconfig.ini
-
-    #zmeventnotification.ini
-    sed -i "s|/etc/zm|/etc/zoneminder|" zmeventnotification.ini
-    sed -i "s|/var/lib/zmeventnotification/bin/zm_detect_wrapper.sh|/opt/zmeventnotification/bin/zm_detect_wrapper.sh|" zmeventnotification.ini
-    sed -i "s|/etc/apache2/ssl/yourportal|/etc/ssl/private|"  zmeventnotification.ini
 
     #secrets.ini
     sed -i "s|ZM_PORTAL=https://portal/zm|ZM_PORTAL=http://127.0.0.1:8095|" secrets.ini
-    sed -i "s|URL=https://portal/zm|ZM_PORTAL=http://your_website|" secrets.ini
-
-    #zm_detect_wrapper.sh
-    sed -i "s|/etc/zm|/etc/zoneminder|" hook/zm_detect_wrapper.sh
-    sed -i "s|/var/lib|/opt|" hook/zm_detect_wrapper.sh
-
-    #zmeventnotification.pl
-    sed -i "s|/etc/zm/zmeventnotification.ini|/etc/zoneminder/zmeventnotification.ini|" zmeventnotification.pl
-
-    #zm_train_faces.py
-    sed -i "s|/etc/zm/objectconfig.ini|/etc/zoneminder/objectconfig.ini|" hook/zm_train_faces.py
 }
 
 build() {
@@ -75,18 +55,19 @@ package() {
 
     #Folder structure
     mkdir -p "${pkgdir}/var/lib/zmeventnotification/push" 2>/dev/null
-    mkdir -p "${pkgdir}/opt/zmeventnotification/bin" 2>/dev/null
+    mkdir -p "${pkgdir}/var/lib/zmeventnotification/bin" 2>/dev/null
     mkdir -p "${pkgdir}/var/lib/zmeventnotification/images" 2>/dev/null
     mkdir -p "${pkgdir}/var/lib/zmeventnotification/known_faces" 2>/dev/null
-    mkdir -p "${pkgdir}/opt/zmeventnotification/misc" 2>/dev/null
+    mkdir -p "${pkgdir}/var/lib/zmeventnotification/misc" 2>/dev/null
 
     #Yolo
-    install -Dm644 ${srcdir}/yolo* --target-directory "${pkgdir}/opt/zmeventnotification/models/yolov3/"
+    install -Dm644 ${srcdir}/yolo* --target-directory "${pkgdir}/var/lib/zmeventnotification/models/yolov3/"
 
     #ML Hooks
-    install -Dm 755 hook/zm_detect_wrapper.sh "${pkgdir}/opt/zmeventnotification/bin/zm_detect_wrapper.sh"
-    install -Dm 755 hook/zm_detect.py "${pkgdir}/opt/zmeventnotification/bin/zm_detect.py"
-    install -Dm 755 hook/zm_train_faces.py "${pkgdir}/opt/zmeventnotification/bin/zm_train_faces.py"
+    install -Dm 755 hook/zm_event_start.sh "${pkgdir}/var/lib/zmeventnotification/bin/zm_event_start.sh"
+    install -Dm 755 hook/zm_event_end.sh "${pkgdir}/var/lib/zmeventnotification/bin/zm_event_end.sh"
+    install -Dm 755 hook/zm_detect.py "${pkgdir}/var/lib/zmeventnotification/bin/zm_detect.py"
+    install -Dm 755 hook/zm_train_faces.py "${pkgdir}/var/lib/zmeventnotification/bin/zm_train_faces.py"
     cd hook
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     cd ..
@@ -101,6 +82,9 @@ package() {
 
     #webserver should access
     chown -R http:http "${pkgdir}/var/lib/zmeventnotification"
+
+    #symbolic link /etc/zm to /etc/zoneminder
+    ln -s "/etc/zoneminder" "${pkgdir}/etc/zm"
 
     #Notes
     #Disabled SSL and Authnetication in zmeventnotificaiton.ini
