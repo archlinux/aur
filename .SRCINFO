@@ -1,0 +1,26 @@
+pkgbase = gnome-maps-git
+	pkgdesc = A simple GNOME 3 maps application
+	pkgver = 3.35.2+5+g00e18e1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Maps
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = geocode-glib
+	depends = geoclue2
+	depends = gjs
+	depends = libchamplain
+	depends = libgee
+	depends = folks
+	depends = gfbgraph
+	provides = gnome-maps
+	conflicts = gnome-maps
+	source = git+https://gitlab.gnome.org/GNOME/gnome-maps.git
+	sha256sums = SKIP
+
+pkgname = gnome-maps-git
+
