@@ -6,12 +6,13 @@
 
 pkgname=f2c
 pkgver=20191129
-pkgrel=1
+pkgrel=2
 pkgdesc='Fortran to C code translator'
 url='http://www.netlib.org/f2c/index.html'
 license=('custom')
 arch=('x86_64')
-depends=('gcc-libs')
+depends=('glibc')
+makedepends=('unzip')
 source=("https://www.netlib.org/f2c/src.tgz"
         "https://www.netlib.org/f2c/libf2c.zip")
 noextract=("libf2c.zip")
