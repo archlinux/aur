@@ -8,13 +8,10 @@ arch=(any)
 url="http://wps-community.org/"
 license=(custom)
 depends=('fontconfig' 'xorg-font-utils')
-source=("http://kdl.cc.ksosoft.com/wps-community/download/fonts/${pkgname}_${pkgver}_all.deb")
-sha256sums=('497481e27a2fbb7899c9b030f978372e17467ba332c958c2fd9d1a76ec4e40df')
-
-prepare() {
-    tar -Jxf data.tar.xz
-}
+#source=("http://kdl.cc.ksosoft.com/wps-community/download/fonts/${pkgname}_${pkgver}_all.deb")
+source=("https://github.com/Universebenzene/wps-office-fonts/archive/v${pkgver}.tar.gz")
+sha256sums=('db01fc07324115b181cb06f50dfe09fd17feee132c46423ee70b260830211224')
 
 package() {
-    install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" "${srcdir}/usr/share/fonts/${pkgname%-fonts}"/*.TTF
+    install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname%-fonts}" "${pkgname}-${pkgver}"/*.TTF
 }

@@ -6,3 +6,4 @@ pkg
 *.part
 *.pkg.tar.xz
 *.deb
+*.log

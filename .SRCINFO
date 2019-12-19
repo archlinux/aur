@@ -7,8 +7,8 @@ pkgbase = wps-office-fonts
 	license = custom
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb
-	sha256sums = 497481e27a2fbb7899c9b030f978372e17467ba332c958c2fd9d1a76ec4e40df
+	source = https://github.com/Universebenzene/wps-office-fonts/archive/v1.0.tar.gz
+	sha256sums = db01fc07324115b181cb06f50dfe09fd17feee132c46423ee70b260830211224
 
 pkgname = wps-office-fonts
 
