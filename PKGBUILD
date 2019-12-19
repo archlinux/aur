@@ -1,7 +1,7 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=libbass
 pkgver=2.4.15
-pkgrel=1
+pkgrel=2
 pkgdesc="BASS audio library"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="http://www.un4seen.com/"
@@ -14,11 +14,11 @@ sha256sums=('65a85873f5c6057abe947e17616bd4e0de858ce42bb74f5f9716ea53e1571b25'
             'f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83')
 
 source_armv6h=("$pkgname-$pkgver-arm.zip::http://dl.un4seen.com/stuff/bass24-linux-arm.zip")
-sha256sums_armv6h=('d59d58b5dbecab4e38848abb355368ea4ea6ed78e9a5a41164d1347bc844aea4')
+sha256sums_armv6h=('8608083083e9394a3716b9fe2ed445c7fc18cc446b522b1e45f82a00a381eebb')
 source_armv7h=("$pkgname-$pkgver-arm.zip::http://dl.un4seen.com/stuff/bass24-linux-arm.zip")
-sha256sums_armv7h=('d59d58b5dbecab4e38848abb355368ea4ea6ed78e9a5a41164d1347bc844aea4')
+sha256sums_armv7h=('8608083083e9394a3716b9fe2ed445c7fc18cc446b522b1e45f82a00a381eebb')
 source_aarch64=("$pkgname-$pkgver-arm.zip::http://dl.un4seen.com/stuff/bass24-linux-arm.zip")
-sha256sums_aarch64=('d59d58b5dbecab4e38848abb355368ea4ea6ed78e9a5a41164d1347bc844aea4')
+sha256sums_aarch64=('8608083083e9394a3716b9fe2ed445c7fc18cc446b522b1e45f82a00a381eebb')
 
 build () {
     unzip -q "$pkgname-$pkgver.zip" -d "$srcdir/$pkgname-$pkgver"
