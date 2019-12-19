@@ -9,12 +9,11 @@ arch=('x86_64' 'i686')
 url="http://www.openss7.org"
 license=('AGPL3')
 depends=('binutils')
-makedepends=('doxygen' 'gcc-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
+makedepends=('doxygen' 'gcc6-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'gnupg' 'gnuplot' 'imagemagick' 'latex2html' 'linux'
 	     'linux-headers' 'linux-lts' 'linux-lts-headers' 'lsof'
 	     'net-snmp' 'openssl' 'swig' 'systemd' 'tcl' 'texlive-bin'
-	     'texlive-core' 'transfig' 'gawk' 'java-environment' 'lm_sensors'
-             'popt' 'zip' 'git')
+	     'texlive-core' 'transfig' 'gawk' 'classpath' 'popt' 'zip' 'git')
 conflicts=("$_pkgbase" 'strigi')
 options=('!emptydirs' '!distcc' '!makeflags')
 #source=("$pkgbase::git+file:///u2/git/monavacon.git")
@@ -43,9 +42,17 @@ build() {
   _mpost_file=../$CARCH-modpost.cache
   _cache_file=../$CARCH-config.cache
 
-  _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
+  _knm="-lts"
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="${_kvv:-4.19.84-1}"
+  _kvr="${_kvv:+${_kvv}${_knm}}"
+  _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 
   ./configure \
+      KCC="gcc" \
+      GCJ="gcj" \
+      CXX="g++-6" \
       CPPFLAGS="$CPPFLAGS" \
       CFLAGS="$CFLAGS" \
       CXXFLAGS="$CXXFLAGS" \
@@ -70,6 +77,7 @@ build() {
       --enable-k-weak-modules \
       --disable-specfs-lock \
       --with-k-release=$_kvr \
+      --with-k-subdir=extramodules/openss7 \
       --with-k-optimize=speed \
       --with-optimize=speed \
       --with-gnu-ld \
@@ -85,6 +93,9 @@ build() {
   _cache_file=../$CARCH-$_kvr-config.cache
 
   ./configure \
+      KCC="gcc" \
+      GCJ="gcj" \
+      CXX="g++-6" \
       CPPFLAGS="$CPPFLAGS" \
       CFLAGS="$CFLAGS" \
       CXXFLAGS="$CXXFLAGS" \
@@ -110,12 +121,13 @@ build() {
       --enable-k-weak-modules \
       --disable-specfs-lock \
       --with-k-release=$_kvr \
+      --with-k-subdir=extramodules/openss7 \
       --with-k-optimize=speed \
       --with-optimize=speed \
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
-  make
+  make -j1
 
   cd "$srcdir/openss7-modules-git"
 
@@ -126,6 +138,9 @@ build() {
   _cache_file=../$CARCH-$_kvr-config.cache
 
   ./configure \
+      KCC="gcc" \
+      GCJ="gcj" \
+      CXX="g++-6" \
       CPPFLAGS="$CPPFLAGS" \
       CFLAGS="$CFLAGS" \
       CXXFLAGS="$CXXFLAGS" \
@@ -151,12 +166,13 @@ build() {
       --enable-k-weak-modules \
       --disable-specfs-lock \
       --with-k-release=$_kvr \
+      --with-k-subdir=extramodules/openss7 \
       --with-k-optimize=speed \
       --with-optimize=speed \
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
-  make
+  make -j1
 }
 
 package_openss7-git() {
@@ -165,7 +181,8 @@ package_openss7-git() {
           'etc/sock2path.d/openss7')
   provides=("$_pkgbase")
   conflicts=("$_pkgbase" 'strigi' 'lksctp-tools' 'strace')
-  depends=('net-snmp' 'gawk' 'lm_sensors' 'popt')
+  depends=('net-snmp' 'gawk' 'popt')
+  depends_x86_64=('lib32-glibc')
   optdepends=('perl-tk: for graphical utilities'
               'gtkdialog: for graphical utilities')
   options=('!emptydirs' 'strip' '!zipman')
@@ -196,9 +213,12 @@ package_openss7-git() {
 }
 
 package_openss7-modules-git() {
-  _kvv="$(pacman -Qi linux|awk '/^Version/{print$3}')"
-  _kvr="${_kvv}-ARCH"
-  _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
+  _knm=""
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="${_kvv:-5.3.11.1-1}"
+  _kvr="${_kvv:+${_kvv}${_knm}}"
+  _kvx="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*,,')"
   _kvn="$(echo $_kvr | sed -e 's,-.*$,,')"
   _kvl="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*$,,')"
   _kvi="$(echo $_kvl | sed -e 's,.*\.,,')"
@@ -211,43 +231,40 @@ package_openss7-modules-git() {
   depends=("$pkgbase" "linux=$_kvv")
 # depends=("$pkgbase" "linux>=$_kvl" "linux<$_kvu")
   options=('!emptydirs' '!strip')
-  install="openss7-modules-git.install"
 
   cd "$srcdir"/openss7-modules-git
   make DESTDIR="$pkgdir" install-strip
   rm -fr "$pkgdir/usr/bin"
   rm -fr "$pkgdir/usr/lib/openss7"
   rm -fr "$pkgdir/usr/share/doc"
-  d="$pkgdir/usr/src/$_pkgbase-$pkgver-$pkgrel/$_kvr"
+  d="$pkgdir/usr/lib/modules/${_kvr}/build/openss7"
   install -d "$d"
-  b="$pkgdir/boot"
-  install -d "$b"
-  install -m644 ../$CARCH-$_kvr-config.cache     "$d"
   install -m644 ../$CARCH-config.site            "$d"
   install -m644 ../$CARCH-$_kvr-modpost.cache    "$d"
+  install -m644 ../$CARCH-$_kvr-config.cache     "$d"
   install -m644 Module.mkvars                    "$d"
   install -m644 System.symvers                   "$d"
   install -m644 Module.symvers                   "$d"
   install -m644 config.h                         "$d"
   cat System.symvers Module.symvers | gzip -9 -c >symvers-${_kvr}.gz
   install -m644 symvers-${_kvr}.gz               "$d"
-  install -m644 symvers-${_kvr}.gz               "$b"
   cat Module.symvers|awk '{print$4"\t"$3"\t"$1"\t"$2}' >abi-${_kvr}
   install -m644 abi-${_kvr}                      "$d"
-  install -m644 abi-${_kvr}                      "$b"
   install -m644 symsets-${_kvr}.tar.gz           "$d"
-  install -m644 symsets-${_kvr}.tar.gz           "$b"
-  install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-ARCH
-  mv -f "$pkgdir"/usr/lib/modules/${_kvr}/updates/openss7 \
-        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-ARCH
-  install -d "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
-  mv -f "$pkgdir"/usr/src/${_pkgbase}-$pkgver-$pkgrel/$_kvr \
-        "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
+# install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
+# mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
+#       "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
+  install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
+  ln -s ../lib/modules/${_kvr}/build/openss7 \
+        "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
 }
 
 package_openss7-modules-lts-git() {
-  _kvv="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')"
-  _kvr="${_kvv}-lts"
+  _knm="-lts"
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="${_kvv:-4.19.84-1}"
+  _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
   _kvn="$(echo $_kvr | sed -e 's,-.*$,,')"
   _kvl="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*$,,')"
@@ -259,20 +276,17 @@ package_openss7-modules-lts-git() {
             "$_pkgbase-kernel=$pkgver"
             "$_pkgbase-modules-lts=$pkgver")
   conflicts=("$_pkgbase-modules-lts")
-  depends=("$pkgbase" "linux-lts=$_kvv")
-# depends=("$pkgbase" "linux-lts>=$_kvl" "linux-lts<$_kvu")
+  depends=("$pkgbase" "linux${_knm}=$_kvv")
+# depends=("$pkgbase" "linux${_knm}>=$_kvl" "linux${_knm}<$_kvu")
   options=('!emptydirs' '!strip')
-  install="openss7-modules-lts-git.install"
 
   cd "$srcdir"/openss7-modules-lts-git
   make DESTDIR="$pkgdir" install-strip
   rm -fr "$pkgdir/usr/bin"
   rm -fr "$pkgdir/usr/lib/openss7"
   rm -fr "$pkgdir/usr/share/doc"
-  d="$pkgdir/usr/src/$_pkgbase-$pkgver-$pkgrel/$_kvr"
+  d="$pkgdir/usr/lib/modules/${_kvr}/build/openss7"
   install -d "$d"
-  b="$pkgdir/boot"
-  install -d "$b"
   install -m644 ../$CARCH-$_kvr-config.cache     "$d"
   install -m644 ../$CARCH-config.site            "$d"
   install -m644 ../$CARCH-$_kvr-modpost.cache    "$d"
@@ -282,25 +296,22 @@ package_openss7-modules-lts-git() {
   install -m644 config.h                         "$d"
   cat System.symvers Module.symvers | gzip -9 -c >symvers-${_kvr}.gz
   install -m644 symvers-${_kvr}.gz               "$d"
-  install -m644 symvers-${_kvr}.gz               "$b"
   cat Module.symvers|awk '{print$4"\t"$3"\t"$1"\t"$2}' >abi-${_kvr}
   install -m644 abi-${_kvr}                      "$d"
-  install -m644 abi-${_kvr}                      "$b"
   install -m644 symsets-${_kvr}.tar.gz           "$d"
-  install -m644 symsets-${_kvr}.tar.gz           "$b"
-  install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts
-  mv -f "$pkgdir"/usr/lib/modules/${_kvr}/updates/openss7 \
-        "$pkgdir"/usr/lib/modules/extramodules-${_kvx}-lts
-  install -d "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
-  mv -f "$pkgdir"/usr/src/${_pkgbase}-$pkgver-$pkgrel/$_kvr \
-        "$pkgdir"/usr/lib/modules/${_kvr}/build/openss7
+# install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
+# mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
+#       "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
+  install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
+  ln -s ../lib/modules/${_kvr}/build/openss7 \
+        "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
 }
 
 package_openss7-java-git() {
   pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites (Java)"
   provides=("$_pkgbase-java=$pkgver")
   conflicts=("$_pkgbase-java")
-  depends=("$pkgbase" 'gcc-gcj' 'java-environment')
+  depends=("$pkgbase" 'gcc6-gcj' 'classpath')
   install="openss7-java-git.install"
 
   mv -fv "$srcdir/_java/usr" "$pkgdir/"
