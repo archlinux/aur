@@ -1,9 +1,9 @@
 pkgbase=kata-containers-git
 pkgname=(kata-ksm-throttler-git kata-proxy-git kata-runtime-git kata-shim-git kata-agent-git)
-pkgver=1.10.0~rc0~runtime.r31.3ea682d6
+pkgver=1.10.0~rc0~runtime.r33.a198efcf
 _pkgver=1.10.0-rc0
-pkgrel=2
-pkgdesc="Lightweight virtual machines for containers"
+pkgrel=1
+pkgdesc="Lightweight virtual machines for containers (Git version)"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
