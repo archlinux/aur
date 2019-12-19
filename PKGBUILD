@@ -1,24 +1,30 @@
-# Maintainer: XavierCLL
-# Contributor: Alexander <rodseth@gmail.com>
+# Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
+# Contributor: Alexander F Rødseth <rodseth@gmail.com>
 
-pkgname=python2-clint
+# Based on python-clint in [community]
+
+_name=clint
+pkgname=python2-$_name
 pkgver=0.5.1
-pkgrel=1
-pkgdesc="Module for developing commandline applications"
+pkgrel=9
+pkgdesc='Module for developing command line applications'
 arch=('any')
-url="http://pypi.python.org/pypi/clint/"
-license=('ISC')
+url="https://pypi.org/project/$_name/"
+license=('custom:ISC')
 depends=('python2')
-conflicts=('python2-clint-git')
-source=("http://pypi.python.org/packages/source/c/clint/clint-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('05224c32b1075563d0b16d0015faaf9da43aa214e4a2140e51f08789e7a4c5aa')
 
-package() {
-  cd "$srcdir/clint-$pkgver"
+build() {
+  cd $_name-$pkgver
 
-  python2 setup.py install --install-data="/usr/share/doc/$pkgname" \
-    --root="$pkgdir"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python2 setup.py build
 }
 
+package() {
+  cd "$_name-$pkgver"
 
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build \
+    --install-data="/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
