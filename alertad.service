@@ -1,0 +1,11 @@
+[Unit]
+Description=Alerta server service
+After=network.target
+
+[Service]
+User=alerta
+ExecStart=/usr/bin/alertad run
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
