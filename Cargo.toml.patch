@@ -1,9 +1,0 @@
---- mdcat-mdcat-0.13.0.orig/Cargo.toml	2019-03-31 05:38:16.000000000 +1100
-+++ mdcat-mdcat-0.13.0/Cargo.toml	2019-03-31 09:38:17.614741379 +1100
-@@ -76,3 +76,6 @@
- tag-message = "mdcat {{version}}"
- tag-prefix = "mdcat-"
- pre-release-hook = "./scripts/prerelease-hook.py"
-+
-+[profile.release]
-+lto = true
