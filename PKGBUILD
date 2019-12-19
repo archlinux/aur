@@ -18,8 +18,8 @@ source=(https://gitlab.com/psposito/EortologioGambas3/uploads/4e8e92be401b920a86
         https://gitlab.com/psposito/EortologioGambas3/blob/master/gambas3-eortologioqt5.desktop\
         https://gitlab.com/psposito/EortologioGambas3/blob/master/EortologioQt5.png)
 md5sums=('3594940f64ebe5a1aeabe98b8283274a'
-         'd57a50eae27759248f35b21d1fed68e7'
-         'd036a7cf1d3746ab6fcbf4b2aae7633b')
+         '8dc0d594e3e5052b40b4d2e244e5aad5'
+         '1d37463bb9900f463b8537a580f2d9f3')
 
 build() {
   cd "$srcdir/$_realname/"
