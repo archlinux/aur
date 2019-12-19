@@ -39,33 +39,29 @@ post_install() {
   Zoneminder database setup:
   --------------------------
   Initialize and start mariadb if you haven't done it already https://wiki.archlinux.org/index.php/MariaDB#Installation
+    "sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql"
+    "systemctl start mariadb.service"
   Zoneminder operation requires a database named 'zm' which is defined in /usr/share/zoneminder/db/zm_create.sql
   
   Create the Zoneminder database (with a password):
-    "mysqladmin --defaults-file=/etc/my.cnf -p -f reload"
-    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/my.cnf -p"
-    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/my.cnf -p mysql"
+    "sudo mysqladmin --defaults-file=/etc/my.cnf -p -f reload"
+    "cat /usr/share/zoneminder/db/zm_create.sql | sudo mysql --defaults-file=/etc/my.cnf -p"
+    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | sudo mysql --defaults-file=/etc/my.cnf -p mysql"
   (or without a password):
-    "mysqladmin --defaults-file=/etc/my.cnf -f reload"
-    "cat /usr/share/zoneminder/db/zm_create.sql | mysql --defaults-file=/etc/my.cnf"
-    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | mysql --defaults-file=/etc/my.cnf mysql"
+    "sudo mysqladmin --defaults-file=/etc/my.cnf -f reload"
+    "cat /usr/share/zoneminder/db/zm_create.sql | sudo mysql --defaults-file=/etc/my.cnf"
+    "echo 'grant lock tables, alter,select,insert,update,delete on zm.* to 'zmuser'@localhost identified by "zmpass";' | sudo mysql --defaults-file=/etc/my.cnf mysql"
 
   PHP configuration
   -----------------
-  * Check and make sure these are uncommented in /etc/php/php.ini:
-    extension=ftp
-    extension=gd
-    extension=gettext
-    extension=pdo_mysql
-    extension=sockets
-    extension=zip
-  * Set your timezone in php.ini:
+
+  * Set your timezone in PHP configuration file /etc/php/conf.d/zoneminder.ini:
     date.timezone = <your_country>/<your_city>
 
   Nginx configuration
   -------------------
   sudo mkdir /etc/nginx/sites-enabled
-  sudo mv /etc/nginx/sites-available/zoneminder.conf /etc/nginx/sites-enabled/
+  sudo ln -s /etc/nginx/sites-available/zoneminder.conf /etc/nginx/sites-enabled/zoneminder.conf
   Add "include       /etc/nginx/sites-enabled/zoneminder.conf;" to the http section in /etc/nginx/nginx.conf
 
   Apache configuration
