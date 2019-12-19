@@ -8,7 +8,7 @@ url=""
 license=('custom:unknown')
 depends=('soundfont-unison' #GM
 'soundfont-sgm' # GM
-'soundfont-generaluser' GM+GS
+'soundfont-generaluser' # GM+GS
 'soundfont-zelda3sf2' # Legend of Zelda: Link to the Past
 'soundfont-zeldamcsf2' # Legend of Zelda: Minish Cap
 'soundfont-sso-sf2' # Sonatina Symphonic Orchestra
@@ -19,8 +19,8 @@ depends=('soundfont-unison' #GM
 'soundfont-jeux' # organ
 'soundfont-fatboy' # GM+GS
 'soundfont-sunshine-perc' # hand drum+perc
+'soundfont-titanic' # high quality MIDI soundfont by Luke Sena
 )
-# 'soundfont-titanic' # source unavailable
 # 'soundfont-toh' # source unavailable
 package() {
   true
