@@ -1,0 +1,16 @@
+pkgbase = zsh-extract-git
+	pkgdesc = This plugin defines a function called extract that extracts the archive file you pass it, and it supports a wide variety of archive filetypes.
+	pkgver = r2.85ee9a2
+	pkgrel = 1
+	url = https://github.com/le0me55i/zsh-extract
+	install = zsh-extract-git.install
+	arch = any
+	license = custom
+	makedepends = git
+	depends = zsh
+	provides = zsh-extract
+	conflicts = zsh-extract
+	source = git+https://github.com/le0me55i/zsh-extract
+
+pkgname = zsh-extract-git
+
