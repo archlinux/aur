@@ -1,6 +1,6 @@
 pkgbase = inotify-daemon
 	pkgdesc = A daemon to trigger system-tasks upon preconfigured inotify-events.
-	pkgver = 20191212.1.r1.gba16a8c
+	pkgver = 20191219.2.r0.gc99fc44
 	pkgrel = 1
 	url = http://matcha.cakeisaweso.me/ast/inotify-daemon
 	arch = i686
