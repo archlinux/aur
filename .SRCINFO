@@ -1,0 +1,15 @@
+pkgbase = clio-lang
+	pkgdesc = a pure functional lazy-evaluated programming language
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://clio-lang.org
+	arch = any
+	license = APACHE
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	source = git+https://github.com/clio-lang/clio.git#commit=c045625
+	sha256sums = SKIP
+
+pkgname = clio-lang
+
