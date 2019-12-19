@@ -1,11 +1,12 @@
 pkgbase = img-git
 	pkgdesc = Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder
-	pkgver = v0.5.6.r9.g013bb211
+	pkgver = v0.5.7.r9.ge16396e0
 	pkgrel = 1
 	url = https://github.com/genuinetools/img
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	depends = runc
 	conflicts = img
 	conflicts = img-bin
