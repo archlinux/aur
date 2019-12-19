@@ -31,7 +31,7 @@ pkgbase = inxi
 	optdepends = xorg-xprop: inxi -S desktop data
 	optdepends = xorg-xrandr: inxi -G single screen resolution
 	source = inxi-3.0.37.tar.gz::https://github.com/smxi/inxi/archive/3.0.37-1.tar.gz
-	sha256sums = 7872af1b85dfb635d2fdebad575238aedf98432a7089200334a2fa31ac19ff24
+	sha256sums = bc16d8b975a8ed064949bc8209e0c01c204c01c9046076f62709366e672bea40
 
 pkgname = inxi
 
