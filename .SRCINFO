@@ -1,6 +1,6 @@
 pkgbase = avif-git
 	pkgdesc = Library for encoding and decoding .avif files
-	pkgver = 0.2.0.r3.g9c502a4
+	pkgver = 0.5.3.r2.g3f1f7cc
 	pkgrel = 1
 	url = https://github.com/AOMediaCodec/libavif
 	arch = i686
@@ -10,9 +10,10 @@ pkgbase = avif-git
 	makedepends = cmake
 	makedepends = nasm
 	depends = glibc
+	depends = dav1d
+	depends = rav1e
 	provides = avif
 	conflicts = avif
-	options = staticlibs
 	source = git+https://github.com/AOMediaCodec/libavif.git
 	sha256sums = SKIP
 
