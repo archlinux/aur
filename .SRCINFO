@@ -1,0 +1,22 @@
+pkgbase = gnome-shell-extensions-git
+	pkgdesc = Extensions for GNOME shell, including classic mode
+	pkgver = 3.35.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GnomeShell/Extensions
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = git
+	makedepends = sassc
+	makedepends = js60
+	optdepends = gnome-menus: applications menu extension
+	provides = gnome-shell-extensions
+	conflicts = gnome-shell-extensions
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-extensions.git
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extensions-git
+	depends = gnome-shell
+
