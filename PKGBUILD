@@ -55,9 +55,9 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/systemd/system/"
 	install "$srcdir/$pkgname/target/release/inotify-daemon" \
 	  "$pkgdir/usr/bin"
-	install "$srcdir/inotify-daemon.example.yml" "$pkgdir/etc/inotify-daemon.yml"
-	install "$srcdir/$pkgname/systemd/inotify-daemon.service" "$pkgdir/usr/lib/systemd/system"
-	install "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/README.md"
-	install "$srcdir/$pkgname/manpages/inotify-daemon.8" "$pkgdir/usr/share/man/man8/inotify-daemon.8"
-	install "$srcdir/$pkgname/manpages/inotify-daemon.service.8" "$pkgdir/usr/share/man/man8/inotify-daemon.service.8"
+	cp "$srcdir/inotify-daemon.example.yml" "$pkgdir/etc/inotify-daemon.yml"
+	cp "$srcdir/$pkgname/systemd/inotify-daemon.service" "$pkgdir/usr/lib/systemd/system"
+	cp "$srcdir/$pkgname/README.md" "$pkgdir/usr/share/doc/README.md"
+	cp "$srcdir/$pkgname/manpages/inotify-daemon.8" "$pkgdir/usr/share/man/man8/inotify-daemon.8"
+	cp "$srcdir/$pkgname/manpages/inotify-daemon.service.8" "$pkgdir/usr/share/man/man8/inotify-daemon.service.8"
 }
