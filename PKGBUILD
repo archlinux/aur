@@ -4,11 +4,11 @@
 # Contributor: phi-mah
 
 pkgname=toggldesktop
-pkgver=7.4.1020
-pkgrel=2
+pkgver=7.4.1102
+pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
-url="https://github.com/toggl/toggldesktop"
+url="https://github.com/toggl-open-source/toggldesktop"
 license=('BSD')
 depends=(
   'libxss'
@@ -22,12 +22,12 @@ depends=(
 )
 makedepends=('cmake')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/toggl/toggldesktop/archive/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/toggl-open-source/toggldesktop/archive/v${pkgver}.tar.gz"
   "jsoncpp.patch"
 )
 
 sha512sums=(
-  '8fd7dc5be69e80cf5ccb99abf0e468eb34534943c5365d8908cb41db58afe5bc8beaf22f27e6249deff61a536b86aa7799fa51ded801cbfa53e74357737143a6'
+  '73a6465337d12776afb5b7f0ba204dd50e82bd17126a103adc8fb5c10672eedcad4006f7e0e9968d43c1ab2493b3e70484e670b6c1e94108a66661e3dd886954'
   '05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77'
 )
 
