@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=sacad
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart Automatic Cover Art Downloader'
 arch=('any')
 url="https://github.com/desbma/${pkgname}"
@@ -11,6 +11,7 @@ depends=('python'
          'python-appdirs'
          'python-bitarray'
          'python-cssselect'
+         'python-fake-useragent'
          'python-lxml'
          'python-mutagen'
          'python-pillow'
