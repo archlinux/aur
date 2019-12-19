@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_pkgver=4.11-10
+_pkgver=4.11-11
 pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
@@ -82,7 +82,7 @@ optdepends=(
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-  ncurses               lib32-ncurses
+#  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   gst-plugins-base-libs lib32-gst-plugins-base-libs
@@ -120,7 +120,7 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    'd2ac28b6a409b2f8ae93b9d27ba462bb0823a22852bc9cf9c72f3f90caf17efd'
+    '4907e6005989d349336ee8c53c015a9cb3863c9ed2d147967c5f2603500099b4'
     '7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782'
 )
 
