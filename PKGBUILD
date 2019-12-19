@@ -3,7 +3,7 @@
 
 pkgname=android-platform
 _apilevel=29
-_rev=r03
+_rev=r04
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
 pkgdesc="Android SDK Platform, latest API"
@@ -15,8 +15,8 @@ provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
 source=("https://dl-ssl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
-sha1sums=('670e2e104333dae90e16ea3b615f0b63da5883ae')
-sha384sums=('903c9787eca23d71277244eb39ccdccedbd8bf7570d6e6f3d8494f06389687067d9f1ee13d29ec2644b3c74229bded7e')
+sha1sums=('8d644c39902038e0bd529165d5ba4f5a8607daea')
+sha384sums=('9308ff2278b1beafe7096985825d331977694163f2e2b69b222cc4772fb44ac3bceeeca4a009bfec045d86a552cdb3cc')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"

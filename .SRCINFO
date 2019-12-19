@@ -1,6 +1,6 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 29_r03
+	pkgver = 29_r04
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = android-platform
 	provides = android-platform-29
 	conflicts = android-platform-29
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/platform-29_r03.zip
-	sha1sums = 670e2e104333dae90e16ea3b615f0b63da5883ae
-	sha384sums = 903c9787eca23d71277244eb39ccdccedbd8bf7570d6e6f3d8494f06389687067d9f1ee13d29ec2644b3c74229bded7e
+	source = https://dl-ssl.google.com/android/repository/platform-29_r04.zip
+	sha1sums = 8d644c39902038e0bd529165d5ba4f5a8607daea
+	sha384sums = 9308ff2278b1beafe7096985825d331977694163f2e2b69b222cc4772fb44ac3bceeeca4a009bfec045d86a552cdb3cc
 
 pkgname = android-platform
 
