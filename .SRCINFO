@@ -1,0 +1,32 @@
+pkgbase = gnome-session-git
+	pkgdesc = The GNOME Session Handler
+	pkgver = 3.34.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-session
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	makedepends = gtk-doc
+	makedepends = xtrans
+	makedepends = git
+	makedepends = python
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = meson
+	depends = systemd
+	depends = dconf
+	depends = gsettings-desktop-schemas
+	depends = gtk3
+	depends = gnome-desktop
+	depends = json-glib
+	depends = libgl
+	depends = libsm
+	depends = libxtst
+	depends = systemd
+	provides = gnome-session
+	conflicts = gnome-session
+	source = git+https://gitlab.gnome.org/GNOME/gnome-session.git
+	sha256sums = SKIP
+
+pkgname = gnome-session-git
+
