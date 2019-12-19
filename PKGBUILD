@@ -9,13 +9,15 @@ epoch=1
 _commit=ge08ef575
 _ver_x86_64=19
 #_ver_i686=10
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
-depends=('alsa-lib>=1.0.14' 'gconf' 'gtk2' 'glib2' 'nss' 'libsystemd' 'libxtst'
-         'libx11' 'libxss' 'desktop-file-utils' 'rtmpdump' 'openssl-1.0')
+depends=('alsa-lib>=1.0.14' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
+         'fribidi' 'graphite' 'gtk2' 'glib2' 'libpng' 'libsystemd'
+         'libx11' 'desktop-file-utils' 'nettle' 'openssl'
+         'p11-kit' 'pango' 'pcre' 'pixman')
 depends_x86_64=('libcurl-gnutls')
 depends_i686=('libcurl-compat')
 optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
