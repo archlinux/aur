@@ -52,13 +52,13 @@ _htmldocs_enable=
 ### Do not edit below this line unless you know what you're doing
 
 # pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
-_major=5.3
+_major=5.4
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=15
+_lqxpatchrel=2
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.3.18_1
+pkgver=5.4.5_1
 pkgrel=1
 pkgdesc='Liquorix Kernel'
 arch=('x86_64')
@@ -345,9 +345,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('6b5edef47c319a3fa7f6c20a3e0903a5acd89ec75e32dc5f99adcb60c9fe118ea312722d9c3d27e2e3900afa2455afb86e83a8b6bb131009bc79ddbe6fb0595d'
+sha512sums=('9f60f77e8ab972b9438ac648bed17551c8491d6585a5e85f694b2eaa4c623fbc61eb18419b2656b6795eac5deec0edaa04547fc6723fbda52256bd7f3486898f'
             'SKIP'
-            '448153f1bed64ad0e0c59645bffd6ca32ebe3a0f19c5aa78b192e6f830090e1f0265b91ed57343fa0483c2c12227b73c8e88faf0b82b49b10abe9219fbbb2d06')
+            'eb049782c04c4145a0ff0ffd6957256a59900e4576a2da31d13e3ee11c5028557e186a1cc9ecabcb0196a461fb24858f55b6a90a78bc27afe503e770cfa31178')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
