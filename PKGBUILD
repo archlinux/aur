@@ -1,7 +1,7 @@
 # Maintaner: jskier <jay@jskier.com>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 pkgname=python-twilio
-pkgver=6.33.1
+pkgver=6.35.1
 pkgrel=1
 pkgdesc="A module for using the Twilio REST API and generating valid TwiML."
 arch=('any')
@@ -13,8 +13,8 @@ depends=('python' 'python-httplib2>=0.7' 'python-pysocks' 'python-pytz'
 options=(!emptydirs)
 source=("https://github.com/twilio/twilio-python/archive/${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('e4c2c5889b4b0530418f16056e9ad8758959bb4e6537ef65d519b6ebc6160f9c'
-            '17db7e6dddc3a621518f20dd4b35dac73f25160680d2a4858654eca1019bdea6')
+sha256sums=('37ed8cb26e6cff0ac1004de91fd68514465f8db478c7bae15bab2e02ec02c373'
+	   '17db7e6dddc3a621518f20dd4b35dac73f25160680d2a4858654eca1019bdea6')
 
 package() {
   cd "$srcdir/twilio-python-$pkgver"
