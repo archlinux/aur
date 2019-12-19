@@ -1,5 +1,5 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
-_version=2.0.0-RC3-3
+_version=2.0.0-RC5-3
 
 pkgname=coursier
 pkgver="${_version//-/_}"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('java-runtime-headless>=8' 'bash')
 
 source=("builder-$pkgver::https://github.com/coursier/coursier/releases/download/v${_version}/coursier")
-sha256sums=('d4ef30e45e7ccc8d485d1d6b09314d81babc5bffc49aeb4333d090c9a55a3ee3')
+sha256sums=('ac8f5a19476219063a422f5726fc0110744eb014e11945736193123906c76e55')
 noextract=("builder-$pkgver")
 
 build() {
