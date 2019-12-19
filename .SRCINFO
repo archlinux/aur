@@ -1,7 +1,7 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
 	pkgver = 1.10.0~rc0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
@@ -38,4 +38,6 @@ pkgname = kata-ksm-throttler-bin
 pkgname = kata-containers-image
 
 pkgname = kata-linux-container
+
+pkgname = kata-containers-static
 
