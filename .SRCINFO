@@ -1,6 +1,6 @@
 pkgbase = futhark-nightly
 	pkgdesc = A data-parallel functional programming language
-	pkgver = 0.13.0.r0653286
+	pkgver = 0.14.0.rf13eb89
 	pkgrel = 1
 	url = https://github.com/diku-dk/futhark
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = futhark-nightly
 	optdepends = opencl-driver: opencl support
 	provides = futhark
 	conflicts = futhark
-	source = futhark-nightly-1568634978.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-x86_64.tar.xz
+	source = futhark-nightly-2019121914.tar.xz::https://futhark-lang.org/releases/futhark-nightly-linux-x86_64.tar.xz
 	sha256sums = SKIP
 
 pkgname = futhark-nightly
