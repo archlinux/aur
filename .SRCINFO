@@ -1,0 +1,40 @@
+pkgbase = kmod-nc
+	pkgdesc = Linux kernel module management tools and library
+	pkgver = 26
+	pkgrel = 4
+	url = https://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
+	arch = x86_64
+	license = GPL2
+	checkdepends = linux-headers
+	checkdepends = libelf
+	makedepends = gtk-doc
+	depends = glibc
+	depends = zlib
+	depends = openssl
+	depends = xz
+	provides = module-init-tools=3.16
+	provides = libkmod.so
+	provides = kmod
+	conflicts = module-init-tools
+	conflicts = kmod
+	replaces = module-init-tools
+	options = strip
+	options = debug
+	source = https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-26.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-26.tar.sign
+	source = depmod-search.conf
+	source = depmod.hook
+	source = depmod.script
+	source = 0001-Link-against-libcrypto-not-all-of-openssl.patch
+	source = 0002-add-zstd-compressed-module-support.patch
+	validpgpkeys = EAB33C9690013C733916AC839BA2A5A630CBEA53
+	md5sums = 1129c243199bdd7db01b55a61aa19601
+	md5sums = SKIP
+	md5sums = dd62cbf62bd8f212f51ef8c43bec9a77
+	md5sums = 72ce5e14ee3ad8bc06945e0ad4c642ce
+	md5sums = 18fb3d1f6024a5a84514c8276cb3ebff
+	md5sums = e918bef174c1057fa13a5ba8c4a30a46
+	md5sums = 49696ec36c0a254d107c7c4a7fbbef06
+
+pkgname = kmod-nc
+

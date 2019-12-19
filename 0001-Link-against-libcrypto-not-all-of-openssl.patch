@@ -1,0 +1,75 @@
+From 924b16f1b2001bf31e0688c9273e40e8f2f665c5 Mon Sep 17 00:00:00 2001
+From: Dave Reisner <dreisner@archlinux.org>
+Date: Wed, 13 Feb 2019 10:24:51 -0500
+Subject: [PATCH] Link against libcrypto, not all of openssl
+
+In the previous build setup, libkmod.so would link to not just
+libcrypto.so, but also libssl.so:
+
+$ readelf -d /lib/libkmod.so | grep NEEDED
+ 0x0000000000000001 (NEEDED)             Shared library: [liblzma.so.5]
+ 0x0000000000000001 (NEEDED)             Shared library: [libz.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libssl.so.1.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcrypto.so.1.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+
+We don't need any symbols from libssl, though. This patch ensures that
+we pass 'libcrypto' to pkgconfig rather than 'openssl', getting only the
+library that we need:
+
+$ readelf -d tools/kmod | grep NEEDED
+ 0x0000000000000001 (NEEDED)             Shared library: [liblzma.so.5]
+ 0x0000000000000001 (NEEDED)             Shared library: [libz.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcrypto.so.1.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+---
+ Makefile.am  | 6 +++---
+ configure.ac | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index ddb25f0..758f4f0 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -35,8 +35,8 @@ SED_PROCESS = \
+ 	-e 's,@liblzma_LIBS\@,${liblzma_LIBS},g' \
+ 	-e 's,@zlib_CFLAGS\@,${zlib_CFLAGS},g' \
+ 	-e 's,@zlib_LIBS\@,${zlib_LIBS},g' \
+-	-e 's,@openssl_CFLAGS\@,${openssl_CFLAGS},g' \
+-	-e 's,@openssl_LIBS\@,${openssl_LIBS},g' \
++	-e 's,@libcrypto_CFLAGS\@,${libcrypto_CFLAGS},g' \
++	-e 's,@libcrypto_LIBS\@,${libcrypto_LIBS},g' \
+ 	< $< > $@ || rm $@
+ 
+ %.pc: %.pc.in Makefile
+@@ -89,7 +89,7 @@ libkmod_libkmod_la_DEPENDENCIES = \
+ 	${top_srcdir}/libkmod/libkmod.sym
+ libkmod_libkmod_la_LIBADD = \
+ 	shared/libshared.la \
+-	${liblzma_LIBS} ${zlib_LIBS} ${openssl_LIBS}
++	${liblzma_LIBS} ${zlib_LIBS} ${libcrypto_LIBS}
+ 
+ noinst_LTLIBRARIES += libkmod/libkmod-internal.la
+ libkmod_libkmod_internal_la_SOURCES = $(libkmod_libkmod_la_SOURCES)
+diff --git a/configure.ac b/configure.ac
+index ee72283..dffe278 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -110,12 +110,12 @@ AC_ARG_WITH([openssl],
+ 	AS_HELP_STRING([--with-openssl], [handle PKCS7 signatures @<:@default=disabled@:>@]),
+ 	[], [with_openssl=no])
+ AS_IF([test "x$with_openssl" != "xno"], [
+-	PKG_CHECK_MODULES([openssl], [openssl >= 1.1.0])
++	PKG_CHECK_MODULES([libcrypto], [libcrypto >= 1.1.0])
+ 	AC_DEFINE([ENABLE_OPENSSL], [1], [Enable openssl for modinfo.])
+ ], [
+ 	AC_MSG_NOTICE([openssl support not requested])
+ ])
+-CC_FEATURE_APPEND([with_features], [with_openssl], [OPENSSL])
++CC_FEATURE_APPEND([with_features], [with_openssl], [LIBCRYPTO])
+ 
+ AC_ARG_WITH([bashcompletiondir],
+ 	AS_HELP_STRING([--with-bashcompletiondir=DIR], [Bash completions directory]),
+-- 
+2.20.1
+
