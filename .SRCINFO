@@ -1,0 +1,29 @@
+pkgbase = gnome-initial-setup-git
+	pkgdesc = Simple, easy, and safe way to prepare a new system
+	pkgver = 3.34.0+17+g87dea7a
+	pkgrel = 1
+	url = https://www.gnome.org/
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	depends = nm-connection-editor
+	depends = accountsservice
+	depends = cheese
+	depends = gnome-desktop
+	depends = libgweather
+	depends = gnome-online-accounts
+	depends = libgdm
+	depends = libpwquality
+	depends = libibus
+	depends = libgnomekbd
+	depends = libpackagekit-glib
+	depends = geoclue
+	optdepends = gdm: GDM Initial Setup mode
+	optdepends = gnome-getting-started-docs: GNOME Welcome Tour
+	provides = gnome-initial-setup
+	conflicts = gnome-initial-setup
+	source = git+https://gitlab.gnome.org/GNOME/gnome-initial-setup
+	sha256sums = SKIP
+
+pkgname = gnome-initial-setup-git
+
