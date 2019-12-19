@@ -9,7 +9,7 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index 511d2c95..4e95afca 100644
+index 4755cbd6..9b05f799 100644
 --- a/package.json
 +++ b/package.json
 @@ -62,7 +62,7 @@
@@ -21,7 +21,7 @@ index 511d2c95..4e95afca 100644
      "emoji-regex": "8.0.0",
      "filesize": "3.6.1",
      "firstline": "1.2.1",
-@@ -291,8 +291,8 @@
+@@ -297,8 +297,8 @@
        "node_modules/**",
        "!node_modules/emoji-datasource/emoji_pretty.json",
        "!node_modules/emoji-datasource/*.png",
