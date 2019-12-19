@@ -1,7 +1,7 @@
 pkgbase = zmeventnotification-git
 	pkgdesc = Event Notification Server sits along with ZoneMinder and offers real time notifications, support for push notifications as well as Machine Learning powered recognition + hooks
 	pkgver = v4.6.1.r20.gf70308a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pliablepixels/zmeventnotification
 	arch = x86_64
 	license = GPL
@@ -29,7 +29,7 @@ pkgbase = zmeventnotification-git
 	depends = python-future
 	depends = python-shapely
 	depends = python-mysql-connector
-	depends = python-sklearn-bayes
+	depends = python-scikit-learn
 	depends = python-face_recognition
 	backup = etc/zoneminder/objectconfig.ini
 	backup = etc/zoneminder/secrets.ini

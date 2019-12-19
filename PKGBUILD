@@ -3,7 +3,7 @@
 pkgname=zmeventnotification-git
 _pkgname=zmeventnotification
 pkgver=v4.6.1.r20.gf70308a
-pkgrel=2
+pkgrel=3
 pkgdesc='Event Notification Server sits along with ZoneMinder and offers real time notifications, support for push notifications as well as Machine Learning powered recognition + hooks'
 arch=('x86_64')
 url='https://github.com/pliablepixels/zmeventnotification'
@@ -12,7 +12,7 @@ depends=('perl-crypt-mysql' 'perl-config-inifiles' 'perl-crypt-eksblowfish' 'per
          'perl-io-socket-ssl' 'perl-net-mqtt-simple' 'perl-config-inifiles' 'opencv'
          #hooks
          'geos' 'hdf5' 'python-numpy' 'python-imutils' 'python-pyzm-git' 'python-sqlalchemy' 'python-psutil' 'python-future' 'python-shapely' 'python-mysql-connector'
-         'python-sklearn-bayes' 'python-face_recognition'
+         'python-scikit-learn' 'python-face_recognition'
 )
 makedepends=('cmake' 'wget' 'git')
 optdepends=()
@@ -49,8 +49,8 @@ prepare () {
     sed -i "s|/etc/apache2/ssl/yourportal|/etc/ssl/private|"  zmeventnotification.ini
 
     #secrets.ini
-    sed -i "s|URL=https://portal/zm|ZM_PORTAL=http://your_website|" secrets.ini
     sed -i "s|ZM_PORTAL=https://portal/zm|ZM_PORTAL=http://127.0.0.1:8095|" secrets.ini
+    sed -i "s|URL=https://portal/zm|ZM_PORTAL=http://your_website|" secrets.ini
 
     #zm_detect_wrapper.sh
     sed -i "s|/etc/zm|/etc/zoneminder|" hook/zm_detect_wrapper.sh
@@ -58,6 +58,9 @@ prepare () {
 
     #zmeventnotification.pl
     sed -i "s|/etc/zm/zmeventnotification.ini|/etc/zoneminder/zmeventnotification.ini|" zmeventnotification.pl
+
+    #zm_train_faces.py
+    sed -i "s|/etc/zm/objectconfig.ini|/etc/zoneminder/objectconfig.ini|" hook/zm_train_faces.py
 }
 
 build() {
