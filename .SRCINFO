@@ -1,7 +1,7 @@
 pkgbase = python2-internetarchive
 	pkgdesc = Wrapper for the various Internet Archive APIs (IA-S3, Metadata API, etc)
-	pkgver = 1.8.5
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/jjjake/internetarchive
 	arch = any
 	license = AGPL3
@@ -19,8 +19,8 @@ pkgbase = python2-internetarchive
 	optdepends = python2-ujson: faster json parsing
 	optdepends = python2-gevent: concurrent downloads
 	optdepends = cython2: speedups
-	source = python2-internetarchive-1.8.5.tar.gz::https://github.com/jjjake/internetarchive/archive/v1.8.5.tar.gz
-	sha256sums = dea42a8ebf6ba1f2eadb2b68ddcbadae9a4ce616077fa828529eebf1bc03ed5b
+	source = python2-internetarchive-1.9.0.tar.gz::https://github.com/jjjake/internetarchive/archive/v1.9.0.tar.gz
+	sha256sums = 20d1a4aef5835dc73d24fa6f6af36a07a46577789806a1513b175d7696cc2a7a
 
 pkgname = python2-internetarchive
 
