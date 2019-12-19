@@ -11,9 +11,9 @@ depends=('zsh')
 makedepends=('git')
 provides=('zsh-extract')
 conflicts=('zsh-extract')
-source=("${_gitname}::${url//https/git}")
+source=('git+https://github.com/le0me55i/zsh-extract.git')
 install=zsh-extract-git.install
-sha256sum=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
