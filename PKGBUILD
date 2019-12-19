@@ -5,10 +5,10 @@
 
 pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
-_pkgver=9.2.0rc
-pkgver=9.2.0rc
-pkgrel=3
-_commit=a0c655ab4edaf8f83a13f993c4a6678a55251f38
+_pkgver=9.2.1
+pkgver=9.2.1
+pkgrel=1
+_commit=8b3e8b9cbb5aaaa3ed0e42d696662fb36ad8ea5e
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -22,7 +22,7 @@ options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
         #"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-sha256sums=('db43c094229688fa20231941838b22ecf6f96375e0f7e3e9e46071630d3ab27b')
+sha256sums=('93971d27c3531fc5ef769e33148eff0d4ac877783393de36c46c561ca88b31f7')
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
@@ -44,9 +44,6 @@ build() {
 }
 
 package_pamac-common() {
-  depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3'
-         'desktop-file-utils' 'pacman>=5.2' 'pacman<5.3' 'gnutls>=3.4' 'libnotify'
-         'appstream-glib' 'archlinux-appstream-data' 'git')
   optdepends=()
   backup=('etc/pamac.conf')
   conflicts=('pamac<=7.3.4-2' 'pamac-aur' 'pamac-common-dev')
@@ -81,7 +78,7 @@ package_pamac-cli-src() {
 }
 
 package_pamac-gtk() {
-  depends=('pamac-cli-src' 'gtk3>=3.22' 'pamac-tray-appindicator-src')
+  depends=('pamac-cli-src' 'gtk3>=3.22')
   provides=("pamac=$pkgver-$pkgrel")
   replaces=('pamac')
   conflicts=('pamac' 'pamac-aur' 'pamac-gtk-dev')
@@ -107,7 +104,7 @@ package_pamac-gtk() {
 package_pamac-tray-appindicator-src() {
   pkgdesc="Tray icon using appindicator which fits better in KDE"
   depends=('pamac-gtk' 'libappindicator-gtk3')
-  conflicts=('pamac-tray-appindicator-dev' 'pamac-tray-appindicator-git')
+  conflicts=('pamac-tray-appindicator-dev')
   cd "$srcdir/pamac-v$_pkgver"
   install -Dm755 "builddir/src/pamac-tray-appindicator" "$pkgdir/usr/bin/pamac-tray-appindicator"
   install -Dm644 "data/applications/pamac-tray-appindicator.desktop" "$pkgdir/etc/xdg/autostart/pamac-tray-appindicator.desktop"

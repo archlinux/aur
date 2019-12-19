@@ -9,7 +9,7 @@ msg() {
 restore_conf() {
   PAMAC_NEW="$(date +%m%d%M%S)"
   if [ -f "/etc/pamac.conf.pacsave" ]; then
-     msg "You had an old /etc/pamac.conf.pacsave file. We restored it for you."
+     msg "You had an old /etc/pamac.conf.pacsave file. We restore it for you."
      msg "You can find your new pamac.conf saved as \`/etc/pamac-new-${PAMAC_NEW}.conf\`"
      mv /etc/pamac.conf /etc/pamac-new-${PAMAC_NEW}.conf
      mv /etc/pamac.conf.pacsave /etc/pamac.conf

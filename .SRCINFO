@@ -1,7 +1,7 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.2.0rc
-	pkgrel = 3
+	pkgver = 9.2.1
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
@@ -26,25 +26,11 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.2.0rc-3.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/a0c655ab4edaf8f83a13f993c4a6678a55251f38/pamac-common-a0c655ab4edaf8f83a13f993c4a6678a55251f38.tar.gz
-	sha256sums = db43c094229688fa20231941838b22ecf6f96375e0f7e3e9e46071630d3ab27b
+	source = pamac-9.2.1-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/8b3e8b9cbb5aaaa3ed0e42d696662fb36ad8ea5e/pamac-common-8b3e8b9cbb5aaaa3ed0e42d696662fb36ad8ea5e.tar.gz
+	sha256sums = 93971d27c3531fc5ef769e33148eff0d4ac877783393de36c46c561ca88b31f7
 
 pkgname = pamac-common
 	install = pamac-common.install
-	depends = glib2>=2.42
-	depends = json-glib
-	depends = libsoup
-	depends = dbus-glib
-	depends = polkit
-	depends = vte3
-	depends = desktop-file-utils
-	depends = pacman>=5.2
-	depends = pacman<5.3
-	depends = gnutls>=3.4
-	depends = libnotify
-	depends = appstream-glib
-	depends = archlinux-appstream-data
-	depends = git
 	optdepends = 
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
@@ -61,8 +47,7 @@ pkgname = pamac-gtk
 	install = pamac-gtk.install
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
-	depends = pamac-tray-appindicator-src
-	provides = pamac=9.2.0rc-3
+	provides = pamac=9.2.1-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
@@ -73,5 +58,4 @@ pkgname = pamac-tray-appindicator-src
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
 	conflicts = pamac-tray-appindicator-dev
-	conflicts = pamac-tray-appindicator-git
 
