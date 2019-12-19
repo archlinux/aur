@@ -1,0 +1,24 @@
+pkgbase = malcontent-git
+	pkgdesc = libmalcontent implements parental controls support which can be used by applications to filter or limit the access of child accounts to inappropriate content.
+	pkgver = 0.4.0+6+gc3fdc05
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/pwithnall/malcontent
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = accountsservice
+	makedepends = dbus
+	makedepends = gvfs
+	makedepends = glib2
+	makedepends = polkit
+	depends = accountsservice
+	depends = dbus
+	depends = gvfs
+	depends = glib2
+	depends = polkit
+	provides = malcontent
+	conflicts = malcontent
+	source = git+https://gitlab.freedesktop.org/pwithnall/malcontent
+	sha256sums = SKIP
+
+pkgname = malcontent-git
+
