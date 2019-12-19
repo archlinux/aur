@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=r2149.944175b7
+pkgver=0.2.0.r8.g5cbe7b83
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
@@ -22,13 +22,16 @@ prepare() {
   cd "rav1e"
 
   # for librav1e
-  RUSTFLAGS="-C opt-level=0" cargo install --root "$srcdir" cargo-c
+  RUSTFLAGS="-C opt-level=0" cargo install --force --root "$srcdir" cargo-c
 }
 
 pkgver() {
   cd "rav1e"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/v//'
 }
 
 check() {
