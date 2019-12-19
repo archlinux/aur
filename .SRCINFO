@@ -1,16 +1,16 @@
 pkgbase = blender-plugin-molecular
 	pkgdesc = Blender addon for advance particle physics, multithreaded.
-	pkgver = 1.03_r193.7f8282e
-	pkgrel = 2
-	url = http://pyroevil.com/category/scripts-addons/molecular-script/
+	pkgver = 1.1.1_r249.e4ef6a2
+	pkgrel = 1
+	url = https://github.com/bartoszek/Blender-Molecular-Script.git
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cython
-	depends = blender
-	source = molecular::git+https://github.com/Pyroevil/Blender-Molecular-Script.git
+	source = molecular::git+https://github.com/bartoszek/Blender-Molecular-Script.git#tag=1.1.1
 	md5sums = SKIP
 
 pkgname = blender-plugin-molecular
+	depends = blender>=2.80
 

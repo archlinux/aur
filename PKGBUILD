@@ -1,40 +1,41 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
-name=molecular
-version=1.03
-#fragment="#commit=7e49329 "
-files=(__init__.py cmolcore*.so cmolcore*.html)
-_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+_name=molecular
+_version=1.1.1
+_fragment="#tag=${_version}"
+_files=(descriptions.py __init__.py names.py operators.py properties.py simulate.py ui.py utils.py core*.so core.html)
 
-pkgname=blender-plugin-${name}
-pkgver=1.03_r193.7f8282e
-pkgrel=2
+pkgname=blender-plugin-${_name}
+pkgver=1.1.1_r249.e4ef6a2
+pkgrel=1
 pkgdesc="Blender addon for advance particle physics, multithreaded."
 arch=(i686 x86_64)
-url="http://pyroevil.com/category/scripts-addons/molecular-script/"
+url="https://github.com/bartoszek/Blender-Molecular-Script.git"
 license=('GPL')
-depends=(blender)
 makedepends=(git cython)
-source=("${name}::git+https://github.com/Pyroevil/Blender-Molecular-Script.git${fragment}")
+source=("${_name}::git+${url}${_fragment}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${name}
-  printf "${version}_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_name}
+  printf "${_version}_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${name}/${name}/sources/
+  cd ${_name}/sources/
   sed -i "s/'-march=i686',//" setup.py 
   python setup.py build_ext --inplace
-  cp cmolcore*.so cmolcore*.html -t ../
+  cp core*.so core.html -t ../${_name}
 }
 
 package() {
-  cd ${name}
+  depends=('blender>=2.80')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  cd ${_name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
-  install -dm755 ${addons}/${name}
-  for file in  ${files[@]} ; do install -m644 ${name}/${file} ${addons}/${name}; done
+  install -dm755 "${addons}/${_name}"
+  for file in "${_files[@]}"; do eval install -m644 "${_name}/${file}" "${addons}/${_name}"; done
 }
 
 # vim:set ts=2 sw=2 et:
