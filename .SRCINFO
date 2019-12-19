@@ -1,0 +1,19 @@
+pkgbase = latex-sjtutex-git
+	pkgdesc = Macro Packages and Scripts for SJTU TeX users
+	pkgver = r343.2f1bda5
+	pkgrel = 1
+	url = https://github.com/sjtug/SJTUTeX
+	install = latex-sjtutex-git.install
+	arch = any
+	license = LPPL
+	makedepends = git
+	makedepends = unzip
+	makedepends = zip
+	depends = texlive-core
+	source = git+https://github.com/sjtug/SJTUTeX
+	source = patch-0.patch
+	md5sums = SKIP
+	md5sums = 8bf2684bec9e47f9df06df861aa3068b
+
+pkgname = latex-sjtutex-git
+

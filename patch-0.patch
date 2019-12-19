@@ -1,0 +1,31 @@
+diff -Naur --exclude .git SJTUTeX/Makefile SJTUTeX-2/Makefile
+--- SJTUTeX/Makefile	2019-12-19 17:35:49.818135779 +0800
++++ SJTUTeX-2/Makefile	2019-12-19 17:19:34.758115668 +0800
+@@ -12,7 +12,7 @@
+ SCRIPTS = $(SOURCE_DIR)/latexmkrc.pl $(SOURCE_DIR)/sample.bat $(SOURCE_DIR)/sample.mk
+ LOGOS = $(LOGO_DIR)/sjtu-badge.pdf $(LOGO_DIR)/sjtu-logo.pdf $(LOGO_DIR)/sjtu-name.pdf
+ 
+-VERSION = $(shell git describe --tags)
++VERSION = r$(shell git rev-list --count HEAD).$(shell git rev-parse --short HEAD)
+ TEXMF = $(shell kpsewhich --var-value TEXMFHOME)
+ 
+ TDS_ARCHIVE = $(RELEASE_DIR)/$(PACKAGE).tds.zip
+diff -Naur --exclude .git SJTUTeX/scripts/pack.sh SJTUTeX-2/scripts/pack.sh
+--- SJTUTeX/scripts/pack.sh	2019-12-19 17:35:49.822135780 +0800
++++ SJTUTeX-2/scripts/pack.sh	2019-12-19 18:14:40.960183862 +0800
+@@ -49,6 +49,7 @@
+ cp $LOGO_DIR/sjtu-badge.pdf             $TEMP_DIR/
+ cp $LOGO_DIR/sjtu-logo.pdf              $TEMP_DIR/
+ cp $LOGO_DIR/sjtu-name.pdf              $TEMP_DIR/
++cp $SAMPLE_DIR/sjtuthesis.sty           $TEMP_DIR/
+ 
+ cd $TEMP_DIR
+ xetex --interaction=batchmode $JOB_NAME.dtx   >/dev/null
+@@ -65,6 +66,7 @@
+ 
+ cp $TEMP_DIR/$JOB_NAME.cls              $TEX_DIR/
+ cp $TEMP_DIR/*.ltx                      $TEX_DIR/
++cp $TEMP_DIR/sjtuthesis.sty             $TEX_DIR/
+ 
+ # These files should not be put in doc/
+ cp $TEMP_DIR/sjtu-badge.pdf             $TEX_DIR/
