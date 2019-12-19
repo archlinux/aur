@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python2-pyvirtualdisplay
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Python wrapper for Xvfb, Xephyr and Xvnc"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://pyvirtualdisplay.readthedocs.io"
 license=('BSD')
 depends=('python2>=2.7' 'python2-easyprocess')
 source=("https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-${pkgver}.tar.gz")
-sha256sums=('07f50759205adaeeb255a88be0ac1dce68da80686e6ca1fc362f4aa54fdbcb5b')
+sha256sums=('5b267c8ffc98fcbd084ba852ab4caef3f22e9362bc5d117e1697e767553eaf41')
 
 package() {
     cd "${srcdir}/PyVirtualDisplay-${pkgver}"

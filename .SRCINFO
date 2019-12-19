@@ -1,14 +1,14 @@
 pkgbase = python2-pyvirtualdisplay
 	pkgdesc = Python wrapper for Xvfb, Xephyr and Xvnc
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = http://pyvirtualdisplay.readthedocs.io
 	arch = any
 	license = BSD
 	depends = python2>=2.7
 	depends = python2-easyprocess
-	source = https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-0.2.4.tar.gz
-	sha256sums = 07f50759205adaeeb255a88be0ac1dce68da80686e6ca1fc362f4aa54fdbcb5b
+	source = https://files.pythonhosted.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-0.2.5.tar.gz
+	sha256sums = 5b267c8ffc98fcbd084ba852ab4caef3f22e9362bc5d117e1697e767553eaf41
 
 pkgname = python2-pyvirtualdisplay
 
