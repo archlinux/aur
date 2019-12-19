@@ -22,7 +22,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_gitname}"
-
+	mkdir completions
+	install -d completions "${pkgdir}/usr/share/zsh/plugins/${_gitname}/completions"
 	install -Dm644 zsh-completion-generator.plugin.zsh "${pkgdir}/usr/share/zsh/plugins/${_gitname}/zsh-completion-generator.plugin.zsh"
 	install -Dm644 help2comp.py "${pkgdir}/usr/share/zsh/plugins/${_gitname}/help2comp.py"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
