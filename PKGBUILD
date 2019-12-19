@@ -4,7 +4,7 @@
 
 pkgname=vmd
 pkgver=1.9.4a38
-pkgrel=2
+pkgrel=3
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -25,7 +25,7 @@ source=("local://${pkgname}-${pkgver}.bin.LINUXAMD64-CUDA10-OptiX600-RTX-OSPRay1
         "vmd.install"
         "vmd.png")
 sha256sums=("cc6e6fa4f262c86fc0d2bd7b161f37ac5eb3ae05793731709f8d834ef1e5432c"
-            "0a9e9eb60107b64d45923dcedd5ebac1ae655656f032a251bf9628ce8e3d26fa"
+            "942b752e2c9c1d6e3adb55ccdee14d1794640c341ddb7d8d70fb02396dafe81a"
             "f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614"
             "d83f568615ad954f582d986975997186fdacfd8f79c30f49d6aaf07ba2eb6aa7")
 
