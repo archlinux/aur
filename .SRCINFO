@@ -1,0 +1,12 @@
+pkgbase = alerta-webui
+	pkgdesc = A web interface for Alerta
+	pkgver = 7.4.1
+	pkgrel = 1
+	url = https://github.com/alerta/alerta-webui
+	arch = any
+	license = APACHE
+	source = https://github.com/alerta/alerta-webui/releases/download/v7.4.1/alerta-webui.tar.gz
+	sha256sums = 3010b0edd3f5975633cb3d7b40bf4279941728b8661e49973acda8bfa8914ba8
+
+pkgname = alerta-webui
+
