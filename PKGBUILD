@@ -3,15 +3,16 @@
 
 _project_name=pace
 pkgname=${_project_name}-git
-pkgver=1.2.0.1.r2.g3a6a783
+pkgver=1.3.1.r5.g96a8346
 pkgrel=1
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
 license=('GPL3')
 url='https://gitlab.com/softwareperonista/pace'
 depends=('gtksourceview4')
-makedepends=('meson' 'vala')
+makedepends=('meson' 'vala' 'git')
 conflicts=('pace')
+provides=('pace')
 source=('git+https://gitlab.com/softwareperonista/pace.git')
 sha256sums=(SKIP)
 
