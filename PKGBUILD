@@ -33,5 +33,5 @@ package() {
   cp -a $srcdir/opt/workspacesclient/* $pkgdir/usr/share/amazon-workspaces/
 
   # Launcher
-  ln -s $pkgdir/usr/share/amazon-workspaces/workspacesclient $pkgdir/usr/bin/amazon-workspaces
+  ln -s /usr/share/amazon-workspaces/workspacesclient $pkgdir/usr/bin/amazon-workspaces
 }
