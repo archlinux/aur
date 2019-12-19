@@ -1,0 +1,13 @@
+pkgbase = textar
+	pkgdesc = tar-like program for creating plain text archives from plain text files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LHLaurini/textar
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	source = https://github.com/LHLaurini/textar/archive/v0.1.0.tar.gz
+	md5sums = 6596b17e3c72434b6bd60c5e2e3a3a0f
+
+pkgname = textar
+
