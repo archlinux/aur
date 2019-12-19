@@ -1,19 +1,18 @@
 pkgbase = twg
 	pkgdesc = twitter client for CLI
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 9
 	url = https://github.com/syui/twg
 	arch = x86_64
 	arch = i686
 	license = MIT
-	noextract = https://github.com/syui/twg/releases/download/0.2/linux_386_twg
-	noextract = https://github.com/syui/twg/releases/download/0.2/linux_amd64_twg
+	noextract = https://github.com/syui/twg/releases/download/0.3/linux_386_twg
+	noextract = https://github.com/syui/twg/releases/download/0.3/linux_amd64_twg
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/syui/twg/releases/download/0.2/linux_386_twg
-	source = https://github.com/syui/twg/releases/download/0.2/linux_amd64_twg
-	sha1sums = e7202e10d958e1a9ab893fe24765317b18e12609
-	sha1sums = d0de749db19bceb7fbc9212c42e8ecf9a355bc27
+	source = https://github.com/syui/twg/releases/download/0.3/linux_386_twg
+	source = https://github.com/syui/twg/releases/download/0.3/linux_amd64_twg
+	sha1sums = 3607535a2ed940b70cbee15a8c6a661ff33a6536
+	sha1sums = 7c04d3b0c1ce4aac692b10d93009d90c9d1a4531
 
 pkgname = twg
-

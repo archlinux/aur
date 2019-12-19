@@ -1,6 +1,6 @@
 # Maintainer: syui <syui@users.noreply.github.com>
 pkgname=twg
-pkgver=0.2
+pkgver=0.3
 pkgrel=9
 pkgdesc="twitter client for CLI"
 arch=('x86_64' 'i686')
