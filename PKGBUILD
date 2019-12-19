@@ -2,7 +2,7 @@
 _gitname='zsh-completion-generator'
 pkgname="${_gitname}-git"
 pkgver=r35.6eb6392
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugin that generates completion functions automatically from getopt-style help texts."
 arch=('any')
 url="https://github.com/RobSis/zsh-completion-generator"
@@ -22,8 +22,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_gitname}"
-	install -Dm644 zsh-completion-generator.plugin.zsh "${pkgdir}/${HOME}/.zsh/${_gitname}/zsh-completion-generator.plugin.zsh"
-	install -Dm644 help2comp.py "${pkgdir}/${HOME}/.zsh/${_gitname}/help2comp.py"
+	install -Dm755 zsh-completion-generator.plugin.zsh "${pkgdir}/${HOME}/.zsh/${_gitname}/zsh-completion-generator.plugin.zsh"
+	install -Dm755 help2comp.py "${pkgdir}/${HOME}/.zsh/${_gitname}/help2comp.py"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
