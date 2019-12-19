@@ -1,9 +1,9 @@
 # Mantainer: anon@sansorgan.es
 pkgname=proton
 # Upstream version
-_pkgver='4.11-10'
+_pkgver='4.11-11'
 # Arch - no hyphens
-pkgver=4.11.10
+pkgver=4.11.11
 pkgrel=3
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 arch=('x86_64')
@@ -96,4 +96,4 @@ package() {
 	install -m644 build/vrclient.win64/vrclient_x64/vrclient_x64.dll.fake $pkgdir/usr/lib/wine/fakedlls/vrclient_x64.dll
 }
 
-md5sums=('c6027cf10aa3fd7fcbb656355aef9026')
+md5sums=('823636d0419ef2ac2d741ab10d19ab44')
