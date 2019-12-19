@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=amazon-workspaces-bin
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Amazon Workspace Client"
 arch=('i686' 'x86_64')
 url="https://clients.amazonworkspaces.com/"
