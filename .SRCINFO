@@ -1,0 +1,18 @@
+pkgbase = zsh-completion-generator-git
+	pkgdesc = Plugin that generates completion functions automatically from getopt-style help texts.
+	pkgver = r35.6eb6392
+	pkgrel = 1
+	url = https://github.com/RobSis/zsh-completion-generator
+	install = zsh-completion-generator-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = zsh
+	depends = python
+	provides = zsh-completion-generator
+	conflicts = zsh-completion-generator
+	source = git+https://github.com/RobSis/zsh-completion-generator.git
+	sha256sums = SKIP
+
+pkgname = zsh-completion-generator-git
+

@@ -1,0 +1,11 @@
+post_install() {
+	cat<<<"
+Source the script before compinit in your ~/.zshrc:
+
+source /usr/share/zsh/plugins/zsh-completion-generator/zsh-completion-generator.plugin.zsh
+
+...
+
+compinit
+"
+}
