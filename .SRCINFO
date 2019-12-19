@@ -24,8 +24,6 @@ pkgbase = gambas3-eortologioqt5
 	source = https://gitlab.com/psposito/EortologioGambas3/blob/master/gambas3-eortologioqt5.desktop
 	source = https://gitlab.com/psposito/EortologioGambas3/blob/master/EortologioQt5.png
 	sha256sums = af0e7102cfb8b602300fe137288ffd33fca3c7759eba4330c17923d1e57120ff
-	sha256sums = d186d64b5a7ff156663c7a2b71577447f3a4cf5f3ef6a1fe6fa6e6a49e2b4388
-	sha256sums = f3cdb1ae74991190ab75eaf1a69b0aa35468681f2133fdcc428445e7d86e3ab1
 
 pkgname = gambas3-eortologioqt5
 
