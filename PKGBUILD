@@ -6,14 +6,14 @@ pkgrel=1
 pkgdesc="This plugin defines a function called extract that extracts the archive file you pass it, and it supports a wide variety of archive filetypes."
 arch=(any)
 url=https://github.com/le0me55i/zsh-extract
-license=(custom)
+license=(custom:MIT)
 depends=(zsh)
 makedepends=(git)
 provides=(zsh-extract)
 conflicts=(zsh-extract)
 source=(git+https://github.com/le0me55i/zsh-extract)
 install=zsh-extract-git.install
-sha256sum=(SKIP)
+sha256sum=('SKIP')
 
 pkgver() {
 	cd "$_gitname"
