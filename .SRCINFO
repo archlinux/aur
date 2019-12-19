@@ -1,0 +1,23 @@
+pkgbase = gnome-packagekit-git
+	pkgdesc = Collection of graphical tools for PackageKit to be used in the GNOME desktop
+	pkgver = 3.32.0+5+gfcd32a84
+	pkgrel = 1
+	url = http://www.packagekit.org/
+	install = gnome-packagekit.install
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = libcanberra
+	depends = desktop-file-utils
+	depends = gtk3
+	depends = libnotify
+	depends = packagekit
+	provides = gnome-packagekit
+	conflicts = gnome-packagekit
+	source = git+https://gitlab.gnome.org/GNOME/gnome-packagekit
+	sha256sums = SKIP
+
+pkgname = gnome-packagekit-git
+
