@@ -2,7 +2,7 @@
 _gitname='zsh-completion-generator'
 pkgname="${_gitname}-git"
 pkgver=r35.6eb6392
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin that generates completion functions automatically from getopt-style help texts."
 arch=('any')
 url="https://github.com/RobSis/zsh-completion-generator"
