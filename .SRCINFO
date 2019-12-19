@@ -1,6 +1,6 @@
 pkgbase = platon
 	pkgdesc = A Multipurpose Crystallographic Tool
-	pkgver = 2019.12.16
+	pkgver = 191219
 	pkgrel = 1
 	url = http://www.cryst.chem.uu.nl/spek/platon
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = platon
 	depends = gcc-libs
 	depends = libx11
 	source = https://www.platonsoft.nl/spek/xraysoft/unix/platon.tar.gz
-	sha256sums = 3f05cc40c9cf903195a2788d0e77497ee0e38b14b0869aba57ab60097628eb4e
+	sha256sums = SKIP
 
 pkgname = platon
 
