@@ -1,4 +1,4 @@
-pkgbase = gambas3-eortologio-qt5
+pkgbase = gambas3-eortologioqt5
 	pkgdesc = Ελληνικό Εορτολόγιο - Greek Feasts Calendar
 	pkgver = 1.0.10
 	pkgrel = 1
