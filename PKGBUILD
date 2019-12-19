@@ -2,7 +2,7 @@
 
 _name=terser
 pkgname=nodejs-$_name
-pkgver=4.4.0
+pkgver=4.4.3
 pkgrel=1
 pkgdesc='JavaScript parser, mangler/compressor and beautifier toolkit for ES6+'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('nodejs')
 makedepends=('jq' 'npm')
 source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
-sha256sums=('2bf0364d7012cc208096235bf513f35a9e3afbfea276f8ad4107c4d3d1541ca5')
+sha256sums=('6a53134ddbb9d1dcc5db3f28804502f23cb3c6c742c6efa29dfb9016e381a55a')
 
 package() {
   npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_name-$pkgver.tgz"
