@@ -4,7 +4,7 @@
 
 pkgname=kinit
 pkgver=5.65.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Process launcher to speed up launching KDE applications'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
