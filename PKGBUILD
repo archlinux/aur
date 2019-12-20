@@ -1,9 +1,8 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=srt-git
-_srcname=srt
-pkgver=1.3.2.r58.g11feba2
+pkgver=1.4.1.r16.g8519cb68
 pkgrel=1
 pkgdesc='Secure Reliable Transport - transport technology that optimizes streaming performance across unpredictable networks (git version)'
 arch=('x86_64')
@@ -14,51 +13,36 @@ makedepends=('git' 'cmake')
 provides=('srt')
 conflicts=('srt')
 source=('git+https://github.com/Haivision/srt.git'
-        'srt-git-remove-insecure-rpath.patch')
+        '010-srt-git-remove-insecure-rpath.patch')
 sha256sums=('SKIP'
-            'b96008ed593f893b1051191483f9aea0f58703bc6d5074537a6ea740120c0bf6')
+            'dbe07877e49f5894f70c195b67177645e39a6a0cda3f2ba356cc82240e4f91a9')
 
 prepare() {
-    cd "$_srcname"
-    
-    mkdir -p build
-    
-    # remove insecure rpath
-    patch -Np1 -i "${srcdir}/srt-git-remove-insecure-rpath.patch"
+    patch -d srt -Np1 -i "${srcdir}/010-srt-git-remove-insecure-rpath.patch"
 }
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
+    cd srt
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "${_srcname}/build"
-    
-    cmake \
+    cmake -B build -S srt \
         -DCMAKE_INSTALL_BINDIR:PATH='bin' \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include' \
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_TESTING='True' \
-        -Wno-dev \
-        ..
-        
-    make
+        -Wno-dev
+    make -C build
 }
 
 check() {
-    cd "${_srcname}/build"
-    
-    ./utility-test
+    build/uriparser-test
+    build/utility-test
 }
 
 package() {
-    cd "${_srcname}/build"
-    
-    make DESTDIR="$pkgdir" install
-    
-    rm "$pkgdir"/usr/bin/*-test
+    make -C build DESTDIR="$pkgdir" install
+    rm "$pkgdir"/usr/bin/*-test{,-*}
 }

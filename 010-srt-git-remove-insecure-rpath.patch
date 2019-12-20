@@ -1,7 +1,7 @@
 diff -Naurp a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2019-06-01 14:58:09.000000000 +0000
-+++ b/CMakeLists.txt	2019-05-31 15:30:35.000000000 +0000
-@@ -706,7 +706,6 @@ macro(srt_make_application name)
+--- a/CMakeLists.txt	2019-12-20 20:36:43.000000000 +0000
++++ b/CMakeLists.txt	2019-12-20 20:36:44.000000000 +0000
+@@ -833,7 +833,6 @@ macro(srt_make_application name)
  		# be placed into the binrary directory anyway.
  		# XXX not sure about Mac.
  		# See this name used already in install(${TARGET_srt} LIBRARY DESTINATION...).
