@@ -1,8 +1,8 @@
 # Maintainer: KingofToasters <themanhimself at sgregoratto dot me>
 pkgname=otpclient
 _pkgname=OTPClient
-pkgver=1.4.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A simple GTK+ v3 TOTP/HOTP client"
 url="https://github.com/paolostivanin/OTPClient"
 license=('GPL3')
@@ -13,7 +13,7 @@ provides=(otpclient)
 validpgpkeys=('060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64')
 source=("$url/archive/v$pkgver.tar.gz" 
 	"$url/releases/download/v$pkgver/v$pkgver.tar.gz.asc")
-sha256sums=('f8f814653f3301efc86409530439f86652a6d500d6615eab28b60a219bbf3e17'
+sha256sums=('51086c6e8599d1fae80158406dfd35edd538359f8a7c569692bd864e2549bf0e'
             'SKIP')
 
 build() {
