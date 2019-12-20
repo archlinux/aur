@@ -1,0 +1,13 @@
+pkgbase = koushin-git
+	pkgdesc = A simple Webmail in Go
+	pkgver = r104.d36ec52
+	pkgrel = 1
+	url = https://git.sr.ht/~emersion/koushin
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	source = koushin-git::git+https://git.sr.ht/~emersion/koushin
+	sha256sums = SKIP
+
+pkgname = koushin-git
+
