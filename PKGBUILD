@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.7.r616.6388c9807
+pkgver=0.0.7.r618.95f363c17
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -41,6 +41,7 @@ makedepends=(
   libglvnd
   python
   vulkan-validation-layers
+  xorgproto
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
