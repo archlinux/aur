@@ -5,7 +5,7 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_r2757_g4251ab7c8
+pkgver=1.0_r2887_gebac51e6a
 pkgrel=1
 pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://openxcom.org/"
 license=('GPL3')
 makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
              'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
-             'boost' 'glu' 'cmake' 'hicolor-icon-theme')
+             'boost' 'glu' 'cmake' 'hicolor-icon-theme' 'xorgproto')
 source=(git+"https://github.com/SupSuper/${_gitname}.git")
 sha256sums=('SKIP')
 
