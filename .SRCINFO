@@ -1,0 +1,12 @@
+pkgbase = proxyman-git
+	pkgdesc = Configuring proxy made so simple on Linux
+	pkgver = r186.1bd3dfc
+	pkgrel = 1
+	url = https://github.com/himanshub16/ProxyMan
+	arch = any
+	license = unknown
+	source = proxyman-git::git+https://github.com/himanshub16/ProxyMan.git
+	sha512sums = SKIP
+
+pkgname = proxyman-git
+
