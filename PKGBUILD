@@ -2,7 +2,7 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 pkgname=swamp-wine
 pkgver=3.8C
-pkgrel=2
+pkgrel=3
 pkgdesc="First-person Audio Shooter"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://kaldobsky.com/audiogames"
@@ -19,7 +19,7 @@ source=('https://kaldobsky.com/audiogames/Swamp.zip'
         'swamp.desktop')
 md5sums=('57b40c8eb603ce0d4afdcdb0ab0d5df6'
          '831198b7160219381e6a5cedc0412eef'
-         '5f057a09fe8f0d8e21e7636a3a33a184')
+         '34dc658b23e7411ee8af44d01b4877f1')
 noextract=('Swamp.zip')
 
 prepare() {
