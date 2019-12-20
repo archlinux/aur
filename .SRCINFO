@@ -1,6 +1,6 @@
 pkgbase = vlc-bittorrent
 	pkgdesc = A bittorrent plugin for VLC.
-	pkgver = 2.7
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://github.com/johang/vlc-bittorrent
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = vlc-bittorrent
 	makedepends = boost
 	depends = vlc
 	depends = libtorrent-rasterbar
-	source = https://github.com/johang/vlc-bittorrent/archive/v2.7.tar.gz
-	sha256sums = c5ff53ae133cb7f2bd929f8dea972a3cb6e4996f447216567240723dd5d694ce
+	source = https://github.com/johang/vlc-bittorrent/archive/v2.8.tar.gz
+	sha256sums = 9f0d7c17900793db9cf09509b34cddbd4545fb7fa2a048c6cc9665adc9dca809
 
 pkgname = vlc-bittorrent
 
