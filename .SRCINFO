@@ -1,7 +1,7 @@
 pkgbase = paraview-opt
 	pkgdesc = Parallel Visualization application using VTK (openmpi version): installed to /opt/
 	pkgver = 5.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.paraview.org
 	arch = x86_64
 	license = BSD

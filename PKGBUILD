@@ -9,18 +9,18 @@
 # Contributor: Michele Mocciola <mickele>
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 # Contributor: chuckdaniels
-# shellcheck disable=SC2034
+# shellcheck disable=SC2034,SC2154,SC2164
 
 _pkg=paraview
 _mpi=openmpi
 pkgname=${_pkg}-opt
 #-${_mpi}
 pkgver=5.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel Visualization application using VTK (${_mpi} version): installed to /opt/"
 arch=(x86_64)
-provides=(${_pkg})
-conflicts=(${_pkg})
+provides=("${_pkg}")
+conflicts=("${_pkg}")
 url="https://www.paraview.org"
 license=(BSD custom)
 depends=(boost-libs qt5-tools qt5-x11extras intel-tbb openmpi ffmpeg ospray
@@ -46,7 +46,7 @@ sha256sums=('e41e597e1be462974a03031380d9e5ba9a7efcdb22e4ca2f3fec50361f310874'
 
 prepare() {
     mkdir -p build
-    patch -Np0 -i ${srcdir}/paraview-system-pugixml.patch
+    patch -Np0 -i "${srcdir}/paraview-system-pugixml.patch"
     patch -d "$srcdir"/ParaView-v${pkgver}/VTK -p1 -i "$srcdir"/vtk-python-3.8.patch # Fix build with python 3.8
     patch -d "$srcdir"/ParaView-v${pkgver}/VTK/ThirdParty/h5part/vtkh5part/ -p1 -i "$srcdir"/h5part-with-mpi.patch # Fix https://bugs.archlinux.org/task/64545
 }
@@ -98,6 +98,7 @@ build() {
         ${VTK_USE_SYSTEM_LIB} \
         -GNinja
 
+    export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
     ninja ${MAKEFLAGS}
 }
 
@@ -106,7 +107,9 @@ package() {
 
     DESTDIR="${pkgdir}" ninja install
 
-    # Install license
+    # move licence, doc, desktop shortcut and icons to /usr/share.
+    install -dm755 "${pkgdir}"/usr/share
+    mv "${pkgdir}"/opt/paraview/share/* "${pkgdir}"/usr/share/ && rmdir "${pkgdir}"/opt/paraview/share
     install -Dm644 "${srcdir}"/ParaView-v${pkgver}/License_v1.2.txt "${pkgdir}"/usr/share/licenses/paraview/LICENSE
 
     # add paraview to PATH
