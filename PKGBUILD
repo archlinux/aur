@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_glslang_commit='4b5159ea8170fa34e29f13448fddebf88e0a722a'
-_spirv_tools_commit='bbb29870b510f83f99994358179c9ea6838c3100'
-_spirv_headers_commit='601d738723ac381741311c6c98c36d6170be14a2'
+_glslang_commit='a4af7676feb011d61b1dfa8915bd41d9c5aaf22a'
+_spirv_tools_commit='e82a428605f6ce0a07337b36f8ba3935c9f165ac'
+_spirv_headers_commit='204cd131c42b90d129073719f2766293ce35c081'
 
 pkgname=spirv-cross
-pkgver=2019.11.01
+pkgver=2019.12.15
 pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
@@ -23,13 +23,11 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    cd SPIRV-Cross
+    mkdir -p SPIRV-Cross/external/{glslang,spirv-tools}
     
-    mkdir -p build external/{glslang,spirv-tools}-build
-    
-    ln -sf "${srcdir}/glslang"       external/glslang
-    ln -sf "${srcdir}/SPIRV-Tools"   external/spirv-tools
-    ln -sf "${srcdir}/SPIRV-Headers" "${srcdir}/SPIRV-Tools/external/spirv-headers"
+    ln -sf "${srcdir}/glslang"       SPIRV-Cross/external/glslang
+    ln -sf "${srcdir}/SPIRV-Tools"   SPIRV-Cross/external/spirv-tools
+    ln -sf "${srcdir}/SPIRV-Headers" SPIRV-Tools/external/spirv-headers
 }
 
 build() {
@@ -37,41 +35,35 @@ build() {
     
     # glslang (required for tests)
     printf '%s\n' '  -> Building glslang...'
-    cd SPIRV-Cross/external/glslang-build
-    cmake \
+    cmake -B SPIRV-Cross/external/glslang-build -S glslang \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='output' \
-        -Wno-dev \
-        ../glslang
-    cmake --build . --config Release --target install
+        -Wno-dev
+    cmake --build SPIRV-Cross/external/glslang-build --config Release --target install
     
     # spirv-tools (required for tests)
     printf '%s\n' '  -> Building SPIRV-Tools...'
-    cd "${srcdir}/SPIRV-Cross/external/spirv-tools-build"
-    cmake \
+    cmake -B SPIRV-Cross/external/spirv-tools-build -S SPIRV-Tools \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DSPIRV_WERROR:BOOL='OFF' \
         -DCMAKE_INSTALL_PREFIX:PATH='output' \
-        -Wno-dev \
-        ../spirv-tools
-    cmake --build . --config Release --target install
+        -Wno-dev
+    cmake --build SPIRV-Cross/external/spirv-tools-build --config Release --target install
     
     # spirv-cross
     printf '%s\n' '  -> Building SPIRV-Cross...'
-    cd "${srcdir}/SPIRV-Cross/build"
-    cmake \
+    cmake -B build-SPIRV-Cross -S SPIRV-Cross \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DSPIRV_CROSS_SHARED:BOOL='ON' \
-        -Wno-dev \
-        ..
-    make
+        -Wno-dev
+    make -C build-SPIRV-Cross
 }
 
 check() {
-    make -C SPIRV-Cross/build test
+    make -C build-SPIRV-Cross test
 }
 
 package() {
-    make -C SPIRV-Cross/build DESTDIR="$pkgdir" install
+    make -C build-SPIRV-Cross DESTDIR="$pkgdir" install
 }
