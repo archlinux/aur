@@ -1,7 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r34
+pkgver=r35
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
@@ -19,10 +19,8 @@ replaces=()
 options=()
 install=
 changelog=
-source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip"
-	"https://raw.githubusercontent.com/commanderx16/x16-emulator/$pkgver/github-pandoc.css")
-md5sums=('bab658e13f98644719a121c1fcc61825'
-         '3accdbadaf70264c743b1f655f5dc146')
+source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip")
+md5sums=('f53fb45268d7ad79860901298e99b0b7')
 
 package_x16-emulator-bin() {
 	pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
@@ -33,7 +31,7 @@ package_x16-emulator-bin() {
 	conflicts=('x16-emulator')
 
 	install -Dm755 x16emu "$pkgdir/usr/bin/x16emu"
-	install -Dm644 github-pandoc.css "$pkgdir/usr/share/doc/$pkgname/github-pandoc.css"
+	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/$pkgname/github-pandoc.css"
 	install -Dm644 docs/README.html "$pkgdir/usr/share/doc/$pkgname/README.html"
 }
 
@@ -44,7 +42,7 @@ package_x16-rom-bin() {
 
 	install -Dm644 rom.bin "$pkgdir/usr/share/x16-rom/rom.bin"
 	install -Dm644 rom.sym "$pkgdir/usr/share/x16-rom/rom.sym"
-	install -Dm644 github-pandoc.css "$pkgdir/usr/share/doc/x16-rom/github-pandoc.css"
+	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-rom/github-pandoc.css"
 	install -Dm644 docs/KERNAL-BASIC.html "$pkgdir/usr/share/doc/x16-rom/KERNAL-BASIC.html"
 }
 
@@ -53,7 +51,7 @@ package_x16-docs-bin() {
 	provides=('x16-docs')
 	conflicts=('x16-docs')
 
-	install -Dm644 github-pandoc.css "$pkgdir/usr/share/doc/x16-docs/github-pandoc.css"
+	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-docs/github-pandoc.css"
 	install -Dm644 docs/Programmer\'s\ Reference\ Guide.html "$pkgdir/usr/share/doc/x16-docs/Programmer's Reference Guide.html"
 	install -Dm644 docs/VERA\ Programmer\'s\ Reference.html "$pkgdir/usr/share/doc/x16-docs/VERA Programmer's Reference.html"
 }
