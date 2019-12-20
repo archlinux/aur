@@ -1,0 +1,11 @@
+diff -Naur a/src/lomoco.h b/src/lomoco.h
+--- a/src/lomoco.h	2006-03-01 15:10:05.000000000 +0100
++++ b/src/lomoco.h	2019-12-20 11:49:30.864705621 +0100
+@@ -29,7 +29,6 @@
+ #include <assert.h>
+ #include <stdlib.h>
+ #include <stdio.h>
+-#include <stropts.h>
+ #include <string.h>
+ #include <signal.h>
+ #include <sys/types.h>

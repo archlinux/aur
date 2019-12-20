@@ -1,7 +1,7 @@
 pkgbase = lomoco
 	pkgdesc = Logitech USB mouse configuration program
 	pkgver = 1.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://launchpad.net/ubuntu/+source/lomoco
 	arch = x86_64
 	license = GPL
@@ -13,11 +13,13 @@ pkgbase = lomoco
 	source = lomoco_mxair.patch::https://bugs.archlinux.org/task/36657?getfile=10920
 	source = lomoco_mouse.conf
 	source = lomoco.sh
+	source = 0001_stropts.patch
 	md5sums = f5197d0a3ee81229c3eecc1e03f7b08d
 	md5sums = b616b29dfe183b74f43072c22a470b8b
 	md5sums = d0390dfcadae6e54a4af3e6227d24201
 	md5sums = 182b10a7e4a1828a93c1d55ef7f81b97
 	md5sums = bc92f661641265b33b27895ef24028fd
+	md5sums = c1b46fc882b4aa5b5d6d0a86b433ca19
 
 pkgname = lomoco
 
