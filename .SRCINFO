@@ -1,7 +1,7 @@
 pkgbase = nushell-bin
 	pkgdesc = A shell for the GitHub era
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = http://nushell.sh
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = nushell-bin
 	optdepends = libxcb
 	optdepends = libx11
 	conflicts = nushell
-	source = nushell-bin-0.6.0.tar.gz::https://github.com/nushell/nushell/releases/download/0.6.0/nu_0_6_0_linux.tar.gz
+	source = nushell-bin-0.7.0.tar.gz::https://github.com/nushell/nushell/releases/download/0.7.0/nu_0_7_0_linux.tar.gz
 	source = nu-wrapper
-	sha256sums = 1146d27a7554931354d916a11f99eb559e8f0bf5d2cf39aff1231fe01ea23151
+	sha256sums = 5b6e90dd395d45c004f9c90a9e1a908b78ebbdbe1ef228e8ada26bc92301cfac
 	sha256sums = 7833deeeb802bd9f6a11c7509cf930efc3c7e8ef314b56b9df022b90ca42c5f6
 
 pkgname = nushell-bin

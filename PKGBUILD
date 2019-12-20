@@ -2,9 +2,9 @@
 # Based on nushell package, but uses prebuilt binary
 
 pkgname=nushell-bin
-pkgver=0.6.0
-_underscoredpkgver=0_6_0
-pkgrel=2
+pkgver=0.7.0
+_underscoredpkgver=0_7_0
+pkgrel=1
 depends=('zlib')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/releases/do
         'nu-wrapper')
 url="http://nushell.sh"
 license=('MIT')
-sha256sums=('1146d27a7554931354d916a11f99eb559e8f0bf5d2cf39aff1231fe01ea23151'
+sha256sums=('5b6e90dd395d45c004f9c90a9e1a908b78ebbdbe1ef228e8ada26bc92301cfac'
             '7833deeeb802bd9f6a11c7509cf930efc3c7e8ef314b56b9df022b90ca42c5f6')
 
 build() {
@@ -25,7 +25,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin/"
   cp "${srcdir}/nu-wrapper" "${pkgdir}/usr/bin/nu"
 
-  cd "$srcdir/nushell_${_underscoredpkgver}"
+  cd "$srcdir/nu_${_underscoredpkgver}_linux/nushell_${_underscoredpkgver}"
 
   install -dm755 "${pkgdir}/usr/lib/nushell"
 
