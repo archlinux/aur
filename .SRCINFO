@@ -1,6 +1,6 @@
 pkgbase = task-maker-rust-git
 	pkgdesc = The new cmsMake
-	pkgver = r251.f2a5826
+	pkgver = r273.4137956
 	pkgrel = 1
 	url = https://github.com/edomora97/task-maker-rust
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = task-maker-rust-git
 	license = MPL2
 	makedepends = cargo
 	optdepends = texlive-core: booklet compilations
+	provides = task-maker-rust
+	conflicts = task-maker-rust
 	source = git+https://github.com/edomora97/task-maker-rust.git
 	sha384sums = SKIP
 
