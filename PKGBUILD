@@ -2,7 +2,7 @@
 # Maintainer: rapiz <contact@rapiz.me>
 # Maintainer: lxs137 <lxs137@hotmail.com>
 pkgname=petal-bin
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 epoch=
 pkgdesc="A Douban.FM Client With Extra"
@@ -29,7 +29,7 @@ source=("https://github.com/ilime/Petal/releases/download/v$pkgver/Petal-$pkgver
 )
 noextract=()
 validpgpkeys=()
-md5sums=('60468b810d09e6f48ca271e677dbb85d'
+md5sums=('b3b467e5edc386771dc40fd549429238'
          'cebd0dda9b913e6254f5e09a257955bb'
          'e3da3170012174fea78d060f9f77f0e5'
          'e946f427355b1a85454b74e7ca918072'
