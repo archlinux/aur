@@ -1,5 +1,5 @@
 diff --git i/tests/camera.c w/tests/camera.c
-index 4ef0176..197e77d 100644
+index 4fefbe4..7957d72 100644
 --- i/tests/camera.c
 +++ w/tests/camera.c
 @@ -239,29 +239,31 @@ test_camera_lockdown (void)
@@ -24,7 +24,7 @@ index 4ef0176..197e77d 100644
    portal = xdp_portal_new ();
  
    got_info = 0;
-   xdp_portal_access_camera (portal, NULL, NULL, camera_cb, keyfile);
+   xdp_portal_access_camera (portal, NULL, 0, NULL, camera_cb, keyfile);
  
    while (!got_info)
      g_main_context_iteration (NULL, TRUE);
@@ -35,7 +35,7 @@ index 4ef0176..197e77d 100644
  
  /* Test the effect of the user denying the access dialog */
 diff --git i/tests/filechooser.c w/tests/filechooser.c
-index 0cb4f41..a60f736 100644
+index a5f9b2c..799f24b 100644
 --- i/tests/filechooser.c
 +++ w/tests/filechooser.c
 @@ -871,29 +871,31 @@ test_save_file_lockdown (void)
@@ -60,7 +60,7 @@ index 0cb4f41..a60f736 100644
    portal = xdp_portal_new ();
  
    got_info = 0;
-   xdp_portal_save_file (portal, NULL, "test", FALSE, "test_file.txt", NULL, NULL, NULL, NULL, NULL, NULL, save_file_cb, keyfile);
+   xdp_portal_save_file (portal, NULL, "test", "test_file.txt", NULL, NULL, NULL, NULL, NULL, 0, NULL, save_file_cb, keyfile);
  
    while (!got_info)
      g_main_context_iteration (NULL, TRUE);
@@ -71,7 +71,7 @@ index 0cb4f41..a60f736 100644
  
  void
 diff --git i/tests/location.c w/tests/location.c
-index 207ed3f..ced3406 100644
+index 0395f77..89cdef6 100644
 --- i/tests/location.c
 +++ w/tests/location.c
 @@ -30,10 +30,8 @@ test_location_basic (void)
@@ -97,10 +97,10 @@ index 207ed3f..ced3406 100644
    portal = xdp_portal_new ();
  
 diff --git i/tests/openuri.c w/tests/openuri.c
-index cacf1f8..c252696 100644
+index ddff074..ba02bfd 100644
 --- i/tests/openuri.c
 +++ w/tests/openuri.c
-@@ -328,28 +328,30 @@ test_open_uri_lockdown (void)
+@@ -366,28 +366,30 @@ test_open_uri_lockdown (void)
    g_autofree char *path = NULL;
  
    xdp_impl_lockdown_set_disable_application_handlers (lockdown, TRUE);
@@ -121,7 +121,7 @@ index cacf1f8..c252696 100644
    portal = xdp_portal_new ();
  
    got_info = 0;
-   xdp_portal_open_uri (portal, NULL, "http://www.flatpak.org", FALSE, NULL, open_uri_cb, keyfile);
+   xdp_portal_open_uri (portal, NULL, "http://www.flatpak.org", 0, NULL, open_uri_cb, keyfile);
  
    while (!got_info)
      g_main_context_iteration (NULL, TRUE);
@@ -132,7 +132,7 @@ index cacf1f8..c252696 100644
  
  static void
 diff --git i/tests/print.c w/tests/print.c
-index 3effde8..4a77359 100644
+index 1b9be72..ddcac42 100644
 --- i/tests/print.c
 +++ w/tests/print.c
 @@ -187,28 +187,30 @@ test_prepare_print_lockdown (void)
@@ -156,7 +156,7 @@ index 3effde8..4a77359 100644
    portal = xdp_portal_new ();
  
    got_info = 0;
-   xdp_portal_prepare_print (portal, NULL, "test", FALSE, NULL, NULL, NULL, prepare_cb, keyfile);
+   xdp_portal_prepare_print (portal, NULL, "test", NULL, NULL, 0, NULL, prepare_cb, keyfile);
  
    while (!got_info)
      g_main_context_iteration (NULL, TRUE);
@@ -187,7 +187,7 @@ index 3effde8..4a77359 100644
    portal = xdp_portal_new ();
  
    got_info = 0;
-   xdp_portal_print_file (portal, NULL, "test", FALSE, 0, path, NULL, print_cb, keyfile);
+   xdp_portal_print_file (portal, NULL, "test", 0, path, 0, NULL, print_cb, keyfile);
  
    while (!got_info)
      g_main_context_iteration (NULL, TRUE);
