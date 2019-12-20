@@ -6,8 +6,8 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgbase=networkmanager-iwd
-pkgname=(networkmanager-iwd libnm-iwd)
-pkgver=1.20.8
+pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -19,17 +19,17 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs dhcpcd iwd dnsmasq systemd-resolvconf libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_prefixver=1.20
-source=("https://download.gnome.org/sources/NetworkManager/$_prefixver/NetworkManager-$pkgver.tar.xz")
-sha256sums=("ad14e22a8dfcb76be795445e662f68a6604192da89b04aee66ab785e44b757c6")
+_commit=7fe734f8bc0661ff476204a034eb987df43ee461  # tags/1.22.0^0
+source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit")
+sha256sums=("SKIP")
 
-#pkgver() {
-#  cd NetworkManager-$pkgver
-#  git describe | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
-#}
+pkgver() {
+  cd NetworkManager
+  git describe | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
+}
 
 prepare() {
-  cd NetworkManager-$pkgver
+  cd NetworkManager
 }
 
 build() {
@@ -44,6 +44,7 @@ build() {
     -D iwd=true
     -D pppd_plugin_dir=/usr/lib/pppd/$_pppver
     -D teamdctl=true
+    -D nm_cloud_setup=true
     -D bluez5_dun=true
     -D ebpf=true
     -D config_plugins_default=keyfile
@@ -54,7 +55,7 @@ build() {
     -D qt=false
   )
 
-  arch-meson NetworkManager-$pkgver build "${meson_args[@]}"
+  arch-meson NetworkManager build "${meson_args[@]}"
   ninja -C build
 }
 
@@ -76,7 +77,7 @@ _pick() {
 
 package_networkmanager-iwd() {
   depends=(libnm-iwd iproute2 polkit iwd libmm-glib libnewt libndp libteam curl
-           bluez-libs libpsl audit)
+           bluez-libs libpsl audit mobile-broadband-provider-info)
   provides=("networkmanager")
   conflicts=("networkmanager")
   optdepends=('dnsmasq: connection sharing'
@@ -116,7 +117,9 @@ After=systemd-udevd.service
 Before=NetworkManager.service
 END
 
-### Split libnm
+  shopt -s globstar
+
+  ### Split libnm
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
   _pick libnm "$pkgdir"/usr/lib/libnm.*
@@ -124,6 +127,12 @@ END
   _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
   _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
   _pick libnm "$pkgdir"/usr/share/vala/vapi/libnm.*
+
+  ### Split nm-cloud-setup
+  _pick nm-cloud-setup "$pkgdir"/usr/lib/**/*nm-cloud-setup*
+
+  # Restore empty dir
+  mkdir "$pkgdir/usr/lib/NetworkManager/dispatcher.d/no-wait.d"
 }
 
 package_libnm-iwd() {
@@ -132,4 +141,12 @@ package_libnm-iwd() {
   provides=("libnm")
   conflicts=("libnm")
   mv libnm/* "$pkgdir"
+}
+
+package_nm-iwd-cloud-setup() {
+  pkgdesc="Automatically configure NetworkManager in cloud"
+  depends=(networkmanager-iwd)
+  provides=("nm-cloud-setup")
+  conflicts=("nm-cloud-setup")
+  mv nm-cloud-setup/* "$pkgdir"
 }

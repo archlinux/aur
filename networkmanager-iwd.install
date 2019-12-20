@@ -13,9 +13,9 @@ _post_uninstall_message() {
     echo "    systemctl disable iwd.service"
     echo
     echo ">>> If you are replacing upstream networkmanager, do not forget to"
-    echo ">>> install libnm also:"
+    echo ">>> install libnm and nm-cloud-setup also:"
     echo
-    echo "    pacman -Syu networkmanager libnm"
+    echo "    pacman -Syu networkmanager libnm nm-cloud-setup"
 }
 
 post_install() {

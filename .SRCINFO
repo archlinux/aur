@@ -1,6 +1,6 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency
-	pkgver = 1.20.8
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
@@ -39,8 +39,8 @@ pkgbase = networkmanager-iwd
 	makedepends = libpsl
 	makedepends = audit
 	makedepends = meson
-	source = https://download.gnome.org/sources/NetworkManager/1.20/NetworkManager-1.20.8.tar.xz
-	sha256sums = ad14e22a8dfcb76be795445e662f68a6604192da89b04aee66ab785e44b757c6
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=7fe734f8bc0661ff476204a034eb987df43ee461
+	sha256sums = SKIP
 
 pkgname = networkmanager-iwd
 	install = networkmanager-iwd.install
@@ -57,6 +57,7 @@ pkgname = networkmanager-iwd
 	depends = bluez-libs
 	depends = libpsl
 	depends = audit
+	depends = mobile-broadband-provider-info
 	optdepends = dnsmasq: connection sharing
 	optdepends = bluez: Bluetooth support
 	optdepends = ppp: dialup connection support
@@ -74,4 +75,10 @@ pkgname = libnm-iwd
 	depends = systemd-libs
 	provides = libnm
 	conflicts = libnm
+
+pkgname = nm-iwd-cloud-setup
+	pkgdesc = Automatically configure NetworkManager in cloud
+	depends = networkmanager-iwd
+	provides = nm-cloud-setup
+	conflicts = nm-cloud-setup
 
