@@ -1,6 +1,6 @@
 pkgbase = zramswap
 	pkgdesc = Sets up zram-based swap devices on boot
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = http://en.wikipedia.org/wiki/ZRam
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = zramswap
 	source = zramctrl
 	source = zramswap.conf
 	source = zramswap.service
-	md5sums = cc76c38d050983583cd7db06bbf14dbe
+	md5sums = fa0b8339c91cb2a45c57671839c46116
 	md5sums = 20f7b479830c9511b972268df8479c26
 	md5sums = a6c029dc942c85704b0f6ac1ca078a24
 
