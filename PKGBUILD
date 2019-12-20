@@ -85,26 +85,25 @@ _remove_static_objects_mkl=false
 _remove_static_objects_ipp=false
 ########################################
 
-_year='2019'
-_v_a='5'
-_v_b='281'
+_year='2020'
+_v_a='0'
+_v_b='166'
 # year, version a and version b found in /opt/intel/compilers_and_libraries_YEAR_A_B
 
-_update='5'
+_update=''
 
-pkgrel=3
-
+pkgrel=1
 
 _sp='cluster_edition'
-_icc_ver='19.0.5'
-_vtune_ver='2019.6.0.602217'
-_inspector_ver='2019.5.0.602103'
-_advisor_ver='2019.5.0.602216'
+_icc_ver='19.1.0'
+_vtune_ver='2020.0.0.605129'
+_inspector_ver='2020.0.0.603904'
+_advisor_ver='2020.0.0.604394'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
 # package download folders
-_dir_nr='15809'
+_dir_nr='16225'
 
 options=(strip libtool staticlibs)
 
@@ -136,7 +135,7 @@ source=(
   'EULA.txt'
 )
 
-sha256sums=('c03421de616bd4e640ed25ce4103ec9c5c85768a940a5cb5bd1e97b45be33904'
+sha256sums=('573b1d20707d68ce85b70934cfad15b5ad9cc14124a261c17ddd7717ba842c64'
             '0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b'
             '12f932f99e6d3ee9dd828b95e630f096a9e58707db39bea15fba22a1ad80f211'
             '63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd'
@@ -400,11 +399,6 @@ package_intel-compiler-base() {
     sed -i 's/<PRODDIR>/\/opt\/intel/g' $f
     sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" $f
   done
-
-  cd $_i_arch
-  sed -i "s/<INSTALLDIR>/\/opt\/intel\/${_composer_xe_dir}\/linux/g" loopprofileviewer.sh
-  chmod a+x loopprofileviewer.sh
-  rm loopprofileviewer.csh
 
   msg2 "Copying man pages"
   mv ${xe_build_dir}/opt/intel/documentation_${_year}/en/man/common/man1/*.1 ${_man_dir}

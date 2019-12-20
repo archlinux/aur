@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
-	pkgver = 2019.5.281
-	pkgrel = 3
+	pkgver = 2020.0.166
+	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = intel-parallel-studio-xe
 	options = strip
 	options = libtool
 	options = staticlibs
-	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15809/parallel_studio_xe_2019_update5_cluster_edition.tgz
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16225/parallel_studio_xe_2020_cluster_edition.tgz
 	source = intel_compilers.sh
 	source = intel_vtune-profiler.sh
 	source = intel_advisor.sh
@@ -32,7 +32,7 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-mkl-th.conf
 	source = intel-tbb.install
 	source = EULA.txt
-	sha256sums = c03421de616bd4e640ed25ce4103ec9c5c85768a940a5cb5bd1e97b45be33904
+	sha256sums = 573b1d20707d68ce85b70934cfad15b5ad9cc14124a261c17ddd7717ba842c64
 	sha256sums = 0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b
 	sha256sums = 12f932f99e6d3ee9dd828b95e630f096a9e58707db39bea15fba22a1ad80f211
 	sha256sums = 63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd
@@ -52,22 +52,22 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
 pkgname = intel-common-libs
-	pkgdesc = Intel Common Libraries 19.0.5
+	pkgdesc = Intel Common Libraries 19.1.0
 
 pkgname = intel-openmp
-	pkgdesc = Intel OpenMP Implementation 19.0.5
-	depends = intel-common-libs=2019.5.281
+	pkgdesc = Intel OpenMP Implementation 19.1.0
+	depends = intel-common-libs=2020.0.166
 
 pkgname = intel-compiler-base
-	pkgdesc = Intel C/C++ 19.0.5
+	pkgdesc = Intel C/C++ 19.1.0
 	install = intel-composer.install
-	depends = intel-common-libs=2019.5.281
-	depends = intel-openmp=2019.5.281
+	depends = intel-common-libs=2020.0.166
+	depends = intel-openmp=2020.0.166
 
 pkgname = intel-fortran-compiler
-	pkgdesc = Intel Fortran compiler 19.0.5
+	pkgdesc = Intel Fortran compiler 19.1.0
 	install = intel-composer.install
-	depends = intel-compiler-base=2019.5.281
+	depends = intel-compiler-base=2020.0.166
 
 pkgname = intel-ipp
 	pkgdesc = Intel Integrated Performance Primitives
@@ -76,7 +76,7 @@ pkgname = intel-ipp
 pkgname = intel-mkl
 	pkgdesc = Intel Math Kernel Library (Intel® MKL)
 	install = intel-mkl.install
-	depends = intel-common-libs=2019.5.281
+	depends = intel-common-libs=2020.0.166
 	optdepends = intel-openmp: Intel OpenMP Implementation
 	backup = etc/intel-mkl-th.conf
 
@@ -88,14 +88,14 @@ pkgname = intel-tbb_psxe
 	install = intel-tbb.install
 
 pkgname = intel-advisor
-	pkgdesc = Threading design and prototyping tool for software architects 2019.5.0.602216
+	pkgdesc = Threading design and prototyping tool for software architects 2020.0.0.604394
 	conflicts = intel-advisor-xe
 
 pkgname = intel-vtune-profiler
-	pkgdesc = Performance profiler for serial and parallel performance analysis 2019.6.0.602217
+	pkgdesc = Performance profiler for serial and parallel performance analysis 2020.0.0.605129
 	depends = pangox-compat
 
 pkgname = intel-inspector
-	pkgdesc = Memory and thread debugger 2019.5.0.602103
+	pkgdesc = Memory and thread debugger 2020.0.0.603904
 	conflicts = intel-inspector-xe
 
