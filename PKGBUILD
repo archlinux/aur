@@ -1,8 +1,8 @@
 # Maintainer: <clu>
 
 pkgname=xpa
-pkgver=2.1.17
-pkgrel=2
+pkgver=2.1.19
+pkgrel=1
 epoch=
 pkgdesc="A messaging system provides seamless communication between many kinds of Unix programs"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ options=()
 install=
 changelog=
 source=(https://github.com/ericmandel/${pkgname}/archive/v${pkgver}.tar.gz)
-sha1sums=('9296bb5eae891f75b4fd7105f9142157cb99e238')
+sha1sums=('d5a4a7351270b684306a639f31dadabcce4d96fb')
 noextract=()
 
 build() {
