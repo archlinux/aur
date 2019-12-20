@@ -2,8 +2,8 @@
 
 pkgname=bart-git
 _pkgname=bart
-pkgver=0.5.00.r0.g5efc0a9
-pkgrel=3
+pkgver=0.5.00.r16.gb197fe3
+pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
