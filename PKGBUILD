@@ -1,6 +1,6 @@
 # former Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=hibiscus
-pkgver=2.8.21
+pkgver=2.8.22
 _pkgver=2.8
 pkgrel=1
 pkgdesc="HBCI banking plugin for jameica."
@@ -16,7 +16,7 @@ source=("https://www.willuhn.de/products/hibiscus/releases/2.8/hibiscus-${pkgver
 "https://www.willuhn.de/products/hibiscus/releases/2.8/hibiscus-${pkgver}.zip.asc"
 "hibiscus.desktop")
 validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
-sha512sums=('812e204eaa4b913dd121bd5162ff2a10f6f17b24859ddaad551040bfcdd18beb4cb595b558954fe95808cc8cd6dd7e5f52766c65f37a8c699f6b253d1d1cac0b'
+sha512sums=('f2c89d0c604564e52d948e0ee78a5833d50f75ba3f213758362fe19ec139cafe05de1af3d2376e9eece04ab45ae593b4bf85e755d88100dd78e167196fd23d01'
             'SKIP'
             'ceea9cc5cf438893b2f5dfe46f46840448353f35719216ccca0b8dd12369d4e3c91d393c7c8b5b842a64537c61864ce8ca48e1895bb3f41c5083794399a21925')
 
