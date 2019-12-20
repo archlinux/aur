@@ -2,8 +2,8 @@
 Version=1.0
 Name=ModelSim-Altera Starter Edition
 Comment=ModelSim simulation software for Altera FPGA's
-Exec=_alteradir/modelsim_ase/bin/vsim -gui -l /dev/null
-Icon=_alteradir/modelsim_ase/modesim.gif
+Exec=_inteldir/modelsim_ase/bin/vsim -gui -l /dev/null
+Icon=_inteldir/modelsim_ase/modesim.gif
 Terminal=false
 Type=Application
 Categories=Development

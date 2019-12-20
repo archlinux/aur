@@ -13,20 +13,13 @@ _patchver=.0
 _buildver=670
 _basever=.0.670
 pkgver=${_mainver}${_patchver}.${_buildver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Quartus Prime Lite Edition design software for Intel FPGA's. Split packages"
 arch=('x86_64')
 url="http://fpgasoftware.intel.com/?edition=lite"
 license=('custom')
 
 _inteldir="/opt/intel_fpga_lite/${_mainver}"
-
-# According to the installer script, these dependencies are needed for the installer
-depends=('lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
-         'lib32-gtk2' 'lib32-libcanberra' 'lib32-libpng' 'lib32-libice' 'lib32-libsm'
-         'lib32-util-linux' 'lib32-ncurses' 'lib32-ncurses5-compat-libs' 'lib32-zlib'
-         'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxft'
-         'lib32-libxrender' 'lib32-libxt' 'lib32-libxtst' 'lib32-tkimg' 'libpng12')
 
 makedepends=('patchelf')
 
@@ -103,6 +96,14 @@ build() {
 }
 
 package_intel_fpga_lite-base() {
+    pkgdesc="Quartus Prime Lite Edition design software for Intel FPGA's. Split packages"
+    # According to the installer script, these dependencies are needed for the installer
+    depends=('lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
+             'lib32-gtk2' 'lib32-libcanberra' 'lib32-libpng' 'lib32-libice' 'lib32-libsm'
+             'lib32-util-linux' 'lib32-ncurses' 'lib32-ncurses5-compat-libs' 'lib32-zlib'
+             'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxft'
+             'lib32-libxrender' 'lib32-libxt' 'lib32-libxtst' 'lib32-tkimg' 'libpng12')
+
     # Copy license file
     install -D -m644 "${srcdir}/install/licenses/license.txt" "${pkgdir}/usr/share/licenses/intel_fpga_lite/LICENSE"
     mkdir -p "${pkgdir}${_inteldir}"
@@ -110,13 +111,17 @@ package_intel_fpga_lite-base() {
 }
 
 package_intel_fpga_lite-ip() {
+    pkgdesc="ModelSim-Intel FPGA Starter Edition"
     depends=("intel_fpga_lite-base=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}"
     mv "${srcdir}/install/ip" "${pkgdir}${_inteldir}"
 }
 
 package_intel_fpga_lite-modelsim_ase(){
+    pkgdesc="Nios II Embedded Design Suite"
     depends=("intel_fpga_lite-base=$pkgver-$pkgrel")
+
     install -D -m755 modelsim-ase.sh "${pkgdir}/etc/profile.d/modelsim-ase.sh"
     install -D -m644 modelsim-ase.desktop "${pkgdir}/usr/share/applications/modelsim-ase.desktop"
     mkdir -p "${pkgdir}${_inteldir}"
@@ -124,12 +129,15 @@ package_intel_fpga_lite-modelsim_ase(){
 }
 
 package_intel_fpga_lite-nios2eds(){
+    pkgdesc="Nios II Embedded Design Suite"
     depends=("intel_fpga_lite-base=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}"
     mv "${srcdir}/install/nios2eds" "${pkgdir}${_inteldir}"
 }
 
 package_intel_fpga_lite-quartus(){
+    pkgdesc="Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-base=$pkgver-$pkgrel" "intel_fpga_lite-ip=$pkgver-$pkgrel")
 
     install -D -m755 quartus.sh "${pkgdir}/etc/profile.d/quartus.sh"
@@ -142,50 +150,65 @@ package_intel_fpga_lite-quartus(){
 }
 
 package_intel_fpga_lite-quartus-help(){
+    pkgdesc="Help for Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/help/"
     mv "${srcdir}/install/help/tutorial" "${pkgdir}${_inteldir}/quartus/common/help/"
     mv "${srcdir}/install/help/webhelp" "${pkgdir}${_inteldir}/quartus/common/help/"
 }
 
 package_intel_fpga_lite-quartus-arria_lite(){
+    pkgdesc="Arria Support Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/arriaii" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
 }
 
 package_intel_fpga_lite-quartus-cyclone(){
+    pkgdesc="Cyclone IV Support Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/cycloneive" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/cycloneivgx" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
 }
 
 package_intel_fpga_lite-quartus-cyclone10lp(){
+    pkgdesc="Cyclone 10 LP Support Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/cyclone10lp" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
 }
 
 package_intel_fpga_lite-quartus-cyclonev(){
+    pkgdesc="Cyclone V Support Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/cyclonev" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
 }
 
 package_intel_fpga_lite-quartus-max(){
+    pkgdesc="MAX II and MAX V Support Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/maxii" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/maxv" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
 }
 
 package_intel_fpga_lite-quartus-max10(){
+    pkgdesc="MAX 10 Support Quartus Prime Lite Edition"
     depends=("intel_fpga_lite-quartus=$pkgver-$pkgrel")
+
     mkdir -p "${pkgdir}${_inteldir}/quartus/common/devinfo/"
     mv "${srcdir}/install/devinfo/55nm" "${pkgdir}${_inteldir}/quartus/common/devinfo/"
 }
 
 package_intel_fpga_lite() {
+    pkgdesc="Quartus Prime Lite Edition design software for Intel FPGA's. Split packages"
     depends=(${pkgbase}-{base,ip,modelsim_ase,nios2eds,quartus,quartus-help,quartus-arria_lite,quartus-cyclone,quartus-cyclone10lp,quartus-cyclonev,quartus-max,quartus-max10})
 }
