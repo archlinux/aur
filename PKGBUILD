@@ -6,7 +6,7 @@
 # Contributor: Dmitry Shilov <stormblast@land.ru>
 
 pkgname=doomsday
-pkgver=2.1.2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
@@ -14,14 +14,14 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 conflicts=('doomsday-bin' 'assimp')
 provides=('assimp')
-depends=('qt5-x11extras' 'sdl2_mixer' 'fluidsynth' 'openal' 'libxrandr' 'lib32-fluidsynth')
-makedepends=('imagemagick' 'cmake')
+depends=('hicolor-icon-theme' 'qt5-x11extras' 'sdl2_mixer' 'fluidsynth' 'openal' 'libxrandr' 'minizip')
+makedepends=('imagemagick' 'cmake' 'xorg-server-devel')
 optdepends=('doom1-wad: Doom shareware', 
             'heretic1-wad: Heretic shareware', 
             'hexen1-wad: Hexen shareware'
 		    'soundfont-fluid')
 source=("http://files.dengine.net/archive/doomsday-$pkgver.tar.gz")
-sha256sums=('4362d12b616a035ef21cfd54c3a841900dc6d6614b3d073a50a646ef87ebdc9c')
+sha256sums=('6439aede6fb304053cc9f58c376849eb215d9164cabf091e74c94d2a7ecc67dc')
 
 build() {
         
