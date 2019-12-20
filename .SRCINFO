@@ -13,7 +13,7 @@ pkgbase = notion-app
 	depends = electron6
 	source = https://desktop-release.notion-static.com/Notion-2.0.5.dmg
 	source = notion-app
-	md5sums = bfb69a03e2844a89fa409108c38384e9
+	md5sums = 5b6aec842c07d09c11d54773bf65678e
 	md5sums = ad3c23bc7d0186e2f622aa4b7310deac
 
 pkgname = notion-app

@@ -12,7 +12,7 @@ license=('MIT')
 depends=('electron6')
 makedepends=('dmg2img' 'p7zip' 'libicns' 'gendesk')
 source=("https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 'notion-app')
-md5sums=('bfb69a03e2844a89fa409108c38384e9'
+md5sums=('5b6aec842c07d09c11d54773bf65678e'
          'ad3c23bc7d0186e2f622aa4b7310deac')
 
 build() {
