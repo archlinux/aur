@@ -11,6 +11,7 @@ pkgbase = doom2df-git
 	depends = sdl2_mixer
 	depends = sdl2
 	depends = enet
+	options = !strip
 	source = git://repo.or.cz/d2df-sdl.git
 	source = http://doom2d.org/doom2d_forever/latest/win32-d2df-latest.zip
 	md5sums = SKIP

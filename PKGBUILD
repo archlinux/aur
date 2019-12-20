@@ -16,7 +16,9 @@ md5sums=(
   'SKIP'
   'SKIP'
 )
-
+options=(
+  !strip
+)
 
 pkgver() {
   cd "${srcdir}/d2df-sdl"
@@ -26,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/d2df-sdl/src/game"
-  fpc -dUSE_SDL2 -dUSE_OPENGL -dUSE_SDLMIXER -FE../../../ Doom2DF.lpr
+  fpc -g -gl -dUSE_SDL2 -dUSE_OPENGL -dUSE_SDLMIXER -FE../../../ Doom2DF.lpr
 }
 
 
