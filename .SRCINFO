@@ -1,15 +1,15 @@
 pkgbase = procyon-decompiler
 	pkgdesc = A Java decompiler, inspired by ILSpy and Mono.Cecil
-	pkgver = 0.5.34
+	pkgver = 0.5.36
 	pkgrel = 1
 	url = https://bitbucket.org/mstrobel/procyon/wiki/Java%20Decompiler
 	arch = any
 	license = Apache
 	depends = java-runtime
-	noextract = procyon-decompiler-0.5.34.jar
-	source = https://bitbucket.org/mstrobel/procyon/downloads/procyon-decompiler-0.5.34.jar
+	noextract = procyon-decompiler-0.5.36.jar
+	source = https://bitbucket.org/mstrobel/procyon/downloads/procyon-decompiler-0.5.36.jar
 	source = procyon-decompiler
-	sha256sums = ff575a42133a19a44635f2ab2808662b648a67cf5033f94dd6bad4b24335c843
+	sha256sums = 74f9f1537113207521a075fafe64bd8265c47a9c73574bbf9fa8854bbf7126bc
 	sha256sums = 5cd5d0354f8f88150c3c10c8f1a2496b447810a0beb9f642675156fa940e3acf
 
 pkgname = procyon-decompiler
