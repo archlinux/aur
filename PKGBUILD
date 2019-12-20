@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.5.0.r3325.02a9d73c8
+pkgver=1.5.0.r3332.363b87b33
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -30,8 +30,8 @@ makedepends=(
   clang
   cmake
   git
-  lib32-libglvnd
   png++
+  xorgproto
 )
 provides=(pcsx2)
 conflicts=(pcsx2)
@@ -59,7 +59,6 @@ build() {
 
   export CC=clang
   export CXX=clang++
-  export CXXFLAGS="$CXXFLAGS -I/usr/include/harfbuzz"
 
   cmake ../pcsx2 \
     -DCMAKE_TOOLCHAIN_FILE=cmake/linux-compiler-i386-multilib.cmake \
