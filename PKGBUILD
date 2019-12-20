@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=spaceclones-git
-pkgver=r11.2e85620
+pkgver=v1.0.r17.gc651b3f
 pkgrel=1
 epoch=
 pkgdesc="Space invaders clone"
@@ -31,12 +31,15 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}/build" || exit 1
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	cd "${srcdir}/${pkgname}/build" || exit 1
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_UNITY_BUILD=ON \
+		..
 	make
 }
 
 package() {
-	cd "${pkgname}/build" || exit 1
+	cd "${srcdir}/${pkgname}/build" || exit 1
 	make DESTDIR="$pkgdir/" install
 }

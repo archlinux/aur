@@ -1,6 +1,6 @@
 pkgbase = spaceclones-git
 	pkgdesc = Space invaders clone
-	pkgver = r11.2e85620
+	pkgver = v1.0.r17.gc651b3f
 	pkgrel = 1
 	url = https://github.com/L603/SpaceClones
 	arch = x86_64
