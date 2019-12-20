@@ -1,6 +1,6 @@
 pkgbase = phpstorm
 	pkgdesc = Lightweight and Smart PHP IDE
-	pkgver = 2019.3b193.5233.101
+	pkgver = 2019.3.1b193.5662.63
 	pkgrel = 1
 	url = https://www.jetbrains.com/phpstorm/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = phpstorm
 	depends = glib2
 	depends = python
 	options = !strip
-	source = https://download.jetbrains.com/webide/PhpStorm-2019.3.tar.gz
+	source = https://download.jetbrains.com/webide/PhpStorm-2019.3.1.tar.gz
 	source = jetbrains-phpstorm.desktop
 	source = LICENSE
-	sha512sums = a2444bdb107bc3eb221143dd09267f3685911f30448ad6bff3db497be4301e4e85efa3939d3a7c8ad061b37718ec803e14b97d8372039fd2974c707fb8a93496
+	sha512sums = 4c692ecf3bae58525b0683724372a9a8a4d259a44fdc5ce6eae15a2c2340ea90fc018c8c5bcce5085f4a8d1620f6d65c242fc666c2753ec87737b8393c952a35
 	sha512sums = b10edd04a7d48641bec7a9e23037510b426acb5a3059267b2081ec0fce41272d8de413f0b4c1dddd3387bb0ce330c48b3f7894f4817973cd6d32a74a14af3528
 	sha512sums = e2aaaa75571f368f85bcc4baef27cc502781ce382bf04737763b07244716918fc2f0eb0b78b02631e242c9a5c246b27d720bb28556fc64bbde213403b7bf57f6
 
