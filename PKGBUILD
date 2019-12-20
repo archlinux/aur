@@ -3,7 +3,7 @@
 
 _pkgname=nohang
 pkgname=${_pkgname}-git
-pkgver=0.1.r413.gaf36cb2
+pkgver=0.1.r539.g8e36ec5
 pkgrel=2
 pkgdesc="A highly configurable OOM prevention daemon"
 arch=('any')
@@ -19,9 +19,13 @@ depends=(
 optdepends=(
 	'libnotify: to show GUI notifications'
 	'sudo: to show GUI notifications if nohang started with UID=0'
+	'logrotate: maintaining a separate log is one of the options'
 )
 conflicts=("${_pkgname}")
-backup=('etc/nohang/nohang.conf')
+backup=(
+	'etc/nohang/nohang.conf'
+	'etc/nohang/nohang-desktop.conf'
+)
 
 pkgver() {
 	cd "${srcdir}/${pkgname}" || exit 2

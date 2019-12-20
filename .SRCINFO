@@ -1,6 +1,6 @@
 pkgbase = nohang-git
 	pkgdesc = A highly configurable OOM prevention daemon
-	pkgver = 0.1.r413.gaf36cb2
+	pkgver = 0.1.r539.g8e36ec5
 	pkgrel = 2
 	url = https://github.com/hakavlad/nohang
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = nohang-git
 	depends = python
 	optdepends = libnotify: to show GUI notifications
 	optdepends = sudo: to show GUI notifications if nohang started with UID=0
+	optdepends = logrotate: maintaining a separate log is one of the options
 	conflicts = nohang
 	backup = etc/nohang/nohang.conf
+	backup = etc/nohang/nohang-desktop.conf
 	source = nohang-git::git+https://github.com/hakavlad/nohang.git#branch=master
 	md5sums = SKIP
 
