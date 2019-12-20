@@ -1,0 +1,8 @@
+# AUR for Petal
+
+> Douban.FM Client With Extra - - - 一个简洁的豆瓣FM客户端。https://ilime.github.io/Petal/
+
+This repository contains a script that will download binary file and install Petal on your computer.
+
+For example, you can install petal from AUR like `yay -S petal-bin`
+
