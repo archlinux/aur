@@ -12,7 +12,7 @@ provides=('mcsctl')
 conflicts=('mcsctl-git')
 install="$pkgname.install"
 source=("https://github.com/Hetsh/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('66905358136543205027112ef879d19a171332419e9b57a65445dbafb0a1bb04')
+sha256sums=('c165ca8c27f260a7742d38176854f069ce55cb8b66c1788a94361e1b213114e2')
 
 package() {
 	work_dir="$pkgname-$pkgver"
