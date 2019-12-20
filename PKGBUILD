@@ -4,8 +4,8 @@
 
 pkgbase=linux-nc
 _srcname=linux-5.4
-pkgver=5.4.4
-pkgrel=5
+pkgver=5.4.5
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -30,7 +30,7 @@ validpgpkeys=(
 )
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '122fddb7e64187ac1c4cb00594901dfbff2c6bd94d4676c4f14f26cac03429b5'
+            '7ac5c8967fb99aa379148c1edd7bc98689972fecf916e77954cd36328f85b260'
             '9506b290fe5ec403f05a020e65e5b2540c11bf20b1a8ceb5bb8ca872bf3c464b'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '8f407ad5ff6eff106562ba001c36a281134ac9aa468a596aea660a4fe1fd60b5'
