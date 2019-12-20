@@ -1,6 +1,6 @@
 pkgbase = latex-tuda-ci
 	pkgdesc = TUDa-CI for LaTeX from Technische Universität Darmstadt
-	pkgver = 2.03
+	pkgver = 2.05
 	pkgrel = 1
 	url = https://github.com/tudace/tuda_latex_templates
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = latex-tuda-ci
 	replaces = latex-tuddesign
 	replaces = latex-tuddesign-thesis
 	replaces = latex-tuddesign-fonts
-	source = https://github.com/tudace/tuda_latex_templates/archive/v2.03.tar.gz
-	sha512sums = 89e2b27557c0e497938c7b5ce7ca74443063ad9d62ccafff4fd7ee111689ca512fbf03898edd7ee3d57436a747ed77ea840a0b4a9058838d2d6edc9f27d7792d
+	source = https://github.com/tudace/tuda_latex_templates/archive/v2.05.tar.gz
+	sha512sums = 6de060a7abf6206f709553392f49f9a35093a7dbaa6f902fc38ff37585486909f4706ab2a5aa05f381ec8a957f916d4a7e4c65f2acb3b8af39bc153c072af650
 
 pkgname = latex-tuda-ci
 
