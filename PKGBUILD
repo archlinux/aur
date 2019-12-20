@@ -1,8 +1,8 @@
 # Maintainer: Sergei Marochkin <me@ziggi.org>
 
 pkgname='warspear'
-pkgver=8.1.1
-pkgrel=1
+pkgver=8.2.0
+pkgrel=0
 pkgdesc='Warspear Online is a cross-platform massively multiplayer online roleplaying game (MMORPG) for smart phones.'
 arch=('i686' 'x86_64')
 url='http://warspear-online.com/'
