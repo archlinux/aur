@@ -1,0 +1,17 @@
+pkgbase = liblolhtml-git
+	pkgdesc = Low output latency streaming HTML parser/rewriter with CSS selector-based API
+	pkgver = 380.8d3c21b
+	pkgrel = 1
+	url = https://crates.io/crates/lol-html
+	arch = x86_64
+	license = BSD
+	makedepends = rust
+	makedepends = git
+	depends = gcc-libs
+	provides = liblolhtml
+	conflicts = liblolhtml
+	source = git+https://github.com/cloudflare/lol-html.git
+	sha512sums = SKIP
+
+pkgname = liblolhtml-git
+
