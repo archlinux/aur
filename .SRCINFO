@@ -1,0 +1,21 @@
+pkgbase = nyx-git
+	pkgdesc = Command-line status monitor for tor
+	pkgver = 2.1.0+8+g6999660
+	pkgrel = 1
+	url = https://nyx.torproject.org/
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	depends = python-stem
+	depends = net-tools
+	depends = procps-ng
+	depends = lsof
+	optdepends = tor: tor-server to talk to
+	provides = nyx
+	conflicts = nyx
+	source = git+https://git.torproject.org/nyx.git
+	sha512sums = SKIP
+
+pkgname = nyx-git
+
