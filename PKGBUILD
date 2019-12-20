@@ -133,6 +133,9 @@ package() {
   rsync -a examples "${pkgdir}/usr/share/doc/${realname}/" --exclude="example*.o"
   # Doing mv would be faster, but in case of repackaging, a new make is needed
   cp -a doc/html "${pkgdir}/usr/share/doc/${realname}/"
+  install -d "${pkgdir}/etc/libmesh"
+  mv "${pkgdir}"/usr/Make.common "${pkgdir}/usr/share/doc/libmesh/"
+  mv "${pkgdir}"/usr/etc/libmesh/Make.common "${pkgdir}/etc/libmesh"
 
   rm -r "${pkgdir}"/usr/{contrib,examples} || echo "removed "
   rm "${pkgdir}"/usr/Make.common || echo "removed"
