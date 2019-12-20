@@ -13,7 +13,7 @@ _patchver=.0
 _buildver=670
 _basever=.0.670
 pkgver=${_mainver}${_patchver}.${_buildver}
-pkgrel=3
+pkgrel=4
 pkgdesc="Quartus Prime Lite Edition design software for Intel FPGA's. Split packages"
 arch=('x86_64')
 url="http://fpgasoftware.intel.com/?edition=lite"

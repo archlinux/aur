@@ -1,7 +1,7 @@
 pkgbase = intel_fpga_lite
 	pkgdesc = Quartus Prime Lite Edition design software for Intel FPGA's. Split packages
 	pkgver = 19.1.0.670
-	pkgrel = 3
+	pkgrel = 4
 	url = http://fpgasoftware.intel.com/?edition=lite
 	arch = x86_64
 	license = custom
@@ -49,48 +49,48 @@ pkgname = intel_fpga_lite-base
 
 pkgname = intel_fpga_lite-ip
 	pkgdesc = ModelSim-Intel FPGA Starter Edition
-	depends = intel_fpga_lite-base=19.1.0.670-3
+	depends = intel_fpga_lite-base=19.1.0.670-4
 
 pkgname = intel_fpga_lite-modelsim_ase
 	pkgdesc = Nios II Embedded Design Suite
-	depends = intel_fpga_lite-base=19.1.0.670-3
+	depends = intel_fpga_lite-base=19.1.0.670-4
 
 pkgname = intel_fpga_lite-nios2eds
 	pkgdesc = Nios II Embedded Design Suite
-	depends = intel_fpga_lite-base=19.1.0.670-3
+	depends = intel_fpga_lite-base=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus
 	pkgdesc = Quartus Prime Lite Edition
-	depends = intel_fpga_lite-base=19.1.0.670-3
-	depends = intel_fpga_lite-ip=19.1.0.670-3
+	depends = intel_fpga_lite-base=19.1.0.670-4
+	depends = intel_fpga_lite-ip=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-help
 	pkgdesc = Help for Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-arria_lite
 	pkgdesc = Arria Support Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-cyclone
 	pkgdesc = Cyclone IV Support Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-cyclone10lp
 	pkgdesc = Cyclone 10 LP Support Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-cyclonev
 	pkgdesc = Cyclone V Support Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-max
 	pkgdesc = MAX II and MAX V Support Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite-quartus-max10
 	pkgdesc = MAX 10 Support Quartus Prime Lite Edition
-	depends = intel_fpga_lite-quartus=19.1.0.670-3
+	depends = intel_fpga_lite-quartus=19.1.0.670-4
 
 pkgname = intel_fpga_lite
 	pkgdesc = Quartus Prime Lite Edition design software for Intel FPGA's. Split packages
