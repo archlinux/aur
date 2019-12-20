@@ -4,12 +4,12 @@
 pkgname=jlink-systemview
 pkgver=3.10
 pkgrel=10
-epoch=5
+epoch=6
 pkgdesc="Segger SystemView for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('jlink')
-depends=('qt4' 'jlink-software-and-documentation' 'jlink-systemview-target-src')
+depends=('jlink-software-and-documentation' 'jlink-systemview-target-src')
 source_x86_64=("SystemView_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/systemview_linux_tgz64")
 source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/systemview_linux_tgz32")
 source=("SystemView.desktop" "SystemView.svg")
@@ -46,7 +46,7 @@ package(){
     cd ${srcdir}/SystemView
 
     # Bulk copy everything
-    cp --preserve=mode -r SystemView Description Doc Sample "${pkgdir}/opt/SEGGER/SystemView"
+    cp --preserve=mode -r SystemView Description Doc Sample lib* "${pkgdir}/opt/SEGGER/SystemView"
 
     # Create links where needed
     ln -s /opt/SEGGER/SystemView/Doc/License_SystemView.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
