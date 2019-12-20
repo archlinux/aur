@@ -1,4 +1,4 @@
-# Maintainer: Danil Yarantsev <tiberiumk12@gmail.com>
+# Maintainer: Danil Yarantsev <tiberiumk12 at gmail dot com>
 pkgname=doom2df-git
 pkgver=r1174.5b8e9b8
 pkgrel=1
