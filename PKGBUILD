@@ -3,13 +3,13 @@
 pkgname="savvycan"
 pkgproper="SavvyCAN"
 pkgver="199.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="QT-based CAN bus analysis tool"
 url="https://github.com/collin80/SavvyCAN"
 license=('MIT')
 arch=('x86_64')
 depends=('qt5-serialbus')
-makedepends=('qt5-base')
+makedepends=('qt5-base' 'qt5-tools')
 source=("https://github.com/collin80/SavvyCAN/archive/V${pkgver}.tar.gz")
 
 build() {
