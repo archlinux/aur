@@ -1,62 +1,61 @@
-# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
+# Maintainer: Michael Lowman <michael.d.lowman@gmail.com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Mantas M. <grawity@gmail.com>
 
 pkgname=sssd-git
-pkgver=1.13.0.r69.gafa6ac7
+_gitname='sssd'
+pkgver=2.2.3.r5.g58a67cd38
 pkgrel=1
 pkgdesc="System Security Services Daemon"
-arch=('i686' 'x86_64')
-url="https://fedorahosted.org/sssd/"
+arch=('x86_64')
+url="https://pagure.io/SSSD/sssd"
 license=('GPL3')
 depends=(
-  'augeas'
   'bind'          # for nsupdate
   'c-ares'
   'cyrus-sasl-gssapi'
-  'dbus-core'
   'ding-libs'
-  'krb5'
-  'ldb'
-  'libldap'
   'libnl'
-  'libsasl'
   'libunistring'
-  'libxml2'
-  'nspr'
   'nss'
-  'pcre'
   'smbclient'     # for libndr-nbt
-  'talloc'
-  'tdb'
-  'tevent'
+  'nfsidmap'
+  'jansson'
 )
 makedepends=(
   'docbook-xsl'
   'doxygen'
   'python'
-  'python2'
   'samba'         # for libndr-nbt headers
+  'systemd'
 )
-provides=("sssd=$pkgver")
+provides=('sssd')
 conflicts=('sssd')
-source=('git+https://pagure.io/SSSD/sssd.git'
-        'sssd.service')
-sha1sums=('SKIP'
-          '2d10db3d6f54a58bbf8d1f27328e68555256e0ce')
+source=('git+https://pagure.io/SSSD/sssd.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/sssd"
-  git describe | sed 's/^sssd-//; s/-/.r/; s/[_-]/./g'
+  cd "$_gitname"
+  git describe --tag | sed 's/^sssd-//;s/_/./g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/sssd"
-  sed -i '1s/\<python\>/&2/' src/sbus/sbus_codegen
+  cd "$srcdir/$_gitname"
+  for f in "${source[@]}"; do
+    if [[ $f == *.patch ]]; then
+      msg2 "Applying $f"
+      patch -p1 < "$srcdir/$f"
+    fi
+  done
+
+  autoreconf -if
+
+  # dbus policy files in /usr/share/dbus-1
+  sed -i -e 's/^dbuspolicydir = $(sysconfdir)/dbuspolicydir = $(datadir)/' Makefile.in
 }
 
 build() {
-  cd "$srcdir/sssd"
-  export PYTHON=/usr/bin/python2
-  autoreconf -i -f
+  cd "$srcdir/$_gitname"
   ./configure \
     --prefix=/usr                                 \
     --sbindir=/usr/bin                            \
@@ -64,12 +63,10 @@ build() {
     --localstatedir=/var                          \
     --libexecdir=/usr/lib/sssd                    \
     --datadir=/usr/share                          \
-    --enable-all-experimental-features            \
     --enable-pammoddir=/usr/lib/security          \
     --with-initscript=systemd                     \
     --with-os=fedora                              \
     --with-pid-path=/run                          \
-    --with-python2-bindings                       \
     --with-python3-bindings                       \
     --with-syslog=journald                        \
     --without-selinux                             \
@@ -81,18 +78,17 @@ build() {
 }
 
 package() {
-  cd "$srcdir/sssd"
-  make DESTDIR="$pkgdir/" install
-  rm -rf "$pkgdir/etc/rc.d"
-  rm -rf "$pkgdir/lib"
-  rm -rf "$pkgdir/run"
-  rm -f "$pkgdir/usr/lib/ldb/modules/ldb/memberof.la"
-  find "$pkgdir/usr" -depth -type d \
+  cd "$srcdir/$_gitname"
+  make -j1 DESTDIR="$pkgdir/" install
+  rm -rf "$pkgdir"/etc/rc.d
+  rm -rf "$pkgdir"/lib
+  rm -rf "$pkgdir"/run
+  rm -f "$pkgdir"/usr/lib/ldb/modules/ldb/memberof.la
+  find "$pkgdir"/usr -depth -type d \
     -exec rmdir --ignore-fail-on-non-empty {} \;
 
   cd "$srcdir"
   rm -rf "$pkgdir/etc/systemd" # remove the drop-in
-  install -Dm644 sssd.service  "$pkgdir/usr/lib/systemd/system/sssd.service"
 }
 
-# vim: ts=2:sw=2:et
+# vim: ts=2:sw=2:et:nowrap
