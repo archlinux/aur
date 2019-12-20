@@ -1,18 +1,17 @@
 pkgbase = mingw-w64-openal
 	pkgdesc = Cross-platform 3D audio library, software implementation (mingw-w64)
-	pkgver = 1.19.1
-	pkgrel = 2
+	pkgver = 1.20.0
+	pkgrel = 1
 	url = https://github.com/kcat/openal-soft
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-cmake
-	makedepends = git
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/kcat/openal-soft#commit=6761218e51699f46bf25c377e65b3e9ea5e434b9
-	sha256sums = SKIP
+	source = https://github.com/kcat/openal-soft/archive/openal-soft-1.20.0.tar.gz
+	sha256sums = ea1582337ce0344754cc6742b9a5da248fb971fb6fbcc592f843f765423d9265
 
 pkgname = mingw-w64-openal
 
