@@ -27,6 +27,8 @@ noextract=()
 build() {
   cd ${srcdir}/$pkgname-$pkgver
 
+  patch -p1 -i ${startdir}/xpa_inc_fail.patch
+  
   ./configure --prefix=/usr --enable-shared=link
   make
 }
