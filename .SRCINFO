@@ -1,6 +1,6 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference (needs registration at upstream URL and manual download)
-	pkgver = 6.0.1.5
+	pkgver = 7.0.0.11
 	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = tensorrt
 	optdepends = python-tensorflow: for graphsurgeon and uff python modules
 	optdepends = python-protobuf: for uff python module
 	options = !strip
-	source = file://TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
-	sha256sums = e20b7bd051cdd448c5690a30ba01e83b0a0855edc4012107c0af01fde5b4037a
+	source = local://TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
+	sha256sums = c7d73b2585b18aae68b740249efa8c8ba5ae852abe9a023720595432a8eb4efd
 
 pkgname = tensorrt
 
