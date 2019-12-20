@@ -1,11 +1,11 @@
 pkgbase = linux-nc
 	pkgver = 5.4.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
-	makedepends = kmod
+	makedepends = kmod-nc
 	makedepends = inetutils
 	makedepends = bc
 	makedepends = libelf
@@ -40,7 +40,7 @@ pkgname = linux-nc
 	install = linux.install
 	depends = coreutils
 	depends = linux-firmware
-	depends = kmod
+	depends = kmod-nc
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
 	backup = etc/mkinitcpio.d/linux-nc.preset

@@ -5,11 +5,11 @@
 pkgbase=linux-nc
 _srcname=linux-5.4
 pkgver=5.4.4
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends=('xmlto' 'kmod-nc' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.{xz,sign}
@@ -105,7 +105,7 @@ build() {
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [ "${pkgbase}" = "linux" ] && groups=('base')
-  depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
+  depends=('coreutils' 'linux-firmware' 'kmod-nc' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
