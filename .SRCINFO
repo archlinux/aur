@@ -1,0 +1,12 @@
+pkgbase = ttf-cardinal
+	pkgdesc = Cardinal Anglican font.
+	pkgver = 1
+	pkgrel = 1
+	url = http://moorstation.org/typoasis/designers/steffmann/samples/c/cardinal.htm
+	arch = any
+	license = custom
+	source = ttf-cardinal-1.zip::https://dl.dafont.com/dl/?f=cardinal
+	md5sums = 0b48707368de7130f7ff465a4f4002d2
+
+pkgname = ttf-cardinal
+
