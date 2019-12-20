@@ -6,7 +6,7 @@
 
 pkgname=tmux-git
 _gitname=tmux
-pkgver=7917_3.0.r22.g2db9a183
+pkgver=8107_3.0a.r184.g745233d6
 pkgrel=1
 pkgdesc="A terminal multiplexer"
 url="https://github.com/tmux/tmux/wiki"
@@ -49,5 +49,5 @@ package() {
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/tmux/LICENSE"
 
   # install example config file
-  install -Dm755 example_tmux.conf "${pkgdir}/usr/share/tmux/example_tmux.conf"
+  install -Dm755 example_tmux.conf "${pkgdir}/usr/share/${pkgname}/example_tmux.conf"
 }
