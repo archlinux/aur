@@ -1,6 +1,6 @@
 pkgbase = ensmallen
 	pkgdesc = Flexible C++ library for efficient mathematical optimization
-	pkgver = 2.10.4
+	pkgver = 2.10.5
 	pkgrel = 1
 	url = https://ensmallen.org/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ensmallen
 	depends = armadillo>=8.400.0
 	depends = lapack
 	optdepends = openmp: parallel computation support
-	source = https://ensmallen.org/files/ensmallen-2.10.3.tar.gz
-	sha256sums = 82aca3724331b26156fd9bad118992093a08e3ef6881b996e976d090fb390bc7
+	source = https://ensmallen.org/files/ensmallen-2.10.5.tar.gz
+	sha256sums = fa45e8f65c93d20fec3bbafbb87c66d2762942b00395159846f62e9c35ff7168
 
 pkgname = ensmallen
 
