@@ -1,14 +1,14 @@
 pkgbase = nodejs-generator-jhipster
 	pkgdesc = Spring Boot + Angular/React in one handy generator
-	pkgver = 6.2.0
+	pkgver = 6.5.1
 	pkgrel = 1
-	url = https://jhipster.github.io/
+	url = https://www.jhipster.tech/
 	arch = any
 	license = APACHE
 	depends = npm
-	noextract = generator-jhipster-6.2.0.tgz
-	source = https://registry.npmjs.org/generator-jhipster/-/generator-jhipster-6.2.0.tgz
-	sha256sums = cf1f83862130386f47cc7a11ef5e332abd58e7e7e7cf780bcfc01bfac3b60035
+	noextract = generator-jhipster-6.5.1.tgz
+	source = https://registry.npmjs.org/generator-jhipster/-/generator-jhipster-6.5.1.tgz
+	sha256sums = 52c7172e8677c43cc93bc06469bb7e043319d72055a7f64658dac91e48403f5f
 
 pkgname = nodejs-generator-jhipster
 
