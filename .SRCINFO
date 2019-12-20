@@ -16,7 +16,7 @@ pkgbase = intel-parallel-studio-xe
 	options = staticlibs
 	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15809/parallel_studio_xe_2019_update5_cluster_edition.tgz
 	source = intel_compilers.sh
-	source = intel_vtune-amplifier.sh
+	source = intel_vtune-profiler.sh
 	source = intel_advisor.sh
 	source = intel_inspector.sh
 	source = intel-composer.install
@@ -34,7 +34,7 @@ pkgbase = intel-parallel-studio-xe
 	source = EULA.txt
 	sha256sums = c03421de616bd4e640ed25ce4103ec9c5c85768a940a5cb5bd1e97b45be33904
 	sha256sums = 0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b
-	sha256sums = 1a71b08245c42008b2edb32a4f0e7b7d1794573580f9608ac86d86cfb25799a4
+	sha256sums = 12f932f99e6d3ee9dd828b95e630f096a9e58707db39bea15fba22a1ad80f211
 	sha256sums = 63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd
 	sha256sums = fd24842f29d50bc53779dd918fbc548ebf165ff664114e59195773ad04076b5d
 	sha256sums = 3f96dec03111e69d16bb363acf4d0570e8a9526c09e5e542a7558f1b26d043ef
@@ -91,7 +91,7 @@ pkgname = intel-advisor
 	pkgdesc = Threading design and prototyping tool for software architects 2019.5.0.602216
 	conflicts = intel-advisor-xe
 
-pkgname = intel-vtune-amplifier
+pkgname = intel-vtune-profiler
 	pkgdesc = Performance profiler for serial and parallel performance analysis 2019.6.0.602217
 	depends = pangox-compat
 

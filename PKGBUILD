@@ -17,7 +17,7 @@
 # intel-mkl:                    Intel Math Kernel Library (Intel® MKL)
 # intel-mpi:                    Intel Message passing interface (MPI)
 # intel-tbb_psxe:               Intel Threading Building Blocks (TBB)
-# intel-vtune:                  Intel Vtune Amplifier
+# intel-vtune-profiler:         Intel Vtune Profiler
 # intel-advisor:                Intel Advisor
 # intel-inspector:              Intel Inspector
 ###########################################################################
@@ -48,7 +48,7 @@ pkgname=('intel-common-libs'
          'intel-mpi'
          'intel-tbb_psxe'
          'intel-advisor'
-         'intel-vtune-amplifier'
+         'intel-vtune-profiler'
          'intel-inspector')
 
 if [ -z "$FORCE_PKGEXT" ]; then
@@ -118,7 +118,7 @@ _parallel_studio_xe_dir="parallel_studio_xe${_year:+_${_year}}${_update:+_update
 source=(
   "http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/${_dir_nr}/${_parallel_studio_xe_dir}.tgz"
   'intel_compilers.sh'
-  'intel_vtune-amplifier.sh'
+  'intel_vtune-profiler.sh'
   'intel_advisor.sh'
   'intel_inspector.sh'
   'intel-composer.install'
@@ -138,7 +138,7 @@ source=(
 
 sha256sums=('c03421de616bd4e640ed25ce4103ec9c5c85768a940a5cb5bd1e97b45be33904'
             '0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b'
-            '1a71b08245c42008b2edb32a4f0e7b7d1794573580f9608ac86d86cfb25799a4'
+            '12f932f99e6d3ee9dd828b95e630f096a9e58707db39bea15fba22a1ad80f211'
             '63b12c66d9c8c2310a7bbd5206c82ba9667fb6ffb3dc7e3f9304a17ed8c8fbcd'
             'fd24842f29d50bc53779dd918fbc548ebf165ff664114e59195773ad04076b5d'
             '3f96dec03111e69d16bb363acf4d0570e8a9526c09e5e542a7558f1b26d043ef'
@@ -655,7 +655,7 @@ package_intel-tbb_psxe() {
   ln -s ./${_composer_xe_dir}/linux/tbb/ ${pkgdir}/opt/intel/tbb
 }
 
-package_intel-vtune-amplifier() {
+package_intel-vtune-profiler() {
 
   set_build_vars
 
@@ -671,13 +671,13 @@ package_intel-vtune-amplifier() {
 
   msg2 "Updating scripts"
   sed -e "s/<arch>/${_bin_dir}/g" -e "s/<ver>/${_vtune_ver}/g" \
-    < ${srcdir}/intel_vtune-amplifier.sh > etc/profile.d/intel_vtune-amplifier.sh
-  chmod a+x ./etc/profile.d/intel_vtune-amplifier.sh
+    < ${srcdir}/intel_vtune-profiler.sh > etc/profile.d/intel_vtune-profiler.sh
+  chmod a+x ./etc/profile.d/intel_vtune-profiler.sh
 
   msg2 "Extracting RPMS"
-  extract_rpms 'intel-vtune-amplifier-*.rpm'  $xe_build_dir
+  extract_rpms 'intel-vtune-profiler-*.rpm'  $xe_build_dir
 
-  cd ${xe_build_dir}/opt/intel/vtune_amplifier_${_vtune_ver}
+  cd ${xe_build_dir}/opt/intel/vtune_profiler_${_vtune_ver}
 
   msg2 "Copying man pages"
   if [[ -d ./man/man1 ]]; then
