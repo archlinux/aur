@@ -2,8 +2,8 @@
 
 pkgname=gajim-plugin-urlimagepreview
 _pkgname=url_image_preview
-pkgver=2.3.23
-pkgrel=2
+pkgver=2.3.24
+pkgrel=1
 pkgdesc="Gajim plugin which displays a preview of links to images"
 arch=(any)
 url="https://dev.gajim.org/gajim/gajim-plugins/wikis/urlimagepreviewplugin"
@@ -11,7 +11,8 @@ license=('GPL')
 depends=("gajim>=1.0.99" "gajim<=1.1.90" "python-setuptools" "python-cryptography" "python-pillow")
 provides=('gajim-plugin-urlimagepreview')
 source=("https://ftp.gajim.org/plugins_releases/${_pkgname}_${pkgver}.zip")
-sha512sums=('996c96dd7bd4ca6160d6bea1103b14149bc42df651296a2b2edf0abb72ab95b2eae556a2dd27fbffd1f540a00550caf3a51f770eac0e43382bf217a705310291')
+sha512sums=('c28a169d8a2f0a0916c0f933bd7c7cd9266041daf63af7c34f92be0b3af4bc4873134961394b9d61fb32c7a20f90eb57a6188bd69ebaf4846b4c9b2153a86968')
+
 package() {
   cd ${srcdir}/${_pkgname}
 
