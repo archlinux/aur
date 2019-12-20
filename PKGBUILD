@@ -13,8 +13,8 @@ _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='amd64'
 
 source=("http://distr.warspear-online.com/linux/pool/non-free/w/warspear/warspear_${pkgver}_${_arch}.deb")
-sha512sums=('025fc65099dc0263f0d84a9d22ab35bfeaf4d9dc43f661fa989075ac91d06dcb401b6c279fb6549451c0f2974a2b3fe54846469d2c5e9b41831eac1f62812c3c')
-[ "$CARCH" = "x86_64" ] && sha512sums=('853247b6ea09c0be500832a646dbdd3dfb8615f7980f7ca4c3ac234531de07a0bfa68fc8d6dd2b5fc0256047f9e46a1868d15716ffd09f747915e9979fd157fd')
+sha512sums=('b0efbe304f49bbff2106137552d51ce688f5a4695fe443664d01a7c1f4d720ca2e2b833f2a1323f8dbb5d891556941ac1dee7154a432adbed2d26183e3b01eb6')
+[ "$CARCH" = "x86_64" ] && sha512sums=('d2dddf6a12fee84defbb1382c37af70907823d780a5dc5f137a08463362b493be5781fbb02029508a810b13d61af25fd1209d8c84ca03a8dd960d06c1afc4a18')
 
 package() {
 	cd $srcdir
