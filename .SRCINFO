@@ -1,19 +1,19 @@
 pkgbase = pueue
 	pkgdesc = A command scheduler for shells
-	pkgver = 1.0.5
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/nukesor/pueue
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
-	depends = python-psutil
-	depends = python-daemonize
-	depends = python-terminaltables
-	depends = python-colorclass
+	makedepends = cargo
 	provides = pueue
 	conflicts = pueue-git
-	source = https://github.com/Nukesor/pueue/archive/1.0.5.tar.gz
+	source = https://github.com/Nukesor/pueue/archive/v0.0.5.tar.gz
+	source = https://github.com/Nukesor/pueue/releases/download/v0.0.5/pueue-linux-amd64
+	source = https://github.com/Nukesor/pueue/releases/download/v0.0.5/pueued-linux-amd64
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pueue

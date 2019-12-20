@@ -1,34 +1,44 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue
-pkgver='1.0.5'
+pkgver='0.0.5'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
-depends=('python-psutil' 'python-daemonize' 'python-terminaltables' 'python-colorclass')
-makedepends=('git' 'python-setuptools')
+depends=()
+makedepends=('git' 'cargo')
 conflicts=('pueue-git')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
-source=("https://github.com/Nukesor/pueue/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=(
+    "https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
+    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-amd64"
+    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-amd64"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
+
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    install -Dm755 "pueue-linux-amd64" "${pkgdir}/usr/bin/pueue"
+    install -Dm755 "pueued-linux-amd64" "${pkgdir}/usr/bin/pueued"
 
-    # We don't need anything related to git in the package
-    rm -rf .git*
-
-    # Install
-    python setup.py install --optimize=1 --root="${pkgdir}/"
+    tar xf "v${pkgver}.tar.gz"
+    cd "pueue-${pkgver}"
 
     # Place systemd user service
-    install -Dm644 "utils/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+    install -Dm644 "utils/pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
 
     # Install zsh completions file
-    install -Dm644 "utils/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
+    # Zsh is broken for now
+#    install -Dm644 "utils/completions/_pueue" "${pkgdir}/usr/share/zsh/site-functions/_pueue"
+    install -Dm644 "utils/completions/pueue.bash" "${pkgdir}/usr/share/bash-completion/completions/pueue.bash"
+    install -Dm644 "utils/completions/pueue.fish" "${pkgdir}/usr/share/fish/completions/pueue.fish"
 
     # Install License
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/pueue/LICENSE"
 }
