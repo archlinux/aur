@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.30.0.r135.g20c9538e32
+pkgver=0.30.0.r374.g05fb6f906d
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -119,6 +119,7 @@ build() {
         '--enable-xv'
         '--disable-gl-cocoa'
         '--enable-gl-x11'
+        '--enable-egl'
         '--enable-egl-x11'
         '--enable-egl-drm'
         '--enable-gl-wayland'
@@ -154,9 +155,9 @@ build() {
         '--enable-cuda-hwaccel'
         '--disable-rpi-mmal'
         
-        '--disable-apple-remote'
         '--disable-macos-touchbar'
         '--disable-macos-10-11-features'
+        '--disable-macos-10-12-2-features'
         '--disable-macos-10-14-features'
         '--disable-macos-cocoa-cb'
     )
