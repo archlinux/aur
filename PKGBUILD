@@ -1,19 +1,14 @@
 # Maintainer: Marcos M. Raimundo <marcosmrai@gmail.com>
+# Maintainer: Patrick Klein <patrick@libklein.com>
 
-# Before building this PKGBUILD, you must download the Gurobi Optimizer
-# archive at http://www.gurobi.com/download/gurobi-optimizer and put it
-# in the same directory as this PKGBUILD. Registration at gurobi.com is
-# required, though free of charge, to be able to download the archive.
-
-pkgname=('gurobi')
-_basename=gurobi
-pkgver=8.1.0
+pkgname=gurobi
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
 license=('custom')
-depends=('python>=3.6.0' 'python<3.8' 'python2>=2.7.0')
+depends=('python>=3.5.0' 'python2>=2.7.0')
 optdepends=(
   'gcc: C/C++ programming interfaces support'
   'java-environment: Java programming interface support'
@@ -21,19 +16,18 @@ optdepends=(
   'matlab: MATLAB programming interface support, versions 2008b onwards'
 )
 source=(
-#  "${_basename}${pkgver}_linux64.tar.gz::file://${_basename}${pkgver}_linux64.tar.gz"
-  "https://packages.gurobi.com/8.1/gurobi8.1.0_linux64.tar.gz"
+  "https://packages.gurobi.com/9.0/gurobi9.0.0_linux64.tar.gz"
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('bf0d8369ab5fb69b2fb027c41814c8b8e6d1de32a39960aa9c52126cf15f58fa'
+sha256sums=('07c48fe0f18097ddca6ddc6f5a276e1548a37b31016d0b8575bb12ec8f44546e'
             '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
             'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
 
 prepare() {
-  cd "$srcdir/${_basename}${pkgver//./}/linux64/"
+  cd "$srcdir/${pkgname}${pkgver//./}/linux64/"
 
-  rm bin/python2.7
+  rm bin/python3.7
   rm -r examples/build/
 
   # Adapt cross-platform scripts to Arch Linux
@@ -42,42 +36,48 @@ prepare() {
 }
 
 package_gurobi() {
-  install=${_basename}.install
+  install=${pkgname}.install
 
-  cd "$srcdir/${_basename}${pkgver//./}/linux64/"
+  cd "$srcdir/${pkgname}${pkgver//./}/linux64/"
 
-  install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/doc/${_basename}/" \
-          "${pkgdir}/usr/include/" "${pkgdir}/usr/lib/${_basename}/matlab/"
+#install -d "${pkgdir}/usr/bin/" "${pkgdir}/usr/share/doc/${pkgname}/" \
+#         "${pkgdir}/usr/include/" "${pkgdir}/usr/lib/${pkgname}/matlab/"
 
   # License
-  install -D -m644 EULA.pdf "${pkgdir}/usr/share/licenses/${_basename}/EULA.pdf"
+  install -D -m644 EULA.pdf "${pkgdir}/usr/share/licenses/${pkgname}/EULA.pdf"
 
   # Examples
-  install -D -m644 bin/gurobi.env "${pkgdir}/usr/share/${_basename}/gurobi.env"
-  cp -r examples/ "${pkgdir}/usr/share/${_basename}/"
+  install -D -m644 bin/gurobi.env "${pkgdir}/usr/share/${pkgname}/gurobi.env"
   
   # Binaries and related files
-  install bin/* "${pkgdir}/usr/bin/"
+  install -Dt "${pkgdir}/usr/bin/" bin/*
   rm "${pkgdir}/usr/bin/gurobi.env"
-  install -D lib/gurobi.py "${pkgdir}/usr/lib/${_basename}/gurobi.py"
+  # Gurobi interactive shell
+  install -D lib/gurobi.py "${pkgdir}/usr/lib/${pkgname}/gurobi.py"
 
   # Documentation
-  cp -rT docs/ "${pkgdir}/usr/share/doc/${_basename}/"
+  for _dir in examples quickstart_linux quickstart_mac quickstart_windows refman remoteservices; do
+    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/${_dir}/html/"
+    cp -rT "docs/${_dir}" "${pkgdir}/usr/share/doc/${pkgname}/${_dir}/html/"
+    cp "docs/${_dir}.pdf" "${pkgdir}/usr/share/doc/${pkgname}/${_dir}/"
+  done
+  ln -sT quickstart_linux "${pkgdir}/usr/share/doc/${pkgname}/quickstart"
+  cp -rT examples/ "${pkgdir}/usr/share/doc/${pkgname}/examples/"
 
   # Headers
-  install -m644 include/*.h "${pkgdir}/usr/include/"
+  install -Dm644 -t "${pkgdir}/usr/include/" include/*.h 
 
   # Programming interfaces
-  install lib/*.so* "${pkgdir}/usr/lib/"
-  install -m644 lib/*.a "${pkgdir}/usr/lib/"
-  ln -sf ./libgurobi.so.8.1.0 "${pkgdir}/usr/lib/libgurobi810.so"
+  install -Dt "${pkgdir}/usr/lib/" lib/*.so*
+  install -Dm644 -t "${pkgdir}/usr/lib/" lib/*.a
+  ln -sf ./libgurobi.so.9.0.0 "${pkgdir}/usr/lib/libgurobi900.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
-  python3.7 setup.py install --root="$pkgdir" --optimize=1
-  install -D "lib/python3.7_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.7/site-packages/gurobipy/"
+  python setup.py install --root="$pkgdir" --optimize=1
+#install -D "lib/python3.8_utf32/gurobipy/gurobipy.so" "${pkgdir}/usr/lib/python3.8/site-packages/gurobipy/"
 
-  install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${_basename}/gurobi.jar"
+  install -D -m644 lib/gurobi.jar "${pkgdir}/usr/share/java/${pkgname}/gurobi.jar"
 
-  install matlab/*.mexa64 "${pkgdir}/usr/lib/${_basename}/matlab/"
-  install -m644 matlab/*.m "${pkgdir}/usr/lib/${_basename}/matlab/"
+  install -Dt "${pkgdir}/usr/lib/${pkgname}/matlab/" matlab/*.mexa64
+  install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/matlab/" matlab/*.m
 }

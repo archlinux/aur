@@ -1,24 +1,23 @@
 pkgbase = gurobi
 	pkgdesc = State-of-the-art solver for mathematical programming
-	pkgver = 8.1.0
+	pkgver = 9.0.0
 	pkgrel = 1
-	url = http://www.gurobi.com/products/gurobi-optimizer/gurobi-overview
-	install = gurobi.install
+	url = http://www.gurobi.com/products/gurobi-optimizer
 	arch = x86_64
 	license = custom
-	depends = python>=3.6.0
-	depends = python<3.8
+	depends = python>=3.5.0
 	depends = python2>=2.7.0
 	optdepends = gcc: C/C++ programming interfaces support
 	optdepends = java-environment: Java programming interface support
 	optdepends = mono: .NET programming interface support
-	optdepends = matlab: MATLAB programming interface support, version 2008b onwards
-	source = https://packages.gurobi.com/8.1/gurobi8.1.0_linux64.tar.gz
+	optdepends = matlab: MATLAB programming interface support, versions 2008b onwards
+	source = https://packages.gurobi.com/9.0/gurobi9.0.0_linux64.tar.gz
 	source = gurobi.sh
 	source = gurobi_setup.m
-	sha256sums = bf0d8369ab5fb69b2fb027c41814c8b8e6d1de32a39960aa9c52126cf15f58fa
+	sha256sums = 07c48fe0f18097ddca6ddc6f5a276e1548a37b31016d0b8575bb12ec8f44546e
 	sha256sums = 30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8
 	sha256sums = fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c
 
 pkgname = gurobi
+	install = gurobi.install
 
