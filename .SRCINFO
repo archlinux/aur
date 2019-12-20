@@ -1,0 +1,15 @@
+pkgbase = gotpm
+	pkgdesc = TPM2 command-line utility
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/google/go-tpm-tools
+	arch = x86_64
+	license = APACHE
+	makedepends = go-pie
+	depends = glibc
+	source = git+https://github.com/google/go-tpm-tools.git#tag=v0.1.2?signed
+	validpgpkeys = 19CE40CEB581BCD81E1FB2371DD6D05AA306C53F
+	sha256sums = SKIP
+
+pkgname = gotpm
+
