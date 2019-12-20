@@ -6,7 +6,7 @@ pkgdesc="Doom2D Forever: A Doom2D remake with multiplayer"
 arch=(x86_64 i386)
 url="http://doom2d.org/"
 license=('GPL3')
-depends=(sdl2_mixer sdl2 enet)
+depends=(sdl2_mixer sdl2 enet libgl miniupnpc)
 makedepends=(git fpc)
 source=(
   'git://repo.or.cz/d2df-sdl.git'
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/d2df-sdl/src/game"
-  fpc -g -gl -dUSE_SDL2 -dUSE_OPENGL -dUSE_SDLMIXER -FE../../../ Doom2DF.lpr
+  fpc -g -gl -dUSE_SDL2 -dUSE_OPENGL -dUSE_SDLMIXER -dUSE_MINIUPNPC -FE../../../ Doom2DF.lpr
 }
 
 
