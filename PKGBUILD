@@ -115,16 +115,6 @@ check() {
     make check
 }
 
-# package_doc(){
-#   cd "${srcdir}/${realname}"
-#   make DESTDIR="${pkgdir}/usr/share/doc/libmesh" install-doc
-#   install -d "${pkgdir}/usr/share/doc/libmesh"
-#   mv "${pkgdir}"/usr/examples "${pkgdir}/usr/share/doc/libmesh/"
-#   install -d "${pkgdir}/etc/libmesh"
-#   mv "${pkgdir}"/usr/Make.common "${pkgdir}/usr/share/doc/libmesh/"
-#   mv "${pkgdir}"/usr/etc/libmesh/Make.common "${pkgdir}/etc/libmesh"
-# }
-
 package() {
   cd "${srcdir}/${realname}"
   make DESTDIR="${pkgdir}" install
