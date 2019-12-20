@@ -9,7 +9,7 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index 4755cbd6..9b05f799 100644
+index 845fe863..857d4573 100644
 --- a/package.json
 +++ b/package.json
 @@ -62,7 +62,7 @@
