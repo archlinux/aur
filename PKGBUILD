@@ -5,35 +5,35 @@
 
 pkgname=emby-server-beta
 pkgver=4.4.0.2
-pkgrel=1
+pkgrel=4
 _ffmpeg_ver=2019_11_09
-_ffdetect_ver=4.3.0
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
 license=('custom')
 depends=('alsa-lib'
          'aom'
-         'dotnet-runtime'
+         'bzip2'
+         'dotnet-runtime<=2.2.6+108'
+         'dotnet-host<=2.2.6+108'
+         'expat'
          'fontconfig'
-         'fribidi'
-         'gmp'
-         'gnutls'
-         'lame'
-         'libass.so'
-         'libdrm'
          'freetype2'
+         'fribidi'
+         'glibc'
+         'gmp'
+         'lame'         
+         'libass.so'         
+         'libdrm'
          'libjpeg-turbo'
          'libmfx.so'
          'libpng'
          'libtheora'
          'libva-drm.so'
          'libva.so'
-         'libva-x11.so'
          'libvorbisenc.so'
          'libvorbis.so'
          'libwebp'
-         'libx11'
          'libx264.so'
          'opus'
          'skia-sharp'
@@ -66,7 +66,7 @@ sha256sums=('48c8c5fcf724f2819470edb31c987670ec6d1e7800c808e6f758908dc73c8111'
             'a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6')
 
 prepare() {
-  rm -rf system/runtimes/tizen-armel
+  rm -rf system/{electron,runtimes/{osx,tizen*,win*}}
 }
 
 build() {
