@@ -4,7 +4,7 @@
 
 pkgname=sssd-git
 _gitname='sssd'
-pkgver=2.2.3.r5.g58a67cd38
+pkgver=2.2.3.r18.g2c13d8bd0
 pkgrel=1
 pkgdesc="System Security Services Daemon"
 arch=('x86_64')
@@ -26,6 +26,7 @@ makedepends=(
   'docbook-xsl'
   'doxygen'
   'python'
+  'python2'
   'samba'         # for libndr-nbt headers
   'systemd'
 )
@@ -68,6 +69,7 @@ build() {
     --with-os=fedora                              \
     --with-pid-path=/run                          \
     --with-python3-bindings                       \
+    --with-python2-bindings                       \
     --with-syslog=journald                        \
     --without-selinux                             \
     --without-semanage                            \

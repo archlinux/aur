@@ -1,6 +1,6 @@
 pkgbase = sssd-git
 	pkgdesc = System Security Services Daemon
-	pkgver = 2.2.3.r5.g58a67cd38
+	pkgver = 2.2.3.r18.g2c13d8bd0
 	pkgrel = 1
 	url = https://pagure.io/SSSD/sssd
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = sssd-git
 	makedepends = docbook-xsl
 	makedepends = doxygen
 	makedepends = python
+	makedepends = python2
 	makedepends = samba
 	makedepends = systemd
 	depends = bind
