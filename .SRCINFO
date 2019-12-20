@@ -1,0 +1,16 @@
+pkgbase = konwert
+	pkgdesc = Charset conversion for files or terminal I/O
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://packages.debian.org/stable/konwert
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = http://deb.debian.org/debian/pool/main/k/konwert/konwert_$pkgver.orig.tar.gz
+	source = http://deb.debian.org/debian/pool/main/k/konwert/konwert_$pkgver-$debrel.debian.tar.xz
+	md5sums = 838e73ec911ebf25816135cbfd0f7a04
+	md5sums = 5b3541ccc205dfa399169c3e306f292b
+
+pkgname = konwert
+
