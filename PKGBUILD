@@ -4,7 +4,7 @@
 
 pkgbase=openxcom-extended-git
 pkgname=('openxcom-extended-git' 'openxcom-extended-docs-git')
-pkgver=5.5.2_r10294.ccf1eee4a
+pkgver=6.2.0_r10653.6bb84c2df
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)"
 arch=('i686' 'x86_64')
@@ -12,14 +12,14 @@ url="https://openxcom.org/forum/index.php/topic,5251.0.html"
 license=('GPL3')
 makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
              'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
-             'boost' 'glu' 'cmake' 'hicolor-icon-theme')
+             'boost' 'glu' 'cmake' 'hicolor-icon-theme' 'xorgproto')
 source=(openxcom-extended::git+"https://github.com/MeridianOXC/OpenXcom.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd openxcom-extended
   # Repo doesn't use tags, so construct version from src file + git commits
-  _exrel=$(awk '/OPENXCOM_VERSION_SHORT/ && match($0, /[0-9]+.[0-9]+.[0-9]+/) { print substr($0, RSTART, RLENGTH) }' src/version.h)
+  _exrel=$(awk '/OPENXCOM_VERSION_LONG/ && match($0, /[0-9]+.[0-9]+.[0-9]+/) { print substr($0, RSTART, RLENGTH) }' src/version.h)
   _commits=$(git rev-list --count HEAD)
   _revision=$(git rev-parse --short HEAD)
   printf "%s_r%s.%s" ${_exrel} ${_commits} ${_revision}

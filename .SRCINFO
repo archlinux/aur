@@ -1,6 +1,6 @@
 pkgbase = openxcom-extended-git
 	pkgdesc = An extended version of the open-source reimplementation of X-COM (OXCE) (git-version)
-	pkgver = 5.5.2_r10294.ccf1eee4a
+	pkgver = 6.2.0_r10653.6bb84c2df
 	pkgrel = 1
 	url = https://openxcom.org/forum/index.php/topic,5251.0.html
 	arch = i686
@@ -23,6 +23,7 @@ pkgbase = openxcom-extended-git
 	makedepends = glu
 	makedepends = cmake
 	makedepends = hicolor-icon-theme
+	makedepends = xorgproto
 	source = openxcom-extended::git+https://github.com/MeridianOXC/OpenXcom.git
 	sha256sums = SKIP
 
