@@ -1,7 +1,7 @@
 pkgbase = otpclient
 	pkgdesc = A simple GTK+ v3 TOTP/HOTP client
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/paolostivanin/OTPClient
 	arch = i686
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = otpclient
 	depends = libpng
 	depends = zbar>=0.20
 	provides = otpclient
-	source = https://github.com/paolostivanin/OTPClient/archive/v1.4.0.tar.gz
-	source = https://github.com/paolostivanin/OTPClient/releases/download/v1.4.0/v1.4.0.tar.gz.asc
+	source = https://github.com/paolostivanin/OTPClient/archive/v2.0.1.tar.gz
+	source = https://github.com/paolostivanin/OTPClient/releases/download/v2.0.1/v2.0.1.tar.gz.asc
 	validpgpkeys = 060C6B7D3869F148C4C4ACD43C9BE9B64EC1EA64
-	sha256sums = f8f814653f3301efc86409530439f86652a6d500d6615eab28b60a219bbf3e17
+	sha256sums = 51086c6e8599d1fae80158406dfd35edd538359f8a7c569692bd864e2549bf0e
 	sha256sums = SKIP
 
 pkgname = otpclient
