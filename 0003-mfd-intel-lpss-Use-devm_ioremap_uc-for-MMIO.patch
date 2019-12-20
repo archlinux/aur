@@ -1,0 +1,48 @@
+From d8faa07b51d760dea7d950f612d04824f968b175 Mon Sep 17 00:00:00 2001
+From: Tuowen Zhao <ztuowen@gmail.com>
+Date: Wed, 16 Oct 2019 15:06:29 -0600
+Subject: [PATCH 3/8] mfd: intel-lpss: Use devm_ioremap_uc for MMIO
+
+Some BIOS erroneously specifies write-combining BAR for intel-lpss-pci
+in MTRR. This will cause the system to hang during boot. If possible,
+this bug could be corrected with a firmware update.
+
+This patch use devm_ioremap_uc to overwrite/ignore the MTRR settings
+by forcing the use of strongly uncachable pages for intel-lpss.
+
+The BIOS bug is present on Dell XPS 13 7390 2-in-1:
+
+[    0.001734]   5 base 4000000000 mask 6000000000 write-combining
+
+4000000000-7fffffffff : PCI Bus 0000:00
+  4000000000-400fffffff : 0000:00:02.0 (i915)
+  4010000000-4010000fff : 0000:00:15.0 (intel-lpss-pci)
+
+Link: https://bugzilla.kernel.org/show_bug.cgi?id=203485
+Cc: <stable@vger.kernel.org> # v4.19+
+Tested-by: AceLan Kao <acelan.kao@canonical.com>
+Signed-off-by: Tuowen Zhao <ztuowen@gmail.com>
+Acked-by: Mika Westerberg <mika.westerberg@linux.intel.com>
+Acked-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Tested-by: Roman Gilg <subdiff@gmail.com>
+Signed-off-by: Lee Jones <lee.jones@linaro.org>
+---
+ drivers/mfd/intel-lpss.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/mfd/intel-lpss.c b/drivers/mfd/intel-lpss.c
+index bfe4ff337581..b0f0781a6b9c 100644
+--- a/drivers/mfd/intel-lpss.c
++++ b/drivers/mfd/intel-lpss.c
+@@ -384,7 +384,7 @@ int intel_lpss_probe(struct device *dev,
+ 	if (!lpss)
+ 		return -ENOMEM;
+ 
+-	lpss->priv = devm_ioremap(dev, info->mem->start + LPSS_PRIV_OFFSET,
++	lpss->priv = devm_ioremap_uc(dev, info->mem->start + LPSS_PRIV_OFFSET,
+ 				  LPSS_PRIV_SIZE);
+ 	if (!lpss->priv)
+ 		return -ENOMEM;
+-- 
+2.24.1
+

@@ -7,8 +7,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.2.21
-_rtpatchver=15
+_pkgver=5.4.3
+_rtpatchver=1
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -21,10 +21,16 @@ _srcname=linux-${_pkgver}
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.xz"
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/5.2/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/5.2/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
+  0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
+  0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
+  0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
+  0006-ACPI-EC-Rework-flushing-of-pending-work.patch
+  0007-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -34,12 +40,18 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('9a8ee3ff75dabffa76141c8dc7529dfbb3ca07888a3708a13f15b412268b3538'
+sha256sums=('6731682f32e1b1ee53b0e7f66b8dc263d25a0e809e78e2139cb0ed77c378ee51'
             'SKIP'
-            '0165f49d090cf8aa48049b0eaa49fc1cb01637ec5c3b4a5e580685d5877e9f36'
+            '4835abaff42f93458d9d640c6c0def9cc8eb30b3906d9a2e49e5e55ea21b10ec'
             'SKIP'
-            'e3b9c915ed10bdf0ce3652b9c356b54127bb74c9bc10d5dc4fb8d67bf7677e27'
-            'f3e24e85d22bca38cc1a35ab786bb8a118b0b8be72b22c8fa8f996bf96308d19')
+            '8124b06ce4f5b366c7f4c659e61546564aa8b8fddf3d43f4206dd14a390a0c73'
+            '64bf552415aba015f9fb79b6e1e8d014c110d3ea66e72176ce15fde6e4ebcb1a'
+            'a287c0d665cbe83e0bfc304a43c86e715559601f7876df356709027c132a4ccd'
+            '36c5e267e73306f41971bdd4bd538cecdd6c00ddb8c15abac59e100c8592ed13'
+            '1b88c10bc1e000a74b88345f7a62a2804535e2b217b9119a78ece103b37055be'
+            '12e68774ce10c61b25dfe39dfc8f50e465855c50e4008e887ab9bfdd2d3890a3'
+            'a2f99ed7314efcdd627bef8356a57554caa68d02d404eee28ca2c04fce2d906a'
+            '29e71325f9f3a9e2a6fc47f5309e3e0b03328239093f651eee47c52467e9e5bc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
