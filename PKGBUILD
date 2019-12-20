@@ -1,7 +1,7 @@
 # Maintainer: Christopher Vittal ("viralstitch") <chris@vittal.dev>
 
 pkgname=htslib
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
 source=(https://github.com/samtools/htslib/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('7d047301ead800e3c83a72f573fb760f1912c40da30abc74f4da4cf279ebf802')
+sha256sums=('e3b543de2f71723830a1e0472cf5489ec27d0fbeb46b1103e14a11b7177d1939')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
