@@ -1,0 +1,33 @@
+pkgbase = python-pwntools
+	pkgdesc = A CTF framework and exploit development library
+	pkgver = 4.0.0beta0
+	pkgrel = 1
+	url = https://github.com/Gallopsled/pwntools
+	arch = any
+	license = MIT
+	license = GPL2
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-mako
+	depends = python-pyelftools
+	depends = python-capstone
+	depends = ropgadget
+	depends = python-pyserial
+	depends = python-requests
+	depends = python-pip
+	depends = python-pygments
+	depends = python-pysocks
+	depends = python-dateutil
+	depends = python-packaging
+	depends = python-psutil
+	depends = python-intervaltree
+	depends = python-sortedcontainers
+	depends = python-unicorn
+	depends = ropgadget
+	source = python-pwntools-4.0.0beta0.tar.gz::https://github.com/Gallopsled/pwntools/archive/4.0.0beta0.tar.gz
+	sha256sums = cc00b2bf53553d3694870c521903a5b801eacfae02dbacf9e7b0e37e81dbe275
+	b2sums = da4ac34c71be251d634b8f49a9e0a06a853963f520ecd660828401f901ef35c642958724c981fe417a47561075efc675a966ed88a059e483b78f8a143d97f593
+
+pkgname = python-pwntools
+
