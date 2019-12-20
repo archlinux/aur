@@ -1,6 +1,6 @@
 pkgbase = vimpager-git
 	pkgdesc = A vim-based script to use as a PAGER - git checkout
-	pkgver = 2.06.r358.ge9380d1
+	pkgver = 2.06.r367.g92242cf
 	pkgrel = 1
 	url = https://github.com/rkitover/vimpager
 	arch = any

@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=vimpager-git
-pkgver=2.06.r358.ge9380d1
+pkgver=2.06.r367.g92242cf
 pkgrel=1
 pkgdesc='A vim-based script to use as a PAGER - git checkout'
 arch=('any')
@@ -39,6 +39,6 @@ package() {
 
 	make PREFIX="/usr" SYSCONFDIR="/etc" DESTDIR="${pkgdir}" install
 
-  install -Dm644 debian/copyright "${pkgdir}/usr/share/licenses/vimpager/copyright"
+  install -Dm644 debian/copyright "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 }
 
