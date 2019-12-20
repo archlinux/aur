@@ -26,10 +26,10 @@ makedepends=('patchelf')
 source=("http://download.altera.com/akdlm/software/acdsinst/${_mainver}std${_patchver/.0/}/${_buildver}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
         'quartus.sh' 'quartus.desktop' 'modelsim-ase.sh' 'modelsim-ase.desktop' '51-usbblaster.rules')
 sha256sums=('3546e90f6496b17c3c3e3e8582a3991940ad73ed112740428864460cfab6e40a'
-            '16206c08cd04fb02318a20e053346c68e77275b324ca24cfb3da64b03420ab3c'
-            'f263e0c2d469564b51c131cc450e8ee6cd0a2f059153e01ac7e498e2f9d6a9c9'
+            'b076bf669bbfdd963c9fe23e2db424be4fd1c68d97a79e9ca808dd5726ce400b'
+            '630286f589b5191869eaefe360ead393c4d15ba5e7f966d99d822f79cf2784b5'
             '363be8b0656b56f92c34ac0581a8a0f3bb1edaa9da361f50d1e60ec3334c13a7'
-            'a37738de447c50ca7bfe856466bd9567850ccf45ac6c3f0a6e63ef5bb863645f'
+            '235002d3a3326cd91164f16f7a8a9e754134ca2157c66e4e8abe71e9cd62dce2'
             'dd9d33fa2698a0ec11ae86f4508f77e2e12bf4a21224f5b16640bc41d6c0999b')
 
 options=(!strip !debug) # Stripping will takes ages, I'd avoid it
