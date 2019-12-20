@@ -1,7 +1,7 @@
 # Maintainer: Phosphenius <luca dot kredel at web dot de>
 pkgname=sp9k-git
 _pkgname=sp9k
-pkgver=r48.132e302
+pkgver=r58.b5c6db1
 pkgrel=1
 pkgdesc="A bullet hell/space shooter game made in C++ and SFML as a learning project."
 arch=('x86_64')
