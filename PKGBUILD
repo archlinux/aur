@@ -58,10 +58,9 @@ wl_update() {
 }
 
 prepare() {
-  cd ${_pkgname}-${_branch}
+  cd ${_pkgname}-${_branch}/lang
 
   if [ "`curl ${_wl_hz}`" = "ok" ]; then
-    cd lang
     rename nb nb_NO *_nb.ts
     wl_update Translations ${_pkgname,,}_
     rename nb_NO nb *_nb_NO.ts
@@ -73,7 +72,9 @@ build() {
 
   sed -i "s/\(VERSION = \).*/\1${pkgver}/" gpxsee.pro
 
-  qmake CONFIG+=lrelease PREFIX=/usr gpxsee.pro
+  find lang -name "*.ts" -exec sh -c 'touch ${0//.ts/.qm}' {} \;
+  qmake CONFIG+=lrelease LRELEASE_DIR=lang PREFIX=/usr gpxsee.pro
+  rm -f lang/*.qm
   make
 }
 
