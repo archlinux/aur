@@ -1,7 +1,7 @@
 pkgbase = wtwitch
 	pkgdesc = Terminal user interface for Twitch
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgver = 1.1.6
+	pkgrel = 1
 	url = https://git.sr.ht/~krathalan/wtwitch
 	changelog = CHANGELOG
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = wtwitch
 	depends = wget
 	optdepends = mpv: for watching streams
 	optdepends = vlc: for watching streams
-	source = https://git.sr.ht/~krathalan/wtwitch/archive/1.1.4.tar.gz
-	source = https://git.sr.ht/~krathalan/wtwitch/blob/master/signatures/1.1.4.tar.gz.sig
+	source = https://git.sr.ht/~krathalan/wtwitch/archive/1.1.6.tar.gz
+	source = https://git.sr.ht/~krathalan/wtwitch/blob/master/signatures/1.1.6.tar.gz.sig
 	validpgpkeys = 02AAA23ABDF1D538BD889D251AADE5E728FFC667
-	sha256sums = 70f200cc6ff66e4da001066fb99bfd338b5b28afd8ceaf10696423b5b54f1d99
-	sha256sums = 8c007fa4634d00fca520b301e7e3c70f77701af26ba02698e385c6503bf183b3
+	sha256sums = c8bfb423cee0c9705032f68c7194fa47f66a69ba139ffa30abfaafa55e8320e6
+	sha256sums = 69428e81632f6ba01dd9cce1fd23908c13c4664f65a0054f7b827f6a90988229
 
 pkgname = wtwitch
 
