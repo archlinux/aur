@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='ec298e702b87e2859f7f7864f51eef3360daf163' # git rev-parse v${pkgver}
-pkgver=244
+_tag='50a79652baa8650dc2bf7fe5979e67eb673a218e' # git rev-parse v${pkgver}
+pkgver=244.1
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -130,9 +130,10 @@ build() {
 
     -Ddbuspolicydir=/usr/share/dbus-1/system.d
     -Ddefault-hierarchy=hybrid
-    -Ddefault-locale=C
     -Ddefault-kill-user-processes=false
+    -Ddefault-locale=C
     -Dfallback-hostname='archlinux'
+    -Dnologin-path=/usr/bin/nologin
     -Dntp-servers="${_timeservers[*]}"
     -Ddns-servers="${_nameservers[*]}"
     -Drpmmacrosdir=no

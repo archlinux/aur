@@ -1,5 +1,5 @@
 pkgbase = systemd-selinux
-	pkgver = 244
+	pkgver = 244.1
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = systemd-selinux
 	makedepends = bash-completion
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=ec298e702b87e2859f7f7864f51eef3360daf163?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=50a79652baa8650dc2bf7fe5979e67eb673a218e?signed
 	source = git+https://github.com/systemd/systemd#tag=v244?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -111,9 +111,9 @@ pkgname = systemd-selinux
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=244
-	provides = udev=244
-	provides = systemd=244-1
+	provides = systemd-tools=244.1
+	provides = udev=244.1
+	provides = systemd=244.1-1
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -146,7 +146,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=244-1
+	provides = systemd-libs=244.1-1
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -158,16 +158,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=244-1
+	provides = systemd-resolvconf=244.1-1
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=244-1
+	conflicts = systemd-resolvconf=244.1-1
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=244-1
-	provides = selinux-systemd-sysvcompat=244-1
+	provides = systemd-sysvcompat=244.1-1
+	provides = selinux-systemd-sysvcompat=244.1-1
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
