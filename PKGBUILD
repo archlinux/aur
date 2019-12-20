@@ -10,6 +10,7 @@ url='https://github.com/openstreetmap/OSMembrane'
 license=('GPL3')
 depends=('java-runtime' 'osmosis')
 optdepends=('josm')
+makedepends=('gendesk')
 provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
@@ -20,8 +21,10 @@ prepare() {
 
   cat << EOF > ${pkgname}
 #!/bin/sh
-exec /usr/bin/java -jar '/usr/share/java/${pkgname}/OSMembrane.jar' "\$@"
+exec java -jar '/usr/share/java/${pkgname}/OSMembrane.jar' "\$@"
 EOF
+
+  gendesk -f -n --pkgname="$pkgname" --pkgdesc="$pkgdesc" --categories=Geoscience
 
   cd src/main/java/de/osmembrane/resources
   sed -i "s#\"resources/pdf/manual.pdf\"#\"/usr/share/${pkgname}/resources/pdf/manual.pdf\"#" Constants.java
@@ -41,4 +44,5 @@ package() {
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 build/libs/OSMembrane.jar ${pkgdir}/usr/share/java/${pkgname}/OSMembrane.jar
   install -Dm644 manual/manual.pdf ${pkgdir}/usr/share/${pkgname}/resources/pdf/manual.pdf
+  install -Dm644 osmembrane.desktop ${pkgdir}/usr/share/applications/osmembrane.desktop
 }
