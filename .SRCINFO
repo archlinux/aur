@@ -1,6 +1,6 @@
 pkgbase = picom-git
 	pkgdesc = X compositor (fork of compton) (git-version)
-	pkgver = 1283_Next.2.g37532e5_2019.12.10
+	pkgver = 1287_Next.6.ge1d9e95_2019.12.13
 	pkgrel = 1
 	url = https://github.com/yshui/picom
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = picom-git
 	makedepends = meson
 	makedepends = asciidoc
 	makedepends = uthash
+	makedepends = xorgproto
 	depends = libgl
 	depends = libev
 	depends = pcre
