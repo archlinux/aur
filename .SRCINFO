@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
-	pkgver = 1.1.22
+	pkgver = 1.1.23
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
 	optdepends = sccache: For faster builds
-	source = git+https://github.com/brave/brave-browser.git#tag=v1.1.22
+	source = git+https://github.com/brave/brave-browser.git#tag=v1.1.23
 	source = brave-vaapi-enable.patch
 	source = chromium-vaapi-fix.patch
 	source = brave-launcher
