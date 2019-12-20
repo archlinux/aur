@@ -1,0 +1,17 @@
+pkgbase = ohlavpn-git
+	pkgdesc = Find working VPN proxy all over the world | Hola VPN
+	pkgver = r14.c6c31b6
+	pkgrel = 1
+	url = https://github.com/mtojek/ohlavpn
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = dep
+	provides = ohlavpn
+	conflicts = ohlavpn
+	source = git+https://github.com/mtojek/ohlavpn.git
+	sha256sums = SKIP
+
+pkgname = ohlavpn-git
+
