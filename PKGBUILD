@@ -1,6 +1,6 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=compressonator-cli-bin
-pkgver=3.1.307
+pkgver=3.2.535
 pkgrel=1
 pkgdesc="CLI for GPU texture compression, decompression, format transcoding, and more"
 arch=('any')
@@ -9,9 +9,9 @@ license=('MIT')
 depends=()
 optdepends=()
 makedepends=()
-source=("$url/releases/download/v3.1.4064/Compressonator_Linux_x86_64_$pkgver.tar.gz"
+source=("$url/releases/download/v3.2.4691/Compressonator_Linux_x86_64_$pkgver.tar.gz"
         "CompressonatorCLI")
-sha256sums=('1aba597a1340f622adb25632fc5681034b660f5cf0735408366f7c946a6da38f'
+sha256sums=('6662b363cba0a57532557f24742d06d33f8d51caed374c3d4aa7ddf1a74ec64d'
             '145c3cf7eef00b28bcda80d1d5a677420ab76d34cf5e8c01ae435af204531fcc')
 backup=()
 
