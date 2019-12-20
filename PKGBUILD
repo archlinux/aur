@@ -44,5 +44,6 @@ package() {
   cd ${_pkgname}
 
   make DESTDIR=$pkgdir/ install
-  find $pkgdir/usr/bin/ -not -name 'stardict-*' -type f | sed 'p;s#usr/bin/#usr/bin/stardict-#' | xargs -n2 mv
+  find $pkgdir/usr/bin/ -not -name 'stardict-*' -type f | \
+    sed 'p;s#bin/#bin/stardict-#' | xargs -n2 mv
 }
