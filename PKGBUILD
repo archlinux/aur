@@ -64,7 +64,6 @@ export MOZ_TELEMETRY_REPORTING=1
 export MOZ_REQUIRE_SIGNING=1
 mk_add_options AUTOCLOBBER=1
 mk_add_options AUTOCONF=autoconf-2.13
-mk_add_options MOZ_MAKE_FLAGS="-j5"
 ac_add_options --enable-application=browser
 ac_add_options --prefix=/usr
 ac_add_options --enable-hardening
