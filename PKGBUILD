@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=wasm-micro-runtime-git
-pkgver=r89.4456ff89d8
+pkgver=y2019.28.11+2.g89f152cdea
 pkgrel=1
 pkgdesc="Standalone WebAssembly (WASM) runtime with small footprint"
 arch=(x86_64)
@@ -15,9 +15,7 @@ conflicts=(wasm-micro-runtime)
 
 pkgver() {
   cd wasm-micro-runtime
-  printf 'r%d.%s' \
-    $(git rev-list --count HEAD) \
-    $(git rev-parse --short=10 HEAD)
+  git describe --tags --abbrev=10 | sed 's/^tag-\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)-g\([0-9a-f]\+\)$/y\3.\2.\1+\4.g\5/g'
 }
 
 prepare() {
