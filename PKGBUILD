@@ -3,7 +3,7 @@
 
 pkgname=pari-git
 _pkgname=pari
-pkgver=20180829.7e6668b4f
+pkgver=20190927.1fbf2d1af
 pkgrel=1
 pkgdesc='Computer algebra system designed for fast computations in number theory'
 url='https://pari.math.u-bordeaux.fr/'

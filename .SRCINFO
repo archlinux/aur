@@ -1,6 +1,6 @@
 pkgbase = pari-git
 	pkgdesc = Computer algebra system designed for fast computations in number theory
-	pkgver = 20180829.7e6668b4f
+	pkgver = 20190927.1fbf2d1af
 	pkgrel = 1
 	url = https://pari.math.u-bordeaux.fr/
 	arch = x86_64
