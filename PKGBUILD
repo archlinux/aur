@@ -59,7 +59,7 @@ NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 pkgname="emacs-git"
 pkgver=27.0.50.139793
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -103,10 +103,13 @@ if [[ $NOTKIT == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
 elif [[ $LUCID == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'xorgproto' );
+  makedepends+=( 'xorgproto' );
 elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' 'xorgproto' );
+  depends+=( 'gtk2' );
+  makedepends+=( 'xorgproto' );
 else
-  depends+=( 'gtk3' 'xorgproto' );
+  depends+=( 'gtk3' );
+  makedepends+=( 'xorgproto' );
 fi
 
 if [[ $M17N == "YES" ]]; then
