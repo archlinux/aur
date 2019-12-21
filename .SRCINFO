@@ -6,6 +6,7 @@ pkgbase = sxiv-dir-navigation-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = xorgproto
 	depends = imlib2
 	depends = desktop-file-utils
 	depends = xdg-utils
@@ -15,9 +16,9 @@ pkgbase = sxiv-dir-navigation-git
 	provides = sxiv
 	conflicts = sxiv
 	source = sxiv::git+https://github.com/muennich/sxiv.git
-	source = dir-navigation.diff
+	source = dir-navigation.patch
 	sha256sums = SKIP
-	sha256sums = d2cd688f326c8457f7102d374e6bad96c9922d20e918c3f7020a6ec0d554fef5
+	sha256sums = 11a907950d5e9a1fc8e1aa0cd82fc6532ed9d74f91189463455989ffff8da5cd
 
 pkgname = sxiv-dir-navigation-git
 

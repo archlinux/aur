@@ -8,16 +8,16 @@ pkgver=25.r10.g07300da
 pkgrel=1
 pkgdesc="Simple X Image Viewer (with patch to browse through images in working directory)"
 arch=('x86_64')
-url="https://github.com/muennich/${_name}"
+url="https://github.com/muennich/sxiv"
 license=('GPL2')
 depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft')
-makedepends=('git')
+makedepends=('git' 'xorgproto')
 provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git+${url}.git"
-        "dir-navigation.diff")
+        "dir-navigation.patch")
 sha256sums=('SKIP'
-            'd2cd688f326c8457f7102d374e6bad96c9922d20e918c3f7020a6ec0d554fef5')
+            '11a907950d5e9a1fc8e1aa0cd82fc6532ed9d74f91189463455989ffff8da5cd')
 
 pkgver() {
   cd "${_name}"
@@ -29,7 +29,7 @@ prepare() {
   ln -s config.def.h config.h
 
   echo "==> Applying dir-navigation patch"
-  git apply "$srcdir"/dir-navigation.diff
+  git apply "$srcdir"/dir-navigation.patch
 }
 
 build() {
