@@ -1,8 +1,8 @@
 # Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
 
 pkgname=python-abjad
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 groups=('abjad')
 pkgdesc='Tool for formalized music score control.'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
         'graphviz: to create rhythm-trees graphs and other tree structures'
         )
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba1aa85322b4985081b86cbd7bc2552d678f4a12622291e5f425e77c92895f08')
+sha256sums=('df5d13a1c78dc89be399fc67a0e40f115377e9ba8fb564b5da614d8c0dc8e362')
 
 
 build() {
