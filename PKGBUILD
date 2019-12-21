@@ -6,7 +6,7 @@
 pkgbase=python-django-mptt
 _pkgbase="${pkgbase#python-}"
 pkgname=(python-django-mptt python2-django-mptt)
-pkgver=0.8.7
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Utilities for implementing a modified pre-order traversal tree in django."
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/django-mptt/${_pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('5253c691b1ea7defa0e15334bacff4e3c96ebcf7706d5cd7641f0e55172308b2')
+sha256sums=('7235f1f3d6b53979eca4d27b7c5bd49e15475dba5326a653598799853b3d4f2a')
 
 package_python-django-mptt() {
   depends=('python-django>=1.8')
