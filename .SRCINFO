@@ -1,0 +1,14 @@
+pkgbase = tl-function-ref
+	pkgdesc = lightweight, C++, non-owning reference to a callable
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TartanLlama/function_ref
+	arch = any
+	license = custom:CC0
+	makedepends = cmake>=3.14.0
+	makedepends = catch2
+	source = function_ref-v1.0.0.tar.gz::https://github.com/TartanLlama/function_ref/archive/v1.0.0.tar.gz
+	sha256sums = 6e374c40c40d3978cfcdd4ef9ed1417627898f37ffb306970f86e339644ed3ca
+
+pkgname = tl-function-ref
+
