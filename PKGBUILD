@@ -2,13 +2,13 @@
 
 pkgname=forge-quark-2.0-bin
 pkgver=204.882
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="minecraft mod quark by Vazkii"
 arch=('any')
 url="https://quark.vazkii.net/"
 license=('custom:CC BY-NC-SA 3.0')
-depends=('forge-server>=28.1.61' 'forge-autoreglib-1.4-bin')
+depends=('forge-server>=1.14.4_28.1.61' 'forge-autoreglib-1.4-bin')
 makedepends=()
 optdepends=()
 source=("$pkgname-$pkgver.jar::https://maven.blamejared.com/vazkii/quark/Quark/r2.0-$pkgver/Quark-r2.0-$pkgver.jar")
