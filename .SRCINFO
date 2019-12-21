@@ -1,0 +1,19 @@
+pkgbase = libclsp-git
+	pkgdesc = A C++17 library for language servers
+	pkgver = r20.d4a4804
+	pkgrel = 1
+	url = https://github.com/otreblan/libclsp
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = rapidjson
+	depends = boost-libs
+	provides = libclsp
+	conflicts = libclsp
+	source = libclsp-git::git+https://github.com/otreblan/libclsp.git
+	md5sums = SKIP
+
+pkgname = libclsp-git
+
