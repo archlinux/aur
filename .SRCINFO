@@ -1,14 +1,15 @@
 pkgbase = framecounter
 	pkgdesc = A small program to count frames in RAW VC-1, MPEG-4 ASP and MPEG-4 AVC streams
-	pkgver = 20140128
+	pkgver = 20171226
 	pkgrel = 1
 	url = http://www.selur.de/
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = git
 	depends = qt5-base
-	source = http://www.selur.de/sites/default/files/hybrid_downloads/FrameCounter.7z
-	md5sums = 02b1c2fbd672f5169b58957dd552fefb
+	source = git+https://github.com/Selur/FrameCounter.git#tag=0189dbfb3a1891c520746bf82aca78199b24fbb9
+	sha256sums = SKIP
 
 pkgname = framecounter
 
