@@ -1,16 +1,9 @@
 # Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
 
-############################################################################
-# Patch VMware Workstation to enable macOS guests support
-# Uncomment the line below to enable it
-
+# To enable macOS guests support, uncomment the line below:
 #_enable_macOS_guests=y
-
 # CAUTION: Running macOS on VMware Workstation on non Apple computer is forbidden by
 # Apple and VMware EULAs.
-# Source of the patch: https://github.com/DrDonk/unlocker
-# Forum: https://www.insanelymac.com/forum/topic/335757-macos-unlocker-v30-for-vmware-workstation/
-############################################################################
 
 # vmware-keymaps dependency is needed to avoid some conflicts when you install
 # this package with vmware-horizon-client. If you don't plan to install
@@ -23,7 +16,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=11
+pkgrel=12
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -118,7 +111,7 @@ sha256sums=(
   'f9440479f3ae5ad0a39bba3150276627878bf83d6879444fb327c53a1dbb5a4d'
   '42594b60085d0bbef01ab07b9f8b0d18640001107ce61cc0ddf02d0ab415140f'
   'e4c2e97acf07c52de570dd4333d67acfb593db719937a563c6075ab773dcce33'
-  'e3812b78158672c7d96b6a58877681462f3fbdfe99a948b32c80c755c8682450'
+  '9b4fbe0ba83f761a2eb9ecd05d48428f8b0a5b3abd8404ccbd928408e682f02b'
   'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
@@ -142,7 +135,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=8.5.10_7527438
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.2
+_unlocker_ver=3.0.3
 _efi_unlocker_ver=1.0.0
 
 makedepends+=(
@@ -154,15 +147,13 @@ makedepends+=(
 source+=(
   "darwinPre15-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
   "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/${_unlocker_ver}/unlocker.py"
-  'unlocker.patch'
-  "efi-unlocker-patch-${_efi_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/efi-unlocker/${_efi_unlocker_ver}/patches.txt"
+  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/paolo-projects/unlocker/${_unlocker_ver}/unlocker.py"
+  "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
 )
 sha256sums+=(
   '78aaa6ba65d178d6242ad73b7e2e552ec707798ce5f4925a0adebf30f844dc17'
   '6327a76c2503f56d8bc67279f289ed4bb53e236d965ad78c0fcf7ee9e2bbb6c6'
-  '29e0b0db9c0296ab81eee543803c4bd430e2c69c76e33492910e17280da1c05c'
-  '4fb4a7914aee656df170e35b3ef952aaaa2ed10161e560dfa097688861127b1d'
+  '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
 
@@ -210,9 +201,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     rm -rf payload manifest.plist
   done
 
-  cp "$srcdir/unlocker-${_unlocker_ver}.py" "$srcdir/unlocker.py"
-  patch -Np1 < unlocker.patch
-  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
+  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
 fi
 }
 
@@ -453,7 +442,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python "$srcdir/unlocker.py" > /dev/null
+  python "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
