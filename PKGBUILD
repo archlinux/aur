@@ -4,8 +4,8 @@ pkgdesc="ROS - RTAB-Maps standalone library."
 url='http://introlab.github.io/rtabmap'
 
 pkgname='ros-kinetic-rtabmap'
-pkgver='0.11.13'
-_pkgver_patch=0
+pkgver='0.19.3'
+_pkgver_patch=1
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -20,8 +20,7 @@ makedepends=('cmake' 'ros-build-tools'
   zlib
   proj
   pcl
-  libfreenect
-  openni)
+)
 
 ros_depends=(ros-kinetic-octomap
   ros-kinetic-qt-gui-cpp
@@ -31,8 +30,7 @@ depends=(${ros_depends[@]}
   vtk
   zlib
   pcl
-  libfreenect
-  openni)
+  )
 
 # Git version (e.g. for debugging)
 # _tag=release/kinetic/rtabmap/${pkgver}-${_pkgver_patch}
@@ -42,8 +40,15 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="rtabmap-release-release-kinetic-rtabmap-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/introlab/rtabmap-release/archive/release/kinetic/rtabmap/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('44e43db8afa55e5e1dce495301a6c7677b4dfa11fd5ca2ccdbebf92ce2954ac9')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/introlab/rtabmap-release/archive/release/kinetic/rtabmap/${pkgver}-${_pkgver_patch}.tar.gz"
+       "CloudViewer_vtkTexture.patch")
+sha256sums=('fc22b6b3288611f0f77c8ec0686604f041349ccb1b086dd3314f9704d2245e20'
+            'SKIP')
+
+prepare() {
+  cd ${srcdir}/${_dir}/guilib/src
+  patch -Np1 --binary -i ${srcdir}/CloudViewer_vtkTexture.patch
+}
 
 build() {
   # Use ROS environment variables
