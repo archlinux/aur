@@ -1,4 +1,5 @@
-#Maintainer: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
+#Maintainer: Alexander Fasching <fasching.a91@gmail.com>
+#Contributor: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 #Contributor: Bob Finch <w9ya@qrparci.net>
 
 pkgname=qsstv
