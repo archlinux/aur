@@ -1,0 +1,30 @@
+From d9571801ee98f1355746865d78bdb30682fcd318 Mon Sep 17 00:00:00 2001
+From: Adrian Bacircea <adrian.b.enthropy@gmail.com>
+Date: Sat, 21 Dec 2019 15:35:13 +0200
+Subject: [PATCH] Fix Makefile to always link libelf even if not used
+
+---
+ src/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 4a558b4..d2a297c 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -24,11 +24,11 @@ CFLAGS ?= -g -O2 -Werror -Wall
+ ALL_CFLAGS += $(CFLAGS)
+ ALL_LDFLAGS += $(LDFLAGS)
+ ifdef NO_PKG_CONFIG
+-	ALL_LDFLAGS += -lelf
++	ALL_LDFLAGS += -Wl,--push-state,--no-as-needed -lelf -Wl,--pop-state
+ else
+ 	PKG_CONFIG ?= pkg-config
+ 	ALL_CFLAGS += $(shell $(PKG_CONFIG) --cflags libelf)
+-	ALL_LDFLAGS += $(shell $(PKG_CONFIG) --libs libelf)
++	ALL_LDFLAGS += -Wl,--push-state,--no-as-needed $(shell $(PKG_CONFIG) --libs libelf) -Wl,--pop-state
+ endif
+ 
+ OBJDIR ?= .
+-- 
+2.24.1
+
