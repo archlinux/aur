@@ -4,13 +4,13 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=0.8.2.r2903.gfc89b93
+pkgver=0.8.2.r3292.g0f459e8
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter"
 arch=('x86_64')
 url="http://xonotic.org"
 license=('GPL')
-depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm' 'libxxf86dga'
+depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm'
          'sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
 makedepends=('mesa' 'rsync')
 conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
