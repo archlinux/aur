@@ -1,6 +1,6 @@
 pkgbase = mtgaprotracker
 	pkgdesc = Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client
-	pkgver = 2.0.11
+	pkgver = 2.0.21
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mtgaprotracker
 	makedepends = yarn
 	makedepends = npm
 	depends = electron
-	source = mtgaprotracker-2.0.11.tar.gz::https://github.com/Razviar/mtgap/archive/v2.0.11.tar.gz
+	source = mtgaprotracker-2.0.21.tar.gz::https://github.com/Razviar/mtgap/archive/v2.0.21.tar.gz
 	source = runmtgap.sh
 	source = mtgap.desktop
 	source = home.html.patch
