@@ -1,0 +1,9 @@
+--- a/qtbase/mkspecs/android-clang/qmake.conf 2019-12-07 03:27:07.000000000 -0300
++++ b/qtbase/mkspecs/android-clang/qmake.conf 2019-12-16 13:07:03.878285841 -0300
+@@ -111,3 +111,6 @@
+ x86_64.deployment_identifier = x86_64
+
+ load(qt_config)
++
++QMAKE_PKG_CONFIG = $$[QT_INSTALL_PREFIX]
++QMAKE_PKG_CONFIG = android-$$section(QMAKE_PKG_CONFIG, /, 3, 3)-pkg-config
