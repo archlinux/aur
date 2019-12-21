@@ -3,7 +3,7 @@
 # Previous Maintainer: Matthew Gamble 
 
 pkgname=duck
-pkgver=7.1.2.31675
+pkgver=7.2.2.32045
 pkgrel=1
 pkgdesc="Cyberduck CLI"
 arch=('x86_64' 'i686')
@@ -30,5 +30,5 @@ package() {
      ln -s /opt/duck/duck "${pkgdir}/usr/bin/duck"
     install -Dm644 "${pkgdir}/opt/duck/duck.desktop" "${pkgdir}/usr/share/applications/duck.desktop"
 }
-md5sums_x86_64=('02be0fbeca17c17d62fc50f75bd3e1f1')
-md5sums_i686=('7a1e43633eb886d01b43052e7f25e34e')
+md5sums_x86_64=('f52961666b7afefa763081c4ca032be1')
+md5sums_i686=('122eb22d219a52e420fa137f3b0a13ff')
