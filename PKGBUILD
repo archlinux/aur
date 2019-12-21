@@ -10,7 +10,7 @@ pkgdesc="X11 client-side library (32-bit) - threadsafe patches by Jacek Caban"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
 depends=('lib32-libxcb' $_pkgbasename)
-makedepends=('xorg-util-macros' 'xextproto' 'xtrans' 'inputproto' 'gcc-multilib')
+makedepends=('xorg-util-macros' 'xorgproto' 'xtrans' 'gcc-multilib')
 provides=("lib32-libx11=${pkgver}")
 conflicts=("lib32-libx11=${pkgver}")
 license=('custom:XFREE86')
