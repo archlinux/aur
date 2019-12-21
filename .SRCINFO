@@ -1,6 +1,6 @@
 pkgbase = emacs-git
-	pkgdesc = GNU Emacs. Development master.
-	pkgver = 27.0.50.139564
+	pkgdesc = GNU Emacs. Development master branch.
+	pkgver = 27.0.50.139793
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = emacs-git
 	depends = harfbuzz
 	depends = gpm
 	depends = gtk3
+	depends = xorgproto
 	depends = libjpeg-turbo
 	depends = giflib
 	depends = cairo
@@ -23,6 +24,7 @@ pkgbase = emacs-git
 	conflicts = emacs-seq
 	replaces = emacs26-git
 	replaces = emacs-seq
+	options = !strip
 	source = emacs-git::git://git.savannah.gnu.org/emacs.git
 	md5sums = SKIP
 

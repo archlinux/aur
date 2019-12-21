@@ -54,15 +54,14 @@ MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
 		  #are doing.
                   # -->>If you just *believe* you need it, you don't.<<--
 NOGZ="YES"        # Don't compress .el files.
-ZSTDPACK="YES"    # Compress install bundle with zstd.
 ################################################################################
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=27.0.50.139618
+pkgver=27.0.50.139793
 pkgrel=1
-pkgdesc="GNU Emacs. Development master."
-arch=('x86_64') # Arch Linux only. Derivative users are on their own.
+pkgdesc="GNU Emacs. Development master branch."
+arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3')
 depends=( 'alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' )
@@ -73,25 +72,19 @@ replaces=('emacs26-git' 'emacs-seq')
 source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
-# source=("emacs-git::git+https://github.com/emacs-mirror/emacs.git")
+#source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+options=(!strip)
 md5sums=('SKIP')
 ################################################################################
-
-if [[ $ZSTDPACK == "YES" ]]; then 
-# Guess why!
-COMPRESSZST=(zstd -c -z -q -T0 -19 -)
-PKGEXT='.pkg.tar.zst'
-SRCEXT='.src.tar.zst'
-fi
 
 ################################################################################
 
 if [[ $LTO == "YES" ]] && [[ $CLANG != "YES" ]]; then
-  CFLAGS+=" -flto -fuse-linker-plugin"
-  CXXFLAGS+=" -flto -fuse-linker-plugin"
+  CFLAGS+=" -g -flto -fuse-linker-plugin"
+  CXXFLAGS+=" -g -flto -fuse-linker-plugin"
 else
-  CFLAGS+=" -flto"
-  CXXFLAGS+=" -flto"
+  CFLAGS+=" -g -flto"
+  CXXFLAGS+=" -g -flto"
 fi
 
 if [[ $CLANG == "YES" ]]; then
@@ -109,11 +102,11 @@ fi
 if [[ $NOTKIT == "YES" ]]; then
   depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'xorgproto' );
 elif [[ $GTK2 == "YES" ]]; then
-  depends+=( 'gtk2' );
+  depends+=( 'gtk2' 'xorgproto' );
 else
-  depends+=( 'gtk3' );
+  depends+=( 'gtk3' 'xorgproto' );
 fi
 
 if [[ $M17N == "YES" ]]; then
@@ -251,8 +244,8 @@ fi
   #
   if [[ ! $CLANG == "YES" ]]; then
     export LD=/usr/bin/ld.gold
-    export CFLAGS+=" -fuse-ld=gold";
-    export CXXFLAGS+=" -fuse-ld=gold";
+    export CFLAGS+=" -s -fuse-ld=gold";
+    export CXXFLAGS+=" -s -fuse-ld=gold";
   fi
 
   ./configure "${_conf[@]}"
