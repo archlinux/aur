@@ -1,14 +1,14 @@
 # Maintainer: Shatur95 <genaloner@gmail.com>
 
 # Submodule versions
-_qonlinetranslator=1.2.1
+_qonlinetranslator=1.2.2
 _qhotkey=1.2.2
-_qtaskbarcontrol=1.2.2
-_singleapplication=3.0.15
+_qtaskbarcontrol=2.0.0
+_singleapplication=3.0.18
 
 pkgname=crow-translate
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using Google, Yandex and Bing translate API"
 arch=('x86_64')
 url="https://github.com/crow-translate/crow-translate"
@@ -20,11 +20,11 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/crow-translate/crow-transla
         QHotkey-$_qhotkey.tar.gz::"https://github.com/Skycoder42/QHotkey/archive/$_qhotkey.tar.gz"
         QTaskbarControl-$_qtaskbarcontrol.tar.gz::"https://github.com//Skycoder42/QTaskbarControl/archive/$_qtaskbarcontrol.tar.gz"
         SingleApplication-$_singleapplication.tar.gz::"https://github.com/itay-grudev/SingleApplication/archive/$_singleapplication.tar.gz")
-sha256sums=('21049c3aed79ccd1e1340e689641b1b725489e5ec2f3e34a17181fe36dd09317'
-            'fd667dc6efe9dabaeddfeddca47457590eaf4116693b316a4bf26dad9d29fe25'
+sha256sums=('4e73e01e8479f784d66dd7cc55ed60cd321e71dd51fdf4fa04a7cf9bbaf5d473'
+            '40df3af650048b651e4c624cf33f662deb392880107ad4e8cc4f4684e78042d5'
             '1a5a6eb81738a8f232df2dd5c908839871077e10ca3b9a6437daf5fda53d86ad'
-            '18de904fea3c3f2c388069055a7aa964833f216d9e2a23dabf66f7f545b52f8f'
-            '312c125a5564f5aaa22b532599bc9707c1570a2e97232529848a66dc74486de3')
+            '85039ca8ff899ed724ed16b719be7a814392a67ad53b4b59f160f73fb53dc74c'
+            '0f0ce6466dbfdadf2a7ea75aa1d461e2e279c8c03f747117c75bd376a46c6eec')
 
 # Move submodules into the project
 prepare() {
