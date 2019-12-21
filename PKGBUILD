@@ -5,11 +5,11 @@ pkgver=57.14b708a
 pkgrel=1
 pkgdesc='simpleaur, a AUR helper that does not require extra dependences.'
 arch=('any')
-url="https://gitlab.com/edu4rdshl/simpleaur"
+url="https://github.com/edu4rdshl/simpleaur"
 license=('GPL3')
 makedepends=('git')
 optdepends=('auracle: search for available updates and package names - recommended')
-source=("git+https://gitlab.com/edu4rdshl/$_pkgname.git")
+source=("git+https://github.com/edu4rdshl/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
