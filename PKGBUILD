@@ -6,11 +6,11 @@
 buildarch=8
 
 pkgbase=linux-raspberrypi4-aarch64
-_commit=c078c64fecb325ee86da705b91ed286c90aae3f6
+_commit=edc6ef437bd690772d7a562adeea6c85daf11440
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="Raspberry Pi 4"
-pkgver=4.19.86
+pkgver=4.19.89
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -24,13 +24,15 @@ source=("https://github.com/raspberrypi/linux/archive/${_commit}.tar.gz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook')
-md5sums=('412996f9a5d1641e625fa49b0018fee7'
-         'f37e04e5bcd9187eefbac4b748029e04'
-         '60bc3624123c183305677097bcd56212'
-         '40a6543a2dee5d54c4489f03ff8c2a25'
-         '86d4a35722b5410e3b29fc92dae15d4b'
-         'ce6c81ad1ad1f8b333fd6077d47abdaf'
-         '855dbd555a653fc999cfb5c6e9ca89d0')
+b2sums=(
+    'b8833302687d1858b99ab2904082215d8158f5c11d45d654beb61b5ca9c1e33107c0f1c8963a52da75792337ad8c2bd0618e97d8f472d3e18d6c1d94c59e59f4'
+    '07e6a3aafee0a2c9b4bb010b28f3203671ed5fc9e82ebee3f9228d9233b3b09fd52ce4585e12f6a346edb8c19bf16733905723b0ce165b2aeed1573f0e72ad72'
+    '969479870f2fdcb92a9d3cb43bf4d329aa1ffe5b1b3862c0cbce43788230e5f3d308e766739257c265b4a83dc1c8e935f13f223fbd70a05f2776096a9db0d32b'
+    '1383ef743dfee478210ac7a0fd8f8a36f9df1d0bc3cb81052e829ea475fb85eda338de753e7a0b0a8737dcb13bd24083b045a67da037733ce558742d2b7ec0b5'
+    'f0cb39a8e448dc93cd830f1680303ecfcda6c729030ecf0bbf6dd8c57777a12ab33bbd991da4f735ba5869afb59d39f5cf5c7c725cc9ba6a78c235c2fd00251a'
+    '40e2e0ac9eec9f9c08593875ca5bb8a26f835e33ae42e3718b98e83d76bbbc51a68395215c707fe58269954127261f7f8d12ec47341d28c672de973f3c4e71e8'
+    '8edd95fb949c3282bc70043af19cd6afc5201c2889a4d4c2a0b65862d27ed7bbcfdcfb75cb2a91bae852f9a2294b5c947d71ce742458bf98f6937429130a64b0'
+)
 
 prepare() {
   cd "${srcdir}/${_srcname}"
