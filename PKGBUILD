@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=19.05.4.1.r588.gf0ecfa9ac0
+pkgver=19.05.4.1.r751.g1ba01c5ae4
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -75,7 +75,7 @@ build() {
 		--localstatedir=/var \
 		--enable-pam \
 		--with-proctrack \
-		--with-pmix \
+		--with-pmix=/usr \
 		--with-hdf5 \
 		--with-hwloc \
 		--with-rrdtool \

@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-git
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 19.05.4.1.r588.gf0ecfa9ac0
+	pkgver = 19.05.4.1.r751.g1ba01c5ae4
 	pkgrel = 1
 	url = https://www.schedmd.com
 	install = slurm-llnl-git.install
@@ -28,7 +28,7 @@ pkgbase = slurm-llnl-git
 	optdepends = ncurses: adds the smap command
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
 	optdepends = pmix: support Open MPI applications using PMIx
-	provides = slurm-llnl=19.05.4.1.r588.gf0ecfa9ac0
+	provides = slurm-llnl=19.05.4.1.r751.g1ba01c5ae4
 	conflicts = slurm-llnl
 	backup = etc/default/slurm-llnl
 	source = slurm-tmpfiles.conf
