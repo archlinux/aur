@@ -1,10 +1,12 @@
 pkgbase = python2-pynvim
 	pkgdesc = Python client for Neovim
-	pkgver = 0.3.2
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/neovim/pynvim
 	arch = any
 	license = Apache
+	checkdepends = python2-pytest
+	checkdepends = python2-pytest-runner
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-msgpack
@@ -12,8 +14,8 @@ pkgbase = python2-pynvim
 	depends = python2-trollius
 	provides = python2-neovim
 	replaces = python2-neovim
-	source = https://github.com/neovim/python-client/archive/0.3.2.tar.gz
-	sha256sums = 0a44c540dd5790acfbc7e411b0ed4fb6c44914d866226ebebf370c24c2723dc2
+	source = https://github.com/neovim/python-client/archive/0.4.0.tar.gz
+	sha256sums = 6d48f194e5102cbc2043bf78647cfdea77bdb2b545fe942c20bbc6c58f489210
 
 pkgname = python2-pynvim
 
