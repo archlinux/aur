@@ -2,7 +2,7 @@
 
 pkgname=xde-session-git
 pkgver=1.10.r7.gc0fd053
-pkgrel=1
+pkgrel=2
 pkgdesc="X Desktop Environment Display and Session Management"
 groups=('xde-git')
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ url="https://github.com/bbidulock/xde-session"
 license=('GPL')
 provides=('xde-session')
 conflicts=('xde-session')
-depends=('m4' 'libunique' 'libxss' 'libxvnc' 'libxxf86misc' 'xde-theme' 'xde-ctools-git'
+depends=('m4' 'libunique' 'libxss' 'libxvnc' 'xde-theme' 'xde-ctools-git'
 	 'xde-helpers-git' 'xde-menu-git' 'xdg-launch-git' 'libcanberra' 'numlockx')
 optdepends=('xorg-xdm-xlogin-git: to use xde-xlogin and xde-xchooser')
-makedepends=('git')
+makedepends=('git' 'xorgproto')
 source=("$pkgname::git+https://github.com/bbidulock/xde-session.git")
 md5sums=('SKIP')
 
