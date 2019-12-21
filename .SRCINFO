@@ -1,15 +1,17 @@
 pkgbase = kvdo-dkms
 	pkgdesc = A pair of kernel modules which provide pools of deduplicated and/or compressed block storage
 	pkgver = 6.2.2.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dm-vdo/kvdo
 	arch = x86_64
 	license = GPL2
 	provides = kvdo
 	source = kvdo-6.2.2.24.tar.gz::https://github.com/dm-vdo/kvdo/archive/6.2.2.24.tar.gz
 	source = dkms.conf
+	source = vla-warning.patch
 	sha256sums = 11e3562236ea5b2fbbfc52469f0cc266b2480c8decdda9d5448999d821c79971
 	sha256sums = 516f60bdb28f7a0cb6c8f1f84c656ee7c6aec8feb393538f227ed515372ac88a
+	sha256sums = a6b9a42ef6c0933ff02fe304f9ab627f045f83abc8ed33cf0b91522096cade0f
 
 pkgname = kvdo-dkms
 
