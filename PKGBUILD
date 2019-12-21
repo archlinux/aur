@@ -6,10 +6,10 @@ pkgrel=2
 pkgdesc="Rich skin pack for fcitx (contains 8 skins)"
 arch=('any')
 depends=('fcitx')
-source=("http://storage.マギルゥーベルベット.コム/aur-data/fcitx-skins/fcitx-skin-pack.tar.gz"
-        "http://storage.マギルゥーベルベット.コム/aur-data/fcitx-skins/fcitx-skin-aki-0.1.tar.gz"
-        "http://storage.マギルゥーベルベット.コム/aur-data/fcitx-skins/fcitx-skin-tomoshibi-0.1.tar.gz"
-        "http://storage.マギルゥーベルベット.コム/aur-data/fcitx-skins/fcitx-skin-tomoshibi-light.tar.gz")
+source=("http://storage.magiruuvelvet.gdn/aur-data/fcitx-skins/fcitx-skin-pack.tar.gz"
+        "http://storage.magiruuvelvet.gdn/aur-data/fcitx-skins/fcitx-skin-aki-0.1.tar.gz"
+        "http://storage.magiruuvelvet.gdn/aur-data/fcitx-skins/fcitx-skin-tomoshibi-0.1.tar.gz"
+        "http://storage.magiruuvelvet.gdn/aur-data/fcitx-skins/fcitx-skin-tomoshibi-light.tar.gz")
 sha1sums=('38731a18bb7c938938ce590337675c962aa07d67'
           'e0ad881c9c8ab5103014f9f973fa9889ec47def6'
           'c3e2d34856917926f1926f3edd0d4f98b152a477'
