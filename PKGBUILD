@@ -8,7 +8,7 @@ _pkgver=72.0
 pkgver=72.0b2
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone mail and news reader from mozilla.org - Bleeding edge version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -24,7 +24,7 @@ install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
 		'thunderbird-beta.desktop')
 sha256sums=('8cabcdbfc3096524c81b02ec5ef18f797627db941d42ef02179610e877b80a83'
-            'aef1484f9df38db75330c142edc46d73053acee8b959562bc9e765c235d83cbe')
+            'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d')
 
 # RC
 #if [[ $_build = ? ]]; then
