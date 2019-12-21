@@ -1,7 +1,7 @@
 pkgbase = ynab4
 	pkgdesc = You Need A Budget, installs with wine
 	pkgver = 4.3.857
-	pkgrel = 2
+	pkgrel = 3
 	url = http://youneedabudget.com/
 	arch = x86_64
 	license = unknown
