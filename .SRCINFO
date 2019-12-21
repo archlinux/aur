@@ -1,7 +1,7 @@
 pkgbase = firefox-beta
 	pkgdesc = Standalone web browser from mozilla.org - Beta
 	pkgver = 72.0b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	arch = i686
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = firefox-beta
 	makedepends = python2-psutil
 	makedepends = cbindgen
 	makedepends = nasm
+	makedepends = xorgproto
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
