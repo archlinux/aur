@@ -1,6 +1,6 @@
 pkgbase = openbazaar-bin
 	pkgdesc = OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries
-	pkgver = 2.3.6
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = https://github.com/OpenBazaar/openbazaar-desktop
 	install = openbazaar-bin.install
@@ -25,9 +25,9 @@ pkgbase = openbazaar-bin
 	optdepends = lsb-release
 	provides = openbazaar
 	conflicts = openbazaar
-	source = https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v2.3.6/openbazaar2_2.3.6_amd64.deb
+	source = https://github.com/OpenBazaar/openbazaar-desktop/releases/download/v2.3.7/openbazaar2_2.3.7_amd64.deb
 	source = openbazaar.desktop
-	md5sums = 301e8497a3e45cb1ec46b8d097d16aa4
+	md5sums = 73d348eb60142d23dddb12d49648343c
 	md5sums = e547247b5aa7cd2c195286e2ec760883
 
 pkgname = openbazaar-bin

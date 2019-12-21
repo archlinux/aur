@@ -3,7 +3,7 @@
 
 pkgname=openbazaar-bin
 _name=${pkgname%-bin}
-pkgver=2.3.6
+pkgver=2.3.7
 pkgrel=1
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('x86_64')
@@ -42,5 +42,6 @@ package() {
     -or -name "test" -prune -exec rm -r '{}' \; \
     -or -name "temp" -prune -exec rm -r '{}' \;
 }
-md5sums=('301e8497a3e45cb1ec46b8d097d16aa4'
-'e547247b5aa7cd2c195286e2ec760883')
+
+md5sums=('73d348eb60142d23dddb12d49648343c'
+         'e547247b5aa7cd2c195286e2ec760883')
