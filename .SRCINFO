@@ -1,0 +1,17 @@
+pkgbase = jakartaee-api-docs-git
+	pkgdesc = Jakarta EE api documentations.
+	pkgver = 8.0.0.r0.0104a7c
+	pkgrel = 1
+	url = https://github.com/eclipse-ee4j/jakartaee-api
+	arch = any
+	license = EPL
+	makedepends = git
+	makedepends = java-environment>=8
+	makedepends = maven
+	provides = jakartaee-api-docs
+	conflicts = jakartaee-api-docs
+	source = jakartaee-api-docs::git+https://github.com/eclipse-ee4j/jakartaee-api.git
+	md5sums = SKIP
+
+pkgname = jakartaee-api-docs-git
+
