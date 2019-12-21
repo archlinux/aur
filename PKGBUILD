@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-ctools-git
-pkgver=1.9.0.ge00c1ae
+pkgver=1.10.r17.ge722490
 pkgrel=1
 pkgdesc="X Desktop Environment C-language tools"
 groups=('xde-git')
@@ -11,20 +11,24 @@ license=('GPL')
 provides=('xde-ctools')
 conflicts=('xde-ctools')
 depends=('libxss' 'libxxf86misc' 'libsm' 'libwnck+-git' 'libcanberra' 'libnotify')
-makedepends=('dbus-glib' 'libunique' 'git')
+makedepends=('dbus-glib' 'libunique' 'git' 'xorgproto')
 optdepends=('xdg-launch-git: launch with recent update and launch notification')
 source=("$pkgname::git+https://github.com/bbidulock/xde-ctools.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags|sed -e 's,^[a-zA-Z_]*,,;s,-,.,g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh
-  ./configure --sysconfdir=/etc
+  ./configure
   make
 }
 
