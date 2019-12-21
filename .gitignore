@@ -1,0 +1,5 @@
+jumpapp/
+pkg/
+src/
+jumpapp-git-*.pkg.tar.xz
+jumpapp-git-*.src.tar.gz
