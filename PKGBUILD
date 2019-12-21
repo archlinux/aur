@@ -10,7 +10,6 @@ makedepends=('dotnet-sdk-bin')
 install=
 changelog=
 options=('!strip')
-source=("https://github.com/erayerdin/$pkgname/archive/v$pkgver.tar.gz")
 source=("$pkgname"::'git+https://gitlab.com/lhausmann/tgcli.git#branch=master')
 md5sums=('SKIP')
 
