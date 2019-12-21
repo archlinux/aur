@@ -1,0 +1,14 @@
+pkgbase = tgcli-git
+	pkgdesc = A Telegram console client based on tdlib.
+	pkgver = 0.2a.r0.g3a4cb9e
+	pkgrel = 1
+	url = https://gitlab.com/lhausmann/tgcli
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-bin
+	options = !strip
+	source = tgcli-git::git+https://gitlab.com/lhausmann/tgcli.git#branch=master
+	md5sums = SKIP
+
+pkgname = tgcli-git
+
