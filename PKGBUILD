@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=19.05.4.1
+pkgver=19.05.5.1
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//./-}
 # this will substitute any full stops (.) with hyphens
@@ -43,7 +43,7 @@ sha512sums=('61f07699353d607ec43bab2a4fe29b4a380dab10108619e67ca2737193ab044a6e2
             'a1c2478a049dc1c024d773a73f363da6c9106d9533137f919394e8213376cb9167c8fcca7b038d1c45c441a1adce4524ccb68b6dd269a1000aba11b84b5352d5'
             'ae2d0275bc9e0aac15d0d1dd4913b70ed4d4032e76c9c6ffdeae345c55834219f6495429d1d1c9129779221d6d08bada1228ccdb1c671b05d4a92ed6088bf55c'
             '56459e20d7f2624a8e8dd2982693b257e65df22c3609d991afdc1b2f79adaefc0586a76fd5fdd7dc2bdd39b3af0c91f38ddc4b1139081968903450bc28aca304'
-            'ecee26b23fc72ea4b6eb3039aada1814b5932d75eaf61501a31b97ac8f7b600864f2429a36de068f1f1cde178fa1383f2c53192af5b1a62766e3ffe48be4395c')
+            '612ce1c476de3d08d4003c48df65883880e697652ef8b0847cd87719e91196f489409b27c67ef040ab9ffe0c9d824cdae6441608e9af9619abcf11ebf0d464be')
 
 
 build() {
@@ -68,7 +68,7 @@ build() {
 		--sysconfdir=/etc/slurm-llnl \
 		--localstatedir=/var \
 		--enable-pam \
-		--with-pmix \
+		--with-pmix=/usr \
 		--with-hdf5 \
 		--with-hwloc \
 		--with-rrdtool \
