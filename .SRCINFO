@@ -6,7 +6,8 @@ pkgbase = kotlin-language-server-git
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = java-runtime
+	makedepends = java-environment>=8
+	depends = java-runtime>=8
 	provides = kotlin-language-server
 	conflicts = kotlin-language-server
 	source = kotlin-language-server::git+https://github.com/fwcd/KotlinLanguageServer.git

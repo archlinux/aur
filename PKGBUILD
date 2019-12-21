@@ -10,8 +10,8 @@ url="https://github.com/fwcd/KotlinLanguageServer.git"
 license=('MIT')
 conflicts=('kotlin-language-server')
 provides=('kotlin-language-server')
-depends=('java-runtime')
-makedepends=('git')
+depends=('java-runtime>=8')
+makedepends=('git' 'java-environment>=8')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 
