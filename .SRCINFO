@@ -1,7 +1,7 @@
 pkgbase = libbpf-git
 	pkgdesc = BPF library
 	pkgver = 0.0.6.r41.e7a82fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libbpf/libbpf
 	arch = x86_64
 	license = custom

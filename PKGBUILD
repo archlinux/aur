@@ -2,7 +2,7 @@
 
 pkgname=libbpf-git
 pkgver=0.0.6.r41.e7a82fc
-pkgrel=1
+pkgrel=2
 pkgdesc='BPF library'
 depends=('libelf' 'linux-api-headers>=5.4')
 url='https://github.com/libbpf/libbpf'
@@ -29,6 +29,7 @@ package() {
   DESTDIR="${pkgdir}" make prefix=/usr install install_headers
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/${pkgname%-git}/LICENSE"
+  install -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/${pkgname%-git}/LICENSE.BSD-2-Clause"
   pushd "${pkgdir}/usr"
   mv lib64 lib
   popd
