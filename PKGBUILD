@@ -4,7 +4,7 @@
 
 pkgname=atlauncher-bin
 pkgrel=1
-pkgver=3.3.1.4
+pkgver=3.3.4.0
 pkgdesc="A Launcher for Minecraft which to allow you to download and install ModPacks quickly and easily."
 arch=('any')
 url="http://www.atlauncher.com/"
@@ -13,25 +13,17 @@ depends=('java-runtime' 'openal')
 makedepends=('unzip')
 provides=('atlauncher')
 
-source=("atlauncher-${pkgver}-${pkgrel}.jar::http://www.atlauncher.com/download/jar"
+source=("atlauncher-${pkgver}-${pkgrel}.jar::https://download.nodecdn.net/containers/atl/ATLauncher-$pkgver.jar"
         "atlauncher"
         "atlauncher.desktop"
         "atlauncher.png"
         )
-noextract=('jar')
+noextract=("atlauncher-${pkgver}-${pkgrel}")
 
-sha256sums=('4a5605c20ee477d7616f7262d5e0d0ae866b8098d67c9635c8f0e3a3b2184e0f'
+sha256sums=('1d4110d06f6d13f1409d7ff3ed8b129d160403968fc0ec3a50c7f11d2ce2a1b6'
             '8d74eebf99c96ce3719147dd5d00b66c72b5336371d0dc07cd1c96f7d45688fe'
             '5f45436c96ab9830555d0f987a96fc0b1a9766d450b958aba282820ffca6cc84'
             '369c7aa4439762878fd9970c75d1312cf0cd97119c8320b732addef4a621482d')
-
-pkgver() {
-    cd "$srcdir"
-    mkdir temp
-    unzip -d temp jar > /dev/null
-    grep -i 'Implementation-Version' temp/META-INF/MANIFEST.MF | cut -d' ' -f2 | grep -oE '[0-9.]*'
-    rm -R temp
-}
 
 package() {
     cd "$srcdir"
