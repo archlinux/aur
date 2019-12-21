@@ -1,14 +1,14 @@
 pkgbase = babashka-bin
 	pkgdesc = A Clojure babushka for the grey areas of Bash.
-	pkgver = 0.0.44
+	pkgver = 0.0.45
 	pkgrel = 1
 	url = https://github.com/borkdude/babashka
 	arch = x86_64
 	license = EPL
 	provides = babashka-bin
 	conflicts = babashka-bin
-	source = https://github.com/borkdude/babashka/releases/download/v0.0.44/babashka-0.0.44-linux-amd64.zip
-	sha256sums = b3f6cc6e00ee0225ce2efa0b59ec1befb045c9d4c61de44a97761148e2fe4154
+	source = https://github.com/borkdude/babashka/releases/download/v0.0.45/babashka-0.0.45-linux-amd64.zip
+	sha256sums = cc5ae9778e615536c80730abbe56ccb52f8d348d17cde44bef4aeb0bdc6fce04
 
 pkgname = babashka-bin
 
