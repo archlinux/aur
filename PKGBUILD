@@ -14,7 +14,7 @@ depends=('sdl_mixer' 'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs'
          'glibc' 'hicolor-icon-theme')
 makedepends=('git' 'xmlto' 'docbook-xml' 'docbook-xsl' 'doxygen' 'sdl_mixer'
              'sdl_gfx' 'sdl_image' 'sdl' 'yaml-cpp' 'libgl' 'gcc-libs' 'glibc'
-             'boost' 'glu' 'cmake' 'hicolor-icon-theme')
+             'boost' 'glu' 'cmake' 'hicolor-icon-theme' 'xorgproto')
 optdepends=('openxcom-data-steam: pacman-tracked X-COM data files from Steam'
             'openxcom-tftd-data-steam: pacman-tracked Terror From The Deep data files from Steam')
 provides=('openxcom' 'openxcom-git')

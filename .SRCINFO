@@ -24,6 +24,7 @@ pkgbase = openxcom-extended
 	makedepends = glu
 	makedepends = cmake
 	makedepends = hicolor-icon-theme
+	makedepends = xorgproto
 	depends = sdl_mixer
 	depends = sdl_gfx
 	depends = sdl_image
