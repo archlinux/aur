@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.4.5
-	pkgrel = 3
+	pkgver = 5.4.6
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,26 +14,24 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.5.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.4.4-879
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.6.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.4.5-882
 	source = https://git.zx2c4.com/WireGuard/snapshot/WireGuard-0.0.20191219.tar.xz
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	source = futex-wait-multiple-5.2.1.patch::https://aur.archlinux.org/cgit/aur.git/plain/futex-wait-multiple-5.2.1.patch?h=linux-fsync
 	source = Revert-e1000e-5.4.patch
-	source = Fix-dump_tree-hierarchy-print-always-active.patch::https://lkml.org/lkml/diff/2019/10/6/918/1
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
 	sha256sums = SKIP
-	sha256sums = 7ac5c8967fb99aa379148c1edd7bc98689972fecf916e77954cd36328f85b260
+	sha256sums = 80853920a753762e058e35b754d3e0d16ec2fb485dfb84cc40fbdba383a8da17
 	sha256sums = SKIP
 	sha256sums = 5aba6f0c38e97faa0b155623ba594bb0e4bd5e29deacd8d5ed8bda8d8283b0e7
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = 4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0
 	sha256sums = b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942
 	sha256sums = f774eb33e8457d2f64852200654cc8c9e0f7ebe1264771c0b6dbc221ec3b9a3f
-	sha256sums = 0c1c32cbf75af13baa250b87224564cc60d8480a7e0d9886ae7d664ca725be30
 
 pkgname = linux-clear
 	pkgdesc = The Clear Linux kernel and modules
