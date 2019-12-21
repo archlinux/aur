@@ -7,8 +7,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.3
-_rtpatchver=1
+_pkgver=5.4.5
+_rtpatchver=3
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -23,14 +23,15 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_pkgver}.tar.sign"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
-  config         # the main kernel config file
+  config
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
   0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-  0006-ACPI-EC-Rework-flushing-of-pending-work.patch
-  0007-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+  0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+  0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch
+  0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -40,18 +41,19 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('6731682f32e1b1ee53b0e7f66b8dc263d25a0e809e78e2139cb0ed77c378ee51'
+sha256sums=('568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0'
             'SKIP'
-            '4835abaff42f93458d9d640c6c0def9cc8eb30b3906d9a2e49e5e55ea21b10ec'
+            'fdb943eee48582b65f3a4876cc8f7b1e1b274dd57287762c0e8a68ff681d855b'
             'SKIP'
-            '8124b06ce4f5b366c7f4c659e61546564aa8b8fddf3d43f4206dd14a390a0c73'
-            '64bf552415aba015f9fb79b6e1e8d014c110d3ea66e72176ce15fde6e4ebcb1a'
-            'a287c0d665cbe83e0bfc304a43c86e715559601f7876df356709027c132a4ccd'
-            '36c5e267e73306f41971bdd4bd538cecdd6c00ddb8c15abac59e100c8592ed13'
-            '1b88c10bc1e000a74b88345f7a62a2804535e2b217b9119a78ece103b37055be'
-            '12e68774ce10c61b25dfe39dfc8f50e465855c50e4008e887ab9bfdd2d3890a3'
-            'a2f99ed7314efcdd627bef8356a57554caa68d02d404eee28ca2c04fce2d906a'
-            '29e71325f9f3a9e2a6fc47f5309e3e0b03328239093f651eee47c52467e9e5bc')
+            '4828d33e4115ec4a59f6ad995d7041be0e8cfaaa399f3ee6b03a7d18c23f35a2'
+            'abf6040dee7695d52ebdb5609a5bbcf6c56ec6e39d9d65ddb6be728268b4ee4e'
+            'ea43ba87b18ed99dc9bd7bcbe20c2315e51aafdad1bf4bae3e31889aae3f12d7'
+            '0fa424d4a56f5ec6754669d423a119301ff8849c72f6bf7603ecd1d98b971419'
+            '4dc9d777185052c5a6bf6f15df2ae91ca50585103a910b6e1369cac7a291d3b0'
+            '950a1a526d33b804da34cea4aba920c1a0863afb1817ed4e0c288b81f4a21ba3'
+            '4e731525b8f848481a0fdadfe1db70f014364bd501130a22a396802acff0f577'
+            '09b7facedafc53ae47f92be0adb619791c0044a2977ce3e4367b35987f38732f'
+            '5c7171b5787e0e252120476640d6d8237ea904e9c552da735a16851679e20cd5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

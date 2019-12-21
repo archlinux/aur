@@ -1,7 +1,7 @@
-From 9fadcea08381f95f84a8b4c353bcd54dd51e8148 Mon Sep 17 00:00:00 2001
+From 2e0f7971cc760615ca8b5612504c9911c725da6a Mon Sep 17 00:00:00 2001
 From: Tuowen Zhao <ztuowen@gmail.com>
 Date: Wed, 16 Oct 2019 15:06:28 -0600
-Subject: [PATCH 2/8] lib: devres: add a helper function for ioremap_uc
+Subject: [PATCH 2/9] lib: devres: add a helper function for ioremap_uc
 
 Implement a resource managed strongly uncachable ioremap function.
 

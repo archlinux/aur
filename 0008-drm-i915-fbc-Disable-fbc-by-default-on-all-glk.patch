@@ -1,0 +1,44 @@
+From 9080bd00570f3f52cc73a3558cd90be3c9974c94 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ville=20Syrj=C3=A4l=C3=A4?= <ville.syrjala@linux.intel.com>
+Date: Wed, 27 Nov 2019 22:12:09 +0200
+Subject: [PATCH 8/9] drm/i915/fbc: Disable fbc by default on all glk+
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+We're missing a workaround in the fbc code for all glk+ platforms
+which can cause corruption around the top of the screen. So
+enabling fbc by default is a bad idea. I'm not keen to backport
+the w/a so let's start by disabling fbc by default on all glk+.
+We'll lift the restriction once the w/a is in place.
+
+Cc: stable@vger.kernel.org
+Cc: Daniel Drake <drake@endlessm.com>
+Cc: Paulo Zanoni <paulo.r.zanoni@intel.com>
+Cc: Jian-Hong Pan <jian-hong@endlessm.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Signed-off-by: Ville Syrjälä <ville.syrjala@linux.intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20191127201222.16669-2-ville.syrjala@linux.intel.com
+Reviewed-by: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+(cherry picked from commit cd8c021b36a66833cefe2c90a79a9e312a2a5690)
+Signed-off-by: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+---
+ drivers/gpu/drm/i915/display/intel_fbc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_fbc.c b/drivers/gpu/drm/i915/display/intel_fbc.c
+index 16ed44bfd734..07a038f21619 100644
+--- a/drivers/gpu/drm/i915/display/intel_fbc.c
++++ b/drivers/gpu/drm/i915/display/intel_fbc.c
+@@ -1284,7 +1284,7 @@ static int intel_sanitize_fbc_option(struct drm_i915_private *dev_priv)
+ 		return 0;
+ 
+ 	/* https://bugs.freedesktop.org/show_bug.cgi?id=108085 */
+-	if (IS_GEMINILAKE(dev_priv))
++	if (INTEL_GEN(dev_priv) >= 10 || IS_GEMINILAKE(dev_priv))
+ 		return 0;
+ 
+ 	if (IS_BROADWELL(dev_priv) || INTEL_GEN(dev_priv) >= 9)
+-- 
+2.24.1
+

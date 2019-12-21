@@ -1,7 +1,7 @@
-From 007f0bb91e44519f6881208a35d68f66e9f84c3d Mon Sep 17 00:00:00 2001
+From a107ef9c40639f406a3449591482b8b3dcee7b19 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Tue, 29 Oct 2019 20:00:21 +0300
-Subject: [PATCH 4/8] PCI: pciehp: Do not disable interrupt twice on suspend
+Subject: [PATCH 4/9] PCI: pciehp: Do not disable interrupt twice on suspend
 
 We try to keep PCIe hotplug ports runtime suspended when entering system
 suspend. Because the PCIe portdrv sets the DPM_FLAG_NEVER_SKIP flag, the PM
