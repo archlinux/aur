@@ -5,14 +5,14 @@
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
 pkgname=wine-stable-next
-_pkgver=5.0-rc1
+_pkgver=5.0-rc2
 pkgver=${_pkgver/-/}
 pkgrel=1
 
 source=(https://dl.winehq.org/wine/source/5.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('43877cd200e951ffe0e61c3877f140b9c95da835c114b5c8ba5f39e85f4950fa3704fd39a13dd36c73461d81bc668f92dc2c45feca0974d80fd41d7ba5d5c7b0'
+sha512sums=('cffcbbe7a80c6e7a54ebc241f6ee35440103953f3335540392011894f4d2aad2dc9337e35b8234897a607bcf2122e96c1c04f85613380153282bff43650d4790'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
