@@ -4,7 +4,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
-pkgname=libva-intel-driver
+pkgname=libva-intel-driver-hybrid
 pkgver=2.4.0
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   git
   meson
+  xorgproto
 )
 replaces=(libva-driver-intel)
 optdepends=('intel-hybrid-codec-driver: Provides codecs with partial HW acceleration')
