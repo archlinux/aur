@@ -1,7 +1,7 @@
 pkgbase = xplanet-svn
 	pkgdesc = Renders an image of the earth into the X root window
-	pkgver = 20190922.213
-	pkgrel = 2
+	pkgver = 20191013.220
+	pkgrel = 1
 	url = http://xplanet.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = xplanet-svn
 	provides = xplanet
 	conflicts = xplanet
 	source = xplanet::svn://svn.code.sf.net/p/xplanet/code/trunk
-	source = giflib.patch
 	sha256sums = SKIP
-	sha256sums = c9abf31bf242d7c0940e8fbc5b64714c12edd4b995aba1ebe776ddc0c5bf019a
 
 pkgname = xplanet-svn
 
