@@ -1,0 +1,14 @@
+pkgbase = python-browsermob-proxy
+	pkgdesc = A library for interacting with the Browsermob Proxy
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://oss.theautomatedtester.co.uk/browsermob-proxy-py
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/52/d0/ef4b7cd74fae2ecadc0130b206558ae5e43da9760f9069556aa48b318292/browsermob-proxy-0.8.0.tar.gz
+	sha256sums = fb345bc2207fccdb8a584694c8d02d01c2cfc539c9d43bbed38f0c54e1abbbaf
+
+pkgname = python-browsermob-proxy
+
