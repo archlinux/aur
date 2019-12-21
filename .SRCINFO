@@ -1,6 +1,6 @@
 pkgbase = libdrm-git
 	pkgdesc = Userspace interface to kernel DRM services, master git version
-	pkgver = 2.4.99.r1.gdcc586c6
+	pkgver = 2.4.100.r42.gc70bd7b7
 	pkgrel = 1
 	url = http://dri.freedesktop.org/
 	arch = i686
