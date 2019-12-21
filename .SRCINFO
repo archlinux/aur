@@ -1,6 +1,6 @@
 pkgbase = wasabi-wallet-bin
 	pkgdesc = Open-source, non-custodial, privacy-focused Bitcoin wallet for desktop
-	pkgver = 1.1.10
+	pkgver = 1.1.10.1
 	pkgrel = 1
 	url = https://wasabiwallet.io/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = wasabi-wallet-bin
 	conflicts = wasabi-wallet
 	options = !strip
 	options = staticlibs
-	source = https://github.com/zkSNACKs/WalletWasabi/releases/download/v1.1.10/Wasabi-1.1.10.deb
-	source = https://github.com/zkSNACKs/WalletWasabi/releases/download/v1.1.10/Wasabi-1.1.10.deb.asc
-	source = https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v1.1.10/LICENSE.md
+	source = https://github.com/zkSNACKs/WalletWasabi/releases/download/v1.1.10.1/Wasabi-1.1.10.1.deb
+	source = https://github.com/zkSNACKs/WalletWasabi/releases/download/v1.1.10.1/Wasabi-1.1.10.1.deb.asc
+	source = https://raw.githubusercontent.com/zkSNACKs/WalletWasabi/v1.1.10.1/LICENSE.md
 	validpgpkeys = 6FB3872B5D42292F59920797856348328949861E
-	sha256sums = 41c0bddfc36b757c5210fc8745644014db99fed7fb1014e95c58079a43099136
+	sha256sums = 41d46d6a99695032f1fe6dd1efcaaf4835770175f53606803c9068d97f7ed557
 	sha256sums = SKIP
 	sha256sums = 6a9baff873bf6e94c289047810e5c6954657cba1c5d46925691a9c2d3872ced0
 
