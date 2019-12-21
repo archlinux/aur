@@ -6,7 +6,6 @@ pkgbase = sxiv-dir-navigation-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = xorgproto
 	depends = imlib2
 	depends = desktop-file-utils
 	depends = xdg-utils
