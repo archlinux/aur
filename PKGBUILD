@@ -1,7 +1,7 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
 #             adapted from package python2-scikit-rf
 pkgname="python-scikit-rf"
-pkgver=0.14.9
+pkgver=0.15
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
 	"python-xlwt: for xls writing"
 	"ipython: for interactive shell"
 )
-sha256sums=('a329041b26fe32b42070b35b59343c96793bfed4280bbd4deb89ad8f6cd32201')
+sha256sums=('488179f8c571f9bdc0b45b5c15de707b9d48f7a9770fecb324aaef17a90074ef')
 source=("https://github.com/scikit-rf/scikit-rf/archive/v$pkgver.tar.gz")
 
 package() {
