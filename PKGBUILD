@@ -1,4 +1,4 @@
-# Maintainer: <tod.jackson@gmail.com>
+# Maintainer: Tod Jackson <tod.jackson@gmail.com>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarah@archlinux.org>
 # Contributor: JD Steffen <jd@steffennet.org>
