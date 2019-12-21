@@ -14,18 +14,18 @@ build() {
     cd "expected-$pkgver"
     mkdir -p build
     cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    make
 }
 
 check() {
-	cd "expected-$pkgver/build"
-	./tests
+    cd "expected-$pkgver/build"
+    ./tests
 }
 
 package() {
     cd "expected-$pkgver/build"
-	make DESTDIR="$pkgdir/" install
-	cd ..
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    make DESTDIR="$pkgdir/" install
+    cd ..
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
