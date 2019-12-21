@@ -1,12 +1,13 @@
+# Maintainer: <tod.jackson@gmail.com>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Sarah Hay <sarah@archlinux.org>
 # Contributor: JD Steffen <jd@steffennet.org>
-# Maintainer: GordonGR <ntheo1979@gmail.com>
+# Contributor: GordonGR <ntheo1979@gmail.com>
 
 _pkgname=xvidcore
 pkgname=lib32-$_pkgname
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="XviD is an open source MPEG-4 video codec (32-bit)"
 arch=('x86_64')
 license=('GPL')
@@ -14,8 +15,8 @@ url="http://www.xvid.org/"
 depends=('lib32-glibc' "$_pkgname")
 makedepends=('nasm')
 provides=('libxvidcore.so')
-source=("http://downloads.xvid.org/downloads/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('6877498cfc5b7f652e1a564699dba655')
+source=("http://downloads.xvid.com/downloads/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('257a6c73f37091411a027141b8b2a7519523563b677d7a20f4518e0611ff5de41cc9361ace4a04b4a1a5abdff9f2df7e08d26264aad30e0f46abd404ea779e9a')
 
 
 build() {
