@@ -4,8 +4,8 @@ pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r28.f3a7697
-pkgrel=1
+pkgver=r31.c3dcae9
+pkgrel=2
 pkgdesc='Control the mouse with your keyboard - fast and simple.'
 arch=('x86_64')
 url="https://github.com/jbensmann/xmouseless"
