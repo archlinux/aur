@@ -4,7 +4,7 @@ _pkgname=dlib
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-dlib
-pkgver=19.18
+pkgver=19.19
 pkgrel=1
 pkgdesc="A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques (mingw-w64)"
 arch=('any')
@@ -18,7 +18,7 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-cmake')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://downloads.sourceforge.net/project/dclib/${_pkgname}/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('521b9fbcb90c328063c439f6ccb3c95d9ababd25b208cbd1b915d9f5c4d2ab9b')
+sha256sums=('1decfe883635ce51acd72869cebe870ab9b85eb094d417adc8f48aa7b8c60cd7')
 
 build() {
   cd ${srcdir}
