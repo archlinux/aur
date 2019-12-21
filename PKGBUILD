@@ -1,6 +1,6 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=xdcc
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="xdcc file downloader"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://git.sr.ht/~dax/xdcc"
 license=('ISC')
 makedepends=('go' 'scdoc')
 source=("https://git.sr.ht/~dax/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('2d8ff51074319033dbd1686962962fe9')
+md5sums=('85585e82a0c9bf1f36ea8c9bc195ef9a')
 
 build() {
 	cd "$pkgname-$pkgver"
