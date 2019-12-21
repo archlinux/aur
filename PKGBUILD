@@ -1,13 +1,13 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=diffimg-git
-pkgver=r51.58bc07f
+pkgver=r60.0f57743
 pkgrel=1
 pkgdesc='Qt based GUI to diff images'
 arch=('i686' 'x86_64')
 url='https://github.com/sandsmark/diffimg'
 license=('GPL')
-depends=('qt5-base' 'qwt' 'opencv')
+depends=('qt5-base' 'qwt')
 makedepends=('git')
 conflicts=(diffimg)
 provides=(diffimg)
