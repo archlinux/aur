@@ -2,7 +2,7 @@
 
 pkgname=bart-git
 _pkgname=bart
-pkgver=0.5.00.r16.gb197fe3
+pkgver=0.5.00.r19.g5102cb3
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
@@ -31,6 +31,18 @@ build() {
 package() {
     cd "$_pkgname"
     make PREFIX="$pkgdir"/usr install
+
+    # Also install the libs, the viewer needs this and its not done by the Makefile atm
+    install -d "$pkgdir"/usr/lib/bart
+    install lib/* "$pkgdir"/usr/lib/bart
+
+    # Also install the headers, the viewer needs this and its not done by the Makefile atm
+    install -d "$pkgdir"/usr/include/bart
+    cd src
+    for file in $(find ./ -type f -name "*.h"); do
+        install -D ${file} "$pkgdir"/usr/include/bart/${file}
+    done
+    cd ..
 
     install -d "$pkgdir"/usr/share/bart/matlab
     install matlab/* "$pkgdir"/usr/share/bart/matlab
