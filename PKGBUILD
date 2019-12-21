@@ -1,6 +1,6 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r237.ce9fd9f
+pkgver=r238.5591412
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
@@ -15,7 +15,8 @@ source=("git+${url}"
         'cros-garcon.hook'
         'cros-logind-override.conf'
         'cros-nopasswd.rules'
-        'cros-resolved.conf')
+        'cros-resolved.conf'
+        'cros-dhcpcd-eth0.service')
 sha1sums=('SKIP'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
@@ -23,7 +24,8 @@ sha1sums=('SKIP'
           '9a68893cadf9190e99cadc4c781ba43e45104b1e'
           '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a'
           '089ba58bc504146b29035a8efe70045eb2495fb5'
-          '53624105b0890a5ad19bce6bfe4cdddf9651b149')
+          '53624105b0890a5ad19bce6bfe4cdddf9651b149'
+          '0373918febdcdff23acf22e2a0ac7bfe46873b4a')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -44,6 +46,9 @@ package() {
 
 	# install configuration override for systemd-resolved to disable DNSSEC (causing name resolution delays)
 	install -m644 -D ${srcdir}/cros-resolved.conf ${pkgdir}/etc/systemd/resolved.conf.d/cros-resolved.conf
+
+	# install customized service for dhcpcd to be used instead of systemd-networkd (optionally)
+	install -m644 -D ${srcdir}/cros-dhcpcd-eth0.service ${pkgdir}/usr/lib/systemd/system/cros-dhcpcd-eth0.service
 
 	### cros-adapta -> included into cros-container-guest-tools.install
 
