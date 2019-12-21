@@ -1,7 +1,7 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=ubports-installer
-pkgver=0.4.13b
+pkgver=0.4.14b
 _ver=${pkgver/b/-beta}
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
@@ -12,17 +12,20 @@ depends=('android-tools' 'android-udev' 'electron4' 'e2fsprogs')
 makedepends=('jq' 'npm' 'moreutils')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ubports/ubports-installer/archive/$_ver.tar.gz")
-sha512sums=('4ca9af81109db5ce8bc52261148759eb848de9d028c81f69b6a37273a8023517132911c79dfd328a9e6418455667079f124e07819a858a51936b67c55f87dec3')
+sha512sums=('6ca2d1142020f55f93c43a1370a6bde7fb442921e129afffef2421077197a03ca33cfbd6b6b63ea5371746a1b550300c3fbafe05ac490a2406f36751bc4707f3')
 
 prepare() {
     local cache="$srcdir/npm-cache"
     local dist=/usr/lib/electron4
+    local electron_version="$(sed s/^v// $dist/version)"
 
     cd "$pkgname-$_ver"
     jq '.electronDist = $dist | .electronVersion = $version' \
         --arg dist "$dist" \
-        --arg version "$(sed s/^v// $dist/version)" \
+        --arg version "$electron_version" \
         buildconfig-generic.json | sponge buildconfig-generic.json
+
+    jq '.devDependencies.electron = $version' --arg version "$electron_version" package.json | sponge package.json
 
     npm uninstall --no-audit --cache "$cache" electron{-packager,-view-renderer} spectron
 }
