@@ -6,6 +6,7 @@ pkgbase = wasm-micro-runtime-git
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
+	depends = lld
 	provides = wasm-micro-runtime
 	conflicts = wasm-micro-runtime
 	source = https://github.com/intel/wasm-micro-runtime
