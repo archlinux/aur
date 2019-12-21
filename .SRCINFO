@@ -32,6 +32,7 @@ pkgbase = cura-lulzbot-git
 	depends = qt5-quickcontrols2
 	optdepends = python-zeroconf: Detecting mDNS printers
 	optdepends = python-pyserial: USB printing
+	conflicts = cura-lulzbot
 	source = git+https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot.git
 	md5sums = SKIP
 
