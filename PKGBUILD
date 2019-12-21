@@ -9,6 +9,7 @@ url='https://www.lulzbot.com/cura'
 license=('AGPL3')
 source=('git+https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot.git')
 md5sums=('SKIP')
+conflicts=("cura-lulzbot")
 depends=('cython'
          'gcc-fortran'
          'libsavitar'
