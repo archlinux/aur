@@ -1,0 +1,15 @@
+pkgbase = octoprint-metadata-preprocessor
+	pkgdesc = GCode preprocessor to generate metadata for octoprint
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor
+	arch = any
+	license = AGPL3
+	makedepends = python2-setuptools
+	depends = python2-click>=7
+	depends = python2-yaml
+	source = octoprint-metadata-preprocessor-0.2.0.tar.gz::https://github.com/malnvenshorn/OctoPrint-MetadataPreprocessor/archive/analysis-0.2.0.tar.gz
+	sha256sums = afe611eae1d63fc046ed02c5f6318ee9d29f7576d731369c08372caf9f33d62d
+
+pkgname = octoprint-metadata-preprocessor
+
