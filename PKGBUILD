@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-applets-git
-pkgver=0.6.r5.g9957432
+pkgver=0.7.r1.g03c0d01
 pkgrel=1
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
 groups=('xde-git')
