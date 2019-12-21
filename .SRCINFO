@@ -1,0 +1,16 @@
+pkgbase = pmy-bin
+	pkgdesc = General purpose context-aware zsh completion engine powered by fuzzy finder.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/relastle/pmy
+	arch = i386
+	arch = x86_64
+	license = MIT
+	depends = fzf
+	depends = zsh
+	provides = pmy
+	source_x86_64 = pmy-bin-0.5.2.tar.gz::https://github.com/relastle/pmy/releases/download/v0.5.2/pmy_0.5.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9c5e44f6a1f3ba53df5f439351a12eacc52ee0dc480459e43cb242a246d43fbe
+
+pkgname = pmy-bin
+
