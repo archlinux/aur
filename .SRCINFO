@@ -1,6 +1,6 @@
 pkgbase = xde-desktop-git
 	pkgdesc = X Desktop Environment desktop
-	pkgver = 0.4.r4.g716eebe
+	pkgver = 0.4.r6.gdfbfae8
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-desktop
 	arch = i686
@@ -9,12 +9,10 @@ pkgbase = xde-desktop-git
 	license = GPL
 	makedepends = git
 	makedepends = xorgproto
-	depends = libxss
 	depends = libsm
-	depends = libunique
 	depends = libwnck+-git
 	depends = gnome-vfs
-	provides = xde-desktop=0.4.r4.g716eebe
+	provides = xde-desktop=0.4.r6.gdfbfae8
 	conflicts = xde-desktop
 	source = xde-desktop-git::git+https://github.com/bbidulock/xde-desktop.git
 	md5sums = SKIP

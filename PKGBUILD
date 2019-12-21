@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-desktop-git
-pkgver=0.4.r4.g716eebe
+pkgver=0.4.r6.gdfbfae8
 pkgrel=1
 pkgdesc="X Desktop Environment desktop"
 groups=('xde-git')
@@ -10,7 +10,7 @@ url="https://github.com/bbidulock/xde-desktop"
 license=('GPL')
 provides=('xde-desktop'=$pkgver)
 conflicts=('xde-desktop')
-depends=('libxss' 'libsm' 'libunique' 'libwnck+-git' 'gnome-vfs')
+depends=('libsm' 'libwnck+-git' 'gnome-vfs')
 makedepends=('git' 'xorgproto')
 source=("$pkgname::git+https://github.com/bbidulock/xde-desktop.git")
 md5sums=('SKIP')
