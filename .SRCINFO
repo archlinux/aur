@@ -1,6 +1,6 @@
 pkgbase = electronmail-bin
 	pkgdesc = Unofficial desktop app for several E2E encrypted email providers
-	pkgver = 3.8.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/vladimiry/ElectronMail
 	install = electronmail-bin.install
@@ -19,15 +19,14 @@ pkgbase = electronmail-bin
 	depends = re2
 	depends = snappy
 	depends = libnotify
-	depends = libappindicator-gtk2
 	depends = libappindicator-gtk3
 	depends = gconf
 	depends = gnome-keyring
 	provides = electronmail
 	conflicts = electronmail
-	source = https://github.com/vladimiry/ElectronMail/releases/download/v3.8.0/electron-mail-3.8.0-linux-x64.pacman
+	source = https://github.com/vladimiry/ElectronMail/releases/download/v4.0.0/electron-mail-4.0.0-linux-x64.pacman
 	source = LICENSE
-	md5sums = 79af62b09793b2d281dcc973a36386bf
+	md5sums = 0443f765858debfc8dfa35c3eee13391
 	md5sums = fc680045f40b19ce3c3e771aeb08bbd3
 
 pkgname = electronmail-bin

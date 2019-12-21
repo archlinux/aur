@@ -9,6 +9,9 @@ ln -sf '/opt/ElectronMail/electron-mail' '/usr/local/bin/electron-mail'
 chown root:root /opt/ElectronMail/chrome-sandbox
 chmod 4755 /opt/ElectronMail/chrome-sandbox
 
+update-mime-database /usr/share/mime || true
+update-desktop-database /usr/share/applications || true
+
 }
 post_upgrade() {
     :
