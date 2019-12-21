@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.4.5-arch1
+_srcver=5.4.6-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 _ckpatchversion=1
@@ -83,14 +83,12 @@ source=(
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
   0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-  0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch
-  0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0'
+sha256sums=('fda561bcdea397ddd59656319c53871002938b19b554f30efed90affa30989c8'
             'SKIP'
             '5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
@@ -100,9 +98,7 @@ sha256sums=('568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0'
             'f922696f10cfbe7e5b0a95fb3d9333006d63a1c4dbfc280ae3b5d10c8c7208fb'
             '8496a9be2c3b2e3cefa292d00d3f43a4e7c3b03c4508f9d38a6b21fa4684240d'
             'e5a3ed9c900b7e69cec1090ff76171a1c00cf723a2fa9a07fdf95c194ef3738b'
-            '760b60334eff05b1ef20c800fdb1e2ff6c7f9264f5e5c396f644720a824a92d7'
-            '38c670bb8b9efaae54217a09b118d8b55ef183df134ae94f643d6e8e1ad6ac70'
-            'bc0d303b6f2e8a518414ff706322a39b460ae3acdbb5b0c3488e35794227d69a')
+            '760b60334eff05b1ef20c800fdb1e2ff6c7f9264f5e5c396f644720a824a92d7')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

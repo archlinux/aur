@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.4.5
+	pkgver = 5.4.6
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = linux-ck
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.6.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.6.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.4/5.4-ck1/patch-5.4-ck1.xz
@@ -20,11 +20,9 @@ pkgbase = linux-ck
 	source = 0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
 	source = 0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
 	source = 0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-	source = 0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch
-	source = 0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0
+	sha256sums = fda561bcdea397ddd59656319c53871002938b19b554f30efed90affa30989c8
 	sha256sums = SKIP
 	sha256sums = 5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
@@ -35,8 +33,6 @@ pkgbase = linux-ck
 	sha256sums = 8496a9be2c3b2e3cefa292d00d3f43a4e7c3b03c4508f9d38a6b21fa4684240d
 	sha256sums = e5a3ed9c900b7e69cec1090ff76171a1c00cf723a2fa9a07fdf95c194ef3738b
 	sha256sums = 760b60334eff05b1ef20c800fdb1e2ff6c7f9264f5e5c396f644720a824a92d7
-	sha256sums = 38c670bb8b9efaae54217a09b118d8b55ef183df134ae94f643d6e8e1ad6ac70
-	sha256sums = bc0d303b6f2e8a518414ff706322a39b460ae3acdbb5b0c3488e35794227d69a
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -45,11 +41,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.4.5
+	provides = linux-ck=5.4.6
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.4.5
-	provides = linux-headers=5.4.5
+	provides = linux-ck-headers=5.4.6
+	provides = linux-headers=5.4.6
 
