@@ -1,0 +1,20 @@
+pkgbase = moodledesktop
+	pkgdesc = The official app for Moodle.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://download.moodle.org/desktop/
+	arch = any
+	license = Apache
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = npm
+	depends = electron4
+	source = moodlemobile2-3.8.0.tar.gz::https://github.com/moodlehq/moodlemobile2/archive/v3.8.0.tar.gz
+	source = moodledesktop.sh
+	source = moodledesktop.desktop
+	sha256sums = 6bbee2aab975f75010c06b3c1dcd68eef88f55fc0f326cdd6cec09c8df7f301c
+	sha256sums = ae04368f6573a0aec419bf1d013a60cfaf7375ed9db2a73e04d0a65904746fdd
+	sha256sums = ca4bcbbfb0b6f40e4fa8eaed0b02e5c1d1ba609a43f8aaed8cefd16c8af4ba86
+
+pkgname = moodledesktop
+

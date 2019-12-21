@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Moodle Desktop
+Comment=The official app for Moodle.
+Exec=moodledesktop
+Icon=moodledesktop.png
+Terminal=false
+MimeType=x-scheme-handler/moodlemobile
+Categories=Education
