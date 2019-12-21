@@ -1,8 +1,7 @@
 # Contributor: Sergio Tridente <tioduke AT gmail DOT com>
 
 pkgname=gate
-pkgver=8.4.1
-_build=5753
+pkgver=8.6
 pkgrel=1
 pkgdesc="GATE Developer is a development environment that provides a rich set of graphical interactive tools for the creation, measurement and maintenance of software components for processing human language."
 arch=('any')
@@ -10,16 +9,16 @@ url="http://gate.ac.uk/"
 license=('LGPL')
 depends=('java-runtime')
 options=(!strip)
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}-build${_build}-BIN.zip gate.desktop gate.png)
-md5sums=('ac4d179de89c5707c6efeca682c6072d'
+source=(https://github.com/GateNLP/gate-core/releases/download/v${pkgver}/gate-developer-${pkgver}-distro.zip gate.desktop gate.png)
+md5sums=('162d7a174098748d21ff0cee155e5de7'
          'a7a2cb37bf093d4b4164c7d381661f33'
          'acf3e7a9fcbdedd24589394260d56d12')
 
 build() {
-  rm -rf $srcdir/${pkgname}-${pkgver}-build${_build}-BIN/GATE.app
-  find $srcdir/${pkgname}-${pkgver}-build${_build}-BIN -name "*.bat" -type f -exec rm {} \;
-  find $srcdir/${pkgname}-${pkgver}-build${_build}-BIN -name "*.cmd" -type f -exec rm {} \;
-  find $srcdir/${pkgname}-${pkgver}-build${_build}-BIN -name "*.exe" -type f -exec rm {} \;
+  rm -rf $srcdir/${pkgname}-developer-${pkgver}/GATE.app
+  find $srcdir/${pkgname}-developer-${pkgver} -name "*.bat" -type f -exec rm {} \;
+  find $srcdir/${pkgname}-developer-${pkgver} -name "*.cmd" -type f -exec rm {} \;
+  find $srcdir/${pkgname}-developer-${pkgver} -name "*.exe" -type f -exec rm {} \;
 }
 
 package() {
@@ -29,16 +28,13 @@ package() {
   mkdir -p $pkgdir/usr/share/doc/${pkgname}/lib/
   mkdir -p $pkgdir/usr/share/{pixmaps,applications}
 
-  cp -r $srcdir/${pkgname}-${pkgver}-build${_build}-BIN/* $pkgdir/usr/share/java/${pkgname}/
+  cp -r $srcdir/${pkgname}-developer-${pkgver}/* $pkgdir/usr/share/java/${pkgname}/
   find $pkgdir/usr/share/java/${pkgname} -type f -exec chmod 644 {} \;
   find $pkgdir/usr/share/java/${pkgname} -type d -exec chmod 755 {} \;
   find $pkgdir/usr/share/java/${pkgname} -name "*.pl" -type f -exec chmod 755 {} \;
   find $pkgdir/usr/share/java/${pkgname} -type f -exec egrep -q "#\! ?/bin/(ba)?sh" {} \; -exec chmod 755 {} \;
 
   ln -s /usr/share/java/${pkgname}/bin/gate.sh $pkgdir/usr/bin/${pkgname}
-
-  mv $pkgdir/usr/share/java/${pkgname}/{licence.html,tao.pdf} $pkgdir/usr/share/doc/${pkgname}/
-  mv $pkgdir/usr/share/java/${pkgname}/lib/{ivy-report.css,*.html} $pkgdir/usr/share/doc/${pkgname}/lib/
 
   cd $srcdir
   install -Dm644 gate.png $pkgdir/usr/share/pixmaps/
