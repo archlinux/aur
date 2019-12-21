@@ -1,17 +1,23 @@
 # Maintainer:  Adrian Bacircea <adrian.bacircea@gmail.com>
 
 pkgname=libbpf-git
-pkgver=0.0.6
+pkgver=0.0.6.r41.e7a82fc
 pkgrel=1
 pkgdesc='BPF library'
-depends=('libelf')
+depends=('libelf' 'linux-api-headers>=5.4')
 url='https://github.com/libbpf/libbpf'
 license=('custom')
 makedepends=('rsync')
 arch=('x86_64')
 provides=('libbpf')
-source=('git+https://github.com/libbpf/libbpf#tag=v0.0.6')
+conflicts=('libbpf')
+source=("git+https://github.com/libbpf/libbpf")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname%-git}/src"
+  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
+}
 
 build() {
   cd "${srcdir}/${pkgname%-git}/src"

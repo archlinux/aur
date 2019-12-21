@@ -1,14 +1,16 @@
 pkgbase = libbpf-git
 	pkgdesc = BPF library
-	pkgver = 0.0.6
+	pkgver = 0.0.6.r41.e7a82fc
 	pkgrel = 1
 	url = https://github.com/libbpf/libbpf
 	arch = x86_64
 	license = custom
 	makedepends = rsync
 	depends = libelf
+	depends = linux-api-headers>=5.4
 	provides = libbpf
-	source = git+https://github.com/libbpf/libbpf#tag=v0.0.6
+	conflicts = libbpf
+	source = git+https://github.com/libbpf/libbpf
 	sha256sums = SKIP
 
 pkgname = libbpf-git
