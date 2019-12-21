@@ -17,7 +17,8 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -d $HOME/.proxyman
-	install * -t $HOME/.proxyman
-	install proxyman -t $HOME/.local/bin
+	install -d ~/.proxyman
+	install -m644 *.sh -t ~/.proxyman
+	install -Dm755 main.sh ~/.proxyman/main.sh
+	install -Dm755 proxyman ~/.local/bin/proxyman
 }
