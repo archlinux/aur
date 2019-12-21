@@ -1,55 +1,24 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
 
-_name=slackclient
-pkgbase='python-slackclient'
-pkgname=('python-slackclient' 'python2-slackclient')
-pkgver=1.2.1
+pkgname=python-slackclient
+pkgver=2.5.0
 pkgrel=1
-pkgdesc="Python Slack API clients for Web API and RTM API"
+pkgdesc="Slack Python SDK"
 arch=('any')
-url="https://pypi.python.org/pypi/slackclient"
+url="https://slack.dev/$pkgname"
 license=('MIT')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.io/packages/source/"${_name:0:1}"/"${_name}"/"${_name}"-"${pkgver}".tar.gz)
-sha256sums=('e9de0c893e8c5473107f5927ae1e543d35246f0c834f5e86470b22b762211577')
-
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
+makedepends=('python-setuptools')
+source=("https://github.com/slackapi/$pkgname/archive/$pkgver.tar.gz")
+sha256sums=('6c465aef49e17307bd8198c122936f4873aef03d3d14a810cd79a95d50253cdd')
 
 build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+  cd $srcdir/$pkgname-$pkgver
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-slackclient() {
-  depends=(
-    'python2'
-    'python2-websocket-client'
-    'python2-requests'
-    'python2-six'
-  )
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-}
-
-package_python-slackclient() {
-  depends=(
-    'python'
-    'python-websocket-client'
-    'python-requests'
-    'python-six'
-  )
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package() {
+  cd $pkgname-$pkgver
+  python setup.py install --root=$pkgdir --optimize=1 --skip-build
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
