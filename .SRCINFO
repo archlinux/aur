@@ -12,6 +12,7 @@ pkgbase = openxcom
 	makedepends = xmlto
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
+	makedepends = xorgproto
 	depends = sdl_gfx
 	depends = sdl_mixer
 	depends = sdl_image
