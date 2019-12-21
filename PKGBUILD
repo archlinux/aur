@@ -2,7 +2,7 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=doomretro
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 optdepends=('timidity++: for music playback')
 noextract=("$pkgname-$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bradharding/doomretro/archive/v$pkgver.tar.gz")
-sha512sums=('baf2e1fc5a9ead73a0da38c495e5ce5d215a930b252881eec3c73a6f2b0f863488bc6f7dc050d4d745dd9c27e61223353b8d9d29d51a9ab9b7be7816459bbd49')
+sha512sums=('42f144f75731122efc391a494dbce9e33d7b4890e871a77339565bffc851a6b46a5bbdfd8dd1e62306b8ba9f7794d5583460d825f192ec1a34b009a923600dca')
 
 prepare() {
   # 3.2 and later versions can't be extracted by bsdtar
