@@ -1,15 +1,16 @@
-# Maintainer: schuay <jakob.gruber@gmail.com>
+# Maintainer: Anthony VanBerkum <anthonyvbop@gmail.com>
+# Contributor: schuay <jakob.gruber@gmail.com>
 # Contributor: mk47at
 
 pkgname=rftg
 pkgver=0.9.5
-_pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Singleplayer and online implementation of the card game Race for the Galaxy by Tom Lehman."
 arch=('x86_64')
 url="http://keldon.net/rftg/"
 license=('GPL')
 depends=('gtk2')
+makedepends=('xorgproto')
 source=("https://github.com/bnordli/rftg/archive/${pkgver}.tar.gz"
         "$pkgname.desktop"
         "rftg.svg")
