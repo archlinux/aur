@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="The new cmsMake! (this time in Rust)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MPL2')
 makedepends=('cargo')
 optdepends=('texlive-core: booklet compilations')
 source=("https://github.com/edomora97/task-maker-rust/archive/v${pkgver}.tar.gz")
-sha256sums=('2197e215f7cd0ec6ede9410e6631bd956c1bda338fbb9b720bb294ac4ae5aaf7')
+sha256sums=('05b356311f8b349273e2650f8c230888d50b7383b50cda99f8c9ff5d645605d3')
 
 build() {
     cd "$srcdir/task-maker-rust-${pkgver}"
