@@ -1,8 +1,8 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url="https://www.zettlr.com"
@@ -28,15 +28,31 @@ prepare() {
 
 build() {
     cd $srcdir/$pkgname
-    yarn install --pure-lockfile
+    yarn install --pure-lockfile --no-bin-links --cache-folder $srcdir/cache --link-folder $srcdir/link
     yarn less
     yarn handlebars
     yarn lang:refresh
-    yarn wp:prod
+    NODE_ENV=production node node_modules/webpack/bin/webpack.js
     yarn reveal:build
 
     cd $srcdir/$pkgname/source
-    yarn install --pure-lockfile
+    yarn install --pure-lockfile --cache-folder $srcdir/cache
+
+    # Aggressively remove binary and addins in node_modules
+    find . -type d -name "fonts" -exec rm -rfv {} +
+    find . -name "\.bin" -exec rm -rfv {} +
+    find . -name "\.gitignore" -exec rm -rfv {} +
+    find . -name "\.eslintrc*" -exec rm -rfv {} +
+    find . -name "\.npmignore" -exec rm -rfv {} +
+    find . -name "\.yarn*" -exec rm -rfv {} +
+    find . -name "\.travis.yml" -exec rm -rfv {} +
+    find . -name "\.tonic_example.js" -exec rm -rfv {} +
+    find . -name "\.prettierrc.js" -exec rm -rfv {} +
+    find . -name "\.coveralls.yml" -exec rm -rfv {} +
+    find . -name "\.jscs.json" -exec rm -rfv {} +
+    find . -name "\.babelrc.js" -exec rm -rfv {} +
+    find . -name "\.vscode" -exec rm -rfv {} +
+    find . -name "yarn.lock" -exec rm -rfv {} +
 }
 
 package() {
@@ -46,13 +62,6 @@ package() {
     cd $srcdir/$pkgname/source
     sed "s,$srcdir/$pkgname/source,$_destdir,g" -i renderer/assets/vue/vue-sidebar.js
     cp -r --no-preserve=ownership --preserve=mode * "$pkgdir/$_destdir/"
-
-    # Aggressively remove binary and addins in node_modules
-    find $pkgdir/$_destdir -type d -name "fonts" -exec rm -rfv {} +
-    find $pkgdir/$_destdir -name "\.bin" -exec rm -rfv {} +
-    find $pkgdir/$_destdir -name "\.gitignore" -exec rm -rfv {} +
-    find $pkgdir/$_destdir -name "\.eslintrc.json" -exec rm -rfv {} +
-    find $pkgdir/$_destdir -name "\.npmignore" -exec rm -rfv {} +
 
     install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
 #!/bin/sh
