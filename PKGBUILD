@@ -1,5 +1,5 @@
-# Contributor: Frank Fishburn <frankthefishburn@gmail.com>
 # Maintainer:  Liam Timms <timms5000@gmail.com>
+# Contributor: Frank Fishburn <frankthefishburn@gmail.com>
 
 ## Configuration
 
@@ -9,7 +9,7 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=2
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-etelemetry' 'python-filelock' 'python-matplotlib' 'python-numpy
 makedepends=('python-sphinx')
 optdepends=('python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('5f3e6e26b5dd609f1b78791718bcf22cbebc6195d4dafeacae51c07b46d5278a')
+sha256sums=('7ad51c07f1578a4f8f6c89bf6279d63863e5fd87f7743f9395cfeaec0992ee64')
 
 _setpaths(){
 
