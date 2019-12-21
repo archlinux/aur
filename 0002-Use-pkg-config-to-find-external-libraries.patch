@@ -1,0 +1,29 @@
+--- a/qtbase/src/gui/configure.json
++++ b/qtbase/src/gui/configure.json
+@@ -373,6 +373,7 @@
+             },
+             "headers": "jpeglib.h",
+             "sources": [
++                { "type": "pkgConfig", "args": "libjpeg" },
+                 { "libs": "-llibjpeg", "condition": "config.msvc" },
+                 "-ljpeg"
+             ]
+
+--- a/qtimageformats/src/imageformats/configure.json	2019-11-19 11:47:49.000000000 -0300
++++ b/qtimageformats/src/imageformats/configure.json	2019-12-19 13:32:34.905053167 -0300
+@@ -82,6 +82,7 @@
+                 ]
+             },
+             "sources": [
++                { "type": "pkgConfig", "args": "libtiff-4" },
+                 "-ltiff"
+             ]
+         },
+@@ -112,6 +113,7 @@
+                 ]
+             },
+             "sources": [
++                { "type": "pkgConfig", "args": "libwebp libwebpdemux libwebpmux" },
+                 "-lwebp -lwebpdemux -lwebpmux"
+             ]
+         }
