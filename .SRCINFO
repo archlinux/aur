@@ -1,6 +1,6 @@
 pkgbase = carla-bridges
-	pkgdesc = Carla All Bridges (Stable Branch)
-	pkgver = 5120.f119412bc
+	pkgdesc = Carla All Bridges (Git Version)
+	pkgver = 5182.20d450554
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = x86_64

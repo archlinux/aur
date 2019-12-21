@@ -1,8 +1,8 @@
 # Maintainer: Alexander Mcmillan <linuxguy93@gmail.com> 
 pkgname=carla-bridges
-pkgver=5120.f119412bc
+pkgver=5182.20d450554
 pkgrel=1
-pkgdesc="Carla All Bridges (Stable Branch)"
+pkgdesc="Carla All Bridges (Git Version)"
 arch=('x86_64')
 url="http://kxstudio.sf.net/carla"
 license=('GPL2')
