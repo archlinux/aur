@@ -29,7 +29,7 @@ install -D -m755 "$srcdir"/${_pkgname}/gen/libglad.so "$pkgdir"/usr/lib/libglad.
 install -D -m755 "$srcdir"/${_pkgname}/gen/include/glad/glad.h "$pkgdir"/usr/include/glad/glad.h
 #install -D -m755 "$srcdir"/${_pkgname}/gen/include/KHR/khrplatform.h "$pkgdir"/usr/include/KHR/khrplatform.h
 install -D -m755 "$srcdir"/${_pkgname}/LICENSE "$pkgdir"/usr/share/licenses/glad-c-git/LICENSE
-#CMake Integration
-install -D -m755 "$srcdir"/${_pkgname}/gladConfig.cmake "$pkgdir"/usr/lib/cmake/glad/gladConfig.cmake
+#CMake Integration ( not working? )
+#install -D -m755 "$srcdir"/${_pkgname}/gladConfig.cmake "$pkgdir"/usr/lib/cmake/glad/gladConfig.cmake
 
 }
