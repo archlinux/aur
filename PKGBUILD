@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def on github>
 pkgname=kubedee
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Multi-node Kubernetes clusters on LXD'
 arch=('any')
@@ -9,7 +9,7 @@ license=('APACHE')
 source=("https://github.com/schu/kubedee/archive/v${pkgver}.tar.gz")
 depends=('lxd' 'btrfs-progs' 'cfssl' 'jq' 'kubectl')
 optdepends=('kubernetes')
-sha512sums=('db373279a7bf1b3025a9de54ca312d4ccb632ebb098432653cc69179e06d04985dcba483134b23f47bc23f2f3dbca85a5a3bae32799d56b0dec625a567e79beb')
+sha512sums=('9fcc27e96a0997680c1d863f17b7b526eedfb55e5035b2a853b5367408029469be949f0a98ebc17c9b3eff6f2a9456684c46b1a83161f8c1d7d7793f01a0470f')
 
 package() {
     cd ${pkgname}-${pkgver}
