@@ -3,8 +3,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libvpx
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="VP8 and VP9 codec (android)"
 arch=('any')
 url="http://www.webmproject.org/"
@@ -13,7 +13,7 @@ depends=('android-ndk')
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'yasm')
 source=(https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz)
-sha256sums=('df19b8f24758e90640e1ab228ab4a4676ec3df19d23e4593375e6f3847dee03e')
+sha256sums=('8735d9fcd1a781ae6917f28f239a8aa358ce4864ba113ea18af4bb2dc8b474ac')
 
 prepare() {
     source android-env ${_android_arch}
