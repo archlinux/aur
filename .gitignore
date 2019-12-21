@@ -1,0 +1,4 @@
+*.xz
+/pkg
+/src
+/dmenu-recent-aliases-git
