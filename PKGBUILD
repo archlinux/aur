@@ -1,12 +1,15 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=clipto.pro-bin
 pkgver=1.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Effortless, super fast and flexible notes taking app and clipboard manager."
 arch=('x86_64')
 url="https://clipto.pro"
 license=('custom')
 depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
+optdepends=('zenity: for dialogs'
+            'kdialog: for dialogs'
+            'xdialog: for dialogs')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/clipto-pro/Desktop/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.AppImage"
