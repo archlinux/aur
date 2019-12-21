@@ -1,17 +1,17 @@
 # Maintainer: Timur Kiyivinski <timur@linux.com>
 # CoMaintainer: Kenneth Cremeans <kcrem@hfhosting.us>
-# Release Code Name: Heisenberg
+# Release Code Name: Isaac
 
 pkgname=lbry-app-bin
-pkgver=0.37.2
+pkgver=0.38.0
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.io/'
 license=('MIT')
 depends=('nodejs' 'npm' 'gnome-keyring' 'gconf')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.37.2/LBRY_0.37.2.deb')
-sha256sums=('1db3a0ae8c5d26d4596ab0253439a37744376e0a343c29b08b3ba536501ca206')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.38.0/LBRY_0.38.0.deb')
+sha256sums=('39c9978f3e6069ea241d35622281505521888fc4112438adbbb3d6fcfa5dc7e2')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
