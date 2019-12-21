@@ -1,0 +1,13 @@
+*** a/CloudViewer.cpp	2019-12-21 02:54:34.605613314 +0100
+--- b/CloudViewer.cpp	2019-12-21 02:18:21.426896537 +0100
+***************
+*** 71,76 ****
+--- 71,77 ----
+  #include <vtkOBBTree.h>
+  #include <vtkObjectFactory.h>
+  #include <vtkQuad.h>
++ #include <vtkTexture.h>
+  #include <opencv/vtkImageMatSource.h>
+  
+  #ifdef RTABMAP_OCTOMAP
+
