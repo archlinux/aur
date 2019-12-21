@@ -1,0 +1,17 @@
+pkgbase = skyr-url-git
+	pkgdesc = A C++ library that implements the URL WhatWG specification
+	pkgver = 1.82f9560
+	pkgrel = 1
+	url = https://github.com/glynos/url
+	arch = i686
+	arch = x86_64
+	license = Boost
+	makedepends = cmake>=3.8.0
+	makedepends = catch2
+	makedepends = git
+	depends = tl-expected
+	source = git+https://github.com/glynos/url.git
+	md5sums = SKIP
+
+pkgname = skyr-url-git
+
