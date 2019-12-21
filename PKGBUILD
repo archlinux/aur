@@ -2,7 +2,7 @@
 pkgname="deezloader-remix-git"
 _pkgname="DeezloaderRemix"
 pkgver=4.2.1.r258.gbfb9838
-pkgrel=1
+pkgrel=2
 pkgdesc="Deezloader Remix is an improved version of Deezloader based on the Reborn branch"
 arch=('x86_64')
 url="https://notabug.org/RemixDevs/${_pkgname}"
@@ -23,21 +23,13 @@ pkgver() {
 build() {
     cd ${srcdir}/${_pkgname}
     
-    # This method uses the system electron version but currently doesn't work (https://notabug.org/RemixDevs/DeezloaderRemix/issues/161)
-    # # remove electron dependency
-    # sed -i '/		"electron": /d' ./package.json
-    # # use system electron version
-    # # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines#Building_compiled_extensions_against_the_system_electron
-    # export npm_config_target=$(cat /usr/lib/electron/version | tail -c +2)
-    # export npm_config_arch=x64
-    # export npm_config_target_arch=x64
-    # export npm_config_disturl=https://atom.io/download/electron
-    # export npm_config_runtime=electron
-    # export npm_config_build_from_source=true
-    # HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache"
-    
-    npm install --cache "${srcdir}/npm-cache"
-    ./node_modules/.bin/electron-builder --linux --x64 --dir dist
+    # use system electron version
+    # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
+    electronDist=$(dirname $(realpath $(which electron3)))
+    electronVer=$(electron3 --version | tail -c +2)
+    sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
+    HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache"
+    ./node_modules/.bin/electron-builder --linux --x64 --dir dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
