@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(ynab4 "Setup.exe::http://classic.youneedabudget.com/CDNOrigin/download/${pkgname}/liveCaptive/Win/YNAB%204_${pkgver}_Setup.exe")
+source=(ynab4 "Setup.exe::https://web.archive.org/web/20190112221247/https://classic.youneedabudget.com/CDNOrigin/download/${pkgname}/liveCaptive/Win/YNAB%204_${pkgver}_Setup.exe")
 noextract=("Setup.exe")
 md5sums=('75854469a4abb1132b93a80c2336d7c6'
          'a25c0a73350a99559f1e30c2f86ad0b9')

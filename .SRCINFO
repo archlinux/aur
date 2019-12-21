@@ -11,7 +11,7 @@ pkgbase = ynab4
 	optdepends = dropbox
 	noextract = Setup.exe
 	source = ynab4
-	source = Setup.exe::http://classic.youneedabudget.com/CDNOrigin/download/${pkgname}/liveCaptive/Win/YNAB%204_${pkgver}_Setup.exe
+	source = Setup.exe::https://web.archive.org/web/20190112221247/https://classic.youneedabudget.com/CDNOrigin/download/${pkgname}/liveCaptive/Win/YNAB%204_${pkgver}_Setup.exe
 	md5sums = 764cd9a8cec68ebcad04427110045267
 	md5sums = a25c0a73350a99559f1e30c2f86ad0b9
 
