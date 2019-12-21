@@ -4,8 +4,8 @@ pkgdesc="ROS - RTAB-Maps ros-pkg."
 url='http://www.ros.org/'
 
 pkgname='ros-kinetic-rtabmap-ros'
-pkgver='0.11.13'
-_pkgver_patch=0
+pkgver='0.19.3'
+_pkgver_patch=1
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -84,7 +84,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="rtabmap_ros-release-release-kinetic-rtabmap_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/introlab/rtabmap_ros-release/archive/release/kinetic/rtabmap_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('13bb2a1040adfa82cb8a096bf372cf9184a86309f91acc552b066ed9f4d2db4e')
+sha256sums=('5cbb5ccff9054f8e45ea1c2f25433f9381d6131612aa505aa1f15e6d326c4652')
 
 build() {
   # Use ROS environment variables
