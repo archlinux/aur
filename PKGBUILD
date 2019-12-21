@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.2.0.r339.ecd8853
+pkgver=0.2.1.r355.a9be406
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
