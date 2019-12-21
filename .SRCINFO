@@ -1,11 +1,12 @@
 pkgbase = libva-vdpau-driver-chromium
 	pkgdesc = VDPAU backend for VA API. (special version for chromium)
 	pkgver = 0.7.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://freedesktop.org/wiki/Software/vaapi
 	arch = x86_64
 	license = GPL
 	makedepends = mesa
+	makedepends = xorgproto
 	depends = libva
 	depends = libvdpau
 	depends = libgl
