@@ -19,13 +19,13 @@ makedepends=('bison')
 # sha256sums=('638cf30d05c249315760f16cbae4804964db8857a04d5e640f37617bef17ab0f')
 source=(
   "${realname}::git+https://github.com/libMesh/libmesh"
-       )
+)
 md5sums=('SKIP')
 
 
 pkgver() {
-    cd $realname
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $realname
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -87,7 +87,7 @@ build() {
     --enable-vtk-required
     --enable-curl
     --enable-hdf5
-    # --enable-complex            # make sure to compile PETSc with complex too
+    --enable-complex            # make sure to compile PETSc with complex too
     --with-pic
     --enable-mpi
     --enable-fftw               # Does this work ?
@@ -111,8 +111,8 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${realname}"
-    make check
+  cd "${srcdir}/${realname}"
+  make check
 }
 
 package() {
