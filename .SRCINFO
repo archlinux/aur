@@ -1,6 +1,6 @@
 pkgbase = python-ncclient
 	pkgdesc = Python library for NETCONF clients.
-	pkgver = 0.6.3
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = http://ncclient.org/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-ncclient
 	makedepends = python2-selectors2
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/ncclient/ncclient/archive/v0.6.3.tar.gz
-	sha256sums = 033f78fae7746d11db9e052e27f4aca7a9a9c411832d957c65934b17ffb83556
+	source = https://github.com/ncclient/ncclient/archive/v0.6.6.tar.gz
+	sha256sums = d2392c25df3a6c41cea0c51316607b61ce2fb1d5a00d798631ce0bd63cce8649
 
 pkgname = python-ncclient
 	depends = python-paramiko
