@@ -4,7 +4,7 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.99.r16.g14922551
+pkgver=2.4.100.r42.gc70bd7b7
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
@@ -49,14 +49,17 @@ build() {
 }
 
 check() {
-  meson test -C _build
+   # '-t 10' is needed for the 'threaded' test, which uses the default meson
+   # test timeout of 30 seconds. This is too short for many systems. It can be
+   # removed if upstream fixes the issue.
+    meson test -C _build -t 10
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C _build install
+    DESTDIR="$pkgdir" ninja -C _build install
   
-  # remove files already provided by libdrm-git
-  rm -rf "$pkgdir"/usr/{include,share,bin}
+    # remove files already provided by libdrm-git
+    rm -rf "$pkgdir"/usr/{include,share,bin}
   
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname"  -m644 COPYING
+    install -Dt "$pkgdir/usr/share/licenses/$pkgname"  -m644 COPYING
 }
