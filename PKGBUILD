@@ -64,7 +64,7 @@ _srcname=linux-${_major}.${_minor}
 _clr=${_major}.${_minor}-47
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}
-pkgrel=3
+pkgrel=4
 pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
@@ -75,7 +75,7 @@ _gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.2/patch-${_major}.${_minor}-rt14.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.2/patch-${_major}.${_minor}-rt15.patch.xz"
   "clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -89,7 +89,7 @@ prepare() {
 
     ### Add upstream patches
         msg2 "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}-rt14.patch
+        patch -Np1 -i ../patch-${pkgver}-rt15.patch
 
     ### Setting version
         msg2 "Setting version..."
@@ -116,7 +116,7 @@ prepare() {
 
         # Power management and ACPI options
         scripts/config --enable HIBERNATION \
-                       --enable ACPI_REV_OVERRIDE_POSSIBLE  \
+                       --enable ACPI_REV_OVERRIDE_POSSIBLE \
                        --enable ACPI_TABLE_UPGRADE
 
         # Enable loadable module support
@@ -318,7 +318,7 @@ done
 
 sha256sums=('9a8ee3ff75dabffa76141c8dc7529dfbb3ca07888a3708a13f15b412268b3538'
             'SKIP'
-            '1cdd048d4504f6badc6b3a1aea65fe31cce902a2416cf4917f99660b5273e90c'
+            '0165f49d090cf8aa48049b0eaa49fc1cb01637ec5c3b4a5e580685d5877e9f36'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
