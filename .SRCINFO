@@ -1,11 +1,11 @@
 pkgbase = forge-quark-2.0-bin
 	pkgdesc = minecraft mod quark by Vazkii
 	pkgver = 204.882
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quark.vazkii.net/
 	arch = any
 	license = custom:CC BY-NC-SA 3.0
-	depends = forge-server
+	depends = forge-server>=28.1.61
 	depends = forge-autoreglib-1.4-bin
 	noextract = forge-quark-2.0-bin-204.882.jar
 	source = forge-quark-2.0-bin-204.882.jar::https://maven.blamejared.com/vazkii/quark/Quark/r2.0-204.882/Quark-r2.0-204.882.jar
