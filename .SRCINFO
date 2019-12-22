@@ -22,7 +22,7 @@ pkgbase = grandorgue-svn
 	depends = zlib
 	depends = libsystemd
 	replaces = grandorgue-git
-	source = grandorgue-svn::svn+https://svn.code.sf.net/p/ourorgan/svn/trunk/
+	source = grandorgue-svn::svn+https://svn.code.sf.net/p/ourorgan/svn/trunk/#revision=r2330
 	md5sums = SKIP
 
 pkgname = grandorgue-svn

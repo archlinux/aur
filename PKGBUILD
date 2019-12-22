@@ -23,14 +23,8 @@ makedepends=(gcc
   po4a
   gettext)
 replaces=('grandorgue-git')
-source=("$pkgname::svn+$url")
+source=("$pkgname::svn+$url#revision=$pkgver")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
-}
 
 build() {
   if [ ! -d gobuild ]; then
