@@ -1,7 +1,7 @@
 pkgbase = python-exiv2
 	pkgdesc = py3exiv2 is a Python3 binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata.
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/py3exiv2
 	arch = i686
 	arch = x86_64
