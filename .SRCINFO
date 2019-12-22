@@ -21,7 +21,7 @@ pkgbase = gambas3-eortologioqt5
 	depends = gambas3-runtime>=3
 	depends = gambas3-devel>=3
 	depends = gambas3-gb-db-sqlite3>=3.14
-	source = https://gitlab.com/psposito/EortologioGambas3/uploads/f87e85dbf89fea9d0de40431ee4c5d16/EortologioQt5-1.0.10.tar.bz2
+	source = https://gitlab.com/psposito/EortologioGambas3/uploads/ffcab13b85239e624eb37acd362068b6/EortologioQt5-1.0.10.tar.bz2
 	sha256sums = SKIP
 
 pkgname = gambas3-eortologioqt5

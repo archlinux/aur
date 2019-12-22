@@ -15,7 +15,7 @@ depends=('gambas3-gb-image>=3.14' 'gambas3-gb-image<=3.99.0' 'gambas3-gb-qt5>=3.
 	'gambas3-gb-db>=3.14' 'gambas3-gb-db<=3.99.0' 'gambas3-gb-dbus>=3.14' 'gambas3-gb-dbus<=3.99.0' 'gambas3-gb-qt5>=3' 'gambas3-gb-form>=3' 
 	'gambas3-gb-image>=3' 'gambas3-runtime>=3' 'gambas3-devel>=3' 'gambas3-gb-db-sqlite3>=3.14')
 makedepend=('gambas3-devel')
-source=(https://gitlab.com/psposito/EortologioGambas3/uploads/f87e85dbf89fea9d0de40431ee4c5d16/EortologioQt5-1.0.10.tar.bz2)
+source=(https://gitlab.com/psposito/EortologioGambas3/uploads/ffcab13b85239e624eb37acd362068b6/EortologioQt5-1.0.10.tar.bz2)
 
 sha256sums=('SKIP')
 
@@ -32,15 +32,16 @@ package() {
   install -d "$pkgdir/usr/bin"
   install -m755 EortologioQt5-1.0.10.gambas "$pkgdir/usr/bin/EortologioQt5"
   ln -s "EortologioQt5" "$pkgdir/usr/bin/gambas3-eortologioqt5"
-  install -D "EortologioQt5.png" "$pkgdir/usr/share/pixmaps/EortologioQt5.png"
-  install -D "gambas3-eortologioqt5.desktop" "$pkgdir/usr/share/applications/gambas3-eortologioqt5.desktop"
+  install -D "$srcdir/${_realname}/.hidden/gambas3-eortologioqt5.desktop" "$pkgdir/usr/share/applications/gambas3-eortologioqt5.desktop"
   install -d "$pkgdir/usr/share/EortologioQt5/" 
   install -d "$pkgdir/usr/share/pixmaps/"
   install -d "$pkgdir/usr/share/icons/gnome/scalable/apps/"
   install -d "$pkgdir/usr/share/icons/"
   install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  echo $srcdir/${_realname}
   install -p "$srcdir/${_realname}/.hidden/eortes.dat" "$pkgdir/usr/share/EortologioQt5/eortes.dat"
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.png" "$pkgdir/usr/share/pixmaps/EortologioQt5.1.0.png"
+  install -D "$srcdir/${_realname}/.hidden/EortologioQt5.png" "$pkgdir/usr/share/pixmaps/EortologioQt5.png"
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.svg" "$pkgdir/usr/share/icons/gnome/scalable/apps/EortologioQt5.1.0.svg"
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.png" "$pkgdir/usr/share/icons/EortologioQt5.1.0.png"
   install -p "$srcdir/${_realname}/.hidden/EortologioQt5.1.0.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/EortologioQt5.1.0.svg"
