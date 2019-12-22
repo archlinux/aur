@@ -11,6 +11,7 @@ pkgbase = polybar
 	makedepends = git
 	makedepends = python
 	makedepends = pkg-config
+	makedepends = xorgproto
 	makedepends = python-sphinx
 	makedepends = i3-wm
 	depends = cairo
