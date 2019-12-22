@@ -2,16 +2,20 @@
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
 pkgver='2.6.9.20190920'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(libxml2 boost libbsctools)
-source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2")
-sha512sums=(80903e3d2c018e8ed23874715f7ffc1706ac5d9dcd0826c75bb07c973c28fa9755d4c130021abd6e969e983fbe23463be7361bb29b6d1ab04596ba4f987b1b6a)
+source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
+        clusteringsuite-Fix-references-to-the-build-directory.patch)
+sha512sums=(80903e3d2c018e8ed23874715f7ffc1706ac5d9dcd0826c75bb07c973c28fa9755d4c130021abd6e969e983fbe23463be7361bb29b6d1ab04596ba4f987b1b6a
+            05a0c1a2d04f715b145e5ef98f29fa2ddfe45010c6ad4dce7b467ebaa552effb9b61836ad26b243348dfe4e480c47eaf96e5f56e4eb491f8034a1374627c8d3f)
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
+
+	patch -Np1 -i "$srcdir/clusteringsuite-Fix-references-to-the-build-directory.patch"
 
 	# This package includes a version of one the libbsctools libraries by default,
 	# which causes a conflict as both libraries would need to be installed

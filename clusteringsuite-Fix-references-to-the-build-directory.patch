@@ -1,0 +1,52 @@
+From a270f2d06395072e5e5c861721d00a25a028186d Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Sun, 22 Dec 2019 14:12:40 +0100
+Subject: [PATCH] Fix references to the build directory that remain in the
+ packages. (Fixes the "Package contains reference to $srcdir" makepkg
+ warning).
+
+---
+ configure.ac        | 5 ++++-
+ scripts/Makefile.am | 2 +-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 9f29612..7acfc19 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -58,7 +58,7 @@ dnl WARNNING!!! The CPPFLAGS used here should be changed to avoid using
+ dnl absolute PATHs
+ dnl
+ dnl =========================================================================
+-CLUSTERING_CPPFLAGS="-DCLUSTERING_SUITE -I`pwd`/include -I`pwd`/src/BasicClasses -I`pwd`/common_utilities"
++CLUSTERING_CPPFLAGS="-DCLUSTERING_SUITE"
+ CLUSTERING_CLEAN_LDFLAGS=""
+ CLUSTERING_LDFLAGS=""
+ CLUSTERING_LIBS=""
+@@ -533,7 +533,10 @@ fi
+ dnl =========================================================================
+ dnl Final substitutions of CLUSTERING flags
+ dnl =========================================================================
++CLUSTERING_CLEAN_CPPFLAGS="${CLUSTERING_CPPFLAGS}"
++CLUSTERING_CPPFLAGS="-I`pwd`/include -I`pwd`/src/BasicClasses -I`pwd`/common_utilities ${CLUSTERING_CPPFLAGS}"
+ AC_SUBST(CLUSTERING_CPPFLAGS)
++AC_SUBST(CLUSTERING_CLEAN_CPPFLAGS)
+ AC_SUBST(CLUSTERING_LDFLAGS)
+ AC_SUBST(CLUSTERING_CLEAN_LDFLAGS)
+ AC_SUBST(CLUSTERING_LIBS)
+diff --git a/scripts/Makefile.am b/scripts/Makefile.am
+index 669b630..26c0456 100644
+--- a/scripts/Makefile.am
++++ b/scripts/Makefile.am
+@@ -9,7 +9,7 @@ $(CLUSTERING_CONFIG): $(CLUSTERING_CONFIG).in
+ 	cp $^ $@
+ 	$(top_srcdir)/substitute $(SED) "@sub_PREFIX@"          "${prefix}" $@
+ 	$(top_srcdir)/substitute $(SED) "@sub_VERSION@"         "${VERSION}" $@
+-	$(top_srcdir)/substitute $(SED) "@sub_CPPFLAGS@"        "${CLUSTERING_CPPFLAGS}" $@
++	$(top_srcdir)/substitute $(SED) "@sub_CPPFLAGS@"        "${CLUSTERING_CLEAN_CPPFLAGS}" $@
+ 	$(top_srcdir)/substitute $(SED) "@sub_LDFLAGS@"         "${CLUSTERING_CLEAN_LDFLAGS}" $@
+ 	$(top_srcdir)/substitute $(SED) "@sub_LIBTOOL_LDFLAGS@" "${CLUSTERING_LDFLAGS}" $@
+ 	$(top_srcdir)/substitute $(SED) "@sub_LIBS@"            "${CLUSTERING_LIBS}" $@
+-- 
+2.24.1
+
