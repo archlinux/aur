@@ -1,7 +1,7 @@
 pkgbase = mustache
 	pkgdesc = Mustache implementation for modern C++
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kainjow/Mustache
 	arch = armv7h
 	arch = i686
