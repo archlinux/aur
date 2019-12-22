@@ -1,6 +1,6 @@
 # Maintainer: Laurent Treguier <laurent@treguier.org>
 
-_oomox_ver=1.12.5
+_oomox_ver=1.12.5.1
 _oomox_theme_ver=1.10
 _materia_theme_ver=20191017
 #_materia_cmt=f1ad3125eea55f4fe88ceab1be83bd51ee5eba48
@@ -84,7 +84,7 @@ source=(
     "suru-plus-icon-theme-${_suru_plus_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus/archive/v${_suru_plus_icons_ver}.tar.gz"
     "suru-plus-aspromauros-icon-theme-${_suru_plus_aspromauros_icons_ver}.tar.gz::https://github.com/gusbemacbe/suru-plus-aspromauros/archive/v${_suru_plus_aspromauros_icons_ver}.tar.gz"
 )
-md5sums=('bbfbd1dd7263a6ebf3a8275f33a5ba0e'
+md5sums=('f3901507ad7e9f66a458a6d7d79eaf6d'
          '13945f05eba3b85e6d63fec1ff60380a'
          '96cb7002228eaf9d91ddde285452daec'
          'd6f731276110588d05b95bd2e0b4cb2f'
