@@ -3,7 +3,7 @@
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=(zabbix-agent-lts)
-pkgver=4.0.15
+pkgver=4.0.16
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://www.zabbix.com/'
@@ -11,7 +11,7 @@ license=(GPL)
 source=(https://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.tar.gz
         zabbix-agent.{service,sysusers,tmpfiles})
 
-sha512sums=('39e70b9cbd1f1d8c659cb44ef25265563a45ddd575eaffa6a5c2a71f4566bb8a1f5e6c9b79699a5535a845307f7adfbfa1f10b184d38803f2b6403db38b89e58'
+sha512sums=('e5a0b13790ef082d63c879ebf989739ffde448161d45eb16ccf4100473556ef39d00466687ecce69e3430e54ec32015c2d00461b81f51510d08d8e38284e2ee6'
             '8c1fa2676bc0ef91bc39ec5f97b4d3ba5c365d063420455a3785121a54e120bc5afeacde42a48f4509c115f940dcc3b6c2f43044a7fbfb421182fc93b22a2444'
             '3ab3ac1acc7e35c8896157aef601ebc30815237ac5252cbd0c1ecb26eeaf9eccf5c49938ae8c85bb79a6f95f607f082f6b80ed660829599ec03aa626cca6d3dc'
             'ca6b4779de23829dfdd80ee21e924fbe4e2754f4e693bed4b1a2aa846cd87d150e399b1169d7fe58d30c50ed837c1b8254e580de420267d0a1834d6dc409c43d')
