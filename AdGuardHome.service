@@ -1,19 +1,19 @@
 [Unit]
 Description=AdGuard Home: Network-level blocker
-ConditionFileIsExecutable=/opt/adguardhome/AdGuardHome
+ConditionFileIsExecutable=/var/lib/adguardhome/AdGuardHome
 After=syslog.target network-online.target
+
+User=adguardhome
+Group=adguardhome
 
 [Service]
 StartLimitInterval=5
 StartLimitBurst=10
-ExecStart=/opt/adguardhome/AdGuardHome "-s" "run"
+ExecStart=/var/lib/adguardhome/AdGuardHome "-s" "run"
 
-WorkingDirectory=/opt/adguardhome
-
-
-
-StandardOutput=file:/var/log/AdGuardHome.out
-StandardError=file:/var/log/AdGuardHome.err
+WorkingDirectory=/var/lib/adguardhome
+StandardOutput=file:/var/lib/adguardhome/AdGuardHome.out
+StandardError=file:/var/lib/adguardhome/AdGuardHome.err
 Restart=always
 RestartSec=10
 EnvironmentFile=-/etc/sysconfig/AdGuardHome
