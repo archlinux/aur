@@ -1,0 +1,6 @@
+[Default Applications]
+text/html=garcon_host_browser.desktop
+x-scheme-handler/http=garcon_host_browser.desktop
+x-scheme-handler/https=garcon_host_browser.desktop
+x-scheme-handler/about=garcon_host_browser.desktop
+x-scheme-handler/unknown=garcon_host_browser.desktop

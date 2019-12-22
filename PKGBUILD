@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo')
+depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo' 'mailcap')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
 source=("git+${url}"
@@ -16,7 +16,7 @@ source=("git+${url}"
         'cros-logind-override.conf'
         'cros-nopasswd.rules'
         'cros-resolved.conf'
-        'cros-dhcpcd-eth0.service')
+        'mimeapps.list')
 sha1sums=('SKIP'
           '0827ce6d673949a995be2d69d4974ddd9bdf16f1'
           'd326cd35dcf150f9f9c8c7d6336425ec08ad2433'
@@ -25,7 +25,7 @@ sha1sums=('SKIP'
           '0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a'
           '089ba58bc504146b29035a8efe70045eb2495fb5'
           '53624105b0890a5ad19bce6bfe4cdddf9651b149'
-          '0373918febdcdff23acf22e2a0ac7bfe46873b4a')
+          'f05da51a3913c5815d320c8ed536f2a7ac1fdcd5')
 
 pkgver() {
 	cd ${srcdir}/${_pkgname}
@@ -47,14 +47,14 @@ package() {
 	# install configuration override for systemd-resolved to disable DNSSEC (causing name resolution delays)
 	install -m644 -D ${srcdir}/cros-resolved.conf ${pkgdir}/etc/systemd/resolved.conf.d/cros-resolved.conf
 
-	# install customized service for dhcpcd to be used instead of systemd-networkd (optionally)
-	install -m644 -D ${srcdir}/cros-dhcpcd-eth0.service ${pkgdir}/usr/lib/systemd/system/cros-dhcpcd-eth0.service
+	# install default browser associations
+	install -m644 -D ${srcdir}/mimeapps.list ${pkgdir}/etc/xdg/mimeapps.list
 
 	### cros-adapta -> included into cros-container-guest-tools.install
+	mkdir -p ${pkgdir}/usr/share/themes
 
 #	Uncomment after https://bugs.archlinux.org/task/58701 is fixed
 #
-#	mkdir -p ${pkgdir}/usr/share/themes
 #	ln -sf /opt/google/cros-containers/cros-adapta ${pkgdir}/usr/share/themes/CrosAdapta
 
 	### cros-apt-config -> not applicable

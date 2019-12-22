@@ -14,11 +14,6 @@ post_install() {
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta
 
-	# set default browser to the garcon_host_browser handler
-	if hash xdg-settings; then
-		xdg-settings set default-web-browser garcon_host_browser.desktop
-	fi
-
 	post_upgrade
 }
 

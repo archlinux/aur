@@ -14,6 +14,7 @@ pkgbase = cros-container-guest-tools-git
 	depends = packagekit
 	depends = dbus
 	depends = xorg-xdpyinfo
+	depends = mailcap
 	source = git+https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
 	source = cros-sftp-conditions.conf
 	source = cros-garcon-conditions.conf
@@ -22,7 +23,7 @@ pkgbase = cros-container-guest-tools-git
 	source = cros-logind-override.conf
 	source = cros-nopasswd.rules
 	source = cros-resolved.conf
-	source = cros-dhcpcd-eth0.service
+	source = mimeapps.list
 	sha1sums = SKIP
 	sha1sums = 0827ce6d673949a995be2d69d4974ddd9bdf16f1
 	sha1sums = d326cd35dcf150f9f9c8c7d6336425ec08ad2433
@@ -31,7 +32,7 @@ pkgbase = cros-container-guest-tools-git
 	sha1sums = 0c21f6c85ecbe8f822c378c7e4d5b3165e56eb3a
 	sha1sums = 089ba58bc504146b29035a8efe70045eb2495fb5
 	sha1sums = 53624105b0890a5ad19bce6bfe4cdddf9651b149
-	sha1sums = 0373918febdcdff23acf22e2a0ac7bfe46873b4a
+	sha1sums = f05da51a3913c5815d320c8ed536f2a7ac1fdcd5
 
 pkgname = cros-container-guest-tools-git
 
