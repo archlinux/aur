@@ -1,20 +1,21 @@
 pkgbase = python-jenkins-job-builder
 	pkgdesc = Takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins
-	pkgver = 3.0.2
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://docs.openstack.org/infra/jenkins-job-builder/
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
-	depends = python-six
-	depends = python-yaml
-	depends = python-pbr
-	depends = python-stevedore
-	depends = python-python-jenkins
+	depends = python-six>=1.9.0
+	depends = python-yaml>=3.10.6
+	depends = python-yaml<6
+	depends = python-pbr>=1.8
+	depends = python-stevedore>=1.17.1
+	depends = python-python-jenkins>=0.4.15
 	depends = python-fasteners
-	depends = python-jinja
-	source = https://files.pythonhosted.org/packages/2e/fb/b78fa65fe61e8d7b92864fa1b760f0451ba88fcebc899be85a41ca758019/jenkins-job-builder-3.0.2.tar.gz
-	sha512sums = 1110fa2fea327ae0a9ed346de2fab61b6623f9f2743996e599025a68e3b8294eef024c4d6dd300b1d6d37f7f98a5d763b8ae478cc3bedbc2e1a04359a0ba7254
+	depends = python-jinja>=2
+	source = https://files.pythonhosted.org/packages/2e/fb/b78fa65fe61e8d7b92864fa1b760f0451ba88fcebc899be85a41ca758019/jenkins-job-builder-3.1.0.tar.gz
+	sha512sums = db7b0ba999cda5b94b11ef67daa5e2a971062ffdbd2e6bd693a4a243d144bc6fa6f64a9b6cd3f78cc058ea988fb9e33b1379d6cd77ba64ef2c6c3053bf03e58f
 
 pkgname = python-jenkins-job-builder
 
