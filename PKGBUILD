@@ -1,9 +1,9 @@
 # Maintainer: BrLi <brli@chakralinux.org>
 
 pkgbase=ttf-twcns-fonts
-pkgname=("${pkgbase}" "${pkgbase}"-doc)
+pkgname=(${pkgbase}{,-doc})
 pkgdesc='Chinese TrueType fonts by Ministry of Education of Taiwan government, support CNS11643 standard, including Kai and Sung fontface.'
-pkgver=20191129
+pkgver=20191211
 pkgrel=1
 arch=('any')
 url='https://data.gov.tw/node/5961'
@@ -13,7 +13,7 @@ source=('https://www.cns11643.gov.tw/AIDB/Open_Data.zip'
         '53-twcns.conf' # grab from older version of rpm
         'LICENSE-zh_TW'
         'LICENSE')
-sha1sums=('c3bebe1c044861111a13a2b500bd4f92f82239c0'
+sha1sums=('3b451081937a5ffe6bb3356654fc58b23351e55a'
           'e9a1bf83c957966941a1a3bb7e406169d47facde'
           '08c5ee06a2248340613d9bd7314a824883851bd1'
           '6be77081aa46e90e417ec73027e0477c3297a1c9')
@@ -43,13 +43,15 @@ package_ttf-twcns-fonts() {
 }
 
 package_ttf-twcns-fonts-doc() {
+    pkgdesc='Misc files including mapping table, property metadata and voice for ttf-twcns-fonts'
     options=('docs')
     cd "${srcdir}"/Open_Data/
     msg 'Installing the documents'
     install -dm755 "${pkgdir}"/usr/share/doc/"${pkgbase}"/
-    for dir in Fonts MapingTables Properties; do
+    for dir in Fonts MapingTables Properties Voice; do
         cp -rv $dir "${pkgdir}"/usr/share/doc/"${pkgbase}"/
     done
     install -dm755 "${pkgdir}"/usr/share/licenses/
     ln -sf /usr/share/licenses/"${pkgbase}" "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -Dm644 資料更新說明.txt "${pkgdir}"/usr/share/doc/"${pkgbase}"/changelog
 }
