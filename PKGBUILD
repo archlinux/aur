@@ -1,13 +1,13 @@
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
 _pkgname=tale
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r13.g8cea41d
+pkgver=1.0.0.r0.g16e1ac9
 pkgrel=1
 pkgdesc="An experimental version control system."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/severinkaderli/tale"
 license=('MIT')
-makedepends=('maven' 'git' 'native-image-jdk11-bin')
+makedepends=('maven' 'git' 'jdk8-graalvm-bin')
 conflicts=('tale')
 source=('git+https://gitlab.com/severinkaderli/tale')
 md5sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    JAVA_HOME="/usr/lib/jvm/java-11-graalvm/" mvn -Dmaven.test.skip=true package
+    JAVA_HOME="/usr/lib/jvm/java-8-graalvm/" mvn -Dmaven.test.skip=true package
 }
 
 package() {
