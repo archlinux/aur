@@ -1,7 +1,7 @@
 pkgname=spflashtool-noqtdeps
 _pkgname=spflashtool
 pkgver="5.1944"
-pkgrel=1
+pkgrel=2
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone. (no qt dependencies)"
 arch=('x86_64')
 url="https://spflashtools.com/category/linux"
@@ -53,7 +53,7 @@ chmod +x "$execfile"
 
 	# Excutable in PATH
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -sf "${pkgdir}/opt/${_pkgname}/flash_tool.sh" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -sf "/opt/${_pkgname}/flash_tool.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# Desktop file and icon
 	install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
