@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-plugin-code-syntax-block
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Extends Gutenberg adding color syntax highlighting to the code block"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.wordpress.org/plugin/code-syntax-block.${pkgver}.zip")
-sha512sums=('9f5cb5ff8e345792c8b1481a188fd9c39f8a79836f341f10689f90ee94e3f324d87b0763628a31e4be26294afd0fd66ffc650d1e5f5bf1876bd8e137f9102994')
+sha512sums=('179a8e621d4e86b57d121d28b71f3fd2ca7d159dfd8a07fc244bbdb4d83d3b8e7f9126ecfb7f898fafa14270a151316acd5e8e5fd8eed42cc5926a368b5d6997')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/plugins"
