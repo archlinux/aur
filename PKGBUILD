@@ -11,11 +11,13 @@ pkgbase=gambas3-eortologioqt5
 arch=('any')
 url="https://gitlab.com/psposito/EortologioGambas3"
 license=('GPL3')
-depends=('gambas3-gb-image>=3.14' 'gambas3-gb-image<=3.99.0' 'gambas3-gb-qt5>=3.14' 'gambas3-gb-qt5<=3.99.0' 'gambas3-gb-form>=3.14' 'gambas3-gb-form<=3.99.0' 'gambas3-gb-db>=3.14' 'gambas3-gb-db<=3.99.0' 'gambas3-gb-dbus>=3.14' 'gambas3-gb-dbus<=3.99.0' 'gambas3-gb-qt5>=3' 'gambas3-gb-form>=3' 'gambas3-gb-image>=3' 'gambas3-runtime>=3' 'gambas3-devel>=3')
+depends=('gambas3-gb-image>=3.14' 'gambas3-gb-image<=3.99.0' 'gambas3-gb-qt5>=3.14' 'gambas3-gb-qt5<=3.99.0' 'gambas3-gb-form>=3.14' 'gambas3-gb-form<=3.99.0' 
+	'gambas3-gb-db>=3.14' 'gambas3-gb-db<=3.99.0' 'gambas3-gb-dbus>=3.14' 'gambas3-gb-dbus<=3.99.0' 'gambas3-gb-qt5>=3' 'gambas3-gb-form>=3' 
+	'gambas3-gb-image>=3' 'gambas3-runtime>=3' 'gambas3-devel>=3' 'gambas3-gb-db-sqlite3>=3.14')
 makedepend=('gambas3-devel')
 source=(https://gitlab.com/psposito/EortologioGambas3/uploads/aa195ffda0e36ef7c5734319f45df469/EortologioQt5-1.0.10.tar.bz2)
 
-md5sums=('d92a8a8c51feb7aa4210c45fbea536e6')
+sha256sums=('b65caa763efbc9931c7834ae12a5810c49cc17c2c38adb9ab814336bbcb6a60b')
 
 build() {
   cd "$srcdir/$_realname/"
