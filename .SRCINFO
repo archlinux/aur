@@ -1,0 +1,14 @@
+pkgbase = lutra
+	pkgver = 21227b8
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = ponyc
+	depends = pacman
+	source = git://github.com/code-monad/lutra
+	md5sums = SKIP
+
+pkgname = lutra
+
