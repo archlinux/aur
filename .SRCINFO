@@ -1,7 +1,7 @@
 pkgbase = pgcli
 	pkgdesc = a command line interface for Postgres with auto-completion and syntax highlighting
-	pkgver = 2.1.1
-	pkgrel = 4
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = http://pgcli.com/
 	arch = any
 	license = BSD
@@ -21,8 +21,8 @@ pkgbase = pgcli
 	depends = python-pygments
 	provides = pgcli
 	conflicts = pgcli-git
-	source = pgcli-2.1.1.zip::https://github.com/dbcli/pgcli/archive/v2.1.1.zip
-	md5sums = ab4e235244f6d28f4bb8a5cef09ddb99
+	source = pgcli-2.2.0.zip::https://github.com/dbcli/pgcli/archive/v2.2.0.zip
+	md5sums = 54be939f8664d5ba8687be2f3b698e9b
 
 pkgname = pgcli
 
