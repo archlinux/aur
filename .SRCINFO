@@ -6,14 +6,13 @@ pkgbase = xq
 	arch = x86_64
 	arch = i686
 	license = MIT
-	noextract = https://github.com/syui/xq/releases/download/0.2/linux_386_xq
-	noextract = https://github.com/syui/xq/releases/download/0.2/linux_amd64_xq
+	noextract = https://github.com/syui/xq/releases/download/0.2.1/linux_386_xq
+	noextract = https://github.com/syui/xq/releases/download/0.2.1/linux_amd64_xq
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/syui/xq/releases/download/0.2/linux_386_xq
-	source = https://github.com/syui/xq/releases/download/0.2/linux_amd64_xq
-	sha1sums = 6baa574caa2a4fae264acd62fe03ec56b0182d36
-	sha1sums = 5ad426d3e62369221023f86967de7f64da7b1d5f
+	source = https://github.com/syui/xq/releases/download/0.2.1/linux_386_xq
+	source = https://github.com/syui/xq/releases/download/0.2.1/linux_amd64_xq
+	sha1sums = 7a10595e9d60e4b70da980a634906cb617680610
+	sha1sums = c2d2825b643fe05f10d3f29d4688025acefc797d
 
 pkgname = xq
-

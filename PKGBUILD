@@ -1,6 +1,6 @@
 # Maintainer: syui <syui@users.noreply.github.com>
 pkgname=xq
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="xml to json convert parser"
 arch=('x86_64' 'i686')
