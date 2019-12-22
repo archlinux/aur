@@ -7,7 +7,6 @@ pkgbase = crow-translate-git
 	license = GPL3
 	makedepends = qt5-tools
 	makedepends = git
-	makedepends = xorgproto
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-multimedia
