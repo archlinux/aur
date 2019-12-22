@@ -1,0 +1,16 @@
+pkgbase = plasma
+	pkgdesc = Parallel Linear Algebra Software for Multicore Architectures
+	pkgver = 19.8.1
+	pkgrel = 1
+	url = https://bitbucket.org/icl/plasma
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = cblas
+	depends = lapacke
+	depends = gcc-libs
+	source = https://bitbucket.org/icl/plasma/downloads/plasma-19.8.1.tar.gz
+	sha256sums = 3a5db6eabf91aec782b7f27b17a7f6b8ce2c9d8e648c0e9c0ff5d87277ba4d17
+
+pkgname = plasma
+
