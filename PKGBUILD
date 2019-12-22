@@ -1,8 +1,8 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=gaia-hub
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="A decentralized high-performance storage system"
 arch=("any")
 url="https://github.com/blockstack/gaia"
@@ -55,6 +55,7 @@ package() {
     # install custom default config
     install -Dm 644 "${srcdir}/config.json" "${pkgdir}/usr/lib/node_modules/gaia-hub/config.json"
     ln -s "/usr/lib/node_modules/gaia-hub/config.json" "${pkgdir}/etc/gaia/hub/config.json"
+    install -Dm 644 "config-schema.json" "${pkgdir}/usr/lib/node_modules/gaia-hub/config-schema.json"
 
     # install examples
     install -Dm 644 "nginx.conf" "${pkgdir}/usr/share/doc/gaia/hub/nginx.conf.example"

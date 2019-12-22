@@ -1,7 +1,7 @@
 pkgbase = gaia-hub
 	pkgdesc = A decentralized high-performance storage system
-	pkgver = 2.5.3
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/blockstack/gaia
 	arch = any
 	license = custom:MIT
@@ -12,7 +12,7 @@ pkgbase = gaia-hub
 	makedepends = ts-node
 	depends = nodejs
 	optdepends = nginx: utilize provided example configs
-	source = gaia-hub::git+https://github.com/blockstack/gaia.git#tag=v2.5.3
+	source = gaia-hub::git+https://github.com/blockstack/gaia.git#tag=v2.6.0
 	source = config.json
 	source = service
 	source = sysusers
