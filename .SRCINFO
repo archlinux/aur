@@ -1,0 +1,14 @@
+pkgbase = draco-git
+	pkgdesc = Draco is a library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics.
+	pkgver = 1.3.5+38+g5db6df1
+	pkgrel = 1
+	url = https://google.github.io/draco/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/google/draco.git
+	sha256sums = SKIP
+
+pkgname = draco-git
+
