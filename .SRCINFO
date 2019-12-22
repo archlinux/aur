@@ -1,7 +1,7 @@
 pkgbase = kiwix-tools
 	pkgdesc = kiwix command line tools
 	pkgver = 3.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/kiwix/kiwix-tools
 	arch = armv7h
 	arch = i686
