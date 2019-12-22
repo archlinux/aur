@@ -1,0 +1,15 @@
+pkgbase = color-scripts-git
+	pkgdesc = User contributed color scripts
+	pkgver = r59.299a816
+	pkgrel = 1
+	url = https://git.io/color.sh
+	arch = any
+	license = None
+	makedepends = git
+	provides = color-scripts
+	conflicts = color-scripts
+	source = git+https://github.com/stark/Color-Scripts.git
+	sha256sums = SKIP
+
+pkgname = color-scripts-git
+
