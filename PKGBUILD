@@ -4,13 +4,13 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=r5055.afa83c55
+pkgver=r5394.b08cee78
 pkgrel=1
 pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
 url="https://gitlab.gnome.org/GNOME/geary"
 license=('GPL3')
-depends=('appstream-glib' 'enchant' 'folks' 'gcr' 'gmime' 'gtk3'
+depends=('appstream-glib' 'enchant' 'folks' 'gcr' 'gmime3' 'gtk3'
          'gnome-online-accounts' 'gspell' 'libgee' 'libhandy' 'libnotify'
          'libpeas' 'libsoup' 'libunwind' 'libxml2' 'libytnef' 'sqlite'
          'webkit2gtk')
