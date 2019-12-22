@@ -15,7 +15,7 @@ depends=('gambas3-gb-image>=3.14' 'gambas3-gb-image<=3.99.0' 'gambas3-gb-qt5>=3.
 	'gambas3-gb-db>=3.14' 'gambas3-gb-db<=3.99.0' 'gambas3-gb-dbus>=3.14' 'gambas3-gb-dbus<=3.99.0' 'gambas3-gb-qt5>=3' 'gambas3-gb-form>=3' 
 	'gambas3-gb-image>=3' 'gambas3-runtime>=3' 'gambas3-devel>=3' 'gambas3-gb-db-sqlite3>=3.14')
 makedepend=('gambas3-devel')
-source=(https://gitlab.com/psposito/EortologioGambas3/uploads/aa195ffda0e36ef7c5734319f45df469/EortologioQt5-1.0.10.tar.bz2)
+source=(https://gitlab.com/psposito/EortologioGambas3/uploads/cad818b7723b38208a5f31b28ae961b1/EortologioQt5-1.0.10.tar.bz2)
 
 sha256sums=('b65caa763efbc9931c7834ae12a5810c49cc17c2c38adb9ab814336bbcb6a60b')
 
