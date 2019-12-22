@@ -18,8 +18,8 @@
 pkgbase="zfs-linux-hardened"
 pkgname=("zfs-linux-hardened" "zfs-linux-hardened-headers")
 _zfsver="0.8.2"
-_kernelver="5.3.15.a-1"
-_extramodules="5.3.15.a-1-hardened"
+_kernelver="5.3.18.a-1"
+_extramodules="5.3.18.a-1-hardened"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
