@@ -1,0 +1,6 @@
+pkg
+src
+*.deb
+*.gz
+*.xz
+git.sh
