@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
@@ -26,7 +26,7 @@ makedepends=('cmake')
 provides=('openvsp')
 _name=OpenVSP-OpenVSP_${pkgver}
 source=("https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-sha256sums=('e6fe666875b7442c5717f66610cd6f7262f7d51473028edde5b0f7ab1e026445')
+sha256sums=('6d70401c659d5c7ec0ae93d1df4c96396d5015e24b45a329f63732bf8e69a375')
 
 prepare() {
 
@@ -71,13 +71,13 @@ package() {
   cp vsp vspaero vspscript vspslicer vspviewer ${pkgdir}/usr/bin/
 
   # misc
-  mkdir -p ${pkgdir}/usr/share
-  cp README.md ${pkgdir}/usr/share/
-  cp LICENSE ${pkgdir}/usr/share/
-  cp -r CustomScripts ${pkgdir}/usr/share/
-  cp -r airfoil ${pkgdir}/usr/share/
-  cp -r matlab ${pkgdir}/usr/share/
-  cp -r scripts ${pkgdir}/usr/share/
-  cp -r textures ${pkgdir}/usr/share/
+  mkdir -p ${pkgdir}/usr/share/${pkgname}
+  cp README.md ${pkgdir}/usr/share/${pkgname}
+  cp LICENSE ${pkgdir}/usr/share/${pkgname}
+  cp -r CustomScripts ${pkgdir}/usr/share/${pkgname}
+  cp -r airfoil ${pkgdir}/usr/share/${pkgname}
+  cp -r matlab ${pkgdir}/usr/share/${pkgname}
+  cp -r scripts ${pkgdir}/usr/share/${pkgname}
+  cp -r textures ${pkgdir}/usr/share/${pkgname}
 
 }
