@@ -2,7 +2,7 @@
 # Contributer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=pspg
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc='Tabular data pager designed to be used with psql'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('pspg-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
-sha256sums=('e164722de8d84f084ef36b77c4782434df3156f0ae3468a425fe13a0227613c8')
+sha256sums=('2d2b14a87056ce09625298de22629866c3c14aa55d46ea7ee627a682b9ea804e')
 
 build() {
   cd ${pkgname}-${pkgver}
