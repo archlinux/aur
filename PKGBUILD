@@ -13,7 +13,7 @@ source=('LICENSE'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb"
 )
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            'cf95b948609a5436ffc16fa668d2e74f139780b50108857b31e7036980b1800b'
+            '9b8eda9488f4b72368a381522ef05cfb7207e30fc5bd50b97f03d6228b0453ed'
 )
 
 prepare() {
