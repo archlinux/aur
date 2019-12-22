@@ -4,7 +4,7 @@
 _pkgname=python3-exiv2
 pkgname=python-exiv2
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="py3exiv2 is a Python3 binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata."
 url="https://launchpad.net/py3exiv2"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ sha512sums=('ece1133b8ba0566617438e38f371044df52451a2952e55f05f52f2ec5f4323fe39b
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     mkdir -p build
-    g++ -O2 -o build/exiv2wrapper.os -c -fPIC -I/usr/include/python3.7m src/exiv2wrapper.cpp
-    g++ -O2 -o build/exiv2wrapper_python.os -c -fPIC -I/usr/include/python3.7m src/exiv2wrapper_python.cpp
+    g++ -O2 -o build/exiv2wrapper.os -c -fPIC -I/usr/include/python3.8 src/exiv2wrapper.cpp
+    g++ -O2 -o build/exiv2wrapper_python.os -c -fPIC -I/usr/include/python3.8 src/exiv2wrapper_python.cpp
     g++ -O2 -o build/libexiv2python.so -shared build/exiv2wrapper.os build/exiv2wrapper_python.os -lboost_python3 -lexiv2
 }
 
