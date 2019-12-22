@@ -1,7 +1,7 @@
 pkgbase = kawanime
 	pkgdesc = Desktop app for anime fans
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kylart/KawAnime
 	arch = x86_64
 	license = MIT
