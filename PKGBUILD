@@ -1,5 +1,6 @@
 # Maintainer: Hork <aliyuchang33@outlook.com>
 # Contributer: ArielAxionL <i at axionl dot me>
+# Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
 pkgver=1.99.2.rd4d577b
 pkgrel=1
@@ -30,7 +31,7 @@ build() {
     cd "${srcdir}/${pkgname}"
     git submodule update --init
     mkdir -p build && cd build
-    qmake "QV2RAY_DEFAULT_VCORE_PATH=/usr/bin/v2ray" ../
+    qmake 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\"QString(\\\"/usr/bin/v2ray\\\")\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\"QString(\\\"/usr/lib/v2ray\\\")\"' ../
     make
 }
 
