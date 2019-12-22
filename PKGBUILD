@@ -2,7 +2,7 @@
 
 pkgname=python-poppler-qt5-git
 pkgver=0.75.0.r0.gb97edce
-pkgrel=1
+pkgrel=2
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
 url='https://github.com/frescobaldi/python-poppler-qt5'
@@ -22,6 +22,6 @@ pkgver() {
 package() {
     cd "${pkgname}"
     python setup.py build_ext \
-        --pyqt-sip-dir=$(python -c "import sip, os; print(os.path.dirname(sip.__file__))")
+        --pyqt-sip-dir=$(python -c "import PyQt5, os; print(os.path.dirname(PyQt5.__file__))")/bindings
     python setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
 }
