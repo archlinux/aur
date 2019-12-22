@@ -1,7 +1,7 @@
 pkgbase = python-numpy-openblas
 	pkgdesc = Scientific tools for Python - built with openblas
-	pkgver = 1.17.4
-	pkgrel = 2
+	pkgver = 1.18.0
+	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = i686
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = python-numpy-openblas
 	depends = cython
 	depends = openblas-lapack
 	optdepends = python-nose: testsuite
-	provides = python3-numpy=1.17.4
-	provides = python-numpy=1.17.4
+	provides = python3-numpy=1.18.0
+	provides = python-numpy=1.18.0
 	conflicts = python3-numpy
 	conflicts = python-numpy
 	options = staticlibs
-	source = python-numpy-1.17.4.tar.gz::https://github.com/numpy/numpy/releases/download/v1.17.4/numpy-1.17.4.tar.gz
-	sha256sums = fb0415475e673cb9a6dd816df999e0ab9f86fa3af2b1770944e7288d2bea4ac9
+	source = python-numpy-1.18.0.tar.gz::https://github.com/numpy/numpy/releases/download/v1.18.0/numpy-1.18.0.tar.gz
+	sha256sums = e5eaf340489b76eef91352bf48b36e92ace07f6b0f1c87dcd3b5dbada97df03a
 
 pkgname = python-numpy-openblas
 
