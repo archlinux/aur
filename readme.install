@@ -1,0 +1,8 @@
+post_install() {
+  if [[ ! -f /opt/adguardhome/AdGuardHome.yaml ]]; then
+    echo "==> First time use, run /opt/adguardhome/AdGuardHome as root to setup pref file"
+    echo "==> Subsequently, use the systemd service unit AdGuardHome.service"
+  fi
+}
+
+# vim:set ts=2 sw=2 et:
