@@ -1,7 +1,7 @@
 # Contributor: Max Devaine <max@devaine.cz>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp-git
-pkgver=r4008.37f78684
+pkgver=r4142.bf787072
 pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
@@ -25,6 +25,7 @@ optdepends=('doxygen: generate documentation'
             'swig: build interface to APIs')
 makedepends=('cmake' 'git')
 provides=('openvsp')
+conflicts=('openvsp')
 _name=OpenVSP
 source=("git+https://github.com/OpenVSP/OpenVSP.git")
 md5sums=('SKIP')
@@ -69,7 +70,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_name}/SuperProject/build/OpenVSP-prefix/src/OpenVSP-build/_CPack_Packages/Linux/ZIP/OpenVSP-3.18.0-Linux"
+  cd ${srcdir}/${_name}/SuperProject/build/OpenVSP-prefix/src/OpenVSP-build/_CPack_Packages/Linux/ZIP/*/
 
   msg "Installing files"
 
@@ -78,13 +79,13 @@ package() {
   cp vsp vspaero vspscript vspslicer vspviewer ${pkgdir}/usr/bin/
 
   # misc
-  mkdir -p ${pkgdir}/usr/share
-  cp README.md ${pkgdir}/usr/share/
-  cp LICENSE ${pkgdir}/usr/share/
-  cp -r CustomScripts ${pkgdir}/usr/share/
-  cp -r airfoil ${pkgdir}/usr/share/
-  cp -r matlab ${pkgdir}/usr/share/
-  cp -r scripts ${pkgdir}/usr/share/
-  cp -r textures ${pkgdir}/usr/share/
+  mkdir -p ${pkgdir}/usr/share/openvsp
+  cp README.md ${pkgdir}/usr/share/openvsp
+  cp LICENSE ${pkgdir}/usr/share/openvsp
+  cp -r CustomScripts ${pkgdir}/usr/share/openvsp
+  cp -r airfoil ${pkgdir}/usr/share/openvsp
+  cp -r matlab ${pkgdir}/usr/share/openvsp
+  cp -r scripts ${pkgdir}/usr/share/openvsp
+  cp -r textures ${pkgdir}/usr/share/openvsp
 
 }
