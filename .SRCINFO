@@ -1,16 +1,18 @@
 pkgbase = fuse-zip
+	pkgdesc = FUSE file system to navigate, extract, create and modify ZIP and ZIP64 archives
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://bitbucket.org/agalanin/fuse-zip
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	depends = fuse
+	depends = libzip
+	source = https://bitbucket.org/agalanin/fuse-zip/downloads/fuse-zip-0.7.0.tar.gz
+	source = Makefile.patch
+	md5sums = 8330ab673101bf8f9ace6c387b813997
+	md5sums = 25f054d418e4c18d63a1d6df919ff1e5
+
 pkgname = fuse-zip
-pkgdesc = FUSE file system to navigate, extract, create and modify ZIP and ZIP64 archives
-pkgver = 0.6.0
-pkgrel = 1
-url = https://bitbucket.org/agalanin/fuse-zip
-arch = i686
-arch = x86_64
-arch = armv7h
-license = GPL
-depends = fuse
-depends = libzip
-source = https://bitbucket.org/agalanin/fuse-zip/downloads/$pkgname-$pkgver.tar.gz
-source = Makefile.patch
-md5sums = bbe72713ac598610dc51f33039fb14fb
-md5sums = 9b43b740eb8ba94d3cddb724ba19637e
+
