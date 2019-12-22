@@ -1,0 +1,16 @@
+pkgbase = bls-git
+	pkgdesc = An implementation of BLS threshold signature
+	pkgver = r463.754b28c
+	pkgrel = 1
+	url = https://github.com/herumi/bls
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	depends = gmp
+	depends = libmcl
+	source = git+https://github.com/herumi/bls
+	sha256sums = SKIP
+
+pkgname = bls-git
+
