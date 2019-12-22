@@ -3,7 +3,7 @@
 pkgname=xow-git
 _pkgname=xow
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux driver for the Xbox One wireless dongle"
 arch=(x86_64)
 url=https://github.com/medusalix/xow
@@ -30,9 +30,9 @@ package() {
   _service_path=$pkgdir/usr/lib/systemd/system/
   mkdir -p {$_install_path, $_service_path}
 
-  install -Dm755 xow $_install_path/xov
-  install -Dm755 xow.service $_service_path/xov.service
+  install -Dm755 xow $_install_path/xow
+  install -Dm755 xow.service $_service_path/xow.service
 
   echo "If you want to enable and start the service please run:"
-  echo "systemctl enable --now xov.service"
+  echo "systemctl enable --now xow.service"
 }
