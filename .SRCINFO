@@ -1,6 +1,6 @@
 pkgbase = whalebird-bin
 	pkgdesc = An Electron based Mastodon client for Windows, Mac and Linux
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://whalebird.org/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = whalebird-bin
 	depends = libxss
 	depends = libxtst
 	depends = nss
-	source = https://github.com/h3poteto/whalebird-desktop/releases/download/3.0.0/Whalebird-3.0.0-linux-x64.rpm
-	sha256sums = 3fd537506f16cf144f5cd2107afc20e57c9703f6dd270acba28c828542f0a707
+	source = https://github.com/h3poteto/whalebird-desktop/releases/download/3.0.1/Whalebird-3.0.1-linux-x64.rpm
+	sha256sums = ffa2d96a0ebe1f73729e45b86f5b7cbaa282923a1e032305b47cef3d005e682d
 
 pkgname = whalebird-bin
 
