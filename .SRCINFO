@@ -1,7 +1,7 @@
 pkgbase = polybar
 	pkgdesc = A fast and easy-to-use status bar
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/polybar/polybar
 	install = polybar.install
 	arch = i686
