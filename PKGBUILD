@@ -37,12 +37,13 @@ prepare() {
     --disable-cups\
     --enable-release-build\
     --enable-python=fully-internal\
+    --disable-gstreamer-1-0\
     --with-galleries=no\
     --with-java=no\
     --without-fonts\
     --without-help\
     --with-vendor="sxw@chronowerks.de"\
-    --with-extra-buildid="This is Sparta: ${build_hash}-${build_date}"\
+    --with-extra-buildid="built by Chronowerks: ${build_hash}-${build_date}"\
     --with-build-version="${pkgver}-${pkgrel}"
 }
 
