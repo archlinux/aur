@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 
 pkgname=shortwave-git
-pkgver=0.0.1.r2.g205166f
+pkgver=0.0.1.r6.g5edb0bc
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,8 @@ makedepends=('appstream-glib'
              'gst-plugins-base-libs'
              'libdazzle'
              'meson'
-             'rust')
+             'rust'
+             'xorgproto')
 provides=('shortwave')
 conflicts=('shortwave')
 source=('git+https://gitlab.gnome.org/World/Shortwave.git')
