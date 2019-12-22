@@ -1504,3 +1504,12 @@ Fri Nov 29 13:01:39 2019 +0100
      2019-10-20 84099afa Gideon Wolfe fix({scripted-,}colors: xresources-reverse): highlighted text color (SEL_FG) (#270)
      2019-09-27 1917b273 Heimen Stoffels chore(colors): Add Fluent theme (#263)
      2019-09-27 7ad926d9 Heimen Stoffels chor(colors): add 4Amos theme (#264)
+
+
+Sun Dec 22 03:57:27 2019 +0100
+-------------------------------------------------
+1.12.5.1        Pre-Christmas bump
+    
+    Notable changes:
+     2019-12-22 c991b246 actionless chore(plugins: theme: oomox): update submodule (fix fg color for inline headerbar buttons and drop compound SCSS selectors)
+     2019-12-22 3837151b Vlada Makhonina Big Christmas theme update
