@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
-_version='3.1.2'
-_sha256='8ebed51fea351193b9f7e0b738695be8dd4d5b1dd076731ea5d274eec73087bd'
+_version='4.0.20191220'
+_sha256='f21c4a32857a1bd7272cb3254ca10dd439c9052262140dbb6a7769ad9c52b9e4'
 
 pkgname=codecept-bin
 pkgver=${_version}
@@ -12,11 +12,11 @@ url='https://codeception.com/'
 arch=('any')
 license=('MIT')
 
-depends=('php>=7')
+depends=('php>=7.2')
 optdepends=()
 conflicts=()
 source=("https://codeception.com/releases/${_version}/codecept.phar"
-	"https://raw.githubusercontent.com/Codeception/Codeception/3.1/LICENSE")
+	"https://raw.githubusercontent.com/Codeception/Codeception/4.0/LICENSE")
 sha256sums=("${_sha256}"
 	"a170b2c91593ab8e55624afcd6b392d8df3e9e914105b1f1e9ea8b8b73aee16f")
 
