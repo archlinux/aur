@@ -1,5 +1,4 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
-pkgbase=ucm
 pkgname=ucm-bin
 pkgver=M1g
 pkgrel=1

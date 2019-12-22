@@ -15,6 +15,6 @@ makepkg --printsrcinfo > .SRCINFO
 Then push to AUR git repository by:
 
 ```
-git remote add aur ssh://aur@aur.archlinux.org/ucm-git.git
+git remote add aur ssh://aur@aur.archlinux.org/ucm-bin.git
 git push aur
 ```
