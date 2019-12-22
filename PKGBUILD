@@ -1,9 +1,11 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Fabrizio del Tin <fdt@university.pub>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Jan Dolinar <dolik.rce@gmail.com>
 
 pkgbase=upp
 pkgname=(upp theide umk)
-pkgver=13068
+yearver=2019.2
+pkgver=13664
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
@@ -16,14 +18,14 @@ optdepends=('libnotify: Enables compiling gtk-styled apps' 'sox: Enables playing
 replaces=()
 backup=()
 options=(!makeflags emptydirs !strip)
-source=("http://downloads.sourceforge.net/project/upp/upp/2019.1/upp-x11-src-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/upp/upp/$yearver/upp-x11-src-$pkgver.tar.gz"
         'GCC.bm'
         'license.txt'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/theide.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
 noextract=()
-sha256sums=('031a52880f7c47c762f7e7645cdae978e3fd7de2237aaa45c0ec1d096c4fb962'
+sha256sums=('3a5b73db0b61ea5bcf9bf8b37ede3bf2b994079e793ec71d087d0b95bf472d41'
             '5c0955ef99bc08d4c79b96a470bc17eb2ae3bed5f0d66d86eff7fb726629ae79'
             '880ad22b3a7cef8adc2750553e5b7b785ec926168f50e01bacddcae52c07e71a'
             'cdb98e08996a809c9a323f83768edde6a22a6aad73d9ed6a193f70ac78a8b123'
@@ -48,10 +50,10 @@ build() {
 
   # build
   msg2 "Building umk..."
-  make -f "$srcdir/mkfile" PKG=umk FLAGS="GCC STACKTRACE" NESTS="uppsrc" TIME= COLOR=0 USEMAINCFG=0 JOBS=5 ECHO=0 TARGET="$srcdir/umk"
+  make -j $(nproc --all) -f "$srcdir/mkfile" PKG=umk FLAGS="GCC STACKTRACE" NESTS="uppsrc" TIME= COLOR=0 USEMAINCFG=0 JOBS=5 ECHO=0 TARGET="$srcdir/umk"
 
   msg2 "Building theide..."
-  make -f "$srcdir/mkfile" PKG=ide FLAGS="$FLAGS" NESTS="uppsrc" TIME= COLOR=0 USEMAINCFG=0 JOBS=5 ECHO=0 TARGET="$srcdir/theide"
+  make -j $(nproc --all) -f "$srcdir/mkfile" PKG=ide FLAGS="$FLAGS" NESTS="uppsrc" TIME= COLOR=0 USEMAINCFG=0 JOBS=5 ECHO=0 TARGET="$srcdir/theide"
 }
 
 package_theide(){
@@ -71,7 +73,7 @@ package_theide(){
   install -D "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
   # man pages
   install -D "$srcdir/theide.1" "$pkgdir/usr/share/man/man1/theide.1"
-  install -D "$srcdir/umk.1" "$pkgdir/usr/share/man/man1/umk.1"
+#  install -D "$srcdir/umk.1" "$pkgdir/usr/share/man/man1/umk.1"
   # desktop entry
   install -D "$srcdir/upp-x11-src-$pkgver/uppsrc/ide/theide.desktop" "$pkgdir/usr/share/applications/theide.desktop"
   # icon
