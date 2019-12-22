@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://google.github.io/draco/"
 license=('Apache')
 makedepends=('cmake' 'git')
-depends=()
+depends=(gcc-libs)
 source=("git+https://github.com/google/draco.git")
 sha256sums=('SKIP')
 
@@ -35,4 +35,6 @@ build() {
 package() {
   cd "${srcdir}/${basename}/build"
   DESTDIR="${pkgdir}" make install
+  mv ${pkgdir}/usr/build/*.h ${pkgdir}/usr/include/draco/
+  rm ${pkgdir}/usr/build -R
 }
