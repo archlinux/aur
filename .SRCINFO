@@ -1,7 +1,7 @@
 pkgbase = klick-git
 	pkgdesc = An advanced command-line based metronome for JACK
-	pkgver = r174.c050710
-	pkgrel = 3
+	pkgver = 0.13.0_pre.r174.c050710
+	pkgrel = 1
 	url = http://das.nasophon.de/klick/
 	arch = i686
 	arch = x86_64

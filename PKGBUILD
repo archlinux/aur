@@ -5,8 +5,8 @@
 
 _pkgbasename=klick
 pkgname=${_pkgbasename}-git
-pkgver=r174.c050710
-pkgrel=3
+pkgver=0.13.0_pre.r174.c050710
+pkgrel=1
 pkgdesc="An advanced command-line based metronome for JACK"
 arch=('i686' 'x86_64')
 url="http://das.nasophon.de/klick/"
@@ -23,7 +23,8 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_pkgbasename}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local ver="$(grep ^version SConstruct | cut -f 2 -d "'" | sed -e 's/-/_/')"
+  printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
