@@ -1,4 +1,4 @@
-pkgbase = ucm-bin
+pkgbase = ucm
 	pkgdesc = Unison language code manager
 	pkgver = M1g
 	pkgrel = 1
