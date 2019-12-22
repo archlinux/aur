@@ -1,7 +1,7 @@
 pkgbase = kiwix-lib
 	pkgdesc = Library providing the Kiwix software core
-	pkgver = 8.1.0
-	pkgrel = 2
+	pkgver = 8.2.2
+	pkgrel = 1
 	url = https://github.com/kiwix/kiwix-lib
 	arch = armv7h
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = kiwix-lib
 	depends = xapian-core
 	depends = aria2
 	depends = libmicrohttpd
-	source = https://github.com/kiwix/kiwix-lib/archive/8.1.0.tar.gz
-	sha256sums = d5e498db7d24b2df3c77ff3521810949204de69793eecf8245b2366b93da27e0
+	source = https://github.com/kiwix/kiwix-lib/archive/8.2.2.tar.gz
+	sha256sums = dc8d454d79b175c0b9f3c4d268db17da8e80fcd8df3987af0f58cb399bd5da61
 
 pkgname = kiwix-lib
 
