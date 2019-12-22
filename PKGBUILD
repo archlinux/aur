@@ -2,8 +2,8 @@
 
 pkgname=julia-versionparsing
 _pkgname=VersionParsing
-pkgver=1.1.3
-pkgrel=6
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Flexible parsing of version-number strings into Julia's built-in VersionNumber type"
 arch=(any)
 url=https://github.com/stevengj/VersionParsing.jl
@@ -11,15 +11,15 @@ license=(MIT)
 depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
 
-_commit=334790bf66964522555084d375eef20d1390fb06
+_commit=f689a0216cbd0c89422d15047949f940d6f7518d
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('b681185b05ced15f0eb9be26f943898ac43cfcf561201a2f6e35e321c8e441e6'
-            'ea5619020ec53b46849fd990e7869bdb935d7bd44a84fdc035bbc8de5969c313'
+sha256sums=('329f62b69dac7675cd12ede1d91fc1da2147f3e74c0d86606cb616b4d2719f51'
+            '386181db520a939bafe5dab37e3dd2df80769b8f3184d5ce0fa6d8beb4e9bcd4'
             'c8de56d3c846a487b5909e6666d3665ec7a7676571b108da71784dbeec385e92'
-            '45a10d2ee6b9eef6897306c77f8ba49610afb8514a3c640a76fc2615acc165e6')
+            '66ad0c6111e71ec37c659d3e9d376c2ffa4b0d3b5d211ace605c25457ec9ae6d')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
