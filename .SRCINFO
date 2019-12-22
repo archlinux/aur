@@ -1,6 +1,6 @@
 pkgbase = liburing-git
 	pkgdesc = Linux-native io_uring I/O access library (git-version)
-	pkgver = 0.2.r101.g73e3b1a
+	pkgver = 0.3
 	pkgrel = 1
 	url = http://git.kernel.dk/cgit/liburing/
 	arch = x86
