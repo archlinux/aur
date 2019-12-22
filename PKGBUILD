@@ -3,7 +3,7 @@
 # Contributor: Filip Szymański <fszymanski at, fedoraproject.org>
 
 pkgname=hstr-git
-pkgver=2.2.r0.g56042ac
+pkgver=2.2.r1.g4fb05b8
 pkgrel=1
 pkgdesc="A command line utility that brings improved BASH command completion from the history. It aims to make completion easier and more efficient than Ctrl-r."
 arch=('any')
