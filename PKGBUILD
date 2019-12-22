@@ -1,8 +1,9 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Jonathan Wright <jon@than.io>
+# Contributor: Boohbah <boohbah at gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-git
-pkgver=5.4.r5280.g89d57dddd7d3
+pkgver=5.5rc2.r385.gb8e382a185eb
 pkgrel=1
 pkgdesc='Linux git'
 url="https://www.kernel.org"
