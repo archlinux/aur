@@ -8,7 +8,7 @@ pkgdesc='Boolean operations on paths.'
 arch=('any')
 url='https://github.com/typemytype/booleanOperations'
 license=('MIT')
-checkdepends=('python-fontpens' 'python-defcon')
+checkdepends=('python-defcon' 'python-fontpens')
 depends=('python' 'python-pyclipper' 'python-fonttools')
 makedepends=()
 options=(!emptydirs)
@@ -17,8 +17,8 @@ sha256sums=('8cfa821c32ad374fa120d6b2e0b444ebeac57c91e6631528645fa19ac2a281b8')
 
 package() {
   cd "${srcdir}/$_pkgname-$pkgver"
-
   python setup.py install --root=$pkgdir ||return 1
+  install -D -m644  LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 check() {
