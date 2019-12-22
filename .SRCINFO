@@ -1,24 +1,32 @@
 pkgbase = carla-bridges
-	pkgdesc = Carla All Bridges (Git Version)
-	pkgver = 5182.20d450554
-	pkgrel = 1
+	pkgdesc = Carla All Bridges (Stable Branch)
+	pkgver = 2.0.0
+	pkgrel = 2
 	url = http://kxstudio.sf.net/carla
 	arch = x86_64
 	license = GPL2
-	makedepends = git
-	makedepends = mingw-w64-gcc
-	makedepends = mingw-w64-crt
-	makedepends = mingw-w64-winpthreads
-	makedepends = mingw-w64-pkg-config
-	makedepends = gcc-multilib
 	depends = wine
 	depends = carla
-	depends = liblo
-	provides = carla-bridges
 	conflicts = carla-bridges-win32
 	conflicts = carla-bridges-win64
-	source = carla-bridges::git+https://github.com/falkTX/Carla.git#branch=develop
-	md5sums = SKIP
+	noextract = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-linux32_2.0.0-0ubuntu3_i386.deb
+	noextract = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-linux64_2.0.0-0ubuntu3_amd64.deb
+	noextract = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-win32_2.0.0-0ubuntu3_i386.deb
+	noextract = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-win64_2.0.0-0ubuntu3_amd64.deb
+	noextract = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-wine32_2.0.0-0ubuntu3_i386.deb
+	noextract = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-wine64_2.0.0-0ubuntu3_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-linux32_2.0.0-0ubuntu3_i386.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-linux64_2.0.0-0ubuntu3_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-win32_2.0.0-0ubuntu3_i386.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-win64_2.0.0-0ubuntu3_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-wine32_2.0.0-0ubuntu3_i386.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/universe/c/carla/carla-bridge-wine64_2.0.0-0ubuntu3_amd64.deb
+	md5sums = 9ea8849390fdbb25d2dce6e8a4527ed3
+	md5sums = 43657e010a8199464117432708b95151
+	md5sums = b46495b9626fed87c8aa1befa3982ebb
+	md5sums = cee1d6589c5c50ecfcdd04c1f1509df2
+	md5sums = da8eb8e4240f200181e7f6f7613cc6c4
+	md5sums = 1057fa4f5a166f6c560a89a27b9a0beb
 
 pkgname = carla-bridges
 
