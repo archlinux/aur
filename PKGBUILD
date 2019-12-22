@@ -9,7 +9,8 @@
 
 _name=gajim
 pkgname="$_name-git"
-pkgver=1.0.0.beta1.r1944.g9497dce25
+epoch=1
+pkgver=r17041.9497dce25
 pkgrel=1
 pkgdesc="Jabber/XMPP instant messenger client written in Python with GTK+"
 arch=('any')
@@ -43,7 +44,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_name
-  git describe --long --tags | sed 's/^gajim-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
