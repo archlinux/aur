@@ -3,4 +3,4 @@ src/*
 *.gz
 *.xz
 *.zip
-
+COPYING
