@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=cmake-language-server-git
-pkgver=v0.1.0.r10.g1a8267b
+pkgver=v0.1.0.r18.gaf59e9b
 pkgrel=1
 pkgdesc="Python based cmake language server"
 arch=('any')
@@ -29,9 +29,9 @@ prepare() {
 	# Quick hack to use the tarball from poetry
 	mkdir -p untar
 	tar -xvf dist/*.tar.gz -C untar
-	mv untar/* $pkgname-$pkgver
+	mv untar/* $pkgname
 
-	cd $pkgname-$pkgver
+	cd $pkgname
 
 	sed -i "s/from distutils.core import setup/from setuptools import setup/" setup.py
 }
@@ -46,13 +46,13 @@ pkgver() {
 
 
 build() {
-	cd "$srcdir/$pkgname/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname/$pkgname"
 
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname/$pkgname"
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
