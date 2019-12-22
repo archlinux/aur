@@ -3,13 +3,13 @@ pkgname=moodledesktop
 _pkgname=moodlemobile2
 _electron=electron4
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official app for Moodle."
 arch=(any)
 url='https://download.moodle.org/desktop/'
 license=(Apache)
 depends=($_electron)
-makedepends=(jq moreutils npm)
+makedepends=(git jq moreutils npm)
 _pathstem=$_pkgname-$pkgver
 source=("$_pathstem.tar.gz::https://github.com/moodlehq/$_pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.sh"

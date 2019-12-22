@@ -1,10 +1,11 @@
 pkgbase = moodledesktop
 	pkgdesc = The official app for Moodle.
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.moodle.org/desktop/
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = jq
 	makedepends = moreutils
 	makedepends = npm
