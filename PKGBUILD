@@ -11,6 +11,7 @@ depends=('ghc-libs'
          'haskell-transformers-compat'
          'haskell-transformers-base'
          'haskell-juicypixels'
+	 'haskell-temporary'
          'imagemagick')
 makedepends=('ghc')
 source=(${pkgname}-${pkgver}.tar.gz::"https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"

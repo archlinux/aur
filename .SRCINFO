@@ -13,6 +13,7 @@ pkgbase = haskell-latex-formulae-image
 	depends = haskell-transformers-compat
 	depends = haskell-transformers-base
 	depends = haskell-juicypixels
+	depends = haskell-temporary
 	depends = imagemagick
 	source = haskell-latex-formulae-image-0.1.1.4.tar.gz::https://hackage.haskell.org/packages/archive/latex-formulae-image/0.1.1.4/latex-formulae-image-0.1.1.4.tar.gz
 	source = cabal.patch
