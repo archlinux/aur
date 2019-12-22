@@ -1,6 +1,6 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
-pkgver=r2035.66620530
+pkgver=r2477.be898e88
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -38,6 +38,6 @@ build() {
 package() {
     cd "$srcdir/chatterino2"
     install -Dm755 "build/bin/chatterino" "$pkgdir/usr/bin/chatterino"
-    install -Dm644 "resources/chatterino.desktop" "$pkgdir/usr/share/applications/chatterino.desktop"
+    install -Dm644 "resources/com.chatterino.chatterino.desktop" "$pkgdir/usr/share/applications/com.chatterino.chatterino.desktop"
     install -Dm644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/chatterino.png"
 }
