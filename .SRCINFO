@@ -1,6 +1,6 @@
 pkgbase = grandorgue-svn
 	pkgdesc = svn-version of the Virtual Pipe Organ Software GrandOrgue
-	pkgver = r2330
+	pkgver = r2333
 	pkgrel = 1
 	url = https://svn.code.sf.net/p/ourorgan/svn/trunk/
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = grandorgue-svn
 	depends = zlib
 	depends = libsystemd
 	replaces = grandorgue-git
-	source = grandorgue-svn::svn+https://svn.code.sf.net/p/ourorgan/svn/trunk/#revision=r2330
+	source = grandorgue-svn::svn+https://svn.code.sf.net/p/ourorgan/svn/trunk/#revision=r2333
 	md5sums = SKIP
 
 pkgname = grandorgue-svn
