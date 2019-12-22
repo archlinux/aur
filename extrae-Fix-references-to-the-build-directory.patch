@@ -1,0 +1,41 @@
+From 34f3652fdbe58bb2224cb4ecf8a4ea08200a4034 Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Sun, 22 Dec 2019 13:35:23 +0100
+Subject: [PATCH] Fix references to the build directory that remain in the
+ packages. (Fixes the "Package contains reference to $pkgdir" makepkg
+ warning).
+
+---
+ src/others/Makefile.am     | 2 +-
+ tests/overhead/Makefile.am | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/others/Makefile.am b/src/others/Makefile.am
+index cb2a75b..c52d434 100644
+--- a/src/others/Makefile.am
++++ b/src/others/Makefile.am
+@@ -40,7 +40,7 @@ endif
+ 
+ install-data-hook:
+ 	cp pyextrae/common/extrae.py.in pyextrae/common/extrae.py
+-	$(top_srcdir)/substitute $(SED) "@sub_PREFIX@" $(DESTDIR)${prefix} pyextrae/common/extrae.py
++	$(top_srcdir)/substitute $(SED) "@sub_PREFIX@" ${prefix} pyextrae/common/extrae.py
+ #if HAVE_PAPI
+ 	$(top_srcdir)/substitute $(SED) "@sub_Extrae_eventandcounters@" Extrae_eventandcounters pyextrae/common/extrae.py
+ 	$(top_srcdir)/substitute $(SED) "@sub_Extrae_neventandcounters@" Extrae_neventandcounters pyextrae/common/extrae.py
+diff --git a/tests/overhead/Makefile.am b/tests/overhead/Makefile.am
+index 67b3c92..093c177 100644
+--- a/tests/overhead/Makefile.am
++++ b/tests/overhead/Makefile.am
+@@ -72,7 +72,7 @@ install-data-hook:
+ 	$(MKDIR_P) $(DESTDIR)$(datadir)/tests/overhead
+ 	cp $(myFILES) $(DESTDIR)$(datadir)/tests/overhead
+ 	cp $(myPATH)/Makefile.tests.overhead $(DESTDIR)$(datadir)/tests/overhead/Makefile
+-	$(BASE_DIR)/substitute $(SED) "@sub_EXTRAE_HOME@" "$(DESTDIR)$(prefix)" $(DESTDIR)$(datadir)/tests/overhead/run_overhead_tests.sh
++	$(BASE_DIR)/substitute $(SED) "@sub_EXTRAE_HOME@" "$(prefix)" $(DESTDIR)$(datadir)/tests/overhead/run_overhead_tests.sh
+ if HAVE_PAPI
+ 	$(BASE_DIR)/substitute $(SED) "@sub_COUNTERS_OVERHEAD_TESTS@" "./extrae_eventandcounters ./papi_read1 ./papi_read4" $(DESTDIR)$(datadir)/tests/overhead/run_overhead_tests.sh
+ endif
+-- 
+2.24.1
+
