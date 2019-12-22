@@ -1,7 +1,7 @@
 # Maintainer: Jack Kamm <jackkamm at gmail dot com>
 pkgname=biosyntax-less-git
 pkgver=1.0.0.r11.g5705f0c
-pkgrel=2
+pkgrel=3
 pkgdesc="Syntax Highlighting for Computational Biology, less plugin"
 arch=('any')
 url="https://biosyntax.org/"
@@ -12,18 +12,18 @@ source=("biosyntax-less-git::git://github.com/bioSyntax/bioSyntax.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "biosyntax-git"
+  cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/biosyntax-git"
+  cd "$srcdir/$pkgname"
 
   sed -i 's|$HOME/.local/share/source-highlight|/usr/share/source-highlight|g' less/rc_append.txt
 }
 
 package() {
-  cd "$srcdir/biosyntax-git"
+  cd "$srcdir/$pkgname"
 
   mkdir -p "$pkgdir/usr/share/source-highlight/"
   cp less/*.outlang "$pkgdir/usr/share/source-highlight/"

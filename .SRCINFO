@@ -1,7 +1,7 @@
 pkgbase = biosyntax-less-git
 	pkgdesc = Syntax Highlighting for Computational Biology, less plugin
 	pkgver = 1.0.0.r11.g5705f0c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://biosyntax.org/
 	arch = any
 	license = GPL3
