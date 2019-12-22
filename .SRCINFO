@@ -1,6 +1,6 @@
 pkgbase = swift-bin
-	pkgdesc = Binary builds of the Swift programming language from the Fedora repos
-	pkgver = 5.1.2
+	pkgdesc = Binary builds of the Swift programming language
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://swift.org
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = swift-bin
 	conflicts = swift-language-git
 	replaces = swift-language-bin
 	options = !strip
-	source = https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/swift-lang-5.1.2-0.1.20191107git71def56.fc32.x86_64.rpm
-	source = https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/swift-lang-runtime-5.1.2-0.1.20191107git71def56.fc32.x86_64.rpm
-	sha256sums = 5a1ee60d3d9bd54373098905d058d0699b19e9e402392a24f9758c6bae6ccd15
-	sha256sums = e72848d74edd77a8d6ca2bf9c22bbd4ae552662933eb8bdfd6141d2fab9e54d0
+	source = https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/swift-lang-5.1.3-0.1.20191213git005fc1f.fc32.x86_64.rpm
+	source = https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s/swift-lang-runtime-5.1.3-0.1.20191213git005fc1f.fc32.x86_64.rpm
+	sha256sums = 78f26e0a4f864bab7def8fc7fc9b8d7c98570e4cf40b409ce33ea93eb49c58fb
+	sha256sums = 9049d655f3883d0e6c2fe661e53f00aa47b91a512a8984781df6dd21aa6a7efd
 
 pkgname = swift-bin
 
