@@ -8,13 +8,13 @@ _singleapplication=3.0.18
 
 pkgname=crow-translate
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple and lightweight translator that allows to translate and say selected text using Google, Yandex and Bing translate API"
 arch=('x86_64')
 url="https://github.com/crow-translate/crow-translate"
 license=('GPL3')
 depends=('qt5-base' 'qt5-svg' 'qt5-multimedia' 'qt5-x11extras' 'gst-plugins-good' 'openssl')
-makedepends=('qt5-tools' 'xorgproto')
+makedepends=('qt5-tools')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/crow-translate/crow-translate/archive/$pkgver.tar.gz"
         QOnlineTranslator-$_qonlinetranslator.tar.gz::"https://github.com/Shatur95/QOnlineTranslator/archive/$_qonlinetranslator.tar.gz"
         QHotkey-$_qhotkey.tar.gz::"https://github.com/Skycoder42/QHotkey/archive/$_qhotkey.tar.gz"
