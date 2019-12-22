@@ -7,16 +7,16 @@
 # Contributor: p00h <p00hzone at gmail dot com>
 # Contributor: Michał Walenciak <Kicer86 at gmail dot com>
 
-pkgname=('python-dlib-cuda' 'python2-dlib-cuda')
+pkgname=('python-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.18
+pkgver=19.19
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
 url="http://www.dlib.net/"
 license=('Boost')
 depends=('cuda' 'cudnn' 'libx11')
-makedepends=('cmake' 'cuda' 'cudnn' 'libx11' 'python' 'python2')
+makedepends=('cmake' 'cuda' 'cudnn' 'libx11' 'python')
 optdepends=('cblas: for BLAS support'
             'giflib: for GIF support'
             'lapack: for LAPACK support'
@@ -25,10 +25,9 @@ optdepends=('cblas: for BLAS support'
             'neon: for neon support'
             'sqlite: for sqlite support'
             'ccache-ext: for ccache support during compiling'
-            'python-numpy: for running numpy based tests'
-            'python2-numpy: for running numpy based tests')
+            'python-numpy: for running numpy based tests')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('521b9fbcb90c328063c439f6ccb3c95d9ababd25b208cbd1b915d9f5c4d2ab9b')
+sha256sums=('1decfe883635ce51acd72869cebe870ab9b85eb094d417adc8f48aa7b8c60cd7')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -67,22 +66,15 @@ build() {
 
   # Compiling for Python 3
   python setup.py build "${_compiler_opts[@]}" "${_compiler_vars[@]}"
-
-  # Compiling for Python 2
-  python2 setup.py build "${_compiler_opts[@]}" "${_compiler_vars[@]}"
 }
 
 
 check() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	
+
 	# The PYTHONPATH is cleared to avoid custom user paths getting in the way
 	# of importing the right versions of packages
-  # Tests for Python 3
   PYTHONPATH="" python setup.py test
-
-  # Tests for Python 2
-  PYTHONPATH="" python2 setup.py test
 }
 
 package_python-dlib-cuda() {
@@ -92,14 +84,5 @@ package_python-dlib-cuda() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
-}
-
-package_python2-dlib-cuda() {
-  depends=('python2' 'cuda' 'cudnn' 'libx11')
-  provides=("python2-dlib=$pkgver")
-  conflicts=('python2-dlib')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py install --skip-build --prefix=/usr --root="${pkgdir}" --optimize=1
 }
 
