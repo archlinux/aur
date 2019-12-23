@@ -1,7 +1,7 @@
 pkgbase = mdcat
 	pkgdesc = Show CommonMark (a standardized Markdown dialect) documents on text terminals.
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lunaryorn/mdcat
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mdcat
 	makedepends = cargo
 	makedepends = git
 	depends = oniguruma
+	depends = openssl
 	conflicts = mdcat-git
 	source = mdcat-0.14.0.tar.gz::https://github.com/lunaryorn/mdcat/archive/mdcat-0.14.0.tar.gz
 	sha256sums = 330059534642bba502e82d6a86f16451b7ce9d2ad02e356fd0bcff961020bc9f
