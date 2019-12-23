@@ -4,8 +4,8 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.4.0.2
-pkgrel=4
+pkgver=4.4.0.4
+pkgrel=1
 _ffmpeg_ver=2019_11_09
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
@@ -14,8 +14,7 @@ license=('custom')
 depends=('alsa-lib'
          'aom'
          'bzip2'
-         'dotnet-runtime<=2.2.6+108'
-         'dotnet-host<=2.2.6+108'
+         'dotnet-runtime'
          'expat'
          'fontconfig'
          'freetype2'
@@ -55,7 +54,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
-sha256sums=('48c8c5fcf724f2819470edb31c987670ec6d1e7800c808e6f758908dc73c8111'
+sha256sums=('161481bd3451a98ad2df0e2475f8e94c62e350d4b1b44219e9c65371bd364ae0'
             '4afade7a1870d1f3a90de688b8706718e2592cbb281b24ba569982aac667266f'
             '3fbee0c712c01e37953293da6d3aa4ae7a608fb5801a3eb3d9f99c1274da44db'
             'e2185a5f4810726cb57fcc6d9bdbde1854069f08f163be58cb3cef1154b8e2a7'
