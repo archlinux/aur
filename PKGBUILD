@@ -1,4 +1,4 @@
-# Maintainer: gxb153 <maintainer at gmail dot com>
+# Maintainer: vvxxp8 <letters[g] in square[x] [b]rackets one[1] five[5] two[2] at gmail dot com>
 
 pkgname=listen1-desktop-appimage
 pkgver=2.5.0
