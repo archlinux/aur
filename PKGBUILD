@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=glow
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64' 'i686')
