@@ -1,7 +1,7 @@
 pkgbase = stf
 	pkgdesc = Web application for controlling and managing Android devices
 	pkgver = 3.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openstf.io
 	arch = i686
 	arch = x86_64

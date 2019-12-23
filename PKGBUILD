@@ -2,7 +2,7 @@
 
 pkgname=stf
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Web application for controlling and managing Android devices'
 arch=(i686 x86_64)
 url=https://openstf.io
@@ -19,9 +19,9 @@ package() {
 
   cd "$pkgdir"/usr
 
-  # Remove world-writeable bits
+  # Fix permissions
+  find . -exec chown -h 0:0 {} +
   find . -type d -exec chmod 755 {} +
 
   install -Dm 644 lib/node_modules/stf/README.md -t share/doc/stf
-  install -Dm 644 lib/node_modules/stf/LICENSE -t share/licenses/stf
 }
