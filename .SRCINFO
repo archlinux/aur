@@ -1,18 +1,18 @@
 pkgbase = superpaper
 	pkgdesc = Cross-platform multi monitor wallpaper manager
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/hhannine/Superpaper
 	arch = any
 	license = MIT
+	makedepends = python-distutils-extra
 	depends = python-pillow
-	depends = python-screeninfo
+	depends = python-screeninfo>=0.6.1
 	depends = python-wxpython
-	depends = python-system_hotkey
-	source = superpaper-1.1.2.tar.gz::https://github.com/hhannine/Superpaper/archive/v1.1.2.tar.gz
-	source = write_to_confdir.patch
-	sha256sums = a564d52cb1b4194de2b1563d9273fec7ea4a7969e6b2b1ff91701e8038c34dfa
-	sha256sums = 869aafccfd75f514bf0956bc32df419e4dc7c49c5c11dd8f057e9aebd8ab6e52
+	depends = python-system_hotkey>=1.0.2+10+9541587
+	depends = python-xpybutil
+	source = superpaper-1.2.0.tar.gz::https://github.com/hhannine/Superpaper/archive/v1.2.0.tar.gz
+	sha256sums = 501ffac1bf151e6025c39cc6a8181d70ed9ea6a50aff4c55463fc5b9a9daea03
 
 pkgname = superpaper
 
