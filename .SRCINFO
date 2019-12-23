@@ -20,7 +20,7 @@ pkgbase = doom2df-git
 	source = doom2df.png
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 7f8bcc51643bcbd219f10e3f33164dd5
+	md5sums = a529aca738b79f2099fcef6e583fbed3
 	md5sums = 191cd29a6994ab257abf6c0b1060b2fd
 
 pkgname = doom2df-git

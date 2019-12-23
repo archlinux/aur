@@ -17,7 +17,7 @@ source=(
 md5sums=(
   'SKIP'
   'SKIP'
-  '7f8bcc51643bcbd219f10e3f33164dd5'
+  'a529aca738b79f2099fcef6e583fbed3'
   '191cd29a6994ab257abf6c0b1060b2fd'
 )
 options=(
