@@ -16,8 +16,12 @@ pkgbase = doom2df-git
 	options = !strip
 	source = git://repo.or.cz/d2df-sdl.git
 	source = http://doom2d.org/doom2d_forever/latest/win32-d2df-latest.zip
+	source = doom2df.desktop
+	source = doom2df.png
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 5c75c97fcc9826d0d83eac8f9cd4a9b7
+	md5sums = 191cd29a6994ab257abf6c0b1060b2fd
 
 pkgname = doom2df-git
 

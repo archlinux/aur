@@ -11,10 +11,14 @@ makedepends=(git fpc)
 source=(
   'git://repo.or.cz/d2df-sdl.git'
   'http://doom2d.org/doom2d_forever/latest/win32-d2df-latest.zip'
+  'doom2df.desktop'
+  'doom2df.png'
 )
 md5sums=(
   'SKIP'
   'SKIP'
+  '5c75c97fcc9826d0d83eac8f9cd4a9b7'
+  '191cd29a6994ab257abf6c0b1060b2fd'
 )
 options=(
   !strip
@@ -35,7 +39,8 @@ build() {
 package() {
   cd "${srcdir}"
   install -Dm755 Doom2DF "${pkgdir}"/usr/bin/Doom2DF
-
+  install -Dm644 doom2df.desktop "${pkgdir}"/usr/share/applications/doom2df.desktop
+  install -Dm644 doom2df.png "${pkgdir}"/usr/share/pixmaps/doom2df.png
   mkdir -p "${pkgdir}"/usr/share/doom2df
   cp -r data maps wads "${pkgdir}"/usr/share/doom2df/
 }
