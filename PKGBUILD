@@ -1,7 +1,7 @@
 # Maintainer:  kngfr <9bcfbc1ca230857ba09584697f20708a@kngfr.de>
 pkgname=phoneinfoga
 _reponame=PhoneInfoga
-pkgver=v1.10.9.r3.g65adcb8
+pkgver=v1.10.12.r7.gca80958
 pkgrel=1
 pkgdesc="Advanced information gathering & OSINT tool for phone numbers."
 arch=('any')
