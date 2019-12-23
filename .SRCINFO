@@ -1,6 +1,6 @@
 pkgbase = newbreeze-git
 	pkgdesc = A fast and light-weight file manager based on Qt
-	pkgver = v3.0.0.rc7.r5.ef2aaaf
+	pkgver = v3.0.0.rc7.r10.a617c93
 	pkgrel = 1
 	url = https://gitlab.com/marcusbritanicus/NewBreeze
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = newbreeze-git
 	depends = ffmpegthumbnailer
 	provides = newbreeze-git
 	conflicts = newbreeze-git
-	options = debug
 	source = git+https://gitlab.com/marcusbritanicus/NewBreeze.git
 	sha256sums = SKIP
 
