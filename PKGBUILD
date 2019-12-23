@@ -22,7 +22,7 @@ source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/e
         'thunderbird-beta-bin.desktop'
         'vendor.js')
 sha512sums=('351d1de7b8f30bad9dc4fde017dfbd3ab629f4769b613a3153ebcf68082e2776271b6bb268742f2dab65a37748f698788531fa3707f787bc338a71a7fe122b66'
-            'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
+            '5639d9808d543f151eebb5b79246dbac9c5a3f68a2e1fc28190da62867e02a07b96e8409e460ecb5398aab37ea4959d5eeb7d2fc592014779c3b6791a0b50b93'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
 if [[ $_build = ? ]]; then
