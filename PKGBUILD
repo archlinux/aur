@@ -1,7 +1,7 @@
-# Maintainer: Romain Bazile <gromain.baz at gmail dot com>
+# Maintainer: Daniel Plaza <daniel.plaza.espi at gmail dot com>
 
 pkgname=mcuxpresso-ide
-pkgver=11.0.1_2563
+pkgver=11.1.0_3209
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
@@ -10,10 +10,10 @@ url="http://www.nxp.com/MCUXPresso"
 license=('custom:"NXP"')
 depends=('dfu-util' 'libusb' 'ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation')
 
-source=("https://freescaleesd.flexnetoperations.com/337170/187/14904187/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
+source=("https://freescaleesd.flexnetoperations.com/337170/827/15347827/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('fe945229b6630048aedcdb0eab1aa638e63be36b28a98686038bd20cf4a7635d'
-            '7909288faa4c24a6857b97a4ed3dde4b53d2d25447f72f06034f8320d0586152')
+sha256sums=('190465a5ea22c159819a735c7d0ce48bf0e1cbaccf5d64dbf7fc3c8e0077a63e'
+            'ef741c2a9597bafb10f4d921d7b6c59b8cdcae2658aae8e3f1f3ddc6d4d04e68')
 options=('!strip')
 
 prepare() {
@@ -39,7 +39,7 @@ prepare() {
 package() {
     # Create folder for license file
     mkdir -p ${srcdir}/mcuxpressoide/usr/share/NXPLPCXpresso;
-    # Move main folder in place 
+    # Move main folder in place
     mv ${srcdir}/mcuxpressoide/usr ${pkgdir}/;
     # Move udev rules from /lib to /usr/lib folder
     mv ${srcdir}/mcuxpressoide/lib/udev ${pkgdir}/usr/lib/;

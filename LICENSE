@@ -1,4 +1,6 @@
-LA_OPT_TOOL Software Tools v14 January 2019
+LA_OPT_TOOL Software Tools v15 December 2019
+
+
 
 
 
@@ -120,13 +122,13 @@ This is a legal agreement between you, as an authorized representative of your e
 
 23.        NOTICES.             All notices and communications under this Agreement will be made in writing, and will be effective when received at the following addresses:
 
-        NXP:           NXP B.V.
+          NXP:          NXP B.V.
 
                             High Tech Campus 60
 
                             5656 AG Eindhoven
 
-                            The Netherlands
+                             The Netherlands
 
                     ATTN: Legal Department
 
@@ -150,79 +152,61 @@ Other License Grants and Restrictions:
 
 The Licensed Software may include some or all of the following software, which is either 1) not NXP proprietary software or 2) NXP proprietary software subject to different terms than those in the Agreement. If the Software Content Register that accompanies the Licensed Software identifies any of the following Third Party Software or specific components of the NXP Proprietary Software, the following terms apply to the extent they deviate from the terms in the Agreement:
 
+Amazon: Use of the Amazon software constitutes your acceptance of the terms of the Amazon Program Materials License Agreement (including the AVS Component Schedule, if applicable), located at https://developer.amazon.com/support/legal/pml.  All Amazon software is hereby designated "Amazon confidential".  Amazon is a third-party beneficiary to this Agreement with respect to the Amazon software.
+
 Amphion Semiconductor Ltd.: Distribution of Amphion software must be a part of, or embedded within, Authorized Systems that include an Amphion Video Decoder.
 
-
+Aquantia Corp.: You may use Aquantia's API binaries solely to flash the API software to an NXP Product which mates with an Aquantia device.
 
 Atheros: Use of Atheros software is limited to evaluation and demonstration only.  Permitted distributions must be similarly limited. Further rights must be obtained directly from Atheros.
 
-
-
 ATI (AMD): Distribution of ATI software must be a part of, or embedded within, Authorized Systems that include a ATI graphics processor core.
-
-
 
 Broadcom Corporation: Your use of Broadcom Corporation software is restricted to Authorized Systems that incorporate a compatible integrated circuit device manufactured or sold by Broadcom.
 
-
-
 Cadence Design Systems: Use of Cadence audio codec software is limited to distribution only of one copy per single NXP Product. The license granted herein to the Cadence Design Systems HiFi aacPlus Audio Decoder software does not include a license to the AAC family of technologies which you or your customer may need to obtain. Configuration tool outputs may only be distributed by licensees of the relevant Cadence SDK and distribution is limited to distribution of one copy embedded in a single NXP Product.
-
-
 
 Cirque Corporation: Use of Cirque Corporation technology is limited to evaluation, demonstration, or certification testing only. Permitted distributions must be similarly limited. Further rights, including but not limited to ANY commercial distribution rights, must be obtained directly from Cirque Corporation.
 
 Coding Technologies (Dolby Labs): Use of CTS software is limited to evaluation and demonstration only.  Permitted distributions must be similarly limited. Further rights must be obtained from Dolby Laboratories.
 
-
-
 CSR: Use of Cambridge Silicon Radio, Inc. ("CSR") software is limited to evaluation and demonstration only.  Permitted distributions must be similarly limited.  Further rights must be obtained directly from CSR.
+
+Crank: Use of Crank Software Inc. software is limited to evaluation and demonstration only. Permitted distributions must be similarly limited. Further rights must be obtained directly from Crank Software Inc.
+
+Cypress Semiconductor Corporation: WWD RTOS source code may only be used in accordance with the Cypress IOT Community License Agreement located at https://community.cypress.com/terms-and-conditions!input.jspa?displayOnly=true.
+
+Embedded Systems Academy GmbH (EmSA):  Any use of Micro CANopen Plus is subject to the acceptance of the license conditions described in the LICENSE.INFO file distributed with all example projects and in the documentation and the additional clause described below.
+
+Clause 1: Micro CANopen Plus may not be used for any competitive or comparative purpose, including the publication of any form of run time or compile time metric, without the express permission of EmSA.
 
 Future Technology Devices International Ltd.: Future Technology Devices International software must be used consistent with the terms found here: http://www.ftdichip.com/Drivers/FTDriverLicenceTerms.htm
 
 Global Locate (Broadcom Corporation): Use of Global Locate, Inc. software is limited to evaluation and demonstration only.  Permitted distributions must be similarly limited.  Further rights must be obtained from Global Locate.
 
-
-
-Microsoft: If the Licensed Software includes software owned by Microsoft Corporation ("Microsoft"), it is subject to the terms of your license with Microsoft (the "Microsoft Underlying Licensed Software") and as such, NXP grants no license to you, beyond evaluation and demonstration in connection with NXP processors, in the Microsoft Underlying Licensed Software.  You must separately obtain rights beyond evaluation and demonstration in connection with the Microsoft Underlying Licensed Software from Microsoft. Microsoft does not provide support services for the components provided to you through this Agreement.  If you have any questions or require technical assistance, please contact NXP.  Microsoft Corporation is a third party beneficiary to this Agreement with the right to enforce the terms of this Agreement.  TO THE MAXIMUM EXTENT PERMITTED BY LAW, MICROSOFT AND ITS AFFILIATES DISCLAIM ANY WARRANTIES FOR THE MICROSOFT UNDERLYING LICENSED SOFTWARE.  TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER MICROSOFT NOR ITS AFFILIATES WILL BE LIABLE, WHETHER IN CONTRACT, TORT, OR OTHERWISE, FOR ANY DIRECT, INCIDENTAL, SPECIAL, INDIRECT, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR ANY LOSS OF USE, LOSS OF TIME, INCONVENIENCE, COMMERCIAL LOSS, OR LOST PROFITS, SAVINGS, OR REVENUES, ARISING FROM THE FROM THE USE OF THE MICROSOFT UNDERLYING LICENSED SOFTWARE.
-
-
+Microsoft: Except for Microsoft PlayReady software, if the Licensed Software includes software owned by Microsoft Corporation ("Microsoft"), it is subject to the terms of your license with Microsoft (the "Microsoft Underlying Licensed Software") and as such, NXP grants no license to you, beyond evaluation and demonstration in connection with NXP processors, in the Microsoft Underlying Licensed Software.  You must separately obtain rights beyond evaluation and demonstration in connection with the Microsoft Underlying Licensed Software from Microsoft. Microsoft does not provide support services for the components provided to you through this Agreement.  If you have any questions or require technical assistance, please contact NXP.  Microsoft Corporation is a third party beneficiary to this Agreement with the right to enforce the terms of this Agreement.  TO THE MAXIMUM EXTENT PERMITTED BY LAW, MICROSOFT AND ITS AFFILIATES DISCLAIM ANY WARRANTIES FOR THE MICROSOFT UNDERLYING LICENSED SOFTWARE.  TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER MICROSOFT NOR ITS AFFILIATES WILL BE LIABLE, WHETHER IN CONTRACT, TORT, OR OTHERWISE, FOR ANY DIRECT, INCIDENTAL, SPECIAL, INDIRECT, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR ANY LOSS OF USE, LOSS OF TIME, INCONVENIENCE, COMMERCIAL LOSS, OR LOST PROFITS, SAVINGS, OR REVENUES, ARISING FROM THE FROM THE USE OF THE MICROSOFT UNDERLYING LICENSED SOFTWARE.  With respect to the Microsoft PlayReady software, you will have the license rights granted in Section 2, provided that you may not use the Microsoft PlayReady software unless you have entered into a Microsoft PlayReady Master Agreement and license directly with Microsoft.
 
 MindTree: Notwithstanding the terms contained in Section 2.3 (a), if the Licensed Software includes proprietary software of MindTree in source code format, Licensee may make modifications and create derivative works only to the extent necessary for debugging of the Licensed Software.
 
+MM SOLUTIONS AD:  Use of MM SOLUTIONS AEC (Auto Exposure Control) and AWB (Auto White Balance) software is limited to demonstration, testing, and evaluation only.  In no event may Licensee distribute or sublicense the MM SOLUTIONS software. Further rights must be obtained directly from MM SOLUTIONS.
 
-
-MM SOLUTIONS EAD:  Use of MM SOLUTIONS 2A (Auto Exposure and Auto White Balance) software is limited to evaluation and demonstration only.  Permitted distributions must be similarly limited. Further rights must be obtained directly from MM SOLUTIONS.MPEG LA: Use of MPEG LA audio or video codec technology is limited to evaluation and demonstration only. Permitted distributions must be similarly limited. Further rights must be obtained directly from MPEG LA.
-
-
+MPEG LA: Use of MPEG LA audio or video codec technology is limited to evaluation and demonstration only. Permitted distributions must be similarly limited. Further rights must be obtained directly from MPEG LA.
 
 MQX RTOS Code: MQX RTOS source code may not be re-distributed by any NXP Licensee under any circumstance, even by a signed written amendment to this Agreement.
 
-
-
 NXP Wireless Charging Library: License to the Software is limited to use in inductive coupling or wireless charging applications
 
-
-
 Opus: Use of Opus software must be consistent with the terms of the Opus license which can be found at: http://www.opus-codec.org/license/
-
-
 
 Oracle JRE (Java): The Oracle JRE must be used consistent with terms found here: http://java.com/license
 
 P&E Micro: P&E Software must be used consistent with the terms found here: http://www.pemicro.com/licenses/gdbserver/license_gdb.pdf
 
-Pro Design Electronic: Licensee may not modify, create derivative works based on, or copy the Pro Design software, documentation, hardware execution key or the accompanying materials.  Licensee shall not use Pro Design’s or any of its licensors names, logos or trademarks to market the Authorized System.  Only NXP customers and distributors are permitted to further redistribute the Pro Design software and only as part of an Authorized System which contains the Pro Design software.
-
-
+Pro Design Electronic: Licensee may not modify, create derivative works based on, or copy the Pro Design software, documentation, hardware execution key or the accompanying materials.  Licensee shall not use Pro Design's or any of its licensors names, logos or trademarks to market the Authorized System.  Only NXP customers and distributors are permitted to further redistribute the Pro Design software and only as part of an Authorized System which contains the Pro Design software.
 
 Qualcomm Atheros, Inc.: Notwithstanding anything in this Agreement, Qualcomm Atheros, Inc. Wi-Fi software must be used strictly in accordance with the Qualcomm Atheros, Inc. Technology License Agreement that accompanies such software.  Any other use is expressly prohibited.
 
-
-
 Real Networks - GStreamer Optimized Real Format Client Code implementation or OpenMax Optimized Real Format Client Code: Use of the GStreamer Optimized Real Format Client Code, or OpenMax Optimized Real Format Client code is restricted to applications in the automotive market.  Licensee must be a final manufacturer in good standing with a current license with Real Networks for the commercial use and distribution of products containing the GStreamer Optimized Real Format Client Code implementation or OpenMax Optimized Real Format Client Code
-
-
 
 Real Time Engineers Ltd.:  Any FreeRTOS source code, whether modified or in its original release form, or whether in whole or in part, can only be distributed by you under the terms of version 2 of the GNU General Public License plus this exception.  An independent module is a module which is not derived from or based on FreeRTOS.
 
@@ -232,11 +216,7 @@ As a special exception, the copyright holders of FreeRTOS give you permission to
 
 Clause 2:  FreeRTOS may not be used for any competitive or comparative purpose, including the publication of any form of run time or compile time metric, without the express permission of Real Time Engineers Ltd. (this is the norm within the industry and is intended to ensure information accuracy).
 
-
-
 RivieraWaves SAS (a member of the CEVA, Inc. family of companies): You may not use the RivieraWaves intellectual property licensed under this Agreement if you develop, market, and/or license products similar to such RivieraWaves intellectual property.  Such use constitutes a breach of this Agreement.  Any such use rights must be obtained directly from RivieraWaves.
-
-
 
 SanDisk Corporation: If the Licensed Software includes software developed by SanDisk Corporation ("SanDisk"), you must separately obtain the rights to reproduce and distribute this software in source code form from SanDisk.  Please follow these easy steps to obtain the license and software:
 
@@ -248,15 +228,9 @@ SanDisk Corporation: If the Licensed Software includes software developed by San
 
 You may only use the SanDisk Corporation Licensed Software on products compatible with a SanDisk Secure Digital Card.  You may not use the SanDisk Corporation Licensed Software on any memory device product.  SanDisk retains all rights to any modifications or derivative works to the SanDisk Corporation Licensed Software that you may create.
 
+SEGGER Microcontroller - emWin Software: Your use of SEGGER emWin software and components is restricted for development of NXP ARM7, ARM9, Cortex-M0, Cortex-M3, Cortex-M4, Cortex-M33, Cortex-M7, and Cortex-A7 based products only.
 
-
-SEGGER Microcontroller – emWin Software: Your use of SEGGER emWin software is restricted to NXP ARM7, ARM9, Cortex-M0, Cortex-M3, and Cortex-M4 based devices only.
-
-
-
-SEGGER Microcontroller – J-Link/J-Trace Software: Segger software must be used consistent with the terms found here: http://www.segger.com/jlink-software.html
-
-
+SEGGER Microcontroller - J-Link/J-Trace Software: Segger software must be used consistent with the terms found here: http://www.segger.com/jlink-software.html
 
 Synopsys/Target Compiler Technologies: Your use of the Synopsys/Target Compiler Technologies Licensed Software and related documentation is subject to the following:
 
@@ -268,13 +242,14 @@ Synopsys/Target Compiler Technologies: Your use of the Synopsys/Target Compiler 
 
 (4) The Licensed Software is not sub-licensable.
 
-
+TARA Systems: Use of TARA Systems GUI technology Embedded Wizard is limited to evaluation and demonstration only. Permitted distributions must be similarly limited. Further rights must be obtained directly from TARA Systems.
 
 Texas Instruments: Your use of Texas Instruments Inc. WiLink8 Licensed Software is restricted to NXP SoC based systems that include a compatible connectivity device manufactured by TI.
 
-
+TES Electronic Solutions Germany (TES):  TES 3D Surround View software and associated data and documentation may only be used for evaluation purposes and for demonstration to third parties in integrated form on a board package containing an NXP S32V234 device. Licensee may not distribute or sublicense the TES software. Your license to the TES software may be terminated at any time upon notice.
 
 Vivante: Distribution of Vivante software must be a part of, or embedded within, Authorized Systems that include a Vivante Graphics Processing Unit.
+
 
 
 The software you are about to download is subject to export control laws and regulations. By downloading this software, you agree that you will not knowingly, without prior written authorization from the competent government authorities, export or reexport - directly or indirectly - any software downloaded from this website to any prohibited destination, end-user, or end-use.
