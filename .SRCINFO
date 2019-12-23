@@ -1,6 +1,6 @@
 pkgbase = python2-xcaplib
 	pkgdesc = A python library for managing XML documents on XCAP server
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://download.ag-projects.com/XCAP
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python2-xcaplib
 	depends = python2-application
 	depends = python2-lxml
 	optdepends = bash-completion: for bash completion
-	source = http://download.ag-projects.com/XCAP/python-xcaplib-1.2.0.tar.gz
-	md5sums = 6139fda02fe66b9612384223054bb415
+	source = http://download.ag-projects.com/XCAP/python-xcaplib-1.2.1.tar.gz
+	md5sums = a7abe4456b81443659e420280076fd5c
 
 pkgname = python2-xcaplib
 

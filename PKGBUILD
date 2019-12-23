@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=python2-xcaplib
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A python library for managing XML documents on XCAP server"
 license=('custom:MIT')
@@ -34,4 +34,4 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('6139fda02fe66b9612384223054bb415')
+md5sums=('a7abe4456b81443659e420280076fd5c')
