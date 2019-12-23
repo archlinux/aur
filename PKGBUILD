@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/PySlurm/pyslurm"
 license=('GPL2')
 depends=('python' 'slurm-llnl')
-makedepends=('git' 'python-setuptools' 'cython' 'python-nose')
+makedepends=('git' 'python-setuptools' 'cython') #'python-nose')
 source=('git://github.com/PySlurm/pyslurm')
 md5sums=('SKIP')
 
