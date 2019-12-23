@@ -11,8 +11,8 @@ _build="$(echo "$pkgver" | awk -F \. '{print $4}')"
 _build="${_build//_/-}"
 # Specify BuildTools version explicitly (instead of using
 # 'lastSuccessfulBuild') to let makepkg detect when needs to download an update
-_buildtoolver=103
-pkgrel=1
+_buildtoolver=105
+pkgrel=2
 pkgdesc="CraftBukkit, Spigot, and vanilla Minecraft servers"
 arch=(any)
 url="https://www.spigotmc.org/"
@@ -34,15 +34,15 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "notify-shutdown.sh"
         "readme.md"
         "sysusers.conf")
-sha256sums=('67b989f24444c12c0417fa0e6c44ddd44d8bfa3b3811a61c1c7b586a592a8027'
+sha256sums=('298de870cb5400a0618bf6bdc6eefab347f3f2169f026509fd8adae82832d31d'
             '4ad26fa4df8c8f83e51b74bb0db4d78641a41fbad7c5e285b41493a6fd3019ac'
             '75677d50e67eae3aa3dd402b672ef9db7f3e34b626231b10ac8dbf04af23d6e5'
             '16d2281874c953eb94141994d5a4c4c31b0b3f7d51652ebdad1f2367fdeaea8c'
-            'ea0a2185d4e846ed964fac7b60ff2ef10a978cecce65604a5fb2e7ed42b612af'
+            'a835b1c96a731694628b8d3950edfc4171c75f711ecd7feef91f3d9b9eac4a73'
             '2b758beb056019daa92caf19a9d35f33ab2c90b4f422e5ab4f0791c72a3f7ed0'
             '492c06eb11f26d3eff6742b88f2024be85eff05cf80d57a691cd3420ebdcb26c'
             '8e0e95065746d0309b60bb253879cd040b9adf76666830c28121c9610bb1e499'
-            'd111d53bf0ec0579f48afb2775181861d60d704a45a8acf4575fcd95106cd102'
+            '04624c1188efb06e960503a4eec4f604114ff5ec11a63945e64ebfdb3b2c4dfb'
             'c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575')
 
 pkgver() {
@@ -55,7 +55,7 @@ pkgver() {
 
 build() {
   MAVEN_OPTS="-Dmaven.repo.local=$srcdir/m2/repository" \
-      java -jar "BuildTools-${_buildtoolver}.jar" --rev "$_build"
+      java -jar "BuildTools-${_buildtoolver}.jar" --rev "$_build" --compile craftbukkit,spigot
 }
 
 package() {

@@ -23,41 +23,30 @@ sudo usermod -a -G craftbukkit "$USER"
 # Now log out and back in (yes... a real log out)
 ```
 
+If you install *mcrcon*, you can use it via the `craftbukkit-mcrcon` wrapper to
+issue commands on the server.
+```
+craftbukkit-mcrcon icanhasbukkit
+```
+
+*mcrcon* also powers `craftbukkit-save`, which temporarily disables minecraft
+saving to disk which allows making a backup "snapshot" of game state. See
+`/usr/share/doc/craftbukkit-spigot/backup.sh` for a simple backup script.
+
 What does this package do?
 --------------------------
 
 This package installs 2 popular Minecraft servers and their tools:
-*craftbukkit* and *Spigot*. They can be used alternatively.
-
-### Craftbukkit ###
-Craftbukkit is a Minecraft server that implements the *Bukkit* API. Bukkit is a
-free, open-source, software project that provides the means to extend the
-popular Minecraft multiplayer server with plugins. The collection of plugins is
-huge and many of them are available in AUR.
-
-* [Bukkit Home Page](http://bukkit.org/)
-* [List of available Bukkit plugins](http://www.curse.com/bukkit-plugins/minecraft)
-
-### Spigot ###
-Spigot is just a modification of CraftBukkit, made more efficient. It is a huge
-collection of various tweaks to help increase performance, and make it more
-flexible as a server. Fortunately for you, this also means most CraftBukkit
-plugins are reverse-compatible with Spigot! Not only that, this project may
-also be the source of zero-day patches designed to fix critical issues before
-they are applied to the mainline CraftBukkit.
-
-* [Spigot Home Page](http://www.spigotmc.org/)
-
-**So you should try to run Spigot first and if you encounter compatibility
-issues with your plugins, you can fall back to using Craftbukkit**.
+vanilla *minecraft* and *spigot*. It also provides *craftbukkit*, which is
+provided for testing bugs to provide a more helpful bug report with Spigot.
 
 How to use it?
 --------------
-By default, `/srv/craftbukkit/` is used to run Minecraft and would hold the
-server configuration, maps, and logs. Users that belong to the group
-`craftbukkit` can manage the server.
+For historical reasons, `/srv/craftbukkit/` is the default directory used to
+run Minecraft and hold the server configuration, maps, and logs. Users that
+belong to the group `craftbukkit` can manage the server.
 
-Once you have run one of the servers for the first time (see below), review and
+Once you have run one of the servers for the first time, review and
 modify the content of `server.properties` to configure Minecraft to your
 liking. See [spigot's documentation](https://www.spigotmc.org/wiki/spigot-configuration-server-properties/)
 for details.
@@ -69,12 +58,11 @@ sudo systemctl start spigot
 ```
 or
 ```
-sudo systemctl start craftbukkit
+sudo systemctl start minecraft
 ```
 
-NOTE: Spigot and Craftbukkit can't be run simultaneously. if you try start one
-server while the other is already running, the one that is running will be shut
-down before the other one starts.
+NOTE: Spigot, and Craftbukkit, and vanilla Minecraft can't be run
+simultaneously.
 
 If you want the server to start automatically when the server boots up, use:
 ```
@@ -82,7 +70,7 @@ sudo systemctl enable spigot
 ```
 or
 ```
-sudo systemctl enable craftbukkit
+sudo systemctl enable minecraft
 ```
 
 ### Stopping the server ###
@@ -91,7 +79,7 @@ Depending on which server you are running, use:
 sudo systemctl stop spigot
 ```
 ```
-sudo systemctl stop craftbukkit
+sudo systemctl stop minecraft
 ```
 Players that are in game when the stop command is being issued will see a 10
 sec countdown in the chat before shutdown.
@@ -117,12 +105,6 @@ Once it is done you can restart the server.
 
 Additional notes
 ----------------
-This package is generated using Spigot build tools. These tools fetch the
-official Minecraft server, patches and modification files from their git
-repositories and assemble the modified servers on your machine locally. As no
-modified Minecraft server is being distributed, these build tools and this
-package are therefore not subject to the DMCA notice that has hit the
-craftbukkit "binary" packages.
 
 This package makes it easy to communicate with the server instance using
 *mcrcon*. Install the mcrcon package and then all valid bukkit commands can be
@@ -135,17 +117,6 @@ For example:
 craftbukkit-mcrcon "say Hello World!"
 ```
 Will display the text `[rcon] Hello World!` in the in-game chat.
-
-Finally, If nothing else works, a vanilla minecraft server is also provided as
-part of the package. It is managed in the same way as descibed above. The
-service is called `minecraft` and it can be started with:
-```
-sudo systemctl start minecraft
-```
-
-Note that backups may occasionally crash vanilla Minecraft, because of
-[MC-72390](https://bugs.mojang.com/browse/MC-72390). This does not impact the
-other servers (fixed via BUKKIT-2546).
 
 ### Shutting down server without mcrcon ###
 When shutting down your server without having mcrcon configured or installed,

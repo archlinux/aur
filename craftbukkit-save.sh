@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -eq 0 ]; then
-  echo <<EOF
+  cat <<EOF
 Usage: craftbukkit-save [-d DIR] COMMAND...
 Executes COMMAND with Minecraft's saving disabled
 
@@ -18,6 +18,7 @@ providing a consistent view of the Minecraft files. This allows a consistent
 backup (or "snapshot") to be made. Saving is automatically enabled when COMMAND
 completes.
 EOF
+  exit 1
 fi
 
 DIR=
