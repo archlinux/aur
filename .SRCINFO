@@ -1,6 +1,6 @@
 pkgbase = xde-ctools-git
 	pkgdesc = X Desktop Environment C-language tools
-	pkgver = 1.10.r16.g262687f
+	pkgver = 1.10.r18.ga19462b
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-ctools
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = xde-ctools-git
 	makedepends = git
 	makedepends = xorgproto
 	depends = libxss
-	depends = libxxf86misc
 	depends = libsm
 	depends = libwnck+-git
 	depends = libcanberra
