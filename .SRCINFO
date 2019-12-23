@@ -1,0 +1,23 @@
+pkgbase = ephemeral
+	pkgdesc = The always-incognito web browser. Browse the Internet in private without leaving a trace of history on your computer.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/cassidyjames/ephemeral
+	arch = x86_64
+	license = GPL3
+	depends = dconf
+	depends = desktop-file-utils
+	depends = glib2>=2.49.2
+	depends = granite>=5.2.3
+	depends = gtk3>=3.22.29
+	depends = hicolor-icon-theme
+	depends = libdazzle>=3.25.3
+	depends = libgee>=0.8.3
+	depends = libsoup>=2.32.2
+	depends = webkit2gtk>=2.15.4
+	conflicts = ephemeral-bin
+	source = git+https://github.com/cassidyjames/ephemeral
+	md5sums = SKIP
+
+pkgname = ephemeral
+
