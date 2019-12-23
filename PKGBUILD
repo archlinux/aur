@@ -1,8 +1,8 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=plex-media-player-git
-pkgver=r1252.30c4980
-pkgrel=2
+pkgver=r1302.e74d341
+pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,10 +11,8 @@ provides=('plex-media-player')
 conflicts=('plex-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git')
-source=('git+https://github.com/plexinc/plex-media-player.git'
-        'plex-media-player.desktop')
-sha256sums=('SKIP'
-            'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
+source=('git+https://github.com/plexinc/plex-media-player.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd plex-media-player
@@ -35,6 +33,6 @@ build() {
 package() {
   cd "${srcdir}/plex-media-player/build"
   DESTDIR="${pkgdir}" make install
-  install -Dm644 "${srcdir}/plex-media-player.desktop" "${pkgdir}/usr/share/applications/plex-media-player.desktop"
+  install -Dm644 ../resources/desktop/plexmediaplayer.desktop "${pkgdir}/usr/share/applications/plexmediaplayer.desktop"
   install -Dm644 ../resources/images/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/plex-media-player.png"
 }
