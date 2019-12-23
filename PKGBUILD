@@ -1,7 +1,7 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 _pkgname=p3wm
 pkgname=p3wm-git
-pkgver=0.1.0.r0.07e6feb # not used anyway
+pkgver=0.1.1.r0.54d0753 # not used anyway
 pkgrel=1
 pkgdesc="3-way merge .pacnew files"
 arch=('any')
