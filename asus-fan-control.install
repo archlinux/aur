@@ -8,9 +8,8 @@ EOF
     sudo asus-fan-control -get-temps
 
     cat <<EOF
-If your model is absent in /usr/share/asus-fan-control/default-temps, you are advised
-to use 'asus-fan-control -set-temps:' to adjust fan speeds prior to enabling a systemd service,
-last used custom temps are stored at /etc/asus-fan-control/custom-temps
+If your model is absent in /usr/share/asus-fan-control/default-temps, you are advised to
+use 'asus-fan-control -set-temps:' to adjust fan speeds prior to enabling a systemd service.
 
 To start asus-fan-control on boot:
 systemctl enable asus-fan-control
@@ -20,4 +19,7 @@ EOF
 pre_remove(){
     systemctl disable asus-fan-control
     echo 'You mihgt want to reboot your system to restore the default fan speed'
+    if [ -f /etc/asus-fan-control/custom-temps ]; then
+        echo "Run 'rm /etc/asus-fan-control/custom-temps' to remove your custom fan speed policy"
+    fi
 }
