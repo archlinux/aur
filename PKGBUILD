@@ -1,6 +1,6 @@
 # Maintainer: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=headsetcontrol-git
-pkgver=r51.fa08a8d
+pkgver=r86.3979f9b
 pkgrel=1
 pkgdesc="Sidetone support for Logitech G930, G430 and Corsair VOID (Pro) in Linux and MacOSX"
 arch=('x86_64')
