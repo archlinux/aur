@@ -1,12 +1,11 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
 pkgname=ucm-bin
 pkgver=M1g
-pkgrel=1
+pkgrel=2
 pkgdesc='Unison language code manager'
 arch=('x86_64')
 url='https://www.unisonweb.org'
 license=('custom')
-depends=('base')
 
 source=("ucm::https://github.com/unisonweb/unison/releases/download/release/$pkgver/unison-linux64.tar.gz"
         "https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
