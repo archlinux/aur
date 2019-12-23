@@ -1,13 +1,13 @@
 pkgbase = otf-arsenal
 	pkgdesc = Typesetting font with semi grotesque traditional Ukrainian forms
-	pkgver = 1.0
+	pkgver = VERSION
 	pkgrel = 1
-	url = http://www.ukrtype.com/home/
+	url = https://github.com/alexeiva/Arsenal
 	install = otf-arsenal.install
 	arch = any
 	license = custom:SIL Open Font License 1.1
-	source = otf-arsenal.zip::http://www.ukrtype.com/arsenal_font.zip
-	sha256sums = 2c6391dd23727b6730bf1cc96711bf0f36131fb4300d323f661a9bd21d5da47a
+	source = git+https://github.com/alexeiva/Arsenal.git
+	md5sums = SKIP
 
 pkgname = otf-arsenal
 
