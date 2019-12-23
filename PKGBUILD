@@ -1,5 +1,5 @@
 # Maintainer: Sam Simons <contact at sam-simons dot nl> )
-# (Based on brother-mfc-l2713dw package by Angus Gratton)
+# (Based on brother-hll2395dw package by Daniel Wyatt)
 pkgname=brother-mfc-l2730dw
 pkgver=4.0.0
 pkgrel=1
@@ -7,7 +7,7 @@ pkgdesc='Brother MFC-L2730DW printer driver'
 arch=('i686' 'x86_64')
 url='https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcl2730dw_us_eu_as'
 license=('GPL')
-depends=('cups' 'perl')
+depends=('cups' 'perl' 'ghostscript')
 source=(https://download.brother.com/welcome/dlf103527/mfcl2730dwpdrv-4.0.0-1.i386.rpm)
 sha256sums=('5c82b2c224a6651678ba77261ad4952dc876f633b4c05f86d115ca71358861af')
 
@@ -17,9 +17,6 @@ package() {
   cp -R "$srcdir/opt/brother" "$pkgdir/usr/share"
   sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/MFCL2730DW/cupswrapper/lpdwrapper"
   sed -i 's|\\\/opt\\\/|\\\/usr\\\/|' "$pkgdir/usr/share/brother/Printers/MFCL2730DW/lpd/lpdfilter"
-
-  # /etc/printcap is managed by cups
-  find "$pkgdir" -type f -name 'setupPrintcap*' -delete
 
   # symlink for lpdwrapper so it correctly figures out the printer model from the path
   install -d "$pkgdir/usr/lib/cups/filter/"
