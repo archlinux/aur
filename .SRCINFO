@@ -1,6 +1,6 @@
 pkgbase = protonvpn-cli
-	pkgdesc = ProtonVPN CLI tool for protonvpn.com
-	pkgver = 1562876722
+	pkgdesc = Legacy version of ProtonVPN CLI client. See protonvpn-cli-ng.
+	pkgver = 1577101765
 	pkgrel = 1
 	url = https://github.com/ProtonVPN/protonvpn-cli
 	arch = any
