@@ -1,0 +1,15 @@
+pkgbase = ruby-atlassian-jwt
+	pkgdesc = Encode and decode JWT tokens for use with the Atlassian Connect REST APIs.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://bitbucket.org/atlassian/atlassian-jwt-ruby
+	arch = any
+	depends = ruby
+	depends = ruby-jwt-2.1
+	noextract = atlassian-jwt-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/atlassian-jwt-0.2.0.gem
+	sha1sums = 4cf335015e0535fec48a1350d6b7988f52878ac0
+
+pkgname = ruby-atlassian-jwt
+
