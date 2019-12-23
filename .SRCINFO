@@ -1,14 +1,15 @@
 pkgbase = python-system_hotkey
 	pkgdesc = Python library for system wide hotkeys
-	pkgver = 1.0.2
+	pkgver = 1.0.2+10+9541587
 	pkgrel = 1
 	url = https://github.com/timeyyy/system_hotkey
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-xcffib
-	source = python-system_hotkey-1.0.2.tar.gz::https://github.com/timeyyy/system_hotkey/archive/1.0.2.tar.gz
-	sha256sums = 4d6e06bf359efecf4bea251e330c852f83b9150f503df28fd94239499f4ff606
+	source = python-system_hotkey::git+https://github.com/timeyyy/system_hotkey
+	sha256sums = SKIP
 
 pkgname = python-system_hotkey
 
