@@ -1,6 +1,6 @@
 pkgbase = asus-fan-control
 	pkgdesc = ACPI fan control for ASUS devices running Linux.
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/dominiksalvet/asus-fan-control
 	install = asus-fan-control.install
@@ -9,10 +9,8 @@ pkgbase = asus-fan-control
 	depends = acpi_call
 	depends = dmidecode
 	backup = etc/asus-fan-control/custom-temps
-	source = https://github.com/dominiksalvet/asus-fan-control/archive/2.10.0.tar.gz
-	source = asus-fan-control.service
-	md5sums = 29ba664e97e2b2e4cb6eda6e476a2247
-	md5sums = 2e119644e62cb2e0059af3f16afa7013
+	source = https://github.com/dominiksalvet/asus-fan-control/archive/2.11.0.tar.gz
+	md5sums = 2562408fb931266f0f906f7de68f9513
 
 pkgname = asus-fan-control
 
