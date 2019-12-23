@@ -1,5 +1,5 @@
 pkgbase = asus-fan-control
-	pkgdesc = ACPI fan control for ASUS devices running Linux.
+	pkgdesc = Fan control for ASUS devices running Linux.
 	pkgver = 2.11.0
 	pkgrel = 2
 	url = https://github.com/dominiksalvet/asus-fan-control

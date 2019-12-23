@@ -2,7 +2,7 @@
 pkgname=asus-fan-control
 pkgver=2.11.0
 pkgrel=2
-pkgdesc="ACPI fan control for ASUS devices running Linux."
+pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
 url="https://github.com/dominiksalvet/asus-fan-control"
 license=('MIT')
