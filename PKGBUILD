@@ -25,7 +25,7 @@ sha512sums=('48c64bdf53bc3575099b3b6bd74900068ac919090f4c79a83941ee920fb3bb59630
             '3e6089fae24cfb0bfb210e180427b525730f84b3cb64b5c57fe78e08fcb4292fcd60d15fba93bf9e7ef5c1692170de79cad23236e748308e4372266329140389')
 
 prepare() {
-	# Validate the signature against public key
+	# Validate the signature against public key: https://tutanota.com/howto/#verify-desktop
 	set -e
 	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin "${pkgname%-bin}-$pkgver.AppImage"
 	set +e
