@@ -1,0 +1,17 @@
+# create by https://github.com/iamcco/coc-gitignore (Mon Dec 23 2019 16:33:33 GMT-0500 (hora estándar de Perú))
+# ArchLinuxPackages.gitignore:
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+finite-galaxy-git/

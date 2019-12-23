@@ -1,0 +1,23 @@
+pkgbase = finite-galaxy-git
+	pkgdesc = A space exploration game, fork of Endless Sky
+	pkgver = r812.85a3dbb
+	pkgrel = 1
+	url = https://github.com/finite-galaxy/finite-galaxy
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = scons
+	depends = sdl2
+	depends = libjpeg-turbo
+	depends = libmad
+	depends = glew
+	depends = openal
+	depends = pango
+	depends = hicolor-icon-theme
+	provides = finite-galaxy
+	conflicts = finite-galaxy
+	source = finite-galaxy-git::git+https://github.com/finite-galaxy/finite-galaxy.git
+	md5sums = SKIP
+
+pkgname = finite-galaxy-git
+
