@@ -1,14 +1,14 @@
 pkgbase = python-tenableio
 	pkgdesc = Python library to easily integrate with the tenable.io API
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/tenable/Tenable.io-SDK-for-Python/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = Tenable.io-SDK-for-Python-1.10.0.tar.gz::https://github.com/tenable/Tenable.io-SDK-for-Python/archive/v1.10.0.tar.gz
-	sha512sums = a3f459e76b0d159c94a486f2f77d59d7355b409d01984ab629a0755bffa6f556dab996cd0b3cb982b8b874fa463281b96933e3da98c986eb9fee845c207da909
+	source = Tenable.io-SDK-for-Python-1.11.0.tar.gz::https://github.com/tenable/Tenable.io-SDK-for-Python/archive/v1.11.0.tar.gz
+	sha512sums = 4be83c7e6ca27649549f5fe87c06981b62d750a89219eda43d7a12f0ce154477ab78cb218f14c01ff6607a7d2c4005ae5c83bbcc50319631bc5d85107464a708
 
 pkgname = python-tenableio
 	depends = python
