@@ -1,19 +1,21 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=foobnix-git
-pkgver=3.1.r113.8ce2d8c2
+pkgver=3.1.r143.88804cc7
 pkgrel=1
-pkgdesc="Music player for Linux"
+pkgdesc="GTK+ music player"
 arch=('i686' 'x86_64')
 url="http://www.foobnix.com"
 license=('GPL3')
-depends=('python2-chardet' 'python2-cairo' 'python2-simplejson' 'python2-mutagen'
-		'gst-plugins-good' 'gst-plugins-base' 'gst-python2' 'webkitgtk' 'libkeybinder3' 'gettext'
-		'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'fuseiso' 'python2-notify' 'lame' 'faac'
-		'python2-keybinder2' 'ffmpeg' 'python2-dbus')
-makedepends=('python2-distutils-extra')
+depends=('python-chardet' 'python-simplejson' 'python-mutagen' 'gst-plugins-good'
+         'gst-plugins-base' 'gst-python' 'webkit2gtk' 'libkeybinder3' 'gst-plugins-bad'
+         'gst-plugins-ugly' 'gst-libav' 'fuseiso' 'libnotify' 'lame' 'faac'
+         'python3-keybinder' 'ffmpeg' 'python-dbus')
+makedepends=('git')
+optdepends=('python-pylast: Last.FM support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/foobnix/foobnix')
+source=('git+https://github.com/foobnix/foobnix.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,12 +23,7 @@ pkgver() {
 	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-build() {
-	cd "$srcdir/${pkgname%-git}"
-	python2 setup.py build
-}
-
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir/" --optimize=1
 }
