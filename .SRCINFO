@@ -1,12 +1,13 @@
 pkgbase = guile-ncurses
 	pkgdesc = Guile bindings for the ncurses library
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/guile-ncurses/
 	arch = x86_64
 	license = GPL3
 	license = LGPL3
 	depends = guile
+	depends = ncurses
 	source = ftp://ftp.gnu.org/gnu/guile-ncurses/guile-ncurses-3.0.tar.gz
 	source = ftp://ftp.gnu.org/gnu/guile-ncurses/guile-ncurses-3.0.tar.gz.sig
 	validpgpkeys = 7C378E20D1561BC9E9CB3A5454ADD17A8A1F7454
