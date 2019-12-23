@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://drill.software"
 license=('GPL2')
@@ -42,6 +42,6 @@ package_drill-search-gtk() {
 	install -Dm755 "$pkgname" -t "$pkgdir/opt/$pkgname"
 	install -Dm755 "$srcdir/$pkgbase" "$pkgdir/usr/bin/$pkgname"
 	echo "/opt/$pkgname/$pkgname" "\$@" >> "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 Assets/icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+	install -Dm644 Assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 }
