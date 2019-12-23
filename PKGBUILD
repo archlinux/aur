@@ -1,7 +1,7 @@
 # Maintainer: Pierre Penninckx <ibizapeanut@gmail.com>
 
 pkgname='pass-clip'
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='A pass extension that lets you quickly copy to clipboard passwords using fzf or rofi.'
 arch=('any')
