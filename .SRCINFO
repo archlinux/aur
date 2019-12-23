@@ -1,0 +1,16 @@
+pkgbase = gtk-recordmydesktop
+	pkgdesc = A pygtk frontend for recordmydesktop
+	pkgver = 0.3.8
+	pkgrel = 9
+	url = http://recordmydesktop.sourceforge.net
+	arch = any
+	license = GPL
+	depends = pygtk>=2.10
+	depends = recordmydesktop>=0.3.8.1
+	depends = xorg-xwininfo
+	depends = python2
+	source = https://downloads.sourceforge.net/sourceforge/recordmydesktop/gtk-recordmydesktop-0.3.8.tar.gz
+	sha256sums = 61ad43a6e4f0bf86d8553f03297e4b1b137b47337fa150ce1da8c24494ca8326
+
+pkgname = gtk-recordmydesktop
+
