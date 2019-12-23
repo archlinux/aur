@@ -1,6 +1,6 @@
 diff -rupN actiona-3.10.0/actiona.pro actiona-3.10.0b/actiona.pro
 --- actiona-3.10.0/actiona.pro	2018-07-17 14:29:12.000000000 -0400
-+++ actiona-3.10.0b/actiona.pro	2018-12-01 18:13:46.093993934 -0500
++++ actiona-3.10.0b/actiona.pro	2019-12-23 09:13:50.937843430 -0500
 @@ -1,21 +1,6 @@
  TEMPLATE = subdirs
  CONFIG = ordered
@@ -25,7 +25,7 @@ diff -rupN actiona-3.10.0/actiona.pro actiona-3.10.0b/actiona.pro
  contains(DEFINES, ACT_NO_UPDATER){
 diff -rupN actiona-3.10.0/actiontools/actiontools.pro actiona-3.10.0b/actiontools/actiontools.pro
 --- actiona-3.10.0/actiontools/actiontools.pro	2018-07-17 14:29:12.000000000 -0400
-+++ actiona-3.10.0b/actiontools/actiontools.pro	2018-12-01 18:14:31.113647152 -0500
++++ actiona-3.10.0b/actiontools/actiontools.pro	2019-12-23 09:13:50.961176893 -0500
 @@ -6,7 +6,7 @@ unix:QT += x11extras
  TEMPLATE = lib
  CONFIG += dll
@@ -35,9 +35,20 @@ diff -rupN actiona-3.10.0/actiontools/actiontools.pro actiona-3.10.0b/actiontool
  DEFINES += ACTIONTOOLS_LIBRARY
  TARGET = actiontools
  DESTDIR = ..
+diff -rupN actiona-3.10.0/actiontools/keyboardkeyedit.cpp actiona-3.10.0b/actiontools/keyboardkeyedit.cpp
+--- actiona-3.10.0/actiontools/keyboardkeyedit.cpp	2018-07-17 14:29:12.000000000 -0400
++++ actiona-3.10.0b/actiontools/keyboardkeyedit.cpp	2019-12-23 09:13:50.957843541 -0500
+@@ -19,6 +19,7 @@
+ */
+ 
+ #include "keyboardkeyedit.h"
++#include <QKeyEvent>
+ 
+ namespace ActionTools
+ {
 diff -rupN actiona-3.10.0/actiontools/opencvalgorithms.cpp actiona-3.10.0b/actiontools/opencvalgorithms.cpp
 --- actiona-3.10.0/actiontools/opencvalgorithms.cpp	2018-07-17 14:29:12.000000000 -0400
-+++ actiona-3.10.0b/actiontools/opencvalgorithms.cpp	2018-12-01 18:17:54.966178080 -0500
++++ actiona-3.10.0b/actiontools/opencvalgorithms.cpp	2019-12-23 09:13:50.947843486 -0500
 @@ -350,7 +350,7 @@ namespace ActionTools
  
  #if CV_MAJOR_VERSION == 2
@@ -90,7 +101,7 @@ diff -rupN actiona-3.10.0/actiontools/opencvalgorithms.cpp actiona-3.10.0b/actio
  }
 diff -rupN actiona-3.10.0/actiontools/opencvalgorithms_private.h actiona-3.10.0b/actiontools/opencvalgorithms_private.h
 --- actiona-3.10.0/actiontools/opencvalgorithms_private.h	2018-07-17 14:29:12.000000000 -0400
-+++ actiona-3.10.0b/actiontools/opencvalgorithms_private.h	2018-12-01 18:18:40.094024935 -0500
++++ actiona-3.10.0b/actiontools/opencvalgorithms_private.h	2019-12-23 09:13:50.957843541 -0500
 @@ -33,7 +33,7 @@ namespace cv
  }
  
@@ -102,7 +113,7 @@ diff -rupN actiona-3.10.0/actiontools/opencvalgorithms_private.h actiona-3.10.0b
      class UMat;
 diff -rupN actiona-3.10.0/common.pri actiona-3.10.0b/common.pri
 --- actiona-3.10.0/common.pri	2018-07-17 14:29:12.000000000 -0400
-+++ actiona-3.10.0b/common.pri	2018-12-01 18:20:22.893901846 -0500
++++ actiona-3.10.0b/common.pri	2019-12-23 09:13:50.937843430 -0500
 @@ -11,6 +11,24 @@ if(!isEmpty(VERSION_OVERRIDE)) {
      ACTIONA_VERSION = $$VERSION_OVERRIDE
  }

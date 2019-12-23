@@ -1,7 +1,7 @@
 pkgbase = actiona
 	pkgdesc = A task automation tool that allows you to create and execute action lists
 	pkgver = 3.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.actiona.tools
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = actiona
 	source = https://github.com/Jmgr/actiona/archive/v3.10.0.tar.gz
 	source = actiona.patch
 	sha256sums = 7f7a6ecef82ec51fc5d92e41a9d39d1de190135b1fb6293318feb1d88ceb8757
-	sha256sums = f359c8457947fb248d95bae8dd2dd59feaa01aa29b7b778963bc0dc1c7fd963f
+	sha256sums = 92b1368978b1feb0620095a21b95737d93839ff4bf5f97ec2f1c2b2a1ab4f5ea
 
 pkgname = actiona
 
