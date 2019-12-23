@@ -1,7 +1,7 @@
 pkgbase = spflashtool-noqtdeps
 	pkgdesc = SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone. (no qt dependencies)
 	pkgver = 5.1944
-	pkgrel = 3
+	pkgrel = 4
 	url = https://spflashtools.com/category/linux
 	arch = x86_64
 	license = unknown

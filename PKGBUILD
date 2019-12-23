@@ -1,7 +1,7 @@
 pkgname=spflashtool-noqtdeps
 _pkgname=spflashtool
 pkgver="5.1944"
-pkgrel=3
+pkgrel=4
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone. (no qt dependencies)"
 arch=('x86_64')
 url="https://spflashtools.com/category/linux"
@@ -58,7 +58,6 @@ export LD_LIBRARY_PATH
 	install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-	# Udev rule
-	install -Dm644 "${pkgdir}/opt/${_pkgname}/99-ttyacms.rules" "${pkgdir}/usr/lib/udev/rules.d/99-ttyacms.rules"
+	# Remove udev rule (package modemmanager contains this rule)
 	rm "${pkgdir}/opt/${_pkgname}/99-ttyacms.rules"
 }
