@@ -5,9 +5,10 @@ After=bluetooth.service
 
 [Service]
 Type=simple
+EnvironmentFile=/etc/conf.d/bluealsa
 #User=bluealsa
 #Group=audio
-ExecStart=/usr/bin/bluealsa
+ExecStart=/usr/bin/bluealsa $BLUEALSA_CONF
 
 [Install]
 WantedBy=multi-user.target
