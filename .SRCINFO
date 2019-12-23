@@ -7,6 +7,7 @@ pkgbase = googleplaymusic
 	license = GPL
 	makedepends = npm
 	makedepends = git
+	makedepends = unzip
 	depends = nss
 	depends = gtk3
 	depends = libxss
