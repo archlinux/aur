@@ -13,9 +13,6 @@ https://github.com/grocy/grocy/releases/download/v${pkgver}/grocy_${pkgver}.zip
 )
 sha256sums=('0ed19000e0825788ec55f9b948d8990c412c38caaa8da59567b2b592868453b8')
 
-optdepends=('apache: a supported application server'
-            'nginx: a supported application server'
-)
 backup=('etc/webapps/grocy/config.php')
 
 package() {
