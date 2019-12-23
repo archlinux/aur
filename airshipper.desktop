@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Airshipper
+Comment=Official launcher for Veloren - the open-world, open-source multiplayer voxel RPG
+Exec=veloren
+Categories=Game
+Keywords=veloren
+Icon=veloren.png
+Terminal=true
