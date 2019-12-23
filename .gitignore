@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/conda-*.tar.gz
+*.pkg.tar.*
