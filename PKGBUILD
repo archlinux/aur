@@ -3,18 +3,19 @@
 # Contributor: Glaucous <glakke1 at gmail dot com>
 
 pkgname=lib32-apitrace
-pkgver=8.0
+pkgver=9.0
 pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
 url="https://github.com/apitrace/apitrace"
 license=('custom')
-makedepends=('cmake' 'lib32-mesa-libgl' 'lib32-procps-ng' 'python2' 'gcc-multilib')
+depends=('python' 'lib32-libgl' 'lib32-procps-ng' 'apitrace')
+makedepends=('cmake' 'gcc-multilib')
 source=("apitrace-$pkgver.tar.gz::https://github.com/apitrace/apitrace/archive/${pkgver}.tar.gz")
-sha256sums=('45f61fb4859606ee54ebfd7dd8a4dedce18b9fe8a2523bbd23526bd9413b6b6c')
+sha256sums=('0eec81ba7d3799622336319785465a2982a0621898842517a07894d7e2aa18eb')
 
 build() {
-  cd "${srcdir}/apitrace-${pkgver}"
+  cd apitrace-${pkgver}
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -26,9 +27,7 @@ build() {
 }
 
 package() {
-  depends=('python2' 'lib32-libgl' 'lib32-procps-ng' 'apitrace')
-
-  cd "${srcdir}/apitrace-${pkgver}"
+  cd apitrace-${pkgver}
   
   make  -C build DESTDIR="${pkgdir}/" install
 
