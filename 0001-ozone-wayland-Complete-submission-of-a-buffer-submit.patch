@@ -1,0 +1,173 @@
+Upstream-Status: Backport
+
+Backported from https://crrev.com/c/1946479
+
+Signed-off-by: Maksim Sisov <msisov@igalia.com>
+---
+From 4c9a7209005ee6c134692932d4c6d784d48ada34 Mon Sep 17 00:00:00 2001
+From: Maksim Sisov <msisov@igalia.com>
+Date: Tue, 3 Dec 2019 08:23:42 +0000
+Subject: [PATCH] ozone/wayland: Complete submission of a buffer submitted more
+ than once
+
+This CL fixes a corner use case that was caught by one of the users
+of Ozone/Wayland.
+
+The problem appeared when the Chromium compositor sent a next frame into
+the same buffer that had just been submitted and a OnSubmission callback
+had been sent to the viz process located WaylandBufferManager. This
+happened only when the remote inspector was attached and the screencast
+was enabled.
+
+In this case, Wayland compositor will not send an OnRelease callback
+and we should not wait for that. Instead, we must complete the
+submission immediately and set the |WaylandBuffer::released|
+member to be false. Once another buffer is committed, Wayland compositor
+will release the previous buffer.
+
+Bug: 1029777
+Change-Id: Ib74c16f41f128298998bc9699f8d9ded3697cd43
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1946479
+Commit-Queue: Maksim Sisov <msisov@igalia.com>
+Reviewed-by: Robert Kroeger <rjkroege@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#720878}
+---
+ .../host/wayland_buffer_manager_host.cc       | 22 ++++--
+ .../wayland_buffer_manager_unittest.cc        | 78 +++++++++++++++++++
+ 2 files changed, 95 insertions(+), 5 deletions(-)
+
+diff --git a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
+index f360f916cae7..c7fc7094475a 100644
+--- a/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
++++ b/ui/ozone/platform/wayland/host/wayland_buffer_manager_host.cc
+@@ -231,13 +231,20 @@ class WaylandBufferManagerHost::Surface {
+     DCHECK(buffer);
+     DCHECK(!pending_buffer_);
+ 
+-    // Once the BufferRelease is called, the buffer will be released.
+-    DCHECK(buffer->released);
+-    buffer->released = false;
+-
+     DCHECK(!submitted_buffer_);
+     submitted_buffer_ = buffer;
+ 
++    // if the same buffer has been submitted again right after the client
++    // received OnSubmission for that buffer, just verify that the buffer has
++    // not been released by Wayland compositor, which is correct.
++    if (prev_submitted_buffer_ != submitted_buffer_) {
++      // Once the BufferRelease is called, the buffer will be released.
++      DCHECK(buffer->released);
++      buffer->released = false;
++    } else {
++      DCHECK(!buffer->released);
++    }
++
+     AttachAndDamageBuffer(buffer);
+ 
+     SetupFrameCallback();
+@@ -258,7 +265,12 @@ class WaylandBufferManagerHost::Surface {
+     // If it was the very first frame, the surface has not had a back buffer
+     // before, and Wayland won't release the front buffer until next buffer is
+     // attached. Thus, notify about successful submission immediately.
+-    if (!prev_submitted_buffer_)
++    //
++    // As said above, if the client submits the same buffer again, we must
++    // notify the client about the submission immediately as Wayland compositor
++    // is not going to send a release callback for a buffer committed more than
++    // once.
++    if (!prev_submitted_buffer_ || prev_submitted_buffer_ == submitted_buffer_)
+       CompleteSubmission();
+ 
+     return true;
+diff --git a/ui/ozone/platform/wayland/wayland_buffer_manager_unittest.cc b/ui/ozone/platform/wayland/wayland_buffer_manager_unittest.cc
+index 3908e2af629c..012e40f5a75a 100644
+--- a/ui/ozone/platform/wayland/wayland_buffer_manager_unittest.cc
++++ b/ui/ozone/platform/wayland/wayland_buffer_manager_unittest.cc
+@@ -477,6 +477,84 @@ TEST_P(WaylandBufferManagerTest, TestCommitBufferConditions) {
+   Sync();
+ }
+ 
++// This test verifies that submitting the buffer more than once results in
++// OnSubmission callback as Wayland compositor is not supposed to release the
++// buffer committed twice.
++TEST_P(WaylandBufferManagerTest, SubmitSameBufferMultipleTimes) {
++  constexpr uint32_t kBufferId1 = 1;
++  constexpr uint32_t kBufferId2 = 2;
++
++  const gfx::AcceleratedWidget widget = window_->GetWidget();
++  const gfx::Rect bounds = window_->GetBounds();
++
++  MockSurfaceGpu mock_surface_gpu(buffer_manager_gpu_.get(), widget);
++
++  auto* linux_dmabuf = server_.zwp_linux_dmabuf_v1();
++  EXPECT_CALL(*linux_dmabuf, CreateParams(_, _, _)).Times(2);
++  CreateDmabufBasedBufferAndSetTerminateExpecation(false /*fail*/, kBufferId1);
++  CreateDmabufBasedBufferAndSetTerminateExpecation(false /*fail*/, kBufferId2);
++
++  Sync();
++
++  ProcessCreatedBufferResourcesWithExpectation(2u /* expected size */,
++                                               false /* fail */);
++
++  // All the other expectations must come in order.
++  ::testing::InSequence sequence;
++  EXPECT_CALL(mock_surface_gpu,
++              OnSubmission(kBufferId1, gfx::SwapResult::SWAP_ACK))
++      .Times(1);
++  ASSERT_TRUE(!connection_->presentation());
++  EXPECT_CALL(mock_surface_gpu, OnPresentation(kBufferId1, _)).Times(1);
++
++  buffer_manager_gpu_->CommitBuffer(widget, kBufferId1, bounds);
++
++  Sync();
++
++  testing::Mock::VerifyAndClearExpectations(&mock_surface_gpu);
++
++  auto* mock_surface = server_.GetObject<wl::MockSurface>(widget);
++  mock_surface->SendFrameCallback();
++
++  Sync();
++
++  // Commit second buffer now.
++  buffer_manager_gpu_->CommitBuffer(widget, kBufferId2, bounds);
++
++  Sync();
++
++  EXPECT_CALL(mock_surface_gpu,
++              OnSubmission(kBufferId2, gfx::SwapResult::SWAP_ACK))
++      .Times(1);
++  EXPECT_CALL(mock_surface_gpu, OnPresentation(kBufferId2, _)).Times(1);
++
++  mock_surface->ReleasePrevAttachedBuffer();
++  mock_surface->SendFrameCallback();
++
++  Sync();
++
++  testing::Mock::VerifyAndClearExpectations(&mock_surface_gpu);
++
++  // Now, commit the buffer with the |kBufferId2| again and make sure the
++  // manager manually sends the submission callback as long as the compositor is
++  // not going to release a buffer as it was the same buffer submitted more than
++  // once.
++  EXPECT_CALL(mock_surface_gpu,
++              OnSubmission(kBufferId2, gfx::SwapResult::SWAP_ACK))
++      .Times(1);
++  EXPECT_CALL(mock_surface_gpu, OnPresentation(kBufferId2, _)).Times(1);
++
++  // Commit second buffer now.
++  buffer_manager_gpu_->CommitBuffer(widget, kBufferId2, bounds);
++
++  Sync();
++
++  testing::Mock::VerifyAndClearExpectations(&mock_surface_gpu);
++
++  DestroyBufferAndSetTerminateExpectation(widget, kBufferId1, false /*fail*/);
++  DestroyBufferAndSetTerminateExpectation(widget, kBufferId2, false /*fail*/);
++}
++
+ INSTANTIATE_TEST_SUITE_P(XdgVersionV5Test,
+                          WaylandBufferManagerTest,
+                          ::testing::Values(kXdgShellV5));
+-- 
+2.20.1
+

@@ -5,10 +5,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=78.0.3904.108
+pkgver=79.0.3945.117
 pkgrel=1
 _launcher_ver=6
-_meta_browser_sha=34ef417cdcf848839b59c086be046c2b4a96ac32
 pkgdesc="Chromium built with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -23,32 +22,34 @@ makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
             'kdialog: needed for file dialogs in KDE'
-            'gnome-keyring: for storing passwords in GNOME keyring'
-            'kwallet: for storing passwords in KWallet')
+            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
+            'kwallet: for storing passwords in KWallet on KDE desktops')
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        meta-browser-${_meta_browser_sha}.tar.gz::https://github.com/OSSystems/meta-browser/archive/${_meta_browser_sha}.tar.gz
-        add-missing-include-for-unique_ptr.patch
-        dns_util-make-DohUpgradeEntry-non-const.patch
-        fix-shutdown-crash-in-ProfileManager.patch
+        launch_manager.h-uses-std-vector.patch
+        include-algorithm-to-use-std-lower_bound.patch
+        0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
+        0001-ozone-wayland-Complete-submission-of-a-buffer-submit.patch
         icu65.patch
         chromium-system-icu.patch
         chromium-system-zlib.patch
+        chromium-system-hb.patch
         fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('f9c53839f306d2973de27723360024f7904101d426b9e7e9cdb56e8bcc775b0e'
+sha256sums=('4d960e8bd790cc1c8e7f0632790424957c4996a8a91b9d899eb572acec854ef1'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '892026717ac487e1a92073d7a363a7f4a12b06ed6ac61825842ad734eda857d7'
-            '49052e8aa630c4aa57bf46823edc32b7b309493275163c3bb3f9fd390c73356e'
-            '69694ab12a5ced389916c0c5e8c7bdc191544f576b134ddfb2fe9d4ed9ec4494'
-            '4f81612c28957987f7344d8ce2b95a4a63136a8319c9751819436b11c62df057'
+            'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
+            '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
+            '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
+            '9e9e5c66d4555c787736c5d5d5fcef8b5e14d913b138041c9c90d1976ee46845'
             '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
             'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
             'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
+            'c0ad3fa426cb8fc1a237ddc6309a6b2dd4055bbe41dd07f50071ee61f969b81a'
             '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
-            'd081f2ef8793544685aad35dea75a7e6264a2cb987ff3541e6377f4a3650a28b'
+            '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -86,14 +87,14 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-_mb_general_patches=()
+# Branch point: 706915
+# Extra commits related specifically to wayland support:
 
-_mb_wayland_patches=(
-  # 'V4L2/0001-Add-support-for-V4L2VDA-on-Linux.patch'
-  # 'V4L2/0002-Add-mmap-via-libv4l-to-generic_v4l2_device.patch'
+# These consist of the above commits and their dependencies
+# generated with `git-deps -r -e <release tag> <commit>^! ...` (in reverse order)
+_bugfix_patches=(
+  '0001-ozone-wayland-Complete-submission-of-a-buffer-submit.patch'
 )
-
-_bugfix_patches=()
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -108,43 +109,28 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # Missing include in third_party/blink/public/platform/web_rtc_rtp_source.h
-  patch -Np1 -i ../add-missing-include-for-unique_ptr.patch
+  # https://crbug.com/819294
+  patch -Np1 -i ../launch_manager.h-uses-std-vector.patch
+  patch -Np1 -i ../include-algorithm-to-use-std-lower_bound.patch
+  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
 
-  # https://crbug.com/957519#c23
-  patch -Np1 -i ../dns_util-make-DohUpgradeEntry-non-const.patch
-
-  # https://crbug.com/1005244
-  patch -Np1 -i ../fix-shutdown-crash-in-ProfileManager.patch
-  
   # https://crbug.com/1014272
   patch -Np1 -i ../icu65.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-icu.patch
   patch -Np1 -i ../chromium-system-zlib.patch
+  patch -Np1 -i ../chromium-system-hb.patch
 
   # https://crbug.com/1005508
   patch -Np1 -i ../fix-spammy-unique-font-matching-log.patch
 
-  # Load Widevine CDM if available
+  # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
+  # M79 is supposed to download it as a component but it doesn't seem to work
   patch -Np1 -i ../chromium-widevine.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
-
-  # chromium-ozone-wayland
-  for PATCH in ${_mb_general_patches[@]}
-  do
-    echo "Applying $PATCH"
-    patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/files/${PATCH}
-  done
-
-  for PATCH in ${_mb_wayland_patches[@]}
-  do
-    echo "Applying $PATCH"
-    patch -Np1 -i $srcdir/meta-browser-${_meta_browser_sha}/recipes-browser/chromium/chromium-ozone-wayland/${PATCH}
-  done
 
   for PATCH in ${_bugfix_patches[@]}
   do
@@ -200,11 +186,12 @@ build() {
     'ozone_platform_x11=true'
     'ozone_auto_platforms=false'
     'use_xkbcommon=true'
+    'use_glib=true'
     'use_system_libwayland=true'
     'use_system_minigbm=true'
     'use_system_libdrm=true'
     'use_vaapi=false'
-    'use_jumbo_build=true'
+    'use_jumbo_build=false'
     'enable_nacl=false'
     'enable_swiftshader=false'
     "google_api_key=\"${_google_api_key}\""
@@ -216,6 +203,10 @@ build() {
     # Avoid falling back to preprocessor mode when sources contain time macros
     export CCACHE_SLOPPINESS=time_macros
     _flags+=('cc_wrapper="ccache"')
+  fi
+
+  if [[ -n ${_system_libs[icu]+set} ]]; then
+    _flags+=('icu_use_data_file=false')
   fi
 
   if check_option strip y; then
