@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python2-chardet' 'python2-simplejson' 'python2-mutagen' 'gst-plugins-good'
          'gst-plugins-base' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-libav' 'gst-python2'
          'webkitgtk' 'libkeybinder3' 'fuseiso' 'python2-notify' 'python2-keybinder2' 'lame'
-         'faac''ffmpeg' 'python2-dbus')
+         'faac' 'ffmpeg' 'python2-dbus')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('a4fb20d1a015eeb07fe7611c577aea7290e71e4eff10f6e458d8c987353f97dd')
 
