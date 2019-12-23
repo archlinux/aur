@@ -1,23 +1,26 @@
 # Maintainer: Renat Nasridinov <mavladi@gmail.com>
 
 pkgname=otf-arsenal
-pkgver=1.0
+_gitname=Arsenal
+pkgver=VERSION
 pkgrel=1
 pkgdesc="Typesetting font with semi grotesque traditional Ukrainian forms"
 arch=('any')
-url="http://www.ukrtype.com/home/"
+url="https://github.com/alexeiva/Arsenal"
 license=('custom:SIL Open Font License 1.1')
 install=otf-arsenal.install
-source=($pkgname.zip::http://www.ukrtype.com/arsenal_font.zip)
-sha256sums=('2c6391dd23727b6730bf1cc96711bf0f36131fb4300d323f661a9bd21d5da47a')
+source=("git+https://github.com/alexeiva/Arsenal.git")
+md5sums=('SKIP')
 
-build() {
-  true
+pkgver() {
+  cd "$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   install -d "${pkgdir}/usr/share/fonts/OTF"
-  install -m644 ${srcdir}/arsenal_font/*.otf "${pkgdir}/usr/share/fonts/OTF"
+  install -m644 "$srcdir/$_gitname"/fonts/otf/*.otf "${pkgdir}/usr/share/fonts/OTF/"
   cd ..
-  install -D -m644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/usr/share/doc/${_gitname}/"
+  install -D -m644 "$srcdir/$_gitname"/README.md "$pkgdir/usr/share/doc/${_gitname}/"
 }
