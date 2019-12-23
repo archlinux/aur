@@ -1,17 +1,17 @@
 pkgbase = python-pyinstrument
 	pkgdesc = Call stack profiler for Python. Shows you why your code is slow!
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://github.com/joerick/pyinstrument
 	arch = any
 	license = BSD
 	makedepends = npm
 	makedepends = python-pytest-runner
 	makedepends = python-setuptools
-	depends = python-pyinstrument_cext>=0.2.0
+	depends = python-pyinstrument_cext>=0.2.2
 	options = !emptydirs
-	source = https://github.com/joerick/pyinstrument/archive/v3.0.0.tar.gz
-	sha256sums = 72dc0fa9072547cb054fd60fa2dc180294847521198f476ddd85b875b799b821
+	source = https://github.com/joerick/pyinstrument/archive/v3.1.1.tar.gz
+	sha256sums = 19aefd4666371b349326a52717be4d0bc6ce8f0030d414da13deee703f60df4d
 
 pkgname = python-pyinstrument
 
