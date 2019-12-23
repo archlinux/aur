@@ -16,7 +16,10 @@ depends=(
   'sed'
   'tar'
 )
-optdepends=('vim: default merge tool')
+optdepends=(
+  'meld: default merge tool'
+  'vim: default merge tool'
+)
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
