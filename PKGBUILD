@@ -13,6 +13,7 @@ conflicts=("cmake>=$_cmakegooduntil") # the Modules dir changes every major rele
 url='https://github.com/sakra/cotire'
 source=("https://github.com/sakra/cotire/archive/$pkgname-$_cotirever.tar.gz")
 md5sums=('1631c36ac920eb95944db9188068fccb')
+install=cotire.install
 
 package() {
   cd "$pkgname-$pkgname-$_cotirever"

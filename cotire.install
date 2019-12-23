@@ -1,0 +1,3 @@
+post_upgrade() {
+	printf "cotire has been \033[33;1mdiscontinued\033[0m in favor of buitin CMake 3.16 features regarding PCH and unity build, see https://github.com/sakra/cotire#cotire"
+}
