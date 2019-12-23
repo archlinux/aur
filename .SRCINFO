@@ -1,10 +1,12 @@
 pkgbase = ephemeral-git
 	pkgdesc = The always-incognito web browser. Browse the Internet in private without leaving a trace of history on your computer.
-	pkgver = git
+	pkgver = 6.1.1.r2.d5d701e
 	pkgrel = 1
 	url = https://github.com/cassidyjames/ephemeral
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	makedepends = meson
 	depends = dconf
 	depends = desktop-file-utils
 	depends = glib2>=2.49.2
