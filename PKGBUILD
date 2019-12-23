@@ -3,7 +3,7 @@
 # Contributor: dpeukert
 _gitname=marktext
 pkgname=marktext-git
-pkgver=r1199.e5dc8f15
+pkgver=r1356.23435ce6
 pkgrel=1
 pkgdesc='Next generation markdown editor'
 arch=('x86_64')
@@ -25,13 +25,12 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-    yarn upgrade # temporary: we need node-gyp >= 5.0.5
     yarn install
 }
 
 build() {
     cd "${srcdir}/${_gitname}"
-    yarn run build
+    yarn run build:bin
 }
 
 package() {
