@@ -1,6 +1,6 @@
 pkgbase = otf-arsenal
 	pkgdesc = Typesetting font with semi grotesque traditional Ukrainian forms
-	pkgver = VERSION
+	pkgver = r33.e34db56
 	pkgrel = 1
 	url = https://github.com/alexeiva/Arsenal
 	install = otf-arsenal.install
