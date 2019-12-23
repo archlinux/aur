@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url='https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcl2730dw_us_eu_as'
 license=('GPL')
 depends=('cups' 'perl')
-source=(https://download.brother.com/welcome/dlf103528/mfcl2730dwpdrv-4.0.0-1.i386.deb)
-sha256sums=('fe10170560c4c44471c368a6129ddd61138921004b7abd0b3633e26b2a8a71d6')
+source=(https://download.brother.com/welcome/dlf103527/mfcl2730dwpdrv-4.0.0-1.i386.rpm)
+sha256sums=('5c82b2c224a6651678ba77261ad4952dc876f633b4c05f86d115ca71358861af')
 
 package() {
   # using /usr/share instead of /opt
