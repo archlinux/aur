@@ -1,7 +1,7 @@
 # Maintainer: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
 
 pkgname=cotire
-_cotirever=1.8.0
+_cotirever=1.8.1
 _cmakever=3.16
 _cmakegooduntil=3.17
 pkgver=${_cotirever}_${_cmakever}
@@ -12,7 +12,7 @@ license=('custom')
 conflicts=("cmake>=$_cmakegooduntil") # the Modules dir changes every major release
 url='https://github.com/sakra/cotire'
 source=("https://github.com/sakra/cotire/archive/$pkgname-$_cotirever.tar.gz")
-md5sums=('d3e408a208adcc6d9cf5b052df2f2fda')
+md5sums=('1631c36ac920eb95944db9188068fccb')
 
 package() {
   cd "$pkgname-$pkgname-$_cotirever"
