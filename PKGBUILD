@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Tomei <tomeil@tiscali.it>
 
 pkgname=j9-git
-pkgver=9.01.10.20190928
+pkgver=9.01.18.20191222
 pkgrel=1
 pkgdesc='J is a modern, high-level, general-purpose, high-performance programming language'
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=('wget: for web/gethttp addon'
 makedepends=('clang')
             source=('jsource.zip::https://github.com/jsoftware/jsource/archive/master.zip'
         'qtide.zip::https://github.com/jsoftware/qtide/archive/master.zip'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20190928.tar.gz')
-md5sums=('SKIP' 'SKIP' '79198c533dba15a8f169632bf50dfbc9')
+        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j901_env_20191222.tar.gz')
+md5sums=('SKIP' 'SKIP' 'f848f0d79bebd08171a84ffb60777241')
 install=j9-git.install
 
 pkgver() {
