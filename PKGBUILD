@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 package(){
 
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_appname}"
 	meson build --prefix=/usr
 	cd build
 	ninja
