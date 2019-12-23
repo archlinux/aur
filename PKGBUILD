@@ -12,7 +12,7 @@ depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
 optdepends=('zenity: for dialogs'
             'kdialog: for dialogs'
             'xdialog: for dialogs')
-source=("$pkgname-$pkgver.AppImage::https://mail.tutanota.com/desktop/${pkgname%-bin}-linux.AppImage"
+source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${pkgname%-bin}-linux.AppImage"
         'https://mail.tutanota.com/desktop/linux-sig.bin'
         'https://raw.githubusercontent.com/tutao/tutanota/master/tutao-pub.pem'
         "${pkgname%-bin}")
@@ -27,7 +27,7 @@ sha512sums=('48c64bdf53bc3575099b3b6bd74900068ac919090f4c79a83941ee920fb3bb59630
 prepare() {
 	# Validate the signature against public key
 	set -e
-	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin "$pkgname-$pkgver.AppImage"
+	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin "${pkgname%-bin}-$pkgver.AppImage"
 	set +e
 
 	chmod +x "$pkgname-$pkgver.AppImage"
