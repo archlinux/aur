@@ -28,6 +28,6 @@ build() {
 package() {
     cd "$pkgname"
 
-    install -Dm644 "$srcdir/$pkgname/build/bin/$_libname.so" \
+    install -Dm644 "$srcdir/$pkgname/libretro/$_libname.so" \
         "$pkgdir/usr/lib/libretro/$_libname.so"
 }
