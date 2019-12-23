@@ -1,6 +1,6 @@
 pkgbase = olivia
 	pkgdesc = Elegant Cloud Music Player for Linux Desktop
-	pkgver = r410.fe16f7c
+	pkgver = r677.b853645
 	pkgrel = 1
 	url = https://github.com/keshavbhatt/olivia
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = olivia
 	depends = wget
 	depends = socat
 	depends = ffmpeg
+	depends = taglib
+	depends = pv
 	source = git+https://github.com/keshavbhatt/olivia.git
 	sha256sums = SKIP
 

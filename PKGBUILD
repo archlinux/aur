@@ -1,13 +1,13 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=olivia
-pkgver=r410.fe16f7c
+pkgver=r677.b853645
 pkgrel=1
 pkgdesc="Elegant Cloud Music Player for Linux Desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/keshavbhatt/olivia"
 license=('MIT')
-depends=('qt5-base' 'qt5-tools' 'mpv' 'python' 'wget' 'socat' 'ffmpeg')
+depends=('qt5-base' 'qt5-tools' 'mpv' 'python' 'wget' 'socat' 'ffmpeg' 'taglib' 'pv')
 source=("git+https://github.com/keshavbhatt/olivia.git")
 sha256sums=('SKIP')
 
