@@ -1,0 +1,14 @@
+pkgbase = wordpress-theme-geist
+	pkgdesc = Personal blogging theme for WordPress. Port of Casper 2.0 theme for Ghost
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://chrisyee.ca/geist/
+	arch = any
+	license = GPL2
+	depends = wordpress
+	options = !strip
+	source = wordpress-theme-geist-1.1.3.tar.gz::https://github.com/christophery/geist/archive/1.1.3.tar.gz
+	sha512sums = 8cb27d7364c358bdeb31a2d1051c5e19315038b7fb6635d1a5427e0f4ce6bd2bf2b0bb55e613a6b33d86401360d3c5d3df38d9618fb3f3121737a721e45935e0
+
+pkgname = wordpress-theme-geist
+
