@@ -25,7 +25,8 @@ prepare() {
 }
 
 package() {
+    install -dm755 "${pkgdir}/usr/share/icons"
     install -Dm755 "listen1.AppImage" "${pkgdir}/${_installdir}/listen1.AppImage"
     install -Dm644 "squashfs-root/listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
-    cp -R "squashfs-root/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor"
+    cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
