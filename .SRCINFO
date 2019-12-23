@@ -1,0 +1,15 @@
+pkgbase = ruby-strings-ansi
+	pkgdesc = Methods for processing ANSI escape codes in strings.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/piotrmurach/strings-ansi
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = strings-ansi-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/strings-ansi-0.2.0.gem
+	sha1sums = 10886c966408fc95179247a5e9fea18a79cb2cb3
+
+pkgname = ruby-strings-ansi
+
