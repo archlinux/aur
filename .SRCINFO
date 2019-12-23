@@ -1,6 +1,6 @@
 pkgbase = skychart
 	pkgdesc = Free software to draw sky charts, also known as Cartes du Ciel
-	pkgver = 4.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = http://www.ap-i.net/skychart/start
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = skychart
 	depends = gtk2
 	depends = xplanet
 	depends = libpasastro
-	source = http://sourceforge.net/projects/skychart/files/1-software/version_4.2/skychart-4.2-4046-linux_x86_64.tar.xz
-	sha256sums = 97bfb2577d0016af3b451a4209f0c6a525470a155af9238dc9dcb20f5a8f4d1f
+	source = http://sourceforge.net/projects/skychart/files/1-software/version_4.2.1/skychart-4.2.1-4073-linux_x86_64.tar.xz
+	sha256sums = fcf1d19df6e7082c5057342248bc5159847c85ca5a678013f6b6447c036d4520
 
 pkgname = skychart
 
