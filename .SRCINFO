@@ -1,0 +1,15 @@
+pkgbase = libdmx
+	pkgdesc = X11 Distributed Multihead extension library
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = xorg-util-macros
+	depends = libxext
+	source = https://www.x.org/releases/individual/lib/libdmx-1.1.4.tar.bz2
+	sha256sums = 253f90005d134fa7a209fbcbc5a3024335367c930adf0f3203e754cf32747243
+
+pkgname = libdmx
+
