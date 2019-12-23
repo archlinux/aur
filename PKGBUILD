@@ -1,9 +1,9 @@
 # Maintainer: ddnomad <dd at ddworks dot io>
 
 pkgname=protonvpn-cli
-pkgver=1577101765
+pkgver=1577101870
 pkgrel=1
-pkgdesc="Legacy version of ProtonVPN CLI client. See protonvpn-cli-ng."
+pkgdesc="Legacy version of ProtonVPN CLI client. Most people are better off installing protonvpn-cli-ng package instead."
 arch=("any")
 url="https://github.com/ProtonVPN/protonvpn-cli"
 license=("MIT")
