@@ -1,0 +1,159 @@
+pkgbase = php
+	pkgver = 7.3.12
+	pkgrel = 1
+	url = https://secure.php.net/
+	arch = x86_64
+	license = PHP
+	checkdepends = procps-ng
+	makedepends = apache
+	makedepends = aspell
+	makedepends = c-client
+	makedepends = db
+	makedepends = enchant
+	makedepends = gd
+	makedepends = gmp
+	makedepends = icu
+	makedepends = libsodium
+	makedepends = libxslt
+	makedepends = libzip
+	makedepends = net-snmp
+	makedepends = postgresql-libs
+	makedepends = sqlite
+	makedepends = systemd
+	makedepends = tidy
+	makedepends = unixodbc
+	makedepends = curl
+	makedepends = libtool
+	makedepends = postfix
+	makedepends = freetds
+	makedepends = pcre2
+	makedepends = libnsl
+	source = https://php.net/distributions/php-7.3.12.tar.xz
+	source = https://php.net/distributions/php-7.3.12.tar.xz.asc
+	source = apache.patch
+	source = apache.conf
+	source = php-fpm.patch
+	source = php-fpm.tmpfiles
+	source = php.ini.patch
+	source = enchant-2.patch
+	source = freetype.patch
+	validpgpkeys = CBAF69F173A0FEA4B537F470D66C9593118BCCB6
+	validpgpkeys = F38252826ACD957EF380D39F2F7956BC5DA04B5D
+	sha256sums = aafe5e9861ad828860c6af8c88cdc1488314785962328eb1783607c1fdd855df
+	sha256sums = SKIP
+	sha256sums = 62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a
+	sha256sums = ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce
+	sha256sums = 7ae4870d54340ee5be5a4fbb61bf81d3bfa33fa3b8d59bafcfa17509e2775234
+	sha256sums = 640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5
+	sha256sums = 07627f57bbc5559a63bfc77e21edd4e2a5d3aa15fed4d9dfe00e877dd31b7c9f
+	sha256sums = 3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32
+	sha256sums = 07c4648669dc05afc3c1ad5a4739768079c423b817eabf5296ca3d1ea5ffd163
+
+pkgname = php
+	pkgdesc = A general-purpose scripting language that is especially suited to web development
+	depends = libxml2
+	depends = curl
+	depends = libzip
+	depends = pcre2
+	depends = argon2
+	provides = php-ldap=7.3.12
+	conflicts = php-ldap
+	replaces = php-ldap
+	backup = etc/php/php.ini
+
+pkgname = php-cgi
+	pkgdesc = CGI and FCGI SAPI for PHP
+	depends = php
+
+pkgname = php-apache
+	pkgdesc = Apache SAPI for PHP
+	depends = php
+	depends = apache
+	depends = libnsl
+	backup = etc/httpd/conf/extra/php7_module.conf
+
+pkgname = php-fpm
+	pkgdesc = FastCGI Process Manager for PHP
+	depends = php
+	depends = systemd
+	options = !emptydirs
+	backup = etc/php/php-fpm.conf
+	backup = etc/php/php-fpm.d/www.conf
+
+pkgname = php-embed
+	pkgdesc = Embedded PHP SAPI library
+	depends = php
+	depends = systemd-libs
+	depends = libnsl
+	options = !emptydirs
+
+pkgname = php-phpdbg
+	pkgdesc = Interactive PHP debugger
+	depends = php
+	options = !emptydirs
+
+pkgname = php-dblib
+	pkgdesc = dblib module for PHP
+	depends = php
+	depends = freetds
+
+pkgname = php-enchant
+	pkgdesc = enchant module for PHP
+	depends = php
+	depends = enchant
+
+pkgname = php-gd
+	pkgdesc = gd module for PHP
+	depends = php
+	depends = gd
+
+pkgname = php-imap
+	pkgdesc = imap module for PHP
+	depends = php
+	depends = c-client
+
+pkgname = php-intl
+	pkgdesc = intl module for PHP
+	depends = php
+	depends = icu
+
+pkgname = php-sodium
+	pkgdesc = sodium module for PHP
+	depends = php
+	depends = libsodium
+
+pkgname = php-odbc
+	pkgdesc = ODBC modules for PHP
+	depends = php
+	depends = unixodbc
+
+pkgname = php-pgsql
+	pkgdesc = PostgreSQL modules for PHP
+	depends = php
+	depends = postgresql-libs
+
+pkgname = php-pspell
+	pkgdesc = pspell module for PHP
+	depends = php
+	depends = aspell
+
+pkgname = php-snmp
+	pkgdesc = snmp module for PHP
+	depends = php
+	depends = net-snmp
+
+pkgname = php-sqlite
+	pkgdesc = sqlite module for PHP
+	depends = php
+	depends = sqlite
+
+pkgname = php-tidy
+	pkgdesc = tidy module for PHP
+	depends = php
+	depends = tidy
+
+pkgname = php-xsl
+	pkgdesc = xsl module for PHP
+	depends = php
+	depends = libxslt
+
