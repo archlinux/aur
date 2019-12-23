@@ -1,0 +1,12 @@
+diff -Nurp python-sipsimple-release-3.4.2.orig/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c python-sipsimple-release-3.4.2/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c
+--- python-sipsimple-release-3.4.2.orig/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c	2019-03-26 11:12:31.000000000 +0100
++++ python-sipsimple-release-3.4.2/deps/pjsip/pjmedia/src/pjmedia-audiodev/alsa_dev.c	2019-06-17 23:05:50.915679360 +0200
+@@ -616,7 +616,7 @@ static int ca_thread_func (void *arg)
+ 
+ 	tstamp.u64 += nframes;
+     }
+-    snd_pcm_drain (pcm);
++    snd_pcm_drop (pcm);
+     TRACE_((THIS_FILE, "ca_thread_func: Stopped"));
+ 
+     return PJ_SUCCESS;
