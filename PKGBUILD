@@ -1,4 +1,5 @@
 # Maintainer: Kevin Michael Frick <kmfrick#AT#gmail#DOT#com>
+# Thanks to Louis Tim Larsen for the -bin PKGBUILD
 
 pkgname=ephemeral-git
 conflicts=('ephemeral-bin')
