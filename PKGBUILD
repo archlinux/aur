@@ -2,7 +2,7 @@
 # Maintainer: Zren <zrenfire@gmail.com>
 
 pkgname=plasma5-applets-eventcalendar
-pkgver=65
+pkgver=66
 pkgrel=1
 pkgdesc="An extended calendar plasmoid with daily weather forecasts and events from Google Calendar. Also includes a timer and 24 hour forecast graph."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects')
 makedepends=('bash' 'gettext')
 source=("https://github.com/Zren/plasma-applet-eventcalendar/archive/v$pkgver.tar.gz")
-md5sums=('8a0782944aad740edc92c939350e8dd6')
+md5sums=('a816b5eeda646fa7e6bd139a58014914')
 
 package() {
     cd plasma-applet-eventcalendar-$pkgver/package
