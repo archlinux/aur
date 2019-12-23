@@ -4,9 +4,9 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.62.2
+pkgver=2.62.4
 pkgrel=1
-_commit=ca9f51b82f57e05f6b3c82b98c235623afa47573  # tags/2.62.2^0
+_commit=dac69d7128b3b66ed7007ab944eb629d30f4de4b  # tags/2.62.4^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
@@ -58,9 +58,6 @@ package() {
     done
     
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/glib/build-${_arch}" install
-    
-    # see https://github.com/mesonbuild/meson/issues/4138
-    ${_arch}-gcc-ranlib ${pkgdir}/usr/${_arch}/lib/*.a
 
   done
 }
