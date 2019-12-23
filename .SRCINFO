@@ -1,0 +1,15 @@
+pkgbase = ruby-equatable
+	pkgdesc = Extends Ruby objects with equality comparison and inspection methods.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/piotrmurach/equatable
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = equatable-0.6.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/equatable-0.6.1.gem
+	sha1sums = 98bd73e29193649abf462dc8ed9cfe084e23dab4
+
+pkgname = ruby-equatable
+
