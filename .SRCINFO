@@ -1,0 +1,22 @@
+pkgbase = sublime-text-4-dev
+	pkgdesc = Sophisticated text editor for code, html and prose - dev build
+	pkgver = 4.4061
+	pkgrel = 1
+	url = http://www.sublimetext.com/
+	install = sublime-text.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libpng
+	depends = gtk3
+	optdepends = gksu: sudo-save support
+	conflicts = sublime-text
+	source = sublime-text.install
+	source = sublime_text.desktop
+	source = https://download.sublimetext.com/sublime_text_build_4061_x64.tar.xz
+	sha256sums = 388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018
+	sha256sums = a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9
+	sha256sums = 50f6e7db86e37b7add5b2ee637ce8cffcd546d9511fdeb443eb3b3ff5ff7d021
+
+pkgname = sublime-text-4-dev
+
