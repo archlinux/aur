@@ -3,9 +3,9 @@
 
 pkgname='pop-gnome-shell-theme-bin'
 pkgver='5.0.0'
-pkgrel=12
-_timestamp=1573676952
-_commit=8ddf0fc
+pkgrel=13
+_timestamp=1576602011
+_commit=7760154
 pkgdesc='System76 Pop GNOME Shell Theme'
 arch=('any')
 url='https://github.com/pop-os/gnome-shell-theme'
@@ -25,7 +25,7 @@ optdepends=(
   "pop-session-bin"
 )
 source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-gtk-theme/pop-gnome-shell-theme_${pkgver}~${_timestamp}~19.10~${_commit}_all.deb")
-sha256sums=('38d88defd80dc2d5c11323904b66b2f07aff0b36c16893aae0d5807d5f646b90')
+sha256sums=('922f69858630b97e389f0045a4e6b661bf19c6396c920acaaa4921f90cff3f9b')
 
 package() {
   cd "${srcdir}"
