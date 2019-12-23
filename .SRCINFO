@@ -1,6 +1,6 @@
 pkgbase = python2-pymupdf
 	pkgdesc = Python bindings for MuPDF
-	pkgver = 1.16.9
+	pkgver = 1.16.10
 	pkgrel = 1
 	url = https://github.com/pymupdf/PyMuPDF
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = python2-pymupdf
 	depends = jbig2dec
 	depends = openjpeg2
 	depends = freetype2
-	source = https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-1.16.9.tar.gz
-	sha256sums = 8c456b37c6e37174dae98843ab8979db8f149a7229bd05c2ce6b09a22d300926
+	source = https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-1.16.10.tar.gz
+	sha256sums = d7893954f97fa6087629f3875f3be066dab51302e7c73f4c98c0516a8e2893fb
 
 pkgname = python2-pymupdf
 	depends = libjpeg-turbo
