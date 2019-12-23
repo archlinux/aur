@@ -1,0 +1,14 @@
+pkgbase = ruby-unicode_utils
+	pkgdesc = additional Unicode aware functions for Ruby 1.9
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://github.com/lang/unicode_utils
+	arch = any
+	depends = ruby
+	noextract = unicode_utils-1.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/unicode_utils-1.4.0.gem
+	sha1sums = 123471c8b928b50217df39ae2ea112ba5723ad48
+
+pkgname = ruby-unicode_utils
+
