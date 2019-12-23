@@ -1,6 +1,6 @@
 pkgbase = libclsp-git
 	pkgdesc = A C++17 library for language servers
-	pkgver = r20.d4a4804
+	pkgver = r37.d432645
 	pkgrel = 1
 	url = https://github.com/otreblan/libclsp
 	arch = x86_64

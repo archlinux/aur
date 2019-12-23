@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libclsp-git
-pkgver=r20.d4a4804
+pkgver=r37.d432645
 pkgrel=1
 epoch=
 pkgdesc="A C++17 library for language servers"
@@ -13,8 +13,8 @@ depends=('boost-libs')
 makedepends=('git' 'cmake' 'boost' 'rapidjson')
 checkdepends=()
 optdepends=()
-provides=('libclsp')
-conflicts=('libclsp')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
