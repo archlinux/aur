@@ -13,6 +13,7 @@ pkgbase = python-minkowskiengine
 	depends = cudnn
 	depends = cblas
 	optdepends = python-torchvision: Sample code dependency
+	optdepends = python-open3d: Sample code dependency
 	source = https://github.com/StanfordVL/MinkowskiEngine/archive/v0.3.1.tar.gz
 	sha512sums = 6763c17dbd2796d63763c1c6f94512dcf5754f828ef8dec37a901f2c50529afc2a425e060fe9401896571d2755e50a99e3a4c504ea602f22755a731cc4451abe
 

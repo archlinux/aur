@@ -9,6 +9,7 @@ url="https://github.com/StanfordVL/MinkowskiEngine"
 depends=('python' 'python-pytorch-cuda' 'python-numpy' 'cuda' 'cudnn' 'cblas')
 optdepends=(
     'python-torchvision: Sample code dependency'
+    'python-open3d: Sample code dependency'
 )
 makedepends=('python-setuptools')
 license=('MIT')
