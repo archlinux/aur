@@ -30,7 +30,7 @@ provides=(
   "java-runtime=$_java_ver"
   "java-runtime-openjdk=$_java_ver"
 )
-install="$pkgname.install"
+install="${_packagename}-jdk-bin.install"
 _tarballname="sapmachine-jdk-${pkgver}_linux-x64_bin"
 source=("https://github.com/SAP/SapMachine/releases/download/${_packagename}-${pkgver}/${_tarballname}.tar.gz")
 sha256sums=('f8b849bbd044acfd38972987305bd4c8bf5706a794ec12b51f1ed747a492ca55')

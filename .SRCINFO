@@ -1,9 +1,9 @@
-pkgbase = sapmachine-jdk-11-bin
+pkgbase = sapmachine-jdk-bin
 	pkgdesc = This project contains a downstream version of the OpenJDK project. It is used to build and maintain a SAP supported version of OpenJDK for SAP customers and partners who wish to use OpenJDK to run their applications.
 	pkgver = 11.0.5
 	pkgrel = 1
 	url = https://sap.github.io/SapMachine/
-	install = sapmachine-jdk-11-bin.install
+	install = sapmachine-jdk-bin.install
 	arch = x86_64
 	license = custom
 	depends = java-environment-common=3
@@ -26,4 +26,4 @@ pkgbase = sapmachine-jdk-11-bin
 	source = https://github.com/SAP/SapMachine/releases/download/sapmachine-11.0.5/sapmachine-jdk-11.0.5_linux-x64_bin.tar.gz
 	sha256sums = f8b849bbd044acfd38972987305bd4c8bf5706a794ec12b51f1ed747a492ca55
 
-pkgname = sapmachine-jdk-11-bin
+pkgname = sapmachine-jdk-bin
