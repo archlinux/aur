@@ -2,8 +2,8 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=smloadr
-pkgver=1.9.5
-pkgrel=3
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="A streaming music downloader"
 arch=('x86_64' 'armv7h')
 url="https://git.fuwafuwa.moe/SMLoadrDev/SMLoadr"
@@ -11,7 +11,7 @@ license=('unknown')
 makedepends=('npm')
 depends=('nodejs')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.fuwafuwa.moe/SMLoadrDev/SMLoadr/archive/v${pkgver}.tar.gz")
-sha512sums=('f33dea616327ae4cf82e7cb5b9bfcdcdc72ca1428d0e3a9487ad180e4eaa68aa6becafd0a455c8d65409f9c78795086c647fcedb4fb6c858b679fa14295c54a0')
+sha512sums=('4881e3dd4a5c788cd1dc9831f165eeb3e76fa6879017f865c11175f535a95815e16b43a968768a74f0d0c3bf32ba24983b4df3cbbb52025f1d3eb20cdaf8ed49')
 
 build() {
   cd "${srcdir}/${pkgname}"
