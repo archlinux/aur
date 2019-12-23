@@ -2,8 +2,8 @@
 # Contributer: Salim Perchy <yamil-salim.perchy@inria.fr>
 
 pkgname=icesl-beta
-pkgver=2.3_beta1
-_id=37757
+pkgver=2.3.4
+_id=38248
 pkgrel=1
 pkgdesc="A GPU accelerated modeler and slicer for 3D printing"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('icesl')
 provides=('icesl')
 depends=('qt4' 'freeglut' 'glu' 'libpng' 'zlib' 'freetype2' 'libxext' 'perl')
 source=("https://gforge.inria.fr/frs/download.php/file/${_id}/${pkgname}-${pkgver//_/-}-amd64.zip")
-sha512sums=('df075ceb6164220e967050babd3b17d6107b7b766bcd79e5a2d92e26a45d6d03742b04ce7fc5a3dfb22f984436296b711db77f6c765ec0be9d8e6031550572e1')
+sha512sums=('b716880e56c30689f350af613f50dc7d2327f05b3accdf3615f6863b77a98b3084226a36e3c10cf1db5c39508c059bd1a804ed9bf22194ed2bf799e8ae7f25a0')
 
 package() {
 	mkdir -p $pkgdir/usr/{,bin,share{,/licenses}/${pkgname%-beta}}
