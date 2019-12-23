@@ -1,12 +1,13 @@
 pkgbase = bluez-alsa-git
 	pkgdesc = Bluetooth Audio ALSA Backend
-	pkgver = 1.4.0.r9.g1557602
+	pkgver = 2.0.0.r42.gb7eda3a
 	pkgrel = 1
 	url = https://github.com/Arkq/bluez-alsa
 	install = bluealsa.install
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
+	arch = armv6h
 	license = MIT
 	makedepends = git
 	depends = bluez-libs
@@ -16,8 +17,10 @@ pkgbase = bluez-alsa-git
 	depends = alsa-lib
 	source = bluez-alsa-git::git+https://github.com/Arkq/bluez-alsa.git
 	source = bluealsa.service
+	source = bluealsa.conf
 	md5sums = SKIP
-	md5sums = 081aa1ae957cd3d013521c4170a83480
+	md5sums = 9a166b5c2962e6d2cd7febe52342962c
+	md5sums = 2a661e9d06f0bf82796e027a30910bbd
 
 pkgname = bluez-alsa-git
 
