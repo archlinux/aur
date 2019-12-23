@@ -1,6 +1,6 @@
 pkgbase = lefthook
 	pkgdesc = git hooks manager
-	pkgver = 0.6.7
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Arkweid/lefthook
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = lefthook
 	license = MIT
 	makedepends = go
 	makedepends = rsync
-	source = https://github.com/Arkweid/lefthook/archive/v0.6.7.tar.gz
-	sha256sums = 7cba5020ded0eaf315bebca6ff86f5653bceb97231a835ef0993663eb4c3eaae
+	source = https://github.com/Arkweid/lefthook/archive/v0.7.0.tar.gz
+	sha256sums = d47be98a7e5e6a7941f2c8337e6734b1570fd4d6eb6f99c6b971f37ee7e897f6
 
 pkgname = lefthook
 
