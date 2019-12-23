@@ -1,4 +1,4 @@
-# Maintainer: vvxxp8 <letters[g] in square[x] [b]rackets one[1] five[5] two[2] at gmail dot com>
+# Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 # Contributor: Grey Christoforo <first name at last name dot net>
 # Contributor: Darcy Hu <hot123tea123@gmail.com>
 
