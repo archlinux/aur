@@ -1,6 +1,6 @@
 pkgbase = chromium-umatrix-git
 	pkgdesc = Point and click matrix to filter net requests according to source, destination and type
-	pkgver = 1.4.0.5.g2936d73
+	pkgver = 1.4.1b0.1.gcb9934f
 	pkgrel = 1
 	url = https://github.com/gorhill/uMatrix
 	arch = any
