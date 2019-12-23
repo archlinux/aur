@@ -1,11 +1,11 @@
 [Desktop Entry]
 Version=1.0
-Name=Doom2D Forever
+Name=Doom 2D Forever
 Exec=Doom2DF
 Icon=doom2df
 Terminal=false
 Type=Application
 Categories=Game;Shooter;ActionGame
-Comment=Modern port of once popular game Doom2D
-Comment[ru]=Современный порт культовой игры Doom2D
-Keywords=Doom;Doom2D;Doom2D Forever;Forever;Shooter;
+Comment=Modern port of once popular game Doom 2D
+Comment[ru]=Современный порт культовой игры Doom 2D
+Keywords=Doom;Doom2D;Doom2D Forever;Forever;Shooter;Doom 2D;

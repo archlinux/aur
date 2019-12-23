@@ -2,7 +2,7 @@
 pkgname=doom2df-git
 pkgver=r1174.5b8e9b8
 pkgrel=1
-pkgdesc="Doom2D Forever: A Doom2D remake with multiplayer"
+pkgdesc="Doom 2D Forever: A Doom 2D remake with multiplayer"
 arch=(x86_64 i386)
 url="http://doom2d.org/"
 license=('GPL3')
@@ -17,7 +17,7 @@ source=(
 md5sums=(
   'SKIP'
   'SKIP'
-  '5c75c97fcc9826d0d83eac8f9cd4a9b7'
+  '7f8bcc51643bcbd219f10e3f33164dd5'
   '191cd29a6994ab257abf6c0b1060b2fd'
 )
 options=(
