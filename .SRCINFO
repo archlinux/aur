@@ -1,6 +1,6 @@
 pkgbase = phoc
 	pkgdesc = Wlroots based Phone compositor
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phoc
 	arch = i686
@@ -9,13 +9,12 @@ pkgbase = phoc
 	arch = armv7h
 	license = GPL3
 	makedepends = ctags
-	makedepends = git
 	makedepends = libhandy
 	makedepends = meson
 	makedepends = vala
 	depends = gnome-desktop
 	depends = wlroots
-	source = git+https://source.puri.sm/Librem5/phoc.git#tag=v0.1.3
+	source = https://source.puri.sm/Librem5/phoc/-/archive/v0.1.4/phoc-v0.1.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = phoc
