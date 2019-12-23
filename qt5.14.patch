@@ -1,0 +1,17 @@
+diff --git a/src/player/CodecsComponent.cpp b/src/player/CodecsComponent.cpp
+index fcc89df..5090b86 100644
+--- a/src/player/CodecsComponent.cpp
++++ b/src/player/CodecsComponent.cpp
+@@ -683,9 +683,9 @@ static Downloader::HeaderList getPlexHeaders()
+   Downloader::HeaderList headers;
+   QString auth = SystemComponent::Get().authenticationToken();
+   if (auth.size())
+-    headers.append({"X-Plex-Token", auth});
+-  headers.append({"X-Plex-Product", WITH_CODECS ? "Plex Media Player" : "openpmp"});
+-  headers.append({"X-Plex-Platform", "Konvergo"});
++    headers.append(qMakePair(QString("X-Plex-Token"), auth));
++  headers.append(qMakePair(QString("X-Plex-Product"), QString(WITH_CODECS ? "Plex Media Player" : "openpmp")));
++  headers.append(qMakePair(QString("X-Plex-Platform"), QString("Konvergo")));
+   return headers;
+ }
+ 

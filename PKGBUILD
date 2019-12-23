@@ -2,7 +2,7 @@
 
 pkgname=plex-media-player-git
 pkgver=r1302.e74d341
-pkgrel=1
+pkgrel=2
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -11,8 +11,10 @@ provides=('plex-media-player')
 conflicts=('plex-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git')
-source=('git+https://github.com/plexinc/plex-media-player.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/plexinc/plex-media-player.git'
+        'qt5.14.patch')
+sha256sums=('SKIP'
+            '28ca2a697ecad89721a88994fbc17467254e9c46162e1c09a37e64e56d29cfc1')
 
 pkgver() {
   cd plex-media-player
@@ -21,6 +23,11 @@ pkgver() {
 
 prepare() {
   mkdir -p "${srcdir}/plex-media-player/build"
+
+  # This hack is to fix the build error on qt 5.14. It's probably the worst way
+  # to fix it so hopefully it's fixed upstream soon.
+  cd "${srcdir}/plex-media-player"
+  git apply ../qt5.14.patch
 }
 
 build() {

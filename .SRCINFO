@@ -19,7 +19,9 @@ pkgbase = plex-media-player-git
 	provides = plex-media-player
 	conflicts = plex-media-player
 	source = git+https://github.com/plexinc/plex-media-player.git
+	source = qt5.14.patch
 	sha256sums = SKIP
+	sha256sums = 28ca2a697ecad89721a88994fbc17467254e9c46162e1c09a37e64e56d29cfc1
 
 pkgname = plex-media-player-git
 
