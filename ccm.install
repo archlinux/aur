@@ -3,7 +3,7 @@
 
 post_upgrade() {
   # define the versions for which a change is needed
-	for test in 2.92-1 2.87-1 2.81-1 2.73-1 2.72-1 2.55-1 2.17-1 2.22-1 2.69-1 2.93-1 2.101-1 2.201-1 2.202-1; do
+	for test in 2.92-1 2.87-1 2.81-1 2.73-1 2.72-1 2.55-1 2.17-1 2.22-1 2.69-1 2.93-1 2.101-1 2.201-1 2.202-1 2.208-1; do
 		if [ "$(vercmp $2 $test)" -lt 0 ]; then
 			echo '--> WARNING: changes have been made with this release!'
 			echo '--> Please check ~/.config/clean-chroot-manager.conf against the'
