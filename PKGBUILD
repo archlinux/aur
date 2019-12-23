@@ -1,16 +1,19 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=virtboard-git
-pkgver=0.0.5.r12.g49b04fb6
+pkgver=0.0.6.r0.g1d30b078
 pkgrel=1
 pkgdesc="Basic keyboard, blazing the path of modern Wayland keyboards"
 url="https://source.puri.sm/Librem5/virtboard"
 license=("GPL3")
 arch=(i686 x86_64 armv6h armv7h)
-depends=()
+depends=(cairo
+         libxkbcommon
+         wayland)
 makedepends=(git
              pkg-config
-             meson)
+             meson
+             wayland-protocols)
 provides=(virtboard)
 conflicts=(virtboard)
 source=("git+https://source.puri.sm/Librem5/virtboard.git")
