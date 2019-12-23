@@ -2,7 +2,7 @@
 # Contributor: Noel Kuntze <noel@familie-kuntze.de>
 
 pkgname=pcs
-pkgver=0.10.1
+pkgver=0.10.4
 pkgrel=1
 pkgdesc='pacemaker corosync shell utility for cluster configuration'
 arch=('any')
@@ -21,7 +21,6 @@ depends=('pacemaker'
          'ruby-ethon'
          'ruby-ffi'
          'ruby-json'
-         'ruby-multi_json'
          'ruby-open4'
          'ruby-rack'
          'ruby-rack-protection'
@@ -31,26 +30,30 @@ depends=('pacemaker'
          'ttf-liberation')
 makedepends=('wget' 'python-setuptools' 'ruby-bundler' 'fontconfig')
 source=("https://github.com/ClusterLabs/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('fe028b562453e45602d1d91a6014761f0118ac13ad6a387eaed48535f38a34308c0fed6586929fda514eccabdc632d243644816339e442b217c653890fc05e65')
+sha512sums=('9a789ba2ab7ca4dc871e65a20837fdbc4254121c0f30658aee7eb8b69126c1701dddbe4cb994d1e1f7650d0c2449dd8e353ee04ba97eb715f0fab5c946c919b3')
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i -e 's,backports-3.11.3,backports-3.11.4,' pcsd/Makefile
-  sed -i -e 's,backports (3.11.3),backports (3.11.4),' pcsd/Gemfile.lock
-  sed -i -e 's,ethon-0.10.1,ethon-0.11.0,' pcsd/Makefile
-  sed -i -e 's,ethon (0.10.1),ethon (0.11.0),' pcsd/Gemfile.lock
-  sed -i -e 's,ffi-1.9.25,ffi-1.9.25,' pcsd/Makefile
-  sed -i -e 's,ffi (1.9.25),ffi (1.9.25),' pcsd/Gemfile.lock
-  sed -i -e 's,multi_json-1.12.2,multi_json-1.13.1,' pcsd/Makefile
-  sed -i -e 's,multi_json (1.12.2),multi_json (1.13.1),' pcsd/Gemfile.lock
-  sed -i -e 's,rack-1.6.10,rack-2.0.5,' pcsd/Makefile
-  sed -i -e 's,rack (1.6.10),rack (2.0.5),' pcsd/Gemfile.lock
-  sed -i -e 's,rack-protection-1.5.5,rack-protection-2.0.3,' pcsd/Makefile
-  sed -i -e 's,rack-protection (1.5.5),rack-protection (2.0.3),' pcsd/Gemfile.lock
-  sed -i -e 's,rack-test-0.7.0,rack-test-1.0.0,' pcsd/Makefile
-  sed -i -e 's,rack-test (0.7.0),rack-test (1.0.0),' pcsd/Gemfile.lock
-  sed -i -e 's,sinatra-1.4.8,sinatra-2.0.3,' pcsd/Makefile
-  sed -i -e 's,sinatra (1.4.8),sinatra (2.0.3),' pcsd/Gemfile.lock
+  sed -i -e 's,backports-3.11.4,backports-3.15.0,' pcsd/Makefile
+  sed -i -e 's,backports (3.11.4),backports (3.15.0),' pcsd/Gemfile.lock
+  sed -i -e 's,ethon-0.11.0,ethon-0.11.0,' pcsd/Makefile
+  sed -i -e 's,ethon (0.11.0),ethon (0.11.0),' pcsd/Gemfile.lock
+  sed -i -e 's,ffi-1.9.25,ffi-1.11.3,' pcsd/Makefile
+  sed -i -e 's,ffi (1.9.25),ffi (1.11.3),' pcsd/Gemfile.lock
+  sed -i -e 's,json-2.1.0,json-2.2.0,' pcsd/Makefile
+  sed -i -e 's,json (2.1.0),json (2.2.0),' pcsd/Gemfile.lock
+  sed -i -e 's,open4-1.3.4,open4-1.3.4,' pcsd/Makefile
+  sed -i -e 's,open4 (1.3.4),open4 (1.3.4),' pcsd/Gemfile.lock
+  sed -i -e 's,rack-2.0.6,rack-2.0.5,' pcsd/Makefile
+  sed -i -e 's,rack (2.0.6),rack (2.0.5),' pcsd/Gemfile.lock
+  sed -i -e 's,rack-protection-2.0.4,rack-protection-2.0.5,' pcsd/Makefile
+  sed -i -e 's,rack-protection (2.0.4),rack-protection (2.0.5),' pcsd/Gemfile.lock
+  sed -i -e 's,rack-test-1.1.0,rack-test-1.0.0,' pcsd/Makefile
+  sed -i -e 's,rack-test (1.1.0),rack-test (1.0.0),' pcsd/Gemfile.lock
+  sed -i -e 's,sinatra-2.0.4,sinatra-2.0.5,' pcsd/Makefile
+  sed -i -e 's,sinatra (2.0.4),sinatra (2.0.5),' pcsd/Gemfile.lock
+  sed -i -e 's,tilt-2.0.9,tilt-2.0.8,' pcsd/Makefile
+  sed -i -e 's,tilt (2.0.9),tilt (2.0.8),' pcsd/Gemfile.lock
 }
 
 build() {

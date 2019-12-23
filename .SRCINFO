@@ -1,6 +1,6 @@
 pkgbase = pcs
 	pkgdesc = pacemaker corosync shell utility for cluster configuration
-	pkgver = 0.10.1
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = http://clusterlabs.org/
 	arch = any
@@ -22,7 +22,6 @@ pkgbase = pcs
 	depends = ruby-ethon
 	depends = ruby-ffi
 	depends = ruby-json
-	depends = ruby-multi_json
 	depends = ruby-open4
 	depends = ruby-rack
 	depends = ruby-rack-protection
@@ -30,8 +29,8 @@ pkgbase = pcs
 	depends = ruby-sinatra
 	depends = ruby-tilt
 	depends = ttf-liberation
-	source = https://github.com/ClusterLabs/pcs/archive/0.10.1.tar.gz
-	sha512sums = fe028b562453e45602d1d91a6014761f0118ac13ad6a387eaed48535f38a34308c0fed6586929fda514eccabdc632d243644816339e442b217c653890fc05e65
+	source = https://github.com/ClusterLabs/pcs/archive/0.10.4.tar.gz
+	sha512sums = 9a789ba2ab7ca4dc871e65a20837fdbc4254121c0f30658aee7eb8b69126c1701dddbe4cb994d1e1f7650d0c2449dd8e353ee04ba97eb715f0fab5c946c919b3
 
 pkgname = pcs
 
