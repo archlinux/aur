@@ -1,7 +1,8 @@
-# Maintainer: Kevin Michael Frick <kmfrick #AT# gmail #DOT# com>
+# Maintainer: Kevin Michael Frick <kmfrick#AT#gmail#DOT#com>
 
-pkgname=ephemeral
+pkgname=ephemeral-git
 conflicts=('ephemeral-bin')
+_appname=ephemeral
 _projectname=com.github.cassidyjames.ephemeral
 pkgver=git
 pkgrel=1
@@ -22,10 +23,10 @@ package(){
 	DESTDIR="${pkgdir}"	ninja install
 
 	# Rename major files from for better system integration
-	mv "${pkgdir}/usr/bin/${_projectname}" "${pkgdir}/usr/bin/${pkgname}"
-	mv "${pkgdir}/usr/share/applications/${_projectname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	mv "${pkgdir}/usr/bin/${_projectname}" "${pkgdir}/usr/bin/${_appname}"
+	mv "${pkgdir}/usr/share/applications/${_projectname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
 	# Update desktop file to match renamed package binary
-	sed -i "s/Exec=${_projectname}/Exec=${pkgname}/" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	sed -i "s/Exec=${_projectname}/Exec=${_appname}/" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
 }

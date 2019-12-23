@@ -1,4 +1,4 @@
-pkgbase = ephemeral
+pkgbase = ephemeral-git
 	pkgdesc = The always-incognito web browser. Browse the Internet in private without leaving a trace of history on your computer.
 	pkgver = git
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = ephemeral
 	source = git+https://github.com/cassidyjames/ephemeral
 	md5sums = SKIP
 
-pkgname = ephemeral
+pkgname = ephemeral-git
 
