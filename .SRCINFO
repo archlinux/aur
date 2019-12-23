@@ -14,6 +14,7 @@ pkgbase = python-minkowskiengine-git
 	depends = cudnn
 	depends = cblas
 	optdepends = python-torchvision: Sample code dependency
+	optdepends = python-open3d: Sample code dependency
 	provides = python-minkowskiengine
 	conflicts = python-minkowskiengine
 	source = MinkowskiEngine::git+https://github.com/StanfordVL/MinkowskiEngine.git
