@@ -1,14 +1,16 @@
 pkgbase = listen1-desktop-appimage
 	pkgdesc = One for all free music in China
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://listen1.github.io/listen1/
 	arch = x86_64
 	license = MIT
-	noextract = Listen1_2.5.0_linux_x86_64.AppImage
+	provides = listen1
+	conflicts = listen1
+	noextract = Listen1_2.5.1_linux_x86_64.AppImage
 	options = !strip
-	source = https://github.com/listen1/listen1_desktop/releases/download/v2.5.0/Listen1_2.5.0_linux_x86_64.AppImage
-	sha256sums = 8c6a190fd0fa77ba5f0bf051f836bd9b706bea7c8aeb4436edb81f63e9bbe635
+	source = https://github.com/listen1/listen1_desktop/releases/download/v2.5.1/Listen1_2.5.1_linux_x86_64.AppImage
+	sha256sums = 3b054e2c7fe0bc65a2f3e1823f489642293a2e958dd3f82b89097f3191ad5fb8
 
 pkgname = listen1-desktop-appimage
 
