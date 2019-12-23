@@ -47,8 +47,8 @@ _1k_HZ_ticks=
 
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
-_major=5.3
-_minor=18
+_major=5.4
+_minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -62,7 +62,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
-_aufs_ver="20191021"
+_aufs_ver="20191223"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
@@ -71,8 +71,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v4-sep/0002-Bluetooth-hidp-Fix-assumptions-on-the-return-value-o.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
          # the main kernel config files
         'config')
 
@@ -325,13 +329,17 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('77337ef9830758febb47e5ff197d40b9ff8ae76f71935e0e6351345c08f8407909f01dd9f052684080f5fec4f2e38d846ac28845d92913f14223d10439d9779c'
+sha512sums=('9e1153e80303d6d5016856a25f3757259a3a428bad11208192315088d1f1a09957f5b8e966ab8cb5842ce1a740760f87474066294f8b410e9c44c810838bcdac'
             'SKIP'
-            '54b8d74793f1e23d2f76a3a82661316872f006286e7b6160636ee51ab5f6a515088c460d13142b6130da8f8ec209ea75d032809e56fc955d8b899d078bbd557f'
+            '305ba076765c8b85ad1d480a9dcce825ffc911fe6a66c37eb7cb8891481c9e4ff654d14cbe30f616c1f5f25d4262d0a3bb45776bde8703806bb757f64d67f7c6'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '6150c1326319028f4e0ea9d7a49bbba3b7feac037dfd170e376b98d431b2959bd0748664cae325da75b0137c1d3e68b8ce3b38fe60fddeec62b7ed062bbba531'
-            '3d1a3cb812328b615823cc95f16525c61f687b0abec1a1bce885a3b62153a4ee8f7546222d6a4592cd96f599837108f63de9f0c971c3bfd1ae83bfabce1015dd'
-            'e45145fef8711fc28d18a0e8a330ebe87fdc97a09654df5a04d8788ff257d1e287a68008b3915a8fe6c0a765a654a12f988d6316815cdc31b442c13ffd326884')
+            'c11c31dffe1397c71cf00f2015730ca5c48ad36c5cb282d3fa26b1baf24deafbfe9f42b609ea80750150c13e82f1affa9f0fee1d1f0f141b6245250d0bc4c2bb'
+            '33344bc367c84ab59eb21832ca0a12b0b4e18070bcdef92a0fc67eda984b6597f65164fb4d0c36050afa0c24482dec8062757cd4f041943888457c003420fd67'
+            '8f670dad432e413a263e04623fe8a9a1278474b9d45c5cc4de053798714b8155c79953c99484871e4bbeba97a4bad732ab6b70115bdea0919fa75e42b8f7151a'
+            'db50a45349455a8bcc6a36be72bd3ee3495d87e059fce292ac87251deaf5f1d9f8c7e1f2d9fed37a916a611db600ff5a767c0b0e09d2d42494f017105a3dae00'
+            '753b2219935f3ae10e245108ca7a9bc75a8e81929574358421902d7dccbd15018322f09991e5081b5078e9750d1f3fa0334bb373cc8719f793795a5c5bce5f75'
+            '886c34212fc4efea47a7ee80225ce362e63c81796e25cc81fcf3587c362a1a79c7c2cb0577170827209ae71a161e8e25752b5ec65f3e54f3935335bddb923821'
+            '463043cd721c91ff91322b8f362e53635e7ebd528a8bee9eaa4479ad27fe74a591c589ae4d701c083a1f49f5cc77bc6c8fb13ed36546b0fcc9bdd7f0a63e31a2')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
