@@ -1,0 +1,18 @@
+pkgbase = ruby-tty-reader
+	pkgdesc = A set of methods for processing keyboard input in character, line and multiline modes.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://piotrmurach.github.io/tty
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-wisper
+	depends = ruby-tty-screen
+	depends = ruby-tty-cursor
+	noextract = tty-reader-0.6.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tty-reader-0.6.0.gem
+	sha1sums = 6fc1da956ee807f4d86df58044a1b9ee540b1674
+
+pkgname = ruby-tty-reader
+
