@@ -1,17 +1,17 @@
 # Maintainer: Alexander Agura <agura@tfwno.gf>
 pkgname=find-the-command
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Advanced command-not-found hook for bash and zsh using the power of pacman"
 arch=('any')
 url="https://github.com/agura-lex/find-the-command"
 license=('custom:WTFPL')
 depends=('pacman>=5.0')
-optdepends=('zsh: cool interactive shell with plenty of features'
-            'sudo: for root access (needed for packages installation)')
+optdepends=('sudo: for root access (needed for packages installation)')
 install=find-the-command.install
+options=('docs')
 source=("https://github.com/agura-lex/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('69ea3d114ec0af62380da253a3a7f86a')
+md5sums=('3219bc4b574b2db1266154c75373670d')
 
 package() {
 	cd "$pkgname-$pkgver"
