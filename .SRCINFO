@@ -1,7 +1,7 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 19.10.4.r34.g2d2cf90a
-	pkgrel = 3
+	pkgver = 19.10.4.r109.g00e439fc
+	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
 	license = GPL3
