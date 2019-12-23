@@ -12,7 +12,7 @@ pkgbase = mini-diary-git
 	depends = electron
 	provides = mini-diary-git
 	conflicts = mini-diary-git
-	source = mini-diary-git::git+https://github.com/samuelmeuli/mini-diary.git#tag=v2.5.2
+	source = mini-diary-git::git+https://github.com/samuelmeuli/mini-diary.git#tag=v2.5.3
 	source = mini-diary-git.sh
 	source = mini-diary-git.desktop
 	source = mini-diary-git.install

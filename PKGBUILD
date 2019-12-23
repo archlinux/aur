@@ -12,7 +12,7 @@ makedepends=("git" "npm" "imagemagick")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 install=${pkgname}.install
-source=("${pkgname}::git+$url.git#tag=v2.5.2"
+source=("${pkgname}::git+$url.git#tag=v2.5.3"
 		"${pkgname}.sh"
 		"${pkgname}.desktop"
 		"${pkgname}.install")
