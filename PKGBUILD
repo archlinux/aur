@@ -1,6 +1,6 @@
 # Maintainer: Emerson Max de Medeiros Silva <emersonmx@gmail.com>
 pkgname=libretro-sameboy-git
-pkgver=972.f1b578f
+pkgver=1040.da29506
 pkgrel=1
 pkgdesc='Nintendo Game Boy/Game Boy Color core'
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=('libretro')
 depends=('libretro-core-info')
 makedepends=('git' 'clang' 'sdl2' 'rgbds')
 _libname=sameboy_libretro
-source=("$pkgname::git+https://github.com/libretro/SameBoy.git#commit=f1b578f")
+source=("$pkgname::git+https://github.com/libretro/SameBoy.git#commit=da29506")
 md5sums=('SKIP')
 
 pkgver() {
