@@ -1,6 +1,6 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-cli
-pkgver=5.16.0
+pkgver=5.16.1
 pkgrel=1
 pkgdesc="Sensu Go cli"
 arch=('x86_64' 'armv7h')
@@ -11,8 +11,8 @@ source=("${pkgname}-${pkgver}_armv7h.tar.gz::https://s3-us-west-2.amazonaws.com/
         "${pkgname}-${pkgver}_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/${pkgver}/sensu-go_${pkgver}_linux_amd64.tar.gz"
       )
 sha256sums=(
-            '8bc8da4a6a38b39b9611fe232a935936064b4186fb191d419b1543e2affc48cb'
-            'bad0512865be732b56eda0bb694ad4206e30d0a44934881c677ebd5453e82321'
+            '604c43933a4675ad3382b0480db647cd6dc370f10ccce00f7cd34fc9fe43a547'
+            '1e01366fefc7f0248908e8fa8489609e80c600c4f7535c874ac453b044f372d1'
           )
 
 
