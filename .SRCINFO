@@ -7,6 +7,7 @@ pkgbase = ephemeral-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
+	makedepends = vala
 	depends = dconf
 	depends = desktop-file-utils
 	depends = glib2>=2.49.2
@@ -17,6 +18,8 @@ pkgbase = ephemeral-git
 	depends = libgee>=0.8.3
 	depends = libsoup>=2.32.2
 	depends = webkit2gtk>=2.15.4
+	provides = ephemeral
+	conflicts = ephemeral
 	conflicts = ephemeral-bin
 	source = git+https://github.com/cassidyjames/ephemeral
 	md5sums = SKIP
