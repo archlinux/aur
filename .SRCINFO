@@ -1,0 +1,19 @@
+pkgbase = ponyup
+	pkgdesc = The Pony language toolchain multiplexer
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ponylang/ponyup
+	install = ponyup.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = ponyc
+	makedepends = pony-stable
+	depends = openssl
+	source = ponyup-0.3.1.tar.gz::https://github.com/ponylang/ponyup/archive/0.3.1.tar.gz
+	source = ponyup.sh
+	sha256sums = 7f9ba6d5b2968ee2d9d3bf62e55423693d29e7c7756980c48c602947a03b3e9d
+	sha256sums = e3685b937791d8fbd1a7d5181163395805d9454611ae384633603973f4b2fd6a
+
+pkgname = ponyup
+

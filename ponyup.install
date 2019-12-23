@@ -1,0 +1,3 @@
+post_install() {
+    echo 'Warning: ponyup requires being added to the PATH, please log out and back in, or "source /etc/profile.d/ponyup.sh" manually'
+}
