@@ -12,7 +12,6 @@ pkgbase = pyradio-git
 	optdepends = mplayer: as backend
 	optdepends = vlc: as backend
 	optdepends = mpv: as backend
-	optdepends = socat: if mpv is used
 	provides = pyradio
 	conflicts = pyradio
 	source = pyradio-git::git+https://github.com/coderholic/pyradio.git
