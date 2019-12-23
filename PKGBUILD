@@ -1,9 +1,9 @@
 # Maintainer: Pierre Penninckx <ibizapeanut@gmail.com>
 
 pkgname='pass-ssh'
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc='A pass extension that lets you quickly create ssh keypairs and output public keys using fzf or rofi.'
+pkgdesc='A pass extension that creates ssh keys with an automatically generated passphrases stored in pass and outputs the public key using fzf or rofi'
 arch=('any')
 url='https://github.com/ibizaman/pass-ssh'
 license=('GPL3')
