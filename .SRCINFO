@@ -1,0 +1,15 @@
+pkgbase = jkk-git
+	pkgdesc = A git-like cli for Jenkins written in Kotlin
+	pkgver = r3.cbc5e60
+	pkgrel = 1
+	url = https://github.com/Polpetta/jkk
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime>=11
+	source = jkk::git+https://github.com/polpetta/jkk
+	md5sums = SKIP
+
+pkgname = jkk-git
+
