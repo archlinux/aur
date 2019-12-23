@@ -1,0 +1,21 @@
+pkgbase = yuview
+	pkgdesc = The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/IENT/YUView
+	install = yuview.install
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = desktop-file-utils
+	depends = libde265
+	provides = yuview
+	conflicts = yuview
+	conflicts = YUView
+	source = https://github.com/IENT/YUView/archive/2.3.zip
+	source = archlinux.patch
+	md5sums = c457c7fa6b122752a1e6d1aaf25352c4
+	md5sums = 14f0ec2312e20609b2576fde0885e730
+
+pkgname = yuview
+
