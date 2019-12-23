@@ -1,0 +1,18 @@
+pkgbase = ruby-strings
+	pkgdesc = A set of useful functions for transforming strings.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/piotrmurach/strings
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-strings-ansi
+	depends = ruby-unicode_utils
+	depends = ruby-unicode-display_width
+	noextract = strings-0.1.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/strings-0.1.8.gem
+	sha1sums = e933bfd8d5767670c2b07377488892b54b6a56ce
+
+pkgname = ruby-strings
+
