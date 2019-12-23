@@ -1,0 +1,29 @@
+pkgbase = tutanota-desktop-bin
+	pkgdesc = Official Tutanota email client
+	pkgver = 3.66.5
+	pkgrel = 2
+	url = https://tutanota.com
+	arch = x86_64
+	license = GPL3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = libappindicator-gtk3
+	depends = libnotify
+	optdepends = zenity: for dialogs
+	optdepends = kdialog: for dialogs
+	optdepends = xdialog: for dialogs
+	provides = tutanota-desktop
+	conflicts = tutanota-desktop
+	replaces = tutanota-desktop-linux
+	source = tutanota-desktop-bin-3.66.5.AppImage::https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
+	source = https://mail.tutanota.com/desktop/linux-sig.bin
+	source = https://raw.githubusercontent.com/tutao/tutanota/master/tutao-pub.pem
+	source = tutanota-desktop
+	sha512sums = 48c64bdf53bc3575099b3b6bd74900068ac919090f4c79a83941ee920fb3bb59630c0058f841db7c2f14c04f9431c6de736a2162051ed9116a4ce492ede16b29
+	sha512sums = 80c8c3b823bbe793cbf25f742b79d760d5c214496a554dc483fb8e2794dbfab2143e3d41a54e4eedbb1df26b7483cbaf5356bf2a4a14733a1b0fbe42617b232c
+	sha512sums = 7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45
+	sha512sums = 3e6089fae24cfb0bfb210e180427b525730f84b3cb64b5c57fe78e08fcb4292fcd60d15fba93bf9e7ef5c1692170de79cad23236e748308e4372266329140389
+
+pkgname = tutanota-desktop-bin
+
