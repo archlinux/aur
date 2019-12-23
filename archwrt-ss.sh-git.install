@@ -1,0 +1,4 @@
+post_upgrade() {
+    echo ":: Check new switches in archwrt-ss.conf:"
+    echo "   sudo vimdiff /etc/archwrt/ss/archwrt-ss.conf /etc/archwrt/ss/archwrt-ss.conf.pacnew"
+}

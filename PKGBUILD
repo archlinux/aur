@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=archwrt-ss.sh-git
-pkgver=r41.bbe34f2
+pkgver=r42.1ef18ec
 pkgrel=1
 pkgdesc="A simple Shadowsocks transparent proxy setup script by archwrt."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('simple-obfs: shadowsocks-libev plugin'
             'shadowsocks-v2ray-plugin: shadowsocks-libev plugin'
             'dnsproxy-adguard: a tiny dnsproxy with doh & dot support')
 makedepends=(git)
-
+install=archwrt-ss.sh-git.install
 source=("${pkgname}::git+https://github.com/archwrt/archwrt-ss.sh.git")
 sha256sums=('SKIP')
 
