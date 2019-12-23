@@ -1,8 +1,8 @@
-# Maintainer: Barry <brrtsm at gnmail .com>
+# Maintainer: Barry <smithbarry at gmx com>
 # Contributor: dmerej <d.merej@gmail.com>
 
 pkgname=hollywood
-pkgver=1.18
+pkgver=1.20
 pkgrel=1
 
 pkgdesc="Fill your console with Hollywood melodrama technobabble."
@@ -39,8 +39,8 @@ source=(
 )
 
 md5sums=(
-  '9a2650afc330172ec5dec0dc3bcd438b'
-  '2b2cc260d86e1b27a2de6d886f0fdb84'
+  'a93bc2ffb978e5f1a41c9375fdeb00d2'
+  '347c36aff263f3f84b6d1594b99c0a09'
   '65d3616852dbf7b1a6d4b53b00626032'
 )
 

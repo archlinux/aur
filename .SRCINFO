@@ -1,6 +1,6 @@
 pkgbase = hollywood
 	pkgdesc = Fill your console with Hollywood melodrama technobabble.
-	pkgver = 1.18
+	pkgver = 1.20
 	pkgrel = 1
 	url = https://launchpad.net/hollywood
 	arch = any
@@ -23,11 +23,11 @@ pkgbase = hollywood
 	depends = tree
 	depends = speedometer
 	depends = util-linux
-	source = hollywood-1.18.tar.gz::https://launchpad.net/hollywood/trunk/1.18/+download/hollywood_1.18.orig.tar.gz
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/hollywood_1.18-0ubuntu1.debian.tar.xz
+	source = hollywood-1.20.tar.gz::https://launchpad.net/hollywood/trunk/1.20/+download/hollywood_1.20.orig.tar.gz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/hollywood_1.20-0ubuntu1.debian.tar.xz
 	source = license.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
-	md5sums = 9a2650afc330172ec5dec0dc3bcd438b
-	md5sums = 2b2cc260d86e1b27a2de6d886f0fdb84
+	md5sums = a93bc2ffb978e5f1a41c9375fdeb00d2
+	md5sums = 347c36aff263f3f84b6d1594b99c0a09
 	md5sums = 65d3616852dbf7b1a6d4b53b00626032
 
 pkgname = hollywood
