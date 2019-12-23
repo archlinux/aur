@@ -2,4 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!asus-fan-control.install
+!*.install
+!*.patch
