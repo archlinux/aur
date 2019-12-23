@@ -1,0 +1,22 @@
+pkgbase = p3wm-git
+	pkgdesc = 3-way merge .pacnew files
+	pkgver = 0.1.0.r0.07e6feb
+	pkgrel = 1
+	url = https://github.com/5long/p3wm
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = git
+	depends = pacman
+	depends = sed
+	depends = tar
+	optdepends = vim: default merge tool
+	provides = p3wm
+	conflicts = p3wm
+	source = git+https://github.com/5long/p3wm
+	sha256sums = SKIP
+
+pkgname = p3wm-git
+
