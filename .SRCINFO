@@ -1,14 +1,16 @@
 pkgbase = mini_al-git
 	pkgdesc = Single file audio playback and capture library.
-	pkgver = r785.b51cdd3
+	pkgver = r1298.1ca6f80
 	pkgrel = 1
-	url = https://github.com/dr-soft/mini_al
+	url = https://github.com/dr-soft/miniaudio
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = git
 	provides = mini_al
+	provides = miniaudio
 	conflicts = mini_al
-	source = git+https://github.com/dr-soft/mini_al.git
+	conflicts = miniaudio
+	source = git+https://github.com/dr-soft/miniaudio.git
 	md5sums = SKIP
 
 pkgname = mini_al-git

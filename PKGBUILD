@@ -1,29 +1,29 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=mini_al-git
-pkgver=r785.b51cdd3
+pkgver=r1298.1ca6f80
 pkgrel=1
 pkgdesc='Single file audio playback and capture library.'
 arch=('any')
-url='https://github.com/dr-soft/mini_al'
-license=('custom')
+url='https://github.com/dr-soft/miniaudio'
+license=('MIT')
 depends=()
 makedepends=('git')
-conflicts=(mini_al)
-provides=(mini_al)
-source=('git+https://github.com/dr-soft/mini_al.git')
+conflicts=('mini_al' 'miniaudio')
+provides=('mini_al' 'miniaudio')
+source=('git+https://github.com/dr-soft/miniaudio.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd mini_al
+  cd miniaudio
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd mini_al
-  install -dm755 "${pkgdir}/usr/include/mini_al/"
-  install -m644 mini_al.h "${pkgdir}/usr/include/mini_al/mini_al.h"
-  install -dm755 "${pkgdir}/usr/include/mini_al/extras/"
-  install -m644 extras/*.h "${pkgdir}/usr/include/mini_al/extras/"
-  install -Dm644 README.md ${pkgdir}/usr/share/licenses/mini_al-git/LICENSE
+  cd miniaudio
+  install -dm755 "${pkgdir}/usr/include/miniaudio/"
+  install -m644 miniaudio.h "${pkgdir}/usr/include/miniaudio/miniaudio.h"
+  install -dm755 "${pkgdir}/usr/include/miniaudio/extras/"
+  install -m644 extras/*.h "${pkgdir}/usr/include/miniaudio/extras/"
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/mini_al-git/LICENSE
 }
