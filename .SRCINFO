@@ -1,17 +1,12 @@
 pkgbase = storcli
-	pkgdesc = CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)
-	pkgver = 1.23.02
-	pkgrel = 2
-	url = https://www.thomas-krenn.com/en/wiki/StorCLI
-	install = storcli.install
-	arch = i686
-	arch = x86_64
+	pkgdesc = CLI program for LSI MegaRAID cards
+	pkgver = 007.1108.0000.0000
+	pkgrel = 1
+	url = https://www.broadcom.com/
+	arch = any
 	license = custom
-	source = https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/1.23.02_StorCLI.zip
-	source = 1.23.02_StorCLI.zip.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = 2018c8b40d7371077f01bbe586ed1135d683823b9d243fde14d45404c8bab8328f36e19ac91eb876666a174a7cce7e95a2a75485f70681460cda4c9b65d4d579
-	sha512sums = SKIP
+	source = storcli-007.1108.0000.0000.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MR_SAS_Unified_StorCLI_007.1108.0000.0000.zip
+	sha512sums = 74c6dedef30e8c4a49a3167e2378cd196429d5c76c840696163faebe4726ca788bf0cab52b69676c5db319e9b76cb34e626684ae71bec5915ea0b663d6f4172b
 
 pkgname = storcli
 
