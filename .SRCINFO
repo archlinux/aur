@@ -1,8 +1,8 @@
 pkgbase = libcaer
 	pkgdesc = Minimal C library to access, configure and get data from neuromorphic sensors and processors.
-	pkgver = 3.2.2
+	pkgver = 3.3.0
 	pkgrel = 1
-	url = https://gitlab.com/inivation/libcaer/
+	url = https://gitlab.com/inivation/dv/libcaer/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -14,8 +14,8 @@ pkgbase = libcaer
 	depends = libserialport
 	depends = opencv
 	options = staticlibs
-	source = https://gitlab.com/inivation/libcaer/-/archive/3.2.2/libcaer-3.2.2.tar.gz
-	sha256sums = 06d85a8c5cb605efb82f81b778e5fcf6eb551406fea583ec4b7d2541ddb16ddf
+	source = https://gitlab.com/inivation/dv/libcaer/-/archive/3.3.0/libcaer-3.3.0.tar.gz
+	sha256sums = 85e5f677d407b8fdd47d2836818fc51b919ba3f58cad0dcbc36f450fcf254b44
 
 pkgname = libcaer
 
