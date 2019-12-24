@@ -12,12 +12,12 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.13.2
+pkgver=5.14.0
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+makedepends=('mingw-w64-gcc' 'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -26,9 +26,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-plugins-are-exported.patch'
         '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('d9a524f45fe9e136cda2252f9d7013ec17046d907e3f39606db920987c22d1fd'
-            '7598c3a4d1a9a7f1011a99bf0f5d44a81b9105a58d3a36d2de032895510daaec'
-            '71dc00aae7ae79496a00c3f73b6cc941ae5d3371bcd0b64e2cdd8c0570149b73')
+sha256sums=('bbf11ee33d6f0d6bd6c4dc641d4f2aafbc7c6cd3b421a658955302d441dc9d8e'
+            '23ef13e6155bdc06429f6dff97b37f26cab389594eea62a40365c1304ef57629'
+            '71dc45ee6a81cf3b612f83942283f5514c19d66a76736cb6bd84db58e6f82322')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
