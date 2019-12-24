@@ -1,0 +1,13 @@
+pkgbase = python-pymorphy2-dicts-uk
+	pkgdesc = Ukrainian dictionaries for pymorphy2
+	pkgver = 2.4.1.1.1460299261
+	pkgrel = 1
+	url = https://github.com/kmike/pymorphy2-dicts/
+	arch = any
+	license = MIT
+	license = license
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-pymorphy2-dicts-uk
+
