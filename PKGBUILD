@@ -8,17 +8,17 @@
 
 pkgbase=xorg-server-noudev
 _pkgbase=xorg-server
-pkgname=('xorg-server-noudev' 'xorg-server-xephyr-noudev' 'xorg-server-xdmx-noudev' 'xorg-server-xvfb-noudev' 'xorg-server-xnest-noudev'
+pkgname=('xorg-server-noudev' 'xorg-server-xephyr-noudev' 'xorg-server-xvfb-noudev' 'xorg-server-xnest-noudev'
          'xorg-server-xwayland-noudev' 'xorg-server-common-noudev' 'xorg-server-devel-noudev')
 pkgver=1.20.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg-noudev')
 url="https://xorg.freedesktop.org"
 makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
-             'libxmu' 'libxrender' 'libxi' 'libxaw' 'libdmx' 'libxtst' 'libxres'
+             'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'wayland-protocols' 'egl-wayland' 'meson') # 'git')
@@ -66,7 +66,6 @@ build() {
   arch-meson ${_pkgbase}-$pkgver build \
     -D os_vendor="Artix Linux" \
     -D ipv6=true \
-    -D dmx=true \
     -D xvfb=true \
     -D xnest=true \
     -D xcsecurity=true \
@@ -189,21 +188,6 @@ package_xorg-server-xnest-noudev() {
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}-${pkgver}"/COPYING
-}
-
-package_xorg-server-xdmx-noudev() {
-  pkgdesc="Distributed Multihead X Server and utilities (without udev support)"
-  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes
-           pixman xorg-server-common-noudev nettle)
-  provides=('xorg-server-xdmx')
-  conflicts=('xorg-server-xdmx')
-  replaces=('xorg-server-xdmx')
-
-  _install fakeinstall/usr/bin/{Xdmx,dmx*,vdltodmx,xdmxconfig}
-  _install fakeinstall/usr/share/man/man1/{Xdmx,dmxtodmx,vdltodmx,xdmxconfig}.1
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}-${pkgver}"/COPYING

@@ -1,6 +1,6 @@
 pkgbase = xorg-server-noudev
 	pkgver = 1.20.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg-noudev
@@ -19,7 +19,6 @@ pkgbase = xorg-server-noudev
 	makedepends = libxrender
 	makedepends = libxi
 	makedepends = libxaw
-	makedepends = libdmx
 	makedepends = libxtst
 	makedepends = libxres
 	makedepends = xorg-xkbcomp
@@ -102,21 +101,6 @@ pkgname = xorg-server-xephyr-noudev
 	provides = xorg-server-xephyr
 	conflicts = xorg-server-xephyr
 	replaces = xorg-server-xephyr
-
-pkgname = xorg-server-xdmx-noudev
-	pkgdesc = Distributed Multihead X Server and utilities (without udev support)
-	depends = libxfont2
-	depends = libxi
-	depends = libxaw
-	depends = libxrender
-	depends = libdmx
-	depends = libxfixes
-	depends = pixman
-	depends = xorg-server-common-noudev
-	depends = nettle
-	provides = xorg-server-xdmx
-	conflicts = xorg-server-xdmx
-	replaces = xorg-server-xdmx
 
 pkgname = xorg-server-xvfb-noudev
 	pkgdesc = Virtual framebuffer X server (without udev support)
