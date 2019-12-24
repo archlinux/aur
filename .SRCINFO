@@ -5,7 +5,7 @@ pkgbase = sapmachine-jdk-bin
 	url = https://sap.github.io/SapMachine/
 	install = sapmachine-jdk-bin.install
 	arch = x86_64
-	license = custom
+	license = GPL2
 	depends = java-environment-common=3
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
