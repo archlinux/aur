@@ -12,7 +12,6 @@ if [ ! -d "$HOME"/.cemu ] ; then
   ln -s /usr/share/cemu/keystone.dll "$HOME"/.cemu/keystone.dll || exit 1
   ln -s /usr/share/cemu/sharedFonts "$HOME"/.cemu/sharedFonts || exit 1
   cp -r /usr/share/cemu/gameProfiles "$HOME"/.cemu/ || exit 1
-  cp -r /usr/share/cemu/hfiomlc01 "$HOME"/.cemu/ || exit 1
   cp -r /usr/share/cemu/mlc01 "$HOME"/.cemu/ || exit 1
   cp -r /usr/share/cemu/shaderCache "$HOME"/.cemu/ || exit 1
 fi
