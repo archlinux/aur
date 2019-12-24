@@ -2,17 +2,17 @@
 # Contributor: Salvador Pardiñas <darkfm@vera.com.uy>
 
 pkgname=higan-git
-pkgver=106.r221.g327a19dc
+pkgver=107.r0.g3a12e1c5
 pkgrel=1
 pkgdesc="Nintendo multi-system emulator by Byuu"
 arch=(x86_64 i686)
-url="https://byuu.org"
+url="https://higan.byuu.org/"
 license=(GPL3)
 depends=(libpulse gtksourceview2 sdl2 libxv libao libgl openal)
 makedepends=(git mesa)
 provides=(higan)
 conflicts=(higan)
-source=("git+https://gitlab.com/higan/higan.git")
+source=("git+https://github.com/byuu/higan")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -39,7 +39,4 @@ package() {
   install -Dm 644 icarus/data/icarus.png -t "${pkgdir}"/usr/share/pixmaps/
   install -dm 755 "${pkgdir}"/usr/share/icarus
   cp -dr --no-preserve='ownership' icarus/Database "${pkgdir}"/usr/share/icarus/
-
-  install -dm 644 "${pkgdir}"/usr/share/higan/Video\ Shaders
-  cp -dr --no-preserve='ownership'  shaders/*.shader "${pkgdir}"/usr/share/higan/Video\ Shaders
 }
