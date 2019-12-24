@@ -1,6 +1,6 @@
 pkgbase = glimpse-editor-git
 	pkgdesc = Fork of the GNU Image Manipulation Program
-	pkgver = r42781.175d402049
+	pkgver = 0.1.0.r0.gb6b4dd0194
 	pkgrel = 1
 	url = https://glimpse-editor.org/
 	arch = i686
@@ -44,7 +44,7 @@ pkgbase = glimpse-editor-git
 	provides = gimp
 	conflicts = glimpse-editor
 	conflicts = gimp
-	source = git+https://github.com/glimpse-editor/Glimpse#branch=dev-g210
+	source = git+https://github.com/glimpse-editor/Glimpse#branch=glimpse-0-1
 	sha512sums = SKIP
 
 pkgname = glimpse-editor-git

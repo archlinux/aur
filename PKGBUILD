@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=glimpse-editor-git
-pkgver=r42781.175d402049
+pkgver=0.1.0.r0.gb6b4dd0194
 pkgrel=1
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
@@ -27,15 +27,12 @@ optdepends=('gutenprint: for sophisticated printing only as glimpse has built-in
             )
 provides=(glimpse-editor gimp)
 conflicts=(glimpse-editor gimp)
-source=("git+https://github.com/glimpse-editor/Glimpse#branch=dev-g210")
+source=("git+https://github.com/glimpse-editor/Glimpse#branch=glimpse-0-1")
 sha512sums=('SKIP')
 
 pkgver() {
   cd Glimpse
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
