@@ -1,6 +1,6 @@
 pkgbase = xml2rfc
 	pkgdesc = Generates RFCs and IETF drafts from document source in XML according to the DTD in RFC 2629
-	pkgver = 2.24.0
+	pkgver = 2.37.3
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/xml2rfc
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = xml2rfc
 	depends = python
 	depends = python-lxml
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/39/02/046571ee27ad899066b691b9943ba2bd52fa03f8ed109ec0205f237cab81/xml2rfc-2.24.0.tar.gz
-	sha512sums = 9fcee3f7904d7f3e929d4c9a4048f739327dc75076e5896f232f08ae1d72eb9231dc21336620335c936024de2e1ca5521b1d132de428aa4c5b3c9868f524d43a
+	source = https://files.pythonhosted.org/packages/a5/e4/a922123afff4564f4d81aebf8be55714749d483ec54d83ccb4818b7dbf10/xml2rfc-2.37.3.tar.gz
+	sha512sums = e19f89c7f03e73feb2d29f731aee1abc9ec6f6f0cba8ee1e001bbe9ba04b7bacfd9296a0a81e3ea63061af5fcf98d6df4f5cbb05a9a5b3f1262293a8e1024e31
 
 pkgname = xml2rfc
 
