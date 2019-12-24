@@ -1,4 +1,8 @@
 # Maintainer: Arnold Sommerfeld <mrsommerfeld@pm.me>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Jeff Mickey <jeff@archlinux.org>
+# Contributor: Pappa <jcberg@gmail.com >
 
 pkgname=python2-xlib
 pkgver=0.26
