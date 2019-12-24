@@ -1,7 +1,7 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=rumur
-pkgver=2019.11.24
+pkgver=2019.12.22
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
@@ -13,28 +13,28 @@ checkdepends=('valgrind' 'z3')
 optdepends=('z3: Preferred SMT solver'
             'cvc4: Alternative SMT solver')
 source=("https://github.com/Smattr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c58f9b79003a6bc585f9c6fb9decbd630f97207e4570f85fbad357a922886aaa')
+sha256sums=('046c2114bd2923f54fd82e36e841313b563f5dcf96aca62adb5f7195ecdffb97')
 
 prepare() {
-  mkdir -p $pkgname-$pkgver/build
+  mkdir -p build
 }
 
 build() {
-  cd $pkgname-$pkgver/build
-  cmake .. \
+  cd build
+  cmake "../$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
 check() {
-  cd $pkgname-$pkgver/build
+  cd build
   # The test needs about 1 hour
-  #../tests/integration-tests.py --verbose
+  #env PATH="./rumur:./ast-dump${PATH:+:$PATH}" "../$pkgname-$pkgver/tests/run-tests.py"
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/licence"
+  install -Dm644 "../$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/licence"
 }
