@@ -18,7 +18,7 @@
  ; Note: the default prefix is @EXPANDED_LOCALSTATEDIR@
  ; Default Value: none
 -;pid = run/php-fpm.pid
-+;pid = /run/php-fpm/php-fpm.pid
++;pid = /run/php73-fpm/php-fpm.pid
  
  ; Error log file
  ; If it's set to "syslog", log is sent to syslogd instead of being written
@@ -37,7 +37,7 @@
  ;   '/path/to/unix/socket' - to listen on a unix socket.
  ; Note: This value is mandatory.
 -listen = 127.0.0.1:9000
-+listen = /run/php-fpm/php-fpm.sock
++listen = /run/php73-fpm/php-fpm.sock
  
  ; Set listen(2) backlog.
  ; Default Value: 511 (-1 on FreeBSD and OpenBSD)
@@ -68,7 +68,7 @@
  [Service]
  Type=@php_fpm_systemd@
 -PIDFile=@EXPANDED_LOCALSTATEDIR@/run/php-fpm.pid
-+PIDFile=/run/php-fpm/php-fpm.pid
++PIDFile=/run/php73-fpm/php-fpm.pid
  ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
  ExecReload=/bin/kill -USR2 $MAINPID
  PrivateTmp=true
