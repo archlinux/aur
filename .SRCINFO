@@ -1,5 +1,5 @@
 pkgbase = brother-mfc-l2730dw-bin
-	pkgdesc = Printer driver for Brother MFC-L2730DW printer
+	pkgdesc = Out of use, use brother-mfc-l2730dw package
 	pkgver = 4.0.0.1
 	pkgrel = 1
 	url = https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcl2730dw_us_eu_as

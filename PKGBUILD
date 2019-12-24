@@ -1,8 +1,8 @@
-# Maintainer: Sam Sim <contact@sam-simons.nl>
+# Maintainer: Sam Sim <contact at sam-simons dot nl>
 pkgname=brother-mfc-l2730dw-bin
 pkgver=4.0.0.1
 pkgrel=1
-pkgdesc="Printer driver for Brother MFC-L2730DW printer"
+pkgdesc="Out of use, use brother-mfc-l2730dw package"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcl2730dw_us_eu_as"
 license=("EULA")
