@@ -1,14 +1,14 @@
-# Maintainer: zhuxiaoxi mailto:<echo emh1eGlhb3hpMTIzNDU2N0B5ZWFoLm5ldAo= | base64 -d>
+# Maintainer: nb5p
 pkgname=vimcdoc
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Vim chinese documentation"
 arch=(any)
 depends=('vim')
 url="http://vimcdoc.sf.net"
 license=('GPL')
-source=("https://jaist.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-2.1.0.tar.gz")
-md5sums=('e6320d3796afaafa604bf7e9e622727b')
+source=("https://jaist.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-2.2.0.tar.gz")
+md5sums=('f59422e918e142cfa058f8fe8c9ac683')
 package() {
 	cd "${pkgname}-${pkgver}"
 	local _dir="${pkgdir}/usr/share/vim/vimfiles"
