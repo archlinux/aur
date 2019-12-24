@@ -1,8 +1,8 @@
 # Maintainer: Marc Mettke <mettke@itmettke.de>
 pkgname=jetbrains-mps
 _pkgname=mps
-_pkgver=2019.2
-pkgver=${_pkgver}.4
+_pkgver=2019.3
+pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python: support for scripts like restart.py'
 
 source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
 sha256sums=(
-	'2d3b6dd735fc68f1a5ffb8b7e4959d8a6fac5261b3b6ea040156cb44930048de'
+	'231141ca4809d96d877b362f95ff9f1878eb615cbbe9d448327425d73ed51e17'
 )
 
 build() {
