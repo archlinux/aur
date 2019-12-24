@@ -8,8 +8,8 @@ url="https://github.com/bilelmoussaoui/nautilus-git"
 license=('GPL3')
 depends=('git' 'gobject-introspection' 'gtk3' 'nemo-python')
 makedepends=('gnome-common' 'meson' 'intltool')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" 'nemo-git')
+conflicts=("${pkgname%-git}" 'nemo-git')
 source=("${pkgname%-git}::git+https://github.com/bilelmoussaoui/nautilus-git")
 sha256sums=('SKIP')
 
