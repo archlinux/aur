@@ -1,0 +1,17 @@
+pkgbase = rebound
+	pkgdesc = Command-line tool that instantly fetches Stack Overflow results when an exception is thrown
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/shobrook/rebound
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-urwid
+	source = rebound-2.0.0.tar.gz::https://github.com/shobrook/rebound/archive/v2.0.0.tar.gz
+	sha256sums = 8d5cd356c17416dcdb90b34c09e793cb24550fbf00ac32a8ff85d58a312173f6
+
+pkgname = rebound
+
