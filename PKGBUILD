@@ -7,29 +7,19 @@
 
 _name=cppunit
 pkgname=mingw-w64-cppunit
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A C++ unit testing framework (mingw-w64)"
 arch=('any')
-url="http://www.freedesktop.org/wiki/Software/cppunit"
+url="https://www.freedesktop.org/wiki/Software/cppunit"
 license=('LGPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
 options=(!strip !buildflags !libtool staticlibs !emptydirs)
-source=("https://dev-www.libreoffice.org/src/${_name}-${pkgver}.tar.gz"
-        0001-Don-t-redefine-NOMINMAX.patch)
-sha256sums=('3d569869d27b48860210c758c4f313082103a5e58219a7669b52bfd29d674780'
-            '68ae7a200a6bea8669268665c9a2b80c96a90fbf07273749184ce7a7f190cd40')
+source=("https://dev-www.libreoffice.org/src/${_name}-${pkgver}.tar.gz")
+sha256sums=('1c61dfdb430e04ebb411e4b80fbd49fe7e63a1be0209a76d7c07501f02834922')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
 
 build() {
   for _arch in ${_architectures}; do
