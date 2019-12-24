@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 # Contributor: David Birks <david at tellus dot space>
@@ -8,13 +8,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2019.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
-makedepends=('git' 'cargo' 'npm' 'rpm')
+makedepends=('git' 'cargo' 'npm')
 install="$pkgname.install"
 _commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
@@ -35,6 +35,9 @@ prepare() {
 	git config submodule.mullvadvpn-app-binaries.url \
 		"$srcdir/mullvadvpn-app-binaries"
 	git submodule update
+
+	# Disable building of rpm
+	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 }
 
 build() {
