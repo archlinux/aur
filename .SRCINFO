@@ -1,18 +1,18 @@
 pkgbase = xq
 	pkgdesc = xml to json convert parser
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/syui/xq
 	arch = x86_64
 	arch = i686
 	license = MIT
-	noextract = https://github.com/syui/xq/releases/download/0.2.1/linux_386_xq
-	noextract = https://github.com/syui/xq/releases/download/0.2.1/linux_amd64_xq
+	noextract = https://github.com/syui/xq/releases/download/0.3.0/linux_386_xq
+	noextract = https://github.com/syui/xq/releases/download/0.3.0/linux_amd64_xq
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/syui/xq/releases/download/0.2.1/linux_386_xq
-	source = https://github.com/syui/xq/releases/download/0.2.1/linux_amd64_xq
-	sha1sums = 7a10595e9d60e4b70da980a634906cb617680610
-	sha1sums = c2d2825b643fe05f10d3f29d4688025acefc797d
+	source = https://github.com/syui/xq/releases/download/0.3.0/linux_386_xq
+	source = https://github.com/syui/xq/releases/download/0.3.0/linux_amd64_xq
+	sha1sums = 5cf3d5dc13bde112c9c771ef93f3916bdebfc726
+	sha1sums = 9a2750a783c2a2b3b38e8920bc5beafc8d2a4299
 
 pkgname = xq

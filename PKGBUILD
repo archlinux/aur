@@ -1,6 +1,6 @@
 # Maintainer: syui <syui@users.noreply.github.com>
 pkgname=xq
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="xml to json convert parser"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ license=('MIT')
 source=("$url/releases/download/$pkgver/linux_386_$pkgname"
   "$url/releases/download/$pkgver/linux_amd64_$pkgname")
 noextract=(${source[@]%%::*})
-sha1sums=('ec49fc225d79473b11790e79d7c1c57b3b829cff'
-  '883a2ec0dea0d449b34664367912af289d0b5943')
+sha1sums=('5cf3d5dc13bde112c9c771ef93f3916bdebfc726'
+  '9a2750a783c2a2b3b38e8920bc5beafc8d2a4299')
 
 package() {
   mkdir -p ${srcdir}/${pkgname}-${pkgver}
