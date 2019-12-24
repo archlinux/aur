@@ -1,16 +1,18 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh-staging
-pkgver=0.7.5.RC
-pkgrel=2
-_commit="c1cf3228ea6d11a6d08172ad5744d7a311c014fa"
-pkgdesc="Graphical interface for applications management ( AppImage, Flatpak, Snap and AUR ) (staging is a testing branch which receives updates frequently and may not be working properly)"
+pkgver=0.8.0.RC
+pkgrel=1
+_commit="f9a5063ee5c061271f712a418761ffe88b5b0d72"
+pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, AUR and Web ). Staging is a testing branch which receives updates frequently and may not be working properly."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
-depends=('python' 'python-pyqt5' 'python-requests' 'python-colorama')
+depends=('python' 'python-pyqt5' 'python-requests' 'python-colorama' 'python-pyaml')
 optdepends=('flatpak: required for Flatpak support' 
-            'snapd: required for Snap support' 
+            'snapd: required for Snap support'
+            'python-beautifulsoup4: for Native Web applications support'
+            'python-lxml: for Native Web applications support'
             'sqlite3: required for AppImage support'
             'wget: required for AppImage and AUR support'
             'fuse2: may be required for AppImage support'
@@ -36,7 +38,7 @@ makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('42b018f5737653d8e5da98301b05023d71c2d54634016d5f98ddd8d6c85aa83bc71c9b0b6763dfb87319d52ad3923c52e2371a6b03af22c3205ddec5de90c533')
+sha512sums=('0b84284031bc9c7cf9cd1ab75f0eb72bdacfa2ebf582cf1c1eaf429e1acdf2ac8eafd512ce5f5728407053cc5049b910c0eca3bd0a82a2f197def4a303325604')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
