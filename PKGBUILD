@@ -11,14 +11,16 @@ groups=()
 depends=(
   'bash'
   'coreutils'
-  'git'
   'pacman'
   'sed'
   'tar'
 )
 optdepends=(
-  'meld: default merge tool'
-  'vim: default merge tool'
+  'git: default merge tool'
+  'rcs: default merge tool'
+  'kdiff3: default resolve tool'
+  'meld: default resolve tool'
+  'vim: default resolve tool'
 )
 makedepends=('git' 'asciidoctor')
 provides=("$_pkgname")
