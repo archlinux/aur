@@ -1,8 +1,8 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop
-pkgver=1.1.1
-pkgrel=6
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -56,12 +56,10 @@ source=(
 	"fix-unneeded-private-header.patch"
 	"Use-system-wide-font.patch"
 	"Use-system-wide-font-families.patch"
-	"Parse-Semibold-Fontnames.patch"
 	"QtDBus-Notifications-Implementation.patch"
 	"system-tray-icon.patch"
 	"linux-autostart.patch"
 	"Use-native-notifications-by-default.patch"
-	"baloons-follows-text-width-on-adaptive-layout.patch"
 
 	"CMakeLists.inj"
 	"autostart.desktop"
@@ -89,12 +87,10 @@ sha512sums=('SKIP'
             '75bd6e0159b20e7110c72c2562d99fe94a6593dd037826955f28e5ebc64486f0ef04e10afce7961589be42d5cf7d10614a66f98d0dbf861322f0c25c7750a2a0'
             '2548ce368b63e526635060b376e911bd51cd3d2983a8096583f8a71137e9d3f4523f5ee3b3d658d55d7b5497aadc4bee1a2ef53a52f99c67c02be92e0a7ed638'
             '733dad3aa61336d7af1176d750832f588c7340141b9407bdf8aec29e148100d20dd1f3bbaa5c24065dc2c5bbc75cd1cf2a02e9ea88fc2416dc85d8db131b8747'
-            'a239a44a5859d03baad86bbeb46795d829cbcd7e67f0d0d49ef855c0421cf9b6d7c1c6d112a266cfec491e93228025235fefd86716bfd0f1c9da3f060c1604c7'
             '8394097bf41e4767b1b3f7978c4f00efa058714f71e8fcec79eae9c2b47849749f307e793fb31c4b35bed5450ad91599f033fc6f360d41ddf01195fffdca817f'
             '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a'
             'aaef50685b8871f32820e6cca2014aa986500ddcf34f4e99216081310e8622a242420a7d1ce30e277af85eb3f1d1e73c5a67dab9e02b42ef03ae6d76381fe635'
             '14064af25fda0fcd31a0dc7626687eaf61c329e9100fb55a8a0a455600a63a761e864056088aa486afdd053eccad0a55f8b332151eeb46c90a2c562a64a0a36e'
-            'ab3e3d627b542f88fde13b0b0db431c59e3b22ee360f916e71cf9b6b96b124b5042e64c9d0bdddb9c9acd9141a3fd254137dfad11fb5605a85cc1df9d8be4df4'
             '98236f7f161c8bad1152a77505f9c3eebae06ffc0420ed476e101359a92d01438dd6ce6062e0b110b76f2d6d09f59accf4b1969699b8af5a3650ecb0c31929c5'
             '610ce239e1e8ae6cfaaccc507eb2ca174f38e340ceec8f56bec4da1a6e390b516c56be5c82a90674e92d0958ac7c8f2fdba560b044f30fb165b522a58bfb600a')
 
@@ -127,8 +123,6 @@ prepare() {
 	for i in $srcdir/*.patch; do
 		patch -Np1 -i "$i"
 	done
-
-	git cherry-pick -n 'a196b0aba723de85ee573594d9ad420412b6391a'
 }
 
 build() {
