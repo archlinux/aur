@@ -1,43 +1,45 @@
-From 27693312f0cd1911215e23fd6d20ed1022b247e3 Mon Sep 17 00:00:00 2001
+From 479bc0ec33883ccc56930eb0bf54530acd4bd2dc Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
-Subject: [PATCH 28/32] Prevent qmake from messing static lib dependencies
+Subject: [PATCH 28/31] Prevent qmake from messing static lib dependencies
 
 In particular, it messes resolving cyclic dependency between
 static freetype2 and harfbuzz
+
+Change-Id: Ie5a4e2ad96bd613ae4c26486edb30c74929459b0
 ---
  qmake/generators/unix/unixmake.cpp     | 3 +++
  qmake/generators/win32/winmakefile.cpp | 3 +++
  2 files changed, 6 insertions(+)
 
 diff --git a/qmake/generators/unix/unixmake.cpp b/qmake/generators/unix/unixmake.cpp
-index d7c9413290..3026318a70 100644
+index f7bd6dc663..b76c444012 100644
 --- a/qmake/generators/unix/unixmake.cpp
 +++ b/qmake/generators/unix/unixmake.cpp
-@@ -393,6 +393,9 @@ UnixMakefileGenerator::fixLibFlag(const ProString &lib)
+@@ -391,6 +391,9 @@ UnixMakefileGenerator::fixLibFlag(const ProString &lib)
  bool
  UnixMakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
  {
 +    if(project->isActiveConfig("staticlib")) {
 +        return false; // prevent qmake from messing static lib dependencies
 +    }
-     QList<QMakeLocalFileName> libdirs, frameworkdirs;
+     QVector<QMakeLocalFileName> libdirs, frameworkdirs;
      int libidx = 0, fwidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 17592c2492..26f3f5cd82 100644
+index 3b4372ad05..cd10225e99 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
-@@ -87,6 +87,9 @@ Win32MakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
+@@ -106,6 +106,9 @@ Win32MakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
        impexts.append(project->values("QMAKE_EXTENSION_IMPORTLIB"));
        impexts.append(project->values("QMAKE_EXTENSION_STATICLIB"));
      }
 +    if(project->isActiveConfig("staticlib")) {
 +        return false; // prevent qmake from messing static lib dependencies
 +    }
-     QList<QMakeLocalFileName> dirs;
+     QVector<LibrarySearchPath> dirs;
      int libidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 -- 
-2.24.0
+2.24.1
 

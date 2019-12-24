@@ -1,10 +1,12 @@
-From ddbf905975bdeb1e34a6e59262ad154562ccaf9a Mon Sep 17 00:00:00 2001
+From ca8a7fc78a4e88a58f96674104662c2306949dbf Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
-Subject: [PATCH 19/32] Use *.dll.a as import lib extension
+Subject: [PATCH 19/31] Use *.dll.a as import lib extension
 
 The variables used here are provided by
 g++-win32.conf
+
+Change-Id: I1175feedd96ef4940af87dc3662fedc8f4d1d764
 ---
  mkspecs/features/create_cmake.prf      |  5 +++--
  mkspecs/features/qt.prf                | 15 ++++++++++++---
@@ -12,10 +14,10 @@ g++-win32.conf
  3 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index a3cb474b67..8539bd928f 100644
+index b8045753f0..cb4e136ded 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -282,8 +282,9 @@ mac {
+@@ -328,8 +328,9 @@ mac {
              CMAKE_PRL_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.prl
              CMAKE_PRL_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.prl
          } else {
@@ -57,10 +59,10 @@ index bbada46c29..d6299d8eed 100644
              }
          }
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 8222854cfc..17592c2492 100644
+index c1b28a52e9..3b4372ad05 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
-@@ -80,9 +80,13 @@ Win32MakefileGenerator::parseLibFlag(const ProString &flag, ProString *arg)
+@@ -99,9 +99,13 @@ private:
  bool
  Win32MakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
  {
@@ -74,10 +76,10 @@ index 8222854cfc..17592c2492 100644
 +      impexts.append(project->values("QMAKE_EXTENSION_IMPORTLIB"));
 +      impexts.append(project->values("QMAKE_EXTENSION_STATICLIB"));
 +    }
-     QList<QMakeLocalFileName> dirs;
+     QVector<LibrarySearchPath> dirs;
      int libidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
-@@ -257,9 +261,12 @@ void Win32MakefileGenerator::fixTargetExt()
+@@ -283,9 +287,12 @@ void Win32MakefileGenerator::fixTargetExt()
      if (!project->values("QMAKE_APP_FLAG").isEmpty()) {
          project->values("TARGET_EXT").append(".exe");
      } else if (project->isActiveConfig("shared")) {
@@ -92,5 +94,5 @@ index 8222854cfc..17592c2492 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.24.0
+2.24.1
 

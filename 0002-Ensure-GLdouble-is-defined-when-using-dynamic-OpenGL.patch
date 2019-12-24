@@ -1,7 +1,7 @@
-From 66aaead6f7f57adf266115ac9764c21839c8505c Mon Sep 17 00:00:00 2001
+From be14c1951af73ccc2e7a9bbde0db332a0aa3fe6f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:36:53 +0200
-Subject: [PATCH 02/32] Ensure GLdouble is defined when using dynamic OpenGL
+Subject: [PATCH 02/31] Ensure GLdouble is defined when using dynamic OpenGL
 
 FIXME: Not sure whether this is still required
 ---
@@ -23,5 +23,5 @@ index 4554291bbd..23d55bddeb 100644
  #ifdef Q_ENABLE_OPENGL_FUNCTIONS_DEBUG
  #include <stdio.h>
 -- 
-2.24.0
+2.24.1
 

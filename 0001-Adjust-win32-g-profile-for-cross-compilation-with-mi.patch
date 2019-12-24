@@ -1,7 +1,7 @@
-From e04f26325dae3daefcdfcb8f744e262faee0c508 Mon Sep 17 00:00:00 2001
+From b9877c6af8be840543ce928bf0a54bd3dc5f186e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
-Subject: [PATCH 01/32] Adjust win32-g++ profile for cross compilation with
+Subject: [PATCH 01/31] Adjust win32-g++ profile for cross compilation with
  mingw-w64
 
 Adding a new, separate mkspec instead of patching the existing one
@@ -12,6 +12,8 @@ So for this to work, the mkspec must be called win32-g++.
 Also see the following issues:
 * https://github.com/Martchus/PKGBUILDs/issues/59
 * https://github.com/Martchus/PKGBUILDs/issues/60
+
+Change-Id: I4c9b3c170ed13943abe0d8b397a8cb9e360538b6
 ---
  mkspecs/common/g++-win32.conf      | 52 ++++++++++++++++++++----------
  mkspecs/win32-clang-g++/qmake.conf |  4 +--
@@ -19,7 +21,7 @@ Also see the following issues:
  3 files changed, 39 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index c3a1f3a373..5208d22bd6 100644
+index 6369436863..17d2a5efec 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -41,10 +43,10 @@ index c3a1f3a373..5208d22bd6 100644
  
  MAKEFILE_GENERATOR      = MINGW
  QMAKE_PLATFORM          = win32 mingw
--CONFIG                 += debug_and_release debug_and_release_target precompile_header
+-CONFIG                 += precompile_header
 -DEFINES                += UNICODE _UNICODE WIN32 MINGW_HAS_SECURE_API=1
 -QMAKE_COMPILER_DEFINES += __GNUC__ _WIN32
-+CONFIG                 += debug_and_release debug_and_release_target precompile_header $${CROSS_COMPILE_CUSTOM_CONFIG}
++CONFIG                 += precompile_header $${CROSS_COMPILE_CUSTOM_CONFIG}
 +DEFINES                += UNICODE _UNICODE MINGW_HAS_SECURE_API=1
 +QMAKE_COMPILER_DEFINES += __GNUC__ _WIN32 WIN32
  # can't add 'DEFINES += WIN64' and 'QMAKE_COMPILER_DEFINES += _WIN64' defines for
@@ -125,7 +127,7 @@ index c3a1f3a373..5208d22bd6 100644
 -include(angle.conf)
 -include(windows-vulkan.conf)
 diff --git a/mkspecs/win32-clang-g++/qmake.conf b/mkspecs/win32-clang-g++/qmake.conf
-index 4630ec4602..3f9fdc72b1 100644
+index 59d42176f0..f8cb9859f2 100644
 --- a/mkspecs/win32-clang-g++/qmake.conf
 +++ b/mkspecs/win32-clang-g++/qmake.conf
 @@ -14,11 +14,11 @@ include(../common/g++-win32.conf)
@@ -161,5 +163,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.24.0
+2.24.1
 

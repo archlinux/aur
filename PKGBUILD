@@ -32,8 +32,8 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base
-pkgver=5.13.2
-pkgrel=2
+pkgver=5.14.0
+pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
 isStatic && arch=('any') || arch=('i686' 'x86_64')
@@ -47,7 +47,7 @@ optdepends=('mingw-w64-mesa: use LLVMpipe software rasterizer for Qt Quick'
             'mingw-w64-postgresql: PostgreSQL support'
             'mingw-w64-mariadb-connector-c: MySQL support')
 makedepends=('mingw-w64-gcc' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
-             'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config')
+             'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'mingw-w64-environment')
 # For running fxc.exe WINE coulde be used:
 #if isANGLE || isDynamic; then
 #    makedepends+=('mingw-w64-wine')
@@ -85,41 +85,39 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0028-Prevent-qmake-from-messing-static-lib-dependencies.patch'
         '0029-Hardcode-linker-flags-for-platform-plugins.patch'
         '0030-Fix-linking-against-static-plugins-with-qmake.patch'
-        '0031-Prevent-static-build-to-prefer-dynamic-libraries.patch'
-        '0032-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch')
-sha256sums=('26b6b686d66a7ad28eaca349e55e2894e5a735f3831e45f2049e93b1daa92121'
-            '35196184205cb58bdb1ade09c02bfc660679ed4af6dc1d807a24f1c52999545e'
-            '4c66ecd2e2e215afb7f53382139b5a3a9cc87bfec2dd75af3ab8111ce3556378'
-            'dcc5acb3e160b99101b967bd696dd48a099c65754b3908c16b46c1703f134e08'
-            '586bea4aa870423778eb497df48479819aa50de8d07977327eb1a0f84565813a'
-            'b5363b325198c3cfaba6437d21cc2cde6c5843d33475fc559f9eae4b20e0c867'
-            '9f835025a78ab4d7dd08b1a2cb5d499790b8e01a3039741f50c93bc6722f3c71'
-            '5217bae23859289898060a05769cc6088852f09206d7fc681cdcb492353be219'
-            '39d32e743984904c878616afb8ffd16ad5421bc2e67606831a4245b9ef924c7b'
-            'f5fc4b36f288bb59d662c58b49a15de84f60be05d13e89719342893138f9a903'
-            '48f5efe578913656ab79a35f899e15bd09fde58cc10adf8f7f5dbdc0a5022b7d'
-            'f89779100c07431fee063e0f40bcb0006662794afa522e9c5a57ac1eca24f621'
-            'f5ea9cc35754556045dd2dc07745bca89f677ade9b8566539c717d35f4ae0bd1'
-            '212aeb8f2f287108d2d884c17c2f55177b8f3c39e10357e36c2f1ef2e582a12a'
-            '2e7145b8a8fca349ce5838d4241d29059dd421c8722260cda5d063b75ffe3b5f'
-            'c0eff682bbc11e2258c5c40591d0222e88af0d2c136b3cede8e4792a7efba2d3'
-            '8d3879a05e0fe574671bb8952393a4e7ca44183e8116053dbf01776b2d6ad4cf'
-            '8b06afd5adab795a47520f1dfdb8827507f8d451eb98a02dbf1b57ede08fa6e2'
-            '21f7e13919ec7d6ae88835ce34185f7d3ff3c541a1a7bad25e4354fac0201723'
-            '5e08c43b1a4bfc1dfe93330119cfb85d5de873b8642cbf920d4cfbdad05a7ce5'
-            'ee0412e276bac12f57f1019807f678818cc3b166afaa2523e6d3cfbcc6baf5bf'
-            'f5f57e3b1e6314203bb3a98d7ad47c46b4894651b7d4e74749df6b7f0f7548f5'
-            '22bdbef1d761426c0388a5335c2b80be52aa75e83c75f1d134eba70091de59ed'
-            'fd37d3c487790922e6dede40964d6a8abab9908d674413748c37672863374a65'
-            '1c4b6e6bbc985b742e4d2124b7be002948b2cb43be4524b8b713253f2afebe96'
-            '94de3861dedd76133bd3e42793f3db3a1e8b52a921095ff853038cb5b4064a5f'
-            'cd4c07f83cad7b8b1fb2995a398a3ac2ed9b4606efc0154231821db7f793676c'
-            'b15f3a0d0dd1c14c5728444ad449f2753f6c668e73e6e2ad0477fab405c338e9'
-            '45af95f6f2e228f04ee3e39756cf752a04a0e58da5ed445ab79dbac0c8c7472f'
-            '29ded7cd3b82e31660d4559f0d2cefde8e18af8c4cea34fd816096946ad72189'
-            '13aa6ba82a4a28099c0219060deab3d3023424a8c5dcf8df6b105f3831a9a184'
-            '095a39a517844a3c3ce9282a44f39478dc6d5661b6be7f5b8517f195f0fe1b14'
-            'f8aa4f1a129d0fd98f71e9a108513ff9ca78b3d86a80554e830cf6f1ba5edb00')
+        '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch')
+sha256sums=('4ef921c0f208a1624439801da8b3f4344a3793b660ce1095f2b7f5c4246b9463'
+            '1f4fd0f8518160f3ec0e5bc39226d857387aa4caec897201999d8eada2b328ef'
+            '450aba36cf8c60a8659406f9367a85e2055a40e1cf0a8711c6de44de1927d857'
+            '7899cdcd3450f5f0bb9cb4cd71ac6529285d4368586e1a2fabb4e14d7b3dee67'
+            '579595a48fa45191941f393defe155c57d02426e6eba1296f3f7f501f6f32576'
+            '1d233841e73c8f69a1d09b666438b26299530b23ac354e6e1e0ccbe58f3ed54c'
+            '56bdecf98463853875e257cc347141967d1edd48e21b0724d16012dd1cc8ef90'
+            '28155531ed86617a074c7a2ac8d753c052707034009ad5dcbf0f2c6dc00ee977'
+            '8f5c7da6b4ae5ce95d887372398fb147678748bca1b8970901bb0417b3440423'
+            'f1f71a736d2cbe9aa3ac04343ae171ef3fda32b5db93bd189c9fc5510c9210e4'
+            'c4b45dd1d19331caaa7ac89cb0d276cb6ec53ee1d2ed2f72fb119d1af000e907'
+            '2d74d87a8da273ed296890a7a717ea8c84242a2af534830ba07a44be88d90d70'
+            '37f11888ee60b68570b759ec66e1ab49e0bb0df0663b808380df5b34f054b5fe'
+            '68d3eeea07f398133d068151ca5ba65d5bf4e1396a7db739cdd77377e261a785'
+            '6e5ab1df1c7aac94259aca4bb8c8469939a944104cc847ddf4fdaf7f278dd225'
+            '4e421ed2b892911725a4a3e6aad9803339dc6d27af9a5caba0dcf082f5a08fa7'
+            'f0629049a60362f83ebd3e9a6a67d71274e9c2f2eae21ba97062b8d5b11d759a'
+            '31d08dbfde790dd702d87f3b995322118919fc9828f22c9b1c044e912ae6f870'
+            '8ab7f64f5d017b650c39aa6e845252be71e4f37a1bfdfeee0f17aec65e233728'
+            '6c95b8fa7ed5a2c8fb48a237d172916c6b1f3197f32b3e627216d6c9759bce14'
+            '74a4fe7f163bba1312cda135c983644260cc8794cdd950385212911eb27d985c'
+            '7e415f8aad7d950add53466406ea3e0cb67180ce6493ea768937bb96ff8de33d'
+            'eb02f4a52b712dcf8bffe57cec420b77bea060e8227f28239056b0721c494075'
+            '62a99e8e345fe776619fb5928334c40d4116e7fae59c773de70ef690dfec1d5f'
+            '87e271140d4a831a9feac53a7d0d7fae0fee9a1c20040a3181a43472c3e6f15a'
+            'c5162eac72b87e34fcbc64c53f38c0a3dd2b174cdb049db258d899510c4febfb'
+            '1d4956c53a0759988d68ebfcae12d74f1332db075efdd85d762629d12421678c'
+            'fd2eeb783fcc83fa7951b7fd07a87033f0229827282b4142047378297688a4b9'
+            'c9cb158dbc2d5446f36f031478e7174188660150a1b7bcb94d7f761a51aa7342'
+            '7611dcb33265962ecfab480771db0360f1083c7672ba874b83b335e18d8909a5'
+            'f5b2a9a54eacc2d86531005b222dff7a3313430baa55d5bae407a5fdb6028d07'
+            '65889bbb2ed14dd9e7a884a6a9015b883bbfc0d558210cc296bb3d41bee4212e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -146,37 +144,26 @@ prepare() {
     patch -p1 -i "$patch"
   done
 
-  # make sure the Qt 5 build system uses our external ANGLE library
-  #rm -rf src/3rdparty/angle include/QtANGLE/{EGL,GLES2,GLES3,KHR}
-
   # make sure the Qt 5 build system uses our external PCRE library and zlib
   rm -rf src/3rdparty/{pcre,zlib}
 
-  # build qmake using mingw-w64 {C,LD}FLAGS
-  # This also sets default {C,CXX,LD}FLAGS for projects built using qmake
-  CPPFLAGS="${MINGW_CPPFLAGS:--D_FORTIFY_SOURCE=2}"
-  CFLAGS="${MINGW_CFLAGS:-$CPPFLAGS -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4}"
-  CXXFLAGS="${MINGW_CXXFLAGS:-$CPPFLAGS -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4}"
-  LDFLAGS="${MINGW_LDFLAGS:--Wl,-O1,--sort-common,--as-needed -fstack-protector}"
+  # clear buildflags ('!buildflags' only effects build() but not prepare())
+  unset CPPFLAGS CFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_PATH
+
+  # build qmake using mingw-w64 {C,CXX,LD}FLAGS
+  # * This also sets default {C,CXX,LD}FLAGS for projects built using qmake.
+  source mingw-env
   sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*=\).*$|\1 ${CFLAGS}|" \
          -e "s|^\(QMAKE_CXXFLAGS_RELEASE.*=\).*$|\1 ${CXXFLAGS}|" \
          -e "s|^\(QMAKE_LFLAGS_RELEASE.*=\).*$|\1 ${LDFLAGS}|" \
-    mkspecs/common/gcc-base.conf
+    mkspecs/common/gcc-base.conf \
+    mkspecs/common/g++-win32.conf
   sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*=\).*$|\1|" \
     mkspecs/common/g++-unix.conf
 }
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
-
-  # do not set any flags here, flags are configured via mkspec
-  # (Setting flags here is not appropriate as it does not allow to
-  #  distinguish between flags for native compiler and cross compiler.
-  #  See prepare() function.)
-  unset CFLAGS
-  unset CXXFLAGS
-  unset LDFLAGS
-  unset PKG_CONFIG_PATH
 
   for _arch in ${_architectures}; do
     # define general configure arguments
