@@ -3,15 +3,15 @@
 
 pkgname=pgsphere
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides spherical data types, functions, and operators for PostgreSQL"
 arch=('x86_64')
 url="http://pgfoundry.org/projects/pgsphere/"
 license=('GPL')
 makedepends=('git')
-depends=('postgresql' )
+depends=('postgresql')
 options=('!makeflags')
-source=(pgsphere::git://github.com/akorotkov/pgsphere.git)
+source=(pgsphere::git://github.com/mdgomes/pgsphere.git)
 sha256sums=('SKIP')
 
 prepare() {
