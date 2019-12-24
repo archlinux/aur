@@ -1,16 +1,16 @@
 pkgbase = python-pylint-venv
 	pkgdesc = Make pylint respect virtualenvs.
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jgosmann/pylint-venv
 	arch = any
 	license = MIT
 	optdepends = python-pylint: Kind of useless without it
 	optdepends = python-virtualenv: Kind of useless without it
-	source = https://files.pythonhosted.org/packages/60/28/805d3a28822f757e87f9b501481cb74ea60a090ff7c6dd585dca8a63301f/pylint-venv-1.1.0.tar.gz
-	source = https://raw.githubusercontent.com/jgosmann/pylint-venv/584fe9bb6252c448d4dfe868489121616f24fb97/LICENSE.txt
-	md5sums = dc3558d2bab86b2b6f800e8eb3d842fd
-	md5sums = e54892570ca5eec95aeb1d0462848952
+	source = https://github.com/jgosmann/pylint-venv/archive/v2.0.0.tar.gz
+	source = https://github.com/jgosmann/pylint-venv/raw/v2.0.0/LICENSE.txt
+	sha256sums = e8592198fd4cc79f58759a115d453a703e35747f9d2ced3ebfb426ecf1a5682c
+	sha256sums = b6b087cae10c9386509b0590c190a5ef86075eca6626ecf6afc5254fc5fcc550
 
 pkgname = python-pylint-venv
 
