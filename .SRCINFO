@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-bullet
 	pkgdesc = A 3D Collision Detection and Rigid Body Dynamics Library for games and animation (mingw-w64)
-	pkgver = 2.88
+	pkgver = 2.89
 	pkgrel = 1
 	url = http://www.bulletphysics.com/Bullet/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-bullet
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/bulletphysics/bullet3/archive/2.88.tar.gz
-	sha256sums = 21c135775527754fc2929db1db5144e92ad0218ae72840a9f162acb467a7bbf9
+	source = https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz
+	sha256sums = 621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8
 
 pkgname = mingw-w64-bullet
 

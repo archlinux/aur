@@ -1,9 +1,5 @@
-# Contributor: naelstrof <naelstrof@gmail.com>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Paul Bienkowski <opatutlol@aol.com>
-# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 pkgname=mingw-w64-bullet
-pkgver=2.88
+pkgver=2.89
 pkgrel=1
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library for games and animation (mingw-w64)"
 arch=('any')
@@ -13,13 +9,12 @@ depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 makedepends=('mingw-w64-cmake')
 source=("https://github.com/bulletphysics/bullet3/archive/${pkgver}.tar.gz")
-sha256sums=('21c135775527754fc2929db1db5144e92ad0218ae72840a9f162acb467a7bbf9')
+sha256sums=('621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd ${srcdir}/bullet3-${pkgver}
-#   echo "target_link_libraries (BulletRobotics ws2_32 winmm)" >> Extras/BulletRobotics/CMakeLists.txt
 }
 
 build() {
