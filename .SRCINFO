@@ -1,0 +1,22 @@
+pkgbase = nemo-ext-git-git
+	pkgdesc = Nemo extension to add important information about the current git directory
+	pkgver = 1.3.r16.g5389549
+	pkgrel = 1
+	url = https://github.com/bilelmoussaoui/nautilus-git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = meson
+	makedepends = intltool
+	depends = git
+	depends = gobject-introspection
+	depends = gtk3
+	depends = nemo-python
+	provides = nemo-ext-git
+	conflicts = nemo-ext-git
+	source = nemo-ext-git::git+https://github.com/bilelmoussaoui/nautilus-git
+	sha256sums = SKIP
+
+pkgname = nemo-ext-git-git
+
