@@ -1,0 +1,213 @@
+diff --git a/configure.ac b/configure.ac
+index 936511d..bd1f227 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -66,7 +66,7 @@ if test x"$with_gnome" != xno; then
+         PKG_CHECK_MODULES(LIBSECRET, libsecret-1)
+ 
+ 	if test x"$with_libnm_glib" != xno; then
+-		PKG_CHECK_MODULES(LIBNM_GTK, libnm-gtk >= 0.9.9.0)
++		PKG_CHECK_MODULES(LIBNM_GTK, libnma >= 0.9.9.0)
+ 		PKG_CHECK_MODULES(LIBNM_GLIB,
+ 		                  NetworkManager >= 1.1.0
+ 		                  libnm-util >= 1.1.0
+diff --git a/properties/nm-iodine.c b/properties/nm-iodine.c
+index 50e4036..7c123d2 100644
+--- a/properties/nm-iodine.c
++++ b/properties/nm-iodine.c
+@@ -252,7 +252,7 @@ static gboolean
+ check_validity (IodineEditor *self, GError **error)
+ {
+ 	IodineEditorPrivate *priv = \
+-		IODINE_EDITOR_GET_PRIVATE (self);
++		iodine_editor_get_instance_private (self);
+ 	GtkWidget *widget;
+ 	const char *str;
+ 
+@@ -282,7 +282,7 @@ setup_password_widget (IodineEditor *self,
+                        const char *secret_name)
+ {
+ 	IodineEditorPrivate *priv = \
+-		IODINE_EDITOR_GET_PRIVATE (self);
++		iodine_editor_get_instance_private (self);
+ 
+ 	NMSettingSecretFlags secret_flags = NM_SETTING_SECRET_FLAG_NONE;
+ 	GtkWidget *widget;
+@@ -317,7 +317,7 @@ setup_password_widget (IodineEditor *self,
+ static void
+ show_toggled_cb (GtkCheckButton *button, IodineEditor *self)
+ {
+-	IodineEditorPrivate *priv = IODINE_EDITOR_GET_PRIVATE (self);
++	IodineEditorPrivate *priv = iodine_editor_get_instance_private (self);
+ 	GtkWidget *widget;
+ 	gboolean visible;
+ 
+@@ -332,7 +332,7 @@ static void
+ pw_type_combo_changed_cb (GtkWidget *combo, gpointer user_data)
+ {
+ 	IodineEditor *self = IODINE_EDITOR (user_data);
+-	IodineEditorPrivate *priv = IODINE_EDITOR_GET_PRIVATE (self);
++	IodineEditorPrivate *priv = iodine_editor_get_instance_private (self);
+ 	GtkWidget *entry;
+ 
+ 	entry = GTK_WIDGET (gtk_builder_get_object (priv->builder, "password_entry"));
+@@ -362,7 +362,7 @@ init_one_pw_combo (IodineEditor *self,
+                    const char *secret_key,
+                    const char *entry_name)
+ {
+-	IodineEditorPrivate *priv = IODINE_EDITOR_GET_PRIVATE (self);
++	IodineEditorPrivate *priv = iodine_editor_get_instance_private (self);
+ 	int active = -1;
+ 	GtkWidget *widget;
+ 	GtkListStore *store;
+@@ -415,7 +415,7 @@ init_editor_plugin (IodineEditor *self,
+                 NMConnection *connection,
+                 GError **error)
+ {
+-	IodineEditorPrivate *priv = IODINE_EDITOR_GET_PRIVATE (self);
++	IodineEditorPrivate *priv = iodine_editor_get_instance_private (self);
+ 	NMSettingVpn *s_vpn;
+ 	GtkWidget *widget;
+ 	const char *value;
+@@ -484,7 +484,7 @@ static GObject *
+ get_widget (NMVpnEditor *iface)
+ {
+ 	IodineEditor *self = IODINE_EDITOR (iface);
+-	IodineEditorPrivate *priv = IODINE_EDITOR_GET_PRIVATE (self);
++	IodineEditorPrivate *priv = iodine_editor_get_instance_private (self);
+ 
+ 	return G_OBJECT (priv->widget);
+ }
+@@ -533,7 +533,7 @@ update_connection (NMVpnEditor *iface,
+                    GError **error)
+ {
+ 	IodineEditor *self = IODINE_EDITOR (iface);
+-	IodineEditorPrivate *priv = IODINE_EDITOR_GET_PRIVATE (self);
++	IodineEditorPrivate *priv = iodine_editor_get_instance_private (self);
+ 	NMSettingVpn *s_vpn;
+ 	GtkWidget *widget;
+ 	char *str;
+@@ -593,7 +593,7 @@ nm_vpn_editor_interface_new (NMConnection *connection, GError **error)
+ 		return NULL;
+ 	}
+ 
+-	priv = IODINE_EDITOR_GET_PRIVATE (object);
++	priv = iodine_editor_get_instance_private ((IodineEditor*)object);
+ 	ui_file = g_strdup_printf ("%s/%s", UIDIR, "nm-iodine-dialog.ui");
+ 	priv->builder = gtk_builder_new ();
+ 
+@@ -632,7 +632,7 @@ dispose (GObject *object)
+ {
+ 	IodineEditor *plugin = IODINE_EDITOR (object);
+ 	IodineEditorPrivate *priv = \
+-		IODINE_EDITOR_GET_PRIVATE (plugin);
++		iodine_editor_get_instance_private (plugin);
+ 
+ 	if (priv->group)
+ 		g_object_unref (priv->group);
+@@ -651,7 +651,7 @@ iodine_editor_class_init (IodineEditorClass *req_class)
+ {
+ 	GObjectClass *object_class = G_OBJECT_CLASS (req_class);
+ 
+-	g_type_class_add_private (req_class, sizeof (IodineEditorPrivate));
++	//g_type_class_add_private (req_class, sizeof (IodineEditorPrivate));
+ 
+ 	object_class->dispose = dispose;
+ }
+diff --git a/src/nm-iodine-service.c b/src/nm-iodine-service.c
+index 705d4fe..8c85c8a 100644
+--- a/src/nm-iodine-service.c
++++ b/src/nm-iodine-service.c
+@@ -50,14 +50,14 @@
+ #define NM_IODINE_USER "nm-iodine"
+ #define NM_IODINE_RUNDIR LOCALSTATEDIR "/run/" NM_IODINE_USER
+ 
+-G_DEFINE_TYPE (NMIodinePlugin, nm_iodine_plugin, NM_TYPE_VPN_SERVICE_PLUGIN)
+-
+ typedef struct {
+ 	GPid pid;
+ 	NMVpnPluginFailure failure;
+ 	GVariantBuilder ip4config;
+ } NMIodinePluginPrivate;
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (NMIodinePlugin, nm_iodine_plugin, NM_TYPE_VPN_SERVICE_PLUGIN)
++
+ #define NM_IODINE_PLUGIN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), NM_TYPE_IODINE_PLUGIN, NMIodinePluginPrivate))
+ 
+ static const char *iodine_binary_paths[] =
+@@ -247,7 +247,7 @@ static gint
+ iodine_parse_stderr_line (NMVpnServicePlugin *plugin,
+                           const char* line)
+ {
+-	NMIodinePluginPrivate *priv = NM_IODINE_PLUGIN_GET_PRIVATE (plugin);
++	NMIodinePluginPrivate *priv = nm_iodine_plugin_get_instance_private ((NMIodinePlugin*)plugin);
+ 	gchar **split = NULL;
+ 	GVariant *val;
+ 	long int mtu;
+@@ -373,7 +373,7 @@ iodine_stderr_cb (GIOChannel *source, GIOCondition condition, gpointer plugin)
+ 	GError *err = NULL;
+ 	gchar *line;
+ 	gint ret, l;
+-	NMIodinePluginPrivate *priv = NM_IODINE_PLUGIN_GET_PRIVATE (plugin);
++	NMIodinePluginPrivate *priv = nm_iodine_plugin_get_instance_private (plugin);
+ 
+ 	status = g_io_channel_read_line (source, &line, NULL, NULL, &err);
+ 	switch (status) {
+@@ -406,7 +406,7 @@ static void
+ iodine_watch_cb (GPid pid, gint status, gpointer user_data)
+ {
+ 	NMIodinePlugin *plugin = NM_IODINE_PLUGIN (user_data);
+-	NMIodinePluginPrivate *priv = NM_IODINE_PLUGIN_GET_PRIVATE (plugin);
++	NMIodinePluginPrivate *priv = nm_iodine_plugin_get_instance_private (plugin);
+ 	guint error = 0;
+ 
+ 	if (WIFEXITED (status)) {
+@@ -549,7 +549,7 @@ nm_iodine_start_iodine_binary (NMIodinePlugin *plugin,
+ 	               iodine_stderr_cb,
+ 	               plugin);
+ 
+-	NM_IODINE_PLUGIN_GET_PRIVATE (plugin)->pid = pid;
++	((NMIodinePluginPrivate*) nm_iodine_plugin_get_instance_private(plugin))->pid = pid;
+ 	iodine_watch = g_child_watch_source_new (pid);
+ 	g_source_set_callback (iodine_watch,
+ 	                       (GSourceFunc) iodine_watch_cb,
+@@ -567,7 +567,7 @@ real_connect (NMVpnServicePlugin *plugin,
+               GError **error)
+ {
+ 	NMSettingVpn *s_vpn;
+-	NMIodinePluginPrivate *priv = NM_IODINE_PLUGIN_GET_PRIVATE (plugin);
++	NMIodinePluginPrivate *priv = nm_iodine_plugin_get_instance_private ((NMIodinePlugin*)plugin);
+ 	gint ret = -1;
+ 
+ 	g_variant_builder_init(&priv->ip4config, G_VARIANT_TYPE_VARDICT);
+@@ -633,7 +633,7 @@ ensure_killed (gpointer data)
+ static gboolean
+ real_disconnect (NMVpnServicePlugin *plugin, GError **err)
+ {
+-	NMIodinePluginPrivate *priv = NM_IODINE_PLUGIN_GET_PRIVATE (plugin);
++	NMIodinePluginPrivate *priv = nm_iodine_plugin_get_instance_private ((NMIodinePlugin*)plugin);
+ 
+ 	if (priv->pid) {
+ 		if (kill (priv->pid, SIGTERM) == 0)
+@@ -651,7 +651,7 @@ real_disconnect (NMVpnServicePlugin *plugin, GError **err)
+ static void
+ nm_iodine_plugin_init (NMIodinePlugin *plugin)
+ {
+-	NMIodinePluginPrivate *priv = NM_IODINE_PLUGIN_GET_PRIVATE (plugin);
++	NMIodinePluginPrivate *priv = nm_iodine_plugin_get_instance_private (plugin);
+ 
+ 	priv->failure = -1;
+ }
+@@ -659,10 +659,10 @@ nm_iodine_plugin_init (NMIodinePlugin *plugin)
+ static void
+ nm_iodine_plugin_class_init (NMIodinePluginClass *iodine_class)
+ {
+-	GObjectClass *object_class = G_OBJECT_CLASS (iodine_class);
++	//GObjectClass *object_class = G_OBJECT_CLASS (iodine_class);
+ 	NMVpnServicePluginClass *parent_class = NM_VPN_SERVICE_PLUGIN_CLASS (iodine_class);
+ 
+-	g_type_class_add_private (object_class, sizeof (NMIodinePluginPrivate));
++	//g_type_class_add_private (object_class, sizeof (NMIodinePluginPrivate));
+ 
+ 	/* virtual methods */
+ 	parent_class->connect    = real_connect;

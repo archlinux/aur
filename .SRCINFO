@@ -1,6 +1,6 @@
 pkgbase = networkmanager-iodine-git
 	pkgdesc = Iodine plugin for NetworkManager
-	pkgver = r142.b299fbf
+	pkgver = r145.2ef0abf
 	pkgrel = 1
 	url = http://git.gnome.org/browse/network-manager-iodine
 	arch = i686
@@ -10,11 +10,13 @@ pkgbase = networkmanager-iodine-git
 	makedepends = intltool
 	depends = iodine
 	depends = networkmanager
-	depends = libgnome-keyring
 	depends = gtk3
-	depends = libnm-gtk
+	depends = libnma
+	depends = libnm-glib
 	source = networkmanager-iodine-git::git+https://gitlab.gnome.org/GNOME/network-manager-iodine.git
-	md5sums = SKIP
+	source = glib-2.58-fix-commit-2ef0abf089b00a0546f214dde0d45e63f2990b79.patch
+	sha512sums = SKIP
+	sha512sums = 9fce5486dad7ceb543df27660d3e51cc02a7f3209a5918e66cf2c584674f27e1f13cfc224502595c94e31113bdca10fa3c976dd857c21dee788c2dd6c6471b2a
 
 pkgname = networkmanager-iodine-git
 
