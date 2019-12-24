@@ -1,4 +1,4 @@
-From bdf1efddd731cd894066c7782dc953335ed8e072 Mon Sep 17 00:00:00 2001
+From bc075232c06699402e18c257deb21b27645d39f3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 27 May 2018 14:23:11 +0200
 Subject: [PATCH] Revert "Directly link to functions available from Windows 7
@@ -42,7 +42,7 @@ Binary file /usr/i686-w64-mingw32/lib/libdwmapi.a matches
  create mode 100644 src/winextras/qwinfunctions_p.cpp
 
 diff --git a/src/winextras/qwinfunctions.cpp b/src/winextras/qwinfunctions.cpp
-index 82fd25b..4edf76f 100644
+index b237a50..7866140 100644
 --- a/src/winextras/qwinfunctions.cpp
 +++ b/src/winextras/qwinfunctions.cpp
 @@ -38,13 +38,6 @@
@@ -154,7 +154,7 @@ index 0000000..ea9dcf9
 +
 +QT_END_NAMESPACE
 diff --git a/src/winextras/qwinfunctions_p.h b/src/winextras/qwinfunctions_p.h
-index 03dff5e..31536bb 100644
+index 0ee73cb..a5816fe 100644
 --- a/src/winextras/qwinfunctions_p.h
 +++ b/src/winextras/qwinfunctions_p.h
 @@ -64,8 +64,20 @@ enum qt_DWMWINDOWATTRIBUTE // Not present in MinGW 4.9
@@ -211,7 +211,7 @@ index 03dff5e..31536bb 100644
  {
      dst[src.toWCharArray(dst)] = 0;
 diff --git a/src/winextras/qwinthumbnailtoolbar.cpp b/src/winextras/qwinthumbnailtoolbar.cpp
-index 3aa39b6..d7eb4aa 100644
+index fc8d76e..59880c7 100644
 --- a/src/winextras/qwinthumbnailtoolbar.cpp
 +++ b/src/winextras/qwinthumbnailtoolbar.cpp
 @@ -38,13 +38,6 @@
@@ -282,10 +282,10 @@ index 3aa39b6..d7eb4aa 100644
              qWarning() << QWinThumbnailToolBarPrivate::msgComFailed("DwmSetIconicLivePreviewBitmap", hr);
      }
 diff --git a/src/winextras/winextras.pro b/src/winextras/winextras.pro
-index 705c48c..5d93c6b 100644
+index 8f582a5..a899f6c 100644
 --- a/src/winextras/winextras.pro
 +++ b/src/winextras/winextras.pro
-@@ -6,6 +6,7 @@ DEFINES += QT_NO_FOREACH
+@@ -4,6 +4,7 @@ QT += gui-private core-private
  
  SOURCES += \
      qwinfunctions.cpp \
@@ -294,5 +294,5 @@ index 705c48c..5d93c6b 100644
      qwintaskbarprogress.cpp \
      windowsguidsdefs.cpp \
 -- 
-2.24.0
+2.24.1
 
