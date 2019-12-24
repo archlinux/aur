@@ -33,6 +33,8 @@ build() {
     git submodule update
 
     bash opts.bash
+
+    cp -ruv ../../vendor "$srcdir/$pkgname"
 }
 
 package() {
