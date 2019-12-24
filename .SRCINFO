@@ -1,0 +1,13 @@
+pkgbase = python-pymorphy2_dicts
+	pkgdesc = OpenCorpora.org dictionaries pre-compiled for pymorphy2
+	pkgver = 2.4.393442.3710985
+	pkgrel = 1
+	url = https://github.com/kmike/pymorphy2-dicts/
+	arch = any
+	license = MIT
+	license = license
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-pymorphy2_dicts
+
