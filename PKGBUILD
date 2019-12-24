@@ -33,12 +33,12 @@ package() {
   install -D -m644 mesonic-ftdetect.vim "${_installpath}/ftdetect/mesonic.vim"
 
   cd "$pkgname"
-  for part in compiler ftdetect ftplugin indent plugin syntax
+  for part in compiler ftdetect ftplugin indent plugin syntax doc
   do
       install -D -m644 ${part}/meson.vim "${_installpath}/${part}/mesonic.vim"
   done
   #cp -r -t "${_installpath}" doc syntax_checkers
-  cp -r -t "${_installpath}" compiler doc
-  echo "The doc is available in vim at `:help mesonic`."
+  cp -r -t "${_installpath}" compiler
+  msg "The doc is available in vim at ':help mesonic'."
 }
 
