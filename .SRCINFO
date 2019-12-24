@@ -1,6 +1,6 @@
 pkgbase = connman-git
 	pkgdesc = Intel's modular network connection manager. Git version.
-	pkgver = 1.37.r114.g3a1398a3
+	pkgver = 1.37.r131.g2347aded
 	pkgrel = 1
 	url = https://01.org/connman
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = connman-git
 	optdepends = pptpclient: for ppp support
 	optdepends = openvpn: for VPN Support
 	optdepends = iwd: for WiFi devices
-	provides = connman=1.37.r114.g3a1398a3
+	provides = connman=1.37.r131.g2347aded
 	conflicts = connman
 	replaces = connman
 	source = git+https://git.kernel.org/pub/scm/network/connman/connman.git
