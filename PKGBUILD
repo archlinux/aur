@@ -26,19 +26,21 @@ package() {
   install -d "${_installpath}"
 
   # The meson package alreday pulls ftdetect, indent and syntax meson.vim files
-  # in _installpath vimfiles, so we'll workaround the package name. We'll use
-  # our compiler/meson.vim though.
+  # in _installpath vimfiles, so we'll workaround the package name.
 
   cd "$srcdir"
   install -D -m644 mesonic-ftdetect.vim "${_installpath}/ftdetect/mesonic.vim"
 
   cd "$pkgname"
-  for part in compiler ftdetect ftplugin indent plugin syntax doc
+  for folder in compiler ftdetect ftplugin indent plugin syntax
   do
-      install -D -m644 ${part}/meson.vim "${_installpath}/${part}/mesonic.vim"
+      install -D -m644 ${folder}/meson.vim "${_installpath}/${folder}/mesonic.vim"
   done
-  #cp -r -t "${_installpath}" doc syntax_checkers
-  cp -r -t "${_installpath}" compiler
+
+  # We'll write meson.vim files for compiler settings since the meson pkg doesn't.
+  # We don't copy syntax_checkers over, suggested vim-syntastic has them all.
+
+  cp -r -t "${_installpath}" compiler doc
   msg "The doc is available in vim at ':help mesonic'."
 }
 
