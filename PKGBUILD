@@ -14,7 +14,7 @@ license=('custom:insync')
 options=(!strip)
 depends=('xdg-utils'
          'glibc'
-         'python2'
+         'python'
          'libglvnd'
          'nss'
          'libxcursor'
