@@ -11,7 +11,7 @@ url="http://dev.mysql.com/doc/"
 license=('GPL')
 options=('docs')
 source=("${pkgname}-${pkgver}.tar.gz::http://downloads.mysql.com/docs/refman-${pkgver}-en.html-chapter.tar.gz")
-sha256sums=('10353332fe57864c38939c3fc42bc4f08881d64177b0f4c4aac89aadd980797b')
+sha256sums=('SKIP')
 
 package() {
   install -d ${pkgdir}/usr/share/doc/mysql/html
