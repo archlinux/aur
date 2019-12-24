@@ -1,0 +1,14 @@
+pkgbase = umenu
+	pkgdesc = command-line menu (a la dmenu, slmenu) with single-keypress interaction
+	pkgver = 0.4.0.gc534c22
+	pkgrel = 1
+	url = https://github.com/JCoMcL/umenu.git
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	depends = sh
+	source = git+https://github.com/JCoMcL/umenu
+	md5sums = SKIP
+
+pkgname = umenu
+
