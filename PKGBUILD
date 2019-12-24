@@ -8,8 +8,8 @@ url="https://github.com/bilelmoussaoui/nautilus-git"
 license=('GPL3')
 depends=('git' 'gobject-introspection' 'gtk3' 'python-nautilus')
 makedepends=('gnome-common' 'meson' 'intltool')
-provides=("${pkgname%-git}" 'nautilus-git')
-conflicts=("${pkgname%-git}" 'nautilus-git')
+provides=("${pkgname%-git}" 'nautilus-git=1.3')
+conflicts=("${pkgname%-git}" 'nautilus-git=1.3')
 source=("${pkgname%-git}::git+https://github.com/bilelmoussaoui/nautilus-git")
 sha256sums=('SKIP')
 
