@@ -1,0 +1,25 @@
+From 858c34d0ed8eed8fe1c9d1108760d6ab51ef2e89 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Tue, 24 Dec 2019 13:06:11 +0100
+Subject: [PATCH] Fix case of setupapi.h for mingw-w64
+
+---
+ src/bluetooth/qlowenergycontroller_win.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/bluetooth/qlowenergycontroller_win.cpp b/src/bluetooth/qlowenergycontroller_win.cpp
+index ced69685..7a30be9a 100644
+--- a/src/bluetooth/qlowenergycontroller_win.cpp
++++ b/src/bluetooth/qlowenergycontroller_win.cpp
+@@ -51,7 +51,7 @@
+ 
+ #include <algorithm> // for std::max
+ 
+-#include <SetupAPI.h>
++#include <setupapi.h>
+ 
+ QT_BEGIN_NAMESPACE
+ 
+-- 
+2.24.1
+

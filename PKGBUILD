@@ -8,7 +8,7 @@
 
 _qt_module=qtconnectivity
 pkgname="mingw-w64-qt5-connectivity"
-pkgver=5.13.2
+pkgver=5.14.0
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
@@ -19,8 +19,10 @@ groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('644e234eb64f602ef5cdeb8802ef9b58e75478f1124f001937275d62ed692e17')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
+        '0001-Fix-case-of-setupapi.h-for-mingw-w64.patch')
+sha256sums=('2843b3b479d0feba0624eb4ae41382b99db77b87a6b7dea5aacdf3b33644f0bd'
+            'b5b231fa866711f69107a4b0c65e79acf82986cb0c0e0c1184ef79ef46d79518')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -29,6 +31,16 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   _configurations+=('CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+
+prepare() {
+  cd "${srcdir}/${_pkgfqn}"
+
+  # apply patches; further descriptions can be found in patch files itself
+  for patch in "$srcdir/"*.patch; do
+    patch -p1 -i "$patch"
+  done
+}
+
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
