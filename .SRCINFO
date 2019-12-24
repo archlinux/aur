@@ -1,0 +1,13 @@
+pkgbase = python-dawg-python
+	pkgdesc = Pure-python reader for DAWGs (DAFSAs) created by dawgdic C++ library or DAWG Python extension.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/kmike/DAWG-Python/
+	arch = any
+	license = MIT
+	makedepends = python
+	source = https://github.com/pytries/DAWG-Python/archive/0.7.2.tar.gz
+	md5sums = daa23462f3cbfe47a7c240c1c4473c6c
+
+pkgname = python-dawg-python
+
