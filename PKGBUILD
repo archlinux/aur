@@ -1,14 +1,14 @@
 # Maintainer: Erhad Husovic <xdaemonx@protonmail.ch>
 
 pkgname=bim
-pkgver=2.1.1
-pkgrel=0
+pkgver=2.5.1
+pkgrel=1
 pkgdesc='Inspired by Vim, originally written for ToaruOS'
 arch=('x86_64')
 license=('ISC')
 url='https://github.com/klange/bim'
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/klange/bim/archive/v${pkgver}.tar.gz")
-sha256sums=('39ce470e4841b6c12c011dd25dbf9ff56f12e1b68d2809ac5372198d16d47eab')
+sha256sums=('dc380f8ebf19e0439f9de7c331a2d2947b0a59509a4baabfa37c5fc7331a640c')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
