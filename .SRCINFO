@@ -1,7 +1,7 @@
 pkgbase = nemo-ext-git-git
 	pkgdesc = Nemo extension to add important information about the current git directory
 	pkgver = 1.3.r16.g5389549
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bilelmoussaoui/nautilus-git
 	arch = i686
 	arch = x86_64
