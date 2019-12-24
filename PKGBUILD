@@ -2,13 +2,13 @@
 # Author: Vladimir Yakovlev <desktop-app@protonmail.ch>
 pkgname=electronmail-bin
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial desktop app for several E2E encrypted email providers"
 arch=('x86_64')
 url="https://github.com/vladimiry/ElectronMail"
 license=('MIT')
 # add libappindicator-sharp to the depends array if you are fine with mono deps
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'gconf' 'libsecret')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'gconf' 'gnome-keyring')
 conflicts=('electronmail')
 provides=('electronmail')
 install="${pkgname}.install"
