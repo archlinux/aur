@@ -1,7 +1,7 @@
 pkgbase = darktable-rc
 	pkgdesc = Utility to organize and develop raw images (RC/Stable version)
-	pkgver = 3.0.0rc2
-	pkgrel = 3
+	pkgver = 3.0.0
+	pkgrel = 1
 	epoch = 2
 	url = https://darktable.org
 	arch = x86_64
@@ -29,11 +29,11 @@ pkgbase = darktable-rc
 	depends = libsecret
 	depends = openmp
 	conflicts = darktable
-	source = https://github.com/darktable-org/darktable/releases/download/release-3.0.0rc2/darktable-3.0.0.rc2.tar.xz
-	source = https://github.com/darktable-org/darktable/releases/download/release-3.0.0rc2/darktable-3.0.0.rc2.tar.xz.asc
+	source = https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-3.0.0.tar.xz
+	source = https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-3.0.0.tar.xz.asc
 	validpgpkeys = C4CBC150699956E2A3268EF5BB5CC8295B1779C9
 	validpgpkeys = F10F9686652B0E949FCD94C318DCA123F949BD3B
-	sha256sums = ccd3680603343a7134d40f73acc377a3dc644a680e859e9750da4ae7e25adbcc
+	sha256sums = 7195a5ff7ee95ab7c5a57e4e84f8c90cc4728b2c917359203c21293ab754c0db
 	sha256sums = SKIP
 
 pkgname = darktable-rc
