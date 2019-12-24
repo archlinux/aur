@@ -7,12 +7,16 @@ pkgbase = tsmclient
 	license = proprietary
 	makedepends = libarchive
 	makedepends = patchelf
+	depends = gcc-libs
+	depends = zlib
 	optdepends = jre8-openjdk: support for dsmj java gui
 	options = !strip
 	source = https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v819/8.1.9.0-TIV-TSMBAC-LinuxX86.tar
 	source = dkms.conf
+	source = jbb_version.h
 	sha1sums = 8651fb42f596e360c51fe521d70bb19a57d3be82
-	sha1sums = ad89fff3d6096ba25d973e7e27ee3ce10e2fe57f
+	sha1sums = 9ebfc76be666a44675f0d8e25a37dbe36242c725
+	sha1sums = 46b7b0a46ee50a49d33fd23e0b0a682f162eda65
 
 pkgname = tsmclient-service
 	pkgdesc = IBM Tivoli Storage Manager Client and Systemd Service

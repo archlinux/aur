@@ -34,10 +34,12 @@ _ver_minor="${_ver_2#*.}"
 source=(
 	https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v${_ver_major}r${_ver_minor}/Linux/LinuxX86/BA/v${_ver_3_nd}/${pkgver}-TIV-TSMBAC-LinuxX86.tar
 	dkms.conf
+	jbb_version.h
 )
 
 sha1sums=('8651fb42f596e360c51fe521d70bb19a57d3be82'
-          'ad89fff3d6096ba25d973e7e27ee3ce10e2fe57f')
+          '9ebfc76be666a44675f0d8e25a37dbe36242c725'
+          '46b7b0a46ee50a49d33fd23e0b0a682f162eda65')
 
 prepare() {
 	cd "$srcdir/"
@@ -88,14 +90,13 @@ package_tsmclient-dkms() {
 	depends=('dkms')
 	pkgdesc="IBM Tivoli Storage Manager Client Journal-based Backup Kernel Module"
 
-	cd "$srcdir"/jbb_gpl
-
-	install -d -m 0755 "${pkgdir}"/usr/src/${pkgbase}-${pkgver}
-	install -D -m 0644 "${srcdir}"/dkms.conf "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/dkms.conf
-	install -m0644 Makefile *.c *.h "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/
+	dkmsdir="${pkgdir}"/usr/src/${pkgbase}-${pkgver}
+	install -d -m 0755 ${dkmsdir}
+	install -D -m 0644 "${srcdir}"/{dkms.conf,jbb_version.h} ${dkmsdir}/
+	install -m 0644 "${srcdir}"/jbb_gpl/{Makefile,*.c,*.h} ${dkmsdir}/
 
 	sed \
 		-e "s/@PKGBASE@/${pkgbase}/" \
 		-e "s/@PKGVER@/${pkgver}/" \
-		-i "${pkgdir}"/usr/src/${pkgbase}-${pkgver}/dkms.conf
+		-i ${dkmsdir}/{dkms.conf,jbb_version.h}
 }
