@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-datavis3d
 	pkgdesc = Qt Data Visualization module (mingw-w64)
-	pkgver = 5.13.2
+	pkgver = 5.14.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = mingw-w64-qt5-datavis3d
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.13/5.13.2/submodules/qtdatavis3d-everywhere-src-5.13.2.tar.xz
-	sha256sums = ecf934c3eb07173505781734f95cfc2cf9d89e6b1b98516ac98a137797f4ef28
+	source = https://download.qt.io/official_releases/qt/5.14/5.14.0/submodules/qtdatavis3d-everywhere-src-5.14.0.tar.xz
+	sha256sums = ba7269413b04de74086e2b876f3e4d39e90f14f363011ff36d082485dc683eb1
 
 pkgname = mingw-w64-qt5-datavis3d
 
