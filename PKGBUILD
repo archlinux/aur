@@ -21,9 +21,9 @@ pkgver() {
 
 package() {
   cd miniaudio
-  install -dm755 "${pkgdir}/usr/include/miniaudio/"
-  install -m644 miniaudio.h "${pkgdir}/usr/include/miniaudio/miniaudio.h"
-  install -dm755 "${pkgdir}/usr/include/miniaudio/extras/"
-  install -m644 extras/*.h "${pkgdir}/usr/include/miniaudio/extras/"
+  install -dm755 "${pkgdir}/usr/include/mini_al/"
+  install -m644 miniaudio.h "${pkgdir}/usr/include/mini_al/miniaudio.h"
+  install -dm755 "${pkgdir}/usr/include/mini_al/extras/"
+  install -m644 extras/*.h "${pkgdir}/usr/include/mini_al/extras/"
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/mini_al-git/LICENSE
 }
