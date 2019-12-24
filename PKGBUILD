@@ -1,7 +1,7 @@
 # Maintainer: Daniel Pereira <daniel@garajau.com.br>
 
 pkgname=ansible-bundler
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Turn Ansible playbooks into executable files"
 url="https://github.com/kriansa/ansible-bundler"
@@ -9,7 +9,7 @@ arch=(any)
 license=(custom:BSD)
 depends=(ansible)
 source=("https://github.com/kriansa/ansible-bundler/archive/v${pkgver}.tar.gz")
-sha256sums=(21b3eeee479c9859856d87a3ce122cbac7967ba5daa8be28d8a37c6c6eafd607)
+sha256sums=(fd424645d94218bcf31f4fdd42078b641cbf5632ca77c98aa64d795e37c63266)
 
 build() {
   cd "$pkgname-$pkgver" || exit 1

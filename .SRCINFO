@@ -1,13 +1,13 @@
 pkgbase = ansible-bundler
 	pkgdesc = Turn Ansible playbooks into executable files
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/kriansa/ansible-bundler
 	arch = any
 	license = custom:BSD
 	depends = ansible
-	source = https://github.com/kriansa/ansible-bundler/archive/v1.8.0.tar.gz
-	sha256sums = 21b3eeee479c9859856d87a3ce122cbac7967ba5daa8be28d8a37c6c6eafd607
+	source = https://github.com/kriansa/ansible-bundler/archive/v1.9.0.tar.gz
+	sha256sums = fd424645d94218bcf31f4fdd42078b641cbf5632ca77c98aa64d795e37c63266
 
 pkgname = ansible-bundler
 
