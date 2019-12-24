@@ -3,7 +3,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.66.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -30,8 +30,8 @@ prepare() {
 	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin "${pkgname%-bin}-$pkgver.AppImage"
 	set +e
 
-	chmod +x "$pkgname-$pkgver.AppImage"
-	./"$pkgname-$pkgver.AppImage" --appimage-extract
+	chmod +x "${pkgname%-bin}-$pkgver.AppImage"
+	./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
 
 	sed -i 's|Exec=AppRun|Exec=/opt/tutanota-desktop/AppRun|g' "squashfs-root/${pkgname%-bin}.desktop"
 }
