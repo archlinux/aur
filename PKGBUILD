@@ -1,14 +1,14 @@
 # Maintainer: James Hendrie <hendrie.james@gmail.com>
 pkgname=qytdl
 pkgver=1.02
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Basic PyQt5 frontend to Youtube-DL"
 arch=('any')
 url="https://github.com/jahendrie/qytdl"
 license=('GPL3')
 groups=()
-depends=('python>=3.7' 'python-pyqt5>=5.13' 'pyqt5-common>=5.13' 'youtube-dl')
+depends=('python>=3.7' 'python-pyqt5>=5.13' 'youtube-dl')
 makedepends=('make')
 checkdepends=()
 optdepends=()
