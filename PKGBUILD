@@ -1,6 +1,6 @@
 
 pkgname=r10k
-pkgver=3.1.0
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="R10K provides a general purpose toolset for deploying Puppet environments and modules."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('ruby' 'ruby-colored' 'ruby-cri' 'ruby-gettext-setup' 'ruby-log4r' 'rub
 makedepends=('rubygems')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha256sums=('d08d24ec49e28220f4b571f1ae71ed7d66d2887ea3dcc6936357ea648f6924fd')
+sha256sums=('4306e4e230aa3e18e6248b9d11fe776f84d1c5dd727fba74cd804c9213899f94')
 
 package() {
   cd "$srcdir"

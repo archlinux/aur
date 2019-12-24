@@ -1,6 +1,6 @@
 pkgbase = r10k
 	pkgdesc = R10K provides a general purpose toolset for deploying Puppet environments and modules.
-	pkgver = 3.1.0
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/puppetlabs/r10k
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = r10k
 	depends = ruby-minitar
 	depends = ruby-multi_json
 	depends = ruby-semantic_puppet
-	noextract = r10k-3.1.0.gem
-	source = https://rubygems.org/downloads/r10k-3.1.0.gem
-	sha256sums = d08d24ec49e28220f4b571f1ae71ed7d66d2887ea3dcc6936357ea648f6924fd
+	noextract = r10k-3.3.3.gem
+	source = https://rubygems.org/downloads/r10k-3.3.3.gem
+	sha256sums = 4306e4e230aa3e18e6248b9d11fe776f84d1c5dd727fba74cd804c9213899f94
 
 pkgname = r10k
 
