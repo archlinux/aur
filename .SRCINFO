@@ -1,6 +1,6 @@
 pkgbase = ghq
 	pkgdesc = Remote repository management made easy
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/motemen/ghq
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = ghq
 	makedepends = go
 	makedepends = git
 	optdepends = zsh: ghq function for zsh
-	source = ghq-0.16.0.tar.gz::https://github.com/motemen/ghq/archive/v0.16.0.tar.gz
-	sha512sums = 68666159e118d49b37d3b96bc288fa85a149f6c106e2ceb093f405c36b0021d8048d290c0fd66bcf53599f81b4659d1186cb4d50877a729581e2202f4ad991e3
+	source = ghq-0.17.0.tar.gz::https://github.com/motemen/ghq/archive/v0.17.0.tar.gz
+	sha512sums = 56a850c27514b7b522dd50d9810e8e5410d81458cdcc828c48435ef4dda2ffee1328c6924af55fee11e7ecc82274f95b70bb8bcae45b4cb899b98b48a6c5ae5e
 
 pkgname = ghq
 
