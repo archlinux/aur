@@ -1,5 +1,6 @@
+# Maintainer: Kaare Jenssen <kaare at jenssen dot it>
 # Contributor: Aaron France <aaron.l.france@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: veox <cy at wre dot ath dot cx>
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Contributor: Jonathan Friedman <jonf@gojon.com>
