@@ -1,0 +1,87 @@
+From c0da4d4ee458208d5427d0a284173bd39a95d040 Mon Sep 17 00:00:00 2001
+From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Date: Fri, 20 Sep 2019 11:39:18 +0300
+Subject: [PATCH 14/20] drm/i915: save AUD_FREQ_CNTRL state at audio domain
+ suspend
+
+When audio power domain is suspended, the display driver must
+save state of AUD_FREQ_CNTRL on Tiger Lake and Ice Lake
+systems. The initial value of the register is set by BIOS and
+is read by driver during the audio component init sequence.
+
+Cc: Jani Nikula <jani.nikula@intel.com>
+Cc: Imre Deak <imre.deak@intel.com>
+Signed-off-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20190920083918.27057-1-kai.vehmanen@linux.intel.com
+---
+ drivers/gpu/drm/i915/display/intel_audio.c | 17 +++++++++++++++--
+ drivers/gpu/drm/i915/i915_drv.h            |  1 +
+ drivers/gpu/drm/i915/i915_reg.h            |  2 ++
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_audio.c b/drivers/gpu/drm/i915/display/intel_audio.c
+index ddcccf4408c3..439bc0a93410 100644
+--- a/drivers/gpu/drm/i915/display/intel_audio.c
++++ b/drivers/gpu/drm/i915/display/intel_audio.c
+@@ -850,10 +850,17 @@ static unsigned long i915_audio_component_get_power(struct device *kdev)
+ 
+ 	ret = intel_display_power_get(dev_priv, POWER_DOMAIN_AUDIO);
+ 
+-	/* Force CDCLK to 2*BCLK as long as we need audio to be powered. */
+-	if (dev_priv->audio_power_refcount++ == 0)
++	if (dev_priv->audio_power_refcount++ == 0) {
++		if (IS_TIGERLAKE(dev_priv) || IS_ICELAKE(dev_priv)) {
++			I915_WRITE(AUD_FREQ_CNTRL, dev_priv->audio_freq_cntrl);
++			DRM_DEBUG_KMS("restored AUD_FREQ_CNTRL to 0x%x\n",
++				      dev_priv->audio_freq_cntrl);
++		}
++
++		/* Force CDCLK to 2*BCLK as long as we need audio powered. */
+ 		if (IS_CANNONLAKE(dev_priv) || IS_GEMINILAKE(dev_priv))
+ 			glk_force_audio_cdclk(dev_priv, true);
++	}
+ 
+ 	return ret;
+ }
+@@ -1114,6 +1121,12 @@ static void i915_audio_component_init(struct drm_i915_private *dev_priv)
+ 		return;
+ 	}
+ 
++	if (IS_TIGERLAKE(dev_priv) || IS_ICELAKE(dev_priv)) {
++		dev_priv->audio_freq_cntrl = I915_READ(AUD_FREQ_CNTRL);
++		DRM_DEBUG_KMS("init value of AUD_FREQ_CNTRL of 0x%x\n",
++			      dev_priv->audio_freq_cntrl);
++	}
++
+ 	dev_priv->audio_component_registered = true;
+ }
+ 
+diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
+index 89b6112bd66b..043ce1b47aeb 100644
+--- a/drivers/gpu/drm/i915/i915_drv.h
++++ b/drivers/gpu/drm/i915/i915_drv.h
+@@ -1530,6 +1530,7 @@ struct drm_i915_private {
+ 	 */
+ 	struct mutex av_mutex;
+ 	int audio_power_refcount;
++	u32 audio_freq_cntrl;
+ 
+ 	struct {
+ 		struct mutex mutex;
+diff --git a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
+index f8ee9aba3955..e1fe356463ec 100644
+--- a/drivers/gpu/drm/i915/i915_reg.h
++++ b/drivers/gpu/drm/i915/i915_reg.h
+@@ -9104,6 +9104,8 @@ enum {
+ #define HSW_AUD_CHICKENBIT			_MMIO(0x65f10)
+ #define   SKL_AUD_CODEC_WAKE_SIGNAL		(1 << 15)
+ 
++#define AUD_FREQ_CNTRL			_MMIO(0x65900)
++
+ /*
+  * HSW - ICL power wells
+  *
+-- 
+2.24.1
+

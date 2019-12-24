@@ -1,7 +1,7 @@
-From afad84fc6acaed69089d70da12594a6c3f68841f Mon Sep 17 00:00:00 2001
+From 8d032e7fc1d1d37974785ccdb994524d60201ca3 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Tue, 29 Oct 2019 20:00:22 +0300
-Subject: [PATCH 5/9] PCI: pciehp: Prevent deadlock on disconnect
+Subject: [PATCH 05/20] PCI: pciehp: Prevent deadlock on disconnect
 
 This addresses deadlocks in these common cases in hierarchies containing
 two switches:
@@ -96,10 +96,10 @@ Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
  4 files changed, 61 insertions(+), 19 deletions(-)
 
 diff --git a/drivers/pci/hotplug/pciehp.h b/drivers/pci/hotplug/pciehp.h
-index 654c972b8ea0..afea59a3aad2 100644
+index 882ce82c4699..aa61d4c219d7 100644
 --- a/drivers/pci/hotplug/pciehp.h
 +++ b/drivers/pci/hotplug/pciehp.h
-@@ -172,10 +172,10 @@ void pciehp_set_indicators(struct controller *ctrl, int pwr, int attn);
+@@ -174,10 +174,10 @@ void pciehp_set_indicators(struct controller *ctrl, int pwr, int attn);
  
  void pciehp_get_latch_status(struct controller *ctrl, u8 *status);
  int pciehp_query_power_fault(struct controller *ctrl);
@@ -151,7 +151,7 @@ index 56daad828c9e..312cc45c44c7 100644
  	    (!occupied && (ctrl->state == ON_STATE ||
  			   ctrl->state == BLINKINGOFF_STATE)))
 diff --git a/drivers/pci/hotplug/pciehp_ctrl.c b/drivers/pci/hotplug/pciehp_ctrl.c
-index 21af7b16d7a4..c760a13ec7b1 100644
+index dd8e4a5fb282..6503d15effbb 100644
 --- a/drivers/pci/hotplug/pciehp_ctrl.c
 +++ b/drivers/pci/hotplug/pciehp_ctrl.c
 @@ -226,7 +226,7 @@ void pciehp_handle_disable_request(struct controller *ctrl)
@@ -173,7 +173,7 @@ index 21af7b16d7a4..c760a13ec7b1 100644
  		return;
  	}
 diff --git a/drivers/pci/hotplug/pciehp_hpc.c b/drivers/pci/hotplug/pciehp_hpc.c
-index 1a522c1c4177..526a8f70bac5 100644
+index 86d97f3112f0..a2a263764ef8 100644
 --- a/drivers/pci/hotplug/pciehp_hpc.c
 +++ b/drivers/pci/hotplug/pciehp_hpc.c
 @@ -201,17 +201,29 @@ static void pcie_write_cmd_nowait(struct controller *ctrl, u16 cmd, u16 mask)

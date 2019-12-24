@@ -1,0 +1,41 @@
+From d112ebe17985ec073ae6edd0d46fa7a18fbe50cd Mon Sep 17 00:00:00 2001
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date: Fri, 29 Nov 2019 14:23:02 +0800
+Subject: [PATCH 12/20] x86/intel: Disable HPET on Intel Coffee Lake H
+ platforms
+
+Coffee Lake H SoC has similar behavior as Coffee Lake, skewed HPET timer
+once the SoCs entered PC10.
+
+So let's disable HPET on CFL-H platforms.
+
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Cc: Linus Torvalds <torvalds@linux-foundation.org>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: bp@alien8.de
+Cc: feng.tang@intel.com
+Cc: harry.pan@intel.com
+Cc: hpa@zytor.com
+Link: https://lkml.kernel.org/r/20191129062303.18982-1-kai.heng.feng@canonical.com
+Signed-off-by: Ingo Molnar <mingo@kernel.org>
+---
+ arch/x86/kernel/early-quirks.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/x86/kernel/early-quirks.c b/arch/x86/kernel/early-quirks.c
+index 4cba91ec8049..606711f5ebf8 100644
+--- a/arch/x86/kernel/early-quirks.c
++++ b/arch/x86/kernel/early-quirks.c
+@@ -710,6 +710,8 @@ static struct chipset early_qrk[] __initdata = {
+ 	 */
+ 	{ PCI_VENDOR_ID_INTEL, 0x0f00,
+ 		PCI_CLASS_BRIDGE_HOST, PCI_ANY_ID, 0, force_disable_hpet},
++	{ PCI_VENDOR_ID_INTEL, 0x3e20,
++		PCI_CLASS_BRIDGE_HOST, PCI_ANY_ID, 0, force_disable_hpet},
+ 	{ PCI_VENDOR_ID_INTEL, 0x3ec4,
+ 		PCI_CLASS_BRIDGE_HOST, PCI_ANY_ID, 0, force_disable_hpet},
+ 	{ PCI_VENDOR_ID_BROADCOM, 0x4331,
+-- 
+2.24.1
+

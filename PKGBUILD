@@ -63,7 +63,7 @@ _localmodcfg=
 pkgbase=linux-ck
 _srcver=5.4.6-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,6 +83,19 @@ source=(
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
   0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+  0007-x86-MCE-AMD-Do-not-use-rdmsr_safe_on_cpu-in-smca_con.patch
+  0008-x86-MCE-AMD-Allow-Reserved-types-to-be-overwritten-i.patch
+  0009-x86-mce-Fix-possibly-incorrect-severity-calculation-.patch
+  0010-Revert-iwlwifi-assign-directly-to-iwl_trans-cfg-in-Q.patch
+  0011-iwlwifi-pcie-move-power-gating-workaround-earlier-in.patch
+  0012-x86-intel-Disable-HPET-on-Intel-Coffee-Lake-H-platfo.patch
+  0013-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
+  0014-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+  0015-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+  0016-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+  0017-ASoC-SOF-enable-sync_write-in-hdac_bus.patch
+  0018-xhci-pci-Allow-host-runtime-PM-as-default-also-for-I.patch
+  0019-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -93,12 +106,25 @@ sha256sums=('fda561bcdea397ddd59656319c53871002938b19b554f30efed90affa30989c8'
             '5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            '71908105e1606cee9e62c99ac89aca98e8a26ff3f9796c8ab36858632614e85a'
-            '6765399f9d0de2daf7121f96a09eafc646731eb2058a01420d882297e10dfae5'
-            'f922696f10cfbe7e5b0a95fb3d9333006d63a1c4dbfc280ae3b5d10c8c7208fb'
-            '8496a9be2c3b2e3cefa292d00d3f43a4e7c3b03c4508f9d38a6b21fa4684240d'
-            'e5a3ed9c900b7e69cec1090ff76171a1c00cf723a2fa9a07fdf95c194ef3738b'
-            '760b60334eff05b1ef20c800fdb1e2ff6c7f9264f5e5c396f644720a824a92d7')
+            'c404647c64cb7b2ab6aae5333cffe072725fe1a3e3f863646656591af7b55078'
+            'fe6d125c1101b8ec6e01783598b7a9a34130447b28239d47ee6cafd76f9806ae'
+            'e021b7d4cfb26e851b5b55250fd4e635b66237a8863c962ede4f51022f9927cc'
+            '5ccbf49c1f588f344b120750d63bf42be5b8cda4946ebe256d5d69df3fce96ac'
+            '514088ce473a7160e1a906aaf44adac4389de48ba8bfaffb28ef2efaff5b2a41'
+            '5fcddf32bc5017afcf20c52430febf08c4f4de2a13aa838298eb8ff982fbda77'
+            '2ffc236ad41c40ec5d622ff2c8d6ae3a22e545dbeb3a0cc0f63a70d2438bb507'
+            '90bb284a19e9dd8aab105a80632170e58d818200965f51cb98ee4849d9cd2594'
+            'd573611616cb24b6c240c57321b3de6c2e51c49a3f8df52ef63009aeea5eb60e'
+            '04c6d2408452b907b12a6ee149cc023998545199cd3e9793b555682ad99aae35'
+            'c974abd5df781b303a6cfaa1685a5b1556b4104441804d14963e8a2893fcc548'
+            '6556d1dfa848566774fb1014c451809fb6dfab39336b27197d1b3a23d427d1ca'
+            '6b7f016aa55b9ba7ce7425b9a2f0c8b3bd8d4a4bbf703db9701c0974dc24162c'
+            '02f8992b6b6c467f561dd9aa309fc00695276d11227a2fc6816860c896bd206d'
+            '227668904e0d363c43e756dd08aec15accc5ebbc045b9d7b2068f27801009b63'
+            '97ab714be54e5516dcd4df051c8f7b551b87a0ca85c0e6b1f50f4eb1226d95d1'
+            '09749254d63826dd3ddf6451882adc91deb1a79561593a7c399a41b623310c19'
+            'c81691927b5c7e36f492d5d922051fb2b26dd1b24033c3a483f40045621e3960'
+            '2bde1e65dec65394c26cfe5f0ba0256d807047f7720cd3ce9367667d885fc7bd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

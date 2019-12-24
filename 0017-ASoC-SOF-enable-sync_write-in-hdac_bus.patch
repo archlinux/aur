@@ -1,0 +1,39 @@
+From 7699523eeae2b47440faa96cbed32c5e23db0e75 Mon Sep 17 00:00:00 2001
+From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Date: Tue, 8 Oct 2019 11:44:35 -0500
+Subject: [PATCH 17/20] ASoC: SOF: enable sync_write in hdac_bus
+
+Align SOF HDA implementation with snd-hda-intel driver and enable
+sync_write flag for all supported Intel platforms in SOF. When set,
+a sync is issued after each verb write.
+
+Sync after write has helped to overcome intermittent delays in
+system resume flow on Intel Coffee Lake systems, and most recently
+probe errors related to the HDMI codec on Ice Lake systems.
+
+Matches the snd-hda-intel driver change done in commit 2756d9143aa5
+("ALSA: hda - Fix intermittent CORB/RIRB stall on Intel chips").
+
+Signed-off-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Signed-off-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Link: https://lore.kernel.org/r/20191008164443.1358-2-pierre-louis.bossart@linux.intel.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/sof/intel/hda.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/soc/sof/intel/hda.c b/sound/soc/sof/intel/hda.c
+index 06e84679087b..5a5163eef2ef 100644
+--- a/sound/soc/sof/intel/hda.c
++++ b/sound/soc/sof/intel/hda.c
+@@ -268,6 +268,7 @@ static int hda_init(struct snd_sof_dev *sdev)
+ 
+ 	bus->use_posbuf = 1;
+ 	bus->bdl_pos_adj = 0;
++	bus->sync_write = 1;
+ 
+ 	mutex_init(&hbus->prepare_mutex);
+ 	hbus->pci = pci;
+-- 
+2.24.1
+

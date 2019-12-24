@@ -1,7 +1,7 @@
-From 328396ba88d7080612a52f5e0d9f848e40ab57f3 Mon Sep 17 00:00:00 2001
+From 3cec19068653e77d311382d7467728f5d424d4a3 Mon Sep 17 00:00:00 2001
 From: Tuowen Zhao <ztuowen@gmail.com>
 Date: Wed, 16 Oct 2019 15:06:29 -0600
-Subject: [PATCH 3/9] mfd: intel-lpss: Use devm_ioremap_uc for MMIO
+Subject: [PATCH 03/20] mfd: intel-lpss: Use devm_ioremap_uc for MMIO
 
 Some BIOS erroneously specifies write-combining BAR for intel-lpss-pci
 in MTRR. This will cause the system to hang during boot. If possible,
