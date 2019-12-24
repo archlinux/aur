@@ -11,7 +11,7 @@
 
 _qt_module=qtvirtualkeyboard
 pkgname="mingw-w64-qt5-virtualkeyboard"
-pkgver=5.13.2
+pkgver=5.14.0
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
@@ -23,7 +23,7 @@ license=('GPL3')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8e368dde237d21666f6cc8512a060e205388e519a4d7559c0505cc75224ed62b')
+sha256sums=('2f3362bf7999b912a4e92d0e9b5378089bc8dfcf270fe226bc68f2050de31410')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 [[ $NO_STATIC_LIBS ]] || \
@@ -49,9 +49,9 @@ build() {
       # it subsequent on the linker line
       # (Not sure why qmake isn't smart enough to put it in the right order itself. It also appears that in Qt 5.12
       #  the order is messed in a different way than in Qt 5.11. Now it also seems to update the Makefile again unless
-      #  touched to a date in the past.)
+      #  touched to a date in the future.)
       make qmake_all
-      find . \( -type f -name 'Makefile.*' -o -name '*.prl' \) -exec sed -i "$_fix_deps_of_static_3rdparty_libs" {} \; -exec touch -d 170101 {} \;
+      find . \( -type f -name 'Makefile*' -o -name '*.prl' \) -exec sed -i "$_fix_deps_of_static_3rdparty_libs" {} \; -exec touch -d 200101 {} \;
 
       make
       popd
