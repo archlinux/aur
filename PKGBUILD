@@ -1,5 +1,6 @@
+# Maintainer: Kaare Jenssen <kaare at jenssen dot it>
 # Contributor: Benjamin James <bjames@openmailbox.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=clx-git
 _clname=clx
