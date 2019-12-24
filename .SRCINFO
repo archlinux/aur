@@ -14,9 +14,9 @@ pkgbase = nemo-ext-git-git
 	depends = gtk3
 	depends = nemo-python
 	provides = nemo-ext-git
-	provides = nemo-git
+	provides = nemo-git=1.3
 	conflicts = nemo-ext-git
-	conflicts = nemo-git
+	conflicts = nemo-git=1.3
 	source = nemo-ext-git::git+https://github.com/bilelmoussaoui/nautilus-git
 	sha256sums = SKIP
 
