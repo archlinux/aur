@@ -1,0 +1,12 @@
+pkgbase = sf-transrobotics
+	pkgdesc = SF Transrobotic font package
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.shyfonts.com
+	arch = any
+	license = custom
+	source = https://github.com/TarkanAl-Kazily/sf-transrobotics/raw/master/sf-transrobotics-fonts-ttf.tar.bz2
+	sha256sums = ecc9b9017125ab07f09a4d8962d46e0811b1aaa41aaa14541632cf5f4eb9b9b9
+
+pkgname = sf-transrobotics
+
