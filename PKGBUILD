@@ -1,14 +1,14 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite
-pkgver=0.6.4
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
 license=(GPL3)
 depends=(chromaprint protobuf gst-plugins-base gst-plugins-good qt5-base qt5-x11extras
-         sqlite3 udisks2 dbus alsa-lib libcdio taglib fftw)
+         sqlite3 udisks2 dbus alsa-lib libcdio fftw)
 makedepends=(cmake boost qt5-tools)
 optdepends=('gst-libav: additional codecs (i.e. AAC)'
             'gst-plugins-bad: additional codecs (i.e. AAC)'
@@ -16,7 +16,7 @@ optdepends=('gst-libav: additional codecs (i.e. AAC)'
 provides=(strawberry)
 conflicts=(strawberry)
 source=("strawberry-${pkgver}.tar.gz::https://github.com/jonaski/strawberry/archive/${pkgver}.tar.gz")
-sha256sums=('5e3037552741018fe4d8d1e607e43b8a2cc0ff3f42ef7a8ac817cf3bce473b09')
+sha256sums=('afcae54604035b6f6924d7623edc0a006e67f1183652e2fba5a875c207901328')
 
 prepare() {
   cd "${srcdir}/strawberry-${pkgver}"
@@ -27,8 +27,10 @@ build() {
   cd "${srcdir}/strawberry-${pkgver}/strawberry-build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_SYSTEM_TAGLIB=ON \
+    -DUSE_SYSTEM_TAGLIB=OFF \
     -DENABLE_TIDAL=OFF \
+    -DENABLE_QOBUZ=OFF \
+    -DENABLE_SUBSONIC=OFF \
     -DENABLE_IMOBILEDEVICE=OFF \
     -DENABLE_LIBGPOD=OFF \
     -DENABLE_LIBMTP=OFF \
