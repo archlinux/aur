@@ -1,20 +1,22 @@
-From 4956ef34ebadffb50a27e5d81762d7e349be5339 Mon Sep 17 00:00:00 2001
+From 6779a50c73ed1683dca19efc018b6f657c146a91 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 23:42:30 +0100
-Subject: [PATCH 29/32] Hardcode linker flags for platform plugins
+Subject: [PATCH 29/31] Hardcode linker flags for platform plugins
 
 Otherwise incorrect order of libs leads to errors
 when building libqminimal.dll, libqoffscreen.dll,
 libqwindows.dll and libqdirect2d.dll
+
+Change-Id: Ibff901ecce864ae8d5ca2adbe37bcec28e5912f3
 ---
  src/plugins/platforms/direct2d/direct2d.pro   | 30 ++++++++++++++---
  src/plugins/platforms/minimal/minimal.pro     | 15 +++++++--
  src/plugins/platforms/offscreen/offscreen.pro | 14 ++++++--
- src/plugins/platforms/windows/windows.pro     | 32 +++++++++++++------
- 4 files changed, 73 insertions(+), 18 deletions(-)
+ src/plugins/platforms/windows/windows.pro     | 33 +++++++++++++------
+ 4 files changed, 73 insertions(+), 19 deletions(-)
 
 diff --git a/src/plugins/platforms/direct2d/direct2d.pro b/src/plugins/platforms/direct2d/direct2d.pro
-index 9764272632..25994da1da 100644
+index 6e73bd14f9..e009a5387a 100644
 --- a/src/plugins/platforms/direct2d/direct2d.pro
 +++ b/src/plugins/platforms/direct2d/direct2d.pro
 @@ -1,12 +1,32 @@
@@ -53,8 +55,8 @@ index 9764272632..25994da1da 100644
 +LIBS += $$QT_BUILD_TREE/lib/$${QMAKE_PREFIX_STATICLIB}Qt5WindowsUIAutomationSupport.$${QMAKE_EXTENSION_STATICLIB}
 +INCLUDEPATH += $$QT_SOURCE_TREE/include/Qt5WindowsUIAutomationSupport/$${QT_VERSION}
  
- LIBS += -ldwmapi -lversion -lgdi32
- QMAKE_USE_PRIVATE += dwrite_1 d2d1_1 d3d11_1 dxgi1_2
+ LIBS += -ldwmapi -lversion
+ QMAKE_USE_PRIVATE += gdi32 dwrite_1 d2d1_1 d3d11_1 dxgi1_2
 diff --git a/src/plugins/platforms/minimal/minimal.pro b/src/plugins/platforms/minimal/minimal.pro
 index a1a2da547b..e32225d9b9 100644
 --- a/src/plugins/platforms/minimal/minimal.pro
@@ -107,10 +109,10 @@ index f226132592..d8ab86b322 100644
  DEFINES += QT_NO_FOREACH
  
 diff --git a/src/plugins/platforms/windows/windows.pro b/src/plugins/platforms/windows/windows.pro
-index 174bc7b609..285d90c6d3 100644
+index 50a3bb41a9..285d90c6d3 100644
 --- a/src/plugins/platforms/windows/windows.pro
 +++ b/src/plugins/platforms/windows/windows.pro
-@@ -1,14 +1,28 @@
+@@ -1,15 +1,28 @@
  TARGET = qwindows
  
 -QT += \
@@ -121,7 +123,8 @@ index 174bc7b609..285d90c6d3 100644
 -qtConfig(accessibility): QT += accessibility_support-private
 -qtConfig(vulkan): QT += vulkan_support-private
 -
--LIBS += -lgdi32 -ldwmapi
+-LIBS += -ldwmapi
+-QMAKE_USE_PRIVATE += gdi32
 +QT += core-private gui-private
 +
 +# Fix linker error when building libqwindows.dll by specifying linker flags for
@@ -149,5 +152,5 @@ index 174bc7b609..285d90c6d3 100644
  include(windows.pri)
  
 -- 
-2.24.0
+2.24.1
 

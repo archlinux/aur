@@ -1,17 +1,17 @@
-From 7819e3f236674e2bfb22f07bd91eaef0e0c7926e Mon Sep 17 00:00:00 2001
+From 622132bfd075976303af986dae4d878eccc292ca Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:04:42 +0200
-Subject: [PATCH 17/32] Use system zlib for build tools
+Subject: [PATCH 17/31] Use system zlib for build tools
 
 ---
  src/tools/bootstrap/bootstrap.pro | 4 +++-
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/src/tools/bootstrap/bootstrap.pro b/src/tools/bootstrap/bootstrap.pro
-index 83e44ff9a4..4734623936 100644
+index 9863ff5e69..02329611bc 100644
 --- a/src/tools/bootstrap/bootstrap.pro
 +++ b/src/tools/bootstrap/bootstrap.pro
-@@ -135,7 +135,9 @@ macx {
+@@ -154,7 +154,9 @@ macx {
          ../../corelib/io/qstandardpaths_win.cpp
  }
  
@@ -23,5 +23,5 @@ index 83e44ff9a4..4734623936 100644
  } else {
      CONFIG += no_core_dep
 -- 
-2.24.0
+2.24.1
 

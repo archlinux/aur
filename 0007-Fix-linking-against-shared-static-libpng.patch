@@ -1,7 +1,7 @@
-From f2c9c83b1eea3e85bb03b2b2f8fde9d0376e041f Mon Sep 17 00:00:00 2001
+From a623fd18b4613f907ddf7cdd3cd1fa3bf0b4eac0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 26 Jan 2017 17:51:31 +0100
-Subject: [PATCH 07/32] Fix linking against shared/static libpng
+Subject: [PATCH 07/31] Fix linking against shared/static libpng
 
 Change-Id: Ic7a0ec9544059b8e647a5d0186f1b88c00911dcf
 ---
@@ -9,10 +9,10 @@ Change-Id: Ic7a0ec9544059b8e647a5d0186f1b88c00911dcf
  1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 6280b4dfa2..36325920cd 100644
+index 19312d245d..c89831c404 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
-@@ -387,8 +387,10 @@
+@@ -399,8 +399,10 @@
                  { "type": "pkgConfig", "args": "libpng" },
                  { "libs": "-llibpng16", "condition": "config.msvc" },
                  { "libs": "-llibpng", "condition": "config.msvc" },
@@ -26,5 +26,5 @@ index 6280b4dfa2..36325920cd 100644
              ],
              "use": [
 -- 
-2.24.0
+2.24.1
 

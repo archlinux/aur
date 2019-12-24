@@ -1,7 +1,7 @@
-From 548b80f87af82a5ce41400748c0492769821657d Mon Sep 17 00:00:00 2001
+From d608eb4d39293401ba8cdf887385c4231c1eaae4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:48 +0100
-Subject: [PATCH 27/32] Ignore failing pkg-config test
+Subject: [PATCH 27/31] Ignore failing pkg-config test
 
 Didn't investigate why it fails, let's hope for the best
 ---
@@ -9,10 +9,10 @@ Didn't investigate why it fails, let's hope for the best
  1 file changed, 1 deletion(-)
 
 diff --git a/configure.json b/configure.json
-index 36545a593b..087c2f6419 100644
+index bf7c14906f..19221ba008 100644
 --- a/configure.json
 +++ b/configure.json
-@@ -728,7 +728,6 @@
+@@ -755,7 +755,6 @@
          "pkg-config": {
              "label": "Using pkg-config",
              "autoDetect": "!config.darwin && !config.win32",
@@ -21,5 +21,5 @@ index 36545a593b..087c2f6419 100644
                  "publicFeature",
                  { "type": "publicQtConfig", "negative": true },
 -- 
-2.24.0
+2.24.1
 
