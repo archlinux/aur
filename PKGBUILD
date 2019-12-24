@@ -3,7 +3,7 @@
 # https://wiki.archlinux.org/index.php/Electron_package_guidelines
 
 pkgname=ezra-project
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="a bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("$pkgname-git")
 source=("https://github.com/tobias-klein/$pkgname/archive/$pkgver.tar.gz"
         'ezra-project.sh'
         'ezra-project.desktop')
-sha256sums=('bd6f2d875aa7d8f9f60aab9fb0e0f8ac7362c14a976cd730249f040d8574fc73'
+sha256sums=('40f3930b0ca07cc009e7d32c78faba4cb7dd64e9a8f731944a2f731427b68279'
             '0a36167bce248b6082045163cf60b143d02ca1e447a791cf0c88e960a7fdc618'
             'f89adcdecca5b0684679a4c4060a7e0398b5d332b2377e0fb0e115969d94e116')
 _electron="$(electron --version | sed 's/^v//')"

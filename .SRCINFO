@@ -1,6 +1,6 @@
 pkgbase = ezra-project
 	pkgdesc = a bible study software focussing on topical study based on keywords/tags
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/tobias-klein/ezra-project
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = ezra-project
 	depends = electron
 	depends = nodejs
 	conflicts = ezra-project-git
-	source = https://github.com/tobias-klein/ezra-project/archive/0.10.0.tar.gz
+	source = https://github.com/tobias-klein/ezra-project/archive/0.11.0.tar.gz
 	source = ezra-project.sh
 	source = ezra-project.desktop
-	sha256sums = bd6f2d875aa7d8f9f60aab9fb0e0f8ac7362c14a976cd730249f040d8574fc73
+	sha256sums = 40f3930b0ca07cc009e7d32c78faba4cb7dd64e9a8f731944a2f731427b68279
 	sha256sums = 0a36167bce248b6082045163cf60b143d02ca1e447a791cf0c88e960a7fdc618
 	sha256sums = f89adcdecca5b0684679a4c4060a7e0398b5d332b2377e0fb0e115969d94e116
 
