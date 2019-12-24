@@ -1,5 +1,5 @@
 # Maintainer: telans <telans@protonmail.com>
-# Co-Maintainer: yochananmarqos <yochanan.marqos@gmail.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 # Contributor: Linus Färnstrand <linus at mullvad dot net>
@@ -9,13 +9,13 @@ pkgname=mullvad-vpn-beta
 _pkgver=2019.10
 _channel=stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
-makedepends=('git' 'cargo' 'npm' 'rpm')
+makedepends=('git' 'cargo' 'npm')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
@@ -38,6 +38,9 @@ prepare() {
 	git config submodule.mullvadvpn-app-binaries.url \
 		"$srcdir/mullvadvpn-app-binaries"
 	git submodule update
+
+	# Disable building of rpm
+	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 }
 
 build() {
