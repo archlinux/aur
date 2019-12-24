@@ -1,7 +1,7 @@
 # Maintainer: Yiqiao Wang <yiqiao.wang96 at gmail dot com>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 pkgname=ammonite
-pkgver=1.9.3
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="A cleanroom re-implementation of the Scala REPL from first principles. "
 arch=('any')
@@ -12,7 +12,7 @@ depends=("scala>=${_scalaver}" java-environment)
 source=("ammonite-repl-${pkgver}"::"https://github.com/lihaoyi/Ammonite/releases/download/${pkgver}/${_scalaver}-${pkgver}"
         "https://github.com/lihaoyi/Ammonite/raw/${pkgver}/LICENSE")
 noextract=("ammonite-repl-${pkgver}")
-sha256sums=('c4e8bb84cc8d90d3f6aee6ad04cf6d6c0b9cceead2ffcc4d721117375d14bbd9'
+sha256sums=('2f09b5ab6262961c03977db76686265c0669a803406107d4aa4ed10a91dd0e6d'
             '90320c4bcccf8df57cc5d6f7b0b1778231ae87c64fe5405bae45af4ff9f87e8e')
 install="${pkgname}.install"
 
