@@ -21,18 +21,18 @@ _android_clang_toolchain_path=$_android_ndk_path/toolchains/llvm/prebuilt/linux-
 _install_prefix=/opt/android-libs/$_pkg_arch
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A C++ unit testing framework (Android, $_android_arch)"
 arch=('any')
-url="http://www.freedesktop.org/wiki/Software/cppunit"
+url="https://www.freedesktop.org/wiki/Software/cppunit"
 license=('LGPL')
 depends=('android-ndk')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 options=(!strip !buildflags !libtool staticlibs !emptydirs)
 source=("https://dev-www.libreoffice.org/src/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3d569869d27b48860210c758c4f313082103a5e58219a7669b52bfd29d674780')
+sha256sums=('1c61dfdb430e04ebb411e4b80fbd49fe7e63a1be0209a76d7c07501f02834922')
 
 build() {
   # configure flags
@@ -53,7 +53,8 @@ build() {
      -O3 \
     -fPIC \
     -DCPPUNIT_HAVE_LIBDL=1 \
-    -Wno-unused-command-line-argument"
+    -Wno-unused-command-line-argument \
+    -Wno-defaulted-function-deleted"
   local ld_flags=" \
     $_android_ndk_path/sources/cxx-stl/llvm-libc++/libs/$_android_arch/libc++_shared.so \
     -nostdlib++"
