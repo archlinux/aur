@@ -1,0 +1,16 @@
+pkgbase = python2-translationstring
+	pkgdesc = A library used for internationalization (i18n) duties related to translation.
+	pkgver = 20170829
+	pkgrel = 1
+	url = https://github.com/Pylons/translationstring
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python2
+	depends = python2-setuptools
+	provides = python2-translationstring
+	source = git://github.com/Pylons/translationstring
+	md5sums = SKIP
+
+pkgname = python2-translationstring
+
