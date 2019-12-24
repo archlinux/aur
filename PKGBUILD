@@ -1,7 +1,7 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 # Contributor: Yegorius <yegorius at domic dot us>
 pkgname=station
-pkgver=1.63.1
+pkgver=1.63.2
 pkgrel=1
 pkgdesc='The one app to rule them all'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 source=(
     "https://github.com/getstation/desktop-app-releases/releases/download/${pkgver}/Station-${pkgver}-x86_64.AppImage"
 )
-sha256sums=('883c0251ffa49b6b8613e0a35bdb2a73055609e6f3ebb6ad331b0c0bf54f5718')
+sha256sums=('235b29ebfe40d1d4f22d036dcedc6f08660479b401a6f9cd6eb3099cd2a69436')
 
 prepare() {
     chmod u+x ./Station-${pkgver}-x86_64.AppImage
