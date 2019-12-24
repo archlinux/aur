@@ -1,15 +1,17 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="Graphical interface for applications management ( AppImage, Flatpak, Snap and AUR )"
+pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, AUR and Web )"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
-depends=('python' 'python-pyqt5' 'python-requests' 'python-colorama')
+depends=('python' 'python-pyqt5' 'python-requests' 'python-colorama' 'python-pyaml')
 optdepends=('flatpak: required for Flatpak support' 
-            'snapd: required for Snap support' 
+            'snapd: required for Snap support'
+            'python-beautifulsoup4: for Native Web applications support'
+            'python-lxml: for Native Web applications support'
             'sqlite3: required for AppImage support'
             'wget: required for AppImage and AUR support'
             'fuse2: may be required for AppImage support'
@@ -33,12 +35,11 @@ optdepends=('flatpak: required for Flatpak support'
             'breeze: for KDE Plasma main theme be available')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('9f48f90ed2462051cd9d30a7d8be44bb5e87a260b0f1a795adefb5ad331fde16f4d6fc49bd195c84caba1f53ce6597f8fbe6ed0c55fbaaa8fb08be9b12e3bf64')
+sha512sums=('f7518be5ae7c8076344872024a4d76787ed85c75dfbc33917755163c99db42e35ff3c931bc15245b701b65a63aa3252628b99eef25484ab26f831b075b5fd560')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python3 setup.py build
-  python3 setup.py test || return 1
 }
 
 package() {
