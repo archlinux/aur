@@ -1,6 +1,7 @@
+# Maintainer: Kaare Jenssen <kaare at jenssen dot it>
 # Contributor: Alexej Magura <agm2819*gmail*>
 # Contributor: Theomachos <theomachos[at]pindundin[dot]de>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=clisp-new-clx
 _pkgname=clisp
