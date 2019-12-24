@@ -1,12 +1,11 @@
 pkgbase = bitwig-studio
 	pkgdesc = Digital audio workstation for music production, remixing and live performance
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bitwig.com/
 	arch = x86_64
 	license = custom
 	depends = xdg-utils
-	depends = zenity
 	depends = xcb-util-wm
 	depends = libbsd
 	optdepends = jack

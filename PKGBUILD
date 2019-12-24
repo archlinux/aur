@@ -4,12 +4,12 @@
 pkgname='bitwig-studio'
 pkgver='3.1.1'
 _pkgver='3.1.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.bitwig.com/'
 license=('custom')
-depends=('xdg-utils' 'zenity' 'xcb-util-wm' 'libbsd')
+depends=('xdg-utils' 'xcb-util-wm' 'libbsd')
 optdepends=('jack' 'alsa-lib' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 replaces=()
