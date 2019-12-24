@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-base-dynamic
 	pkgdesc = A cross-platform application and UI framework (mingw-w64)
-	pkgver = 5.13.2
+	pkgver = 5.14.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -37,7 +37,7 @@ pkgbase = mingw-w64-qt5-base-dynamic
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/5.13/5.13.2/submodules/qtbase-everywhere-src-5.13.2.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.14/5.14.0/submodules/qtbase-everywhere-src-5.14.0.tar.xz
 	source = 0001-Adjust-win32-g-profile-for-cross-compilation-with-mi.patch
 	source = 0002-Ensure-GLdouble-is-defined-when-using-dynamic-OpenGL.patch
 	source = 0003-Fix-too-many-sections-assemler-error-in-OpenGL-facto.patch

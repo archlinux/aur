@@ -32,7 +32,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base-dynamic
-pkgver=5.13.2
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
