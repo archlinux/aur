@@ -15,8 +15,10 @@ pkgbase = tsmclient
 	sha1sums = ad89fff3d6096ba25d973e7e27ee3ce10e2fe57f
 
 pkgname = tsmclient-service
+	pkgdesc = IBM Tivoli Storage Manager Client and Systemd Service
 
 pkgname = tsmclient-dkms
+	pkgdesc = IBM Tivoli Storage Manager Client Journal-based Backup Kernel Module
 	arch = any
 	depends = dkms
 

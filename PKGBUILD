@@ -51,6 +51,7 @@ prepare() {
 }
 
 package_tsmclient-service() {
+	pkgdesc="IBM Tivoli Storage Manager Client and Systemd Service"
 	cd "$srcdir/"
 
 	#cp -r "$srcdir/etc" "$pkgdir/"
@@ -83,6 +84,7 @@ package_tsmclient-service() {
 package_tsmclient-dkms() {
 	arch=('any')
 	depends=('dkms')
+	pkgdesc="IBM Tivoli Storage Manager Client Journal-based Backup Kernel Module"
 
 	cd "$srcdir"/jbb_gpl
 
