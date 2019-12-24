@@ -1,7 +1,7 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 _pkgname=p3wm
 pkgname=p3wm-git
-pkgver=0.2.0.r0.8f10dd0 # not used anyway
+pkgver=0.3.0.r1.645a948 # not used anyway
 pkgrel=1
 pkgdesc="3-way merge .pacnew files"
 arch=('any')
@@ -30,7 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
