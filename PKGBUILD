@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -77,14 +77,25 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0007-x86-MCE-AMD-Do-not-use-rdmsr_safe_on_cpu-in-smca_con.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0008-x86-MCE-AMD-Allow-Reserved-types-to-be-overwritten-i.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0009-x86-mce-Fix-possibly-incorrect-severity-calculation-.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0010-Revert-iwlwifi-assign-directly-to-iwl_trans-cfg-in-Q.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0011-iwlwifi-pcie-move-power-gating-workaround-earlier-in.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0012-x86-intel-Disable-HPET-on-Intel-Coffee-Lake-H-platfo.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0013-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0014-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0015-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0016-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0017-ASoC-SOF-enable-sync_write-in-hdac_bus.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0018-xhci-pci-Allow-host-runtime-PM-as-default-also-for-I.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0019-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
          # the main kernel config files
         'config')
 
@@ -346,14 +357,25 @@ sha512sums=('462bddae3e0410f8a65393631fac4bcde19def55a21890d88ed4929948cbbb95ec4
             'SKIP'
             '10c9bbb02c6a0afe869efae97fe6133062110f46c973fd7b60cdd8a88f14de7646d206d5c2bbbf1170ca0aa9cf7c2d0daab477d12c074dc18e9b98075cd2b57c'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '8833681c56ccb82509848f5307fd4d6c93f9790b1382f064b96512d95155986cad205fa4a03577ed2f786e7b4e35cf28c7f775ba2ac59a86d17cfa11b133280e'
-            'f86c81ec5d843d3e67097ddf66052efa7cf5866e7026450294cea505ebd073472735cebd9383aa58850f9767f808fc9cc29562f761a305619157f2d59bf2b9c9'
-            'ff1bf81285fe927a549061496e38bd37dbedc15fd2a90900aa4cb42f7dee8b6c648fd2fff8f2de1fe555d010f270e2287ee127d74572cf4c2d736057818b0683'
-            'caa3a162e828ed01f85455173078489c17373dbaabe7fd02bd30c0efa981c5cf8c564e47b1d23f7caf1bce4c426df62fdb72be11979eaa014a915a802cb86115'
-            'd6abab932ed1db2b25e0f3ef3aad643ca2c09c7b5d548bfa099ba391c65403359d6e8a5ba6a9ffaefcdad79809b28e16eba94ac2401b536af236ff82d4456655'
-            '925f2355f3134695d593bf211c224d7ee56b6f4e15e8a7ee95038b2690548981479df4c2d3c65897dd37ca3110da5dcf159cd230b4198f39324bf27c3e882552'
-            '68c0395cd3ce886fb04be23c50db0a9486ce18c7235a6f71d60b2d5f88f2629415db608992779bad68aca29c8ceac29af1e7907fd70a0691a634c312d7761e6d'
-            '45fdd20e0de9d60ae9b2d257970f9c591b2ae93cd3b63e38b156e5cb744587d21222fa4e32cd5415b9b924f0a259407e9c9fa6c6d1ae5d6accc3926cde4fe4ef'
+            'a95fc9c07fcedb55519cbcddfa32a153dc9827abbda6be0c5ec43df7000b22f73665c90e54357d1e7c178310e488902ace617bc5f2fcfd9e6d17c6b6ffe979fb'
+            '1bc9c65173bd87501a4a50e5dbee50bf2dfe414f35cf14df24539fb2872b6a0c116e96d67061f3cc41c0b12d6e8dbfeca09e56ad0d3861cb8c6d429ba3dae782'
+            '7ec1aa991150b7076d5e2ac2095684d9c300b0a288c018b0964f1b91336075be9dc177926733d35fcb719958c383eb747a970a98374ea9637f87b80d1819cd9f'
+            'b4fa6029d88e17857651df20000da08d5aa2be9f4caae538c214e9da7a29fd0cb236fbe52b942d3ac3acd9badcd5c4c9733c275bdc86b36c42782df624d2f931'
+            'fd908364f72e350168ffa2e85af4e1524d533b052e1b96a3c3ea49917359e1f53b7595e83fcd68919e466ec843a0c1d3f997fcf7c54f436e882e874c2efcc76a'
+            '8a099c9a9c9286145c017522513c77dbb3d2afad134be86638afb98da1d9d33ecfb2e732197d14011377370f374ddfa5a38acc6bb5592dbdff3c69ba895f5ba8'
+            '0008788cfd2c1cba2e81d26c5a60b2252bcb2321bce0e58f4ed4b277b7694629a05fd752a78ed78a6aea8c05b380d7ebedeba5eec3ca1ef98f45a508ef1d0196'
+            '8c42febba271b861bbc395d3c648cf69ee63d32ba8960e5ea279ae19ac5d8862b66792b23718ae2872c9fe382c9274ce1687cb936b6bb17e033e5d7dda07b5bb'
+            '90bf9ec2ea09640b37b7562e5cb898c41b84578eb34f71ee655a2a32ab5ea0c416428cd329db470628632ca52c4f735084303b996d70c0d06493b9c8edd6d1a3'
+            '4c9d0ce8aff3e4f038d149338c1dcc09bdb25ac20a5595ad2b3121fba182d67f0aa65074e91766f7b424a1a6c06799a21230ab2ac36cac4325ee6003302eef07'
+            '0e2b9a09a1b1412c114286458f77d6456cc2ad7b1446a5b265762575b9754306e9c64610c7538e5b26b836dc7738f9e943e08085cb0c24793ac6db610a3422a0'
+            '23be8ca447cbc47d95eca9091aba5b1065d177d4ccdc043e2c721d803dc23cfbc20e5c4c726c60509d5706d09425e870c31318f93e10d8b53ba2c594fdb7e2e2'
+            '0dfecc4289bd0812e75a8ce6b2070697c6f63e7a908f77b13ea45775e8614ff4c7ccfd7d1398347f18c910eefb0e4c93bf34f4d09172bee56d42da4cee27097c'
+            '207c834bc6d58ecebc282c98c0909b10b639b4c726e09cb56c63773fe18a2a2d0e87821e9415d2ead99e063adff997f9c56b8aebc36eb1ca237edeca12573ce0'
+            '6d81e10255249a3973a953a24c8db6bb710ebd6f0ae9da8f237fdd67286cb4bb8b18e0de348cfb97e95dd2bdfc8570f028cecaac395dfa61640fd4028da95ebd'
+            'e3e94ddcbc7cdfb2b4dd400da1faec2d0005c6ca0cf2899ac0511d3e2dbb097ea5408ed75287ac9af8aa46fbf2b6b43f5fa925aac19a56857a55fc11e1d875b5'
+            'd391bb8ae372a9d2fa28d95697c12fe4fd4b25af572151e328c54930b65b3671f15b15878d51826b26951d9c6a402d3c8ef2fbcf63d9b45dd231ee4dde362433'
+            'd3adf58b008f1147fa0ba1ecc36c535069b9b2cefa12cc6dacd8257bd199d08fc3cb29867276e3156b28fd879d88234bc244fa2d17bb67bfcd1e12eb0a9b3a34'
+            '088c1e20c109b6b12649a9bad33875952974a7a30b7ea278ec8b60866234b644fbc21140308aa5ea355a0fd391fc45e8c795c3216b9387f6ff14f0f5588a3dcd'
             '7848e5d741a2d63d8c181ab79e21068e391ab281b1bfd248b2569f8ebaf8d0baf9003a7415ab614ed01726279ff30ca9e0396488dafe7755e0c033ce15ca86fa')
 
 validpgpkeys=(
