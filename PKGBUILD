@@ -3,13 +3,13 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
 license=('BSD')
-depends=('fuse2' 'curl' 'c-ares' 'leveldb' 'pacparser' 'sqlite' 'protobuf' 'libwebsockets')
+depends=('fuse2' 'curl' 'c-ares' 'leveldb' 'pacparser' 'sqlite' 'protobuf')
 makedepends=('cmake' 'make' 'gtest' 'sparsehash' 'gmock')
 backup=('etc/cvmfs/default.local')
 install=cvmfs.install
@@ -18,9 +18,9 @@ source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.t
         'settings.cmake'
 	'externals.patch'
         )
-md5sums=('ca5b9c0ec4911622ee80e5d9f8e8f61a'
+md5sums=('f87bb80f7337418e8ff5f1d76f4db235'
          '20dc60c61077f4a3711463e8686d260d'
-         '8f160f021cc0724a21968fc1fc7081b3')
+         '22b41fe0f5983d35e3622c52f70b25d6')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
