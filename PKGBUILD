@@ -1,6 +1,8 @@
 # Maintainer: Cody P Schafer <aur [at] codyps [dot] com>
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
-# Contributer: Stefan Seemayer <stefan@seemayer.de>
+# Contributor: Stefan Seemayer <stefan@seemayer.de>
+# Contributor: Alexey Stukalov: <astukalov -at- gmail -dot- com>
+
 pkgbase=tsmclient
 pkgname=(tsmclient-service tsmclient-dkms)
 pkgver=8.1.9.0
