@@ -12,6 +12,7 @@ pkgbase = espanso-git
 	depends = xdotool
 	depends = xclip
 	depends = libxtst
+	depends = libnotify
 	provides = espanso
 	conflicts = espanso
 	source = espanso::git+https://github.com/federico-terzi/espanso.git#branch=dev
