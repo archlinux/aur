@@ -1,4 +1,5 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Maintainer: JustKidding <jk@vin.ovh>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
@@ -6,14 +7,13 @@ pkgbase=xorg-server-git
 pkgname=(
   'xorg-server-git'
   'xorg-server-xephyr-git'
-  'xorg-server-xdmx-git'
   'xorg-server-xvfb-git'
   'xorg-server-xnest-git'
   'xorg-server-xwayland-git'
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r419.g7d0e660e0
+pkgver=1.20.0.r569.gb1ee4036b
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -21,14 +21,16 @@ groups=('xorg')
 url="https://gitlab.freedesktop.org/xorg/xserver.git"
 makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
-             'libxmu' 'libxrender' 'libxi' 'libxaw' 'libdmx' 'libxtst' 'libxres'
+             'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
+        fix-xwayland-compile.patch
         xvfb-run
         xvfb-run.1)
 sha256sums=('SKIP'
+            'a585e8c778ec2fd4f4f415051c6243e8e674f0cf038e8f2f440101bfde6f7d3b'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -39,6 +41,9 @@ pkgver() {
 }
 
 prepare() {
+  cd "${_pkgbase}"
+  patch -Np1 -i ../fix-xwayland-compile.patch
+  cd ..
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
@@ -54,7 +59,6 @@ prepare() {
     $mesonFlags \
     -D os_vendor="Arch Linux" \
     -D ipv6=true \
-    -D dmx=true \
     -D xvfb=true \
     -D xnest=true \
     -D xcsecurity=true \
@@ -188,21 +192,6 @@ package_xorg-server-xnest-git() {
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
-
-  # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING
-}
-
-package_xorg-server-xdmx-git() {
-  _pkgname='xorg-server-xdmx'
-  provides=('xorg-server-xdmx')
-  conflicts=('xorg-server-xdmx')
-  pkgdesc="Distributed Multihead X Server and utilities (git version)"
-  depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes
-           pixman xorg-server-common-git nettle)
-
-  _install fakeinstall/usr/bin/{Xdmx,dmx*,vdltodmx,xdmxconfig}
-  _install fakeinstall/usr/share/man/man1/{Xdmx,dmxtodmx,vdltodmx,xdmxconfig}.1
 
   # license
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgbase}"/COPYING

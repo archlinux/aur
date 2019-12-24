@@ -1,0 +1,28 @@
+From bea53471f538d90eaaed5dcc7c9065d265d876ad Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michel=20D=C3=A4nzer?= <mdaenzer@redhat.com>
+Date: Mon, 23 Dec 2019 09:26:17 +0100
+Subject: [PATCH 6/6] xwayland: Include xwayland-window.h from
+ xwayland-glamor-eglstream.c
+
+Fixes build failure.
+
+Closes: https://gitlab.freedesktop.org/xorg/xserver/issues/954
+Fixes: 89e32d00f6e0 "xwayland: Move Xwayland windows to its own sources"
+---
+ hw/xwayland/xwayland-glamor-eglstream.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/xwayland/xwayland-glamor-eglstream.c b/hw/xwayland/xwayland-glamor-eglstream.c
+index 81947a6ba..aa5267a4d 100644
+--- a/hw/xwayland/xwayland-glamor-eglstream.c
++++ b/hw/xwayland/xwayland-glamor-eglstream.c
+@@ -43,6 +43,7 @@
+ #include "xwayland-glamor.h"
+ #include "xwayland-pixmap.h"
+ #include "xwayland-screen.h"
++#include "xwayland-window.h"
+ 
+ #include "wayland-eglstream-client-protocol.h"
+ #include "wayland-eglstream-controller-client-protocol.h"
+-- 
+2.24.1
