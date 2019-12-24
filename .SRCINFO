@@ -1,6 +1,6 @@
 pkgbase = qt5-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build (no QtGui or QtWidgets)
-	pkgver = 5.13.2
+	pkgver = 5.14.0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = qt5-base-headless
 	provides = qt5-base
 	conflicts = qtchooser
 	conflicts = qt5-base
-	source = https://download.qt.io/official_releases/qt/5.13/5.13.2/submodules/qtbase-everywhere-src-5.13.2.tar.xz
-	sha256sums = 26b6b686d66a7ad28eaca349e55e2894e5a735f3831e45f2049e93b1daa92121
+	source = https://download.qt.io/official_releases/qt/5.14/5.14.0/submodules/qtbase-everywhere-src-5.14.0.tar.xz
+	sha256sums = 4ef921c0f208a1624439801da8b3f4344a3793b660ce1095f2b7f5c4246b9463
 
 pkgname = qt5-base-headless
 
