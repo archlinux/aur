@@ -1,6 +1,6 @@
 pkgbase = espanso-git
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = r245.fddc498
+	pkgver = r280.6b6cac0
 	pkgrel = 1
 	url = https://espanso.org/
 	install = espanso-git.install

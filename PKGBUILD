@@ -3,7 +3,7 @@
 _branch=dev
 _pkgname=espanso
 pkgname=${_pkgname}-git
-pkgver=r245.fddc498
+pkgver=r280.6b6cac0
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
