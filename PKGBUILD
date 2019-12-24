@@ -1,14 +1,15 @@
+# Maintainer: Kaare Jenssen <kaare at jenssen dot it>
 # Contributor: Chris Dunder <echo Y2R1bmRlckBnbWFpbC5jb20K | base64 -d>
 # Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: olvar <beren dot olvar (at) gmail dot com>
 # Contributor: Andrew Antle <andrew dot antle at gmail dot com>
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 # Contributor: Jonathan Friedman <jonf@gojon.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=stumpwm-git
 _pkgname=stumpwm
-pkgver=18.05.94.g2ede972
+pkgver=19.11.51.g2948b7c
 pkgrel=1
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
@@ -23,7 +24,7 @@ md5sums=('SKIP'
          'b5721de9b1cbdb4548d11570a512c5d4'
          'SKIP')
 
-makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre' 'cl-alexandria')
+makedepends=('common-lisp' 'cl-asdf' 'clx-git' 'cl-ppcre' 'cl-alexandria-git')
 optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
             'rlwrap: for stumpish completion and history'
             'emacs: Edit and eval stumpwm code with M-x stumpwm-mode'
