@@ -3,7 +3,7 @@
 # Contributer: Stefan Seemayer <stefan@seemayer.de>
 pkgbase=tsmclient
 pkgname=(tsmclient-service tsmclient-dkms)
-pkgver=8.1.6.0
+pkgver=8.1.9.0
 pkgrel=1
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
 	dkms.conf
 )
 
-sha1sums=('71fef8294324826f1be9afc512ab54025f3143e2'
+sha1sums=('8651fb42f596e360c51fe521d70bb19a57d3be82'
           'ad89fff3d6096ba25d973e7e27ee3ce10e2fe57f')
 
 prepare() {
