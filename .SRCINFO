@@ -1,6 +1,6 @@
 pkgbase = rumur-git
 	pkgdesc = Yet another Murphi model checker
-	pkgver = 2019.11.09.r4.gc04d79d
+	pkgver = 2019.12.22.r0.ga1b6d61
 	pkgrel = 1
 	url = https://github.com/Smattr/rumur
 	arch = x86_64

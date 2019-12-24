@@ -2,7 +2,7 @@
 
 _name=rumur
 pkgname="$_name-git"
-pkgver=2019.11.09.r4.gc04d79d
+pkgver=2019.12.22.r0.ga1b6d61
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
@@ -24,25 +24,25 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p $_name/build
+  mkdir -p build
 }
 
 build() {
-  cd $_name/build
-  cmake .. \
+  cd build
+  cmake "../$_name" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
 
 check() {
-  cd $_name/build
+  cd build
   # The test needs about 1 hour
-  #../tests/integration-tests.py --verbose
+  #env PATH="./rumur:./ast-dump${PATH:+:$PATH}" "../$pkgname-$pkgver/tests/run-tests.py"
 }
 
 package() {
-  cd $_name/build
+  cd build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/licence"
+  install -Dm644 "../$_name/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/licence"
 }
