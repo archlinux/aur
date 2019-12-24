@@ -1,7 +1,4 @@
 post_install() {
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
-
     python3 -OO -m py_compile /usr/share/slimbookbattery/preferences.py
     python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery
     python3 -OO -m py_compile /usr/share/slimbookbattery/slimbookbattery-changemode.py
@@ -20,10 +17,7 @@ post_install() {
     rm /usr/share/slimbookbattery/__pycache__/*
     rmdir /usr/share/slimbookbattery/__pycache__
 
-    echo "Warning."
-    echo "It is highly recommended that you disable any other battery/power management program. For example, the tlpui."
-
-    update-desktop-database -q
+    chmod +x /usr/share/slimbookbattery/bin/*
 }
 
 post_upgrade() {
@@ -31,13 +25,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-
     rm -rf /usr/share/slimbookbattery
-
-    for d in /home/*/ ; do
-        rm -rf $d/.config/slimbookbattery
-    done
-
-    update-desktop-database -q
 }
