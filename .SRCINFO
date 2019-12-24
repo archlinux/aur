@@ -14,7 +14,9 @@ pkgbase = nautilus-ext-git-git
 	depends = gtk3
 	depends = python-nautilus
 	provides = nautilus-ext-git
+	provides = nautilus-git
 	conflicts = nautilus-ext-git
+	conflicts = nautilus-git
 	source = nautilus-ext-git::git+https://github.com/bilelmoussaoui/nautilus-git
 	sha256sums = SKIP
 
