@@ -1,6 +1,6 @@
 pkgbase = ttf-atom-file-icons
 	pkgdesc = Atom file-specific icons for improved visual grepping.
-	pkgver = 2.1.36
+	pkgver = 2.1.37
 	pkgrel = 1
 	url = https://atom.io/packages/file-icons
 	install = ttf-atom-file-icons.install
@@ -10,8 +10,8 @@ pkgbase = ttf-atom-file-icons
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = ttf-atom-file-icons-2.1.36.tar.gz::https://github.com/file-icons/atom/archive/v2.1.36.tar.gz
-	sha256sums = a2552b919b2b0a9941ef61aeee4e12b030dc5ac186cb079642d2663ea161f2e9
+	source = ttf-atom-file-icons-2.1.37.tar.gz::https://github.com/file-icons/atom/archive/v2.1.37.tar.gz
+	sha256sums = 6c9c240bbe2575671c6e021a54554d153c1773e7c79ef9d28566f0bcb590b49b
 
 pkgname = ttf-atom-file-icons
 
