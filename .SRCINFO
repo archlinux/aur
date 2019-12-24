@@ -1,0 +1,21 @@
+pkgbase = vim-mesonic-git
+	pkgdesc = Support for meson build system in vim
+	pkgver = r52.f480c87
+	pkgrel = 1
+	url = https://github.com/igankevich/mesonic
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = unknown
+	makedepends = git
+	depends = vim
+	optdepends = vim-syntastic
+	provides = vim-mesonic
+	conflicts = vim-mesonic
+	source = vim-mesonic-git::git://github.com/igankevich/mesonic
+	source = mesonic-ftdetect.vim
+	md5sums = SKIP
+	md5sums = 96ad7cc96c944ce67a6efc8bb83ae991
+
+pkgname = vim-mesonic-git
+
