@@ -1,4 +1,4 @@
-From f567b98992c084a2fd54eb9aaa714809b9265760 Mon Sep 17 00:00:00 2001
+From 2a7e4a9cdb88f7f9df23fcd4fd190e0faf301725 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 22 Dec 2016 22:30:59 +0100
 Subject: [PATCH] Ensure static 3rdparty libs are linked correctly
@@ -9,7 +9,7 @@ Not sure whether this is still required in Qt 5.9.0
  1 file changed, 3 insertions(+)
 
 diff --git a/src/imports/location/location.pro b/src/imports/location/location.pro
-index dec1149b..ad57a5c5 100644
+index 40605806..fa82a012 100644
 --- a/src/imports/location/location.pro
 +++ b/src/imports/location/location.pro
 @@ -5,6 +5,9 @@ SOURCES += \
@@ -23,5 +23,5 @@ index dec1149b..ad57a5c5 100644
      plugin.json \
      qmldir
 -- 
-2.24.0
+2.24.1
 
