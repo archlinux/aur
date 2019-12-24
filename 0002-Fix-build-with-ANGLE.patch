@@ -1,4 +1,4 @@
-From 942cea8d20abfa1ac3388da4235eb24d0e8e69e2 Mon Sep 17 00:00:00 2001
+From 13db921fea3e466bc60a66559465dd3f40a77845 Mon Sep 17 00:00:00 2001
 From: Jose Santiago <jsantiago@haivision.com>
 Date: Thu, 3 Nov 2016 14:36:10 -0500
 Subject: [PATCH 2/3] Fix build with ANGLE
@@ -25,5 +25,5 @@ index d8e2da6d..41ef4d96 100644
  #endif
  
 -- 
-2.24.0
+2.24.1
 
