@@ -3,7 +3,7 @@
 pkgbase=tensorflow-computecpp
 pkgname=(tensorflow-computecpp python-tensorflow-computecpp)
 pkgver=1.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for computation using data flow graphs for scalable machine learning (backend with ComputeCpp)"
 url="https://github.com/codeplaysoftware/tensorflow"
 epoch=1
@@ -20,14 +20,16 @@ source=("git+${url}"
          py37.diff
          gcc1.diff
          gcc2.diff
-         gcc3.diff)
+         gcc3.diff
+         python38.patch)
 sha256sums=('SKIP'
             '758e10caff4c1cb496d1cf49d6f4da2969b610b174276fb734b8502686d07ddd'
             'ef54b3783a05b5604cd8f448136567686806ad3a5759978f48549256807a8394'
             'b3997091bc7a32f9e8c062a88e9148273090ebf66aeebb5dc055baa41b7aae7e'
             '7d9f32a46cac83ec1a7308ac380226cdf40f98830c869bcdf5feb7bf110abf9a'
             '10de738141852cfebae9847b746ae9b58f3b3985561cccede929d8fbdba93551'
-            '742abe5d8bfd3f7ce33778a08cbb233337db56238d11ac2ad07171b0d6097bfb')
+            '742abe5d8bfd3f7ce33778a08cbb233337db56238d11ac2ad07171b0d6097bfb'
+            'b69895cfd098efacc95b1d1fffd471afa05c449f8d42964ee10b1a6fd9a75689')
 
 prepare() {
   # These environment variables influence the behavior of the configure call below.
@@ -68,6 +70,7 @@ prepare() {
   git apply --index --whitespace=nowarn ../gcc1.diff
   git apply --index --whitespace=nowarn ../gcc2.diff
   git apply --index --whitespace=nowarn ../gcc3.diff
+  git apply --index ../python38.patch
 }
 
 build() {
@@ -83,7 +86,7 @@ build() {
     ./configure
   fi
 
-# Please take notice this requires at least 7GB of swap/disk space and 0.8+(3.2*threads)GB of RAM to build
+# Please take notice this requires at least 8GB of swap/disk space and 0.7+(3.2*threads)GB of RAM to build
   bazel build -c opt --config=sycl //tensorflow:libtensorflow.so \
     //tensorflow/tools/pip_package:build_pip_package # --jobs 1 --verbose_failures
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp

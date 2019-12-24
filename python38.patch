@@ -1,0 +1,39 @@
+diff --git a/tensorflow/python/eager/pywrap_tfe_src.cc b/tensorflow/python/eager/pywrap_tfe_src.cc
+index 6c9481c3af..eb61a962ff 100644
+--- a/tensorflow/python/eager/pywrap_tfe_src.cc
++++ b/tensorflow/python/eager/pywrap_tfe_src.cc
+@@ -956,7 +956,7 @@ static PyTypeObject TFE_Py_Tape_Type = {
+     sizeof(TFE_Py_Tape),                          /* tp_basicsize */
+     0,                                            /* tp_itemsize */
+     &TFE_Py_Tape_Delete,                          /* tp_dealloc */
+-    nullptr,                                      /* tp_print */
++    0,                                            /* tp_print */
+     nullptr,                                      /* tp_getattr */
+     nullptr,                                      /* tp_setattr */
+     nullptr,                                      /* tp_reserved */
+diff --git a/tensorflow/python/lib/core/bfloat16.cc b/tensorflow/python/lib/core/bfloat16.cc
+index 77fa2c1f66..28308e0cff 100644
+--- a/tensorflow/python/lib/core/bfloat16.cc
++++ b/tensorflow/python/lib/core/bfloat16.cc
+@@ -317,7 +317,7 @@ PyTypeObject PyBfloat16_Type = {
+     sizeof(PyBfloat16),                        // tp_basicsize
+     0,                                         // tp_itemsize
+     nullptr,                                   // tp_dealloc
+-    nullptr,                                   // tp_print
++    0,                                         // tp_print
+     nullptr,                                   // tp_getattr
+     nullptr,                                   // tp_setattr
+     nullptr,                                   // tp_compare / tp_reserved
+diff --git a/tensorflow/python/lib/core/ndarray_tensor_bridge.cc b/tensorflow/python/lib/core/ndarray_tensor_bridge.cc
+index 0d5838505f..95bfe24dde 100644
+--- a/tensorflow/python/lib/core/ndarray_tensor_bridge.cc
++++ b/tensorflow/python/lib/core/ndarray_tensor_bridge.cc
+@@ -86,7 +86,7 @@ PyTypeObject TensorReleaserType = {
+     0,                                /* tp_itemsize */
+     /* methods */
+     TensorReleaser_dealloc,      /* tp_dealloc */
+-    nullptr,                     /* tp_print */
++    0,                           /* tp_print */
+     nullptr,                     /* tp_getattr */
+     nullptr,                     /* tp_setattr */
+     nullptr,                     /* tp_compare */
