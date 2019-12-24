@@ -1,0 +1,14 @@
+pkgbase = python-colorful
+	pkgdesc = Terminal string styling done right, in Python
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/timofurrer/colorful
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = python-colorful-0.5.4.tar.gz::https://github.com/timofurrer/colorful/archive/v0.5.4.tar.gz
+	sha256sums = 6800079a7bd4a3d17b4915b195267f80802703df8fe276565e5cedf7691807dd
+
+pkgname = python-colorful
+
