@@ -1,5 +1,5 @@
 pkgbase = stumpwm-contrib-git
-	pkgdesc = Contribution resotiry for stumpwm
+	pkgdesc = Collection of StumpWM modules
 	pkgver = r190.aeb3f6b
 	pkgrel = 1
 	url = https://github.com/stumpwm/stumpwm-contrib.git

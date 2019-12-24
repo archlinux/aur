@@ -1,9 +1,10 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Kaare Jenssen <kaare at jenssen dot it>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=stumpwm-contrib-git
 pkgver=r190.aeb3f6b
 pkgrel=1
-pkgdesc="Contribution resotiry for stumpwm"
+pkgdesc="Collection of StumpWM modules"
 arch=('any')
 url="https://github.com/stumpwm/stumpwm-contrib.git"
 license=('GPL2')
