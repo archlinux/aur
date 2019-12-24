@@ -1,7 +1,7 @@
-From 6d78391d7d88a4726926383c1fcadd85a85131c8 Mon Sep 17 00:00:00 2001
+From dd827f5dae7363c5bab406e8cd2291b6d623b2b9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
-Subject: [PATCH 15/32] Rename qtmain to qt5main
+Subject: [PATCH 15/31] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
 ---
@@ -12,7 +12,7 @@ Prevents conflict with mingw-w64-qt4 package
  4 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 5208d22bd6..1a058b787f 100644
+index 17d2a5efec..2975d371e3 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -84,7 +84,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
@@ -25,10 +25,10 @@ index 5208d22bd6..1a058b787f 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 314cd5cc67..a3cb474b67 100644
+index 346fbf2467..b8045753f0 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -271,8 +271,8 @@ mac {
+@@ -317,8 +317,8 @@ mac {
      CMAKE_LIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.dll
  
      mingw {
@@ -55,7 +55,7 @@ index 272170d428..17f3ef9c2d 100644
              QMAKE_LIBS += $$lib
          } else {
 diff --git a/src/winmain/winmain.pro b/src/winmain/winmain.pro
-index 9cb6ab0c59..4327ba365e 100644
+index 1f54c846ec..162e7a4b1b 100644
 --- a/src/winmain/winmain.pro
 +++ b/src/winmain/winmain.pro
 @@ -2,7 +2,7 @@
@@ -68,5 +68,5 @@ index 9cb6ab0c59..4327ba365e 100644
  
  CONFIG += static
 -- 
-2.24.0
+2.24.1
 

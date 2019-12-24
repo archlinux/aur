@@ -1,7 +1,7 @@
-From 66b806863d218a367f67b8d0a75610b614ff13b3 Mon Sep 17 00:00:00 2001
+From f2e043c1c3d6e268ac890062068ff4bb3306d2ff Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
-Subject: [PATCH 24/32] Fix macro invoking moc, rcc and uic
+Subject: [PATCH 24/31] Fix macro invoking moc, rcc and uic
 
 * Otherwise the arguments aren't passed correctly leading to errors like
   ```
@@ -18,7 +18,7 @@ Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
  2 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
-index 0f006fe1e3..1db4bed272 100644
+index 17cc19fc4e..29022697a4 100644
 --- a/src/corelib/Qt5CoreMacros.cmake
 +++ b/src/corelib/Qt5CoreMacros.cmake
 @@ -132,8 +132,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
@@ -70,5 +70,5 @@ index 737371a5ad..d103278cdf 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.24.0
+2.24.1
 

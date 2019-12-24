@@ -1,7 +1,7 @@
-From afef15710db64b5892939103c7b95076b926703f Mon Sep 17 00:00:00 2001
+From 918b0fcbabce59d577fc50f20df512d58f49d975 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 16:42:07 +0200
-Subject: [PATCH 22/32] Adjust linker flags for static build with
+Subject: [PATCH 22/31] Adjust linker flags for static build with
  cmake/mingw-w64
 
 Change-Id: I33b88976d8f5ce87ce431a6f422fe87785bf5b8d
@@ -10,11 +10,11 @@ Change-Id: I33b88976d8f5ce87ce431a6f422fe87785bf5b8d
  1 file changed, 7 insertions(+)
 
 diff --git a/src/corelib/Qt5CoreConfigExtras.cmake.in b/src/corelib/Qt5CoreConfigExtras.cmake.in
-index f0add757bb..5328da2e80 100644
+index 58d1d5b366..967dc64a19 100644
 --- a/src/corelib/Qt5CoreConfigExtras.cmake.in
 +++ b/src/corelib/Qt5CoreConfigExtras.cmake.in
-@@ -173,3 +173,10 @@ get_filename_component(_Qt5CoreConfigDir ${CMAKE_CURRENT_LIST_FILE} PATH)
- set(_Qt5CTestMacros \"${_Qt5CoreConfigDir}/Qt5CTestMacros.cmake\")
+@@ -179,3 +179,10 @@ if (ANDROID_PLATFORM)
+ endif()
  
  _qt5_Core_check_file_exists(${_Qt5CTestMacros})
 +
@@ -25,5 +25,5 @@ index f0add757bb..5328da2e80 100644
 +unset(_isExe)
 +!!ENDIF
 -- 
-2.24.0
+2.24.1
 

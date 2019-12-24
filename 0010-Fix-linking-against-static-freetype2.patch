@@ -1,17 +1,17 @@
-From b093b965b4f245488c6c6cb4ac97125e65a4ec63 Mon Sep 17 00:00:00 2001
+From 6e50cb934d6293f26e6b2b403da5a62cfa7b6342 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
-Subject: [PATCH 10/32] Fix linking against static freetype2
+Subject: [PATCH 10/31] Fix linking against static freetype2
 
 ---
  src/gui/configure.json | 7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/gui/configure.json b/src/gui/configure.json
-index 36325920cd..972f9914ea 100644
+index c89831c404..c51a1b0ce1 100644
 --- a/src/gui/configure.json
 +++ b/src/gui/configure.json
-@@ -238,8 +238,11 @@
+@@ -239,8 +239,11 @@
              },
              "headers": "ft2build.h",
              "sources": [
@@ -26,5 +26,5 @@ index 36325920cd..972f9914ea 100644
                  { "libs": "-lfreetype" }
              ],
 -- 
-2.24.0
+2.24.1
 
