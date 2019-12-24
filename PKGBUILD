@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-colorful
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal string styling done right, in Python"
 arch=('any')
 url="https://github.com/timofurrer/colorful"
-license=('GPL')
+license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -19,4 +19,6 @@ build() {
 package() {
 	cd "colorful-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
