@@ -1,0 +1,20 @@
+pkgbase = raul
+	pkgdesc = C++ Realtime Audio Utility Library
+	pkgver = 0.8.0
+	pkgrel = 8
+	url = https://drobilla.net/software/raul/
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = python2
+	depends = glib2
+	source = https://download.drobilla.net/raul-0.8.0.tar.bz2
+	source = https://download.drobilla.net/raul-0.8.0.tar.bz2.sig
+	source = raul-0.8.0-ldconfig.patch
+	validpgpkeys = 38B6B5874F029137653BF39BC6F60E6529727060
+	sha512sums = 7ad48c551945aad104309448bcdb86a4a2ca07c44af53b37492e7cddce6a093529f1e1e75c4b27cb8e292ec46424969cdea270883d44b2f1badc48df8943a0a1
+	sha512sums = SKIP
+	sha512sums = db3803fb722e1dc7cc8d8f889415eb001f6785ba3297ad7621c0ccc8099da95c3f300b209f14c5cebc66626a767fe7dd7950c7eae4d3e49c48b6c05db76267d3
+
+pkgname = raul
+
