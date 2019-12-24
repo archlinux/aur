@@ -1,6 +1,6 @@
 pkgbase = cups-noudev
-	pkgver = 2.3.0
-	pkgrel = 3
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://www.cups.org/
 	arch = x86_64
 	license = Apache
@@ -24,8 +24,8 @@ pkgbase = cups-noudev
 	makedepends = inetutils
 	makedepends = libpaper
 	makedepends = valgrind
-	source = https://github.com/apple/cups/releases/download/v2.3.0/cups-2.3.0-source.tar.gz
-	source = https://github.com/apple/cups/releases/download/v2.3.0/cups-2.3.0-source.tar.gz.sig
+	source = https://github.com/apple/cups/releases/download/v2.3.1/cups-2.3.1-source.tar.gz
+	source = https://github.com/apple/cups/releases/download/v2.3.1/cups-2.3.1-source.tar.gz.sig
 	source = cups.logrotate
 	source = cups.pam
 	source = cups.sysusers
@@ -35,7 +35,7 @@ pkgbase = cups-noudev
 	validpgpkeys = 3737FD0D0E63B30172440D2DDBA3A7AB08D76223
 	validpgpkeys = 45D083946E3035282B3CCA9AF434104235DA97EB
 	validpgpkeys = 845464660B686AAB36540B6F999559A027815955
-	sha256sums = acaf0229cf008ea8f06353ffd1bbd62d71dbe88990dd3330650ef87edb95a1a5
+	sha256sums = 1bca9d89507e3f68cbc84482fe46ae8d5333af5bc2b9061347b2007182ac77ce
 	sha256sums = SKIP
 	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -52,7 +52,7 @@ pkgname = libcups-noudev
 	depends = krb5
 	depends = avahi
 	depends = libusb
-	provides = libcups=2.3.0
+	provides = libcups=2.3.1
 	conflicts = libcups
 
 pkgname = cups-noudev
@@ -60,14 +60,14 @@ pkgname = cups-noudev
 	install = cups.install
 	depends = acl
 	depends = pam
-	depends = libcups>=2.3.0
+	depends = libcups>=2.3.1
 	depends = cups-filters
 	depends = bc
 	depends = libpaper
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = colord: for ICC color profile support
-	provides = cups=2.3.0
+	provides = cups=2.3.1
 	conflicts = cups
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf

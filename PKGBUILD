@@ -10,8 +10,8 @@
 _pkgbase="cups"
 pkgbase="cups-noudev"
 pkgname=('libcups-noudev' 'cups-noudev')
-pkgver=2.3.0
-pkgrel=3
+pkgver=2.3.1
+pkgrel=1
 arch=('x86_64')
 license=('Apache' 'custom')
 url="https://www.cups.org/"
@@ -27,7 +27,7 @@ source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver
         cups-1.6.2-statedir.patch
         # bugfixes
         guid.patch)
-sha256sums=('acaf0229cf008ea8f06353ffd1bbd62d71dbe88990dd3330650ef87edb95a1a5'
+sha256sums=('1bca9d89507e3f68cbc84482fe46ae8d5333af5bc2b9061347b2007182ac77ce'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
@@ -45,12 +45,12 @@ prepare() {
 
   # improve build and linking
   # Do not export SSL libs in cups-config
-  patch -Np1 -i ${srcdir}/cups-no-export-ssllibs.patch
+  patch -Np1 -i "${srcdir}"/cups-no-export-ssllibs.patch
   # move /var/run -> /run for pid file
-  patch -Np1 -i ${srcdir}/cups-1.6.2-statedir.patch
+  patch -Np1 -i "${srcdir}"/cups-1.6.2-statedir.patch
 
   # FS#56818 - https://github.com/apple/cups/issues/5236
-  patch -Np1 -i ${srcdir}/guid.patch
+  patch -Np1 -i "${srcdir}"/guid.patch
 
   # set MaxLogSize to 0 to prevent using cups internal log rotation
   sed -i -e '5i\ ' conf/cupsd.conf.in
@@ -81,6 +81,7 @@ build() {
      --disable-dbus \
      --with-dbusdir=no \
      --enable-ssl=yes \
+     --enable-relro \
      --enable-threads \
      --enable-avahi\
      --enable-libpaper \
@@ -102,16 +103,16 @@ depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb')
 provides=("libcups=${pkgver}")
 conflicts=("libcups")
   cd ${_pkgbase}-${pkgver}
-  make BUILDROOT=${pkgdir} install-headers install-libs
+  make BUILDROOT="${pkgdir}" install-headers install-libs
   # put this into the libs pkg to make other software find the libs(no pkg-config file included)
   mkdir -p ${pkgdir}/usr/bin
-  install -m755 ${srcdir}/${_pkgbase}-${pkgver}/cups-config ${pkgdir}/usr/bin/cups-config
+  install -m755 "${srcdir}"/${_pkgbase}-${pkgver}/cups-config ${pkgdir}/usr/bin/cups-config
 
   # add license + exception
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" {LICENSE,NOTICE}
   
   # fix usb backend permissions
-  chmod 700 ${pkgdir}/usr/lib/cups/backend/usb
+  chmod 700 "${pkgdir}"/usr/lib/cups/backend/usb
 }
 
 package_cups-noudev() {
@@ -132,49 +133,49 @@ optdepends=('xdg-utils: xdg .desktop file support'
 provides=("cups=${pkgver}")
 conflicts=("cups")
   cd ${_pkgbase}-${pkgver}
-  make BUILDROOT=${pkgdir} install-data install-exec
+  make BUILDROOT="${pkgdir}" install-data install-exec
 
   # this one we ship in the libcups pkg
-  rm -f ${pkgdir}/usr/bin/cups-config
+  rm -f "${pkgdir}"/usr/bin/cups-config
 
   # kill the sysv stuff
-  rm -rf ${pkgdir}/etc/rc*.d
-  rm -rf ${pkgdir}/etc/init.d
-  install -D -m644 ../cups.logrotate ${pkgdir}/etc/logrotate.d/cups
-  install -D -m644 ../cups.pam ${pkgdir}/etc/pam.d/cups
+  rm -rf "${pkgdir}"/etc/rc*.d
+  rm -rf "${pkgdir}"/etc/init.d
+  install -D -m644 ../cups.logrotate "${pkgdir}"/etc/logrotate.d/cups
+  install -D -m644 ../cups.pam "${pkgdir}"/etc/pam.d/cups
 
   # fix perms on /var/spool and /etc
-  chmod 755 ${pkgdir}/var/spool
-  chmod 755 ${pkgdir}/etc
+  chmod 755 "${pkgdir}"/var/spool
+  chmod 755 "${pkgdir}"/etc
 
   # use cups group FS#36769
   install -Dm644 "$srcdir"/cups.sysusers "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
-  sed -i "s:#User 209:User 209:" ${pkgdir}/etc/cups/cups-files.conf{,.default}
-  sed -i "s:#Group 209:Group 209:" ${pkgdir}/etc/cups/cups-files.conf{,.default}
+  sed -i "s:#User 209:User 209:" "${pkgdir}"/etc/cups/cups-files.conf{,.default}
+  sed -i "s:#Group 209:Group 209:" "${pkgdir}"/etc/cups/cups-files.conf{,.default}
 
   # install ssl directory where to store the certs, solves some samba issues
-  install -dm700 -g 209 ${pkgdir}/etc/cups/ssl
+  install -dm700 -g 209 "${pkgdir}"/etc/cups/ssl
   # remove directory from package, it will be recreated at each server start
-  rm -rf ${pkgdir}/run
+  rm -rf "${pkgdir}"/run
 
   # install some more configuration files that will get filled by cupsd
-  touch ${pkgdir}/etc/cups/printers.conf
-  touch ${pkgdir}/etc/cups/classes.conf
-  touch ${pkgdir}/etc/cups/subscriptions.conf
-  chgrp -R 209 ${pkgdir}/etc/cups
+  touch "${pkgdir}"/etc/cups/printers.conf
+  touch "${pkgdir}"/etc/cups/classes.conf
+  touch "${pkgdir}"/etc/cups/subscriptions.conf
+  chgrp -R 209 "${pkgdir}"/etc/cups
 
   # fix .desktop file
-  sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' ${pkgdir}/usr/share/applications/cups.desktop
+  sed -i 's|^Exec=htmlview http://localhost:631/|Exec=xdg-open http://localhost:631/|g' "${pkgdir}"/usr/share/applications/cups.desktop
 
   # compress some driver files, adopted from Fedora
-  find ${pkgdir}/usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
+  find "${pkgdir}"/usr/share/cups/model -name "*.ppd" | xargs gzip -n9f
 
   # remove client.conf man page
-  rm -f ${pkgdir}/usr/share/man/man5/client.conf.5
+  rm -f "${pkgdir}"/usr/share/man/man5/client.conf.5
 
   # comment out all conversion rules which use any of the removed filters that are now part of cups-filters
-  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' $pkgdir/usr/share/cups/mime/mime.convs
+  perl -p -i -e 's:^(.*\s+bannertops\s*)$:#\1:' "$pkgdir"/usr/share/cups/mime/mime.convs
 
   # comment out unnecessary PageLogFormat entry
-  sed -i -e 's:PageLogFormat:#PageLogFormat:' $pkgdir/etc/cups/cupsd.conf*
+  sed -i -e 's:PageLogFormat:#PageLogFormat:' "$pkgdir"/etc/cups/cupsd.conf*
 }
