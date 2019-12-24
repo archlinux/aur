@@ -1,0 +1,92 @@
+diff --git a/src/command.c b/src/command.c
+index 66fa542..d96508d 100644
+--- a/src/command.c
++++ b/src/command.c
+@@ -218,7 +218,7 @@ struct Value *handle_quit_command(String *args, int offset)
+         else return shareval(val_zero);
+     }
+ 
+-    if (interactive && have_active_socks() && !yes) {
++    if (is_interactive_session && have_active_socks() && !yes) {
+ 	fix_screen();
+ 	puts("There are sockets with unseen text.  Really quit tf? (y/N)\r");
+ 	fflush(stdout);
+diff --git a/src/globals.h b/src/globals.h
+index dcca6cd..11ca74a 100644
+--- a/src/globals.h
++++ b/src/globals.h
+@@ -191,7 +191,7 @@ enum Vars {
+ #define iecho		getintvar(VAR_iecho)
+ #define info_attr	getattrvar(VAR_info_attr)
+ #define insert		getintvar(VAR_insert)
+-#define interactive	getintvar(VAR_interactive)
++#define is_interactive_session	getintvar(VAR_interactive)
+ #define isize		getintvar(VAR_isize)
+ #define istrip		getintvar(VAR_istrip)
+ #define kbnum		getstrvar(VAR_kbnum)
+diff --git a/src/output.c b/src/output.c
+index 663aa0e..a1f5268 100644
+--- a/src/output.c
++++ b/src/output.c
+@@ -2881,7 +2881,7 @@ void reset_outcount(Screen *screen)
+ /* return TRUE if okay to print */
+ static int check_more(Screen *screen)
+ {
+-    if (!screen->paused && more && interactive && screen->outcount-- <= 0)
++    if (!screen->paused && more && is_interactive_session && screen->outcount-- <= 0)
+     {
+         /* status bar is updated in oflush() to avoid scroll region problems */
+         screen->paused = 1;
+diff --git a/src/signals.c b/src/signals.c
+index e224d73..a632360 100644
+--- a/src/signals.c
++++ b/src/signals.c
+@@ -269,7 +269,7 @@ static void handle_interrupt(void)
+     VEC_CLR(SIGINT, &pending_signals);
+     /* so status line macros in setup_screen() aren't gratuitously killed */
+ 
+-    if (!interactive)
++    if (!is_interactive_session)
+         die("Interrupt, exiting.", 0);
+     reset_kbnum();
+     fix_screen();
+@@ -316,7 +316,7 @@ static RETSIGTYPE core_handler(int sig)
+     setsighandler(sig, core_handler);  /* restore handler (POSIX) */
+ 
+     if (sig == SIGQUIT) {
+-	if (interactive) {
++	if (is_interactive_session) {
+ 	    fix_screen();
+ #if DISABLE_CORE
+ 	    puts("SIGQUIT received.  Exit?  (y/n)\r");
+@@ -372,7 +372,7 @@ static RETSIGTYPE core_handler(int sig)
+ 	}
+     }
+ 
+-    if (interactive) {
++    if (is_interactive_session) {
+ 	close_all();
+         fputs("\nPress any key.\r\n", stderr);
+         fflush(stderr);
+@@ -636,7 +636,7 @@ int shell(const char *cmd)
+     cbreak_noecho_mode();
+     if (result == -1) {
+         eprintf("%s", strerror(errno));
+-    } else if (shpause && interactive) {
++    } else if (shpause && is_interactive_session) {
+         puts("\r\n% Press any key to continue tf.\r");
+         igetchar();
+     }
+diff --git a/src/varlist.h b/src/varlist.h
+index b7b9d0f..5be5ea7 100644
+--- a/src/varlist.h
++++ b/src/varlist.h
+@@ -91,7 +91,7 @@ varenum(VAR_iecho,	"iecho",	0,		NULL,	enum_mecho)
+ varstr (VAR_iecho_attr,	"iecho_attr",	"Cred",		ch_attr)
+ varstr (VAR_info_attr,	"info_attr",	NULL,		ch_attr)
+ varflag(VAR_insert,	"insert",	TRUE,		NULL)
+-varflag(VAR_interactive,"interactive",	-1,		NULL)
++varflag(VAR_interactive,"is_interactive_session",	-1,		NULL)
+ varpos (VAR_isize,	"isize",	3,		ch_visual)
+ varflag(VAR_istrip,	"istrip",	FALSE,		NULL)
+ varstr (VAR_kbnum,	"kbnum",	NULL,		NULL)

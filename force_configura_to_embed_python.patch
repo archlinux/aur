@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index 773ae9f..2f1d1b9 100755
+--- a/configure
++++ b/configure
+@@ -4791,7 +4791,7 @@ fi
+ done
+ 
+    ax_python_conf=$PYTHON_CONF
+-   ax_python_lib=`$ax_python_conf --ldflags`
++   ax_python_lib=`$ax_python_conf --ldflags --embed`
+    ax_python_header=`$ax_python_conf --includes`
+    if test "x$ax_python_header" != "x"; then
+        break;
