@@ -27,12 +27,12 @@ source=("git+https://github.com/5long/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$_pkgname"
+  printf "%s" "$(git describe --tags --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
-	cd "$_pkgname"
-	install -m=0755 -Dt "$pkgdir/usr/bin" bin/p3wm
-	install -m=0644 -Dt "$pkgdir/usr/share/licenses" LICENSE
+  cd "$_pkgname"
+  install -m=0755 -Dt "$pkgdir/usr/bin" bin/p3wm
+  install -m=0644 -Dt "$pkgdir/usr/share/licenses" LICENSE
 }
