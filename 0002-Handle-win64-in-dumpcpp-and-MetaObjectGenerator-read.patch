@@ -1,4 +1,4 @@
-From 4680bcb9f8423c5038ae4af8d6f58c1958a2917a Mon Sep 17 00:00:00 2001
+From 539d90bbe98100fa4321f4ed05a49573892c5b93 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 2 Jun 2017 17:21:08 +0200
 Subject: [PATCH 2/2] Handle win64 in dumpcpp and
@@ -11,10 +11,10 @@ See https://bugreports.qt.io/browse/QTBUG-46827
  2 files changed, 12 insertions(+)
 
 diff --git a/src/activeqt/container/qaxbase.cpp b/src/activeqt/container/qaxbase.cpp
-index d87217f..43a4ed8 100644
+index 1262944..5cad4bf 100644
 --- a/src/activeqt/container/qaxbase.cpp
 +++ b/src/activeqt/container/qaxbase.cpp
-@@ -2209,6 +2209,10 @@ void MetaObjectGenerator::readClassInfo()
+@@ -2204,6 +2204,10 @@ void MetaObjectGenerator::readClassInfo()
              const QStringList versions = controls.childGroups();
              for (const QString &version : versions) {
                  tlfile = controls.value(QLatin1Char('/') + version + QLatin1String("/0/win32/.")).toString();
@@ -26,10 +26,10 @@ index d87217f..43a4ed8 100644
                      break;
              }
 diff --git a/tools/dumpcpp/main.cpp b/tools/dumpcpp/main.cpp
-index eb6f70a..d9d1bdf 100644
+index 86699eb..4e454f8 100644
 --- a/tools/dumpcpp/main.cpp
 +++ b/tools/dumpcpp/main.cpp
-@@ -1552,6 +1552,10 @@ int main(int argc, char **argv)
+@@ -1580,6 +1580,10 @@ int main(int argc, char **argv)
              typeLib = settings.value(QLatin1Char('/') + codes.at(c) + QLatin1String("/0/win32/.")).toString();
              if (QFile::exists(typeLib))
                  break;
@@ -40,7 +40,7 @@ index eb6f70a..d9d1bdf 100644
          }
  
          if (!typeLib.isEmpty())
-@@ -1611,6 +1615,10 @@ int main(int argc, char **argv)
+@@ -1639,6 +1643,10 @@ int main(int argc, char **argv)
                                       + QLatin1String("/win32/.")).toString();
              if (QFile::exists(typeLib))
                  break;
@@ -52,5 +52,5 @@ index eb6f70a..d9d1bdf 100644
      }
  
 -- 
-2.24.0
+2.24.1
 
