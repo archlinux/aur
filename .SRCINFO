@@ -1,7 +1,7 @@
 pkgbase = charliecloud
 	pkgdesc = Lightweight user-defined software stacks for high-performance computing
-	pkgver = 0.10
-	pkgrel = 2
+	pkgver = 0.12
+	pkgrel = 1
 	url = https://hpc.github.io/charliecloud
 	arch = any
 	license = Apache-2.0
@@ -12,8 +12,8 @@ pkgbase = charliecloud
 	depends = python
 	optdepends = docker>=17.03
 	options = !emptydirs
-	source = https://github.com/hpc/charliecloud/releases/download/v0.10/charliecloud-0.10.tar.gz
-	sha1sums = 331b475c17e4c57d9e2751a7c73f21ff62520220
+	source = https://github.com/hpc/charliecloud/releases/download/v0.12/charliecloud-0.12.tar.gz
+	sha1sums = 1c52431430365dba88fbf85f7d5c69a6128e3321
 
 pkgname = charliecloud
 
