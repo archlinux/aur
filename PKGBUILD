@@ -1,6 +1,6 @@
 # Maintainer: Whyme Lyu <callme5long@gmail.com>
 pkgname=p3wm
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Three-way merge .pacnew files"
 arch=('any')
@@ -9,6 +9,7 @@ license=('custom:ISC')
 depends=(
   'bash'
   'coreutils'
+  'diffutils'
   'gawk'
   'pacman'
   'sed'
@@ -23,7 +24,7 @@ optdepends=(
 )
 makedepends=('git' 'asciidoctor')
 source=("https://github.com/5long/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6a9eada2ebb650b1a8019c898e9c7bfd6f75734915364022d420f0146dcc6dd6')
+sha256sums=('8331a98a59ebb1d46b4e48d60dab9425e84bcd259f0d81e4f9d9cb0c4770168c')
 
 build() {
   cd "$pkgname-$pkgver"
