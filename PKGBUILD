@@ -1,8 +1,8 @@
 # Maintainer: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=mpv-acestream
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="Lua script that adds AceStream protocol handler to mpv player"
 arch=("any")
 url="https://github.com/Digitalone1/mpv-acestream"
@@ -15,7 +15,7 @@ source=(
     "acestream.protocol")
 install="$pkgname.install"
 md5sums=(
-    "f3dd26794a41070cf44f88fc43478f2a"
+    "8ddf76886cce4ee87615fca71c3828be"
     "b3c9666c4e0aecd92f6fc208a2b3429e")
 
 package() {
