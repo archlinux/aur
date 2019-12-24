@@ -180,7 +180,7 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='7.0.0'
+pkgver='7.0.1'
 pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
@@ -228,7 +228,7 @@ source=(
   '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   '1000-hylafaxplus-modem-support.patch'
 )
-sha256sums=('9e69bef1afc2e9c943c6ee176b435305a5f6f8c743c9e9fb35a348c52a6ad8e7'
+sha256sums=('7f8b4cb081678ba5d11b336ba55fc203eb5a65752495555f77513ab7c1ac6f32'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
             '80d2e28ee7a7d8f93501e32c96e9895e242409da1326761d36dbf28e5a0e3677'
@@ -239,7 +239,7 @@ sha256sums=('9e69bef1afc2e9c943c6ee176b435305a5f6f8c743c9e9fb35a348c52a6ad8e7'
             '528f267805203b792741423f46114fee7b48664f1aab35a0edff7d519555ccc2'
             'e2b43c19705ce112dd3a08ecd0cae4c5558910366291524566cdd5890b2c6095'
             '96d106278ac68b95f0d1916f76066904c2108a2bb0c97651c22d025d989f4acb'
-            'd1671cf26e10858c5e1debc4c1bbb4d0091b982ce7d01c867dc9781b4b3e84b4')
+            '98e79e16e9cda5bb853501daaac7734cd5a367eb7543990f6a3c16fef49d0968')
 
 # The HylaFAX binaries work very well. The scripts need major fixes!
 # HylaFAX+ is pretty much completely broken for any Linux install,
@@ -380,6 +380,9 @@ prepare() {
   for _cfg in $(grep -le '^ModemType:' config/*); do
     printf '#\nInclude:\t\t"etc/config-modems"\n' >> "${_cfg}"
   done
+
+  # pretend, that libtiff 4.1 is similar to 4.0
+  sed -e 's/4.0)/4.[01])/' -i 'configure'
 
   set +u
 
@@ -578,7 +581,7 @@ EOF
   ) "${pkgdir}/var/spool/hylafax/etc/config-local.default"
 
   # It's difficult to set up job control from the scant information in man pages and the Internet
-  install -Dm644 <(cat << EOF
+  install -Dm755 <(cat << EOF
 #!/usr/bin/bash
 
 set -u

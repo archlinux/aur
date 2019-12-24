@@ -1,6 +1,6 @@
 diff -pNaru5 config.Arch/conexant-1.0 config/conexant-1.0
 --- config.Arch/conexant-1.0	2015-07-26 20:46:06.000000000 -0400
-+++ config/conexant-1.0	2019-04-12 14:06:33.818743062 -0400
++++ config/conexant-1.0	2019-04-25 00:05:01.600945703 -0400
 @@ -7,13 +7,17 @@
  # support "Class 1.0" which means that they have "adaptive receive"
  # (AT+FAR=1), but not V.34.
@@ -19,6 +19,15 @@ diff -pNaru5 config.Arch/conexant-1.0 config/conexant-1.0
  # CONFIG:CLASS1.0:.*:.*LEONARDO.*:.*: Manufacturer=Digicom Model=Leonardo
  #
  # BEGIN-SERVER
+@@ -36,5 +40,8 @@ ModemHardFlowCmd:	AT&K3		# setup hardwar
+ ModemSoftFlowCmd:	AT&K4		# setup software flow control
+ ModemSetupDTRCmd:	AT&D2		# setup so DTR drop resets modem
+ ModemSetupDCDCmd:	AT&C1		# setup so DCD reflects carrier (or not)
+ #
+ Class1AdaptRecvCmd:	AT+FAR=1	# reports carrier detection mismatches
++#
++# ATDT wait for dial tone W produces busy signals on MT5600BA
++#ModemDialCmd:		ATDT9,%s
 diff -pNaru5 config.Arch/lucent config/lucent
 --- config.Arch/lucent	2015-07-26 20:46:06.000000000 -0400
 +++ config/lucent	2019-04-12 14:05:09.188228149 -0400
@@ -81,3 +90,46 @@ diff -pNaru5 config.Arch/rc288dpi-1 config/rc288dpi-1
  #
  # BEGIN-SERVER
  # END-SERVER
+diff -pNaru5 config.Arch/usr-rts config/usr-rts
+--- config.Arch/usr-rts	2015-07-26 20:46:06.000000000 -0400
++++ config/usr-rts	2019-04-24 23:18:18.003137846 -0400
+@@ -79,13 +79,18 @@ ModemSetupAACmd:	AT+FCLASS=0	# leave mod
+ ModemAnswerCmd:		AT+FCLASS=1	# force RTS/CTS after change
+ #
+ # Disables the reporting of bad frames by the modem.  This
+ # overcomes a firmware problem in the x2 and V90 Sportsters.
+ # It is not necessary for the Courier modem.
++# It errors on the Sportster 5686G V.92.
+ #
+-Class2NRCmd:    AT+FNR=1,1,1,0
++#Class2NRCmd:    AT+FNR=1,1,1,0
+ # 
++# Sportster 5686G (Agere CV92) doesn't respond correctly to AT+FTM=?
++#Class1TMQueryCmd: "!3,24,48,72,73,74,96,97,98,121,122,145,146"
++#Class1RMQueryCmd: "!3,24,48,72,73,74,96,97,98,121,122,145,146"
++#
+ # When using AT+FRS=n we see USR modems reset themselves in the middle of sessions
+ # this is not good.  So, we seem to work-around that problem by not using the
+ # command.  Unfortunately, this isn't an ideal thing.
+ # 
+ Class1SwitchingCmd:     "<delay\0727>"
+diff -pNaru5 config.Arch/zyxel-1496e-1 config/zyxel-1496e-1
+--- config.Arch/zyxel-1496e-1	2015-07-26 20:46:06.000000000 -0400
++++ config/zyxel-1496e-1	2019-04-24 23:28:05.746941599 -0400
+@@ -60,14 +60,14 @@ ModemSetupAACmd:	AT+FAA=1	# enable in cu
+ # Additional reset commands:
+ #
+ # &B1	  DTE-DCE rate is fixed at DTE setting
+ # &N0	  Auto-negotiate highest possible DCE-DCE link rate
+ # &S0	  DSR always on
+-# *F0	  Deny remote configuration
++# *F0	  Deny remote configuration (removed due to error on U90E)
+ # S38.3=1 DCD on/off sequence follows UNIX standard
+ # 
+-ModemResetCmds:		AT&B1&N0&S0*F0S38.3=1
++ModemResetCmds:		AT&B1&N0&S0S38.3=1
+ #
+ # We normally append the "@" symbol to the dial string so that
+ # the modem will wait 5 seconds before attempting to connect
+ # and return result codes that distinguish between no carrier
+ # and no answer.  This makes it possible to avoid problems with
