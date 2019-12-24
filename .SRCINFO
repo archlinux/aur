@@ -1,6 +1,6 @@
 pkgbase = xsstrike
 	pkgdesc = Advanced XSS Detection Suite
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://somdev.me/XSStrike/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = xsstrike
 	depends = python-fuzzywuzzy
 	depends = python-requests
 	options = !emptydirs
-	source = https://github.com/s0md3v/XSStrike/archive/3.1.4.tar.gz
-	sha256sums = cc94741f825e872a67a8f2b1f3ec5c3048791aa689dc804c713e82f88b9bd188
+	source = https://github.com/s0md3v/XSStrike/archive/3.1.5.tar.gz
+	sha256sums = c66e0feae1edd7fbd924ed06ced1b39db7296a6e2f9632cd5eff6b811053643f
 
 pkgname = xsstrike
 
