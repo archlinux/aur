@@ -1,0 +1,14 @@
+pkgbase = mwc-qt-wallet-bin
+	pkgdesc = QT wallet client for a fork of the Grin project with a 20 million supply cap and airdrop to Bitcoin holders
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://www.mwc.mw/
+	arch = x86_64
+	license = Apache
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	source_x86_64 = https://github.com/mwcproject/mwc-qt-wallet/releases/download/1.0.10/mwc-qt-wallet_1.0.10-linux64.deb
+	sha512sums_x86_64 = 807d6317a64f9c45bffe47aee046a472a014ed7664772fda3363d8996981553a144257f87aaac5c7c104851af9576ca3d5f4621822d54eae6361973891dbf8a6
+
+pkgname = mwc-qt-wallet-bin
+
