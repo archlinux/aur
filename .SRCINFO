@@ -1,0 +1,25 @@
+pkgbase = p3wm
+	pkgdesc = Three-way merge .pacnew files
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/5long/p3wm
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = asciidoctor
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = pacman
+	depends = sed
+	depends = tar
+	optdepends = git: default merge tool
+	optdepends = rcs: default merge tool
+	optdepends = kdiff3: default resolve tool
+	optdepends = meld: default resolve tool
+	optdepends = vim: default resolve tool
+	source = https://github.com/5long/p3wm/archive/v0.3.0.tar.gz
+	sha256sums = 6a9eada2ebb650b1a8019c898e9c7bfd6f75734915364022d420f0146dcc6dd6
+
+pkgname = p3wm
+
