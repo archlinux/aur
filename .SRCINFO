@@ -1,7 +1,7 @@
 pkgbase = espanso
 	pkgdesc = Cross-platform Text Expander written in Rust
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://espanso.org/
 	install = espanso.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = espanso
 	depends = xdotool
 	depends = xclip
 	depends = libxtst
+	depends = libnotify
 	source = espanso::git+https://github.com/federico-terzi/espanso.git#tag=v0.4.1
 	sha512sums = SKIP
 
