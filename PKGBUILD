@@ -3,7 +3,7 @@
 pkgname=vim-mesonic-git
 pkgver=r52.f480c87
 pkgrel=1
-pkgdesc="Support for meson build system in vim"
+pkgdesc="lets you use meson and ninja with ':make' in vim ; see ':help mesonic'"
 arch=('i686' 'x86_64')
 url="https://github.com/igankevich/mesonic"
 license=('unknown')
