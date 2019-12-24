@@ -58,17 +58,17 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 pkgname="emacs-git"
-pkgver=27.0.50.139793
-pkgrel=2
+pkgver=28.0.50.139832
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
-arch=('x86_64')
+arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
-license=('GPL3')
-depends=( 'alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' )
-makedepends=( 'git' )
+license=('GPL3' )
+depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm')
+makedepends=('git')
 provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs-seq')
-replaces=('emacs26-git' 'emacs-seq')
+conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq')
+replaces=('emacs26-git' 'emacs27-git' 'emacs-seq')
 source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
