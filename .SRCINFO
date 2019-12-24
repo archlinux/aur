@@ -1,0 +1,22 @@
+pkgbase = nautilus-ext-git-git
+	pkgdesc = Nautilus extension to add important information about the current git directory
+	pkgver = 1.3.r16.g5389549
+	pkgrel = 1
+	url = https://github.com/bilelmoussaoui/nautilus-git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = meson
+	makedepends = intltool
+	depends = git
+	depends = gobject-introspection
+	depends = gtk3
+	depends = python-nautilus
+	provides = nautilus-ext-git
+	conflicts = nautilus-ext-git
+	source = nautilus-ext-git::git+https://github.com/bilelmoussaoui/nautilus-git
+	sha256sums = SKIP
+
+pkgname = nautilus-ext-git-git
+
