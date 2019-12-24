@@ -1,6 +1,6 @@
 pkgbase = gammy-git
 	pkgdesc = Automatic screen brightness tool.
-	pkgver = 0.9.52.r0.d92e193
+	pkgver = 0.9.53.r0.14b9d44
 	pkgrel = 1
 	url = https://getgammy.com
 	arch = x86_64

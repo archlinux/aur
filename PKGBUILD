@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
-pkgver=0.9.52.r0.d92e193
+pkgver=0.9.53.r0.14b9d44
 pkgrel=1
 pkgdesc="Automatic screen brightness tool."
 arch=('x86_64')
@@ -32,6 +32,5 @@ package() {
 	make INSTALL_ROOT="$pkgdir/" install
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/gammy/bin/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
-	install -Dm644 "$srcdir/${pkgname%-git}.desktop" \
-		"$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
+	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
 }
