@@ -1,6 +1,6 @@
 pkgbase = lvm2-noudev
 	pkgver = 2.02.186
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceware.org/lvm2/
 	arch = x86_64
 	license = GPL2

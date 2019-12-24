@@ -12,7 +12,7 @@
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
 pkgver=2.02.186
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
@@ -92,7 +92,7 @@ package_device-mapper-noudev() {
 
   make DESTDIR="${pkgdir}" install_device-mapper
   # extra udev rule for device-mapper in initramfs
-  install -D -m644 "${srcdir}/11-dm-initramfs.rules" "${pkgdir}/usr/lib/initcpio/udev/11-dm-initramfs.rules"
+  install -D -m0644 "${srcdir}/11-dm-initramfs.rules" "${pkgdir}/usr/lib/initcpio/udev/11-dm-initramfs.rules"
 }
 
 package_lvm2-noudev() {
@@ -112,8 +112,8 @@ package_lvm2-noudev() {
   # /etc directories
   install -d "${pkgdir}"/etc/lvm/{archive,backup}
   # mkinitcpio hook
-  install -D -m644 "${srcdir}/lvm2_hook" "${pkgdir}/usr/lib/initcpio/hooks/lvm2"
-  install -D -m644 "${srcdir}/lvm2_install" "${pkgdir}/usr/lib/initcpio/install/lvm2"
+  install -D -m0644 "${srcdir}/lvm2_hook" "${pkgdir}/usr/lib/initcpio/hooks/lvm2"
+  install -D -m0644 "${srcdir}/lvm2_install" "${pkgdir}/usr/lib/initcpio/install/lvm2"
   # extra udev rule for lvmetad in non-systemd initramfs
-  install -D -m644 "${srcdir}/lvm2-initramfs/udev/69-dm-lvm-metad.rules" "${pkgdir}/usr/lib/initcpio/udev/69-dm-lvm-metad.rules"
+  install -D -m0644 "${srcdir}/lvm2-initramfs/udev/69-dm-lvm-metad.rules" "${pkgdir}/usr/lib/initcpio/udev/69-dm-lvm-metad.rules"
 }
