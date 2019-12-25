@@ -11,7 +11,7 @@ pkgbase = repoctl-devel-git
 	makedepends = git
 	depends = pacman
 	options = !strip
-	source = repoctl-devel-git::git+https://github.com/cassava/repoctl.git#branch=devel
+	source = repoctl::git+https://github.com/cassava/repoctl.git#branch=devel
 	md5sums = SKIP
 
 pkgname = repoctl-devel-git

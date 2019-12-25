@@ -2,7 +2,8 @@
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Ben Morgan <neembi@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-pkgname=repoctl-devel-git
+_pkgname=repoctl
+pkgname="${_pkgname}-devel-git"
 pkgver=0.19
 pkgrel=0
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories (devel branch from git)"
@@ -12,11 +13,11 @@ license=('MIT')
 depends=('pacman')
 makedepends=('go' 'git')
 options=('!strip')
-source=("$pkgname::git+https://github.com/cassava/repoctl.git#branch=devel")
+source=("${_pkgname}::git+https://github.com/cassava/repoctl.git#branch=devel")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   git describe --tags --long | sed 's/^v//; s/-/.r/; s/-/./g'
 }
 
@@ -25,7 +26,7 @@ prepare() {
   mkdir -p "$dest"
   mv "$srcdir/$pkgname" "$dest/repoctl"
   cd "$srcdir"
-  ln -s "$dest/repoctl" "$pkgname-$pkgver"
+  ln -s "$dest/repoctl" "${_pkgname}"
 }
 
 build() {
@@ -35,7 +36,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   # Install repoctl program
   install -d "$pkgdir/usr/bin"
