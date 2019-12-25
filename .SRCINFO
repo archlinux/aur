@@ -1,6 +1,6 @@
 pkgbase = cross-mipsel-linux-gnu-gcc
 	pkgdesc = The GNU Compiler Collection for the MIPS architecture
-	pkgver = 9.1.0
+	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/gcc/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = cross-mipsel-linux-gnu-gcc
 	options = !emptydirs
 	options = !libtool
 	options = !strip
-	source = ftp://ftp.gnu.org/gnu/gcc/gcc-9.1.0/gcc-9.1.0.tar.xz
-	md5sums = 6069ae3737cf02bf2cb44a391ef0e937
+	source = ftp://ftp.gnu.org/gnu/gcc/gcc-9.2.0/gcc-9.2.0.tar.xz
+	md5sums = 3818ad8600447f05349098232c2ddc78
 
 pkgname = cross-mipsel-linux-gnu-gcc
 
