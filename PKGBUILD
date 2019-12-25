@@ -6,6 +6,7 @@ pkgname=fotoxx-test
 _pkgver=20.0-RC1
 pkgver=20.0_rc1
 pkgrel=1
+epoch=1
 pkgdesc="A program for improving image files made with a digital camera, test-version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
