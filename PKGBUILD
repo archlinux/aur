@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	mkdir -p build
-	arch-meson build "${pkgname}-${pkgver}" --buildtype release
+	arch-meson build "${pkgname}-${pkgver}" -D b_ndebug=true
 	ninja -C build
 }
 
