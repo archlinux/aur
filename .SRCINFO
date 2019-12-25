@@ -6,18 +6,20 @@ pkgbase = torrential
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = cmake
-	makedepends = vala
-	depends = curl
-	depends = granite
-	depends = gtk3
-	depends = libarchive
+	makedepends = vala-0.42
+	depends = libgranite.so
+	depends = libunity
 	depends = libevent
 	depends = libnatpmp
-	depends = libunity
+	depends = libb64
+	depends = dht
 	depends = miniupnpc
-	depends = openssl
-	source = torrential-1.1.0::git+https://github.com/davidmhewitt/torrential#commit=70574259eaf41300a65338c6648fb05cb343b594
+	depends = libutp
+	source = git+https://github.com/davidmhewitt/torrential.git#tag=1.1.0
+	source = torrential-transmission::git+https://github.com/davidmhewitt/transmission.git#branch=2.9x-torrential
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = torrential
