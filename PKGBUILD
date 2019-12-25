@@ -2,7 +2,7 @@
 # Prev. Maintainer: Prasad Kumar
 # Author: Vitor Lopes <vmnlop@gmail.com>
 pkgname=jade-application-kit
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Build desktop applications using web technologies on Linux, with Python, JavaScript, HTML5, and CSS3 and webkit."
 arch=('any')
@@ -13,8 +13,15 @@ provides=('jade-application-kit')
 conflicts=('jade-application-kit-git')
 depends=('python' 'python-gobject' 'webkit2gtk' 'pyside2')
 makedepends=('python-setuptools')
-source=("https://github.com/codesardine/Jade-Application-Kit/archive/v2.1.1.tar.gz")
-sha512sums=('bb7ec4a8a2c38a5c74cd195a95aa1026a12e73ad883497381a84625f2e3c91f0b36d828aff64906cb9f0584e1cf2106aa48d89909b57ea15d5e9be028b3b1672')
+source=("https://github.com/codesardine/Jade-Application-Kit/archive/v${pkgver}.tar.gz"
+		"Pyside_fix.patch")
+sha512sums=('346c1077578e770ac0b2dd4132f2c948826d425570effcc7454a7ac12db40874b63a321d25d517434b6e3c7c3c1bfd4c520f707c8ea7065c7af7a83c675c5e6d'
+            '4d5bb8cbb253e43d4621ecd37cbbb0e70143da2647e33b6292ec0d916db6d8cbf44fef4949365e3ee2497d912725b5e7fa937960389002fe7d212729ba44c8d6')
+
+prepare() {
+	cd "${srcdir}"/Jade-Application-Kit-${pkgver}
+	patch --strip=1 < ../Pyside_fix.patch
+}
 
 build() {
     cd "${srcdir}"/Jade-Application-Kit-${pkgver}
