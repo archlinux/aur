@@ -12,7 +12,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - dubnium: 10
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron6
-pkgver=1.40.1
+pkgver=1.41.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -24,7 +24,7 @@ makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-dubnium')
 conflicts=('code')
 provides=('code')
 install='code-transparent.install'
-source=("$_pkgname::git+https://github.com/Microsoft/vscode.git#tag=$pkgver"
+source=("$_pkgname::git+$url.git#tag=$pkgver"
         'code.js'
         'code.sh'
         'product_json.diff'
