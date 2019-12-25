@@ -1,0 +1,18 @@
+pkgbase = repoctl-devel-git
+	pkgdesc = A supplement to repo-add and repo-remove which simplifies managing local repositories (devel branch from git)
+	pkgver = 0.19
+	pkgrel = 0
+	url = https://github.com/cassava/repoctl
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = pacman
+	options = !strip
+	source = repoctl-devel-git::git+https://github.com/cassava/repoctl.git#branch=devel
+	md5sums = SKIP
+
+pkgname = repoctl-devel-git
+
