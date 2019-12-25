@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=pilorama-git
-pkgver=2.0.r42.g31f60c3
+pkgver=2.1.r4.g82e5f99
 pkgrel=1
 epoch=
 pkgdesc="Advanced timeboxing pomodoro timer"
@@ -9,7 +9,7 @@ url="https://github.com/eplatonoff/pilorama"
 license=('GPLv3')
 groups=()
 depends=('qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-multimedia')
-makedepends=('git')
+makedepends=('git' 'libicns')
 checkdepends=()
 optdepends=()
 provides=('pilorama')
