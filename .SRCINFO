@@ -1,7 +1,7 @@
 pkgbase = koji
 	pkgdesc = shared libraries and the command-line interface for building and tracking RPMS
 	pkgver = 1.19.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/koji
 	arch = any
 	license = GPL2

@@ -3,7 +3,7 @@
 
 pkgname=koji
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc='shared libraries and the command-line interface for building and tracking RPMS'
 arch=('any')
 license=('GPL2' 'LGPL2.1')
@@ -29,13 +29,12 @@ sha256sums=('29b283a3e5cd7a5010e5d14498aed437d42767262f79bd1b85f358607af00480')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  # find . -name Makefile -exec sed -i 's|\(PYTHON=\)python|\1python2|' {} \;
   find . -name Makefile -exec sed -i 's|sbin|bin|' {} \;
   find . -name '*.service' -exec sed -i 's|sbin|bin|' {} \;
-  # find . -type f -exec sed -i 's|^\(#!/usr/bin/\)python|\1python2|' {} \;
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" PYTHON=python install
+  sed -i 's|^\(#!/usr/bin/\)python2|\1python|' "$pkgdir"/usr/bin/*
 }
