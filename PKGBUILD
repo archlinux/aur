@@ -25,14 +25,14 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('custom: nonfree and unredistributable')
 depends=('alsa-lib' 'aom' 'aribb24' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2'  
-	 'dav1d-git' 'davs2' 'fontconfig' 'ffnvcodec-headers' 'frei0r-plugins' 
+	 'dav1d' 'davs2' 'fontconfig' 'ffnvcodec-headers' 'frei0r-plugins' 
          'fribidi' 'glibc' 'gsm' 'jack' 'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394'
          'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
