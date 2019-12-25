@@ -2,18 +2,18 @@
 # Current Maintainer: Ning Sun <sunng@about.me>
 pkgname=eclipse-mat
 _pgname=MemoryAnalyzer
-_pkgver=1.9.0
-pkgver=1.9.0
-_releasedate=20190605
+_pkgver=1.9.1
+pkgver=1.9.1
+_releasedate=20190826
 pkgrel=1
 pkgdesc="Eclipse Memory Analyzer Tool (MAT), a toolkit for analyzing Java heap dumps."
 arch=(i686 x86_64)
 url="http://www.eclipse.org/mat"
 license=(EPL)
-depends=('java-runtime>=6' 'gtk2')
+depends=('java-runtime>=8' 'gtk2')
 install=${pkgname}.install
-sha512sums_i686=('dfc3dd333288039a7e2dcc8060704f48691ff117c9a0a4b296b7e6d2720dec49f59479af95e5e25af2c4ed985829184c0c0351199bd651b2d014443ef3e7a74f')
-sha512sums_x86_64=('a8d00c73c16d11e696565696c3537cd85dae9195fa87ec8fb0fb62853b982e81623cc4c7235dc9351918a1b0af179e85404f91ed42ce3fd7e01f4c03bb067817')
+sha512sums_i686=('c45f9f0b58068db445eb494eb81f8b49de007fab2d7029d27e46ec99a155785cf96289bdf7194103602b78a273f70c6769e9de6f8010281ee6572d09aaa33af3')
+sha512sums_x86_64=('62eac311949362971b5dcda31af9fa6acc32f47e8e446e24c373d66b38514df4e34ab5f53d2db3003eed8ee791f5304be04d29ca2191ee204099e5fd8225ae87')
 source_i686=("${pkgname}-${pkgver}-x86.zip::http://download.eclipse.org/mat/${_pkgver}/rcp/${_pgname}-${pkgver}.${_releasedate}-linux.gtk.x86.zip")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::http://download.eclipse.org/mat/${_pkgver}/rcp/${_pgname}-${pkgver}.${_releasedate}-linux.gtk.x86_64.zip")
 
