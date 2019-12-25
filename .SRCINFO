@@ -1,0 +1,16 @@
+pkgbase = perl-aptpkg
+	pkgdesc = A Perl interface to APT's libapt-pkg
+	pkgver = 0.1.36
+	pkgrel = 1
+	url = https://salsa.debian.org/bod/libapt-pkg-perl
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	depends = apt
+	options = !emptydirs
+	options = purge
+	source = https://salsa.debian.org/bod/libapt-pkg-perl/-/archive/v0.1.36/libapt-pkg-perl-v0.1.36.tar.gz
+	sha256sums = 83559eb7281e1cfbf0e3aaae48c27f8d542e3a1ddfe6c2bba3e38b22583b251a
+
+pkgname = perl-aptpkg
+
