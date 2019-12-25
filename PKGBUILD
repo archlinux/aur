@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-berliner-git
-pkgver=1.2019.0926.0.r4.g648b44c
+pkgver=1.2019.0926.0.r7.g006532c
 pkgrel=1
 pkgdesc="Tools for Padova+PARSEC stellar tracks & isochrones"
 arch=('i686' 'x86_64')
