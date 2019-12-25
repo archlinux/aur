@@ -1,7 +1,7 @@
 pkgbase = nemo-megasync
 	pkgdesc = MEGASync extension for the Nemo file browser
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mega.co.nz/#sync
 	install = nemo-megasync.install
 	arch = i686

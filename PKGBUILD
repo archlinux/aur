@@ -4,7 +4,7 @@
 #
 pkgname="nemo-megasync"
 pkgver="4.0.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="MEGASync extension for the Nemo file browser"
 arch=('i686' 'x86_64')
 url="https://mega.co.nz/#sync"
@@ -30,14 +30,12 @@ build() {
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	make install
-	mkdir -p "${pkgdir}/usr/lib/nemo/extensions-3.0"
-	install "libMEGAShellExtNemo.so.1.0.0" -D "${pkgdir}/usr/lib/nemo/extensions-3.0/"
+	install -m755 -d "${pkgdir}/usr/lib/nemo/extensions-3.0"
+	install -m755 libMEGAShellExtNemo.so.1.0.0 -D "${pkgdir}/usr/lib/nemo/extensions-3.0/"
 	cd "${pkgdir}/usr/lib/nemo/extensions-3.0/"
 	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so"
 	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1"
 	ln -s "libMEGAShellExtNemo.so.1.0.0" "libMEGAShellExtNemo.so.1.0"
-	rm -rf "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
 
 # vim:set ts=4 sw=4 ft=sh et syn=sh:
