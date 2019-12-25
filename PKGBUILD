@@ -6,7 +6,8 @@
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
 pkgver=2.5.1
-pkgrel=1
+_bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -17,7 +18,7 @@ checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
               python-mock python-moto python-parameterized
               python-buildbot-pkg=$pkgver buildbot-worker=$pkgver python-buildbot-www=$pkgver
               openssh git)
-makedepends=(python-setuptools)
+makedepends=(python-setuptools git)
 optdepends=(
   'python-boto3: for AWS EC2 latent worker'
   'python-lz4: to compress logs using lz4'
@@ -28,8 +29,10 @@ optdepends=(
   'pass: to use SecretInPass provider'
   'vault: to use HashiCorpVaultSecretProvider provider'
 )
-source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig})
+source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
+        "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit")
 sha256sums=('cee691d3e04481ff5b5ad3514d7fe0d5e3971c0dd9a4f67640e7dae7af6826a5'
+            'SKIP'
             'SKIP')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
@@ -58,4 +61,6 @@ check() {
 package() {
   cd buildbot-$pkgver/master
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 "$srcdir"/buildbot-contrib/master/contrib/systemd/buildbot@.service \
+    -t "$pkgdir"/usr/lib/systemd/system/
 }
