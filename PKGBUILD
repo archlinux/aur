@@ -21,7 +21,7 @@ build() {
 }
 
 package_python-pysimplegui() {
-  depends=('python')
+  depends=('python' 'tk')
   cd ${_module}-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
