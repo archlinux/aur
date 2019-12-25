@@ -47,9 +47,9 @@ package() {
     install -Dm755 "start-engine" "$pkgdir/usr/lib/$_pkgbasename/start-engine"
     install -Dm644 "acestream.conf" "$pkgdir/usr/lib/$_pkgbasename/acestream.conf"
     install -Dm644 "data/images/streamer-32.png" "$pkgdir/usr/share/pixmaps/$_pkgbasename.png"
-    install -Dm644 "$srcdir/$_pkgbasename.service" "$pkgdir/usr/lib/systemd/system/$_pkgbasename.service"
-    install -Dm644 "$srcdir/$_pkgbasename.desktop" "$pkgdir/usr/share/applications/$_pkgbasename.desktop"
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
+    install -Dm644 "$_pkgbasename.service" "$pkgdir/usr/lib/systemd/system/$_pkgbasename.service"
+    install -Dm644 "$_pkgbasename.desktop" "$pkgdir/usr/share/applications/$_pkgbasename.desktop"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
 
     cp -a "data" "$pkgdir/usr/lib/$_pkgbasename/"
     cp -a "lib" "$pkgdir/usr/lib/$_pkgbasename/"
