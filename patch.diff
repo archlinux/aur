@@ -2774,3 +2774,162 @@
 +     d="m 24.645797,6.1105192 c 2.995,2.684 1.381,7.8170008 3.674,8.2910008 2.031,0.613 3.541,-1.385 3.66,-4.5030012 0.35,-8.6269996 -3.911,-9.42699956 -6.879,-9.52399956 -28.3420006,-2.04699994 -1.762,4.91999996 -0.455,5.73599996"
 +     id="path27" />
 +</svg>
+
+diff --git a/neru-newyear-light/index.theme b/neru-newyear-light/index.theme
+index eaa75d0..085b829 100644
+--- a/neru-newyear-light/index.theme
++++ b/neru-newyear-light/index.theme
+@@ -24,21 +24,21 @@ Directories=small/actions,small/animations,small/devices,small/emblems,small/emo
+ 
+ [small/animations]
+ Context=Animations
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/actions]
+ Context=Actions
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/devices]
+ Context=Devices
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+@@ -57,35 +57,35 @@ Type=Scalable
+ 
+ [small/extra]
+ Context=Actions
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/extra/clementine]
+ Context=Actions
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/panel]
+ Context=Status
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/places]
+ Context=Places
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/status]
+ Context=Status
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+@@ -93,7 +93,7 @@ Type=Scalable
+ [medium/apps]
+ Context=Applications
+ Size=32
+-MinSize=32
++MinSize=16
+ MaxSize=512
+ Type=Scalable
+
+diff --git a/neru-newyear-dark/index.theme b/neru-newyear-dark/index.theme
+index 91cac09..20e69f5 100644
+--- a/neru-newyear-dark/index.theme
++++ b/neru-newyear-dark/index.theme
+@@ -24,21 +24,21 @@ Directories=small/actions,small/animations,small/devices,small/emblems,small/emo
+ 
+ [small/animations]
+ Context=Animations
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/actions]
+ Context=Actions
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/devices]
+ Context=Devices
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+@@ -57,35 +57,35 @@ Type=Scalable
+ 
+ [small/extra]
+ Context=Actions
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/extra/clementine]
+ Context=Actions
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/panel]
+ Context=Status
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/places]
+ Context=Places
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+ 
+ [small/status]
+ Context=Status
+-Size=16
++Size=22
+ MinSize=16
+ MaxSize=22
+ Type=Scalable
+@@ -93,7 +93,7 @@ Type=Scalable
+ [medium/apps]
+ Context=Applications
+ Size=32
+-MinSize=32
++MinSize=16
+ MaxSize=512
+ Type=Scalable
+

@@ -3,7 +3,7 @@
 
 pkgname=neru-icon-newyear-theme
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Christmas theme icons Neru"
 arch=('any')
 url="https://github.com/chistota/neru-icon-newyear-theme/"
@@ -12,7 +12,7 @@ depends=('gtk-update-icon-cache')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chistota/"${pkgname}"/archive/v"${pkgver}".tar.gz"
         "patch.diff")
 sha256sums=('dbb885f926ad1e2e3b282484928da7553c124ee1f494bd8e580efd670157dc99'
-            '3bad50c678c60460421b07803812b8dd7b3492f21738c65970767c4d1f1a0b05')
+            '83f57489374a6f5dfc30b8c71734ed279ed557a52f30c31c0ec73d70afacf242')
 
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = neru-icon-newyear-theme
 	pkgdesc = Christmas theme icons Neru
 	pkgver = 1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/chistota/neru-icon-newyear-theme/
 	arch = any
 	license = LGPL3
@@ -9,7 +9,7 @@ pkgbase = neru-icon-newyear-theme
 	source = neru-icon-newyear-theme-1.0.tar.gz::https://github.com/chistota/neru-icon-newyear-theme/archive/v1.0.tar.gz
 	source = patch.diff
 	sha256sums = dbb885f926ad1e2e3b282484928da7553c124ee1f494bd8e580efd670157dc99
-	sha256sums = 3bad50c678c60460421b07803812b8dd7b3492f21738c65970767c4d1f1a0b05
+	sha256sums = 83f57489374a6f5dfc30b8c71734ed279ed557a52f30c31c0ec73d70afacf242
 
 pkgname = neru-icon-newyear-theme
 
