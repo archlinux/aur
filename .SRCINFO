@@ -1,0 +1,26 @@
+pkgbase = kapowbang-bin
+	pkgdesc = If you can script it, you can HTTP it.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/BBVA/kapow
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = arm6h
+	license = Apache
+	provides = kapowbang
+	conflicts = kapowbang
+	source = https://github.com/BBVA/kapow/releases/download/v0.3.0/kapow-0.3.0-SHA512SUMS.GPG
+	validpgpkeys = AC8DC4C096411BA0ACE4F2026814C4235C9FC112
+	sha512sums = e26a6cb6b073f47ba84a5f6c88c8031711314b1f137dc73b9115d6fdcc8b6af38ec3c5f56c88ae00d04afcb4c5e6aff3e713ead5da434480ae977758c6365664
+	source_x86_64 = kapow_x86_64::https://github.com/BBVA/kapow/releases/download/v0.3.0/kapow_0.3.0_linux_amd64
+	sha512sums_x86_64 = d5da23bb7480a3e39eb6942cc09397f6fcad525f77381abbf501ae87908840878c83f1a2c623285e1de58619c83ffae8517b3440053edde0c889ccbd0371fcbb
+	source_i686 = kapow_i686::https://github.com/BBVA/kapow/releases/download/v0.3.0/kapow_0.3.0_linux_386
+	sha512sums_i686 = 8ec8130f028048f7478e7bc80d8e4eb1fb5f50c6832daa8aafb5544e7826e27a8d9b44e696f5717dcad5b1706f499618112ec5db51d039a1a962643dc161074c
+	source_aarch64 = kapow_aarch64::https://github.com/BBVA/kapow/releases/download/v0.3.0/kapow_0.3.0_linux_arm64
+	sha512sums_aarch64 = 58fb20d58e4076ef07a1998ddd73f8c10cfed6d3ba70bafd11f34da420695eb84e3c636c472fbeb679044c74e631c4c0c7af5c0866b44cc3352511b542d4788c
+	source_arm6h = kapow_arm6h::https://github.com/BBVA/kapow/releases/download/v0.3.0/kapow_0.3.0_linux_armv6
+	sha512sums_arm6h = 1db6879dc80e13e93bf29b9e2e6894fd8ba3130c66621e3723d67498be3346962ce343bc3daf5f6aa8a4296ccdf0e7554dda7f0410c77b18cf3a961d5945297c
+
+pkgname = kapowbang-bin
+
