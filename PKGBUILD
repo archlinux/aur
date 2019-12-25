@@ -1,7 +1,7 @@
 # Maintainer: Bert Peters <bert@bertptrs.nl>
 pkgname=json_dto
 pkgver=0.2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A small header-only library for converting data between json representation and c++ structs"
 arch=(any)
 url="https://github.com/Stiffstream/json_dto"
@@ -29,5 +29,5 @@ check() {
 package() {
     cd "$pkgname-v.$pkgver"
     make DESTDIR="$pkgdir/" install
-    install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname/LICENSE" "LICENSE"
+    install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" "LICENSE"
 }
