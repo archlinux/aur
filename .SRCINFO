@@ -1,6 +1,6 @@
 pkgbase = yzkof-gm-arcade-international
 	pkgdesc = Play retro games with or against any other player in the world.
-	pkgver = 0.9
+	pkgver = 0.91
 	pkgrel = 1
 	url = http://www.yzkof.com/
 	arch = any

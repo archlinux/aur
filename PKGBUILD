@@ -1,7 +1,7 @@
 # Maintainer: Rafael Cruz <rafaelcruz at outlook dot com>
 
 pkgname=yzkof-gm-arcade-international
-pkgver=0.9
+pkgver=0.91
 pkgrel=1
 pkgdesc='Play retro games with or against any other player in the world.'
 url='http://www.yzkof.com/'
@@ -19,11 +19,11 @@ _wineprefix="prefix"
 prepare() {
     msg "Preparing files..."
     [ -f "$srcdir/$_tmpappfolder/$_execapp" ] && [ -f "$srcdir/$_tmpappfolder/$_oldexecapp" ] && rm "$srcdir/$_tmpappfolder/$_execapp"
-    [ -f "$srcdir/$_tmpappfolder/$_oldexecapp" ] && mv "$srcdir/$_tmpappfolder/$_oldexecapp" "$srcdir/$_tmpappfolder/$_execapp"
+    # [ -f "$srcdir/$_tmpappfolder/$_oldexecapp" ] && mv "$srcdir/$_tmpappfolder/$_oldexecapp" "$srcdir/$_tmpappfolder/$_execapp"
     msg "Generating icon..."
-    wrestool -x --output="$srcdir/icon.png" -t14 "$srcdir/$_tmpappfolder/${_execapp}"
+    wrestool -x --output="$srcdir/icon.png" -t14 "$srcdir/$_tmpappfolder/${_oldexecapp}"
     msg "Generating menu shortcut..."
-    gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Yzkof GM Arcade International" --exec "env WINEPREFIX=\"$HOME/.$pkgname/$_wineprefix\" wine \"/opt/$pkgname/$_execapp\""
+    gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "Yzkof GM Arcade International" --exec "env WINEPREFIX=\"$HOME/.$pkgname/$_wineprefix\" wine \"/opt/$pkgname/$_oldexecapp\""
 }
 
 package() {
