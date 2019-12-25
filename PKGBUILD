@@ -35,3 +35,7 @@ package() {
 	DESTDIR="${pkgdir}" ninja -C build install
 	install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+check() {
+	ninja -C build test
+}
