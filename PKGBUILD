@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 url="http://web-artanis.com/"
 depends=('guile')
@@ -10,7 +10,7 @@ makedepends=('texlive-core')
 arch=('x86_64')
 license=('LGPL')
 source=(https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz)
-sha1sums=('2dbc10425287c129b4e666cf47baeeb0b5373253')
+sha1sums=('56ca69e21989eb3deb492bee38189eedcaa411fc')
 options=('!strip')
 
 build() {

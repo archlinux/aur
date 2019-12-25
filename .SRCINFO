@@ -1,15 +1,15 @@
 pkgbase = artanis
 	pkgdesc = A fast monolithic web-framework of Scheme
-	pkgver = 0.4
-	pkgrel = 2
+	pkgver = 0.4.1
+	pkgrel = 1
 	url = http://web-artanis.com/
 	arch = x86_64
 	license = LGPL
 	makedepends = texlive-core
 	depends = guile
 	options = !strip
-	source = https://ftp.gnu.org/gnu/artanis/artanis-0.4.tar.gz
-	sha1sums = 2dbc10425287c129b4e666cf47baeeb0b5373253
+	source = https://ftp.gnu.org/gnu/artanis/artanis-0.4.1.tar.gz
+	sha1sums = 56ca69e21989eb3deb492bee38189eedcaa411fc
 
 pkgname = artanis
 
