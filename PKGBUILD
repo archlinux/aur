@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-berliner-git
-pkgver=r42.ce488b4
+pkgver=1.2019.0926.0.r4.g648b44c
 pkgrel=1
 pkgdesc="Tools for Padova+PARSEC stellar tracks & isochrones"
 arch=('i686' 'x86_64')
@@ -40,7 +40,7 @@ build() {
 package() {
     cd ${srcdir}/${_gitname}
 
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}"
     install -D -m644 notebook/* -t "${pkgdir}/usr/share/doc/${pkgname%-git}/notebook"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
