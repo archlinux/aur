@@ -9,8 +9,9 @@ pkgbase = setzer-git
 	makedepends = git
 	depends = gtk3
 	depends = gtksourceview3
-        depends = poppler-glib
-        depends = texlive-core
+    depends = poppler-glib
+    depends = texlive-core
+    depends = gspell
 	source = git+https://github.com/cvfosammmm/Setzer
 	md5sums = SKIP
 
