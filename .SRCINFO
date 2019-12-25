@@ -12,4 +12,5 @@ pkgbase = python-pysimplegui
 
 pkgname = python-pysimplegui
 	depends = python
+	depends = tk
 
