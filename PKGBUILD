@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Jack Chen <redchenjs at live dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Robosky <fangyuhao0612 at gmail dot com>
-# Contributor: Jack Chen <redchenjs at live dot com>
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
 pkgrel=12
