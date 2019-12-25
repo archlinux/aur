@@ -12,7 +12,7 @@ replaces=("mit30")
 arch=("x86_64")
 options=("strip")
 source=("$url/content/files/$pkgname-latest-x86_64.tar.gz")
-md5sums=("ba6c892f545a340237952f1b986edeba")
+md5sums=("bf7bf11bc20de643e2e31fe2b61f9aac")
 
 
 package() {
