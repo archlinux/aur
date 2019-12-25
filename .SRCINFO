@@ -1,41 +1,33 @@
 pkgbase = nvidia-340xx
 	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
-	pkgver = 340.107
-	pkgrel = 94
+	pkgver = 340.108
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	makedepends = nvidia-340xx-utils=340.107
+	makedepends = nvidia-340xx-utils=340.108
 	makedepends = linux>=5.4
 	makedepends = linux-headers>=5.4
 	conflicts = nvidia
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/340.107/NVIDIA-Linux-x86_64-340.107-no-compat32.run
-	source = kernel-4.11.patch
-	source = kernel-5.0.patch
-	source = kernel-5.2.patch
-	source = kernel-5.3.patch
-	source = kernel-5.4.patch
-	sha256sums = 6dc6f183c69c414670d8adef0286a2362eedd6e16ec6dfae811e48ea4a4505dc
-	sha256sums = 8bbb99a5be38520793b9898f7a82116595260bfe667708957fb0bdabaa570dfb
-	sha256sums = b1e539b507dfbffda831de2c7145b62f9fc28e9df2c39cb7c22754e74057886e
-	sha256sums = f5f28225a621484286b2830c777db82065ff299536e6c2c851e68c326d2d0b73
-	sha256sums = 5ebfdad300029d41c5bc2b8cca4d661abf8f0aa1de8c0f9e7e03de1580e6395e
-	sha256sums = 6bb80349d980b48a7fc62cec4d6f36b408b51263d461b4b9935fac729dd701b6
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/340.108/NVIDIA-Linux-x86_64-340.108-no-compat32.run
+	source = unfuck-340.108-build-fix.patch
+	sha256sums = 995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77
+	sha256sums = 2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57
 
 pkgname = nvidia-340xx
 	pkgdesc = NVIDIA drivers for linux, 340xx legacy branch
 	depends = linux>=5.3.6
-	depends = nvidia-340xx-utils=340.107
+	depends = nvidia-340xx-utils=340.108
 	depends = libgl
 
 pkgname = nvidia-340xx-dkms
 	pkgdesc = NVIDIA driver sources for linux, 340xx legacy branch
 	depends = dkms
-	depends = nvidia-340xx-utils=340.107
+	depends = nvidia-340xx-utils=340.108
 	depends = libgl
 	optdepends = linux-headers: Build the module for Arch kernel
-	provides = nvidia-340xx=340.107
+	provides = nvidia-340xx=340.108
 	conflicts = nvidia
 	conflicts = nvidia-340xx
 
