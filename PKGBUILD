@@ -1,6 +1,6 @@
 # Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
 pkgname=schemaspy
-pkgver=6.0.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Graphical Database Schema Metadata Browser"
 arch=(any)
@@ -12,7 +12,7 @@ install=${pkgname}.install
 _jarname="schemaspy-${pkgver}.jar"
 source=("$_jarname::https://github.com/schemaspy/schemaspy/releases/download/v${pkgver}/${_jarname}")
 noextract=("${_jarname}")
-md5sums=('13cf5baf57fb963942c4c70e863f55a0')
+sha256sums=('873e4c76907cd6075ca45eb3bccf50c80e8ffe7b0350b1dc29287578c232ff51')
 
 build() {
   msg2 "Generate start script..."
