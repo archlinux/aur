@@ -1,0 +1,25 @@
+pkgbase = kart-git
+	pkgdesc = Internet Art crawler
+	pkgver = 0.2.0.r3.gf26bb48
+	pkgrel = 1
+	url = https://git.mobley.ne02ptzero.me/~louis/kart
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = go
+	optdepends = vlc
+	optdepends = feh
+	optdepends = sxiv
+	provides = kart
+	conflicts = kart
+	source = kart::git+https://git.mobley.ne02ptzero.me/~louis/kart
+	md5sums = SKIP
+
+pkgname = kart-git
+
