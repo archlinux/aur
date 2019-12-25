@@ -1,0 +1,15 @@
+pkgbase = hubrelease
+	pkgdesc = Automatically create GitHub releases
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/MarkusGordathian/shshare
+	arch = any
+	license = GPL3
+	depends = curl
+	depends = jansson
+	depends = libgit2
+	source = hubrelease-0.1.0.tar.gz::https://github.com/MarkusGordathian/hubrelease/releases/download/0.1.0/0.1.0.tar.gz
+	sha512sums = d2bbb3bdcfc523c8254796c04904fa134e7e9b9b65725f49807a26c0e6baf372a6ab11bf341f5cef872dd56b0fbc9fdd3eec103aecb18b9561b5dcc02fee9fb7
+
+pkgname = hubrelease
+
