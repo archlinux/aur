@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2018
 	pkgdesc = Clear Linux lts2018
 	pkgver = 4.19.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2018
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-clear-lts2018
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v4.x/patch-4.19.91.xz
-	source = linux-clear-lts2018::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=4.19.86-98
+	source = linux-clear-lts2018::git+https://github.com/clearlinux-pkgs/linux-lts2018.git#tag=4.19.91-101
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
