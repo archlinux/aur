@@ -1,14 +1,14 @@
 pkgbase = broot
 	pkgdesc = Fuzzy Search + tree + cd
-	pkgver = 0.10.5
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/Canop/broot
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = https://github.com/Canop/broot/archive/v0.10.5/broot-v0.10.5.tar.gz
-	sha256sums = a67ad976da7981995e194b95f2d80f05b088bd178817d3d0f93f6ea5689ff2b4
+	source = https://github.com/Canop/broot/archive/v0.11.0/broot-v0.11.0.tar.gz
+	sha256sums = e5b632919efa5c9eda2f23d6f69f5fba6b39b215e5d55c632aaa39fa10f9fc98
 
 pkgname = broot
 
