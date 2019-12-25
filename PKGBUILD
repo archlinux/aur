@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
   dest="$srcdir/src/github.com/cassava"
   mkdir -p "$dest"
-  mv "$srcdir/$pkgname" "$dest/repoctl"
+  mv "$srcdir/${_pkgname}" "$dest/repoctl"
   cd "$srcdir"
   ln -s "$dest/repoctl" "${_pkgname}"
 }
