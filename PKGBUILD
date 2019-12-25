@@ -5,8 +5,8 @@
 
 pkgbase=nvidia-340xx-lts
 pkgname=(nvidia-340xx-lts nvidia-340xx-lts-dkms)
-pkgver=340.107
-pkgrel=26
+pkgver=340.108
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-lts, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -15,12 +15,10 @@ conflicts=('nvidia-lts')
 license=('custom')
 options=(!strip)
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-  'kernel-4.11.patch' 'kernel-5.0.patch' 'kernel-5.1.patch'
+   unfuck-340.108-build-fix.patch
 )
-sha256sums=('6dc6f183c69c414670d8adef0286a2362eedd6e16ec6dfae811e48ea4a4505dc'
-            '5ba7e6d5e502882c3534d1d8578f7fd29fdf3d2aeb49206efa7b3514a7e3e821'
-            '236a1d1dc9adc1cafec828f0650d5a15f1f6d0fa27905dab58ca072a46f159fa'
-            '2b0e69814bfaee6b227bbf15d89d056ab27d84bd325248614e27cb5fa33a63a1')
+sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
+            '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
@@ -33,9 +31,13 @@ prepare() {
   cd "${_pkg}"
 
   # patches here
-  patch -Np0 < "${srcdir}/kernel-4.11.patch"
-  patch -Np0 < "${srcdir}/kernel-5.0.patch"
-  patch -Np0 < "${srcdir}/kernel-5.1.patch"
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    (cd kernel ; patch -p1 --no-backup-if-mismatch -i "../../$src")
+  done
 
   cp -a kernel kernel-dkms
 }
