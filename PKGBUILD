@@ -7,7 +7,7 @@ pkgname=('jed-snapshot' 'rgrep')
 pkgver=0.99.20.137
 _pkgver=0.99.20-137
 _pkgname=${pkgname/-snapshot/}
-pkgrel=2
+pkgrel=3
 pkgdesc="A freely available text editor - Latest development version"
 arch=('i686' 'x86_64')
 url="http://www.jedsoft.org/snapshots/"
@@ -23,7 +23,7 @@ prepare() {
   sed \
     -e "s|\(^all.*\)|\1 xjed rgrep|" \
     -e "s|..DEST.*doc|${pkgdir}/usr/share/doc/${pkgname}|g" \
-    -i src/Makefile
+    -i src/Makefile.in 
 }
 
 build() {

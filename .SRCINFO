@@ -1,7 +1,7 @@
 pkgbase = jed-snapshot
 	pkgdesc = A freely available text editor - Latest development version
 	pkgver = 0.99.20.137
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jedsoft.org/snapshots/
 	install = jed-snapshot.install
 	arch = i686
