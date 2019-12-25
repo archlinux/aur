@@ -5,13 +5,14 @@
 _pkgname=exercism
 pkgname="${_pkgname}-bin"
 pkgver=3.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
 # URL for release downloads
 _rel_url="${url}/releases/download/v${pkgver}"
 conflicts=(exercism)
+replaces=("exercism-cli")
 license=("MIT")
 
 source_i686=(${_rel_url}/exercism-${pkgver}-linux-i386.tar.gz)
