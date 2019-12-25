@@ -1,7 +1,7 @@
 pkgbase = mate-ayatana-indicator-applet
 	pkgdesc = MATE panel Ayatana indicator applet
-	pkgver = 1.22.1
-	pkgrel = 3
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = http://www.mate-desktop.org/
 	arch = i686
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = mate-ayatana-indicator-applet
 	provides = mate-indicator-applet
 	conflicts = mate-indicator-applet
 	options = !emptydirs
-	source = https://github.com/mate-desktop/mate-indicator-applet/archive/v1.22.1.tar.gz
-	md5sums = 630df0c72f2bc1b1864b40b517ce7e35
+	source = https://github.com/mate-desktop/mate-indicator-applet/archive/v1.23.0.tar.gz
+	md5sums = 1b47cb29ce0ec17090b8f2abe57f5b88
 
 pkgname = mate-ayatana-indicator-applet
 
