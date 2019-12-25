@@ -1513,3 +1513,10 @@ Sun Dec 22 03:57:27 2019 +0100
     Notable changes:
      2019-12-22 c991b246 actionless chore(plugins: theme: oomox): update submodule (fix fg color for inline headerbar buttons and drop compound SCSS selectors)
      2019-12-22 3837151b Vlada Makhonina Big Christmas theme update
+
+
+Wed Dec 25 21:26:32 2019 +0100
+-------------------------------------------------
+1.12.5.2        Hotfix release 1.12.5.2
+    
+     2019-12-25 069673f3 actionless chore(plugins: theme: oomox): update submodule (add missing separators to the dark themes and fix regression in Nemo toolbar styling)
