@@ -1,7 +1,7 @@
 pkgbase = python-astlib
 	pkgdesc = A set of Python modules that provides some tools for research astronomers
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://astlib.sourceforge.net
 	arch = i686
 	arch = x86_64
