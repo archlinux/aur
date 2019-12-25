@@ -1,0 +1,22 @@
+pkgbase = python-astlib
+	pkgdesc = A set of Python modules that provides some tools for research astronomers
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = http://astlib.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/a/astLib/astLib-0.11.3.tar.gz
+	sha256sums = 003447812e19966f0e7e3dc9ccaedfaff76fe4a452e311bde5d05f6d4fa3e3af
+
+pkgname = python-astlib
+	depends = python-numpy>=1.14.1
+	depends = python-scipy>=0.18.1
+	depends = python-matplotlib
+	depends = python-astropy
+	optdepends = python-astlib-doc: Documentation for astLib
+
+pkgname = python-astlib-doc
+	pkgdesc = Documentation for astLib
+
