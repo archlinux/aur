@@ -1,14 +1,14 @@
 pkgbase = rust-src
 	pkgdesc = Systems programming language focused on safety, speed and concurrency (source code)
-	pkgver = 1.39.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = http://rust-lang.org
 	arch = any
 	license = Apache
 	license = MIT
 	options = !strip
-	source = rust-1.39.0.tar.gz::https://github.com/rust-lang/rust/archive/1.39.0.tar.gz
-	sha256sums = c2261f54f4b9e038712fd11f72f6583c12243f60fd9d2832eb6272ce8d804a5e
+	source = rust-1.40.0.tar.gz::https://github.com/rust-lang/rust/archive/1.40.0.tar.gz
+	sha256sums = c1fe30cb53760165cc1d513c5315355c978dc8eaf0a0bf7356877cfd9358c17d
 
 pkgname = rust-src
 
