@@ -1,5 +1,5 @@
-# Maintainer: Michael Spradling <mike@mspradling.com>
 # Maintainer: Matthias Fulz <mfulz@olznet.net>
+# Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Michael Spradling <mike@mspradling.com>
 
 pkgbase='bareos'
@@ -25,13 +25,13 @@ pkgname=("${pkgbase}-common"
 
 pkgmajor=18
 pkgver=18.2.6
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2' 'cmake' 'rpcsvc-proto' 'git')
+makedepends=('libmariadbclient' 'postgresql-libs' 'sqlite3' 'python2' 'cmake' 'rpcsvc-proto' 'git' 'lsb-release')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/$pkgver")
 md5sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving REcovery Open Sourced
 	pkgver = 18.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = bareos
 	makedepends = cmake
 	makedepends = rpcsvc-proto
 	makedepends = git
+	makedepends = lsb-release
 	source = git+https://github.com/bareos/bareos.git#tag=Release/18.2.6
 	md5sums = SKIP
 
