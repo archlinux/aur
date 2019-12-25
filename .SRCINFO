@@ -1,6 +1,6 @@
 pkgbase = notcurses
 	pkgdesc = Modern TUI library
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Notcurses
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = notcurses
 	makedepends = cmake
 	depends = ncurses
 	depends = ffmpeg
-	source = https://github.com/dankamongmen/notcurses/archive/v0.9.2.tar.gz
-	sha256sums = 4923b6e11c616876b7e512adb5382888a443f6aab870de757f7a0aeaec7ef9f2
+	source = https://github.com/dankamongmen/notcurses/archive/v0.9.3.tar.gz
+	sha256sums = 8444f4d4c8d672a38160bd64368a2c56af0a8807d53c700f3be9f5717888823d
 
 pkgname = notcurses
 
