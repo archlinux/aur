@@ -7,15 +7,15 @@ pkgbase = nginx-mainline-mod-brotli-git
 	arch = x86_64
 	license = CUSTOM
 	makedepends = git
-	depends = nginx-mainline=1.17.6
+	depends = nginx-mainline=1.17.7
 	depends = brotli
 	provides = nginx-mainline-mod-brotli
 	conflicts = nginx-mainline-mod-brotli
-	source = https://nginx.org/download/nginx-1.17.6.tar.gz
-	source = https://nginx.org/download/nginx-1.17.6.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.17.7.tar.gz
+	source = https://nginx.org/download/nginx-1.17.7.tar.gz.asc
 	source = ngx_brotli::git+https://github.com/google/ngx_brotli.git
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 3cb4a5314dc0ab0a4e8a7b51ae17c027133417a45cc6c5a96e3dd80141c237b6
+	sha256sums = b62756842807e5693b794e5d0ae289bd8ae5b098e66538b2a91eb80f25c591ff
 	sha256sums = SKIP
 	sha256sums = SKIP
 
