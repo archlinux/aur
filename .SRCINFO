@@ -1,0 +1,15 @@
+pkgbase = xlsxio
+	pkgdesc = C library for reading and writing .xlsx files
+	pkgver = 0.2.21
+	pkgrel = 1
+	url = https://github.com/brechtsanders/xlsxio
+	arch = x86_64
+	license = MIT
+	depends = expat
+	depends = minizip
+	provides = xlsxio
+	source = https://github.com/brechtsanders/xlsxio/releases/download/0.2.21/xlsxio-0.2.21.tar.xz
+	sha256sums = 0cc9b339bbacdb9b140b2a88be8f2e15d57394808a42aad29d6bf74cab2fd506
+
+pkgname = xlsxio
+
