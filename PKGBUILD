@@ -1,8 +1,8 @@
 # Maintainer: Leon Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 
 pkgname=lavalauncher-git
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
 url='https://git.sr.ht/~leon_plickat/lavalauncher'
