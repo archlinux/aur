@@ -1,0 +1,13 @@
+pkgbase = font-validator
+	pkgdesc = The Font Validator validates fonts.
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://github.com/HinTak/Font-Validator
+	arch = x86_64
+	license = MIT
+	depends = gzip
+	source = https://github.com/HinTak/Font-Validator/releases/download/FontVal-2.1.4/FontVal-2.1.4-ubuntu-10.7-x64.tgz
+	sha256sums = 5bad62d5a198e84b4762a5246882cd2217a192c2c251af5f717231aa673bf7ff
+
+pkgname = font-validator
+
