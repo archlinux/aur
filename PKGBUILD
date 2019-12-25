@@ -1,9 +1,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fotoxx-test
-_pkgvermaj=20.0
-_pkgvermin=2019.12.19
-pkgver=${_pkgvermaj}.${_pkgvermin}
+#_pkgvermaj=20.0-RC1
+#_pkgvermin=2019.12.19
+_pkgver=20.0-RC1
+pkgver=20.0_rc1
 pkgrel=1
 pkgdesc="A program for improving image files made with a digital camera, test-version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
@@ -15,8 +16,9 @@ depends=('libraw' 'gtk3' 'libchamplain' 'perl-image-exiftool>=0.8.6' 'xdg-utils'
 optdepends=('rawtherapee: for raw image processing'
 	    'dvd+rw-tools: for burning CDs,DVDs or BlueRays'
 	    'hugin: for panorama photos')
-source=("http://kornelix.net/downloads/downloads/${pkgname%-test}-${_pkgvermaj}-test-${_pkgvermin//./-}.tar.gz")
-sha256sums=('918d01d3cecaa565e90bb2be46014750739f58faea7a475f37dbe86ba97b7570')
+#source=("http://kornelix.net/downloads/downloads/${pkgname%-test}-${_pkgvermaj}-test-${_pkgvermin//./-}.tar.gz")
+source=("http://kornelix.net/downloads/downloads/${pkgname%-test}-${_pkgver}.tar.gz")
+sha256sums=('a5488009dcd3bb3082bbac401998511b8a7e434574760789f21423b0eaef4f8f')
 
 build() {
   cd ${pkgname%-test}
