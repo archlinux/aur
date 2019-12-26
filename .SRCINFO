@@ -7,17 +7,20 @@ pkgbase = decklink
 	arch = x86_64
 	license = custom
 	makedepends = curl
-	depends = linux-headers
-	depends = libxml2
-	depends = libpng12
-	depends = glu
-	depends = qt5-base
-	depends = qt5-svg
-	depends = dkms
 	options = !strip
 	options = staticlibs
 	source = decklink-11.4.tar.gz::https://www.blackmagicdesign.com/api/register/us/download/14b0524fb0dc4115b89847530192f9f8
 	sha256sums = 20140faf551c5ee0cb99f3b75e465de6c795b11931db9b5902d4ef100153d692
 
 pkgname = decklink
+	depends = dkms
+	depends = qt5-base
+	depends = libpng
+
+pkgname = mediaexpress
+	depends = glu
+	depends = qt5-base
+	depends = qt5-svg
+	depends = libpng
+	depends = decklink
 
