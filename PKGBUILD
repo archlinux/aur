@@ -6,7 +6,7 @@
 
 pkgname=dropbox-cli
 pkgver=2019.02.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"

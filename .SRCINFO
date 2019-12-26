@@ -1,7 +1,7 @@
 pkgbase = dropbox-cli
 	pkgdesc = Command line interface for Dropbox
 	pkgver = 2019.02.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dropbox.com
 	install = dropbox-cli.install
 	arch = any
