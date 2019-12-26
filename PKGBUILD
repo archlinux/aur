@@ -1,7 +1,7 @@
 # Maintainer: Mark Gross <mark.gross2001@gmail.com>
 
 pkgname=hubrelease
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 pkgdesc="Automatically create GitHub releases"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 validgpgkeys=('6F8F715D6CEAC6CCC49D996BA7E6852582706775')
 depends=('curl' 'jansson' 'libgit2')
 source=("hubrelease-${pkgver}.tar.gz::https://github.com/MarkusGordathian/hubrelease/releases/download/${pkgver}/${pkgver}.tar.gz")
-sha512sums=('9d729689fd01936639a5b0338834bbfeeb1cb4abfb564cf7d2efb7daf0fd9fb62b59bf172248cf74848d0373a9732cae936dd8b040f7ffc275adea809888000c')
+sha512sums=('c38d1784a82cda20360dc5a984246e82f05bb84c5d014522c18458310d21d956b12c15f2cb4bd489a0f6ecc6dd7c6e66438a4e3c25826e2bccfdfe0b13f8f311')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
