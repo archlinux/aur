@@ -1,46 +1,33 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor:  Philip Goto <philip.goto@gmail.com>
 
-pkgbase=popsicle-git
-pkgname=(popsicle-cli-git popsicle-gtk-git)
-pkgver=0.1.5.r128.gd6c8f6e
+pkgname=popsicle-git
+pkgver=0.1.5.r180.g7c82a07
 pkgrel=1
 pkgdesc="Linux utility for flashing multiple USB devices in parallel, written in Rust"
 url="https://github.com/pop-os/popsicle"
 arch=(x86_64 i686 aarch64 armv7h)
 license=(MIT)
-
-makedepends=(rust cargo help2man gtk3)
-
-source=("git+https://github.com/pop-os/popsicle.git")
+depends=(gtk3)
+makedepends=(git rust cargo help2man xorgproto)
+provides=(popsicle)
+conflicts=(popsicle)
+source=("git+https://github.com/pop-os/popsicle.git#branch=async")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd popsicle
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build_popsicle-cli-git() {
-    cd popsicle
-    make cli
-}
-build_popsicle-gtk-git() {
-    cd popsicle
-    make gtk
+build() {
+  cd "${pkgname%-git}"
+  make
 }
 
-package_popsicle-cli-git() {
-    pkgdesc="CLI utility for flashing multiple USB devices in parallel, written in Rust"
-    provides=(popsicle-cli)
-    conflicts=(popsicle-cli)
-    
-    cd popsicle
-    DESTDIR="${pkgdir}" prefix="/usr" make install-cli
+package() { 
+  cd "${pkgname%-git}"
+  make DESTDIR="${pkgdir}/" prefix=/usr install
+  install LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-package_popsicle-gtk-git() {
-    pkgdesc="GTK app for flashing multiple USB devices in parallel, written in Rust"
-    provides=(popsicle-gtk)
-    conflicts=(popsicle-gtk)
 
-    cd popsicle
-    DESTDIR="${pkgdir}" prefix="/usr" make install-gtk
-}
