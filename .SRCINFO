@@ -1,0 +1,27 @@
+pkgbase = tangerine-icon-theme
+	pkgdesc = Ubuntu's twist on the Tango icon theme
+	pkgver = 0.27
+	pkgrel = 7
+	url = https://launchpad.net/tangerine-icon-theme/
+	arch = any
+	license = custom:cc-by-sa-2.5
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = imagemagick
+	makedepends = icon-naming-utils
+	makedepends = librsvg
+	depends = gnome-icon-theme
+	depends = gtk-update-icon-cache
+	source = http://archive.ubuntu.com/ubuntu/pool/main/t/tangerine-icon-theme/tangerine-icon-theme_0.27.tar.gz
+	source = archlinux-icon-crystal-16.png
+	source = archlinux-icon-crystal-22.png
+	source = archlinux-icon-crystal-32.png
+	source = archlinux-icon-crystal-48.svg
+	sha256sums = 4842f55143694a4d5b12517ff0b53d3dac1a67413b32c4a46bbf1b4b805f5489
+	sha256sums = bf8a8e2b78a426412460fd87994d61d7085ccda46a86a6bc32b5115bff4a502d
+	sha256sums = 62441ff422ad662da601794acb8c39c5136dd3655ef20ba1e361d6397fe5c051
+	sha256sums = 84620a8abb4b1837d41471bd0bc0dececd252b5068e6aab82b4fdb753e9c1a7a
+	sha256sums = 6c5307e8a8ae06970c16278db557184dd91366bf6233ca55d2b7de942e66b821
+
+pkgname = tangerine-icon-theme
+

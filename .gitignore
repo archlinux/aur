@@ -1,0 +1,6 @@
+pkg/
+src/
+tangerine-icon-theme_*.tar.gz
+tangerine-icon-theme-*.pkg.tar.xz
+tangerine-icon-theme-*.pkg.tar.zst
+tangerine-icon-theme-*.src.tar.gz
