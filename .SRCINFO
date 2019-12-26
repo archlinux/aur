@@ -7,6 +7,8 @@ pkgbase = libutp-git
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
+	makedepends = cmake
+	makedepends = git
 	depends = glibc
 	provides = libutp
 	source = git+https://github.com/transmission/libutp.git#branch=post-3.3-transmission

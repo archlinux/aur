@@ -7,6 +7,7 @@ pkgrel=2
 epoch=3
 pkgdesc='uTorrent Transport Protocol library'
 url='https://github.com/bittorrent/libutp'
+makedepends=('cmake' 'git')
 depends=('glibc')
 provides=('libutp')
 arch=('i686' 'x86_64')
