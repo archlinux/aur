@@ -1520,3 +1520,11 @@ Wed Dec 25 21:26:32 2019 +0100
 1.12.5.2        Hotfix release 1.12.5.2
     
      2019-12-25 069673f3 actionless chore(plugins: theme: oomox): update submodule (add missing separators to the dark themes and fix regression in Nemo toolbar styling)
+
+
+Thu Dec 26 06:16:20 2019 +0100
+-------------------------------------------------
+1.12.5.3        Hotfix release 1.12.5.3
+    
+     2019-12-26 91dcf45b actionless chore(plugins: theme: oomox): update submodule (typo in scss):
+            "hotfix(gtk320): small typo which makes theme unreadable for some apps"
