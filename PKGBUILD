@@ -2,7 +2,7 @@
 # Current Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
 
 pkgname=('3dsconv-git')
-provides=('3dsconv')
+provides=('3dsconv-git')
 conflicts=('3dsconv')
 pkgver=r117.383fc1c
 pkgrel=1
