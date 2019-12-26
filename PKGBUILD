@@ -1,6 +1,6 @@
 
 pkgname=sollya
-pkgver=6.0
+pkgver=7.0
 pkgrel=1
 
 pkgdesc="A tool environment and a library for safe floating-point code development"
@@ -13,8 +13,8 @@ optdepends=(
   'gnuplot: for using the plot and externalplot commands'
  )
 
-source=(http://gforge.inria.fr/frs/download.php/file/36270/sollya-6.0.tar.gz)
-md5sums=('302a23a6a67f06968e28f1a74a07c1f3')
+source=(http://gforge.inria.fr/frs/download.php/file/37749/sollya-7.0.tar.gz)
+md5sums=('7634380e998f9653f4c0bbc38994aac3')
 
 build() {
 	cd "$pkgname-$pkgver"
