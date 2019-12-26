@@ -16,7 +16,5 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  cp "$srcdir/$_pkgname/cproton.sh" "$pkgdir/usr/bin/cproton"
-  chmod +x "$pkgdir/usr/bin/cproton"
+  install -Dm755 "$srcdir/$_pkgname/cproton.sh" "$pkgdir/usr/bin/cproton"
 }
