@@ -1,13 +1,13 @@
 pkgbase = materia-custom-accent
 	pkgdesc = Easy installer for the materia theme with a custom accent color, gdm and qt5 support and a workaround for dark apps (edit PKGBUILD)
-	pkgver = r1211.c95281e8
+	pkgver = r1254.b8b04af5
 	pkgrel = 1
 	url = https://github.com/nana-4/materia-theme
 	arch = any
 	license = GPL
 	makedepends = bc
 	makedepends = sassc
-	makedepends = inkscape
+	makedepends = resvg
 	depends = gtk3>=3.22
 	depends = gtk-engine-murrine
 	depends = gnome-themes-extra
@@ -16,13 +16,9 @@ pkgbase = materia-custom-accent
 	conflicts = kvantum-theme-materia
 	source = materia-theme::git+https://github.com/nana-4/materia-theme.git
 	source = materia-theme-qt::git+https://github.com/PapirusDevelopmentTeam/materia-kde.git
-	source = colors
-	source = colors-dark
 	source = 99-gdm-use-materia-theme.hook
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6cbc8dee30cb20f6124e5d1c2816be694322733d8058b014fa2280879c0f520f
-	sha256sums = bee6e51a3707667d796c3b827e4e6494bcbbf26d47c96f40e08c2f56d528bec1
 	sha256sums = 7db390763b37c3cc2c2984a8a3e8452d1822ac579def6a07eecbee076fb73d77
 
 pkgname = materia-custom-accent
