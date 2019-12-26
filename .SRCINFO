@@ -1,7 +1,7 @@
 pkgbase = gnome-vfs
 	pkgdesc = The GNOME Virtual File System
 	pkgver = 2.24.4
-	pkgrel = 11
+	pkgrel = 12
 	url = https://developer.gnome.org/gnome-vfs/
 	arch = i686
 	arch = x86_64
@@ -25,11 +25,13 @@ pkgbase = gnome-vfs
 	source = gnutls-3.4.0.patch
 	source = gcrypt-config.patch
 	source = enable-deprecated.patch
+	source = smbc_remove_unused_server.patch
 	sha256sums = 62de64b5b804eb04104ff98fcd6a8b7276d510a49fbd9c0feb568f8996444faa
 	sha256sums = 66c7cfb12995c0dd94a2caea95c7e3c55981993f05a79c585d60915ff131955d
 	sha256sums = 5fe5e2e1ad8d8d36deb2d38db621d5b8350aafe3876f722467465c3b3fa304d3
 	sha256sums = c059e218f310da683778919d36e7862f7e763384805f6453d328fbaf507a8114
 	sha256sums = ca2b9dffb1fa202c0d1f0d3648ef37cd8e84657a22d4c6746bb46e9a6cf1ee47
+	sha256sums = 510bf732a7c2cd6a1de71a0dc7c96907d52c82942feaf6a8b0575be95d6ed4b9
 
 pkgname = gnome-vfs
 
