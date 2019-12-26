@@ -3,7 +3,7 @@
 _gemname=safe_yaml
 pkgname=ruby-safe_yaml
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Parse YAML safely'
 url='https://github.com/dtao/safe_yaml'
 arch=('any')
