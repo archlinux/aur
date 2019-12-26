@@ -11,7 +11,7 @@ url="https://github.com/carcass82/gkrellm-gkfreq"
 license=('GPL')
 depends=('gkrellm')
 makedepends=('pkgconfig')
-source=(https://github.com/carcass82/$pkgname/archive/$pkgname-release-$pkgver.tar.gz)
+source=(https://github.com/carcass82/$pkgname/archive/release-$pkgver.tar.gz)
 md5sums=('5088037e9b31958e0e8151fa124c2bcc')
 
 build()
