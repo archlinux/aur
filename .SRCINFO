@@ -1,6 +1,6 @@
 pkgbase = mopidy-internetarchive
 	pkgdesc = Mopidy extension for playing audio from the Internet Archive
-	pkgver = 3.0.0a1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/tkem/mopidy-internetarchive
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mopidy-internetarchive
 	depends = python-requests
 	depends = python-cachetools
 	depends = python-uritools
-	source = mopidy-internetarchive-3.0.0a1.tar.gz::https://github.com/tkem/mopidy-internetarchive/archive/v3.0.0a1.tar.gz
-	md5sums = 80342b7fec76be1bacb0cc2e2d3b542c
+	source = mopidy-internetarchive-3.0.0.tar.gz::https://github.com/tkem/mopidy-internetarchive/archive/v3.0.0.tar.gz
+	md5sums = ce5095e98475ed0cbbb1a9c52d9f429a
 
 pkgname = mopidy-internetarchive
 
