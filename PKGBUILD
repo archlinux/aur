@@ -17,7 +17,7 @@ pkgname='digi-dgnc'
 #_pkgver='1.3-28'; _dl='40002369_G.tgz'
 _pkgver='1.3-29'; _dl='40002369_H.src.rpm'
 pkgver="${_pkgver//-/.}"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='tty driver for Digi Neo and legacy ClassicBoard PCI PCIe RS-232 serial port'
 arch=('i686' 'x86_64')
 url='https://www.digi.com/'
@@ -126,7 +126,13 @@ prepare() {
   test ! -s 'scripts/postinstall.Arch' || echo "${}"
 
   # new folder in gcc 8
-  sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' -i driver/*/Makefile*
+  sed -e 's/^clean:$/&\n\trm -f .cache.mk/g' \
+      -e '# Use built in clean' \
+      -e 's:clean:clean_local:g' \
+      -e 's~^clean_local:~clean:\n\tmake -C @KERNEL_HEADERS@ SUBDIRS=$$PWD clean\n\n&~g' \
+      -e '# Kernel 5.4 compatible' \
+      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
+    -i driver/*/Makefile*
 
   # Branding in dmesg
   sed -e '/^static int dgnc_start/,/^}$/ s@^\(\s\+\)APR(("For@'"\1APR((DRVSTR\": Arch Linux https://aur.archlinux.org/packages/${pkgname}/\"));\n&@g" \
@@ -273,7 +279,7 @@ EOF
         -e '# Anything using these must fail' \
         -e '/MOD = \// s:^:#:g' \
        -i "${_dkms}/driver/build/Makefile"
-    make -C "${_dkms}/driver/build/" clean
+    make -C "${_dkms}/driver/build/" clean KERNELRELEASE="$(uname -r)" MYPWD="${_dkms}/driver/build/"
   fi
   set +u
 }
