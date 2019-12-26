@@ -8,6 +8,7 @@ pkgbase = konfyt-git
 	license = GPL3
 	makedepends = git
 	depends = carla
+	depends = liblscp
 	provides = konfyt
 	conflicts = konfyt
 	source = konfyt-git::git+https://github.com/noedigcode/konfyt.git
