@@ -1,6 +1,6 @@
 pkgbase = lyricsx
 	pkgdesc = free, open source, cross-platform software for editing lyrics
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/timxx/lyricsx
 	install = lyricsx.install
@@ -12,8 +12,8 @@ pkgbase = lyricsx
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = desktop-file-utils
-	source = https://github.com/timxx/lyricsx/archive/v1.1.0.tar.gz
-	sha256sums = a9ea959e815eb35a1a2b6517b2d23fa785a2a024c0f8076aa422ed7af4ff3b37
+	source = https://github.com/timxx/lyricsx/archive/v1.1.1.tar.gz
+	sha256sums = 46d7c2c237e5f4f2e2a9233ff9132a8650342ec6b2fbd438e8103b4ac45a5686
 
 pkgname = lyricsx
 
