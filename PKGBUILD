@@ -1,45 +1,34 @@
-# Current Maintainer: sigmacool
-# Original Packager:  sigmacool
+# Maintainer: sigmacool
+# Contributor: FabioLolix
 
 pkgname=lanshare
 pkgver=1.2.1
-pkgrel=4
+pkgrel=6
 pkgdesc="LAN Share is a cross platform local area network file transfer application, built using Qt GUI framework."
-arch=('x86_64')
+arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="https://github.com/abdularis/LAN-Share"
-license=('GPL')
-depends=('qt5-base')
-optdepends=()
-options=()
-source=(
-	"https://github.com/abdularis/LAN-Share/releases/download/1.2.1/lanshare_1.2.1-1_amd64.deb"
-        "https://raw.githubusercontent.com/abdularis/LAN-Share/master/packaging/linux/debian/LANShare.desktop"
-        "https://raw.githubusercontent.com/abdularis/LAN-Share/master/packaging/linux/debian/lanshare-icon.png"
-        "https://raw.githubusercontent.com/abdularis/LAN-Share/master/LICENSE"
-        "https://raw.githubusercontent.com/abdularis/LAN-Share/master/README.md"
-)        
-
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+license=(GPL)
+depends=(qt5-base)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/abdularis/LAN-Share/archive/$pkgver.tar.gz")
+sha256sums=('c2d8edbb71c524d52defb5f11790ded241908a47c329754cd95fdd1526e4c65e')
 
 prepare() {
-  tar xf  data.tar.xz 
-  mv README.md README
+  cd "$srcdir/LAN-Share-$pkgver/packaging/linux/debian"
+  sed -i "/Path=.*/d" LANShare.desktop 
+  sed -i "s^Exec=.*^Exec=/usr/bin/LANShare^" LANShare.desktop 
 }
+
+build() {
+  cd "$srcdir/LAN-Share-$pkgver/src"
+  qmake
+  make
+}
+
 package() {
+  install -Dm755 "$srcdir/LAN-Share-$pkgver"/src/LANShare "$pkgdir"/usr/bin/LANShare
+  ln -s /usr/bin/LANShare "$pkgdir/usr/bin/lanshare"
 
-  cp -r usr/ "$pkgdir"
-
-  install -Dm 0755 "$pkgdir/usr/lib/LANShare/LANShare" "$pkgdir/usr/bin/LANShare"
-
-  mkdir -p "$pkgdir/usr/share/applications"
-  sed -i '$ d' LANShare.desktop
-  install -Dm 644  LANShare.desktop "$pkgdir/usr/share/applications/LANShare.desktop"
-
-  mkdir -p "$pkgdir/usr/share/pixmaps"
-  install -Dm 644 lanshare-icon.png "$pkgdir/usr/share/pixmaps/lanshare-icon.png"
-
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README  "${pkgdir}/usr/share/doc/${pkgname}/README"
-
+  cd "$srcdir/LAN-Share-$pkgver/packaging/linux/debian"
+  install -D LANShare.desktop  "$pkgdir"/usr/share/applications/LANShare.desktop
+  install -D lanshare-icon.png "$pkgdir"/usr/share/pixmaps/lanshare-icon.png
 }
-
