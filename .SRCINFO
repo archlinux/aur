@@ -1,0 +1,14 @@
+pkgbase = natpad
+	pkgdesc = Natpad is a Text-editor written in C using GTK
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/douwevos/natpad
+	arch = x86_64
+	license = GPL3
+	provides = natpad
+	noextract = natpad-2.5-amd64.deb
+	source = natpad-2.5-amd64.deb::https://github.com/douwevos/natpad/releases/download/v2.5/natpad_2.5_amd64.deb
+	sha256sums = 1041f16317e852d3d232790cbfaff553b6b58cd996df77a9db77e928a162308b
+
+pkgname = natpad
+
