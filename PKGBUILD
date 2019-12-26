@@ -45,7 +45,7 @@ DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o
 
 
 package() {
-  install -Dm644 "ACRAIZ-SHA2.cer"                      "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_RAIZ_DNIE_SHA2.crt"
+  install -Dm644 "ACRAIZ-SHA2.cer"                      "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_RAIZ_DNIE_SHA2.cer"
   install -Dm644 "AC RAIZ DNIE 2.crt"                   "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_RAIZ_DNIE_2_SHA2.crt"
   install -Dm644 "AC_DNIE_001_SHA2.crt"                 "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_001_SHA2.crt"
   install -Dm644 "AC_DNIE_002_SHA2.crt"                 "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_002_SHA2.crt"
