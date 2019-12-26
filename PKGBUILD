@@ -1,14 +1,15 @@
 # Maintainer: Alex Agura <agura@tfwno.gf>
 pkgname=asus-fan-control
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
 url="https://github.com/dominiksalvet/asus-fan-control"
 license=('MIT')
 depends=(acpi_call dmidecode)
 makedepends=()
-optdepends=()
+optdepends=('acpi_call-lts: for the linux-lts kernel'
+            'acpi_call-dkms: for other non-standard kernels')
 install=$pkgname.install
 source=("https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('2562408fb931266f0f906f7de68f9513')
