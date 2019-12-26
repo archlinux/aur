@@ -1,41 +1,36 @@
 # Maintainer: Marko Korhonen <reekymarko@reekynet.com>
 
 pkgname=drawio-desktop
-pkgver=12.1.7
+pkgver=12.4.2
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
 url='https://github.com/jgraph/drawio'
 license=('Apache')
 depends=(electron gconf libnotify)
-makedepends=(npm)
-source=("drawio-desktop-$pkgver.zip::https://github.com/jgraph/drawio/releases/download/v$pkgver/draw.war")
-noextract=("drawio-desktop-$pkgver.zip")
-sha256sums=('147fe5883c3dac170941993ec1652f9c253a8c872bc70f6708c19aef825d8bef')
+makedepends=(npm ant)
+source=("https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz")
+sha256sums=('e5a7be7a57c7743070358714de442c69a1212b90cb30c0280c14b4905abc93f2')
 
-prepare() {
-  rm -rf "$srcdir/drawio-$pkgver"
-  mkdir "$srcdir/drawio-$pkgver"
-  cd "$srcdir/drawio-$pkgver"
+build() {
+  cd "$srcdir/drawio-$pkgver"/etc/build
+  ant app
+  cd "$srcdir/drawio-$pkgver"/src/main/webapp
+  
 
-  bsdtar -xf "../drawio-desktop-$pkgver.zip" -C .
   rm -rf "META-INF" "WEB-INF"
 
   # disable updater
   sed -e '/electron-updater/d' -i 'package.json'
   local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
   sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'electron.js'
-}
-
-build() {
-  cd "$srcdir/drawio-$pkgver"
 
   npm install --cache ../npm-cache --only=production
   rm -f 'package-lock.json'
 }
 
 package() {
-  cd "$srcdir/drawio-$pkgver"
+  cd "$srcdir/drawio-$pkgver"/src/main/webapp
 
   mkdir -p "$pkgdir/usr/lib"
   cp -rp . "$pkgdir/usr/lib/draw.io"
