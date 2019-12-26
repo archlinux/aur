@@ -94,7 +94,7 @@ set -u
 pkgname='sunix-snx'
 #pkgver='2.0.4_2'; _dl='2016/20160706173626'
 pkgver='2.0.4_3'; _dl='2017/20171122180114'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
 url='http://www.sunix.com/'
@@ -166,6 +166,8 @@ prepare() {
       -e '/findstring / s:"\([0-9]\):"=\1:g ' \
       -e '# 2.6 would match a hostname of rack2.6location5' \
       -e '/findstring / s:uname -a:uname -r:g ' \
+      -e '# Kernel 5.4 compatible' \
+      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
     -i 'driver/Makefile'
   sed -e '/^install:/,/^$/ s: /usr/: "${DESTDIR}"/usr/:g' -i 'snxdump/Makefile' 'snxterm/Makefile'
   ! test -s 'driver/Makefile.Arch' || echo "${}"
