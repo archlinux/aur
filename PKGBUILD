@@ -10,6 +10,7 @@ install=
 license=('unknown')
 source=("https://deskcap.blob.core.windows.net/deployment/Linux/arch/devel/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 options=('staticlibs')
+md5sums=('c85fb6d6d0cfd0b9eddcbd83c8d658af')
 
 package () {
   mkdir -p "${pkgdir}/opt/monitask"
