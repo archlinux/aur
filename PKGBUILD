@@ -16,12 +16,12 @@ md5sums=('5088037e9b31958e0e8151fa124c2bcc')
 
 build()
 {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-release-$pkgver"
 	make
 }
 
 package()
 {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-release-$pkgver"
 	install -D -m 755 gkfreq.so ${pkgdir}/usr/lib/gkrellm2/plugins/gkfreq.so
 }
