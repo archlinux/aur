@@ -1,8 +1,3 @@
-pre_install () {
-	getent group bzz > /dev/null || groupadd -r bzz
-	getent passwd bzz > /dev/null || useradd -g bzz -d /var/lib/bzz -m -r bzz
-}
-
 post_install () {
 	if [ -f /var/lib/bzz/.swarm-pass ]; then
 		echo "you already have a Swarm data dir. I'll leave it alone ;)"

@@ -1,6 +1,6 @@
 # Maintainer: Louis Holbrook <dev@holbrook.no>
 pkgname=go-swarm
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 epoch=
 pkgdesc="Censorship resistant storage and communication infrastructure for a truly sovereign digital society"
@@ -18,16 +18,16 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-changelog="CHANGELOG_v0.5.4"
+changelog="CHANGELOG_v0.5.5"
 source=("https://github.com/ethersphere/swarm/archive/v${pkgver}.tar.gz"
 	"v${pkgver}.tar.gz.sig"
 	"swarm-resources.tar.gz"
 	"swarm-resources.tar.gz.sig"
 	"README")
 noextract=()
-md5sums=("0b123c44f2f69a32899fef10c656dbe8"
+md5sums=("9f310eda79eb4bfd79bfbebbc9a24555"
 	"SKIP"
-	"19eea4bf47a58afb05fc3eaef209ec84"
+	"2fa858d7e4cb420ee9cdf53a33bf0a67"
 	"SKIP"
 	"02f48077fb06278a5b9eed4950b2ce3e")
 validpgpkeys=("0826EDA1702D1E87C6E2875121D2E7BB88C2A746")
@@ -70,7 +70,8 @@ check() {
 
 package() {
 	install -v -D -m0755 build/swarm ${pkgdir}/usr/local/bin/swarm
-	install -v -D -m0644 swarm.service ${pkgdir}/usr/lib/systemd/system/swarm.service
+	install -v -D -m0644 systemd/swarm.service ${pkgdir}/usr/lib/systemd/system/swarm.service
+	install -v -D -m0644 systemd/swarm.conf ${pkgdir}/usr/lib/sysusers.d/swarm.conf
 	if [ ${_pythonwalletdepends} -eq 1 ]; then
 		install -v -D -m0700 swarm-genkey.py ${pkgdir}/usr/local/bin/swarm-genkey
 	fi
