@@ -10,7 +10,7 @@ license=(custom)
 depends=(java8-openjfx)
 makedepends=(openssl)
 
-_default_ver="`sed 's/\./_/g' <<< $pkgver`"
+_default_ver="${pkgver//\./_}"
 #_gen_ver="1_0_4_6"
 #_jpk_ver="1_0_4_6"
 #_resource_ver="1_0_4_6"
