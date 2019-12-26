@@ -42,7 +42,7 @@ _origmodname='8250_moxa'
 
 pkgname='moxa-mxser-mxupcie'
 pkgver='1.16'; _build='14030317'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='kernel module driver for Moxa Smartio Industio MUE ISA PCIe UPCI PCI Express CP multi port serial RS-232 422 485'
 arch=('i686' 'x86_64')
 url='https://www.moxa.com/product/PCIe_UPCI_PCI.htm'
@@ -60,7 +60,7 @@ source=(
   '0003-kernel-5.0.0-access_ok.patch'
 )
 sha256sums=('445f452eb7f56b70ef1b9795421556fb28284a90cde8746e5895316d5c67899f'
-            'a22021474be03194faba5e30b0bea15128a83e1eae05d602865a4cdc38309272'
+            '4988d6cc1c779c1e30f659896e9e25beaedb4a473d4f2f09a81bbef5d2ccb276'
             '7357da2ada66681705b2c6806fa3fe910ddd198e531d851bd0a97b548de4bbb3'
             'ba1a55fa48f93f3a309bec5783d7deb5f728798ae39f28301d19384b5444113e')
 
@@ -106,7 +106,7 @@ prepare() {
   patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-access_ok.patch"
 
   # Make package compatible
-  #cp -p driver/Makefile{,.Arch}
+  # cp -p driver/Makefile{,.Arch}
   sed -e '# Fix path' \
       -e 's:/lib/:/usr/lib/:g' \
       -e '# Remove leading @ to prevent silent execution' \
@@ -128,7 +128,10 @@ prepare() {
       -e '/^install/,/^$/ s:/usr/:"$(DESTDIR)"&:g' \
       -e '# Disable depmod' \
       -e 's:^\tdepmod:\ttrue depmod:g' \
+      -e '# Kernel 5.4 compatible' \
+      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
     -i 'driver/Makefile'
+  test ! -s driver/Makefile.Arch
   set +u
 }
 

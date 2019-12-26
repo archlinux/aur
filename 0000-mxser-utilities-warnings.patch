@@ -7,7 +7,7 @@ diff -pNaru5 src.old/mxser/utility/conf/conftool.c src/mxser/utility/conf/confto
  #include        <fcntl.h>
  #include	<getopt.h>
  #include	<unistd.h>
-+#include <stropts.h>
++#include <sys/ioctl.h>
  #include	<errno.h>
  #include	"cpld_param.h"
  #include 	<termios.h>
@@ -23,7 +23,7 @@ diff -pNaru5 src.old/mxser/utility/diag/diag.c src/mxser/utility/diag/diag.c
  
  #include <stdio.h>
 +#include <unistd.h>
-+#include <stropts.h>
++#include <sys/ioctl.h>
  #include <fcntl.h>
  #include <errno.h>
  
