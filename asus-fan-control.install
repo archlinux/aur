@@ -1,6 +1,6 @@
 post_install(){
     modprobe acpi_call || cat <<EOF
-Warning: failed to probe acpi_call module, you might to reboot your system or
+Warning: failed to probe acpi_call module, you might need to reboot your system or
 install the acpi_call version appropriate for your kernel
 EOF
 
