@@ -1,0 +1,24 @@
+index 42d6c78..e6bb59e 100644
+--- a/modules/smb-method.c
++++ b/modules/smb-method.c
+@@ -328,7 +328,7 @@ cache_reap_cb (void)
+ 	g_hash_table_foreach (server_cache, add_old_servers, servers);
+ 		
+ 	for (i = 0; i < servers->len; i++) {
+-		smbc_remove_unused_server (smb_context,
++		smbc_getFunctionRemoveUnusedServer(smb_context) (smb_context,
+ 					   (SMBCSRV *)g_ptr_array_index (servers, i));
+ 	}
+ 
+@@ -491,7 +491,7 @@ purge_cached(SMBCCTX * context)
+ 		
+ 	could_not_purge_all = FALSE;
+ 	for (i = 0; i < servers->len; i++) {
+-		if (smbc_remove_unused_server(context,
++		if (smbc_getFunctionRemoveUnusedServer(context)(context,
+ 					      (SMBCSRV *)g_ptr_array_index (servers, i))) {
+ 			/* could not be removed */
+ 			could_not_purge_all = TRUE;
+-- 
+1.7.10.3
+
