@@ -1,0 +1,29 @@
+pkgbase = python-bark-git
+	pkgdesc = Text-Prompted Generative Audio Model by Suno AI
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/suno-ai/bark
+	arch = any
+	license = MIT
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-markdown-it-py
+	depends = python-boto3
+	depends = python-encodec
+	depends = python-funcy
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-tokenizers
+	depends = python-pytorch
+	depends = python-tqdm
+	depends = python-transformers
+	provides = python-bark
+	conflicts = python-bark
+	source = python-bark-git::git+https://github.com/suno-ai/bark#branch=main
+	md5sums = SKIP
+
+pkgname = python-bark-git

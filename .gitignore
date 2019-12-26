@@ -1,0 +1,5 @@
+pkg/
+src/
+python-bark-*.tar.gz
+python-bark-*.pkg.*
+python-bark-git/
