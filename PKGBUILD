@@ -3,7 +3,7 @@
 
 pkgname=riemann-bin
 _pkgbase=${pkgname%%-bin}
-pkgver=0.3.1
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Monitors distributed systems (precompiled)"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://github.com/$_pkgbase/$_pkgbase/releases/download/$pkgver/$_pkgb
         "$_pkgbase.sysusers"
         "$_pkgbase.service")
 backup=("etc/$_pkgbase/$_pkgbase.config")
-sha256sums=('54f9799922c8cbad75bbbe36c7e5ad32cf932fb61149629ee0528eb178c58351'
+sha256sums=('2c0f7de308417af890d33f2a9ac40649337cf1b7e0e0c930d8e69f151e15fbb4'
             '0e1a10f59cc95f9cef3eb54cc9764366a714eec2ed6c08750ac13c5d456d69c5'
             'c62dfdd9c723e0717d5da33dc85def9a9a8f623f671aafa9505df3790bb4d2ae'
             '18e21c05c351a8bcbd55b3a454bceb67b7dcfe1385e7cca6936fe63640c44303'
