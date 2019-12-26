@@ -2,3 +2,4 @@ pkg
 src
 pulumi-*.tar.gz
 pulumi-bin*.pkg.tar.xz
+pulumi-bin*.pkg.tar
