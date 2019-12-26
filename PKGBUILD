@@ -1,9 +1,11 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
+# Current Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
+
 pkgname=zsync-curl-git 
-pkgver=r73.6757f73
+pkgver=r80.1382cf4
 pkgrel=1
-pkgdesc="zsync build against libcurl to support https"
-arch=('x86_64')
+pkgdesc="Partial/differential file download client over HTTP(S)"
+arch=('any')
 url="https://github.com/probonopd/zsync-curl"
 license=('Artistic2.0')
 depends=('curl')
@@ -11,20 +13,10 @@ makedepends=('git')
 source=('git+https://github.com/probonopd/zsync-curl.git')
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-#prepare() {
-#	cd "$srcdir/${pkgname}"
-#	patch -p1 -i "$srcdir/${pkgname%-VCS}.patch"
-#}
-
 build() {
 	cd "$srcdir/${pkgname%-git}/src"
-	./configure --prefix=/usr
-	make
+	./configure
+	make -j $(nproc)
 }
 
 check() {
@@ -34,5 +26,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}/src"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/"
 }
