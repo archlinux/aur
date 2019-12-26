@@ -1,31 +1,19 @@
-diff -ura udefrag_original/ultradefrag-5.0.0AB.7/src/Makefile udefrag_patch/ultradefrag-5.0.0AB.7/src/Makefile
---- udefrag_original/ultradefrag-5.0.0AB.7/src/Makefile	2011-11-24 14:57:55.032940368 +0400
-+++ udefrag_patch/ultradefrag-5.0.0AB.7/src/Makefile	2017-08-25 16:46:09.772756287 +0300
+diff '--color=auto' -ura ultradefrag.origin/ultradefrag-5.0.0AB.8/src/Makefile ultradefrag.new/ultradefrag-5.0.0AB.8/src/Makefile
+--- ultradefrag.origin/ultradefrag-5.0.0AB.8/src/Makefile	2019-12-26 13:50:27.574429486 +0300
++++ ultradefrag.new/ultradefrag-5.0.0AB.8/src/Makefile	2019-12-26 13:50:42.364262653 +0300
 @@ -18,13 +18,14 @@
  % : %.s
- 
+
  GCC=gcc
 +GCC_VERSION=$(shell expr `$(GCC) -dumpversion`)
  LD=ld
  AR=ar
- INCL=-I/usr/sparc-include -Iinclude
- COPT=-DPPGC=1 -O2
- GCCOPT=-DPPGC=1 -O2
+ INCL=-I/usr/include -Iinclude
+ COPT=-DLXGC=1 -O2
+ GCCOPT=-DLXGC=1 -O2
  LIB1=/usr/lib64
--LIB2=/usr/lib/gcc/x86_64-redhat-linux/4.6.0
+-LIB2=/usr/lib/gcc/x86_64-redhat-linux/4.9.2
 +LIB2=/usr/lib/gcc/x86_64-pc-linux-gnu/$(GCC_VERSION)
  NTFSLIB=/lib64/libntfs-3g.so.*.0.0
- 
+
  A=console.a udefrag.a zenwinx.a wincalls.a
-diff -ura udefrag_original/ultradefrag-5.0.0AB.7/src/wincalls/ntfs-3g.c udefrag_patch/ultradefrag-5.0.0AB.7/src/wincalls/ntfs-3g.c
---- udefrag_original/ultradefrag-5.0.0AB.7/src/wincalls/ntfs-3g.c	2011-11-26 17:56:37.032940368 +0400
-+++ udefrag_patch/ultradefrag-5.0.0AB.7/src/wincalls/ntfs-3g.c	2017-08-25 16:31:08.046697138 +0300
-@@ -144,7 +144,7 @@
- 	ntfs_volume *vol;
- 
- 	if (do_nothing)
--		vol = ntfs_mount(device,MS_RDONLY);
-+		vol = ntfs_mount(device, "MS_RDONLY");
- 	else
- 		vol = ntfs_mount(device,0);
- #ifdef NVolSetNoFixupWarn
