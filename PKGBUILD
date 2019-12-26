@@ -44,7 +44,7 @@ _servicename="${pkgname}-settings"
 #pkgver='1.2'; _build='12071314'
 #pkgver='1.2.9'; _build='14103017'
 pkgver='1.2.13'; _build='18030617'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='kernel module driver for Moxa multi port USB serial 1250 1410 1450 1610 1650 RS-232 422 485'
 _servicedesc='Moxa UPort persistent settings'
 arch=('i686' 'x86_64')
@@ -199,6 +199,8 @@ prepare() {
       -e 's:make -s:make:g' \
       -e '# Add kernel clean' \
       -e 's/^clean_local:.*$/&\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean/g' \
+      -e '# Kernel 5.4 compatible' \
+      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
     -i 'driver/Makefile'
   test ! -s 'driver/Makefile.Arch'
   sed -e '# Fix path' \
@@ -219,6 +221,8 @@ prepare() {
       -e '# Change to kernel clean' \
       -e 's/^clean:/cleanorig:/g' \
       -e 's/^cleanorig:/clean:\n\t$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) clean\n\n&/g' \
+      -e '# Kernel 5.4 compatible' \
+      -e 's: SUBDIRS=\([^ ]\+\) : M=\1&:g ' \
     -i driver/{mxusbserial,mxuport}/Makefile
   sed -e '# This make modules is never used so it contains a bug' \
       -e '/^\t\$(MAKE)/ {s: -EXTRA: EXTRA:g; s: C : -C :g}'\
