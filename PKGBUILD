@@ -20,4 +20,3 @@ package () {
   cp -ar ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/* "${pkgdir}/opt/monitask/"
   chmod +x "${pkgdir}/opt/monitask/Monitask"
 }
-md5sums=('6e4020106762d3574f81282467f2c088')
