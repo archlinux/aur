@@ -1,14 +1,14 @@
 pkgbase = scream-pulse
 	pkgdesc = A scream receiver using pulseaudio as audio output
-	pkgver = 3.1
+	pkgver = 3.4
 	pkgrel = 1
 	url = https://github.com/duncanthrax/scream
 	arch = x86_64
 	license = custom:MS-PL
 	depends = pulseaudio
 	provides = scream-ivshmem-pulse
-	source = https://github.com/duncanthrax/scream/archive/3.1.tar.gz
-	sha256sums = ab2daabd0d42c5150b5c9cfcc7db2646b9b756d451d21272260258c215b038df
+	source = https://github.com/duncanthrax/scream/archive/3.4.tar.gz
+	sha256sums = 1f24ce794d07eb77579044f3e34454315dfbf8332741c69e1f58aae6982f84f4
 
 pkgname = scream-pulse
 
