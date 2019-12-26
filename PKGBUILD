@@ -3,10 +3,11 @@
 pkgname=natpad
 pkgver=2.5
 pkgrel=1
-pkgdesc='Natpad is a Text-editor written in C using GTK'
+pkgdesc='A Text-editor written in C using GTK'
 arch=('x86_64')
 url='https://github.com/douwevos/natpad'
 license=('GPL3')
+depends=('gtk3')
 provides=(natpad)
 source=(
 	"natpad-${pkgver}-amd64.deb::https://github.com/douwevos/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
