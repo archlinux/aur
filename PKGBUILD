@@ -4,7 +4,7 @@
 _pkgname=tmdbsimple
 pkgname=python-$_pkgname
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A wrapper for The Movie Database API v3. "
 arch=('any')
 url="https://github.com/celiao/tmdbsimple"
