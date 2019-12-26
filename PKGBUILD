@@ -1,6 +1,6 @@
 # Maintainer: Pest <ppest@protonmail.com>
 pkgname=devault
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="QT Desktop wallet for the dvt blockchain"
 arch=('x86_64')
@@ -10,7 +10,7 @@ source=(${pkgname}-${pkgver}::\
 https://github.com/devaultcrypto/devault/archive/v${pkgver}.tar.gz)
 depends=('boost-libs' 'qt5-base' 'qrencode' 'zeromq' 'miniupnpc' 'hicolor-icon-theme' 'libevent')
 makedepends=('python' 'boost' 'qt5-tools')
-md5sums=('9d35572930e4aeec7089d9cf930ab50a')
+md5sums=('b35b32ab22c5a493a12bcc6d200940c9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,4 +34,3 @@ package() {
    "${pkgdir}/usr/share/icons/hicolor/128x128/apps/devault-128.png"
   install -D -m644 COPYING  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
