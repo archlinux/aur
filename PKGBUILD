@@ -1,15 +1,15 @@
 #Maintainer: jnanar <info [at] agayon [dot] be>
 
 pkgname=sat-cagou-hg
-pkgver=r240.f555b10712d7
+pkgver=r318.834d5c267219
 VERSION=0.7
 pkgrel=1
 pkgdesc=""
 arch=(any)
 url=""
 license=('AGPL3')
-depends=('python2' 'python2-kivy' 'sat-xmpp-hg' 'sat-templates-hg' 'sat-tmp-hg' 'xsel' 'python2-kivy-garden' 'sat-media-hg' 'python2-pycryptodome')
-makedepends=('mercurial' 'python2-requests')
+depends=('python' 'python-kivy' 'sat-xmpp-hg' 'sat-templates-hg' 'sat-tmp-hg' 'xsel' 'python-kivy-garden' 'sat-media-hg' 'python-pycryptodome')
+makedepends=('mercurial' 'python-requests')
 options=(!emptydirs)
 #optdepends=('')
 source=('hg+'https://repos.goffi.org/cagou)
@@ -25,5 +25,5 @@ package() {
   pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (Android/Desktop interface)"
   garden install contextmenu
   cd "$srcdir/$_hgname/"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
