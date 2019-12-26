@@ -91,7 +91,6 @@ build() {
     --with-crypto=nss \
     --with-dbus-sys-dir=/usr/share/dbus-1/system.d \
     --with-dhclient=/usr/bin/dhclient \
-    --with-dhcpcd-supports-ipv6 \
     --with-dhcpcd=/usr/bin/dhcpcd \
     --with-dist-version="$pkgver-$pkgrel" \
     --with-dnsmasq=/usr/bin/dnsmasq \
