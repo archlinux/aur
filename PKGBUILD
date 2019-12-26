@@ -1,10 +1,11 @@
 # Maintainer: Denis Vadimov <me @ bloody.pw>
 
+_arch=$( [ "$CARCH" == "x86_64" ] && echo "" || echo "-i386" )
 _baseurl="https://qn.phie.ovh/binaries/desktop/"
 _version=$(curl ${_baseurl}current_version)
-_filename="Carnet-${_version}-${CARCH}"
+_filename="Carnet-${_version}${_arch}"
 pkgname=carnet
-pkgver=0.18.5
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='Carnet is a complete and rich note taking app for Android and Linux with sync capabilities'
 arch=('i386' 'x86_64')
