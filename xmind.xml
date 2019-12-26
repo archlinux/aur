@@ -3,7 +3,7 @@
     <mime-type type="application/xmind">
         <sub-class-of type="application/zip" />
         <comment>XMind File</comment>
-        <comment xml:lang="zh_CN">XMind 文件</comment>
+        <comment xml:lang="en_US">XMind</comment>
         <glob pattern="*.xmind"/>
         <generic-icon name="xmind_file"/>
     </mime-type>

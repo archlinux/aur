@@ -1,7 +1,10 @@
 post_install() {
-    echo 'If XMind crashed on start, trying delete ~/.xmind'
-    echo ''
-    echo 'If you want to change gtk version or java version, please edit PKGBUILD and rebuild the package. Or edit /usr/share/xmind/XMind/XMind.ini, change number to your gtk version after "--launcher.GTK_version", and add/delete "--add-modules=java.se.ee" at the end of file if you use java 10/8.'
+    echo '    Try to delete ~/.xmind/ directory if XMind crashes on start.'
+    echo '    Edit PKGBUILD and rebuild the package to change GTK or Java version.'
+    echo '    You can also set GTK version in the "/usr/share/xmind/XMind/XMind.ini"'
+    echo '    file on the line after "--launcher.GTK_version".'
+    echo '    You must add "--add-modules=java.se.ee" line at the end of the file'
+    echo '    if you are using Java version 10.'
 }
 
 post_upgrade() {

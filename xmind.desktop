@@ -2,7 +2,7 @@
 Type=Application
 Name=XMind
 GenericName=Brainstorming and Mind Mapping Software
-Comment=Launch XMind 8 Update 7
+Comment=Launch XMind 8 Update 9
 Icon=xmind
 Exec=XMind %F
 Terminal=false
