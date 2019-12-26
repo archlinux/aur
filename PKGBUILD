@@ -6,8 +6,8 @@ _with_rust=1
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.3.0.alpha.r793.g68a00c4
-pkgrel=2
+pkgver=0.4.3.0.alpha.r874.ga38014e
+pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.torproject.org"
