@@ -1,0 +1,19 @@
+pkgbase = python-bangla-git
+	pkgdesc = Bangla is a package for Bangla language users with various functionalities including Bangla date and Bangla numeric conversation
+	pkgver = 0.0.0.r26.g34e2a71
+	pkgrel = 1
+	url = https://github.com/arsho/bangla
+	arch = any
+	license = MIT
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	provides = python-bangla
+	conflicts = python-bangla
+	source = python-bangla-git::git+https://github.com/arsho/bangla
+	md5sums = SKIP
+
+pkgname = python-bangla-git
