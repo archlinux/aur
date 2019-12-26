@@ -10,7 +10,7 @@ pkgbase = monitask
 	depends = xterm
 	options = staticlibs
 	source = https://deskcap.blob.core.windows.net/deployment/Linux/arch/prod/monitask-1.0-1.tar.gz
-	md5sums = 094f1597495b0501adbe0e6058d26cbf
+	md5sums = a5acf1ffd419f5329fd696b5459b984d
 
 pkgname = monitask
 

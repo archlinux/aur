@@ -11,7 +11,7 @@ license=('unknown')
 source=("https://deskcap.blob.core.windows.net/deployment/Linux/arch/prod/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 options=('staticlibs')
 depends=('libxss' 'cairo' 'xterm')
-md5sums=('094f1597495b0501adbe0e6058d26cbf')
+md5sums=('a5acf1ffd419f5329fd696b5459b984d')
 
 package () {
   mkdir -p "${pkgdir}/opt/monitask"
