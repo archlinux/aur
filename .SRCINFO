@@ -1,11 +1,12 @@
 pkgbase = beast-git
 	pkgdesc = Digital synthesizer and music creation system (in development).
-	pkgver = r9082.ddddc1e05
+	pkgver = r9324.d92270e76
 	pkgrel = 1
 	url = https://github.com/tim-janik/beast
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc
+	makedepends = python2
 	makedepends = libgnomecanvas
 	makedepends = libvorbis
 	makedepends = flac

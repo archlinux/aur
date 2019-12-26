@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster <milkii@freenode.irc>
 pkgname=beast-git
-pkgver=r9082.ddddc1e05
+pkgver=r9324.d92270e76
 pkgrel=1
 epoch=
 pkgdesc="Digital synthesizer and music creation system (in development)."
@@ -9,7 +9,7 @@ url="https://github.com/tim-janik/beast"
 license=('LGPL')
 groups=()
 depends=()
-makedepends=('gcc' 'libgnomecanvas' 'libvorbis' 'flac' 'libmad' 'npm' 'fluidsynth' 'python-pandocfilters')
+makedepends=('gcc' 'python2' 'libgnomecanvas' 'libvorbis' 'flac' 'libmad' 'npm' 'fluidsynth' 'python-pandocfilters')
 checkdepends=()
 optdepends=()
 provides=()
