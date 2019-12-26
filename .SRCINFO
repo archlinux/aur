@@ -1,6 +1,6 @@
 pkgbase = esearch
 	pkgdesc = Replacement for both pacman -Ss and pacman -Si
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://github.com/KLZ-0/pacman-esearch
 	arch = x86_64

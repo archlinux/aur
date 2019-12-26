@@ -2,7 +2,7 @@
 
 pkgname=esearch
 _pkgdirname="pacman-$pkgname"
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="Replacement for both pacman -Ss and pacman -Si"
 arch=('x86_64')
