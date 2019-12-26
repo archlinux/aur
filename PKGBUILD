@@ -4,15 +4,15 @@
 
 pkgname=gkrellm-gkfreq
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin for gkrellm2 which displays the current CPU frequency"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/gkrellm-gkfreq"
+url="https://github.com/carcass82/gkrellm-gkfreq"
 license=('GPL')
 depends=('gkrellm')
 makedepends=('pkgconfig')
-source=(http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-md5sums=('26c96bce1d27fd1ec4b67eaa172cc2c3')
+source=(https://github.com/carcass82/$pkgname/archive/$pkgname-release-$pkgver.tar.gz)
+md5sums=('5088037e9b31958e0e8151fa124c2bcc')
 
 build()
 {
