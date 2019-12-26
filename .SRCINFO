@@ -1,0 +1,16 @@
+pkgbase = volwheel
+	pkgdesc = Tray icon to change volume with the mouse
+	pkgver = 0.2.8
+	pkgrel = 7
+	url = https://oliwer.net/b/volwheel.html
+	arch = any
+	license = GPL3
+	depends = perl-gtk2-trayicon
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = alsa-utils: for ALSA support
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/olwtools/volwheel-0.2.8.tar.gz
+	md5sums = aee73416972c4029dfb6a6048dcf0905
+
+pkgname = volwheel
+
