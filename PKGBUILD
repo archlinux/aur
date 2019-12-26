@@ -12,6 +12,8 @@ depends=('curl')
 makedepends=('git')
 source=('git+https://github.com/probonopd/zsync-curl.git')
 md5sums=('SKIP')
+provides=("zsync-curl")
+conflicts=("zsync-curl")
 
 build() {
 	cd "$srcdir/${pkgname%-git}/src"
