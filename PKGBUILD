@@ -1,6 +1,6 @@
 # Maintainer: William Turner <willtur.will@gmail.com>
 pkgname=azuredatastudio
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (formerly SQL Operations Studio)."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('sqlops')
 options=('staticlibs')
 source=("https://github.com/Microsoft/azuredatastudio/releases/download/${pkgver}/azuredatastudio-linux-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/microsoft/azuredatastudio/${pkgver}/resources/linux/code.desktop")
-sha256sums=('bf008d8dde1c41f74fd44bcce4aebf131257d622a47b7764a85718ec094610ae'
+sha256sums=('b2aca93c3084072ef82d123b94235f690736a2a40a2f7d452ce880289d6b31b8'
             'ff4696bdbe8047e0222597831564b78a741dc9597b10a5eca6f901d751c1553e')
 
 prepare() {
