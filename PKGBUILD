@@ -1,6 +1,6 @@
 
 pkgname=flopoco
-pkgver=4.1
+pkgver=4.1.2
 pkgrel=1
 
 pkgdesc="A generator of arithmetic cores (Floating-Point Cores, but not only) for FPGAs (but not only)"
@@ -11,8 +11,8 @@ license=('custom')
 depends=('mpfr' 'mpfi' 'sollya' 'gsl' 'libfplll' 'libxml2')
 makedepends=('cmake' 'boost')
 
-source=(https://gforge.inria.fr/frs/download.php/file/36442/flopoco-4.1.tgz)
-md5sums=('0f7c7c85686649deacc36128754c1a7f')
+source=(https://gforge.inria.fr/frs/download.php/file/37213/flopoco-4.1.2.tgz)
+md5sums=('425013cf0063284c27e5038bfff51efb')
 
 build() {
 	cd "$pkgname-$pkgver"
