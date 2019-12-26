@@ -1,11 +1,11 @@
 # Maintainer: fatalis <fatalis@fatalis.pw>
 pkgname=scream-pulse
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A scream receiver using pulseaudio as audio output'
 arch=('x86_64')
 provides=('scream-ivshmem-pulse')
-depends=('pulseaudio')
+depends=('libpulse')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
 source=("${url}/archive/${pkgver}.tar.gz")
