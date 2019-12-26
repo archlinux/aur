@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com 
 _hkgname=semigroups
 pkgname=haskell-semigroups
-pkgver=0.19
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Anything that associates"
 url="http://hackage.haskell.org/package/${_hkgname}"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 makedepends=(ghc)
 depends=('haskell-bytestring' 'haskell-deepseq' 'haskell-ghc-prim' 'haskell-containers' 'haskell-hashable' 'haskell-nats' 'haskell-text' 'haskell-unordered-containers')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
-sha256sums=('399d033b02853094a11a1d78e9ab05140f00af4b56fede405c66032f466b2cba')
+sha256sums=('79e761e64b862564a3470d5d356cb6b060b14452d675859aed3b2d1e14646648')
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
