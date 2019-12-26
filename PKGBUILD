@@ -7,7 +7,7 @@ pkgbase=kata-containers-bin
 pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image kata-linux-container kata-containers-static)
 pkgver="1.10.0~rc0"
 _pkgver=${pkgver/\~/-}
-pkgrel=5
+pkgrel=6
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -22,7 +22,7 @@ sha256sums=(
 )
 
 package_kata-runtime-bin() {
-  depends=(qemu-headless kata-proxy=${pkgver} kata-shim=${pkgver} kata-ksm-throttler=${pkgver} kata-containers-image=${pkgver} kata-linux-container=${pkgver})
+  depends=(qemu-headless kata-proxy kata-shim kata-ksm-throttler kata-containers-image kata-linux-container)
   optdepends=(
     'firecracker<0.20.0'
     'cloud-hypervisor<0.5.0'
