@@ -1,0 +1,21 @@
+pkgbase = kiwix-desktop-git
+	pkgdesc = Offline reader for Web content, especially intended to make Wikipedia available offline.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.kiwix.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-webengine
+	depends = qt5-svg
+	depends = qt5-imageformats
+	depends = kiwix-lib
+	provides = kiwix-desktop
+	conflicts = kiwix-desktop
+	source = kiwix-desktop-git::git://github.com/kiwix/kiwix-desktop.git
+	md5sums = SKIP
+
+pkgname = kiwix-desktop-git
+
