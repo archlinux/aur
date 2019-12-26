@@ -12,6 +12,7 @@ pkgbase = gccxml-git
 	license = custom
 	makedepends = git
 	makedepends = cmake
+	makedepends = gcc8
 	provides = gccxml
 	conflicts = gccxml
 	source = git+https://github.com/gccxml/gccxml.git

@@ -10,7 +10,7 @@ pkgdesc="GCC-XML generates an XML description of a C++ program from GCC's intern
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.gccxml.org/"
 license=('custom')
-makedepends=(git cmake)
+makedepends=(git cmake gcc8)
 provides=(gccxml)
 conflicts=(gccxml)
 source=("git+https://github.com/gccxml/gccxml.git"
@@ -26,6 +26,8 @@ pkgver() {
 prepare() {
   install -d "$srcdir/gccxml/build"
   cd "$srcdir/${pkgname/-git/}/build"
+
+  export CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8
   CFLAGS=' -fgnu89-inline' cmake .. \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr
