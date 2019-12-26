@@ -1,6 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=2.1.1.r0.ga5ccf7d
+pkgver=3.0.0.alpha
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -9,7 +9,6 @@ license=('custom:BSD')
 
 depends=('bash')
 provides=('rescached')
-conflicts=('bind' 'nsd' 'pdnsd' 'powerdns' 'unbound' 'dnsmasq')
 
 makedepends=('git' 'go-pie>=1.11' 'asciidoctor')
 source=(
