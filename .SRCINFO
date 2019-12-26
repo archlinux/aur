@@ -1,0 +1,23 @@
+pkgbase = cisco-git
+	pkgdesc = Shitty home cloud
+	pkgver = 1.0.r6.gad52a41
+	pkgrel = 1
+	url = https://git.mobley.ne02ptzero.me/~louis/cisco
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = go
+	makedepends = gcc
+	provides = cisco
+	conflicts = cisco
+	source = cisco::git+https://git.mobley.ne02ptzero.me/~louis/cisco
+	md5sums = SKIP
+
+pkgname = cisco-git
+
