@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hv15 AT hw.ac.uk>
 
 pkgname=oilshell
-pkgver=0.7.pre9
+pkgver=0.7.pre10
 pkgrel=1
 pkgdesc='Oil, a new unix shell'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('APACHE')
 options=(!strip)
 install=oilshell.install
 source=("https://www.oilshell.org/download/oil-${pkgver}.tar.xz")
-sha256sums=('b1c41f125f7bc18a18eb7e996758b263acdadea0dc423ce8da676c2c6ff727c8')
+sha256sums=('b2b2ed9411194aaa422481af3a20b2e4fd5a4dc28cd26306a82ea89b3356e13d')
 
 build() {
 	cd "oil-$pkgver"
