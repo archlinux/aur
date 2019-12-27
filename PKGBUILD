@@ -1,4 +1,4 @@
-# Maintainer: Mendel Greenberg <chabad 360 at gmail dot com>
+# Maintainer: Mendel Greenberg <mendel at chabad 360 dot com>
 pkgname=argos-uri-installer-git
 pkgver=r32.b9139f2
 pkgrel=1
