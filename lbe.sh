@@ -32,4 +32,11 @@ cd "$confdir" # FIXME: if we do this, we can ditch lbe.properties; any disadvant
 
 umask 077 # protect session files
 
-exec java -jar "$appdir/lbe.jar" "$@"
+for jvm in /usr/lib/jvm/java-8-{openjdk,jre}; do
+	if [ -d "$jvm" ]; then
+		exec "$jvm"/jre/bin/java -jar "$appdir/lbe.jar" "$@"
+	fi
+done
+
+echo "error: could not find a compatible JRE" >&2
+exit 1
