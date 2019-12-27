@@ -1,6 +1,6 @@
 pkgbase = libwacom-surface
 	pkgdesc = Patched libwacom for Microsoft Surface devices
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/qzed/libwacom
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libwacom-surface
 	depends = glib2
 	depends = systemd
 	depends = libgudev
-	provides = libwacom=1.1
+	provides = libwacom=1.2
 	conflicts = libwacom
 	source = 0001-Add-support-for-Intel-Management-Engine-bus.patch
 	source = 0002-data-Add-Microsoft-Surface-Book-2-13.5.patch
@@ -19,8 +19,8 @@ pkgbase = libwacom-surface
 	source = 0005-data-Add-Microsoft-Surface-Pro-6.patch
 	source = 0006-data-Add-Microsoft-Surface-Pro-4.patch
 	source = 0007-data-Add-Microsoft-Surface-Book.patch
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.1/libwacom-1.1.tar.bz2.sig
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.2/libwacom-1.2.tar.bz2.sig
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	sha256sums = eb0f32d5e33cb07cfb66c97ac6303383387ccfb97e808865cf056c21c3998ba4
 	sha256sums = abf0137ec6ac8aee8e77b2d33423a4a90689660558bbb9bfef41b43f72170d4d
@@ -29,7 +29,7 @@ pkgbase = libwacom-surface
 	sha256sums = 833227f52f050c368e6ca5908aa7534238b96afb5d8a0df8413b14dd63891a9a
 	sha256sums = dde9d2328c6c6112656f1537efb2bc8f0f50d96570b055acef1628a2442b464a
 	sha256sums = 6f7f5f849e460110fad9304b275e4f9f2d880165faed124305b1bf2391c6958f
-	sha256sums = 8cb483593676332e92d3fe1fe816350f136bb906fcee329579d6cb9802d99e02
+	sha256sums = c204cfdee2159d124a4f5ecc8970bbd72f9adf5ad7fd94b66798f93db1f863c3
 	sha256sums = SKIP
 
 pkgname = libwacom-surface
