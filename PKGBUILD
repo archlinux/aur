@@ -1,8 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 pkgname=xmrig-cuda
-pkgver=2.0.1.beta
-_pkgver='2.0.1-beta'
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
@@ -13,18 +12,18 @@ optdepends=('monero: wallet')
 makedepends=('cmake' 'openssl' 'cuda>=10.1.105-6')
 license=('GPL')
 changelog=CHANGELOG.md
-source=("${url}/archive/v${_pkgver}.tar.gz")
-sha256sums=('86d4ac08503fb9e5a40a6b54f0811f79a1915a06d3c3d249f7e1f9f95c0e39fb')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('fc5dcae3ac4174bd70df460d13e4f6ec95ea74cef13277ab1d5f422ebbafbeb6')
 
 prepare() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   # create build dir
   [ -d build ] || mkdir build
 }
 
 build() {
-  cd "${pkgname}-${_pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
 
   # CUDA on ArchLinux uses GCC 8.0
   cmake -DCMAKE_C_COMPILER=/usr/bin/gcc-8 -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 ..
@@ -32,7 +31,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
   install -Dm644 "build/libxmrig-cuda.so" "${pkgdir}/usr/lib/libxmrig-cuda.so"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

@@ -1,3 +1,7 @@
+# v2.0.2
+- [#27](https://github.com/xmrig/xmrig-cuda/pull/27) Added RandomSFX (`rx/sfx`) algorithm for Safex Cash.
+- [#28](https://github.com/xmrig/xmrig-cuda/pull/28) Added RandomV (`rx/v`) algorithm for *new* MoneroV.
+
 # v2.0.1-beta
 - [#10](https://github.com/xmrig/xmrig-cuda/pull/10) Fixed compatibility with CUDA 8, RandomX support not tested and potentially broken with this CUDA version.
 - [#1276](https://github.com/xmrig/xmrig/issues/1276) Fixed maximum threads count.
