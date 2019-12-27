@@ -1,6 +1,6 @@
 pkgbase = pycharm-community-eap
 	pkgdesc = Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.
-	pkgver = 2019.3.1.193.5662.61
+	pkgver = 2019.3.2.193.6015.10
 	pkgrel = 1
 	epoch = 5
 	url = http://www.jetbrains.com/pycharm/
@@ -12,8 +12,8 @@ pkgbase = pycharm-community-eap
 	provides = pycharm-community-edition
 	conflicts = pycharm-community-edition
 	options = !strip
-	source = https://download.jetbrains.com/python/pycharm-community-2019.3.1.tar.gz
-	sha256sums = bb243322951a2d195d9ab12a6990cdbf3d7cc284f17cd5f6ce3376f5ce16f0b2
+	source = https://download.jetbrains.com/python/pycharm-community-193.6015.10.tar.gz
+	sha256sums = f988e1cab1feb54da83d74f6297b0faa99ef5c7bc4586d40c9b1bf534cb4bf04
 
 pkgname = pycharm-community-eap
 
