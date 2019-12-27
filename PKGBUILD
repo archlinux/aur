@@ -6,7 +6,7 @@
 
 pkgname=logisim-evolution
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An educational tool for designing and simulating digital logic circuits'
 arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
@@ -37,11 +37,13 @@ package() {
     install -Dm644 "${pkgname}.xml" \
         "${pkgdir}/usr/share/mime/packages/${pkgname}.xml"
     install -Dm644 "${pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${pkgname}logisim-evolution.desktop"
-    for SIZE in 16 20 24 48 64 128; do
-        install -Dm644 "${pkgname}-${pkgver}/src/main/resources/resources/logisim/img/logisim-icon-64.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/${pkgname}logisim-evolution.png"
+        "${pkgdir}/usr/share/applications/logisim-evolution.desktop"
+    for SIZE in 16 24 48 64 128; do
+        install -Dm644 "${pkgname}-${pkgver}/src/main/resources/resources/logisim/img/logisim-icon-${SIZE}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/logisim-evolution.png"
     done
+    install -Dm644 "${pkgname}-${pkgver}/src/main/resources/resources/logisim/img/logisim-icon.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/logisim-evolution.svg"
     install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
 
