@@ -1,18 +1,19 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=speedometer
-pkgname=$_pkgname-git
-pkgver=2.8.r8.g9211116
+pkgname=speedometer-git
+pkgver=2.8.r14.g2879e0e
 pkgrel=1
 pkgdesc="Measure and display the rate of data across a network connection or data being stored in a file"
 arch=('any')
 url="http://excess.org/speedometer/"
 license=('GPL')
-depends=('python2-urwid')
-makedepends=('git' 'python2-setuptools')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git://github.com/wardi/speedometer.git)
+#depends=('python-urwid')
+depends=('python-psutil' 'python-six' 'python-urwid')    # Debian fork
+makedepends=('git' 'python-setuptools')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+#source=($pkgname::git+https://github.com/wardi/speedometer.git)
+source=($pkgname::git+https://github.com/jova2/speedometer)    # Debian fork
 md5sums=('SKIP')
 
 pkgver() {
@@ -22,9 +23,10 @@ pkgver() {
 
 package() {
   cd $pkgname
-  python2 setup.py install --root="$pkgdir/" #--optimize=1
 
-  mv "$pkgdir"/usr/bin/speedometer{.py,}
+  python setup.py install --root="$pkgdir/" --optimize=1
+
+  mv "$pkgdir/usr/bin/speedometer"{.py,}
   rm -r "$pkgdir/usr/lib/"
 }
 
