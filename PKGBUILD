@@ -8,7 +8,7 @@ pkgdesc="Miracast Wireless Display Software for Linux OS (WDS), Git version."
 arch=('any')
 url="https://01.org/wds"
 license=('LGPL')
-depends=('wpa_supplicant' 'connman' 'gstreamer' 'gst-libav' 'gst-plugins-bad' 'x264enc')
+depends=('wpa_supplicant' 'connman' 'gstreamer' 'gst-libav' 'gst-plugins-bad' 'x264')
 makedepends=('git' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
