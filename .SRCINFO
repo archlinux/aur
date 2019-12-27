@@ -15,6 +15,7 @@ pkgbase = beast-git
 	makedepends = fluidsynth
 	makedepends = python-pandocfilters
 	makedepends = imagemagick
+	makedepends = pandoc
 	source = git+https://github.com/tim-janik/beast
 	md5sums = SKIP
 
