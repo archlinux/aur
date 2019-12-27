@@ -6,15 +6,10 @@ pkgbase = python-ttkwidgets
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = tk
+	depends = python-pillow
 	source = python-ttkwidgets-0.10.1.tar.gz::https://github.com/RedFantom/ttkwidgets/archive/0.10.1.tar.gz
 	sha512sums = d522743827fa2f949844d454cf80e324c16046fce619abde086be20392c8c186b31bfb609d85b1d6780685ca3f4df2e6a95ae3f5baa182fba64c4d3402b11fac
 
 pkgname = python-ttkwidgets
-	depends = tk
-	depends = python-pillow
-
-pkgname = python2-ttkwidgets
-	depends = tk
-	depends = python2-pillow
 
