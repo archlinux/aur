@@ -1,6 +1,6 @@
 pkgbase = stylelint
-	pkgdesc = A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets
-	pkgver = 10.1.0
+	pkgdesc = A mighty, modern linter that helps you avoid errors and enforce conventions in your styles
+	pkgver = 12.0.1
 	pkgrel = 1
 	url = https://stylelint.io/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = stylelint
 	makedepends = npm
 	depends = nodejs
 	optdepends = stylelint-config-standard
-	noextract = stylelint-10.1.0.tgz
-	source = https://registry.npmjs.org/stylelint/-/stylelint-10.1.0.tgz
-	sha512sums = 3a69545eb83310c2d0623d493d3a7264f47d1b86e5d12b6275f1e718910ca5d890d09c93ab430f835c641e4d7fc55276ad33c44b22420d68c6f0a6e9a28ecabb
+	noextract = stylelint-12.0.1.tgz
+	source = https://registry.npmjs.org/stylelint/-/stylelint-12.0.1.tgz
+	sha256sums = 78e4bca30b0da18641bf9e6bdd59794a92b87658a2edaa74a3c0d566586ae75c
 
 pkgname = stylelint
 
