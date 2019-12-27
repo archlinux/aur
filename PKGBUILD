@@ -1,6 +1,6 @@
 pkgname=crosvm-git
 _gitname=crosvm
-pkgver=r640.d39dd9af
+pkgver=r1252.d4afd7033
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/chromiumos/platform/crosvm"
@@ -39,5 +39,5 @@ package() {
 
 sha256sums=('SKIP'
             'SKIP'
-            'a5bd453e2cdea1c9d5be96c31cbb37ea2c264dd07398fc631072ca0c8cc09ec5'
-            'e274be49777c84acc1f8a7c8f7c0ad85add3691c5b80d76ba3757accbb2d27f3')
+            '35a40972cabe7504a1ccdeb042a787fdbca9452eed0bbe1ff6ea74f744794fc9'
+            'cdf946c9570c4ca6b5f5b09897e55065b409975a41e65f9fc375799ee1d88724')
