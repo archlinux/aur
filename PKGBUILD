@@ -11,7 +11,7 @@ depends=('python-yaml' 'python-simple-pid')
 optdepends=('lm_sensors: check and load required hwmon modules')
 backup=('etc/pyfan')
 source=("https://git.harting.dev/IdleGandalf/PyFan/archive/$pkgver.tar.gz")
-sha256sums=('b054e26a6dc4e4000bc9509fb04ae9ad860d7053fb0eec9505bbc46fce4820ff')
+sha256sums=('b44269bd3656f788ce6d2aceb4684aaad1ba071300cdf6be6d2d9edc20880dd2')
 
 package() {
   cd "$pkgname"
