@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-lts414-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (4.14 Kernel Modules)
-	pkgver = 1.1.8.421.g6bc14a626
-	pkgrel = 7
+	pkgver = 1.1.8.429.g4f07c8da6
+	pkgrel = 1
 	url = http://www.openss7.org
 	arch = x86_64
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = openss7-modules-lts414-git
 	makedepends = classpath
 	makedepends = popt
 	depends = linux-lts414=4.14.158-1
-	provides = openss7-modules-lts414=1.1.8.421.g6bc14a626
+	provides = openss7-modules-lts414=1.1.8.429.g4f07c8da6
 	conflicts = openss7-modules-lts414
 	options = !emptydirs
 	options = !strip
