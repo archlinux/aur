@@ -2,7 +2,7 @@
 
 pkgname='govmomi'
 pkgdesc='A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).'
-pkgver=0.19.0
+pkgver=0.21.0
 pkgrel=1
 _repo_prefix='github.com/vmware'
 _repo_name="${pkgname/-git}"
@@ -15,7 +15,7 @@ conflicts=('govmomi-git')
 provides=('govmomi')
 _commit='e3a01f9611c32b2362366434bcd671516e78955d'
 source=("${pkgname}-${pkgver}.tar.gz::https://${_repo_prefix}/${_repo_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('463f7f01161166da274ea7b53d8659b37345e58130b1040d2acb715e8f3ed6499a7d84f3e2d8eab9454456044d294ce34ee8c20cf118c4e0565e54035aa05333')
+sha512sums=('79dfb068aaad1149ea70d9875685e0bdcd27d04c8f8d74643f7d281029beb8345528ef76d38f8be47f350675fea34905f67bee16ba740182819ab236f01b324e')
 
 prepare () {
   mkdir -p "src/${_repo_prefix}"
