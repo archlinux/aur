@@ -1,7 +1,7 @@
 pkgbase = pyfan
 	pkgdesc = Fan control utilising hwmon and pid
-	pkgver = 1.2
-	pkgrel = 2
+	pkgver = 1.3
+	pkgrel = 1
 	url = https://git.harting.dev/IdleGandalf/PyFan
 	arch = any
 	license = GPL
@@ -9,8 +9,8 @@ pkgbase = pyfan
 	depends = python-simple-pid
 	optdepends = lm_sensors: check and load required hwmon modules
 	backup = etc/pyfan
-	source = https://git.harting.dev/IdleGandalf/PyFan/archive/1.2.tar.gz
-	sha256sums = b054e26a6dc4e4000bc9509fb04ae9ad860d7053fb0eec9505bbc46fce4820ff
+	source = https://git.harting.dev/IdleGandalf/PyFan/archive/1.3.tar.gz
+	sha256sums = b44269bd3656f788ce6d2aceb4684aaad1ba071300cdf6be6d2d9edc20880dd2
 
 pkgname = pyfan
 
