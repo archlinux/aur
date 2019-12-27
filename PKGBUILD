@@ -1,7 +1,7 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=qt5-apng-plugin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An apng image plugin for Qt to support animated PNGs"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtApng"
