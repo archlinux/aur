@@ -1,0 +1,16 @@
+pkgbase = gkrellm-nvidia
+	pkgdesc = A plugin for gkrellm2 which displays nVidia GPU status
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/carcass82/gkrellm-nvidia
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	depends = gkrellm
+	depends = libxnvctrl
+	source = https://github.com/carcass82/gkrellm-nvidia/archive/release-1.0.tar.gz
+	md5sums = 3d8bc8c334e98fe7d63ddbbacc0fa635
+
+pkgname = gkrellm-nvidia
+
