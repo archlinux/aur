@@ -1,6 +1,6 @@
 pkgbase = rust-dependency-refresh
 	pkgdesc = rust dependency updater
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/RoffelKartoffel/dependency-refresh
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = rust-dependency-refresh
 	license = LGPL3
 	makedepends = rust
 	depends = openssl
-	source = https://github.com/RoffelKartoffel/dependency-refresh/archive/0.1.6.tar.gz
-	sha512sums = 17fa50222fb7835c68ba16ddeecf2634f164661f92d4342af383c4bcf7632f9159ca10900174f79c9e09b8cc0329fbeb548c992f86f1b73d3826ac32b5e2b606
+	source = https://github.com/RoffelKartoffel/dependency-refresh/archive/0.1.7.tar.gz
+	sha512sums = f772b82c4624575b80a3e6052221a35ad465f802f12b0cf7c0bdc3d752836f7d8c0a3fa3bedd81d051f6d3e6c15f92519403afb9496b5e74cc3ca72c0a01d2d8
 
 pkgname = rust-dependency-refresh
 
