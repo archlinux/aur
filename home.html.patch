@@ -1,25 +1,25 @@
-@@ -18,7 +18,7 @@
+@@ -20,7 +20,7 @@
        <div class="button white" data-activate="accounts">
-         <img class="imgico" id="Accountsico" width="20" /> Accounts
+         <img class="imgico" id="Accountsico" width="20" data-activate="settings" /> Accounts
        </div>
 -      <div id="minimize" class="buttonClose white" title="Minimize to tray">
 +      <div id="minimize" class="buttonClose white" title="Minimize">
          &#10799;
        </div>
      </div>
-@@ -98,13 +98,13 @@
+@@ -123,13 +123,13 @@
      <div class="tab" id="settings">
-       <div class="settingRow">
-         <div class="pretty p-switch p-fill">
+       <div class="settingRowHalf">
+         <div class="pretty p-smooth p-switch p-slim">
 -          <input class="settings" data-setting="autorun" type="checkbox" value="1" />
-+          <input class="settings" data-setting="autorun" type="checkbox" value="1" disabled/>
-           <div class="state p-danger"><label>Start with Windows</label></div>
++          <input class="settings" data-setting="autorun" type="checkbox" value="1" disabled />
+           <div class="state p-success"><label>Start with Windows</label></div>
          </div>
        </div>
-       <div class="settingRow">
-         <div class="pretty p-switch p-fill">
+       <div class="settingRowHalf">
+         <div class="pretty p-smooth p-switch p-slim">
 -          <input class="settings" data-setting="minimized" type="checkbox" value="1" />
-+          <input class="settings" data-setting="minimized" type="checkbox" value="1" disabled/>
-           <div class="state p-danger"><label>Start Minimized</label></div>
++          <input class="settings" data-setting="minimized" type="checkbox" value="1" disabled />
+           <div class="state p-success"><label>Start Minimized</label></div>
          </div>
        </div>

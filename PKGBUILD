@@ -1,6 +1,6 @@
 pkgname=mtgaprotracker
 _pkgname=mtgap
-pkgver=2.0.21
+pkgver=2.0.27
 pkgrel=1
 pkgdesc="Automatically uploads collection, decks, battles, draft and inventory from your Magic: The Gathering Arena client"
 
@@ -14,12 +14,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Razviar/mtgap/archive/v
 	"home.html.patch"
 	"ipc_main.ts.patch"
 	"main_window.ts.patch")
-sha256sums=('4b612ceb9c0271cca0045620df34f06d3ebaf12e280e513dbac5b7d198081a15' 
+sha256sums=('451f535c9fc37f0156cd449c8cd48fc8d9692fc4631792c9f0d456df2d0035ef' 
 	    '93dfa25b7da8394dce436a67b600bc06bb7576daa62bdabe6e48f2bf8c9e1436'
 	    '145aa9f5ccb104f5b93cccbe5221755299abcdf02d4cd4d635e5038bfca63048'
-	    '08b70f663e27c042df8a42d177f1f253211ae11301bca5a977bf8ff56f13fe54'
-	    '80986b6981fabefab626287e3410c81979bee8dd7e131c34e1f7f5073bc1bd8b'
-	    '37ccf4d92edbb95a8d54967e157ae845e099ad822a70e9e551041d81027871f0')
+	    '44ac373c3f507d142fe4a8c04b31dc99a9eeec2c4afa9deb028435dad475937e'
+	    'ace70cb25df005497abf74230c49d47bd42fd8138bba783a6199fce7e87594d9'
+	    '70c84f315214d2849eb336b3a10873d706949fde0afb9462ba09eb376941ee9a')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"

@@ -1,4 +1,4 @@
-@@ -60,11 +60,6 @@
+@@ -60,10 +60,6 @@
      mainWindow = undefined;
    });
  
@@ -6,7 +6,6 @@
 -    event.preventDefault();
 -    withHomeWindow(w => w.hide());
 -  });
--
+ 
    mainWindow.loadURL(HOME_WINDOW_WEBPACK_ENTRY).catch(err =>
      error('Failure to load url in main window', err, {
-       entry: HOME_WINDOW_WEBPACK_ENTRY,
