@@ -1,3 +1,5 @@
+pkgname='rapidfire-updater'
+
 post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 	xdg-desktop-menu install /opt/immersionrc/rapidfire-updater/rapidfire-updater.desktop
