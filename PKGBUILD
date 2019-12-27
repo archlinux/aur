@@ -1,16 +1,16 @@
-# Maintainer: Valère Monseur <valere dot monseur at ymail dot com>
+# Maintainer: Valère Monseur <archlinux at vale dot re>
 
 pkgname=ytree
-pkgver=1.99pl1
+pkgver=2.00
 pkgrel=1
-pkgdesc='A curses-based file manager similar to DOS Xtree(tm)'
+pkgdesc='A curses based file manager similar to DOS Xtree(tm)'
 arch=('i686' 'x86_64' 'armv6h')
-url='http://www.han.de/~werner/ytree.html'
-license=('GPL')
+url='https://www.han.de/~werner/ytree.html'
+license=('GPL2')
 depends=('ncurses' 'readline')
 backup=('etc/ytree.conf')
-source=(http://www.han.de/~werner/"${pkgname}"-"${pkgver}".tar.gz)
-md5sums=('471ef8a4ba033f3118836ad434bb595b')
+source=(https://www.han.de/~werner/"${pkgname}"-"${pkgver}".tar.gz)
+md5sums=('713198ceb4c6b3b42c5f0dfa9abb7c69')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,17 +1,17 @@
 pkgbase = ytree
-	pkgdesc = A curses-based file manager similar to DOS Xtree(tm)
-	pkgver = 1.99pl1
+	pkgdesc = A curses based file manager similar to DOS Xtree(tm)
+	pkgver = 2.00
 	pkgrel = 1
-	url = http://www.han.de/~werner/ytree.html
+	url = https://www.han.de/~werner/ytree.html
 	arch = i686
 	arch = x86_64
 	arch = armv6h
-	license = GPL
+	license = GPL2
 	depends = ncurses
 	depends = readline
 	backup = etc/ytree.conf
-	source = http://www.han.de/~werner/ytree-1.99pl1.tar.gz
-	md5sums = 471ef8a4ba033f3118836ad434bb595b
+	source = https://www.han.de/~werner/ytree-2.00.tar.gz
+	md5sums = 713198ceb4c6b3b42c5f0dfa9abb7c69
 
 pkgname = ytree
 
