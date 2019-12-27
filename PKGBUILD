@@ -13,7 +13,7 @@
 
 pkgname="griffith"
 pkgver=0.15
-pkgrel=2
+pkgrel=3
 _gitcommit=05b5803f770818d6309b0946e77de6e523b51fc9
 pkgdesc="Movie collection manager application"
 arch=('any')
@@ -21,13 +21,13 @@ url="https://gitlab.com/Strit/griffith"
 license=('GPL2')
 depends=('python-gobject' 'sqlite' 'python-reportlab' 'python-pillow' 'python-sqlalchemy')
 optdepends=('python-psycopg2: postgreSQL support'
+            'python-mysql-connector: MySQL support'
             'mysql-python: MySQL support'
             'python-chardet: encoding detection of imported CSV files'
-            'python-gtkspell: spell checking support'
             'griffith-extra-artwork: additional icons'
             'python-tmdbsimple: For TMDB Import support')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/repository/$pkgver/archive.tar.gz")
-sha256sums=('SKIP')
+md5sums=('ef1d4c76df5ed58bff6bb9fae68555ce')
 
 build() {
     #cd "${pkgname}-${pkgver}"

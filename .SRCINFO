@@ -1,7 +1,7 @@
 pkgbase = griffith
 	pkgdesc = Movie collection manager application
 	pkgver = 0.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/Strit/griffith
 	arch = any
 	license = GPL2
@@ -11,13 +11,13 @@ pkgbase = griffith
 	depends = python-pillow
 	depends = python-sqlalchemy
 	optdepends = python-psycopg2: postgreSQL support
+	optdepends = python-mysql-connector: MySQL support
 	optdepends = mysql-python: MySQL support
 	optdepends = python-chardet: encoding detection of imported CSV files
-	optdepends = python-gtkspell: spell checking support
 	optdepends = griffith-extra-artwork: additional icons
 	optdepends = python-tmdbsimple: For TMDB Import support
-	source = griffith-0.15-2.tar.gz::https://gitlab.com/Strit/griffith/repository/0.15/archive.tar.gz
-	sha256sums = SKIP
+	source = griffith-0.15-3.tar.gz::https://gitlab.com/Strit/griffith/repository/0.15/archive.tar.gz
+	md5sums = ef1d4c76df5ed58bff6bb9fae68555ce
 
 pkgname = griffith
 
