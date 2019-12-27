@@ -1,19 +1,13 @@
 pkgbase = python-pywapi
+	pkgdesc = Python wrapper around the Yahoo! Weather, Weather.com and NOAA APIs
 	pkgver = 0.3.8
-	pkgrel = 5
+	pkgrel = 6
 	url = https://launchpad.net/python-weather-api
 	arch = any
 	license = MIT
 	makedepends = python
-	makedepends = python2
 	source = https://launchpad.net/python-weather-api/trunk/0.3.8/+download/pywapi-0.3.8.tar.gz
 	md5sums = 75bf8257f32f2d36169d57d92566cdb1
 
 pkgname = python-pywapi
-	pkgdesc = Python wrapper around the Yahoo! Weather, Weather.com and NOAA APIs
-	depends = python
-
-pkgname = python2-pywapi
-	pkgdesc = Python wrapper around the Yahoo! Weather, Weather.com and NOAA APIs
-	depends = python2
 
