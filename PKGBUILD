@@ -1,6 +1,6 @@
 # Maintainer: Luiz Henrique Laurini <luizhenriquelaurini at gmail dot com>
 pkgname=textar
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="tar-like program for creating plain text archives from plain text files"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cmake')
 options=()
 source=(https://github.com/LHLaurini/$pkgname/archive/v$pkgver.tar.gz)
-md5sums=('6596b17e3c72434b6bd60c5e2e3a3a0f')
+md5sums=('4a1ac5a579da6bc02147bc31ef5f8b95')
 
 build()
 {
