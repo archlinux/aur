@@ -1,7 +1,7 @@
-# Maintainer: Ricardo Madriz <richin13 at gmail dot com>
+# Maintainer: Lukas Deutz <lukas dot deutz at mailfence dot com>
 
 pkgname=veonim
-pkgver=0.14.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc='Simple modal IDE built on neovim'
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname
         "$pkgname.desktop"
         "$pkgname.sh"
         "logo.png")
-sha256sums=('00c1043dc2bd90eaaecf8118e7f838e749fc0e73c6824c85a6659d2cc3b241ff'
+sha256sums=('becde5667e899ef1611e299c535619315154e86627b4ac89d73a9c2e1cd33319'
             '3c1032e45722e72659edbba1ba1430c31954650dd090efd1b4ecddf933534189'
             '6e10d13d978b1331a92d486ef5515d831b78274bc047ed8c16d54d0046a73eda'
             '2e7644443ef226da71af4f07564e46c220f4b02cf5bc799427b5c15ee3bbca74')
