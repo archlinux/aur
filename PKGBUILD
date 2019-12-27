@@ -1,6 +1,6 @@
 pkgname=firecracker-git
 _gitname=firecracker
-pkgver=r1496.effaab05
+pkgver=v0.20.0.r4.g144b6c08
 pkgrel=1
 pkgdesc="Secure and fast microVMs for serverless computing"
 url="https://github.com/firecracker-microvm/firecracker"
@@ -12,17 +12,20 @@ source=("git+https://github.com/firecracker-microvm/firecracker.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_gitname}
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd ${_gitname}
   tools/devtool build --release
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd ${_gitname}
   toolchain="$(uname -m)-unknown-linux-musl"
   install -Dm755 build/cargo_target/${toolchain}/release/firecracker "$pkgdir/usr/bin/firecracker"
   install -Dm755 build/cargo_target/${toolchain}/release/jailer "$pkgdir/usr/bin/jailer"
