@@ -1,0 +1,499 @@
+END USER LICENSE AGREEMENT
+
+DOC-0355-14
+
+IMPORTANT " READ BEFORE INSTALLING OR OPERATING THIS PRODUCT
+
+YOU AGREE TO BE BOUND BY THE TERMS OF -THIS AGREEMENT BY INSTALLING,
+HAVING INSTALLED, COPYING, OR OTHERWISE USING THE PRODUCT.  IF YOU
+DO NOT AGREE, DO NOT INSTALL OR USE THE PRODUCT.
+
+1.	Scope.	This End User License Agreement ("License") applies to
+the software product ("Software") you have licensed from us whether
+on a stand-alone basis or as part of our hardware ("F5 Hardware").
+All references to "F5," "we" or "us" in this License will be
+deemed to be a reference to the applicable F5 entity as follows:
+(a) for purchases of F5 branded products (A) if your primary place
+of business is located in the European Economic Area, the Middle
+East or Africa ("EMEA"), the F5 entity is F5 Networks Ltd.; (B) if
+your primary place of business is located in the Asia-Pacific region
+("APAC"), the F5 entity is F5 Networks Singapore Pte Ltd; and (C)
+if your primary place of business is located in a region outside of
+EMEA or APAC, the F5 entity is F5 Networks, Inc. and (b) for purchases
+of Nginx branded products (A) if your primary place of business is
+located in EMEA, the F5 entity is Nginx International Limited and
+(B) if your primary place of business is located in a region outside
+of EMEA, the F5 entity is Nginx Software, Inc.	This License is a
+legal agreement between us and the single entity that has acquired
+the Software from us under these terms and conditions ("you").
+
+2.	License Grant.
+
+(a)	Subject to the terms of this License, we grant to you
+a non-exclusive, non-transferable license to use the Software in
+object code form for your internal business purposes during the term
+for which you have paid the required license fees.  Other than as
+specifically described herein, no right or license is granted to
+any of our trademarks, patents, copyrights, trade secrets or other
+intellectual property rights and we retain all rights not granted
+herein.  The Software incorporates certain third-party software, which
+we use subject to licenses from the respective owners ("Licensors").
+
+(b)	The Software is licensed to you on either a subscription or
+perpetual basis in accordance with the terms of this Section 2(b):
+
+(A) Unless otherwise set forth in an agreement between us and
+you, all Software licensed under
+our Nginx product line ("Nginx Software") is licensed to you on
+a subscription basis for the subscription term set forth in the
+applicable purchase order or quote ("Initial Subscription Term"). Upon
+expiration of your Initial Subscription Term, your subscription shall
+automatically renew for additional one (1) year terms unless either
+party provides written notice of nonrenewal at least thirty (30) days
+prior to the end of the then-current term, or unless earlier terminated
+in accordance with Section 12. Notwithstanding anything to the contrary
+herein, Nginx Software is not available on a perpetual basis.
+
+(B) The license for all non-Nginx Software ("F5 Software")
+is licensed to you on either a perpetual
+or subscription basis as further set forth in a separate agreement
+or an addendum hereto.
+
+(C) Subscriptions for F5 and Nginx Software may be licensed
+subject to specific program terms
+identified at http://f5.com/company/policies/program-terms.pdf.
+
+(c)	You may use the user manuals, technical manuals, and any
+other materials provided by us, in printed or electronic form, that
+describe the installation, operation, use or technical specifications
+of the Software ("Documentation") solely in support of the licensed
+use of the Software in accordance with this License.
+
+(d)	You understand that by using the Software or F5 Hardware
+(collectively, "Product"), you consent and agree to the collection
+and use of certain information about your Product, including, but
+not limited to, hardware serial number, appliance part number, disk
+configuration, memory amount, as well as periodic updates for software,
+databases, etc.  You further consent and agree that the Product
+may collect, use, transmit to us, process and maintain information
+related to the Product for purposes of providing the Software and any
+features therein. Information collected by the Product and transmitted
+to us may also include technical or diagnostic information related to
+your use that may be used by us to support, improve and enhance our
+products and services. You may opt out of the collection and use of
+such information by configuring the Product to disable these features.
+
+3.	Restrictions.
+
+(a)	The Software, Documentation and the associated copyrights and
+other intellectual property rights are owned by F5 or its Licensors
+and are protected by law and international treaties.
+
+(b)	You may install, use, access, display and run the Software
+only in the manner in which it has been licensed as indicated herein
+and in the applicable Documentation, quote or the license file for
+such Product or Software (collectively, "Sales Documentation"),
+including, but not limited to, any restrictions on the number of
+protected applications, number or type of licensed devices, number
+of authorized copies or instances, number of users, bandwidth,
+non-production use, database or location restrictions. We reserve
+the right to audit your use of the Software (or authorize third party
+auditors to conduct such an audit on our behalf) and to disable any
+application or functionality that has not been specifically licensed,
+in addition to any other rights and remedies available to us.
+
+(c)	Your use of the Software under this License may be
+limited to certain versions, as set forth in the applicable Sales
+Documentation. To the extent your Sales Documentation contains such
+limitations, your use of other versions or releases of the Software
+under this License is prohibited and shall be considered a material
+breach of this License.
+
+(d)	For Software modules licensed as part of F5 Hardware,
+the Software is not transferable to other F5 Hardware, third-party
+hardware, or any virtualized environment.  For Software provided
+in stand-alone form (for example, a virtual machine image), each
+instance of the Software requires a valid license key issued to you
+by F5 or an authorized sub-licensor and you may only use the Software
+for the duration of time the license key permits. F5 employs locking
+mechanisms in the Software in order to ensure that you are only able
+to access the Software features that you have licensed.  You agree
+that you will not attempt to circumvent any of the locking mechanisms
+and restrictions put in place or to have others do so on your behalf.
+
+(e)	Certain portions of the Software include third-party software
+modules, which may include, but are not limited to, MySQL licensed
+from MySQL AB or JavaTM licensed from Oracle America, Inc., and
+are subject to additional limitations imposed by those Licensors
+("Restricted Third-Party Software").  You may reference the applicable
+Product"s Open Source Notices and Software Acknowledgments document
+at http://askf5.com. Certain portions of the Software may also include
+geographical or other data ("Geographical Data").  You agree that you
+will only use such Restricted Third-Party Software or Geographical Data
+in conjunction with the Product and not as standalone software. You
+will not (A) copy the Restricted Third-Party Software or Geographical
+Data onto any public or distributed network; (B) use the Restricted
+Third-Party Software or Geographical Data separately to operate
+in or as a time-sharing, outsourcing, service bureau, application
+service provider or managed service provider environment; (C)
+use the Restricted Third-Party Software or Geographical Data as
+a general server, as a standalone application or with applications
+other than the Software under this license; (D) change any proprietary
+rights notices which appear in the Restricted Third-Party Software or
+Geographical Data; or (E) modify the Restricted Third-Party Software
+or Geographical Data.
+
+(f)	Except as otherwise expressly permitted in this License, you
+will not yourself, or through any parent, subsidiary, affiliate, agent
+or other third party: (A) copy (except to make one archival copy for
+backup and disaster recover purposes), modify or create derivative
+works of the Software or Documentation; (B) sell, sub-license,
+rent, grant usage rights or transfer the Software, Data or any
+associated Documentation to any third-party not authorized by F5;
+(C) disassemble, reverse compile or reverse engineer the Software or
+any Data incorporated in the Software or encourage others to do so
+except as required by law for interoperability purposes, and then
+only after you have given us an opportunity to provide information
+or software necessary to resolve such interoperability issues; (D)
+defeat, circumvent or disable any reporting mechanism, copy protection
+mechanism or mechanism in the Software used to limit license duration
+or access to non-licensed functionality or capacity. Violation of any
+of the restrictions contained in this Section 3 is a material breach
+of this License.
+
+4.	Export Control.  Our standard Products incorporate
+cryptographic software. You agree to comply with the Export
+Administration Act, the Export Controls Act, all regulations
+promulgated under such Acts, and all other U.S. government regulations
+relating to the export of technical data and equipment and products
+produced therefrom which are applicable to you. You further agree not
+to disclose or transmit to us any information that requires that access
+to such information be limited to U.S. Nationals or personnel based
+in a certain country or region. In countries other than the U.S.,
+you agree to comply with the local regulations regarding importing,
+exporting or using cryptographic software. You agree that you
+will not export or re-export the Product to any country, person,
+or entity subject to U.S. export restrictions.	Specifically, you
+agree not to export or re-export the Product: (a) to any country to
+which the U.S. has embargoed or restricted the export of goods or
+services, or to any national of any such country, wherever located,
+who intends to transmit or transport the Product back to such country;
+(b) to any person or entity who you knows or have reason to know will
+utilize the Product or portion thereof in the design, development
+or production of nuclear, chemical or biological weapons; or (c)
+to any person or entity who has been prohibited from participating in
+U.S. export transactions by any federal agency of the U.S.  government,
+including but not limited to anyone on the U.S. Treasury Department's
+list of Specially Designated Nationals or the U.S. Department of
+Commerce's Table of Denial Orders. By installing or using the Product,
+you represent and warrant that you are not located in, under control
+of, or a national or resident of any such country or on any such list.
+
+5.	Limited Warranty.
+
+(a)	We warrant that for a period of ninety (90) days from the
+date of shipment (the "Warranty Period"): (A) the media on which
+the Software is furnished will be free of defects in materials and
+workmanship under normal use; and (B) the Software substantially
+conforms to the Documentation.	Except for the foregoing, the Software
+is provided "AS IS".  In no event do we warrant that the Software
+is error free, that it will operate with any software or hardware
+other than that provided by us or specified in the Documentation,
+or that the Software will satisfy your own specific requirements.
+
+(b)	Remedy.  Your exclusive remedy under this limited warranty is
+that we, at our option, will repair or replace any Software that fails
+during the Warranty Period at no cost to you.  During the Warranty
+Period, we will replace defective media or Documentation or, at our
+option, undertake reasonable efforts to modify the Software to correct
+any substantial non-conformance with the Documentation.
+
+(c)	Restrictions.  The foregoing limited warranties extend
+only to the original licensee, and do not apply if the Software (A)
+has been altered, except by us or a representative designated by us
+or in accordance with our instructions, (B) has not been installed,
+operated, repaired, or maintained in accordance with our instructions,
+(C) has been subjected to abnormal physical or electrical stress,
+misuse, negligence or accident or (D) has been operated outside of the
+environmental specifications for the Software.	Our limited software
+warranty does not apply to software corrections or upgrades.
+
+6.	Infringement Indemnity.
+
+(a)	We will, at our expense, defend any suit brought against you
+by an unaffiliated third party based upon a claim that the Software
+infringes a valid patent, trademark or copyright or misappropriates
+a third- party trade secret.  The terms "misappropriation" and
+"trade secret" are used as defined in the Uniform Trade Secrets Act,
+except in case of claims arising under any claim governed by the
+laws of any jurisdiction outside the United States, in which case
+"misappropriation" will mean intentionally unlawful use and "trade
+secret" will mean "undisclosed information" as specified in Article
+39.2 of the Trade- Related Aspects of Intellectual Property Rights
+(TRIPS) agreement.  We will pay costs and damages (including reasonable
+attorneys" fees) finally awarded against you, or agreed in settlement
+by us, directly attributable to any such claim and will bear all
+reasonable costs of the investigation and defense of the claim,
+but only on condition that (A) you notify us in writing of such
+claim promptly following receipt of notice, (B) we have sole control
+of the defense and settlement negotiations, (C) you provide us all
+information and communications received by you concerning such claim,
+and (D) you provide reasonable assistance to us when requested. You
+will have the right to participate in the defense with counsel of
+your own choosing at your expense; provided that such representation
+does not interfere with our right to control the defense.
+
+(b)	 We will have the right, at our option and expense, to (A)
+obtain for you rights to use the Software, (B) replace or modify the
+Software so that it becomes non-infringing or (C) accept return of
+the Software, upon which the applicable license(s) will terminate,
+in exchange for a credit not to exceed the purchase price paid
+by you for such Software based upon a three (3) year straight line
+depreciation. The foregoing, subject to the restrictions set forth in
+Section 6(c) below, states our exclusive liability to you concerning
+infringement.
+
+(c)	Restrictions.  We will have no liability for any claim of
+infringement based on (A) use of a superseded release of the Software
+where the subsequent release is equally available to you at no cost
+and is non-infringing; (B) use of the Software in combination with
+equipment or software not supplied by us (including Open Source
+Components) where the Software would not itself be infringing; (C)
+use of the Software in an application or environment not described in
+the Documentation; (D) software or technology not developed by us;
+(E) Software that has been altered or modified in any way by anyone
+other than us or our authorized agents; (F) your continued use of the
+Software after we notify you to discontinue use due to such a claim;
+or (G) sale or use of the Software (1) in any country into which the
+U.S. has embargoed or restricted the export of goods or services or
+(2) to or by any person or entity who you know or have reason to
+know will utilize the Software or portion thereof in the design,
+development or production of nuclear, chemical or biological weapons;
+or (3) to or by any person or entity who has been prohibited from
+participating in U.S. export transactions by any federal agency
+of the U.S. government including but not limited to anyone on the
+U.S. Treasury Department's list of Specially Designated Nationals or
+the U.S. Department of Commerce's Table of Denial Orders.
+
+7.	Notice to U.S. Government End Users.  The Software and
+Documentation qualify as "commercial items," as that term is defined at
+Federal Acquisition Regulation ("FAR") (48 C.F.R.) 2.101, consisting
+of "commercial computer software" and "commercial computer software
+documentation" as such terms are used in FAR 12.212.  Consistent
+with FAR 12.212 and DoD FAR Supp. 227.7202-1 through 227.7202-4,
+and notwithstanding any other FAR or other contractual clause to the
+contrary in any agreement into which this License may be incorporated,
+you may provide to a government end user or, if this License is direct,
+government end user will acquire, the Software and Documentation with
+only those rights set forth in this License. Use of either the Software
+or Documentation or both constitutes agreement by the government that
+the Software and Documentation are "commercial computer software"
+and "commercial computer software documentation" and constitutes
+acceptance of the rights and restrictions herein.
+
+8.	DISCLAIMER; LIMITATION OF REMEDY.  EXCEPT FOR THE WARRANTIES
+SPECIFICALLY DESCRIBED HEREIN, WE AND OUR LICENSORS DISCLAIM ANY
+AND ALL WARRANTIES AND GUARANTEES, EXPRESS, IMPLIED OR OTHERWISE,
+ARISING, WITH RESPECT TO THE SOFTWARE, PRODUCTS, DATA, SPECIFICATIONS,
+OR DOCUMENTATION DELIVERED HEREUNDER, INCLUDING BUT NOT LIMITED
+TO THE WARRANTY OF MERCHANTABILITY, WARRANTY OF NON-INFRINGEMENT
+OR TITLE AND THE WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE.
+WE MAKE NO WARRANTY CONCERNING THE COMPLETENESS OR ACCURACY OF THE
+DATA OR INFORMATION OBTAINED OR DERIVED THROUGH THE USE OF THE DATA
+INCLUDED IN THE SOFTWARE AND THE DATA IS PROVIDED "AS IS".  WE HAVE NOT
+AUTHORIZED ANYONE TO MAKE ANY REPRESENTATIONS OR WARRANTIES OTHER THAN
+AS PROVIDED ABOVE OR TO OTHERWISE MODIFY THE TERMS OF THIS LICENSE.
+THE COLLECTIVE LIABILITY OF US AND OUR LICENSORS (A) FOR PERPETUAL
+LICENSED SOFTWARE  LICENSED UNDER THIS LICENSE WILL BE LIMITED TO
+THE AMOUNT PAID FOR THE SOFTWARE AND (B) FOR SOFTWARE OTHER THAN
+PERPETUAL LICENSED SOFTWARE WILL BE LIMITED TO THE AMOUNT PAID FOR
+THE SOFTWARE IN THE TWELVE (12) MONTHS PRIOR TO THE EVENT GIVING RISE
+TO THE CLAIM.  WE AND OUR LICENSORS WILL NOT HAVE ANY OBLIGATION OR
+LIABILITY, WHETHER ARISING IN CONTRACT (INCLUDING WARRANTY), TORT
+(INCLUDING ACTIVE, PASSIVE OR IMPUTED NEGLIGENCE, STRICT LIABILITY
+OR PRODUCT LIABILITY) OR OTHERWISE FOR ANY PUNITIVE, EXEMPLARY,
+SPECIAL, INCIDENTAL, CONSEQUENTIAL OR INDIRECT DAMAGES, INCLUDING
+BUT NOT LIMITED TO LOSS OF USE, LOSS OF DATA, BUSINESS INTERRUPTION,
+LOSS OF REVENUE, LOSS OF BUSINESS OR OTHER FINANCIAL LOSS ARISING
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR OTHER GOODS OR SERVICES
+FURNISHED TO YOU BY US, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGES. TO THE EXTENT PERMITTED BY LAW, OUR LICENSORS WILL NOT HAVE
+ANY LIABILITY FOR ANY DIRECT DAMAGES OF ANY KIND UNDER THIS LICENSE.
+THE LIMITATIONS CONTAINED IN THIS SECTION WILL APPLY NOTWITHSTANDING
+ANY FAILURE OF AN ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED
+UNDER ANY TERM OF THIS LICENSE.  SOME JURISDICTIONS DO NOT ALLOW THE
+LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL
+DAMAGES. IN THOSE JURISDICTIONS, SUCH INAPPLICABILITY WILL NOT AFFECT
+THE REMAINDER OF THE PROVISIONS IN THIS SECTION.
+
+9.	Non-Production Use Software.  If you purchase a Product or
+license Software designated as "non-production," "non-commercial,"
+"lab" or "development" in the applicable Sales Documentation for such
+Product or Software ("Non-Production Software"), you may use the
+Non-Production Software to conduct testing and development in your
+non-production environment only and not to manage or protect data
+traffic or applications in the ordinary course of your business. You
+agree that any use of Non- Production Software in violation of the
+preceding sentence is a material breach of this License.
+
+10.	Evaluation Software.  If the Software is "Evaluation Software,"
+notwithstanding any other terms to the contrary in this License,
+you may use the Software only for your internal demonstration,
+test or evaluation purposes and not in a production environment.
+NOTWITHSTANDING ANY TERMS TO THE CONTRARY IN THIS LICENSE, WE DISCLAIM
+ALL WARRANTIES, EXPRESS OR IMPLIED, FOR EVALUATION SOFTWARE AND IT IS
+PROVIDED ON AN "AS IS" BASIS. EVALUATION SOFTWARE HAS A NON-PERPETUAL
+TIME LIMITED LICENSE THAT WILL "TIME-OUT" AND DISABLE THE SOFTWARE
+UPON EXPIRATION OF THE EVALUATION PERIOD.  You agree that you will not
+attempt to defeat or circumvent any duration mechanism for Evaluation
+Software. You also agree that you will not use any Evaluation Software
+beyond the prescribed license duration.
+
+11.	Software Hosted in a Public Cloud.  If you use the Software in
+a public cloud environment, you may only use the Software in object
+code form in the cloud provider"s ("Cloud Provider") environment.
+In accordance with section 3(e), you may not copy any portion of the
+Software out of the Cloud Provider environment.  Each instance of
+the Software running in the Cloud Provider"s environment requires its
+own license key when you are using a bring-your-own-license offering
+from the Cloud Provider.  If you are using a utility offering (e.g.,
+hourly) from the Cloud Provider, each instance is licensed and paid for
+separately within the Cloud Provider"s infrastructure.	IN ADDITION
+TO THE DISCLAIMERS SET FORTH IN SECTION 8 ABOVE, AND NOTWITHSTANDING
+ANY TERMS TO THE CONTRARY IN THIS LICENSE OR ANY REPRESENTATIONS OR
+WARRANTIES OF THE APPLICABLE CLOUD OR SIMILAR ENVIRONMENT, SOFTWARE
+PROVIDED BY A CLOUD PROVIDER AND NOT OBTAINED FROM F5 IS PROVIDED
+"AS IS" AND POSSIBLY WITH FAULTS.
+
+12.	Termination.  The license granted in Section 2 will
+automatically terminate if you fail to comply with any of the terms
+and conditions set forth herein.  Upon termination or expiration of
+the license, you will stop all instances running in your private
+network and destroy any copies of the Software and Documentation
+in such network (and all copies or portions thereof) and stop all
+instances of the Software running in a public cloud (e.g., Azure, AWS).
+
+13.	ModSecurity Software. In connection with your Nginx Software
+license, you may have the option to license ModSecurity software
+("ModSecurity Module") as an optional add-on. The ModSecurity
+Module is not "Software" as such term is defined herein. If
+applicable, the ModSecurity Module will be provided by us with
+the applicable Nginx Software; provided that the licensing of
+the ModSecurity Module is subject to the terms set forth at
+http://www.apache.org/licenses/LICENSE-2.0 and is not subject to
+the terms of this License. Therefore, we will have no liability
+with respect to the licensing and use of the ModSecurity Module,
+including, without limitation, any warranty or indemnification
+obligations. Notwithstanding the foregoing, we will provide
+support for the ModSecurity Module under the terms of this License.
+Notwithstanding any contrary provision in this License, support for the
+ModSecurity software will be provided as described in Section 14(a).
+
+14.	Support.  Maintenance and support under this License is
+dependent upon the type of software licensed hereunder, as further
+described in this Section 14:
+
+(a)	Support for Nginx Software. During your Subscription
+Term, we will provide maintenance and support for all Nginx
+Software. Our maintenance and support obligations for the Nginx
+Software shall be subject to the support policies available at
+http://nginx.com/legal/support-services-addendum/.
+
+(b)	Unless provided as part of a subscription, support for
+All F5 Software. Maintenance and support of all F5 Software
+is not provided under this License and must be purchased
+separately subject to our support policies available at
+http://www.f5.com/about/guidelines-policies/ and http://askf5.com.
+If you have purchased maintenance and support for a Product, the
+term Software under this License will include, subject to Section
+3(c), all updates and corrections we make publicly available at
+no additional cost (collectively "Updates"); provided that you are
+otherwise entitled to access and use such Updates pursuant to the
+applicable maintenance and support contract.  You may only use
+the Updates on Products for which you are the original end user
+or other Products which include F5 Software to which you hold a
+valid license, and only on equipment for which you have purchased
+maintenance and support.  Permissible upgrades for virtual edition
+licenses are further described at http://support.f5.com/kb/en-
+us/solutions/public/15000/600/sol15643.html.
+
+15.	Professional Services. Professional and consulting services
+are not included as part of maintenance and support and are provided
+under a separate agreement or statement of work.
+
+16.	Data Collection and Sharing.  Use of certain
+Software may include our access to your end users" personal
+information (a) solely as required for our provision of such
+Software in accordance the applicable Documentation and (b)
+in accordance with the applicable Privacy Policy (available at
+https://www.f5.com/company/policies/privacy-notice for F5 Products
+and https://www.nginx.com/privacy- policy for Nginx Products). You
+consent and agree to such access and further agree that you are solely
+responsible for notifying your end users of the same and ensuring your
+privacy policy contemplates the sharing of such end-user information
+with third parties.
+
+17.	Governing Law and Dispute Resolution.  This License shall
+be governed by and construed in accordance with the governing law
+("Governing Law"), set forth in the table below corresponding to the
+applicable licensing F5 entity, without regard to its choice of law
+rules. The United Nations Convention on Contracts for the International
+Sale of Goods and the Uniform Computer Information Transactions Act,
+in whatever form adopted, will not apply to this License, is expressly
+and entirely excluded, and the parties specifically opt out of the
+application of such laws.
+
+Entity: Governing Law: Seat of Arbitration: F5 Networks Singapore
+Pte Ltd The laws of Singapore Singapore F5 Networks Ltd.  Nginx
+International Limited The laws of England and Wales London, England
+F5 Networks, Inc.  Nginx Software, Inc.  The laws of the State of
+Washington Seattle, Washington
+
+Except for Excluded Claims (defined below), all disputes arising out of
+or in connection with this License, including any question regarding
+its formation, existence, validity or termination, shall be finally
+settled under the Rules of Arbitration of the International Chamber of
+Commerce by one or more arbitrators appointed in accordance with the
+said Rules.  Any dispute concerning the scope or applicability of this
+agreement to arbitrate shall be finally settled by the arbitrator(s).
+The seat, or legal place, of arbitration shall be as set forth in
+the table above corresponding to the applicable licensing F5 entity.
+The language of the arbitration shall be English.  The arbitration
+award shall be final and binding on the parties, and the parties
+undertake to carry out any award without delay. Judgment upon the
+award rendered by the arbitrator(s) may be entered in any court
+having jurisdiction thereof.  The arbitrator(s) shall award to the
+prevailing party, if any, as determined by the arbitrator(s), all of
+its reasonable costs and fees.
+
+Excluded Claims means any dispute, claim or action concerning the
+validity, enforceability, infringement, misappropriation or violation
+of our intellectual property rights or those of our Licensors and
+all such Excluded Claims shall be brought in any court of competent
+jurisdiction.  Any provisions found to be unenforceable shall not
+affect the enforceability of the other provisions contained herein.
+This License constitutes the entire agreement between the parties
+with regard to its subject matter.  No modification will be binding
+unless in writing and signed by the parties.
+
+18.	Open Source Components. Certain portions of the Software
+contain open source software ("Open Source Components") that are
+licensed under the terms of the applicable open source licenses.
+The terms of the applicable licenses of the Open Source Components
+take precedence over the terms of this License, only to the extent the
+terms of this License are not permitted by the applicable licenses of
+the Open Source Components.  A listing of the Open Source Components
+can be found in the Documentation.  To the extent the terms of the
+applicable licenses of the Open Source Components require us to make
+available to you the corresponding source code and/or modifications
+(the "Open Source Code"), you may obtain a copy of the applicable Open
+Source Code from its current location at https://downloads.f5.com,
+or by sending us a written request with your name and address to:
+F5 Networks, Inc., Attn: Office of the CTO, 801 5th Avenue, Seattle,
+WA 98104.  All requests should identify: the Open Source Code that you
+are requesting, the applicable F5 product (and any available version
+information) that you have licensed from us in connection with the
+requested Open Source Code, your email contact information, and the
+postal address for delivery of the requested Open Source Code to you.
+This offer to obtain a copy of the Open Source Code is valid for three
+(3) years from the date you have licensed the Software.
