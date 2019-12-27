@@ -8,7 +8,7 @@ pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
 pkgver=11.1.0.8865
 #_pkgver=8372
-pkgrel=6
+pkgrel=7
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) is an office productivity suite"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgv
         'fix_desktop_exec.patch')
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('ee5e2ea5f7480bb7d6e116dd7690990a861c8a37'
+sha1sums=('b15d1350e5aac5b7b417124b545082b8d4a934a3'
           '2d5c33b279ebc2ce8939a72d2ca0c18a5a5b1173')
 
 prepare() {
@@ -65,6 +65,7 @@ package_wps-office() {
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
 #   chmod -x "${pkgdir}/usr/lib/office6/wpsoffice"
+    ln -rTsf "${pkgdir}/usr/lib/office6"/{libcef.so,addons/cef/libcef.so}
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.txt
 
     install -d "${pkgdir}/usr/bin"
