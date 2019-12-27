@@ -4,10 +4,10 @@
 
 _brinf=(
 [MFC-L8610CDW]
-PRN_CUP_RPM=mfcl8610cdwcupswrapper-1.3.0-0.i386.rpm
-PRN_CUP_DEB=mfcl8610cdwcupswrapper-1.3.0-0.i386.deb
-PRN_LPD_RPM=mfcl8610cdwlpr-1.2.0-0.i386.rpm
-PRN_LPD_DEB=mfcl8610cdwlpr-1.2.0-0.i386.deb
+PRN_CUP_RPM=mfcl8610cdwcupswrapper-1.4.0-0.i386.rpm
+PRN_CUP_DEB=mfcl8610cdwcupswrapper-1.4.0-0.i386.deb
+PRN_LPD_RPM=mfcl8610cdwlpr-1.3.0-0.i386.rpm
+PRN_LPD_DEB=mfcl8610cdwlpr-1.3.0-0.i386.deb
 PRINTERNAME=MFCL8610CDW
 SCANNER_DRV=brscan4
 SCANKEY_DRV=brscan-skey
@@ -25,8 +25,8 @@ _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
 _brotherxnd="${_brotherlnd}"   # upper or lower as required by scripts
 pkgname="brother-${_brotherl}"
-_lprver='1.2.0_0'
-_cupver='1.3.0_0'
+_lprver='1.3.0_0'
+_cupver='1.4.0_0'
 pkgver="${_cupver}"
 pkgrel='1'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
@@ -57,15 +57,15 @@ source=(
   'lpr-license.txt'
 )
 md5sums=('e42487a541573287fad544bafd1766c6'
-         '1e2ab322f58952141132468b99d4cbe8'
+         'bb66911f263ed95baeeefb6d80b8eac1'
          '4f14b328317aac0d22c7f7f73c581628'
-         '8af6a0c5eb4a23bdd91db500fcd32576'
-         '6ea8b62f22f94f38ba2df13a19e15d1e')
+         'bc2c76b0202463252156c0b0f3e130f6'
+         '3d1407b5c0d66b70a9a5460b07e81408')
 sha256sums=('65de8004f8d44a96b62f874a26a80b285f7f6b9f37a8b6c628d094e7f1986b2a'
-            '5a23a54cf9e71d2738240f7277e1192d06bd74cc6727f103ede956afef3461e5'
+            '4feca093e25c91f8caa25322ad0c7cf0fc0c49abc2780b6a886a2551e1473a2b'
             'b604def129534d245fa576f8cd7d01df1d2856b9bff6c1d2002404f77f7d4bb3'
-            '0d54d2985bccf4c2790573d15ce0a38ea47e83d58aeffd4b05000e36dff64653'
-            '27211c779effea39d5622f0683629faf44d7f62a4fee48b7ef3cc1935a00cde9')
+            '330db3d38fc474c9c6871d2ac6a1e1998a001e1e76a25b01f3e39c178b547173'
+            '43c542015cb80ea600c3d216ea54b8f12515c98d1a5cd044543ecfa572cf4cd8')
 
 _mismatch=0
 _brverchk() {
