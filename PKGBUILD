@@ -1,7 +1,7 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=mini-diary-git
-pkgver=2.5.2.r0.g1cdd49b
+pkgver=2.5.4.r0.g22a7765
 pkgrel=1
 pkgdesc="Simple and secure journal app"
 arch=("x86_64")
