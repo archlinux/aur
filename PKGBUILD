@@ -3,7 +3,7 @@
 
 _appname=freecad
 pkgname="${_appname}-git"
-pkgver=0.18.r2685.gf55cf3ef10
+pkgver=0.18.r3000.g9e4710d679
 pkgrel=1
 epoch=2
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -12,8 +12,8 @@ url='https://www.freecadweb.org/'
 license=('LGPL')
 depends=('boost-libs' 'curl' 'desktop-file-utils' 'glew' 'hicolor-icon-theme'
          'jsoncpp' 'libspnav' 'med' 'opencascade' 'openmpi' 'shiboken2' 'xerces-c'
-         'pyside2' 'python-matplotlib' 'python-netcdf4' 'python-pivy'
-         'qt5-svg' 'qt5-webkit' 'qt5-webengine')
+         'pyside2' 'pyside2-tools' 'python-matplotlib' 'python-netcdf4' 'python-pivy'
+         'qt5-svg' 'qt5-webkit' 'qt5-webengine' 'qt5-base')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'gcc-fortran'
              'pyside2-tools' 'swig' 'qt5-tools')
 optdepends=('pycollada: Create, edit and load COLLADA documents.')
@@ -45,6 +45,8 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DOPENMPI_INCLUDE_DIRS=/usr/include \
         -DPYSIDE_INCLUDE_DIR="/usr/include/PySide2" \
+	-DPYSIDE2RCCBINARY=/usr/bin/rcc \
+	-DPYSIDE2UICBINARY=/usr/bin/uic \
         -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}-${CARCH}-linux-gnu.so" \
         -DPYSIDE_PYTHONPATH="/usr/lib/python${PYVER}/site-packages/PySide2" \
         -DPYSIDE_TYPESYSTEMS="/usr/share/PySide2/typesystems" \
