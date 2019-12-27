@@ -1,7 +1,7 @@
 pkgbase = wds
 	pkgdesc = Miracast Wireless Display Software for Linux OS (WDS).
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/wds
 	arch = any
 	license = LGPL
