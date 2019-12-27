@@ -1,0 +1,19 @@
+pkgbase = accountable2you-bin
+	pkgdesc = Accountable2You client application
+	pkgver = 1.84
+	pkgrel = 1
+	url = https://accountable2you.com
+	arch = any
+	license = unknown
+	depends = wmctrl
+	depends = python37
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = gobject-introspection
+	provides = accountable2you
+	conflicts = accountable2you
+	source = https://secure.accountable2you.com/linux/deb/accountable2you-1.84p37.zip
+	md5sums = e10e305b2163511ad5e6653d0ea396d1
+
+pkgname = accountable2you-bin
+
