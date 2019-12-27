@@ -3,14 +3,14 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-calendar-git
-pkgver=1.5.7.r59.g10c30e55
+pkgver=2.0.0.beta3.r33.g4448ad93
 pkgrel=1
 pkgdesc="Calendar app for nextcloud"
 arch=('any')
 url="http://nextcloud.com"
 license=('AGPL')
 depends=('nextcloud')
-makedepends=('yarn')
+makedepends=('npm' 'git')
 conflicts=('nextcloud-app-calendar')
 provides=('nextcloud-app-calendar')
 options=('!strip')
@@ -24,8 +24,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/calendar"
-  make
-  make appstore
+  # -j1 so that `npm install` runs before other steps
+  make -j1 dev-setup build-js-production appstore
 }
 
 package() {
