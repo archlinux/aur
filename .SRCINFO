@@ -1,4 +1,4 @@
-pkgbase = run
+pkgbase = run-git
 	pkgdesc = Easily manage and invoke small scripts and wrappers
 	pkgver = r45.14598e7
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = run
 	source = git+https://github.com/TekWizely/run.git
 	sha256sums = SKIP
 
-pkgname = run
+pkgname = run-git
 

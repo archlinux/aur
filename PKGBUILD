@@ -1,6 +1,6 @@
 # Maintainer: Mendel Greenberg <mendel at chabad360 dot com>
 
-pkgname=run
+pkgname=run-git
 pkgver=r45.14598e7
 pkgrel=1
 pkgdesc="Easily manage and invoke small scripts and wrappers"
