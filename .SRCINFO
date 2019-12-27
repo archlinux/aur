@@ -1,0 +1,15 @@
+pkgbase = python-ttkthemes
+	pkgdesc = Group of themes for the ttk extenstions for Tkinter
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/TkinterEP/ttkthemes
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = tk
+	depends = python-pillow
+	source = python-ttkthemes-2.4.0.tar.gz::https://github.com/RedFantom/ttkthemes/archive/2.4.0.tar.gz
+	sha512sums = 624ba23fac0ea294b7afea362285d7f4d93dccf59d8cbf47ee7194f0d2bf8482e314d4a33fe28dc4e51e39d0d053ff0f05190a15efa4731f0106a35db967b017
+
+pkgname = python-ttkthemes
+
