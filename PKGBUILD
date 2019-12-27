@@ -1,19 +1,17 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=diodon
-pkgname=$_pkgname-git
-pkgver=1.8.0.r2.g1d41c18
+pkgname=diodon-git
+pkgver=1.8.0.r12.g3b13ba0
 pkgrel=1
 pkgdesc="GTK+ clipboard manager"
 arch=('x86_64')
 url="https://launchpad.net/diodon"
 license=('GPL2')
-depends=('dconf' 'desktop-file-utils' 'gconf' 'gtk-update-icon-cache' 'libappindicator3'
-         'libgee' 'libpeas' 'libunique' 'libxtst' 'xorg-server-xvfb' 'zeitgeist')
-makedepends=('git' 'gobject-introspection' 'intltool' 'libpeas' 'vala')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git+https://git.launchpad.net/diodon)
+depends=('gobject-introspection' 'libappindicator3' 'libpeas' 'xorg-server-xvfb' 'zeitgeist')
+makedepends=('cmake' 'git' 'meson' 'vala')
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=($pkgname::git+https://github.com/diodon-dev/diodon.git)
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,17 +23,22 @@ prepare() {
   cd $pkgname
   # Comment out the following lines to enable the build tests
   rm -rf tests/*
-  touch tests/wscript_build
+  touch tests/meson.build
 }
 
 build() {
   cd $pkgname
-  python2 ./waf configure --prefix=/usr    # --disable-indicator-plugin
-  python2 ./waf build
+  meson --prefix /usr --buildtype=plain . builddir    # -Ddisable-indicator-plugin=true
+  ninja -C builddir
+}
+
+check() {
+  cd $pkgname
+  ninja -C builddir test
 }
 
 package() {
   cd $pkgname
-  python2 ./waf install --destdir="$pkgdir/"
+  DESTDIR="$pkgdir" ninja -C builddir install
 }
 
