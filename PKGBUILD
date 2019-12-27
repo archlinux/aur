@@ -3,12 +3,12 @@
 _pkgname=wds
 pkgname=$_pkgname-git
 pkgver=1.1.0.r4.ga488b16
-pkgrel=1
-pkgdesc="Miracast Wireless Display Software for Linux OS (WDS)."
+pkgrel=2
+pkgdesc="Miracast Wireless Display Software for Linux OS (WDS), Git version."
 arch=('any')
 url="https://01.org/wds"
 license=('LGPL')
-depends=('wpa_supplicant' 'connman' 'gstreamer' 'gst-plugins-bad')
+depends=('wpa_supplicant' 'connman' 'gstreamer' 'gst-libav' 'gst-plugins-bad' 'x264enc')
 makedepends=('git' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
@@ -31,9 +31,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname/build"
   make DESTDIR="$pkgdir" install
-
-  mv "$pkgdir"/usr/lib64/* "$pkgdir"/usr/lib
-  rm -r "$pkgdir"/usr/lib64
 
   # install license files
   install -Dm644 "$srcdir/$_pkgname/COPYING" \
