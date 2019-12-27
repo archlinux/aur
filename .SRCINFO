@@ -1,6 +1,6 @@
 pkgbase = petal
 	pkgdesc = Douban.FM Client With Extra - - - 一个简洁的豆瓣FM客户端
-	pkgver = 2.22.0
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://ilime.github.io/Petal/
 	arch = x86_64
@@ -9,11 +9,12 @@ pkgbase = petal
 	makedepends = yarn
 	makedepends = jq
 	makedepends = moreutils
+	makedepends = nvm
 	depends = electron
 	provides = petal
 	conflicts = petal-bin
-	source = petal-2.22.0.src.tar.gz::https://github.com/ilime/Petal/archive/v2.22.0.tar.gz
-	sha256sums = 02e0d794cc7f56583767fd77ba8a087607b875b2c2b3abd8a447836a1aa740d1
+	source = petal-2.23.0.src.tar.gz::https://github.com/ilime/Petal/archive/v2.23.0.tar.gz
+	sha256sums = dd6ad5b5a03ed193b9abc814b36db755ceec312e551565155e0f9d65c15cf839
 
 pkgname = petal
 

@@ -1,18 +1,19 @@
 # Maintainer: Bruce Zhang
 pkgname=petal
 _name=Petal
-pkgver=2.22.0
+_nodeversion=8.16.1
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="Douban.FM Client With Extra - - - 一个简洁的豆瓣FM客户端"
 arch=('x86_64' 'i686')
 url="https://ilime.github.io/Petal/"
 license=('MIT')
 depends=('electron')
-makedepends=('yarn' 'jq' 'moreutils')
+makedepends=('yarn' 'jq' 'moreutils' 'nvm')
 provides=('petal')
 conflicts=('petal-bin')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/ilime/Petal/archive/v$pkgver.tar.gz")
-sha256sums=('02e0d794cc7f56583767fd77ba8a087607b875b2c2b3abd8a447836a1aa740d1')
+sha256sums=('dd6ad5b5a03ed193b9abc814b36db755ceec312e551565155e0f9d65c15cf839')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
@@ -25,6 +26,9 @@ prepare() {
         --arg version "$(sed s/^v// $dist/version)" \
         electron-builder.json | sponge electron-builder.json
 
+	source /usr/share/nvm/init-nvm.sh
+	nvm install "$_nodeversion"
+	nvm use "$_nodeversion"
     export YARN_CACHE_FOLDER="$cache"
 	yarn
 }
@@ -40,6 +44,9 @@ build() {
 	# Temperarily fix build script
 	./node_modules/.bin/electron-builder --linux --dir
 	rm -r app/build
+
+	nvm deactivate
+	nvm uninstall "$_nodeversion"
 }
 
 package() {
