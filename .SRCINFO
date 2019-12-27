@@ -18,6 +18,8 @@ pkgbase = xonotic-autobuild
 	conflicts = xonotic
 	conflicts = xonotic-data
 	conflicts = xonotic-git
+	source = rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh
+	sha256sums = c18ca1e7ed98f2a99dd0bcaf554f9a33c74edfca42c6a5464a6b4e3ff9a9633a
 
 pkgname = xonotic-autobuild
 

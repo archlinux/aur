@@ -15,24 +15,11 @@ depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm'
 makedepends=('mesa' 'rsync')
 conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
 
-#source=("http://dl.xonotic.org/xonotic-${pkgver}.zip")
-#sha256sums=('a22f7230f486c5825b55cfdadd73399c9b0fae98c9e081dd8ac76eca08359ad5')
+source=("rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh")
+sha256sums=('c18ca1e7ed98f2a99dd0bcaf554f9a33c74edfca42c6a5464a6b4e3ff9a9633a')
 
 prepare() {
-
-	excludes=
-	excludes="$excludes --exclude=*.exe"
-	excludes="$excludes --exclude=/gmqcc/*.exe"
-	excludes="$excludes --exclude=/bin32"
-	excludes="$excludes --exclude=*.dll"
-	excludes="$excludes --exclude=/bin64"
-	excludes="$excludes --exclude=/Xonotic*.app"
-	excludes="$excludes --exclude=/xonotic-osx-*"
-	excludes="$excludes --exclude=/gmqcc/gmqcc.osx"
-	excludes="$excludes --exclude=/xonotic-linux32-*"
-	excludes="$excludes --exclude=/gmqcc/gmqcc.linux32"
-	
-	rsync -c -r -P --delete-excluded --links $excludes rsync://beta.xonotic.org/autobuild-Xonotic $srcdir/Xonotic/
+  sh ./update-to-autobuild.sh
 }
 
 build() {
