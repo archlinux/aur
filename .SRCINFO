@@ -1,0 +1,11 @@
+pkgbase = rapidfire-updater
+	pkgdesc = Update tool for the ImmersionRC RapidFire Module
+	pkgver = 0.1.4
+	pkgrel = 1
+	arch = x86_64
+	license = proprietary
+	source = rapidfire-updater_0.1.4_amd64.deb.gz::https://www.immersionrc.com/?download=5930
+	md5sums = 243091a1485b22a66591d58d30876ae1
+
+pkgname = rapidfire-updater
+
