@@ -1,0 +1,19 @@
+--- drivers/platform/x86/Makefile
++++ drivers/platform/x86/Makefile
+@@ -9,7 +9,7 @@
+ PWD := $(shell pwd)
+ 
+ default:
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) $(obj-m:.o=.ko)
++	$(MAKE) -C $(KDIR) M=$(PWD) $(obj-m:.o=.ko)
+ 
+ install:
+ 	install -d $(MDIR)
+@@ -17,6 +17,6 @@
+ 	depmod -a
+ 
+ clean:
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) $(obj-m:.o=.ko) clean
++	$(MAKE) -C $(KDIR) M=$(PWD) $(obj-m:.o=.ko) clean
+ 	rm -rf *.mod.c *.o *.ko .tmp_versions Module.symvers .$(obj-m:.o=)*
+ 	rm -rf linux/.*o.cmd linux/*.o

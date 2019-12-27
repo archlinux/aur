@@ -1,8 +1,8 @@
-# Maintainer: Michael Niewöhner <foss@mniewoehner.de>
+# Maintainer: Timo Sarawinski  <timo@it-kraut.net>
 
 basename=thinkpad-wmi
 pkgname=thinkpad_wmi-dkms-git
-pkgver=r35.dbe8b91
+pkgver=r37.2a85aa1
 pkgrel=2
 pkgdesc="Updated DKMS controlled modules for ThinkPad's WMI Bios Settings functionality"
 arch=('x86_64')
@@ -12,12 +12,18 @@ makedepends=('git')
 depends=('dkms')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("git+https://github.com/iksaif/thinkpad-wmi.git")
-md5sums=('SKIP')
+source=("git+https://github.com/iksaif/thinkpad-wmi.git" "Makefile.patch")
+md5sums=('SKIP'
+         '1207f80464ba8422e031a413f7d8890d')
 
 pkgver() {
     cd "${srcdir}/${basename}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/${basename}"
+    patch -p0 -i ../Makefile.patch
 }
 
 package() {
