@@ -1,7 +1,7 @@
 pkgbase = distrho-extra-lv2-git
 	pkgdesc = Extra LV2 ports of JUCE-based audio plugins using the DISTRHO framework
 	pkgver = r26.b6f25f1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://distrho.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = distrho-extra-lv2-git
 	makedepends = libxrender
 	makedepends = libxcursor
 	makedepends = ladspa
-	makedepends = clang
 	depends = gcc-libs
 	depends = lv2
 	depends = libxext
