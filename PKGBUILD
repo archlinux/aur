@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-opencv
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Open Source Computer Vision Library (mingw-w64)"
 arch=('any')
@@ -11,8 +11,8 @@ depends=('mingw-w64-crt' 'mingw-w64-libpng' 'mingw-w64-libjpeg-turbo' 'mingw-w64
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-lapacke')
 source=("opencv-$pkgver.zip::https://github.com/opencv/opencv/archive/$pkgver.zip"
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
-sha256sums=('546d7d19388f2eea709a1951c7bfd56943241e41649473278950f4cbef656661'
-            '0f6c3d30baa39e3e7611afb481ee86dea45dafb182cac87d570c95dccd83eb8b')
+sha256sums=('55bd939079d141a50fca74bde5b61b339dd0f0ece6320ec76859aaff03c90d9f'
+            '8a6b5661611d89baa59a26eb7ccf4abb3e55d73f99bb52d8f7c32265c8a43020')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
