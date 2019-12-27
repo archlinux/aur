@@ -1,5 +1,5 @@
 pkgbase = wds-git
-	pkgdesc = Miracast Wireless Display Software for Linux OS (WDS).
+	pkgdesc = Miracast Wireless Display Software for Linux OS (WDS), Git version.
 	pkgver = 1.1.0.r4.ga488b16
 	pkgrel = 2
 	url = https://01.org/wds
@@ -10,7 +10,9 @@ pkgbase = wds-git
 	depends = wpa_supplicant
 	depends = connman
 	depends = gstreamer
+	depends = gst-libav
 	depends = gst-plugins-bad
+	depends = x264
 	provides = wds=1.1.0.r4.ga488b16
 	conflicts = wds
 	source = git+https://github.com/intel/wds.git
