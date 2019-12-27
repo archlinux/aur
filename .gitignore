@@ -1,0 +1,6 @@
+/rescrobbled/
+/pkg/
+/src/
+/*.tar.*
+/*.xz
+/*.swp
