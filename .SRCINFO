@@ -1,6 +1,6 @@
 pkgbase = instalooter
 	pkgdesc = Another API-less Instagram pictures and videos downloader
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/althonos/InstaLooter
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = instalooter
 	depends = python-verboselogs
 	optdepends = python-piexif: to add EXIF metadata to downloaded pictures
 	optdepends = python-pillow: to add EXIF metadata to downloaded pictures
-	source = https://files.pythonhosted.org/packages/source/i/instalooter/instalooter-2.4.1.tar.gz
-	sha256sums = aa65caaff3b43bd05288476765282165c7ca78e9de2e8ab9b796977b73d0320a
+	source = https://files.pythonhosted.org/packages/source/i/instalooter/instalooter-2.4.2.tar.gz
+	sha256sums = 6de14955c3fc7ce7365e1d17dc0e41bcc56e3a3026322cf41925e83ab1dfb7b5
 
 pkgname = instalooter
 
