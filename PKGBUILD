@@ -4,17 +4,14 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.17.0
+pkgver=5.18.0
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
 
-# Had to downgrade to node 12.x LTS, because 13.2 is buggy and crashing due to
-# closing signal handlers several time.
-# src.: https://github.com/nodejs/node/issues/30581
-makedepends=('git' 'go-pie' 'npm' 'nodejs-lts-erbium')
+makedepends=('git' 'go-pie' 'jq' 'npm' 'nodejs')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "${CARCH}" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
@@ -34,12 +31,12 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    '40b396991d33137f5d9deda967a0d033658d93caf4b7382439c44447d1e921ccf4fda0dfe77d1ed6214104cc9d88bd78d9c0cfba732d7c15d39b2a6ebe93d6b1'
-    'f78943f2857801b6fbc562faa18dcde651e770e5b318878ad77e505be8016086c3c148734c9d2c7b7e5c3c61684c353e159b75600f0981afbf778b3204fa3841'
-    '5b761c5715387e6abf3afbe653de218b9a45708d7ffbc699856f53cc3e62760fbd0ce175615f36a4b9090182705c3343d07fca72d12275411080ab516cee3eeb'
+    '842c326dad16d2a625b372b4c8c8a39e036dd02b714b25b73be0b511eeba55f844f1f7784bcaec37a45a24fe870a00d9b87ba51891e544389483bfcae1bdd04c'
+    '667df6943d4e870eba2f0e5826a8aab0e6f3ea79d1ce7b81ac31f7ccbcc21ace45a0f2b56b3d229079daf83d13ef28abb000b605ad1adfc091002a8939bd33ba'
+    '48181d4c06d5e2486c5445ae56f56bb766283954f0a480e59440a98138487d291df59bd366c16ea58ecc5cdf758bad09c1db5b4523709f3aa4f356c7bc9e5e00'
     '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
     'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9'
+    'fcde946cddf973b75a906edf8301ccbc2ecbca4adf1df73d13c5343491db5f511b9eb0e1f237087cb508398f2bcdbd46fa03e5b2ac88729cdaed4610512dd3e2'
 )
 
 prepare() {
@@ -102,7 +99,6 @@ prepare() {
 
     # Patch go dependencies
     sed -r -i go.mod \
-        -e "s/willnorris.com\/go\/imageproxy.*/willnorris.com\/go\/imageproxy v0.9.0/" \
         -e "/replace/,//d"
 
     # Remove platform specific lines from the Makefile from the line beginning
@@ -150,32 +146,61 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/src/github.com/${pkgname}/${pkgname}-server
-
+    # Init directory hierarchy
     install -dm755 \
         "${pkgdir}"/usr/bin \
         "${pkgdir}"/usr/share/webapps \
         "${pkgdir}"/etc/webapps \
         "${pkgdir}"/usr/share/doc/${pkgname}
 
+    # Copy mattermost build to destination
+    cd "${srcdir}"/src/github.com/${pkgname}/${pkgname}-server
     cp -a dist/${pkgname} "${pkgdir}"/usr/share/webapps/
 
     cd "${pkgdir}"/usr/share/webapps/${pkgname}
-    install -dm755 client/plugins
 
+    # Move logs to right location
     rm -rf logs
     ln -s /var/log/${pkgname} logs
 
+    # Readme and docs
+    mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${pkgname}
+
+    # Config file management
     cp config/default.json config/config.json
+    # Hashtags are needed to escape the Bash escape sequence. jq will consider
+    # it as a comment and won't interpret it.
+    jq '.FileSettings.Directory |= $mmVarLib + "/files/" | # \
+        .ComplianceSettings.Directory |= $mmVarLib + "/compliance/" | # \
+        .PluginSettings.Directory |= $mmVarLib + "/plugins/" | # \
+        .PluginSettings.ClientDirectory |= $mmVarLib + "/client/plugins/"' \
+       --arg mmVarLib '/var/lib/mattermost' \
+       config/config.json > config/config-new.json
+    mv config/config-new.json config/config.json
     mv config "${pkgdir}"/etc/webapps/${pkgname}
     ln -s /etc/webapps/${pkgname} config
 
-    sed -e 's@"Directory": ".*"@"Directory": "/var/lib/mattermost/"@g' \
-        -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
-        -i "${pkgdir}"/etc/webapps/${pkgname}/config.json
+    # Avoid access denied when Mattermost tries to rewrite its asset data
+    # (root.html, manifest.json and *.css) during runtime. Reuse var tmpfile
+    # directory SELinux security context.
+    # cf. https://github.com/mattermost/mattermost-server/blob/f8d31def8eb463fcd866ebd08f3e6ef7a24e2109/utils/subpath.go#L48
+    # cf. https://wiki.archlinux.org/index.php/Web_application_package_guidelines
+    install -dm700 "${pkgdir}"/var/lib/mattermost/client
+    # We want recursivity as Mattermost wants to modify files in
+    # client/files/code_themes/ as well.
+    # Not recursive: for file in root.html manifest.json *.css; do
+    find client -type f -iname 'root.html' -o -iname 'manifest.json' -o -iname '*.css' | while IFS= read -r fileAndPath; do
+        install -dm700 "${pkgdir}"/var/lib/mattermost/"${fileAndPath%/*}"
+        install -m700 "${fileAndPath}" "${pkgdir}"/var/lib/mattermost/"${fileAndPath%/*}"
+        rm "${fileAndPath}"
+        ln -s /var/lib/mattermost/"${fileAndPath}" "${fileAndPath}"
+    done
+    # As we are using install, only the leaves have their permissions
+    # redefined. Some folders in the hierarchy might not have the right
+    # permissions. Fix this.
+    chmod -R 700 "${pkgdir}"/var/lib/mattermost/
 
-    mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${pkgname}
-
+    # Install package config
     cd "${srcdir}"
     install -Dm755 bin/${pkgname} "${pkgdir}"/usr/share/webapps/${pkgname}/bin/${pkgname}
     ln -s /usr/share/webapps/${pkgname}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}

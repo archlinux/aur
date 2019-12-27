@@ -1,20 +1,24 @@
---- src/mattermost-server-5.12.0/Makefile	2019-06-14 21:13:52.000000000 +0200
-+++ src/mattermost-server-5.12.0/Makefile.new	2019-07-01 03:04:42.875342812 +0200
-@@ -49,11 +49,20 @@
- GOFLAGS ?= $(GOFLAGS:)
+--- Makefile	2019-12-28 12:38:41.471311251 +0100
++++ Makefile.new	2019-12-28 12:41:37.194305874 +0100
+@@ -48,14 +48,23 @@
+ # Golang Flags
+ export GO111MODULE=on
+ GOPATH ?= $(shell go env GOPATH)
+-GOFLAGS ?= $(GOFLAGS:) -mod=vendor
++GOFLAGS ?= $(GOFLAGS:) -mod=vendor
  GO=go
  DELVE=dlv
--LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildNumber=$(BUILD_NUMBER)"
+-LDFLAGS += -X "github.com/mattermost/mattermost-server/v5/model.BuildNumber=$(BUILD_NUMBER)"
 +
 +# We need to use the second flavour of makefile variables and use a dedicated
 +# variable here, otherwise this will cause an infinite loop.
 +# src.: https://www.gnu.org/software/make/manual/make.html#Flavors
 +LDFLAGS_MATTERMOST := $(LDFLAGS)
-+LDFLAGS  = -X "github.com/mattermost/mattermost-server/model.BuildNumber=$(BUILD_NUMBER)"
- LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildDate=$(BUILD_DATE)"
- LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildHash=$(BUILD_HASH)"
- LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildHashEnterprise=$(BUILD_HASH_ENTERPRISE)"
- LDFLAGS += -X "github.com/mattermost/mattermost-server/model.BuildEnterpriseReady=$(BUILD_ENTERPRISE_READY)"
++LDFLAGS  = -X "github.com/mattermost/mattermost-server/v5/model.BuildNumber=$(BUILD_NUMBER)"
+ LDFLAGS += -X "github.com/mattermost/mattermost-server/v5/model.BuildDate=$(BUILD_DATE)"
+ LDFLAGS += -X "github.com/mattermost/mattermost-server/v5/model.BuildHash=$(BUILD_HASH)"
+ LDFLAGS += -X "github.com/mattermost/mattermost-server/v5/model.BuildHashEnterprise=$(BUILD_HASH_ENTERPRISE)"
+ LDFLAGS += -X "github.com/mattermost/mattermost-server/v5/model.BuildEnterpriseReady=$(BUILD_ENTERPRISE_READY)"
 +# The link mode needs to be at the end of the LDFLAGS statement otherwise the
 +# build pieces of info won't be populated to the about dialog in the app.
 +LDFLAGS += -linkmode external -extldflags '$(LDFLAGS_MATTERMOST)' -s -w
