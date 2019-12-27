@@ -2,7 +2,7 @@
 
 pkgname='govmomi-git'
 pkgdesc='A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).'
-pkgver=r1823.badd514
+pkgver=r2436.2509e907
 pkgrel=1
 _repo_prefix='github.com/vmware'
 _repo_name="${pkgname/-git}"
