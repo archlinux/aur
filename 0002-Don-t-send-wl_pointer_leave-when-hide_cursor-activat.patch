@@ -1,7 +1,7 @@
-From 5b960da9e6cf68c0338bd8ab8c0c3625f0c98cb0 Mon Sep 17 00:00:00 2001
+From c4300c7c12fd1c218ac9c87ca35df3b37a82e0dc Mon Sep 17 00:00:00 2001
 From: Dan Elkouby <streetwalkermc@gmail.com>
 Date: Fri, 27 Dec 2019 15:21:31 +0200
-Subject: [PATCH] Don't send wl_pointer_leave when hide_cursor activates
+Subject: [PATCH 2/2] Don't send wl_pointer_leave when hide_cursor activates
 
 ---
  sway/input/cursor.c | 1 -

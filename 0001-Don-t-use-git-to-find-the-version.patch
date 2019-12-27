@@ -1,0 +1,35 @@
+From d7a29aecd1d4b80a8f8728016bf2f607ba7fc3d8 Mon Sep 17 00:00:00 2001
+From: Dan Elkouby <streetwalkermc@gmail.com>
+Date: Fri, 27 Dec 2019 15:36:23 +0200
+Subject: [PATCH 1/2] Don't use git to find the version
+
+---
+ meson.build | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 70afcd50..1479570a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -131,18 +131,6 @@ endif
+ add_project_arguments('-DSYSCONFDIR="/@0@"'.format(join_paths(prefix, sysconfdir)), language : 'c')
+ 
+ version = '"@0@"'.format(meson.project_version())
+-git = find_program('git', native: true, required: false)
+-if git.found()
+-	git_commit = run_command([git, 'rev-parse', '--short', 'HEAD'])
+-	git_branch = run_command([git, 'rev-parse', '--abbrev-ref', 'HEAD'])
+-	if git_commit.returncode() == 0 and git_branch.returncode() == 0
+-		version = '"@0@-@1@ (" __DATE__ ", branch \'@2@\')"'.format(
+-			meson.project_version(),
+-			git_commit.stdout().strip(),
+-			git_branch.stdout().strip(),
+-		)
+-	endif
+-endif
+ add_project_arguments('-DSWAY_VERSION=@0@'.format(version), language: 'c')
+ 
+ # Compute the relative path used by compiler invocations.
+-- 
+2.24.1
+
