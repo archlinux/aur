@@ -1,13 +1,13 @@
 pkgbase = rlpr
 	pkgdesc = Send print jobs directly to remote lpd servers
-	pkgver = 2.04
+	pkgver = 2.06
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://www.openprinting.org/download/printing/rlpr-2.04.tar.gz
-	source = rlpr-2.04.patch
-	sha256sums = 3aa1d7792eb1b0634148b96eaf647e173abe1915564727e893857eeb24e4b78f
+	source = http://linuxfocus.org/~guido/rlpr-2.06.tar.gz
+	source = rlpr-2.06.patch
+	sha256sums = 32ae5893f4b9250b7a02c98a41b5929cfdd5731b6efbd7edfc77c2c5314388f7
 	sha256sums = c17c75164ed4e9e433a38bc583f84b25cf5a23b4750ad46cf830aa95e9a38fda
 
 pkgname = rlpr
