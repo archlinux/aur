@@ -1,6 +1,6 @@
 pkgbase = sat-xmpp-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (core)
-	pkgver = 0.7.0.r3062.93e8793a735a
+	pkgver = 0.7.0.r3099.0b6d56a8f7e3
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
@@ -33,6 +33,7 @@ pkgbase = sat-xmpp-hg
 	depends = python-urwid
 	depends = python-urwid-satext
 	depends = python-xlib
+	depends = python-treq
 	optdepends = python-progressbar
 	optdepends = python-miniupnpc
 	optdepends = python-potr

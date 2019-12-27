@@ -5,13 +5,13 @@
 
 pkgname='sat-xmpp-hg'
 _realname=sat
-pkgver=0.7.0.r3062.93e8793a735a
+pkgver=0.7.0.r3099.0b6d56a8f7e3
 _version=0.7.0
 pkgrel=1
 url="http://salut-a-toi.org/"
 pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (core)"
 arch=('any')
-depends=('python' 'dbus' 'python-lxml' 'python-pillow' 'python-pycryptodomex' 'python-pyopenssl' 'python-dbus' 'python-twisted' 'python-wokkel>=0.7.1' 'python-xdg' 'python-zope-interface' 'mutagen' 'python-markdown' 'python-shortuuid-git' 'python-html2text' 'python-netifaces' 'python-service-identity' 'sat-tmp-hg' 'python-dateutil' 'python-regex' 'python-gobject' 'python-pyinotify' 'python-babel' 'python-urwid' 'python-urwid-satext' 'python-xlib')
+depends=('python' 'dbus' 'python-lxml' 'python-pillow' 'python-pycryptodomex' 'python-pyopenssl' 'python-dbus' 'python-twisted' 'python-wokkel>=0.7.1' 'python-xdg' 'python-zope-interface' 'mutagen' 'python-markdown' 'python-shortuuid-git' 'python-html2text' 'python-netifaces' 'python-service-identity' 'sat-tmp-hg' 'python-dateutil' 'python-regex' 'python-gobject' 'python-pyinotify' 'python-babel' 'python-urwid' 'python-urwid-satext' 'python-xlib' 'python-treq')
 optdepends=('python-progressbar' 'python-miniupnpc' 'python-potr')
 makedepends=('python-setuptools' 'mercurial')
 license=('AGPL3')
