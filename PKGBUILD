@@ -2,14 +2,14 @@
 
 _pkgname=cpod
 pkgname=$_pkgname-git
-pkgver=1.27.1.r6.g2f4e7e3
+pkgver=1.27.1.r56.g581cd25
 pkgrel=1
 pkgdesc="A simple, beautiful podcast app"
 arch=('x86_64')
 url="https://github.com/z-------------/CPod"
 license=('Apache')
 depends=('gconf')
-makedepends=('git' 'gulp' 'nvm' 'python2' 'yarn')
+makedepends=('git' 'gulp' 'nvm' 'yarn')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=('cumulonimbus')
@@ -38,7 +38,6 @@ build() {
   nvm install $_nodejsver
   nvm use $_nodejsver
 
-  #yarn config set python /usr/bin/python2
   yarn
 
   gulp
