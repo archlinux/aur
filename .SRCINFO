@@ -1,15 +1,15 @@
 pkgbase = gkrellm-gkfreq
 	pkgdesc = A plugin for gkrellm2 which displays the current CPU frequency
-	pkgver = 1.3
-	pkgrel = 2
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://github.com/carcass82/gkrellm-gkfreq
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = pkgconfig
 	depends = gkrellm
-	source = https://github.com/carcass82/gkrellm-gkfreq/archive/release-1.3.tar.gz
-	md5sums = 5088037e9b31958e0e8151fa124c2bcc
+	source = https://github.com/carcass82/gkrellm-gkfreq/archive/release-1.4.tar.gz
+	md5sums = c5638c427a32fc8d10d807893fef2227
 
 pkgname = gkrellm-gkfreq
 
