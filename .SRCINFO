@@ -1,6 +1,6 @@
 pkgbase = thunderbird-appmenu
 	pkgdesc = Thunderbird from extra with appmenu patch
-	pkgver = 68.3.0
+	pkgver = 68.3.1
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird/
 	arch = x86_64
@@ -39,17 +39,17 @@ pkgbase = thunderbird-appmenu
 	depends = ttf-font
 	depends = icu
 	optdepends = libcanberra: sound support
-	provides = thunderbird=68.3.0
+	provides = thunderbird=68.3.1
 	conflicts = thunderbird
 	options = !emptydirs
 	options = !makeflags
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/68.3.0/source/thunderbird-68.3.0.source.tar.xz
-	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/68.3.0/source/thunderbird-68.3.0.source.tar.xz.asc
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/68.3.1/source/thunderbird-68.3.1.source.tar.xz
+	source = https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/68.3.1/source/thunderbird-68.3.1.source.tar.xz.asc
 	source = thunderbird-rust-1.39.patch
 	source = thunderbird.desktop
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = f68cb53deb6c1840cc3f2b1e842bac8ebaf090e9cd89afb376ba0e1ba62820aa
+	sha256sums = 76284cd3f192ac5678bbf10e1ce9308e913c2e6dde89e055d3ffe568e0e71fa6
 	sha256sums = SKIP
 	sha256sums = 08834ef1c2dd685edd40dea20dfa9d4b889f5c387385ac329a162eeff6cf90be
 	sha256sums = 3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789
