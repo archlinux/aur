@@ -7,10 +7,7 @@ pkgbase = stegosaurus-lv2-git
 	license = GPL
 	makedepends = git
 	depends = lv2
-	provides = stegosaurus-lv2
-	provides = stegosaurus-lv2-git
-	conflicts = stegosaurus-lv2
-	conflicts = stegosaurus-lv2-git
+	depends = cairo
 	source = git+https://github.com/mxmilkb/stegosaurus
 	md5sums = SKIP
 
