@@ -1,0 +1,15 @@
+pkgbase = cpl
+	pkgdesc = ESO Common Pipeline Library
+	pkgver = 7.1.2
+	pkgrel = 1
+	url = https://www.eso.org/sci/software/cpl/index.html
+	arch = x86_64
+	license = GPL2
+	depends = fftw
+	depends = wcslib
+	depends = cfitsio
+	source = ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-7.1.2.tar.gz
+	sha256sums = b6d20752420e2333e86d9a08c24a08057351a9fef97c32f5894e63fbfece463a
+
+pkgname = cpl
+
