@@ -1,11 +1,10 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
-_appname=freecad
-pkgname="${_appname}-git"
+pkgname=freecad-git
 pkgver=0.18.r3000.g9e4710d679
 pkgrel=1
-epoch=2
+epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
@@ -18,7 +17,7 @@ makedepends=('boost' 'cmake' 'eigen' 'git' 'gcc-fortran'
              'pyside2-tools' 'swig' 'qt5-tools')
 optdepends=('pycollada: Create, edit and load COLLADA documents.')
 provides=('freecad')
-conflicts=('freecad')
+conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
 source=("${pkgname}::git+https://github.com/FreeCAD/FreeCAD.git")
 md5sums=('SKIP')
 
@@ -26,6 +25,15 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     # upstream recyles the "pre" and "staging" tags so they do not produces stable commit counts
     git describe --long --tags --exclude '*pre*' --exclude '*staging*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  # fix a build error
+  curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
+  # patch.txt
+  #dos2unix patch.txt
+  #patch --binary -p1 -i patch.txt
 }
 
 build() {
