@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7171.2018.0808.1
-pkgrel=1
+pkgrel=2
 pkgdesc='F5 VPN helper application for use with a browser for F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=("https://it.emory.edu/vpntools/linux_f5vpn.x86_64.rpm"
@@ -20,15 +20,18 @@ package() {
     install -Dm644 "com.f5.${pkgname}.desktop" "${pkgdir}/usr/share/applications/com.f5.${pkgname}.desktop"
     install -dm755 "${pkgdir}/usr/bin/"
     for executable in $pkgname svpn tunnelserver; do
-        ln -s "/opt/f5/vpn/$executable" "${pkgdir}"/usr/bin/${executable}
+        ln -s "/opt/f5/vpn/${executable}" "${pkgdir}"/usr/bin/${executable}
     done
-        (
-        cd lib
-        for library in *.so.*; do
-            ln -sf "/usr/lib/${library%%.so.*}.so" "$library"
-        done
-        )
+
+    for library in lib/*.so.*; do
+        ln -sf "/usr/${library%%.so.*}.so" "$library"
+    done
+
+    for plugin in platforms/*.so; do
+        ln -sf "/usr/lib/qt/plugins/${plugin}" "$plugin"
+    done
     )
     install -Dm644 'license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
     cp -a opt "${pkgdir}"
+
 }

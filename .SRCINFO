@@ -1,7 +1,7 @@
 pkgbase = f5vpn
 	pkgdesc = F5 VPN helper application for use with a browser for F5Networks BIG-IP APM 13.0
 	pkgver = 7171.2018.0808.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = commercial
 	depends = icu
