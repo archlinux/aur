@@ -1,13 +1,13 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=v0.105.0.pre2.r235.g7424ae5
+pkgver=0.901.0.r12.g12878073
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
-depends=('nodejs>=11.14.0-1' 'openssl>=1.0' 'sqlite' 'libsasl' 'zlib' 'bzip2')
-makedepends=('npm' 'git' 'meson' 'ninja')
+depends=('electron4')
+makedepends=('npm' 'nodejs' 'git')
 source=(
     "deltachat-desktop-git::git://github.com/deltachat/deltachat-desktop.git"
     "deltachat-desktop.desktop"
@@ -17,7 +17,7 @@ source=(
 sha256sums=(
     "SKIP"
     "5772cf1942bd4fb1ecddfff4a4ad4783140960b1d109861908567fbd0fc3a553"
-    "a0e3e682621f644133f21cf1844da6661378d1065f28e0dfd25f4636a6ca6dc2"
+    "0afb3320e8f7632f8c2a4dc7414c51ced19f01544b3be6e5045626c070c7648c"
 )
 
 
@@ -34,17 +34,8 @@ prepare() {
     npm install --verbose
     npm run build
 
-    # Save electron. this will otherwise get removed by the prune command
-    mkdir -p tmp_node_modules
-    mkdir -p tmp_node_modules/.bin
-    mv node_modules/electron tmp_node_modules
-
     # Delete development dependencies, we don't need them anymore
     npm prune --production 
-
-    # Put back electron
-    mv tmp_node_modules/* node_modules
-    rm -rf tmp_node_modules
 }
 
 
