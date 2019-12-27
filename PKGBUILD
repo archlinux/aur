@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7171.2018.0808.1
-pkgrel=2
+pkgrel=3
 pkgdesc='F5 VPN helper application for use with a browser for F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=("https://it.emory.edu/vpntools/linux_f5vpn.x86_64.rpm"
@@ -29,6 +29,11 @@ package() {
 
     for plugin in platforms/*.so; do
         ln -sf "/usr/lib/qt/plugins/${plugin}" "$plugin"
+    done
+
+    for resolution in 16 24 32 48 64 96 128 256 512 1024; do
+        install -Dm644 "logos/${resolution}x${resolution}.png" \
+                        "${pkgdir}/usr/share/icons/hicolor/${resolution}x${resolution}/apps/f5vpn.png"
     done
     )
     install -Dm644 'license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
