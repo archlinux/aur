@@ -10,7 +10,9 @@ pkgbase = wds
 	depends = wpa_supplicant
 	depends = connman
 	depends = gstreamer
+	depends = gst-libav
 	depends = gst-plugins-bad
+	depends = x264
 	source = wds-1.1.0.tar.gz::https://github.com/intel/wds/archive/v1.1.0.tar.gz
 	sha256sums = 6c3f11f1ce130d388047b456647b229c452cce72c6e13a4f2288f1f89d51250f
 
