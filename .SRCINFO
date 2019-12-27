@@ -1,16 +1,15 @@
 pkgbase = sdat2img-git
 	pkgdesc = Convert sparse Android data image to filesystem image
-	pkgver = r10.e5b41bd
+	pkgver = r42.1b08432
 	pkgrel = 1
 	url = https://github.com/xpirt/sdat2img
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = git
 	depends = python
 	provides = sdat2img
 	conflicts = sdat2img
-	source = sdat2img-git::git://github.com/xpirt/sdat2img.git
+	source = sdat2img-git::git+https://github.com/xpirt/sdat2img.git
 	md5sums = SKIP
 
 pkgname = sdat2img-git
