@@ -1,18 +1,17 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-_pkgname=img2sdat
-pkgname=$_pkgname-git
-pkgver=r5.eca65cb
+pkgname=img2sdat-git
+pkgver=r28.a4fdf7c
 pkgrel=1
 pkgdesc="Convert sparse filesystem image to sparse Android data image"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/xpirt/img2sdat"
 license=('Apache')
 depends=('python')
 makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git://github.com/xpirt/img2sdat.git
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+source=($pkgname::git+https://github.com/xpirt/img2sdat.git
         img2sdat.sh)
 md5sums=('SKIP'
          'c4854eebbd20f489f6024678c9bb5db2')
@@ -22,17 +21,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $pkgname
-  sed -i 's|#!/usr/bin/env python[ ]*$|#!/usr/bin/env python2|' *.py
-}
-
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  install -Dm755 *.py "$pkgdir/usr/share/$_pkgname"
-
-  cd "$srcdir"
   install -Dm755 img2sdat.sh "$pkgdir/usr/bin/img2sdat"
+
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/${pkgname%-git}"
+  install -Dm755 *.py "$pkgdir/usr/share/${pkgname%-git}"
 }
 
