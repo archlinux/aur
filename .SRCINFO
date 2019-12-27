@@ -1,6 +1,6 @@
 pkgbase = somenu
 	pkgdesc = Standalone Gtk Menu
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = somenu
 	depends = python-gobject
 	depends = gnome-menus
 	depends = gtk3
-	source = https://github.com/tmccombs/somenu/archive/v0.1.2.tar.gz
-	md5sums = eab2664ca638db1b6bc836cc899d8041
+	source = https://github.com/tmccombs/somenu/archive/0.2.0.tar.gz
+	md5sums = 1563b4ee99bb993abe85102f2446471c
 
 pkgname = somenu
 
