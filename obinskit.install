@@ -30,7 +30,7 @@ post_install() {
 	KERNEL=="hidraw*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5710",MODE="0666", GROUP="plugdev"
 	EOF
 	# Reload existing udev rules
-	sudo udevadm control --reload-rule
+	udevadm control --reload-rule
 }
 
 post_upgrade() {
@@ -46,5 +46,5 @@ post_remove() {
 
 	# Delete udev rule and reload
 	rm -f '/etc/udev/rules.d/obinskit-kdb.rules'
-	sudo udevadm control --reload-rule
+	udevadm control --reload-rule
 }
