@@ -11,7 +11,7 @@ pkgdesc="SF Transrobotic font package"
 arch=(any)
 source=("https://github.com/TarkanAl-Kazily/sf-transrobotics/raw/master/sf-transrobotics-fonts-ttf.tar.bz2")
 sha256sums=('ecc9b9017125ab07f09a4d8962d46e0811b1aaa41aaa14541632cf5f4eb9b9b9')
-url="http://www.shyfonts.com"
+url="https://www.shyfoundry.com/"
 license=(custom)
 
 package() {

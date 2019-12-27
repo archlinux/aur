@@ -62,4 +62,4 @@ this font package, feel free to contact us at info@shyfonts.com.
 Thank you for downloading this font package and enjoy!
 
 ------------------------------------------------------------------------
-©1999 ShyFonts Type Foundry -- http://www.shyfonts.com
+©1999 ShyFonts Type Foundry -- https://www.shyfoundry.com/
