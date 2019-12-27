@@ -44,9 +44,6 @@ validpgpkeys=('9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  # Set the version information to 'Arch Linux' instead of 'makepkg'
-  sed -i "s/branch \\\'@1@\\\'/Arch Linux/g" meson.build
-
   # From the linux-mainline PKGBUILD
   local src
   for src in "${source[@]}"; do
