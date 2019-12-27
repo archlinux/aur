@@ -1,20 +1,15 @@
-pkgbase = run-git
-	pkgdesc = Replace the current terminal with a graphical program
-	pkgver = 0.0.1.r8.898f9d6
+pkgbase = run
+	pkgdesc = Easily manage and invoke small scripts and wrappers
+	pkgver = r45.14598e7
 	pkgrel = 1
-	url = https://gitlab.com/blevy/run
+	url = https://github.com/TekWizely/run
 	arch = i686
 	arch = x86_64
-	license = custom:CC0
+	license = MIT
+	makedepends = go
 	makedepends = git
-	makedepends = make
-	depends = glibc
-	optdepends = bash-completion: shell completion
-	optdepends = fish: shell completion
-	optdepends = zsh: shell completion
-	provides = run
-	source = run-git::git+https://gitlab.com/blevy/run.git
-	md5sums = SKIP
+	source = git+https://github.com/TekWizely/run.git
+	sha256sums = SKIP
 
-pkgname = run-git
+pkgname = run
 

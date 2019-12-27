@@ -1,32 +1,37 @@
-# Maintainer: Benjamin Levy <blevy@protonmail.com>
-pkgname=run-git
-pkgver=0.0.1.r8.898f9d6
+# Maintainer: Mendel Greenberg <mendel at chabad360 dot com>
+
+pkgname=run
+pkgver=r45.14598e7
 pkgrel=1
-pkgdesc="Replace the current terminal with a graphical program"
+pkgdesc="Easily manage and invoke small scripts and wrappers"
 arch=('i686' 'x86_64')
-url="https://gitlab.com/blevy/run"
-license=('custom:CC0')
-depends=('glibc')
-makedepends=('git' 'make')
-optdepends=('bash-completion: shell completion'
-            'fish: shell completion'
-            'zsh: shell completion')
-provides=('run')
-source=("$pkgname::git+https://gitlab.com/blevy/run.git")
-md5sums=('SKIP')
+url="https://github.com/TekWizely/run"
+license=('MIT')
+makedepends=(
+  'go'
+  'git'
+)
+source=("git+https://github.com/TekWizely/run.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "${srcdir}/run"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
-build() {
-	cd "$pkgname"
-	make
+build(){
+  cd "${srcdir}/run"
+  go build \
+    -trimpath \
+    -ldflags "-extldflags $LDFLAGS" .
 }
 
-package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package(){
+  cd "${srcdir}/run"
+  install -Dm755 run "${pkgdir}/usr/bin/run"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
