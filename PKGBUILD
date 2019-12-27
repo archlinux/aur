@@ -4,7 +4,7 @@
 
 pkgname=rusty-tags
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Create ctags/etags for a cargo project and all of its dependencies"
 url="https://github.com/dan-t/rusty-tags"
 depends=('ctags')
