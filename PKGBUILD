@@ -5,7 +5,7 @@
 # URL: https://github.com/trollixx/aur-packages
 
 pkgname=qtcreator-src
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Source code of Qt Creator IDE needed to build plugins"
 arch=('any')
@@ -15,7 +15,7 @@ depends=()
 options=('!strip')
 makedepends=()
 source=("https://download.qt.io/official_releases/qtcreator/${pkgver%.*}/${pkgver}/qt-creator-opensource-src-${pkgver}.tar.xz")
-sha256sums=('8f5d3abc522d8b8879adfa098e037f751b4311173f5f443fd1b5800f5feb0f8a')
+sha256sums=('efebaa1c52526bf9c07b35c43071735c5d0b83b6cd08daab35a21e7ed53a7645')
 
 package () {
     cd "${srcdir}"
