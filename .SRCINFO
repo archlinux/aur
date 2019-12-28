@@ -1,0 +1,15 @@
+pkgbase = mucalc
+	pkgdesc = Convenient calculator for the command line
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://marlam.de/mucalc/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = muparser
+	depends = readline
+	source = https://marlam.de/mucalc/releases/mucalc-2.0.tar.gz
+	sha256sums = 0fc049eb44cc4de525286c40981e3195530bc094e8b822b1b982affee463eedd
+
+pkgname = mucalc
+
