@@ -10,6 +10,7 @@ url="https://github.com/BatchDrake/suscan"
 license=("GPL")
 depends=("soapysdr" "sigutils" "fftw" "libsndfile" "libxml2")
 makedepends=("git" "cmake")
+optdepends=("libvolk")
 provides=("suscan")
 conflicts=("suscan")
 source=($pkgname::git+https://github.com/BatchDrake/suscan.git)

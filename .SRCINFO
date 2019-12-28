@@ -12,6 +12,7 @@ pkgbase = suscan-git
 	depends = fftw
 	depends = libsndfile
 	depends = libxml2
+	optdepends = libvolk
 	provides = suscan
 	conflicts = suscan
 	options = !buildflags
