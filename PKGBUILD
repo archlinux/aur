@@ -30,13 +30,16 @@ provides=(mutter mutter-781835-workaround)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
+install=mutter.install
 _commit=c0e76186da5b7baf7c8804c0ffa80232a5a6bf98  # gnome-3-34
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        918.patch
-        fix-build.patch)
+        0001-EGL-Include-EGL-eglmesaext.h.patch
+	0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
+	0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch)
 sha256sums=('SKIP'
-            '775fbcd209a170b6ca13326367ef62b8d35acff16019553c40eb24f0684c3495'
-            '28aa24daed161f2566ca2b159beb43285184c533956b851a7eb318de741da935')
+            '8440403c1862187b648e3ddd20056666f1a9fea38d0511d7bdf4422ce70b4139'
+            '9f6881cd9fe2031b7119288972d3b921358f387b8cbfbd4c624a0dc33abce8e2'
+            '0ad4084834b6314873d2dc0a9c8bb3b30f0a6106fa44aac98a54129ec0fc0b2c')
 
 pkgver() {
   cd $pkgname
@@ -159,10 +162,14 @@ prepare() {
   pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
   pick_mr '!762' e9ba9dc2 'merge'
 
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/918
-  git apply -3 ../918.patch
+  # fix build with libglvnd's EGL headers
+  git apply -3 ../0001-EGL-Include-EGL-eglmesaext.h.patch
 
-  patch -Np1 < ../fix-build.patch
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/918
+  git apply -3 ../0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
+
+  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/956
+  git apply -3 ../0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch
 
 }
 

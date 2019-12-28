@@ -3,6 +3,7 @@ pkgbase = mutter-performance
 	pkgver = 3.34.1+66+gc0e76186d
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
+	install = mutter.install
 	arch = x86_64
 	groups = gnome
 	license = GPL
@@ -33,11 +34,13 @@ pkgbase = mutter-performance
 	conflicts = mutter
 	replaces = mutter-781835-workaround
 	source = mutter-performance::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=c0e76186da5b7baf7c8804c0ffa80232a5a6bf98
-	source = 918.patch
-	source = fix-build.patch
+	source = 0001-EGL-Include-EGL-eglmesaext.h.patch
+	source = 0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
+	source = 0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch
 	sha256sums = SKIP
-	sha256sums = 775fbcd209a170b6ca13326367ef62b8d35acff16019553c40eb24f0684c3495
-	sha256sums = 28aa24daed161f2566ca2b159beb43285184c533956b851a7eb318de741da935
+	sha256sums = 8440403c1862187b648e3ddd20056666f1a9fea38d0511d7bdf4422ce70b4139
+	sha256sums = 9f6881cd9fe2031b7119288972d3b921358f387b8cbfbd4c624a0dc33abce8e2
+	sha256sums = 0ad4084834b6314873d2dc0a9c8bb3b30f0a6106fa44aac98a54129ec0fc0b2c
 
 pkgname = mutter-performance
 
