@@ -7,7 +7,7 @@
 
 _pkgname=instantclient-basic
 pkgname=oracle-${_pkgname}
-pkgver=19.3.0.0.0
+pkgver=19.5.0.0.0
 pkgrel=1
 pkgdesc="Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)"
 arch=('x86_64')
@@ -26,10 +26,10 @@ source=(LICENSE
         "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
          '784005aa31cb56bb2303179d98fccd8e'
-         '74da81658e4f12c1f4f8a963bb8e38dc')
+         'f7f6c7e970c6bc3dd9ad77d4a7d5b332')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
             '36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9'
-            'beabdffa55ad501b8292d3bcbadd5b4f51c6b3c92bc1ebdeaf41cda4c6b364fa')
+            '1765ffc810e83981acd3c1e7fc080634133b809721d6757c1ce2e8f275154880')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -53,7 +53,7 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	cd "$srcdir/instantclient_19_3/"
+	cd "$srcdir/instantclient_19_5/"
 	install -d "$pkgdir/usr/bin"
 	install -d "$pkgdir/usr/lib"
 	install -m 755 -t "$pkgdir/usr/bin" adrci genezi uidrvci
