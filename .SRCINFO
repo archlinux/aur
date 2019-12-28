@@ -1,0 +1,19 @@
+pkgbase = 2048-curses
+	pkgdesc = Curses based popular game 2048 written in C
+	pkgver = VERSION
+	pkgrel = 1.0
+	url = https://github.com/theretikgm/2048-curses
+	arch = any
+	license = GPL
+	depends = ncurses>=6.0-0
+	source = https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/2048-curses.c
+	source = https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/dialog.c
+	source = https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/dialog.h
+	source = https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/Makefile
+	md5sums = 49881827fb297a998c49dd03899ae126
+	md5sums = a1d9f8f1e1f46ae809cd356fa8c6fe00
+	md5sums = 666c1d0f43be2dd2e92a759ece3dfb5a
+	md5sums = e277d0071243798818031dfe915bdf1b
+
+pkgname = 2048-curses
+
