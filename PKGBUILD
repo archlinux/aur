@@ -19,7 +19,7 @@ build() {
 package() {
 	install "${srcdir}/${pkgname}" -D "${pkgdir}/usr/bin/${pkgname}"
 }
-md5sums=('49881827fb297a998c49dd03899ae126'
+md5sums=('bdc3bad96869fc1e33e2a5159603b482'
          'a1d9f8f1e1f46ae809cd356fa8c6fe00'
          '666c1d0f43be2dd2e92a759ece3dfb5a'
          'e277d0071243798818031dfe915bdf1b')
