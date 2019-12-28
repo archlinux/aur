@@ -1,6 +1,6 @@
 pkgbase = rdma-core
 	pkgdesc = RDMA core userspace libraries and daemons
-	pkgver = 26.0
+	pkgver = 26.1
 	pkgrel = 1
 	url = https://github.com/linux-rdma/rdma-core
 	arch = x86_64
@@ -70,7 +70,7 @@ pkgbase = rdma-core
 	replaces = srptools
 	replaces = infiniband-diags
 	replaces = libibmad
-	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v26.0?signed
+	source = rdma-core::git+https://github.com/linux-rdma/rdma-core.git#tag=v26.1?signed
 	validpgpkeys = 921AFFAF83A9D7FD38CAA681E4637B88367258A7
 	validpgpkeys = 42D25385C1A1C02B8B1B1C6F801BDDB825988F64
 	sha512sums = SKIP
