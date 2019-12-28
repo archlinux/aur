@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
