@@ -112,7 +112,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-
-  # https://bugs.archlinux.org/task/37412
-  mkdir "$pkgdir/usr/share/gnome-shell/modes"
 }
