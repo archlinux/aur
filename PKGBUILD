@@ -2,11 +2,11 @@
 
 pkgname=('spotifyd-bin-full')
 pkgver=0.2.20
-pkgrel=1
+pkgrel=2
 conflicts=('spotifyd')
 provides=('spotifyd')
 depends=('libpulse' 'dbus')
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 license=('GPL3')
 pkgdesc="A spotify playing daemon - full distribution"
 url="https://github.com/Spotifyd/spotifyd"
