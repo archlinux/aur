@@ -2,7 +2,7 @@
 pkgname=('python-defcon')
 _pkgname='defcon'
 pkgver='0.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of UFO based objects for use in font editing applications.'
 url="https://pypi.org/project/defcon/"
 checkdepends=('python-pytest')
