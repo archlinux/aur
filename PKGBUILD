@@ -1,7 +1,7 @@
 # Maintainer: Javier Tia <javier dot tia at gmail dot com>
 
 pkgname=z.lua
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='A new cd command that helps you navigate faster by learning your habits'
 arch=('any')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 replaces=("${pkgname}-git")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5d1ef598292743ba1cbb22974734e3167c0efb5d64d3ddfc2a64258355efe6d8')
+sha256sums=('7a0f7fad466f681bd2bd31201b3eb82be465a1615ddc6ff3ef64f24b861f415b')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
