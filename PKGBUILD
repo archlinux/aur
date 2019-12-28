@@ -2,18 +2,19 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=suscan-git
-pkgver=r461.cb0c650
+pkgver=r479.9250ea0
 pkgrel=1
 pkgdesc="SUScan is a graphical signal analysis tool"
 arch=("any")
 url="https://github.com/BatchDrake/suscan"
 license=("GPL")
 depends=("soapysdr" "sigutils" "fftw" "libsndfile" "libxml2")
-makedepends=("git" "autoconf" "automake" "libtool")
+makedepends=("git" "cmake")
 provides=("suscan")
 conflicts=("suscan")
 source=($pkgname::git+https://github.com/BatchDrake/suscan.git)
 md5sums=('SKIP')
+options=('!buildflags')
 
 pkgver() {
     cd "$pkgname"
@@ -23,14 +24,15 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  ./autogen.sh
-  ./configure --prefix=/usr
+  mkdir build
+  cd build
 
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname/build"
 
   make DESTDIR="$pkgdir/" install
 }
