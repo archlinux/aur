@@ -1,14 +1,12 @@
 pkgbase = suscan-git
 	pkgdesc = SUScan is a graphical signal analysis tool
-	pkgver = r461.cb0c650
+	pkgver = r479.9250ea0
 	pkgrel = 1
 	url = https://github.com/BatchDrake/suscan
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = autoconf
-	makedepends = automake
-	makedepends = libtool
+	makedepends = cmake
 	depends = soapysdr
 	depends = sigutils
 	depends = fftw
@@ -16,6 +14,7 @@ pkgbase = suscan-git
 	depends = libxml2
 	provides = suscan
 	conflicts = suscan
+	options = !buildflags
 	source = suscan-git::git+https://github.com/BatchDrake/suscan.git
 	md5sums = SKIP
 
