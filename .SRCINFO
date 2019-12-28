@@ -1,0 +1,15 @@
+pkgbase = fraidycat-git
+	pkgdesc = Follow blogs, wikis, YouTube channels, as well as accounts on Twitter, Instagram, etc. from a single page.
+	pkgver = r76.76d1b26
+	pkgrel = 1
+	url = https://github.com/kickscondor/fraidycat
+	arch = x86_64
+	license = BlueOak-1.0.0
+	makedepends = npm
+	makedepends = git
+	makedepends = git-lfs
+	provides = fraidycat
+	conflicts = fraidycat
+
+pkgname = fraidycat-git
+
