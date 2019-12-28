@@ -32,6 +32,9 @@ prepare() {
   cd $pkgname-$pkgver
   # fix for virtualbox 6.1
   patch -p1 -i "$srcdir/fb4e6985e142da56bad143d70600cd3695c91757.patch"
+
+  # relax ruby version requirements so this package can be built with the latest ruby
+  sed 's/s.required_ruby_version     = "~> 2.4", "< 2.7"//' -i vagrant.gemspec
 }
 
 build() {
