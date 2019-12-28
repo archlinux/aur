@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=1.99.2.rd4d577b
+pkgver=1.99.4.r144d681
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
