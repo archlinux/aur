@@ -26,5 +26,7 @@ pkgver() {
 
 package(){
   cd "${srcdir}/${pkgname%-git}"
+  cp "${srcdir}/guake/guake/data/guake.template.desktop" "${srcdir}/guake/guake/data/guake.desktop" 
+  cp "${srcdir}/guake/guake/data/guake-prefs.template.desktop" "${srcdir}/guake/guake/data/guake-prefs.desktop" 
   make install DESTDIR="$pkgdir" PREFIX="/usr" COMPILE_SCHEMA=1
 }
