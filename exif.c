@@ -121,7 +121,7 @@ PyObject* mirage_exif_entry_to_py(ExifEntry* e, ExifByteOrder byte_order) {
       // reduce code complexity
       py_value = PyList_New(e->components);
       unsigned char format_size = exif_format_get_size(e->format);
-      for (unsigned int i = 0; i < e->components; i++) {
+      for (Py_ssize_t i = 0; i < e->components; i++) {
         const unsigned char* ptr = e->data + i*format_size;
         PyObject* py_num = mirage_exif_number_to_py(ptr, e->format, byte_order);
         // Note that PyList_SetItem does not increase refcount of added item
@@ -152,7 +152,7 @@ PyObject* mirage_exif_entry_to_py(ExifEntry* e, ExifByteOrder byte_order) {
 PyObject* mirage_exif_ifd_entries_to_py(ExifContent* c, ExifIfd ifd, ExifByteOrder byte_order) {
   PyObject* py_entries = PyDict_New();
 
-  for (unsigned int i = 0; i < c->count; i++) {
+  for (Py_ssize_t i = 0; i < c->count; i++) {
     ExifEntry* entry = c->entries[i];
     if (!entry) continue;
 
@@ -181,7 +181,7 @@ PyObject* mirage_exif_read_metadata(PyObject* self, PyObject* args) {
 
   PyObject* py_dict = PyDict_New();
 
-  for (int ifd = 0; ifd < EXIF_IFD_COUNT; ifd++) {
+  for (ExifIfd ifd = 0; ifd < EXIF_IFD_COUNT; ifd++) {
     ExifContent* content = data->ifd[ifd];
     if (!content) continue;
 

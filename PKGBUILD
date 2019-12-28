@@ -6,7 +6,7 @@
 
 pkgname=mirage
 pkgver=1.0_pre2
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple GTK+ Image Viewer"
 url="https://sourceforge.net/projects/mirageiv.berlios/"
 license=('GPL')
@@ -19,7 +19,7 @@ source=(http://downloads.sourceforge.net/project/mirageiv.berlios/${pkgname}-${p
 install=$pkgname.install
 sha256sums=('6b5b0011f41daec3653c464e47fd225e52b741fcad8870960e0a94662a2fdda7'
             'a669be216365c84bc1f4dc3d08ee97ed0b0eee083c0293004a3f2772f9e177bd'
-            '6c680c8dd8a323ceeee7492e4c7db0280fd7fe2df1c4ed0b13bc9c4f3d6d8917')
+            'ed965fcf26cc1ca8ddea7eec8bc44a19d2c73e495235f9b015f9ee405ccce95f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
