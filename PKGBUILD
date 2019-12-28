@@ -2,7 +2,7 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 
 pkgname=glow-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('glow')
 conflicts=('glow')
 source_x86_64=("$url/releases/download/v$pkgver/glow_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('b9e9759d33fe1b3d69afbebc7ba0d9403914f63883699c65e259c4c44469f7b8')
+sha256sums_x86_64=('0e7985e69df210f6909f360e4ebfffd1ccd0063d3c9116d39b96d1643b698ed5')
 
 package() {
     install -Dm755 "glow" "$pkgdir/usr/bin/glow"
