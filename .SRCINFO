@@ -1,7 +1,7 @@
 pkgbase = guake-git
 	pkgdesc = Top-down terminal for Gnome using gtk3 and vte3
 	pkgver = 3.6.3.37.g9d3ef38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Guake/guake
 	arch = i686
 	arch = x86_64
