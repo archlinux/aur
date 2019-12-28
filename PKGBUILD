@@ -2,18 +2,20 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=sigutils-git
-pkgver=r186.4a1e057
+pkgver=r203.8caefe4
 pkgrel=1
 pkgdesc="Digital signal processing library"
 arch=("any")
 url="https://github.com/BatchDrake/sigutils"
 license=("GPL")
-depends=("libsndfile" "alsa-lib")
-makedepends=("git" "autoconf" "automake")
+depends=("libsndfile" "alsa-lib" "fftw")
+makedepends=("git" "cmake>=3.7.2")
+optdepends=("libvolk")
 provides=("sigutils")
 conflicts=("sigutils")
 source=(${pkgname}::git+https://github.com/BatchDrake/sigutils.git)
 md5sums=('SKIP')
+options=('!buildflags')
 
 pkgver() {
     cd "${pkgname}"
@@ -23,14 +25,15 @@ pkgver() {
 build() {
   cd "$pkgname"
   
-  autoreconf -fvi
-  ./configure --prefix=/usr
+  mkdir build
+  cd build
 
+  cmake ..
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname/build"
 
   make DESTDIR="$pkgdir/" install
 }
