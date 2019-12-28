@@ -12,6 +12,7 @@ pkgbase = ocaml-csv
 	makedepends = ocaml-lwt
 	makedepends = opam
 	makedepends = ocaml-uutf
+	makedepends = dune
 	depends = ocaml
 	options = !libtool
 	options = !strip
