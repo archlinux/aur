@@ -1,0 +1,5 @@
+post_install() {
+    sed -i '/GRUB_THEME/d' etc/default/grub
+    echo 'GRUB_THEME="/boot/grub/themes/arch/theme.txt"' >>etc/default/grub
+    grub-mkconfig -o boot/grub/grub.cfg
+}

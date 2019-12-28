@@ -1,0 +1,16 @@
+pkgbase = arch-grub2-theme
+	pkgdesc = Grub2 GFX theme for Arch Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/toxin265/arch-grub2-theme
+	arch = any
+	groups = system
+	license = GPL
+	depends = grub
+	provides = arch-grub2-theme
+	conflicts = arch-grub2-theme
+	source = file://./arch.tar.xz
+	md5sums = 29f99092b42d44df6a3cc462a266565e
+
+pkgname = arch-grub2-theme
+
