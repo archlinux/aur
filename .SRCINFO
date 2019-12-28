@@ -1,6 +1,6 @@
 pkgbase = java-openjfx-ea-bin
 	pkgdesc = Java OpenJFX 14 Early-Access Build.
-	pkgver = 14rc4
+	pkgver = 14rc6
 	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = java-openjfx-ea-bin
 	depends = webkit2gtk
 	depends = ffmpeg
 	depends = qt5-base
-	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+4_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+4_linux-x64_bin-jmods.zip
-	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+4-javadoc.zip
-	sha256sums = 8c3525c85598a9afa11ed0915331188ac3bafa0828d1e8f02a15e1c94d59d892
-	sha256sums = efa4b70ced3ec41856484748cae21d27c99b7aaa67b3c67928a3cac154db01d7
-	sha256sums = e9f557e24ee2c7f8f5c22a9585b20799e9f503510c7956eb2adc9163aaef020e
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+6_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+6_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+6-javadoc.zip
+	sha256sums = 29c6dc6ce4c0bad1373462d7ad2d71a5ab420711024b82caf6e5fd87dce6e68c
+	sha256sums = ccbafd0926ffe1bbca8e676547686c5713e0cbc6ca57e297de90707b0581a4f1
+	sha256sums = 8719908fce65e1a71d0f64b144fdf6338b6ef712570801568739024a9c3c1be0
 
 pkgname = java-openjfx-ea-bin
 
