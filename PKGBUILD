@@ -3,7 +3,7 @@
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20190727
+pkgver=20191228
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
@@ -59,7 +59,7 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'a4f88fe7b6a598c5ed12f6c54dc03a8f'
          'a581c49e12f5feed39c56135b47a2f55'
          'b6857e9252be1141ad48276c7fc0a6b0'
-         'ce6df5fd9a8d498f4e044a0ddc02a28f'
+         'a917bb1f02f0c19b564fddf956d505f7'
          '288069c8fb0c828b081833cfcfe0638b')
 
 package() {
