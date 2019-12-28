@@ -1,0 +1,16 @@
+pkgbase = quintom-cursor-theme-git
+	pkgdesc = A cursor theme designed to look decent. Contains Ink and Snow variations.
+	pkgver = r11.d23e573
+	pkgrel = 1
+	url = https://gitlab.com/Burning_Cube/quintom-cursor-theme
+	arch = any
+	license = GPL3
+	license = custom:cc-by-sa-4.0
+	makedepends = git
+	provides = quintom-cursor-theme
+	conflicts = quintom-cursor-theme
+	source = quintom-cursor-theme-git::git+https://gitlab.com/Burning_Cube/quintom-cursor-theme.git
+	md5sums = SKIP
+
+pkgname = quintom-cursor-theme-git
+
