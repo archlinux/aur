@@ -1,6 +1,6 @@
 pkgbase = optimus-manager-qt
 	pkgdesc = A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/Shatur95/optimus-manager-qt
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = optimus-manager-qt
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = optimus-manager>=1.2.2
-	source = optimus-manager-qt-1.4.4.tar.gz::https://github.com/Shatur95/optimus-manager-qt/archive/1.4.4.tar.gz
+	source = optimus-manager-qt-1.4.5.tar.gz::https://github.com/Shatur95/optimus-manager-qt/archive/1.4.5.tar.gz
 	source = SingleApplication-3.0.18.tar.gz::https://github.com/itay-grudev/SingleApplication/archive/3.0.18.tar.gz
-	sha256sums = 930b002678cce444f12cd08506d29bc5170c7fa42b0207153e4fcfb09768c32a
+	sha256sums = 1c23a58192060f7ecdf76ed37d4cc7587a6b2a510a6dfda9e24d9c0e9115ac8c
 	sha256sums = 0f0ce6466dbfdadf2a7ea75aa1d461e2e279c8c03f747117c75bd376a46c6eec
 
 pkgname = optimus-manager-qt
