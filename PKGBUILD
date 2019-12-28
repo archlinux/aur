@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r159.95deb78
+pkgver=r161.9950cca
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -22,8 +22,16 @@ pkgver() {
 
 build() {
   cd "${srcdir}/BeamerPresenter"
-  ## Uncomment the following line to exclude strange "embedding" of applications which only works with an X server:
+
+  ## Uncomment the following line to exclude strange "embedding" of
+  ## applications which only works with an X server:
   #sed -i 's/^\([^#]*\)\(DEFINES *+= *EMBEDDED_APPLICATIONS_ENABLED\)/\1#\2/' beamerpresenter.pro
+
+  ## Uncomment the following line to avoid checks of you QPA platform. You
+  ## should then only start BeamerPresenter in window managers where it does
+  ## not cause any problems:
+  #sed -i 's/^\([^#]*\)\(DEFINES *+= *CHECK_QPA_PLATFORM\)/\1#\2/' beamerpresenter.pro
+
   qmake && make
 }
 
