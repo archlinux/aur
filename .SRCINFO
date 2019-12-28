@@ -1,0 +1,15 @@
+pkgbase = evtest-qt-git
+	pkgdesc = Linux Joystick Tester for Qt
+	pkgver = r1.efe36700
+	pkgrel = 1
+	url = https://gitlab.com/evtest-qt/evtest-qt
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	makedepends = cmake
+	depends = qt5-base
+	source = git+https://gitlab.com/evtest-qt/evtest-qt.git
+	md5sums = SKIP
+
+pkgname = evtest-qt-git
+
