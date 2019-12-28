@@ -2,10 +2,10 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-git"
-pkgver=0.2.5.r0.gf8df274
+pkgver=0.2.5.r1.g1538374
 pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
-url='https://github.com/qzed/linux-surface-control'
+url='https://github.com/linux-surface/surface-control'
 license=('MIT')
 arch=('x86_64')
 depends=('gcc-libs')
@@ -15,7 +15,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=(
-    "${_pkgname}::git+https://github.com/qzed/linux-surface-control.git"
+    "${_pkgname}::git+https://github.com/linux-surface/surface-control.git"
 )
 
 sha256sums=(
