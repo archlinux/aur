@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=wasmtime
-pkgver=0.3.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Standalone JIT-style runtime for WebAssembly, using Cranelift"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo')
 options=()
 source=("https://github.com/CraneStation/wasmtime/archive/v${pkgver}.tar.gz")
-sha384sums=('c043bf58f24a174d832b14b4aa1a6de17cd608648753da65c64f33254e79df913ce0e709abcd9645e71ebed4c2134360')
+sha384sums=('89005894df1d1a43a75636ed50637c8a5b9d22b17f67e4a3d9c26188d32fd76d7e10fbc3af7826648c5306318b670810')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
