@@ -1,0 +1,17 @@
+pkgbase = find-cursor
+	pkgdesc = Simple XLib program to highlight the cursor position.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/arp242/find-cursor
+	arch = any
+	groups = system
+	license = MIT
+	makedepends = xz
+	depends = xorg-xrefresh
+	provides = find-cursor
+	conflicts = find-cursor
+	source = https://github.com/arp242/find-cursor/archive/master.tar.gz
+	md5sums = 80051fea879fdae88f57ec258ccbef79
+
+pkgname = find-cursor
+
