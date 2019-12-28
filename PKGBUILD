@@ -1,11 +1,11 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Jameson Pugh <imntreal at gmail dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
-arch=('x86_64')
+arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
 license=('MIT')
 makedepends=('go-pie' 'git')
@@ -17,7 +17,7 @@ replaces=('python-cheat')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver.tar.gz"
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git')
-sha256sums=('3f847141ae7aa0a99dc895030d341d91de30b316e316910706aaa4937c9d6238'
+sha256sums=('9a756b249ae9a9ea7beb2149a57a6556b145075e97c4c90b52ea6492334a5c7e'
             '1c3a6ebb65d3a91f9f9711dfaf81463f6b68b9e73fe341720946dd31b311d35b'
             'SKIP')
 
