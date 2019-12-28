@@ -1,0 +1,7 @@
+pkg/
+src/
+.AURINFO
+jack-select/
+jack-select-*.pkg.tar.xz
+jack-select-*.pkg.tar.zst
+jack-select-*.src.tar.gz
