@@ -24,7 +24,7 @@ source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "boost016900_serialization.patch"
         )
 sha256sums=('SKIP'
-            '92bf04a12ce6a1f559eb3b129e324e0349e3b9f8da1976dae6e16704a031b359'
+            'e68c1f328a7d48cf06d27231cfade3c4eb11692076760abd29e7c97595f1c42b'
             '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1'
             '495d183aef045e53ec8c53aa08cdcc082fb4e69ccb0857693cb0cf2684db0760')
 
