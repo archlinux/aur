@@ -8,14 +8,14 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762')
-# _merge_requests_to_use=('!493' '!575' '!579' !719 '!724' '!762')
-_merge_requests_to_use=('!575' '!724')
+# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762' '!983')
+# _merge_requests_to_use=('!493' '!575' '!579' !719 '!724' '!762' '!983')
+_merge_requests_to_use=('!575' '!724' '!983')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.34.1+66+gc0e76186d
+pkgver=3.34.2+2+g572431089
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -31,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=c0e76186da5b7baf7c8804c0ffa80232a5a6bf98  # gnome-3-34
+_commit=5724310899e922784f56a85f36b5195fe73f1e0e  # gnome-3-34
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-EGL-Include-EGL-eglmesaext.h.patch
 	0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
@@ -161,6 +161,13 @@ prepare() {
   #          Use together with !762 to fix one of its issues.
   pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
   pick_mr '!762' e9ba9dc2 'merge'
+
+  # Title: clutter/text: Check if attributes are equal before applying
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/983
+  # Type: 1
+  # Status: 2
+  # Comment:
+  pick_mr '!983' 59f4e36f 'merge'
 
   # fix build with libglvnd's EGL headers
   git apply -3 ../0001-EGL-Include-EGL-eglmesaext.h.patch
