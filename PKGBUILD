@@ -7,7 +7,6 @@ _version=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
 arch=('any')
-makedepends=('')
 conflicts=('sat-media')
 provides=('sat-media')
 license=('AGPL3')
