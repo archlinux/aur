@@ -1,7 +1,7 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=tad-git
-pkgver=0.4.r9.g0b13866
+pkgver=1.0.r0.g57151d8
 pkgrel=1
 pkgdesc="Library and tools to handle data arrays in C++"
 arch=('x86_64')
