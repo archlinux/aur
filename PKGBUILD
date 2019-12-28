@@ -41,18 +41,13 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	if [ -L "$srcdir/$_pkgname" ]; then
-		rm "$srcdir/$_pkgname" -rf
-		mv "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
-	fi
-
 	rm -rf "$srcdir/go/src"
 
     mkdir -p "$srcdir/go/src/$(dirname $_goname)"
 
 	export GOPATH="$srcdir/go"
 
-	mv "$srcdir/$_pkgname" "$srcdir/go/src/$_goname"
+	cp -r "$srcdir/$_pkgname" "$srcdir/go/src/$_goname"
 	cd "$srcdir/go/src/$_goname/"
 
 	echo ":: Building binary"
@@ -64,4 +59,7 @@ package() {
 	find "$srcdir/go/bin/" -type f -executable | while read filename; do
 		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
 	done
+
+    install -DT "$srcdir/$_pkgname/completion/zsh/_task" \
+        "$pkgdir/usr/share/zsh/site-functions/_task"
 }
