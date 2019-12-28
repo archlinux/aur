@@ -1,7 +1,7 @@
 pkgbase = xp-pen-tablet-beta-driver
 	pkgdesc = XP-Pen (Official) Linux (Beta) driver
 	pkgver = 20191212
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xp-pen.fr/download-292.html
 	arch = x86_64
 	license = GPL
@@ -17,7 +17,7 @@ pkgbase = xp-pen-tablet-beta-driver
 	source = Pentablet-Driver.policy
 	sha256sums = 0a8070c71d2b47e9ded9c5bb917e868d316b1c5895fef65a82df9d0c4de91ad8
 	sha256sums = ca3111e8500d5b38c45a903c57dbd841c26a43b0f8d1fc2e8e653f59e4714d10
-	sha256sums = d5315a3bd32eefe14234f3fc32815b0e04c46709a3a56fa9014af42704d24ba0
+	sha256sums = fba1609385bc6882216157473a04247f05a32ae34f29c8b93b037dd47cd7b421
 	sha256sums = af868161c23ad2df4780ab2220d1bce078587d4b9912a1d61722a18d37e36a74
 	sha256sums = dbd471f5d87d73c1e331912457f7d3efe7e19aedaa7ca48b2492797690afc841
 

@@ -3,7 +3,7 @@
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
-Name=XP-Pen Beta driver
+Name=XP-Pen driver
 Type=Application
 Exec=/usr/share/xp-pen-tablet-beta-driver/Pentablet_Driver.sh  %F
 Terminal=false
