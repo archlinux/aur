@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.0.12
+pkgver=3.0.13
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('cef5c361dacfac6ae5e8900aa0cba705387a94c06fb176326c890ef4ab3384be121cae3e196ce1dfbd0ff01358719c5479414095d108e61a28e27420f0fde2c7'
+sha512sums=('5cd066916797efb975cdb97720f65edc72d3fe82afbd78a26aa8369d95ae4ca09c0593dd4bec5521156c64ea38af7a13065f3b35447a76267dec93feb0ac6ac6'
             'SKIP'
             '63fdce85cd89ea8cdce31c36546c1d600620ef2c9a2f2426e0301e76887c6b56602687c8551b2f5d1b1ae948b21a964dffcf6da41745d9481f2b734f936093d1'
             'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
