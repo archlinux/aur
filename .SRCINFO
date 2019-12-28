@@ -8,7 +8,7 @@ pkgbase = ate
 	makedepends = vte3
 	depends = rofi
 	depends = xurls
-	source = ate-1.0.0.tar.gz::https://github.com/andir/{ate}/archive/v1.0.0.tar.gz
+	source = ate-1.0.0.tar.gz::https://github.com/andir/ate/archive/v1.0.0.tar.gz
 	sha256sums = f9e0b1572d629736240b8c376e36972902f5189e3e2efadb69fd7192bbc0a7ec
 
 pkgname = ate
