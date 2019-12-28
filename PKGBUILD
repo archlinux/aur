@@ -1,7 +1,7 @@
 # Maintainer: jxir <aur@jxir.de>
 
 pkgname=qv-git
-pkgver=2.0.r3.g1c245d9
+pkgver=3.0.r0.gf47f006
 pkgrel=1
 pkgdesc="Quick Viewer for 2D data (images, renderings, sensor data, ...)"
 arch=('x86_64')
