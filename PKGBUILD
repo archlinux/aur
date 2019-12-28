@@ -3,13 +3,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=xrestop-git
-pkgver=0.4.r33.956c0e1
-pkgrel=1
+pkgver=0.4.r34.19f72d3
+pkgrel=2
 pkgdesc="Uses the X-Resource extension to provide 'top' like statistics"
 arch=('x86_64')
 url="http://freedesktop.org/wiki/Software/xrestop"
 license=('GPL')
 depends=('libxres' 'ncurses')
+makedepends=('xorg-util-macros')
 source=(git+https://gitlab.freedesktop.org/xorg/app/xrestop)
 md5sums=('SKIP')
 conflicts=('xrestop')
