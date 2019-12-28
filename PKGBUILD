@@ -10,7 +10,7 @@
 
 # available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762' '!983')
 # _merge_requests_to_use=('!493' '!575' '!579' !719 '!724' '!762' '!983')
-_merge_requests_to_use=('!575' '!724' '!983')
+_merge_requests_to_use=('!575' '!983')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -142,7 +142,7 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
   # Type: 1
   # Status: 2
-  # Comment:
+  # Comment: Needs a manual rebase to compile
   pick_mr '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
 
   # Title: backends: Do not reload keymap on new keyboard notifications
@@ -160,7 +160,7 @@ prepare() {
   # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/commit/97140ab6346bd29208e99c9c9aab892c2eec0e52
   #          Use together with !762 to fix one of its issues.
   pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
-  pick_mr '!762' e9ba9dc2 'merge'
+  pick_mr '!762' 'renderer-native: Check that frame_info != NULL'
 
   # Title: clutter/text: Check if attributes are equal before applying
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/983
