@@ -6,7 +6,7 @@
 
 _pkgname=instantclient-sdk
 pkgname=oracle-${_pkgname}
-pkgver=19.3.0.0.0
+pkgver=19.5.0.0.0
 pkgrel=1
 pkgdesc="Additional header files for developing Oracle applications with Instant Client"
 arch=('x86_64')
@@ -23,9 +23,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "manual://${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         '50076d903b0df804820800fe1189c524')
+         '0db231fa5a2d3728aa77d5cbd0793ec5')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '2951600acf8fab886c0eae8266a305ab286918ecbc45e1583bfe3390f10bbb84')
+            '0472d982559b2152a41731d1e3648ed4a707dad2e002ff501db793c58db91bca')
 
 msg "Warning: This software cannot be downloaded automatically."
 plain "You will need to sign up for an Oracle account and download the software from"
@@ -50,7 +50,7 @@ plain ""
 
 package() {
 	# Put all .h files into /usr/include
-	cd "$srcdir/instantclient_19_3/"
+	cd "$srcdir/instantclient_19_5/"
 	install -d "$pkgdir/usr/include"
 	install -m 644 -t "$pkgdir/usr/include" sdk/include/*.h
 	# But we don't want this one, it is unused and it conflicts with another
