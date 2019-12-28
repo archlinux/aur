@@ -9,7 +9,7 @@ depends=('libxcursor' 'libxinerama' 'libxrandr')
 source=('https://hb.bizmrg.com/icq-www/linux/x64/icq.tar.xz'
         'icq.png::https://raw.githubusercontent.com/mail-ru-im/im-desktop/master/gui/resources/main_window/logo_small_200.png'
         'icq.desktop')
-sha256sums=('9dd39e67f0f3abcbe4ce5fe131e08a7adf5c6906bd452388544a08d5cae1ba99'
+sha256sums=('af7699198bd7c59bcca788276fa94a48e68e43eb87b5e4c7c824109b8df649d1'
             '646e5bfbe01b867a6398cfd2ba49c2e3a16da2596e77fd2137f9d4e1d4ebfd7d'
             '6f67421a78c5ea09af1e05b713a9d468fe1e2bda73e4fd20d7ec54c3184f2676')
 
