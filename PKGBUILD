@@ -1,5 +1,5 @@
 pkgname=icqdesktop-bin
-pkgver=10.0.7947
+pkgver=10.0.8172
 pkgrel=1
 pkgdesc='Official ICQ client for Linux (binary version)'
 arch=('x86_64')
