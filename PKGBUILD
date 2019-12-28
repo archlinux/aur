@@ -1,7 +1,7 @@
 # Maintainer: Your Name <TheRetikGM@gmail.com>
 pkgname=2048-curses
-pkgver=VERSION
-pkgrel=1.0
+pkgver=1.0
+pkgrel=1
 pkgdesc="Curses based popular game 2048 written in C"
 arch=('any')
 url="https://github.com/theretikgm/2048-curses"
