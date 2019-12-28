@@ -1,11 +1,9 @@
 pkgbase = spotifyd-bin
 	pkgdesc = A spotify playing daemon
 	pkgver = 0.2.20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	arch = aarch64
 	license = GPL3
 	depends = alsa-lib

@@ -3,11 +3,11 @@
 pkgbase=spotifyd-bin
 pkgname=('spotifyd-bin' 'spotifyd-bin-slim')
 pkgver=0.2.20
-pkgrel=2
+pkgrel=3
 conflicts=('spotifyd')
 provides=('spotifyd')
 depends=('alsa-lib')
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 license=('GPL3')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
