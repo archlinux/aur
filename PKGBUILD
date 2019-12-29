@@ -2,12 +2,12 @@
 
 pkgname=zvvonlinemusic
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Online music player"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
-depends=('pyqt5-common' 'python-pyqt5' 'vlc') 
+depends=('python-pyqt5' 'vlc') 
 
 source=("${pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=15pykzYXxh0zTJnb1FnDnrpHQkE9yW4m6"
 "zvvonlinemusic" "ZVVOnlineMusic.desktop")
@@ -20,7 +20,7 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
   install -Dm755 zvvonlinemusic $pkgdir/usr/bin/zvvonlinemusic
   install -Dm755 ZVVOnlineMusic.desktop $pkgdir/usr/share/applications/zvvonlinemusic.desktop
-chmod -R 755 "${pkgdir}"/usr
-  chmod -R 755 "${pkgdir}"/usr/share/zvvonlinemusic
+chmod -R 755 "${pkgdir}"/usr/
+  chmod -R 755 "${pkgdir}"/usr/share/zvvonlinemusic/
   chmod -R 755 "${pkgdir}"/usr/share/icons/
 }
