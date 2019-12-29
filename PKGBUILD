@@ -5,7 +5,7 @@
 # Maintainer: jooch <jooch AT gmx DOT com>
 
 pkgname=freefilesync
-pkgver=10.18
+pkgver=10.19
 pkgrel=1
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ depends=(wxgtk webkit2gtk boost-libs)
 makedepends=(boost unzip)
 source=(
 	"FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"		#ffs
-	ignore_curl_version_assertion.patch
 	revert_xdg_config_path.patch
 	revert_bulk_append.patch
 	revert_linkflags.patch
@@ -24,8 +23,7 @@ source=(
 	dlagent
 	)
 
-sha256sums=('14160a0855c1fe824fe721edc4d8432d9ce8e4398cc1c759ae91a1b697c00eb1'
-            '4c62e13fdeafb3263c286718e27a48e8ff127fdcfac39becb45b976e66b6b99f'
+sha256sums=('843b56667188c43bbc0622e51b63f9d904ced09dd7921d3afb9c431c4e1f73d5'
             'bd2b786be724818cf232129ecd432f305a5fdecc298a3e503a1e9182cad6a707'
             '2ea1f157ab31feb18b0d8ac117a1820174a4b2b9bdaee2027c1fbc2c287e1caa'
             'd3dedc100163ce00ae5889a6039a1fff11ae32b676ae5e83ae9182509f80638d'
@@ -46,9 +44,6 @@ prepare() {
     # edit lines to remove functions that require wxgtk 3.1.x
     sed -e 's:m_textCtrlOfflineActivationKey->ForceUpper:// &:g' -i 'FreeFileSync/Source/ui/small_dlgs.cpp'
     sed -e 's:const double scrollSpeed =:& 6; //:g' -i 'wx+/grid.cpp'
-
-# remove assertion for libcurl version >1.67 (1.66 should be safe but slower)
-    patch --binary -p1 -i ignore_curl_version_assertion.patch
 
 # add LINKFLAGS that were removed but that we still need in our case
     patch -p1 -i revert_linkflags.patch
