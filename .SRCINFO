@@ -1,0 +1,33 @@
+pkgbase = python-doh-proxy
+	pkgdesc = Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/facebookexperimental/doh-proxy
+	install = doh-proxy.install
+	arch = x86_64
+	license = BSD
+	makedepends = python>=3.7
+	depends = python-aioh2
+	depends = python-aiohttp
+	depends = python-aiohttp_remotes
+	depends = python-dnspython
+	backup = etc/conf.d/doh-httpproxy
+	backup = etc/conf.d/doh-proxy
+	backup = etc/conf.d/doh-stub
+	source = https://github.com/facebookexperimental/doh-proxy/archive/v0.0.9.tar.gz
+	source = doh-httpproxy.confd
+	source = doh-httpproxy.service
+	source = doh-proxy.confd
+	source = doh-proxy.service
+	source = doh-stub.confd
+	source = doh-stub.service
+	sha256sums = d8d0e4ae9e34a0394395463b209c76f60cb8e8056b38f855aa217ad7af8c2873
+	sha256sums = 41da4dc7e2dc92f75f205ae3302f4af6ac6ea7010cb18da788b02bece8a203de
+	sha256sums = d637e19f8412c0ebfea4f2eb20a594d57b1e2fdce386505c974c27de190c124b
+	sha256sums = 48bc8a1b0f2ba0f4181e5c1ad28214e6c89670652f0bc9b93234cd49e522984b
+	sha256sums = a08214e85ce485f4d2964c8d9943b30c92cd9353d19e31ddbc571c3cfb70846d
+	sha256sums = 2996a6d996aee85852757b577ca462460b7c8989dd0d97aa71a68a423209de76
+	sha256sums = 83df49c7ea461a71e9b63fae437fba3c4dd03048ba3d99c3022e75c866606a8a
+
+pkgname = python-doh-proxy
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=DoH Proxy HTTP Listener
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/doh-httpproxy
+ExecStart=/usr/bin/doh-httpproxy --upstream-resolver $NS --port $PORT --listen-address $ADDR
+
+[Install]
+WantedBy=multi-user.target

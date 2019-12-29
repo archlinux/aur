@@ -1,0 +1,6 @@
+NS=127.0.0.1
+UPSTREAMPORT=54
+ADDR=127.0.0.1
+LISTENPORT=443
+CERT=/etc/ssl/private/fullchain.pem
+KEY=/etc/ssl/private/privkey.pem

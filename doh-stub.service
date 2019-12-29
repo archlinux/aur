@@ -1,0 +1,10 @@
+[Unit]
+Description=DoH Proxy Stub Resolver
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/doh-stub
+ExecStart=/usr/bin/doh-stub --listen-port $LISTENPORT --listen-address $ADDR --domain $DOMAIN --remote-address $NS
+
+[Install]
+WantedBy=multi-user.target

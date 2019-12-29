@@ -1,0 +1,8 @@
+post_install() {
+  /usr/sbin/systemctl daemon-reload
+}
+
+post_upgrade() {
+  /usr/sbin/systemctl daemon-reload
+}
+

@@ -1,0 +1,3 @@
+NS=127.0.0.1
+CERT=/etc/ssl/private/fullchain.pem
+KEY=/etc/ssl/private/privkey.pem

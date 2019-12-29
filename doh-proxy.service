@@ -1,0 +1,10 @@
+[Unit]
+Description=DoH Proxy HTTPS/2 Listener
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/doh-proxy
+ExecStart=/usr/bin/doh-proxy --upstream-resolver $NS --upstream-port $UPSTREAMPORT --listen-address $ADDR --listen-port $LISTENPORT --certfile $CERT --keyfile $KEY
+
+[Install]
+WantedBy=multi-user.target

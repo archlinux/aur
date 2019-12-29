@@ -1,0 +1,4 @@
+PORT=5353
+ADDR=127.0.0.1
+DOMAIN=localdomain
+NS=127.0.0.1
