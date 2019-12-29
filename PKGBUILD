@@ -5,7 +5,7 @@
 
 # Maintainer: Martín Pizarro Ascui <martinpiz097@gmail.com>
 pkgname=xpress-player
-pkgver=1.1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Java Swing desktop music player"
@@ -50,5 +50,3 @@ package() {
 	#echo "java -jar -Xms32m -Xmx256m ${dir}/XpressPlayer.jar"  >> "${bindir}/xpress-player"
 	#chmod 777 "${bindir}/xpress-player"
 }
-
-md5sums=('fc9b136bb149019a8517f96068e31b7e')
