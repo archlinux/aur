@@ -9,7 +9,6 @@ arch=('x86_64')
 url="https://v.qq.com"
 license=('custom:tencent')
 depends=('libappindicator-gtk3' 'nss' 'libxss' 'xdg-utils' 'libsecret' 'libnotify')
-conflicts=('deepin-qq-im')
 source=(
   "https://dldir1.qq.com/qqtv/linux/Tenvideo_universal_${pkgver}_amd64.deb"
   "https://www.qq.com/contract20180827.htm"
