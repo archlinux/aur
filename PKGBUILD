@@ -1,7 +1,7 @@
 # Maintainer: Fernando Guevara <admin@ebadoo.com>
 
 pkgname=ebadoo-desktop-schemas
-pkgver=3.34.0.r0.ebb001
+pkgver=3.34.0.r0.ebb003
 pkgrel=1
 pkgdesc="Custom settings schemas for ebadoo-shell"
 arch=(any)
