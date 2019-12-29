@@ -2,7 +2,7 @@
 
 pkgname=nomad
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Distributed, Highly Available, Datacenter-Aware Scheduler"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
 url="https://nomadproject.io/"
