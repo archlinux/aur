@@ -1,0 +1,135 @@
+Submitted by:            DJ Lucas (dj_AT_linuxfromscratch_DOT_org)
+Date:                    2019-12-29
+Initial Package Version: 0.2.2
+Upstream Status:         Submitted
+Origin:                  https://github.com/URenko/aioh2/commit/933e5159aaef540d8154274cf08747ca17c878e8
+                         https://github.com/URenko/aioh2/commit/8c1b5ab2399443087795fe52b71e43b652b1031f
+Description:             Fixes build issues on Python-3.7+
+
+
+From e8105131ac13817f9d8dd432e2827a736085c69f Mon Sep 17 00:00:00 2001
+From: takeshix <takeshix@adversec.com>
+Date: Wed, 19 Dec 2018 15:01:43 +0100
+Subject: [PATCH] Make aioh2 work with Python >3.4
+
+The previous check for ensure_future() fails for Python 3.7. This fix
+should work for Python 3.4-3.7 and newer.
+---
+ aioh2/helper.py   | 6 +++---
+ aioh2/protocol.py | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/aioh2/helper.py b/aioh2/helper.py
+index 3717931..9804564 100644
+--- a/aioh2/helper.py
++++ b/aioh2/helper.py
+@@ -4,7 +4,7 @@
+ 
+ from .protocol import H2Protocol
+ 
+-__all__ = ['open_connection', 'start_server']
++__all__ = ['open_connection', 'start_server', 'async_task']
+ if hasattr(socket, 'AF_UNIX'):
+     __all__.extend(['open_unix_connection', 'start_unix_server'])
+ 
+@@ -84,6 +84,6 @@ def factory():
+ 
+ 
+ if hasattr(asyncio, 'ensure_future'):  # Python >= 3.5
+-    async_task = asyncio.ensure_future
++    async_task = getattr(asyncio, 'ensure_future')
+ else:
+-    async_task = asyncio.async
++    async_task = getattr(asyncio, 'async')
+diff --git a/aioh2/protocol.py b/aioh2/protocol.py
+index b4f1247..101c291 100644
+--- a/aioh2/protocol.py
++++ b/aioh2/protocol.py
+@@ -10,7 +10,7 @@
+ from h2.connection import H2Connection
+ from h2.exceptions import NoSuchStreamError, StreamClosedError, ProtocolError
+ 
+-from . import exceptions
++from . import exceptions, async_task
+ 
+ __all__ = ['H2Protocol']
+ logger = getLogger(__package__)
+@@ -380,7 +380,7 @@ def set_handler(self, handler):
+         if self._handler:
+             raise Exception('Handler was already set')
+         if handler:
+-            self._handler = asyncio.async(handler, loop=self._loop)
++            self._handler = async_task(handler, loop=self._loop)
+ 
+     def close_connection(self):
+         self._transport.close()
+From 8c1b5ab2399443087795fe52b71e43b652b1031f Mon Sep 17 00:00:00 2001
+From: URenko <urenko@github.com>
+Date: Mon, 28 Jan 2019 13:22:34 +0800
+Subject: [PATCH] Fix async_task
+
+---
+ aioh2/helper.py   | 7 +------
+ aioh2/protocol.py | 5 +++++
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/aioh2/helper.py b/aioh2/helper.py
+index 9804564..d81dfba 100644
+--- a/aioh2/helper.py
++++ b/aioh2/helper.py
+@@ -4,7 +4,7 @@
+ 
+ from .protocol import H2Protocol
+ 
+-__all__ = ['open_connection', 'start_server', 'async_task']
++__all__ = ['open_connection', 'start_server']
+ if hasattr(socket, 'AF_UNIX'):
+     __all__.extend(['open_unix_connection', 'start_unix_server'])
+ 
+@@ -82,8 +82,3 @@ def factory():
+         # noinspection PyArgumentList
+         return (yield from loop.create_unix_server(factory, path, **kwargs))
+ 
+-
+-if hasattr(asyncio, 'ensure_future'):  # Python >= 3.5
+-    async_task = getattr(asyncio, 'ensure_future')
+-else:
+-    async_task = getattr(asyncio, 'async')
+diff --git a/aioh2/protocol.py b/aioh2/protocol.py
+index 7ea86f1..fba886b 100644
+--- a/aioh2/protocol.py
++++ b/aioh2/protocol.py
+@@ -15,6 +15,11 @@
+ __all__ = ['H2Protocol']
+ logger = getLogger(__package__)
+ 
++if hasattr(asyncio, 'ensure_future'):  # Python >= 3.5
++    async_task = getattr(asyncio, 'ensure_future')
++else:
++    async_task = getattr(asyncio, 'async')
++
+ 
+ @asyncio.coroutine
+ def _wait_for_events(*events_):
+From 933e5159aaef540d8154274cf08747ca17c878e8 Mon Sep 17 00:00:00 2001
+From: URenko <18209292+URenko@users.noreply.github.com>
+Date: Sat, 26 Jan 2019 12:42:37 +0800
+Subject: [PATCH] Update protocol.py
+
+---
+ aioh2/protocol.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/aioh2/protocol.py b/aioh2/protocol.py
+index 101c291..7ea86f1 100644
+--- a/aioh2/protocol.py
++++ b/aioh2/protocol.py
+@@ -10,7 +10,7 @@
+ from h2.connection import H2Connection
+ from h2.exceptions import NoSuchStreamError, StreamClosedError, ProtocolError
+ 
+-from . import exceptions, async_task
++from . import exceptions
+ 
+ __all__ = ['H2Protocol']
+ logger = getLogger(__package__)

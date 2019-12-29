@@ -1,0 +1,24 @@
+pkgbase = python-aioh2
+	pkgdesc = Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/decentfox/aioh2
+	arch = x86_64
+	license = BSD
+	makedepends = python-coverage
+	makedepends = python-cryptography
+	makedepends = python-pyaml
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-tox
+	makedepends = python-watchdog
+	makedepends = python-wheel
+	depends = python-h2
+	depends = python-priority
+	source = https://github.com/decentfox/aioh2/archive/v0.2.2.tar.gz
+	source = aioh2-upstream-fixes-1.patch
+	sha256sums = 250f79bfb4535225a6507d047427c0f94a1e3974a2b64b51ff3fef8970352d9a
+	sha256sums = 398fb996756899247a0836739821062681c09b46206ca64fba8a1d2cd721a3ec
+
+pkgname = python-aioh2
+
