@@ -1,6 +1,6 @@
 pkgbase = clisp-new-clx
 	pkgdesc = ANSI Common Lisp interpreter, compiler and debugger
-	pkgver = 2.49
+	pkgver = 2.50
 	pkgrel = 5
 	url = http://clisp.cons.org/
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = clisp-new-clx
 	conflicts = clisp
 	options = !makeflags
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/clisp/clisp-2.49.tar.bz2
-	md5sums = 1962b99d5e530390ec3829236d168649
+	source = https://gitlab.com/gnu-clisp/clisp/-/archive/clisp-2.50/clisp-clisp-2.50.tar.bz2
+	md5sums = e1813423a98973c2a43b3690c563c024
 
 pkgname = clisp-new-clx
 
