@@ -2,11 +2,12 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=0.9.29
+pkgver=0.9.30
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('2681e662c0593b34d47f64fe7a91b56a36e00bd98318e4ad8f6e984d05d7d9c2f3ecdc3849241b5f8c574ba00016d29de4d9877665aa2aeb764f7dc793e5ea25')
+sha512sums=('ea9df078cc411a26a54fde3606d010303725e8f663a7643ea6d6a6aedf15462ef06ad08f7b0b757bd344f4c1550902c63beae1a23c77e32b0c6f809616dd92a0'
+            )
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
