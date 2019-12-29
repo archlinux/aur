@@ -28,7 +28,6 @@ prepare() {
 	[ -f "$srcdir/$_execscript" ] && cp "$srcdir/$_execscript" "$srcdir/$_tmpappfolder/$_execscript"
     msg "Generating menu shortcut..."
 	if [ -x /usr/bin/xdg-mime ]; then
-		mkdir -p $pkgdir/usr/share/applications
 		echo "[Desktop Entry]
 Type=Application
 Encoding=UTF-8
