@@ -35,9 +35,6 @@ package() {
 
   # Install development utils
   install -s -m 755 \
-    "output/workspace-library-updater" \
-    "${pkgdir}/usr/bin/librepcb-workspace-library-updater"
-  install -s -m 755 \
     "output/uuid-generator" \
     "${pkgdir}/usr/bin/librepcb-uuid-generator"
 }
