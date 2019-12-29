@@ -1,7 +1,7 @@
 # Maintainer: Yves G. <theYinYeti@yalis.fr>
 
 pkgname=collabora-online-server-nodocker
-pkgver=4.0.5
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
@@ -35,7 +35,6 @@ sha1sums=(
 
 # From deb’s conffiles
 backup=(
-  opt/collaboraoffice6.0/share/psprint/psprint.conf
   etc/apache2/conf-available/loolwsd.conf
   etc/loolwsd/loolkitconfig.xcu
   etc/loolwsd/loolwsd.xml
@@ -77,20 +76,11 @@ _upstream_equiv='
   libc6               = gcc-libs
   libcap2             = libcap
   libcap2-bin         = libcap
-  libcups2            = libcups
-  libexpat1           = 
   libgcc1             = gcc-libs
-  libgl1-mesa-glx     = mesa-libgl
   libpam0g            = pam
-  libpcre3            = pcre
   libpng12-0          = libpng12
-  libsm6              = libsm
   libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
-  libxcb-render0      = libxcb
-  libxcb-shm0         = libxcb
-  libxinerama1        = libxinerama
-  libxrender1         = libxrender
   locales-all         = glibc
   zlib1g              = zlib
 '
@@ -164,20 +154,12 @@ package() {
   # /lib is deprecated
   mv {lib,usr/lib}
 
-  # link Debian’s libpcre.so.3 to the “standard” naming
-  # (https://archives.gentoo.org/gentoo-dev/message/676cd8b16a7255446355744d91636880)
-  ln -s /usr/lib/libpcre.so usr/lib/libpcre.so.3
-
   # use systemd for user allocation
   install -Dm0644 "$srcdir"/sysusers usr/lib/sysusers.d/$pkgname.conf
 
   # replace cron with systemd
   rm -rf etc/cron.d
   install -Dm0644 "$srcdir"/tmpfiles usr/lib/tmpfiles.d/$pkgname.conf
-
-  # fix the systemd unit path
-  mv usr/lib{/lib,}/systemd
-  rmdir usr/lib/lib
 
   # add dependency on systemd
   sed -i '/^\[Unit\]/ a \
@@ -186,35 +168,11 @@ After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
   # keep the cert-making script from the Dockerfile for reference
   install -Dm0644 "$srcdir"/mkcert_example.sh usr/share/doc/loolwsd/example.mkcert.sh
 
-  # actually provide libreoffice, without conflicting with Archlinux’ libreoffice
-  mkdir -p usr/share/applications
-  sed -i 's#^Exec=collaboraoffice6.0#Exec=/opt/collaboraoffice6.0/program/soffice#' \
-    opt/collaboraoffice6.0/share/xdg/*
-  ls -1 opt/collaboraoffice6.0/share/xdg \
-  | while read f; do
-    case "$f" in
-    base.desktop)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/lc_basicshapes.can.svg ;;
-    calc.desktop)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/x-office-spreadsheet.svg ;;
-    draw.desktop)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/lc_gallery.svg ;;
-    impress.desktop)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/x-office-presentation.svg ;;
-    math.desktop)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/lc_symbolshapes.brace-pair.svg ;;
-    writer.desktop)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/x-office-document.svg ;;
-    *)
-      icon=/usr/share/loolwsd/loleaflet/dist/images/toolbar-bg.svg ;;
-    esac
-    sed -i "s#^Icon=.*#Icon=${icon}#" opt/collaboraoffice6.0/share/xdg/"$f"
-    mv opt/collaboraoffice6.0/share/xdg/"$f" usr/share/applications/"collaboraoffice-$f"
-  done
-  rm -rf opt/collaboraoffice6.0/share/xdg
+  # do not provide libreoffice for the desktop (seems broken…)
+  rm -rf opt/collaboraoffice6.2/share/xdg
 
   # fix lib + desktop files’ permissions
-  chmod a+x opt/collaboraoffice6.0/program/lib*.so usr/lib/libPoco* usr/share/applications/*.desktop
+  chmod a+x opt/collaboraoffice6.2/program/lib*.so
 
   # https://github.com/CollaboraOnline/Docker-CODE/issues/32
   [ -d etc/sysconfig ] || mkdir etc/sysconfig
