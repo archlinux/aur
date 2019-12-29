@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=agedu-git
-pkgver=r138.80c7beb
+pkgver=20190629.r140.66cb14d
 pkgrel=1
 pkgdesc="Track down wasted disk space"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  printf "r%s.%s" $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" $(git log -1 --format="%cd" --date=short|tr -d - ) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
