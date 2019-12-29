@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 14 Early-Access Build.
-	pkgver = 14b28
+	pkgver = 14b29
 	pkgrel = 1
 	url = http://jdk.java.net/14
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=14
 	provides = java-runtime-headless=14
 	provides = java-runtime-headless-openjdk=14
-	source = https://download.java.net/java/early_access/jdk14/28/GPL/openjdk-14-ea+28_linux-x64_bin.tar.gz
-	sha256sums = ce2e3acf3b20426545a2e835cad33b21351359c67bf30a7722aaa21d97ee5862
+	source = https://download.java.net/java/early_access/jdk14/29/GPL/openjdk-14-ea+29_linux-x64_bin.tar.gz
+	sha256sums = 16981e7212ed6035580dff619f93356f707b75f6abfca9a3df7b45a290e8f521
 
 pkgname = java-openjdk-ea-bin
 
