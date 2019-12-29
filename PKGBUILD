@@ -5,7 +5,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname='unreal-engine'
 pkgver=4.24.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -72,8 +72,7 @@ build() {
 
 package() {
   # Install dir
-#   dir="opt/$pkgname"
-  dir="/mnt/Files/Programs/Linux/$pkgname"
+  dir="opt/$pkgname"
 
   # Desktop entry
   if [ "$dir" != "opt/$pkgname" ] # Set new path if dir changed
