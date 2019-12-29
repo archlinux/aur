@@ -1,0 +1,23 @@
+pkgbase = red-ggpo
+	pkgdesc = New online arcade gaming platform using lastest GGPO technology and netcode.
+	pkgver = 1
+	pkgrel = 1
+	url = https://redggpo.com/
+	arch = any
+	license = custom
+	makedepends = gendesk
+	makedepends = rsync
+	makedepends = icoutils
+	depends = wine
+	depends = lib32-mpg123
+	depends = xdg-utils
+	depends = gconf
+	source = red-ggpo.zip::https://raw.githubusercontent.com/han0idx/emu/master/ggfbneo.v01.zip
+	source = start.sh::https://raw.githubusercontent.com/rafaelcruzpb/red-ggpo-linux/master/start-with-wineprefix.sh
+	source = icon.png::https://raw.githubusercontent.com/rafaelcruzpb/red-ggpo-linux/master/icon.png
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = red-ggpo
+
