@@ -2,11 +2,11 @@
 # Contributor: Ray Hogenson <rayhogenson at gmail dot com>
 pkgname=par
 pkgver=1.52
-pkgrel=7
+pkgrel=8
 pkgdesc='Paragraph reformatter'
 url='http://www.nicemice.net/par/'
 depends=()
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64' 'arm7h' 'arm6h' 'arm')
 license=('custom')
 source=('http://www.nicemice.net/par/Par152.tar.gz'
 	'http://sysmic.org/dl/par/par-1.52-i18n.4.patch')
