@@ -4,7 +4,7 @@
 
 pkgname=clx-git
 _clname=clx
-pkgver=r320.c2931ec
+pkgver=r377.5db3a0d
 pkgrel=1
 arch=('any')
 pkgdesc="An X11 client for Common Lisp"

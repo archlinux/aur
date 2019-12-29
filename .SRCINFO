@@ -1,6 +1,6 @@
 pkgbase = clx-git
 	pkgdesc = An X11 client for Common Lisp
-	pkgver = r320.c2931ec
+	pkgver = r377.5db3a0d
 	pkgrel = 1
 	url = https://github.com/sharplispers/clx
 	install = clx.install
