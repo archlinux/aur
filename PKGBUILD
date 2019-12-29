@@ -2,13 +2,13 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.0.1.r22.g3abcf057
+pkgver=3.1.r2.gf8b92b60
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
 arch=('x86_64')
 license=('GPL2')
-depends=('python-pyqt5' 'python-numpy' 'python-sip' 'hicolor-icon-theme' 'cblas')
+depends=('python-pyqt5' 'python-numpy' 'hicolor-icon-theme' 'cblas')
 makedepends=('git' 'sip')
 optdepends=('ghostscript: for EPS/PS output'
 	    'python-pyfits: for reading files in FITS format'
@@ -27,6 +27,9 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
+  [[ -d NEW ]] || mkdir NEW
+  ln -s /usr/lib/python3.8/site-packages/PyQt5/bindings/ NEW/PyQt5
+  export SIP_DIR=NEW/
   python setup.py build
 }
 
