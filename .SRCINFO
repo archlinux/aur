@@ -1,0 +1,23 @@
+pkgbase = nginx-mainline-mod-fancyindex-git
+	pkgdesc = Fancy indexes module for the Nginx web server
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/aperezdc/ngx-fancyindex
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = CUSTOM
+	makedepends = git
+	depends = nginx-mainline=1.17.7
+	provides = nginx-mainline-mod-fancyindex
+	conflicts = nginx-mainline-mod-fancyindex
+	source = https://nginx.org/download/nginx-1.17.7.tar.gz
+	source = https://nginx.org/download/nginx-1.17.7.tar.gz.asc
+	source = ngx_fancyindex::git+https://github.com/aperezdc/ngx-fancyindex.git
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	sha256sums = b62756842807e5693b794e5d0ae289bd8ae5b098e66538b2a91eb80f25c591ff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nginx-mainline-mod-fancyindex-git
+
