@@ -12,9 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/miniMola124/gumdl.releases/
 sha512sums=('e695b5eb06e181472ab0389f90354f2361ebb63abbe805aa212389299ff3e79404dcd963b582a89b09a32d9cce061cbd01e096560f8c509ba1958f854f64dc83')
 
 # build() {
-  ls .
-  pwd
-  cd $pkgname-$pkgver
+  cd src/$pkgname-$pkgver
   sudo install gumdl /usr/bin/
 # }
 
