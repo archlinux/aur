@@ -17,7 +17,7 @@ pkgbase = tinygo-bin
 	source = https://github.com/tinygo-org/tinygo/releases/download/v0.11.0/tinygo0.11.0.linux-amd64.tar.gz
 	source = https://raw.githubusercontent.com/tinygo-org/tinygo/v0.11.0/LICENSE
 	sha256sums = 01f3d5bb3962152a7fc18119f6e332cd5ef395181bd101cd35b61f575057dea9
-	sha256sums = 5a12ca662a49786a0f16f0ffacb6afa30bdc0e953441dbe53e742385d7dcb239
+	sha256sums = e6efa1b804521f915053451d0c84f4824751539003ca046a4977549e02eff2f3
 
 pkgname = tinygo-bin
 
