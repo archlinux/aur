@@ -5,13 +5,18 @@ pkgver=0.8.0
 pkgrel=1
 pkgdesc="Standalone JIT-style runtime for WebAssembly, using Cranelift"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/CraneStation/wasmtime"
+url="https://github.com/bytecodealliance/wasmtime"
 license=('APACHE2')
 depends=()
 makedepends=('cargo')
 options=()
-source=("https://github.com/CraneStation/wasmtime/archive/v${pkgver}.tar.gz")
-sha384sums=('89005894df1d1a43a75636ed50637c8a5b9d22b17f67e4a3d9c26188d32fd76d7e10fbc3af7826648c5306318b670810')
+source=("${pkgname}-${pkgver}::git+https://github.com/bytecodealliance/wasmtime.git#tag=v${pkgver}")
+sha384sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    git submodule update --init --recursive
+}
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
