@@ -1,7 +1,7 @@
 # Maintainer: Viktor Schneider <info[at]vjs[dot]io>
 pkgname=skyr-url-git
-_commit=82f9560
-pkgver=1.$_commit
+_commit=a198433
+pkgver=2.$_commit
 pkgrel=1
 pkgdesc="A C++ library that implements the URL WhatWG specification"
 arch=('i686' 'x86_64')
