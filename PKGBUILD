@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 install=.INSTALL
 pkgdesc="一个支持全局透明代理且兼容 SS、SSR 的 V2Ray Linux GUI 客户端"
