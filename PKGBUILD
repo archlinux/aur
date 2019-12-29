@@ -3,11 +3,11 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=2.0.0.rc4.r659.g4a6b843f1
-pkgrel=2
+pkgver=2.0.0.rc4.r1127.g2df3eb045
+pkgrel=1
 depends=('openssl' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'openh264')
-makedepends=('git' 'krb5' 'cmake' 'damageproto')
+makedepends=('git' 'krb5' 'cmake' 'xorgproto')
 arch=('i686' 'x86_64')
 url="http://www.freerdp.com/"
 license=('GPL')
