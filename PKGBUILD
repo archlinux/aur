@@ -1,3 +1,7 @@
+# Maintainer: RyuaNerin <admin@ryuar.in>
+# Contributor: hdhoang <arch@hdhoang.space>
+# Contributor: jkl
+
 pkgname=nginx-mainline-mod-fancyindex-git
 pkgver=0.4.3
 pkgrel=1
