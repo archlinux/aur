@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=NanoVNA Saver
+Comment=DeEmbed raw S-parameters (TouchStone files) to calibrated data
+Exec=NanoVNASaver
+Icon=nanovna-saver.png
+Terminal=false
+
+Type=Application
+Categories=System
+StartupNotify=false
