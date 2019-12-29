@@ -3,12 +3,12 @@ _pkgname=zvvonlinetv
 pkgtest=test
 pkgname=${_pkgname}-$pkgtest
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="TV | IPTV | youtube player(testing)"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
-depends=('pyqt5-common' 'python-pyqt5' 'mpv' 'qt5-multimedia' 'ffmpeg' 'youtube-dl') 
+depends=('python-pyqt5' 'mpv' 'qt5-multimedia' 'ffmpeg' 'youtube-dl') 
 conflicts=('zvvonlinetv')
 source=("${pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=17lWM4Kmg-xS4I31ygl16tKo3Y1TdcSwg")
 md5sums=('5a543ce9294aa6d2c3b77450b573a4e4')

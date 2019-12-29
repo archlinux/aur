@@ -1,12 +1,11 @@
 pkgbase = zvvonlinetv-test
 	pkgdesc = TV | IPTV | youtube player(testing)
 	pkgver = 5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zvvubuntu.blogspot.com
 	arch = i386
 	arch = x86_64
 	license = custom
-	depends = pyqt5-common
 	depends = python-pyqt5
 	depends = mpv
 	depends = qt5-multimedia
