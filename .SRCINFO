@@ -1,6 +1,6 @@
 pkgbase = fonttosfnt-git
 	pkgdesc = Convert a set of bdf or pcf fonts into a bitmap only sfnt (otb)
-	pkgver = r86.cfb4d64
+	pkgver = r87.d06059e
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/app/fonttosfnt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fonttosfnt-git
 	makedepends = make
 	makedepends = autoconf
 	makedepends = automake
-	makedepends = xproto
+	makedepends = xorgproto
 	makedepends = xorg-util-macros
 	depends = libfontenc
 	depends = freetype2
