@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.5.arch1
+pkgver=5.4.6.arch3
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -130,8 +130,10 @@ prepare() {
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
     msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.4 by TkG"
-    for MyPatch in 0005-v5.4_undead-pds099o.patch 0005-glitched-pds.patch
+    for MyPatch in 0005-v5.4_undead-pds099o.patch \
+                   0005-glitched-pds.patch
     do
+        msg2 "Patching with $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
     done
 
