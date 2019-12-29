@@ -1,7 +1,7 @@
 pkgbase = zvvbook
 	pkgdesc = fb2, epub & pdf reader
 	pkgver = 5.1_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zvvubuntu.blogspot.com
 	arch = i386
 	arch = x86_64
