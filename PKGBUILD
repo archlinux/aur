@@ -33,7 +33,7 @@ prepare() {
 Type=Application
 Encoding=UTF-8
 Name=Red GGPO Emulator
-Exec=$pkgdir/opt/$pkgname/$_execscript %U
+Exec=/opt/$pkgname/$_execscript %U
 Icon=$pkgname
 Terminal=false
 MimeType=x-scheme-handler/ggpo
