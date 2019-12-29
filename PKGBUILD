@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=stumpwm-contrib-git
-pkgver=r190.aeb3f6b
+pkgver=r280.0eeeca2
 pkgrel=1
 pkgdesc="Collection of StumpWM modules"
 arch=('any')
