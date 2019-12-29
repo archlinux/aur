@@ -16,6 +16,7 @@ depends=(
   'python-setuptools'
   'poezio-git'
   'python-slixmpp-omemo'
+  'python-omemo-backend-signal'
 )
 makedepends=('git')
 

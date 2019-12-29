@@ -11,6 +11,7 @@ pkgbase = poezio-omemo
 	depends = python-setuptools
 	depends = poezio-git
 	depends = python-slixmpp-omemo
+	depends = python-omemo-backend-signal
 	provides = poezio-omemo
 	conflicts = poezio-omemo
 	source = poezio-omemo::git+https://lab.louiz.org/poezio/poezio-omemo#tag=v0.1.0
