@@ -1,0 +1,23 @@
+Description: Disables loading the previous way media was sent, so it always selects either
+photo or album by default.
+Credits: udf
+
+diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
+index 2f4c45c48..ed9bf4bb6 100644
+--- a/Telegram/SourceFiles/boxes/send_files_box.cpp
++++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
+@@ -1498,14 +1498,6 @@ void SendFilesBox::initSendWay() {
+ 				? SendFilesWay::Album
+ 				: SendFilesWay::Photos;
+ 		}
+-		const auto way = _controller->session().settings().sendFilesWay();
+-		if (way == SendFilesWay::Files) {
+-			return way;
+-		} else if (way == SendFilesWay::Album) {
+-			return _list.albumIsPossible
+-				? SendFilesWay::Album
+-				: SendFilesWay::Photos;
+-		}
+ 		return (_list.albumIsPossible && !_albumPhotosCount)
+ 			? SendFilesWay::Album
+ 			: SendFilesWay::Photos;

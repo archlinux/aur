@@ -1,0 +1,13 @@
+Catch2
+GSL
+crl
+libtgvoip
+rlottie
+tdesktop
+variant
+xxHash
+
+src
+pkg
+
+*.pkg.tar*
