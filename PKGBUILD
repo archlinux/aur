@@ -4,12 +4,12 @@ pkgname=zvvradio
 _pkgname=ZVVRadio
 pkgver=2.0
 #_pkgver=2
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="radio player"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
-depends=('pyqt5-common' 'python-pyqt5' 'vlc') 
+depends=('python-pyqt5' 'vlc') 
 conflicts=("zvvradio-git")
 source=("${_pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=1WBO8Wged20zAb1_8xbWaRNUKhQg4VlXy" "$pkgname" "Radio.desktop")
 md5sums=('970583d63a06fed0d2ee8079a61a3e13'
