@@ -2,13 +2,14 @@
 _pkgname='hlsdl'
 pkgname="$_pkgname-git"
 pkgver='r180.0fa701d'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='C program to download VoD HLS (.m3u8) files - git version'
 arch=('x86_64')
 url="https://github.com/selsta/$_pkgname"
 license=('MIT')
 depends=('curl' 'openssl')
 makedepends=('make' 'git')
+provides=("$_pkgname")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
