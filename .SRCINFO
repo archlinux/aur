@@ -1,7 +1,7 @@
 pkgbase = unreal-engine
 	pkgdesc = A 3D game engine by Epic Games which can be used non-commercially for free.
 	pkgver = 4.24.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unrealengine.com/
 	arch = x86_64
 	license = custom:UnrealEngine
@@ -13,7 +13,7 @@ pkgbase = unreal-engine
 	depends = python
 	depends = lld
 	depends = xdg-user-dirs
-	optdepends = clion: build system for projects
+	optdepends = qmake: build system for projects
 	optdepends = cmake: build system for projects
 	optdepends = qtcreator: IDE for projects
 	optdepends = codelite: IDE for projects
