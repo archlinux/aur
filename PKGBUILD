@@ -1,45 +1,52 @@
-# Maintainer: Alexis Couronne <alexis@skitoo.net>
-
-# I maintain this on Github, feel free to submit a pull request to
-# https://github.com/skitoo/magicavoxel-archlinux
+# Maintainer: Artem Varaksa <artvaraksa@gmail.com>
+# Contributor: Alexis Couronne <alexis@skitoo.net>
 
 pkgname=magicavoxel
-pkgver=0.98.2
+version_main=0.99.4
+version_suffix=2
+pkgver="$version_main.$version_suffix"
 pkgrel=1
-pkgdesc='A free lightweight 8-bit voxel editor and interactive path tracing renderer, enjoy :)'
-arch=('any')
+pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer'
+arch=('x86_64')
 url="http://ephtracy.github.io/"
-source=("http://192.241.207.218/uploads/MagicaVoxel-${pkgver}-win.zip"
-        "http://ephtracy.github.io/favicon.png"
-        "magicavoxel"
-        "magicavoxel.desktop"
-        )
-license=("Feel free to use it for any project, no commercial licences required, credits are appreciated")
+source=("https://github.com/ephtracy/ephtracy.github.io/releases/download/$version_main/MagicaVoxel-$pkgver-alpha-win64.zip"
+	      "https://github.com/ephtracy/ephtracy.github.io/releases/download/$version_main/plugin-win64.zip"
+        'magicavoxel'
+        'magicavoxel.desktop'
+        'LICENSE')
+license=('custom')
 depends=(wine)
-makedepends=(unzip)
-noextract=("MagicaVoxel-${pkgver}-win.zip")
-md5sums=('97d6dc76fdb02bd4b77bfb1c38a648eb'
-         '64ba6d1187827aa3ff3577c9ef9419fc'
-         'f4c23c8e58253215628e3c0acd14522e'
-         'd6c5be935d1588955be51ffbb2c1516b')
+makedepends=(unzip icoutils)
+noextract=("MagicaVoxel-$pkgver-alpha-win64.zip"
+	         'plugin-win64.zip')
+sha256sums=('1e52c08448527814aecc3fa2c1051ad9401a9ce43dfbb86ce03cd74e6fe81820'
+	          'a488d17099e8b42478043fda21c0867c3f6bd14f6e41a8381edefff95870277a'
+            '674c96989ad28f666230ff9e53a07b2f68a3173f4db14d6014e001042f82a822'
+            '29cb5e2a6a3791476c49b2fc4ac9136aa2a2f31cb5fc4beaf628e965f1f7bc60'
+            '16dae99105daf174b752cd8f55be2928bccb617dec6297bd32c672267e58334e')
 
-build () {
-  unzip -o "MagicaVoxel-${pkgver}-win.zip"
+prepare() {
+  unzip -o "MagicaVoxel-$pkgver-alpha-win64.zip"
+  unzip -o plugin-win64.zip -d "MagicaVoxel-$pkgver-alpha-win64"
 }
 
-package () {
-  install -dm755 "${pkgdir}/usr/share/magicavoxel"
-  cp -ra "${srcdir}/MagicaVoxel-${pkgver}-win/." "${pkgdir}/usr/share/magicavoxel"
-  install -m644 favicon.png "${pkgdir}/usr/share/magicavoxel.png"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -m755 magicavoxel "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/applications"
-  install -m644 magicavoxel.desktop "${pkgdir}/usr/share/applications/magicavoxel.desktop"
-  install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-  install -m644 favicon.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/magicavoxel.png"
+build() {
+  wrestool -x --output=magicavoxel.ico -t14 "MagicaVoxel-$pkgver-alpha-win64/MagicaVoxel.exe"
+  icotool -x magicavoxel.ico -o magicavoxel.png
 }
 
-post_install() {
-  update-desktop-database -q
-  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+package() {
+  install -dm755 "$pkgdir/usr/share/magicavoxel"
+  cp -ra "$srcdir/MagicaVoxel-$pkgver-alpha-win64/." "$pkgdir/usr/share/magicavoxel"
+
+  install -dm755 "$pkgdir/usr/bin"
+  install -m755 magicavoxel "$pkgdir/usr/bin"
+
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -m644 magicavoxel.desktop "$pkgdir/usr/share/applications/magicavoxel.desktop"
+
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -m644 magicavoxel.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/magicavoxel.png"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
