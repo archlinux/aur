@@ -1,7 +1,7 @@
 diff -Naur wisprpep8/changes.rst wisprtimeout/changes.rst
 --- wisprpep8/changes.rst	2019-02-15 06:27:03.836857275 +0100
 +++ wisprtimeout/changes.rst	2019-02-15 06:25:46.474801521 +0100
-@@ -6,6 +6,8 @@
+@@ -9,6 +9,8 @@
  
  - Support Python 3 as well.
  

@@ -1,12 +1,15 @@
 diff -Naur wispr-release-1.0/changes.rst wisprpy3/changes.rst
 --- wispr-release-1.0/changes.rst	1970-01-01 01:00:00.000000000 +0100
 +++ wisprpy3/changes.rst	2019-02-15 06:22:13.418704328 +0100
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,16 @@
 +Changelog
 +=========
 +
 +1.1 - Unreleased
 +--------------------
++
++The following features have been back-ported to 1.0 for the package in the
++Arch Linux User Repository (AUR):
 +
 +- Support Python 3 as well.
 +
@@ -23,7 +26,7 @@ diff -Naur wispr-release-1.0/setup.py wisprpy3/setup.py
  from setuptools import setup
  
 -version = '1.0'
-+version = '1.1'
++version = '1.0.post4'
  
  setup(
          version=version,
