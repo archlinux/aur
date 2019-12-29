@@ -1,19 +1,24 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=BH
-_cranver=1.69.0-1
+_cranver=1.72.0-2
 pkgname=r-bh
-pkgver=1.69.0_1
+pkgver=1.72.0_2
 pkgrel=1
-pkgdesc="Provides free peer-reviewed portable C++ source libraries."
+pkgdesc="Boost C++ Header Files"
 url="https://cran.r-project.org/package=BH"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('BSL-1.0')
 depends=('r')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('d602666e5dae040489a1ed4f208f623b') 
+md5sums=('daddf6f12cd90976cdff4907bd262ec4') 
+
+build() {
+    cd "${srcdir}"
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
+}
 
 package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+    cd "${srcdir}"
+    install -dm0755 "$pkgdir/usr/lib/R/library"
+    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
 }
