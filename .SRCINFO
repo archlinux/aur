@@ -1,0 +1,23 @@
+pkgbase = orthcal-lightthemed
+	pkgdesc = An Orthodox Calendar for ARCH Linux
+	pkgver = 3.0.1
+	pkgrel = 0
+	url = https://gitlab.com/psposito/otrhcal
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pygtk
+	depends = python
+	depends = perl
+	depends = perl-gtk2-trayicon
+	depends = perl-dbi
+	depends = perl-dbd-sqlite
+	depends = perl-date-calc
+	depends = libappindicator-gtk3
+	provides = orthcal-lightthemed
+	conflicts = orthcal-darkthemed
+	source = https://gitlab.com/psposito/otrhcal/uploads/ee8340cb3551852d247e17ff5ae8b82d/orthcal-lightthemed-3.0.1.tar.bz2
+	sha256sums = SKIP
+
+pkgname = orthcal-lightthemed
+
