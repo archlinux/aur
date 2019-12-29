@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=VVV
+Type=Application
+Exec=vvv
+Icon=vvv
+Hidden=false
+Categories=Network;
+Comment=Virtual Volumes View
+StartupWMClass=vvv
