@@ -1,12 +1,12 @@
 pkgbase = lib32-nvidia-340xx-utils
-	pkgver = 340.107
-	pkgrel = 3
+	pkgver = 340.108
+	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86/340.107/NVIDIA-Linux-x86-340.107.run
-	sha512sums = 0add713942bcdb639d19b5c36f5e0cea14f9e07490191d46dfeba0515ede7700fd8e9467ec531d38329fe1e76bf45905e70e0d440e7bc2dc79c1d767eab03338
+	source = https://us.download.nvidia.com/XFree86/Linux-x86/340.108/NVIDIA-Linux-x86-340.108.run
+	sha512sums = cf122c4cf724737cc647bc3d115e853bfe17027d5070c5ed68caf78e0dab718e7345bf824d0e8b33489bf299957dab8ff249cb0f837c3d17b2bb60887afe2818
 
 pkgname = lib32-nvidia-340xx-utils
 	pkgdesc = NVIDIA drivers utilities (32-bit)
