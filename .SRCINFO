@@ -1,12 +1,12 @@
 pkgbase = rtorrent-ps
 	pkgdesc = Extended rTorrent distribution with UI enhancements, colorization, and some added features
-	pkgver = 1.1.r42.g37c9d4b
+	pkgver = 1.1.r43.g8be91ab
 	pkgrel = 1
 	url = https://github.com/pyroscope/rtorrent-ps
 	arch = any
 	license = GPL
-	depends = curl>=7.15.4
-	depends = libtorrent-ps>=1.0
+	depends = curl
+	depends = libtorrent-ps
 	depends = ncurses
 	depends = xmlrpc-c
 	provides = rtorrent
@@ -27,6 +27,7 @@ pkgbase = rtorrent-ps
 	source = ps-issue-515_all.patch
 	source = ps-item-stats-human-sizes_all.patch
 	source = ps-log_messages_all.patch
+	source = ps-max_scgi_size_all.patch
 	source = ps-object_std-map-serialization_all.patch
 	source = ps-silent-catch_all.patch
 	source = ps-ssl_verify_host_all.patch
@@ -54,6 +55,7 @@ pkgbase = rtorrent-ps
 	md5sums = c438a91cd3e58edebf39fce06587641a
 	md5sums = 2d34e8c86c1c6ed1354b55ca21819886
 	md5sums = a4f5a4da3397e4b1d71eb59a5e8e0279
+	md5sums = 0cbbbb2c87d046d8a39c3a6da13e7187
 	md5sums = 0fa551b7cba264bd906e32827d06700c
 	md5sums = e3f367abe42d28168008f99a9bf0f1d6
 	md5sums = cef14e9011d4b4af92536b02f8b611c2
