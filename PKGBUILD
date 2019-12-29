@@ -3,15 +3,14 @@
 
 pkgbase="g13"
 pkgname="g13-git"
-pkgver=20160120
-pkgrel=5
+pkgver=v1.0.1.r0.ge6ad66c
+pkgrel=1
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
-url="https://github.com/ecraven/g13"
+url="https://github.com/khampf/g13"
 license=('unknown')
-depends=('boost-libs')
-makedepends=('git' 'boost')
-source=("${pkgname}::git://github.com/ecraven/g13" "g13.tmpfiles" "g13.service")
+makedepends=('git')
+source=("${pkgname}::git://github.com/khampf/g13" "g13.tmpfiles" "g13.service")
 install="g13.install"
 sha256sums=('SKIP'
             'f96966012da236b2f6fd142fbad3a19524a9c7bf7eea43efdc684a07414a3589'
@@ -19,17 +18,12 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${pkgname}"
-  msg "Trying to read git version ..."
-  local desc=$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
-  if [ -z "$desc" ]; then
-    msg "Git version failed, using date of last commit ..."
-    # date of last commit as YYYYMMDD
-    git log -1 --date=format:%Y%m%d --format=%cd
-  fi
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  git checkout develop
   msg "Modifying udev 91-g13.rules ..."
   sed -r -i -e 's/MODE="0666"/MODE="0660", OWNER="g13", GROUP="g13"\n/' 91-g13.rules
   echo '
