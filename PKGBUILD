@@ -3,7 +3,7 @@
 pkgname=poezio-omemo-git
 _pkgname=poezio-omemo
 pkgrel=1
-pkgver=r2.e412506
+pkgver=r5.05310c1
 pkgdesc="OMEMO plugin for the Poezio XMPP console client"
 arch=('i686' 'x86_64')
 url="https://lab.louiz.org/poezio/poezio-omemo"
@@ -15,6 +15,7 @@ depends=(
   'python-setuptools'
   'poezio-git'
   'python-slixmpp-omemo-git'
+  'python-omemo-backend-signal-git'
 )
 makedepends=('git')
 
