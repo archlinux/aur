@@ -15,7 +15,8 @@ depends=('python-parsedatetime>=1.2'
          'python-keyring>=3.3'
          'python-dateutil>=2.2'
          'python-passlib>=1.6.2'
-         'python-asteval>=0.9.8')
+         'python-asteval>=0.9.8'
+         'python-xdg>=0.26')
 optdepends=('python-crypto: AES256-encrypted journal')
 source=("https://pypi.python.org/packages/source/j/$pkgname/$pkgname-${pkgver}.tar.gz")
 sha256sums=('473b0ec7836b838269c09a17462a98e4dcdafa139fbff2a237eb7ab83dcc316a')

@@ -14,6 +14,7 @@ pkgbase = jrnl
 	depends = python-dateutil>=2.2
 	depends = python-passlib>=1.6.2
 	depends = python-asteval>=0.9.8
+	depends = python-xdg>=0.26
 	optdepends = python-crypto: AES256-encrypted journal
 	source = https://pypi.python.org/packages/source/j/jrnl/jrnl-2.0.1.tar.gz
 	sha256sums = 473b0ec7836b838269c09a17462a98e4dcdafa139fbff2a237eb7ab83dcc316a
