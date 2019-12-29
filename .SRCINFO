@@ -1,7 +1,7 @@
 pkgbase = i2p-plugin-i2pbote
 	pkgdesc = A distributed email client for I2P
 	pkgver = 0.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bote.i2p/
 	install = i2pbote.install
 	arch = any
