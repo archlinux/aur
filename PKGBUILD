@@ -51,4 +51,4 @@ package() {
 	#chmod 777 "${bindir}/xpress-player"
 }
 
-md5sums=('90f002b369b00339364fcfbb2926bb7a')
+md5sums=('fc9b136bb149019a8517f96068e31b7e')
