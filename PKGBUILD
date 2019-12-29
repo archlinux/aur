@@ -27,5 +27,7 @@ package() {
 	rm install_ubuntu.sh
 	rm -r snap-stuff
 
-	echo "/opt/dupliseek/main.py" >  /usr/bin/dupliseek
+	mkdir "$pkgdir/usr/bin/"
+
+	echo "/opt/dupliseek/main.py" >  "$pkgdir/usr/bin/dupliseek"
 }
