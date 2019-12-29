@@ -1,13 +1,13 @@
 pkgbase = pop-xfwm-theme
 	pkgdesc = Simple Xfwm theme for Xfce matching Pop GTK theme from Pop!_OS by System76.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce-look.org/p/1299758/
 	arch = any
 	license = GPL2
 	depends = xfwm4
 	source = https://gitlab.com/spass/pop-xfwm-theme/-/archive/master/pop-xfwm-theme-master.tar.gz
-	md5sums = f509ad89954a684012fedc64dd01cb77
+	md5sums = SKIP
 
 pkgname = pop-xfwm-theme
 
