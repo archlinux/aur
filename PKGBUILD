@@ -9,7 +9,7 @@ pkgdesc="fb2, epub & pdf reader"
 arch=('i386' 'x86_64')
 url="https://zvvubuntu.blogspot.com"
 license=('custom')
-depends=('pyqt5-common' 'python-pyqt5') 
+depends=('python-pyqt5') 
 
 source=("${_pkgname}_${pkgver}.deb::https://docs.google.com/uc?id=1tWZsNm8OaZtbphOySdq0ARdB0NJmEiAH" "$pkgname" "${_pkgname}.desktop")
 md5sums=('db903a0084e51cea040a2bb6b45a4bbf'
