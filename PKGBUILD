@@ -3,11 +3,10 @@
 pkgname=poezio-omemo-git
 _pkgname=poezio-omemo
 pkgrel=1
-pkgver=r1.e82f4ae
+pkgver=r2.e412506
 pkgdesc="OMEMO plugin for the Poezio XMPP console client"
 arch=('i686' 'x86_64')
-# Temporary address. Should switch to poezio/poezio-omemo soon(tm).
-url="https://lab.louiz.org/ppjet/poezio-omemo"
+url="https://lab.louiz.org/poezio/poezio-omemo"
 conflicts=('poezio-omemo')
 provides=('poezio-omemo')
 license=('GPL')
@@ -19,7 +18,7 @@ depends=(
 )
 makedepends=('git')
 
-source=("${_pkgname}::git+https://lab.louiz.org/ppjet/poezio-omemo.git")
+source=("${_pkgname}::git+https://lab.louiz.org/poezio/poezio-omemo.git")
 
 pkgver() {
   cd ${_pkgname}
