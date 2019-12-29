@@ -7,7 +7,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=linux-selinux
-pkgver=5.4.3.arch1
+pkgver=5.4.6.arch3
 pkgrel=1
 pkgdesc='Linux SELinux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
