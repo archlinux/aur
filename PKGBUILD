@@ -2,7 +2,7 @@
 
 pkgname=collabora-online-server-nodocker
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collabora CODE (LibreOffice Online) server for Nextcloud or ownCloud, without Docker"
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
@@ -27,8 +27,8 @@ source=(
 )
 sha1sums=(
   'SKIP'
-  '3b7c52a40becb96ed9698e624a23cadfe1250a73'
-  '132642655c8684a434ad2a43f1661020218cdfde'
+  '4dea8c0bb62525f90d94d74a08c6f18f78a27ca9'
+  '3fe2db88f4f7ee203520c59760582103d3e41210'
   '2d271f9493ea14c675af1bfa76f6b654569dd51f'
   'f9c102a06b2582548f13121e78790237e2cb38e1'
 )
@@ -166,7 +166,7 @@ package() {
 After=systemd-tmpfiles-setup.service' usr/lib/systemd/system/loolwsd.service
 
   # keep the cert-making script from the Dockerfile for reference
-  install -Dm0644 "$srcdir"/mkcert_example.sh usr/share/doc/loolwsd/example.mkcert.sh
+  install -Dm0755 "$srcdir"/mkcert_example.sh usr/share/doc/loolwsd/example.mkcert.sh
 
   # do not provide libreoffice for the desktop (seems broken…)
   rm -rf opt/collaboraoffice6.2/share/xdg

@@ -12,7 +12,7 @@ openssl genrsa -out certs/ca/root.key.pem 2048
 openssl req -x509 -new -nodes -key certs/ca/root.key.pem -days 9131 -out certs/ca/root.crt.pem -subj "/C=DE/ST=BW/L=Stuttgart/O=Dummy Authority/CN=Dummy Authority"
 mkdir -p certs/{servers,tmp}
 mkdir -p "certs/servers/localhost"
-openssl genrsa -out "certs/servers/localhost/privkey.pem" 2048 -key "certs/servers/localhost/privkey.pem"
+openssl genrsa -out "certs/servers/localhost/privkey.pem" 2048
 if test "${cert_domain:-set}" == set; then
   openssl req -key "certs/servers/localhost/privkey.pem" -new -sha256 -out "certs/tmp/localhost.csr.pem" -subj "/C=DE/ST=BW/L=Stuttgart/O=Dummy Authority/CN=localhost"
 else

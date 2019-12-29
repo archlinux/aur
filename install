@@ -5,7 +5,7 @@ post_install() {
   ## From Debian packages ##
 
   # We assume that the LibreOffice to be used is built TDF-style
-  # and installs in /opt/collaboraoffice6.0, and that /opt/lool is
+  # and installs in /opt/collaboraoffice6.2, and that /opt/lool is
   # on the same file system
   mkdir -p opt/lool/child-roots
 
@@ -20,7 +20,7 @@ post_install() {
   cat <<-THEEND
 IMPORTANT!
 IMPORTANT! A certificate must be issued if restricted HTTP access is not possible.
-IMPORTANT! See /usr/share/doc/loolwsd/mkcert_example.sh for guidance.
+IMPORTANT! See /usr/share/doc/loolwsd/example.mkcert.sh for guidance.
 IMPORTANT!
 IMPORTANT! The username and password must be set in /etc/loolwsd/loolwsd.xml
 IMPORTANT! for the admin console.
@@ -51,8 +51,8 @@ post_upgrade() {
 
   chown -R lool:lool opt/lool
 
-  fc-cache opt/collaboraoffice6.0/share/fonts/truetype
-  su lool --shell=/bin/sh -c 'loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice6.0 >/dev/null 2>&1'
+  fc-cache opt/collaboraoffice6.2/share/fonts/truetype
+  su lool --shell=/bin/sh -c 'set -x; loolwsd-systemplate-setup /opt/lool/systemplate /opt/collaboraoffice6.2 >/dev/null'
 
   systemctl daemon-reload
   if systemctl list-unit-files loolwsd.service | grep -q 'enabled$'; then
