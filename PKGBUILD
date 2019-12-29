@@ -17,13 +17,11 @@
 # in the future, isolinux and pxelinux, so that the user can make a custom
 # shuriken for any hardware.(see shuriken_forge --help)
 
-# This is very much a valid security tool, and its very well documented.
-
 pkgname=ninjaos-bootandnuke
 pkgver=1.5
 pkgrel=1
 pkgdesc="Ninja Boot'n'Nuke. Boot'n'Nuke implemented as an initcpio image."
-url="http://ninjaos.org/projects.html#bootandnuke"
+url="https://gitlab.com/ninjaos/ninja-bootandnuke"
 arch=('any')
 license=('GPL3')
 groups=('ninjaos')
