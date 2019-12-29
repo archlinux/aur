@@ -1,0 +1,16 @@
+post_install() {
+	cat << EOF
+==> You have to install one of the php-memcached or php-redis packages specfied
+	in optdepends depending on which storage backend you wish to use with Hauk.
+==> Make sure that the relevant extensions are enabled in php.ini.
+==> Example vhosts for Apache and nginx are provided in
+    /usr/share/doc/hauk-backend. To use them, make sure they are included in
+    Apache/nginx's configuration using include statements. Hauk is installed
+    similarly to phpMyAdmin, so you may use its instructions from Arch Wiki as
+    a base when setting up Apache or nginx:
+    https://wiki.archlinux.org/index.php/PhpMyAdmin#Apache
+==> Hauk requires configuration before first use. Please make sure you read and
+    modify /etc/hauk/config.php to fit your needs.
+EOF
+	/bin/true
+}
