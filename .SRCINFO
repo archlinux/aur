@@ -10,7 +10,6 @@ pkgbase = ebadoo-desktop-schemas
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	depends = ebadoo-shell
 	provides = gsettings-desktop-schemas=3.34.0.r0.ebb001
 	conflicts = gsettings-desktop-schemas
 	replaces = gsettings-desktop-schemas
