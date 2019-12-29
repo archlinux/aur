@@ -2,7 +2,7 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc="Free, open source, and cross-platform media player – with selection of features."
@@ -17,7 +17,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/mpv-player/${_pkgname}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "https://waf.io/waf-${_waf_version}")
-sha256sums=('33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35'
+sha256sums=('805a3ac8cf51bfdea6087a6480c18835101da0355c8e469b6d488a1e290585a5'
             '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
