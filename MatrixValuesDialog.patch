@@ -1,0 +1,11 @@
+--- qtiplot-0.9.8.9/qtiplot/src/matrix/MatrixValuesDialog.cpp	2010-09-27 09:12:45.000000000 +0200
++++ qtiplot-0.9.8.9/qtiplot/src/matrix/MatrixValuesDialog.cpp	2019-12-30 12:56:06.634701739 +0100
+@@ -70,7 +70,7 @@
+ 	endCol->setRange(1, INT_MAX);
+ 	gl1->addWidget(endCol, 1, 3);
+ 
+-	functions = new QComboBox(false);
++	functions = new QComboBox();
+ 	functions->addItems(scriptEnv->mathFunctions());
+ 	btnAddFunction = new QPushButton(tr( "Add &Function" ));
+ 	btnAddCell = new QPushButton(tr( "Add Ce&ll" ));

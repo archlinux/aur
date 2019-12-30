@@ -1,0 +1,11 @@
+--- qtiplot-0.9.8.9/qtiplot/src/table/TableDialog.cpp	2011-08-31 20:11:20.000000000 +0200
++++ qtiplot-0.9.8.9/qtiplot/src/table/TableDialog.cpp	2019-12-30 13:15:20.843116600 +0100
+@@ -127,7 +127,7 @@
+     labelFormat = new QLabel(tr( "Format:" ));
+  	gl1->addWidget(labelFormat, 2, 0);
+ 
+-    formatBox = new QComboBox(false);
++    formatBox = new QComboBox();
+     gl1->addWidget(formatBox, 2, 1);
+ 
+ 	labelNumeric = new QLabel(tr( "Precision:" ));

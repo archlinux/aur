@@ -38,6 +38,9 @@ source=("http://downloads.sourceforge.net/project/qtiplot.berlios/qtiplot-${pkgv
 "FitDialog.patch"
 "LayerDialog.patch"
 "PlotDialog.patch"
+"MatrixValuesDialog.patch"
+"TableDialog.patch"
+"SetColValuesDialog.patch"
 )
 
 noextract=("opj.tar.bz2"
@@ -63,7 +66,11 @@ sha256sums=('a523ea259516d7581abaf2fe376507d152db32f71d88176cff18f5bc391b9ef0'
 			'e5476599521289928e50462f6c9080185581f0c15b2dc274c96ca2c1fd8fa72a'
 			'da119d0d4abdf8954f7fc52efc9fc738897e4bdcc9b767444e549fb00a62578a'
 			'2427a152acdbe312211b7d57e73d47e9cd7f698440952784de6db4c0429cea22'
-			"5eda5e19bf54fe00e15082987fd6a3e6833a393773fb35e6bd89d453f3585a3f")
+			"5eda5e19bf54fe00e15082987fd6a3e6833a393773fb35e6bd89d453f3585a3f"
+			"ce01c40744dbccdb1296c4c9d83f0c75a83fae22a1a1ef58d8ce385ff4b970f6"
+			"4b24e70d6abc155e8b6b74fc68bdd2c535a2716bb5eae5b9ab59d24f6b599dd6"
+			"ccd3ce2fb5230cdccd34706be7b20124b860ff4daedc334f90ed94f99e2c3217")
+			
 prepare() {
 cd "$srcdir"
 
@@ -84,6 +91,9 @@ patch -p0 < ConfigDialog.patch
 patch -p0 < ColorMapEditor.patch
 patch -p0 < LayerDialog.patch
 patch -p0 < PlotDialog.patch
+patch -p0 < MatrixValuesDialog.patch
+patch -p0 <	SetColValuesDialog.patch
+patch -p0 < TableDialog.patch
 cp build.conf qtiplot-${pkgver}/
 
 }
