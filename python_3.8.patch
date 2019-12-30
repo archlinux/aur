@@ -1,0 +1,14 @@
+diff -c -r src.orig/rivalcfg/rivalcfg/__main__.py src/rivalcfg/rivalcfg/__main__.py
+*** src.orig/rivalcfg/rivalcfg/__main__.py	2019-12-30 15:52:23.088460000 +0100
+--- src/rivalcfg/rivalcfg/__main__.py	2019-12-30 15:52:32.228548525 +0100
+***************
+*** 33,40 ****
+      debug.log("Rivalcfg %s" % VERSION)
+      debug.log("Python version: %s" % platform.python_version())
+      debug.log("OS: %s" % platform.system())
+-     if platform.system() == "Linux":
+-         debug.log("Linux distribution: %s" % " ".join(platform.linux_distribution()))  # noqa
+      if debug.DRY:
+          debug.log("Dry run enabled")
+      if debug.get_debug_profile():
+--- 33,38 ----
