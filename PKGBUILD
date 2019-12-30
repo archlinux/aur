@@ -1,4 +1,5 @@
-# Maintainer: saxonbeta <saxonbeta at gmail dot com>
+# Maintainer: effeffe <filippo.falezza at outlook dot com>
+# Contributor: saxonbeta <saxonbeta at gmail dot com>
 # Contributor: sofasurfer <sofasurfer at gmail dot com>
 # Contributor:vicp74 <v1c70rp at gmail dot com>
 
@@ -84,7 +85,7 @@ build() {
 	sed -i 's|<QAssistantClient>|<QtAssistant/qassistantclient.h>|' qtiplot/src/core/ApplicationWindow.cpp
 	sed -i 's#d_python_config_folder + "#"/usr/share/qtiplot#' qtiplot/src/core/ApplicationWindow.cpp
 
-	qmake-qt4 qtiplot.pro QMAKESPEC=linux-g++ QMAKE_CXXFLAGS+="-std=gnu++98"
+	qmake-qt4 qtiplot.pro QMAKESPEC=linux-g++ QMAKE_CXXFLAGS+="-std=c++11"
 	make QTDIR=/usr/ QMAKESPEC=linux-g++
 
 }
