@@ -1,0 +1,18 @@
+pkgbase = wcstools-all
+	pkgdesc = A package of programs for setting and using the world coordinate systems (including libs and headers)
+	pkgver = 3.9.5
+	pkgrel = 1
+	url = http://tdc-www.harvard.edu/wcstools/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	provides = wcstools
+	conflicts = wcstools
+	options = makeflags
+	source = http://tdc-www.harvard.edu/software/wcstools/wcstools-3.9.5.tar.gz
+	source = wcstools-rename-shlib.patch
+	md5sums = 30ee0aaa74567805b95c4548e654aa48
+	md5sums = 7b5d283200b6458e522040ac76f42be4
+
+pkgname = wcstools-all
+
