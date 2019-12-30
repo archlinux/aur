@@ -1,0 +1,18 @@
+pkgbase = easywifi-git
+	pkgdesc = The easiest way to add wifi networks on Linux
+	pkgver = r7.a124e4a
+	pkgrel = 1
+	url = https://github.com/NoahCristino/easywifi
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = networkmanager
+	optdepends = dnsmasq: to create hotspots
+	provides = easywifi
+	conflicts = easywifi
+	source = git+https://github.com/NoahCristino/easywifi.git
+	sha256sums = SKIP
+
+pkgname = easywifi-git
+
