@@ -5,6 +5,7 @@
 !forged.service
 !forged.sh
 !forge-server.install
+!forge-server-custom.install
 !PKGBUILD
 !.gitignore
 !.SRCINFO

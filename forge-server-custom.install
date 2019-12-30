@@ -1,0 +1,28 @@
+post_install() {
+	if ! getent group "forge" &>/dev/null; then
+		echo "Adding forge system group..."
+		groupadd -r forge 1>/dev/null
+	fi
+
+	if ! getent passwd "forge" &>/dev/null; then
+		echo "Adding forge system user..."
+		useradd -r -g forge -d /srv/forge forge 1>/dev/null
+	fi
+
+	chown -R forge:forge /srv/forge
+
+	echo "The world data is stored under /srv/forge and the server runs as the forge user to increase security."
+	echo "Use the forged script under /usr/bin/forged to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/forge to your liking."
+	echo "For the server to start you have to accept the EULA in /srv/forge/eula.txt!"
+	echo "The EULA file is generated after the first server start."
+}
+
+post_upgrade() {
+	chown -R forge:forge /srv/forge
+}
+
+post_remove() {
+	[ -d "/srv/forge" ] && echo "Game saves in /srv/forge were kept on your system."
+	echo "The forge user was preserved on your system."
+}
