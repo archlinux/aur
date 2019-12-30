@@ -11,4 +11,4 @@ StartupWMClass=trueconf-bin
 StartupNotify=false
 Terminal=false
 MimeType=x-scheme-handler/trueconf;x-scheme-handler/visicall;
-X-KDE-Protocols=trueconf,visicall
+X-KDE-Protocols=trueconf
