@@ -2,16 +2,21 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=tuhi-git
-pkgver=20190608
+pkgver=20191104
 pkgrel=1
 pkgdesc="DBus daemon to access Wacom SmartPad devices"
 arch=('any')
 depends=('python' 'python-svgwrite' 'python-xdg')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'meson' 'ninja')
 url="https://github.com/tuhiproject/tuhi"
 license=('GPL2')
 source=(git+https://github.com/tuhiproject/tuhi)
 sha256sums=('SKIP')
+
+prepare() {
+  cd ${pkgname%-git}
+  sed -i '/meson_version:/s/0.50.0/0.51.0/' meson.build
+}
 
 pkgver() {
   cd ${pkgname%-git}
@@ -20,15 +25,12 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  python setup.py build
+  meson builddir --prefix=/usr
+  cd builddir
+  ninja
 }
 
 package() {
-  cd ${pkgname%-git}
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm755 tools/tuhi-live.py "${pkgdir}/usr/bin/tuhi-live.py"
-  install -Dm755 tools/tuhi-kete-sandboxed.py "${pkgdir}/usr/bin/tuhi-kete-sandboxed.py"
-  install -Dm755 tools/kete.py "${pkgdir}/usr/bin/kete.py"
-  install -Dm755 tools/tuhi-live.py "${pkgdir}/usr/bin/tuhi-live.py"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/tuhi/README.md"
+  cd ${pkgname%-git}/builddir
+  DESTDIR="${pkgdir}" ninja install
 }

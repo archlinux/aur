@@ -1,12 +1,14 @@
 pkgbase = tuhi-git
 	pkgdesc = DBus daemon to access Wacom SmartPad devices
-	pkgver = 20190608
+	pkgver = 20191104
 	pkgrel = 1
 	url = https://github.com/tuhiproject/tuhi
 	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = meson
+	makedepends = ninja
 	depends = python
 	depends = python-svgwrite
 	depends = python-xdg
