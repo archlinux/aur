@@ -6,6 +6,7 @@ pkgbase = bitbake
 	arch = any
 	license = GPL2
 	makedepends = git
+	makedepends = wget
 	source = https://github.com/openembedded/bitbake/archive/1.44.0.tar.gz
 	md5sums = 4b263eb4764980dc972c887e22b76159
 

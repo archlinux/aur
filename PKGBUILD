@@ -13,7 +13,7 @@ pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
 url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
-makedepends=('git')
+makedepends=('git' 'wget')
 source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
 md5sums=('4b263eb4764980dc972c887e22b76159')
 
