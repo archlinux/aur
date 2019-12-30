@@ -1,6 +1,6 @@
 pkgbase = sigutils-git
 	pkgdesc = Digital signal processing library
-	pkgver = r203.8caefe4
+	pkgver = r204.2555138
 	pkgrel = 1
 	url = https://github.com/BatchDrake/sigutils
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = sigutils-git
 	optdepends = libvolk
 	provides = sigutils
 	conflicts = sigutils
-	options = !buildflags
 	source = sigutils-git::git+https://github.com/BatchDrake/sigutils.git
 	md5sums = SKIP
 

@@ -2,7 +2,7 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=sigutils-git
-pkgver=r203.8caefe4
+pkgver=r204.2555138
 pkgrel=1
 pkgdesc="Digital signal processing library"
 arch=("any")
@@ -15,7 +15,6 @@ provides=("sigutils")
 conflicts=("sigutils")
 source=(${pkgname}::git+https://github.com/BatchDrake/sigutils.git)
 md5sums=('SKIP')
-options=('!buildflags')
 
 pkgver() {
     cd "${pkgname}"
@@ -28,7 +27,8 @@ build() {
   mkdir build
   cd build
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  export LDFLAGS=""
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DCMAKE_SKIP_INSTALL_RPATH=ON ..
   make
 }
 
