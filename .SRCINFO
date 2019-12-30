@@ -1,12 +1,12 @@
 pkgbase = xlhtml
 	pkgdesc = An Excel spreadsheet (.xls) and PowerPoint (.ppt) to HTML converter
 	pkgver = 0.5.1
-	pkgrel = 4
-	url = http://nebuchadnezzar.zion.cz/xlhtml.php
+	pkgrel = 5
+	url = http://chicago.sourceforge.net/xlhtml/
 	arch = any
 	license = GPL
-	source = http://nebuchadnezzar.zion.cz/download/xlhtml-0.5.1-vd2.tgz
-	sha256sums = 5e108b24adaa16f7c7c4828ba2fc16fc7e3bb7d7d4979ab8128e981124bcbc84
+	source = http://www.asahi-net.or.jp/~yw3t-trns/namazu/xlhtml/xlhtml-0.5.1.tar.gz
+	sha256sums = 81fb9e786bb7c440423566b0aa71d7395685dd4566a8388a4d89ee6a8a5cd873
 
 pkgname = xlhtml
 
