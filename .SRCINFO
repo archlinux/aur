@@ -1,0 +1,14 @@
+pkgbase = python2-musicbrainzngs
+	pkgdesc = Python2 bindings for Musicbrainz' NGS webservice
+	pkgver = 0.6
+	pkgrel = 6
+	url = https://github.com/alastair/python-musicbrainzngs
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = python-musicbrainzngs-0.6.tar.gz::https://github.com/alastair/python-musicbrainzngs/archive/v0.6.tar.gz
+	sha256sums = ec447bcab906fe7c4dbd714a1dff1b00adcd20d0011968df1a740e6b1fb09cb5
+
+pkgname = python2-musicbrainzngs
+
