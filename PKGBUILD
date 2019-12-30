@@ -5,7 +5,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.12.2_14.23.5.2768-3"
+[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.12.2_14.23.5.2768-4"
 [ -z "$FORGE_SRV_MCVER_LATEST" ] && FORGE_SRV_MCVER_LATEST="1.14.4"
 
 IFS="-" read -ra _ver_temp <<< "$FORGE_SRV_PKGVER"
@@ -33,7 +33,7 @@ optdepends=("tar: needed in order to create world backups"
 provides=("forge-server=${pkgver}")
 conflicts=("forge-server")
 backup=("etc/conf.d/forge")
-[ "$FORGE_SRV_PKGVER" = "1.12.2_14.23.5.2768-3" ] && install="forge-server.install" || install="forge-server-custom.install"
+[ "$FORGE_SRV_PKGVER" = "1.12.2_14.23.5.2768-4" ] && install="forge-server.install" || install="forge-server-custom.install"
 source=("forged-backup.service"
 	"forged-backup.timer"
 	"forged.service"
@@ -92,8 +92,8 @@ elif [ "$_minecraft_ver_minor" = 12 ]; then
 	_add_license "LICENSE"
 elif [ "$_minecraft_ver_minor" -ge 7 ]; then
 	_add_license "MinecraftForge-License"
-	_add_license "LICENSE-Paulscode%20IBXM%20Library"
-	_add_license "LICENSE-Paulscode%20SoundSystem%20CodecIBXM"
+	_add_license "Paulscode%20IBXM%20Library%20License"
+	_add_license "Paulscode%20SoundSystem%20CodecIBXM%20License"
 
 	case "$_minecraft_ver_minor" in
 		8) _add_license "LICENSE-fml";;
@@ -102,8 +102,8 @@ elif [ "$_minecraft_ver_minor" -ge 7 ]; then
 	esac
 elif [ "$_minecraft_ver_minor" = 6 ]; then
 	_add_license "install/MinecraftForge-License"
-	_add_license "install/LICENSE-Paulscode%20IBXM%20Library"
-	_add_license "install/LICENSE-Paulscode%20SoundSystem%20CodecIBXM"
+	_add_license "install/Paulscode%20IBXM%20Library%20License"
+	_add_license "install/Paulscode%20SoundSystem%20CodecIBXM%20License"
 	_add_license "LICENSE-fml" "FML" "902772ed0cb6c22c4cd7ad9b0ec7a02961b5e016"
 else
 	_add_license "LICENSE-fml"
