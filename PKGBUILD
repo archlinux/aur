@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
