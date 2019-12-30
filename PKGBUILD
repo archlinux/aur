@@ -3,13 +3,13 @@
 
 pkgname=sdlblocks
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Tetris remake written in C using libSDL"
 arch=('i686' 'x86_64')
-url="http://machineinteractive.com/projects/projects.html"
+url="https://github.com/llopisdon/sdlblocks"
 license=("GPL-2")
-source=("https://github.com/machinezilla/sdlblocks/archive/master.zip" "${pkgname}.desktop")
-md5sums=('36cc1968042de0ed56619d928cfef70a'
+source=("https://github.com/llopisdon/sdlblocks/archive/master.zip" "${pkgname}.desktop")
+md5sums=('a6c87c8f54e4f33172721378d570406b'
          '4178deb1bc373988c9dd305a648093c0')
 
 if [ "$CARCH" = "i686" ]; then                                                        
@@ -27,7 +27,7 @@ package() {
 cd $srcdir/$pkgname-master
 mkdir -p $pkgdir/usr/bin
 install -D -m644 Bitstream-Vera-Sans-Mono.ttf $pkgdir/usr/share/sdlblocks/Bitstream-Vera-Sans-Mono.ttf
-install -D -m644 README $pkgdir/usr/share/sdlblocks/README
+install -D -m644 README.md $pkgdir/usr/share/doc/sdlblocks/README.md
 install -D -m644 korobeiniki.mp3 $pkgdir/usr/share/sdlblocks/korobeiniki.mp3
 install -D -m644 sdlblocks.bmp $pkgdir/usr/share/sdlblocks/sdlblocks.bmp
 install -D -m644 sdlblocks.o $pkgdir/usr/share/sdlblocks/sdlblocks.o

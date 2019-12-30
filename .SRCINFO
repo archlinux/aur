@@ -1,14 +1,17 @@
 pkgbase = sdlblocks
 	pkgdesc = A Tetris remake written in C using libSDL
 	pkgver = 1
-	pkgrel = 5
-	url = http://machineinteractive.com/projects/projects.html
+	pkgrel = 6
+	url = https://github.com/llopisdon/sdlblocks
 	arch = i686
 	arch = x86_64
 	license = GPL-2
-	source = https://github.com/machinezilla/sdlblocks/archive/master.zip
+	depends = lib32-sdl_mixer
+	depends = lib32-sdl_ttf
+	depends = bash
+	source = https://github.com/llopisdon/sdlblocks/archive/master.zip
 	source = sdlblocks.desktop
-	md5sums = 36cc1968042de0ed56619d928cfef70a
+	md5sums = a6c87c8f54e4f33172721378d570406b
 	md5sums = 4178deb1bc373988c9dd305a648093c0
 
 pkgname = sdlblocks
