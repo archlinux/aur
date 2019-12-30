@@ -3,7 +3,7 @@
 
 _pkgname=fraidycat
 pkgname=${_pkgname}-git
-pkgver=v1.0.7.r2.g76d1b26
+pkgver=1.0.7.r2.g76d1b26
 pkgrel=1
 pkgdesc="Follow blogs, wikis, YouTube, Twitter, Reddit, Instagram and the like... from a distance."
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 
 pkgver() {
 	cd "${_pkgname}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
