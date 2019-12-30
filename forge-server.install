@@ -1,4 +1,4 @@
-_good_ver="1.8.9_11.15.1.1722-3"
+_good_ver="1.8.9_11.15.1.1722-4"
 
 post_install() {
 	if ! getent group "forge" &>/dev/null; then
