@@ -1,13 +1,21 @@
 pkgbase = fraidycat-git
-	pkgdesc = Follow blogs, wikis, YouTube channels, as well as accounts on Twitter, Instagram, etc. from a single page.
-	pkgver = r76.76d1b26
+	pkgdesc = Follow blogs, wikis, YouTube, Twitter, Reddit, Instagram and the like... from a distance.
+	pkgver = v1.0.7.r2.g76d1b26
 	pkgrel = 1
-	url = https://github.com/kickscondor/fraidycat
+	url = https://fraidyc.at
 	arch = x86_64
 	license = BlueOak-1.0.0
 	makedepends = npm
 	makedepends = git
 	makedepends = git-lfs
+	makedepends = gendesk
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = libsecret
+	depends = libappindicator-gtk3
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = fraidycat
 	conflicts = fraidycat
 
