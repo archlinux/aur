@@ -1,6 +1,6 @@
 pkgbase = python2-docker-py-git
 	pkgdesc = An API client for docker written in Python
-	pkgver = r2640.1533861202.e78e4e74
+	pkgver = r2940.1573028979.a0b9c3d0
 	pkgrel = 1
 	url = https://github.com/docker/docker-py
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python2-docker-py-git
 	depends = python2
 	depends = python2-six
 	depends = python2-requests
-	depends = python2-websocket-client
+	depends = python-websocket-client
 	provides = python2-docker-py
 	conflicts = python2-docker-py
 	source = docker-py::git+https://github.com/docker/docker-py.git
