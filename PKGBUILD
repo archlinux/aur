@@ -16,7 +16,7 @@ source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${
 sha256sums=('1b44b4fa2c77c8090eb02bd82e63a8e571fc706fa7f66183ae5f97ed9cbacb4b'
             '460674b23dd870c2bf8eac029c48a44b988a340c4bee76ee7cb1f7524e81f5cb'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
-            '6915fe8b5771cfcb23970fbd78e07edb6ca364ba336fc3aa790de693d3ade16c')
+            '16200451af0bd1099510da4eeb7bd440ac4db4eda82013f1b3bd58777e04004e')
 
 prepare() {
     cd ${pkgname}-${pkgver}
@@ -33,12 +33,12 @@ package() {
     yarn dist --dir
 
     install -d "${pkgdir}"/usr/lib/${pkgname}
-    cp -r dist/linux-unpacked/resources "${pkgdir}"/usr/lib/${pkgname}/
+    cp -r dist/linux-unpacked/resources/* "${pkgdir}"/usr/lib/${pkgname}/
 
-    rm "${pkgdir}"/usr/lib/cozy-desktop/resources/app.asar.unpacked/gui/scripts/macos-add-favorite.py
-    rmdir "${pkgdir}"/usr/lib/cozy-desktop/resources/app.asar.unpacked/gui/{scripts/,}
-    rm -r "${pkgdir}"/usr/lib/cozy-desktop/resources/inspector
-    rm -r "${pkgdir}"/usr/lib/cozy-desktop/resources/regedit/
+    rm "${pkgdir}"/usr/lib/cozy-desktop/app.asar.unpacked/gui/scripts/macos-add-favorite.py
+    rmdir "${pkgdir}"/usr/lib/cozy-desktop/app.asar.unpacked/gui/{scripts/,}
+    rm -r "${pkgdir}"/usr/lib/cozy-desktop/inspector
+    rm -r "${pkgdir}"/usr/lib/cozy-desktop/regedit
 
     cd "${srcdir}"
     chmod +x Cozy-Drive-${pkgver}-x86_64.AppImage
