@@ -14,7 +14,7 @@ source_armv7h=("https://github.com/xginn8/aisdeco/blob/master/aisdeco_rpi_201407
 source_i686=("https://github.com/xginn8/aisdeco/blob/master/aisdeco2_i386_20150415.tgz")
 source_x86_64=("https://github.com/xginn8/aisdeco/blob/master/aisdeco2_${CARCH}_20161112.tgz")
 
-sha256sums=('0f37f38e0e340c09ec723b588aaaf142e2d05909ae0d891e4703a9ae70087968')
+sha256sums=('59139bff4ba84d545d96c235d2488a7c3863db09baf5e378f023e3c2938e9986')
 sha256sums_x86_64=('1b0a21ca6a9d71fb6a9f2da0e5063e0cd654ca868c6bbeb1cf43efcbac4e9e5b')
 sha256sums_i686=('21b788c11188fae8830dc1dbcc2dd19ac4ab73116b3e5892cc314273f3138de8')
 sha256sums_armv6h=('53a44d4aae30bb2b596f380a84b7fd75b4664f33b3f1bff94fa10be0934bb084')
