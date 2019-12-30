@@ -1,0 +1,15 @@
+pkgbase = what-bin
+	pkgdesc = Display network utilization by process, connection and remote address
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/imsnif/what
+	arch = x86_64
+	license = MIT
+	provides = what
+	conflicts = what
+	conflicts = what-git
+	source = https://github.com/imsnif/what/releases/download/0.5.1/what-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+	md5sums = 44ec28b27b13392d8fb7033ddcf6270d
+
+pkgname = what-bin
+
