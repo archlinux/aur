@@ -4,26 +4,19 @@
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=12.14.1
+pkgver=12.18.1
 _pkgver=${pkgver//./-}
-pkgrel=2
+pkgrel=1
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
-depends=('lapack' 'python2' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
-makedepends=('python2-numpy' 'gcc-fortran' 'perl' 'blas' 'cmake' 
-             'doxygen')
+depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
+makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen')
 conflicts=('gtest')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
-sha256sums=('52a4406cca2241f5eea8e166c2950471dd9478ad6741cbb2a7fc8225814616f0')
-
-prepare() {
-    # https://github.com/trilinos/Trilinos/issues/862#issuecomment-365852261
-    find Trilinos-trilinos-release-"$_pkgver" -name "*.py" -exec \
-        sed -i '1s#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
-}
+sha256sums=('7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf')
 
 build() {
     cd Trilinos-trilinos-release-"$_pkgver"
@@ -38,7 +31,6 @@ build() {
              -DTPL_ENABLE_gtest:BOOL=ON \
              -DTPL_ENABLE_MPI:BOOL=ON \
              -DTPL_ENABLE_HDF5:BOOL=ON \
-             -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
              -DCMAKE_INSTALL_PREFIX:PATH=/usr \
              -DBUILD_SHARED_LIBS:BOOL=ON
     make VERBOSE=1
