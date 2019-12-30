@@ -1,0 +1,19 @@
+--- qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/LayerDialog.cpp	2019-12-30 12:28:22.000000000 +0100
++++ qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/LayerDialog.cpp	2019-12-30 12:27:56.000000000 +0100
+@@ -69,14 +69,14 @@
+ 	QGridLayout *gl2 = new QGridLayout(gb2);
+ 	gl2->addWidget(new QLabel(tr("Horizontal")), 0, 0);
+ 
+-	alignHorBox = new QComboBox( false );
++	alignHorBox = new QComboBox();
+ 	alignHorBox->insertItem( tr( "Center" ) );
+ 	alignHorBox->insertItem( tr( "Left" ) );
+ 	alignHorBox->insertItem( tr( "Right" ) );
+ 	gl2->addWidget(alignHorBox, 0, 1);
+ 
+ 	gl2->addWidget(new QLabel( tr( "Vertical" )), 1, 0 );
+-	alignVertBox = new QComboBox( false );
++	alignVertBox = new QComboBox();
+ 	alignVertBox->insertItem( tr( "Center" ) );
+ 	alignVertBox->insertItem( tr( "Top" ) );
+ 	alignVertBox->insertItem( tr( "Bottom" ) );
