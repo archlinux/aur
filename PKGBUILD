@@ -2,7 +2,7 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=ntpsec-git
-pkgver=1.1.8.r111.3aff62478
+pkgver=1.1.8.r113.2ed3fea5e
 pkgrel=1
 pkgdesc="Security-hardened Network Time Protocol implementation (Git HEAD)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
