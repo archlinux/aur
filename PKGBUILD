@@ -33,6 +33,9 @@ source=("http://downloads.sourceforge.net/project/qtiplot.berlios/qtiplot-${pkgv
 "build.conf"
 "pyqt4.patch"
 "gsl2.patch"
+"ColorMapEditor.patch"
+"ConfigDialog.patch"
+"FitDialog.patch"
 )
 
 noextract=("opj.tar.bz2"
@@ -71,6 +74,9 @@ patch -p0 < qtiplot-0.9.8.9-dialog.patch
 patch -p0 < qtiplot.patch
 patch -p0 < pyqt4.patch
 patch -p0 < gsl2.patch
+patch -p0 < FitDialog.patch
+patch -p0 < ConfigDialog.patch
+patch -p0 < ColorMapEditor.patch
 cp build.conf qtiplot-${pkgver}/
 
 }

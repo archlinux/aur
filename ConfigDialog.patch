@@ -1,0 +1,11 @@
+--- qtiplot-0.9.8.9/qtiplot/src/core/ConfigDialog.cpp	2011-10-25 11:50:22.000000000 +0200
++++ qtiplot-0.9.8.9/qtiplot/src/core/ConfigDialog.cpp	2019-12-30 11:46:22.850030277 +0100
+@@ -1390,7 +1390,7 @@
+ 	colorsList->setRowCount(colors);
+ 	for (int i = 0; i < colors; i++){
+ 		QTableWidgetItem *it = new QTableWidgetItem();
+-		it->setFlags(!Qt::ItemIsEditable);
++		it->setFlags(Qt::ItemFlags(Qt::NoItemFlags));
+ 		it->setBackground(QBrush(colList[i]));
+ 		colorsList->setItem(i, 0, it);
+ 

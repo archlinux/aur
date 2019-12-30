@@ -1,0 +1,29 @@
+--- qtiplot-0.9.8.9/qtiplot/src/analysis/dialogs/FitDialog.cpp	2011-10-17 12:38:07.000000000 +0200
++++ qtiplot-0.9.8.9/qtiplot/src/analysis/dialogs/FitDialog.cpp	2019-12-30 11:28:36.836496584 +0100
+@@ -1022,7 +1022,7 @@
+ #ifdef Q_CC_MSVC
+         it->setFlags(it->flags() & (~Qt::ItemIsEditable));
+ #else
+-        it->setFlags(!Qt::ItemIsEditable);
++        it->setFlags(Qt::ItemFlags(Qt::NoItemFlags));
+ #endif
+         it->setBackground(QBrush(Qt::lightGray));
+         it->setForeground(Qt::black);
+@@ -1049,7 +1049,7 @@
+         boxParams->setCellWidget(i, 2, sb);
+ 
+         it = new QTableWidgetItem();
+-		it->setFlags(!Qt::ItemIsEditable);
++		it->setFlags(Qt::ItemFlags(Qt::NoItemFlags));
+ 		it->setText("--");
+ 		boxParams->setItem(i, 5, it);
+ 	}
+@@ -1064,7 +1064,7 @@
+ #ifdef Q_CC_MSVC
+             it->setFlags(it->flags() & (~Qt::ItemIsEditable));
+ #else
+-            it->setFlags(!Qt::ItemIsEditable);
++            it->setFlags(Qt::ItemFlags(Qt::NoItemFlags));
+ #endif
+             it->setBackground(QBrush(Qt::lightGray));
+             boxParams->setItem(i, 4, it);
