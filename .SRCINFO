@@ -1,0 +1,15 @@
+pkgbase = php73-pdo_sqlsrv
+	pkgdesc = Microsoft Drivers for PHP for SQL Server
+	pkgver = 5.6.1
+	pkgrel = 1
+	url = https://pecl.php.net/package/pdo_sqlsrv
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php73
+	backup = etc/php73/conf.d/pdo_sqlsrv.ini
+	source = https://pecl.php.net/get/pdo_sqlsrv-5.6.1.tgz
+	sha256sums = caf4033677cc7b0992bd68ba1989a095e92150489efc98147445398763a0340a
+
+pkgname = php73-pdo_sqlsrv
+
