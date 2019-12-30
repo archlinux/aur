@@ -1,7 +1,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=spin-git
-pkgver=6.5.2.r0.g4883fbb
+pkgver=6.5.2.r5.gd91a5b8
 pkgrel=1
 pkgdesc='Explicit state logic model checking tool'
 depends=('glibc')
