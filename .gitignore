@@ -1,14 +1,10 @@
 *
-!forge-server-1.5.2.install
-!forge-1.5.2d-backup.service
-!forge-1.5.2d-backup.timer
-!forge-1.5.2d.conf
-!forge-1.5.2d.service
-!forge-1.5.2d.sh
-!LICENSE-fml.txt
-!MinecraftForge-License.txt
-!Paulscode IBXM Library License.txt
-!Paulscode SoundSystem CodecIBXM License.txt
+!forged-backup.service
+!forged-backup.timer
+!forged.conf
+!forged.service
+!forged.sh
+!forge-server.install
 !PKGBUILD
 !.gitignore
 !.SRCINFO
