@@ -22,7 +22,7 @@ source=(
   "netcdf.m4.patch"
 )
 sha256sums=('SKIP'
-            '8616b2b4d6fb50ce58b6382c7605b2033c088df8aa42e0c966cff7547dcef54a')
+            'e6861363bc9556bc0487003c7ce1b072532b07b654b12ae294f1bdabb6187783')
 
 petsc_h=$(pacman -Ql petsc | grep -m 1 petsc.h | sed 's-^[[:alpha:]-]* --g')
 petsc_dir=$(dirname "$petsc_h")
@@ -76,6 +76,8 @@ prepare() {
   patch -d "${srcdir}"/libmesh/m4 -i "${srcdir}"/netcdf.m4.patch
   cd "${srcdir}/${realname}"
   autoconf
+  [[ -f /usr/include/netcdf.h ]] && \
+    sed -i "s-\(ac_subdirs_all='\)contrib/netcdf/v4-\1-g; s-\(subdirs=\"\$subdirs\) contrib/netcdf/v4-\1-g" configure
   # Go back
   cd "${srcdir}"
 
@@ -106,30 +108,31 @@ prepare() {
 }
 
 build() {
-  cd ../build
   # This happens in ${pkgdir} (out-of-source)
   # Out of source build (recommended by Roy Stogner)
+  cd ../build
+
   CONFOPTS=(
-    --enable-cxx11-required     # force C++11 standard
     --enable-petsc-hypre-required # recommended by MOOSE
     --with-metis=PETSc          # use PETSCs' metis
+    --enable-cxx11-required     # force C++11 standard
     --enable-metaphysicl-required # recommended by MOOSE
     --enable-vtk-required
     --enable-curl
     --enable-hdf5
-    --enable-complex            # make sure to compile PETSc with complex too
     --with-pic
     --enable-mpi
+    --enable-complex            # make sure to compile PETSc with complex too
 
+    --enable-netcdf             # testing...
+    --with-netcdf=/usr/include  # testing...
+    --with-netcdf-lib=/usr/lib  # testing...
     --enable-fftw               # Does this work ?
     --with-nlopt=/usr/include   # Does this work ?
     --with-nlopt-lib=/usr/lib   # Does this work ?
     --enable-mumps              # Does this work ?
     --with-mumps=/usr/include   # Does this work ?
     --with-mumps-lib=/usr/lib   # Does this work ?
-    --enable-netcdf             # Does this work ?
-    --with-netcdf=/usr/include  # Does this work ?
-    --with-netcdf-lib=/usr/lib  # Does this work ?
     --enable-superlu            # Does this work ?
 
     --enable-shared             # shared libraries
@@ -151,9 +154,12 @@ build() {
 
 check() {
   cd ../build
+
+  # MUMPS is never detected
   mv examples/reduced_basis/reduced_basis_ex7/Makefile{,.bak}
   echo -e "check:\ninstall:" > \
        examples/reduced_basis/reduced_basis_ex7/Makefile
+
   make check
 }
 

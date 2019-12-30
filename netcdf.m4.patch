@@ -1,7 +1,9 @@
-*** /tmp/ediffHIMP1E	2019-12-30 01:06:59.043865931 +0100
---- libmesh/m4/netcdf.m4	2019-12-30 01:05:53.227196596 +0100
+*** /tmp/ediffiqIIbG	2019-12-30 14:17:29.763364595 +0100
+--- /home/edgar/Linux/Parabola/pkg/libmesh/src/libmesh/m4/netcdf.m4	2019-12-30 14:17:19.630031096 +0100
 ***************
-*** 3,63 ****
+*** 1,63 ****
+  dnl -------------------------------------------------------------
+  dnl netCDF
   dnl -------------------------------------------------------------
   AC_DEFUN([CONFIGURE_NETCDF],
   [
@@ -63,8 +65,33 @@
 
     AC_SUBST(NETCDF_INCLUDE)
 ! ])
---- 3,159 ----
+--- 1,211 ----
   dnl -------------------------------------------------------------
+  dnl netCDF
+  dnl -------------------------------------------------------------
++ dnl Declare compilation test function preamble to
++ dnl be used later with AC_LANG_PROGRAM
++ m4_define([_AX_CXX_COMPILE_NETCDF_preamble],
++           [[
++             @%:@include "netcdf.h"
++           ]])
++
++ dnl Declare compilation test function body to
++ dnl be used later with AC_LANG_PROGRAM
++ m4_define([_AX_CXX_COMPILE_NETCDF_body],
++           [[
++           static int ncid;
++           nc_create("test.nc", NC_NETCDF4|NC_CLOBBER, &ncid);
++           ]])
++
++ dnl Declare compilation test function body to
++ dnl be used later with AC_LANG_PROGRAM
++ m4_define([_AX_CXX_COMPILE_NETCDF_body],
++           [[
++               static int ncid;
++               nc_create("test.nc", NC_NETCDF4|NC_CLOBBER, &ncid);
++           ]])
++
   AC_DEFUN([CONFIGURE_NETCDF],
   [
 +   dnl User-specific include path
@@ -161,7 +188,6 @@
 !                 netcdfversion=$netcdfmajor.$netcdfminor.$netcdfpatch
 !                 netcdfmajorminor=$netcdfmajor.$netcdfminor
 !               ])
-!               AC_MSG_RESULT(netcdfmajorminor in "$netcdfversion")
 !
 !         dnl fix for --disable-optional
 !         AS_IF([test "x$enablenetcdf" = "xno"], [netcdfmajor=no])
@@ -179,7 +205,37 @@
 !                        AC_MSG_ERROR([>>> Error: netCDF3 is no longer distributed with libMesh <<<])
 !                      ],
 !                 [4], [NETCDF_INCLUDE=$NETCDF_INC
-!                       AC_DEFINE(HAVE_NETCDF, 1, [Flag indicating whether the library will be compiled with Netcdf support])
+!
+!                       dnl Save original value of LIBS, then append $VTK_LIB
+!                       old_LIBS="$LIBS"
+!                       old_CPPFLAGS="$CPPFLAGS"
+!
+!                       NETCDF_INCLUDE="-I$NETCDF_INC"
+!
+!                       # If this compiler supports -rpath commands, create a
+!                       # variable for them now that can be used in $LIBS below.  We
+!                       # ran across an issue where GCC's linker actually needed
+!                       # -rpath flags in order to *link* a test program.  From the
+!                       # man page for GNU ld:
+!                       #   The -rpath option is also used when locating shared objects
+!                       #   which are needed by shared objects explicitly included in
+!                       #   the link; see the description of the -rpath-link option.
+!                       AS_IF([test "x$RPATHFLAG" != "x" && test -d $NETCDF_LIB],
+!                             [NETCDF_RPATH_FLAGS="${RPATHFLAG}${NETCDF_LIB}"
+!                              NETCDF_LIBRARY="${RPATHFLAG}${NETCDF_LIB} $NETCDF_LIBRARY"
+!                             ],
+!                             [NETCDF_LIBRARY="-L${NETCDF_LIB} -lnetcdf $NETCDF_LIBRARY"])
+!                       dnl LIBS="$LIBS $NETCDF_LIBRARY"
+!                       dnl CPPFLAGS="$CPPFLAGS $NETCDF_INCLUDE"
+!                       LIBS="$LIBS -lnetcdf -L/usr/lib"
+!                       CPPFLAGS="$CPPFLAGS -I/usr/include"
+!
+!                       dnl test compiling and linking a test program.
+!                       dnl AC_LINK_IFELSE (input, [action-if-true], [action-if-false])z
+!                       AC_LINK_IFELSE([AC_LANG_PROGRAM([_AX_CXX_COMPILE_NETCDF_preamble],[_AX_CXX_COMPILE_NETCDF_body])],
+!                                      [AC_DEFINE(HAVE_NETCDF, 1, [Flag indicating whether the library will be compiled with Netcdf support])],
+!                                      [AC_MSG_ERROR(*** Linking a test program against the NETCDF libraries failed)])
+!
 !                       dnl building netcdf-4 requires that we support nested subpackages
 !                       AS_IF([test "$NETCDF_INCLUDE" = "xno"], [AC_MSG_ERROR([NetCDF v4 requires nested subpackages, try --enable-nested])])
 !
