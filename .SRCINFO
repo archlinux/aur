@@ -1,11 +1,12 @@
 pkgbase = mypy-git
 	pkgdesc = Optional static typing for Python
-	pkgver = v0.520.r2241.g88e2b67c4
+	pkgver = v0.520.r2526.g9101707bd
 	pkgrel = 1
 	url = http://www.mypy-lang.org
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-psutil
 	depends = python-typed-ast
 	provides = mypy
