@@ -3,7 +3,7 @@
 
 pkgname=bazarr
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage and download subtitles for Sonarr and Radarr."
 arch=('any')
 url="https://github.com/morpheus65535/bazarr"
@@ -20,7 +20,7 @@ source=("bazarr-${pkgver}.tar.gz::https://github.com/morpheus65535/bazarr/archiv
         'bazarr.tmpfiles')
 
 sha256sums=('346bcc00328561c8b714c80cbf3c41ee7f213bae925c7c28f2ea851538c007ae'
-            'c8260e212cc28dd793cc8e503741042860863748c129f253b7b082f599e6dcef'
+            'fe83f24cdd17b37f19108d93f30b552bc5edbcc23a22f01e9be963f26d7d61d8'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
             '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60'
             '3aa2ebbf4083301d331f36486edcb81fcd094767a0ea404a89d870217d4f6632')
