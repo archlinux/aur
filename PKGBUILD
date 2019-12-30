@@ -2,7 +2,7 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=('libindi_3rdparty')
@@ -12,12 +12,13 @@ arch=(i686 x86_64)
 depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr)
 makedepends=(cmake boost)
 conflicts=(libqhy-git)
-source=("https://github.com/indilib/indi/archive/v${pkgver}.tar.gz")
-sha256sums=('d9250a60ce0f37c800982ef3f3c3a00a77f4eb9f500f1e96edbc1ea7c988d489')
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
+sha256sums=('325e38419acefc3d8002f30159b1f4835a82f9a1559092a45137427ba16f6bda')
+
 
 prepare() {
   mkdir -p build
-  cd indi-${pkgver}/3rdparty
+  cd indi-3rdparty-${pkgver}
   find ./ -name CMakeLists.txt -exec sed -i -e 's|"\/lib|"${CMAKE_INSTALL_PREFIX}/lib|g' {} \;        # Allow installing outside of /lib
 }
 
@@ -26,7 +27,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    ../indi-${pkgver}/3rdparty
+    ../indi-3rdparty-${pkgver}
   make DESTDIR="/tmp/${pkgname}_${pkgver}" install                                                   # Install libraries to temp directory for use in INDI driver build
 
 #  cp ../${pkgname}_${pkgver}/CMakeLists.txt.bak ../${pkgname}_${pkgver}/CMakeLists.txt               # Restore original CMakeLists.txt for INDI driver build
@@ -45,7 +46,7 @@ build() {
     -DQHY_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include/libqhy \
     -DSBIG_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libsbig.so \
     -DSBIG_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include/libsbig \
-    ../indi-${pkgver}/3rdparty
+    ../indi-3rdparty-${pkgver}
 }
 
 package() {
