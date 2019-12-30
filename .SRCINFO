@@ -1,6 +1,6 @@
 pkgbase = trueconf-client
 	pkgdesc = Video conference client with a range of rich collaborative tools and an easy-to-use interface
-	pkgver = 7.3.4.191
+	pkgver = 7.3.4.230
 	pkgrel = 2
 	url = https://trueconf.ru
 	install = trueconf-client.install
