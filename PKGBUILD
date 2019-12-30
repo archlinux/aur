@@ -8,7 +8,7 @@ pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
 license=('MIT')
-makedepends=("python")
+depends=("python")
 conflicts=("python-azure-cli")
 source=("https://azurecliprod.blob.core.windows.net/install.py"
         "install.response"
