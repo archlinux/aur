@@ -1,0 +1,5 @@
+{
+    storage file_system {
+        root /var/lib/caddy2
+    }
+}

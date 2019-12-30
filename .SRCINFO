@@ -1,0 +1,23 @@
+pkgbase = caddy2-git
+	pkgdesc = HTTP/2 Web Server with Automatic HTTPS
+	pkgver = 20191229.fdabac51
+	pkgrel = 1
+	url = https://caddyserver.com/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = caddy2
+	conflicts = caddy2
+	backup = etc/caddy2.conf
+	source = git+https://github.com/mholt/caddy.git#branch=v2
+	source = tmpfiles
+	source = service
+	source = conf
+	sha256sums = SKIP
+	sha256sums = e99057c26b2670e9aa382c8cc6b63f4437f8020e2eb4e04d97a01a3e4d68779f
+	sha256sums = c65a8e3df6b04a1797866ad8e0c3546c21e879867f4ee02c39b2f903c97f8b95
+	sha256sums = 61644647161ddf5045c99e389eac8dacc0eb0e3bca0b9271a96add6671b2b9b7
+
+pkgname = caddy2-git
+
