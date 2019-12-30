@@ -1,6 +1,6 @@
 pkgbase = pandoc-pyplot
 	pkgdesc = A Pandoc filter to generate Matplotlib figures directly in documents
-	pkgver = 2.2.0.0
+	pkgver = 2.3.0.1
 	pkgrel = 1
 	url = https://github.com/LaurentRDC/pandoc-pyplot
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = pandoc-pyplot
 	depends = haskell-typed-process
 	depends = python-matplotlib
 	depends = python-pillow
-	source = pandoc-pyplot-2.2.0.0.tar.gz::https://github.com/LaurentRDC/pandoc-pyplot/archive/2.2.0.0.tar.gz
-	sha256sums = 8b0038fcb647a45d641ebeaadad50428d16d1fbcea2851f76046aae47a5fefae
+	source = pandoc-pyplot-2.3.0.1.tar.gz::https://github.com/LaurentRDC/pandoc-pyplot/archive/2.3.0.1.tar.gz
+	sha256sums = 5808f261e1e6f706667f377f7522dbac8a5d6ad11f02f75c5aba641bfe750c59
 
 pkgname = pandoc-pyplot
 

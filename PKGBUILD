@@ -1,7 +1,7 @@
 # Maintainer: Tharre <tharre3@gmail.com>
 
 pkgname=pandoc-pyplot
-pkgver=2.2.0.0
+pkgver=2.3.0.1
 pkgrel=1
 pkgdesc='A Pandoc filter to generate Matplotlib figures directly in documents'
 url='https://github.com/LaurentRDC/pandoc-pyplot'
@@ -13,7 +13,7 @@ depends=('ghc-libs' 'pandoc' 'haskell-hspec' 'haskell-tasty'
          'python-matplotlib' 'python-pillow')
 makedepends=('ghc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LaurentRDC/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8b0038fcb647a45d641ebeaadad50428d16d1fbcea2851f76046aae47a5fefae')
+sha256sums=('5808f261e1e6f706667f377f7522dbac8a5d6ad11f02f75c5aba641bfe750c59')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
