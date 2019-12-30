@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Chess wizard
+Comment=Chinese chess teaching, computer games and chess record editing
+Name[zh_CN]=象棋巫师
+Comment[zh_CN]=中国象棋教学、电脑对弈和棋谱编辑
+Name[zh_TW]=象棋巫師
+Comment[zh_TW]=中國象棋教學、電腦對弈和棋譜編輯
+StartupNotify=true
+Exec=xqwizard %U
+Type=Application
+Path=/usr/share/xqwizard
+Icon=XQWIZARD
+Categories=Game;
+StartupWMClass=xqwizard.exe

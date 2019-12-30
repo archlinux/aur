@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Chess wizard arena
+Comment=Actual match games
+Name[zh_CN]=象棋巫师竞技场
+Comment[zh_CN]=实战对局游戏
+Name[zh_TW]=象棋巫師競技場
+Comment[zh_TW]=實戰對局遊戲
+StartupNotify=true
+Exec=xqarena %U
+Type=Application
+Path=/usr/share/xqwizard
+Icon=XQARENA
+Categories=Game;
+StartupWMClass=xqarena.exe

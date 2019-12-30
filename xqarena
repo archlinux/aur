@@ -1,0 +1,2 @@
+#!/bin/bash
+exec env WINEPREFIX="/home/qaz/.wine-xqwizard" WINEARCH=win32 wine /usr/share/xqwizard/XQARENA.EXE $*

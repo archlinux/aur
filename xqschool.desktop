@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Chess wizard magic school Ⅱ
+Comment=Killing and endgame exercises
+Name[zh_CN]=象棋巫师魔法学校Ⅱ
+Comment[zh_CN]=杀局和残局练习
+Name[zh_TW]=象棋巫師魔法學校Ⅱ
+Comment[zh_TW]=殺局和殘局練習
+StartupNotify=true
+Exec=xqschool %U
+Type=Application
+Path=/usr/share/xqwizard
+Icon=XQSCHOOL
+Categories=Game;
+StartupWMClass=xqschool.exe
