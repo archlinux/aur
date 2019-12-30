@@ -1,7 +1,7 @@
 pkgbase = bandwhich
 	pkgdesc = Display network utilization by process, connection and remote address
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imsnif/bandwhich
 	arch = i686
 	arch = x86_64

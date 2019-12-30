@@ -1,7 +1,7 @@
 # Maintainer: Aram Drevekenin <aram@poor.dev>
 pkgname=bandwhich
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Display network utilization by process, connection and remote address"
