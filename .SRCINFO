@@ -1,10 +1,11 @@
 pkgbase = endlessh
 	pkgdesc = A tarpit to lock up SSH clients
 	pkgver = r91.2602caa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nullprogram.com/blog/2019/03/22/
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = custom
 	makedepends = git
 	source = git+https://github.com/skeeto/endlessh

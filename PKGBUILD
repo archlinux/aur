@@ -2,9 +2,9 @@
 
 pkgname=endlessh
 pkgver=r91.2602caa
-pkgrel=1
+pkgrel=2
 pkgdesc="A tarpit to lock up SSH clients"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://nullprogram.com/blog/2019/03/22/"
 license=('custom')
 depends=()
@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   sed -i 's|endlessh/config|endlessh.conf|' endlessh.c
-  sed -i "s|CFLAGS  =.*|CFLAGS  = -std=c99 -Wall -Wextra -Wno-missing-field-initializers -D_FORTIFY_SOURCE=2 -O2 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -ftrapv -s -g -Wl,-z,relro,-z,now -Wl,-z,noexecstack -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fstack-protector-strong -fstack-clash-protection --param ssp-buffer-size=4 -fPIE -pie -m64 -mtune=generic|" Makefile
+  sed -i "s|CFLAGS  =.*|CFLAGS  = -std=c99 -Wall -Wextra -Wno-missing-field-initializers -D_FORTIFY_SOURCE=2 -O2 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -ftrapv -s -g -Wl,-z,relro,-z,now -Wl,-z,noexecstack -pipe -Wp,-D_GLIBCXX_ASSERTIONS -fstack-protector-strong -fstack-clash-protection --param ssp-buffer-size=4 -fPIE -pie -mtune=generic|" Makefile
   make
 }
 
