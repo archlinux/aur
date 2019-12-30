@@ -1,6 +1,6 @@
 pkgbase = lander-git
 	pkgdesc = Lunar Lander clone using OpenGL (git)
-	pkgver = r359.04023bc
+	pkgver = r361.c258aa1
 	pkgrel = 1
 	url = https://github.com/nickg/lander
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = lander-git
 	license = GPL3
 	makedepends = git
 	makedepends = gendesk
+	makedepends = meson
+	makedepends = ninja
 	depends = sdl2_mixer
 	depends = glew
 	depends = sdl2_image

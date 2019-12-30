@@ -2,12 +2,12 @@
 
 pkgname=lander-git
 _pkgname=lander
-pkgver=r359.04023bc
+pkgver=r361.c258aa1
 pkgrel=1
 pkgdesc="Lunar Lander clone using OpenGL (git)"
 url="https://github.com/nickg/lander"
 depends=('sdl2_mixer' 'glew' 'sdl2_image' 'freetype2')
-makedepends=('git' 'gendesk')
+makedepends=('git' 'gendesk' 'meson' 'ninja')
 conflicts=(lander lander-curses-git)
 license=('GPL3')
 arch=('x86_64' 'i686')
