@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOF
+===> You may want to load hid-g* module and run lg4l-rebind as root
+===> If you don't want to load module by hand, simply reboot your machine
+EOF
+}

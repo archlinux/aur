@@ -1,0 +1,17 @@
+--- a/hid-g19.c
++++ b/hid-g19.c
+@@ -40,10 +40,10 @@
+ #define G19_KEYS 32
+ 
+ /* Backlight defaults */
+-#define G19_DEFAULT_RED (0)
+-#define G19_DEFAULT_GREEN (255)
+-#define G19_DEFAULT_BLUE (0)
+-#define G19_DEFAULT_BRIGHTNESS (80)
++#define G19_DEFAULT_RED (40)
++#define G19_DEFAULT_GREEN (100)
++#define G19_DEFAULT_BLUE (80)
++#define G19_DEFAULT_BRIGHTNESS (0)
+ 
+ /* LED array indices */
+ #define G19_LED_M1 0
