@@ -15,6 +15,8 @@ makedepends=('go' 'git')
 options=('!strip')
 source=("${_pkgname}::git+https://github.com/cassava/repoctl.git#branch=devel")
 md5sums=('SKIP')
+provides=('repoctl')
+conflicts=('repoctl' 'repoctl-git')
 
 pkgver() {
   cd "${_pkgname}"

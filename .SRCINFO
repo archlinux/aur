@@ -10,6 +10,9 @@ pkgbase = repoctl-devel-git
 	makedepends = go
 	makedepends = git
 	depends = pacman
+	provides = repoctl
+	conflicts = repoctl
+	conflicts = repoctl-git
 	options = !strip
 	source = repoctl::git+https://github.com/cassava/repoctl.git#branch=devel
 	md5sums = SKIP
