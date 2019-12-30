@@ -42,9 +42,9 @@ package_python-balena() {
 package_python2-balena() {
     depends=("python2-pyjwt>=1.5.0"
     "python2-twisted>=18.7.0"
-    "python2-pyotp>=2.2.5"
+    "python-pyotp>=2.2.5"
     "python2-pyopenssl>=18.0.0"
-    "python2-semver"
+    "python-semver"
     "python2-service-identity"
     "python2-requests>=2.19.1")
     cd "${srcdir}/${_fullname}-${pkgver}-python2"

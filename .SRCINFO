@@ -24,9 +24,9 @@ pkgname = python-balena
 pkgname = python2-balena
 	depends = python2-pyjwt>=1.5.0
 	depends = python2-twisted>=18.7.0
-	depends = python2-pyotp>=2.2.5
+	depends = python-pyotp>=2.2.5
 	depends = python2-pyopenssl>=18.0.0
-	depends = python2-semver
+	depends = python-semver
 	depends = python2-service-identity
 	depends = python2-requests>=2.19.1
 
