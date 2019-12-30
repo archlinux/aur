@@ -1,13 +1,14 @@
 # Maintainer:  mrxx <mrxx at cyberhome dot at>
 
 pkgname=endlessh
-pkgver=r83.a154fca
+pkgver=r91.2602caa
 pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients"
 arch=('x86_64' 'i686')
 url="https://nullprogram.com/blog/2019/03/22/"
 license=('custom')
 depends=()
+makedepends=('git')
 source=('git+https://github.com/skeeto/endlessh' 'endlessh.conf')
 sha256sums=('SKIP'
             '9aa763197e6920fb04f084407c267863b9da2827d785015f65c876c2315f783d')
