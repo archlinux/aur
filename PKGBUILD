@@ -17,6 +17,10 @@ sha256sums=("9dc76481771bb2e219217187a1331a85a426e685d4070867a42d5825956ee512"
             "7c05e9915a52fb72fa8d1c498b173c42457d669351313eaddccf43f86ed0e0ec"
             "990f70efec828c1e1f3f57748fc6e40f9705f2223dc96683e8e29d118daac116")
 
+prepare() {
+  rm -rf "$srcdir/azure-cli"
+}
+
 build() {
   grep -v -E '^===>|^$' install.response | python "$srcdir/install.py"
 }
