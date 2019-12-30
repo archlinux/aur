@@ -1,52 +1,32 @@
-# Maintainer: Ultracoolguy <dummyd241 at gmaildotcom>
-pkgname="switch-lan-play-git"
-pkgver=v0.2.1.r23.g200e767
+# Maintainer: base64 --decode <<< Q8OpZHJpYyBDb25uZXMgPGNlZHJpYy5jb25uZXNAZ21haWwuY29tPgo=
+
+pkgname=switch-lan-play
+pkgver=0.2.1
 pkgrel=1
-epoch=0
-pkgdesc="A program for connecting to switch-lan-play servers-see url for more info"
-arch=(any)
-url="https://github.com/spacemeowx2/switch-lan-play"
+pkgdesc='Make you and your friends play games like in a LAN'
+arch=('i686' 'x86_64')
+url='https://github.com/spacemeowx2/switch-lan-play'
 license=('GPL3')
-groups=()
-depends=("libpcap")
-makedepends=("cmake")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=("switch-lan-play")
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname::git+${url}")
-noextract=()
-md5sums=('SKIP')
-
-#Taken from this forum https://bbs.archlinux.org/viewtopic.php?id=230826
- pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
+depends=('libpcap')
+makedepends=('cmake')
+source=("git+https://github.com/spacemeowx2/$pkgname.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-	cd $pkgname
-	git submodule init
-	git submodule update --init --recursive
+  cd "$pkgname"
+  git submodule update --init --recursive
 }
 
-
-
-build()	{
-	cd $pkgname
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release ..
-	make
+build() {
+  cd "$pkgname"
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release ..
+  make
 }
+
 package() {
-	cd $pkgname/build
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname"
+  cd build
+  make DESTDIR="$pkgdir/" install
 }
-
