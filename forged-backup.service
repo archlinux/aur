@@ -4,9 +4,9 @@ After=local-fs.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/forge-1.8.9d backup
-User=forge-1-8-9
-Group=forge-1-8-9
+ExecStart=/usr/bin/forged backup
+User=forge
+Group=forge
 
 [Install]
 WantedBy=multi-user.target

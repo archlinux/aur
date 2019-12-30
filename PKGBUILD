@@ -5,72 +5,155 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_game="forge-1.8.9"
-_server_root="/srv/forge-1.8.9"
+[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.8.9_11.15.1.1722-2"
+[ -z "$FORGE_SRV_MCVER_LATEST" ] && FORGE_SRV_MCVER_LATEST="1.14.4"
 
-_minecraft_ver=1.8.9
-_pkgver=${_minecraft_ver}-11.15.1.1722
+IFS="-" read -ra _ver_temp <<< "$FORGE_SRV_PKGVER"
+IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
+IFS="." read -ra _minecraft_ver_temp <<< "${_pkgver_temp[0]}"
 
-pkgname=forge-server-1.8.9
+_minecraft_ver=${_pkgver_temp[0]}
+_minecraft_ver_major=${_minecraft_ver_temp[0]:-0}
+_minecraft_ver_minor=${_minecraft_ver_temp[1]:-0}
+_minecraft_ver_patch=${_minecraft_ver_temp[2]:-0}
+_forge_ver=${_pkgver_temp[1]}
+
+_pkgver="${_minecraft_ver}-${_forge_ver}"
+
+[ "$_minecraft_ver" = "$FORGE_SRV_MCVER_LATEST" ] && pkgname="forge-server" || pkgname="forge-server-${_minecraft_ver}"
 pkgver=${_pkgver//-/_}
-pkgrel=1
-pkgdesc="Minecraft Forge server unit files, script, and jar"
-arch=('any')
-url="https://minecraftforge.net/"
-license=('custom')
-depends=('java-runtime-headless=8' 'screen' 'sudo' 'bash' 'awk' 'sed')
-optdepends=("tar: needed in order to create world backups" "netcat: required in order to suspend an idle server")
-backup=("etc/conf.d/${_game}")
-install="${pkgname}.install"
-source=("${_game}-${_pkgver}-installer.jar"::"https://files.minecraftforge.net/maven/net/minecraftforge/forge/${_pkgver}/forge-${_pkgver}-installer.jar"
-	"${_game}d-backup.service"
-	"${_game}d-backup.timer"
-	"${_game}d.service"
-	"${_game}d.conf"
-	"${_game}d.sh"
-	"LICENSE-fml.txt"
-	"MinecraftForge-License.txt"
-	"Paulscode IBXM Library License.txt"
-	"Paulscode SoundSystem CodecIBXM License.txt")
-noextract=("${_game}-${_pkgver}-installer.jar")
-sha512sums=('f592a98268450381f108e8bbc92c6abf7197ad4a8f4ae0863acb089d6b098c411b73ae6f2d9376333735b008c80505b4f5b20ba2c733380e509b2d90bbb38632'
-            'b51a6d7581faa98ac543e8d1f9655c93defb575846fe245ddf9a77250721889cac9efc4744989be50f801c009662212135e8cddd594f106e1c218e651975e51b'
+pkgrel=${_ver_temp[1]}
+pkgdesc="Minecraft Forge server unit files, script and jar"
+arch=("any")
+url="https://minecraftforge.net"
+license=("custom")
+depends=("java-runtime-headless=8" "screen" "sudo" "bash" "awk" "sed")
+optdepends=("tar: needed in order to create world backups"
+	"netcat: required in order to suspend an idle server")
+provides=("forge-server=${pkgver}")
+conflicts=("forge-server")
+backup=("etc/conf.d/forge")
+[ "$FORGE_SRV_PKGVER" = "1.8.9_11.15.1.1722-2" ] && install="forge-server.install" || install="forge-server-custom.install"
+source=("forged-backup.service"
+	"forged-backup.timer"
+	"forged.service"
+	"forged.conf"
+	"forged.sh")
+noextract=("forge-${_pkgver}.jar")
+sha512sums=('e9a391a330320a7aea127a3e8ad399d8d6e3c926eac2c0df7a4e550ba61cc13fec737f7e984bd98b9e1f9f9d5a654ee241eeef6a2e433ec845e300ef29405f62'
             'a47b5a9e2262877008a5dcae3a833fe99f911631d6fdbe97b95e0451e1dd2b5a26b6f7b843dd6a8ccd4f663cf5c3bca53a89a1d3aabb363281ab6c6fb19e41a4'
-            '96b776b1eead0291c01f0c9396425183dbe52877763647bd014f74655660877d19403bc9873223a481a48c60e97e37451cf0461fd471f26d08cb26fffabb320b'
-            'e2205bbe69d716f360229940bf2ef432dcc550cf5c5e54120a4556cba024310c32199481621bac68c52097bd83244172e016cec14057f1b84c5d397dac6500d3'
-            'c54bc1bda683de235aa14da23c1216071be69a08e87ca0dbe29b982de64a68df09f020f307885d981c52e8f03e9aa61ee78d53718df5719da7518f5652fba871'
-            '07860198b7d40726e9597f9ac748904a8e27bdcf87151f0b1c8c2ade024ad16aa83d412b70f900a7de3f58773f325ee45eb6c30cb1395e45a4d8092a19b4f845'
+            'd6bde61a7aa479b85e35b4a3eccb9b3237a6c97f8919b3d704434f1df15672b74c7ae9ca9473eea6a0593e6e80892a2510782115185c1b7fe332720ccb78a7bd'
+            '6c82f776e337d8c5eca11fea87ce6f6cfe4a5e881db947336d9c8605bd36a4ce0b7b8811e11d79285dd855cd2bdc3f65526b7aaa8d47cb14a7b8cf452462329c'
+            '2a9a911e9290573718d7cf00a834e4dc0211c63a2de4d132c0b6c418d2616084dee68b934ae6e6554a0f6a037e35620d2df8b8d736acbd2fe8f71e0656c3ea46'
+            'f592a98268450381f108e8bbc92c6abf7197ad4a8f4ae0863acb089d6b098c411b73ae6f2d9376333735b008c80505b4f5b20ba2c733380e509b2d90bbb38632'
             'dedd8e121e79bdd39c824a2d4acbc231ae6339cfd29894c4e7299359d23bc92423f4a865865372745be996b0bc14f5777e06baae8b1f4e5c302eadeac5aecf15'
             '7f158bed6957e5285ce45a480f6a222065af5427bd48481ef24eb770ff540aa67b2d1c1ed976d216db94323017f7c7ee1dfe16e3f222b14189f9823e0b49f0f3'
-            '2c9bdefe7d022be139e7aec2e5f1cc1f83ea9d35d2c945e26422e140027b5107ce32c56f0b97e7dbf6b6edb282075df4a18c156a6ed6b064bcb10a3b4481a9aa')
+            '2c9bdefe7d022be139e7aec2e5f1cc1f83ea9d35d2c945e26422e140027b5107ce32c56f0b97e7dbf6b6edb282075df4a18c156a6ed6b064bcb10a3b4481a9aa'
+            '07860198b7d40726e9597f9ac748904a8e27bdcf87151f0b1c8c2ade024ad16aa83d412b70f900a7de3f58773f325ee45eb6c30cb1395e45a4d8092a19b4f845')
+
+# -- Forge Installer -- #
+if [ "$_minecraft_ver_minor" = 7 ]; then
+	source+=("forge-${_pkgver}-installer.jar"::"https://files.minecraftforge.net/maven/net/minecraftforge/forge/${_pkgver}-${_minecraft_ver}/forge-${_pkgver}-${_minecraft_ver}-installer.jar")
+else
+	source+=("forge-${_pkgver}-installer.jar"::"https://files.minecraftforge.net/maven/net/minecraftforge/forge/${_pkgver}/forge-${_pkgver}-installer.jar")
+fi
+
+[ "$_minecraft_ver_minor" = 5 ] && source+=("https://files.minecraftforge.net/fmllibs/fml_libs15.zip") && noextract+=("fml_libs15.zip")
+# -- /Forge Installer -- #
+
+# -- Licenses -- #
+_licenses=()
+_license_suffix="-${pkgname}-${_pkgver}.txt"
+
+if [ "$_minecraft_ver_minor" -ge 10 ]; then
+	_branch="${_minecraft_ver_major}.${_minecraft_ver_minor}.x"
+elif [ "$_minecraft_ver_minor" -ge 7 ]; then
+	_branch="$_minecraft_ver"
+elif [ "$_minecraft_ver_minor" = 6 ]; then
+	_branch="1.6"
+else
+	_branch="v7.9"
+fi
+
+_add_license() {
+	_path=$1
+	_repo=${2:-MinecraftForge}
+	_github_branch=${3:-"$_branch"}
+	_filename="$(basename "$_path")${_license_suffix}"
+
+	_licenses+=("$_filename")
+	source+=("$_filename"::"https://raw.githubusercontent.com/MinecraftForge/${_repo}/${_github_branch}/${_path}.txt")
+}
+
+if [ "$_minecraft_ver_minor" -ge 13 ]; then
+	_add_license "LICENSE"
+elif [ "$_minecraft_ver_minor" = 12 ]; then
+	_add_license "LICENSE-Paulscode%20IBXM%20Library"
+	_add_license "LICENSE-Paulscode%20SoundSystem%20CodecIBXM"
+	_add_license "LICENSE"
+elif [ "$_minecraft_ver_minor" -ge 7 ]; then
+	_add_license "MinecraftForge-License"
+	_add_license "Paulscode%20IBXM%20Library%20License"
+	_add_license "Paulscode%20SoundSystem%20CodecIBXM%20License"
+
+	case "$_minecraft_ver_minor" in
+		8) _add_license "LICENSE-fml";;
+		7) _add_license "fml/LICENSE-fml";;
+		*) _add_license "LICENSE-fml" && _add_license "LICENSE-new";;
+	esac
+elif [ "$_minecraft_ver_minor" = 6 ]; then
+	_add_license "install/MinecraftForge-License"
+	_add_license "install/Paulscode%20IBXM%20Library%20License"
+	_add_license "install/Paulscode%20SoundSystem%20CodecIBXM%20License"
+	_add_license "LICENSE-fml" "FML" "902772ed0cb6c22c4cd7ad9b0ec7a02961b5e016"
+else
+	_add_license "LICENSE-fml"
+fi
+# -- /Licenses -- #
 
 prepare() {
-	java -jar "${_game}-${_pkgver}-installer.jar" --installServer
+	[ "$_minecraft_ver_minor" = 10 ] && mkdir mods
+	[ "$_minecraft_ver_minor" = 5 ] && unzip fml_libs15.zip -d lib
+	java -jar "forge-${_pkgver}-installer.jar" --installServer
 }
 
 package() {
-	install -Dm644 "LICENSE-fml.txt"                             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-fml.txt"
-	install -Dm644 "MinecraftForge-License.txt"                  "${pkgdir}/usr/share/licenses/${pkgname}/MinecraftForge-License.txt"
-	install -Dm644 "Paulscode IBXM Library License.txt"          "${pkgdir}/usr/share/licenses/${pkgname}/Paulscode IBXM Library License.txt"
-	install -Dm644 "Paulscode SoundSystem CodecIBXM License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Paulscode SoundSystem CodecIBXM License.txt"
+	# Install forged
+	install -Dm644 "forged-backup.service" "${pkgdir}/usr/lib/systemd/system/forged-backup.service"
+	install -Dm644 "forged-backup.timer" "${pkgdir}/usr/lib/systemd/system/forged-backup.timer"
+	install -Dm644 "forged.service" "${pkgdir}/usr/lib/systemd/system/forged.service"
+	install -Dm644 "forged.conf" "${pkgdir}/etc/conf.d/forge"
+	install -Dm755 "forged.sh" "${pkgdir}/usr/bin/forged"
 
-	install -Dm644 "${_game}d.conf"                         "${pkgdir}/etc/conf.d/${_game}"
-	install -Dm755 "${_game}d.sh"                           "${pkgdir}/usr/bin/${_game}d"
-	install -Dm644 "${_game}d.service"                      "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
-	install -Dm644 "${_game}d-backup.service"               "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
-	install -Dm644 "${_game}d-backup.timer"                 "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
-	install -Dm644 "forge-${_pkgver}-universal.jar"         "${pkgdir}${_server_root}/${_game}-${_pkgver}.jar"
-	install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}${_server_root}/minecraft_server.${_minecraft_ver}.jar"
-	ln -s "${_game}-${_pkgver}.jar" "${pkgdir}${_server_root}/${_game}.jar"
+	# Install Forge
+	_forge_jar="forge-${_pkgver}.jar"
+	[ "$_minecraft_ver_minor" -le 12 ] && _forge_jar="forge-${_pkgver}-universal.jar"
+	[ "$_minecraft_ver_minor" = 7 ] && _forge_jar="forge-${_pkgver}-${_minecraft_ver}-universal.jar"
+	[ "$_minecraft_ver_minor" -le 6 ] && _forge_jar="minecraftforge-universal-${_pkgver}.jar"
 
-	# Install libraries
-	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 '@' "${pkgdir}${_server_root}/@"
+	install -Dm644 "$_forge_jar" "${pkgdir}/srv/forge/$_forge_jar"
+	ln -s "$_forge_jar" "${pkgdir}/srv/forge/forge.jar"
+	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${pkgdir}/srv/forge/@"
+	[ "$_minecraft_ver_minor" = 5 ] && find lib -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${pkgdir}/srv/forge/@"
 
-	# Link the log files
+	# Install Minecraft Server (for 1.12.2 or lower)
+	if [ "$_minecraft_ver_minor" = 5 ]; then
+		install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}/srv/forge/minecraft_server.jar"
+	elif [ "$_minecraft_ver_minor" -le 12 ]; then
+		install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}/srv/forge/minecraft_server.${_minecraft_ver}.jar"
+	fi
+
+	# Link log files
 	mkdir -p "${pkgdir}/var/log/"
-	install -dm2755 "${pkgdir}/${_server_root}/logs"
-	ln -s "${_server_root}/logs" "${pkgdir}/var/log/${_game}"
+	install -dm2755 "${pkgdir}/srv/forge/logs"
+	ln -s "/srv/forge/logs" "${pkgdir}/var/log/forge"
 
-	# Give the group write permissions and set user or group ID on execution
-	chmod g+ws "${pkgdir}${_server_root}"
+	# Install licenses
+	for _license in "${_licenses[@]}"; do
+		_filename="$(basename "$_license" "$_license_suffix").txt"
+		_filename="${_filename//\%20/ }"
+		install -Dm644 "$_filename" "${pkgdir}/usr/share/licenses/${pkgname}/$_filename"
+	done
+
+	chmod g+ws "${pkgdir}/srv/forge"
 }

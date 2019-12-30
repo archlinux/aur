@@ -1,14 +1,10 @@
 *
-!forge-server-1.8.9.install
-!forge-1.8.9d-backup.service
-!forge-1.8.9d-backup.timer
-!forge-1.8.9d.conf
-!forge-1.8.9d.service
-!forge-1.8.9d.sh
-!LICENSE-fml.txt
-!MinecraftForge-License.txt
-!Paulscode IBXM Library License.txt
-!Paulscode SoundSystem CodecIBXM License.txt
+!forged-backup.service
+!forged-backup.timer
+!forged.conf
+!forged.service
+!forged.sh
+!forge-server.install
 !PKGBUILD
 !.gitignore
 !.SRCINFO
