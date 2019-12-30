@@ -2,23 +2,18 @@
 # Contributor: bjo@nord-west.org
 
 pkgname=mopidy-podcast
-_pypiname=Mopidy-Podcast
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Mopidy extension for searching and browsing podcasts."
 arch=('any')
 url="https://github.com/tkem/mopidy-podcast"
 license=('APACHE')
-depends=('mopidy>=1.0'
-         'python2-setuptools'
-         'python2-pykka'
-         'python2-cachetools'
-         'python2-uritools')
-makedepends=('python2' 'git')
+depends=('mopidy>=3.0' python-setuptools python-pykka python-cachetools python-uritools)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tkem/mopidy-podcast/archive/v${pkgver}.tar.gz")
-sha256sums=('19a30d4e5523a38b9aab293247c6b1355c3c83a9a8c12a3608e6147896d64198')
+sha256sums=('d923c61c6ecb1346e87844ae38425dc2dbadc0877205d91105df1e8652a2df5a')
 
 package() {
-  cd "$srcdir/${pkgname}-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
+
