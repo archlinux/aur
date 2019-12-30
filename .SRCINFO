@@ -10,6 +10,7 @@ pkgbase = pywal-git
 	makedepends = sudo
 	makedepends = python-pip
 	depends = python
+	depends = imagemagick
 	source = git+https://github.com/dylanaraps/pywal
 	md5sums = SKIP
 
