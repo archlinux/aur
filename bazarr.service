@@ -6,9 +6,10 @@ After=network.target
 User=bazarr
 Group=bazarr
 Type=simple
-ExecStart=/usr/bin/python2 /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr
+ExecStart=/usr/bin/python /usr/lib/bazarr/bazarr.py --no-update --config /var/lib/bazarr
 Restart=always
 TimeoutStopSec=30
+SyslogIdentifier=bazarr
 
 [Install]
 WantedBy=multi-user.target
