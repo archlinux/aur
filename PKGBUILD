@@ -4,7 +4,7 @@
 pkgname=qemu-arm-static
 pkgver=4.2.0r0
 _pkgver=${pkgver/r/-r}
-pkgrel=1
+pkgrel=2
 pkgdesc='Statically linked qemu-arm, qemu-armeb and qemu-aarch64 executables from Alpine'
 arch=(x86_64)
 url='https://alpinelinux.org/'
@@ -26,6 +26,6 @@ package() {
 md5sums=('b929d0740e66e21385356c2e9524f418'
          '73d3db2de374486b2e18091dcf527a68'
          'b6b09b2805aa414a05d489502f42ce3f'
-         '209e75696b9f8d9c5e548ebae4c7d820'
-         'c4d349aea05c4c6232998af6d750d937'
-         '30a72492eb2ba68dfbe70368f2e8a22b')
+         '11c56ac5b0463055b7e3bc1216fe639e'
+         '990e3e260665c1da56b5b1c71f480664'
+         '89569b9c545af650dfeab24d4f8bb677')
