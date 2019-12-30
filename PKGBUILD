@@ -2,11 +2,9 @@
 _pkgname=golangci-lint
 pkgname=${_pkgname}-bin
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter. (Binary)"
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
-# aarch64 not available for v1.21.0 (yet)
-# https://github.com/golangci/golangci-lint/issues/823
-arch=(x86_64 i686 arm6h arm7h) 
+arch=(x86_64 i686 aarch64 arm6h arm7h)
 url=https://github.com/golangci/golangci-lint
 license=('GPL3')
 provides=('golangci-lint')
@@ -15,14 +13,14 @@ conflicts=('golangci-lint' 'golangci-lint-git')
 _source=${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux
 source_x86_64=(${_source}-amd64.tar.gz)
 source_i686=(${_source}-386.tar.gz)
-#source_aarch64=(${_source}-arm64.tar.gz)
+source_aarch64=(${_source}-arm64.tar.gz)
 source_arm6h=(${_source}-armv6.tar.gz)
 source_arm7h=(${_source}-armv7.tar.gz)
-sha512sums_x86_64=('1e48e9ab9683e297418002df282818ee8e7894d711beba0147fcca756ef54e732f50ac8207f140072157e9391b4773ec2badf741a43eb9371884b292cc8e2cf0')
-sha512sums_i686=('b5f41cada6dd0595c2b1574d3eb24065ae5cbc8569a11f289e0bb88d9a231fdf8839248e63106f0e7b07ce919f79b75d9a9fca36d5072992ab2368c25028fd1d')
-sha512sums_arm6h=('da1c9016963ff8cff556796314b9e78df4cbf4876a3361701b76b30fcc4bb4471f74c99b5c342d97ad3137a8cfe7e2bfbe43f4df7b6d5d653f3b73e5e7005ce1')
-sha512sums_arm7h=('38fe8ade767bf67064e3e1b6729f1bdc9ea7ef0251967ac706932c6ee18faa05dfbbff5530e8d9c6a2097f2db6d8e3858c9ede5a457f5e322107a373af629b23')
-#sha512sums_aarch64=('1595297bbe24769a888f36cde9af4edfe179d32641f33249a636db43bcb96b9b8a4f8fccceec8ae4ecce3a8700efa5799e547bc8a6ebd22ab55ccb86915e3cb8')
+sha512sums_x86_64=('9e85e3d924a2e187f2832e6a2a93be596e2744fb0ff3b340b78f7955dc1b78d10e6db5f111d8bb6e1fea2049e6f9bb00e59634f879f7ade1b4d1aedd51046786')
+sha512sums_i686=('a1cc8e4e6ab03dbba426ec60ad1126ccb29d1812dc54402653daea30411efb0b9c0bc4b29a1b0fa1d895628bf71fe5aa9cd07c8b551a51ffd8ebd2685f3b3747')
+sha512sums_aarch64=('ce3b2cc519ff07bfbce0e6ddfdc548d780af808fdf329ed0f9f16d0dde5614eead8314ca96b3636f944290fa5f364d10694ffabee208124c8416169b30f52281')
+sha512sums_arm6h=('877afc6530ada8985fdccbcab1954d93bb6beb6accf978358cc5124abbfd4adfe1e075d27cd89da799a19f9c0275de37b4e041710853de43aa4ca5539fc16f88')
+sha512sums_arm7h=('931d1c278f81ef29a1490d21902eceba1e4cace0f6f3402b1412ffce7121d02d14003b6acb95ada807fcb2b02a0a2819ff8297bf25660dc3b24ee771ea9354aa')
 
 
 case $CARCH in
