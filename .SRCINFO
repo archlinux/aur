@@ -1,6 +1,6 @@
 pkgbase = x3270-git
 	pkgdesc = IBM 3270 terminal emulator for the X Window System
-	pkgver = 3.7alpha1.r1825
+	pkgver = 3.7alpha1.r1844
 	pkgrel = 1
 	url = http://x3270.bgp.nu/
 	install = x3270.install
