@@ -1,14 +1,14 @@
 # Maintainer: Aram Drevekenin <aram@poor.dev>
 pkgname=bandwhich
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Display network utilization by process, connection and remote address"
 url="https://github.com/imsnif/bandwhich"
 source=("https://github.com/imsnif/$pkgname/archive/$pkgver.tar.gz")
 license=('MIT')
-sha256sums=("b5bef3ecdcace34e5d14ed44449ae1cfc109a0f889817705b53a77259d1714d3")
+sha256sums=("6ae14eb983cec65a040f40ba0626d1b08684136abfe4dacdf37d252bfbb01a75")
 
 check() {
   cd "$pkgname-$pkgver"
