@@ -4,7 +4,7 @@
 pkgname=nushell
 cargoname=nu
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 makedepends=('rust')
 depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
@@ -20,6 +20,7 @@ build() {
   cd "$pkgname-$pkgver"
   cargo build \
 	--locked \
+	--features=stable \
 	--release 
 }
 
