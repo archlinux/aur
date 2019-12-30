@@ -24,6 +24,7 @@ sed \
 
 sed \
 	-e 's#^PIDFile=.*#PIDFile=/run/php73-fpm/php-fpm.pid#' \
+  -e 's#^ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize#ExecStart=@EXPANDED_SBINDIR@/php-fpm73 --nodaemonize#' \
 	-i.orig sapi/fpm/php-fpm.service.in
 
 extensions=";extension=bcmath\n;extension=bz2\n;extension=calendar\nextension=curl\n;extension=dba\n;extension=enchant\n;extension=exif\n;extension=ftp\n;extension=gd\n;extension=gettext\n;extension=gmp\n;extension=iconv\n;extension=imap\n;extension=intl\n;extension=sodium\n;extension=ldap\n;extension=mysqli\n;extension=odbc\n;zend_extension=opcache\n;extension=pdo_dblib\n;extension=pdo_mysql\n;extension=pdo_odbc\n;extension=pdo_pgsql\n;extension=pdo_sqlite\n;extension=pgsql\n;extension=pspell\n;extension=shmop\n;extension=snmp\n;extension=soap\n;extension=sockets\n;extension=sqlite3\n;extension=sysvmsg\n;extension=sysvsem\n;extension=sysvshm\n;extension=tidy\n;extension=xmlrpc\n;extension=xsl\nextension=zip\n"

@@ -63,12 +63,14 @@
  ; stderr will be redirected to /dev/null according to FastCGI specs.
 --- sapi/fpm/php-fpm.service.in.orig
 +++ sapi/fpm/php-fpm.service.in
-@@ -8,7 +8,7 @@
+@@ -8,8 +8,8 @@
  
  [Service]
  Type=@php_fpm_systemd@
 -PIDFile=@EXPANDED_LOCALSTATEDIR@/run/php-fpm.pid
+-ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
 +PIDFile=/run/php73-fpm/php-fpm.pid
- ExecStart=@EXPANDED_SBINDIR@/php-fpm --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
++ExecStart=@EXPANDED_SBINDIR@/php-fpm73 --nodaemonize --fpm-config @EXPANDED_SYSCONFDIR@/php-fpm.conf
  ExecReload=/bin/kill -USR2 $MAINPID
  PrivateTmp=true
+ 
