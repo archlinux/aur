@@ -1,0 +1,57 @@
+From 6e149a5538676e885561f1dfc18bbb4dd104c1f6 Mon Sep 17 00:00:00 2001
+From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Date: Thu, 3 Oct 2019 11:55:30 +0300
+Subject: [PATCH 15/20] drm/i915: Fix audio power up sequence for gen10+
+ display
+
+On platfroms with gen10+ display, driver must set the enable bit of
+AUDIO_PIN_BUF_CTL register before transactions with the HDA controller
+can proceed. Add setting this bit to the audio power up sequence.
+
+Failing to do this resulted in errors during display audio codec probe,
+and failures during resume from suspend.
+
+Note: We may also need to disable the bit afterwards, but there are
+still unresolved issues with that.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=111214
+Signed-off-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20191003085531.30990-1-kai.vehmanen@linux.intel.com
+---
+ drivers/gpu/drm/i915/display/intel_audio.c | 5 +++++
+ drivers/gpu/drm/i915/i915_reg.h            | 2 ++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_audio.c b/drivers/gpu/drm/i915/display/intel_audio.c
+index 439bc0a93410..440b33762fef 100644
+--- a/drivers/gpu/drm/i915/display/intel_audio.c
++++ b/drivers/gpu/drm/i915/display/intel_audio.c
+@@ -860,6 +860,11 @@ static unsigned long i915_audio_component_get_power(struct device *kdev)
+ 		/* Force CDCLK to 2*BCLK as long as we need audio powered. */
+ 		if (IS_CANNONLAKE(dev_priv) || IS_GEMINILAKE(dev_priv))
+ 			glk_force_audio_cdclk(dev_priv, true);
++
++		if (INTEL_GEN(dev_priv) >= 10 || IS_GEMINILAKE(dev_priv))
++			I915_WRITE(AUD_PIN_BUF_CTL,
++				   (I915_READ(AUD_PIN_BUF_CTL) |
++				    AUD_PIN_BUF_ENABLE));
+ 	}
+ 
+ 	return ret;
+diff --git a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
+index e1fe356463ec..ccfea9c2b8bf 100644
+--- a/drivers/gpu/drm/i915/i915_reg.h
++++ b/drivers/gpu/drm/i915/i915_reg.h
+@@ -9105,6 +9105,8 @@ enum {
+ #define   SKL_AUD_CODEC_WAKE_SIGNAL		(1 << 15)
+ 
+ #define AUD_FREQ_CNTRL			_MMIO(0x65900)
++#define AUD_PIN_BUF_CTL		_MMIO(0x48414)
++#define   AUD_PIN_BUF_ENABLE		REG_BIT(31)
+ 
+ /*
+  * HSW - ICL power wells
+-- 
+2.24.1
+

@@ -1,0 +1,73 @@
+From 1a95a3417bdadb0528e16745802688c393aa0afd Mon Sep 17 00:00:00 2001
+From: Konstantin Khlebnikov <khlebnikov@yandex-team.ru>
+Date: Thu, 31 Oct 2019 16:04:48 +0300
+Subject: [PATCH 07/20] x86/MCE/AMD: Do not use rdmsr_safe_on_cpu() in
+ smca_configure()
+
+... because interrupts are disabled that early and sending IPIs can
+deadlock:
+
+  BUG: sleeping function called from invalid context at kernel/sched/completion.c:99
+  in_atomic(): 1, irqs_disabled(): 1, non_block: 0, pid: 0, name: swapper/1
+  no locks held by swapper/1/0.
+  irq event stamp: 0
+  hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+  hardirqs last disabled at (0): [<ffffffff8106dda9>] copy_process+0x8b9/0x1ca0
+  softirqs last  enabled at (0): [<ffffffff8106dda9>] copy_process+0x8b9/0x1ca0
+  softirqs last disabled at (0): [<0000000000000000>] 0x0
+  Preemption disabled at:
+  [<ffffffff8104703b>] start_secondary+0x3b/0x190
+  CPU: 1 PID: 0 Comm: swapper/1 Not tainted 5.5.0-rc2+ #1
+  Hardware name: GIGABYTE MZ01-CE1-00/MZ01-CE1-00, BIOS F02 08/29/2018
+  Call Trace:
+   dump_stack
+   ___might_sleep.cold.92
+   wait_for_completion
+   ? generic_exec_single
+   rdmsr_safe_on_cpu
+   ? wrmsr_on_cpus
+   mce_amd_feature_init
+   mcheck_cpu_init
+   identify_cpu
+   identify_secondary_cpu
+   smp_store_cpu_info
+   start_secondary
+   secondary_startup_64
+
+The function smca_configure() is called only on the current CPU anyway,
+therefore replace rdmsr_safe_on_cpu() with atomic rdmsr_safe() and avoid
+the IPI.
+
+ [ bp: Update commit message. ]
+
+Signed-off-by: Konstantin Khlebnikov <khlebnikov@yandex-team.ru>
+Signed-off-by: Borislav Petkov <bp@suse.de>
+Reviewed-by: Yazen Ghannam <yazen.ghannam@amd.com>
+Cc: "H. Peter Anvin" <hpa@zytor.com>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: linux-edac <linux-edac@vger.kernel.org>
+Cc: <stable@vger.kernel.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>
+Cc: Tony Luck <tony.luck@intel.com>
+Cc: x86-ml <x86@kernel.org>
+Link: https://lkml.kernel.org/r/157252708836.3876.4604398213417262402.stgit@buzz
+---
+ arch/x86/kernel/cpu/mce/amd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/x86/kernel/cpu/mce/amd.c b/arch/x86/kernel/cpu/mce/amd.c
+index 6ea7fdc82f3c..c7ab0d38af79 100644
+--- a/arch/x86/kernel/cpu/mce/amd.c
++++ b/arch/x86/kernel/cpu/mce/amd.c
+@@ -269,7 +269,7 @@ static void smca_configure(unsigned int bank, unsigned int cpu)
+ 	if (smca_banks[bank].hwid)
+ 		return;
+ 
+-	if (rdmsr_safe_on_cpu(cpu, MSR_AMD64_SMCA_MCx_IPID(bank), &low, &high)) {
++	if (rdmsr_safe(MSR_AMD64_SMCA_MCx_IPID(bank), &low, &high)) {
+ 		pr_warn("Failed to read MCA_IPID for bank %d\n", bank);
+ 		return;
+ 	}
+-- 
+2.24.1
+

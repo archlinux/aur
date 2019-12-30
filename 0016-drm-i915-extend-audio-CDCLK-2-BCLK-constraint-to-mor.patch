@@ -1,0 +1,41 @@
+From 975d5a884b3c80155808c2ac39e6bb6d51450dea Mon Sep 17 00:00:00 2001
+From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Date: Thu, 3 Oct 2019 11:55:31 +0300
+Subject: [PATCH 16/20] drm/i915: extend audio CDCLK>=2*BCLK constraint to more
+ platforms
+
+The CDCLK>=2*BCLK constraint applies to all generations since gen10.
+Extend the constraint logic in audio get/put_power().
+
+Signed-off-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Signed-off-by: Jani Nikula <jani.nikula@intel.com>
+Link: https://patchwork.freedesktop.org/patch/msgid/20191003085531.30990-2-kai.vehmanen@linux.intel.com
+---
+ drivers/gpu/drm/i915/display/intel_audio.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/i915/display/intel_audio.c b/drivers/gpu/drm/i915/display/intel_audio.c
+index 440b33762fef..05ef43b13d1c 100644
+--- a/drivers/gpu/drm/i915/display/intel_audio.c
++++ b/drivers/gpu/drm/i915/display/intel_audio.c
+@@ -858,7 +858,7 @@ static unsigned long i915_audio_component_get_power(struct device *kdev)
+ 		}
+ 
+ 		/* Force CDCLK to 2*BCLK as long as we need audio powered. */
+-		if (IS_CANNONLAKE(dev_priv) || IS_GEMINILAKE(dev_priv))
++		if (INTEL_GEN(dev_priv) >= 10 || IS_GEMINILAKE(dev_priv))
+ 			glk_force_audio_cdclk(dev_priv, true);
+ 
+ 		if (INTEL_GEN(dev_priv) >= 10 || IS_GEMINILAKE(dev_priv))
+@@ -877,7 +877,7 @@ static void i915_audio_component_put_power(struct device *kdev,
+ 
+ 	/* Stop forcing CDCLK to 2*BCLK if no need for audio to be powered. */
+ 	if (--dev_priv->audio_power_refcount == 0)
+-		if (IS_CANNONLAKE(dev_priv) || IS_GEMINILAKE(dev_priv))
++		if (INTEL_GEN(dev_priv) >= 10 || IS_GEMINILAKE(dev_priv))
+ 			glk_force_audio_cdclk(dev_priv, false);
+ 
+ 	intel_display_power_put(dev_priv, POWER_DOMAIN_AUDIO, cookie);
+-- 
+2.24.1
+
