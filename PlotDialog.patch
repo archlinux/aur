@@ -1,6 +1,12 @@
---- qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/PlotDialog.cpp	2011-09-13 13:50:34.000000000 +0200
-+++ qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/PlotDialog.cpp	2019-12-30 12:42:44.446317093 +0100
-@@ -2131,12 +2131,12 @@
+--- PlotDialog_orig.cpp	2011-09-13 13:50:34.000000000 +0200
++++ PlotDialog.cpp	2019-12-30 12:49:57.000000000 +0100
+@@ -2126,17 +2126,17 @@
+     QGridLayout *gl3 = new QGridLayout(GroupBoxVectEnd);
+     labelXEnd = new QLabel(tr( "X End" ));
+     gl3->addWidget(labelXEnd, 0, 0);
+-	xEndBox = new QComboBox(false);
++	xEndBox = new QComboBox();
+     gl3->addWidget(xEndBox, 0, 1);
  
  	labelYEnd = new QLabel(tr( "Y End" ));
      gl3->addWidget(labelYEnd, 1, 0);

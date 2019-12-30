@@ -63,7 +63,7 @@ sha256sums=('a523ea259516d7581abaf2fe376507d152db32f71d88176cff18f5bc391b9ef0'
 			'e5476599521289928e50462f6c9080185581f0c15b2dc274c96ca2c1fd8fa72a'
 			'da119d0d4abdf8954f7fc52efc9fc738897e4bdcc9b767444e549fb00a62578a'
 			'2427a152acdbe312211b7d57e73d47e9cd7f698440952784de6db4c0429cea22'
-			"84e9a39202e99616ac9021d0bb0cd30cdb8f3c896e740cba3ccd18789e483211")
+			"e68b5ccaada98eecdde81fb8ef753bc1e82034cfb202754d51f0ffb9495d998f")
 prepare() {
 cd "$srcdir"
 
@@ -83,7 +83,7 @@ patch -p0 < FitDialog.patch
 patch -p0 < ConfigDialog.patch
 patch -p0 < ColorMapEditor.patch
 patch -p0 < LayerDialog.patch
-patch -p0 < PlotDIalog.patch
+patch -p0 < PlotDialog.patch
 cp build.conf qtiplot-${pkgver}/
 
 }
