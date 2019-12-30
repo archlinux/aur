@@ -10,7 +10,7 @@ license=('custom:propietary')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-literata')
 replaces=('ttf-literata')
-source=("com.google.android.apps.books_5.6.9_RC05.285049181-92871_minAPI16(nodpi)_apkmirror.com.apk::https://www.apkmirror.com/wp-content/uploads/2019/12/5df19be55441d/com.google.android.apps.books_5.6.9_RC05.285049181-92871_minAPI16(nodpi)_apkmirror.com.apk?verify=1577646483-ngjNH8toVJFuvzpidpD2UTXs7mQXBC5Dpxp6EXUUNlw%3D")
+source=("https://r-static-assets.androidapks.com/rdata/911f40ff46d33f27cdcd032783af4618/com.google.android.apps.books_v5.6.9_RC05.285049181-92871_Android-4.1.apk")
 sha256sums=('6e07ee083989026adab80d1248fffeac7d0d3f46da039bc6028fd3218e766121')
 
 package() {
