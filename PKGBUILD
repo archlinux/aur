@@ -1,8 +1,8 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=4df7758e8215216abe46acdf3e942282370a8790
-_gitsha256='c9abacebbd2ae9fd3d4f61cbfa0f00c47cd93a5d80de895889f1fcf90ecad488'
+_gitcommit=0a7f7c782ed898a0580bcf78de248abe2fa4fe5a
+_gitsha256='f5347ac1e9a489099dc73c81479595cf80e6aeb0171e33e993a3367b7bd260fd'
 
 pkgbase=octopi-notifier-frameworks
 pkgname=('octopi-notifier-frameworks')
