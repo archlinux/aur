@@ -1,6 +1,6 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kmdr-cli
-pkgver=0.1.36
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="The CLI tool for explaining commands from your terminal"
 arch=('any')
@@ -11,16 +11,16 @@ makedepends=('npm' 'jq')
 provides=("${pkgname%-cli}")
 conflicts=("${pkgname%-cli}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v$pkgver.tar.gz")
-sha256sums=('775dd7ec9a6fbe17ece0e5900ee414428c0fec200e72c5dfe337ae8806f3053f')
+sha256sums=('0f4c5ce1d95b038274a06f3f8c434b002d1bf55814f149cdaa17dfb9b2ad0f07')
 
 package() {
-	npm install --cache "$srcdir/npm-cache" -g --user root --prefix "$pkgdir"/usr \
-		"$srcdir"/$pkgname-$pkgver.tar.gz
+	cd "$pkgname-$pkgver"
+	npm install kmdr@latest --cache "$srcdir/npm-cache" -g --user root --prefix "$pkgdir"/usr
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
 	find "$pkgdir"/usr -type d -exec chmod 755 {} +
-	
+
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
@@ -31,5 +31,5 @@ package() {
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
 
-	install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
