@@ -1,0 +1,19 @@
+pkgbase = rivalcfg-sensei-310
+	pkgdesc = SteelSeries Rival gaming mouse configuration utility - Sensei 310 compatible
+	pkgver = 2.6.0.r81.1820b76
+	pkgrel = 1
+	url = https://github.com/flozz/rivalcfg
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = python
+	depends = hidapi
+	depends = python-hidapi
+	depends = python-setuptools
+	provides = rivalcfg
+	conflicts = rivalcfg
+	source = git+https://github.com/Gazler/rivalcfg
+	sha256sums = SKIP
+
+pkgname = rivalcfg-sensei-310
+
