@@ -14,7 +14,7 @@ pkgbase = chronograf
 	makedepends = make
 	makedepends = npm
 	makedepends = yarn
-	makedepends = nodejs<=9
+	makedepends = nodejs=12
 	makedepends = python2
 	makedepends = go-bindata
 	depends = glibc

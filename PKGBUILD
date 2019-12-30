@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://github.com/InfluxData/chronograf'
 _github_url="https://github.com/influxdata/chronograf"
 license=('AGPL')
-makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs<=9' 'python2' 'go-bindata')
+makedepends=('go' 'git' 'make' 'npm' 'yarn' 'nodejs=12' 'python2' 'go-bindata')
 depends=('glibc')
 backup=('etc/chronograf/chronograf.conf')
 install="chronograf.install"
