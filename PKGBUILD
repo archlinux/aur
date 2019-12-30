@@ -17,18 +17,18 @@ source=('git+https://github.com/Gazler/rivalcfg')
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir"/$_pkgname
+  cd "$srcdir"/rivalcfg
   git checkout feat/sensei310
   patch -p2 < ../..//python_3.8.patch
 }
 
 pkgver() {
-  cd "$srcdir"/$_pkgname
+  cd "$srcdir"/rivalcfg
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
 package() {
-  cd "$srcdir"/$_pkgname
+  cd "$srcdir"/rivalcfg
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
