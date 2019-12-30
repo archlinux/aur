@@ -1,9 +1,9 @@
+# Maintainer: Jose Riha <jose1711 gmail com>
 # Contributor: Ross Melin <rdmelin@gmail.com>
 # Contributor: Tri Le <trile7@gmail.com>
 # Contributor: libc <primehunter326@gmail.com>
 # Contributor: Albert Nguyen <albertbmnguyen@yahoo.com>
 # Contributor: Maxim Devaev <mdevaev@gmail.com>
-
 
 pkgname=mjpg-streamer
 pkgver=r67
