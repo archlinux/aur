@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-llvm')
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -10,8 +10,12 @@ makedepends=('mingw-w64-cmake' 'llvm' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
-source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz{,.sig})
-sha256sums=('d6a0565cf21f22e9b4353b2eb92622e8365000a9e90a16b09b56f8157eabfe84'
+_source_base=https://releases.llvm.org/$pkgver
+if [[ ${pkgver##*.} != 0 ]]; then
+  _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
+fi
+source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig})
+sha256sums=('00a1ee1f389f81e9979f3a640a01c431b3021de0d42278f6508391a2f0b81c9a'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
