@@ -13,7 +13,7 @@ provides=('jmk-x11-fonts')
 replaces=('jmk-x11-fonts')
 source=("${url}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('7a99689be59eaf50742932ce27c8b41a99d10076adf9c2990e11745a873eec610257d50e844f8380658d340cf821724d459dc9b6b189666180596f2bf255957f')
-makedepends=('imake' 'xorg-mkfontdir')
+makedepends=('fonttosfnt-git' 'xorg-mkfontdir')
 
 build () {
 	cd "${_pkgname}-${pkgver}"
