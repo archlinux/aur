@@ -1,7 +1,7 @@
 pkgbase = libarchive-git
 	pkgdesc = Multi-format archive and compression library
 	pkgver = 3.4.1.r1.gded60625
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libarchive.org/
 	arch = i686
 	arch = x86_64

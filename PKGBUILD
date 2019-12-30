@@ -3,7 +3,7 @@
 
 pkgname=libarchive-git
 pkgver=3.4.1.r1.gded60625
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-format archive and compression library"
 arch=('i686' 'x86_64')
 url="https://libarchive.org/"
@@ -29,8 +29,8 @@ build() {
   build/autogen.sh
   ./configure \
     --prefix="/usr" \
-    --without-xml2 \
     --without-nettle \
+    --without-xml2
   make
 }
 
