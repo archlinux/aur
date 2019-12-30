@@ -2,7 +2,7 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 
 pkgname=glow
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ url="https://github.com/charmbracelet/glow"
 license=('MIT')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('8d892ef39d866ddc74dacebed92c9a08c063be0ca1e23e57bc041b8c039ef610')
+sha256sums=('a0848b1f4865251e445b6d88e98cbc44a4dfa835fc0a705fb79c1ed372bef2bc')
 
 build() {
     cd "$pkgname-$pkgver"
