@@ -5,7 +5,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.12.2_14.23.5.2768-4"
+[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.12.2_14.23.5.2768-5"
 [ -z "$FORGE_SRV_MCVER_LATEST" ] && FORGE_SRV_MCVER_LATEST="1.14.4"
 
 IFS="-" read -ra _ver_temp <<< "$FORGE_SRV_PKGVER"
@@ -33,7 +33,7 @@ optdepends=("tar: needed in order to create world backups"
 provides=("forge-server=${pkgver}")
 conflicts=("forge-server")
 backup=("etc/conf.d/forge")
-[ "$FORGE_SRV_PKGVER" = "1.12.2_14.23.5.2768-4" ] && install="forge-server.install" || install="forge-server-custom.install"
+[ "$FORGE_SRV_PKGVER" = "1.12.2_14.23.5.2768-5" ] && install="forge-server.install" || install="forge-server-custom.install"
 source=("forged-backup.service"
 	"forged-backup.timer"
 	"forged.service"
@@ -64,7 +64,7 @@ fi
 _licenses=()
 _license_suffix="-${pkgname}-${_pkgver}.txt"
 
-if [ "$_minecraft_ver_minor" -ge 9 ]; then
+if [ "$_minecraft_ver_minor" -ge 10 ]; then
 	_branch="${_minecraft_ver_major}.${_minecraft_ver_minor}.x"
 elif [ "$_minecraft_ver_minor" -ge 7 ]; then
 	_branch="$_minecraft_ver"
