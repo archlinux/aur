@@ -5,7 +5,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.5.2_7.8.1.737-3"
+[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.5.2_7.8.1.737-4"
 [ -z "$FORGE_SRV_MCVER_LATEST" ] && FORGE_SRV_MCVER_LATEST="1.14.4"
 
 IFS="-" read -ra _ver_temp <<< "$FORGE_SRV_PKGVER"
@@ -33,7 +33,7 @@ optdepends=("tar: needed in order to create world backups"
 provides=("forge-server=${pkgver}")
 conflicts=("forge-server")
 backup=("etc/conf.d/forge")
-[ "$FORGE_SRV_PKGVER" = "1.5.2_7.8.1.737-3" ] && install="forge-server.install" || install="forge-server-custom.install"
+[ "$FORGE_SRV_PKGVER" = "1.5.2_7.8.1.737-4" ] && install="forge-server.install" || install="forge-server-custom.install"
 source=("forged-backup.service"
 	"forged-backup.timer"
 	"forged.service"
@@ -150,7 +150,7 @@ package() {
 	for _license in "${_licenses[@]}"; do
 		_filename="$(basename "$_license" "$_license_suffix").txt"
 		_filename="${_filename//\%20/ }"
-		install -Dm644 "$_filename" "${pkgdir}/usr/share/licenses/${pkgname}/$_filename"
+		install -Dm644 "$_license" "${pkgdir}/usr/share/licenses/${pkgname}/$_filename"
 	done
 
 	chmod g+ws "${pkgdir}/srv/forge"
