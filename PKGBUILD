@@ -2,22 +2,25 @@
 
 pkgname=mint-themes
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=(GPL3)
 depends=(
-    mint-y-icons
-    mint-x-icons
     ttf-ubuntu-font-family
 )
 makedepends=(
-    gtk3 
-    ruby-sass
-    optipng
+    gtk3
     inkscape
+    optipng
     python
+    ruby-sass
+    sassc
+)
+optdepends=(
+    mint-y-icons
+    mint-x-icons
 )
 conflicts=(
     mint-x-theme
