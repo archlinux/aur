@@ -19,10 +19,11 @@ sha256sums=("9dc76481771bb2e219217187a1331a85a426e685d4070867a42d5825956ee512"
 
 prepare() {
   rm -rf "$srcdir/azure-cli"
+  grep -v -E '^===>|^$' install.response | python "$srcdir/install.py"
 }
 
-build() {
-  grep -v -E '^===>|^$' install.response | python "$srcdir/install.py"
+pkgver() {
+  "$srcdir/bin/az" --version | head -1 | tr -c -d 0-9.
 }
 
 package() {
