@@ -1,5 +1,23 @@
 --- qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/PlotDialog.cpp	2011-09-13 13:50:34.000000000 +0200
-+++ qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/PlotDialog.cpp	2019-12-30 12:49:57.000000000 +0100
++++ qtiplot-0.9.8.9/qtiplot/src/plot2D/dialogs/PlotDialog.cpp	2019-12-30 13:02:37.914353805 +0100
+@@ -954,7 +954,7 @@
+ 	l4->setBuddy(boxFirstColor);
+ 	gl2->addWidget(l4, 0, 0);
+ 
+-	boxPiePattern = new PatternBox(false);
++	boxPiePattern = new PatternBox();
+ 	gl2->addWidget(boxPiePattern, 1, 1);
+ 	gl2->setRowStretch(2, 1);
+ 
+@@ -1337,7 +1337,7 @@
+ 	hb->addWidget(boxCurveOpacity);
+ 	gl2->addLayout(hb, 1, 1);
+ 
+-	boxPattern = new PatternBox(false);
++	boxPattern = new PatternBox();
+ 	gl2->addWidget(boxPattern, 2, 1);
+ 	
+ 	QLabel *l6 = new QLabel("&" + tr("Pattern"));
 @@ -2126,17 +2126,17 @@
      QGridLayout *gl3 = new QGridLayout(GroupBoxVectEnd);
      labelXEnd = new QLabel(tr( "X End" ));
