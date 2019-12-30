@@ -4,8 +4,8 @@
 _pkgname='flow'
 pkgname="$_pkgname-bin"
 pkgver='0.114.0'
-pkgrel='1'
-pkgdesc='Adds static typing to JavaScript to improve developer productivity and code quality'
+pkgrel='2'
+pkgdesc='Adds static typing to JavaScript to improve developer productivity and code quality - binary version'
 arch=('x86_64')
 url='http://flowtype.org'
 license=('BSD')
