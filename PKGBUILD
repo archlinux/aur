@@ -1,3 +1,5 @@
+# Maintainer: Ryan Farley <ryan.farley@gmx.com>
+
 _pkgname=jmk-x11-fonts
 pkgname='jmk-x11-fonts-otb'
 pkgdesc="Jim's Fonts for X (OTB conversion)"
@@ -15,16 +17,16 @@ makedepends=('imake' 'xorg-mkfontdir')
 
 build () {
 	cd "${_pkgname}-${pkgver}"
-	for f in *.bdf; do 
+	for f in *.bdf; do
 		fonttosfnt -o "${f/bdf/otb}" "$f"
 	done
 }
 
 package () {
 	cd "${_pkgname}-${pkgver}"
-	
+
 	install -d "$pkgdir/usr/share/fonts/jmk"
-	
+
 	install -m 0444 *.otb "$pkgdir/usr/share/fonts/jmk/"
 	mkfontscale "$pkgdir/usr/share/fonts/jmk/fonts.scale"
 	mkfontdir "$pkgdir/usr/share/fonts/jmk/fonts.dir"
