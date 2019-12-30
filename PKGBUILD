@@ -4,7 +4,7 @@
 pkgname=nushell
 cargoname=nu
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 makedepends=('rustup')
 depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
@@ -17,17 +17,21 @@ license=('MIT')
 sha256sums=('9cfb6be335f7a06ccaf7cc2a06075a23ed6e2e2fdd6ea7fbc165a7d4a30990f9')
 
 build() {
-  return 0
+  cd "$pkgname-$pkgver"
+  rustup toolchain install stable
+  cargo build \
+	--all-features \
+	--locked \
+	--release 
 }
 
 package() {
   cd "$pkgname-$pkgver"
-
-  cargo install \
-	--all-features \
-	--locked \
-	--root "${pkgdir}"/usr \
-	--path "./" 
-  rm "${pkgdir}"/usr/.crates.toml
+  install -d "$pkgdir/usr/bin"
+  find target/release \
+    -maxdepth 1 \
+    -executable \
+    -type f \
+    -exec install -m 755 "{}" "$pkgdir"/usr/bin \;
 }
 
