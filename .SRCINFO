@@ -1,0 +1,18 @@
+pkgbase = wine-gecko-2.47
+	pkgdesc = Wine's built-in replacement for Microsoft's Internet Explorer
+	pkgver = 2.47
+	pkgrel = 1
+	url = https://wiki.winehq.org/Gecko
+	arch = x86_64
+	license = MPL
+	optdepends = wine: require version >1.9.13, <5.0
+	provides = wine_gecko=2.47
+	conflicts = wine_gecko=2.47
+	replaces = wine_gecko=2.47
+	source = https://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi
+	md5sums = 5ebc4ec71c92b3db3d84b334a1db385d
+	source_x86_64 = https://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86_64.msi
+	md5sums_x86_64 = d93ac0d2e6aceafe9113a9918916df45
+
+pkgname = wine-gecko-2.47
+
