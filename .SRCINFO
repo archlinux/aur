@@ -1,7 +1,7 @@
 pkgbase = forge-server-1.9.4
 	pkgdesc = Minecraft Forge server unit files, script and jar
 	pkgver = 1.9.4_12.17.0.1976
-	pkgrel = 3
+	pkgrel = 4
 	url = https://minecraftforge.net
 	install = forge-server.install
 	arch = any
