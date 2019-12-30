@@ -1,6 +1,6 @@
 # Maintainer: Aram Drevekenin <aram@poor.dev>
 pkgname=bandwhich
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
