@@ -4,8 +4,8 @@
 pkgname=nushell
 cargoname=nu
 pkgver=0.7.0
-pkgrel=2
-makedepends=('rustup')
+pkgrel=3
+makedepends=('rust')
 depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,9 +18,7 @@ sha256sums=('9cfb6be335f7a06ccaf7cc2a06075a23ed6e2e2fdd6ea7fbc165a7d4a30990f9')
 
 build() {
   cd "$pkgname-$pkgver"
-  rustup toolchain install stable
   cargo build \
-	--all-features \
 	--locked \
 	--release 
 }
