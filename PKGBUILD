@@ -2,17 +2,15 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=knyttstories
 pkgver=1.2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="In Knytt Stories, each level is its own little adventure. One level is included with the game, where you have to stop a machine that draws the life out of the planet. An official expansion pack is also featured at the website with four original levels."
 url="http://nifflas.ni2.se/"
 arch=('i686' 'x86_64')
-depends=()
-[ "$CARCH" = i686   ] && depends=('wine')
-[ "$CARCH" = x86_64 ] && depends=('bin32-wine')
+depends=(wine)
 makedepends=('unzip')
 source=(knyttstories
         msvcp60.zip
-        "http://nifflas.ni2.se/content/Knytt%20Stories/Knytt%20Stories%20121.zip"
+        "http://nifflas.ni2.se/games/Knytt%20Stories%20121.zip"
         knyttstories.desktop \
         knyttstories.png)
 license=('freeware')
