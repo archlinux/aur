@@ -5,6 +5,7 @@ pkgbase = nemo-deja-dup-git
 	url = https://github.com/erickj/nemo-actions
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = nemo
 	depends = deja-dup
 	provides = nemo-deja-dup
