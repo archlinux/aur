@@ -5,7 +5,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.14.4_28.1.0-7"
+[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.14.4_28.1.0-8"
 [ -z "$FORGE_SRV_MCVER_LATEST" ] && FORGE_SRV_MCVER_LATEST="1.14.4"
 
 IFS="-" read -ra _ver_temp <<< "$FORGE_SRV_PKGVER"
@@ -33,7 +33,7 @@ optdepends=("tar: needed in order to create world backups"
 provides=("forge-server=${pkgver}")
 conflicts=("forge-server")
 backup=("etc/conf.d/forge")
-[ "$FORGE_SRV_PKGVER" = "1.14.4_28.1.0-7" ] && install="forge-server.install" || install="forge-server-custom.install"
+[ "$FORGE_SRV_PKGVER" = "1.14.4_28.1.0-8" ] && install="forge-server.install" || install="forge-server-custom.install"
 source=("forged-backup.service"
 	"forged-backup.timer"
 	"forged.service"
