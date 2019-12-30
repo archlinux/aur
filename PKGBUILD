@@ -1,7 +1,7 @@
 # Maintainer: duffydack <duffydack73 {at] gmail {dot} com>
 pkgname=ufetch-git
 _pkgname=ufetch
-pkgver=r130.3ec18b1
+pkgver=r153.9831ec2
 pkgrel=1
 epoch=1
 pkgdesc="Info script for minimal *nix systems."
