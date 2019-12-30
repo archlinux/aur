@@ -1,11 +1,10 @@
 *
-!forge-server.install
 !forged-backup.service
 !forged-backup.timer
 !forged.conf
 !forged.service
 !forged.sh
-!LICENSE.txt
+!forge-server.install
 !PKGBUILD
 !.gitignore
 !.SRCINFO
