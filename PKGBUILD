@@ -13,7 +13,7 @@ makedepends=('linux' 'linux-headers')
 source=("https://github.com/CMoH/${pkgname}/archive/${_commit}.tar.gz"
         "90-lg4l.rules" "hid-g19.patch" "${pkgname}.install")
 sha256sums=('020013b2ea8cb09f0e8ec40f2f6cfdb37e12cc56c018f2a4c5a8a0bef083232f'
-            'c0c6e63bd52f800476747089954f9216bff674e0085445bdf28fb6ff5e304b07'
+            '3271223ac9c5732c01688d02d8fb23430028a53093eecbf3662f99b9fec146eb'
             'b69d2b2a6af51557df15cffcac01d39ddf287a79c945dc7182a8cc41f8059e21'
             '7594f658e584f4f2069277b27ea22fad2d4fba032917b8b46de1b5738b5d2f63')
 install="${pkgname}.install"

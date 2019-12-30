@@ -1,7 +1,7 @@
 # This file binds Logitech G keyboard devices to the lg4l modules
 # See udev(7) for syntax.
 #
- 
+
 # Logitech G19 Gaming Keyboard
 SUBSYSTEM=="hid", DRIVER=="generic-usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c229", ACTION=="add", RUN+="/bin/sh -c '/sbin/modprobe hid-g19; if test -d /sys/bus/hid/drivers/hid-g19; then /bin/echo -n %k >/sys/bus/hid/drivers/generic-usb/unbind && /bin/echo -n %k >/sys/bus/hid/drivers/hid-g19/bind; fi'"
 SUBSYSTEM=="hid", DRIVER=="hid-generic", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c229", ACTION=="add", RUN+="/bin/sh -c '/sbin/modprobe hid-g19; if test -d /sys/bus/hid/drivers/hid-g19; then /bin/echo -n %k >/sys/bus/hid/drivers/hid-generic/unbind && /bin/echo -n %k >/sys/bus/hid/drivers/hid-g19/bind; fi'"
@@ -27,4 +27,3 @@ SUBSYSTEM=="hid", DRIVER=="hid-generic", ATTRS{idVendor}=="046d", ATTRS{idProduc
 # Logitech G110 Keyboard (no LCD)
 SUBSYSTEM=="hid", DRIVER=="generic-usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22b", ACTION=="add", RUN+="/bin/sh -c '/sbin/modprobe hid-g110; if test -d /sys/bus/hid/drivers/hid-g110; then /bin/echo -n %k >/sys/bus/hid/drivers/generic-usb/unbind && /bin/echo -n %k >/sys/bus/hid/drivers/hid-g110/bind; fi'"
 SUBSYSTEM=="hid", DRIVER=="hid-generic", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c22b", ACTION=="add", RUN+="/bin/sh -c '/sbin/modprobe hid-g110; if test -d /sys/bus/hid/drivers/hid-g110; then /bin/echo -n %k >/sys/bus/hid/drivers/hid-generic/unbind && /bin/echo -n %k >/sys/bus/hid/drivers/hid-g110/bind; fi'"
-
