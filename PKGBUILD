@@ -7,7 +7,7 @@
 
 pkgname=mjpg-streamer
 pkgver=r67
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream mjpeg frames from a webcam via http"
 url="https://github.com/jacksonliam/mjpg-streamer"
 license=(GPL)
