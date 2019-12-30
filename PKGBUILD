@@ -1,10 +1,10 @@
-# Maintainer: Katie Wolfe <katie@dnaf.moe>
+# Maintainer: Katie Wolfe <wolfe@katie.host>
 
 _lua_version=5.3
 
 pkgname=fennel
-_pkgver='0.3.0'
-pkgver=0.3.0
+_pkgver='0.3.1'
+pkgver=0.3.1
 pkgrel=2
 pkgdesc="A Lua Lisp language"
 arch=('x86_64')
