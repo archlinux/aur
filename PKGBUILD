@@ -1,28 +1,22 @@
-# Maintainer: Jordan Klassen <forivall@gmail.com>
-# https://github.com/forivall/aur-packages/tree/master/aur/flow-bin
-
-# TODO: create a flow-examples package and add as an optdepend
-
-pkgname=flow-bin
-pkgver=0.50.0
-pkgrel=1
-pkgdesc="Adds static typing to JavaScript to improve developer productivity and code quality"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Joel Goguen <contact+aur@jgoguen.ca>
+# Contributor: Jordan Klassen <forivall@gmail.com>
+_pkgname='flow'
+pkgname="$_pkgname-bin"
+pkgver='0.114.0'
+pkgrel='1'
+pkgdesc='Adds static typing to JavaScript to improve developer productivity and code quality'
 arch=('x86_64')
-url="http://flowtype.org/"
+url='http://flowtype.org'
 license=('BSD')
-provides=('flow')
-conflicts=('flow')
-replaces=('flow')
-source=(
-	"https://github.com/facebook/flow/releases/download/v${pkgver}/flow-linux64-v${pkgver}.zip"
-	"https://raw.githubusercontent.com/facebook/flow/v${pkgver}/LICENSE"
-)
-sha256sums=(
-	'64fe9a4b657a003127a16653bf1cfe450f97d684aab8af0628db8984f83c2992'
-	'7e143b7118d0d0d294ecac71a0dcf24275f3f9cc7a74a157a121ea18ec085114'
-)
+provides=("$_pkgname")
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/facebook/$_pkgname/releases/download/v$pkgver/flow-linux64-v$pkgver.zip"
+		"$pkgname-$pkgver-$pkgrel-LICENSE::https://raw.githubusercontent.com/facebook/$_pkgname/v$pkgver/LICENSE")
+sha256sums=('828f5c746f22baa41ba306b87c5c12cd49c4182c48436bb31af501366f416fb4'
+            'f657f99d3fb9647db92628e96007aabb46e5f04f33e49999075aab8e250ca7ce')
 
 package() {
-	install -Dm0755 flow/flow "${pkgdir}/usr/bin/flow"
-	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/flow/LICENSE"
+	cd "$srcdir/"
+	install -Dm755 "$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "$pkgname-$pkgver-$pkgrel-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
