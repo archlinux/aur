@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # The actual program name
-declare -r myname="forge-1.7.10d"
-declare -r game="forge-1.7.10"
+declare -r myname="forged"
+declare -r game="forge"
 
 # General rule for the variable-naming-schema:
 # Variables in capital letters may be passed through the command line others not.
@@ -13,12 +13,12 @@ declare -r game="forge-1.7.10"
 [[ -n "${BACKUP_DEST}" ]]  && declare -r BACKUP_DEST=${BACKUP_DEST}   || BACKUP_DEST="/srv/${game}/backup"
 [[ -n "${BACKUP_PATHS}" ]] && declare -r BACKUP_PATHS=${BACKUP_PATHS} || BACKUP_PATHS="world"
 [[ -n "${KEEP_BACKUPS}" ]] && declare -r KEEP_BACKUPS=${KEEP_BACKUPS} || KEEP_BACKUPS="10"
-[[ -n "${GAME_USER}" ]]    && declare -r GAME_USER=${GAME_USER}       || GAME_USER="forge-1-7-10"
-[[ -n "${MAIN_EXECUTABLE}" ]] && declare -r MAIN_EXECUTABLE=${MAIN_EXECUTABLE} || MAIN_EXECUTABLE="forge-1.7.10.jar"
+[[ -n "${GAME_USER}" ]]    && declare -r GAME_USER=${GAME_USER}       || GAME_USER="forge"
+[[ -n "${MAIN_EXECUTABLE}" ]] && declare -r MAIN_EXECUTABLE=${MAIN_EXECUTABLE} || MAIN_EXECUTABLE="forge.jar"
 [[ -n "${SESSION_NAME}" ]] && declare -r SESSION_NAME=${SESSION_NAME} || SESSION_NAME="${game}"
 
 # Command and parameter declaration with which to start the server
-[[ -n "${SERVER_START_CMD}" ]] && declare -r SERVER_START_CMD=${SERVER_START_CMD} || SERVER_START_CMD="java -Xms512M -Xmx1024M -XX:ParallelGCThreads=1 -jar './${MAIN_EXECUTABLE}' nogui"
+[[ -n "${SERVER_START_CMD}" ]] && declare -r SERVER_START_CMD=${SERVER_START_CMD} || SERVER_START_CMD="/usr/lib/jvm/java-8-openjdk/jre/bin/java -Xms512M -Xmx1024M -XX:ParallelGCThreads=1 -jar './${MAIN_EXECUTABLE}' nogui"
 
 # System parameters for the control script
 [[ -n "${IDLE_SERVER}" ]]       && tmp_IDLE_SERVER=${IDLE_SERVER}   || IDLE_SERVER="false"
@@ -30,6 +30,7 @@ declare -r game="forge-1.7.10"
 # Additional configuration options which only few may need to alter
 [[ -n "${GAME_COMMAND_DUMP}" ]] && declare -r GAME_COMMAND_DUMP=${GAME_COMMAND_DUMP} || GAME_COMMAND_DUMP="/tmp/${myname}_${SESSION_NAME}_command_dump.txt"
 
+# shellcheck source=forged.conf
 # Variables passed over the command line will always override the one from a config file
 source /etc/conf.d/"${game}" 2>/dev/null || >&2 echo "Could not source /etc/conf.d/${game}"
 
@@ -83,10 +84,10 @@ game_command() {
 is_player_online() {
 	response="$(sleep_time=0.6 return_stdout=true game_command list)"
 	# Delete leading line and free response string from fancy characters
-	response="$(echo "${response}" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})*)?[JKmsuG]//g')"
+	response="$(echo "${response}" | sed -r -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})*)?[JKmsuG]//g')"
 	# The list command prints a line containing the usernames after the last occurrence of ": "
 	# and since playernames may not contain this string the clean player-list can easily be retrieved.
-	# Otherwiese check the first digit after the last occurrence of "There are". If it is 0 then there
+	# Otherwise check the first digit after the last occurrence of "There are". If it is 0 then there
 	# are no players on the server. Should this test fail as well. Assume that a player is online.
 	if [[ $(echo "${response}" | grep ":" | sed -e 's/.*\: //' | tr -d '\n' | wc -c) -le 1 ]]; then
 		# No player is online
@@ -189,7 +190,7 @@ server_start() {
 				sleep 0.1
 			done
 		else
-			echo -en "Starting idle server daeomon..."
+			echo -en "Starting idle server daemon..."
 			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 			echo -e "\e[39;1m done\e[0m"
 		fi
@@ -473,7 +474,7 @@ case "${1:-}" in
 	;;
 
 	idle_server_daemon)
-	# This shell be a hidden function which should only be invoced internally
+	# This shall be a hidden function which should only be invoced internally
 	idle_server_daemon
 	;;
 
