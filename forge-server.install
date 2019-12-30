@@ -1,0 +1,55 @@
+_good_ver="1.12.2_14.23.5.2768-3"
+
+post_install() {
+	if ! getent group "forge" &>/dev/null; then
+		echo "Adding forge system group..."
+		groupadd -r forge 1>/dev/null
+	fi
+
+	if ! getent passwd "forge" &>/dev/null; then
+		echo "Adding forge system user..."
+		useradd -r -g forge -d /srv/forge forge 1>/dev/null
+	fi
+
+	chown -R forge:forge /srv/forge
+
+	echo "The world data is stored under /srv/forge and the server runs as the forge user to increase security."
+	echo "Use the forged script under /usr/bin/forged to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/forge to your liking."
+	echo "Make sure to change the SERVER_START_CMD variable if you want to use a JVM other than OpenJDK 8."
+	echo "Please note that you need Java 8 in order to run Forge."
+	echo "For the server to start you have to accept the EULA in /srv/forge/eula.txt!"
+	echo "The EULA file is generated after the first server start."
+}
+
+post_upgrade() {
+	if [ "$(vercmp "$2" "$_good_ver")" -lt 0 ]; then
+		post_install
+
+		IFS="_" read -ra _good_ver_temp <<< "$_good_ver"
+		_minecraft_ver=${_good_ver_temp[0]}
+		_old_name="forge-${_minecraft_ver}"
+
+		echo "==> NOTICE: All filenames have been changed from \"${_old_name}d\" to \"forged\"!"
+		echo "==> For example:"
+		echo "==> /usr/lib/systemd/system/${_old_name}d.service -> /usr/lib/systemd/system/forged.service"
+		echo "==> /usr/bin/${_old_name}d -> /usr/bin/forged"
+		echo "==> /srv/${_old_name} -> /srv/forge"
+
+		if [ -d "/srv/${_old_name}" ]; then
+			find "/srv/${_old_name}" -mindepth 1 -maxdepth 1 | while read -r _file; do
+				mv "$_file" "/srv/forge${_file#"/srv/${_old_name}"}"
+			done
+			rm -rf "/srv/${_old_name}"
+			echo "==> Game saves in /srv/${_old_name} were moved to /srv/forge."
+		fi
+
+		echo "==> The ${_old_name//./-} user was preserved on your system."
+	fi
+	chown -R forge:forge /srv/forge
+}
+
+post_remove() {
+	[ -d "/srv/forge" ] && echo "Game saves in /srv/forge were kept on your system."
+	echo "The forge user was preserved on your system."
+}
