@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=EVE Backup
+Name=EVE Restore
 Icon=archivemanager
-Comment=Backup user settings
-Exec=evebackup
+Comment=Restore user settings
+Exec=everestore
 NoDisplay=false
 Categories=Utility;
 StartupNotify=false

@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=6
+pkgrel=7
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -10,6 +10,7 @@ license=('custom')
 depends=('icu'
          'openssl'
          'openssl-1.0'
+         'p7zip'
          'qt5-base'
          'qt5-declarative'
          'qt5-translations'
@@ -36,6 +37,7 @@ source=("evelauncher.desktop"
         "evewinetricks"
         "evebackup.desktop"
         "evebackup"
+        "everestore.desktop"
         "build_installer.sh"
         "build_small_installer.sh"
         "setup.sh.in"
@@ -67,12 +69,17 @@ package() {
         install -d "${pkgdir}/usr/share/icons"
         sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${srcdir}/evelauncher.sh"
         sed -i s,SETUPDIR=\"\",SETUPDIR=\"/opt/${pkgname}\", "${srcdir}/evelauncher.sh"
-        for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup ;do
+        for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+            cmd=eve$cmd
             if [ -f "${srcdir}/$cmd" ] ;then
                 sed -i s,./evesetup.shlib,/opt/${pkgname}/lib/evesetup.shlib, "${srcdir}/$cmd"
                 install "${srcdir}/$cmd" "${pkgdir}/opt/${pkgname}/bin"
             else
-                ln -s evewine "${pkgdir}/opt/${pkgname}/bin/$cmd"
+                if [ "$cmd" = "everestore" ] ;then
+                    ln -s evebackup "${pkgdir}/opt/${pkgname}/bin/$cmd"
+                else
+                    ln -s evewine "${pkgdir}/opt/${pkgname}/bin/$cmd"
+                fi
             fi
             ln -s "/opt/${pkgname}/bin/$cmd" "${pkgdir}/usr/bin/$cmd"
             if [ ! "$cmd" = "evewine" ] ;then
@@ -114,12 +121,13 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
             'c83beba543663b926d28d0eda98f1035cd73327da50f718a487763d300415a24'
             'f438c7002eaf8e1186a838ac2e803242b7a2c98a22cf49622eb4a64cf4b202ec'
-            '04c102d6db1bb8d4159c41f32ec0aa95846c0fb519841a3c1428ab20c850e9cf'
-            '30ce091fc5eb37be72af6bf3a63c8fa6393c5903899eb9f6630a36661e86c76e'
-            '98b312cc5c49fc8b39eaca9bcbda3986f661db078ed6490a9759579126bcd4ce'
-            '772e344deae14bfeb02f9e889abef468b308f0e287fd2ce60e121d24f41a5355'
-            '5eb4912284c43c32916c1fcd1b95eaae751be3dccbfb9cd5b569a0d99e5d92d4'
-            'ba10fc5d828245213edc73d6cb58d548519bec46def84a6b2d32c18ac02b3917'
+            '30b6440b842c19df64892cc560c274a7cc4f5de910a9f81e12dd0d76da561474'
+            '68133ae911d8b91374c09a7ce9f7617a260e43a669af00ed9299e1b8e7b2c9ec'
+            '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
+            'a8a3b84cbb6c7e79014b365d1c94b6c2095c7adaf83bc434c36bc3db088c50ca'
+            'f142bf1734f2516cee99656d14af529bdf4161cc798ed3f27b7f1a4a6ec0eb36'
+            '453f194a07a84ddf55f7514f4fceebbc1fc03894815c7ca257c3d205ba681426'
+            'd8abd97506271bd8a68c8756e353ed1e02dcb9a998164531fabc97d53e1d2ae6'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'

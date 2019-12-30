@@ -69,7 +69,8 @@ echo "done."
 
 printf "\nCopy needed files from AUR source..."
 for eia in ../eve-icons*.tar.gz ;do tar xf $eia -C evesetup/ ;done
-for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup ;do
+for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+    cmd=eve$cmd
     if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
     if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
 done

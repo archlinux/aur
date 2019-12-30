@@ -15,12 +15,17 @@ bootstrap_install() {
     install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
     sed -i s,./eve-transl,$libdir/eve-transl, ./evelauncher.sh
     sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
-    for cmd in evelauncher.sh evewine evewinetricks everegedit evewinecfg evebackup ;do
+    for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+	cmd=eve$cmd
 	if [ -f "./$cmd" ] ;then
 	    sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd
 	    install "./$cmd" "$bindir/"
 	else
-	    ln -sf evewine "$bindir/$cmd"
+	    if [ "$cmd" = "everestore" ] ;then
+		ln -s evebackup "$bindir/$cmd"
+	    else
+		ln -s evewine "$bindir/$cmd"
+	    fi
 	fi
 	[ "$bindir" != "$prefix/bin" ] && ln -s "$bindir/$cmd" "$prefix/bin/$cmd"
 	if [ ! "$cmd" = "evewine" ] ;then
@@ -44,7 +49,8 @@ bootstrap_remove() {
     for icons in $(find . -type f -name '*.png') ;do
 	rm -f "$prefix/share/${icons#*/}"
     done
-    for cmd in evelauncher.sh everegedit evewine evewinecfg evewinetricks evebackup ;do
+    for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+	cmd=eve$cmd
 	rm -fv "$prefix/bin/$cmd"
 	if [ ! "$cmd" = "evewine" ] ;then
 	    rm -f "$prefix/share/applications/${cmd%.*}.desktop"
@@ -107,6 +113,13 @@ build_lib() {
 }
 
 check_req() {
+    if [ -x "$(which 7z 2>/dev/null)" ] ;then
+	echo "$(7z | head -n2 | cut -d: -f1 | tr -d [:cntrl:])found."
+    else
+	echo "p7zip not found. Please install p7zip with your Package Manager."
+	printf "\nLeaving.\n\n"
+	exit 0
+    fi
     if [ -x "$(which wine 2>/dev/null)" ] ;then
 	echo "Wine version $(wine --version) found."
     else
