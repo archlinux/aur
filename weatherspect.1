@@ -1,60 +1,69 @@
-.\" generated with Ronn/v0.7.3
-.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.TH "WEATHERSPECT" "1" "2019-12-30"
 .
-.TH "WEATHERSPECT" "" "May 2014" "" "weatherspect"
+.SH "NAME"
+weatherspect \- a virtual weather environment in ASCII
 .
-.SH "Description"
-WeatherSpect provides a reasonably accurate simulation of what the weather looks like outside, in ASCII art\. It includes rain, snow, lightning, sleet, and hail\. The windspeed and cloudiness are reflected in the velocity and quantity of clouds\. There are trees that age, reproduce and die over the course of an hour, and a sun and moon that follow the actual sun and moonrise\. There\'s also a dancing turtle\.
+.SH SYNOPSIS
+\fBweatherspect\fR [\fB\-f\fR \fIFILE\fR]
+.PP
+\fBweatherspect\fR \fB\-c\fR [\fB\-f\fR \fIFILE\fR]
+.PP
+\fBweatherspect\fR \fB\-h\fR
 .
-.SH "Requirements"
-You must have the Term::Animation module, which you can get from http://www\.cpan\.org\. The Term::Animation module also requires the Curses module, which you can also get from CPAN\.
+.SH "DESCRIPTION"
+\fBweatherspect\fR provides a reasonably accurate simulation of what the weather looks like outside, in ASCII art\. It includes rain, snow, lightning, sleet, and hail\. The windspeed and cloudiness are reflected in the velocity and quantity of clouds\. There are trees that age, reproduce and die over the course of an hour, and a sun and moon that follow the actual sun and moonrise\. There\'s also a dancing turtle\.
 .
-.SH "Usage"
-Before weatherspect will work, you have to create a config file for it\. Running it with the \-c option will prompt you for info to create a config file in ~/\.weatherspect\.
+.SH "OPTIONS"
+.TP
+\fB\-f\fR \fIFILE\fR
+Supply a config file to use instead of the default
+.TP
+\fB\-c\fR
+Generate a config file
+.TP
+\fB\-h\fR
+Print a help message
 .
-.IP "" 4
+.SH "USAGE"
+Before \fBweatherspect\fR will work, you have to create a config file for it\. Running it with the \fB\-c\fR option will prompt you for info to create a config file in \fI~/\.weatherspect\fR\.
+.PP
+While \fBweatherspect\fR is running, the following commands are available:
+.TP
+\fBq\fR
+Quit
+.TP
+\fBh\fR
+Toggle the help window
+.TP
+\fBw\fR
+Toggle the detailed weather info window
+.TP
+\fBd\fR
+Toggle the debug window
+.TP
+\fBu\fR
+Force an update of weather data
+.TP
+\fBr\fR
+Redraw. This will remove all objects and recreate them, probably in different places.
 .
-.nf
-
-weatherspect \-h: Print this help message
-weatherspect \-f <file>: Supply a config file to use instead of the default
-weatherspect \-c: Generate a config file
+.SH "CREDITS"
+.IP "\(bu" 4
+Kirk Baucom \<\fIkbaucom@schizoid\.com\fR\> \- \fIhttp://www\.robobunny\.com\fR
 .
-.fi
+.IP "\(bu" 4
+Kevin Ferree \- \fIhttp://chavo\-one\.com\fR: All art in the code marked with \'kf\'
+.
+.IP "\(bu" 4
+Hayley Wakenshaw \- \fIhttp://www\.bornsquishy\.com/flump/index\.html\fR: All art in the code marked with \'hjw\'
+.
+.IP "\(bu" 4
+Joan Stark \- \fIhttp://www\.geocities\.com/SoHo/7373/\fR: All art in the code marked with \'jgs\'
+.
+.IP "\(bu" 4
+AnotherFoxGuy \- \fIhttp://anotherfoxguy.com\fR: Replaced Underground with OpenWeatherMap
 .
 .IP "" 0
 .
-.P
-While weatherspect is running, the following commands are available:
-.
-.IP "" 4
-.
-.nf
-
-q: Quit
-h: Toggle the help window
-w: Toggle the detailed weather info window
-d: Toggle the debug window
-u: Force an update of weather data
-r: Redraw\. This will remove all objects and recreate them, probably in different places\.
-.
-.fi
-.
-.IP "" 0
-.
-.SH "Credits"
-by Kirk Baucom \fIkbaucom@schizoid\.com\fR \fIhttp://www\.robobunny\.com\fR
-.
-.IP "\(bu" 4
-Kevin Ferree (http://chavo\-one\.com): All art in the code marked with \'kf\'
-.
-.IP "\(bu" 4
-Hayley Wakenshaw (http://www\.bornsquishy\.com/flump/index\.html): All art in the code marked with \'hjw\'
-.
-.IP "\(bu" 4
-Joan Stark (http://www\.geocities\.com/SoHo/7373/): All art in the code marked with \'jgs\'
-.
-.IP "" 0
-.
-.P
+.PP
 You can grep for ATTRIB in the code to get a list of credits for all the ASCII art\.
