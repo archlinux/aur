@@ -1,6 +1,6 @@
 pkgbase = gpu-viewer
 	pkgdesc = A frontend to glxinfo and vulkaninfo.
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://github.com/arunsivaramanneo/GPU-Viewer/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = gpu-viewer
 	optdepends = vulkan-radeon: Vulkan AMD drivers
 	optdepends = vulkan-intel: Vulkan Intel drivers
 	provides = gpu-viewer
-	source = https://github.com/arunsivaramanneo/GPU-Viewer/archive/v1.20.tar.gz
-	md5sums = 3edbd4bcb0924005063321fac02ccc79
+	source = https://github.com/arunsivaramanneo/GPU-Viewer/archive/v1.21.tar.gz
+	md5sums = b4224d838b51d513bd630b54461af9a9
 
 pkgname = gpu-viewer
 
