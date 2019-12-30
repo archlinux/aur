@@ -1,7 +1,7 @@
 pkgbase = octopi-dev
 	pkgdesc = A powerful Pacman frontend using Qt5 libs
 	pkgver = 0.9.0
-	pkgrel = 12
+	pkgrel = 13
 	url = http://octopiproject.wordpress.com
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = octopi-dev
 	provides = octopi-repoeditor
 	provides = octopi-cachecleaner
 	conflicts = octopi
-	source = octopi-0.9.0-12.tar.gz::https://github.com/aarnt/octopi/archive/0a7f7c782ed898a0580bcf78de248abe2fa4fe5a.tar.gz
+	source = octopi-0.9.0-13.tar.gz::https://github.com/aarnt/octopi/archive/0a7f7c782ed898a0580bcf78de248abe2fa4fe5a.tar.gz
 	sha256sums = f5347ac1e9a489099dc73c81479595cf80e6aeb0171e33e993a3367b7bd260fd
 
 pkgname = octopi-dev
