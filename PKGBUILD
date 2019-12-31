@@ -3,16 +3,16 @@
 pkgname=('python-minieigen-git')
 pkgdesc="Boost::Python wrapper for parts of the Eigen c++ library"
 pkgver=20190218.3cf33d9
-pkgrel=2
+pkgrel=3
 license=('LGPL3')
 url='https://github.com/eudoxos/minieigen'
 arch=('x86_64')
-makedepends=('git' 'boost' 'eigen' 'python>=3.5')
-depends=('boost' 'eigen' 'python>=3.5')
+makedepends=('git' 'boost' 'eigen' 'python')
+depends=('boost' 'python-distro' 'eigen' 'python')
 source=("${pkgname}::git+${url}.git"
-  "0001-${pkgname}.patch")
+  "0001-Fix-distro-check.patch")
 md5sums=('SKIP'
-         '66fe70ea9503812c1bc48f63ce14b832')
+         '2ff02b2a7d24e567d33233e0aaa2aecd')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -p1 <"${srcdir}/0001-${pkgname}.patch"
+  patch -p1 <"${srcdir}/0001-Fix-distro-check.patch"
 }
 
 build() {
