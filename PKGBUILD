@@ -1,6 +1,6 @@
 # Maintainer: Damian Poddebniak <poddebniak at fh-muenster dot de>
 pkgname=xim-git
-pkgver=r22.58d5450
+pkgver=r44.4afc7ff
 pkgrel=1
 pkgdesc="Vim-like hex editor."
 arch=('x86_64' 'i686' )
@@ -13,13 +13,17 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/Xim"
-  cargo build --release
+  cargo build --release --locked --all-features
+}
+
+check() {
+  cd "$srcdir/Xim"
+  cargo test --release --locked
 }
 
 package() {
   cd "$srcdir/Xim"
-  mkdir -p $pkgdir/usr/bin
-  install -o root -g root -m 755 target/release/xim $pkgdir/usr/bin
+  install -Dm 755 target/release/xim -t "${pkgdir}/usr/bin"
 }
 
 pkgver() {
