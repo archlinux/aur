@@ -2,7 +2,7 @@
 
 _name=timethat
 pkgname=python-${_name}
-pkgver=1.0.6
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A human friendly time calculator for functions and code blocks in Python"
 arch=('i686' 'x86_64' 'armv6')
