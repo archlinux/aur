@@ -10,10 +10,10 @@
 pkgbase=mesa-arm-git
 pkgname=('libva-mesa-driver-arm-git' 'mesa-vdpau-arm-git' 'mesa-arm-git')
 pkgdesc="An open-source implementation of the OpenGL specification"
-pkgver=20.0.0_devel.118258.865ffe4e020
+pkgver=20.0.0_devel.118806.b318bc2072d
 pkgrel=1
 arch=('x86_64')
-makedepends=('python-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
+makedepends=('python-mako' 'libxml2' 'libx11' 'libdrm' 
              'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols'
              'elfutils' 'llvm' 'libomxil-bellagio' 'clang' 'libglvnd' 'lm_sensors'
              'libxrandr' 'meson')
