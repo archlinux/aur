@@ -1,0 +1,22 @@
+diff -Naur sugar-0.112.orig/src/jarabe/main.py sugar-0.112/src/jarabe/main.py
+--- sugar-0.112.orig/src/jarabe/main.py	2017-05-16 01:47:18.000000000 +0200
++++ sugar-0.112/src/jarabe/main.py	2017-10-15 20:08:57.040726987 +0200
+@@ -195,7 +195,7 @@
+     global _metacity_process, _metacity_sid
+ 
+     _metacity_process = subprocess.Popen(
+-        ['metacity', '--no-force-fullscreen', '--no-composite'],
++        ['metacity', '--no-force-fullscreen'],
+         stdout=subprocess.PIPE)
+     _metacity_sid = GObject.io_add_watch(_metacity_process.stdout, GLib.IO_HUP,
+                                          __window_manager_failed_cb)
+@@ -203,9 +203,6 @@
+ 
+ 
+ def _start_window_manager():
+-    settings = Gio.Settings.new('org.gnome.desktop.interface')
+-    settings.set_string('cursor-theme', 'sugar')
+-
+     _restart_window_manager()
+ 
+     screen = Wnck.Screen.get_default()
