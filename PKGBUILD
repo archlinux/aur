@@ -8,8 +8,8 @@
 pkgname=opensiddur-hebrew-fonts
 pkgver=1.18.6
 pkgrel=1
-pkgdesc="The Open Siddur Project's open-source Unicode Hebrew font pack. 
-Open-source licensed Unicode fonts in: Hebrew, Latin, Greek, Cyrillic, Arabic, and Amharic."
+pkgdesc="The Open Siddur Project's Unicode Hebrew font pack.
+A large collection of open source Hebrew fonts, as well as a few for Latin, Greek, Cyrillic, Arabic, and Amharic"
 
 url="https://github.com/aharonium/fonts"
 arch=(any)
