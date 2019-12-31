@@ -1,7 +1,7 @@
 pkgbase = lab-bin
 	pkgdesc = A hub-like tool for GitLab (pre-built binary release)
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zaquestion.github.io/lab/
 	arch = x86_64
 	license = custom:Unlicense
