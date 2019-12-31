@@ -7,8 +7,10 @@ arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom')
 depends=('electron3-bin' 'krb5' 'libsecret')
-source=("$pkgname-$pkgver-$pkgrel::https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.20.0-beta.9.x86_64.rpm"
-		'launch.sh')
+source=(
+	"$pkgname-$pkgver-$pkgrel::https://downloads.mongodb.com/compass/beta/mongodb-compass-isolated-beta-1.20.0-beta.9.x86_64.rpm"
+	'launch.sh'
+)
 sha256sums=('b80369a1bbf5ed04e2d47c0f10ebf5493cc61d8ce7f26a4b9767980a803e5abf'
             '1bf3dd5e9363e750f4099acab9c8e22af7dc8645215d3fc4ed13abb0d38c5137')
 
