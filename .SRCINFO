@@ -1,0 +1,15 @@
+pkgbase = systemd-timer-pacman-download-updates-git
+	pkgdesc = Systemd timer to download packages updates
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitlab.com/jdorel-archlinux/systemd-pacman-download-updates
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = systemd-service-pacman-download-updates
+	provides = systemd-timer-pacman-download-updates
+	source = systemd-timer-pacman-download-updates-git::git+https://gitlab.com/jdorel-archlinux/systemd-pacman-download-updates
+	md5sums = SKIP
+
+pkgname = systemd-timer-pacman-download-updates-git
+
