@@ -13,13 +13,13 @@ pkgbase = aisdeco2
 	source = LICENSE
 	sha256sums = 943f4028cecc46eeffb5d82d2e7eac8999ba7fed1e1458888a59a3b9dbdce96b
 	source_x86_64 = https://github.com/xginn8/aisdeco/blob/master/aisdeco2_x86_64_20161112.tgz
-	sha256sums_x86_64 = 1b0a21ca6a9d71fb6a9f2da0e5063e0cd654ca868c6bbeb1cf43efcbac4e9e5b
+	sha256sums_x86_64 = 01259cd65b3b56dfc3c7031c6f65996924316ba6a1f8d35122d1b4ee8b0aaf3c
 	source_i686 = https://github.com/xginn8/aisdeco/blob/master/aisdeco2_i386_20150415.tgz
-	sha256sums_i686 = 21b788c11188fae8830dc1dbcc2dd19ac4ab73116b3e5892cc314273f3138de8
+	sha256sums_i686 = 07182bedf98199da9db79a3e5a7a82fb0452e7e9de6390f5fb080a00562f0af0
 	source_armv6h = https://github.com/xginn8/aisdeco/blob/master/aisdeco_rpi_20140704.tgz
-	sha256sums_armv6h = 53a44d4aae30bb2b596f380a84b7fd75b4664f33b3f1bff94fa10be0934bb084
+	sha256sums_armv6h = 86fc25fa93f66264b51b9fc8b111fea023acf623cc632218214232b41df3a809
 	source_armv7h = https://github.com/xginn8/aisdeco/blob/master/aisdeco_rpi_20140704.tgz
-	sha256sums_armv7h = 53a44d4aae30bb2b596f380a84b7fd75b4664f33b3f1bff94fa10be0934bb084
+	sha256sums_armv7h = 86fc25fa93f66264b51b9fc8b111fea023acf623cc632218214232b41df3a809
 
 pkgname = aisdeco2
 
