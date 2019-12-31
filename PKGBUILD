@@ -4,7 +4,7 @@
 
 pkgname=lab
 pkgver=0.17.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A hub-like tool for GitLab (tagged release)"
 arch=('x86_64')
 url="https://zaquestion.github.io/lab/"
@@ -35,6 +35,6 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"/LICENSE
     install -Dm755 lab "$pkgdir"/usr/bin/lab
-    install -Dm755 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
-    install -Dm755 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_lab"
+    install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
+    install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_lab"
 }
