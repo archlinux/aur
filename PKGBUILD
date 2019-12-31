@@ -1,14 +1,14 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-bin"
-pkgver="4.2.1"
+pkgver="4.2.2"
 basever="4.2"
 pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
 license=("SSPLv1")
-depends_aarch64=("libcurl-openssl-1.0")
+#depends_aarch64=("libcurl-openssl-1.0")
 provides=("mongodb=$pkgver")
 conflicts=("mongodb")
 optdepends=("mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.")
@@ -32,18 +32,18 @@ source_aarch64=(
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums_x86_64=("2e66bc27fbd2b37589a674e02b9353f21eae70a13e11bad6b75ce882896c6b1c"
-                   "b48fb70c758b38b678fb70924b7c23cbdc5cb553111fd59de614ae95cde41644"
-                   "24bb37b07227072918c9413134c7c4eb790b59c1d66886dff7b63f5e316d3cf0"
+sha256sums_x86_64=("9a38d8212abdd5580d8d951e42a2cc4e35874cd2de7f3603cef7f62281209d68"
+                   "7b546c6872cf55c731586501122308b6060c7613d85624b6401615af35ff0cb1"
+                   "45c74dec28c588c910752fbb65086524420771c446b750201554df30ed4ae75d"
                    "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
                    "f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850"
                    "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
                    "51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac"
                    "09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27")
 
-sha256sums_aarch64=("344c263b54dad21188f794c4e8a6cb714317a568bb6b60d67dec1d53b0341830"
-                    "91a8c7ea04aa87e2d6aac79f9abf7d451db47930434d8de36bbd87b4cebac2dc"
-                    "ce41c6044c550ceb075c26e07cdeb1f666386adbed3d6ece4fcaf6d465f6db6b"
+sha256sums_aarch64=("e9a3e5343fb41f5041f1ae64ee6b46a3b0b1dd9f150c0af59979c02661919e2a"
+                    "72889aa5eab877984d349869a738883a5a083354b0d0e6e20aa21a2a43ecaa51"
+                    "da1dc2ca7ff7513bb0e51e5fdc69ac02815c9fb612014b57b50398c3462d2b84"
                     "965a166f1aabd5f6b06c0a6c0939920ec6aad87407b695c61ce0f2a8c450b680"
                     "f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850"
                     "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"
