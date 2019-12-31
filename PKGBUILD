@@ -2,7 +2,7 @@
 
 pkgname=ci-node-modules
 pkgdesc='Clean install node_modules using the appropriate installation command'
-pkgver=1.1.0
+pkgver=1.0.0
 pkgrel=1
 arch=('any')
 url='https://balena.io/'
@@ -13,7 +13,7 @@ makedepends=('npm' 'jq')
 source=("https://github.com/balena-io-modules/${pkgname}/archive/v${pkgver}.tar.gz")
 noextract=("v${pkgver}.tar.gz")
 options=(!strip)
-sha256sums=('d8b2926c39a2c55349457e5f35ffec3eb19796fe346aeeb6eac0bebc41e8a374')
+sha256sums=('64d1de4f7bf947c0e3f0164f4e31992a22de4574d07a78ddf51d4185664b0f92')
 
 package() {
   npm install --global --production --user root --prefix "${pkgdir}/usr" "${srcdir}/v${pkgver}.tar.gz"
