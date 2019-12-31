@@ -6,7 +6,7 @@ pkgbase = systemd-service-pacman-download-updates-git
 	arch = any
 	license = GPL
 	makedepends = git
-	provides = system-service-pacman-download-updates
+	provides = systemd-service-pacman-download-updates
 	source = systemd-service-pacman-download-updates-git::git+https://gitlab.com/jdorel-archlinux/systemd-pacman-download-updates
 	md5sums = SKIP
 
