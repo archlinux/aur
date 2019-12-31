@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.18.r3000.g9e4710d679
+pkgver=0.18.r3026.gdcc2790834
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -18,26 +18,23 @@ makedepends=('boost' 'cmake' 'eigen' 'git' 'gcc-fortran'
 optdepends=('pycollada: Create, edit and load COLLADA documents.')
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
-source=("${pkgname}::git+https://github.com/FreeCAD/FreeCAD.git")
+source=("git+https://github.com/FreeCAD/FreeCAD.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/FreeCAD"
     # upstream recyles the "pre" and "staging" tags so they do not produces stable commit counts
     git describe --long --tags --exclude '*pre*' --exclude '*staging*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/FreeCAD"
   # fix a build error
-  curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
-  # patch.txt
-  #dos2unix patch.txt
-  #patch --binary -p1 -i patch.txt
+  #curl -L "https://github.com/FreeCAD/FreeCAD/pull/2842/commits/095984fce44931a4c8e2ace269d45a62640fbfb4.patch" | patch -p1
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/FreeCAD"
 
     # we need to manually set all PYSIDE_* paths as autodetection is broken:
     # https://github.com/FreeCAD/FreeCAD/pull/2020
@@ -63,7 +60,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/FreeCAD"
 
     make DESTDIR="${pkgdir}" install
 

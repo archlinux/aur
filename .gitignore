@@ -1,11 +1,5 @@
-*
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!*.install
-!ChangeLog
-!*.diff
-!*.patch
-<<<<<<< HEAD
-!*.desktop
-!*.xml
+src/
+pkg/
+FreeCAD/
+*.tar.xz
+*.tar.gz
