@@ -6,7 +6,7 @@
 # Contributor: Otto Sabart <seberm[at]gmail[dot]com>
 
 pkgname=knot-git
-pkgver=2.8.dev.1551283912.4015475b0
+pkgver=3.0.dev.1577784203.e80907080
 pkgrel=1
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 options=(!strip debug)
 _gitname='knot-dns'
 
-pkgver() {
+prepare() {
     cd "${_gitname}"
     ./autogen.sh &>/dev/null
     ./configure \
@@ -40,7 +40,10 @@ pkgver() {
         --enable-systemd \
         --enable-reuseport \
         --disable-silent-rules &>/dev/null
-    grep 'PACKAGE_VERSION' src/config.h | sed 's/.*"\(.*\)"/\1/'
+}
+
+pkgver() {
+    grep 'PACKAGE_VERSION' "${_gitname}/src/config.h" | sed 's/.*"\(.*\)"/\1/'
 }
 
 build() {
