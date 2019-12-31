@@ -1,0 +1,18 @@
+pkgbase = sewar
+	pkgdesc = All image quality metrics you need in one package.
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/andrewekhalel/sewar
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pillow
+	provides = sewar-git
+	conflicts = sewar-git
+	source = https://files.pythonhosted.org/packages/source/s/sewar/sewar-0.4.3.tar.gz
+	sha512sums = 5501f50383294e1293ff276f0545e870488e74a1d5510fa1b310c4cdffcae6b641ec224a7f4d49eb21ad7595b69baa193f3c6e9c848b9a7e9b5cdbd2afce3a6f
+
+pkgname = sewar
+
