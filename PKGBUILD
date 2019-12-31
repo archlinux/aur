@@ -14,5 +14,4 @@ sha512sums=('8be0c5420608d338af9646a870ba89a158b2fc96eb3407ad47cc1999c87395d29ec
 package() {
 	cd "$srcdir"
 	tar axfv data.tar.xz -C "${pkgdir}"
-	echo $?
 }
