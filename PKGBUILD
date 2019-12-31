@@ -1,16 +1,25 @@
-# Maintainer: Jakub Fišer <kubaCURLYSYMBOLufiseruSMALLPOINTSYMBOlcz>
+# Maintainer: nblock <nblock [/at\] archlinux DOT us>
+# Contributor: Jakub Fišer <kubaCURLYSYMBOLufiseruSMALLPOINTSYMBOlcz>
 # Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 # Contributor: Ivan Sichmann Freitas <ivansichfreitas@gmail.com>
 
 pkgname=vit-git
-pkgver=r183.12d03e9
-pkgrel=2
-pkgdesc="A terminal interface for Taskwarrior with Vim key bindings and colorization support. GIT version."
+pkgver=r600.a2121f3
+pkgrel=1
+pkgdesc="Visual Interactive Taskwarrior full-screen terminal interface (GIT version)"
 arch=('any')
-url="https://github.com/scottkosty/vit"
-license=('GPL3')
-depends=('perl-try-tiny' 'perl-curses' 'perl-text-charwidth' 'task')
-makedepends=( 'git' )
+url='https://github.com/scottkosty/vit'
+license=('MIT')
+conflicts=('vit')
+provides=('vit')
+depends=('python'
+         'python-pytz'
+         'python-tasklib'
+         'python-tzlocal'
+         'python-urwid'
+         'task')
+makedepends=('git'
+             'python-setuptools')
 source=(git+https://github.com/scottkosty/vit.git)
 sha512sums=('SKIP')
 
@@ -19,22 +28,15 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${pkgname%-git}
-
-  # allow custom perl location
-  sed -ri "s|(#!/usr/bin/)perl -w|\1env perl|" vit.pl
-}
-
 build() {
   cd ${pkgname%-git}
-  PERL=/usr/bin/perl ./configure --prefix=/usr
-  make
+  python setup.py build
 }
 
 package() {
   cd ${pkgname%-git}
-  make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim: ts=2 sw=2 et:

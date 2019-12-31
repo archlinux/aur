@@ -1,14 +1,20 @@
 pkgbase = vit-git
-	pkgdesc = A terminal interface for Taskwarrior with Vim key bindings and colorization support. GIT version.
-	pkgver = r183.12d03e9
+	pkgdesc = Visual Interactive Taskwarrior full-screen terminal interface (GIT version)
+	pkgver = r600.a2121f3
 	pkgrel = 1
 	url = https://github.com/scottkosty/vit
 	arch = any
-	license = GPL3
+	license = MIT
 	makedepends = git
-	depends = perl-curses
-	depends = perl-text-charwidth
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytz
+	depends = python-tasklib
+	depends = python-tzlocal
+	depends = python-urwid
 	depends = task
+	provides = vit
+	conflicts = vit
 	source = git+https://github.com/scottkosty/vit.git
 	sha512sums = SKIP
 
