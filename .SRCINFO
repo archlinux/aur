@@ -1,6 +1,6 @@
 pkgbase = python-balena
 	pkgdesc = Balena SDK for Python
-	pkgver = 9.0.0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://github.com/balena-io/balena-sdk-python
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-balena
 	makedepends = python2-setuptools
 	provides = python-balena
 	provides = python2-balena
-	source = https://github.com/balena-io/balena-sdk-python/archive/v9.0.0.tar.gz
-	sha256sums = db990ac128102580cf9a6f4241dd91986836c463cf9e73674a722c421fa67d09
+	source = https://github.com/balena-io/balena-sdk-python/archive/v9.0.1.tar.gz
+	sha256sums = 343d111d6244a5f9d2a247ca351424b8dc60d31cd02591043d63b924c21c315b
 
 pkgname = python-balena
 	depends = python-pyjwt>=1.5.0
