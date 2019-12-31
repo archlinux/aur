@@ -5,7 +5,7 @@
 
 _pkgname=lab
 pkgname=$_pkgname-git
-pkgver=0.17.0.r1.g550caf6
+pkgver=0.17.2.r1.gbe53a79
 _branch=master
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (git $_branch branch)"
@@ -35,10 +35,14 @@ build () {
         -gcflags "all=-trimpath=$PWD" \
         -asmflags "all=-trimpath=$PWD" \
         -ldflags "-extldflags $LDFLAGS -X main.version=$pkgver"
+    ./lab completion bash > completion.bash
+    ./lab completion zsh > completion.zsh
 }
 
 package() {
     cd "$_pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"/LICENSE
     install -Dm755 lab "$pkgdir"/usr/bin/lab
+    install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
+    install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_lab"
 }

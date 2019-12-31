@@ -1,6 +1,6 @@
 pkgbase = lab-git
 	pkgdesc = A hub-like tool for GitLab (git master branch)
-	pkgver = 0.17.0.r1.g550caf6
+	pkgver = 0.17.2.r1.gbe53a79
 	pkgrel = 1
 	url = https://zaquestion.github.io/lab/
 	arch = x86_64
