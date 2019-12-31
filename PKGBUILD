@@ -4,10 +4,11 @@
 _pkgname=grafana
 _go_arch=$(go version | awk '{gsub("/","-",$NF); print $NF}')
 pkgname=${_pkgname}-git
-pkgver=v5.0.0.r4041.ga3196a130e
+pkgver=v6.0.0.beta1.r3707.g649fa6789e
 pkgrel=1
-pkgdesc=" The tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus & More"
+pkgdesc="The tool for beautiful monitoring and metric analytics & dashboards for Graphite, InfluxDB & Prometheus & More"
 url="https://grafana.com"
+_github_url="https://github.com/grafana/grafana"
 arch=('any')
 license=('APACHE')
 makedepends=('go' 'npm' 'git' 'yarn' 'python2')
