@@ -1,0 +1,15 @@
+pkgbase = bandwhich-bin
+	pkgdesc = Display network utilization by process, connection and remote address
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/imsnif/bandwhich
+	arch = x86_64
+	license = MIT
+	provides = bandwhich
+	conflicts = bandwhich
+	conflicts = bandwhich-git
+	source = https://github.com/imsnif/bandwhich/releases/download/0.6.0/bandwhich-v0.6.0-x86_64-unknown-linux-musl.tar.gz
+	md5sums = 552a8df5680b468486a1b45f5842ac30
+
+pkgname = bandwhich-bin
+
