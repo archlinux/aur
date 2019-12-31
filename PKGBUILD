@@ -1,7 +1,8 @@
-# Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
-# Co-maintainer: Alexandria Pettit <alxpettit@gmail.com>
+# Maintainer: mrAppleXZ <mr.applexz@gmail.com>
+# Contributor: Jorge Israel Peña <jorge.israel.p@gmail.com>
+# Contributor: Alexandria Pettit <alxpettit@gmail.com>
 pkgname=syncplay
-_pkgver=1.6.3
+_pkgver=1.6.4a
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
@@ -12,7 +13,7 @@ depends=('python' 'python-twisted')
 optdepends=('pyside2' 'qt5-declarative' 'python-service_identity')
 source=("https://github.com/Syncplay/syncplay/archive/v${_pkgver}.tar.gz"
         'syncplay@.service')
-sha256sums=('fa65ac115c2cda978d2ce41228bddc3f0954543475d091dd1db78d4ba50d3794'
+sha256sums=('6683752f5d0284371ac978f3c6fb9bdcbab97ab02e5170ad1af88b34e272bc33'
             '2033d40daad02f06eede073d0cee39fba8c70289dd71e8444d429b810438ec3a')
 install=syncplay.install
 package() {
