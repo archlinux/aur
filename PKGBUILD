@@ -2,7 +2,7 @@
 # Maintainer: Xyne
 
 pkgname=abinit
-pkgver=8.10.2
+pkgver=8.10.3
 pkgrel=1
 pkgdesc="Full-featured atomic-scale first-principles simulation software."
 arch=('i686' 'x86_64')
@@ -25,4 +25,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('e4771647a1f6f89a8179891c8cfa534f552fb937b6e98fee0c49caa58a2dc894ee4a87e7c20003a508f255c6b259525cee0ac26465496402f026ac5cce5620db')
+sha512sums=('6ae0e1f2e220d51b1f1a6122b81b12664b5148955710945371279ca28a092fd30278c62765b324f85004467c925f1048c20ecec3bb6c38f9f114d0182b647420')
