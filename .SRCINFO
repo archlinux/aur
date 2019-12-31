@@ -1,0 +1,19 @@
+pkgbase = python-escpos
+	pkgdesc = Python ESC/POS is a library which lets the user have access to all those printers handled by ESC/POS commands, as defined by Epson, from a Python application.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/python-escpos
+	arch = any
+	license = GPL3
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyusb
+	depends = python-pyserial
+	depends = python-pillow
+	depends = python-qrcode
+	source = https://files.pythonhosted.org/packages/24/20/ccfbb4cb44c80e0f2157094dee46b812555d8623a65555dd9466ccc63779/python-escpos-2.2.0.tar.gz
+	sha256sums = ce6196675b7a9846a67bae7776977697f503dae81030f1c530c1f4ff7f529837
+
+pkgname = python-escpos
+
