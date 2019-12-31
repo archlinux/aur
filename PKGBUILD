@@ -3,7 +3,7 @@
 # Helpful url: https://radarr.lidarr.audio/v1/update/aphrodite?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="radarr-aphrodite"
-pkgver="3.0.0.2429"
+pkgver="3.0.0.2432"
 pkgrel=1
 pkgdesc="Movie download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -35,9 +35,9 @@ source=('radarr.service'
 sha512sums=('feb90578b0a7f3949884f735e1ec2004b66c84c9fe4d54e578e8573551c0364d89c84ed7b38c0494ad0a24146d6c5113f65fa6da6fd31f5083b2e188cb9ed9fe'
             'e0d55353f0bf89f826eb7eb9ee26c3e3f38bd46a8884135139536ae220c0c531d5df486bc3b50f580679f9607bb4b7bfb9f29998609dc966fbfb8e1809834650'
             'c1ee3925eced182ea7fffa55a6dc2a4e099ccf18636fc237ef0a2fc9517a38cfc2a819ae5a7bc546b63e383506f9f47e89454a71e34106c579d7454d71b2299e')
-sha512sums_x86_64=('31b6fa341771310cbf37fc6c27f386ae7bc69c20d81cae1f506dd2257932ebfedad6bc14867ac814b590ce4c154435a4bc71d1e8e14c4dc3eadc66571ff729c2')
-sha512sums_aarch64=('b8a9903ff3ed1eb80ac3f6ae8bebbf221fd9facbeca4f1db04fc96cfe41ee1726134d221cb09f3c5cfb4757cf171eb50c318dd8d4c14b85b937367a8454d8fe2')
-sha512sums_armv7h=('c53ad6f87588717b042f2958ccb5eebc7bfcf0c797c47a3f7f713bd452b260b16f8fd14ffffa4b14ef068f8dbb96861ddbe82b4542639d35ad54290e81afd8cd')
+sha512sums_x86_64=('5e528d32f0494a26cbfb51c70ec6fcc7dc63092569bec9c772f4b4a3c7b80814a2dea688029ab02af76a3d2bcbe54c18b6b53d42499c5fcef0e6e82b79bcfc0f')
+sha512sums_aarch64=('ab52986711c2a8ea33951e035e385f2accfe58f4742e98dca1be1ed0ad91adac08402165b93406d10bc6b0b1e0de96c243167c8bee4ffd4cbace631e3205fe9c')
+sha512sums_armv7h=('fd951f630b2320dfc3d677d897287210c87dc1ba0f894370e8d171c1da7dec4953c41bf9d4d5baa0a998478a493335f14b26b209c16191ed3ed9a70bdab5fdd9')
 
 
 package() {
