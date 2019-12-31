@@ -27,7 +27,6 @@ build() {
   mkdir build
   cd build
 
-  export LDFLAGS=""
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON -DCMAKE_SKIP_INSTALL_RPATH=ON ..
   make
 }
