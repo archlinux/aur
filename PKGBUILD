@@ -49,7 +49,7 @@ _1k_HZ_ticks=
 pkgbase=linux-next-git
 pkgver=20191213.r0.g32b8acf85223
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -322,4 +322,4 @@ done
 
 sha512sums=('SKIP'
             '823e5be350152e9f36342229156ffd59c2632d1aab3b85b55caad15bcf1fc6c55e7a22b5b28eecb84a9e96bbc351ca1d348c2ba4b66302134919bababef16a93'
-            '076689333e2d99ab9c507a0760ff84b9b6d8a8d2cf6ce76815985b887a32527b300a7aa2524cc15cb88376d2eb239949f732f1b6e370c199aba45b6abf55c1f2')
+            '8658db603e180c75caf76972d85ecf8a4e9c9cf6e047b4f9fc7cba0fa426f434361528c1c29b5580f116cdd23091bf9afb6635d751f3b90c4e968d16db90eac1')
