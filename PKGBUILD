@@ -7,7 +7,7 @@
 # Contributor: Hinrich Harms <arch hinrich de>
 
 pkgname=thunderbird-extension-enigmail-git
-pkgver=1.9.r1099.g30acb5d5
+pkgver=2.1.r184.gd23359aa
 pkgrel=1
 pkgdesc="OpenPGP message encryption and authentication for Thunderbird (development version)"
 arch=('any')
@@ -29,7 +29,7 @@ pkgver()
 build()
 {
 	cd enigmail-git
-	./configure PYTHON=/usr/bin/python2
+	./configure
 	make -j1 # fails with -j greater than 1
 }
 
@@ -42,5 +42,5 @@ package()
 	local target_dir="${pkgdir}/usr/lib/thunderbird/extensions/${emid}"
 
 	install -d -m755 "$target_dir"
-	cp -R build/dist/. "$target_dir"
+	cp -R build-tb/dist/. "$target_dir"
 }
