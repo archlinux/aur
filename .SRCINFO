@@ -1,0 +1,16 @@
+pkgbase = xod
+	pkgdesc = XOD is a visual programming language for microcontrollers.
+	pkgver = v0.32.1
+	pkgrel = 1
+	url = https://xod.io/
+	arch = any
+	license = AGPL3
+	depends = nodejs
+	depends = yarn
+	conflicts = xod-git
+	options = !strip
+	source = https://www.googleapis.com/download/storage/v1/b/releases.xod.io/o/v0.32.1%2Fxod-client-electron-0.32.1.x86_64.rpm?generation=1575652852526433&alt=media
+	md5sums = ce40b5f343012541f5d5f9d88de21776fc09990a932e045b984c32c5524c14a8
+
+pkgname = xod
+
