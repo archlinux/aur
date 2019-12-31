@@ -1,27 +1,28 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=securefs
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
 url=https://github.com/netheril96/securefs
 license=('MIT')
 depends=('fuse' 'gcc-libs')
-makedepends=('cmake')
-source=("https://github.com/netheril96/securefs/archive/${pkgver}.tar.gz")
-sha1sums=('b8c645d9ce210ed729be572c0b4b71bead05de76')
+makedepends=('cmake' 'git')
+source=("git+${url}.git#tag=${pkgver}" "git+https://github.com/JuliaStrings/utf8proc.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 build() {
-    cd "$pkgname-${pkgver}"
-    mkdir -p build
-    cd build
+    mv utf8proc securefs/external/
+    cd "$pkgname"
+    mkdir -p build && cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr -Dlibdir=/usr/lib ..
     make
 }
 
 package() {
-    cd "$pkgname-${pkgver}"
+    cd "$pkgname"
     install -Dm755 build/securefs "$pkgdir"/usr/bin/securefs
     install -Dm755 build/securefs_test "$pkgdir"/usr/bin/securefs_test
     install -Dm644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
