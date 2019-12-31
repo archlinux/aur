@@ -1,0 +1,17 @@
+pkgbase = python-gwcs-doc
+	pkgdesc = Documentation for Python GWCS module
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://gwcs.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-gwcs=0.11.0
+	makedepends = python-sphinx-astropy
+	makedepends = python-sphinx-asdf
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-0.11.0.tar.gz
+	md5sums = ad2ea19d776f9c4c76c2f62710b958ba
+
+pkgname = python-gwcs-doc
+
