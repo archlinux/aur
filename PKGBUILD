@@ -1,7 +1,4 @@
-# Maintainer: unlucu <unlucu@gmail.com>
-# adopted from tdy <tdy@archlinux.info>
-
-pkgname=ttf-anka-coder
+pkgname=ttf-anka-coder-condensed
 pkgver=1.100
 pkgrel=1
 pkgdesc="A monospaced font"
@@ -10,15 +7,15 @@ url="https://code.google.com/archive/p/anka-coder-fonts"
 license=('SIL Open Font License, 1.1')
 depends=('fontconfig' 'xorg-font-utils')
 install=ttf.install
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/anka-coder-fonts/AnkaCoder.zip")
-sha256sums=('3c3cd48ed57796cd490a2c22614c73e32ad202790d10e9af3d632cd985c0e172')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/anka-coder-fonts/AnkaCoderCondensed.zip")
+sha256sums=('985bf9a091bbdab93515c897289c885db7adef2a8756554110b5c3d0618cf955')
 
 package() {
   cd "$srcdir"
-  install -Dm644 AnkaCoder-r.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-r.ttf"
-  install -Dm644 AnkaCoder-i.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-i.ttf"
-  install -Dm644 AnkaCoder-bi.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-bi.ttf"
-  install -Dm644 AnkaCoder-b.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-b.ttf"
+  install -Dm644 AnkaCoder-C87-r.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-C87-r.ttf"
+  install -Dm644 AnkaCoder-C87-i.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-C87-i.ttf"
+  install -Dm644 AnkaCoder-C87-bi.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-C87-bi.ttf"
+  install -Dm644 AnkaCoder-C87-b.ttf "$pkgdir/usr/share/fonts/TTF/AnkaCoder-C87-b.ttf"
   install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
 
