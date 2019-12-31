@@ -20,6 +20,7 @@ pkgbase = gerbera
 	depends = expat
 	depends = ffmpeg
 	depends = ffmpegthumbnailer
+	depends = libmatroska
 	optdepends = libmariadbclient
 	options = emptydirs
 	source = gerbera-1.4.0.tar.gz::https://github.com/gerbera/gerbera/archive/v1.4.0.tar.gz
