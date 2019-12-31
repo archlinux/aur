@@ -1,7 +1,7 @@
 # Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
 
 pkgname=drpcli
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Command-line client for Digital Rebar Provision, an API-driven DHCP/PXE/TFTP provisioning system."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('jq: for parsing and syntax colouring JSON responses'
             'bash-completion: tab completion')
 makedepends=('go')
 source=("https://github.com/digitalrebar/provision/archive/v${pkgver}.tar.gz")
-sha256sums=('baa867a14abd20f328bea7c476b8d4c8fd9232df116bf6f5a0eccf13dd8c9a06')
+sha256sums=('69391b9cb1797dac99401018023d228256ce14dcaa7bb5c56155804ebd734c31')
 
 build() {
     _ver=(${pkgver//\./ })
