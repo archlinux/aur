@@ -1,7 +1,7 @@
 pkgname=haskell-latex-formulae-hakyll
 _hkgname=latex-formulae-hakyll
 pkgver=0.2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for rendering LaTeX formulae as images using an actual LaTeX installation"
 url="https://hackage.haskell.org/package/latex-formulae-hakyll"
 license=('BSD')
@@ -16,7 +16,7 @@ makedepends=('ghc')
 source=(${pkgname}-${pkgver}.tar.gz::"https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz"
         cabal.patch)
 sha256sums=('ae300d1e29d392f88961719b3a2429c14a2337295d2f9b47cc6850ccd8b82660'
-            '4a9bf875694bbfb7dd5e2aed61bc07b3da7d7c1f4d29bf3537e40ca432f03b2b')
+            '12b64eb7615215262a14474f0039c35c5de469ed54252654dd2aa0efd5adc111')
 
 prepare() {
     cd ${_hkgname}-${pkgver}
