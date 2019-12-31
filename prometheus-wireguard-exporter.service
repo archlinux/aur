@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus Exporter for wireguard metrics
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus_wireguard_exporter -l 127.0.0.1
+
+[Install]
+WantedBy=multi-user.target
