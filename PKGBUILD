@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/FreeCAD"
-    # upstream recyles the "pre" and "staging" tags so they do not produces stable commit counts
+    # upstream recyles the "pre" and "staging" tags so they do not produce stable commit counts
     git describe --long --tags --exclude '*pre*' --exclude '*staging*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
