@@ -8,14 +8,14 @@
 
 pkgname='xampp'
 pkgver='7.3.12'
-pkgrel=2
+pkgrel=3
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
 arch=('x86_64')
 depends=('net-tools' 'mariadb')
 optdepends=('polkit: to run XAMPP Manager from menu')
-makedepends=('fakeuser-git' 'sdx' 'lib32-tclkit')
+makedepends=('fakeuser-git' 'sdx' 'tclkit')
 source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png'

@@ -1,14 +1,14 @@
 pkgbase = xampp
 	pkgdesc = A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages
 	pkgver = 7.3.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.apachefriends.org/
 	install = xampp.install
 	arch = x86_64
 	license = GPL
 	makedepends = fakeuser-git
 	makedepends = sdx
-	makedepends = lib32-tclkit
+	makedepends = tclkit
 	depends = net-tools
 	depends = mariadb
 	optdepends = polkit: to run XAMPP Manager from menu
