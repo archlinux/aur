@@ -10,9 +10,11 @@ arch=('any')
 url="https://github.com/AnotherFoxGuy/$pkgname"
 license=('GPL2')
 depends=('perl' 'perl-term-animation')
-source=("$pkgname-$pkgver-$pkgrel::$url/raw/$pkgver/$pkgname"
-		"$pkgname-$pkgver-$pkgrel.diff::$url/commit/b7ac28234c1e93e537787d163ac80361296aaf58.diff"
-		"$pkgname.1")
+source=(
+	"$pkgname-$pkgver-$pkgrel::$url/raw/$pkgver/$pkgname"
+	"$pkgname-$pkgver-$pkgrel.diff::$url/commit/b7ac28234c1e93e537787d163ac80361296aaf58.diff"
+	"$pkgname.1"
+)
 sha256sums=('e4ddd43d566a98b1d2ec136bf613f22f689ef2938479e23ca0082b84ebd6247c'
             'b8685b9d4e9552d538b68aa31400d0970d4e4ffa0eeda981d9fde32210a2ba5a'
             '8b0d7bb995e44190cc005ec3b604f147dcb233744a262cbbf9a9ad8f9214ab0c')
