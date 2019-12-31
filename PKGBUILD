@@ -10,8 +10,10 @@ arch=('x86_64')
 url="https://$_pkgname.org/"
 license=('MIT')
 provides=("$_pkgname")
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/facebook/$_pkgname/releases/download/v$pkgver/flow-linux64-v$pkgver.zip"
-		"$pkgname-$pkgver-$pkgrel-LICENSE::https://raw.githubusercontent.com/facebook/$_pkgname/v$pkgver/LICENSE")
+source=(
+	"$pkgname-$pkgver-$pkgrel.zip::https://github.com/facebook/$_pkgname/releases/download/v$pkgver/flow-linux64-v$pkgver.zip"
+	"$pkgname-$pkgver-$pkgrel-LICENSE::https://raw.githubusercontent.com/facebook/$_pkgname/v$pkgver/LICENSE"
+)
 sha256sums=('828f5c746f22baa41ba306b87c5c12cd49c4182c48436bb31af501366f416fb4'
             'f657f99d3fb9647db92628e96007aabb46e5f04f33e49999075aab8e250ca7ce')
 
