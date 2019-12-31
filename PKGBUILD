@@ -14,8 +14,10 @@ source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.deb::$url/$_pkgname-amd64-$pkgve
 source_i686=("$pkgname-$pkgver-$pkgrel-i686.deb::$url/$_pkgname-i386-$pkgver-beta.deb")
 source_armv6h=("$pkgname-$pkgver-$pkgrel-armv6h.deb::$url/$_pkgname-armhf-$pkgver-beta.deb")
 source_armv7h=("$pkgname-$pkgver-$pkgrel-armv7h.deb::$url/$_pkgname-armhf-$pkgver-beta.deb")
-source=("$_pkgname.png"
-		'LICENSE')
+source=(
+	"$_pkgname.png"
+	'LICENSE'
+)
 sha256sums=('2eab4bf8debaea35825f07f7adfd6ba69b24c0423c66bdf0718e16600e68857d'
             '62fc6a77bcc0a193c5dda7f0c69dcde991b410f8ddc1536597f0307be552473d')
 sha256sums_x86_64=('8ecd1b573563f40515b3e173138b7798cd25c70eb8edb82b07295d1c4021b5fb')
