@@ -7,6 +7,7 @@ arch=('any')
 url="https://gitlab.com/jdorel-archlinux/systemd-pacman-download-updates"
 license=('GPL')
 makedepends=('git')
+provides=('system-service-pacman-download-updates')
 source=("${pkgname}::git+https://gitlab.com/jdorel-archlinux/systemd-pacman-download-updates")
 md5sums=('SKIP')
 
