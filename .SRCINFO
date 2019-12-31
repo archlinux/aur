@@ -1,7 +1,7 @@
 pkgbase = python-pystray
 	pkgdesc = Provides systray integration.
-	pkgver = 0.14.4
-	pkgrel = 2
+	pkgver = 0.15.0
+	pkgrel = 1
 	url = https://github.com/moses-palmer/pystray
 	arch = any
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = python-pystray
 	makedepends = python2-setuptools
 	makedepends = python-sphinx
 	makedepends = python2-sphinx
-	source = https://github.com/moses-palmer/pystray/archive/v0.14.4.tar.gz
-	sha512sums = 8c0da713ce5314137015d23c156de22054a44d4720be36a41ad1917bc694ffaed0b254b9473f67a26bf630e12d7fa71744410723927318280768efcfb752cd81
+	source = https://github.com/moses-palmer/pystray/archive/v0.15.0.tar.gz
+	sha512sums = 889730ef8b7967f60538bf1354fb9864c9136d4c5700c2eab411164f1878938a0c2c2d0946c9df58892f3d3a27832316f5413a462741166b81f49f9d915dfc1f
 
 pkgname = python-pystray
 	depends = python-pillow

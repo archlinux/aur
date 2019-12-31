@@ -3,15 +3,15 @@
 _pkgname=pystray
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.14.4
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 arch=(any)
 license=('GPL')
 pkgdesc="Provides systray integration."
 url="https://github.com/moses-palmer/pystray"
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools' 'python-sphinx' 'python2-sphinx')
 source=("https://github.com/moses-palmer/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('8c0da713ce5314137015d23c156de22054a44d4720be36a41ad1917bc694ffaed0b254b9473f67a26bf630e12d7fa71744410723927318280768efcfb752cd81')
+sha512sums=('889730ef8b7967f60538bf1354fb9864c9136d4c5700c2eab411164f1878938a0c2c2d0946c9df58892f3d3a27832316f5413a462741166b81f49f9d915dfc1f')
 
 prepare() {
   cp -a ${_pkgname}-${pkgver}{,-py2}
@@ -38,3 +38,4 @@ package_python2-pystray() {
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
+
