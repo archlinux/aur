@@ -1,4 +1,4 @@
-# Maintainer: rawkode <david.andrew.mckay@gmail.com>
+# Maintainer: nickl <nick.lanham.nexus+aur@gmail.com>
 
 pkgname=click
 pkgdir="pkg-build"
