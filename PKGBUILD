@@ -1,14 +1,14 @@
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=sealcrypto
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft library for fully homomorphic encryption'
 arch=('x86_64')
 url="https://sealcrypto.org/"
 license=('MIT')
 makedepends=('cmake')
 source=("https://github.com/Microsoft/SEAL/archive/${pkgver}.tar.gz")
-sha1sums=('99a0802948721cba90589de866eaee24a2324ca1')
+sha1sums=('4275f9c1e8bffb83467d80c644b41e1fe2454183')
 provides=('sealcrypto')
 
 build() {
