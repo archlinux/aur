@@ -1,7 +1,7 @@
 pkgbase = proxysql
 	pkgdesc = High-performance MySQL proxy with a GPL license
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://proxysql.com
 	arch = x86_64
 	arch = amd64
@@ -16,6 +16,7 @@ pkgbase = proxysql
 	makedepends = patch
 	depends = openssl
 	provides = proxysql
+	backup = etc/proxysql.cnf
 	source = https://github.com/sysown/proxysql/archive/v2.0.8.tar.gz
 	source = proxysql.sysusers
 	source = proxysql.tmpfiles

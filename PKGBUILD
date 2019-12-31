@@ -1,7 +1,7 @@
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
 pkgname=proxysql
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance MySQL proxy with a GPL license"
 arch=('x86_64' 'amd64')
 url="http://proxysql.com"
@@ -10,6 +10,7 @@ license=('GPL')
 makedepends=('cmake' 'automake' 'bzip2' 'make' 'gcc' 'git' 'openssl' 'patch')
 depends=('openssl')
 provides=('proxysql')
+backup=("etc/proxysql.cnf")
 source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz"
 	"proxysql.sysusers"
 	"proxysql.tmpfiles")
@@ -24,9 +25,9 @@ build() {
 }
 
 package() {
-	install -Dm 0755 "${pkgname}-${pkgver}/src/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	install -o "${pkgname}" -g "${pkgname}" -Dm 0600 "${pkgname}-${pkgver}/etc/${pkgname}.cnf" "${pkgdir}/etc/${pkgname}.cnf"
+	install -Dm 0755 "${srcdir}/${pkgname}-${pkgver}/src/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm 0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 	install -Dm 0644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/systemd/system/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -Dm 0644 "${srcdir}/${pkgname}-${pkgver}/etc/${pkgname}.cnf" "${pkgdir}/etc/${pkgname}.cnf"
 }
