@@ -13,7 +13,7 @@ depends=(
   'python2'
   'python2-backports.ssl_match_hostname'
   'python2-beautifulsoup4'
-  'python2-docker-pycreds'
+  'python-docker-pycreds'
   'python2-html2text'
   'python2-lxml'
   'python2-markdown2-git'
