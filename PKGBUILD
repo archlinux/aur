@@ -3,7 +3,7 @@
 
 pkgname=qdvdauthor
 pkgver=2.3.1
-pkgrel=10
+pkgrel=11
 pkgdesc='QDVDAuthor is a GUI frontend for dvdauthor, video DVD creator'
 url='https://sourceforge.net/projects/qdvd'
 license=('GPL2')
@@ -12,26 +12,15 @@ depends=('qt5-base' 'ffmpeg063-static' 'vlc' 'xine-lib')
 makedepends=('cmake' 'extra-cmake-modules')
 conflicts=()
 provides=(
-  'qdvdauthor.desktop'
-  'qdvdauthor.png'
-  'CHANGELOG'
-  'COPYING'
-  'README'
-  'TODO'
-  'audio_streams.html'
-  'system_register.html'
-  'silence.ac3'
-  'silence.mp2'
   'dvd-slideshow'
-  'libjhead.so'
-  'background00000.jpg'
   'qdvdauthor'
+  'qplayer'
   'qslideshow'
   'qrender'
 )
 options=()
-source=("https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-010a.tar.gz")
-md5sums=('10adc7ca9018333a9bb11224873f70e9')
+source=("https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-011a.tar.gz")
+md5sums=('426a2f3e39c042188308bac9bfaff1e1')
 
 build() {
   cd qdvdauthor-${pkgver}/build
