@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@tellus.space>
 
 pkgname=conftest
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A utility to help you write tests against structured configuration data'
 arch=(x86_64)
@@ -9,14 +9,14 @@ url='https://github.com/instrumenta/conftest'
 license=(Apache)
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/instrumenta/conftest/archive/v$pkgver.tar.gz")
-sha512sums=('5291680b36de882860d2a80795de9a2335d4e639575a09b3844be4d6d2e1593173829717aecaef8247790a90bf1a20e8b9a8cb1810779089faf4a3ee9e18b967')
+sha512sums=('eed88160ea011b5abe6873ab28e68b6121d0da9dfb95b10f4326465363ef1f73d53d5ad9dd800122bbf4a03b2f54f4c0c8a58d5e526367b9766beec7b871ce96')
 
 build() {
   cd $pkgname-$pkgver
 
   go build \
   --trimpath \
-  --ldflags "-X github.com/instrumenta/conftest/commands.version=$pkgver" \
+  --ldflags "-X github.com/instrumenta/conftest/internal/commands.version=$pkgver" \
   -o conftest \
   .
 }
