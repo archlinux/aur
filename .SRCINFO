@@ -1,6 +1,6 @@
 pkgbase = corosync
 	pkgdesc = Cluster engine for nodal communication systems with additional features for implementing high availability within applications.
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = http://www.corosync.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = corosync
 	depends = libqb
 	depends = libcgroup
 	depends = kronosnet
-	source = corosync-3.0.2.tar.gz::https://github.com/corosync/corosync/archive/v3.0.2.tar.gz
-	md5sums = a5cc8d748d0822426d5529e1631b7c12
+	source = corosync-3.0.3.tar.gz::https://github.com/corosync/corosync/archive/v3.0.3.tar.gz
+	md5sums = c22d4e0f84c28781b37f03f4414c752e
 
 pkgname = corosync
 
