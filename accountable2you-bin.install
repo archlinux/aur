@@ -1,0 +1,13 @@
+post_install() {
+	pip3.7 install suds-jurko psutil pygobject
+	python37 /usr/share/accountable2you/accountable2you.pyc install || true
+}
+
+pre_remove() {
+	python37 /usr/share/accountable2you/accountable2you.pyc uninstall || true
+}
+
+post_remove() {
+	pkill -9 -f "accountable2you.pyc" || true
+}
+

@@ -1,8 +1,9 @@
 pkgbase = accountable2you-bin
 	pkgdesc = Accountable2You client application
 	pkgver = 1.84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://accountable2you.com
+	install = accountable2you-bin.install
 	arch = any
 	license = unknown
 	depends = wmctrl
