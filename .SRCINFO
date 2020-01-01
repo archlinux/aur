@@ -1,15 +1,14 @@
 pkgbase = microsoft-gsl
 	pkgdesc = C++ Core Guidelines Support Library
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Microsoft/GSL
 	arch = any
 	license = MIT
 	makedepends = cmake
-	makedepends = catch2
-	source = https://github.com/Microsoft/GSL/archive/v2.0.0.tar.gz
+	source = https://github.com/Microsoft/GSL/archive/v2.1.0.tar.gz
 	source = use_system_catch2.patch
-	sha256sums = 6cce6fb16b651e62711a4f58e484931013c33979b795d1b1f7646f640cfa9c8e
+	sha256sums = ef73814657b073e1be86c8f7353718771bf4149b482b6cb54f99e79b23ff899d
 	sha256sums = 9ebdc1b3628bbdce82e3be469c183cd0d94d3d8964189aad71dac5d7e94d9f58
 
 pkgname = microsoft-gsl
