@@ -1,4 +1,4 @@
-# Maintainer: Hexchain <i@hexchain.org>
+# Maintainer: miwinning <miwinning@miwcloud.me>
 pkgname=ttf-camingocode
 pkgver=1.0
 pkgrel=1
