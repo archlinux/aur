@@ -1,0 +1,23 @@
+pkgbase = xts-arcolinux-theme
+	pkgdesc = ArcoLinux theme for xfce4-theme switcher.
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://gitlab.com/linux-stuffs/xts-themes
+	arch = any
+	groups = xfce4-goodies
+	license = GPL3
+	depends = xfce4-theme-switcher
+	depends = xfce4-whiskermenu-plugin
+	depends = arc-gtk-theme
+	depends = gtk-engines
+	depends = plank
+	depends = conky
+	optdepends = conky-manager
+	provides = xts-arcolinux-theme
+	conflicts = xts-arcolinux-theme
+	options = !strip
+	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-arcolinux-theme/distrib/xts-arcolinux-theme-0.1-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = xts-arcolinux-theme
+
