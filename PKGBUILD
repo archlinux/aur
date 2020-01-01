@@ -14,7 +14,7 @@ url='https://osu.ppy.sh'
 license=('MIT')
 makedepends=('git')
 depends=(
-	'dotnet-sdk-bin>=3.1.0'
+	'dotnet-sdk>=3.1.0'
 	'ffmpeg'
 	'libgl'
 	'shared-mime-info'
