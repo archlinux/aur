@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=jkk-git
-pkgver=r16.98ec8ce
+pkgver=r17.7b427c4
 pkgrel=1
 pkgdesc='A git-like cli for Jenkins written in Kotlin'
 url='https://github.com/Polpetta/jkk'
