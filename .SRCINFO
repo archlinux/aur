@@ -1,0 +1,16 @@
+pkgbase = konfyt
+	pkgdesc = Konfyt is a digital keyboard workstation for Linux which allows you to set up patches, each with multiple layers, and instantly switch between these patches for live keyboard playing.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.noedig.co.za/konfyt
+	arch = x86_64
+	license = GPL3
+	depends = fluidsynth
+	depends = carla
+	depends = liblscp
+	depends = qt5-base
+	source = https://github.com/noedigcode/konfyt/archive/v1.1.0.tar.gz
+	sha256sums = 3193ca32028823ef8caf430f1b1825763a7a8b944b84d230c06e64bedc754db5
+
+pkgname = konfyt
+
