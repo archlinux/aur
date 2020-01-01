@@ -1,10 +1,9 @@
 pkgbase = hunspell-uk
 	pkgdesc = Ukrainian spelling dictionary
 	pkgver = 4.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brown-uk/dict_uk
 	arch = any
-	groups = dict-uk
 	license = MPL
 	optdepends = hunspell: the spell checking libraries and apps
 	source = https://github.com/brown-uk/dict_uk/releases/download/v4.8.0/hunspell-uk_UA_4.8.0.zip
