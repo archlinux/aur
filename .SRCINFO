@@ -1,7 +1,7 @@
 pkgbase = roccat-vulcan
 	pkgdesc = Linux RGB LED effect support for the Roccat Vulcan 100/120/121 Keyboard
 	pkgver = 0.0.2
-	pkgrel = 0
+	pkgrel = 2
 	url = https://github.com/X3n0m0rph59/roccat-vulcan
 	arch = i686
 	arch = x86_64
