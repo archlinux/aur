@@ -1,6 +1,6 @@
 pkgbase = rts_bpp-dkms-git
 	pkgdesc = A kernel module for Realtek Card Reader RTL8402/8411/8411B Device
-	pkgver = 9
+	pkgver = 10
 	pkgrel = 1
 	url = https://github.com/Ri0n/rts_bpp
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = rts_bpp-dkms-git
 	makedepends = git
 	depends = dkms
 	options = !strip
-	source = git+https://github.com/M0Rf30/rts_bpp.git
+	source = git+https://github.com/Ri0n/rts_bpp.git
 	source = dkms.conf
 	source = 81-udisks-udisks2-rts_bpp.rules
 	md5sums = SKIP
-	md5sums = 56d2fb0184d7eb17cec3d553b870d185
+	md5sums = 80017b249a931439a5c7ee3e99fb518a
 	md5sums = 2cb27673c68f68b10199fc6ec9c05a24
 
 pkgname = rts_bpp-dkms-git
