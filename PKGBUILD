@@ -1,7 +1,7 @@
-# Maintainer: Valentijn V. <deepnavy at waifu dot club>
+# Maintainer: Valentijn V. <neko at catgirlsin dot space>
 pkgname=gb-studio-bin
-_pkgname=gb-studio
-pkgver=1.1.0
+_pkgname=GB-Studio
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Visual retro game maker"
 arch=('x86_64')
@@ -13,8 +13,8 @@ provides=('gb-studio')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux' 'trash-cli')
 optdepends=('pulseaudio: sound support')
 options=('!strip' '!emptydirs')
-source=("https://github.com/chrismaltby/gb-studio/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha512sums=('dbf09795a07c6e936128fbcab583d2c935628a3c7d448cd95027890d18a9e92b1d6f132883992efaa675667d76f27372a2c9f6c2413a5832c4b39cd11d5c7097')
+source=("https://github.com/chrismaltby/gb-studio/releases/download/v${pkgver}/${_pkgname}-Linux-DEB-${pkgver}.deb")
+sha512sums=('c09e6c1ec47e1d0aac7728fb1c41eb49b6ab652457a86edc459714e585e0d8e2f2630d18af2fccca5dfbaab0df9ffbc518e3dd10a42096ec25950c30f0ff2f69')
 
 package(){
 	# Extract package data
