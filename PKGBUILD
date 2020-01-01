@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=1.99.4.r144d681
+pkgver=1.99.4.r47514d2
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
     cd "${srcdir}/${pkgname}"
     git submodule update --init --depth=1
     mkdir -p build && cd build
-    qmake 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\"QString(\\\"/usr/bin/v2ray\\\")\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\"QString(\\\"/usr/lib/v2ray\\\")\"' ../
+    qmake 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\\\"/usr/bin/v2ray\\\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\\\"/usr/lib/v2ray\\\"' ../
     make
 }
 
