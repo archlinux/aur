@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r72444.f1e4a3da78
+pkgver=r72795.c2f38ba32b
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -21,6 +21,7 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6301.patch | patch -p1
 }
 
 build() {
