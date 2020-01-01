@@ -1,0 +1,88 @@
+diff -rNc cyrus-imapd-2.5.15.orig/lib/cyrusdb_berkeley.c cyrus-imapd-2.5.15/lib/cyrusdb_berkeley.c
+*** cyrus-imapd-2.5.15.orig/lib/cyrusdb_berkeley.c	2019-12-16 05:34:28.000000000 +0100
+--- cyrus-imapd-2.5.15/lib/cyrusdb_berkeley.c	2020-01-01 20:42:15.495203815 +0100
+***************
+*** 456,462 ****
+      return r;
+  }
+  
+! static int gettid(struct txn **mytid, DB_TXN **tid, const char *where)
+  {
+      int r;
+  
+--- 456,462 ----
+      return r;
+  }
+  
+! static int mygettid(struct txn **mytid, DB_TXN **tid, const char *where)
+  {
+      int r;
+  
+***************
+*** 499,505 ****
+      if (data) *data = NULL;
+      if (datalen) *datalen = 0;
+  
+!     r = gettid(mytid, &tid, "myfetch");
+      if (r) return r;
+  
+      memset(&k, 0, sizeof(k));
+--- 499,505 ----
+      if (data) *data = NULL;
+      if (datalen) *datalen = 0;
+  
+!     r = mygettid(mytid, &tid, "myfetch");
+      if (r) return r;
+  
+      memset(&k, 0, sizeof(k));
+***************
+*** 594,600 ****
+      /* k.flags |= DB_DBT_REALLOC;
+         d.flags |= DB_DBT_REALLOC;*/
+  
+!     r = gettid(mytid, &tid, "foreach");
+      if (r) return r;
+  
+      if (0) {
+--- 594,600 ----
+      /* k.flags |= DB_DBT_REALLOC;
+         d.flags |= DB_DBT_REALLOC;*/
+  
+!     r = mygettid(mytid, &tid, "foreach");
+      if (r) return r;
+  
+      if (0) {
+***************
+*** 739,745 ****
+      if (!data)
+  	datalen = 0;
+  
+!     r = gettid(mytid, &tid, "mystore");
+      if (r) return r;
+  
+      memset(&k, 0, sizeof(k));
+--- 739,745 ----
+      if (!data)
+  	datalen = 0;
+  
+!     r = mygettid(mytid, &tid, "mystore");
+      if (r) return r;
+  
+      memset(&k, 0, sizeof(k));
+***************
+*** 852,858 ****
+      assert(dbinit && db);
+      assert(key && keylen);
+  
+!     r = gettid(mytid, &tid, "delete");
+      if (r) return r;
+  
+      memset(&k, 0, sizeof(k));
+--- 852,858 ----
+      assert(dbinit && db);
+      assert(key && keylen);
+  
+!     r = mygettid(mytid, &tid, "delete");
+      if (r) return r;
+  
+      memset(&k, 0, sizeof(k));
