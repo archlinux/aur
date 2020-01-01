@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=sleepcount
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="just as a simple 'sleep' CLI util but with countdown option and HH:MM:SS target time"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 source=(
 	"$pkgname-$pkgver.tar.gz"::https://github.com/actionless/sleepcount/archive/"$pkgver".tar.gz
 )
-md5sums=('150b597f22ee4a8af64c5cbd95d4b775')
+md5sums=('11393114d7fe3e16fea6aad716a8425c')
 depends=(
 	'python'
 )

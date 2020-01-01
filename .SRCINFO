@@ -1,6 +1,6 @@
 pkgbase = sleepcount
 	pkgdesc = just as a simple 'sleep' CLI util but with countdown option and HH:MM:SS target time
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/actionless/sleepcount
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = sleepcount
 	depends = python
 	provides = sleepcount
 	conflicts = sleepcount-git
-	source = sleepcount-0.1.1.tar.gz::https://github.com/actionless/sleepcount/archive/0.1.1.tar.gz
-	md5sums = 150b597f22ee4a8af64c5cbd95d4b775
+	source = sleepcount-0.1.2.tar.gz::https://github.com/actionless/sleepcount/archive/0.1.2.tar.gz
+	md5sums = 11393114d7fe3e16fea6aad716a8425c
 
 pkgname = sleepcount
 
