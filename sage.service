@@ -1,0 +1,8 @@
+[Unit]
+Description=A free open-source mathematics software system
+
+[Service]
+ExecStart=/usr/bin/sage -notebook=sagenb
+
+[Install]
+WantedBy=default.target
