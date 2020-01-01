@@ -36,7 +36,7 @@ source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
 sha256sums=('57ac55fe442d2da650abeb9e6fa161bd3a98ba6528c029f076f8bba43dd5c228'
             'SKIP'
             '62e5ceea3c90a3c6eab1166488f876e766efcfd7d4e973c44060a9e72d51a98a'
-            '25c55dbd006ca1b03472a4a7e438cc512cc5d7c3ae6f3d5cb410c3da77c77f78'
+            'ebc0af1ef3a6baccb013d0ccb29923895a7b22ff2d032e3bba802dc6328301ce'
             '7e4736dc63746e8b58f0d76ccbcd14cf5f221864b61ba16e2fc736e1ac22f41a'
             'c28997b08d3ea257a2435164e35d0340f42cd3306def6a94b6b8c0a2f5644def'
             'cd3b12c1cd5860f77325ef5405b987eca9cd894cbc99bde6ea4bdbed78ff5d46'
