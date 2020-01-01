@@ -1,4 +1,5 @@
-# Maintainer: Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
+# Maintainer: Artur Juraszek <artur@juraszek.xyz>
+# Ex-Maintainer: Gonzalo Ciruelos <gonzalo.ciruelos@gmail.com>
 # Ex-Maintainer: TheWaffleGuy <gvxq@hotmail.com>
 # Contributor: Nicolas Floquet <nicolasfloquet AT gmail DOT com>
 pkgname=e2tools
