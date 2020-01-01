@@ -2,7 +2,7 @@
 
 pkgname=btrfs-snapshot
 pkgver=3.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
@@ -11,17 +11,13 @@ depends=('bash' 'btrfs-progs')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('be0242a54f18e66c5328a907d3950e754b7a21b91384a19b50c948f9a5976d0a')
 
-prepare() {
+package() {
     cd "$pkgname-$pkgver"
 
     sed -e 's|\(^_f_functions\)=.*|\1=/usr/lib/btrfs-snapshot/functions|' \
         -e 's|\(^_d_configs\)=.*|\1=/etc/btrfs-snapshot|' \
         -e "s|%VERSION%|$pkgver|g" \
         -i btrfs-snapshot
-}
-
-package() {
-    cd "$pkgname-$pkgver"
 
     install -Dm755 btrfs-snapshot "$pkgdir/usr/bin/btrfs-snapshot"
 
