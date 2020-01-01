@@ -1,7 +1,7 @@
-From 5cedf4aa8f59ed7c8fa1cf129731fbe86205cbea Mon Sep 17 00:00:00 2001
+From 775933c04b65436da05ddc6c597fe1bce291e2ac Mon Sep 17 00:00:00 2001
 From: Anders Kaseorg <andersk@mit.edu>
 Date: Mon, 2 Dec 2019 17:09:20 -0500
-Subject: [PATCH 10/20] Revert "iwlwifi: assign directly to iwl_trans->cfg in
+Subject: [PATCH 07/14] Revert "iwlwifi: assign directly to iwl_trans->cfg in
  QuZ detection"
 
 This reverts commit 968dcfb4905245dc64d65312c0d17692fa087b99.

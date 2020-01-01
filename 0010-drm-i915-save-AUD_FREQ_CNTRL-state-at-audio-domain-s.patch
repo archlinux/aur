@@ -1,7 +1,7 @@
-From c0da4d4ee458208d5427d0a284173bd39a95d040 Mon Sep 17 00:00:00 2001
+From 92b61cdfe2ecd4ae5923ae254efcd726ad0585e4 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Fri, 20 Sep 2019 11:39:18 +0300
-Subject: [PATCH 14/20] drm/i915: save AUD_FREQ_CNTRL state at audio domain
+Subject: [PATCH 10/14] drm/i915: save AUD_FREQ_CNTRL state at audio domain
  suspend
 
 When audio power domain is suspended, the display driver must

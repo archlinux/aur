@@ -61,9 +61,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-_srcver=5.4.6-arch1
+_srcver=5.4.7-arch1
 pkgver=${_srcver%-*}
-pkgrel=2
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -83,48 +83,36 @@ source=(
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
   0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-  0007-x86-MCE-AMD-Do-not-use-rdmsr_safe_on_cpu-in-smca_con.patch
-  0008-x86-MCE-AMD-Allow-Reserved-types-to-be-overwritten-i.patch
-  0009-x86-mce-Fix-possibly-incorrect-severity-calculation-.patch
-  0010-Revert-iwlwifi-assign-directly-to-iwl_trans-cfg-in-Q.patch
-  0011-iwlwifi-pcie-move-power-gating-workaround-earlier-in.patch
-  0012-x86-intel-Disable-HPET-on-Intel-Coffee-Lake-H-platfo.patch
-  0013-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
-  0014-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-  0015-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-  0016-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-  0017-ASoC-SOF-enable-sync_write-in-hdac_bus.patch
-  0018-xhci-pci-Allow-host-runtime-PM-as-default-also-for-I.patch
-  0019-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0007-Revert-iwlwifi-assign-directly-to-iwl_trans-cfg-in-Q.patch
+  0008-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0009-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
+  0010-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+  0011-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+  0012-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+  0013-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('fda561bcdea397ddd59656319c53871002938b19b554f30efed90affa30989c8'
+sha256sums=('abc9b21d9146d95853dac35f4c4489a0199aff53ee6eee4b0563d1b37079fcc9'
             'SKIP'
-            '5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0'
+            'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            'c404647c64cb7b2ab6aae5333cffe072725fe1a3e3f863646656591af7b55078'
-            'fe6d125c1101b8ec6e01783598b7a9a34130447b28239d47ee6cafd76f9806ae'
-            'e021b7d4cfb26e851b5b55250fd4e635b66237a8863c962ede4f51022f9927cc'
-            '5ccbf49c1f588f344b120750d63bf42be5b8cda4946ebe256d5d69df3fce96ac'
-            '514088ce473a7160e1a906aaf44adac4389de48ba8bfaffb28ef2efaff5b2a41'
-            '5fcddf32bc5017afcf20c52430febf08c4f4de2a13aa838298eb8ff982fbda77'
-            '2ffc236ad41c40ec5d622ff2c8d6ae3a22e545dbeb3a0cc0f63a70d2438bb507'
-            '90bb284a19e9dd8aab105a80632170e58d818200965f51cb98ee4849d9cd2594'
-            'd573611616cb24b6c240c57321b3de6c2e51c49a3f8df52ef63009aeea5eb60e'
-            '04c6d2408452b907b12a6ee149cc023998545199cd3e9793b555682ad99aae35'
-            'c974abd5df781b303a6cfaa1685a5b1556b4104441804d14963e8a2893fcc548'
-            '6556d1dfa848566774fb1014c451809fb6dfab39336b27197d1b3a23d427d1ca'
-            '6b7f016aa55b9ba7ce7425b9a2f0c8b3bd8d4a4bbf703db9701c0974dc24162c'
-            '02f8992b6b6c467f561dd9aa309fc00695276d11227a2fc6816860c896bd206d'
-            '227668904e0d363c43e756dd08aec15accc5ebbc045b9d7b2068f27801009b63'
-            '97ab714be54e5516dcd4df051c8f7b551b87a0ca85c0e6b1f50f4eb1226d95d1'
-            '09749254d63826dd3ddf6451882adc91deb1a79561593a7c399a41b623310c19'
-            'c81691927b5c7e36f492d5d922051fb2b26dd1b24033c3a483f40045621e3960'
-            '2bde1e65dec65394c26cfe5f0ba0256d807047f7720cd3ce9367667d885fc7bd')
+            'b9072c0d202c2e59d78f7453c4ed73618d9000f14aa8da7b270253c0c8ba2882'
+            '0cb3b5ed908456c0c577ca9ae5b2fa64c5e215e1cbe7a072054fe486c9d1c7f9'
+            '24e03b0cc17cb158eb715b4e1f6901e988a870ad7690ce3e0e21ee55d9125fd1'
+            'e2951b7ae55e3f3ecb2511716d75f7b0e05c3c21612c0d5a03c4e24fea473255'
+            'ae093645bc5165583f3dce37de171a291fbe8435f0b8a6652f3e0a40f7ba903a'
+            '256955383fb94e5c044ffad6e449899be72a6f819053a3c2eb8c8094cff966ef'
+            'd88b4acf8a5bf3b8c404df06eac767b503925eade11515d1844c75a344abdc72'
+            '43746bd6e905504734c95a6a6bd95993081341b80bf0ceed07f6e0f90aa61dbd'
+            '1604f19befeb24731c8a028111fa2a68fb7990691b83559c2efb321f3a56fa40'
+            '22ab8d1f3d5d8b8e02a54836c56bc38fb84ca4710283b179a2c0495742a3d1c2'
+            '11dd9cbbc296aa699d7d1c39ee4b60881440df534191d5860add3ed1e07db481'
+            '8c8fdb623e2c5779226efe36c81c134d024ac12733cdd800a348983d03b5c0e5'
+            'b18c8996fdd72abc1ebca41e455ba2e12c01c92514d3c3f98c310e4acddbd119')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
