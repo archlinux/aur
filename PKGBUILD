@@ -1,4 +1,5 @@
-# Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 
 _pkgname=tshock
 pkgname=${_pkgname}-bin
