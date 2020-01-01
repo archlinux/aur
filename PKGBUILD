@@ -2,7 +2,7 @@
 
 _pkgname=cleanupdate
 pkgname=cleanupdate-git
-pkgver=r189.0982eb3
+pkgver=r195.37053d8
 pkgrel=0
 pkgdesc="A simple script to speed up updating and cleaning your system"
 arch=('any')
