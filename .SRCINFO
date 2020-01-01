@@ -1,12 +1,13 @@
 pkgbase = gnokii-git
 	pkgdesc = Tools and user space driver for use with mobile phones
-	pkgver = r5004.187de67
+	pkgver = r5011.ae49546c
 	pkgrel = 1
 	url = http://www.gnokii.org/
 	install = gnokii.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = gtk2
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
@@ -23,11 +24,15 @@ pkgbase = gnokii-git
 	conflicts = gnokii
 	backup = etc/gnokiirc
 	source = gnokii::git://git.savannah.nongnu.org/gnokii.git
+	source = codeset.m4::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=m4/codeset.m4
 	source = gnokii-config.patch
 	source = gnokii-lock.patch
+	source = gnokii-gcc5.patch
 	md5sums = SKIP
+	md5sums = 47adaa4476f249a93ad19713a29a4df7
 	md5sums = b2961b52ac1f770c4704ccc50b64fde2
 	md5sums = 17b629db85a6bb2b98ca59941aa95295
+	md5sums = e32f023dfd59e13ef7741118239c2145
 
 pkgname = gnokii-git
 

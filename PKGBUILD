@@ -6,7 +6,7 @@
 
 _gitname=gnokii
 pkgname=${_gitname}-git
-pkgver=r5004.187de67
+pkgver=r5011.ae49546c
 pkgrel=1
 pkgdesc="Tools and user space driver for use with mobile phones"
 arch=('i686' 'x86_64')
@@ -22,11 +22,15 @@ conflicts=('gnokii')
 backup=('etc/gnokiirc')
 install="${_gitname}.install"
 source=("${_gitname}::git://git.savannah.nongnu.org/${_gitname}.git"
+        'codeset.m4::https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=m4/codeset.m4'
         'gnokii-config.patch'
-        'gnokii-lock.patch')
+        'gnokii-lock.patch'
+        'gnokii-gcc5.patch')
 md5sums=('SKIP'
+         '47adaa4476f249a93ad19713a29a4df7'
          'b2961b52ac1f770c4704ccc50b64fde2'
-         '17b629db85a6bb2b98ca59941aa95295')
+         '17b629db85a6bb2b98ca59941aa95295'
+         'e32f023dfd59e13ef7741118239c2145')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -36,11 +40,16 @@ pkgver() {
 prepare() {
   cd ${_gitname}
 
+  cp "${srcdir}/codeset.m4" "m4/"
+
   # Set bindir location
   patch -Np1 -i "${srcdir}/gnokii-config.patch"
 
   # Set lock path
   patch -Np1 -i "${srcdir}/gnokii-lock.patch"
+
+  # Fix build with GCC 5 (Fedora patch)
+  patch -Np1 -i "$srcdir/gnokii-gcc5.patch"
 }
 
 build() {

@@ -1,0 +1,26 @@
+diff --git a/xgnokii/xgnokii.c b/xgnokii/xgnokii.c
+index 3fb66bee..8e6aad6c 100644
+--- a/xgnokii/xgnokii.c
++++ b/xgnokii/xgnokii.c
+@@ -782,7 +782,7 @@ inline void GUI_ShowAbout(void)
+ }
+ 
+ 
+-static inline void GUI_HideAbout(void)
++static void GUI_HideAbout(void)
+ {
+        gtk_widget_hide(AboutDialog);
+ }
+diff --git a/xgnokii/xgnokii_logos.c b/xgnokii/xgnokii_logos.c
+index 299381d2..6d45ade2 100644
+--- a/xgnokii/xgnokii_logos.c
++++ b/xgnokii/xgnokii_logos.c
+@@ -1290,7 +1290,7 @@ gint LogoTypeEvent(GtkWidget * widget)
+        return 0;
+ }
+ 
+-static inline void CloseLogosWindow(void)
++static void CloseLogosWindow(void)
+ {
+        gtk_widget_hide(GUI_LogosWindow);
+ }
