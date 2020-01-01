@@ -4,7 +4,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi
-_pkgver="5.4.1-beta.2"
+_pkgver="5.4.1-beta.4"
 # use beta because of electron 7 compatibility
 pkgver=${_pkgver//-/_}
 pkgrel=1
@@ -15,10 +15,16 @@ license=(Apache)
 depends=(electron)
 conflicts=('ferdi-git')
 makedepends=(expac git npm python2)
+_recipes=ecf037c
+_server=cca6cd9
 source=("git+https://github.com/getferdi/$pkgname#tag=v$_pkgver"
+        "git+https://github.com/getferdi/recipes#commit=${_recipes}"
+        "git+https://github.com/getferdi/internal-server#commit=${_server}"
         'ferdi.desktop'
         'ferdi.sh')
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -27,8 +33,12 @@ prepare() {
   mkdir python2_path
   ln -s `which python2` python2_path/python
 
-  # Small patching
   cd ferdi
+  git submodule init
+  git config submodule.recipes.url $srcdir/recipes
+  git config submodule.src/internal-server.url $srcdir/internal-server
+
+  git submodule update --init --recursive
 
   # Prevent ferdi from being launched in dev mode
   sed -i "s|export const isDevMode = .*|export const isDevMode = false;|g" \
@@ -37,13 +47,19 @@ prepare() {
     src/index.js
 
   # Adjust the electron version to use when building
-  # electron_version="`expac %v electron4 | cut -d'-' -f1`"
-  # sed -i "s|\(\s\+\"electron4\":\).*,|\1 \"$electron_version\",|" package.json
+  electron_version="`expac %v electron | cut -d'-' -f1`"
+  sed -i "s|\(\s\+\"electron\":\).*,|\1 \"$electron_version\",|" package.json
+
+  # Better configuration for npm cache and calling installed binaries
+  export npm_config_cache="$srcdir"/npm_cache
+  export PATH="$srcdir/$pkgname/node_modules/.bin:$srcdir/python2_path:$PATH"
 
   # Adjust node-sass version to avoid build issues
-  npm install "node-sass@4.12.0"
+  npm install "node-sass@4.13.0"
 
   # Prepare the packages for building
+  npm install lerna
+  lerna bootstrap
 }
 
 build() {
@@ -53,9 +69,6 @@ build() {
   export npm_config_cache="$srcdir"/npm_cache
   export PATH="$srcdir/ferdi/node_modules/.bin:$srcdir/python2_path:$PATH"
 
-  npm install lerna
-  lerna bootstrap
- 
   gulp build
   electron-builder --linux dir
 }
