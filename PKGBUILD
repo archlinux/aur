@@ -3,15 +3,15 @@
 
 pkgname=hunspell-uk
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
 url='https://github.com/brown-uk/dict_uk'
 license=('MPL')
 groups=('dict-uk')
 optdepends=('hunspell: the spell checking libraries and apps')
-source=("https://github.com/brown-uk/dict_uk/releases/download/v4.8.0/hunspell-uk_UA_${pkgver}.zip"
-	"https://github.com/brown-uk/dict_uk/releases/download/v4.8.0/chrome_dict_uk-UA-${pkgver}.zip")
+source=("https://github.com/brown-uk/dict_uk/releases/download/v${pkgver}/hunspell-uk_UA_${pkgver}.zip"
+	"https://github.com/brown-uk/dict_uk/releases/download/v${pkgver}/chrome_dict_uk-UA-${pkgver}.zip")
 sha256sums=('1f6d20dd42611d0fe04c8960d448bb6f7b2d2ea404e8bb91ddbc17650eb69d48'
             '24dabd0ac63dcf12fdbbfc639cc70655c9d89114ec5fe13074a335675a0c716f')
 
