@@ -1,5 +1,4 @@
-# Maintainer:
-# Contributor: Pavel Sibal <entexsoft@gmail.com>
+# Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=xfce4-theme-switcher
 pkgver=0.1
 pkgrel=1
@@ -19,10 +18,9 @@ source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib
 sha256sums=('SKIP')
 
 package() {
-	cd ${srcdir}/${pkgname}
-	./configure
-	make install DESTDIR=${pkgdir}
+	cd "${srcdir}/${pkgname}"
+	./configure  --prefix=/usr
+	make install DESTDIR="${pkgdir}"
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	cp --no-preserve=ownership "${pkgdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
