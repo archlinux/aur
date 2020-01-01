@@ -1,14 +1,14 @@
 pkgbase = sabnzbd
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support
 	pkgver = 2.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sabnzbd.org
 	arch = any
 	license = GPL
 	depends = curl
 	depends = par2cmdline
 	depends = python2
-	depends = python2-cheetah
+	depends = python2-cheetah3
 	depends = python2-sabyenc
 	depends = sqlite
 	depends = unrar
