@@ -1,0 +1,16 @@
+pkgbase = arm-none-linux-gnueabihf-toolchain-bin
+	pkgdesc = GNU Toolchain for the Cortex-A Family
+	pkgver = 9.2_2019.12
+	pkgrel = 1
+	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://developer.arm.com/-/media/Files/downloads/gnu-a/9.2-2019.12/binrel/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf.tar.xz
+	sha256sums = 51bbaf22a4d3e7a393264c4ef1e45566701c516274dde19c4892c911caa85617
+
+pkgname = arm-none-linux-gnueabihf-toolchain-bin
+
