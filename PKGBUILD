@@ -1,7 +1,7 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=r1648.91054d8d
+pkgver=r1840.fe728b15
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software - PRE ALPHA"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ backup=('etc/hyperion/config/hyperion.config.json')
 source=("git+https://github.com/hyperion-project/${pkgname%-git}"
         "hyperion.systemd")
 sha512sums=('SKIP'
-            '18ce37552465c654e159062d5e104b43d5bc19a3f31b76293b294bef95f1998bfe357bc70c259f3c495c2e5d4abfb9c7e47a0b76c5bd89c69d294dd9d37de1ac')
+            '7ecaacff7d25bb79b4ad4246e993cda578c6513e0cbd76493c24afba0dd1580c49d99a43c099c0d9dfdb6a28ed7d496dda1ae498ba8c4d2a61759f2095ec28fd')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -33,10 +33,11 @@ build() {
   
   sed -i "s/python/python2/g" CMakeLists.txt
   
-  mkdir build && cd build
+  test -d build || mkdir build
+  cd build
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
-        -DUSE_SYSTEM_PROTO_LIBS=ON \
+        -DUSE_SYSTEM_PROTO_LIBS=OFF \
         ..
   make
 }
@@ -50,7 +51,7 @@ package() {
   install -d ${pkgdir}/usr/share/hyperion/webconfig
   cp -r assets/webconfig ${pkgdir}/usr/share/hyperion/  
   
-  install -Dm 644 config/hyperion.config.json.default "${pkgdir}/etc/hyperion/config/hyperion.config.json"
+  install -d "${pkgdir}/etc/hyperion/"
 
   install -Dm 644 ${srcdir}/hyperion.systemd "${pkgdir}/usr/lib/systemd/system/hyperiond.service"
 

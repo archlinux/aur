@@ -3,7 +3,7 @@ Description=Hyperion ambient light systemd service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/hyperiond hyperion.config.json --rootPath /etc/hyperion/
+ExecStart=/usr/bin/hyperiond hyperion.config.json -u /etc/hyperion/
 WorkingDirectory=/usr/share/hyperion
 TimeoutStopSec=5
 KillMode=mixed
