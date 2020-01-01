@@ -1,6 +1,6 @@
 pkgbase = jkk-git
 	pkgdesc = A git-like cli for Jenkins written in Kotlin
-	pkgver = r5.4a8e828
+	pkgver = r16.98ec8ce
 	pkgrel = 1
 	url = https://github.com/Polpetta/jkk
 	arch = any
