@@ -1,14 +1,16 @@
 pkgbase = hunspell-uk
 	pkgdesc = Ukrainian spelling dictionary
-	pkgver = 4.6.2
+	pkgver = 4.8.0
 	pkgrel = 1
-	url = https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus
+	url = https://github.com/brown-uk/dict_uk
 	arch = any
 	groups = dict-uk
 	license = MPL
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://extensions.libreoffice.org/extensions/ukrainian-spelling-dictionary-and-thesaurus/4-6.2/@@download/file/dict-uk_ua-4.6.2.oxt
-	sha256sums = 96271ded9729a0b91773cf582cd8dfeace56534a46041d74ed957f5e3e922fca
+	source = https://github.com/brown-uk/dict_uk/releases/download/v4.8.0/hunspell-uk_UA_4.8.0.zip
+	source = https://github.com/brown-uk/dict_uk/releases/download/v4.8.0/chrome_dict_uk-UA-4.8.0.zip
+	sha256sums = 1f6d20dd42611d0fe04c8960d448bb6f7b2d2ea404e8bb91ddbc17650eb69d48
+	sha256sums = 24dabd0ac63dcf12fdbbfc639cc70655c9d89114ec5fe13074a335675a0c716f
 
 pkgname = hunspell-uk
 
