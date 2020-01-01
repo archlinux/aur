@@ -14,7 +14,7 @@ license=('custom')
 depends=('cyrus-sasl' 'db' 'libsasl' 'perl')
 provides=('imap-server' 'pop3-server' 'cyrus-imapd')
 conflicts=('imap-server' 'pop3-server' 'cyrus-imapd')
-options=('!makeflags')
+replaces=('cyrus-imapd')
 backup=(etc/cyrus/cyrus.conf etc/cyrus/imapd.conf)
 install="$_pkgname.install"
 source=(https://www.cyrusimap.org/releases/cyrus-imapd-$pkgver.tar.gz
@@ -88,5 +88,4 @@ package() {
     install -Dm 644 $srcdir/$_pkgname-$pkgver/README \
         $pkgdir/usr/share/doc/$_pkgname/README
 }
-
 
