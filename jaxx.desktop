@@ -5,4 +5,4 @@ Exec=jaxx %u
 Comment=Multi-chain cryptocurrency wallet
 Type=Application
 Categories=Finance;
-Icon=/opt/jaxx/resources/app/64.png
+Icon=/opt/jaxx/jaxx.png
