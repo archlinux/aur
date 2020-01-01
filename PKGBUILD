@@ -4,14 +4,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=ferdi-git
-_pkgver=5.4.0
+_pkgver=5.4.1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc='Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.'
 arch=(x86_64 i686)
 url='https://getferdi.com/'
 license=(Apache)
-conflicts=('ferdi')
+conflicts=('ferdi' 'ferdi-bin')
 depends=(electron)
 makedepends=(expac git npm python2)
 source=('git://github.com/getferdi/ferdi.git'
@@ -44,7 +44,7 @@ prepare() {
     src/index.js
 
   # Adjust node-sass version to avoid build issues
-  npm install "node-sass@4.12.0"
+  npm install "node-sass@4.13.0"
 }
 
 build() {
