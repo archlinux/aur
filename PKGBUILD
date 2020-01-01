@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r43.ebff682
+pkgver=r48.c51a603
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
 makedepends=(
     'git'
     'qt5-tools'
+    'cmake'
 )
 source=(
     'git+https://github.com/BLumia/PineapplePictures.git'
@@ -29,14 +30,15 @@ pkgver() {
 
 build () {
     cd ${srcdir}/PineapplePictures
-    qmake-qt5 PREFIX=/usr
+    cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
 package() {
+    make -C ${srcdir}/PineapplePictures DESTDIR="$pkgdir" install
     cd ${srcdir}/PineapplePictures
     #make INSTALL_ROOT="$pkgdir" install
-    install -Dm755 ./PineapplePictures ${pkgdir}/usr/bin/PineapplePictures
+    #install -Dm755 ./PineapplePictures ${pkgdir}/usr/bin/PineapplePictures
     mkdir -p ${pkgdir}/usr/share/licenses/pineapple-pictures-git
     install ./LICENSE ${pkgdir}/usr/share/licenses/pineapple-pictures-git/LICENSE
 }
