@@ -14,7 +14,7 @@ pkgver() {
         printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 build() {
-        cd "${pkgname}/Release"
+        cd "${pkgname}"
         meson build
 	ninja -C build
 }
