@@ -7,6 +7,7 @@ pkgbase = 1password-cli
 	arch = i686
 	arch = arm
 	arch = armv6h
+	arch = aarch64
 	license = custom
 	options = !strip
 	options = !emptydirs
@@ -18,6 +19,8 @@ pkgbase = 1password-cli
 	sha256sums_arm = 5aa42870cac5941491844e6382c88ad711ef029832b8e8234e2688b5ab8cdbd1
 	source_armv6h = https://cache.agilebits.com/dist/1P/op/pkg/v0.8.0/op_linux_arm_v0.8.0.zip
 	sha256sums_armv6h = 5aa42870cac5941491844e6382c88ad711ef029832b8e8234e2688b5ab8cdbd1
+	source_aarch64 = https://cache.agilebits.com/dist/1P/op/pkg/v0.8.0/op_linux_arm_v0.8.0.zip
+	sha256sums_aarch64 = 5aa42870cac5941491844e6382c88ad711ef029832b8e8234e2688b5ab8cdbd1
 
 pkgname = 1password-cli
 

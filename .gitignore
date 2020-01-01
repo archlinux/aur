@@ -1,0 +1,6 @@
+# makepkg directories
+pkg/
+src/
+
+# source files
+*.zip
