@@ -1,15 +1,16 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 pkgname=sonic-pi
 pkgver=3.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
 license=('CCPL' 'LGPL2.1' 'GPL2' 'GPL3' 'MIT')
 groups=('pro-audio')
-depends=('aubio' 'boost-libs' 'osmid' 'qscintilla-qt5' 'qwt' 'ruby-ffi'
-'ruby-minitest' 'ruby-multi_json' 'ruby-rouge' 'ruby-rugged'
-'ruby-sys-proctable' 'sc3-plugins' 'supercollider')
+depends=('aubio' 'boost-libs' 'osmid' 'qscintilla-qt5' 'qwt'
+'ruby-activesupport' 'ruby-ffi' 'ruby-i18n' 'ruby-kramdown' 'ruby-minitest'
+'ruby-mocha' 'ruby-multi_json' 'ruby-rouge' 'ruby-rugged' 'ruby-sys-proctable'
+'sc3-plugins' 'supercollider')
 makedepends=('boost' 'cmake' 'erlang-nox' 'gendesk' 'lua' 'qt5-tools'
 'wkhtmltopdf')
 checkdepends=('ruby-rake')
@@ -31,7 +32,6 @@ prepare() {
   rm -rvf app/server/native
   # TODO: patch app/gui/qt/mainwindow.cpp to set path to external components in /usr/{lib,share}/sonic-pi
   patch -Np1 -i ../fix-paths-in-gui.diff
-  #TODO: devendor ruby-activesupport
   #TODO: devendor ruby-ast
   #TODO: devendor ruby-atomic (bin)
   #TODO: devendor ruby-benchmark-ips
@@ -40,13 +40,10 @@ prepare() {
   #TODO: devendor ruby-fast_osc (bin)
   #TODO: devendor ruby-gettext
   #TODO: devendor ruby-hamster
-  #TODO: devendor ruby-i18n
   #TODO: devendor ruby-interception (bin)
-  #TODO: devendor ruby-kramdown (i18n-tool.rb breaks on it)
   #TODO: devendor ruby-locale
   #TODO: devendor ruby-memoist
   #TODO: devendor ruby-metaclass
-  #TODO: devendor ruby-mocha
   #TODO: devendor ruby-parser
   #TODO: devendor ruby-parslet
   #TODO: devendor ruby-rubame
@@ -61,9 +58,11 @@ prepare() {
       -e '/ffi/d' \
       -e '/ruby-prof/d' \
       -i app/server/ruby/bin/compile-extensions.rb
-  rm -rvf app/server/ruby/vendor/{ffi,minitest,multi_json,rouge,rugged,sys-proctable}*
+  rm -rvf app/server/ruby/vendor/{activesupport,ffi,i18n,kramdown,minitest,mocha,multi_json,rouge,rugged,sys-proctable}*
   # remove unrequired gems, so we don't create any doc for them
   rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof}*
+  # remove warnings as errors
+  sed -e 's/\-Werror//g' -i app/gui/qt/SonicPi.pro
 }
 
 build() {
