@@ -6,6 +6,7 @@ pkgbase = glpaper-hg
 	arch = x86_64
 	license = GPL3
 	makedepends = mercurial
+	makedepends = meson
 	depends = wayland
 	source = glpaper-hg::hg+https://hg.sr.ht/~scoopta/glpaper
 	sha256sums = SKIP

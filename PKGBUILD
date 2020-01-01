@@ -8,7 +8,7 @@ url="https://hg.sr.ht/~scoopta/glpaper"
 license=('GPL3')
 groups=()
 depends=('wayland')
-makedepends=('mercurial')
+makedepends=('mercurial' 'meson')
 source=("${pkgname}::hg+$url")
 sha256sums=('SKIP')
 pkgver() {
@@ -17,10 +17,11 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}/Release"
-        make
+	cd "${pkgname}"
+        meson build
+	ninja -C build
 }
 package() {
 	mkdir -p "$pkgdir/usr/bin"
-	cp ${pkgname}/Release/glpaper "$pkgdir/usr/bin/"
+	cp ${pkgname}/build/glpaper "$pkgdir/usr/bin/"
 }
