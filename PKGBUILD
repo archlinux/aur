@@ -3,7 +3,7 @@
 
 pkgname=hunspell-uk
 pkgver=4.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ukrainian spelling dictionary"
 arch=('any')
 url='https://github.com/brown-uk/dict_uk'
@@ -20,7 +20,7 @@ package() {
 
   # Install webengine dictionaries
   install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries
-  install -m644 uk-UA-3-0.bdic "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/uk_UA.bdic
+  install -m644 uk-UA*.bdic "$pkgdir"/usr/share/qt/qtwebengine_dictionaries
 
   # myspell symlinks
   install -dm755 ${pkgdir}/usr/share/myspell/dicts
