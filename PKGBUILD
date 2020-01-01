@@ -3,7 +3,7 @@
 
 _pkgname=devilutionX
 pkgname=devilutionx
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Diablo devolved for linux"
 arch=('i686' 'x86_64')
@@ -14,12 +14,11 @@ depends=('freetype2' 'graphite' 'libpng' 'libsodium' 'pcre' 'sdl2_mixer'
 makedepends=('cmake' 'gcc-libs')
 optdepends=('ttf-charis-sil: CharisSILB.ttf')
 install="$pkgname".install
-source=("https://github.com/diasurgical/devilutionX/archive/master.zip"
-    #"https://github.com/diasurgical/devilutionX/archive/$pkgver.tar.gz"
+source=("https://github.com/diasurgical/devilutionX/archive/$pkgver.tar.gz"
 "$pkgname.png")
 
 prepare() {
-    cd "$srcdir/${_pkgname}-master"
+    cd "$srcdir/${_pkgname}-$pkgver"
     if [ ! -d build ]; then
         mkdir build
     fi
@@ -28,12 +27,12 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/${_pkgname}-master"
+    cd "$srcdir/${_pkgname}-$pkgver"
     cd build
     make
 }
 package() {
-    cd "$srcdir/${_pkgname}-master"
+    cd "$srcdir/${_pkgname}-$pkgver"
     
     install -vDm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
     install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
@@ -45,5 +44,5 @@ package() {
     "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
 
-md5sums=('SKIP'
+md5sums=('2cc387a742aa124941e418c552ae3e0e'
          'c593b446c07608ce2ab2eddac6ce7304')
