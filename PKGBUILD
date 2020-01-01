@@ -2,14 +2,14 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_io_commit=60096b7
-_openfx_commit=cc363a7
+_openfx_io_commit=520196d
+_openfx_commit=53d86e2
 _openfx_supportext_commit=6f7cdfe
 _SequenceParsing_commit=977e36f
 _tinydir_commit=3aae922
 
 pkgname=openfx-io
-pkgver=2.3.15_rc.10
+pkgver=2.3.15_rc12
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
@@ -29,14 +29,6 @@ sha512sums=('SKIP'
 
 _pkgname="NatronGitHub-$pkgname-$_openfx_io_commit"
 
-# Checks whether the environment is 32-bit or 64-bit
-if [ $CARCH == 'x86_64' ]
-then
-  _BITS=64
-else
-  _BITS=32
-fi
-
 prepare() {
   tar -xzf "$srcdir/openfx_$_openfx_commit.tar.gz" --strip 1 \
       -C   "$srcdir/$_pkgname/openfx/"
@@ -51,14 +43,12 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make CONFIG=release \
-       BITS=$_BITS
+  make CONFIG=release
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   mkdir -p "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
-               CONFIG=release \
-               BITS=$_BITS
+               CONFIG=release
 }
