@@ -1,6 +1,6 @@
 pkgbase = mill-git
 	pkgdesc = Your shiny new Java/Scala build tool
-	pkgver = r1232.de22b577
+	pkgver = r1367.fb6fee27
 	pkgrel = 1
 	url = http://www.lihaoyi.com/mill/index.html
 	arch = any
@@ -12,6 +12,8 @@ pkgbase = mill-git
 	provides = mill
 	replaces = mill
 	source = git+https://github.com/lihaoyi/mill.git
+	source = https://raw.githubusercontent.com/lefou/mill-bash-completion/master/mill.complete.sh
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = mill-git
