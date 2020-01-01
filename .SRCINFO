@@ -1,0 +1,28 @@
+pkgbase = xfce4-theme-switcher
+	pkgdesc = Utility for fast switch betwen Xfce4 themes.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	groups = xfce4-goodies
+	groups = xfce4-goodies-devel
+	license = GPL3
+	depends = bash
+	depends = xfce4-whiskermenu-plugin
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = python3
+	depends = conky
+	depends = plank
+	depends = xfce4-panel
+	depends = gtk3
+	optdepends = conky-manager
+	provides = xfce4-theme-switcher
+	conflicts = xfce4-theme-switcher
+	options = !strip
+	options = !emptydirs
+	source = https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-1.tar.gz
+	sha256sums = SKIP
+
+pkgname = xfce4-theme-switcher
+
