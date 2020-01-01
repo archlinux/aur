@@ -2,23 +2,25 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_arena_commit=3ffa0a3
-_openfx_commit=cc363a7
-_openfx_io_commit=60096b7
+_openfx_arena_commit=d3ec4c7
+_lodepng_commit=bd8f274
+_openfx_commit=53d86e2
+_openfx_io_commit=0a03deb
 _openfx_supportext_commit=6f7cdfe
 _SequenceParsing_commit=977e36f
 _tinydir_commit=3aae922
 
 pkgname=openfx-arena
-pkgver=2.3.15_rc.10
+pkgver=2.3.15_rc12
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
 depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' \
-         'ocl-icd' 'opencolorio' 'poppler-glib')
+        'opencolorio' 'poppler-glib' 'sox')
 source=("openfx-arena_$_openfx_arena_commit.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/$_openfx_arena_commit"
+        "lodepng_$_lodepng_commit.tar.gz::https://github.com/lvandeve/lodepng/tarball/$_lodepng_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
         "openfx-supportext_$_openfx_supportext_commit.tar.gz::https://github.com/NatronGitHub/openfx-supportext/tarball/$_openfx_supportext_commit"
         "openfx-io_$_openfx_io_commit.tar.gz::https://github.com/NatronGitHub/openfx-io/tarball/$_openfx_io_commit"
@@ -29,14 +31,15 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
          'SKIP')
 
 _pkgname="NatronGitHub-$pkgname-$_openfx_arena_commit"
 
-# Check the ImageMagick version
-_IM_VERSION=$(echo `identify -version` | tr -dc '0-9' | cut -c 1)
-
 prepare() {
+  tar -xzf "$srcdir/lodepng_$_lodepng_commit.tar.gz" --strip 1 \
+      -C   "$srcdir/$_pkgname/lodepng"
+
   tar -xzf "$srcdir/openfx_$_openfx_commit.tar.gz" --strip 1 \
       -C   "$srcdir/$_pkgname/OpenFX/"
   tar -xzf "$srcdir/openfx-io_$_openfx_io_commit.tar.gz" --strip 1 \
@@ -58,14 +61,13 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   make CONFIG=release \
-       IM=$_IM_VERSION
+       AUDIO=ON \
+       RICHTEXT=ON
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   mkdir -p "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
-               CONFIG=release \
-               IM=$_IM_VERSION
+               CONFIG=release
 }
-
