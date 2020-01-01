@@ -1,0 +1,11 @@
+post_install() {
+    cd /usr/lib/node_modules/instamancer/node_modules/puppeteer
+    node install.js
+}
+
+post_upgrade() {
+    cd /usr/lib/node_modules/instamancer/node_modules/puppeteer
+    node install.js
+}
+
+
