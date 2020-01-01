@@ -6,6 +6,7 @@ pkgbase = rootbar-hg
 	arch = x86_64
 	license = GPL3
 	makedepends = mercurial
+	makedepends = meson
 	depends = wayland
 	depends = gtk3
 	depends = json-c

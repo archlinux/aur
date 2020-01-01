@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://hg.sr.ht/~scoopta/rootbar"
 license=('GPL3')
 depends=('wayland' 'gtk3' 'json-c' 'libpulse')
-makedepends=('mercurial')
+makedepends=('mercurial' 'meson')
 source=("${pkgname}::hg+$url")
 sha256sums=('SKIP')
 pkgver() {
@@ -15,9 +15,10 @@ pkgver() {
 }
 build() {
         cd "${pkgname}/Release"
-        make
+        meson build
+	ninja -C build
 }
 package() {
         mkdir -p "$pkgdir/usr/bin"
-        cp ${pkgname}/Release/rootbar "$pkgdir/usr/bin/"
+        cp ${pkgname}/build/rootbar "$pkgdir/usr/bin/"
 }
