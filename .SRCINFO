@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches
-	pkgver = 5.4.6.zen3
+	pkgver = 5.4.7.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.4.6-zen3
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.4.7-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,14 +15,14 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.4.6-zen3
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.4.7-zen1
 	source = config
 	source = aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 1983a13863490b10d142cc0ca8c0eefb176583d01e77a45e5ce26bf3a9ddbb9c
+	sha256sums = 025e59138f83207a46696db616cfe2dfa46980e14a2bfc4cd7137b4a0d801ba3
 	sha256sums = 2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2
 
 pkgname = linux-froidzen
