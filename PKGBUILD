@@ -12,7 +12,16 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
 sha256sums=('588143b86d5d3b9c94a2ab7d06bbbb48ee30043221867744cf83a21deafc6283')
 
+prepare() {
+  mkdir -p gopath/src/github.com/peterhellberg
+  ln -rTsf "$pkgname-$pkgver" gopath/src/github.com/peterhellberg/$pkgname
+  export GOPATH="$srcdir"/gopath
+  cd gopath/src/github.com/peterhellberg/$pkgname
+  go get
+}
+
 build() {
+  export GOPATH="$srcdir"/gopath
   cd "$pkgname-$pkgver"
   go build \
     -trimpath \
