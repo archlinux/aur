@@ -6,13 +6,13 @@
 _google_breakpad_commit=9474c3f
 _google_mock_commit=17945db
 _google_test_commit=50d6fc3
-_openfx_commit=5d9ac2c
-_SequenceParsing_commit=dc7bf39
+_openfx_commit=53d86e2
+_SequenceParsing_commit=977e36f
 _tinydir_commit=3aae922
 
 pkgname=natron
 _pkgname=Natron
-pkgver=2.3.15_rc.10
+pkgver=2.3.15_rc12
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
@@ -31,7 +31,7 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archi
         "tinydir-$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit"
         "OpenColorIO-Configs-$_pkgname-v${pkgver%.??_*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.??_*}.tar.gz"
         "config.pri")
-sha512sums=('8fe4d7edab285427df86782beefc77d6faa26534afcef81adbbebef82869547401b6981715d74590b032f9d11ead9e8dc01ce29d5a15979ea133ad23a3d09c34'
+sha512sums=('c48d1904bb6d840349b03905bb587f0a9b391c97538b3bd38e2263084cb23989f518651f4108fde9b613f2b7d6da4c8f5c7e0297529b71b80d396f1b27660b41'
             'SKIP'
             'SKIP'
             'SKIP'
