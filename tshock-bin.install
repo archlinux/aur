@@ -1,0 +1,3 @@
+post_install() {
+  echo ">>> You can start the server in a default configuration by starting tshock@default.service"
+}

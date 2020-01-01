@@ -1,42 +1,50 @@
 # Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
 
-pkgname=tshock
-pkgver=4.3.25
+_pkgname=tshock
+pkgname=${_pkgname}-bin
+pkgver=4.3.26
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
 pkgrel=1
 pkgdesc="A Terraria Server administration modification that runs on the open source TerrariaAPI."
 arch=(any)
-url="http://tshock.co/xf/"
-license=("GPL")
-depends=('tmux'
-         'mono')
-source=("https://github.com/NyxStudios/TShock/releases/download/v${pkgver}/${pkgname}_${pkgver}.zip"
+url="http://tshock.co/xf"
+license=("GPL3")
+depends=("mono" "tmux")
+provides=($_pkgname)
+conflicts=($_pkgname)
+install="${pkgname}.install"
+source=("${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v${pkgver}/${_pkgname}_${pkgver}.zip"
         'tshock.sh'
-        'tshock@.service')
+        'default.conf'
+        'service'
+        "tmpfiles"
+        "sysusers")
+noextract=("${_pkgname}_${pkgver}.zip")
+sha512sums=('b61712988fb34324625bbba49779655c7b92e067a720b7d116c41583addec3592ae0a879a02e664fa172572512c0aad56038a4d1e5535f47e31108cb683e300c'
+            'f0958448b53ff9851c47876b89f1cef6d3e33ce1b8cbe13167c685ed1c9d89a8bf0f01929d47200e4f0f964c3e7796a2d9ca558e5d9f1269db3f2e4537a6c97a'
+            'd530a528ba84d57dfcb360e03ec62b1b38da6fa2383bef8cdb0cd039ba6466b053dd99a130a858c86405c8957ba86a0a080f2f56089843a7055662fa41cee102'
+            '7c1788f21664f038c32da6c0cbe817404a83f81b7b8be07bb0483d5ffd35991a07b647b18d7aa316db369edd4e7eab21c1b81ab3b45aa2c3692c6c63673a3fdb'
+            'a04b458932bb3882b9d40f9b5a9074b681e60cb3284635d1efb7e54293f39df334e7ae526dabf50f633ecdde980f287a939d3ea6eb0d4098663fbda21af70a65'
+            '5752f8453fbb4d973ebe71bba371ae7b0ddd2313ccd17de89b3942d024e295805324085640756e7118e4cc76abee675f5e253526261cb62cb76b0bc155aca317')
 
-sha512sums=('9d405df99d9acf52c53e48d164ae5894c25a70e5022eca478c0981f0aafb2b217dfeff8f8274b6b9fc6f7b21d1e05e037cc3d7e4d4be406116bea4802d22bb91'
-            'e73ca357516700bbd4ec5e6529320984b81fc7c6abc882181a9a9b3aad32f0d655b7686470fdbf7a953ce1935a79dbed983397aff0bf7ff26a1611dbcca391fb'
-            '563ada981c2e08293462485fd85b2c4e0b190c55ed3bcea4139b955f931d970d97c2bd89fba5b190231e9f2adeddd2c385abd11781bf1a98b13b78b8951bf623')
-
-install=tshock.install
-
-backup=('srv/tshock/tshock/config.json')
+backup=("etc/conf.d/${_pkgname}")
 
 package() {
-	install -d "${pkgdir}/srv/tshock/ServerPlugins/"
-	install -d "${pkgdir}/etc/conf.d/tshock/"
-	echo "BASEDIR=/srv/tshock
-PORT=7777
-WORLDDIR=Terraria/Worlds
-WORLD=World1
-SIZE=2" > "${pkgdir}/etc/conf.d/tshock/default.conf"
+    install -Dm755 "${srcdir}/tshock.sh" "${pkgdir}/usr/bin/tshock"
 
-	install -Dm755 "${srcdir}/tshock.sh" "${pkgdir}/srv/tshock/"
-	install -Dm644 "${srcdir}/tshock@.service" "${pkgdir}/usr/lib/systemd/system/tshock@.service"
+    install -Dm644 "${srcdir}/default.conf" "${pkgdir}/etc/conf.d/${_pkgname}/default.conf"
 
-	install -Dm644 "${srcdir}/ServerPlugins"/* "${pkgdir}/srv/tshock/ServerPlugins/"
-	install -Dm644 "${srcdir}/sqlite3.dll" "${pkgdir}/srv/tshock/"
-	install -Dm644 "${srcdir}/Newtonsoft.Json.dll" "${pkgdir}/srv/tshock/"
-	install -Dm644 "${srcdir}/TerrariaServer.exe" "${pkgdir}/srv/tshock/"
+    # Install sysusers
+    install -Dm644 "${srcdir}/sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkgname}.conf"
+
+    # Install tmpfiles
+    install -Dm644 "${srcdir}/tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${_pkgname}.conf"
+
+    # Install service
+    install -Dm644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/tshock@.service"
+
+    # Unzip server files
+    install -d "${pkgdir}/srv/tshock"
+    bsdtar -x -f "${srcdir}/${_pkgname}_${pkgver}.zip" -C "${pkgdir}/srv/tshock"
 }

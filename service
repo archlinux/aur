@@ -1,0 +1,12 @@
+[Unit]
+Description=TShock Terraria server.
+
+[Service]
+Type=forking
+User=terraria
+Group=terraria
+ExecStart=/usr/bin/tshock start %i
+ExecStop=/usr/bin/tshock stop %i
+
+[Install]
+WantedBy=multi-user.target
