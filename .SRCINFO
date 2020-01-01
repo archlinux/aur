@@ -1,12 +1,12 @@
 pkgbase = osu-lazer-git
 	pkgdesc = Freeware rhythm video game - lazer development version
-	pkgver = 2019.1205.0_15_g52a0d9801
+	pkgver = 2019.1227.0_36_gbeb8e72e1
 	pkgrel = 1
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = dotnet-sdk-bin
+	depends = dotnet-sdk-bin>=3.1.0
 	depends = ffmpeg
 	depends = libgl
 	depends = shared-mime-info

@@ -6,34 +6,40 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.1205.0_15_g52a0d9801
+pkgver=2019.1227.0_36_gbeb8e72e1
 pkgrel=1
 pkgdesc='Freeware rhythm video game - lazer development version'
 arch=('x86_64')
 url='https://osu.ppy.sh'
 license=('MIT')
 makedepends=('git')
-depends=('dotnet-sdk-bin'
-         'ffmpeg'
-         'libgl'
-         'shared-mime-info')
+depends=(
+	'dotnet-sdk-bin>=3.1.0'
+	'ffmpeg'
+	'libgl'
+	'shared-mime-info'
+)
 optdepends=()
 options=()
 provides=('osu-lazer')
 conflicts=('osu-lazer')
-source=('git+https://github.com/ppy/osu.git'
-        'git+https://github.com/ppy/osu-resources.git'
-        'osu-launcher'
-        'osu-lazer.desktop'
-        'osu-lazer.png'
-        'x-osu-lazer.xml')
+source=(
+	'git+https://github.com/ppy/osu.git'
+	'git+https://github.com/ppy/osu-resources.git'
+	'osu-launcher'
+	'osu-lazer.desktop'
+	'osu-lazer.png'
+	'x-osu-lazer.xml'
+)
 
-sha256sums=('SKIP'
-            'SKIP'
-            '5e7620261f978a583a86c586754fcee0b6d0e5c12fbbfa939a38175ddaeca141'
-            '2665c47e522ec7762a2a8ff3dcf32f254fd9e5eceac33a162c638f06b0fcb44e'
-            '3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
-            'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b')
+sha256sums=(
+	'SKIP'
+	'SKIP'
+	'5e7620261f978a583a86c586754fcee0b6d0e5c12fbbfa939a38175ddaeca141'
+	'2665c47e522ec7762a2a8ff3dcf32f254fd9e5eceac33a162c638f06b0fcb44e'
+	'3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
+	'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b'
+)
 
 pkgver() {
 	cd "$srcdir/osu"
@@ -86,7 +92,7 @@ package() {
 	ln -s LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENCE"
 
 	# Copy binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp3.0"
+	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp3.1"
 	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
 	for file in *.json *.dll *.pdb runtimes/linux-x64/native/*.so; do
 		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/${file##*/}"
