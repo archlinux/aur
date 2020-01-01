@@ -1,0 +1,14 @@
+pkgbase = neocities
+	pkgdesc = A neocities.org client written in Go
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/peterhellberg/neocities
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = neocities-0.0.3.tar.gz::https://github.com/peterhellberg/neocities/archive/0.0.3.tar.gz
+	sha256sums = 588143b86d5d3b9c94a2ab7d06bbbb48ee30043221867744cf83a21deafc6283
+
+pkgname = neocities
+
