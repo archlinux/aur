@@ -1,7 +1,7 @@
 pkgbase = guacamole-server
 	pkgdesc = Guacamole proxy daemon
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://guacamole.sourceforge.net/
 	install = guacamole-server.install
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = guacamole-server
 	depends = libwebp
 	optdepends = libssh: for ssh protocol support
 	optdepends = libvncserver: for vnc protocol support
-	optdepends = freerdp: for rdp protocol support
+	optdepends = freerdp-1.1.0: for rdp protocol support
 	optdepends = libpulse: for pulseaudio support
 	optdepends = libtelnet: for telnet protocol support
 	optdepends = monospace: any monospace font such as terminus-font, ttf-inconsolata or ttf-fira-mono. Without it, SSH will not work

@@ -3,7 +3,7 @@
 
 pkgname=guacamole-server
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -13,7 +13,7 @@ depends=('pango' 'openssl' 'libvorbis' 'uuid' 'libwebp')
 makedepends=('libpulse' 'libvorbis' 'openssl-1.0' 'libssh' 'libvncserver' 'pango' 'libtelnet')
 optdepends=('libssh: for ssh protocol support'
 'libvncserver: for vnc protocol support'
-'freerdp: for rdp protocol support'
+'freerdp-1.1.0: for rdp protocol support'
 'libpulse: for pulseaudio support'
 'libtelnet: for telnet protocol support'
 'monospace: any monospace font such as terminus-font, ttf-inconsolata or ttf-fira-mono. Without it, SSH will not work'
@@ -33,10 +33,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
-	#PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-	#CFLAGS+=" -I/usr/include/openssl-1.0" \
-	#LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
-	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system CPPFLAGS="-Wno-error=pedantic"
+	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system CPPFLAGS="-Wno-error=pedantic -Wno-error=stringop-truncation"
 	make
 }
  
