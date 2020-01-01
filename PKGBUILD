@@ -1,14 +1,14 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=0.9.3
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
 arch=('x86_64')
 depends=('ncurses' 'ffmpeg')
-makedepends=('gtest' 'cmake')
+makedepends=('cmake' 'ruby-ronn')
 source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 build() {
@@ -29,4 +29,4 @@ check() {
   make test
 }
 
-sha256sums=('8444f4d4c8d672a38160bd64368a2c56af0a8807d53c700f3be9f5717888823d')
+sha256sums=('d96e2cf6d673c4a16529744d8c2ca99f71fb75c05e614bbb6926ccf4edcfd332')
