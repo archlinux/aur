@@ -1,7 +1,7 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 pkgname=roccat-vulcan
-pkgver=0.0.1
-pkgrel=4
+pkgver=0.0.2
+pkgrel=0
 pkgdesc="Linux RGB LED effect support for the Roccat Vulcan 100/120/121 Keyboard"
 arch=('i686' 'x86_64')
 url="https://github.com/X3n0m0rph59/roccat-vulcan"
@@ -15,7 +15,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=()
+#install=()
 changelog=
 source=("git+https://github.com/X3n0m0rph59/roccat-vulcan")
 noextract=()
