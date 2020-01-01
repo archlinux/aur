@@ -2,7 +2,7 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git")
-pkgver=0.1.0.r392.g66eeba8
+pkgver=0.1.0.r397.g17580ec
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
 check() {
     cd ${srcdir}/${_gitname}
 
-    python setup.py test
+    PYTHONPATH="build/lib" pytest
 }
 
 package_python-einsteinpy-git() {
