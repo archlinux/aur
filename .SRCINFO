@@ -1,7 +1,7 @@
 pkgbase = perl-test-taint
 	pkgdesc = Tools to test taintedness
-	pkgver = 1.06
-	pkgrel = 5
+	pkgver = 1.08
+	pkgrel = 1
 	url = https://metacpan.org/release/Test-Taint
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = perl-test-taint
 	makedepends = perl-extutils-makemaker
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Test-Taint-1.06.tar.gz
-	sha256sums = 721b51ca91d248ea5ff4f99ca49c05a080e6f0fc9f7983e96121b7775ab93107
+	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Test-Taint-1.08.tar.gz
+	sha256sums = 5d594d4257352c93785024c63aa0a7b73d912ceca9611cd975ce83aab021a97d
 
 pkgname = perl-test-taint
 

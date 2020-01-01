@@ -3,8 +3,8 @@
 pkgname=perl-test-taint
 _lastauthor=P/PE/PETDANCE
 _pkgname=Test-Taint
-pkgver=1.06
-pkgrel=5
+pkgver=1.08
+pkgrel=1
 pkgdesc="Tools to test taintedness"
 arch=('i686' 'x86_64')
 license=('PerlArtistic2')
@@ -13,7 +13,7 @@ depends=('perl')
 makedepends=('perl-extutils-makemaker')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('721b51ca91d248ea5ff4f99ca49c05a080e6f0fc9f7983e96121b7775ab93107')
+sha256sums=('5d594d4257352c93785024c63aa0a7b73d912ceca9611cd975ce83aab021a97d')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
