@@ -3,7 +3,7 @@
 pkgname=perl-defhash
 _lastauthor=P/PE/PERLANCAR
 _pkgname=DefHash
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='Define things according to a specification, using hashes'
 arch=('any')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('3e8f3c375e12f092750766eb983d5cd487769fc3324545d2cf83472c95c017d0762f0f72e216e33c559b0c822eb7e176993ed3beeecda5e49ead5a025797a67e')
+sha512sums=('ff67f9a955ce354ffe4d5f102b0bb6b2c760dc199d51b73ba1ddf125baa2fdbecac469ca0110e3e9d4fff14ef693c0757d6d75406ee601a299f2c4bab7430cbf')
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
