@@ -1,0 +1,14 @@
+pkgbase = python2-cheetah3
+	pkgdesc = A Python powered template engine and code generator
+	pkgver = 3.2.4
+	pkgrel = 1
+	url = http://www.cheetahtemplate.org
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	optdepends = python-markdown
+	source = https://files.pythonhosted.org/packages/source/C/Cheetah3/Cheetah3-3.2.4.tar.gz
+	sha512sums = f991865d384cbc7fe287c5d89d9990bfdde205df64f2c9cf8df17427ce865701e4fb2c35e7d52753b40ac170a56b8d071e7ae8bff83cbefe8ec662099fbe1340
+
+pkgname = python2-cheetah3
+
