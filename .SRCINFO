@@ -1,0 +1,22 @@
+pkgbase = virtualbox-guest-goodies
+	pkgdesc = A collections of goodies for the unix-like VirtualBox quests.
+	pkgver = 6.1
+	pkgrel = 0
+	url = https://gitlab.com/linux-stuffs/virtualbox-guest-goodies
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = grep
+	depends = sed
+	depends = virtualbox-guest-utils
+	depends = xorg-server
+	depends = xorg-xrandr
+	provides = virtualbox-guest-goodies
+	conflicts = virtualbox-guest-goodies
+	options = !strip
+	options = !emptydirs
+	source = https://gitlab.com/linux-stuffs/virtualbox-guest-goodies/raw/master/distrib/virtualbox-guest-goodies-6.1-0.tar.gz
+	sha256sums = SKIP
+
+pkgname = virtualbox-guest-goodies
+
