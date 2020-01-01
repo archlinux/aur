@@ -1,6 +1,6 @@
 # Maintainer: Nick Burrett <nick@sqrt.co.uk>
 pkgname=comskip
-pkgver=0.82.002
+pkgver=0.82.009
 pkgrel=1
 epoch=1
 pkgdesc='Comskip is a free MPEG commercial break detector'.
@@ -10,20 +10,12 @@ arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('git')
 depends=('ffmpeg' 'argtable')
-source=("${_gitname}::git+https://github.com/erikkaashoek/Comskip#commit=0bf473cb5be4b754f01f95fb3cffd120f5f1985a"
-        "comskip-version.patch")
-sha256sums=('SKIP'
-            '7bf06bef3c4d26b6aad1bd0714b2b365bbd0c76bb491bf8ec42d8752ff442cd0')
-
-prepare() {
-  cd "${srcdir}/${_gitname}"
-  # Fixes version reported by binary.
-  patch -Np1 -i $srcdir/comskip-version.patch
-}
+source=("https://github.com/erikkaashoek/Comskip/archive/0.82.009.tar.gz")
+sha256sums=('eae287eff75f018d71a92623ffa67529f8dc75fd6165d07f1b299cdf10c2981a')
 
 
 build() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/Comskip-${pkgver}"
   ./autogen.sh
   ./configure --prefix=/usr
   make clean
@@ -32,9 +24,9 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  install -m755 "${srcdir}/${_gitname}/comskip" "$pkgdir/usr/bin/comskip"
-  if [ -e "${srcdir}/${_gitname}/comskip-gui" ]; then
-    install -m755 "${srcdir}/${_gitname}/comskip-gui" "$pkgdir/usr/bin/comskip-gui"
+  install -m755 "${srcdir}/Comskip-${pkgver}/comskip" "$pkgdir/usr/bin/comskip"
+  if [ -e "${srcdir}/Comskip-${pkgver}/comskip-gui" ]; then
+    install -m755 "${srcdir}/Comskip-${pkgver}/comskip-gui" "$pkgdir/usr/bin/comskip-gui"
   fi
 }
 

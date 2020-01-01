@@ -1,8 +1,0 @@
---- comskip/configure.ac.orig	2017-05-12 16:57:36.255651925 +0100
-+++ comskip/configure.ac	2017-05-12 16:57:43.845506928 +0100
-@@ -1,4 +1,4 @@
--AC_INIT([Comskip], [0.81.089], [https://github.com/erikkaashoek/Comskip/issues])
-+AC_INIT([Comskip], [0.82.002], [https://github.com/erikkaashoek/Comskip/issues])
- AM_INIT_AUTOMAKE([-Wall -Werror foreign])
- 
- : ${CFLAGS=""}
