@@ -1,7 +1,7 @@
 pkgbase = gjdoc
 	pkgdesc = GNU Classpath JavaDoc implementation
 	pkgver = 0.7.9
-	pkgrel = 10
+	pkgrel = 11
 	url = http://savannah.gnu.org/projects/classpath/
 	arch = i686
 	arch = x86_64
