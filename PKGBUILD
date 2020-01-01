@@ -1,10 +1,10 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_openfx_gmic_commit=75c259d
-_openfx_commit=cc363a7
+_openfx_gmic_commit=1ee66b8
+_openfx_commit=53d86e2
 
 pkgname=openfx-gmic
-pkgver=2.3.15_rc.10
+pkgver=2.3.15_rc12
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
@@ -19,14 +19,6 @@ sha512sums=('SKIP'
 
 _pkgname="NatronGitHub-$pkgname-$_openfx_gmic_commit"
 
-# Checks whether the environment is 32-bit or 64-bit
-if [ $CARCH == 'x86_64' ]
-then
-  _BITS=64
-else
-  _BITS=32
-fi
-
 prepare() {
   tar -xzf "$srcdir/openfx_$_openfx_commit.tar.gz" --strip 1 \
       -C   "$srcdir/$_pkgname/openfx/"
@@ -34,16 +26,14 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make CONFIG=release \
-       BITS=$_BITS
+  make CONFIG=release
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   install -d "$pkgdir/usr/OFX/Plugins"
   make install PLUGINPATH=$pkgdir/usr/OFX/Plugins \
-               CONFIG=release \
-               BITS=$_BITS
+               CONFIG=release
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 $srcdir/$_pkgname/COPYING "$pkgdir/usr/share/licenses/$pkgname/"
