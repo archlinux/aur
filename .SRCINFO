@@ -1,6 +1,6 @@
 pkgbase = perl-log-ger
 	pkgdesc = a lightweight, flexible logging framework
-	pkgver = 0.025
+	pkgver = 0.028
 	pkgrel = 1
 	url = https://metacpan.org/release/Log-ger
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-log-ger
 	makedepends = perl-extutils-makemaker
 	depends = perl
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Log-ger-0.025.tar.gz
-	sha256sums = 2bd037d29a6db22ada8cb77473e35701e7840af7c8098d20d26d7e7394457a6e
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/Log-ger-0.028.tar.gz
+	sha256sums = c6096197375ef6de02ed8d7fc54c35c7c0cc10463132a201092b32b5dbe01e26
 
 pkgname = perl-log-ger
 
