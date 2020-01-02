@@ -1,0 +1,15 @@
+pkgbase = vim-apl
+	pkgdesc = vim package for APL syntax and autocompletion
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://gitlab.com/n9n/vim-apl/
+	arch = any
+	groups = vim-plugins
+	license = GPL
+	depends = vim
+	options = !emptydirs
+	source = https://gitlab.com/n9n/vim-apl//-/archive/master/vim-apl-master.tar.gz
+	sha256sums = db4fc9a2971dcea3c31d3525a20eb15eb9ab87fd82738f95766747124411e327
+
+pkgname = vim-apl
+
