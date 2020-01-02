@@ -1,7 +1,7 @@
 pkgbase = sugar3
 	pkgdesc = Sugar GTK shell
 	pkgver = 0.116
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sugarlabs.org/
 	arch = any
 	license = GPL
