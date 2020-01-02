@@ -3,21 +3,27 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 
 pkgname=minify
-pkgver=2.6.1
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Minifier CLI for HTML, CSS, JS, JSON, SVG and XML"
 arch=('x86_64')
 url="https://github.com/tdewolff/minify"
 license=('MIT')
+makedepends=('go-pie')
 optdepends=('bash-completion: command-line autocomplete with bash')
-source=("https://github.com/tdewolff/minify/releases/download/v${pkgver}/minify_${pkgver}_linux_amd64.tar.gz"
-        "https://raw.githubusercontent.com/tdewolff/minify/master/cmd/minify/minify_bash_tab_completion")
-sha256sums=('e936a81d5fa8f44907298116f8bca9c4c3dca0d51c055ae0f97d43b67cafacda'
-            '2410022ab77254225eb11ac34f4ee473aaa0d8add7d868e2a22af5964f89f1cf')
+source=("https://github.com/tdewolff/minify/archive/v$pkgver.tar.gz")
+sha256sums=('171481aca8960a78bea7252665d1b2f5eb32a8075609edf590280a21ea9f1760')
+
+build() {
+  cd "$pkgname-$pkgver/cmd/minify"
+  go build -ldflags "-X 'main.Version=v$pkgver' -extldflags $LDFLAGS" -trimpath -o minify .
+  source minify_bash_tab_completion
+}
 
 package() {
-  install -D -m755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 "minify_bash_tab_completion" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  cd "$pkgname-$pkgver"
+  install -Dm755 "cmd/minify/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "cmd/minify/minify_bash_tab_completion" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
 
