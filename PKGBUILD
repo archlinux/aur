@@ -24,7 +24,7 @@ build() {
 package_python-pre-commit() {
   pkgdesc='Python 3 client for pre-commit'
   depends=('python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify'
-           'python-toml' 'python-cfgv' 'python-importlib-metadata')
+           'python-toml' 'python-importlib-metadata')
 
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py install --optimize=1 --prefix=/usr --root="${pkgdir}" --skip-build

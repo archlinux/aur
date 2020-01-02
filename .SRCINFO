@@ -24,6 +24,5 @@ pkgname = python-pre-commit
 	depends = python-cached-property
 	depends = python-identify
 	depends = python-toml
-	depends = python-cfgv
 	depends = python-importlib-metadata
 
