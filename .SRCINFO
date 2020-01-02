@@ -1,0 +1,20 @@
+pkgbase = gconf-editor
+	pkgdesc = Graphical gconf registry editor
+	pkgver = 3.0.1
+	pkgrel = 5
+	url = https://www.gnome.org
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = intltool
+	makedepends = gnome-doc-utils
+	depends = gconf
+	depends = gtk3
+	options = !emptydirs
+	source = https://download.gnome.org/sources/gconf-editor/3.0/gconf-editor-3.0.1.tar.bz2
+	source = fix-assertion-failed-crash.patch
+	sha256sums = 9afc4fc0d0afe019998736f06c04cbfa0393c813e2aa755133d95e83835f8869
+	sha256sums = 6550714ee06d09632244d0f4f41402224599f5230ef71376ea34291ce0d651bc
+
+pkgname = gconf-editor
+
