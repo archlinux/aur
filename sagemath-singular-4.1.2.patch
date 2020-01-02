@@ -70,7 +70,7 @@ index 7a8400052e..edbbd5767a 100644
  
      ###########################
 diff --git a/src/sage/algebras/letterplace/letterplace_ideal.pyx b/src/sage/algebras/letterplace/letterplace_ideal.pyx
-index 5776c58cf7..e4ad267bd4 100644
+index 5776c58cf7..52d3477bf6 100644
 --- a/src/sage/algebras/letterplace/letterplace_ideal.pyx
 +++ b/src/sage/algebras/letterplace/letterplace_ideal.pyx
 @@ -48,7 +48,7 @@ from sage.rings.infinity import Infinity
@@ -78,7 +78,7 @@ index 5776c58cf7..e4ad267bd4 100644
  # Define some singular functions
  lib("freegb.lib")
 -singular_system=singular_function("system")
-+singular_std=singular_function("std")
++singular_twostd=singular_function("twostd")
  poly_reduce=singular_function("NF")
  
  class LetterplaceIdeal(Ideal_nc):
@@ -88,7 +88,7 @@ index 5776c58cf7..e4ad267bd4 100644
          out = [FreeAlgebraElement_letterplace(A,X,check=False) for X in
 -               singular_system("freegb",P.ideal([x._poly for x in self.__GB.gens()]),
 -                               degbound,A.__ngens, ring = P)]
-+               singular_std(P.ideal([x._poly for x in self.__GB.gens()]), ring = P)]
++               singular_twostd(P.ideal([x._poly for x in self.__GB.gens()]), ring = P)]
          libsingular_options['redTail'] = bck[0]
          libsingular_options['redSB'] = bck[1]
          self.__GB = A.ideal(out,side='twosided',coerce=False)

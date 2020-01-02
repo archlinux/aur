@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.0.beta8.r0.gcf9673bc59
+pkgver=9.0.r0.g31cb54b779
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -15,7 +15,7 @@ url="http://www.sagemath.org"
 license=(GPL)
 depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 python-fpylll python-psutil python-cypari2
   python-matplotlib python-scipy python-sympy python-networkx python-pillow python-pplpy python-future python-sphinx
-  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac-python3 linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
+  gap flintqs lcalc lrcalc arb eclib zn_poly gd python-cvxopt pynac linbox m4rie rubiks pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml libgiac libhomfly libbraiding symmetrica three.js)
 optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
@@ -46,15 +46,15 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-python-3.8.patch)
 sha256sums=('SKIP'
             '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
-            'dbf1f1d09decc6448ce443b5b60ed124a432761973bc0f4f08c9b5e34d968f9c'
-            '1f2a34e15bf732ec8687c467a52e897615505dc3ddd792d811e8b6a7e19f1517'
+            '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
+            '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
             '9b2d87990db3045a83776e1ff527a31ce60a3361b08f5ec85fb1d45106982faa'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '998e2c619d47849f977778906e2e492a09d8767b8f2e6d72a787368e7cf7b956'
+            'd2a065a36be3c011a257b8694111e267d9ce7cba867c53eeb464a4573dac9bbb'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '151c4918e8f1198d195a83ad454431929d6a66319b31f68b43715825c604e5a1'
+            '7821813d3f104566ca6487de9857acf2bc7fc236a48a77000f04f2dc17b75536'
             '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
-            'f2152e2ddf004c53273f61ea95938a82a60f71211826f1cf67db554617f5e6d2')
+            'd430e76c5cdebed9bd1cde0f05e74fba620c736c68c018d70d84dc7b3e3c9049')
 
 pkgver() {
   cd sage
@@ -143,7 +143,7 @@ package_sagemath-git() {
 package_sagemath-jupyter-git() {
   pkgdesc='Jupyter kernel for SageMath'
   depends=(sagemath python-jupyter_client python-ipywidgets)
-  optdepends=('jsmol: alternative 3D plot engine')
+  optdepends=('sage-notebook-exporter: convert flask notebooks to Jupyter' 'jsmol: alternative 3D plot engine')
 
   cd sage/src
 

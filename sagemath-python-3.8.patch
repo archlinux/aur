@@ -15,7 +15,7 @@ diff --git a/src/sage/all.py b/src/sage/all.py
 index 42dca175d2..b4f544b664 100644
 --- a/src/sage/all.py
 +++ b/src/sage/all.py
-@@ -316,6 +316,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
+@@ -324,6 +324,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
  # However, be sure to keep OUR deprecation warnings
  warnings.filterwarnings('default', category=DeprecationWarning,
      message=r'[\s\S]*See https\?://trac\.sagemath\.org/[0-9]* for details.')
@@ -473,7 +473,7 @@ index 942ffa37a2..a9ded05a74 100644
  
          However, you can achieve some of this functionality using
          :meth:`facets`, :meth:`facet_of`, and :meth:`adjacent` methods::
-@@ -4002,7 +4001,7 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection,
+@@ -4047,7 +4046,7 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection,
              (N(0, 1), N(1, 0), N(-1, 0))
              sage: line = Cone([(1,1,1),(-1,-1,-1)])
              sage: line.semigroup_generators()
@@ -615,7 +615,7 @@ index fe36a712f5..2383bade13 100644
  
          However, you can achieve some of this functionality using
          :meth:`facets`, :meth:`facet_of`, and :meth:`adjacent` methods::
-@@ -3933,7 +3933,7 @@ class LatticePolytopeClass(SageObject, collections.Hashable):
+@@ -3976,7 +3976,7 @@ class LatticePolytopeClass(SageObject, collections.Hashable):
  
              sage: p = lattice_polytope.cross_polytope(2).polar()
              sage: p.traverse_boundary()
@@ -715,7 +715,7 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 9f7e1f418e..0ec459e7d3 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5153,7 +5153,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5155,7 +5155,7 @@ class GenericGraph(GenericGraph_pyx):
          This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
  
              sage: g.layout(layout = "planar", save_pos = True)
@@ -724,7 +724,7 @@ index 9f7e1f418e..0ec459e7d3 100644
          """
          deprecation(24494, 'This method is replaced by the method layout. '
                             'Please use layout(layout="planar", save_pos=True) '
-@@ -5207,25 +5207,25 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5209,25 +5209,25 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -763,7 +763,7 @@ index 9f7e1f418e..0ec459e7d3 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5751,17 +5751,17 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5753,17 +5753,17 @@ class GenericGraph(GenericGraph_pyx):
              sage: T = graphs.TetrahedralGraph()
              sage: T.faces({0: [1, 3, 2], 1: [0, 2, 3], 2: [0, 3, 1], 3: [0, 1, 2]})
              [[(0, 1), (1, 2), (2, 0)],

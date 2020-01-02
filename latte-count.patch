@@ -46,7 +46,7 @@ index 268af9db0d..70d41dfa30 100644
 +            Invocation: latte-count --ehrhart-polynomial '--redundancy-check=none' --cdd '--bim-bam-boum=19' /dev/stdin
              Unknown command/option --bim-bam-boum=19
          """
-         # note: the options below are explicitely written in the function
+         # note: the options below are explicitly written in the function
 diff --git a/src/sage/interfaces/latte.py b/src/sage/interfaces/latte.py
 index 066cedd401..302b39910d 100644
 --- a/src/sage/interfaces/latte.py
