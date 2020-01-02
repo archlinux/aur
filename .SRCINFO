@@ -1,13 +1,13 @@
 pkgbase = sway-launcher-desktop
-	pkgdesc = A TUI-based launcher menu made with bash and the amazing fzf.
-	pkgver = 1.1.0
+	pkgdesc = TUI Application launcher with Desktop Entry support.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Biont/sway-launcher-desktop
 	arch = any
 	license = GPL
 	depends = fzf
-	source = sway-launcher-desktop-1.1.0.tar.gz::https://github.com/Biont/sway-launcher-desktop/archive/v1.1.0.tar.gz
-	md5sums = 03296522c6ea7e67a60063d69fd2314a
+	source = sway-launcher-desktop-1.2.0.tar.gz::https://github.com/Biont/sway-launcher-desktop/archive/v1.2.0.tar.gz
+	md5sums = da46d1c34715b5837b1a3450d7168d91
 
 pkgname = sway-launcher-desktop
 
