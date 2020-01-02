@@ -29,8 +29,8 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  "wine-gecko=$_geckover"
-  "wine-mono-bin=$_monover"
+  "wine-gecko>=$_geckover"
+  "wine-mono-bin>=$_monover"
   "dxvk>=$_dxvkver"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex
