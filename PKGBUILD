@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@gmail.com>
 
 pkgname=mediawiki-extension-lockdown
-pkgver=REL1_33.r141.g9117e2f
+pkgver=REL1_34+r145+g0aac342
 pkgrel=1
-_mw='REL1_33'
-_commit='9117e2f0357ead44ab37590d6d7b1d311be31bdf'
+_mw='REL1_34'
+_commit='0aac342ad4fe02b6561f974eae7e872eaa0d2aee'
 pkgdesc='An extension for MediaWiki that implements a way to restrict access to specific namespaces and special pages to a given set of user groups'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:Lockdown'
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/Lockdown"
-	printf '%s.r%s.g%s' "${_mw}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '%s+r%s+g%s' "${_mw}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

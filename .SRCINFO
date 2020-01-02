@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-lockdown
 	pkgdesc = An extension for MediaWiki that implements a way to restrict access to specific namespaces and special pages to a given set of user groups
-	pkgver = REL1_33.r141.g9117e2f
+	pkgver = REL1_34+r145+g0aac342
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:Lockdown
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Lockdown.git#commit=9117e2f0357ead44ab37590d6d7b1d311be31bdf
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Lockdown.git#commit=0aac342ad4fe02b6561f974eae7e872eaa0d2aee
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-lockdown
