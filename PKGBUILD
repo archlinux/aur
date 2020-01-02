@@ -2,22 +2,24 @@
 
 _pkgname=xfce4-dockbarx-plugin
 pkgname=$_pkgname-gtk3-git
-pkgver=54.db059fd
+epoch=1
+pkgver=r55+b3f828f
 pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64')
 url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
 license=('X11')
-depends=('dockbarx>=0.91' 'xfce4-panel')
+depends=('dockbarx-gtk3-git' 'xfce4-panel')
 makedepends=('python2' 'git' 'vala')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/twa022/${_pkgname}.git")
+_branch='pygi-python3'
+source=("${_pkgname}::git+https://github.com/twa022/${_pkgname}#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  echo "$(git rev-list --count master).$(git rev-parse --short master)"
+  printf "r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
