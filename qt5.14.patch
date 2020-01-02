@@ -12,3 +12,4 @@
 +  headers.append(qMakePair<QString, QString>("X-Plex-Platform", "Konvergo"));
    return headers;
  }
+
