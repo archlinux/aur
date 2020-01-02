@@ -22,12 +22,12 @@ build() {
 package_python-trimesh() {
   depends+=('python-numpy')
   optdepends+=(
-    'python-scipy: convex hulls'
     'python-networkx: graph operations'
     'python-pyembree: faster ray queries'
-    'python-shapely: vector path handling'
-    'python-rtree: vector path handling'
     'python-pyglet: preview windows'
+    'python-rtree: vector path handling'
+    'python-scipy: convex hulls'
+    'python-shapely: vector path handling'
     'python-xxhash: faster cache checks')
   cd "${srcdir}/${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
@@ -36,13 +36,11 @@ package_python-trimesh() {
 package_python2-trimesh() {
   depends+=('python2-numpy')
   optdepends+=(
-    'python2-scipy: convex hulls'
     'python2-networkx: graph operations'
     'python2-pyembree: faster ray queries'
-    'python2-shapely: vector path handling'
-    'python2-rtree: vector path handling'
     'python2-pyglet: preview windows'
-    'python2-xxhash: faster cache checks')
+    'python2-rtree: vector path handling'
+    'python2-scipy: convex hulls')
   cd "${srcdir}/${_name}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }

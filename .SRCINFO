@@ -11,21 +11,19 @@ pkgbase = python-trimesh
 
 pkgname = python-trimesh
 	depends = python-numpy
-	optdepends = python-scipy: convex hulls
 	optdepends = python-networkx: graph operations
 	optdepends = python-pyembree: faster ray queries
-	optdepends = python-shapely: vector path handling
-	optdepends = python-rtree: vector path handling
 	optdepends = python-pyglet: preview windows
+	optdepends = python-rtree: vector path handling
+	optdepends = python-scipy: convex hulls
+	optdepends = python-shapely: vector path handling
 	optdepends = python-xxhash: faster cache checks
 
 pkgname = python2-trimesh
 	depends = python2-numpy
-	optdepends = python2-scipy: convex hulls
 	optdepends = python2-networkx: graph operations
 	optdepends = python2-pyembree: faster ray queries
-	optdepends = python2-shapely: vector path handling
-	optdepends = python2-rtree: vector path handling
 	optdepends = python2-pyglet: preview windows
-	optdepends = python2-xxhash: faster cache checks
+	optdepends = python2-rtree: vector path handling
+	optdepends = python2-scipy: convex hulls
 
