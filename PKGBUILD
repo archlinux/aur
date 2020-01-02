@@ -1,4 +1,4 @@
-#Maintainer: William J. Bowman <aur@williamjbowman.com>
+#Contributor: William J. Bowman <aur@williamjbowman.com>
 #Contributor: Gaetan Bisson <bisson@archlinux.org>
 #Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
