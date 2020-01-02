@@ -20,10 +20,7 @@ makedepends=(
     pandoc
 ) 
 optdepends=(gnupg) 
-provides=(
-    aurutils
-    crema
-)
+provides=(crema)
 conflicts=(crema-git)
  
 # aurutils 
