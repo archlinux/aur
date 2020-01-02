@@ -1,0 +1,119 @@
+From 630fbcd5e6caa810f721b0f0de9478aaf78f7958 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?David=20Sp=C3=A5ngberg?= <david@tunna.org>
+Date: Sat, 19 Jan 2019 15:41:01 +0100
+Subject: [PATCH] Fix StubUtility compile errors
+
+---
+ .../org/eclim/plugin/jdt/command/impl/ConstructorCommand.java | 4 ++--
+ .../org/eclim/plugin/jdt/command/impl/DelegateCommand.java    | 4 ++--
+ .../java/org/eclim/plugin/jdt/command/impl/ImplCommand.java   | 4 ++--
+ .../org/eclim/plugin/jdt/command/include/ImportCommand.java   | 2 +-
+ .../org/eclim/plugin/jdt/command/junit/JUnitImplCommand.java  | 2 +-
+ org.eclim.jdt/java/org/eclim/plugin/jdt/util/JavaUtils.java   | 2 +-
+ 6 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ConstructorCommand.java b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ConstructorCommand.java
+index 69e6addfe..f65ba5515 100644
+--- a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ConstructorCommand.java
++++ b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ConstructorCommand.java
+@@ -48,7 +48,7 @@
+ 
+ import org.eclipse.jdt.internal.corext.codemanipulation.AddCustomConstructorOperation;
+ import org.eclipse.jdt.internal.corext.codemanipulation.CodeGenerationSettings;
+-import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility2;
++import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility2Core;
+ 
+ import org.eclipse.jdt.internal.corext.dom.ASTNodes;
+ import org.eclipse.jdt.internal.corext.dom.Bindings;
+@@ -194,7 +194,7 @@ private IMethodBinding findParentConstructor(
+       constructor = Bindings.findMethodInType(
+           binding, "Object", new ITypeBinding[0]);
+     } else {
+-      IMethodBinding[] bindings = StubUtility2
++      IMethodBinding[] bindings = StubUtility2Core
+         .getVisibleConstructors(typeBinding, false, true);
+       Arrays.sort(bindings, new Comparator<IMethodBinding>(){
+         public int compare(IMethodBinding b1, IMethodBinding b2){
+diff --git a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/DelegateCommand.java b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/DelegateCommand.java
+index d1c90d8aa..b78862772 100644
+--- a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/DelegateCommand.java
++++ b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/DelegateCommand.java
+@@ -52,7 +52,7 @@
+ import org.eclipse.jdt.internal.corext.codemanipulation.AddDelegateMethodsOperation;
+ import org.eclipse.jdt.internal.corext.codemanipulation.AddDelegateMethodsOperation.DelegateEntry;
+ import org.eclipse.jdt.internal.corext.codemanipulation.CodeGenerationSettings;
+-import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility2;
++import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility2Core;
+ 
+ import org.eclipse.jdt.internal.corext.dom.ASTNodes;
+ 
+@@ -221,7 +221,7 @@ protected ImplResult getImplResult(ICompilationUnit src, IType type)
+       throw new RuntimeException(ce);
+     }
+     DelegateEntry[] entries =
+-      StubUtility2.getDelegatableMethods(typeBinding);
++      StubUtility2Core.getDelegatableMethods(typeBinding);
+     ArrayList<DelegateEntry> delegatable = new ArrayList<DelegateEntry>();
+     for (DelegateEntry entry : entries) {
+       if (entry.field.equals(variable)){
+diff --git a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ImplCommand.java b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ImplCommand.java
+index 7c0344db2..e45e7a1e0 100644
+--- a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ImplCommand.java
++++ b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/impl/ImplCommand.java
+@@ -59,7 +59,7 @@
+ import org.eclipse.jdt.core.formatter.CodeFormatter;
+ 
+ import org.eclipse.jdt.internal.corext.codemanipulation.AddUnimplementedMethodsOperation;
+-import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility2;
++import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility2Core;
+ 
+ import org.eclipse.jdt.internal.corext.dom.ASTNodes;
+ import org.eclipse.jdt.internal.corext.dom.Bindings;
+@@ -317,7 +317,7 @@ protected ImplResult getImplResult(String name, List<IMethodBinding> methods)
+ 
+     IPackageBinding packageBinding = typeBinding.getPackage();
+     IMethodBinding[] methods =
+-      StubUtility2.getOverridableMethods(cu.getAST(), typeBinding, false);
++      StubUtility2Core.getOverridableMethods(cu.getAST(), typeBinding, false);
+     ArrayList<IMethodBinding> overridable = new ArrayList<IMethodBinding>();
+     for (IMethodBinding methodBinding : methods) {
+       if (Bindings.isVisibleInHierarchy(methodBinding, packageBinding)){
+diff --git a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/include/ImportCommand.java b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/include/ImportCommand.java
+index c89c47e1a..d3b630f55 100644
+--- a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/include/ImportCommand.java
++++ b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/include/ImportCommand.java
+@@ -52,7 +52,7 @@
+ import org.eclipse.jdt.internal.corext.codemanipulation.AddImportsOperation;
+ import org.eclipse.jdt.internal.corext.codemanipulation.CodeGenerationMessages;
+ import org.eclipse.jdt.internal.corext.codemanipulation.ContextSensitiveImportRewriteContext;
+-import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility;
++import org.eclipse.jdt.internal.core.manipulation.StubUtility;
+ 
+ import org.eclipse.jdt.internal.corext.util.JavaModelUtil;
+ 
+diff --git a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/junit/JUnitImplCommand.java b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/junit/JUnitImplCommand.java
+index 57c59da5a..aa1a64b8e 100644
+--- a/org.eclim.jdt/java/org/eclim/plugin/jdt/command/junit/JUnitImplCommand.java
++++ b/org.eclim.jdt/java/org/eclim/plugin/jdt/command/junit/JUnitImplCommand.java
+@@ -58,7 +58,7 @@
+ import org.eclipse.jdt.core.dom.rewrite.ImportRewrite;
+ import org.eclipse.jdt.core.dom.rewrite.ListRewrite;
+ 
+-import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility;
++import org.eclipse.jdt.internal.core.manipulation.StubUtility;
+ 
+ import org.eclipse.jdt.internal.corext.dom.ASTNodes;
+ 
+diff --git a/org.eclim.jdt/java/org/eclim/plugin/jdt/util/JavaUtils.java b/org.eclim.jdt/java/org/eclim/plugin/jdt/util/JavaUtils.java
+index c47ae409c..4c64b98a6 100644
+--- a/org.eclim.jdt/java/org/eclim/plugin/jdt/util/JavaUtils.java
++++ b/org.eclim.jdt/java/org/eclim/plugin/jdt/util/JavaUtils.java
+@@ -82,7 +82,7 @@
+ 
+ import org.eclipse.jdt.internal.core.DocumentAdapter;
+ 
+-import org.eclipse.jdt.internal.corext.codemanipulation.StubUtility;
++import org.eclipse.jdt.internal.core.manipulation.StubUtility;
+ 
+ import org.eclipse.jdt.internal.corext.refactoring.structure.ASTNodeSearchUtil;
+ 
