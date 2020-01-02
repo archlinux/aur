@@ -1,0 +1,16 @@
+pkgbase = perl-libxml-perl
+	pkgver = 0.08
+	pkgrel = 1
+	url = https://metacpan.org/release/libxml-perl
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-xml-parser>=2.19
+	provides = perl-xml-parser-perlsax
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KM/KMACLEOD/libxml-perl-0.08.tar.gz
+	md5sums = 0ed5fbdda53d1301ddaed88db10503bb
+	sha512sums = 66c1874a04b746334d4324ab37ee057c6da7fa7191dffae2900e0832dab3b2ededc5cbdc5e838c0d57c22161c9cf196ab40b62f61338d4c994bda9fa7b1a7702
+
+pkgname = perl-libxml-perl
+
