@@ -19,8 +19,8 @@ md5sums=('4b263eb4764980dc972c887e22b76159')
 
 check() {
     cd "${pkgbase}-${pkgver}/bin"
-    git config user.name "test@bitbake.com"
-    git config user.email "Bitbake Tester"
+    git config user.email "test@bitbake.com"
+    git config user.name "Bitbake Tester"
     PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bitbake-selftest
 }
 
