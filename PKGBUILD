@@ -1,13 +1,13 @@
 # Maintainer: Vasya Novikov <vnnn91@yandex.ru> (replace "nnn" with a single "n")
 
 pkgname=bambam-git
-pkgver=r48.fcc117a
+pkgver=r83.6ee374d
 pkgrel=1
 pkgdesc="A simple baby keyboard masher application."
 arch=('any')
 url="https://github.com/porridge/bambam"
 license=('GPLv3')
-depends=('python2' 'python2-pygame')
+depends=('python3' 'python-pygame')
 source=("git+https://github.com/porridge/bambam.git"
 	bambam.desktop)
 sha256sums=('SKIP'
