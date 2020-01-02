@@ -50,7 +50,7 @@ prepare() {
     popd
 
     xbuild ./TerrariaServerAPI/TerrariaServerAPI/TerrariaServerAPI.csproj /p:Configuration=$BUILD_MODE
-    
+
     # Workaround
     mkdir -p "TShockAPI/bin/Release"
     cp "TerrariaServerAPI/TShock.Modifications.Bootstrapper/bin/Release/Output/OTAPI.dll" "TShockAPI/bin/Release/OTAPI.dll"
