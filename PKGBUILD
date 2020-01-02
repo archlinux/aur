@@ -1,8 +1,8 @@
 # Maintainer: Kat Witten <turtlewit@live.com>
 pkgname=sway-launcher-desktop-git
-pkgver=r53.e81161a
+pkgver=r77.7ba43fb
 pkgrel=1
-pkgdesc="A TUI-based launcher menu made with bash and the amazing fzf."
+pkgdesc="TUI Application launcher with Desktop Entry support."
 arch=('any')
 url="https://github.com/Biont/sway-launcher-desktop"
 license=('GPL')
