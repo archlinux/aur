@@ -1,8 +1,8 @@
 _phpbase=72
 pkgname=php72-xdebug
 _extname=xdebug
-pkgver=2.7.2
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development"
 arch=("x86_64")
 url="https://xdebug.org/"
@@ -33,4 +33,4 @@ package() {
     install -m0755 -D "$srcdir/$_extname-$pkgver/debugclient/debugclient" "$pkgdir/usr/bin/debugclient${_phpbase}"
 }
 
-md5sums=('5d1a8ca3101df93938d283933f256493')
+md5sums=('8b8ca211cb7053c19aec2dbde4ab5ffa')
