@@ -6,14 +6,14 @@
 pkgname=libfprint-git
 _pkgname=libfprint
 epoch=1
-pkgver=0.8.1.r10.gb9e5b3a
+pkgver=1.90.0.r169.gb8e5584
 pkgrel=1
 pkgdesc="Library for fingerprint readers"
 arch=(x86_64)
 url="http://www.freedesktop.org/wiki/Software/fprint/libfprint"
 license=(LGPL)
 depends=(libusb nss pixman glib2)
-makedepends=(git meson gtk-doc)
+makedepends=(git meson gtk-doc gobject-introspection)
 groups=(fprint-git)
 provides=(libfprint)
 conflicts=(libfprint)
@@ -30,34 +30,14 @@ prepare() {
 }
 
 build() {
-  # FIXME: documentation doesn't build:
-  #
-  # Building documentation for libfprint
-  # ERROR:
-  # Error in gtkdoc helper script:
-  # 
-  # ERROR: 'gtkdoc-scangobj' failed with status 1
-  # Traceback (most recent call last):
-  #   File "/usr/bin/gtkdoc-scangobj", line 71, in <module>
-  #     sys.exit(scangobj.run(options))
-  #   File "/usr/share/gtk-doc/python/gtkdoc/scangobj.py", line 1230, in run
-  #     for line in common.open_text(options.types):
-  #   File "/usr/share/gtk-doc/python/gtkdoc/common.py", line 51, in open_text
-  #     return open(filename, mode, encoding=encoding)
-  # FileNotFoundError: [Errno 2] No such file or directory: '/tmp/makepkg/build/libfprint/src/libfprint/build/doc/libfprint.types'
-  # FAILED: meson-install
-  # /usr/bin/python /usr/bin/meson install --no-rebuild
-  # ninja: build stopped: subcommand failed.
-  #
-  arch-meson $_pkgname build -D x11-examples=false -D doc=false
+  arch-meson $_pkgname build -D x11-examples=false -D gtk-examples=false
   ninja -C build
 }
 
 check() {
-  cd build
-  meson test
+  meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
