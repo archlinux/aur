@@ -10,12 +10,12 @@
 pkgname=mattercontrol
 _pkgname=MatterControl
 pkgver=2.19.10.10370
-pkgrel=1
+pkgrel=2
 pkgdesc="Software solution for 3D printers"
-arch=("i386" "x86_64")
+arch=('any')
 license=('custom')
 url="http://www.mattercontrol.com"
-depends=('mono' 'lib32-glibc' 'gtk-sharp-2')
+depends=('mono' 'gtk-sharp-2')
 provides=('mattercontrol')
 conflicts=('mattercontrol-plugins')
 install="mattercontrol.install"

@@ -1,14 +1,12 @@
 pkgbase = mattercontrol
 	pkgdesc = Software solution for 3D printers
 	pkgver = 2.19.10.10370
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mattercontrol.com
 	install = mattercontrol.install
-	arch = i386
-	arch = x86_64
+	arch = any
 	license = custom
 	depends = mono
-	depends = lib32-glibc
 	depends = gtk-sharp-2
 	provides = mattercontrol
 	conflicts = mattercontrol-plugins
