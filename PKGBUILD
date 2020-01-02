@@ -3,7 +3,7 @@ pkgname='plexdrive-git'
 _pkgname=${pkgname/-git/}
 pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem'
 pkgver=5.0.0.r18.gbf61a47
-pkgrel=3
+pkgrel=4
 url='https://github.com/dweidenfeld/plexdrive'
 arch=('any')
 license=('MIT')
@@ -22,13 +22,19 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  mkdir -p gopath/src/github.com/dweidenfeld
+  ln -rTsf $pkgname gopath/src/github.com/dweidenfeld/$pkgname
+  export GOPATH="$srcdir"/gopath
+
+  cd gopath/src/github.com/dweidenfeld/$pkgname
+  go get -v
+}
+
 build() {
-  cd "$pkgname"
-  go build \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o $_pkgname .
+  export GOPATH="$srcdir"/gopath
+  cd gopath/src/github.com/dweidenfeld/$pkgname
+  go build -o $_pkgname .
 }
 
 package() {
