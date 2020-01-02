@@ -6,7 +6,7 @@
 
 pkgname=rubyripper
 pkgver=0.7.0rc2
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure audiodisc ripper'
 arch=('any')
 url='http://code.google.com/p/rubyripper/'
@@ -26,7 +26,7 @@ optdepends=('ruby-gtk2: GTK+ GUI'
             'wavpack: WavPack encoding support'
             'opus-tools: Opus encoding support'
             'neroaacenc-bin: Nero AAC encoding support')
-source=("https://github.com/bleskodev/rubyripper/archive/v$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bleskodev/rubyripper/archive/v${pkgver}.tar.gz")
 sha256sums=('977089c4a262936f9acf82ad1ab5932de97523ba31b61b5ccc1279a94eaea6ae')
 
 build() {
@@ -37,7 +37,8 @@ build() {
 }
 
 package() {
-  make DESTDIR="$pkgdir" -C "$pkgname-$pkgver" install
+
+  make DESTDIR="${pkgdir}" -C "${pkgname}-${pkgver}" install
 }
 
 # vim: ts=2 sw=2 et:

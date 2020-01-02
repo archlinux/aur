@@ -1,7 +1,7 @@
 pkgbase = rubyripper
 	pkgdesc = Secure audiodisc ripper
 	pkgver = 0.7.0rc2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://code.google.com/p/rubyripper/
 	arch = any
 	license = GPL3
@@ -23,7 +23,7 @@ pkgbase = rubyripper
 	optdepends = wavpack: WavPack encoding support
 	optdepends = opus-tools: Opus encoding support
 	optdepends = neroaacenc-bin: Nero AAC encoding support
-	source = https://github.com/bleskodev/rubyripper/archive/v0.7.0rc2.tar.gz
+	source = rubyripper-0.7.0rc2.tar.gz::https://github.com/bleskodev/rubyripper/archive/v0.7.0rc2.tar.gz
 	sha256sums = 977089c4a262936f9acf82ad1ab5932de97523ba31b61b5ccc1279a94eaea6ae
 
 pkgname = rubyripper
