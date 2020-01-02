@@ -5,7 +5,7 @@
 # Contributor: <gucong43216@gmail.com>
 
 pkgname=openfoam-esi
-pkgver=v1906
+pkgver=v1912
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
 pkgrel=1
@@ -15,12 +15,12 @@ url="http://www.openfoam.com/"
 license=('GPL')
 depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview')
 
-source=("https://sourceforge.net/projects/openfoamplus/files/v1906/OpenFOAM-v1906.tgz"
-        "https://sourceforge.net/projects/openfoamplus/files/v1906/ThirdParty-v1906.tgz"
+source=("https://sourceforge.net/projects/openfoam/files/v1912/OpenFOAM-v1912.tgz"
+        "https://sourceforge.net/projects/openfoam/files/v1912/ThirdParty-v1912.tgz"
         "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
 
-md5sums=('ab7017e262c0c0fceec55c31e2153180'
-         '81af204ef7aa804bc6b633f20f28749e'
+md5sums=('886e2c94b2caf0b74e144ba37c70e8ce'
+         '5ce13fbd8c10e7300c22005aeeb4fbbe'
          '5465e67079419a69e0116de24fce58fe')
 
 prepare() {
@@ -40,8 +40,8 @@ prepare() {
   echo "export ParaView_QT=qt-system" >> ${srcdir}/prefs.sh
   cp ${srcdir}/prefs.sh ${srcdir}/${_distname}-${pkgver}/etc
 
-  # get paraview-5.6 directories
-  # paraview-5.6
+  # get paraview-5.7 directories
+  # paraview-5.7
   para_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | sed -e 's!p.*/p!p!g' | sed -e 's!/.*!!g'`
   # /usr/include
   para_include_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | awk '{print $2}' | sed 's!/paraview.*!!g'`
@@ -97,6 +97,7 @@ build() {
   echo -e " "
   echo -e "\e[92mFor compiling the paraview plugin it might be necessary to give OpenFOAM MANUALLY write-access to the following directory:"
   echo -e "sudo chmod 757 /usr/lib/cmake/paraview*/Modules"
+  echo -e " "
   echo -e "If you have paraview 5.6 installed, please add the line"
   echo -e "find_package(ospray REQUIRED)"
   echo -e "on line 794 (in FUNCTION(ADD_PARAVIEW_PLUGIN) in the file /usr/lib64/cmake/paraview-5.6/ParaViewPlugins.cmake."
