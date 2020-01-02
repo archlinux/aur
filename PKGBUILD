@@ -1,4 +1,4 @@
-# Maintainer: William J Bowman <aur@williamjbowman.com>
+# Contributor: William J. Bowman <aur@williamjbowman.com>
 # Contributor: Patrick Palka <patrick@parcs.ath.cx>
 # Contributor: dimino jeremie <jeremie@dimino.org>
 
