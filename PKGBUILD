@@ -1,4 +1,4 @@
-# Maintainer: William J. Bowman <aur@williamjbowman.com>
+# Contributor: William J. Bowman <aur@williamjbowman.com>
 # Contributor: Kohei Suzuki <eagletmt@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Nathan Owe <ndowens.aur at gmail dot com>
