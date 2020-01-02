@@ -1,8 +1,8 @@
 # Maintainer: Haochen Tong <i at hexchain dot org>
 
 pkgname=elvish
-pkgver=0.12
-pkgrel=2
+pkgver=0.13
+pkgrel=1
 pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
@@ -15,25 +15,26 @@ md5sums=('SKIP')
 install=elvish.install
 
 prepare() {
-    cd "$srcdir"
+    mkdir -p "$srcdir/build"
+    export GOPATH="$srcdir/build"
 
-    mkdir -p build/src/github.com/elves
-    ln -sf "$srcdir/$pkgname" build/src/github.com/elves/
+    cd "$srcdir/elvish"
+    go mod download
 }
 
 build() {
     export GOPATH="$srcdir/build"
-    cd "$GOPATH/src/github.com/elves/elvish"
-    make get
+    cd "$srcdir/elvish"
+    go build -v -trimpath -ldflags="-extldflags $LDFLAGS -X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" .
 }
 
 check() {
     export GOPATH="$srcdir/build"
-    cd "$GOPATH/src/github.com/elves/elvish"
+    cd "$srcdir/elvish"
     make test
 }
 
 package() {
-    install -Dm755 "$srcdir/build/bin/elvish" -t "$pkgdir/usr/bin/"
+    install -Dm755 "$srcdir/elvish/elvish" -t "$pkgdir/usr/bin/"
     install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
