@@ -2,7 +2,7 @@
 
 pkgname=drawio-desktop
 pkgver=12.4.2
-pkgrel=1
+pkgrel=3
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
 url='https://github.com/jgraph/drawio'
@@ -16,7 +16,6 @@ build() {
   cd "$srcdir/drawio-$pkgver"/etc/build
   ant app
   cd "$srcdir/drawio-$pkgver"/src/main/webapp
-  
 
   rm -rf "META-INF" "WEB-INF"
 
@@ -25,8 +24,28 @@ build() {
   local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
   sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'electron.js'
 
+  # fix version in package.json
+  sed -i 's/"version": ".*"/"version": "'"$pkgver"'"/g' package.json
+
   npm install --cache ../npm-cache --only=production
+
+
+  # remove paths refering build directories
+  find . -name 'package.json' -exec sed "s,$srcdir/src/drawio-$pkgver/src/main/webapp,/usr/lib/drawio,g" -i {} \;
+
   rm -f 'package-lock.json'
+  find . -name '.airtap.yml'        -exec rm -fv {} \;
+  find . -name '\.bin'              -exec rm -fvr {} \;
+  find . -name '.coveralls.yml'     -exec rm -fv {} \;
+  find . -name '.gitignore'         -exec rm -fv {} \;
+  find . -name '\.github'           -exec rm -fvr {} \;
+  find . -name '\.eslintrc*'        -exec rm -fv {} \;
+  find . -name '.jscs.json'         -exec rm -fv {} \;
+  find . -name '.npmignore'         -exec rm -fv {} \;
+  find . -name '.prettierrc.js'     -exec rm -fv {} \;
+  find . -name '.travis.yml'        -exec rm -fv {} \;
+  find . -name '.tonic_example.js'  -exec rm -fv {} \;
+
 }
 
 package() {
