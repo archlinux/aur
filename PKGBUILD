@@ -2,7 +2,7 @@
 
 pkgname=sabnzbd
 pkgver=2.3.9
-pkgrel=2
+pkgrel=3
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
 arch=('any')
@@ -44,6 +44,7 @@ package() {
   chmod 755 "${pkgdir}/opt/sabnzbd/SABnzbd.py"
 
   install -D -m 644 "${srcdir}/sabnzbd.service" "${pkgdir}/usr/lib/systemd/system/sabnzbd.service"
+  install -D -m 644 "SABnzbd-${pkgver}/linux/sabnzbd@.service" "${pkgdir}/usr/lib/systemd/system/sabnzbd@.service"
   install -D -m 644 "${srcdir}/sabnzbd.sysusers" "${pkgdir}/usr/lib/sysusers.d/sabnzbd.conf"
   install -D -m 644 "${srcdir}/sabnzbd.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sabnzbd.conf"
 }
