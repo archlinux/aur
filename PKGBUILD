@@ -12,10 +12,9 @@ optdepends=('fail2ban')
 provides=('organizr')
 conflicts=('organizr')
 install='organizr.install'
-source=("${pkgname}::git+https://github.com/causefx/Organizr.git#branch=v2-master" "organizr.install" "organizr.tmpfiles")
+source=("${pkgname}::git+https://github.com/causefx/Organizr.git#branch=v2-master" "organizr.install")
 sha256sums=('SKIP'
-            'ae58bcf26a81ac31bc73cc01cf41ce8451b4a279032caee51e4a10470f74bb9f'
-	    '6a496d0eebd685ddb499eb20d6f12e18c825c9e07e27c0ffe04b10b2fc0706e5')
+	    '0eb1fc73141105b51e6ced331057b2f2661d915878c641893c64cd28b861bc45')
 
 pkgver() {
     cd "${pkgname}"
@@ -23,7 +22,14 @@ pkgver() {
 }
 
 package() {
-    install -D -m 644 "${srcdir}/organizr.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/organizr.conf"
-    install -dm 755 "${pkgdir}/opt/${_pkgname}"
-    cp -r "${srcdir}/${pkgname}/"* "${pkgdir}/opt/${_pkgname}/"
+    install -dm 755 "${pkgdir}/usr/share/webapps/${_pkgname}"
+    install -dm 755 "${pkgdir}/var/lib/${_pkgname}"
+    
+    cp -r "${srcdir}/${pkgname}/"* "${pkgdir}/usr/share/webapps/${_pkgname}/"
+    
+    mv "${pkgdir}/usr/share/webapps/${_pkgname}/api" "${pkgdir}/var/lib/${_pkgname}/"
+    ln -s "/var/lib/${_pkgname}/api" "${pkgdir}/usr/share/webapps/${_pkgname}/api"
+    
+    mv "${pkgdir}/usr/share/webapps/${_pkgname}/plugins" "${pkgdir}/var/lib/${_pkgname}/"
+    ln -s "/var/lib/${_pkgname}/plugins" "${pkgdir}/usr/share/webapps/${_pkgname}/plugins"
 }

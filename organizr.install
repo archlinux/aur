@@ -1,35 +1,48 @@
 post_install() {
-    chown -R http:http /opt/organizr
     chown -R http:http /var/lib/organizr
 
     echo '-------------------------------------------------------------------------------'
     echo 'Once you have added Organizr to your web server configuration, browse to'
     echo '<Your Organizer URL>/check.php to see if you need to enable any PHP extensions.'
     echo
-    echo 'The directory /var/lib/organizr was created to store your Organizr database.'
+    echo 'The directory /var/lib/organizr was created to store your Organizr DB and config.'
     echo 'Specify this directory as the Database Path when visiting the main site for the'
     echo 'first time.'
     echo '-------------------------------------------------------------------------------'
 }
 
 post_upgrade() {
-    chown -R http:http /opt/organizr
     chown -R http:http /var/lib/organizr
 
-    if [[ -d /usr/share/webapps/organizr ]] && [[ ! -e /opt/organizr/api/config/config.php ]]; then
+    if [[ -e /opt/organizr/api/config/config.php ]]; then
 	echo '-------------------------------------------------------------------------------'
-	echo 'NOTE: Organizr has been moved to /opt/organizr. An old installation in'
-	echo '/usr/share/webapps/organizr has been detected.  Use the following command to'
-	echo 'move your configuration to the new location:'
-	echo '  sudo mv /usr/share/webapps/organizr/Organizr/api/config/config.php /opt/organizr/api/config'
+	echo 'NOTE: Organizr has been moved (AGAIN!) to /usr/share/webapps/organizr'
+	echo '(read-only data) and /var/lib/organizr (read-write storage). An old installation'
+	echo 'in /opt/organizr has been detected.  Use the following command to move your'
+	echo 'configuration to the new location:'
+	echo '  sudo mv /opt/organizr/api/config/config.php /var/lib/organizr/api/config'
 	echo
 	echo 'If you installed any custom tab images, move those with:'
-	echo '  sudo mv /usr/share/webapps/organizr/Organizr/plugins/images/tabs/* /opt/organizr/plugins/images/tabs'
+	echo '  sudo mv /opt/organizr/plugins/images/tabs/* /var/lib/organizr/plugins/images/tabs'
 	echo
 	echo 'Please adjust the paths in your webserver and PHP configs to reflect the new'
-	echo 'location.  Note that previously files were installed to /usr/share/webapps/organizr/Organizr.'
-	echo 'The extra Organizr subdirectory has been eliminated and the package is installed directly'
-	echo 'to /opt/organizr.'
+	echo 'location in /usr/share/webapps/organizr.  You may also need to add /var/lib/organizr'
+	echo 'to your PHP config.'
+	echo '-------------------------------------------------------------------------------'
+    elif [[ -e /usr/share/webapps/organizr/Organizr/api/config/config.php ]]; then
+	echo '-------------------------------------------------------------------------------'
+	echo 'NOTE: The Organizr config and plugins have been moved to /var/lib/organizr.'
+	echo 'In addition, the remaining installation has moved from /usr/share/webapps/organizr/Organizr'
+	echo 'to /usr/share/webapps/organizr.  An old installation in /usr/share/webapps/organizr/Organizr'
+	echo 'has been detected.  Use the following command to move your configuration to the new location:'
+	echo '  sudo mv /usr/share/webapps/organizr/Organizr/api/config/config.php /var/lib/organizr/api/config'
+	echo
+	echo 'If you installed any custom tab images, move those with:'
+	echo '  sudo mv /usr/share/webapps/organizr/Organizr/plugins/images/tabs/* /var/lib/organizr/plugins/images/tabs'
+	echo
+	echo 'Please adjust the paths in your webserver and PHP configs to reflect the new'
+	echo 'location in /usr/share/webapps/organizr.  You may also need to add /var/lib/organizr'
+	echo 'to your PHP config.'
 	echo '-------------------------------------------------------------------------------'
     fi
 }

@@ -12,10 +12,8 @@ pkgbase = organizr-git
 	conflicts = organizr
 	source = organizr-git::git+https://github.com/causefx/Organizr.git#branch=v2-master
 	source = organizr.install
-	source = organizr.tmpfiles
 	sha256sums = SKIP
-	sha256sums = ae58bcf26a81ac31bc73cc01cf41ce8451b4a279032caee51e4a10470f74bb9f
-	sha256sums = 6a496d0eebd685ddb499eb20d6f12e18c825c9e07e27c0ffe04b10b2fc0706e5
+	sha256sums = 0eb1fc73141105b51e6ced331057b2f2661d915878c641893c64cd28b861bc45
 
 pkgname = organizr-git
 
