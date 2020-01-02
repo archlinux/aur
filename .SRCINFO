@@ -1,21 +1,30 @@
 pkgbase = tshock
 	pkgdesc = A Terraria Server administration modification that runs on the open source TerrariaAPI.
-	pkgver = 4.3.25
+	pkgver = 4.3.26
 	pkgrel = 1
 	epoch = 1
-	url = http://tshock.co/xf/
+	url = http://tshock.co/xf
 	install = tshock.install
 	arch = any
-	license = GPL
-	depends = tmux
+	license = GPL3
+	makedepends = nuget
 	depends = mono
-	backup = srv/tshock/tshock/config.json
-	source = https://github.com/NyxStudios/TShock/releases/download/v4.3.25/tshock_4.3.25.zip
+	depends = tmux
+	provides = tshock
+	conflicts = tshock
+	backup = etc/conf.d/tshock/default.conf
+	source = tshock::git+https://github.com/Pryaxis/TShock.git#tag=v4.3.26
 	source = tshock.sh
-	source = tshock@.service
-	sha512sums = 9d405df99d9acf52c53e48d164ae5894c25a70e5022eca478c0981f0aafb2b217dfeff8f8274b6b9fc6f7b21d1e05e037cc3d7e4d4be406116bea4802d22bb91
-	sha512sums = e73ca357516700bbd4ec5e6529320984b81fc7c6abc882181a9a9b3aad32f0d655b7686470fdbf7a953ce1935a79dbed983397aff0bf7ff26a1611dbcca391fb
-	sha512sums = 563ada981c2e08293462485fd85b2c4e0b190c55ed3bcea4139b955f931d970d97c2bd89fba5b190231e9f2adeddd2c385abd11781bf1a98b13b78b8951bf623
+	source = default.conf
+	source = service
+	source = tmpfiles
+	source = sysusers
+	sha512sums = SKIP
+	sha512sums = f0958448b53ff9851c47876b89f1cef6d3e33ce1b8cbe13167c685ed1c9d89a8bf0f01929d47200e4f0f964c3e7796a2d9ca558e5d9f1269db3f2e4537a6c97a
+	sha512sums = d530a528ba84d57dfcb360e03ec62b1b38da6fa2383bef8cdb0cd039ba6466b053dd99a130a858c86405c8957ba86a0a080f2f56089843a7055662fa41cee102
+	sha512sums = 7c1788f21664f038c32da6c0cbe817404a83f81b7b8be07bb0483d5ffd35991a07b647b18d7aa316db369edd4e7eab21c1b81ab3b45aa2c3692c6c63673a3fdb
+	sha512sums = a04b458932bb3882b9d40f9b5a9074b681e60cb3284635d1efb7e54293f39df334e7ae526dabf50f633ecdde980f287a939d3ea6eb0d4098663fbda21af70a65
+	sha512sums = 5752f8453fbb4d973ebe71bba371ae7b0ddd2313ccd17de89b3942d024e295805324085640756e7118e4cc76abee675f5e253526261cb62cb76b0bc155aca317
 
 pkgname = tshock
 
