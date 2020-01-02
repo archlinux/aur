@@ -1,5 +1,6 @@
 volta-*.tar.gz
 volta-install.sh
+*.pkg.tar
 *.pkg.tar.*
 pkg/
 src/
