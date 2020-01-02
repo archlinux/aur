@@ -1,7 +1,7 @@
-# Maintainer: Mathias Buhr <napcode@apparatus..de>
+# Maintainer: Mathias Buhr <napcode@apparatus.de>
 
 pkgname=tony
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Tony: a tool for melody transcription"
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
   'libsndfile'
   'libx11'
   'opus'
+  'opusfile'
   'portaudio'
   'qt5-base'
   'qt5-base'
@@ -33,8 +34,8 @@ makedepends=(
   'gcc'
   'make'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2582/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('9806e845a332915eb7b2b80742665e0de75991f2')
+source=("${pkgname}-${pkgver}.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2616/${pkgname}-${pkgver}.tar.gz")
+sha1sums=('c00d70f7ce7ec8168cb2b380913467a33a35bcc9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

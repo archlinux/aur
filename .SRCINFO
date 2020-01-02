@@ -1,6 +1,6 @@
 pkgbase = tony
 	pkgdesc = Tony: a tool for melody transcription
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://www.sonicvisualiser.org/tony/
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = tony
 	depends = libsndfile
 	depends = libx11
 	depends = opus
+	depends = opusfile
 	depends = portaudio
 	depends = qt5-base
 	depends = qt5-base
@@ -27,8 +28,8 @@ pkgbase = tony
 	depends = rubberband
 	depends = serd
 	depends = sord
-	source = tony-2.1.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2582/tony-2.1.tar.gz
-	sha1sums = 9806e845a332915eb7b2b80742665e0de75991f2
+	source = tony-2.1.1.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2616/tony-2.1.1.tar.gz
+	sha1sums = c00d70f7ce7ec8168cb2b380913467a33a35bcc9
 
 pkgname = tony
 
