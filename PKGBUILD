@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.6.arch3
+pkgver=5.4.7.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -108,7 +108,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'edc12a6645e6774ed03a87b6cc7ccb10f4063f94940689ef95c47decf00c2e59e9e8e758772030fc01b04041fe7a2e791eef39324b446580f7800ad20d6470dd'
+            'fba44e56cd550775f56fe4840b95d4b7340ac20f4df767f02c6591e39f4d32e3d562b692066e8dee87f9312284c0d1463c0c55583d5e194cd2efe4af79164bd8'
             'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377'
             'af8e0a8f1e9ad587c01a945d50d03ed3fc593036ca20c641353a6496317716120bd5015aea25a9f1aad936b95f69a39e3d60db5b66499790d1dc9358ce81da28')
 
