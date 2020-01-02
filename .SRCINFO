@@ -1,14 +1,14 @@
 pkgbase = e2tools
 	pkgdesc = A simple set of GPL'ed utilities to read, write, and manipulate files in an ext2/ext3 filesystem.
 	pkgver = 0.0.16
-	pkgrel = 2
-	url = http://home.earthlink.net/~k_sheff/sw/e2tools/
+	pkgrel = 3
+	url = https://e2tools.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = e2fsprogs
 	options = !buildflags
-	source = http://home.earthlink.net/~k_sheff/sw/e2tools/e2tools-0.0.16.tar.gz
+	source = https://github.com/e2tools/e2tools/releases/download/0.0.16/e2tools-0.0.16.tar.gz
 	source = e2cp.1
 	source = e2ln.1
 	source = e2ls.1
