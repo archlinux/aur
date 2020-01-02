@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-maya
+	pkgdesc = The backgrounds included in Linux Mint 13 Maya
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-maya
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-maya/mint-backgrounds-maya_1.1.tar.gz
+	sha256sums = b2050f5023a28855290222a15a4023eb2ee8bb627961d7a8e55b6c73384adc2b
+
+pkgname = mint-backgrounds-maya
+
