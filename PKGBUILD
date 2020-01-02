@@ -5,7 +5,7 @@ _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
 pkgver=r243.8045396
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go'
 url='https://github.com/jtyr/gbt'
 arch=('any')
@@ -37,7 +37,7 @@ build() {
 package() {
     msg2 'Installing files'
     install -Dm755 "$srcdir/bin/$_pkg" -t "$pkgdir/usr/bin"
-    install -Dm644 "$srcdir/src/$_gopkg/"/{LICENSE,README.md} -t "$pkgdir/usr/doc/$_pkg"
+    install -Dm644 "$srcdir/src/$_gopkg/"/{LICENSE,README.md} -t "$pkgdir/usr/share/doc/$_pkg"
     mkdir -p "$pkgdir/usr/share/$_pkg/"
     cp -r "$srcdir/src/$_gopkg/"{sources,themes} "$pkgdir/usr/share/$_pkg/"
 }
