@@ -11,7 +11,7 @@ url="https://e2tools.github.io/"
 license=('GPL')
 depends=('e2fsprogs')
 options=(!buildflags)
-source=(http://home.earthlink.net/~k_sheff/sw/e2tools/$pkgname-$pkgver.tar.gz
+source=(https://github.com/e2tools/e2tools/releases/download/$pkgver/e2tools-$pkgver.tar.gz
         e2cp.1
         e2ln.1
         e2ls.1
