@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.6pre14
+pkgver=18.6pre16
 _major=18.5
 pkgrel=1
 arch=('x86_64')
@@ -79,18 +79,20 @@ source=(
   cpuinfo
   001-PR16955.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16955.patch
   002-PR16969.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16969.patch
-  003-PR16986.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16986.patch
-  004-PR17024.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17024.patch
-  005-PR17050.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17050.patch
-  006-PR16977.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16977.patch
-  007-PR17068.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17068.patch
-  008-PR17070.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17070.patch
-  009-PR17075.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17075.patch
-  010-PR17097.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17097.patch
-  011-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
-  012-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
-  013-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
-  014-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
+  003-PR16977.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16977.patch
+  004-PR16988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16988.patch
+  005-PR16989.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16989.patch
+  006-PR17024.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17024.patch
+  007-PR17050.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17050.patch
+  008-PR17068.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17068.patch
+  009-PR17070.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17070.patch
+  010-PR17075.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17075.patch
+  011-PR17097.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17097.patch
+  012-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
+  013-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
+  014-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
+  015-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
+  016-PR17111.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17111.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -114,10 +116,11 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             'a3c5e7b4f8b31744d8c8a72a87739fcabf1df883f0d250b4a460f645c9bbb6ab'
             'e1aabf601fb8871782a8b29e679829e9589e2a423368c2b0b7a66f8d48e91cb1'
-            '7791c648ac6140d91ec21605aa5385a4755fbaf31339b64eef549764d82434e6'
+            '431476776ae38a4eea1d18de913374ffb186411fe7958d1cd08971fdcc6e19f3'
+            '8e98093ff3eb30f46575d0bd594fdd14817278c14c370933435fb74b5fffe6b8'
+            'd938169e9efaeba439e8f69237ab6bf4a625462b3d16772c21785a97ab1811c2'
             '0f6492a63be113aac81faa5963d2bad122c3256e9e9fa9ea85ee2390c8c34ce8'
             'f0f36152c991233d5a2778185aaf851b506846d4cf7203f4a654e768e2f1abde'
-            '431476776ae38a4eea1d18de913374ffb186411fe7958d1cd08971fdcc6e19f3'
             '15da19309d420da1bd6c135fed442e3db878fbf594b44b50de0dc7bfbb05606d'
             '4f7c735d4116a3de19ac2d7bfa733bdebbe0fe5eaefa69e390d5cfacabbe2b9b'
             '3363b14eaf4925a74ba2c93e52902c9e364a106f38fb8fb809451ebede06e89a'
@@ -125,8 +128,8 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             'b0aefc3a103a581a436bf5bd8e5deaff013793a7661a4273e6d35a90c120da56'
             '8925ab7e022d6c565d37d7ed6abdaca1bdace12dfcb4c9808f6b7a6ac7e056a7'
             'f3d6132e63f9749227977cab9160c562fb542c261e4fa661ecb1424ad24cf82b'
-            '46e634aa701369b89e657ffdff739b7e81ce2e6c8675b6b226e72715a56baabf')
-
+            '46e634aa701369b89e657ffdff739b7e81ce2e6c8675b6b226e72715a56baabf'
+            '51626f8ea673350ecde304fec37ae79339387954f7f22b1c6a032d74bbc8c95c')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
