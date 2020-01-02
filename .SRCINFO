@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-katya
+	pkgdesc = The backgrounds included in Linux Mint 11 Katya
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-katya
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-katya/mint-backgrounds-katya_1.0.1.tar.gz
+	sha256sums = 8b305f7b93bc2da06d34a70e5476c29400f55f96c61b9ad37953a64fbfbe0010
+
+pkgname = mint-backgrounds-katya
+
