@@ -1,7 +1,7 @@
 pkgbase = tshock-bin
 	pkgdesc = A Terraria Server administration modification that runs on the open source TerrariaAPI.
 	pkgver = 4.3.26
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://tshock.co/xf
 	install = tshock-bin.install
@@ -12,7 +12,7 @@ pkgbase = tshock-bin
 	provides = tshock
 	conflicts = tshock
 	noextract = tshock_4.3.26.zip
-	backup = etc/conf.d/tshock
+	backup = etc/conf.d/tshock/default.conf
 	source = tshock_4.3.26.zip::https://github.com/Pryaxis/TShock/releases/download/v4.3.26/tshock_4.3.26.zip
 	source = tshock.sh
 	source = default.conf

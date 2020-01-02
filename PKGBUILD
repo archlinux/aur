@@ -6,7 +6,7 @@ pkgname=${_pkgname}-bin
 pkgver=4.3.26
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Terraria Server administration modification that runs on the open source TerrariaAPI."
 arch=(any)
 url="http://tshock.co/xf"
@@ -29,7 +29,7 @@ sha512sums=('b61712988fb34324625bbba49779655c7b92e067a720b7d116c41583addec3592ae
             'a04b458932bb3882b9d40f9b5a9074b681e60cb3284635d1efb7e54293f39df334e7ae526dabf50f633ecdde980f287a939d3ea6eb0d4098663fbda21af70a65'
             '5752f8453fbb4d973ebe71bba371ae7b0ddd2313ccd17de89b3942d024e295805324085640756e7118e4cc76abee675f5e253526261cb62cb76b0bc155aca317')
 
-backup=("etc/conf.d/${_pkgname}")
+backup=("etc/conf.d/${_pkgname}/default.conf")
 
 package() {
     install -Dm755 "${srcdir}/tshock.sh" "${pkgdir}/usr/bin/tshock"
