@@ -1,11 +1,12 @@
 pkgbase = gammy-git
 	pkgdesc = Automatic screen brightness tool.
-	pkgver = 0.9.53.r0.14b9d44
+	pkgver = 0.9.54.r0.69154b2
 	pkgrel = 1
 	url = https://getgammy.com
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = imagemagick
 	depends = mesa
 	depends = qt5-base
 	optdepends = plog: library for debug logging
@@ -14,7 +15,7 @@ pkgbase = gammy-git
 	source = git+https://github.com/Fushko/gammy.git
 	source = gammy.desktop
 	sha256sums = SKIP
-	sha256sums = ad02735598429f55246969c58fe5ff54db7960e813996d6d642c08fb18687583
+	sha256sums = 6c67db210bd45f51d80119d25ffcaff9861aea926427ccf186d4530cf35ecf5d
 
 pkgname = gammy-git
 
