@@ -8,7 +8,6 @@ url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
 arch=(i686 x86_64 armv6h armv7h)
 depends=(gcr
-         gnome-desktop
          libhandy
          libnm
          libsecret
