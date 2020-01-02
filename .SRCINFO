@@ -1,0 +1,34 @@
+pkgbase = ktechlab-qt5-git
+	pkgdesc = An IDE for microcontrollers and electronics (unreleased version)
+	pkgver = r839.d5096083
+	pkgrel = 1
+	url = https://community.kde.org/Incubator/Projects/KTechLab
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = glib2
+	depends = gpsim
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kdelibs4support
+	depends = kdesignerplugin
+	depends = kdoctools
+	depends = khtml
+	depends = ki18n
+	depends = kiconthemes
+	depends = kinit
+	depends = kio
+	depends = kparts
+	depends = ktexteditor
+	depends = ktextwidgets
+	depends = kwidgetsaddons
+	depends = qt5-base
+	depends = solid
+	conflicts = ktechlab
+	source = git://github.com/ktechlab/ktechlab.git
+	md5sums = SKIP
+
+pkgname = ktechlab-qt5-git
+
