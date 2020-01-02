@@ -5,19 +5,30 @@
 
 _pkgname=librime
 pkgname=$_pkgname-git
-pkgver=1.5.3.r3.gb9f70286
+pkgver=1.5.3.r32.g0f3d0df0
 pkgrel=1
-pkgdesc="Rime input method engine"
+pkgdesc="Rime input method engine with plugins"
 arch=('i686' 'x86_64')
 url="http://rime.im/"
 license=('GPL3')
-depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'google-glog' 'marisa')
-optdepends=('brise: Rime schema repository')
+depends=('boost-libs' 'opencc' 'yaml-cpp' 'leveldb' 'google-glog' 'marisa' 'lua')
+optdepends=('rime-data: Rime schema repository from plum')
 makedepends=('cmake' 'boost' 'git' 'gtest')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/rime/$_pkgname.git")
-sha512sums=('SKIP')
+source=("git+https://github.com/rime/librime.git"
+        "git+https://github.com/lotem/librime-octagram"
+        "git+https://github.com/rime/librime-charcode"
+        "git+https://github.com/hchunhui/librime-lua")
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+prepare() {
+  cd $_pkgname
+  sed -i 's/(BOOST_COMPONENTS filesystem regex system)/(BOOST_COMPONENTS filesystem regex system locale)/' CMakeLists.txt
+  cd plugins
+  rm -rf librime-*
+  ln -sf ../../librime-* .
+}
 
 pkgver() {
   cd $_pkgname
@@ -26,7 +37,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
+  cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_MERGED_PLUGINS=on
   cmake --build build
 }
 

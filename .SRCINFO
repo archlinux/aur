@@ -1,6 +1,6 @@
 pkgbase = librime-git
-	pkgdesc = Rime input method engine
-	pkgver = 1.5.3.r3.gb9f70286
+	pkgdesc = Rime input method engine with plugins
+	pkgver = 1.5.3.r32.g0f3d0df0
 	pkgrel = 1
 	url = http://rime.im/
 	arch = i686
@@ -16,10 +16,17 @@ pkgbase = librime-git
 	depends = leveldb
 	depends = google-glog
 	depends = marisa
-	optdepends = brise: Rime schema repository
+	depends = lua
+	optdepends = rime-data: Rime schema repository from plum
 	provides = librime
 	conflicts = librime
 	source = git+https://github.com/rime/librime.git
+	source = git+https://github.com/lotem/librime-octagram
+	source = git+https://github.com/rime/librime-charcode
+	source = git+https://github.com/hchunhui/librime-lua
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = librime-git
