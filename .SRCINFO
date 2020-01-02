@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-lisa
+	pkgdesc = The backgrounds included in Linux Mint 12 Lisa
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-lisa
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-lisa/mint-backgrounds-lisa_1.1.tar.gz
+	sha256sums = be6c378505a901a62735b12bb615e79723788f5eecba944a930f9811eddec133
+
+pkgname = mint-backgrounds-lisa
+
