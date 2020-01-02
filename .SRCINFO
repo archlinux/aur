@@ -1,0 +1,21 @@
+pkgbase = virtkvm-git
+	pkgdesc = A virtual KVM switch
+	pkgver = r7.d47e571
+	pkgrel = 1
+	url = https://github.com/alexbakker/virtkvm.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = ddcutil
+	depends = python-flask
+	depends = libvirt-python
+	depends = python-pyaml
+	depends = python-xmltodict
+	provides = virtkvm
+	conflicts = virtkvm
+	source = virtkvm-git::git://github.com/alexbakker/virtkvm.git
+	md5sums = SKIP
+
+pkgname = virtkvm-git
+
