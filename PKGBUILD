@@ -2,17 +2,17 @@
 
 _name=fintech
 pkgname=python-$_name
-pkgver=5.2.1
+pkgver=6.1.1
 pkgrel=1
-pkgdesc=''
+pkgdesc='Finance tech: SEPA, EBICS & more'
 arch=(any)
-url="https://github.com/theislab/$_name"
+url="https://www.joonis.de/$_name"
 license=('custom:restricted use')
 depends=(python-certifi 'python-fpdf>=1.7.2' python-lxml)
-_pyarch=cp37
+_pyarch=cp38
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('3239606d6d30fce6b0cac405b2696366d0b57ff5bffb281e7ecaec3fc2004d25')
+sha256sums=('01cdf6e983b335601b53db04d6fd29a95c6906e88c89336fd20fc6985a1a1bdc')
 noextract=("$_wheel")
 
 package() {
