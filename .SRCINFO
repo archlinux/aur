@@ -6,7 +6,6 @@ pkgbase = mill-git
 	arch = any
 	license = MIT
 	makedepends = mill
-	makedepends = scala
 	depends = bash
 	depends = java-environment
 	provides = mill
