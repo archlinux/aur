@@ -19,7 +19,6 @@ depends=(
 )
 makedepends=(
     git
-    m4
     make
     pandoc
 )
@@ -38,6 +37,7 @@ depends+=(
     parallel
     wget
 )
+makedepends+=(m4)
 optdepends+=(
     "bash-completion: bash completion"
     "devtools: aur-chroot"
