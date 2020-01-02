@@ -2,7 +2,7 @@
 
 pkgname=sugar3-toolkit-gtk3
 pkgver=0.116
-pkgrel=1
+pkgrel=2
 pkgdesc="Sugar GTK library"
 arch=('x86_64')
 url="https://sugarlabs.org/"
@@ -15,11 +15,11 @@ source=("https://github.com/sugarlabs/sugar-toolkit-gtk3/archive/v$pkgver.tar.gz
 sha256sums=('64165bf01a53a8267ce9538808e1d077a51eff3616d41bb3bbdf2e538e5ac102')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd sugar-toolkit-gtk3-$pkgver
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd sugar-toolkit-gtk3-$pkgver
   # Disable hardened build until fixed upstream
   # https://bugs.sugarlabs.org/ticket/4886
   export CFLAGS=${CFLAGS/ -fno-plt}
@@ -31,6 +31,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd sugar-toolkit-gtk3-$pkgver
   make DESTDIR="$pkgdir" install
 }

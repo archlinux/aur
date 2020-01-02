@@ -1,7 +1,7 @@
 pkgbase = sugar3-toolkit-gtk3
 	pkgdesc = Sugar GTK library
 	pkgver = 0.116
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sugarlabs.org/
 	arch = x86_64
 	license = LGPL
