@@ -1,0 +1,15 @@
+pkgbase = gotpl-git
+	pkgdesc = CLI tool for Golang templates
+	pkgver = 20150811.2_a4179fb
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = Apache License
+	makedepends = go
+	makedepends = git
+	makedepends = go
+	source = gotpl::git://github.com/tsg/gotpl.git#branch=master
+	md5sums = SKIP
+
+pkgname = gotpl-git
+
