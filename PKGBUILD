@@ -1,14 +1,22 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _pkgname=pypi2pkgbuild
 pkgname=python-$_pkgname-git
-pkgver=0.1.r26.g2c0e9c5
+pkgver=0.1.r82.gb3b6ae9
 pkgrel=1
 pkgdesc="Convert PyPI packages to Arch Linux packages"
 arch=('any')
 url="https://github.com/anntzer/pypi2pkgbuild"
 license=('MIT')
-depends=('python-pip' 'namcap' 'pkgfile')
-makedepends=('python-setuptools' 'git')
+depends=(
+	'namcap'
+	'pkgfile'
+	'python-pip'
+	'python-wheel'
+)
+makedepends=(
+	'git'
+	'python-setuptools-scm'
+)
 conflicts=('python-pypi2pkgbuild')
 source=("git+https://github.com/anntzer/pypi2pkgbuild.git")
 sha512sums=('SKIP')
