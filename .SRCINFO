@@ -1,0 +1,32 @@
+pkgbase = crema
+	pkgdesc = Manage (remote) custom repositories
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gitlab.com/mipimipi/crema
+	arch = any
+	license = GPL3
+	makedepends = make
+	makedepends = pandoc
+	depends = binutils
+	depends = devtools
+	depends = rsync
+	depends = git
+	depends = jq
+	depends = pacutils
+	depends = parallel
+	depends = wget
+	optdepends = gnupg
+	optdepends = bash-completion: bash completion
+	optdepends = devtools: aur-chroot
+	optdepends = vifm: build file interaction
+	provides = aurutils
+	provides = crema
+	conflicts = crema-git
+	conflicts = aurutils
+	conflicts = aurutils-git
+	source = crema-2.0.tar.gz::https://gitlab.com/mipimipi/crema/-/archive/2.0/crema-2.0.tar.gz
+	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
+	md5sums = SKIP
+
+pkgname = crema
+
