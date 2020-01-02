@@ -2,7 +2,7 @@
 
 pkgname=sugar3-artwork
 pkgver=0.116
-pkgrel=1
+pkgrel=2
 pkgdesc="Sugar icons and themes"
 arch=('x86_64')
 url="https://sugarlabs.org/"
@@ -14,7 +14,7 @@ source=(https://github.com/sugarlabs/sugar-artwork/archive/v$pkgver.tar.gz)
 sha256sums=('bd0be61852edc9161431ef966ac915ad8c39cfe82ff995b481d80333fd3479f0')
 
 build() {
-  cd $pkgname-$pkgver
+  cd sugar-$pkgver
   chmod +x ./autogen.sh
   ./autogen.sh --prefix=/usr
   sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -22,6 +22,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd sugar-$pkgver
   make DESTDIR="$pkgdir" install
 }
