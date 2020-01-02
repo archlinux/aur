@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@gmail.com>
 
 pkgname=mediawiki-extension-checkuser
-pkgver=REL1_33.r2412.g9fa17066
+pkgver=REL1_34+r2460+g8c0ee631
 pkgrel=1
-_mw='REL1_33'
-_commit='9fa17066de8fe603c20e76bdbb5ce849eb51d5d5'
+_mw='REL1_34'
+_commit='8c0ee6313acc53da0f58184ec1823c8f6e2e0483'
 pkgdesc='An extension for MediaWiki that allows a user to check which IPs are used by a given username and which usernames are used by a given IP'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:CheckUser'
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/CheckUser"
-	printf '%s.r%s.g%s' "${_mw}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf '%s+r%s+g%s' "${_mw}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
