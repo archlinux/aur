@@ -8,7 +8,7 @@ _wl_project=${_orgname}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_orgname,,}-${_pkgname}-git
-pkgver=20191211.4.r0.gf3bf5d2a
+pkgver=20191221.17.r0.g8170a381
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=(x86_64)
@@ -62,14 +62,14 @@ prepare() {
 
   if [ "`curl ${_wl_hz}`" = "ok" ]; then
     rename nb nb_NO *_nb.ts
-    rename CN Hans *_zh_CN.ts
+    rename CN Hans OpenOrienteering_zh_CN.ts
 
     wl_update ${_pkgname} ${_orgname}_
     wl_update map-symbols map_symbols_
     wl_update qt qt_
 
     rename nb_NO nb *_nb_NO.ts
-    rename Hans CN *_zh_Hans.ts
+    rename Hans CN OpenOrienteering_zh_Hans.ts
   fi
 }
 
