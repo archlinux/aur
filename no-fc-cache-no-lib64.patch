@@ -1,8 +1,8 @@
 diff --git a/configure b/configure
-index 03e9e18..e5e561d 100755
+index 2a884c5..b42319b 100755
 --- a/configure
 +++ b/configure
-@@ -21918,7 +21918,7 @@ fi
+@@ -21228,7 +21228,7 @@ fi
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -12,10 +12,10 @@ index 03e9e18..e5e561d 100755
    ALTERNATE_DOCDIR_TRUE=
    ALTERNATE_DOCDIR_FALSE='#'
 diff --git a/configure.ac b/configure.ac
-index bc0da30..53d867e 100644
+index 6b74e07..c90dbba 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -3012,12 +3012,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -2766,12 +2766,7 @@ if test x"$enable_lame" != "xno" ; then
    fi
  fi
  
@@ -29,7 +29,7 @@ index bc0da30..53d867e 100644
  
  if test x"$is_amigaos4" = "xyes"; then
    dnl for AmigaOS4 native resid needs to be configured without dependency tracking
-@@ -4060,7 +4055,7 @@ case "$host_os" in
+@@ -3635,7 +3630,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then
@@ -39,10 +39,10 @@ index bc0da30..53d867e 100644
      else
        VICEDIR="$PREFIX/lib/vice"
 diff --git a/configure.proto b/configure.proto
-index 4204eda..775450a 100755
+index 4adca9b..677067f 100755
 --- a/configure.proto
 +++ b/configure.proto
-@@ -3012,12 +3012,7 @@ if test x"$enable_lame" != "xno" ; then
+@@ -2766,12 +2766,7 @@ if test x"$enable_lame" != "xno" ; then
    fi
  fi
  
@@ -56,7 +56,7 @@ index 4204eda..775450a 100755
  
  if test x"$is_amigaos4" = "xyes"; then
    dnl for AmigaOS4 native resid needs to be configured without dependency tracking
-@@ -4060,7 +4055,7 @@ case "$host_os" in
+@@ -3635,7 +3630,7 @@ case "$host_os" in
      ;;
    linux*)
      if test x"$host_cpu" = "xx86_64"; then

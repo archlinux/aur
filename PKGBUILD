@@ -7,8 +7,8 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=3.3
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -30,16 +30,14 @@ source=(
   "$_pkgname.desktop"
   'no-fc-cache-no-lib64.patch'
   'zlib-1.2.7.patch'
-  'notexi-notxt.patch'
 )
 
 sha512sums=(
-  '702942e33b6e3d7e29ca6ed483242319ed5f6be26831def88a282cf7dce25d4c34dbf3651fcf8b583492fcb280ce5f4304c6eda3712088a73db24772c7a2bb3a'
+  '3d42e7bbe15ec6efac918d11e354052048dac8efdeedc64bb724cb8aaf2dd8ec7a2fc176ddbc93722ce7c680f06d3966efc10587c24e9643238315ded025c4b8'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
-  'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
-  'fc93c4917624bdee2c3b86acc8a36ddf2cfdbd69e89dff4907771c66c4457ee499dfb76a49e603474a12c9f84d0561a0b1b4b7ae82a9034b57dd0bb977770d13'
-  'b97fc172f4092675f13866ec208b12b494a4a1c35d535fe1e5d2c69bbc62b6d19df922fc7086c1878071d67ac2aa70920d1469b48a898a89c41b58ba053f73bd'
-  '25537f0e433d3b7a403adeb4efad48d29c869bf90a38de2868b3324240a63c6927f43cb0246e35b9b669bc1d02f17ebbcb77f51aeae7ff78071c9a412fd9e1cb'
+  'f26a9fe5e429268f0ab7d571db48f9c126ea289563758c7442989bb07cef026bf2a5a1e7b7a882362a70407930797de6dfd9af4db8297d6afa5bed5d79fe6164'
+  '6cc0e6f029750ead84f292dce9879f11b243266cf3787f96347cdd2d1193a74992c3dd63171af79d7f376d983e11a5dfc9327f27e2190de70f008ab81d4d93bb'
+  'b996c044ff6a7b43a1b6ba2fd3f57ce68d4474902764e8b3f5d9c64e3730e6120e16d6d86b6c5e27513fac7b5d9449afcaf67e4c3014f2f535627648550f56aa'
 )
 
 prepare() {
@@ -47,7 +45,6 @@ prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../no-fc-cache-no-lib64.patch
   patch -Np1 -i ../zlib-1.2.7.patch
-  patch -Np1 -i ../notexi-notxt.patch
 
   # Convert MS-DOS linebreaks to Unix style ones
   printf '%s ' 'Converting MS-DOS format linebreaks to Unix format...'
