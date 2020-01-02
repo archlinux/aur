@@ -19,7 +19,6 @@ pkgbase = crema
 	optdepends = bash-completion: bash completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: build file interaction
-	provides = aurutils
 	provides = crema
 	conflicts = crema-git
 	conflicts = aurutils
