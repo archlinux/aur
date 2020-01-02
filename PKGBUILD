@@ -3,20 +3,15 @@
 
 pkgname=vim-vimwiki
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A personal wiki for Vim'
 arch=('any')
 url='https://github.com/vimwiki/vimwiki'
 license=('MIT')
 groups=('vim-plugins')
-depends=('vim' 'python2')
+depends=('vim')
 source=("https://github.com/vimwiki/vimwiki/archive/v${pkgver}.tar.gz")
 sha256sums=('ccae0b8865bd3aea5f0834e888af294c654238f1d472390c1606f0588f01213a')
-
-prepare() {
-  # Extract licence from vim's help
-  grep '^[0-9]*. License' "${pkgname#vim-}-${pkgver}/doc/vimwiki.txt" -A 1000 > LICENCE
-}
 
 package () {
   cd "${pkgname#vim-}-${pkgver}"
@@ -30,5 +25,5 @@ package () {
   for x in {ftplugin,plugin,syntax}; do
     install -Dm644 $x/* $pkgdir/usr/share/vim/vimfiles/$x/
   done
-  install -Dm644 ../LICENCE $pkgdir/usr/share/licenses/$pkgname/LICENCE
+  install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENCE
 }
