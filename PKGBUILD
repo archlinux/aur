@@ -2,7 +2,7 @@
 
 pkgname=elvish
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A friendly and expressive Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
@@ -25,7 +25,7 @@ prepare() {
 build() {
     export GOPATH="$srcdir/build"
     cd "$srcdir/elvish"
-    go build -v -trimpath -ldflags="-extldflags $LDFLAGS -X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" .
+    go build -v -trimpath -buildmode=pie -ldflags="-extldflags $LDFLAGS -X github.com/elves/elvish/pkg/buildinfo.Version=$pkgver" .
 }
 
 check() {
