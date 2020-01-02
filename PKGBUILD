@@ -2,7 +2,7 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.69.gc04a4acaa
+pkgver=1.1.8.429.g4f07c8da6
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
@@ -43,11 +43,14 @@ build() {
   _cache_file=../$CARCH-config.cache
 
   _knm="-lts"
+  _kvd="4.19.92-1"
+  _kvo=""
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
-  _kvv="${_kvv:-4.19.84-1}"
+  _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
+
 
   ./configure \
       KCC="gcc" \
@@ -82,11 +85,20 @@ build() {
       --with-optimize=speed \
       --with-gnu-ld \
       --disable-modules
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make
 
   cd "$srcdir/openss7-modules-lts-git"
 
-  _kvr="$(pacman -Qi linux-lts|awk '/^Version/{print$3}')-lts"
+  _knm="-lts"
+  _kvd="4.19.92-1"
+  _kvo=""
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="${_kvv:-${_kvd}}"
+  _kvr="${_kvv:+${_kvv}${_knm}}"
+  _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 
   _csite_file=../$CARCH-config.site
   _mpost_file=../$CARCH-$_kvr-modpost.cache
@@ -131,7 +143,15 @@ build() {
 
   cd "$srcdir/openss7-modules-git"
 
-  _kvr="$(pacman -Qi linux|awk '/^Version/{print$3}')-ARCH"
+  _knm=""
+  _kvd="5.4.7-arch1-1"
+  _kvo=""
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="${_kvv:-${_kvd}}"
+  _kvr="${_kvv:+${_kvv}${_knm}}"
+  _kvr="$(echo $_kvr|sed -e 's,\.arch,-arch,')"
+  _kvx="$(echo $_kvr|sed -e 's,\.arch*,,')"
 
   _csite_file=../$CARCH-config.site
   _mpost_file=../$CARCH-$_kvr-modpost.cache
@@ -214,17 +234,20 @@ package_openss7-git() {
 
 package_openss7-modules-git() {
   _knm=""
+  _kvd="5.4.7-arch1-1"
+  _kvo=""
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
-  _kvv="${_kvv:-5.3.11.1-1}"
+  _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
-  _kvx="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*,,')"
-  _kvn="$(echo $_kvr | sed -e 's,-.*$,,')"
-  _kvl="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*$,,')"
-  _kvi="$(echo $_kvl | sed -e 's,.*\.,,')"
-  _kvi=$((_kvi+1))
-  _kvu="3.$_kvi"
-  pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites ($_kvx Kernel Modules)"
+  _kvr="$(echo $_kvr|sed -e 's,\.arch,-arch,')"
+  _kvx="$(echo $_kvr|sed -e 's,\.arch*,,')"
+# _kvn="$(echo $_kvr | sed -e 's,-.*$,,')"
+# _kvl="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*$,,')"
+# _kvi="$(echo $_kvl | sed -e 's,.*\.,,')"
+# _kvi=$((_kvi+1))
+# _kvu="5.$_kvi"
+  pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-ARCH} Kernel Modules)"
   provides=("$_pkgbase-kernel=$pkgver"
             "$_pkgbase-modules=$pkgver")
   conflicts=("$_pkgbase-modules")
@@ -254,26 +277,27 @@ package_openss7-modules-git() {
 # install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
 # mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
 #       "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
-  install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
+  install -d "$pkgdir"/usr/src
   ln -s ../lib/modules/${_kvr}/build/openss7 \
-        "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
+        "$pkgdir"/usr/src/$_pkgbase-modules-$pkgver-$pkgrel
 }
 
 package_openss7-modules-lts-git() {
   _knm="-lts"
+  _kvd="4.19.92-1"
+  _kvo=""
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
-  _kvv="${_kvv:-4.19.84-1}"
+  _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
-  _kvn="$(echo $_kvr | sed -e 's,-.*$,,')"
-  _kvl="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*$,,')"
-  _kvi="$(echo $_kvl | sed -e 's,.*\.,,')"
-  _kvi=$((_kvi+1))
-  _kvu="3.$_kvi"
-  pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites ($_kvx Kernel Modules)"
-  provides=("$_pkgbase-modules-git=$pkgver"
-            "$_pkgbase-kernel=$pkgver"
+# _kvn="$(echo $_kvr | sed -e 's,-.*$,,')"
+# _kvl="$(echo $_kvr | sed -e 's,\.[0-9][0-9]*-.*$,,')"
+# _kvi="$(echo $_kvl | sed -e 's,.*\.,,')"
+# _kvi=$((_kvi+1))
+# _kvu="4.$_kvi"
+  pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS} Kernel Modules)"
+  provides=("$_pkgbase-kernel=$pkgver"
             "$_pkgbase-modules-lts=$pkgver")
   conflicts=("$_pkgbase-modules-lts")
   depends=("$pkgbase" "linux${_knm}=$_kvv")
@@ -287,9 +311,9 @@ package_openss7-modules-lts-git() {
   rm -fr "$pkgdir/usr/share/doc"
   d="$pkgdir/usr/lib/modules/${_kvr}/build/openss7"
   install -d "$d"
-  install -m644 ../$CARCH-$_kvr-config.cache     "$d"
   install -m644 ../$CARCH-config.site            "$d"
   install -m644 ../$CARCH-$_kvr-modpost.cache    "$d"
+  install -m644 ../$CARCH-$_kvr-config.cache     "$d"
   install -m644 Module.mkvars                    "$d"
   install -m644 System.symvers                   "$d"
   install -m644 Module.symvers                   "$d"
@@ -302,9 +326,9 @@ package_openss7-modules-lts-git() {
 # install -d "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
 # mv -f "$pkgdir"/usr/lib/modules/${_kvr}/extramodules/openss7 \
 #       "$pkgdir"/usr/lib/modules/extramodules-${_kvx}${_knm}
-  install -d "$pkgdir/usr/src/$_pkgname-$pkgver-$pkgrel"
+  install -d "$pkgdir"/usr/src
   ln -s ../lib/modules/${_kvr}/build/openss7 \
-        "$pkgdir/usr/src/${_pkgname}-$pkgver-$pkgrel/$_kvr"
+        "$pkgdir"/usr/src/$_pkgbase-modules-lts-$pkgver-$pkgrel
 }
 
 package_openss7-java-git() {
