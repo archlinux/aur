@@ -1,6 +1,6 @@
 pkgbase = sheepit-client-git
 	pkgdesc = Client for the free and distributed render farm
-	pkgver = 5.1676.3035r379.18e9e75
+	pkgver = 5.1678.3038r381.2a8f324
 	pkgrel = 1
 	url = https://www.sheepit-renderfarm.com/
 	install = sheepit-client.install

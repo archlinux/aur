@@ -1,7 +1,7 @@
 # Maintainer: Geoffrey Frogeye <geoffrey+aur@frogeye.fr>
 
 pkgname=sheepit-client-git
-pkgver=5.1676.3035r379.18e9e75
+pkgver=5.1678.3038r381.2a8f324
 pkgrel=1
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ md5sums=('SKIP'
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
-        printf "%sr%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "%sr%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
