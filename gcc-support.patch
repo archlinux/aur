@@ -10,7 +10,7 @@ index d2305c8f..811c2e95 100755
 -        ldflags.extend(['-flto', '-fwhole-program-vtables'])
 +        cflags.append('-flto')
 +        ldflags.append('-flto')
-+        if "clang" in cc:
++        if "clang" in cxx:
 +          cflags.append('-fwhole-program-vtables')
 +          ldflags.append('-fwhole-program-vtables')
  

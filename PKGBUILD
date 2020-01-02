@@ -3,7 +3,7 @@
 
 pkgname=gn-git
 pkgdesc='Meta-build system which generates Ninja build files'
-pkgver=r1668.776bbfd9
+pkgver=r1682.a5bcbd72
 pkgrel=1
 license=('BSD')
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ makedepends=(python ninja git)
 url='https://gn.googlesource.com/gn'
 source=("gn::git+${url}" gcc-support.patch)
 sha256sums=('SKIP'
-            '5b7d79a6953f023109f0c23601ba9fbb8b63f50ebb6b185e32102c213a97d81a')
+            'f372f4d2129219d29d4c4adbade6a653059d376d8ecd8785a3bad2c0ac96f304')
 
 pkgver () {
 	export GIT_DIR="${startdir}/gn"
@@ -54,7 +54,7 @@ package () {
 	local item
 	for item in autoload ftplugin ftdetect syntax ; do
 		install -Dm 644 -t "${pkgdir}/usr/share/vim/vimfiles/${item}" \
-			"gn/tools/gn/misc/vim/${item}"/*.vim
+			"gn/misc/vim/${item}"/*.vim
 	done
 		
 	# License
