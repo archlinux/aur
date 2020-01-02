@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wf-shell-git
-pkgver=r127.5593eab
+pkgver=r129.d319b01
 pkgrel=1
 pkgdesc='GTK3-based panel for the Wayfire compositor'
 url=https://wayfire.org
@@ -8,7 +8,7 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}")
 conflicts=("${provides[@]}")
-depends=(wf-config gtkmm3 gtk-layer-shell)
+depends=(wf-config gtkmm3 gtk-layer-shell pulseaudio)
 makedepends=(wayland wayland-protocols meson ninja git gobject-introspection)
 source=("${pkgname}::git+https://github.com/WayfireWM/wf-shell")
 sha512sums=('SKIP')
@@ -24,7 +24,7 @@ pkgver () {
 
 build () {
 	rm -rf build
-	arch-meson "${pkgname}" build
+	arch-meson "${pkgname}" build -Dpulse=enabled
 	ninja -C build
 }
 
