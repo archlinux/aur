@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Gammy
-Exec=/opt/gammy/bin/gammy
+Exec=gammy
 Icon=gammy
 Type=Application
 Terminal=false
