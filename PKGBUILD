@@ -4,13 +4,13 @@ pkgver=8.6.4
 _tcl_tag=tip-412
 _tk_tag=core-8-6-4
 _kit_tag=8.6.4-9
-pkgrel=11
+pkgrel=12
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime"
 arch=('i686' 'x86_64')
 url="https://github.com/patthoyts/kitgen"
 options=(emptydirs !buildflags !makeflags !strip)
 license=('custom')
-makedepends=('upx' 'ucl' 'libx11')
+makedepends=('upx' 'ucl' 'libx11' 'xorgproto')
 source=("https://github.com/stiefel40k/kitgen/archive/${_kit_tag}.tar.gz"
 	"tk.tar.gz::https://github.com/tcltk/tk/archive/${_tk_tag}.tar.gz"
 	"tcl.tar.gz::https://github.com/tcltk/tcl/archive/${_tcl_tag}.tar.gz")
