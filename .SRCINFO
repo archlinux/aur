@@ -1,7 +1,7 @@
 pkgbase = plex-media-player
 	pkgdesc = Next generation Plex Desktop Client
 	pkgver = 2.47.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/plexinc/plex-media-player
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,6 @@ pkgbase = plex-media-player
 	source = web-client-desktop-159-65a90631b12c68-3.104.2-1b12c68.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/159-65a90631b12c68/web-client-desktop-3.104.2-1b12c68.tar.xz.sha1
 	source = web-client-tv-159-65a90631b12c68-4.17.1-65a9063.tar.xz::https://artifacts.plex.tv/web-client-pmp/159-65a90631b12c68/web-client-tv-4.17.1-65a9063.tar.xz
 	source = web-client-tv-159-65a90631b12c68-4.17.1-65a9063.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/159-65a90631b12c68/web-client-tv-4.17.1-65a9063.tar.xz.sha1
-	source = plex-media-player.desktop
 	source = qt.patch
 	sha512sums = b090654cc2e5d07011c54965abe5591eb6dada832dcd0ccfe37c9cbb73d50e8b22e8f20e8ab64e30813bca26acc11b0470099f44c4e6217f4f3ce82f7dc3c95f
 	sha512sums = 17e96f3270c0e8495bcb8fd9d90fabf4941375841642129ad0c35e07ec9f42df23e2a5f414cd69fdd2cbf43ef551b74d22b6132dd4001653f3f681b83768a0ed
@@ -32,7 +31,6 @@ pkgbase = plex-media-player
 	sha512sums = c975ba666cb7e6dc583ae1329f18e780cd947467e1547f1eb6fe1f8c0a9e10250eb77f42efb3e427ae78b21fd8442c332a815a893941be1781f16e8408527e93
 	sha512sums = 79fdf27cd1c13adcecdfed25d6986c52ee6411c5185f2f4c709d415689e6db253a21d2d5f67c287149d0f382622e642dc8823719bf7219ed0d665cfaf120e9b0
 	sha512sums = 2265eb7b5fb842069dab6dd55cd84b3d4a0bc643b50cea870ded3032006a06cb9064ea2ea6e955b2f837f3fa4b4974613bf93f7e7dfae7d744ee8ff7462bf63e
-	sha512sums = d3dbd66be744f497e095eb118ea28180769c74b3e8a8d3554b1570a224bdcd66c0c1416a3baaa72e6fff5a63beda30d3ce953cd886a2f313a655fee5d8f26019
 	sha512sums = SKIP
 
 pkgname = plex-media-player
