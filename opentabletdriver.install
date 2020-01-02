@@ -1,0 +1,5 @@
+#!/bin/sh
+
+post_install() {
+    udevadm control --reload-rules
+}

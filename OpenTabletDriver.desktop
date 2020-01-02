@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=0.1.0-rc1
+Name=OpenTabletDriver
+Exec=/usr/bin/opentabletdriver
+Icon=/usr/share/OpenTabletDriver/Assets/otd.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Accessories;
+X-Desktop-File-Install-Version=0.15
