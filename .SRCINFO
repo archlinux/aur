@@ -7,6 +7,7 @@ pkgbase = crema
 	license = GPL3
 	makedepends = make
 	makedepends = pandoc
+	makedepends = m4
 	depends = binutils
 	depends = devtools
 	depends = rsync
