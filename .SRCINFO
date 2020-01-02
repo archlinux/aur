@@ -1,11 +1,12 @@
 pkgbase = perl-plerd
 	pkgdesc = Ultralight blogging with Markdown and Dropbox
-	pkgver = 1.811
+	pkgver = 1.820
 	pkgrel = 1
 	url = https://metacpan.org/release/Plerd
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-warn>=0
 	depends = perl-app-daemon>=0
 	depends = perl-capture-tiny>=0
 	depends = perl-data-guid>=0
@@ -15,20 +16,23 @@ pkgbase = perl-plerd
 	depends = perl-file-homedir>=0
 	depends = perl-html-socialmeta>=0.72
 	depends = perl-html-strip>=0
+	depends = perl-json>=0
 	depends = perl-mojolicious>=0
 	depends = perl-moose>=0
+	depends = perl-moosex-types-uri>=0
 	depends = perl-path-class>=0
 	depends = perl-readonly>=0
 	depends = perl-template-toolkit>=0
 	depends = perl-text-multimarkdown>=0
 	depends = perl-try-tiny>=0
 	depends = perl-uri>=0
-	depends = perl-web-mention>=0.6
+	depends = perl-web-mention>=0.703
 	depends = perl-yaml>=0
+	depends = perl-libwww>=0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/J/JM/JMAC/Plerd-1.811.tar.gz
-	md5sums = f221e026281c8ca1591d29c62da9368c
-	sha512sums = b0358bc2fb1ab0c64017db7b2a906bb055f849cca784c4cc4292768640a4ba7a5662e70878e25c48d81485cebc010e1967ea5e5c7850e7c33c6a95d750b9692f
+	source = https://cpan.metacpan.org/authors/id/J/JM/JMAC/Plerd-1.820.tar.gz
+	md5sums = ac8d57da4329d7a78874b64bfa8a3a65
+	sha512sums = 375c164483aa50db34f40a18050da8ae47679c84484f606f3e8588ae9ebaea627d6de09aedae59e73454074ab2c34f1b93602842e6b5ebaa669aeb91823e9317
 
 pkgname = perl-plerd
 

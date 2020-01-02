@@ -2,19 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-plerd'
-pkgver='1.811'
+pkgver='1.820'
 pkgrel='1'
 pkgdesc="Ultralight blogging with Markdown and Dropbox"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-app-daemon>=0' 'perl-capture-tiny>=0' 'perl-data-guid>=0' 'perl-datetime>=0' 'perl-datetime-format-w3cdtf>=0' 'perl-file-changenotify>=0' 'perl-file-homedir>=0' 'perl-html-socialmeta>=0.72' 'perl-html-strip>=0' 'perl-mojolicious>=0' 'perl-moose>=0' 'perl-path-class>=0' 'perl-readonly>=0' 'perl-template-toolkit>=0' 'perl-text-multimarkdown>=0' 'perl-try-tiny>=0' 'perl-uri>=0' 'perl-web-mention>=0.6' 'perl-yaml>=0')
+depends=('perl-app-daemon>=0' 'perl-capture-tiny>=0' 'perl-data-guid>=0' 'perl-datetime>=0' 'perl-datetime-format-w3cdtf>=0' 'perl-file-changenotify>=0' 'perl-file-homedir>=0' 'perl-html-socialmeta>=0.72' 'perl-html-strip>=0' 'perl-json>=0' 'perl-mojolicious>=0' 'perl-moose>=0' 'perl-moosex-types-uri>=0' 'perl-path-class>=0' 'perl-readonly>=0' 'perl-template-toolkit>=0' 'perl-text-multimarkdown>=0' 'perl-try-tiny>=0' 'perl-uri>=0' 'perl-web-mention>=0.703' 'perl-yaml>=0' 'perl-libwww>=0')
 makedepends=()
+checkdepends=('perl-test-warn>=0')
 url='https://metacpan.org/release/Plerd'
-source=('https://cpan.metacpan.org/authors/id/J/JM/JMAC/Plerd-1.811.tar.gz')
-md5sums=('f221e026281c8ca1591d29c62da9368c')
-sha512sums=('b0358bc2fb1ab0c64017db7b2a906bb055f849cca784c4cc4292768640a4ba7a5662e70878e25c48d81485cebc010e1967ea5e5c7850e7c33c6a95d750b9692f')
-_distdir="Plerd-1.811"
+source=('https://cpan.metacpan.org/authors/id/J/JM/JMAC/Plerd-1.820.tar.gz')
+md5sums=('ac8d57da4329d7a78874b64bfa8a3a65')
+sha512sums=('375c164483aa50db34f40a18050da8ae47679c84484f606f3e8588ae9ebaea627d6de09aedae59e73454074ab2c34f1b93602842e6b5ebaa669aeb91823e9317')
+_distdir="Plerd-1.820"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
