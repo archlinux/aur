@@ -27,3 +27,32 @@ pkgbase = joplin
 
 pkgname = joplin
 
+pkgbase = joplin
+	pkgdesc = Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS.
+	pkgver = 1.0.177
+	pkgrel = 1
+	url = https://joplin.cozic.net
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = rsync
+	makedepends = npm
+	makedepends = python
+	depends = nodejs
+	depends = gconf
+	depends = libxss
+	provides = joplin
+	provides = joplin-cli
+	source = joplin.desktop
+	source = joplin-desktop.sh
+	source = joplin.sh
+	source = https://github.com/laurent22/joplin/archive/v1.0.177.zip
+	sha256sums = b4f41f027ccfaccf49887395d314a00fc193f856eb8547b3d06c72d340a68334
+	sha256sums = 41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d
+	sha256sums = 5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276
+	sha256sums = 2d974a0c54488112d036942e3d7072391eb36248a7a8e92059abcc610f611397
+
+pkgname = joplin
+
