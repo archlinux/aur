@@ -1,20 +1,21 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=amazon-workspaces-bin
 pkgver=latest
-pkgrel=2
-pkgdesc="Amazon Workspace Client"
+pkgrel=3
+pkgdesc='Amazon Workspace Client'
 arch=('i686' 'x86_64')
 url="https://clients.amazonworkspaces.com/"
 license=('non-free')
 depends=(
+    'gtk3'
 )
 options=('staticlibs')
 makedepends=(
   'binutils'
   'tar'
 )
-source=("workspaces-client.deb::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/bionic/main/binary-amd64/workspacesclient_3.0.0.200_amd64.deb")
-sha1sums=("SKIP")
+source=('workspaces-client.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb')
+sha1sums=('SKIP')
 
 build() {
     cd "$srcdir"
