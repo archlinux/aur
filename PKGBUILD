@@ -14,7 +14,7 @@ makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
         'qt5.14.patch')
 sha256sums=('SKIP'
-            'cf6f110c3556d4b7ad32578238f41569e14157ab9812f4a50a59606ff19feae8')
+            '9f4416f434103947672000b0172cb8875efa57b73a580c1d3fde9a35b7cc729f')
 
 pkgver() {
   cd plex-media-player
