@@ -13,12 +13,12 @@ sha256sums=('SKIP')
 
 build() {
   GOBIN=${HOME}/go/bin
-  PATH=$GOBIN:$PATH
+  PATH=${GOBIN}:${PATH}
   go get -u github.com/go-bindata/go-bindata/...
   make -C "${srcdir}/${pkgname}" bin/linux/amd64/${pkgname} VERSION=${pkgver}
 }
 
 package() {
-  install -Dm4755 "${srcdir}/${pkgname}/bin/linux/amd64/flucky" "$pkgdir/usr/bin/flucky"
-  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm4755 "${srcdir}/${pkgname}/bin/linux/amd64/flucky" "${pkgdir}/usr/bin/flucky"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
