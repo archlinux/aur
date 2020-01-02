@@ -1,4 +1,5 @@
-# Maintainer: Alex Brinister <alex_brinister at yahoo dot com>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Contributor: Alex Brinister <alex_brinister at yahoo dot com>
 
 pkgname=python2-cheetah3
 _name=Cheetah3
