@@ -1,6 +1,6 @@
 pkgbase = ttf-muli
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vernnobile/MuliFont/
 	arch = any
 	license = custom:OFL

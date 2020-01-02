@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
-pkgname='ttf-muli'
-pkgver='2.0'
-pkgrel='1'
+pkgname=ttf-muli
+pkgver=2.0
+pkgrel=2
 description='Sans serif font by Vernon Adams'
 arch=('any')
 url='https://github.com/vernnobile/MuliFont/'
@@ -32,7 +32,7 @@ sha512sums=('9775a3680531a7f1112b66bb417724d53511234fcea2fe78597d335c393e9f7307a
 
 package () {
 	install -m755 -d "${pkgdir}/usr/share/fonts/ttf-muli/"
-	install -m755 -t "${pkgdir}/usr/share/fonts/ttf-muli/" "${srcdir}"/*.ttf
+	install -m644 -t "${pkgdir}/usr/share/fonts/ttf-muli/" "${srcdir}"/*.ttf
 	install -Dm644 "${srcdir}/OFL.txt" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/OFL"
 }
