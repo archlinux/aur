@@ -1,7 +1,7 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=rpm-builder
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Build rpms without a spec file. Pure Rust. No dependencies to librpm'
 arch=('x86_64')
@@ -16,7 +16,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/${pkgname}.bash" "${pkgdir}/etc/profile.d/${pkgname}.sh"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D --mode=0644 "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D --mode=0755 "${srcdir}/${pkgname}-${pkgver}/target/${pkgname}.bash" "${pkgdir}/etc/bash_completion.d/${pkgname}.sh"
+  install -D --mode=0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
