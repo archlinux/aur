@@ -6,12 +6,12 @@
 
 pkgname=rubyripper
 pkgver=0.7.0rc2
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure audiodisc ripper'
 arch=('any')
 url='http://code.google.com/p/rubyripper/'
 license=('GPL3')
-depends=('cdparanoia' 'gtk2' 'ruby-iconv')
+depends=('cdparanoia' 'gtk2' 'ruby-iconv' 'ruby-gettext')
 optdepends=('ruby-gtk2: GTK+ GUI'
             'cd-discid: Freedb support'
             'lame: MP3 encoding support'
@@ -32,7 +32,7 @@ sha256sums=('977089c4a262936f9acf82ad1ab5932de97523ba31b61b5ccc1279a94eaea6ae')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  ./configure --prefix='/usr' --enable-{cli,gtk2} \
+  ./configure --prefix='/usr' --enable-{cli,gtk2,lang-all} \
     --ruby="$(ruby -e 'v = RbConfig::CONFIG["vendorlibdir"] ; v["/usr"] = ""; puts v')"
 }
 
