@@ -3,7 +3,7 @@
 #Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=unison-git
-pkgver=r2.49.543.c403bd6
+pkgver=r2.51.3.26a29f7
 pkgrel=1
 pkgdesc='File-synchronization tool'
 url='http://www.cis.upenn.edu/~bcpierce/unison/'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 #optdepends=('gtk2: for gtk2 support')
 #makedepends=('ocaml>=4.02' 'lablgtk2' 'imagemagick')
-makedepends=('ocaml>=4.02')
+makedepends=('ocaml>=4.02' 'git')
 source=("unison-git::git+https://github.com/bcpierce00/unison"
         'desktop')
 conflicts=('unison')
