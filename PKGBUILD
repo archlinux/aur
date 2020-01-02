@@ -2,8 +2,8 @@
 # Maintainer: chengxuncc <chengxuncc@gmail.com>
 
 pkgname=elvish-bin
-pkgver=0.12
-pkgrel=2
+pkgver=0.13
+pkgrel=1
 pkgdesc="A friendly and expressive Unix shell."
 arch=('x86_64')
 url="https://github.com/elves/elvish"
@@ -15,7 +15,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  '20ef74019eb1318ec40656a08a9925e6f65075c7e988dfaed70b5420bf086c64'
+  '58ba95d3ff8ec7d6961af2e7ced07b846723a12776c4977eab83d15269a6af1c'
   '1912e3785c0eb8d78e0ceed945b32596c11d0f9088aa5c1ad8f18f134f08c500'
 )
 install=elvish.install
