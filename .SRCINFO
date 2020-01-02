@@ -1,15 +1,14 @@
 pkgbase = flucky
 	pkgdesc = A lightweight golang program to read values from different sensors
-	pkgver = v0.1.0.r15.gb125bf4
-	pkgrel = 2
+	pkgver = v0.1.0
+	pkgrel = 3
 	url = https://github.com/volker-raschek/flucky
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = Apache 2.0
-	makedepends = docker
+	makedepends = git
+	makedepends = go
 	makedepends = make
-	source = git+https://github.com/volker-raschek/flucky
+	source = git+https://github.com/volker-raschek/flucky#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = flucky
