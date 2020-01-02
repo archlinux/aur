@@ -4,7 +4,7 @@ post_install() {
 		passwd -l laminar >/dev/null
 	fi
 	if [ ! -d /var/lib/laminar ]; then
-		mkdir -p /var/lib/laminar/cfg/{jobs,nodes,scripts}
+		mkdir -p /var/lib/laminar/cfg/{jobs,contexts,scripts}
 		chown -R laminar: /var/lib/laminar
 	fi
 }
