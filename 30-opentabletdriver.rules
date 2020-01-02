@@ -1,70 +1,70 @@
 # Gaomon S620
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="006d", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="006d", MODE="0660", GROUP="users"
 # Huion H420
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="006e", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="006e", MODE="0660", GROUP="users"
 # Huion HS64
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="006d", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256c", ATTRS{idProduct}=="006d", MODE="0660", GROUP="users"
 # Wacom CTE-440
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0015", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0015", MODE="0660", GROUP="users"
 # Wacom CTH-470
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00de", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00de", MODE="0660", GROUP="users"
 # Wacom CTH-480
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", MODE="0660", GROUP="users"
 # Wacom CTH-490
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033c", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033c", MODE="0660", GROUP="users"
 # Wacom CTH-670
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00df", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00df", MODE="0660", GROUP="users"
 # Wacom CTH-680
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0303", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0303", MODE="0660", GROUP="users"
 # Wacom CTH-690
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033e", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033e", MODE="0660", GROUP="users"
 # Wacom CTL-4100 Bluetooth
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0377", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0377", MODE="0660", GROUP="users"
 # Wacom CTL-4100
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0374", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0374", MODE="0660", GROUP="users"
 # Wacom CTL-470
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00dd", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="00dd", MODE="0660", GROUP="users"
 # Wacom CTL-471
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0300", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0300", MODE="0660", GROUP="users"
 # Wacom CTL-472
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="037a", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="037a", MODE="0660", GROUP="users"
 # Wacom CTL-480
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="030e", MODE="0660", GROUP="users"
 # Wacom CTL-490
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033b", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033b", MODE="0660", GROUP="users"
 # Wacom CTL-6100
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0378", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0378", MODE="0660", GROUP="users"
 # Wacom CTL-671
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0301", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0301", MODE="0660", GROUP="users"
 # Wacom CTL-672
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="037b", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="037b", MODE="0660", GROUP="users"
 # Wacom CTL-680
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0323", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0323", MODE="0660", GROUP="users"
 # Wacom CTL-690
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033d", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="033d", MODE="0660", GROUP="users"
 # Wacom PTH-451
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0314", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0314", MODE="0660", GROUP="users"
 # Wacom PTH-660 Bluetooth
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0360", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0360", MODE="0660", GROUP="users"
 # Wacom PTH-660
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0357", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0357", MODE="0660", GROUP="users"
 # Wacom PTH-850
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0028", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0028", MODE="0660", GROUP="users"
 # XP-Pen Deco 01 v2
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0902", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0902", MODE="0660", GROUP="users"
 # XP-Pen Deco 01
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0042", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0042", MODE="0660", GROUP="users"
 # XP-Pen Deco 02
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0803", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0803", MODE="0660", GROUP="users"
 # XP-Pen G430S
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0075", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0075", MODE="0660", GROUP="users"
 # XP-Pen G430S_B
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0913", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0913", MODE="0660", GROUP="users"
 # XP-Pen G540 Pro
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0061", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0061", MODE="0660", GROUP="users"
 # XP-Pen G640
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0094", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0094", MODE="0660", GROUP="users"
 # XP-Pen G640s
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0906", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0906", MODE="0660", GROUP="users"
 # XP-Pen Star 03v2
-SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0907", MODE=="0660", GROUP=="users"
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="28bd", ATTRS{idProduct}=="0907", MODE="0660", GROUP="users"

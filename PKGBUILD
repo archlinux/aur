@@ -3,7 +3,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 pkgver=r302.5e922de
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/InfinityGhost/OpenTabletDriver"
@@ -20,7 +20,7 @@ source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
         "$_pkgname.desktop")
 
 sha256sums=('SKIP'
-            'f0eed4291884647da3b685e0f8d0e44ee2336892be9cb632dc21e018740d1d66'
+            'c79e055efb915aff51e3785012999df6eaf4d65f4110be3a2e3c289a62168122'
             'f9f5ac5d01b9820b88dc8701da7be3f705270537c2b5dc20a82744c216732a97'
             '304ec78284e99395b3091923da540af3a1826205663aa8fd2d52deb64f852166'
             'f837c3c8903cdd88252cb4faeed5cae8f73451dfaa667bbc4a39ebe713acf0d4')
