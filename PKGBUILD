@@ -1,25 +1,28 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=cadical
-pkgver=sc18
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A simple CDCL satisfiability solver"
 arch=('x86_64')
 url="http://fmv.jku.at/cadical/"
 license=('MIT')
-source=("https://github.com/arminbiere/cadical/archive/$pkgver.tar.gz")
-md5sums=('cbc2e33e5cb9790bf8b552f1d0d2743b')
+source=("https://github.com/arminbiere/cadical/archive/rel-$pkgver.tar.gz")
+md5sums=('3ca1f4d9daaf850f0aa63e17f6813ecf')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-rel-$pkgver"
   ./configure
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-rel-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  cd src
+  install -Dm644 cadical.hpp  "$pkgdir/usr/include/cadical.hpp"
+  cd ..
   cd build
   install -Dm755 cadical      "$pkgdir/usr/bin/cadical"
   install -Dm755 libcadical.a "$pkgdir/usr/lib/libcadical.a"
