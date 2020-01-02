@@ -1,6 +1,6 @@
 pkgbase = python-pre-commit
 	pkgdesc = A framework for managing and maintaining multi-language pre-commit hooks.
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = http://pre-commit.com/
 	arch = any
@@ -11,35 +11,10 @@ pkgbase = python-pre-commit
 	makedepends = python-virtualenv
 	makedepends = python-cached-property
 	makedepends = python-identify
-	makedepends = python2
-	makedepends = python2-aspy-yaml
-	makedepends = python2-virtualenv
-	makedepends = python-cached-property
-	makedepends = python2-identify
-	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-1.20.0.tar.gz
-	md5sums = 4d6ca91697736605285358dc13e4084c
+	makedepends = python-toml
+	makedepends = python-importlib-metadata
+	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-1.21.0.tar.gz
+	md5sums = 75ff77c7e0954038424f2d58b0959c6c
 
 pkgname = python-pre-commit
-	pkgdesc = Python 3 client for pre-commit
-	depends = python
-	depends = python-nodeenv
-	depends = python-aspy-yaml
-	depends = python-virtualenv
-	depends = python-cached-property
-	depends = python-identify
-	depends = python-toml
-	depends = python-cfgv
-	depends = python-importlib-metadata
-
-pkgname = python2-pre-commit
-	pkgdesc = Python 2 client for pre-commit
-	depends = python2
-	depends = python-nodeenv
-	depends = python2-aspy-yaml
-	depends = python2-virtualenv
-	depends = python-cached-property
-	depends = python2-identify
-	depends = python2-toml
-	depends = python2-cfgv
-	depends = python2-importlib-metadata
 
