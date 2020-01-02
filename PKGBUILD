@@ -1,10 +1,7 @@
-# Maintainer: beest <gnubeest@zoho.com>
-# Contributor: c0mmando <c0mmand0_88 at yahoo dot com dot ar>
-# Contributor: Farhan Yousasf <farhany at gmail dot com>
-# Contributor: Vinzenz Vietzke <vinz at archlinux dot us>
+# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=atari800
-pkgver=4.1.0
+pkgver=4.2.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="An emulator of the Atari 800/800XL/130XE/5200 with various extensions"
@@ -13,16 +10,11 @@ url="https://atari800.github.io"
 license=('GPL2')
 depends=('sdl')
 optdepends=('libpng: PNG screenshot support')
-source=("https://github.com/atari800/${pkgname}/archive/ATARI800_${_pkgver}.tar.gz"
-	"onscreenkeyboard.patch")
-sha256sums=('4b77c876db0c2eb2de2a82301e0cd8855d588db5ceec9594c32a9294c5d9de7c'
-	'ac52bcea73a20b2bbf8c060eafca96d4697a7dc96961e1ab28836b8a09808ff1')
+source=("https://github.com/atari800/${pkgname}/archive/ATARI800_${_pkgver}.tar.gz")
+sha256sums=('0bad99575293742e9e062e9fe9d104fe57228b1a32fec7a033b889edc819d7a4')
 
 build() {
     cd "${pkgname}-ATARI800_${_pkgver}"
-
-    # https://github.com/atari800/atari800/issues/58
-    patch -p0 < ${srcdir}/onscreenkeyboard.patch
 
     ./autogen.sh
 
