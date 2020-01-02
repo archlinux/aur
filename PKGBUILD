@@ -3,7 +3,7 @@
 # Contributor: Jamie <dyscoria@googlemail.com>
 
 pkgname=nethack-x11
-pkgver=3.6.2
+pkgver=3.6.4
 pkgrel=1
 pkgdesc='Single-player roguelike dungeon exploration game (X11 version)'
 arch=('x86_64' 'i686')
@@ -18,15 +18,15 @@ backup=('etc/nethackrc'
         'var/games/nethack/perm'
         'var/games/nethack/record'
         'usr/games/nethack/sysconf')
-source=("http://downloads.sourceforge.net/nethack/nethack-${pkgver//./}-src.tgz"
+source=("https://nethack.org/download/${pkgver}/nethack-${pkgver//./}-src.tgz"
         'nethack-x11.patch'
         'nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458')
-sha256sums=('fbd00ada6a4ee347ecd4a350a5b2995b4b4ab5dcc63881b3bc4485b0479ddb1d'
+sha256sums=('0531ab8466032611d61f702cb71fb3ceca78a7a4918885c1b4f2f17cb57dbd59'
             '685d68cbbd2c9854b52d71e53ca2c73c95adef43b79e7d36b6c244dc86f796e5'
             'e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295')
 
 prepare() {
-  cd "nethack-$pkgver"
+  cd "NetHack-NetHack-${pkgver}_Released"
 
   gendesk -n -f \
     --pkgname "$pkgname" \
@@ -84,7 +84,7 @@ prepare() {
 }
 
 build() {
-  cd "nethack-$pkgver/sys/unix"
+  cd "NetHack-NetHack-${pkgver}_Released/sys/unix"
   sh setup.sh hints/linux
   
   cd ../..
@@ -92,7 +92,7 @@ build() {
 }
 
 package() {
-  cd "nethack-$pkgver"
+  cd "NetHack-NetHack-${pkgver}_Released"
 
   install -dm755 $pkgdir/usr/share/{man/man6,doc/nethack}
   install -dm775 $pkgdir/var/games/
