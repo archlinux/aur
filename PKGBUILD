@@ -4,7 +4,7 @@ _pkg='gbt'
 _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
-pkgver=r227.29dc3da
+pkgver=r243.8045396
 pkgrel=1
 pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go'
 url='https://github.com/jtyr/gbt'
@@ -16,7 +16,6 @@ optdepends=('nerd-fonts-complete')
 
 
 pkgver() {
-    msg2 'Getting version'
     cd "$srcdir/src/$_gopkg"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
