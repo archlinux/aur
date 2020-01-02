@@ -1,7 +1,7 @@
 pkgbase = plexdrive-git
 	pkgdesc = Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem
 	pkgver = 5.0.0.r18.gbf61a47
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dweidenfeld/plexdrive
 	arch = any
 	license = MIT
