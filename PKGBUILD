@@ -3,7 +3,7 @@
 _pkg='keyleds'
 
 pkgname="$_pkg-git"
-pkgver=r264.4219bcf
+pkgver=r290.4917e04
 pkgrel=1
 pkgdesc="Advanced RGB LED driver/controller for G410, G513, G610, G810, G910 and GPro"
 arch=('i686' 'x86_64')
@@ -27,7 +27,6 @@ source=("git+https://github.com/spectras/$_pkg.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    msg2 'Getting version'
     cd "$srcdir/$_pkg"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
