@@ -1,0 +1,16 @@
+pkgbase = libdxfrw-git
+	pkgdesc = C++ library to read/write DXF files in binary and ASCII form and to read DWG files from r14 to v2015.
+	pkgver = v0.5.10.r73.g3431cc6
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libdxfrw
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	provides = libdxfrw
+	conflicts = libdxfrw
+	source = git+https://github.com/LibreCAD/libdxfrw.git
+	md5sums = SKIP
+
+pkgname = libdxfrw-git
+
