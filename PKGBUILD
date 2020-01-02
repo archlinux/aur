@@ -25,7 +25,7 @@ sha256sums=('0bb991e278ae172f2db3766c2443a96f9cac2e9884d7e9c3bb1a6e59775156eb'
             'b0c9cc1be9e784641810e163d4f580dba45c36ecc73381988317c2cec4e93276'
             '17350182c0f7527be52db14f3a92f8074a7ea69857d6088c198478943132c8a4'
             '4aabc0246f0e985d278ce5773c39b378d7b5117430c029cd4da069175c5c2c1b')
-validpgpkeys=('7ED17D6CF6DACDDC88CE57CAEFB929C3C80D71B3')
+validpgpkeys=()
 
 package() {
   mkdir -p ${pkgdir}/opt/Allegorithmic
