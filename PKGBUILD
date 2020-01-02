@@ -17,15 +17,15 @@ build() {
     cmake ../"$pkgname-$pkgver"     \
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr
-	make
+    make
 }
 
 check() {
-	cd build
-	make -k test
+    cd build
+    make -k test
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir/" install
+    cd build
+    make DESTDIR="$pkgdir/" install
 }
