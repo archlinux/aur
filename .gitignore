@@ -1,1 +1,7 @@
-/.project
+src/
+pkg/
+*.pkg.tar.xz
+*.xz
+*.tgz
+.project
+.settings
