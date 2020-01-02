@@ -44,8 +44,8 @@ optdepends+=(
 )
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git -C "${_pkgname}" describe --long --tags | sed "s/-/.r/;s/-/./g"
+  cd "$srcdir/$_pkgname"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
