@@ -1,0 +1,12 @@
+--- setup.py    2019-12-29 07:14:46.720000000 +0100
++++ -   2020-01-02 13:25:22.172562404 +0100
+@@ -2,7 +2,7 @@
+ from setuptools import setup
+
+ packages = \
+-['bin', 'ci', 'picopt', 'picopt.formats', 'tests', 'tests.cli']
++['picopt', 'picopt.formats']
+
+ package_data = \
+ {'': ['*'],
+
