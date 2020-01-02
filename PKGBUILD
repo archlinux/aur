@@ -3,13 +3,13 @@
 _pkgname=ammonite
 _scalaversion=2.12.10
 pkgname=ammonite-git
-pkgver=r2253.fe66234e
+pkgver=r2254.2f22969a
 pkgrel=1
 pkgdesc="Scala Scripting"
 arch=(any)
 url="http://$_pkgname.io"
 license=('MIT')
-makedepends=('mill' 'scala')
+makedepends=('mill')
 depends=('bash' 'java-environment')
 replaces=('$_pkgname')
 source=("git+https://github.com/lihaoyi/ammonite.git")
