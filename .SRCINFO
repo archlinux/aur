@@ -1,12 +1,12 @@
 pkgbase = mint-backgrounds-nadia
 	pkgdesc = The backgrounds included in Linux Mint 14 Nadia
-	pkgver = 1.1
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-nadia
 	arch = any
 	license = Various
-	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-nadia/mint-backgrounds-nadia_1.1.tar.gz
-	sha256sums = f12b0bbf515b32ac63df86f577c9179a1417762937357bac7977beb2bac55c23
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-nadia/mint-backgrounds-nadia_1.4.tar.gz
+	sha256sums = fa081c3ae4e909e372c41b0119c5c5a4b7beabaf05299ec1d47190dbf1368d0d
 
 pkgname = mint-backgrounds-nadia
 
