@@ -1,92 +1,41 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
-# The GTK3 version of dockbarx provides a standalone dock and a mate panel applet
-# Unfortunately, this is not compatible with xfce4-dockbarx-plugin which embeds
-# the GTK2 dockbarx GNOME applet into the xfce4 panel
-# So if you want to use dockbarx on both mate and xfce4 you would have to choose
-# one or the other version to install
-# To get around that, the PKGBUILD optionally lets you _coinstall this package with dockbarx
-# by renaming DockBarX to DockBarM (M for Mate)
-
-# 0: No changes -- cannot be _coinstalled with the GTK2 version
-# 1: Change dockbarx to dockbarm -- install alongside dockbarx (GTK2 version)
-_coinstall=0
-
 _pkgname=dockbarx
 pkgname="${_pkgname}"-gtk3-git
-_branchname='pygi-migration'
+_branchname='pygi-python3'
 epoch=1
-pkgver=0.93+0+g089c94b
+pkgver=0.93+43+gc3b2e9d
 pkgrel=1
 pkgdesc="DockBarX GTK3 port. (Standalone panel and mate applet)"
-arch=('i686' 'x86_64')
+arch=('i688' 'x86_64')
 url="https://github.com/M7S/dockbarx"
 license=('GPL3')
-depends=('libkeybinder3' 'python2-cairo' 'python2-dbus' 'python2-gobject' 'python2-pillow'
-         'python2-xlib' 'python2-xdg' 'python2-xcffib' 'gtk3')
+depends=('libkeybinder3' 'python-cairo' 'python-dbus' 'python-gobject' 'python-pillow'
+         'python-xlib' 'python-xdg')
+makedepends=('python-polib' 'python-setuptools')
 optdepends=('mate-panel: mate applet'
             'zeitgeist: recently used file list'
-            'compiz-fusion-plugins-main: opacify plugin'
-            'dockmanager: dockmanager plugins'
-            'cardapio-bzr: Menu applet for standalone dock - dockx')
+            'xfce4-dockbarx-plugin-gtk3-git: xfce4 plugin')
 makedepends=('git')
-provides=()
-if [[ "${_coinstall}" != '1' ]] ; then
-  provides+=("${_pkgname}=${pkgver%%+*}")
-fi
+provides+=("${_pkgname}=${pkgver%%+*}")
 source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git#branch=${_branchname})
 sha256sums=('SKIP')
-
-[ "${_coinstall}" == '1' ] || conflicts+=("${_pkgname}" "${_pkgname}-git")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   git describe --long --tags | sed -r "s/-gtk3//;s/-/+/g"
 }
 
-prepare() {
-  if [[ "${_coinstall}" == '1' ]] ; then
-    cd "${_pkgname}"
-    find . -type f -exec sed -i -e 's:dockbarx:dockbarm:g;s:Dockbarx:Dockbarm:g' \
-                                -e 's:DockbarX:DockbarM:g;s:DockBarx:DockBarm:g;s:DockBarX:DockBarM:g' \
-                                -e 's:dockx:dockm:g;s:DockX:DockM:g' \
-                                -e 's:dbx:dbm:g;s:Dbx:Dbm:g;s:DBX:DBM:g' \
-                                -e 's:namebar:namebarm:g;s:Namebar:Namebarm:g;s:NameBar:NameBarm:g' '{}' \;
-    mv dock{x,m}
-    mv dock{x,m}_applets
-    mv Dock{X,M}.desktop
-    for _file in $( find . -name "*dockbarx*" ) ; do
-      mv "${_file}" "${_file/dockbarx/dockbarm}"
-    done
-    for _file in $( find . -name "*DockbarX*" ) ; do
-      mv "${_file}" "${_file/DockbarX/DockbarM}"
-    done
-    for _file in $( find . -maxdepth 2 -name "*DockBarX*" ) ; do
-      mv "${_file}" "${_file/DockBarX/DockBarM}"
-    done
-    for _file in $( find . -name "*DockBarX*" ) ; do
-      mv "${_file}" "${_file/DockBarX/DockBarM}"
-    done
-    for _file in $( find . -name "*dbx*" ) ; do
-      mv "${_file}" "${_file/dbx/dbm}"
-    done
-    for _file in $( find . -name "*namebar*" ) ; do
-      mv "${_file}" "${_file/namebar/namebarm}"
-    done
-  fi
-}
-
 package() {
   cd "${srcdir}/${_pkgname}"
-  [[ "${_coinstall}" == '1' ]] && _suffix='m' || _suffix='x'
 
-  python2 setup.py install --root "${pkgdir}"
+  python setup.py install --root "${pkgdir}" --optimize=1
 
   mkdir -p "${pkgdir}"/usr/share/pixmaps
-  install -Dm644 "${srcdir}/${_pkgname}"/icons/hicolor/128x128/apps/dockbar"${_suffix}".png "${pkgdir}"/usr/share/pixmaps/dockbar"${_suffix}".png
+  install -Dm644 "${srcdir}/${_pkgname}"/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
 
   mkdir -p "${pkgdir}"/usr/share/glib-2.0/schemas/
-  install -m 644 "${srcdir}/${_pkgname}"/org.dockbar.dockbar"${_suffix}".gschema.xml "${pkgdir}"/usr/share/glib-2.0/schemas/
+  install -m 644 "${srcdir}/${_pkgname}"/org.dockbar.dockbarx.gschema.xml "${pkgdir}"/usr/share/glib-2.0/schemas/
 
-  sed -i 's:^Categories=.*:Categories=Settings:' "${pkgdir}"/usr/share/applications/db"${_suffix}"_preference.desktop
+  sed -i 's:^Categories=.*:Categories=Settings:' "${pkgdir}"/usr/share/applications/dbx_preference.desktop
 }
