@@ -6,7 +6,7 @@ pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
 _dxvkver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -29,7 +29,7 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  "wine_gecko=$_geckover"
+  "wine-gecko=$_geckover"
   "wine-mono-bin=$_monover"
   "dxvk>=$_dxvkver"
 )
