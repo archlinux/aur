@@ -1,19 +1,17 @@
 pkgbase = ruby-text
-	pkgdesc = Calculates the Levenshtein distance between two byte strings.
+	pkgdesc = A collection of text algorithms: Levenshtein, Soundex, Metaphone, Double Metaphone, Porter Stemming
 	pkgver = 1.3.1
-	pkgrel = 2
-	url = https://rubygems.org/gems/text
-	arch = i686
-	arch = x86_64
-	groups = pacgem
-	license = RUBY
-	makedepends = ruby
-	makedepends = binutils
+	pkgrel = 3
+	url = https://github.com/threedaymonk/text
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	makedepends = ruby-test-unit
+	makedepends = ruby-rake
 	depends = ruby
-	noextract = text-1.3.1.gem
 	options = !emptydirs
-	source = http://rubygems.org/gems/text-1.3.1.gem
-	md5sums = 514c3d1db7a955fe793fc0cb149c164f
+	source = https://github.com/threedaymonk/text/archive/v1.3.1/ruby-text-v1.3.1.tar.gz
+	sha512sums = eaf3ce2d5a8d5cc27b6b9c5b820ffede864466a460dd1a64a1141adf1ee78a616684b484e0548ba8eb47c492f02244ffc06058a87b3ad5c2116929e9e8fe10a8
 
 pkgname = ruby-text
 
