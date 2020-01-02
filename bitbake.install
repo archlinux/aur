@@ -1,5 +1,5 @@
 post_install() {
-    _pythonver=3.7
+    _pythonver=$(python --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
     echo "Please add to '/usr/lib/python${_pythonver}/site-packages/bb' to PYTHONPATH shell variable in order for bitbake to work."
     echo "example: echo export PYTHONPATH=/usr/lib/python${_pythonver}/site-packages/bb >> ~/.bash_profile"
 }

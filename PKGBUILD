@@ -6,16 +6,15 @@
 pkgbase=bitbake
 pkgname=('bitbake' 'bitbake-vim')
 _github_url="https://github.com/openembedded/bitbake"
-pkgver=1.44.0
-pkgrel=2
-_pythonver=3.7
+pkgver=1.44.1
+pkgrel=1
 pkgdesc='Build tool executing tasks and managing metadata.'
 arch=('any')
 url='https://www.openembedded.org/wiki/Main_Page'
 license=('GPL2')
 makedepends=('git' 'wget')
 source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
-md5sums=('4b263eb4764980dc972c887e22b76159')
+md5sums=('f1738e17e75c71166fb9f4ef7367ae51')
 
 check() {
     cd "${pkgbase}-${pkgver}/bin"
@@ -37,6 +36,7 @@ package_bitbake() {
     )
     install=bitbake.install
 
+    _pythonver=$(python --version | awk '{print $2}' | awk -F. '{print $1"."$2}')
     cd "${pkgbase}-${pkgver}"
 
     find . -iname "*.log" -delete
@@ -47,6 +47,7 @@ package_bitbake() {
     cp -Ra lib/bb "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     cp -Ra lib/prserv "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
     cp -Ra lib/hashserv "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
+    cp -Ra lib/bb/pysh "${pkgdir}/usr/lib/python${_pythonver}/site-packages"
 
     install -d "${pkgdir}/usr/share/man/man1"
     install doc/bitbake.1 "${pkgdir}/usr/share/man/man1"

@@ -1,14 +1,14 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata.
-	pkgver = 1.44.0
-	pkgrel = 2
+	pkgver = 1.44.1
+	pkgrel = 1
 	url = https://www.openembedded.org/wiki/Main_Page
 	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = wget
-	source = https://github.com/openembedded/bitbake/archive/1.44.0.tar.gz
-	md5sums = 4b263eb4764980dc972c887e22b76159
+	source = https://github.com/openembedded/bitbake/archive/1.44.1.tar.gz
+	md5sums = f1738e17e75c71166fb9f4ef7367ae51
 
 pkgname = bitbake
 	install = bitbake.install
