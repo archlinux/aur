@@ -27,7 +27,8 @@ makedepends=('git' 'cmake')
 optdepends=('python-zeroconf: Detecting mDNS printers'
             'cura-binary-data-git: Firmwares and translations'
             'python-pyserial: USB printing'
-            'cura-fdm-materials-git: Default Materials')
+            'cura-fdm-materials-git: Default Materials'
+            'python-trimesh: Reading AMF files')
 source=('git+https://github.com/Ultimaker/Cura.git')
 md5sums=('SKIP')
 

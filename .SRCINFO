@@ -25,6 +25,7 @@ pkgbase = cura-git
 	optdepends = cura-binary-data-git: Firmwares and translations
 	optdepends = python-pyserial: USB printing
 	optdepends = cura-fdm-materials-git: Default Materials
+	optdepends = python-trimesh: Reading AMF files
 	provides = cura
 	conflicts = cura
 	source = git+https://github.com/Ultimaker/Cura.git
