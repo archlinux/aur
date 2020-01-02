@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=firetools-git
-pkgver=0.9.58.r0.g8dbea1e
+pkgver=0.9.62.r1.g15a4571
 pkgrel=1
 pkgdesc="Graphical user interface of Firejail"
 arch=('i686' 'x86_64')
@@ -25,7 +25,8 @@ build() {
   cd "firetools"
 
   autoreconf -fi
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
