@@ -4,8 +4,8 @@
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: Sylvester Johansson <scj(at)archlinux(dot)us>
 pkgname=ocaml-zip
-pkgver=1.08
-_pkgver=rel108
+pkgver=1.10
+_pkgver=rel110
 pkgrel=1
 pkgdesc="ZIP and gzip library for OCaml"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('ocaml' 'zlib')
 makedepends=('ocaml-findlib')
 options=(!strip staticlibs)
 source=("https://github.com/xavierleroy/camlzip/archive/$_pkgver.tar.gz")
-md5sums=('a2a394a39ad96c3b2e2a9a6f5197a2e3')
+md5sums=('97efd563735b4b6e7ae463b91aa72405')
 
 build() {
   cd "$srcdir/camlzip-$_pkgver"
