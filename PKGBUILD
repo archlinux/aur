@@ -24,28 +24,28 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.3.5
+pkgver=7.4.1
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
-url='https://secure.php.net'
+url='https://www.php.net/'
 makedepends=('apache' 'aspell' 'c-client' 'db' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl')
+             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl'
+             'oniguruma')
 checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
-        'enchant-2.patch' 'freetype.patch')
-sha256sums=('e1011838a46fd4a195c8453b333916622d7ff5bce4aca2d9d99afac142db2472'
+        'enchant-2.patch')
+sha256sums=('561bb866bdd509094be00f4ece7c3543ec971c4d878645ee81437e291cffc762'
             'SKIP'
-            '54d9e3682c6b4621ee654e5c8df4ad95d790a3bccdd284afcff83e5bb7043fb1'
+            '537e6f9f8879de2ba021b5efcaf759fccebd0e7b506d03a7ce973a5f3a482219'
             '80c00b40b0de794d87fb0183cdce2f3c93869c849f7534e8ced42ca6c625f2f7'
-            '3de3c76930874c81824c23aa033cb9e66631659fd31f925d7c58f0479aeb18a9'
+            '41f23ebc2d986473b9a4eb3f233428349367b2baa2bb715c53e720cc34c9378c'
             '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            '4c4dd05358f614adfa9c539a3ed61134764fced358c92dde109aac3ab78496c9'
-            '3992491eebaf5b31f6b00095a7276d11682f9a8aaff473bfb25afbdcfa6eba32'
-            '07c4648669dc05afc3c1ad5a4739768079c423b817eabf5296ca3d1ea5ffd163')
-validpgpkeys=('CBAF69F173A0FEA4B537F470D66C9593118BCCB6'
-              'F38252826ACD957EF380D39F2F7956BC5DA04B5D')
+            '03beeb8b62a499805a4b912cb19d048635cb5542478753e58364bf24fb42ff3c'
+            '92a048073713c3600713b3dd46e96b33a2dde2aef1fbdf175d83da1dc679a0c5')
+validpgpkeys=('5A52880781F755608BF815FC910DEB46F53EA312'
+              '42670A7FE4D0441C8E4632349E4FDC074A4EF02D')
 
 prepare() {
 	cd ${srcdir}/${_pkgbase}-${pkgver}
@@ -53,8 +53,7 @@ prepare() {
 	patch -p0 -i ${srcdir}/apache.patch
 	patch -p0 -i ${srcdir}/php-fpm.patch
 	patch -p0 -i ${srcdir}/php.ini.patch
-	patch -p1 -i ${srcdir}/enchant-2.patch
-	patch -p1 -i ${srcdir}/freetype.patch
+	patch -p0 -i ${srcdir}/enchant-2.patch
 	autoconf
 
 	rm tests/output/stream_isatty_*.phpt
@@ -75,7 +74,6 @@ build() {
 		--with-config-file-scan-dir=/etc/php/conf.d \
 		--disable-rpath \
 		--mandir=/usr/share/man \
-		--without-pear \
 		"
 
 	local _phpextensions="\
@@ -84,54 +82,54 @@ build() {
 		--enable-dba=shared \
 		--enable-exif=shared \
 		--enable-ftp=shared \
+		--enable-gd=shared \
 		--enable-intl=shared \
 		--enable-mbstring \
+		--enable-pcntl \
 		--enable-shmop=shared \
 		--enable-soap=shared \
 		--enable-sockets=shared \
 		--enable-sysvmsg=shared \
 		--enable-sysvsem=shared \
 		--enable-sysvshm=shared \
-		--enable-zip=shared \
 		--with-bz2=shared \
 		--with-curl=shared \
 		--with-db4=/usr \
-		--with-enchant=shared,/usr \
-		--with-freetype-dir=/usr \
-		--with-gd=shared,/usr \
+		--with-enchant=shared \
+		--with-external-gd \
+		--with-external-pcre \
+		--with-ffi=shared \
 		--with-gdbm \
 		--with-gettext=shared \
 		--with-gmp=shared \
 		--with-iconv=shared \
 		--with-imap-ssl \
 		--with-imap=shared \
-		--with-kerberos=/usr \
+		--with-kerberos \
 		--with-ldap=shared \
 		--with-ldap-sasl \
-		--with-libzip \
 		--with-mhash \
 		--with-mysql-sock=/run/mysqld/mysqld.sock \
 		--with-mysqli=shared,mysqlnd \
 		--with-openssl \
 		--with-password-argon2 \
-		--with-pcre-regex=/usr \
 		--with-pdo-dblib=shared,/usr \
 		--with-pdo-mysql=shared,mysqlnd \
 		--with-pdo-odbc=shared,unixODBC,/usr \
 		--with-pdo-pgsql=shared \
-		--with-pdo-sqlite=shared,/usr \
+		--with-pdo-sqlite=shared \
 		--with-pgsql=shared \
 		--with-pspell=shared \
 		--with-readline \
 		--with-snmp=shared \
 		--with-sodium=shared \
-		--with-sqlite3=shared,/usr \
+		--with-sqlite3=shared \
 		--with-tidy=shared \
-		--with-unixODBC=shared,/usr \
+		--with-unixODBC=shared \
 		--with-xmlrpc=shared \
 		--with-xsl=shared \
+		--with-zip=shared \
 		--with-zlib \
-		--enable-pcntl \
 		--enable-maintainer-zts \
 		"
 
@@ -171,22 +169,24 @@ build() {
 }
 
 check() {
-	cd ${srcdir}/${_pkgbase}-${pkgver}
+	cd ${srcdir}/build
 
 	# Check if sendmail was configured correctly (FS#47600)
-	${srcdir}/build/sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+	sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
 
 	export REPORT_EXIT_STATUS=1
 	export NO_INTERACTION=1
 	export SKIP_ONLINE_TESTS=1
 	export SKIP_SLOW_TESTS=1
+	export TEST_PHP_ARGS="-j$(nproc)"
+	export TESTS='tests Zend'
 
-	${srcdir}/build/sapi/cli/php -n run-tests.php -n -P {tests,Zend}
+	make test
 }
 
 package_php-zts() {
-	pkgdesc='PHP with ZTS enabled'
-	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2')
+	pkgdesc='A general-purpose scripting language that is especially suited to web development(ZTS enabled)'
+	depends=('libxml2' 'curl' 'libzip' 'pcre2' 'argon2' 'oniguruma')
 	replaces=("${_pkgbase}" 'php-ldap')
 	conflicts=("${_pkgbase}" 'php-ldap')
 	provides=("${_pkgbase}=${pkgver}" "php-ldap=${pkgver}")
