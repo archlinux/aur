@@ -1,0 +1,28 @@
+From 46b9b80e228b6b86001bded45d85e073a9411549 Mon Sep 17 00:00:00 2001
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: Sun, 8 Dec 2019 12:03:01 +0100
+Subject: [PATCH] Fix build with gcc9
+
+---
+ libqalculatenasc/QalculateNasc.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libqalculatenasc/QalculateNasc.cc b/libqalculatenasc/QalculateNasc.cc
+index db0c09a..e6dc625 100644
+--- a/libqalculatenasc/QalculateNasc.cc
++++ b/libqalculatenasc/QalculateNasc.cc
+@@ -5,6 +5,7 @@
+ #include <thread>
+ #include <algorithm>
+ 
++using namespace std;
+ std::shared_ptr<Calculator> calc;
+ MathStructure *mstruct;
+ 
+@@ -275,4 +276,4 @@ std::string intern_calc (std::string input) {
+     std::string result_str = mstruct->print (printops);
+ 
+     return result_str;//calc->localizeExpression (result_str);
+-}
+\ No newline at end of file
++}
