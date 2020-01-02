@@ -1,0 +1,13 @@
+pkgbase = mediawiki-extension-disableaccount
+	pkgdesc = An extension for MediaWiki that allows administrators to disable individual users' wiki accounts
+	pkgver = REL1_34+r376+g1e6f5ef
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:DisableAccount
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/DisableAccount.git#commit=1e6f5efdac9aebc44505c37a067c651ca9dd2b8d
+	sha512sums = SKIP
+
+pkgname = mediawiki-extension-disableaccount
+
