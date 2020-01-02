@@ -1,7 +1,7 @@
 # Maintainer: Benedikt Rascher-Friesenhausen <benediktrascherfriesenhausen+aur@gmail.com>
 
 pkgname=python-passpy
-pkgver=1.0rc2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="ZX2C4's pass compatible library and cli"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/bfrascher/passpy.git"
 license=('GPL3')
 depends=('python' 'git' 'gnupg' 'python-gitpython' 'python-gnupg'
          'python-click' 'python-pyperclip' 'xclip')
-source=("https://github.com/bfrascher/passpy/archive/v${pkgver}.tar.gz")
-md5sums=('256d983de42c38259b0e65e586feb6fe')
+source=("https://github.com/bfrascher/passpy/archive/${pkgver}.tar.gz")
+sha512sums=('c3f8bc5a365edb8ee912276baa9b78e91112ee3dfaddb5727f8be176c507ed73f5cb889eebba96c26fa6a8377858a247f47155daa3935cc10eca22b4f0e39d9a')
 
 build() {
   cd "$srcdir/passpy-$pkgver"
