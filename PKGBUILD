@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=(
     git
+    m4
     make
     pandoc
 )

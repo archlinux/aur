@@ -6,6 +6,7 @@ pkgbase = crema-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = m4
 	makedepends = make
 	makedepends = pandoc
 	depends = binutils
