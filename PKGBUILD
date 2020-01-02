@@ -1,4 +1,4 @@
-# Maintainer: Marko Korhonen <reekymarko@reekynet.com>
+# Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
 pkgver=12.4.8
