@@ -1,15 +1,19 @@
 pkgbase = python-conda-package-handling
 	pkgdesc = Create and extract conda package of various formats
-	pkgver = 1.3.4
-	pkgrel = 3
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/conda/conda-package-handling
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
+	makedepends = cython
 	depends = python
 	depends = python-six
+	depends = python-tqdm
+	depends = libarchive
 	options = !emptydirs
-	source = https://github.com/conda/conda-package-handling/archive/1.3.4.tar.gz
-	sha512sums = 685b07316c219d1e75f54a8ce782e1b8ee75ee16faf9589e2a2d6117c0b6b465b5a19369ddd67d0826cf2fc4f549b593da2743a90335717bc5b98f47ba41462c
+	source = conda-package-handling-1.6.0.tar.gz::https://github.com/conda/conda-package-handling/archive/1.6.0.tar.gz
+	sha512sums = fd5dcf9b270d5b474799f42db111cf9349cf0779e143cbfcf2c77876b2d56dcfa8b723fcf0bb51c41a068e369adf4cd90be2430b10e037d940b26aabba23e8cb
 
 pkgname = python-conda-package-handling
 
