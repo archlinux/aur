@@ -61,6 +61,7 @@ package() {
     install -Dm 644 -o root "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm 644 -o root "30-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
+    cp -r "$srcdir/$_pkgname/TabletDriverLib/Configurations" "$pkgdir/usr/share/$_pkgname/"
 
     install -Dm 755 -o root "$srcdir/$_pkgname/$_pkgname/out/OpenTabletDriver" -t "$pkgdir/usr/share/$_pkgname"
     install -Dm 755 -o root "$_lpkgname" -t "$pkgdir/usr/bin"
