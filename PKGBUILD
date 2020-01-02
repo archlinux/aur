@@ -4,7 +4,7 @@ _pkg='tempreader'
 _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
-pkgver=r4.ce5459d
+pkgver=r5.73ebe52
 pkgrel=1
 pkgdesc='RESTful API to read data from DS18B20 temperature sensors.'
 url="https://github.com/jtyr/tempreader"
@@ -15,7 +15,6 @@ makedepends=('go')
 
 
 pkgver() {
-    msg2 'Getting version'
     cd "$srcdir/src/$_gopkg"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
