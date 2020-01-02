@@ -27,5 +27,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	mv "$pkgdir/usr/sbin/laminard" "$pkgdir/usr/bin/laminard"
+	rmdir "$pkgdir/usr/sbin"
 }
 
