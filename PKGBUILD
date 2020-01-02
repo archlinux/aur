@@ -35,11 +35,11 @@ build() {
 
   rm -f 'package-lock.json'
   find . -name '.airtap.yml'        -exec rm -fv {} \;
-  find . -name '\.bin'              -exec rm -fvr {} \;
+  find . -name '.bin'               -exec rm -fvr {} +
   find . -name '.coveralls.yml'     -exec rm -fv {} \;
   find . -name '.gitignore'         -exec rm -fv {} \;
-  find . -name '\.github'           -exec rm -fvr {} \;
-  find . -name '\.eslintrc*'        -exec rm -fv {} \;
+  find . -name '.github'            -exec rm -fvr {} +
+  find . -name '.eslintrc*'         -exec rm -fv {} \;
   find . -name '.jscs.json'         -exec rm -fv {} \;
   find . -name '.npmignore'         -exec rm -fv {} \;
   find . -name '.prettierrc.js'     -exec rm -fv {} \;
