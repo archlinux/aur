@@ -1,63 +1,67 @@
 # Maintainer: lsf
+# Contributor: Mark Wagie <mark.wagie@tutanota.com>
 # Contributor: Adam Hose <adis@blad.is>
-pkgver=20181008.359_c10e7a3
-pkgrel=3
-_pkgname=opensnitch
+
 pkgname=opensnitch-git
+pkgver=r379.2b49871
+pkgrel=1
+pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
-license=('GPL')
-url='https://www.opensnitch.io'
-pkgdesc='A GNU/Linux port of the Little Snitch application firewall.'
-makedepends=('git' 'go-pie' 'dep'
-             'python-setuptools' 'python-pip')
-depends=('python-grpcio' 'python-grpcio-tools' 'python-pyinotify'
-         'python-pyqt5' 'python-unicode-slugify'
-         'libpcap' 'libnetfilter_queue'
-         'desktop-file-utils')
-provides=('opensnitch' 'opensnitch-ui')
-
-source=("git://github.com/evilsocket/opensnitch.git"
-        'nosudo.patch')
-
-md5sums=('SKIP'
-         'eb5a6c83c3816220799e678e32572705')
+url="https://github.com/evilsocket/opensnitch"
+license=('GPL3')
+makedepends=('git' 'dep' 'go-pie')
+depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
+         'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5'
+         'python-libconfigparser')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/evilsocket/opensnitch.git')
+sha256sums=('SKIP')
 
 pkgver() {
-        cd "$srcdir/$_pkgname"
-        local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-        local count=$(git rev-list --count HEAD)
-        local commit=$(git rev-parse --short HEAD)
-        echo "$date.${count}_$commit"
+        cd "$srcdir/${pkgname%-git}"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+        mkdir -p gopath/src/github.com/evilsocket
+        ln -rTsf "$srcdir/${pkgname%-git}" \
+                "gopath/src/github.com/evilsocket/${pkgname%-git}"
+        export GOPATH="$srcdir"/gopath
+
+        cd "gopath/src/github.com/evilsocket/${pkgname%-git}/daemon"
+        dep ensure
+
+        cd "$srcdir/${pkgname%-git}"
+        sed -i 's|local/bin|bin|g' daemon/opensnitchd.service
 }
 
 build() {
-        cd "$srcdir/$_pkgname"
+        export GOPATH="$srcdir"/gopath
 
-        if [ -L "$srcdir/$_pkgname" ]; then
-                rm "$srcdir/$_pkgname" -rf
-                mv "$srcdir/.go/src/$_pkgname/" "$srcdir/$_pkgname"
-        fi
+        cd "gopath/src/github.com/evilsocket/${pkgname%-git}/daemon"
+        go build \
+        -trimpath \
+        -ldflags "-extldflags $LDFLAGS" \
+        -o opensnitchd .
 
-        rm -rf "$srcdir/.go/src"
-        mkdir -p "$srcdir/.go/src"
-        export GOPATH="$srcdir/.go"
-        mv "$srcdir/$_pkgname" "$srcdir/.go/src/"
-
-        cd "$srcdir/.go/src/$_pkgname/"
-        ln -sf "$srcdir/.go/src/$_pkgname/" "$srcdir/$_pkgname"
-
-        cd "$GOPATH/src/opensnitch/daemon"
-        dep ensure
-        cd "$GOPATH/src/opensnitch"
-        patch -Np1 -i "${srcdir}/nosudo.patch"
+        cd "$srcdir/${pkgname%-git}/proto"
         make
+
+        cd "$srcdir/${pkgname%-git}/ui"
+        python setup.py build
+
+        # Skipping, too many syntax errors
+        # cd "$srcdir/${pkgname%-git}"
+        # python make_ads_rules.py
 }
 
-package(){
-        cd "$srcdir/.go/src/$_pkgname/"
-        mkdir -p "${pkgdir}"/usr/lib/systemd/system
-        mkdir -p "${pkgdir}"/usr/bin
-        make DESTDIR="$pkgdir/" install
-        cd ui
-        pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+package() {
+        cd "$srcdir/${pkgname%-git}"
+        install -Dm755 daemon/opensnitchd -t "$pkgdir/usr/bin"
+
+        install -Dm644 daemon/opensnitchd.service -t "$pkgdir/usr/lib/systemd/system"
+
+        cd "$srcdir/${pkgname%-git}/ui"
+        python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
