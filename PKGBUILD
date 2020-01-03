@@ -3,12 +3,12 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
 license=('custom')
-depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=("${pkgname}" 'brave-nightly-browser')
