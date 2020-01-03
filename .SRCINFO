@@ -1,6 +1,6 @@
 pkgbase = maptool-bin
 	pkgdesc = An open source virtual tabletop program
-	pkgver = 1.5.8
+	pkgver = 1.5.9
 	pkgrel = 1
 	url = https://rptools.net/tools/maptool
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = maptool-bin
 	optdepends = gvfs: access virtual filesystem
 	provides = maptool
 	conflicts = maptool
-	source = https://github.com/RPTools/maptool/releases/download/1.5.8/maptool-1.5.8.deb
-	sha256sums = eb6de072cfb6e7eca30bca1cde4f136a711be3292b3a6853473b5912387a0f8f
+	source = https://github.com/RPTools/maptool/releases/download/1.5.9/maptool-1.5.9.deb
+	sha256sums = d1029f7cd0cd7939e4ed778dce2faf607f7820008db14b659054a7682b625af5
 
 pkgname = maptool-bin
 
