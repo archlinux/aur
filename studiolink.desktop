@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Studio Link
+Comment=High quality SIP connections for producers.
+Exec=studiolink
+Icon=studiolink
+Terminal=false
+Type=Application
+X-MultipleArgs=false
+Categories=Audio;AudioVideo;

@@ -1,0 +1,15 @@
+pkgbase = studiolink-standalone-bin
+	pkgdesc = A SIP application to create high quality Audio over IP (AoIP) connections.
+	pkgver = v19.09.0
+	pkgrel = 1
+	url = https://studio-link.de
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = libpulse
+	depends = hicolor-icon-theme
+	source = https://download.studio.link/releases/v19.09.0-beta/studio-link-standalone-linux.zip
+	sha512sums = 12190ab20e5706f9d816b67737a5f14a2f79f610dbbbb53ffe7304b46c45ed85e4f2e8bd459c0fd949522c59056d8fd22602f78ca69ae8f9355a3b97a0cbbc6d
+
+pkgname = studiolink-standalone-bin
+
