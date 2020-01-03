@@ -1,7 +1,7 @@
 pkgbase = st-ckyln
 	pkgdesc = Simple Terminal from suckless.org (Fork)
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.ckyln.com/st
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = st-ckyln
 	provides = st
 	conflicts = st
 	source = https://git.ckyln.com/archives/st/st-1.2.4.tar.gz
-	md5sums = 112e7de028cfb97d035c4c1b9e6b6730
+	md5sums = acb7a47b297f705defe611ea1a78cb0d
 
 pkgname = st-ckyln
 
