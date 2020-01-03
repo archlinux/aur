@@ -1,8 +1,9 @@
 # Maintainer: Félix Saparelli <aur@passcod.name>
+# Maintainer: Felix Golatofski <goliath@xdfr.de>
 
 pkgname=zoho-docs-bin
 pkgver=1.9.22
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical application to sync files to/from Zoho Docs"
 arch=('x86_64')
 url="https://www.zoho.com/docs/help/zoho-docs-for-desktop.html"

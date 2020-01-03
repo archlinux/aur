@@ -1,7 +1,7 @@
 pkgbase = zoho-docs-bin
 	pkgdesc = Graphical application to sync files to/from Zoho Docs
 	pkgver = 1.9.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.zoho.com/docs/help/zoho-docs-for-desktop.html
 	arch = x86_64
 	license = proprietary
