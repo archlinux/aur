@@ -1,0 +1,3 @@
+post_install() {
+	echo "Don't forget to edit /etc/duckdns.d/default in order to provide your domain names, token and IP address providers!"
+}

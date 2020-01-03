@@ -1,0 +1,9 @@
+*
+!duckdns.conf
+!duckdns.sh
+!duckdns.service
+!duckdns.timer
+!duckdns-ipv6.install
+!PKGBUILD
+!.gitignore
+!.SRCINFO

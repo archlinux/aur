@@ -1,0 +1,8 @@
+[Unit]
+Description=Update DuckDNS domain addresses every 10 minutes
+
+[Timer]
+OnCalendar=*:0/10
+
+[Install]
+WantedBy=network-online.target
