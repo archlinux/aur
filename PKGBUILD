@@ -5,18 +5,17 @@
 _realname=gnome-terminal
 pkgname=$_realname-git
 
-pkgver=3.31.1.6093.f624ba89
+pkgver=3.35.2.6256.c665af99
 _realver=3.7.3
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator. Git Version"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gconf' 'vte3-git' 'gsettings-desktop-schemas' 'libsm')
+depends=('vte3-git' 'gsettings-desktop-schemas')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'appdata-tools' 'yelp-tools')
 options=('!emptydirs')
 url="https://www.gnome.org"
 groups=('gnome')
-install=gnome-terminal.install
 
 provides=($_realname=$pkgver)
 conflicts=($_realname)
@@ -48,9 +47,5 @@ build() {
 
 package() {
   cd $_realname
-  make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir" install
-
-  install -m755 -d "$pkgdir/usr/share/gconf/schemas"
-  gconf-merge-schema "$pkgdir/usr/share/gconf/schemas/$_realname.schemas" --domain gnome-terminal "$pkgdir"/etc/gconf/schemas/*.schemas
-  rm -f "$pkgdir"/etc/gconf/schemas/*.schemas
+  make DESTDIR="$pkgdir" install
 }
