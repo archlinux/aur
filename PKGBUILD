@@ -1,7 +1,7 @@
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 
 pkgname=tresorit
-pkgver=3.5.600.797
+pkgver=3.5.753.961
 pkgrel=1
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=("tresorit_installer_${pkgver}.run::https://installerstorage.blob.core.wi
         "https://support.tresorit.com/hc/en-us/article_attachments/360013145193/check_signature.sh"
         "tresorit.service")
 
-sha512sums=('fc22318d45e3763a68466342f6b22121a62cdea743cf720caf0e21ad3c1214db5296e0439e24161bcaa27da3c39e51a532003db547d14ba9938f50fd50a7f2b5'
+sha512sums=('5277dcabdb6e6a27d9ecc3e4d1f2dc2d99f6da6d010062197d7556c202a8a69f8d2919298388746a6e3914ddf15b518474ca7b76c424965e78ce40d1829f032c'
             'ad5876d1477fd20ecbbd18ceeda41aa89f8faa08ea4ce5899e441942a1d777b34a5621181853730688bef0b9b7892ab1058b9ba0de2b22c3b72444b867827e65'
             '58aa3738fd17d5930ed76b9491a3ef0dd481b918f5329b56650e6d77078ad74caeea60c9cf83d524a483a9be7fc41aba2712400922d4ab3db775f1c2a1365765')
 
