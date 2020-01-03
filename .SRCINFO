@@ -1,13 +1,12 @@
 pkgbase = video-contact-sheet
 	pkgdesc = A script to create contact sheets (preview images) from videos.
 	pkgver = 1.13.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://p.outlyer.net/vcs/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = bash
-	depends = inetutils
 	depends = ffmpeg
 	depends = imagemagick
 	optdepends = lsdvd: needed for DVD support

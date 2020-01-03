@@ -1,12 +1,12 @@
 # Maintainer: Blaine Story <aur at blainestory com>
 pkgname=video-contact-sheet
 pkgver=1.13.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A script to create contact sheets (preview images) from videos."
 arch=('i686' 'x86_64')
 url="http://p.outlyer.net/vcs/"
 license=('LGPL')
-depends=('bash' 'inetutils' 'ffmpeg' 'imagemagick')
+depends=('bash' 'ffmpeg' 'imagemagick')
 optdepends=(
             'lsdvd: needed for DVD support'
             'perl: needed for DVD support'
