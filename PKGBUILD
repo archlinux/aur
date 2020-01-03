@@ -5,7 +5,7 @@
 
 pkgname=pdfbeads
 pkgver=1.1.2.pre.beta
-pkgrel=7
+pkgrel=8
 pkgdesc="A small utility written in Ruby which takes scanned page images and converts them into a single PDF file"
 arch=('any')
 url='https://github.com/boredland/pdfbeads'
@@ -32,7 +32,7 @@ source=("https://github.com/boredland/pdfbeads/releases/download/$pkgver/$pkgnam
 noextract=($pkgname-$pkgver.gem)
 sha256sums=('e25dba6e172136f38fa4947a7c017d5f3a2ba5bb548d9e46632e568e7ebf51e9'
             'b5fc59a954df14551dfd421f919dcdfea975cdf00605c3619bf6f815550168d3'
-            '8d3e81b6781c4d080710cbb2397cec992b0e4ed73e22ee5ce8c18dc3ecd2bc0d')
+            'b473bb1b9a4c9fdf87c0987d5c9831311db920881afbb6f2549912570ed251ac')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
