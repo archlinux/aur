@@ -1,7 +1,7 @@
 pkgbase = traffictoll
 	pkgdesc = NetLimiter-like traffic shaping for Linux
 	pkgver = 0.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/cryzed/TrafficToll
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = traffictoll
 	depends = python-psutil
 	depends = python-loguru
 	source = https://github.com/cryzed/TrafficToll/archive/master.zip
-	sha256sums = a6dd70864687265b562f17baaa78acffb6da552028156131c4ed03eded0e01c6
+	md5sums = SKIP
 
 pkgname = traffictoll
 
