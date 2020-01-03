@@ -1,8 +1,8 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=openstudio
-pkgver=2.7.1
+pkgver=2.9.1
 pkgrel=1
-_relvar='b8d47b8b9d'
+_relvar='3472e8b799'
 pkgdesc="Supports whole building energy modeling using EnergyPlus"
 arch=('x86_64')
 url="https://www.openstudio.net"
@@ -10,7 +10,8 @@ depends=('ruby')
 # optdep=('energyplus')
 license=('LGPL')
 source=("https://github.com/NREL/OpenStudio/releases/download/v$pkgver/OpenStudio-$pkgver.$_relvar-Linux.deb" 'OpenStudio.desktop')
-md5sums=('ff1c11726aba58899b140ff68d11421b' '3edac88e1dbdec57dde2baceacf19f39')
+md5sums=('dffc748bb70415934478d3829b5b65c3' '9067cc1ba565b4d74112f8cd2da171f8')
+
 
 package() {
 cd "${srcdir}/"

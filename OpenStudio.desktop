@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=2.3.0
+Version=2.9.1
 Name=OpenStudio
 Comment=Supports whole building energy modeling using EnergyPlus
 Exec=LD_LIBRARY_PATH=/opt/openstudio/bin/:$LD_LIBRARY_PATH /opt/openstudio/bin/OpenStudioApp %f

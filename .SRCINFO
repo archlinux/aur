@@ -1,15 +1,15 @@
 pkgbase = openstudio
 	pkgdesc = Supports whole building energy modeling using EnergyPlus
-	pkgver = 2.7.1
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://www.openstudio.net
 	arch = x86_64
 	license = LGPL
 	depends = ruby
-	source = https://github.com/NREL/OpenStudio/releases/download/v2.7.1/OpenStudio-2.7.1.b8d47b8b9d-Linux.deb
+	source = https://github.com/NREL/OpenStudio/releases/download/v2.9.1/OpenStudio-2.9.1.3472e8b799-Linux.deb
 	source = OpenStudio.desktop
-	md5sums = ff1c11726aba58899b140ff68d11421b
-	md5sums = 3edac88e1dbdec57dde2baceacf19f39
+	md5sums = dffc748bb70415934478d3829b5b65c3
+	md5sums = 9067cc1ba565b4d74112f8cd2da171f8
 
 pkgname = openstudio
 
