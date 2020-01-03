@@ -10,7 +10,7 @@ url="https://search.cpan.org/dist/Crypt-SSLeay"
 license=('GPL' 'PerlArtistic')
 depends=('perl-lwp-protocol-https' 'perl-try-tiny' 'perl-path-class')
 options=('!emptydirs')
-source=(https://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$pkgver.tar.gz)
+source=("https://www.cpan.org/CPAN/authors/id/N/NA/NANIS/Crypt-SSLeay-$pkgver.tar.gz")
 md5sums=('7508b2a34da2202cc0c78deb59e36526')
 
 build() {
@@ -32,6 +32,6 @@ package() {
 
   make install DESTDIR="${pkgdir}"
 
-  find ${pkgdir} -name '.packlist' -delete
-  find ${pkgdir} -name '*.pod' -delete
+  find "${pkgdir}" -name '.packlist' -delete
+  find "${pkgdir}" -name '*.pod' -delete
 }
