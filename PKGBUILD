@@ -3,7 +3,7 @@
 pkgname=st-ckyln-git
 _pkgname=st
 pkgrel=1
-pkgver=v20190926
+pkgver=1.2.4
 pkgdesc="Simple Terminal from suckless.org (Fork)"
 url="https://git.ckyln.com/st"
 arch=('i686' 'x86_64' 'aarch64')
