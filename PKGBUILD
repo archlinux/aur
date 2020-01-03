@@ -1,15 +1,15 @@
-pkgname=('starlabstheme-backgrounds-git' 
-	'starlabstheme-extensions-git' 
-	'starlabstheme-font-git' 
-	'starlabstheme-gnome-shell-git' 
-	'starlabstheme-grub-git' 
-	'starlabstheme-gtk-git' 
-	'starlabstheme-icons-git' 
-	'starlabstheme-plymouth-git' 
-	'starlabstheme-session-git' 
-	'starlabstheme-sounds-git')
+pkgname=('starlabstheme-backgrounds-git'
+         'starlabstheme-extensions-git'
+         'starlabstheme-font-git'
+         'starlabstheme-gnome-shell-git'
+         'starlabstheme-grub-git'
+         'starlabstheme-gtk-git'
+         'starlabstheme-icons-git'
+         'starlabstheme-plymouth-git'
+         'starlabstheme-session-git'
+         'starlabstheme-sounds-git')
 pkgbase=starlabstheme-git
-pkgver=r314.b4d7cbd
+pkgver=r1.4f2bcc7
 pkgrel=1
 pkgdesc="Star Labs GNOME Shell and GTK Theme"
 arch=('any')
@@ -18,7 +18,7 @@ license=('GPL')
 makedepends=('git' 'meson' 'sassc')
 provides=("${pkgbase%-git}")
 conflicts=("${pkgbase%-git}")
-source=('git+https://github.com/StarLabsLtd/StarLabsTheme.git')
+source=("${pkgbase%-git}::git+https://github.com/StarLabsLtd/StarLabsTheme.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -26,14 +26,15 @@ pkgver() {
 }
 
 prepare() {
-	cd StarLabsTheme
-	git submodule init
-	git pull --recurse-submodules
+	cd "$srcdir/${pkgbase%-git}"
+	git submodule init extensions/gnome-shell-extension-lockkeys
+	git config submodule.gnome-shell-extension-lockkeys.url \
+		"$srcdir/gnome-shell-extension-lockkeys"
+	git submodule update
 }
 
 build() {
-	cd StarLabsTheme
-	
+
 	echo '  _____ _             _           _'
 	echo ' /  ___| |           | |         | |'
 	echo ' \ `--.| |_ __ _ _ __| |     __ _| |__  ___'
@@ -42,8 +43,9 @@ build() {
 	echo ' \____/ \__\__,_|_|  \_____/\__,_|_.__/|___/'
 	echo
 	echo '************** Star Labs Theme *************'
-	
-	meson build
+
+	cd "$srcdir/${pkgbase%-git}"
+	arch-meson build
 	ninja -C build
 }
 
@@ -51,10 +53,10 @@ package_starlabstheme-backgrounds-git() {
 	pkgdesc="Star Labs Desktop Wallpapers"
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
-	
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{gnome-shell,glib-2.0,fonts,icons,plymouth,sounds,themes,wayland-sessions,xsessions}
 	rm -r "$pkgdir/"{boot,etc}
 }
@@ -65,9 +67,9 @@ package_starlabstheme-extensions-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell/extensions/ubuntu-dock@ubuntu.com,gnome-shell/theme,gnome-shell/modes,fonts,icons,plymouth,sounds,themes,wayland-sessions,xsessions}
 	rm -r "$pkgdir/"{boot,etc}
 	rm -f "$pkgdir/"usr/share/glib-2.0/schemas/99_StarLabs.gschema.override
@@ -79,11 +81,11 @@ package_starlabstheme-font-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell,glib-2.0,icons,plymouth,sounds,themes,wayland-sessions,xsessions}
-	rm -r "$pkgdir/"{boot,etc}	
+	rm -r "$pkgdir/"{boot,etc}
 }
 
 package_starlabstheme-gnome-shell-git() {
@@ -92,9 +94,9 @@ package_starlabstheme-gnome-shell-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell/extensions,gnome-shell/modes,glib-2.0,fonts,icons,plymouth,sounds,themes,wayland-sessions,xsessions}
 	rm -r "$pkgdir/"{boot,etc}
 }
@@ -105,9 +107,11 @@ package_starlabstheme-grub-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
+	sed -r 's/^&nbspi915.fastboot=1//' "$pkgdir/etc/grub.d/47_starlabs"
+
 	rm -r "$pkgdir/"usr
 }
 
@@ -118,9 +122,9 @@ package_starlabstheme-gtk-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell,glib-2.0,fonts,icons,plymouth,sounds,wayland-sessions,xsessions}
 	rm -r "$pkgdir/"{boot,etc}
 }
@@ -131,11 +135,11 @@ package_starlabstheme-icons-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	cd "$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell,glib-2.0,fonts,plymouth,sounds,themes,wayland-sessions,xsessions}
-	rm -r "$pkgdir/"{boot,etc}	
+	rm -r "$pkgdir/"{boot,etc}
 }
 
 package_starlabstheme-plymouth-git() {
@@ -144,34 +148,34 @@ package_starlabstheme-plymouth-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	"$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell,glib-2.0,fonts,icons,sounds,themes,wayland-sessions,xsessions}
-	rm -r "$pkgdir/"{boot,etc}	
+	rm -r "$pkgdir/"{boot,etc}
 }
 
 package_starlabstheme-session-git() {
 	pkgdesc="Star Labs Session"
-	depends=('dconf' 'starlabstheme-backgrounds' 'starlabstheme-gnome-shell' 'starlabstheme-gtk' 'starlabstheme-icons' 'starlabtheme-sounds')
+	depends=('dconf' 'starlabstheme-backgrounds' 'starlabstheme-gnome-shell' 'starlabstheme-gtk' 'starlabstheme-icons' 'starlabstheme-sounds')
 	optdepends=('starlabstheme-extensions' 'gnome-shell-extension-appindicator' 'gnome-shell-extension-desktop-icons' 'gnome-shell-extension-dash-to-dock' 'starlabstheme-font')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
-	
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+
+	"$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	# Comment out Ubuntu-specific dconf entry
 	sed -i '26,27 s/^/#/' "$pkgdir/"usr/share/glib-2.0/schemas/99_StarLabs.gschema.override
-	
+
 	# Replace Ubuntu Dock with Dash to Dock
 	install -d $pkgdir/usr/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
 	cp $pkgdir/usr/share/gnome-shell/extensions/ubuntu-dock@ubuntu.com/starlabs.css $pkgdir/usr/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/
 	sed -i 's/ubuntu-dock@ubuntu.com/dash-to-dock@micxgx.gmail.com/g' "$pkgdir/"usr/share/gnome-shell/modes/starlabs.json
-	
+
 	# Replace Ubuntu Appindicators with AppIndicator Support
 	sed -i 's/ubuntu-appindicators@ubuntu.com/appindicatorsupport@rgcjonas.gmail.com/g' "$pkgdir/"usr/share/gnome-shell/modes/starlabs.json
-	
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell/extensions/ubuntu-dock@ubuntu.com,gnome-shell/extensions/lockkeys@vaina.lt,gnome-shell/theme,fonts,icons,plymouth,sounds,themes}
 	rm -r "$pkgdir/"{boot,etc}
 	rm -f "$pkgdir/"usr/share/glib-2.0/schemas/org.gnome.shell.extensions.lockkeys.gschema.xml
@@ -182,9 +186,9 @@ package_starlabstheme-sounds-git() {
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 
-	cd StarLabsTheme
-	DESTDIR="$pkgdir" ninja -C build install
-	
+	"$srcdir/${pkgbase%-git}"
+	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
+
 	rm -r "$pkgdir/"usr/share/{backgrounds,gnome-background-properties,gnome-shell,glib-2.0,fonts,icons,plymouth,themes,wayland-sessions,xsessions}
 	rm -r "$pkgdir/"{boot,etc}
 }

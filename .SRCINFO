@@ -1,6 +1,6 @@
 pkgbase = starlabstheme-git
 	pkgdesc = Star Labs GNOME Shell and GTK Theme
-	pkgver = r314.b4d7cbd
+	pkgver = r1.4f2bcc7
 	pkgrel = 1
 	url = https://github.com/StarLabsLtd/StarLabsTheme
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = starlabstheme-git
 	makedepends = sassc
 	provides = starlabstheme
 	conflicts = starlabstheme
-	source = git+https://github.com/StarLabsLtd/StarLabsTheme.git
+	source = starlabstheme::git+https://github.com/StarLabsLtd/StarLabsTheme.git
 	sha256sums = SKIP
 
 pkgname = starlabstheme-backgrounds-git
@@ -72,7 +72,7 @@ pkgname = starlabstheme-session-git
 	depends = starlabstheme-gnome-shell
 	depends = starlabstheme-gtk
 	depends = starlabstheme-icons
-	depends = starlabtheme-sounds
+	depends = starlabstheme-sounds
 	optdepends = starlabstheme-extensions
 	optdepends = gnome-shell-extension-appindicator
 	optdepends = gnome-shell-extension-desktop-icons
