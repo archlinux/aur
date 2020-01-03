@@ -17,7 +17,7 @@ sha256sums=("28b36360694313d9558ed620194a700296dbbf971e7fff90d18ad5c7cf74950a"
 
 build() {
 	cd "${srcdir}"
-	nativefier --name "YouTube Music" --icon "${pkgname}.png" --verbose "${url}"
+	nativefier --name "YouTube Music" --icon "${pkgname}.png" --verbose --internal-urls "(.*?)(accounts\.google\.com/ServiceLogin|music\.youtube\.com)(.*?)" "${url}"
 }
 
 package() {
