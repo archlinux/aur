@@ -10,7 +10,7 @@ _repo_name="Mindustry"
 url="https://github.com/Anuken/${_repo_name}"
 license=('GPL3')
 depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
-makedepends=("java-environment>=8" "libicns")
+makedepends=("java-environment>=8" "java-environment<13" "libicns")
 source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/archive/v${_build}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh"
@@ -24,7 +24,36 @@ sha256sums=('7e9b2ade8976fb4b3318376d0f21a76aa67ccaa10bc5d1df758170b0c91d59bc'
 
 build() {
   cd "${_repo_name}-${_build}"
-  ./gradlew --no-daemon dist -Pbuildversion="${_build}"
+
+  # find JDK older than 13 because Gradle 5.x doesn't support it
+  for java_dir in /usr/lib/jvm/*; do
+    if ! [ -x "${java_dir}/bin/java" ]; then break; fi
+
+    if [ -f "${java_dir}/release" ]; then
+      version="$(sed -n 's/^JAVA_VERSION="\(.*\)"$/\1/p' "${java_dir}/release")"
+    elif [ -f "${java_dir}/jre/lib/rt.jar" ]; then
+      version="$(unzip -p "${java_dir}/jre/lib/rt.jar" META-INF/MANIFEST.MF | sed -n 's/Implementation-Version: 1\.\(.*\)$/\1/p')"
+    else
+      break
+    fi
+
+    if [ -z "${version}" ]; then break; fi
+
+    if [ "$(vercmp "${version}" 8)" -ge 0 ] && [ "$(vercmp "${version}" 13)" -lt 0 ]; then
+      msg2 "Using JDK v%s from %s" "${version}" "${java_dir}"
+      msg2 "Edit the PKGBUILD if you wish to change the JDK used to compile %s" "${pkgbase}"
+      found_correct_jdk=1
+      break
+    fi
+  done; unset version
+
+  if [ -z "$found_correct_jdk" ]; then
+    error "Couldn't find a JDK with version >=8 and <13"
+    return 1
+  fi
+
+  JAVA_HOME="${java_dir}" ./gradlew --no-daemon dist -Pbuildversion="${_build}"
+  unset java_dir
 
   cd core/assets/icons
   icns2png --extract icon.icns
