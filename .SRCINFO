@@ -1,0 +1,19 @@
+pkgbase = python-nototools
+	pkgdesc = Noto fonts support tools and scripts plus web site generation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/googlefonts/nototools
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	depends = python-booleanoperations
+	depends = python-defcon
+	depends = python-fonttools
+	depends = python-pillow
+	depends = python-pyclipper
+	depends = scour
+	source = nototools-0.2.1.tar.gz::https://github.com/googlefonts/nototools/archive/v0.2.1.tar.gz
+	sha256sums = cfbd280b395445350f3d2b5c4de0f1b69fd03f7b1751fbb3a2d9f90406532fe9
+
+pkgname = python-nototools
+
