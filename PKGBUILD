@@ -1,6 +1,6 @@
 # Maintainer: Manhong Dai <daimh@umich.edu>
 pkgname=sge
-pkgver=20190516
+pkgver=20200103
 pkgrel=1
 pkgdesc="Son of Grid Engine/Sun Grid Engine"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
 )
 md5sums=(
 	'a2f03ca8b803ca4da7d2dedadeca74bb'
-	'be59af210af77e2ac6efd9fe10d51149'
+	'efb0d8cc5a4b27909f2d2ec069863e37'
 )
 build() {
 	patch -s -p0 < sge-8.1.9.patch
