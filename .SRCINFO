@@ -1,11 +1,11 @@
 pkgbase = wallpaper-lightning
 	pkgdesc = 'Lightning' wallpaper that used to be included in kdeartwork-weatherwallpapers
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.opendesktop.org/c/1460899771
 	arch = any
 	license = GPL
-	source = https://dl.opendesktop.org/api/files/download/id/1460899772/s/5473a38a7c69dcacd18c5e4bb1854d4c/t/1536188456/u/78438-Lightning1920.jpg
+	source = https://dllb2.pling.com/api/files/download/id/1460899772/s/9e23b59d91cd584071a06f17b833cb8fb324d647b71c097970f24012f4621915e43773bc6bf069b32f70569e4ab95af12c6b8edae65ee442338c0293852e08e7/t/1578021887/c/65b0b189dcb333087222e00ff83551cad3048a36b6551087ad2cf4ff8fa4f25cf1ec5ab4f78fbdd444fc17a0faff8d4750597aa56915d905c9e1f25ccaee3f5e/lt/download/78438-Lightning1920.jpg
 	md5sums = 5ec093bbe2b9d1d1c44d61078ea4949b
 
 pkgname = wallpaper-lightning
