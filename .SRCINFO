@@ -1,6 +1,6 @@
 pkgbase = torbrowser-launcher-git
 	pkgdesc = Securely and easily download, verify, install, and launch Tor Browser
-	pkgver = 0.3.2.r20.20b02d0
+	pkgver = 0.3.2.r24.fc2073d
 	pkgrel = 1
 	url = https://github.com/micahflee/torbrowser-launcher
 	arch = any
@@ -16,8 +16,10 @@ pkgbase = torbrowser-launcher-git
 	depends = python-twisted
 	provides = torbrowser-launcher
 	conflicts = torbrowser-launcher
-	source = git+https://github.com/micahflee/torbrowser-launcher.git
+	source = git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop
+	source = torbrowser-launcher.patch
 	sha256sums = SKIP
+	sha256sums = 492ef44a6246e2e3d26feeeb317aa629fda9c0c229d0a64a8174f71492ead900
 
 pkgname = torbrowser-launcher-git
 

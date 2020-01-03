@@ -1,0 +1,14 @@
+Only in torbrowser-launcher: .git
+diff '--color=auto' --unified --recursive --text torbrowser-launcher/setup.py torbrowser-launcher.b/setup.py
+--- torbrowser-launcher/setup.py	2020-01-03 10:35:52.041695115 -0700
++++ torbrowser-launcher.b/setup.py	2020-01-03 10:36:33.168415722 -0700
+@@ -35,7 +35,8 @@
+ SHARE = 'share'
+ 
+ # detect linux distribution
+-distro = platform.dist()[0]
++import distro as d
++distro=d.LinuxDistribution()._os_release_info['name']
+ 
+ 
+ def file_list(path):
