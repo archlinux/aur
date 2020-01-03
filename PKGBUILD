@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2735.g3fe683eb
+pkgver=1.20.1.r1.g18dc73d2
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -12,15 +12,13 @@ provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
 source=('git+https://github.com/ipxe/ipxe.git'
-	'ipxe-0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/b4b66013274d2bf1767dd093f6867872a070bc93.patch'
-	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/83909ca09656dce6750924e671b6484959b14bf2.patch'
+	'ipxe-0002-banner.patch::https://github.com/eworm-de/ipxe/commit/ef70ba7ba6b1bad9d873dfa48458fe16269fe48b.patch'
 	'ipxe-0003-efi-iso.patch::https://github.com/eworm-de/ipxe/commit/1bb5900a8aa64ae332dcd49a7ce82e43063b0244.patch'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
 sha256sums=('SKIP'
-            '07cde3fde57730f57a0cdb155b41ec0e14d09d9b7dc12d787029671b3cd38219'
-            'd92426915b5321360d701c047e9e2cc51887d064d16b0ab5ee1c7adfa506ff92'
+            'c41835f551ab83956e4e39711151175347dbd0e53f48abb9df727eb7c727c3e5'
             'c915aa468a6c581a1c39aff2a842992f0e42bd37989b1be3ee4a000a6ab8c619'
             'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
             'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
@@ -43,9 +41,6 @@ pkgver() {
 
 prepare() {
 	cd ipxe/src/
-
-	# git version
-	patch -Np2 < "${srcdir}/ipxe-0001-git-version.patch"
 
 	# ArchLinux branding
 	patch -Np2 < "${srcdir}/ipxe-0002-banner.patch"
