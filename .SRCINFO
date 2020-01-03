@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-rebecca
+	pkgdesc = The backgrounds included in Linux Mint 17.1 Rebecca
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rebecca
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rebecca/mint-backgrounds-rebecca_1.5.tar.gz
+	sha256sums = 91279f51c2bb6134429b9a88a84a4a0bf7857b9ad3963ac1c0c9ed7d1e0e2193
+
+pkgname = mint-backgrounds-rebecca
+
