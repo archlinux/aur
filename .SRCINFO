@@ -1,6 +1,6 @@
 pkgbase = draftsight
 	pkgdesc = Freeware CAD software for DWG/DXF files.
-	pkgver = 2019SP1
+	pkgver = 2019SP3
 	pkgrel = 1
 	url = http://www.3ds.com/products/draftsight/
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = draftsight
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = zlib
-	source = draftsight-2019SP1::http://dl-ak.solidworks.com/nonsecure/draftsight/2019SP1/draftSight.rpm
+	source = draftsight-2019SP3::http://dl-ak.solidworks.com/nonsecure/draftsight/2019SP3/draftSight.rpm
 	source = draftsight.desktop
-	md5sums = 6f4f0957da481fdf3acdd695808feab2
+	md5sums = 5be437640a14d87eeef57556dd614a36
 	md5sums = 70904e450823c6978f242435d414e0fc
 
 pkgname = draftsight

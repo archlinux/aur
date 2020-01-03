@@ -1,8 +1,9 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: Grey Christoforo <first name at last name dot net>
+# Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Justin R. St-Amant <jstamant24 at gmail dot com>
 
 pkgname=draftsight
-pkgver=2019SP1
+pkgver=2019SP3
 pkgrel=1
 pkgdesc="Freeware CAD software for DWG/DXF files."
 arch=('x86_64')
@@ -31,7 +32,7 @@ depends=('alsa-lib'
          'zlib')
 source=("$pkgname-$pkgver::http://dl-ak.solidworks.com/nonsecure/$pkgname/$pkgver/draftSight.rpm"
         "$pkgname.desktop")
-md5sums=('6f4f0957da481fdf3acdd695808feab2'
+md5sums=('5be437640a14d87eeef57556dd614a36'
          '70904e450823c6978f242435d414e0fc')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
