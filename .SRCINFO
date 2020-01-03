@@ -1,12 +1,11 @@
 pkgbase = brave-dev-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (dev binary release).
 	pkgver = 1.4.50
-	pkgrel = 2
+	pkgrel = 4
 	url = https://brave.com/download-dev
 	arch = x86_64
 	license = custom
 	depends = gtk3
-	depends = gconf
 	depends = nss
 	depends = alsa-lib
 	depends = libxss
