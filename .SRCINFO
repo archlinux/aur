@@ -1,16 +1,14 @@
 pkgbase = linux-drm-intel-next-queued-git
 	pkgdesc = Linux with patches for Intel graphics
-	pkgver = 5.4.857855.601734f7aabd
+	pkgver = 5.6.887400.b2fcaac98bbe
 	pkgrel = 1
 	url = https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = git
+	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
@@ -19,14 +17,8 @@ pkgbase = linux-drm-intel-next-queued-git
 	options = !strip
 	source = linux-drm-intel-next-queued-git::git://anongit.freedesktop.org/drm/drm-intel#branch=drm-intel-next-queued
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 1783d6b33b3fa214fa6dbb5e67a9563f3abb2fcb440421ef2897fc7077828254
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = 08e8355c548d5710f157a062b39d97e414160916d30acd2dda307d38c43e394d
 
 pkgname = linux-drm-intel-next-queued-git
 	pkgdesc = The Linux-drm-intel-next-queued-git kernel and modules
