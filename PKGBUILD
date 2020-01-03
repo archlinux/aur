@@ -5,13 +5,14 @@
 
 pkgname=brave-beta-bin
 pkgver=1.3.82
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (beta binary release).'
 arch=('x86_64')
 url='https://brave.com/download-beta'
 license=('custom')
-depends=('gtk3' 'gconf' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support'
+            'libgnome-keyring: Enable GNOME keyring support'
             'pepper-flash: Adobe Flash support')
 provides=("${pkgname}" 'brave-beta-browser')
 conflicts=("${pkgname}" 'brave-bin' 'brave-dev-bin')
