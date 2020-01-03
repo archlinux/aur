@@ -1,8 +1,8 @@
-pkgbase = prosody-mod-muc-cloud-notify-hg
-	pkgdesc = Prosody plugin for enabling push notifications for MUC
+pkgbase = prosody-mod-muc-mam-hints-hg
+	pkgdesc = Prosody plugin to check for MUC messages with XEP-0334 tags to qualify those messages as “historic” for later MAM archiving or not.
 	pkgver = r3755.bb18a1f5e9d7
 	pkgrel = 1
-	url = https://modules.prosody.im/mod_muc_cloud_notify.html
+	url = https://modules.prosody.im/mod_muc_mam_hints.html
 	arch = any
 	license = MIT
 	makedepends = mercurial
@@ -10,5 +10,5 @@ pkgbase = prosody-mod-muc-cloud-notify-hg
 	source = hg+https://hg.prosody.im/prosody-modules/
 	sha1sums = SKIP
 
-pkgname = prosody-mod-muc-cloud-notify-hg
+pkgname = prosody-mod-muc-mam-hints-hg
 
