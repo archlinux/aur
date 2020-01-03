@@ -1,16 +1,16 @@
 pkgbase = lerna
 	pkgdesc = Tool for managing JavaScript projects with multiple packages
-	pkgver = 3.20.1
+	pkgver = 3.20.2
 	pkgrel = 1
 	url = https://github.com/sebmck/lerna#readme
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = lerna-3.20.1.tgz
+	noextract = lerna-3.20.2.tgz
 	options = !strip
-	source = https://registry.npmjs.org/lerna/-/lerna-3.20.1.tgz
-	sha256sums = 23c3031a2b8943b6dcc96721d128c1f1f01a8a60087b7dc5506185661d678aa9
+	source = https://registry.npmjs.org/lerna/-/lerna-3.20.2.tgz
+	sha256sums = 2d14384437fb498de7dad474a92c1840b5d4d9b8a9702a19fa1c640110d03d1a
 
 pkgname = lerna
 
