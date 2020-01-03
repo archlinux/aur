@@ -3,8 +3,8 @@
 _wafver=2.0.9
 
 pkgname=mpv-full
-pkgver=0.30.0
-pkgrel=0
+pkgver=0.31.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL3')
@@ -29,7 +29,7 @@ conflicts=('mpv')
 options=('!emptydirs')
 source=("mpv-${pkgver}.tar.gz"::"https://github.com/mpv-player/mpv/archive/v${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
-sha256sums=('33a1bcb7e74ff17f070e754c15c52228cf44f2cefbfd8f34886ae81df214ca35'
+sha256sums=('805a3ac8cf51bfdea6087a6480c18835101da0355c8e469b6d488a1e290585a5'
             '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
 
 prepare() {
@@ -38,140 +38,153 @@ prepare() {
 }
 
 build() {
+    local _common_opts=(
+        '--color=yes'
+        '--prefix=/usr'
+        '--progress'
+        '--confdir=/etc/mpv'
+        
+        '--disable-lgpl'
+        '--enable-libmpv-shared'
+        '--disable-libmpv-static'
+        '--disable-static-build'
+        '--disable-build-date'
+        '--disable-debug-build'
+        '--enable-manpage-build'
+        '--disable-html-build'
+        '--disable-pdf-build'
+        '--enable-cplugins'
+        '--disable-clang-database'
+        
+        '--disable-android'
+        '--disable-tvos'
+        '--disable-egl-android'
+        '--disable-swift'
+        '--disable-uwp'
+        '--disable-win32-internal-pthreads'
+        '--enable-iconv'
+        '--enable-libsmbclient'
+        '--enable-lua'
+        '--enable-javascript'
+        '--enable-libass'
+        '--enable-libass-osd'
+        '--enable-zlib'
+        '--enable-libbluray'
+        '--enable-dvdnav'
+        '--enable-cdda'
+        '--enable-uchardet'
+        '--enable-rubberband'
+        '--enable-zimg'
+        '--enable-lcms2'
+        '--enable-vapoursynth'
+        '--enable-libarchive'
+        '--enable-dvbin'
+        '--enable-sdl2'
+        '--enable-sdl2-gamepad'
+        '--enable-libavdevice'
+        '--disable-ffmpeg-strict-abi'
+        '--lua=52arch'
+        
+        '--enable-sdl2-audio'
+        '--enable-oss-audio'
+        '--enable-rsound'
+        '--enable-sndio'
+        '--enable-pulse'
+        '--enable-jack'
+        '--enable-openal'
+        '--disable-opensles'
+        '--enable-alsa'
+        '--disable-coreaudio'
+        '--disable-audiounit'
+        '--disable-wasapi'
+        
+        '--enable-sdl2-video'
+        '--disable-cocoa'
+        '--enable-drm'
+        '--enable-drmprime'
+        '--enable-gbm'
+        '--enable-wayland-scanner'
+        '--enable-wayland-protocols'
+        '--enable-wayland'
+        '--enable-x11'
+        '--enable-xv'
+        '--disable-gl-cocoa'
+        '--enable-gl-x11'
+        '--enable-egl'
+        '--enable-egl-x11'
+        '--enable-egl-drm'
+        '--enable-gl-wayland'
+        '--disable-gl-win32'
+        '--disable-gl-dxinterop'
+        '--disable-egl-angle'
+        '--disable-egl-angle-lib'
+        '--disable-egl-angle-win32'
+        '--enable-vdpau'
+        '--enable-vdpau-gl-x11'
+        '--enable-vaapi'
+        '--enable-vaapi-x11'
+        '--enable-vaapi-wayland'
+        '--enable-vaapi-drm'
+        '--enable-vaapi-x-egl'
+        '--enable-caca'
+        '--enable-jpeg'
+        '--disable-direct3d'
+        '--enable-shaderc'
+        '--enable-spirv-cross'
+        '--disable-d3d11'
+        '--disable-rpi'
+        '--disable-ios-gl'
+        '--enable-plain-gl'
+        '--enable-gl'
+        '--enable-libplacebo'
+        '--enable-vulkan'
+        
+        '--disable-videotoolbox-gl'
+        '--disable-d3d-hwaccel'
+        '--disable-d3d9-hwaccel'
+        '--disable-gl-dxinterop-d3d9'
+        '--enable-cuda-hwaccel'
+        '--disable-rpi-mmal'
+        
+        '--disable-macos-touchbar'
+        '--disable-macos-10-11-features'
+        '--disable-macos-10-12-2-features'
+        '--disable-macos-10-14-features'
+        '--disable-macos-media-player'
+        '--disable-macos-cocoa-cb')
+    
     cd "mpv-${pkgver}"
     
-    ./waf configure \
-        --color='yes' \
-        --prefix='/usr' \
-        --progress \
-        --confdir='/etc/mpv' \
-        \
-        --disable-lgpl \
-        --enable-libmpv-shared \
-        --disable-libmpv-static \
-        --disable-static-build \
-        --disable-debug-build \
-        \
-        --enable-manpage-build \
-        --disable-html-build \
-        --disable-pdf-build \
-        \
-        --enable-cplugins \
-        --enable-test \
-        --disable-clang-database \
-        \
-        --disable-android \
-        --disable-tvos \
-        --disable-egl-android \
-        --disable-swift \
-        --disable-uwp \
-        --disable-win32-internal-pthreads \
-        --enable-iconv \
-        --enable-libsmbclient \
-        --enable-lua \
-        --enable-javascript \
-        --enable-libass \
-        --enable-libass-osd \
-        --enable-zlib \
-        --enable-libbluray \
-        --enable-dvdnav \
-        --enable-cdda \
-        --enable-uchardet \
-        --enable-rubberband \
-        --enable-zimg \
-        --enable-lcms2 \
-        --enable-vapoursynth \
-        --enable-libarchive \
-        --enable-dvbin \
-        --enable-sdl2 \
-        --enable-sdl2-gamepad \
-        --enable-libavdevice \
-        --disable-ffmpeg-strict-abi \
-        --lua='52arch' \
-        \
-        --enable-sdl2-audio \
-        --enable-oss-audio \
-        --enable-rsound \
-        --enable-sndio \
-        --enable-pulse \
-        --enable-jack \
-        --enable-openal \
-        --disable-opensles \
-        --enable-alsa \
-        --disable-coreaudio \
-        --disable-audiounit \
-        --disable-wasapi \
-        \
-        --enable-sdl2-video \
-        --disable-cocoa \
-        --enable-drm \
-        --enable-drmprime \
-        --enable-gbm \
-        --enable-wayland-scanner \
-        --enable-wayland-protocols \
-        --enable-wayland \
-        --enable-x11 \
-        --enable-xv \
-        --disable-gl-cocoa \
-        --enable-gl-x11 \
-        --enable-egl-x11 \
-        --enable-egl-drm \
-        --enable-gl-wayland \
-        --disable-gl-win32 \
-        --disable-gl-dxinterop \
-        --disable-egl-angle \
-        --disable-egl-angle-lib \
-        --disable-egl-angle-win32 \
-        --enable-vdpau \
-        --enable-vdpau-gl-x11 \
-        --enable-vaapi \
-        --enable-vaapi-x11 \
-        --enable-vaapi-wayland \
-        --enable-vaapi-drm \
-        --enable-vaapi-x-egl \
-        --enable-caca \
-        --enable-jpeg \
-        --disable-direct3d \
-        --enable-shaderc \
-        --enable-spirv-cross \
-        --disable-d3d11 \
-        --disable-rpi \
-        --disable-ios-gl \
-        --enable-plain-gl \
-        --enable-gl \
-        --enable-libplacebo \
-        --enable-vulkan \
-        \
-        --disable-videotoolbox-gl \
-        --disable-d3d-hwaccel \
-        --disable-d3d9-hwaccel \
-        --disable-gl-dxinterop-d3d9 \
-        --enable-cuda-hwaccel \
-        --disable-rpi-mmal \
-        \
-        --disable-apple-remote \
-        --disable-macos-touchbar \
-        --disable-macos-10-11-features \
-        --disable-macos-10-14-features \
-        --disable-macos-cocoa-cb
-        
+    # build without tests on the mpv binary (goes to package)
+    printf '%s\n' ' -> Building the release files (without tests)...'
+    ./waf configure --disable-tests "${_common_opts[@]}"
+    ./waf build
+    
+    # build with tests on the mpv binary (for tests only)
+    printf '%s\n' ' -> Building the test files (with tests)...'
+    export WAFLOCK='.lock-waf_linux_build-tests'
+    ./waf distclean configure --enable-tests "${_common_opts[@]}"
     ./waf build
 }
 
 check() {
-    cd "mpv-${pkgver}/build/test"
+    cd "mpv-${pkgver}"
     
     local _test
+    export LD_LIBRARY_PATH="${srcdir}/mpv-${pkgver}/build-tests"
+    
+    # skip problematic 'img_format' test, and the 'all-simple' special value that runs all tests
     while read -r -d '' _test
     do
-        printf '%s\n' "  -> Running test '${_test##*/}'..."
-        "$_test"
-    done < <(find . -executable -type f -print0 | sort -z)
+        printf '%s\n' "  -> Running test '${_test}'..."
+        build-tests/mpv --unittest="$_test"
+    done < <(build-tests/mpv --unittest='help' | awk 'FNR == 1 { next } !/img_format|all-simple/ { printf "%s\0", $1 }')
 }
 
 package() {
     cd "mpv-${pkgver}"
-
+    
+    export WAFLOCK='.lock-waf_linux_build'
     ./waf install --destdir="$pkgdir"
     
     install -D -m644 DOCS/{encoding.rst,tech-overview.txt} "${pkgdir}/usr/share/doc/mpv"
