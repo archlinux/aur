@@ -2,25 +2,22 @@
 
 pkgname=ytmdesktop-git
 _name=ytmdesktop
-pkgver=1.5.0.1.g5829af5
+pkgver=1.7.0.3127039
 pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('any')
 url="https://ytmdesktop.app"
-depends=('gtk3' 'nss')
+depends=('gtk3' 'nss', 'libxss')
 makedepends=('git' 'npm')
 optdepends=('gnome-keyring' 'lsb-release' 'avahi' 'nss-mdns')
 provides=('ytmdesktop')
 conflicts=()
-install=ytmdesktop-git.install
 license=('CCPL')
 
 source=('git+https://github.com/ytmdesktop/ytmdesktop.git'
-        'ytmdesktop.desktop'
-        'ytmdesktop-git.install')
+        'ytmdesktop.desktop')
 md5sums=('SKIP'
-         '63a9f7d805c871f6556aa0e1aa0ef74c'
-         'e297b473f8fd1b6f26642da1d7206123')
+         '63a9f7d805c871f6556aa0e1aa0ef74c')
 
 pkgver() {
 	cd "$srcdir/$_name"
