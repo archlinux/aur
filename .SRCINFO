@@ -1,6 +1,6 @@
 pkgbase = youtubemusic-nativefier
 	pkgdesc = YouTube Music Client built with nodejs-nativefier (electron)
-	pkgver = 1.0.0
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://music.youtube.com/
 	arch = i686
