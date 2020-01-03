@@ -1,8 +1,8 @@
 pkgbase = dislocker-noruby
 	pkgdesc = Read BitLocker encrypted volumes under Linux (no ruby bindings/dependency)
 	pkgver = 0.7.1
-	pkgrel = 1
-	url = http://www.hsc.fr/ressources/outils/dislocker
+	pkgrel = 2
+	url = https://github.com/Aorimn/dislocker
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -14,9 +14,11 @@ pkgbase = dislocker-noruby
 	conflicts = dislocker
 	conflicts = dislocker-git
 	source = https://github.com/Aorimn/dislocker/archive/v0.7.1.tar.gz
+	source = https://github.com/Aorimn/dislocker/commit/f778706e72d9f7bac84a5a4cd37f0b56cebdef49.patch
 	source = no-ruby.patch
-	sha1sums = 0c5c62f63ba587663eb0474f1bd6ca7e345fe977
-	sha1sums = 0c47520eae3f9536cf7a54abc6bb244290e413d6
+	sha256sums = 742fb5c1b3ff540368ced54c29eae8b488ae5a5fcaca092947e17c2d358a6762
+	sha256sums = ad177e697e84f88ee91f7cb6a9ab3a47100665155107abc8c9e965529bc81cff
+	sha256sums = 0b8d211cab004d17ec7a3841ca4597a909a5b61fe6197125d26a09f4ef669a85
 
 pkgname = dislocker-noruby
 
