@@ -2,7 +2,7 @@
 
 pkgname=openvpn
 pkgver=2.4.8
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
 url='https://openvpn.net/index.php/open-source.html'
@@ -26,7 +26,8 @@ build() {
   mkdir "${srcdir}"/build
   cd "${srcdir}"/build
 
-  "${srcdir}"/${pkgname}/configure \
+  CONFIG_SHELL=/bin/bash "${srcdir}"/${pkgname}/configure \
+    CONFIG_SHELL=/bin/bash \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --enable-iproute2 \
