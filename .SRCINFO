@@ -1,7 +1,7 @@
 pkgbase = photocollage
 	pkgdesc = Graphical tool to make photo collage posters.
 	pkgver = 1.4.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/adrienverge/PhotoCollage
 	arch = any
 	license = GPLv2
