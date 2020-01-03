@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duettools-bin
-pkgver=1.1.0.5
+pkgver=1.2.2.1
 pkgrel=1
 pkgdesc="Optional tools (code examples)"
 arch=('armv7h')
@@ -11,7 +11,7 @@ conflicts=("duettools")
 depends=("duetcontrolserver>=${pkgver}")
 options=(!strip staticlibs)
 source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duettools_${pkgver}_armhf.deb")
-sha256sums=('711bae16f2bda91b88b519378951f3b0a2202adfb825ba0c2e6646d1e64ca9c5')
+sha512sums=('7acb3b0205bcf6f283e2908a34d1d74d242b9973fd18cac665dda47db97f641c6f418333baf92f0b946532d3512f5161defcf4397e5809380b621962cc49d79c')
 
 prepare() {
     tar -xf data.tar.xz
@@ -25,5 +25,6 @@ package() {
 
 	ln -s "/opt/dsf/bin/CodeConsole" "${pkgdir}/usr/bin/"
 	ln -s "/opt/dsf/bin/CodeLogger" "${pkgdir}/usr/bin/"
+	ln -s "/opt/dsf/bin/CustomHttpEndpoint" "${pkgdir}/usr/bin/"
 	ln -s "/opt/dsf/bin/ModelObserver" "${pkgdir}/usr/bin/"
 }
