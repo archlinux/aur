@@ -1,5 +1,5 @@
 diff --git a/Launch.lua b/Launch.lua
-index 0673314..3126c1e 100644
+index 0673314..39800ae 100644
 --- a/Launch.lua
 +++ b/Launch.lua
 @@ -51,7 +51,7 @@ function launch:OnInit()
@@ -11,3 +11,40 @@ index 0673314..3126c1e 100644
  	end
  	RenderInit()
  	ConPrintf("Loading main script...")
+@@ -286,6 +286,8 @@ function launch:ApplyUpdate(mode)
+ end
+ 
+ function launch:CheckForUpdate(inBackground)
++	return
++	--[[
+ 	if self.updateCheckRunning then
+ 		return
+ 	end
+@@ -302,6 +304,7 @@ function launch:CheckForUpdate(inBackground)
+ 		self.updateCheckRunning = true
+ 	end
+ 	update:close()
++	--]]
+ end
+ 
+ function launch:ShowPrompt(r, g, b, str, func)
+diff --git a/Modules/Main.lua b/Modules/Main.lua
+index 1af88e0..683fc33 100644
+--- a/Modules/Main.lua
++++ b/Modules/Main.lua
+@@ -42,7 +42,7 @@ function main:Init()
+ 	self.modes["LIST"] = LoadModule("Modules/BuildList")
+ 	self.modes["BUILD"] = LoadModule("Modules/Build")
+ 
+-	if launch.devMode or GetScriptPath() == GetRuntimePath() then
++	if launch.devMode and GetScriptPath() == GetRuntimePath() then
+ 		-- If running in dev mode or standalone mode, put user data in the script path
+ 		self.userPath = GetScriptPath().."/"
+ 	else
+@@ -917,4 +917,4 @@ do
+ 	end
+ end
+ 
+-return main
+\ No newline at end of file
++return main

@@ -6,7 +6,7 @@ pkgdesc='An offline build planner for Path of Exile using PoBFrontent'
 arch=('x86_64')
 url='https://github.com/Openarl/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.156.r996.37.479
+pkgver=1.4.157.r1012.37.479
 
 depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl')
 makedepends=('meson' 'ninja' 'unzip' 'rsync')
@@ -17,9 +17,9 @@ source=(
 	'git+https://github.com/Lua-cURL/Lua-cURLv3'
 	'https://github.com/Openarl/PathOfBuilding/files/1167199/PathOfBuilding-runtime-src.zip'
 	'PathOfBuilding.sh'
-	'PathOfBuilding-force-disable-devmode.patch'
-	'pobfrontend-writable-user-dir.patch'
 	'lzip-linux.patch'
+	'PathOfBuilding-force-disable-devmode.patch'
+	'pobfrontend.patch'
 )
 sha256sums=(
 	'SKIP'
@@ -27,9 +27,9 @@ sha256sums=(
 	'SKIP'
 	'6d21872a2b2bdbfaebb20de5cac28ac402316e5314c97a89049320ff13c2f622'
 	'02b44b44872bae4725bc6de600f4592ce33b26e90fa0f392922004ee15898446'
-	'38a09a82f06c2d8738f674c5d2818e5f9580bb25611212507814c97ac25adbd1'
-	'58a47220d0d1b0209734fc42c0f7dc603c231985eb52f393a7c28598200503e1'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
+	'4b37acb9f25f6841726d6b73e6b893d1376c858e879dd6daf35a1bbae8bc2faf'
+	'87cbc36ace84ebd746a5b8ec5a88ffde5b03cea7c633a4d437d46b5434ae86da'
 )
 noextract=(
 	'PathOfBuilding-runtime-src.zip'
@@ -46,7 +46,7 @@ prepare() {
 	# disable devmode
 	(cd "${srcdir}/PathOfBuilding" && patch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch")
 	# fix pobfrontend to have a writable user dir
-	(cd "${srcdir}/pobfrontend" && patch -p1 <"${srcdir}/pobfrontend-writable-user-dir.patch")
+	(cd "${srcdir}/pobfrontend" && patch -p1 <"${srcdir}/pobfrontend.patch")
 }
 
 pkgver() {
