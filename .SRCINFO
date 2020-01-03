@@ -1,7 +1,7 @@
 pkgbase = python2-cheetah
 	pkgdesc = A Python-powered template engine and code generator
 	pkgver = 2.4.4
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.cheetahtemplate.org
 	arch = x86_64
 	license = custom
@@ -9,10 +9,6 @@ pkgbase = python2-cheetah
 	depends = python2
 	depends = python2-markdown
 	optdepends = python2-pygments: for the CodeHighlighter filter
-	provides = cheetah
-	provides = python-cheetah
-	conflicts = cheetah
-	conflicts = python-cheetah
 	source = https://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz
 	sha512sums = 11b8cbf7d71789d6ae83596b133ddbe0bf1ccf2bca4c59562e7cd1d9bb75fa9d3208c0021d7d77edafdb03fd399cf1a26c003267fbffb94f27bf4457b0f9234c
 
