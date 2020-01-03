@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-rafaela
+	pkgdesc = The backgrounds included in Linux Mint 17.2 Rafaela
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rafaela
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-rafaela/mint-backgrounds-rafaela_1.2.tar.gz
+	sha256sums = a3880fe98797d1eefcd3f9504aca0804ad071df7c1d410566ead663213b6391c
+
+pkgname = mint-backgrounds-rafaela
+
