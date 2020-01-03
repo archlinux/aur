@@ -1,23 +1,24 @@
 # Maintainer: Pedro H Lara Campos <root@pedrohlc.com>
+# Contributor: Mark Wagie <mark.wagie@tutanota.com>
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Ben Morgan <neembi@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 _pkgname=repoctl
 pkgname="${_pkgname}-devel-git"
-pkgver=0.19
-pkgrel=0
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories (devel branch from git)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
-makedepends=('go' 'git')
-options=('!strip')
+makedepends=('go-pie' 'git')
+options=()
 source=("${_pkgname}::git+https://github.com/cassava/repoctl.git#branch=devel")
 md5sums=('SKIP')
 provides=('repoctl')
 conflicts=('repoctl' 'repoctl-git')
 
+pkgver=0.18.r16.g717a4e1
+pkgrel=1
 pkgver() {
   cd "${_pkgname}"
   git describe --tags --long | sed 's/^v//; s/-/.r/; s/-/./g'
@@ -26,15 +27,13 @@ pkgver() {
 prepare() {
   dest="$srcdir/src/github.com/cassava"
   mkdir -p "$dest"
-  mv "$srcdir/${_pkgname}" "$dest/repoctl"
-  cd "$srcdir"
-  ln -s "$dest/repoctl" "${_pkgname}"
+	ln -rTsf "$srcdir/${_pkgname}" "$dest/repoctl"
 }
 
 build() {
   src="$srcdir/src/github.com/cassava/repoctl"
   cd "$src/cmd/repoctl"
-  GOPATH="$srcdir" go build
+  GOPATH="$srcdir" go build -trimpath -ldflags "-extldflags ${LDFLAGS}" .
 }
 
 package() {
