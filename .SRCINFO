@@ -1,0 +1,20 @@
+pkgbase = openfodder-git
+	pkgdesc = An open source version of the Cannon Fodder engine, for modern operating systems
+	pkgver = 1.6.0_2_ga656e77
+	pkgrel = 1
+	url = http://openfodder.com/
+	install = openfodder-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = clang
+	depends = sdl2
+	depends = sdl2_mixer
+	provides = openfodder
+	conflicts = openfodder
+	source = git+https://github.com/OpenFodder/openfodder.git
+	md5sums = SKIP
+
+pkgname = openfodder-git
+
