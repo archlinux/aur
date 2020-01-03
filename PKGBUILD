@@ -2,7 +2,7 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=4.96
+pkgver=4.97
 pkgrel=1
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
@@ -25,7 +25,7 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('9fa6c07b8a7a075fdf1d944544197ccc83771922dec0984c0a2cce45c525070e'
+sha256sums=('aa9c5fdd6e69d595db047d30da1a8249713d21d8ade8aee7d60b5dad2f5c206d'
             '202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a'
             'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
 
@@ -39,7 +39,12 @@ package() {
     install -m755 -d "$pkgdir/etc/$pkgname/"
     touch "$pkgdir/etc/$pkgname/noupdatecheck.txt"
     touch "$pkgdir/etc/$pkgname/nobrowser.txt"
+
     install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 "$pkgname-$pkgver"/src/{var,utils}.py -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 "$pkgname-$pkgver"/src/{var,utils,controlflow,display,fileutils}.py \
+        -t "$pkgdir/usr/share/$pkgname/"
+    install -Dm644 "$pkgname-$pkgver"/src/gapi/{__init__,errors}.py \
+        -t "$pkgdir/usr/share/$pkgname/gapi"
+
     install -Dm755 gam.sh "$pkgdir/usr/bin/gam"
 }
