@@ -12,6 +12,7 @@ license=(MIT)
 depends=('python2-setuptools')
 optdepends=('python2-markdown')
 conflicts=('python2-cheetah')
+provides=('python2-cheetah')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha512sums=('f991865d384cbc7fe287c5d89d9990bfdde205df64f2c9cf8df17427ce865701e4fb2c35e7d52753b40ac170a56b8d071e7ae8bff83cbefe8ec662099fbe1340')
 
