@@ -1,0 +1,17 @@
+pkgbase = php73-imagick
+	pkgdesc = PHP 7.3 extension to create and modify images using the ImageMagick library
+	pkgver = 3.4.4
+	pkgrel = 1
+	url = https://github.com/mkoppanen/imagick
+	arch = x86_64
+	license = PHP
+	checkdepends = librsvg
+	depends = php73
+	depends = imagemagick
+	depends = ttf-dejavu
+	backup = etc/php73/conf.d/imagick.ini
+	source = php73-imagick-3.4.4.tar.gz::https://github.com/mkoppanen/imagick/archive/3.4.4.tar.gz
+	sha512sums = f3d3c74b4d0bb5c2dd986a8b960096ff200daa82e60fdd1467a54944be06810923b4e68a4f70194e25c8176afd9a609b9f2545054520ec759202e5fc3f1e827b
+
+pkgname = php73-imagick
+
