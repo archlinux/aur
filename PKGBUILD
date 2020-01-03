@@ -5,7 +5,7 @@ _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
 pkgver=r243.8045396
-pkgrel=2
+pkgrel=3
 pkgdesc='Highly configurable prompt builder for Bash and ZSH written in Go'
 url='https://github.com/jtyr/gbt'
 arch=('any')
@@ -23,14 +23,13 @@ pkgver() {
 
 prepare() {
     msg2 'Fetching Go package'
-    GOPATH="$srcdir" go get -u "$_gopkg/cmd/$_pkg"
+    GOPATH="$srcdir" go get -u -d "$_gopkg/cmd/$_pkg"
 }
 
 
 build() {
     msg2 'Building binary'
-    rm -f "$srcdir/bin/$_pkg"
-    GOPATH="$srcdir" go install "$_gopkg/cmd/$_pkg"
+    GOPATH="$srcdir" go build -o "bin/$_pkg" -trimpath -ldflags='-s -w' "$_gopkg/cmd/$_pkg"
 }
 
 
