@@ -1,7 +1,7 @@
 # Maintainer: Saurabh Kumar Sharma <saurabh000345 at gmail dot com>
 
 pkgname=youtubemusic-nativefier
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="YouTube Music Client built with nodejs-nativefier (electron)"
 arch=("i686" "x86_64")
