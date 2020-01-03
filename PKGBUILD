@@ -1,6 +1,6 @@
 # Maintainer: Joakim Nylén <me@jnylen.nu>
 # Maintainer: Rashintha Maduneth <rashinthamaduneth@gmail.com>
-# Maintainer: Dhananjay Balan <mail@dbalan.in>
+# Contributor: Dhananjay Balan <mail@dbalan.in>
 # Contributor: ahrs
 
 pkgname=mailspring
