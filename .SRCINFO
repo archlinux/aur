@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-petra
+	pkgdesc = The backgrounds included in Linux Mint 16 Petra
+	pkgver = 1.7
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-petra
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-petra/mint-backgrounds-petra_1.7.tar.gz
+	sha256sums = 4d5285838d5c59d7af8d0c5c7d66900f0583e2b26f3cf419d58d1ae1572fd9d8
+
+pkgname = mint-backgrounds-petra
+
