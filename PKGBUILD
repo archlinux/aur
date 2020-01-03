@@ -1,3 +1,4 @@
+# Maintainer: Gerardo Junior <me@gerardo-junior.com>
 # Maintainer: Xaver Hellauer <software@hellauer.bayern>
 
 pkgname=tresorit
