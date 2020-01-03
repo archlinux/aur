@@ -9,7 +9,7 @@
 +    s.add_runtime_dependency(%q<rmagick>.freeze, [">= 2.0"])
    else
 -    s.add_dependency(%q<nokogiri>.freeze, ["~> 1.7"])
-+    s.add_dependency(%q<nokogiri>.freeze, ["~> 1.7"])
++    s.add_dependency(%q<nokogiri>.freeze, [">= 1.7"])
      s.add_dependency(%q<iconv>.freeze, ["~> 1.0"])
 -    s.add_dependency(%q<rmagick>.freeze, ["~> 2.0"])
 +    s.add_dependency(%q<rmagick>.freeze, [">= 2.0"])
