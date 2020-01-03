@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=GitAhead
-Comment=Graphical Git client
+Comment=Understand your Git history!
 Exec=gitahead
 Icon=gitahead
 Terminal=false

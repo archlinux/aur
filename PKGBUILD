@@ -7,7 +7,7 @@
 pkgname=gitahead
 pkgrel=1
 pkgver=2.6.1
-pkgdesc='Graphical Git client that helps you understand and manage your source history'
+pkgdesc='Understand your Git history!'
 url='https://www.gitahead.com/'
 arch=('x86_64')
 license=('MIT')
@@ -19,7 +19,7 @@ source=(
   "gitahead.patch"
 )
 sha256sums=('SKIP'
-            '022132e59ea2a1ca43df8ca1e20a1f851fca6e61afe4899814619ca241df7f19'
+            '254b4e970a942c6ac94df177e54a6169fe7e5f5c5d0d92b6f0c0f03b7b7b2fb0'
             '096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0')
 
 prepare() {
