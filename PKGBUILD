@@ -11,27 +11,22 @@ pkgdesc='Linux with patches for Intel graphics'
 _srcname="${pkgbase}"
 _branch=drm-intel-next
 _kernelname=${pkgbase#linux}
-pkgver=5.4.857647.be91233b1053
+pkgver=5.6.887334.3446c63a0f2a
 pkgrel=1
 arch=(x86_64)
 url='https://drm.pages.freedesktop.org/maintainer-tools/drm-intel.html'
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm-intel#branch=${_branch}"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '1783d6b33b3fa214fa6dbb5e67a9563f3abb2fcb440421ef2897fc7077828254'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '08e8355c548d5710f157a062b39d97e414160916d30acd2dda307d38c43e394d')
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
