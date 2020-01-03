@@ -1,16 +1,16 @@
 # Maintainer: Federico Squartini <federico.squartini at gmail dot com>
 
 pkgname=exercism
-pkgver=3.0.10
-pkgrel=2
+pkgver=3.0.13
+pkgrel=1
 pkgdesc="Command line client for https://exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
 license=("MIT")
 depends=('glibc')
-makedepends=('dep' 'go-pie')
+makedepends=('go-pie')
 source=("https://github.com/exercism/cli/archive/v${pkgver}.tar.gz")
-sha256sums=('0dbb34ba3bb3571fbc75fa9f5cb0b061317589a98a1af12fe7318a2c4cdbda5b')
+sha256sums=('ecc27f272792bc8909d14f11dd08f0d2e9bde4cc663b3769e00eab6e65328a9f')
 
 prepare() {
   export GOPATH="$srcdir"/.gopath
@@ -21,7 +21,6 @@ prepare() {
 build() {
   export GOPATH="$srcdir"/.gopath
   cd "$GOPATH"/src/github.com/exercism/cli
-  dep ensure
   go build -o out/exercism exercism/main.go
 }
 
