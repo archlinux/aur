@@ -19,7 +19,7 @@ provides=(
   'qrender'
 )
 options=()
-source=("https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-011a.tar.gz")
+source=("https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-${pkgver}-011a.tar.gz")
 md5sums=('426a2f3e39c042188308bac9bfaff1e1')
 
 build() {
