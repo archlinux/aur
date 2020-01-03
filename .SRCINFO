@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds-helena
 	pkgdesc = The backgrounds included in Linux Mint 8 Helena
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-helena
 	arch = any
 	license = Various
@@ -9,4 +9,3 @@ pkgbase = mint-backgrounds-helena
 	sha256sums = dea2b270d1c13cebdb348b42e39baece112549609cd7651f5bd2438b4275b13a
 
 pkgname = mint-backgrounds-helena
-
