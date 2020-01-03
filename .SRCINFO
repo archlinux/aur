@@ -9,7 +9,7 @@ pkgbase = mingw-w64-winpthreads
 	license = custom
 	makedepends = mingw-w64-gcc-base
 	makedepends = mingw-w64-binutils
-	makedepends = mingw-w64-crt
+	makedepends = mingw-w64-crt=7.0.0
 	provides = mingw-w64-headers-bootstrap
 	conflicts = mingw-w64-headers-bootstrap
 	replaces = mingw-w64-headers-bootstrap

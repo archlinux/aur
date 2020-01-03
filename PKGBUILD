@@ -6,7 +6,7 @@ arch=('any')
 url='http://mingw-w64.sourceforge.net'
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
-makedepends=('mingw-w64-gcc-base' 'mingw-w64-binutils' 'mingw-w64-crt')
+makedepends=('mingw-w64-gcc-base' 'mingw-w64-binutils' "mingw-w64-crt=${pkgver}")
 provides=('mingw-w64-headers-bootstrap')
 conflicts=('mingw-w64-headers-bootstrap')
 replaces=('mingw-w64-headers-bootstrap')
