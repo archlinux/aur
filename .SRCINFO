@@ -1,6 +1,6 @@
 pkgbase = env-modules-tcl
 	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
-	pkgver = 4.4.0
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/modules/
 	install = env-modules-tcl.install
@@ -12,8 +12,8 @@ pkgbase = env-modules-tcl
 	conflicts = env-modules
 	replaces = env-modules
 	backup = etc/modules/init/modulerc
-	source = https://sourceforge.net/projects/modules/files/Modules/modules-4.4.0/modules-4.4.0.tar.gz
-	md5sums = f9dfb6dff19bd6fe3b67a6c8413f0e0d
+	source = https://sourceforge.net/projects/modules/files/Modules/modules-4.4.1/modules-4.4.1.tar.gz
+	md5sums = 5fd7664b4ad4c45e90bbd4d0835fb7e8
 
 pkgname = env-modules-tcl
 
