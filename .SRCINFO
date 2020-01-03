@@ -1,0 +1,12 @@
+pkgbase = mint-backgrounds-qiana
+	pkgdesc = The backgrounds included in Linux Mint 17 Qiana
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-qiana
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-qiana/mint-backgrounds-qiana_1.5.tar.gz
+	sha256sums = bdcf8c4f338f4f3825dedf87a91de746f321054509ef5df41e742e3a8f7e5106
+
+pkgname = mint-backgrounds-qiana
+
