@@ -7,7 +7,7 @@
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
 arch=('i686' 'x86_64')
 url="https://www.dyne.org/software/tomb/"
@@ -41,7 +41,7 @@ build() {
 #}
 
 package_tomb() {
-  depends=('bc' 'cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs')
+  depends=('bc' 'cryptsetup' 'gnupg' 'sudo' 'zsh' 'e2fsprogs' 'inetutils')
   optdepends=(
   'steghide: steganography'
   'dcfldd: show nice progress during massive I/O'
