@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetsd-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Virtual SD card directory for the Duet software framework"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('duetcontrolserver')
 optdepends=('duetwebcontrol')
 backup=('opt/dsf/sd/sys/config.g')
 source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetsd_${pkgver}_all.deb")
-sha256sums=('48a21508da9375bd5f8930e09f6887c15f67bd9d0eb21a16f30acaead26e403b')
+sha512sums=('8328da81da58dbb3a8d66613aeae0269c5d9f53f99cbefc3c7335c7fd30e2d2c2256297d02c66ce6c27a63bab9d635c2ea34f6a017b6889d168482b095ba9a43')
 
 prepare() {
     tar -xf data.tar.xz
