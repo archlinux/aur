@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.0.0.r409.76641c1e
+pkgver=2.0.0.r454.c41705d5
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
@@ -13,6 +13,9 @@ checkdepends=('cmocka' # for unit test suite
               'ibm-sw-tpm2' 'iproute2' 'procps-ng' 'uthash') # for integration test suite
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+backup=('etc/tpm2-tss/fapi-config.json'
+        'etc/tpm2-tss/fapi-profiles/P_ECCP256SHA256.json'
+        'etc/tpm2-tss/fapi-profiles/P_RSA2048SHA256.json')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
@@ -28,8 +31,10 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
-	(( CHECKFUNC )) && _opts=('--enable-unit' '--enable-integration')
-	./configure --prefix=/usr --with-udevrulesprefix=60- "${_opts[@]}"
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	            --with-runstatedir=/run --with-sysusersdir=/usr/lib/sysusers.d \
+	            --with-tmpfilesdir=/usr/lib/tmpfiles.d --with-udevrulesprefix=60- \
+	            $( ((CHECKFUNC)) && echo --enable-unit --enable-integration)
 	make
 }
 
@@ -42,5 +47,4 @@ package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-	echo 'u tss - "tss user for tpm2"' | install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
