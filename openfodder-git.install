@@ -2,7 +2,7 @@ post_install() {
   /usr/bin/printf "-------------------------------------------------------\n"
   /usr/bin/printf " Before trying to run the game, please copy\n"
   /usr/bin/printf " /var/lib/OpenFodder to \$HOME/.local/share/OpenFodder\n"
-  /usr/bin/printf "    e.g. '\$ cp -r /var/lib/OpenFodder .local/share/'\n"
+  /usr/bin/printf "    e.g. '\$ cp -r /var/lib/OpenFodder ~/.local/share/'\n"
   /usr/bin/printf " Then copy your full game files into the corresponding\n"
   /usr/bin/printf " directories under this new location.\n"
   /usr/bin/printf "-------------------------------------------------------\n"
