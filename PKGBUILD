@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.30.0.r374.g05fb6f906d
+pkgver=0.31.0.r24.g99700bc52c
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -58,6 +58,7 @@ build() {
         '--enable-libmpv-shared'
         '--disable-libmpv-static'
         '--disable-static-build'
+        '--disable-build-date'
         '--disable-debug-build'
         '--enable-manpage-build'
         '--disable-html-build'
@@ -153,14 +154,15 @@ build() {
         '--disable-d3d9-hwaccel'
         '--disable-gl-dxinterop-d3d9'
         '--enable-cuda-hwaccel'
+        '--enable-cuda-interop'
         '--disable-rpi-mmal'
         
         '--disable-macos-touchbar'
         '--disable-macos-10-11-features'
         '--disable-macos-10-12-2-features'
         '--disable-macos-10-14-features'
-        '--disable-macos-cocoa-cb'
-    )
+        '--disable-macos-media-player'
+        '--disable-macos-cocoa-cb')
     
     cd mpv
     
