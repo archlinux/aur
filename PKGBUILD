@@ -6,20 +6,19 @@
 
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
-pkgver=1.5.2_r1800
-pkgrel=3
+pkgver=1.5.3
+pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
 license=('LGPL')
 depends=('jre11-openjdk' 'alsa-lib' 'libxtst')
-makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk11-openjdk' 'maven' 'subversion')
+makedepends=('unzip' 'zip' 'ant' 'jack' 'fluidsynth' 'jdk11-openjdk' 'maven')
 optdepends=('fluidsynth')
-#source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz)
-source=(tuxguitar-${pkgver}-svn::svn+svn://svn.code.sf.net/p/tuxguitar/code/trunk@r1800
+source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
         tuxguitar
         tuxguitar-gtk2)
-sha256sums=('SKIP'
+sha256sums=('e65ebacb70288e87c7339682f7d1ae81baea74334e6f4fdb34880daa999cc5e3'
             'efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a'
             '39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f')
 
@@ -28,16 +27,10 @@ case $CARCH in
   *) _arch=$CARCH;;
 esac
 
-prepare() {
-  cd tuxguitar-$pkgver-svn/build-scripts/tuxguitar-src
-  ant -Ddist.version=${pkgver}
-  mv target/tuxguitar-${pkgver}-src ${srcdir}
-}
-
 build() {
   cd tuxguitar-$pkgver-src
   export MAVEN_OPTS="$MAVEN_OPTS -Duser.home=$srcdir"
-  export JAVA_HOME="/usr/lib/jvm/"`archlinux-java get`
+  export JAVA_HOME=/usr/lib/jvm/default
 
   mvn clean install -P platform-linux-$_arch
   for _i in build-scripts/{tuxguitar,native-modules/tuxguitar-{alsa,oss,jack,fluidsynth}}-linux-$_arch
