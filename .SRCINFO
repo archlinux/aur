@@ -1,0 +1,15 @@
+pkgbase = php73-igbinary
+	pkgdesc = A drop in replacement for the standard php serializer (PHP 7.3)
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/igbinary/igbinary
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	depends = php73
+	backup = etc/php73/conf.d/igbinary.ini
+	source = php73-igbinary-3.1.0.tar.gz::https://github.com/igbinary/igbinary/archive/3.1.0.tar.gz
+	sha512sums = 7b20048b2923ebf760b9743cd08aab04b90f02f3e6ddf840e829db9e6c5335cf936a5218b1590b31b1b553e7748e393d3aee83214b83532b722f4590a36f5b38
+
+pkgname = php73-igbinary
+
