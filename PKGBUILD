@@ -4,14 +4,15 @@
 _pkgbase=pangox-compat
 pkgname=lib32-${_pkgbase}
 pkgver=0.0.2
-pkgrel=1
+_pkgver=0.0
+pkgrel=2
 pkgdesc="X Window System font support for Pango (32 bit)"
 arch=('x86_64')
 license=('LGPL')
 depends=('lib32-pango' "${_pkgbase}")
-makedepends=('gcc-multilib' 'pkg-config')
+makedepends=('gcc-multilib' 'pkgconf')
 options=('!libtool')
-source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgbase}/${pkgver:0:3}/${_pkgbase}-${pkgver}.tar.xz)
+source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgbase}/${_pkgver}/${_pkgbase}-${pkgver}.tar.xz)
 url="http://www.pango.org/"
 sha256sums=('552092b3b6c23f47f4beee05495d0f9a153781f62a1c4b7ec53857a37dfce046')
 

@@ -1,12 +1,12 @@
 pkgbase = lib32-pangox-compat
 	pkgdesc = X Window System font support for Pango (32 bit)
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pango.org/
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc-multilib
-	makedepends = pkg-config
+	makedepends = pkgconf
 	depends = lib32-pango
 	depends = pangox-compat
 	options = !libtool
