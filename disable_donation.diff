@@ -1,8 +1,0 @@
---- xmrstak/donate-level.hpp
-+++ xmrstak/donate-level.hpp
-@@ -15,4 +15,4 @@
-  *
-  */
-
--constexpr double fDevDonationLevel = 2.0 / 100.0;
-+constexpr double fDevDonationLevel = 0.0 / 100.0;
