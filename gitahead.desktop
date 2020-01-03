@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=GitAhead
-Comment=THE MOST POWERFUL GIT GUI
+Comment=Understand your Git history!
 Exec=gitahead
 Icon=gitahead
 Terminal=false
