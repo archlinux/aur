@@ -11,27 +11,22 @@ pkgdesc='DRM kernel graphics driver development tree'
 _srcname=${pkgbase}
 _branch=drm-fixes
 _kernelname=${pkgbase#linux}
-pkgver=5.5.872742.ff9234583d4f
+pkgver=5.6.887876.a6204fc7b83c
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '166ee15de54cd8385ed12599cf8402009df5e5c59e961e0547c7745fa385b6a2'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '9d69c4d4e26fb93fcb24a4547ce6c82088b53c9a66eadde30b30d4450a0caddf')
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
