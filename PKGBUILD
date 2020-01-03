@@ -12,27 +12,22 @@ _srcname=$pkgbase
 _kernel_rel=5.2
 _branch=drm-next
 _kernelname=${pkgbase#linux}
-pkgver=5.2.858154.945b584c94f8
+pkgver=5.2.888426.f5c547efa16c
 pkgrel=1
 arch=('x86_64')
 url='https://cgit.freedesktop.org/drm/drm'
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 source=("${pkgbase}::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '722e7a0aaf86535ddf5cee67faa0fd8324b5a59135834d5f15181dd02724d08a'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'bd2a508fe01f8d4c3da485d9ff4f4c87922dabeeb56e699a45ef317d6e59a808')
 pkgver() {
   cd "${_srcname}"
 

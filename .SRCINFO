@@ -1,16 +1,14 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with DRM patches
-	pkgver = 5.2.858154.945b584c94f8
+	pkgver = 5.2.888426.f5c547efa16c
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = git
+	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
@@ -19,14 +17,8 @@ pkgbase = linux-drm-next-git
 	options = !strip
 	source = linux-drm-next-git::git://anongit.freedesktop.org/drm/drm#branch=drm-next
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 722e7a0aaf86535ddf5cee67faa0fd8324b5a59135834d5f15181dd02724d08a
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = bd2a508fe01f8d4c3da485d9ff4f4c87922dabeeb56e699a45ef317d6e59a808
 
 pkgname = linux-drm-next-git
 	pkgdesc = The Linux-drm-next-git kernel and modules
