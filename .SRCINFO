@@ -1,0 +1,17 @@
+pkgbase = studiolink-lv2
+	pkgdesc = A SIP application to create high quality Audio over IP (AoIP) connections. LV2 Plugin.
+	pkgver = v17.03.1
+	pkgrel = 1
+	url = https://studio-link.de
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = libpulse
+	depends = openssl-1.0
+	source = https://github.com/Studio-Link/app/releases/download/v17.03.1-beta/studio-link-plugin-linux.zip
+	source = LICENSE
+	sha512sums = 160ada683b703fecd6b99d0b9974b8ab57a477c688ed9842ba9132255c65dad68775b7c1cf7095b339b0117fe0aad1523ffe9accc8e39c964dbd8d37737e48aa
+	sha512sums = a3c168d3605190b7de36707a42d1450a22bd0d0b50b52bb4e0a8b169c1035f04f58dca8227d8557f9f0cc574d18323780efa035fd6cd57c3bb35d69a3c517937
+
+pkgname = studiolink-lv2
+
