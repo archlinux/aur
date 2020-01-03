@@ -9,30 +9,25 @@
 pkgbase=linux-amd-wip-git
 pkgdesc='Linux kernel with AMDGPU DC patches'
 _srcname=${pkgbase}
-_kernel_rel=5.5
-_branch=drm-next-${_kernel_rel}-wip
+_kernel_rel=5.6
+_branch=drm-next-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=5.5.858404.ee5885e4a421
+pkgver=5.6.874199.ad808910be68
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '4f1cd6d7b142b4a433a8de11df6051800b0c02967659755644752fb51e97a7a7'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            '181a57b05b84814c48c724c135f8b644306db55d1cf983622e5040e03694fff1')
 pkgver() {
   cd "${_srcname}"
 
