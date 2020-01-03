@@ -6,7 +6,7 @@ arch=('any')
 url='http://mingw-w64.sourceforge.net'
 license=('custom')
 groups=('mingw-w64-toolchain' 'mingw-w64')
-makedepends=('mingw-w64-gcc-base' 'mingw-w64-binutils' 'mingw-w64-headers')
+makedepends=('mingw-w64-gcc-base' 'mingw-w64-binutils' "mingw-w64-headers=${pkgver}")
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740')
 source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${pkgver}.tar.bz2{,.sig})
