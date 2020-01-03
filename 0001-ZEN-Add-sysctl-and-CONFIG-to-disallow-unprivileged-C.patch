@@ -1,7 +1,7 @@
-From ad4dbce36dd2083de69815f613342257535f6274 Mon Sep 17 00:00:00 2001
+From 85ada8712a2fb1111be063cea0f7d0152ea6d912 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 01/20] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 01/14] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.

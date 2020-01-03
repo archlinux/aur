@@ -1,7 +1,7 @@
-From fd1d146698d09aaac6709ae4fde90d80dbd153cd Mon Sep 17 00:00:00 2001
+From 66174559a7eecb2f1bcc9be74555e19513b1343f Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 24 Dec 2019 05:18:47 +0100
-Subject: [PATCH 19/20] iwlwifi: pcie: restore support for Killer Qu C0 NICs
+Subject: [PATCH 08/14] iwlwifi: pcie: restore support for Killer Qu C0 NICs
 
 Commit 809805a820c6 refactored the cfg mangling. Unfortunately, in this
 process the lines which picked the right cfg for Killer Qu C0 NICs after

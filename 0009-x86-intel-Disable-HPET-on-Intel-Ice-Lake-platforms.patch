@@ -1,7 +1,7 @@
-From de022ec5134c060ee735424ed3d0f9a663b73c53 Mon Sep 17 00:00:00 2001
+From ff857f80548ecae9ab2d80304ccf909b8fd427fc Mon Sep 17 00:00:00 2001
 From: Kai-Heng Feng <kai.heng.feng@canonical.com>
 Date: Fri, 29 Nov 2019 14:23:03 +0800
-Subject: [PATCH 13/20] x86/intel: Disable HPET on Intel Ice Lake platforms
+Subject: [PATCH 09/14] x86/intel: Disable HPET on Intel Ice Lake platforms
 
 Like CFL and CFL-H, ICL SoC has skewed HPET timer once it hits PC10.
 So let's disable HPET on ICL.
