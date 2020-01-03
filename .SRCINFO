@@ -1,6 +1,6 @@
 pkgbase = fife-git
 	pkgdesc = The mission of the FIFE project is to create a cross platform game creation framework
-	pkgver = 0.4.1.r372.g85626ccd
+	pkgver = 0.4.2.r25.gc29d418a
 	pkgrel = 1
 	url = http://www.fifengine.net/
 	arch = i686
@@ -8,28 +8,32 @@ pkgbase = fife-git
 	license = LGPL
 	makedepends = cmake
 	makedepends = git
-	depends = sdl2
+	makedepends = swig>=4
 	depends = boost
-	depends = sdl2_ttf
-	depends = sdl2_image
-	depends = libvorbis
-	depends = libogg
-	depends = openal
-	depends = swig
+	depends = fifechan>=0.1.4
+	depends = glew
 	depends = python
 	depends = python-future
-	depends = zlib
 	depends = libgl
+	depends = libogg
 	depends = libpng
+	depends = libvorbis
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = sdl2_image
+	depends = openal
 	depends = tinyxml
-	depends = glew
-	depends = fifechan-git
+	depends = zlib
 	provides = fife
 	provides = fife-svn
 	conflicts = fife
 	conflicts = fife-svn
 	source = git+https://github.com/fifengine/fifengine.git
+	source = swig4.patch
 	md5sums = SKIP
+	md5sums = 05b0425ae3a94a36b9227f51c09c23aa
+	sha1sums = SKIP
+	sha1sums = 0302be0b353e6aa69a81a8e8c872239ecbcab1d0
 
 pkgname = fife-git
 
