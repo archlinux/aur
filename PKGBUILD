@@ -23,7 +23,7 @@ source=("LICENSE.html::https://pan.baidu.com/disk/duty/index.html"
 
 source_x86_64=("${pkgname}-${pkgver}.deb::https://issuecdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${_mainver}/${_pkgname}_linux_${pkgver}.deb")
 
-sha256sums=('80f8835a1d742ac9aa05701dfc2566b1db07b626d70e0e463688c9b5e4736e1d'
+sha256sums=('a17162702ccb973be2b801225881b847d6b2103417d3efc957514de0b46187f1'
             'd72eb6fa07abc0e7c2298fcecbe4a4e6849c63a6a31c39706e0dfea870e85aff'
             'c0035e038344a154421301b7855c274049ad432a5b06b52efc74831daa73e02e')
 sha256sums_x86_64=('40eb1950af62a8b9b75da8ffb9a74416ae0d3fc886b07f6de7d63673683b1ef3')
