@@ -4,7 +4,7 @@
 pkgname="asf-ui"
 pkgver=r1030.e4b02e9
 pkgrel=1
-pkgdesc="Steam cards farmer."
+pkgdesc="Standalone web interface for ASF."
 arch=('any')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')

@@ -1,6 +1,6 @@
 pkgbase = asf-ui
-	pkgdesc = Steam cards farmer.
-	pkgver = 0.0
+	pkgdesc = Standalone web interface for ASF.
+	pkgver = r1030.e4b02e9
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	arch = any
