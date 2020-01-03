@@ -2,12 +2,12 @@
 
 pkgname=gconf
 pkgver=3.2.6+11+g07808097
-pkgrel=5
+pkgrel=6
 pkgdesc="An obsolete configuration database system"
 url="https://projects-old.gnome.org/gconf/"
 arch=(x86_64)
 license=(LGPL)
-depends=(libxml2 polkit libldap dbus-glib python2)
+depends=(libxml2 polkit libldap dbus-glib python)
 makedepends=(intltool gtk-doc gobject-introspection git gnome-common)
 install=gconf.install
 _commit=0780809731c8ab1c364202b1900d3df106b28626  # master
@@ -36,8 +36,11 @@ prepare() {
   # http://bugzilla.gnome.org/show_bug.cgi?id=568845
   patch -Np1 -i ../01_xml-gettext-domain.patch
 
-  # Python2 fix
-  sed -i '1s|#!/usr/bin/env python$|&2|' gsettings/gsettings-schema-convert
+  # The following line copied from Fedora
+  # https://src.fedoraproject.org/rpms/GConf2/blob/70ed26d67b563d858a84505622d11f41879a6b37/f/GConf2.spec#_90
+  2to3 --write --nobackup gsettings/gsettings-schema-convert
+
+  sed -i '1s|#!/usr/bin/env python$|#!/usr/bin/python|' gsettings/gsettings-schema-convert
 
   NOCONFIGURE=1 ./autogen.sh
 }

@@ -1,7 +1,7 @@
 pkgbase = gconf
 	pkgdesc = An obsolete configuration database system
 	pkgver = 3.2.6+11+g07808097
-	pkgrel = 5
+	pkgrel = 6
 	url = https://projects-old.gnome.org/gconf/
 	install = gconf.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gconf
 	depends = polkit
 	depends = libldap
 	depends = dbus-glib
-	depends = python2
+	depends = python
 	source = git+https://gitlab.gnome.org/Archive/gconf.git#commit=0780809731c8ab1c364202b1900d3df106b28626
 	source = 01_xml-gettext-domain.patch
 	source = gconf-reload.patch
