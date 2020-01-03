@@ -1,8 +1,8 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.41V0
-pkgrel=0
+pkgver=1.4.41V1a
+pkgrel=2
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -14,7 +14,7 @@ license=('MIT')
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("c3d07b1482c2041fe230dcf4c7c236741c5828cfc7ced3e5bb8c7548884d393f" 
+sha256sums=("b14ddd9e7ac7c2958dad92f1602420f52d30de9737d806467bbad172f506b437" 
 	"SKIP")
 
 ###########################
@@ -51,26 +51,26 @@ package() {
 	awk '{ sub("\r$", ""); print }' mage-server/startServer.sh > mage-server/startServer-unix.sh
 
 	msg2 "changing default locations of scripts..."
-	awk '{ sub("\.\/lib", "/usr/share/xmage/mage-client/lib"); print }' mage-client/startClient-unix.sh > mage-client/startClient-unix-lib.sh
-	awk '{ sub("\.\/lib", "/usr/share/xmage/mage-server/lib"); print }' mage-server/startServer-unix.sh > mage-server/startServer-unix-lib.sh
+	awk '{ sub("\.\/lib", "/usr/share/xmage/mage-client/lib"); print }' mage-client/startClient-unix.sh > mage-client/startClient-unix.sh
+	awk '{ sub("\.\/lib", "/usr/share/xmage/mage-server/lib"); print }' mage-server/startServer-unix.sh > mage-server/startServer-unix.sh
 
 	msg2 "adding cd to relevant /usr/share/xmage/ directory..."
-	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix-lib.sh
-	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix-lib.sh
+	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix.sh
+	sed -i '2i cd /usr/share/xmage/mage-server' mage-server/startServer-unix.sh
 
 if [[ "$CARCH" == 'x86_64' ]]; then
 		msg2 "x86_64 architecture detected, changing location of java binary..."
-		sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-client/startClient-unix-lib.sh
-		sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-server/startServer-unix-lib.sh
+		sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-client/startClient-unix.sh
+		sed -i "s|java|/usr/share/xmage/${_java_dir}/bin/java|g" mage-server/startServer-unix.sh
 fi
 
 	msg2 "increasing default memory limit of client and server"
-	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix-lib.sh
-	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-server/startServer-unix-lib.sh
+	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-client/startClient-unix.sh
+	sed -i 's|-Xmx512m|-Xmx2048m|g' mage-server/startServer-unix.sh
 
 	msg2 "moving files..."
-	install -Dm755 mage-client/startClient-unix-lib.sh ${pkgdir}/usr/bin/mage-client
-	install -Dm755 mage-server/startServer-unix-lib.sh ${pkgdir}/usr/bin/mage-server
+	install -Dm755 mage-client/startClient-unix.sh ${pkgdir}/usr/bin/mage-client
+	install -Dm755 mage-server/startServer-unix.sh ${pkgdir}/usr/bin/mage-server
 
 	msg2 "creating /usr/share/xmage..."
 	install -dm755 ${pkgdir}/usr/share/xmage
@@ -84,3 +84,4 @@ fi
 	msg2 "installing license: ${license}..."
 	install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licences/"${pkgname}"/LICENSE.txt
 }
+
