@@ -1,19 +1,22 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=0.0.1.r47.g8f38e50
+pkgver=0.1.1.r0.g10d46d2
 pkgrel=1
 pkgdesc="Phone dialer and call handler"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://source.puri.sm/Librem5/calls"
 license=(GPL3)
-depends=(evolution-data-server
+depends=(folks
          gom
          gsound
          libhandy
          libpeas
          modemmanager)
-makedepends=(gobject-introspection)
+makedepends=(git
+             gobject-introspection
+             meson
+             vala)
 provides=(calls)
 conflicts=(calls)
 source=("git+https://source.puri.sm/Librem5/calls.git")
@@ -25,14 +28,13 @@ pkgver() {
 }
 
 build() {
-    rm -rf build
     arch-meson calls build
     ninja -C build
 }
 
-check() {
-    ninja -C build test
-}
+# check() {
+#     ninja -C build test
+# }
 
 package() {
     DESTDIR="$pkgdir/" ninja -C build install
