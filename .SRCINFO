@@ -1,6 +1,6 @@
-pkgbase = openjk-git
-	pkgdesc = Open Source Jedi Knight II + III Engine
-	pkgver = r3610.94866c437
+pkgbase = bin32-openjk-git
+	pkgdesc = Open Source Jedi Knight II + III Engine (32-bit version)
+	pkgver = r3643.eed60925a
 	pkgrel = 1
 	url = https://github.com/JACoders/OpenJK
 	arch = i686
@@ -9,12 +9,13 @@ pkgbase = openjk-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = libpng
-	depends = sdl2
-	depends = libjpeg
-	depends = libpng
+	depends = lib32-sdl2
+	depends = lib32-libjpeg
+	depends = lib32-libpng
 	provides = openjk
+	provides = bin32-openjk
 	conflicts = openjk
-	source = openjk-git::git+https://github.com/JACoders/OpenJK.git
+	source = bin32-openjk-git::git+https://github.com/JACoders/OpenJK.git
 	source = openjkmp.png
 	source = openja.png
 	source = openjo.png
@@ -29,5 +30,5 @@ pkgbase = openjk-git
 	sha256sums = 698792f86b75311a5c96d0b1310d97e242107559d341ea23a705f259e20a5ec2
 	sha256sums = 08812c7d1791b86a842401ecc54f29117d3d8b77369ad04db520561d57df41dd
 
-pkgname = openjk-git
+pkgname = bin32-openjk-git
 

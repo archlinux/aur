@@ -1,18 +1,19 @@
-# Maintainer: Zanny <lordzanny@gmail.com>
-# Maintainer: Pavel Lymarev <x-user at bk dot ru>
+# Maintainer: dalz <dalz @t disroot d0t org>
+# Contributor: Zanny <lordzanny@gmail.com>
+# Contributor: Pavel Lymarev <x-user at bk dot ru>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
-pkgname='openjk-git'
-pkgver=r3610.94866c437
+pkgname='bin32-openjk-git'
+pkgver=r3643.eed60925a
 pkgrel=1
-pkgdesc="Open Source Jedi Knight II + III Engine"
+pkgdesc="Open Source Jedi Knight II + III Engine (32-bit version)"
 arch=('i686' 'x86_64')
 url="https://github.com/JACoders/OpenJK"
 license=('GPL2')
-depends=('sdl2' 'libjpeg' 'libpng')
+depends=('lib32-sdl2' 'lib32-libjpeg' 'lib32-libpng')
 makedepends=('cmake' 'git' 'libpng')
-provides=('openjk')
+provides=('openjk' 'bin32-openjk')
 conflicts=('openjk')
 source=(
   "${pkgname}::git+https://github.com/JACoders/OpenJK.git"
@@ -33,7 +34,7 @@ sha256sums=(
 )
 
 pkgver() {
-	cd "${pkgname}"
+  cd "${pkgname}"
 
   printf "r%s.%s"                  \
     "$(git rev-list --count HEAD)" \
@@ -45,9 +46,10 @@ build() {
 
   mkdir -p build
   cd build
-  cmake ..                                        \
-    -DCMAKE_BUILD_TYPE=Release                    \
-    -DCMAKE_INSTALL_PREFIX="/opt/${pkgname/-git}" \
+  cmake .. \
+    -DCMAKE_TOOLCHAIN_FILE=CMakeModules/Toolchains/linux-i686.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/opt/openjk" \
     -DBuildJK2SPEngine=on \
     -DBuildJK2SPGame=on \
     -DBuildJK2SPRdVanilla=on
@@ -57,7 +59,7 @@ build() {
 package() {
   cd "${pkgname}/build"
 
-  _jkarch="${CARCH}"
+  _jkarch="i386"
   echo "${_jkarch}"
 
   make DESTDIR="${pkgdir}" install
@@ -67,7 +69,7 @@ package() {
   for _bin in 'openjk' 'openjk_sp' 'openjkded'; do
     cat > "${pkgdir}/usr/bin/${_bin}" << EOF
 #!/bin/bash
-cd /opt/${pkgname/-git}/JediAcademy
+cd /opt/openjk/JediAcademy
 exec ./${_bin}.${_jkarch} \s@
 EOF
     chmod +x ${pkgdir}/usr/bin/${_bin}
@@ -75,7 +77,7 @@ EOF
 
   cat > "${pkgdir}/usr/bin/openjo" << EOF
 #!/bin/bash
-cd /opt/${pkgname/-git}/JediOutcast
+cd /opt/openjk/JediOutcast
 exec ./openjo_sp.${_jkarch} \s@
 EOF
   chmod +x ${pkgdir}/usr/bin/openjo
