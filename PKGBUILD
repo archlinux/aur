@@ -1,8 +1,8 @@
-# Maintainer: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
+# Maintainer: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAcHJvdG9ubWFpbC5jb20= | base64 -d>
 
 pkgname=freelan
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A peer-to-peer, secure, easy-to-setup, multi-platform, open-source, highly-configurable VPN software.'
 arch=('any')
 url='https://freelan.org/'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('boost' 'curl' 'miniupnpc' 'openssl')
 makedepends=('git' 'scons')
 conflicts=('freelan-git')
-source=("git+https://github.com/freelan-developers/freelan.git#commit=fd641852f02b1a042062413d21fd4702f344301e"
+source=("git+https://github.com/freelan-developers/freelan.git#commit=3f4078af1f581371863a1df497c8a67f419e5076"
         'patch.diff'
         'freelan.service')
 sha256sums=('SKIP'
