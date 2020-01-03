@@ -2,12 +2,12 @@
 
 pkgname=btrfs-snapshot
 pkgver=3.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for creating btrfs snapshots"
 arch=('any')
 url="https://github.com/YHNdnzj/btrfs-snapshot"
 license=('MIT')
-optdepends=('systemd: scheduled snapshot creation')
+optdepends=('systemd: scheduled snapshot creation support')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('dab6936ea7f1cf15038399629c125bacf0c95a99ed177602251c5c8a37aa5adb')
 
