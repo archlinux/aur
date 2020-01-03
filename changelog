@@ -1,3 +1,12 @@
+2020-01-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.1.7-1:
+    Added two new item types: Sticker and ChatEffect. Those can be used for lootable, transferable and matchable types in the config - #1567, #1559.
+    Added loot% and transfer% commands.
+    Fixed swagger not rendering correctly models schema in our IPC interface since .NET Core 3.0 upgrade.
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: ASF-ui is an optional dependency
 2019-12-18 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.1.4-2:
     pkg: restore ASF-ui functions (thanks to Lucki)
