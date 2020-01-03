@@ -1,19 +1,21 @@
 pkgbase = hyperspace-bin
 	pkgdesc = The fluffiest client for the fediverse
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	epoch = 1
 	url = https://hyperspace.marquiskurt.net/
 	arch = x86_64
 	license = Apache
-	depends = gconf
-	depends = libappindicator-gtk3
+	depends = gtk3
 	depends = libnotify
+	depends = nss
 	depends = libxss
 	depends = libxtst
-	depends = nss
-	source = https://github.com/hyperspacedev/hyperspace/releases/download/v1.0.3/hyperspace_1.0.3_amd64.deb
-	sha256sums = 5a6d92a880d0a356df3ba5707983df220a239812c6114a0a5adf7008d3b051ed
+	depends = xdg-utils
+	depends = libappindicator-gtk3
+	depends = libsecret
+	source = https://github.com/hyperspacedev/hyperspace/releases/download/v1.0.4/hyperspace_1.0.4_amd64.deb
+	sha256sums = 7335cd11a59c8c2f76d2f32bdbde73edd65db5eb5ed0a8730575b5b4711fce11
 
 pkgname = hyperspace-bin
 
