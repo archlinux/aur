@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Tabs
+Comment=
+Exec=tabs-app
+Terminal=false
+Type=Application
+Icon=tabs-app
+Categories=Utility
+StartupWMClass=Tabs

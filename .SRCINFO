@@ -1,0 +1,22 @@
+pkgbase = tabs-app
+	pkgdesc = Persistent and separate browser tabs in one window
+	pkgver = 0.0.2
+	pkgrel = 0
+	url = https://gitlab.com/ArisuOngaku/tabs
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	depends = electron
+	depends = xorg-xinput
+	provides = tabs-app
+	conflicts = tabs-app
+	source = tabs-src::git://github.com/ArisuOngaku/tabs.git
+	source = tabs-app
+	source = tabs-app.desktop
+	md5sums = SKIP
+	md5sums = 9f917d26f867332a9918174dbb3da24b
+	md5sums = d79af96f0aae124b670905215918b20a
+
+pkgname = tabs-app
+
