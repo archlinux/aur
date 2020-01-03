@@ -1,15 +1,13 @@
 pkgbase = linux-drm-tip-git
-	pkgver = 5.4.865162.dd5bccfa3b5d
+	pkgver = 5.6.889441.6cdc2db5a564
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm-tip/
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = git
+	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
@@ -18,14 +16,8 @@ pkgbase = linux-drm-tip-git
 	options = !strip
 	source = linux-drm-tip-git::git+https://anongit.freedesktop.org/git/drm-tip.git#branch=drm-tip
 	source = config
-	source = 60-linux.hook
-	source = 90-linux.hook
-	source = linux.preset
 	sha256sums = SKIP
-	sha256sums = 303b0996a384b4f6e52315fc975fb85a370941f4718fed25069a9ea567a8452e
-	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
-	sha256sums = 834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0
-	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = f20c58efdcf9c77646cc803da6e1b2eeda3234cf71030246be3c8188fb3b0a7e
 
 pkgname = linux-drm-tip-git
 	pkgdesc = The Linux-drm-tip-git kernel and modules

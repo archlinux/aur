@@ -10,27 +10,22 @@
 pkgbase=linux-drm-tip-git
 _srcname=${pkgbase}
 _branch=drm-tip
-pkgver=5.4.865162.dd5bccfa3b5d
+pkgver=5.6.889441.6cdc2db5a564
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/drm-tip/'
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick git
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  git
 )
 options=('!strip')
 source=("${_srcname}::git+https://anongit.freedesktop.org/git/drm-tip.git#branch=${_branch}"
   config         # the main kernel config file
-  60-linux.hook  # pacman hook for depmod
-  90-linux.hook  # pacman hook for initramfs regeneration
-  linux.preset   # standard config files for mkinitcpio ramdisk
 )
 sha256sums=('SKIP'
-            '303b0996a384b4f6e52315fc975fb85a370941f4718fed25069a9ea567a8452e'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '834bd254b56ab71d73f59b3221f056c72f559553c04718e350ab2a3e2991afe0'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
+            'f20c58efdcf9c77646cc803da6e1b2eeda3234cf71030246be3c8188fb3b0a7e')
 
 pkgver() {
   cd "${_srcname}"
