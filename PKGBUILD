@@ -5,7 +5,7 @@ _gopkg="github.com/jtyr/$_pkg"
 
 pkgname="$_pkg-git"
 pkgver=r5.73ebe52
-pkgrel=1
+pkgrel=2
 pkgdesc='RESTful API to read data from DS18B20 temperature sensors.'
 url="https://github.com/jtyr/tempreader"
 arch=('any')
@@ -22,21 +22,20 @@ pkgver() {
 
 prepare() {
     msg2 'Fetching Go package'
-    GOPATH="$srcdir" go get -u "$_gopkg"
+    GOPATH="$srcdir" go get -u -d "$_gopkg"
 }
 
 
 build() {
     msg2 'Building binary'
-    rm -f "$srcdir/bin/$_pkg"
-    GOPATH="$srcdir" go install "$_gopkg"
+    GOPATH="$srcdir" go build -o "bin/$_pkg" -trimpath -ldflags='-s -w' "$_gopkg"
 }
 
 
 package() {
     msg2 'Installing files'
     install -Dm755 "$srcdir/bin/$_pkg" -t "$pkgdir/usr/bin"
-    install -Dm644 "$srcdir/src/$_gopkg/"/{LICENSE,README.md} -t "$pkgdir/usr/doc/$_pkg"
+    install -Dm644 "$srcdir/src/$_gopkg/"/{LICENSE,README.md} -t "$pkgdir/usr/share/doc/$_pkg"
     install -Dm644 "$srcdir/src/$_gopkg/contrib/$_pkg.service" "$pkgdir/usr/lib/systemd/system/$_pkg.service"
     install -Dm644 "$srcdir/src/$_gopkg/contrib/$_pkg.default" "$pkgdir/etc/default/$_pkg"
 }

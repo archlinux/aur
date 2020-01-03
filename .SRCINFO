@@ -1,7 +1,7 @@
 pkgbase = tempreader-git
 	pkgdesc = RESTful API to read data from DS18B20 temperature sensors.
 	pkgver = r5.73ebe52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jtyr/tempreader
 	arch = any
 	license = MIT
