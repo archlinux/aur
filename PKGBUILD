@@ -2,13 +2,14 @@
 pkgname=dpsprep-git
 _gitname=dpsprep
 pkgver=r12.8a11d83
-pkgrel=2
+pkgrel=3
 pkgdesc="Python DJVU to PDF (djvu2pdf) converter which preserves OCR text and bookmarks (table of contents)"
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL3')
 makedepends=('git')
-depends=('python2' 'python2-sexpdata' 'python2-argparse' 'djvulibre' 'ocrodjvu' 'pdfbeads' 'pdftk' 'ruby-iconv')
+depends=('djvulibre' 'java-commons-lang' 'ocrodjvu' 'pdfbeads' 'pdftk' 'python2'
+         'python2-argparse' 'python2-sexpdata' 'ruby-iconv' 'ruby-nokogiri')
 optdepends=('jbig2enc-git: JBIG2 encoder provides much better PDF compression')
 source=(git+git://github.com/kcroker/dpsprep.git)
 md5sums=('SKIP')
