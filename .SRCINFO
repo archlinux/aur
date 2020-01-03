@@ -1,0 +1,15 @@
+pkgbase = asf-ui
+	pkgdesc = Steam cards farmer.
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/JustArchiNET/ArchiSteamFarm
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = npm
+	depends = asf
+	source = asf-ui::git+https://github.com/JustArchiNET/ASF-ui.git
+	sha256sums = SKIP
+
+pkgname = asf-ui
+
