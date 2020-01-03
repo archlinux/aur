@@ -3,14 +3,14 @@
 
 pkgname=kitematic
 pkgver=0.17.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
 url='https://github.com/docker/kitematic/'
 license=('Apache')
-depends=('docker' 'nodejs-lts-dubnium' 'glib2' 'hicolor-icon-theme'
+depends=('docker' 'nodejs' 'glib2' 'hicolor-icon-theme'
          'nss' 'libxss' 'libxtst' 'gtk2' 'gconf' 'alsa-lib')
-makedepends=('git' 'npm' 'grunt-cli' 'python2')
+makedepends=('git' 'npm' 'grunt-cli')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/docker/kitematic/archive/v${pkgver}.tar.gz"
         'kitematic.desktop'
         'kitematic.svg')
@@ -20,25 +20,20 @@ sha256sums=('e8d88b091a191ec8fe85c9b7db232d72f5bb761e041b58404dae4380c2931a04'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    
     npm install
-    
     grunt babel less copy:dev shell:linux_npm electron-packager:build
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    
     install -d -m755 "$pkgdir"/{opt,usr/bin}
     
     # install files
-    cp -a dist/Kitematic-linux-x64/ "${pkgdir}/opt/kitematic"
+    cp -a "${pkgname}-${pkgver}/dist/Kitematic-linux-x64/" "${pkgdir}/opt/kitematic"
     
     # create symlink for binary
     ln -s ../../opt/kitematic/Kitematic "${pkgdir}/usr/bin/kitematic"
     
     # desktop file and icon
-    cd "$srcdir"
-    install -D -m644 'kitematic.desktop' -t "${pkgdir}/usr/share/applications"
-    install -D -m644 'kitematic.svg'     -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -D -m644 kitematic.desktop -t "${pkgdir}/usr/share/applications"
+    install -D -m644 kitematic.svg     -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 }
