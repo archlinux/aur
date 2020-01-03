@@ -4,13 +4,13 @@
 
 pkgname=bitwarden-bin
 pkgver=1.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
 license=('GPL')
 groups=('')
-depends=('alsa-lib' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
+depends=('alsa-lib' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden')
 provides=('bitwarden')
 options=('!strip' '!emptydirs')
