@@ -2,8 +2,8 @@
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
 pkgname=fsl
-pkgver=6.0.2
-pkgrel=2
+pkgver=6.0.3
+pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
@@ -11,8 +11,8 @@ license=(custom)
 depends=(gd libxml2 libxml++2.6 gsl libpng nlopt newmat tcl tk zlib python glu boost-libs vtk sqlite python3 fslpy bc openblas)
 makedepends=(boost fftw)
 optdepends=(cuda)
-source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
-        "http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
+source=("https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
+        "https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-feeds.tar.gz"
 	"buildSettings.mk"
         "imcp"
 	"imglob"
@@ -22,8 +22,8 @@ source=("http://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
 	"003-fix_fsl_exec_empty_errorCode.patch"
 	"004-fix_missing_LIB_PROB.patch")
 
-sha256sums=('c118b351c6cedb441af7e1b9d194cf344505ff53b417063f697b86305a908afd'
-	    '53c885e01881d50ff8db230c849f98fcb9ca5139c5215cfca4f901e5cad66eee'
+sha256sums=('9eec9b4f5d67fa727b50ad6d4c8265b82403dd6163c4747797ef910f826a2636'
+	    '719d9e12e165c1a40d411dae2aca53e8d9033192c91853a6c60e5a55c0c022fb'
 	    'e73d3b7289981c95581d9378c2a39694bc0fcdf7170c5defc864a47871e98df1'
             'c61f185fbe7e297c4518e96377aa5ff4852f90eda0dbb9ae8edc5e24735e14ad'
 	    '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
