@@ -3,21 +3,20 @@
 
 _gemname=schleuder
 pkgname=ruby-$_gemname
-pkgver=2.2.4
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Schleuder is a group'\''s gateway: a gpg-enabled mailinglist with remailing-capabilities.'
 arch=(any)
-url='http://schleuder2.nadir.org'
+url='https://schleuder.org'
 license=(GPL-2)
-depends=(ruby ruby-gpgme-1 ruby-highline ruby-log4r ruby-ruby-filemagic)
+depends=(ruby gnupg gpgme sqlite openssl)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('991d561f9eb4b4aeda1f13826b18e69b2d357361')
+sha512sums=('3d57295e817a9f884a8a9f7b247de919786c340eee6c30a136ffbc473896c280466881c4e47d14b0c019bfb2b9153676e6c861ff8dfc3161ce4a00251d7a3f1d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

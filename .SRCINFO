@@ -1,19 +1,19 @@
 pkgbase = ruby-schleuder
 	pkgdesc = Schleuder is a group's gateway: a gpg-enabled mailinglist with remailing-capabilities.
-	pkgver = 2.2.4
+	pkgver = 3.4.1
 	pkgrel = 1
-	url = http://schleuder2.nadir.org
+	url = https://schleuder.org
 	arch = any
 	license = GPL-2
 	depends = ruby
-	depends = ruby-gpgme-1
-	depends = ruby-highline
-	depends = ruby-log4r
-	depends = ruby-ruby-filemagic
-	noextract = schleuder-2.2.4.gem
+	depends = gnupg
+	depends = gpgme
+	depends = sqlite
+	depends = openssl
+	noextract = schleuder-3.4.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/schleuder-2.2.4.gem
-	sha1sums = 991d561f9eb4b4aeda1f13826b18e69b2d357361
+	source = https://rubygems.org/downloads/schleuder-3.4.1.gem
+	sha512sums = 3d57295e817a9f884a8a9f7b247de919786c340eee6c30a136ffbc473896c280466881c4e47d14b0c019bfb2b9153676e6c861ff8dfc3161ce4a00251d7a3f1d
 
 pkgname = ruby-schleuder
 
