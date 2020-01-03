@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 Restart=on-failure
+EnvironmentFile=-/etc/default/teleport
 ExecStart=/usr/bin/teleport start --config=/etc/teleport/teleport.yaml --pid-file=/var/run/teleport.pid
 ExecReload=/bin/kill -HUP $MAINPID
 PIDFile=/var/run/teleport.pid
