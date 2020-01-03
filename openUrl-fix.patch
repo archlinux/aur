@@ -1,14 +1,13 @@
 --- a/app.js
 +++ b/app.js
-@@ -128,9 +128,9 @@ function setupMenu() {
- 
+@@ -137,8 +137,8 @@ function setupMenu() {
  const gotTheLock = app.requestSingleInstanceLock ? app.requestSingleInstanceLock() : true;
  let parseOpenUrl = argv => {
+     //fs.writeFileSync(path.join(app.getPath('appData'), 'SideQuest', 'test_output_loaded.txt'), JSON.stringify(argv));
 -    if (argv[1] && argv[1].length && argv[1].substr(0, 12) === 'sidequest://') {
+-        setTimeout(() => mainWindow.webContents.send('open-url', argv[1].toString()), 5000);
 +    if (argv[2] && argv[2].length && argv[2].substr(0, 12) === 'sidequest://') {
-         //fs.writeFileSync(path.join(app.getPath('appData'), 'SideQuest', 'test_output_loaded.txt'), argv[1].toString());
--        mainWindow.webContents.send('open-url', argv[1].toString());
-+        mainWindow.webContents.send('open-url', argv[2].toString());
++        setTimeout(() => mainWindow.webContents.send('open-url', argv[2].toString()), 5000);
      }
  };
- 
+ if (!gotTheLock) {
