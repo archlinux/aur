@@ -8,7 +8,7 @@
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
 pkgver=9.0.r0.g31cb54b779
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
 url="http://www.sagemath.org"
@@ -25,14 +25,14 @@ optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cytho
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter: Coxeter groups implementation'
   'lrs: Algorithms for linear reverse search used in game theory and for computing volume of polytopes'
-  'libfes: exhaustive search of solutions for boolean equations' 'python-pynormaliz: Normaliz backend for polyhedral computations'
+  'python-pynormaliz: Normaliz backend for polyhedral computations'
   'latte-integrale: integral point count in polyhedra' 'python-jupymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields' 'openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
   'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python-pycosat: picosat SAT solver'
   'python-pip: to install optional packages with sage -pip')
 makedepends=(cython boost ratpoints python-jinja coin-or-cbc sirocco
-  mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe libfes primecount git)
+  mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         package.patch
         latte-count.patch
@@ -45,7 +45,7 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-rpy-3.patch
         sagemath-python-3.8.patch)
 sha256sums=('SKIP'
-            '328e45e78065b5f6527174bda48cfff6828acbf107c2535b0a9a92c3ceb35842'
+            '496da0fa42cdfc92b43f5d85610bb462ca9bdc2f4d80fd316e8e9d068dba3b0b'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
             '9b2d87990db3045a83776e1ff527a31ce60a3361b08f5ec85fb1d45106982faa'

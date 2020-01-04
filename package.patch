@@ -1,3 +1,18 @@
+--- src/module_list.py
++++ src/module_list.py
+@@ -510,12 +510,6 @@ ext_modules = [
+     Extension('sage.libs.ecl',
+               sources = ["sage/libs/ecl.pyx"]),
+ 
+-    OptionalExtension("sage.libs.fes",
+-             ["sage/libs/fes.pyx"],
+-             language = "c",
+-             libraries = ['fes'],
+-             package = 'fes'),
+-
+     Extension('sage.libs.flint.flint',
+               sources = ["sage/libs/flint/flint.pyx"],
+               extra_compile_args = ["-D_XPG6"]),
 --- src/sage/misc/package.py.orig	2014-11-23 15:58:13.000000000 +0100
 +++ src/sage/misc/package.py	2015-01-22 20:32:25.651383902 +0100
 @@ -336,7 +336,7 @@
