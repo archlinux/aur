@@ -4,7 +4,7 @@ pkgbase = symfony-cli
 	pkgrel = 1
 	url = https://symfony.com/
 	arch = x86_64
-	license = custom
+	license = MIT
 	source = https://github.com/symfony/cli/releases/download/v4.11.3/symfony_linux_amd64.gz
 	sha256sums = f89cc5c8b56ae44d8c1334f91cea9068d80a5c870b9c80a4e396dbab6b13de98
 

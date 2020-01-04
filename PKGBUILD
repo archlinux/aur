@@ -6,7 +6,7 @@ pkgver=4.11.3
 pkgdesc="The Symfony client helps developers create and manage Symfony applications."
 url="https://symfony.com/"
 arch=('x86_64')
-license=('custom')
+license=('MIT')
 install=''
 source=(
     "https://github.com/symfony/cli/releases/download/v${pkgver}/symfony_linux_amd64.gz"
