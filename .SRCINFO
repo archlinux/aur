@@ -1,0 +1,10 @@
+pkgbase = bridje
+	pkgdesc = Bridje is a statically typed LISP targeting GraalVM, drawing inspiration from both Clojure and Haskell.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/bridje/bridje
+	arch = x86_64
+	license = EPL
+
+pkgname = bridje
+
