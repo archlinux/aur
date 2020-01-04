@@ -119,7 +119,6 @@ prepare() {
 	git config submodule.src/external/googletest.url "${srcdir}/googletest"
 	git config submodule.src/external/shaders-db.url "${srcdir}/shaders-db"
 	git config submodule.src/external/glslang.url "${srcdir}/glslang"
-	git config submodule.src/external/SPIRV-Cross.url "${srcdir}/SPIRV-Cross"
 	git config submodule.src/external/boost.url "${srcdir}/ext-boost"
 	git config submodule.src/external/dlmalloc.url "${srcdir}/dlmalloc"
 	git config submodule.src/external/printf.url "${srcdir}/printf"
