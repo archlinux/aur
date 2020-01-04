@@ -1,0 +1,18 @@
+pkgbase = nodejs-mjml3
+	pkgdesc = Older version of MJML.
+	pkgver = 3.3.5
+	pkgrel = 1
+	url = https://mjml.io/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	conflicts = nodejs-mjml
+	noextract = mjml-3.3.5.tgz
+	source = https://registry.npmjs.org/mjml/-/mjml-3.3.5.tgz
+	source = https://raw.githubusercontent.com/mjmlio/mjml/master/LICENSE.md
+	sha256sums = 7886932a1ae228a5ed1f62a68ca966dd144862370c52c60ceb144fce48210538
+	sha256sums = 0c4f37a6b1d7fdc8e2abb11cf49ba9dfe8128a4242861930d810f01f00ca4c49
+
+pkgname = nodejs-mjml3
+
