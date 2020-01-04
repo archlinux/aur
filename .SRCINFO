@@ -1,0 +1,16 @@
+pkgbase = toml11-git
+	pkgdesc = TOML for Modern C++
+	pkgver = v3.2.1.r0.b1827e6
+	pkgrel = 1
+	url = https://github.com/ToruNiina/toml11
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = toml11
+	conflicts = toml11
+	source = toml11-git::git+https://github.com/ToruNiina/toml11.git
+	md5sums = SKIP
+
+pkgname = toml11-git
+
