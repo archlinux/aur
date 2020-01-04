@@ -6,7 +6,7 @@ _svt_av1_ver='0.8.0'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.3.r95997.g9f7b2b37e3
+pkgver=4.3.r96270.gc3a17ffff6
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
         'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump'
         'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora'
         'twolame' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
-        'libx264.so'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
+        'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
         'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'svt-av1' 'svt-vp9'
