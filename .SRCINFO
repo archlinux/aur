@@ -1,7 +1,7 @@
 pkgbase = loginized
 	pkgdesc = Gnome GDM Login Theme Manager.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/juhaku/loginized
 	arch = x86_64
 	license = GPL3

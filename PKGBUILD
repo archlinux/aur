@@ -1,7 +1,7 @@
 # Maintainer: YaYPIXXO <viggo@lekdorf.com>
 pkgname=loginized
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome GDM Login Theme Manager."
 arch=('x86_64')
 url="https://github.com/juhaku/loginized"
@@ -26,7 +26,6 @@ package () {
   install -m644 "${srcdir}${icons_dir}/${pkgname}.png" "${pkgdir}${icons_dir}/${pkgname}.png"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/Loginized/loginized" "${pkgdir}/usr/bin/loginized"
-  chmod 755 "${pkgdir}/usr/bin/loginized"
+  ln -s "/opt/Loginized/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 }
