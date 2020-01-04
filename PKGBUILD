@@ -3,7 +3,7 @@
 
 pkgname=reproc
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform library that simplifies working with external CLI applications from C and C++'
 arch=('x86_64')
 url='https://github.com/DaanDeMeyer/reproc'
@@ -24,6 +24,10 @@ build() {
     -DREPROC_TEST=ON \
     ../
   cmake --build build
+}
+
+check() {
+  cmake --build build --target test
 }
 
 package() {
