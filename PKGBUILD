@@ -4,7 +4,7 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 arch=('x86_64')
 url="http://www.sogo.nu/"
@@ -35,7 +35,7 @@ source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz"
         "sogo.service"
         "sogo.confd"
         "sogo_configure.patch")
-sha256sums=('643e698a53bb147c2a73c1dc26a9eeb9f608a92210927e117f1b2e40f407f213'
+sha256sums=('f4e80af4dce2e8c1e2a5dd930cee4e030a10a306a07650015e966825f1dbb013'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1')
