@@ -10,7 +10,7 @@ After=network.target
 Type=simple
 
 # Not sure if this is needed for 'simple'
-PIDFile=/var/run/prosody/prosody.pid
+PIDFile=/run/prosody/prosody.pid
 
 # Start by executing the main executable
 ExecStart=/usr/bin/prosody
@@ -30,7 +30,7 @@ WorkingDirectory=/var/lib/prosody
 User=prosody
 Group=jabber
 
-Umask=0027
+UMask=0027
 
 # Nice=0
 
