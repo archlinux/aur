@@ -1,7 +1,7 @@
 # Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
 _pkgbasename=v4l-utils
 pkgname=lib32-$_pkgbasename
-pkgver=1.16.7
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Userspace tools and conversion library for Video 4 Linux (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=($_pkgbasename 'lib32-gcc-libs' 'lib32-libjpeg-turbo' 'lib32-systemd')
 source=(https://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2
         https://linuxtv.org/downloads/v4l-utils/${_pkgbasename}-${pkgver}.tar.bz2.asc)
 validpgpkeys=('05D0169C26E41593418129DF199A64FADFB500FF') # Gregor Jasny <gjasny@googlemail.com>
-sha512sums=('898b41cef7284f5796ec89c55ef08ecb3ec3fa3c5bf572ef30478be056fe9027b422b2d2513b906549e747e6a490e3211c6d2f8f1cade340b18185cc18b0684d'
+sha512sums=('749c804671f039d907bf782cba5d1c23fff48066f3b6d4a0249fb9b65c493ee3945b544ee2a306dda79973da04f0301278ee88775f798aba590e5d0f15226d49'
             'SKIP')
 
 build() {
