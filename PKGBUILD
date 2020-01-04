@@ -1,17 +1,17 @@
 # Maintainer: YaYPIXXO <viggo@lekdorf.com>
 pkgname=loginized
-pkgver=1.3.3
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Gnome GDM Login Theme Manager."
 arch=('x86_64')
 url="https://github.com/juhaku/loginized"
 license=('GPL3')
 depends=('glib2' 'xdg-utils' 'gtk3' 'nss' 'libxss')
 source=(
-https://github.com/juhaku/loginized/releases/download/1.3.3/loginized-${pkgver}.pacman
+https://github.com/juhaku/loginized/releases/download/${pkgver}/loginized-${pkgver}.pacman
 )
 sha256sums=(
-'95257349ba617339c2ef03d7b4f5c0f26f3ffa2e985196ffc77902a4285baf4b'
+'74e3096aabcb860b7bb2d2c29bba04466e43e7a0e155c8d4f8447a76cf53e31b'
 )
 
 package () {
