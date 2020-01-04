@@ -4,7 +4,7 @@
 
 _basename=gst-plugins-ugly
 pkgname=lib32-gst-plugins-ugly
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework ugly plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -13,11 +13,9 @@ license=(LGPL)
 depends=(lib32-gst-plugins-base-libs lib32-libdvdread lib32-libmpeg2 lib32-a52dec lib32-libsidplay
          lib32-libcdio lib32-x264 lib32-opencore-amr gst-plugins-ugly)
 makedepends=(git meson python)
-_commit=34c7d2b37b1ef73206e282e15d6382fae2182137  # tags/1.16.1^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git#commit=$_commit"
-        "gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git")
-sha256sums=('SKIP'
-            'SKIP')
+_commit=4b2943ee2788331e4000f0f7e226cd5ce2c135a4  # tags/1.16.2^0
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_basename
@@ -27,10 +25,6 @@ pkgver() {
 
 prepare() {
     cd $_basename
-
-    git submodule init
-    git config --local submodule.common.url "$srcdir/gst-common"
-    git submodule update
 }
 
 build() {
