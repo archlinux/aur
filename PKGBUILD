@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.930
+pkgver=1.940
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
@@ -21,7 +21,6 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/bacula-backup/config' \
 'etc/webmin/bandwidth/config' \
 'etc/webmin/bind8/config' \
-'etc/webmin/burner/config' \
 'etc/webmin/change-user/config' \
 'etc/webmin/cluster-copy/config' \
 'etc/webmin/cluster-cron/config' \
@@ -181,7 +180,7 @@ package() {
 }
 
 
-sha256sums=('f5789f180852d8bd3510b342cc968fba928ece6c940763a89dc0d8f059bde682'
+sha256sums=('ce76c58eab03ac376a51ed4486736c663fc192d5c83edc45fa0350b3d5c43478'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
