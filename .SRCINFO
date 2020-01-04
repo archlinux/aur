@@ -1,9 +1,8 @@
 pkgbase = asciiworld-git
 	pkgdesc = ASCII world map and tools
 	pkgver = 20.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uninformativ.de/git/asciiworld
-	install = asciiworld.install
 	arch = i686
 	arch = x86_64
 	license = MIT

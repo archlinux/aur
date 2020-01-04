@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiworld-git
 pkgver=20.01
-pkgrel=1
+pkgrel=2
 pkgdesc="ASCII world map and tools"
 arch=('i686' 'x86_64')
 url="https://uninformativ.de/git/asciiworld"
@@ -19,7 +19,6 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://uninformativ.de/git/asciiworld.git')
 md5sums=('SKIP')
-install=asciiworld.install
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
