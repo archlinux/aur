@@ -1,6 +1,6 @@
 pkgbase = bleachbit-git
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy.
-	pkgver = r4794.a6eed643
+	pkgver = r4909.e4acc565
 	pkgrel = 1
 	url = https://www.bleachbit.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = bleachbit-git
 	optdepends = cleanerml-git: Bonus cleaner pack
 	provides = bleachbit
 	conflicts = bleachbit
-	source = git://github.com/bleachbit/bleachbit.git
+	source = bleachbit::git+https://github.com/bleachbit/bleachbit.git
 	sha256sums = SKIP
 
 pkgname = bleachbit-git

@@ -9,12 +9,12 @@
 
 _pkgname=bleachbit
 pkgname=bleachbit-git
-pkgver=r4794.a6eed643
+pkgver=r4909.e4acc565
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy.'
 url='https://www.bleachbit.org/'
 license=('GPL3')
-source=('git://github.com/bleachbit/bleachbit.git')
+source=("${_pkgname}::git+https://github.com/bleachbit/bleachbit.git")
 sha256sums=('SKIP')
 arch=('any')
 depends=('pygtk' 'python2-gobject')
@@ -24,11 +24,11 @@ conflicts=('bleachbit')
 provides=('bleachbit')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
   make prefix=/usr DESTDIR="$pkgdir" install
 }
