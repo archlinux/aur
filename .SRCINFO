@@ -1,12 +1,11 @@
 pkgbase = multibootusb
 	pkgdesc = Boot multiple live Linux distros from a usb flash drive.
 	pkgver = 9.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://multibootusb.org
 	arch = any
 	license = GPL
 	depends = python-pyqt5
-	depends = pyqt5-common
 	depends = python-dbus
 	depends = mtools
 	depends = util-linux
