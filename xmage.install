@@ -1,15 +1,7 @@
 post_install() {
 	echo
 	echo "==> xmage's files are located in /usr/share/xmage"
-	echo "==>" 
-	echo "==> xmage will automatically increase the (default)"
-	echo "==> amount of RAM available to both the client"
-	echo "==> and the server from 512MB to 1024MB"
-	echo "==> If you wish to change the amount of RAM available"
-	echo "==> to xmage, edit /bin/mage-client or /bin/mage-server"
-	echo "==> and change the 1024 in '-Xmx1024m' to the amount"
-	echo "==> of RAM(in MB) you wish to make available"
-	echo
+	echo "==> For details, check /usr/share/xmage/README.txt"
 }
 
 post_upgrade() {

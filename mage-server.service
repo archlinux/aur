@@ -1,0 +1,9 @@
+[Unit]
+Description=Starts mage-server on boot 
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/mage-server
+
+[Install]
+WantedBy=multi-user.target

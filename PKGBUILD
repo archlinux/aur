@@ -2,7 +2,7 @@
 
 pkgname=xmage
 pkgver=1.4.41V1a
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
 
@@ -51,8 +51,8 @@ package() {
 	awk '{ sub("\r$", ""); print }' mage-server/startServer.sh > mage-server/startServer-unix.sh
 
 	msg2 "changing default locations of scripts..."
-	awk '{ sub("\.\/lib", "/usr/share/xmage/mage-client/lib"); print }' mage-client/startClient-unix.sh > mage-client/startClient-unix.sh
-	awk '{ sub("\.\/lib", "/usr/share/xmage/mage-server/lib"); print }' mage-server/startServer-unix.sh > mage-server/startServer-unix.sh
+	sed -i 's|\.\/lib|\/usr\/share\/xmage\/mage-client\/lib|' mage-client/startClient-unix.sh
+	sed -i 's|\.\/lib|\/usr\/share\/xmage\/mage-server\/lib|' mage-server/startServer-unix.sh
 
 	msg2 "adding cd to relevant /usr/share/xmage/ directory..."
 	sed -i '2i cd /usr/share/xmage/mage-client' mage-client/startClient-unix.sh
@@ -83,5 +83,9 @@ fi
 
 	msg2 "installing license: ${license}..."
 	install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licences/"${pkgname}"/LICENSE.txt
+	
+	msg2 "installing mage-server systemd unit file to /usr/lib/systemd/system..."
+	mkdir -p "${pkgdir}"/usr/lib/systemd/system
+	install -m755 ../mage-server.service "${pkgdir}"/usr/lib/systemd/system
 }
 
