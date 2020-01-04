@@ -18,6 +18,8 @@ makedepends=(
 	'gtest'
 )
 depends=(
+	'boost'
+	'gtk3'
 	'sdl2'
 	'capstone'
 	'spdlog'
@@ -50,7 +52,6 @@ source=(
 	"git+https://github.com/google/googletest.git"
 	"git+https://github.com/Vita3K/shaders-db.git"
 	"git+https://github.com/KhronosGroup/glslang.git"
-	"git+https://github.com/vita3k/SPIRV-Cross.git"
 	"git+https://github.com/Vita3K/ext-boost.git"
 	"git+https://github.com/Vita3K/dlmalloc.git"
 	"git+https://github.com/vita3k/printf.git"
@@ -65,7 +66,6 @@ source=(
 	"git+https://github.com/Vita3K/libfat16.git"
 )
 md5sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
