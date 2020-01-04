@@ -1,0 +1,3 @@
+post_install() {
+        echo "==> Free for personal and non-commercial use, please see EULA for details"
+}

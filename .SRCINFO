@@ -1,0 +1,41 @@
+pkgbase = onivim2
+	pkgdesc = Native, lightweight modal code editor
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/onivim/oni2
+	install = onivim2.install
+	arch = any
+	license = commercial
+	makedepends = git
+	makedepends = esy
+	makedepends = ragel
+	makedepends = nodejs
+	makedepends = wget
+	makedepends = bzip2
+	makedepends = fontconfig
+	makedepends = fuse2
+	makedepends = glu
+	makedepends = gtk3
+	makedepends = harfbuzz
+	makedepends = libglvnd
+	makedepends = libice
+	makedepends = libpng
+	makedepends = libsm
+	makedepends = libx11
+	makedepends = libxcursor
+	makedepends = libxext
+	makedepends = libxi
+	makedepends = libxinerama
+	makedepends = libxrandr
+	makedepends = libxt
+	makedepends = libxxf86vm
+	makedepends = m4
+	conflicts = onivim2-git
+	options = !strip
+	source = onivim2::git+https://github.com/onivim/oni2.git#commit=2b17075155fa0b0616718dda4374a523dc8903f0
+	source = onivim2.install
+	sha512sums = SKIP
+	sha512sums = 2378a4ee00d60eee252fb2c06ccb79ce011e2d3ae45efefbfdf47eaea85659bf8332cc3553bc53b595928eef858937efc92d5f1c282a27c507200424e1d537be
+
+pkgname = onivim2
+
