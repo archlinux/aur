@@ -1,6 +1,6 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
 pkgname=ballerina
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 _pkg=${pkgname}-${pkgver}
 pkgdesc="an open source programming language and platform for cloud-era application programmers to easily write software that just works"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('jre8-openjdk')
 optdepends=('docker' 'bash' 'kubectl' 'helm')
 source=(${_pkg}.zip::https://product-dist.ballerina.io/downloads/${pkgver}/ballerina-${pkgver}.zip)
-sha256sums=('dd2f4cb04dd09560e6d810b9d3a9e4de1c86d284f1767c319456535694ef26a0')
+sha256sums=('801ca6c9d1db44156ad724a9ea10ecab97bb35c641faf3fc35afc97bb68f7855')
 
 _licensedir=usr/share/licenses/${pkgname}
 _docdir=usr/share/doc/${pkgname}
