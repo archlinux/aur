@@ -31,7 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   curl --silent --head https://builds.jabref.org/master/JabRef-5.0-portable_linux.tar.gz \
-    | grep "Last-Modified" | cut -d' ' -f2- | date -f - +%Y%m%d
+    | grep -i "last-modified" | cut -d' ' -f2- | date -f - +%Y%m%d
 }
 
 package() {
