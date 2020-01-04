@@ -1,14 +1,17 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
-pkgbase=python-pycrate-git
-pkgname=('python2-pycrate-git' 'python-pycrate-git')
-pkgver=r222.ee66b19
+pkgname='python-pycrate-git'
+pkgver=r524.5be4c81
 pkgrel=2
 pkgdesc="Python library for manipulating various digital formats in an easy way."
 arch=(any)
 url="https://github.com/P1sec/pycrate"
 license=('LGPL2.1')
 makedepends=('git')
-conflicts=("python-pycrate" "python2-pycrate")
+depends=('python')
+optdepends=('python-lxml: The pycrate_diameter part uses lxml as optional dependency to translate xml files from IANA as Python dictionnaries when the diameter module is loaded.'
+            'python-sctp: The pycrate_corenet part requires pysctp to run.'
+            'python-cryptomobile: The pycrate_corenet part requires CryptoMobile to run. The pycrate_mobile/TS24301_EMM and pycrate_mobile/TS24501_FGMM modules use CryptoMobile as optional dependency to cipher / decipher LTE and 5G NAS messages.')
+conflicts=("python-pycrate")
 source=('pycrate::git+https://github.com/P1sec/pycrate#branch=master')
 md5sums=('SKIP')
 
@@ -17,18 +20,7 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_python-pycrate-git() {
-    depends=('python')
-    conflicts=("python2-pycrate-git")
-
+package() {
     cd pycrate
     python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-pycrate-git() {
-    depends=('python2')
-    conflicts=("python-pycrate-git")
-
-    cd pycrate
-    python2 setup.py install --root="$pkgdir" --optimize=1
 }
