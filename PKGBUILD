@@ -1,6 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiworld-git
-pkgver=17.12.1.g8d85652
+pkgver=20.01
 pkgrel=1
 pkgdesc="ASCII world map and tools"
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ depends=('gd' 'shapelib')
 makedepends=('git')
 optdepends=('curl: Retrieving various data'
             'python: Additional tools, e.g. satellite tracking'
+            'python-geographiclib: Geographic calculations, used by tools'
             'python-pyephem: Calculating satellite positions'
             'python-pygeoip: Reading GeoIP databases'
             'geoip-database-extra: An actual GeoIP database'
-            'python2: Additional tools, e.g. calculating tracks'
             'ncurses: For tput')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
