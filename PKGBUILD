@@ -1,14 +1,15 @@
-# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: Joe Groocock <aur@frebib.net>
+# Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
-pkgname=picom-git
-_gitname=picom
-pkgver=1283_Next.2.g37532e5_2019.12.10
+pkgname=picom-tryone-git
+_gitname=compton
+pkgver=1298_0.1_beta2.949.gf92eb6b_2019.12.21
 pkgrel=1
 pkgdesc="X compositor (fork of compton) (git-version)"
 arch=(i686 x86_64)
-url="https://github.com/yshui/${_gitname}"
+url="https://github.com/tryone144/${_gitname}"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme' 'libxdg-basedir')
@@ -17,10 +18,10 @@ optdepends=('dbus:          To control picom via D-Bus'
             'xorg-xwininfo: For picom-trans'
             'xorg-xprop:    For picom-trans'
             'python:        For picom-convgen.py')
-provides=('compton' 'compton-git' 'picom')
-conflicts=('compton' 'compton-git' 'picom')
-replaces=('compton-git')
-source=(git+"https://github.com/yshui/${_gitname}.git#branch=next")
+provides=('compton' 'compton-git' 'picom' 'picom-git')
+conflicts=('compton' 'compton-git' 'picom' 'picom-git')
+replaces=('compton-git' 'picom-git')
+source=(git+"https://github.com/tryone144/${_gitname}.git#branch=feature/dual_kawase")
 md5sums=("SKIP")
 
 pkgver() {

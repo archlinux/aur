@@ -1,8 +1,8 @@
-pkgbase = picom-git
+pkgbase = picom-tryone-git
 	pkgdesc = X compositor (fork of compton) (git-version)
-	pkgver = 1283_Next.2.g37532e5_2019.12.10
+	pkgver = 1298_0.1_beta2.949.gf92eb6b_2019.12.21
 	pkgrel = 1
-	url = https://github.com/yshui/picom
+	url = https://github.com/tryone144/compton
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -32,12 +32,15 @@ pkgbase = picom-git
 	provides = compton
 	provides = compton-git
 	provides = picom
+	provides = picom-git
 	conflicts = compton
 	conflicts = compton-git
 	conflicts = picom
+	conflicts = picom-git
 	replaces = compton-git
-	source = git+https://github.com/yshui/picom.git#branch=next
+	replaces = picom-git
+	source = git+https://github.com/tryone144/compton.git#branch=feature/dual_kawase
 	md5sums = SKIP
 
-pkgname = picom-git
+pkgname = picom-tryone-git
 
