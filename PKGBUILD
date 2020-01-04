@@ -1,14 +1,13 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=godot-bin
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot is an advanced, feature packed, multi-platform 2D and 3D game engine"
 arch=("i686" "x86_64")
 url="http://www.godotengine.org"
 license=("MIT")
-provides=("godot-bin")
+provides=("godot")
 conflicts=("godot" "godot-git")
-replaces=("godot" "godot-git")
 source=("godot.desktop" "icons.tar.gz")
 source_i686+=("$pkgname-$pkgver::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.32.zip")
 source_x86_64+=("$pkgname-$pkgver::https://downloads.tuxfamily.org/godotengine/"$pkgver"/Godot_v"$pkgver"-stable_x11.64.zip")
