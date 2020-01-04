@@ -37,7 +37,6 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         package.patch
         latte-count.patch
         test-optional.patch
-        fes02.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
@@ -48,7 +47,6 @@ sha256sums=('SKIP'
             '496da0fa42cdfc92b43f5d85610bb462ca9bdc2f4d80fd316e8e9d068dba3b0b'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
-            '9b2d87990db3045a83776e1ff527a31ce60a3361b08f5ec85fb1d45106982faa'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             'd2a065a36be3c011a257b8694111e267d9ce7cba867c53eeb464a4573dac9bbb'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
@@ -81,8 +79,6 @@ prepare(){
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 
 # Upstream patches  
-# fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
-  patch -p1 -i ../fes02.patch
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
