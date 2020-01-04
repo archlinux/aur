@@ -4,7 +4,10 @@ pkgbase = bridje-bin
 	pkgrel = 1
 	url = https://github.com/bridje/bridje
 	arch = x86_64
-	license = EPL
+	license = custom
+	depends = jdk11-graalvm-bin
+	source = https://github.com/bridje/bridje/releases/download/v0.0.0/bridje-component-0.0.0.jar
+	sha256sums = fa21c0a4eaccdc89238a9b22db5fa266e50eb8b0824b3c5d41e1f80e420a2e44
 
 pkgname = bridje-bin
 
