@@ -1,15 +1,15 @@
-# Maintainer: nightuser <nightuser.android at gmail dot com>
+# Maintainer: nightuser <nightuser.android@gmail.com>
 
 pkgname=glib2-static
-pkgver=2.62.3
+pkgver=2.62.4
 pkgrel=1
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
 arch=(x86_64)
-depends=(pcre libffi)
-makedepends=(zlib libffi shared-mime-info python libelf git util-linux meson dbus)
-checkdepends=(desktop-file-utils dbus)
+depends=()
+makedepends=(gettext zlib libffi shared-mime-info python libelf git util-linux meson dbus)
+checkdepends=(desktop-file-utils)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
 source=(https://gitlab.gnome.org/GNOME/glib/-/archive/$pkgver/glib-$pkgver.tar.gz)
 sha256sums=(4cdd62797dcf112a6be53fe88a8343994691c37e7b65f1ec5b1a02b65ed3adc6)
