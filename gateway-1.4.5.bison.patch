@@ -1,0 +1,688 @@
+diff -ur gateway-1.4.5.orig/wmlscript/wsgram.y gateway-1.4.5/wmlscript/wsgram.y
+--- gateway-1.4.5.orig/wmlscript/wsgram.y	2013-12-17 05:50:51.000000000 -0500
++++ gateway-1.4.5/wmlscript/wsgram.y	2018-08-17 15:43:57.000000000 -0500
+@@ -14,18 +14,9 @@
+ 
+ #include "wmlscript/wsint.h"
+ 
+-/* The required yyerror() function.  This is actually not used but to
+-   report the internal parser errors.  All other errors are reported
+-   by using the `wserror.h' functions. */
+-extern void yyerror(char *msg);
+-
+-#if WS_DEBUG
+-/* Just for debugging purposes. */
+-WsCompilerPtr global_compiler = NULL;
+-#endif /* WS_DEBUG */
+-
+ %}
+ 
++
+ /* The possible semantic values. */
+ %union
+ {
+@@ -45,6 +36,19 @@
+     WsExpression *expr;
+ }
+ 
++%{
++/* The required yyerror() function.  This is actually not used but to
++   report the internal parser errors.  All other errors are reported
++   by using the `wserror.h' functions. */
++extern void yyerror(YYLTYPE* locp, WsCompiler* compiler, const char* msg);
++
++#if WS_DEBUG
++/* Just for debugging purposes. */
++WsCompilerPtr global_compiler = NULL;
++#endif /* WS_DEBUG */
++
++%}
++
+ /* Tokens. */
+ 
+ /* Language literals. */
+@@ -106,6 +110,8 @@
+ 
+ /* Generate reentrant parser. */
+ %pure-parser
++%parse-param { WsCompiler* compiler }
++%lex-param   { WsCompiler* compiler }
+ 
+ /* This grammar has one shift-reduce conflict.  It comes from the
+    if-else statement. */
+@@ -119,7 +125,7 @@
+ 	  Pragmas FunctionDeclarations
+ 	| FunctionDeclarations
+ 	| error
+-		{ ws_error_syntax(pctx, @1.first_line); }
++		{ ws_error_syntax(compiler, @1.first_line); }
+ 	;
+ 
+ /* Pragmas. */
+@@ -132,7 +138,7 @@
+ Pragma:
+ 	  tUSE PragmaDeclaration ';'
+ 	| error
+-		{ ws_error_syntax(pctx, @1.first_line); }
++		{ ws_error_syntax(compiler, @1.first_line); }
+ 	;
+ 
+ PragmaDeclaration:
+@@ -143,7 +149,7 @@
+ 
+ ExternalCompilationUnitPragma:
+ 	  tURL tIDENTIFIER tSTRING
+-	  	{ ws_pragma_use(pctx, @2.first_line, $2, $3); }
++	  	{ ws_pragma_use(compiler, @2.first_line, $2, $3); }
+ 	;
+ 
+ AccessControlPragma:
+@@ -153,28 +159,23 @@
+ AccessControlSpecifier:
+ 	  tDOMAIN tSTRING
+ 	  	{
+-		    WsCompiler *compiler = (WsCompiler *) pctx;
+-
+ 		    /* Pass this to the byte-code */
+ 		    if (!ws_bc_add_pragma_access_domain(compiler->bc, $2->data,
+ 						        $2->len))
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 		    ws_lexer_free_utf8(compiler, $2);
+ 		}
+ 	| tPATH tSTRING
+ 	  	{
+-		    WsCompiler *compiler = (WsCompiler *) pctx;
+-
+ 		    /* Pass this to the byte-code */
+ 		    if (!ws_bc_add_pragma_access_path(compiler->bc, $2->data,
+ 						      $2->len))
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 
+ 		    ws_lexer_free_utf8(compiler, $2);
+ 		}
+ 	| tDOMAIN tSTRING tPATH tSTRING
+ 	  	{
+-		    WsCompiler *compiler = (WsCompiler *) pctx;
+ 		    WsBool success = WS_TRUE;
+ 
+ 		    /* Pass these to the byte-code */
+@@ -187,7 +188,7 @@
+ 		        success = WS_FALSE;
+ 
+ 		    if (!success)
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 
+ 		    ws_lexer_free_utf8(compiler, $2);
+ 		    ws_lexer_free_utf8(compiler, $4);
+@@ -207,8 +208,6 @@
+ MetaName:
+ 	  tNAME MetaBody
+ 		{
+-		    WsCompiler *compiler = (WsCompiler *) pctx;
+-
+ 		    /* Meta information for the origin servers.  Show it
+                      * to the user if requested. */
+ 		    if (compiler->params.meta_name_cb)
+@@ -225,8 +224,6 @@
+ MetaHttpEquiv:
+ 	  tHTTP tEQUIV MetaBody
+ 	  	{
+-		    WsCompiler *compiler = (WsCompiler *) pctx;
+-
+ 		    /* Meta information HTTP header that should be
+                      * included to an HTTP response header.  Show it to
+                      * the user if requested. */
+@@ -246,7 +243,6 @@
+ 	  tUSER tAGENT MetaBody
+ 		{
+ 		    WsBool success;
+-		    WsCompiler *compiler = (WsCompiler *) pctx;
+ 
+ 		    /* Pass this pragma to the byte-code */
+ 		    if ($3) {
+@@ -272,16 +268,16 @@
+ 		        ws_pragma_meta_body_free(compiler, $3);
+ 
+ 		        if (!success)
+-		  	    ws_error_memory(pctx);
++		  	    ws_error_memory(compiler);
+ 		    }
+ 		}
+ 	;
+ 
+ MetaBody:
+ 	  MetaPropertyName MetaContent
+-		{ $$ = ws_pragma_meta_body(pctx, $1, $2, NULL); }
++		{ $$ = ws_pragma_meta_body(compiler, $1, $2, NULL); }
+ 	| MetaPropertyName MetaContent MetaScheme
+-		{ $$ = ws_pragma_meta_body(pctx, $1, $2, $3); }
++		{ $$ = ws_pragma_meta_body(compiler, $1, $2, $3); }
+ 	;
+ 
+ MetaPropertyName: tSTRING;
+@@ -301,12 +297,12 @@
+ 		{
+ 		    char *name = ws_strdup($3);
+ 
+-		    ws_lexer_free_block(pctx, $3);
++		    ws_lexer_free_block(compiler, $3);
+ 
+ 		    if (name)
+-		        ws_function(pctx, $1, name, @3.first_line, $5, $7);
++		        ws_function(compiler, $1, name, @3.first_line, $5, $7);
+ 		    else
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 		}
+ 	;
+ 
+@@ -317,7 +313,7 @@
+ 
+ FormalParameterListOpt:
+ 	  /* empty */
+-		{ $$ = ws_list_new(pctx); }
++		{ $$ = ws_list_new(compiler); }
+ 	| FormalParameterList
+ 	;
+ 
+@@ -332,17 +328,17 @@
+                     char *id;
+                     WsFormalParm *parm;
+ 
+-		    id = ws_f_strdup(((WsCompiler *) pctx)->pool_stree, $1);
+-                    parm = ws_formal_parameter(pctx, @1.first_line, id);
++		    id = ws_f_strdup((compiler)->pool_stree, $1);
++                    parm = ws_formal_parameter(compiler, @1.first_line, id);
+ 
+-		    ws_lexer_free_block(pctx, $1);
++		    ws_lexer_free_block(compiler, $1);
+ 
+ 		    if (id == NULL || parm == NULL) {
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 		        $$ = NULL;
+ 		    } else {
+-		        $$ = ws_list_new(pctx);
+-		        ws_list_append(pctx, $$, parm);
++		        $$ = ws_list_new(compiler);
++		        ws_list_append(compiler, $$, parm);
+ 		    }
+ 		}
+ 	| FormalParameterList ',' tIDENTIFIER
+@@ -350,16 +346,16 @@
+                     char *id;
+                     WsFormalParm *parm;
+ 
+-		    id = ws_f_strdup(((WsCompiler *) pctx)->pool_stree, $3);
+-                    parm = ws_formal_parameter(pctx, @1.first_line, id);
++		    id = ws_f_strdup(compiler->pool_stree, $3);
++                    parm = ws_formal_parameter(compiler, @1.first_line, id);
+ 
+-		    ws_lexer_free_block(pctx, $3);
++		    ws_lexer_free_block(compiler, $3);
+ 
+ 		    if (id == NULL || parm == NULL) {
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 		        $$ = NULL;
+ 		    } else
+-		        ws_list_append(pctx, $1, parm);
++		        ws_list_append(compiler, $1, parm);
+ 		}
+ 	;
+ 
+@@ -369,22 +365,22 @@
+ 	  Block
+ 		{
+ 		    if ($1)
+-		        $$ = ws_stmt_block(pctx, $1->first_line, $1->last_line,
++		        $$ = ws_stmt_block(compiler, $1->first_line, $1->last_line,
+ 				           $1);
+ 		    else
+ 		        $$ = NULL;
+ 		}
+ 	| VariableStatement
+ 	| ';'			/* EmptyStatement */
+-		{ $$ = ws_stmt_empty(pctx, @1.first_line); }
++		{ $$ = ws_stmt_empty(compiler, @1.first_line); }
+ 	| Expression ';'	/* ExpressionStatement */
+-		{ $$ = ws_stmt_expr(pctx, $1->line, $1); }
++		{ $$ = ws_stmt_expr(compiler, $1->line, $1); }
+ 	| IfStatement
+ 	| IterationStatement
+ 	| tCONTINUE ';'		/* ContinueStatement */
+-		{ $$ = ws_stmt_continue(pctx, @1.first_line); }
++		{ $$ = ws_stmt_continue(compiler, @1.first_line); }
+ 	| tBREAK ';'		/* BreakStatement */
+-		{ $$ = ws_stmt_break(pctx, @1.first_line); }
++		{ $$ = ws_stmt_break(compiler, @1.first_line); }
+ 	| ReturnStatement
+ 	;
+ 
+@@ -398,56 +394,56 @@
+ 		}
+ 	| error
+ 		{
+-		    ws_error_syntax(pctx, @1.first_line);
++		    ws_error_syntax(compiler, @1.first_line);
+ 		    $$ = NULL;
+ 		}
+ 	;
+ 
+ StatementListOpt:
+ 	  /* empty */
+-		{ $$ = ws_list_new(pctx); }
++		{ $$ = ws_list_new(compiler); }
+ 	| StatementList
+ 	;
+ 
+ StatementList:
+ 	  Statement
+ 		{
+-		    $$ = ws_list_new(pctx);
+-		    ws_list_append(pctx, $$, $1);
++		    $$ = ws_list_new(compiler);
++		    ws_list_append(compiler, $$, $1);
+ 		}
+ 	| StatementList Statement
+-		{ ws_list_append(pctx, $1, $2); }
++		{ ws_list_append(compiler, $1, $2); }
+ 	;
+ 
+ VariableStatement:
+ 	  tVAR VariableDeclarationList ';'
+-		{ $$ = ws_stmt_variable(pctx, @1.first_line, $2); }
++		{ $$ = ws_stmt_variable(compiler, @1.first_line, $2); }
+ 	| tVAR error
+-		{ ws_error_syntax(pctx, @2.first_line); }
++		{ ws_error_syntax(compiler, @2.first_line); }
+ 	;
+ 
+ VariableDeclarationList:
+ 	  VariableDeclaration
+ 		{
+-		    $$ = ws_list_new(pctx);
+-		    ws_list_append(pctx, $$, $1);
++		    $$ = ws_list_new(compiler);
++		    ws_list_append(compiler, $$, $1);
+ 		}
+ 	| VariableDeclarationList ',' VariableDeclaration
+-		{ ws_list_append(pctx, $1, $3); }
++		{ ws_list_append(compiler, $1, $3); }
+ 	;
+ 
+ VariableDeclaration:
+ 	  tIDENTIFIER VariableInitializedOpt
+ 		{
+-		    char *id = ws_f_strdup(((WsCompiler *) pctx)->pool_stree,
++		    char *id = ws_f_strdup(compiler->pool_stree,
+ 					   $1);
+ 
+-		    ws_lexer_free_block(pctx, $1);
++		    ws_lexer_free_block(compiler, $1);
+ 		    if (id == NULL) {
+-		        ws_error_memory(pctx);
++		        ws_error_memory(compiler);
+ 		        $$ = NULL;
+ 		    } else
+-		        $$ = ws_variable_declaration(pctx, id, $2);
++		        $$ = ws_variable_declaration(compiler, id, $2);
+ 		}
+ 	;
+ 
+@@ -460,29 +456,29 @@
+ 
+ IfStatement:
+ 	  tIF '(' Expression ')' Statement tELSE Statement
+-		{ $$ = ws_stmt_if(pctx, @1.first_line, $3, $5, $7); }
++		{ $$ = ws_stmt_if(compiler, @1.first_line, $3, $5, $7); }
+ 	| tIF '(' Expression ')' Statement
+-		{ $$ = ws_stmt_if(pctx, @1.first_line, $3, $5, NULL); }
++		{ $$ = ws_stmt_if(compiler, @1.first_line, $3, $5, NULL); }
+ 	;
+ 
+ IterationStatement:
+ 	  tWHILE '(' Expression ')' Statement
+-		{ $$ = ws_stmt_while(pctx, @1.first_line, $3, $5); }
++		{ $$ = ws_stmt_while(compiler, @1.first_line, $3, $5); }
+ 	| ForStatement
+ 	;
+ 
+ ForStatement:
+ 	  tFOR '(' ExpressionOpt ';' ExpressionOpt ';' ExpressionOpt ')'
+ 			Statement
+-	  	{ $$ = ws_stmt_for(pctx, @1.first_line, NULL, $3, $5, $7, $9); }
++	  	{ $$ = ws_stmt_for(compiler, @1.first_line, NULL, $3, $5, $7, $9); }
+ 	| tFOR '(' tVAR VariableDeclarationList ';' ExpressionOpt ';'
+ 	       		ExpressionOpt ')' Statement
+-	  	{ $$ = ws_stmt_for(pctx, @1.first_line, $4, NULL, $6, $8, $10); }
++	  	{ $$ = ws_stmt_for(compiler, @1.first_line, $4, NULL, $6, $8, $10); }
+ 	;
+ 
+ ReturnStatement:
+ 	  tRETURN ExpressionOpt ';'
+-		{ $$ = ws_stmt_return(pctx, @1.first_line, $2); }
++		{ $$ = ws_stmt_return(compiler, @1.first_line, $2); }
+ 	;
+ 
+ /* Expressions. */
+@@ -496,135 +492,135 @@
+ Expression:
+ 	  AssignmentExpression
+ 	| Expression ',' AssignmentExpression
+-		{ $$ = ws_expr_comma(pctx, @2.first_line, $1, $3); }
++		{ $$ = ws_expr_comma(compiler, @2.first_line, $1, $3); }
+ 	;
+ 
+ AssignmentExpression:
+ 	  ConditionalExpression
+ 	| tIDENTIFIER	'='		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, '=', $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, '=', $3); }
+ 	| tIDENTIFIER	tMULA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tMULA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tMULA, $3); }
+ 	| tIDENTIFIER	tDIVA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tDIVA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tDIVA, $3); }
+ 	| tIDENTIFIER	tREMA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tREMA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tREMA, $3); }
+ 	| tIDENTIFIER	tADDA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tADDA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tADDA, $3); }
+ 	| tIDENTIFIER	tSUBA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tSUBA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tSUBA, $3); }
+ 	| tIDENTIFIER	tLSHIFTA	AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tLSHIFTA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tLSHIFTA, $3); }
+ 	| tIDENTIFIER	tRSSHIFTA	AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tRSSHIFTA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tRSSHIFTA, $3); }
+ 	| tIDENTIFIER	tRSZSHIFTA	AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tRSZSHIFTA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tRSZSHIFTA, $3); }
+ 	| tIDENTIFIER	tANDA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tANDA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tANDA, $3); }
+ 	| tIDENTIFIER	tXORA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tXORA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tXORA, $3); }
+ 	| tIDENTIFIER	tORA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tORA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tORA, $3); }
+ 	| tIDENTIFIER	tIDIVA		AssignmentExpression
+-		{ $$ = ws_expr_assign(pctx, @1.first_line, $1, tIDIVA, $3); }
++		{ $$ = ws_expr_assign(compiler, @1.first_line, $1, tIDIVA, $3); }
+ 	;
+ 
+ ConditionalExpression:
+ 	  LogicalORExpression
+ 	| LogicalORExpression '?' AssignmentExpression ':' AssignmentExpression
+-		{ $$ = ws_expr_conditional(pctx, @2.first_line, $1, $3, $5); }
++		{ $$ = ws_expr_conditional(compiler, @2.first_line, $1, $3, $5); }
+ 	;
+ 
+ LogicalORExpression:
+ 	  LogicalANDExpression
+ 	| LogicalORExpression tOR LogicalANDExpression
+-		{ $$ = ws_expr_logical(pctx, @2.first_line, WS_ASM_SCOR, $1, $3); }
++		{ $$ = ws_expr_logical(compiler, @2.first_line, WS_ASM_SCOR, $1, $3); }
+ 	;
+ 
+ LogicalANDExpression:
+ 	  BitwiseORExpression
+ 	| LogicalANDExpression tAND BitwiseORExpression
+-		{ $$ = ws_expr_logical(pctx, @2.first_line, WS_ASM_SCAND, $1, $3); }
++		{ $$ = ws_expr_logical(compiler, @2.first_line, WS_ASM_SCAND, $1, $3); }
+ 	;
+ 
+ BitwiseORExpression:
+ 	  BitwiseXORExpression
+ 	| BitwiseORExpression '|' BitwiseXORExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_B_OR, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_B_OR, $1, $3); }
+ 	;
+ 
+ BitwiseXORExpression:
+ 	  BitwiseANDExpression
+ 	| BitwiseXORExpression '^' BitwiseANDExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_B_XOR, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_B_XOR, $1, $3); }
+ 	;
+ 
+ BitwiseANDExpression:
+ 	  EqualityExpression
+ 	| BitwiseANDExpression '&' EqualityExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_B_AND, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_B_AND, $1, $3); }
+ 	;
+ 
+ EqualityExpression:
+ 	  RelationalExpression
+ 	| EqualityExpression tEQ RelationalExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_EQ, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_EQ, $1, $3); }
+ 	| EqualityExpression tNE RelationalExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_NE, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_NE, $1, $3); }
+ 	;
+ 
+ RelationalExpression:
+ 	  ShiftExpression
+ 	| RelationalExpression '<' ShiftExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_LT, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_LT, $1, $3); }
+ 	| RelationalExpression '>' ShiftExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_GT, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_GT, $1, $3); }
+ 	| RelationalExpression tLE ShiftExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_LE, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_LE, $1, $3); }
+ 	| RelationalExpression tGE ShiftExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_GE, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_GE, $1, $3); }
+ 	;
+ 
+ ShiftExpression:
+ 	  AdditiveExpression
+ 	| ShiftExpression tLSHIFT AdditiveExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_B_LSHIFT, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_B_LSHIFT, $1, $3); }
+ 	| ShiftExpression tRSSHIFT AdditiveExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_B_RSSHIFT, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_B_RSSHIFT, $1, $3); }
+ 	| ShiftExpression tRSZSHIFT AdditiveExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_B_RSZSHIFT, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_B_RSZSHIFT, $1, $3); }
+ 	;
+ 
+ AdditiveExpression:
+ 	  MultiplicativeExpression
+ 	| AdditiveExpression '+' MultiplicativeExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_ADD, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_ADD, $1, $3); }
+ 	| AdditiveExpression '-' MultiplicativeExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_SUB, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_SUB, $1, $3); }
+ 	;
+ 
+ MultiplicativeExpression:
+ 	  UnaryExpression
+ 	| MultiplicativeExpression '*' UnaryExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_MUL, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_MUL, $1, $3); }
+ 	| MultiplicativeExpression '/' UnaryExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_DIV, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_DIV, $1, $3); }
+ 	| MultiplicativeExpression tIDIV UnaryExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_IDIV, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_IDIV, $1, $3); }
+ 	| MultiplicativeExpression '%' UnaryExpression
+-		{ $$ = ws_expr_binary(pctx, @2.first_line, WS_ASM_REM, $1, $3); }
++		{ $$ = ws_expr_binary(compiler, @2.first_line, WS_ASM_REM, $1, $3); }
+ 	;
+ 
+ UnaryExpression:
+ 	  PostfixExpression
+ 	| tTYPEOF UnaryExpression
+-		{ $$ = ws_expr_unary(pctx, @1.first_line, WS_ASM_TYPEOF, $2); }
++		{ $$ = ws_expr_unary(compiler, @1.first_line, WS_ASM_TYPEOF, $2); }
+ 	| tISVALID UnaryExpression
+-		{ $$ = ws_expr_unary(pctx, @1.first_line, WS_ASM_ISVALID, $2); }
++		{ $$ = ws_expr_unary(compiler, @1.first_line, WS_ASM_ISVALID, $2); }
+ 	| tPLUSPLUS tIDENTIFIER
+-		{ $$ = ws_expr_unary_var(pctx, @1.first_line, WS_TRUE, $2); }
++		{ $$ = ws_expr_unary_var(compiler, @1.first_line, WS_TRUE, $2); }
+ 	| tMINUSMINUS tIDENTIFIER
+-		{ $$ = ws_expr_unary_var(pctx, @1.first_line, WS_FALSE, $2); }
++		{ $$ = ws_expr_unary_var(compiler, @1.first_line, WS_FALSE, $2); }
+ 	| '+' UnaryExpression
+ 		{
+                     /* There is no direct way to compile unary `+'.
+@@ -638,65 +634,65 @@
+                      * because binary `+' accepts strings, which makes the
+ 		     * type conversion different.
+                      */
+-                    $$ = ws_expr_binary(pctx, @1.first_line, WS_ASM_SUB, $2,
+-                              ws_expr_const_integer(pctx, @1.first_line, 0));
++                    $$ = ws_expr_binary(compiler, @1.first_line, WS_ASM_SUB, $2,
++                              ws_expr_const_integer(compiler, @1.first_line, 0));
+ 		}
+ 	| '-' UnaryExpression
+-		{ $$ = ws_expr_unary(pctx, @1.first_line, WS_ASM_UMINUS, $2); }
++		{ $$ = ws_expr_unary(compiler, @1.first_line, WS_ASM_UMINUS, $2); }
+ 	| '~' UnaryExpression
+-		{ $$ = ws_expr_unary(pctx, @1.first_line, WS_ASM_B_NOT, $2); }
++		{ $$ = ws_expr_unary(compiler, @1.first_line, WS_ASM_B_NOT, $2); }
+ 	| '!' UnaryExpression
+-		{ $$ = ws_expr_unary(pctx, @1.first_line, WS_ASM_NOT, $2); }
++		{ $$ = ws_expr_unary(compiler, @1.first_line, WS_ASM_NOT, $2); }
+ 	;
+ 
+ PostfixExpression:
+ 	  CallExpression
+ 	| tIDENTIFIER tPLUSPLUS
+-		{ $$ = ws_expr_postfix_var(pctx, @1.first_line, WS_TRUE, $1); }
++		{ $$ = ws_expr_postfix_var(compiler, @1.first_line, WS_TRUE, $1); }
+ 	| tIDENTIFIER tMINUSMINUS
+-		{ $$ = ws_expr_postfix_var(pctx, @1.first_line, WS_FALSE, $1); }
++		{ $$ = ws_expr_postfix_var(compiler, @1.first_line, WS_FALSE, $1); }
+ 	;
+ 
+ CallExpression:
+ 	  PrimaryExpression
+ 	| tIDENTIFIER Arguments                 /* LocalScriptFunctionCall */
+ 		{
+-		    WsFunctionHash *f = ws_function_hash(pctx, $1);
++		    WsFunctionHash *f = ws_function_hash(compiler, $1);
+ 
+ 		    /* Add an usage count for the local script function. */
+ 		    if (f)
+ 		      f->usage_count++;
+ 
+-		    $$ = ws_expr_call(pctx, @1.first_line, ' ', NULL, $1, $2);
++		    $$ = ws_expr_call(compiler, @1.first_line, ' ', NULL, $1, $2);
+ 		}
+ 	| tIDENTIFIER '#' tIDENTIFIER Arguments /* ExternalScriptFunctionCall*/
+-		{ $$ = ws_expr_call(pctx, @3.first_line, '#', $1, $3, $4); }
++		{ $$ = ws_expr_call(compiler, @3.first_line, '#', $1, $3, $4); }
+ 	| tIDENTIFIER '.' tIDENTIFIER Arguments /* LibraryFunctionCall */
+-		{ $$ = ws_expr_call(pctx, @3.first_line, '.', $1, $3, $4); }
++		{ $$ = ws_expr_call(compiler, @3.first_line, '.', $1, $3, $4); }
+ 	;
+ 
+ PrimaryExpression:
+ 	  tIDENTIFIER
+-		{ $$ = ws_expr_symbol(pctx, @1.first_line, $1); }
++		{ $$ = ws_expr_symbol(compiler, @1.first_line, $1); }
+ 	| tINVALID
+-		{ $$ = ws_expr_const_invalid(pctx, @1.first_line); }
++		{ $$ = ws_expr_const_invalid(compiler, @1.first_line); }
+ 	| tTRUE
+-		{ $$ = ws_expr_const_true(pctx, @1.first_line); }
++		{ $$ = ws_expr_const_true(compiler, @1.first_line); }
+ 	| tFALSE
+-		{ $$ = ws_expr_const_false(pctx, @1.first_line); }
++		{ $$ = ws_expr_const_false(compiler, @1.first_line); }
+ 	| tINTEGER
+-		{ $$ = ws_expr_const_integer(pctx, @1.first_line, $1); }
++		{ $$ = ws_expr_const_integer(compiler, @1.first_line, $1); }
+ 	| tFLOAT
+-		{ $$ = ws_expr_const_float(pctx, @1.first_line, $1); }
++		{ $$ = ws_expr_const_float(compiler, @1.first_line, $1); }
+ 	| tSTRING
+-		{ $$ = ws_expr_const_string(pctx, @1.first_line, $1); }
++		{ $$ = ws_expr_const_string(compiler, @1.first_line, $1); }
+ 	| '(' Expression ')'
+ 		{ $$ = $2; }
+ 	;
+ 
+ Arguments:
+ 	  '(' ')'
+-		{ $$ = ws_list_new(pctx); }
++		{ $$ = ws_list_new(compiler); }
+ 	| '(' ArgumentList ')'
+ 		{ $$ = $2; }
+ 	;
+@@ -704,17 +700,17 @@
+ ArgumentList:
+ 	  AssignmentExpression
+ 		{
+-		    $$ = ws_list_new(pctx);
+-		    ws_list_append(pctx, $$, $1);
++		    $$ = ws_list_new(compiler);
++		    ws_list_append(compiler, $$, $1);
+ 		}
+ 	| ArgumentList ',' AssignmentExpression
+-		{ ws_list_append(pctx, $1, $3); }
++		{ ws_list_append(compiler, $1, $3); }
+ 	;
+ 
+ %%
+ 
+ void
+-yyerror(char *msg)
++yyerror(YYLTYPE* locp, WsCompiler* compiler, const char* msg)
+ {
+ #if WS_DEBUG
+   fprintf(stderr, "*** %s:%ld: wsc: %s - this msg will be removed ***\n",
+diff -ur gateway-1.4.5.orig/wmlscript/wsint.h gateway-1.4.5/wmlscript/wsint.h
+--- gateway-1.4.5.orig/wmlscript/wsint.h	2018-01-17 04:24:38.000000000 -0500
++++ gateway-1.4.5/wmlscript/wsint.h	2018-08-17 15:45:26.000000000 -0500
+@@ -269,9 +269,6 @@
+ 
+ /********************* Lexer and parser *********************************/
+ 
+-#define YYPARSE_PARAM   pctx
+-#define YYLEX_PARAM     pctx
+-
+ /* The lexer. */
+ extern int yylex();
+ 
+@@ -293,6 +290,6 @@
+ void ws_lexer_free_utf8(WsCompiler *compiler, WsUtf8String *string);
+ 
+ /* The parser. */
+-int ws_yy_parse(void *context);
++int ws_yy_parse(WsCompiler* compiler);
+ 
+ #endif /* not WSINT_H */
+diff -ur gateway-1.4.5.orig/wmlscript/wslexer.c gateway-1.4.5/wmlscript/wslexer.c
+--- gateway-1.4.5.orig/wmlscript/wslexer.c	2018-01-17 04:24:38.000000000 -0500
++++ gateway-1.4.5/wmlscript/wslexer.c	2018-08-17 15:15:28.000000000 -0500
+@@ -218,9 +218,8 @@
+ 
+ /********************* Global functions *********************************/
+ 
+-int ws_yy_lex(YYSTYPE *yylval, YYLTYPE *yylloc, void *context)
++int ws_yy_lex(YYSTYPE *yylval, YYLTYPE *yylloc, WsCompiler* compiler)
+ {
+-    WsCompiler *compiler = (WsCompiler *) context;
+     WsUInt32 ch, ch2;
+     WsBuffer buffer;
+     unsigned char *p;
