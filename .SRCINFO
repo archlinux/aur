@@ -1,0 +1,14 @@
+pkgbase = libfes
+	pkgdesc = A software library devoted to solving systems of polynomial equations over F2
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://www.lifl.fr/~bouillag/fes/
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	depends = glibc
+	source = https://bitbucket.org/fes/fes/downloads/fes-0.2.spkg
+	sha256sums = e85db060a1ca63bc6ed9ace9cb213dd76875c91da54e202ec8c207717ee98ef8
+
+pkgname = libfes
+
