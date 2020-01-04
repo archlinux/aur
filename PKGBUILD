@@ -1,6 +1,6 @@
 # Maintainer: PAPPY <pappy _AT_ a s c e l i o n _DOT_ com>
 
-_version=3.19.1
+_version=3.20.1
 _patch=01
 
 pkgname=nexus-oss
@@ -27,14 +27,14 @@ source=("https://sonatype-download.global.ssl.fastly.net/repository/repositoryMa
 		"$pkgname.vmoptions"
 		"pref_jre.cfg"
 		)
-sha256sums=('7a2e62848abeb047c99e114b3613d29b4afbd635b03a19842efdcd6b6cb95f4e'
+sha256sums=('fba9953e70e2d53262d2bd953e5fbab3e44cf2965467df14a665b0752de30e51'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
             '0c8003d478cf12115e236e7e25ce86cd9f1a6f9c8d1c8e41ed17156c8f6d2d08'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
             '3670748854d3f05623c9a8826605c3e2a97c7b3955104e74b5eed00ed17299c1'
             '77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef'
             '32bfa3f82038f89d2f7140eada1faadf416ae835d5e5cb0573c528398249a63e'
-            '70ea18f8567b7368c5799141e5f1cd0ca7658d6e4a4d29c52a9288446c7cf341'
+            'fd037f3d4c75763f3f4ed2b1993984eefc13dff7490a056b76b029df162bc93b'
             '55fb2aeb4eb3f54c59963870cf43bf5a898a014826d530bf37729fc5e2bc2463')
 
 install=$pkgname.install
