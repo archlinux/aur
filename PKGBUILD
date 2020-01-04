@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kmdr-cli
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="The CLI tool for explaining commands from your terminal"
 arch=('any')
@@ -11,11 +11,15 @@ makedepends=('npm' 'jq')
 provides=("${pkgname%-cli}")
 conflicts=("${pkgname%-cli}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ediardo/kmdr-cli/archive/v$pkgver.tar.gz")
-sha256sums=('0f4c5ce1d95b038274a06f3f8c434b002d1bf55814f149cdaa17dfb9b2ad0f07')
+sha256sums=('5b764675321eac2f8e8c25a686b5201a49a05cd3196bc7f30757e67a52bbbc0b')
 
 package() {
 	cd "$pkgname-$pkgver"
-	npm install kmdr@latest --cache "$srcdir/npm-cache" -g --user root --prefix "$pkgdir"/usr
+	npm install kmdr@latest \
+		--cache "$srcdir/npm-cache" \
+		-g \
+		--user root \
+		--prefix "$pkgdir"/usr
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
@@ -31,5 +35,5 @@ package() {
 	mv "$tmppackage" "$pkgjson"
 	chmod 644 "$pkgjson"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
