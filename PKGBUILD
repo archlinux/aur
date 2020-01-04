@@ -13,9 +13,23 @@ makedepends=(
 	'cmake'
 	'git'
 	'python'
+	'vulkan-headers'
+	'glslang'
+	'gtest'
 )
 depends=(
 	'sdl2'
+	'capstone'
+	'spdlog'
+	'unicorn'
+	'yaml-cpp'
+	'pugixml'
+	'ffmpeg'
+	'vulkan-icd-loader'
+	'elfio'
+	'stb'
+	'discord-rpc-api'
+	'spirv-cross'
 )
 provides=('vita3k')
 conflicts=('vita3k')
