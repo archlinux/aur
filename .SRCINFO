@@ -1,0 +1,16 @@
+pkgbase = tailwind-css
+	pkgdesc = A utility-first CSS framework for rapid UI development
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://tailwindcss.com/
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = tailwindcss-1.1.4.tgz
+	options = !strip
+	source = https://registry.npmjs.org/tailwindcss/-/tailwindcss-1.1.4.tgz
+	sha256sums = 36f0c12855ae8378eaa1d610b91e25ecfc798209ecb4d74245dac038ba48b9ba
+
+pkgname = tailwind-css
+
