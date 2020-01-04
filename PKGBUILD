@@ -2,15 +2,15 @@
 
 _basename=gupnp
 pkgname=lib32-gupnp
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="An object-oriented UPNP framework (32-bit)"
 arch=(x86_64)
 url="https://wiki.gnome.org/Projects/GUPnP"
 license=(LGPL)
 depends=(lib32-gssdp gupnp)
 makedepends=(git gobject-introspection meson vala)
-_commit=b9f76cada1038be75963593ad783d88d9446fce6  # tags/gupnp-1.2.1^0
+_commit=76f6a78e99f4a4e80f31678ba99e8068131c79ff  # tags/gupnp-1.2.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=$_commit")
 sha256sums=('SKIP')
 
