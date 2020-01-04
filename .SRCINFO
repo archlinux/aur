@@ -1,13 +1,13 @@
 pkgbase = navi
 	pkgdesc = An interactive cheatsheet tool for the command-line
-	pkgver = 0.15.3
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/denisidoro/navi
 	arch = any
 	license = AGPL-3.0
 	depends = fzf
-	source = https://github.com/denisidoro/navi/archive/v0.15.3.tar.gz
-	sha512sums = 875785e9afb41e6bcc94e1da0bac8a50bd688ef36273194d721e38351bec3c8a13ed879e14aed367ccefcbdb54f3fcc00448c46fdcab9f82933ee7e3a6eae46c
+	source = https://github.com/denisidoro/navi/archive/v0.17.0.tar.gz
+	sha512sums = a8c25ea8ecb581719934ec717c9697f1a2f7e764c97f36383c55dc99fd8f464b1e759b02e9394393a9296b7b76a980e96042242591596762cd72687de8ee7e60
 
 pkgname = navi
 
