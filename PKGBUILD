@@ -2,7 +2,7 @@
 
 pkgname=python-pynamodb
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
 url='https://pynamodb.readthedocs.io/'
@@ -30,6 +30,7 @@ check() {
 package() {
   cd PynamoDB-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  rm -rv "$pkgdir"/usr/lib/python*/site-packages/tests
 
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
