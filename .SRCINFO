@@ -1,0 +1,14 @@
+pkgbase = python-cryptomobile
+	pkgdesc = This toolkit implements python wrappers around 3G and LTE encryption and integrity protection algorithms, COMP128, Milenage and TUAK authentication algorithms.
+	pkgver = r26.c17b23a
+	pkgrel = 1
+	url = https://github.com/P1sec/CryptoMobile
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	source = pycrate::git+https://github.com/P1sec/CryptoMobile#branch=master
+	md5sums = SKIP
+
+pkgname = python-cryptomobile
+
