@@ -1,0 +1,18 @@
+pkgbase = pomotroid-bin
+	pkgdesc = Simple and visually-pleasing Pomodoro timer
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/Splode/pomotroid
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	noextract = pomotroid-bin-0.6.2.AppImage
+	options = !strip
+	source_x86_64 = pomotroid-bin-0.6.2.AppImage::https://github.com/Splode/pomotroid/releases/download/v0.6.2/pomotroid-0.6.2-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/Splode/pomotroid/master/LICENSE
+	md5sums_x86_64 = eb5320db172dcc6f8fd4038fbf0089b7
+	md5sums_x86_64 = 98368ac76439a0812a58d0a586b28ed1
+
+pkgname = pomotroid-bin
+
