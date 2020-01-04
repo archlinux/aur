@@ -31,7 +31,6 @@ depends=(
 	'elfio'
 	'stb'
 	'discord-rpc-api'
-	'spirv-cross'
 )
 provides=('vita3k')
 conflicts=('vita3k')
@@ -52,6 +51,7 @@ source=(
 	"git+https://github.com/google/googletest.git"
 	"git+https://github.com/Vita3K/shaders-db.git"
 	"git+https://github.com/KhronosGroup/glslang.git"
+	"git+https://github.com/vita3k/SPIRV-Cross.git"
 	"git+https://github.com/Vita3K/ext-boost.git"
 	"git+https://github.com/Vita3K/dlmalloc.git"
 	"git+https://github.com/vita3k/printf.git"
@@ -66,6 +66,7 @@ source=(
 	"git+https://github.com/Vita3K/libfat16.git"
 )
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -119,6 +120,7 @@ prepare() {
 	git config submodule.src/external/googletest.url "${srcdir}/googletest"
 	git config submodule.src/external/shaders-db.url "${srcdir}/shaders-db"
 	git config submodule.src/external/glslang.url "${srcdir}/glslang"
+	git config submodule.src/external/SPIRV-Cross.url "${srcdir}/SPIRV-Cross"
 	git config submodule.src/external/boost.url "${srcdir}/ext-boost"
 	git config submodule.src/external/dlmalloc.url "${srcdir}/dlmalloc"
 	git config submodule.src/external/printf.url "${srcdir}/printf"
