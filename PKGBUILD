@@ -11,7 +11,7 @@ depends=('pass')
 optdepends=('rofi: Use rofi to present choices.'
             'fzf: Use fzf to present choices.')
 source=(https://github.com/ibizaman/pass-clip/archive/v${pkgver}.tar.gz)
-sha512sums=('c2c0b3090e3b443e57fd5161d4705be3e676968928fca285d5c0bb21cb64d719e7b409e83fe298408216f348c3d0ea9a5f786f50f009bfe18ca19e75af8a13b6')
+sha512sums=('8c6058f3e7186dd622fb44139ea9a7b6ab9da4c4eb5ccf8eee10ccc2c388512c0ff21fc622d59d880c088ee80d9c5fd742f625f1747c9c77115dd39aecf363bb')
 
 package() {
   cd "${srcdir}/pass-clip-$pkgver/"
