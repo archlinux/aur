@@ -2,7 +2,7 @@
 
 pkgname=glib2-static
 pkgver=2.62.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
@@ -12,7 +12,7 @@ makedepends=(gettext zlib libffi shared-mime-info python libelf git util-linux m
 checkdepends=(desktop-file-utils)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
 source=(https://gitlab.gnome.org/GNOME/glib/-/archive/$pkgver/glib-$pkgver.tar.gz)
-sha256sums=(4cdd62797dcf112a6be53fe88a8343994691c37e7b65f1ec5b1a02b65ed3adc6)
+sha256sums=(479ae4d3e37123765c4e850a99bf4846008e7141446118250f5f017d988e7a81)
 
 build() {
   arch-meson "glib-$pkgver" _build \
