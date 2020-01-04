@@ -1,6 +1,6 @@
 # Maintainer: Niels Sonnich Poulsen <niels@nielssp.dk>
 pkgname=csol
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A small collection of ncurses-based solitaire/patience games."
 url="https://github.com/nielssp/csol"
@@ -13,7 +13,7 @@ replaces=()
 backup=()
 install=
 source=("https://github.com/nielssp/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('34884b95ac5bfa2588f9c5d93172aa41')
+md5sums=('f8dcd5042805d2c186e56fab5bdb22fb')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
