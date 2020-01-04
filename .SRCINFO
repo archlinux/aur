@@ -1,5 +1,5 @@
 pkgbase = picom-tryone-git
-	pkgdesc = X compositor (fork of compton) (git-version)
+	pkgdesc = tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)
 	pkgver = 1298_0.1_beta2.949.gf92eb6b_2019.12.21
 	pkgrel = 1
 	url = https://github.com/tryone144/compton
