@@ -3,16 +3,18 @@
 
 pkgname=kannel
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!"
 arch=('any')
 license=('custom')
 url="https://kannel.org/"
 install=kannel.install
 depends=('bison' 'libxml2')
-# conflicts=('bison')
+makedepends=('mariadb' 'postgresql' 'sqlite' 'hiredis')
 optdepends=('mariadb: MySQL database backend'
-            'sqlite: SQLite3 database backend')
+            'postgresql: database backend'
+            'sqlite: SQLite3 database backend'
+            'hiredis')
 groups=('base-devel')
 source=("https://kannel.org/download/${pkgver}/gateway-${pkgver}.tar.gz"
         kannel.conf
@@ -41,7 +43,9 @@ prepare()
 
 build() {
   cd ${srcdir}/gateway-${pkgver}
-  ./configure --prefix=/usr/bin --mandir=/usr/share/man --enable-start-stop-daemon
+  ./configure --prefix=/usr --mandir=/usr/share/man --enable-start-stop-daemon --with-mysql --with-sqlite3 --with-pgsql --with-redis
+  make libgw.a
+  make libgwlib.a
   make
 }
 
@@ -64,7 +68,7 @@ package() {
   install -Dm644 kannel.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/kannel.conf"
 
   cd gateway-${pkgver}
-  make DESTDIR=${pkgdir} install install-test install-checks install-contrib install-docs
+  make DESTDIR=${pkgdir} install
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
