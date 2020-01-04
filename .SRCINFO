@@ -1,7 +1,7 @@
 pkgbase = python-telepot-git
 	pkgdesc = telepot protocol implementation for Python
-	pkgver = r389.aad059b
-	pkgrel = 1
+	pkgver = r431.4bfe4ee
+	pkgrel = 2
 	url = https://github.com/nickoala/telepot
 	arch = any
 	license = MIT

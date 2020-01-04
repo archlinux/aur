@@ -1,16 +1,13 @@
 pkgbase=python-telepot-git
 pkgname=("python-telepot-git" "python2-telepot-git")
 _reponame="telepot"
-pkgver=r389.aad059b
-pkgrel=1
+pkgver=r431.4bfe4ee
+pkgrel=2
 pkgdesc="telepot protocol implementation for Python"
 arch=('any')
 license=('MIT')
 url="https://github.com/nickoala/${_reponame}"
-depends=('')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
-provides=("")
-conflicts=("")
 source=("${_reponame}"::"git+https://github.com/nickoala/${_reponame}")
 sha512sums=('SKIP')
 
