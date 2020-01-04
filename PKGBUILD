@@ -3,7 +3,7 @@
 
 pkgname=gurobi
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
@@ -71,6 +71,7 @@ package_gurobi() {
   install -Dt "${pkgdir}/usr/lib/" lib/*.so*
   install -Dm644 -t "${pkgdir}/usr/lib/" lib/*.a
   ln -sf ./libgurobi.so.9.0.0 "${pkgdir}/usr/lib/libgurobi900.so"
+  ln -sf ./libgurobi.so.9.0.0 "${pkgdir}/usr/lib/libgurobi.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python setup.py install --root="$pkgdir" --optimize=1

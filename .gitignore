@@ -1,0 +1,4 @@
+# Package src/pkg archives, downloaded sources
+gurobi*.tar*
+pkg/
+src/

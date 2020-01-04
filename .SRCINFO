@@ -1,7 +1,7 @@
 pkgbase = gurobi
 	pkgdesc = State-of-the-art solver for mathematical programming
 	pkgver = 9.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gurobi.com/products/gurobi-optimizer
 	arch = x86_64
 	license = custom
