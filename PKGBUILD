@@ -2,7 +2,7 @@
 
 pkgname=siddasm
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Written by Gufino, this program produces disassembler output of .SID music files, so that you'll be able to see the musicroutine code."
 arch=('i686' 'x86_64')
 url="http://cadaver.homeftp.net/tools.htm"
@@ -10,6 +10,7 @@ source=(https://cadaver.github.io/tools/siddasm1.tar.gz)
 license=('custom')
 provides=("$pkgname")
 makedepends=('gcc')
+sha256sums=('2618b5596195f0bdb04ec914cb41fef0b43520ad1a386b22aa00387d48894c76')
 
 build() {
   cd "$srcdir"
