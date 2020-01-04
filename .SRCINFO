@@ -1,0 +1,15 @@
+pkgbase = python-itertools-len
+	pkgdesc = Wrapper around the stdlib’ itertools with len() support
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/flying-sheep/itertools-len
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-get_version
+	noextract = itertools_len-1.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/i/itertools-len/itertools_len-1.0-py3-none-any.whl
+	sha256sums = 17c85cb54f831487e8ad18e4c7dc20c3d0f2a0b24ecce336e613f714394b7b72
+
+pkgname = python-itertools-len
+
