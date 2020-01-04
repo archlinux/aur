@@ -7,7 +7,7 @@ pkgdesc="The Symfony client helps developers create and manage Symfony applicati
 url="https://symfony.com/"
 arch=('x86_64')
 license=('MIT')
-install=''
+install="${pkgname}.install"
 source=(
     "https://github.com/symfony/cli/releases/download/v${pkgver}/symfony_linux_amd64.gz"
 )
@@ -15,5 +15,4 @@ sha256sums=('f89cc5c8b56ae44d8c1334f91cea9068d80a5c870b9c80a4e396dbab6b13de98')
 
 package() {
     install -D -m 755 "${srcdir}/symfony_linux_amd64" "${pkgdir}/usr/bin/symfony"
-    ${pkgdir}/usr/bin/symfony self:shell-setup --silent
 }
