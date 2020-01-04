@@ -1,7 +1,7 @@
 pkgbase = xygrib
 	pkgdesc = Grib reader and weather visualization software. Zygrib fork.
 	pkgver = 1.2.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opengribs.org/
 	arch = x86_64
 	arch = aarch64
