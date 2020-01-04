@@ -1,7 +1,7 @@
 #Maintainer: Kočmaroš Karolj <karlosmunjos at gmail dot com>
 
 pkgname=svr
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Application for renaming videos and subtitles"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 install=${pkgname}.install
 depends=('qt5-base>=5.2' 'zlib')
 source=(${pkgname}-${pkgver}.zip::"http://master.dl.sourceforge.net/project/subvidrenamer/source/${pkgver}/svr.zip")
-sha256sums=('7a2473ef7476b22d0ea25fb13061b26519f21c6462c0aad3a1201bc3e4596ff8')
+sha256sums=('c6f7e3729e0f7bb0c2bba1fbf275b211fba87ea65ac8aad511cdec24885992ea')
 
 build() 
 {
