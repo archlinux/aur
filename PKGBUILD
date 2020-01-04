@@ -60,7 +60,7 @@ source=(
 	'git+https://github.com/chardet/chardet.git'
 	'git+https://github.com/davidhalter/jedi.git'
 	'git+https://github.com/davidhalter/parso.git'
-  'git+https://github.com/davidhalter/typeshed.git'
+	'git+https://github.com/davidhalter/typeshed.git'
 	'git+https://github.com/kjd/idna.git'
 	'git+https://github.com/micbou/regex.git'
 	'git+https://github.com/Pylons/waitress.git'
@@ -131,7 +131,7 @@ prepare() {
 
 		if [[ "$jdtls_milestone" != "" ]] && [[ "$jdtls_buildstamp" != "" ]]; then
 			local jdtls_full_url="http://download.eclipse.org/jdtls/snapshots/${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz"
-      echo "JDTLS package version matched. Downloading... ${jdtls_full_url}"
+			echo "JDTLS package version matched. Downloading... ${jdtls_full_url}"
 			curl -LO "${jdtls_full_url}"
 			tar xf ${jdtls_package_name}-${jdtls_milestone}-${jdtls_buildstamp}.tar.gz
 		else
@@ -156,9 +156,9 @@ prepare() {
 
 	local ycmdRequestsDeps=("python-certifi" "chardet" "idna" "requests" "urllib3")
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/requests_deps" "${ycmdRequestsDeps[@]}"
-  
-  local jedi=("typeshed")
-  gitprepare "YouCompleteMe/third_party/ycmd/third_party/jedi_deps/jedi" "jedi/third_party/" "${jedi[@]}"
+
+	local jedi=("typeshed")
+	gitprepare "YouCompleteMe/third_party/ycmd/third_party/jedi_deps/jedi" "jedi/third_party/" "${jedi[@]}"
 
 	if [[ "$_gocode" == "y" ]]; then
 		ycmd+=("go-completer")
@@ -186,7 +186,7 @@ build() {
 	echo 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
-	cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+	cmake -G "Unix Makefiles" -DUSE_PYTHON2=OFF -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
 	if [[ "$_gocode" == "y" ]]; then
