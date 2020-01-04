@@ -3,13 +3,13 @@
 pkgname=rlottie-tdesktop
 _pkgname=rlottie
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform independent standalone library that plays Lottie Animation (tdesktop fork)"
 arch=(x86_64)
 url="https://github.com/desktop-app/rlottie"
 license=(LGPL2.1)
 depends=(gcc-libs)
-makedepends=(meson)
+makedepends=(cmake ninja)
 conflicts=(rlottie)
 provides=(rlottie)
 _commit="c490c7a098b9b3cbc3195b00e90d6fc3989e2ba2"
@@ -18,8 +18,8 @@ sha512sums=('7da1a9bb6b02de85cba24bba58d81fb0f8c54eeace24454ac7337c8be63a9314a79
 
 build() {
 	cd "$srcdir/${_pkgname}-${_commit}"
-	arch-meson build
-	ninja -C build
+	cmake -G Ninja . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cmake --build .
 }
 
 package() {
