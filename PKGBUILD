@@ -40,6 +40,4 @@ build() {
 package() {
   cd "${srcdir}/plex-media-player/build"
   DESTDIR="${pkgdir}" make install
-  install -Dm644 ../resources/desktop/plexmediaplayer.desktop "${pkgdir}/usr/share/applications/plexmediaplayer.desktop"
-  install -Dm644 ../resources/images/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/plex-media-player.png"
 }
