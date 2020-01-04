@@ -1,7 +1,7 @@
 pkgbase = python-pycrate
 	pkgdesc = Python library for manipulating various digital formats in an easy way.
 	pkgver = 0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/P1sec/pycrate
 	arch = any
 	license = LGPL2.1

@@ -1,7 +1,7 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
 pkgname='python-pycrate'
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library for manipulating various digital formats in an easy way."
 arch=(any)
 conflicts=("python-pycrate-git")
