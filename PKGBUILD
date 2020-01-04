@@ -1,22 +1,28 @@
 # Maintainer: BrainDamage
 pkgname="libsixel"
-pkgrel=2
-stripped_ver="1.8.2"
-pkgver="v$stripped_ver"
+pkgrel=1
+pkgver="v1.8.5"
 pkgdesc="libsixel provides and encoder/decoder implementation for DEC SIXEL graphics, and some converter programs"
 arch=("i686" "x86_64")
 url="https://saitoha.github.io/libsixel/"
 license=("MIT")
 depends=("libjpeg-turbo" "libpng" "python" "curl")
-sha256sums=('c464d2a6fcf35e9e6bad1876729e853a8b9f6abfe97d9e3487c9bfac45cf2a5f')
-source=("https://github.com/saitoha/libsixel/archive/$pkgver.tar.gz")
+sha256sums=('682ef295eb93f262db7d77b3a5e8ffcb6e3f5a9fc864d1a21cc5cd3c347a4b0e')
+source=("https://github.com/saitoha/libsixel/archive/${pkgver}.tar.gz")
 
 build() {
-	cd "libsixel-$stripped_ver"
-	./configure --prefix=/usr --enable-python
+	cd "${srcdir}/${pkgname}-${pkgver#v}"
+	./configure --prefix=/usr --enable-python --enable-tests
+	make
 }
 
 package() {
-	cd "libsixel-$stripped_ver"
-	make DESTDIR="$pkgdir" install
+	cd "${srcdir}/${pkgname}-${pkgver#v}"
+	make DESTDIR="${pkgdir}" install
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/libsixel/LICENSE"
+}
+
+check() {
+	cd "${srcdir}/${pkgname}-${pkgver#v}"
+	make test
 }
