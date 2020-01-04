@@ -1,9 +1,8 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard
-_pkgbase=tuxedo-keyboard
 pkgver=2.0.0
-pkgrel=8
+pkgrel=10
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
 license=("GPL")
@@ -12,12 +11,15 @@ makedepends=('gcc' 'make')
 depends=('git' 'dkms' 'linux-headers')
 conflicts=('tuxedo-keyboard-dkms' 'tuxedo-wmi' 'tuxedo-wmi-dkms')
 replaces=('tuxedo-keyboard-dkms')
-source=('git+https://github.com/tuxedocomputers/tuxedo-keyboard.git' 'tuxedo_keyboard.conf')
-sha256sums=('SKIP' '612dd06a393cb59321dc8c0e055b2662938e4a492538483ceabbbc9e4f274e49')
-sha512sums=('SKIP' '314dce8cba9d09f16d4fa128e909bfa782e10566c97c8a5de3ad253ca76a4fd72001fd5f9e36cc926d010b829b6a88b10ca196fd941e288996949fb8200e712c')
-install="${pkgname}.install"
+source=('git+https://github.com/tuxedocomputers/tuxedo-keyboard.git' 'tuxedokeyboard.conf')
+sha256sums=('SKIP' 'd22aadf76a400f38ddee7ce2fd7f8b14694bf1d402bfbb99e65133d122ccb0f8')
+sha512sums=('SKIP' '8aef78240aacf4a5c15cfb648400750a17db3203d230d6a1f8a84b1db71f0bd0d65251690f6290d8707b771cf74c6f008b82c65b00220e8d3fa70153be65ade6')
+install="tuxedo-keyboard.install"
 package() {
-  install -D "${srcdir}/${pkgname}/dkms.conf" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-  install -D "${srcdir}/tuxedo_keyboard.conf" "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
-  cp -r "${srcdir}/${_pkgbase}"/* "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+  mkdir -p "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+  cp -r "${srcdir}/${pkgname}"/* "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+  install -D "${srcdir}/${pkgname}/dkms.conf" "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
+  echo "Copy tuxedo_keyboard.conf to /etc/modprobe.d/tuxedo_keyboard.conf"
+  install -Dm644 "${srcdir}/${pkgname}/tuxedo_keyboard.conf" "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
+  install -Dm644 ${srcdir}/tuxedokeyboard.conf ${pkgdir}/etc/modules-load.d/${pkgname}.conf
 }
