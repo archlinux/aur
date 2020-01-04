@@ -3,14 +3,13 @@
 # Contributor: Jason Lenz <Jason@Lenzplace.org>
 _pkgname=oscar
 pkgname=oscar-git
-pkgver=1.0.r2504.545d48af
+pkgver=1.1.r3041.3be691f2
 pkgrel=1
 pkgdesc="Open-source, cross platform, sleep tracking software with a focus on monitoring CPAP treatment. Fork of the sleepyhead project."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/pholy/OSCAR-code"
 license=('GPL')
 depends=(
-  'qt5-tools'
   'qt5-serialport'
 )
 makedepends=(
@@ -35,6 +34,7 @@ pkgver() {
 
 build() {
   cd OSCAR-code
+  git apply ../../permissive.patch
   qmake OSCAR_QT.pro
   make -j$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
 }
@@ -43,6 +43,8 @@ package() {
   install -D $srcdir/OSCAR-code/oscar/OSCAR $pkgdir/usr/bin/oscar
   install -Dm644 $srcdir/OSCAR-code/oscar/icons/logo-lg.png $pkgdir/usr/share/oscar/icon.png
   install -Dm644 $srcdir/oscar.desktop $pkgdir/usr/share/applications/oscar.desktop
+# Where to put translations?
+#  install -dDm644 $srcdir/OSCAR-code/Translations $pkgdir/Translations
 }
 
 # vim:set ts=2 sw=2 et:
