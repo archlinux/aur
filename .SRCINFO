@@ -6,15 +6,10 @@ pkgbase = python-spake2
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
+	depends = python-hkdf
 	source = https://files.pythonhosted.org/packages/source/s/spake2/spake2-0.8.tar.gz
 	md5sums = 0155bad518bb49c39994fe0b7d9fb32c
 
-pkgname = python2-spake2
-	depends = python2
-	depends = python2-hkdf
-
 pkgname = python-spake2
-	depends = python
-	depends = python-hkdf
 
