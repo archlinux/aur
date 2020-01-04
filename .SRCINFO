@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds-olivia
 	pkgdesc = The backgrounds included in Linux Mint 15 Olivia
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-olivia
 	arch = any
 	license = Various
