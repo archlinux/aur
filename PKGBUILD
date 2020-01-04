@@ -2,7 +2,7 @@
 
 pkgdesc='A Nextcloud server app providing digital sticky notes to users.'
 pkgname=('nextcloud-app-carnet')
-pkgver=0.18.5
+pkgver=0.19.1
 pkgrel=1
 arch=('any')
 license=('AGPL')
@@ -11,7 +11,9 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("carnet-nc-${pkgver}.tar.gz::https://github.com/PhieF/CarnetNextcloud/releases/download/v${pkgver}/carnet-nc-v${pkgver}.tar.gz")
-sha256sums=('f7559eaf899c77bceef46451617862bf43f95e77561ff847a95ec119065823f7')
+
+md5sums=('0ff312fa531bec5b1865b716bdfdb11a')
+sha256sums=('19c14e5c9098ec29c57e1bb70bb1545cc9cdf6a2ed09d1887a676ff8ecc13696')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
