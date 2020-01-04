@@ -9,11 +9,12 @@ makedepends=("meson" "scdoc" "git")
 depends=(
   "cairo"
   "gtk3"
+  "pango"
   "wayland"
-  "wayland-protocols"
 )
 optdepends=(
   "libnotify"
+  "wayland-protocols"
 )
 arch=("i686" "x86_64")
 url='http://github.com/jtheoof/swappy'
