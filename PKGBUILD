@@ -1,7 +1,7 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r35
+pkgver=r36
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip")
-md5sums=('f53fb45268d7ad79860901298e99b0b7')
+md5sums=('74510e5f2f7386a5f66181d001b9594b')
 
 package_x16-emulator-bin() {
 	pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
