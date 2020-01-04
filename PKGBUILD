@@ -1,0 +1,39 @@
+# Maintainer: Jelle van der Waa <jelle@archlinux.org
+
+pkgname=taskell
+pkgver=1.9.0.0
+pkgrel=1
+pkgdesc='A command-line kanban board/task manager'
+license=(BSD)
+arch=(x86_64)
+url="https://hackage.haskell.org/package/$pkgname"
+depends=(ghc-libs haskell-aeson haskell-attoparsec haskell-brick haskell-config-ini haskell-file-embed haskell-fold-debounce haskell-http-client haskell-http-conduit haskell-http-types haskell-lens haskell-tz haskell-vty haskell-classy-prelude)
+makedepends=(ghc)
+source=(https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
+sha512sums=('22cf1ed3d46157ccda6391b470d87c28bf6637bc193d758f580a1cf86bbc7b30b0efb19dc63650364cff896757b4869f3e46f0b3118ead62ee732d8e12a8226f')
+
+build() {
+  cd $pkgname-$pkgver
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr --docdir=/usr/share/doc/$pkgname \
+    --datasubdir=$pkgname \
+    --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+    --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+    --ghc-option='-pie'
+  runhaskell Setup build
+  runhaskell Setup register --gen-script
+  runhaskell Setup unregister --gen-script
+  sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+  sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
+}
+
+package() {
+  cd $pkgname-$pkgver
+  runghc Setup.hs copy --destdir="$pkgdir"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Doc only contains the license
+  rm -rf "$pkgdir/usr/share/doc"
+}
+
+# vim: ts=2 sw=2 et:
