@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.9.0a0.r105882.2582d46fbcf
+	pkgver = 3.9.0a0.r106069.e02ab59fdf
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -28,9 +28,7 @@ pkgbase = python-git
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
 	source = git+https://github.com/python/cpython#branch=master
-	source = python-git-issue38692.diff
 	sha512sums = SKIP
-	sha512sums = bb18f476e74d969a16aa4077f01963f551b067d5dbeae80159d663dcf4f8e043f446c4c888388fbe3436d31d29401f6cbcfc74ace9257879e32b0d7731245a47
 
 pkgname = python-git
 
