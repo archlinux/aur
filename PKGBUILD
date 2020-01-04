@@ -37,7 +37,7 @@ md5sums=('b3b467e5edc386771dc40fd549429238'
 
 package() {
     mkdir -p "$pkgdir/usr/lib"
-    cp -r "$srcdir/Petal-$pkgver" "$pkgdir/usr/lib/petal"
+    cp -r "$srcdir/petal-$pkgver" "$pkgdir/usr/lib/petal"
     
     install -Dm755 "$srcdir/petal.sh" "$pkgdir/usr/bin/petal"
     install -Dm644 "$srcdir/Petal.desktop" -t "$pkgdir/usr/share/applications/"
