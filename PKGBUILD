@@ -31,7 +31,6 @@ _tern="y"
 _typescript="y"
 _java="y"
 _use_system_clang="ON"
-_use_python2="OFF"
 
 _neovim="$NEOVIM_YOUCOMPLETEME"
 
@@ -39,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2585.1386c6b3
+pkgver=r2598.6be9ce1d
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -50,7 +49,7 @@ arch=('x86_64')
 url='https://ycm-core.github.io/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('boost' 'boost-libs' 'python' 'python2' 'nodejs' 'vim' 'clang')
+depends=('boost' 'boost-libs' 'python' 'nodejs' 'vim' 'clang')
 optdepends=('rustup: rust language support'
             'omnisharp-roslyn-http-bin: C# language support')
 makedepends=('cmake' 'git' 'make' 'curl')
@@ -187,7 +186,7 @@ build() {
 	echo 'Building ycmd...' # BuildYcmdLibs()
 	mkdir -p "$srcdir/ycmd_build"
 	cd "$srcdir/ycmd_build" || exit
-	cmake -G "Unix Makefiles" -DUSE_PYTHON2=$_use_python2 -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+	cmake -G "Unix Makefiles" -DUSE_SYSTEM_LIBCLANG="$_use_system_clang" . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
 	make ycm_core
 
 	if [[ "$_gocode" == "y" ]]; then
@@ -208,11 +207,7 @@ build() {
 	if [[ "$_tern" == "y" ]]; then
 		echo 'Building Tern completer...'
 		cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/tern_runtime" || exit
-		if [[ "$_use_python2" == "ON" ]]; then
-			npm install --production --python=python2
-		else
-			npm install --production --python=python3
-		fi
+		npm install --production --python=python3
 	else
 		echo 'Skipping Tern completer...'
 	fi
@@ -289,9 +284,5 @@ package() {
 	find "$pkgdir" -name docs -exec rm -fr {} +
 
 	# Finally compile all the python files to bytecode.
-	if [[ "$_use_python2" == "ON" ]]; then
-		python2 -m compileall "$pkgdir" || :
-	else
-		python3 -m compileall "$pkgdir" || :
-	fi
+	python3 -m compileall "$pkgdir" || :
 }
