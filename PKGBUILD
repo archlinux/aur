@@ -2,7 +2,7 @@
 
 pkgname=mint-backgrounds-nadia
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The backgrounds included in Linux Mint 14 Nadia"
 license=('Various')
 arch=('any')
@@ -14,8 +14,8 @@ package() {
   mkdir --parents ${pkgdir}/usr/share/backgrounds/linuxmint-nadia
   mkdir --parents ${pkgdir}/usr/share/{cinnamon-background-properties,gnome-background-properties,mate-background-properties}
 
-  cp --archive ${srcdir}/${pkgname}-1.4/backgrounds/linuxmint-nadia ${pkgdir}/usr/share/backgrounds
-  cp --archive ${srcdir}/${pkgname}-1.4/cinnamon-background-properties/* ${pkgdir}/usr/share/cinnamon-background-properties
-  cp --archive ${srcdir}/${pkgname}-1.4/gnome-background-properties/* ${pkgdir}/usr/share/gnome-background-properties
-  cp --archive ${srcdir}/${pkgname}-1.4/mate-background-properties/* ${pkgdir}/usr/share/mate-background-properties
+  cp --archive ${srcdir}/${pkgname}-${pkgver}/backgrounds/linuxmint-nadia ${pkgdir}/usr/share/backgrounds
+  cp --archive ${srcdir}/${pkgname}-${pkgver}/cinnamon-background-properties/* ${pkgdir}/usr/share/cinnamon-background-properties
+  cp --archive ${srcdir}/${pkgname}-${pkgver}/gnome-background-properties/* ${pkgdir}/usr/share/gnome-background-properties
+  cp --archive ${srcdir}/${pkgname}-${pkgver}/mate-background-properties/* ${pkgdir}/usr/share/mate-background-properties
 }
