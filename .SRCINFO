@@ -1,14 +1,15 @@
 pkgbase = btrustbiss
 	pkgdesc = B-Trust browser independent signing service.
-	pkgver = 2.16
+	pkgver = 2.18
 	pkgrel = 1
 	url = https://www.b-trust.org
 	arch = any
 	license = GPL
 	options = !strip
 	options = !emptydirs
-	source = https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar
-	sha256sums = b786f7094720f1bfcb0789376775ada6cbcdeaf5ad317450fc79a9e5e054e6e0
+	options = !makeflags
+	source = https://www.b-trust.bg/attachments/BtrustPrivateFile/61/docs/Ubuntu-18-04-v-2-18.tar
+	sha256sums = 2d89ff9d9f86e24932f237c9e91fcc560d676befc26e68b96b4ea22b67f91e1e
 
 pkgname = btrustbiss
 

@@ -2,7 +2,7 @@
 # Contributor: ----
 
 pkgname=btrustbiss
-pkgver=2.16
+pkgver=2.18
 pkgrel=1
 pkgdesc="B-Trust browser independent signing service."
 arch=('any')
@@ -10,9 +10,9 @@ url="https://www.b-trust.org"
 license=('GPL')
 groups=()
 backup=('etc/xdg/autostart/btrust_biss.desktop')
-options=('!strip' '!emptydirs')
-source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/24/docs/B-TrustBISS.tar")
-sha256sums=('b786f7094720f1bfcb0789376775ada6cbcdeaf5ad317450fc79a9e5e054e6e0')
+options=('!strip' '!emptydirs' '!makeflags')
+source=("https://www.b-trust.bg/attachments/BtrustPrivateFile/61/docs/Ubuntu-18-04-v-2-18.tar")
+sha256sums=('2d89ff9d9f86e24932f237c9e91fcc560d676befc26e68b96b4ea22b67f91e1e')
 noextract=()
 makedepends=()
 conflicts=()
@@ -22,8 +22,8 @@ backup=()
 package(){
 
      # Extract package
-    tar xvf B-TrustBISS.tar "Ubuntu_18.04 v.2.16"
-    ar xv "Ubuntu_18.04 v.2.16"/btrustbiss.deb
+    tar xvf Ubuntu-18-04-v-2-18.tar
+    ar xv "Ubuntu_18.04 v.2.18/Ubuntu_18.04 v.2.18"/btrustbiss.deb
 
      # Extract package data
     tar Jxf data.tar.xz -C "$pkgdir"
