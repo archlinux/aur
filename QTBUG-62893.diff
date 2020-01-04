@@ -1,0 +1,34 @@
+From 9a640e7bc67b0a1ff5c61c63703b669e6f24521e Mon Sep 17 00:00:00 2001
+From: Laszlo Agocs <laszlo.agocs@qt.io>
+Date: Wed, 26 Apr 2017 03:31:04 -0700
+Subject: eglfs_kms_egldevice: Fix type mess in nativeDisplay() virtual
+
+EGLNativeDisplayType is void* on NVIDIA systems but the backend may get compiled
+on others where it is something else. The function definition does not match
+the proto on these so it is time to correct this.
+
+Change-Id: I569d9f8f3fcba7b2a4672d83606dfdc7bb18a1f0
+Reviewed-by: Johan Helsing <johan.helsing@qt.io>
+---
+ .../deviceintegration/eglfs_kms_egldevice/qeglfskmsegldevice.cpp      | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_egldevice/qeglfskmsegldevice.cpp b/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_egldevice/qeglfskmsegldevice.cpp
+index 0a66a897a1..cca413ff2d 100644
+--- a/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_egldevice/qeglfskmsegldevice.cpp
++++ b/src/plugins/platforms/eglfs/deviceintegration/eglfs_kms_egldevice/qeglfskmsegldevice.cpp
+@@ -77,9 +77,9 @@ void QEglFSKmsEglDevice::close()
+     setFd(-1);
+ }
+ 
+-EGLNativeDisplayType QEglFSKmsEglDevice::nativeDisplay() const
++void *QEglFSKmsEglDevice::nativeDisplay() const
+ {
+-    return reinterpret_cast<EGLNativeDisplayType>(m_devInt->eglDevice());
++    return m_devInt->eglDevice();
+ }
+ 
+ QPlatformScreen *QEglFSKmsEglDevice::createScreen(const QKmsOutput &output)
+-- 
+cgit v1.2.1
+
