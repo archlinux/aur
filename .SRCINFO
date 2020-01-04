@@ -1,15 +1,15 @@
 pkgbase = lib32-faac
 	pkgdesc = An AAC audio encoder (32 bit)
-	pkgver = 1.29.9.2
-	pkgrel = 2
-	url = http://www.audiocoding.com/
+	pkgver = 1.30
+	pkgrel = 1
+	url = https://www.audiocoding.com/
 	arch = x86_64
 	license = GPL2
 	license = custom:FAAC
 	depends = lib32-glibc
 	depends = faac
-	source = http://downloads.sourceforge.net/faac/faac-1.29.9.2.tar.gz
-	sha256sums = d45f209d837c49dae6deebcdd87b8cc3b04ea290880358faecf5e7737740c771
+	source = faac-1.30.tar.gz::https://github.com/knik0/faac/archive/1_30.tar.gz
+	sha256sums = adc387ce588cca16d98c03b6ec1e58f0ffd9fc6eadb00e254157d6b16203b2d2
 
 pkgname = lib32-faac
 

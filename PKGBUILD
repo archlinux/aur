@@ -4,22 +4,24 @@
 
 _basename=faac
 pkgname=lib32-faac
-pkgver=1.29.9.2
-pkgrel=2
+pkgver=1.30
+pkgrel=1
 pkgdesc="An AAC audio encoder (32 bit)"
 arch=(x86_64)
-url="http://www.audiocoding.com/"
+url="https://www.audiocoding.com/"
 license=('GPL2' 'custom:FAAC')
 depends=(lib32-glibc faac)
-source=("http://downloads.sourceforge.net/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha256sums=('d45f209d837c49dae6deebcdd87b8cc3b04ea290880358faecf5e7737740c771')
+source=(${_basename}-${pkgver}.tar.gz::"https://github.com/knik0/faac/archive/${pkgver/./_}.tar.gz")
+sha256sums=('adc387ce588cca16d98c03b6ec1e58f0ffd9fc6eadb00e254157d6b16203b2d2')
 
 build() {
-    cd ${_basename}-${pkgver}
+    cd ${_basename}-${pkgver/./_}
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+    ./bootstrap
 
     ./configure \
         --build=i686-pc-linux-gnu \
@@ -30,11 +32,12 @@ build() {
 }
 
 package() {
-    cd ${_basename}-${pkgver}
+    cd ${_basename}-${pkgver/./_}
 
     make DESTDIR="$pkgdir" install
 
     rm -rf "$pkgdir"/usr/{bin,include,share}
 
-    install -Dm644 README "${pkgdir}"/usr/share/licenses/lib32-faac/LICENSE
+    install -Dm644 "${srcdir}"/${_basename}-${pkgver/./_}/COPYING \
+     "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
