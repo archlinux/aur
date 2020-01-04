@@ -3,8 +3,8 @@
 # Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver
-pkgver=7.4.2
-pkgrel=2
+pkgver=7.4.3
+pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
@@ -15,7 +15,7 @@ depends=('libpng' 'freetype2' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'li
 makedepends=('cfitsio')
 options=()
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('500c44fa1954af0c6a201ff4cae5235b')
+md5sums=('88eba611d0697922edb9c33847e85766')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -34,7 +34,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DPYTHON_EXECUTABLE=/usr/bin/python \
+   	-DPYTHON_EXECUTABLE=/usr/bin/python \
 	-DFRIBIDI_INCLUDE_DIR="/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/fribidi" \
 	-DCMAKE_PREFIX_PATH=/opt/v8 \
     -DWITH_CAIRO=ON \
@@ -57,7 +57,7 @@ build() {
 	-DWITH_MSSQL2008=OFF \
 	-DWITH_MYSQL=OFF \
 	-DWITH_OGR=ON \
-	-DWITH_ORACLESPATIAL=ON \
+	-DWITH_ORACLESPATIAL=OFF \
 	-DWITH_ORACLE_PLUGIN=OFF \
 	-DWITH_PERL=OFF \
 	-DWITH_PHP=OFF \
