@@ -1,0 +1,26 @@
+pkgbase = poac-devel-git
+	pkgdesc = Package manager for C++ like Cargo for Rust (develop branch)
+	pkgver = 0.2.1.r789.83d35eb
+	pkgrel = 1
+	url = https://poac.pm
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = toml11-git
+	depends = libgit2
+	provides = poac-git
+	provides = poac
+	conflicts = poac-git
+	conflicts = poac
+	source = poac-devel-git::git+https://github.com/poacpm/poac.git
+	md5sums = SKIP
+
+pkgname = poac-devel-git
+
