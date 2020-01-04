@@ -1,20 +1,20 @@
 # Maintainer: Arley Henostroza < arllk at gmail dot com >
-# Contributor: Daniel Bermond < gmail-com: danielbermond >
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 
-_svt_hevc_ver='1.4.1'
-_svt_av1_ver='0.6.0'
-_svt_vp9_ver='ce245894c6fc1c5d1439c41a7dda8d6dc61784c4'
+_svt_hevc_ver='1.4.3'
+_svt_av1_ver='0.8.0'
+_svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-intel-full-git
 pkgver=4.3.r95997.g9f7b2b37e3
 pkgrel=1
-pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version)'
+pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
-        'glibc' 'alsa-lib' 'jack' 'libpng'
+        'alsa-lib' 'jack'
         'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'aom'
         'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'codec2'
         'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
@@ -24,18 +24,17 @@ depends=(
         'twolame' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
         'libx264.so'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm'
-        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'svt-av1'
+        'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'svt-av1' 'svt-vp9'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
-        'svt-vp9-git'
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'vmaf' 'opencl-headers'
+        'git' 'nasm' 'opencl-headers' 'clang'
     # AUR:
-        'blackmagic-decklink-sdk'
+        'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
@@ -45,12 +44,12 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/v${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1-with-svt-hevc.patch"
-        "ffmpeg-full-git-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
+        "ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-vp9-with-svt-hevc-av1.patch"
         'LICENSE')
 sha256sums=('SKIP'
-            'd2db0acbdb0773f3883746cd25996905ff0a3f539d9b434fe314f883856ad883'
+            '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '102a70c5c453875f5806ce02cc83fdc74e53c078cf5be2657f3dd1dd4438868c'
+            'efbe348e0dad6b5f9fc501a34ff8304d82c2745ec9ac952e72f8549775c2fe78'
             '7690a4f6bdc4a57e35c7ff5b6e87f2fe6d056d452eff9e767eaccff41832f4d7'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -61,7 +60,7 @@ prepare() {
     git apply --index "${srcdir}/ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"
     patch -Np1 -i     "${srcdir}/ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
     git apply --index "${srcdir}/ffmpeg-full-git-add-svt-av1-${_svt_av1_ver}.patch"
-    git apply --index "${srcdir}/ffmpeg-full-git-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    git apply --index "${srcdir}/ffmpeg-full-git-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
 pkgver() {
