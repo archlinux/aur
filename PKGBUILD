@@ -3,9 +3,9 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-_pkgname=Miami
-pkgver=2.9.2
-pkgrel=1
+_pkgname=Neptune	
+pkgver=2.10.1
+pkgrel=2
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
@@ -17,14 +17,14 @@ optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
 source=(https://github.com/ossimlabs/ossim/archive/${_pkgname}-${pkgver}.tar.gz
         ossim.sh )
 install=ossim.install
-md5sums=('350d86418f43e977743e42a9d68cc2b5'
+md5sums=('bca4bf6f51875d572c72efbb61666bfa'
          'cb85c216a099b10f057cddeeae4a57fb')
 
 build() {
   cd $srcdir
 
   #Build
-  if [[ -d "$srcdir/build" ]]; then
+    if [[ -d "$srcdir/build" ]]; then
     (rm -rf $srcdir/build)
   fi
 
