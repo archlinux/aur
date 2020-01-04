@@ -1,7 +1,7 @@
 pkgbase = rlottie-tdesktop
 	pkgdesc = A platform independent standalone library that plays Lottie Animation (tdesktop fork)
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/desktop-app/rlottie
 	arch = x86_64
 	license = LGPL2.1

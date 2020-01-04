@@ -3,7 +3,7 @@
 pkgname=rlottie-tdesktop
 _pkgname=rlottie
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A platform independent standalone library that plays Lottie Animation (tdesktop fork)"
 arch=(x86_64)
 url="https://github.com/desktop-app/rlottie"
@@ -24,5 +24,5 @@ build() {
 
 package() {
 	cd "$srcdir/${_pkgname}-${_commit}"
-	DESTDIR="$pkgdir" meson install -C build
+	DESTDIR="$pkgdir" cmake --install .
 }
