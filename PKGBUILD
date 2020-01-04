@@ -21,6 +21,7 @@ prepare() {
     cd $srcdir/$_dirname
     cp $srcdir/install_config.txt ./
     sed -i 5iDestination=${srcdir}/extracted install_config.txt
+    export _JAVA_OPTIONS=-Duser.home=/tmp
 }
 build() {
     cd $srcdir/$_dirname
@@ -29,8 +30,11 @@ build() {
     rm -rf ~/.Xilinx
 }
 package() {
-    mkdir -p ${pkgdir}/opt/xilinx/HWSRVR
+    mkdir -p ${pkgdir}/opt/xilinx/HWSRVR/
     mkdir -p ${pkgdir}/usr/lib/systemd/system/
+    mkdir -p ${pkgdir}/etc/udev/rules.d/
     mv ${srcdir}/extracted/HWSRVR/${pkgver}/* ${pkgdir}/opt/xilinx/HWSRVR/
+    cp ${pkgdir}/opt/xilinx/HWSRVR/data/xicom/cable_drivers/lin64/install_script/install_drivers/*.rules ${pkgdir}/etc/udev/rules.d/
+    chmod 644 ${pkgdir}/etc/udev/rules.d/*
     install -Dm644 hwserver.service ${pkgdir}/usr/lib/systemd/system/hwserver.service
 }
