@@ -1,11 +1,11 @@
 binary_message() {
     echo "To prevent problems with software of other coins the binaries for this package are as follows:"
-    echo "  miner => trtl-miner"
-    echo "  zedwallet => trtl-zedwallet"
-    echo "  zedwallet-beta => trtl-zedwallet-beta"
-    echo "  wallet-api => trtl-wallet-api"
-    echo "  TurtleCoind => unchanged"
-    echo "  turtle-service => unchanged"
+    echo "  miner           => trtl-miner"
+    echo "  zedwallet       => trtl-zedwallet"
+    echo "  wallet-api      => trtl-wallet-api"
+    echo "  wallet-upgrader => trtl-wallet-upgrader"
+    echo "  TurtleCoind     => unchanged"
+    echo "  turtle-service  => unchanged"
     echo
 }
 

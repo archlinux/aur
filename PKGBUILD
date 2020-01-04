@@ -1,5 +1,5 @@
 pkgname=turtlecoin-git
-pkgver=r1842.7183230d
+pkgver=r2030.7356cbd4
 pkgrel=1
 pkgdesc="TurtleCoin daemon, CLI wallet, RPC interface, and solo miner"
 arch=('x86_64')
@@ -31,9 +31,9 @@ build() {
 package() {
     # Rename some executables so we don't conflict with other coins
     install -D -m755 "$srcdir/turtlecoin/build/src/miner" -T "$pkgdir/usr/bin/trtl-miner"
-    install -D -m755 "$srcdir/turtlecoin/build/src/zedwallet" -T "$pkgdir/usr/bin/trtl-zedwallet"
     install -D -m755 "$srcdir/turtlecoin/build/src/TurtleCoind" -t "$pkgdir/usr/bin/"
     install -D -m755 "$srcdir/turtlecoin/build/src/turtle-service" -t "$pkgdir/usr/bin/"
-    install -D -m755 "$srcdir/turtlecoin/build/src/zedwallet-beta" -T "$pkgdir/usr/bin/trtl-zedwallet-beta"
+    install -D -m755 "$srcdir/turtlecoin/build/src/zedwallet" -T "$pkgdir/usr/bin/trtl-zedwallet"
     install -D -m755 "$srcdir/turtlecoin/build/src/wallet-api" -T "$pkgdir/usr/bin/trtl-wallet-api"
+    install -D -m755 "$srcdir/turtlecoin/build/src/wallet-upgrader" -T "$pkgdir/usr/bin/trtl-wallet-upgrader"
 }
