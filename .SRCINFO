@@ -1,7 +1,7 @@
 pkgbase = atari800
 	pkgdesc = An emulator of the Atari 800/800XL/130XE/5200 with various extensions
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://atari800.github.io
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = atari800
 	depends = sdl
 	optdepends = libpng: PNG screenshot support
 	source = https://github.com/atari800/atari800/archive/ATARI800_4_2_0.tar.gz
+	source = atari800.desktop
 	sha256sums = 0bad99575293742e9e062e9fe9d104fe57228b1a32fec7a033b889edc819d7a4
+	sha256sums = 95e03020358a0855e12ee19b62abebb336e472fcf525f7eb42dcc28419588df9
 
 pkgname = atari800
 

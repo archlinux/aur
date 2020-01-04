@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Atari800
+GenericName=Atari800 - portable and free Atari 8-bit emulator
+Comment=Atari800 is the emulator of Atari 8-bit computer systems and 5200 game console for Linux [...] and other systems supported by the SDL library. Our main objective is to create a freely distributable portable emulator (i.e. with source code available).
+Exec=atari800
+Icon=atari800
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Keywords=Game;Emulator;Arcade;
