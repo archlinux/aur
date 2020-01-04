@@ -40,6 +40,7 @@ build() {
 	npm run build:dir
 
 	# Deactivate nvm
+	source /usr/share/nvm/init-nvm.sh
 	nvm deactivate
 	nvm uninstall "$nodeversion"
 }
