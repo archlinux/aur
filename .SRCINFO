@@ -1,17 +1,17 @@
 pkgbase = hath
-	pkgdesc = SETI@Home meets BitTorrent, for E-Hentai.org and E-Hentai Galleries.
-	pkgver = 1.4.2
+	pkgdesc = Open-source Peer-2-Peer gallery distribution system
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://ehwiki.org/wiki/Hentai@Home
 	install = hath.install
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = java-environment
 	depends = java-runtime
-	source = https://repo.e-hentai.org/hath/HentaiAtHome_1.4.2_src.zip
+	source = https://repo.e-hentai.org/hath/HentaiAtHome_1.6.0_src.zip
 	source = hath.sh
 	source = hath.service
-	sha256sums = 5711c5dac5481ba75d24751720035b85a02edbce66f1d155824bf4060455e38a
+	sha256sums = 3c807dadb3303a407101c428c65a68f55b3463fc3da29133ffe43b73591eaab8
 	sha256sums = 737d8b70150f9e897c3f7413669562f1f92e0df6539403f1936d6463e832c841
 	sha256sums = 8afd6ff66bfa986c7787e39aaad5d35a5ce1e2b722edb95bc86f76965d8d9fd0
 
