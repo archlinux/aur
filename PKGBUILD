@@ -1,14 +1,19 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
-pkgver=1.1
-pkgrel=5
+pkgver=1.2
+pkgrel=1
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('BSD' 'GPL')
 url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
 makedepends=('perl-text-csv-xs' 'perl-net-cidr-lite')
-_xtver=3.5
-source=("https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip"
+_xtver=3.7
+
+# create a file named geoip.license.key which contains MaxMind License key in following format:
+#_maxmind_key=XXXX
+source geoip.license.key
+
+source=("GeoLite2-Country-CSV.zip::https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&suffix=zip&license_key=${_maxmind_key}"
         "xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v${_xtver}/tree/geoip/xt_geoip_build?format=raw"
         "xt_geoip_build.patch"
         "README")

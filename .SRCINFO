@@ -1,7 +1,7 @@
 pkgbase = nftables-geoip-db
 	pkgdesc = GeoIP Database for nftables
-	pkgver = 1.1
-	pkgrel = 5
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://dev.maxmind.com/geoip/geoip2/geolite2/
 	install = nft_geoip.install
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = nftables-geoip-db
 	license = GPL
 	makedepends = perl-text-csv-xs
 	makedepends = perl-net-cidr-lite
-	source = https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country-CSV.zip
-	source = xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.5/tree/geoip/xt_geoip_build?format=raw
+	source = GeoLite2-Country-CSV.zip::https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&suffix=zip&license_key=XXXX
+	source = xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.7/tree/geoip/xt_geoip_build?format=raw
 	source = xt_geoip_build.patch
 	source = README
 	sha256sums = SKIP

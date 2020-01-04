@@ -5,3 +5,4 @@ xt_geoip_build
 nftables-geoip-db-*.tar.gz
 *-any.pkg.tar.xz
 *-any.pkg.tar.xz.sig
+geoip.license.key
