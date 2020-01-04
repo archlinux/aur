@@ -16,10 +16,10 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=193.5662.31
+_buildver=193.6015.11
 _veryear=2019
 _verrelease=3
-_verextra=1
+_verextra=2
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
