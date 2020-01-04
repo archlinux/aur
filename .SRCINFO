@@ -1,7 +1,7 @@
 pkgbase = mopidy-podcast-itunes
 	pkgdesc = Mopidy-Podcast extension for searching and browsing podcasts on the iTunes Store
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tkem/mopidy-podcast-itunes
 	arch = any
 	license = APACHE
