@@ -3,8 +3,8 @@
 
 _basename=gst-plugins-bad
 pkgname=lib32-gst-plugins-bad
-pkgver=1.16.1
-pkgrel=3
+pkgver=1.16.2
+pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework bad plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -21,11 +21,9 @@ depends=(lib32-aom lib32-bluez-libs lib32-celt lib32-chromaprint lib32-curl lib3
         gst-plugins-bad)
 makedepends=(git gobject-introspection lib32-gtk3 lib32-libtiger lib32-vulkan-validation-layers lv2
              meson python vulkan-headers)
-_commit=c3c54aad2d45fb246a9b9e8a5e05488c15c27173  # tags/1.16.1^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
-        'gst-common::git+https://gitlab.freedesktop.org/gstreamer/common.git')
-sha256sums=('SKIP'
-            'SKIP')
+_commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_basename
@@ -35,13 +33,6 @@ pkgver() {
 
 prepare() {
     cd $_basename
-
-    git submodule init
-    git config --local submodule.common.url "$srcdir/gst-common"
-    git submodule update
-
-    sed -e 's|-std=c++98||' -i ext/openexr/Makefile.am # openexr 2.4 requires c++11
-    sed -e "s|'-std=c++98'||" -i ext/openexr/meson.build
 }
 
 build() {
