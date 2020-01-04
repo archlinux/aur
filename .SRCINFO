@@ -1,0 +1,16 @@
+pkgbase = corosync-qdevice
+	pkgdesc = The Corosync Cluster Engine Qdevice
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.corosync.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	depends = corosync
+	source = corosync-qdevice-3.0.0.tar.gz::https://github.com/corosync/corosync-qdevice/archive/v3.0.0.tar.gz
+	sha256sums = 06b6ba6bd34186a13e645b962cbcf0ebf644227688e3578e239632c82243ab3c
+
+pkgname = corosync-qdevice
+
