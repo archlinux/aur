@@ -14,7 +14,7 @@ source=("http://members.quicknet.nl/blankendaalr/dbgl/download/${pkgname}090.tar
         dbgl.sh)
 sha256sums=('88b5ccb5e86d2049c3ae25200d41d404f486fee45d4e5d1846bccf7a2c9427b5'
             '7da06d297b5cbdbc1029c58ffe1c6643ae0fa3fe597e839b26d03ff3900de00d'
-            '2d2a4e74d5cec80b11953b3a7eec6cff15faccc8726c8ba99b8088718259dc7a')
+            'ec0f5d86d8a76b9ec2ee60e3e28b8ad5008df70eb86e28575b75dd0d2b1fd509')
 
 package() {
   cd "$srcdir"
