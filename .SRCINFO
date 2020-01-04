@@ -1,0 +1,20 @@
+pkgbase = qt5-declarative-595
+	pkgdesc = Classes for QML and JavaScript languages (v5.9.5)
+	pkgver = 5.9.5
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = python2
+	makedepends = cmake
+	depends = qt5-base-595
+	depends = qt5-xmlpatterns-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtdeclarative-opensource-src-5.9.5.tar.xz
+	sha256sums = b41868087b8315f7b56dd01441b9efdbad6f2db6a74227be86200dd44286798b
+
+pkgname = qt5-declarative-595
+
