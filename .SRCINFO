@@ -1,6 +1,6 @@
 pkgbase = xpress-player
 	pkgdesc = Java Swing desktop music player
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/martinpiz097/XpressPlayer
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xpress-player
 	depends = maven
 	depends = jdk8-openjdk
 	source = XpressPlayer-1.1.tar.gz::https://github.com/martinpiz097/XpressPlayer/archive/1.1.tar.gz
-	md5sums = 90f002b369b00339364fcfbb2926bb7a
+	md5sums = 67ab1fd39133373aec8c59c3e0d86f66
 
 pkgname = xpress-player
 
