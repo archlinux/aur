@@ -1,0 +1,9 @@
+[Unit]
+Description=PulledPork rules downloader
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/pulledpork_update.sh /etc/snort/rules/snort.rules
+StandardOutput=null
+StandardError=null

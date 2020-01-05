@@ -15,5 +15,7 @@ _EOF
 }
 
 post_upgrade() {
-  post_install $1
+  if (( $(vercmp $2 0.7.3-2) < 0)); then
+    systemctl --now enable pulledpork.timer
+  fi
 }
