@@ -28,5 +28,5 @@ pkgver() {
 package() {
     install -d "${pkgdir}/opt/${_gitname}"
     cp -ra ${srcdir}/${_gitname}/* "${pkgdir}/opt/${_gitname}"
-    install -Dm 755 ../vspreview "${pkgdir}/usr/bin/vspreview"
+    install -Dm 755 "${srcdir}"/vspreview "${pkgdir}/usr/bin/vspreview"
 }
