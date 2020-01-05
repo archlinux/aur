@@ -1,0 +1,12 @@
+diff --git a/src/software/VO/Monocular_VO.hpp b/src/software/VO/Monocular_VO.hpp
+index c68d91a6..53448883 100644
+--- a/src/software/VO/Monocular_VO.hpp
++++ b/src/software/VO/Monocular_VO.hpp
+@@ -20,6 +20,7 @@
+ #include "openMVG/sfm/sfm_landmark.hpp"
+ 
+ #include "software/VO/Abstract_Tracker.hpp"
++#include <iostream>
+ 
+ namespace openMVG  {
+ namespace VO  {

@@ -5,7 +5,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=1.4.r55.g06a7b466
+pkgver=1.5.r56.gbe94d6af
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -18,13 +18,14 @@ source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
         'git+https://github.com/openMVG-thirdparty/osi_clp.git'
         'git+https://github.com/openMVG-thirdparty/cereal.git'
         'findflann-v0.1.patch'
+        'gcc92.patch'
        )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'f421cb25208a4f95784035d9823abe04'
-         )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '13b1f0195b5e97c17eec737e63f4da69c501bb4ced28c4c14517440009139043'
+            '212589acc8a657b1096d15da9a96518b91181d9f53a1c5a7735846e964629c8c')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -40,6 +41,8 @@ prepare() {
   git submodule update
   msg "flann patch"
   git apply ${srcdir}/findflann-v0.1.patch
+  msg "gcc:9.2 patch"
+  git apply ${srcdir}/gcc92.patch
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = openmvg-git
 	pkgdesc = open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.
-	pkgver = 1.4.r55.g06a7b466
+	pkgver = 1.5.r56.gbe94d6af
 	pkgrel = 1
 	url = http://imagine.enpc.fr/~moulonp/openMVG/
 	arch = i686
@@ -31,11 +31,13 @@ pkgbase = openmvg-git
 	source = git+https://github.com/openMVG-thirdparty/osi_clp.git
 	source = git+https://github.com/openMVG-thirdparty/cereal.git
 	source = findflann-v0.1.patch
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = f421cb25208a4f95784035d9823abe04
+	source = gcc92.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 13b1f0195b5e97c17eec737e63f4da69c501bb4ced28c4c14517440009139043
+	sha256sums = 212589acc8a657b1096d15da9a96518b91181d9f53a1c5a7735846e964629c8c
 
 pkgname = openmvg-git
 
