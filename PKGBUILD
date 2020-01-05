@@ -3,13 +3,14 @@
 _pkgname='wxtoimg'
 pkgname="$_pkgname-beta"
 pkgver='2.11.2'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Software to decode APT and WEFAX signals from weather satellites'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url='https://wxtoimgrestored.xyz/beta'
 license=('custom')
 depends=('alsa-lib' 'fontconfig' 'libx11' 'libxft')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.deb::$url/$_pkgname-amd64-$pkgver-beta.deb")
 source_i686=("$pkgname-$pkgver-$pkgrel-i686.deb::$url/$_pkgname-i386-$pkgver-beta.deb")
 source_armv6h=("$pkgname-$pkgver-$pkgrel-armv6h.deb::$url/$_pkgname-armhf-$pkgver-beta.deb")
