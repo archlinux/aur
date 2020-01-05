@@ -4,7 +4,7 @@
 pkgname=imagescan
 pkgver=3.61.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=(x86_64)
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -37,7 +37,7 @@ build() {
     --with-magick-pp \
     --with-sane \
     --with-tiff
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+#  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # This breaks some scanners, https://bugs.archlinux.org/task/63491
   make
 }
 
