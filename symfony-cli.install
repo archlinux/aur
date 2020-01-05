@@ -1,0 +1,17 @@
+post_install() {
+  echo "
+If you want to get auto completion when using the CLI, execute this
+command :
+
+  symfony self:shell-setup
+
+It will automatically write the needed lines in your shell config file
+so don't forget to source it or restart your shell if you want to start
+using it right now.
+"
+  echo "------"
+  echo "
+By using this software, you agree to the Symfony CLI End-User License
+Agreement, which you can read in /usr/share/licenses/symfony-cli/eula.txt
+"
+}
