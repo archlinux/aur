@@ -1,0 +1,16 @@
+pkgbase = sage-numerical-backends-coin
+	pkgdesc = COIN-OR mixed integer linear programming backend for SageMath
+	pkgver = 9.0b12
+	pkgrel = 1
+	url = https://github.com/mkoeppe/sage-numerical-backends-coin
+	arch = x86_64
+	license = GPL
+	makedepends = cython
+	makedepends = python-pkgconfig
+	depends = sagemath
+	depends = coin-or-cbc
+	source = sage-numerical-backends-coin-9.0b12.tar.gz::https://github.com/mkoeppe/sage-numerical-backends-coin/archive/v9.0b12.tar.gz
+	sha256sums = 4bd6cec9a2e78e47741a73fde0d064a2aaebd1e2d9f44ccca70e436f2094f272
+
+pkgname = sage-numerical-backends-coin
+
