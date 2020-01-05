@@ -1,6 +1,6 @@
 pkgbase = pacback-git
 	pkgdesc = Advanced Rollback Version Control for Arch Linux - Alpha
-	pkgver = r75.564d7b1
+	pkgver = r77.7293267
 	pkgrel = 1
 	url = https://github.com/JustinTimperio/pacback
 	arch = any
@@ -11,6 +11,8 @@ pkgbase = pacback-git
 	optdepends = pigz: Multithreaded de/compression of restore points
 	provides = pacback
 	conflicts = pacback
+	source = git+https://github.com/JustinTimperio/pacback.git
+	sha256sums = SKIP
 
 pkgname = pacback-git
 

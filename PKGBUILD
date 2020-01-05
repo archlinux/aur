@@ -1,7 +1,7 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgname=pacback-git
-pkgver=r75.564d7b1
+pkgver=r77.7293267
 pkgrel=1
 pkgdesc='Advanced Rollback Version Control for Arch Linux - Alpha'
 arch=('any')
@@ -11,6 +11,8 @@ provides=('pacback')
 conflicts=('pacback')
 depends=('python-tqdm' 'arch-install-scripts' 'curl')
 optdepends=('pigz: Multithreaded de/compression of restore points')
+source=('git+https://github.com/JustinTimperio/pacback.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/pacback"
@@ -19,7 +21,10 @@ pkgver() {
 }
 
 prepare() {
-  git clone --recurse-submodules https://github.com/JustinTimperio/pacback.git
+  cd "${srcdir}/pacback"
+  git submodule init core/python_scripts
+  git config submodule.python_scripts.url "$srcdir/python_scripts"
+  git submodule update
 }
 
 package() {
