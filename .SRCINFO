@@ -1,7 +1,7 @@
 pkgbase = hlsdl-git
 	pkgdesc = C program to download VoD HLS (.m3u8) files - git version
-	pkgver = r180.0fa701d
-	pkgrel = 3
+	pkgver = r181.be7300b
+	pkgrel = 1
 	url = https://github.com/selsta/hlsdl
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = hlsdl-git
 	depends = curl
 	depends = openssl
 	provides = hlsdl
+	conflicts = hlsdl
 	source = hlsdl-git::git+https://github.com/selsta/hlsdl
 	sha256sums = SKIP
 
