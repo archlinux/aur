@@ -1,13 +1,13 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=pywws
 pkgver=19.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python software for USB Wireless WeatherStations"
 arch=('any')
 url="https://github.com/jim-easterbrook/pywws"
 license=('GPL')
 makedepends=('python-pip')
-depends=('python-tzlocal' 'python-libusb1')
+depends=('python-tzlocal' 'python-pyusb')
 options=(!emptydirs)
 source=(https://pypi.io/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz
 'service')
