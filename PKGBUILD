@@ -65,7 +65,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.7.arch1
+pkgver=5.4.8.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -313,7 +313,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Documentation for the $pkgdesc kernel"
+    pkgdesc="Documentation for the $pkgdesc kernel $_pkgdesc_extra"
 
     cd $_srcname
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
