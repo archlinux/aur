@@ -1,4 +1,5 @@
-# Maintainer: Kostis Karantias <kkarantias [at] gmail [dot] com>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Kostis Karantias <kkarantias [at] gmail [dot] com>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Bastien Traverse <firstname at lastname dot email>
 # Contributor: Ricardo Funke <ricardo [at] gmail [dot] com>
@@ -15,12 +16,12 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Stream movies and TV shows from torrents (stable builds)"
 arch=('x86_64')
 url="https://popcorntime.sh"
 license=('GPL3')
-depends=('nss' 'ttf-font' 'libxss' 'gconf' 'gtk2' 'gtk3')
+depends=('nss' 'ttf-font' 'libxss' 'gtk3')
 provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-stable-bin')
 conflicts=('popcorntime')
 options=('!strip')
