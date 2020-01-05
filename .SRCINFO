@@ -1,7 +1,7 @@
 pkgbase = rofi-greenclip
 	pkgdesc = Clipboard manager to use with rofi - Image support and blacklist
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/erebe/greenclip
 	changelog = changelog
 	arch = x86_64
