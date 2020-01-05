@@ -8,9 +8,9 @@ arch=('x86_64')
 url='https://github.com/veonim/veonim'
 license=('MIT')
 depends=('neovim')
-source=("https://github.com/$pkgname/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.zip"
-        "$pkgname.desktop"
-        "$pkgname.sh"
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip"
+        "${pkgname}.desktop"
+        "${pkgname}.sh"
         "logo.png")
 sha256sums=('becde5667e899ef1611e299c535619315154e86627b4ac89d73a9c2e1cd33319'
             '3c1032e45722e72659edbba1ba1430c31954650dd090efd1b4ecddf933534189'
@@ -18,12 +18,12 @@ sha256sums=('becde5667e899ef1611e299c535619315154e86627b4ac89d73a9c2e1cd33319'
             '2e7644443ef226da71af4f07564e46c220f4b02cf5bc799427b5c15ee3bbca74')
 
 prepare() {
-  rm "$pkgname-$pkgver.zip"
+  rm "${pkgname}-${pkgver}.zip"
 }
 
 package() {
-  install -d "$pkgdir/opt"
-  cp -R "$srcdir" "$pkgdir/opt/$pkgname"
+  install -d "${pkgdir}/opt"
+  cp -R "${srcdir}" "${pkgdir}/opt/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
 
