@@ -2,7 +2,7 @@
 
 pkgname=polly
 pkgver=0.93.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux Twitter client designed for multiple columns of multiple accounts"
 arch=(any)
 url="https://launchpad.net/polly"

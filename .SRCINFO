@@ -1,7 +1,7 @@
 pkgbase = polly
 	pkgdesc = Linux Twitter client designed for multiple columns of multiple accounts
 	pkgver = 0.93.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/polly
 	install = polly.install
 	arch = any
