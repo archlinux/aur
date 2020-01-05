@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=tnb
-pkgver=2019_11_25
+pkgver=2020_01_05
 pkgrel=1
 pkgdesc="CLI-based Telegram Notification Bot"
 arch=('x86_64')
