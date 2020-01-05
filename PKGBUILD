@@ -1,7 +1,7 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
 pkgname=binfmt-qemu-all-arch
 pkgver=20190813
-pkgrel=1
+pkgrel=2
 pkgdesc="Register qemu interpreters for various binary formats - all archetectures, intelligently removing the current archetecture"
 arch=('armv5' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
@@ -10,7 +10,7 @@ optdepends=('qemu' 'qemu-arch-extra')
 provides=('binfmt-qemu')
 conflicts=('binfmt-qemu')
 source=("qemu.conf")
-md5sums=('0232a790000c73c46b8621dfedbe093d')
+md5sums=('ef046cbee5bcdbc55f712a2bd928b18d')
 
 package() {
   install -Dm 644 "$srcdir/qemu.conf" "$pkgdir/usr/lib/binfmt.d/qemu.conf"
