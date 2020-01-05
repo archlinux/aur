@@ -1,12 +1,13 @@
 pkgbase = gamerworld
 	pkgdesc = Play games all in one place
-	pkgver = 1.1.5
-	pkgrel = 2
+	pkgver = 1.1.6
+	pkgrel = 1
 	url = https://gitlab.com/gamerworld/application
 	arch = x86_64
 	license = GPL
 	makedepends = npm
 	makedepends = git
+	makedepends = unzip
 	depends = nss
 	depends = gtk3
 	depends = libxss
