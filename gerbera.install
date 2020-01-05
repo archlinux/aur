@@ -1,7 +1,12 @@
 post_install() {
-  echo "-- Please do chown -R gerbera:gerbera /var/lib/gerbera"
+  echo ":: You need to generate a configuration file before running gerbera, e.g.:"
+  echo "   gerbera --create-config | sudo tee /etc/gerbera/config.xml"
+  echo "   chown -R gerbera:gerbera /etc/gerbera"
+  echo ":: Make sure <home> points to /etc/gerbera in /etc/gerbera/config.xml:"
+  echo " <home>/etc/gerbera</home>"
 }
 
 post_upgrade() {
-  post_install
+  echo ":: Version 1.2.0-3 of gerbera switched to the packages systemd unit."
+  echo "   Please check your config before you start gerbera."
 }
