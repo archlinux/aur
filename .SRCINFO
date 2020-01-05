@@ -1,0 +1,25 @@
+pkgbase = bspwmbar-git
+	pkgdesc = A lightweight status bar for bspwm
+	pkgver = 0.5.5.r21.g68809c9
+	pkgrel = 1
+	url = https://github.com/odknt/bspwmbar
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = bspwm
+	depends = alsa-lib
+	depends = libx11
+	depends = libxrandr
+	depends = libxft
+	depends = libxext
+	depends = fontconfig
+	optdepends = ttf-nerd-fonts-symbols: default prefix icons font
+	provides = bspwmbar
+	conflicts = bspwmbar
+	source = git+https://github.com/odknt/bspwmbar
+	source = config.h
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bspwmbar-git
+
