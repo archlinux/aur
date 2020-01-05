@@ -1,14 +1,14 @@
 # Maintainer: Benjamin Hedrich <code at pagenotfound.de>
 
 pkgname=gerbera-git
-pkgver=2529.e0c8e2d5
+pkgver=3099.5200f0e2
 pkgrel=1
 pkgdesc="UPnP Media Server (Based on MediaTomb)"
 arch=(i686 x86_64 armv7h)
 url="https://github.com/v00d00/gerbera"
 license=('GPL2')
-depends=('taglib' 'curl' 'sqlite' 'file' 'libmariadbclient' 'gcc-libs' 'pupnp'
-	 'duktape' 'libexif' 'expat')
+depends=('taglib' 'curl' 'sqlite' 'file' 'libmariadbclient' 'gcc-libs' 'libupnp18' 'libmatroska'
+	 'duktape' 'libexif' 'expat' 'libebml')
 makedepends=('cmake')
 install=gerbera.install
 options=('emptydirs')
