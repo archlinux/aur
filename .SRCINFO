@@ -1,0 +1,14 @@
+pkgbase = xfce-superkey-git
+	pkgdesc = Open the whisker menu launcher in XFCE using the Super key
+	pkgver = v0.5.r0.4115c97
+	pkgrel = 1
+	url = https://github.com/JixunMoe/xfce-superkey
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = libxtst
+	source = git+https://github.com/JixunMoe/xfce-superkey.git
+	md5sums = SKIP
+
+pkgname = xfce-superkey-git
+
