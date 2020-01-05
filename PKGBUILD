@@ -7,6 +7,7 @@ url='http://www.apple.com/safari/'
 license=('custom')
 depends=()
 makedepends=('git')
+conflicts=('otf-sfmono')
 source=("${pkgname}::git+https://github.com/a1phabeta/SF-Mono-Font-Patched.git")
 sha256sums=('SKIP')
 

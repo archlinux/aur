@@ -6,6 +6,7 @@ pkgbase = otf-sfmono-patched
 	arch = any
 	license = custom
 	makedepends = git
+	conflicts = otf-sfmono
 	source = otf-sfmono-patched::git+https://github.com/a1phabeta/SF-Mono-Font-Patched.git
 	sha256sums = SKIP
 
