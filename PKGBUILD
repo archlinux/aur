@@ -2,8 +2,8 @@
 # Contributor: Vladimir Cerny <blackvladimir@gmail.com>
 
 pkgname=free42
-pkgver=2.5.12a
-pkgrel=2
+pkgver=2.5.12b
+pkgrel=1
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
 url="http://thomasokken.com/free42/"
@@ -13,7 +13,7 @@ optdepends=('free42-skins: Additional skins')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
         "0001_system-skins.patch"
         "free42.desktop")
-md5sums=('cb417d71d440fce18a1e3c208b6093d9'
+md5sums=('9af0e38df63994c5def8f77c6db707a9'
          '8c0522e3efa3c7fd54985af456b689b7'
          '9e1af9bfd8ce5eb2ad107f63ea446a55')
 
@@ -54,7 +54,7 @@ package() {
     install -Dm644 $_f "$pkgdir/usr/share/$pkgname/skins/$_f"
   done
 
-  install -Dm644 "$srcdir/free42.desktop" "$pkgdir/usr/share/applications/free42.desktop"
+  install -Dm644 "$srcdir/free42.desktop" "$pkgdir/usr/share/applications/com.thomasokken.free42.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
