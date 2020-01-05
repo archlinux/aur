@@ -1,6 +1,6 @@
 pkgbase = python2-txsocksx-git
 	pkgdesc = SOCKS{4,4a,5} endpoints for twisted
-	pkgver = r87.1fb0462
+	pkgver = r97.110f71d
 	pkgrel = 1
 	url = https://github.com/habnabit/txsocksx
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python2-txsocksx-git
 	makedepends = git
 	makedepends = python2-setuptools
 	depends = python2
-	depends = twisted
+	depends = python2-twisted
 	depends = python2-pyopenssl
 	depends = python2-parsley-git
 	conflicts = python2-txsocksx
