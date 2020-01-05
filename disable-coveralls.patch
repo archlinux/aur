@@ -1,0 +1,12 @@
+diff --git a/test/helper.rb b/test/helper.rb
+index ee4fc27..afd3b01 100644
+--- a/test/helper.rb
++++ b/test/helper.rb
+@@ -1,8 +1,5 @@
+ # frozen_string_literal: true
+ 
+-require 'coveralls'
+-Coveralls.wear!
+-
+ require 'minitest'
+ require 'minitest/autorun'

@@ -1,16 +1,23 @@
 pkgbase = ruby-cri
-	pkgdesc = A library for building easy-to-use commandline tools.
-	pkgver = 2.15.3
+	pkgdesc = Library for building easy-to-use command-line tools with support for nested commands
+	pkgver = 2.15.9
 	pkgrel = 1
-	url = https://rubygems.org/gems/cri
+	url = https://github.com/ddfreyne/cri
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
-	depends = ruby-colored>=1.2
-	noextract = cri-2.15.3.gem
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
+	makedepends = ruby-yard
+	makedepends = ruby-minitest
+	depends = ruby
 	options = !emptydirs
-	source = http://rubygems.org/downloads/cri-2.15.3.gem
-	sha256sums = 70c6c790d813fa8b165c24ec67ac8d51ac48a74f65c9b1bf40f6fc2718b79ac9
+	source = https://github.com/ddfreyne/cri/archive/2.15.9/cri-2.15.9.tar.gz
+	source = Rakefile
+	source = disable-coveralls.patch
+	sha512sums = 6c9c57863eac89078145a037d6ee4ba34529f5a61a992f70c7a832dc5cee0e0677dc3d61f71e01b02754d79573730a9b6752d6365e6a71b67b0867d76d2b63e5
+	sha512sums = 34e13fa1d9dfd85bf3d9ded8d7bffd2f8416e10a88de12889b077f9148293e04a9eb89d7523885af2378397aba3f3d500312886ce76d2b464260e7d4ecd60288
+	sha512sums = a6ff67046e306b199973754f5526367df5d4b1420ed1cb387a35756d1558eda92e0de481ebb83051cb0126f0c1565bcd4192c9808344a2cb8c212a66bbacb680
 
 pkgname = ruby-cri
 

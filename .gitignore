@@ -1,4 +1,6 @@
 *
+!Rakefile
+!disable-coveralls.patch
 !.SRCINFO
 !.gitignore
 !PKGBUILD
