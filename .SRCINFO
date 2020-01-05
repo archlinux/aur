@@ -1,0 +1,17 @@
+pkgbase = qt5-quickcontrols-595
+	pkgdesc = Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (v5.9.5)
+	pkgver = 5.9.5
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	depends = qt5-declarative-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtquickcontrols-opensource-src-5.9.5.tar.xz
+	sha256sums = 90561bab1fb226c4bbbe68d1dc4cf64f3a6aca797a4ab9c89cb86439dcdce2ea
+
+pkgname = qt5-quickcontrols-595
+
