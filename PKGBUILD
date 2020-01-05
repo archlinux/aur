@@ -1,6 +1,6 @@
 # Maintainer: Erkin Batu Altunbaş <erkin@sdf.org>
 pkgname=openlisp
-pkgver=10.7.0
+pkgver=10.8.0
 pkgrel=1
 pkgdesc="A full and efficient ISO/IEC 13816:2007(E) ISLISP Implementation"
 arch=('x86_64' 'i686')
@@ -10,8 +10,9 @@ depends=("sh")
 
 source_x86_64=("http://www.eligis.com/downloads/${pkgname}-${pkgver}-Linux-x86_64.tar.gz")
 source_i686=("http://www.eligis.com/downloads/${pkgname}-${pkgver}-Linux-i686.tar.gz")
-sha256sums_x86_64=('85d423ebe2f6ccafee6d02ffd385601382387c3e6ace92823da72e15e9e45a68')
-sha256sums_i686=('04f1ef48ffa9bc6ce2b1548c1984a25d0efb530b2a305c219c6eaed4c844e79c')
+
+sha256sums_x86_64=('15b0d2823a600bcb4c8b9267a5957f952dddf92d87aef3fd4f1ad4ba682236b5')
+sha256sums_i686=('73cf19e380685791bf8fca786cfae4a5ec094ca2e8e5483d3e88c68bc009d54c')
 
 package()
 {
