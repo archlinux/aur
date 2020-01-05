@@ -1,6 +1,6 @@
 pkgbase = nginxbeautifier
 	pkgdesc = Nginx config formatter and beautifier.
-	pkgver = 1.0.13
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://nginxbeautifier.com
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = nginxbeautifier
 	depends = nodejs
 	provides = nginxbeautifier
 	source = nginxbeautifier::git://github.com/vasilevich/nginxbeautifier.git
-	md5sums = SKIP
 
 pkgname = nginxbeautifier
 
