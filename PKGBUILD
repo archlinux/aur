@@ -2,7 +2,7 @@
 # Contributor: Rich Li <rich at dranek com>
 # Contributor: Samed Beyribey <ras0ir AT eventualis DOT org>
 pkgname=python-pyspf
-pkgver=2.0.13
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="Python implementation of the Sender Policy Framework (SPF) protocol"
 arch=('any')
@@ -11,8 +11,8 @@ license=('PSF')
 depends=('python-pydns')
 makedepends=('python-setuptools')
 optdepends=('python-authres: Return RFC 5451 Authentication Results headers')
-source=("https://files.pythonhosted.org/packages/7a/0c/1a10db5bf17e13c596d47b0a6903ac2837f78c2c8faf5918c748cb83e3f8/pyspf-$pkgver.tar.gz")
-sha256sums=('62dc1be39519e343202d480da7ef93d834b5a50cd4f217bef9335ed15292929b')
+source=("https://files.pythonhosted.org/packages/d4/dc/5b3838ff90474e21fe0914920c53430f73402e07d6598ea228e61b74963e/pyspf-$pkgver.tar.gz")
+sha256sums=('57a7ef01bda090173aafb6af0106251686ed73f03db4e911fcd34c57fc347186')
 
 build() {
   cd "$srcdir/pyspf-$pkgver"
