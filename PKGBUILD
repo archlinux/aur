@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 240297 2015-06-03 10:22:03Z fyan $
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Cian McGovern <cian@cianmcgovern.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-quickcontrols-595
