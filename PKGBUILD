@@ -2,7 +2,7 @@
 pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
-pkgver=r302.5e922de
+pkgver=r312.c4b4df1
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -21,17 +21,13 @@ source=('git+https://github.com/InfinityGhost/OpenTabletDriver'
 
 sha256sums=('SKIP'
             'c79e055efb915aff51e3785012999df6eaf4d65f4110be3a2e3c289a62168122'
-            'f9f5ac5d01b9820b88dc8701da7be3f705270537c2b5dc20a82744c216732a97'
+            '7e95c880ca6328d3bb6f3675ee063b18330d3ea753bef9b5376cafc31eff47f2'
             '304ec78284e99395b3091923da540af3a1826205663aa8fd2d52deb64f852166'
             'f837c3c8903cdd88252cb4faeed5cae8f73451dfaa667bbc4a39ebe713acf0d4')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/$_pkgname"
 }
 
 build() {
@@ -63,6 +59,5 @@ package() {
     install -Dm 644 -o root "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
     cp -r "$srcdir/$_pkgname/TabletDriverLib/Configurations" "$pkgdir/usr/share/$_pkgname/"
 
-    install -Dm 755 -o root "$srcdir/$_pkgname/$_pkgname/out/OpenTabletDriver" -t "$pkgdir/usr/share/$_pkgname"
     install -Dm 755 -o root "$_lpkgname" -t "$pkgdir/usr/bin"
 }
