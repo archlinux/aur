@@ -53,5 +53,6 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/repoctl/"
 
   # Install completion files
-  install -Dm644 contrib/zsh_completion "$pkgdir/usr/share/zsh/site-functions/_repoctl"
+  install -Dm644 contrib/repoctl_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_repoctl"
+  install -Dm644 contrib/repoctl_completion.bash "$pkgdir/usr/share/bash-completion/completions/repoctl"
 }
