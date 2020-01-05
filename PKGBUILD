@@ -4,13 +4,14 @@
 _pkgname='flow'
 pkgname="$_pkgname-bin"
 pkgver='0.115.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Adds static typing to JavaScript to improve developer productivity and code quality - binary version'
 arch=('x86_64')
 url="https://$_pkgname.org/"
 license=('MIT')
 optdepends=('bash-completion: Bash completion')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(
 	"$pkgname-$pkgver-$pkgrel.zip::https://github.com/facebook/$_pkgname/releases/download/v$pkgver/flow-linux64-v$pkgver.zip"
 	"$pkgname-$pkgver-$pkgrel-bash-completion::https://github.com/facebook/$_pkgname/raw/v$pkgver/resources/shell/bash-completion"
