@@ -1,9 +1,9 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-picos')
+pkgbase=python-picos
 pkgname=('python-picos' 'python2-picos')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python interface to conic optimization solvers.'
 arch=('any')
 url='https://gitlab.com/picos-api/picos'
