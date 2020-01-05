@@ -1,6 +1,6 @@
 pkgbase = thunderbird-extension-enigmail-git
 	pkgdesc = OpenPGP message encryption and authentication for Thunderbird (development version)
-	pkgver = 2.1.r184.gd23359aa
+	pkgver = 2.1.r193.gdd71be00
 	pkgrel = 1
 	url = https://www.enigmail.net/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = thunderbird-extension-enigmail-git
 	license = GPL3
 	makedepends = git
 	makedepends = zip
-	makedepends = python2
+	makedepends = python
 	makedepends = perl
 	depends = gnupg
 	depends = thunderbird
