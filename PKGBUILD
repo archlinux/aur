@@ -1,4 +1,5 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
+# Co-Maintainer/Author: Justin Timperio <justintimperio[at]gmail[dot]com>
  
 pkgname=pacback
 pkgver=1.6.1
