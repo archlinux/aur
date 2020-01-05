@@ -3,9 +3,9 @@
 # Maintainer stable version: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
-pkgbase=('bullet-git')
+pkgbase='bullet-git'
 pkgname=('bullet-git' 'bullet-docs-git')
-pkgver=2.83.6.r2.g6c24193
+pkgver=2.89.r21.gb57557c6c
 pkgrel=1
 pkgdesc="A 3D Collision Detection and Rigid Body Dynamics Library for games and animation"
 arch=('i686' 'x86_64')
