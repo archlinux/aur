@@ -1,0 +1,26 @@
+pkgbase = performance-tweaks
+	pkgver = r2.4ebcef5
+	pkgrel = 1
+	url = https://github.com/librewish/performance-tweaks
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/librewish/performance-tweaks.git#branch=master
+	sha256sums = SKIP
+
+pkgname = performance-tweaks
+	pkgdesc = automatic tweaks for Improving performance while gaming and other tasks
+	install = performance-tweaks.install
+	depends = cpupower
+	depends = preload
+	depends = haveged
+	depends = irqbalance
+	depends = systemd-swap
+	depends = nohang-git
+	depends = ananicy-git
+	optdepends = timeshift-autosnap: for snapshots bfore pacman upgrade
+	optdepends = grub-btrfs: for grub entries to btrfs snapshots
+	optdepends = systemd-guest-user: for guest user support
+	provides = performance-tweaks
+	conflicts = performance-tweaks
+
