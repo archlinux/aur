@@ -1,13 +1,13 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-swiglpk')
+pkgbase=python-swiglpk
 pkgname=('python-swiglpk' 'python2-swiglpk')
 pkgdesc="A low-level Python interface to the GLPK optimization solver."
 pkgver=4.65.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/biosustain/swiglpk'
-license=('gpl3')
+license=('GPL3')
 makedepends=('swig' 'python-setuptools' 'python2-setuptools')
 depends=('glpk')
 
