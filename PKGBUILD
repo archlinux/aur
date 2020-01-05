@@ -1,18 +1,21 @@
 # Submitter: Nbiba Bedis <bedisnbiba@gmail.com>
 
-pkgname=('traffictoll')
+pkgname=traffictoll-git
+_pkgname=TrafficToll
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='NetLimiter-like traffic shaping for Linux'
 arch=('any')
 url='https://github.com/cryzed/TrafficToll'
 license=('GPL3')
 depends=('python' 'python-ruamel-yaml' 'python-psutil' 'python-loguru')
 makedepends=('python-setuptools')
-source=("https://github.com/cryzed/TrafficToll/archive/master.zip")
+provides=('tt')
+conflicts=('tt')
+source=('git+https://github.com/cryzed/TrafficToll.git')
 md5sums=('SKIP')
 
 package() {
-  cd "TrafficToll-master"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd ${_pkgname}
+  python setup.py install --root="${pkgdir}" --optimize='1'
 }
