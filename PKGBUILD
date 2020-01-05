@@ -2,13 +2,14 @@
 _pkgname='bitw'
 pkgname="$_pkgname-git"
 pkgver='r46.17ac675'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
 makedepends=('git' 'go-pie')
 provides=("$_pkgname" 'org.freedesktop.secrets')
+conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
