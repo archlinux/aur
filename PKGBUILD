@@ -7,7 +7,7 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.8.5
+pkgver=5.10.1
 pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
@@ -26,9 +26,10 @@ depends=('ruby'
          'nfs-utils'
          'cdrkit'
          'log4cpp'
-         'python2' # needed for novnc
+         'python'
          'mariadb'
-         'libmariadbclient')
+         'libmariadbclient'
+         'zeromq')
 makedepends=('xmlrpc-c'
              'pkgconfig'
              'scons'
@@ -102,26 +103,22 @@ source=("https://github.com/OpenNebula/one/archive/release-${pkgver}.tar.gz"
         'opennebula-novnc.service'
         'opennebula.conf'
         'opennebula.logrotate'
-        'chown_fix.patch'
-        'set_locations.patch'
+        'install.sh.patch'
         'fix_kvm_emulator.patch'
-        'opennebula.install'
-        'scons_python3.patch')
-md5sums=('8c277bcb2f851621a189c28891c51be1'
-         '69c4374554ae689c44b0ef8c0a31b911'
-         '74bc0a908441063a44cb134449564db1'
-         'f207636bd04a621f20b14a37c6ad49b7'
-         '91d608d9576dc800a12597135ad0203d'
-         '773c9f257b8a367ad4b4ca7694294460'
-         '63b217d32a279adbb50b68106cc83578'
-         '3c38e24ef93de0982737f3dabbb9d251'
-         '05f58094a1d132f2164599e068158cd7'
-         '2f1c73538c52324c224684072ea7877b'
-         'cd272404aba91a27cf89ce22364e51b4'
-         'bab6415dd2437c6dfdadad90efedeff3'
-         '680931b4555ea25a17ea8c20b382d175'
-         'd6fd565c86ea40001c618689f18a222d'
-         '8fd54ddb28ae34a75425cff104fdca64')
+        'opennebula.install')
+md5sums=('3168d199782c10af07012991c2447b1a' # package
+         '69c4374554ae689c44b0ef8c0a31b911' # opennebula.service
+         '74bc0a908441063a44cb134449564db1' # opennebula-scheduler.service
+         'f207636bd04a621f20b14a37c6ad49b7' # opennebula-sunstone.service
+         '91d608d9576dc800a12597135ad0203d' # opennebula-econe.service
+         '773c9f257b8a367ad4b4ca7694294460' # opennebula-oneflow.service
+         '63b217d32a279adbb50b68106cc83578' # opennebula-onegate.service
+         '3c38e24ef93de0982737f3dabbb9d251' # opennebula-novnc.service
+         '05f58094a1d132f2164599e068158cd7' # opennebula.conf
+         '2f1c73538c52324c224684072ea7877b' # opennebula.logrotate
+         'e00db582c46c97d96115eef252f37b40' # install.sh.patch
+         '680931b4555ea25a17ea8c20b382d175' # fix_kvm_emulator.patch
+         '6db815e867c77e4bee908381798cb79b') # opennebula.install
 
 prepare() {
   cd "one-release-${pkgver}"
@@ -129,16 +126,14 @@ prepare() {
   # Patch upstream install script to not attempt to chown the install
   # directories because `makepkg` will otherwise fail on a fresh installation.
   # We do our own chown in post_install().
-  patch < "${srcdir}/chown_fix.patch"
-  patch < "${srcdir}/set_locations.patch"
+  patch < "${srcdir}/install.sh.patch"
   patch -p0 < "${srcdir}/fix_kvm_emulator.patch"
-  # Fix for scons with python3 https://github.com/OpenNebula/one/issues/3584
-  patch  -p1 < "${srcdir}/scons_python3.patch"
-  # Patch npm package versions to support node 12
+  # Patch npm package versions to support node 12+
   # grunt-sass version
   sed -i 's/1.2.1/2.1.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
   # node-sass
-  sed -i 's/3.10.1/4.12.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
+  sed -i 's/3.10.1/4.13.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
+
   # As we install from the github release sources we need to build sunstone as well.
   # To do that we need the npm environment set up
   # https://docs.opennebula.org/5.4/integration/references/sunstone_dev.html#sunstone-dev
