@@ -16,5 +16,5 @@ package() {
     cp -a -t "$pkgdir/usr/lib/jvm/java-11-graalvm/" languages/
 
     chmod +x "$pkgdir/usr/lib/jvm/java-11-graalvm/languages/brj/bin/brj"
-    ln -s "$pkgdir/usr/lib/jvm/java-11-graalvm/languages/brj/bin/brj" "$pkgdir/usr/lib/jvm/java-11-graalvm/bin/brj"
+    ln -s "../languages/brj/bin/brj" "$pkgdir/usr/lib/jvm/java-11-graalvm/bin/brj"
 }
