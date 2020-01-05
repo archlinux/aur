@@ -6,10 +6,10 @@ unix:!macx {
 	target.path = $${PREFIX}/bin
 
 	icon.path = $${PREFIX}/share/pixmaps
-	icon.files = pictures/vokoscreen.png
+	icon.files = applications/vokoscreenNG.png
 
 	desktop.path = $${PREFIX}/share/applications
-	desktop.files = applications/vokoscreen.desktop
+	desktop.files = applications/vokoscreenNG.desktop
 
 	INSTALLS += target icon desktop
 }

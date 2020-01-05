@@ -1,11 +1,12 @@
-# Maintainer: Ivan Fonseca <ivanfon@riseup.net>
+# Maintainer: Elrondo46 TuxnVape <elrond94@hotmail.com>
+# Contributor: Ivan Fonseca <ivanfon@riseup.net>
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
-_pkgver=2.9.5-beta
+_pkgver=3.0.0
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='An easy to use screencast creator'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
@@ -24,8 +25,8 @@ source=(
 	'install.pri'
 )
 sha512sums=(
-	'21f1a4a21d61067373e406db7f6775fdf11c87c70f398172220d773358adc457fd8dc6ef40705690cae6ece26581385bea52ab9849b09273723a31efc67fc96f'
-	'0a5e0523adaa9e7f9b46cbbc8f7d8d0167787b67f11cfb7895785e3f93ab8836526c1b0891f4bf3362f4e8bc44885ffcf99670b86558aa667bd4f4ac7df56f11'
+	'e277a3cd2152c2fdf0da3efb7976417b5499124282cfabd76f9ef4627a73457b59792f5492367acd386a0dc77773414e4d1717ec7e5c023350bd7502647e675e'
+	'55b27e0eb5f0f1f1193057c854666ccaea6df89d090239e58a0b8fe6c8749d9d2ca3e80812ea7ecded22fdf75d7fd8a0699e8dbeae6c93c97bc6b648f114e5f4'
 )
 
 prepare() {
@@ -33,7 +34,7 @@ prepare() {
 
 	# Add install instructions
 	cp ../install.pri src/
-	echo 'include(install.pri)' >> src/vokoscreen.pro
+	echo 'include(install.pri)' >> src/vokoscreenNG.pro
 
 	# Create build directory
 	mkdir -p "${srcdir}"/build
@@ -42,7 +43,7 @@ prepare() {
 build() {
 	# Building package
 	cd "${srcdir}"/build
-	qmake-qt5 ../${pkgname}NG-${_pkgver}/src \
+	qmake-qt5 ../${pkgname}NG-${_pkgver}/src/vokoscreenNG.pro \
 		QMAKE_CFLAGS="${CFLAGS}" \
 		QMAKE_CXXFLAGS="${CXXFLAGS}" \
 		CONFIG+=release \

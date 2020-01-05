@@ -1,7 +1,7 @@
 pkgbase = vokoscreen
 	pkgdesc = An easy to use screencast creator
-	pkgver = 2.9.5.beta
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = vokoscreen
 	depends = pulseaudio
 	depends = zbar
 	optdepends = gst-plugins-ugly: for x264 video codec
-	source = vokoscreen-2.9.5-beta.tar.gz::https://github.com/vkohaupt/vokoscreenNG/archive/2.9.5-beta.tar.gz
+	source = vokoscreen-3.0.0.tar.gz::https://github.com/vkohaupt/vokoscreenNG/archive/3.0.0.tar.gz
 	source = install.pri
-	sha512sums = 21f1a4a21d61067373e406db7f6775fdf11c87c70f398172220d773358adc457fd8dc6ef40705690cae6ece26581385bea52ab9849b09273723a31efc67fc96f
-	sha512sums = 0a5e0523adaa9e7f9b46cbbc8f7d8d0167787b67f11cfb7895785e3f93ab8836526c1b0891f4bf3362f4e8bc44885ffcf99670b86558aa667bd4f4ac7df56f11
+	sha512sums = e277a3cd2152c2fdf0da3efb7976417b5499124282cfabd76f9ef4627a73457b59792f5492367acd386a0dc77773414e4d1717ec7e5c023350bd7502647e675e
+	sha512sums = 55b27e0eb5f0f1f1193057c854666ccaea6df89d090239e58a0b8fe6c8749d9d2ca3e80812ea7ecded22fdf75d7fd8a0699e8dbeae6c93c97bc6b648f114e5f4
 
 pkgname = vokoscreen
 
