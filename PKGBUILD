@@ -17,3 +17,4 @@ package() {
     install -D -m 755 nginxbeautifier.js "$pkgdir/usr/bin/nginxbeautifier"
     
 }
+md5sums=('SKIP')

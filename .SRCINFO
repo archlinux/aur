@@ -8,6 +8,7 @@ pkgbase = nginxbeautifier
 	depends = nodejs
 	provides = nginxbeautifier
 	source = nginxbeautifier::git://github.com/vasilevich/nginxbeautifier.git
+	md5sums = SKIP
 
 pkgname = nginxbeautifier
 
