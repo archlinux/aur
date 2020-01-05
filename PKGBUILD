@@ -1,8 +1,8 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=heimer-git
-pkgver=1.12.0.r0.g4dbcdce
-pkgrel=1.1
+pkgver=1.13.0.r0.g9848824
+pkgrel=1
 pkgdesc="simple cross-platform mind map and note-taking tool written in Qt."
 arch=("x86_64")
 url="https://github.com/juzzlin/heimer"
