@@ -11,12 +11,13 @@ url="http://hocwp.free.fr/xbindkeys/xbindkeys.html"
 license=('GPL')
 depends=('xbindkeys' 'gtk2')
 conflicts=('xbindkeys_config')
-source=(ftp://ftp.eunet.cz/FreeBSD/ports/distfiles/$_pkgname-$pkgver.tar.gz \
+source=(http://ftp.de.debian.org/debian/pool/main/x/xbindkeys-config/xbindkeys-config_0.1.3.orig.tar.gz \
         http://ftp.de.debian.org/debian/pool/main/x/xbindkeys-config/xbindkeys-config_0.1.3-2.diff.gz)
-md5sums=('c8983fd822e66c9f9bfbe5e99044a203'
-         '7036aeef8276796ebdc04dc6b9bfd914')
+sha512sums=('95621b4f4cac14c922caa51d15376a7f5223d1e0742efb994d2e1f8ffcf16645bc118ac835ff70be64810309363404b23b9540dee1e0f2a6ba86a5e500230f10'
+            '8f05ddebe8697034478727863c356566442c7f6d2f4abdf7016182452b499adfe0e2ac66aff3c2068e6a3f9626ff611362d73750261a742cd1d692bb5df2ecee')
 
 build() {
+	gzip -d ../xbindkeys-config_0.1.3-2.diff.gz
 	cd "$srcdir/$_pkgname-$pkgver"
 	patch -p1 <../xbindkeys-config_0.1.3-2.diff
 	make
