@@ -9,7 +9,7 @@ pkgbase = fennel
 	provides = fennel
 	conflicts = fennel
 	source = fennel-0.3.1.tar.gz::https://github.com/bakpakin/Fennel/archive/0.3.1.tar.gz
-	sha512sums = eaaf516b51e32838d6ff85d8fe056265ea855ddd48b5b5159803330921825ada26b70c5503380f40abb73b073627d96f1bc0161c8a69e89ed2be92c32cdecb70
+	sha512sums = bcc34429c616f4bad471a4ba6a830d58254582a82384d71a8bee81b72bb531d0322b5160d7e741cdff0bf8a421f0630b967ca45ae6594f06877b3029bc063385
 
 pkgname = fennel
 
