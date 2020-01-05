@@ -2,7 +2,7 @@
 
 pkgname=molotov
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming access to French (only) TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
