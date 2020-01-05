@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-preview-git
 	pkgdesc = Preview for VapourSynth scripts
 	pkgver = r144.2fbc158
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Endilll/vapoursynth-preview
 	arch = any
 	license = Apache-2.0
