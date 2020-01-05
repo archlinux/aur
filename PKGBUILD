@@ -1,31 +1,19 @@
-# Maintainer: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
-# Contributor: FadeMind <fademind@gmail.com>
-
-pkgname=papirus-libreoffice-theme
-_commit=2884637
-pkgver=20170325
-pkgrel=1
-pkgdesc="Papirus theme for LibreOffice"
-url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com>
+pkgname='papirus-libreoffice-theme'
+pkgver='20170228'
+pkgrel='1'
+epoch='1'
+pkgdesc='Papirus theme for LibreOffice'
 arch=('any')
-license=('GPL')
-makedepends=('git' 'make')
-conflicts=('papirus-libreoffice-theme-git' 'libreoffice-papirus-theme' 'libreoffice-papirus-theme-git')
-optdepends=('libreoffice' 'libreoffice-fresh-rpm')
-options=('!strip')
-source=("${pkgname}::git+${url}.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd ${pkgname}
-    git log -1 --format="%cd" --date=short | tr -d '-'
-}
+url="https://github.com/PapirusDevelopmentTeam/$pkgname"
+license=('GPL3')
+optdepends=('libreoffice')
+makedepends=('make')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('396402c9327506a729d3c01e339528dd5b5f9b205cb3edabca4eb85b5db5df6d')
 
 package() {
-    cd ${pkgname}
-    make install \
-      PREFIX="/usr/lib" \
-      DESTDIR="$pkgdir"
+	cd "$srcdir/$pkgname-$pkgver/"
+	make install DESTDIR="$pkgdir" PREFIX='/usr/lib'
 }
-
-# vim:set ts=2 sw=2 cc=80 et:
