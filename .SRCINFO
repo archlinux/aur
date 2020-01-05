@@ -1,0 +1,17 @@
+pkgbase = ruby-test-unit-rr
+	pkgdesc = test-unit-rr is a RR adapter for test-unit
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/test-unit/test-unit-rr
+	arch = any
+	license = LGPL2.1
+	makedepends = ruby-rdoc
+	makedepends = ruby-test-unit
+	depends = ruby
+	depends = ruby-rr
+	options = !emptydirs
+	source = https://github.com/test-unit/test-unit-rr/archive/1.0.5/ruby-test-unit-rr-1.0.5.tar.gz
+	sha512sums = f91e9d9c041b84c4eed80850c3d5e3567c7082d1a6643b6ffb4e3464184ed703f9e8f03a2f2cbd4acc7d9cb7ded3d60fe9db4d08ed19c7daf91d46a410d6c29a
+
+pkgname = ruby-test-unit-rr
+
