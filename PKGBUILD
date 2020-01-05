@@ -5,7 +5,7 @@
 _pkgname='cloudprint-cups'
 pkgname="$_pkgname-git"
 pkgver='20160502.r16.g1f27903'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Google Cloud Print driver for CUPS, allows printing to printers hosted on GCP - git version'
 arch=('any')
@@ -14,6 +14,7 @@ license=('GPL3')
 depends=('cups' 'ghostscript' 'imagemagick' 'python2' 'python2-httplib2' 'python2-pycups' 'python2-six')
 makedepends=('git')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 install="$pkgname.install"
 source=("$pkgname::git+$url#branch=capabilities-fix")
 sha256sums=('SKIP')
