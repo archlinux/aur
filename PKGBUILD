@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=dcpomatic
 pkgver=2.14.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source program to generate Digital Cinema Packages (DCPs) from videos or images"
 arch=('i686' 'x86_64')
 url="https://dcpomatic.com/"
@@ -10,7 +10,7 @@ url="https://dcpomatic.com/"
 depends=('pangomm>=1.4' 'xorgproto' 'libsub>=1.4.14' 'libcxml>=0.16.1' 'libdcp>=1.6.14' 'ffmpeg>=4.0.2' 'glib2' 'imagemagick' 'libssh'  'wxgtk2>=3.0.4'   'wxgtk-common' 'libquickmail>=0.1.29' 'libzip' 'xz' 'libsndfile' 'libsamplerate' 'pangomm' 'rtaudio' 'x264')
 makedepends=('python2' 'boost>=1.66.0' )
 source=("${pkgname}-${pkgver}.tar.bz2::https://dcpomatic.com/dl.php?id=source&version=${pkgver}" )
-sha256sums=('62c51060e001a404627265f7fa7af9014c179a0fb270193941e0c6c677785ded')
+sha256sums=('7aee13f1d836af5e12bca05d2e73a4413961e08fafab64b94d6a0917b7c410c1')
 
 
 
