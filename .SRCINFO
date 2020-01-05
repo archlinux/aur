@@ -1,0 +1,16 @@
+pkgbase = spidriver-git
+	pkgdesc = CL utility and shared library, for the spidriver usb-to-spi adaptor
+	pkgver = v.r43.gc781cc2
+	pkgrel = 1
+	url = https://spidriver.com/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = spidriver.so_v.r43.gc781cc2
+	provides = spicl
+	source = spidriver-git::git+https://github.com/jamesbowman/spidriver.git
+	md5sums = SKIP
+
+pkgname = spidriver-git
+
