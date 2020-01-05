@@ -3,13 +3,13 @@
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
 pkgver=9.2.2
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 _pkgvercommit=v$pkgver
 #_pkgvercommit='cd8551cdd40aef492589589c8c3b7fcadf0eaa42'
 sha256sums=('86217be354f192ac196f630cbce6dba03ade7972e0d5dafdb02f7aa506b55540'
-            'fe868b5da603aecd6747dbb743b5aec8e02a6db6bb11d12862cbd5cb55d4dba2')
+            '386c53cddb1cf1af98da8bdb3b66592d796bda0a53f07b24daa23516f8ca92e7')
 
 pkgdesc="Pamac cli frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')

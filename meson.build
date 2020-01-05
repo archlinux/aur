@@ -5,7 +5,7 @@ libalpm = dependency('libalpm')
 json = dependency('json-glib-1.0')
 libsoup = dependency('libsoup-2.4')
 polkit = dependency('polkit-gobject-1')
-#libnotify = dependency('libnotify')
+# libnotify = dependency('libnotify')
 appstream = dependency('appstream-glib')
 
 # gtk3 = dependency('gtk+-3.0', version : '>=3.22')
@@ -28,7 +28,7 @@ common_sources = ['common.vala', 'package.vala', 'alpm_package.vala', 'pamac_con
 # transaction_gtk_sources = ['transaction-gtk.vala', 'choose_provider_dialog.vala', 'choose_pkgs_dialog.vala', 'transaction_sum_dialog.vala', 'progress_box.vala']
 # preferences_sources = ['preferences_dialog.vala']
 
-libpamac_sources = [common_sources, 'alpm_config.vala', 'aur.vala', 'database.vala', 'transaction_interface.vala', 'alpm_utils.vala', 'transaction_interface_root.vala', 'daemon_interface.vala', 'transaction_interface_daemon.vala', 'transaction.vala']
+libpamac_sources = [common_sources, 'version.vala', 'alpm_config.vala', 'aur.vala', 'database.vala', 'transaction_interface.vala', 'alpm_utils.vala', 'transaction_interface_root.vala', 'daemon_interface.vala', 'transaction_interface_daemon.vala', 'transaction.vala']
 libpamac_dependencies = [alpm_deps, math, json, appstream, libsoup]
 
 if get_option('enable-snap')
@@ -72,9 +72,16 @@ custom_target('pamac typelib', command: [g_ir_compiler, '--shared-library', 'lib
 
 libpamac_dep = declare_dependency(link_with: libpamac)
 
+daemon_sources = ['version.vala', 'common_daemon.vala', 'alpm_utils.vala', 'alpm_config.vala', 'pamac_config_daemon.vala', 'daemon.vala']
+daemon_dependencies = [vala_deps, alpm_deps, json, math, libsoup, polkit, appstream]
+if get_option('enable-snap')
+	daemon_sources += ['plugin_loader.vala', 'package.vala', 'snap_interface.vala']
+	daemon_dependencies += gmodule
+endif
+
 executable('pamac-daemon',
-	sources: ['common_daemon.vala', 'alpm_utils.vala', 'alpm_config.vala', 'daemon.vala'],
-	dependencies: [vala_deps, alpm_deps, json, math, libsoup, polkit, appstream, libpamac_dep],
+	sources: daemon_sources,
+	dependencies: daemon_dependencies,
 	vala_args: common_vala_args,
 	c_args: [common_c_args, alpm_c_args],
 	install : true)
@@ -126,3 +133,10 @@ executable('pamac',
 # 	vala_args: common_vala_args,
 # 	c_args: common_c_args,
 # 	install: true)
+
+executable('dependency-checker',
+	sources: ['alpm_config.vala', 'dependency_checker.vala'],
+	dependencies: [vala_deps, alpm_deps],
+	vala_args: common_vala_args,
+	c_args: [common_c_args, alpm_c_args],
+	install : true)
