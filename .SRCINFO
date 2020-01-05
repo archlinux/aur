@@ -5,9 +5,11 @@ pkgbase = symfony-cli
 	url = https://symfony.com/
 	install = symfony-cli.install
 	arch = x86_64
-	license = MIT
+	license = custom
 	source = https://github.com/symfony/cli/releases/download/v4.11.3/symfony_linux_amd64.gz
+	source = eula.txt
 	sha256sums = f89cc5c8b56ae44d8c1334f91cea9068d80a5c870b9c80a4e396dbab6b13de98
+	sha256sums = 46711d74e64aa4a26ae257063b795c432113b56fb80d1a69ffaa7b0b079dcf11
 
 pkgname = symfony-cli
 
