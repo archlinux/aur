@@ -1,13 +1,12 @@
 pkgbase = rocketchat-client-bin
 	pkgdesc = The Ultimate Open Source Web Chat Platform
 	pkgver = 2.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocket.chat
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = nss
-	depends = gconf
 	depends = libxss
 	optdepends = libnotify: For sending desktop notifications
 	optdepends = libindicator-gtk3: For the system tray icon
