@@ -1,0 +1,18 @@
+pkgbase = pacback
+	pkgdesc = Advanced Rollback Version Control for Arch Linux - Alpha
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/JustinTimperio/pacback
+	arch = any
+	license = MIT
+	depends = python-tqdm
+	depends = arch-install-scripts
+	depends = curl
+	optdepends = pigz: Multithreaded de/compression of restore points
+	provides = pacback
+	conflicts = pacback-git
+	source = https://github.com/JustinTimperio/pacback/releases/download/v1.6.0/pacback_v1-6-0.tar
+	sha512sums = cfc8c652792e5bd3730f7265e4d871a70ec1058ee7f5fc3c0a4cfbb761167e7fce15a0c40c0613f47b526fbe007ca727d7237d0edc1628a101ca3c9e1fafbf83
+
+pkgname = pacback
+
