@@ -1,0 +1,301 @@
+diff --git a/Telegram/Resources/langs/lang.strings b/Telegram/Resources/langs/lang.strings
+index ff2b42142..889c05ac5 100644
+--- a/Telegram/Resources/langs/lang.strings
++++ b/Telegram/Resources/langs/lang.strings
+@@ -2266,6 +2266,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ "ktg_settings_adaptive_baloons" = "Adaptive baloons";
+ "ktg_settings_emoji_outline" = "Big emoji outline";
+ "ktg_settings_always_show_scheduled" = "Always show scheduled";
++"ktg_settings_use_system_font" = "Use system font";
+ "ktg_settings_fonts" = "Change application fonts";
+ "ktg_settings_network" = "Network";
+ "ktg_settings_net_speed_boost" = "Speed boost";
+diff --git a/Telegram/Resources/langs/rewrites/ru.json b/Telegram/Resources/langs/rewrites/ru.json
+index 11f871b8b..8f9a5315d 100644
+--- a/Telegram/Resources/langs/rewrites/ru.json
++++ b/Telegram/Resources/langs/rewrites/ru.json
+@@ -33,6 +33,7 @@
+ 	"ktg_settings_adaptive_baloons": "Адаптивные пузырьки сообщений",
+ 	"ktg_settings_emoji_outline": "Обводка у больших эмодзи",
+ 	"ktg_settings_always_show_scheduled": "Всегда показывать отложенные",
++	"ktg_settings_use_system_font": "Использовать системный шрифт",
+ 	"ktg_settings_fonts": "Изменить шрифты приложения",
+ 	"ktg_settings_network": "Сеть",
+ 	"ktg_settings_net_speed_boost": "Ускорение загрузки",
+diff --git a/Telegram/SourceFiles/core/application.cpp b/Telegram/SourceFiles/core/application.cpp
+index 118e46d65..5735a869c 100644
+--- a/Telegram/SourceFiles/core/application.cpp
++++ b/Telegram/SourceFiles/core/application.cpp
+@@ -176,6 +176,9 @@ void Application::run() {
+ 	if (!cMonospaceFont().isEmpty()) {
+ 		style::internal::SetMonospaceFont(cMonospaceFont());
+ 	}
++	if (cUseSystemFont()) {
++		style::internal::SetUseSystemFont(cUseSystemFont());
++	}
+ 	style::internal::StartFonts();
+ 
+ 	ThirdParty::start();
+diff --git a/Telegram/SourceFiles/core/kotato_settings.cpp b/Telegram/SourceFiles/core/kotato_settings.cpp
+index a01dad791..87f9e3cb1 100644
+--- a/Telegram/SourceFiles/core/kotato_settings.cpp
++++ b/Telegram/SourceFiles/core/kotato_settings.cpp
+@@ -142,6 +142,11 @@ bool Manager::readCustomFile() {
+ 		if (settingsFontsMonospace != settingsFonts.constEnd() && (*settingsFontsMonospace).isString()) {
+ 			cSetMonospaceFont((*settingsFontsMonospace).toString());
+ 		}
++
++		const auto settingsFontsUseSystemFont = settingsFonts.constFind(qsl("use_system_font"));
++		if (settingsFontsUseSystemFont != settingsFonts.constEnd() && (*settingsFontsUseSystemFont).isBool()) {
++			cSetUseSystemFont((*settingsFontsUseSystemFont).toBool());
++		}
+ 	}
+ 
+ 	const auto settingsStickerHeightIt = settings.constFind(qsl("sticker_height"));
+@@ -244,6 +249,7 @@ void Manager::writeDefaultFile() {
+ 	settingsFonts.insert(qsl("semibold"), qsl("Open Sans Semibold"));
+ 	settingsFonts.insert(qsl("semibold_is_bold"), false);
+ 	settingsFonts.insert(qsl("monospaced"), qsl("Consolas"));
++	settingsFonts.insert(qsl("use_system_font"), cUseSystemFont());
+ 
+ 	settings.insert(qsl("fonts"), settingsFonts);
+ 
+@@ -297,6 +303,7 @@ void Manager::writeCurrentSettings() {
+ 	}
+ 
+ 	settingsFonts.insert(qsl("semibold_is_bold"), cSemiboldFontIsBold());
++	settingsFonts.insert(qsl("use_system_font"), cUseSystemFont());
+ 
+ 	settings.insert(qsl("fonts"), settingsFonts);
+ 
+diff --git a/Telegram/SourceFiles/settings.cpp b/Telegram/SourceFiles/settings.cpp
+index 7d5ce1318..4cde4a658 100644
+--- a/Telegram/SourceFiles/settings.cpp
++++ b/Telegram/SourceFiles/settings.cpp
+@@ -209,6 +209,7 @@ rpl::producer<> UpdatedRecentEmoji() {
+ 
+ QString gMainFont, gSemiboldFont, gMonospaceFont;
+ bool gSemiboldFontIsBold = false;
++bool gUseSystemFont = false;
+ 
+ rpl::variable<int> gStickerHeight = 128;
+ void SetStickerHeight(int height) {
+diff --git a/Telegram/SourceFiles/settings.h b/Telegram/SourceFiles/settings.h
+index 389724f7d..19d23fea4 100644
+--- a/Telegram/SourceFiles/settings.h
++++ b/Telegram/SourceFiles/settings.h
+@@ -183,6 +183,7 @@ DeclareSetting(QString, MainFont);
+ DeclareSetting(QString, SemiboldFont);
+ DeclareSetting(bool, SemiboldFontIsBold);
+ DeclareSetting(QString, MonospaceFont);
++DeclareSetting(bool, UseSystemFont);
+ 
+ void SetBigEmojiOutline(bool enabled);
+ [[nodiscard]] bool BigEmojiOutline();
+diff --git a/Telegram/SourceFiles/settings/settings_kotato.cpp b/Telegram/SourceFiles/settings/settings_kotato.cpp
+index 7ec6e7721..457ff21db 100644
+--- a/Telegram/SourceFiles/settings/settings_kotato.cpp
++++ b/Telegram/SourceFiles/settings/settings_kotato.cpp
+@@ -139,6 +139,33 @@ void SetupKotatoChats(not_null<Ui::VerticalLayout*> container) {
+ 		KotatoSettings::Write();
+ 	}, container->lifetime());
+ 
++	const auto useSystemFontToggled = Ui::CreateChild<rpl::event_stream<bool>>(
++		container.get());
++	AddButton(
++		container,
++		tr::ktg_settings_use_system_font(),
++		st::settingsButton
++	)->toggleOn(
++		useSystemFontToggled->events_starting_with_copy(cUseSystemFont())
++	)->toggledValue(
++	) | rpl::filter([](bool enabled) {
++		return (enabled != cUseSystemFont());
++	}) | rpl::start_with_next([=](bool enabled) {
++		const auto confirmed = [=] {
++			cSetUseSystemFont(enabled);
++			KotatoSettings::Write();
++			App::restart();
++		};
++		const auto cancelled = [=] {
++			useSystemFontToggled->fire(cUseSystemFont() == true);
++		};
++		Ui::show(Box<ConfirmBox>(
++			tr::lng_settings_need_restart(tr::now),
++			tr::lng_settings_restart_now(tr::now),
++			confirmed,
++			cancelled));
++	}, container->lifetime());
++
+ 	AddButton(
+ 		container,
+ 		tr::ktg_settings_fonts(),
+Submodule Telegram/lib_ui 55aec1954..813c9375e:
+diff --git a/Telegram/lib_ui/ui/style/style_core.cpp b/Telegram/lib_ui/ui/style/style_core.cpp
+index 3f9b003..6872555 100644
+--- a/Telegram/lib_ui/ui/style/style_core.cpp
++++ b/Telegram/lib_ui/ui/style/style_core.cpp
+@@ -19,6 +19,9 @@
+ 
+ namespace style {
+ namespace internal {
++
++bool GetUseSystemFont();
++
+ namespace {
+ 
+ constexpr auto kMinContrastAlpha = 64;
+@@ -55,10 +58,12 @@ void ResolveMonospaceFont() {
+ 	if (!CustomMonospaceFont.isEmpty()) {
+ 		tryFont(CustomMonospaceFont);
+ 	}
+-	tryFont("Consolas");
+-	tryFont("Liberation Mono");
+-	tryFont("Menlo");
+-	tryFont("Courier");
++	if (!GetUseSystemFont()) {
++		tryFont("Consolas");
++		tryFont("Liberation Mono");
++		tryFont("Menlo");
++		tryFont("Courier");
++	}
+ 	if (family.isEmpty()) {
+ 		const auto type = QFontDatabase::FixedFont;
+ 		family = QFontDatabase::systemFont(type).family();
+diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
+index 3cdf07a..e27850f 100644
+--- a/Telegram/lib_ui/ui/style/style_core_font.cpp
++++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
+@@ -164,9 +164,14 @@ QString Overrides[FontTypesCount];
+ QString CustomMainFont;
+ QString CustomSemiboldFont;
+ bool CustomSemiboldIsBold = false;
++bool UseSystemFont = false;
+ 
+ } // namespace
+ 
++bool GetUseSystemFont() {
++	return UseSystemFont;
++}
++
+ void SetMainFont(const QString &familyName) {
+ 	CustomMainFont = familyName;
+ }
+@@ -179,6 +184,10 @@ void SetSemiboldIsBold(bool isBold) {
+ 	CustomSemiboldIsBold = isBold;
+ }
+ 
++void SetUseSystemFont(bool ifUse) {
++	UseSystemFont = ifUse;
++}
++
+ void StartFonts() {
+ 	if (Started) {
+ 		return;
+@@ -187,39 +196,41 @@ void StartFonts() {
+ 
+ 	style_InitFontsResource();
+ 
+-	bool areGood[FontTypesCount] = { false };
+-	for (auto i = 0; i != FontTypesCount; ++i) {
+-		const auto name = FontTypeNames[i];
+-		const auto flags = FontTypeFlags[i];
+-		areGood[i] = LoadCustomFont(":/gui/fonts/" + name + ".ttf", name, flags);
+-		Overrides[i] = name;
++	if (!UseSystemFont) {
++		bool areGood[FontTypesCount] = { false };
++		for (auto i = 0; i != FontTypesCount; ++i) {
++			const auto name = FontTypeNames[i];
++			const auto flags = FontTypeFlags[i];
++			areGood[i] = LoadCustomFont(":/gui/fonts/" + name + ".ttf", name, flags);
++			Overrides[i] = name;
+ #ifdef Q_OS_WIN
+-		// Attempt to workaround a strange font bug with Open Sans Semibold not loading.
+-		// See https://github.com/telegramdesktop/tdesktop/issues/3276 for details.
+-		// Crash happens on "options.maxh / _t->_st->font->height" with "division by zero".
+-		// In that place "_t->_st->font" is "semiboldFont" is "font(13 "Open Sans Semibold").
+-		const auto fallback = FontTypeWindowsFallback[i];
+-		if (!areGood[i]) {
+-			if (ValidateFont(fallback, flags)) {
+-				Overrides[i] = fallback;
+-				UI_LOG(("Fonts Info: Using '%1' instead of '%2'.").arg(fallback).arg(name));
++			// Attempt to workaround a strange font bug with Open Sans Semibold not loading.
++			// See https://github.com/telegramdesktop/tdesktop/issues/3276 for details.
++			// Crash happens on "options.maxh / _t->_st->font->height" with "division by zero".
++			// In that place "_t->_st->font" is "semiboldFont" is "font(13 "Open Sans Semibold").
++			const auto fallback = FontTypeWindowsFallback[i];
++			if (!areGood[i]) {
++				if (ValidateFont(fallback, flags)) {
++					Overrides[i] = fallback;
++					UI_LOG(("Fonts Info: Using '%1' instead of '%2'.").arg(fallback).arg(name));
++				}
+ 			}
+-		}
+-		// Disable default fallbacks to Segoe UI, see:
+-		// https://github.com/telegramdesktop/tdesktop/issues/5368
+-		//
+-		//QFont::insertSubstitution(name, fallback);
++			// Disable default fallbacks to Segoe UI, see:
++			// https://github.com/telegramdesktop/tdesktop/issues/5368
++			//
++			//QFont::insertSubstitution(name, fallback);
+ #endif // Q_OS_WIN
+-	}
++		}
+ #ifdef Q_OS_MAC
+-	auto list = QStringList();
+-	list.append(".SF NS Text");
+-	list.append("Helvetica Neue");
+-	list.append("Lucida Grande");
+-	for (const auto &name : FontTypeNames) {
+-		QFont::insertSubstitutions(name, list);
+-	}
++		auto list = QStringList();
++		list.append(".SF NS Text");
++		list.append("Helvetica Neue");
++		list.append("Lucida Grande");
++		for (const auto &name : FontTypeNames) {
++			QFont::insertSubstitutions(name, list);
++		}
+ #endif // Q_OS_MAC
++	}
+ 
+ 	if (!CustomMainFont.isEmpty() && ValidateFont(CustomMainFont)) {
+ 		Overrides[FontTypeRegular] = CustomMainFont;
+@@ -256,7 +267,13 @@ QString GetPossibleEmptyOverride(const QString &familyName, int32 flags) {
+ }
+ 
+ QString GetFontOverride(const QString &familyName, int32 flags) {
+-	const auto result = GetPossibleEmptyOverride(familyName, flags);
++	auto result = GetPossibleEmptyOverride(familyName, flags);
++
++	if (UseSystemFont && result.isEmpty() &&
++	(familyName == "Open Sans" || familyName == "Open Sans Semibold")) {
++		result = QFontDatabase::systemFont(QFontDatabase::GeneralFont).family();
++	}
++
+ 	return result.isEmpty() ? familyName : result;
+ }
+ 
+@@ -295,6 +312,9 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
+ 		f.setBold(true);
+ 	} else if (fontFamilies[family] == "Open Sans Semibold" && CustomSemiboldIsBold) {
+ 		f.setBold(true);
++	} else if (fontFamilies[family] == "Open Sans Semibold" && UseSystemFont
++	&& GetPossibleEmptyOverride(fontFamilies[family], flags).isEmpty()) {
++		f.setBold(true);
+ 	}
+ 	f.setItalic(_flags & FontItalic);
+ 	f.setUnderline(_flags & FontUnderline);
+diff --git a/Telegram/lib_ui/ui/style/style_core_font.h b/Telegram/lib_ui/ui/style/style_core_font.h
+index 6fbf581..d77f499 100644
+--- a/Telegram/lib_ui/ui/style/style_core_font.h
++++ b/Telegram/lib_ui/ui/style/style_core_font.h
+@@ -17,6 +17,7 @@ namespace internal {
+ void SetMainFont(const QString &familyName);
+ void SetSemiboldFont(const QString &familyName);
+ void SetSemiboldIsBold(bool isBold);
++void SetUseSystemFont(bool ifUse);
+ 
+ void StartFonts();
+ [[nodiscard]] QString GetFontOverride(const QString &familyName, int32 flags = 0);

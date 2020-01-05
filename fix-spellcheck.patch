@@ -1,0 +1,45 @@
+Submodule Telegram/lib_spellcheck contains modified content
+diff --git a/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp b/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
+index a465cc6..10c8d17 100644
+--- a/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
++++ b/Telegram/lib_spellcheck/spellcheck/platform/linux/spellcheck_linux.cpp
+@@ -33,35 +33,22 @@ private:
+ 	EnchantSpellChecker(const EnchantSpellChecker&) = delete;
+ 	EnchantSpellChecker& operator =(const EnchantSpellChecker&) = delete;
+ 
++	using DictPtr = std::unique_ptr<enchant::Dict>;
++
+ 	std::unique_ptr<enchant::Broker> _brokerHandle;
+-	std::vector<std::unique_ptr<enchant::Dict>> _validators;
++	std::vector<DictPtr> _validators;
+ };
+ 
+ EnchantSpellChecker::EnchantSpellChecker() {
+ 	if (!enchant::loader::do_explicit_linking()) return;
+ 
+-	std::set<std::string> langs;
+ 	_brokerHandle = std::make_unique<enchant::Broker>();
+-	_brokerHandle->list_dicts([](
+-			const char *language,
+-			const char *provider,
+-			const char *description,
+-			const char *filename,
+-			void *our_payload) {
+-		static_cast<decltype(langs)*>(our_payload)->insert(language);
+-	}, &langs);
+-	using DictPtr = std::unique_ptr<enchant::Dict>;
+-	_validators.reserve(langs.size());
+ 	try {
+ 		std::string langTag = QLocale::system().name().toStdString();
+ 		_validators.push_back(DictPtr(_brokerHandle->request_dict(langTag)));
+-		langs.erase(langTag);
+ 	} catch (const enchant::Exception &e) {
+-		// no first dictionary found
+-	}
+-	for (const std::string &language : langs) {
+ 		try {
+-			_validators.push_back(DictPtr(_brokerHandle->request_dict(language)));
++			_validators.push_back(DictPtr(_brokerHandle->request_dict("en")));
+ 		} catch (const enchant::Exception &e) {
+ 			base::Integration::Instance().logMessage(QString("Catch after request_dict: ") + e.what());
+ 		}

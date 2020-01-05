@@ -2,8 +2,7 @@ Catch2/
 codegen/
 crl/
 GSL/
-kdesktop/
-kotatogram-desktop-*
+kotatogram-desktop/
 lib_base/
 lib_crl/
 lib_lottie/
@@ -19,4 +18,5 @@ src/
 pkg/
 variant/
 xxHash/
-a196b0aba723de85ee573594d9ad420412b6391a.patch
+update-to-v1.9.3.patch
+intro_qr_plane*.png
