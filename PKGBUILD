@@ -5,8 +5,8 @@
 
 _pkgname='decaf-emu'
 pkgname="${_pkgname}-git"
-pkgver=r4931.497042c1
-pkgrel=2
+pkgver=r5067.876e342d
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo Wii U emulator"
 arch=('x86_64')
 url="https://github.com/decaf-emu/decaf-emu"
@@ -14,8 +14,41 @@ license=('GPL3')
 depends=('curl' 'ffmpeg' 'c-ares' 'openssl' 'qt5-base' 'qt5-svg' 'sdl2' 'vulkan-icd-loader' 'zlib')
 makedepends=('cmake' 'c-ares' 'glslang' 'git' 'python' 'vulkan-validation-layers')
 optdepends=('qt5-wayland: for Wayland support')
-source=("git+https://github.com/decaf-emu/decaf-emu")
-md5sums=('SKIP')
+source=("git+$url"
+        "qtads::git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System"
+        "catch::git+https://github.com/catchorg/Catch2"
+        "addrlib::git+https://github.com/decaf-emu/addrlib"
+        "cereal::git+https://github.com/USCiLab/cereal"
+        "cnl::git+https://github.com/johnmcfarlane/cnl"
+        "cpp-peglib::git+https://github.com/yhirose/cpp-peglib"
+        "cpptoml::git+https://github.com/skystrife/cpptoml"
+        "excmd::git+https://github.com/exjam/excmd"
+        "fmt::git+https://github.com/fmtlib/fmt"
+        "glslang::git+https://github.com/KhronosGroup/glslang"
+        "gsl-lite::git+https://github.com/decaf-emu/gsl-lite"
+        "imgui::git+https://github.com/ocornut/imgui"
+        "libbinrec::git+https://github.com/decaf-emu/libbinrec"
+        "ovsocket::git+https://github.com/exjam/ovsocket"
+        "pugixml::git+https://github.com/zeux/pugixml"
+        "spdlog::git+https://github.com/gabime/spdlog"
+        )
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 
 pkgver() {
@@ -28,7 +61,14 @@ prepare() {
     cd "$srcdir/$_pkgname"
 
     git submodule init
-    git submodule update --init --recursive
+    for mod_url in ${source[@]:1}
+    do
+      mod_name=${mod_url%%:*}
+    echo $mod_name
+      git config submodule.libraries/$mod_name.url $srcdir/$mod_name
+    done
+
+    git submodule update
 }
 
 build() {
