@@ -2,11 +2,20 @@
 # Contributor: Po-An,Yang(Antonio) <yanganto gmail.com>
 
 # Todo: If there'a any files left in the cache they should probably be deleted on uninstall
+#
+#       Yes, we need to figure where is the cache, but I am not using this package recently.
+#       I just pack and run it, and to check the package is good for use.  
+#       If you have and an idea to do this, please kindly do it.
+#       Thanks.  
+#                                                                                   Antonio
+
 # Todo: Can we build the source code?
+#       It is cool. :) 
+#                                                                                   Antonio
 
 set -u
 pkgname='networkminer'
-pkgver='2.4'
+pkgver=2.5
 pkgrel='1'
 pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer'
 arch=('any')
@@ -16,7 +25,7 @@ depends=('mono')
 _verwatch=('http://www.netresec.com/?page=NetworkMiner' '\s\+<[nt][a-z]\+>NetworkMiner\s\([0-9][^<]\+\)</[a-z]\+>.*' 'f')
 _srcname="NetworkMiner_${pkgver//\./-}"
 source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
-sha256sums=('34cb3bc1387b38033f8e7f55c4874eebae0dd96c35f8dbb77776dd05593cec49')
+sha256sums=('3f11dc812a9a3c84fafa29660e6142464582825569771e1f60bd6568e0269b23')
 
 package() {
   set -u
