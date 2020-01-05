@@ -1,10 +1,10 @@
 # Maintainer: Maximilian Stahlberg <maximilian.stahlberg tu-berlin de>
 
-pkgbase=('python-concurrencytest')
+pkgbase=python-concurrencytest
 pkgname=('python-concurrencytest' 'python2-concurrencytest')
 pkgdesc="Python testtools extension for running unittest suites concurrently."
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/cgoldberg/concurrencytest'
 license=('gpl3')
