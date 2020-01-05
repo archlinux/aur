@@ -2,7 +2,7 @@
 # Contributor: Kohei Suzuki <eagletmt@gmail.com>
 
 pkgname=ghq
-pkgver=0.99.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
