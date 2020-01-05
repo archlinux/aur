@@ -1,6 +1,6 @@
 # Submitter: Nbiba Bedis <bedisnbiba@gmail.com>
 
-pkgname=traffictoll-git
+pkgname=traffictoll
 _pkgname=TrafficToll
 pkgver=0.1.1
 pkgrel=4
