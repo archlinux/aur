@@ -1,6 +1,6 @@
 pkgbase = minecraft-overviewer
 	pkgdesc = Render large resolution images of a Minecraft map with a web UI
-	pkgver = 0.14.87
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/overviewer/Minecraft-Overviewer
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = minecraft-overviewer
 	depends = python
 	depends = python-pillow
 	depends = python-numpy
-	source = https://github.com/overviewer/Minecraft-Overviewer/archive/7d9feb3cfc5c378ffa652882a33d3de227ff5e1a.tar.gz
-	sha512sums = 0b0187b0a433170efb8dc3413f28fa419e0eb561d684e68fdbac771c9960f1bfb0819bf5cd5d28430dc6eecc9ef7fff2186c4ad411aa246e18a2bd978e8bdad1
+	source = https://github.com/overviewer/Minecraft-Overviewer/archive/bdca0b92509f542ed69f051554f7db91f20bddd9.tar.gz
+	sha512sums = 560cf910f5942c699f4db6e3dc0c9584291ba97b126b15acb74e0653e99140b80ee854600f5d960dffb67b7856ba304d98f47e20984239f7dad8fd1b31428bd8
 
 pkgname = minecraft-overviewer
 
