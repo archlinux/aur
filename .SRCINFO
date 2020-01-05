@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-minimal
 	pkgdesc = Minimal amount of firmware files for Linux, mostly recommended for virtual systems.
 	pkgver = 20100519
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
 	arch = any
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = linux-firmware-minimal
 	conflicts = linux-firmware-git
 	conflicts = linux-firmware
 	options = !strip
-	source = http://th.archive.ubuntu.com/archlinux/other/linux-firmware/linux-firmware-minimal-20100519.tar.xz
+	source = https://mirrors.sohu.com/archlinux/other/linux-firmware/linux-firmware-20100519.tar.xz
 	sha256sums = 2c0d22e9ce469d8095c1c4921350ea6021088ce21b5a46139f4ed8c6003dad01
 
 pkgname = linux-firmware-minimal
