@@ -1,0 +1,20 @@
+obj-m := v4l2loopback-dc.o
+
+KVERSION := $(shell uname -r)
+KDIR := /lib/modules/$(KVERSION)/build
+PWD := "$$(pwd)"
+
+all:
+	make -C $(KDIR) M=$(PWD)
+
+test:
+	gcc test.c -o test
+
+clean:
+	make O=$(PWD) -C $(KDIR) M=$(PWD) clean
+        
+insmod:
+	sudo insmod v4l2loopback-dc.ko width=320 height=240
+
+rmmod:
+	sudo rmmod v4l2loopback-dc.ko
