@@ -1,7 +1,7 @@
 # Maintainer: Jan Ole Zabel <joz@spline.de>
 # This package is not maintained by the author himself.
 pkgname=doh-proxy
-pkgver=0.1.21
+pkgver=0.2.1
 pkgrel=0
 pkgdesc="A DNS-over-HTTP server proxy written in Rust by jedisct1"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("https://github.com/jedisct1/rust-doh/archive/$pkgver.tar.gz")
-sha512sums=('dc46380ebd907ef3ddc8329a0e050db2fd357a0800445ddfa874f15b59da326ad1767c1c9e2da7a1e3ee4ba2c9a0dc2c6b5fdf61f2cca9abfb3e16ee9ab0b4e5')
+sha512sums=('5a129a041744b3247a8cfe2032e9cf2f3a6d55ffe778cca7dff566416a6e7116f7031d1e1f5d420582398636fc2cbc89ab7da2fd600039c48527c6470ff2ceef')
 
 build() {
 	cd "rust-doh-$pkgver"
