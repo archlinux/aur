@@ -3,14 +3,14 @@
 
 pkgname=ccl-git
 epoch=1
-pkgver=1.12.dev.5.3.gb5233ade
+pkgver=1.12.dev.5.19.gb8e8bf87
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
 license=('APACHE')
 arch=('x86_64')
 depends=('bash')
-optdepends=('java-environment: for using emaple file jfli.jar')
+optdepends=('java-environment: for using example file jfli.jar')
 makedepends=('git' 'subversion')
 provides=('common-lisp' 'cl-asdf' 'ccl')
 conflicts=('ccl-bin' 'ccl')

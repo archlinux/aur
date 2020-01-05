@@ -1,6 +1,6 @@
 pkgbase = ccl-git
 	pkgdesc = The Clozure Common Lisp implementation
-	pkgver = 1.12.dev.5.3.gb5233ade
+	pkgver = 1.12.dev.5.19.gb8e8bf87
 	pkgrel = 1
 	epoch = 1
 	url = http://ccl.clozure.com/
@@ -9,7 +9,7 @@ pkgbase = ccl-git
 	makedepends = git
 	makedepends = subversion
 	depends = bash
-	optdepends = java-environment: for using emaple file jfli.jar
+	optdepends = java-environment: for using example file jfli.jar
 	provides = common-lisp
 	provides = cl-asdf
 	provides = ccl
