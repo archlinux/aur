@@ -1,7 +1,7 @@
 pkgbase = gumdl
 	pkgdesc = Simple tool to download files from the Internet
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miniMola124/gumdl.releases
 	arch = x86_64
 	license = MIT
