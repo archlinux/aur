@@ -1,21 +1,21 @@
 pkgbase = python-astropy-doc
 	pkgdesc = Documentation for AstroPy
-	pkgver = 3.2.3
+	pkgver = 4.0
 	pkgrel = 1
 	url = http://www.astropy.org
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-astropy=3.2.3
+	makedepends = python-astropy=4.0
 	makedepends = python-yaml
 	makedepends = python-pillow
-	makedepends = python-astropy-helpers>=3.1
+	makedepends = python-astropy-helpers>=4.0.1
 	makedepends = graphviz
 	makedepends = python-scikit-image
 	makedepends = python-pytest
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-3.2.3.tar.gz
-	md5sums = 89f6e2b419e2eec93c8e715015d5ecf5
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-4.0.tar.gz
+	md5sums = 4ae0345d28ac5b60e04079967ced4ea7
 
 pkgname = python-astropy-doc
 
