@@ -1,0 +1,15 @@
+pkgbase = python-kivy-garden-contextmenu
+	pkgdesc = Collection of classes for easy creating context and application menus.
+	pkgver = 01c6011
+	pkgrel = 1
+	url = https://github.com/kivy-garden/contextmenu
+	arch = any
+	license = MIT
+	depends = python
+	provides = python-kivy-garden-contextmenu
+	options = !emptydirs
+	source = git+https://github.com/kivy-garden/contextmenu.git
+	sha512sums = SKIP
+
+pkgname = python-kivy-garden-contextmenu
+
