@@ -1,7 +1,7 @@
 pkgbase = symfony-cli
 	pkgdesc = The Symfony client helps developers create and manage Symfony applications.
 	pkgver = 4.11.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://symfony.com/
 	install = symfony-cli.install
 	arch = x86_64
