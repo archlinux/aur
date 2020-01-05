@@ -11,7 +11,7 @@ pkgname=(network-manager-applet-indicator nm-connection-editor-indicator libnma-
 pkgdesc="Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab"
 url="https://wiki.gnome.org/Projects/NetworkManager/"
 pkgver=1.8.24
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(GPL LGPL)
 depends=(libappindicator-gtk3)
@@ -89,7 +89,7 @@ package_nm-connection-editor-indicator() {
 package_libnma-indicator() {
   pkgdesc="NetworkManager GUI client library, with AppIndicator"
   depends=(libnm gcr gtk3 iso-codes mobile-broadband-provider-info libappindicator-gtk3)
-  provides=(libnma-indicator-${pkgver}-${pkgrel})
+  provides=(libnma=${pkgver}-${pkgrel})
   conflicts=(libnma)
   mv libnma/* "$pkgdir"
 }

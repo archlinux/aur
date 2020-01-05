@@ -1,7 +1,7 @@
 pkgbase = network-manager-applet-indicator
 	pkgdesc = Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab
 	pkgver = 1.8.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager/
 	arch = x86_64
 	license = GPL
@@ -30,13 +30,13 @@ pkgname = network-manager-applet-indicator
 	depends = libsecret
 	depends = networkmanager
 	depends = libappindicator-gtk3
-	provides = network-manager-applet=1.8.24-1
+	provides = network-manager-applet=1.8.24-2
 	conflicts = network-manager-applet
 
 pkgname = nm-connection-editor-indicator
 	pkgdesc = NetworkManager GUI connection editor and widgets, with AppIndicator
 	depends = libnma-indicator
-	provides = nm-connection-editor=1.8.24-1
+	provides = nm-connection-editor=1.8.24-2
 	conflicts = nm-connection-editor
 	conflicts = libnm-gtk<1.8.18-1
 	replaces = libnm-gtk<1.8.18-1
@@ -49,6 +49,6 @@ pkgname = libnma-indicator
 	depends = iso-codes
 	depends = mobile-broadband-provider-info
 	depends = libappindicator-gtk3
-	provides = libnma-indicator-1.8.24-1
+	provides = libnma=1.8.24-2
 	conflicts = libnma
 
