@@ -9,7 +9,7 @@ url="https://github.com/juzzlin/heimer"
 license=("GPL3")
 depends=("qt5-tools")
 makedepends=("git" "cmake")
-source=("${pkgname}::git+$url.git#tag=1.12.0")
+source=("${pkgname}::git+$url.git#tag=1.13.0")
 md5sums=('SKIP')
 
 pkgver() {
