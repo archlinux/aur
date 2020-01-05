@@ -1,0 +1,14 @@
+pkgbase = python-kivy-garden-modernmenu
+	pkgdesc = A context menu for Kivy with modern look and feel.
+	pkgver = 681c3bf
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	provides = python-kivy-garden-modernmenu
+	options = !emptydirs
+	source = git+https://github.com/kivy-garden/modernmenu.git
+	sha512sums = SKIP
+
+pkgname = python-kivy-garden-modernmenu
+
