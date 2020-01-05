@@ -1,10 +1,10 @@
 pkgbase = cproton-git
 	pkgdesc = Script to make it easier to update Proton GE to the latest version
-	pkgver = r11.d9fba2b
+	pkgver = r15.0805f86
 	pkgrel = 1
 	url = https://github.com/flubberding/ProtonUpdater
 	arch = any
-	license = unknown
+	license = MIT
 	source = git+https://github.com/flubberding/ProtonUpdater.git
 	md5sums = SKIP
 
