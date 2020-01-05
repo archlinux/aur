@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=7
+_minor=8
 _srcname=linux-${_major}
 _clr=${_major}.6-883
 pkgbase=linux-clear
@@ -104,7 +104,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec |\
-          grep -Ev '^Patch0123|^Patch0130|^Patch1001|^Patch0007|^Patch0008|^Patch0012' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0123|^Patch0130|^Patch1001|^Patch0007|^Patch0008|^Patch0012|^Patch0051' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -337,7 +337,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '7d99e8136518db0601abb7b59388c07838125901f540084d4575e87602544fd1'
+            '5daea86d29246b5a8e193c097756bc833b33dd6fa6419f9cb52bcbf16a192a1b'
             'SKIP'
             '7c0e576459c6337bcdea692bdbec561719a15da207dc739e0e3e60ff821a5491'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
