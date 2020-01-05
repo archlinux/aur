@@ -7,10 +7,11 @@ pkgdesc="Linux Twitter client designed for multiple columns of multiple accounts
 arch=(any)
 url="https://launchpad.net/polly"
 license=('GPL')
-depends=(python2-notify python2-httplib2 pyxdg python2-gconf python2-pycurl python2-socks python2-gtkspell hspell python2-keyring python2-oauth2 python2-numpy librsvg python2-dbus)
+depends=(python2-notify python2-httplib2 pyxdg python2-gconf python2-pycurl python2-pysocks python2-gtkspellcheck hspell python2-oauth2 python2-numpy librsvg python2-dbus)
 makedepends=(python2-setuptools)
 install=$pkgname.install
-source=(http://launchpad.net/$pkgname/1.0/pre-alpha-2/+download/Polly-$pkgver.tar.gz)
+source=(https://launchpad.net/$pkgname/1.0/pre-alpha-2/+download/Polly-$pkgver.tar.gz)
+sha512sum=()
 
 build() {
 	cd "$srcdir"/Polly-$pkgver
