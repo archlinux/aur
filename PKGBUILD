@@ -38,7 +38,7 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 #                                    Default PKGBUILD Configuration                                       #
 #=========================================================================================================#
 pkgname=vim-youcompleteme-git
-pkgver=r2598.6be9ce1d
+pkgver=r2600.d9a9ce47
 pkgver() {
 	cd "YouCompleteMe" || exit
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -67,7 +67,6 @@ source=(
 	'git+https://github.com/PythonCharmers/python-future.git'
 	'git+https://github.com/requests/requests.git'
 	'git+https://github.com/ross/requests-futures.git'
-	'git+https://github.com/slezica/python-frozendict.git'
 	'git+https://github.com/urllib3/urllib3.git'
 	'git+https://github.com/ycm-core/ycmd.git'
 	'git+https://github.com/ycm-core/YouCompleteMe.git'
@@ -75,7 +74,7 @@ source=(
 	'rls.patch')
 
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-			'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+			'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 			'266b90d50bff43b6d0a011462239dcf261f5a97a5b1f110b4a7e063670963dae' 
 			'cde1d1265be82e246edb6021e0a4b4e01af1a140b8d92b05bde6929e922ae215')
 
@@ -147,7 +146,7 @@ prepare() {
 	gitprepare "YouCompleteMe" "third_party/" "${YouCompleteMe[@]}"
 	gitprepare "YouCompleteMe" "third_party/requests_deps/" "${YouCompleteMeRequestsDeps[@]}"
 
-	local ycmd=("bottle" "regex" "python-frozendict" "python-future" "waitress")
+	local ycmd=("bottle" "regex" "python-future" "waitress")
 
 	gitprepare "YouCompleteMe/third_party/ycmd" "third_party/" "${ycmd[@]}"
 
@@ -246,7 +245,7 @@ package() {
 
 	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd"
-	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,clang,cregex,frozendict,python-future,waitress} \
+	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/"{bottle,clang,cregex,python-future,waitress} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party"
 	cp -r "$srcdir/YouCompleteMe/third_party/ycmd/third_party/requests_deps/"{certifi,chardet,idna,requests,urllib3} \
 		"$pkgdir/$vimfiles_dir/third_party/ycmd/third_party/requests_deps"
