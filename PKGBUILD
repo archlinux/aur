@@ -10,7 +10,7 @@ url="https://github.com/shyaminayesh/$pkgname"
 source=("$url/archive/v$pkgver.tar.gz")
 backup=('etc/ddnsc/ddnsc.conf')
 depends=("python>=3" "python-systemd" "python-requests")
-sha256sums=("7298d41c8139d9a03e7453d23b1089198b713ada39fe0552174d8faf96379d25")
+sha256sums=("ca93b08cb538b549e183a89eef89e915601e57313bf7990d3971795576f06ba7")
 validpgpkeys=('202164AC7B099EC3C4ECD161FC3F05FA01F8DD0E')
 
 package() {
