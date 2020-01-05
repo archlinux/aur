@@ -1,6 +1,6 @@
 pkgbase = mcmojave-kde-theme-git
 	pkgdesc = MacOSX Mojave like theme for KDE Plasma
-	pkgver = r20.5511039
+	pkgver = r28.ed26d62
 	pkgrel = 1
 	url = https://github.com/vinceliuice/McMojave-kde
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=mcmojave-kde-theme-git
 _gitname=McMojave-kde
-pkgver=r20.5511039
+pkgver=r28.ed26d62
 pkgrel=1
 pkgdesc="MacOSX Mojave like theme for KDE Plasma "
 arch=('any')
