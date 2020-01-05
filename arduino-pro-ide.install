@@ -1,6 +1,30 @@
-#!/bin/bash
-
 post_install() {
-	pkgname="arduino-pro-ide"
-	ln -s "/usr/bin/$pkgname" "/opt/$pkgname/arduino.pro.ide"
+  echo "
+You need to have a valid arduino-cli.yaml config present. You can generate one with
+
+  arduino-cli config init
+
+And then you must provide two additional settings in the config:
+
+  sketchbook_path:
+  arduino_data:
+
+To configure manually you can place the following example under ~/.arduino15/arduino-cli.yaml
+
+board_manager:
+  additional_urls: []
+daemon:
+  port: "50051"
+directories:
+  data: /home/USERNAME/.arduino15
+  downloads: /home/USERNAME/.arduino15/staging
+  user: /home/USERNAME/Arduino
+sketchbook_path: /home/USERNAME/Arduino/SKETCHES
+arduino_data: /home/USERNAME/.arduino15
+logging:
+  file: ""
+  format: text
+  level: info
+"
+
 }
