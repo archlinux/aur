@@ -1,6 +1,6 @@
 pkgbase = python-einsteinpy-git
 	pkgdesc = Python package for General Relativity
-	pkgver = 0.1.0.r397.g17580ec
+	pkgver = 0.1.0.r400.g86b1e9c
 	pkgrel = 1
 	url = https://einsteinpy.org/
 	arch = i686
@@ -13,6 +13,10 @@ pkgbase = python-einsteinpy-git
 	checkdepends = python-astropy
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-nbsphinx
+	makedepends = python-numba
+	makedepends = pandoc
+	makedepends = graphviz
 	source = git+https://github.com/einsteinpy/einsteinpy
 	md5sums = SKIP
 
@@ -26,4 +30,9 @@ pkgname = python-einsteinpy-git
 	optdepends = python-einsteinpy-doc: Documentation for EinsteinPy
 	provides = python-einsteinpy
 	conflicts = python-einsteinpy
+
+pkgname = python-einsteinpy-doc-git
+	pkgdesc = Documentation for EinsteinPy
+	provides = python-einsteinpy-doc
+	conflicts = python-einsteinpy-doc
 
