@@ -1,7 +1,7 @@
 # Maintainer: f440 <freq440@gmail.com>
 
 pkgname=ghq-bin
-pkgver=0.17.2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Remote repository management made easy. Pre-compiled."
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('ghq')
 conflicts=('ghq')
 
 source=("${pkgname/-bin/}-${pkgver}_linux_amd64.zip::https://github.com/motemen/ghq/releases/download/v${pkgver}/${pkgname/-bin/}_linux_amd64.zip")
-sha1sums=('00eb63a7a532e93009f5296112532c0342da44f3')
+sha1sums=('9e7c85e4a563237d36fb607b0cb7aa008f9ce799')
 
 package() {
   curl -O "https://raw.githubusercontent.com/motemen/ghq/v${pkgver}/LICENSE"
