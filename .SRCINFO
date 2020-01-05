@@ -1,13 +1,11 @@
 pkgbase = openconcerto
 	pkgdesc = ERP ILM Openconcerto client multi and mono
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openconcerto.org/
 	arch = any
 	license = GPL3
-	depends = jre7-openjdk
 	depends = jre8-openjdk
-	depends = jre7-openjdk-headless
 	depends = jre8-openjdk-headless
 	source = https://www.openconcerto.org/fr/telechargement/1.6/openconcerto-1.6.3.deb
 	source = OpenConcerto-Caisse.desktop
