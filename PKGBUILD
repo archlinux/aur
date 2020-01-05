@@ -6,23 +6,20 @@
 
 pkgname='cplex'
 pkgdesc="A commercial solver for mathematical optimization problems."
-pkgver=12.9
+pkgver=12.10
 pkgrel=2
 arch=('x86_64')
 url='https://www.ibm.com/software/products/de/ibmilogcpleoptistud'
 license=('custom')
-makedepends=('python2>=2.7', 'python>=3.5', 'python2-setuptools' 'python-setuptools')
+makedepends=('python>=3.7' 'python<3.8' 'python-setuptools')
 depends=('gcc-libs')
-optdepends=(
-	'python2: for Python2 bindings'
-	'python: for Python bindings'
-)
+optdepends=('python: for Python bindings')
 options=('!strip')
 
 _basename="cplex_studio${pkgver//./}.linux-${arch/_/-}"
 _installer="${_basename}.bin"
 _archdir="${arch/_/-}_linux"
-_python_min_version=$(python --version | awk '{ print $2 }' | awk -F "." '{ print $2 }')
+_pythonver=$(python --version | awk '{ print $2 }' | awk -F "." '{ print $1"."$2 }')
 
 source=("local://${_installer}" installer.properties.template)
 
@@ -80,13 +77,8 @@ package() {
 	install -dm755 "${pkgdir}/usr/include/ilcp"
 	install -m644 "./cpoptimizer/include/ilcp/"*.h "${pkgdir}/usr/include/ilcp"
 
-	# Install Python2 bindings.
-	cd "./cplex/python/2.7/${_archdir}/"
-	python2 setup.py install --root="${pkgdir}/" --optimize=1
-	cd "../../../../"
-
 	# Install Python bindings.
-	cd "./cplex/python/3.7/${_archdir}/"
+	cd "./cplex/python/${_pythonver}/${_archdir}/"
 	python3 setup.py install --root="${pkgdir}/" --optimize=1
 	cd "../../../../"
 
@@ -102,5 +94,5 @@ package() {
 	chmod -R 644 "${pkgdir}/usr/share/doc/cplex"
 }
 
-md5sums=('7d6523476edd4a245d28d6f095739497'
+md5sums=('69b1b89a73a7d0931fbfdb355eb147c3'
          'f295f6c4ecd0f3a6d2fdca21788efd0f')
