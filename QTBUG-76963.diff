@@ -1,0 +1,13 @@
+--- a/src/3rdparty/chromium/third_party/webrtc/base/physicalsocketserver.cc
++++ b/src/3rdparty/chromium/third_party/webrtc/base/physicalsocketserver.cc
+@@ -52,6 +52,10 @@
+ #include "rtc_base/timeutils.h"
+ #include "rtc_base/win32socketinit.h"
+ 
++#if defined(WEBRTC_LINUX)
++#include <linux/sockios.h>
++#endif
++
+ #if defined(WEBRTC_WIN)
+ #define LAST_SYSTEM_ERROR (::GetLastError())
+ #elif defined(__native_client__) && __native_client__
