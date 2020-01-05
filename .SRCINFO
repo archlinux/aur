@@ -1,6 +1,6 @@
 pkgbase = bullet-git
 	pkgdesc = A 3D Collision Detection and Rigid Body Dynamics Library for games and animation
-	pkgver = 2.83.6.r2.g6c24193
+	pkgver = 2.89.r21.gb57557c6c
 	pkgrel = 1
 	url = http://www.bulletphysics.com/Bullet/
 	arch = i686
