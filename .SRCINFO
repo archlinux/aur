@@ -1,0 +1,29 @@
+pkgbase = poac
+	pkgdesc = Package manager for C++ like Cargo for Rust
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://poac.pm
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = boost
+	depends = git
+	depends = tar
+	depends = graphviz
+	depends = yaml-cpp
+	optdepends = cmake: To build CMake projects
+	optdepends = make: To build projects with Makefile
+	provides = poac-devel-git
+	provides = poac-git
+	conflicts = poac-devel-git
+	conflicts = poac-git
+	source = poac-0.2.1.tar.gz::https://github.com/poacpm/poac/archive/0.2.1.tar.gz
+	md5sums = 006f44f56ae5f624a50b7b0bc3d6f195
+
+pkgname = poac
+
