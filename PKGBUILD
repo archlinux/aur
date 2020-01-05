@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdesrc-build
-pkgver=18.10
-pkgrel=3
+pkgver=19.12
+pkgrel=1
 pkgdesc="A script to build KDE software from KDE's source repositories"
 url='https://kdesrc-build.kde.org/'
 arch=('any')
@@ -29,7 +29,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   install -d "${pkgdir}"/usr/share/doc/samples
-  install -Dm644 kdesrc-build/kdesrc-buildrc-{,kf5-}sample \
+  install -Dm644 kdesrc-build/kdesrc-buildrc-kf5-sample \
     "${pkgdir}"/usr/share/doc/samples/
   install -Dm644 kdesrc-build/kf5-{applications,frameworks,kdepim,qt5,workspace}-build-include \
     "${pkgdir}"/usr/share/doc/samples/
