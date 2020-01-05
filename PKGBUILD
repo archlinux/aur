@@ -1,7 +1,7 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
 pkgname=binfmt-qemu-static-all-arch
 pkgver=20190813
-pkgrel=1
+pkgrel=2
 pkgdesc="Register qemu-static interpreters for various binary formats - all archetectures, intelligently removing the current archetecture"
 arch=('armv5' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
@@ -10,7 +10,7 @@ optdepends=('qemu-user-static')
 provides=('binfmt-qemu-static')
 conflicts=('binfmt-qemu-static')
 source=("qemu-static.conf")
-md5sums=('629e6cb2c0f57d13c4eb41c043091526')
+md5sums=('ef046cbee5bcdbc55f712a2bd928b18d')
 
 package() {
   install -Dm 644 "$srcdir/qemu-static.conf" "$pkgdir/usr/lib/binfmt.d/qemu-static.conf"
