@@ -1,0 +1,18 @@
+pkgbase = qt5-location-595
+	pkgdesc = Provides access to position, satellite and area monitoring classes
+	pkgver = 5.9.5
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = gconf
+	depends = qt5-declarative-595
+	source = http://download.qt.io/official_releases/qt/5.9/5.9.5/submodules/qtlocation-opensource-src-5.9.5.tar.xz
+	sha256sums = 41f0390e1709140e3590bed434e63ec00406fac2051529c400c756acbb70a80e
+
+pkgname = qt5-location-595
+
