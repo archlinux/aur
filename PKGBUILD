@@ -3,7 +3,7 @@
 
 pkgname=asbru-cm-git
 _pkgname=${pkgname%-git}
-pkgver=6.0.0
+pkgver=6.0.2
 pkgrel=1
 arch=('any')
 license=('GPL3')
