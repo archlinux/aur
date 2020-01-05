@@ -20,7 +20,7 @@ build() {
 
 check() {
     cd $pkgname-$pkgver
-    python setup.py test
+    python -m unittest -v tests
 }
 
 package() {
