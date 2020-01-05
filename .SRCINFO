@@ -1,16 +1,16 @@
 pkgbase = victoriametrics-bin
 	pkgdesc = Fast, cost-effective and scalable time series database
-	pkgver = 1.30.3
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://victoriametrics.github.io
 	install = victoriametrics.install
 	arch = x86_64
 	license = Apache
 	backup = etc/default/victoriametrics
-	source = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.30.3/victoria-metrics-v1.30.3.tar.gz
+	source = https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.32.0/victoria-metrics-v1.32.0.tar.gz
 	source = victoriametrics.service
 	source = default_victoriametrics
-	sha256sums = c503056ef5428e6bb8f69b4cc86ab6146ccae54c456c8f3ace129b48d422c49d
+	sha256sums = 2eaba4464a02e3b84a39ebb99b690eb19d3f040cb3d420119e3a2c244e169af4
 	sha256sums = bb545722332137af4e2acae300b519d54af28348f5beca984e2c0aee462e90af
 	sha256sums = f538747c1384e6842561e1d13519c2118b8e74c6eb5132b9f2e8730f7d08cc26
 
