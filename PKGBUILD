@@ -3,13 +3,13 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: xaw <xawl.ch@gmail.com>
 pkgname=cwm
-pkgver=6.3
+pkgver=6.6
 pkgrel=1
 pkgdesc="OpenBSD fork of calmwm, a clean and lightweight window manager"
 arch=('i686' 'x86_64')
 url="http://www.openbsd.org/cgi-bin/man.cgi?query=cwm&sektion=1"
 license=('BSD')
-depends=('libxft' 'libxrandr' 'libxinerama')
+depends=('libxft' 'libxrandr')
 changelog=cwm.changelog
 makedepends=('git')
 source=("$pkgname::git+https://github.com/chneukirchen/cwm.git#tag=v${pkgver}" 'cwm.desktop')
