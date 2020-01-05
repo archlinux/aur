@@ -2,8 +2,8 @@
 # Maintainer: davedatum <ask at davedatum dot com>
 
 pkgname=dat-fox-helper-git
-pkgver=0.1.0.r0.g676b6b6
-pkgrel=1.1
+pkgver=0.2.0.r0.g6acb965
+pkgrel=1
 pkgdesc="A bridge to the Dat network for use by browsers"
 arch=(any)
 url="https://github.com/sammacbeth/dat-fox-helper"
@@ -12,7 +12,7 @@ depends=("firefox" "nodejs")
 makedepends=("git" "npm")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}::git+${url}.git#tag=v0.1.0")
+source=("${pkgname}::git+${url}.git#tag=v0.2.0")
 md5sums=('SKIP')
 
 prepare() {
