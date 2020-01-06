@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=jackal
-pkgver=0.4.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='An XMPP/Jabber server'
 arch=('x86_64' 'i686')
@@ -13,12 +13,12 @@ optdepends=('postgresql: PostgreSQL support'
             'mariadb: MariaDB support')
 conflicts=('jackal-git')
 backup=('etc/jackal/jackal.yml')
-source=(https://github.com/ortuman/jackal/archive/v${pkgver}.tar.gz
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ortuman/jackal/archive/v${pkgver}.tar.gz"
         jackal.service
         jackal.sysusers
         jackal.tmpfiles
         config.patch)
-sha256sums=('cddde15282c3fb99905e1d2c8c8d6a006840e7a020f7df2ebdacd36541cb963a'
+sha256sums=('1779fe98a272087ebb94486366be2c7e9225a7b463e3e53a4a78f80f8402d3a5'
             '0a9a9065957e5b0576e5443b29bf0cae81281194664376569a91c51f85e7d7ff'
             '5fec4f4053ac15cd597bb32ba03c35d85f52438204fd801edf333403ec2c4bf3'
             '20b7e5a5fee727e72fdbac54182b594a838340c0625036ca9d117e2a9d710045'
@@ -33,13 +33,12 @@ prepare() {
 build() {
   cd jackal-${pkgver}
   export GO111MODULE=on
-  go build -gcflags  "all=-trimpath=${PWD}" \
-           -asmflags "all=-trimpath=${PWD}" \
+  go build -trimpath \
+           -buildmode=pie \
            -ldflags  "-extldflags ${LDFLAGS}"
 }
 
 package() {
-  install -dm 750 "${pkgdir}/var/lib/jackal/"
   install -dm 775 "${pkgdir}/usr/share/doc/jackal/"
   install -dm 775 "${pkgdir}/usr/share/jackal/"
 
