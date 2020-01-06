@@ -1,4 +1,4 @@
-pre_build() {
+pre_package() {
 	groupadd -r precached
 	useradd -r -s /usr/bin/nologin -d /tmp -g precached precached
 }
