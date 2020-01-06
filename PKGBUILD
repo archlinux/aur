@@ -1,6 +1,6 @@
 # Maintainer: Philippe Hürlimann <p@hurlimann.org>
 pkgname=haskell-ide-engine
-pkgver=0.13.0.0
+pkgver=1.0.0.0
 pkgrel=1
 pkgdesc="The engine for haskell ide-integration. Not an IDE"
 arch=('x86_64')
@@ -11,11 +11,11 @@ source=("${pkgname}-${pkgver}::git://github.com/haskell/${pkgname}.git#tag=${pkg
 noextract=()
 md5sums=('SKIP')
 
-# supported are '8.2.2' '8.4.2' '8.4.3' '8.4.4' '8.6.1' '8.6.2' '8.6.3' '8.6.4'
-# '8.6.5' activated by default are the ones also used in a stackage snapshot
-# removing versions you do not use will greatly reduce the compilation time of
-# this package
-_enabled_ghc_versions=('8.2.2' '8.4.3' '8.4.4' '8.6.3' '8.6.4' '8.6.5')
+# Supported are '8.4.2' '8.4.3' '8.4.4' '8.6.1' '8.6.2' '8.6.3' '8.6.4' '8.6.5'
+# activated by default are the ones also used in a stackage snapshot. Removing
+# versions you do not use will greatly reduce the compilation time of this
+# package
+_enabled_ghc_versions=('8.4.3' '8.4.4' '8.6.3' '8.6.4' '8.6.5')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
