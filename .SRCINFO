@@ -1,7 +1,7 @@
 pkgbase = ddnsc
 	pkgdesc = A simple & lightweight client to update DNS dynamically.
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 2.2.0
+	pkgrel = 4
 	url = https://github.com/shyaminayesh/ddnsc
 	arch = any
 	license = GPL3
@@ -9,9 +9,9 @@ pkgbase = ddnsc
 	depends = python-systemd
 	depends = python-requests
 	backup = etc/ddnsc/ddnsc.conf
-	source = https://github.com/shyaminayesh/ddnsc/archive/v2.0.1.tar.gz
+	source = https://github.com/shyaminayesh/ddnsc/archive/v2.2.0.tar.gz
 	validpgpkeys = 202164AC7B099EC3C4ECD161FC3F05FA01F8DD0E
-	sha256sums = 7b7064b5c523da9874ba62b603260de4712a01d60c472edad1a35e0e6a8fcdd4
+	sha256sums = 3ebd6882a7cd3afa489d5d5eccdb096f1f7a6fe98e6f4fd6a35968d98186c7fb
 
 pkgname = ddnsc
 
