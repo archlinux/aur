@@ -4,7 +4,7 @@
 
 pkgname=python-billiard
 pkgver=3.6.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python multiprocessing fork with improvements and bugfixes."
 arch=('x86_64')
 url="https://pypi.org/project/billiard/"
