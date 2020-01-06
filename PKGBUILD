@@ -5,7 +5,7 @@
 pkgname=thunderbird-beta
 _pkgname=thunderbird
 _pkgver=72.0
-pkgver=72.0b2
+pkgver=72.0b3
 _major=${pkgver/[br]*}
 _build=${pkgver/*rc}
 pkgrel=2
@@ -23,7 +23,7 @@ options=(!emptydirs !makeflags)
 install=$pkgname.install
 source=(https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz
 		'thunderbird-beta.desktop')
-sha256sums=('8cabcdbfc3096524c81b02ec5ef18f797627db941d42ef02179610e877b80a83'
+sha256sums=('0a67bf9e12cb0d57c5cf16c79b6bacd8fd38ff0f8bdddededd073220b7209f68'
             'd7aa1bd77f74c255446eec4171e4360c7a6215dac1d29c8ee71ec1f2a03bda3d')
 
 # RC
