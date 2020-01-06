@@ -12,6 +12,7 @@ pkgbase = wms-git
 	depends = desktop-file-utils
 	depends = p7zip
 	depends = polkit
+	depends = wps-office
 	source = wms-git::git+https://github.com/timxx/wms.git
 	sha256sums = SKIP
 
