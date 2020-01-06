@@ -5,3 +5,4 @@ pkg/
 *.tar.gz
 # Package files
 *.tar.xz
+*.tar.zst
