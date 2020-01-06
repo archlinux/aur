@@ -2,13 +2,13 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.5.8
+pkgver=1.5.10
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
 license=('AGPL3')
-makedepends=('git' 'gradle' 'dpkg' 'jdk10')
+makedepends=('git' 'dpkg' 'jdk10')
 optdepends=('gvfs: access virtual filesystem')
 provides=('maptool')
 conflicts=('maptool')
