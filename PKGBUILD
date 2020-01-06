@@ -1,7 +1,10 @@
+# Based on openssl 1.1.1d PKGBUILD
 # Maintainer: Karel Kočí <cynerd@email.cz>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
+_basename=openssl
 pkgname=openssl-purify
-_ver=1.0.2k
+_ver=1.1.1d
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -10,38 +13,27 @@ arch=('i686' 'x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
 depends=('perl')
-conflicts=('openssl')
-provides=('openssl')
 optdepends=('ca-certificates')
-options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
-source=("https://www.openssl.org/source/openssl-${_ver}.tar.gz"
-        "https://www.openssl.org/source/openssl-${_ver}.tar.gz.asc"
-        'no-rpath.patch'
-        'ssl3-test-failure.patch'
+source=("https://www.openssl.org/source/${_basename}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-md5sums=('96322138f0b69e61b7212bc53d5e912b'
-         'SKIP'
-         'dc78d3d06baffc16217519242ce92478'
-         '62fc492252edd3283871632bb77fadbe'
-         '3bf51be3a1bbd262be46dc619f92aa90')
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
+sha256sums=('1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2'
+            'SKIP'
+            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+provides=('openssl')
+conflicts=('openssl')
 
 prepare() {
-	cd $srcdir/openssl-$_ver
-
-	# remove rpath: http://bugs.archlinux.org/task/14367
-	patch -p0 -i $srcdir/no-rpath.patch
-
-	# disable a test that fails when ssl3 is disabled
-	patch -p1 -i $srcdir/ssl3-test-failure.patch
+	cd $srcdir/$_basename-$_ver
 
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i $srcdir/ca-dir.patch
 }
 
 build() {
-	cd $srcdir/openssl-$_ver
+	cd $srcdir/$_basename-$_ver
 
 	if [ "${CARCH}" == 'x86_64' ]; then
 		openssltarget='linux-x86_64'
@@ -71,7 +63,7 @@ check() {
 }
 
 package() {
-	cd $srcdir/openssl-$_ver
-	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/openssl/LICENSE
+	cd $srcdir/$_basename-$_ver
+	make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
