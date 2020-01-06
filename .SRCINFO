@@ -1,6 +1,6 @@
 pkgbase = psiphon-tunnel-core-git
 	pkgdesc = Psiphon Tunnelling Proxy
-	pkgver = 2.0.9.r2900.d7d491e4
+	pkgver = 2.0.9.r2960.55e413d4
 	pkgrel = 1
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	arch = x86_64

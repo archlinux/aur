@@ -19,7 +19,7 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.9.r2900.d7d491e4
+pkgver=2.0.9.r2960.55e413d4
 pkgrel=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
@@ -45,6 +45,9 @@ pkgver() {
 
 build() {
   cd "$_pkgname/ConsoleClient"
+
+  # This errors but seems to fix building
+  go get || true
   
   # Copied from the README file
   BUILDDATE=$(date --iso-8601=seconds)
@@ -59,6 +62,7 @@ build() {
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRev=$BUILDREV \
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.goVersion=$GOVERSION \
 -X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.dependencies=$DEPENDENCIES \
+-s -w
 "
 
   # TODO: Figure out how to do the stripping?
