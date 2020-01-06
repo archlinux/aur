@@ -1,0 +1,13 @@
+diff --git a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
+index f93941021..5c8fd0857 100644
+--- a/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/notifications_manager_linux.cpp
+@@ -106,6 +106,8 @@ NotificationData::NotificationData(
+ 	}
+ 
+ 	if (ranges::find(capabilities, qsl("actions")) != capabilitiesEnd) {
++		_actions << "default" << "";
++
+ 		// icon name according to https://specifications.freedesktop.org/icon-naming-spec/icon-naming-spec-latest.html
+ 		_actions << "mail-reply-sender"
+ 				<< tr::lng_notification_reply(tr::now);
