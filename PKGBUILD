@@ -6,6 +6,7 @@ pkgdesc="Arangodb binary from deb."
 pkgver=3.5.3
 pkgrel=1
 _pkgver='3.5.3-1'
+_arangodb_version='35'
 arch=('x86_64')
 url="https://www.arangodb.com/"
 license=('APACHE')
@@ -15,7 +16,7 @@ conflicts=(
     "${_pkgname}-client-bin"
 )
 source=(
-    https://download.arangodb.com/arangodb34/Community/Linux/arangodb3_${_pkgver}_amd64.deb
+    https://download.arangodb.com/arangodb${_arangodb_version}/Community/Linux/arangodb3_${_pkgver}_amd64.deb
 )
 validpgpkeys=("CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B") # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
 sha256sums=(
