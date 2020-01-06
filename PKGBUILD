@@ -1,35 +1,45 @@
-# Maintainer: Swift Geek
-#TODO: sed for changing % of free ram to trigger
-#TODO: sed for changing oom-killer method
-#TODO: sed for fixing *.service executable path (syslog might be also bad)
-#TODO: approperiate install messages
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Swift Geek
 
 pkgname=earlyoom-git
-_pkgname=${pkgname%-*}
-pkgver=0
+pkgver=1.3.r13.gc58d548
 pkgrel=1
-pkgdesc="The Early OOM Daemon"
-arch=('any')
+pkgdesc="Early OOM Daemon for Linux"
+arch=('i686' 'x86_64')
 url="https://github.com/rfjakob/earlyoom"
-license=('GPL')
-makedepends=('git')
-source=("git://github.com/rfjakob/earlyoom.git")
-md5sums=('SKIP')
+license=('MIT')
+depends=('glibc')
+makedepends=('git' 'pandoc')
+#checkdepends=('go')
+provides=('earlyoom')
+conflicts=('earlyoom')
+backup=("etc/default/earlyoom")
+options=('staticlibs')
+source=("git+https://github.com/rfjakob/earlyoom.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-parse --short HEAD # Fix to better comply with github display
+  cd "earlyoom"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${_pkgname}/"
-  make earlyoomd
+  cd "earlyoom"
+
+  make
+}
+
+check() {
+  cd "earlyoom"
+
+  #make test
 }
 
 package() {
-  cd "$srcdir/${_pkgname}/"
-  install -d "$pkgdir/usr/bin/"
-  install -d "$pkgdir/usr/lib/systemd/system/"
-  install -m 644 ./earlyoom.service "${pkgdir}/usr/lib/systemd/system/earlyoom.service"
-  install -m 755 ./earlyoom "${pkgdir}/usr/bin/earlyoom"
+  cd "earlyoom"
+
+  make DESTDIR="$pkgdir" PREFIX="/usr" earlyoom.service install-bin install-default install-man # install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/earlyoom"
 }
