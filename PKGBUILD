@@ -30,8 +30,11 @@ pkgver() {
 }
 
 build() {
+  local cmake_flags=( '-DALLOW_SYSTEM_QHULL=OFF'
+                      '-DCMAKE_INSTALL_PREFIX="/usr"'
+                    )
   mkdir "${srcdir}/build"
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -G Ninja -B "${srcdir}/build" "${srcdir}/meshlab/src"
+  cmake "${cmake_flags[@]}" -G Ninja -B "${srcdir}/build" "${srcdir}/meshlab/src"
   cd "${srcdir}/build"
   ninja $([ -v MAKEFLAGS ] || echo -j1)
 }
