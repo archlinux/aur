@@ -50,7 +50,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/precached/i18n/"
   mkdir -p "$pkgdir/etc/xdg/autostart/"
 
-  chown -R precached:precached "$pkgdir/var/lib/precached"
+  # chown -R precached:precached "$pkgdir/var/lib/precached"
   
   install -m 755 "target/release/precached" "$pkgdir/usr/bin/"
   install -m 755 "target/release/precachedctl" "$pkgdir/usr/bin/"
