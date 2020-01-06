@@ -1,0 +1,22 @@
+pkgbase = pulseaudio-module-xrdp-git
+	pkgdesc = PulseAudio modules for xrdp
+	pkgver = 0.4.r4.ge9f78c4
+	pkgrel = 1
+	url = https://github.com/neutrinolabs/pulseaudio-module-xrdp
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = pulseaudio
+	depends = xrdp
+	provides = pulseaudio-module-xrdp
+	conflicts = pulseaudio-module-xrdp
+	source = pulseaudio-module-xrdp-git::git+https://github.com/neutrinolabs/pulseaudio-module-xrdp.git#branch=devel
+	source = git+https://github.com/pulseaudio/pulseaudio.git
+	source = xrdp-script.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 4c6e9c0b1eaf66ea6b8574570d89b292b8554d318ad324f3763f837013b9f44f
+
+pkgname = pulseaudio-module-xrdp-git
+
