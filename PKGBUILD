@@ -1,7 +1,7 @@
 # Maintainer: Aurelien Cedeyn <aurelien.cedeyn@gmail.com>
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname="clustershell"
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=2
 pkgdesc="Python framework for efficient cluster administration"
 arch=(any)
@@ -20,7 +20,7 @@ install=
 changelog=ChangeLog
 source=(https://github.com/cea-hpc/${pkgname}/archive/v${pkgver}.tar.gz)
 noextract=()
-sha256sums=('0c3da87108de8b735f40b5905b8dcd8084a234849aee2a8b8d2e20b99b57100c')
+sha256sums=('86b0d524e5e50c0a15faec01d8642f0ff12ba78d50b7e7b660261be5d53fed9c')
 
 build() {
 	echo "Directory: ${srcdir}/${pkgname}-${pkgver}"

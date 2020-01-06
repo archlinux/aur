@@ -1,3 +1,34 @@
+2019-12-01 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.8.3 released. The main changes are listed below.
+
+	* NodeUtils: use yaml.safe_load() instead of default loader (#417)
+
+	* Tree-mode doesn't work with multi-hop gateways (#419)
+
+	* Silent error on Python version mismatch with gateway (#388)
+
+	* clush: support --worker/-R when topology.conf is present (#386)
+
+2019-08-12 S. Thiell <sthiell@stanford.edu>
+
+	* Version 1.8.2 released. The main changes are listed below.
+
+	* CLI/Display: use utf-8 (or non-ascii) encoding (#400)
+
+	* Defaults: add NodeSet's default folding axis (#401)
+
+	* EngineTimer: fix misuse of epsilon when firing timer (#399)
+
+	* xCAT group bindings: performance update (#398)
+
+	* Slurm group bindings: fix issue where job ids were used instead of user
+	names (#405)
+
+	* Doc: disable smartquotes (#402) and fix typo, %r is not for rank (#409)
+
+	* Packaging: add support for RHEL8 (#413)
+
 2018-10-30 S. Thiell <sthiell@stanford.edu>
 
 	* Version 1.8.1 released. The main changes are listed below.
