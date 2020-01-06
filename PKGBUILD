@@ -15,12 +15,12 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-hg}"
+  cd "${srcdir}/${pkgname}"
   hg identify -n
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-hg}"
+  cd "${srcdir}/${pkgname}"
 
   cp 'rescene/srr.py' 'rescene/srr.py~'
   sed -i -r 's|(dest=\"rar_executable_dir\",)|\1 default=\"/opt/rarlinux\",|' 'rescene/srr.py'
