@@ -1,6 +1,6 @@
 pkgbase = gammy
 	pkgdesc = Adaptive screen brightness/temperature tool.
-	pkgver = 0.9.54
+	pkgver = 0.9.55
 	pkgrel = 1
 	url = https://getgammy.com
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gammy
 	depends = mesa
 	depends = qt5-base
 	optdepends = plog: library for debug logging
-	source = gammy-0.9.54.tar.gz::https://github.com/Fushko/gammy/archive/v0.9.54.tar.gz
+	source = gammy-0.9.55.tar.gz::https://github.com/Fushko/gammy/archive/v0.9.55.tar.gz
 	source = gammy.desktop
-	sha256sums = 74e15edbc02d0931eba85df6569c405f7a5fb350a42b76e87539c29c4868e3a3
+	sha256sums = 6ca5697fd4712f2ae9fdd8757fa4dd951dd89c5e58378e8b8b47f6f829da8e1b
 	sha256sums = 6c67db210bd45f51d80119d25ffcaff9861aea926427ccf186d4530cf35ecf5d
 
 pkgname = gammy
