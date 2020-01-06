@@ -2,20 +2,20 @@
 # Contributor: Xavier de Labouret <arch@2-lab.net>
 
 pkgname=xlogo
-pkgver=0.9.93
-pkgrel=2
+pkgver=0.9.96pre
+pkgrel=1
 pkgdesc='Logo interpreter written in Java, to teach programming to children with a graphical turtle'
 arch=('x86_64' 'i686')
 url='http://xlogo.tuxfamily.org/'
 license=('GPL')
 depends=('java-runtime')
 makedepends=('setconf' 'gendesk') 
-source=("http://downloads.tuxfamily.org/xlogo/common/oldies/xlogo-$pkgver.jar"
+source=("https://downloads.tuxfamily.org/xlogo/common/xlogo.jar"
         'xlogo.png'
         'xlogo.sh')
-sha256sums=('044e7df8c7eecc5e04852a1eefdc22b7b45cff20d6554e98705ee6eb3c69ff10'
+sha256sums=('41f4ed29e173b44f3fc90a36c31b31027216fbe0bd777cc70448bb5894ad48e0'
             '024454aced2a5c5d6d3cde1693c103472c1f24c94007566baecb09587e5bbd83'
-            '40e191a72a4a4a8b0353224349a4d2509214d6d7d4170a1a52b838580939af6d')
+            '07d323190839f08d86b91a62399da2143212a3930aa20b54bdd63842d44e55c9')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -25,8 +25,8 @@ prepare() {
 }
 
 package() {
-  install -Dm644 "xlogo-$pkgver.jar" \
-    "$pkgdir/usr/share/$pkgname/xlogo-$pkgver.jar"
+  install -Dm644 "xlogo.jar" \
+    "$pkgdir/usr/share/$pkgname/xlogo.jar"
   install -Dm644 "$pkgname.desktop" \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/xlogo.png"

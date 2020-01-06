@@ -1,7 +1,7 @@
 pkgbase = xlogo
 	pkgdesc = Logo interpreter written in Java, to teach programming to children with a graphical turtle
-	pkgver = 0.9.93
-	pkgrel = 2
+	pkgver = 0.9.96pre
+	pkgrel = 1
 	url = http://xlogo.tuxfamily.org/
 	arch = x86_64
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = xlogo
 	makedepends = setconf
 	makedepends = gendesk
 	depends = java-runtime
-	source = http://downloads.tuxfamily.org/xlogo/common/oldies/xlogo-0.9.93.jar
+	source = https://downloads.tuxfamily.org/xlogo/common/xlogo.jar
 	source = xlogo.png
 	source = xlogo.sh
-	sha256sums = 044e7df8c7eecc5e04852a1eefdc22b7b45cff20d6554e98705ee6eb3c69ff10
+	sha256sums = 41f4ed29e173b44f3fc90a36c31b31027216fbe0bd777cc70448bb5894ad48e0
 	sha256sums = 024454aced2a5c5d6d3cde1693c103472c1f24c94007566baecb09587e5bbd83
-	sha256sums = 40e191a72a4a4a8b0353224349a4d2509214d6d7d4170a1a52b838580939af6d
+	sha256sums = 07d323190839f08d86b91a62399da2143212a3930aa20b54bdd63842d44e55c9
 
 pkgname = xlogo
 
