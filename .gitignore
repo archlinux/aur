@@ -1,0 +1,8 @@
+.BUILDINFO
+.MTREE
+.PKGINFO
+src
+pkg
+*.log
+*.log.*
+*.pkg.tar.*

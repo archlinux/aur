@@ -1,0 +1,14 @@
+checksumupdate=0
+update_pkgver=""
+pwd=$PWD
+cd "$SRCDEST/$_gitname"
+git fetch --all -p
+cd /tmp
+[[ -d "$_gitname" ]] && rm -rf "$_gitname"
+git clone "$SRCDEST/$_gitname"
+cd "$_gitname"
+major_version="$(grep '#define VIM_VERSION_MAJOR\s' src/version.h | cut -d' ' -f3)"
+minor_version="$(grep '#define VIM_VERSION_MINOR\s' src/version.h | cut -d' ' -f3)"
+build_version="$(grep -A3 'static int included_patches' src/version.c | tail -n1 | sed -e 's/\s\+\([0-9]\+\).*/\1/')"
+update_pkgver="${major_version}.${minor_version}.${build_version}+$(git log -1 --date=short --format="%cd.%h" | tr -d '-')"
+cd $pwd
