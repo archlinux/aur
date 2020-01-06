@@ -1,6 +1,6 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 pkgname=bluemail-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
@@ -12,9 +12,9 @@ depends=()
 optdepends=('libnotify: Desktop notifications')
 makedepends=('squashfs-tools' 'imagemagick')
 
-source=("${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_9.snap")
+source=("${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/ZVlj0qw0GOFd5JgTfL8kk2Y5eIG1IpiH_10.snap")
 
-sha512sums=('20e5679c039662b4498995b092b46e46b936ac486b631c0451078d4f7784b5009831a295f2dcd4e0419c072c13549129d37eeb548e5b9ad4a99a6f2d6502aaf1')
+sha512sums=('469faff5d3854cba23dc9bbfa0d351b047b421f311e2472b77f124d9e4084d23836d38dedbdbda8536d32458064aa05d22d69b62aa95c10a269893f863868678')
 
 package() {
     mkdir -p "${pkgdir}/opt"
