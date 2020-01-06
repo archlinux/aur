@@ -17,7 +17,7 @@ source=('prometheus-xmpp-webhook-sysusers.conf'
         'prometheus-xmpp-webhook.install'
         'xmpp-webhook.env'
         'xmpp-webhook.service.patch'
-        "https://github.com/opthomas-prime/xmpp-webhook/archive/${pkgver}.tar.gz")
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/opthomas-prime/xmpp-webhook/archive/${pkgver}.tar.gz")
 sha256sums=('691af96667e6eb627512f038c5f2f7b3928edc586f27aecad37f3957437a3f6a'
             '0ec7e2fb1d5d843174718b922a8bb931098c0c5a7154cf5f50aa43af24717860'
             'e97efa5c6d3f7f4e970a84220cd73fbc0fb8e213623c4c44652f3c57d348e2a4'
@@ -30,7 +30,11 @@ prepare() {
 
 build() {
   cd "xmpp-webhook-${pkgver}/"
-  go build
+  GOCACHE="${srcdir}/cache" go build -v -a \
+    -trimpath \
+    -ldflags "-extldflags ${LDFLAGS}" \
+    -buildmode=pie \
+    .
 }
 
 package() {
@@ -41,7 +45,7 @@ package() {
   install -Dm644 prometheus-xmpp-webhook-sysusers.conf "${pkgdir}"/usr/lib/sysusers.d/prometheus-xmpp-webhook.conf
 
   # -o xmppwebhook -g xmppwebhook
-  install -Dm640 xmpp-webhook.env -t "${pkgdir}"/etc/
+  install -Dm644 xmpp-webhook.env -t "${pkgdir}"/etc/
 }
 
 # vim: ts=2 sw=2 et:
