@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='dmenufm'
 pkgver='1.1'
-pkgrel='1'
-pkgdesc='Papirus theme for LibreOffice'
+pkgrel='2'
+pkgdesc='A simple file manager using dmenu'
 arch=('any')
 url="https://github.com/huijunchen9260/$pkgname"
 license=('unknown')
