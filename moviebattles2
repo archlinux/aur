@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /opt/moviebattles2
+sh Play_MBII.sh
+cd -

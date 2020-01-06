@@ -1,0 +1,3 @@
+post_install() {
+    echo "[moviebattles2] remember to put JK:JA's base directory inside ~/.local/share/openjk"
+}

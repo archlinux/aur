@@ -1,0 +1,21 @@
+pkgbase = moviebattles2
+	pkgdesc = A fast-paced, action packed mod for Jedi Knight: Jedi Academy
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://www.moviebattles.org
+	install = moviebattles2.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = bin32-openjk
+	source = moviebattles2-1.6.zip::https://ams1.dl.dbolical.com/dl/2019/12/24/MovieBattlesII_FULL_V1.6.zip?st=5BgiG_F2n_94nnWuQj-0jg==&e=1578351939
+	source = moviebattles2.desktop
+	source = moviebattles2.png
+	source = moviebattles2
+	md5sums = c9fb616dd4ebb96e6a77c699d1a3e93a
+	md5sums = 14d9db62e04f1cbed851ba7e098ff207
+	md5sums = 3d20693ab4602ba56d61e9ee401e1dba
+	md5sums = 400671872ffab35708b1acd1129b3797
+
+pkgname = moviebattles2
+
