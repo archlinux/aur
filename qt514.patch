@@ -1,0 +1,17 @@
+diff --git a/src/platform-plugin/qgtkwindow.cpp b/src/platform-plugin/qgtkwindow.cpp
+index 18917c2..285d12d 100644
+--- a/src/platform-plugin/qgtkwindow.cpp
++++ b/src/platform-plugin/qgtkwindow.cpp
+@@ -386,10 +386,9 @@ void QGtkWindow::onConfigure()
+ 
+ bool QGtkWindow::onDelete()
+ {
+-    bool accepted = false;
+-    QWindowSystemInterface::handleCloseEvent(window(), &accepted);
++    QWindowSystemInterface::handleCloseEvent(window());
+     QWindowSystemInterface::flushWindowSystemEvents();
+-    return accepted;
++    return true;
+ }
+ 
+ QSurfaceFormat QGtkWindow::format() const
