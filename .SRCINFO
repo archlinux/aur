@@ -1,0 +1,17 @@
+pkgbase = immer
+	pkgdesc = Postmodern immutable and persistent data structures for C++
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://sinusoid.es/immer
+	arch = any
+	license = Boost
+	makedepends = cmake
+	provides = immer-git
+	conflicts = immer-git
+	source = immer-0.6.2.tar.gz::https://github.com/arximboldi/immer/archive/v0.6.2.tar.gz
+	source = immer-0.6.2.patch::https://patch-diff.githubusercontent.com/raw/arximboldi/immer/pull/85.patch
+	md5sums = b93cf91bcec42da37beb87e7148695d9
+	md5sums = 432b88ddfdd0fa3be23e14afe51f17a4
+
+pkgname = immer
+
