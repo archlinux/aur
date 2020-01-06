@@ -1,6 +1,8 @@
-rawkit/
 pkg/
+rawkit/
 src/
+*.tar
 *.tar.gz
 *.tar.xz
+*.tar.zstd
 *.zip

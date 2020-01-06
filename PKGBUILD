@@ -5,22 +5,24 @@
 _pkgname=rawkit
 pkgbase=python-rawkit-git
 pkgname=('python-rawkit-git' 'python2-rawkit-git')
-pkgver=v0.6.0_26_g93c3e9b6ad0b
-pkgrel=1
+pkgver=v0.6.0_28_g1e99fc96edc0
+pkgrel=2
 pkgdesc="ctypes based libraw bindings "
 arch=('any')
 url="https://rawkit.readthedocs.io/"
 license=('MIT')
 depends=('libraw')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('git'
+             'python-setuptools'
+             'python2-setuptools')
 checkdepends=('python-mock'
               'python2-mock'
               'python-pytest'
               'python2-pytest'
               'python-numpy'
               'python2-numpy')
-conflicts=('python-rawkit')
-provides=('python-rawkit')
+conflicts=()
+provides=()
 source=("git+https://github.com/photoshell/rawkit.git")
 sha256sums=('SKIP')
 
@@ -45,6 +47,8 @@ check() {
 
 package_python-rawkit-git() {
   depends+=('python')
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}")
 
   cd "${srcdir}"/${_pkgname}
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
@@ -53,6 +57,8 @@ package_python-rawkit-git() {
 
 package_python2-rawkit-git() {
   depends+=('python2')
+  conflicts=("${pkgname%-git}")
+  provides=("${pkgname%-git}")
 
   cd "${srcdir}"/${_pkgname}
   python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
