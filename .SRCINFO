@@ -1,18 +1,16 @@
 pkgbase = heca
 	pkgdesc = Hebrew calendar utility
-	pkgver = 1.1.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/heca-project/heca
 	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/heca-project/heca/archive/1.1.0.tar.gz
-	md5sums = 5b92b2ba45d68f6621fe30429399f524
+	source = https://github.com/heca-project/heca/archive/v1.4.1.tar.gz
+	md5sums = 5f2a62064e032783faa2d0f4b704b6aa
 
 pkgname = heca
 
