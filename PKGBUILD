@@ -1,5 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
-# Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com>
+# Contributor: Icaro Perseo <icaroperseo[at]protonmail[dot]com>
+# Contributor: FadeMind <fademind@gmail.com>
 pkgname='papirus-libreoffice-theme'
 pkgver='20170228'
 pkgrel='2'
