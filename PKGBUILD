@@ -1,19 +1,19 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
 
 pkgname=xmrig-cuda
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-cuda'
-depends=('xmrig' 'cuda>=10.1.105-6')
+depends=('xmrig>=4.5.0' 'cuda>=10.1.105-6')
 optdepends=('monero: wallet')
 # We unfortunately need to be hard on which version of CUDA we use
 makedepends=('cmake' 'openssl' 'cuda>=10.1.105-6')
 license=('GPL')
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fc5dcae3ac4174bd70df460d13e4f6ec95ea74cef13277ab1d5f422ebbafbeb6')
+sha256sums=('fa652fbae675c84805d12ac32977e56282154565bda819cc4c8fa86c4d69e037')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

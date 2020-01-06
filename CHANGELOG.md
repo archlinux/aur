@@ -1,3 +1,7 @@
+# v2.1.0
+- [#1466](https://github.com/xmrig/xmrig/pull/1466) Added `cn-pico/tlo` algorithm.
+- Added alternative relaxed API (algorithm passed as string).
+
 # v2.0.2
 - [#27](https://github.com/xmrig/xmrig-cuda/pull/27) Added RandomSFX (`rx/sfx`) algorithm for Safex Cash.
 - [#28](https://github.com/xmrig/xmrig-cuda/pull/28) Added RandomV (`rx/v`) algorithm for *new* MoneroV.
