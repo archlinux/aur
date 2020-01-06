@@ -1,0 +1,14 @@
+pkgbase = bchoppr-git
+	pkgver = r133.510ab2a
+	pkgrel = 1
+	url = https://github.com/sjaehn/BChoppr
+	arch = x86_64
+	license = GPL
+	depends = xorg-server
+	depends = cairo
+	depends = lv2
+	source = git+https://github.com/sjaehn/BChoppr
+	md5sums = SKIP
+
+pkgname = bchoppr-git
+
