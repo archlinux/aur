@@ -2,9 +2,9 @@
 # Contributor: klardotsh <josh@klar.sh>
 
 pkgname=tuijam
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
-_pkgcommit='995af3cff4ba2c860225467e53d1478fccef247a'
+_pkgcommit='ac8042cb714658c89a1f4f4055e4f7f381075249'
 pkgdesc=" A fancy TUI client for Google Play Music"
 url="https://github.com/cfangmeier/tuijam"
 arch=(any)
