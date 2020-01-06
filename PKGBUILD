@@ -3,8 +3,8 @@
 
 _gemname=terjira
 pkgname=$_gemname
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.5
+pkgrel=1
 pkgdesc='Terjira is interactive command line application for Jira'
 arch=(any)
 url='https://github.com/keepcosmos/terjira'
@@ -13,7 +13,7 @@ depends=(ruby ruby-thor ruby-jira-ruby ruby-activesupport ruby-tty-table ruby-tt
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2679d25ef93d1011ec727a0ad9f7301f5b455181')
+sha1sums=('30f31433b15d179114fe42d2a4ff097939f94129')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
