@@ -1,7 +1,7 @@
 # Maintainer: Sam Whited <sam@samwhited.com>
 
 pkgname=anita
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc='A tool for automating NetBSD installs and building VM images.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('python2-pexpect')
 makedepends=('python2-setuptools')
 source=("http://www.gson.org/netbsd/anita/download/anita-${pkgver}.tar.gz")
-sha256sums=('261f4b38b21b6659c05e04e102dddea01d0649d0f229eb9d4e14f95a5ecb1441')
+sha256sums=('12c5171b5c1ccf99841b775793a8c697872cf4ad48d1cd641adbad40dbfd470d')
 
 build() {
   cd $pkgname-$pkgver
