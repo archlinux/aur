@@ -9,7 +9,7 @@ _gitname=vim9
 pkgbase=$_gitname-git
 pkgname=('vim9-tiny-git' 'vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
 pkgver=9.0.87+20200105.68e9c36b8
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
@@ -232,7 +232,10 @@ package_vim9-rt-git() {
     make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
 
     # remove non runtime files
-    rm -r "${pkgdir}"/usr/share/man/ "${pkgdir}"/usr/bin/
+    rm -r "${pkgdir}"/usr/share/applications/ \
+        "${pkgdir}"/usr/share/icons/ \
+        "${pkgdir}"/usr/share/man/ \
+        "${pkgdir}"/usr/bin/
 
     # move vim82 to vim9
     mv "${pkgdir}/usr/share/vim/vim82" "${pkgdir}/usr/share/vim/vim9"
