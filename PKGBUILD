@@ -13,6 +13,8 @@ url="https://rawkit.readthedocs.io/"
 license=('MIT')
 depends=('libraw')
 makedepends=('git'
+             'python'
+             'python2'
              'python-setuptools'
              'python2-setuptools')
 checkdepends=('python-mock'
