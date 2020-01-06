@@ -13,7 +13,7 @@ pkgbase = xfce4-mixer
 	license = GPL2
 	makedepends = xfce4-dev-tools
 	depends = xfce4-panel
-	depends = libalsa>=1.2
+	depends = alsa-lib
 	depends = libunique>=1.1
 	source = git+https://git.xfce.org/apps/xfce4-mixer#commit=ce642ac52e0bed7495261694fd630748bf71157f
 	sha256sums = SKIP
