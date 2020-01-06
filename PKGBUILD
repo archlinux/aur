@@ -1,8 +1,8 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -43,7 +43,7 @@ depends=(
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=cbb3c9497549f8856d8cd37ac63af1406a784e58
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0
         configure.patch)
 sha256sums=('SKIP'
             '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
