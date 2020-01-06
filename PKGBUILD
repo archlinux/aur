@@ -3,9 +3,9 @@
 _pkgname='arangodb'
 pkgname="${_pkgname}-bin"
 pkgdesc="Arangodb binary from deb."
-pkgver=3.4.7
+pkgver=3.5.3
 pkgrel=1
-_pkgver='3.4.7-1'
+_pkgver='3.5.3-1'
 arch=('x86_64')
 url="https://www.arangodb.com/"
 license=('APACHE')
