@@ -1,90 +1,261 @@
-## GitLab
-## Maintainer: @randx
-##
-## Lines starting with two hashes (##) are comments with information.
-## Lines starting with one hash (#) are configuration parameters that can be uncommented.
-##
-##################################
-##        CHUNKED TRANSFER      ##
-##################################
-##
-## It is a known issue that Git-over-HTTP requires chunked transfer encoding [0]
-## which is not supported by Nginx < 1.3.9 [1]. As a result, pushing a large object
-## with Git (i.e. a single large file) can lead to a 411 error. In theory you can get
-## around this by tweaking this configuration file and either:
-## - installing an old version of Nginx with the chunkin module [2] compiled in, or
-## - using a newer version of Nginx.
-##
-## At the time of writing we do not know if either of these theoretical solutions works.
-## As a workaround users can use Git over SSH to push large files.
-##
-## [0] https://git.kernel.org/cgit/git/git.git/tree/Documentation/technical/http-protocol.txt#n99
-## [1] https://github.com/agentzh/chunkin-nginx-module#status
-## [2] https://github.com/agentzh/chunkin-nginx-module
-##
-###################################
-##         configuration         ##
-###################################
-##
-
-upstream gitlab {
-  server unix:/home/git/gitlab/tmp/sockets/gitlab.socket fail_timeout=0;
+# Additional MIME types that you'd like nginx to handle go in here
+types {
+    text/csv csv;
 }
 
-## Normal HTTP host
+upstream discourse {
+  server unix:/var/www/discourse/tmp/sockets/thin.0.sock;
+  server unix:/var/www/discourse/tmp/sockets/thin.1.sock;
+  server unix:/var/www/discourse/tmp/sockets/thin.2.sock;
+  server unix:/var/www/discourse/tmp/sockets/thin.3.sock;
+}
+
+# inactive means we keep stuff around for 1440m minutes regardless of last access (1 week)
+# levels means it is a 2 deep heirarchy cause we can have lots of files
+# max_size limits the size of the cache
+proxy_cache_path /var/nginx/cache inactive=1440m levels=1:2 keys_zone=one:10m max_size=600m;
+
+# see: https://meta.discourse.org/t/x/74060
+proxy_buffer_size 8k;
+
+# If you are going to use Puma, use these:
+#
+# upstream discourse {
+#   server unix:/var/www/discourse/tmp/sockets/puma.sock;
+# }
+
+
+# attempt to preserve the proto, must be in http context
+map $http_x_forwarded_proto $thescheme {
+  default $scheme;
+  https https;
+}
+
+log_format log_discourse '[$time_local] "$http_host" $remote_addr "$request" "$http_user_agent" "$sent_http_x_discourse_route" $status $bytes_sent "$http_referer" $upstream_response_time $request_time "$sent_http_x_discourse_username"';
+
 server {
-  listen *:80 default_server;
-  server_name YOUR_SERVER_FQDN; ## Replace this with something like gitlab.example.com
-  server_tokens off; ## Don't show the nginx version number, a security best practice
-  root /home/git/gitlab/public;
 
-  ## Increase this if you want to upload large attachments
-  ## Or if you want to accept large git objects over http
-  client_max_body_size 20m;
+  access_log /var/log/nginx/access.log log_discourse;
 
-  ## Individual nginx logs for this GitLab vhost
-  access_log  /var/log/nginx/gitlab_access.log;
-  error_log   /var/log/nginx/gitlab_error.log;
+  listen 80;
+  gzip on;
+  gzip_vary on;
+  gzip_min_length 1000;
+  gzip_comp_level 5;
+  gzip_types application/json text/css text/javascript application/x-javascript application/javascript image/svg+xml;
+  gzip_proxied any;
+
+  # Uncomment and configure this section for HTTPS support
+  # NOTE: Put your ssl cert in your main nginx config directory (/etc/nginx)
+  #
+  # rewrite ^/(.*) https://enter.your.web.hostname.here/$1 permanent;
+  #
+  # listen 443 ssl;
+  # ssl_certificate your-hostname-cert.pem;
+  # ssl_certificate_key your-hostname-cert.key;
+  # ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  # ssl_ciphers HIGH:!aNULL:!MD5;
+  #
+
+  server_name enter.your.web.hostname.here;
+  server_tokens off;
+
+  sendfile on;
+
+  keepalive_timeout 65;
+
+  # maximum file upload size (keep up to date when changing the corresponding site setting)
+  client_max_body_size 10m;
+
+  # path to discourse's public directory
+  set $public /var/www/discourse/public;
+
+  # without weak etags we get zero benefit from etags on dynamically compressed content
+  # further more etags are based on the file in nginx not sha of data
+  # use dates, it solves the problem fine even cross server
+  etag off;
+
+  # prevent direct download of backups
+  location ^~ /backups/ {
+    internal;
+  }
+
+  # bypass rails stack with a cheap 204 for favicon.ico requests
+  location /favicon.ico {
+    return 204;
+    access_log off;
+    log_not_found off;
+  }
 
   location / {
-    ## Serve static files from defined root folder.
-    ## @gitlab is a named location for the upstream fallback, see below.
-    try_files $uri $uri/index.html $uri.html @gitlab;
+    root $public;
+    add_header ETag "";
+
+    # auth_basic on;
+    # auth_basic_user_file /etc/nginx/htpasswd;
+
+    location ~ ^/uploads/short-url/ {
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Request-Start "t=${msec}";
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $thescheme;
+      proxy_pass http://discourse;
+      break;
+    }
+
+    location ~* (assets|plugins|uploads)/.*\.(eot|ttf|woff|woff2|ico)$ {
+      expires 1y;
+      add_header Cache-Control public,immutable;
+      add_header Access-Control-Allow-Origin *;
+    }
+
+    location = /srv/status {
+      access_log off;
+      log_not_found off;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Request-Start "t=${msec}";
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $thescheme;
+      proxy_pass http://discourse;
+      break;
+    }
+
+    # some minimal caching here so we don't keep asking
+    # longer term we should increas probably to 1y
+    location ~ ^/javascripts/ {
+      expires 1d;
+      add_header Cache-Control public,immutable;
+    }
+
+    location ~ ^/assets/(?<asset_path>.+)$ {
+      expires 1y;
+      # asset pipeline enables this
+      brotli_static on;
+      gzip_static on;
+      add_header Cache-Control public,immutable;
+      # HOOK in asset location (used for extensibility)
+      # TODO I don't think this break is needed, it just breaks out of rewrite
+      break;
+    }
+
+    location ~ ^/plugins/ {
+      expires 1y;
+      add_header Cache-Control public,immutable;
+    }
+
+    # cache emojis
+    location ~ /images/emoji/ {
+      expires 1y;
+      add_header Cache-Control public,immutable;
+    }
+
+    location ~ ^/uploads/ {
+
+      # NOTE: it is really annoying that we can't just define headers
+      # at the top level and inherit.
+      #
+      # proxy_set_header DOES NOT inherit, by design, we must repeat it,
+      # otherwise headers are not set correctly
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Request-Start "t=${msec}";
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $thescheme;
+      proxy_set_header X-Sendfile-Type X-Accel-Redirect;
+      proxy_set_header X-Accel-Mapping $public/=/downloads/;
+      expires 1y;
+      add_header Cache-Control public,immutable;
+
+      ## optional upload anti-hotlinking rules
+      #valid_referers none blocked mysite.com *.mysite.com;
+      #if ($invalid_referer) { return 403; }
+
+      # custom CSS
+      location ~ /stylesheet-cache/ {
+          try_files $uri =404;
+      }
+      # this allows us to bypass rails
+      location ~* \.(gif|png|jpg|jpeg|bmp|tif|tiff|svg|ico|webp)$ {
+          try_files $uri =404;
+      }
+      # thumbnails & optimized images
+      location ~ /_?optimized/ {
+          try_files $uri =404;
+      }
+
+      proxy_pass http://discourse;
+      break;
+    }
+
+    location ~ ^/admin/backups/ {
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Request-Start "t=${msec}";
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $thescheme;
+      proxy_set_header X-Sendfile-Type X-Accel-Redirect;
+      proxy_set_header X-Accel-Mapping $public/=/downloads/;
+      proxy_pass http://discourse;
+      break;
+    }
+
+    # This big block is needed so we can selectively enable
+    # acceleration for backups, avatars, sprites and so on.
+    # see note about repetition above
+    location ~ ^/(svg-sprite/|letter_avatar/|letter_avatar_proxy/|user_avatar|highlight-js|stylesheets|theme-javascripts|favicon/proxied|service-worker) {
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Request-Start "t=${msec}";
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $thescheme;
+
+      # if Set-Cookie is in the response nothing gets cached
+      # this is double bad cause we are not passing last modified in
+      proxy_ignore_headers "Set-Cookie";
+      proxy_hide_header "Set-Cookie";
+      proxy_hide_header "X-Discourse-Username";
+      proxy_hide_header "X-Runtime";
+
+      # note x-accel-redirect can not be used with proxy_cache
+      proxy_cache one;
+      proxy_cache_key "$scheme,$host,$request_uri";
+      proxy_cache_valid 200 301 302 7d;
+      proxy_cache_valid any 1m;
+      proxy_pass http://discourse;
+      break;
+    }
+
+    # we need buffering off for message bus
+    location /message-bus/ {
+      proxy_set_header X-Request-Start "t=${msec}";
+      proxy_set_header Host $http_host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $thescheme;
+      proxy_http_version 1.1;
+      proxy_buffering off;
+      proxy_pass http://discourse;
+      break;
+    }
+
+    # this means every file in public is tried first
+    try_files $uri @discourse;
   }
 
-  ## If a file, which is not found in the root folder is requested,
-  ## then the proxy passes the request to the upsteam (gitlab unicorn).
-  location @gitlab {
-    ## If you use HTTPS make sure you disable gzip compression
-    ## to be safe against BREACH attack.
-    # gzip off;
-
-    ## https://github.com/gitlabhq/gitlabhq/issues/694
-    ## Some requests take more than 30 seconds.
-    proxy_read_timeout      300;
-    proxy_connect_timeout   300;
-    proxy_redirect          off;
-
-    proxy_set_header    Host                $http_host;
-    proxy_set_header    X-Real-IP           $remote_addr;
-    proxy_set_header    X-Forwarded-For     $proxy_add_x_forwarded_for;
-    proxy_set_header    X-Forwarded-Proto   $scheme;
-    proxy_set_header    X-Frame-Options     SAMEORIGIN;
-
-    proxy_pass http://gitlab;
+  location /downloads/ {
+    internal;
+    alias $public/;
   }
 
-  ## Enable gzip compression as per rails guide:
-  ## http://guides.rubyonrails.org/asset_pipeline.html#gzip-compression
-  ## WARNING: If you are using relative urls remove the block below
-  ## See config/application.rb under "Relative url support" for the list of
-  ## other files that need to be changed for relative url support
-  location ~ ^/(assets)/ {
-    root /home/git/gitlab/public;
-    gzip_static on; # to serve pre-gzipped version
-    expires max;
-    add_header Cache-Control public;
+  location @discourse {
+    proxy_set_header Host $http_host;
+    proxy_set_header X-Request-Start "t=${msec}";
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $thescheme;
+    proxy_pass http://discourse;
   }
 
-  error_page 502 /502.html;
 }

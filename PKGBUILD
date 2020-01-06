@@ -2,15 +2,15 @@
 # Contributor: Tobias Hunger <tobias DOT hunger AT gmail DOT com>
 
 pkgname=discourse
-pkgver=1.4.3
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="A simple, flat forum, where replies flow down the page in a line"
 arch=('i686' 'x86_64')
 url="http://www.discourse.org/"
 license=('GPL')
-depends=('ruby>=2.0' 'ruby-bundler>=1.5.2' 'gmp' 'libxml2' 'libxslt' 'openssl'
+depends=('ruby>=2.0' 'ruby-bundler>=1.17.3' 'gmp' 'libxml2' 'libxslt' 'openssl'
          'krb5' 'libgcrypt' 'libgpg-error' 'postgresql-libs' 'xz' 'zlib')
-makedepends=('nodejs-uglify-js')
+makedepends=('uglify-js')
 optdepends=('apache: a webserver to deploy discourse'
             'nginx: another webserver to deploy discourse (example configs have to be fixed!)'
             'postgresql: database server'
@@ -37,26 +37,22 @@ source=("${pkgname}::git+https://github.com/discourse/discourse.git#tag=v${pkgve
         "discourse.logrotate"
         "unicorn.conf.rb"
         "apache.conf.example"
-        "apache-ssl.conf.example"
         "nginx.conf.example"
-        "nginx-ssl.conf.example"
         "0001-Revert-this-quickstart-file-is-confusing-and-not-nee.patch")
 install="${pkgname}.install"
-sha256sums=('SKIP'
-            '51e2005fe002d42c8f5ffd3e9ccff54a739555c8e121584603c5d7daee255ca8'
-            'ec711a14712cd7419378a92209b9db1af6a26f758f24aeddcf6e73efc763cd9b'
-            '803c5b71fb350577a0e81c60ad5d511cba0d983046592a5dc8a2f9c726ec2143'
-            'd8fab91c2b15e50db26caa00c034db4703b864e6434846b72225c871e4a3d508'
-            'b512d219056537f7a7b749a10cfb90fb78116d7c6414e0a0bc72c08f1ced3f43'
-            '0b5110b99f3356d9931ce4991344b1149a2d3be04322043b555b91d8751c7a31'
-            '71fa450935dea04c30cc5a0eaaa16012ac765445644ca719b7a1d589aad1938f'
-            '1c57caa7b2dad6b66db724a7db3ff8f156d0291e88cccdfb37d89e3557a7715d'
-            'c76423db80d2f4b39ea5fcd95fd66dfb38de9e9862e8370dfc3a45641e2204ca'
-            'b40c615d8da35fe5a02b914baf5920025ee7167b5d78b47d5905e633934ca11e'
-            '8056354bac606f66a3667034ff93ffbfce3ec52664e7a809835d5cc45a121c30'
-            '7d00b5d99777b4843cdc2f8fb9c65beb94375dcaa6351d2c8f6d55161512b3c5'
-            'cd8965f971047ce5cf5c32d4709fe231c392893702db181300b02de86e0f70fb'
-            '77fc9f233a964fbb3a4952001e575b07772d1939bf2e0872f5161512ceffd62a')
+sha512sums=('SKIP'
+            'fdd4fbdbea672374ec1b10b33d931d9f1faf9a381fda73f58ab120cd2cc338c8fa989717c00aab6daa197650e9b5d7733fc45721b9b4ee01d6bf182e421eaaf3'
+            '03bd411af6153f409a36ed8ca1abd7946613aee8b524cf11b44237b51fa239e3d11a6191c0f037ae40aeefc30f67eb6773e8d5610df7237072b1af4cf07f6c2c'
+            '26a5fd92a08fdd133217a60f986221e92dca9ae1f9abc783d5f221cd04fb69fa014f90f7b56c7ba54fb46711fb7282408adbeee5706c4af2c3353069353352e9'
+            'ea819bd625d68452f5222e841f3f9e0aa8b568b8c32c1b43375261f7508c215211d920c4541a91a3acfea11f9b4f8b18b4b6d9071cf3e5ee1569949141560a9c'
+            'd1004ff9faeeac8f2c53b66e7bed6056e39d37d5e1bdbfe0b36685858ffc3977092185edf4579ae50af2a6cb09f628637487b09c01d50382543691442c38fc3c'
+            '65b723be22b6d8656e312791652a77a20503a8d5cdca910f5fffae4e4546d73933cd9f4a900bbf92e9c7c20f59f780fcd1dfe3c3e8b47853e2d265079e0fc72f'
+            'b2eb1720378684a07e35fcd7036cb9dad495750609d0fee18b4cafbcb78a13218639b6c661421bddb2731a95731cbee3c71f4d27bacac797a54130309d4b6565'
+            '179d0f577b06816466206b47e9e2b21befa7010bdc2bd4a1c9116e41111549b058d2613ae94f230b31a9e0122af69ae5216f8ddef8c14fe4df220bc6f2cc8e32'
+            '0a1b4d54c497f4be26799234aac3e39660fe55f5808d41c5f056943ebefcc79f7e4146d0aa7d78d90101d5cf11a2aefb59ba25fc0e15c0d33e49bfdd80b65ff3'
+            'cc47f4c0697cb8a0c29caf0ccca13f7b5216157dc4728f49ae8608d5157a1fecbda92088439520bf61559209d2ba1e9cf4c200edfe87e4310893435d698ce8a5'
+            '7f956d84cf732dc8f5e467723d6b08065d8c4f02ac154c6e8adc6caee189bca55b4fb7db1069a2e9d86b3bf9b2b0c905f3ae85480c2372b310accc0604c62956'
+            'b19f3967ce7f056d7bf0ed6bc853512987a5901fae234b3e682612606670e206aad44fc74909fc5952adcc4730d273f870bb8dea8f4ba2521cc6f9b487231b1a')
 
 _homedir="/var/lib/${pkgname}"
 _datadir="/usr/share/webapps/${pkgname}"
