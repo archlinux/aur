@@ -3,7 +3,7 @@
 # Contributor: quizzlo
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=tin
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="A threaded NNTP and spool based UseNet newsreader."
 arch=('i686' 'x86_64')
@@ -13,11 +13,11 @@ depends=('ncurses' 'ispell' 'perl' 'gnupg' 'dante' 'icu' 'libidn')
 conflicts=('tin-unstable')
 source=("ftp://ftp.tin.org/pub/news/clients/tin/v${pkgver%.*}/$pkgname-$pkgver.tar.gz"
         'LICENSE')
-md5sums=('2455c274c952c8f1fb98b133c62e5f21'
+md5sums=('67f25e1fd97f314b248af7cf1f188af1'
          '22de35b1bdc6f0df87c93ae794198b21')
-sha1sums=('d452fc295c6b13cb10d7081d96e9f50225baca0d'
+sha1sums=('306d682912397124ae9a52fe7d2925dc1ecf2553'
           '07e1217ee68bb20f0ad2670e84116a0d67243063')
-sha256sums=('1142590ae6aeae6a6fc4d7593a0702398ae4e0d6647490448b7a7504727ed5ad'
+sha256sums=('2b513aabc0b94f7e92eca175e3ed1a550030769c07bb236d1da903fed9ce4431'
             '5ccb431a94c2d2f093b8f93325075e5ad886772ba2a452478120b86ce71c0683')
 
 build() {
