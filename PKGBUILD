@@ -1,11 +1,11 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Thomas Haider <t.haider@vcnc.org>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrea Scarpino <andrea at archlinux dot org>
+# Contributor: Allan McRae <allan at archlinux dot org>
+# Contributor: Thomas Haider <t dot haider at vcnc dot org>
 
 pkgname=mingw-w64-libev
 _pkgname=libev
-pkgver=4.27
+pkgver=4.31
 pkgrel=1
 pkgdesc="A full-featured and high-performance event loop (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 source=("http://dist.schmorp.de/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "libev-4.24-no-undefined.patch")
-sha1sums=('b67aff18f6f1ffec4422e188c98d9fe458c5ed0b'
+sha1sums=('41a70861053eaed07bdb9b1dfcff24fb390803b9'
           '600ca8fe4c6503f592db7560301923f4ade5c224')
 options=(!strip !buildflags staticlibs)
 
