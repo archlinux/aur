@@ -10,7 +10,7 @@ pkgbase = dict-freedict-eng-deu
 	makedepends = freedict-tools
 	optdepends = dictd: dict client and server
 	source = https://download.freedict.org/dictionaries/eng-deu/0.3.7/freedict-eng-deu-0.3.7.src.tar.xz
-	sha512sums = 4608ee6a985ec3151037c35bc8016b6262bde86d881af6d4f36b387d8116344a6fabb79b7cf192b7eedb412c70abc216df38549e7bf2c35355b0005db992ca96
+	sha512sums = 75b6f122a01125037d55c56bb7d52af01339b59b083bec87aa2d535410cf2486764833221d9b6ce7eb625cf5261ce766820bb14cb49e67de0be307369e159039
 
 pkgname = dict-freedict-eng-deu
 
