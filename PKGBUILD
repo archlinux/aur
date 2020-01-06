@@ -9,7 +9,7 @@ pkgdesc="A framework for managing and maintaining multi-language pre-commit hook
 arch=('any')
 license=('MIT')
 url="http://pre-commit.com/"
-makedepends=(
+depends=(
   'python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify'
   'python-cached-property' 'python-cfgv'
 )

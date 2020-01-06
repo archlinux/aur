@@ -5,16 +5,17 @@ pkgbase = python-pre-commit
 	url = http://pre-commit.com/
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-nodeenv
-	makedepends = python-aspy-yaml
-	makedepends = python-virtualenv
-	makedepends = python-cached-property
-	makedepends = python-identify
-	makedepends = python-toml
-	makedepends = python-importlib-metadata
+	depends = python
+	depends = python-nodeenv
+	depends = python-aspy-yaml
+	depends = python-virtualenv
+	depends = python-cached-property
+	depends = python-identify
+	depends = python-cached-property
+	depends = python-cfgv
 	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-1.21.0.tar.gz
 	md5sums = 75ff77c7e0954038424f2d58b0959c6c
 
 pkgname = python-pre-commit
+	pkgdesc = Python 3 client for pre-commit
 
