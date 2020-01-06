@@ -1,0 +1,12 @@
+*** a/src/rqt_image_view/image_view.cpp
+--- b/src/rqt_image_view/image_view.cpp
+***************
+*** 39,44 ****
+--- 39,45 ----
+  #include <cv_bridge/cv_bridge.h>
+  #include <opencv2/imgproc/imgproc.hpp>
+  
++ #include <QSet>
+  #include <QFileDialog>
+  #include <QMessageBox>
+  #include <QPainter>

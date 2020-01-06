@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='http://ros.org/wiki/rqt_image_view'
 
 pkgname='ros-kinetic-rqt-image-view'
-pkgver='0.4.3'
+pkgver='0.4.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-kinetic-cv-bridge
@@ -35,9 +35,15 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="rqt_common_plugins-release-release-kinetic-rqt_image_view-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/kinetic/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0da38516ea47c2f333da37d8c4b0cd29c2931f503b494acfe54c7d1002009b7b')
+_dir="rqt_common_plugins-release-release-kinetic-rqt_image_view"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/kinetic/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz"
+        "include_qset.patch")
+sha256sums=('7e4715a2bcb008f1cfc3f41cef4b64ab73b2919500a2718628c202c6c8696178'
+            'SKIP')
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/include_qset.patch
+}
 
 build() {
   # Use ROS environment variables
