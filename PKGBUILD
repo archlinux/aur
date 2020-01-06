@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=teams-insiders
-pkgver=1.2.00.32955
+pkgver=1.2.00.33752
 pkgrel=2
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365 - Insiders Version"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=("org.freedesktop.secrets")
 conflicts=("teams")
 source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('91051626448368d971fabb4ac9ce94fa378ce32764dca99311341c46a01d5e28')
+sha256sums=('9ce9f9a64b23ca3fc4d96d44dbc7d0332686022231c76b30b3c0c93d9b646321')
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
