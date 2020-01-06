@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=qxw
-pkgver=20140331
+pkgver=20190909
 pkgrel=1
 epoch=
 pkgdesc="A program to help you create and publish crosswords."
@@ -24,12 +24,12 @@ source=(https://www.quinapalus.com/$pkgname-$pkgver.tar.gz
         https://www.quinapalus.com/$pkgname-guide-$pkgver.pdf)
 noextract=()
 options=()
-md5sums=('745bdc9eb7a05602539f685b0bb8527b'
-         '095e1a51e9115567a3f8ee5330742a93')
-sha1sums=('3613e0e77b44eeeb7951353aea5f95428bcc8ac5'
-          'e0b929745b46b66fa55d9aa3d1d254a4bea013f0')
-sha256sums=('c1c61388542151279f62be9ae19ef5f114ecf55469f7815f7aa1c8209648c06b'
-            'bdea4a62d0d617782cf1f43ba59b1d3532272dc9dfee9edd9191f05bc763fa07')
+md5sums=('09f2bdec2b168768d9f7053d1e093ae4'
+         'affec50cda6e8a0d7f7cab5e28eb643d')
+sha1sums=('08f689cfc9d3dc3dfc7ef29a555421b78ffea2ef'
+          '71cc3f2cedb5aaa2baa90002b015636f16424c9a')
+sha256sums=('88fc1948f8cf10eafd2c40b86ead830e88a88621350fb89b88ab2d0a0e13cef0'
+            '2e3ccc61d0d1a039f90b40096312178db1333c9101d4312f5a942596db3c6c71')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
