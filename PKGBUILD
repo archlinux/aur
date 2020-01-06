@@ -3,7 +3,7 @@
 
 pkgname=earlyoom-git
 pkgver=1.3.r13.gc58d548
-pkgrel=1
+pkgrel=2
 pkgdesc="Early OOM Daemon for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/rfjakob/earlyoom"
@@ -14,7 +14,6 @@ makedepends=('git' 'pandoc')
 provides=('earlyoom')
 conflicts=('earlyoom')
 backup=("etc/default/earlyoom")
-options=('staticlibs')
 source=("git+https://github.com/rfjakob/earlyoom.git")
 sha256sums=('SKIP')
 
