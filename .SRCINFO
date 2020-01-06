@@ -1,0 +1,17 @@
+pkgbase = dumb-brightness-git
+	pkgdesc = Very simple program to control brightness of your screen, keyboard or whatever exposed via sysfs (written in Rust)
+	pkgver = 0.1.0.5.g5935363
+	pkgrel = 1
+	url = https://github.com/m-khvoinitsky/dumb-brightness
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	source = git+https://github.com/m-khvoinitsky/dumb-brightness.git
+	sha256sums = SKIP
+
+pkgname = dumb-brightness-git
+
