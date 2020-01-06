@@ -9,7 +9,7 @@ _gitname=vim9
 pkgbase=$_gitname-git
 pkgname=('vim9-tiny-git' 'vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
 pkgver=9.0.87+20200105.68e9c36b8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom:vim')
 url="http://www.vim.org"
@@ -100,7 +100,6 @@ package_vim9-tiny-git() {
     pkgdesc='Vi Improved 9 experimental, tiny edition'
     depends=('acl')
     conflicts=('vim9-cli')
-    provides=('vim')
 
     cd ${srcdir}/vim-build-tn
     make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
@@ -142,7 +141,6 @@ package_vim9-cli-nox-git() {
         'ruby: vim ruby binding'
     )
     conflicts=('vim9-cli')
-    provides=('vim')
 
     cd ${srcdir}/vim-build-nox
     make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
@@ -187,7 +185,6 @@ package_vim9-cli-git() {
         'ruby: vim ruby binding'
     )
     conflicts=('vim9-cli-nox')
-    provides=('vim')
 
     cd ${srcdir}/vim-build
     make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
@@ -226,7 +223,6 @@ package_vim9-cli-git() {
 
 package_vim9-rt-git() {
     pkgdesc='Runtime for vim9 git'
-    provides=('vim-runtime')
     optdepends=(
         'python: tools'
         'gawk: tools'
