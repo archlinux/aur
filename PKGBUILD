@@ -2,7 +2,7 @@
 
 _pkgname=lifelines
 pkgname=python-lifelines
-pkgver=0.23.4
+pkgver=0.23.5
 pkgrel=1
 pkgdesc="Survival analysis in Python"
 url="https://github.com/CamDavidsonPilon/lifelines"
@@ -12,7 +12,7 @@ depends=('python-autograd-gamma' 'python-matplotlib' 'python-pandas')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/CamDavidsonPilon/lifelines/archive/v${pkgver}.tar.gz")
-sha256sums=('b090c69e342438dbf21c7636f223a0c10097bbd0006a147e60dc92421bc0f6a4')
+sha256sums=('3c88f7766f3f1bed3745ab5ecf6bb6a9e58af6d564e232b086e1db291b890284')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
