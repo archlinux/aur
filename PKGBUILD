@@ -1,7 +1,7 @@
 # Maintainer: ichundes <derago@gmail.com>
 pkgname='pyrescene-hg'
 pkgver=816
-pkgrel=2
+pkgrel=3
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://bitbucket.org/Gfy/pyrescene'
 arch=('any')
