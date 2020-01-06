@@ -14,6 +14,7 @@ pkgbase = cozy-audiobooks
 	depends = gstreamer
 	depends = gtk3
 	depends = python-dbus
+        depends = python-distro
 	depends = python-gobject
 	depends = python-mutagen
 	depends = python-cairo
