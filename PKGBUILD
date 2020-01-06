@@ -1,10 +1,11 @@
-# Maintainer: Modelmat <modelmat@outlook.com.au>
+# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Contributor: Modelmat <modelmat@outlook.com.au>
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 # Contributor: David Naramski <david.naramski@gmail.com>
 pkgname=ao-git
-_pkgname=${pkgname%%-git}
-pkgver=6.8.0.r6.gf3fe9b0
-_pkgver=6.8.0
+_pkgname=ao
+pkgver=6.9.0.r12.g7533b53
+_pkgver=${pkgver%%.r*}
 pkgrel=1
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
@@ -12,31 +13,29 @@ url="https://github.com/klaussinani/ao"
 license=('MIT')
 depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
 makedepends=('npm' 'electron' 'git')
-provides=('ao-git')
+provides=('ao')
 conflicts=('ao')
-source=(git+$url.git) 
+source=(git+${url}.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname}
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_pkgver() {
-  cd $_pkgname
-  echo ${git describe --abbrev=0:1}
-}
-
 build() {
-  cd ao
+  cd ${_pkgname}
   npm install
   npx electron-builder --linux deb
 }
 
 package() {
   bsdtar -xf "${srcdir}/ao/dist/${_pkgname}_${_pkgver}_amd64.deb" \
-   -C "${srcdir}" --include data.tar.xz
+    -C "${srcdir}" --include data.tar.xz
   tar xfJ ${srcdir}/data.tar.xz -C ${pkgdir}
   install -d ${pkgdir}/usr/bin/
-  ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/ao
+  ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/ao.png" \
+    "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  rm -rfv "${pkgdir}/usr/share/icons/hicolor"
 }
