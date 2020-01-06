@@ -1,0 +1,19 @@
+pkgbase = wms-git
+	pkgdesc = A tool for changing WPS Office language with online languages supports.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/timxx/wms
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = desktop-file-utils
+	depends = p7zip
+	depends = polkit
+	source = wms-git::git+https://github.com/timxx/wms.git
+	sha256sums = SKIP
+
+pkgname = wms-git
+
