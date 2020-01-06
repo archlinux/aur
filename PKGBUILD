@@ -1,10 +1,10 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Iván Ruvalcaba <mario.i.ruvalcaba[at]gmail[dot]com>
-# Contributor: Eugenio M. Vigo <emvigo@gmail.com>
+# Contributor: Eugenio M. Vigo <emvigo at gmail dot com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=dianara
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A Qt pump.io client"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://dianara.nongnu.org/"
 license=('GPL')
 depends=('hicolor-icon-theme' 'file' 'qt5-base' 'qoauth')
 source=("https://download-mirror.savannah.gnu.org/releases/${pkgname}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('e61b43d86759c5a941698f6f4e2dd769df08a32688acd9eaa09a67232acb93ba')
+sha256sums=('6229fd940c6cbc62e310c41bc010ce763c604bd2aa24a82d0055be8ac5d91f8f')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
@@ -26,7 +26,7 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install
 
   # Desktop file
-  install -Dm644 dianara.desktop \
+  install -Dm644 org.nongnu.dianara.desktop \
     "${pkgdir}/usr/share/applications/dianara.desktop"
 
   # Icons
