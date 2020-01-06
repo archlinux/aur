@@ -2,7 +2,7 @@
 
 pkgname=writefreely
 pkgver=0.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -22,12 +22,12 @@ source=("${pkgname}-sysusers.conf"
         "${pkgname}.tmpfiles"
         config.ini
         makefile.patch
-        "https://github.com/writeas/writefreely/archive/v${pkgver}.tar.gz")
+        "${pkgname}-${pkgver}.tar.gz::https://github.com/writeas/writefreely/archive/v${pkgver}.tar.gz")
 sha256sums=('6c74c81e27165851daf20d4bcf958227342f063aa3ec53b1cb86a56dac565f10'
             '28328462c921cc6dfc690231da190ed77635da60d5f76c9f2646aeb0cc48f13e'
-            '7884d61cf16b7ef94616c5aa2954229979dace22deb6d5c2ece25405bcf41aae'
+            '15806f435013b0565074b22f5acdc826a79dd7f99bf99777e3c2b8d94f558719'
             '4c404097744537bc3c6b58913c4c20a36da8a8953b756f80b136c2b11b02e6d3'
-            'f6282ce91ada86b77f54469f0c24db20089b87bf4593ee23f5855cbf5fde4859'
+            '6a23c3a8c252b007fd0773af6b5cc798b84504e59b412185e177db80c8490f0f'
             '70b1f2101e75d36410b8d94624488d9cc826e34f4078cbac11e0e5242ff1b0d5')
 
 prepare() {
@@ -46,8 +46,6 @@ build() {
 }
 
 package() {
-  install -dm700 "${pkgdir}"/var/lib/${pkgname}/data
-  install -dm700 "${pkgdir}"/var/lib/${pkgname}/keys
   install -dm755 "${pkgdir}"/usr/share/${pkgname}/pages
   install -dm755 "${pkgdir}"/usr/share/${pkgname}/static
   install -dm755 "${pkgdir}"/usr/share/${pkgname}/templates

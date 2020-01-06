@@ -22,7 +22,7 @@
 < GOTEST=$(GOCMD) test $(LDFLAGS)
 ---
 > GOINSTALL=$(GOCMD) install $(GOLDFLAGS) $(GCFLAGS) $(ASMFLAGS)
-> GOBUILD=$(GOCMD) build $(GOLDFLAGS) $(GCFLAGS) $(ASMFLAGS)
+> GOBUILD=$(GOCMD) build -buildmode=pie $(GOLDFLAGS) $(GCFLAGS) $(ASMFLAGS)
 > GOTEST=$(GOCMD) test $(GOLDFLAGS) $(GCFLAGS) $(ASMFLAGS)
 29c41
 < 	xgo --targets=linux/amd64, -dest build/ $(LDFLAGS) -tags='sqlite' -out writefreely ./cmd/writefreely

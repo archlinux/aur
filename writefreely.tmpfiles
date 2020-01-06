@@ -1,1 +1,3 @@
-Z /var/lib//writefreely 0700 writefreely writefreely - -
+Z /var/lib//writefreely     0700 writefreely writefreely - -
+d /var/lib/writefreely/data 700  writefreely writefreely
+d /var/lib/writefreely/keys 700  writefreely writefreely

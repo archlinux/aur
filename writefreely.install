@@ -6,6 +6,8 @@ post_update() {
 
 post_install() {
   cd /var/lib/writefreely
+  install -dm700 /var/lib/writefreely/data
+  install -dm700 /var/lib/writefreely/keys
   /usr/bin/writefreely -c /etc/writefreely/config.ini -gen-keys
   /usr/bin/writefreely -c /etc/writefreely/config.ini -init-db
 }
