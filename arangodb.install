@@ -88,6 +88,8 @@ post_upgrade() {
 
 EOF
 
+    /usr/bin/arangod --uid arangodb --gid arangodb --server.rest-server false --database.auto-upgrade true
+
 }
 
 pre_remove() {
