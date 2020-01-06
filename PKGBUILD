@@ -14,7 +14,7 @@ optdepends=('google-chrome-beta')
 provides=(${_pkgname})
 md5sums=('e1a87e90a683689079a6759f82106839')
 
-source=("${_pkgname}_${pkgver}_linux64.zip::http://chromedriver.storage.googleapis.com/${pkgver}/${_pkgname}_linux64.zip")
+source=("${_pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/${_pkgname}_linux64.zip")
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
