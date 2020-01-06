@@ -1,20 +1,20 @@
 # Maintainer: Einhard Leichtfuß <alguien@respiranto.de>
 pkgname=freedict-tools
-pkgver=0.5.0_beta.2
+pkgver=0.5.0_beta.4
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools to compile the Freedict dictionaries"
 arch=('any')
-url="http://www.freedict.org/"
+url="https://freedict.org/"
 license=('GPL' 'GPL3' 'CC-BY-SA')
 depends=('libxslt' 'espeak')
-source=("freedict-tools_${_pkgver}.tar.gz::https://github.com/freedict/tools/archive/${_pkgver}.tar.gz")
-sha512sums=('c26d3dd6b7502e165ee5eb57f99d89a62a60dd70ebf0fa54830107d6948a373dbaa39672d691b9afd949b0ea543e06edeff4af7472e7e38650e8dc426b8261d3')
+source=("freedict-tools_${_pkgver}.tar.gz::https://api.github.com/repos/freedict/tools/tarball/${_pkgver}")
+sha512sums=('2ec09762bdac9e61da27104422ff89e4521e8abb3f4a1b3853a19038238701fa7ee28af327f369fc1bcdd44423a8c7050b6ec3ed5f613cb208953cbf54773889')
 
 package()
 {
 	mkdir -p "${pkgdir}/usr/lib/${pkgname}"
-	cp -r tools-${_pkgver}/. "${pkgdir}/usr/lib/${pkgname}/"
+	cp -r freedict-tools-*/. "${pkgdir}/usr/lib/${pkgname}/"
 
 	mkdir -p "${pkgdir}/usr/share/doc/freedict/tools"
 	ln -s /usr/lib/${pkgname}/README.md \
