@@ -1,5 +1,5 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
-# Previous maintainer: Swift Geek
+# Previous maintainer: Swift Geek <swiftgeek@gmail.com>
 
 pkgname=earlyoom-git
 pkgver=1.3.r13.gc58d548
