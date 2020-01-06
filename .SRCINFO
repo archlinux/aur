@@ -1,6 +1,6 @@
 pkgbase = freeswitch
 	pkgdesc = An opensource and free (libre, price) telephony system, similar to Asterisk.
-	pkgver = 1.8.7
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = http://freeswitch.org/
 	install = freeswitch.install
@@ -40,7 +40,7 @@ pkgbase = freeswitch
 	conflicts = freeswitch-fixed
 	backup = etc/freeswitch/private/passwords.xml
 	backup = etc/freeswitch/vars.xml
-	source = git+https://freeswitch.org/stash/scm/fs/freeswitch.git/#tag=v1.8.7
+	source = https://github.com/signalwire/freeswitch/archive/v1.10.2.tar.gz
 	source = freeswitch.conf.d
 	source = README.freeswitch
 	source = run.freeswitch

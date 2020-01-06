@@ -55,7 +55,7 @@ _disabled_modules=(languages/mod_spidermonkey
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
-pkgver=1.8.7
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
@@ -102,7 +102,7 @@ install=freeswitch.install
 backup=('etc/freeswitch/private/passwords.xml'
         'etc/freeswitch/vars.xml')
 #source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git#tag=v${pkgver}"
-source=("git+https://freeswitch.org/stash/scm/fs/freeswitch.git/#tag=v${pkgver}"
+source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
         'freeswitch.conf.d'
          'README.freeswitch'
          'run.freeswitch'
