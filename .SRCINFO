@@ -1,16 +1,20 @@
 pkgbase = zlib-asm
 	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP
-	pkgver = 1.2.8
+	pkgver = 1.2.11
 	pkgrel = 1
-	url = http://www.zlib.net/
+	url = https://www.zlib.net/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
-	provides = zlib=1.2.8
+	provides = zlib=1.2.11
 	conflicts = zlib
-	source = http://zlib.net/current/zlib-1.2.8.tar.gz
-	md5sums = 44d667c142d7cda120332623eab69f40
+	options = staticlibs
+	source = https://zlib.net/zlib-1.2.11.tar.gz
+	source = https://zlib.net/zlib-1.2.11.tar.gz.asc
+	validpgpkeys = 5ED46A6721D365587791E2AA783FCD8E58BCAFBA
+	sha512sums = 73fd3fff4adeccd4894084c15ddac89890cd10ef105dd5e1835e1e9bbb6a49ff229713bd197d203edfa17c2727700fce65a2a235f07568212d820dca88b528ae
+	sha512sums = SKIP
 
 pkgname = zlib-asm
 
