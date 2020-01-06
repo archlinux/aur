@@ -2,7 +2,7 @@
 pkgname=ee-editor
 _pkgname=ee
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 _realname='easyedit'
 pkgdesc='EasyEdit, a classic curses text editor. Born in HP-UX, used in FreeBSD.'
 arch=('i686' 'x86_64')
@@ -19,6 +19,11 @@ sha1sums=('da0697f34e407c010754922531b2f94bd7a589f8'
           '14719494c1780f00bd2017bfced9ad73e6f26639')
 sha256sums=('e08d7511a48b43ee354042fe3fe7d9cb3431238caedcf4ac729c61a447003918'
             '5b2531f7c9363e2bc2212cc8e20f321793319bf564353b20a189b852a0e562cb')
+
+prepare() {
+  cd "$srcdir/$_realname-$pkgver"
+  sed -i '555s/SIGUNUSED/24/' ee.c
+}
 
 build() {
   cd "$srcdir/$_realname-$pkgver"
