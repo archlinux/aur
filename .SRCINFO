@@ -1,6 +1,6 @@
 pkgbase = ephemeral-bin
-	pkgdesc = The always-incognito web browser. Browse the Internet in private without leaving a trace of history on your computer.
-	pkgver = 5.2.1
+	pkgdesc = A private-by-default, always-incognito browser for elementary OS.
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://github.com/cassidyjames/ephemeral
 	install = ephemeral-bin.install
@@ -16,8 +16,8 @@ pkgbase = ephemeral-bin
 	depends = libgee>=0.8.3
 	depends = libsoup>=2.32.2
 	depends = webkit2gtk>=2.15.4
-	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.cassidyjames.ephemeral/com.github.cassidyjames.ephemeral5.2.1-c76aa6.deb
-	sha512sums = a229bfd1f81fec9cd03a36d2ed6e4321648c65cc5db48e61de0fa9e00dc0898038159efc4351d31fba4879022971a9e46444ab47c0e92cc97ac15ac199bcb05a
+	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.cassidyjames.ephemeral/com.github.cassidyjames.ephemeral6.1.1-5ff1cc.deb
+	sha512sums = 5de2937bf42ade6f93024ef8a37126e392d93426831619927b2b5198be868781e5b504d7b886f490356a88cc0a1464e500609b4c0088c4ea96a4d78a8884dd58
 
 pkgname = ephemeral-bin
 
