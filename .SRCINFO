@@ -1,6 +1,6 @@
 pkgbase = libpeas-git
 	pkgdesc = A GObject-based plugins engine
-	pkgver = 1.14.0.r17.ga919b8c
+	pkgver = 1.24.0.r25.gc228acf
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Libpeas
 	install = libpeas.install
@@ -8,21 +8,19 @@ pkgbase = libpeas-git
 	arch = x86_64
 	license = GPL2
 	makedepends = gtk-doc
-	makedepends = intltool
 	makedepends = python-gobject
-	makedepends = python2-gobject
-	makedepends = gjs
-	makedepends = seed
 	makedepends = glade
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
 	depends = gtk3
-	depends = hicolor-icon-theme
-	depends = gobject-introspection
-	optdepends = gjs: gobject-based plugin engine - gjs runtime loader
-	optdepends = seed: gobject-based plugin engine - seed runtime loader
+	depends = gobject-introspection-runtime
+	optdepends = python-gobject: Python loader
 	provides = libpeas=1.14.1
 	conflicts = libpeas
 	options = !libtool
-	source = git://git.gnome.org/libpeas
+	source = git+https://gitlab.gnome.org/GNOME/libpeas.git
 	sha256sums = SKIP
 
 pkgname = libpeas-git
