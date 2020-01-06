@@ -2,7 +2,7 @@
 # Contributor: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
 
 pkgname=go-tools-git
-pkgver=v0.0.0_20190826234050_71894ab67ee3
+pkgver=v0.0.0_20200103221440_774c71fcf114
 pkgrel=1
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
@@ -31,18 +31,15 @@ pkgver() {
 
 
 prepare() {
-  export GO111MODULE=on
   rm -rf build/
   mkdir -p build/
   mkdir -p cache/
 }
 
 build() {
-  export GO111MODULE=on
   cd "${pkgname}"
   GOCACHE="${srcdir}/cache" GOBIN="${srcdir}/build" go install -v -a \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
+    -trimpath \
     -ldflags "-extldflags ${LDFLAGS}" \
     -buildmode=pie \
     ./cmd/...

@@ -1,6 +1,6 @@
 pkgbase = go-tools-git
 	pkgdesc = Developer tools for the Go programming language
-	pkgver = v0.0.0_20190826234050_71894ab67ee3
+	pkgver = v0.0.0_20200103221440_774c71fcf114
 	pkgrel = 1
 	url = https://godoc.org/golang.org/x/tools/
 	arch = x86_64
