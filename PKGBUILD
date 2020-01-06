@@ -2,7 +2,7 @@
 
 _pkgname=cppunit
 pkgname=lib32-${_pkgname}
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="A C++ unit testing framework (32-bit)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=("${_pkgname}" 'lib32-gcc-libs')
 options=('!emptydirs')
 source=(https://dev-www.libreoffice.org/src/${_pkgname}-${pkgver}.tar.gz)
-sha256sums=('1c61dfdb430e04ebb411e4b80fbd49fe7e63a1be0209a76d7c07501f02834922')
+sha256sums=('89c5c6665337f56fd2db36bc3805a5619709d51fb136e51937072f63fcc717a7')
 
 build() {
   export CC='gcc -m32'
