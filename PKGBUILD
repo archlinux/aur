@@ -20,9 +20,7 @@ sha512sums=('12190ab20e5706f9d816b67737a5f14a2f79f610dbbbb53ffe7304b46c45ed85e4f
 
 package()
 {
-    strip ${srcdir}/studio-link-standalone
     install -Dm755 ${srcdir}/studio-link-standalone ${pkgdir}/usr/bin/studiolink
-
     install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/studiolink-standalone-bin/LICENSE"
 
     # freedesktop.org compatibility
