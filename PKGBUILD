@@ -1,25 +1,27 @@
-# Maintainer: Robin Lange <robin dot langenc at gmail dot com>
+# Maintainer: t1meshift <kurlykster@mail.ru>
 # Contributor: Robin Lange <robin dot langenc at gmail dot com>
-pkgname=optimus-manager-git
-pkgver=1.2.2.r2.gb4d07c7
+pkgname=optimus-manager-amd-git
+pkgver=1.2.2.r3.gdae468b
 pkgrel=1
-pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
+pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version w/ AMD)"
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
-conflicts=("optimus-manager")
+conflicts=("optimus-manager" "optimus-manager-git")
 provides=("optimus-manager=$pkgver")
 depends=('python3' 'python-setuptools' 'python-dbus' 'mesa-demos' 'xorg-xrandr')
 optdepends=('bbswitch: alternative power switching method'
-            'xf86-video-intel: provides the Xorg intel driver')
+            'xf86-video-amdgpu: provides the Xorg AMD driver')
 makedepends=('python-setuptools' 'git')
 backup=('etc/optimus-manager/xorg-intel.conf'
         'etc/optimus-manager/xorg-nvidia.conf'
+        'etc/optimus-manager/xorg-amd.conf'
         'etc/optimus-manager/xsetup-intel.sh'
         'etc/optimus-manager/xsetup-nvidia.sh'
+        'etc/optimus-manager/xsetup-amd.sh'
         'var/lib/optimus-manager/startup_mode'
         'var/lib/optimus-manager/requested_mode')
-source=("git+https://github.com/Askannz/optimus-manager.git#branch=master")
+source=("git+https://github.com/Kr1ss-XD/optimus-manager.git#branch=amdigpu-compat")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -58,9 +60,11 @@ package() {
   install -Dm644 login_managers/sddm/20-optimus-manager.conf "$pkgdir/etc/sddm.conf.d/20-optimus-manager.conf"
   install -Dm644 login_managers/lightdm/20-optimus-manager.conf  "$pkgdir/etc/lightdm/lightdm.conf.d/20-optimus-manager.conf"
   
+  install -Dm644 config/xorg-amd.conf "$pkgdir/etc/optimus-manager/xorg-amd.conf"
   install -Dm644 config/xorg-intel.conf "$pkgdir/etc/optimus-manager/xorg-intel.conf"
   install -Dm644 config/xorg-nvidia.conf "$pkgdir/etc/optimus-manager/xorg-nvidia.conf"
   
+  install -Dm755 config/xsetup-amd.sh "$pkgdir/etc/optimus-manager/xsetup-amd.sh"
   install -Dm755 config/xsetup-intel.sh "$pkgdir/etc/optimus-manager/xsetup-intel.sh"
   install -Dm755 config/xsetup-nvidia.sh "$pkgdir/etc/optimus-manager/xsetup-nvidia.sh"
  
