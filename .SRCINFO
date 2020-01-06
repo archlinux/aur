@@ -1,13 +1,15 @@
 pkgbase = popcorntime-bin
 	pkgdesc = Stream movies and TV shows from torrents (stable builds)
 	pkgver = 0.3.10
-	pkgrel = 6
+	pkgrel = 7
 	url = https://popcorntime.sh
 	arch = x86_64
 	license = GPL3
 	depends = nss
 	depends = ttf-font
 	depends = libxss
+	depends = gconf
+	depends = gtk2
 	depends = gtk3
 	provides = popcorntime
 	provides = popcorn-time-ce
