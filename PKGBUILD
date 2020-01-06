@@ -69,7 +69,7 @@ build() {
         --disable-gui --enable-multibyte --disable-cscope \
         --disable-netbeans --disable-perlinterp --disable-pythoninterp \
         --disable-rubyinterp --enable-luainterp=no
-    make
+    make VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9
 
     msg2 'Building vim-cli-nox'
     cd ${srcdir}/vim-build-nox
@@ -81,7 +81,7 @@ build() {
         --disable-netbeans --enable-perlinterp=dynamic \
         --enable-python3interp=dynamic --enable-rubyinterp=dynamic \
         --enable-luainterp=dynamic
-    make
+    make VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9
 
     msg2 'Building vim-cli'
     cd ${srcdir}/vim-build
@@ -93,7 +93,7 @@ build() {
         --disable-netbeans --enable-perlinterp=dynamic \
         --enable-python3interp=dynamic --enable-rubyinterp=dynamic \
         --enable-luainterp=dynamic
-    make
+    make VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9
 }
 
 package_vim9-tiny-git() {
@@ -102,7 +102,8 @@ package_vim9-tiny-git() {
     conflicts=('vim9-cli')
 
     cd ${srcdir}/vim-build-tn
-    make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
+    make -j1 VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9 \
+        DESTDIR=${pkgdir} install
 
     # Runtime not needed
     rm -r ${pkgdir}/usr/share/vim
@@ -143,7 +144,8 @@ package_vim9-cli-nox-git() {
     conflicts=('vim9-cli')
 
     cd ${srcdir}/vim-build-nox
-    make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
+    make -j1 VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9 \
+        DESTDIR=${pkgdir} install
 
     # Runtime provided by runtime package
     rm -r ${pkgdir}/usr/share/vim
@@ -187,7 +189,8 @@ package_vim9-cli-git() {
     conflicts=('vim9-cli-nox')
 
     cd ${srcdir}/vim-build
-    make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
+    make -j1 VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9 \
+        DESTDIR=${pkgdir} install
 
     ## Runtime provided by runtime package
     #rm -r ${pkgdir}/usr/share/vim
@@ -229,7 +232,8 @@ package_vim9-rt-git() {
     )
 
     cd ${srcdir}/vim-build
-    make -j1 VIMRCLOC=/etc DESTDIR=${pkgdir} install
+    make -j1 VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9 \
+        DESTDIR=${pkgdir} install
 
     # remove non runtime files
     rm -r "${pkgdir}"/usr/share/applications/ \
