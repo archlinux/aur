@@ -1,8 +1,8 @@
 pkgbase = zinc
 	pkgdesc = Zinc is a stand-alone version of sbt's incremental compiler
-	pkgver = 0.3.13
+	pkgver = 1.3.1
 	pkgrel = 0
-	url = https://github.com/typesafehub/zinc
+	url = https://github.com/sbt/zinc
 	arch = any
 	license = Apache
 	depends = java-environment
@@ -10,14 +10,14 @@ pkgbase = zinc
 	conflicts = zinc-git
 	options = !strip
 	backup = etc/conf.d/zincer.conf
-	source = http://downloads.typesafe.com/zinc/0.3.13/zinc-0.3.13.tgz
+	source = https://github.com/sbt/zinc/archive/v1.3.1.tar.gz
 	source = zincer.sh
 	source = zincer.conf
 	source = zincer.service
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha512sums = 8a605e1221fb43d0efa1be4fec9f6633986b2582646d059db5190488ca10354baa4ebc988efef92461f443db5072c6460b8aa4dcc70d156f6cf3da67b11488a1
+	sha512sums = 118c70ad6607a73b3f5b173e8404b0c292e198d72c8f5f33b8f0fe03d3cb5a1b5b41678fe416a865edbf7c4bfdf20f3c48ed7d7800bcda0a223184f90de4e06c
+	sha512sums = 7fafe0e7730529e421470edd544bccf1e626d81112a7542bb6a45896a0d04d8315fa496bef528544c04a25a5782cdd5cc199a1e88a9b8016ead24900e9e3dc02
+	sha512sums = b9ccb6229420e9d61bfcd058eb03130423a0530135cfbf9e0f6de87f0b72f01f0d9d5489d04b6cf52f962f1fc7bd1928a57c46433601c20e967f2dc9426fec88
 
 pkgname = zinc
 
