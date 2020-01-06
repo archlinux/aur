@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=effitask
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Graphical task manager, based on the todo.txt format'
 url="https://github.com/sanpii/$pkgname"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3')
 makedepends=('cargo' 'rust-nightly')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('e88bdac2ab676b5e548b73e8185bf7c955fda58ae4a507b01e27c2fbb447d9b0')
+sha256sums=('1186357e0ca4ed009273de8ba585d5a535955026d5096ac8fc15640e43a61460')
 
 build()
 {
@@ -22,5 +22,5 @@ package()
 {
     cd "$pkgname-$pkgver"
 
-    make install PREFIX="$pkgdir"
+    make install PREFIX="$pkgdir/usr"
 }
