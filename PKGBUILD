@@ -1,7 +1,7 @@
 # Maintainer: jtheoof <contact@jtheoof.me>
 pkgname=swappy-git
 _pkgname=swappy
-pkgver=r151.f963a76
+pkgver=r154.7f2f6da
 pkgrel=1
 license=('MIT')
 pkgdesc='Grab and edit screenshots from a Wayland compositor'
