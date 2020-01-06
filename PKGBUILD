@@ -19,7 +19,7 @@ source=(
 )
 validpgpkeys=("CD8CB0F1E0AD5B52E93F41E7EA93F5E56E751E9B") # Frank Celler (ArangoDB Debian Repository) <info@arangodb.com>
 sha256sums=(
-    f742683d93e14a7e33fcaa9615896b377e443374ce79c132c191709acccb11ae
+    25b63ff6cd9dc97c270d46dfce0ca621c0de82d1d2cd03b20260c424418f3ad3
 )
 install=arangodb.install
 package() {
