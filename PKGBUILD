@@ -1,12 +1,12 @@
 # $Id: PKGBUILD 281731 2016-11-21 12:14:44Z lcarlier $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=xf86-video-trident
-pkgver=1.3.7
-pkgrel=3
+pkgver=1.3.8
+pkgrel=1
 pkgdesc="X.org Trident video driver"
 arch=(i686 x86_64)
-url="https://xorg.freedesktop.org/"
+url="https://x.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23' 'xf86dgaproto')
@@ -14,7 +14,7 @@ conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSIO
 groups=('xorg-drivers')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig}
         git-fixes.patch)
-sha256sums=('ecd518de627a0d49e17c158bfc72ab657386c6907c91ef89fa09332558e413ae'
+sha256sums=('9e5119d974c3e2221994542d35e3a0b3426a441869ddd6dd08a84f324856ac3f'
             'SKIP'
             '22571bf377e0cd37a8bd48e4d382f1d43010e1bde6382862c226052019120335')
 validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
