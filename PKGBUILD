@@ -1,7 +1,7 @@
 # Maintainer: kballen <ken@kballentine.net>
 
 pkgname=pulseaudio-module-xrdp
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="PulseAudio modules for xrdp"
 arch=('i686' 'x86_64')
