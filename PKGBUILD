@@ -14,7 +14,7 @@ license=('LGPL')
 depends=('mingw-w64-gdk-pixbuf2'
          'mingw-w64-pango'
          'mingw-w64-cairo'
-         'mingw-w64-libcroco'
+         'mingw-w64-libxml2'
          'mingw-w64-freetype2')
 makedepends=('mingw-w64-configure'
              'mingw-w64-rust'
