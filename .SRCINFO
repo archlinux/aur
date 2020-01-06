@@ -9,7 +9,7 @@ pkgbase = chromedriver
 	depends = gconf
 	optdepends = google-chrome
 	conflicts = chromium
-	source = chromedriver_79.0.3945.36_linux64.zip::http://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip
+	source = chromedriver_79.0.3945.36_linux64.zip::https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip
 	md5sums = 77e6b631478c63c2df5809822a0af916
 
 pkgname = chromedriver
