@@ -2,7 +2,7 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-xvidcore
-pkgver=1.3.5
+pkgver=1.3.7
 pkgrel=1
 pkgdesc='XviD is an open source MPEG-4 video codec (mingw-w64)'
 arch=('any')
@@ -11,8 +11,8 @@ license=('GPL')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'nasm' 'yasm')
 options=(!buildflags !strip staticlibs)
-source=(http://downloads.xvid.org/downloads/xvidcore-${pkgver}.tar.bz2)
-sha256sums=('7c20f279f9d8e89042e85465d2bcb1b3130ceb1ecec33d5448c4589d78f010b4')
+source=(https://downloads.xvid.com/downloads/xvidcore-${pkgver}.tar.gz)
+sha256sums=('abbdcbd39555691dd1c9b4d08f0a031376a3b211652c0d8b3b8aa9be1303ce2d')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
