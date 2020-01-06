@@ -6,6 +6,7 @@ pkgbase = play-with-mpv-git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-wheel
 	depends = python
 	depends = youtube-dl
 	depends = mpv
