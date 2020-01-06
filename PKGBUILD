@@ -1,4 +1,4 @@
-:# Maintainer: Projekt:Root projekt.root@tuta.io
+# Maintainer: Projekt:Root projekt.root@tuta.io
 pkgname=recbox-ardour-theme-git
 pkgver=r7.e147037
 pkgrel=1
