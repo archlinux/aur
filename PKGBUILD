@@ -3,7 +3,7 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=1.3.3.1.gb7cda29b
+pkgver=1.3.6.11.gf4874cd7
 pkgrel=1
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd mu
-  ./configure --prefix=/usr --disable-webkit --disable-gtk --enable-mu4e --enable-guile --enable-shared
+  ./configure --prefix=/usr
 }
 
 package() {
