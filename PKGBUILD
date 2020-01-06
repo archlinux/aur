@@ -26,8 +26,7 @@ optdepends=('geoclue: For elocation'
             'gst-plugins-bad: Video and thumbnail codecs'
             'gst-plugins-ugly: Video and thumbnail codecs'
             'gst-libav: Video and thumbnails with ffmpeg/libav'
-            'libreoffice: Office document thumbnails'
-            'python2: Compare Eina benchmarks')
+            'libreoffice: Office document thumbnails')
 provides=("$_pkgname=$pkgver" elementary{,-git}=$pkgver "evas_generic_loaders=$pkgver")
 conflicts=("$_pkgname" elementary{,-git} elementary_test{,-git} evas_generic_loaders{,-git})
 options=('debug')
