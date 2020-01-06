@@ -10,7 +10,7 @@ pkgbase = dict-freedict-deu-eng-bin
 	provides = dict-freedict-deu-eng
 	conflicts = dict-freedict-deu-eng
 	source = https://download.freedict.org/dictionaries/deu-eng/0.3.5/freedict-deu-eng-0.3.5.dictd.tar.xz
-	sha512sums = d75b62396a29a2977513fdf94b91c2e3a9e2291f5619b6eefe1fdf1a9883c804b0337c1c4876886a1bc4fc36322bbe90bc5a731869e4e680abff53fde52a3083
+	sha512sums = da34b6548b7149f0f9f896e02272d62750153c9d0d7f55068f1e72881e10233b161c4cf3caecfb5515a6875bda9891ee7e11fff314d3b9320c18c064641dcbd2
 
 pkgname = dict-freedict-deu-eng-bin
 
