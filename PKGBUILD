@@ -1,6 +1,6 @@
 _pkgbase="huawei-wmi"
 pkgname="${_pkgbase}-dkms"
-pkgver=3.2
+pkgver=3.4
 pkgrel=1
 pkgdesc="Huawei WMI laptop extras driver"
 url="https://github.com/aymanbagabas/Huawei-WMI"
@@ -10,7 +10,7 @@ depends=("dkms")
 makedepends=("linux-headers")
 zipname="huawei-wmi-dkms-${pkgver}"
 source=("https://github.com/aymanbagabas/Huawei-WMI/releases/download/v${pkgver}/${zipname}.zip")
-sha256sums=("80dcb00e978d851336fcd2acae294e1da92eb6342b98d75d6017b826a50647eb")
+sha256sums=("bac8fe1ead3d56be478b7588a32a8ae7dd698840533cb1b645ab90ddcaf4b72c")
 
 package() {
 	cd "${_pkgbase}-${pkgver}"
