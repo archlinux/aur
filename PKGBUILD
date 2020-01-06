@@ -1,9 +1,9 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: agilob <archlinux@agilob.net>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.66.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -17,7 +17,7 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${p
         'https://raw.githubusercontent.com/tutao/tutanota/master/tutao-pub.pem'
         "${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
 replaces=("${pkgname%-bin}-linux")
 sha512sums=('48c64bdf53bc3575099b3b6bd74900068ac919090f4c79a83941ee920fb3bb59630c0058f841db7c2f14c04f9431c6de736a2162051ed9116a4ce492ede16b29'
             '80c8c3b823bbe793cbf25f742b79d760d5c214496a554dc483fb8e2794dbfab2143e3d41a54e4eedbb1df26b7483cbaf5356bf2a4a14733a1b0fbe42617b232c'
@@ -42,6 +42,7 @@ package() {
 	install -d "$pkgdir/opt/${pkgname%-bin}"
 	cp -r squashfs-root/* "$pkgdir/opt/${pkgname%-bin}"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr"
+	rm "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}.desktop"
 
 	# Disable autoUpdater
 	rm "$pkgdir/opt/${pkgname%-bin}/resources/app-update.yml"
