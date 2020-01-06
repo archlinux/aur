@@ -1,7 +1,7 @@
 pkgbase = ao-git
 	pkgdesc = An Electron wrapper for Microsoft To-Do
 	pkgver = 6.9.0.r12.g7533b53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klaussinani/ao
 	arch = x86_64
 	license = MIT

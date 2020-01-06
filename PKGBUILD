@@ -6,7 +6,7 @@ pkgname=ao-git
 _pkgname=ao
 pkgver=6.9.0.r12.g7533b53
 _pkgver=${pkgver%%.r*}
-pkgrel=1
+pkgrel=2
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/klaussinani/ao"
@@ -34,7 +34,7 @@ package() {
     -C "${srcdir}" --include data.tar.xz
   tar xfJ ${srcdir}/data.tar.xz -C ${pkgdir}
   install -d ${pkgdir}/usr/bin/
-  ln -s /opt/Ao/ao-app ${pkgdir}/usr/bin/${_pkgname}
+  ln -s /opt/Ao/ao ${pkgdir}/usr/bin/${_pkgname}
   install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/ao.png" \
     "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   rm -rfv "${pkgdir}/usr/share/icons/hicolor"
