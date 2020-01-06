@@ -30,6 +30,6 @@ package() {
   # Debian fork
   tar xf data.tar.xz
   install -Dm755 {,"$pkgdir/"}usr/bin/speedometer
-  install -Dm755 {,"$pkgdir/"}usr/share/man/man1/speedometer.1.gz
+  install -Dm644 {,"$pkgdir/"}usr/share/man/man1/speedometer.1.gz
 }
 
