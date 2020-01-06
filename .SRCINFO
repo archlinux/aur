@@ -1,13 +1,23 @@
 pkgbase = cpod
-	pkgdesc = A simple, beautiful podcast app.
+	pkgdesc = A simple, beautiful podcast app for Windows, macOS, and Linux.
 	pkgver = 1.27.1
-	pkgrel = 2
-	url = https://github.com/z-------------/cpod
+	pkgrel = 1
+	url = https://github.com/z-------------/CPod
 	arch = x86_64
-	license = APACHE
-	replaces = cpod
-	source = https://github.com/z-------------/cpod/releases/download/v1.27.1/cpod_1.27.1_amd64.deb
-	sha256sums = 0c07b055619fe88e33079aa663ee6ef7cee833884e4a77327b3d34893a1db69b
+	arch = i686
+	license = Apache
+	makedepends = yarn
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = nvm
+	makedepends = gulp
+	makedepends = python2
+	depends = electron2
+	provides = cpod
+	conflicts = cpod-bin
+	conflicts = cpod-git
+	source = cpod-1.27.1.src.tar.gz::https://github.com/z-------------/CPod/archive/v1.27.1.tar.gz
+	sha256sums = 9d401203f9014abdbcd8e3b2020a299bfffd8ad2e7a860213692eb180b75633d
 
-pkgname = cpod-bin
+pkgname = cpod
 
