@@ -6,15 +6,14 @@
 
 pkgname=guitar-pro
 pkgver=11686
-pkgrel=5
+pkgrel=6
 pkgdesc="A popular tablature editor software for guitar, bass, and many other instruments."
 url="http://www.guitar-pro.com"
 arch=('i686' 'x86_64')
 license=('Proprietary')
 depends=('pulseaudio')
-depends_x86_64=('lib32-glib2' 'lib32-libpulse' 'lib32-libgl' 'lib32-libxml2' 'lib32-portaudio' 'lib32-zlib'
-'lib32-libpng12' 'lib32-libxrender' 'lib32-freetype2' 'lib32-fontconfig')
-depends_i686=('glib2' 'libgl' 'libxml2' 'portaudio' 'zlib' 'libxrender' 'freetype2' 'libpng12')
+depends_x86_64=('lib32-freetype2' 'lib32-fontconfig' 'lib32-glib2' 'lib32-libgl' 'lib32-libpng12' 'lib32-libpulse' 'lib32-libxml2' 'lib32-libxrender' 'lib32-libxslt' 'lib32-portaudio' 'lib32-zlib')
+depends_i686=('freetype2' 'glib2' 'libgl' 'libpng12' 'libpulse' 'libxml2' 'libxrender' 'libxslt' 'portaudio' 'zlib')
 makedepends=('binutils' 'tar')
 
 source=("https://downloads.guitar-pro.com/gp6/gp6-full-linux-r$pkgver.deb"
