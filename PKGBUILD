@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
@@ -9,11 +9,17 @@ license=('BSD')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
-source=(git+https://chromium.googlesource.com/webm/libvpx#tag=v${pkgver}
+source=(git+https://chromium.googlesource.com/webm/libvpx#tag=7ec7a33a081aeeb53fed1a8d87e4cbd189152527
         'configure.patch')
 sha256sums=('SKIP'
             '24861b8d90eee9a5a953807b002ea05b86769df668b5a72a0b6e95f10969c3b6')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+pkgver() {
+  cd libvpx
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
   cd ${srcdir}/libvpx
