@@ -1,6 +1,6 @@
 # Maintainer: Martin Mariano <arch@martinmariano.com>
 pkgname=grex
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A command-line tool for generating regular expressions from user-provided input strings."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/pemistahl/grex"
 license=('Apache-2.0')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pemistahl/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('6a213d115ff246af9e3859277e020624e308ef8504e91d0e6748c7d545bb06226b00a4eb6fe88745fac0e2f5497e3d13e0f12aae7a9d083a9bf1827ca97aa30b')
+sha512sums=('4fa6d4c908377e00f2d23015d78c4094e6a71df606665d53a95c4998e96d59413c7a392475abab2dc047aa93b12d78390528ab94afb7c9b0553ac1e370e0c1f9')
 
 build() {
   cd "$pkgname-$pkgver"
