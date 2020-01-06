@@ -1,0 +1,14 @@
+pkgbase = py-mkvenv
+	pkgdesc = Automate creation of virtual environments in Python 3 projects
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/dino-/py-mkvenv
+	arch = x86_64
+	license = ISC
+	depends = fuse2
+	options = !strip
+	source = https://github.com/dino-/py-mkvenv/releases/download/1.5/py-mkvenv-1.5-x86_64.AppImage
+	sha256sums = d13925213279207801dea8a3c841470f16559711f57efd373d5702165f37fd14
+
+pkgname = py-mkvenv
+
