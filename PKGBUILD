@@ -12,7 +12,8 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.2
+_gitcommit=cbb3c9497549f8856d8cd37ac63af1406a784e58
+pkgver=4.2.1
 pkgrel=1
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -87,9 +88,21 @@ provides=(
   libswresample.so
   libswscale.so
 )
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver})
 conflicts=('ffmpeg')
-sha256sums=('SKIP')
+source=("git+https://git.ffmpeg.org/ffmpeg.git#commit=${_gitcommit}")
+sha256sums=(SKIP)
+
+pkgver() {
+  cd ffmpeg
+
+  git describe --tags | sed 's/^n//'
+}
+
+prepare() {
+  cd ffmpeg
+
+  git cherry-pick -n dc0806dd25882f41f6085c8356712f95fded56c7
+}
 
 build() {
   cd ffmpeg
@@ -97,7 +110,7 @@ build() {
   [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-debug \
     --disable-static \
     --disable-stripping \
