@@ -1,27 +1,62 @@
-# Maintainer: Mikael Chevalier <micha1305@live.fr>
-# Maintainer: Avinash Ananth Narayan R <nashpapa@gmail.com>
-
-pkgname=cpod-bin
-pkgbase=cpod
-_pkgname=cpod
+# Maintainer: Bruce Zhang
+pkgname=cpod
+_name=CPod
+_nodeversion=8.16.1
 pkgver=1.27.1
-pkgrel=2
-pkgdesc="A simple, beautiful podcast app."
-arch=("x86_64")
-url="https://github.com/z-------------/cpod"
-license=('APACHE')
-depends=()
-makedepends=()
-provides=()
-replaces=(cpod)
-source=("https://github.com/z-------------/cpod/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=("0c07b055619fe88e33079aa663ee6ef7cee833884e4a77327b3d34893a1db69b")
+pkgrel=1
+pkgdesc="A simple, beautiful podcast app for Windows, macOS, and Linux."
+arch=('x86_64' 'i686')
+url="https://github.com/z-------------/CPod"
+license=('Apache')
+depends=('electron2')
+makedepends=('yarn' 'jq' 'moreutils' 'nvm' 'gulp' 'python2')
+provides=('cpod')
+conflicts=('cpod-bin' 'cpod-git')
+source=("$pkgname-$pkgver.src.tar.gz::https://github.com/z-------------/$_name/archive/v$pkgver.tar.gz")
+sha256sums=('9d401203f9014abdbcd8e3b2020a299bfffd8ad2e7a860213692eb180b75633d')
 
 prepare() {
-	[ ! -d ${_pkgname}-${pkgver} ] && mkdir "${_pkgname}-${pkgver}" > /dev/null
-	tar -xf data.tar.xz -C "${_pkgname}-${pkgver}"
+	cd "$_name-$pkgver"
+    electronVersion=$(tail -1 /usr/lib/electron2/version)
+    sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
+	source /usr/share/nvm/init-nvm.sh
+	nvm install "$_nodeversion"
+	nvm use "$_nodeversion"
+	yarn
+}
+
+build() {
+	cd "$_name-$pkgver"
+	gulp
+	yarn run pack
+	source /usr/share/nvm/init-nvm.sh
+	nvm deactivate
+	nvm uninstall "$_nodeversion"
 }
 
 package() {
-	cp -r "${_pkgname}-${pkgver}"/* ${pkgdir}/
+	cd "$srcdir/$_name-$pkgver/dist/linux-unpacked/resources"
+	install -Dm644 app.asar "$pkgdir/usr/share/cpod/app.asar"
+
+	cd "$srcdir/$_name-$pkgver/build/icons"
+	for file in *x*.png; do
+		install -Dm644 "$file" "$pkgdir/usr/share/icons/hicolor/${file%.png}/apps/cpod.png"
+	done
+	cd "$srcdir/$_name-$pkgver/build"
+	install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/cpod.svg"
+
+	echo "#!/bin/env sh
+exec electron2 /usr/share/cpod/app.asar \$@" > "$srcdir/cpod.sh"
+	install -Dm755 "$srcdir/cpod.sh" "$pkgdir/usr/bin/cpod"
+
+	echo "[Desktop Entry]
+Name=CPod
+Comment=A simple, beautiful podcast app.
+Exec=/usr/bin/cpod %U
+Terminal=false
+Type=Application
+Icon=cpod
+Categories=Audio;AudioVideo;" > "$srcdir/cpod.desktop"
+	install -Dm644 "$srcdir/cpod.desktop" "$pkgdir/usr/share/applications/cpod.desktop"
 }
+
