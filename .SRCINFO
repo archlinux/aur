@@ -1,0 +1,14 @@
+pkgbase = hbacklight-git
+	pkgdesc = acpi backlight & led manager
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/paroxayte/hbacklight
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cabal-install
+	source = hbacklight-git::git://github.com/paroxayte/hbacklight.git
+	md5sums = SKIP
+
+pkgname = hbacklight-git
+
