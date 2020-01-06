@@ -64,11 +64,10 @@ post_upgrade() {
     /usr/bin/printf " Unfortunately, you will need to reactivate your expressvpn after this update\n"
     /usr/bin/printf "------------------------------------------------------------------------------\n"
   fi
-  /usr/bin/printf "------------------------------------------------\n"
-  /usr/bin/printf " You will need to restart the expressvpn daemon:\n"
-  /usr/bin/printf "     # systemctl daemon-reload\n"
+  /usr/bin/printf "--------------------------------------------------\n"
+  /usr/bin/printf " You will need to re-start the expressvpn daemon:\n"
   /usr/bin/printf "     # systemctl start expressvpn.service\n"
-  /usr/bin/printf "------------------------------------------------\n"
+  /usr/bin/printf "--------------------------------------------------\n"
 }
 
 post_remove() {
