@@ -14,16 +14,31 @@ ExecStart=/usr/bin/bitwarden_rs
 # Set reasonable connection and process limits
 LimitNOFILE=1048576
 LimitNPROC=64
-# Isolate bitwarden_rs from the rest of the system
+
+# Prevent bitwarden_rs from doing anything stupid and/or unneccessary.
 PrivateTmp=true
 PrivateDevices=true
+
 ProtectHome=true
 ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+RestrictNamespaces=yes
+
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
 # Only allow writes to the following directory and set it to the working directory (user and password data are stored here)
 WorkingDirectory=/var/lib/bitwarden_rs
 ReadWriteDirectories=/var/lib/bitwarden_rs
+
 # Allow bitwarden_rs to bind ports in the range of 0-1024
 AmbientCapabilities=CAP_NET_BIND_SERVICE
+# Restrict bitwarden_rs to only this capability
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
