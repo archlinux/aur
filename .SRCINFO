@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-mesa-git
+	pkgdesc = An open-source implementation of the OpenGL specification (mingw-w64)
+	pkgver = 20.0.0_devel.118918.d62dd8b0cb7
+	pkgrel = 1
+	url = https://www.mesa3d.org/
+	arch = any
+	license = custom
+	makedepends = mingw-w64-meson
+	makedepends = python-mako
+	depends = mingw-w64-dlfcn
+	depends = mingw-w64-llvm
+	provides = mingw-w64-mesa
+	conflicts = mingw-w64-mesa
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = git+git://anongit.freedesktop.org/mesa/mesa
+	sha256sums = SKIP
+
+pkgname = mingw-w64-mesa-git
+
