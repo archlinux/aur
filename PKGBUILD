@@ -4,7 +4,7 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-kinetic-python-qt-binding'
-pkgver='0.3.3'
+pkgver='0.3.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,8 +29,16 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="python_qt_binding-release-release-kinetic-python_qt_binding-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/python_qt_binding-release/archive/release/kinetic/python_qt_binding/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f74bb2cc87262b8118720c62c1bbf44b737c614595a08812e4bd3056731b7d55')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/python_qt_binding-release/archive/release/kinetic/python_qt_binding/${pkgver}-${_pkgver_patch}.tar.gz"
+        "sip_qt.patch")
+sha256sums=('ea6943351d48918e37d30db52637c7063caef9a9a9e72cd128fa6f3b84ab35cb'
+            'SKIP')
+
+prepare() {
+  cd ${srcdir}/${_dir}
+  patch -Np1 -i ${srcdir}/sip_qt.patch
+}
+
 
 build() {
   # Use ROS environment variables
