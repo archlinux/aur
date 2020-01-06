@@ -1,7 +1,7 @@
 pkgbase = cameramonitor
 	pkgdesc = A little monitor to check if your Webcam is On.
 	pkgver = 0.3.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.infinicode.org/code/cameramonitor/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = cameramonitor
 	depends = python2-gconf
 	depends = python2-notify
 	depends = python2-pyinotify
-	provides = cameramonitor
 	source = https://launchpad.net/cameramonitor/trunk/0.3.2/+download/cameramonitor-0.3.2.tar.bz2
 	sha256sums = 04b120c8f3eb7f6c02976b0f3de21ecd13005c920e2acb294e3ffcad7fcd2058
 
