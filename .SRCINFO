@@ -1,6 +1,6 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
-	pkgver = 2.19.6
+	pkgver = 2.19.7
 	pkgrel = 1
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = devscripts
 	depends = perl-timedate
 	depends = sensible-utils
 	options = !makeflags
-	source = devscripts::git+https://salsa.debian.org/debian/devscripts.git#tag=v2.19.6
+	source = devscripts::git+https://salsa.debian.org/debian/devscripts.git#tag=v2.19.7
 	source = fixes.patch
 	sha256sums = SKIP
 	sha256sums = e5fef21e1d8aee3128c6499078bc2f38e8f80189b30882df817637388f1e7717
