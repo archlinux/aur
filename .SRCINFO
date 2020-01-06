@@ -1,0 +1,13 @@
+pkgbase = ttf-pomicons
+	pkgdesc = Font with symbols to talk about the "Pomodoro Technique"
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/gabrielelana/pomicons
+	arch = any
+	license = CCPL
+	depends = fontconfig
+	source = https://github.com/gabrielelana/pomicons/raw/master/fonts/Pomicons.ttf
+	sha256sums = 0c9fbff4598ea7bed6fa101093f8c43bebb9227d1c3a4c090293ea0b093cd905
+
+pkgname = ttf-pomicons
+
