@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gst-plugin-viper4linux-git
 _gitname=gst-plugin-viperfx
 pkgver=r21.e0a615e
-pkgrel=5
+pkgrel=6
 pkgdesc="ViPER FX core wrapper plugin for gstreamer"
 arch=('x86_64')
 url="https://github.com/noahbliss/gst-plugin-viperfx"
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gstreamer' 'libviperfx')
 makedepends=('git')
 provides=("${pkgname%-git}" "$_gitname")
-conflicts=("${pkgname%-git}" 'gst-plugin-jamesdsp')
+conflicts=("${pkgname%-git}" "$_gitname" 'gst-plugin-jamesdsp')
 replaces=("$_gitname")
 source=('git+https://github.com/noahbliss/gst-plugin-viperfx.git')
 sha256sums=('SKIP')
@@ -30,5 +30,5 @@ build() {
 package() {
 	cd "$srcdir/$_gitname"
 	make DESTDIR="$pkgdir/" install
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_gitname/COPYING"
+	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$_gitname"
 }
