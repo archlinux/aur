@@ -1,4 +1,5 @@
-# Maintainer : alrii <alrii@gmail.com> 
+# Maintainer: Viste <viste02@gmail.com> 
+# Contributor: alrii <alrii@gmail.com> 
 # Contributor: jjpk <julienjpk@email.com>
 # Contributor: Benjamin Chrétien <chretien at lirmm dot fr>
 # Contributor: DaNiMoTh <jjdanimoth@gmail.com>
@@ -7,7 +8,7 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-pkgver=6.4.8
+pkgver=6.5.7
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
@@ -18,7 +19,7 @@ options=(!libtool)
 conflicts=('libace')
 source=("http://download.dre.vanderbilt.edu/previous_versions/ACE-${pkgver}.tar.gz"
         "license.txt")
-sha256sums=('f74de3386fb096c2e095c6a61a79e8911118129ca0a77aea000fd0a98d22c004'
+sha256sums=('b966eaa82281c17a9c869609e6a1cdc617aa13e1123a8fce5bde93cb266d1fea'
             '4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954')
 
 build() {
