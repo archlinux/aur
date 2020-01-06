@@ -3,12 +3,12 @@
 
 pkgname=discourse
 pkgver=2.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, flat forum, where replies flow down the page in a line"
 arch=('i686' 'x86_64')
 url="http://www.discourse.org/"
 license=('GPL')
-depends=('ruby>=2.0' 'ruby-bundler>=1.17.3' 'gmp' 'libxml2' 'libxslt' 'openssl'
+depends=('ruby>=2.0' 'ruby-bundler' 'gmp' 'libxml2' 'libxslt' 'openssl'
          'krb5' 'libgcrypt' 'libgpg-error' 'postgresql-libs' 'xz' 'zlib')
 makedepends=('uglify-js')
 optdepends=('apache: a webserver to deploy discourse'
@@ -62,7 +62,8 @@ _systemddir="/usr/lib/systemd/system"
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-
+    # Install the appropriate version of bundler
+    gem install bundler -v '1.17.3'
     # Patch source files to include a static revision string and remove git repo.
     # Including the git repository triples the package size.
     _revision=$(git rev-parse HEAD)

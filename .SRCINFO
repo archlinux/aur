@@ -1,7 +1,7 @@
 pkgbase = discourse
 	pkgdesc = A simple, flat forum, where replies flow down the page in a line
 	pkgver = 2.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.discourse.org/
 	install = discourse.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = discourse
 	license = GPL
 	makedepends = uglify-js
 	depends = ruby>=2.0
-	depends = ruby-bundler>=1.17.3
+	depends = ruby-bundler
 	depends = gmp
 	depends = libxml2
 	depends = libxslt
