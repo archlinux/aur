@@ -1,0 +1,19 @@
+pkgbase = dmenufm
+	pkgdesc = Papirus theme for LibreOffice
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/huijunchen9260/dmenufm
+	arch = any
+	license = unknown
+	makedepends = make
+	depends = xclip
+	depends = wmctrl
+	depends = unrar
+	depends = cabextract
+	depends = dmenu
+	depends = unzip
+	depends = p7zip
+	source = dmenufm-1.1-1.tar.gz::https://github.com/huijunchen9260/dmenufm/archive/v1.1.tar.gz
+	sha256sums = 9a10a0ba22541badb02d35473958c9fddbf700706170294f763b1f04b1cdc49a
+
+pkgname = dmenufm
