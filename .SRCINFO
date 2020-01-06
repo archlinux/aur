@@ -1,0 +1,21 @@
+pkgbase = frc-characterization-git
+	pkgdesc = Tools to help FRC teams measure the physical parameters of their robot
+	pkgver = 2020.229
+	pkgrel = 1
+	url = https://github.com/wpilibsuite/frc-characterization
+	arch = x86_64
+	license = Apache
+	depends = python-matplotlib
+	depends = python-statsmodels
+	depends = python-frccontrol-git
+	depends = python-pynetworktables
+	depends = python-argcomplete
+	depends = python-mako
+	depends = python-console-menu-git
+	depends = tk
+	provides = frc-characterization
+	source = frc-characterization-git::git://github.com/wpilibsuite/frc-characterization
+	md5sums = SKIP
+
+pkgname = frc-characterization-git
+
