@@ -3,15 +3,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mk-configure
-pkgver=0.32.0
-pkgrel=2
+pkgver=0.32.1
+pkgrel=1
 pkgdesc="Lightweight replacement for GNU autotools"
 arch=('i686' 'x86_64')
 makedepends=('bmake' 'bmkdep')
 url="https://github.com/cheusov/mk-configure"
 license=('BSD')
 source=("https://github.com/cheusov/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('69cf872f23c9e1a7edea5ed469b959823b2365602b60861ca7b21dffa097e98f')
+sha256sums=('de2be66cb695c357ea51c8a4447416ad7ac6df49327ac4f0781a05d56eb06815')
 
 build() {
   cd $pkgname-$pkgname-$pkgver
