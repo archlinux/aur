@@ -24,10 +24,16 @@ build() {
   # Remove husky (git hooks) from dependencies
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i '/"husky": ".*"/d' package.json
-
+  
   # Install dependencies for the Tools used on another projects
   cd "${srcdir}/${pkgname}-${pkgver}/Tools"
   npm install
+
+  # Run copyLib and build the typescript
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  npm install
+  npm run copyLib
+  npm run tsc 
 
   # Build Cli CLient
   cd "${srcdir}/${pkgname}-${pkgver}/CliClient"
@@ -46,11 +52,7 @@ build() {
   # Electron App
   cd "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app"
 
-  # NOTE: Manually forcing sqlite 4.0.7 for node v12, remove later on
-  npm install sqlite3@4.0.7
   npm install
-  # Remove uneeed .vscode path that comes with it
-  rm -r node_modules/sqlite3/.vscode
 
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/lib/" \
     "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/lib/"
