@@ -1,15 +1,15 @@
 pkgbase = jaxx
 	pkgdesc = Multi-chain cryptocurrency wallet
-	pkgver = 2.3.6
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = https://jaxx.io/
 	arch = x86_64
 	license = proprietary
 	options = !strip
-	source = https://download-liberty.jaxx.io/Jaxx.Liberty-2.3.6.AppImage
+	source = https://download-liberty.jaxx.io/Jaxx.Liberty-2.3.7.AppImage
 	source = jaxx.png
 	source = jaxx.desktop
-	sha256sums = 27cb3c55be2f5b7922bb1d3bee0af4822fe5710081c811cbc74dc5e1b5ec29c4
+	sha256sums = b4a85070f7d2f4e88e87ceb774670687290bce8deb21733ae70dd3fcf9588f52
 	sha256sums = fdb0004b645930bd22d0e88c266d180fbb2a140a7bd557b464fcbaef77f5e346
 	sha256sums = e846fe84d904d4a0d4f233b951d598f1d3ebc72ec41f9b32d020d037d9695602
 
