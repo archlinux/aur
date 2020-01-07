@@ -3,8 +3,8 @@
 
 pkgname=linklord
 pkgver=2020.01.07.04
-pkgrel=1
-pkgdesc='budlabs wallpaper selector'
+pkgrel=2
+pkgdesc='budlabs markdown flavored link manager'
 arch=('any')
 url='https://github.com/budlabs/linklord'
 license=('MIT')
