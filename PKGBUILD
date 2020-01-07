@@ -27,7 +27,7 @@ sha256sums=('dfad5fb5b1927e3e1eccd01a7543197f7c5cc9b14df747ba6bd5d3113bac2ca0'
 validpgpkeys=()
 
 prepare() {
-    cp -R "craftos2-lua-$pkgver"/* "craftos2-$pkgver/craftos2-lua/"
+    cp -R "craftos2-lua-2.2.1"/* "craftos2-$pkgver/craftos2-lua/"
     cd "craftos2-$pkgver"
     mkdir icons
     unzip linux-icons.zip -d icons
