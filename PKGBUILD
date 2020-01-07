@@ -2,13 +2,14 @@
 
 _name=gzdoom
 pkgname=${_name}-git
-pkgver=g4.2pre+20+gd1554aed3
+pkgver=4.3pre+643+g442f953d6
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
-depends=('hicolor-icon-theme'
+depends=('alsa-lib'
+         'hicolor-icon-theme'
          'libgl'
          'libjpeg'
          'sdl2')
@@ -54,7 +55,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd $_name
 
-    git describe --long --tags --match '[Gg]*' | tr - +
+    git describe --long --tags --match '[Gg]*' | sed -r 's/^[Gg]//;s/-/+/g'
 }
 
 prepare() {
