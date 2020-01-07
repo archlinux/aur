@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=duplicity-dev
 pkgver=0.8.08
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for encrypted, bandwidth-efficient backups using the rsync algorithm. Development version"
 arch=(x86_64)
 url="http://duplicity.nongnu.org/"
@@ -28,20 +28,17 @@ optdepends=(
 provides=('duplicity')
 conflicts=('duplicity')
 
-# source=("https://code.launchpad.net/duplicity/0.8-series/$pkgver/+download/duplicity-$pkgver.tar.gz"{,.asc})
-# # developer’s gpg key is not available from keyservers, as of 2019-12-19
-source=("https://code.launchpad.net/duplicity/0.8-series/$pkgver/+download/duplicity-$pkgver.tar.gz")
+source=(
+    "https://code.launchpad.net/duplicity/0.8-series/$pkgver/+download/duplicity-$pkgver.tar.gz"{,.asc}
+)
 
 sha512sums=(
     '968ba458b896874ba1af41753927a01446649ea1864128f3a8ac62e31416656e36844ae62a3408e3d82588da3c23929c714bbdb01b6472a80c2f695801985a15'
+    'SKIP'
 )
-
-prepare() {
-	cd "duplicity-$pkgver"
-	sed -i 's_^#!.*/usr/bin/env.*python2$_#!/usr/bin/env python_' \
-		bin/rdiffdir \
-		compilec.py
-}
+validpgpkeys=(
+    '9D95920CED4A8D5F8B086A9F8B6F8FF4E654E600'
+)
 
 build() {
 	cd "duplicity-$pkgver"
