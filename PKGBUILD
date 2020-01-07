@@ -11,7 +11,7 @@ arch=("x86_64" "i686")
 makedepends=("git" "nodejs" "rsync" "npm" "python")
 depends=("nodejs" "gconf" "libxss")
 provides=("joplin" "joplin-cli")
-url="https://joplin.cozic.net"
+url="https://joplinapp.org/"
 license=("MIT")
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
         "https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
