@@ -4,7 +4,7 @@ pkgbase=pluma-python3
 _srcname=pluma
 _tag=v1.23.2
 pkgver=1.23.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/mate-desktop/pluma"
 license=('GNU GENERAL PUBLIC LICENSE Version 2')
@@ -33,7 +33,6 @@ prepare() {
 }
 
 build() {
-	#git checkout tags/$_tag
 	echo -e "${BYELLOW}Now ${BGREEN}building${BYELLOW} pluma${NOCOLOR}"
 	cd "${_srcname}"
 	make
@@ -42,7 +41,7 @@ build() {
 	mkdir ../build || echo -e "${BGREEN}OK: dir ready.${NOCOLOR}"
 	sleep 1
 	cd ../build
-	DESTDIR=$PWD
+	export DESTDIR=$PWD
 	cd "../${_srcname}"
 	echo -e "${BYELLOW}Now ${BGREEN}writing out${BYELLOW} packaging files..${NOCOLOR}"
 	sleep 1
