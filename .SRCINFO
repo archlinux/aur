@@ -1,12 +1,11 @@
 pkgbase = grip
 	pkgdesc = A cd-player and ripper for the Gnome desktop
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/grip/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = vte
 	depends = curl
 	depends = libgnomeui
 	depends = id3lib
