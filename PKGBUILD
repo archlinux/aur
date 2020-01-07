@@ -2,9 +2,9 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
-pkgdesc="Gtk2 application for searching and streaming videos from YouTube."
+pkgdesc="GTK+ application for searching and streaming videos from YouTube."
 arch=('any')
 url="https://github.com/trizen/${_pkgname}"
 license=('Artistic2.0')
@@ -13,12 +13,12 @@ makedepends=('git' 'perl-module-build')
 provides=('youtube-viewer' 'youtube-viewer-git')
 conflicts=('youtube-viewer' 'youtube-viewer-git')
 
-depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'gtk2-perl' 'perl-file-sharedir')
+depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-libwww' 'perl-gtk3' 'perl-file-sharedir')
 
 optdepends=(
     'ffmpeg: conversions and MKV merging'
+    'gtk2-perl: for the Gtk2 interface'
     'gnome-icon-theme: icons in menus'
-    'perl-gtk3: for gtk3-youtube-viewer'
     'perl-json-xs: faster JSON parsing'
     'perl-lwp-useragent-cached: local cache support'
     'perl-term-readline-gnu: better STDIN support'
