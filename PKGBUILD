@@ -35,9 +35,9 @@ install=
 source=('git+https://github.com/KevinOConnor/klipper#branch=master' 'klipper.service' 'sysusers.conf' 'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
-         '4b915228f21e65dbe143ad93074d91e9'
+         '4bb29bd138c4b01e15a09d2c1a0d0f66'
          '61912d101dc7c68c7314882b80621454'
-         '218dfe92aa1a1c2654be11cca99e6cd3')
+         '1a71747e1579e5d5503b95c3a6aa681f')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
