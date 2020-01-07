@@ -1,24 +1,25 @@
 # Maintainer: Ilaï Deutel
 
 pkgname='git-machete'
-pkgver=2.12.6
+pkgver=2.12.9
 pkgrel=1
 pkgdesc="Probably the sharpest git repository organizer & rebase workflow automation tool you've ever seen"
 arch=('any')
 url='https://github.com/VirtusLab/git-machete'
 license=('MIT')
 depends=('git' 'python')
-makedepends=('python-setuptools' 'python-pbr')
+makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirtusLab/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e0deba511332a83ec83ff5b5ff5787e52d1cba5224f3f3a5a3812ae872b430f5')
-
-prepare() {
-  export PBR_VERSION="$pkgver"
-}
+sha256sums=('d8e5d5d08743985b5cfd3fcc4f67518f21290987375ae8f92dc102d307303fbb')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}"
   python setup.py build
+}
+
+check() {
+  cd "$srcdir/$pkgname-${pkgver}"
+  python setup.py test
 }
 
 package() {
