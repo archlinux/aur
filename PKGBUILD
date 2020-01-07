@@ -52,5 +52,5 @@ package() {
 	install -dm755 "$pkgdir/opt/klipper"
 	install -dm775 "$pkgdir/etc/klipper"
 	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
-	chown -R klipper:klipper "$plgdir/opt/klipper"
+	chown -R klipper:klipper "$pkgdir/opt/klipper"
 }
