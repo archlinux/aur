@@ -1,7 +1,7 @@
 pkgbase = ruby-websocket-driver
 	pkgdesc = WebSocket protocol handler with pluggable I/O
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/faye/websocket-driver-ruby
 	arch = i686
 	arch = x86_64
