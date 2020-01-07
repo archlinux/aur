@@ -9,7 +9,7 @@ pkgdesc="Linux kernel driver for reading sensors for AMD Zen family CPUs"
 arch=('x86_64' 'i686')
 url="https://github.com/ocerman/zenpower"
 license=('GPL')
-depends=('make' 'gcc' 'linux' 'dkms')
+depends=('dkms')
 makedepends=('git' 'linux-headers')
 provides=('zenpower')
 
