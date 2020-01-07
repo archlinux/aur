@@ -54,6 +54,7 @@ package() {
 	install -D -m755 popBall "$pkgdir/usr/bin/yt-popball"
 	
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/yt-popball/LICENSE"
+	install -D -m644 res/popBall.svg "$pkgdir/usr/share/pixmaps/popBall.svg"
 	install -D -m644 res/yt-popball.desktop "$pkgdir/usr/share/applications/yt-popball.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/yt-popball/README.md"
 }
