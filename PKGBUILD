@@ -9,7 +9,7 @@ _ver=1.0.2q
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 #pkgver=$_ver
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with Chacha20 cipher'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -32,12 +32,16 @@ sha256sums=('5744cfcbcec2b1b48629f7354203bc1e5e9b5466998bbccc5b5fcde3b18eb684'
             '754d6107a306311e15a1db6a1cc031b81691c8b9865e8809ac60ca6f184c957c'
             'c54ae87c602eaa1530a336ab7c6e22e12898e1941012349c153e52553df64a13'
             '9e8126f3a748f4c1d6fe34d4436de72b16a40e97a6d18234d2e88caa179d50c4'
-            '5ffb7d9d966bc6dbd3f4882796ee9c8613422c63431f2f793903005e54310e44'
+            '353a84e4c92e36c379ebd9216b8f8fb9c271396583561eb84ac8c825979acaa6'
             'd6f9427d5cb63c7299563c201cd8708c7166e0f8c98b57a1fee69767362bf0f7')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491')
 
 prepare() {
     cd $srcdir/openssl-$_ver
+
+    # Cloudflare patch
+    # https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
+    patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
 
     # remove rpath: http://bugs.archlinux.org/task/14367
     patch -p0 -i $srcdir/no-rpath.patch
@@ -46,14 +50,10 @@ prepare() {
     patch -p1 -i $srcdir/ssl3-test-failure.patch
 
     # add symbol versioning to prevent conflicts with openssl 1.1 symbols (Debian)
-    #patch -p1 -i "$srcdir"/openssl-1.0-versioned-symbols.patch
+    patch -p1 -i "$srcdir"/openssl-1.0-versioned-symbols.patch
 
     # set ca dir to /etc/ssl by default
     patch -p0 -i $srcdir/ca-dir.patch
-
-    # Cloudflare patch
-    # https://github.com/cloudflare/sslconfig/blob/master/patches/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
-    patch -p1 -i $srcdir/openssl__chacha20_poly1305_draft_and_rfc_ossl102j.patch
 }
 
 build() {

@@ -3580,13 +3580,6 @@
 +		EVP_camellia_256_cfb8;
 +		EVP_camellia_256_ecb;
 +		EVP_camellia_256_ofb;
-+		EVP_chacha20_poly1305;
-+		EVP_chacha20_poly1305_draft;
-+		EVP_chacha20_poly1305_init_draft;
-+		EVP_chacha20_poly1305_cipher;
-+		EVP_chacha20_poly1305_cleanup;
-+		EVP_chacha20_poly1305_ctrl;
-+		EVP_chacha20_poly1305_init;
 +		a2i_ipadd;
 +		ASIdentifiers_free;
 +		i2d_ASIdOrRange;
