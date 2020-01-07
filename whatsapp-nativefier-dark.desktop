@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=WhatsApp Dark
+Comment=WhatsApp desktop built with nativefier (electron) using dark theme
+Exec=whatsapp-nativefier-dark
+Icon=whatsapp-nativefier-dark
+Encoding=UTF-8
+StartupWMClass=whats-app-nativefier-dark-d52542
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Network;Chat;InstantMessaging;Application;

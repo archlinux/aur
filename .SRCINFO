@@ -1,0 +1,24 @@
+pkgbase = whatsapp-nativefier-dark
+	pkgdesc = WhatsApp desktop built with nativefier (electron) using dark theme
+	pkgver = 0.1.0000
+	pkgrel = 1
+	url = https://web.whatsapp.com
+	arch = armv7l
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = whatsapp-nativefier-dark.png
+	source = whatsapp-nativefier-dark.desktop
+	source = whatsapp-nativefier-dark-inject.js
+	sha256sums = 3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27
+	sha256sums = 61f0033b6ac363699620065b18d54b922bc597c243667adafa61f8545839e0ad
+	sha256sums = b2db96ed9ba84cde745c9d05d2bdac940a483d90240b9ab8b7d82a7348e75032
+
+pkgname = whatsapp-nativefier-dark
+
