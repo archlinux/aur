@@ -5,7 +5,10 @@ pkgbase = klipper-git
 	url = https://github.com/KevinOConnor/klipper
 	arch = x86_64
 	arch = i686
+	arch = arm
+	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPLv3
 	makedepends = git
 	depends = python2-cffi
@@ -28,9 +31,9 @@ pkgbase = klipper-git
 	md5sums = 4b915228f21e65dbe143ad93074d91e9
 	md5sums = 61912d101dc7c68c7314882b80621454
 	md5sums = 218dfe92aa1a1c2654be11cca99e6cd3
-	depends_x86_64 = arm-none-eabi-gcc
-	depends_x86_64 = arm-none-eabi-newlib
-	depends_x86_64 = stm32flash
+	optdepends_x86_64 = arm-none-eabi-gcc: for ARM MCU firmware compilation
+	optdepends_x86_64 = arm-none-eabi-newlib: for ARM MCU firmware compilation
+	optdepends_x86_64 = stm32flash: for flashing firmware on STM MCU
 
 pkgname = klipper-git
 

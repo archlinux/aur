@@ -20,10 +20,10 @@ depends=(
 	avr-binutils
 	avr-libc
 )
-depends_x86_64=(
-	arm-none-eabi-gcc
-	arm-none-eabi-newlib
-	stm32flash
+optdepends_x86_64=(
+	'arm-none-eabi-gcc: for ARM MCU firmware compilation'
+	'arm-none-eabi-newlib: for ARM MCU firmware compilation'
+	'stm32flash: for flashing firmware on STM MCU'
 )
 makedepends=('git')
 provides=("${pkgname%-git}")
