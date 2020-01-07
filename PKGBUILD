@@ -26,6 +26,10 @@ build() {
   mkdir "${srcdir}"/build
   cd "${srcdir}"/build
 
+  # for reproducibility we force bash for build system:
+  # https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg19302.html
+  # https://www.gnu.org/software/autoconf/manual/autoconf-2.69/html_node/Defining-Variables.html
+
   CONFIG_SHELL=/bin/bash "${srcdir}"/${pkgname}/configure \
     CONFIG_SHELL=/bin/bash \
     --prefix=/usr \
