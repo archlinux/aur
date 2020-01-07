@@ -1,31 +1,24 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
-pkgbase=python-nodeenv
-pkgname=(python-nodeenv python2-nodeenv)
-pkgver=1.3.3
+pkgname=python-nodeenv
+_name=${pkgname#python-}
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Node.js virtual environment builder"
 url="https://ekalinin.github.io/nodeenv/"
 license=("BSD")
 arch=('any')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/n/nodeenv/nodeenv-$pkgver.tar.gz")
-sha256sums=('ad8259494cf1c9034539f6cced78a1da4840a4b157e23640bc4a0c0546b0cb7a')
+depends=('python')
+makedepends=('python' 'python-setuptools')
+source=("$_name-$pkgver.tar.gz::https://github.com/ekalinin/$_name/archive/$pkgver.tar.gz")
+sha256sums=('5942ac26188ae682a031a9de31ca38fe8323326f4a5cf2149ac7253072543834')
 
-package_python-nodeenv() {
-  depends=('python')
-  conflicts=('python2-nodeenv')
-
-  cd $srcdir/nodeenv-${pkgver}
-  python setup.py install --root=$pkgdir
-  install -D -m0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+build() {
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py build
 }
 
-package_python2-nodeenv() {
-  depends=('python2')
-  conflicts=('python-nodeenv')
-
-  cd $srcdir/nodeenv-${pkgver}
-  python2 setup.py install --root=$pkgdir
-  install -D -m0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+package() {
+    cd "$srcdir/$_name-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -D -m0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
