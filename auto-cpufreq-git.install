@@ -1,0 +1,9 @@
+post_install() {
+	cd /usr/bin/
+	./auto-cpufreq-install
+}
+
+pre_remove() {
+	cd /usr/bin/
+	./auto-cpufreq-remove
+}

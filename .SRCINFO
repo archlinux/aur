@@ -1,0 +1,19 @@
+pkgbase = auto-cpufreq-git
+	pkgdesc = Automatic CPU speed & power optimizer
+	pkgver = r53.f103d53
+	pkgrel = 1
+	url = https://github.com/AdnanHodzic/auto-cpufreq
+	install = auto-cpufreq-git.install
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	depends = python-distro
+	depends = python-psutil
+	depends = python-click
+	provides = auto-cpufreq
+	conflicts = auto-cpufreq
+	source = git+https://github.com/AdnanHodzic/auto-cpufreq.git
+	sha256sums = SKIP
+
+pkgname = auto-cpufreq-git
+
