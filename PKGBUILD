@@ -8,18 +8,18 @@
 # Contributor: Leander Schröder <rleanderschroeder@gmail.com>
 
 pkgname=ocaml-batteries
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="A comprehensive standard library for OCaml"
 arch=('i686' 'x86_64')
-url="https://forge.ocamlcore.org/projects/batteries/"
+url="https://github.com/ocaml-batteries-team/batteries-included"
 license=('LGPL')
 depends=('ocaml>=4.03' 'ocaml-findlib>=1.5.3' 'ocaml-num>=1.1')
 optdepends=('ocaml-bisect')
 makedepends=('ocamlbuild')
 install=ocaml-batteries.install
 source=("https://github.com/ocaml-batteries-team/batteries-included/archive/v${pkgver}.tar.gz")
-sha512sums=('a2371b9b3c37f552c4221f6c6a730c797a1612dedbb1c9a12e61a46157e5b3b5008c3ba3c49f57a6d7094841a3abdc44f0d4579a57b22f7945021afccd52c7bf')
+sha512sums=('b266a1b2cc924acb64063fad56179fcf421134b8d5f194cf79d283dcd1d288a72a4681f647dddf5a45b3233e8c97800b6e216863ba40293ac8414683b795ddad')
 options=(!strip !makeflags)
 
 build(){
