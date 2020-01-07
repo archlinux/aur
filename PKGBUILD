@@ -1,7 +1,7 @@
 # Maintainer: Victor3D <webmaster@victor3d.com.br>
 pkgname=executor
 pkgver=2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Old-school Macintosh Emulator"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://wiki.victor3d.com.br"
 license=('GPL')
 groups=()
 depends=("qt5-base" "boost")
-makedepends=("cmake" "sdl2" "boost" "git")
+makedepends=("cmake" "sdl2" "boost" "git" "ruby")
 checkdepends=()
 optdepends=()
 provides=()
