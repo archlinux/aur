@@ -3,7 +3,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.66.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -46,6 +46,7 @@ package() {
 
 	# Fix permisssions
 	chmod 644 "$pkgdir/opt/${pkgname%-bin}/resources/app.asar"
+	chmod 644 "$pkgdir/opt/${pkgname%-bin}/resources/app-update.yml"
 
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
 
