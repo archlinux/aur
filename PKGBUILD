@@ -1,7 +1,7 @@
 # Maintainer: sasvari
 name=camelot
 pkgname=python-$name-git
-pkgver=0.7.2.r10.g934065a
+pkgver=0.7.3.r2.gcd8ac79
 pkgrel=1
 pkgdesc="Camelot: PDF Table Extraction for Humans"
 arch=(any)

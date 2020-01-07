@@ -1,6 +1,6 @@
 pkgbase = python-camelot-git
 	pkgdesc = Camelot: PDF Table Extraction for Humans
-	pkgver = 0.7.2.r10.g934065a
+	pkgver = 0.7.3.r2.gcd8ac79
 	pkgrel = 1
 	url = https://camelot-py.readthedocs.io
 	arch = any
