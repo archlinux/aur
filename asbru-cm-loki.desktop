@@ -1,0 +1,27 @@
+[Desktop Entry]
+Name=Ásbrú Connection Manager (GTK3)
+Comment=Ásbrú Connection Manager is a user interface that helps organizing remote terminal sessions and automating repetitive tasks.
+Terminal=false
+Icon=asbru-cm-gtk3
+Type=Application
+Exec=asbru-cm-gtk3
+StartupNotify=true
+Categories=Utility;TerminalEmulator;GTK;
+X-GNOME-Autostart-enabled=false
+Actions=Shell;Quick;ReadOnly;Tray;
+
+[Desktop Action Shell]
+Name=Start local shell
+Exec=asbru-cm-gtk3 --start-shell
+
+[Desktop Action Quick]
+Name=Quick connect...
+Exec=asbru-cm-gtk3 --quick-conn
+
+[Desktop Action ReadOnly]
+Name=Start Read-Only instance
+Exec=asbru-cm-gtk3 --readonly --no-backup
+
+[Desktop Action Tray]
+Name=Start in system tray
+Exec=asbru-cm-gtk3 --iconified

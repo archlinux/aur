@@ -1,0 +1,44 @@
+pkgbase = asbru-cm-loki-git
+	pkgdesc = A free and open-source connection manager. loki depelopment branch. GIT version
+	pkgver = 6.1.0
+	pkgrel = 1
+	url = https://github.com/asbru-cm/asbru-cm
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl
+	depends = vte3
+	depends = cairo-perl
+	depends = glib-perl
+	depends = pango-perl
+	depends = perl-socket6
+	depends = perl-expect
+	depends = perl-yaml
+	depends = perl-crypt-cbc
+	depends = perl-crypt-blowfish
+	depends = perl-gtk3
+	depends = perl-net-arp
+	depends = uuid
+	depends = openssh
+	depends = inetutils
+	depends = perl-crypt-rijndael
+	depends = perl-xml-parser
+	depends = libcanberra
+	depends = perl-gtk3-simplelist
+	depends = libwnck3
+	depends = perl-io-stty
+	depends = perl-io-tty
+	optdepends = uucp: Unix-to-Unix Copy
+	optdepends = rdesktop: RDP connections
+	optdepends = freerdp: RDP connections
+	optdepends = openssh: SSH connections
+	optdepends = mosh: Mobile shell
+	optdepends = tigervnc: for VNC connections
+	optdepends = perl-x11-guitest: To fit perfectly RDP tabs
+	source = git+https://github.com/asbru-cm/asbru-cm.git#branch=loki
+	source = asbru-cm-loki.desktop
+	sha256sums = SKIP
+	sha256sums = 2a79176347ca05ae465ee9c6e64b252d67dc3cfb6d1df92b1cfb9b0b731c2561
+
+pkgname = asbru-cm-loki-git
+
