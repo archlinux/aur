@@ -5,15 +5,15 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=lib32-libwebp
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='WebP library'
 arch=('x86_64')
 url='https://developers.google.com/speed/webp/'
 license=('BSD')
 depends=('lib32-glibc' 'libwebp')
-makedepends=('gcc-multilib' 'git')
-_commit=0fe1a89dbf1930fc2554dbe76adad5d962054ead  # tags/v1.0.3-rc1^0
+makedepends=('git')
+_commit=d7844e9762b61c9638c263657bd49e1690184832  # tags/v1.1.0-rc2^0
 source=("git+https://chromium.googlesource.com/webm/libwebp#commit=${_commit}")
 sha256sums=('SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key
