@@ -1,7 +1,7 @@
 pkgbase = zoneminder-git
 	pkgdesc = A complete surveillance solution allowing capture, analysis, recording and monitoring of any CCTV or security cameras
-	pkgver = 1.33.15.r14276.5e4c3e1ed
-	pkgrel = 3
+	pkgver = 1.33.16.r14355.fd633a217
+	pkgrel = 1
 	url = https://github.com/ZoneMinder/ZoneMinder
 	install = zoneminder.install
 	arch = x86_64
@@ -47,6 +47,7 @@ pkgbase = zoneminder-git
 	depends = mariadb
 	optdepends = apache: alternative web server
 	optdepends = vlc: provides libvlc (may achieve better performance with some camera models)
+	provides = zoneminder
 	conflicts = zoneminder
 	backup = etc/nginx/sites-available/zoneminder.conf
 	backup = etc/httpd/conf/extra/zoneminder.conf
