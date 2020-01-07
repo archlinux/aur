@@ -1,12 +1,14 @@
 pkgbase = natapp
 	pkgdesc = Internal Network Penetration Client based on ngrok(Linux Version)
 	pkgver = 2_3_9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://natapp.cn
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = unknown
+	license = custom:natapp
+	source = https://natapp.cn/article/serviceagreement
+	md5sums = SKIP
 	source_x86_64 = http://download.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_amd64_2_3_9.zip
 	md5sums_x86_64 = 71037d0cf5f038b6cbb84bdcf37d7c30
 	source_aarch64 = http://download.natapp.cn/assets/downloads/clients/2_3_9/natapp_linux_arm64_2_3_9.zip
