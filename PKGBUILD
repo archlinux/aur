@@ -2,13 +2,13 @@
 # Maintainerr: TransistorLogic <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball
-pkgver=sample_2
+pkgver=0.1
 pkgrel=1
 epoch=
 pkgdesc="A PopBall"
 arch=(x86_64)
 url="https://github.com/yt-theme/popBall"
-license=('GPLv3')
+license=('GPL3')
 groups=()
 depends=('qt5-base')
 makedepends=()
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/yt-theme/popBall/archive/${pkgver}.tar.gz")
+source=("https://github.com/yt-theme/popBall/archive/${pkgname}-${pkgver}.tar.gz")
 noextract=()
 md5sums=()
 validpgpkeys=()
