@@ -2,7 +2,7 @@
 
 _name=qzdoom
 pkgname=${_name}-git
-pkgver=q2.2pre+1467+ga0e188773
+pkgver=2.2pre+2995+ga4054a756
 pkgrel=1
 pkgdesc='Advanced Doom source port with true color renderer (git version)'
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd $_name
 
-    git describe --tags --match 'q*' | tr - +
+    git describe --long --tags --match 'q*' | sed -r 's/^q//;s/-/+/g'
 }
 
 prepare() {
