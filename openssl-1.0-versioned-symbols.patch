@@ -2,7 +2,7 @@
  Configure                 |    2 
  engines/ccgost/openssl.ld |   10 
  engines/openssl.ld        |   10 
- openssl.ld                | 4620 ++++++++++++++++++++++++++++++++++++++++++++++
+ openssl.ld                | 4622 ++++++++++++++++++++++++++++++++++++++++++++++
  4 files changed, 4642 insertions(+)
 
 --- a/Configure
@@ -44,7 +44,7 @@
 +
 --- /dev/null
 +++ b/openssl.ld
-@@ -0,0 +1,4620 @@
+@@ -0,0 +1,4622 @@
 +OPENSSL_1.0.0 {
 +	global:
 +		BIO_f_ssl;
@@ -599,6 +599,8 @@
 +		EVP_bf_cfb64;
 +		EVP_bf_ecb;
 +		EVP_bf_ofb;
++		EVP_chacha20_poly1305;
++		EVP_chacha20_poly1305_draft;
 +		EVP_cleanup;
 +		EVP_des_cbc;
 +		EVP_des_cfb64;
