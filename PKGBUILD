@@ -4,7 +4,7 @@
 # Contributor: justinus <jestine.paul@gmail.com>
 
 pkgname='libcs50'
-pkgver=9.0.1
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="CS50 Library for C"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
   'Makefile.patch'
 )
 sha256sums=(
-  '9fd723b62af0b562a1e47c1f5d44cc786d47ca4607776e3a52b407de5cb5ebd5'
+  'fd91d49d12871dd32def9e3c3c333f4b00991caf7a5f046f5da065d155ed88a4'
   '4a10efd4f4f6b6bb18152a4f28497f7f8562aaa5aaf50c401d308827b922ef3f'
 )
 
