@@ -2,7 +2,7 @@
 
 pkgbase=kodi-standalone-service
 pkgname=(kodi-standalone-service kodi-standalone-gbm-service)
-pkgver=1.96
+pkgver=1.97
 pkgrel=1
 pkgdesc="Systemd service to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
@@ -12,22 +12,26 @@ url="https://github.com/graysky2/kodi-standalone-service"
 license=('GPL')
 install=readme.install
 source=("https://github.com/graysky2/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('9e6b36aa4e0bd3523dd9a88aa2f6aa3c8764e06eb7970fb8eeb407b73ec13790')
+sha256sums=('576caa9793d3c906774c4c44a97bde17aaa9de92ba1d2a1512733c2ab09093ea')
 
 package_kodi-standalone-service() {
   depends=('kodi' 'polkit' 'xorg-server' 'xorg-xinit')
-  install -Dm644 "$srcdir/$pkgbase-$pkgver/init/kodi.service" \
-    "$pkgdir/usr/lib/systemd/system/kodi.service"
-  install -dm 700 "$pkgdir"/var/lib/kodi
-  chown 420:420 "$pkgdir"/var/lib/kodi
+  conflicts=('kodi-standalone-gbm-service')
+
+  cd "$pkgbase-$pkgver"
+  install -Dm644 init/kodi.service "$pkgdir/usr/lib/systemd/system/kodi.service"
+  install -Dm644 init/sysusers.conf "$pkgdir/usr/lib/sysusers.d/kodi.conf"
+  install -Dm644 init/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/kodi.conf"
 }
 
 package_kodi-standalone-gbm-service() {
   depends=('kodi-gbm' 'polkit' 'libinput')
-  install -Dm644 "$srcdir/$pkgbase-$pkgver/init/kodi-gbm.service" \
-    "$pkgdir/usr/lib/systemd/system/kodi-gbm.service"
-  install -dm 700 "$pkgdir"/var/lib/kodi
-  chown 420:420 "$pkgdir"/var/lib/kodi
+  conflicts=('kodi-standalone-service')
+
+  cd "$pkgbase-$pkgver"
+  install -Dm644 init/kodi-gbm.service "$pkgdir/usr/lib/systemd/system/kodi-gbm.service"
+  install -Dm644 init/sysusers.conf "$pkgdir/usr/lib/sysusers.d/kodi.conf"
+  install -Dm644 init/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/kodi.conf"
 }
 
 # vim:set ts=2 sw=2 et:
