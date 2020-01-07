@@ -1,0 +1,17 @@
+pkgbase = lsvine
+	pkgdesc = List contents of directories in a vine-like format
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/autofitcloud/lsvine
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-pandas
+	depends = python-tabulate
+	depends = python-termcolor
+	source = lsvine-0.1.2.tar.gz::https://github.com/autofitcloud/lsvine/archive/0.1.2.tar.gz
+	sha256sums = a7b61292d25c6730308594a5177da8b97793f6e3d433802bb102bd53ee9db962
+
+pkgname = lsvine
+
