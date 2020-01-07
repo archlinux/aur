@@ -2,7 +2,7 @@
 
 pkgname=wallsch-git
 _pkgname=wallsch
-pkgver=r22.fd42d9f
+pkgver=r26.3339716
 pkgrel=1
 pkgdesc="A simple wallpaper changer/scheduler with night/day split"
 arch=('any')
@@ -11,7 +11,7 @@ source=('git+https://github.com/jazzsewera/wallsch.git')
 license=('custom:MPL2')
 makedepends=('python-setuptools')
 depends=('python' 'python-apscheduler' 'python-tzlocal' 'python-pyro' 'python-suntime')
-optdepends=('nitrogen: preferred wallpaper viewer'
+optdepends=('feh: preferred wallpaper viewer'
             'i3lock: for screen locking support')
 sha256sums=('SKIP')
 
