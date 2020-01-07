@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -15,8 +15,8 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.8.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.4.6-883
-	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-0.0.20191226.tar.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.4.8-886
+	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-0.0.20200105.tar.xz
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	source = futex-wait-multiple-5.2.1.patch::https://aur.archlinux.org/cgit/aur.git/plain/futex-wait-multiple-5.2.1.patch?h=linux-fsync
@@ -27,7 +27,7 @@ pkgbase = linux-clear
 	sha256sums = SKIP
 	sha256sums = 5daea86d29246b5a8e193c097756bc833b33dd6fa6419f9cb52bcbf16a192a1b
 	sha256sums = SKIP
-	sha256sums = 7c0e576459c6337bcdea692bdbec561719a15da207dc739e0e3e60ff821a5491
+	sha256sums = 9f12f68e96f6865325995c38213e09b05751cd1ef03e0bbc9f1bdc3e5680b337
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = 4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0
 	sha256sums = b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942
