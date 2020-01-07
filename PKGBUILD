@@ -12,8 +12,8 @@
 
 pkgname=lib32-mesa-aco-git
 pkgdesc="Mesa with the ACO compiler patchset, git version"
-pkgver=19.3.0_devel.20191017.fe930ad92ab
-pkgrel=8
+pkgver=20.0.0_devel.20200107.7b444ba5ef1
+pkgrel=9
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libvdpau' 'lib32-libelf' 'git' 'lib32-libgcrypt' 'lib32-systemd'
@@ -164,6 +164,7 @@ package() {
   DESTDIR="$pkgdir" ninja $NINJAFLAGS -C _build install
 
   # remove files provided by mesa-git
+  rm -rf "$pkgdir"/usr/bin
   rm -rf "$pkgdir"/etc
   rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/glvnd/
