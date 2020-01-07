@@ -4,12 +4,12 @@
 pkgbase="g13"
 pkgname="g13-git"
 pkgver=v1.0.1.r0.ge6ad66c
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
 url="https://github.com/khampf/g13"
 license=('unknown')
-makedepends=('git')
+makedepends=('git' 'log4cpp')
 source=("${pkgname}::git://github.com/khampf/g13" "g13.tmpfiles" "g13.service")
 install="g13.install"
 sha256sums=('SKIP'
