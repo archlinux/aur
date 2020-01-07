@@ -3,7 +3,7 @@
 
 pkgname=azure-cli
 pkgver=2.0.79
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -23,7 +23,7 @@ prepare() {
 }
 
 pkgver() {
-  "$srcdir/bin/az" --version | head -1 | tr -c -d 0-9.
+  "$srcdir/bin/az" --version 2> /dev/null | head -1 | tr -c -d 0-9.
 }
 
 package() {
