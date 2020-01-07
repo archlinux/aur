@@ -35,18 +35,16 @@ validpgpkeys=()
 prepare() {
 	cd ${srcdir}/
 	mv opt/$_pkgname opt/tencentvideo
-    echo "  
-    [Desktop Entry]
-    Name=tencentvideo
-    Name[zh_CN]=$_pkgname
-    Exec=/usr/bin/tencentvideo %U
-    Terminal=false
-    Type=Application
-    Icon=TencentVideo
-    Comment=
-    Comment[zh_CN]=不负好时光
-    Categories=AudioVideo;
-    " > usr/share/applications/TencentVideo.desktop
+    echo "[Desktop Entry]
+Name=tencentvideo
+Name[zh_CN]=$_pkgname
+Exec=/usr/bin/tencentvideo %U
+Terminal=false
+Type=Application
+Icon=TencentVideo
+Comment=
+Comment[zh_CN]=不负好时光
+Categories=AudioVideo;" > usr/share/applications/TencentVideo.desktop
 }
 
 
@@ -57,9 +55,8 @@ package() {
 	install -d ${pkgdir}/usr/share/applications
 	install -d ${pkgdir}/usr/share/licenses
 	
-	echo "
-	electron /opt/tencentvideo/app.asar \$@
-	" > ${pkgdir}/usr/bin/tencentvideo && chmod a+x ${pkgdir}/usr/bin/tencentvideo
+	echo "#!/bin/bash
+electron /opt/tencentvideo/app.asar \$@" > ${pkgdir}/usr/bin/tencentvideo && chmod a+x ${pkgdir}/usr/bin/tencentvideo
 	
 	mkdir ${pkgdir}/opt/tencentvideo
 	install -Dm644 ${srcdir}/opt/tencentvideo/resources/app.asar ${pkgdir}/opt/tencentvideo/app.asar
