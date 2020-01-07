@@ -7,7 +7,7 @@ _srcname=linux-5.4
 _major=5.4
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=7
+_minor=8
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -31,41 +31,41 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
-  0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-  0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
-  0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-  0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-  0007-Revert-iwlwifi-assign-directly-to-iwl_trans-cfg-in-Q.patch
-  0008-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0009-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
-  0010-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-  0011-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-  0012-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-  0013-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
+0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
+0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
+0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
+0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
+0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+0008-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
+0009-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+0012-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
+0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('31f6a581a52667a932f3c271ac4f8cd03d616a87dd84238da69bc77837bb28a8'
+sha256sums=('fc0d4939d701fbc0b1a1ce74dc62bf1d28ab38d8f89f88bb96cecf42a6f059fe'
             'SKIP'
-            'abc9b21d9146d95853dac35f4c4489a0199aff53ee6eee4b0563d1b37079fcc9'
+            '42c414c902193f9e8a1b70c728ca440de02d85dc29102f52ef98cfbf20d29a52'
             'SKIP'
             'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
-            'b9072c0d202c2e59d78f7453c4ed73618d9000f14aa8da7b270253c0c8ba2882'
-            '0cb3b5ed908456c0c577ca9ae5b2fa64c5e215e1cbe7a072054fe486c9d1c7f9'
-            '24e03b0cc17cb158eb715b4e1f6901e988a870ad7690ce3e0e21ee55d9125fd1'
-            'e2951b7ae55e3f3ecb2511716d75f7b0e05c3c21612c0d5a03c4e24fea473255'
-            'ae093645bc5165583f3dce37de171a291fbe8435f0b8a6652f3e0a40f7ba903a'
-            '256955383fb94e5c044ffad6e449899be72a6f819053a3c2eb8c8094cff966ef'
-            'd88b4acf8a5bf3b8c404df06eac767b503925eade11515d1844c75a344abdc72'
-            '43746bd6e905504734c95a6a6bd95993081341b80bf0ceed07f6e0f90aa61dbd'
-            '1604f19befeb24731c8a028111fa2a68fb7990691b83559c2efb321f3a56fa40'
-            '22ab8d1f3d5d8b8e02a54836c56bc38fb84ca4710283b179a2c0495742a3d1c2'
-            '11dd9cbbc296aa699d7d1c39ee4b60881440df534191d5860add3ed1e07db481'
-            '8c8fdb623e2c5779226efe36c81c134d024ac12733cdd800a348983d03b5c0e5'
-            'b18c8996fdd72abc1ebca41e455ba2e12c01c92514d3c3f98c310e4acddbd119')
+            'bd426e5a539152577608ac57b3e9a8f6281f848847c66d244274b48d95df39aa'
+            'e34286f1f2ee29a45b1a38385489581323eb6672064f4afa13eb8b39dbc79556'
+            'afaf90393cfd4b5d65dfec040cd0b74b5e7cda52540d3883e69ce8ca0b42da12'
+            '0c1c5de463df11efdd4ed8ca0732187deb3e06d4e15524f0dbb066c578657665'
+            '26500e808df98e20e62079d18137b5f0636f8c2a32dc8164f6b6381c22c3f217'
+            '5f8a47d95bd54e8c315c70491b25e70b2af4dce11c0acf06ba0f7c45985b59d8'
+            '53e1b22f9c97b3e3cdfaa03a4b3f3882ad427c4d400315a51303223209a05788'
+            '2885647d502d9eedd4f3d94cc27d6c8ecb3bb03e4e51611be8d74034eeccf0bb'
+            '40210b6cbd64cf70b3af76ab84c9e7f55e64aeed5c1072d4fed4345604735a67'
+            '7f5f1806a6bf1b256416da8c4d0fcb45249769425a93beb6940cabc2112d95e2'
+            '6a6b71cc316aff58124f169d22f7712f15f503ff3187d30e3288aa2b0c20402c'
+            '2b8110e2f53588fde1097dde9545f5369983e654004597a41f58f8e13b0be3c0'
+            '236e5502b9955747306eeb1078b22cc778feb8a0e1bde8895bafcf5c0438e250')
 
 _kernelname=${pkgbase#linux}
 

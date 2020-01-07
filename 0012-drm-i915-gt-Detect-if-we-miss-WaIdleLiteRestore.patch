@@ -1,7 +1,7 @@
-From 8c19c0f7eacb125b9a097d080a385d527f8ff836 Mon Sep 17 00:00:00 2001
+From e33c3b5720592db7cbaa544b8c05414a17d35afd Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Mon, 30 Dec 2019 11:15:30 +0000
-Subject: [PATCH 13/14] drm/i915/gt: Detect if we miss WaIdleLiteRestore
+Subject: [PATCH 12/14] drm/i915/gt: Detect if we miss WaIdleLiteRestore
 
 In order to avoid confusing the HW, we must never submit an empty ring
 during lite-restore, that is we should always advance the RING_TAIL

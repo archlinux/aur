@@ -1,4 +1,4 @@
-From 85ada8712a2fb1111be063cea0f7d0152ea6d912 Mon Sep 17 00:00:00 2001
+From 524202522faf86d81efaa96dc984d1996ddda302 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH 01/14] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -80,7 +80,7 @@ index 6cabc124378c..fda4986da9eb 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index b6f2f35d0bcf..2e9c273990e8 100644
+index 70665934d53e..9797869ed829 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -110,6 +110,9 @@ extern int core_uses_pid;
