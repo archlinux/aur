@@ -1,8 +1,10 @@
-# Maintainer: David Roizenman <david@hmnd.io>
+# Maintainer: Maksim Novikov <mnovikov.work@gmail.com>
+# Contributor: David Roizenman <david@hmnd.io>
+# Contributor: Thor K. Høgås <thor at roht no>
 
 _pkgname=todoist
 pkgname=${_pkgname}-git
-pkgver=r196.a73b330
+pkgver=r267.49fb10b
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
@@ -13,6 +15,8 @@ optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("${pkgname}::git://github.com/sachaos/todoist.git")
 md5sums=('SKIP')
+provides=('todoist')
+conflicts=('todoist')
 
 pkgver() {
   cd "$pkgname"
