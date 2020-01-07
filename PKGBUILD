@@ -3,7 +3,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.66.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -27,13 +27,19 @@ sha512sums=('48c64bdf53bc3575099b3b6bd74900068ac919090f4c79a83941ee920fb3bb59630
 prepare() {
 	# Validate the signature against public key: https://tutanota.com/howto/#verify-desktop
 	set -e
-	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin "${pkgname%-bin}-$pkgver.AppImage"
+	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin \
+		"${pkgname%-bin}-$pkgver.AppImage"
 	set +e
 
 	chmod +x "${pkgname%-bin}-$pkgver.AppImage"
 	./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
 
-	sed -i 's|Exec=AppRun|Exec=/opt/tutanota-desktop/AppRun|g' "squashfs-root/${pkgname%-bin}.desktop"
+	sed -i 's|Exec=AppRun|Exec=/opt/tutanota-desktop/AppRun|g' \
+		"squashfs-root/${pkgname%-bin}.desktop"
+
+	# Disable auto-update
+	sed -i 's|publishAutoUpdate: true|publishAutoUpdate: false|g' \
+		squashfs-root/resources/app-update.yml
 }
 
 package() {
@@ -45,8 +51,7 @@ package() {
 	rm "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}.desktop"
 
 	# Fix permisssions
-	chmod 644 "$pkgdir/opt/${pkgname%-bin}/resources/app.asar"
-	chmod 644 "$pkgdir/opt/${pkgname%-bin}/resources/app-update.yml"
+	chmod 644 "$pkgdir/opt/${pkgname%-bin}"/resources/app{.asar,-update.yml}
 
 	install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
 
