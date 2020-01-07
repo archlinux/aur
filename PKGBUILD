@@ -35,7 +35,7 @@
 pkgname=zoneminder-git
 _pkgname=zoneminder
 pkgver=1.33.16.r14355.fd633a217
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete surveillance solution allowing capture, analysis, recording and monitoring of any CCTV or security cameras'
 arch=('x86_64')
 url='https://github.com/ZoneMinder/ZoneMinder'
@@ -63,7 +63,8 @@ depends=('polkit' 'ffmpeg' 'libmp4v2'
 
 makedepends=('cmake')
 optdepends=('apache: alternative web server'
-            'vlc: provides libvlc (may achieve better performance with some camera models)')
+            'vlc: provides libvlc (may achieve better performance with some camera models)'
+            'zmeventnotification-git: suppport for push notifications and machine learning recognition')
 provides=($_pkgname)
 conflicts=($_pkgname)
 backup=("etc/nginx/sites-available/$_pkgname.conf"
