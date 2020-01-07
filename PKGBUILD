@@ -1,7 +1,7 @@
 # Maintainer: fireflower <fireflower.hs@gmail.com>
 
 pkgname=hbacklight-git
-pkgver=r19.aac9995
+pkgver=r22.ce493da
 pkgrel=0
 pkgdesc="acpi backlight & led manager"
 arch=('x86_64')

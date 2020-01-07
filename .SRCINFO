@@ -1,6 +1,6 @@
 pkgbase = hbacklight-git
 	pkgdesc = acpi backlight & led manager
-	pkgver = r19.aac9995
+	pkgver = r22.ce493da
 	pkgrel = 0
 	url = https://github.com/paroxayte/hbacklight
 	arch = x86_64
