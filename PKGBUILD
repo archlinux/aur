@@ -4,7 +4,7 @@ pkgbase=pluma-python3
 _srcname=pluma
 _tag=v1.23.2
 pkgver=1.23.2
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/mate-desktop/pluma"
 license=('GNU GENERAL PUBLIC LICENSE Version 2')
@@ -50,6 +50,9 @@ build() {
 
 package() {
 	pkgdesc="Compiles the newest pluma that doesn't need python2"
+	echo -e "${BYELLOW}Compiling new gschema..${NOCOLOR}"
+	sleep 1
+	glib-compile-schemas build/usr/local/share/glib-2.0/schemas
 	echo -e "${BYELLOW}Packaging files..${NOCOLOR}"
 	cp -vr build/* ../pkg/$pkgbase/
 }
