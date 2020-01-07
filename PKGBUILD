@@ -3,7 +3,7 @@ pkgbase=qt5-autoupdater
 pkgname=(qt5-autoupdater qt5-autoupdater-qtifw qt5-autoupdater-packagekit qt5-autoupdater-doc)
 group=qt5-autoupdater-full
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Qt library to automatically check for updates and install them"
 arch=('i686' 'x86_64')
 url="https://github.com/Skycoder42/QtAutoUpdater"
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-quickcontrols2')
 makedepends=('git' 'qt5-tools' 'packagekit-qt5' 'qdep' 'python' 'doxygen' 'graphviz')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 _pkgfqn=$pkgname-$pkgver
-source=("$_pkgfqn::git+https://github.com/Skycoder42/QtAutoUpdater.git#tag=$pkgver"
+source=("$_pkgfqn::git+https://github.com/Skycoder42/QtAutoUpdater.git#tag=$pkgver-3"
 		"$pkgname.rule"
 		"subpkg.rule")
 sha256sums=('SKIP'
@@ -34,7 +34,7 @@ build() {
 package_qt5-autoupdater() {
   cd build/src/autoupdatercore
   make INSTALL_ROOT="$pkgdir" install
-  cd ../plugins/updater/qwebquery
+  cd ../plugins/updaters/qwebquery
   make INSTALL_ROOT="$pkgdir" install
   cd ../../../autoupdaterwidgets
   make INSTALL_ROOT="$pkgdir" install
@@ -56,7 +56,7 @@ package_qt5-autoupdater-qtifw() {
   depends=('qt5-autoupdater')
   optdepends=()
   
-  cd build/src/plugins/updater/qtifw
+  cd build/src/plugins/updaters/qtifw
   make INSTALL_ROOT="$pkgdir" install
   
   cd "../../../../../$_pkgfqn"
@@ -67,7 +67,7 @@ package_qt5-autoupdater-packagekit() {
   depends=('qt5-autoupdater' 'packagekit-qt5')
   optdepends=()
   
-  cd build/src/plugins/updater/qpackagekit
+  cd build/src/plugins/updaters/qpackagekit
   make INSTALL_ROOT="$pkgdir" install
   
   cd "../../../../../$_pkgfqn"

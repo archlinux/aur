@@ -1,7 +1,7 @@
 pkgbase = qt5-autoupdater
 	pkgdesc = A Qt library to automatically check for updates and install them
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Skycoder42/QtAutoUpdater
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = qt5-autoupdater
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	optdepends = repkg: Automatically rebuild the package on dependency updates
-	source = qt5-autoupdater-3.0.0::git+https://github.com/Skycoder42/QtAutoUpdater.git#tag=3.0.0
+	source = qt5-autoupdater-3.0.0::git+https://github.com/Skycoder42/QtAutoUpdater.git#tag=3.0.0-3
 	source = qt5-autoupdater.rule
 	source = subpkg.rule
 	sha256sums = SKIP
