@@ -1,7 +1,7 @@
 pkgbase = ruby-roo
 	pkgdesc = OpenOffice, LibreOffice, Excel, CSV reader
 	pkgver = 2.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roo-rb/roo
 	arch = any
 	license = MIT

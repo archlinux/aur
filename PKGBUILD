@@ -3,7 +3,7 @@
 _gemname=roo
 pkgname="ruby-${_gemname}"
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenOffice, LibreOffice, Excel, CSV reader'
 arch=('any')
 url='https://github.com/roo-rb/roo'
