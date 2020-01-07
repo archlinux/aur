@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-full-git
-pkgver=0.6.7.r28.gbb38053
-pkgrel=2
+pkgver=0.6.8.r1.g04f43e77
+pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, all options and engines"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="http://www.strawbs.org/"
