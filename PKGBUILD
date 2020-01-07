@@ -1,4 +1,4 @@
-# Maintainer: crazyboycjr <cjr@linux.com>
+# Maintainer: crazyboycjr <crazyboycjr@gmail.com>
 # Based on the PKGBUILD for 3500 series by yaroslav <proninyaroslav@mail.ru>
 
 pkgname=cnijfilter2-mg3600
