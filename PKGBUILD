@@ -19,6 +19,7 @@ build() {
     cmake . \
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
+          -DBUILD_SHARED_LIBS=ON \
           -DPETSC=off \
           -DPYTHON=off
     make
