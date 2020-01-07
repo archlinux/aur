@@ -4,12 +4,12 @@
 
 pkgname=worker
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A file manager for the X Window System"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.boomerangsworld.de/worker"
-depends=('avfs' 'gcc-libs' 'libx11' 'file')
+depends=('avfs' 'gcc-libs' 'libx11' 'file' 'xorgproto')
 makedepends=('libxt')
 source=(http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2
         http://www.boomerangsworld.de/cms/${pkgname}/downloads/${pkgname}-${pkgver}.tar.bz2.asc)
