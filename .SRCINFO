@@ -1,7 +1,7 @@
 pkgbase = craftos-pc-accelerated
 	pkgdesc = Advanced ComputerCraft emulator written in C++
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MCJack123/craftos2
 	arch = x86_64
 	arch = i386
@@ -17,8 +17,10 @@ pkgbase = craftos-pc-accelerated
 	optdepends = ncurses: CLI mode support
 	source = craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v2.2.1-luajit.tar.gz
 	source = craftos2-luajit.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.0.5-cc2.2.1.tar.gz
+	source = updater-fix.json::https://api.github.com/repos/MCJack123/craftos2/commits/da749f574f626b733b7053e8c47947c7ab1c8bb8
 	sha256sums = 276227c213b181b5642148bafc931fb1b5b486f0ca7866b6163a06749746c51f
 	sha256sums = 2680159260552e27cb8bf3c3fe2621a67026229eeeed116eba8523d39f0c482a
+	sha256sums = 6906ad34202ee2e30c4a30d3fa8487aed39054c82577c1b981e6be04a355e45e
 
 pkgname = craftos-pc-accelerated
 
