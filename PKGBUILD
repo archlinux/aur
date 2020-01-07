@@ -3,13 +3,14 @@
 
 _name=gzdoom
 pkgname=${_name}
-pkgver=4.2.4
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
-depends=('hicolor-icon-theme'
+depends=('alsa-lib'
+         'hicolor-icon-theme'
          'libgl'
          'libjpeg'
          'sdl2')
