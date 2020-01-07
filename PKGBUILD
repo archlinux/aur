@@ -6,7 +6,7 @@ pkgname=(
   tlp-git
   tlp-rdw-git
 )
-pkgver=1.2.2.r4.3c7b9f3
+pkgver=1.3.0b1.r1.e2fbc0c
 pkgrel=1
 arch=(any)
 url=https://linrunner.de/en/tlp/tlp.html
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd TLP
 
-  echo "$(git describe --tags | sed 's/-/.r/; s/-g/./')"
+  git describe --tags | sed 's/–alpha./.a/; s/–beta./.b/; s/-/.r/; s/-g/./'
 }
 
 package_tlp-git() {
@@ -50,6 +50,7 @@ package_tlp-git() {
 
   export TLP_NO_INIT=1
   export TLP_SBIN=/usr/bin
+  export TLP_SDSL=/usr/lib/systemd/system-sleep
   export TLP_SYSD=/usr/lib/systemd/system
   export TLP_ULIB=/usr/lib/udev
   export TLP_WITH_ELOGIND=0
