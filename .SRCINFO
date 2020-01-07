@@ -1,0 +1,29 @@
+pkgbase = ruby2.6
+	pkgdesc = An object-oriented language for quick and easy programming (version 2.6)
+	pkgver = 2.6.5
+	pkgrel = 1
+	url = http://www.ruby-lang.org/en/
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = gdbm
+	makedepends = openssl
+	makedepends = libffi
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = libyaml
+	makedepends = ttf-dejavu
+	makedepends = tk
+	depends = gdbm
+	depends = openssl
+	depends = libffi
+	depends = libyaml
+	depends = gmp
+	depends = zlib
+	optdepends = tk: for Ruby/TK
+	options = !emptydirs
+	source = https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.5.tar.xz
+	sha512sums = e8ae3b5d4d23a93d0ef6057235ad0e573665a8b4b6544e1c70b4cce9c4d2fb9094e5c8fe8a9ab7b9996efe3ada603f9b4ef1fd08fb5a83253c1ae2b5e3f202db
+
+pkgname = ruby2.6
+
