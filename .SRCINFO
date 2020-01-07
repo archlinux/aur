@@ -1,7 +1,7 @@
 pkgbase = dict-freedict-eng-fra-bin
 	pkgdesc = English -> French dictionary for dictd et al. from Freedict.org
 	pkgver = 0.1.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://freedict.org/
 	install = dict-freedict-eng-fra-bin.install
 	arch = any
