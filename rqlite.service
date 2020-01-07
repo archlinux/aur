@@ -1,0 +1,15 @@
+[Unit]
+Description=
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=rqlite
+Group=rqlite
+ExecStart=/usr/bin/rqlited /run/rqlite
+Restart=always
+WorkingDirectory=/run/rqlite
+
+[Install]
+WantedBy=multi-user.target
