@@ -49,7 +49,8 @@ package() {
 	install -Dm644 "$srcdir/klipper.service" "$pkgdir/usr/lib/systemd/system/klipper.service"
 	install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/klipper.conf"
 	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/klipper.conf"
-	install -dm777 "$pkgdir/opt/klipper"
+	install -dm755 "$pkgdir/opt/klipper"
 	install -dm775 "$pkgdir/etc/klipper"
 	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
+	chown -R klipper:klipper "$plgdir/opt/klipper"
 }
