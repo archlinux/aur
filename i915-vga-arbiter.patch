@@ -39,7 +39,7 @@ until after vgacon->fbcon handoff.
  drivers/gpu/drm/i915/i915_drv.c              | 23 +++++++++++---
  drivers/gpu/drm/i915/i915_params.c           |  3 ++
  drivers/gpu/drm/i915/i915_params.h           |  1 +
- drivers/gpu/drm/i915/intel_drv.h             |  1 +
+ drivers/gpu/drm/i915/display/intel_display.h             |  1 +
  5 files changed, 57 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display.c b/drivers/gpu/drm/i915/display/intel_display.c
@@ -168,11 +168,11 @@ index a4770ce46bd2..8f836ff6e2e8 100644
  	param(bool, enable_hangcheck, true) \
  	param(bool, prefault_disable, false) \
  	param(bool, load_detect_test, false) \
-diff --git a/drivers/gpu/drm/i915/intel_drv.h b/drivers/gpu/drm/i915/intel_drv.h
+diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915/display/intel_display.h
 index f11979879e7b..06cefd0218a5 100644
---- a/drivers/gpu/drm/i915/intel_drv.h
-+++ b/drivers/gpu/drm/i915/intel_drv.h
-@@ -1457,6 +1457,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
+--- a/drivers/gpu/drm/i915/display/intel_display.h
++++ b/drivers/gpu/drm/i915/display/intel_display.h
+@@ -432,6 +432,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
  			   const char *name, u32 reg);
  void lpt_disable_pch_transcoder(struct drm_i915_private *dev_priv);
  void lpt_disable_iclkip(struct drm_i915_private *dev_priv);

@@ -1,11 +1,7 @@
 *
 !.gitignore
 !.SRCINFO
-!60-linux.hook
-!90-linux.hook
 !add-acs-overrides.patch
 !config
 !i915-vga-arbiter.patch
-!linux.install
-!linux.preset
 !PKGBUILD
