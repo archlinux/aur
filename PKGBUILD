@@ -18,7 +18,7 @@ arch=('x86_64')
 url="https://www.chromium.org/Home"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'pipewire' 'clang' 'lld' 'gn' 'java-runtime-headless')
