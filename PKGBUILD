@@ -3,11 +3,11 @@
 
 pkgname=linklord
 pkgver=2020.01.07.04
-pkgrel=2
+pkgrel=4
 pkgdesc='budlabs markdown flavored link manager'
 arch=('any')
 url='https://github.com/budlabs/linklord'
-license=('MIT')
+license=('BSD')
 groups=()
 depends=('bash>=4.0.0')
 makedepends=()
