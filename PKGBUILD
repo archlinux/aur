@@ -6,13 +6,14 @@
 
 pkgname=rubyripper
 pkgver=0.7.0rc2
-pkgrel=3
+pkgrel=4
 pkgdesc='Secure audiodisc ripper'
 arch=('any')
 url='http://code.google.com/p/rubyripper/'
 license=('GPL3')
-depends=('cdparanoia' 'gtk2' 'ruby-iconv' 'ruby-gettext')
+depends=('cdparanoia' 'gtk2' 'ruby-iconv')
 optdepends=('ruby-gtk2: GTK+ GUI'
+            'ruby-gettext: translations'
             'cd-discid: Freedb support'
             'lame: MP3 encoding support'
             'vorbis-tools: Ogg Vorbis encoding support'
