@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _knm="-lts414"
-_kvd="4.14.155-1"
+_kvd="4.14.160-1"
 _kvo=""
 _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
 _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
@@ -9,7 +9,7 @@ _kvr="${_kvv:+${_kvv}${_knm}}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules${_knm}-git
 _pkgname=openss7-modules${_knm}
-pkgver=1.1.8.429.g4f07c8da6
+pkgver=1.1.8.456.gce55d4128
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS ${_kvx}} Kernel Modules)"
 arch=('x86_64' 'i686')
@@ -77,8 +77,8 @@ build() {
       --disable-specfs-lock \
       --with-k-release=$_kvr \
       --with-k-subdir=extramodules/openss7 \
-      --with-k-optimize=speed \
-      --with-optimize=speed \
+      --with-k-optimize=normal \
+      --with-optimize=normal \
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
