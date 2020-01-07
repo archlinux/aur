@@ -1,0 +1,18 @@
+pkgbase = rcfvt-git
+	pkgdesc = my own crappy terminal emulator
+	pkgver = r10.4062d5d
+	pkgrel = 1
+	url = https://github.com/r-c-f/rcfvt
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = vte3
+	provides = rcfvt
+	conflicts = rcfvt
+	source = git+https://github.com/r-c-f/rcfvt.git
+	md5sums = SKIP
+
+pkgname = rcfvt-git
+
