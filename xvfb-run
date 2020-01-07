@@ -101,7 +101,7 @@ find_free_servernum() {
 
 # Parse the command line.
 ARGS=$(getopt --options +ade:f:hn:lp:s:w: \
-       --long auto-servernum,error-file:auth-file:,help,server-num:,listen-tcp,xauth-protocol:,server-args:,wait: \
+       --long auto-servernum,auto-display,error-file:auth-file:,help,server-num:,listen-tcp,xauth-protocol:,server-args:,wait: \
        --name "$PROGNAME" -- "$@")
 GETOPT_STATUS=$?
 
