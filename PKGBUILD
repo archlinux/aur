@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
@@ -30,12 +30,13 @@ validpgpkeys=()
 
 prepare() {
     cp -R craftos2-luajit-2.0.5-cc2.2.1/* "craftos2-$pkgver-luajit/craftos2-luajit/"
-    cd "craftos2-$pkgver-luajit"
-    mkdir icons
-    unzip linux-icons.zip -d icons
     # Late-breaking patch, DELETE AFTER v2.2.1!
     python3 -c "import json, sys, io; file = io.open('updater-fix.json'); print(json.load(file)['files'][0]['patch']); file.close()" > updater-fix.patch
     patch -p1 craftos2-$pkgver-luajit/src/main.cpp updater-fix.patch
+    # -=-
+    cd "craftos2-$pkgver-luajit"
+    mkdir icons
+    unzip linux-icons.zip -d icons
 }
 
 build() {
