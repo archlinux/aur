@@ -1,6 +1,6 @@
 pkgbase = yt-popball-git
 	pkgdesc = A PopBall
-	pkgver = 0.1.1
+	pkgver = 0.1.r0.gc77fe52
 	pkgrel = 1
 	url = https://github.com/yt-theme/popBall
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yt-popball-git
 	depends = qt5-base
 	provides = yt-popball
 	conflicts = yt-popball
-	source = yt-popball::git+https://github.com/yt-theme/popBall
+	source = yt-popball::git+https://github.com/yt-theme/popBall.git
 	md5sums = SKIP
 
 pkgname = yt-popball-git

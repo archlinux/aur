@@ -2,7 +2,7 @@
 # Maintainer: TransistorLogic <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball-git
-pkgver=0.1.1
+pkgver=0.1.r0.gc77fe52
 pkgrel=1
 pkgdesc="A PopBall"
 arch=(x86_64)
@@ -17,15 +17,15 @@ replaces=()
 backup=()
 options=()
 install=
-source=('yt-popball::git+https://github.com/yt-theme/popBall')
+source=('yt-popball::git+https://github.com/yt-theme/popBall.git')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/yt-popball"
-
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 # Git, tags available
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 
 # Git, no tags available
 #	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
