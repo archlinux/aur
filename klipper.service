@@ -1,10 +1,13 @@
 [Unit]
 Description=3D printer firmware with motion planning on the host
 
-[Service]
-ExecStart=/usr/bin/python2 /opt/klipper/klippy/klippy.py /etc/klipper/klipper.cfg -l /var/log/klipper/klippy.log -I /run/klipper/sock
-Type=simple
-User=klipper
-
 [Install]
 WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=klipper
+RemainAfterExit=yes
+ExecStart=/usr/bin/python2 /opt/klipper/klippy/klippy.py /etc/klipper/klipper.cfg
+Restart=always
+RestartSec=10
