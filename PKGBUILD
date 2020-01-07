@@ -5,7 +5,7 @@
 _lang=fra-eng
 pkgname=dict-freedict-${_lang}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="French -> English dictionary for dictd et al. from Freedict.org"
 arch=('any')
 url="https://freedict.org/"
