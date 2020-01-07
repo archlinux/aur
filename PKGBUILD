@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2020.01.r0.g84dd7577
+pkgver=2020.01.r1.g07c8855a
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -31,9 +31,9 @@ pkgver() {
 
 build() {
   local cmake_flags=( '-DALLOW_SYSTEM_QHULL=OFF'
-                      '-DCMAKE_INSTALL_PREFIX="/usr"'
+                      '-DCMAKE_INSTALL_PREFIX=/usr'
                     )
-  mkdir "${srcdir}/build"
+  mkdir -p "${srcdir}/build"
   cmake "${cmake_flags[@]}" -G Ninja -B "${srcdir}/build" "${srcdir}/meshlab/src"
   cd "${srcdir}/build"
   ninja $([ -v MAKEFLAGS ] || echo -j1)
