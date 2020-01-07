@@ -1,18 +1,24 @@
 pkgbase = deezloader-remix-git
-	pkgdesc = Deezloader Remix is an improved version of Deezloader based on the Reborn branch
+	pkgdesc = An improved version of Deezloader based on the Reborn branch. Download songs, playlists and albums directly from Deezer's servers.
 	pkgver = 4.2.1.r258.gbfb9838
-	pkgrel = 2
+	pkgrel = 3
 	url = https://notabug.org/RemixDevs/DeezloaderRemix
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = npm
 	depends = electron3
+	depends = libappindicator-gtk3
+	depends = libnotify
+	provides = deezloader-remix
+	conflicts = deezloader-remix
 	conflicts = deezloader-remix-bin
-	source = git+https://notabug.org/RemixDevs/DeezloaderRemix
-	source = DeezloaderRemix.desktop
+	source = deezloader-remix::git+https://notabug.org/RemixDevs/DeezloaderRemix.git
+	source = deezloader-remix.desktop
+	source = deezloader-remix.sh
 	md5sums = SKIP
-	md5sums = 5d12c62e4eab4bb22346ac934598c601
+	md5sums = 7355cbb7fcc93a0768f3b652664f67b6
+	md5sums = 3505cf1381c8a4e7e96200d1b7ab6fb0
 
 pkgname = deezloader-remix-git
 

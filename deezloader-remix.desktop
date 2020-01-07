@@ -4,6 +4,6 @@ Comment=download songs from deezer
 Exec=deezloader-remix %U
 Terminal=false
 Type=Application
-Icon=DeezloaderRemix
+Icon=deezloader-remix
 Categories=Utility;
 StartupWMClass=Deezloader Remix
