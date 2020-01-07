@@ -68,8 +68,8 @@ prepare() {
 build() {
   cd "${_srcname}"
 
-  #Force zenv1 architecture optimisation.
-  export CFLAGS="-march=znver1 -mtune=znver1 -O2 -pipe -fstack-protector-strong"
+  #Force zenv2 architecture optimisation.
+  export CFLAGS="-march=znver2 -mtune=znver2 -O2 -pipe -fstack-protector-strong"
   export CXXFLAGS="${CFLAGS}"
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
