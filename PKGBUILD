@@ -1,9 +1,9 @@
 # Maintainer: Daniel Milde <daniel at milde dot cz>
 pkgname=pecl-propro
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Property proxy"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://pecl.php.net/package/propro"
 license=('BSD')
 depends=('php')
