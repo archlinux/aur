@@ -1,19 +1,20 @@
 pkgbase = wavbreaker
 	pkgdesc = A GTK wave file splitter
-	pkgver = 0.11
+	pkgver = 0.13
 	pkgrel = 1
 	url = http://wavbreaker.sourceforge.net/
 	install = wavbreaker.install
 	arch = x86_64
 	arch = i686
 	license = GPL
+	makedepends = meson
 	depends = libpulse
 	depends = desktop-file-utils
 	depends = gtk2
 	depends = hicolor-icon-theme
 	optdepends = pulseaudio
-	source = http://downloads.sourceforge.net/wavbreaker/wavbreaker-0.11.tar.gz
-	md5sums = 97f981baa6ca0d4d52b88314defeea4c
+	source = wavbreaker-0.13.tar.gz::https://github.com/thp/wavbreaker/archive/0.13.tar.gz
+	md5sums = cc32a1afd0b52692a81ce7895b5ee767
 
 pkgname = wavbreaker
 
