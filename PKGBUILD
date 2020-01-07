@@ -1,7 +1,7 @@
 # Maintainer: Anton Batenev <antonbatenev@yandex.ru>
 
 pkgname=timegrep
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='Utility to grep log between two dates or tail last lines to time ago'
 arch=('i686' 'x86_64')
