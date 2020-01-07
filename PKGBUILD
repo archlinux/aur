@@ -1,7 +1,7 @@
 # Maintainer: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=flowblade
-pkgver=2.2
+pkgver=2.4
 pkgrel=1
 pkgdesc="a multitrack non-linear video editor for Linux"
 arch=('any')
@@ -13,22 +13,22 @@ depends=('dbus-glib'
          'gtk3'
          'librsvg'
          'mlt'
-         'mlt-python2-bindings'
          'movit'
-         'pygtk'
-         'python2-dbus'
-         'python2-gobject'
-         'python2-numpy'
-         'python2-pillow'
+         'pygobject-devel'
+         'python-dbus'
+         'python-gobject'
+         'python-mlt'
+         'python-numpy'
+         'python-pillow'
          'sdl_image'
          'sox'
          'swh-plugins')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('4c7bc61d2d38dbf91bbae9f835fbf82504a47d973983427264706a0596573e70')
+sha256sums=('708ec92081d12f1388191fccce69643bf3a30fe6567a0037fb95c8774014472b')
 
 package() {
   cd $pkgname-$pkgver/$pkgname-trunk
-  python2 setup.py install \
+  python setup.py install \
     --root=$pkgdir \
     --install-lib=/usr/share/pyshared \
     --optimize=1
