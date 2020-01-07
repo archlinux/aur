@@ -3,7 +3,7 @@
 
 pkgname=tableplus
 pkgver=0.1.34
-pkgrel=2
+pkgrel=1
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
 url="https://tableplus.com/"
