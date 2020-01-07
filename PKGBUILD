@@ -2,7 +2,7 @@
 # Contributor: Egor Kovetskiy <e.kovetskiy@office.ngs.ru>
 
 pkgname=go-tools-git
-pkgver=v0.0.0_20200103221440_774c71fcf114
+pkgver=v0.0.0_20200107181558_a222fb47e2f1
 pkgrel=1
 pkgdesc='Developer tools for the Go programming language'
 arch=(x86_64)
@@ -42,12 +42,13 @@ build() {
     -trimpath \
     -ldflags "-extldflags ${LDFLAGS}" \
     -buildmode=pie \
-    ./cmd/...
-}
-
-check() {
-  cd "${pkgname}"
-  go test ./cmd/...
+    ./...
+  cd gopls/
+  GOCACHE="${srcdir}/cache" GOBIN="${srcdir}/build" go install -v -a \
+    -trimpath \
+    -ldflags "-extldflags ${LDFLAGS}" \
+    -buildmode=pie \
+    .
 }
 
 package() {
