@@ -3,7 +3,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.66.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -43,9 +43,6 @@ package() {
 	cp -r squashfs-root/* "$pkgdir/opt/${pkgname%-bin}"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr"
 	rm "$pkgdir/opt/${pkgname%-bin}/${pkgname%-bin}.desktop"
-
-	# Disable autoUpdater
-	rm "$pkgdir/opt/${pkgname%-bin}/resources/app-update.yml"
 
 	# Fix permisssions
 	chmod 644 "$pkgdir/opt/${pkgname%-bin}/resources/app.asar"
