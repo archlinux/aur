@@ -1,0 +1,14 @@
+pkgbase = pluma-python3
+	pkgver = 1.23.2
+	pkgrel = 1
+	url = https://github.com/mate-desktop/pluma
+	arch = x86_64
+	license = GNU GENERAL PUBLIC LICENSE Version 2
+	makedepends = mate-common
+	makedepends = yelp-tools
+	source = git+https://github.com/mate-desktop/pluma#tag=v1.23.2
+	sha256sums = SKIP
+
+pkgname = pluma-python3
+	pkgdesc = Compiles the newest pluma that doesn't need python2
+
