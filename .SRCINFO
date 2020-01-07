@@ -1,0 +1,17 @@
+pkgbase = yt-popball-git
+	pkgdesc = A PopBall
+	pkgver = r28.164ab34
+	pkgrel = 1
+	url = https://github.com/yt-theme/popBall
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = yt-popball
+	conflicts = yt-popball
+	source = yt-popball::git+https://github.com/yt-theme/popBall
+	md5sums = SKIP
+
+pkgname = yt-popball-git
+
