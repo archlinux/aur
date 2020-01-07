@@ -1,13 +1,13 @@
 pkgbase = python-stomp.py
 	pkgdesc = Python STOMP client, supporting versions 1.0, 1.1 and 1.2 of the protocol
-	pkgver = 4.1.22
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/jasonrbriggs/stomp.py
 	arch = any
 	license = Apache
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/stomp.py/stomp.py-4.1.22.tar.gz
-	sha256sums = d28120d902dcb81274cf78bd269dfbdfe2b20ea5ae5b33d90b56a32e8c18abe2
+	source = https://files.pythonhosted.org/packages/source/s/stomp.py/stomp.py-5.0.0.tar.gz
+	sha256sums = dba68fc90bdad8829e769e38e5623c8445e4ab13d778be550ddd0f8aaff28d25
 
 pkgname = python-stomp.py
 
