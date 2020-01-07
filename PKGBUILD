@@ -12,8 +12,10 @@ source=("${pkgname}::git://github.com/paroxayte/hbacklight.git")
 noextract=()
 md5sums=('SKIP')
 
-# supported ghc versions are 8.6.5, 8.8.1. Editing ghcver will allow building
-# with alternate versions
+# Supported ghc versions are 8.6.5, 8.8.1. Editing ghcver will allow building
+# with alternate versions. Because ghc is often not installed with the distro
+# package manager, it is not included in the makedepends. Consequently, the
+# build will fail if ghc-${ghcver} is not on the PATH.
 
 ghcver="8.6.5"
 
