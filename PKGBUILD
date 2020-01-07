@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.6pre16
+pkgver=18.6pre17
 _major=18.5
 pkgrel=1
 arch=('x86_64')
@@ -87,12 +87,13 @@ source=(
   008-PR17068.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17068.patch
   009-PR17070.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17070.patch
   010-PR17075.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17075.patch
-  011-PR17097.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17097.patch
-  012-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
-  013-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
-  014-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
-  015-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
-  016-PR17111.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17111.patch
+  011-PR17084.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17084.patch
+  012-PR17097.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17097.patch
+  013-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
+  014-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
+  015-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
+  016-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
+  017-PR17111.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17111.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -124,6 +125,7 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             '15da19309d420da1bd6c135fed442e3db878fbf594b44b50de0dc7bfbb05606d'
             '4f7c735d4116a3de19ac2d7bfa733bdebbe0fe5eaefa69e390d5cfacabbe2b9b'
             '3363b14eaf4925a74ba2c93e52902c9e364a106f38fb8fb809451ebede06e89a'
+            '0308b607d92994b995f7c1bd8b3853f72fc3d9012d6b9269f82e8627eb7a6d0c'
             'e3fae917683686c48ce3750e94b1235847060c76babece4d7197fb869a414889'
             'b0aefc3a103a581a436bf5bd8e5deaff013793a7661a4273e6d35a90c120da56'
             '8925ab7e022d6c565d37d7ed6abdaca1bdace12dfcb4c9808f6b7a6ac7e056a7'
