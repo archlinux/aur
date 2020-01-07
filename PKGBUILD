@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial desktop client for the Telegram messenger, based on Telegram Desktop."
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -65,6 +65,7 @@ source=(
 
 	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/master/pkgs/kotatogram-desktop/update-to-v1.9.3.patch"
 	"cmake-rules-fix.patch"
+	"remove-qt-config.patch"
 	"fix-spellcheck.patch"
 	"add-default-notification-action.patch"
 	"Use-system-font.patch"
@@ -98,7 +99,8 @@ sha512sums=('SKIP'
             'ac55bcd0c572b1e5fdd72cd0dd9db4bb5eb9c12adc8c702f348201a52b1cf0271f550e144e6654605753960cab55146604a8b52d5294861f73d85b548e5503f0'
             'ec16fd3a70a225fd9aa54c8042b1115d0bdb15e2a95c1abbc74cee50a06878196a4e8c451167c9849ff816ce36e48f46166cb7e99790258d575bde11e305e548'
             '98936bf3828a29bbaf766051b48b5dbf2b50de4fece910d3d92311a854f21ac3068c09f5c0e33c08d6821cbbb64939b7362104083edbe489413d43170df0a599'
-            '18c8e8a6f1e3f09bde405beddb991fe32e5a1ee4000246fb203306f7aa2563f1fd5b38c9f9830305f9680f048f2c00f257303add8ea58f3dc7550d63d2e3db10'
+            '5f58438fe52fc5cb0b910b8f1f5ef2a88597ef14a48b81fa222dca9070158eb747e998a1dc432ab91dd231a5f94e25db5d0a429895dccf7ee8d19beca215b766'
+            'c90dbebb216233b5a3d5036fb244d1ce746540fcc84413de70cab6c557fee7d0a065cf1dc828c5ae7f8a0be26ff3ea05eec99c74006d201118c2b2531da4182f'
             'd1804b9e8728adf3db9dccb581bdff6b9b76b9afc3ee9b55fe1846c404a8fe8c79d47c13f8005c4df23907ad80841df30a7431cc5204a55fe48c65ee12236939'
             '77fc5b177fe967768b87b411902c0bb890891f613d3ce72290976d2adc5eb8aa3a3815f95dc71b9e1391a09038dfa4dc05583117f7bb22363188809130b0e140'
             'b9fe9cb91e19271920c4cf075ba83703f093111d6a692cab91eb493563940091cda7b204742711157beb1e9857c1fefd6788ec8784f7b362423a9564925c0de6'
@@ -139,6 +141,7 @@ prepare() {
 
 	patch -Np1 -i "$srcdir/update-to-v1.9.3.patch"
 	patch -Np1 -i "$srcdir/cmake-rules-fix.patch"
+	patch -Np1 -i "$srcdir/remove-qt-config.patch"
 	patch -Np1 -i "$srcdir/fix-spellcheck.patch"
 	patch -Np1 -i "$srcdir/add-default-notification-action.patch"
 	patch -Np1 -i "$srcdir/Use-system-font.patch"
