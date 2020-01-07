@@ -2,7 +2,7 @@
 
 pkgname=wallsch-git
 _pkgname=wallsch
-pkgver=r26.3339716
+pkgver=r28.16375aa
 pkgrel=1
 pkgdesc="A simple wallpaper changer/scheduler with night/day split"
 arch=('any')
