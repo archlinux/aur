@@ -1,0 +1,31 @@
+diff --git a/gcc/config.gcc b/gcc/config.gcc
+index 446a852ffe1..17ed1b876a1 100644
+--- a/gcc/config.gcc
++++ b/gcc/config.gcc
+@@ -2503,6 +2503,13 @@ msp430*-*-*)
+ 	cxx_target_objs="msp430-c.o"
+ 	tmake_file="${tmake_file} msp430/t-msp430"
+ 	extra_gcc_objs="driver-msp430.o"
++	# Enable .init_array unless it has been explicitly disabled (e.g. if
++	# the user is building using an old version of newlib.
++	# The MSPABI mandates .init_array, and the Newlib CRT code since
++	# mid-2019 expects it.
++	if test x${disable_initfini_array} != xyes; then
++		gcc_cv_initfini_array=yes
++	fi
+ 	;;
+ nds32*-*-*)
+ 	target_cpu_default="0"
+diff --git a/gcc/config/msp430/msp430.h b/gcc/config/msp430/msp430.h
+index 1288b1a263d..ca7cf20e1d7 100644
+--- a/gcc/config/msp430/msp430.h
++++ b/gcc/config/msp430/msp430.h
+@@ -49,7 +49,7 @@ extern bool msp430x;
+ 
+ /* -lgcc is included because crtend.o needs __mspabi_func_epilog_1.  */
+ #undef  ENDFILE_SPEC
+-#define ENDFILE_SPEC "%{!minrt:crtend.o%s} %{minrt:crtn-minrt.o%s}%{!minrt:crtn.o%s} -lgcc"
++#define ENDFILE_SPEC "%{!minrt:crtend.o%s} %{minrt:%:if-exists(crtn-minrt.o%s)}%{!minrt:%:if-exists(crtn.o%s)} -lgcc"
+ 
+ #define ASM_SPEC "-mP " /* Enable polymorphic instructions.  */ \
+   "%{mcpu=*:-mcpu=%*}%{!mcpu=*:%{mmcu=*:-mmcu=%*}} " /* Pass the CPU type on to the assembler.  */ \
