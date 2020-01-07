@@ -2,13 +2,15 @@
 # This script is licensed under the MIT license.
 
 pkgname=gpmdp
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
-depends=('libnotify' 'alsa-lib' 'gconf' 'gtk3' 'nss' 'libxss' 'wget')
-optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'avahi' 'nss-mdns')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2')
+optdepends=('apparmor'
+            'avahi'
+            'libgnome-keyring')
 provides=('gpmdp')
 conflicts=('google-play-music-desktop-player-git' 'gpmdp-git')
 install=${pkgname}.install
@@ -17,18 +19,18 @@ license=('MIT')
 case $CARCH in
     'x86_64')
         _arch='amd64'
-		md5sums=('ab8c3e7894596a039e8a5c41fd0af8e9'
-         		 'b776561dd313eb1ded6356247cfffa89')
+        md5sums=('28732aaf022f51172add9f80df3d9014'
+                 'b776561dd313eb1ded6356247cfffa89')
     ;;
     'i686')
         _arch='i386'
-		md5sums=('3ba7679d8b76e1dad1d1ce336746c0be'
-         		 'b776561dd313eb1ded6356247cfffa89')
+        md5sums=('b1dfcda8ce3e5dc271222dc398445a36'
+                 'b776561dd313eb1ded6356247cfffa89')
 	;;
 esac
 
 
-source=("https://3727-40008106-gh.circle-artifacts.com/0/home/circleci/project/dist/installers/debian/google-play-music-desktop-player_4.6.1_$_arch.deb"
+source=("https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v${pkgver}/google-play-music-desktop-player_${pkgver}_${_arch}.deb"
 		"gpmdp.desktop")
 
 package() {
