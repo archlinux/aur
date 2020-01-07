@@ -1,7 +1,7 @@
 # Maintainer: Shen ZhongLi <szl921818@gmail.com>
 pkgname=mindmaster
 pkgver=7.2
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 conflicts=("mindmaster-cn")
 options=(!strip)
