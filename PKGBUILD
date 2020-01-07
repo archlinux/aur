@@ -1,5 +1,5 @@
-# Maintainer: Simon Kohlmeyer <simon.kohlmeyer@gmail.com>
-# Contributor: nblock <nblock [/at\] archlinux DOT us>
+# Maintainer: nblock <nblock [/at\] archlinux DOT us>
+# Contributor: Simon Kohlmeyer <simon.kohlmeyer@gmail.com>
 
 _modulename=tasklib
 pkgname=python-$_modulename
