@@ -1,0 +1,11 @@
+pkgbase = rqlite
+	pkgdesc = rqlite is a lightweight, distributed relational database, which uses SQLite as its storage engine
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = http://www.rqlite.com/
+	arch = x86_64
+	source = https://github.com/rqlite/rqlite/releases/download/v5.0.0/rqlite-v5.0.0-linux-amd64.tar.gz
+	sha256sums = 79eda823c82755977b998f5f9a33b738c32da932e41e08df2c0e500267644f83
+
+pkgname = rqlite
+

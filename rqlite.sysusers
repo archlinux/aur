@@ -1,0 +1,2 @@
+u rqlite - "rqlite distributed database" /run/rqlite /usr/bin/nologin
+g rqlite - -

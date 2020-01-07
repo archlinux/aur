@@ -1,0 +1,2 @@
+d /etc/rqlite 0750 rqlite rqlite
+d /run/rqlite 0750 rqlite rqlite
