@@ -1,6 +1,6 @@
 pkgbase = pluma-python3
 	pkgver = 1.23.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mate-desktop/pluma
 	arch = x86_64
 	license = GNU GENERAL PUBLIC LICENSE Version 2
