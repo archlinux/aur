@@ -1,6 +1,6 @@
 pkgbase = amule-remote-tools
 	pkgdesc = aMule Remote Tools CLI and GUI
-	pkgver = 11004
+	pkgver = 11025
 	pkgrel = 1
 	url = http://www.amule.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = amule-remote-tools
 	depends = geoip
 	depends = boost-libs
 	conflicts = amule
-	source = git://repo.or.cz/amule.git#tag=amule-svn-r11004
+	source = git://repo.or.cz/amule.git#tag=amule-svn-r11025
 	md5sums = SKIP
 
 pkgname = amule-remote-tools

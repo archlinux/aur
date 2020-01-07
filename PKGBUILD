@@ -6,7 +6,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=amule-remote-tools
-pkgver=11004
+pkgver=11025
 pkgrel=1
 pkgdesc="aMule Remote Tools CLI and GUI"
 arch=('x86_64')
