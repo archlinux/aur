@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 
 pkgname=simpletools
-pkgver=2.0v.a94b24b
-_commit=a94b24b
+pkgver=2.0v.67c990f
+_commit=67c990f
 pkgrel=1
 pkgdesc="Handy command line tools for ntuple manipulation and analysis"
 arch=('i686' 'x86_64')
