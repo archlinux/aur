@@ -1,31 +1,29 @@
 # Maintainer: FFY00 <filipe.lains@gmail.com>
+
 pkgname=gr-limesdr-git
-pkgver=r19.3234d26
+pkgver=r79.0a1f587
 pkgrel=1
-pkgdesc="gr-limesdr Plugin for GNURadio"
-arch=('any')
-url="https://github.com/myriadrf/gr-limesdr"
+pkgdesc='gr-limesdr Plugin for GNURadio'
+arch=('x86_64')
+url='https://github.com/myriadrf/gr-limesdr'
 license=('MIT')
-optdepends=(
-  'doxygen: generate documentation'
-  'swig: bindings'
-  'python2: python bindings'
-)
-depends=('boost' 'gnuradio' 'limesuite')
+optdepends=('python: python bindings')
+depends=('boost' 'gnuradio' 'limesuite' 'swig' 'python' 'doxygen' 'graphviz')
 makedepends=('git' 'cmake')
 provides=('gr-limesdr')
 conflicts=('gr-limesdr')
-source=("git+$url")
+source=("git+$url#branch=gr-3.8")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/gr-limesdr
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd gr-limesdr
+
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  mkdir -p "$srcdir"/gr-limesdr/build
-  cd "$srcdir"/gr-limesdr/build
+  mkdir -p gr-limesdr/build
+  cd gr-limesdr/build
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -35,9 +33,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/gr-limesdr/build
+  cd gr-limesdr/build
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm 644 "$srcdir"/gr-limesdr/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
