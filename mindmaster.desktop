@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=MindMaster
-Icon=mindmaster
-Exec=mindmaster
-Comment=Draw mind maps and brainstorming diagrams
-Categories=Office;Graphics;
-Terminal=false
