@@ -1,17 +1,20 @@
 pkgbase = duettools-bin
 	pkgdesc = Optional tools (code examples)
-	pkgver = 1.2.2.1
+	pkgver = 1.2.3.0
 	pkgrel = 1
 	url = https://github.com/chrishamm/DuetSoftwareFramework.git
 	arch = armv7h
 	license = GPL3
-	depends = duetcontrolserver>=1.2.2.1
-	provides = duettools=1.2.2.1
+	depends = duetcontrolserver>=1.2.3.0
+	provides = duettools=1.2.3.0
 	conflicts = duettools
 	options = !strip
 	options = staticlibs
-	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duettools_1.2.2.1_armhf.deb
-	sha512sums = 7acb3b0205bcf6f283e2908a34d1d74d242b9973fd18cac665dda47db97f641c6f418333baf92f0b946532d3512f5161defcf4397e5809380b621962cc49d79c
+	source = https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duettools_1.2.3.0_armhf.deb
+	md5sums = bc6a2cc8ca0e1ba8cfb53026ef335a5b
+	sha1sums = 4a6ed64ef46c9b6f851f3892107ee2af41b4daa7
+	sha256sums = fcfedd24bcb4665c86415d75aca5d005e6e2710036c6999882266650b2d66cb8
+	sha512sums = dd74704f87f622c7c38e36f94039dd7eaf2c8ca7bbb101b274303092e7a662c23ba4f9c8729e6e8c3092f76e1053b54cba5f85955c089c1119805adc9dad1ab0
 
 pkgname = duettools-bin
 
