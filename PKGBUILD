@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="8.0.335.0"
+pkgver="8.0.336.0"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -13,7 +13,7 @@ _x64file="EditorV8.x64.msi"
 _installdir="/usr/lib"
 
 source=($_downloadsource/$_x64file)
-sha256sums=('de9f983e396533f1868be143d245c981fde02a8cd2e7033c5e417874747628c9')
+sha256sums=('5dec8a658fb33f4ec6bf9f20c9f1b5a5c6d9f8e57fedf247d3e1420c4299fc10')
 
 prepare()
 {
@@ -672,8 +672,8 @@ package()
  
  mkdir -p "$pkgdir/usr/bin"
 
-  echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
-  echo "pkgname=\"${pkgname}\"" >> "$pkgdir/usr/bin/$pkgname"
+ echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
+ echo "pkgname=\"${pkgname}\"" >> "$pkgdir/usr/bin/$pkgname"
 
  cat >> "$pkgdir/usr/bin/$pkgname" << 'EOF'
 program="$pkgname/PDF Editor"
