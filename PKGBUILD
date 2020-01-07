@@ -13,9 +13,9 @@ provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz"
-        "compile-tools.patch" "kwProcessXML.patch")
+        "compile-tools.patch")
 sha256sums=('8b08ba5a0f24c2b42507df8379404fe21b1233d58aaa01097fbc82fda20bff0c'
-            'SKIP' 'SKIP')
+            'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -24,9 +24,12 @@ prepare() {
 
   # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
   patch -p1 -i "${srcdir}/compile-tools.patch"
+#   curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/1716.patch | patch -p1
 
-  # run kwProcessXML with the mingw wine wrapper
-  patch -p1 -i "${srcdir}/kwProcessXML.patch"
+  # run exes through the wine wrapper
+  sed -i "s|COMMAND kwProcessXML|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:kwProcessXML>|g" CMake/ParaViewPlugins.cmake
+  sed -i "s|COMMAND \${VTK_WRAP_ClientServer_EXE}|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:vtkWrapClientServer>|g" CMake/vtkWrapClientServer.cmake
+  sed -i "s|COMMAND \${VTK_WRAP_HIERARCHY_EXE}|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:vtkWrapHierarchy>|g" VTK/CMake/vtkWrapHierarchy.cmake
 }
 
 build() {
