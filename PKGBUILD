@@ -1,6 +1,6 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=reprapfirmware-bin
-pkgver=1.2.2.1
+pkgver=1.2.3.0
 pkgrel=1
 pkgdesc="RepRapFirmware Software Bundle"
 arch=('any')
@@ -16,8 +16,12 @@ backup=(
 	'opt/dsf/sd/sys/Duet3Firmware_TOOL1LC.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_TOOL1XD.bin'
 )
+install="${pkgname}.install"
 source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/reprapfirmware_${pkgver}-1_all.deb")
-sha512sums=('4778b9ea01e72ff315a850ce85576576e3ed186c64c6c57d59a2f633269cdcc225b008122e63df667084de7c349a3e88cc5026174f75d6f5e9aa748b19122e6e')
+md5sums=('e8fa7285dcf193ccf42f401de083739e')
+sha1sums=('8c72bae4724aed7b681cd000184bea5404f8d456')
+sha256sums=('3b84763538f4763ff4485122b950a11765939d94006afaf78861d606056840c1')
+sha512sums=('6dbb045cd00290148f2bc4860295cdbf57a5ab34536f4549e7d18c194e86955f0aa8435501acef889c37b9466c8a402741b599e67cfbd1efbdf4d72d30d1cab9')
 
 prepare() {
     tar -xf data.tar.xz

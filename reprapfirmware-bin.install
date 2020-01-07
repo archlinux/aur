@@ -1,0 +1,5 @@
+post_upgrade() {
+	echo
+	echo -e "\tTo update RepRapFirmware run 'sudo DuetControlServer -u'"
+	echo
+}
