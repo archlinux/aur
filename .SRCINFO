@@ -6,7 +6,6 @@ pkgbase = yt-popball-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-base
 	depends = qt5-base
 	provides = yt-popball
 	conflicts = yt-popball
