@@ -2,19 +2,19 @@
 
 pkgname=zmeventnotification-git
 _pkgname=zmeventnotification
-pkgver=v4.6.1.r58.geab8548
-pkgrel=4
+pkgver=v5.4.1.r17.g53f9e83
+pkgrel=1
 pkgdesc='Event Notification Server sits along with ZoneMinder and offers real time notifications, support for push notifications as well as Machine Learning powered recognition + hooks'
 arch=('x86_64')
 url='https://github.com/pliablepixels/zmeventnotification'
 license=('GPL' 'MIT')
 depends=('perl-crypt-mysql' 'perl-config-inifiles' 'perl-crypt-eksblowfish' 'perl-net-websocket-server' 'perl-json' 'perl-lwp-protocol-https'
-         'perl-io-socket-ssl' 'perl-net-mqtt-simple' 'perl-config-inifiles' 'opencv'
+         'perl-io-socket-ssl' 'perl-net-mqtt-simple' 'perl-config-inifiles' 'opencv' 'qt5-base' 'python-requests'
          #hooks
          'geos' 'hdf5' 'python-numpy' 'python-imutils' 'python-pyzm-git' 'python-sqlalchemy' 'python-psutil' 'python-future' 'python-shapely' 'python-mysql-connector'
          'python-scikit-learn' 'python-face_recognition'
 )
-makedepends=('cmake' 'wget' 'git')
+makedepends=('cmake' 'git')
 optdepends=()
 conflicts=()
 backup=('etc/zoneminder/objectconfig.ini' 'etc/zoneminder/secrets.ini' 'etc/zoneminder/zmeventnotification.ini')
@@ -26,10 +26,9 @@ source=("git://github.com/pliablepixels/$_pkgname.git"
         'https://pjreddie.com/media/files/yolov3.weights'
 )
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            '523e4e69e1d015393a1b0a441cef1d9c7659e3eb2d7e15f793f060a21b32f297'
-)
+            '22489ea38575dfa36c67a90048e8759576416a79d32dc11e15d2217777b9a953'
+            '634a1132eb33f8091d60f2c346ababe8b905ae08387037aed883953b7329af84'
+            '523e4e69e1d015393a1b0a441cef1d9c7659e3eb2d7e15f793f060a21b32f297')
 
 pkgver() {
     cd "$_pkgname"
