@@ -1,12 +1,13 @@
 # Maintainer: Shen ZhongLi <szl921818@gmail.com>
 pkgname=mindmaster
 pkgver=7.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 conflicts=("mindmaster-cn")
 options=(!strip)
 pkgdesc="Draw mind maps and brainstorming diagrams in an automatic way"
 license=('Commercial')
+depends=('fcitx-qt5')
 url="https://www.edrawsoft.com/mindmaster/"
 source_x86_64=("https://www.edrawsoft.com/archives/mindmaster-7-amd64.deb")
 sha256sums_x86_64=('47a9ea929f5666eb439cf0cf2ff4f40e736afc1312b5d42440e3fe2a0d961adc')

@@ -1,10 +1,11 @@
 pkgbase = mindmaster
 	pkgdesc = Draw mind maps and brainstorming diagrams in an automatic way
 	pkgver = 7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.edrawsoft.com/mindmaster/
 	arch = x86_64
 	license = Commercial
+	depends = fcitx-qt5
 	conflicts = mindmaster-cn
 	options = !strip
 	source_x86_64 = https://www.edrawsoft.com/archives/mindmaster-7-amd64.deb
