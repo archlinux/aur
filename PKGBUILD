@@ -1,15 +1,16 @@
 # Maintainer: Maciej Suminski <orson@orson.net.pl>
+# Contributors: milk
 # based on qjackctl-svn by robertfoster
 
 pkgname=qjackctl-git
-pkgver=r1095.3b16632
+pkgver=r1253.7b3c624
 pkgrel=1
 pkgdesc="A Qt front-end for the JACK low-latency audio server"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('jack' 'hicolor-icon-theme' 'qt5-x11extras')
 url="https://qjackctl.sourceforge.io/"
-makedepends=('git')
+makedepends=('git' 'qt5-tools')
 provides=('qjackctl')
 conflicts=('qjackctl' 'qjackctl-svn')
 # sf.net is the original repository, but has connection problems
