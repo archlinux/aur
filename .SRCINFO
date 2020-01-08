@@ -1,9 +1,10 @@
 pkgbase = dot-desktop-git
 	pkgdesc = Utility to read FreedDesktop .desktop files
-	pkgver = 1
+	pkgver = r12.ba8cd73
 	pkgrel = 1
 	url = https://github.com/kennylevinsen/dot-desktop
 	arch = x86_64
+	license = GPL3
 	makedepends = rust
 	makedepends = git
 	depends = glibc
