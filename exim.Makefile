@@ -1,5 +1,4 @@
-# $Cambridge: exim/src/src/EDITME,v 1.27 2010/06/12 15:21:25 jetmore Exp $
-
+# $Cambridge: exim/src/src/EDITME,v 4.93 $
 ##################################################
 #          The Exim mail transport agent         #
 ##################################################
@@ -14,11 +13,13 @@
 # Exim distribution directory before running the "make" command.
 
 # Things that depend on the operating system have default settings in
-# OS/Makefile-Default, but these are overridden for some OS by files called
-# called OS/Makefile-<osname>. You can further override these by creating files
-# called Local/Makefile-<osname>, where "<osname>" stands for the name of your
-# operating system - look at the names in the OS directory to see which names
-# are recognized.
+# OS/Makefile-Default, but these are overridden for some OS by files
+# called called OS/Makefile-<osname>. You can further override these by
+# creating files called Local/Makefile-<osname>, and
+# Local/Makefile-<buildname> (where "<osname>" stands for the name of
+# your operating system - look at the names in the OS directory to see
+# which names are recognized, and "<buildname>" is derived from the
+# environment variable "build")
 
 # However, if you are building Exim for a single OS only, you don't need to
 # worry about setting up Local/Makefile-<osname>. Any build-time configuration
@@ -51,6 +52,9 @@
 # they are correctly installed, via their compatibility interfaces. However,
 # Exim can also be configured to use the native calls for Berkeley DB (obsolete
 # versions 1.85, 2.x, 3.x, or the current 4.x version) and also for gdbm.
+
+USE_GDBM=yes
+DBMLIB=-lgdbm
 
 # For some operating systems, a default DBM library (other than ndbm) is
 # selected by a setting in the OS-specific Makefile. Most modern OS now have
@@ -133,14 +137,14 @@ CONFIGURE_FILE=/etc/mail/exim.conf
 # deliveries. (Local deliveries run as various non-root users, typically as the
 # owner of a local mailbox.) Specifying these values as root is not supported.
 
-EXIM_USER=ref:exim
+# EXIM_USER=
 
 # If you specify EXIM_USER as a name, this is looked up at build time, and the
 # uid number is built into the binary. However, you can specify that this
 # lookup is deferred until runtime. In this case, it is the name that is built
 # into the binary. You can do this by a setting of the form:
 
-# EXIM_USER=ref:exim
+EXIM_USER=ref:exim
 
 # In other words, put "ref:" in front of the user name. If you set EXIM_USER
 # like this, any value specified for EXIM_GROUP is also passed "by reference".
@@ -180,6 +184,105 @@ SPOOL_DIRECTORY=/var/spool/exim
 
 
 ###############################################################################
+#                            TLS                                              #
+###############################################################################
+# Exim is built by default to support the SMTP STARTTLS command, which implements
+# Transport Layer Security using SSL (Secure Sockets Layer). This requires you
+# must install the OpenSSL library package or the GnuTLS library. Exim contains
+# no cryptographic code of its own.
+
+# If you are running Exim as a (TLS) server, just building it with TLS support
+# is all you need to do, as tls_advertise_hosts is set to '*' by
+# default. But you are advised to create a suiteable certificate, and tell
+# Exim about it by means of the tls_certificate and tls_privatekey run
+# time options, otherwise Exim will create a self signed certificate on
+# the fly.  If you are running Exim only as a (TLS) client, building it with
+# TLS support is all you need to do.
+#
+# If you are using pkg-config then you should not need to worry where
+# the libraries and headers are installed, as the pkg-config .pc
+# specification should include all -L/-I information necessary.
+# Enabling the USE_*_PC options should be sufficient. If not using
+# pkg-config, then you have to specify the libraries, and you mmight
+# need to specify the locations too.
+
+# Uncomment the following lines if you want
+# to build Exim without any TLS support (either OpenSSL or GnuTLS):
+# DISABLE_TLS=yes
+# Unless you do this, you must define one of USE_OPENSSL or USE_GNUTLS
+# below.
+
+# If you are buliding with TLS, the library configuration must be done:
+
+# Uncomment this if you are using OpenSSL
+# USE_OPENSSL=yes
+# Uncomment one of these settings if you are using OpenSSL; pkg-config vs not
+# and an optional location.
+# USE_OPENSSL_PC=openssl
+# TLS_LIBS=-lssl -lcrypto
+# TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
+
+# Uncomment this if you are using GnuTLS
+USE_GNUTLS=yes
+# Uncomment one of these settings if you are using GnuTLS; pkg-config vs not
+# and an optional location. If you disable SUPPORT_DANE below, you
+# can remove the gnutls-dane references here.  Earlier versions of GnuTLS
+# required libtasn1 and libgrypt also; add if needed.
+# USE_GNUTLS_PC=gnutls gnutls-dane
+TLS_LIBS=-lgnutls -lgnutls-dane
+# TLS_LIBS=-L/usr/local/gnu/lib -lgnutls -ltasn1 -lgcrypt -lgnutls-dane
+
+# If using GnuTLS older than 2.10 and using pkg-config then note that Exim's
+# build process will require libgcrypt-config to exist in your $PATH.  A
+# version that old is likely to become unsupported by Exim in 2017.
+
+# The security fix we provide with the gnutls_allow_auto_pkcs11 option
+# (4.82 PP/09) introduces a compatibility regression.  The symbol is
+# not available if GnuTLS is build without p11-kit (--without-p11-kit
+# configure option).  In this case use AVOID_GNUTLS_PKCS11=yes when
+# building Exim.
+# AVOID_GNUTLS_PKCS11=yes
+
+# If you are running Exim as a server, note that just building it with TLS
+# support is not all you need to do. You also need to set up a suitable
+# certificate, and tell Exim about it by means of the tls_certificate
+# and tls_privatekey run time options. You also need to set tls_advertise_hosts
+# to specify the hosts to which Exim advertises TLS support. On the other hand,
+# if you are running Exim only as a client, building it with TLS support
+# is all you need to do.
+
+# If you are using pkg-config then you should not need to worry where the
+# libraries and headers are installed, as the pkg-config .pc specification
+# should include all -L/-I information necessary.  If not using pkg-config
+# then you might need to specify the locations too.
+
+# Additional libraries and include files are required for both OpenSSL and
+# GnuTLS. The TLS_LIBS settings above assume that the libraries are installed
+# with all your other libraries. If they are in a special directory, you may
+# need something like
+
+# TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
+
+# or
+
+# TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt -lgnutls-dane
+# If not using DANE under GnuTLS we can lose one library
+# TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt
+
+# TLS_LIBS is included only on the command for linking Exim itself, not on any
+# auxiliary programs. If the include files are not in a standard place, you can
+# set TLS_INCLUDE to specify where they are, for example:
+
+# TLS_INCLUDE=-I/usr/local/openssl/include/
+# or
+# TLS_INCLUDE=-I/opt/gnu/include
+
+# You don't need to set TLS_INCLUDE if the relevant directories are already
+# specified in INCLUDE.
+
+
+
+###############################################################################
 #           THESE ARE THINGS YOU PROBABLY WANT TO SPECIFY                     #
 ###############################################################################
 
@@ -193,6 +296,11 @@ SPOOL_DIRECTORY=/var/spool/exim
 # are building to be capable of delivering mail. You almost certainly need at
 # least one type of lookup. You should consider whether you want to build
 # the Exim monitor or not.
+
+# If you need to override how pkg-config finds configuration files for
+# installed software, then you can set that here; wildcards will be expanded.
+
+# PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig : /opt/*/lib/pkgconfig
 
 
 #------------------------------------------------------------------------------
@@ -250,11 +358,19 @@ SUPPORT_MAILDIR=yes
 
 #------------------------------------------------------------------------------
 # See below for dynamic lookup modules.
-# LOOKUP_MODULE_DIR=/usr/lib/exim/lookups/
+#
 # If not using package management but using this anyway, then think about how
 # you perform upgrades and revert them. You should consider the benefit of
 # embedding the Exim version number into LOOKUP_MODULE_DIR, so that you can
 # maintain two concurrent sets of modules.
+#
+# *BEWARE*: ability to modify the files in LOOKUP_MODULE_DIR is equivalent to
+# the ability to modify the Exim binary, which is often setuid root!  The Exim
+# developers only intend this functionality be used by OS software packagers
+# and we suggest that such packagings' integrity checks should be paranoid
+# about the permissions of the directory and the files within.
+
+# LOOKUP_MODULE_DIR=/usr/lib/exim/lookups/
 
 # To build a module dynamically, you'll need to define CFLAGS_DYNAMIC for
 # your platform.  Eg:
@@ -281,6 +397,15 @@ SUPPORT_MAILDIR=yes
 # the dynamic library and not the exim binary will be linked against the
 # library.
 # NOTE: LDAP cannot be built as a module!
+#
+# For Redis you need to have hiredis installed on your system
+# (https://github.com/redis/hiredis).
+# Depending on where it is installed you may have to edit the CFLAGS
+# (often += -I/usr/local/include) and LDFLAGS (-lhiredis) lines.
+
+# If your system has pkg-config then the _INCLUDE/_LIBS setting can be
+# handled for you automatically by also defining the _PC variable to reference
+# the name of the pkg-config package, if such is available.
 
 LOOKUP_DBM=yes
 LOOKUP_LSEARCH=yes
@@ -289,14 +414,18 @@ LOOKUP_DNSDB=yes
 # LOOKUP_CDB=yes
 LOOKUP_DSEARCH=yes
 # LOOKUP_IBASE=yes
+# LOOKUP_JSON=yes
 LOOKUP_LDAP=yes
 # LOOKUP_MYSQL=yes
+# LOOKUP_MYSQL_PC=mariadb
 # LOOKUP_NIS=yes
 # LOOKUP_NISPLUS=yes
 # LOOKUP_ORACLE=yes
 # LOOKUP_PASSWD=yes
 # LOOKUP_PGSQL=yes
-# LOOKUP_SQLITE=yes
+# LOOKUP_REDIS=yes
+LOOKUP_SQLITE=yes
+LOOKUP_SQLITE_PC=sqlite3
 # LOOKUP_WHOSON=yes
 
 # These two settings are obsolete; all three lookups are compiled when
@@ -306,6 +435,9 @@ LOOKUP_LDAP=yes
 # LOOKUP_WILDLSEARCH=yes
 # LOOKUP_NWILDLSEARCH=yes
 
+
+# Some platforms may need this for LOOKUP_NIS:
+# LIBS += -lnsl
 
 #------------------------------------------------------------------------------
 # If you have set LOOKUP_LDAP=yes, you should set LDAP_LIB_TYPE to indicate
@@ -325,17 +457,28 @@ LDAP_LIB_TYPE=OPENLDAP2
 
 
 #------------------------------------------------------------------------------
-# The PCRE library is required for exim.  There is no longer an embedded
+# The PCRE library is required for Exim.  There is no longer an embedded
 # version of the PCRE library included with the source code, instead you
 # must use a system library or build your own copy of PCRE.
 # In either case you must specify the library link info here.  If the
 # PCRE header files are not in the standard search path you must also
 # modify the INCLUDE path (above)
-# The default setting of PCRE_LIBS should work on the vast majority of
-# systems
+#
+# Use PCRE_CONFIG to query the pcre-config command (first found in $PATH)
+# to find the include files and libraries, else use PCRE_LIBS and set INCLUDE
+# too if needed.
 
-PCRE_LIBS=-lpcre
+PCRE_CONFIG=yes
+# PCRE_LIBS=-lpcre
 
+
+#------------------------------------------------------------------------------
+# Comment out the following line to remove DANE support
+# Note: Enabling this unconditionally overrides DISABLE_DNSSEC
+# forces you to have SUPPORT_TLS enabled (the default).  For DANE under
+# GnuTLS we need an additional library.  See TLS_LIBS or USE_GNUTLS_PC
+# below.
+SUPPORT_DANE=yes
 
 #------------------------------------------------------------------------------
 # Additional libraries and include directories may be required for some
@@ -343,21 +486,25 @@ PCRE_LIBS=-lpcre
 # the command for linking Exim itself, not on any auxiliary programs. You
 # don't need to set LOOKUP_INCLUDE if the relevant directories are already
 # specified in INCLUDE. The settings below are just examples; -lpq is for
-# PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite.
+# PostgreSQL, -lgds is for Interbase, -lsqlite3 is for SQLite, -lhiredis
+# is for Redis, -ljansson for JSON.
+#
+# You do not need to use this for any lookup information added via pkg-config.
 
 # LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
 # LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
+LOOKUP_LIBS=-lldap -llber
 
 
 #------------------------------------------------------------------------------
 # Compiling the Exim monitor: If you want to compile the Exim monitor, a
 # program that requires an X11 display, then EXIM_MONITOR should be set to the
-# value "eximon.bin". Comment out this setting to disable compilation of the
+# value "eximon.bin". De-comment this setting to enable compilation of the
 # monitor. The locations of various X11 directories for libraries and include
 # files are defaulted in the OS/Makefile-Default file, but can be overridden in
 # local OS-specific make files.
 
-
+# EXIM_MONITOR=eximon.bin
 
 
 #------------------------------------------------------------------------------
@@ -369,24 +516,28 @@ PCRE_LIBS=-lpcre
 
 WITH_CONTENT_SCAN=yes
 
-# If you want to use the deprecated "demime" condition in the DATA ACL,
-# uncomment the line below. Doing so will also explicitly turn on the
-# WITH_CONTENT_SCAN option. If possible, use the MIME ACL instead of
-# the "demime" condition.
+# If you have content scanning you may wish to only include some of the scanner
+# interfaces.  Uncomment any of these lines to remove that code.
 
-WITH_OLD_DEMIME=yes
+# DISABLE_MAL_FFROTD=yes
+# DISABLE_MAL_FFROT6D=yes
+# DISABLE_MAL_DRWEB=yes
+# DISABLE_MAL_FSECURE=yes
+# DISABLE_MAL_SOPHIE=yes
+# DISABLE_MAL_CLAM=yes
+# DISABLE_MAL_AVAST=yes
+# DISABLE_MAL_SOCK=yes
+# DISABLE_MAL_CMDLINE=yes
 
-# If you're using ClamAV and are backporting fixes to an old version, instead
-# of staying current (which is the more usual approach) then you may need to
-# use an older API which uses a STREAM command, now deprecated, instead of
-# zINSTREAM.  If you need to set this, please let the Exim developers know, as
-# if nobody reports a need for it, we'll remove this option and clean up the
-# code.  zINSTREAM was introduced with ClamAV 0.95.
-#
-# WITH_OLD_CLAMAV_STREAM=yes
+# These scanners are claimed to be no longer existent.
+
+DISABLE_MAL_AVE=yes
+DISABLE_MAL_KAV=yes
+DISABLE_MAL_MKS=yes
+
 
 #------------------------------------------------------------------------------
-# By default Exim includes code to support DKIM (DomainKeys Identified
+# If built with TLS, Exim includes code to support DKIM (DomainKeys Identified
 # Mail, RFC4871) signing and verification.  Verification of signatures is
 # turned on by default.  See the spec for information on conditionally
 # disabling it.  To disable the inclusion of the entire feature, set
@@ -394,19 +545,46 @@ WITH_OLD_DEMIME=yes
 
 # DISABLE_DKIM=yes
 
+#------------------------------------------------------------------------------
+# Uncomment the following line to remove Per-Recipient-Data-Response support.
+
+# DISABLE_PRDR=yes
+
+#------------------------------------------------------------------------------
+# Uncomment the following line to remove OCSP stapling support in TLS,
+# from Exim.  Note it can only be supported when built with
+# GnuTLS 3.1.3 or later, or OpenSSL
+
+# DISABLE_OCSP=yes
+
+#------------------------------------------------------------------------------
+# By default, Exim has support for checking the AD bit in a DNS response, to
+# determine if DNSSEC validation was successful.  If your system libraries
+# do not support that bit, then set DISABLE_DNSSEC to "yes"
+# Note: Enabling SUPPORT_DANE unconditionally overrides this setting.
+
+# DISABLE_DNSSEC=yes
+
+# To disable support for Events set DISABLE_EVENT to "yes"
+
+# DISABLE_EVENT=yes
+
+
+# Uncomment this line to include support for early pipelining, per
+# https://datatracker.ietf.org/doc/draft-harris-early-pipe/
+# SUPPORT_PIPE_CONNECT=yes
+
 
 #------------------------------------------------------------------------------
 # Compiling Exim with experimental features. These are documented in
 # experimental-spec.txt. "Experimental" means that the way these features are
 # implemented may still change. Backward compatibility is not guaranteed.
 
-# Uncomment the following lines to add SPF support. You need to have libspf2
-# installed on your system (www.libspf2.org). Depending on where it is installed
-# you may have to edit the CFLAGS and LDFLAGS lines.
+# Uncomment the following line to add support for talking to dccifd.  This
+# defaults the socket path to /usr/local/dcc/var/dccifd.
+# Doing so will also explicitly turn on the WITH_CONTENT_SCAN option.
 
-# EXPERIMENTAL_SPF=yes
-# CFLAGS  += -I/usr/local/include
-# LDFLAGS += -lspf2
+# EXPERIMENTAL_DCC=yes
 
 # Uncomment the following lines to add SRS (Sender rewriting scheme) support.
 # You need to have libsrs_alt installed on your system (srs.mirtol.com).
@@ -417,6 +595,23 @@ WITH_OLD_DEMIME=yes
 # CFLAGS  += -I/usr/local/include
 # LDFLAGS += -lsrs_alt
 
+# Uncomment the following lines to add SRS (Sender rewriting scheme) support
+# using only native facilities.
+# EXPERIMENTAL_SRS_NATIVE=yes
+
+# Uncomment the following line to add DMARC checking capability, implemented
+# using libopendmarc libraries. You must have SPF and DKIM support enabled also.
+# SUPPORT_DMARC=yes
+# CFLAGS += -I/usr/local/include
+# LDFLAGS += -lopendmarc
+# Uncomment the following if you need to change the default. You can
+# override it at runtime (main config option dmarc_tld_file)
+# DMARC_TLD_FILE=/etc/exim/opendmarc.tlds
+
+# Uncomment the following line to add ARC (Authenticated Received Chain)
+# support.  You must have SPF and DKIM support enabled also.
+# EXPERIMENTAL_ARC=yes
+
 # Uncomment the following lines to add Brightmail AntiSpam support. You need
 # to have the Brightmail client SDK installed. Please check the experimental
 # documentation for implementation details. You need to edit the CFLAGS and
@@ -426,7 +621,21 @@ WITH_OLD_DEMIME=yes
 # CFLAGS  += -I/opt/brightmail/bsdk-6.0/include
 # LDFLAGS += -lxml2_single -lbmiclient_single -L/opt/brightmail/bsdk-6.0/lib
 
+# Uncomment the following to include extra information in fail DSN message (bounces)
+# EXPERIMENTAL_DSN_INFO=yes
 
+# Uncomment the following to add LMDB lookup support
+# You need to have LMDB installed on your system (https://github.com/LMDB/lmdb)
+# Depending on where it is installed you may have to edit the CFLAGS and LDFLAGS lines.
+# EXPERIMENTAL_LMDB=yes
+# CFLAGS += -I/usr/local/include
+# LDFLAGS += -llmdb
+
+# Uncomment the following line to add queuefile transport support
+# EXPERIMENTAL_QUEUEFILE=yes
+
+# Uncomment the following line to include support for TLS Resumption
+# EXPERIMENTAL_TLS_RESUME=yes
 
 ###############################################################################
 #                 THESE ARE THINGS YOU MIGHT WANT TO SPECIFY                  #
@@ -527,7 +736,7 @@ FIXED_NEVER_USERS=root
 # That shim can set macros before .include'ing your main configuration file.
 #
 # As a strictly transient measure to ease migration to 4.73, the
-# WHITELIST_D_MACROS value definies a colon-separated list of macro-names
+# WHITELIST_D_MACROS value defines a colon-separated list of macro-names
 # which are permitted to be overridden from the command-line which will be
 # honoured by the Exim user.  So these are macros that can persist to delivery
 # time.
@@ -555,16 +764,30 @@ FIXED_NEVER_USERS=root
 AUTH_CRAM_MD5=yes
 # AUTH_CYRUS_SASL=yes
 AUTH_DOVECOT=yes
+# AUTH_EXTERNAL=yes
+# AUTH_GSASL=yes
+# AUTH_GSASL_PC=libgsasl
+# AUTH_HEIMDAL_GSSAPI=yes
+# AUTH_HEIMDAL_GSSAPI_PC=heimdal-gssapi
+# AUTH_HEIMDAL_GSSAPI_PC=heimdal-gssapi heimdal-krb5
 AUTH_PLAINTEXT=yes
 AUTH_SPA=yes
+AUTH_TLS=yes
 
+# Heimdal through 1.5 required pkg-config 'heimdal-gssapi'; Heimdal 7.1
+# requires multiple pkg-config files to work with Exim, so the second example
+# above is needed.
 
 #------------------------------------------------------------------------------
 # If you specified AUTH_CYRUS_SASL above, you should ensure that you have the
 # Cyrus SASL library installed before trying to build Exim, and you probably
-# want to uncomment the following line:
+# want to uncomment the first line below.
+# Similarly for GNU SASL, unless pkg-config is used via AUTH_GSASL_PC.
+# Ditto for AUTH_HEIMDAL_GSSAPI(_PC).
 
 # AUTH_LIBS=-lsasl2
+# AUTH_LIBS=-lgsasl
+# AUTH_LIBS=-lgssapi -lheimntlm -lkrb5 -lhx509 -lcom_err -lhcrypto -lasn1 -lwind -lroken -lcrypt
 
 
 #------------------------------------------------------------------------------
@@ -606,6 +829,13 @@ HEADERS_CHARSET="ISO-8859-1"
 #
 # but of course there may need to be other things in CFLAGS and EXTRALIBS_EXIM
 # as well.
+#
+# nb: FreeBSD as of 4.89 defines LIBICONV_PLUG to pick up the system iconv
+# more reliably.  If you explicitly want the libiconv Port then as well
+# as adding -liconv you'll want to unset LIBICONV_PLUG.  If you actually need
+# this, let us know, but for now the Exim Maintainers are assuming that this
+# is uncommon and so you'll need to edit OS/os.h-FreeBSD yourself to remove
+# the define.
 
 
 #------------------------------------------------------------------------------
@@ -647,53 +877,6 @@ HEADERS_CHARSET="ISO-8859-1"
 
 
 #------------------------------------------------------------------------------
-# Exim can be built to support the SMTP STARTTLS command, which implements
-# Transport Layer Security using SSL (Secure Sockets Layer). To do this, you
-# must install the OpenSSL library package or the GnuTLS library. Exim contains
-# no cryptographic code of its own. Uncomment the following lines if you want
-# to build Exim with TLS support. If you don't know what this is all about,
-# leave these settings commented out.
-
-# This setting is required for any TLS support (either OpenSSL or GnuTLS)
-SUPPORT_TLS=yes
-
-# Uncomment this setting if you are using OpenSSL
-#TLS_LIBS=-lssl -lcrypto
-
-# Uncomment these settings if you are using GnuTLS
-USE_GNUTLS=yes
-TLS_LIBS=-lgnutls -ltasn1 -lgcrypt
-
-# If you are running Exim as a server, note that just building it with TLS
-# support is not all you need to do. You also need to set up a suitable
-# certificate, and tell Exim about it by means of the tls_certificate
-# and tls_privatekey run time options. You also need to set tls_advertise_hosts
-# to specify the hosts to which Exim advertises TLS support. On the other hand,
-# if you are running Exim only as a client, building it with TLS support
-# is all you need to do.
-
-# Additional libraries and include files are required for both OpenSSL and
-# GnuTLS. The TLS_LIBS settings above assume that the libraries are installed
-# with all your other libraries. If they are in a special directory, you may
-# need something like
-
-# TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
-# or
-# TLS_LIBS=-L/opt/gnu/lib -lgnutls -ltasn1 -lgcrypt
-
-# TLS_LIBS is included only on the command for linking Exim itself, not on any
-# auxiliary programs. If the include files are not in a standard place, you can
-# set TLS_INCLUDE to specify where they are, for example:
-
-# TLS_INCLUDE=-I/usr/local/openssl/include/
-# or
-# TLS_INCLUDE=-I/opt/gnu/include
-
-# You don't need to set TLS_INCLUDE if the relevant directories are already
-# specified in INCLUDE.
-
-
-#------------------------------------------------------------------------------
 # The default distribution of Exim contains only the plain text form of the
 # documentation. Other forms are available separately. If you want to install
 # the documentation in "info" format, first fetch the Texinfo documentation
@@ -701,7 +884,7 @@ TLS_LIBS=-lgnutls -ltasn1 -lgcrypt
 # with the extension "texinfo" in the doc directory. You may find that the
 # version number of the texinfo files is different to your Exim version number,
 # because the main documentation isn't updated as often as the code. For
-# example, if you have Exim version 4.43, the source tarball upacks into a
+# example, if you have Exim version 4.43, the source tarball unpacks into a
 # directory called exim-4.43, but the texinfo tarball unpacks into exim-4.40.
 # In this case, move the contents of exim-4.40/doc into exim-4.43/doc after you
 # have unpacked them. Then set INFO_DIRECTORY to the location of your info
@@ -771,7 +954,7 @@ EXICYCLOG_MAX=10
 # files. Both the name of the command and the suffix that it adds to files
 # need to be defined here. See also the EXICYCLOG_MAX configuration.
 
-COMPRESS_COMMAND=/bin/gzip
+COMPRESS_COMMAND=/usr/bin/gzip
 COMPRESS_SUFFIX=gz
 
 
@@ -779,8 +962,14 @@ COMPRESS_SUFFIX=gz
 # If the exigrep utility is fed compressed log files, it tries to uncompress
 # them using this command.
 
-ZCAT_COMMAND=/bin/zcat
-
+# Leave it empty to enforce autodetection at runtime:
+# ZCAT_COMMAND=
+#
+# Omit the path if you want to use your system's PATH:
+# ZCAT_COMMAND=zcat
+#
+# Or specify the full pathname:
+ZCAT_COMMAND=/usr/bin/zcat
 
 #------------------------------------------------------------------------------
 # Compiling in support for embedded Perl: If you want to be able to
@@ -812,6 +1001,47 @@ SUPPORT_PAM=yes
 
 # You probably need to add -lpam to EXTRALIBS, and in some releases of
 # GNU/Linux -ldl is also needed.
+EXTRALIBS_EXIM=-lpam
+
+
+#------------------------------------------------------------------------------
+# Proxying.
+#
+# If you may want to use outbound (client-side) proxying, using Socks5,
+# uncomment the line below.
+
+# SUPPORT_SOCKS=yes
+
+# If you may want to use inbound (server-side) proxying, using Proxy Protocol,
+# uncomment the line below.
+
+# SUPPORT_PROXY=yes
+
+
+#------------------------------------------------------------------------------
+# Internationalisation.
+#
+# Uncomment the following to include Internationalisation features.  This is the
+# SMTPUTF8 ESMTP extension, and associated facilities for handling UTF8 domain
+# and localparts, per RFC 3490 (IDNA2003).
+# You need to have the IDN library installed.
+# If you want IDNA2008 mappings per RFCs 5890, 6530 and 6533, you additionally
+# need libidn2 and SUPPORT_I18N_2008.
+
+SUPPORT_I18N=yes
+# LDFLAGS += -lidn
+SUPPORT_I18N_2008=yes
+LDFLAGS += -lidn -lidn2
+
+
+#------------------------------------------------------------------------------
+# Uncomment the following lines to add SPF support. You need to have libspf2
+# installed on your system (www.libspf2.org). Depending on where it is installed
+# you may have to edit the CFLAGS and LDFLAGS lines.
+
+SUPPORT_SPF=yes
+# CFLAGS  += -I/usr/local/include
+LDFLAGS += -lspf2
 
 
 #------------------------------------------------------------------------------
@@ -856,7 +1086,7 @@ SUPPORT_PAM=yes
 # There is no need to install all of SASL on your system. You just need to run
 # ./configure --with-pwcheck, cd to the pwcheck directory within the sources,
 # make and make install. You must create the socket directory (default
-# /var/pwcheck) and chown it to exim's user and group. Once you have installed
+# /var/pwcheck) and chown it to Exim's user and group. Once you have installed
 # pwcheck, you should arrange for it to be started by root at boot time.
 
 # CYRUS_PWCHECK_SOCKET=/var/pwcheck/pwcheck
@@ -864,7 +1094,7 @@ SUPPORT_PAM=yes
 
 #------------------------------------------------------------------------------
 # Support for authentication via the Cyrus SASL saslauthd daemon is available.
-# The Exim support, which is intented for use in conjunction with the SMTP AUTH
+# The Exim support, which is intended for use in conjunction with the SMTP AUTH
 # facilities, is included only when requested by setting the following
 # parameter to the location of the saslauthd daemon's socket.
 #
@@ -872,7 +1102,7 @@ SUPPORT_PAM=yes
 # ./configure --with-saslauthd (and any other options you need, for example, to
 # select or deselect authentication mechanisms), cd to the saslauthd directory
 # within the sources, make and make install. You must create the socket
-# directory (default /var/state/saslauthd) and chown it to exim's user and
+# directory (default /var/state/saslauthd) and chown it to Exim's user and
 # group. Once you have installed saslauthd, you should arrange for it to be
 # started by root at boot time.
 
@@ -949,7 +1179,18 @@ SYSTEM_ALIASES_FILE=/etc/mail/aliases
 # Note that this option adds to the size of the Exim binary, because the
 # dynamic loading library is not otherwise included.
 
+# If libreadline is not in the normal library paths, then because Exim is
+# setuid you'll need to ensure that the correct directory is stamped into
+# the binary so that dlopen will find it.
+# Eg, on macOS/Darwin with a third-party install of libreadline, perhaps:
 
+# EXTRALIBS_EXIM+=-Wl,-rpath,/usr/local/opt/readline/lib
+
+
+#------------------------------------------------------------------------------
+# Uncomment this setting to include IPv6 support.
+
+HAVE_IPV6=yes
 
 ###############################################################################
 #              THINGS YOU ALMOST NEVER NEED TO MENTION                        #
@@ -995,9 +1236,11 @@ SYSTEM_ALIASES_FILE=/etc/mail/aliases
 # files, and thus be influenced by the value of TMPDIR. For this reason, when
 # Exim starts, it checks the environment for TMPDIR, and if it finds it is set,
 # it replaces the value with what is defined here. Commenting this setting
-# suppresses the check altogether.
+# suppresses the check altogether. Older installations call this macro
+# just TMPDIR, but this has side effects at build time. At runtime
+# TMPDIR is checked as before.
 
-TMPDIR="/tmp"
+EXIM_TMPDIR="/tmp"
 
 
 #------------------------------------------------------------------------------
@@ -1029,7 +1272,7 @@ TMPDIR="/tmp"
 # to handle the different cases. If CONFIGURE_FILE_USE_EUID is defined, then
 # Exim will first look for a configuration file whose name is that defined
 # by CONFIGURE_FILE, with the effective uid tacked on the end, separated by
-# a period (for eximple, /usr/exim/configure.0). If this file does not exist,
+# a period (for example, /usr/exim/configure.0). If this file does not exist,
 # then the bare configuration file name is tried. In the case when both
 # CONFIGURE_FILE_USE_EUID and CONFIGURE_FILE_USE_NODE are set, four files
 # are tried: <name>.<euid>.<node>, <name>.<node>, <name>.<euid>, and <name>.
@@ -1166,11 +1409,17 @@ MAX_NAMED_LIST=16
 
 
 #------------------------------------------------------------------------------
+# If you wish to disable valgrind in the binary, define NVALGRIND=1.
+# This should not be needed.
+
+# NVALGRIND=1
+
+#------------------------------------------------------------------------------
 # Identifying the daemon: When an Exim daemon starts up, it writes its pid
 # (process id) to a file so that it can easily be identified. The path of the
 # file can be specified here. Some installations may want something like this:
 
-PID_FILE_PATH=/var/run/exim.pid
+PID_FILE_PATH=/run/exim.pid
 
 # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
 # using the name "exim-daemon.pid".
@@ -1207,6 +1456,26 @@ PID_FILE_PATH=/var/run/exim.pid
 
 
 #------------------------------------------------------------------------------
+# Expanding match_* second parameters: BE CAREFUL IF ENABLING THIS!
+# It has proven too easy in practice for administrators to configure security
+# problems into their Exim install, by treating match_domain{}{} and friends
+# as a form of string comparison, where the second string comes from untrusted
+# data. Because these options take lists, which can include lookup;LOOKUPDATA
+# style elements, a foe can then cause Exim to, eg, execute an arbitrary MySQL
+# query, dropping tables.
+# From Exim 4.77 onwards, the second parameter is not expanded; it can still
+# be a list literal, or a macro, or a named list reference.  There is also
+# the new expansion condition "inlisti" which does expand the second parameter,
+# but treats it as a list of strings; also, there's "eqi" which is probably
+# what is normally wanted.
+#
+# If you really need to have the old behaviour, know what you are doing and
+# will not complain if your system is compromised as a result of doing so, then
+# uncomment this option to get the old behaviour back.
+
+# EXPAND_LISTMATCH_RHS=yes
+
+#------------------------------------------------------------------------------
 # Disabling the use of fsync(): DO NOT UNCOMMENT THE FOLLOWING LINE unless you
 # really, really, really know what you are doing. And even then, think again.
 # You should never uncomment this when compiling a binary for distribution.
@@ -1221,10 +1490,8 @@ PID_FILE_PATH=/var/run/exim.pid
 
 # ENABLE_DISABLE_FSYNC=yes
 
-HAVE_IPV6=YES
-LOOKUP_LIBS=-lldap -llber
-EXTRALIBS_EXIM=-lpam
+#------------------------------------------------------------------------------
+# For development, add this to include code to time various stages and report.
+# CFLAGS += -DMEASURE_TIMING
 
-USE_GDBM=yes
-DBMLIB=-lgdbm
 # End of EDITME for Exim 4.
