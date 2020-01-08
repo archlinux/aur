@@ -5,7 +5,7 @@
 
 pkgname=thunderbird-beta-bin-de
 _pkgname=thunderbird-beta
-pkgver=69.0b3
+pkgver=72.0b3
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -19,13 +19,13 @@ optdepends=('hunspell: Spell checking'
             'libcanberra: Sound support')
 provides=("thunderbird=$pkgver")
 conflicts=('thunderbird-beta')
-#install=$pkgname.install
+install=$pkgname.install
 source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/de/thunderbird-$pkgver.tar.bz2"
         'thunderbird-beta-bin-de.desktop'
         'vendor.js')
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha512sums=('0dc83f7c87f27b729cbaf5c43eceb6821082a08b3adc18e95e9fd806c44d208f4df11bfef35c34d01a40b0b680c25dbf02e65a045261583871201788db723ef8'
+            'e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a'
+            'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
 # RC
 if [[ $_build = ? ]]; then
   source[0]="thunderbird-$pkgver.tar.bz2::https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-x86_64/de/thunderbird-$_major.tar.bz2"

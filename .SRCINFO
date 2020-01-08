@@ -1,8 +1,9 @@
 pkgbase = thunderbird-beta-bin-de
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version, german
-	pkgver = 69.0b3
+	pkgver = 72.0b3
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
+	install = thunderbird-beta-bin-de.install
 	arch = x86_64
 	license = GPL
 	license = LGPL
@@ -14,14 +15,14 @@ pkgbase = thunderbird-beta-bin-de
 	optdepends = hunspell: Spell checking
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
-	provides = thunderbird=69.0b3
+	provides = thunderbird=72.0b3
 	conflicts = thunderbird-beta
-	source = https://ftp.mozilla.org/pub/thunderbird/releases/69.0b3/linux-x86_64/de/thunderbird-69.0b3.tar.bz2
+	source = https://ftp.mozilla.org/pub/thunderbird/releases/72.0b3/linux-x86_64/de/thunderbird-72.0b3.tar.bz2
 	source = thunderbird-beta-bin-de.desktop
 	source = vendor.js
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha512sums = 0dc83f7c87f27b729cbaf5c43eceb6821082a08b3adc18e95e9fd806c44d208f4df11bfef35c34d01a40b0b680c25dbf02e65a045261583871201788db723ef8
+	sha512sums = e5649ddee3ca9cfdcf56652e9c8e6160d52c69d1439f9135b0c0d436ce61a25f17758afc0dd6cac3434c26234c584828eb07fdf9604797f7dd3f617ec194b79a
+	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
 
 pkgname = thunderbird-beta-bin-de
 
