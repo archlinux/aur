@@ -1,14 +1,14 @@
 # Maintainer: nb5p
 pkgname=vimcdoc
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Vim chinese documentation"
 arch=(any)
 depends=('vim')
 url="http://vimcdoc.sf.net"
 license=('GPL')
-source=("https://jaist.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-2.2.0.tar.gz")
-md5sums=('f59422e918e142cfa058f8fe8c9ac683')
+source=("https://nchc.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-2.3.0.tar.gz")
+md5sums=('fdc9e9d35a1355423bcc5f75f7f5463c')
 package() {
 	cd "${pkgname}-${pkgver}"
 	local _dir="${pkgdir}/usr/share/vim/vimfiles"
