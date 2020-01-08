@@ -1,11 +1,10 @@
 pkgbase = python-mediafire
 	pkgdesc = Python MediaFire client library
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MediaFire/mediafire-python-open-sdk
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/m/mediafire/mediafire-0.6.0.tar.gz
 	sha256sums = d9182785856b858b8d7896740f0dbb012856a81e00132812bffbf0e344884d6b
 

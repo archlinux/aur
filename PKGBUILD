@@ -4,10 +4,9 @@ pkgbase=python-mediafire
 pkgname=('python-mediafire' 'python2-mediafire')
 _module=mediafire
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python MediaFire client library"
 url="https://github.com/MediaFire/mediafire-python-open-sdk"
-makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
@@ -19,6 +18,7 @@ prepare() {
 }
 
 build_python-mediafire() {
+  makedepends=('python-setuptools')
   cd "${srcdir}/${_module}-${pkgver}"
   python setup.py build
 }
@@ -31,6 +31,7 @@ package_python-mediafire() {
 }
 
 build_python2-mediafire() {
+  makedepends=('python2-setuptools')
   cd "${srcdir}/${_module}-${pkgver}"
   python2 setup.py build
 }
