@@ -41,7 +41,7 @@ index 0000000..67ce186
 +#!/bin/bash
 +
 +build() {
-+             add_module `bcachefs`
++             add_module "bcachefs"
 +             add_binary "bcachefs"
 +
 +             add_runscript

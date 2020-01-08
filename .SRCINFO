@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = BCacheFS filesystem utilities
-	pkgver = 538
+	pkgver = 551
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs-tools
 	install = bcachefs-tools-git.install
@@ -25,7 +25,7 @@ pkgbase = bcachefs-tools-git
 	source = git+https://github.com/koverstreet/bcachefs-tools
 	source = add-mkinitcpio-hook-for-Arch.patch
 	sha256sums = SKIP
-	sha256sums = b4d6bc483b417ceaa5c628c686a613e568e64a699288da0388d508a481c710e9
+	sha256sums = 659483e9d5106826f6f6a894de189d895635c6e8790d216a8635c7cc59e27efc
 
 pkgname = bcachefs-tools-git
 
