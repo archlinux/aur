@@ -40,8 +40,8 @@ package() {
 	# install syscoin-daemon
 	msg2 'Installing syscoin-daemon...'
 	install -Dm755 "$srcdir/$_gitname/src/syscoind" "$pkgdir/usr/bin/syscoind"
-	install -Dm755 "$srcdir/$_gitname/src/sysrelayer.nod" "$pkgdir/usr/bin/sysrelayer.nod"
-	install -Dm755 "$srcdir/$_gitname/src/sysgeth.nod" "$pkgdir/usr/bin/sysgeth.nod"
+	install -Dm755 "$srcdir/$_gitname/src/bin/linux/sysrelayer.nod" "$pkgdir/usr/bin/sysrelayer.nod"
+	install -Dm755 "$srcdir/$_gitname/src/bin/linux/sysgeth.nod" "$pkgdir/usr/bin/sysgeth.nod"
 #	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/syscoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/syscoin.conf"
 #	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/syscoin-cli.1" "$pkgdir/usr/share/man/man1/syscoin-cli.1"
 #	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/syscoin-qt.1" "$pkgdir/usr/share/man/man1/syscoin-qt.1"
