@@ -1,0 +1,20 @@
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 11e696e..61a7531 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -63,15 +63,6 @@ $(builddir)/vice.txt:	.vice-texi-charset-ok
+ 	$(srcdir)/fixdox.sh txt <vicetmp.txt | LC_ALL=C sed 's/ \+$$//' >$(builddir)/vice.txt
+ 	rm -f vicetmp.txt
+ 
+-if BUILD_PDF
+-VICE_DOX += vice.pdf
+-$(builddir)/vice.pdf:	.vice-texi-charset-ok
+-	LC_ALL=C sed 's/@heading NO WARRANTY/@center NO WARRANTY/g' <$(srcdir)/vice.texi >vicepdf.texi
+-	LC_ALL=C $(TEXI2DVI) -I $(srcdir) -q --clean --pdf "--texinfo=@set $(PLATFORM_DOX_FLAGS) " -o $(builddir)/vice.pdf vicepdf.texi
+-	rm -f vicepdf.texi
+-endif
+-
+-
+ # This doesn't appear to delete vice.pdf, vice.chm, vice.guide etc added
+ # in this Makefile with VICE_DOX += FOO, perhaps just some ordinary `rm -f`
+ # would do better? -- Compyx

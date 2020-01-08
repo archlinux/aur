@@ -8,13 +8,13 @@
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://vice-emu.sourceforge.net'
-depends=('libpulse' 'giflib' 'vte3' 'gtk3' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils')
-makedepends=('dos2unix' 'xorg-bdftopcf' 'xorg-mkfontdir' 'autoconf' 'xa')
+depends=('libpulse' 'giflib' 'vte3' 'gtk3' 'libpcap' 'mpg123' 'libieee1284' 'portaudio' 'pciutils' 'glew')
+makedepends=('dos2unix' 'xorg-bdftopcf' 'xorg-mkfontdir' 'autoconf' 'xa' 'python')
 options=('!makeflags')
 install=$pkgname.install
 provides=("$_pkgname")
@@ -30,6 +30,7 @@ source=(
   "$_pkgname.desktop"
   'no-fc-cache-no-lib64.patch'
   'zlib-1.2.7.patch'
+  'notexi.patch'
 )
 
 sha512sums=(
@@ -38,6 +39,7 @@ sha512sums=(
   'f26a9fe5e429268f0ab7d571db48f9c126ea289563758c7442989bb07cef026bf2a5a1e7b7a882362a70407930797de6dfd9af4db8297d6afa5bed5d79fe6164'
   '6cc0e6f029750ead84f292dce9879f11b243266cf3787f96347cdd2d1193a74992c3dd63171af79d7f376d983e11a5dfc9327f27e2190de70f008ab81d4d93bb'
   'b996c044ff6a7b43a1b6ba2fd3f57ce68d4474902764e8b3f5d9c64e3730e6120e16d6d86b6c5e27513fac7b5d9449afcaf67e4c3014f2f535627648550f56aa'
+  '33e544bbce2e559e71e9e8624af2a7ac00bd3578cc8f7aa5ef167f3fe5f6b000dd97306e85d49a8601f88bc1afa427f2143fcb0f339ced223b35f7468ac09e16'
 )
 
 prepare() {
@@ -45,6 +47,7 @@ prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../no-fc-cache-no-lib64.patch
   patch -Np1 -i ../zlib-1.2.7.patch
+  patch -Np1 -i ../notexi.patch
 
   # Convert MS-DOS linebreaks to Unix style ones
   printf '%s ' 'Converting MS-DOS format linebreaks to Unix format...'
