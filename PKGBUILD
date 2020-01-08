@@ -1,55 +1,39 @@
-# Maintainer: lily wilson <lily@lily.ml>
+# Maintainer: Felix Golatofski <contact@xdfr.de>
 
 _pkgname=openssl
 pkgname=$_pkgname-pre
-_ver=1.1.0e
+_ver=1.1.1d
 # use a pacman compatible version scheme
-pkgver=${_ver/-/.}
-#pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-#pkgver=$_ver
+pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
-pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security, including alpha and beta versions'
-arch=('i686' 'x86_64')
+pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+arch=('x86_64')
 url='https://www.openssl.org'
 license=('custom:BSD')
-depends=('zlib' 'perl' 'openssl102')
+depends=('perl')
 optdepends=('ca-certificates')
-options=('!makeflags')
 backup=('etc/ssl/openssl.cnf')
-source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"
-        "https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz.asc"
-        'no-rpath.patch'
+source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-md5sums=('51c42d152122e474754aea96f66928c6'
-         'SKIP'
-         'dc78d3d06baffc16217519242ce92478'
-         '381ecca640ea989c8deb57e8a2505c8c')
-validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491' '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
+sha256sums=('1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2'
+            'SKIP'
+            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
+validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
+              '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
 
 prepare() {
-	cd $srcdir/$_pkgname-$_ver
+	cd "$srcdir/$_pkgname-$_ver"
 
-	# remove rpath: http://bugs.archlinux.org/task/14367
-	#patch -p0 -i $srcdir/no-rpath.patch
 	# set ca dir to /etc/ssl by default
-	patch -p0 -i $srcdir/ca-dir.patch
+	patch -p0 -i "$srcdir/ca-dir.patch"
 }
 
 build() {
-	cd $srcdir/$_pkgname-$_ver
-
-	if [ "${CARCH}" == 'x86_64' ]; then
-		openssltarget='linux-x86_64'
-		optflags='enable-ec_nistp_64_gcc_128'
-	elif [ "${CARCH}" == 'i686' ]; then
-		openssltarget='linux-elf'
-		optflags=''
-	fi
+	cd "$srcdir/$_pkgname-$_ver"
 
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
-		shared zlib ${optflags} \
-		"${openssltarget}" \
+		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
 		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
 
 	make depend
@@ -57,20 +41,16 @@ build() {
 }
 
 check() {
-	cd $srcdir/$_pkgname-$_ver
-
-	# make test now fails because CA.sh is gone and the patch
-	# changes CA.pl.in, but not CA.pl. Will try to fix later.
-
+	cd "$srcdir/$_pkgname-$_ver"
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
-	#patch -p0 -R -i $srcdir/ca-dir.patch
-	#make test
-	#patch -p0 -i $srcdir/ca-dir.patch
+	patch -p0 -R -i "$srcdir/ca-dir.patch"
+	make test
+	patch -p0 -i "$srcdir/ca-dir.patch"
 }
 
 package() {
-	cd $srcdir/$_pkgname-$_ver
-	make DESTDIR=$pkgdir MANDIR=$pkgdir/usr/share/man MANSUFFIX=ssl install
+	cd "$srcdir/$_pkgname-$_ver"
+	make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install_sw install_ssldirs install_man_docs
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
