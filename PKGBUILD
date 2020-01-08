@@ -2,19 +2,19 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=lazygit-git
-pkgver=0.11.2.r0.3dd1daac
+pkgver=0.11.3.r55.e0015a52
 pkgrel=1
 pkgdesc='A simple terminal UI for git commands'
 arch=('x86_64')
 _repo_prefix='github.com/jesseduffield'
 _repo_name="${pkgname%-git}"
 url="https://${_repo_prefix}/${_repo_name}"
+source=("${_repo_name}::git+https://${_repo_prefix}/${_repo_name}")
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go-pie')
 conflicts=('lazygit')
 provides=('lazygit')
-source=("${_repo_name}::git+https://${_repo_prefix}/${_repo_name}")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -41,7 +41,7 @@ build () {
   cd "${srcdir}/src/${_repo_prefix}/${_repo_name}"
   export GOPATH="${srcdir}"
   export PATH="${PATH}:${GOPATH}/bin"
-  go build -x -i -v -ldflags "-X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" -o "${_repo_name}.bin"
+  go build -x -i -v -ldflags "-extldflags '${LDFLAGS}' -X main.commit=$(git rev-parse --short HEAD) -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(git describe --always --tags --abbrev=0).$(git rev-parse --short HEAD)" -o "${_repo_name}.bin"
 }
 
 package () {
