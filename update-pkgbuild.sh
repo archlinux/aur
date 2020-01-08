@@ -14,7 +14,7 @@ sed -i "/_commit=/c\\_commit=${COMMIT}" PKGBUILD
 sed -i "/pkgver=/c\pkgver=${VERSION}" PKGBUILD
 
 updpkgsums
-makepkg -s
+makepkg -si --noconfirm
 makepkg --printsrcinfo > .SRCINFO
 git add . || true
 git commit -m "Update to ${VERSION}" || true
