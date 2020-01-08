@@ -1,0 +1,16 @@
+pkgbase = nodejs-broken-link-checker
+	pkgdesc = Find broken links, missing images, etc in your HTML.
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/rolodato/gitlab-letsencrypt
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	noextract = broken-link-checker-0.7.8.tgz
+	source = https://registry.npmjs.org/broken-link-checker/-/broken-link-checker-0.7.8.tgz
+	sha512sums = ff31f8fe72cc34a0de0c7e6756e7ff47a5987746239daaf536971d00edbe565c2318acc96bacb8d82d3750efa2981487c1ee8179f4a4562f367c8984d916fbca
+
+pkgname = nodejs-broken-link-checker
+
