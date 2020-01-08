@@ -1,0 +1,16 @@
+USERNAME=turingarena
+HOME=/var/lib/turingarena
+
+post_install() {
+	useradd -s /usr/bin/nologin -k /var/empty -md $HOME $USERNAME
+}
+
+pre_remove() {
+	systemctl stop turingarena.service
+}
+
+post_remove() {
+	groupdel -f turingarena
+	userdel -fr turingarena
+}
+

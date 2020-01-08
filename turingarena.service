@@ -1,0 +1,13 @@
+# Systemd service file for TuringArena
+
+[Unit]
+Description=TuringArena server
+
+[Service]
+EnvironmentFile=/etc/default/turingarena
+Type=simple
+User=turingarena
+ExecStart=/usr/lib/turingarena/turingarena serve
+
+[Install]
+WantedBy=multi-user.target

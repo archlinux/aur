@@ -1,0 +1,29 @@
+pkgbase = turingarena-git
+	pkgdesc = A framework to host programming competitions
+	pkgver = r531.9351add2
+	pkgrel = 1
+	url = https://github.com/turingarena/turingarena
+	install = turingarena-git.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = cargo
+	makedepends = npm
+	depends = task-maker-rust
+	provides = turingarena
+	conflicts = turingarena
+	source = git+https://github.com/turingarena/turingarena.git#master
+	source = turingarena.env
+	source = turingarena-git.install
+	source = turingarena.service
+	source = turingarena.sh
+	sha256sums = SKIP
+	sha256sums = 108a01fdc4676fe774eec62380271201eef3a573b1458c060e41a403105a5f06
+	sha256sums = 0f9415f81557244ef0e31bb5e2dc96f6408742a9986a86baa0b53e79e4b01605
+	sha256sums = 8bd2aa2553adb64dc194fd0668a2038b769fec0609a9ff96bd5c82317f6e112f
+	sha256sums = 32ba92628eeea6cf824f0d344424237d757ecf4183370cf1d1faecc0da6f6353
+
+pkgname = turingarena-git
+
