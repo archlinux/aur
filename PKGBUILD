@@ -1,31 +1,36 @@
-# Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Gavin Lloyd <gavinhungry@gmail.com>
 
-pkgname=acme.sh-git
-pkgver=0.2509.55e862a
+_branch=master
+_pkgname=acme.sh
+pkgname=${_pkgname}-git
+pkgver=2.8.3.r123.gef15e55
 pkgrel=1
-pkgdesc='An ACME Shell script, an acme client alternative to certbot'
-arch=('any')
+pkgdesc='A pure Unix shell script implementing ACME client protocol'
+arch=(any)
 url='https://github.com/Neilpang/acme.sh'
 license=('GPL3')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git#branch=master")
-sha256sums=('SKIP')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("${_pkgname}::git+https://github.com/Neilpang/acme.sh.git#branch=${_branch}")
+sha512sums=('SKIP')
+
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  echo 0.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    cd "$_pkgname"
+
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+    cd "$_pkgname"
 
-  install -dm755 "${pkgdir}/usr/share/acme.sh/deploy"
-  install -dm755 "${pkgdir}/usr/share/acme.sh/dnsapi"
-  install -dm755 "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/usr/share/acme.sh/deploy" "${pkgdir}/usr/share/acme.sh/dnsapi" "${pkgdir}/usr/bin"
 
-  install -m755 acme.sh "${pkgdir}/usr/share/acme.sh"
-  install -m755 deploy/*.sh "${pkgdir}/usr/share/acme.sh/deploy"
-  install -m755 dnsapi/*.sh "${pkgdir}/usr/share/acme.sh/dnsapi"
+    install -Dm755 acme.sh "${pkgdir}/usr/share/acme.sh"
+    install -Dm755 deploy/*.sh "${pkgdir}/usr/share/acme.sh/deploy"
+    install -Dm755 dnsapi/*.sh "${pkgdir}/usr/share/acme.sh/dnsapi"
 
-  ln -s /usr/share/acme.sh/acme.sh "${pkgdir}/usr/bin/acme.sh"
+    ln -s /usr/share/acme.sh/acme.sh "${pkgdir}/usr/bin/acme.sh"
 }
