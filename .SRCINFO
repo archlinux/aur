@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-graph-msgs
+	pkgdesc = ROS - ROS messages for publishing graphs of different data types.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/davetcoleman/graph_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-graph-msgs-0.1.0-0.tar.gz::https://github.com/davetcoleman/graph_msgs-release/archive/release/melodic/graph_msgs/0.1.0-0.tar.gz
+	sha256sums = 90eea30842973033f2e20449457a89b871d1a66249113b2a423da84f45b4ff0a
+
+pkgname = ros-melodic-graph-msgs
+
