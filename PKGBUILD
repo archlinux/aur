@@ -2,7 +2,7 @@
 
 pkgname=syscoin-git
 _gitname=syscoin
-pkgver=v4.1.0
+pkgver=v4.1.1
 pkgrel=1
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
@@ -40,6 +40,8 @@ package() {
 	# install syscoin-daemon
 	msg2 'Installing syscoin-daemon...'
 	install -Dm755 "$srcdir/$_gitname/src/syscoind" "$pkgdir/usr/bin/syscoind"
+	install -Dm755 "$srcdir/$_gitname/src/sysrelayer.nod" "$pkgdir/usr/bin/sysrelayer.nod"
+	install -Dm755 "$srcdir/$_gitname/src/sysgeth.nod" "$pkgdir/usr/bin/sysgeth.nod"
 #	install -Dm644 "$srcdir/$_gitname/contrib/debian/examples/syscoin.conf" "$pkgdir/usr/share/doc/$pkgname/examples/syscoin.conf"
 #	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/syscoin-cli.1" "$pkgdir/usr/share/man/man1/syscoin-cli.1"
 #	install -Dm644 "$srcdir/$_gitname/contrib/debian/manpages/syscoin-qt.1" "$pkgdir/usr/share/man/man1/syscoin-qt.1"
@@ -51,8 +53,12 @@ package() {
 	install -Dm755 "$srcdir/$_gitname/src/syscoin-cli" "$pkgdir/usr/bin/syscoin-cli"
 
 	# install syscoin-tx
-	#msg2 'Installing syscoin-tx...'
-	#install -Dm755 "$srcdir/$_gitname/src/syscoin-tx" "$pkgdir/usr/bin/syscoin-tx"
+	msg2 'Installing syscoin-tx...'
+	install -Dm755 "$srcdir/$_gitname/src/syscoin-tx" "$pkgdir/usr/bin/syscoin-tx"
+
+	# install syscoin-wallet
+	msg2 'Installing syscoin-wallet...'
+	install -Dm755 "$srcdir/$_gitname/src/syscoin-wallet" "$pkgdir/usr/bin/syscoin-wallet"
 
 	# install license
 	install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
