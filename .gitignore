@@ -1,0 +1,5 @@
+*~
+*.log
+quassel-*.tar.bz2
+quassel-*.tar.xz
+quassel-*.tar.zst
