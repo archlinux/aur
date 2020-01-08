@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=274.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
