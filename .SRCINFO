@@ -11,7 +11,7 @@ pkgbase = weather-app
 	depends = qt5-quickcontrols
 	provides = weather-app
 	source = http://esclapion.free.fr/AUR/weather-app.tar.gz
-	md5sums = 1ea9c9717ae82571c3b0e51a2817eb98
+	sha512sums = 82e189f02b95e67343de886a06619bd5ec5018414c0f791b23cd4c67ceca52d01e6eb9c635ed51590c8be8f64ce2601db0279de6039821702a4b2b1d4b7dc96a
 
 pkgname = weather-app
 
