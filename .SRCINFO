@@ -1,0 +1,20 @@
+pkgbase = python-mediafire-git
+	pkgdesc = Python MediaFire client library (git)
+	pkgver = r120.d5f1d7d
+	pkgrel = 1
+	url = https://github.com/MediaFire/mediafire-python-open-sdk
+	arch = any
+	license = BSD
+	source = mediafire::git://github.com/szlaci83/mediafire-python-open-sdk#branch=v1.5_api
+	sha256sums = SKIP
+
+pkgname = python-mediafire-git
+	depends = python
+	depends = python-requests-toolbelt
+	conflicts = python-mediafire
+
+pkgname = python2-mediafire-git
+	depends = python2
+	depends = python2-requests-toolbelt
+	conflicts = python2-mediafire
+
