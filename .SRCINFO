@@ -1,0 +1,28 @@
+pkgbase = ros-melodic-costmap-converter
+	pkgdesc = ROS : converts costmaps
+	pkgver = 0.0.12
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = pkg-config
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-costmap-2d
+	depends = ros-melodic-cv-bridge
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-message-generation
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-std-msgs
+	depends = python-rospkg
+	options = !makeflags
+	source = ros-melodic-costmap-converter::git+https://github.com/rst-tu-dortmund/costmap_converter.git#tag=
+	sha256sums = SKIP
+
+pkgname = ros-melodic-costmap-converter
+
