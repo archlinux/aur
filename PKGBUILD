@@ -10,7 +10,6 @@ depends=('linux>4' 'nasm>=2.11')
 makedepends=(linux-headers)
 provides=(haxm)
 conflicts=(haxm)
-_extramodules=extramodules-ARCH
 source=("$pkgname::git+https://github.com/intel/haxm.git")
 md5sums=('SKIP')
 install='haxm-git.install'
@@ -22,8 +21,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname/platforms/linux"
-  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-  _kdir="/lib/modules/${_kernver}/build"
+  _kernver="$(</usr/src/linux/version)"
+  _kdir="/usr/lib/modules/${_kernver}/build"
   make KVER="${_kernver}" KDIR="${_kdir}" modules
 }
 
