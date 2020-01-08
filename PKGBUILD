@@ -11,7 +11,7 @@ install=${pkgname}.install
 
 depends=('python2' 'net-tools' 'procps-ng' 'xorg-xauth' 'pcsclite'
          'java-environment' 'nspr' 'nss' 'ghostscript' 'smtp-forwarder'
-         'ncurses5-compat-libs' 'pulseaudio' 'xdg-utils')
+         'ncurses5-compat-libs' 'pulseaudio' 'xdg-utils' 'hicolor-icon-theme')
 optdepends=('nfs-utils: Local drive redirection'
             'python2-ldap: LDAP integration tools'
             'apache: Web integration'

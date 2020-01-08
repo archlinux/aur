@@ -20,6 +20,7 @@ pkgbase = thinlinc-server
 	depends = ncurses5-compat-libs
 	depends = pulseaudio
 	depends = xdg-utils
+	depends = hicolor-icon-theme
 	optdepends = nfs-utils: Local drive redirection
 	optdepends = python2-ldap: LDAP integration tools
 	optdepends = apache: Web integration
