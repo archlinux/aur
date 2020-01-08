@@ -1,7 +1,7 @@
 # Maintainer: Maciej Suminski <orson@orson.net.pl>
 
 pkgname=fheroes2enh-git
-pkgver=r305.21f2504
+pkgver=r321.67b8b22
 pkgrel=1
 pkgdesc="Free Heroes 2 is an engine recreation of game Heroes 2 (of Might and Magic) with UI and coding enhancements."
 arch=('i686' 'x86_64')
