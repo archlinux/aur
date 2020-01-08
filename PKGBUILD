@@ -1,7 +1,8 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=wms-git
-pkgver=1.0.0
+_pkgver=1.0.0
+pkgver=1.0.0.b770e05
 pkgrel=1
 pkgdesc="A tool for changing WPS Office language with online languages supports."
 url="https://github.com/timxx/wms"
@@ -11,6 +12,11 @@ depends=('qt5-base' 'desktop-file-utils' 'p7zip' 'polkit' 'wps-office')
 makedepends=('cmake' 'qt5-tools')
 source=("$pkgname::git+https://github.com/timxx/wms.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "${_pkgver}.%s" "$(git describe --always | sed 's/-/./g')"
+}
 
 prepare() {
     mkdir -p "${srcdir}/build"
