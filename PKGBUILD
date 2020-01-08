@@ -2,7 +2,7 @@
 
 pkgbase=python-webhoseio
 pkgname=('python-webhoseio' 'python2-webhoseio')
-pkgver=0.1.5
+pkgver=0.5
 pkgrel=0
 
 pkgdesc="Simple client library for the webhose.io REST API"
@@ -12,34 +12,35 @@ license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 
-source=("https://files.pythonhosted.org/packages/ed/5b/6226f7cdf021ad1faf9967dc58247161233e09aa36ba71a6e4dab75fd7f2/webhose-0.1.5.tar.gz")
-sha256sums=('3d96bda569e7a36da2884ecff03c26a5f3b9267176114ec18aa9f9d3cbddf238')
+_name=${pkgname#python-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('a5ec55b84e46dc02b4f332bbdef84e80c0585042ea22bc8eb5ae6f803773aefe')
 
 prepare() {
-   rm -r webhose-$pkgver/*.egg-info
-   cp -a webhose-$pkgver{,-py2}
+   rm -rf ${_name}-$pkgver/*.egg-info
+   cp -a ${_name}-$pkgver{,-py2}
 }
 
 build() {
-   cd "$srcdir"/webhose-$pkgver
+   cd "$srcdir"/${_name}-$pkgver
    python setup.py build
  
-   cd "$srcdir"/webhose-$pkgver-py2
+   cd "$srcdir"/${_name}-$pkgver-py2
    python2 setup.py build
 }
 
 check() {
-   cd "$srcdir"/webhose-$pkgver
+   cd "$srcdir"/${_name}-$pkgver
    python setup.py test
 
-   cd "$srcdir"/webhose-$pkgver-py2
+   cd "$srcdir"/${_name}-$pkgver-py2
    python2 setup.py test
 }
  
 package_python-webhoseio() {
    depends=('python' 'python-requests')
  
-   cd webhose-$pkgver
+   cd ${_name}-$pkgver
    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.rst
 }
@@ -47,7 +48,7 @@ package_python-webhoseio() {
 package_python2-webhoseio() {
    depends=('python2' 'python2-requests')
  
-   cd webhose-$pkgver-py2
+   cd ${_name}-$pkgver-py2
    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.rst
 }

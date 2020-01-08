@@ -1,14 +1,14 @@
 pkgbase = python-webhoseio
 	pkgdesc = Simple client library for the webhose.io REST API
-	pkgver = 0.1.5
+	pkgver = 0.5
 	pkgrel = 0
 	url = https://github.com/Webhose/webhoseio-python/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/ed/5b/6226f7cdf021ad1faf9967dc58247161233e09aa36ba71a6e4dab75fd7f2/webhose-0.1.5.tar.gz
-	sha256sums = 3d96bda569e7a36da2884ecff03c26a5f3b9267176114ec18aa9f9d3cbddf238
+	source = https://files.pythonhosted.org/packages/source/w/webhoseio/webhoseio-0.5.tar.gz
+	sha256sums = a5ec55b84e46dc02b4f332bbdef84e80c0585042ea22bc8eb5ae6f803773aefe
 
 pkgname = python-webhoseio
 	depends = python
