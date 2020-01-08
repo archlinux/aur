@@ -1,19 +1,18 @@
 pkgbase = phoenix
 	pkgdesc = The BurstCoin desktop wallet
-	pkgver = 1.0.0.beta.11.r3.g624b9f6a
+	pkgver = 1.0.0.beta.12
 	pkgrel = 1
 	url = https://github.com/burst-apps-team/phoenix
 	install = phoenix.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
 	makedepends = angular-cli
-	depends = nodejs>=10
-	source = git+https://github.com/burst-apps-team/phoenix.git
+	depends = nodejs
+	source = https://github.com/burst-apps-team/phoenix/archive/desktop-1.0.0-beta.12.zip
 	source = phoenix.desktop
 	source = electron-builder.json.patch
-	sha256sums = SKIP
+	sha256sums = 5a9b8d0ce1bf5226f9ba3d94bba0b518cc22e536c690a2d8346bb06c6e951196
 	sha256sums = ee7cb123dca7e311bea596df59d59284a9b0b32be6990da3cd89303a800acac0
 	sha256sums = a89ebcaa537d3456ad49c5ab8157fb88d649e2aa3e5791b9217b2d0f95f838de
 
