@@ -2,8 +2,8 @@
 
 pkgname=hubrelease
 pkgver=0.1.4
-pkgrel=0
-pkgdesc="Automatically create GitHub releases"
+pkgrel=1
+pkgdesc="Create GitHub releases from the command line"
 arch=('any')
 url="https://github.com/MarkusGordathian/hubrelease"
 license=('GPL3')

@@ -1,7 +1,7 @@
 pkgbase = hubrelease
-	pkgdesc = Automatically create GitHub releases
+	pkgdesc = Create GitHub releases from the command line
 	pkgver = 0.1.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/MarkusGordathian/hubrelease
 	arch = any
 	license = GPL3
