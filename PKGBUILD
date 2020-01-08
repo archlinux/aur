@@ -3,12 +3,12 @@
 
 pkgname=losslesscut
 pkgver=2.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"
 arch=('x86_64')
 url="https://github.com/mifi/lossless-cut"
 license=('MIT')
-depends=('ffmpeg' 'gtk2' 'nss' 'gconf')
+depends=('ffmpeg' 'gtk2' 'nss')
 makedepends=('asar')
 source_x86_64=(losslesscut_${pkgver}.zip::"https://github.com/mifi/lossless-cut/releases/download/v2.6.2/lossless-cut-2.6.2.tar.bz2" "losslesscut.desktop")
 

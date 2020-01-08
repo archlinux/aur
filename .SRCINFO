@@ -1,7 +1,7 @@
 pkgbase = losslesscut
 	pkgdesc = Crossplatform GUI tool for lossless trimming/cutting of video/audio files
 	pkgver = 2.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mifi/lossless-cut
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = losslesscut
 	depends = ffmpeg
 	depends = gtk2
 	depends = nss
-	depends = gconf
 	source_x86_64 = losslesscut_2.6.2.zip::https://github.com/mifi/lossless-cut/releases/download/v2.6.2/lossless-cut-2.6.2.tar.bz2
 	source_x86_64 = losslesscut.desktop
 	md5sums_x86_64 = bd109224c3eee4a815509b592c10957f
