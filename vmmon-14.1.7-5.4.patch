@@ -1,0 +1,349 @@
+diff --git a/Makefile b/Makefile
+index ccdd295..b4b71fb 100644
+--- vmmon-only/Makefile
++++ vmmon-only/Makefile
+@@ -107,7 +107,7 @@ prebuild:: ;
+ postbuild:: ;
+ 
+ $(DRIVER_KO): prebuild
+-	$(MAKE) -C $(BUILD_DIR) SUBDIRS=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
++	$(MAKE) -C $(BUILD_DIR) M=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
+ 	  MODULEBUILDDIR=$(MODULEBUILDDIR) modules
+ 	$(MAKE) -C $$PWD SRCROOT=$$PWD/$(SRCROOT) \
+ 	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
+diff --git a/Makefile.kernel b/Makefile.kernel
+index 385068d..a2e5911 100644
+--- vmmon-only/Makefile.kernel
++++ vmmon-only/Makefile.kernel
+@@ -31,7 +31,7 @@ $(DRIVER)-y := $(subst $(SRCROOT)/, , $(patsubst %.c, %.o, \
+ 		$(SRCROOT)/bootstrap/*.c)))
+ 
+ clean:
+-	rm -rf $(wildcard $(DRIVER).mod.c $(DRIVER).ko .tmp_versions \
++	rm -rf $(wildcard $(DRIVER).mod.c $(DRIVER).ko .tmp_versions .cache.mk \
+ 		Module.symvers Modules.symvers Module.markers modules.order \
+ 		$(foreach dir,linux/ common/ vmcore/ bootstrap/ \
+ 		./,$(addprefix $(dir),.*.cmd .*.o.flags *.o)))
+diff --git a/common/task.c b/common/task.c
+index 98cc74a..400ebfe 100644
+--- vmmon-only/common/task.c
++++ vmmon-only/common/task.c
+@@ -2203,12 +2203,23 @@ TaskSwitchToMonitor(VMCrossPage *crosspage)
+    {
+       uint64 raxGetsWiped, rcxGetsWiped;
+ 
++#ifdef CALL_NOSPEC
++      __asm__ __volatile__(CALL_NOSPEC
++                           : "=a" (raxGetsWiped),
++                             "=c" (rcxGetsWiped)
++                           : "0" (codePtr),
++                             "1" (crosspage),
++                             THUNK_TARGET(codePtr)
++                           : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#else
+       __asm__ __volatile__("call *%%rax"
+                            : "=a" (raxGetsWiped),
+                              "=c" (rcxGetsWiped)
+                            : "0" (codePtr),
+                              "1" (crosspage)
+                            : "rdx", "r8", "r9", "r10", "r11", "cc", "memory");
++#endif
++
+    }
+ #elif defined(_MSC_VER)
+    /*
+diff --git a/include/compat_poll.h b/include/compat_poll.h
+new file mode 100644
+index 0000000..562cdb6
+--- /dev/null
++++ vmmon-only/include/compat_poll.h
+@@ -0,0 +1,30 @@
++#ifndef __COMPAT_POLL_H__
++#define __COMPAT_POLL_H__
++
++#include <linux/poll.h>
++
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 18, 0))
++
++#ifndef __poll_t
++typedef unsigned int __poll_t;
++#endif
++
++static inline __poll_t compat_vfs_poll(struct file *file,
++				       struct poll_table_struct *pt)
++{
++	if (unlikely(!file->f_op->poll))
++		return DEFAULT_POLLMASK;
++	return file->f_op->poll(file, pt);
++}
++
++#else
++
++static inline __poll_t compat_vfs_poll(struct file *file,
++				       struct poll_table_struct *pt)
++{
++	return vfs_poll(file, pt);
++}
++
++#endif
++
++#endif /* __COMPAT_POLL_H__ */
+diff --git a/include/hashFunc.h b/include/hashFunc.h
+index fec7261..eb0d4eb 100644
+--- vmmon-only/include/hashFunc.h
++++ vmmon-only/include/hashFunc.h
+@@ -251,6 +251,7 @@ static INLINE ub8 hash2(register const ub8 *k, /* the key */
+   {
+     /* c is reserved for the length */
+   case  2: b+=k[1];
++	   /* fall through */
+   case  1: a+=k[0];
+     /* case 0: nothing left to add */
+   }
+diff --git a/include/vm_assert.h b/include/vm_assert.h
+index 8cdbc93..b869def 100644
+--- vmmon-only/include/vm_assert.h
++++ vmmon-only/include/vm_assert.h
+@@ -67,6 +67,7 @@ extern "C" {
+ #if defined (VMKPANIC) 
+ #include "vmk_assert.h"
+ #else /* !VMKPANIC */
++#include <linux/kernel.h>
+ #define _ASSERT_PANIC(name) \
+            Panic(_##name##Fmt "\n", __FILE__, __LINE__)
+ #define _ASSERT_PANIC_BUG(bug, name) \
+@@ -107,7 +108,7 @@ NORETURN void Panic_NoSave(const char *fmt, ...) PRINTF_DECL(1, 2);
+ } while(0)
+ 
+ #else
+-NORETURN void Panic(const char *fmt, ...) PRINTF_DECL(1, 2);
++#define Panic panic
+ #endif
+ 
+ void LogThrottled(uint32 *count, const char *fmt, ...) PRINTF_DECL(2, 3);
+diff --git a/include/x86_basic_defs.h b/include/x86_basic_defs.h
+index abfb0b8..8c7566f 100644
+--- vmmon-only/include/x86_basic_defs.h
++++ vmmon-only/include/x86_basic_defs.h
+@@ -35,6 +35,8 @@
+ #define INCLUDE_ALLOW_VMCORE
+ #include "includeCheck.h"
+ 
++#include <asm/processor-flags.h>
++
+ #define X86_MAX_INSTR_LEN  15   /* Max byte length of an x86 instruction. */
+ 
+ #define NUM_IDT_VECTORS 256
+@@ -75,7 +77,9 @@
+ #define CR3_PDB_MASK   0xfffff000
+ #define CR3_IGNORE     0xFFF
+ #define PAE_CR3_IGNORE 0x1F
++#ifndef CR3_PCID_MASK
+ #define CR3_PCID_MASK  0xFFF
++#endif
+ #define CR3_NO_FLUSH   (1ULL << 63)
+ 
+ #define CR4_VME        0x00000001
+diff --git a/include/x86msr.h b/include/x86msr.h
+index 6e11bb6..cf9a976 100644
+--- vmmon-only/include/x86msr.h
++++ vmmon-only/include/x86msr.h
+@@ -24,6 +24,7 @@
+ 
+ #ifndef _X86MSR_H_
+ #define _X86MSR_H_
++#include <asm/msr-index.h>
+ #define INCLUDE_ALLOW_USERLEVEL
+ #define INCLUDE_ALLOW_VMX
+ 
+@@ -126,7 +127,9 @@ MSRQuery;
+ #define MSR_SPEC_CTRL_STIBP                       (1UL << 1)
+ #define MSR_PRED_CMD_IBPB                         (1UL << 0)
+ 
++#ifndef MSR_MISC_FEATURES_ENABLES
+ #define MSR_MISC_FEATURES_ENABLES            0x140
++#endif
+ 
+ /* Intel Core Architecture and later: use only architected counters. */
+ #define IA32_MSR_PERF_CAPABILITIES                0x345
+@@ -450,7 +453,9 @@ typedef enum {
+ #define MSR_K7_HWCR_SSEDIS         0x00008000ULL // Disable SSE bit
+ #define MSR_K7_HWCR_MONMWAITUSEREN 0x00000400ULL // Enable MONITOR/MWAIT CPL>0
+ #define MSR_K7_HWCR_TLBFFDIS       0x00000040ULL // Disable TLB Flush Filter
++#ifndef MSR_K7_HWCR_SMMLOCK
+ #define MSR_K7_HWCR_SMMLOCK        0x00000001ULL // Lock SMM environment
++#endif
+ 
+ #ifndef MSR_K8_SYSCFG
+ #define MSR_K8_SYSCFG        0xc0010010
+@@ -628,7 +633,11 @@ typedef enum {
+ /*
+  * MISC_FEATURES_ENABLES bits
+  */
++#ifdef MSR_MISC_FEATURES_ENABLES_CPUID_FAULT
++#define MSR_MISC_FEATURES_ENABLES_CPUID_FAULTING MSR_MISC_FEATURES_ENABLES_CPUID_FAULT
++#else
+ #define MSR_MISC_FEATURES_ENABLES_CPUID_FAULTING 1
++#endif
+ 
+ 
+ 
+diff --git a/linux/driver.c b/linux/driver.c
+index 1905aa4..f2f8322 100644
+--- vmmon-only/linux/driver.c
++++ vmmon-only/linux/driver.c
+@@ -73,6 +73,9 @@ static Bool LinuxDriverCheckPadding(void);
+ 
+ struct VMXLinuxState linuxState;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 17, 0)
++typedef int vm_fault_t;
++#endif
+ 
+ /*
+  *----------------------------------------------------------------------
+@@ -97,9 +100,9 @@ long LinuxDriver_Ioctl(struct file *filp, u_int iocmd,
+ 
+ static int LinuxDriver_Close(struct inode *inode, struct file *filp);
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
+-static int LinuxDriverFault(struct vm_fault *fault);
++static vm_fault_t LinuxDriverFault(struct vm_fault *fault);
+ #else
+-static int LinuxDriverFault(struct vm_area_struct *vma, struct vm_fault *fault);
++static vm_fault_t LinuxDriverFault(struct vm_area_struct *vma, struct vm_fault *fault);
+ #endif
+ static int LinuxDriverMmap(struct file *filp, struct vm_area_struct *vma);
+ 
+@@ -594,7 +597,7 @@ LinuxDriver_Close(struct inode *inode, // IN
+  *-----------------------------------------------------------------------------
+  */
+ 
+-static int
++static vm_fault_t
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 11, 0)
+ LinuxDriverFault(struct vm_fault *fault)     //IN/OUT
+ #else
+@@ -981,7 +984,7 @@ LinuxDriverReadTSC(void *data,   // OUT: TSC values
+  *-----------------------------------------------------------------------------
+  */
+ 
+-__attribute__((always_inline)) static Bool
++__always_inline static Bool
+ LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
+ {
+    TSCDelta tscDelta;
+diff --git a/linux/hostif.c b/linux/hostif.c
+index b793539..80a6c2a 100644
+--- vmmon-only/linux/hostif.c
++++ vmmon-only/linux/hostif.c
+@@ -74,6 +74,7 @@
+ 
+ #include "pgtbl.h"
+ #include "versioned_atomic.h"
++#include "compat_poll.h"
+ 
+ #if !defined(CONFIG_HIGH_RES_TIMERS)
+ #error CONFIG_HIGH_RES_TIMERS required for acceptable performance
+@@ -180,6 +181,32 @@ static struct {
+ uint8 monitorIPIVector;
+ uint8 hvIPIVector;
+ 
++static unsigned long compat_totalram_pages(void)
++{
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
++	return totalram_pages;
++#else
++	return totalram_pages();
++#endif
++}
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
++static void do_gettimeofday(struct timeval *tv)
++{
++	struct timespec64 now;
++
++	ktime_get_real_ts64(&now);
++	tv->tv_sec = now.tv_sec;
++	tv->tv_usec = now.tv_nsec / 1000;
++}
++#endif
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0) && defined(VERIFY_WRITE)
++	#define write_access_ok(addr, size) access_ok(VERIFY_WRITE, addr, size)
++#else
++	#define write_access_ok(addr, size) access_ok(addr, size)
++#endif
++
+ /*
+  *-----------------------------------------------------------------------------
+  *
+@@ -1494,14 +1521,7 @@ unsigned int
+ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+                                unsigned int currentlyLockedPages) // IN
+ {
+-   /*
+-    * This variable is available and exported to modules,
+-    * since at least 2.6.0.
+-    */
+-
+-   extern unsigned long totalram_pages;
+-
+-   unsigned int totalPhysicalPages = totalram_pages;
++   unsigned int totalPhysicalPages = compat_totalram_pages();
+ 
+    /*
+     * Use the memory information linux exports as of late for a more
+@@ -2164,7 +2184,7 @@ isVAReadable(VA r)  // IN:
+    int ret;
+ 
+    old_fs = get_fs();
+-   set_fs(get_ds());
++   set_fs(KERNEL_DS);
+    r = APICR_TO_ADDR(r, APICR_VERSION);
+    ret = HostIF_CopyFromUser(&dummy, r, sizeof dummy);
+    set_fs(old_fs);
+@@ -2365,7 +2385,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+    }
+ 
+    old_fs = get_fs();
+-   set_fs(get_ds());
++   set_fs(KERNEL_DS);
+ 
+    {
+       struct poll_wqueues table;
+@@ -2373,7 +2393,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+ 
+       poll_initwait(&table);
+       current->state = TASK_INTERRUPTIBLE;
+-      mask = file->f_op->poll(file, &table.pt);
++      mask = compat_vfs_poll(file, &table.pt);
+       if (!(mask & (POLLIN | POLLERR | POLLHUP))) {
+          vm->vmhost->vcpuSemaTask[vcpuid] = current;
+          schedule_timeout(timeoutms * HZ / 1000);  // convert to Hz
+@@ -2494,7 +2514,7 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+    }
+ 
+    old_fs = get_fs();
+-   set_fs(get_ds());
++   set_fs(KERNEL_DS);
+ 
+    /*
+     * Always write sizeof(uint64) bytes. This works fine for eventfd and
+@@ -3154,7 +3174,7 @@ HostIF_SetFastClockRate(unsigned int rate) // IN: Frequency in Hz.
+       }
+    } else {
+       if (linuxState.fastClockThread) {
+-         force_sig(SIGKILL, linuxState.fastClockThread);
++         send_sig(SIGKILL, linuxState.fastClockThread, 1);
+          kthread_stop(linuxState.fastClockThread);
+ 
+          linuxState.fastClockThread = NULL;
+@@ -3200,7 +3220,7 @@ HostIF_MapUserMem(VA addr,                  // IN: User memory virtual address
+ 
+    ASSERT(handle);
+ 
+-   if (!access_ok(VERIFY_WRITE, p, size)) {
++   if (!write_access_ok(p, size)) {
+       printk(KERN_ERR "%s: Couldn't verify write to uva 0x%p with size %"
+              FMTSZ"u\n", __func__, p, size);
+ 

@@ -1,0 +1,152 @@
+diff --git a/Makefile b/Makefile
+index caab6b9..c2fc51f 100644
+--- vmnet-only/Makefile
++++ vmnet-only/Makefile
+@@ -107,7 +107,7 @@ prebuild:: ;
+ postbuild:: ;
+ 
+ $(DRIVER_KO): prebuild
+-	$(MAKE) -C $(BUILD_DIR) SUBDIRS=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
++	$(MAKE) -C $(BUILD_DIR) M=$$PWD SRCROOT=$$PWD/$(SRCROOT) \
+ 	  MODULEBUILDDIR=$(MODULEBUILDDIR) modules
+ 	$(MAKE) -C $$PWD SRCROOT=$$PWD/$(SRCROOT) \
+ 	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
+diff --git a/Makefile.kernel b/Makefile.kernel
+index 44a8a95..de04abe 100644
+--- vmnet-only/Makefile.kernel
++++ vmnet-only/Makefile.kernel
+@@ -32,6 +32,6 @@ $(DRIVER)-y := driver.o hub.o userif.o netif.o bridge.o procfs.o smac_compat.o \
+ ####
+ 
+ clean:
+-	rm -rf $(DRIVER).o $(DRIVER).mod.o $(DRIVER).mod.c $(DRIVER).ko \
++	rm -rf $(DRIVER).o $(DRIVER).mod.o $(DRIVER).mod.c $(DRIVER).ko .cache.mk \
+ 	       .tmp_versions Module.symvers Modules.symvers Module.markers \
+ 	       modules.order $($(DRIVER)-y) .*.cmd .*.o.flags
+diff --git a/userif.c b/userif.c
+index acc6ca6..8dd6d21 100644
+--- vmnet-only/userif.c
++++ vmnet-only/userif.c
+@@ -33,6 +33,7 @@
+ #include <linux/proc_fs.h>
+ #include <linux/sockios.h>
+ #include <linux/sched.h>
++#include <linux/sched/signal.h>
+ #include <linux/slab.h>
+ #include <linux/version.h>
+ #include <linux/wait.h>
+@@ -78,11 +79,37 @@ static int  VNetUserIfSetUplinkState(VNetPort *port, uint8 linkUp);
+ extern unsigned int  vnet_max_qlen;
+ 
+ #if COMPAT_LINUX_VERSION_CHECK_LT(3, 2, 0)
+-#   define compat_kmap(page) kmap(page)
+-#   define compat_kunmap(page) kunmap(page)
++#   define compat_kmap_frag(frag) kmap((frag)->page)
++#   define compat_kunmap_frag(page) kunmap((frag)->page)
+ #else
+-#   define compat_kmap(page) kmap((page).p)
+-#   define compat_kunmap(page) kunmap((page).p)
++#   define compat_kmap_frag(frag) kmap(skb_frag_page(frag))
++#   define compat_kunmap_frag(frag) kunmap(skb_frag_page(frag))
++#endif
++
++static unsigned int compat_skb_frag_size(const skb_frag_t *frag)
++{
++#if COMPAT_LINUX_VERSION_CHECK_LT(3, 2, 0)
++	return frag->size;
++#else
++	return skb_frag_size(frag);
++#endif
++}
++
++static unsigned int compat_skb_frag_off(const skb_frag_t *frag)
++{
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 4, 0) && \
++	!(defined(CONFIG_SUSE_VERSION) && CONFIG_SUSE_VERSION == 15 && \
++	  defined(CONFIG_SUSE_PATCHLEVEL) && CONFIG_SUSE_PATCHLEVEL >= 2)
++	return frag->page_offset;
++#else
++	return skb_frag_off(frag);
++#endif
++}
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0) && defined(VERIFY_WRITE)
++	#define write_access_ok(addr, size) access_ok(VERIFY_WRITE, addr, size)
++#else
++	#define write_access_ok(addr, size) access_ok(addr, size)
+ #endif
+ 
+ /*
+@@ -142,7 +169,7 @@ VNetUserIfMapPtr(VA uAddr,        // IN: pointer to user memory
+                  struct page **p, // OUT: locked page
+                  void **ptr)      // OUT: kernel mapped pointer
+ {
+-   if (!access_ok(VERIFY_WRITE, (void *)uAddr, size) ||
++   if (!write_access_ok((void *)uAddr, size) ||
+        (((uAddr + size - 1) & ~(PAGE_SIZE - 1)) !=
+         (uAddr & ~(PAGE_SIZE - 1)))) {
+       return -EINVAL;
+@@ -559,20 +586,21 @@ VNetCsumCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
+    for (frag = skb_shinfo(skb)->frags;
+ 	frag != skb_shinfo(skb)->frags + skb_shinfo(skb)->nr_frags;
+ 	frag++) {
+-      if (frag->size > 0) {
++      if (compat_skb_frag_size(frag) > 0) {
+ 	 unsigned int tmpCsum;
+ 	 const void *vaddr;
+ 
+-	 vaddr = compat_kmap(frag->page);
+-	 tmpCsum = csum_and_copy_to_user(vaddr + frag->page_offset,
+-					 curr, frag->size, 0, &err);
+-	 compat_kunmap(frag->page);
++	 vaddr = compat_kmap_frag(frag);
++	 tmpCsum = csum_and_copy_to_user(vaddr + compat_skb_frag_off(frag),
++					 curr, compat_skb_frag_size(frag), 0,
++					 &err);
++	 compat_kunmap_frag(frag);
+ 
+ 	 if (err) {
+ 	    return err;
+ 	 }
+ 	 csum = csum_block_add(csum, tmpCsum, curr - buf);
+-	 curr += frag->size;
++	 curr += compat_skb_frag_size(frag);
+       }
+    }
+ 
+diff --git a/vm_device_version.h b/vm_device_version.h
+index ab396bc..9305ddb 100644
+--- vmnet-only/vm_device_version.h
++++ vmnet-only/vm_device_version.h
+@@ -35,6 +35,8 @@
+ #endif
+ #endif
+ 
++#include <linux/pci_ids.h>
++
+ /* LSILogic 53C1030 Parallel SCSI controller
+  * LSILogic SAS1068 SAS controller
+  */
+@@ -53,7 +55,10 @@
+  *    VMware HD Audio codec
+  *    VMware HD Audio controller
+  */
++#ifndef PCI_VENDOR_ID_VMWARE
+ #define PCI_VENDOR_ID_VMWARE                    0x15AD
++#endif
++
+ #define PCI_DEVICE_ID_VMWARE_SVGA2              0x0405
+ #define PCI_DEVICE_ID_VMWARE_SVGA               0x0710
+ #define PCI_DEVICE_ID_VMWARE_VGA                0x0711
+@@ -70,7 +75,11 @@
+ #define PCI_DEVICE_ID_VMWARE_1394               0x0780
+ #define PCI_DEVICE_ID_VMWARE_BRIDGE             0x0790
+ #define PCI_DEVICE_ID_VMWARE_ROOTPORT           0x07A0
++
++#ifndef PCI_DEVICE_ID_VMWARE_VMXNET3
+ #define PCI_DEVICE_ID_VMWARE_VMXNET3            0x07B0
++#endif
++
+ #define PCI_DEVICE_ID_VMWARE_PVSCSI             0x07C0
+ #define PCI_DEVICE_ID_VMWARE_82574              0x07D0
+ #define PCI_DEVICE_ID_VMWARE_AHCI               0x07E0

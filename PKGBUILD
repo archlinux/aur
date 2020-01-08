@@ -1,9 +1,9 @@
 # Maintainer: slurpee <aur@lylat.io>
-# Contributors: Ben White, Igor Duarte Cardoso, haagch, Olivier Médoc, Rains, Det
+# Contributors: Ben White, Igor Duarte Cardoso, haagch, Olivier Médoc, Rains, Det, Maciej Suminski
 
 pkgname=vmware-patch
 pkgver=15.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A post-install configuration solution for VMware Workstation (Pro) and Player (Plus and Pro)"
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/VMware#Configuration"
@@ -18,6 +18,10 @@ source=('vmware-patch.sh' 'vmware-unpatch.sh' 'common-functions.sh' 'vmware.serv
         # Workstation Pro/Player 15.5.0
         'vmmon-15.5.0-5.3.patch'
         'vmnet-15.5.0-5.3.patch'
+        # Workstation Pro/Player 14.1.7
+        'vmci-14.1.7-5.4.patch'
+        'vmmon-14.1.7-5.4.patch'
+        'vmnet-14.1.7-5.4.patch'
         # Workstation Pro/Player 14.0.0
         'vmmon-14.0.0-4.13.3.patch'
         'vmnet-14.0.0-4.13.3.patch'
@@ -91,6 +95,9 @@ md5sums=('eea90d7b8053d996d6e02653409a3634'
          '7c074a0cb0e23a3d79f804f833d7cc67'
          'c78abd731e4095144e66a5ace41a4c5e'
          '7c074a0cb0e23a3d79f804f833d7cc67'
+         'b0c6d50f8a9ffde70661fb3c3123b7c5'
+         '187566044705c13c996396616cac8730'
+         '7873b226fa7eda7c94be3cf7eddb3250'
          '3c165edb6847fc9bfa04657f346ac4cc'
          'eca2542e4c484ea2ca06b7e9c065b8af'
          'ced58cf32a21adfe21d612366c52116a'
