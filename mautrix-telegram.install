@@ -1,0 +1,26 @@
+post_install() {
+cat << 'EOM'
+  #
+  # change the configuration file /etc/mautrix-telegram/config.yaml and execute the commands:
+  #
+  cd /etc/mautrix-telegram/
+  alembic upgrade head
+  /usr/bin/mautrix-telegram -b /etc/mautrix-telegram/config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml -g
+EOM
+}
+
+post_upgrade() {
+cat << 'EOM'
+  #
+  # update your database with the following commands:
+  #
+  cd /etc/mautrix-telegram/
+  alembic upgrade head
+EOM
+}
+
+post_remove() {
+  rm -rf /etc/mautrix-telegram/
+}
+
+# vim: ts=2 sw=2 et:

@@ -1,0 +1,10 @@
+[Unit]
+Description=A Matrix-Telegram hybrid puppeting/relaybot bridge
+
+[Service]
+ExecStart=/usr/bin/mautrix-telegram -b /etc/mautrix-telegram/config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml
+WorkingDirectory=/etc/mautrix-telegram/
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
