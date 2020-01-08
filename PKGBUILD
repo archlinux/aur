@@ -1,17 +1,7 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
-# PRE-BUILD INSTRUCTIONS:
-# -----------------------
-#
-# There is no public mirror for the ThinLinc server.
-# Download it by registering here:
-# https://www.cendio.com/thinlinc/download/registration
-#
-# Place the downloaded file in the same directory as this PKGBUILD.
-# You can also set up a tlserver:// DLAGENT in /etc/makepkg.conf.
-
 pkgname=thinlinc-server
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Cendio ThinLinc Linux remote desktop server"
 arch=('i686' 'x86_64')
@@ -29,13 +19,13 @@ optdepends=('nfs-utils: Local drive redirection'
 
 _archive_name=tl-${pkgver}-server
 
-source=("tlserver://${_archive_name}.zip"
+source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/download.py"
         'LICENSE'
         'tlwebaccess.service'
         'tlwebadm.service'
         'vsmagent.service'
         'vsmserver.service')
-sha256sums=('f8fe29e9706872c48a922a266cec226c496d45c346d965ee44aad8c6adb40b6c'
+sha256sums=('f49b54a8af1b6e5a47b38f35485ca05b3c21fdcc3fae6cebef8b0506e52ec66d'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
             '8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63'
             '5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd'
@@ -43,8 +33,6 @@ sha256sums=('f8fe29e9706872c48a922a266cec226c496d45c346d965ee44aad8c6adb40b6c'
             'a1fe20c565e7e468407d73a0f59c8c352318a7e4c8e85fe068d89cbb0afd5e71')
 
 _extract_dir="extract"
-
-DLAGENTS+=("tlserver::/usr/bin/echo Could not find %u.  Please read the PKGBUILD.")
 
 build()
 {
