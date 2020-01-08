@@ -3,6 +3,7 @@ pkgbase = linux-parallella
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = armv7h
+	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
 	makedepends = docbook-xsl
