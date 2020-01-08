@@ -1,6 +1,6 @@
 # Contributor: Pedro H Lara Campos <root@pedrohlc.com>
 pkgname=haxm-git
-pkgver=1.0.0.r50.geda0250
+pkgver=v7.5.4.r17.gadf4b6a
 pkgrel=1
 pkgdesc="Intel® Hardware Accelerated Execution Manager - a hardware-assisted virtualization engine (git version)"
 arch=('x86_64' 'i686')
