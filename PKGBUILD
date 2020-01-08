@@ -2,7 +2,7 @@
 # Maintainer: Henry Pham <huy at tableplus dot com>
 
 pkgname=tableplus
-pkgver=0.1.34
+pkgver=0.1.35
 pkgrel=1
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=('LICENSE'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb"
 )
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
-            'a91856665b63953b14cc6be2c3e2c125fc3b64fc1854bb1d3fbb048c9c4cf66b'
+            'e08d93ea7722c4ca7732d4d8469ed5f964259b749fa8c6be77c7cc34e0667af6'
 )
 
 prepare() {
