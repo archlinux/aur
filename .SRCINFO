@@ -1,6 +1,6 @@
 pkgbase = python-frccontrol-git
 	pkgdesc = Provides wrappers around Python Control for making development of state-space models for the FIRST Robotics Competition easier.
-	pkgver = 2020.21
+	pkgver = 2020.23
 	pkgrel = 1
 	url = https://github.com/calcmogul/frccontrol.git
 	arch = x86_64
