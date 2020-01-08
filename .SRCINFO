@@ -1,0 +1,18 @@
+pkgbase = imrsh-git
+	pkgdesc = Interactive POSIX shell based on mrsh
+	pkgver = r28.da592a3
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/imrsh
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = libtickit
+	depends = mrsh
+	provides = imrsh
+	conflicts = imrsh
+	source = imrsh-git::git+https://git.sr.ht/~sircmpwn/imrsh
+	sha512sums = SKIP
+
+pkgname = imrsh-git
+
