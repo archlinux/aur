@@ -1,0 +1,17 @@
+pkgbase = libxxf86misc
+	pkgdesc = X11 XFree86 misc extension library
+	pkgver = 1.0.4
+	pkgrel = 2
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = git
+	makedepends = xorg-util-macros
+	depends = libxext
+	depends = xorgproto
+	source = git+https://anongit.freedesktop.org/git/xorg/lib/libXxf86misc.git#tag=libXxf86misc-1.0.4
+	sha256sums = SKIP
+
+pkgname = libxxf86misc
+
