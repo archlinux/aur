@@ -1,0 +1,9 @@
+[Unit]
+Description=Utility to read GPMDP's JSON API and output as plain text
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gpmdp2text
+
+[Install]
+WantedBy=default.target

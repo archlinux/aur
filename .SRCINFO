@@ -1,0 +1,18 @@
+pkgbase = gpmdp2text-bin
+	pkgdesc = Utility that reads from GPMDP's JSON API and outputs the information in plain text.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/BrianAllred/gpmdp2text
+	install = gpmdp2text.install
+	arch = x86_64
+	license = MIT
+	depends = gpmdp
+	provides = gpmdp2text
+	options = staticlibs
+	source = https://github.com/BrianAllred/gpmdp2text/releases/download/v0.1.0/gpmdp2text-linux-x64-v0.1.0.tar.gz
+	source = gpmdp2text.service
+	md5sums = 7b8eb68dc094793581e1ce095d43481f
+	md5sums = 413b33ec845277d9dc882dca187f7fe6
+
+pkgname = gpmdp2text-bin
+
