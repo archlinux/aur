@@ -2,7 +2,7 @@
 # Maintainer: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 
 pkgname=freecad-git
-pkgver=0.18.r3026.gdcc2790834
+pkgver=0.18.r3116.g2e31417aa4
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -50,8 +50,6 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DOPENMPI_INCLUDE_DIRS=/usr/include \
         -DPYSIDE_INCLUDE_DIR="/usr/include/PySide2" \
-	-DPYSIDE2RCCBINARY=/usr/bin/rcc \
-	-DPYSIDE2UICBINARY=/usr/bin/uic \
         -DPYSIDE_LIBRARY="/usr/lib/libpyside2.cpython-${PYVER//.}-${CARCH}-linux-gnu.so" \
         -DPYSIDE_PYTHONPATH="/usr/lib/python${PYVER}/site-packages/PySide2" \
         -DPYSIDE_TYPESYSTEMS="/usr/share/PySide2/typesystems" \
