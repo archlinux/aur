@@ -1,6 +1,6 @@
 pkgbase = zuki-themes
 	pkgdesc = Zuki themes for GNOME, Xfce and more.
-	pkgver = 3.34_1
+	pkgver = 3.34_2
 	pkgrel = 1
 	url = https://github.com/lassekongo83/zuki-themes
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = zuki-themes
 	depends = gtk-engines
 	optdepends = ttf-roboto
 	conflicts = zukitwo-themes-git
-	source = zuki-themes-3.34_1.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/v3.34-1.tar.gz
-	sha256sums = 860ec882b73d961af0cce4556d7dfce9013891cd8ba8e13fe8a0f928b4cf3a7d
+	source = zuki-themes-3.34_2.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/v3.34-2.tar.gz
+	sha256sums = a43e9e8950b14311d4d8e54fb6b7c330f3d93990cda3bdd9395d7fcbe8a657dc
 
 pkgname = zuki-themes
 
