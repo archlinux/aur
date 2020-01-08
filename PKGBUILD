@@ -1,6 +1,6 @@
 # Maintainer: Thomas Hipp <thomashipp at gmail dot com>
 pkgname=dqlite
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('libuv>=1.8.0' 'sqlite-replication>=3.22.0' 'raft' 'libco')
 conflicts=('dqlite-git')
 source=("https://github.com/canonical/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4191e4b56c6423081a9ead2769d53e0a3526c87411ea47dfd047eca30a9c4057')
+sha256sums=('22e3d281c396cc409e4afced20e143c4a014b036146945e30f9ebf3bee410865')
 
 build() {
 	cd "$pkgname-$pkgver"
