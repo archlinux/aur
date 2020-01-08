@@ -1,30 +1,31 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=psautohint
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="A standalone version of AFDKO’s autohinter"
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/psautohint"
 license=('Apache')
 depends=('python-lxml' 'python-fonttools')
-makedepends=('git' 'python-setuptools-scm')
+makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest-cov' 'python-pytest-xdist' 'python-pytest-randomly')
-source=("git+https://github.com/adobe-type-tools/$pkgname.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.zip")
+sha256sums=('a0ce7844f6add8b2afbfb4a305072bf5dcdd85d5f0d2ad32a41f8a563b8a6d52')
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	python setup.py build
 }
 
 check() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	python setup.py test
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
