@@ -2,7 +2,7 @@
 
 pkgname=python-wpiformat-git
 _gitname=styleguide
-pkgver=2019.57
+pkgver=2020.17
 pkgrel=1
 pkgdesc="Linters and formatters for ensuring WPILib's source code conforms to its style guide"
 arch=('i686' 'x86_64')
