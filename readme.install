@@ -1,6 +1,5 @@
 post_remove() {
-  echo "==> Optionally delete the kodi user home directory"
-  echo "==> rm -rf /var/lib/kodi"
+  echo "==> Optionally remove /var/lib/kodi/"
 }
 
 # vim:set ts=2 sw=2 et:
