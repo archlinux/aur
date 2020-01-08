@@ -1,7 +1,7 @@
 # Maintainer: Kenny Rasschaert <kenny@kennyrasschaert.com>
 pkgname=goss-bin
-pkgver=0.3.8
-pkgrel=2
+pkgver=0.3.9
+pkgrel=1
 pkgdesc="Quick and Easy server testing/validation"
 arch=('i686' 'x86_64' 'arm')
 provides=('goss' 'dgoss')
