@@ -3,14 +3,12 @@
 
 pkgname=gpmdp
 pkgver=4.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
-depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2')
-optdepends=('apparmor'
-            'avahi'
-            'libgnome-keyring')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'nss' 'libxss' 'gtk3')
+optdepends=('apparmor' 'avahi' 'libgnome-keyring')
 provides=('gpmdp')
 conflicts=('google-play-music-desktop-player-git' 'gpmdp-git')
 install=${pkgname}.install
