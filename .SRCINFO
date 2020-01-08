@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-marker-msgs
+	pkgdesc = ROS - This package defines messages for marker/fiducial system.
+	pkgver = 0.0.6
+	pkgrel = 2
+	url = http://wiki.ros.org/marker_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-geometry-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-marker-msgs-0.0.6::git+https://github.com/tuw-robotics/marker_msgs#tag=0.0.6
+	sha256sums = SKIP
+
+pkgname = ros-melodic-marker-msgs
+
