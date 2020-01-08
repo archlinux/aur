@@ -3,7 +3,7 @@
 _pkgname=withings-garmin-v2
 pkgname=$_pkgname
 pkgver=37
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync Withing Scale stats to Garmin Connect"
 arch=('any')
 license=('MIT')

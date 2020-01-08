@@ -1,7 +1,7 @@
-pkgbase = withings-garmin-v2-git
+pkgbase = withings-garmin-v2
 	pkgdesc = Sync Withing Scale stats to Garmin Connect
 	pkgver = 37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaroslawhartman/withings-garmin-v2
 	arch = any
 	license = MIT
@@ -18,5 +18,5 @@ pkgbase = withings-garmin-v2-git
 	md5sums = 7af4ec447a5344fd6071fd6a7bcac170
 	md5sums = 8c065062c737baae192fadb97a88abc1
 
-pkgname = withings-garmin-v2-git
+pkgname = withings-garmin-v2
 
