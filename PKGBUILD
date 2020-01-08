@@ -27,7 +27,7 @@ prepare() {
 #   curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/1716.patch | patch -p1
 
   # run exes through the wine wrapper
-  sed -i "s|COMMAND kwProcessXML|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:kwProcessXML>|g" CMake/ParaViewPlugins.cmake
+  sed -i "s|COMMAND kwProcessXML|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:kwProcessXML>|g" CMake/ParaViewPlugins.cmake CMake/ParaViewMacros.cmake
   sed -i "s|COMMAND \${VTK_WRAP_ClientServer_EXE}|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:vtkWrapClientServer>|g" CMake/vtkWrapClientServer.cmake
   sed -i "s|COMMAND \${VTK_WRAP_HIERARCHY_EXE}|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:vtkWrapHierarchy>|g" VTK/CMake/vtkWrapHierarchy.cmake
 }
