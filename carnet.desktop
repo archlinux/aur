@@ -11,4 +11,3 @@ X-DBUS-ServiceName=
 X-DBUS-StartupType=unique
 StartupWMClass=Carnet
 Categories=Office;
-X-AppImage-Version=0.19.1.56
