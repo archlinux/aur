@@ -2,15 +2,15 @@
 
 pkgname=gpmdp-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=4.5.0.8.gbcd4a95
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 license=('MIT')
-depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss' 'avahi' 'wget')
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'nss' 'libxss' 'gtk3')
 makedepends=('nodejs' 'electron' 'npm' 'git' 'gcc' 'libx11')
-optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'desktop-file-utils: Needed to update desktop icon database')
+optdepends=('apparmor' 'avahi' 'libgnome-keyring')
 provides=('gpmdp')
 replaces=('google-play-music-desktop-player-git')
 conflicts=('google-play-music-desktop-player-git' 'gpmdp')
@@ -20,7 +20,7 @@ source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player
         "gpmdp-git.install")
 md5sums=('SKIP'
          '8d23ff434999f7ec1e6e35d3344a1bb2'
-         'e297b473f8fd1b6f26642da1d7206123')
+         'bca71957329125ca4c55929f07091cce')
 
 pkgver() {
   cd "$srcdir/$_name"

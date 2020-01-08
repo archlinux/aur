@@ -1,11 +1,18 @@
 post_install() {
-  update-desktop-database -q
+	echo -e "********************************************"
+	echo -e "* For Chromecast functionality:            *"
+	echo -e "*                                          *"
+	echo -e "* Verify avahi and nss-mdns are installed. *"
+	echo -e "*                                          *"
+	echo -e "* Append \"mdns4\" to the end of the \"hosts\" *"
+	echo -e "* line in /etc/nsswitch.conf.              *"
+	echo -e "*                                          *"
+	echo -e "* Make sure both the avahi-daemon service  *"
+	echo -e "* and socket are enabled and running.      *"
+	echo -e "********************************************"
+	echo -e -n ""
 }
 
 post_upgrade() {
-  update-desktop-database -q
-}
-
-post_remove() {
-  update-desktop-database -q
+	post_install
 }
