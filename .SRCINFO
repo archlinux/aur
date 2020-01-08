@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-csm
+	pkgdesc = ROS - ROS-ified version of C(anonical) Scan Matcher (CSM)
+	pkgver = 1.0.2
+	pkgrel = 3
+	url = http://openslam.org/gmapping
+	arch = any
+	license = CreativeCommons-by-nc-sa-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = gsl
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	source = git://github.com/AndreaCensi/csm.git#commit=8830c3d2723cf65b7d5cb4a1bd9eacaa84f963b0
+	md5sums = SKIP
+
+pkgname = ros-melodic-csm
+
