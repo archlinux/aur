@@ -1,0 +1,11 @@
+pkgbase = nobeep
+	pkgdesc = Blacklists the pcspkr kernel module
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = nobeep.conf
+	md5sums = 3866086e6af5e3528a66eff492f2f4dd
+
+pkgname = nobeep
+
