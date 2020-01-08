@@ -1,7 +1,7 @@
 pkgbase = grub-libzfs
 	pkgdesc = GNU GRand Unified Bootloader (2) - libzfs support
 	pkgver = 2.04
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub-libzfs.install
@@ -51,8 +51,8 @@ pkgbase = grub-libzfs
 	backup = etc/default/grub
 	backup = etc/grub.d/40_custom
 	source = git+https://git.savannah.gnu.org/git/grub.git#tag=grub-2.04?signed
-	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=136763a4cc9ca3a4f59d05b79eede2159d6f441e
-	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=9ce9be2ef0cb1180e35dfe9dfbbe90d774b374bd
+	source = git+https://git.savannah.gnu.org/git/grub-extras.git#commit=8a245d5c1800627af4cefa99162a89c7a46d8842
+	source = git+https://git.savannah.gnu.org/git/gnulib.git#commit=be584c56eb1311606e5ea1a36363b97bddb6eed3
 	source = http://unifoundry.com/pub/unifont/unifont-12.1.04/font-builds/unifont-12.1.04.bdf.gz
 	source = http://unifoundry.com/pub/unifont/unifont-12.1.04/font-builds/unifont-12.1.04.bdf.gz.sig
 	source = 0003-10_linux-detect-archlinux-initramfs.patch

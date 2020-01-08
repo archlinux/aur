@@ -9,8 +9,8 @@ _IA32_EFI_IN_ARCH_X64="1"
 ## "1" to enable EMU build, "0" to disable
 _GRUB_EMU_BUILD="0"
 
-_GRUB_EXTRAS_COMMIT="136763a4cc9ca3a4f59d05b79eede2159d6f441e"
-_GNULIB_COMMIT="9ce9be2ef0cb1180e35dfe9dfbbe90d774b374bd"
+_GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
+_GNULIB_COMMIT="be584c56eb1311606e5ea1a36363b97bddb6eed3"
 _UNIFONT_VER="12.1.04"
 
 [[ "${CARCH}" == "x86_64" ]] && _EFI_ARCH="x86_64"
@@ -23,7 +23,7 @@ pkgname='grub-libzfs'
 pkgdesc='GNU GRand Unified Bootloader (2) - libzfs support'
 _pkgver=2.04
 pkgver=${_pkgver/-/}
-pkgrel=3
+pkgrel=4
 epoch=2
 url='https://www.gnu.org/software/grub/'
 arch=('x86_64')
@@ -133,9 +133,6 @@ prepare() {
 	echo "Pull in latest language files..."
 	./linguas.sh
 
-	echo "Remove not working langs which need LC_ALL=C.UTF-8..."
-	sed -e 's#en@cyrillic en@greek##g' -i "po/LINGUAS"
-
 	echo "Avoid problem with unifont during compile of grub..."
 	# http://savannah.gnu.org/bugs/?40330 and https://bugs.archlinux.org/task/37847
 	gzip -cd "${srcdir}/unifont-${_UNIFONT_VER}.bdf.gz" > "unifont.bdf"
@@ -144,6 +141,9 @@ prepare() {
 	./bootstrap \
 		--gnulib-srcdir="${srcdir}/gnulib/" \
 		--no-git
+
+	echo "Make translations reproducible..."
+	sed -i '1i /^PO-Revision-Date:/ d' po/*.sed
 }
 
 _build_grub-common_and_bios() {
@@ -178,6 +178,11 @@ _build_grub-common_and_bios() {
 		"${_EFIEMU}" \
 		--enable-boot-time \
 		"${_configure_options[@]}"
+
+	if [ ! -z "${SOURCE_DATE_EPOCH}" ]; then
+		echo "Make info pages reproducible..."
+		touch -d "@${SOURCE_DATE_EPOCH}" $(find -name '*.texi')
+	fi
 
 	echo "Run make for bios build..."
 	make
