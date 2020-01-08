@@ -1,5 +1,3 @@
-diff --git a/configure b/configure
-index 0222f4f..63cd39c 100755
 --- a/configure
 +++ b/configure
 @@ -236,7 +236,7 @@ FEATURES="
@@ -20,20 +18,6 @@ index 0222f4f..63cd39c 100755
    echo "  --disable-vdpau        disable VDPAU support (X11) [no]"
    echo "  --disable-i18n         disable i18n support [no]"
    echo "  --disable-libcap       disable libcap support [no]"
-@@ -339,10 +339,10 @@ done
- 
- check_deps(){
-   disabled libxine && disable x11 fb libavutil libjpeg libcec
--  disabled x11     && disable dbus-glib-1 xshm xrandr xrender xshape opengl xdpms xinerama vdpau
-+  disabled x11     && disable dbus-glib-1 xshm xrandr xrender xshape gl xdpms xinerama vdpau
-   disabled vdr     && disable libextractor libcap libbluray avahi-client
--  disabled dlfcn   && disable opengl
--  disabled pthread && disable opengl
-+  disabled dlfcn   && disable gl
-+  disabled pthread && disable gl
-   disabled xrender && disable xshape xshm
- }
- 
 @@ -397,7 +397,7 @@ if enabled libxine; then
      test_library X11  xshape       "X11/extensions/shape.h"    "-lXext"      "XShapeQueryExtension(0,0,0)"
      test_library X11  xdpms        "X11/extensions/dpms.h"     "-lXext"      "DPMSDisable(0)"

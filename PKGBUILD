@@ -3,10 +3,10 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgbase=xineliboutput
 pkgname=(vdr-xineliboutput xineliboutput-frontends xineliboutput-xineplug)
-pkgver=2.1.0
-_gitver=ba6aae8c11944f7d11b5d290d7905a010aba3944
+pkgver=2.1.0.r183.g32a5ffc
+_gitver=32a5ffc8f170b240e43c3f631bebaf7ac93e6e0f
 _vdrapi=2.4.1
-pkgrel=2
+pkgrel=1
 url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
@@ -17,12 +17,12 @@ source=("$pkgbase::git://git.code.sf.net/p/xineliboutput/git#commit=$_gitver"
         "50-$pkgbase.conf")
 md5sums=('SKIP'
          'd1f1c591b9f927fd0b86e7ff19c09951'
-         'b659774446056f4c3410437314dc7b22'
+         '0cbb06be064dfebd36fcf88fe4b33ca1'
          'c3b2b26732606b4f95ca95cea6ce2084')
 
 pkgver() {
   cd "${srcdir}/$pkgbase"
-  git describe --tags | sed "s/$pkgbase.//g;s/_/./g;s/-/./g"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
