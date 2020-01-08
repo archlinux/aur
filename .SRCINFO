@@ -1,6 +1,6 @@
 pkgbase = auto-cpufreq-git
 	pkgdesc = Automatic CPU speed & power optimizer
-	pkgver = r53.f103d53
+	pkgver = r57.61f1115
 	pkgrel = 1
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq-git.install
