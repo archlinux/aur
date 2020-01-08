@@ -2,8 +2,8 @@
 
 _pkgname=xpadneo
 pkgname=xpadneo-dkms-git
-pkgver=0.5.4.r336.g5a2a53a
-pkgrel=2
+pkgver=0.6.0.r404.g4414f98
+pkgrel=1
 pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
 arch=('x86_64')
 url='https://github.com/atar-axis/xpadneo'
@@ -30,6 +30,9 @@ package() {
 	echo "* replacing version string if necessary"
 	sed -i 's/PACKAGE_VERSION="@DO_NOT_CHANGE@"/PACKAGE_VERSION="'$VERSION'"/g' hid-xpadneo/dkms.conf
 	sed -i 's/#define DRV_VER "@DO_NOT_CHANGE@"/#define DRV_VER "'$VERSION'"/g' hid-xpadneo/src/hid-xpadneo.c
+
+	sed -i 's@/etc/udev/rules.d/@/usr/lib/udev/rules.d/@g' hid-xpadneo/dkms.post_install
+	sed -i 's@/etc/udev/rules.d/@/usr/lib/udev/rules.d/@g' hid-xpadneo/dkms.post_remove
 
 	echo "* copying module into /usr/src"
 	install -dm755 ${pkgdir}/usr/src/hid-xpadneo-${VERSION}
