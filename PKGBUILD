@@ -1,6 +1,6 @@
 # Maintainer: TJ Hoplock <t.hoplock at gmail dot com>
 pkgname=tmuxer-git
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Tmux layout generator and command executor"
 arch=('any')
