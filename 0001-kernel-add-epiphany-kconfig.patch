@@ -1,0 +1,27 @@
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index 7f0d48f406e3..5a49515dc0c7 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -453,6 +453,22 @@ config XILINX_SDFEC
+ 
+ 	  If unsure, say N.
+ 
++config EPIPHANY
++	tristate "Adapteva Epiphany device driver"
++	depends on OF
++	default n
++
++	help
++	  The epiphany device driver gives user space applications access to
++	  the eMesh on-chip-network via an e-link interface connected on the
++	  system bus. The driver is meant to be used in conjunction with
++	  a user space API.
++
++	  To compile this driver as a module, choose M here: the
++	  module will be called epiphany.
++
++	  If unsure, say N.
++
+ config MISC_RTSX
+ 	tristate
+ 	default MISC_RTSX_PCI || MISC_RTSX_USB

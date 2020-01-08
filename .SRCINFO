@@ -1,0 +1,44 @@
+pkgbase = linux-parallella
+	pkgver = 5.4.8
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = armv7h
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = uboot-tools
+	makedepends = git
+	makedepends = dtc
+	options = !strip
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
+	source = http://www.kernel.org/pub/linux/kernel/v5.x/patch-5.4.8.xz
+	source = 0001-kernel-add-epiphany-kconfig.patch
+	source = 0002-kernel-add-epiphany-makefile.patch
+	source = epiphany.c
+	source = epiphany.h
+	source = epiphany_uapi.h
+	source = linux.preset
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-parallella.install
+	source = config
+	sha256sums = bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491
+	sha256sums = 5daea86d29246b5a8e193c097756bc833b33dd6fa6419f9cb52bcbf16a192a1b
+	sha256sums = 51a02268729e38a9566f24e7087301030cdb199ca8582f3360d83fda47d51567
+	sha256sums = 0df557a36cce828eb0dec398132fee5f5380aae409ca8b6029d1f110df0c9970
+	sha256sums = 17f7a780c879e3b1f37eee907111160bb8d228ceefa295f1439c2a9f97b06f36
+	sha256sums = 9e6cd80a98f25ec98582e2cd9352462898eae3c8422b1a65416056e08f37b1f1
+	sha256sums = efffd95b20a9a2099a9b32c5dbbef21c2e9bc27e70a238d7149d7340dd1d1c38
+	sha256sums = 66644820faa950a5fc59181f5aefcbed6d7ed652b29aee69979a2be2a032025d
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = c55b4d592fae40af69977ada77deaa4b9df205f4906d367cf66521fa8f0ace9d
+	sha256sums = 0f6be7acb2b00866c96db4b37f10191843c06b02f6b53e9b9007529df1b55a04
+	sha256sums = b52136f49ef1c0c2ea02f1d35d0ecbc271a384abac99833c4d82c105499e9712
+
+pkgname = linux-parallella
+
+pkgname = linux-parallella-headers
+
