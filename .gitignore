@@ -1,9 +1,9 @@
-LICENSE
-dgoss
+LICENSE-*
+dgoss-*
 goss-bin-*.pkg.tar.xz
 goss-bin-*.pkg.tar.zst
-goss-linux-386
-goss-linux-amd64
-goss-linux-arm
+goss-linux-386-*
+goss-linux-amd64-*
+goss-linux-arm-*
 pkg/
 src/
