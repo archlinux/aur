@@ -1,0 +1,29 @@
+pkgbase = ros-melodic-mrpt-bridge
+	pkgdesc = ROS - MRPT - Bridge
+	pkgver = 0.1.25
+	pkgrel = 0
+	url = http://wiki.ros.org/mrpt_bridge
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = mrpt
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-marker-msgs
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-message-runtime
+	makedepends = ros-melodic-mrpt-msgs
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-pcl-conversions
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-rospy
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-tf
+	source = mrpt_bridge::git+https://github.com/mrpt-ros-pkg/mrpt_bridge#commit=84099e91aaf344fb79c5bac3edb5f742b070343c
+	md5sums = SKIP
+
+pkgname = ros-melodic-mrpt-bridge
+
