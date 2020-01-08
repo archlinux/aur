@@ -14,16 +14,14 @@ options=()
 provides=('turingarena')
 conflicts=('turingarena')
 source=(
-	'git+https://github.com/turingarena/turingarena.git#master'
+	'git+https://github.com/turingarena/turingarena.git'
 	'turingarena.env'
-	'turingarena-git.install'
 	'turingarena.service'
 	'turingarena.sh'
 )
 sha256sums=(
 	'SKIP'
 	'108a01fdc4676fe774eec62380271201eef3a573b1458c060e41a403105a5f06'
-	'92552b0d9c78bc4065f15c0c7cee155550fcf427da1679f54914cdc1fbd81b6a'
 	'8bd2aa2553adb64dc194fd0668a2038b769fec0609a9ff96bd5c82317f6e112f'
 	'32ba92628eeea6cf824f0d344424237d757ecf4183370cf1d1faecc0da6f6353'
 )
@@ -45,9 +43,9 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/turingarena/target/release/turingarena" "$pkgdir/usr/lib/turingarena/turingarena"
-	install -Dm755 "$startdir/turingarena.sh" "$pkgdir/usr/bin/turingarena"
-	install -Dm644 "$startdir/turingarena.service" "$pkgdir/usr/lib/systemd/system/turingarena.service"
-	install -Dm644 "$startdir/turingarena.env" "$pkgdir/etc/default/turingarena"
+	install -Dm755 "$srcdir/turingarena.sh" "$pkgdir/usr/bin/turingarena"
+	install -Dm644 "$srcdir/turingarena.service" "$pkgdir/usr/lib/systemd/system/turingarena.service"
+	install -Dm644 "$srcdir/turingarena.env" "$pkgdir/etc/default/turingarena"
 
 	# Since I know nobody will ever bother to do that, I will generate a secret for you!
 	echo "SECRET=$(head -c32 /dev/urandom | base64)" >> "$pkgdir/etc/default/turingarena"
