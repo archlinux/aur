@@ -1,7 +1,7 @@
 pkgbase = python-dhash
 	pkgdesc = Python library to calculate the difference hash (perceptual hash) for a given image, useful for detecting duplicates
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jetsetter/dhash
 	arch = any
 	license = MIT
