@@ -7,4 +7,5 @@ Exec=x64sc
 Icon=vice
 Terminal=false
 StartupNotify=false
+StartupWMClass=x64sc
 Categories=Application;Game;
