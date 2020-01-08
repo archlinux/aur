@@ -1,13 +1,13 @@
 pkgbase = linklord
 	pkgdesc = budlabs markdown flavored link manager
-	pkgver = 2020.01.07.04
+	pkgver = 2020.01.08.19
 	pkgrel = 4
 	url = https://github.com/budlabs/linklord
 	arch = any
 	license = BSD
 	depends = bash>=4.0.0
-	source = https://github.com/budlabs/linklord/archive/2020.01.07.04.tar.gz
-	sha256sums = 5f65739b713d394b114f13443dbe9fceb81cfeaf4bfa3fda09d51dea059d0a48
+	source = https://github.com/budlabs/linklord/archive/2020.01.08.19.tar.gz
+	sha256sums = 0825e2364c19cb6cbaa838856a7f77c14ac7e647924663aa3f122065e4a56b79
 
 pkgname = linklord
 

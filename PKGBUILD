@@ -2,7 +2,7 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=linklord
-pkgver=2020.01.07.04
+pkgver=2020.01.08.19
 pkgrel=4
 pkgdesc='budlabs markdown flavored link manager'
 arch=('any')
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/budlabs/linklord/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('5f65739b713d394b114f13443dbe9fceb81cfeaf4bfa3fda09d51dea059d0a48')
+sha256sums=('0825e2364c19cb6cbaa838856a7f77c14ac7e647924663aa3f122065e4a56b79')
 
 package() {
   ls
