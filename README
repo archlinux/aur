@@ -1,0 +1,6 @@
+Updating this AUR package
+-------------------------
+
+1. bump version in PKGBUILD.
+2. run makepkg -g -f -p PKGBUILD to update the shasums.
+3. generate .SRCINFO with makepkg --printsrcinfo > .SRCINFO
