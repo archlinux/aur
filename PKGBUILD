@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2-rogue
-pkgver=2.05
+pkgver=2.06
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 2 ('Ground Zero') for yamagi-quake2"
@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('6a9088b8ae05045f134eef6ecebaea0d14a58a55381deb79d9d46c0af9ae0e29'
+sha256sums=('205a29b6b2df7370250a54715bd1ce8893debabc63a5fd6d99a1d09818108924'
             '7d43bd0ca15a6c82560153deea1df1109d0a448b226e316b6b7b5daae256241a'
             'e7ee884b1e015743659cf668afa521976de64345872acf8e4c1e6932355c2959')
 
