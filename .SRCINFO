@@ -1,0 +1,24 @@
+pkgbase = ros-melodic-opencv3-native
+	pkgdesc = ROS - OpenCV 3.x.
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = http://opencv.org
+	arch = any
+	license = BSD
+	depends = ros-melodic-catkin
+	depends = protobuf
+	depends = libjpeg-turbo
+	depends = vtk
+	depends = zlib
+	depends = python2-numpy
+	depends = python2
+	depends = jasper
+	depends = libpng
+	depends = ffmpeg
+	depends = libharu
+	depends = opencv
+	provides = ros-melodic-opencv3
+	conflicts = ros-melodic-opencv3
+
+pkgname = ros-melodic-opencv3-native
+
