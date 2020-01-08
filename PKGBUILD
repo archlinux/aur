@@ -1,4 +1,5 @@
-# Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
+# Maintainer: Nguyen Chinh Huu <huupoke12@gmail.com>
+# Contributor: Ammon Smith <ammon.i.smith@gmail.com>
 # Contributor: Nicole Fontenot <nfontenot27@gmail.com>
 # Contributor: "Ferdi265" [AUR]
 # Contributor: "downbtn" [AUR]
@@ -6,97 +7,57 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2019.1227.0_36_gbeb8e72e1
+pkgver=2020.104.0.r72.d33a507d9
 pkgrel=1
-pkgdesc='Freeware rhythm video game - lazer development version'
-arch=('x86_64')
-url='https://osu.ppy.sh'
+pkgdesc="An open source, free-to-win rhythm game"
+arch=('any')
+url="https://github.com/ppy/osu"
 license=('MIT')
-makedepends=('git')
-depends=(
-	'dotnet-sdk>=3.1.0'
-	'ffmpeg'
-	'libgl'
-	'shared-mime-info'
-)
-optdepends=()
-options=()
-provides=('osu-lazer')
-conflicts=('osu-lazer')
-source=(
-	'git+https://github.com/ppy/osu.git'
-	'git+https://github.com/ppy/osu-resources.git'
-	'osu-launcher'
+groups=()
+depends=('dotnet-runtime>=3.1' 'ffmpeg' 'libgl')
+makedepends=('git' 'dotnet-sdk>=3.1')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=(!strip)
+install=
+source=("${pkgname%-git}::git+https://github.com/ppy/osu.git"
+	'osu-lazer.sh'
 	'osu-lazer.desktop'
-	'osu-lazer.png'
-	'x-osu-lazer.xml'
-)
+	'osu-lazer.xml')
+noextract=()
+sha256sums=('SKIP'
+            'ce9d5224514170c97012d1bbc652f064223bdecddaa85f16019d50b06d712fa8'
+            '6e977d250974783ca02a61cb8cad9b1d8683bcb1ee289d9e1ce2b4ad431b9773'
+            '8e7c18bcb146cf161a84025934ef2cbe9395b0008535faaeaca4bc4d56194f8f')
 
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	'5e7620261f978a583a86c586754fcee0b6d0e5c12fbbfa939a38175ddaeca141'
-	'2665c47e522ec7762a2a8ff3dcf32f254fd9e5eceac33a162c638f06b0fcb44e'
-	'3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5'
-	'd22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b'
-)
 
 pkgver() {
-	cd "$srcdir/osu"
-	git describe --always --tags | sed -E -e 's/^(v|changelog-)//g' -e 's/-/_/g'
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-prepare() {
-	cd "$srcdir/osu"
-
-	# Prepare submodules
-	git submodule init
-	git config submodule.osu-resources.url "$srcdir/osu-resources"
-	git submodule update --recursive
-
-	# Download dependencies
-	export TERM='xterm'
-	dotnet restore osu.sln
-}
 
 build() {
-	cd "$srcdir/osu"
-
-	# Build
-	export MONO_IOMAP='case'
-	export TERM='xterm'
-	dotnet build /property:Configuration=Release osu.Desktop
+	cd "$srcdir/${pkgname%-git}"
+	dotnet build -c Release osu.Desktop
 }
+
 
 package() {
-	# Wrapper script
+	# Launcher, Desktop and MIME
 	cd "$srcdir"
-	mkdir -p "$pkgdir/usr/bin"
-	install -m755 'osu-launcher' "$pkgdir/usr/bin/osu-lazer"
-
-	# MIME types
-	mkdir -p "$pkgdir/usr/share/mime/packages"
-	install -m644 "x-${pkgname%-git}.xml" "$pkgdir/usr/share/mime/packages/x-${pkgname%-git}.xml"
-
-	# Add .desktop file
-	mkdir -p "$pkgdir/usr/share/applications"
-	install -m644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
-
-	# Application icon
-	mkdir -p "$pkgdir/usr/share/pixmaps"
-	install -m644 "${pkgname%-git}.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
-
-	# Copy license file
-	mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
-	install -m644 "$srcdir/osu/LICENCE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
-	ln -s LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENCE"
-
-	# Copy binaries
-	cd "$srcdir/osu/osu.Desktop/bin/Release/netcoreapp3.1"
-	mkdir -p "$pkgdir/usr/lib/${pkgname%-git}"
-	for file in *.json *.dll *.pdb runtimes/linux-x64/native/*.so; do
-		install -m755 "$file" "$pkgdir/usr/lib/${pkgname%-git}/${file##*/}"
-	done
+	install -Dm755 osu-lazer.sh "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm644 osu-lazer.desktop "$pkgdir/usr/share/applications/sh.ppy.osu.${pkgname%-git}.desktop"
+	install -Dm644 osu-lazer.xml "$pkgdir/usr/share/mime/packages/${pkgname%-git}.xml"
+	
+	# Libraries
+	cd "$srcdir/${pkgname%-git}/osu.Desktop/bin/Release/netcoreapp3.1"
+	find . -maxdepth 1 -type f \! -name 'osu!' -exec install -Dm755 "{}" "$pkgdir/usr/lib/${pkgname%-git}/{}" \;
+	
+	# Icon and License
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm644 assets/lazer.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: set sw=4 ts=4 noet:

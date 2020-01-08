@@ -1,29 +1,26 @@
 pkgbase = osu-lazer-git
-	pkgdesc = Freeware rhythm video game - lazer development version
-	pkgver = 2019.1227.0_36_gbeb8e72e1
+	pkgdesc = An open source, free-to-win rhythm game
+	pkgver = 2020.104.0.r72.d33a507d9
 	pkgrel = 1
-	url = https://osu.ppy.sh
-	arch = x86_64
+	url = https://github.com/ppy/osu
+	arch = any
 	license = MIT
 	makedepends = git
-	depends = dotnet-sdk>=3.1.0
+	makedepends = dotnet-sdk>=3.1
+	depends = dotnet-runtime>=3.1
 	depends = ffmpeg
 	depends = libgl
-	depends = shared-mime-info
 	provides = osu-lazer
 	conflicts = osu-lazer
-	source = git+https://github.com/ppy/osu.git
-	source = git+https://github.com/ppy/osu-resources.git
-	source = osu-launcher
+	options = !strip
+	source = osu-lazer::git+https://github.com/ppy/osu.git
+	source = osu-lazer.sh
 	source = osu-lazer.desktop
-	source = osu-lazer.png
-	source = x-osu-lazer.xml
+	source = osu-lazer.xml
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 5e7620261f978a583a86c586754fcee0b6d0e5c12fbbfa939a38175ddaeca141
-	sha256sums = 2665c47e522ec7762a2a8ff3dcf32f254fd9e5eceac33a162c638f06b0fcb44e
-	sha256sums = 3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
-	sha256sums = d22f0d922856639c7cc5f71bdd620cc8b3eb54af923b1a43703faac217b8b13b
+	sha256sums = ce9d5224514170c97012d1bbc652f064223bdecddaa85f16019d50b06d712fa8
+	sha256sums = 6e977d250974783ca02a61cb8cad9b1d8683bcb1ee289d9e1ce2b4ad431b9773
+	sha256sums = 8e7c18bcb146cf161a84025934ef2cbe9395b0008535faaeaca4bc4d56194f8f
 
 pkgname = osu-lazer-git
 
