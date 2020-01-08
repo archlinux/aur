@@ -1,16 +1,17 @@
-# Maintainer: Eddy <e.pedroni91 at gmail>
+# Maintainer: Florian Latifi <mail@florian-latifi.at>
+# Contributor: Eddy <e.pedroni91 at gmail>
 # Contributor: Shanto <shanto at hotmail>
 # Contributor: Jesus Jerez <jhuss@archlinux.org.ve>
 
 pkgname=eclipse-platform
 pkgver=4.14
 _pkgbuild=201912100610
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="https://www.eclipse.org"
 arch=("x86_64")
 license=("EPL")
-depends=("java-environment>=8" "unzip" "webkit2gtk")
+depends=("java-runtime>=8" "unzip" "webkit2gtk")
 optdepends=()
 conflicts=("eclipse-common")
 provides=("eclipse=$pkgver")
