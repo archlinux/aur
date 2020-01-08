@@ -29,5 +29,5 @@ package() {
 	install -Dm755 auto-cpufreq-install.sh "$pkgdir/usr/bin/auto-cpufreq-install"
 	install -Dm755 auto-cpufreq-remove.sh "$pkgdir/usr/bin/auto-cpufreq-remove"
 	install -Dm755 cpufreqctl.sh "$pkgdir/usr/bin/cpufreqctl"
-	install -Dm644 auto-cpufreq.service "$pkgdir/usr/lib/systemd/system/auto-cpufreq.service"
+	install -Dm644 auto-cpufreq.service "$pkgdir/etc/systemd/system/auto-cpufreq.service"
 }
