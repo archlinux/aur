@@ -1,6 +1,6 @@
 pkgbase = rr
 	pkgdesc = Record and Replay framework: lightweight recording and deterministic debugging
-	pkgver = 5.2.0
+	pkgver = 5.3.0
 	pkgrel = 5
 	url = http://rr-project.org/
 	arch = i686
@@ -13,12 +13,8 @@ pkgbase = rr
 	depends = gdb
 	depends = capnproto
 	options = !strip
-	source = rr-5.2.0.tar.gz::https://github.com/mozilla/rr/archive/5.2.0.tar.gz
-	source = https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
-	source = file://0001-avoid-overriding-external-opt-debug-flags.patch
-	sha1sums = 55040be15a87dd93012d7cdbeb8a3fc428ea4b6b
-	sha1sums = 9fcafcc3f4474b4352402b39002869a51e77f6df
-	sha1sums = SKIP
+	source = rr-5.3.0.tar.gz::https://github.com/mozilla/rr/archive/5.3.0.tar.gz
+	sha1sums = 4ed678804f8fe94a0b0e0556981c48d9b135cc1d
 
 pkgname = rr
 

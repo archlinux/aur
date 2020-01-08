@@ -3,7 +3,7 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=5
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
@@ -15,18 +15,12 @@ options=(!strip)
 
 source=(
 	$pkgname-$pkgver.tar.gz::https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz
-	https://github.com/mozilla/rr/commit/53c5bd72bae089616a3ca626b8af240481d70e6f.patch
-	file://0001-avoid-overriding-external-opt-debug-flags.patch
 )
-sha1sums=('55040be15a87dd93012d7cdbeb8a3fc428ea4b6b'
-          '9fcafcc3f4474b4352402b39002869a51e77f6df'
-          'SKIP')
+sha1sums=('4ed678804f8fe94a0b0e0556981c48d9b135cc1d')
 
 prepare() {
 	cd $pkgname-$pkgver
 	mkdir -p build
-	patch -Np1 -i "$srcdir/53c5bd72bae089616a3ca626b8af240481d70e6f.patch"
-	patch -Np1 -i "$srcdir/0001-avoid-overriding-external-opt-debug-flags.patch"
 }
 
 build() {
