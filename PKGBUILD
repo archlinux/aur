@@ -6,7 +6,7 @@ _kernelname=${pkgbase#linux}
 _desc="Parallella"
 pkgver=5.4.8
 pkgrel=1
-arch=('armv7h')
+arch=('armv7h' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'uboot-tools' 'git' 'dtc')
@@ -43,8 +43,8 @@ prepare() {
   git apply --whitespace=nowarn ../patch-${pkgver}
 
   # add epiphany driver
-  git apply ../0001-kernel-add-epiphany-kconfig.patch
-  git apply ../0002-kernel-add-epiphany-makefile.patch
+  patch -p1 < ../0001-kernel-add-epiphany-kconfig.patch
+  patch -p1 < ../0002-kernel-add-epiphany-makefile.patch
 
   cat "${srcdir}/config" > ./.config
   cat "${srcdir}/epiphany.c" > ./drivers/misc/epiphany.c
