@@ -24,7 +24,7 @@ package() {
   chmod -R 644 ./*
   install -d "${pkgdir}/usr/share/gnome-shell/extensions/"
   cp -r "argos@pew.worldwidemann.com/" "${pkgdir}/usr/share/gnome-shell/extensions/"
-  chmod -R 644 "${pkgdir}/usr/share/gnome-shell/extensions/argos@pew.worldwidemann.com/"
+  chmod -R 755 "${pkgdir}/usr/share/gnome-shell/extensions/argos@pew.worldwidemann.com/"
 }
 
 if [ -z "$install" ]; then
