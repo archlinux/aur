@@ -12,7 +12,7 @@ url="https://github.com/graysky2/kodi-standalone-service"
 license=('GPL')
 install=readme.install
 source=("https://github.com/graysky2/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('03a3a49edf21f96b9396452f03fbd4d844228da22930fe6468dcd279a801981b')
+sha256sums=('4d0009c741fc49cf364aa0028c84f6abf783ab780fbdcdf5b197e0aae4d9408b')
 
 package_kodi-standalone-service() {
   depends=('kodi' 'polkit' 'xorg-server' 'xorg-xinit')

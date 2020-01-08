@@ -7,7 +7,7 @@ pkgbase = kodi-standalone-service
 	arch = x86_64
 	license = GPL
 	source = https://github.com/graysky2/kodi-standalone-service/archive/v1.98.tar.gz
-	sha256sums = 03a3a49edf21f96b9396452f03fbd4d844228da22930fe6468dcd279a801981b
+	sha256sums = 4d0009c741fc49cf364aa0028c84f6abf783ab780fbdcdf5b197e0aae4d9408b
 
 pkgname = kodi-standalone-service
 	depends = kodi
