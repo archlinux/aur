@@ -1,7 +1,7 @@
 pkgbase = stone-soup-ncurses
 	pkgdesc = Open-source, single-player, role-playing roguelike game of exploration and treasure-hunting (ncurses-only)
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://crawl.develz.org/
 	install = stone-soup-ncurses.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = stone-soup-ncurses
 	license = custom
 	makedepends = bison
 	makedepends = flex
+	makedepends = python-yaml
 	depends = lua51
 	depends = ncurses
 	depends = sqlite
