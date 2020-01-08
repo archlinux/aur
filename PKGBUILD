@@ -5,8 +5,8 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r8192.020cd56ad
-pkgrel=2
+pkgver=r8196.01686f78f
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
@@ -34,12 +34,10 @@ build() {
 	# Fix for an issue some users are facing when compiling with GCC
 	CXXFLAGS+=" -DFMT_USE_USER_DEFINED_LITERALS=0"
 
-	# Fix for missing AAC decoder for Pokemon X/Y
-	CXXFLAGS+=" -DENABLE_FFMPEG_AUDIO_DECODER=ON"
-
 	cmake .. \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
 	  -DCMAKE_BUILD_TYPE=Release \
+	  -DENABLE_FFMPEG_AUDIO_DECODER=ON \
 	  -DUSE_SYSTEM_CURL=ON
 	make
 }
