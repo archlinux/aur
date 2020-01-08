@@ -5,37 +5,34 @@
 pkgname=balena-etcher
 _pkgname=etcher
 pkgver=1.5.70
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 _github_url='https://github.com/balena-io/etcher'
 url='https://etcher.io'
 license=(Apache)
-depends=(electron6 gtk2 libxtst libxss gconf nss alsa-lib nodejs)
-makedepends=(npm python2 git jq)
-optdepends=('libnotify: for notifications'
-            'speech-dispatcher: for text-to-speech')
+depends=("electron6" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
+makedepends=("npm" "python2" "git" "jq")
+optdepends=("libnotify: for notifications")
 conflicts=("${_pkgname}"
   "${_pkgname}-git"
   "${_pkgname}-bin"
 )
 options=('!strip')
 source=("etcher::git+https://github.com/balena-io/${_pkgname}.git#tag=v${pkgver}"
-        'git+https://github.com/balena-io/scripts.git'
         "${pkgname}-electron"
         "${pkgname}-electron.desktop"
         )
 sha256sums=('SKIP'
-            'SKIP'
             '911cca26a477c0525085410c78cd9292dc4b6bd27fb7340034fe762d333a3f52'
-            'c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754')
+            'c950d9578f9cf60998c920bb60c6617559963f06a4918e7072fdc706b0ef5754'
+           )
 
 prepare() {
   cd "${_pkgname}"
   git submodule init
-  git config submodule.scripts/resin.url "${srcdir}/scripts"
-  git submodule update
+  git submodule update || cd "${srcdir}/${_pkgname}/scripts/resin" && git checkout --
 }
 
 build() {
