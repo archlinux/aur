@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync Withing Stats to Garmin
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=1min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

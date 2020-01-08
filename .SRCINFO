@@ -1,0 +1,22 @@
+pkgbase = withings-garmin-v2-git
+	pkgdesc = Sync Withing Scale stats to Garmin Connect
+	pkgver = 37
+	pkgrel = 1
+	url = https://github.com/jaroslawhartman/withings-garmin-v2
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = python-simplejson
+	provides = withings-garmin-v2
+	source = withings-garmin-v2::git://github.com/jaroslawhartman/withings-garmin-v2.git
+	source = withings-garmin-v2.service
+	source = withings-garmin-v2.timer
+	source = withings-garmin-v2.conf
+	md5sums = SKIP
+	md5sums = f6481ec8e60e7a719fe22d418a0f074c
+	md5sums = 7af4ec447a5344fd6071fd6a7bcac170
+	md5sums = 8c065062c737baae192fadb97a88abc1
+
+pkgname = withings-garmin-v2-git
+

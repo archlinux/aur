@@ -1,0 +1,13 @@
+[Unit]
+Description=withings-garmin sync job
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/withings-garmin-v2/withings-garmin-v2.conf
+WorkingDirectory=/opt/withings-garmin-v2
+ExecStart=/usr/bin/python /opt/withings-garmin-v2/sync.py --gu ${GARMIN_USER} --gp ${GARMIN_PW}
+
+[Install]
+WantedBy=default.target
+
