@@ -5,7 +5,7 @@
 # entire build system, we just built it as is and copy it into /opt/shadered.
 
 pkgname=shadered-git
-pkgver=1.2.3_309.2120dce
+pkgver=1.3.0_386.9203f37
 pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/SHADERed"
-    echo "1.2.3_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "1.3.0_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
