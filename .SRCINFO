@@ -1,6 +1,6 @@
 pkgbase = doomsday-bin
 	pkgdesc = An advanced Doom engine that supports DOOM, Heretic and Hexen.
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 2
 	url = http://dengine.net/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = doomsday-bin
 	optdepends = hexen1-wad: Hexen shareware
 	provides = doomsday
 	conflicts = doomsday
-	source = doomsday-2.1.1-1.x86_64.rpm::http://api.dengine.net/1/builds?dl=doomsday-2.1.1-1.x86_64.rpm
-	md5sums = 9083fa158b892266490b6a14c206e308
+	source = doomsday-2.2.0-1.x86_64.rpm::http://api.dengine.net/1/builds?dl=doomsday-2.2.0-1.x86_64.rpm
+	md5sums = 6cf78a7f50df8bb358900fab4e5f5d2c
 
 pkgname = doomsday-bin
 
