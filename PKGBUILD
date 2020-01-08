@@ -5,7 +5,7 @@
 
 pkgname=atlauncher
 _upstreamname=ATLauncher
-pkgrel=1
+pkgrel=2
 pkgver=3.3.4.1
 pkgdesc="A Launcher for Minecraft which to allow you to download and install ModPacks quickly and easily."
 arch=('any')
@@ -16,18 +16,21 @@ makedepends=('java-environment=8' 'gradle')
 provides=('atlauncher')
 conflicts=('atlauncher-bin')
 
-source=("$_upstreamname-$pkgver.jar::https://github.com/ATLauncher/ATLauncher/releases/download/$pkgver/ATLauncher-$pkgver.jar"
+source=("$_upstreamname-$pkgver.tar.gz::https://github.com/ATLauncher/ATLauncher/archive/$pkgver.tar.gz"
         "atlauncher"
         "atlauncher.desktop"
         "atlauncher.png"
        )
 
-noextract=("$_upstreamname-$pkgver.jar")
-
-sha256sums=('d7b7155e8f6f8113534698488d0f822820ba25df4cb3f873e924490ad65932a2'
+sha256sums=('858cf77020edf045f71167698fff9790131e3254ac4528054ba33df0cfa99637'
             '8d74eebf99c96ce3719147dd5d00b66c72b5336371d0dc07cd1c96f7d45688fe'
             '5f45436c96ab9830555d0f987a96fc0b1a9766d450b958aba282820ffca6cc84'
             '369c7aa4439762878fd9970c75d1312cf0cd97119c8320b732addef4a621482d')
+
+build() {
+  cd "$_upstreamname-$pkgver"
+  gradle build
+}
 
 package() {
   cd "$srcdir"
@@ -44,7 +47,7 @@ package() {
   install -D -m755 "$srcdir/atlauncher" "$pkgdir/usr/bin/atlauncher"
 
   # install jar
-  install -D -m644 "$srcdir/$_upstreamname-$pkgver.jar" "$pkgdir/usr/share/java/atlauncher/ATLauncher.jar"
+  install -D -m644 "$srcdir/$_upstreamname-$pkgver/dist/$_upstreamname-$pkgver.jar" "$pkgdir/usr/share/java/atlauncher/ATLauncher.jar"
 
   # install desktop launcher with icon
   install -D -m644 "$srcdir/atlauncher.desktop" "$pkgdir/usr/share/applications/atlauncher.desktop"
