@@ -1,0 +1,22 @@
+diff '--color=auto' --unified --recursive --text python_qt_binding-0.3.6.orig/cmake/sip_configure.py python_qt_binding-0.3.6/cmake/sip_configure.py
+--- python_qt_binding-0.3.6.orig/cmake/sip_configure.py	2020-01-08 15:48:04.071751480 +0100
++++ python_qt_binding-0.3.6/cmake/sip_configure.py	2020-01-08 15:54:28.764128505 +0100
+@@ -54,16 +54,11 @@
+         # sipconfig.Configuration does not have a pyqt_sip_dir or pyqt_sip_flags AttributeError
+         sip_flags = QtCore.PYQT_CONFIGURATION['sip_flags']
+ 
+-        default_sip_dir = os.path.join(sipconfig._pkg_config['default_sip_dir'], 'PyQt5')
++        # arch python3 pkg uses /usr/lib/python3.8/site-packages/PyQt5/bindings directory
++        default_sip_dir = os.path.join(sipconfig._pkg_config['default_mod_dir'], 'PyQt5', 'bindings')
+         if os.path.exists(default_sip_dir):
+             return default_sip_dir, sip_flags
+ 
+-        # Homebrew installs sip files here by default
+-        default_sip_dir = os.path.join(sipconfig._pkg_config['default_sip_dir'], 'Qt5')
+-        if os.path.exists(default_sip_dir):
+-            return default_sip_dir, sip_flags
+-        raise FileNotFoundError('The sip directory for PyQt5 could not be located. Please ensure' +
+-                                ' that PyQt5 is installed')
+ 
+ 
+ if len(sys.argv) != 8:

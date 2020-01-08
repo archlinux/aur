@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-python-qt-binding
 	pkgdesc = ROS - This stack provides Python bindings for Qt.
 	pkgver = 0.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/python_qt_binding
 	arch = any
 	license = BSD
@@ -14,8 +14,10 @@ pkgbase = ros-melodic-python-qt-binding
 	depends = python-pyqt5
 	source = ros-melodic-python-qt-binding-0.3.6.tar.gz::https://github.com/ros-visualization/python_qt_binding/archive/0.3.6.tar.gz
 	source = 69-shiboken-cmake.patch::https://github.com/ros-visualization/python_qt_binding/commit/274b1c775daa97ac040d01779d7bd89f5d4ee771.diff
+	source = sip_path.patch
 	sha256sums = b56b8b35f72b8543aab7903eb4e9d456991994a06032a08ba72ba627c6652e12
 	sha256sums = 0aff7f07a1cdb9b09bbf792c4d79e431c8f4a5ccdd2d5a34168dd0a81ad4beb7
+	sha256sums = d80b1e8fb25b557e3508772a388a5f2362b46311e7d8b71d677b2500e6608ff7
 
 pkgname = ros-melodic-python-qt-binding
 
