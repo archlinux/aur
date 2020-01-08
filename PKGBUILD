@@ -3,7 +3,7 @@
 pkgbase=wps-office-mui
 
 pkgver=11.1.0.9080
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office MUI packages"
 depends=(wps-office)
 
@@ -48,7 +48,7 @@ sha256sums=(
 
 _package() {
     pkgdesc="$2 mui package for WPS Office"
-    depends=("wps-office=${pkgver}")
+    depends=("wps-office")
     provides=("wps-office-mui-${1,,}")
 
     mkdir -p "${pkgdir}/usr/lib/office6/mui"
