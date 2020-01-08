@@ -1,7 +1,7 @@
 # Maintainer: mattski <redmattski at gmail dot com>
 
 _pkgname=withings-garmin-v2
-pkgname=$_pkgname-git
+pkgname=$_pkgname
 pkgver=37
 pkgrel=1
 pkgdesc="Sync Withing Scale stats to Garmin Connect"
