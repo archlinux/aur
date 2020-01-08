@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.3.12'
-pkgrel=3
+pkgrel=4
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
@@ -80,7 +80,7 @@ package() {
 
 	chmod +x "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run"
     
-        ./bitrock-unpacker.tcl ${srcdir}/xampp-linux-x64-${pkgdir}-0-installer.run ${pkgdir}
+        ./bitrock-unpacker.tcl ${srcdir}/xampp-linux-x64-${pkgver}-0-installer.run ${pkgdir}
 	msg 'Copying executables and launcher...'
 	rsync -avz --remove-source-files "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
