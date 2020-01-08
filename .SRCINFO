@@ -1,6 +1,6 @@
 pkgbase = airgeddon-git
 	pkgdesc = Multi-use bash script for Linux systems to audit wireless networks
-	pkgver = r1895.e9775f8
+	pkgver = r2020.3e497c3
 	pkgrel = 1
 	url = https://github.com/v1s1t0r1sh3r3/airgeddon
 	arch = any
@@ -14,9 +14,7 @@ pkgbase = airgeddon-git
 	depends = gawk
 	depends = iproute2
 	depends = iw
-	depends = net-tools
 	depends = sed
-	depends = wireless_tools
 	depends = xterm
 	depends = tmux
 	depends = pciutils

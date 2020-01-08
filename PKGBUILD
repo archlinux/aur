@@ -11,8 +11,8 @@ license=('GPL3')
 source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
 depends=(
   'aircrack-ng' 'bash>=4.2' 'coreutils'
-  'gawk' 'iproute2' 'iw' 'net-tools'
-  'sed' 'wireless_tools' 'xterm' 'tmux'
+  'gawk' 'iproute2' 'iw'
+  'sed' 'xterm' 'tmux'
   'pciutils' 'procps-ng'
 )
 optdepends=(
