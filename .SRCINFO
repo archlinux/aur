@@ -1,7 +1,7 @@
 pkgbase = elpa
 	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
 	pkgver = 2019.11.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://elpa.mpcdf.mpg.de/html/Releases
 	arch = x86_64
 	license = LGPL3

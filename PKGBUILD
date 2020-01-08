@@ -3,7 +3,7 @@
 pkgname=elpa
 PkgName=ELPA
 pkgver=2019.11.001
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de/html/Releases"
@@ -27,7 +27,7 @@ prepare() {
         export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
         echo "GPU is enabled"
     else
-        export ACC=no
+        export _ACC=no
         echo "GPU is disabled"
     fi
    
