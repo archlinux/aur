@@ -1,6 +1,6 @@
 pkgbase = kali-undercover
 	pkgdesc = Kali Undercover Mode
-	pkgver = 2020.1.1
+	pkgver = 2020.1.2
 	pkgrel = 1
 	url = https://gitlab.com/kalilinux/packages/kali-undercover/
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = kali-undercover
 	optdepends = xfce4-notifyd: for settings restored notification
 	optdepends = libnotify: for settings restored notification
 	optdepends = psmisc: for clearing existing notificaion
-	source = https://gitlab.com/kalilinux/packages/kali-undercover/-/archive/kali/2020.1.1/kali-undercover-kali-2020.1.1.tar.gz
-	sha256sums = 33d87c2780750397958501a46794a4f103893983fd6ba69e1e380ceb7ddab874
+	source = https://gitlab.com/kalilinux/packages/kali-undercover/-/archive/kali/2020.1.2/kali-undercover-kali-2020.1.2.tar.gz
+	sha256sums = b390814ac427b1cdd854cfababd44eb6f6965720535b94ffa3b7056386427964
 
 pkgname = kali-undercover
 
