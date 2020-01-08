@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=snazzer-git
-pkgver=r179.a6577cf
+pkgver=r226.50bf4f2
 pkgrel=1
 pkgdesc="btrfs snapshotting and backup system offering snapshot measurement, transport and pruning. "
 arch=('any')
@@ -9,6 +9,7 @@ license=('BSD')
 depends=('btrfs-progs')
 makedepends=('git')
 source=("git+https://github.com/csirac2/snazzer.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "snazzer"
@@ -22,10 +23,14 @@ pkgver() {
 #  make test
 #}
 
+prepare() {
+    cd "$srcdir/snazzer"
+    sed -i '/export PATH/s#$#:/usr/bin/core_perl#' snazzer-send-wrapper
+}
+
 package() {
   cd "$srcdir/snazzer"
 
   make INSTALL_PREFIX="$pkgdir/usr/" install
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
-sha256sums=('SKIP')
