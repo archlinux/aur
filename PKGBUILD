@@ -5,17 +5,17 @@
 
 _gemname=sprockets
 pkgname=ruby-$_gemname
-pkgver=3.7.2
-pkgrel=1
+pkgver=4.0.0
+pkgrel=0
 pkgdesc='Rack-based asset packaging system'
 arch=(any)
 url='http://getsprockets.org/'
 license=(MIT)
-depends=(ruby ruby-concurrent-ruby ruby-rack)
+depends=(ruby ruby-concurrent ruby-rack)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('841a7f1086f1095dc11cbc422ee2487e48bc83db')
+sha256sums=(57bdad17013f843ba2b884025f18ccd0ad9639a8cab4cc65cf2ad4bdef3fa34a)
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
