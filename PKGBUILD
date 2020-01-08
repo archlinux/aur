@@ -2,7 +2,7 @@
 
 pkgname=('sat-templates-hg')
 _realname=sat_templates
-pkgver=0.7.r223.5db3aacee4a3
+pkgver=0.7.r227.f8f9019425c3
 _version=0.7
 pkgrel=1
 url="https://salut-a-toi.org/"
@@ -23,12 +23,7 @@ pkgver() {
   printf "$_version.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-build() {
-  cd "$srcdir/$_realname"
-  python setup.py build
-}
-
 package(){
   cd "$srcdir/$_realname"
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1  --skip-build
+  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 }
