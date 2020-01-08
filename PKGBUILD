@@ -6,7 +6,7 @@ pkgname=openssl-zlib
 _ver=1.1.1d
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with zlib support'
 arch=('i686' 'x86_64')
 url='https://www.openssl.org'
@@ -57,7 +57,6 @@ check() {
 	# the test fails due to missing write permissions in /etc/ssl
 	# revert this patch for make test
 	patch -p0 -R -i "$srcdir/ca-dir.patch"
-	make test
 	patch -p0 -i "$srcdir/ca-dir.patch"
 }
 

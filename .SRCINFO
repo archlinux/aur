@@ -1,7 +1,7 @@
 pkgbase = openssl-zlib
 	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security with zlib support
 	pkgver = 1.1.1.d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssl.org
 	arch = i686
 	arch = x86_64
