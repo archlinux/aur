@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-mrpt-msgs
+	pkgdesc = ROS - This package defines messages for MRPT
+	pkgver = 0.1.25
+	pkgrel = 1
+	url = http://wiki.ros.org/mrpt_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-geometry-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
+	source = mrpt_msgs::git+https://github.com/mrpt-ros-pkg/mrpt_msgs.git#tag=master
+	sha256sums = SKIP
+
+pkgname = ros-melodic-mrpt-msgs
+
