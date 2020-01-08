@@ -1,7 +1,7 @@
 # Maintainer: liara <liara@archlinux.email>
 
 pkgname=python-shodan
-pkgver=1.21.1
+pkgver=1.21.2
 pkgrel=1
 pkgdesc="Python library and command-line utility for Shodan"
 url="https://github.com/achillean/shodan-python"
@@ -9,8 +9,8 @@ license=('MIT')
 arch=('any')
 depends=('python-requests' 'python-click' 'python-colorama' 'python-click-plugins' 'python-xlsxwriter')
 makedepends=('python' 'python-setuptools')
-source=(https://files.pythonhosted.org/packages/5d/68/2e35c893eecea964a7e040c6cf73ee8f98dff995f19785579b39c90fdef2/shodan-${pkgver}.tar.gz)
-sha256sums=('834dfd084fed290b2b445545b0d1cac7822f3c0ed6ba09707efb1716bb485ede')
+source=(https://files.pythonhosted.org/packages/f3/6f/d9b9095f1fbd714c42c941f90288a5f4ac5552f6cc38224fa12646c2bcef/shodan-${pkgver}.tar.gz)
+sha256sums=('ed3c38c749a5d77c935b226b6a7761e972269bd0d55c5c08526af73896aa6edd')
 build() {
   cd "$srcdir/shodan-${pkgver}"
   python setup.py build
