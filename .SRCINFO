@@ -1,15 +1,15 @@
 pkgbase = python-aiohttp_remotes
-        pkgdesc = A set of useful tools for aiohttp.web server
-        pkgver = 0.1.2
-        pkgrel = 2
-        url = https://github.com/aio-libs/aiohttp-remotes
-        arch = x86_64
-        license = BSD
-        makedepends = flit
-        depends = python-aiohttp
-        source = https://github.com/aio-libs/aiohttp-remotes/archive/v0.1.2.tar.gz
-        sha256sums = 074fc7d7dc7c07b653e202d44be46db87d35e95c77535417b78fc9b01d774b5d
+	pkgdesc = A set of useful tools for aiohttp.web server
+	pkgver = 0.1.2
+	pkgrel = 3
+	url = https://github.com/aio-libs/aiohttp-remotes
+	arch = x86_64
+	license = BSD
+	makedepends = flit
+	depends = python-aiohttp
+	depends = python-yarl
+	source = https://github.com/aio-libs/aiohttp-remotes/archive/v0.1.2.tar.gz
+	sha256sums = 074fc7d7dc7c07b653e202d44be46db87d35e95c77535417b78fc9b01d774b5d
 
 pkgname = python-aiohttp_remotes
-
 
