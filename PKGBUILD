@@ -2,8 +2,8 @@
 
 pkgbase=kodi-standalone-service
 pkgname=(kodi-standalone-service kodi-standalone-gbm-service)
-pkgver=1.97
-pkgrel=2
+pkgver=1.98
+pkgrel=1
 pkgdesc="Systemd service to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
 # You have been warned.
@@ -12,7 +12,7 @@ url="https://github.com/graysky2/kodi-standalone-service"
 license=('GPL')
 install=readme.install
 source=("https://github.com/graysky2/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('576caa9793d3c906774c4c44a97bde17aaa9de92ba1d2a1512733c2ab09093ea')
+sha256sums=('03a3a49edf21f96b9396452f03fbd4d844228da22930fe6468dcd279a801981b')
 
 package_kodi-standalone-service() {
   depends=('kodi' 'polkit' 'xorg-server' 'xorg-xinit')
