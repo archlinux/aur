@@ -2,15 +2,15 @@
 # Maintainer: ValleyKnight <valleyknight@protonmail.com>
 
 pkgname=rsfetch-git
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Fast (1ms execution time) and somewhat(?) minimal fetch program written in Rust."
+pkgdesc="Fast (~5ms execution time) and somewhat(?) minimal fetch program written in Rust."
 url="https://github.com/rsfetch/rsfetch"
 license=('MIT')
 depends=()
 conflicts=('rsfetch-bin')
 makedepends=("rust")
-arch=("i686" "x86_64")
+arch=("x86_64")
 source=("rsfetch-git::git+https://github.com/rsfetch/rsfetch#branch=master")
 
 build() {
