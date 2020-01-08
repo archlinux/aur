@@ -7,8 +7,8 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=7.13.3496
-pkgrel=3
+pkgver=8.13.3559
+pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/glslang'
@@ -26,17 +26,15 @@ makedepends=(
 options=('staticlibs')
 source=(
         ${_pkgbasename}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz
-        fix-cmake-folder.patch
 )
 sha256sums=(
-        '170d1538a670af4cae300e875d7cda9744b1acee1ab7252ecf7c4004186bb922'
-        '5b231d27cfde2178b937b115e9b92fe10c28e7624a638cca9f7b48b4bec3f71e'
+        'c58fdcf7e00943ba10f9ae565b2725ec9d5be7dab7c8e82cac72fcaa83c652ca'
 )
 
 prepare() {
-    echo "Patching"
-    cd ${_pkgbasename}-${pkgver}
-    patch --forward --strip=1 --verbose --input="${srcdir}/fix-cmake-folder.patch"
+    echo "Patching if needed"
+#    cd ${_pkgbasename}-${pkgver}
+#    patch --forward --strip=1 --verbose --input="${srcdir}/fix-cmake-folder.patch"
 }
 
 build() {
