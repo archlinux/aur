@@ -1,0 +1,12 @@
+post_install () {
+	grep -qe '^/bin/imrsh$' etc/shells || echo '/bin/imrsh' >> etc/shells
+	grep -qe '^/usr/bin/imrsh$' etc/shells || echo '/usr/bin/imrsh' >> etc/shells
+}
+
+post_upgrade () {
+	post_install "$@"
+}
+
+pre_remove () {
+	sed -i -r '/^(\/usr)?\/bin\/imrsh$/d' etc/shells
+}

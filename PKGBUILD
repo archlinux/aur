@@ -9,8 +9,9 @@ license=(GPL3)
 conflicts=(imrsh)
 provides=(imrsh)
 depends=(libtickit mrsh)
-makedepends=(meson ninja)
+makedepends=(meson ninja git)
 source=("${pkgname}::git+${url}")
+install=imrsh-git.install
 sha512sums=(SKIP)
 
 pkgver () {
@@ -26,6 +27,10 @@ build () {
 	rm -rf build
 	arch-meson -Dstrip=true build "${pkgname}"
 	ninja -C build
+}
+
+check () {
+	meson test -C build
 }
 
 package () {
