@@ -1,6 +1,6 @@
 pkgbase = vim-startify-git
 	pkgdesc = A fancy start screen for Vim
-	pkgver = 1.1.r127.gf80b0cb
+	pkgver = 1.1.r243.g520f277
 	pkgrel = 2
 	epoch = 1
 	url = https://github.com/mhinz/vim-startify
