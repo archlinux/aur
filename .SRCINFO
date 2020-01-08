@@ -1,0 +1,20 @@
+pkgbase = ros-melodic-ackermann-msgs
+	pkgdesc = ROS messages for robots using Ackermann steering.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://wiki.ros.org/ackermann_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	depends = python-rospkg
+	source = ros-melodic-ackermann-msgs::git+https://github.com/ros-drivers/ackermann_msgs.git#tag=1.0.1
+	sha256sums = SKIP
+
+pkgname = ros-melodic-ackermann-msgs
+
