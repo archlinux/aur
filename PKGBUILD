@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=10.0.0_r332063.b462cdff05b
+pkgver=10.0.0_r338931.183b5d38d7c
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -75,7 +75,7 @@ prepare() {
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc
     
     cd clang
-    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
+    # patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
 build() {
@@ -117,7 +117,7 @@ check() {
     ninja $NINJAFLAGS check-polly
     ninja $NINJAFLAGS check-lld
     # check-lldb causes ninja to hang at 99%, disabled those tests for now
-#    ninja $NINJAFLAGS check-lldb
+    ninja $NINJAFLAGS check-lldb
     ninja $NINJAFLAGS check-clang
     ninja $NINJAFLAGS check-clang-tools
 }
