@@ -2,6 +2,6 @@ src
 pkg
 *.src.tar.gz
 *.part
-*.pkg.tar.xz
+*.pkg.tar.*
 *.deb
 *.log
