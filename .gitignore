@@ -1,7 +1,9 @@
 *.md
 pkg/
 src/
+*.tar
 *.tar.gz
 *.tar.xz
+*.tar.zstd
 *.txt
 *.zip

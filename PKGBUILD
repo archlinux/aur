@@ -2,7 +2,7 @@
 
 _fnt_name=public-sans
 pkgname=ttf-${_fnt_name}
-pkgver=1.007
+pkgver=1.008
 pkgrel=1
 pkgdesc="A strong, neutral typeface for text or display."
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom:OFL')
 source=("$pkgname-$pkgver.zip::https://github.com/uswds/${_fnt_name}/releases/download/v${pkgver}/${_fnt_name}-v${pkgver}.zip"
         https://raw.githubusercontent.com/uswds/public-sans/master/LICENSE.md
         https://raw.githubusercontent.com/impallari/Libre-Franklin/master/OFL.txt)
-sha256sums=('5e92f0cfddef3f0c8e1bd6ed63eb92eacae85f37621c69b5af75afde2cd26019'
+sha256sums=('12c5880048ad3f62f8b6f868142cb8b694029a037b6886788ce587babe026874'
             '00acc4a89658f2c26f17d608f37f909ad087ade21b02759f4c221526371cf9eb'
             'ea80c9fcfc279cc306910cf5a21133320276ced31d3929e3c025519f3ed28b50')
 
