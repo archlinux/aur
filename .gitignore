@@ -1,0 +1,6 @@
+*.tar
+*.tar.*
+
+pkg/
+src/
+osu-lazer-git/
