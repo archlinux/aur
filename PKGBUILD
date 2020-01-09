@@ -1,7 +1,7 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR."
 arch=("x86_64")
@@ -21,6 +21,7 @@ build() {
 
     _additionalOptions=
 
+    # Attempting to compile without package will result in compile error
     pacman -Qi xorg-server >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         _additionalOptions="CONFIG+=noX11"
@@ -29,6 +30,7 @@ build() {
         echo "X11 features enabled."
     fi
 
+    # Attempting to compile without package will result in compile error
     pacman -Qi dbus >/dev/null 2>&1
     if [ $? -ne 0 ]; then
         _additionalOptions+=" CONFIG+=noDBUS"
@@ -43,5 +45,20 @@ build() {
 
 package() {
     cd "OpenVR-AdvancedSettings-$pkgver"
+
+    # Get desktop icon working
+    mkdir -p "$pkgdir/usr/share/applications"
+    cp "src/package_files/linux/AdvancedSettings.desktop" "$pkgdir/usr/share/applications/"
+    sed -i 's/Exec=.*/Exec=\/opt\/AdvancedSettings\/AdvancedSettings/' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+    sed -i 's/Icon=.*/Icon=\/opt\/AdvancedSettings\/AdvancedSettings.png/' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+
+    # Make program use correct working dir
+    echo "Path=/opt/AdvancedSettings" >> "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+
+    # Enable command line usage
+    mkdir -p "$pkgdir/usr/bin/"
+    ln -s /opt/AdvancedSettings/AdvancedSettings "$pkgdir/usr/bin/ovras"
+
+    # Install
     make install
 }
