@@ -2,7 +2,7 @@
 
 pkgname=syscoin-git
 _gitname=syscoin
-pkgver=v4.1.1
+pkgver=v4.1.2
 pkgrel=1
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
