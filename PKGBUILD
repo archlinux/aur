@@ -2,9 +2,9 @@
 # Contributor: Tmplt <tmplt@dragons.rocks>
 
 pkgname=katriawm
-pkgver=18.09
-pkgrel=2
-pkgdesc="A non-reparenting, dynamic window manager for X11 with decorations"
+pkgver=19.11
+pkgrel=1
+pkgdesc="non-reparenting, dynamic window manager for X11 with decorations"
 arch=("i686" "x86_64")
 url="https://www.uninformativ.de/git/katriawm/file/README.html"
 license=("MIT")
