@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Colin Pitrat <colin dot pitrat at gmail dot com>
 pkgname=caprice32-git
-pkgver=v4.5.0.r75.g76af8df
+pkgver=v4.5.0.r79.g797e033
 pkgrel=1
 pkgdesc="An emulator of the Amstrad CPC 8bit home computer range (CPC 464, 664, 6128)"
 arch=('i686' 'x86_64')
