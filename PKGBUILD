@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=71.0
+pkgver=72.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -25,13 +25,11 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         $pkgname.cfg.patch
-        "mozinfo_py38.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch?h=packages/firefox"
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('78304cd58229e7103b56b34718aad051c9a4db30c266512a64f501ba58da7fbe'
+sha256sums=('6473b2d854828b5d3dbe4b01093e8993141de7707d5d01eb32bd16a469b46708'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
-            '33f5aec0bba83b23410176c5351425d2ad949d7f0bf409a579be25bebb773fce'
             'SKIP'
             'SKIP')
 prepare() {
@@ -40,9 +38,6 @@ prepare() {
 
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # Make it compile with Python 3.8
-  patch -Np1 -i ../mozinfo_py38.patch
 
   # NOTE:
   # unlock some prefs I deem worthy of keeping unlocked or slightly less restricted
