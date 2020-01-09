@@ -1,7 +1,7 @@
 pkgbase = aspectj
 	pkgdesc = seamless aspect-oriented extension to the Java™ programming language
 	pkgver = 1.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projects.eclipse.org/projects
 	arch = any
 	license = Eclipse Public License 1.0
