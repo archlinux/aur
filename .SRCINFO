@@ -1,6 +1,6 @@
 pkgbase = radare2-cutter-ghidra
 	pkgdesc = A Qt and C++ GUI for radare2 reverse engineering framework with Python and Ghidra support
-	pkgver = 1.9.0.r49.g524b27fa
+	pkgver = 1.10.0.r14.gc645cbee
 	pkgrel = 1
 	url = https://github.com/radareorg/cutter
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = radare2-cutter-ghidra
 	makedepends = git
 	makedepends = cmake
 	depends = python
-	depends = radare2
+	depends = radare2-git
 	depends = capstone
 	depends = qt5-base
 	depends = qt5-svg
