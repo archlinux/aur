@@ -1,0 +1,20 @@
+pkgbase = python-jsbsim-git
+	pkgdesc = An open source flight dynamics & control software library (Python)
+	pkgver = r5209.b9a9ee9a
+	pkgrel = 1
+	url = http://www.jsbsim.org
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = cython
+	makedepends = git
+	depends = expat
+	provides = python-jsbsim
+	conflicts = python-jsbsim
+	conflicts = jsbsim
+	source = git+https://github.com/JSBSim-Team/jsbsim
+	sha256sums = SKIP
+
+pkgname = python-jsbsim-git
+
