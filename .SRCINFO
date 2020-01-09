@@ -1,0 +1,16 @@
+pkgbase = visrtx
+	pkgdesc = Visualization framework powered by NVIDIA technology.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/NVIDIA/visrtx/tree/v0.1.6
+	arch = x86_64
+	license = custom:NVIDIA
+	makedepends = cmake
+	depends = cuda
+	depends = optix6
+	depends = mdl-sdk
+	source = https://github.com/NVIDIA/visrtx/archive/v0.1.6.tar.gz
+	sha512sums = c99bf2dd2f0e765f35498b5f6a8695ed03dc865452f49aea650862358ffb6d9deb64e729660ce3c849abe15f4f932142cd65d1d84720ac309121d7c751b709bc
+
+pkgname = visrtx
+
