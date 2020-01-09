@@ -22,7 +22,7 @@ post_install() {
         echo "gogios user already exists"
     else
 	mkdir -p /var/spool/gogios
-        useradd --system --user-group --home-dir /var/spool/gogios --shell /sbin/nologin gogios
+        useradd --system --user-group --home-dir /var/spool/gogios --create-home --shell /sbin/nologin gogios
 	chown gogios:gogios /var/spool/gogios
     fi
     
