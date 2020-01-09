@@ -5,7 +5,7 @@
 pkgname=gtk-theme-solarc-git
 _pkgname=solarc-theme
 _pkgauthor=schemar
-_gnomeversion=3.32
+_gnomeversion=3.34
 pkgver=830.f55ce00
 pkgrel=1
 pkgdesc="A flat theme with transparent elements. Based on the Arc theme: https://github.com/arc-design/arc-theme"
