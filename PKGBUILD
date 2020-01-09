@@ -59,12 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=8
+_minor=10
 _srcname=linux-${_major}
 _clr=${_major}.8-886
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -337,7 +337,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '5daea86d29246b5a8e193c097756bc833b33dd6fa6419f9cb52bcbf16a192a1b'
+            'a1add96c0e86872e2e81662aeca3db981e47791df0529e1e2984eb3129d9db34'
             'SKIP'
             '9f12f68e96f6865325995c38213e09b05751cd1ef03e0bbc9f1bdc3e5680b337'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
