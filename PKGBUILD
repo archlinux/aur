@@ -1,7 +1,7 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net> (https://angrysysadmins.tech)
 
 pkgname=gogios
-pkgver=1.3.r2.g9951692
+pkgver=2.1.r0.gb6d1ffe
 pkgrel=1
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
@@ -33,4 +33,3 @@ package() {
 	cd "$srcdir/$pkgname"
 	make DESTDIR="$pkgdir" package
 }
-
