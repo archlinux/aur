@@ -1,4 +1,11 @@
-docker-py/
-src/
-pkg/
-*.tar.xz
+*
+!PKGBUILD
+!LICENSE
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
