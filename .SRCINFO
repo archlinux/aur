@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-twist-mux-msgs
+	pkgdesc = ROS The twist_mux msgs and actions package
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://wiki.ros.org/twist_mux_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-actionlib
+	makedepends = ros-melodic-actionlib-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-actionlib
+	depends = ros-melodic-actionlib-msgs
+	depends = python-rospkg
+	source = ros-melodic-twist-mux-msgs::git+https://github.com/ros-teleop/twist_mux_msgs.git#tag=2.1.0
+	sha256sums = SKIP
+
+pkgname = ros-melodic-twist-mux-msgs
+
