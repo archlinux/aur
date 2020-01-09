@@ -1,0 +1,19 @@
+pkgbase = quark-engine
+	pkgdesc = An Obfuscation-Neglect Android Malware Scoring System
+	pkgver = 20.01
+	pkgrel = 1
+	url = https://github.com/quark-engine/quark-engine
+	arch = any
+	license = GPL
+	makedepends = python-setuptools>=3.7
+	depends = python>=3.7
+	depends = python-prettytable
+	depends = python-androguard-git
+	depends = python-tqdm
+	depends = python-colorama
+	depends = python-click
+	source = quark-engine-20.01.tar.gz::https://github.com/quark-engine/quark-engine/archive/v20.01.tar.gz
+	sha256sums = bf3578d3716b79a9d9098f7dd403b02be42a19322c0c37c936d824e09178ff43
+
+pkgname = quark-engine
+
