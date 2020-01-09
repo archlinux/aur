@@ -1,6 +1,6 @@
 pkgbase = jsbsim-git
 	pkgdesc = An open source flight dynamics & control software library
-	pkgver = rXX.XX
+	pkgver = r5209.b9a9ee9a
 	pkgrel = 1
 	url = http://www.jsbsim.org
 	arch = x86_64
