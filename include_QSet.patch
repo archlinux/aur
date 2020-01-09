@@ -1,0 +1,11 @@
+diff '--color=auto' --unified --recursive --text rqt_image_view-0.4.13/include/rqt_image_view/image_view.h rqt_image_view-0.4.13.new/include/rqt_image_view/image_view.h
+--- rqt_image_view-0.4.13/include/rqt_image_view/image_view.h	2018-05-03 00:27:26.000000000 +0200
++++ rqt_image_view-0.4.13/include/rqt_image_view/image_view.h	2020-01-09 07:57:04.907081398 +0100
+@@ -51,6 +51,7 @@
+ #include <QString>
+ #include <QSize>
+ #include <QWidget>
++#include <QSet>
+ 
+ #include <vector>
+ 

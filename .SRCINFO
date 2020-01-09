@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rqt-image-view
 	pkgdesc = ROS - rqt_image_view provides a GUI plugin for displaying images using image_transport.
 	pkgver = 0.4.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_image_view
 	arch = any
 	license = BSD
@@ -22,7 +22,9 @@ pkgbase = ros-melodic-rqt-image-view
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-image-transport
 	source = ros-melodic-rqt-image-view-0.4.13.tar.gz::https://github.com/ros-visualization/rqt_image_view/archive/0.4.13.tar.gz
+	source = include_QSet.patch
 	sha256sums = e24e26dc98404966cc827a4e576a3c7465d82076095d1831eb9da49d3a97c4d5
+	sha256sums = c6a8079a952d8ee9560d190e27f124f53c0e78b4d80ec46bbe06ae36f1de85b7
 
 pkgname = ros-melodic-rqt-image-view
 
