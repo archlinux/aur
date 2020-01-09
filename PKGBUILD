@@ -6,9 +6,10 @@ pkgver=r322.aa5b9ac
 pkgdesc="A light-weight dynamic tracer for Linux"
 arch=('x86_64')
 url="https://github.com/iovisor/ply"
-license=('BSD')
+license=('GPL2')
 provides=('ply')
 makedepends=('git')
+depends=('glibc')
 source=("git+https://github.com/iovisor/${_pkgname}")
 md5sums=('SKIP')
 
