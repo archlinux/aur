@@ -2,7 +2,7 @@
 # Contributor: Tom Kuther <gimpel@sonnenkinder.org>
 
 pkgname=snapper
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="A tool for managing BTRFS and LVM snapshots. It can create, diff and restore snapshots and provides timelined auto-snapping."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://github.com/openSUSE/snapper/archive/v$pkgver/$pkgname-$pkgver.t
         "drift-file-path.patch"
         "macro-iterator-fix.patch"
         "usr-paths.patch")
-sha256sums=('13c56586b01ece9ca3d1ac19a9e7384385662b7600788f56c9940919ae6f1467'
+sha256sums=('eb7e4d176682e196a466d9946ee3ccefdcb9e674af71a3e49631f6b34c8a3d60'
             '267118a198583fc1ff10f376e108c0600844e0b1370e44ac4674b20332bff106'
             'df980fe0faa6a21f8df59b90d486e50e4fc766de808049e77a52d1a73d139b82'
             '093c7993e466a0cf9c0794a971825f5f1b40047512857bc124ed0d63dbb306d6'
