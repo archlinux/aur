@@ -1,5 +1,11 @@
-pkg/*
-src/*
-*tar.gz
-*tar.xz
-influxdb-python/*
+*
+!PKGBUILD
+!LICENSE
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
