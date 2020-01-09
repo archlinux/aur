@@ -1,12 +1,16 @@
 pkgbase = symbiyosys-git
 	pkgdesc = A front-end driver program for Yosys-based formal hardware verification flows
-	pkgver = r127.e90bcb5
+	pkgver = r180.23f8901
 	pkgrel = 1
 	url = https://github.com/YosysHQ/SymbiYosys.git
 	arch = any
 	license = custom:ISC
+	makedepends = git
 	depends = python3
 	depends = yosys
+	optdepends = yices: solving using yices2
+	optdepends = z3: solving using z3
+	optdepends = boolector: solving using boolector
 	source = git+https://github.com/YosysHQ/SymbiYosys.git
 	source = LICENSE
 	sha512sums = SKIP
