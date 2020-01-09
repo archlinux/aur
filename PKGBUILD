@@ -5,7 +5,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # thanks to Slash <demodevil5[at]yahoo[dot]com> for the original no-git package
 
 pkgname=ezquake-git
-pkgver=r4932.ad6618c
+pkgver=r5247.1aaea9bf
 pkgrel=1
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
@@ -13,8 +13,8 @@ license=('GPL')
 # TODO[0]: find out what's needed at runtime and what's needed at compile time. http://ezquake.svn.sourceforge.net/viewvc/ezquake/trunk/ezquake/compiling_on_unix.txt seems to be outdated...
 # Note that if a package is required at both build and runtime, it can be just included in depends array.
 # NOTE: "libgl" is a virtual provides, of sorts. can be either mesa-libgl, nvidia-libgl, etc...
-depends=('libgl' 'libxxf86dga' 'zlib' 'libpng' 'minizip' 'libircclient' 'expat' 'pcre' 'sdl2' 'tcl' 'glew')
-makedepends=('glu' 'xf86vidmodeproto' 'libxxf86vm' 'libxext' 'jansson' 'libxpm' 'xxd')
+depends=('libgl' 'libdrm' 'zlib' 'libpng' 'minizip' 'libircclient' 'expat' 'pcre' 'sdl2' 'tcl' 'glew')
+makedepends=('glu' 'xorgproto' 'libxxf86vm' 'libxext' 'jansson' 'libxpm' 'xxd')
 optdepends=('quake-qrp-textures: for high-res textures'
 	    'nquake: a more user-friendly quake experience')
 conflicts=('fuhquake')
