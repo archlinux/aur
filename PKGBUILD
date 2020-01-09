@@ -1,6 +1,6 @@
 # Maintainer: Haden Collins <collinshaden@gmail.com>
 pkgname='wlogout'
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Logout menu for wayland"
 arch=('x86_64')
