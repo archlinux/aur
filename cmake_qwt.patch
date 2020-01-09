@@ -1,0 +1,57 @@
+*** a/CMakeLists.txt	2018-12-13 09:51:20.000000000 +0000
+--- b/CMakeLists.txt	2020-01-09 01:51:07.020341991 +0000
+***************
+*** 3,8 ****
+--- 3,9 ----
+  
+  # Set compiler flags
+  set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
++ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+  
+  find_package(catkin REQUIRED
+    COMPONENTS
+***************
+*** 13,18 ****
+--- 14,21 ----
+      variant_topic_tools
+  )
+  
++ find_package(Qwt REQUIRED)
++ 
+  if("${qt_gui_cpp_USE_QT_MAJOR_VERSION} " STREQUAL "5 ")
+    find_package(Qt5Widgets REQUIRED)
+  else()
+***************
+*** 20,50 ****
+    include(${QT_USE_FILE})
+  endif()
+  
+- find_path(
+-   QWT_INCLUDE_DIRS
+-   NAMES
+-     qwt_plot.h
+-   PATHS
+-     /usr/include/qwt-qt4
+-     /usr/include/qwt
+-     /usr/local/include/qwt
+- )
+- 
+- if("${qt_gui_cpp_USE_QT_MAJOR_VERSION} " STREQUAL "5 ")
+-   find_library(
+-     QWT_LIBRARIES
+-     NAMES
+-       qwt-qt5
+-   )
+- else()
+-   find_library(
+-     QWT_LIBRARIES
+-     NAMES
+-       qwt-qt4
+-       qwt
+-   )
+- endif()
+- 
+  catkin_python_setup()
+  
+  set(rqt_multiplot_SRCS
+--- 23,28 ----

@@ -1,0 +1,33 @@
+pkgbase = ros-melodic-rqt-multiplot
+	pkgdesc = ROS - rqt_multiplot provides a GUI plugin for visualizing numeric values in multiple 2D plots using the Qwt plotting backend.
+	pkgver = 0.0.10
+	pkgrel = 2
+	url = http://www.ros.org/
+	arch = any
+	license = GNU Lesser General Public License (LGPL)
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-variant-topic-tools
+	makedepends = ros-melodic-rqt-gui
+	makedepends = ros-melodic-rqt-gui-cpp
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-rosbag
+	makedepends = ros-melodic-catkin
+	makedepends = qwt
+	makedepends = qt5-base
+	depends = ros-melodic-rqt-gui
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-rosbag
+	depends = ros-melodic-rqt-gui-cpp
+	depends = ros-melodic-variant-topic-tools
+	depends = qwt
+	depends = qt5-base
+	source = ros-melodic-rqt-multiplot-0.0.10-0.tar.gz::https://github.com/anybotics/rqt_multiplot_plugin-release/archive/release/melodic/rqt_multiplot/0.0.10-0.tar.gz
+	source = cmake_qwt.patch
+	source = FindQwt.cmake
+	sha256sums = 92e975517c6726dcd8a9c73c658d524126d48716bd4db032cec61f641ce27ae8
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ros-melodic-rqt-multiplot
+
