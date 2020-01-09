@@ -1,10 +1,11 @@
 pkgbase = python-sphinx-git
-	pkgver = r11542.271ea125f
+	pkgver = r14026.f6e7878ec
 	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = BSD
-	checkdepends = python-nose
+	checkdepends = python-pytest
+	checkdepends = imagemagick
 	checkdepends = texlive-latexextra
 	checkdepends = python-snowballstemmer
 	checkdepends = python-babel

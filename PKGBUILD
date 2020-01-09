@@ -1,6 +1,6 @@
 
 pkgname=python-sphinx-git
-pkgver=r11542.271ea125f
+pkgver=r14026.f6e7878ec
 pkgrel=1
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -13,7 +13,8 @@ makedepends=('git'
   'python-six'
 )
 checkdepends=(
-  'python-nose'
+  'python-pytest'
+  'imagemagick'
   'texlive-latexextra'
   'python-snowballstemmer'
   'python-babel'
