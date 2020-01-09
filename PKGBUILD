@@ -4,7 +4,7 @@
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 
 pkgname=st-scrollback-git
-pkgver=0.8.2.r11.g21367a0
+pkgver=0.8.2.r25.g3848301
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X, patched with scrollback patches'
 url='https://st.suckless.org/'
@@ -13,14 +13,14 @@ license=('MIT')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
 _patches=('https://st.suckless.org/patches/scrollback/st-scrollback-20190331-21367a0.diff'
-          'https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.diff'
-          'https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20190131-e23acb9.diff')
+          'https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff'
+          'https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20191024-a2c479c.diff')
 source=('git://git.suckless.org/st'
         ${_patches[@]})
 sha1sums=('SKIP'
-          'fc5140eb0cc74636e5a0f5cd629e3cfbd10c9ed7'
-          '46e92d9d3f6fd1e4f08ed99bda16b232a1687407'
-          '0743f3736ff18be535e25c0916a89e5eed9d5f4f')
+        'fc5140eb0cc74636e5a0f5cd629e3cfbd10c9ed7'
+        'e457b4819f5233999e21d6df8438931160cd9181'
+        '0648ea793dbb9e7e6ab8b3c841c25ab39a001eb0')
 provides=("st")
 conflicts=("st")
 
