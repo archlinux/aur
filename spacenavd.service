@@ -8,4 +8,3 @@ ExecStart=/usr/bin/spacenavd
 
 [Install]
 WantedBy=multi-user.target
-
