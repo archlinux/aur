@@ -1,5 +1,4 @@
 # Maintainer: Mufeed Ali <lastweakness@tuta.io>
-# Based on the git package by Manuel Palenzuela
 
 author=eigenein
 pkgname=python-pure-protobuf
