@@ -8,7 +8,7 @@
 
 pkgname=tt-rss-git
 epoch=1
-pkgver=r9521.ae376bdfb
+pkgver=r9777.040dfc71f
 pkgrel=1
 pkgdesc='Web-based news feed (RSS/Atom) aggregator (Git version)'
 arch=(any)
@@ -52,4 +52,6 @@ package() {
   chmod -R 777 "$pkgdir"/var/lib/tt-rss/*
 
   install -Dm644 "$srcdir"/service "$pkgdir"/usr/lib/systemd/system/tt-rss.service
+
+  git log --date='format:%y.%m' --pretty='%cd-%h' -n1 HEAD > "$_instdir/version_static.txt"
 }

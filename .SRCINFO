@@ -1,6 +1,6 @@
 pkgbase = tt-rss-git
 	pkgdesc = Web-based news feed (RSS/Atom) aggregator (Git version)
-	pkgver = r9521.ae376bdfb
+	pkgver = r9777.040dfc71f
 	pkgrel = 1
 	epoch = 1
 	url = http://tt-rss.org/
