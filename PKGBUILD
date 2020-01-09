@@ -5,6 +5,7 @@ pkgrel=2
 pkgdesc="Cross-Platform Console Software-defined radio (SDR) receiver/decoder for marine Automatic Information System (AIS) signals"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="http://xdeco.org/"
+_github_url="none"
 license=('custom')
 depends=('rtl-sdr')
 provides=('aisdeco2')
