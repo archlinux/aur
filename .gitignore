@@ -1,6 +1,11 @@
-pkg/
-src/
-*.tgz
-*.tar.xz
-mypy/
-typeshed/
+*
+!PKGBUILD
+!LICENSE
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
