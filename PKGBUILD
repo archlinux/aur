@@ -7,7 +7,7 @@
 _gemname_="curses"
 pkgname="ruby-${_gemname_}"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby binding for curses, ncurses, and PDCurses"
 arch=("any")
 url="https://github.com/ruby/curses"
