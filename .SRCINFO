@@ -1,0 +1,15 @@
+pkgbase = members
+	pkgdesc = Shows the members of a group; by default, all members
+	pkgver = 20080128
+	pkgrel = 1
+	url = https://packages.qa.debian.org/m/members.html
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = http://ftp.de.debian.org/debian/pool/main/m/members/members_20080128.1+nmu1.tar.xz
+	source = LICENSE
+	sha256sums = 334fed53fd3698f6fb644188550e0ff91769c63606bc189dd7a4380a3e6f8160
+	sha256sums = c4855f8626ae06af0301e2d373832d0c27b8aa8db34457c3a3a7d334927e2fc0
+
+pkgname = members
+
