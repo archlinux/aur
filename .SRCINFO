@@ -1,7 +1,7 @@
 pkgbase = citra-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
 	pkgver = r8196.01686f78f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/citra-emu/citra/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = citra-git
 	makedepends = shared-mime-info
 	makedepends = desktop-file-utils
 	makedepends = qt5-multimedia
+	depends = ffmpeg
 	source = citra::git+https://github.com/citra-emu/citra
 	md5sums = SKIP
 
