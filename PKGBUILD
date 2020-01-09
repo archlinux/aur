@@ -24,7 +24,6 @@ prepare() {
 
   # cannot be modified upstream, see https://gitlab.kitware.com/paraview/paraview/merge_requests/1716
   patch -p1 -i "${srcdir}/compile-tools.patch"
-#   curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/1716.patch | patch -p1
 
   # run exes through the wine wrapper
   sed -i "s|COMMAND kwProcessXML|COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \$<TARGET_FILE:kwProcessXML>|g" CMake/ParaViewPlugins.cmake CMake/ParaViewMacros.cmake
