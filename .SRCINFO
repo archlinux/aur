@@ -1,11 +1,12 @@
 pkgbase = python-pure-protobuf
 	pkgdesc = Python implementation of Protocol Buffers data types with dataclasses support.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VeNoMouS/cloudscraper.git
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	provides = python-pure-protobuf
 	source = python-pure-protobuf-2.0.0.tar.gz::https://www.github.com/eigenein/protobuf/archive/2.0.0.tar.gz
