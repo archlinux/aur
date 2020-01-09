@@ -3,8 +3,8 @@
 
 pkgname=nushell
 cargoname=nu
-pkgver=0.7.0
-pkgrel=4
+pkgver=0.8.0
+pkgrel=1
 makedepends=('rust')
 depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/archive/$pk
 url="http://nushell.sh"
 license=('MIT')
 # Use updpkgsums to update the checksum
-sha256sums=('9cfb6be335f7a06ccaf7cc2a06075a23ed6e2e2fdd6ea7fbc165a7d4a30990f9')
+sha256sums=('fada2e350efdf0e730469ab503499b76ab97326bf6e8fc7ffc5db99a4c311ce6')
 
 build() {
   cd "$pkgname-$pkgver"
