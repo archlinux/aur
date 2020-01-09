@@ -2,7 +2,7 @@
 # Maintainer: TransistorLogic <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball-git
-pkgver=0.1.r0.gc77fe52
+pkgver=0.3.r0.gc77fe52
 pkgrel=1
 pkgdesc="A PopBall"
 arch=(x86_64)
