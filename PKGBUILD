@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/iovisor/ply"
 license=('BSD')
 provides=('ply')
+makedepends=('git')
 source=("git+https://github.com/iovisor/${_pkgname}")
 md5sums=('SKIP')
 

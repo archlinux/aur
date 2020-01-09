@@ -5,6 +5,7 @@ pkgbase = ply-git
 	url = https://github.com/iovisor/ply
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	provides = ply
 	source = git+https://github.com/iovisor/ply
 	md5sums = SKIP
