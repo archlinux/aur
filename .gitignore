@@ -4,5 +4,5 @@
 src/
 pkg
 
-p4v-*.tar.*
-p4v-*.tgz
+*p4v-*.tar.*
+*p4v-*.tgz

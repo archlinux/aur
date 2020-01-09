@@ -1,6 +1,7 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
+_version=2019.2
 pkgver=2019.2.1883366
 pkgrel=1
 pkgdesc="Perforce Visual Client"
@@ -9,11 +10,15 @@ url="http://www.perforce.com"
 license=('custom:p4v')
 depends=(libxcb)
 options=('!strip')
+
+_url="${url}/downloads/perforce"
+_filename="$(date +%Y%m%d)-p4v-${pkgver}.tgz"
+
 source=(p4v.desktop
         p4admin.desktop
         p4merge.desktop
         LICENSE
-        p4v-${pkgver}.tgz::http://cdist2.perforce.com/perforce/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz)
+        "${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}.tgz")
 
 sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
             '10e470c6099459a072565494c4fd21cc1f4198f1024fe6fdeb6c77ea7e594827'
@@ -24,6 +29,11 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 # validpgpkeys=('7123CB760FF18869'
 #               'E58131C0AEA7B082C6DC4C937123CB760FF18869')
+
+pkgver() {
+  # grab the build version from the downloaded file itself
+  echo "${_version}.$(find ${srcdir} -type d -name ${pkgname}-${pkgver:0:7}'*' | awk -F'.' '{print $(NF)}')"
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/"
