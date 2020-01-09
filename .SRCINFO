@@ -1,0 +1,26 @@
+pkgbase = python-androguard-git
+	pkgdesc = Reverse engineering, Malware and goodware analysis of Android applications
+	pkgver = 2.0.r1351.g22849b69
+	pkgrel = 1
+	url = https://github.com/androguard/androguard
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = ipython
+	depends = python-future
+	depends = python-networkx
+	depends = python-pygments
+	depends = python-lxml
+	depends = python-colorama
+	depends = python-matplotlib
+	depends = python-asn1crypto
+	depends = python-click
+	depends = python-pydot
+	options = !emptydirs
+	source = python-androguard-git::git+https://github.com/androguard/androguard.git
+	sha1sums = SKIP
+
+pkgname = python-androguard-git
+
