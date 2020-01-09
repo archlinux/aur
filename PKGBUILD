@@ -1,7 +1,7 @@
 # Maintainer: Haden Collins <collinshaden@gmail.com>
 pkgname='wlogout'
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Logout menu for wayland"
 arch=('x86_64')
 license=("MIT")
@@ -13,9 +13,8 @@ depends=("gtk3" "gtk-layer-shell")
 optdepends=("swaylock: default buttons" 
             "systemd: default buttons"
 )
-md5sums=('086353a91236f196e3bd9f21b5910779'
+md5sums=('49a38ef8412d1304b7cd4c15c8f2178a'
          'SKIP')
-
 build() {
     cd $srcdir
     meson build --prefix /usr 
