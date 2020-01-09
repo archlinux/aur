@@ -1,8 +1,8 @@
 pkgbase = startupmanager
 	pkgdesc = GUI app for changing the settings of GRUB, GRUB2, Usplash and Splashy
 	pkgver = 1.9.13
-	pkgrel = 6
-	url = http://sourceforge.net/projects/startup-manager/
+	pkgrel = 7
+	url = https://sourceforge.net/projects/startup-manager/
 	arch = any
 	license = MIT
 	makedepends = intltool
@@ -12,7 +12,7 @@ pkgbase = startupmanager
 	depends = yelp
 	depends = python2
 	depends = xorg-xrandr
-	source = http://downloads.sourceforge.net/sourceforge/startup-manager/startupmanager_1.9.13.tar.gz
+	source = https://downloads.sourceforge.net/sourceforge/startup-manager/startupmanager_1.9.13.tar.gz
 	sha256sums = f51f8a64080759e3d3af58cfbae1769b8e3db8c65a2d9bd2ba80a7e6e7489a2d
 
 pkgname = startupmanager

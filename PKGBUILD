@@ -5,14 +5,14 @@
 
 pkgname=startupmanager
 pkgver=1.9.13
-pkgrel=6
+pkgrel=7
 pkgdesc='GUI app for changing the settings of GRUB, GRUB2, Usplash and Splashy'
 arch=('any')
-url='http://sourceforge.net/projects/startup-manager/'
+url='https://sourceforge.net/projects/startup-manager/'
 license=('MIT')
 depends=('gnome-python' 'imagemagick' 'yelp' 'python2' 'xorg-xrandr')
 makedepends=('intltool' 'setconf')
-source=("http://downloads.sourceforge.net/sourceforge/startup-manager/${pkgname}_${pkgver}.tar.gz")
+source=("https://downloads.sourceforge.net/sourceforge/startup-manager/${pkgname}_${pkgver}.tar.gz")
 sha256sums=('f51f8a64080759e3d3af58cfbae1769b8e3db8c65a2d9bd2ba80a7e6e7489a2d')
 
 #
