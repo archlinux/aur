@@ -1,17 +1,17 @@
 pkgbase = python2-llvmlite
 	pkgdesc = Lightweight LLVM python binding for writing JIT compilers
-	pkgver = 0.30.0
-	pkgrel = 3
+	pkgver = 0.31.0
+	pkgrel = 1
 	url = https://github.com/numba/llvmlite
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cython2
-	makedepends = llvm7
+	makedepends = llvm8
 	depends = python2-enum34
-	depends = llvm7-libs
-	source = https://github.com/numba/llvmlite/archive/v0.30.0.tar.gz
-	sha256sums = 07b72dfdd8e6e5bc718fc7cd00517b94bf00caf29b387605adb0779c5c63dc28
+	depends = llvm8-libs
+	source = https://github.com/numba/llvmlite/archive/v0.31.0.tar.gz
+	sha256sums = a2c431ce2240cda8d4a7b6cce84ac012e0385f5b62ef9911249b000c7ef2c558
 
 pkgname = python2-llvmlite
 
