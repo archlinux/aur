@@ -1,0 +1,28 @@
+pkgbase = tmate-ssh-server-git
+	pkgdesc = tmate SSH server
+	pkgver = 2.3.0.r44.ge1a5e084
+	pkgrel = 1
+	url = https://github.com/tmate-io/tmate-ssh-server
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libevent
+	depends = libssh
+	depends = msgpack-c
+	provides = tmate-ssh-server
+	conflicts = tmate-ssh-server
+	backup = etc/tmate-ssh-server/tmate-ssh-server.conf
+	source = git+https://github.com/tmate-io/tmate-ssh-server
+	source = tmate-ssh-server.conf
+	source = tmate-ssh-server-genkeys-ed25519.service
+	source = tmate-ssh-server-genkeys-rsa.service
+	source = tmate-ssh-server.service
+	sha256sums = SKIP
+	sha256sums = 6fe447933a96c0f187d0d7d63225b647bbb1bd53c07e1698d9f6e33814e7ee85
+	sha256sums = 1a0fbfd869e59273f292cbc395835b33def8d438b7ee52858109f95490b25250
+	sha256sums = ad31789ba1ebffd177a4295721a11e2ae359da4cbad357323d926e47294a48b9
+	sha256sums = 15b0092bf5fc632331e8008aaab1285bffa7f6943af3024fdb0df93d8031a2e3
+
+pkgname = tmate-ssh-server-git
+

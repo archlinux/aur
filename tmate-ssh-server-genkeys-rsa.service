@@ -1,0 +1,9 @@
+[Unit]
+Description=tmate rsa key generation
+ConditionPathExists=|!/etc/tmate-ssh-server/ssh_host_rsa_key
+ConditionPathExists=|!/etc/tmate-ssh-server/ssh_host_rsa_key.pub
+
+[Service]
+ExecStart=/usr/bin/ssh-keygen -t rsa -f /etc/tmate-ssh-server/ssh_host_rsa_key -N ''
+Type=oneshot
+RemainAfterExit=yes

@@ -1,0 +1,14 @@
+[Unit]
+Description=tmate ssh server
+Wants=tmate-ssh-server-genkeys-ed25519.service tmate-ssh-server-genkeys-rsa.service
+After=tmate-ssh-server-genkeys-ed25519.service tmate-ssh-server-genkeys-rsa.service
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/tmate-ssh-server/tmate-ssh-server.conf
+ExecStart=/usr/bin/tmate-ssh-server -k /etc/tmate-ssh-server/ -p ${PORT} -h ${HOSTNAME} -v
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

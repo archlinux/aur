@@ -1,0 +1,9 @@
+[Unit]
+Description=tmate ed25519 key generation
+ConditionPathExists=|!/etc/tmate-ssh-server/ssh_host_ed25519_key
+ConditionPathExists=|!/etc/tmate-ssh-server/ssh_host_ed25519_key.pub
+
+[Service]
+ExecStart=/usr/bin/ssh-keygen -t ed25519 -f /etc/tmate-ssh-server/ssh_host_ed25519_key -N ''
+Type=oneshot
+RemainAfterExit=yes
