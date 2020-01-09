@@ -2,7 +2,7 @@
 
 pkgname=python-androguard-git
 _pkgname=androguard
-pkgver=2.0.r1351.g22849b69
+pkgver=3.3.5.r240.g22849b69
 pkgrel=1
 pkgdesc="Reverse engineering, Malware and goodware analysis of Android applications"
 arch=("any")
@@ -16,7 +16,7 @@ sha1sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

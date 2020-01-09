@@ -1,6 +1,6 @@
 pkgbase = python-androguard-git
 	pkgdesc = Reverse engineering, Malware and goodware analysis of Android applications
-	pkgver = 2.0.r1351.g22849b69
+	pkgver = 3.3.5.r240.g22849b69
 	pkgrel = 1
 	url = https://github.com/androguard/androguard
 	arch = any
