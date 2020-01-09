@@ -1,0 +1,21 @@
+pkgbase = jackett-armv6-bin
+	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
+	pkgver = 0.12.1494
+	pkgrel = 1
+	url = https://github.com/Jackett/Jackett
+	install = jackett.install
+	arch = i686
+	arch = arm
+	arch = armv6h
+	license = GPL
+	depends = mono
+	depends = curl
+	depends = openssl-1.0
+	conflicts = jackett
+	options = !strip
+	options = staticlibs
+	source = Jackett.Binaries.Mono-0.12.1494.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.12.1494/Jackett.Binaries.Mono.tar.gz
+	sha256sums = 2ce90ef7a16cafb7d37e39cfb4463783f6bb992b6ac8a74d5ff6867cfcf5f32f
+
+pkgname = jackett-armv6-bin
+
