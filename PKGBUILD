@@ -4,7 +4,7 @@
 # Contributor: Ivan Sichmann Freitas <ivansichfreitas@gmail.com>
 
 pkgname=vit-git
-pkgver=r600.a2121f3
+pkgver=r602.811c480
 pkgrel=1
 pkgdesc="Visual Interactive Taskwarrior full-screen terminal interface (GIT version)"
 arch=('any')
