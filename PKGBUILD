@@ -2,7 +2,7 @@
 
 pkgname=vlang
 pkgver=0.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe language created for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -12,7 +12,8 @@ optdepends=('glfw' 'libfreetype.so' 'libcurl.so')
 conflicts=('v' 'vlang-git')
 source=("v-$pkgver.tar.gz::https://github.com/$pkgname/v/archive/$pkgver.tar.gz"
         "vc-$pkgver.tar.gz::https://github.com/$pkgname/vc/archive/$pkgver.tar.gz")
-
+md5sums=('36901aa42c873d1abf82ef0d7a48c5b2'
+         'f8d86e9c4585278596c7f2779ce57997')
 prepare() {
     cp vc-$pkgver/v.c v-$pkgver/
 }
@@ -32,6 +33,3 @@ package() {
     cp -a vlib "$pkgdir/usr/lib/vlang/"
     ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
-
-sha256sums=('8102b48b2c82be6be14633e76e71e215aab5221198315436f97be53e1abe1f5d'
-            '5b4fc1f39c3aef5214a3366e0d514ee2879a2e52a918dc0181df833028a0eb72')
