@@ -1,0 +1,14 @@
+pkgbase = python-setuptools-lint
+	pkgdesc = Expose pylint as a lint command into setup.py
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/johnnoone/setuptools-pylint
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-pylint
+	source = python-setuptools-lint-0.5.2.tar.gz::https://github.com/johnnoone/setuptools-pylint/archive/v0.5.2.tar.gz
+	sha512sums = 3944434e3f6c0a3f6ae36ae4b1387a25ae93079d4462203c6f84f6bc2af7e2a3f8618bdf14b741234507cb788c3c33e62b3d51d2633e284c2b454ece5bb0a571
+
+pkgname = python-setuptools-lint
+
