@@ -1,9 +1,8 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=python-androguard-git
-_pkgname=androguard
 pkgver=3.3.5.r240.g22849b69
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse engineering, Malware and goodware analysis of Android applications"
 arch=("any")
 url='https://github.com/androguard/androguard'
