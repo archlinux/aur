@@ -1,0 +1,20 @@
+pkgbase = parallella-fpga-bitstream
+	pkgdesc = Bitstream files for Parallella
+	pkgver = 2019.1
+	pkgrel = 1
+	url = https://github.com/parallella/parallella-hw
+	arch = armv7h
+	license = GPL
+	provides = parallella-fpga-bitstream
+	conflicts = parallella-fpga-bitstream
+	source = https://github.com/parallella/parabuntu/raw/b816ab6bd866e243e0c43a5085264b38eb82060a/fpga_bitfiles/parallella_e16_headless_gpiose_7010.bit.bin
+	source = https://github.com/parallella/parabuntu/raw/b816ab6bd866e243e0c43a5085264b38eb82060a/fpga_bitfiles/parallella_e16_headless_gpiose_7020.bit.bin
+	sha256sums = 2bff7c43721c9f5890536cc8fc7f8016ce1b56fe64af00a5a5789311b86cbe5b
+	sha256sums = e76915e02adc81770c4606c52e8a0aa82b7b146a98c6f264d1a3401a89d09a72
+
+pkgname = parallella-fpga-bitstream-headless-7010
+	pkgdesc = Bitstream files needed for Parallella (Headless, Zynq 7010)
+
+pkgname = parallella-fpga-bitstream-headless-7020
+	pkgdesc = Bitstream files needed for Parallella (Headless, Zynq 7020)
+
