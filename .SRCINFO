@@ -1,0 +1,18 @@
+pkgbase = stepseq_s16n8.lv2
+	pkgdesc = Simple Step Sequencer (ajdust number of steps and notes in PKGBUILD)
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/x42/stepseq.lv2
+	arch = x86_64
+	groups = lv2-plugins
+	groups = proaudio
+	license = GPL
+	makedepends = lv2
+	makedepends = cairo
+	depends = pango
+	depends = libglvnd
+	source = git+https://github.com/x42/stepseq.lv2#tag=v0.6.0
+	sha256sums = SKIP
+
+pkgname = stepseq_s16n8.lv2
+
