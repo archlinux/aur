@@ -2,7 +2,7 @@
 pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=a15bd23
+pkgver=620559e
 pkgrel=1
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
@@ -33,5 +33,5 @@ build() {
 package() {
   cd "$pkgname"
   install -Dm755 Fulcrum "$pkgdir"/usr/bin/Fulcrum
-  install -Dm644 misc/fulcrum-example-config.conf "$pkgdir"/usr/share/doc/$pkgname/fulcrum-example-config.conf
+  install -Dm644 doc/fulcrum-example-config.conf "$pkgdir"/usr/share/doc/$pkgname/fulcrum-example-config.conf
 }
