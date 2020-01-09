@@ -1,0 +1,14 @@
+pkgbase = optix6
+	pkgdesc = A software development kit for achieving high performance ray tracing on the GPU.
+	pkgver = 6.5.0
+	pkgrel = 1
+	url = https://developer.nvidia.com/optix
+	arch = x86_64
+	license = custom:NVIDIA
+	depends = cuda
+	options = !strip
+	source = file://NVIDIA-OptiX-SDK-6.5.0-linux64.sh
+	sha512sums = fe912e456a77cce9710f96fe353200e49e97addb5892829acced6a74869693a00857da776b56df530a4ea98ab6c856808aa95ded634b2a5d47ff9c18c8b483af
+
+pkgname = optix6
+
