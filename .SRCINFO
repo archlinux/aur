@@ -1,14 +1,14 @@
 pkgbase = glow-bin
 	pkgdesc = Markdown renderer for the CLI
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/charmbracelet/glow
 	arch = x86_64
 	license = MIT
 	provides = glow
 	conflicts = glow
-	source_x86_64 = https://github.com/charmbracelet/glow/releases/download/v0.1.6/glow_0.1.6_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 170ce19765e7f4e2dab0c45e286bcdf6612be9cd4b00386a61a650e38740380f
+	source_x86_64 = https://github.com/charmbracelet/glow/releases/download/v0.2.0/glow_0.2.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = ea3b158c1c3f3f9ce63a701817ffc9023bbcf2c5375f21a5890ddda7d57554c5
 
 pkgname = glow-bin
 
