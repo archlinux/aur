@@ -46,11 +46,16 @@ build() {
 package() {
     cd "OpenVR-AdvancedSettings-$pkgver"
 
-    # Get desktop icon working
+    # Add .desktop file
     mkdir -p "$pkgdir/usr/share/applications"
     cp "src/package_files/linux/AdvancedSettings.desktop" "$pkgdir/usr/share/applications/"
     sed -i 's/Exec=.*/Exec=\/opt\/AdvancedSettings\/AdvancedSettings/' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+
+    # Add correct desktop icon to desktop file
     sed -i 's/Icon=.*/Icon=\/opt\/AdvancedSettings\/AdvancedSettings.png/' "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
+    # Dir doesn't exist before `make install`
+    mkdir -p "$pkgdir/opt/AdvancedSettings/"
+    cp "src/res/img/icons/thumbicon.png" "$pkgdir/opt/AdvancedSettings/AdvancedSettings.png"
 
     # Make program use correct working dir
     echo "Path=/opt/AdvancedSettings" >> "$pkgdir/usr/share/applications/AdvancedSettings.desktop"
