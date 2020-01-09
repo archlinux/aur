@@ -51,7 +51,7 @@ _major=5.4
 _minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -72,19 +72,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0008-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0009-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0012-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch"
-        "${_lucjanpath}/arch-patches-v14-sep/0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0008-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0009-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0012-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0014-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0015-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch"
          # the main kernel config files
         'config')
 
@@ -341,19 +343,21 @@ sha512sums=('6328ad7e18b6fa982415b0de75e3384f58ce8428bd8c212871a31f3885a0819d241
             'SKIP'
             '10c9bbb02c6a0afe869efae97fe6133062110f46c973fd7b60cdd8a88f14de7646d206d5c2bbbf1170ca0aa9cf7c2d0daab477d12c074dc18e9b98075cd2b57c'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '12319e13bed73b81159bbb91446b986ae423b3bc2be85a35bb4a50ff66cd729c7d8dac3909b908bc667eb7bc9d1419ceadd6d6bfcc854dc3b5494013d8a43e57'
-            '8b374f75331502853d7571f47de4edb522a6bc57d8168d62acae306a7d4e6be048d8272dfb13a2ef72c1b16b51e972544b9ce384c02c6b1098bbd3bba78e387e'
-            'ec15bc86edcd291953c89a572a22e6599a6037a41a6dd08d02f2c2667b23bc841786ee609d93688c012de24589b89e663d91a581107b91ed7384adb3372b7e51'
-            'c5d06fa2d16d0afdbe8ad9c89b6d33ddcbf256a3e2a1710d825857699a4355b56dafdba4ee8eb63ddcfa0a17d8b1efe7e55bcfb30660cd385d96261b8bdd9012'
-            '71aff5bd8ee0301abf9b26963127d9f68cb7ad13085588f831bba9a0ff9ecdf720b19088268d41f1a8bc41683cd2e19781f8fb551829d0311b5d4557353214c3'
-            'd7798f1946be12743e6f2a65b286dd17d06728c3affef0e5e92392fd00efab4e5125544f7101a05bb9b3162ed6f5f9286dbed82cbbf6fc4dc99d6867732dbc51'
-            'ffce33dafdf16029463aba96acff7a473b697536cd242a8d9b3dacaba57cced4a5466be28035c92e3a98b8ed79c550e2acb56f14494dee59ed0d7ff1b1bba133'
-            '9bbbfa92c668e02a063b18e2cdd736322072b6ebd33637426ebd0823aa8821e11edabe58ae376ae3eaf82be9544377bdad83bf38c58516b5a0ef271c8417f9f5'
-            'a5e5883f51138125b9ea3c71ee07b51c87238f33922c839122d9d94f69e9e7b3e04c024fe825bfbaa0386b89f7ce7065e370fbf4d37bc013cd42a8be32fccb46'
-            '0a3705204dbce74bfc2e0a73648d0186fa9a1250f84970442a3319f7e0f25b7fa656adaaf273941e2a48553e3889786f1eca3e7221aac2248fafe7d3468698fc'
-            '53d7ff3775c4c7aae76392aec2a98e244ec40ca52e64d63b7dbb9ca5bb4e96ecb20a2a485c9cc0dd63c1472aff6f826a6519f4a730e1605997cd5130b4b2883e'
-            'b5afef6e503e56fb285b427841203973a40f0783510fb1c8728757c858f45150a34303e86c85d3a1b4a0baae2426c3784f25330b0f91a4eb03950559863547e8'
-            'a2437f84b8ef557e4c00eb62acbc2f5da20e52d37a186cdde76261d7f56d07438ab7565a5c12b14b42c771e833fee9b30e4c9110d6a4ebdc27514bbb8b8ca5dc'
+            'ad6e87ab1a63e5bc056ff36de3e2d9b9756d9750043c38001908ecd1dbf0478e4cdc8f1bb36ab1f8e1818f7a43db96a3c47044f5aeb3289440f28fb96cb16b3f'
+            '39c9da4fe7405e71e321573f378de29e75b2e15369c67792c2f1ade8ade8689b0a9500d9dce15ed6429e06ece5f5bcb946c6c82eddc20dafbf70f8f294685f87'
+            '11965f6fa95b6e7c251235e2134e4b171e8b6e82b6d7d1293b705417768bf7ab6302a741c6728f7ea99f3882b440eb89c5bf23db9ea38ae0c062bb62c830a485'
+            'e1289d34fc090b4a7646fa4f278ec57f849ea14d1f83bc9ff571b73090ceffcfde006d85dfc833e65c3f19b3c50535c11fdab462bcc45cba6dda44136b040d26'
+            '3b0a8d14c54f12c267ede796b890df1173aef484cc49e3a01c9023cd3013b70a24fa6189201153ea17ea242e52199c1374942f67a87bed6f7b8f002f33985b39'
+            'a343e23485d35666fb87f511c6b538588ad6ce71445aadaad1a0605d0eeee952f5d5f87b5be67a9436f66d6da86d5f2f6b9df30c610ca9fc4816e4f4071edb13'
+            '1123e1e8d139379f6a457146fd1c11bdf2dd75a764bcb4892a46760afb341419e4259ad4debcafdeeaef2f570bf345bc31fd5779ed11c19a97bb4183215062c4'
+            '4c03e6ae79401b56a03c7d44d595d3a28331b4ccc14f62359368b534f81a42e4f7e76341541224067e0eed95f0885a71eceee1485b9647f87dc484b7183c733f'
+            '8d11b6dab826160d5692ba3e4eb6f3d0b46801c26d84521081c03b68321f7dd76119956a8ba0575f5a6e54a1595ddb0d10c31f9a1678a866102ee48231b40fef'
+            'b1b7cecea1d3bbdd3d67468684071a4dfbaabf512906cb2e5508f0d94427e7ad3e5d7888cfd64ec37e70de569edf210003a57dcabf231676a50b6fe4900151fe'
+            '48598e6244ffd0649741ffbec2ddbc686957880a1a65cc38317e0b6c46616f9d795fdf7f63bbc55549852359efe4af22bd02710cd905f88e390f6737a24b2af0'
+            'b2e7fec77b008c2baefa84186f649a71afbb8a0baa69db7f97d420916a394d8b2cbf06a5bee305f1cb8c195f326967c3babb02d0a47539be8bbb0538c3b072b2'
+            '55270fe7889eb5f697b75b770e6b3abcf3d4e38e22535570912c01730ba7ecd191b4c37755a00e5866d199290c84d426a48276cd0ec15d5862cb4eb83a8ccfa4'
+            'ea5ae98f27e0370d13f7db9211a457c7598e1a102a3afa81f10519850f2487fe097f78109cb62bf91b5bc106463aa2fefcd12e941fba320dd3b8c4aacf282535'
+            '8526aed248faec97050cb3b88f5da5e22f87ac6e4d2a836af9a47c09a8bade85483787712ccf42eefd0c9ea6c538ba2b450512b24954f0bae9ffbd3ab222c565'
             '3676012d94515b66561fcf5e642d483b75431618b4acf0dc7c591b7dca27648b1fd24fd218e86f1c29af878b0d69a830f39ce1ab983e344914086c8b1b0b64de')
 
 validpgpkeys=(
