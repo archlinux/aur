@@ -1,0 +1,15 @@
+pkgbase = mdl-sdk
+	pkgdesc = A set of tools to integrate MDL support into rendering applications.
+	pkgver = 2019.1.1
+	pkgrel = 1
+	url = https://developer.nvidia.com/mdl-sdk
+	arch = x86_64
+	license = custom:NVIDIA
+	makedepends = unzip
+	depends = cuda
+	options = !strip
+	source = file://mdl-sdk-317500.2554.zip
+	sha512sums = 5e957bc430870739a3a2e85a1081d8ab08b715cfdda679459f6fc20c244d60cbe927ea6cbea9abf1970e5c7dacc7a89684cb5549fc10f8580ed885a298fdc920
+
+pkgname = mdl-sdk
+
