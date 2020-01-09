@@ -1,7 +1,7 @@
 pkgbase = go-envtpl
 	pkgdesc = envtpl renders Go templates on the command line using environment variables
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subfuzion/envtpl
 	arch = x86_64
 	license = MIT
