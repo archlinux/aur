@@ -1,8 +1,8 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com
 pkgname=broot-bin
 pkgver=0.11.3
-pkgrel=1
-pkgdesc="Fuzzy Search + tree + cd"
+pkgrel=2
+pkgdesc="Balanced tree view + fuzzy search + BFS + customizable launcher"
 arch=(x86_64)
 url="https://github.com/Canop/broot"
 license=('MIT')
