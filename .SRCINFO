@@ -24,8 +24,8 @@ pkgbase = bcachefs-tools-git
 	provides = bcachefs-tools
 	source = git+https://github.com/koverstreet/bcachefs-tools
 	source = add-mkinitcpio-hook-for-Arch.patch
-	sha256sums = SKIP
-	sha256sums = 659483e9d5106826f6f6a894de189d895635c6e8790d216a8635c7cc59e27efc
+	sha512sums = SKIP
+	sha512sums = e75e0fc9576990d910acf5a3eafb1f83ab7d407bddcc210c9926b048ceb3ef018749654ca6a6ebdfab45a3e00031f6bb3537d2f3f19e3a7ec3be7c470d4ce7df
 
 pkgname = bcachefs-tools-git
 
