@@ -3,8 +3,7 @@
 !LICENSE
 !.SRCINFO
 !*.patch
-!*.sysusers
-!*.tmpfiles
+!*.desktop
 !*.install
 !*.service
 !*.sh
