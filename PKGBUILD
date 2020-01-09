@@ -13,8 +13,8 @@ pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
-depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'harfbuzz-icu' 'libxcursor' 'fontconfig' 'nettle' 'shared-mime-info' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('git' 'ninja' 'python2' 'clang' 'cmake')
+depends=('cmark' 'curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'pixman' 'libxcursor' 'fontconfig' 'nettle' 'hicolor-icon-theme')
+makedepends=('git' 'ninja' 'python' 'python2' 'clang' 'cmake' 'libglvnd')
 conflicts=("${_pkgname}" "${_pkgname}-gpl")
 source=(
         # "git+https://github.com/${_pkgname}/pixman.git"
