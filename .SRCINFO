@@ -1,5 +1,5 @@
 pkgbase = libxft-brga
-	pkgdesc = FreeType-based font drawing library for X
+	pkgdesc = Modified libXft with BRGA & scaling patches by Maxime Coste to support color emoji
 	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
