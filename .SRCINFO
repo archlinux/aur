@@ -7,7 +7,7 @@ pkgbase = buuf-icon-theme
 	license = cc-by-nc-sa
 	makedepends = pup
 	depends = hicolor-icon-theme
-	source = https://dllb2.pling.com/api/files/download/id/1572174181/s/52eeee6d501f9957ee6f3b85dd33aea70dcec8bb7c752fe3b0841ed627d4ea8fa5919d0d429e08fa9efef0729aa184236104ebd7084acf066587b8d6daa511a8/t/1578580565/c/52eeee6d501f9957ee6f3b85dd33aea70dcec8bb7c752fe3b0841ed627d4ea8fa5919d0d429e08fa9efef0729aa184236104ebd7084acf066587b8d6daa511a8/lt/download/buuf3.34.tar.xz
+	source = https://dllb2.pling.com/api/files/download/id/1572174181/s/3d8b25bbfa822d6c2fe0998f0336b20248c1355ca1137f027d54c60e4d818001c8d21601a8c71eab5702a9f55987c0eccdd1d11c6537dd68fbdb727b1cea8851/t/1578581273/c/3d8b25bbfa822d6c2fe0998f0336b20248c1355ca1137f027d54c60e4d818001c8d21601a8c71eab5702a9f55987c0eccdd1d11c6537dd68fbdb727b1cea8851/lt/download/buuf3.34.tar.xz
 	md5sums = 0edbcd3d019d4a9b5fc0478168aac263
 
 pkgname = buuf-icon-theme

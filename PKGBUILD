@@ -15,7 +15,7 @@ depends=('hicolor-icon-theme')
 makedepends=('pup')
 
 plingurl="https://www.pling.com/dl?file_id=1572174181&file_type=application/x-xz&file_name=buuf$pkgver.tar.xz&file_size=21660564&project_id=1012512&link_type=download&is_external=false&external_link=null"
-source=($(curl -sX POST $plingurl | pup -i 0 '.empty-action > script' | sed '2q;d' | sed 's/^[^"]*"//' | sed 's/".*$//'))
+source=($(curl -sX POST "$plingurl" | pup -i 0 '.empty-action > script' | sed '2q;d' | sed 's/^[^"]*"//' | sed 's/".*$//'))
 
 #source=(buuf$pkgver.tar.xz)
 
