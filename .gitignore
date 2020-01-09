@@ -1,4 +1,11 @@
-src/
-pkg/
-*.tar.xz
-*.tgz
+*
+!PKGBUILD
+!LICENSE
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
