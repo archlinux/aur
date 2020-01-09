@@ -13,8 +13,6 @@ depends=("gtk3" "gtk-layer-shell")
 optdepends=("swaylock: default buttons" 
             "systemd: default buttons"
 )
-md5sums=('49a38ef8412d1304b7cd4c15c8f2178a'
-         'SKIP')
 build() {
     cd $srcdir
     meson build --prefix /usr 
@@ -25,3 +23,5 @@ package() {
     DESTDIR="$pkgdir" ninja -C build install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+md5sums=('53e1fb9ac40cc64105a7d29ac87dc57e'
+         'SKIP')
