@@ -1,0 +1,16 @@
+pkgbase = pyflame
+	pkgdesc = A tool for generating flame graphs for Python (2) processes.
+	pkgver = 1.6.6
+	pkgrel = 1
+	url = https://github.com/uber/pyflame
+	arch = x86_64
+	license = APACHE
+	checkdepends = python-virtualenv
+	makedepends = python
+	depends = gcc-libs
+	conflicts = pyflame-git
+	source = pyflame-1.6.6.tar.gz::https://github.com/uber/pyflame/archive/v1.6.6.tar.gz
+	sha256sums = 03723509c037a994585e81e4a9c6d8e4fed87b486e23edd8d355a7bcc009bf79
+
+pkgname = pyflame
+
