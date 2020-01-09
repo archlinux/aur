@@ -1,0 +1,30 @@
+pkgbase = ros-melodic-usb-cam
+	pkgdesc = ROS - A ROS Driver for V4L USB Cameras.
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = http://wiki.ros.org/usb_cam
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-camera-info-manager
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-image-transport
+	makedepends = ros-melodic-catkin
+	makedepends = ffmpeg
+	depends = ros-melodic-camera-info-manager
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-image-transport
+	depends = v4l-utils
+	depends = ffmpeg
+	source = ros-melodic-usb-cam-0.3.6-0.tar.gz::https://github.com/ros-gbp/usb_cam-release/archive/release/melodic/usb_cam/0.3.6-0.tar.gz
+	sha256sums = 21a2fa956af929b771c989bdb53a572443481b101cea0ba0b66547e0440a9bd5
+
+pkgname = ros-melodic-usb-cam
+
