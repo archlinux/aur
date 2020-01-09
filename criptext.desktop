@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Criptext
-Comment=Encrypted email built on privacy
-Exec=/usr/bin/criptext
-Terminal=false
-Type=Application
-Icon=criptext
-StartupWMClass=Criptext
-Categories=Network;
