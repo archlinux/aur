@@ -1,7 +1,8 @@
 # Maintainer: Joel Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4
-pkgver=2019.2.1885864
+_version=2019.2
+pkgver=2019.2.1897966
 pkgrel=1
 
 pkgdesc="Perforce command line client"
@@ -11,7 +12,7 @@ url="http://www.perforce.com"
 license=('custom:p4')
 
 _url="${url}/downloads/perforce"
-_filename="${pkgver}-${pkgname}"
+_filename="${pkgver:2:4}-$(date +%Y%m%d)-${pkgname}"
 
 source=(LICENSE)
 source_x86_64=("${_filename}"::"${_url}/r${pkgver:2:4}/bin.linux26x86_64/${pkgname}"
@@ -27,6 +28,11 @@ sha256sums_x86_64=('SKIP' 'SKIP')
 # Perforce Software (Package Signing) <support+packaging@perforce.com>
 validpgpkeys=('7123CB760FF18869'
               'E58131C0AEA7B082C6DC4C937123CB760FF18869')
+
+pkgver() {
+  # grab the build version from the asc file itself
+  echo "${_version}.$(grep "$_version" "${_filename}.asc" | awk -F'/' '{print $NF}')"
+}
 
 package() {
   install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
