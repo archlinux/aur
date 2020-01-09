@@ -2,7 +2,7 @@
 
 _pkgname=okular
 pkgname=okular-no-purpose
-pkgver=19.12.0
+pkgver=19.12.1
 pkgrel=1
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
@@ -21,7 +21,7 @@ replaces=(kdegraphics-okular)
 replaces=(okular)
 provides=(okular)
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('a17a8b5e46ac2cee103a6d41d4ceca9d3b557f6b80355a15b447a282f2c96454'
+sha256sums=('485044127c6bbe0d4c71f1518da15050957c06b8fe36633462367d15d684d4bd'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
