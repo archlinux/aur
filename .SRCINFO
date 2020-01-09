@@ -1,13 +1,12 @@
 pkgbase = gtk-theme-adementary
+	pkgdesc = A theme for GNOME/Budgie/Xfce/Cinnamon desktop with elementary-ish aesthetics.
 	pkgver = 201905r1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrdwrrsk/adementary-theme
 	arch = any
 	license = GPL3
-	makedepends = sassc
-	makedepends = inkscape
-	makedepends = optipng
-	makedepends = bc
+	makedepends = git
+	makedepends = bash
 	source = gtk-theme-adementary::git+https://github.com/hrdwrrsk/adementary-theme?tag=201905r1
 	sha512sums = SKIP
 

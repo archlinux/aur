@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgdesc=''
+pkgdesc='A theme for GNOME/Budgie/Xfce/Cinnamon desktop with elementary-ish aesthetics.'
 pkgname=gtk-theme-adementary
 pkgver=201905r1
-pkgrel=1
-url='https://github.com/hrdwrrsk/adementary-theme'
+pkgrel=2
+url=https://github.com/hrdwrrsk/adementary-theme
 arch=(any)
 license=(GPL3)
 depends=()
