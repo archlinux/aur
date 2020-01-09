@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Software to decode APT and WEFAX signals from weather satellites"
 arch=('x86_64' 'i686')
 url="https://www.wxtoimgrestored.xyz"
+_github_url='none'
 license=('custom')
 depends=('libx11' 'sh')
 provides=('wxtoimg' 'xwxtoimg')
