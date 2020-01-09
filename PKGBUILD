@@ -1,7 +1,7 @@
 # Maintainer: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=python-jupytext
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3bd9d56eeb7b02a9866f70f0cf8c034d5b10306f886f8e1b2d5bfd341ee72342')
+sha256sums=('e5aea3861481dfa421e962af034f53c9ccfd8777ea83a0be04aa3d692d56424c')
 
 build() {
     cd $srcdir/jupytext-$pkgver
