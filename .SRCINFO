@@ -1,0 +1,30 @@
+pkgbase = ros-melodic-velocity-controllers
+	pkgdesc = ROS - velocity_controllers.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/ros-controls/ros_controllers/wiki
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-control-msgs
+	makedepends = ros-melodic-controller-interface
+	makedepends = ros-melodic-control-toolbox
+	makedepends = ros-melodic-realtime-tools
+	makedepends = ros-melodic-angles
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-forward-command-controller
+	makedepends = ros-melodic-urdf
+	depends = ros-melodic-control-msgs
+	depends = ros-melodic-controller-interface
+	depends = ros-melodic-control-toolbox
+	depends = ros-melodic-realtime-tools
+	depends = ros-melodic-angles
+	depends = ros-melodic-forward-command-controller
+	depends = ros-melodic-urdf
+	source = ros_controllers::git+https://github.com/ros-controls/ros_controllers#commit=b480d5f06568b31b8c68a54de8042e1d63d01534
+	md5sums = SKIP
+
+pkgname = ros-melodic-velocity-controllers
+
