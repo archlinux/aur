@@ -1,14 +1,14 @@
 # Maintainer: jaelpark@outlook.com
 pkgname=chamfer-git
 _pkgname=chamfer
-pkgver=r263
+pkgver=r321
 pkgrel=1
 pkgdesc="A tiling X11 window manager with Vulkan compositor."
 arch=("x86_64")
 url="https://github.com/jaelpark/chamferwm"
 license=("BSD")
 depends=(
-	'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-cursor' 'vulkan-icd-loader' 'glm' 'boost' 'python' 'python-xlib' 'python-psutil'
+	'xcb-util-keysyms' 'xcb-util-wm' 'xcb-util-cursor' 'vulkan-icd-loader' 'glm' 'boost' 'python' 'python-xlib' 'python-psutil' 'freetype2' 'fontconfig' 'harfbuzz'
 )
 makedepends=(
     'git' 'meson' 'ninja' 'vulkan-headers' 'shaderc'

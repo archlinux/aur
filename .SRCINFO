@@ -1,6 +1,6 @@
 pkgbase = chamfer-git
 	pkgdesc = A tiling X11 window manager with Vulkan compositor.
-	pkgver = r233
+	pkgver = r321
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/chamfer-git/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = chamfer-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vulkan-headers
-	makedepends = shaderc
+	makedepends = shaderc-git
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	depends = xcb-util-cursor
@@ -19,6 +19,9 @@ pkgbase = chamfer-git
 	depends = python
 	depends = python-xlib
 	depends = python-psutil
+	depends = freetype2
+	depends = fontconfig
+	depends = harfbuzz
 	source = chamfer::git+https://github.com/jaelpark/chamferwm.git
 	md5sums = SKIP
 
