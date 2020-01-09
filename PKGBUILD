@@ -56,6 +56,13 @@ _subarch=31
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+# Use the current kernel's .config file
+# Enabling this option will use the .config of the RUNNING kernel rather than
+# the ARCH defaults. Useful when the package gets updated and you already went
+# through the trouble of customizing your config options.  NOT recommended when
+# a new kernel is released, but again, convenient for package bumps.
+_use_current=
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
@@ -64,7 +71,7 @@ _srcname=linux-${_major}
 _clr=${_major}.8-886
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -130,7 +137,7 @@ prepare() {
         msg2 "Enable extra stuff from arch kernel..."
 
         # General setup
-        scripts/config --module IKCONFIG \
+        scripts/config --enable IKCONFIG \
                        --enable-after IKCONFIG IKCONFIG_PROC \
                        --undefine RT_GROUP_SCHED
 
@@ -188,6 +195,21 @@ prepare() {
         make -s kernelrelease > version
         msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
+    ### Optionally use running kernel's config
+    # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+    if [ -n "$_use_current" ]; then
+        if [[ -s /proc/config.gz ]]; then
+            msg2 "Extracting config from /proc/config.gz..."
+            # modprobe configs
+            zcat /proc/config.gz > ./.config
+        else
+            warning "Your kernel was not compiled with IKCONFIG_PROC!"
+            warning "You cannot read the current config!"
+            warning "Aborting!"
+            exit
+        fi
+    fi
+
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
@@ -214,7 +236,7 @@ prepare() {
 
 build() {
     cd ${_srcname}
-    make bzImage modules
+    make -j$(nproc) bzImage modules
 }
 
 _package() {
