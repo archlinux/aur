@@ -2,16 +2,16 @@
 
 pkgname=hardening-check
 _pkgname=hardening-wrapper
-pkgver=2.8+nmu2
-pkgrel=1
+pkgver=2.8+nmu3
+pkgrel=2
 pkgdesc="Check binaries for security hardening features"
 arch=('any')
 url="http://wiki.debian.org/Hardening"
 license=('GPL2')
 depends=('bash' 'perl')
-source=("http://ftp.de.debian.org/debian/pool/main/h/hardening-wrapper/hardening-wrapper_$pkgver"{.tar.xz,.dsc})
-sha256sums=('34274828448b8e58b3d5f8b2006164bdd3b688a8afeae58464c63bbbf64f2916'
-            '465be22cde9e2c6e0eeaaa5d6f346e875e06445610f38b4d76938544d721713d')
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/hardening-wrapper/${pkgver}ubuntu1/hardening-wrapper_${pkgver}ubuntu1"{.tar.xz,.dsc})
+sha256sums=('5e494c08e770152c4f06965a5833242d00428fe9b17dde5de11e7cdea4be5d54'
+            '584c510ef5d6c27b8062f1d57e48a10942426f4b1b98b6c468108abe33cf2da3')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -25,7 +25,7 @@ package() {
   install -Dm0755 'hardening-check' "$pkgdir/usr/bin/hardening-check"
   install -Dm0755 '../hardening-check.sh' "$pkgdir/usr/bin/hardening-check.sh"
   install -Dm0755 'hardening-check.1' "$pkgdir/usr/share/man/man1/hardening-check.1" \
-    && chmod -c 0444 "$pkgdir/usr/share/man/man1/hardening-check.1"
+  && chmod -c 0444 "$pkgdir/usr/share/man/man1/hardening-check.1"
 }
 
 # vim:set ts=2 sw=2 et:
