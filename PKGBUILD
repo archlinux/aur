@@ -1,13 +1,15 @@
 # $Id$
-# Maintainer: Gegrely Imreh <imrehg@gmail.com>
+# Maintainer: Gergely Imreh <imrehg@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
 
 pkgname=balena-engine
-pkgver=18.9.10
+pkgver=18.9.13
 pkgrel=1
 epoch=1
 pkgdesc='A Moby-based container engine for the Internet of Things'
 arch=('x86_64' 'i686')
 url='https://www.balena.io/'
+_github_url='https://github.com/balena-os/balena-engine'
 license=('Apache')
 depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'libsystemd'
          'libseccomp' 'libtool' 'btrfs-progs')
