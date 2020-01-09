@@ -1,11 +1,12 @@
 pkgbase = fulcrum-git
 	pkgdesc = A fast & nimble SPV server for Bitcoin Cash
-	pkgver = 620559e
+	pkgver = fa33caf
 	pkgrel = 1
 	url = https://github.com/cculianu/Fulcrum
 	arch = any
 	license = GPL3
 	depends = qt5-base
+	depends = rocksdb
 	provides = fulcrum
 	conflicts = fulcrum
 	source = fulcrum-git::git+https://github.com/cculianu/Fulcrum.git
