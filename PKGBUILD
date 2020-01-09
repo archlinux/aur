@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="Functions for plotting area-proportional two- and three-way Venn diagrams in matplotlib"
 arch=('any')
 url="https://pypi.python.org/pypi/matplotlib-venn"
+_github_url="https://github.com/konstantint/matplotlib-venn"
 license=('MIT')
 depends=('python-numpy' 'python-matplotlib' 'python-scipy')
 source=(https://pypi.python.org/packages/source/m/matplotlib-venn/${_upstream_pkgname}-${pkgver}.zip)
