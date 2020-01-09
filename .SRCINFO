@@ -1,0 +1,23 @@
+pkgbase = lib32-libxft-brga
+	pkgdesc = Modified libXft with BRGA & scaling patches by Maxime Coste to support color emoji
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	groups = modified
+	license = custom
+	makedepends = gcc-multilib
+	depends = lib32-fontconfig
+	depends = lib32-libxrender
+	provides = lib32-libxft
+	conflicts = lib32-libxft
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.3.tar.bz2
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXft-2.3.3.tar.bz2.sig
+	source = https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	sha512sums = 28fdaf3baa3b156a4a7fdd6e39c4d8026d7d21eaa9be27c9797c8d329dab691a1bc82ea6042f9d4729a9343d93787536fb7e4b606f722f33cbe608b2e79910e8
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = lib32-libxft-brga
+
