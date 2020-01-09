@@ -15,7 +15,7 @@ url="https://github.com/ppy/osu"
 license=('MIT')
 groups=()
 depends=('dotnet-runtime>=3.1' 'ffmpeg' 'libgl')
-makedepends=('git' 'dotnet-sdk>=3.1')
+makedepends=('git' 'dotnet-sdk>=3.1.100')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()

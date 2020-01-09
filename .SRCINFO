@@ -6,7 +6,7 @@ pkgbase = osu-lazer-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = dotnet-sdk>=3.1
+	makedepends = dotnet-sdk>=3.1.100
 	depends = dotnet-runtime>=3.1
 	depends = ffmpeg
 	depends = libgl
