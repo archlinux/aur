@@ -3,7 +3,7 @@
 
 pkgname=broot
 pkgver=0.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Fuzzy Search + tree + cd'
 arch=('x86_64')
 url=https://github.com/Canop/broot
@@ -15,7 +15,7 @@ sha256sums=('5aa357597c3ae453bb73f95ca27b5240b6b95e3cb37a332fb3d0af72d989011e')
 
 build() {
   cd $pkgname-$pkgver
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
