@@ -1,6 +1,11 @@
-*.tar.xz
-*.tgz
-fzf.wiki/
-fzf/
-pkg/
-src/
+*
+!PKGBUILD
+!LICENSE
+!.SRCINFO
+!*.patch
+!*.desktop
+!*.install
+!*.service
+!*.sh
+!*.conf
+!.gitignore
