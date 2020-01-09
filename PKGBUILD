@@ -2,7 +2,7 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.10.r1513.g87c52809b2b
+pkgver=4.11.r760.gc2ce370f30b
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
@@ -87,7 +87,6 @@ build() {
   make -C intelmetool
   make -C superiotool
   make -C cbmem
-  make -C romcc romcc # tests fail
   make -C ectool
   make -C intelvbttool
   if [ "$BUILD_AUTOPORT" == y ]; then
@@ -99,7 +98,7 @@ build() {
 package() {
   cd coreboot/util
   install -m755 -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man8"
-  install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem romcc/romcc ectool/ectool intelmetool/intelmetool intelvbttool/intelvbttool
+  install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem ectool/ectool intelmetool/intelmetool intelvbttool/intelvbttool
   install -m755 "me_cleaner/me_cleaner.py" "$pkgdir/usr/bin/me_cleaner"
   if [ "$BUILD_AUTOPORT" == y ]; then
 	  install -m755 -t "$pkgdir/usr/bin" autoport/autoport
