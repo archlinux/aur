@@ -2,7 +2,7 @@
 # Maintainerr: TransistorLogic <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
 epoch=
 pkgdesc="A PopBall"
