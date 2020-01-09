@@ -1,5 +1,5 @@
-# Maintainer: Tun Win Naing <tunwn.mdy@gmail.com>
-# Contributor: Donald Webster <fryfrog@gmail.com>
+# Maintainer: Tun Win Naing <tunwn.mdy at gmail dot com>
+# Contributor: Donald Webster <fryfrog at gmail dot com>
 
 pkgname=jackett-armv6-bin
 pkgver=0.12.1494
