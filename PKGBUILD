@@ -3,7 +3,7 @@
 
 pkgname=plasma-theme-helium
 pkgver=9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A translucent theme for Plasma 5."
 arch=('any')
 url="https://www.opendesktop.org/p/998869/"
@@ -12,8 +12,8 @@ depends=('plasma-workspace')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
-source=('Helium-20191201175356.tar.gz')
-md5sums=('262024f4f66f5933ef1ea8b3e0abded7')
+source=('Helium.tar.gz')
+md5sums=('52b8de7ca511884ad2dac640d67ded18')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/plasma/desktoptheme/"
