@@ -1,7 +1,7 @@
 pkgbase = rst2pdf
 	pkgdesc = Convert reStructured Text to PDF via ReportLab.
-	pkgver = 0.95.dev0+4+7135153
-	pkgrel = 2
+	pkgver = 0.96
+	pkgrel = 1
 	url = https://rst2pdf.org
 	arch = any
 	license = MIT
@@ -23,8 +23,8 @@ pkgbase = rst2pdf
 	provides = rst2pdf
 	conflicts = python-rst2pdf
 	conflicts = python2-rst2pdf
-	source = git+https://github.com/rst2pdf/rst2pdf.git#commit=713515355ed3aa74ed0b09477bd2eaae7506b77b
-	sha256sums = SKIP
+	source = rst2pdf-0.96.tar.gz::https://github.com/rst2pdf/rst2pdf/archive/0.96.tar.gz
+	sha256sums = b54fe6e6bd11211849e3f35c08954804378312005c328dd8185ea52e59829121
 
 pkgname = rst2pdf
 
