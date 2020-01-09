@@ -1,13 +1,13 @@
 # Maintainer: Maxime Vincent (maximevince) <maxime [dot] vince [at] gmail [dot] com>
 
 pkgname=radare2-cutter-ghidra
-pkgver=1.9.0.r49.g524b27fa
+pkgver=1.10.0.r14.gc645cbee
 pkgrel=1
 pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework with Python and Ghidra support'
 url='https://github.com/radareorg/cutter'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('python' 'radare2' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'pyside2' 'shiboken2')
+depends=('python' 'radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'pyside2' 'shiboken2')
 makedepends=('git' 'cmake')
 optdepends=()
 provides=('radare2-cutter')
