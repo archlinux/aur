@@ -41,7 +41,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	dotnet build -c Release osu.Desktop
+	env DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet build -c Release osu.Desktop
 }
 
 
