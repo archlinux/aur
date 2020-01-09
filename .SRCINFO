@@ -1,13 +1,12 @@
 pkgbase = buuf-icon-theme
 	pkgdesc = An icon theme for Gnome based on the Buuf iconset by Mattahan
 	pkgver = 3.34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://buuficontheme.free.fr
 	arch = any
 	license = cc-by-nc-sa
-	makedepends = pup
 	depends = hicolor-icon-theme
-	source = https://dllb2.pling.com/api/files/download/id/1572174181/s/3d8b25bbfa822d6c2fe0998f0336b20248c1355ca1137f027d54c60e4d818001c8d21601a8c71eab5702a9f55987c0eccdd1d11c6537dd68fbdb727b1cea8851/t/1578581273/c/3d8b25bbfa822d6c2fe0998f0336b20248c1355ca1137f027d54c60e4d818001c8d21601a8c71eab5702a9f55987c0eccdd1d11c6537dd68fbdb727b1cea8851/lt/download/buuf3.34.tar.xz
+	source = https://dllb2.pling.com/api/files/download/id/1572174181/s/a99b3b9694ceed9ec1ee37a3320310f07d836a63cad2ea817ad09da65738bf9a4ad0a1b4e01b2de0085cbe09147b71512e2dc0e9d8d6e109cd791ca84f1fc766/t/1578583304/c/a99b3b9694ceed9ec1ee37a3320310f07d836a63cad2ea817ad09da65738bf9a4ad0a1b4e01b2de0085cbe09147b71512e2dc0e9d8d6e109cd791ca84f1fc766/lt/download/buuf3.34.tar.xz
 	md5sums = 0edbcd3d019d4a9b5fc0478168aac263
 
 pkgname = buuf-icon-theme

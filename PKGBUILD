@@ -6,18 +6,15 @@
 pkgname=buuf-icon-theme
 pkgdesc="An icon theme for Gnome based on the Buuf iconset by Mattahan"
 pkgver=3.34
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="http://buuficontheme.free.fr"
 license=('cc-by-nc-sa')
 
 depends=('hicolor-icon-theme')
-makedepends=('pup')
 
 plingurl="https://www.pling.com/dl?file_id=1572174181&file_type=application/x-xz&file_name=buuf$pkgver.tar.xz&file_size=21660564&project_id=1012512&link_type=download&is_external=false&external_link=null"
-source=($(curl -sX POST "$plingurl" | pup -i 0 '.empty-action > script' | sed '2q;d' | sed 's/^[^"]*"//' | sed 's/".*$//'))
-
-#source=(buuf$pkgver.tar.xz)
+source=($(curl -sX POST "$plingurl" | sed -n -e '/class="empty"/,/\/section/p' | awk '/script/,/\/script/' | sed 's/^[^"]*"//' | sed 's/"[^"]*$//'))
 
 package() {
   mkdir -p "$pkgdir"/usr/share/icons/$pkgname/
