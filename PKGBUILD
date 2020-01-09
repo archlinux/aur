@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=10.0.0_r331817.4787c6e2f31
+pkgver=10.0.0_r338952.0f5f28d000f
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -50,7 +50,7 @@ prepare() {
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc
     
     cd clang
-    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
+#    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
 }
 
 build() {
