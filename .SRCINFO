@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-solarc-git
 	pkgdesc = A flat theme with transparent elements. Based on the Arc theme: https://github.com/arc-design/arc-theme
-	pkgver = 830.f55ce00
+	pkgver = 843.6935459
 	pkgrel = 1
 	url = https://github.com/schemar/solarc-theme
 	arch = any
