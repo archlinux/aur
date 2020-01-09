@@ -12,7 +12,7 @@
 
 set -u
 pkgname='turboprint'
-_pkgver='2.48-2'
+_pkgver='2.49-1'
 pkgver="${_pkgver//-/.}"
 pkgrel='1'
 pkgdesc='High-quality printer driver system for Linux'
@@ -44,13 +44,13 @@ source_x86_64=("http://www.turboprint.info/tp2/${_srcdir}.x86_64.tgz")
 md5sums=('e3c504b2c1b7deb01d03fde710b117d7'
          '60a1754b2abd30e75e51acd9576cda43'
          '2640e1d95c3579d6cef590d18b4476df')
-md5sums_i686=('0dc85a39718f2962baefe602192e4af2')
-md5sums_x86_64=('1e10ba5d88c2754b264027a0a2207d64')
+md5sums_i686=('7f7644e880749e43d1929502e6a837e9')
+md5sums_x86_64=('27246b686b697661222b7f8def8377ad')
 sha256sums=('c90e4f71a234dc0638d15305184daeed212ebf1f7efc2f5a2a09895ca09bea6d'
             'de0c92b665150ceaf33c3cfd94b0afb422609194db9416aff59add5123bb8a2f'
             'a6ba2b4bab8d2512e542427dd3473d1764a777ef0493031046dc7282dc05fdad')
-sha256sums_i686=('d9f11e6262222a79702239e2b6f6126964b3f1a3a15283c393ff47557428cfc8')
-sha256sums_x86_64=('76c8e4e4b02f37da09c7711226b978b64aa6f7a9b4280a9a42e9e6da69a658e8')
+sha256sums_i686=('b4bb7f85940c8f6eaa99c78f31a27c1577ca9da7a3febfc5fd3f34694e24c285')
+sha256sums_x86_64=('4469c396b85c6f63aaac70344335834952c92e318604c1fbd008dc3f89628dec')
 
 prepare() {
   set -u
@@ -65,7 +65,7 @@ prepare() {
 package() {
   set -u
   cd "${_srcdir}"
-  RPM_BUILD_ROOT="${pkgdir}" 'lib/install-static' --rpm
+  RPM_BUILD_ROOT="${pkgdir}" sh -u 'lib/install-static' --rpm
 
   # Install icons
   install -Dpm644 'img/tpapplet.png' 'img/tpicon.png' 'img/tpmonitor.png' -t "${pkgdir}/usr/share/pixmaps"
