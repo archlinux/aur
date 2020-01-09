@@ -1,0 +1,30 @@
+pkgbase = ros-melodic-twist-mux
+	pkgdesc = ROS Module Twist multiplexer, which multiplex several velocity commands (topics) and allows to priorize or disable them (locks).
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://wiki.ros.org/twist_mux
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-visualization-msgs
+	makedepends = ros-melodic-diagnostic-updater
+	makedepends = ros-melodic-rostest
+	makedepends = ros-melodic-rospy
+	makedepends = ros-melodic-rostopic
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-visualization-msgs
+	depends = ros-melodic-twist-mux-msgs
+	depends = ros-melodic-diagnostic-updater
+	depends = python-rospkg
+	source = ros-melodic-twist-mux::git+https://github.com/ros-teleop/twist_mux.git#tag=3.1.0
+	sha256sums = SKIP
+
+pkgname = ros-melodic-twist-mux
+
