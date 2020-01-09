@@ -1,0 +1,16 @@
+pkgbase = pause
+	pkgdesc = Wait for signal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://hexawolf.dev/post/pause
+	arch = any
+	license = Unlicense
+	makedepends = dietlibc
+	makedepends = binutils
+	makedepends = gcc
+	provides = pause
+	source = pause.c
+	sha256sums = SKIP
+
+pkgname = pause
+
