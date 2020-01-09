@@ -1,11 +1,10 @@
 pkgbase = huawei-wmi-dkms
 	pkgdesc = Huawei WMI laptop extras driver
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aymanbagabas/Huawei-WMI
 	arch = x86_64
 	license = GPLv2
-	makedepends = linux-headers
 	depends = dkms
 	source = https://github.com/aymanbagabas/Huawei-WMI/releases/download/v3.4/huawei-wmi-dkms-3.4.zip
 	sha256sums = bac8fe1ead3d56be478b7588a32a8ae7dd698840533cb1b645ab90ddcaf4b72c
