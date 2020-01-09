@@ -3,7 +3,7 @@
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d
-pkgver=1.10.4.1
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
@@ -78,5 +78,5 @@ package() {
 }
 sha256=('a8e438d4a13ac8c81b80d288326617b3'
         '057269173f3c1987953302519bc744fa')
-md5sums=('d436f4a4bb4176b4bc6c6aea36dd0090'
+md5sums=('4d82656fe3532e671e83fcb92eb53184'
          '057269173f3c1987953302519bc744fa')
