@@ -1,11 +1,11 @@
 pkgbase = opendict
 	pkgdesc = Multiplatform computer dictionary software
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://opendict.sourceforge.net/
 	arch = any
 	license = GPL
-	depends = wxpython
+	depends = python2-wxpython3
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
