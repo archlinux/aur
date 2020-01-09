@@ -1,0 +1,24 @@
+pkgbase = ros-melodic-sbpl-lattice-planner
+	pkgdesc = ROS - SBPL Lattice Planner provides a path planning algorithm for ROS
+	pkgver = 0.3.2
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = pkg-config
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-costmap-2d
+	depends = ros-melodic-nav-core
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-message-generation
+	depends = python-rospkg
+	options = !makeflags
+	source = ros-melodic-sbpl-lattice-planner::git+https://github.com/ros-planning/navigation_experimental.git
+	sha256sums = SKIP
+
+pkgname = ros-melodic-sbpl-lattice-planner
+
