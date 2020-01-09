@@ -6,6 +6,7 @@ pkgbase = python2-pynput
 	arch = any
 	license = LGPL3
 	makedepends = python2-setuptools
+	makedepends = python2-setuptools-lint
 	depends = python2-xlib
 	depends = python2-six
 	depends = python2-enum34
