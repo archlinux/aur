@@ -1,5 +1,6 @@
 *
 !PKGBUILD
+!LICENSE
 !.SRCINFO
 !*.patch
 !*.desktop
@@ -8,4 +9,3 @@
 !*.sh
 !*.conf
 !.gitignore
-grafana
