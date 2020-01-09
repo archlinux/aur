@@ -19,8 +19,8 @@ source=("https://github.com/IbcAlpha/IBC/releases/download/${pkgver}/IBCLinux-${
         'ibc@.service')
 md5sums=('0f3889c105ebb679e186ff593d2fad3c'
          'dd29abc1db10ea9bfbdec1cb3abe3550'
-         '630e17a3776f0795b929603a6b35316d'
-         '1bd30d4fe0a778c4d5fef526e52a9150'
+         '55001e560331a3ee0c4988961090eff9'
+         'a1bed3fed40a1a5165fbd86fb8204eec'
          'e4cc6b5177719502cbcd9ea3a0152eab')
 
 package() {
