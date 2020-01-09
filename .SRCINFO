@@ -1,5 +1,5 @@
 pkgbase = linux-amd
-	pkgver = 5.4.v.8
+	pkgver = 5.4.v.10
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = linux-amd
 	source = linux-amd.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
 	sha256sums = SKIP
-	sha256sums = 272b1d19fd3fff394d74c95cd61590c2341869d6e781fa518c8fb460595f4891
+	sha256sums = d1647b65b6049925d6be4c4949a67a33b8ab64293399ae612e97106c3a500d72
 	sha256sums = 71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08
 	sha256sums = fb98e49d7a640e05bf0d3a65ca49d0adb19de7547cb7ffca7a6cbacb1f461f0b
 
