@@ -2,15 +2,15 @@
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=tsv-utils
 _pkgname=tsv-utils-dlang
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more."
 arch=('i686' 'x86_64')
 groups=('dlang')
 url="https://github.com/eBay/tsv-utils-dlang"
 license=('Boost')
-depends=('clang' 'liblphobos')
-makedepends=('git' 'dub' 'ldc' 'liblphobos' 'make')
+depends=('liblphobos')
+makedepends=('git' 'dub' 'ldc' 'make')
 source=(
     "git+https://github.com/eBay/tsv-utils-dlang.git#tag=v$pkgver"
 )
