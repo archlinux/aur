@@ -5,13 +5,13 @@ author=eigenein
 pkgname=python-pure-protobuf
 _gitname=protobuf
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of Protocol Buffers data types with dataclasses support.'
 url='https://github.com/VeNoMouS/cloudscraper.git'
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('python-pure-protobuf')
 
 source=("$pkgname-$pkgver.tar.gz::https://www.github.com/$author/$_gitname/archive/$pkgver.tar.gz")
