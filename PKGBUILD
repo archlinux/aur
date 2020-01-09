@@ -57,7 +57,7 @@ prepare() {
 build() {
     cd "$srcdir/$_reponame"
 
-    make EXTRA_CFLAGS="-O2"
+    make EXTRA_CFLAGS="-O0"
 }
 
 package() {
