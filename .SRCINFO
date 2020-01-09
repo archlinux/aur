@@ -1,6 +1,6 @@
 pkgbase = osu-lazer-git
 	pkgdesc = An open source, free-to-win rhythm game
-	pkgver = 2020.104.0.r72.d33a507d9
+	pkgver = 2020.104.0.r75.7c3b04c0a
 	pkgrel = 1
 	url = https://github.com/ppy/osu
 	arch = any
@@ -13,12 +13,12 @@ pkgbase = osu-lazer-git
 	provides = osu-lazer
 	conflicts = osu-lazer
 	options = !strip
-	source = osu-lazer::git+https://github.com/ppy/osu.git
-	source = osu-lazer.sh
-	source = osu-lazer.desktop
-	source = osu-lazer.xml
+	source = osu-lazer-git::git+https://github.com/ppy/osu.git
+	source = osu-lazer-git.sh
+	source = osu-lazer-git.desktop
+	source = osu-lazer-git.xml
 	sha256sums = SKIP
-	sha256sums = ce9d5224514170c97012d1bbc652f064223bdecddaa85f16019d50b06d712fa8
+	sha256sums = b0e3f6195988220421bee1484aa4a7260c2861e92fa7b0bf0f3141a60cdc439b
 	sha256sums = 6e977d250974783ca02a61cb8cad9b1d8683bcb1ee289d9e1ce2b4ad431b9773
 	sha256sums = 8e7c18bcb146cf161a84025934ef2cbe9395b0008535faaeaca4bc4d56194f8f
 
