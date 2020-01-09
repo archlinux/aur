@@ -8,6 +8,7 @@ pkgbase = ovras
     license = GPL
     depends = qt5-declarative
     depends = qt5-multimedia
+    depends = libudev0-shim
     depends = mesa
     optdepends = dbus: media player support
     optdepends = xorg-server: send keyboard keys
