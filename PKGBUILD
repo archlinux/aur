@@ -4,12 +4,12 @@
 
 pkgname=exodus
 pkgver=20.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one app to secure, manage and exchange blockchain assets"
 arch=('x86_64')
 url="https://exodus.io"
 license=('custom')
-depends=('gconf' 'gtk2' 'nss' 'libxss' 'glibc>=2.28-4')
+depends=('gtk2' 'nss' 'libxss' 'glibc>=2.28-4')
 source=("https://exodusbin.azureedge.net/releases/exodus-linux-x64-${pkgver}.zip"
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
