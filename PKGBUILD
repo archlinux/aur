@@ -1,34 +1,30 @@
-# Maintainer: Michael Herzberg <{firstname}@{firstinitial}{lastname}.de>
-# Contributor: Brett Gilio <owner@brettgilio.com>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Mort Yao <soi@mort.ninja>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Joseph R. Quinn <quinn dot josephr at protonmail dot com>
 
-pkgname=fsharp-git
-pkgver=r6614.15bd45404
+pkgname='fsharp-git'
+pkgver=10.2.3.r6.g24c798bfc
 pkgrel=1
-pkgdesc="The F# Compiler, Core Library & Tools (F# Software Foundation Repository) (master branch)"
+pkgdesc='The F# Compiler, Core Library & Tools (F# Software Foundation Repository) - Git Version'
 arch=('any')
-url="http://fsharp.org/"
+url='https://fsharp.org/'
 license=('MIT')
+depends=('mono>=6.0' 'msbuild')
+makedepends=('git')
 provides=('fsharp')
 conflicts=('fsharp')
-depends=('mono' 'msbuild-stable')
-makedepends=(git)
-source=("git+https://github.com/fsharp/fsharp")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/fsharp/fsharp")
+md5sums=('SKIP')
 
 pkgver() {
-  cd fsharp
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd fsharp
-  make
+  cd "$pkgname"
+  prefix='/usr' make
 }
 
 package() {
-  cd fsharp
-  make DESTDIR="$pkgdir" install
+  cd "$pkgname"
+  make prefix='/usr' DESTDIR="$pkgdir" install
 }
