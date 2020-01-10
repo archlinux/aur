@@ -7,7 +7,7 @@ pkgname='ros-melodic-usb-cam'
 pkgver='0.3.6'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-camera-info-manager
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="usb_cam-release-release-melodic-usb_cam"
+_dir="usb_cam-release-release-melodic-usb_cam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/usb_cam-release/archive/release/melodic/usb_cam/${pkgver}-${_pkgver_patch}.tar.gz")
 sha256sums=('21a2fa956af929b771c989bdb53a572443481b101cea0ba0b66547e0440a9bd5')
 
