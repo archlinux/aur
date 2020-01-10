@@ -4,7 +4,7 @@ pkgname=vvvvvv-git
 binname=vvvvvv
 pkgver=2.2
 _pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc='A retro-styled 2D platformer (game sold separately)'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
@@ -15,7 +15,7 @@ source=(
     "git+https://github.com/TerryCavanagh/VVVVVV.git"
     "${binname}.desktop"
     "${binname}.sh"
-    "file://data.zip"
+    "local://data.zip"
 )
 md5sums=(
     'SKIP'

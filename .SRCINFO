@@ -1,7 +1,7 @@
 pkgbase = vvvvvv-git
 	pkgdesc = A retro-styled 2D platformer (game sold separately)
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thelettervsixtim.es/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vvvvvv-git
 	source = git+https://github.com/TerryCavanagh/VVVVVV.git
 	source = vvvvvv.desktop
 	source = vvvvvv.sh
-	source = file://data.zip
+	source = local://data.zip
 	md5sums = SKIP
 	md5sums = f3f06f16bf7f3280279e2d3da425a5d2
 	md5sums = 6d1c555a18bcd5cba8c55a62cf0964ac
