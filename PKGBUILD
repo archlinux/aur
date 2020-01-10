@@ -24,16 +24,16 @@
 
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
 license=('custom: nonfree and unredistributable')
 depends=('alsa-lib' 'aom' 'aribb24' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2'  
-	 'dav1d' 'davs2' 'fontconfig' 'ffnvcodec-headers' 'frei0r-plugins' 
-         'fribidi' 'glibc' 'gsm' 'jack' 'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394'
+	       'dav1d' 'davs2' 'fontconfig' 'ffnvcodec-headers' 'frei0r-plugins' 
+         'fribidi' 'gsm' 'jack' 'ladspa' 'lame' 'lensfun' 'libass' 'libavc1394'
          'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmodplug' 'libomxil-bellagio'
          'libmysofa' 'libpulse' 'librsvg' 'libsoxr' 'libssh' 'libtheora'
@@ -43,12 +43,12 @@ depends=('alsa-lib' 'aom' 'aribb24' 'bzip2' 'celt' 'chromaprint-fftw' 'codec2'
          'rockchip-mpp' 'rubberband' 'rtmpdump' 'sdl2' 'speex' 'shine' 'tensorflow' 
          'tesseract' 'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf'
          'vo-amrwbenc' 'xavs2' 'xvidcore' 'xz' 'wavpack' 'zeromq' 'zimg' 'zlib'
-         'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'libx265.so'
+         'zvbi' 'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'x264' 'x265'
          'snappy' 'sndio' 'xavs')
 depends_x86_64=('cuda')
 makedepends=('flite' 'ffnvcodec-headers' 'libmfx' 'libvdpau' 'nasm' 'opencl-headers')
 optdepends=('avxsynth-git: for Avisynth support'
-            'blackmagic-decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
+            'decklink-sdk: for Blackmagic DeckLink support; need to add --enable-decklink option in this PKGBUILD')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
 conflicts=('ffmpeg')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -57,7 +57,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(https://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.xz{,.asc}
         'UNREDISTRIBUTABLE.txt')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4'
+sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
