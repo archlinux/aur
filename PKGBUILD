@@ -3,7 +3,7 @@
 
 _gemname=octokit
 pkgname=ruby-$_gemname
-pkgver=4.14.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc="Simple wrapper for the GitHub API."
 arch=(any)
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-sawyer')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('0a12490b754adedd781459fb734432288cc734eca9291fd0c45fa6f1dc7aeaf0')
+sha256sums=('4ca1473e5bdaed0804b647c7c813ad9372c7d7e1895f88aa264722011a6ce679')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
