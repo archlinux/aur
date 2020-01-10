@@ -4,7 +4,7 @@
 # Contributor: David Danier <david.danier@team23.de>
 
 pkgname=solr
-pkgver=8.2.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="Popular, blazing fast open source enterprise search platform from the Apache Lucene project"
 arch=('any')
@@ -21,8 +21,8 @@ backup=(opt/solr/server/etc/jetty{,-http,-https,-ssl}.xml
 install="$pkgname.install"
 options=(!strip)
 # https://www-eu.apache.org/dist/lucene/KEYS
-validpgpkeys=('E58A6F4D5B2B48AC66D5E53BD4F181881A42F9E6') # Ignacio Vera (CODE SIGNING KEY) <ivera@apache.org>
-sha256sums=('bfa4b39b236e5d714f4233138b8b5cb7e1996ddc0aad60052ce83c4b7bf33449'
+validpgpkeys=('2085660D9C1FCCACC4A479A3BF160FF14992A24C') # Ishan Chattopadhyaya <ishan@apache.org>
+sha256sums=('1a9820915186227eaf6fcb851d60690853911b92a15b4e0b7f046324eb8d1387'
             'SKIP'
             'e4ca86de2ef9425913280deeeec42d6e8ff310b08ea55d9156193ceef3c847bd'
             'a336c1a16742b100b3d28fe49722366477bb805e262f36b83cc2fdd9e85d5bf9')
