@@ -1,0 +1,16 @@
+pkgbase = ruby-hocon
+	pkgdesc = A collection of text algorithms: Levenshtein, Soundex, Metaphone, Double Metaphone, Porter Stemming
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/puppetlabs/ruby-hocon
+	arch = any
+	license = Apache
+	checkdepends = ruby-rspec
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/puppetlabs/ruby-hocon/archive/1.3.0/ruby-hocon-1.3.0.tar.gz
+	sha512sums = 67a69b516197b4a0e64c275fe4b930a3b1128ef1949c47263ba9a20bd8397152a2a5dce0c64ce54dbcf7bd3c81d77aa2fb450e12f5aa7bacb0c85e61083904f6
+
+pkgname = ruby-hocon
+
