@@ -1,0 +1,15 @@
+pkgbase = php-humbug-box-bin
+	pkgdesc = Fast, zero config application bundler with PHARs.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/humbug/box
+	install = php-humbug-box.install
+	arch = any
+	license = MIT
+	source = https://github.com/humbug/box/releases/download/3.8.0/box.phar
+	source = https://raw.githubusercontent.com/humbug/box/3.8.0/LICENSE
+	sha512sums = 03fae36d1f696e0df041a689d9bd8004bd8ae631310a156c8f1a4b37a4ab26899b8f9022ba25c2807c9a4fea6315fd3bd18d07d46f9cb5c67371009401968bca
+	sha512sums = 4574410c9a00c41e11d166bcc0d44b4e31b5beaf24bf498a608ebf611e86466a3a61549da6d608b714b3c32c5c361a1514baf38e4db2a5fc0a0d36b69169cb50
+
+pkgname = php-humbug-box-bin
+
