@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=160
+_minor=163
 _srcname=linux-${_major}
 _clr=${_major}.154-80
 pkgbase=linux-clear-lts2017
@@ -69,7 +69,7 @@ pkgdesc='Clear Linux lts2017'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
 license=('GPL2')
-makedepends=('bc' 'git' 'inetutils' 'kmod' 'libelf' 'xmlto')
+makedepends=('bc' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _gcc_more_v='20190822'
 source=(
@@ -110,7 +110,7 @@ prepare() {
         msg2 "Enable extra stuff from arch kernel..."
 
         # General setup
-        scripts/config --module IKCONFIG \
+        scripts/config --enable IKCONFIG \
                        --enable-after IKCONFIG IKCONFIG_PROC \
                        --undefine RT_GROUP_SCHED
 
@@ -194,7 +194,7 @@ prepare() {
 
 build() {
     cd ${_srcname}
-    make bzImage modules
+    make -j$(nproc) bzImage modules
 }
 
 _package() {
@@ -320,7 +320,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '6e6bf7f7d9cd67a7b691c2c25d8117113119ad4ab991e3524d0ae1b2da5c767d'
+            'ab2d953ab6ca44e118da7871d065310c595f2ddb1177a3856e2b53e793086e4d'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
