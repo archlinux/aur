@@ -2,13 +2,13 @@
 _pkgname='orbterm'
 pkgname="$_pkgname-git"
 pkgver='0.3.6.r4.g4ffdd27'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='The default terminal for RedoxOS, compatible with Linux - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.redox-os.org/redox-os/$_pkgname"
 license=('MIT')
 depends=('sdl2')
-makedepends=('cargo' 'git' 'rust')
+makedepends=('cargo' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory"
-	cargo build --release --locked
+	cargo build --release --locked --all-features
 }
 
 package() {
