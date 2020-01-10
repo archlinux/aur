@@ -1,5 +1,5 @@
 pkgname='tabs-app'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=0
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
