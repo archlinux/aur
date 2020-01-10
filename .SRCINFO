@@ -1,0 +1,20 @@
+pkgbase = mrifk-git
+	pkgdesc = Decompiles Glulx story files
+	pkgver = 3.r0.g48687e5
+	pkgrel = 1
+	url = https://github.com/wertercatt/mrifk
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = ghc
+	makedepends = ghc-static
+	depends = gmp
+	depends = libffi
+	source = git+https://github.com/wertercatt/mrifk.git
+	source = Makefile.patch
+	sha256sums = SKIP
+	sha256sums = 91fb77f8af044004758d6b1d0547aacf4937ba3d4712538f351554139af05537
+
+pkgname = mrifk-git
+

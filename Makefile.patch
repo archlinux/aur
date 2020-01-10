@@ -1,0 +1,15 @@
+diff --git a/Makefile b/Makefile
+index 971f000..bfa283a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,6 @@
+-EXE = .exe
+ HFLAGS = -v -O
+ 
+-all : mrifk$(EXE)
++all : mrifk
+ 
+-mrifk$(EXE) : Mrifk*.hs
++mrifk : Mrifk*.hs
+ 		ghc --make -XParallelListComp -o $@ ${HFLAGS} Mrifk.hs
+\ No newline at end of file
