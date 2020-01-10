@@ -1,8 +1,8 @@
 # Maintainer: Jorengarenar
 
 pkgname=css-beautify
-pkgver=1.10.2
-pkgrel=3
+pkgver=1.10.3
+pkgrel=1
 pkgdesc='Beautifier for CSS'
 arch=('any')
 depends=('python')
