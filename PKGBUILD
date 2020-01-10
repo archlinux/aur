@@ -1,8 +1,8 @@
-_pkgbasename=libxft-brga
+_pkgbasename=libxft-bgra
 pkgname=lib32-$_pkgbasename
 pkgver=2.3.3
 pkgrel=1
-pkgdesc="Modified libXft with BRGA & scaling patches by Maxime Coste to support color emoji"
+pkgdesc="libXft with BGRA glyph (color emoji) rendering & scaling patches by Maxime Coste"
 arch=('x86_64')
 license=('custom')
 groups=('modified')

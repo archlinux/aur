@@ -1,5 +1,5 @@
-pkgbase = lib32-libxft-brga
-	pkgdesc = Modified libXft with BRGA & scaling patches by Maxime Coste to support color emoji
+pkgbase = lib32-libxft-bgra
+	pkgdesc = libXft with BGRA glyph (color emoji) rendering & scaling patches by Maxime Coste
 	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
@@ -19,5 +19,5 @@ pkgbase = lib32-libxft-brga
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = lib32-libxft-brga
+pkgname = lib32-libxft-bgra
 
