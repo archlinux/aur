@@ -1,14 +1,19 @@
 pkgbase=python-pyclipper
 pkgname=('python-pyclipper' 'python2-pyclipper')
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.0.post3
+pkgrel=1
 pkgdesc="Cython wrapper for the C++ translation of the Angus Johnson's Clipper library"
-url="https://github.com/greginvm/pyclipper"
+url="https://github.com/fonttools/pyclipper"
 arch=(i686 x86_64)
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools' 'cython' 'cython2')
-source=("https://github.com/greginvm/pyclipper/archive/${pkgver}.tar.gz")
-sha256sums=('9c09b8af500bac9bae665182eaa21c365d0da045132472df266417796419831c')
+source=("pyclipper-$pkgver::git+https://github.com/greginvm/pyclipper.git")
+sha256sums=('SKIP')  # not cool, but pyclipper build process needs .git metadata
+
+prepare() {
+  cd "${srcdir}/pyclipper-$pkgver"
+  git checkout --quiet --force $pkgver
+}
 
 build() {
   cp -r "${srcdir}"/pyclipper-$pkgver "${srcdir}"/pyclipper-$pkgver-py2
