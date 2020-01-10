@@ -1,11 +1,12 @@
 pkgbase = edb-debugger-git
 	pkgdesc = EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg. Git version
-	pkgver = 1.1.0.r0.g6d9fb5b8
+	pkgver = 1.1.0.r18.ge99c70ef
 	pkgrel = 1
 	url = https://www.codef00.com/projects#debugger
 	arch = x86_64
 	license = GPL2
 	makedepends = boost>=1.35.0
+	makedepends = cmake
 	depends = capstone
 	depends = desktop-file-utils
 	depends = graphviz

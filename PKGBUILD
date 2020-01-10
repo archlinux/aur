@@ -3,7 +3,7 @@
 
 _pkgname=edb-debugger
 pkgname=$_pkgname-git
-pkgver=1.1.0.r0.g6d9fb5b8
+pkgver=1.1.0.r18.ge99c70ef
 pkgrel=1
 pkgdesc="EDB (Evan's Debugger) is a binary mode debugger with the goal of having usability on par with OllyDbg. Git version"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 # add 'gdtoa-desktop-git' dependency if you want 80-bit floats
 # to be printed in their shortest possible representation
 depends=('capstone' 'desktop-file-utils' 'graphviz' 'hicolor-icon-theme' 'qt5-svg' 'qt5-xmlpatterns')
-makedepends=('boost>=1.35.0')
+makedepends=('boost>=1.35.0' 'cmake')
 provides=('edb-debugger')
 conflicts=('edb-debugger')
 source=("git+https://github.com/eteran/edb-debugger.git"
