@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -18,6 +18,7 @@ options=(!strip)
 # https://gitlab.manjaro.org/packages?utf8=%E2%9C%93&filter=nvidia-340xx
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
   unfuck-340.108-build-fix.patch
+  fix_multi_core_build.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
             '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57')
