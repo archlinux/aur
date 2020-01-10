@@ -1,7 +1,7 @@
 # Maintainer: Azat Abdullin <abdullin@kspt.icc.spbstu.ru>
 
 pkgname=boolector-java
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Java bindings for the Boolector SMT solver"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=("boolector")
 makedepends=("make" "git" "gcc")
 
-source=("https://github.com/AbdullinAM/JavaBoolector/releases/download/v3.1.0/boolector-java-3.1.0-sources.tar.gz")
+source=("https://github.com/AbdullinAM/JavaBoolector/releases/download/v3.1.1/boolector-java-3.1.1-sources.tar.gz")
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 
