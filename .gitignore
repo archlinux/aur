@@ -1,4 +1,4 @@
-lazygit-*.pkg.tar.xz
+lazygit-*.pkg.tar.zst
 lazygit-*.tar.gz
 lazygit-*.log
 PKGBUILD-namcap.log
