@@ -1,8 +1,8 @@
 # Maintainer: Mufeed Ali <lastweakness@tuta.io>
 # Based on the git package by Manuel Palenzuela
 
-author=VeNoMouS
 pkgname=python-cloudscraper
+_author=VeNoMouS
 _gitname=cloudscraper
 pkgver=1.2.18
 pkgrel=2
