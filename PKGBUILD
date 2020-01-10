@@ -2,10 +2,10 @@
 
 pkgname=ytmdesktop-git
 _name=ytmdesktop
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.0.5b86734
+pkgrel=3
 pkgdesc="A desktop app for YouTube Music"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://ytmdesktop.app"
 depends=('gtk3' 'nss' 'libxss')
 makedepends=('git' 'npm')
