@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openvr
-pkgver=1.7.15
+pkgver=1.8.19
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware"
 arch=('x86_64')
@@ -10,11 +10,11 @@ license=('BSD')
 depends=('glibc' 'glew' 'libgl' 'sdl2')
 makedepends=('cmake' 'qt5-base')
 options=('staticlibs')
-source=("https://github.com/ValveSoftware/openvr/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ValveSoftware/openvr/archive/v$pkgver.tar.gz"
         "0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch?h=openvr-git"
         "0002-samples-cmake-Remove-OpenVR-paths-check.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-samples-cmake-Remove-OpenVR-paths-check.patch?h=openvr-git"
         "0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch::https://aur.archlinux.org/cgit/aur.git/plain/0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch?h=openvr-git")
-sha256sums=('ad5cba9bbd4235801ecce7e03f76f4a7d9b18343cc280c96905493eafcc00cc8'
+sha256sums=('619a1d258cea39bc7edc9a2aa544c477692e38679540e6671d50768ed3145984'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -47,8 +47,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     "../"
-  # disabled temporary in 1.7.15, see: https://github.com/ValveSoftware/openvr/issues/1208
-  #make
+  make
 }
 
 package() {
