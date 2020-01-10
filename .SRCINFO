@@ -1,0 +1,14 @@
+pkgbase = python-params-flow
+	pkgdesc = A TensorFlow Keras coding style for reducing boilerplate code in custom layers and models.
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/kpe/params-flow
+	arch = x86_64
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://github.com/kpe/params-flow/archive/v0.7.4.tar.gz
+	sha256sums = 8467c4ef7d773ea87522525042d4bbb8de424e3819fb826573975b4bd0411bc4
+
+pkgname = python-params-flow
+
