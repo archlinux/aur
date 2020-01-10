@@ -14,6 +14,7 @@ MODULENAME=cssbeautifier
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
-	cp -r ${MODULENAME} /usr/lib/python3.8/${MODULENAME}
-	install -Dm755 "${pkgname}" /usr/bin
+    mkdir -p "${pkgdir}/usr/lib/python3.8/${MODULENAME}"
+    cp -r "${MODULENAME}" "${pkgdir}/usr/lib/python3.8/${MODULENAME}"
+	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin"
 }
