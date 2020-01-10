@@ -8,7 +8,7 @@ pkgbase = python-getdevinfo
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://www.hamishmb.com/files/Downloads/getdevinfo/1.0.6/Python/getdevinfo-1.0.6.tar.gz
-	md5sums = d59e7c41858fbc6c386cfa81346c6c7d
+	md5sums = bd00821d99493dcf216ac5544a39012c
 
 pkgname = python-getdevinfo
 	depends = python
