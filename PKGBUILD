@@ -1,8 +1,8 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.5
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -28,6 +28,7 @@ sha256sums=(
 
 prepare() {
     cd dxvk
+
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
     #patch -p1 -i ../extraopts.patch

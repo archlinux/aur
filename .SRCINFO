@@ -1,7 +1,7 @@
 pkgbase = dxvk-mingw
 	pkgdesc = Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version
-	pkgver = 1.5
-	pkgrel = 2
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
 	license = zlib/libpng
@@ -17,10 +17,10 @@ pkgbase = dxvk-mingw
 	depends = bash
 	provides = dxvk
 	provides = d9vk
-	provides = dxvk=1.5
+	provides = dxvk=1.5.1
 	conflicts = dxvk
 	conflicts = d9vk
-	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.5
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v1.5.1
 	source = setup_dxvk
 	source = dxvk-async.patch
 	source = dxvk-mangohud.patch
