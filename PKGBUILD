@@ -3,18 +3,18 @@
 
 
 pkgname=qtum-core-bin
-pkgver=0.18.2
-pkgrel=2
+pkgver=0.18.3
+pkgrel=1
 pkgdesc="Qtum Desktop Binary release"
 arch=('x86_64')
 url="https://qtum.org"
 license=('GPL-3.0')
 depends=('glibc')
-source=("https://repo.qtum.info/apt/ubuntu/pool/main/q/qtum/qtum_0.18.2.2_amd64.deb")
-sha256sums=('b508648d0040bb78e0759858a6e173b4204bbc3dcad0b931d9350e21701bcf20')
+source=("https://repo.qtum.info/apt/ubuntu/pool/main/q/qtum/qtum_0.18.3_amd64.deb")
+sha256sums=('993d2089c2358177bf4f2d5d877fa739a9b03828a2710585c0f88928ba9c03ce')
 
 package() {
-    bsdtar -O -xf qtum_0.18.2.2_amd64.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf - 
+    bsdtar -O -xf qtum_0.18.3_amd64.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf - 
     find "${pkgdir}" -type d -exec chmod 755 {} +
 
 }
