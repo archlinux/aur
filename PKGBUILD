@@ -3,7 +3,7 @@
 
 pkgname=eksctl
 pkgdesc='Command line tool for creating clusters on Amazon EKS'
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ depends=('kubectl')
 makedepends=('go')
 conflicts=('eksctl-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weaveworks/eksctl/archive/$pkgver.tar.gz")
-sha256sums=('8ad5b7ad7503609a593000f69e0fc45336e5512337599e7014f1b4e287d7d37c')
+sha256sums=('942b986ccf442e3e63e2669df2f7c420bef8c2dc50b8a7e5d39c14f1c94f3a0d')
 
 build() {
   # Trim PWD from binary
