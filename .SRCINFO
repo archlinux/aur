@@ -1,0 +1,17 @@
+pkgbase = ppet
+	pkgdesc = 给你的桌面添加一点趣味~
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zenghongtu/PPet
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = jq
+	makedepends = moreutils
+	depends = electron
+	conflicts = ppet-bin
+	source = ppet-1.0.0.src.tar.gz::https://github.com/zenghongtu/PPet/archive/1.0.0.tar.gz
+	sha256sums = 164575f10253867f34b135fa3e84e3d81bdbb2c896d7425ea12cb44da99f9c7c
+
+pkgname = ppet
+
