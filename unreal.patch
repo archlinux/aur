@@ -1,0 +1,53 @@
+diff --git a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+index 1dc0d9b4331..b46d10c9ef5 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs
+@@ -57,9 +57,6 @@ namespace UnrealBuildTool
+ 		/** Whether or not to preserve the portable symbol file produced by dump_syms */
+ 		bool bPreservePSYM = false;
+ 
+-		/** Platform SDK to use */
+-		protected LinuxPlatformSDK PlatformSDK;
+-
+ 		/** Toolchain information to print during the build. */
+ 		protected string ToolchainInfo;
+ 
+@@ -163,10 +160,10 @@ namespace UnrealBuildTool
+ 				throw new BuildException("Unable to build: no compatible clang version found. Please run Setup.sh");
+ 			}
+ 			// prevent unknown clangs since the build is likely to fail on too old or too new compilers
+-			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 80 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
++			else if ((CompilerVersionMajor * 10 + CompilerVersionMinor) > 90 || (CompilerVersionMajor * 10 + CompilerVersionMinor) < 60)
+ 			{
+ 				throw new BuildException(
+-					string.Format("This version of the Unreal Engine can only be compiled with clang 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
++					string.Format("This version of the Unreal Engine can only be compiled with clang 9.0 8.0, 7.0 and 6.0. clang {0} may not build it - please use a different version.",
+ 						CompilerVersionString)
+ 					);
+ 			}
+diff --git a/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs b/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
+index fbfc9a7f7a4..cbcd2a341b5 100644
+--- a/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
++++ b/Engine/Source/Programs/UnrealBuildTool/ToolChain/UEToolChain.cs
+@@ -12,6 +12,9 @@ namespace UnrealBuildTool
+ {
+ 	abstract class UEToolChain
+ 	{
++		/** Platform SDK to use */
++		protected LinuxPlatformSDK PlatformSDK;
++		
+ 		public UEToolChain()
+ 		{
+ 		}
+diff --git a/Engine/Source/Runtime/Core/Public/Unix/UnixSystemIncludes.h b/Engine/Source/Runtime/Core/Public/Unix/UnixSystemIncludes.h
+index ec5829a834e..79702a4b9fe 100644
+--- a/Engine/Source/Runtime/Core/Public/Unix/UnixSystemIncludes.h
++++ b/Engine/Source/Runtime/Core/Public/Unix/UnixSystemIncludes.h
+@@ -31,7 +31,6 @@
+ #include <utime.h>
+ #include <execinfo.h>
+ #include <signal.h>
+-#include <sys/sysctl.h>
+ #if PLATFORM_ENABLE_VECTORINTRINSICS
+ #include <xmmintrin.h>
+ #endif // PLATFORM_RASPBERRY

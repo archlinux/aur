@@ -5,7 +5,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 pkgname='unreal-engine'
 pkgver=4.24.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -19,9 +19,14 @@ optdepends=('qt5-base: qmake build system for projects'
             'clion: IDE for projects')
 license=('custom:UnrealEngine')
 source=('com.unrealengine.UE4Editor.desktop'
-        'use-arch-mono.patch')
+        'use-arch-mono.patch'
+	'unreal.patch'
+	'feditorstyle-undefined-reference.patch')
+
 sha256sums=('fa4bd19ab53e91cc8b4ae6208452a7fe986a08047617213d6250b43e7a140bf3'
-            '90a112f72a498f50dafad4feeaf7c551fe4e19830610bcef634f8e23d3d283b3')
+            '90a112f72a498f50dafad4feeaf7c551fe4e19830610bcef634f8e23d3d283b3'
+            'd3686d76fbdd2e80d8960ee21ad5ab7769451c4a11b980ac3df699fde339e42f'
+            '28842509b38eb4d1d0c328af0f8ab2c5f53849a9815d061fbb199563880b046f')
 options=(strip staticlibs) # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 prepare() {
@@ -45,29 +50,33 @@ prepare() {
   fi
   
   patch Engine/Build/BatchFiles/Linux/SetupMono.sh $srcdir/use-arch-mono.patch # Use system mono
-  
+  patch Engine/Source/Runtime/Launch/Launch.Build.cs $srcdir/feditorstyle-undefined-reference.patch
+  patch -p1 -i $srcdir/unreal.patch
+
   # Qt Creator source code access
   if [ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]
   then
     git -C Engine/Plugins/Developer clone --depth=1 git@github.com:fire/QtCreatorSourceCodeAccess
   fi
 
+  touch Engine/Build/PerforceBuild.txt
   export TERM=xterm
   ./Setup.sh
-  ./GenerateProjectFiles.sh -makefile
+  ./GenerateProjectFiles.sh -makefile -ForceUseSystemCompiler
 }
 
 build() {
   cd $pkgname
   
   # Build all targets from the "all" rule separately, because building multiple targets in parallel results in an error (but building one target with multiple threads is possible)
-  make CrashReportClient-Linux-Shipping
-  make CrashReportClientEditor-Linux-Shipping
-  make ShaderCompileWorker
-  make UnrealLightmass
-  make UnrealFrontend
-  make UE4Editor
-  make UnrealInsights
+  MAKE_ARGS="ARGS=-ForceUseSystemCompiler"
+  make CrashReportClient-Linux-Shipping $MAKE_ARGS
+  make CrashReportClientEditor-Linux-Shipping $MAKE_ARGS
+  make ShaderCompileWorker $MAKE_ARGS
+  make UnrealLightmass $MAKE_ARGS
+  make UnrealFrontend $MAKE_ARGS
+  make UE4Editor $MAKE_ARGS
+  make UnrealInsights $MAKE_ARGS
 }
 
 package() {

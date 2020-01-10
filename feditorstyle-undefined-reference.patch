@@ -1,0 +1,10 @@
+--- Launch.Build.cs	2020-01-10 15:52:46.177542575 -0600
++++ Launch.Build.cs_new	2020-01-10 15:51:39.197541686 -0600
+@@ -183,6 +183,7 @@
+ 
+ 			PrivateDependencyModuleNames.AddRange(new string[] {
+ 					"SourceControl",
++					"EditorStyle",
+ 					"UnrealEd",
+ 					"DesktopPlatform",
+ 					"PIEPreviewDeviceProfileSelector",
