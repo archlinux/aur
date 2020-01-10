@@ -1,43 +1,43 @@
-# Maintainer: gilbus <aur(AT)tinkershell.eu>
+# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Contributor: gilbus <aur@tinkershell.eu>
 pkgname=swaylock-git
-_pkgname=swaylock
-pkgver=r187.4e72a36
+pkgver=1.4.r15.gdee0021
 pkgrel=1
-license=("MIT")
-pkgdesc="Screen locker for Wayland "
-makedepends=("meson" "git" "scdoc" "wayland-protocols")
-depends=(
-	"wayland" "libxkbcommon" "pango" "cairo" "pam"
-)
-optdepends=(
-	"gdk-pixbuf2: For background images other than PNG"
-)
-arch=("i686" "x86_64")
-url="https://swaywm.org"
-source=("${pkgname%-*}::git+https://github.com/swaywm/swaylock.git")
-sha1sums=("SKIP")
-provides=("swaylock")
-conflicts=("swaylock")
-options=(debug !strip)
+pkgdesc='Screen locker for Wayland '
+url='https://github.com/swaywm/swaylock'
+license=('MIT')
+provides=('swaylock')
+conflicts=('swaylock')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2')
+makedepends=('meson' 'git' 'scdoc' 'wayland-protocols')
+source=("${pkgname%-git}::git+$url")
+sha1sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
-	cd "${srcdir}/${_pkgname}"
-	# Fix ticket FS#31544, sed line taken from gentoo
-	sed -i -e 's:login:system-auth:' pam/swaylock.linux
-	meson -Dwerror=false --prefix /usr "$srcdir/build"
+  cd "${pkgname%-git}"
+  # Fix ticket FS#31544, sed line taken from gentoo
+  sed -i -e 's:login:system-auth:' "pam/swaylock"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	ninja -C "$srcdir/build"
+  mkdir -p build
+  # makepkg is unable to strip the binary, so we tell meson to do it.
+  arch-meson build "${pkgname%-git}" -Dwerror=false --strip
+  ninja -C build
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	DESTDIR="$pkgdir/" ninja -C "$srcdir/build" install
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim: ts=2 sw=2 et
