@@ -1,12 +1,12 @@
 pkgbase = arm-linux-gnueabihf-glibc-headers
 	pkgdesc = GNU C Library headers (arm-linux-gnueabihf)
 	pkgver = 2.30
-	pkgrel = 3
+	pkgrel = 3.1
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-linux-gnueabihf-gcc-stage1>=8.2.1+20181127
+	makedepends = arm-linux-gnueabihf-gcc-stage1
 	depends = arm-linux-gnueabihf-linux-api-headers>=5.3.1-2
 	options = !buildflags
 	options = !strip

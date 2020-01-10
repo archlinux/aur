@@ -8,13 +8,13 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
 pkgver=2.30
-pkgrel=3
+pkgrel=3.1
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
 license=(GPL LGPL)
 depends=("${_target}-linux-api-headers>=5.3.1-2")
-makedepends=("${_target}-gcc-stage1>=8.2.1+20181127")
+makedepends=("${_target}-gcc-stage1")
 options=(!buildflags !strip staticlibs)
 _commit=a6aaabd036d735a1b412f441bf6c706832655598
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
