@@ -1,7 +1,7 @@
 pkgbase = ipe-tools-git
 	pkgdesc = Tools for Ipe: pdftoipe, figtoipe, ipe5toxml, svgtoipe
 	pkgver = git
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/otfried/ipe-tools
 	arch = i686
 	arch = x86_64

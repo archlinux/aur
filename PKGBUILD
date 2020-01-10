@@ -2,7 +2,7 @@
 
 _pkgname=ipe-tools
 pkgname=$_pkgname-git
-pkgrel=3
+pkgrel=4
 pkgver=git
 arch=('i686' 'x86_64')
 makedepends=('git' 'sed')
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 build() {
     # pdftoipe
     cd "$srcdir/ipe-tools/pdftoipe"
+    git checkout 1bc9c52        # to work with poppler 0.82.0; remove once Arch updates poppler to >=0.83.0
     make
 
     # figtoipe
