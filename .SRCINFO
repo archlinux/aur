@@ -1,0 +1,17 @@
+pkgbase = rust-rage-bin
+	pkgdesc = Rust implementation of the age encryption tool - binary version
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/str4d/rage
+	arch = x86_64
+	license = Apache
+	license = MIT
+	depends = fuse2
+	provides = rust-rage
+	conflicts = rust-rage
+	source = rust-rage-bin-0.1.1-1.tar.gz::https://github.com/str4d/rage/releases/download/v0.1.1/rage-v0.1.1-x86_64-linux.tar.gz
+	source = rust-rage-bin-0.1.1-1-LICENSE-MIT::https://github.com/str4d/rage/raw/v0.1.1/LICENSE-MIT
+	sha256sums = 9203fb4f6a3b1312f9af900185f7059171f1117e1772bc1bf32643b5797a310a
+	sha256sums = fe56c030c2d8c3404a37fe711cebb27ebea13d0aacf7e3524db4198335ad8cd1
+
+pkgname = rust-rage-bin
