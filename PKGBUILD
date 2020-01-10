@@ -1,6 +1,6 @@
 # Maintainer: Artyom Melnikov <a@arti-nt.ru>
 pkgname=esp-idf
-pkgver=3.3
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Espressif IoT Development Framework. Official development framework for ESP32."
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
@@ -9,7 +9,7 @@ license=('APACHE')
 depends=('python' 'python-click' 'python-pyserial' 'python-future' 'python-cryptography' 'python-pyparsing' 'python-pyelftools')
 install='esp-idf.install'
 source=(https://github.com/espressif/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.zip)
-sha256sums=('9d8dda75f6fb4695ddeaca92d47e640f49ea3df06ad0696961978d49416b1632')
+sha256sums=('010465a10b28c80abf09059b8a49fa7390cb2ce99e83d1de6328e7c1d7728ad3')
 
 build() {
   cd "$srcdir/${pkgname}-v${pkgver}"
