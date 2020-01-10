@@ -1,0 +1,14 @@
+pkgbase = python-flask-oldsessions
+	pkgdesc = Provides a session class that works like the one in Flask before 0.10
+	pkgver = 0.10
+	pkgrel = 5
+	url = https://github.com/mitsuhiko/flask-oldsessions
+	arch = any
+	license = custom:BSD
+	makedepends = python-setuptools
+	depends = python-flask
+	source = python-flask-oldsessions-0.10.tar.gz::https://github.com/mitsuhiko/flask-oldsessions/archive/0.10.tar.gz
+	sha256sums = 056e16cbe89187dc5c5fff019aa20c60daec32be2334848f4b813ce51e6701fb
+
+pkgname = python-flask-oldsessions
+
