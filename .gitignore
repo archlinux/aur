@@ -1,4 +1,4 @@
-global-*.pkg.tar.xz
+global-*.pkg.tar.zst
 global-*.tar.gz
 global-*.log
 PKGBUILD-namcap.log
