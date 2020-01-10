@@ -3,6 +3,7 @@ pkgbase = sane-airscan-git
 	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://github.com/alexpevzner/sane-airscan
+	arch = aarch64
 	arch = x86_64
 	license = GPLv2
 	makedepends = git
