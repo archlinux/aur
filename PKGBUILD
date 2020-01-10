@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=kimera-vio
-pkgver=4.0
+pkgver=5.0
 pkgrel=1
 pkgdesc="Visual Inertial Odometry pipeline for accurate State Estimation from
 Stereo/Mono + IMU data"
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('cmake')
 _pkgname="Kimera-VIO"
 source=(https://github.com/MIT-SPARK/${pkgname}/archive/v${pkgver}.tar.gz)
-sha256sums=('63ea165213554b53af0e075bdb96c333dc7a8a4a60c5c8d2b8abe4e8c5f93a78')
+sha256sums=('6c9af01a6bd84018aab746c2ad120fede3efe391a77b118716ca9e47775e351b')
 
 build() {
 
