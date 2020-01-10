@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-tss-engine-git
-pkgver=1.0.0.r28.ae7d7e1
+pkgver=1.1.0rc0.r0.2da48e4
 pkgrel=1
 pkgdesc='OpenSSL engine for Trusted Platform Module 2.0 devices'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/[-_]rc/rc/;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
