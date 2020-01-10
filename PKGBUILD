@@ -7,8 +7,8 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.32
-pkgrel=2
+pkgver=2.33.1
+pkgrel=2.1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/binutils/'
@@ -16,10 +16,12 @@ license=(GPL)
 depends=(glibc zlib)
 checkdepends=(dejagnu bc)
 options=(staticlibs !distcc !ccache)
-source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
+source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig}
+        0001-AArch64-Set-the-correct-ELF-class-for-AArch64-stubs-.patch)
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
-md5sums=('0d174cdaf85721c5723bf52355be41e6'
-         'SKIP')
+md5sums=('9406231b7d9dd93731c2d06cefe8aaf1'
+         'SKIP'
+         '31bfcff30555ae95d71a7bf5ef71d294')
 
 prepare() {
   mkdir -p binutils-build
@@ -29,6 +31,8 @@ prepare() {
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+
+  patch -Np1 -i ../0001-AArch64-Set-the-correct-ELF-class-for-AArch64-stubs-.patch
 }
 
 build() {
