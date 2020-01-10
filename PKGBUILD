@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-remmina-search-provider
 _pkgname=${pkgname%-git}
 
-pkgver=r48.360ea9a
+pkgver=r50.db6f959
 pkgrel=1
 pkgdesc="Remmina Search Provider"
 arch=('any')

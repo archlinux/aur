@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-remmina-search-provider
 	pkgdesc = Remmina Search Provider
-	pkgver = r48.360ea9a
+	pkgver = r50.db6f959
 	pkgrel = 1
 	url = https://github.com/alexmurray/remmina-search-provider
 	arch = any
