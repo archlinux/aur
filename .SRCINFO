@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-opencv-apps
+	pkgdesc = ROS - opencv_apps provides various nodes that run internally OpenCVs functionalities and publish the result as ROS topics.
+	pkgver = 1.12.0
+	pkgrel = 2
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-cv-bridge
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-nodelet
+	makedepends = ros-melodic-image-transport
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-cv-bridge
+	depends = ros-melodic-nodelet
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-image-transport
+	source = ros-melodic-opencv-apps-1.12.0-0.tar.gz::https://github.com/ros-perception/opencv_apps-release/archive/release/melodic/opencv_apps/1.12.0-0.tar.gz
+	sha256sums = 3ba64e4345d89fa59c01fff7f1123a697277005265715636d246c0c3b7867a12
+
+pkgname = ros-melodic-opencv-apps
+
