@@ -1,0 +1,14 @@
+pkgbase = bottom
+	pkgdesc = A graphical top clone, written in Rust. Inspired by both gtop and gotop.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ClementTsang/bottom
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = bottom-0.1.1.tar.gz::https://github.com/ClementTsang/bottom/archive/v0.1.1.tar.gz
+	sha512sums = SKIP
+
+pkgname = bottom
+
