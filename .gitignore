@@ -1,0 +1,9 @@
+src
+pkg
+*.sign
+*.xz
+*.pkg*
+*.part
+*.tar.gz
+*.tar.bz2
+kbdlight
