@@ -1,4 +1,4 @@
-flutter-*.tar.xz
+flutter-*.tar.zst
 flutter-*.log
 PKGBUILD-namcap.log
 pkg/
