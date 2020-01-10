@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.4.8
+	pkgver = 5.4.10
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.8.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.8.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.10.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.4/5.4-ck1/patch-5.4-ck1.xz
@@ -26,26 +26,30 @@ pkgbase = linux-ck
 	source = 0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
 	source = 0012-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
 	source = 0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+	source = 0014-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
+	source = 0015-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 42c414c902193f9e8a1b70c728ca440de02d85dc29102f52ef98cfbf20d29a52
+	sha256sums = f23c0218a5e3b363bb5a880972f507bb4dc4a290a787a7da08be07ea12042edd
 	sha256sums = SKIP
 	sha256sums = eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 	sha256sums = f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c
-	sha256sums = bd426e5a539152577608ac57b3e9a8f6281f848847c66d244274b48d95df39aa
-	sha256sums = e34286f1f2ee29a45b1a38385489581323eb6672064f4afa13eb8b39dbc79556
-	sha256sums = afaf90393cfd4b5d65dfec040cd0b74b5e7cda52540d3883e69ce8ca0b42da12
-	sha256sums = 0c1c5de463df11efdd4ed8ca0732187deb3e06d4e15524f0dbb066c578657665
-	sha256sums = 26500e808df98e20e62079d18137b5f0636f8c2a32dc8164f6b6381c22c3f217
-	sha256sums = 5f8a47d95bd54e8c315c70491b25e70b2af4dce11c0acf06ba0f7c45985b59d8
-	sha256sums = 53e1b22f9c97b3e3cdfaa03a4b3f3882ad427c4d400315a51303223209a05788
-	sha256sums = 2885647d502d9eedd4f3d94cc27d6c8ecb3bb03e4e51611be8d74034eeccf0bb
-	sha256sums = 40210b6cbd64cf70b3af76ab84c9e7f55e64aeed5c1072d4fed4345604735a67
-	sha256sums = 7f5f1806a6bf1b256416da8c4d0fcb45249769425a93beb6940cabc2112d95e2
-	sha256sums = 6a6b71cc316aff58124f169d22f7712f15f503ff3187d30e3288aa2b0c20402c
-	sha256sums = 2b8110e2f53588fde1097dde9545f5369983e654004597a41f58f8e13b0be3c0
-	sha256sums = 236e5502b9955747306eeb1078b22cc778feb8a0e1bde8895bafcf5c0438e250
+	sha256sums = a3e9541bf0306d32af8acf121643d9953776d448f68ec09741c591d1e5bc6748
+	sha256sums = 8e9967f83cf22be43b516b394523b0976c6831e28cee5136542df3c946328917
+	sha256sums = 226251c17ced22414e4275ca69be6aec318904778f0c8c244050916e51064b14
+	sha256sums = 9809d55995895e7061bfca0db9f38a608548f21bb5d4a2260e7bbb6b5af2db4a
+	sha256sums = 82bc11366ca296e86dd745c911a841d7ac12d16a1a2185da245a96e5440b8fd7
+	sha256sums = 1ef45f1e7456437e4ec7c2ada46c607f492a87db8d1cf3f3b59870bc2deaa1e6
+	sha256sums = fcd117bc51f21baac26f7570f48b91ce994fd351fcb19cb6097166a4a7c181e6
+	sha256sums = 49bc5c988a6cc127f39ae998954482450d19b69da2ce9dfcce678d3fe7504136
+	sha256sums = f583d172c69c288f5d2e587c5926b0e732284c19e73671eef112ab1a0e26362a
+	sha256sums = 84baa16aa022e0dac2515edced6f214a08d385a385ffb04e358fbe9671235d41
+	sha256sums = a55cfce037523fdb6244fd6286a1d9be12c2eab3327a1c6e05ac42899f5868d1
+	sha256sums = 9c600a292efb59087d913fd8e7a5fff9c7abcfad864d294a266600f4491476c5
+	sha256sums = 126f8b83065e3f7a72589f33874481aa06bb1686ddc6997a8a05a27c7d6721ac
+	sha256sums = 9c95928be62369403bb6822a838dc9791a5a98ac489af81b5ab8f2fd09b0c696
+	sha256sums = 4a2bd4b02e8c4f81334d22a8bd27a03f8a3a1e8137699b809de15cd7edf0e4dd
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -54,11 +58,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.4.8
+	provides = linux-ck=5.4.10
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.4.8
-	provides = linux-headers=5.4.8
+	provides = linux-ck-headers=5.4.10
+	provides = linux-headers=5.4.10
 

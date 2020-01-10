@@ -1,7 +1,7 @@
-From 3a8fe5edd1f716667d7f1ebd4f06bc808bf89a6d Mon Sep 17 00:00:00 2001
+From 763a3bbf9ded9e8e0225ba25ab48a65f8e380517 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Thu, 3 Oct 2019 11:55:30 +0300
-Subject: [PATCH 10/14] drm/i915: Fix audio power up sequence for gen10+
+Subject: [PATCH 10/16] drm/i915: Fix audio power up sequence for gen10+
  display
 
 On platfroms with gen10+ display, driver must set the enable bit of
