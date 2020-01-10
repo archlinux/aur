@@ -1,8 +1,8 @@
 pkgbase = sile-git
-	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.9.5.1.r321.g26c0213
-	pkgrel = 2
-	url = http://www.sile-typesetter.org
+	pkgdesc = Modern typesetting system inspired by TeX (HEAD version, bundles luarocks)
+	pkgver = 0.9.5.1.r513.gb266032
+	pkgrel = 1
+	url = https://www.sile-typesetter.org
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,26 +11,14 @@ pkgbase = sile-git
 	makedepends = lua-luacov-coveralls
 	depends = fontconfig
 	depends = harfbuzz>=1.4.2
-	depends = lua-bit32
-	depends = lua-luaepnf
-	depends = lua-lpeg
-	depends = lua-cassowary>=2.2
-	depends = lua-linenoise
-	depends = lua-zlib
-	depends = lua-cliargs
-	depends = lua-luaepnf
-	depends = lua-filesystem
-	depends = lua-repl
-	depends = lua-sec
-	depends = lua-socket
-	depends = lua-penlight
-	depends = lua-stdlib
-	depends = lua-vstruct
+	depends = lua
 	depends = icu
 	depends = ttf-gentium-plus
 	provides = sile
 	conflicts = sile
-	source = git://github.com/alerque/sile.git#branch=testing
+	source = git://github.com/sile-typesetter/sile.git
+	source = git://github.com/sile-typesetter/libtexpdf.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = sile-git

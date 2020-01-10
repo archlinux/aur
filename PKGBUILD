@@ -2,21 +2,17 @@
 # Contributor: Adrián Pérez de Castro <aperez@igalia.com>
 
 pkgname=sile-git
-pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.5.1.r321.g26c0213
-_branch='testing'
-pkgrel=2
+pkgdesc='Modern typesetting system inspired by TeX (HEAD version, bundles luarocks)'
+pkgver=0.9.5.1.r513.gb266032
+pkgrel=1
 arch=(any)
-url='http://www.sile-typesetter.org'
+url='https://www.sile-typesetter.org'
 license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary>=2.2' 'linenoise' 'zlib' 'cliargs'
-           'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
-           'vstruct')
 depends=('fontconfig'
          'harfbuzz>=1.4.2'
-         "${_lua_deps[@]/#/lua-}"
+         'lua'
          'icu'
          'ttf-gentium-plus')
 optmakedepents=('luajit')
@@ -24,26 +20,30 @@ makedepends=('git'
              'lua-busted'
              'lua-luacov=0.8'
              'lua-luacov-coveralls')
-source=("git://github.com/alerque/${pkgname%-git}.git#branch=$_branch")
-sha512sums=('SKIP')
+source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
+        "git://github.com/sile-typesetter/libtexpdf.git")
+sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname%-git}"
+    git describe --tags --abbrev=7 --match="v*" HEAD | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
-    cd "$srcdir/${pkgname%-git}"
+    cd "${pkgname%-git}"
+    git submodule init
+    git config submodule.libtexpdf.url "$srcdir/libtexpdf"
+    git submodule update
     ./bootstrap.sh
 }
 
 build () {
-    cd "$srcdir/${pkgname%-git}"
-    ./configure --prefix=/usr --with-system-luarocks
+    cd "${pkgname%-git}"
+    ./configure --prefix=/usr --without-system-luarocks
     make
 }
 
 package () {
-    cd "$srcdir/${pkgname%-git}"
+    cd "${pkgname%-git}"
     make install DESTDIR="$pkgdir/"
 }
