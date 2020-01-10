@@ -13,7 +13,7 @@ pkgbase = mcuxpresso-config-tools
 	depends = alsa-lib
 	depends = libnet
 	options = !strip
-	source = mcuxpresso-config-tools.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v7-1_amd64.deb.bin?__gda__=1577348027_1eba24d01a0ebe10f4f52fadfe8cacdd&fileExt=.bin
+	source = mcuxpresso-config-tools.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v7-1_amd64.deb.bin?__gda__=1578667481_71112900c84e9d5e8e05e92717989edb&fileExt=.bin
 	source = LICENSE
 	source = mcuxpresso-config-tools.install
 	sha256sums = 83fe402e285b5be2b05ca65625607c8972aeeda2767f8755f4258aa35e8095eb
