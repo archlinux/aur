@@ -3,7 +3,7 @@
 
 pkgname=jackett-mono
 pkgver=0.12.1494
-pkgrel=1
+pkgrel=2
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('any')
 license=('GPL')
@@ -11,8 +11,8 @@ url='https://github.com/Jackett/Jackett'
 depends=('mono' 'curl' 'openssl-1.0')
 options=('!strip' 'staticlibs')
 conflicts=('jackett' 'jackett-armv6-bin')
-replaces=('jackett-armv6-bin')
-install='jackett.install'
+replaces=('jackett' 'jackett-armv6-bin')
+provides=('jackett')
 
 source=("jackett.service"
         "jackett.sysusers"
