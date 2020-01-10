@@ -6,7 +6,7 @@
 pkgname=python-pyassimp
 _name=assimp
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner. Python bindings."
 arch=('i686' 'x86_64')
 license=('BSD')
