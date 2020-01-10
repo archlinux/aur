@@ -1,7 +1,7 @@
 pkgbase = css-beautify-git
 	pkgdesc = Beautifier for CSS
-	pkgver = 1.10.1
-	pkgrel = 2
+	pkgver = 1.10.3
+	pkgrel = 1
 	url = https://github.com/beautify-web/js-beautify/#css--html
 	arch = any
 	license = MIT
