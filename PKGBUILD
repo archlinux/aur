@@ -12,5 +12,5 @@ sha512sums=(SKIP)
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
-    make install
+    sudo make install
 }
