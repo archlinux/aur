@@ -8,7 +8,6 @@ pkgbase = edb-debugger-git
 	makedepends = boost>=1.35.0
 	makedepends = cmake
 	depends = capstone
-	depends = desktop-file-utils
 	depends = graphviz
 	depends = hicolor-icon-theme
 	depends = qt5-svg
