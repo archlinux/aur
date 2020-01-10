@@ -9,6 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('java-runtime>=11')
 makedepends=('git' 'gradle')
+conflicts=('jkk')
 source=("${pkgname%-git}::git+https://github.com/polpetta/jkk")
 
 pkgver() {
