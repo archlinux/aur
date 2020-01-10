@@ -1,13 +1,14 @@
 pkgbase = swamp-wine
 	pkgdesc = First-person Audio Shooter
 	pkgver = 3.8C
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kaldobsky.com/audiogames
 	install = swamp-wine.install
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
+	arch = pentium4
 	license = custom
 	makedepends = unzip
 	depends = wine

@@ -2,9 +2,9 @@
 # Maintainer: Storm Dragon <storm_dragon@linux-a11y.org>
 pkgname=swamp-wine
 pkgver=3.8C
-pkgrel=3
+pkgrel=4
 pkgdesc="First-person Audio Shooter"
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'pentium4')
 url="https://kaldobsky.com/audiogames"
 license=('custom')
 _depends_x86_64=(lib32-sdl2 lib32-ncurses lib32-mpg123 lib32-libpulse lib32-libpng lib32-libjpeg-turbo lib32-gnutls lib32-alsa-plugins lib32-alsa-lib lib32-mesa lib32-openal)
