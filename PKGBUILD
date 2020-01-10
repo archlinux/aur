@@ -2,7 +2,7 @@
 
 _pkgname=blend2d
 pkgname=${_pkgname}-git
-pkgver=r70.6f7f2c1
+pkgver=r87.592d1ba
 pkgrel=1
 pkgdesc='A high-performance 2D vector graphics engine written in C++'
 url='https://blend2d.com'
@@ -13,7 +13,7 @@ makedepends=('clang' 'cmake' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://github.com/blend2d/blend2d"
-        "asmjit::git+https://github.com/asmjit/asmjit#branch=next-wip")
+        "asmjit::git+https://github.com/asmjit/asmjit")
 sha1sums=('SKIP' 'SKIP')
 
 pkgver() {

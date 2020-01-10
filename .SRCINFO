@@ -1,6 +1,6 @@
 pkgbase = blend2d-git
 	pkgdesc = A high-performance 2D vector graphics engine written in C++
-	pkgver = r70.6f7f2c1
+	pkgver = r87.592d1ba
 	pkgrel = 1
 	url = https://blend2d.com
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = blend2d-git
 	provides = blend2d
 	conflicts = blend2d
 	source = blend2d::git+https://github.com/blend2d/blend2d
-	source = asmjit::git+https://github.com/asmjit/asmjit#branch=next-wip
+	source = asmjit::git+https://github.com/asmjit/asmjit
 	sha1sums = SKIP
 	sha1sums = SKIP
 
