@@ -1,0 +1,34 @@
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+pkgname=ttf-tt2020
+pkgdesc='Advanced, hyperrealistic, multilingual typewriter font'
+pkgver=1
+pkgrel=1
+license=(OFL)
+url=https://ctrlcctrlv.github.io/TT2020
+arch=(any)
+source=(
+	"${url}/dist/TT2020Base-Regular.ttf"
+	"${url}/dist/TT2020Base-Italic.ttf"
+	"${url}/dist/TT2020StyleB-Regular.ttf"
+	"${url}/dist/TT2020StyleB-Italic.ttf"
+	"${url}/dist/TT2020StyleD-Regular.ttf"
+	"${url}/dist/TT2020StyleD-Italic.ttf"
+	"${url}/dist/TT2020StyleE-Regular.ttf"
+	"${url}/dist/TT2020StyleE-Italic.ttf"
+	"${url}/dist/TT2020StyleF-Regular.ttf"
+	"${url}/dist/TT2020StyleG-Regular.ttf"
+)
+sha512sums=('f76ca361464070f776d199ec4531b2c06d7c7d93c608ae9e4cbf9a0ca6e9071e685a254ffc62d98d61c366f771f5704f4cb5fa03e49058773234bc8ed29505cf'
+            'b235e3fd3fbfeaf9396d43e549291f807812ba89b020f5f0b84b229827d3b76fdc6388c12b03669b1eb0e4ca6e6ee221b0320adf38aa1b32ef51b6d6270ec839'
+            '21c001e31606f02889a46e8b25d5b8bde803d438dd4b7fb5ec0675097b312a11c908c7ec2036dd919671de0520cc7662ca6805dfc2e439b880d1e9f7d46b0195'
+            '0657d2649b3ecbf535926dfe77004a22432e7d31d65dbc25374ceaa82d6c66c5b3265c906d7c61b0243dfac09dd7a218a5ce957b2d422b1440a7cfb3b74cf0c6'
+            '6e9ed18c657ed9cff62fe68febf831257b82a0a1021e589e2c5bfde8a5b2d0dddc5a9aa11ded5bd9d09b4b78ebb823a2c170d8f0bd843f63f2aca9019a2ff544'
+            '3cd3622c8364a18252605fb4846e2193661543f58a2e9b9fb1255ad1f9cd08ff84233ab5d3ac30244753fede8e8205853c60ad12e3d555b4325edf34fcee0460'
+            '0de5eebd3d8a549859d4398e47c97ddc63eb85b73602d05846219dc3b85bfdafb1aeda91b9cb5d925267532e10fb89e318d5f03a951f426b6cf1304f5b3e0fc7'
+            '436ec71de070f72e40482a7ca697540b980bd46bb1b6b7967849ff2bb65182101abf4622333db93b3b239bc9cfba8bf0680bcd45561cec723e5c7acec1158583'
+            '31b145606ec7493a6534e774a3117e9505dc67187601c740343a6c996a65259c63f22035168dda2fb27ae654e5e948c6e4d80e198d6e79e05987e31e7f2cea9c'
+            'a435c13da450f4f7fc0a71142cfa826589f79808d336e77be56e0889b0f8d0391c1d932fb73160c1d5fd3b282a75111cfaf5720f563545a1c5db2e094ca384eb')
+
+package () {
+	install -Dm644 -t "${pkgdir}/usr/share/fonts/tt2020" "${srcdir}"/*.ttf
+}
