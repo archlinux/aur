@@ -19,5 +19,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver/target/release"
     strip btm
-    install -Dm755 btm -t "$pkgdir/usr/bin/btm"
+    install -Dm755 btm "$pkgdir/usr/bin/btm"
 }
