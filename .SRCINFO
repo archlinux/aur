@@ -1,15 +1,15 @@
 pkgbase = arm-linux-gnueabihf-glibc
 	pkgdesc = GNU C Library (arm-linux-gnueabihf)
-	pkgver = 2.29
+	pkgver = 2.30
 	pkgrel = 3
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL
 	license = LGPL
-	makedepends = arm-linux-gnueabihf-gcc-stage2>=8.2.1+20181127
+	makedepends = arm-linux-gnueabihf-gcc-stage2>=9.2.0-4
 	makedepends = gperf
-	depends = arm-linux-gnueabihf-linux-api-headers>=4.17.11-1
-	provides = arm-linux-gnueabihf-glibc-headers=2.29
+	depends = arm-linux-gnueabihf-linux-api-headers>=5.3.1-2
+	provides = arm-linux-gnueabihf-glibc-headers=2.30
 	provides = arm-linux-gnueabihf-eglibc
 	conflicts = arm-linux-gnueabihf-glibc-headers
 	conflicts = arm-linux-gnueabihf-eglibc
@@ -17,19 +17,21 @@ pkgbase = arm-linux-gnueabihf-glibc
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.xz
-	source = https://ftp.gnu.org/gnu/glibc/glibc-2.29.tar.xz.sig
-	source = glibc-34fb5f61d3c3f4b8fc616ea259fa19168b58ecd4.patch
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.30.tar.xz
+	source = https://ftp.gnu.org/gnu/glibc/glibc-2.30.tar.xz.sig
+	source = glibc-a6aaabd036d735a1b412f441bf6c706832655598.patch
+	source = sdt.h
+	source = sdt-config.h
 	source = bz20338.patch
-	source = 0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch
 	source = file-truncated-while-reading-soname-after-patchelf.patch
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	md5sums = e6c279d5b2f0736f740216f152acf974
+	md5sums = 2b1dbdf27b28620752956c061d62f60c
 	md5sums = SKIP
-	md5sums = 35a4ca5cdf86d706e054e02bb31d1616
-	md5sums = dc0d3ad59aeaaf591b085a77de6e03e9
-	md5sums = af5d3c5227ac639effe39667a43879a1
+	md5sums = 0cdb7529cb9e2965d7ffaa155e1fcf9d
+	md5sums = 91fec3b7e75510ae2ac42533aa2e695e
+	md5sums = 680df504c683640b02ed4a805797c0b2
+	md5sums = 430673eccc78e52c249aa4b0f1786450
 	md5sums = 0820504d2e83ee15f74a656771361872
 
 pkgname = arm-linux-gnueabihf-glibc
