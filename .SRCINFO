@@ -1,7 +1,7 @@
 pkgbase = ttf-malayalam-fonts-meta
 	pkgdesc = This is a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
-	pkgver = 6.1
-	pkgrel = 1
+	pkgver = 7.0
+	pkgrel = 2
 	url = http://smc.org.in/fonts/
 	arch = any
 	depends = ttf-malayalam-font-anjalioldlipi
@@ -12,6 +12,7 @@ pkgbase = ttf-malayalam-fonts-meta
 	depends = ttf-malayalam-font-rachana
 	depends = ttf-malayalam-font-raghumalayalamsans
 	depends = ttf-malayalam-font-suruma
+	depends = otf-manjari
 
 pkgname = ttf-malayalam-fonts-meta
 
