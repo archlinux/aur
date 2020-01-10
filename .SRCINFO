@@ -11,6 +11,7 @@ pkgbase = theshell-blueprint
 	depends = xdg-utils
 	depends = wmctrl
 	depends = kwin
+	depends = the-libs-blueprint
 	depends = networkmanager
 	depends = xorg-xbacklight
 	depends = redshift
