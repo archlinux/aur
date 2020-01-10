@@ -3,8 +3,8 @@
 
 _pkgname=brightnessctl
 pkgname=${_pkgname}-sd-git
-pkgver=0.4.r11.g53a906b
-pkgrel=1
+pkgver=0.4.r13.g5a53dc0
+pkgrel=2
 pkgdesc="Lightweight brightness control tool"
 arch=('i686' 'x86_64')
 url='https://github.com/Hummer12007/brightnessctl'
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" INSTALL_UDEV_RULES=0 install
+  make DESTDIR="$pkgdir" MODE=0755 INSTALL_UDEV_RULES=0 install
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
   install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }

@@ -1,13 +1,14 @@
 pkgbase = brightnessctl-sd-git
 	pkgdesc = Lightweight brightness control tool
-	pkgver = 0.4.r11.g53a906b
-	pkgrel = 1
+	pkgver = 0.4.r13.g5a53dc0
+	pkgrel = 2
 	url = https://github.com/Hummer12007/brightnessctl
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = pkg-config
+	depends = systemd-libs>=243
 	provides = brightnessctl
 	conflicts = brightnessctl
 	source = git://github.com/Hummer12007/brightnessctl
