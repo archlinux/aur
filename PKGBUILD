@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.4.7
+pkgver=5.4.10
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver}-arch${pkgrel}
