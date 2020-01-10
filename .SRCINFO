@@ -1,6 +1,6 @@
 pkgbase = ttf-malayalam-font-anjalioldlipi
 	pkgdesc = This is Anjali Old Lipi, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
-	pkgver = 7.0.0+20181007
+	pkgver = 7.1.0+20200101
 	pkgrel = 1
 	url = http://smc.org.in/fonts/
 	install = ttf-malayalam-fonts.install
@@ -10,7 +10,7 @@ pkgbase = ttf-malayalam-font-anjalioldlipi
 	depends = xorg-font-utils
 	source = http://smc.org.in/downloads/fonts/anjalioldlipi/AnjaliOldLipi-Regular.ttf
 	source = https://gitlab.com/smc/anjalioldlipi/raw/master/67-smc-anjalioldlipi.conf
-	sha256sums = db5f5535876e5d9b82f3459c0b67399ef794a98c251b2e4e67bffe382b7e7269
+	sha256sums = f765eed0cbb3bdf39f160258493ce5de40ba6d2eb54d2152ff181c59d194b5b0
 	sha256sums = 8f43ab55f2223ebf73f24355c17e163ec5664bc6bd5f03d9fe82381c66ca35ea
 
 pkgname = ttf-malayalam-font-anjalioldlipi
