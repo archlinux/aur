@@ -1,7 +1,7 @@
 # Maintainer: Tolga Cakir <tolga@cevel.net>
 
 pkgname=sidewinderd
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Support for Microsoft SideWinder X4 / X6 and Logitech G105 / G710+."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 license=('MIT')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tolga9009/sidewinderd/archive/${pkgver}.tar.gz")
-sha256sums=('7d1de22f249cc4f456861164674484ca25e05832e887684616c56c2a7254e33f')
+sha256sums=('4f79b92118ff5c5da0c093439bf875079f5243e852ecc769888d7d5a53cff62e')
 backup=('etc/sidewinderd.conf')
 
 prepare() {
