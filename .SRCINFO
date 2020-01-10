@@ -10,6 +10,7 @@ pkgbase = jackett-mono
 	depends = curl
 	depends = openssl-1.0
 	conflicts = jackett
+	conflicts = jackett-armv6-bin
 	replaces = jackett-armv6-bin
 	options = !strip
 	options = staticlibs

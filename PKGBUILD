@@ -10,7 +10,7 @@ license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('mono' 'curl' 'openssl-1.0')
 options=('!strip' 'staticlibs')
-conflicts=('jackett')
+conflicts=('jackett' 'jackett-armv6-bin')
 replaces=('jackett-armv6-bin')
 install='jackett.install'
 
