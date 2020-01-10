@@ -3,7 +3,7 @@
 
 pkgname=emacs-yasnippet-git
 epoch=1
-pkgver=0.13.0.r38.ga66f15e
+pkgver=0.13.0.r41.g3bf9a3b
 pkgrel=1
 pkgdesc="Yet another template system for Emacs - git version"
 arch=('any')
@@ -19,25 +19,27 @@ sha256sums=('SKIP')
 _gitname=yasnippet
 
 pkgver() {
-    cd $_gitname
-    ( set -o pipefail
-      git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  cd $_gitname
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  )
 }
 
 build() {
-    cd "${_gitname}"
-    rake yasnippet.elc
-    rake yasnippet-debug.elc
-    rake yasnippet-tests.elc #emacs=24.3 tests_Werror=nil
+  cd "${_gitname}"
+  rake yasnippet.elc
+  rake yasnippet-debug.elc
+  rake yasnippet-tests.elc #emacs=24.3 tests_Werror=nil
 }
+
 check() {
-    cd "${_gitname}"
-    rake tests
+  cd "${_gitname}"
+  rake tests
 }
+
 package () {
-    cd "${_gitname}"
-    install -d "${pkgdir}/usr/share/emacs/site-lisp/${_gitname}"
-    cp -r * "${pkgdir}/usr/share/emacs/site-lisp/${_gitname}"
+  cd "${_gitname}"
+  install -d "$pkgdir"/usr/share/emacs/site-lisp/${_gitname}
+  cp -r * "$pkgdir"/usr/share/emacs/site-lisp/${_gitname}
 }
