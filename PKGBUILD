@@ -16,5 +16,5 @@ package() {
     cd "$srcdir/$pkgname-${pkgver}"
     mkdir -p "${pkgdir}/usr/lib/python3.8/"
     cp -r "${MODULENAME}" "${pkgdir}/usr/lib/python3.8/${MODULENAME}"
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}-test"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
