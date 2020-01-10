@@ -2,7 +2,7 @@
 
 pkgname=ytmdesktop-git
 _name=ytmdesktop
-pkgver=1.7.0.3127039
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('any')
