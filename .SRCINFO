@@ -1,7 +1,7 @@
 pkgbase = ruby-sync
 	pkgdesc = A Ruby module packaged asa gem that provides a two-phase lock with a counter. Was in Ruby core until 2.7
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ruby/sync
 	arch = any
 	license = BSD

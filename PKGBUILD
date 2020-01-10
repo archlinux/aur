@@ -3,7 +3,7 @@
 _gemname='sync'
 pkgname="ruby-${_gemname}"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Ruby module packaged asa gem that provides a two-phase lock with a counter.  Was in Ruby core until 2.7'
 arch=('any')
 url='https://github.com/ruby/sync'
@@ -14,15 +14,6 @@ checkdepends=('ruby-test-unit')
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('5f887d9169e0be834c7fa17ae42b71078f25ce3d83e695490cd136adc1799d6b92e4aed41ce3f3d57b3ad193a1ac4de940b37212c2864bbf6331ba3582128166')
-
-# update the gemspec to allow newer versions of rake
-# remove deprecated options from the gemspec
-prepare() {
-  cd "${_gemname}-${pkgver}"
-  #sed --in-place 's/LGPLv2 or later/LGPL-2.1-or-later/' "${_gemname}.gemspec"
-  #sed --in-place '/spec.add_dependency("rr", ">= 1.1.1")/d' "${_gemname}.gemspec"
-}
-
 
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"
