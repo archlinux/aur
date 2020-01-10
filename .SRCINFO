@@ -1,0 +1,17 @@
+pkgbase = btor2tools-unstable-git
+	pkgdesc = A generic parser and tool package for the BTOR2 format.
+	pkgver = r77.9831f99
+	pkgrel = 1
+	url = https://github.com/Boolector/btor2tools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	conflicts = btor2tools-git
+	source = git://github.com/Boolector/btor2tools.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = btor2tools-unstable-git
+
