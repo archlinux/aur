@@ -1,0 +1,14 @@
+pkgbase = dad-bin
+	pkgdesc = Dad is a small configuration management tool for Clojure. This project is heavily inspired by mitamae.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/liquidz/dad
+	arch = x86_64
+	license = EPL
+	provides = dad-bin
+	conflicts = dad-bin
+	source = https://github.com/liquidz/dad/releases/download/0.2.1/dad-0.2.1.linux-amd64
+	sha256sums = 5fcf7dc5646f12b8a911a0976c8c8e654c15c084baabde4f8791bd6130fc7d7e
+
+pkgname = dad-bin
+
