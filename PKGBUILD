@@ -2,7 +2,7 @@
 
 pkgname=fsarchiver-git
 pkgver=0.8.5.r4.g30c9e23
-pkgrel=1
+pkgrel=2
 pkgdesc="Filesystem archiver for Linux"
 arch=('i686' 'x86_64')
 url="http://www.fsarchiver.org/"
@@ -29,12 +29,6 @@ build() {
     --prefix="/usr" \
     --sbindir="/usr/bin"
   make
-}
-
-check() {
-  cd "fsarchiver"
-
-  make check
 }
 
 package() {

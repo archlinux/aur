@@ -1,7 +1,7 @@
 pkgbase = fsarchiver-git
 	pkgdesc = Filesystem archiver for Linux
 	pkgver = 0.8.5.r4.g30c9e23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fsarchiver.org/
 	arch = i686
 	arch = x86_64
