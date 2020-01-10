@@ -2,8 +2,8 @@
 
 pkgname=yggdrasil-git
 _pkgname="yggdrasil"
-pkgver=0.3.12.r71.g2fc6f9a
-_commit=2fc6f9a71d729d08c9a966ff7046448ae29b830e
+pkgver=0.3.12.r78.gc48c4dd
+_commit=c48c4ddc805dc58e5cd40dcc3ba1538147b0e494
 pkgrel=1
 pkgdesc="An experiment in scalable routing as an encrypted IPv6 overlay network (develop branch)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
