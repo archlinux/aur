@@ -1,9 +1,8 @@
 # Maintainer: Simon Allen <simon@simonallen.org>
 
 pkgname=ytmdesktop-git
-_name=ytmdesktop
-pkgver=1.8.0.5b86734
-pkgrel=3
+pkgver=1.8.0
+pkgrel=2
 pkgdesc="A desktop app for YouTube Music"
 arch=('i686' 'x86_64')
 url="https://ytmdesktop.app"
@@ -12,7 +11,7 @@ makedepends=('git' 'npm')
 optdepends=('gnome-keyring' 'lsb-release' 'avahi' 'nss-mdns')
 provides=('ytmdesktop')
 conflicts=()
-license=('CCPL')
+license=('CC0 1.0 Universal')
 
 source=('git+https://github.com/ytmdesktop/ytmdesktop.git'
         'ytmdesktop.desktop')
@@ -20,14 +19,14 @@ md5sums=('SKIP'
          '63a9f7d805c871f6556aa0e1aa0ef74c')
 
 pkgver() {
-	cd "$srcdir/$_name"
+	cd "$srcdir/${pkgname%-git}"
 	git describe --tags | sed 's/^v//' | sed 's/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_name"
+	cd "$srcdir/${pkgname%-git}"
 	rm -rf node_modules
-	npm install
+	npm install --cache "$srcdir/npm-cache"
 
 	if [ $CARCH = "x86_64" ]; then
 		env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true npm run pack:x64
@@ -37,22 +36,22 @@ build() {
 }
 
 package() {
-	cd $pkgdir
-	distdir="$srcdir/$_name/dist/linux-unpacked"
-	mkdir -p usr/bin usr/share/applications usr/share/doc/ytmdesktop usr/share/pixmaps usr/share/ytmdesktop
+	cd "$srcdir/${pkgname%-git}"
 
-	# copy license
-	cp "$distdir"/LICENSE* usr/share/doc/ytmdesktop
+	# install license
+	install -D -m 644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE.md"
 
-	# copy icon
-	cp "$srcdir/$_name/assets/favicon.512x512.png" usr/share/pixmaps/ytmdesktop.png
+	# install icon
+	install -D -m 644 assets/favicon.512x512.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 
-	# copy application
-	cp -r "$distdir"/* usr/share/ytmdesktop
+	# copy application files
+	install -d -m 755 "$pkgdir/opt/${pkgname%-git}"
+	cp -r dist/linux-unpacked/* "$pkgdir/opt/${pkgname%-git}"
 
 	# link binary
-	ln -s "/usr/share/ytmdesktop/youtube-music-desktop-app" "usr/bin/ytmdesktop"
+	install -d -m 755 "$pkgdir/usr/bin"
+	ln -s "/opt/${pkgname%-git}/youtube-music-desktop-app" "$pkgdir/usr/bin/${pkgname%-git}"
 
-	# create desktop entry
-	cp $srcdir/ytmdesktop.desktop usr/share/applications
+	# install desktop entry
+	install -D -m 644 "$srcdir/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
