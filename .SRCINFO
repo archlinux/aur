@@ -1,15 +1,15 @@
 pkgbase = arm-linux-gnueabihf-linux-api-headers
 	pkgdesc = Kernel headers sanitized for use in userspace (arm-linux-gnueabihf)
-	pkgver = 5.1
-	pkgrel = 1
-	url = http://www.gnu.org/software/libc
+	pkgver = 5.3.1
+	pkgrel = 2
+	url = https://www.gnu.org/software/libc
 	arch = any
 	license = GPL2
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.1.tar.sign
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 15fbdff95ff98483069ac6e215b9f4f9
+	md5sums = 4c68633ce304b8fbc7be2d3452060c11
 	md5sums = SKIP
 
 pkgname = arm-linux-gnueabihf-linux-api-headers

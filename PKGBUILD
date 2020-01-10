@@ -7,14 +7,14 @@
 _target_arch=arm
 _target=${_target_arch}-linux-gnueabihf
 pkgname=${_target}-linux-api-headers
-pkgver=5.1
-pkgrel=1
+pkgver=5.3.1
+pkgrel=2
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=(any)
-url='http://www.gnu.org/software/libc'
+url='https://www.gnu.org/software/libc'
 license=(GPL2)
 source=(https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.{xz,sign})
-md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
+md5sums=('4c68633ce304b8fbc7be2d3452060c11'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
@@ -32,7 +32,4 @@ package() {
 
   # use headers from libdrm
   rm -rf "$pkgdir/usr/$_target/include/drm"
-
-  # clean-up unnecessary files generated during install
-  find ${pkgdir} \( -name .install -o -name ..install.cmd \) -delete
 }
