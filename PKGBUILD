@@ -2,15 +2,16 @@
 # Contributor: Patrick Hof <patrickhof@web.de>
 
 pkgname=pdfresurrect
-pkgver=0.16
+pkgver=0.18
 pkgrel=1
-pkgdesc="PDFResurrect is a tool aimed at analyzing PDF documents"
-url="http://757labs.org/wiki/Projects/pdfresurrect"
+pkgdesc="tool aimed at analyzing PDF documents"
+#url="http://757labs.org/wiki/Projects/pdfresurrect"
+url="https://github.com/enferex/pdfresurrect"
 license=("GPL3")
 arch=('x86_64' 'i686')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enferex/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('d526e4b08399cd6fbcf129ec6cd0949b')
+md5sums=('242233eb9dced7d7f02c402bc2a0abec')
 
 
 build() {
