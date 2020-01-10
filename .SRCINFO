@@ -1,12 +1,12 @@
 pkgbase = station
 	pkgdesc = The one app to rule them all
-	pkgver = 1.63.2
+	pkgver = 1.63.3
 	pkgrel = 1
 	url = https://getstation.com/
 	arch = x86_64
 	license = MIT
-	source = https://github.com/getstation/desktop-app-releases/releases/download/1.63.2/Station-1.63.2-x86_64.AppImage
-	sha256sums = 235b29ebfe40d1d4f22d036dcedc6f08660479b401a6f9cd6eb3099cd2a69436
+	source = https://github.com/getstation/desktop-app-releases/releases/download/1.63.3/Station-1.63.3-x86_64.AppImage
+	sha256sums = f1dae19b2c625ae0fdb2a4a62819b736fd0c7dd22e37305e2105b0422069ced4
 
 pkgname = station
 
