@@ -1,6 +1,6 @@
 pkgbase = heca
 	pkgdesc = Hebrew calendar utility
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/heca-project/heca
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = heca
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/heca-project/heca/archive/v1.4.1.tar.gz
-	md5sums = 5f2a62064e032783faa2d0f4b704b6aa
+	source = https://github.com/heca-project/heca/archive/v1.4.2.tar.gz
+	md5sums = d316e5cb3c45c50df1cd10d73580b297
 
 pkgname = heca
 

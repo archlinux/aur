@@ -1,6 +1,6 @@
 # Maintainer: picked name <ipickedaname@mail.com>
 pkgname=heca
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 makedepends=('rust' 'cargo')
 depends=('gcc-libs')
@@ -9,7 +9,7 @@ pkgdesc="Hebrew calendar utility"
 license=('MIT')
 url="https://github.com/heca-project/heca"
 source=("https://github.com/heca-project/heca/archive/v${pkgver}.tar.gz")
-md5sums=('5f2a62064e032783faa2d0f4b704b6aa')
+md5sums=('d316e5cb3c45c50df1cd10d73580b297')
 
 check() {
 	cd $srcdir/"heca-${pkgver}"
