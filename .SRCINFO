@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-slam-gmapping
+	pkgdesc = ROS - slam_gmapping contains a wrapper around gmapping which provides SLAM capabilities.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = http://ros.org/wiki/slam_gmapping
+	arch = any
+	license = CreativeCommons-by-nc-sa-2.0
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-gmapping
+	depends = ros-melodic-openslam-gmapping
+	source = slam_gmapping::git+https://github.com/ros-gbp/slam_gmapping-release.git#tag=release/melodic/slam_gmapping/1.4.0-1
+	md5sums = SKIP
+
+pkgname = ros-melodic-slam-gmapping
+
