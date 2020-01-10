@@ -1,7 +1,7 @@
 # Maintainer: Mufeed Ali <lastweakness@tuta.io>
 
-author=eigenein
 pkgname=python-pure-protobuf
+_author=eigenein
 _gitname=protobuf
 pkgver=2.0.0
 pkgrel=2
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=('python-pure-protobuf')
 
-source=("$pkgname-$pkgver.tar.gz::https://www.github.com/$author/$_gitname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://www.github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
 sha256sums=('e1303e8ae29ce5e33254d49f93d896d04b040070f89e87232e33ecdfbb4ea6d9')
 
 package() {
