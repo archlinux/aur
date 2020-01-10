@@ -2,7 +2,7 @@
 
 pkgname=libfido2-git
 _pkgname=${pkgname%-git}
-pkgver=1.0.0.r0.c3c10af
+pkgver=1.3.0.r108.daeb325
 pkgrel=1
 pkgdesc="Provides library functionality for FIDO 2.0, including communication with a device over USB"
 arch=('x86_64')
@@ -10,6 +10,7 @@ url="https://developers.yubico.com/libfido2/"
 license=('BSD')
 depends=('openssl' 'libcbor' 'hidapi')
 makedepends=('git' 'cmake')
+conflicts=('libfido2')
 source=("git+https://github.com/Yubico/libfido2.git")
 sha256sums=('SKIP')
 
