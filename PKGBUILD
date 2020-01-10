@@ -2,8 +2,8 @@
 
 _pkgbase='mcipc'
 pkgname="python-${_pkgbase}"
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='Python 3 library and scripts for the RCON and Query protocol'
 arch=('any')
 url="https://github.com/coNQP/${_pkgbase}"
