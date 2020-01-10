@@ -1,0 +1,26 @@
+pkgbase = elementary-planner-git
+	pkgdesc = Personal task manager designed for elementary OS
+	pkgver = r276.d16c537
+	pkgrel = 1
+	url = https://planner-todo.web.app
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = cmake
+	makedepends = appstream
+	depends = gtk3
+	depends = libsoup
+	depends = granite
+	depends = webkit2gtk
+	depends = evolution-data-server
+	depends = gtk-theme-elementary
+	depends = elementary-icon-theme
+	provides = elementary-planner
+	conflicts = elementary-planner
+	source = git+https://github.com/alainm23/planner.git
+	sha256sums = SKIP
+
+pkgname = elementary-planner-git
+
