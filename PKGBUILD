@@ -5,10 +5,10 @@
 # Contributor: Ariel AxionL <axionl at aosc dot io>
 
 pkgbase=wps-office-cn
-pkgname=('wps-office-cn' 'wps-office-mime-cn')
+pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
 pkgver=11.1.0.9080
-pkgrel=1
-pkgdesc="Kingsoft Office (WPS Office) cn version - an office productivity suite"
+pkgrel=2
+pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 arch=('x86_64')
 license=('custom')
 url="https://linux.wps.cn"
@@ -40,7 +40,8 @@ package_wps-office-cn() {
                 'ttf-wps-fonts: Symbol fonts required by wps-office'
                 'ttf-ms-fonts: Microsft Fonts recommended for wps-office'
                 'wps-office-fonts: FZ TTF fonts provided by wps community'
-                'wps-office-mime-cn: Use mime files provided by Kingsoft')
+                'wps-office-mime-cn: Use mime files provided by Kingsoft'
+                'wps-office-mui-zh-cn: zh_CN support for WPS Office')
     install=${pkgname}.install
     conflicts=('kingsoft-office' 'wps-office')
     provides=('wps-office')
@@ -49,6 +50,8 @@ package_wps-office-cn() {
     install -d "${pkgdir}/usr/lib"
     cp -r office6 "${pkgdir}/usr/lib"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.txt
+    rm -r "${pkgdir}/usr/lib/office6/mui/en_US/resource/help"
+    rm -r "${pkgdir}/usr/lib/office6/mui/zh_CN"
 
     install -d "${pkgdir}/usr/bin"
     cd "${srcdir}/usr/bin"
@@ -68,6 +71,18 @@ package_wps-office-cn() {
     install -Dm644 -t "${pkgdir}/usr/share/fonts/wps-office" fonts/wps-office/*
 
     install -Dm644 -t "${pkgdir}/etc/xdg/menus/applications-merged" "${srcdir}/etc/xdg/menus/applications-merged/wps-office.menu"
+}
+
+package_wps-office-mui-zh-cn() {
+    pkgdesc="Chinese (Simplified) mui package for WPS Office"
+    cd "${srcdir}/opt/kingsoft/wps-office/office6/mui"
+
+    install -d "${pkgdir}/usr/lib/office6/mui/en_US/resource"
+    cp -r en_US/resource/help "${pkgdir}/usr/lib/office6/mui/en_US/resource"
+    cp -r zh_CN "${pkgdir}/usr/lib/office6/mui"
+
+    cd "${srcdir}/opt/kingsoft/wps-office/"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" office6/mui/default/*.txt
 }
 
 package_wps-office-mime-cn() {

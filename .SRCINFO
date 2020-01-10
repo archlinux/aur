@@ -1,7 +1,7 @@
 pkgbase = wps-office-cn
-	pkgdesc = Kingsoft Office (WPS Office) cn version - an office productivity suite
+	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
 	pkgver = 11.1.0.9080
-	pkgrel = 1
+	pkgrel = 2
 	url = https://linux.wps.cn
 	arch = x86_64
 	license = custom
@@ -34,6 +34,7 @@ pkgname = wps-office-cn
 	optdepends = ttf-ms-fonts: Microsft Fonts recommended for wps-office
 	optdepends = wps-office-fonts: FZ TTF fonts provided by wps community
 	optdepends = wps-office-mime-cn: Use mime files provided by Kingsoft
+	optdepends = wps-office-mui-zh-cn: zh_CN support for WPS Office
 	provides = wps-office
 	conflicts = kingsoft-office
 	conflicts = wps-office
@@ -43,4 +44,7 @@ pkgname = wps-office-mime-cn
 	depends = shared-mime-info
 	provides = wps-office-mime
 	conflicts = wps-office-mime
+
+pkgname = wps-office-mui-zh-cn
+	pkgdesc = Chinese (Simplified) mui package for WPS Office
 
