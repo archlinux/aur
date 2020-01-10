@@ -1,7 +1,7 @@
 pkgbase = corefreq-git
 	pkgdesc = CoreFreq, Processor monitoring software with BIOS like functionalities
 	pkgver = 1.72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cyring/CoreFreq
 	install = corefreq.install
 	arch = x86_64
