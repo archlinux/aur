@@ -4,8 +4,8 @@
 
 pkgname=rtl88xxau-aircrack-dkms-git
 _pkgbase=rtl88xxau
-pkgver=r854.25c0645
-pkgrel=2
+pkgver=r999.65174c4
+pkgrel=1
 pkgdesc="Aircrack-ng kernel module for Realtek 88XXau (USB adapters only) network cards (8811au, 8812au, 8814au and 8821au chipsets) with monitor mode and injection support"
 url="https://github.com/aircrack-ng/rtl8812au"
 license=('GPL')
@@ -15,7 +15,7 @@ depends=('dkms')
 replaces=('rtl8812au-aircrack-dkms-git')
 conflicts=('rtl8812au-aircrack-dkms-git' 'rtl8812au-dkms-git' 'rtl8821au-dkms-git' 'rtl8814au-dkms-git' 'rtl8812au-inject-dkms-git')
 
-source=('rtl88xxau::git+https://github.com/aircrack-ng/rtl8812au.git'
+source=('rtl88xxau::git+https://github.com/aircrack-ng/rtl8812au.git#branch=v5.6.4.2'
         'dkms.conf')
 
 sha256sums=('SKIP'
