@@ -4,7 +4,7 @@ author=valos
 pkgname=komikku
 _gitname=Komikku
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Online/offline Manga reader for GNOME, built for the Librem 5'
 arch=(any)
 url=https://gitlab.com/valos/Komikku
@@ -22,6 +22,7 @@ depends=(
   python-lxml
   python-magic-ahupp
   python-pillow
+  python-pure-protobuf
   python-unidecode
 )
 makedepends=(
