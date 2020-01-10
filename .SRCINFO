@@ -1,6 +1,6 @@
 pkgbase = redeclipse-bin
 	pkgdesc = free, casual arena shooter
-	pkgver = 1.6.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://redeclipse.net
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = redeclipse-bin
 	depends = sdl2_mixer
 	provides = redeclipse
 	conflicts = redeclipse
-	source = https://github.com/red-eclipse/base/releases/download/v1.6.0/redeclipse_1.6.0_nix.tar.bz2
+	source = https://github.com/redeclipse/base/releases/download/v2.0.0/redeclipse_2.0.0_nix.tar.bz2
 	source = redeclipse.desktop
-	sha256sums = 48a947e858587116b7d177cf18148d0d9e40b1c5b481e2c955baed68cffc2849
+	sha256sums = b15c14214e4b86c232828b39d3531fa9217b41bc695892f10166aef746387190
 	sha256sums = 8bfccdd79fc24e923bc1fa3f120cc567e6eb841eaeeb4dc2628682a936465ed5
 
 pkgname = redeclipse-bin

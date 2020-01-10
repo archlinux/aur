@@ -1,7 +1,7 @@
 # Maintainer: Giacomo Vercesi <mrjackv@hotmail.it>
 
 pkgname=redeclipse-bin
-pkgver=1.6.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="free, casual arena shooter"
 arch=(i686 x86_64)
@@ -11,9 +11,9 @@ depends=(sdl2_image sdl2_mixer)
 makedepends=(icoutils)
 provides=('redeclipse')
 conflicts=('redeclipse')
-source=("https://github.com/red-eclipse/base/releases/download/v$pkgver/redeclipse_${pkgver}_nix.tar.bz2"
+source=("https://github.com/redeclipse/base/releases/download/v$pkgver/redeclipse_${pkgver}_nix.tar.bz2"
         "redeclipse.desktop")
-sha256sums=('48a947e858587116b7d177cf18148d0d9e40b1c5b481e2c955baed68cffc2849'
+sha256sums=('b15c14214e4b86c232828b39d3531fa9217b41bc695892f10166aef746387190'
             '8bfccdd79fc24e923bc1fa3f120cc567e6eb841eaeeb4dc2628682a936465ed5')
 
 prepare() {
@@ -24,13 +24,10 @@ prepare() {
 package() {
     install -Dm 0644 "redeclipse.desktop" "$pkgdir/usr/share/applications/redeclipse.desktop"
     cd "redeclipse-$pkgver"
-    echo "stable" > branch.txt
-    REDECLIPSE_CACHE="$(realpath ./cache)" bin/update.sh
     find bin -name '*.dll' -delete
     find bin -name '*.exe' -delete
+    find . -name '*.bat' -delete
     rm -r bin/redeclipse.app
-    rm -r bin/tools
-    rm bin/update.bat
     cd src
     icotool -x redeclipse.ico
     cd ..
@@ -44,5 +41,4 @@ package() {
     cp -r  "data" "$pkgdir/opt/redeclipse"
     install -Dm 0755 "redeclipse.sh" "$pkgdir/opt/redeclipse"
     install -Dm 0755 "redeclipse_server.sh" "$pkgdir/opt/redeclipse"
-    echo "inplace" > "$pkgdir/opt/redeclipse/branch.txt"
 }
