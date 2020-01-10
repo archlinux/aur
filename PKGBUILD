@@ -10,11 +10,19 @@ pkgdesc='A Python module to bypass Cloudflares anti-bot page. (Release version)'
 url='https://github.com/VeNoMouS/cloudscraper.git'
 arch=('any')
 license=('MIT')
-depends=('python-pyopenssl' 'python-requests' 'python-js2py' 'python-requests-toolbelt' 'python-brotli' 'python' 'nodejs')
+depends=(
+  python
+  python-pyopenssl
+  python-requests
+  python-js2py
+  python-requests-toolbelt
+  python-brotli
+  nodejs
+)
 makedepends=('git' 'python-setuptools')
 provides=('python-cloudscraper')
 
-source=("$pkgname-$pkgver.tar.gz::https://www.github.com/$author/$_gitname/archive/$pkgver.tar.gz")
+source=("$_gitname-$pkgver.tar.gz::https://www.github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
 sha256sums=('444f1771b0dc1e939d64b626e6aac2e72d5c578b4e7666350c46b6804a79ba24')
 
 package() {
