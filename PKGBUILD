@@ -1,7 +1,7 @@
 # Maintainer: Mufeed Ali <lastweakness@tuta.io>
 
-author=valos
 pkgname=komikku
+_author=valos
 _gitname=Komikku
 pkgver=0.8.1
 pkgrel=2
@@ -30,7 +30,7 @@ makedepends=(
   gobject-introspection
   meson
 )
-source=("https://gitlab.com/$author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
+source=("https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
 sha256sums=('f66c4f89bccfb0da1e28b5cc6ed3de3b5aa59fc0de9f105681187f955915a7e5')
 
 build() {
