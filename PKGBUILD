@@ -2,14 +2,16 @@
 
 pkgname=vvvvvv-git
 binname=vvvvvv
-pkgver=2.2
+pkgver=20200110.3b66877
 _pkgver=git
-pkgrel=2
+pkgrel=1
 pkgdesc='A retro-styled 2D platformer (game sold separately)'
 arch=('i686' 'x86_64')
 url='https://thelettervsixtim.es/'
 license=('custom')
 depends=('sh' 'sdl2_mixer')
+makedepends=('git' 'cmake')
+provides=('vvvvvv')
 conflicts=('vvvvvv')
 source=(
     "git+https://github.com/TerryCavanagh/VVVVVV.git"
@@ -23,6 +25,11 @@ md5sums=(
     '6d1c555a18bcd5cba8c55a62cf0964ac'
     '224e0c88627e529bc0dc885aa6df94db'
 )
+
+pkgver() {
+	cd "${srcdir}/VVVVVV"
+	git log -1 --format='%cd.%h' --date=short | tr -d -
+}
 
 prepare() {
   cd VVVVVV/desktop_version
