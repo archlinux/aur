@@ -4,7 +4,7 @@
 
 pkgname='libcs50-git'
 _gitname='libcs50'
-pkgver=9.0.1.r0.g3d83ff0
+pkgver=10.1.0.r0.gb5d03d3
 pkgrel=1
 pkgdesc="CS50 Library for C (development version)"
 arch=('x86_64' 'i686')
