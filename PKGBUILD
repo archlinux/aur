@@ -1,10 +1,10 @@
 # Maintainer: Armin Fisslthaler <armin@fisslthaler.net>
 pkgname=pyxtrlock
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The X transparent screen lock rewritten in Python."
 arch=('any')
-url="https://zombofant.net/hacking/pyxtrlock"
+url="https://github.com/leonnnn/pyxtrlock"
 license=('GPLv3+')
 depends=('python3' 'python-simplepam' 'python-xdg')
 makedepends=('python-setuptools')

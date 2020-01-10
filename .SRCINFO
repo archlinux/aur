@@ -1,8 +1,8 @@
 pkgbase = pyxtrlock
 	pkgdesc = The X transparent screen lock rewritten in Python.
 	pkgver = 0.4
-	pkgrel = 3
-	url = https://zombofant.net/hacking/pyxtrlock
+	pkgrel = 4
+	url = https://github.com/leonnnn/pyxtrlock
 	arch = any
 	license = GPLv3+
 	makedepends = python-setuptools
