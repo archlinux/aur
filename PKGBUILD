@@ -3,13 +3,13 @@
 _name=pytzdata
 pkgname=python-pytzdata
 pkgver=2019.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Official timezone database for Python."
 arch=('any')
 url="https://github.com/sdispater/pytzdata"
 license=('MIT')
 depends=('python')
-makedepends=('python-dephell')
+makedepends=('python-cleo' 'python-dephell')
 checkdepends=('python-pytest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sdispater/${_name}/archive/${pkgver}.tar.gz")
 sha512sums=('75f212712794e3931592cc47cb636c908cee1d5cbb85d703aaadaaa4b9dd096c6b7f1205f3783b71bacc4477d68d39c13ea9f9027a39924e706c140047ed5585')
@@ -33,10 +33,13 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   python setup.py install --skip-build \
     --optimize=1 \
     --prefix=/usr \
     --root="${pkgdir}"
+  cp -av ${_name}/zoneinfo/* \
+    "${pkgdir}/usr/lib/python${python_version}/site-packages/${_name}/zoneinfo/"
   install -vDm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
