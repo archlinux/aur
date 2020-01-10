@@ -1,0 +1,25 @@
+pkgbase = fsarchiver-git
+	pkgdesc = Filesystem archiver for Linux
+	pkgver = 0.8.5.r4.g30c9e23
+	pkgrel = 1
+	url = http://www.fsarchiver.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = bzip2
+	depends = e2fsprogs
+	depends = libgcrypt
+	depends = lz4
+	depends = lzo
+	depends = xz
+	depends = zlib
+	depends = zstd
+	provides = fsarchiver
+	conflicts = fsarchiver
+	source = git+https://github.com/fdupoux/fsarchiver.git
+	sha256sums = SKIP
+
+pkgname = fsarchiver-git
+
