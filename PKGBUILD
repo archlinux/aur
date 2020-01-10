@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gulkan
-pkgver=0.12.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="GLib library for Vulkan abstraction"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'cairo' 'gdk-pixbuf2' 'glib2' 'graphene' 'vulkan-icd-loader')
 makedepends=('meson' 'glslang' 'gtk-doc' 'vulkan-headers')
 optdepends=('glew' 'glfw' 'libdrm')
 source=("https://gitlab.freedesktop.org/xrdesktop/gulkan/-/archive/$pkgver/gulkan-$pkgver.tar.bz2")
-sha256sums=('de3e176648f441c48a037acf4763d8b07754c3c2d8f3e38b05ec2f9e1c03e86d')
+sha256sums=('ed0e84980b1a763fb899db9757005d51190973b0725b69a6223cefc0d8e03831')
 
 
 build() {
