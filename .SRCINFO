@@ -1,0 +1,15 @@
+pkgbase = yamu-git
+	pkgdesc = Extension host for YaMu.
+	pkgver = r58.63acf1f
+	pkgrel = 1
+	url = https://gitlab.com/K900/yamu
+	arch = x86_64
+	license = BSD
+	makedepends = rust
+	makedepends = python
+	depends = dbus
+	source = git+https://gitlab.com/K900/yamu.git
+	md5sums = SKIP
+
+pkgname = yamu-git
+
