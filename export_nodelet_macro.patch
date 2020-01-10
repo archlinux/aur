@@ -1,0 +1,13 @@
+*** a/src/octomap_server_nodelet.cpp	2020-01-10 00:54:40.937341522 +0000
+--- b/src/octomap_server_nodelet.cpp	2020-01-10 00:56:28.510670074 +0000
+***************
+*** 56,59 ****
+  
+  } // namespace
+  
+! PLUGINLIB_DECLARE_CLASS(octomap_server, OctomapServerNodelet, octomap_server::OctomapServerNodelet, nodelet::Nodelet);
+--- 56,59 ----
+  
+  } // namespace
+  
+! PLUGINLIB_EXPORT_CLASS(octomap_server::OctomapServerNodelet, nodelet::Nodelet);
