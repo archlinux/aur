@@ -3,7 +3,7 @@
 
 pkgbase=python-getdevinfo
 pkgname=('python-getdevinfo' 'python2-getdevinfo')
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A device information gatherer for Linux and macOS."
 arch=('any')
