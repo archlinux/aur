@@ -6,10 +6,10 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=68.3.0
+pkgver=68.4.1
 a_pkgver=( ${pkgver//./ } )
 #_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
-pkgrel=2
+pkgrel=1
 _gnu=-gnu1
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -19,7 +19,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm wget mercurial perl-rename)
+             python nodejs python2-psutil cbindgen nasm wget mercurial)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -28,21 +28,20 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip)
 
 #source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
-source=(https://gitlab.com/anto.trande/icecat/-/archive/v${pkgver}${_gnu}/icecat-v${pkgver}${_gnu}.tar.bz2
+#source=(https://gitlab.com/anto.trande/icecat/-/archive/v${pkgver}${_gnu}/icecat-v${pkgver}${_gnu}.tar.bz2
+source=(git+https://git.savannah.gnu.org/git/gnuzilla.git#branch=68
         icecat.desktop icecat-safe.desktop
-        "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368"
-        "patch-bindgen-rust1390.patch::https://svnweb.freebsd.org/ports/head/www/firefox-esr/files/patch-bindgen-rust1390?revision=516995&view=co&pathrev=516995")
+        "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368")
 
-sha256sums=('bb68260855520406a12049ece189dcb54c204662d11c6f90a99a84792c946712'
+sha256sums=('SKIP'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
-            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
-            'd0c7cc63ce49128e6a53dde7f4116293a51e2144fc329df93dda44b228a8effb')
+            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
 
 #validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 prepare() {
-  cd ${pkgname}-v${pkgver}${_gnu}
+  cd gnuzilla
 
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
@@ -57,8 +56,36 @@ prepare() {
   # Other patches
   sed -e 's/^gpg2 /gpg /g' -i makeicecat
   sed -e 's/^gpg.*list-keys.*//g' -i makeicecat
-  sed -e 's/prename/perl-rename/g' -i makeicecat
   sed -e 's/^tar cfj icecat-/#tar cfj icecat-/g' -i makeicecat
+
+  # rename patches
+  cat << EOF > ../rename.patch
+--- a/makeicecat	2020-01-10 09:32:39.000000000 +0100
++++ b/makeicecat	2020-01-10 09:38:50.216370585 +0100
+@@ -274,8 +274,10 @@
+ ###############################################################################
+ 
+ # Replace Firefox branding
+-find . | tac | grep -i fennec  | prename --nofullpath -E 's/fennec/icecatmobile/;' -E 's/Fennec/IceCatMobile/;'
+-find . | tac | grep -i firefox | prename --nofullpath -E 's/firefox/icecat/;' -E 's/Firefox/IceCat/;'
++find . -iname "*fennec*" | tac | xargs -i rename -v 'fennec' 'icecatmobile' "{}" || true
++find . -iname "*fennec*" | tac | xargs -i rename -v 'Fennec' 'IceCatMobile' "{}" || true
++find . -iname "*firefox*" | tac | xargs -i rename -v 'firefox' 'icecat' "{}" || true
++find . -iname "*firefox*" | tac | xargs -i rename -v 'Firefox' 'IceCat' "{}" || true
+ 
+ rm browser/components/newtab/data/content/assets/icecat-wordmark.svg
+ cp $DATA/branding/icecat-wordmark.svg browser/components/newtab/data/content/assets/
+@@ -340,7 +342,7 @@
+ 
+ sed 's/mozilla-bin/icecat-bin/' -i build/unix/run-mozilla.sh
+ 
+-find . | tac | grep run-mozilla | prename --nofullpath -E 's/mozilla/icecat/;'
++find . -iname "*run-mozilla*" | tac | xargs -i rename -v 'mozilla' 'icecat' "{}" || true
+ 
+ # do not alter useragent/platform/oscpu/etc with fingerprinting countermeasure, it makes things worse
+ sed '/ShouldResistFingerprinting/,/}/s/^/\/\//' -i ./netwerk/protocol/http/nsHttpHandler.cpp
+EOF
+  patch -Np1 -i ../rename.patch
 
   # If we want to avoid all locales, we can use variable _SPEED=y to avoid them
   if [[ $_SPEED =~ [y|Y] ]]; then
@@ -75,9 +102,6 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../../../0001-Use-remoting-name-for-GDK-application-names.patch
-
-  # https://svnweb.freebsd.org/ports/head/www/firefox-esr/files/patch-bindgen-rust1390?revision=516995&view=markup&pathrev=516995
-  patch -Np0 -i ../../../patch-bindgen-rust1390.patch
 
   # Remove extra tag
   mv -f browser/base/content/aboutDialog.xul browser/base/content/aboutDialog.xul_bad
@@ -130,7 +154,7 @@ END
 }
 
 build() {
-  cd ${pkgname}-v${pkgver}${_gnu}/output/icecat-${pkgver}
+  cd gnuzilla/output/icecat-${pkgver}
 
   # LTO needs more open files
   ulimit -n 4096
@@ -146,7 +170,7 @@ build() {
 }
 
 package () {
-  cd ${pkgname}-v${pkgver}${_gnu}/output/icecat-${pkgver}
+  cd gnuzilla/output/icecat-${pkgver}
 
   # Remove cose.manifest and cose.sig cause march install fails
   find obj-x86_64-pc-linux-gnu/dist/bin/browser/extensions -name cose.manifest -delete
