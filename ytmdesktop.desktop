@@ -7,5 +7,5 @@ Icon=ytmdesktop
 Type=Application
 StartupNotify=true
 Categories=AudioVideo;Player;Audio;
-StartupWMClass=YouTube Music
+StartupWMClass=youtube-music-desktop-app
 Name[en_US]=YouTube Music

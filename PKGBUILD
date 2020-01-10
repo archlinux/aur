@@ -2,7 +2,7 @@
 
 pkgname=ytmdesktop-git
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A desktop app for YouTube Music"
 arch=('i686' 'x86_64')
 url="https://ytmdesktop.app"
@@ -16,7 +16,7 @@ license=('CC0 1.0 Universal')
 source=('git+https://github.com/ytmdesktop/ytmdesktop.git'
         'ytmdesktop.desktop')
 md5sums=('SKIP'
-         '63a9f7d805c871f6556aa0e1aa0ef74c')
+         '1bd2f5256cabb91210e418b26f13b757')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
