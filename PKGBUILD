@@ -11,7 +11,7 @@ url='https://www.codef00.com/projects#debugger'
 license=('GPL2')
 # add 'gdtoa-desktop-git' dependency if you want 80-bit floats
 # to be printed in their shortest possible representation
-depends=('capstone' 'desktop-file-utils' 'graphviz' 'hicolor-icon-theme' 'qt5-svg' 'qt5-xmlpatterns')
+depends=('capstone' 'graphviz' 'hicolor-icon-theme' 'qt5-svg' 'qt5-xmlpatterns')
 makedepends=('boost>=1.35.0' 'cmake')
 provides=('edb-debugger')
 conflicts=('edb-debugger')
