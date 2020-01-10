@@ -1,12 +1,12 @@
 # Maintainer: K900 <me@0upti.me>
 
 pkgname=yamu-git
-pkgver=r58.63acf1f
+pkgver=r59.64a2912
 pkgrel=1
 pkgdesc='Extension host for YaMu.'
 arch=('x86_64')
 url='https://gitlab.com/K900/yamu'
-license=('BSD')
+license=('Apache')
 depends=('dbus')
 makedepends=('rust' 'python')
 

@@ -1,10 +1,10 @@
 pkgbase = yamu-git
 	pkgdesc = Extension host for YaMu.
-	pkgver = r58.63acf1f
+	pkgver = r59.64a2912
 	pkgrel = 1
 	url = https://gitlab.com/K900/yamu
 	arch = x86_64
-	license = BSD
+	license = Apache
 	makedepends = rust
 	makedepends = python
 	depends = dbus
