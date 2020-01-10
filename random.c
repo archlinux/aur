@@ -1,67 +1,102 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-typedef enum { false, true } bool;
+#include <argp.h>
+#include <stdbool.h>
 
+/* Arguments */
+const char *argp_program_version = "random 1.3";
+static char doc[] = "Random number generator.";
+static char args_doc[] = "";
+static struct argp_option options[] = {
+    { "min", 'm', "int", 0, "Set minimum value [Default = 1]."},
+    { "max", 'x', "int", 0, "Set maximum value [Default = 100]."},
+    { "float", 'f', 0, 0, "Returns float numbers instead of integers."},
+    { "dec", 'd', "int", 0, "Sets N decimal digits to show with float parameter [Default = 2]."},
+    { "gen", 'g', "int", 0, "Generates N numbers [Default = 1]."},
+    { "line", 'l', 0, 0, "Disable line jumping, i.e. '\\n'."},
+    { 0 }
+};
+
+struct arguments {
+    int min, max;
+    bool useFloat;
+    int dec;
+    int gen;
+    bool noLine;
+};
+
+static error_t parse_opt(int key, char *arg, struct argp_state *state) {
+    struct arguments *arguments = state->input;
+    switch (key) {
+        case 'm':
+            arguments->min = arg ? atoi (arg) : 1;
+            break;
+        case 'x':
+            arguments->max = arg ? atoi (arg) : 100;
+            break;
+        case 'd':
+            arguments->dec = arg ? atoi (arg) : 2;
+            break;
+        case 'g':
+            arguments->gen = arg ? atoi (arg) : 1;
+            break;
+        case 'f':
+            arguments->useFloat = true;
+            break;
+        case 'l':
+            arguments->noLine = true;
+            break;
+        case ARGP_KEY_ARG:
+            return 0;
+        default:
+            return ARGP_ERR_UNKNOWN;
+    }   
+    return 0;
+}
+
+static struct argp argp = { options, parse_opt, args_doc, doc, 0, 0, 0 };
+
+/* Functions */
 void showHelp();
 int isNumber(const char* s);
 
-int main(int argc, char const *argv[]) {
-    if(argc > 1 && (strcmp(argv[1],"-h") == 0 || strcmp(argv[1],"-help") == 0 || strcmp(argv[1],"--h") == 0 || strcmp(argv[1],"--help") == 0)){
-        showHelp();
-        return 0;
+/* Code */
+int main(int argc, char *argv[]) {
+    struct arguments arguments;
+
+    arguments.min = 1;
+    arguments.max = 100;
+    arguments.dec = 2;
+    arguments.gen = 1;
+    arguments.useFloat = false;
+    arguments.noLine = false;
+
+    argp_parse(&argp, argc, argv, 0, 0, &arguments);
+
+    if(arguments.min > arguments.max){
+        int tmp = arguments.min;
+        arguments.min = arguments.max;
+        arguments.max = tmp;
     }
-    /*                                 SETUP                                 */
-    int max = 100,
-        min = 1;
-    bool f = false, // float
-        line = false;
-    int dec = 2; // decimal numbers
-    int gen = 1;
-    for(int i = 1; i < argc; i++){
-        if(isNumber(argv[i])){
-            if(argc == 2 || (argc > 2 && !isNumber(argv[i+1])))
-                max = atoi(argv[i]);
-            else min = atoi(argv[i]);
-            if(i == 2)
-                max = atoi(argv[i]);
-        }else{
-            if(strcmp(argv[i],"-f") == 0 || strcmp(argv[i],"-float") == 0)
-                f = true;
-            else if(strcmp(argv[i],"-l") == 0 || strcmp(argv[i],"-line") == 0)
-                line = true;
-            else if(strcmp(argv[i],"-d") == 0 || strcmp(argv[i],"-dec") == 0){
-                if(i == argc-1 || !atoi(argv[i+1])) return printf("[Error]: Argument '%s' without a value.\n", argv[i]);
-                dec = atoi(argv[i+1]);
-                i++;
-                f = true;
-            }else if(strcmp(argv[i],"-g") == 0 || strcmp(argv[i],"-gen") == 0){
-                if(i == argc-1 || !atoi(argv[i+1])) return printf("[Error]: Argument '%s' without a value.\n", argv[i]);
-                gen = atoi(argv[i+1]);
-                i++;
-            }else return printf("[Error]: Unknown argument: '%s'.\n", argv[i]);
-        }
-    }
-    if(min > max){
-        int tmp = min;
-        min = max;
-        max = tmp;
-    }
-    /*                                 GENERATOR                                 */
+
+    /*
+     *  Generator
+     */
     srand(time(NULL));
-    if(!f){
-        for(int i = 0; i < gen; i++){
-            int r = (rand() % (max + 1));
-            if(r < min) r += min;
-            if(line) printf("%d ", r);
+    if(!arguments.useFloat){ // Generate integers
+        for(int i = 0; i < arguments.gen; i++){
+            int r = (rand() % (arguments.max + 1));
+            if(r < arguments.min) r += arguments.min;
+            if(arguments.noLine) printf("%d ", r);
             else printf("%d\n", r);
         }
-    }else{
-        for(int i = 0; i < gen; i++){
-            float r = ((float)rand()/(float)(RAND_MAX)) * max;
-            if(r < min) r += min;
-            if(line) printf("%.*f ", dec,(float)r);
-            else printf("%.*f\n", dec,(float)r);
+    }else{ // Generate floats
+        for(int i = 0; i < arguments.gen; i++){
+            float r = ((float)rand()/(float)(RAND_MAX)) * arguments.max;
+            if(r < arguments.min) r += arguments.min;
+            if(arguments.noLine) printf("%.*f ", arguments.dec,(float)r);
+            else printf("%.*f\n", arguments.dec,(float)r);
         }
     }
     return 0;
@@ -73,22 +108,4 @@ int isNumber(const char* s){
     char* p;
     strtod(s, &p);
     return *p == '\0';
-}
-
-void showHelp(){
-
-printf("\
-Random number generator\n\n\
-Usage:\t\t random [min] [max] [options]\n\n\
-Examples:\t random\t\t 1 ~ 100\n\
-\t\t random 1 10\t 1 ~ 10\n\
-\t\t random 50\t 1 ~ 50\n\n");
-
-printf("\
-OPTIONS:\n\
--f \t-float \t\t Gives a float instead of an integer\n\
--d <N> \t-dec <N> \t Sets 'N' decimal numbers to show with float parameter. [Default = 2].\n\
--g <N> \t-gen <N> \t Generates 'N' numbers. [Default = 1].\n\
--l \t-line \t\t Disable line jumping (\"\\n\").\n");
-
 }

@@ -1,7 +1,7 @@
-# Maintainer: ivanch <jose-henrique-ivan@hotmail.com>
+# Maintainer: ivanch <jose.henrique.ivan@gmail.com>
 
 pkgname=random
-pkgver=1.2.3
+pkgver=1.3
 pkgrel=1
 pkgdesc="Random number generator."
 arch=("any")
