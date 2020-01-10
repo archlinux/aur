@@ -13,15 +13,11 @@ sha512sums=('7a8056c8e6d2f6f17a8b2607e8042c0d9d100f26bec49dd7d5c1777665f29f11787
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --target=x86_64-unknown-linux-gnu
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    cargo test --target=x86_64-unknown-linux-gnu --verbose
+    cargo build --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 target/release/btm "$pkgdir/usr/bin/btm"
+    cd "$pkgname-$pkgver/target/release"
+    strip btm
+    install -Dm755 btm -t "$pkgdir/usr/bin/btm"
 }
