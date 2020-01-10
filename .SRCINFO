@@ -1,12 +1,11 @@
 pkgbase = css-beautify
 	pkgdesc = Beautifier for CSS
-	pkgver = 1.10.1
-	pkgrel = 2
-	url = https://github.com/beautify-web/js-beautify/#css--html
+	pkgver = 1.10.2
+	pkgrel = 1
 	arch = any
 	license = MIT
-	depends = python-jsbeautifier
-	source = css-beautify::https://github.com/Jorengarenar/css-beautify/archive/1.10.1.tar.gz
+	depends = python
+	source = css-beautify::https://github.com/Jorengarenar/css-beautify/archive/1.10.2.tar.gz
 	sha512sums = SKIP
 
 pkgname = css-beautify
