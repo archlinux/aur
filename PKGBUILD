@@ -2,7 +2,7 @@
 
 pkgname=tmate-ssh-server-git
 pkgver=2.3.0.r44.ge1a5e084
-pkgrel=1
+pkgrel=2
 pkgdesc='tmate SSH server'
 arch=('i686' 'x86_64')
 url='https://github.com/tmate-io/tmate-ssh-server'
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '6fe447933a96c0f187d0d7d63225b647bbb1bd53c07e1698d9f6e33814e7ee85'
             '1a0fbfd869e59273f292cbc395835b33def8d438b7ee52858109f95490b25250'
             'ad31789ba1ebffd177a4295721a11e2ae359da4cbad357323d926e47294a48b9'
-            '15b0092bf5fc632331e8008aaab1285bffa7f6943af3024fdb0df93d8031a2e3')
+            '2040850ba04c6339c6ce9d9fdb5c40f17960a4f69af5401f779eee162a6f11ef')
 
 pkgver() {
 	cd tmate-ssh-server/
