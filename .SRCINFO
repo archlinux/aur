@@ -1,0 +1,21 @@
+pkgbase = the-libs-blueprint
+	pkgdesc = Common libraries for the- applications by Victor Tran
+	pkgver = 2.1b
+	pkgrel = 0
+	url = https://github.com/vicr123/the-libs
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = gsettings-qt
+	provides = the-libs
+	conflicts = the-libs
+	source = the-libs-blueprint-2.1b::git+https://github.com/vicr123/the-libs
+	sha256sums = SKIP
+
+pkgname = the-libs-blueprint
+
