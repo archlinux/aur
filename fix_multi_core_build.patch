@@ -1,0 +1,20 @@
+This patch will allow the call to make by dkms to use all host cpu cores.
+See: https://github.com/dell/dkms/issues/100
+
+--- a/dkms.conf	2019-12-11 17:04:24.000000000 -0500
++++ b/dkms.conf	2020-01-10 12:47:44.770501121 -0500
+@@ -1,7 +1,13 @@
++if [ -x /usr/bin/nproc ]; then
++  num_cpu_cores=$(nproc)
++else
++  num_cpu_cores=1
++fi
++
+ PACKAGE_NAME="nvidia"
+ PACKAGE_VERSION="340.108"
+ BUILT_MODULE_NAME[0]="$PACKAGE_NAME"
+ DEST_MODULE_LOCATION[0]="/kernel/drivers/video"
+-MAKE[0]="make module KERNEL_UNAME=${kernelver}"
++MAKE[0]="make -j$num_cpu_cores module KERNEL_UNAME=${kernelver}"
+ CLEAN="make clean"
+ AUTOINSTALL="yes"

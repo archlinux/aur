@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx-lts
 pkgname=(nvidia-340xx-lts nvidia-340xx-lts-dkms)
 pkgver=340.108
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-lts, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -16,9 +16,11 @@ license=('custom')
 options=(!strip)
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
    unfuck-340.108-build-fix.patch
+   fix_multi_core_build.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
-            '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57')
+            '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57'
+            '82d14e9e6ec47c345d225d9f398238b7254cd5ae581c70e8521b9157ec747890')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
