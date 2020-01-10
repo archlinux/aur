@@ -1,4 +1,4 @@
-just-*.pkg.tar.xz
+just-*.pkg.tar.zst
 just-*.tar.gz
 just-*.log
 PKGBUILD-namcap.log
