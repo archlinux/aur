@@ -2,7 +2,7 @@
 
 pkgname=boolector-java
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Java bindings for the Boolector SMT solver"
 arch=('i686' 'x86_64')
 url="http://boolector.github.io/"
@@ -15,12 +15,12 @@ sha256sums=('SKIP')
 sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/boolector-java-3.1.0"
+  cd "$srcdir/boolector-java-3.1.1"
   make
 }
 
 package() {
-  cd "$srcdir/boolector-java-3.1.0"
+  cd "$srcdir/boolector-java-3.1.1"
 
   libdir="$pkgdir/usr/lib"
   includedir="$pkgdir/usr/include/boolector-java"
