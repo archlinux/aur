@@ -3,7 +3,7 @@
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 
 pkgname=ttf-malayalam-fonts-meta
-pkgver=6.1
+pkgver=7.0
 pkgrel=2
 pkgdesc="This is a set of TrueType and OpenType fonts released under the 
 GNU General Public License for Malayalam Language."
