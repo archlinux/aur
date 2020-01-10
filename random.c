@@ -108,26 +108,4 @@ int isNumber(const char* s){
     char* p;
     strtod(s, &p);
     return *p == '\0';
-<<<<<<< HEAD
 }
-=======
-}
-
-void showHelp(){
-
-printf("\
-Random number generator\n\n\
-Usage:\t\t random [min] [max] [options]\n\n\
-Examples:\t random\t\t 1 ~ 100\n\
-\t\t random 1 10\t 1 ~ 10\n\
-\t\t random 50\t 1 ~ 50\n\n");
-
-printf("\
-OPTIONS:\n\
--f \t-float \t\t Gives a float instead of an integer\n\
--d <N> \t-dec <N> \t Sets 'N' decimal numbers to show with float parameter. [Default = 2].\n\
--g <N> \t-gen <N> \t Generates 'N' numbers. [Default = 1].\n\
--l \t-line \t\t Disable line jumping (\"\\n\").\n");
-
-}
->>>>>>> 6cd13da8e96df843bd28cd9794e8ccf34a288619
