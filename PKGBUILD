@@ -2,7 +2,7 @@
 
 pkgname=css-beautify
 pkgver=1.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Beautifier for CSS'
 arch=('any')
 depends=('python')
@@ -16,4 +16,5 @@ package() {
     cd "$srcdir/$pkgname-${pkgver}"
     mkdir -p "${pkgdir}/usr/lib/python3.8/"
     cp -r "${MODULENAME}" "${pkgdir}/usr/lib/python3.8/${MODULENAME}"
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin"
 }
