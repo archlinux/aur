@@ -1,9 +1,10 @@
 # Contributor: Russ Gibson <russ@russgibson.org>
 # Maintener: Frederic Bezies <fredbezies@gmail.com>
+# Maintainer: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=v1.12.6.r75.gbd5cb8d9
+pkgver=v1.12.6.r79.gd58c09c2
 pkgrel=1
 epoch=1
 pkgdesc="A news aggregator for GTK, git version."
@@ -26,9 +27,8 @@ pkgver() {
 
 build() {
   cd liferea
-  autoreconf -i
-  intltoolize
-  ./configure --prefix=/usr --disable-schema-install
+
+  ./autogen.sh --prefix=/usr
   make 
 } 
 
@@ -37,7 +37,5 @@ package() {
     make DESTDIR="$pkgdir" install
 
     install -d "${pkgdir}/usr/share/gconf/schemas"
-    gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" "${pkgdir}"/etc/gconf/schemas/*.schemas
-    rm -f "${pkgdir}"/etc/gconf/schemas/*.schemas
 }
 
