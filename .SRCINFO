@@ -1,6 +1,6 @@
 pkgbase = libretro-cannonball-git
 	pkgdesc = libretro version of Cannonball - An Enhanced OutRun Engine
-	pkgver = 342.0f3566a
+	pkgver = 354.5dcef18
 	pkgrel = 1
 	url = https://github.com/libretro/cannonball
 	arch = i686
