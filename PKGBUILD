@@ -3,7 +3,7 @@
 pkgname=ytmdesktop-git
 _name=ytmdesktop
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop app for YouTube Music"
 arch=('any')
 url="https://ytmdesktop.app"
@@ -30,9 +30,9 @@ build() {
 	npm install
 
 	if [ $CARCH = "x86_64" ]; then
-		npm run pack:x64
+		env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true npm run pack:x64
 	elif [ $CARCH = "i686" ]; then
-		npm run pack
+		env ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES=true npm run pack
 	fi
 }
 
