@@ -7,8 +7,8 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.0.r0.g31cb54b779
-pkgrel=2
+pkgver=9.1.beta0.r0.gb8f53f72e8
+pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
 url="http://www.sagemath.org"
@@ -20,7 +20,9 @@ depends=(ipython palp brial cliquer maxima-ecl gfan sympow nauty python-rpy2 pyt
   iml libgiac libhomfly libbraiding symmetrica three.js)
 optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cython code'
   'jmol: alternative 3D plot engine' 'sagemath-doc: HTML documentation' 'python-igraph: igraph backend for graph theory'
-  'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
+  'sage-numerical-backends-coin: COIN mixed integer linear programming backend'
+  'sage-numerical-backends-gurobi: Gurobi mixed integer linear programming backend'
+  'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'ffmpeg: to export animations to video' 'imagemagick: to show animations'
   'coxeter: Coxeter groups implementation'
@@ -31,8 +33,7 @@ optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cytho
   'sirocco: for computing the fundamental group of the complement of a plane curve' 'primecount: faster prime_pi implementation'
   'dot2tex: for displaying some diagrams' 'cryptominisat5: SAT solver' 'python-pycosat: picosat SAT solver'
   'python-pip: to install optional packages with sage -pip')
-makedepends=(cython boost ratpoints python-jinja coin-or-cbc sirocco
-  mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
+makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
         package.patch
         latte-count.patch
@@ -44,15 +45,15 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-rpy-3.patch
         sagemath-python-3.8.patch)
 sha256sums=('SKIP'
-            '496da0fa42cdfc92b43f5d85610bb462ca9bdc2f4d80fd316e8e9d068dba3b0b'
+            '5aa8febd117e7243a6d2d21eddf035cda99aac1018b559dd99ae32e5ce533b86'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            'd2a065a36be3c011a257b8694111e267d9ce7cba867c53eeb464a4573dac9bbb'
+            '107b9e6877329fe95cc558a671c8a0a3a645c25bbfa2f484d75e21b583160fb6'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '7821813d3f104566ca6487de9857acf2bc7fc236a48a77000f04f2dc17b75536'
+            '0b79606ce932d12ce4e2baebd660bf42faebca3138511987faf5569a5f3adbbf'
             '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
-            'd430e76c5cdebed9bd1cde0f05e74fba620c736c68c018d70d84dc7b3e3c9049')
+            'ea5c54b2f2b12cb59633e6a0ad26e1f3809cb8ad60e889c31495aef0a7eeb578')
 
 pkgver() {
   cd sage
