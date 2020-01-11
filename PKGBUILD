@@ -2,20 +2,18 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=myodbc
-pkgver=5.3.4
-pkgrel=4
+pkgver=8.0.18
+pkgrel=1
 pkgdesc="ODBC driver/connector for mariadb"
 arch=(i686 x86_64)
 url="http://dev.mysql.com/downloads/connector/odbc/"
-depends=('unixodbc' 'libmariadbclient')
+depends=('unixodbc' 'libmysqlclient')
 makedepends=('cmake' 'gtk2')
-optdepends=('gtk2')
+optdepends=('gtk2: graphical interface')
 license=('GPL')
 options=('libtool')
-source=("http://cdn.mysql.com/Downloads/Connector-ODBC/5.3/mysql-connector-odbc-$pkgver-src.tar.gz"
-	"build-fix.patch")
-md5sums=('6974c4dd9096b961267ed6c4c853a07c'
-         '24c9fc679801c28015876b8f4a0d8b76')
+source=("http://cdn.mysql.com/Downloads/Connector-ODBC/8.0/mysql-connector-odbc-$pkgver-src.tar.gz")
+md5sums=('07f9d97434542ad94dd709cbfef587df')
 
 prepare() {
   cd $srcdir/mysql-connector-odbc-${pkgver}-src
