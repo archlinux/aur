@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 418e805..96f00fc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -77,17 +77,17 @@ doc/lavalauncher.1: doc/lavalauncher.1.scd
+ 
+ install: lavalauncher doc/lavalauncher.1
+ 	@echo Installing
+-	install -D -m 755 lavalauncher $(BINPREFIX)/lavalauncher
+-	install -D -m 644 doc/lavalauncher.1 $(MANPREFIX)/man1/lavalauncher.1
++	@install -Dm755 lavalauncher ${DESTDIR}${PREFIX}/bin/lavalauncher
++	@install -Dm644 doc/lavalauncher.1 ${DESTDIR}${MANPREFIX}/man1/lavalauncher.1
+ 
+ uninstall:
+ 	@echo Uninstalling
+-	$(RM) $(BINPREFIX)/lavalauncher
+-	$(RM) $(MANPREFIX)/man1/lavalauncher.1
++	@rm -f ${DESTDIR}${PREFIX}/bin/lavalauncher
++	@rm -f ${DESTDIR}${MANPREFIX}/man1/lavalauncher.1
+ 
+ clean:
+ 	@echo Cleaning
+-	rm -f lavalauncher \
++	@rm -f lavalauncher \
+ 		lib/wayland-protocols/wlr-layer-shell-unstable-v1-client-protocol.h \
+ 		lib/wayland-protocols/wlr-layer-shell-unstable-v1-protocol.c \
+ 		lib/wayland-protocols/xdg-shell-client-protocol.h \
