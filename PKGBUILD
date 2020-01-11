@@ -1,7 +1,7 @@
 # Maintainer: Luca P <meti at lplab.net>
 # Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 
-pkgname=golden-cheetah-dev
+pkgname=golden-cheetah
 pkgver=3.5
 pkgrel=200111
 pkgdesc="Cycling Power Analysis Software. Development version."
