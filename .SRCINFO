@@ -1,15 +1,15 @@
 pkgbase = netlify
 	pkgdesc = Create, deploy, and delete new sites hosted on Netlify straight from your terminal
-	pkgver = 2.27.0
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://www.netlify.com/docs/cli/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = netlify-cli-2.27.0.tgz
-	source = https://registry.npmjs.org/netlify-cli/-/netlify-cli-2.27.0.tgz
-	sha256sums = 273674741e5baca0183cdf5a85bb4527eda475d2fc15ab66fb8080206d38d156
+	noextract = netlify-cli-2.29.0.tgz
+	source = https://registry.npmjs.org/netlify-cli/-/netlify-cli-2.29.0.tgz
+	sha256sums = f606ae8a98d07071a36d36333956bdf3153e9e641f790cbdceec6c647cc62bf1
 
 pkgname = netlify
 
