@@ -2,7 +2,7 @@
 # Submitter: Troy Engel <troyengel+arch@gmail.com>
 
 pkgbase=bcc
-pkgname=('bcc' 'bcc-tools' 'python-bcc' 'python2-bcc')
+pkgname=('bcc' 'bcc-tools' 'python-bcc')
 pkgver=0.12.0
 _libbpf_commit='ab067ed'
 pkgrel=1
@@ -10,7 +10,7 @@ pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
 license=('Apache')
-makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python' 'python2')
+makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python')
 checkdepends=('netperf' 'iperf')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
 	"libbpf-${_libbpf_commit}.tar.gz"::"https://github.com/libbpf/libbpf/archive/${_libbpf_commit}.tar.gz")
@@ -41,8 +41,7 @@ package_bcc() {
 	depends=('libelf')
 	optdepends=('linux-headers: build against the Arch kernel'
 		'bcc-tools: Python utilites using the BCC library'
-		'python-bcc: Python 3 bindings for BCC'
-		'python2-bcc: Python 2 bindings for BCC')
+		'python-bcc: Python 3 bindings for BCC')
 	provides=('bcc' 'libbcc')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build"
@@ -62,7 +61,6 @@ package_bcc-tools() {
 	arch=('any')
 	depends=('bcc' 'libedit' 'ethtool')
 	optdepends=('python-bcc: Python 3 bindings for BCC'
-		'python2-bcc: Python 2 bindings for BCC'
 		'luajit: Lua bindings for BCC')
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/build/tools"
@@ -84,27 +82,6 @@ package_python-bcc() {
 	# Force a quick python3 binding build (C library is already buidl)
 	cmake -DREVISION="${pkgver}" \
 		-DPYTHON_CMD="python" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib ..
-
-	make
-
-	# Install just those bindings
-	make -C "${srcdir}/${pkgbase}-${pkgver}/build/src/python" DESTDIR="${pkgdir}" install
-}
-
-package_python2-bcc() {
-	pkgdesc='BPF Compiler Collection - Python 2 bindings'
-	arch=('any')
-	depends=('bcc' 'python2')
-	optdepends=('python2-netaddr: Network address representation and manipulation'
-		'python2-pyroute2: Netlink and Linux network configuration')
-
-	cd "${srcdir}/${pkgbase}-${pkgver}/build"
-
-	# Force a quick python2 binding build (C library is already buidl)
-	cmake -DREVISION="${pkgver}" \
-		-DPYTHON_CMD="python2" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=/usr/lib ..
 

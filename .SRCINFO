@@ -13,7 +13,6 @@ pkgbase = bcc
 	makedepends = flex
 	makedepends = bison
 	makedepends = python
-	makedepends = python2
 	source = bcc-0.12.0.tar.gz::https://github.com/iovisor/bcc/archive/v0.12.0.tar.gz
 	source = libbpf-ab067ed.tar.gz::https://github.com/libbpf/libbpf/archive/ab067ed.tar.gz
 	sha512sums = db3ea929b1296f4d9d82d2a11e89e11a1c31512d3f7f935475a7613e0128a5cf9441f3138969535ef41de0c0f677c7446f62f1c64575d41a9896e5339f3f112b
@@ -25,7 +24,6 @@ pkgname = bcc
 	optdepends = linux-headers: build against the Arch kernel
 	optdepends = bcc-tools: Python utilites using the BCC library
 	optdepends = python-bcc: Python 3 bindings for BCC
-	optdepends = python2-bcc: Python 2 bindings for BCC
 	provides = bcc
 	provides = libbcc
 
@@ -36,7 +34,6 @@ pkgname = bcc-tools
 	depends = libedit
 	depends = ethtool
 	optdepends = python-bcc: Python 3 bindings for BCC
-	optdepends = python2-bcc: Python 2 bindings for BCC
 	optdepends = luajit: Lua bindings for BCC
 
 pkgname = python-bcc
@@ -46,11 +43,3 @@ pkgname = python-bcc
 	depends = python
 	optdepends = python-netaddr: Network address representation and manipulation
 	optdepends = python-pyroute2: Netlink and Linux network configuration
-
-pkgname = python2-bcc
-	pkgdesc = BPF Compiler Collection - Python 2 bindings
-	arch = any
-	depends = bcc
-	depends = python2
-	optdepends = python2-netaddr: Network address representation and manipulation
-	optdepends = python2-pyroute2: Netlink and Linux network configuration
