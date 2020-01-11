@@ -4,10 +4,10 @@
 
 pkgname=qsstv
 pkgver=9.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Radio Slow-Scan TV for qt"
 url="http://users.telenet.be/on4qz/"
-depends=('qt5-base' 'libpulse' 'v4l-utils' 'hamlib' 'fftw' 'openjpeg2')
+depends=('qt5-base' 'libpulse' 'v4l-utils' 'hamlib' 'fftw' 'openjpeg2' 'alsa-lib')
 source=(http://users.telenet.be/on4qz/qsstv/downloads/${pkgname}_${pkgver}.tar.gz
         $pkgname.desktop)
 arch=('i686' 'x86_64')
