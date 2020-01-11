@@ -1,6 +1,6 @@
 # Maintener: Peter Karoly "Stone" JUHASZ <stone@midway.hu>
 pkgname=rinetd
-pkgver=0.63
+pkgver=0.64
 pkgrel=6
 pkgdesc="internet redirection server"
 arch=('i686' 'x86_64')
