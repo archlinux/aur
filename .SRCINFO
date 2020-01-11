@@ -1,6 +1,6 @@
 pkgbase = linux-clear-preempt-rt
 	pkgdesc = Clear Linux Preempt-RT
-	pkgver = 5.4.5
+	pkgver = 5.4.10
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
 	arch = x86_64
@@ -12,16 +12,16 @@ pkgbase = linux-clear-preempt-rt
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.5.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.5-rt3.patch.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.10.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.10.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-5.4.10-rt5.patch.xz
 	source = clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=5.4.5-47
 	source = enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0
+	sha256sums = f23c0218a5e3b363bb5a880972f507bb4dc4a290a787a7da08be07ea12042edd
 	sha256sums = SKIP
-	sha256sums = fdb943eee48582b65f3a4876cc8f7b1e1b274dd57287762c0e8a68ff681d855b
+	sha256sums = 0bab9f30b2ce3123c0e5a0fca2d51807883e2b9f5398a51e68937cad2fcb30d7
 	sha256sums = SKIP
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 

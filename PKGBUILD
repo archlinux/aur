@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=5
+_minor=10
 _srcname=linux-${_major}.${_minor}
-_clr=${_major}.${_minor}-47
+_clr=${_major}.5-47
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -75,7 +75,7 @@ _gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-${_major}.${_minor}-rt3.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-${_major}.${_minor}-rt5.patch.xz"
   "clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -89,7 +89,7 @@ prepare() {
 
     ### Add upstream patches
         msg2 "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}-rt3.patch
+        patch -Np1 -i ../patch-${pkgver}-rt5.patch
 
     ### Setting version
         msg2 "Setting version..."
@@ -98,7 +98,8 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec | grep -Ev '^Patch0000|^Patch0123|^Patch0130' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec |\
+          grep -Ev '^Patch0000|^Patch0123|^Patch0130|^Patch0007|^Patch0008|^Patch0012|^Patch0051' | sed -n 's/.*: //p'); do
         msg2 "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-preempt-rt/${i}"
         done
@@ -111,7 +112,7 @@ prepare() {
         msg2 "Enable extra stuff from arch kernel..."
 
         # General setup
-        scripts/config --module IKCONFIG \
+        scripts/config --enable IKCONFIG \
                        --enable-after IKCONFIG IKCONFIG_PROC
 
         # Power management and ACPI options
@@ -316,9 +317,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0'
+sha256sums=('f23c0218a5e3b363bb5a880972f507bb4dc4a290a787a7da08be07ea12042edd'
             'SKIP'
-            'fdb943eee48582b65f3a4876cc8f7b1e1b274dd57287762c0e8a68ff681d855b'
+            '0bab9f30b2ce3123c0e5a0fca2d51807883e2b9f5398a51e68937cad2fcb30d7'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
