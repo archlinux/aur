@@ -1,6 +1,6 @@
 --- a/src/srvc_place.c	2013-10-02 13:49:18.048588870 -0500
 +++ b/src/srvc_place.c	2013-10-02 13:50:18.027648225 -0500
-@@ -39,6 +39,16 @@
+@@ -37,6 +37,16 @@
  #define PROTOCOL_TYPE  0x00
  #define PROTOCOL_VER   0x05
  
@@ -17,7 +17,7 @@
  
  enum incoming_msg {
    msg_in_JOIN_RESPONSE  = 0x0000,  /* ? */
-@@ -165,6 +175,7 @@
+@@ -163,6 +173,7 @@
    guint16 login_type;
    guint32 unknown_a;
    guint32 unknown_b;
@@ -25,7 +25,7 @@
  };
  
  
-@@ -189,6 +200,7 @@
+@@ -187,6 +198,7 @@
    mwIdBlock_clear(&p->idb);
    g_free(p->login_id);
    g_free(p->name);
@@ -33,7 +33,7 @@
    g_free(p);
  }
  
-@@ -394,6 +406,9 @@
+@@ -392,6 +404,9 @@
    guint16_get(b, &pm->login_type);
    guint32_get(b, &pm->unknown_a);
    guint32_get(b, &pm->unknown_b);
@@ -43,7 +43,7 @@
  
    PUT_MEMBER(place, pm);
    if(srvc->handler && srvc->handler->peerJoined)
-@@ -519,8 +534,18 @@
+@@ -517,8 +532,18 @@
  
  static int recv_SECTION_LIST(struct mwPlace *place,
  			     struct mwGetBuffer *b) {
@@ -63,7 +63,7 @@
  
    mwGetBuffer_advance(b, 4);
    guint32_get(b, &sec);
-@@ -545,6 +570,10 @@
+@@ -542,6 +567,10 @@
      guint32_get(b, &m->unknown_a);
      guint32_get(b, &m->unknown_b);
  
