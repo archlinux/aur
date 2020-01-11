@@ -1,18 +1,18 @@
 pkgbase = gild
 	pkgdesc = Terminal Gopher Client, in LDPL
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dvkt/gild
 	arch = x86_64
 	license = custom: MIT
 	makedepends = ldpl
 	depends = glibc
-	source = gild-0.3.0.tar.gz::https://github.com/dvkt/gild/archive/v0.3.0.tar.gz
-	source = ldpl-socket-99a9f27.tar.gz::https://github.com/dvkt/ldpl-socket/archive/99a9f27.tar.gz
+	source = gild-0.4.0.tar.gz::https://github.com/dvkt/gild/archive/v0.4.0.tar.gz
+	source = ldpl-socket-99a9f27.tar.gz::https://github.com/dvkt/ldpl-socket/archive/v0.1.0.tar.gz
 	source = use-compilation-flags.patch
-	md5sums = 1d3d870d8cc448332dea0c2ffa805c8f
+	md5sums = ce6cda1dd77549f368b51b69cac76d9d
 	md5sums = 99f7e1bce036bb6efd7730fed60e04e5
-	md5sums = 285b29f8e2da2efad90a2f3ff1512db5
+	md5sums = 2ff698279324e30c59a7e82b66a48055
 
 pkgname = gild
 
