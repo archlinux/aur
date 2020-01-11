@@ -1,6 +1,6 @@
 pkgbase = openmodelica-omc
 	pkgdesc = The Open Source Modelica Suite - OpenModelica Compiler
-	pkgver = 1.13.2
+	pkgver = 1.14.1
 	pkgrel = 1
 	url = https://openmodelica.org
 	arch = i686
@@ -32,10 +32,7 @@ pkgbase = openmodelica-omc
 	depends = coin-or-ipopt
 	depends = suitesparse
 	depends = boost-libs
-	conflicts = openmodelica-dev
-	conflicts = openmodelica-dev-omc
-	conflicts = openmodelica-git
-	source = git+https://github.com/OpenModelica/OMCompiler.git#tag=v1.13.2
+	source = git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.14.1
 	sha1sums = SKIP
 
 pkgname = openmodelica-omc
