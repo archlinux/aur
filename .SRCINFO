@@ -1,6 +1,6 @@
 pkgbase = python-einsteinpy-git
 	pkgdesc = Python package for General Relativity
-	pkgver = 0.1.0.r410.g4572c4a
+	pkgver = 0.1.0.r411.g6411f9c
 	pkgrel = 1
 	url = https://einsteinpy.org/
 	arch = i686
