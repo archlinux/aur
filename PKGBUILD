@@ -37,8 +37,6 @@ md5sums=('d6b931db8cf42aefe770581afb0184ad'
 installed_files_dirs=(
   AddOn
   country.txt
-  default.bar
-  default.keys
   language
   license.txt
   PrintPresets.txt
@@ -47,7 +45,6 @@ installed_files_dirs=(
   WhatsNew.txt
   XnView
   xnview_2.png
-  XnView.db
   xnview.png
 )
 
