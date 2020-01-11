@@ -1,15 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Wayfire Configuration Manager'
 pkgname=wcm
-pkgver=0.3
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 arch=(x86_64)
 url=https://wayfire.org
 license=(custom:MIT)
-depends=('wf-config>=0.3' libxml2 gtkmm3)
+depends=('wf-config>=0.3' gtk3)
 makedepends=(wayland-protocols meson ninja)
-source=("https://github.com/WayfireWM/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('e997d1b0f707cca2d170bc82667fdacd8489eff629931e3af1c03ac2be5461f07c81b54930561b0baaf10f5e632f0939247344ffeedf3c3eef8f03cb74b2fd0d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WayfireWM/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('890dda758b79ebf376db7dda63a5a1838206bb62bf03b23970ff5ef2e3bf1dce7cc83c37cc4dc41307bade5cb3fae803a96c68f82fed5b25d855c19cfc0b4dd2')
 
 build ()
 {
