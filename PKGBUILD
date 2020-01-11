@@ -2,7 +2,7 @@
 
 pkgbase=yoga-usage-mode
 pkgname=(yoga-usage-mode-dkms-git)
-pkgver=r4.1bfa450
+pkgver=r5.af1a495
 pkgrel=1
 pkgdesc="Kernel module for Yoga C940 tablet mode detection"
 arch=('x86_64')

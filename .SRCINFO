@@ -1,6 +1,6 @@
 pkgbase = yoga-usage-mode
 	pkgdesc = Kernel module for Yoga C940 tablet mode detection
-	pkgver = r4.1bfa450
+	pkgver = r5.af1a495
 	pkgrel = 1
 	url = https://github.com/lukas-w/yoga-usage-mode
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = yoga-usage-mode
 
 pkgname = yoga-usage-mode-dkms-git
 	depends = dkms
-	provides = yoga-usage-mode=r4.1bfa450-1
+	provides = yoga-usage-mode=r5.af1a495-1
 	conflicts = yoga-usage-mode
 
