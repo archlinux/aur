@@ -10,8 +10,7 @@ pkgdesc="RPC protocol for Python and Twisted"
 url="http://foolscap.lothar.com"
 license=('MIT')
 arch=('any')
-conflicts=('python2-foolscap')
-provides=('python2-foolscap')
+conflicts=('python2-foolscap-i2p')
 options=(!emptydirs)
 
 depends=('python2-twisted'
