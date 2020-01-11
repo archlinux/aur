@@ -1,20 +1,22 @@
-# Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10-dark
-pkgver=0.9.9_AU_SP3
+pkgver=3.0
 pkgrel=1
-pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
+pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines"
 arch=('any')
 url="https://github.com/Elbullazul/Windows-10"
 license=('GPL')
-depends=('gtk-engines' 'gtk-engine-murrine')
-optdepends=('gnome-themes-standard')
+optdepends=('gtk-engine-murrine: for the GTK2 theme'
+            'gnome-themes-extra: for the GTK3 theme?')
 changelog=${pkgname}.changelog
-source=("https://codeload.github.com/B00merang-Project/Windows-10/zip/Rolling")
-sha1sums=('d91bcaef6347faf99afd906bbf5c503c962a1b3d')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/B00merang-Project/Windows-10-Dark/archive/3.0-dark.tar.gz")
+sha1sums=('d92fcedd23d233c2e05c40e82873275965385f4c')
+
 
 package() {
-	cd Windows-10-Rolling/Windows\ 10\ Dark
+	cd Windows-10-Dark-${pkgver}-dark
 
   	# create theme dir
   	install -d -m 755 "$pkgdir/usr/share/themes/Windows10Dark"
