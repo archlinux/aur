@@ -1,21 +1,18 @@
 # Maintainer: James An <james@jamesan.ca>
 
 pkgname=terminus
-pkgver=1.7.1
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="The Pantheon CLI — a standalone utility for performing operations on the Pantheon Platform https://pantheon.io"
+pkgdesc="The Pantheon CLI - standalone utility for performing operations on the Pantheon Platform https://pantheon.io"
 arch=('any')
 url="https://github.com/pantheon-systems/$pkgname"
 license=('MIT')
 depends=('php' 'composer' 'git')
 optdepends=('drush: Useful to run incompatible-with-Terminus Drush commands'
             'wp-cli: Useful to run incompatible-with-Terminus WP-CLI commands')
-source=("https://github.com/pantheon-systems/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('2752d60abe3c3e523c249ccfb2ff4a30')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pantheon-systems/$pkgname/archive/$pkgver.tar.gz")
+md5sums=('3953d78b92b2602910f8f3d53a168d4a')
 
-pkgver() {
-  curl "https://api.github.com/repos/pantheon-systems/$pkgname/releases/latest" | grep tag_name | cut -f4 -d\"
-}
 
 prepare() {
   cd "$pkgname-$pkgver"
