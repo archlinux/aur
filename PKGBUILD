@@ -1,5 +1,5 @@
 pkgname=otrs
-pkgver=6.0.24
+pkgver=6.0.25
 pkgrel=1
 pkgdesc="OTRS is the leading open-source Help Desk and IT Service Management (ITSM)"
 arch=("any")
@@ -39,7 +39,7 @@ install="${pkgname}.install"
 source=("${pkgname}.install"
         "http://ftp.otrs.org/pub/otrs/${pkgname}-${pkgver}.tar.gz")
 sha256sums=("cb10dda941c7477880ae06362ef69fe0cfb1d06ad9ad1315cb7322d4dd65963e"
-            "da71ddd383fcf9d031882167488d183ff5163c8f66d159db3a3887b8ff17bb0e")
+            "f2a2e66de906f6ab0ea4da4eae73941ce896047118bc09ba0cbb529d5a0e5a3a")
 
 prepare() {
 cat << EOL > "${srcdir}/${pkgname}.service"
