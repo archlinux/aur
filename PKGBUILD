@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=79.0.3945.117
+pkgver=80.0.3987.42
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -27,27 +27,21 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        launch_manager.h-uses-std-vector.patch
-        include-algorithm-to-use-std-lower_bound.patch
         0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
-        0001-ozone-wayland-Complete-submission-of-a-buffer-submit.patch
-        icu65.patch
+        0001-cros-search-service-Include-cmath-for-std-pow.patch
+        0001-BookmarkModelMerger-Move-RemoteTreeNode-declaration-.patch
         chromium-system-icu.patch
         chromium-system-zlib.patch
-        chromium-system-hb.patch
         fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('4d960e8bd790cc1c8e7f0632790424957c4996a8a91b9d899eb572acec854ef1'
+sha256sums=('160c02ed00d45a074246c8984144a35b092102e9b9a31e2bc9c2dad49f297945'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
-            '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
             '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
-            '9e9e5c66d4555c787736c5d5d5fcef8b5e14d913b138041c9c90d1976ee46845'
-            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
+            '4c892f046ab10df609aa39d9985248d368c77306783a64d335ff713dabad60b0'
+            'a44ed59db5258221ee187dc2501040e5ebfc5c1353ac98d4313ac6a12ae32d1f'
             'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
             'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
-            'c0ad3fa426cb8fc1a237ddc6309a6b2dd4055bbe41dd07f50071ee61f969b81a'
             '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
@@ -66,7 +60,7 @@ declare -gA _system_libs=(
   #[libpng]=libpng            # https://crbug.com/752403#c10
   #[libvpx]=libvpx    # https://github.com/webmproject/libvpx/commit/5a0242ba5c
   [libwebp]=libwebp
-  [libxml]=libxml2
+  # [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -87,13 +81,12 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 706915
+# Branch point: 722274
 # Extra commits related specifically to wayland support:
 
 # These consist of the above commits and their dependencies
 # generated with `git-deps -r -e <release tag> <commit>^! ...` (in reverse order)
 _bugfix_patches=(
-  '0001-ozone-wayland-Complete-submission-of-a-buffer-submit.patch'
 )
 
 prepare() {
@@ -109,21 +102,17 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # https://crbug.com/819294
-  patch -Np1 -i ../launch_manager.h-uses-std-vector.patch
-  patch -Np1 -i ../include-algorithm-to-use-std-lower_bound.patch
+  # build fixes
   patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
-
-  # https://crbug.com/1014272
-  patch -Np1 -i ../icu65.patch
-
+  patch -Np1 -i ../0001-cros-search-service-Include-cmath-for-std-pow.patch
+  patch -Np1 -i ../0001-BookmarkModelMerger-Move-RemoteTreeNode-declaration-.patch
+  
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-icu.patch
   patch -Np1 -i ../chromium-system-zlib.patch
-  patch -Np1 -i ../chromium-system-hb.patch
 
   # https://crbug.com/1005508
-  patch -Np1 -i ../fix-spammy-unique-font-matching-log.patch
+  # patch -Np1 -i ../fix-spammy-unique-font-matching-log.patch
 
   # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
   # M79 is supposed to download it as a component but it doesn't seem to work
