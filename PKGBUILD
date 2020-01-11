@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2019.12
+pkgver=2020.01
 pkgrel=0
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL')
 url="https://www.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'nss>=3.34' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc' 'libevent')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf' 'inetutils' 'xorg-server-xvfb'
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'git')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -24,7 +24,7 @@ replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=8864e433baf07e995e7047e840d8f94d8f1b2496
+_commit=45130a237874aaa96bdf23ee107b0be0e0a2afab
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
@@ -120,6 +120,7 @@ ac_add_options --disable-signmar
 ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
+ac_add_options --disable-gconf
 
 # If you want to have text-to-speech support, comment this line:
 ac_add_options --disable-webspeech
