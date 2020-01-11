@@ -25,10 +25,12 @@ pkgbase = gcstar-gitlab
 	depends = perl-image-exiftool
 	depends = perl-gdgraph
 	depends = perl-mp3-info
+	depends = perl-ogg-vorbis-header-pureperl
+	depends = perl-mp3-tag
+	optdepends = gtk-engine-murrine
 	provides = gcstar
 	conflicts = gcstar
 	source = git+https://gitlab.com/Kerenoc/GCstar.git
 	md5sums = SKIP
 
 pkgname = gcstar-gitlab
-
