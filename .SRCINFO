@@ -1,0 +1,13 @@
+pkgbase = cppclibars-git
+	pkgdesc = A damn easy to use and customizable ascii bars in C++
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tbhaxor/cpp-clibars
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = cppclibars-git::git+https://github.com/tbhaxor/cpp-clibars
+	md5sums = SKIP
+
+pkgname = cppclibars-git
+
