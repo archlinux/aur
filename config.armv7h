@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 5.4.2-gnu Kernel Configuration
+# Linux/arm 5.4.8-gnu Kernel Configuration
 #
 
 #
@@ -8715,7 +8715,7 @@ CONFIG_PM_OPP=y
 # CONFIG_SLIMBUS is not set
 # CONFIG_INTERCONNECT is not set
 CONFIG_COUNTER=m
-# CONFIG_TI_EQEP is not set
+CONFIG_TI_EQEP=m
 # CONFIG_FTM_QUADDEC is not set
 # end of Device Drivers
 

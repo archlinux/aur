@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.2-gnu Kernel Configuration
+# Linux/x86 5.4.8-gnu Kernel Configuration
 #
 
 #
@@ -6727,7 +6727,7 @@ CONFIG_SND_YMFPCI=m
 #
 CONFIG_SND_HDA=m
 CONFIG_SND_HDA_INTEL=m
-CONFIG_SND_HDA_INTEL_DETECT_DMIC=y
+# CONFIG_SND_HDA_INTEL_DETECT_DMIC is not set
 CONFIG_SND_HDA_HWDEP=y
 CONFIG_SND_HDA_RECONFIG=y
 CONFIG_SND_HDA_INPUT_BEEP=y
@@ -8669,7 +8669,7 @@ CONFIG_RPMSG_QCOM_GLINK_RPM=m
 CONFIG_RPMSG_VIRTIO=m
 # end of Rpmsg drivers
 
-CONFIG_SOUNDWIRE=y
+CONFIG_SOUNDWIRE=m
 
 #
 # SoundWire Devices
