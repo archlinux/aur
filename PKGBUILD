@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.30.0.r324.gd07b7f068d
+pkgver=0.31.0.r57.g8b85b40b2f
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
          'aribb24'
          'bzip2'
          'celt'
+         'codec2'
          'dav1d'
          'desktop-file-utils'
          'fontconfig'
@@ -124,7 +125,6 @@ makedepends=(
              'ffnvcodec-headers'
              )
 optdepends=(
-            'codec2: Additional libcodec2 support for ffmpeg'
             'cuda: mpv ffmpeg nvcc and libnpp support'
             'davs2: Additional libdavs2 support for ffmpeg'
             'flite1-patched: Additional libflite support for ffmpeg'
@@ -170,9 +170,6 @@ backup=('etc/mpv/encoding-profiles.conf')
 # MPV_NO_CHECK_OPT_DEPEND=yes makepkg -sif
 
 if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
-  if [ -f /usr/lib/libcodec2.so ]; then
-    depends+=('codec2')
-  fi
   if [ -f /usr/lib/libdavs2.so ]; then
     depends+=('davs2')
   fi
@@ -265,6 +262,7 @@ prepare() {
     '--enable-libcaca'
     '--enable-libcdio'
     '--enable-libcelt'
+    '--enable-libcodec2'
     '--enable-libdav1d'
     '--enable-libdc1394'
     '--enable-libdrm'
@@ -412,9 +410,6 @@ prepare() {
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
   if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
-    if [ -f /usr/lib/libcodec2.so ]; then
-      _ffmpeg_options+=('--enable-libcodec2')
-    fi
     if [ -f /usr/lib/libdavs2.so ]; then
       _ffmpeg_options+=('--enable-libdavs2')
     fi
@@ -471,6 +466,7 @@ prepare() {
       _ffmpeg_options+=('--extra-cflags=-I/opt/cuda/include')
       _ffmpeg_options+=('--extra-ldflags=-L/opt/cuda/lib64')
       _mpv_options+=('--enable-cuda-hwaccel')
+      _mpv_options+=('--enable-cuda-interop')
     fi
   fi
 
