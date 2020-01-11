@@ -1,0 +1,18 @@
+pkgbase = compressonator-git
+	pkgdesc = Tool suite for Texture and 3D Model Compression, Optimization and Analysis. Lubosz's Linux GUI port branch.
+	pkgver = v3.2.4691+39+g492b0956
+	pkgrel = 1
+	url = https://github.com/GPUOpen-Tools/Compressonator
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = draco-git
+	conflicts = compressonator-cli-bin
+	replaces = compressonator-cli-bin
+	source = git+https://github.com/lubosz/Compressonator.git#branch=gui-cmake-qt5-linux
+	sha256sums = SKIP
+
+pkgname = compressonator-git
+
