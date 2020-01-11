@@ -1,6 +1,6 @@
 pkgbase = certbot-plugins-git
 	pkgdesc = Plugins for Certbot
-	pkgver = 0.40.0.r4.g9b848b1d6
+	pkgver = 1.0.0.r23.gceea41c1e
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
@@ -27,8 +27,8 @@ pkgname = certbot-nginx-git
 	depends = python-setuptools
 	depends = python-mock
 	depends = python-zope-interface
-	provides = certbot-nginx=0.40.0.r4.g9b848b1d6
-	provides = letsencrypt-nginx=0.40.0.r4.g9b848b1d6
+	provides = certbot-nginx=1.0.0.r23.gceea41c1e
+	provides = letsencrypt-nginx=1.0.0.r23.gceea41c1e
 	conflicts = certbot-nginx
 	conflicts = letsencrypt-nginx
 
@@ -41,7 +41,7 @@ pkgname = certbot-apache-git
 	depends = python-mock
 	depends = python-zope-component
 	depends = python-zope-interface
-	provides = certbot-apache=0.40.0.r4.g9b848b1d6
-	provides = letsencrypt-apache=0.40.0.r4.g9b848b1d6
+	provides = certbot-apache=1.0.0.r23.gceea41c1e
+	provides = letsencrypt-apache=1.0.0.r23.gceea41c1e
 	conflicts = certbot-apache
 	conflicts = letsencrypt-apache
