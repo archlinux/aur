@@ -1,12 +1,13 @@
 pkgbase = gopherfs
-	pkgdesc = a gopher file system for FUSE.
+	pkgdesc = gopher file system for FUSE
 	pkgver = 0.7
-	pkgrel = 1
-	url = http://r-36.net/src/Various/
+	pkgrel = 2
+	url = https://github.com/ewe2/gopherfs
 	arch = i686
 	arch = x86_64
-	license = unknow
-	source = http://r-36.net/src/Various/gopherfs-0.7.tgz
+	license = GPL3
+	depends = fuse2
+	source = http://9front.org/extra/gopherfs-0.7.tgz
 	md5sums = 38489764859bc25211cb7d23a08a699f
 
 pkgname = gopherfs
