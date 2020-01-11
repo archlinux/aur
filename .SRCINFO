@@ -1,12 +1,12 @@
 pkgbase = broot-bin
 	pkgdesc = Balanced tree view + fuzzy search + BFS + customizable launcher
-	pkgver = 0.11.6
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://github.com/Canop/broot
 	arch = x86_64
 	license = MIT
-	source = broot-bin-0.11.6::https://github.com/Canop/broot/releases/download/v0.11.6/broot
-	sha256sums = 1728fbedc85d5d032a55c7abe00b3ff16c167a0d4c11d71d2b8e077a0d0a66ec
+	source = broot-bin-0.11.7::https://github.com/Canop/broot/releases/download/v0.11.7/broot
+	sha256sums = bf7afc9acbd8609d485faa2c39b61f8a984e786a634b4a37ec2d2a40aaf503d1
 
 pkgname = broot-bin
 
