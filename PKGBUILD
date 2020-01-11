@@ -6,7 +6,7 @@ pkgver=3.0
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines"
 arch=('any')
-url="https://github.com/Elbullazul/Windows-10"
+url="https://github.com/B00merang-Project/Windows-10-Dark"
 license=('GPL')
 optdepends=('gtk-engine-murrine: for the GTK2 theme'
             'gnome-themes-extra: for the GTK3 theme?')
