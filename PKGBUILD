@@ -2,15 +2,15 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
 pkgname='kawa'
-pkgver='3.0'
+pkgver='3.1'
 pkgrel=1
 pkgdesc='A Scheme implementation and framework targeted the JVM.'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://www.gnu.org/software/kawa/index.html'
 license=('X11/MIT')
 depends=('java-environment')
 source=("http://ftp.gnu.org/pub/gnu/kawa/$pkgname-$pkgver.tar.gz")
-sha256sums=('1e6e85217bd6d8c2a0c3478882a4570314df6b95078fe7b1225911c39abf38cd')
+sha256sums=('5b100631e701f32687df702b04539de700768cfaf937418157e81a537b171118')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,5 +24,3 @@ package() {
 
   make -j1 DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
