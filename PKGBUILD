@@ -4,7 +4,7 @@
 pkgname=golden-cheetah
 pkgver=3.5
 pkgrel=200111
-pkgdesc="Cycling Power Analysis Software. Development version."
+pkgdesc="Cycling Power Analysis Software."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
 license=('GPL')
