@@ -14,7 +14,7 @@ options=()
 provides=('turingarena')
 conflicts=('turingarena')
 source=(
-	'git+https://github.com/turingarena/turingarena.git#branch=develop'
+	'git+https://github.com/turingarena/turingarena.git'
 	'turingarena.env'
 	'turingarena.service'
 )

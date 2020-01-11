@@ -17,7 +17,7 @@ pkgbase = turingarena-git
 	depends = python-yaml
 	provides = turingarena
 	conflicts = turingarena
-	source = git+https://github.com/turingarena/turingarena.git#branch=develop
+	source = git+https://github.com/turingarena/turingarena.git
 	source = turingarena.env
 	source = turingarena.service
 	sha256sums = SKIP
