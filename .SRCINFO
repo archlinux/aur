@@ -14,9 +14,11 @@ pkgbase = toptracker
 	source = https://d101nvfmxunqnl.cloudfront.net/desktop/builds/redhat/toptracker_1.6.0-334_x86_64.rpm
 	source = toptracker.desktop
 	source = toptracker-LICENSE
+	source = toptracker-launcher
 	sha256sums = 212f82bc574c741b1c8837ae5d06b2999d15d6c431ef8d41cf096653d877b95c
-	sha256sums = 99730f7b360235a8f27a50fbc148b71dd0ef54526d2ccb563495f3ee1f75ac80
+	sha256sums = e65278708e76a1e3772ccdecb1710d59a492a88ee6c3fde87296cccaec79b9cd
 	sha256sums = 3a12e2c5bd4c992b24320e1e2552476f21d08229417ca298cb39a2512f36162e
+	sha256sums = daed1bd315d68a2755e6f13126482eef18c361306c62cb6219be6c39ee64af34
 
 pkgname = toptracker
 

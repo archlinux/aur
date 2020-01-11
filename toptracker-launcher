@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Launch script for toptracker
+
+# necessary to avoid 'BadAccess (attempt to access private resource denied)'
+export XDG_CURRENT_DESKTOP=GNOME
+
+pushd "/opt/toptracker/bin" >/dev/null || exit 1
+./TopTracker
+popd >/dev/null || exit 1
