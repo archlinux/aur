@@ -1,7 +1,7 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 pkgname=gitstatus-git
 pkgver=r509.e26af91
-pkgrel=1
+pkgrel=2
 pkgdesc='10x faster implementation of `git status` command'
 arch=('x86_64')
 url="https://github.com/romkatv/gitstatus"
@@ -52,7 +52,17 @@ build() {
   build_gitstatus
 }
 
+check() {
+  local reply
+  echo -nE $'hello\x1f\x1e' | $srcdir/gitstatus/gitstatusd 2>/dev/null | {
+    IFS='' read -r -d $'\x1e' -t 5 reply
+    [[ $reply == $'hello\x1f0' ]] && return 0 || return 1
+  }
+}
+
 package() {
 	cd "$srcdir/gitstatus"
-  install -D "$srcdir/gitstatus/gitstatusd" "$pkgdir/usr/bin/gitstatusd"
+  install -D "gitstatusd" "$pkgdir/usr/bin/gitstatusd"
+  install -D "gitstatus.plugin.zsh" "$pkgdir/usr/share/zsh/plugins/gitstatus/gitstatus.plugin.zsh"
+  install -D "gitstatus.prompt.zsh" "$pkgdir/usr/share/zsh/functions/Prompts/prompt_gitstatus_setup"
 }

@@ -1,7 +1,7 @@
 pkgbase = gitstatus-git
 	pkgdesc = 10x faster implementation of `git status` command
 	pkgver = r509.e26af91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/romkatv/gitstatus
 	arch = x86_64
 	license = GPL3
