@@ -7,7 +7,7 @@ Description=TuringArena server
 EnvironmentFile=/etc/default/turingarena
 Type=simple
 User=turingarena
-ExecStart=/usr/lib/turingarena/turingarena serve
+ExecStart=/usr/lib/turingarena/turingarenad --enable-dmz
 
 [Install]
 WantedBy=multi-user.target
