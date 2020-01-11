@@ -5,9 +5,7 @@ pkgbase = python-kppy
 	url = https://github.com/raymontag/kppy
 	arch = any
 	license = GPL
-	makedepends = python
-	makedepends = python-crypto
-	depends = python-crypto
+	depends = python-pycryptodomex
 	source = https://github.com/raymontag/kppy/archive/1.5.2.tar.gz
 	sha256sums = 9dbf494304f2ac82ff6b8037744ab2887f68901840e4dda2aa612ab9129a6a60
 

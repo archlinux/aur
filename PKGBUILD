@@ -8,8 +8,7 @@ pkgdesc="A Python-module to provide an API to KeePass 1.x files commonly used by
 arch=('any')
 url="https://github.com/raymontag/kppy"
 license=('GPL')
-depends=('python-crypto')
-makedepends=('python' 'python-crypto')
+depends=('python-pycryptodomex')
 source=(https://github.com/raymontag/kppy/archive/${pkgver}.tar.gz)
 sha256sums=('9dbf494304f2ac82ff6b8037744ab2887f68901840e4dda2aa612ab9129a6a60')
 
