@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=wasmtime
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Standalone JIT-style runtime for WebAssembly, using Cranelift"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')

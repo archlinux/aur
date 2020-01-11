@@ -1,6 +1,6 @@
 pkgbase = wasmtime
 	pkgdesc = Standalone JIT-style runtime for WebAssembly, using Cranelift
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/bytecodealliance/wasmtime
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wasmtime
 	arch = aarch64
 	license = APACHE2
 	makedepends = cargo
-	source = wasmtime-0.8.0::git+https://github.com/bytecodealliance/wasmtime.git#tag=v0.8.0
+	source = wasmtime-0.9.0::git+https://github.com/bytecodealliance/wasmtime.git#tag=v0.9.0
 	sha384sums = SKIP
 
 pkgname = wasmtime
