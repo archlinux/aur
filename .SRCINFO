@@ -1,16 +1,15 @@
 pkgbase = musictube
-	pkgdesc = A YouTube music player
-	pkgver = 1.6
+	pkgdesc = YouTube music player
+	pkgver = 1.10
 	pkgrel = 1
-	url = http://flavio.tordini.org/musictube
-	install = musictube.install
+	url = https://flavio.tordini.org/musictube
 	arch = x86_64
-	license = Proprietary
-	depends = qt5-base
+	license = custom:Proprietary
 	depends = qt5-declarative
 	depends = phonon-qt5
-	source = http://flavio.tordini.org/files/musictube/musictube64.deb
-	sha256sums = 5f2faaae71383c07d0a0d73c01345cf68141ad2d5169036c523e2e346856b924
+	depends = hicolor-icon-theme
+	source = musictube-1.10.deb::https://flavio.tordini.org/files/musictube/musictube.deb
+	sha256sums = 59ccae998e2435ef0fcabbadda50b2c6a710d470bbd886c4ad106b1f722d49b1
 
 pkgname = musictube
 
