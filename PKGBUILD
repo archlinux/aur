@@ -1,21 +1,22 @@
 # Maintainer: Luca P <meti at lplab.net>
+# Contributor: Ammann Max <maximilian.ammann@googlemail.com>
 
-pkgname=golden-cheetah
+pkgname=golden-cheetah-dev
 pkgver=3.5
-pkgrel=1
+pkgrel=200111
 pkgdesc="Cycling Power Analysis Software. Development version."
 arch=('i686' 'x86_64')
 url="http://www.goldencheetah.org/"
 license=('GPL')
 makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script qt5-connectivity qt5-charts vlc 'libical')
-optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libusb' 'libsamplerate')
+optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libusb-compat' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(https://github.com/GoldenCheetah/GoldenCheetah/archive/V$pkgver.tar.gz
 gcconfig.pri GoldenCheetah.desktop gc.png)
-md5sums=('41da7559e546b5fdedfbee962356c072'
+md5sums=('ed25ef3dfb447b1c4d9cc7387da5d7e7'
          'c9046d48dcff232fcdd6b04ab77db6db'
-         '5a83da03adf4b4ea14ec459061699c0c'
+         '6e91c5918806969eb8b5b26624d7ea0c'
          'e1fb382b4a7316da1ffd435e45e50c4a')
 
 build() {
