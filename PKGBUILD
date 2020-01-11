@@ -1,15 +1,20 @@
-# Maintainer: Maxime Vincent <maxime.vince@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Maxime Vincent <maxime.vince@gmail.com>
 
 pkgname=wolfssl
-pkgver=3.12.0
-pkgrel=3
-pkgdesc='A small, fast, portable implementation of TLS/SSL for embedded devices to the cloud. (formerly CyaSSL) '
+pkgver=4.3.0
+pkgrel=1
+pkgdesc='small, fast, portable implementation of TLS/SSL for embedded devices to the cloud (formerly CyaSSL)'
 arch=(i686 x86_64)
 license=(GPL)
-depends=('bash')
+depends=('sh')
 url='https://www.wolfssl.com/'
-source=(https://github.com/wolfSSL/wolfssl/archive/v$pkgver-stable.tar.gz)
-sha256sums=('5045f6dc4221a8cf4fa993d020dda0886be4028d0e2cefbf9713b58f6eb0e635')
+source=(${pkgname}-${pkgver}-stable.tar.gz::https://github.com/wolfSSL/wolfssl/archive/v$pkgver-stable.tar.gz
+        https://github.com/wolfSSL/wolfssl/releases/download/v${pkgver}-stable/${pkgname}-${pkgver}-stable.tar.gz.asc)
+sha256sums=('6896f8ad6c44aff3e583006eeee839600848a0e37118ebbb7514eca9409ae08b'
+            'SKIP')
+validpgpkeys=('EBC80E415CA29677')
+
 
 build() {
   cd $pkgname-$pkgver-stable
