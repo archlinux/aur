@@ -6,45 +6,48 @@
 
 pkgname=lib32-libmikmod
 pkgver=3.3.11.1
-pkgrel=3
-pkgdesc='A portable sound library'
-license=(
-  GPL
-  LGPL
-)
+pkgrel=4
+pkgdesc="Module player library supporting many formats, including MOD, S3M, IT and XM (32-bit)"
 url=http://mikmod.sourceforge.net
+license=(
+  GPL2
+  LGPL2.1
+)
 arch=(x86_64)
 depends=(
+  lib32-glibc
   lib32-libpulse
   libmikmod
 )
 makedepends=(
   lib32-alsa-lib
-  libtool-multilib
+  cmake
 )
-source=(https://downloads.sourceforge.net/mikmod/libmikmod-${pkgver}.tar.gz)
-sha256sums=(ad9d64dfc8f83684876419ea7cd4ff4a41d8bcd8c23ef37ecb3a200a16b46d19)
+provides=(
+  libmikmod.so
+)
+source=(https://downloads.sourceforge.net/mikmod/libmikmod-$pkgver.tar.gz)
+md5sums=('f69d7dd06d307e888f466fc27f4f680b')
+sha256sums=('ad9d64dfc8f83684876419ea7cd4ff4a41d8bcd8c23ef37ecb3a200a16b46d19')
 
 build() {
-  cd libmikmod-${pkgver}
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib32 \
-    --disable-static
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  # cmake ignores CPPFLAGS
+  CFLAGS+=" $CPPFLAGS"
+
+  cmake -Hlibmikmod-$pkgver -Bbuild \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_SUFFIX=32 \
+    -DENABLE_DL=1
+  cmake --build build
 }
 
 package() {
-  cd libmikmod-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
-  rm -r "${pkgdir}"/usr/{include,share,bin}
+  DESTDIR="$pkgdir" cmake --build build --target install
+  rm -r "$pkgdir"/usr/{bin,include}
 }
 
 # vim: ts=2 sw=2 et:
