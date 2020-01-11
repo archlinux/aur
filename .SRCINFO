@@ -1,0 +1,18 @@
+pkgbase = lsof-git
+	pkgdesc = List open files running processes
+	pkgver = 4.93.2.r96.gdf01ed3
+	pkgrel = 1
+	url = https://github.com/lsof-org/lsof
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = libtirpc
+	provides = lsof
+	conflicts = lsof
+	source = git+https://github.com/lsof-org/lsof.git
+	sha256sums = SKIP
+
+pkgname = lsof-git
+
