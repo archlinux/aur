@@ -1,7 +1,7 @@
 pkgbase = pacback
 	pkgdesc = Advanced Rollback Version Control for Arch Linux - Alpha
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JustinTimperio/pacback
 	arch = any
 	license = MIT
