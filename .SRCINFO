@@ -1,6 +1,6 @@
 pkgbase = valgrind-git
 	pkgdesc = A tool to help find memory-management problems in programs
-	pkgver = VALGRIND_3_14_0.r124.g7e9113cb7
+	pkgver = 3.15.0+155+g3e48ab080
 	pkgrel = 1
 	url = http://valgrind.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = valgrind-git
 	depends = glibc
 	depends = perl
 	optdepends = openmpi: MPI support
-	provides = valgrind=VALGRIND_3_14_0.r124.g7e9113cb7
+	provides = valgrind=3.15.0+155+g3e48ab080
 	conflicts = valgrind
 	options = !emptydirs
 	source = valgrind::git://sourceware.org/git/valgrind.git
