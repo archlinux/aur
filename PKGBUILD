@@ -2,8 +2,8 @@
 
 _pkgname=julius
 pkgname=$_pkgname-game
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Open source re-implementation of Caesar III (Original copy required)"
 arch=('i686' 'x86_64')
 url="https://github.com/bvschaik/julius"
@@ -11,19 +11,10 @@ license=('AGPL')
 makedepends=('cmake')
 depends=('sdl2' 'sdl2_mixer')
 install="$pkgname.install"
-source=($pkgname.desktop $pkgname.install fix_build_with_sdl2_2.0.10.patch add_filename_macro.patch $url/archive/v$pkgver.zip)
+source=($pkgname.desktop $pkgname.install $url/archive/v$pkgver.zip)
 sha256sums=('d44482503d890ab62e64f607c67b5c9686de68e17411920d3c02d54d468ac2a2'
             '903b97f1a07bf4fa8495166c00e45fd1c2ec5fba4d25169cf5f810e51781ac40'
-            '5b3efd9802b9b630fd9fbaf84da2f6708ef22e841600b0078e04bacc37de32e0'
-            '86d1468c89d8c6624224207fb3b864d54ce82889302766934859d2eb6c8c99b8'
-            'dfb66d15713592c02f3564e8359f55117b2b4365181f62d877cd26c50f092ed3')
-
-prepare() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    patch -p1 < ../fix_build_with_sdl2_2.0.10.patch
-    patch -p0 < ../add_filename_macro.patch
-    sed -i 's#__FILE__#__FILENAME__#g' ext/libsmacker/* # replace full path in symbol table with base name
-}
+            'b0ad74c0824d0caae6e3b3af6e978ce4a7e236b23d71a291bd1a31d49a2a7369')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"

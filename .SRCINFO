@@ -1,7 +1,7 @@
 pkgbase = julius-game
 	pkgdesc = Open source re-implementation of Caesar III (Original copy required)
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/bvschaik/julius
 	install = julius-game.install
 	arch = i686
@@ -12,14 +12,10 @@ pkgbase = julius-game
 	depends = sdl2_mixer
 	source = julius-game.desktop
 	source = julius-game.install
-	source = fix_build_with_sdl2_2.0.10.patch
-	source = add_filename_macro.patch
-	source = https://github.com/bvschaik/julius/archive/v1.1.0.zip
+	source = https://github.com/bvschaik/julius/archive/v1.2.0.zip
 	sha256sums = d44482503d890ab62e64f607c67b5c9686de68e17411920d3c02d54d468ac2a2
 	sha256sums = 903b97f1a07bf4fa8495166c00e45fd1c2ec5fba4d25169cf5f810e51781ac40
-	sha256sums = 5b3efd9802b9b630fd9fbaf84da2f6708ef22e841600b0078e04bacc37de32e0
-	sha256sums = 86d1468c89d8c6624224207fb3b864d54ce82889302766934859d2eb6c8c99b8
-	sha256sums = dfb66d15713592c02f3564e8359f55117b2b4365181f62d877cd26c50f092ed3
+	sha256sums = b0ad74c0824d0caae6e3b3af6e978ce4a7e236b23d71a291bd1a31d49a2a7369
 
 pkgname = julius-game
 
