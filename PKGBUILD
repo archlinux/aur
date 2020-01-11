@@ -1,4 +1,4 @@
-pkgbase=('python-titlecase')
+pkgbase=python-titlecase
 pkgname=('python-titlecase' 'python2-titlecase')
 _module='titlecase'
 pkgver='0.12.0'
