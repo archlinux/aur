@@ -1,0 +1,15 @@
+pkgbase = llf
+	pkgdesc = A LaTeX reformatter / beautifier
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://repo.or.cz/llf.git
+	arch = any
+	license = custom
+	makedepends = git
+	depends = lua-lpeg
+	depends = lua-wcwidth
+	source = git+https://repo.or.cz/llf.git#tag=v0.6
+	sha256sums = SKIP
+
+pkgname = llf
+
