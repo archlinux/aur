@@ -1,4 +1,5 @@
-# Maintainer: Marco Kundt <mrckndt@gmail.com>
+# Maintainer: Hao Long <aur@esd.cc>
+# Contributor: Marco Kundt <mrckndt@gmail.com>
 
 pkgname=python-kppy
 _pkgname=kppy
