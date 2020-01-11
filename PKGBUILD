@@ -1,11 +1,14 @@
 # Maintainer: kumen
+# Contributor: nightuser <nightuser.android@gmail.com>
+
 pkgname="stm32cubeide"
-pkgver=1.1.0
-_pkgver_ext="$pkgver"_4551_20191014_1140
-_pkg_file_name=en.en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip
+pkgver=1.2.0
+_pkgver_ext="$pkgver"_5034_20200108_0926
+_pkg_file_name=en.st-stm32cubeide_${_pkgver_ext}_amd64.sh.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
+makedepends=('xdg-user-dirs')
 depends=('java-runtime' 'jlink-software-and-documentation' 'ncurses5-compat-libs' 'lib32-glibc' 'libusb')
 optdepends=('stlink')
 conflicts=()
@@ -27,23 +30,23 @@ fi
 
 source=("local://${_pkg_file_name}"
 	$pkgname.desktop)
-sha256sums=('d5a077e159fb2ffaf171bf1c4d31817835bb6c4bb6f6e4859a8b273a4a7918e7'
-	'838ed4f6d759386e640578936b252ef587de15b9d763b7e856b1cf3f4e7db24d')
+sha256sums=('cc4d5eba6d6de747f0b3c85164ab10e49478efa06e2a59183434efedb472f251'
+	'415d652cfe852206036af695168b5764e02d048f2026e81da536d8d3f0cc2980')
 
 prepare(){
 	cd "$srcdir"
 	mkdir build
-        sh st-stm32cubeide_${_pkgver_ext}_amd64.sh --noexec --target ./build  
+        sh st-stm32cubeide_${_pkgver_ext}_amd64.sh --quiet --noexec --target ./build  
         
 	cd build
 	mkdir stlink-server
-	sh st-stlink-server.*.install.sh --noexec --target ./stlink-server
+	sh st-stlink-server.*.install.sh --quiet --noexec --target ./stlink-server
         
 	mkdir stlink-udev
-	sh st-stlink-udev-rules-*-linux-noarch.sh --noexec --target ./stlink-udev
+	sh st-stlink-udev-rules-*-linux-noarch.sh --quiet --noexec --target ./stlink-udev
 
 	mkdir jlink-udev
-	sh segger-jlink-udev-rules-*-linux-noarch.sh --noexec --target ./jlink-udev
+	sh segger-jlink-udev-rules-*-linux-noarch.sh --quiet --noexec --target ./jlink-udev
 }
 
 package() {
@@ -77,9 +80,11 @@ package() {
 	#rm -rf "${srcdir}/build"
 	
 	msg2 'Prevent automatical *.desktop file replacement by not functional one'
-	mv ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.1.0.201910081157/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_1.1.0.201910081157/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template.old
+	rm ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_*/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template
 }
 
 #
 # makepkg --printsrcinfo > .SRCINFO
 #
+
+# vim: set ts=8 sw=8 tw=0 noet:

@@ -1,10 +1,11 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
 	license = Commercial
+	makedepends = xdg-user-dirs
 	depends = java-runtime
 	depends = jlink-software-and-documentation
 	depends = ncurses5-compat-libs
@@ -12,10 +13,10 @@ pkgbase = stm32cubeide
 	depends = libusb
 	optdepends = stlink
 	options = !strip
-	source = local://en.en.st-stm32cubeide_1.1.0_4551_20191014_1140_amd64.sh.zip
+	source = local://en.st-stm32cubeide_1.2.0_5034_20200108_0926_amd64.sh.zip
 	source = stm32cubeide.desktop
-	sha256sums = d5a077e159fb2ffaf171bf1c4d31817835bb6c4bb6f6e4859a8b273a4a7918e7
-	sha256sums = 838ed4f6d759386e640578936b252ef587de15b9d763b7e856b1cf3f4e7db24d
+	sha256sums = cc4d5eba6d6de747f0b3c85164ab10e49478efa06e2a59183434efedb472f251
+	sha256sums = 415d652cfe852206036af695168b5764e02d048f2026e81da536d8d3f0cc2980
 
 pkgname = stm32cubeide
 
