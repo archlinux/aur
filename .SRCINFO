@@ -1,8 +1,8 @@
 pkgbase = lib32-libxpm
 	pkgdesc = X11 pixmap library (32-bit)
-	pkgver = 3.5.12
+	pkgver = 3.5.13
 	pkgrel = 1
-	url = http://xorg.freedesktop.org/
+	url = https://xorg.freedesktop.org/
 	arch = x86_64
 	license = custom
 	makedepends = xorg-util-macros
@@ -12,8 +12,8 @@ pkgbase = lib32-libxpm
 	depends = lib32-libxext
 	depends = libxpm
 	options = !libtool
-	source = http://xorg.freedesktop.org//releases/individual/lib/libXpm-3.5.12.tar.bz2
-	sha1sums = 4e22fefe61714209539b08051b5287bcd9ecfd04
+	source = https://xorg.freedesktop.org//releases/individual/lib/libXpm-3.5.13.tar.bz2
+	sha512sums = 3b8f6e926272f39b1d95135c2274c00f5aaee1f9fb2ef79f71628df5edeb7ba20158819ef6a778101cc4092493a3b5b613c53634fdccadcc0fc85f0605e5e9a5
 
 pkgname = lib32-libxpm
 
