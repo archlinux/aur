@@ -18,11 +18,11 @@ pkgver() {
 }
 
 package_yoga-usage-mode-dkms-git() {
-	depends=(dkms)
-	provides=("yoga-usage-mode=$pkgver-$pkgrel")
-	conflicts=(yoga-usage-mode)
+    depends=(dkms)
+    provides=("yoga-usage-mode=$pkgver-$pkgrel")
+    conflicts=(yoga-usage-mode)
 
     cd "$srcdir/${pkgbase}"
-	install -Dt "$pkgdir/usr/src/$pkgbase-$pkgver" -m644 Makefile yoga-usage-mode.c "$srcdir/../dkms.conf"
-	echo yoga-usage-mode | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgbase.conf"
+    install -Dt "$pkgdir/usr/src/$pkgbase-$pkgver" -m644 Makefile yoga-usage-mode.c "$srcdir/../dkms.conf"
+    echo yoga-usage-mode | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgbase.conf"
 }
