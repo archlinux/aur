@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=7.9.81
+pkgver=8.1.145
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('x86_64')
@@ -43,6 +43,7 @@ prepare() {
   msg2 "Using: `which python`"
 
   export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
+  # export PATH=${srcdir}/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 
   if [ ! -d "v8" ]; then
@@ -108,7 +109,6 @@ check() {
   msg2 "Testing, this will also take a while..."
   tools/run-tests.py --no-presubmit \
                      --outdir=out.gn \
-                     --buildbot \
                      --arch="x64" \
                      --mode=Release || true
 }
@@ -125,6 +125,7 @@ package() {
   install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
   install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
+  install -Dm755 $OUTFLD/libchrome_zlib.so ${pkgdir}/usr/lib/libchrome_zlib.so
 
   install -Dm755 ${srcdir}/d8 ${pkgdir}/usr/bin/d8
 
