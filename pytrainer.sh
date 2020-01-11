@@ -9,4 +9,4 @@ wget -q -O ${HOME}/.pytrainer/tmp/cache/OpenLayers.js http://www.openlayers.org/
 
 
 cd /usr/share/pytrainer
-exec python2 pytrainer "$@"
+exec python pytrainer "$@"
