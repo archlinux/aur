@@ -1,5 +1,5 @@
 [Desktop Entry]
-Version=1.4.6-131
+Version=1.6.0-334
 Terminal=false
 Type=Application
 Categories=Qt;Utility;ProjectManagement;
@@ -7,5 +7,5 @@ Name=TopTracker
 GenericName=Time Tracking Application
 Comment=TopTracker is the first and only completely free tracking tool that helps remote teams track their time without being tied to a specific freelance marketplace
 Keywords=toptracker;time;track;work;freelance
-Exec=/usr/bin/toptracker
-Icon=/usr/share/toptracker/icon.png
+Exec=env XDG_CURRENT_DESKTOP=GNOME /usr/bin/toptracker
+Icon=/opt/toptracker/icon.png
