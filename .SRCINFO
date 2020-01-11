@@ -18,6 +18,9 @@ pkgbase = vvvvvv
 	md5sums = 2a67882173f36c685f532e3cce0607af
 	md5sums = f3f06f16bf7f3280279e2d3da425a5d2
 	md5sums = 6d1c555a18bcd5cba8c55a62cf0964ac
+	sha256sums = 8b02d2c55dbc3b94e12c5131cc896b81ae3001aa13c90bb25dffe2ed8b5d2e55
+	sha256sums = 8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4
+	sha256sums = 883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1
 
 pkgname = vvvvvv
 

@@ -14,22 +14,28 @@ license=('custom')
 depends=('sh' 'sdl2_mixer')
 _gamepkg="${pkgname}-${_pkgver}-bin"
 source=("hib://${_gamepkg}" "${pkgname}.desktop" "${pkgname}.sh")
-md5sums=(
-    '2a67882173f36c685f532e3cce0607af'
-    'f3f06f16bf7f3280279e2d3da425a5d2'
-    '6d1c555a18bcd5cba8c55a62cf0964ac')
+md5sums=('2a67882173f36c685f532e3cce0607af'
+         'f3f06f16bf7f3280279e2d3da425a5d2'
+         '6d1c555a18bcd5cba8c55a62cf0964ac')
+sha256sums=('8b02d2c55dbc3b94e12c5131cc896b81ae3001aa13c90bb25dffe2ed8b5d2e55'
+            '8c704e92e6abc8172d7d9fe726f1a0bba4b8630682745d6daf1f34ce12e0e3e4'
+            '883913125c4630d16fe0081d9a96bf65f2bc08ace7fa345613669d827a8ea7c1')
 noextract=("${_gamepkg}")
 # You can download the Humble Indie Bundle file manually, or you can configure
-# DLAGENTS in makepkg.conf to auto-download.
+# DLAGENTS in makepkg.conf or ~/.makepkg.conf to auto-download.
 #
-# For example, to use hib-dlagent to download files set something like this in
-# your makepkg.conf (change/add -k and add -u/-p to your needs):
-# DLAGENTS=('hib::/usr/bin/hib-dlagent -k 1a2b3c -o %o $(echo %u | cut -c 7-)')
+# For example, to auto-search through a directory containing Huble Bundle
+# downloads, set something like this in your makepkg.conf:
+# DLAGENTS=('hib::/usr/bin/bash -c /usr/bin/find\ /path/to/downloads\ -name\ $(echo\ %u\ |\ cut\ -c\ 7-)\ -exec\ ln\ -s\ \\{\\}\ %o\ \\\;\ -quit')
 #
-# To auto-search through a directory containing Humble Bundle downloads, you
-# could set:
-# DLAGENTS=('hib::/usr/bin/find /path/to/downloads -name $(echo %u | cut -c 7-) -exec ln -s \{\} %o \; -quit')
-DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Download manually to \"$(pwd)\" or setup hib:// DLAGENT in /etc/makepkg.conf."; echo "Read this PKGBUILD for more info."; exit 1')
+# The escaping is a bit obnoxious for this use, so you probably want to make a
+# shell script for the command:
+# DLAGENTS=('hib::/home/youruser/hib-search.sh %u %o')
+#
+# /home/youruser/hib-search.sh:
+# #!/bin/bash
+# find /path/to/downloads -name ${1#hib://} -exec ln -s \{\} $2 \; -quit
+DLAGENTS+=('hib::/usr/bin/bash -c echo\ Could\ not\ find\ %u.\ Download\ manually\ to\ \\"$(pwd)\\"\ or\ set\ up\ hib://\ DLAGENT\ in\ /etc/makepkg.conf.;\ echo\ Read\ this\ PKGBUILD\ for\ more\ info.;\ exit\ 1')
 
 prepare() {
   cd "${srcdir}"
