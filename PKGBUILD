@@ -6,8 +6,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-_pkgver=4.19.90
-_rtpatchver=35
+_pkgver=4.19.94
+_rtpatchver=38
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -15,7 +15,7 @@ arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
 makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'inetutils' 'kmod' 'libelf'
-'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto') 
+'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
 _srcname=linux-${_pkgver}
 source=(
@@ -34,11 +34,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('29d86c0a6daf169ec0b4b42a12f8d55dc894c52bd901f876f52a05906a5cf7fd'
+sha256sums=('c62a10a75a7c4213e41287040e7c7509b7d42117d6830feb7dfe505949fa7467'
             'SKIP'
-            '9a56bc05f61a665674b763ebd350d8d6777b5cd4ddf30b0e998e27a70ff1802f'
+            '156a1f80420d37ea6ae448721844fbc9de2c4db47e13d4179bee6625f366bf1a'
             'SKIP'
-            '39b751aa19e366167b3ff16215172235d05ca33f7f672d48701059998d9dd1dd'
+            '297c8178c4f92c716e970b820c17a0af5517f2a6495ffbe23c1d5317cfa73cbc'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
