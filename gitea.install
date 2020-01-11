@@ -1,30 +1,12 @@
 post_upgrade() {
-    if [ $(vercmp $2 1.6.1-1) -lt 0 ] ; then
+    if [ $(vercmp $2 1.12) -eq -1 ] ; then
         cat << EOF
-
-gitea now uses its own user/group instead of the git ones.
-Ownership of /var/lib/gitea tree has been changed accordingly.
-You need to update your /etc/gitea/app.ini file to change the
-RUN_USER variable at the top.
-
-Next step is fixing the SSH configuration. If you have:
-    AllowUsers git
-in /etc/ssh/sshd_config, you need to change that to gitea.
-Then restart sshd.service.
-You will need to tell all your users that they have to change
-git@ to gitea@ in their repos clones using git remote set-url.
-
-If you use a PostgreSQL DB upon Unix socket, you need to fix
-your [database] configuration and switch USER to gitea.
-Then, you need to change it also in /var/lib/data/pg_hba.conf.
-Finally, as postgres user, run psql and inside it type:
-    ALTER USER git RENAME TO gitea;
-    \q
-Then restart postgresql.service.
-
-In all cases, you then need to reload systemd units and
-restart gitea.service.
-
+It seems that in 1.12, gitea has changed the data load behavior.
+If you’re using the default paths (/var/lib/gitea),
+no changes are necessary.
+If you’re using custom paths, you might have to set then with
+-w for working directory and/or -C for gitea/custom directory.
+Refer to gitea --help if you’re experiencing any issues.
 EOF
     fi
 }
