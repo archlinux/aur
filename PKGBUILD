@@ -15,7 +15,7 @@ _merge_requests_to_use=('!575' '!983')
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.34.2+2+g572431089
+pkgver=3.34.3+1+g78a45e181
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -31,7 +31,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=5724310899e922784f56a85f36b5195fe73f1e0e  # gnome-3-34
+_commit=78a45e18133bd4c789ec5a24828ffcda372743d3  # gnome-3-34
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-EGL-Include-EGL-eglmesaext.h.patch
 	0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
