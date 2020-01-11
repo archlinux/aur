@@ -1,0 +1,13 @@
+pkgbase = lua-wcwidth
+	pkgdesc = Pure Lua implementation of the wcwidth() function
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/aperezdc/lua-wcwidth
+	arch = any
+	license = custom
+	depends = lua
+	source = lua-wcwidth-0.3.tar.gz::https://github.com/aperezdc/lua-wcwidth/archive/v0.3.tar.gz
+	sha256sums = 6af4384b73815b32d762158d0bb326d9b2f860d5c55088b6b6861f3a57e549ad
+
+pkgname = lua-wcwidth
+
