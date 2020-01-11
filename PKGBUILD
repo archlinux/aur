@@ -6,13 +6,13 @@
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-git
 epoch=1
-pkgver=4.15.0+22+g13712f6
+pkgver=4.15.0+72+g0b8d9d8
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('i686' 'x86_64')
 url="https://git.xfce.org/xfce/libxfce4ui/tree/README"
 license=('GPL2')
-depends=('libxfce4util>=4.12.0' 'gtk3' 'xfconf' 'libsm' 'libgtop'
+depends=('libxfce4util>=4.13.1' 'gtk3' 'xfconf' 'libsm' 'libgtop'
          'startup-notification' 'hicolor-icon-theme')
 makedepends=('intltool' 'gtk-doc' 'xfce4-dev-tools' 'gobject-introspection' 'git' 'vala' 'glade')
 optdepends=('glade: Glade designer plugin')

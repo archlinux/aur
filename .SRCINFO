@@ -1,6 +1,6 @@
 pkgbase = libxfce4ui-git
 	pkgdesc = Commonly used Xfce widgets among Xfce applications (git checkout)
-	pkgver = 4.15.0+22+g13712f6
+	pkgver = 4.15.0+72+g0b8d9d8
 	pkgrel = 1
 	epoch = 1
 	url = https://git.xfce.org/xfce/libxfce4ui/tree/README
@@ -14,7 +14,7 @@ pkgbase = libxfce4ui-git
 	makedepends = git
 	makedepends = vala
 	makedepends = glade
-	depends = libxfce4util>=4.12.0
+	depends = libxfce4util>=4.13.1
 	depends = gtk3
 	depends = xfconf
 	depends = libsm
