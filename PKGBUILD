@@ -1,30 +1,37 @@
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 # Contributor: Sarah Hay <sarah@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=faac
 pkgver=1.30
-pkgrel=1
-pkgdesc="An AAC audio encoder"
+pkgrel=2
+pkgdesc="Freeware Advanced Audio Coder"
 arch=('x86_64')
 url="https://www.audiocoding.com/"
-license=('GPL' 'custom')
-depends=('libmp4v2')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/knik0/faac/archive/${pkgver/./_}.tar.gz")
-sha256sums=('adc387ce588cca16d98c03b6ec1e58f0ffd9fc6eadb00e254157d6b16203b2d2')
+license=('GPL2' 'custom')
+depends=('glibc')
+provides=('libfaac.so')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/knik0/${pkgname}/archive/${pkgver/./_}.tar.gz")
+sha512sums=('8582cd580dba2a347d15dc4fab42020d7120d0552c54ab74cfaf59ba1b270abb94c67e39d42459a14cbc6e98f3fd00cbda589e1b4f0c7278e41bdef6ae7b6554')
+
+prepare() {
+  mv -v "${pkgname}-${pkgver/./_}" "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  autoreconf -vfi
+}
 
 build() {
-  cd ${pkgname}-${pkgver/./_}
-  ./bootstrap
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver/./_}
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver/./_}/COPYING \
-    "${pkgdir}"/usr/share/licenses/faac/LICENSE
+  install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vDm 644 {AUTHORS,ChangeLog,NEWS,README,TODO} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
