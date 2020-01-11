@@ -4,7 +4,7 @@ pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 _pkgname=LibreWolf
-pkgver=72.0
+pkgver=72.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64 aarch64)
@@ -21,11 +21,11 @@ options=(!emptydirs)
 install=librewolf-bin.install
 
 case "$CARCH" in
-        aarch64) _uploadh='65aad4ccb9f57a36832db4a0044fb955'
-                sha256sums+=('130f23b776c11df005ab49e6dbfa5c71e0e066331344e5712659c5cc551316bf')
+        aarch64) _uploadh='bacb893ba3cb0e38ab7fbc6908d99d4f'
+                sha256sums+=('222e341aa9f5a985e2cedf746598588f9939eb67f81276a680cbe39ce0cc4c0d')
                 ;;
-        x86_64) _uploadh='a6d08bd28a6649746189da8d39bcae9d'
-                sha256sums+=('baac42bbb850a4006417ae67ce9587d1539199ce57de8e81fda9034d0de5f67e')
+        x86_64) _uploadh='e3718cfd1e6205a58b64dc9b94fbd69c'
+                sha256sums+=('fc571167b23c0bef6b1d39ec70e977e766709338b9eb17442d5ad3c7f72cce2b')
                 ;;
 esac
 
