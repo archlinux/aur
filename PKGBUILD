@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libclsp-git
-pkgver=r37.d432645
+pkgver=r111.f79de0c
 pkgrel=1
 epoch=
 pkgdesc="A C++17 library for language servers"
@@ -35,6 +35,7 @@ build() {
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_UNITY_BUILD=ON \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
 		..
 	make
 }
