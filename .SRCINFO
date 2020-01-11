@@ -1,6 +1,6 @@
 pkgbase = pearl-git
 	pkgdesc = Package manager for dotfiles, plugins, programs and any form of code accessible via git. Allow to easily share and sync packages across systems and have them ready to work out of the box.
-	pkgver = r75.6458dc7
+	pkgver = r35.44fcca3
 	pkgrel = 1
 	url = https://github.com/pearl-core/pearl
 	install = pearl.install
@@ -8,6 +8,7 @@ pkgbase = pearl-git
 	license = GPL
 	makedepends = git
 	depends = git
+	depends = python
 	provides = pearl
 	conflicts = pearl
 	source = pearl::git+https://github.com/pearl-core/pearl.git#branch=master

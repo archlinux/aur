@@ -4,14 +4,14 @@
 # https://wiki.archlinux.org/index.php/Creating_packages
 
 pkgname=pearl-git
-pkgver=r75.6458dc7
+pkgver=r35.44fcca3
 pkgrel=1
 pkgdesc="Package manager for dotfiles, plugins, programs and any form of code accessible via git. Allow to easily share and sync packages across systems and have them ready to work out of the box."
 arch=('any')
 url="https://github.com/pearl-core/pearl"
 license=('GPL')
 groups=()
-depends=('git')
+depends=('git' 'python')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -43,14 +43,19 @@ pkgver() {
 
 }
 
+build() {
+    cd "$srcdir/${pkgname%-git}"
+    /usr/bin/python setup.py build
+}
+
 package() {
     cd "$srcdir/${pkgname%-git}"
 
-    mkdir -p "${pkgdir}/opt/"
-    cp -R "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/${pkgname%-git}"
+    #make dist
+    #/usr/bin/pip install --install-option="--prefix=${pkgdir}" dist/*.whl
+    #/usr/bin/pip install --target=${pkgdir} dist/*.whl
 
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s ../../opt/${pkgname%-git}/bin/${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
+    /usr/bin/python setup.py install --root=${pkgdir} --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

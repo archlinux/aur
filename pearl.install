@@ -1,5 +1,5 @@
 _post(){
-    pearl init
+    /usr/bin/pearl init
 }
 
 # arg 1:  the new package version
