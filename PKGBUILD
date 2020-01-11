@@ -1,3 +1,4 @@
+# Maintainer: Jaime Martínez Rincón <jaime@jamezrin.name>
 # Maintainer: Patrick Schratz <patrick.schratz@gmail.com>
 # Maintainer: Jared Allard <jaredallard@outlook.com>
 # code adapted from https://github.com/jaredallard/notion-app
@@ -5,33 +6,42 @@
 pkgname=notion-app
 pkgver=2.0.5
 pkgrel=2
+epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
 license=('MIT')
 depends=('electron6')
-makedepends=('dmg2img' 'p7zip' 'libicns' 'gendesk')
-source=("https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 'notion-app')
+makedepends=('dmg2img' 'p7zip' 'libicns')
+source=(
+        "https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 
+        'notion-app'
+        'notion-app.desktop')
 md5sums=('5b6aec842c07d09c11d54773bf65678e'
-         'ad3c23bc7d0186e2f622aa4b7310deac')
+         'ad3c23bc7d0186e2f622aa4b7310deac'
+         'edd003624766ec781e4963698beef458')
 
 build() {
   msg "Converting dmg image..."
-  mkdir -p tmp/build || true
-  dmg2img "Notion-"${pkgver}".dmg" "Notion-"${pkgver}".img" >/dev/null
-  7z x -y "Notion-"${pkgver}".img" >/dev/null
-  cp -r Notion**/Notion.app/Contents/Resources/* tmp/build
-  cp notion-app tmp/build
-  icns2png -x tmp/build/Notion.icns
-  gendesk -f --pkgname="Notion" --pkgdesc="$pkgdesc" --categories=Office --exec=notion-app --icon=/opt/notion-app/Notion_512x512x32.png
+  mkdir -p "${srcdir}/tmp/build"
+  dmg2img "${srcdir}/Notion-"${pkgver}".dmg" "${srcdir}/Notion-"${pkgver}".img" >/dev/null
+  7z x -y "${srcdir}/Notion-"${pkgver}".img" >/dev/null
+  cp -r "${srcdir}"/Notion**/Notion.app/Contents/Resources/* "${srcdir}/tmp/build"
+  cp notion-app "${srcdir}/tmp/build"
+  icns2png -x "${srcdir}/tmp/build/Notion.icns"
 }
 
 package() {
-  echo "$pkgdir"
-  mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt/notion-app"
-  cp -r tmp/build/* "$pkgdir/opt/notion-app/"
-  cp Notion_512x512x32.png "$pkgdir/opt/notion-app/"
-  install -D -m755 notion-app "$pkgdir/usr/bin/notion-app"
-  install -Dm644 "$srcdir"/Notion.desktop -t "$pkgdir"/usr/share/applications
-}
+  _icon="Notion_512x512x32.png"
 
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/usr/share/applications"
+  install -d "${pkgdir}/usr/share/icons"
+
+  cp -r "${srcdir}/tmp/build/"* "${pkgdir}/opt/${pkgname}"
+  cp "${srcdir}/${_icon}" "${pkgdir}/opt/${pkgname}/icon.png"
+  install -Dm644 "${srcdir}/${_icon}" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+}

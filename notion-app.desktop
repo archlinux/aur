@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/opt/notion-app/notion-app
+Icon=notion-app
+Terminal=false
+Type=Application
+Name=Notion
+Comment=The all-in-one workspace for your notes and tasks
+Categories=Office;Utility;
+StartupNotify=true
