@@ -6,7 +6,7 @@
 pkgname=python2-foolscap
 pkgver=0.6.4
 pkgrel=1
-pkgdesc="RPC protocol for Python and Twisted over the I2P network"
+pkgdesc="RPC protocol for Python and Twisted"
 url="http://foolscap.lothar.com"
 license=('MIT')
 arch=('any')

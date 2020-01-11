@@ -1,5 +1,5 @@
 pkgbase = python2-foolscap
-	pkgdesc = RPC protocol for Python and Twisted over the I2P network
+	pkgdesc = RPC protocol for Python and Twisted
 	pkgver = 0.6.4
 	pkgrel = 1
 	url = http://foolscap.lothar.com
