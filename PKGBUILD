@@ -5,15 +5,17 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'magma')
-source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
+        fix_include_system.patch)
+sha256sums=('SKIP'
+            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -35,6 +37,8 @@ prepare() {
   # Fix build with Python 3.8
   # https://github.com/pytorch/pytorch/issues/28060
   find -name '*.cpp' -exec sed -i '/tp_print/s/nullptr/0/' {} +
+
+  patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   cd ..
 
