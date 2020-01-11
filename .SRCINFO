@@ -1,6 +1,6 @@
 pkgbase = ydotool-git
-	pkgdesc = Generic command-line automation tool (no X!)
-	pkgver = v0.1.8.r6.g9ea0891
+	pkgdesc = Generic command-line automation tool (no X!), works on Wayland
+	pkgver = v0.1.8.r13.gfb6ee1f
 	pkgrel = 1
 	url = https://github.com/ReimuNotMoe/ydotool
 	arch = i686

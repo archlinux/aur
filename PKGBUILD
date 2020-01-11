@@ -2,9 +2,9 @@
 
 _pkgname=ydotool
 pkgname=$_pkgname-git
-pkgver=v0.1.8.r6.g9ea0891
+pkgver=v0.1.8.r13.gfb6ee1f
 pkgrel=1
-pkgdesc="Generic command-line automation tool (no X!)"
+pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64')
 depends=('libevdevplus' 'libuinputplus' 'boost-libs')
 makedepends=('cmake' 'git' 'make' 'pkg-config' 'boost')
