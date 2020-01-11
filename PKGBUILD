@@ -11,7 +11,7 @@ pkgdesc="Python library that interfaces with the MediaWiki API"
 arch=(any)
 url=https://www.mediawiki.org/wiki/Manual:Pywikibot
 license=(MIT)
-makedepends=(python python-requests python-setuptools python2 python2-ipaddr python2-pathlib2 python2-requests python2-setuptools git)
+makedepends=(python python-requests python-setuptools python2 python2-enum34 python2-ipaddr python2-pathlib2 python2-requests python2-setuptools git)
 source=(pywikibot-$pkgver::git+https://gerrit.wikimedia.org/r/pywikibot/core.git)
 sha256sums=(SKIP)
 
@@ -35,8 +35,7 @@ build() {
 
 package_python-pywikibot-git() {
   depends=(python python-requests)
-  makedepends=(python-setuptools)
-  optdepends=("python-mwparserfromhell: improved parser")
+  optdepends=("python-mwparserfromhell-git: improved parser")
   provides=(python-pywikibot)
   conflicts=(python-pywikibot)
 
@@ -46,8 +45,7 @@ package_python-pywikibot-git() {
 }
 
 package_python2-pywikibot-git() {
-  depends=(python2 python2-requests python2-ipaddr python2-pathlib2)
-  makedepends=(python2-setuptools)
+  depends=(python2 python2-requests python2-ipaddr python2-pathlib2 python2-enum34)
   optdepends=("python2-mwparserfromhell: improved parser")
   provides=(python2-pywikibot)
   conflicts=(python2-pywikibot)
