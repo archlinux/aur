@@ -1,7 +1,7 @@
 pkgbase = ovras
     pkgdesc = Advanced settings and custom behavior for SteamVR using OpenVR.
     pkgver = 4.0.1
-    pkgrel = 2
+    pkgrel = 3
     epoch = 0
     url = https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings
     arch = x86_64

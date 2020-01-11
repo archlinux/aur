@@ -1,7 +1,7 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR."
 arch=("x86_64")
@@ -38,6 +38,10 @@ build() {
     else
         echo "DBUS features enabled."
     fi
+
+    # Fix segfault when compiling with Qt 5.14.0
+    sed -i 's/reply->request().~QNetworkRequest();//' src/overlaycontroller.cpp
+    sed -i 's/reply->~QNetworkReply();/reply->deleteLater();/' src/overlaycontroller.cpp
 
     qmake PREFIX="$pkgdir/opt/" $_additionalOptions
     make
