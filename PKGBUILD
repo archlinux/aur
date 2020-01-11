@@ -2,7 +2,7 @@
 
 pkgbase=kubernetes
 pkgname=(kubelet kubeadm)
-pkgver=1.15.3
+pkgver=1.17.0
 pkgrel=1
 arch=('x86_64')
 url="http://kubernetes.io/"
@@ -11,7 +11,7 @@ makedepends=('go-pie' 'rsync')
 source=("kubernetes-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.tar.gz"
 	"kubelet.default")
 license=("Apache")
-sha512sums=('2f2a304c11e2aaf68e339c970ebd919fa1ce5913e3a6f47ac51be080de9300a7cd91267e637b4fa6cbd945d0de6d4263badb06a6bb3160dc03cd422b0a818963'
+sha512sums=('5424576d7f7936df15243fee0036e7936d2d6224e98ac805ce96cdf7b83a7c5b66dfffc8823d7bc0c17c700fa3c01841208e8cf89be91d237d12e18f3d2f307c'
             'bd8bfcb4de9866e1e61beb37d8caae5f553fb406744c62bee226033dde746c11b47a536b1557664fe7cacb0c702234e08561e7460426e25667fe7e1e9b913adc')
 
 build() {
