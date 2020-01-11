@@ -1,7 +1,7 @@
 # Maintainer: Michael Cordover <fido2-hmac-secret@mjec.net>
 
 pkgname=fido2-hmac-secret
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A simple way to generate password-proteceted secrets from a FIDO2 authenticator with the hmac-secret extension"
 arch=('x86_64')
@@ -19,8 +19,8 @@ validpgpkeys=(
   '6927F7D45F567621E14121DDFD1D670D31F82A81' # Michael Cordover; available from https://keybase.io/mjec/pgp_keys.asc?fingerprint=6927f7d45f567621e14121ddfd1d670d31f82a81
 )
 sha256sums=(
-  '7c1cb2a3b8034bc9713c1977243dc7bab943d738c59d8f03cf92bf81f851d791'
-  'c134b3314b2dc11deee945f49b3601abd49d9c88fbc80d7770aa8fc761be77b3'
+  '2c933b489527de920457704e2bfab2fb0349cfd4fbff1bccad8af513f95b213f'
+  'c3f72a1358415ec4919f55e16e15842247410fb33c0208109a760d217e1857d3'
 )
 install="$pkgname.install"
 
