@@ -1,7 +1,7 @@
 pkgbase = hardening-check
 	pkgdesc = Check binaries for security hardening features
 	pkgver = 2.8+nmu3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.debian.org/Hardening
 	arch = any
 	license = GPL2
