@@ -1,8 +1,8 @@
 # Maintainer: Simon Allen <simon@simonallen.org>
 
 pkgname=ytmdesktop-git
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('i686' 'x86_64')
 url="https://ytmdesktop.app"
