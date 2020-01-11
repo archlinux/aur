@@ -1,6 +1,6 @@
 pkgbase = mpy-utils
 	pkgdesc = Utility programs for Micropython
-	pkgver = 0.1.5
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/nickzoic/mpy-utils
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = mpy-utils
 	depends = python
 	depends = python-pyserial
 	depends = python-fusepy
-	source = mpy-utils-0.1.5.tar.gz::https://github.com/nickzoic/mpy-utils/archive/v0.1.5.tar.gz
-	sha256sums = 44059a9db90659bc6d96f3f9f4621951fe6452529f037dc08b480c278d97faa5
+	source = https://files.pythonhosted.org/packages/source/m/mpy-utils/mpy-utils-0.1.11.tar.gz
+	sha256sums = 1942fe0fd76037305783cb9e5ad50bf73ba8aa63f2ccbef15b0c636acf5c6799
 
 pkgname = mpy-utils
 
