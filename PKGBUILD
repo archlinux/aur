@@ -5,7 +5,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=opensimulator
-pkgver=0.9.1.0
+pkgver=0.9.1.1
 pkgrel=1
 pkgdesc="A 3D application server used to create a virtual environment or world"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ source=("http://opensimulator.org/dist/opensim-${pkgver}-source.tar.gz"
 		"opensimulator.service"
 		"opensimulator-robust.service")
 backup=(opt/$pkgname/bin/OpenSim.ini)
-md5sums=('cb9cf86ec6151bb40b5024e8941a62e8'
+md5sums=('7d9a4eed80206495760feda0ae3879c8'
          '58270c537e91b85c1121aacc2ccb194e'
          'cb3b9d774a9973bb438c9052dbe77112'
          'c2686291b848bf584c9a05fbc6bac303'
