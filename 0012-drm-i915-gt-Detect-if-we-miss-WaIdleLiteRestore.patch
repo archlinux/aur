@@ -1,7 +1,7 @@
-From e33c3b5720592db7cbaa544b8c05414a17d35afd Mon Sep 17 00:00:00 2001
+From 390d0a67cecd44bbc52231f0e9ea93ccdb742568 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Mon, 30 Dec 2019 11:15:30 +0000
-Subject: [PATCH 12/14] drm/i915/gt: Detect if we miss WaIdleLiteRestore
+Subject: [PATCH 12/16] drm/i915/gt: Detect if we miss WaIdleLiteRestore
 
 In order to avoid confusing the HW, we must never submit an empty ring
 during lite-restore, that is we should always advance the RING_TAIL
@@ -41,7 +41,7 @@ Link: https://patchwork.freedesktop.org/patch/msgid/20191209023215.3519970-1-chr
  1 file changed, 20 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/gt/intel_lrc.c b/drivers/gpu/drm/i915/gt/intel_lrc.c
-index 06a506c29463..6600b2e08fe3 100644
+index d564bfcab6a3..49ce15553e7b 100644
 --- a/drivers/gpu/drm/i915/gt/intel_lrc.c
 +++ b/drivers/gpu/drm/i915/gt/intel_lrc.c
 @@ -471,12 +471,6 @@ lrc_descriptor(struct intel_context *ce, struct intel_engine_cs *engine)
@@ -65,7 +65,7 @@ index 06a506c29463..6600b2e08fe3 100644
  
  		/*
  		 * Push the request back into the queue for later resubmission.
-@@ -649,13 +642,29 @@ execlists_schedule_out(struct i915_request *rq)
+@@ -650,13 +643,29 @@ execlists_schedule_out(struct i915_request *rq)
  	i915_request_put(rq);
  }
  
@@ -99,7 +99,7 @@ index 06a506c29463..6600b2e08fe3 100644
  
  	/*
  	 * Make sure the context image is complete before we submit it to HW.
-@@ -674,7 +683,6 @@ static u64 execlists_update_context(const struct i915_request *rq)
+@@ -675,7 +684,6 @@ static u64 execlists_update_context(const struct i915_request *rq)
  	 */
  	mb();
  
@@ -107,7 +107,7 @@ index 06a506c29463..6600b2e08fe3 100644
  	ce->lrc_desc &= ~CTX_DESC_FORCE_RESTORE;
  
  	return desc;
-@@ -1149,16 +1157,6 @@ static void execlists_dequeue(struct intel_engine_cs *engine)
+@@ -1150,16 +1158,6 @@ static void execlists_dequeue(struct intel_engine_cs *engine)
  			if (!list_is_last(&last->sched.link,
  					  &engine->active.requests))
  				return;
