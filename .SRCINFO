@@ -1,0 +1,25 @@
+pkgbase = perl-net-freedb
+	pkgdesc = Net::FreeDB is an oo-based module to interface with FreeDB servers
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://metacpan.org/release/Net-FreeDB
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-http-message
+	depends = perl-mailtools
+	depends = perl-libwww
+	depends = perl-moo
+	depends = perl-cddb
+	depends = perl-cddb-file
+	depends = perl-io-socket-inet6
+	depends = perl-test-most
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/D/DS/DSHULTZ/Net-FreeDB-0.10.tar.gz
+	md5sums = e10ac95e23b146a90bd9f0a84e31d18f
+	sha512sums = b1b249dfb81128645e6e3481f93d914fc11ecf931b91f6a21a065fa2fde8674f9c8b5466b3112be4f4f28556c0ec899cf8723e60adaaf26b5165e61d61445368
+
+pkgname = perl-net-freedb
+
