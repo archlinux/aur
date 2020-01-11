@@ -1,4 +1,4 @@
-pkgbase = golden-cheetah-dev
+pkgbase = golden-cheetah
 	pkgdesc = Cycling Power Analysis Software. Development version.
 	pkgver = 3.5
 	pkgrel = 200111
@@ -44,5 +44,5 @@ pkgbase = golden-cheetah-dev
 	md5sums = 6e91c5918806969eb8b5b26624d7ea0c
 	md5sums = e1fb382b4a7316da1ffd435e45e50c4a
 
-pkgname = golden-cheetah-dev
+pkgname = golden-cheetah
 
