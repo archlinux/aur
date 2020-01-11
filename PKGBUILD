@@ -100,6 +100,27 @@ prepare() {
   # Comment:
   git cherry-pick -n 184ce007^..c328f4f3
 
+  # Title: js/ui: Keep refcounts to WallClock objects above 1. [performance]
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/923
+  # Type: 1
+  # Status: 2
+  # Comment:
+  git cherry-pick -n 729f449b
+
+  # Title: js/ui: Subscribe touchpad gesture handlers to only touchpad events [performance]
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/925
+  # Type: 1
+  # Status: 2
+  # Comment:
+  git cherry-pick -n 30a25112
+
+  # Title: iconGrid.js: Animate icon spring using translation [performance]
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/926
+  # Type: 1
+  # Status: 3
+  # Comment:
+  git cherry-pick -n 94ae693b
+
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
