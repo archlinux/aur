@@ -7,7 +7,7 @@ pkgbase = fsharp-git
 	license = MIT
 	makedepends = git
 	depends = mono>=6.0
-	depends = msbuild
+	depends = msbuild>=15
 	provides = fsharp
 	conflicts = fsharp
 	source = fsharp-git::git+https://github.com/fsharp/fsharp

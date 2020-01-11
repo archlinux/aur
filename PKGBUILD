@@ -7,7 +7,7 @@ pkgdesc='The F# Compiler, Core Library & Tools (F# Software Foundation Repositor
 arch=('any')
 url='https://fsharp.org/'
 license=('MIT')
-depends=('mono>=6.0' 'msbuild')
+depends=('mono>=6.0' 'msbuild>=15')
 makedepends=('git')
 provides=('fsharp')
 conflicts=('fsharp')
