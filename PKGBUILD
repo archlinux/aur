@@ -9,15 +9,15 @@ license=('custom: MIT')
 depends=('glibc')
 makedepends=('ldpl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dvkt/$pkgname/archive/v$pkgver.tar.gz"
-        "ldpl-socket-99a9f27.tar.gz::https://github.com/dvkt/ldpl-socket/archive/v0.1.0.tar.gz"
+        "ldpl-socket-0.1.0.tar.gz::https://github.com/dvkt/ldpl-socket/archive/v0.1.0.tar.gz"
 	"use-compilation-flags.patch")
 md5sums=('ce6cda1dd77549f368b51b69cac76d9d'
-         '99f7e1bce036bb6efd7730fed60e04e5'
+         'c184c705d73aab06d046eb66675b6d63'
          '2ff698279324e30c59a7e82b66a48055')
 
 prepare() {
 	if [ ! -d "$pkgname-$pkgver/ldpl_socket" ]; then
-		mv ldpl-socket-99a9f27b7363392bd70d0a22208cd3e2bf74905b/ldpl_socket \
+		mv ldpl-socket-0.1.0/ldpl_socket \
 		   "$pkgname-$pkgver"
 	fi
 	cd "$pkgname-$pkgver"
