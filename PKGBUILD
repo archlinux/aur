@@ -1,19 +1,20 @@
 # Maintainer: Acidhub <contact@acidhub.click>
 
 pkgname=steam-tools
-pkgver=0.8.4
+_pkgname=steam-tools-ng
+pkgver=0.9.3
 pkgrel=1
-pkgdesc="Some useful tools for use with Steam client and websites."
+pkgdesc="Some useful tools to use with steam client or compatible programs and websites."
 arch=('any')
-url="https://github.com/ShyPixie/steam-tools"
-depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-crypto')
+url="https://github.com/ShyPixie/steam-tools-ng"
+depends=('python' 'python-aiodns' 'python-cchardet' 'python-ujson' 'python-aiohttp' 'python-beautifulsoup4' 'python-requests' 'python-crypto' 'python-certifi')
 makedepends=('python-setuptools')
 license=('GPL')
-source=("https://github.com/ShyPixie/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('1ebe8a21a2bae315c5c574bdec07b9a657fd298218e2071afb8ee949024702e2')
+source=("https://github.com/ShyPixie/$_pkgname/archive/v${pkgver}.tar.gz")
+sha256sums=('e7e2a168ff4d1edf32e1a4001249aa11311c9d8d860ae4c2817338a10e4265ed')
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd ${_pkgname}-${pkgver}
     python setup.py install --root=$pkgdir --prefix=/usr
 }
 
