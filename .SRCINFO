@@ -1,14 +1,14 @@
 pkgbase = etcher-cli-git
 	pkgdesc = Burn images to SD cards & USB drives, safe & easy
-	pkgver = v1.4.1.0.g1c43ee1b
+	pkgver = 1.5.70.r0.g57145436
 	pkgrel = 1
 	url = http://www.etcher.io/
 	arch = x86_64
-	license = apache
+	license = Apache
 	makedepends = npm
 	provides = etcher-cli
 	conflicts = etcher-cli
-	source = etcher-cli-git::git+https://github.com/resin-io/etcher.git
+	source = etcher-cli-git::git+https://github.com/balena-io/etcher.git
 	sha256sums = SKIP
 
 pkgname = etcher-cli-git
