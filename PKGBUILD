@@ -2,7 +2,7 @@
 pkgname=gitstatus-git
 pkgver=r509.e26af91
 pkgrel=1
-pkgdesc="10x faster implementation of `git status` command"
+pkgdesc='10x faster implementation of `git status` command'
 arch=('x86_64')
 url="https://github.com/romkatv/gitstatus"
 license=('GPL3')

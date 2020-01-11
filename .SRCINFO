@@ -1,5 +1,5 @@
 pkgbase = gitstatus-git
-	pkgdesc = 10x faster implementation of 位于分支 master 尚无提交 未跟踪的文件: （使用 "git add <文件>..." 以包含要提交的内容） .SRCINFO PKGBUILD gitstatus-git-r509.e26af91-1-x86_64.pkg.tar.zst gitstatus/ libgit2/ 提交为空，但是存在尚未跟踪的文件（使用 "git add" 建立跟踪） command
+	pkgdesc = 10x faster implementation of `git status` command
 	pkgver = r509.e26af91
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
