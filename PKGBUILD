@@ -5,7 +5,7 @@
 # Contributor: Michai Coman <mihai@m1x.ro>
 
 pkgname=unetbootin
-pkgver=661
+pkgver=675
 pkgrel=1
 arch=('x86_64')
 license=('GPL')
@@ -18,7 +18,7 @@ optdepends=('polkit: run unetbootin directly from menu'
 source=("https://github.com/unetbootin/unetbootin/archive/${pkgver}.tar.gz"
         'org.archlinux.pkexec.unetbootin.policy'
         'unetbootin.sh')
-sha256sums=('d4402a6c1003de0bf5eff60e9d6194f418efdc94c7e30a0da7b209fe4d71a0e4'
+sha256sums=('27f5bb34939e19d2133f825e59ab5e97f5ea3e3daa804c9d9d14c612448f6e65'
             'fa9bb53d90cb10a0ab8dd317ed6a3506b228b0e26ed2ed8b108b5990f641641a'
             '6399c6a44b270a4ec67a36e3914c7c2f47a9008efb0133a33f92d9ad4284cc57')
 
