@@ -1,0 +1,81 @@
+
+Changes from shallot to eschalot-1.2.0:
+
+* Support both BSD and GNU makes;
+* Combined (for now) the source files into one to ease code shuffling;
+* Adjusted includes a bit;
+* Dropped the automatic CPUs detection and some options;
+* Simplified the code somewhat;
+* Limited public exponent 'e' to 4 bytes long (performance gain);
+* Removed some defines, added some new ones;
+* Rewrote base32 encoding function to improve performance;
+* Rewrote error handling and diagnostic messages handling;
+* Rewrote error handling and diagnostic messages handling again because
+  Linux has poor support for BSD's err(3) family of functions;
+* Rearranged the code to be more in line with style(9);
+
+* Changed a bunch of stuff, experimented for a few weeks, put it on hold
+  for some time, lost track of all the changes...
+
+* Imlemented three search modes: single prefix, regular expression,
+  and wordlist search;
+* Changed the wordlist mode to be more universal - massive performance
+  gains compared to the first few versions. Settled on some kind of
+  hybrid hashed tree for the words storage;
+* Wrote a word generator (worgen) to simplify making custom wordlists;
+* Reworked args and options handling - using getopt now;
+* Added ifdefs and local versions of strnlen and a htobe32 macro to please
+  Linuxes and FreeBSD;
+* Added a check for memory corruption (or some other bug - not sure yet);
+* Added a routine to generate the final onion name from the final
+  RSA key using the same procedure as the official tor project;
+* Checked the source with several versions of gcc, with pcc, and
+  with clang static analizer on OpenBSD, DragonFlyBSD, FreeBSD, and Linux
+  on 32 and 64bit platforms and on little and big endian platforms,
+  fixed the errors and warnings found.
+
+
+
+Changed from shallot-0.0.2 to shallot-0.0.3:
+
+* Fixed some memory leaks.
+* More efficient use of memory.
+* Added '-o' option to optimize prime size for SHA-1 hashing.
+
+
+
+Changed from shallot-0.0.1 to shallot-0.0.2:
+
+* Corrected some things in the README.
+* Removed redundant PEM generation.
+* Improved SHA-1 hashing performance.
+* The previous two performance enhancements give us a ~4.6x speed boost.
+  That's right, ~4.6 TIMES as fast.
+* Added a "sanity" limit to e, so it doesn't get insanely high during
+  long hashing sessions. It's adjustable, too.
+* Allowed the number of threads to be specified during startup.
+* Added a "monitor" mode (try it out! -m)
+* Added an option to automatically daemonize
+* Added file output option
+* Added a verbose flag (for debugging)
+* Now configures for BSD-style build on OS X.
+* Allows for building on unidentified systems, in a slightly crippled form
+  (defaults to 1 thread unless specified).
+* OpenBSD is now officially supported and tested (it lacks support
+  for sysctlbyname(3), wtf?).
+* Removed a (small) buffer overflow.
+
+
+
+Changes from onionhash-0.0.2 to shallot-0.0.1:
+
+* Fixed a 1KB memory leak.
+* Removed irrelevant code.
+* Brute force loop no longer mallocs/frees, giving a ~1% increase in
+  hashing speed.
+* Now completely multithreaded, allowing systems with several CPUs to
+  take full advantage of all of them to hash!
+* Now follows PKCS#1 v2.1 for satisfactory public keys
+  (previously on a version prior to v2.0, i.e. v1.5).
+* BSD and Linux ports (required due to autodetecting core count).
+

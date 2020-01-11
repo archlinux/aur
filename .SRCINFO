@@ -1,0 +1,17 @@
+pkgbase = eschalot-git
+	pkgdesc = A Tor hidden service name generator
+	pkgver = r31.a45bad5
+	pkgrel = 1
+	url = https://github.com/ReclaimYourPrivacy/eschalot
+	changelog = CHANGELOG
+	arch = any
+	license = custom
+	makedepends = git
+	depends = openssl
+	provides = eschalot
+	conflicts = eschalot
+	source = eschalot-git::git+https://github.com/ReclaimYourPrivacy/eschalot
+	sha256sums = SKIP
+
+pkgname = eschalot-git
+
