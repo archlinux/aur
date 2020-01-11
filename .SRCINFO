@@ -1,6 +1,6 @@
 pkgbase = pacback-git
 	pkgdesc = Advanced Rollback Version Control for Arch Linux - Alpha
-	pkgver = r77.7293267
+	pkgver = r86.241923a
 	pkgrel = 1
 	url = https://github.com/JustinTimperio/pacback
 	arch = any
