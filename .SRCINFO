@@ -7,11 +7,6 @@ pkgbase = python-scikit-surprise
 	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = cython
-	makedepends = python-numpy
-	source = python-scikit-surprise-1.1.0.tar.gz::https://github.com/NicolasHug/Surprise/archive/v1.1.0.tar.gz
-	sha512sums = d8f28786029079ac9db52c61c4b5bf30150da96718e292cad90bb58f7d25173391e8686808d3b4e746987059057d21943570ed4be2ad8a1c3e8046e764b93600
-
-pkgname = python-scikit-surprise
 	depends = python-joblib
 	depends = python-numpy
 	depends = python-scipy
@@ -22,3 +17,7 @@ pkgname = python-scikit-surprise
 	optdepends = python-sphinx: documentation generator
 	optdepends = python-sphinx_rtd_theme: Read The Docs theme for documentation generator
 	optdepends = python-sphinxcontrib-spelling: spelling extension for documentation generator
+	source = python-scikit-surprise-1.1.0.tar.gz::https://github.com/NicolasHug/Surprise/archive/v1.1.0.tar.gz
+	sha512sums = d8f28786029079ac9db52c61c4b5bf30150da96718e292cad90bb58f7d25173391e8686808d3b4e746987059057d21943570ed4be2ad8a1c3e8046e764b93600
+
+pkgname = python-scikit-surprise
