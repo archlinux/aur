@@ -4,24 +4,57 @@ pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
 pkgver=0.94.2
 srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
 url="http://www.xnview.com/en/xnviewmp/"
 
 arch=('x86_64')
 license=('custom')
-depends=('qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras' 'qtav' 'desktop-file-utils')
+depends=(
+  # Main Qt dependencies
+  'qt5-multimedia' 'qt5-svg' 'qt5-webkit' 'qt5-x11extras'
+  # Needed since 0.91: https://newsgroup.xnview.com/viewtopic.php?f=82&t=37907
+  'qtav'
+  # Plugin libs
+  'libwebp' 'openjpeg2' 'openexr'
+)
 optdepends=('glib2: support for moving files to trash')
 conflicts=('xnviewmp')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
+        'xnview.sh'
         'xnviewmp.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
 md5sums=('d6b931db8cf42aefe770581afb0184ad'
+         '54c5ea6508625ad44a23b9a204799264'
          '24f44d5a881b94daf48775213a57e4ec'
          'df94e031306ac22f7f19d38bf3023c1a'
          '7fc3b01ef6eb321c5ecba75099e08d33')
+
+# There is a lot of useless files in the archive, only install those from that
+# list.
+installed_files_dirs=(
+  AddOn
+  country.txt
+  default.bar
+  default.keys
+  language
+  license.txt
+  PrintPresets.txt
+  ResizePresets.txt
+  UI
+  WhatsNew.txt
+  XnView
+  xnview_2.png
+  XnView.db
+  xnview.png
+)
+
+executable_files=(
+  AddOn/exiftool
+  XnView
+)
 
 build() {
   # This is massive hack to work around an incompatibility with the system Qt5
@@ -41,45 +74,42 @@ build() {
   gcc -fPIC -shared -lstdc++ \
     -Wl,--version-script="${srcdir}/qt5_std_fun_forwarder.lds" \
     -o "${srcdir}/qt5_std_fun_forwarder.so" \
-    "${srcdir}/qt5_std_fun_forwarder.S" 
+    "${srcdir}/qt5_std_fun_forwarder.S"
 }
 
 package() {
-  install -d -m755 "${pkgdir}/opt/${_pkgname}"
-  install -d -m755 "${pkgdir}/usr/bin"
-  install -d -m755 "${pkgdir}/usr/share/applications"
+  cd "${srcdir}/XnView"
 
-  cp -a "${srcdir}/XnView"/* "${pkgdir}/opt/${_pkgname}"
-  ln -s "/opt/${_pkgname}/xnview.sh" "${pkgdir}/usr/bin/${_pkgname}"
+  local pkg_opt_dir=${pkgdir}/opt/${_pkgname}
 
-  install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-  # Clean up
-  rm "${pkgdir}/opt/${_pkgname}/XnView.desktop"
-  chmod 644 "${pkgdir}/opt/${_pkgname}"/xnview*.png
-  chmod 755 "${pkgdir}/opt/${_pkgname}/XnView"
-
-  # Remove the bundled framework libs (Qt and icu).
-  rm "${pkgdir}/opt/${_pkgname}/lib/"lib*
-  # Since we are using system Qt libraries, we should also use the system Qt
-  # plugins. Unfortunately using the system path doesn't quite work because of a
-  # bug when Qt's loader tries to use libqxcb-egl-integration.so, which is
-  # not provided by XnView.
-  # As a workaround, remove the provided plugin directories and symlink the
-  # system ones instead.
-  local dir
-  for dir in "${pkgdir}/opt/${_pkgname}/lib/"*; do
-    rm -r "${dir}"
-    ln -s "/usr/lib/qt/plugins/$(basename "${dir}")" "${dir}"
+  install -d -m755 "${pkg_opt_dir}"
+  # The permissions set in the archive are unreliable and excessive (too many
+  # executable files). Instead of copying them, we chmod the files that
+  # actually need to be executable.
+  cp -r --no-preserve=mode "${installed_files_dirs[@]}" "${pkg_opt_dir}"
+  for file in "${executable_files[@]}"; do
+    chmod a+x "${pkg_opt_dir}/${file}"
   done
 
-  # Install our "function forwarder library" (see build()) and force the dynamic
-  # linker to use it by adding to LD_PRELOAD.
-  install -m644 "${srcdir}/qt5_std_fun_forwarder.so" "${pkgdir}/opt/${_pkgname}/lib"
-  sed -i '/exec/ i \
-export LD_PRELOAD="$dirname/lib/qt5_std_fun_forwarder.so:$LD_PRELOAD"' \
-    "${pkgdir}/opt/${_pkgname}/xnview.sh"
+  # The plugin libs that XnView packages are included as dependencies, but
+  # XnView will only look for them in the Plugins directory (regardless of the
+  # linker paths). Create symlinks as needed.
+  install -d -m755 "${pkg_opt_dir}/Plugins"
+  ln -s /usr/lib/libwebp.so "${pkg_opt_dir}/Plugins/libwebp.so"
+  ln -s /usr/lib/libIlmImf.so "${pkg_opt_dir}/Plugins/IlmImf.so"
+  ln -s /usr/lib/libopenjp2.so "${pkg_opt_dir}/Plugins/openjp2.so"
+
+  install -m755 "${srcdir}/xnview.sh" "${pkg_opt_dir}"
+
+  # Install our "function forwarder library" (see build()). xnview.sh forces the
+  # dynamic linker to use it by adding it to LD_PRELOAD.
+  install -D -m644 "${srcdir}/qt5_std_fun_forwarder.so" -t "${pkg_opt_dir}/lib"
+
+  install -d -m755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${_pkgname}/xnview.sh" "${pkgdir}/usr/bin/${_pkgname}"
+
+  install -D -m644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -D -m644 "${srcdir}/XnView/license.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
