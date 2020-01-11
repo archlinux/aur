@@ -8,7 +8,7 @@
 _gitname=vim9
 pkgbase=$_gitname-git
 pkgname=('vim9-tiny-git' 'vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
-pkgver=9.0.109+20200109.7d798feb4
+pkgver=9.0.109+20200110.14e5daa67
 pkgrel=1
 arch=('x86_64')
 license=('custom:vim')
