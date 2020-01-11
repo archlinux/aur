@@ -1,0 +1,19 @@
+pkgbase = parallella-examples
+	pkgdesc = Adapteva parallella board examples
+	pkgver = 325.364595c
+	pkgrel = 1
+	url = https://https://github.com/parallella/parallella-examples
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = BSD
+	license = GPL
+	provides = parallella-examples
+	options = !strip
+	source = git://github.com/parallella/parallella-examples.git
+	md5sums = SKIP
+
+pkgname = parallella-examples
+
