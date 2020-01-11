@@ -1,0 +1,21 @@
+pkgbase = python-gql
+	pkgdesc = Python GraphQL client
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/graphql-python/gql
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-mock
+	checkdepends = python-vcrpy
+	makedepends = python-setuptools
+	depends = python-six
+	depends = python-graphql-core
+	depends = python-promise
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/c4/6f/cf9a3056045518f06184e804bae89390eb706168349daa9dff8ac609962a/gql-0.2.0.tar.gz
+	sha256sums = ad0f0b8226428d727c8e1d1cac4e521d83ed024d814921bd55b8adb997dadf4b
+
+pkgname = python-gql
+
