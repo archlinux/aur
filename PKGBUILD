@@ -13,7 +13,7 @@ pkgname=(
   'xorg-server-common-git'
   'xorg-server-devel-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r569.gb1ee4036b
+pkgver=1.20.0.r578.g49456e0a3
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -26,11 +26,9 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'xtrans'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson' 'git')
 source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
-        fix-xwayland-compile.patch
         xvfb-run
         xvfb-run.1)
 sha256sums=('SKIP'
-            'a585e8c778ec2fd4f4f415051c6243e8e674f0cf038e8f2f440101bfde6f7d3b'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -42,7 +40,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgbase}"
-  patch -Np1 -i ../fix-xwayland-compile.patch
   cd ..
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.

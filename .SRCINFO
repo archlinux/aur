@@ -1,5 +1,5 @@
 pkgbase = xorg-server-git
-	pkgver = 1.20.0.r569.gb1ee4036b
+	pkgver = 1.20.0.r578.g49456e0a3
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xorg/xserver.git
 	arch = x86_64
@@ -37,11 +37,9 @@ pkgbase = xorg-server-git
 	makedepends = meson
 	makedepends = git
 	source = git+https://gitlab.freedesktop.org/xorg/xserver.git
-	source = fix-xwayland-compile.patch
 	source = xvfb-run
 	source = xvfb-run.1
 	sha256sums = SKIP
-	sha256sums = a585e8c778ec2fd4f4f415051c6243e8e674f0cf038e8f2f440101bfde6f7d3b
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
 
