@@ -1,19 +1,22 @@
 pkgbase = browserpass-git
-	pkgdesc = Chrome & Firefox browser extension for pass, a UNIX password manager
-	pkgver = 1.0.2.r33.51579bc
+	pkgdesc = Native host app for Browserpass, browser extension for zx2c4's pass (password manager) (Git checkout)
+	pkgver = 3.0.6.r27.c25e4ed
 	pkgrel = 1
-	url = https://github.com/dannyvankooten/browserpass
+	url = https://github.com/browserpass/browserpass-native
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = MIT
-	makedepends = go
-	depends = pass
+	license = ISC
+	makedepends = go-pie
+	makedepends = git
+	depends = gnupg
+	optdepends = browserpass-chromium: Chromium extension for Browserpass
+	optdepends = browserpass-firefox: Firefox extension for Browserpass
 	provides = browserpass
 	conflicts = browserpass
-	source = git+https://github.com/dannyvankooten/browserpass.git
-	md5sums = SKIP
+	source = git+https://github.com/browserpass/browserpass-native.git
+	sha256sums = SKIP
 
 pkgname = browserpass-git
 

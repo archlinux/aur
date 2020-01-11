@@ -1,52 +1,48 @@
-# Maintainer: emersion <contact@emersion.fr>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: emersion <contact@emersion.fr>
+
+_name=browserpass-native
 pkgname=browserpass-git
-_pkgname=${pkgname%-git}
-pkgver=1.0.2.r33.51579bc
+pkgver=3.0.6.r27.c25e4ed
 pkgrel=1
-pkgdesc="Chrome & Firefox browser extension for pass, a UNIX password manager"
+pkgdesc="Native host app for Browserpass, browser extension for zx2c4's pass (password manager) (Git checkout)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/dannyvankooten/browserpass"
-license=('MIT')
-depends=('pass')
-makedepends=('go')
-optdepends=()
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=('git+https://github.com/dannyvankooten/browserpass.git')
-md5sums=('SKIP')
+url="https://github.com/${pkgname%-git}/${_name}"
+license=('ISC')
+depends=('gnupg')
+makedepends=('go-pie' 'git')
+optdepends=('browserpass-chromium: Chromium extension for Browserpass'
+            'browserpass-firefox: Firefox extension for Browserpass')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+https://github.com/browserpass/${_name}.git)
+sha256sums=('SKIP')
+#validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
+
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
+	cd "${_name}"
 	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "$srcdir/$_pkgname"
-
-	export GOPATH="$srcdir/go"
-	mkdir -p "$GOPATH"
-	go get -d ./...
+    cd "${_name}"
+    make configure
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+    cd "${_name}"
+    make "${pkgname%-git}"
+}
 
-	go build -o browserpass ./cmd/browserpass
+check() {
+    cd "${_name}"
+    make test
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-
-	install -D browserpass "$pkgdir/usr/bin/browserpass"
-
-	host_file="/usr/bin/browserpass"
-	escaped_host_file=${host_file////\\/}
-	cp chrome/host.json chrome-host.json
-	cp firefox/host.json firefox-host.json
-	sed -i -e "s/%%replace%%/$escaped_host_file/" chrome-host.json
-	sed -i -e "s/%%replace%%/$escaped_host_file/" firefox-host.json
-
-	install -D chrome-host.json "$pkgdir/etc/opt/chrome/native-messaging-hosts/com.dannyvankooten.browserpass.json"
-	install -D chrome-host.json "$pkgdir/etc/chromium/native-messaging-hosts/com.dannyvankooten.browserpass.json"
-	install -D firefox-host.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.dannyvankooten.browserpass.json"
+    cd "${_name}"
+    make DESTDIR="${pkgdir}" install
 }
+
+# vim:set ts=4 sw=4 et:
