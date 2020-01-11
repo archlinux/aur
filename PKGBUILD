@@ -4,7 +4,7 @@
 # Contributor	: giniu <gginiu@gmail.com>
 
 pkgname=python2-foolscap
-pkgver=0.6.4
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="RPC protocol for Python and Twisted"
 url="http://foolscap.lothar.com"
@@ -23,7 +23,7 @@ source=("http://foolscap.lothar.com/releases/foolscap-${pkgver}.tar.gz"
 
 validpgpkeys=('734145FEBE70E5D059C7EDCD3E8692AFAF1B4A2A')
 
-sha256sums=('74b283dd68a3c9d68ebf4e9b4ebf5cfb37480915b6a808ac930fe858a66f8d99'
+sha256sums=('8498c7e9eaecb5b19be74b18d55c2086440be08de29f2bb507f9b505757467ff'
             'SKIP')
 
 build() {
