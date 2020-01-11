@@ -1,14 +1,14 @@
 # Maintainer: S Stewart <tda@lmao.tf>
 # Special thanks to RyanTheAllmighty for making hyper-appimage
 pkgname="gdlauncher-appimage"
-pkgver="v0.12.3"
+pkgver="v0.12.4"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Modded Minecraft launcher built with Electron/React"
 url="https://gdevs.io"
 license=('MIT')
 install="gdlauncher-appimage.install"
-depends=('libnotify' 'libxss' 'libxtst' 'gconf' 'libindicator' 'libappindicator')
+depends=('libnotify' 'libxss' 'libxtst' 'libindicator' 'libappindicator')
 
 source_x86_64=(
     "gdlauncher.desktop"
@@ -17,7 +17,7 @@ source_x86_64=(
 
 md5sums_x86_64=(
     "310ff29d9c622367e31b989610a47617"
-    "5e2b0ac22c2b60f2f31f05ccf63a683f"
+    "74d2e23cb8b2069486d73c521b5d1a90"
 )
 
 prepare() {
