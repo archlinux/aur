@@ -1,39 +1,45 @@
-# Maintainer: Iwan Timmer <irtimmer@gmail.com>
-
+# Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Contributor: Iwan Timmer <irtimmer@gmail.com>
 pkgname=tpm2-pkcs11-git
-pkgver=r150.10854c5
+pkgver=1.0.1.r11.4428b09
 pkgrel=1
-pkgdesc="A PKCS#11 interface for TPM2 hardware"
-arch=('i686' 'x86_64')
-url="https://github.com/tpm2-software/tpm2-pkcs11"
-license=('BSD')
-depends=('tpm2-tools' 'sqlite' 'python-cryptography' 'python-yaml')
+pkgdesc='PKCS#11 interface for Trusted Platform Module 2.0 hardware'
+arch=('x86_64')
+url='https://github.com/tpm2-software/tpm2-pkcs11'
+license=('BSD' 'custom:IPR')
+depends=('openssl' 'python-cryptography' 'python-pyasn1-modules' 'python-yaml' 'sqlite' 'tpm2-tools')
 makedepends=('git' 'autoconf-archive')
-source=("git+https://github.com/tpm2-software/tpm2-pkcs11.git")
-sha256sums=('SKIP')
+checkdepends=('cmocka' 'ibm-sw-tpm2' 'iproute2' 'libp11' 'opensc' 'tpm2-abrmd' 'xxd')
+source=("git+$url.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/tpm2-pkcs11
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${pkgname%-git}"
+	git describe --long | sed 's/[-_]rc/rc/I;s/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "${pkgname%-git}"
+	./bootstrap
 }
 
 build() {
-  cd $srcdir/tpm2-pkcs11
+	cd "${pkgname%-git}"
+	./configure --prefix=/usr $( ((CHECKFUNC)) && echo --enable-unit --enable-integration)
+	make
+	cd tools
+	python setup.py build
+}
 
-  ./bootstrap
-  ./configure --prefix /usr
-  make
-
-  cd tools
-  python setup.py build
+check() {
+	cd "${pkgname%-git}"
+	make check
 }
 
 package() {
-  cd $srcdir/tpm2-pkcs11
-  make DESTDIR="$pkgdir/" install
-
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/tpm2-pkcs11-git/LICENSE
-
-  cd tools
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "${pkgname%-git}"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd tools
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

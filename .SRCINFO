@@ -1,19 +1,28 @@
 pkgbase = tpm2-pkcs11-git
-	pkgdesc = A PKCS#11 interface for TPM2 hardware
-	pkgver = r150.10854c5
+	pkgdesc = PKCS#11 interface for Trusted Platform Module 2.0 hardware
+	pkgver = 1.0.1.r11.4428b09
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pkcs11
-	arch = i686
 	arch = x86_64
 	license = BSD
+	license = custom:IPR
+	checkdepends = cmocka
+	checkdepends = ibm-sw-tpm2
+	checkdepends = iproute2
+	checkdepends = libp11
+	checkdepends = opensc
+	checkdepends = tpm2-abrmd
+	checkdepends = xxd
 	makedepends = git
 	makedepends = autoconf-archive
-	depends = tpm2-tools
-	depends = sqlite
+	depends = openssl
 	depends = python-cryptography
+	depends = python-pyasn1-modules
 	depends = python-yaml
+	depends = sqlite
+	depends = tpm2-tools
 	source = git+https://github.com/tpm2-software/tpm2-pkcs11.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = tpm2-pkcs11-git
 
