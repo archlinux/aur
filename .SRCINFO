@@ -1,6 +1,6 @@
 pkgbase = go-filecoin-git
 	pkgdesc = A decentralized storage network, full node implementation in Go
-	pkgver = nightly_17481_fc53b4_0_gfc53b48c
+	pkgver = nightly_33814_fb13ac_67_g66420554
 	pkgrel = 1
 	url = https://github.com/filecoin-project/go-filecoin
 	arch = x86_64
