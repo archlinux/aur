@@ -1,6 +1,6 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=python-tikzplotlib
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Convert matplotlib figures into TikZ/PGFPlots"
 url="https://github.com/nschloe/tikzplotlib"
@@ -11,7 +11,7 @@ conflicts=('python-matplotlib2tikz')
 license=('MIT')
 arch=('any')
 source=("https://github.com/nschloe/tikzplotlib/archive/v${pkgver}.tar.gz")
-sha256sums=('b77e361e9d1f53d16e9e9e84bbc8879859b4a9d98140a18cac13860a0c680a83')
+sha256sums=('9999bdce566d9eee2a704ebc829a3fc02aba0f2c3fa1cf9699821b57853be821')
 
 build() {
     cd $srcdir/tikzplotlib-$pkgver
