@@ -21,7 +21,7 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
        	 'perl-image-exiftool'
          'perl-gdgraph' 'perl-mp3-info'
          'perl-ogg-vorbis-header-pureperl' 'perl-mp3-tag'
-         #'perl-freedb'
+         #'perl-net-freedb'
          )
 optdepends=(
        'gtk-engine-murrine'
