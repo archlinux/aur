@@ -1,0 +1,24 @@
+pkgbase = fido2-hmac-secret
+	pkgdesc = A simple way to generate password-proteceted secrets from a FIDO2 authenticator with the hmac-secret extension
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/mjec/fido2-hmac-secret
+	install = fido2-hmac-secret.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = libfido2
+	depends = libcbor
+	depends = libsodium
+	depends = libcap
+	optdepends = bash-completion: bash completion support
+	optdepends = mkinitcpio: initramfs support
+	source = https://github.com/mjec/fido2-hmac-secret/archive/v0.4.1.tar.gz
+	source = https://github.com/mjec/fido2-hmac-secret/releases/download/v0.4.1/v0.4.1.tar.gz.sig
+	validpgpkeys = 6927F7D45F567621E14121DDFD1D670D31F82A81
+	sha256sums = 7c1cb2a3b8034bc9713c1977243dc7bab943d738c59d8f03cf92bf81f851d791
+	sha256sums = c134b3314b2dc11deee945f49b3601abd49d9c88fbc80d7770aa8fc761be77b3
+
+pkgname = fido2-hmac-secret
+
