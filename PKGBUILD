@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer-alpha
-pkgver=1.8.7.8041
-_pkgver=1_8_7_8041
+pkgver=1.8.7.8132
+_pkgver=1_8_7_8132
 pkgrel=1
 pkgdesc="An exciting client for Second Life (secondlife) and OpenSim (opensimulator), which combines the look and feel of Viewer 1.23 with the latest and greatest of available technology. (nighly builds)"
 url="http://www.singularityviewer.org/"
@@ -24,7 +24,7 @@ provides=("singularityviewer")
 source=("https://bitbucket.org/router_gray/singularityviewer/downloads/Singularity_Beta_${_pkgver}_x86_64.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('4cea24d964af2cd5b84e5c0b6a1a2d8f'
+md5sums=('6471b2e57d00114b42499f5244d16cba'
          'f375ed0bc781ef5e880a9d5dbb29258a'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
 
