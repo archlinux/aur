@@ -1,6 +1,6 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r178.1c7f5ff
+pkgver=r179.8037b16
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
@@ -45,4 +45,5 @@ package() {
   [ -f beamerpresenter.conf.5 ] && gzip -f9 beamerpresenter.conf.5
   install -Dm644 beamerpresenter.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
   install -Dm644 beamerpresenter.conf.5.gz "${pkgdir}/usr/share/man/man5/${pkgname}.conf.5.gz"
+  install -Dm644 src/beamerpresenter.svg "${pkgdir}/usr/share/icons/scalable/apps/beamerpresenter.svg"
 }
