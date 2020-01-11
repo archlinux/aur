@@ -1,10 +1,10 @@
 pkgbase = python-kppy
 	pkgdesc = A Python-module to provide an API to KeePass 1.x files commonly used by KeePassX.
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raymontag/kppy
 	arch = any
-	license = GPL
+	license = ISC
 	depends = python-pycryptodomex
 	source = https://github.com/raymontag/kppy/archive/1.5.2.tar.gz
 	sha256sums = 9dbf494304f2ac82ff6b8037744ab2887f68901840e4dda2aa612ab9129a6a60
