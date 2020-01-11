@@ -1,7 +1,7 @@
 pkgbase = xtitle
 	pkgdesc = Outputs X window titles
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baskerville/xtitle
 	arch = x86_64
 	license = custom:Unlicense
@@ -9,7 +9,7 @@ pkgbase = xtitle
 	depends = xcb-util-wm
 	depends = xcb-util
 	conflicts = xtitle-git
-	source = https://github.com/baskerville/xtitle/archive/0.4.4.tar.gz
+	source = xtitle-0.4.4.tar.gz::https://github.com/baskerville/xtitle/archive/0.4.4.tar.gz
 	sha256sums = c2fbf403892c4e466e43528415284a458d4354855f221273881aa4388d028970
 
 pkgname = xtitle
