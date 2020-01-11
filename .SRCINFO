@@ -1,7 +1,7 @@
 pkgbase = ttf-humor-sans
 	pkgdesc = A sanserif typeface in the style of xkcd.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xkcdsucks.blogspot.com.au/2009/03/xkcdsucks-is-proud-to-present-humor.html
 	install = ttf.install
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = ttf-humor-sans
 	depends = xorg-font-utils
 	source = http://antiyawn.com/uploads/Humor-Sans-1.0.ttf
 	source = http://antiyawn.com/uploads/Humor-SansOFL-1.0.txt
-	md5sums = acdc29df52454684fe8f3184f6477290
-	md5sums = 5e34faa99b0587e34636534175810dc3
+	source = ttf.install
+	sha512sums = f0ed2f61f5cedb93ff955d9d5562fd110db750b6d4d91a74346ff94c16c87cac294c061e6ded97ffea372970912f51ee0792a611a6224cd3a38585812971b3dd
+	sha512sums = e0e4cd5ba46e59dfac962a3943ccc8b694b8226e43aca8f0140d6c5bd5ddf92f51f89b4876b8d7cc25b1c71d8476c23ade3c6f711d1b676fb1623d73223d5f8e
+	sha512sums = f9db8af3a86d9b95c7e22b130225f45d6a60f2fe99634d55a7b2b7b0948c8871700e46a16a883a77efddeff177b008c3ac4f63887a3fedeb23df66367dabc9e9
 
 pkgname = ttf-humor-sans
 
