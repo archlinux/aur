@@ -1,7 +1,7 @@
-From 585ca862f16fcb6ab7a010e977d10284d0fd47e1 Mon Sep 17 00:00:00 2001
+From 98ab83a7426ef0ec20ff46947f2ee8d651980b1c Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/9] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 01/16] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -80,7 +80,7 @@ index 6cabc124378c..fda4986da9eb 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index b6f2f35d0bcf..2e9c273990e8 100644
+index 70665934d53e..9797869ed829 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -110,6 +110,9 @@ extern int core_uses_pid;

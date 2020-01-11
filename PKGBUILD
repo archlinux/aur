@@ -7,8 +7,8 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.5
-_rtpatchver=3
+_pkgver=5.4.10
+_rtpatchver=5
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -30,8 +30,15 @@ source=(
   0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
   0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-  0007-ALSA-hda-Fix-regression-by-strip-mask-fix.patch
-  0008-drm-i915-fbc-Disable-fbc-by-default-on-all-glk.patch
+  0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0008-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
+  0009-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+  0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+  0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+  0012-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
+  0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+  0014-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
+  0015-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -41,19 +48,26 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0'
+sha256sums=('f23c0218a5e3b363bb5a880972f507bb4dc4a290a787a7da08be07ea12042edd'
             'SKIP'
-            'fdb943eee48582b65f3a4876cc8f7b1e1b274dd57287762c0e8a68ff681d855b'
+            '0bab9f30b2ce3123c0e5a0fca2d51807883e2b9f5398a51e68937cad2fcb30d7'
             'SKIP'
-            '4828d33e4115ec4a59f6ad995d7041be0e8cfaaa399f3ee6b03a7d18c23f35a2'
-            'abf6040dee7695d52ebdb5609a5bbcf6c56ec6e39d9d65ddb6be728268b4ee4e'
-            'ea43ba87b18ed99dc9bd7bcbe20c2315e51aafdad1bf4bae3e31889aae3f12d7'
-            '0fa424d4a56f5ec6754669d423a119301ff8849c72f6bf7603ecd1d98b971419'
-            '4dc9d777185052c5a6bf6f15df2ae91ca50585103a910b6e1369cac7a291d3b0'
-            '950a1a526d33b804da34cea4aba920c1a0863afb1817ed4e0c288b81f4a21ba3'
-            '4e731525b8f848481a0fdadfe1db70f014364bd501130a22a396802acff0f577'
-            '09b7facedafc53ae47f92be0adb619791c0044a2977ce3e4367b35987f38732f'
-            '5c7171b5787e0e252120476640d6d8237ea904e9c552da735a16851679e20cd5')
+            '2af2613a7ae5e4886acbe2af87a035646823875bf852dc913eb2339e8ecb94be'
+            'a3e9541bf0306d32af8acf121643d9953776d448f68ec09741c591d1e5bc6748'
+            '8e9967f83cf22be43b516b394523b0976c6831e28cee5136542df3c946328917'
+            '226251c17ced22414e4275ca69be6aec318904778f0c8c244050916e51064b14'
+            '9809d55995895e7061bfca0db9f38a608548f21bb5d4a2260e7bbb6b5af2db4a'
+            '82bc11366ca296e86dd745c911a841d7ac12d16a1a2185da245a96e5440b8fd7'
+            '1ef45f1e7456437e4ec7c2ada46c607f492a87db8d1cf3f3b59870bc2deaa1e6'
+            'fcd117bc51f21baac26f7570f48b91ce994fd351fcb19cb6097166a4a7c181e6'
+            '49bc5c988a6cc127f39ae998954482450d19b69da2ce9dfcce678d3fe7504136'
+            'f583d172c69c288f5d2e587c5926b0e732284c19e73671eef112ab1a0e26362a'
+            '84baa16aa022e0dac2515edced6f214a08d385a385ffb04e358fbe9671235d41'
+            'a55cfce037523fdb6244fd6286a1d9be12c2eab3327a1c6e05ac42899f5868d1'
+            '9c600a292efb59087d913fd8e7a5fff9c7abcfad864d294a266600f4491476c5'
+            '126f8b83065e3f7a72589f33874481aa06bb1686ddc6997a8a05a27c7d6721ac'
+            '9c95928be62369403bb6822a838dc9791a5a98ac489af81b5ab8f2fd09b0c696'
+            '4a2bd4b02e8c4f81334d22a8bd27a03f8a3a1e8137699b809de15cd7edf0e4dd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
