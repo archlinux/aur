@@ -1,8 +1,8 @@
 # Maintainer: Ryan Suchocki <ryan@suchocki.co.uk>
-
+# Maintainer: Martin Kröning <m.kroening@hotmail.de>
 _target=riscv64-unknown-elf
 pkgname=$_target-gdb
-pkgver=8.2
+pkgver=8.3.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the 32bit and 64bit RISC-V bare-metal target'
 arch=(x86_64)
@@ -11,12 +11,14 @@ license=(GPL3)
 depends=(xz ncurses expat python guile2.0 gdb-common mpfr)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
-validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
-sha256sums=('c3a441a29c7c89720b734e5a9c6289c0a06be7e0c76ef538f7bbcef389347c39'
+sha256sums=('1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4'
             'SKIP')
+validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
 
 prepare() {
   cd gdb-$pkgver
+
+  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
@@ -27,7 +29,7 @@ build() {
     --target=$_target \
     --prefix=/usr \
     --enable-languages=c,c++ \
-    --disable-multilib \
+    --enable-multilib \
     --enable-interwork \
     --with-system-readline \
     --disable-nls \
@@ -44,8 +46,8 @@ package() {
   make -C gdb DESTDIR=$pkgdir install
 
   # Following files conflict with 'gdb'/'gdb-common' packages
-  rm -r $pkgdir/usr/include/gdb
-  rm -r $pkgdir/usr/share/gdb
-  rm -r $pkgdir/usr/share/info
-  rm -r $pkgdir/usr/share/man/man5
+  rm -r $pkgdir/usr/include/gdb/
+  rm -r $pkgdir/usr/share/gdb/
+  rm -r $pkgdir/usr/share/info/
+  rm -r $pkgdir/usr/share/man/man5/
 }
