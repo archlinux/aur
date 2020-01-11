@@ -1,7 +1,7 @@
 pkgbase = btintel-default-address-dkms
 	pkgdesc = Allow default address when setup intel bluetooth device
 	pkgver = 5.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c0ldcat
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = btintel-default-address-dkms
 	source = btintel.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btintel.h?id=refs/tags/v5.1.4
 	source = btrtl.h::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/drivers/bluetooth/btrtl.h?id=refs/tags/v5.1.4
 	md5sums = d4023861ba05ecb47380354511ac798f
-	md5sums = 2883aa8bd1701166530078a21c13900b
+	md5sums = aa80ec82a8d5d8cc4a39bc21930e8519
 	md5sums = 5263f3baa5ef312a6ee6f3923f9ee78f
 	md5sums = e2edece3942c8a69bbc131a632e9b880
 	md5sums = f7a3ed12a2b7540186a0547865533420
