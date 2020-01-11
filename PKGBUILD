@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=80.0.3987.7
+pkgver=81.0.4021.2
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -76,6 +76,7 @@ source=(
         'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
+        'misc_r0.patch'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -88,6 +89,7 @@ sha256sums=(
             '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            'da2a72752ca1ec39161264bf76f3a008c0c44c9ceadd1cc357316c1364e5c64c'
             )
 install=chromium-dev.install
 
@@ -133,6 +135,7 @@ _keeplibs=(
            'third_party/angle/src/third_party/compiler'
            'third_party/angle/src/third_party/libXNVCtrl'
            'third_party/angle/src/third_party/trace_event'
+           'third_party/angle/src/third_party/volk'
            'third_party/angle/third_party/glslang'
            'third_party/angle/third_party/spirv-headers'
            'third_party/angle/third_party/spirv-tools'
@@ -181,8 +184,9 @@ _keeplibs=(
            'third_party/depot_tools/third_party/six'
            'third_party/devscripts'
            'third_party/devtools-frontend'
-           'third_party/devtools-frontend/src/third_party/axe-core'
-           'third_party/devtools-frontend/src/third_party/pyjson5'
+           'third_party/devtools-frontend/src/front_end/third_party/fabricjs'
+           'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
+           'third_party/devtools-frontend/src/third_party'
            'third_party/dom_distiller_js'
            'third_party/emoji-segmenter'
            'third_party/ffmpeg'
@@ -288,6 +292,7 @@ _keeplibs=(
            'third_party/webrtc/rtc_base/third_party/sigslot'
            'third_party/widevine'
            'third_party/woff2'
+           'third_party/wuffs'
            'third_party/zlib/google'
            'tools/grit/third_party/six'
            'url/third_party/mozilla'
@@ -308,7 +313,6 @@ _keeplibs=(
 
 _keeplibs+=(
             'third_party/icu' # https://crbug.com/678661.
-            'third_party/harfbuzz-ng' #https://crbug.com/1016158.
             )
 
 if [ "${_use_wayland}" = "1" ]; then
@@ -476,6 +480,11 @@ prepare() {
   sed -e 's|chrome-sandbox|chrome_sandbox|g'\
       -i sandbox/linux/suid/client/setuid_sandbox_host.cc
 
+  # If use ccache, set it.
+  if check_buildoption ccache y; then
+    sed '36s|""|'ccache'|g' -i build/toolchain/cc_wrapper.gni
+  fi
+
   msg2 "Patching the sources"
 
   # Misc patches.
@@ -499,6 +508,9 @@ prepare() {
 
   # Attemp to fix build with wayland
   patch -p1 -i "${srcdir}/fix_vaapi_wayland.patch"
+
+  # some misc (from misc) patches
+  patch -p1 -i "${srcdir}/misc_r0.patch"
 
   # # Patch from Gentoo
 
@@ -583,6 +595,7 @@ package() {
         'chromium-dev'
         'chrome_sandbox'
         'chromedriver'
+        'crashpad_handler'
         )
   for i in "${_bin[@]}"; do
     case "$i" in

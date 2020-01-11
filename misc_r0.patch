@@ -1,0 +1,45 @@
+diff --git i/base/BUILD.gn w/base/BUILD.gn
+index 4bf1ec4041..958fa2d714 100644
+--- i/base/BUILD.gn
++++ w/base/BUILD.gn
+@@ -2961,7 +2961,6 @@ test("base_unittests") {
+     if (is_android) {
+       deps += [ "//third_party/icu:icu_extra_assets" ]
+     } else {
+-      deps += [ "//third_party/icu:extra_icudata" ]
+       data += [ "$root_out_dir/icudtl_extra.dat" ]
+     }
+   }
+diff --git i/chrome/browser/ui/views/native_file_system/native_file_system_usage_bubble_view.cc w/chrome/browser/ui/views/native_file_system/native_file_system_usage_bubble_view.cc
+index 6f11796d8a..f3005f8aa7 100644
+--- i/chrome/browser/ui/views/native_file_system/native_file_system_usage_bubble_view.cc
++++ w/chrome/browser/ui/views/native_file_system/native_file_system_usage_bubble_view.cc
+@@ -28,7 +28,7 @@
+ #include "content/public/browser/web_contents.h"
+ #include "third_party/icu/source/common/unicode/unistr.h"
+ #include "third_party/icu/source/common/unicode/utypes.h"
+-#include "third_party/icu/source/i18n/unicode/listformatter.h"
++#include <unicode/listformatter.h>
+ #include "ui/base/l10n/l10n_util.h"
+ #include "ui/gfx/paint_vector_icon.h"
+ #include "ui/views/controls/button/image_button.h"
+diff --git i/media/gpu/vaapi/BUILD.gn w/media/gpu/vaapi/BUILD.gn
+index 49cc21d707..bf3489537a 100644
+--- i/media/gpu/vaapi/BUILD.gn
++++ w/media/gpu/vaapi/BUILD.gn
+@@ -215,7 +215,6 @@ source_set("jpeg_decoder_unit_test") {
+     ":vaapi_image_decoder_test_common",
+     ":vaapi_test_utils",
+     "//base",
+-    "//media/gpu/test:local_gpu_memory_buffer_manager",
+     "//media/parsers",
+     "//testing/gtest",
+     "//third_party/libyuv:libyuv",
+@@ -235,7 +234,6 @@ source_set("webp_decoder_unit_test") {
+     ":vaapi_image_decoder_test_common",
+     ":vaapi_test_utils",
+     "//base",
+-    "//media/gpu/test:local_gpu_memory_buffer_manager",
+     "//media/parsers",
+     "//testing/gtest",
+     "//third_party/libwebp",
