@@ -1,5 +1,5 @@
 pkgbase = verbiste
-	pkgdesc = Verbiste is a French conjugation system.
+	pkgdesc = French conjugation system.
 	pkgver = 0.1.47
 	pkgrel = 1
 	url = http://sarrazip.com/dev/verbiste.html
@@ -7,10 +7,11 @@ pkgbase = verbiste
 	arch = x86_64
 	license = GPL
 	makedepends = perl-xml-parser
+	makedepends = gtk2
 	depends = libxml2
-	depends = gtk2
+	optdepends = gtk2: for verbiste-gtk
 	source = http://perso.b2b2c.ca/~sarrazip/dev/verbiste-0.1.47.tar.gz
-	md5sums = 240b5c674da369e5b6492d6910c0a8af
+	sha512sums = cc06d3e4a09b9edf2fe3996f527ae05fa50af909cc5ea6ed830d1b4f5706cf9b29028160cff842a211148e13d736f7e2cb74f10b3c5fd84d93a1038e05a26cbf
 
 pkgname = verbiste
 

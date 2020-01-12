@@ -9,29 +9,26 @@
 pkgname=verbiste
 pkgver=0.1.47
 pkgrel=1
-pkgdesc="Verbiste is a French conjugation system."
+pkgdesc="French conjugation system."
 url="http://sarrazip.com/dev/verbiste.html"
 license=("GPL")
-depends=('libxml2' 'gtk2')
-makedepends=('perl-xml-parser') # 'libgnomeui'
+depends=('libxml2')
+makedepends=('perl-xml-parser' 'gtk2')
+optdepends=('gtk2: for verbiste-gtk')
 arch=('i686' 'x86_64')
 source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
-md5sums=('240b5c674da369e5b6492d6910c0a8af')
-
+sha512sums=('cc06d3e4a09b9edf2fe3996f527ae05fa50af909cc5ea6ed830d1b4f5706cf9b29028160cff842a211148e13d736f7e2cb74f10b3c5fd84d93a1038e05a26cbf')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  #./configure --prefix=/usr --with-gtk-app
-  ./configure --prefix=/usr  --without-gtk-app
+  ./configure --prefix=/usr --without-gnome-app
   make
+  sed -e 's/Exec=verbiste$/Exec=verbiste-gtk/g' -i src/gnome/verbiste.desktop
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
-  # Modify location for .desktop file
-  install -Dm 644 "$srcdir/$pkgname-$pkgver/src/gnome/verbiste.desktop" \
-		  "$pkgdir/usr/share/applications/verbiste.desktop"
-  #sed -e 's/Exec=verbiste/Exec=verbiste-gtk/g' -i "$pkgdir/usr/share/applications/verbiste.desktop"
+  install -Dm644 src/gnome/verbiste.desktop "$pkgdir/usr/share/applications/verbiste.desktop"
 }
