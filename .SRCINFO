@@ -1,8 +1,8 @@
 pkgbase = charybdis
 	pkgdesc = A highly scalable IRCv3-compliant IRCd
 	pkgver = 4.1.2
-	pkgrel = 1
-	url = http://www.charybdis.io/
+	pkgrel = 2
+	url = https://https://charybdis-ircd.github.io/
 	install = charybdis.install
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,13 @@ pkgbase = charybdis
 	depends = openssl
 	depends = zlib
 	provides = charybdis
+	conflicts = charybdis-git
 	options = !strip
 	source = https://github.com/charybdis-ircd/charybdis/archive/charybdis-4.1.2.tar.gz
 	source = charybdis.service
 	source = charybdis.tmpfiles
 	sha256sums = a3f4e572877c5a3abdab3af652746c0682f0c41b3f9e3c9866315f5d03f2bb57
-	sha256sums = 044f3567ed865365e76581942e1b28ba4f7193dd6c8022616ea0894295272062
+	sha256sums = a890d3a4fddd34b475c1c2e5f47f790af3bcebc3539c4a92a7343829fdbce563
 	sha256sums = 2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29
 
 pkgname = charybdis
