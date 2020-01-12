@@ -1,7 +1,7 @@
 pkgbase = developers-chamber
 	pkgdesc = Python developers utility library
 	pkgver = 0.0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/druids/developers-chamber
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = developers-chamber
 	depends = python-gitpython
 	depends = python-requests
 	depends = python-click-completion
+	depends = python-hosts
 	source = git+https://github.com/druids/developers-chamber.git
 	sha512sums = SKIP
 
