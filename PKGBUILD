@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=r58.ff2f87c
+pkgver=r59.39f0e52
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('git')
 provides=('auto-cpufreq')
 conflicts=('auto-cpufreq')
 install=auto-cpufreq-git.install
-source=("git+${url}.git" "auto-cpufreq-install.sh" "auto-cpufreq-remove.sh")
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/auto-cpufreq"
@@ -21,11 +21,9 @@ pkgver() {
 }
 
 package() {
-	install -Dm755 auto-cpufreq-install.sh "$pkgdir/usr/bin/auto-cpufreq-install"
-	install -Dm755 auto-cpufreq-remove.sh "$pkgdir/usr/bin/auto-cpufreq-remove"
 	cd "$srcdir/auto-cpufreq"
 	install -Dm755 auto-cpufreq.py "$pkgdir/usr/bin/auto-cpufreq"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	cd "$srcdir/auto-cpufreq/scripts"
 	install -Dm755 cpufreqctl.sh "$pkgdir/usr/bin/cpufreqctl"

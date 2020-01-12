@@ -1,9 +1,23 @@
 post_install() {
-	cd /usr/bin/
-	./auto-cpufreq-install
+	# This is needed on SELinux enabled systems (see also ConditionPathExists in .service)
+	touch /var/log/auto-cpufreq.log
+
+	echo 'Enable auto-cpufreq daemon service at boot:'
+	echo 'systemctl enable --now auto-cpufreq'
+	echo ''
+	echo 'To view live log, run:'
+	echo 'auto-cpufreq --log'
 }
 
-pre_remove() {
-	cd /usr/bin/
-	./auto-cpufreq-remove
+post_upgrade() {
+	echo 'Reload systemd manager configuration:'
+	echo 'systemctl daemon-reload'
+	echo ''
+	echo 'Restart auto-cpufreq daemon service:'
+	echo 'systemctl systemctl restart auto-cpufreq'
+}
+
+post_remove() {
+	# Remove auto-cpufreq log file
+	rm /var/log/auto-cpufreq.log
 }
