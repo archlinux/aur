@@ -57,6 +57,8 @@ def processArgv():
         argParts = arg.split('=', 1)
         if argParts[0] in GTERM_PASSTHROUGH_OPTIONS:
             gtermOptions.append(arg)
+        elif arg=='-f':
+            gtermOptions.append('--wait')
         else:
             nvimOptions.append(arg)
 
@@ -94,9 +96,11 @@ def main():
         options = processArgv()
         cmd = [] + TERM_CMD[:-2] + options['gterm'] + TERM_CMD[-2:] + options['nvim']
         with open(os.devnull, 'wb') as fnull:
-            subprocess.Popen(cmd,
+            p=subprocess.Popen(cmd,
                              stdout=fnull,
                              stderr=fnull)
+        if '--wait' in options['gterm']:
+            p.wait()
 
 if __name__ == '__main__':
     main()
