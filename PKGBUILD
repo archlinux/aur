@@ -1,7 +1,7 @@
 # Maintainer: Marcel Röthke <marcel.roethke@haw-hamburg.de>
 
 pkgname='exabgp'
-pkgver=4.1.2
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="The BGP swiss army knife of networking"
 url="https://github.com/Exa-Networks/exabgp"
@@ -20,6 +20,6 @@ package() {
   install -D -m644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('cf36ca988159da337048a80148e66877')
-sha1sums=('73712e4f20a5956890052467ccf3b01022977f87')
-sha256sums=('5921e002f196e814d02349a15c250b1fc8bf45c7299b6b652d2fed04eebb529a')
+md5sums=('14ba7f3c21412c9036e243993e55c913')
+sha1sums=('1c5c2e32c7c9f721f4661cbd61aa62a1b97f4332')
+sha256sums=('f14c7b1996464a4313d364cbd36e6941430e1c6121273c4fdd009e6beed2e938')
