@@ -1,14 +1,12 @@
-# Maintainer: Egor Gushcha <egorts04@gmail.com>
-
 pkgname=simple-and-soft-cursor
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple and soft X cursor theme"
 arch=('any')
 url="https://store.kde.org/p/999946/"
 license=('GPL')
-source=("https://github.com/red-magic/dotfiles/raw/master/themes/cursor-themes/simple-and-soft.tar.xz")
-sha256sums=('68342a419076a32b0accf8bc6fa064f7bca17248e79432b638e994d1f19d1cd3')
+source=("https://github.com/red-magic/dotfiles/raw/master/themes/cursor-themes/simple-and-soft.tar.zst")
+sha256sums=('5048717412c85b3cbd45fc37f6724457fe1867e97fb8757b2d42ccb4fd8818e5')
 
 package() {
   mkdir -p "$pkgdir/usr/share/icons/simple-and-soft"
