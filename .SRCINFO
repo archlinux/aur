@@ -1,6 +1,6 @@
 pkgbase = corepad
 	pkgdesc = A document editor from the CoreApps family.
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/corepad
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = corepad
 	license = GPL3
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/corepad/-/archive/v2.7.1/corepad-v2.7.1.tar.gz
-	md5sums = f1dc9d5071cc4ea5f0b5b394ce51d4f8
+	source = https://gitlab.com/cubocore/corepad/-/archive/v2.8.0/corepad-v2.8.0.tar.gz
+	md5sums = 16c3fa3d2fddac47035ef71c5f7c0000
 
 pkgname = corepad
 
