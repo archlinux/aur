@@ -1,0 +1,16 @@
+pkgbase = simbuto
+	pkgdesc = simple budgeting tool
+	pkgver = 0.1.20
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = pandoc
+	depends = python
+	depends = r-optparse
+	source = https://gitlab.com/nobodyinperson/simbuto/-/archive/v0.1.20/simbuto-v0.1.20.tar.gz
+	source = https://gitlab.com/nobodyinperson/m4-utils/-/archive/master/m4-utils-master.tar.gz
+	md5sums = 1dd39972461a65c8221a6b5d2cf79f28
+	md5sums = 52c5538bb2fc8adcd77c655352711f2f
+
+pkgname = simbuto
+
