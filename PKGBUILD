@@ -4,9 +4,9 @@
 # Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 pkgname=anarchism
-pkgver=15.1
-pkgrel=6
-_debpkgrel=11
+pkgver=15.3
+pkgrel=1
+_debpkgrel=1
 pkgdesc='Source of information regarding Anarchist (libertarian socialist) theory and practice.'
 arch=(any)
 license=(FDL)
@@ -15,7 +15,7 @@ options=(docs)
 depends=(xdg-utils)
 makedepends=(librsvg)
 source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/$pkgname\_$pkgver-$_debpkgrel\_all.deb)
-sha256sums=('1538cc6dae91bb6a4a0321fbea4e90131f4fad6f46d8ce93abcf85fdacf0e771')
+sha256sums=('a6b7299c14b0fa4e88918172987a0516cbaeb13f0a02a2a494b156892337a9b4')
 
 build() {
   cd $srcdir
