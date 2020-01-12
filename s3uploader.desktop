@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/opt/s3uploader/s3uploader
+Icon=s3uploader
+Terminal=false
+Type=Application
+Name=S3 Uploader
+Comment=A minimalistic UI to conveniently upload and download files from AWS S3
+Categories=Office;Utility;
+StartupNotify=true
