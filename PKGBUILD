@@ -2,22 +2,21 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt-build'
-pkgver=6.5.1
+pkgver=7.0.1
 pkgrel=1
 pkgdesc='Free cross-platform file archiver (compiles from source)'
 license=('GPL3')
 url='http://peazip.org'
 arch=('i686' 'x86_64')
-depends=( 'qt4pas' 'desktop-file-utils' 'balz' 'lpaq' 'paq8o' 'p7zip' 'upx' 'zpaq')
+depends=( 'qt4pas' 'desktop-file-utils' 'balz' 'lazarus-qt5' 'paq8o' 'p7zip' 'upx' 'zpaq')
 optdepends=('quad' 'unace')
-makedepends=('lazarus-qt4' 'icoutils')
+makedepends=('icoutils')
 provides=('peazip' 'peazip-qt')
 conflicts=('peazip' 'peazip-gtk2' 'peazip-gtk2-build' 'peazip-gtk2-portable' 'peazip-qt' 'peazip-qt-opensuse-latest')
 options=('!strip')
 install=peazip.install
 source=("https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.src.zip")
-sha256sums=('b106811311fbaf42ad5374520df2be8b20a545b80e6f8713a1f10e2e5a79d01e')
-sha512sums=('db930b704e26a8dbcf69dc00af7a9cff44fdbc397a56cc4efaca672cac8f55307d054d6e9ecd3b70ba2778043c8694ffcacc332a6d7d084f5fabcff7482a9c0a')
+sha512sums=('3c5affab0170e22b6666f86504b43a8c6e780ff2f32e1b175c0f59f8bc9d2263777dbafd9c8eeb0e0e4c5e63373bb044de74c42548ef3ea1e80f5f57f79d1967')
 
 build() {
   cd "$srcdir/peazip-$pkgver.src"
@@ -31,7 +30,7 @@ package() {
   _pkgres="$pkgdir/opt/peazip/res"
   install -Dm755 "$srcdir/peazip-$pkgver.src/peazip" "$pkgdir/opt/peazip/peazip"
   install -Dm755 "$srcdir/peazip-$pkgver.src/pea" "$_pkgres/pea"
-  install -Dm755 "$srcdir/peazip-$pkgver.src/pealauncher" "$_pkgres/pealauncher"
+  install -Dm755 "$srcdir/peazip-$pkgver.src/pealauncher.res" "$_pkgres/pealauncher"
   install -Dm644 "$srcdir/peazip.png" "$pkgdir/usr/share/pixmaps/peazip.png"
 
   cd "$srcdir/peazip-$pkgver.src/res"
