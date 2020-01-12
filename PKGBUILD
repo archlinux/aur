@@ -2,7 +2,7 @@
 
 pkgname=linvst2
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
