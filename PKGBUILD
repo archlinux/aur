@@ -1,5 +1,5 @@
 pkgname=chef-server
-pkgver=12.17.15
+pkgver=13.1.13
 pkgrel=1
 _ubunturel=1
 pkgdesc="The Chef server works with the Chef client as a central artifact store and distribution mechanism that manages scale, complexity, and safeguarding your systems. "
@@ -9,7 +9,7 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo chef-client chef-dk )
 source=("https://packages.chef.io/files/stable/chef-server/${pkgver}/ubuntu/16.04/chef-server-core_${pkgver}-${_ubunturel}_amd64.deb")
-sha256sums=('573c855ef7e8aed9feaebedf6a58c024730f835db5559ffef16f58b7141faed2')
+sha256sums=('6eee5a06ba3d605b08810ab4d696efba06654730f218c5c317d4a02d94ef9437')
 
 package() {
   cd "$srcdir"
