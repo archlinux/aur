@@ -3,7 +3,7 @@
 
 pkgname=rvm
 pkgbase=${pkgname}
-pkgver=1.29.3
+pkgver=1.29.9
 pkgrel=2
 pkgdesc='RVM is a command-line tool which allows you to easily install, manage, and work with multiple ruby environments from interpreters to sets of gems.'
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-install
         "rvm_init.sh"
         "rvm.sh"
         "rvmrc")
-sha256sums=('f6eb5b10cf6f544c5d75511fc9a34e32da2e8ff1882e0f50be13ea5a6db2b8e1'
+sha256sums=('fea24461e98d41528d6e28684aa4c216dbe903869bc3fcdb3493b6518fae2e7e'
             'f09f9a144a3d33409c1f394d7ba37f783b8034fbd6405e8536bf9bfec87c6af0'
             '48b6e852380c9e9b8d3b3c3ce8e50d397429dd1efeee06a75e121df1a2df47e2'
             'f9444e8c5817c4a59fc701b8a71cef0a7114a9dda549ad82c5800983f1a54738')
