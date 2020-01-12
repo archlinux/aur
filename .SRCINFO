@@ -1,0 +1,30 @@
+pkgbase = ocrfeeder
+	pkgdesc = GTK+ document layout analysis and optical character recognition application
+	pkgver = 0.8.1+87+g8615aff
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/OCRFeeder
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gnome-common
+	depends = ghostscript
+	depends = goocanvas
+	depends = gtk3
+	depends = gtkspell3
+	depends = iso-codes
+	depends = python-gobject
+	depends = python-odfpy
+	depends = python-pillow
+	depends = python-pyenchant
+	depends = python-reportlab
+	depends = python-sane
+	depends = unpaper
+	optdepends = tesseract: character recognition
+	optdepends = ocrad: character recognition
+	optdepends = gocr: character recognition
+	optdepends = cuneiform: character recognition
+	source = git+https://gitlab.gnome.org/GNOME/ocrfeeder.git#commit=8615aff3966dbfe24ed45eed6d34dc9b4e6b4e90
+	sha256sums = SKIP
+
+pkgname = ocrfeeder
+
