@@ -24,6 +24,7 @@ source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'sendmail-8.15.2-smtp-session-reuse-fix.patch'
         'sendmail-8.15.2-openssl-1.1.0-fix.patch'
         'sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch'
+        'sendmail-8.15.2-gethostbyname2.patch'
         'sendmail.conf'
         'sasl2.conf'
         'sendmail.sysusers'
@@ -32,11 +33,12 @@ source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'sm-client.service')
 depends=('db' 'cyrus-sasl')
 sha256sums=('24f94b5fd76705f15897a78932a5f2439a32b1a2fdc35769bb1a5f5d9b4db439'
-            '01c281630074be308139295836d38faee3d49656b8271df1d3f42e8506b3d751'
+            '01dc50a378f134e9e3a91f98a5a002a8fa6a0c69b32ceddf6fc29b40e0fb8be9'
             '03169f8983d200adf2422677bd4adce3b5887f33724778f16d7f58506eac0e05'
             'bc5a0de6c5434d8d46467f93d07b2bb5c7acd62f9dbce2490e0005d21b673250'
             '9991dd85428778cec0c2030bf49e6ddf6d3db6026c651f858d72891973537b0e'
             '746d8ae8dea54cb2599c02181c2ea28ab15b26ba5e1e3b0f9cfe907a0e7a1d22'
+            '656c76d42281afbb43fa628e03c4d725e94e6f34a16802427d3314e504086033'
             '39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580'
             '9b4d2d141191f6c9a18538f7acf65243cceb26359f88b64c92c1c4e8407398f0'
             '95531a87d42e30742ca71f7d7197403eb9d703a407a50c9fda1f909ed21e1010'
@@ -51,6 +53,7 @@ prepare() {
     patch -p1 < "${srcdir}"/sendmail-8.15.2-smtp-session-reuse-fix.patch
     patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-fix.patch
     patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch
+    patch -p1 < "${srcdir}"/sendmail-8.15.2-gethostbyname2.patch
     sed -i -e 's/CFGRP=bin/CFGRP=root/g' cf/cf/Makefile
     install -m644 -t devtools/Site "${srcdir}"/site.config.m4
 }
