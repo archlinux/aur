@@ -16,7 +16,7 @@ if test ! -z "${JAVA_HOME}"; then
     if test "${JAVA_HOME#*$GG_JAVA_VERSION}" != "${JAVA_HOME}"; then
         # system environment variable set to required, do nothing
         echo "Using java environment from JAVA_HOME: ${JAVA_HOME}" >&2
-        run_gg
+        run_gg "$@"
     else
         # unset JAVA_HOME
         echo "Unset JAVA_HOME for this run: ${JAVA_HOME}" >&2
@@ -28,7 +28,7 @@ fi
 if archlinux-java status | grep "default" | grep -q "${GG_JAVA_VERSION}"; then
     # required java version is set to default, do nothing
     echo "Using system enabled java environment" >&2
-    run_gg
+    run_gg "$@"
 fi
 
 # find valid environment
@@ -37,4 +37,4 @@ GG_JAVA_ENV="$(archlinux-java status | grep "${GG_JAVA_VERSION}" | awk '{ print 
 GG_JAVA_ENV="${GG_JAVA_ENV%/*}"
 export PATH="/usr/lib/jvm/${GG_JAVA_ENV}/jre/bin/:${PATH}"
 echo "Run with exported ${GG_JAVA_ENV}" >&2
-run_gg
+run_gg "$@"
