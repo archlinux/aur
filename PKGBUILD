@@ -2,7 +2,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=corestats
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A system resource viewer from the CoreApps family."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('1206562f1ede344f8d414da9df892a47')
+md5sums=('b6e4698f19b62acf878651a16044329a')
 
 prepare() {
   mkdir -p build
