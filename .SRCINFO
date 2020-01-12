@@ -1,6 +1,6 @@
 pkgbase = btor2tools-git
 	pkgdesc = A generic parser and tool package for the BTOR2 format.
-	pkgver = r60.1df768d
+	pkgver = r77.9831f99
 	pkgrel = 1
 	url = https://github.com/Boolector/btor2tools
 	arch = any

@@ -2,7 +2,7 @@
 
 _pkgname=btor2tools
 pkgname=btor2tools-git
-pkgver=r60.1df768d
+pkgver=r77.9831f99
 pkgrel=1
 pkgdesc="A generic parser and tool package for the BTOR2 format."
 arch=('any')
@@ -25,9 +25,9 @@ prepare() {
 }
 
 build() {
-
   cd "$srcdir/btor2tools"
-  CFLAGS="" ./configure.sh -shared -fPIC
+  CFLAGS="" ./configure.sh
+  cd build
   make
 }
 
@@ -36,8 +36,7 @@ package() {
   mkdir -p "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/include/btor2parser"
 
-  install -m755 btor2tools/bin/* "$pkgdir/usr/bin/"
-  install -m755 btor2tools/build/*.so "$pkgdir/usr/lib/"
-  install -m755 btor2tools/build/*.a "$pkgdir/usr/lib/"
+  install -m755 btor2tools/build/bin/* "$pkgdir/usr/bin/"
+  install -m755 btor2tools/build/lib/*.so "$pkgdir/usr/lib/"
   install -m755 btor2tools/src/btor2parser/btor2parser.h  "$pkgdir/usr/include/btor2parser"
 }
