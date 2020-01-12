@@ -5,14 +5,14 @@
 
 # Maintainer: Anthony HAMON <hamon.anth@gmail.com>
 pkgname=yogo
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Interact with yopmail from command-line"
 arch=('x86_64' 'i686')
 url="https://github.com/antham/yogo"
 license=('GPL')
-source=("https://github.com/antham/yogo/releases/download/v2.0.4/yogo_linux_386")
-md5sums=("d8a624bd7ae4c27d16098094925b3fd7")
+source=("https://github.com/antham/yogo/releases/download/v2.0.5/yogo_linux_386")
+md5sums=("e6a8c147ff5f8010f9bbdffcfafdc1ac")
 
 package() {
     install -Dm755 "yogo_linux_386" "$pkgdir/usr/bin/$pkgname"
