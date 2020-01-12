@@ -1,7 +1,7 @@
-# Maintainer: Anatol Pomozov anatol dot pomozov at g mail
+# Contributor: Anatol Pomozov anatol dot pomozov at g mail
 
 pkgname=v7
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc='Simple and fast JavaScript engine written in C'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ license=(GPL2)
 depends=(glibc)
 url='https://github.com/cesanta/v7'
 source=(v7-$pkgver.tar.gz::https://github.com/cesanta/v7/archive/$pkgver.tar.gz)
-sha1sums=('e82f67caba62b9cde4f41a5a890217661aaf0161')
+sha1sums=('a0457ee409486e0e14516ddf85fb51ea6d56b9de')
 
 build() {
   cd v7-$pkgver
