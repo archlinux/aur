@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/lib/e4thcom/e4thcom "$@"

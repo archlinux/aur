@@ -1,0 +1,14 @@
+pkgbase = e4thcom
+	pkgdesc = Terminal for Embedded Forth Systems
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://wiki.forth-ev.de/doku.php/en:projects:e4thcom
+	arch = x86_64
+	license = GPL3
+	source = https://wiki.forth-ev.de/lib/exe/fetch.php/projects:e4thcom:e4thcom-0.8.0-64.tar.gz
+	source = e4thcom
+	sha256sums = 41560a3e2a013c850b853fb7079d3ee9820020ea8f34d3af95b2ed733a193035
+	sha256sums = e730ca08860806a2f4ad029adb9129a76499a0c661202f104141e8bd31ca9a74
+
+pkgname = e4thcom
+
