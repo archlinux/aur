@@ -3,7 +3,7 @@ Description=Peerflix Server
 
 [Service]
 Type=forking
-User=root
+User=peerflix
 ExecStart=/usr/bin/peerflix-server
 
 [Install]

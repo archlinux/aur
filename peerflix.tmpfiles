@@ -1,0 +1,3 @@
+Z /usr/lib/node_modules/peerflix-server 0755 peerflix peerflix
+d /var/lib/peerflix 0777 peerflix peerflix
+

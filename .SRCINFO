@@ -12,8 +12,12 @@ pkgbase = peerflix-server
 	options = !strip
 	source = peerflix-server.service
 	source = peerflix-server.sh
-	md5sums = c16f83bd40fe9905b51c3ffd073bbcd0
+	source = peerflix.sysusers
+	source = peerflix.tmpfiles
+	md5sums = db2b8fff218d2154a4086fe95a82bacc
 	md5sums = ea9702820f92bef0636a4f01d13dd348
+	md5sums = baf787b4e3fea8c0ee16736a998cd776
+	md5sums = 3d88f37f81f89b39e071d7cd06fcf22a
 
 pkgname = peerflix-server
 
