@@ -2,17 +2,17 @@
 # Maintainer: Jack Deng
 pkgname=thief-book
 _name=Thief-Book
-pkgver=1.0.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='一款真正的跨平台摸鱼神器'
 arch=('x86_64' 'i686')
 url='https://github.com/cteamx/Thief-Book'
 license=('MIT')
 provides=('thief-book')
-depends=('electron2')
+depends=('electron')
 makedepends=('jq' 'moreutils' 'yarn')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/cteamx/Thief-Book/archive/$pkgver.tar.gz")
-sha256sums=('c8c69c4ff933390269d0187628912f8d8f281fc1ced53c545be5051000739f5e')
+sha256sums=('a1cb2f71131c56452ad337c0b5382371f2edd59ea8215a34cc21966dc465630c')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
