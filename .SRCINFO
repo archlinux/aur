@@ -1,7 +1,7 @@
 pkgbase = sgtk-menu
 	pkgdesc = GTK menu for sway and i3
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nwg-piotr/sgtk-menu
 	arch = x86_64
 	license = GPL3
