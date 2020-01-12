@@ -1,0 +1,153 @@
+--- vwm/modules/vwmterm3/events.h
++++ vwm/modules/vwmterm3/events.h
+@@ -4,7 +4,7 @@
+ #include <inttypes.h>
+ 
+ #ifdef _VIPER_WIDE
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #else
+ #include <curses.h>
+ #endif
+
+--- vwm/modules/vwmterm3/pt_thread.c
++++ vwm/modules/vwmterm3/pt_thread.c
+@@ -20,7 +20,7 @@
+ #include <unistd.h>
+ 
+ #ifdef _VIPER_WIDE
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #else
+ #include <curses.h>
+ #endif
+
+--- vwm/modules/vwmterm3/vwmterm.h
++++ vwm/modules/vwmterm3/vwmterm.h
+@@ -7,7 +7,7 @@
+ #include <vterm.h>
+ 
+ #ifdef _VIPER_WIDE
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #else
+ #include <curses.h>
+ #endif
+
+--- vwm/keycodes/keycodes.c
++++ vwm/keycodes/keycodes.c
+@@ -4,7 +4,7 @@
+ #include <string.h>
+ #include <stdint.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ uint32_t keystroke_pop(int *retval);
+ 
+
+--- vwm/bkgd.h
++++ vwm/bkgd.h
+@@ -1,7 +1,7 @@
+ #ifndef _H_VWM_BKGD_
+ #define _H_VWM_BKGD_
+ 
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ 
+ void    vwm_bkgd_simple_normal(int screen_id);
+ void    vwm_bkgd_simple_winman(int screen_id);
+
+--- vwm/clock.c
++++ vwm/clock.c
+@@ -1,6 +1,6 @@
+ #include <time.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <protothread.h>
+ 
+
+--- vwm/mainmenu.h
++++ vwm/mainmenu.h
+@@ -1,7 +1,7 @@
+ #ifndef _H_VWM_MENU_
+ #define _H_VWM_MENU_
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ // #include <ncursesw/menu.h>
+ 
+ #define VWM_HOTKEY_MENU     (27 | (96 << 8))
+
+--- vwm/panel.c
++++ vwm/panel.c
+@@ -20,7 +20,7 @@
+ #include <string.h>
+ #include <time.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <viper.h>
+ 
+
+--- vwm/poll_input_thd.c
++++ vwm/poll_input_thd.c
+@@ -1,6 +1,6 @@
+ #include <time.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <protothread.h>
+ 
+
+--- vwm/panel.h
++++ vwm/panel.h
+@@ -3,7 +3,7 @@
+ 
+ #include <inttypes.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include "list.h"
+ 
+
+--- vwm/private.h
++++ vwm/private.h
+@@ -4,7 +4,7 @@
+ #include <inttypes.h>
+ #include <signal.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <libconfig.h>
+ #include <protothread.h>
+
+--- vwm/vwm.h
++++ vwm/vwm.h
+@@ -5,7 +5,7 @@
+ 
+ #include <sys/types.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include <protothread.h>
+ #include <viper.h>
+
+--- vwm/winman.h
++++ vwm/winman.h
+@@ -3,7 +3,7 @@
+ 
+ #include <inttypes.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ 
+ #define VWM_HOTKEY_WM       (27 | (119 << 8))

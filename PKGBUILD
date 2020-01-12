@@ -1,48 +1,50 @@
-# Contributor:  TDY <tdy@archlinux.info>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: aksr <aksr at t-com dot me>
+# Contributor: TDY <tdy@archlinux.info>
 # Contributor: Dan Vratil <progdan@progdansoft.com>
-# Maintainer:  aksr <aksr at t-com dot me>
-pkgname=vwm
-true && pkgname=('vwm' 'vwm-modules-sysmon' 'vwm-modules-vwmterm3')
-pkgver=2.1.3
+
+pkgbase=vwm
+pkgname=('vwm' 'vwm-modules-vwmterm3')
+pkgver=3.3.1
 pkgrel=1
+_commit=606cca3e638430724441b7316409dd2fb43e23fe
 pkgdesc="Viper Window Manager"
 arch=('i686' 'x86_64')
-url="http://vwm.sourceforge.net/"
+url="http://www.console-craze.com/hosted-software/vwm/"
 license=('GPL')
-depends=('glibc>=2.8' 'libpseudo>=1.1.0' 'ncurses>=5.4' 'libviper>=1.4.5' 'gpm'
-         'libgtop' 'libvterm-vwm')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('2a5c1ecba9db9a6f85f3e3b358136179')
-sha1sums=('3abef5b357a7f09eddffeefd9f5338a2d5de76e4')
-sha256sums=('4e7545cf635247954cc08f4433a2cde8edb595a53dc2e8dae9de72ec3c8ebce4')
+depends=('protothread' 'libviper>=1.4.5' 'gpm' 'libvterm-vwm' 'libconfig')
+makedepends=('cmake' 'git')
+source=("git+https://github.com/TragicWarrior/${pkgbase}.git#commit=${_commit}"
+        "ncurses-import.patch"
+        "protothread-cmake.patch")
+sha256sums=('SKIP'
+            '989e68bf68ed7756467220e4642c03bf72083c9a0fa0d59aad01571c1d9c2e3a'
+            '45f7ba28cad577da8f23006b37be7bf33850af216ae34e6ad849011659a47273')
+
+
+prepare() {
+  mkdir -p build
+  patch -Np0 -i ncurses-import.patch
+  patch -Np0 -i protothread-cmake.patch
+}
 
 build() {
-  cd "$srcdir/${pkgname%%-*}"
-  sed -i 's/$(DEFS)/& ${includedir}/' modules/sysmon/Makefile
-  make prefix=/usr
-  make prefix=/usr -C modules/sysmon
-  make prefix=/usr -C modules/vwmterm3
+  cd build
+  cmake ../${pkgbase} \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+  #make prefix=/usr -C modules/vwmterm3
 }
 
 package_vwm() {
-  cd "$srcdir/${pkgname%%-*}"
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.h "$pkgdir/usr/include/$pkgname.h"
-}
-
-package_vwm-modules-sysmon() {
-  true && depends=('vwm')
-  true && pkgdesc="A system monitor module for vwm."
-
-  install -Dm755 "$srcdir/${pkgname%%-*}/modules/sysmon/sysmon.so" \
-    "$pkgdir/usr/lib/$pkgname/modules/sysmon.so"
+  cd build
+  make DESTDIR="${pkgdir}" install
 }
 
 package_vwm-modules-vwmterm3() {
-  true && depends=('vwm')
-  true && pkgdesc="A terminal shell module for vwm."
+  depends=('vwm')
+  pkgdesc="terminal shell module for vwm"
 
   install -Dm755 "$srcdir/${pkgname%%-*}/modules/vwmterm3/vwmterm3.so" \
     "$pkgdir/usr/lib/$pkgname/modules/vwmterm3.so"
 }
-

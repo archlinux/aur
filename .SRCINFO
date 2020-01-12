@@ -1,26 +1,28 @@
 pkgbase = vwm
 	pkgdesc = Viper Window Manager
-	pkgver = 2.1.3
+	pkgver = 3.3.1
 	pkgrel = 1
-	url = http://vwm.sourceforge.net/
+	url = http://www.console-craze.com/hosted-software/vwm/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = glibc>=2.8
-	depends = libpseudo>=1.1.0
-	depends = ncurses>=5.4
+	makedepends = cmake
+	makedepends = git
+	depends = protothread
 	depends = libviper>=1.4.5
 	depends = gpm
-	depends = libgtop
 	depends = libvterm-vwm
-	source = http://downloads.sourceforge.net/vwm/vwm-2.1.3.tar.gz
-	md5sums = 2a5c1ecba9db9a6f85f3e3b358136179
-	sha1sums = 3abef5b357a7f09eddffeefd9f5338a2d5de76e4
-	sha256sums = 4e7545cf635247954cc08f4433a2cde8edb595a53dc2e8dae9de72ec3c8ebce4
+	depends = libconfig
+	source = git+https://github.com/TragicWarrior/vwm.git#commit=606cca3e638430724441b7316409dd2fb43e23fe
+	source = ncurses-import.patch
+	source = protothread-cmake.patch
+	sha256sums = SKIP
+	sha256sums = 989e68bf68ed7756467220e4642c03bf72083c9a0fa0d59aad01571c1d9c2e3a
+	sha256sums = 45f7ba28cad577da8f23006b37be7bf33850af216ae34e6ad849011659a47273
 
 pkgname = vwm
 
-pkgname = vwm-modules-sysmon
-
 pkgname = vwm-modules-vwmterm3
+	pkgdesc = terminal shell module for vwm
+	depends = vwm
 
