@@ -1,0 +1,71 @@
+--- libvterm/demo/vshell.c
++++ libvterm/demo/vshell.c
+@@ -32,7 +32,7 @@
+ // #include <sys/ioctl.h>
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FreeBSD__
+
+--- libvterm/mouse_driver.h
++++ libvterm/mouse_driver.h
+@@ -4,7 +4,7 @@
+ #include <signal.h>
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FreeBSD__
+
+--- libvterm/vterm.h
++++ libvterm/vterm.h
+@@ -12,7 +12,7 @@
+ #include <sys/types.h>
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FreeBSD__
+
+--- libvterm/vterm_private.h
++++ libvterm/vterm_private.h
+@@ -8,7 +8,7 @@
+ #include <sys/types.h>
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FREEBSD__
+
+--- libvterm/vterm_render.h
++++ libvterm/vterm_render.h
+@@ -5,7 +5,7 @@
+ #ifndef NOCURSES
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FreeBSD__
+
+--- libvterm/vterm_utf8.h
++++ libvterm/vterm_utf8.h
+@@ -5,7 +5,7 @@
+ #ifndef NOCURSES
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FreeBSD__

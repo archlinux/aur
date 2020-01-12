@@ -1,13 +1,18 @@
 pkgbase = libvterm-vwm
 	pkgdesc = Terminal emulation library to mimic VT100 and rxvt capabilities
-	pkgver = 0.99.7
+	pkgver = 9.0
 	pkgrel = 1
-	url = http://libvterm.sourceforge.net
+	url = https://github.com/TragicWarrior/libvterm
 	arch = i686
 	arch = x86_64
 	license = GPLv2
-	source = http://superb-dca2.dl.sourceforge.net/project/libvterm/libvterm-0.99.7.tar.gz
-	md5sums = ac68b77eb33086f7532ab303245efb77
+	makedepends = cmake
+	makedepends = git
+	depends = ncurses
+	source = git+https://github.com/TragicWarrior/libvterm.git#commit=65c8fc8ed27f361851b56e613fded1e837e54d62
+	source = ncurses-import.patch
+	sha256sums = SKIP
+	sha256sums = 43977c763e4f4179d26f1702280bc67bfa3841b775827100c95cd9569b768c22
 
 pkgname = libvterm-vwm
 
