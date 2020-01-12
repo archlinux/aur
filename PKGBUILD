@@ -1,7 +1,7 @@
 # Maintainer: Martin Kröning <mkroening@hotmail.de>
 pkgname=moodledesktop-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.7.2
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Moodle Desktop is our solution to accessing your Moodle courses on desktop or Surface tablets."
 arch=('x86_64' 'i686')
@@ -12,9 +12,9 @@ makedepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source_x86_64=("https://download.moodle.org/desktop/linux/$_pkgname-linux-64-v372.tar.gz")
-sha256sums_x86_64=('d93fa684e0f233271631131999b288564ba5d44b6833f312697f60c5e6bffcba')
+sha512sums_x86_64=('fca4154167e783c0f1ebe581da5723c325611e032ab39871a4d5577bd130cd684367012b0e59858283bd4d52ea9f1e2cda8c742955f654327cde5804d2fe17ff')
+sha512sums_i686=('42e1f46a0aaf977a6b1e7bbfa5c5722490a36a2e08855326265146c9156c138da32f8ab31704d4bcef7b7193470f4f0c99cf8e944446b0bb22887b5db5d3483c')
 source_i686=("https://download.moodle.org/desktop/linux/$_pkgname-linux-32-v372.tar.gz")
-sha256sums_i686=('8165914a24ca2815199a961998f86b9f39651b4f1130fe1dd80f079d14e0cb74')
 
 if [ ${CARCH} = i686 ]; then
   _APPIMAGE_ARCH=ia32
