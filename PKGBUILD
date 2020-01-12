@@ -2,7 +2,7 @@
 
 basename=compressonator
 pkgname=$basename-git
-pkgver=v3.2.4691+39+g492b0956
+pkgver=v3.2.4691+40+gb5c3e376
 pkgrel=1
 pkgdesc="Tool suite for Texture and 3D Model Compression, Optimization and Analysis. Lubosz's Linux GUI port branch."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 replaces=('compressonator-cli-bin')
 conflicts=('compressonator-cli-bin')
 makedepends=('cmake' 'git')
-depends=('gcc-libs' 'draco-git')
+depends=('qt5-webengine' 'boost-libs' 'opencv' 'draco-git')
 source=("git+https://github.com/lubosz/Compressonator.git#branch=gui-cmake-qt5-linux")
 sha256sums=('SKIP')
 
@@ -36,4 +36,6 @@ package() {
   cd "${srcdir}/Compressonator/Compressonator/"
   DESTDIR="${pkgdir}" make install
   mv ${pkgdir}/usr/bin/CompressonatorCLI-bin ${pkgdir}/usr/bin/compressonator-cli
+
+  install -Dm644 "${srcdir}"/Compressonator/Compressonator/License/GUILicense.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
