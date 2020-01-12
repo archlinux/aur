@@ -1,10 +1,9 @@
-# $Id: PKGBUILD 281743 2016-11-21 14:10:31Z lcarlier $
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 
 pkgname=xf86-video-s3virge
-pkgver=1.10.7
-pkgrel=3
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="X.org S3 Virge video driver"
 arch=(i686 x86_64)
 url="https://xorg.freedesktop.org/"
@@ -13,7 +12,7 @@ depends=('glibc')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=23')
 conflicts=('xorg-server<1.19' 'X-ABI-VIDEODRV_VERSION<23' 'X-ABI-VIDEODRV_VERSION>=24')
 source=(${url}/releases/individual/driver/${pkgname}-${pkgver}.tar.bz2{,.sig})
-sha256sums=('5dbe68de05483f902fdc48e97ce8d9fdd1d2ade14cb53c0c3642f0259f65a4da'
+sha256sums=('04c9ddff2d86f8ffea348697843db02f033075089f89d051f000b87e74d9a119'
             'SKIP')
 validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
 
