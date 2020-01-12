@@ -1,20 +1,22 @@
 pkgbase = yabs
-	pkgdesc = A software for handling customers, articles, quotes and billings.
-	pkgver = 1.2.7
+	pkgdesc = software for handling customers, articles, quotes and billings
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/anti43/openyabs
 	arch = any
 	license = GPL3
 	makedepends = unzip
 	depends = java-environment
-	source = https://github.com/anti43/openyabs/releases/download/release-01-17/yabs-1.2.7-linux-windows.zip
+	source = https://github.com/anti43/openyabs/releases/download/release-1.3.2/yabs-1.3.2-linux-windows.zip
 	source = https://raw.githubusercontent.com/anti43/openyabs/master/src/mpv5/resources/images/icon2_128.png
 	source = yabs
 	source = yabs.desktop
-	sha256sums = 480f7be86a4c8089115b75a3e072518ba170d18da8278cc5c2f26296fd6e9eb7
+	source = https://raw.githubusercontent.com/anti43/openyabs/release-1.3.2/install/script/yabs.sh
+	sha256sums = b94e5acdf2206cb0f3652970e8d260bdb7a7d0efa3867e89eef306912697e5e5
 	sha256sums = c08369e8fc7cf2dae5da7a2b9c572f7de2ca1edc0fd2ab7c8fb66e5e91668696
 	sha256sums = 5b47b14ea6d3cee868e8171f20226f3999e3551d6bcef7673b3b64cd34e96473
 	sha256sums = 111f4dbd9ffeb9cea2604e572057969ae3a79d4db3a29e211c7498aab90040f2
+	sha256sums = 9c6dbb78f2b8d98beb58be2dcdb3a3b5371e43fb66fb222e56329dc7e948fb68
 
 pkgname = yabs
 
