@@ -6,13 +6,13 @@
 # Contributor: M0Rf30
 
 pkgname=virtualbox-beta-bin
-pkgver=6.0.0.127378
-_pkgver=6.0.0_RC1
-_build=127378
+pkgver=6.1.0.134891
+_pkgver=6.1.0_RC1
+_build=134891
 _rev=75527
 pkgrel=3
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
 depends=('dkms' 'fontconfig' 'gcc' 'libgl' 'libidl2' 'libxcursor' 'libxinerama'
@@ -39,22 +39,9 @@ source=("https://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBoxSDK-${_
         'do_dkms'
         'dkms.conf'
         '009-include-path.patch')
-source_i686=("http://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBox-${_pkgver}-${_build}-Linux_x86.run")
-source_x86_64=("http://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBox-${_pkgver}-${_build}-Linux_amd64.run")
+source=("http://download.virtualbox.org/virtualbox/${_pkgver}/VirtualBox-${_pkgver}-${_build}-Linux_amd64.run")
 noextract=("VirtualBoxSDK-${_pkgver}-${_build}.zip")
-sha256sums=('550f83ee2ee3844fdf4718ac4aa1f36fd22ac2fa7658779a1911060cf5aa9326'
-            '23e3e0e6abfaa69bf0aa046c0ee070d19435b97cb4bfbb16bba65a2783502154'
-            '815f6e2e3ab687356aad0e6f59eef6e266514fb12a6b569d239d834e0a480f37'
-            '99deff35d8a600f20223b96ba409451834e58ac21a589a989dd82a2d6fe006ae'
-            '0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
-            '69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2'
-            '656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56'
-            '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
-            'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
-            'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
-            '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f')
-sha256sums_i686=('beb78333278ac38d219b343c2606da4053cfd0977e16375488d928df20eae9c0')
-sha256sums_x86_64=('74b2c17c33e48ec90a505046e10710b79906488ef1e2cf4f3427504762686f61')
+sha256sums=('4a87e8d6d33365757ed1549a46c6f8aa0bf49cdfaeff3960379a1ec7526c41c5')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
