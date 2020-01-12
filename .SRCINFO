@@ -1,6 +1,6 @@
 pkgbase = mikutter
 	pkgdesc = a moest twitter client
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = http://mikutter.hachune.net/
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = mikutter
 	license = MIT
 	optdepends = alsa-utils: sound notification support
 	optdepends = libnotify: notify support
-	source = https://mikutter.hachune.net/bin/mikutter-4.0.2-x86_64.AppImage
+	source = https://mikutter.hachune.net/bin/mikutter-4.0.3-x86_64.AppImage
 	source = mikutter.desktop
-	md5sums = b7a01058072e16cfd5b4cfa6bb25d8c3
+	md5sums = e04509892dd5226e2403c2dc1a0b35b4
 	md5sums = 82f7f4d37380871d3fde314fe51cf406
 
 pkgname = mikutter
