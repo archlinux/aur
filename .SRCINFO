@@ -1,6 +1,6 @@
 pkgbase = sage-numerical-backends-gurobi
 	pkgdesc = Gurobi mixed integer linear programming backend for SageMath
-	pkgver = 9.0b12
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/mkoeppe/sage-numerical-backends-gurobi
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = sage-numerical-backends-gurobi
 	makedepends = cython
 	depends = sagemath
 	depends = gurobi
-	source = sage-numerical-backends-gurobi-9.0b12.tar.gz::https://github.com/mkoeppe/sage-numerical-backends-gurobi/archive/v9.0b12.tar.gz
-	sha256sums = 2c1ca86a9460b605d6228dc68c753b102f39225bb096959ad0edbf01ef372d1f
+	source = sage-numerical-backends-gurobi-9.0.0.tar.gz::https://github.com/mkoeppe/sage-numerical-backends-gurobi/archive/v9.0.0.tar.gz
+	sha256sums = 3affabdd8765bb123c9dd3585bfd94470d91391aaf361c054917746e45a2eca1
 
 pkgname = sage-numerical-backends-gurobi
 
