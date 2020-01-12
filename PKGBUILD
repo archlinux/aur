@@ -2,14 +2,14 @@
 pkgname=freerdp-1.1.0
 _pkgname=freerdp
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free RDP client version 1.1.0 with patches applied by Canonical for Ubuntu bionic version of package"
 arch=('i686' 'x86_64')
 url="http://freerdp.sourceforge.net"
 license=('GPL')
 depends=('openssl-1.0' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'libpulse')
-makedepends=('krb5' 'cmake' 'damageproto' 'xmlto' 'docbook-xsl')
+makedepends=('git' 'krb5' 'cmake' 'xorgproto' 'xmlto' 'docbook-xsl')
 conflicts=('freerdp' 'freerdp-git')
 provides=('freerdp')
 source=(git+https://github.com/FreeRDP/FreeRDP.git#commit=440916eae2e07463912d5fe507677e67096eb083

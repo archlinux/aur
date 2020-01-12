@@ -1,14 +1,15 @@
 pkgbase = freerdp-1.1.0
 	pkgdesc = Free RDP client version 1.1.0 with patches applied by Canonical for Ubuntu bionic version of package
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://freerdp.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = krb5
 	makedepends = cmake
-	makedepends = damageproto
+	makedepends = xorgproto
 	makedepends = xmlto
 	makedepends = docbook-xsl
 	depends = openssl-1.0
