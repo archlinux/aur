@@ -1,7 +1,7 @@
 # Maintainer: Hannes Schulze <projects@guidedlinux.org>
 pkgname=archmaker
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly and easily create your own arch-based GNU/Linux-distribution"
 arch=('x86_64')
 url="https://archmaker.guidedlinux.org/"
@@ -10,8 +10,8 @@ depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-quickcontro
 makedepends=('git')
 provides=('archmaker')
 conflicts=('archmaker')
-source=("$pkgname-$pkgver"::'git+https://github.com/guidedlinux/archmaker#branch=qtrewrite')
-md5sums=('SKIP')
+source=("$pkgname-$pkgver"::'git+https://bitbucket.org/guidedlinux/archmaker#branch=qtrewrite')
+sha512sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
