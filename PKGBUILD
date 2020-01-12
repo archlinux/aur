@@ -2,7 +2,7 @@
 
 pkgname=sia-ui
 _pkgname=Sia-UI
-pkgver=1.4.1.2
+pkgver=1.4.2
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -11,7 +11,7 @@ url="https://sia.tech"
 license=('MIT')
 depends=('gconf' 'gtk2' 'nss' 'libxss')
 source=("https://sia.tech/releases/Sia-UI-${_pkgver}.AppImage")
-sha256sums=('70c9248cc1881786499f714e4b63a5a453ba97522a5b543f60bfa76c233e38bb')
+sha256sums=('5727b01e0576201c17156078c99d8f8c810d5b73a682c99a4f64f3ec2212bec5')
 
 package() {
   cd $srcdir
