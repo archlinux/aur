@@ -1,20 +1,28 @@
 --- conf/acng.conf	2014-01-04 15:25:29.000000000 +0100
 +++ conf/acng.conf.arch	2014-01-07 14:55:37.491160935 +0100
 @@ -79,7 +79,7 @@
- # used with inetd bridge or cron client.
+ #
  # Default: not set, UNIX socket bridge is disabled.
  #
 -# SocketPath:/var/run/apt-cacher-ng/socket
 +SocketPath:/run/apt-cacher-ng/socket
- 
+
  # If set to 1, makes log files be written to disk on every new line. Default
  # is 0, buffers are flushed after the client disconnects. Technically,
-@@ -99,7 +99,7 @@
+@@ -111,7 +111,7 @@
  # Store the pid of the daemon process in the specified text file.
  # Default: disabled
  #
 -# PidFile: /var/run/apt-cacher-ng/pid
 +PidFile: /run/apt-cacher-ng/pid
- 
+
  # Forbid outgoing connections and work without an internet connection or
  # respond with 503 error where it's not possible.
+@@ -234,6 +234,7 @@
+ # To see examples of the expected syntax, run: apt-cacher-ng -p debug=1
+ #
+ # PfilePatternEx:
++PfilePattern = .(.d?deb|.db|.rpm|.drpm|.dsc|.tar(.gz|.bz2|.lzma|.xz|.zst)(.gpg)?|.diff(.gz|.bz2|.lzma|.zst|.xz)|.jigdo|.template|changelog|copyright|.udeb|.debdelta|.diff/..gz|(Devel)?ReleaseAnnouncement(\?.)?|[a-f0-9]+-(susedata|updateinfo|primary|deltainfo).xml.gz|fonts/(final/)?[a-z]+32.exe(\?download.)?|/dists/./installer-[^/]+/[0-9][^/]+/images/.)$
+ # VfilePatternEx:
+ # SPfilePatternEx:
+ # SVfilePatternEx:

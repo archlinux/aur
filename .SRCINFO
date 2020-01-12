@@ -1,7 +1,7 @@
 pkgbase = apt-cacher-ng
 	pkgdesc = A caching proxy specialized for package files.
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.unix-ag.uni-kl.de/~bloch/acng/
 	install = apt-cacher-ng.install
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = apt-cacher-ng
 	source = apt-cacher-ng.service.patch
 	source = apt-cacher-ng.tmpfile
 	md5sums = 8f9f99056e3e9969c4ce570611cb5216
-	md5sums = 180e14417a70642a53c77bcb6a7b7292
+	md5sums = 060f1278f9446437cc70da335cd24b19
 	md5sums = 9645bdcd30a6b0ddc956c2a48c7a27ff
 	md5sums = 29979b8064ff52aa24017b42c37e6bfb
 
