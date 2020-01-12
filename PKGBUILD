@@ -3,7 +3,7 @@
 
 _pkgbase=r8101
 pkgname=r8101-dkms
-pkgver=1.034.02
+pkgver=1.035.01
 pkgrel=1
 pkgdesc="RTL810xE Fast Ethernet Driver (DKMS) (MANUAL DOWNLOAD)"
 arch=('x86_64')
@@ -18,6 +18,8 @@ conflicts=("${_pkgbase}")
 # The current setting is NOT a valid URL
 source=("${url}/${_pkgbase}-${pkgver}.tar.bz2"
         'dkms.conf')
+sha512sums=('82a194498854885ff705070cf99922e0afd38074fe8cb17052a35ad835329d0cdda20a8fb87031cd59b2a3a9a6a44b8e3ed1ee5f8890f58229426051b460d727'
+            'ab9d83c05c2c0788d253235c29bbd6f4134b14f36294acb80b35105795872d5e786bcb7ec1e579b6e4d4796ae311f00d851c5b3ed900ab8c525d65203811c8f6')
 
 #prepare() {
 #  cd "r8101-$pkgver"
@@ -39,5 +41,3 @@ package() {
   cp -r ${_pkgbase}-${pkgver}/src ${_pkgbase}-${pkgver}/Makefile \
         "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
 }
-sha256sums=('f2626f4230eb0c8bd8811929e4d3ae076f7048ff5ba9a4b1cfea5205ba95d895'
-            '2846e89fe3fd68c64c71a0f1150873a061571acc63e65cca6d825df7985ad7b5')
