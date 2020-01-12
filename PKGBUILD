@@ -1,6 +1,6 @@
 # Maintainer: David Donahue <david at donahue6 dot us>
 pkgname=repocalc
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An ncurses RPN calculator"
 arch=('any')
