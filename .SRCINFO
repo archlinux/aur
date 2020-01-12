@@ -1,0 +1,20 @@
+pkgbase = developers-chamber
+	pkgdesc = Python developers utility library
+	pkgver = 0.0.25
+	pkgrel = 1
+	url = https://github.com/druids/developers-chamber
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-boto3
+	depends = python-docker
+	depends = python-click
+	depends = python-gitpython
+	depends = python-requests
+	depends = python-click-completion
+	source = git+https://github.com/druids/developers-chamber.git
+	sha512sums = SKIP
+
+pkgname = developers-chamber
+
