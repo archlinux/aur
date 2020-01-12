@@ -1,7 +1,7 @@
 pkgbase = aspell-eo
 	pkgdesc = Esperanto dictionary for aspell
 	pkgver = 2.1.20000225a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://aspell.net/
 	arch = x86_64
 	license = GPL
