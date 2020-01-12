@@ -1,6 +1,6 @@
 pkgbase = vvvvvv-git
 	pkgdesc = A retro-styled 2D platformer
-	pkgver = 20200110.146cdde
+	pkgver = 20200111.84320d2
 	pkgrel = 1
 	url = https://thelettervsixtim.es/
 	arch = i686

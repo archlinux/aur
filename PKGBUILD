@@ -3,7 +3,7 @@
 
 pkgname=vvvvvv-git
 binname=vvvvvv
-pkgver=20200110.146cdde
+pkgver=20200111.84320d2
 _pkgver=git
 _databin=vvvvvv-mp-11192019-bin
 pkgrel=1
@@ -54,13 +54,8 @@ package() {
   # Legal considerations for inclusion of data.zip
   sed --silent '38,50p' ../README.md > \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-data.md"
-  if [ "${CARCH}" = "x86_64" ]; then
-    install -m755 ${binname}.x86_64 \
-        "${pkgdir}/opt/${binname}/${binname}"
-  else
-    install -m755 ${binname}.x86 \
-        "${pkgdir}/opt/${binname}/${binname}"
-  fi
+  install -m755 ${binname^^} \
+    "${pkgdir}/opt/${binname}/${binname}"
 
   cd "${srcdir}/data"
   install -m644 -t "${pkgdir}/opt/${binname}" \
