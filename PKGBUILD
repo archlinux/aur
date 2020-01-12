@@ -1,7 +1,7 @@
 # Maintaner: fenuks
 
 pkgname=vue-language-server
-pkgver=0.0.65
+pkgver=0.0.67
 pkgrel=1
 pkgdesc="Language server protocol implementation for Vue"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://www.npmjs.com/package/${pkgname}"
 license=('MIT')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-$pkgver.tgz")
 noextract=(${pkgname}-$pkgver.tgz)
-sha256sums=('06f89106ee27bb4aa242e364e890731f4c905f3fa6fa0db69256d2ff0c09bc27')
+sha256sums=('f442e46b00052fd0d3e50e833f1f36513e165b3277bcbb3592d253424ca5e8f9')
 options=('!emptydirs')
 provides=('vue-language-server')
 
