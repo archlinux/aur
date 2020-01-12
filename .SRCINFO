@@ -1,18 +1,19 @@
 pkgbase = r128gain
 	pkgdesc = Fast audio loudness (ReplayGain / R128) scanner & tagger
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/desbma/r128gain
 	arch = any
 	license = LGPL
 	depends = ffmpeg
 	depends = python
 	depends = python-crcmod
+	depends = python-ffmpeg
 	depends = python-mutagen
 	depends = python-setuptools
 	depends = python-tqdm
-	source = r128gain-0.9.3.tar.gz::https://github.com/desbma/r128gain/archive/0.9.3.tar.gz
-	sha512sums = dadfa97b3a1ccd73550732a7be58fc67123a302b6b4a0d458bcc8b1eb29ddea434f85d52f694d688606f4a2302d1fb25011243c5b09cc8e598f50bef9a6aaf41
+	source = r128gain-1.0.0.tar.gz::https://github.com/desbma/r128gain/archive/1.0.0.tar.gz
+	sha512sums = 0dc44677a9360de1ea414b96e47e79e95f6f284a9cd2fadcbd1938e7ec0b32abda7df1f0d049faed5fee54796c90df736b8c422a2529d61502979594f3dd137c
 
 pkgname = r128gain
 
