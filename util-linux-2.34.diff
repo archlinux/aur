@@ -19,10 +19,10 @@ to programs, like this:
     make
 
 
-diff -urN util-linux-2.29.2/include/Makemodule.am util-linux-2.29.2-AES/include/Makemodule.am
---- util-linux-2.29.2/include/Makemodule.am	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/include/Makemodule.am	2017-03-10 17:02:59.000000000 +0200
-@@ -38,6 +38,7 @@
+diff -urN util-linux-2.34/include/Makemodule.am util-linux-2.34-AES/include/Makemodule.am
+--- util-linux-2.34/include/Makemodule.am	2018-06-04 10:57:02.790445905 +0300
++++ util-linux-2.34-AES/include/Makemodule.am	2019-07-11 09:31:03.205081083 +0300
+@@ -43,6 +43,7 @@
  	include/procutils.h \
  	include/pt-bsd.h \
  	include/pt-mbr.h \
@@ -30,9 +30,9 @@ diff -urN util-linux-2.29.2/include/Makemodule.am util-linux-2.29.2-AES/include/
  	include/pt-mbr-partnames.h \
  	include/pt-sgi.h \
  	include/pt-sun.h \
-diff -urN util-linux-2.29.2/include/xgetpass.h util-linux-2.29.2-AES/include/xgetpass.h
---- util-linux-2.29.2/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/include/xgetpass.h	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/include/xgetpass.h util-linux-2.34-AES/include/xgetpass.h
+--- util-linux-2.34/include/xgetpass.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/include/xgetpass.h	2019-07-11 09:31:03.205081083 +0300
 @@ -0,0 +1,6 @@
 +#ifndef UTIL_LINUX_XGETPASS_H
 +#define UTIL_LINUX_XGETPASS_H
@@ -40,20 +40,20 @@ diff -urN util-linux-2.29.2/include/xgetpass.h util-linux-2.29.2-AES/include/xge
 +extern char *xgetpass(int pfd, const char *prompt);
 +
 +#endif /* UTIL_LINUX_XGETPASS_H */
-diff -urN util-linux-2.29.2/lib/Makemodule.am util-linux-2.29.2-AES/lib/Makemodule.am
---- util-linux-2.29.2/lib/Makemodule.am	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/lib/Makemodule.am	2017-03-10 17:02:59.000000000 +0200
-@@ -21,6 +21,7 @@
+diff -urN util-linux-2.34/lib/Makemodule.am util-linux-2.34-AES/lib/Makemodule.am
+--- util-linux-2.34/lib/Makemodule.am	2019-02-22 12:17:43.704854212 +0200
++++ util-linux-2.34-AES/lib/Makemodule.am	2019-07-11 09:31:03.206081088 +0300
+@@ -24,6 +24,7 @@
  	lib/strutils.c \
  	lib/timeutils.c \
  	lib/ttyutils.c \
 +	lib/xgetpass.c \
  	lib/exec_shell.c \
- 	lib/strv.c
- 
-diff -urN util-linux-2.29.2/lib/xgetpass.c util-linux-2.29.2-AES/lib/xgetpass.c
---- util-linux-2.29.2/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/lib/xgetpass.c	2017-03-10 17:02:59.000000000 +0200
+ 	lib/strv.c \
+ 	lib/sha1.c \
+diff -urN util-linux-2.34/lib/xgetpass.c util-linux-2.34-AES/lib/xgetpass.c
+--- util-linux-2.34/lib/xgetpass.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/lib/xgetpass.c	2019-07-11 09:31:03.206081088 +0300
 @@ -0,0 +1,64 @@
 +/*
 + * A function to read the passphrase either from the terminal or from
@@ -119,10 +119,10 @@ diff -urN util-linux-2.29.2/lib/xgetpass.c util-linux-2.29.2-AES/lib/xgetpass.c
 +	if(p) p[y] = 0;
 +	return p;
 +}
-diff -urN util-linux-2.29.2/libmount/src/Makemodule.am util-linux-2.29.2-AES/libmount/src/Makemodule.am
---- util-linux-2.29.2/libmount/src/Makemodule.am	2016-11-02 14:57:31.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/Makemodule.am	2017-03-10 17:02:59.000000000 +0200
-@@ -28,7 +28,10 @@
+diff -urN util-linux-2.34/libmount/src/Makemodule.am util-linux-2.34-AES/libmount/src/Makemodule.am
+--- util-linux-2.34/libmount/src/Makemodule.am	2018-06-04 10:57:02.802445812 +0300
++++ util-linux-2.34-AES/libmount/src/Makemodule.am	2019-07-11 09:31:03.206081088 +0300
+@@ -27,7 +27,10 @@
  if LINUX
  libmount_la_SOURCES += \
  	libmount/src/context.c \
@@ -134,9 +134,9 @@ diff -urN util-linux-2.29.2/libmount/src/Makemodule.am util-linux-2.29.2-AES/lib
  	libmount/src/context_mount.c \
  	libmount/src/context_umount.c \
  	libmount/src/monitor.c
-diff -urN util-linux-2.29.2/libmount/src/aes.c util-linux-2.29.2-AES/libmount/src/aes.c
---- util-linux-2.29.2/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/aes.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/aes.c util-linux-2.34-AES/libmount/src/aes.c
+--- util-linux-2.34/libmount/src/aes.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/aes.c	2019-07-11 09:31:03.207081094 +0300
 @@ -0,0 +1,299 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -437,9 +437,9 @@ diff -urN util-linux-2.29.2/libmount/src/aes.c util-linux-2.29.2-AES/libmount/sr
 +
 +    state_out(out_blk, b0);
 +}
-diff -urN util-linux-2.29.2/libmount/src/aes.h util-linux-2.29.2-AES/libmount/src/aes.h
---- util-linux-2.29.2/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/aes.h	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/aes.h util-linux-2.34-AES/libmount/src/aes.h
+--- util-linux-2.34/libmount/src/aes.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/aes.h	2019-07-11 09:31:03.208081100 +0300
 @@ -0,0 +1,97 @@
 +// I retain copyright in this code but I encourage its free use provided
 +// that I don't carry any responsibility for the results. I am especially 
@@ -538,10 +538,10 @@ diff -urN util-linux-2.29.2/libmount/src/aes.h util-linux-2.29.2-AES/libmount/sr
 +// if their parameters have not changed.
 +
 +#endif  // _AES_H
-diff -urN util-linux-2.29.2/libmount/src/context.c util-linux-2.29.2-AES/libmount/src/context.c
---- util-linux-2.29.2/libmount/src/context.c	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/context.c	2017-03-10 17:02:59.000000000 +0200
-@@ -88,7 +88,6 @@
+diff -urN util-linux-2.34/libmount/src/context.c util-linux-2.34-AES/libmount/src/context.c
+--- util-linux-2.34/libmount/src/context.c	2019-04-10 14:28:20.591837314 +0300
++++ util-linux-2.34-AES/libmount/src/context.c	2019-07-11 09:31:03.209081105 +0300
+@@ -99,7 +99,6 @@
  	mnt_unref_table(cxt->fstab);
  	mnt_unref_cache(cxt->cache);
  
@@ -549,7 +549,7 @@ diff -urN util-linux-2.29.2/libmount/src/context.c util-linux-2.29.2-AES/libmoun
  	mnt_free_lock(cxt->lock);
  	mnt_free_update(cxt->update);
  
-@@ -128,6 +127,8 @@
+@@ -142,6 +141,8 @@
  	DBG(CXT, ul_debugobj(cxt, "<---- reset [status=%d] ---->",
  				mnt_context_get_status(cxt)));
  
@@ -558,9 +558,9 @@ diff -urN util-linux-2.29.2/libmount/src/context.c util-linux-2.29.2-AES/libmoun
  	fl = cxt->flags;
  
  	mnt_unref_fs(cxt->fs);
-diff -urN util-linux-2.29.2/libmount/src/context_loopdev1.c util-linux-2.29.2-AES/libmount/src/context_loopdev1.c
---- util-linux-2.29.2/libmount/src/context_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/context_loopdev1.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/context_loopdev1.c util-linux-2.34-AES/libmount/src/context_loopdev1.c
+--- util-linux-2.34/libmount/src/context_loopdev1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/context_loopdev1.c	2019-07-11 09:31:03.211081117 +0300
 @@ -0,0 +1,1525 @@
 +/*
 + * Copyright (C) 2011 Karel Zak <kzak@redhat.com>
@@ -2087,17 +2087,17 @@ diff -urN util-linux-2.29.2/libmount/src/context_loopdev1.c util-linux-2.29.2-AE
 +	cxt->loopdev_fd = -1;
 +	return 0;
 +}
-diff -urN util-linux-2.29.2/libmount/src/context_umount.c util-linux-2.29.2-AES/libmount/src/context_umount.c
---- util-linux-2.29.2/libmount/src/context_umount.c	2016-11-02 14:57:31.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/context_umount.c	2017-03-10 17:02:59.000000000 +0200
-@@ -303,11 +303,12 @@
+diff -urN util-linux-2.34/libmount/src/context_umount.c util-linux-2.34-AES/libmount/src/context_umount.c
+--- util-linux-2.34/libmount/src/context_umount.c	2019-05-15 18:24:08.255894236 +0300
++++ util-linux-2.34-AES/libmount/src/context_umount.c	2019-07-11 09:31:03.212081123 +0300
+@@ -330,11 +330,12 @@
   */
  static int is_associated_fs(const char *devname, struct libmnt_fs *fs)
  {
 -	uintmax_t offset = 0;
 +	int r;
- 	const char *src;
- 	char *val, *optstr;
+ 	const char *src, *optstr;
+ 	char *val;
  	size_t valsz;
 -	int flags = 0;
 +	char *offsetStr = NULL, *sizelimitStr = NULL;
@@ -2105,10 +2105,10 @@ diff -urN util-linux-2.29.2/libmount/src/context_umount.c util-linux-2.29.2-AES/
  
  	/* check if it begins with /dev/loop */
  	if (strncmp(devname, _PATH_DEV_LOOP, sizeof(_PATH_DEV_LOOP) - 1))
-@@ -319,16 +320,16 @@
+@@ -346,16 +347,16 @@
  
  	/* check for the offset option in @fs */
- 	optstr = (char *) mnt_fs_get_user_options(fs);
+ 	optstr = mnt_fs_get_user_options(fs);
 -
 -	if (optstr &&
 -	    mnt_optstr_get_option(optstr, "offset", &val, &valsz) == 0) {
@@ -2132,7 +2132,7 @@ diff -urN util-linux-2.29.2/libmount/src/context_umount.c util-linux-2.29.2-AES/
  }
  
  static int prepare_helper_from_options(struct libmnt_context *cxt,
-@@ -787,7 +788,7 @@
+@@ -920,7 +921,7 @@
  	if (!rc && mnt_context_is_loopdel(cxt) && cxt->fs) {
  		const char *src = mnt_fs_get_srcpath(cxt->fs);
  
@@ -2141,12 +2141,12 @@ diff -urN util-linux-2.29.2/libmount/src/context_umount.c util-linux-2.29.2-AES/
  			mnt_context_enable_loopdel(cxt, FALSE);
  	}
  
-diff -urN util-linux-2.29.2/libmount/src/optmap.c util-linux-2.29.2-AES/libmount/src/optmap.c
---- util-linux-2.29.2/libmount/src/optmap.c	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/optmap.c	2017-03-10 17:02:59.000000000 +0200
-@@ -161,10 +161,19 @@
-    { "comment=", MNT_MS_COMMENT, MNT_NOHLPS | MNT_NOMTAB },/* fstab comment only */
-    { "x-",      MNT_MS_XCOMMENT, MNT_NOHLPS | MNT_NOMTAB | MNT_PREFIX }, /* x- options */
+diff -urN util-linux-2.34/libmount/src/optmap.c util-linux-2.34-AES/libmount/src/optmap.c
+--- util-linux-2.34/libmount/src/optmap.c	2019-02-22 12:17:43.717854104 +0200
++++ util-linux-2.34-AES/libmount/src/optmap.c	2019-07-11 09:31:03.212081123 +0300
+@@ -168,10 +168,19 @@
+    { "x-",      MNT_MS_XCOMMENT,   MNT_NOHLPS | MNT_PREFIX },              /* persistent comments (utab) */
+    { "X-",      MNT_MS_XFSTABCOMM, MNT_NOHLPS | MNT_NOMTAB | MNT_PREFIX }, /* fstab only comments */
  
 -   { "loop[=]", MNT_MS_LOOP, MNT_NOHLPS },                             /* use the loop device */
 +   { "loop[=]", MNT_MS_LOOP, MNT_NOHLPS },                             /* use the loop device (no MNT_NOMTAB flag) */
@@ -2166,9 +2166,9 @@ diff -urN util-linux-2.29.2/libmount/src/optmap.c util-linux-2.29.2-AES/libmount
  
     { "nofail",  MNT_MS_NOFAIL, MNT_NOMTAB },               /* Do not fail if ENOENT on dev */
  
-diff -urN util-linux-2.29.2/libmount/src/rmd160.c util-linux-2.29.2-AES/libmount/src/rmd160.c
---- util-linux-2.29.2/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/rmd160.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/rmd160.c util-linux-2.34-AES/libmount/src/rmd160.c
+--- util-linux-2.34/libmount/src/rmd160.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/rmd160.c	2019-07-11 09:31:03.213081128 +0300
 @@ -0,0 +1,532 @@
 +/* rmd160.c  -	RIPE-MD160
 + *	Copyright (C) 1998 Free Software Foundation, Inc.
@@ -2702,9 +2702,9 @@ diff -urN util-linux-2.29.2/libmount/src/rmd160.c util-linux-2.29.2-AES/libmount
 +    rmd160_final( &hd );
 +    memcpy( outbuf, hd.buf, 20 );
 +}
-diff -urN util-linux-2.29.2/libmount/src/rmd160.h util-linux-2.29.2-AES/libmount/src/rmd160.h
---- util-linux-2.29.2/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/rmd160.h	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/rmd160.h util-linux-2.34-AES/libmount/src/rmd160.h
+--- util-linux-2.34/libmount/src/rmd160.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/rmd160.h	2019-07-11 09:31:03.213081128 +0300
 @@ -0,0 +1,9 @@
 +#ifndef RMD160_H
 +#define RMD160_H
@@ -2715,9 +2715,9 @@ diff -urN util-linux-2.29.2/libmount/src/rmd160.h util-linux-2.29.2-AES/libmount
 +#endif /*RMD160_H*/
 +
 +
-diff -urN util-linux-2.29.2/libmount/src/sha512.c util-linux-2.29.2-AES/libmount/src/sha512.c
---- util-linux-2.29.2/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/sha512.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/sha512.c util-linux-2.34-AES/libmount/src/sha512.c
+--- util-linux-2.34/libmount/src/sha512.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/sha512.c	2019-07-11 09:31:03.213081128 +0300
 @@ -0,0 +1,432 @@
 +/*
 + *  sha512.c
@@ -3151,9 +3151,9 @@ diff -urN util-linux-2.29.2/libmount/src/sha512.c util-linux-2.29.2-AES/libmount
 +    memset(&ctx, 0, sizeof(ctx));
 +}
 +#endif
-diff -urN util-linux-2.29.2/libmount/src/sha512.h util-linux-2.29.2-AES/libmount/src/sha512.h
---- util-linux-2.29.2/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/libmount/src/sha512.h	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/libmount/src/sha512.h util-linux-2.34-AES/libmount/src/sha512.h
+--- util-linux-2.34/libmount/src/sha512.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/libmount/src/sha512.h	2019-07-11 09:31:03.213081128 +0300
 @@ -0,0 +1,45 @@
 +/*
 + *  sha512.h
@@ -3200,10 +3200,10 @@ diff -urN util-linux-2.29.2/libmount/src/sha512.h util-linux-2.29.2-AES/libmount
 +/* no sha384_write(), use sha512_write() */
 +/* no sha384_final(), use sha512_final(), result in ctx->sha_out[0...47]  */
 +extern void __loDev_sha384_hash_buffer(unsigned char *, int, unsigned char *, int);
-diff -urN util-linux-2.29.2/sys-utils/Makemodule.am util-linux-2.29.2-AES/sys-utils/Makemodule.am
---- util-linux-2.29.2/sys-utils/Makemodule.am	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/Makemodule.am	2017-03-10 17:02:59.000000000 +0200
-@@ -194,7 +194,7 @@
+diff -urN util-linux-2.34/sys-utils/Makemodule.am util-linux-2.34-AES/sys-utils/Makemodule.am
+--- util-linux-2.34/sys-utils/Makemodule.am	2019-04-10 14:28:20.658836607 +0300
++++ util-linux-2.34-AES/sys-utils/Makemodule.am	2019-07-11 09:31:03.214081134 +0300
+@@ -231,7 +231,7 @@
  if BUILD_LOSETUP
  sbin_PROGRAMS += losetup
  dist_man_MANS += sys-utils/losetup.8
@@ -3212,7 +3212,7 @@ diff -urN util-linux-2.29.2/sys-utils/Makemodule.am util-linux-2.29.2-AES/sys-ut
  losetup_LDADD = $(LDADD) libcommon.la libsmartcols.la
  losetup_CFLAGS = $(AM_CFLAGS) -I$(ul_libsmartcols_incdir)
  
-@@ -285,6 +285,8 @@
+@@ -330,6 +330,8 @@
  
  swapon_SOURCES = \
  	sys-utils/swapon.c \
@@ -3221,7 +3221,7 @@ diff -urN util-linux-2.29.2/sys-utils/Makemodule.am util-linux-2.29.2-AES/sys-ut
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-@@ -301,6 +303,7 @@
+@@ -346,6 +348,7 @@
  
  swapoff_SOURCES = \
  	sys-utils/swapoff.c \
@@ -3229,9 +3229,9 @@ diff -urN util-linux-2.29.2/sys-utils/Makemodule.am util-linux-2.29.2-AES/sys-ut
  	sys-utils/swapon-common.c \
  	sys-utils/swapon-common.h \
  	lib/swapprober.c \
-diff -urN util-linux-2.29.2/sys-utils/loop.c util-linux-2.29.2-AES/sys-utils/loop.c
---- util-linux-2.29.2/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/loop.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/loop.c util-linux-2.34-AES/sys-utils/loop.c
+--- util-linux-2.34/sys-utils/loop.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/sys-utils/loop.c	2019-07-11 09:31:03.214081134 +0300
 @@ -0,0 +1,221 @@
 +/*
 + *  loop.c
@@ -3454,9 +3454,9 @@ diff -urN util-linux-2.29.2/sys-utils/loop.c util-linux-2.29.2-AES/sys-utils/loo
 +	loopinfo->lo_encrypt_type = 18; /* LO_CRYPT_CRYPTOAPI */
 +	return(loop_set_status64_ioctl(fd, loopinfo));
 +}
-diff -urN util-linux-2.29.2/sys-utils/loop.h util-linux-2.29.2-AES/sys-utils/loop.h
---- util-linux-2.29.2/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/loop.h	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/loop.h util-linux-2.34-AES/sys-utils/loop.h
+--- util-linux-2.34/sys-utils/loop.h	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/sys-utils/loop.h	2019-07-11 09:31:03.214081134 +0300
 @@ -0,0 +1,87 @@
 +/*
 + *  loop.h
@@ -3545,10 +3545,10 @@ diff -urN util-linux-2.29.2/sys-utils/loop.h util-linux-2.29.2-AES/sys-utils/loo
 +extern int try_cryptoapi_loop_interface(int, struct loop_info64 *, char *);
 +
 +#endif
-diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/losetup.8
---- util-linux-2.29.2/sys-utils/losetup.8	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/losetup.8	2017-03-10 17:02:59.000000000 +0200
-@@ -1,204 +1,200 @@
+diff -urN util-linux-2.34/sys-utils/losetup.8 util-linux-2.34-AES/sys-utils/losetup.8
+--- util-linux-2.34/sys-utils/losetup.8	2019-04-24 13:42:25.234752668 +0300
++++ util-linux-2.34-AES/sys-utils/losetup.8	2019-07-11 09:31:03.214081134 +0300
+@@ -1,210 +1,200 @@
 -.TH LOSETUP 8 "November 2015" "util-linux" "System Administration"
 +.TH LOSETUP 8 "2012-09-24" "Linux" "MAINTENANCE COMMANDS"
  .SH NAME
@@ -3559,7 +3559,7 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -.sp
 -.in +5
 -.B losetup
--.I loopdev
+-[\fIloopdev\fP]
 -.sp
 -.B losetup -l
 -.RB [ \-a ]
@@ -3583,12 +3583,6 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -.B "losetup \-D"
 -.sp
 -.in -5
--Print the name of the first unused loop device:
--.sp
--.in +5
--.B "losetup \-f"
--.sp
--.in -5
 -Set up a loop device:
 -.sp
 -.in +5
@@ -3596,6 +3590,8 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -.RB [ \-o
 -.IR offset ]
 -.RB [ \-\-sizelimit
+-.IR size ]
+-.RB [ \-\-sector\-size
 -.IR size ]
 -.in +8
 -.RB [ \-Pr ]
@@ -3640,13 +3636,13 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -\fIloopdev\fP argument is given, the status of the corresponding loop
 -device is shown.  If no option is given, all loop devices are shown.
 -.sp
--Note that the old output format (i.e. \fBlosetup -a\fR) with comma-delimited
+-Note that the old output format (i.e., \fBlosetup -a\fR) with comma-delimited
 -strings is deprecated in favour of the \fB--list\fR output format.
 -.sp
 -It's possible to create more independent loop devices for the same backing
 -file.
 -.B This setup may be dangerous, can cause data loss, corruption and overwrites.
--Use \fB\-\-nooverlap\fR to avoid this problem.
+-Use \fB\-\-nooverlap\fR with \fB\-\-find\fR during setup to avoid this problem.
 -
 +to detach loop devices and to query the status of a loop device. If only the
 +\fIloop_device\fP argument is given, the status of the corresponding loop
@@ -3664,26 +3660,21 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -for non-root users.  See also \fB\-\-list\fR.  The old output format (as printed
 -without \fB--list)\fR is deprecated.
 -.TP
--.BR \-c , " \-\-set\-capacity " \fIloopdev
--Force the loop driver to reread the size of the file associated with the
--specified loop device.
--.TP
 -.BR \-d , " \-\-detach " \fIloopdev\fR...
--Detach the file or device associated with the specified loop device(s).
+-Detach the file or device associated with the specified loop device(s). Note
+-that since Linux v3.7 kernel uses "lazy device destruction".  The detach
+-operation does not return EBUSY error anymore if device is actively used by
+-system, but it is marked by autoclear flag and destroyed later.
 -.TP
 -.BR \-D , " \-\-detach\-all"
 -Detach all associated loop devices.
 -.TP
--.BR \-\-direct\-io [ =on | off ]
--Enable or disable direct I/O for the backing file.  The optional argument
--can be either \fBon\fR or \fBoff\fR.  If the argument is omitted, it defaults
--to \fBon\fR.
--.TP
--.BR \-f , " \-\-find"
--Find the first unused loop device.  If a
--.I file
--argument is present, use the found device as loop device.
--Otherwise, just print its name.
+-.BR \-f , " \-\-find " "\fR[\fIfile\fR]"
+-Find the first unused loop device.  If a \fIfile\fR argument is present, use
+-the found device as loop device.  Otherwise, just print its name.
+-.IP "\fB\-\-show\fP"
+-Display the name of the assigned loop device if the \fB\-f\fP option and a
+-\fIfile\fP argument are present.
 -.TP
 -.BR \-L , " \-\-nooverlap"
 -Check for conflicts between loop devices to avoid situation when the same
@@ -3691,43 +3682,37 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -by another device then re-use the device rather than a new one. The option
 -makes sense only with \fB\-\-find\fP.
 -.TP
--.BR \-j , " \-\-associated " \fIfile
--Show the status of all loop devices associated with the given
--.IR file .
--.TP
--.BR \-J , " \-\-json"
--Use JSON format for \fB\-\-list\fP output.
--.TP
--.BR \-l , " \-\-list"
--If a loop device or the \fB-a\fR option is specified, print the default columns
--for either the specified loop device or all loop devices; the default is to
--print info about all devices.  See also \fB\-\-output\fP, \fB\-\-noheadings\fP
--\fB\-\-json\fP and \fB\-\-raw\fP.
--.TP
--.BR \-n , " \-\-noheadings"
--Don't print headings for \fB\-\-list\fP output format.
+-.BR \-j , " \-\-associated " \fIfile\fR " \fR[\fB\-o \fIoffset\fR]"
+-Show the status of all loop devices associated with the given \fIfile\fR.
 -.TP
 -.BR \-o , " \-\-offset " \fIoffset
--The data start is moved \fIoffset\fP bytes into the specified file or device.
+-The data start is moved \fIoffset\fP bytes into the specified file or device.  The \fIoffset\fP
+-may be followed by the multiplicative suffixes; see above.
+-.IP "\fB\-\-sizelimit \fIsize\fP"
+-The data end is set to no more than \fIsize\fP bytes after the data start.  The \fIsize\fP
+-may be followed by the multiplicative suffixes; see above.
 -.TP
--.BR \-O , " \-\-output " \fIcolumns
--Specify the columns that are to be printed for the \fB\-\-list\fP output.
+-.BR \-b , " \-\-sector-size " \fIsize
+-Set the logical sector size of the loop device in bytes (since Linux 4.14). The
+-option may be used when create a new loop device as well as stand-alone command
+-to modify sector size of the already existing loop device.
+-.TP
+-.BR \-c , " \-\-set\-capacity " \fIloopdev
+-Force the loop driver to reread the size of the file associated with the
+-specified loop device.
 -.TP
 -.BR \-P , " \-\-partscan"
--Force the kernel to scan the partition table on a newly created loop device.
--.IP "\fB\-\-raw\fP"
--Use the raw \fB\-\-list\fP output format.
+-Force the kernel to scan the partition table on a newly created loop device.  Note that the
+-partition table parsing depends on sector sizes.  The default is sector size is 512 bytes,
+-otherwise you need to use the option \fB\-\-sector\-size\fR together with \fB\-\-partscan\fR.
 -.TP
 -.BR \-r , " \-\-read\-only"
 -Set up a read-only loop device.
--.IP "\fB\-\-sizelimit \fIsize\fP"
--The data end is set to no more than \fIsize\fP bytes after the data start.
--.IP "\fB\-\-show\fP"
--Display the name of the assigned loop device if the
--.B \-f
--option and a
--.I file
--argument are present.
+-.TP
+-.BR \-\-direct\-io [ =on | off ]
+-Enable or disable direct I/O for the backing file.  The optional argument
+-can be either \fBon\fR or \fBoff\fR.  If the argument is omitted, it defaults
+-to \fBon\fR.
 -.TP
 -.BR \-v , " \-\-verbose"
 +.IP \fB\-a\fP
@@ -3861,6 +3846,27 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 +.IP "\fB\-v\fP"
  Verbose mode.
 -.TP
+-.BR \-l , " \-\-list"
+-If a loop device or the \fB-a\fR option is specified, print the default columns
+-for either the specified loop device or all loop devices; the default is to
+-print info about all devices.  See also \fB\-\-output\fP, \fB\-\-noheadings\fP,
+-\fB\-\-raw\fP, and \fB\-\-json\fP.
+-.TP
+-.BR \-O , " \-\-output " \fIcolumn\fR[,\fIcolumn\fR]...
+-Specify the columns that are to be printed for the \fB\-\-list\fP output.
+-Use \fB\-\-help\fR to get a list of all supported columns.
+-.TP
+-.B \-\-output\-all
+-Output all available columns.
+-.TP
+-.BR \-n , " \-\-noheadings"
+-Don't print headings for \fB\-\-list\fP output format.
+-.IP "\fB\-\-raw\fP"
+-Use the raw \fB\-\-list\fP output format.
+-.TP
+-.BR \-J , " \-\-json"
+-Use JSON format for \fB\-\-list\fP output.
+-.TP
 -.BR \-V , " \-\-version"
 -Display version information and exit.
 -.TP
@@ -3897,7 +3903,7 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
  The following commands can be used as an example of using the loop device.
  .nf
 -.IP
--# dd if=/dev/zero of=~/file.img bs=1MiB count=10
+-# dd if=/dev/zero of=~/file.img bs=1024k count=10
 -# losetup --find --show ~/file.img
 -/dev/loop0
 -# mkfs -t ext2 /dev/loop0
@@ -3925,14 +3931,14 @@ diff -urN util-linux-2.29.2/sys-utils/losetup.8 util-linux-2.29.2-AES/sys-utils/
 -Theodore Ts'o <tytso@athena.mit.edu>
 -.SH AVAILABILITY
 -The losetup command is part of the util-linux package and is available from
--ftp://ftp.kernel.org/pub/linux/utils/util-linux/.
+-https://www.kernel.org/pub/linux/utils/util-linux/.
 +.nf
 +Original version: Theodore Ts'o <tytso@athena.mit.edu>
 +AES support: Jari Ruusu
 +.fi
-diff -urN util-linux-2.29.2/sys-utils/losetup1.c util-linux-2.29.2-AES/sys-utils/losetup1.c
---- util-linux-2.29.2/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/losetup1.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/losetup1.c util-linux-2.34-AES/sys-utils/losetup1.c
+--- util-linux-2.34/sys-utils/losetup1.c	1970-01-01 02:00:00.000000000 +0200
++++ util-linux-2.34-AES/sys-utils/losetup1.c	2019-07-11 09:31:03.214081134 +0300
 @@ -0,0 +1,1281 @@
 +/* Taken from Ted's losetup.c - Mitch <m.dsouza@mrc-apu.cam.ac.uk> */
 +/* Added vfs mount options - aeb - 960223 */
@@ -5215,10 +5221,10 @@ diff -urN util-linux-2.29.2/sys-utils/losetup1.c util-linux-2.29.2-AES/sys-utils
 +	}
 +	return res;
 +}
-diff -urN util-linux-2.29.2/sys-utils/mount.8 util-linux-2.29.2-AES/sys-utils/mount.8
---- util-linux-2.29.2/sys-utils/mount.8	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/mount.8	2017-03-10 17:02:59.000000000 +0200
-@@ -649,6 +649,11 @@
+diff -urN util-linux-2.34/sys-utils/mount.8 util-linux-2.34-AES/sys-utils/mount.8
+--- util-linux-2.34/sys-utils/mount.8	2019-05-15 14:49:04.536813022 +0300
++++ util-linux-2.34-AES/sys-utils/mount.8	2019-07-11 09:31:03.215081140 +0300
+@@ -729,6 +729,11 @@
  sections.
  .RE
  
@@ -5228,10 +5234,10 @@ diff -urN util-linux-2.29.2/sys-utils/mount.8 util-linux-2.29.2-AES/sys-utils/mo
 +.I num
 +instead of from the terminal.
  .TP
- .BR \-R , " \-\-rbind"
- Remount a subtree and all possible submounts somewhere else (so that its
-@@ -2922,13 +2927,19 @@
- .B "mount \-t ext3 /tmp/disk.img /mnt"
+ .BR "\-\-options\-mode " \fImode
+ Controls how to combine options from fstab/mtab with options from command line.
+@@ -2387,13 +2392,19 @@
+ .B "mount \-t ext4 /tmp/disk.img /mnt"
  .sp
  .RE
 -This type of mount knows about three options, namely
@@ -5252,26 +5258,26 @@ diff -urN util-linux-2.29.2/sys-utils/mount.8 util-linux-2.29.2-AES/sys-utils/mo
  Since Linux 2.6.25 auto-destruction of loop devices is supported,
  meaning that any loop device allocated by
  .B mount
-diff -urN util-linux-2.29.2/sys-utils/mount.c util-linux-2.29.2-AES/sys-utils/mount.c
---- util-linux-2.29.2/sys-utils/mount.c	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/mount.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/mount.c util-linux-2.34-AES/sys-utils/mount.c
+--- util-linux-2.34/sys-utils/mount.c	2019-04-24 12:02:03.124448789 +0300
++++ util-linux-2.34-AES/sys-utils/mount.c	2019-07-11 09:31:03.215081140 +0300
 @@ -36,6 +36,7 @@
  #include "c.h"
  #include "env.h"
  #include "strutils.h"
 +#include "xgetpass.h"
- #include "exitcodes.h"
- #include "xalloc.h"
  #include "closestream.h"
-@@ -51,6 +52,7 @@
+ #include "canonicalize.h"
+ 
+@@ -52,6 +53,7 @@
   *  --options-source-force				MNT_OMODE_FORCE
   */
  
 +static int passfd = -1;
- static int readwrite;
- 
  static int mk_exit_code(struct libmnt_context *cxt, int rc);
-@@ -103,6 +105,32 @@
+ 
+ static void __attribute__((__noreturn__)) exit_non_root(const char *option)
+@@ -102,6 +104,32 @@
  	return 1;
  }
  
@@ -5304,7 +5310,7 @@ diff -urN util-linux-2.29.2/sys-utils/mount.c util-linux-2.29.2-AES/sys-utils/mo
  /*
   * Replace control chars with '?' to be compatible with coreutils. For more
   * robust solution use findmnt(1) where we use \x?? hex encoding.
-@@ -759,6 +787,7 @@
+@@ -473,6 +501,7 @@
  	fprintf(out, _(
  	" -o, --options <list>    comma-separated list of mount options\n"
  	" -O, --test-opts <list>  limit the set of filesystems (use with -a)\n"
@@ -5312,18 +5318,18 @@ diff -urN util-linux-2.29.2/sys-utils/mount.c util-linux-2.29.2-AES/sys-utils/mo
  	" -r, --read-only         mount the filesystem read-only (same as -o ro)\n"
  	" -t, --types <list>      limit the set of filesystem types\n"));
  	fprintf(out, _(
-@@ -888,7 +917,7 @@
+@@ -666,7 +695,7 @@
  
  	mnt_context_set_tables_errcb(cxt, table_parser_errcb);
  
--	while ((c = getopt_long(argc, argv, "aBcfFhilL:Mno:O:rRsU:vVwt:T:",
-+	while ((c = getopt_long(argc, argv, "aBcfFhilL:Mno:O:p:rRsU:vVwt:T:",
+-	while ((c = getopt_long(argc, argv, "aBcfFhilL:Mno:O:rRsU:vVwt:T:N:",
++	while ((c = getopt_long(argc, argv, "aBcfFhilL:Mno:O:p:rRsU:vVwt:T:N:",
  					longopts, NULL)) != -1) {
  
  		/* only few options are allowed for non-root users */
-@@ -943,6 +972,10 @@
+@@ -715,6 +744,10 @@
  			if (mnt_context_set_options_pattern(cxt, optarg))
- 				err(MOUNT_EX_SYSERR, _("failed to set options pattern"));
+ 				err(MNT_EX_SYSERR, _("failed to set options pattern"));
  			break;
 +		case 'p':
 +                        passfd = strtou32_or_err(optarg,
@@ -5332,7 +5338,7 @@ diff -urN util-linux-2.29.2/sys-utils/mount.c util-linux-2.29.2-AES/sys-utils/mo
  		case 'L':
  			xasprintf(&srcbuf, "LABEL=\"%s\"", optarg);
  			mnt_context_disable_swapmatch(cxt, 1);
-@@ -1058,6 +1091,8 @@
+@@ -884,6 +917,8 @@
  	else if (types)
  		mnt_context_set_fstype(cxt, types);
  
@@ -5341,9 +5347,9 @@ diff -urN util-linux-2.29.2/sys-utils/mount.c util-linux-2.29.2-AES/sys-utils/mo
  	if (all) {
  		/*
  		 * A) Mount all
-diff -urN util-linux-2.29.2/sys-utils/swapoff.c util-linux-2.29.2-AES/sys-utils/swapoff.c
---- util-linux-2.29.2/sys-utils/swapoff.c	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/swapoff.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/swapoff.c util-linux-2.34-AES/sys-utils/swapoff.c
+--- util-linux-2.34/sys-utils/swapoff.c	2019-04-24 12:02:03.126448778 +0300
++++ util-linux-2.34-AES/sys-utils/swapoff.c	2019-07-11 09:31:03.215081140 +0300
 @@ -1,4 +1,9 @@
  #include <stdio.h>
 +#include <sys/types.h>
@@ -5362,8 +5368,8 @@ diff -urN util-linux-2.29.2/sys-utils/swapoff.c util-linux-2.29.2-AES/sys-utils/
  #include "c.h"
  #include "xalloc.h"
  #include "closestream.h"
-@@ -144,6 +150,45 @@
- 	exit(out == stderr ? EXIT_FAILURE : EXIT_SUCCESS);
+@@ -143,6 +149,45 @@
+ 	exit(EXIT_SUCCESS);
  }
  
 +static void
@@ -5408,7 +5414,7 @@ diff -urN util-linux-2.29.2/sys-utils/swapoff.c util-linux-2.29.2-AES/sys-utils/
  static int swapoff_all(void)
  {
  	int status = 0;
-@@ -174,8 +219,30 @@
+@@ -173,8 +218,30 @@
  	mnt_reset_iter(itr, MNT_ITER_FORWARD);
  
  	while (tb && mnt_table_find_next_fs(tb, itr, match_swap, NULL, &fs) == 0) {
@@ -5441,9 +5447,9 @@ diff -urN util-linux-2.29.2/sys-utils/swapoff.c util-linux-2.29.2-AES/sys-utils/
  	}
  
  	mnt_free_iter(itr);
-diff -urN util-linux-2.29.2/sys-utils/swapon.8 util-linux-2.29.2-AES/sys-utils/swapon.8
---- util-linux-2.29.2/sys-utils/swapon.8	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/swapon.8	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/swapon.8 util-linux-2.34-AES/sys-utils/swapon.8
+--- util-linux-2.34/sys-utils/swapon.8	2019-04-10 14:28:20.660836586 +0300
++++ util-linux-2.34-AES/sys-utils/swapon.8	2019-07-11 09:31:03.215081140 +0300
 @@ -69,6 +69,22 @@
  .I /proc/swaps
  or
@@ -5467,9 +5473,9 @@ diff -urN util-linux-2.29.2/sys-utils/swapon.8 util-linux-2.29.2-AES/sys-utils/s
  
  .SH OPTIONS
  .TP
-diff -urN util-linux-2.29.2/sys-utils/swapon.c util-linux-2.29.2-AES/sys-utils/swapon.c
---- util-linux-2.29.2/sys-utils/swapon.c	2017-02-22 12:16:55.000000000 +0200
-+++ util-linux-2.29.2-AES/sys-utils/swapon.c	2017-03-10 17:02:59.000000000 +0200
+diff -urN util-linux-2.34/sys-utils/swapon.c util-linux-2.34-AES/sys-utils/swapon.c
+--- util-linux-2.34/sys-utils/swapon.c	2019-04-24 12:02:03.127448771 +0300
++++ util-linux-2.34-AES/sys-utils/swapon.c	2019-07-11 09:31:03.215081140 +0300
 @@ -8,6 +8,8 @@
  #include <unistd.h>
  #include <sys/types.h>
@@ -5488,7 +5494,7 @@ diff -urN util-linux-2.29.2/sys-utils/swapon.c util-linux-2.29.2-AES/sys-utils/s
  #include "bitops.h"
  #include "blkdev.h"
  #include "pathnames.h"
-@@ -718,6 +722,227 @@
+@@ -722,6 +726,227 @@
  }
  
  
@@ -5716,7 +5722,7 @@ diff -urN util-linux-2.29.2/sys-utils/swapon.c util-linux-2.29.2-AES/sys-utils/s
  static int swapon_all(struct swapon_ctl *ctl)
  {
  	struct libmnt_table *tb = get_fstab();
-@@ -735,6 +960,9 @@
+@@ -739,6 +964,9 @@
  	while (mnt_table_find_next_fs(tb, itr, match_swap, NULL, &fs) == 0) {
  		/* defaults */
  		const char *opts;
@@ -5726,7 +5732,7 @@ diff -urN util-linux-2.29.2/sys-utils/swapon.c util-linux-2.29.2-AES/sys-utils/s
  		const char *device;
  		struct swap_prop prop;		/* per device setting */
  
-@@ -743,6 +971,10 @@
+@@ -747,6 +975,10 @@
  				warnx(_("%s: noauto option -- ignored"), mnt_fs_get_source(fs));
  			continue;
  		}
@@ -5737,7 +5743,7 @@ diff -urN util-linux-2.29.2/sys-utils/swapon.c util-linux-2.29.2-AES/sys-utils/s
  
  		/* default setting */
  		prop = ctl->props;
-@@ -757,23 +989,38 @@
+@@ -761,23 +993,38 @@
  		if (!device) {
  			if (!prop.no_fail)
  				status |= cannot_find(mnt_fs_get_source(fs));

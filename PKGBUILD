@@ -1,70 +1,74 @@
-# Maintainer: xerc <aur[at]xerc.de>
-# Contributor: judd <jvinet[at]zeroflux.org>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: xerc <aur[at]xerc.de>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: milomouse <vincent[at]fea.st>
-# Contributor: falconindy <d[at]falconindy.com>
+# Contributor: judd <jvinet[at]zeroflux.org>
 
 _basename=util-linux
-pkgname=${_basename}-aes
-_basever=2.29
-pkgver=${_basever}.2
-pkgrel=3
-aneurysma=${pkgver}
-
+pkgbase=util-linux-aes
+pkgname=(util-linux-aes libutil-linux-aes)
+_pkgmajor=2.34
+pkgver=${_pkgmajor}
+pkgrel=8
 pkgdesc="Miscellaneous system utilities for Linux, with loop-AES support"
-url="http://sourceforge.net/projects/loop-aes/"
-
-validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284') # Karel Zak
+url='https://github.com/karelzak/util-linux'
+#url="http://sourceforge.net/projects/loop-aes/"
+arch=('x86_64')
+makedepends=('systemd' 'python' 'libcap-ng')
 license=('GPL2')
-
-arch=('any')
-groups=('base')
-
-options=('strip' 'debug' '!libtool')
-depends=('pam' 'shadow' 'coreutils' 'libsystemd' 'glibc' 'zlib' 'git')
-
-provides=('eject' 'zramctl' "${_basename}=${pkgver}" "lib${_basename}=${pkgver}" "${_basename}-ng=${pkgver}" 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
-replaces=('eject' 'zramctl' "${_basename}" "lib${_basename}" "${_basename}-ng" "${_basename}-ng-aes")
-conflicts=(${replaces[*]})
-
+options=('strip')
 install=${pkgname}.install
-makedepends=('systemd' 'python' 'autoconf' 'automake')
-
-source=(
-  "https://www.kernel.org/pub/linux/utils/util-linux/v${_basever}/${_basename}-${pkgver}.tar."{xz,sign}
-  pam-common::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-common?h=packages/${_basename}"
-  pam-login::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-login?h=packages/${_basename}"
-  pam-su::"https://projects.archlinux.org/svntogit/packages.git/plain/trunk/pam-su?h=packages/${_basename}"
-  0001-sfdisk-support-empty-label-use-case.patch::"https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-sfdisk-support-empty-label-use-case.patch?h=packages/${_basename}"
-#  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"
-#  "http://loop-aes.sourceforge.net/updates/${_basename}-${aneurysma}.diff.bz2"{,.sign}
-  ${pkgname}.sysusers
-  ${pkgname}.modules
-  ${_basename}-${aneurysma}.diff
-)
+validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basename}-$pkgver.tar."{xz,sign}
+        "${_basename}-${_pkgmajor}.diff"
+        "${pkgname}.modules"
+        '0001-lsblk-force-to-print-PKNAME-for-partition.patch'
+        pam-{login,common,runuser,su}
+        'util-linux-aes.sysusers'
+        '60-rfkill.rules'
+        'rfkill-unblock_.service'
+        'rfkill-block_.service')
+sha256sums=('743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5'
+            'SKIP'
+            'b03fcfb72bc2f08e0051ac8af47b67fa7c71c7a95a45480650b8c3a5a11fbe08'
+            '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
+            'cfadc020011f88c028dc50c4e6790f5bae385b881417d917a8706c6ff78613d9'
+            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
+            'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
+            '95b7cdc4cba17494d7b87f37f8d0937ec54c55de0e3ce9d9ab05ad5cc76bf935'
+            '51eac9c2a2f51ad3982bba35de9aac5510f1eeff432d2d63c6362e45d620afc0'
+            'a3980e33ef3a8d356379b4964c9730fd525d46e5b28cded5d0b50d6dc8a5563c'
+            '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
+            '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
+            'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
 prepare() {
-  cd "${srcdir}/${_basename}-${pkgver}"
+  cd "$_basename-$pkgver"
 
-  msg "Patching ${_basename} (1/1)"
-  patch -Np1 -i "${srcdir}/0001-sfdisk-support-empty-label-use-case.patch"
+  patch -Np1 < ../0001-lsblk-force-to-print-PKNAME-for-partition.patch
+
+  msg "Patching with loop-AES"
+  patch -Np1 -i "../${_basename}-${_pkgmajor}.diff"
 }
 
 build() {
-  cd "${srcdir}/${_basename}-${pkgver}"
+  cd "$_basename-$pkgver"
 
-  msg "Patching with loop-AES"
-  patch -Np1 -i "${srcdir}/${_basename}-${aneurysma}.diff"
+  # We ship Debian's hardlink in package 'hardlink', Fedora's hardlink was
+  # merged in util-linux. For now we disable the latter, but let's dicuss
+  # the details:
+  # https://bugs.archlinux.org/task/62896
+  # https://github.com/karelzak/util-linux/issues/808
 
-  msg "Starting autogen"
-  ./autogen.sh
-
-  msg "Starting configure"
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --bindir=/usr/bin \
-    --localstatedir=/run \
-    --enable-fs-paths-extra=/usr/bin \
+    --sbindir=/usr/bin \
+    --localstatedir=/var \
+    --enable-usrdir-path \
+    --enable-fs-paths-default=/usr/bin:/usr/local/bin \
     --enable-raw \
     --enable-vipw \
     --enable-newgrp \
@@ -72,52 +76,76 @@ build() {
     --enable-write \
     --enable-mesg \
     --enable-partx \
-    --disable-tailf \
+    --disable-hardlink \
     --with-python=3
 
-  msg "Starting make"
   make
 }
 
-package() {
-  cd "${srcdir}/${_basename}-${pkgver}"
+package_util-linux-aes() {
+  conflicts=('eject' "${_basename}")
+  provides=('rfkill' "${_basename}")
+  replaces=('rfkill')
+  depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libcap-ng' 'libutil-linux-aes')
+  optdepends=('python: python bindings to libmount'
+              'words: default dictionary for look')
+  backup=(etc/pam.d/chfn
+          etc/pam.d/chsh
+          etc/pam.d/login
+          etc/pam.d/runuser
+          etc/pam.d/runuser-l
+          etc/pam.d/su
+          etc/pam.d/su-l)
+
+  cd "$_basename-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
   # setuid chfn and chsh
-  chmod 4755 "${pkgdir}"/usr/bin/{newgrp,ch{sh,fn}}
-
-  # install modules
-  install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
-
-  # install sysusers
-  install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  chmod 4755 "$pkgdir"/usr/bin/{newgrp,ch{sh,fn}}
 
   # install PAM files for login-utils
-  install -Dm644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chfn"
-  install -m644 "${srcdir}/pam-common" "${pkgdir}/etc/pam.d/chsh"
-  install -m644 "${srcdir}/pam-login" "${pkgdir}/etc/pam.d/login"
-  install -m644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su"
-  install -m644 "${srcdir}/pam-su" "${pkgdir}/etc/pam.d/su-l"
+  install -Dm644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
+  install -m644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
+  install -m644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
+  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
+  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
+  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
+  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
   # TODO(dreisner): offer this upstream?
-  sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "${pkgdir}/usr/lib/systemd/system/uuidd.socket"
+  sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
 
   # adjust for usrmove
   # TODO(dreisner): fix configure.ac upstream so that this isn't needed
-  cd "${pkgdir}"
-  mv {,usr/}sbin/* usr/bin
-  rmdir sbin usr/sbin
+  cd "$pkgdir"
+  mv usr/sbin/* usr/bin
+  rmdir usr/sbin
 
-  # DO NOT create libutil-linux split : The AUR does not support split packages!
+  ### runtime libs are shipped as part of libutil-linux
+  rm "$pkgdir"/usr/lib/lib*.{a,so}*
+
+  ### install systemd-sysusers
+  install -Dm644 "$srcdir/util-linux-aes.sysusers" \
+    "$pkgdir/usr/lib/sysusers.d/util-linux-aes.conf"
+
+  install -Dm644 "$srcdir/60-rfkill.rules" \
+    "$pkgdir/usr/lib/udev/rules.d/60-rfkill.rules"
+
+  install -Dm644 "$srcdir/rfkill-unblock_.service" \
+    "$pkgdir/usr/lib/systemd/system/rfkill-unblock@.service"
+  install -Dm644 "$srcdir/rfkill-block_.service" \
+    "$pkgdir/usr/lib/systemd/system/rfkill-block@.service"
+
+  # install modules
+  install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
 
-md5sums=('63c40c2068fcbb7e1d5c1d281115d973'
-         'SKIP'
-         'a31374fef2cba0ca34dfc7078e2969e4'
-         '4368b3f98abd8a32662e094c54e7f9b1'
-         'fa85e5cce5d723275b14365ba71a8aad'
-         '6d2e3915124938577f0ff18ef701c87f'
-         'dfc9904f67ebc54bb347ca3cc430ef2b'
-         'a10bfcaff767a4cb3066106bfd4ea30b'
-         'b78b4fd5d0b4e22724a1df660e0bb4e2')
+package_libutil-linux-aes() {
+  pkgdesc="util-linux runtime libraries"
+  provides=('libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
+  conflicts=("libutil-linux")
+  provides=("libutil-linux")
+
+  make -C "$_basename-$pkgver" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
+}
