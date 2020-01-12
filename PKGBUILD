@@ -1,7 +1,7 @@
  pkgname=r-getopt
  pkgver=1.20.3
  pkgrel=1
- pkgdesc="R command line parser inspired by Python's 'getopt'"
+ pkgdesc="C-Like 'getopt' Behavior"
  arch=('any')
  url="https://cran.r-project.org/package=getopt"
  license=('GPL')
