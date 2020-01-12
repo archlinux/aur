@@ -1,21 +1,23 @@
-# Maintainer: Hakan Erduman <hakan at erduman dot de>
+# Contributor: Hakan Erduman <hakan at erduman dot de>
+
 pkgname=xfce4-hamster-plugin-git
-pkgver=0.r69.95655e2
+pkgver=1.7.r2.gf9f5e21
 pkgrel=1
-pkgdesc="A recreation of the gnome-shell hamster extension as a xfce4 panel plugin."
+pkgdesc="recreation of the gnome-shell hamster extension as a xfce4 panel plugin"
 url="https://github.com/projecthamster/${pkgname}"
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('xfce4-panel' 'hamster-time-tracker')
-makedepends=('pkgconfig' 'intltool' )
+makedepends=('pkgconfig' 'intltool' 'git')
 source=("${pkgname}::git+https://github.com/projecthamster/${pkgname%-git}")
 sha256sums=('SKIP')
-replaces=(${pkgname%-git})
 conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
+
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 prepare() {
