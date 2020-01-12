@@ -1,5 +1,5 @@
 pkgname=moro
-pkgver=4.1.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A command line tool for tracking work hours."
 arch=(any)
