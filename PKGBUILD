@@ -4,7 +4,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt
-pkgver=6.9.2
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="QT archiver utility"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ options=('!strip')
 install=peazip.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.LINUX.Qt.tgz"
         "peazip.desktop")
-sha256sums=('b4f8e2bedeff52488dab4d641269103131038ff750e3b38d15f3ccad99797f8e'
+sha256sums=('4246ea496cd30b91d97e7c350aee84c01b54739b60b43f414048d9c83940d848'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
 
 
