@@ -1,6 +1,6 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=chestnut
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An open-source NLE video editor "
 arch=(x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=("https://github.com/jonno85uk/chestnut/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('f83a9cf655c20ca9108d5527cc9838d9')
+md5sums=('37d4c7daf5a20e8c4621a830bc5d3f1f')
 
 prepare() {
     rm -rf "chestnut"
