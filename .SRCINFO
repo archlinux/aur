@@ -1,6 +1,6 @@
 pkgbase = corepdf
 	pkgdesc = A PDF viewer from the CoreApps family.
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/corepdf
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = corepdf
 	depends = qt5-base
 	depends = poppler-qt5
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/corepdf/-/archive/v2.7.1/corepdf-v2.7.1.tar.gz
-	md5sums = 30a12826417f3c69d2fd599587f03c2f
+	source = https://gitlab.com/cubocore/corepdf/-/archive/v2.8.0/corepdf-v2.8.0.tar.gz
+	md5sums = 658c78d5e4a8bea68f5f4062d7914c3b
 
 pkgname = corepdf
 
