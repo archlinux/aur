@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=grin
-pkgver=2.1.1
-_commit=6d1bc3a1f921d9d9ff51c739ff1b0fadc434881b
+pkgver=3.0.0
+_commit=4704037848261e09fe342469e31396eb205d8408
 pkgrel=1
 pkgdesc='Minimal implementation of the MimbleWimble protocol'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=("git+https://github.com/mimblewimble/grin.git#commit=${_commit}"
         'grin-server.toml')
 sha256sums=('SKIP'
             '5a9b2c30bd95d8ccb4666dcc97b2811c4b5ec501162b6178a1850b5b2fc95de9'
-            'fa86d0075c1adfb6a92d0db8df6b5012250527f14f566dfb52fd64958b8bc04f')
+            'f44c95c1576d8edf48e182602c4b4f85f7c8ceb090c97d107c011f64bd4c1885')
 
 build() {
     cd ${pkgname}

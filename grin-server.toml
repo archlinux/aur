@@ -28,9 +28,13 @@ db_root = "/var/lib/grin/main/chain_data"
 #the address on which services will listen, e.g. Transaction Pool
 api_http_addr = "127.0.0.1:3413"
 
-#path of the secret token used by the API to authenticate the calls
+#path of the secret token used by the Rest API and v2 Owner API to authenticate the calls
 #comment the it to disable basic auth
 api_secret_path = "/var/lib/grin/main/.api_secret"
+
+#path of the secret token used by the Foreign API to authenticate the calls
+#comment the it to disable basic auth
+foreign_api_secret_path = ".foreign_api_secret"
 
 #The chain type, which defines the genesis block and the set of cuckoo
 #parameters used for mining as well as wallet output coinbase maturity. Can be:
@@ -52,8 +56,7 @@ archive_mode = false
 #skip waiting for sync on startup, (optional param, mostly for testing)
 skip_sync_wait = false
 
-#whether to run the ncurses TUI. Ncurses must be installed and this
-#will also disable logging to stdout
+#whether to run the ncurses TUI (Ncurses must be installed)
 run_tui = false
 
 #Whether to run a test miner. This is only for developer testing (chaintype
