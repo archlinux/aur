@@ -71,7 +71,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
 
 sha256sums=('ed3d916a167e29becb15a79f06741159a891aee369f490e16081ce4969ec0f6e'
             '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
-            'a3e9541bf0306d32af8acf121643d9953776d448f68ec09741c591d1e5bc6748')
+            '632dd5b285217ad7f6ec584ace623a178c38debdc278c2063feb11412e6fabf8')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
