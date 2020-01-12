@@ -1,7 +1,7 @@
 # Maintainer: Antoine Detante <antoine.detante@gmail.com>
 pkgname=bitwarden-server
 pkgver=1.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source password management solutions for individuals, teams, and business organizations."
 arch=('x86_64')
 url="https://github.com/bitwarden"
