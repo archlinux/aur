@@ -1,12 +1,12 @@
 [Unit]
-Description=Minecraft Forge Server World Backup
+Description=Minecraft Forge 1.6.4 Server World Backup
 After=local-fs.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/forged backup
-User=forge
-Group=forge
+ExecStart=/usr/bin/forge-1.6.4d backup
+User=forge-1-6-4
+Group=forge-1-6-4
 
 [Install]
 WantedBy=multi-user.target
