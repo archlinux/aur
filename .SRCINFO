@@ -1,0 +1,19 @@
+pkgbase = libprotothread-git
+	pkgdesc = programming model that combines the advantages of event-driven programming and threaded programming
+	pkgver = r47.3c1ed2e
+	pkgrel = 1
+	url = https://github.com/LarryRuane/protothread
+	arch = i686
+	arch = x86_64
+	license = APL2
+	makedepends = cmake
+	makedepends = git
+	provides = libprotothread
+	provides = protothread
+	conflicts = libprotothread
+	conflicts = protothread
+	source = git+https://github.com/LarryRuane/protothread.git#commit=3c1ed2e9ed5f937ee2eebf26a08d3383fe6488a1
+	sha256sums = SKIP
+
+pkgname = libprotothread-git
+
