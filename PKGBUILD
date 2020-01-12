@@ -5,17 +5,17 @@
 
 _pkgname=charybdis
 pkgname=charybdis
-pkgver=3.5.3
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='A highly scalable IRCv3-compliant IRCd'
 url='http://www.charybdis.io/'
 license=('GPL2')
 options=('!strip')
 install=charybdis.install
-source=("http://distfiles.charybdis.io/charybdis-${pkgver}.tar.bz2"
+source=("https://github.com/charybdis-ircd/charybdis/archive/charybdis-${pkgver}.tar.gz"
         'charybdis.service'
         'charybdis.tmpfiles')
-sha256sums=('9fb928524acbadeabedef56b0b6446c2d6de365382e256f5c21170c75390e16b'
+sha256sums=('a3f4e572877c5a3abdab3af652746c0682f0c41b3f9e3c9866315f5d03f2bb57'
             '044f3567ed865365e76581942e1b28ba4f7193dd6c8022616ea0894295272062'
             '2fcc284f060cafa9a6df0b010de44833b248169ab11c6289f54227ab87068c29')
 arch=('i686' 'x86_64')
@@ -23,9 +23,10 @@ depends=('bison' 'flex' 'openssl' 'zlib')
 provides=('charybdis')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
 
   # Configure the build.
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/charybdis \
@@ -39,7 +40,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
 
   # Install the program.
   make DESTDIR="${pkgdir}" install
