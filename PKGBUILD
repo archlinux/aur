@@ -2,7 +2,7 @@
 # Maintainer : Marcos Heredia <chelqo at gmail dot com>
 
 pkgname=tzclock
-pkgver=3.1.7
+pkgver=4.2
 pkgrel=1
 pkgdesc="Cairo clock to display the time around the world"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=("GPL")
 depends=('gtk3' 'libnotify')
 makedepends=('wget')
 conflicts=("$pkgname-gtk2")
-source=("https://theknight.co.uk/releases/source/$pkgname-$pkgver.tar.bz2")
-md5sums=('700f1b1c4bb8f20226a91d3acaa784d9')
+source=("https://theknight.co.uk/releases/Source/$pkgname-$pkgver.tar.bz2")
+sha512sums=('0bf7eeb70fd41c0c69b024f13ced91eb0e35918ff509c31ec64f19c31b0b4e721f889e8779b4679fdd81c2d42cce06d2bd62289d5c66466af4a8cbb25eb554ab')
 DLAGENTS=('https::/usr/bin/wget -O %o %u')
 
 build() {
