@@ -1,0 +1,12 @@
+pkgbase = python-hosts
+	pkgdesc = A hosts file manager library written in python
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/jonhadfield/python-hosts
+	arch = any
+	license = MIT
+	source = git+https://github.com/jonhadfield/python-hosts.git
+	sha512sums = SKIP
+
+pkgname = python-hosts
+
