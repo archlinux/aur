@@ -1,0 +1,130 @@
+--- libviper/private.h
++++ libviper/private.h
+@@ -3,7 +3,7 @@
+ 
+ #include <inttypes.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include "viper.h"
+ #include "list.h"
+
+--- libviper/viper.h
++++ libviper/viper.h
+@@ -8,7 +8,7 @@
+ 
+ #include <sys/types.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #define LIBVIPER_VERSION            "3.0.1"
+ 
+
+--- libviper/viper_callbacks.c
++++ libviper/viper_callbacks.c
+@@ -17,7 +17,7 @@
+  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  *----------------------------------------------------------------------*/
+ 
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ 
+ #include "viper.h"
+ #include "private.h"
+
+--- libviper/viper_callbacks.h
++++ libviper/viper_callbacks.h
+@@ -1,7 +1,7 @@
+ #ifndef _VIPER_CALLBACKS_H_
+ #define	_VIPER_CALLBACKS_H_
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include "viper.h"
+ 
+
+--- libviper/viper_deck.h
++++ libviper/viper_deck.h
+@@ -3,7 +3,7 @@
+ 
+ #include <stdbool.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ bool    viper_deck_check_occlusion(VIPER_WND *bottom_wnd, VIPER_WND *top_wnd);
+ 
+
+--- libviper/viper_events.h
++++ libviper/viper_events.h
+@@ -3,7 +3,7 @@
+ 
+ #include <stdbool.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include "viper.h"
+ 
+
+--- libviper/viper_kmio.h
++++ libviper/viper_kmio.h
+@@ -3,7 +3,7 @@
+ 
+ #include <inttypes.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #if !defined(_NO_GPM) && defined(__linux)
+ #include <gpm.h>
+
+--- libviper/viper_states.h
++++ libviper/viper_states.h
+@@ -3,7 +3,7 @@
+ 
+ #include <stdbool.h>
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #include "viper.h"
+ 
+
+--- libviper/viper_wdecorate.h
++++ libviper/viper_wdecorate.h
+@@ -1,6 +1,6 @@
+ #ifndef _H_VIPER_WDECORATE
+ #define _H_VIPER_WDECORATE
+ 
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ 
+ #endif
+
+--- libviper/vk_widget.c
++++ libviper/vk_widget.c
+@@ -2,7 +2,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ 
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ 
+ #include "viper.h"
+ #include "vk_object.h"
+
+--- libviper/vk_widget.h
++++ libviper/vk_widget.h
+@@ -4,7 +4,7 @@
+ #include <inttypes.h>
+ #include <stdarg.h>
+ 
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>
+ 
+ #include "list.h"
+ 
