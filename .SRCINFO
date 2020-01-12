@@ -8,7 +8,7 @@ pkgbase = libdial
 	license = GPL3
 	depends = gtk3
 	source = https://theknight.co.uk/releases/Source/libdial-2.2.tar.bz2
-	md5sums = 46ab066d2cc09e08736769472cc1ab79
+	sha512sums = 28725d6a54da74dd911237920beb0f166cf4676ced7a7c8763521c1c0da6f698b48c35dde25eba979597693016af9795d6f4eeba65b5e0afd21c3312847a7b65
 
 pkgname = libdial
 
