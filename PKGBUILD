@@ -19,7 +19,7 @@ source=("git+https://github.com/TragicWarrior/${pkgbase}.git#commit=${_commit}"
         "protothread-cmake.patch")
 sha256sums=('SKIP'
             '989e68bf68ed7756467220e4642c03bf72083c9a0fa0d59aad01571c1d9c2e3a'
-            '45f7ba28cad577da8f23006b37be7bf33850af216ae34e6ad849011659a47273')
+            'b76dc417bef0bdbba0a80a3b82c7ec8d0a1ddcf1b5ee8adaf8ba7ae8dde15e22')
 
 
 prepare() {
