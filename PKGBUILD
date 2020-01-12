@@ -2,7 +2,7 @@
 # Maintainer: Dan Johansen <strit@manjaro.org>
 
 pkgname=corestuff
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="An activity viewer from the CoreApps family."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'qt5-x11extras' 'libcsys>=2.7.1' 'libcprime>=2.7.1' 'libxcom
 replaces=('corebox')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('78b2de72a86d49ea31509ab69a118aba')
+md5sums=('9e7bf18cc80e4aa65a176407859b0b97')
 
 prepare() {
   mkdir -p build
