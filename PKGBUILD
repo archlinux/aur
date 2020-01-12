@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-c-git
-pkgver=4.9.3.r937.g0dd0eb66
+pkgver=4.9.3.r943.g4b92b04a
 pkgrel=1
 pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('gambit-c')
 conflicts=('gambit-c')
 options=('!makeflags' 'staticlibs')
-source=(gambit-scheme::git+https://github.com/gambit/gambit.git#commit=0dd0eb66)
+source=(gambit-scheme::git+https://github.com/gambit/gambit.git)
 md5sums=('SKIP')
 
 pkgver() {
