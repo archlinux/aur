@@ -1,13 +1,13 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-amiri
-pkgver=0.111
+pkgver=0.112
 pkgrel=1
-pkgdesc="A classical Arabic typeface in Naskh style poineered by Amiria Press"
+pkgdesc="Classical Arabic typeface in Naskh style poineered by Amiria/Bulaq Press in Cairo"
 arch=('any')
 url="http://www.amirifont.org/"
 license=('custom:OFL')
 source=(https://github.com/khaledhosny/amiri-font/releases/download/$pkgver/amiri-$pkgver.zip)
-sha256sums=('1fbfccced6348b5db2c1c21d5b319cd488e14d055702fa817a0f6cb83d882166')
+sha256sums=('b9da1916f5e1028ea5d8404f7ac7b3722576d794b1053b6be11f1a02651ddf3c')
 package() {
   cd "$srcdir/Amiri-$pkgver"
   install -d "$pkgdir/usr/share/fonts/TTF"
