@@ -2,7 +2,7 @@
 # Maintainer: masutu < masutu dot arch dot googlemail dot com >
 pkgname=qloud
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to measure a loudspeaker frequency response and distortions."
 arch=('i686' 'x86_64')
 url="https://github.com/molke-productions/qloud"
