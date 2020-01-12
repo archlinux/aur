@@ -17,7 +17,7 @@ optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz nis.patch)
 sha256sums=('c24a37c63a67f53bdd09c5f287b5cff8e8b98f857bf348c577d454d3f74db049'
-            'a88e5ba4f10fa1fdb208791028cca7ba524fbf9ab3c94b15ce6e7758f1d2895b')
+            'd5d3412e120f7369518688dfc512d5ba1ae3b054c35c179013ed91a207770e42')
 
 
 prepare() {
