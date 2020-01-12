@@ -2,7 +2,7 @@
 
 pkgname=aspell-eo
 pkgver=2.1.20000225a
-pkgrel=2
+pkgrel=3
 pkgdesc="Esperanto dictionary for aspell"
 arch=('x86_64')
 url="http://aspell.net/"
