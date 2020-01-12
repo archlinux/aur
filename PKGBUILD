@@ -2,8 +2,8 @@
 
 pkgbase=spotifyd-bin
 pkgname=('spotifyd-bin' 'spotifyd-bin-slim')
-pkgver=0.2.20
-pkgrel=3
+pkgver=0.2.23
+pkgrel=1
 conflicts=('spotifyd')
 provides=('spotifyd')
 depends=('alsa-lib')
@@ -12,7 +12,7 @@ license=('GPL3')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/spotifyd"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v$pkgver/spotifyd-linux-slim.tar.gz" "spotifyd.service")
-sha256sums=('db45c8df7eff78500f1f0b330f054ce095d7e2cb901f9f3dbb4931c96c8dcc7b'
+sha256sums=('65bf5998da6dcc3612e797d99d46ee2a89d02fae81020c5105059914b4ded6bf'
             '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
 
 _package() {
