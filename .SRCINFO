@@ -24,7 +24,6 @@ pkgbase = panda3d
 	depends = openal
 	depends = libxrandr
 	depends = libxcursor
-	depends = libxxf86dga
 	optdepends = xorg-server: X11 support
 	optdepends = libgl: OpenGL support for X11
 	optdepends = python: Python 3 bindings

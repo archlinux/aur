@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('BSD')
 depends=('desktop-file-utils' 'shared-mime-info' 'xorg-server' 'libgl'
          'openssl' 'libjpeg' 'libpng' 'libtiff' 'freetype2' 'gtk2'
-         'openal' 'libxrandr' 'libxcursor' 'libxxf86dga')
+         'openal' 'libxrandr' 'libxcursor')
 makedepends=('python' 'bison' 'cmake' 'flex')
 
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
