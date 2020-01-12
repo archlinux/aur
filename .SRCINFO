@@ -1,0 +1,19 @@
+pkgbase = openconnect-gui
+	pkgdesc = The GUI client for OpenConnect VPN
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://openconnect.github.io/openconnect-gui/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	makedepends = qt5-base
+	depends = openconnect
+	depends = qt5-base
+	provides = openconnect
+	source = https://github.com/openconnect/openconnect-gui/archive/v1.5.3.tar.gz
+	sha256sums = 1c90399689c0720660c9d98d841119ceccc698e5cd46bf0c12b85334ca995347
+
+pkgname = openconnect-gui
+
