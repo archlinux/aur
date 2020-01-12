@@ -1,7 +1,7 @@
 pkgbase = forge-server
 	pkgdesc = Minecraft Forge server unit files, script and jar
 	pkgver = 1.14.4_28.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://minecraftforge.net
 	install = forge-server.install
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = forge-server
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	provides = forge-server=1.14.4_28.1.0
-	conflicts = forge-server
 	noextract = forge-1.14.4-28.1.0.jar
 	backup = etc/conf.d/forge
 	source = forged-backup.service

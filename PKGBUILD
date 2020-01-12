@@ -5,10 +5,10 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-[ -z "$FORGE_SRV_PKGVER" ] && FORGE_SRV_PKGVER="1.14.4_28.1.0-8"
-[ -z "$FORGE_SRV_MCVER_LATEST" ] && FORGE_SRV_MCVER_LATEST="1.14.4"
+_ver="1.14.4_28.1.0-9"
+_minecraft_ver_latest="1.14.4"
 
-IFS="-" read -ra _ver_temp <<< "$FORGE_SRV_PKGVER"
+IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
 IFS="." read -ra _minecraft_ver_temp <<< "${_pkgver_temp[0]}"
 
@@ -18,10 +18,16 @@ _minecraft_ver_minor=${_minecraft_ver_temp[1]:-0}
 _minecraft_ver_patch=${_minecraft_ver_temp[2]:-0}
 _forge_ver=${_pkgver_temp[1]}
 
-_pkgver="${_minecraft_ver}-${_forge_ver}"
+_pkgver=${_ver_temp[0]//_/-}
 
-[ "$_minecraft_ver" = "$FORGE_SRV_MCVER_LATEST" ] && pkgname="forge-server" || pkgname="forge-server-${_minecraft_ver}"
-pkgver=${_pkgver//-/_}
+if [ "$_minecraft_ver" = "$_minecraft_ver_latest" ]; then
+	pkgname="forge-server"
+	_forge_name="forge"
+else
+	pkgname="forge-server-${_minecraft_ver}"
+	_forge_name="forge-${_minecraft_ver}"
+fi
+pkgver=${_ver_temp[0]}
 pkgrel=${_ver_temp[1]}
 pkgdesc="Minecraft Forge server unit files, script and jar"
 arch=("any")
@@ -31,9 +37,8 @@ depends=("java-runtime-headless=8" "screen" "sudo" "bash" "awk" "sed")
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 provides=("forge-server=${pkgver}")
-conflicts=("forge-server")
-backup=("etc/conf.d/forge")
-[ "$FORGE_SRV_PKGVER" = "1.14.4_28.1.0-8" ] && install="forge-server.install" || install="forge-server-custom.install"
+backup=("etc/conf.d/${_forge_name}")
+install="forge-server.install"
 source=("forged-backup.service"
 	"forged-backup.timer"
 	"forged.service"
@@ -115,12 +120,14 @@ prepare() {
 }
 
 package() {
+	_server_root="${pkgdir}/srv/${_forge_name}"
+
 	# Install forged
-	install -Dm644 "forged-backup.service" "${pkgdir}/usr/lib/systemd/system/forged-backup.service"
-	install -Dm644 "forged-backup.timer" "${pkgdir}/usr/lib/systemd/system/forged-backup.timer"
-	install -Dm644 "forged.service" "${pkgdir}/usr/lib/systemd/system/forged.service"
-	install -Dm644 "forged.conf" "${pkgdir}/etc/conf.d/forge"
-	install -Dm755 "forged.sh" "${pkgdir}/usr/bin/forged"
+	install -Dm644 "forged-backup.service" "${pkgdir}/usr/lib/systemd/system/${_forge_name}d-backup.service"
+	install -Dm644 "forged-backup.timer" "${pkgdir}/usr/lib/systemd/system/${_forge_name}d-backup.timer"
+	install -Dm644 "forged.service" "${pkgdir}/usr/lib/systemd/system/${_forge_name}d.service"
+	install -Dm644 "forged.conf" "${pkgdir}/etc/conf.d/${_forge_name}"
+	install -Dm755 "forged.sh" "${pkgdir}/usr/bin/${_forge_name}d"
 
 	# Install Forge
 	_forge_jar="forge-${_pkgver}.jar"
@@ -128,22 +135,22 @@ package() {
 	[ "$_minecraft_ver_minor" = 7 ] && _forge_jar="forge-${_pkgver}-${_minecraft_ver}-universal.jar"
 	[ "$_minecraft_ver_minor" -le 6 ] && _forge_jar="minecraftforge-universal-${_pkgver}.jar"
 
-	install -Dm644 "$_forge_jar" "${pkgdir}/srv/forge/$_forge_jar"
-	ln -s "$_forge_jar" "${pkgdir}/srv/forge/forge.jar"
-	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${pkgdir}/srv/forge/@"
-	[ "$_minecraft_ver_minor" = 5 ] && find lib -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${pkgdir}/srv/forge/@"
+	install -Dm644 "$_forge_jar" "${_server_root}/$_forge_jar"
+	ln -s "$_forge_jar" "${_server_root}/forge.jar"
+	find libraries -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${_server_root}/@"
+	[ "$_minecraft_ver_minor" = 5 ] && find lib -type f -print0 | xargs -0 -i@ install -Dm644 "@" "${_server_root}/@"
 
 	# Install Minecraft Server (for 1.12.2 or lower)
 	if [ "$_minecraft_ver_minor" = 5 ]; then
-		install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}/srv/forge/minecraft_server.jar"
+		install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${_server_root}/minecraft_server.jar"
 	elif [ "$_minecraft_ver_minor" -le 12 ]; then
-		install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${pkgdir}/srv/forge/minecraft_server.${_minecraft_ver}.jar"
+		install -Dm644 "minecraft_server.${_minecraft_ver}.jar" "${_server_root}/minecraft_server.${_minecraft_ver}.jar"
 	fi
 
 	# Link log files
 	mkdir -p "${pkgdir}/var/log/"
-	install -dm2755 "${pkgdir}/srv/forge/logs"
-	ln -s "/srv/forge/logs" "${pkgdir}/var/log/forge"
+	install -dm2755 "${_server_root}/logs"
+	ln -s "/srv/${_forge_name}/logs" "${pkgdir}/var/log/${_forge_name}"
 
 	# Install licenses
 	for _license in "${_licenses[@]}"; do
@@ -152,5 +159,5 @@ package() {
 		install -Dm644 "$_license" "${pkgdir}/usr/share/licenses/${pkgname}/$_filename"
 	done
 
-	chmod g+ws "${pkgdir}/srv/forge"
+	chmod g+ws "${_server_root}"
 }
