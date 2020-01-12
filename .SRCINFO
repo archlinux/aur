@@ -1,6 +1,6 @@
 pkgbase = mauikit-git
 	pkgdesc = Utilities and "templated" controls based on Kirigami and QCC2 that follow the ongoing work on the Maui HIG
-	pkgver = r406.76895b8
+	pkgver = r1047.98e368c
 	pkgrel = 1
 	url = https://mauikit.org/
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = mauikit-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = qt5-webengine
+	makedepends = appstream
+	makedepends = syntax-highlighting
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-svg
@@ -21,7 +23,7 @@ pkgbase = mauikit-git
 	depends = kio
 	provides = mauikit
 	conflicts = mauikit
-	source = mauikit-git::git+https://github.com/maui-project/mauikit
+	source = git+https://invent.kde.org/kde/mauikit.git
 	sha256sums = SKIP
 
 pkgname = mauikit-git
