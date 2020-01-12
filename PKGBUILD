@@ -1,6 +1,6 @@
 pkgname=purescript
 pkgver=0.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A small strongly, statically typed programming language with expressive types, inspired by Haskell and compiling to JavaScript."
 arch=('x86_64')
 url="https://hackage.haskell.org/package/purescript"

@@ -1,7 +1,7 @@
 pkgbase = purescript
 	pkgdesc = A small strongly, statically typed programming language with expressive types, inspired by Haskell and compiling to JavaScript.
 	pkgver = 0.13.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hackage.haskell.org/package/purescript
 	arch = x86_64
 	license = custom:BSD3
