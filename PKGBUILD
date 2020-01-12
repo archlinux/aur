@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=19.04.20
+pkgver=19.04.21
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -43,7 +43,7 @@ source=(
   'cli.patch'
   'wayland.patch')
 sha1sums=(
-  '0cd8f828656a84bc08a8029f7ad4bdfa49887189'
+  '54be0c68665983a81f8172a85b913318686177a2'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
@@ -94,4 +94,4 @@ package() {
 
 	# Clean up
 	rm -rf ${pkgdir}/usr/lib/python*/site-packages/system76driver/{__pycache__,tests}
-} 
+}
