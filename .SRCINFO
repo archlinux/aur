@@ -1,6 +1,6 @@
 pkgbase = betterbib
 	pkgdesc = Update BibTeX files with info from online resources
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/nschloe/betterbib
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = betterbib
 	depends = python-requests-cache
 	depends = python-setuptools
 	depends = python-tqdm
-	source = betterbib-3.5.2.tar.gz::https://github.com/nschloe/betterbib/archive/3.5.2.tar.gz
-	sha256sums = 3e68d5a0f785be86539c8b2996ca93dea3c08fb465c3f9457b02ef1413e1aa84
+	source = betterbib-3.5.3.tar.gz::https://github.com/nschloe/betterbib/archive/3.5.3.tar.gz
+	sha256sums = 635848d91a908c8b3379560dd67e90851d959a8ff69b25cd3fc2aab9611af0ce
 
 pkgname = betterbib
 
