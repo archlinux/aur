@@ -1,9 +1,10 @@
 # Maintainer: Mark Tompkins
 
+_pkgname=arch-silence-grub-theme
 pkgname=arch-silence-grub-theme-git
 _gitname="arch-silence"
 pkgver=r5.9fda3bf
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Silence - GRUB2 theme - GIT version"
 arch=('any')
 license=('GPL')
@@ -13,8 +14,9 @@ install="${pkgname}.install"
 url="https://github.com/fghibellini/arch-silence"
 source=('git+https://github.com/fghibellini/arch-silence.git')
 makedepends=('git')
-md5sums=('SKIP')
-conflicts=("arch-silence-grub-theme")
+sha512sums=('SKIP')
+conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 
 pkgver() {
   cd ${srcdir}/${_gitname}
