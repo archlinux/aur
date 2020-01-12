@@ -1,0 +1,10 @@
+pkgbase = fulcrum
+	pkgdesc = fulcrum
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = qt5
+
+pkgname = fulcrum
+
