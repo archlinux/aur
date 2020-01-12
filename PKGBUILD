@@ -4,14 +4,14 @@
 # Contributor: Tony Lambiris <tony@critialstack.com>
 
 pkgname=apt
-pkgver=1.7.0
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="Command-line package manager used on Debian-based systems"
 arch=('i686' 'x86_64')
-url="http://packages.debian.org"
+url="https://packages.debian.org"
 license=('GPL2')
 depends=('gnupg' 'curl' 'xz')
-makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'git' 'po4a' 'gtest' 'w3m')
+makedepends=('cmake' 'dpkg' 'docbook-xsl' 'doxygen' 'git' 'po4a' 'gtest' 'w3m' 'triehash')
 checkdepends=()
 optdepends=()
 provides=('libapt-inst' 'libapt-pkg' 'libapt-pkg-dev' "apt-utils")
