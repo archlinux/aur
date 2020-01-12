@@ -15,6 +15,7 @@ pkgbase = apt-cacher-ng
 	depends = xz
 	depends = openssl
 	depends = libwrap
+	depends = libevent
 	backup = etc/apt-cacher-ng/acng.conf
 	source = http://ftp.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_3.3.orig.tar.xz
 	source = acng.conf.patch
