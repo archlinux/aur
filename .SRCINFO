@@ -1,6 +1,6 @@
 pkgbase = fotoxx
 	pkgdesc = A program for improving image files made with a digital camera, stable version
-	pkgver = 20.03
+	pkgver = 20.04
 	pkgrel = 1
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = fotoxx
 	optdepends = rawtherapee: for raw image processing
 	optdepends = dvd+rw-tools: for burning CDs,DVDs or BlueRays
 	optdepends = hugin: for panorama photos
-	source = http://www.kornelix.net/downloads/downloads/fotoxx-20.03.tar.gz
-	sha512sums = 744400885a714d048ce4f653ab4cfd1b4a9a201794d89e6cf8b7e99f29659c48d1c7a6454066a8b1c6d96808129cff616449a5fb9a10f689f41a51a630592326
+	source = http://www.kornelix.net/downloads/downloads/fotoxx-20.04.tar.gz
+	sha512sums = 592a5d56c41bd68c3bac04ea2f7cc1ba4e1a9a8d3c0266e778b5fc255905c1ea4f795f4f13b15c9acf4c8adac0f5bda4f5d9b615e2612217649c600cebceb7e4
 
 pkgname = fotoxx
 
