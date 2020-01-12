@@ -1,0 +1,57 @@
+--- oblogout/__init__.py	2009-04-13 16:48:11.000000000 -0400
++++ da/oblogout/__init__.py	2010-10-19 14:38:29.000000000 -0300
+@@ -222,8 +222,8 @@ class OpenboxLogout():
+         if self.parser.has_section("commands"):
+             for key in self.parser.items("commands"):
+                 self.logger.debug("Setting cmd_%s as %s" % (key[0], key[1]))
+-                if key[1] in ['logout', 'restart', 'shutdown', 'suspend', 'hibernate', 'safesuspend', 'lock', 'switch']:
+-                    if key[1]: setattr(self, "cmd_" + key[0], key[1])
++                if key[0] in ['logout', 'restart', 'shutdown', 'suspend', 'hibernate', 'safesuspend', 'lock', 'switch']:
++                    if key[0]: setattr(self, "cmd_" + key[0], key[1])
+ 
+         # Load theme information from local directory if local mode is set
+         if self.local_mode:
+--- oblogout/__init__.py	2012-03-05 14:51:08.000000000 +0100
++++ __init__.py	2012-03-05 20:43:49.185068877 +0100
+@@ -176,6 +176,7 @@
+         self.parser.read(config)
+         
+         # Set some safe defaults
++	self.lock_before_suspend = False
+         self.opacity = 50
+         self.button_theme = "default"
+         self.bgcolor = gtk.gdk.color_parse("black")
+@@ -188,6 +189,9 @@
+                 self.usehal = self.parser.getboolean("settings","usehal")
+             else:
+                 self.usehal = True
++
++	    if self.parser.has_option("settings","lock_before_suspend"):
++		self.lock_before_suspend = self.parser.getboolean("settings","lock_before_suspend")
+             
+         if self.usehal:    
+             from dbushandler import DbusController
+@@ -363,7 +367,10 @@
+                 
+         elif (data == 'suspend'):
+             self.window.hide()
+-            self.__exec_cmd(self.cmd_lock)
++
++	    if(self.lock_before_suspend):
++	        self.__exec_cmd(self.cmd_lock)
++
+             if self.usehal:
+                 self.dbus.suspend()
+             
+@@ -372,7 +379,10 @@
+                 
+         elif (data == 'hibernate'):
+             self.window.hide()
+-            self.__exec_cmd(self.cmd_lock)
++
++	    if(self.lock_before_suspend):
++	        self.__exec_cmd(self.cmd_lock)
++
+             if self.usehal:
+                 self.dbus.hibernate()
+             else:
