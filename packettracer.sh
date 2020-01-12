@@ -1,0 +1,4 @@
+PT7HOME=/opt/packettracer/
+export PT7HOME
+QT_DEVICE_PIXEL_RATIO=auto
+export QT_DEVICE_PIXEL_RATIO
