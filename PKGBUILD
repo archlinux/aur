@@ -1,4 +1,4 @@
-# Maintainer : FadeMind <fademind@gmail.com>
+# Maintainer : Felix Golatofski <contact@xdfr.de>
 # Contributor: Red_Squirrel <evangelion87d@gmail.com>
 # Contributor: Xavier114fch <xavier114fch@gmail.com>
 # Contributor: nachoig      <areta@outlook.com.br>
@@ -75,12 +75,13 @@
 ## updated to upstream 6.0.3
 ## updated to upstream 6.0.4
 ## updated to upstream 6.3.0 and drop x86 support
+## updated to upstream 6.3.4
 
 ## Check for new LibreOffice releases:
 # $ wget "https://download.documentfoundation.org/libreoffice/stable/" -q -O /tmp/lo.html && echo "LibreOffice versions" && awk '{print $3;}' /tmp/lo.html|cut -b 7-11|grep --color=never [0-9].[0-9].[0-9]; rm /tmp/lo.html
 
 pkgname=libreoffice-fresh-rpm
-pkgver=6.3.0
+pkgver=6.3.4
 pkgrel=1
 pkgdesc="LGPL Office Suite installed from rpms"
 arch=('x86_64')
@@ -91,7 +92,7 @@ makedepends=('curl' 'awk')
 optdepends=('jre8-openjdk' 'gtk3' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 # WARNING sha256sums values should be taken from details page about rpm.tar.gz files from servers. DO NOT USE _updpgksums_ tool.
 arch_mod='x86_64';
-sha256sums=('7f3a9c53055284568056fe559ea85aa218b8e2ea0a569c0d5fc5934648475cbc')
+sha256sums=('35ca9ddffd7b8bdef730167b6b0f3f15dd70d07d0af1dc1c6a08310c9ba3448b')
 source=("https://download.documentfoundation.org/libreoffice/stable/${pkgver}/rpm/${arch_mod}/LibreOffice_${pkgver}_Linux_${arch_mod/_/-}_rpm.tar.gz")
 
 prepare() { ## prepare function
