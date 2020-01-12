@@ -1,13 +1,13 @@
 [Unit]
-Description=Minecraft Forge Server
+Description=Minecraft Forge 1.10.2 Server
 After=local-fs.target network.target multi-user.target
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/forged start
-ExecStop=/usr/bin/forged stop
-User=forge
-Group=forge
+ExecStart=/usr/bin/forge-1.10.2d start
+ExecStop=/usr/bin/forge-1.10.2d stop
+User=forge-1-10-2
+Group=forge-1-10-2
 
 [Install]
 WantedBy=multi-user.target
