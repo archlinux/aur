@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=80.0.3987.42
+pkgver=81.0.4021.2
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -27,21 +27,17 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
-        0001-cros-search-service-Include-cmath-for-std-pow.patch
-        0001-BookmarkModelMerger-Move-RemoteTreeNode-declaration-.patch
         chromium-system-icu.patch
         chromium-system-zlib.patch
+        0001-Modernize-WebInputEvent.patch
         fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('160c02ed00d45a074246c8984144a35b092102e9b9a31e2bc9c2dad49f297945'
+sha256sums=('45f1c7efacf0e628da2943725a155d1f9143b53c3d8e649de10d48c4f17c8b69'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
-            '4c892f046ab10df609aa39d9985248d368c77306783a64d335ff713dabad60b0'
-            'a44ed59db5258221ee187dc2501040e5ebfc5c1353ac98d4313ac6a12ae32d1f'
             'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
             'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
+            '5bd56b41062eb3346a33a27e18954899118fe55d99330d917fea4a6d94dc3ce1'
             '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
@@ -103,9 +99,7 @@ prepare() {
     third_party/libxml/chromium/libxml_utils.cc
 
   # build fixes
-  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
-  patch -Np1 -i ../0001-cros-search-service-Include-cmath-for-std-pow.patch
-  patch -Np1 -i ../0001-BookmarkModelMerger-Move-RemoteTreeNode-declaration-.patch
+  patch -Np1 -R -i ../0001-Modernize-WebInputEvent.patch
   
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-icu.patch
@@ -217,6 +211,7 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -D out/Release/crashpad_handler "$pkgdir/usr/lib/chromium/crashpad_handler"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
