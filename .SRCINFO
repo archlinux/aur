@@ -1,6 +1,6 @@
 pkgbase = dell-mgmtstat
 	pkgdesc = Dell OpenManage iDRAC Linux Remote Access Utilities (RACADM)
-	pkgver = 8.5
+	pkgver = 9.4.0
 	pkgrel = 1
 	url = http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = dell-mgmtstat
 	optdepends = openssl098: for even older junk, like racadm5
 	conflicts = dell-srvadmin
 	options = !strip
-	source = https://downloads.dell.com/FOLDER04161783M/1/OM-MgmtStat-Dell-Web-LX-8.5.0-2372_A00.tar.gz
-	source = https://downloads.dell.com/FOLDER04161790M/1/OM-MgmtStat-Dell-Web-LX-8.5.0-2372_A00.tar.gz.sign
-	validpgpkeys = 4172E2CE955A1776A5E61BB7CA77951D23B66A9D
-	sha256sums = 8ba2cb30834541dff540b48922bdac93e316df2a28c33f3cbd6301ee180a7213
-	sha256sums = 70bab1f33a018444bb916f67c538ff2256075f964355ce655ae32641ab39cae3
+	source = https://dl.dell.com/FOLDER05920767M/1/DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz
+	source = https://dl.dell.com/FOLDER05920766M/1/DellEMC-iDRACTools-Web-LX-9.4.0-3732_A00.tar.gz.sign
+	validpgpkeys = 42550ABD1E80D7C1BC0BAD851285491434D8786F
+	sha256sums = bd7cecb61fbf46818355c5c142e23b3b35466cacc5bb56ee24dc9a6da728d595
+	sha256sums = SKIP
 
 pkgname = dell-mgmtstat
 
