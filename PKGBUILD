@@ -1,4 +1,5 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron-ozone
 pkgver=7.1.8
