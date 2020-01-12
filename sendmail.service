@@ -8,8 +8,12 @@ Wants=sm-client.service
 Type=forking
 PIDFile=/run/sendmail.pid
 EnvironmentFile=/etc/conf.d/sendmail
-ExecStartPre=-/usr/bin/newaliases > /dev/null 2>&1
+ExecStartPre=-/usr/bin/newaliases
 ExecStart=/usr/sbin/sendmail -bd $SENDMAIL_OPTS $SENDMAIL_OPTARG
+ExecReload=/usr/bin/kill -HUP $MAINPID
+# hack to allow async reload to complete, otherwise systemd may signal error
+ExecReload=/usr/bin/sleep 2
 
 [Install]
 WantedBy=multi-user.target
+Also=sm-client.service
