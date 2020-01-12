@@ -1,7 +1,7 @@
 pkgbase = perl-moose
 	pkgdesc = A postmodern object system for Perl 5
 	pkgver = 2.2012
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Moose
 	arch = any
 	license = PerlArtistic
@@ -29,6 +29,7 @@ pkgbase = perl-moose
 	depends = perl-sub-identify>=0
 	depends = perl-sub-name>=0.20
 	depends = perl-try-tiny>=0.17
+	depends = perl-module-runtime-conflicts
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-2.2012.tar.gz
 	md5sums = 4aaf729a9c575aab2c0cbd127cd8edf1
