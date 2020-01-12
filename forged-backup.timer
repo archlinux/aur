@@ -1,5 +1,5 @@
 [Unit]
-Description=Daily Minecraft Forge Server Backup
+Description=Daily Minecraft Forge 1.11.2 Server Backup
 
 [Timer]
 OnCalendar=daily
