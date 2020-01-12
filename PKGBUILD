@@ -2,16 +2,16 @@
 pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=1.2.9
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('i686' 'x86_64')
 url="https://github.com/sunpy/sunpy-sphinx-theme"
 license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools-scm' 'python2-setuptools-scm')
 checkdepends=('python-sphinx' 'python2-sphinx' 'python-sphinx-bootstrap-theme' 'python2-sphinx-bootstrap-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0c88afd297d1be2e837ee02f22eafae9')
+md5sums=('ceda0ae29e61365d7efc06eaa8f1f856')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
