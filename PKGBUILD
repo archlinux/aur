@@ -2,7 +2,7 @@
 
 pkgname=noforth
 pkgver=190519
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive 16-bit stand-alone forth for MSP430'
 arch=('any')
 url=http://home.hccnet.nl/anij/nof/noforth.html
@@ -40,6 +40,17 @@ source=(
     'https://home.hccnet.nl/anij/nof/howto/msp-exp430fr2355%20board%20as%20programmer.pdf'
     'https://home.hccnet.nl/anij/nof/howto/howto-fr59xx-linux.pdf'
     'https://home.hccnet.nl/anij/nof/howto/howto-linux.pdf'
+
+    'https://home.hccnet.nl/anij/nof/noforth%20documentation.pdf'
+    'https://home.hccnet.nl/anij/nof/noforth%20asm.pdf'
+    'https://home.hccnet.nl/anij/nof/session1.pdf'
+    'https://home.hccnet.nl/anij/nof/session2.pdf'
+    'https://home.hccnet.nl/anij/nof/input%20stream.pdf'
+    'https://home.hccnet.nl/anij/nof/commacode.pdf'
+    'https://home.hccnet.nl/anij/nof/commacode%202.pdf'
+    'https://home.hccnet.nl/anij/nof/how%20noforth%20is%20made.pdf'
+    'https://home.hccnet.nl/anij/nof/hardware%20explorer.pdf'
+    'https://home.hccnet.nl/anij/nof/launchpad%20experimenteerkit.pdf'
 )
 sha256sums=(
     'b90a3d962529fb81b37617579faca2a75683395732cd660730ebe25de2b22fa9'
@@ -73,11 +84,22 @@ sha256sums=(
     'e3f7637220b1af1c2316a0a942a3bc40ed2a075797de59d294d36d40179a3c43'
     'd3bdba398884e3b6b15d26b2d35a4a4f7ceca22a95616ee87549038f19779e6b'
     '278faf18867e0e8c0969660fdcfc0d0bba8f3c15d05274963d2edd31fe9a6db4'
+
+    '9b320cd77fc96529ae9775f90f0714cb08f0f0c023d4bfcad80c1bed711904ae'
+    '46ca9dff5989a4e8674963e556a0ba0b923ca7d7d7d7ddbd863fa584f8bbc575'
+    '304f9b87a08ac1e212372c14b5130c0724674e9f995f7e2b2559cc93e669a169'
+    'ee4f93d5a72a9e969a697b0e2db9025028ca798e6ea38e6579be19bc44c049a9'
+    '93fc52b739fdb9fc6bc885967d32134ed3c147da1e5b772f5477e24a9ae728ff'
+    '89c2fd87b19c09fc28fe74f3126011de71197ca9177813bed5b253bcc8c4f018'
+    '2fdd8eb1a517f705ce9070b0e37b2bc9808caedd25cdba964c90d5b5854e81bf'
+    'f93ab6c36330a222b4ff70436b5a99c4ba782ce9b5755956b5be58fe3a0f2afc'
+    'b3b8b109bd2fe7b1a2eefbf43a5cf46432730ce0f604f9247850de44823501f8'
+    '289b2716efd67a61d8a9a58a70f577852f3208ae8a0796481fe35bb7b7787940'
 )
 
 package() {
-    mkdir -p "$pkgdir/usr/share/$pkgname"
-    cd "$_"
+mkdir -p "$pkgdir/usr/share/$pkgname"
+cd "$_"
 
     install -m644 "$srcdir/noforths 149/noforth c149 190519.hex" 149-c.hex
     install -m644 "$srcdir/noforths 149/noforth v149 190519.hex" 149-v.hex
@@ -162,4 +184,14 @@ package() {
     install -m644 "$srcdir/msp-exp430fr2355%20board%20as%20programmer.pdf" howto-msp-exp430fr2355-as-programmer.pdf
     install -m644 "$srcdir/howto-fr59xx-linux.pdf" howto-fr59xx-linux.pdf
     install -m644 "$srcdir/howto-linux.pdf" howto-msp430g2553-launchpad-linux.pdf
+
+    install -m644 "$srcdir/noforth%20documentation.pdf" documentation.pdf
+    install -m644 "$srcdir/noforth%20asm.pdf" asm.pdf
+    install -m644 "$srcdir/session1.pdf" session1.pdf
+    install -m644 "$srcdir/session2.pdf" session2.pdf
+    install -m644 "$srcdir/commacode.pdf" commacode.pdf
+    install -m644 "$srcdir/commacode%202.pdf" commacode-2.pdf
+    install -m644 "$srcdir/how%20noforth%20is%20made.pdf" how-noforth-is-made.pdf
+    install -m644 "$srcdir/hardware%20explorer.pdf" hardware-explorer.pdf
+    install -m644 "$srcdir/launchpad%20experimenteerkit.pdf" launchpad-experimenteerkit.pdf
 }
