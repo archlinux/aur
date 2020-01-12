@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.6pre18
+pkgver=18.6pre20
 _major=18.5
 pkgrel=1
 arch=('x86_64')
@@ -89,12 +89,14 @@ source=(
   010-PR17075.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17075.patch
   011-PR17084.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17084.patch
   012-PR17097.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17097.patch
-  013-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
-  014-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
-  015-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
-  016-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
-  017-PR17111.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17111.patch
-  018-PR17112.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17112.patch
+  013-PR17098.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17098.patch
+  014-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
+  015-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
+  016-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
+  017-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
+  018-PR17111.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17111.patch
+  019-PR17112.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17112.patch
+  020-PR17128.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17128.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -128,12 +130,14 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             '3363b14eaf4925a74ba2c93e52902c9e364a106f38fb8fb809451ebede06e89a'
             '0308b607d92994b995f7c1bd8b3853f72fc3d9012d6b9269f82e8627eb7a6d0c'
             'e3fae917683686c48ce3750e94b1235847060c76babece4d7197fb869a414889'
+            '2e9d85eb9a27a7905f784bbfbe6ce17acf08fe097e752f7e89dd8d5fa3a13768'
             'b0aefc3a103a581a436bf5bd8e5deaff013793a7661a4273e6d35a90c120da56'
             '8925ab7e022d6c565d37d7ed6abdaca1bdace12dfcb4c9808f6b7a6ac7e056a7'
             'f3d6132e63f9749227977cab9160c562fb542c261e4fa661ecb1424ad24cf82b'
             '46e634aa701369b89e657ffdff739b7e81ce2e6c8675b6b226e72715a56baabf'
             '51626f8ea673350ecde304fec37ae79339387954f7f22b1c6a032d74bbc8c95c'
-            '499d7f293ec3e868d473324e895470dd4752c6d888075add8e5cf302670aea1e')
+            '499d7f293ec3e868d473324e895470dd4752c6d888075add8e5cf302670aea1e'
+            'edec117ace5bdda36729027af077d83fa0342b68d8d260c7d81a9722958b5d01')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
