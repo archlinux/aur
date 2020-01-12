@@ -1,6 +1,5 @@
-# Maintainer: Egor Gushcha <egorts04@gmail.com> 
 pkgname=pacproxy
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file"
 arch=('x86_64')
@@ -10,14 +9,10 @@ source=(
 )
 
 sha256sums=(
-	'93e8d59952d6221172dd493e386cfdc88a5464c5475d87a1b4e1a5e87590d667'
+	'8b99b5c3b5a8dbe3531aa694294ece1a981b6c6838fa0322dc37e6d8cc6d2ec6'
 )
-
-build() {
-	tar xf $pkgname"_"$pkgver"_"linux_amd64.tar.gz
-}
 
 package() {
 	cd "$pkgname"_"$pkgver"_"linux_amd64"
-	install -D $pkgname "$pkgdir/usr/bin/pacproxy"
+	install -Dm755 $pkgname "$pkgdir/usr/bin/pacproxy"
 }
