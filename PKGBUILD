@@ -5,23 +5,22 @@ pkgver=1.2
 pkgrel=1
 pkgdesc="A tool to measure a loudspeaker frequency response and distortions."
 arch=('i686' 'x86_64')
-url="http://gaydenko.com/qloud"
+url="https://github.com/molke-productions/qloud"
 license=('GPL')
 depends=('fftw' 'jack' 'qwt')
-source=($url/download/$pkgname-$pkgver.tar.bz2)
-md5sums=('6b41200bafa492eb32654cd82f4a9629')
+source=(git+https://github.com/molke-productions/qloud.git)
+sha512sums=('SKIP')
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  qmake-qt4
+  cd "$srcdir/$pkgname"
+  qmake
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   install -Dm755 bin/qloud $pkgdir/usr/bin/qloud
-  install -Dm755 README $pkgdir/usr/share/$pkgname/README
 }
 
 # vim:set ts=2 sw=2 et:

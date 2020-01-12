@@ -2,15 +2,15 @@ pkgbase = qloud
 	pkgdesc = A tool to measure a loudspeaker frequency response and distortions.
 	pkgver = 1.2
 	pkgrel = 1
-	url = http://gaydenko.com/qloud
+	url = https://github.com/molke-productions/qloud
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = fftw
 	depends = jack
 	depends = qwt
-	source = http://gaydenko.com/qloud/download/qloud-1.2.tar.bz2
-	md5sums = 6b41200bafa492eb32654cd82f4a9629
+	source = git+https://github.com/molke-productions/qloud.git
+	sha512sums = SKIP
 
 pkgname = qloud
 
