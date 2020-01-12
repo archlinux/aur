@@ -10,7 +10,7 @@ pkgdesc="Task and project manager, designed for Pantheon Shell"
 arch=('i686' 'x86_64')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
-depends=('evolution-data-server' 'glib2' 'granite' 'gtk3' 'json-glib' 'libcal2'
+depends=('evolution-data-server' 'glib2' 'granite' 'gtk3' 'json-glib' 'libical2'
 	 'libgee' 'libsoup' 'sqlite' 'webkit2gtk')
 optdepends=('')
 makedepends=('git' 'meson' 'vala')
