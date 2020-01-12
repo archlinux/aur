@@ -1,7 +1,7 @@
 pkgbase = bpftrace
 	pkgdesc = High-level tracing language for Linux eBPF
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iovisor/bpftrace
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = bpftrace
 	makedepends = cmake
 	makedepends = llvm
 	makedepends = bcc
+	makedepends = git
 	depends = libelf
 	depends = zlib
 	depends = llvm-libs
