@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=81.0.4021.2
+pkgver=81.0.4044.17
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -27,18 +27,14 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-system-icu.patch
-        chromium-system-zlib.patch
-        0001-Modernize-WebInputEvent.patch
-        fix-spammy-unique-font-matching-log.patch
+        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+        rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('45f1c7efacf0e628da2943725a155d1f9143b53c3d8e649de10d48c4f17c8b69'
+sha256sums=('c1e8493f02406c85315bba91618d151855a49ba4078002c3758862f5069d5e6f'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
-            'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
-            '5bd56b41062eb3346a33a27e18954899118fe55d99330d917fea4a6d94dc3ce1'
-            '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
+            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
@@ -77,7 +73,7 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 722274
+# Branch point: 737173
 # Extra commits related specifically to wayland support:
 
 # These consist of the above commits and their dependencies
@@ -98,15 +94,9 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/libxml_utils.cc
 
-  # build fixes
-  patch -Np1 -R -i ../0001-Modernize-WebInputEvent.patch
-  
-  # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-icu.patch
-  patch -Np1 -i ../chromium-system-zlib.patch
-
-  # https://crbug.com/1005508
-  # patch -Np1 -i ../fix-spammy-unique-font-matching-log.patch
+  # https://crbug.com/1049258
+  patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+  patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
 
   # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
   # M79 is supposed to download it as a component but it doesn't seem to work
