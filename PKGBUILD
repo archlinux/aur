@@ -1,7 +1,7 @@
 # Maintainer: Gokberk Yaltirakli <aur at gkbrk dot com>
 pkgname=nothing
 _pkgname=nothing
-pkgver=r2509.5053d9c
+pkgver=r2894.95ca07bd
 pkgrel=1
 epoch=
 pkgdesc="A game about nothing"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/tsoding/nothing"
 license=('MIT')
 depends=('sdl2')
-makedepends=('gcc' 'cmake')
+makedepends=('gcc')
 provides=('nothing')
 conflicts=('nothing')
 source=("nothing::git+$url")
@@ -31,11 +31,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    rm -rf build
-    mkdir build
-    cd build
-    cmake ..
-    make
+    export CFLAGS="$CFLAGS -flto -Ofast"
+    export CC="cc"
+    ./build-posix.sh
 
     cat > "nothing-with-dir" <<EOF
 #!/bin/sh
@@ -51,10 +49,9 @@ check() {
 package() {
     cd "$srcdir/$_pkgname"
 
-    ls assets/
     install -Dm755 -d "$pkgdir/usr/share/games/nothing"
     cp -r assets/ "$pkgdir/usr/share/games/nothing"
 
-    install -Dm755 "build/nothing" "$pkgdir/usr/lib/games/nothing/nothing"
-    install -Dm755 "build/nothing-with-dir" "$pkgdir/usr/bin/nothing"
+    install -Dm755 "nothing" "$pkgdir/usr/lib/games/nothing/nothing"
+    install -Dm755 "nothing-with-dir" "$pkgdir/usr/bin/nothing"
 }
