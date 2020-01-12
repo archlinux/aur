@@ -1,7 +1,7 @@
 pkgbase = repocalc
 	pkgdesc = An ncurses RPN calculator
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drdonahue/repocalc
 	arch = any
 	license = MIT
