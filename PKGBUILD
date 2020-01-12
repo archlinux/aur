@@ -24,7 +24,7 @@ build() {
 package() {
     install -Dm 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$srcdir/$pkgname-$pkgver/doc/e4thcom-0.8.0.pdf"  \
-                   "${pkgdir}/usr/doc/$pkgname/$pkgname.pdf"
+                   "$pkgdir/usr/share/doc/$pkgname/$pkgname.pdf"
 
 
     mkdir -p "${pkgdir}/usr/lib/$pkgname/"
