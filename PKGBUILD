@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('sgtk-menu')
 pkgver=0.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK menu for sway and i3"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/sgtk-menu"
