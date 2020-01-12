@@ -1,0 +1,15 @@
+pkgbase = r-getopt
+	pkgdesc = R command line parser inspired by Python's 'getopt'
+	pkgver = 1.20.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=getopt
+	arch = any
+	license = GPL
+	depends = r>=2.9
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/getopt_1.20.3.tar.gz
+	md5sums = 6a071a83218e958833c2fff3ca5c06ad
+
+pkgname = r-getopt
+
