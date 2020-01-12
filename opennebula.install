@@ -13,15 +13,15 @@ post_install() {
 		echo ">> You must edit the password in /var/lib/one/.one/one_auth"
 	fi
 	chown oneadmin:cloud -R /var/log/one /var/lib/one /run/one /run/lock/one
-	echo ">> To install required gems run as root:"
-	echo ">> '/usr/share/one/install_gems --showallgems | xargs -l gem install --no-user-install --no-document'"
+	echo ">> To install required gems run as a local user:"
+	echo ">> bundler install --gemfile /usr/share/one/Gemfile"
 }
 
 post_upgrade(){
   chown oneadmin:cloud -R /var/lib/one/sunstone
 	printf "NOTE: This is may be an major upgrade! If you are not installing from scratch, check the compatibility guide at:\n\n\thttp://docs.opennebula.org/5.10/intro_release_notes/release_notes/compatibility.html\n\thttp://docs.opennebula.org/5.10/intro_release_notes/upgrades/index.html\n"
-	echo ">> Check if all required gems are installed! /usr/share/one/install_gems --showallgems"
-}
+	echo ">> To install required gems run as a local user:"
+	echo ">> bundler install --gemfile /usr/share/one/Gemfile"
 
 pre_remove() {
 	userdel oneadmin && echo ">> User 'oneadmin' has been removed."
