@@ -21,7 +21,7 @@ conflicts=("${_pkgname}"
 )
 options=('!strip')
 source=("etcher::git+https://github.com/balena-io/${_pkgname}.git#tag=v${pkgver}"
-        "${pkgname}-electron"
+        "${pkgname}-electron.sh"
         "${pkgname}-electron.desktop"
         )
 sha256sums=('SKIP'
@@ -54,7 +54,7 @@ package() {
   install -D assets/icon.png "${_appdir}/assets/icon.png"
   install -D lib/gui/app/index.html "${_appdir}/lib/gui/app/index.html"
 
-  install -Dm755 "${srcdir}/${pkgname}-electron" "${pkgdir}/usr/bin/${pkgname}-electron"
+  install -Dm755 "${srcdir}/${pkgname}-electron.sh" "${pkgdir}/usr/bin/${pkgname}-electron"
   install -Dm644 "${srcdir}/${pkgname}-electron.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}-electron.desktop"
 
