@@ -5,10 +5,10 @@ pkgrel=1
 epoch=
 pkgdesc="simple budgeting tool"
 arch=('any')
-url=""
+url="https://gitlab.com/nobodyinperson/simbuto"
 license=('GPL3')
 groups=()
-depends=('python' 'r-optparse')
+depends=('gtk3' 'python-gobject' 'r-optparse')
 makedepends=('pandoc')
 checkdepends=()
 optdepends=()
@@ -38,7 +38,7 @@ prepare() {
 build() {
 	cd "$pkgname-v$pkgver"
     autoreconf --install
-	./configure --prefix=/usr
+	./configure --prefix=/usr --sysconfdir=/etc
 	make
 }
 
