@@ -1,9 +1,8 @@
 pkgbase = xfce4-notifyd-keyaction
 	pkgdesc = Notification daemon for the Xfce desktop. Super+N executes the first action
-	pkgver = 0.2.4
+	pkgver = 0.4.4
 	pkgrel = 1
-	url = http://goodies.xfce.org/projects/applications/xfce4-notifyd
-	install = xfce4-notifyd.install
+	url = https://goodies.xfce.org/projects/applications/xfce4-notifyd
 	arch = i686
 	arch = x86_64
 	groups = xfce4-goodies
@@ -13,13 +12,13 @@ pkgbase = xfce4-notifyd-keyaction
 	depends = libnotify
 	depends = hicolor-icon-theme
 	depends = libkeybinder3
+	provides = xfce4-notifyd
 	provides = notification-daemon
 	conflicts = xfce4-notifyd
-	replaces = xfce4-notifiyd
-	source = http://archive.xfce.org/src/apps/xfce4-notifyd/0.2/xfce4-notifyd-0.2.4.tar.bz2
+	source = https://archive.xfce.org/src/apps/xfce4-notifyd/0.4/xfce4-notifyd-0.4.4.tar.bz2
 	source = keybinder.patch
-	sha256sums = 8c7ed62f9496816d1391281f77d1b32216f9bf6fd22fbe4f6f3f4e07a6bbced0
-	sha256sums = c6c040602ff207ebf3ed73edc50ae67d905485867bf79f11361c18ffc224cca1
+	sha256sums = 090571acf94c423003426cb779fb23e8545c68bab6485563b589c7def8a21b55
+	sha256sums = 9fb16fe3806dc985b51002f13ac96c940252609b98b4f6a2647a7a01bf768f80
 
 pkgname = xfce4-notifyd-keyaction
 
