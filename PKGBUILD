@@ -4,11 +4,11 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=chromium-ozone
+pkgname=chromium-beta-ozone
 pkgver=80.0.3987.42
 pkgrel=1
 _launcher_ver=6
-pkgdesc="Chromium built with patches for wayland support via Ozone"
+pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
 options=(debug !strip)
@@ -174,7 +174,6 @@ build() {
     'ozone_platform_wayland=true'
     'ozone_platform_x11=true'
     'ozone_auto_platforms=false'
-    'use_xkbcommon=true'
     'use_glib=true'
     'use_system_libwayland=true'
     'use_system_minigbm=true'
