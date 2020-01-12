@@ -10,7 +10,7 @@ pkgbase = linvst2
 	conflicts = linvst-stable
 	replaces = linvst
 	replaces = linvst-stable
-	source = https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-2.8-Debian-Stretch.zip
+	source = linvst2::git+https://github.com/osxmidi/LinVst.git#tag=2.8
 	source = git+https://github.com/usrmusicman/ArchStudioUtils.git
 	sha256sums = SKIP
 	sha256sums = SKIP

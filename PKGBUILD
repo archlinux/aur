@@ -9,18 +9,18 @@ url="https://github.com/osxmidi/LinVst"
 depends=('wine' 'python>=3.8')
 conflicts=('linvst' 'linvst-stable')
 replaces=('linvst' 'linvst-stable')
-source=("https://github.com/osxmidi/LinVst/releases/download/2.8/LinVst-${pkgver}-Debian-Stretch.zip"
+source=("$pkgname::git+https://github.com/osxmidi/LinVst.git#tag=$pkgver"
         "git+https://github.com/usrmusicman/ArchStudioUtils.git")
 sha256sums=('SKIP'
             'SKIP')
 
+build() {
+	cd $srcdir/$pkgname
+	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" all 
+}
+
 package() {
-	cd "${srcdir}/LinVst-${pkgver}-Debian-Stretch/embedded/"
-	for file in *.so; do
-	install -Dm755 $file $pkgdir/usr/bin/$file
-	done
-	for file in *.exe; do
-		install -Dm755 $file $pkgdir/usr/bin/$file
-	done
+	cd $srcdir/$pkgname
+	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/bin" install
 	install -Dm755 $srcdir/ArchStudioUtils/w2lvst2 $pkgdir/usr/bin/w2lvst2
 }
