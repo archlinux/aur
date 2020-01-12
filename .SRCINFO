@@ -1,6 +1,6 @@
 pkgbase = python-pdfminer.six
 	pkgdesc = PDF parser and analyzer for Python
-	pkgver = 20191110
+	pkgver = 20200104
 	pkgrel = 1
 	url = https://github.com/pdfminer/pdfminer.six
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pdfminer.six
 	depends = python-chardet
 	depends = python-pycryptodome
 	depends = python-sortedcontainers
-	source = https://files.pythonhosted.org/packages/source/p/pdfminer.six/pdfminer.six-20191110.tar.gz
-	sha384sums = 1f98a6553b1a6dfcb51f45ff730b4c1a77da9b2e815c609e428d361354846b668a4bb50e46db1b034e141861be6a03d3
+	source = https://files.pythonhosted.org/packages/source/p/pdfminer.six/pdfminer.six-20200104.tar.gz
+	sha384sums = c1f273993d3bfca8c51fbe052c43959cd5212db68815f18bb1171d358df4c8de8cbc3df447c4cf62c650e7c90035de95
 
 pkgname = python-pdfminer.six
 
