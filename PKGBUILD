@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=71.0
+pkgver=72.0.1
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -25,16 +25,14 @@ provides=("firefox=$pkgver")
 conflict=("firefox")
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-        https://github.com/nikatar/AUR/raw/master/firefox-appmenu_source/0001-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('78304cd58229e7103b56b34718aad051c9a4db30c266512a64f501ba58da7fbe'
+sha256sums=('1fa59aedc8469c3e6ffb12449ab7de2f93776f7679eedebfb74aa309b694956f'
             'SKIP'
-            '33f5aec0bba83b23410176c5351425d2ad949d7f0bf409a579be25bebb773fce'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
-            '73b9804393381f2c278eff63fecbd05035264dbb2aa68dd263a14db9f981a668')
+            '70b756e17d41f07c2160faa606c1b86f28ff07acc9b5d324d11bc7de300d6c82')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -52,9 +50,6 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # Make it compile with Python 3.8
-  patch -Np1 -i ../0001-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
@@ -163,7 +158,6 @@ END
   ./mach buildsymbols
 }
 
-
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
@@ -197,16 +191,16 @@ app.distributor.channel=$_pkgname
 app.partner.archlinux=archlinux
 END
 
-  local i
+  local i theme=official
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/official/default$i.png \
+    install -Dvm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  install -Dvm644 browser/branding/official/content/about-logo.png \
+  install -Dvm644 browser/branding/$theme/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
-  install -Dvm644 browser/branding/official/content/about-logo@2x.png \
+  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
-  install -Dvm644 ../firefox-symbolic.svg \
+  install -Dvm644 browser/branding/$theme/content/identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
   install -Dvm644 ../$_pkgname.desktop \
