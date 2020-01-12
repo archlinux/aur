@@ -1,20 +1,25 @@
-# Maintainer: Victor Engmark <victor.engmark@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Victor Engmark <victor.engmark@gmail.com>
+
 pkgname=python-vcard
 _name="${pkgname#*-}"
-pkgver=0.10.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="vCard validator"
 arch=('any')
-url='https://github.com/l0b0/vcard'
+url='https://gitlab.com/victor-engmark/vcard'
 license=('GPL3')
 depends=('python' 'python-isodate')
-makedepends=('python')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('7fdcdccbe6c27f059c79169b652a84265741d96b1f242929b2406462f0bbd8ab3d071653fcb0ca4b29ea5a8d2763a8c4b89f23b22fbcb0537e5281f4621f380e')
+sha512sums=('0b8a7d8873d26d2a99fb38acd2970018d874ec1ecefcf202da0e2ed2e282b5cb43d0b53717873d29c62c0c72748278929db9562308f6503792271fe42f915ce3')
+
+
+build() {
+	cd "${_name}-${pkgver}"
+    python setup.py build
+}
 
 package() {
-	cd "$srcdir/${_name}-${pkgver}"
-	python setup.py install --root="$pkgdir/" --optimize=1
+	cd "${_name}-${pkgver}"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
