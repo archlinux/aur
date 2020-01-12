@@ -23,7 +23,7 @@ package() {
     cp -a $pkgname "$pkgdir/usr/share/webapps/${pkgname}"
 
     # move data in var
-    ln -s ../../../var/lib/${pkgname} usr/share/webapps/moodledata
+    ln -s /var/lib/${pkgname} "$pkgdir"/usr/share/webapps/moodledata
     
     # fix rights and ownership
     # should be handled differently
