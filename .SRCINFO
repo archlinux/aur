@@ -1,6 +1,6 @@
 pkgbase = vwm
 	pkgdesc = Viper Window Manager
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = http://www.console-craze.com/hosted-software/vwm/
 	arch = i686
@@ -8,21 +8,14 @@ pkgbase = vwm
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	depends = protothread
 	depends = libviper>=1.4.5
 	depends = gpm
 	depends = libvterm-vwm
 	depends = libconfig
-	source = git+https://github.com/TragicWarrior/vwm.git#commit=606cca3e638430724441b7316409dd2fb43e23fe
+	source = git+https://github.com/TragicWarrior/vwm.git#commit=c132fe3d67678a9acbc0ada00ad42312b099a891
 	source = ncurses-import.patch
-	source = protothread-cmake.patch
 	sha256sums = SKIP
 	sha256sums = 989e68bf68ed7756467220e4642c03bf72083c9a0fa0d59aad01571c1d9c2e3a
-	sha256sums = b76dc417bef0bdbba0a80a3b82c7ec8d0a1ddcf1b5ee8adaf8ba7ae8dde15e22
 
 pkgname = vwm
-
-pkgname = vwm-modules-vwmterm3
-	pkgdesc = terminal shell module for vwm
-	depends = vwm
 
