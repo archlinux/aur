@@ -11,8 +11,10 @@ provides=('plex-media-player')
 conflicts=('plex-media-player')
 depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine-595' 'qt5-x11extras-595' 'qt5-quickcontrols-595')
 makedepends=('cmake' 'git')
-source=('git+https://github.com/plexinc/plex-media-player.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/plexinc/plex-media-player.git'
+        'desktop.patch')
+sha256sums=('SKIP'
+            'cd30cdd2b00a32fd36ac27eab80d5a6ea787e48508d24018d9cc624a422bd634')
 
 pkgver() {
   cd plex-media-player
@@ -21,6 +23,9 @@ pkgver() {
 
 prepare() {
   mkdir -p "${srcdir}/plex-media-player/build"
+
+  cd "${srcdir}/plex-media-player"
+  git apply "${srcdir}/desktop.patch"
 }
 
 build() {
