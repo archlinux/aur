@@ -3,7 +3,7 @@
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=psychopy
-pkgver=3.1.2
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="An experiment builder for neuroscience, psychology and psychophysics"
 arch=('any')
@@ -17,22 +17,11 @@ depends=('python-matplotlib' 'python-pandas' 'python-opengl' 'python-pyglet'
          'python-gevent' 'python-pyaml' 'python-cryptography' 'python-pyopenssl'
          'python-xlrd' 'python-pyosf' 'python-bidi' 'python-esprima'
          'python-pyparallel' 'python-psutil' 'python-astunparse' 'python-pyserial'
-         'python-arabic-reshaper' 'python-wxpython' 'webkit2gtk' 'python-mock')
+         'python-arabic-reshaper' 'python-wxpython' 'webkit2gtk' 'python-mock' 'opencv')
 makedepends=('python-wheel' 'python-setuptools')
 optdepends=('python-seaborn: For nice graphs')
-source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
-        "setup.cfg.patch")
-md5sums=('84a8a2c685166625db353e074217d8bf'
-         '51eae5ff98af0e0f83ca7187ff81e055')
-
-prepare() {
-  # apply patch to psychopy requirements in setup.cfg
-  # archlinux opencv pacakge provides python bindings, but no metadata
-  # wxpython is required for linux
-  # psychopy msgpack requirement is outdated with archlinux version
-  cd "$srcdir/$pkgname-$pkgver"
-  patch --strip=0 --forward --input="$srcdir/setup.cfg.patch"
-}
+source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('084f8715193d5c6ac836e012a7f082cd027e5ed14a4c08d1ad7db85749df8cec015ded828c32a36f999b5cec51f6d221812f94a21043e5e08d68c5c78b09d6f9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

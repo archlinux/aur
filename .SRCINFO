@@ -1,6 +1,6 @@
 pkgbase = psychopy
 	pkgdesc = An experiment builder for neuroscience, psychology and psychophysics
-	pkgver = 3.1.2
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = http://www.psychopy.org
 	arch = any
@@ -43,11 +43,10 @@ pkgbase = psychopy
 	depends = python-wxpython
 	depends = webkit2gtk
 	depends = python-mock
+	depends = opencv
 	optdepends = python-seaborn: For nice graphs
-	source = https://github.com/psychopy/psychopy/archive/3.1.2.tar.gz
-	source = setup.cfg.patch
-	md5sums = 84a8a2c685166625db353e074217d8bf
-	md5sums = 51eae5ff98af0e0f83ca7187ff81e055
+	source = https://github.com/psychopy/psychopy/archive/3.2.4.tar.gz
+	sha512sums = 084f8715193d5c6ac836e012a7f082cd027e5ed14a4c08d1ad7db85749df8cec015ded828c32a36f999b5cec51f6d221812f94a21043e5e08d68c5c78b09d6f9
 
 pkgname = psychopy
 
