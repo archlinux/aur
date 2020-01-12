@@ -19,9 +19,9 @@ md5sums=('f1738e17e75c71166fb9f4ef7367ae51')
 check() {
     git config user.email "test@bitbake.com"
     git config user.name "Bitbake Tester"
+    # use http over ftp to use travis
     grep -rl "[^s]ftp://" "${pkgname}-${pkgver}/lib/bb/tests/*py" | xargs sed -i 's@ftp://@http://@g'
     cd "${pkgbase}-${pkgver}/bin"
-    # use http over ftp to use travis
     PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bitbake-selftest
 }
 
