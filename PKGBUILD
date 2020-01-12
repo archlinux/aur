@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=r59.39f0e52
+pkgver=r61.0fa7d42
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
