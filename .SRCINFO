@@ -1,0 +1,14 @@
+pkgbase = libdial
+	pkgdesc = library needed by tzclock
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://theknight.co.uk/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	source = https://theknight.co.uk/releases/Source/libdial-2.2.tar.bz2
+	md5sums = 46ab066d2cc09e08736769472cc1ab79
+
+pkgname = libdial
+
