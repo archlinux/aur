@@ -1,55 +1,55 @@
-_good_ver="1.7.10_10.13.4.1558-4"
+_forge_name="forge-1.7.10"
+_forge_user="forge-1-7-10"
+_conflict_ver="1.7.10_10.13.4.1558-2"
+_good_ver="1.7.10_10.13.4.1558-5"
+_server_root="/srv/${_forge_name}"
 
 post_install() {
-	if ! getent group "forge" &>/dev/null; then
-		echo "Adding forge system group..."
-		groupadd -r forge 1>/dev/null
+	if ! getent group "$_forge_user" &>/dev/null; then
+		echo "Adding ${_forge_user} system group..."
+		groupadd -r "$_forge_user" 1>/dev/null
 	fi
 
-	if ! getent passwd "forge" &>/dev/null; then
-		echo "Adding forge system user..."
-		useradd -r -g forge -d /srv/forge forge 1>/dev/null
+	if ! getent passwd "$_forge_user" &>/dev/null; then
+		echo "Adding ${_forge_user} system user..."
+		useradd -r -g "${_forge_user}" -d "$_server_root" "$_forge_user" 1>/dev/null
 	fi
 
-	chown -R forge:forge /srv/forge
+	chown -R "${_forge_user}:${_forge_user}" "$_server_root"
 
-	echo "The world data is stored under /srv/forge and the server runs as the forge user to increase security."
-	echo "Use the forged script under /usr/bin/forged to start, stop or backup the server."
-	echo "Adjust the configuration file under /etc/conf.d/forge to your liking."
+	echo "The world data is stored under ${_server_root} and the server runs as the forge user to increase security."
+	echo "Use the forged script under /usr/bin/${_forge_name}d to start, stop or backup the server."
+	echo "Adjust the configuration file under /etc/conf.d/${_forge_name} to your liking."
 	echo "Make sure to change the SERVER_START_CMD variable if you want to use a JVM other than OpenJDK 8."
 	echo "Please note that you need Java 8 in order to run Forge."
-	echo "For the server to start you have to accept the EULA in /srv/forge/eula.txt!"
+	echo "For the server to start you have to accept the EULA in ${_server_root}/eula.txt!"
 	echo "The EULA file is generated after the first server start."
 }
 
 post_upgrade() {
-	if [ "$(vercmp "$2" "$_good_ver")" -lt 0 ]; then
+	if [ "$(vercmp "$2" "$_conflict_ver")" -ge 0 ] && [ "$(vercmp "$2" "$_good_ver")" -lt 0 ]; then
 		post_install
 
-		IFS="_" read -ra _good_ver_temp <<< "$_good_ver"
-		_minecraft_ver=${_good_ver_temp[0]}
-		_old_name="forge-${_minecraft_ver}"
-
-		echo "==> NOTICE: All filenames have been changed from \"${_old_name}d\" to \"forged\"!"
+		echo "==> NOTICE: All filenames have been changed from \"forged\" to \"${_forge_name}d\"!"
 		echo "==> For example:"
-		echo "==> /usr/lib/systemd/system/${_old_name}d.service -> /usr/lib/systemd/system/forged.service"
-		echo "==> /usr/bin/${_old_name}d -> /usr/bin/forged"
-		echo "==> /srv/${_old_name} -> /srv/forge"
+		echo "==> /usr/lib/systemd/system/forged.service -> /usr/lib/systemd/system/${_forge_name}d.service"
+		echo "==> /usr/bin/forged -> /usr/bin/${_forge_name}d"
+		echo "==> /srv/forge -> ${_server_root}"
 
-		if [ -d "/srv/${_old_name}" ]; then
-			find "/srv/${_old_name}" -mindepth 1 -maxdepth 1 | while read -r _file; do
-				mv "$_file" "/srv/forge${_file#"/srv/${_old_name}"}"
+		if [ -d "/srv/forge" ]; then
+			find "/srv/forge" -mindepth 1 -maxdepth 1 | while read -r _file; do
+				mv "$_file" "${_server_root}${_file#"/srv/forge"}"
 			done
-			rm -rf "/srv/${_old_name}"
-			echo "==> Game saves in /srv/${_old_name} were moved to /srv/forge."
+			rm -rf "/srv/forge"
+			echo "==> Game saves in /srv/forge were moved to ${_server_root}."
 		fi
 
-		echo "==> The ${_old_name//./-} user was preserved on your system."
+		echo "==> The forge user was preserved on your system."
 	fi
-	chown -R forge:forge /srv/forge
+	chown -R "${_forge_user}:${_forge_user}" "${_server_root}"
 }
 
 post_remove() {
-	[ -d "/srv/forge" ] && echo "Game saves in /srv/forge were kept on your system."
-	echo "The forge user was preserved on your system."
+	[ -d "$_server_root" ] && echo "Game saves in ${_server_root} were kept on your system."
+	echo "The ${_forge_user} user was preserved on your system."
 }
