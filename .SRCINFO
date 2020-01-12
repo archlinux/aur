@@ -1,0 +1,20 @@
+pkgbase = coretoppings
+	pkgdesc = Additional features,plugins etc for CuboCore Application Suite.
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://gitlab.com/cubocore/coretoppings
+	arch = x86_64
+	arch = aarch64
+	groups = coreapps
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-location
+	depends = qt5-x11extras
+	depends = qt5-connectivity
+	depends = libpulse
+	depends = libcprime
+	source = https://gitlab.com/cubocore/coretoppings/-/archive/v2.8.0/coretoppings-v2.8.0.tar.gz
+	md5sums = a1c191e436edbc617b27cd545bba89f3
+
+pkgname = coretoppings
+
