@@ -12,13 +12,13 @@ source=("ftp://ftp.gnu.org/gnu/aspell/dict/eo/aspell6-eo-$pkgver-2.tar.bz2")
 md5sums=('455719c49ffeb51b204767de6e1d9ef6')
 
 build() {
-  cd "$srcdir/aspell6-eo-$pkgver-1"
+  cd "$srcdir/aspell6-eo-$pkgver-2"
   ./configure
   make
 }
 
 package() {
-  cd "$srcdir/aspell6-eo-$pkgver-1"
+  cd "$srcdir/aspell6-eo-$pkgver-2"
   make DESTDIR="$pkgdir" install
 
   install -D -m644 Copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
