@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-current-git
-pkgver=68.0+51fef8fe8686
+pkgver=68.0+d8326e125b8f
 pkgrel=1
 pkgdesc="More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.waterfoxproject.org/"
 depends=(gtk3 libffi libvpx icu libevent mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 'rust<=1:1.38.0-2' mercurial clang llvm jack gtk2
+             xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
 optdepends=('libnotify: Notification integration'
             'pulseaudio: Audio support'

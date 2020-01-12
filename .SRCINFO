@@ -1,6 +1,6 @@
 pkgbase = waterfox-current-git
 	pkgdesc = More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE
-	pkgver = 68.0+51fef8fe8686
+	pkgver = 68.0+d8326e125b8f
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox-current.install
@@ -17,7 +17,7 @@ pkgbase = waterfox-current-git
 	makedepends = inetutils
 	makedepends = xorg-server-xvfb
 	makedepends = autoconf2.13
-	makedepends = rust<=1:1.38.0-2
+	makedepends = rust
 	makedepends = mercurial
 	makedepends = clang
 	makedepends = llvm
