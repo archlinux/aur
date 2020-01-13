@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=qoob-git
-pkgver=r161.26980df
+pkgver=r164.bb08976
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
