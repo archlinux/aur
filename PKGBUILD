@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='Show CommonMark (a standardized Markdown dialect) documents on text terminals.'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/mdcat"
@@ -10,7 +10,7 @@ depends=('oniguruma' 'openssl')
 conflicts=('mdcat-git')
 makedepends=('rust' 'cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('330059534642bba502e82d6a86f16451b7ce9d2ad02e356fd0bcff961020bc9f')
+sha256sums=('91b5abff3e525df4f97f2677b0d099a79ea3dd0037fcdf11aad8886403f922ae')
 
 build() {
   cd "$pkgname-$pkgname-$pkgver"
