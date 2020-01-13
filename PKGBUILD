@@ -1,4 +1,5 @@
-# Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname='pioneer'
@@ -33,8 +34,8 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::http://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
 sha256sums=('e526f1659ae321f45b997c0245acecbf9c4cf2122b025ab8db1090f1b9804f5e')
 
-build() {
-
+build()
+{
   # Autotools support is dropped
   # https://github.com/pioneerspacesim/pioneer/issues/4525#issuecomment-460067597
 
@@ -69,8 +70,8 @@ build() {
   # cd "$srcdir/$pkgname-$pkgver"; ./build/pioneer
 }
 
-package() {
-
+package()
+{
   cd "$srcdir/$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
 
@@ -82,5 +83,4 @@ package() {
   # codedoc
   # mkdir --parents "$pkgdir/usr/share/doc/pioneer"
   # cp --recursive "$srcdir/$pkgname-$pkgver"/codedoc/* "$pkgdir/usr/share/doc/pioneer/"
-
 }
