@@ -2,7 +2,7 @@
 pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=65bc0fe
+pkgver=93c5bd5
 pkgrel=1
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
