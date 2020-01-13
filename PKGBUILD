@@ -4,10 +4,10 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer
-pkgver=2019.930.0
+pkgver=2020.112.0
 pkgrel=1
 
-dotnet_version=2.2
+dotnet_version=3.1
 
 pkgdesc="The new open source version of osu!, the free-to-win rhythm game"
 arch=('x86_64')
@@ -39,14 +39,7 @@ sha256sums=('SKIP'
 build()
 {
     cd "osu-$pkgver"
-
-
-    if [[ $(dotnet --version) == 3.0* ]];
-    then
-        output="./osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
-    else
-        output="./bin/Release/netcoreapp$dotnet_version/linux-x64"
-    fi
+    output="./osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
 
     dotnet publish          osu.Desktop                 \
         --framework         netcoreapp$dotnet_version   \
@@ -79,7 +72,6 @@ package()
     # Compiled binaries
     cd "$srcdir/osu-$pkgver/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
     mkdir -p "$pkgdir/usr/lib/$pkgname"
-    mv $CARCH/* .
     for binary in *.so *.dll *.json *.pdb; do
         install -m755 "$binary" "$pkgdir/usr/lib/$pkgname/$binary"
     done
