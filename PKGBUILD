@@ -3,16 +3,16 @@
 
 _pkgname=lib32-libglvnd
 pkgname=$_pkgname-git
-pkgver=1.3.0.r6.gf455878
+pkgver=1.3.0.r34.g42a25c1
 pkgrel=1
 pkgdesc="The GL Vendor-Neutral Dispatch library"
 arch=('x86_64')
 url="https://github.com/NVIDIA/libglvnd"
 license=('custom:BSD-like')
-makedepends=('lib32-libx11' 'lib32-libxext' 'glproto' 'python' 'meson' 'git')
+makedepends=('lib32-libx11' 'lib32-libxext' 'xorgproto' 'python' 'meson' 'git')
 provides=('lib32-libgl' 'lib32-libegl' 'lib32-libgles' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://github.com/NVIDIA/libglvnd.git")
+source=("git+https://gitlab.freedesktop.org/glvnd/libglvnd.git")
 sha512sums=('SKIP')
 
 pkgver() {
