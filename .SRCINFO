@@ -1,0 +1,17 @@
+pkgbase = vim-pack
+	pkgdesc = The missing vim8 package manager
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/maralla/pack
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = zlib
+	depends = openssl
+	conflicts = pack-cli
+	conflicts = allegro4
+	source = vim-pack-0.2.5.tar.gz::https://github.com/maralla/pack/archive/v0.2.5.tar.gz
+	sha256sums = f3494bfa002af17792df54845f225a154cfab33203e7ee49d43a8eb91794fa2a
+
+pkgname = vim-pack
+
