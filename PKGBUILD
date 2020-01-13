@@ -1,33 +1,20 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
-pkgbase=python-blivet
-pkgname=(python-blivet python2-blivet)
-pkgver=1.13
+pkgname=python-blivet
+pkgver=3.1.6
 _tag="blivet-${pkgver}"
-pkgrel=3
-pkgdesc='a python module for management of a system storage configuration'
+pkgrel=1
+pkgdesc='A DBus service and python module for management of the system storage configuration'
 arch=('any')
 license=('LGPL2.1')
-url='http://fedoraproject.org/wiki/Blivet'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rhinstaller/blivet/archive/blivet-${pkgver}.tar.gz")
-sha256sums=('c3700ef547e435c26accacca8b88bea1c171118251aeff41a5471e953d784d04')
+url='https://fedoraproject.org/wiki/Blivet'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/storaged-project/blivet/archive/blivet-${pkgver}.tar.gz")
+sha512sums=('43a4233fcc696bb050ec5b9b3f2947efd2b6116409aa13025d09e99af2c9ef02df48e7e3087c2e4e2670c2ce2d0aa6587602c41e1af98f956bcf80f03464a622')
 
-package_python-blivet() {
-	pkgdesc='a python module for management of a system storage configuration - python 3.x pkg'
-	depends=('multipath-tools' 'mpathconf' 'mdadm' 'libblockdev' 'libselinux' 'python-six' 'python-pyudev' 'hawkey' 'python-pyparted' 'python-pykickstart')
+package() {
+  cd "${srcdir}/blivet-${_tag}/"
 
-	cd "${srcdir}/blivet-${_tag}/"
-
-	python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
-
-package_python2-blivet() {
-	pkgdesc='a python module for management of a system storage configuration - python 2.x pkg'
-	depends=('multipath-tools' 'mpathconf' 'mdadm' 'libblockdev' 'libselinux' 'python2-six' 'python2-pyudev' 'hawkey' 'python2-pyparted' 'python2-pykickstart')
-
-	cd "${srcdir}/blivet-${_tag}/"
-
-	python2 setup.py install --root="${pkgdir}/" --optimize=1
-}
-
