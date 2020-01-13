@@ -20,7 +20,7 @@ conflicts=("${_gitname}-git")
 source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 	'arch-tweaks.patch')
 sha256sums=('7f17ef8d1dcdaca0017cf8bcf2160543b8b00ad64456e3ff4c826f627b313790'
-	    'eae2fbf58c8a7b88966b170d697bf095c856ff28eac69cb6d667f816a0a01758')
+	    '99528c7ed672a5231f4d42d90421cef18d416f2b7aea6e0381db7cea6f9391d3')
 
 prepare() {
   cd pantheon-default-settings
