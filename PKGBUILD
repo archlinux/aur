@@ -7,9 +7,10 @@ provides=('electron')
 conflicts=('electron')
 _commit=30a94ac944127293d3fd54ede2e3882a871ea8ec
 _chromiumver=78.0.3904.130
-pkgrel=1
+pkgrel=2
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
+options=(debug !strip)
 url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
@@ -94,6 +95,7 @@ prepare() {
 
   echo "Running hooks..."
   # python2 "${srcdir}/depot_tools/gclient.py" runhooks
+  python2 src/tools/clang/scripts/update.py
   python2 src/build/landmines.py
   python2 src/build/util/lastchange.py -o src/build/util/LASTCHANGE
   python2 src/build/util/lastchange.py -m GPU_LISTS_VERSION \
@@ -146,22 +148,10 @@ prepare() {
 }
 
 build() {
-  export CC=clang
-  export CXX=clang++
-  export AR=ar
-  export NM=nm
-
-  # Do not warn about unknown warning options
-  CFLAGS+='   -Wno-unknown-warning-option'
-  CXXFLAGS+=' -Wno-unknown-warning-option'
-
   cd src
   export CHROMIUM_BUILDTOOLS_PATH="${PWD}/buildtools"
   local _flags=(
     'blink_symbol_level = 0'
-    'clang_use_chrome_plugins = false'
-    'custom_toolchain = "//build/toolchain/linux/unbundle:default"'
-    'host_toolchain = "//build/toolchain/linux/unbundle:default"'
     'icu_use_data_file = false'
     'is_component_ffmpeg = false'
     'link_pulseaudio = true'

@@ -1,7 +1,7 @@
 pkgbase = electron-ozone
 	pkgdesc = Electron compiled with wayland support via Ozone
 	pkgver = 7.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://electronjs.org/
 	arch = x86_64
 	license = MIT
@@ -41,6 +41,8 @@ pkgbase = electron-ozone
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron
 	conflicts = electron
+	options = debug
+	options = !strip
 	source = git+https://github.com/hedgepigdaniel/electron.git#branch=arch7.1.8-1
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = electron.desktop
