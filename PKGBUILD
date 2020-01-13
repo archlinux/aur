@@ -2,7 +2,7 @@
 # Maintainer: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=terraform-provider-vcd
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Terraform VMware vCloud Director provider"
 url="https://github.com/terraform-providers/terraform-provider-vcd"
@@ -11,7 +11,7 @@ license=("MPL")
 makedepends=("go" "git")
 _gourl="github.com/terraform-providers"
 source=("https://github.com/terraform-providers/terraform-provider-vcd/archive/v$pkgver.tar.gz")
-sha256sums=('1f7c9639d19d8ec093f25283a2ad1fb4cdb1ac1206a82c5b63af7ddf1ec9e234')
+sha256sums=('b15fecf8afcd6ef342efc96b798e6e9b66e230205c17452b2b84e124865e737c')
 
 
 prepare() {
