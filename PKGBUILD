@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=edfbrowser
-pkgver=1.70
+pkgver=1.71
 pkgrel=1
 pkgdesc="A free, opensource, multiplatform, universal viewer and toolbox intended for, but
 not limited to, timeseries storage files like EEG, EMG, ECG, BioImpedance, etc."
@@ -18,14 +18,14 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://www.teuniz.net/edfbrowser/edfbrowser_170_source.tar.gz
+source=(https://www.teuniz.net/edfbrowser/edfbrowser_${pkgver//.}_source.tar.gz
         edfbrowser.desktop)
 noextract=()
-sha1sums=('112811a255bcea34a6498e29042b936dc89a0430'
+sha1sums=('e2deeb1e9f313b4d630771ea3a7dc63e7f8f3ae2'
           '3076f5b8ab0313edb7b20ca13214382914725f52')
 
 build() {
-  cd "$srcdir/edfbrowser_170_source"
+  cd "$srcdir/edfbrowser_${pkgver//.}_source"
   qmake
   make
 }
@@ -34,7 +34,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/icons"
-  cp "$srcdir/edfbrowser_170_source/edfbrowser" "$pkgdir/usr/bin"
+  cp "$srcdir/edfbrowser_${pkgver//.}_source/edfbrowser" "$pkgdir/usr/bin"
   cp edfbrowser.desktop "$pkgdir/usr/share/applications"
-  cp "$srcdir/edfbrowser_170_source/images/edf.png" "$pkgdir/usr/share/icons/edfbrowser.png"
+  cp "$srcdir/edfbrowser_${pkgver//.}_source/images/edf.png" "$pkgdir/usr/share/icons/edfbrowser.png"
 }
