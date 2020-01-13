@@ -1,14 +1,14 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
 	pkgver = 1.10.0~rc0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
 	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-ksm-throttler-1.10.0~rc0-3.1.x86_64.rpm
 	source = https://github.com/kata-containers/runtime/releases/download/1.10.0-rc0/kata-static-1.10.0-rc0-x86_64.tar.xz
 	sha256sums = a947effca82fd01f944418c94fb712684fafc65d4edf1aa3683617d0c80a15c1
-	sha256sums = 619c413c63c9e03837a433112f9432adf1bef69224b352ada2bdd0100f5a5a53
+	sha256sums = b8f3c5684db0b91063a86238fbce2e5cbd5769a86aa71e41c4cb1f44fea7811f
 
 pkgname = kata-runtime-bin
 	install = kata-runtime.install

@@ -7,7 +7,7 @@ pkgbase=kata-containers-bin
 pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image kata-linux-container kata-containers-static)
 pkgver="1.10.0~rc0"
 _pkgver=${pkgver/\~/-}
-pkgrel=6
+pkgrel=7
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'a947effca82fd01f944418c94fb712684fafc65d4edf1aa3683617d0c80a15c1'
-  '619c413c63c9e03837a433112f9432adf1bef69224b352ada2bdd0100f5a5a53'
+  'b8f3c5684db0b91063a86238fbce2e5cbd5769a86aa71e41c4cb1f44fea7811f'
 )
 
 package_kata-runtime-bin() {
