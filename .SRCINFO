@@ -1,0 +1,30 @@
+pkgbase = ros-melodic-geodesy
+	pkgdesc = ROS - Python and C++ interfaces for manipulating geodetic coordinates.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = http://wiki.ros.org/geodesy
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-uuid-msgs
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-unique-id
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-geographic-msgs
+	makedepends = ros-melodic-angles
+	makedepends = ros-melodic-catkin
+	makedepends = python-catkin_pkg
+	depends = ros-melodic-uuid-msgs
+	depends = ros-melodic-tf
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-unique-id
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-geographic-msgs
+	depends = python-pyproj
+	source = ros-melodic-geodesy-0.5.2-0.tar.gz::https://github.com/ros-geographic-info/geographic_info-release/archive/release/melodic/geodesy/0.5.2-0.tar.gz
+	sha256sums = e813b9ed6e334823b0a65b5b57edbd642daea0165b01549113b7ef0b407fc991
+
+pkgname = ros-melodic-geodesy
+
