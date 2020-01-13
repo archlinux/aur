@@ -4,7 +4,7 @@
 pkgname=firefox-nightly-de
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (de-DE)'
 url='https://www.mozilla.org/de-DE/firefox/nightly'
-pkgver=74.0a1.20200107
+pkgver=74.0a1.20200112
 pkgrel=1
 _version=74.0a1
 arch=('i686' 'x86_64')
@@ -36,7 +36,10 @@ provides=('firefox-nightly')
 
 pkgver() {
   # Use Last-Modified Header from server
-  echo "${_version}.$(curl -sI https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-${arch}.tar.bz2 | grep -i Last-Modified | cut -c16- | date -f- '+%Y%m%d')"
+  #echo "${_version}.$(curl -sI https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-${_version}.de.linux-${arch}.tar.bz2 | grep -i Last-Modified | cut -c16- | date -f- '+%Y%m%d')"
+  
+  # Use BuildID from platform.ini
+  echo "${_version}.$(awk -F "=" '/BuildID/ {print $2}' "${srcdir}/firefox/platform.ini" | cut -c-8)"
 }
 
 package() {
