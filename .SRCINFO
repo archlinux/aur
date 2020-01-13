@@ -22,10 +22,10 @@ pkgbase = cairo-glesv2-armv7l
 	conflicts = cairo-gl
 	conflicts = cairo-xcb
 	source = https://webreflection.github.io/aur/cairo-glesv2-armv7l-1.17.2.tar.gz
-	md5sums = e1d23127f55376982983e8a90af5840a
-	sha1sums = 023a78cc88b9e0a66e4b71b3d655ce2ab3228905
-	sha256sums = f590ecc1826595b0ee5a05edf9adec1ef390ece9f47e206c7aa9d2dd0f614285
-	sha512sums = d8515656fb7737b0adc52e5f705dfa829f72483290fdf885a962b113ed42dd85a578a2069e386c0aabfe5d2bf9b58d578a00eb229336f89c99d7223dd954947c
+	md5sums = 1ba298eb3d2b5c5cb0e529837611cda4
+	sha1sums = 7df055358b8b9eb077adead9fedef65a16e44461
+	sha256sums = 535a3a967332953f60dc7912ee1ec1b4aa1f52b2b4da6e5cd04dc2d0e3c3bd5e
+	sha512sums = 4780107453a86aee9d89d1dfec8bf4cd847b4a2132baee666627086cb689a4f1c67bc6a22211040f3c4365d6c8f2dc138e86ecb8283b1b90be99e0babf2fe8b8
 
 pkgname = cairo-glesv2-armv7l
 
