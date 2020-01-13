@@ -1,6 +1,6 @@
 pkgname=cherrytree-bin
 basename=${pkgname%*-bin}
-pkgver=0.38.9
+pkgver=0.38.11
 pkgrel=1
 pkgdesc='Binary version of cherrytree'
 arch=('any')
