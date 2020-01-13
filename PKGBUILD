@@ -11,7 +11,7 @@ depends=('python2>=2.7.0')
 optdepends=('ffmpeg: realtime transcoding support')
 provides=('stream2chromecast')
 conflicts=("${_pkgname}")
-source=("git+https://github.com/Pat-Carter/${_pkgname}.git")
+source=("git+https://github.com/dohliam/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
