@@ -1,13 +1,17 @@
 pkgbase = easy2boot
 	pkgdesc = Highly-configurable USB drive multiboot software with support for Secure UEFI booting
 	pkgver = 1.B8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.easy2boot.com/
 	arch = any
 	license = custom:easy2boot license
 	makedepends = dos2unix
+	makedepends = unrar
+	noextract = grub4dos.rar
 	source = local://Easy2Boot_v1.B8.zip
+	source = grub4dos.rar::http://dl.grub4dos.chenall.net/grub4dos-0.4.5-2009-12-23.rar
 	sha256sums = 549092e92532c9dd420800b9ba4ca3ce58fb46bf03463b5c63c05a01db0e757c
+	sha256sums = 94a256b0dd022f71ab1ca866f00621e0402313f2944f9af6955bc787ee611ea5
 
 pkgname = easy2boot
 
