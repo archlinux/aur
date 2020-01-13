@@ -1,6 +1,6 @@
 # Maintainer: Jochem Broekhoff <(lastname) dot (firstname) @ gmail.com>
 pkgname=marble-marcher-ce
-_pkgtag=1.4.1
+_pkgtag=1.4.2
 pkgver=$(echo "${_pkgtag}" | sed "s/-//")
 pkgrel=1
 pkgdesc="A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before."
