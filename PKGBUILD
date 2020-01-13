@@ -18,7 +18,7 @@ source=(https://github.com/burst-apps-team/burstcoin/releases/download/v${pkgver
         burstcoin-wallet.desktop)
 sha256sums=('a03cb6491b4fa870b7d3498f9449df822d5612ab167576b4408c5ba0bbcf1afc'
             'ffb9c5431f65485b2c08b4ca6c2b68b3c2001961b22ed4a66c528ed26bcb2dae'
-            '44b494c86b4f8d7eeba365e83586e129543ceb67bc92a7b19df00918a8505865')
+            '648f64707713ec4dc6dbcb000d85a0bae43a2960667c029ad220155221718039')
 
 package() {
     cd $srcdir
