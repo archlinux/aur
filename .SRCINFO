@@ -1,0 +1,49 @@
+pkgbase = gala-stable
+	pkgdesc = A window & compositing manager based on libmutter and designed by elementary for use with Pantheon
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/elementary/gala
+	arch = any
+	groups = pantheon-stable
+	license = GPL3
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = meson>=0.42.0-1
+	makedepends = vala>=0.40.3-1
+	depends = atk
+	depends = bamf
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gnome-settings-daemon-elementary
+	depends = gnome-desktop
+	depends = granite
+	depends = gsettings-desktop-schemas-ubuntu
+	depends = gtk3
+	depends = json-glib
+	depends = libdrm
+	depends = libgee
+	depends = libgl
+	depends = mutter>=3.23.90-1
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxrandr
+	depends = libxtst
+	depends = mesa
+	depends = pango
+	depends = plank
+	depends = wayland
+	provides = gala
+	provides = gala-stable
+	conflicts = gala
+	conflicts = gala-git
+	conflicts = gala-stable-git
+	source = gala-stable-3.2.0.tar.gz::https://github.com/elementary/gala/archive/3.2.0.tar.gz
+	sha256sums = 137ceb10f9649defd30c27606fb63eb82c3622eb8aa45339747c135b03d723a8
+
+pkgname = gala-stable
+
