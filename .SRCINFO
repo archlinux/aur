@@ -1,6 +1,6 @@
 pkgbase = tpm2-tools-git
 	pkgdesc = Trusted Platform Module 2.0 tools based on tpm2-tss
-	pkgver = 4.1rc0.r0.76a88035
+	pkgver = 4.1.1rc1.r0.9a79aab0
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-tools
 	arch = x86_64
