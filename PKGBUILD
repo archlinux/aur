@@ -2,7 +2,7 @@
 
 basename=compressonator
 pkgname=$basename-git
-pkgver=v3.2.4691+43+g57c1c8e3
+pkgver=v3.2.4691+44+gbfc4b162
 pkgrel=1
 pkgdesc="Tool suite for Texture and 3D Model Compression, Optimization and Analysis. Lubosz's Linux GUI port branch."
 arch=('x86_64')
@@ -21,8 +21,10 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/Compressonator/Compressonator/"
-  cmake . \
+  cd "${srcdir}"
+  rm build -rf && mkdir -p build
+  cd build
+  cmake ../Compressonator/Compressonator \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_SBINDIR=bin \
@@ -33,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/Compressonator/Compressonator/"
+  cd "${srcdir}/build"
   DESTDIR="${pkgdir}" make install
   mv ${pkgdir}/usr/bin/CompressonatorCLI-bin ${pkgdir}/usr/bin/compressonator-cli
 
