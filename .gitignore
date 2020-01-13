@@ -4,4 +4,3 @@
 !*.install
 !.gitignore
 !LICENSE
-!xdg_session_type.patch
