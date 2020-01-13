@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Phoenix BurstCoin desktop wallet
+Name=Phoenix
+Comment=Burstcoin desktop wallet
 Icon=phoenix
 Exec=/opt/phoenix/phoenix
 Categories=Network;
