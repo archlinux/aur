@@ -1,0 +1,16 @@
+pkgbase = latex-padova-dei
+	pkgdesc = Beamer theme for the Department of Information Engineering at the University of Padua
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/electricant/beamerThemePadovaDEI
+	install = latex-padova-dei.install
+	arch = any
+	makedepends = git
+	depends = texlive-core
+	provides = latex-padova-dei
+	conflicts = latex-padova-dei
+	source = git://github.com/electricant/beamerThemePadovaDEI.git
+	md5sums = SKIP
+
+pkgname = latex-padova-dei
+
