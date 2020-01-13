@@ -1,5 +1,4 @@
-# Maintainer: MASAKI Haruka <yek at reasonset dot net>
-# Contributor: UTUMI Hirosi <utuhiro78 att yahoo dott co dott jp>
+# Maintainer: UTUMI Hirosi <utuhiro78 att yahoo dott co dott jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
@@ -7,7 +6,7 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20191226
+_dicver=20191230
 _revision=1
 
 _pkgbase=mozc
@@ -18,31 +17,21 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
-makedepends=('clang' 'ninja' 'pkg-config' 'python2' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
+makedepends=('clang' 'gyp' 'protobuf' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=("https://osdn.net/frs/chamber_redir.php?m=ymu&f=%2Fusers%2F25%2F25267%2Fmozc-neologd-ut-2.23.2815.102.20191226.1.tar.xz"
-		add-new-japanese-era.patch
-        # https://github.com/google/mozc/issues/441#issue-321728877
-        fix-for-gcc81.patch
+source=('https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F25%2F25365%2Fmozc-neologd-ut-2.23.2815.102.20191230.1.tar.xz'
+        # https://github.com/google/mozc/issues/462#issuecomment-573220288
+        # https://salsa.debian.org/debian/mozc/tree/master/debian/patches
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
 sha1sums=('SKIP'
-          '94502348e60659765d3e6ae2780d07e5104a06a2'
-          '2bad0705a0a09d8d5a79c874b59c485052da2b38'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
 prepare() {
   cd mozc-neologd-ut-${pkgver}/src
-
-  # add a new Japanese era
-  patch -Np2 -i "${srcdir}/add-new-japanese-era.patch"
-
-  # fix for gcc-8.1
-  patch -Np2 -i "${srcdir}/fix-for-gcc81.patch"
-
-  # Adjust to use python2
-  find . -name  \*.py        -type f -exec sed -i -e "1s|python.*$|python2|"  {} +
-  find . -regex '.*\.gypi?$' -type f -exec sed -i -e "s|'python'|'python2'|g" {} +
+  patch -Np2 -i "${srcdir}/mozc-neologd-ut-${pkgver}/patches/mozc-2.23.2815.102-python-3.patch"
+  patch -Np2 -i "${srcdir}/mozc-neologd-ut-${pkgver}/patches/debian_patches_Fix-build-with-gcc8.patch"
+  patch -Np2 -i "${srcdir}/mozc-neologd-ut-${pkgver}/patches/debian_patches_add_support_new_japanese_era.patch"
 }
 
 build() {
@@ -50,8 +39,8 @@ build() {
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool renderer/renderer.gyp:mozc_renderer unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
 
-  GYP_DEFINES="document_dir=/usr/share/licenses/${pkgbase}" python2 build_mozc.py gyp --target_platform=Linux
-  python2 build_mozc.py build -c $_bldtype $_targets
+  GYP_DEFINES="use_libprotobuf=1 use_libzinnia=1 document_dir=/usr/share/licenses/${pkgbase}" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
+  python build_mozc.py build -c $_bldtype $_targets
 }
 
 package_mozc-neologd-ut() {
