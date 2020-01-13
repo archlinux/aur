@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python36-bin
 pkgver=3.6.8
 _pybasever=36
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -28,6 +28,8 @@ prepare () {
   cd "${srcdir}/Python-${pkgver}"
   # https://bugs.python.org/issue11566
   patch -p1 -i "${srcdir}"/bpo-11566.patch
+  # https://bugs.python.org/issue36020
+  sed -i 's|#if defined(MS_WIN32) \&\& !defined(HAVE_SNPRINTF)|#if defined(_MSC_VER) \&\& !defined(HAVE_SNPRINTF)|g' Include/pyerrors.h
 }
 
 build() {

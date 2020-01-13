@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-python36-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 3.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.python.org/
 	arch = any
 	license = PSF
