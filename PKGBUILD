@@ -8,7 +8,7 @@ _PkgName=OpenBLAS
 _pkgname=openblas
 pkgver=0.3.7
 _lapackver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('any')
 url="http://www.openblas.net/"
@@ -17,7 +17,7 @@ depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
 provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
-options=(!emptydirs !strip)
+options=(!emptydirs !strip staticlibs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
 sha256sums=('SKIP')
 
