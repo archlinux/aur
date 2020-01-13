@@ -1,6 +1,6 @@
 pkgbase = compressonator-git
 	pkgdesc = Tool suite for Texture and 3D Model Compression, Optimization and Analysis. Lubosz's Linux GUI port branch.
-	pkgver = v3.2.4691+42+gdfcdf3b8
+	pkgver = v3.2.4691+44+gbfc4b162
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Tools/Compressonator
 	arch = x86_64
