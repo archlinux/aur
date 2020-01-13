@@ -1,6 +1,6 @@
 # Maintainer: Louis Kleiver <louis.kleiver@gmail.com>
 pkgname=eiota
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A simple python script to simplify BLIH usage for Epitech students."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.3.0'
 	'python-requests'
 	'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mrCaelum/${pkgname}/releases/latest/download/v${pkgver}.tar.gz")
-sha256sums=("692b89419ccbdc2074e5007560df6156276112e50def94b075898b78aa617e18")
+sha256sums=("bf819215a60a6e22f0f7573a84db108fa0fc0f71979917062bbf9087a26f7bfa")
 
 build() {
 	mv "${pkgname}.py" "${pkgname}"
