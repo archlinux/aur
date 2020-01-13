@@ -1,7 +1,7 @@
 # Maintainer: itsagoodbrain <itsrottenisay@gmail.com>
 
 pkgname=zettlr-bin
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -11,13 +11,9 @@ depends=()
 optdepends=('pandoc: export support'
 	    'texlive-bin: pdf etc support')
 provides=(zettlr)
-source=("https://github.com/Zettlr/Zettlr/releases/download/v${pkgver}/Zettlr-linux-x64-${pkgver}.rpm")
-md5sums=(73ede4060f7c148b418cbbcb02e2721b)
+source=("https://github.com/Zettlr/Zettlr/releases/download/v${pkgver}/Zettlr-${pkgver}-x86_64.rpm")
+sha256sums=(151df9eec8f55b884d301ee9c8c854ad0af9f7fe373792bc1425e8c8f46542e4)
 package() {
 	mv $srcdir/opt $pkgdir/opt
 	mv $srcdir/usr $pkgdir/usr
-
-	#Needed for SUID issue connected to headless chrome in electron.
-	sudo chown root $pkgdir/opt/Zettlr/chrome-sandbox
-	sudo chmod 4755 $pkgdir/opt/Zettlr/chrome-sandbox
 }
