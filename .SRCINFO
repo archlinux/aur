@@ -7,7 +7,8 @@ pkgbase = sile
 	arch = x86_64
 	license = MIT
 	checkdepends = lua-busted
-	makedepends = git
+	checkdepends = lua-luacov=0.8
+	makedepends = luarocks
 	depends = fontconfig
 	depends = harfbuzz>=1.4.2
 	depends = lua-bit32
@@ -27,9 +28,8 @@ pkgbase = sile
 	depends = lua-vstruct
 	depends = icu
 	depends = ttf-gentium-plus
-	optdepends = luajit
 	source = https://github.com/simoncozens/sile/releases/download/v0.10.0/sile-0.10.0.tar.bz2
-	sha256sums = f200ef6be390303c6451c1b08c4e0ffd4eb9a3966464706c48a320c4665c30bc
+	sha256sums = b0353b88793d68bf3e800f87bff51e8161ce39d250e22dff11385712caf332b6
 
 pkgname = sile
 

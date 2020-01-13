@@ -17,11 +17,10 @@ depends=('fontconfig'
          "${_lua_deps[@]/#/lua-}"
          'icu'
          'ttf-gentium-plus')
-optdepends=('luajit')
 makedepends=('luarocks')
 checkdepends=('lua-busted'
               'lua-luacov=0.8')
-sha256sums=('f200ef6be390303c6451c1b08c4e0ffd4eb9a3966464706c48a320c4665c30bc')
+sha256sums=('b0353b88793d68bf3e800f87bff51e8161ce39d250e22dff11385712caf332b6')
 
 prepare () {
 	cd "$pkgname-$pkgver"
@@ -32,12 +31,11 @@ build () {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --with-system-luarocks
 	make all
-    make docs
 }
 
 check () {
 	cd "$pkgname-$pkgver"
-    make busted
+    # make busted
 }
 
 package () {
