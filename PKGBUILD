@@ -1,6 +1,4 @@
-# Maintainer: Boohbah <boohbah at gmail dot com>
-# Contributor: P. Badredin <p dot badredin at gmail dot com>
-# Contributor: Justin Blanchard <UncombedCoconut at gmail dot com>
+# Maintainer: Valerii Huz <ghotrix at gmail dot com>
 
 pkgname=stockfish-git
 pkgver=r3393.gfe07ae4
