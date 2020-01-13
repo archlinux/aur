@@ -3,17 +3,17 @@
 # Contributor: Christian Rebischke <Chris.Rebischke[at]archlinux[dot]org>
 
 pkgname=flannel
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Etcd backed network fabric for containers"
 depends=('glibc')
 makedepends=('go' 'git')
 arch=('any')
-_flannel_commit='317b7d199e3fe937f04ecb39beed025e47316430' # v0.8.0
-_pkg_commit='3ac0863d7acf3bc44daf49afef8919af12f704ef' # v3
+_flannel_commit='d3eea7f5cdb895965394eb5f34645cdc3b535d5b' # v0.11.0
+_pkg_commit='97fdf19511ea361ae1c100dd393cc47f8dcfa1e1' # v4
 _glog_commit='23def4e6c14b4da8ac2ed8007337bc5eb5007998' # HEAD
-_godotenv_commit='a79fa1e548e2c689c241d10173efd51e5d689d5b' # v1.2.0
-_systemd_commit='d2196463941895ee908e13531a23a39feb9e1243' # v15
+_godotenv_commit='23d116af351c84513e1946b527c88823e476be13' # v1.3.0
+_systemd_commit='2d78030078ef61b3cae27f42ad6d0e46db51b339' # v22.0.0
 source=("flannel.service"
         "git+https://github.com/coreos/flannel#commit=${_flannel_commit}"
         "go-pkg::git+https://github.com/coreos/pkg#commit=${_pkg_commit}"
