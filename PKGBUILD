@@ -1,6 +1,6 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-pkgname=python-spyder-kernels
+pkgname=python-spyder-kernels-git
 pkgver=1.8.1.r1.gb713289
 pkgrel=1
 pkgdesc="Jupyter Kernels for the Spyder console"

@@ -1,4 +1,4 @@
-pkgbase = python-spyder-kernels
+pkgbase = python-spyder-kernels-git
 	pkgdesc = Jupyter Kernels for the Spyder console
 	pkgver = 1.8.1.r1.gb713289
 	pkgrel = 1
@@ -10,8 +10,8 @@ pkgbase = python-spyder-kernels
 	depends = python-ipykernel
 	provides = python-spyder-kernels
 	conflicts = python-spyder-kernels
-	source = python-spyder-kernels::git+https://github.com/spyder-ide/spyder-kernels.git
+	source = python-spyder-kernels-git::git+https://github.com/spyder-ide/spyder-kernels.git
 	md5sums = SKIP
 
-pkgname = python-spyder-kernels
+pkgname = python-spyder-kernels-git
 
