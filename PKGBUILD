@@ -15,12 +15,11 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
   ./configure --prefix=/usr --enable-silent-rules -silent --with-icon_name=hamster-time-tracker
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make || return 1
-  make DESTDIR="${pkgdir}" install
+  make install
 }
 
 # vim:set ts=2 sw=2 et:
