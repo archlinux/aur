@@ -2,7 +2,7 @@
 
 pkgname=s3uploader
 pkgver=0.2.0
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A minimalistic electron-based UI to conveniently upload and download files from AWS S3"
 url="https://github.com/Yamazaki93/S3Uploader"
 arch=("x86_64")
