@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python37-bin
-pkgver=3.7.5
+pkgver=3.7.6
 _pybasever=37
-pkgrel=2
+pkgrel=1
 pkgdesc="Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -16,15 +16,17 @@ source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win3
         wine-python.sh)
 noextract=("python-${pkgver}-embed-win32.zip"
            "python-${pkgver}-embed-amd64.zip")
-sha256sums=('b8337c080bf9dbab81dbb67fe38d84a7f1cec746c428a9ef164df249f4e8467b'
-            '30d8fb3525e0edeb77b29f799c6248755f58da2f46d351c7f091c33adccea059'
-            '8ecc681ea0600bbfb366f2b173f727b205bb825d93d2f0b286bc4e58d37693da'
+sha256sums=('e2257b87e2e1a131e5d2adf843887fdab5021f8d4d6d68d49691aa965650c3ab'
+            '114638061d636285600cbc3d4def64b45c43da9b225cb9eeead30fe7fe7d60d4'
+            'aeee681c235ad336af116f08ab6563361a0c81c537072c1b309d6e4050aa2114'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/Python-${pkgver}"
+  # https://bugs.python.org/issue36020
+  sed -i 's|#if defined(MS_WIN32) \&\& !defined(HAVE_SNPRINTF)|#if defined(_MSC_VER) \&\& !defined(HAVE_SNPRINTF)|g' Include/pyerrors.h
 }
 
 build() {
