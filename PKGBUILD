@@ -12,7 +12,7 @@ license=('GPL')
 depends=('libusb-compat')
 makedepends=('cmake')
 install=$pkgname.install
-source=(https://bitbucket.org/maproom/qlandkarte-gt/downloads/$pkgname-$pkgver.tar.gz
+source=(http://downloads.sourceforge.net/qlandkartegt/$pkgname-$pkgver.tar.gz \
         51-garmin.rules)
 sha256sums=('86c38f65ba1a05c5d5eb076107094cb789db6ffc5d80bfd7bb209d645bcf87d5'
             '0196ae234c0daf97afb9f4af6fdc04c2af77bb742233731870ba8cfc6ae5a7d7')
