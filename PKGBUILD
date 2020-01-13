@@ -1,6 +1,6 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=diagnostic-languageserver
-pkgver=1.2.2
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="General purpose Language Server that integrates with linters to support diagnostic features"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('c51b852810d82d5e28a46fa5909c7a5d973fb5a9d35c8f6c7a44b1f0124a4912')
+sha256sums=('da1d428c831d59648e447d24838bfea76f3eda8cc867aa87b569aafe4ef47efe')
 
 package() {
 	npm install -g \
