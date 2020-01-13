@@ -1,15 +1,14 @@
 pkgbase = gogh
 	pkgdesc = Bitmap graphics editor for pressure-sensitive input devices
 	pkgver = 0.1.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://code.google.com/p/gogh/
 	arch = any
 	license = GPL
 	depends = pygtk
 	depends = gnome-python
 	depends = pyxml
-	depends = python-numeric
-	source = http://gogh.googlecode.com/files/Gogh-0.1.2.3.tar.gz
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/gogh/Gogh-0.1.2.3.tar.gz
 	sha256sums = eff86a02dfd52347a5eb874e4a7d8a19c1fe10d66e08ebd1c64ff9ba24e532ab
 
 pkgname = gogh
