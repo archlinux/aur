@@ -11,15 +11,8 @@ checkdepends=('python-descartes' 'python-matplotlib' 'python-pytest' 'python-rtr
 depends=('python' 'python-fiona' 'python-numpy' 'python-pandas' 'python-pyproj' 'python-shapely' 'python-six')
 optdepends=('python-descartes' 'python-geopy' 'python-psycopg2')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/geopandas/geopandas/archive/v$pkgver.tar.gz"
-    "1227.patch")
-sha256sums=('2097f9661b8f04ce49592dcb523a861829c1bd6ad747454355c93cc341cd366b'
-            '8236ac8a9f8d8f5b37485d59e81d400d0f7e42f624951fdd6df0599ed5397a47')
-
-prepare() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    patch -p1 < ../1227.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/geopandas/geopandas/archive/v$pkgver.tar.gz")
+sha256sums=('2097f9661b8f04ce49592dcb523a861829c1bd6ad747454355c93cc341cd366b')
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
