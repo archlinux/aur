@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# Remove garbage that should be added to dev's .gitignore
+	# Remove folders that should be added to dev's .gitignore
 	rm -rf .circleci .github .idea .vscode
 
 	# Remove shortcut creation as files cannot be placed in $HOME in fakeroot environment
