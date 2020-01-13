@@ -10,7 +10,7 @@ pkgbase = wraith-master
 	depends = libusb
 	depends = gcc
 	depends = glibc
-	source = git+https://gitlab.com/serebit/wraith-master#tag=0.3.1
+	source = wraith-master-0.3.1::git+https://gitlab.com/serebit/wraith-master#tag=0.3.1
 	sha256sums = SKIP
 
 pkgname = wraith-master-cli
