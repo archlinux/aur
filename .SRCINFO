@@ -39,6 +39,7 @@ pkgbase = gala-stable
 	depends = wayland
 	provides = gala
 	provides = gala-stable
+	provides = libgala.so
 	conflicts = gala
 	conflicts = gala-git
 	conflicts = gala-stable-git

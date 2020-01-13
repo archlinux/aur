@@ -18,7 +18,7 @@ depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'gnome-settings-daemon-eleme
 		 'libxi' 'libxrandr' 'libxtst' 'mesa' 'pango' 'plank' 'wayland'
   		 )
 makedepends=('git' 'gnome-common' 'meson>=0.42.0-1' 'vala>=0.40.3-1')
-provides=("${_gitname}" "${pkgname}")
+provides=("${_gitname}" "${pkgname}" "libgala.so")
 conflicts=("${_gitname}" "${_gitname}-git" "${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('137ceb10f9649defd30c27606fb63eb82c3622eb8aa45339747c135b03d723a8')
