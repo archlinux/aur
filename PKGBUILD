@@ -3,8 +3,8 @@
 # Official repo maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=logstash-xpack
-relpkgname=logstash
-pkgver=6.7.0
+_pkgname=logstash
+pkgver=7.5.1
 pkgrel=2
 pkgdesc='Tool for managing events and logs'
 url='https://www.elastic.co/products/logstash/'
@@ -19,13 +19,13 @@ backup=('etc/conf.d/logstash'
         'etc/logstash/log4j2.properties'
         'etc/logstash/logstash.yml'
         'etc/logstash/pipelines.yml')
-source=(https://artifacts.elastic.co/downloads/logstash/$relpkgname-$pkgver.tar.gz
+source=(https://artifacts.elastic.co/downloads/logstash/$_pkgname-$pkgver.tar.gz
         logstash.service
         logstash@.service
         logstash-sysuser.conf
         logstash-tmpfile.conf
         bundle.config)
-sha256sums=('39f8d530443aa691e27b6d6d591cc69c3d38ef55dece920ccba4eae927064e93'
+sha256sums=('72f9454c82e8ddd509b5e8d41de0b5089c8722041181963e70de60fd38558606'
             '2b8b29297202334c784fdd7f2eb8d7e776c24c783b3c9f8387b500ab0039335c'
             'a01ea29d4f53d785f6eb926ebfe445e64ed5b3dab5d0418848589dd79502d876'
             '18a68a59ddb0ce19778e83b65e68dd568d65b7180bf45b4cf298fb332d69eb26'
@@ -33,7 +33,7 @@ sha256sums=('39f8d530443aa691e27b6d6d591cc69c3d38ef55dece920ccba4eae927064e93'
             'fe05315345e4489458c3eecac43726800109c1e390e74a14584096f6c041fee1')
 
 prepare() {
-  cd $relpkgname-${pkgver}
+  cd $_pkgname-${pkgver}
   rm bin/*.bat
   sed -e 's|LS_SETTINGS_DIR=.*|LS_SETTINGS_DIR="/etc/logstash"|' -i config/startup.options
   sed -e '1i [ -f /etc/profile.d/jre.sh ] && . /etc/profile.d/jre.sh' -i bin/logstash.lib.sh
@@ -43,7 +43,7 @@ prepare() {
 }
 
 package() {
-  cd $relpkgname-${pkgver}
+  cd $_pkgname-${pkgver}
 
   install -dm 755 "${pkgdir}/usr/share/logstash" "${pkgdir}/etc/conf.d"
   mv config/startup.options "${pkgdir}/etc/conf.d/logstash"
