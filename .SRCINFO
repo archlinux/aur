@@ -1,7 +1,7 @@
 pkgbase = azure-cli
 	pkgdesc = Command-line tools for Azure.
 	pkgver = 2.0.79
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
