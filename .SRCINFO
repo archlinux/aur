@@ -1,0 +1,16 @@
+pkgbase = python-pyperformance
+	pkgdesc = Python Performance Benchmark Suite
+	pkgver = 1.0.0
+	pkgrel = 2.1
+	url = https://github.com/python/pyperformance
+	arch = any
+	license = MIT
+	checkdepends = python-tox
+	makedepends = python-pip
+	depends = python-perf
+	depends = python-six
+	source = https://pypi.org/packages/source/p/pyperformance/pyperformance-1.0.0.tar.gz
+	sha256sums = 3aaaf52c6333e5d9275ec44040cda527b441318fe3866911339a59858fca3d90
+
+pkgname = python-pyperformance
+
