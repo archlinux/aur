@@ -18,8 +18,9 @@ depends=('fontconfig'
          'icu'
          'ttf-gentium-plus')
 optdepends=('luajit')
-makedepends=('git')
-checkdepends=('lua-busted')
+makedepends=('luarocks')
+checkdepends=('lua-busted'
+              'lua-luacov=0.8')
 sha256sums=('f200ef6be390303c6451c1b08c4e0ffd4eb9a3966464706c48a320c4665c30bc')
 
 prepare () {
@@ -29,21 +30,22 @@ prepare () {
 
 build () {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+	./configure --prefix=/usr --with-system-luarocks
+	make all
+    make docs
 }
 
 check () {
 	cd "$pkgname-$pkgver"
-    # make test
+    make busted
 }
 
 package () {
 	cd "$pkgname-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
-	for file in README.md ROADMAP documentation/sile.pdf ; do
-		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
+	for file in README.md documentation/sile.pdf ; do
+		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$(basename $file)"
 	done
 	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
 
