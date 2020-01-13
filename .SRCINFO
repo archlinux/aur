@@ -1,16 +1,16 @@
 pkgbase = ruby-fusuma
 	pkgdesc = Fusuma is multitouch gesture recognizer.
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/iberianpig/fusuma
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = xdotool
-	noextract = fusuma-1.3.0.gem
+	noextract = fusuma-1.3.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fusuma-1.3.0.gem
-	sha1sums = 9d5838c8e2ad004d0d055c0e86febe644e9c7b85
+	source = https://rubygems.org/downloads/fusuma-1.3.2.gem
+	sha1sums = 4f61f52747106353c3f0075138079f5ba999123f
 
 pkgname = ruby-fusuma
 
