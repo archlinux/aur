@@ -6,7 +6,7 @@
 pkgname=aarch64-linux-gnu-openblas-lapack-openmp
 _PkgName=OpenBLAS
 _pkgname=openblas
-pkgver=0.3.4
+pkgver=0.3.7
 _lapackver=3.8.0
 pkgrel=18
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
