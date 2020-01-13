@@ -9,12 +9,12 @@
 pkgname=twinkle-qt5
 _pkgname=twinkle
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Softphone for voice over IP and IM communication using SIP"
 arch=('x86_64' 'i686')
 url="http://www.twinklephone.com/"
 license=('GPL')
-depends=('file' 'libsndfile' 'gsm' 'speex' 'qt5-declarative' 'ccrtp' 'ilbc' 'libzrtpcpp')
+depends=('file' 'libsndfile' 'gsm' 'speex' 'qt5-declarative' 'ccrtp' 'ilbc' 'libzrtpcpp' 'alsa-lib' 'flex' 'bison')
 makedepends=('pkg-config' 'boost' 'cmake' 'git' 'qt5-tools')
 source=("git+https://github.com/LubosD/$_pkgname.git#tag=v${pkgver}")
 md5sums=('SKIP')

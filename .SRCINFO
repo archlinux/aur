@@ -1,7 +1,7 @@
 pkgbase = twinkle-qt5
 	pkgdesc = Softphone for voice over IP and IM communication using SIP
 	pkgver = 1.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.twinklephone.com/
 	arch = x86_64
 	arch = i686
@@ -19,6 +19,9 @@ pkgbase = twinkle-qt5
 	depends = ccrtp
 	depends = ilbc
 	depends = libzrtpcpp
+	depends = alsa-lib
+	depends = flex
+	depends = bison
 	source = git+https://github.com/LubosD/twinkle.git#tag=v1.10.2
 	md5sums = SKIP
 
