@@ -1,12 +1,12 @@
 pkgbase = myzt
 	pkgdesc = Command line GM tools for Mutant: Year Zero
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/nboughton/myzt
 	arch = x86_64
 	license = MIT
-	source = myzt-0.0.3.tar.gz::https://github.com/nboughton/myzt/releases/download/v0.0.3/myzt.tar.gz
-	sha1sums = 0c7e0fe481c225a84dff9081dbd7d14d564da1ad
+	source = myzt-0.0.4.tar.gz::https://github.com/nboughton/myzt/releases/download/v0.0.4/myzt.tar.gz
+	sha1sums = 138d42549363f501ff6755bf8a1c33285ecba0ef
 
 pkgname = myzt
 
