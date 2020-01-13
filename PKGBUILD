@@ -1,9 +1,9 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
 pkgver=2.0
 pkgrel=2
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://srevinsaju.github.io/guiscrcpy"
 license=('GPL3')
 depends=('scrcpy' 'python-pyqt5' 'python-psutil' 'python-qdarkstyle' 'python-gitpython'
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 prepare() {
 	cd "$srcdir/$pkgname"
 
-	# Remove garbage
+	# Remove folders that should be added to dev's .gitignore
 	rm -rf .circleci .github .idea .vscode
 
 	# Remove shortcut creation as files cannot be placed in $HOME in fakeroot environment
