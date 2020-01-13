@@ -1,14 +1,14 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname='python-setuptools-lint'
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
-_name=setuptools-pylint
+_name=setuptools-lint
 pkgdesc="Expose pylint as a lint command into setup.py"
 arch=('any')
-url="https://github.com/johnnoone/setuptools-pylint"
+url="https://pypi.org/project/setuptools-lint/"
 license=('BSD')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/johnnoone/$_name/archive/v${pkgver}.tar.gz")
-sha512sums=('3944434e3f6c0a3f6ae36ae4b1387a25ae93079d4462203c6f84f6bc2af7e2a3f8618bdf14b741234507cb788c3c33e62b3d51d2633e284c2b454ece5bb0a571')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('d36c10bab45672b3c7d92391c8f1ae297a483500654e8b31a312587c9d9355a74beddb466ea952fa4cc8bc035c4f631536eeefd61ae159f807767f61fabc72d4')
 makedepends=('python-setuptools')
 depends=('python-pylint')
 
