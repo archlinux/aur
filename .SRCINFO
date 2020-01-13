@@ -2,14 +2,15 @@ pkgbase = stream2chromecast-git
 	pkgdesc = Chromecast media streamer for Linux
 	pkgver = 0.6.3
 	pkgrel = 1
-	url = https://github.com/Pat-Carter/stream2chromecast
+	url = https://github.com/dohliam/stream2chromecast
 	arch = any
 	license = GPL
 	depends = python2>=2.7.0
 	optdepends = ffmpeg: realtime transcoding support
 	provides = stream2chromecast
 	conflicts = stream2chromecast
-	source = git+https://github.com/Pat-Carter/stream2chromecast.git
+	source = git+https://github.com/dohliam/stream2chromecast.git
 	sha256sums = SKIP
 
 pkgname = stream2chromecast-git
+
