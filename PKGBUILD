@@ -6,7 +6,7 @@
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
 pkgname=zabbix-proxy-sqlite-lts
-pkgver=3.0.14
+pkgver=4.0.16
 pkgrel=1
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,13 +17,13 @@ makedepends=('binutils' 'gcc' 'make' 'fakeroot')
 backup=('etc/zabbix/zabbix_proxy.conf')
 
 install='zabbix-proxy.install'
-source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
+source=("https://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/$pkgver/zabbix-$pkgver.tar.gz"
         'zabbix-proxy.install'
 	'zabbix-proxy.service'
 	'zabbix-proxy.sysusers'
 	'zabbix-proxy.tmpfiles')
 
-sha512sums=('b024de610b86bd45fc0be655e8275daf53b1de813e13a1e78cfad149b1191a7f118862646f5ded43938bc489ff0b0f325de36d4b2c076ce6fe768ee4234eb944'
+sha512sums=('e5a0b13790ef082d63c879ebf989739ffde448161d45eb16ccf4100473556ef39d00466687ecce69e3430e54ec32015c2d00461b81f51510d08d8e38284e2ee6'
             '78a0ff34910815eff8af5f2d66a650ae2e265c9a42e81b16bdf916f676861546e3fb915fe8b0841e95d674ff0bca3cbdb0ff6d00472448025110e215efa9a1a4'
             '6e4e8f16e467afe472e958a3ca4246fd499d56c67544ee5b21fdf94cee698534f9bc3caedc49a207f652500e25d4251d6b708e098fa82858aeb385ab4fbba314'
             'fa42d06ebf0ada6e80efa6479034afedf6ff6d2e8e6cb9e4bb34c682f438eb37c97a25eb76bf19576944781ff057603f851a0333109de065dec6feadb916228d'
