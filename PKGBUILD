@@ -15,7 +15,7 @@ depends=(
 	'elementary-icon-theme'
 	'elementary-wallpapers'
 	'file-roller'
-	'gala'
+	'gala-stable'
 	'geary'
 	'gnome-settings-daemon-elementary'
 	'granite'
