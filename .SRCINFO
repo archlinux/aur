@@ -1,7 +1,7 @@
 pkgbase = brickd
 	pkgdesc = a brick daemon for tinkerforge brick(let)s
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tinkerforge.com/
 	install = brickd.install
 	arch = armv6h
@@ -13,9 +13,9 @@ pkgbase = brickd
 	source = https://github.com/Tinkerforge/brickd/archive/v2.4.1.zip
 	source = https://github.com/Tinkerforge/daemonlib/archive/brickd-2.4.1.zip
 	source = brickd.install
-	md5sums = 580315dda2d3c48d6600251440bab494
-	md5sums = 0ca536db4800629da8e82dde35fd48df
-	md5sums = 662008543bf92defdf9318ede29a93cd
+	sha256sums = d1d843023edf4de6e1018a5fd7196fd121776d9b07091fe66ca3b87b5bc67bbe
+	sha256sums = d90854f30d1a9a4792bfa6ee17c0450090ce2fe9d9c7cfe293e7f952e9ded04b
+	sha256sums = c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589
 
 pkgname = brickd
 

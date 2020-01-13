@@ -5,16 +5,16 @@
 pkgname=brickd
 pkgver=2.4.1
 _pkgver=${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="a brick daemon for tinkerforge brick(let)s"
 url="http://www.tinkerforge.com/"
 license=("GPL2")
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('libusb')
 source=(https://github.com/Tinkerforge/${pkgname}/archive/v${_pkgver}.zip https://github.com/Tinkerforge/daemonlib/archive/${pkgname}-${_pkgver}.zip brickd.install)
-md5sums=('580315dda2d3c48d6600251440bab494'
-         '0ca536db4800629da8e82dde35fd48df'
-         '662008543bf92defdf9318ede29a93cd')
+sha256sums=('d1d843023edf4de6e1018a5fd7196fd121776d9b07091fe66ca3b87b5bc67bbe'
+         'd90854f30d1a9a4792bfa6ee17c0450090ce2fe9d9c7cfe293e7f952e9ded04b'
+         'c70f47a66e5c538e255bfd93111fe1a4ea15894db9c377ed133f8a0351403589')
 install='brickd.install'
 build() {
   cd $srcdir
