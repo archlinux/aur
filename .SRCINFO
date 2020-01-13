@@ -1,0 +1,17 @@
+pkgbase = python-mnnpy
+	pkgdesc = Mutual nearest neighbors correction in python
+	pkgver = 0.1.9.5
+	pkgrel = 1
+	url = https://github.com/chriscainx/mnnpy
+	arch = any
+	license = BSD
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-anndata
+	depends = python-pandas
+	depends = python-numba
+	source = https://files.pythonhosted.org/packages/source/m/mnnpy/mnnpy-0.1.9.5.tar.gz
+	sha256sums = 41cdafaf21392144b683d7acf99f7a1fc59085f9b3697cd6ace57f40dddace9c
+
+pkgname = python-mnnpy
+
