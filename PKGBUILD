@@ -1,28 +1,27 @@
-# Contributor: Scott Lawrence <bytbox@gmail.com>
-# Contributor: Daniel Fiser <danfis (at) danfis (dot) cz>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=ohcount
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="source-lines of code counter"
-arch=(i686 x86_64)
+arch=('any')
 url="http://labs.ohloh.net/ohcount"
 license=('GPL')
-depends=(pcre)
-makedepends=('ragel>=6.3' 'swig' 'ruby' 'rake' 'gperf')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/blackducksoftware/ohcount/archive/v${pkgver}.tar.gz")
-md5sums=('a6c62adaea3f8b47a731a68d61660f60')
+depends=('pcre')
+makedepends=('ragel>=6.3' 'swig' 'ruby' 'ruby-rake' 'gperf')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/blackducksoftware/ohcount/archive/${pkgver}.tar.gz")
+sha256sums=('d71f69fd025f5bae58040988108f0d8d84f7204edda1247013cae555bfdae1b9')
 
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
 
   ./build ohcount
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
 
-  mkdir -p "$pkgdir/usr/bin"
-  cp bin/ohcount "$pkgdir/usr/bin/"
+  mkdir -p "${pkgdir}/usr/bin"
+  cp bin/ohcount "${pkgdir}/usr/bin/"
 }

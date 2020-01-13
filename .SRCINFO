@@ -1,19 +1,18 @@
 pkgbase = ohcount
 	pkgdesc = source-lines of code counter
-	pkgver = 3.1.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = http://labs.ohloh.net/ohcount
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = ragel>=6.3
 	makedepends = swig
 	makedepends = ruby
-	makedepends = rake
+	makedepends = ruby-rake
 	makedepends = gperf
 	depends = pcre
-	source = ohcount-3.1.0.tar.gz::https://github.com/blackducksoftware/ohcount/archive/v3.1.0.tar.gz
-	md5sums = a6c62adaea3f8b47a731a68d61660f60
+	source = ohcount-4.0.0.tar.gz::https://github.com/blackducksoftware/ohcount/archive/4.0.0.tar.gz
+	sha256sums = d71f69fd025f5bae58040988108f0d8d84f7204edda1247013cae555bfdae1b9
 
 pkgname = ohcount
 
