@@ -1,9 +1,10 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Thomas Conneely tc116 at le dot ac dot uk
 # Contributor: Eric Toombs <ee double you toombs at you waterloo dot see eh?>
+# Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
 
 pkgname='python-cocos2d'
-pkgver=0.6.4
+pkgver=0.6.7
 pkgrel=1
 pkgdesc='A framework for building graphical/interactive applications.'
 arch=('any')
@@ -17,9 +18,9 @@ optdepends=(
     'sdl_mixer: for audio support'
     )
 makedepends=('python-distribute')
-source=("https://pypi.python.org/packages/29/40/f50642e41f7be90962f1a19d19274638844411b11bca0cd5933462efdaad/cocos2d-$pkgver.zip")
+source=("https://files.pythonhosted.org/packages/86/b2/6916b09f071a3f9597b84007ffeca9391c8fff264fb7d7b0d521224e6596/cocos2d-$pkgver.tar.gz")
 options=('!emptydirs')
-md5sums=('4ec4abc9ce64a13ecc814572db0a8b3a')
+md5sums=('0e9e955a4e0fbd00ac5979b1c93b9145')
 
 build() {
   cd "cocos2d-$pkgver"
@@ -42,3 +43,4 @@ package() {
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   cp -a LICENSE* "$pkgdir/usr/share/licenses/$pkgname"
 }
+
