@@ -1,7 +1,7 @@
 pkgbase = fyre
 	pkgdesc = Rendering of the Peter de Jong map
 	pkgver = 1.0.1
-	pkgrel = 11
+	pkgrel = 12
 	url = http://fyre.navi.cx/
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = fyre
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	source = http://releases.navi.cx/fyre/fyre-1.0.1.tar.bz2
-	sha1sums = 41c0ec45eff16cc1bba081c5c855a3980e404835
+	sha512sums = 8e65e6ef05c2919659e173b04815579cd550a5d98539860d600d2dd68561493badb98b3eff2cf131335aee9b8b848ceb30956c194a7a69b855e9397679c1c675
 
 pkgname = fyre
 
