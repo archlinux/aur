@@ -23,7 +23,7 @@ check() {
     grep -rl "[^s]ftp://" "${pkgname}-${pkgver}"/lib/bb/tests/*py | xargs sed -i 's@ftp://@http://@g'
     cd "${pkgbase}-${pkgver}/bin"
     git config --local -l
-    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bitbake-selftest
+    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" python ./bitbake-selftest --failfast -v
 }
 
 package_bitbake() {
