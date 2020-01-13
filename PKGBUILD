@@ -36,7 +36,7 @@ source=(
 )
 noextract=()
 sha256sums=('SKIP'
-         '8b87e4c41b0abe7b98c5e12abd6f74025e0a0e39d9a5a4cafb83e5af036db4c5'
+         'a0241b89a52b6fa959cb35f23aabd967223aa36698311bdb8bb8aa8f6bc6ac6c'
          'a928049af63f49dd270a26c7099dccbe038124e4195507919f2d062e5cd2ecaa'
          'ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf')
 
