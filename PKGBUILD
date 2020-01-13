@@ -4,11 +4,11 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
-pkgver=9.2.2.r12.ga3b938c
+pkgver=9.2.2.r15.gd7cc027
 _pkgver=9.2.2
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
 depends=('dbus-glib' 'vte3>=0.38' 'libnotify' 'pacman>=5.2' 'pacman<5.3' 'appstream-glib' 'archlinux-appstream-data' 'libappindicator-gtk3' 'git')
