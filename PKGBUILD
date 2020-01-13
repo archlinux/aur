@@ -1,15 +1,15 @@
-# Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=cargo-local-registry
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A cargo subcommand to manage local registries"
 url="https://github.com/alexcrichton/cargo-local-registry"
 depends=('cargo')
-arch=('i686' 'x86_64' 'armv6h')
+arch=('any')
 license=('MIT' 'APACHE')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexcrichton/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('df7e1cef9d6332f3b3380a0a15036463c0821a35b1302b13367d08879b7859d70ec82eaa904d4e94a765fa1694034455dbecb6c0ada35e8e0a9853478ce5d577')
+sha512sums=('3df5023e69524da38b91cdb91b792613f835e8e0d19f3a09a28c52c5d026036b0aecb38a1c36e48f658666463eef967b94a4d916b7b3ce6a5fa7f0f1a458a48d')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -27,5 +27,3 @@ package() {
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:

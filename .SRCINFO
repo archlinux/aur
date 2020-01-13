@@ -1,16 +1,14 @@
 pkgbase = cargo-local-registry
 	pkgdesc = A cargo subcommand to manage local registries
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/alexcrichton/cargo-local-registry
-	arch = i686
-	arch = x86_64
-	arch = armv6h
+	arch = any
 	license = MIT
 	license = APACHE
 	depends = cargo
-	source = cargo-local-registry-0.1.6.tar.gz::https://github.com/alexcrichton/cargo-local-registry/archive/0.1.6.tar.gz
-	sha512sums = df7e1cef9d6332f3b3380a0a15036463c0821a35b1302b13367d08879b7859d70ec82eaa904d4e94a765fa1694034455dbecb6c0ada35e8e0a9853478ce5d577
+	source = cargo-local-registry-0.2.0.tar.gz::https://github.com/alexcrichton/cargo-local-registry/archive/0.2.0.tar.gz
+	sha512sums = 3df5023e69524da38b91cdb91b792613f835e8e0d19f3a09a28c52c5d026036b0aecb38a1c36e48f658666463eef967b94a4d916b7b3ce6a5fa7f0f1a458a48d
 
 pkgname = cargo-local-registry
 
