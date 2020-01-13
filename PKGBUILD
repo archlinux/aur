@@ -1,17 +1,17 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=gruvbox-material-git
-pkgdesc="Gruvbox with Material Palette"
+pkgdesc="gruvbox-material theme for vim"
 pkgrel=1
-pkgver=v0.3.3.r12.g57e2167
+pkgver=v1.0.1.r4.gd680676
 arch=('any')
-url="https://github.com/sainnhe/gruvbox-material"
-license=('MIT' 'Anti-996')
+url="https://github.com/gruvbox-material/vim"
+license=('MIT')
 md5sums=('SKIP')
 makedepends=('git')
 depends=('vim')
 optdepends=('vim-airline-git' 'vim-lightline-git')
-_pkgname=gruvbox-material
-source=("git+https://github.com/sainnhe/gruvbox-material.git")
+_pkgname=vim
+source=("git+https://github.com/gruvbox-material/vim.git")
 
 pkgver() {
   cd "$srcdir/$_pkgname"

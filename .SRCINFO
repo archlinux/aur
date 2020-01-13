@@ -1,16 +1,15 @@
 pkgbase = gruvbox-material-git
-	pkgdesc = Gruvbox with Material Palette
-	pkgver = v0.3.3.r12.g57e2167
+	pkgdesc = gruvbox-material theme for vim
+	pkgver = v1.0.1.r4.gd680676
 	pkgrel = 1
-	url = https://github.com/sainnhe/gruvbox-material
+	url = https://github.com/gruvbox-material/vim
 	arch = any
 	license = MIT
-	license = Anti-996
 	makedepends = git
 	depends = vim
 	optdepends = vim-airline-git
 	optdepends = vim-lightline-git
-	source = git+https://github.com/sainnhe/gruvbox-material.git
+	source = git+https://github.com/gruvbox-material/vim.git
 	md5sums = SKIP
 
 pkgname = gruvbox-material-git
