@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.4.10.arch1.r875099.d6bb3283cfd5
+pkgver=v5.3.18.arch1.r860172.4866cc197a17
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.4.10-arch1
+_srcver_tag=v5.3.18-arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -92,6 +92,8 @@ source=(
     "git+$_repo_url#branch=master"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
+    d938db454691d69590eb081db22c507c9ebca5f8.patch
+    4932fe6b8e63b92f8252591b5381423c01bac552.patch
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -99,7 +101,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '402ebb52240c680699fe686bf9e89c519cead7015b14d0c061e2e1f3ba9140b771cea424bd102a8f2968a2578b4fbfe69005ac115f35c5a261cbccbcd3edac77')
+            'dc59a723ef1f7b946f6624e4b12ba2d41d6cfb52c0348c764db26712bf7c1e2c1bfcd5959701e913d0c62cf8bf550c1a2a3cfdd48e2bf3fba27edf05925dca8a'
+            '9ae28fd6b4099a44f2b45078383b172a974677863c622ffdecf095664524681b95a224fe8abbb1d0f3a3d7924f755908d3beb4c8c5d415068b101403c307f2d0'
+            'a7c5608f2478ea7f1f6a3ab0cf60d37715097fabdd19777603b385d2a0b0009e5da7fd9fc0ca0addee3f3fab8fff35f7e45696fd6b6c6bc8dc8fb366cbde5e0c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -118,14 +122,20 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    # msg2 "Pull tag from Linux stable upstream repository..."
-    # git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    # git pull --no-edit upstream_stable ${_srcver_tag//-arch*/}
+    msg2 "Pull tag from Linux stable upstream repository..."
+    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    git pull --no-edit upstream_stable ${_srcver_tag//-arch*/}
     # git pull --no-edit -s recursive -X ours upstream_stable ${_srcver_tag//-arch*/}
 
-    msg2 "Pull stable tag from Arch vanilla kernel repository..."
-    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    git pull --no-edit arch_stable "$_srcver_tag"
+    # msg2 "Pull stable tag from Arch vanilla kernel repository..."
+    # git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    # git pull --no-edit arch_stable "$_srcver_tag"
+    
+    msg2 "Patching with commit: 'ZEN: Add sysctl and CONFIG to disallow unprivileged CLONE_NEWUSER' ..."
+    patch -Np1 -i "$srcdir/d938db454691d69590eb081db22c507c9ebca5f8.patch"
+    
+    msg2 "Patching with commit: 'Bluetooth: hidp: Fix assumptions on the return value of hidp_send_message' ..."
+    patch -Np1 -i "$srcdir/4932fe6b8e63b92f8252591b5381423c01bac552.patch"
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
@@ -289,7 +299,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Documentation for the $pkgdesc kernel $_pkgdesc_extra"
+    pkgdesc="Documentation for the $pkgdesc kernel"
 
     cd $_srcname
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
