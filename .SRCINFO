@@ -1,6 +1,6 @@
 pkgbase = pantheon-stable
 	pkgdesc = Meta package for the complete Pantheon desktop & apps that uses stable versions
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/elementary
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = pantheon-stable
 	depends = pantheon-calendar
 	depends = pantheon-camera
 	depends = pantheon-code
-	depends = pantheon-qq-default-settings-git
+	depends = pantheon-default-settings
 	depends = pantheon-dpms-helper
 	depends = pantheon-files
 	depends = gvfs
@@ -86,13 +86,14 @@ pkgbase = pantheon-stable
 	optdepends = epiphany-pantheon
 	optdepends = lightdm-pantheon-greeter
 	provides = pantheon-stable
-	conflicts = pantheon-unstable
 	conflicts = granite-git
-	conflicts = wingpanel-git
+	conflicts = pantheon-unstable
+	conflicts = pantheon-qq-default-settings-git
 	conflicts = switchboard-git
 	conflicts = wingpanel-indicator-a11y-git
 	conflicts = wingpanel-indicator-nightlight-git
 	conflicts = wingpanel-indicator-privacy-git
+	conflicts = wingpanel-git
 
 pkgname = pantheon-stable
 
