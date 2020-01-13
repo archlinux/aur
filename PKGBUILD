@@ -1,14 +1,15 @@
-# Maintainer: James Smith <jslonescout AT icloud DOT com>
+# Maintainer: amesgen <amesgen AT amesgen DOT de>
+# Previous maintainer: James Smith <jslonescout AT icloud DOT com>
 _pkgname=emacs-libvterm
 pkgname=${_pkgname}-git
-pkgver=r265.aafb9da
+pkgver=r369.7d7381f
 pkgrel=1
 pkgdesc="Emacs libvterm integration"
 arch=('i686' 'x86_64' 'armv7h' 'pentium4')
 url="https://github.com/akermu/${_pkgname}"
 license=('GPL3')
-depends=('emacs')
-makedepends=('cmake' 'git')
+depends=('emacs' 'libvterm')
+makedepends=('cmake' 'git' 'libtool')
 provides=('emacs-libvterm')
 conflicts=('emacs-libvterm')
 install=${pkgname}.install
@@ -27,7 +28,7 @@ prepare() {
 
 build() {
   cd "${_pkgname}/build"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ..
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DUSE_SYSTEM_LIBVTERM=ON ..
   make
 }
 
