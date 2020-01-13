@@ -1,38 +1,31 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog-wpe-gl
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.4.0
+pkgrel=1
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64)
 groups=(wpe)
-conflicts=(cog-git)
-depends=('wpewebkit-gl-aarch64>=2.22.0' 'wpebackend-fdo>=1.0.0')
+conflicts=('cog' 'cog-git')
 makedepends=(cmake)
 license=(custom:MIT)
-source=("${url}/releases/download/v${pkgver}/cog-${pkgver}.tar.xz"
-        "${url}/releases/download/v${pkgver}/cog-${pkgver}.tar.xz.asc")
+source=("https://wpewebkit.org/releases/releases/cog-${pkgver}.tar.xz"
+        "https://wpewebkit.org/releases/releases/cog-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=('2fcb68ae8d52bb4212f9e24724b83f33' 'SKIP')
-sha1sums=('0b34082282abff0563922f3b1c3621f0f0706ac1' 'SKIP')
-sha256sums=('206302966c6019260f5a7a20b4c6afbd4ce77530f7b9cd638fafeed07e47cada' 'SKIP')
-
-prepare () {
-	mkdir -p _build
-}
+md5sums=('75a0838ee6c81bb8df1b254f525440a6' 'SKIP')
+sha1sums=('284d2a641e6269b296057918602c8c94eb831527' 'SKIP')
+sha256sums=('e9c13a51232434b7340a419b1e6f59c40c582cd80c8e60bd9ec7de16c904fc03' 'SKIP')
 
 build () {
-	cd _build
-	cmake \
+	cmake -H"cog-${pkgver}" -Bbuild \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		"../cog-${pkgver}"
-	cmake --build .
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib
+	cmake --build build
 }
 
 package () {
-	DESTDIR="${pkgdir}" cmake --build _build --target install
+	DESTDIR="${pkgdir}" cmake --build build --target install
 
 	install -Dm644 "cog-${pkgver}/COPYING" \
 		"${pkgdir}/usr/share/licenses/cog/COPYING"
