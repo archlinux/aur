@@ -11,6 +11,9 @@ pkgbase = twinkle-qt5
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = alsa-lib
+	makedepends = flex
+	makedepends = bison
 	depends = file
 	depends = libsndfile
 	depends = gsm
@@ -19,9 +22,6 @@ pkgbase = twinkle-qt5
 	depends = ccrtp
 	depends = ilbc
 	depends = libzrtpcpp
-	depends = alsa-lib
-	depends = flex
-	depends = bison
 	source = git+https://github.com/LubosD/twinkle.git#tag=v1.10.2
 	md5sums = SKIP
 
