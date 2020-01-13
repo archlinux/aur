@@ -1,26 +1,17 @@
-pkgbase = python-spyder-kernels-git
-	pkgver = 1.0.1.r1.g5c33e3a
+pkgbase = python-spyder-kernels
+	pkgdesc = Jupyter Kernels for the Spyder console
+	pkgver = 1.8.1.r1.gb713289
 	pkgrel = 1
 	url = https://github.com/spyder-ide/spyder-kernels
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python2-spyder-kernels::git://github.com/spyder-ide/spyder-kernels.git
-	md5sums = SKIP
-
-pkgname = python-spyder-kernels-git
-	pkgdesc = Spyder console Jupyter kernels
 	depends = python-cloudpickle
 	depends = python-ipykernel
 	provides = python-spyder-kernels
 	conflicts = python-spyder-kernels
+	source = python-spyder-kernels::git+https://github.com/spyder-ide/spyder-kernels.git
+	md5sums = SKIP
 
-pkgname = python2-spyder-kernels-git
-	pkgdesc = Spyder console Jupyter kernels
-	depends = python2-cloudpickle
-	depends = python2-ipykernel
-	provides = python2-spyder-kernels
-	conflicts = python2-spyder-kernels
+pkgname = python-spyder-kernels
 
