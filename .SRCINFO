@@ -1,6 +1,6 @@
 pkgbase = vivaldi-rpi
 	pkgdesc = An advanced browser made with the power user in mind for Raspberry Pi
-	pkgver = 2.2.1388.37
+	pkgver = 2.10.1745.26
 	pkgrel = 1
 	url = https://vivaldi.com
 	arch = armv6h
@@ -17,12 +17,15 @@ pkgbase = vivaldi-rpi
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	depends = hicolor-icon-theme
+	optdepends = vivaldi-ffmpeg-codecs: playback of proprietary video/audio
+	optdepends = pepper-flash: flash support
+	optdepends = google-chrome: Widevine DRM Plugin
+	optdepends = vivaldi-widevine: Widevine DRM Plugin
 	optdepends = libnotify: native notifications
-	optdepends = vivaldi-codecs-ffmpeg-extra-bin-rpi: playback of proprietary video/audio
 	options = !strip
 	options = !zipman
-	source = https://downloads.vivaldi.com/stable/vivaldi-stable_2.2.1388.37-1_armhf.deb
-	sha512sums = a52c9d758c02722b213a8405f154747930eafa93cf80c4adef345ef37449db5393254b0a827dbd1ef0c09b5f398154c897cb1b26116c3b970bda3e4e149323e3
+	source = https://downloads.vivaldi.com/stable/vivaldi-stable_2.10.1745.26-1_armhf.deb
+	sha512sums = c534ff4b54b83a040bc65c787c8a1c0a43fb06b0020ed09c73424586b5d40c44960e62c427a97e226a9961b57fd64bd2b026ddb238c46172db9c0ae13763c356
 
 pkgname = vivaldi-rpi
 

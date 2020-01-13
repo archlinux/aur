@@ -2,7 +2,8 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 
 pkgname=vivaldi-rpi
-pkgver=2.2.1388.37
+_pkgver=2.10.1745.26-1
+pkgver=2.10.1745.26
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind for Raspberry Pi'
 arch=('armv6h' 'armv7h')
@@ -12,18 +13,21 @@ license=('custom')
 depends=('gtk3' 'libcups' 'nss' 'gconf' 'alsa-lib' 'libxss' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'hicolor-icon-theme')
 makedepends=('w3m')
 optdepends=(
+    'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
+    'pepper-flash: flash support'
+    'google-chrome: Widevine DRM Plugin'
+    'vivaldi-widevine: Widevine DRM Plugin'
     'libnotify: native notifications'
-    'vivaldi-codecs-ffmpeg-extra-bin-rpi: playback of proprietary video/audio'
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_armhf.deb")
-sha512sums=('a52c9d758c02722b213a8405f154747930eafa93cf80c4adef345ef37449db5393254b0a827dbd1ef0c09b5f398154c897cb1b26116c3b970bda3e4e149323e3')
+sha512sums=('c534ff4b54b83a040bc65c787c8a1c0a43fb06b0020ed09c73424586b5d40c44960e62c427a97e226a9961b57fd64bd2b026ddb238c46172db9c0ae13763c356')
 
 prepare() {
  tar -xf data.tar.xz
 }
 
 package() {
-    cp -a {opt,usr} "$pkgdir"
+    cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
 
     # suid sandbox
     chmod 4755 "$pkgdir/opt/vivaldi/vivaldi-sandbox"
