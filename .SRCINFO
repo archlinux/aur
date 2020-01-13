@@ -1,15 +1,14 @@
 pkgbase = python-gtts-token
-	pkgdesc = Token for gTTS
-	pkgver = 1.1.2
+	pkgdesc = A python implementation of the token validation of Google Translate
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/Boudewijn26/gTTS-token
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = unzip
-	depends = python
-	source = python-gtts-token::https://files.pythonhosted.org/packages/5a/81/b54c771ee6a78bdb6aebc274d7a806ad1f8761462f3592f3781d5cd9046f/gTTS-token-1.1.2.tar.gz
-	md5sums = 9f0599bd1433551422427b4da6b2318f
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/g/gTTS-token/gTTS-token-1.1.3.tar.gz
+	sha256sums = 9d6819a85b813f235397ef931ad4b680f03d843c9b2a9e74dd95175a4bc012c5
 
 pkgname = python-gtts-token
 
