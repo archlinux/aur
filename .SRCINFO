@@ -10,6 +10,7 @@ pkgbase = auto-cpufreq-git
 	depends = python-distro
 	depends = python-psutil
 	depends = python-click
+	depends = python-power
 	provides = auto-cpufreq
 	conflicts = auto-cpufreq
 	source = git+https://github.com/AdnanHodzic/auto-cpufreq.git
