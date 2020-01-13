@@ -4,7 +4,7 @@
 _pkgname=btdex
 pkgname=btdex-git
 pkgver=v0.1.12.r25.g2f8d1e7
-pkgrel=1
+pkgrel=2
 pkgdesc='Decentralized exchange system running on the Burst blockchain'
 arch=(x86_64)
 url='https://github.com/btdex/btdex'
@@ -20,7 +20,7 @@ source=(git+https://github.com/btdex/btdex.git
         btdex.desktop)
 sha256sums=('SKIP'
             '162e5c9fad5d5a5e5a59192a64ce6d1a5bf189465eeae4130332b3838f4d9c11'
-            'e388aac88eabf3fc35262672a4934a3c67761f54a9b0c49a73e3bb5ccde47419')
+            'd6ab59c4046cf2c3b8898c7635151e7bea726f0a914f9d353134982e56a1295f')
 
 
 pkgver() {
