@@ -1,10 +1,16 @@
 pkgbase = fulcrum
-	pkgdesc = fulcrum
-	pkgver = 0.1
+	pkgdesc = Fulcrum
+	pkgver = 1.0
 	pkgrel = 1
+	install = fulcrum.install
 	arch = x86_64
-	license = GPL
-	depends = qt5
+	license = GPL3
+	depends = qt5-base
+	backup = etc/fulcrum.conf
+	source = git+https://github.com/cculianu/Fulcrum.git
+	source = fulcrum.conf
+	sha256sums = SKIP
+	sha256sums = 9e8feec3c2c4f87377a6e24112b5025108aadc6352e78488a4f4ab851a5da337
 
 pkgname = fulcrum
 

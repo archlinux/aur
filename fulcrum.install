@@ -1,0 +1,29 @@
+_fulcrum_user=fulcrum
+_bc_group=fulcrum
+
+post_install() {
+  _mkuser
+  _dir="/var/lib/fulcrum"
+  if test ! -d "$_dir"; then
+    mkdir -m 750 "$_dir"
+  fi
+  chown -R $_fulcrum_user:$_bc_group "$_dir"
+}
+
+post_upgrade() {
+  _mkuser
+}
+
+
+# ------------------------------------------------------------------------------
+# helper functions for creating user / group
+# ------------------------------------------------------------------------------
+
+_mkuser() {
+  getent passwd $_fulcrum_user &>/dev/null || {
+    echo -n "Creating fulcrum user... "
+    grep -E "^$_bc_group:" /etc/group >/dev/null || groupadd $_bc_group
+    useradd -m -d /var/lib/fulcrum -g $_bc_group -s /usr/bin/nologin $_fulcrum_user 2>/dev/null
+    echo "done"
+  }
+}
