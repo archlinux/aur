@@ -1,25 +1,35 @@
 pkgbase = sile
 	pkgdesc = Modern typesetting system inspired by TeX
-	pkgver = 0.9.5.1
-	pkgrel = 3
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = http://www.sile-typesetter.org/
 	arch = i386
 	arch = x86_64
 	license = MIT
+	checkdepends = lua-busted
+	checkdepends = lua-luacov=0.8
+	makedepends = luarocks
 	depends = fontconfig
-	depends = harfbuzz>=1.2.6
-	depends = icu
-	depends = lua-cosmo
-	depends = lua-expat
-	depends = lua-filesystem
+	depends = harfbuzz>=1.4.2
+	depends = lua-bit32
+	depends = lua-luaepnf
 	depends = lua-lpeg
-	depends = lua-penlight
-	depends = lua-socket
-	depends = lua-sec
+	depends = lua-cassowary
+	depends = lua-linenoise
 	depends = lua-zlib
+	depends = lua-cliargs
+	depends = lua-luaepnf
+	depends = lua-filesystem
+	depends = lua-repl
+	depends = lua-sec
+	depends = lua-socket
+	depends = lua-penlight
+	depends = lua-stdlib
+	depends = lua-vstruct
+	depends = icu
 	depends = ttf-gentium-plus
-	source = https://github.com/simoncozens/sile/releases/download/v0.9.5.1/sile-0.9.5.1.tar.bz2
-	sha512sums = 7d83e7737668471f637a59036abe029299148783f87e29e3dd2833d02038bf1aecdf6fc35e36569eaba2cc18f9049d49257a03af4fbab6bceea7898fcb8508d1
+	source = https://github.com/simoncozens/sile/releases/download/v0.10.0/sile-0.10.0.tar.bz2
+	sha256sums = b0353b88793d68bf3e800f87bff51e8161ce39d250e22dff11385712caf332b6
 
 pkgname = sile
 

@@ -1,18 +1,26 @@
-# Maintainer:  Adrián Pérez de Castro <aperez@igalia.com>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.9.5.1
-pkgrel=4
+pkgver=0.10.0
+pkgrel=1
 arch=('i386' 'x86_64')
 url='http://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
-_lua_deps=('cosmo' 'expat' 'filesystem' 'lpeg' 'sec' 'zlib')
-depends=('fontconfig' 'harfbuzz>=1.2.6' 'icu' "${_lua_deps[@]/#/lua-}" 'ttf-gentium-plus')
-checkdepends=('lua-busted')
-sha512sums=('7d83e7737668471f637a59036abe029299148783f87e29e3dd2833d02038bf1aecdf6fc35e36569eaba2cc18f9049d49257a03af4fbab6bceea7898fcb8508d1')
+_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib' 'cliargs'
+           'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
+           'vstruct')
+depends=('fontconfig'
+         'harfbuzz>=1.4.2'
+         "${_lua_deps[@]/#/lua-}"
+         'icu'
+         'ttf-gentium-plus')
+makedepends=('luarocks')
+checkdepends=('lua-busted'
+              'lua-luacov=0.8')
+sha256sums=('b0353b88793d68bf3e800f87bff51e8161ce39d250e22dff11385712caf332b6')
 
 prepare () {
 	cd "$pkgname-$pkgver"
@@ -21,21 +29,21 @@ prepare () {
 
 build () {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+	./configure --prefix=/usr --with-system-luarocks
+	make all
 }
 
 check () {
 	cd "$pkgname-$pkgver"
-    # make test
+    # make busted
 }
 
 package () {
 	cd "$pkgname-$pkgver"
 	make install DESTDIR="$pkgdir/"
 
-	for file in README.md ROADMAP documentation/sile.pdf ; do
-		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
+	for file in README.md documentation/sile.pdf ; do
+		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$(basename $file)"
 	done
 	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
 
