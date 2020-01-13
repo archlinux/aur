@@ -3,7 +3,7 @@
 _pkgname=mir-core
 pkgname=d-$_pkgname
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
 url='https://github.com/libmir/mir-core'
@@ -28,9 +28,6 @@ build() {
   export DC=ldc
 
   arch-meson ..
-
-  # meson broke -soname for D in the latest update
-  sed -i "s/-soname,/=-soname=/g" build.ninja
 
   ninja
 }
