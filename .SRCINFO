@@ -1,14 +1,14 @@
 pkgbase = fnm-bin
 	pkgdesc = Fast and simple Node.js version manager, built in ReasonML
-	pkgver = 1.18.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://github.com/Schniz/fnm
 	arch = x86_64
 	license = GPL3
 	provides = fnm
 	conflicts = fnm-git
-	source = fnm-1.18.0.zip::https://github.com/Schniz/fnm/releases/download/v1.18.0/fnm-linux.zip
-	md5sums = 20b23d991a693fe75b0f06ed33ccab31
+	source = fnm-1.18.1.zip::https://github.com/Schniz/fnm/releases/download/v1.18.1/fnm-linux.zip
+	md5sums = 2b52698d9a35f0ef1481122178dc2ff3
 
 pkgname = fnm-bin
 
