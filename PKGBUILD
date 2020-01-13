@@ -4,7 +4,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-appimage-git
 pkgver=0.19_19242
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
@@ -15,7 +15,7 @@ conflicts=('freecad')
 options=('!strip')
 noextract=("freecad-${pkgver}.AppImage")
 
-source=("https://github.com/FreeCAD/FreeCAD/releases/download/0.19_pre/FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage"
+source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/0.19_pre/FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage"
   "freecad.sh"
   "freecad_conda.desktop.patch")
 
