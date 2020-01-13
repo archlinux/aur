@@ -1,10 +1,11 @@
 pkgbase = epiphany-elf-gcc
 	pkgdesc = The GNU Compiler Collection - cross compiler for the Adapteva Epiphany target
-	pkgver = 4.9.2
+	pkgver = 9.2
 	pkgrel = 1
 	url = http://gcc.gnu.org/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL
 	license = LGPL
 	license = FDL
@@ -15,10 +16,10 @@ pkgbase = epiphany-elf-gcc
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = ftp://gcc.gnu.org/pub/gcc/snapshots/4.9-20150128/gcc-4.9-20150128.tar.bz2
-	source = ftp://sourceware.org/pub/newlib/newlib-2.2.0-1.tar.gz
-	sha256sums = a6f8617b0cc3403ecc442476583ca8904f7008f31ef9862ebc02c6de5f0afcc9
-	sha256sums = c1d53fd1765d955ac513aa6e2f576455ee7507072d400314495c8a8a26ebc8ec
+	source = ftp://gcc.gnu.org/pub/gcc/snapshots/9-20200111/gcc-9-20200111.tar.xz
+	source = ftp://sourceware.org/pub/newlib/newlib-3.1.0.tar.gz
+	sha256sums = f3963e5f92b5f79cd8316dd8c6c334e3992bbda0ee545914bd7305c3137a29f5
+	sha256sums = fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a
 
 pkgname = epiphany-elf-gcc
 

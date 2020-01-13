@@ -1,14 +1,14 @@
-# Maintainer: Jonathan Scott Tinkham <sctincman@gmail.com>
+# Maintainer: Mateusz Kaczanowski <kaczanowski.mateusz@gmail.com>
 # Adapted from arm-none-eabi- by Anatol Pomozov
 
 _target=epiphany-elf
 pkgname=$_target-gcc
-pkgver=4.9.2
+pkgver=9.2
 pkgrel=1
-_snapshot=4.9-20150128
-_newlibver=2.2.0-1
+_snapshot=9-20200111
+_newlibver=3.1.0
 pkgdesc='The GNU Compiler Collection - cross compiler for the Adapteva Epiphany target'
-arch=(i686 x86_64)
+arch=(i686 x86_64 armv7h)
 url='http://gcc.gnu.org/'
 license=(GPL LGPL FDL)
 depends=($_target-binutils libmpc)
@@ -16,10 +16,10 @@ makedepends=(gmp mpfr)
 #checkdepends=(dejagnu)
 options=(!emptydirs !strip staticlibs)
 source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-$pkgver/gcc-$pkgver.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
         ftp://sourceware.org/pub/newlib/newlib-$_newlibver.tar.gz)
-sha256sums=('a6f8617b0cc3403ecc442476583ca8904f7008f31ef9862ebc02c6de5f0afcc9'
-            'c1d53fd1765d955ac513aa6e2f576455ee7507072d400314495c8a8a26ebc8ec')
+sha256sums=('f3963e5f92b5f79cd8316dd8c6c334e3992bbda0ee545914bd7305c3137a29f5'
+            'fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a')
 
 if [ -n "$_snapshot" ]; then
   _basedir=gcc-$_snapshot
@@ -47,6 +47,7 @@ build() {
   export CFLAGS_FOR_TARGET='-O2 -g -pipe'
   export CXXFLAGS_FOR_TARGET='-O2 -g -pipe'
 
+  # disable-libcc1 https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66955
   ../configure --target=$_target \
                --prefix=/usr \
                --libexecdir=/usr/lib \
@@ -59,6 +60,7 @@ build() {
                --with-gnu-as \
                --with-gnu-ld \
                --disable-nls \
+               --disable-libcc1 \
                --with-headers=newlib/libc/include \
                --disable-werror
 
