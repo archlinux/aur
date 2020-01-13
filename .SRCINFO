@@ -1,16 +1,15 @@
 pkgbase = bibata-cursor-theme
-	pkgdesc = Material Based Cursor Theme.
-	pkgver = 0.4.1
+	pkgdesc = Material Based Cursor Theme
+	pkgver = 0.4.2
 	pkgrel = 1
-	url = https://github.com/KaizIqbal/Bibata_Cursor.git
+	url = https://github.com/KaizIqbal/Bibata_Cursor
 	arch = any
-	license = GPL
+	license = GPL3
+	makedepends = python-pillow
 	makedepends = inkscape
-	makedepends = gnome-themes-extra
-	makedepends = gtk-engine-murrine
 	makedepends = xorg-xcursorgen
-	source = https://github.com/KaizIqbal/Bibata_Cursor/archive/v0.4.1.tar.gz
-	sha256sums = 01d06515f6139d796820cb4ca121185ee65a8789bfdd88e0600bcd749e3eea3b
+	source = bibata-cursor-theme-0.4.2.tar.gz::https://github.com/KaizIqbal/Bibata_Cursor/archive/v0.4.2.tar.gz
+	sha256sums = d00f91ebefa34d5c7d578c78a17825238fcb90540de0dbf4cf3ffb587e1ae976
 
 pkgname = bibata-cursor-theme
 
