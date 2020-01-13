@@ -2,17 +2,16 @@
 _pkgname=nfcpy
 pkgname=python-${_pkgname}
 pkgver=1.0.3
-pkgrel=1
-pkgdesc="Module for accessing the quantum devices and simulators at IBMQ"
+pkgrel=2
+pkgdesc="Module to read/write NFC tags or communicate with another NFC device"
 arch=('x86_64')
-url="https://github.com/Qiskit/qiskit-ibmq-provider"
-license=('Apache')
+url="https://github.com/nfcpy/nfcpy"
+license=('custom:EUPL')
 depends=(
-    'python-qiskit-terra'
-    'python-nest_asyncio'
-    'python-requests'
-    'python-requests-ntlm'
-    'python-websockets'
+    'libusb'
+    'python-pyserial'
+    'python-ndeflib'
+    'python-pydes'
 )
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
@@ -26,4 +25,5 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
 	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
