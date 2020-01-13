@@ -1,0 +1,7 @@
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
+!btdex.desktop
+!btdex.sh
