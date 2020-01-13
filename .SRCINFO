@@ -1,6 +1,6 @@
 pkgbase = xubuntu-artwork
 	pkgdesc = Xubuntu themes and artwork
-	pkgver = 19.10
+	pkgver = 20.04
 	pkgrel = 1
 	url = https://launchpad.net/xubuntu-artwork
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = xubuntu-artwork
 	optdepends = xfce-theme-bluebird: Official theming, git or stable version
 	optdepends = xfce-theme-greybird: Official theming, git or stable version
 	optdepends = elementary-xfce-icons: For matching icon theme, or the git version
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_19.10.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/xubuntu-artwork_20.04.tar.xz
 	source = CC-BY-SA-3.0.txt
-	md5sums = 64f46aeb6da3bd8242c445137f861b84
+	md5sums = 1dd1b03a35b617dc113c9a51134c7a94
 	md5sums = d55fbe17f8a79a738b1337f0b96aa064
 
 pkgname = xubuntu-artwork

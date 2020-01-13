@@ -2,9 +2,9 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=19.10
+pkgver=20.04
 pkgrel=1
-_uver=eoan
+_uver=focal
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
@@ -45,5 +45,6 @@ package() {
 }
 
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
-md5sums=('64f46aeb6da3bd8242c445137f861b84'
+md5sums=('1dd1b03a35b617dc113c9a51134c7a94'
          'd55fbe17f8a79a738b1337f0b96aa064')
+
