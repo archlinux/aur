@@ -3,7 +3,7 @@
 
 pkgname='phantom'
 pkgver=r22.63981f1
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalable I/O engine'
 arch=('i686' 'x86_64')
 url="https://github.com/yandex-load/${pkgname}"
@@ -11,9 +11,9 @@ license=('LGPL2.1')
 depends=('openssl')
 makedepends=('git' 'gcc' 'binutils' 'openssl')
 source=("${pkgname}::git+${url}.git"
-"${pkgname}_gcc8.patch")
+	"${pkgname}_gcc8_gcc9.patch")
 sha256sums=('SKIP'
-            'a57e7292fcd4788b3b37e175dffebbe0478da7198fc0b438b37d64ffc85aa986')
+            '26fb0233cabc93cfdbbac4c479d4621edde5008b18c5a590ab82d2e9867512b8')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/${pkgname}_gcc8.patch"
+  patch -p1 -i "${srcdir}/${pkgname}_gcc8_gcc9.patch"
 }
 
 build(){

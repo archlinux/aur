@@ -1,7 +1,7 @@
 From 08f70712056e399d047c6b5fac5b9d94218d6969 Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:22:46 +0300
-Subject: [PATCH 1/7] fix unnecessary parentheses warning
+Subject: [PATCH 1/9] fix unnecessary parentheses warning
 
 ---
  pd/http/time.C | 4 ++--
@@ -29,7 +29,7 @@ index b17a2f5..a4f2b0e 100644
 From 6200fe21adaeeb42e9e4e804834a67d7a9f48133 Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:26:39 +0300
-Subject: [PATCH 2/7] fix uninitialized warning
+Subject: [PATCH 2/9] fix uninitialized warning
 
 ---
  phantom/jemalloc/rb.h | 7 +++++--
@@ -71,7 +71,7 @@ index 3a2b53e..b892e64 100644
 From d1567b7392f57ca6fba296437ca7e3906c57a2f5 Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:27:38 +0300
-Subject: [PATCH 3/7] fix class-memaccess warning
+Subject: [PATCH 3/9] fix class-memaccess warning
 
 ---
  pd/pi/pi_pro.C  | 2 +-
@@ -124,7 +124,7 @@ index 045d479..482aac8 100644
 From 5d5b2e592dac48ebf98233e35b2ff39da492a690 Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:29:50 +0300
-Subject: [PATCH 4/7] fix implicit-fallthrough warning
+Subject: [PATCH 4/9] fix implicit-fallthrough warning
 
 ---
  opts.mk | 11 +++++++++--
@@ -167,7 +167,7 @@ index 3cfcf27..10991f9 100644
 From dd5668a0923c8afd501b583d34f330d660adde02 Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:32:06 +0300
-Subject: [PATCH 5/7] add missed return value
+Subject: [PATCH 5/9] add missed return value
 
 ---
  phantom/io_benchmark/mcount.H | 1 +
@@ -189,7 +189,7 @@ index 042712d..3b28f1e 100644
 From 6a0a2b817d6b702a3108671fb4632d7f7dd6c755 Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:35:55 +0300
-Subject: [PATCH 6/7] fix nullptr dereferencing
+Subject: [PATCH 6/9] fix nullptr dereferencing
 
 ---
  pd/base/alloc.C         |  7 ++----
@@ -588,7 +588,7 @@ index 7e17015..530fa0a 100644
 From c0044380f28b5d9f3bf15dabd664fe9c1061134f Mon Sep 17 00:00:00 2001
 From: archetype <burchakov.oleg@gmail.com>
 Date: Tue, 12 Feb 2019 12:39:49 +0300
-Subject: [PATCH 7/7] fix protected access error
+Subject: [PATCH 7/9] fix protected access error
 
 ---
  pd/base/config.H      | 1 +
@@ -619,3 +619,67 @@ index 6fc79d5..ab31848 100644
  		using named_list_item_t<item_t>::next;
  		using named_list_item_t<item_t>::name;
  
+
+From f3302e9680f8fd034042c0531b82767d7e7883f1 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Sun, 12 Jan 2020 17:15:28 +0300
+Subject: [PATCH 8/9] fix gcc9 missing attributes error
+
+---
+ phantom/jemalloc/jemalloc_.C | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/phantom/jemalloc/jemalloc_.C b/phantom/jemalloc/jemalloc_.C
+index e350172..7686d8c 100644
+--- a/phantom/jemalloc/jemalloc_.C
++++ b/phantom/jemalloc/jemalloc_.C
+@@ -5148,17 +5148,17 @@ int malloc_set_state(void *ptr)
+ }
+ 
+ 
+-#define strong_alias(name, aliasname) \
+-  extern __typeof (name) aliasname __attribute__ ((alias (#name)))
++#define strong_alias(name, aliasname, ...) \
++  extern __typeof (name) aliasname __attribute__ ((alias (#name), __VA_ARGS__))
+ 
+-strong_alias(calloc, __libc_calloc);
+-strong_alias(free, __libc_free);
++strong_alias(calloc, __libc_calloc, leaf, malloc, nothrow);
++strong_alias(free, __libc_free, leaf, nothrow);
+ strong_alias(cfree, __libc_cfree);
+-strong_alias(malloc, __libc_malloc);
+-strong_alias(memalign, __libc_memalign);
+-strong_alias(realloc, __libc_realloc);
+-strong_alias(valloc, __libc_valloc);
+-strong_alias(pvalloc, __libc_pvalloc);
++strong_alias(malloc, __libc_malloc, leaf, malloc, nothrow);
++strong_alias(memalign, __libc_memalign, malloc, nothrow);
++strong_alias(realloc, __libc_realloc, leaf, nothrow);
++strong_alias(valloc, __libc_valloc, malloc, nothrow);
++strong_alias(pvalloc, __libc_pvalloc, malloc, nothrow);
+ strong_alias(mallopt, __libc_mallopt);
+ strong_alias(mallinfo, __libc_mallinfo);
+ 
+
+From 93bc38ab62b0506a6c2e69c08cd3b7a5b4002121 Mon Sep 17 00:00:00 2001
+From: archetype <burchakov.oleg@gmail.com>
+Date: Sun, 12 Jan 2020 18:26:58 +0300
+Subject: [PATCH 9/9] fix gcc9 deprecated implicit copy constructor warning
+
+---
+ pd/base/in.H | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pd/base/in.H b/pd/base/in.H
+index 43736dd..3ed51c4 100644
+--- a/pd/base/in.H
++++ b/pd/base/in.H
+@@ -222,6 +222,8 @@ public:
+ 			while(list->optimize(*this));
+ 	}
+ 
++	inline in_segment_t &operator=(const in_segment_t &) = default;
++
+ 	inline ~in_segment_t() throw() { }
+ 
+ 	operator int() const = delete;
