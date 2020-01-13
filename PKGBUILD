@@ -1,14 +1,15 @@
 # Maintainer: dekart811
 
 pkgname=bsnes-hd
-_gitver=beta9
-pkgver=beta9.r0.g9f9cb26
+_gitver=beta10
+pkgver=beta10.r0.g917673f
 pkgrel=1
 pkgdesc='Nintendo SNES emulator, featuring HD Mode 7 and Widescreen.'
 arch=('x86_64')
 url='https://github.com/DerKoun/bsnes-hd'
 license=('GPL3')
 depends=('alsa-lib' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'gtksourceview2' 'libao' 'libgl' 'libpulse' 'libx11' 'libxext' 'libxv' 'openal' 'pango' 'sdl' 'libudev.so' 'sdl2')
+makedepends=('git')
 conflicts=('bsnes' 'bsnes-classic' 'higan-bsnes')
 source=(git+https://github.com/DerKoun/bsnes-hd.git)
 md5sums=('SKIP')
@@ -19,12 +20,11 @@ pkgver() {
 }
 
 prepare() {
+	cp "../${pkgname}.patch" "${pkgname}/"
 	cd "${pkgname}"
 	git checkout tags/"${_gitver}" -b "${_gitver}"
-	# root issue in package
-	cd "./bsnes/target-bsnes"
-	sed -i "37,38d" GNUmakefile
-	sed -i '37s/^.....//' GNUmakefile
+	# fix root issue in package
+	git apply "${pkgname}.patch"
 }
 
 build() {

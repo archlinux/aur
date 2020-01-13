@@ -1,0 +1,16 @@
+diff --git a/bsnes/target-bsnes/GNUmakefile b/bsnes/target-bsnes/GNUmakefile
+index 4c67bde..5ab1f0e 100644
+--- a/bsnes/target-bsnes/GNUmakefile
++++ b/bsnes/target-bsnes/GNUmakefile
+@@ -39,10 +39,7 @@ endif
+ verbose: hiro.verbose ruby.verbose nall.verbose all;
+ 
+ install: all
+-ifeq ($(platform),windows)
+-else ifeq ($(shell id -un),root)
+-	$(error "make install should not be run as root")
+-else ifeq ($(platform),macos)
++ifeq ($(platform),macos)
+ 	mkdir -p ~/Library/Application\ Support/$(name)/
+ 	mkdir -p ~/Library/Application\ Support/$(name)/Database/
+ 	mkdir -p ~/Library/Application\ Support/$(name)/Firmware/
