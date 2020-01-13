@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
@@ -16,7 +16,6 @@ depends=(gcr
          virtboard)
 makedepends=(ctags
              git
-             libhandy
              meson
              vala)
 source=("git+https://source.puri.sm/Librem5/phosh.git#tag=v${pkgver}"
@@ -38,9 +37,9 @@ build() {
     ninja -C build
 }
 
-check() {
-    ninja -C build test
-}
+# check() {
+#     ninja -C build test
+# }
 
 package() {
     DESTDIR="${pkgdir}" ninja -C build install
