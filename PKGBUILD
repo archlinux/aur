@@ -1,24 +1,25 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-#Contributor: ahrs <Forward dot to at hotmail dot co dot uk>
+# Maintainer: Bet4 <0xbet4@gmail.com>
 
 # Special thanks to the following people that provided the
 # original PKGBUILD from hyper (https://aur.archlinux.org/packages/hyper/)
+# Contributer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: ahrs <Forward dot to at hotmail dot co dot uk>
 # Contributor: Aaron Abbott <aabmass@gmail.com>
 # Contributer: fleischie
 # Contributer: auk
 
-pkgname=hyper-git
-pkgver=3.0.1.canary.4.r0.gef14af49
+_pkgname=hyper
+pkgname=${_pkgname}-git
+pkgver=3.0.1.canary.4.r302.g4f3e4522
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
 url="https://hyper.is/"
 license=('MIT')
 depends=('nodejs' 'electron' 'gconf')
-makedepends=('git' 'npm' 'yarn' 'python2')
-conflicts=('hyperterm')
-replaces=('hyperterm')
-backup=()
+makedepends=('git' 'yarn' 'python2')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 
 # You can set HYPER_BRANCH to master (or another branch) e.g
 # export HYPER_BRANCH=master
@@ -29,13 +30,15 @@ fi
 
 source=(
     "$pkgname::git+https://github.com/zeit/${pkgname/-git/}.git#branch=$HYPER_BRANCH"
+    "disable-auto-update.diff"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
     "Hyper.desktop"
 )
 noextract=()
-md5sums=('SKIP'
-         'f3481e14cba331160339b3b5ab78872b'
-         '74cb7ba38e37332aa8300e4b6ba9c61c')
+sha256sums=('SKIP'
+         '8b87e4c41b0abe7b98c5e12abd6f74025e0a0e39d9a5a4cafb83e5af036db4c5'
+         'a928049af63f49dd270a26c7099dccbe038124e4195507919f2d062e5cd2ecaa'
+         'ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -44,6 +47,7 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
+    patch -p1 < ../disable-auto-update.diff
 
     # yarn is a build-dep according to the README
     yarn install
@@ -60,13 +64,12 @@ build() {
     oldpath=$PATH
     PATH=$(pwd)/node_modules/.bin:$PATH
 
-    npm run build &&
-    cross-env BABEL_ENV=production babel \
-        --out-file app/renderer/bundle.js \
+    yarn run build &&
+    cross-env BABEL_ENV=production babel target/renderer/bundle.js \
+        --out-file target/renderer/bundle.js \
         --no-comments \
-        --minified app/renderer/bundle.js &&
-    command build --linux --dir             # need to use command because the
-                                            # function name is build
+        --minified &&
+    electron-builder --linux --dir
 
     PATH=$oldpath
 }
@@ -82,7 +85,7 @@ package() {
 
     # link the binary to /usr/bin
     cd $pkgdir/usr/bin
-    ln -s "../lib/$pkgname/hyper" hyper
+    ln -s "../lib/$pkgname/resources/bin/hyper" hyper
 
     # # TODO: remove included electron libs and use the system ones by symlink
     # cd "$_libinstall"

@@ -1,0 +1,18 @@
+diff --git a/app/ui/window.ts b/app/ui/window.ts
+index 7bac1a0..c4b00d2 100644
+--- a/app/ui/window.ts
++++ b/app/ui/window.ts
+@@ -102,13 +102,6 @@ export function newWindow(
+     (app.windowCallback || fn)(window);
+     delete app.windowCallback;
+     fetchNotifications(window);
+-    // auto updates
+-    if (!isDev) {
+-      updater(window);
+-    } else {
+-      //eslint-disable-next-line no-console
+-      console.log('ignoring auto updates during dev');
+-    }
+   });
+
+   function createSession(extraOptions: any = {}) {
