@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.34.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -61,6 +61,8 @@ prepare() {
   # git fetch verde
   git remote add 3v1n0 https://gitlab.gnome.org/3v1n0/gnome-shell || true
   git fetch 3v1n0
+  git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
+  git fetch vanvugt
 
   ### Merge Requests
 
@@ -105,7 +107,7 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment:
-  git cherry-pick -n 729f449b
+  git_cp_by_msg '!923' 'js/ui: Keep refcounts to WallClock objects above 1.'
 
   # Title: js/ui: Subscribe touchpad gesture handlers to only touchpad events [performance]
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/925
@@ -119,7 +121,7 @@ prepare() {
   # Type: 1
   # Status: 3
   # Comment:
-  git cherry-pick -n 94ae693b
+  git_cp_by_msg '!926' 'iconGrid.js: Animate icon spring using translation'
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
