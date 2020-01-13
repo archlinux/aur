@@ -12,7 +12,7 @@ conflicts=("chksum")
 source=("https://gitlab.com/chacas0/chksum/-/jobs/artifacts/master/download?job=build"
         'https://gitlab.com/ChacaS0/chksum/raw/master/LICENSE')
 sha256sums=('SKIP'
-    '446338dfeac7569baa018f9e34ce69f827ac9df19b313552c96e1887af344f45')
+            'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package () {
     install -Dm755 "${pkgname%-bin-git}" "$pkgdir/usr/bin/${pkgname%-bin-git}"
