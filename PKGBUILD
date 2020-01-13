@@ -20,7 +20,7 @@ source=(git+https://github.com/btdex/btdex.git
         btdex.desktop)
 sha256sums=('SKIP'
             '162e5c9fad5d5a5e5a59192a64ce6d1a5bf189465eeae4130332b3838f4d9c11'
-            'dec0616fc2a04203dcde09d5bd25e35415b6c4bac60752683bee43453388a955')
+            'e388aac88eabf3fc35262672a4934a3c67761f54a9b0c49a73e3bb5ccde47419')
 
 
 pkgver() {
@@ -37,12 +37,12 @@ package() {
     cd $srcdir
 
     install -d $pkgdir/opt/${_pkgname}
-    install -Dm644 ${_pkgname}/build/libs/btdex-all.jar "$pkgdir/opt/${_pkgname}/btdex.jar"
-    install -Dm755 btdex.sh "$pkgdir/opt/${_pkgname}/btdex.sh"
-    install -d "$pkgdir/usr/bin"
-    ln -sf "$pkgdir/opt/${_pkgname}/btdex.sh" "$pkgdir/usr/bin/btdex"
+    install -Dm644 ${_pkgname}/build/libs/btdex-all.jar $pkgdir/opt/${_pkgname}/btdex.jar
+    install -Dm755 btdex.sh $pkgdir/opt/${_pkgname}/btdex.sh
+    install -d $pkgdir/usr/bin
+    ln -sf $pkgdir/opt/${_pkgname}/btdex.sh $pkgdir/usr/bin/btdex
 
     # Menu entry
-    install -Dm644 "${_pkgname}.desktop" -t "$pkgdir/usr/share/applications"
-    install -Dm644 ${_pkgname}/build/resources/main/icon.png "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 ${_pkgname}.desktop -t $pkgdir/usr/share/applications
+    install -Dm644 ${_pkgname}/build/resources/main/icon.png $pkgdir/usr/share/pixmaps/${_pkgname}.png
 }

@@ -18,7 +18,7 @@ pkgbase = btdex-git
 	source = btdex.desktop
 	sha256sums = SKIP
 	sha256sums = 162e5c9fad5d5a5e5a59192a64ce6d1a5bf189465eeae4130332b3838f4d9c11
-	sha256sums = dec0616fc2a04203dcde09d5bd25e35415b6c4bac60752683bee43453388a955
+	sha256sums = e388aac88eabf3fc35262672a4934a3c67761f54a9b0c49a73e3bb5ccde47419
 
 pkgname = btdex-git
 
