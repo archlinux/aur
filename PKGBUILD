@@ -12,7 +12,7 @@ url="https://papermc.io/"
 license=('custom')
 depends=('java-runtime-headless>=8' 'screen' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
-	"netcat: required in order to suspend an idle server")
+	"netcat: required in order to suspend an idle server (recommended: nmap-netcat)")
 conflicts=('papermc-git' 'papermc')
 backup=('etc/conf.d/papermc')
 install="${pkgname}.install"
@@ -29,7 +29,7 @@ sha512sums=('c16dfbcae4b08ea9ea04564aab8f40161e558d3b197d69bb5dd66a8175f60e03113
             '51c5345155e8640d4f1eaef0c8cfb890ae46063f2d4e7a0fe181ad4c8ff7b96fea88b0f9fc74031d589dfd61602f37b440f183ca1859835930fe69d37508cd42'
             'f29c4044d9e3cc5ab137c21f7e62399b36d7e1f777d5558a39f7b4a01de75bdf2de0b8678e424accc03934ca7db9ebb6a22c78c8c4497759287dd55e1c3eb456'
             '70f7d4e42db9ed5efcde412f018d46628ad9c12198787421cc70aa1e51b8e278b436d480568ca21dabaacf33cfbd37c5e607504f2cd25ed65442ba67b9805958'
-            '794e2b66d29f016263305fc65f79be4be78c39c6dda39a777e0e59ede8f20857843f90f021e5258c0ee894073f4e13b3f481643cbcc8a8572ab372c40d878393'
+            '3fddefaec25aa4001bce2cf8f654999a5f4736f8315bc23eccbfbaa68032a85481be4813d15898a03fe884345477eb5b28ec0e73fe471f641103fd07b419683b'
             '687c51e16de4e5081066640228664e5aa642e8b61f22ae406b7385eba291c93f21ea7c1b625f27331e88936d405631b996089994d99e5201b71505e5fd08a294')
 
 _game="papermc"

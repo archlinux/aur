@@ -50,10 +50,10 @@ else
 fi
 
 # Choose which flavor of netcat is to be used
-if command -v netcat &> /dev/null; then
-	NETCAT_CMD="netcat"
-elif command -v ncat &> /dev/null; then
+if command -v ncat &> /dev/null; then
 	NETCAT_CMD="ncat"
+elif command -v netcat &> /dev/null; then
+	NETCAT_CMD="netcat"
 else
 	NETCAT_CMD=""
 fi
@@ -139,7 +139,7 @@ idle_server_daemon() {
 					no_player=$(( IDLE_IF_TIME - 300 ))
 					# Game server is down, listen on port ${GAME_PORT} for incoming connections
 					echo -n "Netcat: "
-					${NETCAT_CMD} -v -l -p ${GAME_PORT} && echo "Netcat caught an connection. The server is coming up again..."
+					echo "" | ${NETCAT_CMD} -v -l -p ${GAME_PORT} && echo "Netcat caught an connection. The server is coming up again..."
 					IDLE_SERVER="false" ${myname} start
 				fi
 			else
@@ -150,8 +150,8 @@ idle_server_daemon() {
 			# Reset timer and give the player 300 seconds to connect after pinging
 			no_player=$(( IDLE_IF_TIME - 300 ))
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
-			echo -n "Netcat: "
-			${NETCAT_CMD} -v -l -p ${GAME_PORT} && echo "Netcat caught an connection. The server is coming up again..."
+			echo -n "Netcat: "netcat
+			echo "" | ${NETCAT_CMD} -v -l -p ${GAME_PORT} && echo "Netcat caught an connection. The server is coming up again..."
 			IDLE_SERVER="false" ${myname} start
 		fi
 	done
