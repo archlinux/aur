@@ -3,13 +3,15 @@
 
 pkgname=btdex
 pkgver=0.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Decentralized exchange system running on the Burst blockchain'
 arch=(x86_64)
 url='https://github.com/btdex/btdex'
 license=(GPL3)
 options=(!strip)
 depends=(java-environment xdg-utils)
+conflicts=(btdex-git)
+provides=(btdex-git)
 install=btdex.install
 source=(https://github.com/btdex/btdex/releases/download/v$pkgver/btdex-all-v$pkgver.jar
         https://github.com/btdex/btdex/raw/master/src/main/resources/icon.png
