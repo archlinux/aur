@@ -3,7 +3,7 @@
 
 pkgname=python-prospector
 _pkgname=prospector
-pkgver=1.1.7
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python static analysis tool"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('python-pyroma: check setup.py'
 url="https://github.com/PyCQA/prospector"
 license=('GPL2')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('2661543ff99a2cf8ca03e22a66b11d79')
+md5sums=('33da5351e8a5e65b47f8473632d0b8df')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"

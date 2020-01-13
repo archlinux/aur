@@ -1,6 +1,6 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
-	pkgver = 1.1.7
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/PyCQA/prospector
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = python-prospector
 	optdepends = python-pyroma: check setup.py
 	optdepends = python-vulture: find dead code
 	optdepends = python-mypy: optional type checking
-	source = https://github.com/PyCQA/prospector/archive/1.1.7.tar.gz
-	md5sums = 2661543ff99a2cf8ca03e22a66b11d79
+	source = https://github.com/PyCQA/prospector/archive/1.2.0.tar.gz
+	md5sums = 33da5351e8a5e65b47f8473632d0b8df
 
 pkgname = python-prospector
 
