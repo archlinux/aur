@@ -50,7 +50,7 @@ build() {
     mkdir -p dist/frontend
     cp -ar app/frontend/dist dist/frontend/dist
 
-    electron-builder --linux --dir
+    electron-builder --linux
 }
 
 package() {
