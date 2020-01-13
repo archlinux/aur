@@ -1,0 +1,16 @@
+pkgbase = slim-sexy
+	pkgdesc = Theme's Pack for SLiM (Simple Login Manager)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/FollowMeDown/slim-sexy
+	arch = any
+	license = ISC
+	optdepends = slim: Slimple Login Manager
+	source = https://github.com/FollowMeDown/slim-sexy/archive/0.1.tar.gz
+	source = https://github.com/FollowMeDown/slim-sexy/releases/download/0.1/0.1.tar.gz.sig
+	validpgpkeys = A61D4D9711403C840E86AEE0A754BB4BA18DE375
+	sha256sums = 95a9c449ba1ca486b3144d10e356ba75e68ec0cedb39703e222ed70519dfb698
+	sha256sums = SKIP
+
+pkgname = slim-sexy
+
