@@ -29,7 +29,7 @@ check() {
     grep -rl "[^s]ftp://" "${pkgname}-${pkgver}"/lib/bb/tests/*py | xargs sed -i 's@ftp://@http://@g'
     git config --local -l
     cd "${pkgbase}-${pkgver}"
-    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${srcdir}/${pkgbase}-${pkgver}/bin" python ./bitbake-selftest --failfast -v
+    PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" PATH="${PATH}:${srcdir}/${pkgbase}-${pkgver}/bin" python ./bitbake-selftest --failfast -v
     if [ "${unset_name}" -eq 1 ]; then
         unset_name=1
         git config --global --unset user.name
