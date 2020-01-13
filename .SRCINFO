@@ -1,25 +1,26 @@
 pkgbase = hyper-git
 	pkgdesc = A terminal built on web technologies
-	pkgver = 3.0.1.canary.4.r0.gef14af49
+	pkgver = 3.0.1.canary.4.r302.g4f3e4522
 	pkgrel = 1
 	url = https://hyper.is/
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = npm
 	makedepends = yarn
 	makedepends = python2
 	depends = nodejs
 	depends = electron
 	depends = gconf
-	conflicts = hyperterm
-	replaces = hyperterm
+	provides = hyper
+	conflicts = hyper
 	source = hyper-git::git+https://github.com/zeit/hyper.git#branch=canary
+	source = disable-auto-update.diff
 	source = https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png
 	source = Hyper.desktop
-	md5sums = SKIP
-	md5sums = f3481e14cba331160339b3b5ab78872b
-	md5sums = 74cb7ba38e37332aa8300e4b6ba9c61c
+	sha256sums = SKIP
+	sha256sums = 8b87e4c41b0abe7b98c5e12abd6f74025e0a0e39d9a5a4cafb83e5af036db4c5
+	sha256sums = a928049af63f49dd270a26c7099dccbe038124e4195507919f2d062e5cd2ecaa
+	sha256sums = ae29bd930c822c3144817a0e2fe2e2a8253fde90d31b0e19ad7880cd35609ebf
 
 pkgname = hyper-git
 
