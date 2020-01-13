@@ -27,7 +27,7 @@ prepare() {
 	rm -rf .circleci .github .idea .vscode
 
 	# Remove shortcut creation as files cannot be placed in $HOME in fakeroot environment
-	sed '44,74d' setup.py
+	sed -i '44,74d' setup.py
 }
 
 pkgver() {
