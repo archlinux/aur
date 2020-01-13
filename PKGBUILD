@@ -31,7 +31,7 @@ makedepends=(
   'pkgconf' # pkg-config
   'cmake'
 )
-source=("$pkgname-$pkgver.tar.gz::http://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
 sha256sums=('e526f1659ae321f45b997c0245acecbf9c4cf2122b025ab8db1090f1b9804f5e')
 
 build()
