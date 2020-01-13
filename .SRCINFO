@@ -1,0 +1,34 @@
+pkgbase = libquicktime-git
+	pkgdesc = Library for reading and writing quicktime files
+	pkgver = r971.gfff99cd
+	pkgrel = 1
+	url = http://libquicktime.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = doxygen
+	makedepends = mesa-libgl
+	depends = glibc
+	depends = alsa-lib
+	depends = faac
+	depends = faad2
+	depends = gtk2
+	depends = lame
+	depends = libjpeg-turbo
+	depends = libxaw
+	depends = libxv
+	depends = schroedinger
+	depends = libavcodec.so
+	depends = libswscale.so
+	depends = libvorbisenc.so
+	depends = libvorbisfile.so
+	depends = libvorbis.so
+	depends = libx264.so
+	provides = libquicktime
+	conflicts = libquicktime
+	source = git+https://git.code.sf.net/p/libquicktime/git
+	sha256sums = SKIP
+
+pkgname = libquicktime-git
+
