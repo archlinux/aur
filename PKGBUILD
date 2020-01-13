@@ -17,13 +17,27 @@ source=("https://github.com/openembedded/bitbake/archive/${pkgver}.tar.gz")
 md5sums=('f1738e17e75c71166fb9f4ef7367ae51')
 
 check() {
-    git config --local user.email "test@bitbake.com"
-    git config --local user.name "Bitbake Tester"
+    if ! git config --global --get user.name; then
+        unset_name=1
+        git config --global user.name "Bitbake Tester"
+    fi
+    if ! git config --global --get user.email; then
+        unset_email=1
+        git config --global user.email "test@bitbake.com"
+    fi
     # use http over ftp to use travis
     grep -rl "[^s]ftp://" "${pkgname}-${pkgver}"/lib/bb/tests/*py | xargs sed -i 's@ftp://@http://@g'
     cd "${pkgbase}-${pkgver}/bin"
     git config --local -l
     PYTHONPATH="${srcdir}/${pkgbase}-${pkgver}/lib" python ./bitbake-selftest --failfast -v
+    if [ "${unset_name}" -eq 1 ]; then
+        unset_name=1
+        git config --global --unset user.name
+    fi
+    if [ "${unset_email}" -eq 1 ]; then
+        unset_email=1
+        git config --global --unset user.email
+    fi
 }
 
 package_bitbake() {
