@@ -1,13 +1,13 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('any')
 url="https://isacikgoz.me/tldr"
 license=('MIT')
-makedepends=('go-pie' 'dep')
+makedepends=('go-pie' 'dep' 'git')
 provides=("${pkgname%++}")
 conflicts=("${pkgname%++}" 'tldr-bash' 'nodejs-tldr' 'tldr-python-client')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/isacikgoz/tldr/archive/v$pkgver.tar.gz")
@@ -17,7 +17,7 @@ prepare() {
 	mkdir -p gopath/src/github.com/isacikgoz
 	ln -rTsf "${pkgname%++}-$pkgver" "gopath/src/github.com/isacikgoz/${pkgname%++}"
 	export GOPATH="$srcdir"/gopath
-	
+
 	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
 	dep init
 	dep ensure
@@ -31,11 +31,11 @@ build() {
 		-gcflags "all=-trimpath=${PWD}" \
 		-asmflags "all=-trimpath=${PWD}" \
 		-ldflags "-extldflags ${LDFLAGS}" \
-			-o $pkgname .
+		-o $pkgname .
 }
 
 package() {
 	cd "gopath/src/github.com/isacikgoz/${pkgname%++}"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/${pkgname%++}"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
