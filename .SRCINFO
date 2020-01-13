@@ -1,15 +1,15 @@
 pkgbase = eslint-plugin-react
 	pkgdesc = React specific linting rules for ESLint
-	pkgver = 7.14.3
+	pkgver = 7.17.0
 	pkgrel = 1
 	url = https://github.com/yannickcr/eslint-plugin-react
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = eslint
-	noextract = eslint-plugin-react-7.14.3.tgz
-	source = http://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.14.3.tgz
-	md5sums = dd72a5b6899d398bc82ae2098e34c82d
+	noextract = eslint-plugin-react-7.17.0.tgz
+	source = http://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.17.0.tgz
+	md5sums = e40141e349e7373dfe5b49d9bee19906
 
 pkgname = eslint-plugin-react
 
