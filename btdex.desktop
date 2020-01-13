@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=BTDEX
-Comment=Decentralized exchange system running on the Burst blockchain.
-Icon=btdex
+Comment=Decentralized exchange system running on the Burst blockchain
+Icon=/usr/share/pixmaps/btdex.png
 Exec=/opt/btdex/btdex.sh
 Categories=Network;
