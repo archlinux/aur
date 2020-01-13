@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX (HEAD version)'
-pkgver=0.9.5.1.r536.gcb5061f
+pkgver=0.9.5.1.r586.g6cae885
 pkgrel=1
 arch=(any)
 url='https://www.sile-typesetter.org'
@@ -19,9 +19,9 @@ depends=('fontconfig'
          'lua'
          'icu'
          'ttf-gentium-plus')
-optdepends=('luajit')
 makedepends=('git'
-             'luarocks')
+             'luarocks'
+             'poppler')
 checkdepends=('lua-busted'
               'lua-luacov=0.8')
 source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
