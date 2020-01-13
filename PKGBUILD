@@ -1,15 +1,15 @@
-# Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=cargo-asm
-pkgver=0.1.13
+pkgver=0.1.16
 pkgrel=1
 pkgdesc="Cargo subcommand that shows the assembly or llvm-ir generated for Rust code"
 url="https://github.com/gnzlbg/cargo-asm"
 depends=('cargo' 'gcc-libs')
-arch=('i686' 'x86_64' 'armv6h')
+arch=('any')
 license=('MIT' 'APACHE')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gnzlbg/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('817be55a3ef179c873ddc20574dd7ca39ccec86cc3bf039d6097fefeade2f2be')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/cargo-asm/${pkgver}/download")
+sha256sums=('be6991c30c2e197c29c33ca8544caa94de9531733419ac20ffb629ed95a3bc5d')
 
 build() {
   cd "$pkgname-$pkgver"
