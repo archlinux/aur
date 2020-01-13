@@ -2,7 +2,7 @@
 
 pkgname=con2fbmap
 pkgver=2.1.0
-pkgrel=50
+pkgrel=51
 pkgdesc='Shows and sets mapping between consoles and framebuffer devices'
 url='https://www.debian.org/'
 license=('GPL')
@@ -12,7 +12,7 @@ sha512sums=('ea96e699e08d15fec4106434edf6f360e78e531dbbd81507bca8f2b31ec39fd12ba
 
 prepare() {
   cd "${srcdir}"
-  patch -N --silent -p0 -i debian/patches/03_con2fbmap.patch &2>/dev/null
+  patch -N --silent -i debian/patches/03_con2fbmap.patch &2>/dev/null
 }
 
 build() {
