@@ -1,6 +1,6 @@
 pkgbase = libclsp
 	pkgdesc = A C++17 library for language servers
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/otreblan/libclsp
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = libclsp
 	makedepends = boost
 	makedepends = rapidjson
 	depends = boost-libs
-	provides = libclsp
-	source = libclsp-0.1.0.tar.gz::https://github.com/otreblan/libclsp/archive/v0.1.0.tar.gz
-	sha256sums = 0e306789969ddbf0773f269067c361bfe890cb9ed7e33e64919c14122247ec2b
+	provides = libclsp.so
+	source = libclsp-0.1.1.tar.gz::https://github.com/otreblan/libclsp/archive/v0.1.1.tar.gz
+	sha256sums = 8e835d60a8e3fa38906d3bbc7c99a161a52bbf2fdb6df0b15473e7b54edb41f9
 
 pkgname = libclsp
 
