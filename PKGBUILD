@@ -41,6 +41,7 @@ package_dotnet-sdk-2.1() {
   pkgdesc='The .NET Core SDK version 2.1'
   depends=('dotnet-runtime-2.1')
   provides=("dotnet-sdk-2.1")
+  conflicts=("dotnet-sdk-2.1")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk "${pkgdir}"/usr/share/dotnet/
