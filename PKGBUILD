@@ -6,7 +6,7 @@ _nginxver=1.17.7
 
 pkgname=nginx-mainline-mod-vod-git
 pkgver=r1252.f453ef8
-pkgrel=1
+pkgrel=2
 pkgdesc="NGINX-based MP4 Repackager"
 arch=('i686' 'x86_64')
 depends=("nginx-mainline=$_nginxver")
@@ -44,6 +44,7 @@ build() {
 
   ./configure --with-compat --add-dynamic-module=../$_modname \
     --with-file-aio \
+    --with-threads \
     --with-cc-opt="-O3"
 
   make modules
