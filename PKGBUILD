@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/MCJack123/craftos2-rom/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('395408a3dc9c3db2b5c200b8722a13a60898c861633b99e6e250186adffd1370')
+sha256sums=('1a47459f76c06ec2c9e4f9073353836649fffc11b59cced8271cf3d74ce2cc71')
 validpgpkeys=()
 
 prepare() {
