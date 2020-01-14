@@ -1,6 +1,6 @@
 # Based on a PKGBUILD for pasaffe found at https://github.com/felixonmars/aur3-mirror
-# Previous Maintainer: archtux <antonio dot arias99999 at gmail dot com>
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
+# Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=pasaffe
 pkgver=0.55
 pkgrel=1
