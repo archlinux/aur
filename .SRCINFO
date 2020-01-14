@@ -6,6 +6,7 @@ pkgbase = python-booleanoperations
 	arch = any
 	license = MIT
 	checkdepends = python-fontpens
+	checkdepends = python-defcon
 	depends = python
 	depends = python-pyclipper
 	depends = python-fonttools
