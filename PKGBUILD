@@ -1,8 +1,10 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-bin
-pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin')
-pkgver=3.1.0
+pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin' 'dotnet-sdk-bin')
+pkgver=3.1.0.sdk100
+_runtimever=3.1.0
+_sdkver=3.1.100
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
@@ -13,7 +15,7 @@ makedepends=(
 )
 options=('staticlibs')
 source=('dotnet.sh')
-sha512sums=('a6ee992d7ab08adb916f0b5d72d203f8ab38cfa2e354f062d499d4d8a64ab2b95e5511a041d859331e560f45c5bb642c2f118951e2104f362e10b31cf07e95b0')
+sha512sums=('448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/67766a96-eb8c-4cd2-bca4-ea63d2cc115c/7bf13840aa2ed88793b7315d5e0d74e6/dotnet-sdk-3.1.100-linux-arm.tar.gz')
 source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/5a4c8f96-1c73-401c-a6de-8e100403188a/0ce6ab39747e2508366d498f9c0a0669/dotnet-sdk-3.1.100-linux-arm64.tar.gz')
 source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/d731f991-8e68-4c7c-8ea0-fad5605b077a/49497b5420eecbd905158d86d738af64/dotnet-sdk-3.1.100-linux-x64.tar.gz')
@@ -23,35 +25,47 @@ sha512sums_x86_64=('5217ae1441089a71103694be8dd5bb3437680f00e263ad28317665d819a9
 
 package_dotnet-host-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (binary)'
-  provides=("dotnet-host=${pkgver%+*}")
+  provides=("dotnet-host")
   conflicts=('dotnet-host')
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet,usr/share/licenses/dotnet-host-bin,usr/bin,usr/lib}
-  cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/opt/dotnet/
-  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-bin
-  install -Dm 755 "${srcdir}"/dotnet.sh "${pkgdir}"/opt/dotnet
-  ln -sf /opt/dotnet/dotnet.sh "${pkgdir}"/usr/bin/dotnet
-  ln -sf /opt/dotnet/host/fxr/"${pkgver}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
+  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host}}
+  cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
+  cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host
+  install -Dm 755 "${srcdir}"/dotnet.sh "${pkgdir}"/usr/share/dotnet
+  ln -sf /usr/share/dotnet/dotnet.sh "${pkgdir}"/usr/bin/dotnet
+  ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
 }
 
 package_dotnet-runtime-bin() {
   pkgdesc='The .NET Core runtime (binary)'
-  depends=('dotnet-host>=3.1.0' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
+  depends=('dotnet-host' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime=${pkgver%+*}")
+  provides=("dotnet-runtime-3.1")
+  conflicts=("dotnet-runtime-3.1")
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/opt/dotnet/shared/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime-bin
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
+  cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-runtime
 }
 
 package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
-  depends=('dotnet-runtime>=3.1.0')
-  provides=( "aspnet-runtime=${pkgver%+*}")
+  depends=('dotnet-runtime-3.1')
+  provides=("aspnet-runtime-3.1")
+  conflicts=("aspnet-runtime-3.1")
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
-  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime-bin
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
+  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-runtime
+}
+
+package_dotnet-sdk-bin() {
+  pkgdesc='The .NET Core SDK (binary)'
+  depends=('dotnet-runtime-3.1')
+  provides=("dotnet-sdk-3.1")
+  conflicts=("dotnet-sdk-3.1")
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
+  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/usr/share/dotnet/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk
 }
