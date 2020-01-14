@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def@github>
 # Contributor: Konrad Borowski <konrad@borowski.pw>
 pkgname=klient-jpk-2.0
-pkgver=1.0.4.7
+pkgver=1.0.4.8
 pkgrel=1
 pkgdesc="A tool for submitting JPK files (Standard Audit File for Tax equivalent) to Ministerstwo Finansów (Polish Ministry of Finance)"
 arch=('i686' 'x86_64')
@@ -41,10 +41,10 @@ noextract=(
 #    '27d4330c9e3d4e3b969a33d910d85598'
 #)
 sha256sums=(
-    '3e904cc181b2214ae3ec91ceb8b8295de20b417dae885309c71177805fa49c21'
-    '348003f6a3363f2675ffa385e046775037a28bdd461c676d42a4aec0b6d717d6'
-    'f19a9c09e699d35276fa50d1b782760c6597f3f76975e6dc3b2bfcff45f935a4'
-    '67b62406fd4307e463d858e6120684a138c755f7c75c64841a9f7c54f8f55e42'
+    '2360871c0d2cde2910bc587ba3bf40b3a132bee5581c305f537d598e8c4e9e30'
+    'a0b26d81ce95927ca4c3545ee3bf032ca340b66646118d4e07f7c72f4b6662fa'
+    '9627ee22a49457a940d0874abd6d22719572d2d161811203415b3b2632fa8ac3'
+    'a361346e39864b60791069c8db394ae7b24d0b63e61087355ec8e1d583340c01'
     'c539940e74493d559cf494313e3a0a72626be86bc31ef3cb8c3da1323640063b'
     '8c5805dcd59f24ab1fcca9837d4335570eb7427938f653e8f51c8d8944a9057f'
 )
