@@ -1,0 +1,18 @@
+#!/bin/sh
+
+. /usr/lib/atomicpi.sh
+
+if [ "$1" = "--cleanup" ]; then
+    atomicpi_gpio_hardware && gpioset --mode=time --us=200000 $ATOMICPICHIP_AU_MIC_SEL=1
+fi
+
+if [ -z "$1" ]; then
+    # Hold AU_MIC_SEL low to enable recording from microphone
+    if atomicpi_gpio_hardware; then
+        exec gpioset --mode=signal $ATOMICPICHIP_AU_MIC_SEL=0
+    else
+        while true; do
+            sleep 2147483647;
+        done
+    fi
+fi

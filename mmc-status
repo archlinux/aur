@@ -1,0 +1,27 @@
+#!/bin/sh
+for MMC in /sys/bus/mmc/devices/*; do
+    if [ -d "$MMC" ]; then
+        read LIFE_TIME_SLC LIFE_TIME_MLC <$MMC/life_time
+        read PRE_EOL_INFO < $MMC/pre_eol_info
+
+        LIFE_TIME_10PCT_SLC=`printf "%d\n" $LIFE_TIME_SLC`
+        LIFE_TIME_10PCT_MLC=`printf "%d\n" $LIFE_TIME_MLC`
+        LIFE_TIME_10PCT_RSVD=0
+        case `printf "%d\n" $PRE_EOL_INFO` in
+            2) LIFE_TIME_10PCT_RSVD=8;;
+            3) LIFE_TIME_10PCT_RSVD=9;;
+        esac
+        LIFE_TIME_10PCT="$LIFE_TIME_10PCT_SLC"
+        if [ "$LIFE_TIME_10PCT" -lt "$LIFE_TIME_10PCT_MLC" ]; then
+            LIFE_TIME_10PCT=$LIFE_TIME_10PCT_MLC
+        fi
+        if [ "$LIFE_TIME_10PCT" -lt "$LIFE_TIME_10PCT_RSVD" ]; then
+            LIFE_TIME_10PCT=$LIFE_TIME_10PCT_RSVD
+        fi
+        if [ "$LIFE_TIME_10PCT" -gt 10 ]; then
+            echo `basename $MMC`: expected life lime exceeded
+        else
+            echo `basename $MMC`: $(((10-$LIFE_TIME_10PCT)*10+5))% ± 5% life time remaining
+        fi
+    fi
+done
