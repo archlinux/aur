@@ -4,12 +4,12 @@
 
 pkgname=epiphany-pantheon
 pkgver=3.35.2+1+g16a4219dc
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://wiki.gnome.org/Apps/Web"
 arch=(x86_64)
 license=(GPL)
-depends=(webkit2gtk gcr libdazzle libhandy)
+depends=(webkit2gtk gcr libdazzle libhandy gst-plugins-base)
 makedepends=(docbook-xml startup-notification lsb-release gobject-introspection yelp-tools
              appstream-glib git meson)
 checkdepends=(xorg-server-xvfb)
