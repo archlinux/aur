@@ -1,6 +1,6 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
-	pkgver = 1.15.1+b105
+	pkgver = 1.15.1+b107
 	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = spigot.install
@@ -24,7 +24,7 @@ pkgbase = spigot
 	conflicts = craftbukkit
 	conflicts = spigot-patcher
 	backup = etc/conf.d/spigot
-	source = BuildTools-1.15.1+b105.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/105/artifact/target/BuildTools.jar
+	source = BuildTools-1.15.1+b107.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/107/artifact/target/BuildTools.jar
 	source = spigot-backup.service
 	source = spigot-backup.timer
 	source = spigot.service

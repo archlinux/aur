@@ -3,7 +3,7 @@
 
 pkgname=spigot
 _pkgver=1.15.1
-_build=105
+_build=107
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
