@@ -4,7 +4,7 @@ url='https://wiki.ros.org/image_proc'
 pkgname='ros-melodic-image-proc'
 pkgver='1.14.0'
 arch=('any')
-pkgrel=0
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,6 +35,7 @@ ros_depends=(
 	ros-melodic-sensor-msgs
 	ros-melodic-nodelet-topic-tools
 	ros-melodic-image-transport
+	ros-melodic-rostest
 )
 
 depends=(
