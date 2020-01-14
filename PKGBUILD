@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 # Contributor: Daniel Ratcliffe <dratcliffe@gmail.com>
 pkgname=craftos-pc-data
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 epoch=
 pkgdesc="ROM package for CraftOS-PC"
@@ -20,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/MCJack123/craftos2-rom/archive/v2.2.3.tar.gz")
+source=("https://github.com/MCJack123/craftos2-rom/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('7486379cf88700691712702034fa24f1a8caf73ac97418f9bb936fe42e0e3396')
+sha256sums=('395408a3dc9c3db2b5c200b8722a13a60898c861633b99e6e250186adffd1370')
 validpgpkeys=()
 
 prepare() {
