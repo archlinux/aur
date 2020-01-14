@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=1.99.4.r47514d2
+pkgver=1.99.5.rf1ddc98
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
@@ -38,6 +38,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     install -Dm755 build/qv2ray "${pkgdir}/usr/bin/qv2ray"
-    install -Dm644 icons/qv2ray.desktop "${pkgdir}/usr/share/applications/qv2ray.desktop"
-    install -Dm644 icons/qv2ray.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/qv2ray.png"
+    install -Dm644 assets/qv2ray.desktop "${pkgdir}/usr/share/applications/qv2ray.desktop"
+    install -Dm644 assets/icons/qv2ray.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/qv2ray.png"
 }
