@@ -1,7 +1,7 @@
 # Maintainer: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=sia-daemon
-pkgver=1.4.1.2
+pkgver=1.4.2
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -10,7 +10,7 @@ url="https://sia.tech"
 license=('MIT')
 depends=('glibc')
 source=("https://sia.tech/releases/Sia-${_pkgver}-linux-amd64.zip")
-sha256sums=('2aa5f8c37cb6d3af8588030f82e4584889fe7269cb50d6d397acd695fe69b380')
+sha256sums=('955d3fc95e3fe88baf25cf211263444beeea2efe5fa23489261378c84c888b74')
 
 package() {
   cd $srcdir/Sia-$_pkgver-linux-amd64
