@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=haserl
-pkgver=0.9.33
+pkgver=0.9.35
 pkgrel=1
 pkgdesc="Tiny dynamic CGI web server with your shell or Lua."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ _watch="http://sourceforge.net/projects/haserl/files/"
 license=('GPL2')
 depends=('sh' 'lua')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('a9decddb508944d56f71dd2f821e2ec5')
+md5sums=('918f0b4f6cec0b438c8b5c78f2989010')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
