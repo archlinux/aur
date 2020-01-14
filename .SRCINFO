@@ -1,9 +1,13 @@
 pkgbase = cargo-tally
 	pkgdesc = Graph the number of crates that depend on your crate over time
 	pkgver = 0.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dtolnay/cargo-tally
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	license = APACHE
 	depends = cargo
