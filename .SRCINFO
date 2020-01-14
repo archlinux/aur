@@ -1,7 +1,7 @@
 pkgbase = forge-villager-names-bin
 	pkgdesc = Minecraft mod to assign names to villagers
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/F43nd1r/minecraft-villager-names
 	arch = any
 	license = Apache
