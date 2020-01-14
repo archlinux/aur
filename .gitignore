@@ -1,5 +1,5 @@
 volta-*.tar.gz
-volta-install.sh
+LICENSE
 *.pkg.tar
 *.pkg.tar.*
 pkg/
