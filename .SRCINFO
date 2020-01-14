@@ -1,0 +1,14 @@
+pkgbase = libipt-git
+	pkgdesc = An Intel(R) Processor Trace decoder library
+	pkgver = 814.892e12c
+	pkgrel = 1
+	url = https://github.com/intel/libipt
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = cmake
+	source = libipt-git::git+https://github.com/intel/libipt.git
+	md5sums = SKIP
+
+pkgname = libipt-git
+
