@@ -4,13 +4,13 @@
 _pkgname='spambayes'
 pkgname="$_pkgname-svn"
 pkgver='1.1b1.r3273'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Bayesian anti-spam classifier written in Python - svn version'
 arch=('any')
 url="http://$_pkgname.sourceforge.net/"
 license=('PSF')
-depends=('python2' 'python2-lockfile' 'python2-pydns' 'python2-setuptools')
-makedepends=('subversion')
+depends=('python2' 'python2-lockfile' 'python2-pydns')
+makedepends=('python2-setuptools' 'subversion')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::svn+https://svn.code.sf.net/p/$_pkgname/code/trunk")
