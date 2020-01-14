@@ -9,7 +9,7 @@
 
 pkgname=firefox-appmenu-bin
 _pkgname=firefox
-pkgver=71.0
+pkgver=72.0.1
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Firefox-appmenu, binary version"
@@ -33,7 +33,7 @@ source=(https://github.com/nikatar/AUR/raw/master/firefox-appmenu-bin/firefox-ap
 noextract=(firefox-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
 sha256sums=(
-	'a8d023af2b8abd065474f65b7e7db4865d2137e0866bb02c53d58cd415d668a6'
+	'947a6b0cbda28705d7a56db69bfc5e055011e4deaf05760c5ea9225e564b5b99'
 	'SKIP'
 )
 
