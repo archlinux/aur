@@ -2,12 +2,12 @@
 
 pkgname="bazelisk"
 pkgver="1.2.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A user-friendly launcher for Bazel."
 arch=("i686" "x86_64")
 license=("Apache 2.0")
 url="https://github.com/bazelbuild/bazelisk"
-makedepends=("bazel")
+makedepends=("bazel" "git")
 
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=("29a0afb5e7b4be61baa1f7c954371fab9793f7dc69afaae2b3c8bdf152c9e08c")

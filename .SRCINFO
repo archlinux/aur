@@ -1,12 +1,13 @@
 pkgbase = bazelisk
 	pkgdesc = A user-friendly launcher for Bazel.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/bazelisk
 	arch = i686
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = bazel
+	makedepends = git
 	source = https://github.com/bazelbuild/bazelisk/archive/v1.2.1.tar.gz
 	sha256sums = 29a0afb5e7b4be61baa1f7c954371fab9793f7dc69afaae2b3c8bdf152c9e08c
 
