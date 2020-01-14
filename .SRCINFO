@@ -4,6 +4,7 @@ pkgbase = atomicpi-utils
 	pkgrel = 0
 	arch = any
 	license = Unknown
+	depends = libgpiod
 	source = atomicpi-hold-mic
 	source = atomicpi-hold-xmos
 	source = atomicpi-reset-xmos

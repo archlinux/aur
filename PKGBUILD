@@ -1,6 +1,6 @@
 #!/bin/sh
 pkgname="atomicpi-utils"
-depends=()
+depends=(libgpiod)
 pkgdesc="Tools and Utilities for the Atomic Pi Single-board computer from Digital Loggers"
 arch=('any')
 license=("Unknown")
@@ -24,7 +24,6 @@ md5sums=('278fb4895488f3c191dbc8c01f316652'
          '7660a6981d202526d4b3e733fbb3f954'
          '221c1499797d5b514dc6f25270498446')
 
-
 package() {
   install -D -m755 atomicpi-hold-mic "${pkgdir}/usr/bin/atomicpi-hold-mic"
   install -D -m755 atomicpi-hold-xmos "${pkgdir}/usr/bin/atomicpi-hold-xmos"
@@ -32,5 +31,4 @@ package() {
   install -D -m644 lib_atomicpi.sh "${pkgdir}/usr/lib/atomicpi.sh"
   install -D -m644 lib_gpio-present.sh "${pkgdir}/usr/lib/gpio-present.sh"
   install -D -m644 lib_i2c-gpio-custom-filter.sh "${pkgdir}/usr/lib/lib_i2c-gpio-custom-filter.sh"
-  
 }
