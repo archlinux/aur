@@ -3,7 +3,7 @@
 pkgname='cloudprint-cups'
 pkgver='20160502.r16.g1f27903'
 _commit='1f279036fad249efa8a2bca7f8f54adffd3b59c8'
-pkgrel='3'
+pkgrel='4'
 epoch='1'
 pkgdesc='Google Cloud Print driver for CUPS, allows printing to printers hosted on GCP'
 arch=('any')
@@ -26,8 +26,8 @@ build() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	NOPERMS=1 make DESTDIR="$pkgdir" INSTALL='install -p' install
-	python2 -O -m compileall "$pkgdir/usr/share/$_pkgname"
+	python2 -O -m compileall "$pkgdir/usr/share/$pkgname"
 
 	install -dm755 "$pkgdir/usr/bin"
-	ln -sf "/usr/share/$_pkgname/setupcloudprint.py" "$pkgdir/usr/bin/setupcloudprint"
+	ln -sf "/usr/share/$pkgname/setupcloudprint.py" "$pkgdir/usr/bin/setupcloudprint"
 }
