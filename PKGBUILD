@@ -1,46 +1,32 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog-wpe-gl
-pkgver=r134.f421c0a
-pkgrel=3
-license=(MIT)
+pkgver=0.4.0
+pkgrel=1
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
-depends=(libxkbcommon)
 groups=(wpe)
-provides=(cog cog-git)
-conflicts=(cog cog-git)
+conflicts=('cog' 'cog-git')
 makedepends=(cmake)
-source=("${pkgname}::git+${url}")
-sha512sums=(SKIP)
-
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
-
-prepare () {
-	mkdir -p _build
-}
+license=(custom:MIT)
+source=("https://wpewebkit.org/releases/releases/cog-${pkgver}.tar.xz"
+        "https://wpewebkit.org/releases/releases/cog-${pkgver}.tar.xz.asc")
+validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
+md5sums=('75a0838ee6c81bb8df1b254f525440a6' 'SKIP')
+sha1sums=('284d2a641e6269b296057918602c8c94eb831527' 'SKIP')
+sha256sums=('e9c13a51232434b7340a419b1e6f59c40c582cd80c8e60bd9ec7de16c904fc03' 'SKIP')
 
 build () {
-	cd _build
-	cmake \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	cmake -H"cog-${pkgver}" -Bbuild \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
-		-DCOG_PLATFORM_FDO=ON \
-		"../${pkgname}"
-	cmake --build .
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib
+	cmake --build build
 }
 
 package () {
-	DESTDIR="${pkgdir}" cmake --build _build --target install
-	install -Dm644 "${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-	# TODO: Remove once the need for the symlink is gone.
-	ln -sf 'libWPEBackend-fdo-0.1.so' "${pkgdir}/usr/lib/libWPEBackend-default.so"
+	DESTDIR="${pkgdir}" cmake --build build --target install
+
+	install -Dm644 "cog-${pkgver}/COPYING" \
+		"${pkgdir}/usr/share/licenses/cog/COPYING"
 }
