@@ -8,7 +8,7 @@
 
 pkgname=gazebo
 pkgver=10.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -17,7 +17,7 @@ license=('Apache')
 depends=('boost>=1.40.0' 'curl>=4.0' 'freeglut' 'freeimage>=3.0'
          'intel-tbb>=3.0' 'libccd>=1.4' 'libltdl>=2.4.2' 'libtar>=1.2' 'libxml2>=2.7.7'
          'ogre-1.9' 'protobuf>=2.3.0' 'sdformat=6' 'ignition-math=4' 'ignition-transport=4'
-         'ignition-common=1' 'ignition-fuel_tools=1' 'ignition-msgs=1' 'tinyxml2' 'qwt')
+         'ignition-cmake-0' 'ignition-common=1' 'ignition-fuel_tools=1' 'ignition-msgs=1' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
@@ -31,13 +31,13 @@ optdepends=('bullet: Bullet support'
 makedepends=('cmake' 'doxygen' 'ignition-cmake')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2"
-        "fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw")
+        "fix-moc.patch::https://bitbucket.org/osrf/gazebo/commits/9d71a6134982e2bf60ce96ca97c18c956c0cc7e0/raw")
 sha256sums=('8a1fcf8697704928c9cda610a9ce81f563f211bdfb2f1fdb458193ffb36c4287'
-            '4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72')
+            'f69a8dfb3224a93a50b0e10d80a0b42f8652eb667dcbacc741b5c8a638b1e768')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch --strip=1 --input=../fix-openal.patch
+  patch --strip=1 --input=../fix-moc.patch
 }
 
 build() {
