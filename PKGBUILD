@@ -15,6 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/application"
+    node -pe "require('./package.json').version"
 }
 
 build() {
