@@ -2,8 +2,8 @@
 _pkgname='imgsize'
 pkgname="python-$_pkgname"
 pkgver='2.1'
-pkgrel='1'
-pkgdesc='Pure Python image size library'
+pkgrel='2'
+pkgdesc='Pure Python image size library - python version'
 arch=('any')
 url="https://github.com/ojii/$_pkgname"
 license=('BSD')
