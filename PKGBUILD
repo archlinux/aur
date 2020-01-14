@@ -2,12 +2,17 @@
 _pkgname='gnome-keyring-import-export'
 pkgname="$_pkgname-hg"
 pkgver='r19.657ba95e254c'
-pkgrel='4'
-pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, using the SecretService API - Mercurial version'
+pkgrel='5'
+pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine - Mercurial version'
 arch=('any')
 url="https://bitbucket.org/spookylukey/$_pkgname"
 license=('unknown')
-depends=('python' 'python-secretstorage')
+depends=(
+	# secret_storage_import_export.py
+	'python' 'python-secretstorage'
+	# gnome_keyring_import_export.py
+	'pygtk' 'python2' 'python2-gnomekeyring' 'python2-lxml'
+)
 makedepends=('mercurial')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -22,5 +27,7 @@ pkgver() {
 }
 
 package() {
-	install -Dm755 "$srcdir/$_sourcedirectory/secret_storage_import_export.py" "$pkgdir/usr/bin/secret-storage-import-export"
+	cd "$srcdir/$_sourcedirectory"
+	install -Dm755 'secret_storage_import_export.py' "$pkgdir/usr/bin/secret-storage-import-export"
+	install -Dm755 'gnome_keyring_import_export.py' "$pkgdir/usr/bin/gnome-keyring-import-export"
 }
