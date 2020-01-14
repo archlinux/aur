@@ -1,7 +1,7 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgname=('aspnet-runtime-2.1')
-pkgver=2.1.14
+pkgver=2.1.14.sdk607
 pkgrel=1
 pkgdesc='The ASP.NET Core runtime version 2.1' 
 arch=('x86_64' 'armv7h')
@@ -18,10 +18,11 @@ sha512sums_x86_64=('85728bd9701a6db5743c495aaf87c859b697300b668afc01d0edd3814ce5
 package() {
   arch=('x86_64' 'armv7h')
   pkgdesc='The ASP.NET Core runtime version 2.1'
-  depends=('dotnet-runtime=2.1.14')
-  provides=("aspnet-runtime=${pkgver%+*}")
+  depends=('dotnet-runtime-2.1')
+  provides=("aspnet-runtime-2.1")
+  conflicts=("aspnet-runtime-2.1")
 
-  install -dm 755 "${pkgdir}"/{opt/dotnet/shared,usr/share/licenses}
-  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/opt/dotnet/shared/
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
+  cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
   ln -s dotnet-host-2.1 "${pkgdir}"/usr/share/licenses/aspnet-runtime-2.1
 }

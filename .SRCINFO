@@ -1,6 +1,6 @@
 pkgbase = aspnet-runtime-2.1
 	pkgdesc = The ASP.NET Core runtime version 2.1
-	pkgver = 2.1.14
+	pkgver = 2.1.14.sdk607
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgname = aspnet-runtime-2.1
 	pkgdesc = The ASP.NET Core runtime version 2.1
 	arch = x86_64
 	arch = armv7h
-	depends = dotnet-runtime=2.1.14
-	provides = aspnet-runtime=2.1.14
+	depends = dotnet-runtime-2.1
+	provides = aspnet-runtime-2.1
+	conflicts = aspnet-runtime-2.1
 
