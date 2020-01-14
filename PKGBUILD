@@ -16,6 +16,7 @@ depends=(
     'python-appdirs'
 	'python-argcomplete'
 	'python-colorama'
+    'flake8'
     'avr-gcc'
     'clang'
     'dfu-programmer'
