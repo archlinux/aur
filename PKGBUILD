@@ -2,10 +2,10 @@
 # Git: https://github.com/SpryServers/sprycloud-desktop
 # Uncomment, if you want the last release
 #_version=sprycloud_master
-_spryrel=2.6.1.spry.r1
+_spryrel=2.6.2.spry.r1
 pkgname=sprycloud-client-git
 _name=${pkgname/\-git/}
-pkgver=2.6.1.spry.r1.r0.g2b5d0de83
+pkgver=2.6.2.spry.r1.r0.g5d5ee61da
 pkgrel=1
 pkgdesc="spryCloud client for Linux"
 arch=('i686' 'x86_64')
