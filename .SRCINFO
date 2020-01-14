@@ -1,16 +1,17 @@
 pkgbase = forge-quark-2.0-bin
-	pkgdesc = minecraft mod quark by Vazkii
-	pkgver = 204.882
-	pkgrel = 3
+	pkgdesc = Minecraft mod quark by Vazkii
+	pkgver = 210.948
+	pkgrel = 1
 	url = https://quark.vazkii.net/
 	arch = any
 	license = custom:CC BY-NC-SA 3.0
 	depends = forge-server>=1.14.4_28.1.61
 	depends = forge-autoreglib-1.4-bin
-	noextract = forge-quark-2.0-bin-204.882.jar
-	source = forge-quark-2.0-bin-204.882.jar::https://maven.blamejared.com/vazkii/quark/Quark/r2.0-204.882/Quark-r2.0-204.882.jar
-	md5sums = 677ec9834271fb86f0219692c0d6aa53
-	sha256sums = 0285c40492c8a3ce98a74746985c958d0ee6af3f5fc56817d2768738b1394f42
+	noextract = forge-quark-2.0-bin-210.948.jar
+	source = forge-quark-2.0-bin-210.948.jar::https://maven.blamejared.com/vazkii/quark/Quark/r2.0-210.948/Quark-r2.0-210.948.jar
+	source = LICENSE
+	sha1sums = b7adb0c6de3b9c53b6c27fe8090ec7e3f8bfd9c8
+	sha1sums = 1b35b35bbf6797b707011443c71704dcd072d718
 
 pkgname = forge-quark-2.0-bin
 
