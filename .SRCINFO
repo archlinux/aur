@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-python27-bin
 	pkgdesc = A high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 2.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.python.org/
 	arch = any
 	license = PSF

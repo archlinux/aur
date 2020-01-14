@@ -1,7 +1,7 @@
 pkgname=mingw-w64-python27-bin
 pkgver=2.7.16
 _pybasever=27
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level scripting language (native MSVC version) (mingw-w64)"
 arch=('any')
 license=('PSF')
@@ -32,6 +32,8 @@ build() {
 
     # https://bugs.python.org/issue11722
     sed -i "s|#if defined(MS_WIN64)|#if defined(MS_WIN64) \|\| defined(__MINGW64__)|g" include/pyconfig.h
+    # https://bugs.python.org/issue36020
+    sed -i 's|#if defined(MS_WIN32) \&\& !defined(HAVE_SNPRINTF)|#if defined(_MSC_VER) \&\& !defined(HAVE_SNPRINTF)|g' include/pyerrors.h
 
     gendef python${_pybasever}.dll
     ${_arch}-dlltool --dllname python${_pybasever}.dll --def python${_pybasever}.def --output-lib libs/libpython${_pybasever}.dll.a
