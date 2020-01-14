@@ -12,6 +12,9 @@ pkgbase = gst-rtsp-server
 	makedepends = gobject-introspection
 	depends = gst-plugins-base>=1.16.2
 	depends = gst-plugins-bad>=1.16.2
+	provides = libgstrtspclientsink.so
+	provides = libgstrtspserver-1.0.so=0-64
+	conflicts = libgstrtspclientsink.so
 	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.2.tar.xz
 	source = https://gstreamer.freedesktop.org/src/gst-rtsp-server/gst-rtsp-server-1.16.2.tar.xz.asc
 	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
