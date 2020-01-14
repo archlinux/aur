@@ -2,8 +2,8 @@
 
 pkgname=xow-git
 _pkgname=xow
-pkgver=19
-pkgrel=2
+pkgver=28
+pkgrel=1
 pkgdesc="Linux driver for the Xbox One wireless dongle"
 arch=(x86_64)
 url=https://github.com/medusalix/xow
@@ -18,25 +18,21 @@ pkgver() {
   git rev-list --count HEAD
 }
 
-prepare() {
-  cd $srcdir/$_pkgname
-  sed -i "s|/usr/local/bin/|/usr/bin/|g" xow.service
-}
-
 build() {
 	cd $srcdir/$_pkgname
-	make BUILD=RELEASE
+	make PREFIX="/usr" BUILD=RELEASE
+	make PREFIX="/usr" BUILD=RELEASE xow.service
+
 }
 
 package() {
 	cd $srcdir/$_pkgname
 
-  _install_path=$pkgdir/usr/bin
-  _service_path=$pkgdir/usr/lib/systemd/system/
-  mkdir -p $_install_path $_service_path
-
-  install -Dm755 xow $_install_path/xow
-  install -Dm755 xow.service $_service_path/xow.service
+  make DESTDIR=$pkgdir/usr PREFIX="" install
+#install -D -m 755 xow $pkgdir/usr/bin/xow
+#  install -D -m 644 xow.service $pkgdir/usr/lib/systemd/system/xow.service
+#  install -D -m 644 xow-udev.rules $pkgdir/usr/lib/udev/rules.d/99-xow.rules
+#  install -D -m 644 xow-modprobe.conf $pkgdir/usr/lib/modprobe.d/xow-blacklist.conf
 
   echo "If you want to enable and start the service please run:"
   echo "systemctl enable --now xow.service"
