@@ -40,12 +40,21 @@ fi
 if [ -z ${use_pds+x} ]; then
   use_pds=n
 fi
+##
+## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
+## Set variable "use_ns" to: n to disable (stock Xanmod)
+##                           y to enable (stock Archlinux)
+if [ -z ${use_ns+x} ]; then
+  use_ns=n
+fi
+##
 
 pkgbase=linux-xanmod-rt
-pkgver=5.4.5
-xanmod=3
+pkgver=5.4.10
+xanmod=5
 pkgrel=1
 _rev=
+pkgdesc='Linux Xanmod real-time version'
 arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
@@ -60,7 +69,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod${_r
        choose-gcc-optimization.sh
 )
 
-sha256sums=('c8cb0c5c1a4131c37c8afcbbc73d4fee6891c8d25eb2201a1ac6a048353a93f9'
+sha256sums=('2e7f074bc7e54fed25c25097523079ae314cd599f5df8f66a8f4d3afd35f9ecf'
             '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -107,6 +116,11 @@ prepare() {
   if [ "$use_pds" = "y" ]; then
     msg2 "Enabling PDS CPU scheduler by default..."
     scripts/config --enable CONFIG_SCHED_PDS
+  fi
+
+  if [ "$use_ns" = "n" ]; then
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
   # Let's user choose microarchitecture optimization in GCC
