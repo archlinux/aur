@@ -1,8 +1,8 @@
 # Maintainer: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
-pkgname=httptoolkit
+pkgname=httptoolkit-bin
 pkgver=0.1.17
-pkgrel=3
+pkgrel=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
 url="https://httptoolkit.tech/"
@@ -12,7 +12,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(httptoolkit)
 replaces=()
 backup=()
 options=()
