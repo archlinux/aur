@@ -1,0 +1,13 @@
+pkgbase = ninja-samurai
+	pkgdesc = Compatibility package to use Samurai instead of Ninja Build
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Salamandar/ninja-samurai
+	arch = any
+	license = GPL
+	depends = samurai
+	provides = ninja
+	conflicts = ninja
+
+pkgname = ninja-samurai
+
