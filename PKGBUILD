@@ -4,7 +4,7 @@
 
 pkgname=vmware-vmrc
 pkgver=11.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="VMWare VMRC Client."
 arch=('x86_64')
 url="https://www.vmware.com/go/download-vmrc"
@@ -22,7 +22,7 @@ sha256sums=('9081e5c1d4c18bc55d7eb9854c5d2bb41120ec9802dc16580ee2ad73b1ca79ea'
 
 build() {
     cd "$srcdir"
-    sh ../VMware-Remote-Console-10.0.6-14247266.x86_64.bundle -x ./files
+    sh ../VMware-Remote-Console-11.0.0-15201582.x86_64.bundle -x ./files
     cd "$srcdir/files"
 }
 
