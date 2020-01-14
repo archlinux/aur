@@ -12,6 +12,8 @@ pkgbase = atomicpi-utils
 	source = lib_gpio-present.sh
 	source = lib_i2c-gpio-custom-filter.sh
 	source = mmc-status
+	source = atomicpi-hold-mic.service
+	source = atomicpi-hold-xmos.service
 	md5sums = 278fb4895488f3c191dbc8c01f316652
 	md5sums = a3514ab3b4d3e047e42b2e00ebcc6b4e
 	md5sums = b7c2352da6b12aafc45d1c1d4a9ad483
@@ -19,6 +21,8 @@ pkgbase = atomicpi-utils
 	md5sums = 9ac895e909ebd9fd64293e390f9bd7e3
 	md5sums = 7660a6981d202526d4b3e733fbb3f954
 	md5sums = 221c1499797d5b514dc6f25270498446
+	md5sums = 29ff93384d9c836bfd7272e4be005a15
+	md5sums = 8cb6b4af242bab5fb84f7c1e01eca640
 
 pkgname = atomicpi-utils
 

@@ -1,0 +1,11 @@
+[Unit]
+Description=Atomic Pi XMOS audio chip microphone select line holder
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/atomicpi-hold-mic
+ExecStopPost=/usr/sbin/atomicpi-hold-mic --cleanup
+TimeoutSec=0
+
+[Install]
+WantedBy=sysinit.target

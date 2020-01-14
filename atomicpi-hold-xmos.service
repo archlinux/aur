@@ -1,0 +1,11 @@
+[Unit]
+Description=Atomic Pi XMOS audio chip reset line holder
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/atomicpi-hold-xmos
+ExecStopPost=/usr/sbin/atomicpi-hold-xmos --cleanup
+TimeoutSec=0
+
+[Install]
+WantedBy=sysinit.target
