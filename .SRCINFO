@@ -1,14 +1,14 @@
 pkgbase = otf-jost
 	pkgdesc = An original font created by indestructible type*. It is inspired by the designs of Paul Renner.
-	pkgver = 3.4
+	pkgver = 3.5
 	pkgrel = 1
 	url = http://indestructible-type.github.io/Jost.html
 	arch = any
 	license = custom
 	conflicts = otf-renner
 	replaces = otf-renner
-	source = Jost-3.4.zip::https://github.com/indestructible-type/Jost/releases/download/3.4/Jost.zip
-	sha256sums = e0008810945b5073a72d98daea24227474101e60f459bb1c08e6c63bcf5337ba
+	source = Jost-3.5.zip::https://github.com/indestructible-type/Jost/releases/download/3.5/Jost.zip
+	sha256sums = 1030acfb33af22e9bbd2217706c76da87a94c41c58a8ec6d61e785696b1469d9
 
 pkgname = otf-jost
 
