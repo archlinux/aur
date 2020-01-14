@@ -1,0 +1,16 @@
+pkgbase = nodejs-nexe
+	pkgdesc = Command-line JSON processing tool
+	pkgver = 4.0.0_beta.3
+	pkgrel = 1
+	url = https://github.com/nexe/nexe
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = nexe-4.0.0-beta.3.tgz
+	options = !emptydirs
+	source = http://registry.npmjs.org/nexe/-/nexe-4.0.0-beta.3.tgz
+	sha256sums = 23b0927d70fe9f2c15f8b5c506e89a35f8b61ba5d8f71aa58485997f09c40501
+
+pkgname = nodejs-nexe
+
