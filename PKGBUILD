@@ -1,8 +1,8 @@
 # Maintainer: BrainDamage
 pkgname="libsixel"
-pkgrel=1
+pkgrel=2
 pkgver="v1.8.6"
-pkgdesc="libsixel provides and encoder/decoder implementation for DEC SIXEL graphics, and some converter programs"
+pkgdesc="provides a codec for DEC SIXEL graphics, and some converter programs"
 arch=("i686" "x86_64")
 url="https://saitoha.github.io/libsixel/"
 license=("MIT")
@@ -16,13 +16,13 @@ build() {
 	make
 }
 
+check() {
+	cd "${srcdir}/${pkgname}-${pkgver#v}"
+	make test
+}
+
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver#v}"
 	make DESTDIR="${pkgdir}" install
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/libsixel/LICENSE"
-}
-
-check() {
-	cd "${srcdir}/${pkgname}-${pkgver#v}"
-	make test
 }
