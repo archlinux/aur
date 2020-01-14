@@ -1,0 +1,15 @@
+pkgbase = spambayes
+	pkgdesc = Bayesian anti-spam classifier written in Python
+	pkgver = 1.1a6
+	pkgrel = 7
+	url = http://spambayes.sourceforge.net/
+	arch = any
+	license = PSF
+	depends = python2
+	depends = python2-lockfile
+	depends = python2-pydns
+	depends = python2-setuptools
+	source = https://downloads.sourceforge.net/sourceforge/spambayes/spambayes-1.1a6.tar.gz
+	sha256sums = 14752d9930a4f103789918a26eaed0348d27329f34e14666edfc6d05b6b01053
+
+pkgname = spambayes
