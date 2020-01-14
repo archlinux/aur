@@ -3,7 +3,7 @@
 
 pkgname=photoqt
 pkgver=1.7.1
-pkgrel=11
+pkgrel=12
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -25,6 +25,7 @@ prepare() {
   # To build PhotoQt with less features, add -Dxxxx=OFF to
   # the next line (where xxxx is the respective CMake option).
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF
+  
 }
 
 build() {
