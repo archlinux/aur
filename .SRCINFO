@@ -1,0 +1,16 @@
+pkgbase = forge-charm-1.14.4-bin
+	pkgdesc = A Vanilla+ Minecraft mod inspired by Quark.
+	pkgver = 1.3.4
+	pkgrel = 1
+	url = https://github.com/svenhjol/Charm
+	arch = any
+	license = MIT
+	depends = forge-server
+	noextract = forge-charm-1.14.4-bin-1.3.4.jar
+	source = forge-charm-1.14.4-bin-1.3.4.jar::https://github.com/svenhjol/Charm/releases/download/1.14.4-1.3.4/Charm-1.14.4-1.3.4.jar
+	source = LICENSE
+	sha256sums = c5a9d9215291207996cea1b81fb28d1dcd14b4d28b67e801a6997e4fd6ad5c23
+	sha256sums = a2735ddedb3d10060306a06e47937549cff323bb9991331ea2fbf2c7585f0509
+
+pkgname = forge-charm-1.14.4-bin
+
