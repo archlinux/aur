@@ -3,7 +3,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
@@ -23,7 +23,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-environment' 'android-pkg-config' 'yasm')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-sha256sums=('cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4'
+sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c'
             '574f234bd6e09c47e8435faffd464a3fe01dcfdfd939889e6608451f795a1701')
 
 prepare() {
