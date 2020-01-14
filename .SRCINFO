@@ -1,0 +1,23 @@
+pkgbase = lib32-vkd3d-valve-git
+	pkgdesc = D3D12 to Vulkan translation library. 32-bit (Valve version)
+	pkgver = 40e4a74
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/vkd3d
+	arch = x86_64
+	license = LGPL
+	makedepends = spirv-headers-git
+	makedepends = vulkan-headers
+	makedepends = xcb-proto
+	makedepends = wine
+	depends = vkd3d
+	depends = lib32-spirv-tools
+	depends = lib32-vulkan-icd-loader
+	depends = lib32-libxcb
+	provides = lib32-vkd3d
+	conflicts = lib32-vkd3d
+	conflicts = lib32-vkd3d-git
+	source = git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_4.11
+	sha256sums = SKIP
+
+pkgname = lib32-vkd3d-valve-git
+
