@@ -8,7 +8,7 @@ arch=('any')
 url="https://www.onassis.org/initiatives/cavafy-archive/cavafy-script"
 license=('custom:cc-by-nc-nd-4.0')
 depends=('fontconfig' 'xorg-font-utils')
-provides=('ttf-font')
+provides=('ttf-cavafy-script' 'ttf-font')
 source=('https://github.com/onassis-org/cavafy-script/archive/v1.1.zip'
         'https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt')
 md5sums=('3769277f4d1c2cab7749496d6cb8adff'
