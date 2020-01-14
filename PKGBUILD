@@ -1,9 +1,6 @@
-# Maintainer: Jiri Tyr <jiri dot tyr at gmail dot com>
-
-pkgname='plasma-wallpaper-neon-particles-bzr'
-_pkgname="${pkgname%-bzr}"
-pkgver='0.1.7'
-pkgrel=2
+pkgname='plasma-wallpaper-asciiquarium-git'
+pkgver=r33.4d6e48a
+pkgrel=1
 pkgdesc='Plasma Wallpaper Neon Particles from Ivan Safonov'
 arch=('any')
 url='https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles'
@@ -11,23 +8,21 @@ license=('GPL')
 depends=('plasma-workspace')
 makedepends=('cmake' 'extra-cmake-modules' 'bzr')
 provides=("${pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::bzr+https://code.launchpad.net/~ivan-safonov/+junk/${_pkgname}")
+source=("git+https://anongit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${_pkgname}"
-
-    printf "%s.%s" $(grep -P -o '(?<=set\(PROJECT_VERSION ")(.[^"]+)' CMakeLists.txt) $(bzr revno)
+  cd "plasma_wallpaper_asciiquarium"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/${_pkgname}"
+    cd "$srcdir/plasma_wallpaper_asciiquarium"
     cmake -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
 package() {
-    cd "$srcdir/${_pkgname}"
+    cd "$srcdir/plasma_wallpaper_asciiquarium"
     make DESTDIR="$pkgdir/" install
 }
