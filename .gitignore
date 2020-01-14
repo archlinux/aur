@@ -1,0 +1,7 @@
+
+/pkg
+/src
+/verapdf.png
+*.pkg.tar.xz
+/verapdf-*-installer.zip
+/gen_srcinfo.sh

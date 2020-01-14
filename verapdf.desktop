@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=veraPDF
+GenericName=PDF/A Conformance Checker
+Comment=purpose-built, open source, file-format validator covering all PDF/A parts and conformance levels
+MimeType=application/pdf;
+Exec=verapdf-gui %F
+Icon=/usr/share/pixmaps/verapdf.png
+Type=Application
+Terminal=false
+Categories=Development;Utility;
+StartupWMClass=org-verapdf-apps-GreenfieldGuiWrapper
+Keywords=PDF;
