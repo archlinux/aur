@@ -1,6 +1,6 @@
 # Maintainer: das_kube
 pkgname='esy'
-pkgver='0.5.8'
+pkgver='0.6.0'
 arch=('i686' 'x86_64')
 pkgrel='1'
 pkgdesc="package manager for OCaml/Reason"
