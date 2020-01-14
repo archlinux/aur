@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=6.0.6
+pkgver=6.1.0
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
@@ -11,8 +11,9 @@ arch=('i686' 'x86_64')
 url='https://virtualbox.org'
 license=('GPL' 'custom')
 depends=('curl' 'libxml2' 'libvpx' 'libpng' 'python' 'opus')
-makedepends=('iasl' 'libxslt' 'cdrkit' 'libidl2' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap' 'glu')
-makedepends_x86_64=('gcc-multilib')
+makedepends=(
+    'iasl' 'libxslt' 'cdrkit' 'libidl2' 'libpulse' 'device-mapper' 'libvncserver' 'gsoap' 'glu' 'lib32-gcc-libs'
+)
 optdepends=('vde2: Virtual Distributed Ethernet support'
             'virtualbox-guest-iso: Guest Additions CD image'
             'virtualbox-ext-vnc: VNC server support'
@@ -31,15 +32,13 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         'vboxservice-nox.service'
         'vboxweb.service'
         'vboxreload'
-        '002-dri-driver-path.patch'
         '005-gsoap-build.patch'
         '008-no-vboxvideo.patch'
-        '009-include-path.patch'
-        '011-python-3-7.patch'
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
+        '013-Makefile.patch'
         )
 sha256sums=(
-    '3419c49a90cef7f0a5781426259d47d7871457ab0fd201ec0fca83321441e552'
+    '49005ed94454f893fc3955e1e2b9607e85c300235cb983b39d1df2cfcf29f039'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
@@ -47,13 +46,11 @@ sha256sums=(
     '94a808f46909a51b2d0cf2c6e0a6c9dea792034943e6413bf9649a036c921b21'
     '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
     'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
-    '2a9d7748dc58f9d091f791da06b733a696943114f7c0d580fa00a0752eb1d2ac'
-    'f67674931c30187f867233e3a4ae662f93c9110fbd0bfce50dd9f391f4533bc0'
+    '4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d'
     '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
-    '8b7f241107863f82a5b0ae336aead0b3366a40103ff72dbebf33f54b512a0cbc'
-    '7055014fde94a41f20d9581615c818fd1f2d249a06864585f562b0a677131e70'
-    '55224cb74b54b331d691f171efc0d4c058a14f738551f1d8f559146c2908635d'
+    '053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491'
     '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
+    'da7e58ed37dc23c6202aab3017864579a99e78417f3421ddcc98a198198fe2c9'
 )
 
 prepare() {
@@ -87,6 +84,7 @@ build() {
         --enable-vnc \
         --disable-java \
         --disable-kmods \
+        --disable-alsa \
         --with-makeself=/usr/bin/echo
     # fake makeself binary to compile without nofatal
     # makeself is used by linux installer. we don't need it.
@@ -116,7 +114,7 @@ package() {
     # libraries
     install -dm0755 "$pkgdir/usr/lib/virtualbox"
     install -m0755 *.so "$pkgdir/usr/lib/virtualbox"
-    install -m0644 *.rc *.r0 VBoxEFI*.fd "$pkgdir/usr/lib/virtualbox"
+    install -m0644 *.r0 VBoxEFI*.fd "$pkgdir/usr/lib/virtualbox"
     ## setuid root binaries
     install -m4755 VBoxHeadless VBoxNetDHCP VBoxNetAdpCtl VBoxNetNAT -t "$pkgdir/usr/lib/virtualbox"
     ## other binaries
@@ -124,6 +122,7 @@ package() {
 
     # components
     install -dm0755 "$pkgdir/usr/lib/virtualbox/components"
+    rm components/VBoxREM.so # TODO: remove when dead link is fixed
     install -m0755 components/* -t "$pkgdir/usr/lib/virtualbox/components"
 
     # extensions packs
