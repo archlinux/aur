@@ -1,4 +1,5 @@
-# Maintainer: UTUMI Hirosi <utuhiro78 att yahoo dott co dott jp>
+# Maintainer: Masaki Haruka <yek@reasonset.net>
+# Contributor: UTUMI Hirosi <utuhiro78 att yahoo dott co dott jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
@@ -6,40 +7,60 @@
 _bldtype=Release
 
 _mozcver=2.23.2815.102
-_dicver=20191230
-_revision=1
+_fcitxver=2.23.2815.102.1
+_neologddate=20191230
+pkgver=${_mozcver}.${_neologddate}
+pkgrel=2
 
-_pkgbase=mozc
 pkgname=mozc-neologd-ut
 true && pkgname=('mozc-neologd-ut' 'fcitx-mozc-neologd-ut')
-pkgver=${_mozcver}.${_dicver}.${_revision}
-pkgrel=1
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
 makedepends=('clang' 'gyp' 'protobuf' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
-source=('https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F25%2F25365%2Fmozc-neologd-ut-2.23.2815.102.20191230.1.tar.xz'
-        # https://github.com/google/mozc/issues/462#issuecomment-573220288
-        # https://salsa.debian.org/debian/mozc/tree/master/debian/patches
-        http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
+source=(
+  mozc-${_mozcver}+dfsg.tar.xz::http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_${_mozcver}+dfsg.orig.tar.xz
+  japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_rev}
+  Fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
+  mozc-2.23.2815.102-python-3.patch::https://github.com/google/mozc/files/4048079/mozc-2.23.2815.102-python-3.patch.txt
+  add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/add_support_new_japanese_era.patch
+  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
+  https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
+  "https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F25%2F25392%2Fmozcdic-neologd-ut-20191230.2.tar.bz2"
+)
 
-sha1sums=('SKIP'
-          '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
+sha1sums=(
+  '7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb'
+  'SKIP'
+  '4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf'
+  '1b281471dac2eeab6d9ad7c47e3929e1ac402344'
+  '13f8fbbc768d5042fb55d877acf2a73fc8b5e3f0'
+  '63a2b10e7d209c6216e2d912b2629efc44c637ea'
+  '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d'
+  'SKIP'
+)
 
 prepare() {
-  cd mozc-neologd-ut-${pkgver}/src
-  patch -Np2 -i "${srcdir}/mozc-neologd-ut-${pkgver}/patches/mozc-2.23.2815.102-python-3.patch"
-  patch -Np2 -i "${srcdir}/mozc-neologd-ut-${pkgver}/patches/debian_patches_Fix-build-with-gcc8.patch"
-  patch -Np2 -i "${srcdir}/mozc-neologd-ut-${pkgver}/patches/debian_patches_add_support_new_japanese_era.patch"
+  cd mozc-${_mozcver}+dfsg
+  patch -Np1 -i ${srcdir}/Fix-build-with-gcc8.patch
+  patch -Np1 -i ${srcdir}/mozc-2.23.2815.102-python-3.patch
+  patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
+  patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
+  mkdir -p src/third_party/
+  cp -a ${srcdir}/japanese_usage_dictionary src/third_party/
+  cat ${srcdir}/mozcdic-neologd-ut-${_neologddate}.${pkgrel}/mozcdic-*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
-  cd mozc-neologd-ut-${pkgver}/src
+  cd mozc-${_mozcver}+dfsg/src
+
+  # Avoid fcitx5 build errors
+  rm -rf unix/fcitx5/
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool renderer/renderer.gyp:mozc_renderer unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
 
-  GYP_DEFINES="use_libprotobuf=1 use_libzinnia=1 document_dir=/usr/share/licenses/${pkgbase}" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
+  GYP_DEFINES="use_libprotobuf=1 use_libzinnia=1 document_dir=/usr/share/licenses/mozc" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
   python build_mozc.py build -c $_bldtype $_targets
 }
 
@@ -48,7 +69,7 @@ package_mozc-neologd-ut() {
   arch=('i686' 'x86_64')
   depends=('qt5-base' 'zinnia')
   conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut')
-  cd mozc-neologd-ut-${pkgver}/src
+  cd mozc-${_mozcver}+dfsg/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
   install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
 
@@ -62,7 +83,7 @@ package_fcitx-mozc-neologd-ut() {
   depends=("mozc-neologd-ut=${pkgver}" 'fcitx')
   replaces=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-ut')
 
-  cd mozc-neologd-ut-${pkgver}/src
+  cd mozc-${_mozcver}+dfsg/src
   for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
   do
     filename=`basename $mofile`
@@ -75,5 +96,5 @@ package_fcitx-mozc-neologd-ut() {
   install -D -m 644 unix/fcitx/mozc.conf "${pkgdir}/usr/share/fcitx/inputmethod/mozc.conf"
 
   install -d ${pkgdir}/usr/share/fcitx/mozc/icon
-  install -m 644 $srcdir/fcitx-mozc-icons/*.png ${pkgdir}/usr/share/fcitx/mozc/icon/
+  install -m 644 ${srcdir}/fcitx-mozc-icons/*.png ${pkgdir}/usr/share/fcitx/mozc/icon/
 }
