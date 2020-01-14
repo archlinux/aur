@@ -3,7 +3,7 @@
 
 pkgname=azure-cli
 pkgver=2.0.79
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -20,6 +20,7 @@ sha256sums=("9dc76481771bb2e219217187a1331a85a426e685d4070867a42d5825956ee512"
 prepare() {
   rm -rf "$srcdir/azure-cli"
   grep -v -E '^===>|^$' install.response | python "$srcdir/install.py"
+  find "$srcdir/azure-cli/bin" -type f -print0 | xargs -0 sed -i -e "s|$srcdir|/opt|g"
 }
 
 pkgver() {
