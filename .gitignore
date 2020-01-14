@@ -1,4 +1,5 @@
 *.pkg.tar.xz*
+*.log
 mcipc/
 pkg/
 src/
