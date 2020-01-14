@@ -13,6 +13,7 @@ pkgbase = smooth-git
 	depends = libxml2
 	provides = smooth
 	provides = libsmooth
+	provides = libsmooth-0.9.so=0-64
 	conflicts = smooth
 	conflicts = libsmooth
 	source = git+https://github.com/enzo1982/smooth.git

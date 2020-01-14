@@ -8,7 +8,7 @@ url="http://www.smooth-project.org"
 license=('Artistic2.0')
 depends=('fribidi' 'gtk3' 'libjpeg-turbo' 'libxml2')
 makedepends=('git')
-provides=("${pkgname%-git}" 'libsmooth')
+provides=("${pkgname%-git}" 'libsmooth' 'libsmooth-0.9.so=0-64')
 conflicts=("${pkgname%-git}" 'libsmooth')
 source=('git+https://github.com/enzo1982/smooth.git')
 sha256sums=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	find . -type f -exec sed -i 's!/usr/local!/usr!g' {} \;
+	find . -type f -exec sed -i 's|/usr/local|/usr|g' {} \;
 }
 
 build() {
