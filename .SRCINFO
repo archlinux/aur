@@ -1,24 +1,20 @@
 pkgbase = python2-stem
-	pkgdesc = Python controller library for Tor
-	pkgver = 1.7.1
-	pkgrel = 2
+	pkgdesc = Tor control library for Python - python2 version
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://stem.torproject.org/
 	arch = any
 	license = LGPL3
-	checkdepends = tor
-	checkdepends = python2-mock
+	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-cryptography
-	depends = python2-pynacl
-	depends = procps-ng
 	optdepends = tor: tor-server to talk to
 	provides = stem
-	replaces = stem
-	source = https://files.pythonhosted.org/packages/source/s/stem/stem-1.7.1.tar.gz
-	source = https://files.pythonhosted.org/packages/source/s/stem/stem-1.7.1.tar.gz.asc
+	conflicts = stem
+	source = python2-stem-1.8.0-1.tar.gz::https://files.pythonhosted.org/packages/source/s/stem/stem-1.8.0.tar.gz
+	source = python2-stem-1.8.0-1.tar.gz.asc::https://files.pythonhosted.org/packages/source/s/stem/stem-1.8.0.tar.gz.asc
 	validpgpkeys = 68278CC5DD2D1E85C4E45AD90445B7AB9ABBEEC6
-	sha256sums = c9eaf3116cb60c15995cbd3dec3a5cbc50e9bb6e062c4d6d42201e566f498ca2
+	sha256sums = a0b48ea6224e95f22aa34c0bc3415f0eb4667ddeae3dfb5e32a6920c185568c2
 	sha256sums = SKIP
 
 pkgname = python2-stem
-
