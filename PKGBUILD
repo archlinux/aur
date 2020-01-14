@@ -7,15 +7,15 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-pkgver='7.3.12'
-pkgrel=4
+pkgver='7.4.1'
+pkgrel=1
 pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
 url="http://www.apachefriends.org/"
 license=('GPL')
 arch=('x86_64')
 depends=('net-tools' 'mariadb')
 optdepends=('polkit: to run XAMPP Manager from menu')
-makedepends=('fakeuser-git' 'sdx' 'tclkit')
+makedepends=('fakeuser-git' 'sdx' 'tclkit' 'rsync')
 source=('lampp.service'
 	'xampp-manager.desktop'
 	'xampp-manager.png'
@@ -35,7 +35,7 @@ sha256sums=('9aa2e9b2ec768b7e0d5394cf27653a7c9d0291a890d058293109f1aeace79150'
             '567dcfe99dde385cd93da38ea2ffa9ae9b350d8b4019debc1fb22b3154df4206'
             '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
             '3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e')
-sha256sums_x86_64=('0bfb680f0745df93bea7a90de44357ff7729c2c29f7aa9880d9987f7ba539be4'
+sha256sums_x86_64=('a2b186987e38646e57a296ed576d15cca1711f258d0bf55adea84b31f252ab3e'
                    '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
                    '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
 
