@@ -2,9 +2,9 @@
 
 pkgname=algernon
 pkgver=1.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://algernon.roboticoverlords.org/'
 license=(MIT)
 makedepends=(git go)
