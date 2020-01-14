@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=freac-git
-pkgver=1.1.beta2.0.gc91d03e9
+pkgver=1.1.beta2.continuous.2.g4612a274
 pkgrel=1
 pkgdesc="Audio converter and CD ripper with support for various popular formats and encoders."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/([^-]*-g)/r/;s/-/./g')"
+	printf "1.1.beta2.%s" "$(git describe --long --tags | sed 's/^v//;s/([^-]*-g)/r/;s/-/./g')"
 }
 
 prepare() {
