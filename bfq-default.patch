@@ -1,23 +1,23 @@
+diff --git a/block/elevator.c b/block/elevator.c
+index 076ba7308e65..81f89095aa77 100644
 --- a/block/elevator.c
 +++ b/block/elevator.c
-@@ -974,8 +974,8 @@ static int elevator_switch_mq(struct request_queue *q,
+@@ -623,15 +623,15 @@ static inline bool elv_support_iosched(struct request_queue *q)
  }
  
  /*
-- * For blk-mq devices, we default to using mq-deadline, if available, for single
-- * queue devices.  If deadline isn't available OR we have multiple queues,
-+ * For blk-mq devices, we default to using BFQ, if available, for single
-+ * queue devices. If BFQ isn't available OR we have multiple queues,
-  * default to "none".
+- * For single queue devices, default to using mq-deadline. If we have multiple
+- * queues or mq-deadline is not available, default to "none".
++ * For single queue devices, default to using bfq. If we have multiple
++ * queues or bfq is not available, default to "none".
   */
- int elevator_init_mq(struct request_queue *q)
-@@ -994,7 +994,7 @@ int elevator_init_mq(struct request_queue *q)
- 	if (unlikely(q->elevator))
- 		goto out_unlock;
+ static struct elevator_type *elevator_get_default(struct request_queue *q)
+ {
+ 	if (q->nr_hw_queues != 1)
+ 		return NULL;
  
--	e = elevator_get(q, "mq-deadline", false);
-+	e = elevator_get(q, "bfq", false);
- 	if (!e)
- 		goto out_unlock;
+-	return elevator_get(q, "mq-deadline", false);
++	return elevator_get(q, "bfq", false);
+ }
  
-
+ /*

@@ -1,0 +1,400 @@
+From 18e885f4d416b8bcfa310f566956276dad5ce4d7 Mon Sep 17 00:00:00 2001
+From: John Schoenick <johns@valvesoftware.com>
+Date: Mon, 22 Jul 2019 17:06:17 -0700
+Subject: [PATCH] Squashed futex-wait-multiple patchset onto stable release
+ v5.2.1
+
+Includes opcode 31 patch for testing with proton-4.11+
+
+Squashed commit of the following:
+
+commit b0396eea1ad67904d96da55996b17cefc97b0a1c
+Author: Gabriel Krisman Bertazi <krisman@collabora.com>
+Date:   Wed Jul 17 14:28:26 2019 -0400
+
+    futex: Change WAIT_MULTIPLE opcode to 31
+
+    Signed-off-by: Gabriel Krisman Bertazi <krisman@collabora.com>
+
+commit bac93e6b84a9fd7114e6ec0ab6bca4d54fafc941
+Author: Gabriel Krisman Bertazi <krisman@collabora.com>
+Date:   Mon Jul 8 09:44:09 2019 -0400
+
+    futex: Implement FUTEX_WAIT_MULTIPLE
+
+    This is a new futex operation to allow a thread to wait on several
+    futexes at the same time, and wake up on any of them.  In a sense, it
+    implements one of the features that was supported by pooling on the old
+    FUTEX_FD interface.
+
+    My use case for this feature lies in Wine, where we want to implement a
+    similar function available in Windows, mainly for event handling.  The
+    wine folks have an implementation of the userspace side using eventfd,
+    but it suffers from bad performance, as shown in the measurements below.
+
+    Technically, the old FUTEX_WAIT implementation can be easily
+    reimplemented using do_futex_wait_multiple, with a count one, and I have
+    a patch demonstrating how it works.  I'm not proposing it, since futex
+    is such a tricky code, that I'd be more confortable to have
+    FUTEX_WAIT_MULTIPLE running upstream for a couple development cycles,
+    before considering modifying FUTEX_WAIT.
+
+    This was tested using three mechanisms:
+
+    1) By reimplementing FUTEX_WAIT in terms of FUTEX_WAIT_MULTIPLE and
+    running tools/testing/selftests/futex and a full linux distro on top of
+    this kernel.
+
+    2) By an example code that exercises the FUTEX_WAIT_MULTIPLE path on a
+    multi thread, event handling setup.
+
+    3) By running the Wine fsync implementation and executing multi-threaded
+    applications, in particular modern games on top of the implementation.
+
+    Signed-off-by: Zebediah Figura <z.figura12@gmail.com>
+    Signed-off-by: Steven Noonan <steven@valvesoftware.com>
+    Signed-off-by: Pierre-Loup A. Griffais <pgriffais@valvesoftware.com>
+    Signed-off-by: Gabriel Krisman Bertazi <krisman@collabora.com>
+
+commit f7817683081a4bb0dea6e8c0c090c9a4e35901bc
+Author: Gabriel Krisman Bertazi <krisman@collabora.com>
+Date:   Fri Jul 12 14:16:20 2019 -0400
+
+    futex: Split key setup from key queue locking and read
+
+    split the futex key setup from the queue locking and key reading.  This
+    is usefull to support the setup of multiple keys at the same time, like
+    what is done in futex_requeue() and what will be done for the
+    FUTEX_WAIT_MULTIPLE command.
+
+    Signed-off-by: Gabriel Krisman Bertazi <krisman@collabora.com>
+---
+ include/uapi/linux/futex.h |   7 ++
+ kernel/futex.c             | 214 ++++++++++++++++++++++++++++++++-----
+ 2 files changed, 196 insertions(+), 25 deletions(-)
+
+diff --git a/include/uapi/linux/futex.h b/include/uapi/linux/futex.h
+index a89eb0accd5e..c34e52e0f787 100644
+--- a/include/uapi/linux/futex.h
++++ b/include/uapi/linux/futex.h
+@@ -21,6 +21,7 @@
+ #define FUTEX_WAKE_BITSET	10
+ #define FUTEX_WAIT_REQUEUE_PI	11
+ #define FUTEX_CMP_REQUEUE_PI	12
++#define FUTEX_WAIT_MULTIPLE	31
+ 
+ #define FUTEX_PRIVATE_FLAG	128
+ #define FUTEX_CLOCK_REALTIME	256
+@@ -150,4 +151,10 @@ struct robust_list_head {
+   (((op & 0xf) << 28) | ((cmp & 0xf) << 24)		\
+    | ((oparg & 0xfff) << 12) | (cmparg & 0xfff))
+ 
++struct futex_wait_block {
++	__u32 __user *uaddr;
++	__u32 val;
++	__u32 bitset;
++};
++
+ #endif /* _UAPI_LINUX_FUTEX_H */
+diff --git a/kernel/futex.c b/kernel/futex.c
+index 4b5b468c58b6..5c1c2e2c3aeb 100644
+--- a/kernel/futex.c
++++ b/kernel/futex.c
+@@ -183,6 +183,7 @@ static int  __read_mostly futex_cmpxchg_enabled;
+ #endif
+ #define FLAGS_CLOCKRT		0x02
+ #define FLAGS_HAS_TIMEOUT	0x04
++#define FLAGS_WAKE_MULTIPLE	0x08
+ 
+ /*
+  * Priority Inheritance state:
+@@ -2600,6 +2601,39 @@ static void futex_wait_queue_me(struct futex_hash_bucket *hb, struct futex_q *q,
+ 	__set_current_state(TASK_RUNNING);
+ }
+ 
++static int __futex_wait_setup(u32 __user *uaddr, u32 val, unsigned int flags,
++			      struct futex_q *q, struct futex_hash_bucket **hb)
++{
++
++	u32 uval;
++	int ret;
++
++retry_private:
++	*hb = queue_lock(q);
++
++	ret = get_futex_value_locked(&uval, uaddr);
++
++	if (ret) {
++		queue_unlock(*hb);
++
++		ret = get_user(uval, uaddr);
++		if (ret)
++			return ret;
++
++		if (!(flags & FLAGS_SHARED))
++			goto retry_private;
++
++		return 1;
++	}
++
++	if (uval != val) {
++		queue_unlock(*hb);
++		ret = -EWOULDBLOCK;
++	}
++
++	return ret;
++}
++
+ /**
+  * futex_wait_setup() - Prepare to wait on a futex
+  * @uaddr:	the futex userspace address
+@@ -2620,7 +2654,6 @@ static void futex_wait_queue_me(struct futex_hash_bucket *hb, struct futex_q *q,
+ static int futex_wait_setup(u32 __user *uaddr, u32 val, unsigned int flags,
+ 			   struct futex_q *q, struct futex_hash_bucket **hb)
+ {
+-	u32 uval;
+ 	int ret;
+ 
+ 	/*
+@@ -2641,38 +2674,161 @@ static int futex_wait_setup(u32 __user *uaddr, u32 val, unsigned int flags,
+ 	 * absorb a wakeup if *uaddr does not match the desired values
+ 	 * while the syscall executes.
+ 	 */
+-retry:
+-	ret = get_futex_key(uaddr, flags & FLAGS_SHARED, &q->key, FUTEX_READ);
+-	if (unlikely(ret != 0))
+-		return ret;
++	do {
++		ret = get_futex_key(uaddr, flags & FLAGS_SHARED,
++				    &q->key, FUTEX_READ);
++		if (unlikely(ret != 0))
++			return ret;
+ 
+-retry_private:
+-	*hb = queue_lock(q);
++		ret = __futex_wait_setup(uaddr, val, flags, q, hb);
+ 
+-	ret = get_futex_value_locked(&uval, uaddr);
+-
+-	if (ret) {
+-		queue_unlock(*hb);
+-
+-		ret = get_user(uval, uaddr);
++		/* Drop key reference if retry or error. */
+ 		if (ret)
++			put_futex_key(&q->key);
++	} while (ret > 0);
++
++	return ret;
++}
++
++static int do_futex_wait_multiple(struct futex_wait_block *wb,
++				  u32 count, unsigned int flags,
++				  ktime_t *abs_time)
++{
++
++	struct hrtimer_sleeper timeout, *to;
++	struct futex_hash_bucket *hb;
++	struct futex_q *qs = NULL;
++	int ret;
++	int i;
++
++	qs = kcalloc(count, sizeof(struct futex_q), GFP_KERNEL);
++	if (!qs)
++		return -ENOMEM;
++
++	to = futex_setup_timer(abs_time, &timeout, flags,
++			       current->timer_slack_ns);
++ retry:
++	for (i = 0; i < count; i++) {
++		qs[i].key = FUTEX_KEY_INIT;
++		qs[i].bitset = wb[i].bitset;
++
++		ret = get_futex_key(wb[i].uaddr, flags & FLAGS_SHARED,
++				    &qs[i].key, FUTEX_READ);
++		if (unlikely(ret != 0)) {
++			for (--i; i >= 0; i--)
++				put_futex_key(&qs[i].key);
+ 			goto out;
++		}
++	}
++
++	set_current_state(TASK_INTERRUPTIBLE);
++
++	for (i = 0; i < count; i++) {
++		ret = __futex_wait_setup(wb[i].uaddr, wb[i].val,
++					 flags, &qs[i], &hb);
++		if (ret) {
++			/* Drop the failed key directly.  keys 0..(i-1)
++			 * will be put by unqueue_me. */
++			put_futex_key(&qs[i].key);
++
++			/* Undo the partial work we did. */
++			for (--i; i >= 0; i--)
++				unqueue_me(&qs[i]);
++
++			__set_current_state(TASK_RUNNING);
++			if (ret > 0)
++				goto retry;
++			goto out;
++		}
++
++		/* We can't hold to the bucket lock when dealing with
++		 * the next futex. Queue ourselves now so we can unlock
++		 * it before moving on. */
++		queue_me(&qs[i], hb);
++	}
++
++	if (to)
++		hrtimer_start_expires(&to->timer, HRTIMER_MODE_ABS);
++
++	/* There is no easy to way to check if we are wake already on
++	 * multiple futexes without waking through each one of them.  So
++	 * just sleep and let the scheduler handle it.
++	 */
++	if (!to || to->task)
++		freezable_schedule();
++
++	__set_current_state(TASK_RUNNING);
++
++	ret = -ETIMEDOUT;
++	/* If we were woken (and unqueued), we succeeded. */
++	for (i = 0; i < count; i++)
++		if (!unqueue_me(&qs[i]))
++			ret = i;
++
++	/* Succeed wakeup */
++	if (ret >= 0)
++		goto out;
+ 
+-		if (!(flags & FLAGS_SHARED))
+-			goto retry_private;
++	/* Woken by triggered timeout */
++	if (to && !to->task)
++		goto out;
+ 
+-		put_futex_key(&q->key);
++	/*
++	 * We expect signal_pending(current), but we might be the
++	 * victim of a spurious wakeup as well.
++	 */
++	if (!signal_pending(current))
+ 		goto retry;
++
++	ret = -ERESTARTSYS;
++	if (!abs_time)
++		goto out;
++
++	ret = -ERESTART_RESTARTBLOCK;
++ out:
++	if (to) {
++		hrtimer_cancel(&to->timer);
++		destroy_hrtimer_on_stack(&to->timer);
+ 	}
+ 
+-	if (uval != val) {
+-		queue_unlock(*hb);
+-		ret = -EWOULDBLOCK;
++	kfree(qs);
++	return ret;
++}
++
++static int futex_wait_multiple(u32 __user *uaddr, unsigned int flags,
++			       u32 count, ktime_t *abs_time)
++{
++	struct futex_wait_block *wb;
++	struct restart_block *restart;
++	int ret;
++
++	if (!count)
++		return -EINVAL;
++
++	wb = kcalloc(count, sizeof(struct futex_wait_block), GFP_KERNEL);
++	if (!wb)
++		return -ENOMEM;
++
++	if (copy_from_user(wb, uaddr,
++			   count * sizeof(struct futex_wait_block))) {
++		ret = -EFAULT;
++		goto out;
++	}
++
++	ret = do_futex_wait_multiple(wb, count, flags, abs_time);
++
++	if (ret == -ERESTART_RESTARTBLOCK) {
++		restart = &current->restart_block;
++		restart->fn = futex_wait_restart;
++		restart->futex.uaddr = uaddr;
++		restart->futex.val = count;
++		restart->futex.time = *abs_time;
++		restart->futex.flags = (flags | FLAGS_HAS_TIMEOUT |
++					FLAGS_WAKE_MULTIPLE);
+ 	}
+ 
+ out:
+-	if (ret)
+-		put_futex_key(&q->key);
++	kfree(wb);
+ 	return ret;
+ }
+ 
+@@ -2762,6 +2918,10 @@ static long futex_wait_restart(struct restart_block *restart)
+ 	}
+ 	restart->fn = do_no_restart_syscall;
+ 
++	if (restart->futex.flags & FLAGS_WAKE_MULTIPLE)
++		return (long)futex_wait_multiple(uaddr, restart->futex.flags,
++						 restart->futex.val, tp);
++
+ 	return (long)futex_wait(uaddr, restart->futex.flags,
+ 				restart->futex.val, tp, restart->futex.bitset);
+ }
+@@ -3658,6 +3818,8 @@ long do_futex(u32 __user *uaddr, int op, u32 val, ktime_t *timeout,
+ 					     uaddr2);
+ 	case FUTEX_CMP_REQUEUE_PI:
+ 		return futex_requeue(uaddr, flags, uaddr2, val, val2, &val3, 1);
++	case FUTEX_WAIT_MULTIPLE:
++		return futex_wait_multiple(uaddr, flags, val, timeout);
+ 	}
+ 	return -ENOSYS;
+ }
+@@ -3674,7 +3836,8 @@ SYSCALL_DEFINE6(futex, u32 __user *, uaddr, int, op, u32, val,
+ 
+ 	if (utime && (cmd == FUTEX_WAIT || cmd == FUTEX_LOCK_PI ||
+ 		      cmd == FUTEX_WAIT_BITSET ||
+-		      cmd == FUTEX_WAIT_REQUEUE_PI)) {
++		      cmd == FUTEX_WAIT_REQUEUE_PI ||
++		      cmd == FUTEX_WAIT_MULTIPLE)) {
+ 		if (unlikely(should_fail_futex(!(op & FUTEX_PRIVATE_FLAG))))
+ 			return -EFAULT;
+ 		if (get_timespec64(&ts, utime))
+@@ -3683,7 +3846,7 @@ SYSCALL_DEFINE6(futex, u32 __user *, uaddr, int, op, u32, val,
+ 			return -EINVAL;
+ 
+ 		t = timespec64_to_ktime(ts);
+-		if (cmd == FUTEX_WAIT)
++		if (cmd == FUTEX_WAIT || cmd == FUTEX_WAIT_MULTIPLE)
+ 			t = ktime_add_safe(ktime_get(), t);
+ 		tp = &t;
+ 	}
+@@ -3867,14 +4030,15 @@ SYSCALL_DEFINE6(futex_time32, u32 __user *, uaddr, int, op, u32, val,
+ 
+ 	if (utime && (cmd == FUTEX_WAIT || cmd == FUTEX_LOCK_PI ||
+ 		      cmd == FUTEX_WAIT_BITSET ||
+-		      cmd == FUTEX_WAIT_REQUEUE_PI)) {
++		      cmd == FUTEX_WAIT_REQUEUE_PI ||
++		      cmd == FUTEX_WAIT_MULTIPLE)) {
+ 		if (get_old_timespec32(&ts, utime))
+ 			return -EFAULT;
+ 		if (!timespec64_valid(&ts))
+ 			return -EINVAL;
+ 
+ 		t = timespec64_to_ktime(ts);
+-		if (cmd == FUTEX_WAIT)
++		if (cmd == FUTEX_WAIT || cmd == FUTEX_WAIT_MULTIPLE)
+ 			t = ktime_add_safe(ktime_get(), t);
+ 		tp = &t;
+ 	}
+-- 
+2.22.0
+

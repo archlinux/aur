@@ -1,20 +1,18 @@
 # Maintainer: Matteo De Carlo <matteo.dek at gmail dot com>
 # Maintainer: Roberto Benfatto <robenfatto at covolunablu dot org>
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
-# Contributor: Tobias Powalowski <tpowa at archlinux dot org>
-# Contributor: Thomas Baechler <thomas at archlinux dot org>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.3.9.1
+pkgver=5.4.11.arch1
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-arch${pkgver##*.}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf
-  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
 options=('!strip')
@@ -30,6 +28,7 @@ source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
+  futex-wait-multiple-5.2.1.patch
   'https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/865a07956db55120d69876a202ce0fa35f46b218/drivers/input/joystick/xpad.c'
 )
 validpgpkeys=(
@@ -38,9 +37,10 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e749cd85d37d4d70099b0a7f54e852b039ae07c14e4ab8be299c64edae5d4ba4'
+            'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
             # -- covolunablu-gaming patches --
-            '834c051bfa7e94678c6c48fe13be0931f7ef6c00547e8bc3e735c318296917dd'
+            '136fd376e27fd8503f0ea2c7c3df645fea60a9c05286b53e2bceb7ff8c1d0201'
+            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
             'da4ea29ba0a1d02bd14b6c33aadeb71fd6ac543f36d3e8b64c7f0acf2d8262fc'
 )
 
@@ -188,26 +188,18 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  msg2 "Removing unneeded files..."
-  rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-  msg2 "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
