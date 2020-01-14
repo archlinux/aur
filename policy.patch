@@ -1,0 +1,21 @@
+--- src/cpupower-8/mko.cpupower.policy.in	2017-02-25 18:01:09.000000000 +0100
++++ cpufreqctl.policy	2020-01-15 00:22:32.619348148 +0100
+@@ -6,7 +6,7 @@
+         <vendor>MKO Systems</vendor>
+         <vendor_url>http://mko-sl.de</vendor_url>
+ 
+-        <action id="mko.cpupower.setcpufreq">
++        <action id="cpufreqctl.setcpufreq">
+                 <description>Set a new CPU Frequency to intel_pstate</description>
+                 <description xml:lang="de">Neue CPU-Frequenzgrenzen an intel_pstate senden</description>
+                 <message>No Authorization required to set frequency bounds.</message>
+@@ -16,7 +16,8 @@
+                         <allow_inactive>yes</allow_inactive>
+                         <allow_active>yes</allow_active>
+                 </defaults>
+-                <annotate key="org.freedesktop.policykit.exec.path">xxxPATHxxx</annotate>
++                <annotate key="org.freedesktop.policykit.exec.path">/bin/bash</annotate>
++                <annotate key="org.freedesktop.policykit.exec.argv1">/usr/bin/cpufreqctl</annotate>
+         </action>
+ 
+ </policyconfig>

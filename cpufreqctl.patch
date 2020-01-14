@@ -1,0 +1,8 @@
+--- src/cpupower-8/cpufreqctl	2017-02-25 18:01:09.000000000 +0100
++++ ./cpufreqctl	2020-01-15 00:18:19.885481690 +0100
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/pkexec /bin/bash
+ if [ $# -lt 2 ]
+ then
+ 	echo "Usage: cpufreqctl.sh {turbo|min|max} {value}"
