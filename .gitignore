@@ -6,3 +6,4 @@ src/
 *.src.tar.gz
 *.src.tar.xz
 um-git/
+*.log

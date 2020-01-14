@@ -1,0 +1,15 @@
+*** um.gemspec	2020-01-14 21:08:48.806386134 +0100
+--- um.gemspec.new	2020-01-14 21:09:12.006405944 +0100
+***************
+*** 19,23 ****
+      'templates/**/*'
+    ]
+  
+!   spec.add_runtime_dependency 'kramdown', ['~> 1.17']
+  end
+--- 19,23 ----
+      'templates/**/*'
+    ]
+  
+!   spec.add_runtime_dependency 'kramdown', ['>= 1.17']
+  end

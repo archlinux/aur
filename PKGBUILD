@@ -1,19 +1,27 @@
 # Maintainer: H. Rosendahl <h [at] ro [dot] sendahl [dot] de>
 pkgname=um-git
 _gemname=um
-pkgver=4.1.0.r11.g7763e42
-pkgrel=2
+pkgver=4.2.0.r0.gb56b729
+pkgrel=1
 pkgdesc="utility to create and maintain your own man pages so you can remember how to do stuff"
 arch=("any")
 url="https://github.com/sinclairtarget/um"
 license=("MIT")
-depends=("ruby" "ruby-kramdown-1")
+depends=("ruby" "ruby-kramdown")
 makedepends=("git" "ruby-rake")
 options=(!emptydirs)
 conflicts=("um")
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}"
+        "kramdown-version.patch")
         
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'f119d4f98a2cd9d17a4ccfe56627e129be1faa4ed02c814b2e057729a887aac7')
+
+prepare() {
+    cd "$srcdir/$pkgname/"
+    patch < "$srcdir/kramdown-version.patch"
+}
+
 
 pkgver() {
     cd "$srcdir/$pkgname/"
