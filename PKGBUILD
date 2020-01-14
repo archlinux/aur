@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-fsuae"
 license=('GPL3')
 groups=('libretro')
-depends=('zlib' 'libretro-core-info')
+depends=('zlib' 'libretro-core-info' 'libmpeg2')
 makedepends=('git')
 
 _libname=fsuae_libretro

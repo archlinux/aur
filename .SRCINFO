@@ -13,6 +13,7 @@ pkgbase = libretro-fsuae-git
 	makedepends = git
 	depends = zlib
 	depends = libretro-core-info
+	depends = libmpeg2
 	source = git+https://github.com/libretro/libretro-fsuae.git
 	sha256sums = SKIP
 
