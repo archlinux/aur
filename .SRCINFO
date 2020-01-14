@@ -1,0 +1,21 @@
+pkgbase = neatvnc-git
+	pkgdesc = This is a liberally licensed VNC server library that's intended to be fast and neat. Note: This is a beta release, so the interface is not yet stable.
+	pkgver = r123.6bb3362
+	pkgrel = 1
+	url = https://github.com/any1/neatvnc
+	arch = i686
+	arch = x86_64
+	license = ISC
+	makedepends = meson
+	makedepends = git
+	makedepends = ninja
+	makedepends = libdrm
+	depends = libuv
+	depends = libxkbcommon
+	depends = pixman
+	optdepends = libjpeg-turbo
+	source = neatvnc::git+https://github.com/any1/neatvnc.git
+	sha512sums = SKIP
+
+pkgname = neatvnc-git
+
