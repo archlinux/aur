@@ -1,0 +1,17 @@
+pkgbase = ttf-cavafy-script
+	pkgdesc = Typeface based on the calligraphic style of the alexandrian poet C. P. Cavafy
+	pkgver = 1.1
+	pkgrel = 0
+	url = https://www.onassis.org/initiatives/cavafy-archive/cavafy-script
+	arch = any
+	license = custom:cc-by-nc-nd-4.0
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-font
+	source = https://github.com/onassis-org/cavafy-script/archive/v1.1.zip
+	source = https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
+	md5sums = 3769277f4d1c2cab7749496d6cb8adff
+	md5sums = c70f85fe39eb601f25b595299c688bfd
+
+pkgname = ttf-cavafy-script
+
