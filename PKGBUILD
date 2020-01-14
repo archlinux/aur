@@ -3,8 +3,8 @@
 # Contributor: Bertrand Ciroux <bertrand.ciroux@gmail.com>
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-appimage-git
-pkgver=0.19_19242
-pkgrel=2
+pkgver=0.19_19274
+pkgrel=1
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecadweb.org/"
@@ -18,9 +18,7 @@ noextract=("freecad-${pkgver}.AppImage")
 source=("freecad-${pkgver}.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/0.19_pre/FreeCAD_${pkgver//_/-}-Linux-Conda_Py3Qt5_glibc2.12-${arch}.AppImage"
   "freecad.sh"
   "freecad_conda.desktop.patch")
-
-# skip, since it changes every day
-sha256sums=("03bb81a2fe9782890bcccd53b95345be82803923eb3bb35bf7a8d47b410c2fbd"
+sha256sums=("030fe289b1353dc4bdc8430f2a7ad88f661b5c8e1dca9b42e460ee8d94a00e01"
   "0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674"
   "93981010947cc386f31b07b3cf07921105d817974d3de291f32083d42af02b8e")
 prepare() {
