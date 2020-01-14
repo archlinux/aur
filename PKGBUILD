@@ -2,7 +2,7 @@
 # Contributor: Rolinh <robinDOThahlingATgw-computingDOTnet>
 
 pkgname=tagutil
-pkgver=3.0.3
+pkgver=3.1
 pkgrel=1
 pkgdesc="scriptable music files tags tool and editor"
 arch=('i686' 'x86_64')
@@ -20,12 +20,12 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('53c27fe9e91d28143b8a5e056480fbe0')
+sha256sums=('a5a88f8f40c3654e902066e4aba8e6c4e2c89fcf64ca823d81db80c3dad41a80')
 
 build() {
     cd "${pkgname}-${pkgver}"
 
-    sed -i 's/_BSD_SOURCE/_DEFAULT_SOURCE/g' src/CMakeLists.txt
+    #sed -i 's/_BSD_SOURCE/_DEFAULT_SOURCE/g' src/CMakeLists.txt
 
     mkdir build
     cd build
