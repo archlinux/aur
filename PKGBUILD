@@ -1,7 +1,7 @@
 # Maintainer: Oleg Reich <root (at) archlinux (dot) guru>
 
 pkgname=slim-sexy
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Theme's Pack for SLiM (Simple Login Manager)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('ISC')
 optdepends=('slim: Slimple Login Manager')
 source=("${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
-sha256sums=('95a9c449ba1ca486b3144d10e356ba75e68ec0cedb39703e222ed70519dfb698'
+sha256sums=('33ed0b43cc474d0bbde9caced66c05e7e6550ac4695c1b474058ae2798dd3afe'
             'SKIP')
 validpgpkeys=(A61D4D9711403C840E86AEE0A754BB4BA18DE375) # Oleg Reich
 
