@@ -4,7 +4,7 @@
 
 pkgbase=python-ruffus
 pkgname=('python-ruffus' 'python2-ruffus')
-pkgver=2.7.0
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="A lightweight Python library for computational pipelines."
 arch=('any')
@@ -12,7 +12,7 @@ url="http://www.ruffus.org.uk/"
 license=('MIT')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/r/ruffus/ruffus-${pkgver}.tar.gz")
-sha256sums=('4bd46461d31aa532357019a33d8045f4e57e52f4ee41643b5b3a7372e380cae0')
+sha256sums=('cf12f5ea6648fd60b046416619a26d9d3237cd555b29b92b5efc7a6f69e3e676')
 
 package_python-ruffus() {
   depends=('python')
