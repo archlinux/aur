@@ -10,7 +10,7 @@ _pkgname=hplip
 _pkgmainver=3.18
 pkgname="${_pkgname}-${_pkgmainver}"
 pkgver="${_pkgmainver}.12"
-pkgrel=1
+pkgrel=2
 pkgdesc="HPLIP, fixed version 3.18.x (with supports for some printers which were removed in 3.19), and with patch for uncompressed scanning on LEDM-based peripherals."
 arch=('x86_64')
 url="http://hplipopensource.com"
@@ -88,6 +88,20 @@ prepare() {
 }
 
 build() {
+  # Need to explicitly add python include directory for python3.8, otherwise the following error is thrown by `./configure`:
+  #   checking python3.8/Python.h usability... no
+  #   checking python3.8/Python.h presence... no
+  #   checking for python3.8/Python.h... no
+  #   checking python3.8mu/Python.h usability... no
+  #   checking python3.8mu/Python.h presence... no
+  #   checking for python3.8mu/Python.h... no
+  #   checking python3.8m/Python.h usability... no
+  #   checking python3.8m/Python.h presence... no
+  #   checking for python3.8m/Python.h... no
+  #   configure: error: cannot find python-devel support
+  CFLAGS+=" $(python-config --includes)"
+  export CFLAGS
+
   cd "${_pkgname}-${pkgver}"
   ./configure \
     --prefix=/usr \

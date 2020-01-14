@@ -1,7 +1,7 @@
 pkgbase = hplip-3.18
 	pkgdesc = HPLIP, fixed version 3.18.x (with supports for some printers which were removed in 3.19), and with patch for uncompressed scanning on LEDM-based peripherals.
 	pkgver = 3.18.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hplipopensource.com
 	arch = x86_64
 	license = GPL
