@@ -1,7 +1,7 @@
 pkgname=googleplaymusic
 _pkgname=GooglePlayMusic
 pkgver=1.1.7
-pkgrel=1
+pkgrel=4
 pkgdesc="Google Play Music is a unofficial client to play your music."
 arch=('any')
 url="https://gitlab.com/google-play-music-desktop/application"
@@ -15,7 +15,6 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/application"
-    node -pe "require('./package.json').version"
 }
 
 build() {
