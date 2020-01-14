@@ -5,13 +5,14 @@ url='https://moveit.ros.org'
 pkgname='ros-melodic-moveit-setup-assistant'
 pkgver='1.0.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-srdfdom
   ros-melodic-moveit-core
   ros-melodic-catkin
   ros-melodic-moveit-ros-planning
+  ros-melodic-moveit-resources
   ros-melodic-moveit-ros-visualization)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
