@@ -6,7 +6,7 @@ pkgrel=51
 pkgdesc='Shows and sets mapping between consoles and framebuffer devices'
 url='https://www.debian.org/'
 license=('GPL')
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=('https://mirrors.kernel.org/debian/pool/main/f/fbset/fbset_2.1-28.debian.tar.xz')
 sha512sums=('ea96e699e08d15fec4106434edf6f360e78e531dbbd81507bca8f2b31ec39fd12ba0d5c4a6c8a8a110112f3d4e83c3425ebaa59625adb24c3990d18e6f2051c9')
 
