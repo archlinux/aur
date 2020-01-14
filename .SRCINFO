@@ -1,6 +1,6 @@
 pkgbase = crispy-doom
 	pkgdesc = Vanilla-compatible enhanced Doom engine
-	pkgver = 5.6.3
+	pkgver = 5.6.4
 	pkgrel = 1
 	url = http://fabiangreffrath.github.io/crispy-doom
 	install = crispy-doom.install
@@ -16,8 +16,8 @@ pkgbase = crispy-doom
 	optdepends = freedm: Free deathmatch game
 	optdepends = freedoom1: Free Ultimate Doom-compatible game
 	optdepends = freedoom2: Free Doom II-compatible game
-	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-5.6.3.tar.gz
-	sha512sums = 5135bfe1e1ff47ea73fe0b819a7a423b8b43bf8cfd2c2350264e8106397854501df9b97e8747a70590aabe3552e9faee22ba0cb8e28d9e078b96a7373a096a52
+	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-5.6.4.tar.gz
+	sha512sums = f7c4811e669d73149a6cee754121b5aae61f36b5a264059d9c6c4f496338517ea51bda1fb488af999ed36d5bddd79ac4edf2b5096d093903efe0885e34acce20
 
 pkgname = crispy-doom
 
