@@ -1,7 +1,7 @@
 pkgbase = mxnet
 	pkgdesc = Flexible and Efficient Library for Deep Learning
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mxnet.io/
 	arch = x86_64
 	license = Apache
@@ -21,7 +21,7 @@ pkgbase = mxnet
 	makedepends = python-graphviz
 	makedepends = vtk
 	makedepends = glew
-	makedepends = mkl-dnn
+	makedepends = intel-dnnl
 	depends = double-conversion
 	depends = hdf5
 	depends = intel-tbb
@@ -94,7 +94,7 @@ pkgname = mxnet-mkl
 	depends = python-numpy
 	depends = python-requests
 	depends = intel-mkl
-	depends = mkl-dnn
+	depends = intel-dnnl
 	provides = mxnet
 	conflicts = mxnet
 
