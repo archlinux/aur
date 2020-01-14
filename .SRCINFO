@@ -1,6 +1,6 @@
 pkgbase = llvm8
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -22,6 +22,7 @@ pkgname = llvm8
 	depends = llvm8-libs
 	depends = perl
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
+	provides = llvm=8.0.1
 	conflicts = llvm
 
 pkgname = llvm8-libs
