@@ -4,7 +4,7 @@
 # Contributor: Kenneth Lyons (ixjlyons) <ixjlyons@gmail.com>
 
 pkgname=python-poppler-qt5
-pkgver=0.74.0
+pkgver=0.75.0
 pkgrel=1
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('python-pyqt5' 'poppler-qt5')
 makedepends=('python-sip-pyqt5' 'python-sip' 'sip' 'python-setuptools')
 source=("https://github.com/frescobaldi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8e073ec496a1c39bbe14b53d70c0a8628b7ec3fe0f8db0709440a6a6b553109f')
+sha256sums=('92e6bd8f4ce90ba4e3e0c2ada026b643481ba1b109d45e8fdbdaedca8416a995')
 
 package() {
     cd "$pkgname-$pkgver"
