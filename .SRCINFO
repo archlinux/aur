@@ -1,7 +1,7 @@
 pkgbase = con2fbmap
 	pkgdesc = Shows and sets mapping between consoles and framebuffer devices
 	pkgver = 2.1.0
-	pkgrel = 51
+	pkgrel = 52
 	url = https://www.debian.org/
 	arch = i686
 	arch = x86_64

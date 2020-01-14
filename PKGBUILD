@@ -2,7 +2,7 @@
 
 pkgname=con2fbmap
 pkgver=2.1.0
-pkgrel=51
+pkgrel=52
 pkgdesc='Shows and sets mapping between consoles and framebuffer devices'
 url='https://www.debian.org/'
 license=('GPL')
