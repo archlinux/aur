@@ -4,14 +4,14 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
-_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib' 'cliargs'
-           'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
-           'vstruct')
+_lua_deps=('bit32' 'expat' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib'
+           'cliargs' 'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight'
+           'stdlib' 'vstruct')
 depends=('fontconfig'
          'harfbuzz'
          "${_lua_deps[@]/#/lua-}"
