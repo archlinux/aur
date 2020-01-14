@@ -1,6 +1,6 @@
 pkgbase = exaile
 	pkgdesc = A full-featured Amarok-style media player for GTK+
-	pkgver = 4.0.0
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://www.exaile.org/
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = exaile
 	optdepends = webkit2gtk: Wikipedia info
 	optdepends = libkeybinder3: Xlib-based hotkeys
 	optdepends = librsvg: scalable icons
-	source = https://github.com/exaile/exaile/releases/download/4.0.0/exaile-4.0.0.tar.gz
-	sha512sums = 50ab8ec7a65dc431f2bc71a302d21e59ac3d5939b89a90ec161527e1d5c0b80b8c396f8f323b2959e0b807f577e021863fe423bf26a8f7165a6dd112afca6e45
+	source = https://github.com/exaile/exaile/releases/download/4.0.2/exaile-4.0.2.tar.gz
+	sha512sums = 4b0629d68d426493b8ba9295c755919c9d9919ee916952339b06206b8e1eb86145e5c5975cc21ecd8b9ab6b266eaaff0855e9a5154beb951033564a6dcf0ca37
 
 pkgname = exaile
 
