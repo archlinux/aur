@@ -1,5 +1,5 @@
 pkgbase = nodejs-nexe
-	pkgdesc = Command-line JSON processing tool
+	pkgdesc = Create a single executable out of your Node.js application
 	pkgver = 4.0.0_beta.3
 	pkgrel = 1
 	url = https://github.com/nexe/nexe
