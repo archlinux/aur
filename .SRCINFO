@@ -1,0 +1,15 @@
+pkgbase = python-pyperf
+	pkgdesc = Toolkit to run Python benchmarks
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/vstinner/pyperf
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-six
+	source = python-pyperf-1.7.0.tar.gz::https://github.com/vstinner/pyperf/archive/1.7.0.tar.gz
+	sha256sums = 67caab39f99f34fd6387dd59e63bb498a941d8e2da3cd389fbfc8d4d6bf5e97e
+
+pkgname = python-pyperf
+
