@@ -1,13 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting images geometrically."
 url='https://wiki.ros.org/image_geometry'
 
 pkgname='ros-melodic-image-geometry'
 pkgver='1.13.0'
-_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel='3'
 license=('BSD')
 
 ros_makedepends=(
@@ -18,8 +15,8 @@ ros_makedepends=(
 makedepends=(
 	'cmake'
 	'ros-build-tools'
-	${ros_makedepends[@]}
-	opencv
+	"${ros_makedepends[@]}"
+	'opencv3-opt'
 )
 
 ros_depends=(
@@ -27,8 +24,8 @@ ros_depends=(
 )
 
 depends=(
-	${ros_depends[@]}
-	opencv
+	"${ros_depends[@]}"
+	"opencv3-opt"
 )
 
 _dir="vision_opencv-${pkgver}/image_geometry"
@@ -53,9 +50,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
