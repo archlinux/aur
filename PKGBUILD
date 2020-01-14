@@ -3,8 +3,8 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org> (spambayes PKGBUILD)
 _pkgname='spambayes'
 pkgname="$_pkgname-svn"
-pkgver='1.1b1.3273'
-pkgrel='1'
+pkgver='1.1b1.r3273'
+pkgrel='2'
 pkgdesc='Bayesian anti-spam classifier written in Python - svn version'
 arch=('any')
 url="http://$_pkgname.sourceforge.net/"

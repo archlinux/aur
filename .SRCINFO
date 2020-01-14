@@ -1,7 +1,7 @@
 pkgbase = spambayes-svn
 	pkgdesc = Bayesian anti-spam classifier written in Python - svn version
-	pkgver = 1.1b1.3273
-	pkgrel = 1
+	pkgver = 1.1b1.r3273
+	pkgrel = 2
 	url = http://spambayes.sourceforge.net/
 	arch = any
 	license = PSF
