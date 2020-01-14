@@ -1,20 +1,24 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=reprapfirmware-bin
 pkgver=1.2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RepRapFirmware Software Bundle"
 arch=('any')
 url="https://github.com/dc42/RepRapFirmware.git"
 license=('GPL3')
 provides=("reprapfirmware=${pkgver}")
 conflicts=("reprapfirmware")
-depends=('duetcontrolserver>=1.0.3.4' 'duetsd')
+depends=('duetcontrolserver>=1.0.3.4' 'duetsd>=1.0.4')
 backup=(
+	'opt/dsf/sd/sys/Duet3_SBCiap_MB6HC.bin'
+	'opt/dsf/sd/sys/Duet3_SBCiap_MBP05.bin'
+	'opt/dsf/sd/sys/Duet3Bootloader_EXP.bin'
+	'opt/dsf/sd/sys/Duet3Bootloader_TOOL.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_EXP3HC.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_MB6HC.bin'
 	'opt/dsf/sd/sys/Duet3Firmware_MBP05.bin'
-	'opt/dsf/sd/sys/Duet3Firmware_TOOL1LC.bin'
-	'opt/dsf/sd/sys/Duet3Firmware_TOOL1XD.bin'
+	'opt/dsf/sd/sys/Duet3iap_spi_MB6HC.bin'
+	'opt/dsf/sd/sys/Duet3iap_spi_MBP05.bin'
 )
 install="${pkgname}.install"
 source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/reprapfirmware_${pkgver}-1_all.deb")
