@@ -1490,7 +1490,19 @@ if (typeof GM_addStyle != "undefined") {
 		document.documentElement.appendChild(node);
 	}
 }
-if (document.body.innerText.replace(/\n/g, ' ').search(/whatsapp works with.*to use whatsapp.*update/i) !== -1)
-  navigator.serviceWorker.getRegistration().then(function (r) { r.unregister(); document.location.reload() });
+
+const regexes = [
+	// en
+	/whatsapp works with.*to use whatsapp.*update/i,
+	// pt
+	/o whatsapp funciona com.*para utilizar o whatsapp.*atualize/i
+]
+
+for (const regex of regexes) {
+	if (document.body.innerText.replace(/\n/g, ' ').search(regex) !== -1) {
+		navigator.serviceWorker.getRegistration().then(function (r) { r.unregister(); document.location.reload() });
+		return;
+	}
+}
 
 })();
