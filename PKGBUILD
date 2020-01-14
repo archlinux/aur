@@ -2,31 +2,54 @@
 
 pkgname=httptoolkit
 pkgver=0.1.17
-pkgrel=3
+pkgrel=1
+epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
 url="https://httptoolkit.tech/"
 license=('GPL3')
 depends=()
-makedepends=()
+makedepends=(npm)
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=(httptoolkit-bin)
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v${pkgver}/httptoolkit_${pkgver}_amd64.deb")
+_pkgrepo="https://github.com/httptoolkit/httptoolkit-desktop"
+_pkgdir="HTTP Toolkit-linux-x64"
+source=("${pkgname}::git+${_pkgrepo}.git#tag=v${pkgver}"
+        'httptoolkit.desktop')
 noextract=()
-md5sums=('09c2772d8fe3f1e280fa51e5cd5b9138')
+md5sums=('SKIP'
+         'faf640796c9ad59c3fe56dac09b19767')
 validpgpkeys=()
 
-package() {
-    # Extract package fs from deb
-    bsdtar -O -xf "httptoolkit_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+build() {
+    cd ${srcdir}/${pkgname}
 
-    # Set all directories to 755 mode
-    find "${pkgdir}" -type d -exec chmod 755 {} +
+    # Install node packages
+    npm install
+    
+    # Build the project
+    npm run make -- --platform linux --targets zip
+}
+
+package() {
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/opt/${pkgname}"
+    install -d "${pkgdir}/usr/share/icons"
+    install -d "${pkgdir}/usr/share/licenses"
+    install -d "${pkgdir}/usr/share/applications"
+
+    cp -r "${srcdir}/${pkgname}/out/${_pkgdir}/"* "${pkgdir}/opt/${pkgname}"
+    cp "${srcdir}/${pkgname}/src/icon.png" "${pkgdir}/opt/${pkgname}/icon.png"
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/${pkgname}/src/icon.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+    ln -s "${pkgdir}/opt/${pkgname}/httptoolkit" "${pkgdir}/usr/bin/${pkgname}"
+    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i "s|$srcdir||g"
 }
