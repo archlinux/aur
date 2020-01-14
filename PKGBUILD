@@ -5,7 +5,7 @@
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"
@@ -36,5 +36,5 @@ package() {
 sha256sums=('563109b50ad66a63adbfaa4ae7ed74b540ee731c4953ffb5e67141fcdef1897a'
             '49bd16ee848ae21f1c02e408469e5c09c253e6ffe353d7e65434298a1092f010'
             '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
-            '29b3c0b610cbf764c037368f2924bc23354330cee05ed737617a18aba9696701'
-            '2c789228aa33e58c5883001b8c888fc220baba36635d5acb4b1cf8e4d7afc6b6')
+            '68c328128b3e087ba86b27f0cc9aeab459a42f3725500ccaa574051a45e2911d'
+            '71f84652ac0450b1c142654723e525ac042293d136cabf2cab82f1eab3f46532')
