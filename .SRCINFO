@@ -1,0 +1,15 @@
+pkgbase = epiphany-sdk
+	pkgdesc = Epiphany SDK
+	pkgver = 2016.11
+	pkgrel = 1
+	url = https://github.com/adapteva/epiphany-sdk
+	arch = armv7h
+	license = GPL
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://github.com/adapteva/epiphany-sdk/releases/download/esdk-2016.11/esdk.2016.11.armv7l.tar.gz
+	sha256sums = 453525aaaee5565049db6500f418e97616d34d26469a1308ac87c0dcedc3295c
+
+pkgname = epiphany-sdk
+
