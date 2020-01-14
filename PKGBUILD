@@ -17,7 +17,7 @@ source=("https://software.verapdf.org/develop/1.15/${pkgname}-greenfield-${pkgve
 noextract=("${pkgname}-greenfield-${pkgver}-installer.zip" 'auto-install.sh')
 md5sums=('c4f6f74a35db82391d0ee8bb85d2c457'
          '076b23717ab675281ed53dcf84471b89'
-         '2aff225b781f8645123e8182ffeb295d'
+         'd84e22d0455afdf60816e182d66ce089'
          '312f8dc7e9c4a6ecfd25d75aff7b22c9')
 
 prepare() {

@@ -17,7 +17,7 @@ pkgbase = verapdf
 	source = auto-install.xml
 	md5sums = c4f6f74a35db82391d0ee8bb85d2c457
 	md5sums = 076b23717ab675281ed53dcf84471b89
-	md5sums = 2aff225b781f8645123e8182ffeb295d
+	md5sums = d84e22d0455afdf60816e182d66ce089
 	md5sums = 312f8dc7e9c4a6ecfd25d75aff7b22c9
 
 pkgname = verapdf
