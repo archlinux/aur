@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-2.1
-	pkgver = 2.1.14
+	pkgver = 2.1.14.sdk607
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -19,8 +19,6 @@ pkgbase = dotnet-core-2.1
 	makedepends = openssl
 	makedepends = zlib
 	options = staticlibs
-	source = dotnet.sh
-	sha512sums = a6ee992d7ab08adb916f0b5d72d203f8ab38cfa2e354f062d499d4d8a64ab2b95e5511a041d859331e560f45c5bb642c2f118951e2104f362e10b31cf07e95b0
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/39e68289-0364-4173-a12b-c6234e94c527/92f3eb83bfca8b7cd360868996763125/dotnet-sdk-2.1.607-linux-x64.tar.gz
 	sha512sums_x86_64 = bfcee5d0121bc3b4dcd08c7a99e700a9dc89e9dcf326ae40046a222bc2fe0212bca14811dcf1e96a6cc6ecd085fbc492e30dc2c2d19ee1741960bbd5e238233a
 	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/94409a9a-41e3-4df9-83bc-9e23ed96abaf/2b75460d9a8eef8361c01bafc1783fab/dotnet-sdk-2.1.607-linux-arm.tar.gz
@@ -28,14 +26,9 @@ pkgbase = dotnet-core-2.1
 	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/7522a153-84f6-447e-afe8-ffe2f5724478/a9370fb612f1501241b199a5e479200b/dotnet-sdk-2.1.607-linux-arm64.tar.gz
 	sha512sums_aarch64 = e7f5e30a55bb5af3ecec0ee5566622755db4199de488e89c5e4b5d5f870d0a2c77f337346ddd9711c8c4f25b1fc85f1b4ba219bef9706e9b9510d718b5e5f9d6
 
-pkgname = dotnet-host-2.1
-	pkgdesc = A generic driver for the .NET Core Command Line Interface version 2.1
-	provides = dotnet-host=2.1.14
-	conflicts = dotnet-host
-
 pkgname = dotnet-runtime-2.1
 	pkgdesc = The .NET Core runtime version 2.1
-	depends = dotnet-host>=2.1.14
+	depends = dotnet-host
 	depends = icu
 	depends = krb5
 	depends = libunwind
@@ -43,10 +36,11 @@ pkgname = dotnet-runtime-2.1
 	depends = zlib
 	depends = libcurl.so
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=2.1.14
+	provides = dotnet-runtime-2.1
+	conflicts = dotnet-runtime-2.1
 
 pkgname = dotnet-sdk-2.1
 	pkgdesc = The .NET Core SDK version 2.1
-	depends = dotnet-runtime=2.1.14
-	provides = dotnet-sdk=2.1.607
+	depends = dotnet-runtime-2.1
+	provides = dotnet-sdk-2.1
 
