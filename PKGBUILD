@@ -2,13 +2,13 @@
 # Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
 
 pkgname=polkit-explorer
-pkgver=10.84983b1
-pkgrel=1
+pkgver=12.065314e
+pkgrel=2
 pkgdesc='Present PolicyKit information in a human-readable form.'
 arch=('any')
 url="https://github.com/scarygliders/${pkgname}"
 license=('ISC')
-depends=('python2-pyqt4' 'python2-lxml')
+depends=('python2-pyqt5' 'python2-lxml')
 source=("git://github.com/scarygliders/${pkgname}.git")
 sha256sums=('SKIP')
 
