@@ -1,0 +1,17 @@
+pkgbase = python2-docker-pycreds
+	pkgdesc = Python bindings for the docker credentials store API
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/shin-/dockerpy-creds
+	arch = any
+	license = Apache
+	checkdepends = python2-pytest-runner
+	checkdepends = flake8
+	checkdepends = python2-pytest-cov
+	makedepends = python2-setuptools
+	depends = python2-six
+	source = python2-docker-pycreds-0.4.0.tar.gz::https://github.com/shin-/dockerpy-creds/archive/0.4.0.tar.gz
+	sha512sums = 5c7c75a654693c6439592201bba6082af2962fab8d25af980ebb3ad2aede42973c31dbc2693eea1212f911980725bab257f973c7498b3555f68fae1630cfc62c
+
+pkgname = python2-docker-pycreds
+
