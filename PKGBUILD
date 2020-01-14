@@ -1,7 +1,7 @@
 # Maintainer: Andrew Anderson <andersan@tcd.ie>
 pkgname=trinnity-compiler-git
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="The triNNity DNN compiler"
 arch=('any')
 url="https://bitbucket.org/STG-TCD/trinnity-compiler"
@@ -29,5 +29,9 @@ package() {
         install -ma=rx ${srcdir}/trinnity-compiler/triNNity-compiler ${pkgdir}/usr/bin
         mkdir -p ${pkgdir}/usr/include/trinnity-compiler/runtimes/
         install -ma=r ${srcdir}/trinnity-compiler/triNNity/triNNity/backend/triNNity/runtime.hpp ${pkgdir}/usr/include/trinnity-compiler/runtimes/triNNity.hpp
+        mkdir -p ${pkgdir}/usr/aarch64-linux-gnu/include/trinnity-compiler/runtimes/
+        install -ma=r ${srcdir}/trinnity-compiler/triNNity/triNNity/backend/triNNity/runtime.hpp ${pkgdir}/usr/aarch64-linux-gnu/include/trinnity-compiler/runtimes/triNNity.hpp
+        mkdir -p ${pkgdir}/usr/arm-linux-gnueabihf/include/trinnity-compiler/runtimes/
+        install -ma=r ${srcdir}/trinnity-compiler/triNNity/triNNity/backend/triNNity/runtime.hpp ${pkgdir}/usr/arm-linux-gnueabihf/include/trinnity-compiler/runtimes/triNNity.hpp
 }
 
