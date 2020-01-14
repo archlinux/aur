@@ -3,7 +3,7 @@
 _pkgname=ammonite
 _scalaversion=2.12.10
 pkgname=ammonite-git
-pkgver=r2254.2f22969a
+pkgver=r2276.2aa3f84e
 pkgrel=1
 pkgdesc="Scala Scripting"
 arch=(any)
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
   cd $srcdir/$_pkgname
-  mill -i amm[$_scalaversion].launcher
+  mill -i amm[$_scalaversion].assembly
 }
 
 package() {
-  install -Dm755 "$srcdir"/$_pkgname/out/amm/$_scalaversion/launcher/dest/run "$pkgdir"/usr/bin/amm
+  install -Dm755 "$srcdir"/$_pkgname/out/amm/$_scalaversion/assembly/dest/out.jar "$pkgdir"/usr/bin/amm
   install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
 }

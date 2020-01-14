@@ -1,6 +1,6 @@
 pkgbase = ammonite-git
 	pkgdesc = Scala Scripting
-	pkgver = r2254.2f22969a
+	pkgver = r2276.2aa3f84e
 	pkgrel = 1
 	url = http://ammonite.io
 	arch = any
