@@ -3,8 +3,8 @@
 
 _pkgname=btdex
 pkgname=btdex-git
-pkgver=v0.1.12.r25.g2f8d1e7
-pkgrel=2
+pkgver=v0.1.12.r30.g70d4a36
+pkgrel=1
 pkgdesc='Decentralized exchange system running on the Burst blockchain'
 arch=(x86_64)
 url='https://github.com/btdex/btdex'
@@ -40,7 +40,7 @@ package() {
     install -Dm644 ${_pkgname}/build/libs/btdex-all.jar $pkgdir/opt/${_pkgname}/btdex.jar
     install -Dm755 btdex.sh $pkgdir/opt/${_pkgname}/btdex.sh
     install -d $pkgdir/usr/bin
-    ln -sf $pkgdir/opt/${_pkgname}/btdex.sh $pkgdir/usr/bin/btdex
+    ln -sf /opt/${_pkgname}/btdex.sh $pkgdir/usr/bin/btdex
 
     # Menu entry
     install -Dm644 ${_pkgname}.desktop -t $pkgdir/usr/share/applications
