@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=4.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -100,7 +100,7 @@ build() {
     --disable-stripping \
     --enable-fontconfig \
     --enable-nonfree \
-    --enable-cuda-sdk \
+    --enable-cuda-nvcc \
     --enable-cuvid \
     --enable-libnpp \
     --enable-ffnvcodec \
