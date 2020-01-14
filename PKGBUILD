@@ -5,43 +5,25 @@
 # Based on python2-pyo by amiguet
 
 pkgname=python-pyo
-pkgver=0.9.1
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="A Python module written in C to help digital signal processing script creation."
-arch=('i686' 'x86_64')
+pkgdesc="Python DSP module"
+arch=('x86_64')
 url="http://ajaxsoundstudio.com/software/pyo/"
 license=('GPL')
 depends=('python' 'portmidi' 'portaudio' 'liblo' 'libsndfile')
 optdepends=('wxpython: wxWidgets GUI')
 provides=("pyo=$pkgver" "python-pyo=$pkgver")
 conflicts=('pyo')
-source=("http://ajaxsoundstudio.com/downloads/pyo_$pkgver-src.tar.bz2"
-        "http://ajaxsoundstudio.com/downloads/pyo_$pkgver-doc.tar.bz2")
-md5sums=('f3ba1c4b9330bca4a241a4caabf42a67'
-         '0ee8263a533e9ba5619cb72397d5d7ba')
-
-export PYTHON=python
+source=("https://codeload.github.com/belangeo/pyo/tar.gz/$pkgver")
+sha512sums=('701e9461bebdfc6a117c65fb4198015389f7e2cfb50f3d53423add307541bd732bf80f416f2bc36f20311eebf1ea8d75e0b0784f6ff206f7b6ab70c3f6081c4a')
 
 build() {
-  cd "$srcdir/pyo_$pkgver-src"
-
-  $PYTHON setup.py build --use-double --use-jack
+  cd "$srcdir/pyo-$pkgver"
+  python setup.py build --use-double --use-jack
 }
 
 package() {
-  cd "$srcdir/pyo_$pkgver-src"
-  $PYTHON setup.py install --use-double \
-                           --use-jack \
-                           --root="$pkgdir/"
-
-  # examples
-  install -d "$pkgdir/usr/share/$pkgname"
-  cp -a examples "$pkgdir/usr/share/$pkgname"
-
-  # docs
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  cp -a ../pyo_$pkgver-doc/* "$pkgdir/usr/share/doc/$pkgname"
-
-  # python2 fix
-  #sed -i "s|env python|&2|g" `grep -rl "env python" "$pkgdir"`
+  cd "$srcdir/pyo-$pkgver"
+  python setup.py install --use-double --use-jack --root="$pkgdir"/
 }
