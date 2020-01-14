@@ -1,13 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - Single image rectification and color processing."
 url='https://wiki.ros.org/image_proc'
 
 pkgname='ros-melodic-image-proc'
-pkgver='1.12.23'
-_pkgver_patch=0
+pkgver='1.14.0'
 arch=('any')
-pkgrel=2
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -46,7 +43,7 @@ depends=(
 
 _dir="image_pipeline-${pkgver}/image_proc"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
+sha256sums=('dcf1336d43c0c03165b76c9419fb7b5a275d0b091e1890b28daf37a02c1326b3')
 
 build() {
 	# Use ROS environment variables.
