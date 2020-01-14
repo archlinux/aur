@@ -2,7 +2,7 @@
 pkgname=konwert
 pkgver=1.8
 debrel=13
-pkgrel=1
+pkgrel=2
 pkgdesc="Charset conversion for files or terminal I/O"
 arch=('i686' 'x86_64')
 url="https://packages.debian.org/stable/konwert"
@@ -10,10 +10,9 @@ license=('GPL')
 depends=(perl)
 #makedepends=()
 #optdepends=()
-source=('http://deb.debian.org/debian/pool/main/k/konwert/konwert_$pkgver.orig.tar.gz'
-        'http://deb.debian.org/debian/pool/main/k/konwert/konwert_$pkgver-$debrel.debian.tar.xz')
-md5sums=('838e73ec911ebf25816135cbfd0f7a04'
-         '5b3541ccc205dfa399169c3e306f292b') #generate with 'makepkg -g'
+source=("http://deb.debian.org/debian/pool/main/k/konwert/konwert_$pkgver.orig.tar.gz"
+        "http://deb.debian.org/debian/pool/main/k/konwert/konwert_$pkgver-$debrel.debian.tar.xz")
+md5sums=('838e73ec911ebf25816135cbfd0f7a04' '5b3541ccc205dfa399169c3e306f292b')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
