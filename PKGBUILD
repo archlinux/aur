@@ -1,12 +1,12 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('sgtk-menu')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK menu for sway and i3"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/sgtk-menu"
 license=('GPL3')
-depends=('gtk3' 'python' 'python-gobject')
+depends=('gtk3' 'python' 'python-gobject' 'python-cairo')
 optdepends=('python-i3ipc: to avoid deprecation warnings')
 
 source=("https://github.com/nwg-piotr/sgtk-menu/archive/v$pkgver.tar.gz")
