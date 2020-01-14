@@ -1,6 +1,6 @@
 # Maintainer: Your Name <TheRetikGM@gmail.com>
 pkgname=2048-curses
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Curses based popular game 2048 written in C"
 arch=('any')
@@ -19,7 +19,7 @@ build() {
 package() {
 	install "${srcdir}/${pkgname}" -D "${pkgdir}/usr/bin/${pkgname}"
 }
-md5sums=('bdc3bad96869fc1e33e2a5159603b482'
+md5sums=('c5ed3c4e3ab3b97fda8f5471d45f216d'
          'a1d9f8f1e1f46ae809cd356fa8c6fe00'
          '666c1d0f43be2dd2e92a759ece3dfb5a'
          'e277d0071243798818031dfe915bdf1b')
