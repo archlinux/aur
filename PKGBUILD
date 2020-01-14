@@ -2,7 +2,7 @@
 
 pkgname=papermc
 _pkgver=1.15.1
-_build=25
+_build=48
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance"
@@ -23,12 +23,12 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v1/paper/${_pkgver}/${_
 	"papermc.sh"
 	"papermc_${pkgver}_LICENSE.md"::"https://raw.githubusercontent.com/PaperMC/Paper/master/LICENSE.md")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('31d4af0418bb7317b0fc8f4b094dd9dfc1bd51c28bdb23b958b12659f00f9e429085cf21a4b9486280598662cee72f6da2cc061a356fa31ce95b5c05066f95e7'
-            'f4126f9cbb3fa24096c22812c45d33b07891317a5a505646fc11c69a5d25ad8679cd6c82ab1285013b2d29d1b73a753bc85d30b66c375768ab6e27d82c6d2092'
+sha512sums=('2edc1afd7176c0a2f19368b32d87c4723195cc6ef1b50c30f12fb4b5c9287dca8a7ad34817eb02888859e55614641fe307db1f0ef16b83bb462d4ac86883243a'
+            'a4fcc9f28436c0163e9414f2793fcbd4f6ea74772230cdff4a628246eae2a8008688b3dfb94d433f8f0887cd7eea3fe43ce25f9d5812d46e62179ff315b62895'
             '51c5345155e8640d4f1eaef0c8cfb890ae46063f2d4e7a0fe181ad4c8ff7b96fea88b0f9fc74031d589dfd61602f37b440f183ca1859835930fe69d37508cd42'
             'f29c4044d9e3cc5ab137c21f7e62399b36d7e1f777d5558a39f7b4a01de75bdf2de0b8678e424accc03934ca7db9ebb6a22c78c8c4497759287dd55e1c3eb456'
             '70f7d4e42db9ed5efcde412f018d46628ad9c12198787421cc70aa1e51b8e278b436d480568ca21dabaacf33cfbd37c5e607504f2cd25ed65442ba67b9805958'
-            '794e2b66d29f016263305fc65f79be4be78c39c6dda39a777e0e59ede8f20857843f90f021e5258c0ee894073f4e13b3f481643cbcc8a8572ab372c40d878393'
+            'c777e62beb213b5203883e13045953daa3d054c59da8ab535d416464366790edfe77fd9517f968d140dfb4c9009f7e8152f693312364ebbdc71cf2148d6a7df4'
             '687c51e16de4e5081066640228664e5aa642e8b61f22ae406b7385eba291c93f21ea7c1b625f27331e88936d405631b996089994d99e5201b71505e5fd08a294')
 
 _game="papermc"

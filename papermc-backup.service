@@ -3,7 +3,7 @@ Description=PaperMC Server World Backup
 After=local-fs.target
 
 [Service]
-Type=forking
+Type=oneshot
 ExecStart=/usr/bin/papermc backup
 User=papermc
 Group=papermc
