@@ -1,7 +1,3 @@
-post_install() {
-	echo 'Run "sudo /usr/share/cloudprint-cups/setupcloudprint.py" to set up.'
-}
-
 post_upgrade() {
 	/usr/share/cloudprint-cups/upgrade.py
 }
