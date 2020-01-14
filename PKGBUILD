@@ -2,10 +2,10 @@
 # Contributor: Adrián Pérez de Castro <aperez@igalia.com>
 
 pkgname=sile-git
-pkgdesc='Modern typesetting system inspired by TeX (HEAD version)'
-pkgver=0.9.5.1.r586.g6cae885
+pkgdesc='Modern typesetting system inspired by TeX'
+pkgver=0.10.0.r9.g977dae3
 pkgrel=1
-arch=(any)
+arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
 provides=("${pkgname%-git}")
@@ -14,13 +14,12 @@ _lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib' 'cliargs'
            'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
            'vstruct')
 depends=('fontconfig'
-         'harfbuzz>=1.4.2'
+         'harfbuzz'
          "${_lua_deps[@]/#/lua-}"
          'lua'
          'icu'
          'ttf-gentium-plus')
 makedepends=('git'
-             'luarocks'
              'poppler')
 checkdepends=('lua-busted'
               'lua-luacov=0.8')
@@ -39,6 +38,7 @@ prepare () {
     git config submodule.libtexpdf.url "$srcdir/libtexpdf"
     git submodule update
     ./bootstrap.sh
+    sed -i -e 's/rm -f core/rm -f/' configure
 }
 
 build () {

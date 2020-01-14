@@ -1,17 +1,16 @@
 pkgbase = sile-git
-	pkgdesc = Modern typesetting system inspired by TeX (HEAD version)
-	pkgver = 0.9.5.1.r586.g6cae885
+	pkgdesc = Modern typesetting system inspired by TeX
+	pkgver = 0.10.0.r9.g977dae3
 	pkgrel = 1
 	url = https://www.sile-typesetter.org
-	arch = any
+	arch = x86_64
 	license = MIT
 	checkdepends = lua-busted
 	checkdepends = lua-luacov=0.8
 	makedepends = git
-	makedepends = luarocks
 	makedepends = poppler
 	depends = fontconfig
-	depends = harfbuzz>=1.4.2
+	depends = harfbuzz
 	depends = lua-bit32
 	depends = lua-luaepnf
 	depends = lua-lpeg
