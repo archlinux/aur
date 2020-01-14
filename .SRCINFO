@@ -1,0 +1,16 @@
+pkgbase = forge-mantle-1.14.4-bin
+	pkgdesc = Public shared library for Forge mods
+	pkgver = 1.4.32
+	pkgrel = 1
+	url = https://github.com/SlimeKnights/Mantle
+	arch = any
+	license = MIT
+	depends = forge-server
+	noextract = forge-mantle-1.14.4-bin-1.4.32.jar
+	source = forge-mantle-1.14.4-bin-1.4.32.jar::https://media.forgecdn.net/files/2804/948/Mantle-1.14.4-1.4.32.jar
+	source = LICENSE
+	sha256sums = 39cf1d3975ffdd9f6b05e189fc61e3aa5d9165ddf8068cacea02a556975f060b
+	sha256sums = 90d0b0e134c1ab8c69341ff7ab37c3a7a0f0bf6735736611298a0b76830c71cd
+
+pkgname = forge-mantle-1.14.4-bin
+
