@@ -1,34 +1,28 @@
-# Maintainer: Patrick Schratz <patrick.schratz@gmail.com>
+# Maintainer: Victor <v1c70rp@gmail.com>
+# Contributor: Patrick Schratz <patrick.schratz@gmail.com>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Geoffroy Carrier <gcarrier@aur.archlinux.org>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=impressive
-pkgver=0.12.1
-pkgrel=2
-pkgdesc='A fancy PDF presentation program (previously known as KeyJNote)'
+pkgver=0.13.0_beta1a
+pkgrel=1
+pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
 arch=('any')
 url='http://impressive.sourceforge.net'
 license=('GPL2')
-depends=('python2-pygame' 'python2-opengl' 'python2-pillow' 'ghostscript' 'pdftk')
-optdepends=('xdg-utils: for starting web or e-mail hyperlinks from PDF documents'
-            'mplayer: for sound and video playback')
-source=(http://downloads.sourceforge.net/${pkgname}/Impressive-${pkgver}.tar.gz)
-sha256sums=('74a331f41e39a363b362dcadf861e3a300351d5ad5cfe033b5d47215c886f1e4')
-
-prepare() {
-  cd "${srcdir}"/Impressive-${pkgver}
-
-# python2 fix
-#   for file in $(find . -name '*.py' -print); do
-#       sed -i 's_#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-#       sed -i 's_#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-#   done
-}
+depends=('python-pygame' 'python-opengl' 'python-pillow' 'mupdf-tools')
+optdepends=('pdftk: for retrieving PDF metadata, can replace mupdf-tools'
+            'ghostscript: for alternate PDF rendering'
+            'xdg-utils: for starting web or e-mail hyperlinks from PDF documents'
+            'mplayer: for sound and video playback'
+            'ffmpeg: for more efficient generation of video preview images')
+source=(http://downloads.sourceforge.net/${pkgname}/Impressive-${pkgver//_/-}.tar.gz)
+sha256sums=('a7f01d7d65b8ad595d8241216e95193c3584af897561c95990116060bd5bbc86')
 
 package() {
-  cd "${srcdir}"/Impressive-${pkgver}
+  cd "${srcdir}"/Impressive-${pkgver//_/-}
 
   install -d -m755 "${pkgdir}"/usr/{bin,share/{doc/${pkgname},man/man1}}
   install -m755 ${pkgname}.py "${pkgdir}"/usr/bin/$pkgname

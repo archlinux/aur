@@ -1,19 +1,21 @@
 pkgbase = impressive
-	pkgdesc = A fancy PDF presentation program (previously known as KeyJNote)
-	pkgver = 0.12.1
-	pkgrel = 2
+	pkgdesc = A simple presentation program that displays slideshows of PDF, image or video files
+	pkgver = 0.13.0_beta1a
+	pkgrel = 1
 	url = http://impressive.sourceforge.net
 	arch = any
 	license = GPL2
-	depends = python2-pygame
-	depends = python2-opengl
-	depends = python2-pillow
-	depends = ghostscript
-	depends = pdftk
+	depends = python-pygame
+	depends = python-opengl
+	depends = python-pillow
+	depends = mupdf-tools
+	optdepends = pdftk: for retrieving PDF metadata, can replace mupdf-tools
+	optdepends = ghostscript: for alternate PDF rendering
 	optdepends = xdg-utils: for starting web or e-mail hyperlinks from PDF documents
 	optdepends = mplayer: for sound and video playback
-	source = http://downloads.sourceforge.net/impressive/Impressive-0.12.1.tar.gz
-	sha256sums = 74a331f41e39a363b362dcadf861e3a300351d5ad5cfe033b5d47215c886f1e4
+	optdepends = ffmpeg: for more efficient generation of video preview images
+	source = http://downloads.sourceforge.net/impressive/Impressive-0.13.0-beta1a.tar.gz
+	sha256sums = a7f01d7d65b8ad595d8241216e95193c3584af897561c95990116060bd5bbc86
 
 pkgname = impressive
 
