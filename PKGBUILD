@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    git submodule update --init --depth=1
+    git submodule update --init
     mkdir -p build && cd build
     qmake 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\\\"/usr/bin/v2ray\\\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\\\"/usr/lib/v2ray\\\"' ../
     make
