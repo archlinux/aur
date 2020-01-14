@@ -31,6 +31,9 @@ build() {
 package() {
     cd "$pkgname-$_pkgver"
 
-    install -Dm 755 "target/release/{ra_lsp_server,ra_cli}" -t "$pkgdir/usr/bin/ra_lsp_server"
-    install -Dm 644 "{LICENSE-MIT,LICENSE-APACHE}" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm 755 "target/release/ra_lsp_server"  -t "$pkgdir/usr/bin/"
+    install -Dm 755 "target/release/ra_cli" -t "$pkgdir/usr/bin/"
+
+    install -Dm 644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm 644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
