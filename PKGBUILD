@@ -3,7 +3,7 @@
 _pypiname=pyperformance
 pkgname=python-$_pypiname
 pkgver=1.0.0
-pkgrel=2.1
+pkgrel=3
 pkgdesc='Python Performance Benchmark Suite'
 url="https://github.com/python/pyperformance"
 depends=('python-pyperf' 'python-six')
