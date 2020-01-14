@@ -2,7 +2,7 @@
 
 pkgname=s3uploader
 pkgver=0.2.0
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="A minimalistic electron-based UI to conveniently upload and download files from AWS S3"
 url="https://github.com/Yamazaki93/S3Uploader"
 arch=("x86_64")
@@ -63,6 +63,6 @@ package() {
     cp -r "${srcdir}/${pkgname}/dist-electron/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/${pkgname}/dist-electron/.icon-set/"* "${pkgdir}/opt/${pkgname}/icons"
     install -Dm644 "${srcdir}/${pkgname}/dist-electron/.icon-set/icon_512.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
-    install -Dm755 "${srcdir}/${pkgname}/dist-electron/linux-unpacked/s3uploader" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
+    ln -s "${pkgdir}/opt/${pkgname}/s3uploader" "${pkgdir}/usr/bin/${pkgname}"
 }
