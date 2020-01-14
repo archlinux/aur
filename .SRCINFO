@@ -10,7 +10,7 @@ pkgbase = drawio-desktop
 	depends = electron
 	depends = libnotify
 	source = https://github.com/jgraph/drawio/archive/v12.5.2.tar.gz
-	sha256sums = dda2509fa055fca8c115f0a45bd07a33016f2ac78fdbdea7de034de08dd76452
+	sha256sums = 961844a59f5c0aba296e9276f4d2b531c0efa4f66e5b7eb2f592941dbfe15c19
 
 pkgname = drawio-desktop
 
