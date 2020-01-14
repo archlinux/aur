@@ -14,7 +14,7 @@ fi
 #
 # http://gs.statcounter.com/os-version-market-share/android/mobile-tablet/worldwide
 if [ -z "${ANDROID_MINIMUM_PLATFORM}" ]; then
-    export ANDROID_MINIMUM_PLATFORM=22
+    export ANDROID_MINIMUM_PLATFORM=24
 fi
 
 if [ -z "${ANDROID_HOME}" ]; then
