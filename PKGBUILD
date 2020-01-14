@@ -1,9 +1,9 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duetwebserver-bin
 pkgver=1.2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Optional web server for Duet 3 series"
-arch=('armv7h')
+arch=('armv7h' 'aarch64')
 url="https://github.com/chrishamm/DuetSoftwareFramework.git"
 license=('GPL3')
 provides=("duetwebserver=${pkgver}")
@@ -12,11 +12,16 @@ depends=('duetcontrolserver>=1.2.0.0' 'duetruntime>=1.2.0.0')
 optdepends=('duetwebcontrol' 'duetsd')
 options=(!strip staticlibs)
 backup=('opt/dsf/conf/http.json')
-source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebserver_${pkgver}_armhf.deb")
-md5sums=('8b84fb94a1bddf29ebfe3e6771e6f371')
-sha1sums=('2a47493a7256f10cda3f04534ec0c9035b44b279')
-sha256sums=('95de6b31d3d8cd9073449b66e7a9482adadae6bd78c7c9b5f9fd167584ce6c04')
-sha512sums=('38213363fbed4a8966e39dfebe722a2f806ba21db67a00d60809880b121110fe427dc340f64ef53a10ae5b4308497112e60088047cd6e7daaa4ace2db2c15743')
+source_armv7h=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duetwebserver_${pkgver}_armhf.deb")
+source_aarch64=("https://pkg.duet3d.com/dists/stable/armv7/binary-arm64/duetwebserver_${pkgver}_arm64.deb")
+md5sums_armv7h=('8b84fb94a1bddf29ebfe3e6771e6f371')
+md5sums_aarch64=('842debc81256657c301e4cac0fccfa25')
+sha1sums_armv7h=('2a47493a7256f10cda3f04534ec0c9035b44b279')
+sha1sums_aarch64=('cd73d61e1c29e4f437e89d7123f3731bf50c7bbe')
+sha256sums_armv7h=('95de6b31d3d8cd9073449b66e7a9482adadae6bd78c7c9b5f9fd167584ce6c04')
+sha256sums_aarch64=('db85d2acb177c0af4ceaed3625e96578e3b2cc449fa8dffbabd67aa0db9f0c53')
+sha512sums_armv7h=('38213363fbed4a8966e39dfebe722a2f806ba21db67a00d60809880b121110fe427dc340f64ef53a10ae5b4308497112e60088047cd6e7daaa4ace2db2c15743')
+sha512sums_aarch64=('81b3d9357d4d1aefe29f7e2eb84ab7407624ceb02ac80e30063866e2afb875532ec1fe7cdf3b7de5206faa66f7af545adb68d110dc64f94b724045c23457944b')
 
 prepare() {
     tar -xf data.tar.xz
