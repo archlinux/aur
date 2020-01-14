@@ -1,7 +1,7 @@
 pkgbase = android-armv7a-eabi-libwebp
 	pkgdesc = WebP library and conversion tools (android)
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://developers.google.com/speed/webp/
 	arch = any
 	license = BSD
@@ -14,8 +14,8 @@ pkgbase = android-armv7a-eabi-libwebp
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/webmproject/libwebp/archive/v1.0.3.tar.gz
-	sha256sums = 082d114bcb18a0e2aafc3148d43367c39304f86bf18ba0b2e766447e111a4a91
+	source = https://github.com/webmproject/libwebp/archive/v1.1.0.tar.gz
+	sha256sums = 424faab60a14cb92c2a062733b6977b4cc1e875a6398887c5911b3a1a6c56c51
 
 pkgname = android-armv7a-eabi-libwebp
 
