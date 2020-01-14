@@ -1,21 +1,28 @@
 # Maintainer: H. Rosendahl <h [at] ro [dot] sendahl [dot] de>
 pkgname=um
 _gemname=um
-pkgver=4.1.0
-pkgrel=4
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="utility to create and maintain your own man pages so you can remember how to do stuff"
 arch=("any")
 url="https://github.com/sinclairtarget/um"
 license=("MIT")
-depends=("ruby" "ruby-kramdown-1")
+depends=("ruby" "ruby-kramdown")
 makedepends=("ruby-rake")
 options=(!emptydirs)
 conflicts=("um-git")
 source=("${url}/archive/${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/sinclairtarget/um/7763e42c10bee87db3fadb2503aa704f9ca7a09d/um-completion.zsh")
+        "https://raw.githubusercontent.com/sinclairtarget/um/7763e42c10bee87db3fadb2503aa704f9ca7a09d/um-completion.zsh"
+        "kramdown-version.patch")
         
-sha256sums=('0606cd8da69618d508d06dee859dd1147a4d8846cdff57fb8958c71fe906523f'
-            'efb0abe0b87d90bde652e61353abbbc30d5adaf9b61757e6a515c016140a5b81')
+sha256sums=('f8c3f4bc5933cb4ab9643dcef7b01b8e8edf2dcbcd8062ef3ef214d1673ae64e'
+            'efb0abe0b87d90bde652e61353abbbc30d5adaf9b61757e6a515c016140a5b81'
+            'f119d4f98a2cd9d17a4ccfe56627e129be1faa4ed02c814b2e057729a887aac7')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver/"
+    patch < "$srcdir/kramdown-version.patch"
+}
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/"
