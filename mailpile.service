@@ -8,7 +8,7 @@ User=mailpile
 PIDFile=/run/mailpile.pid
 PrivateTmp=true
 Environment=MAILPILE_HOME=/var/lib/mailpile
-ExecStart=/usr/bin/mp --www= --wait
+ExecStart=/usr/bin/mailpile --www= --wait
 
 [Install]
 WantedBy=multi-user.target
