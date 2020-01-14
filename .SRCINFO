@@ -1,6 +1,6 @@
 pkgbase = visit-bin
 	pkgdesc = Interactive parallel visualization and graphical analysis tool
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://wci.llnl.gov/simulation/computer-codes/visit
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = visit-bin
 	provides = visit
 	conflicts = visit
 	conflicts = visit-build
-	noextract = visit3_0_0.linux-x86_64-rhel7.tar.gz
-	source = http://portal.nersc.gov/project/visit/releases/3.0.0/visit3_0_0.linux-x86_64-rhel7.tar.gz
-	source = http://portal.nersc.gov/project/visit/releases/3.0.0/visit-install3_0_0
+	noextract = visit3_1_0.linux-x86_64-rhel7.tar.gz
+	source = https://github.com/visit-dav/visit/releases/download/v3.1.0/visit3_1_0.linux-x86_64-rhel7.tar.gz
+	source = https://github.com/visit-dav/visit/releases/download/v3.1.0/visit-install3_1_0
 	source = visit.sh
 	source = visit-libs.patch
-	sha256sums = f8d73c6faa82c6887ba8f4a94cf9e3732a105eae6a4da9fea1421889deb2ed36
-	sha256sums = 744b50404a80135971c418dc8535fd5f6cfbd5e6012f894949bb531f0e51730a
+	sha256sums = 994b2edecd0d64b38f68f8ba7625f3deb49a176ff75d67f99cebc8d7abd3e7ce
+	sha256sums = 3d330864e81a377fe6c6c9203ed04fa37b4b3e7c61423c19909d02bb9cec2c7d
 	sha256sums = d07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da
 	sha256sums = 4f0cd7507721974e3545eefb7087c3d2a7ad661945c60407f3a0455590108fef
 
