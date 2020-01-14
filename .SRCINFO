@@ -1,13 +1,13 @@
 pkgbase = python2-imgsize
-	pkgdesc = Pure Python image size library
+	pkgdesc = Pure Python image size library - python2 version
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ojii/imgsize
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-imgsize-2.1-1.tar.gz::https://github.com/ojii/imgsize/archive/2.1.tar.gz
+	source = python2-imgsize-2.1-2.tar.gz::https://github.com/ojii/imgsize/archive/2.1.tar.gz
 	sha256sums = a413cc368cac5f5cf9199038887e52ed1ece08f431885dd762dde2df56882f13
 
 pkgname = python2-imgsize
