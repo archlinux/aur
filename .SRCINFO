@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-iptvsimple
 	pkgdesc = IPTV Simple PVR client addon for Kodi
-	pkgver = 3.8.6
+	pkgver = 3.8.8
 	pkgrel = 1
 	url = https://github.com/kodi-pvr/pvr.iptvsimple
 	arch = armv6h
@@ -14,10 +14,10 @@ pkgbase = kodi-addon-pvr-iptvsimple
 	depends = kodi
 	depends = git
 	conflicts = kodi-addon-pvr-iptvsimple-git
-	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/3.8.6-Leia.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/18.4-Leia.tar.gz
-	sha256sums = d1661f4d88b750cb84fd6a1a3bb4f22b27e00f986f1d17703c04ca92311d5593
-	sha256sums = bf2be186d8ae5b5377e43c06a538012bb9f51a0e98f8244b70a401006861d110
+	source = https://github.com/kodi-pvr/pvr.iptvsimple/archive/3.8.8-Leia.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/18.5-Leia.tar.gz
+	sha256sums = 25eff252ad748e0cf166cd01b0f08e8fb3977c98a1b04cad9ef6509ea30c5fa9
+	sha256sums = 108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29
 
 pkgname = kodi-addon-pvr-iptvsimple
 
