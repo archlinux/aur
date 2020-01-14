@@ -4,7 +4,7 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2
-pkgver=6.6.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="GTK2 archiver utility"
 arch=(i686 x86_64)
@@ -19,7 +19,7 @@ options=('!strip')
 install=peazip.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.LINUX.GTK2.tgz"
         "peazip.desktop")
-sha256sums=('4778575473883d75e025eb2792fe6725ad27ba066d861d3f67b8bac2b5841568'
+sha256sums=('cc03201fd044e7af1beab74cc1e527416c6a395612a96e1d9e2bfabd799218f5'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
 
 package() {
