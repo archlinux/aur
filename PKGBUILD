@@ -6,7 +6,7 @@ arch=('any')
 license=("Unknown")
 
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 
 source=(atomicpi-hold-mic
         atomicpi-hold-xmos
@@ -27,6 +27,7 @@ md5sums=('278fb4895488f3c191dbc8c01f316652'
 package() {
   install -D -m755 atomicpi-hold-mic "${pkgdir}/usr/bin/atomicpi-hold-mic"
   install -D -m755 atomicpi-hold-xmos "${pkgdir}/usr/bin/atomicpi-hold-xmos"
+  install -D -m755 atomicpi-reset-xmos "${pkgdir}/usr/bin/atomicpi-reset-xmos"
   install -D -m755 mmc-status "${pkgdir}/usr/bin/mmc-status"
   install -D -m644 lib_atomicpi.sh "${pkgdir}/usr/lib/atomicpi.sh"
   install -D -m644 lib_gpio-present.sh "${pkgdir}/usr/lib/gpio-present.sh"

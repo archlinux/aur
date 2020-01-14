@@ -1,7 +1,7 @@
 pkgbase = atomicpi-utils
 	pkgdesc = Tools and Utilities for the Atomic Pi Single-board computer from Digital Loggers
 	pkgver = 0.1
-	pkgrel = 0
+	pkgrel = 1
 	arch = any
 	license = Unknown
 	depends = libgpiod
