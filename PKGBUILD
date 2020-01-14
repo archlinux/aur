@@ -2,9 +2,9 @@
 
 pkgname=buildkit
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.'
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/moby/buildkit"
 license=('Apache')
 provides=("${pkgname}")

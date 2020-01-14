@@ -1,9 +1,13 @@
 pkgbase = buildkit
 	pkgdesc = A toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.
 	pkgver = 0.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/moby/buildkit
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	makedepends = make
 	depends = runc
