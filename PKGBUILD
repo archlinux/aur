@@ -1,7 +1,7 @@
 # Maintainer: Vitor Barbosa <vitorqb@gmail.com>
 _npmname=shadow-cljs
 pkgname=nodejs-shadow-cljs
-pkgver=2.8.69
+pkgver=2.8.83
 pkgrel=1
 pkgdesc="ClojureScript compilation made easy http://shadow-cljs.org/"
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=()
 makedepends=('npm' 'jq')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('ca78ba5c7f20a47297412b437e7fd4607172005afc3db745e8a737ee3e771110')
+sha256sums=('adfc99bf6bcdc09d5ada41480eca935114ceb090b57267444ad9a666f5863188')
 
 package() {
   # Credits to https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=nodejs-nativefier

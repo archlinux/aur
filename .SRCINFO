@@ -1,6 +1,6 @@
 pkgbase = nodejs-shadow-cljs
 	pkgdesc = ClojureScript compilation made easy http://shadow-cljs.org/
-	pkgver = 2.8.69
+	pkgver = 2.8.83
 	pkgrel = 1
 	url = http://shadow-cljs.org/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-shadow-cljs
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = shadow-cljs-2.8.69.tgz
-	source = https://registry.npmjs.org/shadow-cljs/-/shadow-cljs-2.8.69.tgz
-	sha256sums = ca78ba5c7f20a47297412b437e7fd4607172005afc3db745e8a737ee3e771110
+	noextract = shadow-cljs-2.8.83.tgz
+	source = https://registry.npmjs.org/shadow-cljs/-/shadow-cljs-2.8.83.tgz
+	sha256sums = adfc99bf6bcdc09d5ada41480eca935114ceb090b57267444ad9a666f5863188
 
 pkgname = nodejs-shadow-cljs
 

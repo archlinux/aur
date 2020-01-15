@@ -1,0 +1,4 @@
+/nodejs-shadow-cljs-*
+/pkg/
+/shadow-cljs-*.tgz
+/src/
