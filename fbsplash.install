@@ -1,9 +1,0 @@
-#! /usr/bin/bash
-
-build() {
-    add_runscript
-}
-
-help() {
-    echo "This hook shows a simple framebuffer based splash screen."
-}
