@@ -1,14 +1,14 @@
 # Maintainer: Vladimir Panteleev <arch-pkg at thecybershadow.net>
 
 pkgname=hax11-git
-pkgver=r102.11273ca
+pkgver=r149.ba694c6
 pkgrel=1
 pkgdesc="Hackbrary to Hook and Augment X11 protocol calls"
 arch=('i686' 'x86_64')
 url="https://github.com/CyberShadow/hax11"
 license=('MIT')
 depends=('glibc' 'lib32-glibc')
-makedepends=('git')
+makedepends=('git' 'xorgproto')
 source=("git+https://github.com/CyberShadow/hax11"
 	    "license.txt")
 md5sums=('SKIP'
