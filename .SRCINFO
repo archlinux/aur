@@ -1,7 +1,7 @@
 pkgbase = sia-ui
 	pkgdesc = Blockchain-based marketplace for file storage
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sia.tech
 	arch = x86_64
 	license = MIT
