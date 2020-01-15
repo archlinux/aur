@@ -6,7 +6,7 @@ _srcname="${_name}-dropbox"
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=0.4.3.r5.g36bc4ab
+pkgver=0.5.0.r0.g43c3e73
 pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
@@ -15,13 +15,17 @@ license=('MIT')
 source=("git+${url}")
 makedepends=('git' 'python-setuptools' 'gendesk')
 depends=(
-    'python-blinker'
-    'python-click'
-    'python-dropbox'
-    'python-keyrings-alt'
-    'python-u-msgpack'
+    'python-click>=7.0'
+    'python-dropbox>=9.4.0'
     'python-watchdog'
-    'python-pyro')
+    'python-blinker'
+    'python-requests'
+    'python-u-msgpack'
+    'python-keyring>=19.0.0'
+    'python-keyrings-alt>=3.0.0'
+    'python-pyro5'
+    'python-systemd'
+    'python-sdnotify')
     optdepends=('python-pyqt5: GUI support (runtime)')
 md5sums=('SKIP')
 
