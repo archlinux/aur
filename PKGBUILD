@@ -3,12 +3,12 @@
 pkgname='python-click-completion'
 _name="${pkgname#python-}"
 pkgver='0.5.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Add or enhance bash, fish, zsh and powershell completion in Click'
 arch=('any')
 url='https://github.com/click-contrib/click-completion'
 license=('MIT')
-depends=('python' 'python-click' 'python-jinja')
+depends=('python' 'python-click' 'python-jinja' 'python-six' 'python-shellingham')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('4c7b8b3e78124e1005c9f221a2123b6ec02f3942d2be10f79fe3a5c96a52a96c')
