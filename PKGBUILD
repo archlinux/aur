@@ -1,40 +1,42 @@
-# Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
-# Contributor: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 pkgname=bazel-git
-pkgver=r4663.9bc5c34
+pkgver=r24483.5e1847c23e
 pkgrel=1
 pkgdesc="Correct, reproducible, and fast builds for everyone"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://bazel.io/"
 license=('Apache')
-depends=('java-environment=8' 'libarchive' 'zip' 'unzip')
+depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
+makedepends=('git' 'protobuf' 'python' 'bazel-bootstrap')
+options=('!distcc' '!strip' '!ccache')
 provides=('bazel')
-makedepends=('git' 'protobuf')
-install=bazel.install
-options=('!strip')
-source=("$pkgname::git+https://github.com/google/bazel.git")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/google/bazel.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$pkgname"
-  ./compile.sh
-  ./output/bazel build scripts:bazel-complete.bash
+  cd "${srcdir}/${pkgname}"
+
+  /opt/bazel-bootstrap/bin/bazel build //src:bazel --sandbox_writable_path "${HOME}/.ccache"
+  /opt/bazel-bootstrap/bin/bazel shutdown
+  ./bazel-bin/src/bazel build scripts:bazel-complete.bash
+  cd bazel-bin/src
+  ./bazel shutdown
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname/output/bazel" "$pkgdir/usr/bin/bazel"
-  install -Dm755 "$srcdir/$pkgname/bazel-bin/scripts/bazel-complete.bash" "$pkgdir/etc/bash_completion.d/bazel-complete.bash"
-  mkdir -p "$pkgdir/opt/bazel/base_workspace"
+  cd "${srcdir}/${pkgname}"
+
+  install -Dm755 scripts/packages/bazel.sh "${pkgdir}/usr/bin/bazel"
+  install -Dm755 bazel-bin/src/bazel "${pkgdir}/usr/bin/bazel-real"
+  install -Dm644 bazel-bin/scripts/bazel-complete.bash "${pkgdir}/usr/share/bash-completion/completions/bazel"
+  install -Dm644 scripts/zsh_completion/_bazel "${pkgdir}/usr/share/zsh/site-functions/_bazel"
+  mkdir -p "${pkgdir}/opt/bazel"
   for d in examples third_party tools; do
-    cp -r "$srcdir/$pkgname/$d" "$pkgdir/opt/bazel/"
-    cd "$pkgdir/opt/bazel/base_workspace"
-    ln -s "/opt/bazel/$d" ./
+    cp -r "${d}" "${pkgdir}/opt/bazel/"
   done
 }
-
-# vim:set ts=2 sw=2 et:
