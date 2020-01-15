@@ -1,7 +1,9 @@
-# Maintainer: Troy C < rstrox -ta yahoo -tod com >
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Troy C < rstrox -ta yahoo -tod com >
 
+_name=rax_default_network_flags_python_novaclient_ext
 pkgname=python-rax-default-network-flags-python-novaclient-ext
-pkgver=0.2.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Novaclient Extension for Instance Default Network Flags"
 arch=('any')
@@ -9,17 +11,16 @@ url="http://pypi.python.org/pypi/rax_default_network_flags_python_novaclient_ext
 license=('GPL')
 depends=('python-novaclient' 'python-httplib2' 'python-prettytable' 'python-simplejson' 'python-iso8601')
 makedepends=('python-setuptools')
-provides=("$pkgname=$pkgver")
-source=(http://pypi.python.org/packages/source/r/rax_default_network_flags_python_novaclient_ext/rax_default_network_flags_python_novaclient_ext-${pkgver}.tar.gz)
-md5sums=('3554dbe043147a6df3d3f7225888be92')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+md5sums=('8856de2ea7635b3628ff89f0aafdc33f')
+
 
 build() {
-	cd "$srcdir/rax_default_network_flags_python_novaclient_ext-$pkgver"
+	cd "$_name-$pkgver"
 	python setup.py build
-
 }
 
 package() {
-	cd "$srcdir/rax_default_network_flags_python_novaclient_ext-$pkgver"
-	python setup.py install --root=${pkgdir}
+	cd "$_name-$pkgver"
+	python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
