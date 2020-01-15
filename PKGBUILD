@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
-pkgver=3.1.0
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="http://ignitionrobotics.org/libs/common"
@@ -13,9 +13,9 @@ makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-common/get/${pkgname}3_${pkgver}.tar.bz2")
-sha256sums=('012991eef45ca8c43f9caf7b4c67014cb43e8571a74a272f4d22fa421b0c9c9f')
+sha256sums=('39c0404a88f8fa6d0c1a80b35513696452779371aab7d42549058da1f37a650a')
 
-_dir="ignitionrobotics-ign-common-c6d4da1fca3d"
+_dir="ignitionrobotics-ign-common-818bcd7029c8"
 
 build() {
   cd "$srcdir/$_dir"
