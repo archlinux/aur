@@ -2,7 +2,7 @@
 # Contributor: mawcomw  <mawcomw@gmail.com>
 
 pkgname=limesurvey
-pkgver=3.21.4+200108
+pkgver=4.0.0+200116
 pkgrel=1
 pkgdesc="The most popular FOSS online survey tool on the web."
 depends=('php')
