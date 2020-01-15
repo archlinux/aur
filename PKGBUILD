@@ -2,7 +2,7 @@
 
 pkgname=supersm
 _pkgname=SuperSM
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="A Super Symlink Manager"
 arch=("any")
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('boost-libs')
 makedepends=('boost' 'cmake' 'make')
 source=("${_pkgname}-${pkgver}.tar.gz"::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('19536d7df778b19594d2ade8f29af621cfe424663260cf5d23fe7a2293b839e5')
+sha256sums=('54cad12a90d7cde1a7cb2e14243a69862dfc0113dbafd28a7a4469fea28a3318')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
