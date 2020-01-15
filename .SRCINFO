@@ -1,7 +1,7 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.4.2
-	pkgrel = 4
+	pkgrel = 7
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -15,13 +15,13 @@ pkgbase = python-torchvision
 	makedepends = qt5-base
 	depends = python-numpy
 	depends = python-pillow
-	depends = python-pytorch
+	depends = python-pytorch-cuda
 	depends = python-scipy
 	depends = python-six
 	depends = python-tqdm
 	optdepends = ffmpeg: video reader backend (the recommended one with better performance)
 	optdepends = python-av: video reader backend (the default one)
-	source = https://github.com/pytorch/vision/archive/v0.4.2.tar.gz
+	source = vision-0.4.2.tar.gz::https://github.com/pytorch/vision/archive/v0.4.2.tar.gz
 	sha512sums = 3327364bd1c10f4f0fdf9f8c1bed3848cbd887ee335634a0da6eb7a2611037408eee6261cd178d12225be5f2c809a05ff9fb87420b8accd447a799ca83def3ad
 
 pkgname = python-torchvision
