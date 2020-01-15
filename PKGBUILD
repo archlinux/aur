@@ -1,23 +1,35 @@
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Francois Boulogne <fboulogne at april dot org>
+
 pkgname=python-trackpy
-pkgver=0.4
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Tools for particle tracking"
 url="https://github.com/soft-matter/trackpy"
 arch=(any)
 license=('BSD')
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas' 'python-yaml' 'python-pims')
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas' 'python-six' 'python-yaml')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
-source=(https://github.com/soft-matter/trackpy/archive/v$pkgver.zip)
+optdepends=("python-pims: simplifies image-reading"
+            "python-pytables: saving results in an HDF5 file"
+            "python-numba: for accelerated feature-finding and linking"
+            "python-pillow: for some display routines")
+source=(trackpy-"$pkgver".tar.gz::https://github.com/soft-matter/trackpy/archive/v$pkgver.tar.gz)
+md5sums=('bb166d6d93c7b8f9a3330a9d758808eb')
+
+
+build() {
+    cd trackpy-"$pkgver"
+    python setup.py build
+}
 
 check() {
-    cd $srcdir/trackpy-"$pkgver"
+    cd trackpy-"$pkgver"
     nosetests3
 }
 
 package() {
-    cd $srcdir/trackpy-"$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd trackpy-"$pkgver"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-md5sums=('81b9ba461554d7c8acbf4ad34f6dff27')
