@@ -1,0 +1,17 @@
+pkgbase = vulkan-extensionlayer-git
+	pkgdesc = Layer providing Vulkan features when native support is unavailable
+	pkgver = r4.e15509e728
+	pkgrel = 1
+	url = https://github.com/KhronosGroup/Vulkan-ExtensionLayer
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	conflicts = vulkan-extensionlayer
+	source = https://github.com/KhronosGroup/Vulkan-ExtensionLayer
+	sha256sums = SKIP
+
+pkgname = vulkan-extensionlayer-git
+
