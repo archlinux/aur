@@ -1,21 +1,22 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
-pkgver=3.2.0
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/libs/fuel_tools"
 license=('Apache')
 groups=('development')
-depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3')
+depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3'
+         'ignition-msgs>=5' 'ignition-tools')
 makedepends=('ignition-cmake>=2')
 optdepends=('ruby')
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-fuel-tools/get/ignition-fuel-tools3_${pkgver}.tar.bz2")
-sha256sums=('b6286b7a79d64376a9095612fef714b0ceb32fe33d97e47fc8f7d2648cef8a29')
+source=("https://bitbucket.org/ignitionrobotics/ign-fuel-tools/get/ignition-fuel-tools4_${pkgver}.tar.bz2")
+sha256sums=('daf3f203737740e1ade700f93df885a96e7f249ad081da61b838b3157e54647c')
 
-_dir="ignitionrobotics-ign-fuel-tools-e55ea88d36e9"
+_dir="ignitionrobotics-ign-fuel-tools-eef3e682dd4e"
 
 build() {
   cd "$srcdir/$_dir"
