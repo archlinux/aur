@@ -1,0 +1,9 @@
+/src
+/pkg
+/buck
+/buck-git
+*.xz
+*.tar.*
+*.pkg.*
+*.zip
+*.zip.sig

@@ -1,8 +1,8 @@
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=buck-git
-pkgver=2019.01.10.01.r1058.ga02f4c9fc4
+pkgver=2019.10.17.01.r988.gcb7523a257
 pkgrel=1
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
@@ -17,28 +17,31 @@ license=('Apache')
 source=("git+https://github.com/facebook/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
+prepare() {
+  sed -i 's+executable="python"+executable="python2"+g' ${pkgname%-git}/build.xml
+}
+
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --tags|sed 's+-+.r+'|tr - .|cut -c2-
+  cd "${pkgname%-git}"
+  git describe --tags | sed 's+-+.r+' | tr - . | cut -c2-
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   ant
   ./bin/buck build buck
 }
 
-prepare() {
-  _java_version=$(archlinux-java get|cut -d- -f2)
-  if [[ ${_java_version} != 8 ]]; then
-    msg "activate java 8 before building"
-    exit 1
-  fi
-  sed -i 's+executable="python"+executable="python2"+g' ${pkgname%-git}/build.xml
-}
-
 package() {
-  cd ${pkgname%-git}
+  cd "${pkgname%-git}"
   BINPATH=$(./bin/buck targets --show_output buck | cut -d' ' -f2)
   install -Dm 755 "${BINPATH}" "${pkgdir}"/usr/bin/buck
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  ./bin/buck kill
+
+  # Remove package srcdir from watchman watch list.
+  if command -v watchman > /dev/null
+  then
+    watchman --no-spawn --no-local watch-del "${srcdir}/${pkgname%-git}" > /dev/null 2>&1 || true
+  fi
 }
