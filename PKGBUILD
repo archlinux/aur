@@ -2,7 +2,7 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-thinc
 _origpkgname=thinc
-pkgver=7.0.2
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Practical Machine Learning for NLP"
 arch=("x86_64")
@@ -10,13 +10,11 @@ url="https://github.com/explosion/thinc"
 license=("MIT")
 depends=("cython"
 	"python-numpy"
-	"python-msgpack-numpy-git"
 	"python-cymem"
 	"python-preshed"
 	"python-murmurhash"
 	"python-plac"
 	"python-ujson"
-	"python-dill"
 	"python-pytest"
 	"python-mock"
 	"python-pathlib"
@@ -28,11 +26,13 @@ depends=("cython"
 	"python-six"
 	"python-tqdm"
 	"python-wrapt"
+	"python-srsly-git"
+	"python-wasabi-git"
 )
 makedepends=("python-setuptools")
 optdepends=("python-spacy: examples")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/thinc/archive/v$pkgver.tar.gz")
-md5sums=("2be40f65ec9a188bbd4121be69e74c56")
+md5sums=('b1c28b66928e63f2c8aeb8d8070f02f6')
 
 package() {
     cd "$_origpkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-thinc
 	pkgdesc = Practical Machine Learning for NLP
-	pkgver = 7.0.2
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://github.com/explosion/thinc
 	arch = x86_64
@@ -8,13 +8,11 @@ pkgbase = python-thinc
 	makedepends = python-setuptools
 	depends = cython
 	depends = python-numpy
-	depends = python-msgpack-numpy-git
 	depends = python-cymem
 	depends = python-preshed
 	depends = python-murmurhash
 	depends = python-plac
 	depends = python-ujson
-	depends = python-dill
 	depends = python-pytest
 	depends = python-mock
 	depends = python-pathlib
@@ -26,9 +24,11 @@ pkgbase = python-thinc
 	depends = python-six
 	depends = python-tqdm
 	depends = python-wrapt
+	depends = python-srsly-git
+	depends = python-wasabi-git
 	optdepends = python-spacy: examples
-	source = python-thinc-7.0.2.tar.gz::https://github.com/explosion/thinc/archive/v7.0.2.tar.gz
-	md5sums = 2be40f65ec9a188bbd4121be69e74c56
+	source = python-thinc-7.3.1.tar.gz::https://github.com/explosion/thinc/archive/v7.3.1.tar.gz
+	md5sums = b1c28b66928e63f2c8aeb8d8070f02f6
 
 pkgname = python-thinc
 
