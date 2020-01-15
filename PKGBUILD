@@ -3,7 +3,7 @@
 
 pkgname=suitesparse-mkl
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of sparse matrix libraries (compiled with the Intel MKL and Intel TBB)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('i686' 'x86_64')
@@ -21,32 +21,17 @@ sha1sums=('3de08b5ab02610ed0446225aad2445696616fae5'
 
 prepare() {
 # Fix linking with intel-tbb
-  cd SuiteSparse
-  patch -p1 -i ../suitesparse-link-tbb.patch
+    cd ${srcdir}
+    patch -p0 suitesparse-mkl_tbb.patch
 }
 
 build() {
-   cd "$srcdir"/SuiteSparse
-
-   source /opt/intel/mkl/bin/mklvars.sh intel64 
-   source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
-   export BLAS="-L/opt/intel/mkl/lib/intel64 -lmkl_rt"
-   TBB=-ltbb SPQR_CONFIG=-DHAVE_TBB MY_METIS_LIB=/usr/lib/libmetis.so make
+    cd ${srcdir}/SuiteSparse
+    JOBS=8 make
 }
 
 
 package() {
-   cd "${srcdir}"/SuiteSparse
-   install -dm755 "${pkgdir}"/usr/{include,lib}
-
-   source /opt/intel/mkl/bin/mklvars.sh intel64 
-   source /opt/intel/composerxe/linux/bin/compilervars.sh intel64
-   export BLAS="-L/opt/intel/mkl/lib/intel64 -lmkl_rt"
-   export LAPACK="-L/opt/intel/mkl/lib/intel64 -lmkl_rt"
-   
-   TBB=-ltbb SPQR_CONFIG=-DHAVE_TBB MY_METIS_LIB=/usr/lib/libmetis.so \
-     make INSTALL_LIB="${pkgdir}"/usr/lib INSTALL_INCLUDE="${pkgdir}"/usr/include install
-
-   # fix RPATH
-   chrpath -d "$pkgdir"/usr/lib/*
+    cd ${srcdir}/SuiteSparse
+    make install
 }
