@@ -1,6 +1,6 @@
 pkgbase = gazebo-hg
 	pkgdesc = A multi-robot simulator for outdoor environments. Mercurial version.
-	pkgver = 11.0.0.38446
+	pkgver = 11.0.0.38902
 	pkgrel = 1
 	url = http://gazebosim.org/
 	install = gazebo.install
@@ -9,7 +9,7 @@ pkgbase = gazebo-hg
 	license = Apache
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = ignition-cmake=0
+	makedepends = ignition-cmake>=2
 	makedepends = mercurial
 	depends = boost
 	depends = curl
@@ -22,12 +22,12 @@ pkgbase = gazebo-hg
 	depends = libxml2
 	depends = ogre=1.9
 	depends = protobuf
-	depends = sdformat=6
-	depends = ignition-math=4
-	depends = ignition-transport=4
-	depends = ignition-common=1
-	depends = ignition-fuel_tools=1
-	depends = ignition-msgs=1
+	depends = sdformat=8
+	depends = ignition-math>=6
+	depends = ignition-transport>=8
+	depends = ignition-common>=3
+	depends = ignition-fuel_tools>=4
+	depends = ignition-msgs>=5
 	depends = tinyxml2
 	depends = qwt
 	optdepends = bullet: Bullet support
