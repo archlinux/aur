@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-querystring-parser
-pkgver=1.2.0
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Creates nested dictionaries from sent form/querystring data'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('python' 'python-six')
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver::https://github.com/bernii/querystring-parser/archive/$pkgver.tar.gz")
-sha256sums=('27f3b947ad0a70a298c8daa506b458877d57307efcd9833f0174e90a821230b0')
+sha256sums=('854a3586d59baf63dfc4e38f76ae320f6a14bb8529a3e2c6552b27471a7a4855')
 
 _pkgname=querystring-parser
 
