@@ -1,56 +1,35 @@
 pkgbase = hpmyroom
 	pkgdesc = HPE MyRoom a collaborative conferencing meetings software
-	pkgver = 10.13.0.0225
+	pkgver = 11.1.0.0508
 	pkgrel = 1
 	url = https://www.myroom.hpe.com
 	arch = x86_64
 	license = unknown
-	depends = alsa-lib
-	depends = bzip2
-	depends = dbus
-	depends = expat
-	depends = flac
-	depends = fontconfig
-	depends = freetype2
-	depends = glib2
-	depends = graphite
-	depends = gst-plugins-bad
-	depends = gst-plugins-base-libs
-	depends = gstreamer
-	depends = harfbuzz
-	depends = libasyncns
-	depends = libcap
-	depends = libffi
-	depends = libgcrypt
+	depends = alsa-lib>=1.0.16
+	depends = fontconfig>=2.11.94
+	depends = freetype2>=2.6
+	depends = glib2>=2.31.8
+	depends = glibc>=2.17
+	depends = gst-plugins-base-libs>=1.0.0
+	depends = gstreamer>=1.4.0
+	depends = libcups>=1.4.0
+	depends = libdrm>=2.4.30
+	depends = libgl
 	depends = libglvnd
-	depends = libgpg-error
-	depends = libice
-	depends = libogg
-	depends = libpng
-	depends = libpng12
-	depends = libpulse
-	depends = libsm
-	depends = libsndfile
-	depends = libsystemd
-	depends = libutil-linux
-	depends = libvorbis
+	depends = libpulse>=0.99.1
+	depends = libutil-linux>=2.16
+	depends = libvdpau
 	depends = libx11
-	depends = libxau
-	depends = libxcb
-	depends = libxdmcp
-	depends = libxext
+	depends = libxcb>=1.8
 	depends = libxfixes
-	depends = libxi
+	depends = libxi>=1.5.99.2
+	depends = libxrender
 	depends = libxss
 	depends = libxtst
-	depends = lz4
-	depends = orc
-	depends = pcre
-	depends = xz
-	depends = zlib
-	depends = libva
-	source = https://www.myroom.hpe.com/downloadfiles/hpmyroom_10.13.0.0225_amd64.deb
-	sha256sums = 9425714fa77811a0ac9fa959c9ed57e31f8c86875682da6a9c19b048c7388069
+	depends = systemd-libs>=183
+	depends = zlib>=1.2.3.4
+	source = https://www.myroom.hpe.com/downloadfiles/hpmyroom_11.1.0.0508_amd64.deb
+	sha256sums = 6438c9da7eca8d130704758994a6931bc1768c013950503aeadfefcc346cd488
 
 pkgname = hpmyroom
 
