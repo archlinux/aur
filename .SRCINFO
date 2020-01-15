@@ -1,8 +1,8 @@
 pkgbase = ausweisapp2
 	pkgdesc = A software application that you install on your computer to use your national identity card or your electronic residence permit for online identification
-	pkgver = 1.18.2
+	pkgver = 1.20.0
 	pkgrel = 1
-	url = https://www.ausweisapp.bund.de/ausweisapp2-home/
+	url = https://www.ausweisapp.bund.de/
 	arch = i686
 	arch = x86_64
 	license = custom:EUPL1.2
@@ -14,14 +14,15 @@ pkgbase = ausweisapp2
 	depends = qt5-svg
 	depends = qt5-websockets
 	depends = pcsclite
+	depends = http-parser
 	optdepends = ccid
-	source = https://github.com/Governikus/AusweisApp2/releases/download/1.18.2/AusweisApp2-1.18.2.tar.gz
-	source = https://github.com/Governikus/AusweisApp2/releases/download/1.18.2/AusweisApp2-1.18.2.tar.gz.asc
-	source = qml-path.patch
+	optdepends = acsccid
+	optdepends = pcsc-cyberjack
+	source = https://github.com/Governikus/AusweisApp2/releases/download/1.20.0/AusweisApp2-1.20.0.tar.gz
+	source = https://github.com/Governikus/AusweisApp2/releases/download/1.20.0/AusweisApp2-1.20.0.tar.gz.asc
 	validpgpkeys = 699BF3055B0A49224EFDE7C72D7479A531451088
-	sha256sums = 2b21d25ca065d1004e3d72f418d542240ab6b62e9e68ed05958e70455f4a3e64
+	sha256sums = 8289678d19e2c4d5845afd7a516d645f78d8e0a09f857a8d5cc1037569d2e807
 	sha256sums = SKIP
-	sha256sums = 52a45aa940b0d6fe5236e45cb3c587237955b7e128eb5f6b5c6398e034778ca4
 
 pkgname = ausweisapp2
 
