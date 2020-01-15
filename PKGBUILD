@@ -1,13 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical user interface based on Qt."
 url='https://wiki.ros.org/qt_gui'
 
 pkgname='ros-melodic-qt-gui'
-pkgver='0.3.11'
-_pkgver_patch=0
+pkgver='0.3.16'
 arch=('any')
-pkgrel=2
+pkgrel=0
 license=('BSD')
 
 ros_makedepends=(
@@ -34,7 +31,7 @@ depends=(
 
 _dir="qt_gui_core-${pkgver}/qt_gui"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/qt_gui_core/archive/${pkgver}.tar.gz")
-sha256sums=('708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2')
+sha256sums=('efa5ecf7ec22de606b3c0e039f43aacc2f2d79d74d7e17ecceecf2cafd22d128')
 
 build() {
 	# Use ROS environment variables.
@@ -54,9 +51,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
