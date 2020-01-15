@@ -1,6 +1,6 @@
 pkgbase = bazel-git
 	pkgdesc = Correct, reproducible, and fast builds for everyone
-	pkgver = r24483.5e1847c23e
+	pkgver = r24502.9ec89b9194
 	pkgrel = 1
 	url = http://bazel.io/
 	arch = i686
