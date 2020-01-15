@@ -1,14 +1,14 @@
 # Maintainer: Sagittarius A* <lux.r.ck@gmail.com>
 pkgname=rgssad
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Extract rgssad/rgss2a/rgss3a files."
 arch=('i686' 'x86_64')
 url="https://github.com/luxrck/rgssad"
 license=('MIT')
 depends=()
-makedepends=('cargo' 'rust' 'git')
-source=("${pkgname}::git+https://github.com/luxrck/rgssad.git#tag=${pkgver}")
+makedepends=('git')
+source=("${pkgname}::git+https://github.com/luxrck/rgssad.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
