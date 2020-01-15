@@ -1,27 +1,32 @@
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Michel Zou
+
+_name=pythran
 pkgbase=python-pythran-git
 pkgname=('python-pythran-git' 'python2-pythran-git')
-pkgver=r1888.2d5a87b9
+pkgver=0.9.5.r5.g3671d777c
 pkgrel=1
-pkgdesc="A claimless python to c++ converter"
+pkgdesc="claimless python to c++ converter"
 arch=('i686' 'x86_64')
-url="http://pythonhosted.org/pythran/"
+url="https://github.com/serge-sans-paille/pythran"
 license=('BSD')
 makedepends=('python-networkx' 'python2-networkx' 'python-ply' 'python2-ply' 'python-colorlog' 'python2-colorlog' 'python-numpy' 'python2-numpy' 'gperftools'  'python-setuptools' 'python2-setuptools' 'python-gast' 'python2-gast' 'python-six' 'python2-six' 'gmp' 'boost' 'git' 'cmake')
 source=("git+https://github.com/serge-sans-paille/pythran.git")
 md5sums=('SKIP')
 
+
 pkgver() {
-  cd "$srcdir"/pythran
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_name"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cp -r "$srcdir"/pythran "$srcdir"/pythran-py2
+  cp -r "$srcdir"/${_name} "$srcdir"/${_name}-py2
 
-  cd "$srcdir"/pythran
+  cd "${_name}"
   python setup.py build
 
-  cd "$srcdir"/pythran-py2
+  cd "${_name}"-py2
   python2 setup.py build
 }
 
@@ -30,8 +35,8 @@ package_python-pythran-git() {
   provides=('python-pythran')
   conflicts=('python-pythran')
 
-  cd "$srcdir"/pythran
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "${_name}"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-pythran-git() {
@@ -39,8 +44,8 @@ package_python2-pythran-git() {
   provides=('python2-pythran')
   conflicts=('python2-pythran')
 
-  cd "$srcdir"/pythran-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "${_name}"-py2
+  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   mv "$pkgdir"/usr/bin/pythran "$pkgdir"/usr/bin/pythran2
   mv "$pkgdir"/usr/bin/pythran-config "$pkgdir"/usr/bin/pythran2-config
 }
