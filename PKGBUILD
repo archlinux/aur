@@ -3,7 +3,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.66.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -13,7 +13,7 @@ optdepends=('zenity: for dialogs'
             'kdialog: for dialogs'
             'xdialog: for dialogs')
 source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${pkgname%-bin}-linux.AppImage"
-        'https://mail.tutanota.com/desktop/linux-sig.bin'
+        "linux-sig-$pkgver.bin::https://mail.tutanota.com/desktop/linux-sig.bin"
         'https://raw.githubusercontent.com/tutao/tutanota/master/tutao-pub.pem'
         "${pkgname%-bin}")
 provides=("${pkgname%-bin}")
@@ -27,7 +27,7 @@ sha512sums=('7830bedbc460b6c7ecffbac99ed239515f01494ed031e4c21577e3b58bda419b0f4
 prepare() {
 	# Validate the signature against public key: https://tutanota.com/howto/#verify-desktop
 	set -e
-	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig.bin \
+	openssl dgst -sha512 -verify tutao-pub.pem -signature linux-sig-${pkgver}.bin \
 		"${pkgname%-bin}-$pkgver.AppImage"
 	set +e
 
