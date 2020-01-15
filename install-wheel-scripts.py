@@ -34,11 +34,11 @@ def main():
 			mod = mod[:-len('.__main__')]
 			code = f'''\
 #!/bin/sh
-exec python3 -m {mod} "$@"
+exec /usr/bin/python3 -m {mod} "$@"
 '''
 		else:
 			code = f'''\
-#!/usr/bin/env python3
+#!/usr/bin/python3
 from {mod} import {fun}
 {fun}()
 '''
