@@ -1,6 +1,6 @@
 pkgbase = adguardhome
 	pkgdesc = Network-wide ads and trackers blocking DNS server
-	pkgver = 0.100.8
+	pkgver = 0.100.9
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
 	install = readme.install
@@ -9,9 +9,9 @@ pkgbase = adguardhome
 	makedepends = go
 	makedepends = npm
 	makedepends = git
-	source = adguardhome-0.100.8.tar.gz::https://github.com/AdguardTeam/AdGuardHome/archive/v0.100.8.tar.gz
+	source = adguardhome-0.100.9.tar.gz::https://github.com/AdguardTeam/AdGuardHome/archive/v0.100.9.tar.gz
 	source = AdGuardHome.service
-	sha256sums = 25ca844370fd9d8973757702e55ec293958033a12f96a3a0bdf1f41438f38b27
+	sha256sums = e49dfe2f88b9730a6595d96dac539c90f8ad77ebb164025bcaa5aafbdbf3cab1
 	sha256sums = 9f47d9b2d7daad4b4db08d7cf8c10a7fb55323f40e06161a56e6fcf109f890cd
 
 pkgname = adguardhome
