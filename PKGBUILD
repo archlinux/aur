@@ -1,6 +1,6 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 pkgname=bazel-git
-pkgver=r24483.5e1847c23e
+pkgver=r24501.ab6134b185
 pkgrel=1
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -21,11 +21,15 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
 
-  /opt/bazel-bootstrap/bin/bazel build //src:bazel --sandbox_writable_path "${HOME}/.ccache"
+  EXTRA_BAZEL_ARGS=()
+
+  if [ -d "${HOME}/.ccache" ]
+  then
+    EXTRA_BAZEL_ARGS+=("--sandbox_writable_path" "${HOME}/.ccache")
+  fi
+
+  /opt/bazel-bootstrap/bin/bazel build //src:bazel scripts:bazel-complete.bash "${EXTRA_BAZEL_ARGS[@]}"
   /opt/bazel-bootstrap/bin/bazel shutdown
-  ./bazel-bin/src/bazel build scripts:bazel-complete.bash
-  cd bazel-bin/src
-  ./bazel shutdown
 }
 
 package() {
