@@ -2,7 +2,7 @@
 # Python package author: Matthew Honnibal <matt@explosion.ai>
 pkgname=python-spacy
 _origpkgname=spaCy
-pkgver=2.1.0a10
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A free open-source library for Natural Language Processing in Python"
 arch=("x86_64")
@@ -23,10 +23,11 @@ depends=("cython"
         "python-pathlib"
         "python-srsly-git"
         "python-wasabi-git"
+        "python-catalogue"
 )
 makedepends=("python-wheel")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/spaCy/archive/v$pkgver.tar.gz")
-md5sums=("e04964658cc3faedebfd69f852d3ce18")
+md5sums=('0e4d0f81a3db589fde7d476ddbf93c9e')
 
 package() {
     cd "$_origpkgname-$pkgver"
