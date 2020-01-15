@@ -1,0 +1,14 @@
+pkgbase = nsis-inetload
+	pkgdesc = MS WinInet API based plug-in for http and ftp downloads with better proxy support
+	pkgver = 200801091822
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/InetLoad_plug-in
+	arch = any
+	license = custom
+	source = InetLoad-200801091822.zip::https://nsis.sourceforge.io/mediawiki/images/b/b4/InetLoad.zip
+	source = LICENSE
+	sha256sums = c749b6651936f7d48dba964aa37d8a4ad58dd7960240a0030a819a752eb4e6db
+	sha256sums = 640cbe6013506905233100b357c24bdcdd08bbe277fd7cf7a5c892effe18208e
+
+pkgname = nsis-inetload
+
