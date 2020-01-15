@@ -1,25 +1,28 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=blivet-gui
-_realver=1.0-1
+_realver=2.1.11-1
 _tag="${_realver}"
 pkgver=${_realver/-/.}
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
 license=('GPL')
-url='https://github.com/rhinstaller/blivet-gui'
-depends=('python' 'python-blivet' 'python-cairo' 'python-gobject' 'python-meh' 'python-pid')
+url='https://github.com/storaged-project/blivet-gui'
+depends=('python' 'python-blivet' 'python-cairo' 'python-gobject' 'python-pid' 'adwaita-icon-theme')
 source=("${pkgname}-${pkgver}.tar.gz::http://github.com/rhinstaller/blivet-gui/archive/${_tag}.tar.gz")
-sha256sums=('2911d18372503d3369208680502230bbb3b287e64481d4c1e1b393a5f3eabdf7')
+sha512sums=('7e9944a2385ac5ff72e75162138ba9a8b927b45e4b37369d5b47e4aa7103fe8c8e645d1d8696ed4860022f9c80c05ab4c870b3f0fba2d23cea98a89f94f54754')
 
-package() {
-	cd "${srcdir}/${pkgname}-${_tag}/"
-
-	python setup.py install --root="${pkgdir}" --optimize=1
-
-	install -D -m0644 blivet-gui.desktop "${pkgdir}/usr/share/applications/blivet-gui.desktop"
-	install -D -m0644 org.fedoraproject.pkexec.blivet-gui.policy "${pkgdir}/usr/share/polkit-1/actions/org.fedoraproject.pkexec.blivet-gui.policy"
+build() {
+  cd "${srcdir}/${pkgname}-${_tag}"
+  make
 }
 
+package() {
+  cd "${srcdir}/${pkgname}-${_tag}"
+
+  make DESTDIR="${pkgdir}" install
+}

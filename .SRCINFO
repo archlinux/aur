@@ -1,18 +1,18 @@
 pkgbase = blivet-gui
 	pkgdesc = GUI tool for storage configuration
-	pkgver = 1.0.1
+	pkgver = 2.1.11.1
 	pkgrel = 1
-	url = https://github.com/rhinstaller/blivet-gui
+	url = https://github.com/storaged-project/blivet-gui
 	arch = any
 	license = GPL
 	depends = python
 	depends = python-blivet
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-meh
 	depends = python-pid
-	source = blivet-gui-1.0.1.tar.gz::http://github.com/rhinstaller/blivet-gui/archive/1.0-1.tar.gz
-	sha256sums = 2911d18372503d3369208680502230bbb3b287e64481d4c1e1b393a5f3eabdf7
+	depends = adwaita-icon-theme
+	source = blivet-gui-2.1.11.1.tar.gz::http://github.com/rhinstaller/blivet-gui/archive/2.1.11-1.tar.gz
+	sha512sums = 7e9944a2385ac5ff72e75162138ba9a8b927b45e4b37369d5b47e4aa7103fe8c8e645d1d8696ed4860022f9c80c05ab4c870b3f0fba2d23cea98a89f94f54754
 
 pkgname = blivet-gui
 
