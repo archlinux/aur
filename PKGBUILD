@@ -3,7 +3,7 @@
 _perlmod='Mail-DMARC'
 _modnamespace=Mail
 pkgname=perl-mail-dmarc
-pkgver=1.20200108
+pkgver=1.20200114
 pkgrel=1
 pkgdesc="Perl implementation of DMARC"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('perl' 'perl-cgi' 'perl-config-tiny' 'perl-dbd-sqlite' 'perl-dbix-simpl
 makedepends=('perl-test-file-sharedir' 'perl-test-exception' 'perl-test-output')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('5d0420bbac05edbe9c93226a17a4959e2c75e8f5ac90c15507d530b75123787b')
+sha256sums=('38bb14a8acfd79b4bd95c041b7dfb88ce3a3d1523f99b368e60369321a74d158')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
