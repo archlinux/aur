@@ -2,7 +2,7 @@
 
 pkgname=buck
 pkgver=2019.10.17.01
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
 arch=('any')
@@ -28,4 +28,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   BINPATH=$(./bin/buck targets --show_output buck | cut -d' ' -f2)
   install -Dm 755 "${BINPATH}" "${pkgdir}"/usr/bin/buck
+  ./bin/buck kill
 }

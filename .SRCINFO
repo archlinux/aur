@@ -1,7 +1,7 @@
 pkgbase = buck
 	pkgdesc = A fast build system that encourages the creation of small, \ reusable modules over a variety of platforms and languages.
 	pkgver = 2019.10.17.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buckbuild.com
 	arch = any
 	license = Apache
