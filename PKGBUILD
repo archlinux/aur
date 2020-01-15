@@ -1,9 +1,10 @@
-# Maintainer: Marc Boocha <marcboocha@gmail.com>
+# Maintainer: Araragi Hokuto <kanseihonbucho@protonmail.com>
+# Contributor: Marc Boocha <marcboocha@gmail.com>
 
 _target=x86_64-elf
 pkgname=$_target-gcc
-pkgver=8.2.0
-pkgrel=2
+pkgver=9.2.0
+pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for x86_64-elf target'
 arch=(x86_64)
 url='http://gcc.gnu.org/'
@@ -11,7 +12,7 @@ license=(GPL LGPL)
 depends=($_target-binutils zlib libmpc mpfr gmp)
 options=(!emptydirs)
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz")
-sha256sums=('196c3c04ba2613f893283977e6011b2345d1cd1af9abeac58e916b1aab3e0080')
+sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206')
 _basedir=gcc-$pkgver
 
 prepare() {
@@ -19,7 +20,7 @@ prepare() {
 	
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 
-	mkdir $srcdir/gcc-build
+	mkdir -p $srcdir/gcc-build
 }
 
 build() {
