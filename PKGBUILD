@@ -3,7 +3,7 @@
 
 pkgname=gqrx
 pkgver=2.11.5
-pkgrel=7
+pkgrel=8
 pkgdesc="Interactive SDR receiver waterfall for many devices."
 arch=('x86_64')
 url="http://gqrx.dk/"
