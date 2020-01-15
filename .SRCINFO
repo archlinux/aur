@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-qt-gui-py-common
 	pkgdesc = ROS - qt_gui_py_common provides common functionality for GUI plugins written in Python.
-	pkgver = 0.3.11
+	pkgver = 0.3.16
 	pkgrel = 2
 	url = https://wiki.ros.org/qt_gui_py_common
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ros-melodic-qt-gui-py-common
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-python-qt-binding
 	depends = python-rospkg
-	source = ros-melodic-qt-gui-py-common-0.3.11.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/0.3.11.tar.gz
-	sha256sums = 708873d6b5a2e4543435e8a1a2349de8eb41937aaf78b9dbcbe08b4a1dc12da2
+	source = ros-melodic-qt-gui-py-common-0.3.16.tar.gz::https://github.com/ros-visualization/qt_gui_core/archive/0.3.16.tar.gz
+	sha256sums = efa5ecf7ec22de606b3c0e039f43aacc2f2d79d74d7e17ecceecf2cafd22d128
 
 pkgname = ros-melodic-qt-gui-py-common
 
