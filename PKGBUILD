@@ -1,75 +1,63 @@
 # Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
+# Contributor: mrypsilon
 
 pkgbase=gridcoinresearch-git
-pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
-pkgver=3.5.7.1.r680.e68fbb0
+pkgname=(gridcoinresearch-qt-git gridcoinresearchd-git)
+pkgver=4.0.6.5.95fda5b88
 pkgrel=1
-pkgdesc="Gridcoin P2P Cryptocurrency"
-arch=('i686' 'x86_64' 'armv7h')
-url="http://gridcoin.us"
-license=('custom:gridcoin')
-makedepends=('boost' 'git' 'qt5-base' 'qt5-tools' 'openssl' 'libzip' 'qrencode' 'db' 'curl'
-             'miniupnpc')
-source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git'
-        'gridcoinresearch-qt.desktop')
+pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
+makedepends=('git' 'boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db')
 
-sha256sums=('SKIP'
-          '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://gridcoin.us"
+license=('custom:gridcoin')
+
+_sourcename="Gridcoin-Research"
+
+source=("git+https://github.com/gridcoin/Gridcoin-Research.git#branch=testnet")
+
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgbase%-git}"
+  cd "$srcdir/$_sourcename"
 
-  printf "%s.r%s.%s" \
-    "$(grep CLIENT_VERSION src/clientversion.h | awk '{print $NF}' | sed ':a;N;$!ba;s/\n/./g')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/${pkgbase%-git}"
-
-  mkdir -p src/obj
-
-  chmod 755 src/leveldb/build_detect_platform
+  printf "%s%s" \
+    "$(awk '/define\(_CLIENT_VERSION_MAJOR/ || /define\(_CLIENT_VERSION_MINOR/ || /define\(_CLIENT_VERSION_REVISION/ || /define\(_CLIENT_VERSION_BUILD/ { myversion=$NF; sub(""")""","""""",myversion); print myversion }' ORS='.' configure.ac)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgbase%-git}"
+  cd "$srcdir/$_sourcename"
 
-  cd src
-
-  make ${MAKEFLAGS} -f makefile.unix DEBUGFLAGS="" USE_UPNP=1
-
-  cd ..
-
-  qmake "USE_QRCODE=1" "USE_UPNP=1" "NO_UPGRADE=1"
-  make ${MAKEFLAGS}
-}
-
-package_gridcoinresearch-daemon-git() {
-  pkgdesc="GridCoin is a PoS-based cryptocurrency - Daemon"
-  depends=('boost-libs' 'libzip' 'miniupnpc' 'curl' 'boinc')
-  conflicts=('gridcoinresearch-daemon')
-  install=gridcoin.install
-
-  cd "$srcdir/${pkgbase%-git}/src"
-  install -Dm755 gridcoinresearchd "$pkgdir/usr/bin/gridcoinresearchd"
-
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  ./autogen.sh
+  mkdir -p build && cd build
+  ../configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-tests
+  make DESTDIR="$srcdir/$_sourcename" install
 }
 
 package_gridcoinresearch-qt-git() {
-  pkgdesc="GridCoin is a PoS-based cryptocurrency - Qt"
-  depends=('boost-libs' 'qrencode' 'qt5-base' 'libzip' 'miniupnpc' 'curl' 'boinc')
-  conflicts=('gridcoinresearch-qt')
-  install=gridcoin.install
+  pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)"
+  depends=('boost-libs' 'db' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts')
+  optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
 
-  cd "$srcdir/${pkgbase%-git}"
-  install -Dm755 gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
+  cd "$srcdir/$_sourcename"
 
-  install -Dm644 "${srcdir}/gridcoinresearch-qt.desktop" "$pkgdir/usr/share/applications/gridcoinresearch-qt.desktop"
-
-  install -Dm644 share/pixmaps/grc-small.png "$pkgdir/usr/share/pixmaps/grc-small.png"
-
+  install -Dm755 usr/bin/gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
+  cp -r ${srcdir}/${_sourcename}/usr/share ${pkgdir}/usr/share/
+  install -Dm644 doc/gridcoinresearch.1 "$pkgdir/usr/share/man/man1/gridcoinresearch.1"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
+package_gridcoinresearchd-git() {
+  pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Daemon/CLI)"
+  depends=('boost-libs' 'db' 'miniupnpc')
+  optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
+  replaces=('gridcoinresearch-daemon')
+  conflicts=('gridcoinresearch-daemon')
+
+  cd "$srcdir/$_sourcename"
+
+  install -Dm755 usr/bin/gridcoinresearchd "$pkgdir/usr/bin/gridcoinresearchd"
+  install -Dm644 doc/gridcoinresearchd.1 "$pkgdir/usr/share/man/man1/gridcoinresearchd.1"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
