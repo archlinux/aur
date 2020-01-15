@@ -7,7 +7,7 @@ Wants=network-online.target
 Type=simple
 User=rqlite
 Group=rqlite
-ExecStart=/usr/bin/rqlited -node-id $(cat /etc/machine-id) -http-addr 0.0.0.0:4001 -raft-addr 0.0.0.0:4002 /run/rqlite
+ExecStart=/usr/bin/rqlited -node-id $(cat /etc/machine-id) -http-addr 0.0.0.0:4001 -raft-addr 0.0.0.0:4002 -disco-id %i /run/rqlite
 Restart=always
 WorkingDirectory=/run/rqlite
 
