@@ -1,6 +1,6 @@
 pkgbase = python-os-networksv2-python-novaclient-ext
 	pkgdesc = Adds rackspace networks support to python-novaclient.
-	pkgver = 0.25
+	pkgver = 0.26
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/os_networksv2_python_novaclient_ext/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = python-os-networksv2-python-novaclient-ext
 	depends = python-prettytable
 	depends = python-simplejson
 	depends = python-iso8601
-	provides = python-os-networksv2-python-novaclient-ext=0.25
-	source = http://pypi.python.org/packages/source/o/os_networksv2_python_novaclient_ext/os_networksv2_python_novaclient_ext-0.25.tar.gz
-	md5sums = 4ab769b99fb600825bb18efbf01bafb6
+	provides = python-os-networksv2-python-novaclient-ext=0.26
+	source = https://files.pythonhosted.org/packages/source/o/os_networksv2_python_novaclient_ext/os_networksv2_python_novaclient_ext-0.26.tar.gz
+	md5sums = 877367a926ebc24b0a2fdbbf9e21a041
 
 pkgname = python-os-networksv2-python-novaclient-ext
 
