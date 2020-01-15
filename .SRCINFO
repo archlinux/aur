@@ -1,7 +1,7 @@
 pkgbase = mailpile
 	pkgdesc = A free & open modern, fast email client with user-friendly encryption and privacy features
 	pkgver = 1.0.0rc6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mailpile.is
 	arch = any
 	license = AGPL3
@@ -20,11 +20,12 @@ pkgbase = mailpile
 	depends = python2-pgpdump
 	depends = python2-pillow
 	depends = python2-pydns
-	depends = python2-pysocks
-	depends = python2-stem>=1.4
+	depends = python2-socksipychain
 	depends = tor
-	source = mailpile-1.0.0rc6-1.tar.gz::https://github.com/mailpile/Mailpile/archive/1.0.0rc6.tar.gz
-	source = mailpile-1.0.0rc6-1-print.tar.gz::https://github.com/mailpile/Mailpile-print/archive/7c1372b999dd6e68710e08e16778f2986c064295.tar.gz
+	optdepends = pagekite: remote access
+	optdepends = python2-stem>=1.4: remote access
+	source = mailpile-1.0.0rc6-2.tar.gz::https://github.com/mailpile/Mailpile/archive/1.0.0rc6.tar.gz
+	source = mailpile-1.0.0rc6-2-print.tar.gz::https://github.com/mailpile/Mailpile-print/archive/7c1372b999dd6e68710e08e16778f2986c064295.tar.gz
 	source = mailpile.sysusers
 	source = mailpile.tmpfiles
 	source = mailpile.service
