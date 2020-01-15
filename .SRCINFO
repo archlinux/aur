@@ -13,8 +13,8 @@ pkgbase = suitesparse-mkl
 	depends = intel-mkl
 	depends = intel-tbb
 	provides = umfpack
-	provides = graphblas=${gblasver}
-	provides = suitesparse=${pkgver}
+	provides = graphblas=3.1.1
+	provides = suitesparse=5.6.0
 	conflicts = umfpack
 	conflicts = graphblas
 	conflicts = suitesparse

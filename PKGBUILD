@@ -9,7 +9,7 @@ url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('i686' 'x86_64')
 gblasver=3.1.1
 conflicts=('umfpack' 'graphblas' 'suitesparse')
-provides=('umfpack' 'graphblas=${gblasver}' 'suitesparse=${pkgver}')
+provides=('umfpack' "graphblas=${gblasver}" "suitesparse=${pkgver}")
 replaces=('umfpack' 'graphblas' 'suitesparse')
 depends=('metis' 'intel-mkl' 'intel-tbb')
 makedepends=('intel-compiler-base' 'intel-fortran-compiler' 'cmake')
