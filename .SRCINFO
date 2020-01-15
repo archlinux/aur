@@ -1,14 +1,20 @@
 pkgbase = ruby-minitar
 	pkgdesc = Provides POSIX tarchive management from Ruby programs.
-	pkgver = 0.5.4
+	pkgver = 0.9
 	pkgrel = 1
-	url = http://www.github.com/atoulme/minitar
+	url = https://github.com/halostatue/minitar
 	arch = any
+	license = RUBY
+	license = BSD
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	makedepends = ruby-rake
+	makedepends = ruby-hoe
+	makedepends = ruby-minitest
 	depends = ruby
-	noextract = minitar-0.5.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/minitar-0.5.4.gem
-	sha512sums = e629e48b12f2dac1229ee1fd1f6fa5b5b7707d7a0298f90778767b1456b78f26fadb37e90e44bba2fd60a2541544f47cb430d19c87abc1a87c3be6843fbcb5aa
+	source = https://github.com/halostatue/minitar/archive/v0.9/ruby-minitar-v0.9.tar.gz
+	sha256sums = 0e489b36aa023565d597b35849797725441d1cfabfe521f136ec4508e03f058c
 
 pkgname = ruby-minitar
 
