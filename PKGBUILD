@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=1.5.0
-pkgrel=1
+pkgver=1.5.1
+pkgrel=2
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
 url='https://mlflow.org'
@@ -13,7 +13,7 @@ depends=('python' 'python-alembic' 'python-click' 'python-cloudpickle'
     'python-protobuf' 'python-gitpython' 'python-pyaml'
     'python-querystring-parser' 'python-simplejson'
     'python-docker' 'python-entrypoints' 'python-sqlparse' 'python-sqlalchemy'
-    'python-gorilla')
+    'python-gorilla' 'python-prometheus-flask-exporter')
 optdepends=('python-scikit-learn' 'python-boto3' 'python-mleap'
     'python-azure-storage' 'python-google-cloud-storage')
 makedepends=('python' 'python-setuptools')
