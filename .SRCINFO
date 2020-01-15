@@ -1,27 +1,19 @@
 pkgbase = python-mbdata-git
 	pkgdesc = MusicBrainz database tools for Python
-	pkgver = 25.0.0.r0.g384f8ab
+	pkgver = 25.0.4.r3.g5d8cadf
 	pkgrel = 1
 	url = https://github.com/lalinsky/mbdata
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = git
-	source = git+https://github.com/lalinsky/mbdata.git
-	sha256sums = SKIP
-
-pkgname = python-mbdata-git
 	depends = python
 	depends = python-psycopg2
 	depends = python-six
 	provides = python-mbdata
 	conflicts = python-mbdata
+	source = git+https://github.com/lalinsky/mbdata.git
+	sha256sums = SKIP
 
-pkgname = python2-mbdata-git
-	depends = python2
-	depends = python2-psycopg2
-	depends = python2-six
-	provides = python2-mbdata
-	conflicts = python2-mbdata
+pkgname = python-mbdata-git
 
