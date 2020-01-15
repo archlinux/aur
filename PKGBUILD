@@ -3,7 +3,7 @@
 
 pkgname=btrustbiss
 pkgver=2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="B-Trust browser independent signing service."
 arch=('any')
 url="https://www.b-trust.org"
@@ -29,7 +29,7 @@ package(){
     tar Jxf data.tar.xz -C "$pkgdir"
 
      # fix for wrong permissions on subdirs:
-    find "{$pkgdir}" -type d -exec chmod 755 {} \;
+    find "$pkgdir" -type d -exec chmod 755 {} \;
 
      # install package
    	install -dm644 "$pkgdir" "$pkgdir"/$pkgname
