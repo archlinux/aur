@@ -5,7 +5,7 @@
      # which puts the libraries in /yada/mylibs, include files in /yoda/myinc,
      # and documentation in /solo/mydox.
 -    INSTALL ?= $(SUITESPARSE)
-+    INSTALL = /usr
++    INSTALL ?= /usr
      INSTALL_LIB ?= $(INSTALL)/lib
      INSTALL_INCLUDE ?= $(INSTALL)/include
      INSTALL_DOC ?= $(INSTALL)/share/doc/suitesparse-$(SUITESPARSE_VERSION)

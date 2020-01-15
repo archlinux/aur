@@ -1,7 +1,7 @@
 pkgbase = suitesparse-mkl
 	pkgdesc = A collection of sparse matrix libraries (compiled with the Intel MKL and Intel TBB)
 	pkgver = 5.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://faculty.cse.tamu.edu/davis/suitesparse.html
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = suitesparse-mkl
 	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.6.0.tar.gz
 	source = suitesparse-mkl_tbb.patch
 	sha1sums = 3de08b5ab02610ed0446225aad2445696616fae5
-	sha1sums = f3620f3d447279ff992e4b42f4cc40ce98afe643
+	sha1sums = 82a0f7a84af1ee1df52416cd436d9a5e915b1e67
 
 pkgname = suitesparse-mkl
 
