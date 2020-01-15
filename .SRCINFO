@@ -1,7 +1,7 @@
 pkgbase = ompl
 	pkgdesc = The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms
 	pkgver = 1.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ompl.kavrakilab.org/
 	arch = i686
 	arch = x86_64

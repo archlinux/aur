@@ -3,7 +3,7 @@
 
 pkgname=ompl
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Motion Planning Library (OMPL) consists of many state-of-the-art sampling-based motion planning algorithms"
 arch=('i686' 'x86_64')
 url="http://ompl.kavrakilab.org/"
@@ -33,7 +33,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DPYTHON_EXEC=/usr/bin/python2 \
+    -DPYTHON_EXEC=/usr/bin/python \
     -DCMAKE_CXX_FLAGS=-D_POSIX_VERSION \
     -DOMPL_REGISTRATION=Off ..
   make
