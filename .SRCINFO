@@ -1,14 +1,14 @@
 pkgbase = adguardhome-bin
 	pkgdesc = Network-wide ads and trackers blocking DNS server (bin version)
-	pkgver = 0.100.8
+	pkgver = 0.100.9
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
 	install = adguardhome-bin.install
 	arch = x86_64
 	license = GPL
-	source = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.8/AdGuardHome_linux_amd64.tar.gz
+	source = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
 	source = AdGuardHome.service
-	sha256sums = ef9088b57ed2f24bfe619fbd65667bcb7659f75967191368ab951b184292a75c
+	sha256sums = e1b28d38cc345de971a14a373025ea72da1145fe27199e2c94a9c7fab92d433b
 	sha256sums = 9f47d9b2d7daad4b4db08d7cf8c10a7fb55323f40e06161a56e6fcf109f890cd
 
 pkgname = adguardhome-bin

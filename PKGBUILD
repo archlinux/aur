@@ -2,7 +2,7 @@
 #
 pkgname=adguardhome-bin
 _pkgname=AdGuardHome
-pkgver=0.100.8
+pkgver=0.100.9
 pkgrel=1
 pkgdesc="Network-wide ads and trackers blocking DNS server (bin version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("https://github.com/AdguardTeam/AdGuardHome/releases/download/v$pkgver/A
 $_pkgname.service
 )
 install=$pkgname.install
-sha256sums=('ef9088b57ed2f24bfe619fbd65667bcb7659f75967191368ab951b184292a75c'
+sha256sums=('e1b28d38cc345de971a14a373025ea72da1145fe27199e2c94a9c7fab92d433b'
             '9f47d9b2d7daad4b4db08d7cf8c10a7fb55323f40e06161a56e6fcf109f890cd')
 
 package() {
