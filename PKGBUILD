@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=1.5.1
+pkgver=1.5.0
 pkgrel=2
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
