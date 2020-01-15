@@ -1,0 +1,14 @@
+pkgbase = apindex
+	pkgdesc = Static HTML file index generator for Github Pages
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/libthinkpad/apindex
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = make
+	source = apindex-2.2.tar.gz::https://github.com/libthinkpad/apindex/archive/2.2.tar.gz
+	sha256sums = 50faf021047275df72569a8e7236456c8149da883fa6d8777cc77037de644f77
+
+pkgname = apindex
+
