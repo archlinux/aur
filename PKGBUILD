@@ -2,7 +2,7 @@
 
 pkgname=cargo-web
 pkgver=0.6.26
-pkgrel=2
+pkgrel=3
 pkgdesc="A Cargo subcommand for the client-side Web"
 url="https://github.com/koute/cargo-web"
 depends=('cargo' 'openssl')
@@ -24,8 +24,9 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm755 target/release/cargo-web -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE-APACHE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
