@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Benoit Landrieu (ben@gresille.org)
-pkgname=scribus-stable
+pkgname=scribus
 pkgver=1.4.8
 pkgrel=1
 epoch=
