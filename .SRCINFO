@@ -10,9 +10,11 @@ pkgbase = i686-elf-binutils
 	options = !emptydirs
 	options = !docs
 	source = http://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz
+	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz.sig
 	source = libiberty-ignore-cflags.patch
-	md5sums = 9406231b7d9dd93731c2d06cefe8aaf1
-	md5sums = 2b02f02bd95249b0fbcf76412ee18f72
+	sha256sums = ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf
+	sha256sums = SKIP
+	sha256sums = 8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c
 
 pkgname = i686-elf-binutils
 
