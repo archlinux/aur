@@ -23,6 +23,7 @@ build() {
   make
   cd qt
   qmake bloody.pro -spec linux-g++ CONFIG+=qtquickcompiler
+  make
 }
 
 package() {
