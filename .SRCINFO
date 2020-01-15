@@ -1,6 +1,6 @@
 pkgbase = tclsoap
 	pkgdesc = The package provides a mechanism to bind Tcl command procedures to remote procedure calls using the Simple Object Access Protocol (SOAP) and XML-RPC over HTTP. Both client and server code is provided.
-	pkgver = 1.6.7.1
+	pkgver = 1.6.7.2
 	pkgrel = 1
 	url = http://tclsoap.sourceforge.net
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = tclsoap
 	depends = tclxml
 	optdepends = tdom: technically not needed, but you want it if you want this package
 	optdepends = tcllib: technically not needed, but you want it if you want this package
-	source = https://github.com/ByReaL/tclsoap/archive/1.6.7.1.tar.gz
-	md5sums = 9f0fbf71b095728ab932a39bf367b445
+	source = https://github.com/ByReaL/tclsoap/archive/1.6.7.2.tar.gz
+	md5sums = a6d89c7490a699e03f4246a3a080c210
 
 pkgname = tclsoap
 
