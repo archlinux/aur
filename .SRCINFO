@@ -1,11 +1,11 @@
 pkgbase = tastyworks
 	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
 	pkgver = 1.0.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tastyworks.com/technology.html
 	arch = x86_64
 	license = Other
-	depends = java-runtime
+	depends = jre-openjdk
 	source = https://download.tastyworks.com/desktop-1.x.x/1.0.16/tastyworks-1.0.16-1.x86_64.rpm
 	source = tastyworks.png
 	sha256sums = 8a2c9bd54dd1736aa07e693839939988d94951537709cf1bd3e9263ce3368fd5

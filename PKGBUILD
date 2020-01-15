@@ -2,12 +2,12 @@
 
 pkgname=tastyworks
 pkgver=1.0.16
-pkgrel=4
+pkgrel=5
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url="https://tastyworks.com/technology.html"
 license=('Other')
-depends=('java-runtime')
+depends=('jre-openjdk')
 source=("https://download.tastyworks.com/desktop-1.x.x/$pkgver/$pkgname-$pkgver-1.x86_64.rpm"
         "tastyworks.png")
 sha256sums=('8a2c9bd54dd1736aa07e693839939988d94951537709cf1bd3e9263ce3368fd5'
