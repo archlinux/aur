@@ -1,0 +1,12 @@
+pkgbase = jetbrains-mono-fonts
+	pkgdesc = A free and open source typeface for developers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://download.jetbrains.com/fonts
+	arch = any
+	license = Apache
+	source = https://download.jetbrains.com/fonts/JetBrainsMono-1.0.0.zip
+	md5sums = 1083f3f5315a564fb59d571da5c3b624
+
+pkgname = jetbrains-mono-fonts
+
