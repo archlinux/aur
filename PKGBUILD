@@ -12,25 +12,23 @@
 
 _pkgname=playonlinux5
 pkgname=${_pkgname}-git
-pkgver=r2160.1c7cad3c
+pkgver=r2511.78fe2ae45
 pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux (development version based on Java)"
 arch=('any')
 url="http://www.playonlinux.com/"
 license=('GPL')
 makedepends=('git' 'maven' 'java-openjfx' 'java-environment-openjdk>=8')
-depends=('wine' 'java-openjfx' 'java-runtime-openjdk>=8')
+depends=('wine' 'java-openjfx' 'java-runtime-openjdk>=11')
 options=(!strip)
 source=(
 	"${_pkgname}::git://github.com/PlayOnLinux/POL-POM-5.git"
 	'PlayOnLinux5.desktop'
 	'PlayOnLinux.sh'
 	)
-md5sums=(
-	'SKIP'
-	'7fe925810fc7ec6d8745817b1c541e7b'
-	'84eb4201e3f3da463b916cbb116c0677'
-	)
+sha512sums=('SKIP'
+            '1eaae868c6db9c1db5e6c2138475dfac4036be49d6a7a9e4e59a10cf72dedcc213030d08fba16a6e62d46616dea5e3f502f9cfebc2db280a38c05e301ab6258e'
+            '65058ee527bd564e411e95965b060406fe3eae81315d5595a0c09c6b3e6cb57d54da7fa266e4af623701e990aa0bae3d45f2a86879ae0ec69705564ccf150041')
 
 pkgver() {
 
@@ -51,9 +49,9 @@ build() {
 
   # test for openjdk, fall back on other jdks if not found
   # Take the highest sorted version (alpahumericly,head -1)
-  _openjdk=$(ls /usr/lib/jvm/java-{8,9}-openjdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
-  _openjdk_jetbeans=$(ls /usr/lib/jvm/java-{8,9}-openjdk-jetbrains/bin/javac 2>/dev/null | cut -d "/" -f-5)
-  _oraclejdk=$(ls /usr/lib/jvm/java-{8,9}-jdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
+  _openjdk=$(ls /usr/lib/jvm/java-11-openjdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
+  _openjdk_jetbeans=$(ls /usr/lib/jvm/java-11-openjdk-jetbrains/bin/javac 2>/dev/null | cut -d "/" -f-5)
+  _oraclejdk=$(ls /usr/lib/jvm/java-11-jdk/bin/javac 2>/dev/null | cut -d "/" -f-5)
 
   if (( $(archlinux-java get | cut -d "-" -f2) < 8 )) || [[ ! -f /usr/bin/javac ]]; then
 
@@ -64,15 +62,15 @@ build() {
 
 	elif [[ "${_oraclejdk}" ]]; then
 		msg2 "Using Oracle JDK for build"
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-11-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
 
 	elif [[ "${_openjdk_jetbrains}" ]]; then
 		msg2 "Using Jetbrains for build"
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-jdk-jetbrains*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-11-jdk-jetbrains*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
 
 	else
 		# fall back to other JDKs
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-11-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
 		msg2 "Using JDK $JAVA_HOME"
 	fi
 
@@ -102,7 +100,7 @@ build() {
 		msg2 "Switching to OpenJDK"
 
 	elif [[ "${_oraclejdk}" ]]; then
-		export JAVA_HOME=$(ls /usr/lib/jvm/java-{8,9}-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
+		export JAVA_HOME=$(ls /usr/lib/jvm/java-11-jdk*/bin/javac 2>/dev/null | cut -d "/" -f-5 | head -1)
 		msg2 "Switching to Oracle JDK"
 
 	else
@@ -121,8 +119,8 @@ package() {
   
   # Extract
   install -d "${pkgdir}/opt/"
-  bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis.zip"
-  cp -r phoenicis/ "${pkgdir}/opt/${_pkgname}/"
+  bsdtar -xf "${_pkgname}/phoenicis-dist/target/phoenicis-flatpak.zip"
+  cp -r phoenicis-flatpak/ "${pkgdir}/opt/${_pkgname}/"
 
   # Launcher
   install -Dm755 "PlayOnLinux.sh"  "${pkgdir}/usr/bin/${_pkgname}"
