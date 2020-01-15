@@ -1,6 +1,6 @@
 pkgbase = python-pytest-watch
 	pkgdesc = Local continuous test runner with pytest and watchdog.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/joeyespo/pytest-watch
 	arch = any
@@ -8,10 +8,8 @@ pkgbase = python-pytest-watch
 	makedepends = python-setuptools
 	depends = python
 	depends = python-watchdog
-	source = https://pypi.python.org/packages/e9/88/69b94fe4cb3d3b106b184056bc80ade6b0a9062e5a9a1cb65aec58831281/pytest-watch-4.1.0.zip
-	md5sums = 4048e6e4a420ee54ed1318c71153e593
+	source = https://files.pythonhosted.org/packages/source/p/pytest-watch/pytest-watch-4.2.0.tar.gz
+	md5sums = 9f854cdf60212c5d1a210c8991619ba4
 
 pkgname = python-pytest-watch
-	depends = python
-	depends = python-watchdog
 
