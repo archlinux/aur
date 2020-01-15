@@ -6,8 +6,6 @@ pkgbase = rgssad
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	makedepends = rust
 	makedepends = git
 	source = rgssad::git+https://github.com/luxrck/rgssad.git#tag=v0.2.0
 	md5sums = SKIP
