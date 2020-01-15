@@ -1,0 +1,16 @@
+pkgbase = terraform-lsp
+	pkgdesc = Language Server Protocol for Terraform
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/juliosueiras/terraform-lsp
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	source = https://github.com/juliosueiras/terraform-lsp/archive/v0.0.9.tar.gz
+	source = fix-build.patch
+	sha256sums = 04195dd8b50f3fbe0b00d60e4d82f5b9737b51ac394df5a91577974a62220815
+	sha256sums = ec9b52a9bd55ad9b86ac7724e2840903b545eb7aa4a8b814f385f181b2c873d9
+
+pkgname = terraform-lsp
+
