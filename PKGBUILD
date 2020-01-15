@@ -2,7 +2,7 @@
 pkgname=studiolink-standalone-bin
 pkgver=v20.01.0
 _pkgver=${pkgver}-beta
-pkgrel=1
+pkgrel=2
 pkgdesc="A SIP application to create high quality Audio over IP (AoIP) connections."
 arch=('x86_64')
 url="https://studio-link.de"
@@ -19,7 +19,7 @@ sha512sums=('79cb597e05d7988d96c79d85328c7cd29bdac8506d4f30ceaa01774e6de38ebf9bd
 
 package()
 {
-    install -Dm755 ${srcdir}/studio-link-standalone ${pkgdir}/usr/bin/studiolink
+    install -Dm755 ${srcdir}/studio-link-standalone-${pkgver} ${pkgdir}/usr/bin/studiolink
     install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/studiolink-standalone-bin/LICENSE"
 
     # freedesktop.org compatibility
