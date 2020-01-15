@@ -1,28 +1,29 @@
-pkgname='plasma-wallpaper-asciiquarium-git'
-pkgver=r33.4d6e48a
-pkgrel=2
-pkgdesc='Plasma Wallpaper Asciiquarium'
+pkgname='plasma-wallpaper-makethatpape-git'
+pkgver=r34.ccd2d6b
+pkgrel=1
+pkgdesc='Plasma Wallpaper makeThatPape'
 arch=('any')
 url='https://cgit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git/about/'
 license=('GPL')
-depends=('plasma-workspace')
-makedepends=('cmake' 'extra-cmake-modules' 'git')
+depends=('plasma-workspace' 'python' 'python-pillow')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'tar')
 provides=("${pkgname}")
-source=("git+https://anongit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git")
+source=("git+https://gitlab.com/reightb/makethatpape")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "plasma_wallpaper_asciiquarium"
+  cd "makethatpape"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/plasma_wallpaper_asciiquarium"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr
-    make
+  cd "$srcdir/makethatpape"
+  ./package.sh
 }
 
 package() {
-    cd "$srcdir/plasma_wallpaper_asciiquarium"
-    make DESTDIR="$pkgdir/" install
+  mkdir -p $pkgdir/usr/share/plasma/wallpapers
+  cd $pkgdir/usr/share/plasma/wallpapers
+  tar -xvf $srcdir/makethatpape/makeThatPape*.tar.gz
+  mv kde-plugin org.kde.plasma.makethatpape
 }

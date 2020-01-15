@@ -1,17 +1,20 @@
-pkgbase = plasma-wallpaper-asciiquarium-git
-	pkgdesc = Plasma Wallpaper Asciiquarium
-	pkgver = r33.4d6e48a
-	pkgrel = 2
+pkgbase = plasma-wallpaper-makethatpape-git
+	pkgdesc = Plasma Wallpaper makeThatPape
+	pkgver = r34.ccd2d6b
+	pkgrel = 1
 	url = https://cgit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git/about/
 	arch = any
 	license = GPL
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = tar
 	depends = plasma-workspace
-	provides = plasma-wallpaper-asciiquarium-git
-	source = git+https://anongit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git
+	depends = python
+	depends = python-pillow
+	provides = plasma-wallpaper-makethatpape-git
+	source = git+https://gitlab.com/reightb/makethatpape
 	md5sums = SKIP
 
-pkgname = plasma-wallpaper-asciiquarium-git
+pkgname = plasma-wallpaper-makethatpape-git
 
