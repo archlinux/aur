@@ -1,6 +1,6 @@
 pkgbase = torch7-warp-ctc
 	pkgdesc = A fast parallel implementation of CTC, on both CPU and GPU.
-	pkgver = v1.0.r30.g6d5b8fa
+	pkgver = v1.0.r32.gbc29dcf
 	pkgrel = 1
 	url = https://github.com/baidu-research/warp-ctc
 	arch = x86_64
