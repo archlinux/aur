@@ -2,7 +2,7 @@
 
 pkgname=httptoolkit
 pkgver=0.1.17
-pkgrel=1.1
+pkgrel=1.2
 epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
@@ -50,6 +50,6 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${pkgname}/src/icon.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
-    ln -s "${pkgdir}/opt/${pkgname}/httptoolkit" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/${pkgname}/httptoolkit" "${pkgdir}/usr/bin/${pkgname}"
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i "s|$srcdir||g"
 }
