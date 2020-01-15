@@ -11,7 +11,7 @@ pkgbase = suitesparse-mkl
 	makedepends = cmake
 	depends = metis
 	depends = intel-mkl
-	depends = intel-tbb
+	depends = intel-tbb_psxe
 	provides = umfpack
 	provides = graphblas=3.1.1
 	provides = suitesparse=5.6.0

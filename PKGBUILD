@@ -11,7 +11,7 @@ gblasver=3.1.1
 conflicts=('umfpack' 'graphblas' 'suitesparse')
 provides=('umfpack' "graphblas=${gblasver}" "suitesparse=${pkgver}")
 replaces=('umfpack' 'graphblas' 'suitesparse')
-depends=('metis' 'intel-mkl' 'intel-tbb')
+depends=('metis' 'intel-mkl' 'intel-tbb_psxe')
 makedepends=('intel-compiler-base' 'intel-fortran-compiler' 'cmake')
 license=('GPL')
 options=()
@@ -22,16 +22,16 @@ sha1sums=('3de08b5ab02610ed0446225aad2445696616fae5'
 prepare() {
 # Fix linking with intel-tbb
     cd ${srcdir}
-    patch -p0 suitesparse-mkl_tbb.patch
+    patch -p0 < suitesparse-mkl_tbb.patch
 }
 
 build() {
-    cd ${srcdir}/SuiteSparse
+    cd ${srcdir}/SuiteSparse-${pkgver}
     JOBS=8 make
 }
 
 
 package() {
-    cd ${srcdir}/SuiteSparse
+    cd ${srcdir}/SuiteSparse-${pkgver}
     make install
 }
