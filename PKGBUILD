@@ -1,8 +1,10 @@
-# Maintainer: Troy C < rstrox -ta yahoo -tod com >
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Troy C < rstrox -ta yahoo -tod com >
 
-pkgname=('python-rackspace-novaclient' ) #'python2-rackspace-novaclient')
-pkgver=1.4
-pkgrel=3
+_name=rackspace-novaclient
+pkgname='python-rackspace-novaclient'
+pkgver=2.1
+pkgrel=1
 pkgdesc="Metapackage to install python-novaclient and Rackspace extensions"
 arch=('any')
 url="http://pypi.python.org/pypi/rackspace-novaclient/"
@@ -17,22 +19,16 @@ depends=(
 	 'python-rax-default-network-flags-python-novaclient-ext'
 	 )
 makedepends=('python-setuptools')
-provides=("$pkgname=$pkgver")
-source=("http://pypi.python.org/packages/source/r/rackspace-novaclient/rackspace-novaclient-$pkgver.tar.gz")
-md5sums=('8cd0c5293511ad68bed3594cd4db276f')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+md5sums=('4a1ba508270a14f196676d2ae8b3db93')
+
 
 build() {
-	cd "$srcdir/rackspace-novaclient-${pkgver}"
-	python setup.py build || return 1
-#	python2 setup.py build || return 1
+	cd "$_name-${pkgver}"
+	python setup.py build
 }
 
-package_python-rackspace-novaclient() {
-	cd "$srcdir/rackspace-novaclient-${pkgver}"
-	python setup.py install --root=${pkgdir} || return 1
+package() {
+	cd "$_name-${pkgver}"
+	python setup.py install --root=${pkgdir}
 }
-
-#package_python2-rackspace-novaclient() {
-#	cd "$srcdir/rackspace-novaclient-${pkgver}"
-#	python2 setup.py install --root=${pkgdir} || return 1
-#}
