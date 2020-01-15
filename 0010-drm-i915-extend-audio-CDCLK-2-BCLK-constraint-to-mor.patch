@@ -1,4 +1,4 @@
-From ec618d435b2b6085b623acd0a31be6f6ca9f434d Mon Sep 17 00:00:00 2001
+From 466961b7872771f84a86f2304197d303ed749925 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Thu, 3 Oct 2019 11:55:31 +0300
 Subject: [PATCH 10/15] drm/i915: extend audio CDCLK>=2*BCLK constraint to more
@@ -37,5 +37,5 @@ index 440b33762fef..05ef43b13d1c 100644
  
  	intel_display_power_put(dev_priv, POWER_DOMAIN_AUDIO, cookie);
 -- 
-2.24.1
+2.25.0
 

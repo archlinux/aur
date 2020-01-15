@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.4.11
+pkgver=5.4.12
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -76,44 +76,44 @@ source=(
   config         # the main kernel config file
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.4/5.4-ck${_ckpatchversion}/$_ckpatch.xz"
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
-  0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-  0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
-  0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-  0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-  0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-  0009-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-  0010-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-  0011-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
-  0012-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
-  0013-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
-  0014-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
+0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
+0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
+0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
+0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
+0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+0009-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+0010-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+0011-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
+0012-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+0013-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
+0014-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('62bd36e5d5e1d8208750ccddd8e8aa3d109b29b5ac5344b5b1c47d0f6d55d72c'
+sha256sums=('d9c3c7a2d52d25c24cbca0f89d55511422d3d207c573d42ec58f7f17c948d0fb'
             'SKIP'
             'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            '632dd5b285217ad7f6ec584ace623a178c38debdc278c2063feb11412e6fabf8'
-            '8140032dcd5bcfd20b9758afe9937816a5eb0a9e700e45f309eb35f6b082719c'
-            'ff5756e69a9e6d882e35bd3a73bb158601b0bfaa14a8bcc5bffcdcd39e20dde7'
-            'c9dc80e6d5c5dc71631c33e27e2d4cab69aff6dfa7be17df84a133c6755315c4'
-            '988365ce8140d48e0691bb49f0a8b629228936963251f8c02ff783ecd024d283'
-            'd9eeb20c3f1727377e75ca610707f28a2deb4b3fa649da34d39990e24c465cdc'
-            'ef375c26e0094879481900bdf62ffa9db1f27c9a0426fdc1e032a2816052e800'
-            '3c87892910935b3f93b462b3a3aec162951e05fc951839a4203da1f07a591528'
-            'b4bcf8f820e761c64574a8396ede69254e0d693bab9ca98f65c9c7b274b318c7'
-            'b470273d4ade5355b12556a0a3fb9524a872b0d3409f5bc29aa4eda81e2244e1'
-            '408e7d10477c67a74780baf0b69d7d09c4c53866e914bf736a7745db5b36fab0'
-            'b98de2658ef5f62190a22ebc886b7b1bd7741e48d3aa77b24fc3b0dc1dba380b'
-            '532c33ea21ecdcd3826f2beab60d58679a8fb93d3c7143f0f3cef1604d3e07cc'
-            '2e72e164cdffa2a67d1ce341a8c10cdee857830d670f0b5b2905992a21ebbb5f')
+            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee'
+            '0ee10a8bce75e243f20dcae2bf627325a65b0a725fc4af70b585e170a4c5b984'
+            '1bc6c7503d5e30196ccb2210bbd9d17d73c245afa82a671d4ccf14796047cca6'
+            '4dddac706c4983bd9ddd67aafc08d4b17d0cd9d929be14d92586dfacdb0f37fb'
+            '66a5cdff9a5a83d4f691f38b18a06bf373c32be9200ca8708eddde560fc8f33d'
+            '4073da89517a8e25ceb63c686c0f4b5a3988ad91d4bfa7977a508e6f41dd56da'
+            'd32cca150a2ccb9e5b144769e75ef7a7b851f3cd4a8357c1cd8e6a9f5eac6f31'
+            '44ddfe0a758b2019bfc1bab5a20eabf93169c7e8752229b21b586501417e6ba7'
+            '5d015f7c3531ca1b71af816f61f7ebe136aea27d9e512428b63d900a62ff1da7'
+            '14d906805171e5dd48e68554211f1f16ed11072cd7e53a64b072966c55cedd4f'
+            '1723977a803dbccaab2304ea40f709f4a6dea8e14b13208563b0258a1928fa61'
+            'de47a6abdd33b662002016d384ea173c524dc8992c28ef6e2aca5d46141e6171'
+            '1cc21b1d55521e812b498d345e39d762e294ee52d344610b08ad3a8596119dae'
+            '75a804ea7e28b3794ce11122dd4fcf80652e115ee7f3b785f8f7853fd7869881')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
