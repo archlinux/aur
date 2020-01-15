@@ -1,13 +1,13 @@
 pkgbase = native-image-jdk8-bin
 	pkgdesc = Plugin to turn GraalVM-based applications into native binary images (Java 8 version)
-	pkgver = 19.3.0.2
+	pkgver = 19.3.1
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
 	license = custom
 	depends = jdk8-graalvm-bin
-	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.0.2/native-image-installable-svm-java8-linux-amd64-19.3.0.2.jar
-	sha256sums = ddb6346e0086114eeae3d82d0f82859e4768072aef8abbad6c48df92cda92c43
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/native-image-installable-svm-java8-linux-amd64-19.3.1.jar
+	sha256sums = 3fd2e5b5299c8ce7c939235b4d01df990aeb236f127f98fbf19b588c521793fa
 
 pkgname = native-image-jdk8-bin
 
