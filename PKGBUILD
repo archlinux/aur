@@ -50,8 +50,8 @@ fi
 ##
 
 pkgbase=linux-xanmod
-pkgver=5.4.10
-xanmod=6
+pkgver=5.4.12
+xanmod=7
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -69,7 +69,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        choose-gcc-optimization.sh
        0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck)
 
-sha256sums=('ed3d916a167e29becb15a79f06741159a891aee369f490e16081ce4969ec0f6e'
+sha256sums=('57ea4f025d1dd2ff35a81610914d3ab7a75ad9ddd27b059ab6e537fd18e8b689'
             '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
             '632dd5b285217ad7f6ec584ace623a178c38debdc278c2063feb11412e6fabf8')
 
