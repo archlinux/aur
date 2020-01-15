@@ -2,8 +2,8 @@
 
 pkgname=waifu2x-ncnn-vulkan-git
 _pkgname=waifu2x-ncnn-vulkan
-pkgver=20190712.r3.gc11d4f4
-pkgrel=3
+pkgver=20190712.r6.gb373ce2
+pkgrel=1
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 license=('MIT')
@@ -48,10 +48,7 @@ package() {
     install -Dm755 "src/build/waifu2x-ncnn-vulkan" "${pkgdir}/usr/bin/waifu2x-ncnn-vulkan"
 
     cd "${srcdir}/waifu2x-ncnn-vulkan/models"
-    for f in models-cunet/*; do
-        install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/"$f"
-    done
-    for f in models-upconv_7_anime_style_art_rgb/*; do
+    for f in models-*/*; do
         install -Dm 644 "$f" ${pkgdir}/usr/share/waifu2x-ncnn-vulkan/"$f"
     done
 }
