@@ -1,7 +1,7 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
-	pkgver = 4.11.11
-	pkgrel = 3
+	pkgver = 4.11.12
+	pkgrel = 1
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = proton-native
 	makedepends = fontforge
 	makedepends = flex
 	makedepends = gcc>=4.5.0-2
+	makedepends = mingw-w64-gcc
 	makedepends = giflib
 	makedepends = lib32-giflib
 	makedepends = libpng
@@ -94,9 +95,8 @@ pkgbase = proton-native
 	makedepends = desktop-file-utils
 	makedepends = python
 	makedepends = steam-native-runtime
-	makedepends = wine-gecko=2.47
-	makedepends = wine-mono-bin=4.9.4
-	makedepends = dxvk>=1.5
+	makedepends = wine-gecko>=2.47
+	makedepends = wine-mono-bin>=4.9.4
 	depends = fontconfig
 	depends = lib32-fontconfig
 	depends = lcms2
@@ -128,9 +128,8 @@ pkgbase = proton-native
 	depends = desktop-file-utils
 	depends = python
 	depends = steam-native-runtime
-	depends = wine-gecko=2.47
-	depends = wine-mono-bin=4.9.4
-	depends = dxvk>=1.5
+	depends = wine-gecko>=2.47
+	depends = wine-mono-bin>=4.9.4
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -171,9 +170,10 @@ pkgbase = proton-native
 	optdepends = dosbox
 	provides = proton-native
 	conflicts = proton-native
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-4.11-11
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-4.11-12
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
+	source = dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
 	source = ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
 	source = liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
@@ -182,6 +182,7 @@ pkgbase = proton-native
 	source = FAudio::git+https://github.com/FNA-XNA/FAudio.git
 	source = proton-unfuck_makefile.patch
 	source = proton-disable_lock.patch
+	source = dxvk-extraopts.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -191,8 +192,10 @@ pkgbase = proton-native
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 4907e6005989d349336ee8c53c015a9cb3863c9ed2d147967c5f2603500099b4
+	sha256sums = SKIP
+	sha256sums = 08857165b3b460cba490c31bb8fac25af61092efbcee4d2028445eb372a3148a
 	sha256sums = 7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782
+	sha256sums = 15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3
 
 pkgname = proton-native
 

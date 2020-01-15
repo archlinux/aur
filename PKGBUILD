@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_pkgver=4.11-11
+_pkgver=4.11-12
 pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
-_dxvkver=1.5
-pkgrel=3
+#_dxvkver=1.5
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -31,10 +31,11 @@ depends=(
   steam-native-runtime
   "wine-gecko>=$_geckover"
   "wine-mono-bin>=$_monover"
-  "dxvk>=$_dxvkver"
+#  "dxvk>=$_dxvkver"
 )
 makedepends=(autoconf ncurses bison perl fontforge flex
   'gcc>=4.5.0-2'
+  mingw-w64-gcc
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -101,6 +102,7 @@ source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_pkgver
     wine-valve::git+https://github.com/ValveSoftware/wine.git
     vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
+    dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
@@ -109,6 +111,7 @@ source=(
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
+    dxvk-extraopts.patch
 )
 sha256sums=(
     SKIP
@@ -120,8 +123,10 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    '4907e6005989d349336ee8c53c015a9cb3863c9ed2d147967c5f2603500099b4'
+    SKIP
+    '08857165b3b460cba490c31bb8fac25af61092efbcee4d2028445eb372a3148a'
     '7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782'
+    '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
 )
 
 prepare() {
@@ -134,7 +139,7 @@ prepare() {
         git submodule update "${submodule}"
     done
 
-    for submodule in wine vkd3d; do
+    for submodule in wine vkd3d dxvk; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url ../"${submodule#*/}"-valve
         git submodule update "${submodule}"
@@ -142,6 +147,44 @@ prepare() {
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
+
+    # Uncomment to enable extra optimizations
+    # Patch crossfiles with extra optimizations from makepkg.conf
+    patch -p1 -i "$srcdir"/dxvk-extraopts.patch
+    local dxvk_cflags="$CFLAGS"
+    local dxvk_ldflags="$LDFLAGS"
+    # Filter known bad flags before applying optimizations
+    # If using -march=native and the CPU supports AVX, launching a d3d9
+    # game can cause an Unhandled exception. The cause seems to be the
+    # combination of AVX instructions and tree vectorization (implied by O3),
+    # all tested archictures from sandybridge to haswell are affected.
+    # Disabling either AVX (and AVX2 as a side-effect) or tree
+    # vectorization fixes the issue. I am not sure which one is better
+    # to disable so below you can choose. Append either of these flags.
+    # Relevant Wine issues
+    # https://bugs.winehq.org/show_bug.cgi?id=45289
+    # https://bugs.winehq.org/show_bug.cgi?id=43516
+    dxvk_cflags+=" -mno-avx"
+    #CFLAGS+=" -fno-tree-vectorize"
+    # Filter fstack-protector flag for MingW.
+    # https://github.com/Joshua-Ashton/d9vk/issues/476
+    dxvk_cflags+=" -fno-stack-protector"
+    #CFLAGS="${CFLAGS// -fstack-protector+(-all|-strong)/}"
+    #CFLAGS="${CFLAGS// -fstack-protector+(?=[ ])/}"
+    # Adjust optimization level in meson arguments. This is ignored
+    # anyway because meson sets its own optimization level.
+    dxvk_cflags="${CFLAGS// -O+([0-3s]|fast)/}"
+    # Doesn't compile with these flags in MingW so remove them.
+    # They are also filtered in Wine PKGBUILDs so remove them
+    # for winelib versions too.
+    dxvk_cflags="${CFLAGS/ -fno-plt/}"
+    dxvk_ldflags="${LDFLAGS/,-z,relro,-z,now/}"
+    sed -i dxvk/build-win64.txt \
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
+    sed -i dxvk/build-win32.txt \
+        -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
+        -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
 }
 
 build() {
@@ -151,15 +194,7 @@ build() {
         --with-ffmpeg \
         --build-name="${pkgname%-git}"
 
-    # From d9vk PKGBUILD
-    # If using -march=native and the CPU supports AVX, launching a d3d9
-    # game cause an Unhandled exception. The cause seems to be the
-    # combination of AVX instructions and tree vectorization (implied by O3),
-    # all tested archictures from sandybridge to haswell are affected.
-    # Disabling either AVX (and AVX2 as a side-effect) or tree
-    # vectorization fixes the issue. I am not sure which one is better
-    # to disable so below you can choose. Append either of these flags.
-    # Relevant Wine issues
+    # Use -mno-avx for wine too
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     export CFLAGS+=" -mno-avx"
@@ -173,7 +208,7 @@ build() {
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
         WINEESYNC=0 \
         WINEFSYNC=0 \
-        NO_DXVK=1 \
+        NO_DXVK=0 \
         SYSTEM_GECKO=1 \
         SYSTEM_MONO=1 \
         make -j1 dist
@@ -191,11 +226,11 @@ package() {
     ln -s /usr/share/wine/mono "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
     ln -s /usr/share/wine/gecko "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
 
-    for i in d3d9.dll d3d10_1.dll d3d10core.dll d3d10.dll d3d11.dll dxgi.dll
-    do
-        ln -s "/usr/share/dxvk/x32/$i" \
-            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib/wine/dxvk/
-        ln -s "/usr/share/dxvk/x64/$i" \
-            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib64/wine/dxvk/
-    done
+#    for i in d3d9.dll d3d10_1.dll d3d10core.dll d3d10.dll d3d11.dll dxgi.dll
+#    do
+#        ln -s "/usr/share/dxvk/x32/$i" \
+#            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib/wine/dxvk/
+#        ln -s "/usr/share/dxvk/x64/$i" \
+#            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib64/wine/dxvk/
+#    done
 }
