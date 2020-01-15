@@ -1,6 +1,6 @@
 # Maintainer: Raja Mukherji <rajamukherji@gmail.com>
 pkgname=rabs
-pkgver=2.4.6
+pkgver=2.4.1
 pkgrel=4
 epoch=
 pkgdesc="Generic imperative build system"
@@ -8,7 +8,7 @@ arch=('x86_64' 'i686')
 url=""
 license=('MIT')
 groups=()
-depends=('gc' 'sqlite')
+depends=('gc')
 makedepends=()
 checkdepends=()
 optdepends=()
