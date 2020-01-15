@@ -2,7 +2,7 @@
 
 pkgname=kimera-vio
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Inertial Odometry pipeline for accurate State Estimation from
 Stereo/Mono + IMU data"
 arch=('i686' 'x86_64')
@@ -24,6 +24,7 @@ build() {
     cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
     cmake .. \
+        -DBUILD_TESTS=OFF \
         -DCMAKE_INSTALL_PREFIX="/usr"
 
     msg "Building the project"
