@@ -1,0 +1,19 @@
+pkgbase = pegh
+	pkgdesc = pegh is a file encryption tool using passwords with modern, standardized, and authenticated encryption.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/moparisthebest/pegh
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = AGPL
+	depends = openssl
+	source = pegh-0.9.4.tar.gz::https://github.com/moparisthebest/pegh/archive/v0.9.4.tar.gz
+	source = pegh-0.9.4.tar.gz.asc::https://github.com/moparisthebest/pegh/releases/download/v0.9.4/v0.9.4.tar.gz.asc
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
+	sha256sums = 0fa27afc89984e581507d4c6f30be4bee35ecc59b399551e894bdc0f3dd976f7
+	sha256sums = 8dce5119068e71fea03db8d0c19cc7665fcb5cc37a04d8f109c00387d1c2bc78
+
+pkgname = pegh
+
