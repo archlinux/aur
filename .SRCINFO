@@ -1,13 +1,13 @@
 pkgbase = hashem
 	pkgdesc = Mr. Hashemi Programming Language
-	pkgver = 0.04
+	pkgver = 0.06
 	pkgrel = 1
 	url = https://github.com/mr-hashemi/mr-hashemi
 	arch = any
 	license = UPL
-	source = hashem-0.04::https://github.com/mr-hashemi/mr-hashemi/releases/download/0.04/hashem
+	source = hashem-0.06::https://github.com/mr-hashemi/mr-hashemi/releases/download/0.06/hashem
 	source = https://raw.githubusercontent.com/mr-hashemi/mr-hashemi/master/LICENSE
-	sha256sums = a3b2bad566e9043bca1eeaecfdbf8be8d0737d259e804b10ce9c473f608cd951
+	sha256sums = c8bf5033fa57eff38e59d0555096df84d09c725930660e497111cca03249cfa6
 	sha256sums = 9c93d0dd0b920a1710d7739412ea00e78fc81e21c1afeaf8c794630e3f42af42
 
 pkgname = hashem

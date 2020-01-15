@@ -1,7 +1,7 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=hashem
-pkgver=0.04
+pkgver=0.06
 pkgrel=1
 pkgdesc="Mr. Hashemi Programming Language"
 url="https://github.com/mr-hashemi/mr-hashemi"
@@ -10,7 +10,7 @@ license=('UPL')
 source=("${pkgname}-${pkgver}::${url}/releases/download/${pkgver}/hashem"
 	"https://raw.githubusercontent.com/mr-hashemi/mr-hashemi/master/LICENSE")
 
-sha256sums=('a3b2bad566e9043bca1eeaecfdbf8be8d0737d259e804b10ce9c473f608cd951'
+sha256sums=('c8bf5033fa57eff38e59d0555096df84d09c725930660e497111cca03249cfa6'
 	    '9c93d0dd0b920a1710d7739412ea00e78fc81e21c1afeaf8c794630e3f42af42')
 
 package() {
