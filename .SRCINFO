@@ -1,7 +1,7 @@
 pkgbase = fyre
 	pkgdesc = Rendering of the Peter de Jong map
 	pkgver = 1.0.1
-	pkgrel = 12
+	pkgrel = 13
 	url = http://fyre.navi.cx/
 	arch = x86_64
 	license = GPL
