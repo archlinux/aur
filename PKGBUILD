@@ -2,26 +2,22 @@
 
 pkgname=azdrawing
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Painting software for line art and comics."
 arch=('i686' 'x86_64')
-url="http://azsky2.html.xdomain.jp/"
+url="https://osdn.net/projects/azdrawing/"
 license=('GPL3')
 depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'libx11' 'libxext' 'libxft' 'libxi' 'zlib')
 makedepends=('make')
-source=("http://osdn.jp/frs/redir.php?m=iij&f=/azdrawing/63500/azdrawing-1.5.tar.bz2")
-md5sums=("93941ba7344bba236f658fbd69d99cfb")
+source=("https://osdn.net/dl/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('bea6e70f3850b10d6ec1401f4bebc4e50c0699e8bf5339ec5c642094e1db194c')
 
 build() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	sed -i 's/\/local$/\nifdef DESTDIR\n\tprefix=$(DESTDIR)\/usr\nendif/' Makefile
-	sed -i 's/axt/axt .\/README .\/NEWS/' Makefile
-	sed -i 's/texture $(datadir)/texture $(datadir)\n\tcp -r .\/manual $(datadir)/' Makefile
-	sed -i '/-gtk-update-icon-cache/d' Makefile
-	make -j1
+	cd ${pkgname}-${pkgver}
+	make prefix=${pkgdir}/usr 
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${pkgver}
-	make DESTDIR=${pkgdir} install
+	cd ${pkgname}-${pkgver}
+	make prefix=${pkgdir}/usr install
 }
