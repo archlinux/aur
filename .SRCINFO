@@ -17,7 +17,7 @@ pkgbase = choosenim
 	conflicts = nimsuggest
 	source = choosenim::https://github.com/dom96/choosenim/releases/download/v0.5.1/choosenim-0.5.1_linux_amd64
 	source = https://raw.githubusercontent.com/dom96/choosenim/v0.5.1/LICENSE
-	md5sums = 94634f1c28aeeb900e66fff776068bec
+	md5sums = a9fb39ba0f2a29ce165743bdd9e67292
 	md5sums = 78123baa634a7ebc9f65c1429e18dbb6
 
 pkgname = choosenim
