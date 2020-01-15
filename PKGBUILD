@@ -1,50 +1,43 @@
-# Maintainer: David Scholl <djscholl at gmail dot com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: David Scholl <djscholl at gmail dot com>
+
 _module="tablib"
-pkgname=("python-${_module}" "python2-${_module}")
-pkgver="0.11.3"
-pkgrel="1"
+pkgname="python-${_module}"
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Format-agnostic tabular data library (XLS, JSON, YAML, CSV)"
 arch=("any")
 url="http://python-tablib.org"
 license=("MIT")
-makedepends=("python-setuptools" "python2-setuptools")
-checkdepends=("python-pytest" "python2-pytest")
-source=("https://pypi.python.org/packages/12/93/2bdd501dad13f253cfc8bd066ff18313e4741c1c11d336dd9bbd78aa7845/${_module}-${pkgver}.tar.gz"
-       'remove-locale-from-str-regex.patch')
-sha256sums=('6369662b116a7ed7a13545ebac266c063f170ff9215e918ba01a1ef20a864c9a'
+depends=("python")
+makedepends=("python-setuptools")
+checkdepends=("python-pytest")
+optdepends=("python-tabulate: cli interface"
+            "python-markuppy: for HTML support"
+            "python-odfpy: for ODS support"
+            "python-pandas: for pandas support"
+            "python-xlrd: for XLS support (extract data)"
+            "python-xlwt: for XLS support (create spreadsheets)"
+            "python-openpyxl: for XLSX support"
+            "python-pyaml: for YAML support")
+source=(https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz)
+sha256sums=('ff3172802e8dd7fb795867942f5238f6c90e2d4e90ad6233c1a796cdfc63bb35'
             '18ba282dbdc710edfda125ba80ca97a46bf9eb7e6183dc11eb1a47825f3b12ae')
 
-prepare() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    patch -p1 < ${srcdir}/remove-locale-from-str-regex.patch
-    cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
-}
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     python setup.py build
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py build
 }
 
 check() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_module}-${pkgver}"
     PYTHONPATH="$PWD/build/lib:$PYTHONPATH" py.test
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    PYTHONPATH="$PWD/build/lib:$PYTHONPATH" py.test2
 }
 
-package_python-tablib() {
-    depends=("python")
-    cd "${srcdir}/${_module}-${pkgver}"
+package() {
+    cd "${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     install -D -m644 "${srcdir}/${_module}-${pkgver}/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-tablib() {
-    cd "${srcdir}/${_module}-${pkgver}-python2"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -D -m644 "${srcdir}/${_module}-${pkgver}-python2/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
