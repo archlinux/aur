@@ -1,0 +1,24 @@
+pkgbase = sdformat-8
+	pkgdesc = SDF Converter for gazebo
+	pkgver = 8.7.1
+	pkgrel = 1
+	url = http://sdformat.org/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = ignition-cmake>=2
+	makedepends = ignition-tools
+	makedepends = ruby
+	depends = boost
+	depends = tinyxml
+	depends = ignition-math>=6
+	depends = python-psutil
+	optdepends = urdfdom
+	provides = sdformat=8
+	source = http://bitbucket.org/osrf/sdformat/get/sdformat8_8.7.1.tar.bz2
+	sha256sums = 2db6cdf05d400b3eef97ee5fb350028a9b93c20fd0268f40ef7a597468141e4a
+
+pkgname = sdformat-8
+
