@@ -1,0 +1,29 @@
+pkgbase = bazel-bootstrap
+	pkgdesc = (Bootstrap Build) Correct, reproducible, and fast builds for everyone
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://bazel.io/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python
+	depends = java-environment=11
+	depends = libarchive
+	depends = zip
+	depends = unzip
+	options = !distcc
+	options = !strip
+	options = !ccache
+	source = bazel-bootstrap.zip::https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-dist.zip
+	source = bazel-bootstrap.zip.sig::https://github.com/bazelbuild/bazel/releases/download/2.0.0/bazel-2.0.0-dist.zip.sig
+	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
+	sha512sums = db609e9d0ee0cdbfb999de850db17907af02dc26e605f4617dfeb2fbac5c30c4c0a9f48c6ba3673ffe8babb5b9e157cc51c32832015b85ed279b6b160506cdae
+	sha512sums = SKIP
+
+pkgname = bazel-bootstrap
+
