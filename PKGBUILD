@@ -6,13 +6,13 @@ pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
 pkgver=5.6.r6.g2027bc9
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote objects communication library, fifth major version'
 arch=('any')
 url="https://github.com/irmen/${_srcname}"
 license=('MIT')
 source=("git+${url}")
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python-pytest' 'python-msgpack>=0.5.2')
 depends=('python-serpent>=1.27')
 md5sums=('SKIP')
 
@@ -30,4 +30,9 @@ package() {
     cd "${srcdir}/${_srcname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+}
+
+check(){
+    cd "${srcdir}/${_srcname}"
+    pytest
 }
