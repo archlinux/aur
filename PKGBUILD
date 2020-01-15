@@ -29,5 +29,5 @@ build() {
 package() {
     cd "${srcdir}/${_srcname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
