@@ -3,7 +3,7 @@
 # Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
 
 pkgname=guile-json
-pkgrel=1
+pkgrel=2
 pkgver=3.3.0
 pkgdesc='JSON module for Guile'
 url="https://github.com/aconchillo/guile-json"
@@ -16,6 +16,11 @@ build() {
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
+}
+
+check(){
+    cd "$pkgname-$pkgver"
+    make check
 }
 
 package() {
