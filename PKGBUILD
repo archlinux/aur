@@ -2,13 +2,13 @@
 # Previous maintainer: Arda Demir <ardadem.dev@gmail.com>
 pkgname=a4tech-bloody-driver-git
 _pkgname=a4tech-bloody-driver
-pkgver=r17.15e03c75
+pkgver=r18.5a19d1f0
 pkgrel=1
 pkgdesc='Linux driver for a4tech bloody mouse series.'
 arch=('any')
 url='https://gitlab.com/C0rn3j/a4tech_bloody_p85_driver'
 license=('AGPL3')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'qt5-base')
 provides=('a4tech-bloody-driver')
 conflicts=('a4tech-bloody-driver')
 source=($pkgname::git+https://gitlab.com/C0rn3j/a4tech_bloody_p85_driver
@@ -21,6 +21,8 @@ build() {
 
   cmake ./
   make
+  cd qt
+  qmake bloody.pro -spec linux-g++ CONFIG+=qtquickcompiler
 }
 
 package() {
@@ -29,6 +31,9 @@ package() {
 
   install -Dm755 "${srcdir}/${pkgname}/bloody-cli" "${pkgdir}/usr/bin/"
   chmod +x "${pkgdir}/usr/bin/bloody-cli"
+
+  install -Dm755 "${srcdir}/${pkgname}/qt/bloody" "${pkgdir}/usr/bin/"
+  chmod +x "${pkgdir}/usr/bin/bloody"
 
   install -Dm644 "${srcdir}/60-bloody.rules" "${pkgdir}/usr/lib/udev/rules.d/"
 }
