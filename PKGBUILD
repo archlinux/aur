@@ -1,17 +1,17 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=bubblemail
-pkgver=0.3
+pkgver=0.4
 pkgrel=0
-pkgdesc="Unread mail notification service"
+pkgdesc="New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts"
 pkgfolder="${pkgname}-v${pkgver}"
 arch=(any)
 url="https://framagit.org/razer/bubblemail/"
 license=('GPL2')
 makedepends=('python-setuptools' 'python-pillow' 'vala' 'folks')
-depends=('python' 'python-dbus' 'python-gobject' 'libsecret' 'gnome-keyring')
-optdepends=('gnome-online-accounts' 'gnome-shell' 'bubblemail-gnome-shell-extension')
+depends=('python' 'python-dbus' 'python-gobject' 'python-requests' 'libsecret' 'gnome-keyring')
+optdepends=('gnome-online-accounts' 'gnome-shell' 'bubblemail-gnome-shell' 'folks')
 source=("https://framagit.org/razer/${pkgname}/-/archive/v${pkgver}/${pkgfolder}.tar.bz2")
-sha256sums=('3221a33ed0190d5a15da65dc10ba912ece9f0b274d70c0c133236eef0e0196c3')
+sha256sums=('a62c54d8bafd50117a393effe457f0a044ca9b3b77d25551ee20e38239222e3d')
 
 build() {
     cd "${srcdir}/${pkgfolder}"
