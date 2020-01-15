@@ -1,15 +1,16 @@
-# Maintainer: holos
+# Contributor: holos
 # Contributor: tantalum
+# Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
 
 pkgname=guile-json
 pkgrel=1
-pkgver=3.1.0
+pkgver=3.3.0
 pkgdesc='JSON module for Guile'
 url="https://github.com/aconchillo/guile-json"
 arch=('any')
 license=('LGPL')
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('e303d0db3f34ac515b8f61db8ed35be8b6c5014d7ab4a5a8ef9b44723ed3d8f9')
+sha256sums=('ceb7357308d75a9c49dabbddaecf60c9731eda3512b9275a79bb508f628c783d')
 
 build() {
   cd "$pkgname-$pkgver"
