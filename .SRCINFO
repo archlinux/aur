@@ -1,0 +1,22 @@
+pkgbase = oh-my-bash-git
+	pkgdesc = A delightful community-driven framework for managing your bash configuration, and an auto-update tool so that makes it easy to keep up with the latest updates from the community
+	pkgver = r64.ec19214
+	pkgrel = 1
+	url = https://github.com/ohmybash/oh-my-bash
+	install = oh-my-bash-git.install
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = bash
+	optdepends = ruby: for some plugin functionality
+	optdepends = curl
+	optdepends = wget
+	optdepends = python: for some plugin functionality
+	optdepends = git: most themes use git (highly recommended but still optional)
+	source = oh-my-bash-git::git+git://github.com/ohmybash/oh-my-bash.git
+	source = 0001-bashrc.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = oh-my-bash-git
+

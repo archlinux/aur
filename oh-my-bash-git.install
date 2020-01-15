@@ -1,0 +1,14 @@
+post_install () {
+	echo "================================================================"
+	echo "                     *** IMPORTANT ***"
+	echo "This package does not modify any files in your home folder."; 
+	echo "Backup your current .bashrc, then copy the new one by executing:";
+	echo "'cp /usr/share/oh-my-bash/bashrc ~/.bashrc'";
+	echo "then source it.";
+	echo "================================================================"
+
+}
+
+post_remove () {
+	echo "Please check ~/.bashrc to avoid errors."
+}
