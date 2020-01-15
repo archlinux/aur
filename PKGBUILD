@@ -3,6 +3,7 @@
 pkgname=httptoolkit
 pkgver=0.1.17
 pkgrel=1.1
+epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
 url="https://httptoolkit.tech/"
