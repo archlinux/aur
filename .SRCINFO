@@ -1,6 +1,6 @@
 pkgbase = bubblemail
-	pkgdesc = Unread mail notification service
-	pkgver = 0.3
+	pkgdesc = New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts
+	pkgver = 0.4
 	pkgrel = 0
 	url = https://framagit.org/razer/bubblemail/
 	arch = any
@@ -12,13 +12,15 @@ pkgbase = bubblemail
 	depends = python
 	depends = python-dbus
 	depends = python-gobject
+	depends = python-requests
 	depends = libsecret
 	depends = gnome-keyring
 	optdepends = gnome-online-accounts
 	optdepends = gnome-shell
-	optdepends = bubblemail-gnome-shell-extension
-	source = https://framagit.org/razer/bubblemail/-/archive/v0.3/bubblemail-v0.3.tar.bz2
-	sha256sums = 3221a33ed0190d5a15da65dc10ba912ece9f0b274d70c0c133236eef0e0196c3
+	optdepends = bubblemail-gnome-shell
+	optdepends = folks
+	source = https://framagit.org/razer/bubblemail/-/archive/v0.4/bubblemail-v0.4.tar.bz2
+	sha256sums = a62c54d8bafd50117a393effe457f0a044ca9b3b77d25551ee20e38239222e3d
 
 pkgname = bubblemail
 
