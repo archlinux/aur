@@ -1,6 +1,6 @@
 pkgbase = python-cymem
 	pkgdesc = Manage calls to calloc/free through Cython
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/explosion/cymem
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = python-cymem
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
-	source = python-cymem-2.0.2.tar.gz::https://github.com/explosion/cymem/archive/v2.0.2.tar.gz
-	md5sums = bef801db34e23b970ea996d0ebd0300a
+	source = python-cymem-2.0.3.tar.gz::https://github.com/explosion/cymem/archive/v2.0.3.tar.gz
+	md5sums = 27dc49a054c11a279e9c9ff6cb942520
 
 pkgname = python-cymem
 
