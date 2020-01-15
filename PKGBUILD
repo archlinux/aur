@@ -1,15 +1,15 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=ycat
 _pkgname=go-yaml
-pkgver=1.0.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Print yaml files with color (powered by goccy/go-yaml)'
 arch=('any')
 url="https://github.com/goccy/go-yaml"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('79c4608e2826cb4c8dd1dba50494a76f330e4b47fce598668690dfa61dfb7779')
+sha256sums=('96338e61872995a1b285d94b227b69aaaa18f1a718ffce757fc1ca2d5407599b')
 
 build() {
     export CGO_LDFLAGS="${LDFLAGS}"
