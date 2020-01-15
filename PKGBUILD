@@ -4,12 +4,12 @@
 _name=pims
 pkgname=python-pims
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Image Sequence: Load video and sequential images"
 url="https://github.com/soft-matter/pims"
 arch=(any)
 license=('BSD')
-depends=('python' 'python-slicerator')
+depends=('python-six' 'python-slicerator' 'python-numpy')
 optdepends=('python-pillow: improved TIFF support'
             'python-tifffile: alternative TIFF support')
 makedepends=('python-setuptools' 'python-scipy' 'python-matplotlib' 'python-scikit-image')
