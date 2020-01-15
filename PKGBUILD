@@ -1,6 +1,6 @@
 # Maintainer: Wainer Vandelli (<firstname>DOT<lastname>ATgmail.com)
 pkgname=cernbox-nemo
-pkgver=2.4.2_2401.1
+pkgver=2.5.4.201906281229_2625.1
 pkgrel=1
 pkgdesc="Nemo integration for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk."
 arch=('x86_64')
@@ -12,7 +12,7 @@ _repo='https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_28/x86_64/'
 source=(
     ${_repo}cernbox-client-nemo-${pkgver/_/-}.x86_64.rpm
 )
-md5sums=('18f99adb091d1072000c196b107c7888')
+md5sums=('99439387b1a86b41fda6f8528e92dc0d')
 
 package() {
     mkdir -p "${pkgdir}/usr"
