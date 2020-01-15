@@ -1,0 +1,17 @@
+pkgbase = python-pyro5-git
+	pkgdesc = Remote objects communication library, fifth major version
+	pkgver = 5.6.r6.g2027bc9
+	pkgrel = 1
+	url = https://github.com/irmen/Pyro5
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-serpent>=1.27
+	provides = python-pyro5
+	conflicts = python-pyro5
+	source = git+https://github.com/irmen/Pyro5
+	md5sums = SKIP
+
+pkgname = python-pyro5-git
+
