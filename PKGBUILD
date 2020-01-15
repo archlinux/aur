@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: Vincent Bernardoff <vb@luminar.eu.org>
 
