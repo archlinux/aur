@@ -1,7 +1,7 @@
 pkgbase = studiolink-standalone-bin
 	pkgdesc = A SIP application to create high quality Audio over IP (AoIP) connections.
 	pkgver = v20.01.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://studio-link.de
 	arch = x86_64
 	license = custom
