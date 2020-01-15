@@ -1,6 +1,5 @@
 /src
 /pkg
-/bazel-git
 *.xz
 *.tar.*
 *.pkg.*
