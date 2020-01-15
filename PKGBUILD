@@ -1,9 +1,10 @@
 # Maintainer: Tobias Bachmann <tobachmann@gmx.de>
 pkgname=python-opengl-accelerate
-pkgver=3.1.3b1 # We have to use the beta version for now, as 3.1.0 does not support Python 3.7
-pkgrel=2
+pkgver=3.1.5
+pkgrel=1
+_commit=3e9791ffb4cd4831dae261d6bea3049ce9e78f01 # McFletch does not release bundles on GitHub, there we use commit hashes to get specific versions
 pkgdesc="This is the Cython-coded accelerator module for PyOpenGL 3.x"
-_name=PyOpenGL-accelerate
+_name=pyopengl
 arch=('any')
 url=""
 license=('BSD')
@@ -16,12 +17,17 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e687eea7e006d65f531933b49b3b3d2feaaf51279147a904247f9d189762a36f')
+source=("https://github.com/mcfletch/${_name}/archive/${_commit}.tar.gz")
+sha256sums=('d8547b182938aff99eb202edb94f712127d535611f976bd2aaf72650fcef3531')
+
+build() {
+  cd "$srcdir/${_name}-${_commit}/accelerate"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$srcdir/${_name}-${_commit}/accelerate"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
