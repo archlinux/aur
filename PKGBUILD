@@ -1,8 +1,9 @@
 # Maintainer: Rohit Goswami <rohit.goswami@aol.com>
+# Maintainer: Anton Kudelin <kudelin@protonmail.com>
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=pgi-compilers
-_release='19.4'
+_release='19.10'
 _REL_VERSION='2019'
 pkgver=${_release}
 pkgrel=1
@@ -23,10 +24,10 @@ depends=(
   'openmpi'
 )
 makedepends=('bash')
-source=("file://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
+source=("local://pgilinux-${_REL_VERSION}-${_release//./}-x86-64.tar.gz"
         "https://www.pgroup.com/doc/LICENSE.txt"
         "pgi-compilers.sh")
-md5sums=('47b3fa40170eef9e091632d1611fa0bb'
+md5sums=('71b033bb894d838fec8200e0071576b4'
          '4b126b6494c776016accd8ffbd0be51d'
          '5591f7344c4ec974db4be9ad35a80b3b')
 options=(!strip)
