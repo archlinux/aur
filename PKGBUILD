@@ -4,8 +4,8 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 
 pkgname=pidgin-opensteamworks
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc="A plugin to connect to Steam Friends/Steam IM (purple plugin). "
 url="https://github.com/EionRobb/${pkgname}"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3')
 makedepends=('nss' 'libgnome-keyring')
 depends=('libpurple' 'json-glib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EionRobb/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('9f025538460dda01d769501326cf7ac597e069bdef3437eea89f392bede7e620e854a8c0b0659315a0834c8f2f60a38680f1f1bdccdb65d3b13f64f7981ee55b')
+sha512sums=('6369d8fb49fca3c8ad760d379c413da0be8bf58cbfdc5a4bb41ea6d803493110da8b0e1e3743c81b5068799b3a0ba6f57a90ba6208a5b112eb58434d134b1ba6')
 
 build() {
   cd "${pkgname}-${pkgver}/steam-mobile"
