@@ -1,0 +1,14 @@
+pkgbase = ruby-ripper-tags
+	pkgdesc = fast, accurate ctags generator for ruby source code using Ripper
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://rubygems.org/gems/ripper-tags
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = ripper-tags-0.8.1.gem
+	source = https://rubygems.org/downloads/ripper-tags-0.8.1.gem
+	sha256sums = 7e6f6936ba01a4326bed311f0c90039f9bbfdaee01aea7f3f9b442d76fb95a45
+
+pkgname = ruby-ripper-tags
+
