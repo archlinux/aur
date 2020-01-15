@@ -1,14 +1,35 @@
 pkgbase = yaru-colors-gtk-theme-git
 	pkgdesc = A fork of Ubuntu's Yaru theme - in different colors
-	pkgver = cbc4598
+	pkgver = 2.0.r13.3ac6559
 	pkgrel = 1
 	url = https://github.com/Jannomag/Yaru-Colors
-	arch = x86_64
-	license = MIT
+	arch = any
+	license = GPL3
 	makedepends = git
-	provides = adwaita-creamy
 	source = git+https://github.com/Jannomag/Yaru-Colors.git
 	sha256sums = SKIP
 
 pkgname = yaru-colors-gtk-theme-git
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	depends = gnome-themes-extra
+	depends = gnome-shell
+	optdepends = yaru-colors-wallpapers
+	optdepends = yaru-colors-icon-theme
+	optdepends = yaru-sound-theme
+	provides = yaru-colors-gtk-theme
+	conflicts = yaru-colors-gtk-theme
+
+pkgname = yaru-colors-icon-theme-git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	depends = humanity-icon-theme
+	provides = yaru-colors-icon-theme
+	conflicts = yaru-colors-icon-theme
+
+pkgname = yaru-colors-wallpapers-git
+	provides = yaru-colors-wallpapers
+	conflicts = yaru-colors-wallpapers
 
