@@ -2,8 +2,8 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-msgs
-pkgver=4.2.0
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org"
@@ -13,10 +13,10 @@ depends=('protobuf' 'protobuf-c' 'ignition-math>=6' 'ignition-tools')
 makedepends=('ignition-cmake>=2' 'ruby-ronn' 'doxygen')
 optdepends=()
 conflicts=()
-source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${pkgname}4_${pkgver}.tar.bz2")
-sha256sums=('260d9f9aafe4a6f997af7d5967e9aa21306bfb30c832be113f7edb4b126a4085')
+source=("https://bitbucket.org/ignitionrobotics/ign-msgs/get/${pkgname}5_${pkgver}.tar.bz2")
+sha256sums=('b4ddbcfc797ad64e8ac1f64d5fb456059d3d78ff56adcd858e149c6ee8d0350a')
 
-_dir="ignitionrobotics-ign-msgs-e438e8fa0e2a"
+_dir="ignitionrobotics-ign-msgs-bedb5065b7f4"
 
 build() {
   cd "${srcdir}/${_dir}"
