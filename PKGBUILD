@@ -2,13 +2,13 @@
 
 pkgname=hax11-git
 pkgver=r149.ba694c6
-pkgrel=2
+pkgrel=3
 pkgdesc="Hackbrary to Hook and Augment X11 protocol calls"
 arch=('i686' 'x86_64')
 url="https://github.com/CyberShadow/hax11"
 license=('MIT')
 depends=('glibc' 'lib32-glibc')
-makedepends=('git' 'xorgproto' 'libx11')
+makedepends=('git' 'xorgproto' 'libx11' 'libxxf86vm')
 source=("git+https://github.com/CyberShadow/hax11"
 	    "license.txt")
 md5sums=('SKIP'
