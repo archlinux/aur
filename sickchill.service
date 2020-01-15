@@ -7,10 +7,9 @@ Restart=on-success
 User=sickchill
 Group=sickchill
 
-Type=forking
-GuessMainPID=no
-#ExecStart=/usr/bin/env python2 /opt/sickchill/app/SickBeard.py --quiet --daemon --nolaunch --datadir=/opt/sickchill/data
-ExecStart=/usr/bin/python2 /opt/sickchill/app/SickBeard.py --quiet --daemon --nolaunch --datadir=/opt/sickchill/data
+Type=simple
+#ExecStart=/usr/bin/env python2 ...
+ExecStart=/usr/bin/python2 /opt/sickchill/app/SickBeard.py --quiet --nolaunch --datadir=/opt/sickchill/data
 
 [Install]
 WantedBy=multi-user.target
