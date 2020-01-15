@@ -1,7 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=rqlite
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="rqlite is a lightweight, distributed relational database, which uses SQLite as its storage engine"
 arch=(x86_64)
 url="http://www.rqlite.com/"

@@ -7,9 +7,21 @@ Wants=network-online.target
 Type=simple
 User=rqlite
 Group=rqlite
-ExecStart=/usr/bin/rqlited -node-id $(cat /etc/machine-id) -http-addr 0.0.0.0:4001 -raft-addr 0.0.0.0:4002 -disco-id %i /run/rqlite
+ExecStart=/usr/bin/rqlited -http-addr 0.0.0.0:4001 -raft-addr 0.0.0.0:4002 -disco-id %i $STATE_DIRECTORY
 Restart=always
-WorkingDirectory=/run/rqlite
+# security
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=yes
+StateDirectory=rqlite
+StateDirectoryMode=0750
+ConfigurationDirectory=rqlite
+ConfigurationDirectoryMode=0750
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
 
 [Install]
 WantedBy=multi-user.target
