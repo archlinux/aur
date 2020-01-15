@@ -3,7 +3,7 @@
 java_=8
 pkgname_=fastr
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=19.3.0.2
+pkgver=19.3.1
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the R language (Java ${java_} version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=("jdk${java_}-graalvm-bin"
          'gcc6-libs' # for libgfortran.so.3 (gcc-libs has .so.5)
          'sed') # for Rscript fix; TODO remove once no longer needed
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/r-installable-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('4225279c6dc6edcc08cbc443a615e561d4474975594eee7916a98b3657d5baab')
+sha256sums=('bcf577acc66082d4a9441ed3bb5a4541204db00195814637575c33c11a207453')
 
 package() {
     local file eq permissions mode name target
