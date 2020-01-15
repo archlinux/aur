@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=linuxkit-git
 _pkgname=linuxkit
-pkgver=0.7.r190.gafff608c4
-pkgrel=2
+pkgver=0.7.r249.gfce020a11
+pkgrel=1
 pkgdesc="A toolkit for building secure, portable and lean operating systems for containers - git version"
 arch=('x86_64')
 url="https://github.com/linuxkit/linuxkit"
