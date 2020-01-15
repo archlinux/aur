@@ -1,24 +1,30 @@
 pkgbase = prospector
-	pkgdesc = A roguelike in space.
-	pkgver = R201
+	pkgdesc = A roguelike in space
+	pkgver = R210
 	pkgrel = 1
 	url = http://prospector.at/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = unzip
-	depends = libxpm
-	depends = libjpeg6
-	depends = ncurses
-	depends = freetype2
-	depends = libogg
-	depends = libvorbis
-	depends = libtinfo
-	noextract = download.php?id=86
-	source = http://www.prospector.at/forum/dm_eds/download.php?id=86
+	depends = ncurses5-compat-libs
+	noextract = prospector-R210.zip
+	source = prospector-R210.zip::http://www.prospector.at/forum/dm_eds/download.php?id=117
 	source = prospector.sh
-	sha256sums = c5450d647c30bd66ffcb9504ca92c19a73e01bbc207c55d1dbf2e086a945d821
-	sha256sums = fe98b315007af211d58df579b269b6b6b0ab3ae45bf302d7e522100a590220f1
+	sha256sums = 2948002bff3bde764c727c92e6343a660270e8156e14afa7c8b07ba0caf74985
+	sha256sums = 4d20c555f4375c8dc12daa5b331d1f6d8473842713e4fa7f525e92bffd0b833e
+	depends_i686 = libxpm
+	depends_i686 = libjpeg6
+	depends_i686 = ncurses
+	depends_i686 = freetype2
+	depends_i686 = libogg
+	depends_i686 = libvorbis
+	depends_x86_64 = lib32-libxpm
+	depends_x86_64 = lib32-libjpeg6
+	depends_x86_64 = lib32-ncurses
+	depends_x86_64 = lib32-freetype2
+	depends_x86_64 = lib32-libogg
+	depends_x86_64 = lib32-libvorbis
 
 pkgname = prospector
 
