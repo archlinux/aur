@@ -34,3 +34,7 @@ package() {
   cp -dr --no-preserve='ownership' core "${pkgdir}"/usr/share/pacback
   ln -sf /usr/share/pacback/core/pacback.py "${pkgdir}"/usr/bin/pacback
 }
+
+pre_remove() {
+  pacback -rh
+}
