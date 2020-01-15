@@ -6,7 +6,7 @@ pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
 pkgver=5.6.r6.g2027bc9
-pkgrel=2
+pkgrel=3
 pkgdesc='Remote objects communication library, fifth major version'
 arch=('any')
 url="https://github.com/irmen/${_srcname}"
@@ -34,5 +34,5 @@ package() {
 
 check(){
     cd "${srcdir}/${_srcname}"
-    pytest
+    pytest --rootdir="${pkgdir}/"
 }
