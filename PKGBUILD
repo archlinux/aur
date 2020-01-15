@@ -1,12 +1,12 @@
 pkgname=rust-analyzer-git
-pkgver=0.1.0.1249.g0e1c01c
+pkgver=0.1.0.7015.gc0661ce74
 pkgrel=1
 pkgdesc="An experimental Rust compiler front-end for IDEs"
 arch=('x86_64' 'i686')
 url="https://github.com/rust-analyzer/rust-analyzer"
 license=('MIT')
 depends=()
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 optdepends=()
 provides=('rust-analyzer')
 conflicts=('rust-analyzer')
