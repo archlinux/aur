@@ -1,6 +1,6 @@
 pkgbase = elementary-planner-git
 	pkgdesc = Personal task manager designed for elementary OS
-	pkgver = r276.d16c537
+	pkgver = 2.0.1.r1.df4c4be
 	pkgrel = 1
 	url = https://planner-todo.web.app
 	arch = x86_64

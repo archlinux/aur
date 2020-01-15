@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=elementary-planner-git
-pkgver=r276.d16c537
+pkgver=2.0.1.r1.df4c4be
 pkgrel=1
 pkgdesc="Personal task manager designed for elementary OS"
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/planner"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
