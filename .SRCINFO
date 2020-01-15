@@ -1,5 +1,5 @@
 pkgbase = bind-rl
-	pkgver = 9.14.1
+	pkgver = 9.14.9
 	pkgrel = 1
 	url = https://www.isc.org/software/bind/
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = bind-rl
 	makedepends = openssl
 	makedepends = readline
 	makedepends = libidn2
-	makedepends = geoip
 	makedepends = dnssec-anchors
 	makedepends = python
 	makedepends = json-c
@@ -21,9 +20,10 @@ pkgbase = bind-rl
 	makedepends = zlib
 	makedepends = icu
 	makedepends = xz
+	makedepends = libmaxminddb
 	options = !emptydirs
-	source = https://ftp.isc.org/isc/bind9/9.14.1/bind-9.14.1.tar.gz
-	source = https://ftp.isc.org/isc/bind9/9.14.1/bind-9.14.1.tar.gz.asc
+	source = https://ftp.isc.org/isc/bind9/9.14.9/bind-9.14.9.tar.gz
+	source = https://ftp.isc.org/isc/bind9/9.14.9/bind-9.14.9.tar.gz.asc
 	source = tmpfiles.conf
 	source = sysusers.conf
 	source = named.conf
@@ -31,21 +31,20 @@ pkgbase = bind-rl
 	source = localhost.zone
 	source = localhost.ip6.zone
 	source = 127.0.0.zone
-	source = empty.zone
 	validpgpkeys = AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38
-	sha1sums = 29e43a99c059c5458822833b2267f237361feca6
+	sha1sums = a45f4c8b44755d8c4019181d0787e4e72d836661
 	sha1sums = SKIP
 	sha1sums = c5a2bcd9b0f009ae71f3a03fbdbe012196962a11
 	sha1sums = 9537f4835a1f736788d0733c7996a10db2d4eee4
-	sha1sums = c017aae379c32c7cb1aa1ad84776b83e3a5c139f
+	sha1sums = 34d828cf20b425cf49a838926e01470c12083bee
 	sha1sums = 62b06487323dd0d515a4dc659b8ecd193c29107b
 	sha1sums = 6704303a6ed431a29b1d8fe7b12decd4d1f2f50f
 	sha1sums = 52da8f1c0247a11b16daa4e03d920e8f09315cbe
 	sha1sums = 9c33726088342207ad06d33b2c13408290a0c8ad
-	sha1sums = 4f4457b310cbbeadca2272eced062a9c2b2b42fe
 
 pkgname = bind-rl
 	pkgdesc = The ISC DNS Server, with Response Rate Limit (RRL) enabled
+	install = bind.install
 	depends = glibc
 	depends = libxml2
 	depends = libcap
@@ -54,15 +53,17 @@ pkgname = bind-rl
 	depends = geoip
 	depends = json-c
 	depends = bind-tools
+	depends = zlib
+	depends = lmdb
+	depends = libmaxminddb
 	provides = dns-server
-	provides = bind=9.14.1
+	provides = bind=9.14.9
 	conflicts = bind
 	replaces = bind
 	backup = etc/named.conf
 	backup = var/named/127.0.0.zone
 	backup = var/named/localhost.zone
 	backup = var/named/localhost.ip6.zone
-	backup = var/named/empty.zone
 
 pkgname = bind-rl-tools
 	pkgdesc = The ISC DNS tools
@@ -76,16 +77,17 @@ pkgname = bind-rl-tools
 	depends = bash
 	depends = openssl
 	depends = readline
-	depends = geoip
 	depends = libidn2
 	depends = dnssec-anchors
 	depends = json-c
 	depends = lmdb
 	depends = xz
 	depends = icu
+	depends = python-ply
+	depends = libmaxminddb
 	optdepends = python: for python scripts
-	provides = dnsutils=9.14.1
-	provides = bind-tools=9.14.1
+	provides = dnsutils=9.14.9
+	provides = bind-tools=9.14.9
 	conflicts = dnsutils
 	conflicts = bind-tools
 	replaces = dnsutils

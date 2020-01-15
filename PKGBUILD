@@ -6,7 +6,7 @@
 
 pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
-_pkgver=9.14.1
+_pkgver=9.14.9
 pkgver=${_pkgver//-/.}
 pkgrel=1
 url='https://www.isc.org/software/bind/'
@@ -14,8 +14,8 @@ license=('MPL2')
 arch=('x86_64')
 options=('!emptydirs')
 makedepends=('libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'openssl' 'readline'
-  'libidn2' 'geoip' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'lmdb'
-  'zlib' 'icu' 'xz')
+  'libidn2' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'lmdb' 'zlib' 'icu'
+  'xz' 'libmaxminddb')
 validpgpkeys=('AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38') #ISC Code Signing Key 2019 – 2020 (codesign@isc.org)
 source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'tmpfiles.conf'
@@ -24,32 +24,27 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'named.service'
         'localhost.zone'
         'localhost.ip6.zone'
-        '127.0.0.zone'
-        'empty.zone')
-sha1sums=('29e43a99c059c5458822833b2267f237361feca6'
+        '127.0.0.zone')
+sha1sums=('a45f4c8b44755d8c4019181d0787e4e72d836661'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
-          'c017aae379c32c7cb1aa1ad84776b83e3a5c139f'
+          '34d828cf20b425cf49a838926e01470c12083bee'
           '62b06487323dd0d515a4dc659b8ecd193c29107b'
           '6704303a6ed431a29b1d8fe7b12decd4d1f2f50f'
           '52da8f1c0247a11b16daa4e03d920e8f09315cbe'
-          '9c33726088342207ad06d33b2c13408290a0c8ad'
-          '4f4457b310cbbeadca2272eced062a9c2b2b42fe')
+          '9c33726088342207ad06d33b2c13408290a0c8ad')
 
 prepare() {
-  msg2 'Getting a fresh version of root DNS'
-  # no more using source array, lack of versioning.
-  curl -o root.hint https://www.internic.net/zones/named.root
-  [[ -s root.hint ]]
   cd bind-$_pkgver
   # apply patch from the source array (should be a pacman feature)
-  local filename
-  for filename in "${source[@]}"; do
-    if [[ "$filename" =~ \.patch$ ]]; then
-      msg2 "Applying patch ${filename##*/}"
-      patch -p1 -N -i "$srcdir/${filename##*/}"
-    fi
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
   done
 }
 
@@ -67,7 +62,7 @@ build() {
     --enable-dnsrps \
     --enable-rrl \
     --with-python=/usr/bin/python \
-    --with-geoip \
+    --with-geoip2 \
     --with-openssl \
     --with-libidn2 \
     --with-libjson \
@@ -82,14 +77,14 @@ package_bind-rl() {
   pkgdesc='The ISC DNS Server, with Response Rate Limit (RRL) enabled'
   provides=('dns-server' "bind=$pkgver")
   depends=('glibc' 'libxml2' 'libcap' 'libseccomp' 'openssl' 'geoip' 'json-c'
-           'bind-tools')
+           'bind-tools' 'zlib' 'lmdb' 'libmaxminddb')
   conflicts=('bind')
   replaces=('bind')
   backup=('etc/named.conf'
           'var/named/127.0.0.zone'
           'var/named/localhost.zone'
-          'var/named/localhost.ip6.zone'
-          'var/named/empty.zone')
+          'var/named/localhost.ip6.zone')
+  install=bind.install
 
   cd "bind-$_pkgver"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
@@ -106,18 +101,16 @@ package_bind-rl() {
   install -D -m640 -o 0 -g 40 named.conf "$pkgdir/etc/named.conf"
 
   install -d -m770 -o 0 -g 40 "$pkgdir/var/named"
-  install    -m640 -o 0 -g 40 root.hint "$pkgdir/var/named"
   install    -m640 -o 0 -g 40 localhost.zone "$pkgdir/var/named"
   install    -m640 -o 0 -g 40 localhost.ip6.zone "$pkgdir/var/named"
   install    -m640 -o 0 -g 40 127.0.0.zone "$pkgdir/var/named"
-  install    -m640 -o 0 -g 40 empty.zone "$pkgdir/var/named"
 }
 
 package_bind-rl-tools() {
   pkgdesc='The ISC DNS tools'
   depends=('glibc' 'libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'python' 'bash'
-           'openssl' 'readline' 'geoip' 'libidn2' 'dnssec-anchors' 'json-c'
-           'lmdb' 'xz' 'icu')
+           'openssl' 'readline' 'libidn2' 'dnssec-anchors' 'json-c' 'lmdb' 'xz'
+           'icu' 'python-ply' 'libmaxminddb')
   optdepends=('python: for python scripts')
   conflicts=('dnsutils' 'bind-tools')
   replaces=('dnsutils' 'host' 'bind-tools')
