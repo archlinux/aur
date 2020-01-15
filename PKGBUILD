@@ -5,18 +5,17 @@
 pkgname=fdroidserver
 pkgver=1.1.6
 epoch=2
-pkgrel=1
+pkgrel=2
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$pkgname"
 license=('GPL3')
-depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml' 'python-pillow')
-makedepends=('python-setuptools' 'python-paramiko' 'python-babel' 'java-environment')
+depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml' 'python-ruamel-yaml' 'java-environment' 'python-pillow' 'python-vagrant')
+makedepends=('python-setuptools' 'python-paramiko' 'python-babel')
 optdepends=(
      'android-sdk: Build apps from source'
      'android-sdk-build-tools: Work with apks in the repository'
      'android-sdk-platform-tools: Ability to install apps to connected devices'
      'android-ndk: Build apps that use native code'
-     'java-runtime: Run a repository'
      'apache-ant: Build apps using Apache Ant'
      'maven: Build apps using Maven'
      'gradle: Build apps using Gradle'
