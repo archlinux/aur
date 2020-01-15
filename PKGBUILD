@@ -1,20 +1,26 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 _realname=mattermostdriver
 pkgname="python-$_realname"
-pkgver=2.1.1
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 pkgdesc="A Python Mattermost Driver"
 arch=('any')
 url="https://pypi.python.org/pypi/mattermostdriver/"
 license=('custom:MIT')
 depends=('python' 'python-requests' 'python-websockets')
-source=("https://pypi.python.org/packages/7b/bb/7ff0a83b3e83943439dea42c914917accb81b44696bf31f793db79d31498/$_realname-$pkgver.tar.gz")
-md5sums=('914d1008cd7cd7f982d622b0caacba33')
+source=(https://files.pythonhosted.org/packages/source/${_realname::1}/$_realname/$_realname-$pkgver.tar.gz)
+md5sums=('7018be836c1578bb57a9a508c5b2a9d7')
 
+
+build () {
+  cd "$_realname-$pkgver"
+  python setup.py build
+}
 package() {
-  cd "$srcdir/$_realname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$_realname-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
