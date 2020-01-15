@@ -1,6 +1,6 @@
 pkgbase = sgtk-menu
 	pkgdesc = GTK menu for sway and i3
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/sgtk-menu
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = sgtk-menu
 	depends = python-gobject
 	depends = python-cairo
 	optdepends = python-i3ipc: to avoid deprecation warnings
-	source = https://github.com/nwg-piotr/sgtk-menu/archive/v0.3.1.tar.gz
-	md5sums = 8fc9c5ef99b05eb39b4e8b9fce98d70a
+	source = https://github.com/nwg-piotr/sgtk-menu/archive/v0.4.0.tar.gz
+	md5sums = ca349275e68999d76c4ad1459f3e144f
 
 pkgname = sgtk-menu
 
