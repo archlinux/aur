@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=libclsp
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc="A C++17 library for language servers"
@@ -16,7 +16,7 @@ optdepends=()
 provides=("${pkgname}.so")
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("c050291146baebcb414092c2aa30618ec53efab1e47fb072ba923695529250d9")
+sha256sums=("8e6b059ad3f7f1800cfadcf077d3d469082ce90e8d8bc2d4bf283a2bfe1ea6db")
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver/build"
