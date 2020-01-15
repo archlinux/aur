@@ -1,6 +1,6 @@
 pkgbase = buck-git
 	pkgdesc = A fast build system that encourages the creation of small, \ reusable modules over a variety of platforms and languages.
-	pkgver = 2019.01.10.01.r1058.ga02f4c9fc4
+	pkgver = 2019.10.17.01.r988.gcb7523a257
 	pkgrel = 1
 	url = https://buckbuild.com
 	arch = any
