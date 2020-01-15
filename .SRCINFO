@@ -1,6 +1,6 @@
 pkgbase = azure-sphere-sdk
 	pkgdesc = Azure Sphere SDK Preview for Linux
-	pkgver = 19.09Beta
+	pkgver = 19.11Beta
 	pkgrel = 1
 	url = https://aka.ms/AzureSphereSDK
 	install = azure-sphere-sdk.install
@@ -16,7 +16,7 @@ pkgbase = azure-sphere-sdk
 	optdepends = code: for software development
 	options = !strip
 	options = staticlibs
-	source = azure-sphere-sdk-19.09Beta.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Preview_Bundle.tar.gz
+	source = azure-sphere-sdk-19.11Beta.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Preview_Bundle.tar.gz
 	source = azure-sphere-sdk.udev
 	source = azure-sphere-sdk.sysusers
 	sha256sums = 6518bb29ef7d6c40701ef1420bbd3dcf068236939f0e8e11c30769857dd34837

@@ -1,6 +1,6 @@
 # Maintainer: Felipe Balbi <felipe.balbi@microsoft.com>
 pkgname=azure-sphere-sdk 
-pkgver=19.09Beta
+pkgver=19.11Beta
 pkgrel=1
 pkgdesc="Azure Sphere SDK Preview for Linux"
 arch=('x86_64')
