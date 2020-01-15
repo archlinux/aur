@@ -7,6 +7,7 @@ pkgdesc="A formatter for Haskell source code"
 arch=('i686' 'x86_64')
 url="https://github.com/tweag/${pkgname}"
 license=('custom')
+depends=('gmp')
 makedepends=('stack')
 source=("${url}/archive/${pkgver}.tar.gz"
         'stack.yaml')
