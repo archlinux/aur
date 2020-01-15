@@ -1,6 +1,6 @@
 pkgbase = python-youtube-sm-parser
 	pkgdesc = Output youtube subscriptions using subscription_manager file
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/shanedabes/youtube_sm_parser
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-youtube-sm-parser
 	depends = python
 	depends = python-xmltodict
 	depends = python-requests-futures
-	source = python-youtube-sm-parser-0.1.5.tar.gz::https://github.com/shanedabes/youtube_sm_parser/archive/0.1.5.tar.gz
-	sha256sums = 562e4110c8f26dc375ec26bff11a73628f7924957f3c3326957b082c23b3d881
+	source = python-youtube-sm-parser-0.1.6.tar.gz::https://github.com/shanedabes/youtube_sm_parser/archive/0.1.6.tar.gz
+	sha256sums = d11671d284ce4d8cc10fe9d97a693d4259c40b1103cbcfd066b7a7a0fbd65734
 
 pkgname = python-youtube-sm-parser
 
