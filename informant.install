@@ -1,0 +1,10 @@
+post_install() {
+    groupadd informant
+    touch var/cache/informant.dat
+    chgrp informant var/cache/informant.dat
+    printf 'NOTE: Add yourself to group "informant" to avoid the need for sudo'
+}
+
+post_upgrade() {
+    post_install
+}
