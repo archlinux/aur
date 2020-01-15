@@ -1,7 +1,7 @@
 # Maintainer: Otto Ahoniemi <otto@ottoahoniemi.fi>
 
 pkgname=pinentry-wayland
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A small shell script wrapper for setting different pinentry-clients for Wayland GUI and terminal usage."
 arch=('any')
