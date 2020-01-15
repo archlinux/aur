@@ -1,9 +1,11 @@
-# Maintainer: Sean Enck <enckse@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Sean Enck <enckse@gmail.com>
+
 pkgname=python-pyxstitch
 _name=${pkgname#python-}
-pkgver=1.7.8
+pkgver=1.8.1
 pkgrel=1
-pkgdesc="takes source code files and produces syntax-highlighted patterns for cross stitching."
+pkgdesc="takes source code files and produces syntax-highlighted patterns for cross stitching"
 arch=("any")
 url="https://github.com/enckse/$_name"
 license=('MIT')
@@ -14,15 +16,20 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
         "${_rawcontent}LICENSE"
         "${_rawcontent}resources/bash.completions"
         "${_rawcontent}resources/$_name.1")
-sha256sums=("4c51608ae5a346649b25bbf7ad15812774be7a7826f5e5e8f16491bce82ad7e0"
-            "97ed9ee60ca40f39e5ed06c9c4f88d925885e54abcb49b3b364b56b5235b7390"
-            "275eb6d18b2a1501bf349ef1b1ac8017630b50786244434cc72cd28aa9169baa"
-            "6074550d08d10bec5c285ab567b8b5c286e13d1af6cb5d878f70cf447f623d35")
+sha256sums=('c2c2711b021678a250ac5b18ba20a6e1fa6c1f663f90ed2a03c418773baa6835'
+            '3f2c149ada89dc7874788fc3aee58ba5a1849fb2f44ba722f6a0a314b401c31f'
+            'e19458e5a751a1d496e681a0ff50b78f823fd18861fadc6f98982731a70aa773'
+            '4aee529ee100590a9e97fa1b22239c90222fd7ae2cdd0c308d683c903e550723')
 
-build() {
+
+prepare() {
     sed -i "s/<Version>/$pkgver/g" pyxstitch.1
     rm -f *.gz
     gzip pyxstitch.1
+}
+
+build() {
+    python setup.py build
 }
 
 package() {
@@ -30,5 +37,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm 644 bash.completions "$pkgdir/usr/share/bash-completion/completions/pyxstitch"
     cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

@@ -1,6 +1,6 @@
 pkgbase = python-pyxstitch
-	pkgdesc = takes source code files and produces syntax-highlighted patterns for cross stitching.
-	pkgver = 1.7.8
+	pkgdesc = takes source code files and produces syntax-highlighted patterns for cross stitching
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/enckse/pyxstitch
 	arch = any
@@ -10,14 +10,14 @@ pkgbase = python-pyxstitch
 	depends = python-setuptools
 	depends = python-pygments
 	optdepends = bash-completion: for bash completions
-	source = https://files.pythonhosted.org/packages/source/p/pyxstitch/pyxstitch-1.7.8.tar.gz
-	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.8/LICENSE
-	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.8/resources/bash.completions
-	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.7.8/resources/pyxstitch.1
-	sha256sums = 4c51608ae5a346649b25bbf7ad15812774be7a7826f5e5e8f16491bce82ad7e0
-	sha256sums = 97ed9ee60ca40f39e5ed06c9c4f88d925885e54abcb49b3b364b56b5235b7390
-	sha256sums = 275eb6d18b2a1501bf349ef1b1ac8017630b50786244434cc72cd28aa9169baa
-	sha256sums = 6074550d08d10bec5c285ab567b8b5c286e13d1af6cb5d878f70cf447f623d35
+	source = https://files.pythonhosted.org/packages/source/p/pyxstitch/pyxstitch-1.8.1.tar.gz
+	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.8.1/LICENSE
+	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.8.1/resources/bash.completions
+	source = https://raw.githubusercontent.com/enckse/pyxstitch/v1.8.1/resources/pyxstitch.1
+	sha256sums = c2c2711b021678a250ac5b18ba20a6e1fa6c1f663f90ed2a03c418773baa6835
+	sha256sums = 3f2c149ada89dc7874788fc3aee58ba5a1849fb2f44ba722f6a0a314b401c31f
+	sha256sums = e19458e5a751a1d496e681a0ff50b78f823fd18861fadc6f98982731a70aa773
+	sha256sums = 4aee529ee100590a9e97fa1b22239c90222fd7ae2cdd0c308d683c903e550723
 
 pkgname = python-pyxstitch
 
