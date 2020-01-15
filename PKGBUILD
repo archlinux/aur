@@ -1,12 +1,12 @@
 pkgname='plasma-wallpaper-asciiquarium-git'
 pkgver=r33.4d6e48a
-pkgrel=1
-pkgdesc='Plasma Wallpaper Neon Particles from Ivan Safonov'
+pkgrel=2
+pkgdesc='Plasma Wallpaper Asciiquarium'
 arch=('any')
-url='https://code.launchpad.net/~ivan-safonov/+junk/plasma-wallpaper-neon-particles'
+url='https://cgit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git/about/'
 license=('GPL')
 depends=('plasma-workspace')
-makedepends=('cmake' 'extra-cmake-modules' 'bzr')
+makedepends=('cmake' 'extra-cmake-modules' 'git')
 provides=("${pkgname}")
 source=("git+https://anongit.kde.org/scratch/mpyne/plasma_wallpaper_asciiquarium.git")
 md5sums=('SKIP')
