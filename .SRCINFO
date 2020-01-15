@@ -1,16 +1,18 @@
 pkgbase = python-os-virtual-interfacesv2-python-novaclient-ext
 	pkgdesc = Adds Virtual Interfaces support to python-novaclient
-	pkgver = 0.19
+	pkgver = 0.20
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/os_virtual_interfacesv2_python_novaclient_ext
 	arch = any
 	license = GPL
-	depends = python-novaclient
-	provides = python-os-virtual-interfacesv2-python-novaclient-ext=0.19
-	source = https://pypi.python.org/packages/source/o/os_virtual_interfacesv2_python_novaclient_ext/os_virtual_interfacesv2_python_novaclient_ext-0.19.tar.gz
-	md5sums = bcefe94ab031d523756a6619fc1eea3a
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/o/os_virtual_interfacesv2_python_novaclient_ext/os_virtual_interfacesv2_python_novaclient_ext-0.20.tar.gz
+	md5sums = a9512612f5ed0255321a416f65d81c23
 
 pkgname = python-os-virtual-interfacesv2-python-novaclient-ext
+	depends = python-novaclient
 
 pkgname = python2-os-virtual-interfacesv2-python-novaclient-ext
+	depends = python2-novaclient
 
