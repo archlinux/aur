@@ -1,16 +1,22 @@
 pkgbase = cargo-web-git
 	pkgdesc = A Cargo subcommand for the client-side Web
-	pkgver = 0.6.4.210.g77e40ef
+	pkgver = 0.6.26.452.g2ddd9bb
 	pkgrel = 1
 	url = https://github.com/koute/cargo-web
+	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = cargo
+	license = APACHE
 	depends = cargo
+	depends = openssl
+	optdepends = chromium: needed for tests
 	provides = cargo-web
 	conflicts = cargo-web
 	source = cargo-web-git::git+https://github.com/koute/cargo-web
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = cargo-web-git
 

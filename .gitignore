@@ -1,0 +1,7 @@
+/src
+/pkg
+/index
+/cargo-web-git
+*.xz
+*.tar.*
+*.pkg.*
