@@ -39,8 +39,7 @@ build() {
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-
-  #make test
+  make test
 }
 
 package() {
