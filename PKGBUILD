@@ -1,6 +1,6 @@
 _git_dir=JetBrainsMono
 pkgname="fonts-jetmrains-mono"
-pkgver=0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A typeface made for developers."
 arch=("any")

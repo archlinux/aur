@@ -1,6 +1,6 @@
 pkgbase = fonts-jetmrains-mono
 	pkgdesc = A typeface made for developers.
-	pkgver = 0.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsMono
 	arch = any
