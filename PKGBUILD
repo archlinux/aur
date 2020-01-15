@@ -2,7 +2,7 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.1.0.r411.g6411f9c
+pkgver=0.1.0.r419.gc5f0e55
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('i686' 'x86_64')
