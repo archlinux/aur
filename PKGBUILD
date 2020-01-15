@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=lightdm-settings
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc='A configuration tool for the LightDM display manager'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/${pkgver}.tar.gz")
 #source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('ddaf1151812fdb8b53c72832b5fab117b16be6b7f51c6a71920c16bb10b09fde')
+sha256sums=('df06be4ddbd8f6450892655d9173a9fadfd76983a0cd0eeb6b8b412278c34276')
 
 ## Packaging via Github
 build() {
