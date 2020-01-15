@@ -3,7 +3,7 @@ Description=Minecraft Forge 1.6.4 Server World Backup
 After=local-fs.target
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/bin/forge-1.6.4d backup
 User=forge-1-6-4
 Group=forge-1-6-4
