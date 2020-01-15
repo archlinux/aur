@@ -2,7 +2,7 @@
 
 pkgname=buck
 pkgver=2019.10.17.01
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
 arch=('any')
@@ -28,5 +28,12 @@ package() {
   cd "${pkgname}-${pkgver}"
   BINPATH=$(./bin/buck targets --show_output buck | cut -d' ' -f2)
   install -Dm 755 "${BINPATH}" "${pkgdir}"/usr/bin/buck
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   ./bin/buck kill
+
+  # Remove package srcdir from watchman watch list.
+  if command -v watchman > /dev/null
+  then
+    watchman --no-spawn --no-local watch-del "${srcdir}/${pkgname}-${pkgver}" > /dev/null 2>&1 || true
+  fi
 }
