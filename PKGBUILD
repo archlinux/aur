@@ -201,6 +201,7 @@ _package() {
     depends=('coreutils' 'kmod' 'initramfs')
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
+                'sof-firmware: firmware images needed for Sound Open Firmware capable devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 
   cd $_srcname
