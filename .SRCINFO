@@ -1,6 +1,6 @@
 pkgbase = python-pycapnp
 	pkgdesc = cython wrapping of the C++ Cap'n Proto serialization library
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pycapnp
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-pycapnp
 	makedepends = cython
 	depends = python
 	depends = capnproto
-	source = https://files.pythonhosted.org/packages/source/p/pycapnp/pycapnp-0.6.3.tar.gz
-	md5sums = 5e02c9288dff8fc690866261c79eaf86
+	source = https://files.pythonhosted.org/packages/source/p/pycapnp/pycapnp-0.6.4.tar.gz
+	md5sums = c6746958c2f3e25f310134da5f2fc901
 
 pkgname = python-pycapnp
 
