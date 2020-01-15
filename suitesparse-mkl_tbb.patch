@@ -1,0 +1,41 @@
+--- SuiteSparse-5.6.0/SuiteSparse_config/SuiteSparse_config.mk.orig	2020-01-14 20:45:06.700000000 +0800
++++ SuiteSparse-5.6.0/SuiteSparse_config/SuiteSparse_config.mk	2020-01-15 16:50:49.100000000 +0800
+@@ -54,7 +54,7 @@
+     #                 INSTALL_DOC=/solo/mydox
+     # which puts the libraries in /yada/mylibs, include files in /yoda/myinc,
+     # and documentation in /solo/mydox.
+-    INSTALL ?= $(SUITESPARSE)
++    INSTALL = /usr
+     INSTALL_LIB ?= $(INSTALL)/lib
+     INSTALL_INCLUDE ?= $(INSTALL)/include
+     INSTALL_DOC ?= $(INSTALL)/share/doc/suitesparse-$(SUITESPARSE_VERSION)
+@@ -110,8 +110,8 @@
+     # used instead of $(CC), $(CXX), and $(F77).  To disable this feature and
+     # use the $(CC), $(CXX), and $(F77) compilers, use 'make AUTOCC=no'
+ 
+-    # AUTOCC ?= yes
+-    AUTOCC ?= no
++    AUTOCC ?= yes
++    # AUTOCC ?= no
+ 
+     ifneq ($(AUTOCC),no)
+         ifneq ($(shell which icc 2>/dev/null),)
+@@ -325,8 +325,8 @@
+     SPQR_CONFIG ?= $(GPU_CONFIG)
+ 
+     # to compile with Intel's TBB, use TBB=-ltbb -DSPQR_CONFIG=-DHAVE_TBB
+-    TBB ?=
+-    # TBB = -ltbb -DSPQR_CONFIG=-DHAVE_TBB
++    # TBB ?=
++    TBB = -ltbb -DSPQR_CONFIG=-DHAVE_TBB
+ 
+     # TODO: this *mk file should auto-detect the presence of Intel's TBB,
+     # and set the compiler flags accordingly.
+@@ -498,6 +498,7 @@
+ # a location known to the compiler (/usr/local/include/metis.h for example)
+ # then you do not need to add MY_METIS_INC.
+ 
++MY_METIS_LIB=-lmetis
+ I_WITH_PARTITION =
+ LIB_WITH_PARTITION =
+ CONFIG_PARTITION = -DNPARTITION -DNCAMD
