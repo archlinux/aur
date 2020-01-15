@@ -11,7 +11,7 @@ license=(GPL)
 depends=(zlib)
 options=(!emptydirs !docs)
 source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
-        "https://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz.sig"
+        "https://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz.sig"
         "libiberty-ignore-cflags.patch")
 _basedir=binutils-$pkgver
 sha256sums=('ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf'
