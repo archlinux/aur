@@ -26,13 +26,13 @@ build() {
     python setup.py build
 }
 
+check(){
+    cd "${srcdir}/${_srcname}"
+    pytest
+}
+
 package() {
     cd "${srcdir}/${_srcname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-}
-
-check(){
-    cd "${srcdir}/${_srcname}"
-    pytest --rootdir="${pkgdir}/"
 }
