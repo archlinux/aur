@@ -2,7 +2,7 @@
 # Co-Maintainer/Author: Justin Timperio <justintimperio[at]gmail[dot]com>
 
 pkgname=pacback-git
-pkgver=r86.241923a
+pkgver=r87.1d50682
 pkgrel=1
 pkgdesc='Advanced Rollback Version Control for Arch Linux - Alpha'
 arch=('any')
