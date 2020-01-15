@@ -2,22 +2,22 @@
 # Contributor: Todd Maynard <arch@toddmaynard.com>
 # Many thanks to AlexExtreme <alex@alex-smith.me.uk> (Frugalware pkg maintainer) from which much of this was borrowed.
 # Many thanks to Stefan for patch for x86_64 support and el.ini fix.
-# Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
+# Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.5.3
+pkgver=1.9.5.6
 pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
-depends=('sdl_net' 'sdl_image' 'openal' 'cal3d' 'libxml2' 'libvorbis' 'glu')
-makedepends=('gzip' 'git')
-optdepends=('zenity: to use the launch script')
+depends=('sdl2_net' 'sdl2_image' 'openal' 'cal3d' 'libvorbis' 'glu')
+makedepends=('gzip' 'git' 'unzip')
+optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=('https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.2/el_195_1_data_files.zip')
-md5sums=('e42ebe628e704c8f7e0b21e3340f475d')
+source=('https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.4/el_195_p4_data_files.zip')
+md5sums=('468dca610695271f0356e91c6e2f9f08')
 
 build()
 {
@@ -26,17 +26,17 @@ build()
   _gitname="elc"
 
   cd "$srcdir"
-  msg "Connecting to GIT server...."
+  echo "Connecting to GIT server...."
 
   if [ -d $_gitname ] ; then
     cd $_gitname && git pull $_gitroot
-    msg "The local files are updated."
+    echo "The local files are updated."
   else
     git clone $_gitroot $_gitname
   fi
 
-  msg "GIT checkout done or server timeout"
-  msg "Starting make..."
+  echo "GIT checkout done or server timeout"
+  echo "Starting make..."
 
   rm -rf "$srcdir/$_gitname-build"
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
@@ -70,8 +70,7 @@ package() {
   install -m644 elc-build/pkgfiles/eternallands.desktop "${pkgdir}/usr/share/applications"
   install -m644 elc-build/eternal_lands_license.txt "${pkgdir}/usr/share/licenses/eternallands/"
 
-  unzip -d instarchive_uncompressed el_195_1_data_files.zip
-  cd instarchive_uncompressed/el_data
+  cd el_data
 
   # Compress textures and maps
   find \( -name *.bmp -or -name *.elm \) -exec gzip -f {} \;

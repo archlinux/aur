@@ -1,3 +1,10 @@
+2020-01-15 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated to client 1.9.5 build 6
+	Updated data to 1.9.5 build 4
+	Updated dependency arrays
+
 2018-12-17 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
