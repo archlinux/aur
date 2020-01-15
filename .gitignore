@@ -1,4 +1,8 @@
-/pkg/
-/src/
-/cargo-edit-git-r*.pkg.tar.xz
-/cargo-edit/
+/src
+/pkg
+/cargo-edit
+*.xz
+*.tar.*
+*.pkg.*
+*.zip
+*.zip.sig
