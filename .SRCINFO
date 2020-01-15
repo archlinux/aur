@@ -1,7 +1,7 @@
 pkgbase = python-mecab
 	pkgdesc = Morphological Analysis Tool - Python3 interface
-	pkgver = 0.996
-	pkgrel = 3
+	pkgver = 0.996.3
+	pkgrel = 1
 	url = http://taku910.github.io/mecab/
 	arch = x86_64
 	arch = i686
@@ -9,12 +9,13 @@ pkgbase = python-mecab
 	license = LGPL2.1
 	license = GPL2
 	makedepends = python-setuptools
+	makedepends = git
+	makedepends = swig
 	depends = python
 	depends = mecab
-	source = mecab-python-0.996.tar.gz::https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7UlJpaWJKM01KRVE
-	source = setup.patch
-	sha1sums = b7801d78b4def5118903f3d7b97968b106aa8ea8
-	sha1sums = d9a39080d9f742821ac1da41c510ca8db53b0201
+	depends = mecab-ipadic
+	source = git+https://github.com/SamuraiT/mecab-python3.git
+	sha1sums = SKIP
 
 pkgname = python-mecab
 
