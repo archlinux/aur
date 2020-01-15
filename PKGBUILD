@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cmake \
-    -S Vulkan-ExtensionLayer -B build \
+    -S Vulkan-ExtensionLayer -B . \
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
@@ -33,13 +33,13 @@ prepare() {
 }
 
 build() {
-  ninja -C build
+  ninja
 }
 
 check() {
-  ninja -C build test
+  ninja test
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja install
 }
