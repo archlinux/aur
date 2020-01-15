@@ -1,13 +1,14 @@
 pkgbase = hax11-git
 	pkgdesc = Hackbrary to Hook and Augment X11 protocol calls
 	pkgver = r149.ba694c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CyberShadow/hax11
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = xorgproto
+	makedepends = libx11
 	depends = glibc
 	depends = lib32-glibc
 	source = git+https://github.com/CyberShadow/hax11
