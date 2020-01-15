@@ -1,8 +1,8 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 pkgname=ignition-math
-pkgver=6.2.0
-pkgrel=4
+pkgver=6.4.0
+pkgrel=1
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/"
@@ -13,9 +13,9 @@ makedepends=('ignition-cmake>=2')
 optdepends=()
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-math/get/${pkgname}6_${pkgver}.tar.bz2")
-sha256sums=('1ce01031cbcde60b241193fef7a1cfc16d05a5702275d67d60f0b47f3af061be')
+sha256sums=('5463d2ee5202ad60965a613361c1b12e34d3a8c49ad9037b16120f89b0250745')
 
-_dir="ignitionrobotics-ign-math-0417bf650df9"
+_dir="ignitionrobotics-ign-math-11bba67b3176"
 
 build() {
   cd "$srcdir/$_dir"
