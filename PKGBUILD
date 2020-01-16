@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/reds-heig/logisim-evolu
     'logisim-evolution.xml')
 sha256sums=('54c55415fce36801ed668c3bed64903444b0f6f3326091d63e84c253523fc8d8'
             '086851b07012f669743080dc4f059cf7727b19200384070852b34e142533385b'
-            '35b6b4da515f1c5619d35bbedc1469e5ec5b823bf486efdfbb5b705b65e10656'
+            'd5975cc0025905ab8a8a451ce4362ba876bed88008d3a5b2c0a7f664a85da1ba'
             'f90c3709748af806a33c14e81c8bf91dc06c3a4f58fe00cfe14a8f1842e09dec')
 
 build() {
