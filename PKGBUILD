@@ -1,10 +1,10 @@
-# Maintainer: Michael Borders <michael.a.borders@gmail.com>
+# Maintainer: Michael Borders <dev@michaelborders.net>
 
 pkgname=python-netmiko
 _pkgname=netmiko
-pkgver=2.4.2
+pkgver=3.0.0
 _pkgver="v${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Multi-vendor library to simplify Paramiko SSH connections to network devices"
 arch=('any')
 url="https://github.com/ktbyers/netmiko"
@@ -13,13 +13,12 @@ depends=('python' 'python-paramiko' 'python-scp' 'python-pyserial' 'python-textf
 makedepends=('python-setuptools')
 #checkdepends=('python-tox')
 source=("${url}/archive/${_pkgver}.tar.gz")
-sha256sums=('02f6d1eafa5588ae89a7ba01f9a0c65089aded8cfedef7bd8d61a1255bf2b4f7')
+sha256sums=('3238443467b01d4011620e7c25c6facd65f3dd507e82c81f44fff6993bc2d3f6')
 
-# Tests fail on python3.8 as two testing depends are not compatible yet.
-#check() {
-#  cd "$srcdir/$_pkgname-$pkgver"
-#  tox test -e py
-#}
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  tox test -e py
+}
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
