@@ -25,5 +25,6 @@ pkgbase = ros-melodic-mbf-costmap-core
 	source = ros-melodic-mbf-costmap-core-0.2.5.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_costmap_core/0.2.5.tar.gz
 	sha256sums = c2b57cc71f4830be91ee6fd3b4d00b7e1c8026557714870b8a686260c4ad010a
 
+
 pkgname = ros-melodic-mbf-costmap-core
 
