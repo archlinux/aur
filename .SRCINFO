@@ -7,7 +7,10 @@ pkgbase = vim-dirdiff-git
 	arch = any
 	groups = vim-plugins
 	license = custom
+	makedepends = git
 	depends = vim
+	provides = vim-dirdiff
+	conflicts = vim-dirdiff
 	source = vim-dirdiff-git::git+https://github.com/will133/vim-dirdiff
 	sha256sums = SKIP
 
