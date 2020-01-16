@@ -1,0 +1,14 @@
+pkgbase = haskell-weeder
+	pkgdesc = Detect dead exports or package imports
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/ndmitchell/weeder
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = stack
+	source = haskell-weeder-1.0.8::git://github.com/ndmitchell/weeder.git#tag=v1.0.8
+	md5sums = SKIP
+
+pkgname = haskell-weeder
+
