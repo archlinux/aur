@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-mbf-utility
+	pkgdesc = ROS - The mbf_utility package.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://wiki.ros.org/move_base_flex/mbf_utility
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-tf2-geometry-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-tf2-ros
+	makedepends = ros-melodic-tf2
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-tf
+	depends = ros-melodic-tf2-geometry-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-tf2-ros
+	depends = ros-melodic-tf2
+	depends = ros-melodic-geometry-msgs
+	source = ros-melodic-mbf-utility-0.2.5.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_utility/0.2.5.tar.gz
+	sha256sums = 5d3b5448047614fe5b44d63c5196abd360f69e657efabae1ef83e301f298c69c
+
+pkgname = ros-melodic-mbf-utility
+
