@@ -1,12 +1,12 @@
 # Maintainer: Adrien Smith <adrien at bouldersmiths dot com>
 pkgname=overmind
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Process manager for Procfile-based applications and tmux"
 arch=("x86_64")
 url="https://github.com/DarthSim/$pkgname"
 license=("MIT")
-depends=("glibc tmux")
+depends=('glibc' 'tmux')
 makedepends=("go-pie")
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
