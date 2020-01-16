@@ -1,0 +1,15 @@
+pkgbase = vim-dirdiff-git
+	pkgdesc = A plugin to diff and merge two directories recursively
+	pkgver = r35.7049f50
+	pkgrel = 1
+	url = https://github.com/will133/vim-dirdiff
+	install = vimdoc.install
+	arch = any
+	groups = vim-plugins
+	license = custom
+	depends = vim
+	source = vim-dirdiff-git::git+https://github.com/will133/vim-dirdiff
+	sha256sums = SKIP
+
+pkgname = vim-dirdiff-git
+
