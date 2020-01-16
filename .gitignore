@@ -1,0 +1,5 @@
+pkg/*
+src/*
+palemoon*.tar.bz2
+palemoon*.sig
+palemoon*.tar.xz

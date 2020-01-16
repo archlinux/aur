@@ -27,9 +27,9 @@ source_x86_64=("http://archive.palemoon.org/palemoon/28.x/$pkgver/palemoon-$pkgv
 source_i686=("http://archive.palemoon.org/palemoon/28.x/$pkgver/palemoon-$pkgver.linux-i686.tar.bz2"{,.sig})
 # link to latest tarball: http://linux.palemoon.org/download/mainline/
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
-sha256sums_i686=('4f530653fd59c85d9f36d88735254bacc48b54e75af4aa0020dcb0611ffe7e6b'
+sha256sums_i686=('2861afac9ace1ecd3fea51695d37e55cf9b41f7b551407fffadaa70883434826'
                  'SKIP')
-sha256sums_x86_64=('7f884e449d3dc07d1c99ddb11bac2aeb7e31816c98321b55ee47c2fdb229fc76'
+sha256sums_x86_64=('69bb24b17812328b11eb9bcbcb7ddeec16f87dca500f02557a222bc324b3bf5f'
                    'SKIP')
 
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
