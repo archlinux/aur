@@ -1,4 +1,5 @@
-# Maintainer: Amy Wilson <awils_1[at]xsmail[dot]com>
+# Maintainer: Martin Thierer <thierer@web.de>
+# Contributor: Amy Wilson <awils_1[at]xsmail[dot]com>
 # Contributor: Simon Doppler <dopsi[at]dopsi[dot]ch>
 # Contributor: Agustin Borgna <hello[at]aborgna.com.ar>
 # Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
