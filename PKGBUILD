@@ -2,7 +2,7 @@
 
 pkgname=informant
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Arch Linux News reader and pacman hook"
 arch=('any')
 url="https://github.com/bradford-smith94/$pkgname"

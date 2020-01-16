@@ -1,7 +1,8 @@
 post_install() {
     groupadd informant
-    touch var/cache/informant.dat
-    chgrp informant var/cache/informant.dat
+    touch /var/cache/informant.dat
+    chgrp informant /var/cache/informant.dat
+    chmod 664 /var/cache/informant.dat
     printf 'NOTE: Add yourself to group "informant" to avoid the need for sudo'
 }
 
