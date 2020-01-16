@@ -2,7 +2,7 @@
 # Contributor: David Vogt <d@408.ch>
 
 pkgname=git-bug
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ depends=('git')
 makedepends=('go-pie' 'dep')
 optdepends=('xdg-utils: open bugs in browser')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b8f0033e00f3e667c6c26cceb33c73af46b24fdea15ce8e894195ef9c298726e')
+sha256sums=('074543bfab9d2a94572342cbbbe030de96041f4c25804f14fb83d64438b9c52e')
 
 _gitbugsrc="gopath/src/${url#*://}"
 
