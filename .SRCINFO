@@ -1,0 +1,15 @@
+pkgbase = greetd-dlm-git
+	pkgdesc = Dumb Login Manager for greetd
+	pkgver = r23.6b0e11c4f4
+	pkgrel = 1
+	url = https://git.sr.ht/~kennylevinsen/dlm
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	provides = greetd-dlm
+	conflicts = greetd-dlm
+	source = https://git.sr.ht/~kennylevinsen/dlm
+	sha256sums = SKIP
+
+pkgname = greetd-dlm-git
+
