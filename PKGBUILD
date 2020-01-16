@@ -11,11 +11,11 @@ source=('git+https://github.com/matthewdowney/TogglPy.git')
 sha512sums=('SKIP')
 
 prepare() {
-	cd ${pkgname}
+	cd togglpy
 	python setup.py build
 }
 
 package() {
-	cd ${pkgname}
+	cd togglpy
 	python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
