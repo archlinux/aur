@@ -3,7 +3,7 @@
 pkgname=python-togglpy
 _pypiname=TogglPy
 pkgver=0.1.1
-pkgrel=5
+pkgrel=1
 pkgdesc='TogglPy is a non-cluttered, easily understood and implemented python library for interacting with the Toggl API.'
 arch=('any')
 url='https://github.com/matthewdowney/TogglPy'
