@@ -5,14 +5,14 @@ pkgdesc="Library for fast text representation and classification – pre-trained
 url="https://fasttext.cc/docs/en/language-identification.html"
 
 pkgver=0.0.1
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("custom:CC-BY-SA")
 
 source=(
-    "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/lid.176.bin"
-    "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/lid.176.ftz"
+    "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin"
+    "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz"
 )
 sha256sums=(
     "7e69ec5451bc261cc7844e49e4792a85d7f09c06789ec800fc4a44aec362764e"
