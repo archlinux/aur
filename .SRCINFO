@@ -1,12 +1,12 @@
 pkgbase = feedthebeast
 	pkgdesc = Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes.
 	pkgver = 1.5.0
-	pkgrel = 1
-	url = http://feed-the-beast.com/
+	pkgrel = 2
+	url = https://feed-the-beast.com/
 	arch = any
 	license = Apache
 	makedepends = libicns
-	depends = java-runtime
+	depends = java-runtime=8
 	depends = hicolor-icon-theme
 	depends = xorg-xrandr
 	depends = ttf-dejavu
@@ -15,9 +15,9 @@ pkgbase = feedthebeast
 	source = feedthebeast
 	source = feedthebeast-1.5.0.jar::https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar
 	source = feedthebeast.desktop
-	sha256sums = 35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0
+	sha256sums = 0da942aa85086a6caebd497a31ea882e8259ad0e6989323926f9e32c2563d80f
 	sha256sums = 47d6ce99fc052d12b587beaa11b94441336b8190525b30a9e45ee4622d2d6b50
-	sha256sums = 4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d
+	sha256sums = 9b1af045ee5c08237a64cdc8b4331f6cd18a054688ae44789bb456c708bbf7a7
 
 pkgname = feedthebeast
 
