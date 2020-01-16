@@ -6,7 +6,6 @@ pkgbase = logisim-evolution
 	arch = any
 	license = GPL3
 	makedepends = java-environment-openjdk=8
-	makedepends = apache-ant
 	depends = java-runtime=8
 	depends = bash
 	depends = hicolor-icon-theme

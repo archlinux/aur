@@ -13,7 +13,7 @@ arch=('any')
 url="https://github.com/reds-heig/logisim-evolution"
 license=('GPL3')
 depends=('java-runtime=8' 'bash' 'hicolor-icon-theme')
-makedepends=('java-environment-openjdk=8' 'apache-ant')
+makedepends=('java-environment-openjdk=8')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/reds-heig/logisim-evolution/archive/v${pkgver}.tar.gz"
     'logisim-evolution.desktop'
