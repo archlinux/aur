@@ -1,0 +1,5 @@
+*.pkg.tar.*
+/pkg/
+/src/
+/tags
+/autosuspend/
