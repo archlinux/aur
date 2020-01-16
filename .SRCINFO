@@ -1,5 +1,5 @@
 pkgbase = kotatogram-desktop-dynamic-bin
-	pkgdesc = Unofficial desktop client for the Telegram messenger, based on Telegram Desktop - Precompiled package
+	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Precompiled package
 	pkgver = 1.1.2
 	pkgrel = 2
 	url = https://kotatogram.github.io
@@ -15,6 +15,7 @@ pkgbase = kotatogram-desktop-dynamic-bin
 	depends = zlib
 	depends = minizip
 	depends = openssl
+	depends = sonnet
 	depends = libtgvoip
 	depends = rlottie-tdesktop
 	depends = hicolor-icon-theme
@@ -25,8 +26,8 @@ pkgbase = kotatogram-desktop-dynamic-bin
 	conflicts = kotatogram-desktop-bin
 	conflicts = telegram-desktop
 	conflicts = telegram-desktop-bin
-	source = https://github.com/ilya-fedin/kotatogramAUR/releases/download/k1.1.2-4/kotatogram-desktop-1.1.2-4-x86_64.pkg.tar.xz
-	sha512sums = 54a85b15960cfdc606fb35c72609fbb3bcddaac7f5df3783cdc4e0ec1c919976499eed822b474fe0a5de9286414f9ecae49f47f9cc2a709754b6fc6ed792dec9
+	source = https://github.com/ilya-fedin/kotatogramAUR/releases/download/k1.1.2-5/kotatogram-desktop-1.1.2-5-x86_64.pkg.tar.xz
+	sha512sums = ca8fd974dc5ea490f2a13443d9b6770ee747eabcf164119b8ec4196316af2d5d341d1d1e25c33ff5afc0d2b006060f90af0802a9ecb93f79fdd89e7473fb14ec
 
 pkgname = kotatogram-desktop-dynamic-bin
 
