@@ -8,8 +8,6 @@ pkgbase = ignition-math
 	groups = development
 	license = Apache
 	makedepends = ignition-cmake>=2
-	makedepends = ruby<=2.7
-	makedepends = ruby>=2.6
 	depends = gcc-libs
 	optdepends = eigen
 	source = https://bitbucket.org/ignitionrobotics/ign-math/get/ignition-math6_6.4.0.tar.bz2

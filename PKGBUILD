@@ -9,7 +9,7 @@ url="http://ignitionrobotics.org/"
 license=('Apache')
 groups=('development')
 depends=('gcc-libs')
-makedepends=('ignition-cmake>=2' 'ruby<=2.7' 'ruby>=2.6')
+makedepends=('ignition-cmake>=2')
 optdepends=('eigen')
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-math/get/${pkgname}6_${pkgver}.tar.bz2")
