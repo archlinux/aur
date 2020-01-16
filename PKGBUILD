@@ -1,4 +1,5 @@
 # Maintainer: AwesomeHaircut <jesusbalbastro at gmail com>
+# Contributor: Rein Fernhout <public@reinfernhout.xyz>
 # Past Contributor: James An <james@jamesan.ca>
 
 pkgname=droidcam
