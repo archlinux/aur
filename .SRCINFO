@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.82.r92134.f8cdc5ac4c0
+	pkgver = 2.83.r92593.09122883b2a
 	pkgrel = 1
 	url = https://blender.org/
 	install = blender.install
@@ -35,8 +35,8 @@ pkgbase = blender-2.8-git
 	depends = libtiff
 	depends = libpng
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender-2.82
-	conflicts = blender-2.82
+	provides = blender-2.83
+	conflicts = blender-2.83
 	source = git://git.blender.org/blender.git#branch=master
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
