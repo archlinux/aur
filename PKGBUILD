@@ -14,7 +14,7 @@ sha256sums=('bea6e70f3850b10d6ec1401f4bebc4e50c0699e8bf5339ec5c642094e1db194c')
 
 build() {
 	cd ${pkgname}-${pkgver}
-	make prefix=${pkgdir}/usr 
+	make prefix=/usr 
 }
 
 package() {
