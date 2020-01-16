@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 3.1.1.sdk101
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -37,6 +37,7 @@ pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-3.1
 	provides = aspnet-runtime-3.1
+	provides = aspnet-runtime=3.1.1.sdk101
 	conflicts = aspnet-runtime-3.1
 
 pkgname = dotnet-runtime-bin
@@ -50,11 +51,13 @@ pkgname = dotnet-runtime-bin
 	depends = libcurl.so
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime-3.1
+	provides = dotnet-runtime=3.1.1.sdk101
 	conflicts = dotnet-runtime-3.1
 
 pkgname = dotnet-sdk-bin
 	pkgdesc = The .NET Core SDK (binary)
 	depends = dotnet-runtime-3.1
 	provides = dotnet-sdk-3.1
+	provides = dotnet-sdk=3.1.1.sdk101
 	conflicts = dotnet-sdk-3.1
 

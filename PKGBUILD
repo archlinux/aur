@@ -5,7 +5,7 @@ pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin' 'dotnet-sdk
 pkgver=3.1.1.sdk101
 _runtimever=3.1.1
 _sdkver=3.1.101
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -41,7 +41,7 @@ package_dotnet-runtime-bin() {
   depends=('dotnet-host' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime-3.1")
+  provides=("dotnet-runtime-3.1" "dotnet-runtime=${pkgver}")
   conflicts=("dotnet-runtime-3.1")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
@@ -52,7 +52,7 @@ package_dotnet-runtime-bin() {
 package_aspnet-runtime-bin() {
   pkgdesc='The ASP.NET Core runtime (binary)'
   depends=('dotnet-runtime-3.1')
-  provides=("aspnet-runtime-3.1")
+  provides=("aspnet-runtime-3.1" "aspnet-runtime=${pkgver}")
   conflicts=("aspnet-runtime-3.1")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
@@ -63,7 +63,7 @@ package_aspnet-runtime-bin() {
 package_dotnet-sdk-bin() {
   pkgdesc='The .NET Core SDK (binary)'
   depends=('dotnet-runtime-3.1')
-  provides=("dotnet-sdk-3.1")
+  provides=("dotnet-sdk-3.1" "dotnet-sdk=${pkgver}")
   conflicts=("dotnet-sdk-3.1")
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/usr/share/dotnet/
