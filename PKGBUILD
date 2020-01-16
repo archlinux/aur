@@ -1,14 +1,14 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-git
 pkgver=0.9.1.r7.g6d3f3b93
-pkgrel=1
+pkgrel=2
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library'
 url=https://github.com/swaywm/wlroots
 arch=(x86_64)
 provides=("wlroots=${pkgver%%.r*}")
 conflicts=(wlroots)
-options=('debug' '!strip')
+options=(debug)
 depends=(libcap systemd wayland opengl-driver libxcb xcb-util-errors
          xcb-util-wm pixman libinput libxkbcommon)
 makedepends=(meson ninja git wayland-protocols xorgproto)
