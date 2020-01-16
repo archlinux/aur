@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-libg2o
+	pkgdesc = ROS - The libg2o library from http://openslam.org/g2o.html.
+	pkgver = 2018.3.25
+	pkgrel = 1
+	url = https://github.com/RainerKuemmerle/g2o
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = eigen3
+	makedepends = boost
+	makedepends = mesa
+	makedepends = suitesparse
+	depends = ros-melodic-catkin
+	depends = eigen3
+	depends = boost
+	depends = mesa
+	depends = suitesparse
+	source = ros-melodic-libg2o-2018.3.25.tar.gz::https://github.com/ros-gbp/libg2o-release/archive/release/melodic/libg2o/2018.3.25.tar.gz
+	sha256sums = c49b69b1843dc0c287720c1eb14380069612abe5f338c5f979a7099f6dde6db3
+
+pkgname = ros-melodic-libg2o
+
