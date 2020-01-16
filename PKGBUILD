@@ -2,7 +2,7 @@
 
 pkgname=yin-yang-git
 pkgver=r43.dcef1e0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic night mode for KDE, VSCode and GTK apps"
 arch=('any')
 url="https://github.com/daehruoydeef/Yin-Yang"
