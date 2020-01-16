@@ -55,7 +55,7 @@ package() {
 
   # Install kernel module and config files
   cd v4l2loopback
-  MODPATH="/usr/lib/modules/extramodules-$(uname -r | sed 's/\.[0-9]\+-[0-9]\+//')"
+  MODPATH="/usr/lib/modules/$(uname -r | sed 's/.[0-9]+-[0-9]+//')/extramodules"
   install -Dm644 v4l2loopback-dc.ko.gz        "$pkgdir$MODPATH/v4l2loopback_dc.ko.gz"
   install -Dm644 "$pkgname.modules-load.conf" "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
   install -Dm644 "$pkgname.modprobe.conf"     "$pkgdir/etc/modprobe.d/$pkgname.conf"
