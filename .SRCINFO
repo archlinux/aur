@@ -14,8 +14,11 @@ pkgbase = micro-nightly-bin
 	provides = micro
 	conflicts = micro
 	conflicts = micro-bin
-	source = micro-nightly-bin::https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.0-rc2.28-linux64.tar.gz
-	md5sums = SKIP
+	conflicts = micro-git
+	source_x86_64 = https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.0-rc2.28-linux64.tar.gz
+	md5sums_x86_64 = SKIP
+	source_i686 = https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.0-rc2.28-linux32.tar.gz
+	md5sums_i686 = SKIP
 
 pkgname = micro-nightly-bin
 
