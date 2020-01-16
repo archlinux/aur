@@ -1,21 +1,27 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=onefetch
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Git repository summary on your terminal"
 url="https://github.com/o2sh/onefetch"
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('gcc-libs' 'zlib')
 makedepends=('cargo')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('54c7b543b39cf22bac2505c792d7fbba75bfdbe1a19900879b439dc65c75c414')
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
+sha256sums=('99e00a760670ac3e8653762fe690f37ce8214470d2887c37aeb778c2c1344734')
 
 build() {
-  cd "${srcdir}/$pkgname-$pkgver"
-  cargo build --release
+  cd "$pkgname-$pkgver"
+  cargo build --release --all-features
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --release
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname-$pkgver/target/release/onefetch" "$pkgdir/usr/bin/onefetch"
+  install -Dm644 "$pkgname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
