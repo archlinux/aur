@@ -6,11 +6,11 @@ pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
-license=('GPL')
+license=('custom')
 depends=(
   fontconfig      lib32-fontconfig
   lcms2           lib32-lcms2
@@ -219,17 +219,22 @@ package() {
     mkdir -p "$pkgdir/usr/share/steam/compatibilitytools.d"
     mv dist "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"
 
-    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" -type f -exec chmod 644 {} \;
+    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
+        -type f \
+        -not -path "*/proton" \
+        -not -path "*/dist/bin/*" \
+        -not -path "*/dist/lib/*" \
+        -not -path "*/dist/lib64/*" \
+        -not -path "*/dist/share/default_pfx/*" \
+        -exec chmod 644 {} \;
     chmod 755 "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/{proton,dist/bin/{msidb,wine{,64},wine{,64}-preloader,wineserver}}
 
-    ln -s /usr/share/wine/mono "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
-    ln -s /usr/share/wine/gecko "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
+    ln -s /usr/share/wine/mono \
+        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/mono
+    ln -s /usr/share/wine/gecko \
+        "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/share/wine/gecko
 
-#    for i in d3d9.dll d3d10_1.dll d3d10core.dll d3d10.dll d3d11.dll dxgi.dll
-#    do
-#        ln -s "/usr/share/dxvk/x32/$i" \
-#            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib/wine/dxvk/
-#        ln -s "/usr/share/dxvk/x64/$i" \
-#            "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/dist/lib64/wine/dxvk/
-#    done
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname%-git}"
+    mv "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"/LICENSE{,.OFL} \
+        "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
