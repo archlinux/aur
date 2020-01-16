@@ -3,7 +3,7 @@
 pkgbase=msbuild
 pkgname=('msbuild' 'msbuild-sdkresolver')
 pkgver=16.4+xamarinxplat.2019.11.27.22.07
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/mono/msbuild"
 license=('MIT')
@@ -47,7 +47,7 @@ package_msbuild() {
 
 package_msbuild-sdkresolver() {
     pkgdesc="Xamarin implementation of the Microsoft build system (SDK resolver)"
-    depends=('msbuild' 'libhostfxr.so')
+    depends=('msbuild' 'dotnet-host>=3.1.0')
 
     mkdir -p "${pkgdir}"/usr/lib/mono/msbuild/Current/bin/SdkResolvers/
     cp -dr --no-preserve='ownership' $srcdir/target/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver "${pkgdir}"/usr/lib/mono/msbuild/Current/bin/SdkResolvers/

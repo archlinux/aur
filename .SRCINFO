@@ -1,6 +1,6 @@
 pkgbase = msbuild
 	pkgver = 16.4+xamarinxplat.2019.11.27.22.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mono/msbuild
 	arch = x86_64
 	arch = armv7h
@@ -27,5 +27,5 @@ pkgname = msbuild
 pkgname = msbuild-sdkresolver
 	pkgdesc = Xamarin implementation of the Microsoft build system (SDK resolver)
 	depends = msbuild
-	depends = libhostfxr.so
+	depends = dotnet-host>=3.1.0
 
