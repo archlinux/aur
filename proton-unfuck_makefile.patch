@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index d6578ac..05b22fd 100644
+index d6578ac..2a29db1 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -90,6 +90,8 @@ SELECT_DOCKER_IMAGE :=
@@ -73,11 +73,15 @@ index d6578ac..05b22fd 100644
  
  BISON_VER = 3.3.2
  BISON_TARBALL := bison-$(BISON_VER).tar.xz
-@@ -368,11 +385,20 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/$(GECKO64_MSI)
+@@ -368,11 +385,24 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/$(GECKO64_MSI)
  DIST_WINEMONO_DIR := $(DST_DIR)/share/wine/mono
  DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
  DIST_FONTS := $(DST_DIR)/share/fonts
-+DIST_DEPS := wine vrclient lsteamclient steam dxvk
++DIST_DEPS := wine vrclient lsteamclient steam
++
++ifneq ($(NO_DXVK),1) # May be disabled by configure
++DIST_DEPS += dxvk
++endif # NO_DXVK
  
  DIST_TARGETS := $(DIST_COPY_TARGETS) $(DIST_OVR32) $(DIST_OVR64) \
 -                $(DIST_GECKO32) $(DIST_GECKO64) $(DIST_WINEMONO) \
@@ -85,17 +89,17 @@ index d6578ac..05b22fd 100644
  
 +ifneq ($(SYSTEM_MONO),1) # May be disabled by configure
 +DIST_TARGETS += $(DIST_WINEMONO)
-+endif # ifneq ($(SYSTEM_MONO),1)
++endif # SYSTEM_MONO
 +
 +ifneq ($(SYSTEM_GECKO),1) # May be disabled by configure
 +DIST_TARGETS += $(DIST_GECKO32)
 +DIST_TARGETS += $(DIST_GECKO64)
-+endif # ifneq ($(SYSTEM_GECKO),1)
++endif # SYSTEM_GECKO
 +
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -401,7 +427,7 @@ $(DIST_GECKO_DIR):
+@@ -401,7 +431,7 @@ $(DIST_GECKO_DIR):
  
  $(DIST_GECKO64): | $(DIST_GECKO_DIR)
  	if [ -e "$(SRCDIR)/../gecko/$(GECKO64_MSI)" ]; then \
@@ -104,7 +108,7 @@ index d6578ac..05b22fd 100644
  	else \
  		mkdir -p $(SRCDIR)/contrib/; \
  		if [ ! -e "$(SRCDIR)/contrib/$(GECKO64_MSI)" ]; then \
-@@ -413,7 +439,7 @@ $(DIST_GECKO64): | $(DIST_GECKO_DIR)
+@@ -413,7 +443,7 @@ $(DIST_GECKO64): | $(DIST_GECKO_DIR)
  
  $(DIST_GECKO32): | $(DIST_GECKO_DIR)
  	if [ -e "$(SRCDIR)/../gecko/$(GECKO32_MSI)" ]; then \
@@ -113,7 +117,7 @@ index d6578ac..05b22fd 100644
  	else \
  		mkdir -p $(SRCDIR)/contrib/; \
  		if [ ! -e "$(SRCDIR)/contrib/$(GECKO32_MSI)" ]; then \
-@@ -449,7 +475,9 @@ $(DIST_FONTS): fonts
+@@ -449,7 +479,9 @@ $(DIST_FONTS): fonts
  ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
@@ -124,7 +128,7 @@ index d6578ac..05b22fd 100644
  	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
  	cp $(DIST_VERSION) $(DST_BASE)/
  	rm -rf $(abspath $(DIST_PREFIX)) && \
-@@ -512,13 +540,15 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -512,13 +544,15 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  		$(abspath $(FFMPEG))/configure \
  			--cc=$(CC_QUOTED) --cxx=$(CXX_QUOTED) \
  			--prefix=$(abspath $(TOOLS_DIR64)) \
@@ -141,7 +145,7 @@ index d6578ac..05b22fd 100644
  			--disable-swscale \
  			--disable-postproc \
  			--disable-avfilter \
-@@ -544,17 +574,19 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -544,17 +578,19 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  $(FFMPEG_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ32)
  	cd $(dir $@) && \
@@ -163,7 +167,7 @@ index d6578ac..05b22fd 100644
  			--disable-swscale \
  			--disable-postproc \
  			--disable-avfilter \
-@@ -597,14 +629,17 @@ ffmpeg64: $(FFMPEG_CONFIGURE_FILES64)
+@@ -597,14 +633,17 @@ ffmpeg64: $(FFMPEG_CONFIGURE_FILES64)
  	+$(MAKE) -C $(FFMPEG_OBJ64)
  	+$(MAKE) -C $(FFMPEG_OBJ64) install
  	mkdir -pv $(DST_DIR)/lib64
@@ -183,7 +187,7 @@ index d6578ac..05b22fd 100644
  
  endif # ifeq ($(WITH_FFMPEG),1)
  
-@@ -630,19 +665,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
+@@ -630,19 +669,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
  FAUDIO_CONFIGURE_FILES64 := $(FAUDIO_OBJ64)/Makefile
  
  $(FAUDIO_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -212,7 +216,7 @@ index d6578ac..05b22fd 100644
  
  faudio32: SHELL = $(CONTAINER_SHELL32)
  faudio32: $(FAUDIO_CONFIGURE_FILES32)
-@@ -832,36 +870,50 @@ WINE32_MAKE_ARGS := \
+@@ -832,36 +874,50 @@ WINE32_MAKE_ARGS := \
  
  # 64bit-configure
  $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -271,7 +275,7 @@ index d6578ac..05b22fd 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1016,6 +1068,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
+@@ -1016,6 +1072,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
  
  ## Create & configure object directory for cmake
  
@@ -280,7 +284,7 @@ index d6578ac..05b22fd 100644
  CMAKE_CONFIGURE_FILES32 := $(CMAKE_OBJ32)/Makefile
  CMAKE_CONFIGURE_FILES64 := $(CMAKE_OBJ64)/Makefile
  
-@@ -1067,12 +1121,23 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
+@@ -1067,12 +1125,23 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
  	+$(MAKE) -C $(CMAKE_OBJ32) install
  	touch $(CMAKE_BIN32)
  
@@ -304,7 +308,7 @@ index d6578ac..05b22fd 100644
  $(BISON):
  	if [ -e "$(SRCDIR)/../bison/$(BISON_TARBALL)" ]; then \
  		mkdir -p $(dir $@); \
-@@ -1137,6 +1202,15 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
+@@ -1137,6 +1206,15 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
  	+$(MAKE) -C $(BISON_OBJ32) install
  	touch $(BISON_BIN32)
  
@@ -320,16 +324,43 @@ index d6578ac..05b22fd 100644
  ##
  ## dxvk
  ##
-@@ -1209,6 +1283,8 @@ dxvk32: $(DXVK_CONFIGURE_FILES32)
- 	cp "$(DXVK_OBJ32)"/bin/dxvk_config.dll "$(DST_DIR)"/lib/wine/dxvk
- 	if test -e $(SRCDIR)/.git; then ( cd $(SRCDIR) && git submodule status -- dxvk ) > "$(DST_DIR)"/lib/wine/dxvk/version; fi
+@@ -1157,7 +1235,7 @@ $(DXVK_CONFIGURE_FILES64): $(MAKEFILE_DEP) $(DXVK)/build-win64.txt | $(DXVK_OBJ6
+ 	fi
+ 	cd "$(abspath $(DXVK))" && \
+ 	PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" \
+-		meson --prefix="$(abspath $(DXVK_OBJ64))" --cross-file "$(abspath $(DXVK))/build-win64.txt" $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(DXVK_OBJ64))"
++		meson --prefix="$(abspath $(DXVK_OBJ64))" --cross-file "$(abspath $(DXVK))/build-win64.txt" $(MESON_STRIP_ARG) --optimization=3 --buildtype=release "$(abspath $(DXVK_OBJ64))"
  
-+DIST_DEPS += dxvk
-+
- endif # NO_DXVK
+ # 32-bit configure.  Remove coredata file if already configured (due to e.g. makefile changing)
+ $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ32)
+@@ -1166,7 +1244,7 @@ $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ3
+ 	fi
+ 	cd "$(abspath $(DXVK))" && \
+ 	PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" \
+-		meson --prefix="$(abspath $(DXVK_OBJ32))" --cross-file "$(abspath $(DXVK))/build-win32.txt" $(MESON_STRIP_ARG) --buildtype=release "$(abspath $(DXVK_OBJ32))"
++		meson --prefix="$(abspath $(DXVK_OBJ32))" --cross-file "$(abspath $(DXVK))/build-win32.txt" $(MESON_STRIP_ARG) --optimization=3 --buildtype=release "$(abspath $(DXVK_OBJ32))"
  
- # Vulkan-Headers
-@@ -1217,24 +1293,24 @@ VULKAN_H_CONFIGURE_FILES32 := $(VULKAN_H_OBJ32)/Makefile
+ ## dxvk goals
+ DXVK_TARGETS = dxvk dxvk_configure dxvk32 dxvk64 dxvk_configure32 dxvk_configure64
+@@ -1185,7 +1263,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+ dxvk: dxvk32 dxvk64
+ 
+ dxvk64: $(DXVK_CONFIGURE_FILES64)
+-	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -C "$(DXVK_OBJ64)" install
++	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -C "$(DXVK_OBJ64)" -v install
+ 	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
+ 	cp "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
+ 	cp "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
+@@ -1198,7 +1276,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+ 
+ 
+ dxvk32: $(DXVK_CONFIGURE_FILES32)
+-	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -C "$(DXVK_OBJ32)" install
++	env PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" ninja -C "$(DXVK_OBJ32)" -v install
+ 	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
+ 	cp "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
+ 	cp "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
+@@ -1217,24 +1295,24 @@ VULKAN_H_CONFIGURE_FILES32 := $(VULKAN_H_OBJ32)/Makefile
  VULKAN_H_CONFIGURE_FILES64 := $(VULKAN_H_OBJ64)/Makefile
  
  $(VULKAN_H_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -360,7 +391,7 @@ index d6578ac..05b22fd 100644
  
  # SPIRV-Headers
  
-@@ -1242,24 +1318,24 @@ SPIRV_H_CONFIGURE_FILES32 := $(SPIRV_H_OBJ32)/Makefile
+@@ -1242,24 +1320,24 @@ SPIRV_H_CONFIGURE_FILES32 := $(SPIRV_H_OBJ32)/Makefile
  SPIRV_H_CONFIGURE_FILES64 := $(SPIRV_H_OBJ64)/Makefile
  
  $(SPIRV_H_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -391,7 +422,7 @@ index d6578ac..05b22fd 100644
  
  # widl; required for vkd3d, which is built before wine
  
-@@ -1267,16 +1343,23 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
+@@ -1267,16 +1345,23 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
  WINEWIDL_CONFIGURE_FILES32 := $(WINEWIDL_OBJ32)/Makefile
  
  $(WINEWIDL_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -420,7 +451,7 @@ index d6578ac..05b22fd 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1286,17 +1369,24 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
+@@ -1286,17 +1371,24 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
  	make tools/widl
  
  $(WINEWIDL_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -449,7 +480,7 @@ index d6578ac..05b22fd 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1321,7 +1411,7 @@ $(VKD3D_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(VULKAN_H32) $(SPIRV_H32) $(VKD3D)/
+@@ -1321,7 +1413,7 @@ $(VKD3D_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(VULKAN_H32) $(SPIRV_H32) $(VKD3D)/
  		$(abspath $(VKD3D))/configure \
  			--disable-tests \
  			--prefix=$(abspath $(TOOLS_DIR32)) \

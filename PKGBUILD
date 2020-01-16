@@ -6,7 +6,7 @@ pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -69,6 +69,7 @@ makedepends=(autoconf ncurses bison perl fontforge flex meson
   cmake
   afdko
   nasm
+  glslang
 )
 optdepends=(
   giflib                lib32-giflib
@@ -96,8 +97,6 @@ optdepends=(
   samba           dosbox
 )
 makedepends=(${makedepends[@]} ${depends[@]})
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_pkgver
     wine-valve::git+https://github.com/ValveSoftware/wine.git
@@ -124,7 +123,7 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    '08857165b3b460cba490c31bb8fac25af61092efbcee4d2028445eb372a3148a'
+    'ef7d597550f11268df95cd52b6a3e6b689a98101eb9102582e5a3fcfa69f69df'
     '7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782'
     '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
 )
@@ -165,20 +164,20 @@ prepare() {
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     dxvk_cflags+=" -mno-avx"
-    #CFLAGS+=" -fno-tree-vectorize"
+    #dxvk_cflags+=" -fno-tree-vectorize"
     # Filter fstack-protector flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
     dxvk_cflags+=" -fno-stack-protector"
-    #CFLAGS="${CFLAGS// -fstack-protector+(-all|-strong)/}"
-    #CFLAGS="${CFLAGS// -fstack-protector+(?=[ ])/}"
+    #dxvk_cflags="${dxvk_cflags// -fstack-protector+(-all|-strong)/}"
+    #dxvk_cflags="${dxvk_cflags// -fstack-protector+(?=[ ])/}"
     # Adjust optimization level in meson arguments. This is ignored
     # anyway because meson sets its own optimization level.
-    dxvk_cflags="${CFLAGS// -O+([0-3s]|fast)/}"
+    dxvk_cflags="${dxvk_cflags// -O+([0-3s]|fast)/}"
     # Doesn't compile with these flags in MingW so remove them.
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
-    dxvk_cflags="${CFLAGS/ -fno-plt/}"
-    dxvk_ldflags="${LDFLAGS/,-z,relro,-z,now/}"
+    dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
+    dxvk_ldflags="${dxvk_ldflags/,-z,relro,-z,now/}"
     sed -i dxvk/build-win64.txt \
         -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
@@ -188,7 +187,7 @@ prepare() {
 }
 
 build() {
-	cd build
+    cd build
     ../proton/configure.sh \
         --no-steam-runtime \
         --with-ffmpeg \
