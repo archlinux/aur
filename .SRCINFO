@@ -1,6 +1,6 @@
 pkgbase = rofi-json-menu-git
 	pkgdesc = A plugin to use rofi for custom menus
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/marvinkreis/rofi-json-menu
 	arch = x86_64

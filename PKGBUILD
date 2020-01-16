@@ -1,7 +1,7 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-json-menu-git
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A plugin to use rofi for custom menus"
 arch=("x86_64")
