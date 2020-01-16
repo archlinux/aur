@@ -6,8 +6,8 @@
 #_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # suppress 3.x to prevent Travis build exceed time limit.
 
-pkgname=blender-2.8-git
-_fragment="#branch=master"
+pkgname=blender-2.82-git
+_fragment="#branch=blender-v2.82-release"
 pkgver=2.82.r92134.f8cdc5ac4c0
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
