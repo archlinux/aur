@@ -2,7 +2,7 @@
 
 pkgname=azdrawing
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Painting software for line art and comics."
 arch=('i686' 'x86_64')
 url="https://osdn.net/projects/azdrawing/"
