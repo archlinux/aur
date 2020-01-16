@@ -8,7 +8,7 @@ url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
 depends=('python' 'python-xdg' 'bubblewrap')
 makedepends=('python-setuptools' 'git')
-source=("git+https://github.com/igo95862/bubblejail")
+source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
 pkgver() {

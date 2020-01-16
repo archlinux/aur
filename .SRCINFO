@@ -10,7 +10,7 @@ pkgbase = bubblejail-git
 	depends = python
 	depends = python-xdg
 	depends = bubblewrap
-	source = git+https://github.com/igo95862/bubblejail
+	source = bubblejail-git::git+https://github.com/igo95862/bubblejail
 	md5sums = SKIP
 
 pkgname = bubblejail-git
