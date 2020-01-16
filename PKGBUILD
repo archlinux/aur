@@ -3,7 +3,7 @@
 
 pkgname=droidcam
 pkgver=6.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('i686' 'x86_64')
 url="https://www.dev47apps.com/$pkgname/linuxx"
@@ -15,13 +15,13 @@ optdepends=('v4l-utils: Userspace tools and conversion library for Video 4 Linux
 install="$pkgname.install"
 source=("$pkgname.desktop"
         "https://github.com/aramg/$pkgname/raw/master/linux/icon2.png")
-source_i686=("$pkgname.tar.bz2"::"https://www.dev47apps.com/files/600/$pkgname-32bit.tar.bz2")
-source_x86_64=("$pkgname.tar.bz2"::"https://www.dev47apps.com/files/600/$pkgname-64bit.tar.bz2")
+source_i686=("$pkgname.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_081219_32bit.tar.bz2")
+source_x86_64=("$pkgname.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_081219_64bit.tar.bz2")
 noextract=("$pkgname.tar.bz2")
 md5sums=('199d8f3dbc6697f06350b00de99f2274'
          '0f0e1d04146dd5be70d5028f144bd0a2')
-md5sums_i686=('90cd43b4745c51cffedc352090912eb1')
-md5sums_x86_64=('9507c0b738f427c5f1dde7b2a364fdfb')
+md5sums_i686=('661effc75e2772f20466e738027a16d4')
+md5sums_x86_64=('eb676cd06c92a722ab8b3c4c771baf94')
 
 prepare() {
   # Extract source from within leading arcqh-specific folder
