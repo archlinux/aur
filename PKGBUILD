@@ -1,5 +1,5 @@
 # Maintainer: igo95862 <address at domain dot tld>
-pkgname=bubblejail
+pkgname=bubblejail-git
 pkgver=r31.79a4b25
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
