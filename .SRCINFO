@@ -1,0 +1,17 @@
+pkgbase = python-mouseinfo
+	pkgdesc = An application to display XY position and RGB color information for the pixel currently under the mouse.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/asweigart/mouseinfo
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-xlib
+	depends = python-pyperclip
+	depends = python-pillow
+	depends = tk
+	source = https://files.pythonhosted.org/packages/source/M/MouseInfo/MouseInfo-0.1.2.tar.gz
+	sha256sums = 00ea0c2410c7cada53e6c831fd70dafeb6cbc04b2ab09b099f8e97a8743d35b1
+
+pkgname = python-mouseinfo
+
