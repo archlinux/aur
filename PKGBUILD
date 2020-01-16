@@ -3,7 +3,7 @@
 pkgname=kotatogram-desktop-dynamic-bin
 _pkgname=kotatogram-desktop
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 _pkgrel=5
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Precompiled package"
 arch=(x86_64)
