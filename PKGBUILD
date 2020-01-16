@@ -1,4 +1,5 @@
-# Maintainer: bluebugs < cedric dot bail at free dot fr >
+# Maintainer: palkeo < arch at palkeo dot com >
+# Contributor: bluebugs < cedric dot bail at free dot fr >
 pkgname=ganache-cli
 pkgver=6.8.1
 pkgrel=1
