@@ -5,7 +5,7 @@ pkgname=('dotnet-runtime-2.1' 'dotnet-sdk-2.1')
 pkgver=2.1.15.sdk803
 _runtimever=2.1.15
 _sdkver=2.1.803
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -29,7 +29,7 @@ package_dotnet-runtime-2.1() {
   depends=('dotnet-host' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime-2.1")
+  provides=("dotnet-runtime-2.1" "dotnet-runtime=${pkgver}")
   conflicts=("dotnet-runtime-2.1")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
@@ -40,7 +40,7 @@ package_dotnet-runtime-2.1() {
 package_dotnet-sdk-2.1() {
   pkgdesc='The .NET Core SDK version 2.1'
   depends=('dotnet-runtime-2.1')
-  provides=("dotnet-sdk-2.1")
+  provides=("dotnet-sdk-2.1" "dotnet-sdk=${pkgver}")
   conflicts=("dotnet-sdk-2.1")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
