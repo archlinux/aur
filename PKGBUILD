@@ -28,7 +28,10 @@ build() {
 
 check(){
     cd "${srcdir}/${_srcname}"
-    pytest
+    python setup.py install --root="${srcdir}/${_srcname}/tmp_install"
+    pysys="$(python -c 'import sys; print(sys.version_info.minor)')"
+    pydir="${srcdir}/${_srcname}/tmp_install/usr/lib/python${pysys}/site-packages"
+    PYTHONPATH="${pydir}:${PYTONPATH}"pytest
 }
 
 package() {
