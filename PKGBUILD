@@ -17,6 +17,11 @@ build() {
 	ninja -C build/
 }
 
+check() {
+	cd "$pkgname-$pkgver"
+	ninja -C build/ test
+}
+
 package() {
 	cd "$pkgname-$pkgver"
 
