@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-meta
-pkgver=5.17
+pkgver=5.18
 pkgrel=1
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
@@ -10,6 +10,7 @@ url='https://www.archlinux.org/'
 depends=(bluedevil
          drkonqi
          kdeplasma-addons
+         khotkeys
          kinfocenter
          ksysguard
          kscreen
