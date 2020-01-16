@@ -3,10 +3,10 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.2
-pkgrel=4
-pkgdesc="Unofficial desktop client for the Telegram messenger, based on Telegram Desktop."
+pkgrel=5
+pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
-url="https://github.com/kotatogram/kotatogram-desktop"
+url="https://kotatogram.github.io"
 license=(GPL3)
 depends=(
 	qt5-base
@@ -19,6 +19,7 @@ depends=(
 	zlib
 	minizip
 	openssl
+	sonnet
 	libtgvoip
 	rlottie-tdesktop
 	hicolor-icon-theme
@@ -37,9 +38,9 @@ optdepends=(
 	'enchant: spellchecking support'
 	'ttf-opensans: default Open Sans font family'
 )
-conflicts=('kotatogram-desktop-bin' 'telegram-desktop' 'telegram-desktop-bin')
+conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin' 'telegram-desktop' 'telegram-desktop-bin')
 source=(
-	"$pkgname::git+$url.git#tag=k$pkgver"
+	"${pkgname}::git+https://github.com/kotatogram/${pkgname}.git#tag=k${pkgver}"
 
 	"Catch2::git+https://github.com/catchorg/Catch2.git"
 	"crl::git+https://github.com/telegramdesktop/crl.git"
@@ -63,11 +64,11 @@ source=(
 	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@2x.png"
 	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@3x.png"
 
-	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/master/pkgs/kotatogram-desktop/update-to-v1.9.3.patch"
+	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/531ffcb066fc0508678183686103556c3a955cd9/pkgs/kotatogram-desktop/update-to-v1.9.3.patch"
 	"cmake-rules-fix.patch"
 	"remove-qt-config.patch"
 	"fix-spellcheck.patch"
-	"add-default-notification-action.patch"
+	"fix-notifications.patch"
 	"Use-system-font.patch"
 	"Use-system-wide-font.patch"
 	"system-tray-icon.patch"
@@ -98,11 +99,11 @@ sha512sums=('SKIP'
             '767cc5f3a8e25ff94cfc4a0ad6968455ab52875262e40515cfd4ebea1765014808913ee624efa47c57b15de7cceb492bf7232de981d519bd104036f6d498b788'
             'ac55bcd0c572b1e5fdd72cd0dd9db4bb5eb9c12adc8c702f348201a52b1cf0271f550e144e6654605753960cab55146604a8b52d5294861f73d85b548e5503f0'
             'ec16fd3a70a225fd9aa54c8042b1115d0bdb15e2a95c1abbc74cee50a06878196a4e8c451167c9849ff816ce36e48f46166cb7e99790258d575bde11e305e548'
-            '98936bf3828a29bbaf766051b48b5dbf2b50de4fece910d3d92311a854f21ac3068c09f5c0e33c08d6821cbbb64939b7362104083edbe489413d43170df0a599'
-            '5f58438fe52fc5cb0b910b8f1f5ef2a88597ef14a48b81fa222dca9070158eb747e998a1dc432ab91dd231a5f94e25db5d0a429895dccf7ee8d19beca215b766'
+            'a07a06cfe185b97e00112eb40c532d5bbc47e059639e528c984d4c05c285cc97062474f8d88c4cad672841d757a22803fcc56733f3f53aaf23127e4a0b4b36b4'
+            '660d077e5f5da14b8abf4a6f7a58b2e51c5f4c37dda302a2737a4fd7580335e44de64c4e0c9c16aab58f0d555b875da9ac41d5b59543969329e2e3098e44327b'
             'c90dbebb216233b5a3d5036fb244d1ce746540fcc84413de70cab6c557fee7d0a065cf1dc828c5ae7f8a0be26ff3ea05eec99c74006d201118c2b2531da4182f'
-            'd1804b9e8728adf3db9dccb581bdff6b9b76b9afc3ee9b55fe1846c404a8fe8c79d47c13f8005c4df23907ad80841df30a7431cc5204a55fe48c65ee12236939'
-            '77fc5b177fe967768b87b411902c0bb890891f613d3ce72290976d2adc5eb8aa3a3815f95dc71b9e1391a09038dfa4dc05583117f7bb22363188809130b0e140'
+            'aad19022eb8ddedf21e582a0c7dc7eac8435c667e542b7c36c7cce876a031acb675a05e9d8fa7fea631f1c3a00f20e9f1bfb2dcc0c8aaa609fd3bc6891804153'
+            'a481a82e1eb03e378cb5955fc7688cca5eee220311d941c755e2329d4b77f0b3183650cfb9ac34f340cab4a94b3eadbcf905fc347cfdca73fdcaea85f4a848e5'
             'b9fe9cb91e19271920c4cf075ba83703f093111d6a692cab91eb493563940091cda7b204742711157beb1e9857c1fefd6788ec8784f7b362423a9564925c0de6'
             '94ea7c337c6c9dd6be7727d3b8e9f44cdcfe391c574607491aa32b6e64a93eff7bcc6adc993e7c93e8f5b75a4646a1cf884646fce65ca78edf1df7a969bcf56a'
             '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a'
@@ -143,7 +144,7 @@ prepare() {
 	patch -Np1 -i "$srcdir/cmake-rules-fix.patch"
 	patch -Np1 -i "$srcdir/remove-qt-config.patch"
 	patch -Np1 -i "$srcdir/fix-spellcheck.patch"
-	patch -Np1 -i "$srcdir/add-default-notification-action.patch"
+	patch -Np1 -i "$srcdir/fix-notifications.patch"
 	patch -Np1 -i "$srcdir/Use-system-font.patch"
 	patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 	patch -Np1 -i "$srcdir/system-tray-icon.patch"

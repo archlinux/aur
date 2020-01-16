@@ -1,7 +1,21 @@
 diff --git a/Telegram/CMakeLists.txt b/Telegram/CMakeLists.txt
-index b00bd61e5..e8494af3a 100644
+index b00bd61e5..ea6114312 100644
 --- a/Telegram/CMakeLists.txt
 +++ b/Telegram/CMakeLists.txt
+@@ -27,12 +27,12 @@ include(cmake/generate_numbers.cmake)
+ get_filename_component(src_loc SourceFiles REALPATH)
+ get_filename_component(res_loc Resources REALPATH)
+ 
++include(cmake/telegram_options.cmake)
+ include(cmake/lib_export.cmake)
+ include(cmake/lib_ffmpeg.cmake)
+ include(cmake/lib_mtproto.cmake)
+ include(cmake/lib_scheme.cmake)
+ include(cmake/lib_tgvoip.cmake)
+-include(cmake/telegram_options.cmake)
+ 
+ set(style_files
+     boxes/boxes.style
 @@ -65,8 +65,13 @@ generate_numbers(Telegram ${res_loc}/numbers.txt)
  
  set_target_properties(Telegram PROPERTIES AUTOMOC ON AUTORCC ON)
@@ -53,7 +67,7 @@ index b00bd61e5..e8494af3a 100644
  nice_target_sources(Telegram ${res_loc}
  PRIVATE
      qrc/emoji_1.qrc
-@@ -1026,10 +1036,13 @@ elseif (LINUX)
+@@ -1026,10 +1036,15 @@ elseif (LINUX)
      if (NOT TDESKTOP_DISABLE_GTK_INTEGRATION)
          find_package(PkgConfig REQUIRED)
  
@@ -63,13 +77,15 @@ index b00bd61e5..e8494af3a 100644
 +        target_include_directories(Telegram PRIVATE ${GTK_INCLUDE_DIRS})
          target_compile_options(Telegram PRIVATE -Wno-register)
  
-+        find_library(X11_LIBRARY X11)
-+        target_link_libraries(Telegram PRIVATE ${X11_LIBRARY})
++        if (DESKTOP_APP_USE_PACKAGED)
++            find_library(X11_LIBRARY X11)
++            target_link_libraries(Telegram PRIVATE ${X11_LIBRARY})
++        endif()
 +
          set(appindicator_packages
              ayatana-appindicator3-0.1
              ayatana-appindicator-0.1
-@@ -1102,23 +1115,26 @@ set(entitlement_sources
+@@ -1102,23 +1117,26 @@ set(entitlement_sources
  target_sources(Telegram PRIVATE ${entitlement_sources})
  source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/Telegram PREFIX Resources FILES ${entitlement_sources})
  
@@ -104,7 +120,7 @@ index b00bd61e5..e8494af3a 100644
      set(output_folder ${CMAKE_BINARY_DIR}/bin)
  else()
      set(output_folder ${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>)
-@@ -1126,7 +1142,7 @@ endif()
+@@ -1126,7 +1144,7 @@ endif()
  
  set_target_properties(Telegram PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${output_folder})
  
@@ -2155,40 +2171,12 @@ index 00c2508..f05e8c0 100644
  
      target_link_libraries(external_opus
 diff --git a/cmake/external/qt/CMakeLists.txt b/cmake/external/qt/CMakeLists.txt
-index 1a56319..a0745b0 100644
+index 1a56319..7da3aa1 100644
 --- a/cmake/external/qt/CMakeLists.txt
 +++ b/cmake/external/qt/CMakeLists.txt
-@@ -7,211 +7,226 @@
- add_library(external_qt INTERFACE IMPORTED GLOBAL)
- add_library(desktop-app::external_qt ALIAS external_qt)
- 
--if (LINUX)
--    if (NOT build_linux32)
--        target_compile_definitions(external_qt INTERFACE Q_OS_LINUX64)
--    else()
--        target_compile_definitions(external_qt INTERFACE Q_OS_LINUX32)
-+if (DESKTOP_APP_USE_PACKAGED)
-+    target_link_libraries(external_qt
-+    INTERFACE
-+        Qt5::Core
-+        Qt5::Gui
-+        Qt5::Widgets
-+        Qt5::Network
-+        Qt5::DBus)
-+
-+    target_include_directories(external_qt
-+    INTERFACE
-+        ${Qt5Core_PRIVATE_INCLUDE_DIRS}
-+        ${Qt5Gui_PRIVATE_INCLUDE_DIRS})
-+else()
-+    if (LINUX)
-+        if (NOT build_linux32)
-+            target_compile_definitions(external_qt INTERFACE Q_OS_LINUX64)
-+        else()
-+            target_compile_definitions(external_qt INTERFACE Q_OS_LINUX32)
-+        endif()
+@@ -15,203 +15,218 @@ if (LINUX)
      endif()
--endif()
+ endif()
  
 -target_include_directories(external_qt SYSTEM
 -INTERFACE
@@ -2201,6 +2189,37 @@ index 1a56319..a0745b0 100644
 -    ${qt_loc}/include/QtCore/${qt_version}/QtCore
 -    ${qt_loc}/include/QtGui/${qt_version}/QtGui
 -)
+-
+-target_compile_definitions(external_qt
+-INTERFACE
+-    _REENTRANT
+-    QT_STATICPLUGIN
+-    QT_PLUGIN
+-    QT_WIDGETS_LIB
+-    QT_NETWORK_LIB
+-    QT_GUI_LIB
+-    QT_CORE_LIB
+-)
++if (DESKTOP_APP_USE_PACKAGED)
++    target_link_libraries(external_qt
++    INTERFACE
++        Qt5::Core
++        Qt5::Gui
++        Qt5::Widgets
++        Qt5::Network
++        Qt5::DBus)
+ 
+-if (WIN32)
+-    set(qt_lib_prefix "")
+-    set(qt_lib_suffix $<$<CONFIG:Debug>:d>.lib)
++    target_include_directories(external_qt
++    INTERFACE
++        ${Qt5Core_PRIVATE_INCLUDE_DIRS}
++        ${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+ else()
+-    set(qt_lib_prefix lib)
+-    if (APPLE)
+-        set(qt_lib_suffix $<$<CONFIG:Debug>:_debug>.a)
 +    target_include_directories(external_qt SYSTEM
 +    INTERFACE
 +        ${qt_loc}/include
@@ -2212,17 +2231,7 @@ index 1a56319..a0745b0 100644
 +        ${qt_loc}/include/QtCore/${qt_version}/QtCore
 +        ${qt_loc}/include/QtGui/${qt_version}/QtGui
 +    )
- 
--target_compile_definitions(external_qt
--INTERFACE
--    _REENTRANT
--    QT_STATICPLUGIN
--    QT_PLUGIN
--    QT_WIDGETS_LIB
--    QT_NETWORK_LIB
--    QT_GUI_LIB
--    QT_CORE_LIB
--)
++
 +    target_compile_definitions(external_qt
 +    INTERFACE
 +        _REENTRANT
@@ -2233,14 +2242,7 @@ index 1a56319..a0745b0 100644
 +        QT_GUI_LIB
 +        QT_CORE_LIB
 +    )
- 
--if (WIN32)
--    set(qt_lib_prefix "")
--    set(qt_lib_suffix $<$<CONFIG:Debug>:d>.lib)
--else()
--    set(qt_lib_prefix lib)
--    if (APPLE)
--        set(qt_lib_suffix $<$<CONFIG:Debug>:_debug>.a)
++
 +    if (WIN32)
 +        set(qt_lib_prefix "")
 +        set(qt_lib_suffix $<$<CONFIG:Debug>:d>.lib)
@@ -2400,7 +2402,8 @@ index 1a56319..a0745b0 100644
      INTERFACE
 -        desktop-app::external_zlib
 -        cups
--    )
++        ${qt_libs_list}
+     )
 -else()
 -    set(qt_libs
 -        plugins/platforminputcontexts/${qt_lib_prefix}composeplatforminputcontextplugin
@@ -2421,8 +2424,7 @@ index 1a56319..a0745b0 100644
 -        lib/${qt_lib_prefix}Qt5Core
 -        lib/${qt_lib_prefix}qtpcre2
 -        lib/${qt_lib_prefix}xcb-static
-+        ${qt_libs_list}
-     )
+-    )
 -    foreach (lib ${qt_libs})
 -        list(APPEND qt_libs_list "${qt_loc}/${lib}${qt_lib_suffix}")
 -    endforeach()
@@ -2941,39 +2943,50 @@ index c7a1244..484ea91 100644
          XCODE_ATTRIBUTE_GCC_INLINES_ARE_PRIVATE_EXTERN YES
          XCODE_ATTRIBUTE_GCC_SYMBOLS_PRIVATE_EXTERN YES
 diff --git a/cmake/options_linux.cmake b/cmake/options_linux.cmake
-index a6a13c9..673defa 100644
+index a6a13c9..5b22b8d 100644
 --- a/cmake/options_linux.cmake
 +++ b/cmake/options_linux.cmake
-@@ -9,7 +9,6 @@ INTERFACE
-     $<IF:$<CONFIG:Debug>,,-Ofast -fno-strict-aliasing>
+@@ -6,10 +6,9 @@
+ 
+ target_compile_options(common_options
+ INTERFACE
+-    $<IF:$<CONFIG:Debug>,,-Ofast -fno-strict-aliasing>
++    $<IF:$<CONFIG:Debug>,,-fno-strict-aliasing>
      -pipe
      -Wall
 -    -Werror
      -W
      -fPIC
      -Wno-unused-variable
-@@ -26,6 +25,9 @@ INTERFACE
+@@ -26,14 +25,21 @@ INTERFACE
      -Wno-maybe-uninitialized
      -Wno-error=class-memaccess
  )
+-target_link_options(common_options
+-INTERFACE
+-    $<IF:$<CONFIG:Debug>,,-Ofast>
+-)
 +if (NOT DESKTOP_APP_USE_PACKAGED)
-+    target_compile_options(common_options INTERFACE -Werror)
++    target_compile_options(common_options
++    INTERFACE
++        $<IF:$<CONFIG:Debug>,,-Ofast>
++        -Werror
++    )
++    target_link_options(common_options
++    INTERFACE
++        $<IF:$<CONFIG:Debug>,,-Ofast>
++    )
 +endif()
- target_link_options(common_options
- INTERFACE
-     $<IF:$<CONFIG:Debug>,,-Ofast>
-@@ -33,6 +35,9 @@ INTERFACE
  if (build_linux32)
      target_compile_options(common_options INTERFACE -g0)
      target_link_options(common_options INTERFACE -g0)
-+elseif (DESKTOP_APP_USE_PACKAGED)
-+    target_compile_options(common_options INTERFACE $<IF:$<CONFIG:Debug>,,-g>)
-+    target_link_options(common_options INTERFACE $<IF:$<CONFIG:Debug>,,-g>)
- else()
+-else()
++elseif (NOT DESKTOP_APP_USE_PACKAGED)
      target_compile_options(common_options INTERFACE $<IF:$<CONFIG:Debug>,,-g -flto>)
      target_link_options(common_options INTERFACE $<IF:$<CONFIG:Debug>,,-g -flto -fuse-linker-plugin>)
+ endif()
 diff --git a/cmake/variables.cmake b/cmake/variables.cmake
-index b3d7ff4..2d5c371 100644
+index b3d7ff4..10031e7 100644
 --- a/cmake/variables.cmake
 +++ b/cmake/variables.cmake
 @@ -10,6 +10,7 @@ option(DESKTOP_APP_DISABLE_SPELLCHECK "Disable spellcheck library." OFF)
@@ -2984,3 +2997,18 @@ index b3d7ff4..2d5c371 100644
  
  function(report_bad_special_target)
      message(FATAL_ERROR "Bad special target '${DESKTOP_APP_SPECIAL_TARGET}'")
+@@ -74,9 +75,11 @@ else()
+     elseif (NOT DESKTOP_APP_SPECIAL_TARGET STREQUAL "")
+         report_bad_special_target()
+     endif()
+-    set(CMAKE_AR /usr/bin/gcc-ar)
+-    set(CMAKE_RANLIB /usr/bin/gcc-ranlib)
+-    set(CMAKE_NM /usr/bin/gcc-nm)
++    if (NOT DESKTOP_APP_USE_PACKAGED)
++        set(CMAKE_AR /usr/bin/gcc-ar)
++        set(CMAKE_RANLIB /usr/bin/gcc-ranlib)
++        set(CMAKE_NM /usr/bin/gcc-nm)
++    endif()
+ endif()
+ 
+ if (NOT APPLE OR build_osx)
