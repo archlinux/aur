@@ -1,0 +1,17 @@
+pkgbase = lui-git
+	pkgdesc = Lightweight User Interface for Panda3D
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/tobspr/LUI
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = cmake
+	makedepends = freetype2
+	makedepends = panda3d
+	source = git://github.com/tobspr/LUI.git#branch=master
+	sha256sums = SKIP
+
+pkgname = lui-git
+
