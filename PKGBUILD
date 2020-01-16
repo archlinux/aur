@@ -10,7 +10,6 @@ license=('MIT')
 makedepends=('python' 'python-setuptools' 'python-cerberus' 'python-testinfra')
 depends=('ansible'
          'ansible-lint'
-         'python-anyconfig'
          'python-cerberus'
          'python-click'
          'python-click-completion'
