@@ -1,4 +1,5 @@
-# Maintainer: Stepan Shabalin <stomperhomp@gmail.com>
+# Maintainer:
+
 pkgname=yin-yang-git
 pkgver=r43.dcef1e0
 pkgrel=1
