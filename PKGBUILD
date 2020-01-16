@@ -23,8 +23,8 @@ provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 options=('!strip')
 source=(palemoon.desktop)
-source_x86_64=("http://archive.palemoon.org/palemoon/28.x/$pkgver/palemoon-$pkgver.linux-x86_64.tar.xz"{,.sig})
-source_i686=("http://archive.palemoon.org/palemoon/28.x/$pkgver/palemoon-$pkgver.linux-i686.tar.xz"{,.sig})
+source_x86_64=("http://archive.palemoon.org/palemoon/28.x/$pkgver/palemoon-$pkgver.linux-x86_64.tar.bz2"{,.sig})
+source_i686=("http://archive.palemoon.org/palemoon/28.x/$pkgver/palemoon-$pkgver.linux-i686.tar.bz2"{,.sig})
 # link to latest tarball: http://linux.palemoon.org/download/mainline/
 sha256sums=('c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e')
 sha256sums_i686=('4f530653fd59c85d9f36d88735254bacc48b54e75af4aa0020dcb0611ffe7e6b'
