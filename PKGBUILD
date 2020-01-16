@@ -2,7 +2,7 @@
 
 pkgname=python-togglpy
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A hosts file manager library written in python'
 arch=('any')
 url='https://github.com/matthewdowney/TogglPy'
