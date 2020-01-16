@@ -1,0 +1,17 @@
+pkgbase = bubblejail
+	pkgdesc = Bubblewrap based sandboxing utility
+	pkgver = r31.79a4b25
+	pkgrel = 1
+	url = https://github.com/igo95862/bubblejail
+	arch = any
+	license = GPL3+
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-xdg
+	depends = bubblewrap
+	source = git+https://github.com/igo95862/bubblejail
+	md5sums = SKIP
+
+pkgname = bubblejail
+
