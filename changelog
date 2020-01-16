@@ -1,3 +1,6 @@
+2020-01-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.1.7-2:
+    pkg: explicitly depend on AUR dotnet binaries (FS#65128)
 2020-01-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.1.7-1:
     Added two new item types: Sticker and ChatEffect. Those can be used for lootable, transferable and matchable types in the config - #1567, #1559.
