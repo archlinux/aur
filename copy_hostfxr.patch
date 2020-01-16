@@ -1,15 +1,3 @@
-Index: xamarin-pkg-msbuild/eng/cibuild_bootstrapped_msbuild.sh
-===================================================================
---- xamarin-pkg-msbuild.orig/eng/cibuild_bootstrapped_msbuild.sh
-+++ xamarin-pkg-msbuild/eng/cibuild_bootstrapped_msbuild.sh
-@@ -56,6 +56,7 @@ function DownloadMSBuildForMono {
-     unzip -q "$msbuild_zip" -d "$artifacts_dir"
-     # rename just to make it obvious when reading logs!
-     mv $artifacts_dir/msbuild $mono_msbuild_dir
-+    cp $(pacman -Ql dotnet-host | grep libhostfxr.so | grep opt | cut -d' ' -f2) $artifacts_dir/mono-msbuild/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver/
-     sed -i 's#/sh$#/bash#' $artifacts_dir/mono-msbuild/msbuild
-     chmod +x $artifacts_dir/mono-msbuild/MSBuild.dll
-     rm "$msbuild_zip"
 Index: xamarin-pkg-msbuild/mono/build/sdks_and_nugets/update_sdks_and_nugets.proj
 ===================================================================
 --- xamarin-pkg-msbuild.orig/mono/build/sdks_and_nugets/update_sdks_and_nugets.proj

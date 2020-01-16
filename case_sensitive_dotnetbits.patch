@@ -3,7 +3,7 @@ Index: xamarin-pkg-msbuild/mono/build/sdks_and_nugets/update_sdks_and_nugets.pro
 --- xamarin-pkg-msbuild.orig/mono/build/sdks_and_nugets/update_sdks_and_nugets.proj
 +++ xamarin-pkg-msbuild/mono/build/sdks_and_nugets/update_sdks_and_nugets.proj
 @@ -1,6 +1,6 @@
- <Project>
+ <Project DefaultTargets="DeploySdksAndNuGets">
      <Import Project="$(MSBuildThisFileDirectory)\..\common.props" />
 -    <Import Project="$(MSBuildThisFileDirectory)\..\DotnetBitsVersions.props" />
 +    <Import Project="$(MSBuildThisFileDirectory)\..\DotNetBitsVersions.props" />
