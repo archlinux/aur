@@ -1,6 +1,6 @@
 pkgbase = mercure
 	pkgdesc = Server-sent live updates: protocol and reference implementation
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://mercure.rocks
 	install = mercure.install
@@ -9,10 +9,10 @@ pkgbase = mercure
 	license = AGPL-3.0
 	source = mercure.service
 	sha256sums = 277572c9cbc93b74b368aec4fd40a8a9542d220e74b14383ef68e24630b2a4dc
-	source_i686 = mercure-0.8.0_i686::https://github.com/dunglas/mercure/releases/download/v0.8.0/mercure_0.8.0_Linux_i386.tar.gz
-	sha256sums_i686 = ebf47daf8b5e618802a6211b4df4e35c91570abd0fbb941231172663317a3c75
-	source_x86_64 = mercure-0.8.0_x86_64::https://github.com/dunglas/mercure/releases/download/v0.8.0/mercure_0.8.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 628010e92ec693e3d9d4520dfe7a057bfae79dfbe099593754f093011181a88b
+	source_i686 = mercure-0.8.1_i686::https://github.com/dunglas/mercure/releases/download/v0.8.1/mercure_0.8.1_Linux_i386.tar.gz
+	sha256sums_i686 = d4e2e650cdd2517213b5031a1c58c3d4d60e5b0e5720092098e51fb01f29edd9
+	source_x86_64 = mercure-0.8.1_x86_64::https://github.com/dunglas/mercure/releases/download/v0.8.1/mercure_0.8.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 792c9b97761900f4c230b023194bd5aea9cd321cfbd7c58fee375536c13c1e8e
 
 pkgname = mercure
 
