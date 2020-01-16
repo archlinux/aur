@@ -1,0 +1,34 @@
+pkgbase = ros-melodic-cartographer-rviz
+	pkgdesc = ROS - Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/googlecartographer/cartographer_ros
+	arch = any
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-runtime
+	makedepends = ros-melodic-cartographer
+	makedepends = ros-melodic-cartographer-ros
+	makedepends = ros-melodic-rviz
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-cartographer-ros-msgs
+	makedepends = ros-melodic-roslib
+	makedepends = ros-melodic-eigen-conversions
+	makedepends = ros-melodic-roscpp
+	makedepends = gcc
+	makedepends = qt5-base
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-cartographer
+	depends = ros-melodic-cartographer-ros
+	depends = ros-melodic-rviz
+	depends = ros-melodic-cartographer-ros-msgs
+	depends = ros-melodic-roslib
+	depends = ros-melodic-eigen-conversions
+	depends = ros-melodic-roscpp
+	depends = qt5-base
+	source = ros-melodic-cartographer-rviz-1.0.0.tar.gz::https://github.com/ros-gbp/cartographer_ros-release/archive/release/melodic/cartographer_rviz/1.0.0.tar.gz
+	sha256sums = 6b9bc233a6e64b0a737797fff2eb0e1b9217cd990cc98f8d62e12c95bee73ef6
+
+pkgname = ros-melodic-cartographer-rviz
+
