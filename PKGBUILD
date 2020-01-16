@@ -4,8 +4,8 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 
 pkgname=ddclient
-pkgver=3.9.0
-pkgrel=4
+pkgver=3.9.1
+pkgrel=1
 
 pkgdesc="Update dynamic DNS entries for accounts on many dynamic DNS services"
 url="https://github.com/ddclient/ddclient"
@@ -21,7 +21,7 @@ optdepends=('smtp-forwarder: email support requires sendmail binary')
 source=(https://github.com/ddclient/ddclient/archive/v$pkgver.tar.gz
         ddclient.service)
 
-sha512sums=('ae314c96a37dd90256d6acf62f4a4523b72f540194131e351a032239b00b4520351f6549d3b20a9209fe49ccc6de7ce158ffa8635d341066ea71b789dc667438'
+sha512sums=('a8a4d6cb94e4239a7b7b4fc7d9ebef703cbd6c45fc3394b644694a053b5b8aa8d109410b5b8b3676a5f30b18474d24c7feb16c65c30b28bd7d941d8a214b1346'
             'f2d1fe68fb6e358c15ca9bd2e2c4a8b26239607fa71ff2b9aa301a3f54d16c6858e81603e5c0638e89e3da85b7c77ebaca88d38882740a9a8a09e98b38e9b510')
 
 package() {
