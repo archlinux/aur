@@ -2,7 +2,7 @@
 
 pkgname="gnome-backgrounds-bitday-git"
 _pkgname="gnome-backgrounds-bitday"
-pkgver=r13.07526a1
+pkgver=r23.0889d85
 pkgrel=1
 pkgdesc="Beautiful dynamic pixel wallpaper for GNOME"
 url="https://github.com/ghisvail/gnome-backgrounds-bitday"
@@ -21,11 +21,11 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  ./autogen.sh --prefix=/usr
-  make
+  meson --prefix=/usr builddir
+  ninja -C builddir
 }
 
 package() {
   cd "$_pkgname"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C builddir install
 }
