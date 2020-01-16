@@ -1,6 +1,6 @@
 pkgbase = autosuspend-git
 	pkgdesc = A daemon to suspend your server in case of inactivity
-	pkgver = 2.1.0.192
+	pkgver = 3.0.0.255
 	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
 	install = autosuspend-git.install

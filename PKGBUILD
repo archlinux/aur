@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend-git
-pkgver=2.1.0.192
+pkgver=3.0.0.255
 pkgrel=1
 pkgdesc="A daemon to suspend your server in case of inactivity"
 arch=(any)
@@ -37,6 +37,7 @@ pkgver() {
 
 build() {
     cd "autosuspend"
+    export PYTHONPATH=$(pwd)/src
     python3 setup.py build_sphinx -a -b html
     python3 setup.py build_sphinx -a -b man
 }
