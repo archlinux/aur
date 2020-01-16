@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=2.0.post27.r24.e8237a4
+pkgver=2.0.post27.r26.dd8fcdb
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://srevinsaju.github.io/guiscrcpy"
 license=('GPL3')
 depends=('scrcpy' 'python-pyqt5' 'python-psutil' 'python-qdarkstyle' 'python-gitpython'
-         'python-pillow' 'python-pynput')
+         'python-pillow' 'python-pynput' 'python-pyautogui')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-pystray: for Notification Auditor'
             'usbaudio: AOA audio, deprecated since Android 8.0')
