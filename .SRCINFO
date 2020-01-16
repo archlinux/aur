@@ -1,0 +1,14 @@
+pkgbase = ttf-mono
+	pkgdesc = Typeface for developers from JetBrains
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.jetbrains.com/lp/mono/
+	arch = any
+	license = Apache
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://download.jetbrains.com/fonts/JetBrainsMono-1.0.0.zip
+	md5sums = 1083f3f5315a564fb59d571da5c3b624
+
+pkgname = ttf-mono
+
