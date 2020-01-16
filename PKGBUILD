@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -64,7 +64,7 @@ source=(
 	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@2x.png"
 	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@3x.png"
 
-	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/531ffcb066fc0508678183686103556c3a955cd9/pkgs/kotatogram-desktop/update-to-v1.9.3.patch"
+	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/09de9a8a98c79b8d4c4e19313a8e2b4db5591c58/pkgs/kotatogram-desktop/update-to-v1.9.3.patch"
 	"cmake-rules-fix.patch"
 	"remove-qt-config.patch"
 	"fix-spellcheck.patch"
@@ -99,7 +99,7 @@ sha512sums=('SKIP'
             '767cc5f3a8e25ff94cfc4a0ad6968455ab52875262e40515cfd4ebea1765014808913ee624efa47c57b15de7cceb492bf7232de981d519bd104036f6d498b788'
             'ac55bcd0c572b1e5fdd72cd0dd9db4bb5eb9c12adc8c702f348201a52b1cf0271f550e144e6654605753960cab55146604a8b52d5294861f73d85b548e5503f0'
             'ec16fd3a70a225fd9aa54c8042b1115d0bdb15e2a95c1abbc74cee50a06878196a4e8c451167c9849ff816ce36e48f46166cb7e99790258d575bde11e305e548'
-            'a07a06cfe185b97e00112eb40c532d5bbc47e059639e528c984d4c05c285cc97062474f8d88c4cad672841d757a22803fcc56733f3f53aaf23127e4a0b4b36b4'
+            'a724ebcf13856fe9c261f9d0e5b4ffc3fc5f0b05b56e988554e75f65e5b9c5a2964444a5fa59b017c2c1689472f9a8be62a6cdde0ef7e3eae598b7c09d7f47b2'
             '660d077e5f5da14b8abf4a6f7a58b2e51c5f4c37dda302a2737a4fd7580335e44de64c4e0c9c16aab58f0d555b875da9ac41d5b59543969329e2e3098e44327b'
             'c90dbebb216233b5a3d5036fb244d1ce746540fcc84413de70cab6c557fee7d0a065cf1dc828c5ae7f8a0be26ff3ea05eec99c74006d201118c2b2531da4182f'
             'aad19022eb8ddedf21e582a0c7dc7eac8435c667e542b7c36c7cce876a031acb675a05e9d8fa7fea631f1c3a00f20e9f1bfb2dcc0c8aaa609fd3bc6891804153'
