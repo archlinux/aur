@@ -1,6 +1,6 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = r312.c4b4df1
+	pkgver = r349.8f72f61
 	pkgrel = 2
 	url = https://github.com/InfinityGhost/OpenTabletDriver
 	install = opentabletdriver.install

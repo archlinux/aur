@@ -2,7 +2,7 @@
 pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
-pkgver=r312.c4b4df1
+pkgver=r349.8f72f61
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -58,6 +58,7 @@ package() {
     install -Dm 644 -o root "30-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
     install -Dm 644 -o root "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
     cp -r "$srcdir/$_pkgname/TabletDriverLib/Configurations" "$pkgdir/usr/share/$_pkgname/"
+    cp -r "$srcdir/$_pkgname/$_pkgname/Assets" "$pkgdir/usr/share/$_pkgname/"
 
     install -Dm 755 -o root "$_lpkgname" -t "$pkgdir/usr/bin"
 }
