@@ -1,0 +1,50 @@
+pkgbase = ibus-clean
+	pkgdesc = ibus without gtk2 nor python2
+	pkgver = 1.5.21
+	pkgrel = 3
+	url = https://github.com/ibus/ibus/wiki
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = gtk-doc
+	makedepends = qt5-base
+	makedepends = cldr-emoji-annotation
+	makedepends = unicode-character-database
+	makedepends = unicode-emoji
+	depends = dconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = python-dbus
+	depends = python-gobject
+	depends = iso-codes
+	depends = librsvg
+	options = !emptydirs
+	source = ibus-1.5.21.tar.gz::https://github.com/ibus/ibus/archive/1.5.21.tar.gz
+	sha512sums = 39f5ffe0727af3254e060b82cc99a60126489271863272775e5b1d0e26f31d42d2f9a0cbfe1cb797854f2ae66d5b6c8cdf83bab800af8576b82250ec1e6fb33f
+
+pkgname = ibus-clean
+	install = ibus.install
+	depends = dconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = python-dbus
+	depends = python-gobject
+	depends = iso-codes
+	depends = librsvg
+	depends = libibus-clean=1.5.21
+	provides = ibus=$pkgver
+	conflicts = ibus
+	replaces = ibus
+
+pkgname = libibus-clean
+	pkgdesc = IBus support library
+	depends = glib2
+	provides = libibus=$pkgver
+	conflicts = libibus
+	replaces = libibus
+
