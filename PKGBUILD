@@ -1,30 +1,31 @@
 # Maintainer: djazz
 
 pkgname=fimfic2epub
-pkgver=1.7.31
+pkgver=1.7.40
 pkgrel=1
 pkgdesc="Tool to generate improved EPUB ebooks from Fimfiction stories"
 arch=('any')
 url="https://github.com/daniel-j/fimfic2epub"
 license=('MIT')
 depends=('nodejs')
-makedepends=('yarn')
+makedepends=('npm')
 options=(!strip)
 source=("https://github.com/daniel-j/fimfic2epub/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  'a6945263ef7ce8d867e84e168f013850f24463a21726b554e9c3bfe874c9aa1f'
+  '22dd3adb9e2d9c54e3eba47a418dd0ccafb78195702ca9abdc88cec7dcfdd885'
 )
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export YARN_CACHE_FOLDER="${srcdir}/yarn-cache"
 
   echo "Installing dependencies..."
-  yarn install --non-interactive --no-lockfile --ignore-engines
+  npm install --cache "${srcdir}/npm-cache"
 
   echo "Building fimfic2epub..."
-  yarn run build webpack --standalone
+  npm run -- build webpack --standalone
 
-  install -D "bin/fimfic2epub-static" "${pkgdir}/usr/bin/${pkgname}"
+  install -D "bin/fimfic2epub" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  chown -R root:root "$pkgdir"
 }
