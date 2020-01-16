@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer
 pkgver=2020.112.0
-pkgrel=1
+pkgrel=2
 
 dotnet_version=3.1
 
@@ -45,8 +45,8 @@ build()
         --framework         netcoreapp$dotnet_version   \
         --configuration     Release                     \
         --runtime           linux-x64                   \
-        --self-contained    false                       \
         --output            $output                     \
+        --no-self-contained                             \
         /property:Version=$pkgver
 }
 
