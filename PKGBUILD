@@ -2,12 +2,12 @@
 pkgname=openapi-generator-cli
 pkgver=4.2.2
 _tag=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAPI Generator CLI + bash completion"
 arch=('any')
 url="https://openapi-generator.tech/"
 license=('Apache')
-source=("http://central.maven.org/maven2/org/openapitools/$pkgname/$_tag/$pkgname-$_tag.jar"
+source=("https://repo1.maven.org/maven2/org/openapitools/$pkgname/$_tag/$pkgname-$_tag.jar"
         "https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v$_tag/scripts/openapi-generator-cli-completion.bash"
         "openapi-generator-cli")
 noextract=("$pkgname-$_tag.jar")
