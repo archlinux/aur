@@ -1,14 +1,40 @@
 pkgbase = cura-lulzbot
 	pkgdesc = Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.
 	pkgver = 3.6.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lulzbot.com/cura
 	arch = x86_64
-	license = AGPLv3
-	depends = gcc8-fortran
-	depends = openssl-1.0
-	source = http://download.alephobjects.com/ao/aodeb/dists/buster/main/binary-amd64/cura-lulzbot_3.6.21_amd64.deb
-	md5sums = 42f6ee9653f7613df731a3baf6ee4b35
+	license = AGPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = python-sip
+	makedepends = python-netifaces
+	makedepends = python-pyserial
+	makedepends = python-zeroconf
+	makedepends = qt5-tools
+	makedepends = sip
+	depends = cython
+	depends = gcc-fortran
+	depends = libsavitar
+	depends = openblas
+	depends = python
+	depends = python-nose
+	depends = python-numpy
+	depends = python-numpy-stl
+	depends = python-opengl
+	depends = python-parso
+	depends = python-pyqt5
+	depends = python-scipy
+	depends = python-setuptools
+	depends = python-typing_extensions
+	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	optdepends = python-zeroconf: Detecting mDNS printers
+	optdepends = python-pyserial: USB printing
+	conflicts = cura-lulzbot-git
+	source = git+https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot.git#tag=v3.6.21
+	md5sums = SKIP
 
 pkgname = cura-lulzbot
 
