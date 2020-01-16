@@ -1,8 +1,8 @@
-# Maintainer: yt-theme <13133528465@163.com>
-# Maintainerr: TransistorLogic <liuhongwu2003@outlook.com>
+# Maintainer: yt <13133528465@163.com>
+# Maintainerr: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 epoch=
 pkgdesc="A PopBall"
