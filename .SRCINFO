@@ -1,7 +1,7 @@
 pkgbase = imapfilter
 	pkgdesc = A mail filtering utility for processing IMAP mailboxes
 	pkgver = 2.6.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lefcha/imapfilter
 	arch = i686
 	arch = x86_64
