@@ -5,64 +5,56 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-ccs-apparmor
-_pkgver=5.2.9
-_hardenedver=a
-_srcname=linux-${_pkgver}
-pkgver=${_pkgver}.${_hardenedver}
+pkgver=5.4.5.a
 pkgrel=1
 ccsver=1.8.6
-ccskernver=5.2
-_timestamp=20190820
-url='https://github.com/anthraxx/linux-hardened https://tomoyo.osdn.jp https://gitlab.com/apparmor/apparmor'
-arch=('x86_64')
-license=('GPL2')
+ccskernver=5.4
+_timestamp=20191225
+pkgdesc='Security-Hardened Linux with CCS and AppArmor'
+url='https://tomoyo.osdn.jp'
+arch=(x86_64)
+license=(GPL2)
 #makedepends=(
-#  xmlto kmod inetutils bc libelf python-sphinx python-sphinx_rtd_theme
-#  graphviz imagemagick
+#  bc kmod libelf
+#  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 #)
 options=('!strip')
-source=(https://www.kernel.org/pub/linux/kernel/v${_pkgver//.*}.x/linux-${_pkgver}.tar.xz
-        https://www.kernel.org/pub/linux/kernel/v${_pkgver//.*}.x/linux-${_pkgver}.tar.sign
-        https://github.com/anthraxx/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
-        config.x86_64  # the main kernel config files
-        60-linux.hook  # pacman hook for depmod
-        90-linux.hook  # pacman hook for initramfs regeneration
-        linux.preset   # standard config files for mkinitcpio ramdisk
-        linux.install
-        # TOMOYO CCS patch
-        https://osdn.net/projects/tomoyo/downloads/49684/ccs-patch-${ccsver}-${_timestamp}.tar.gz{,.asc}
+_srcname=linux-${pkgver%.*}
+source=(
+  https://mirrors.edge.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
+  https://mirrors.edge.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.sign
+  https://github.com/anthraxx/linux-hardened/releases/download/${pkgver}/linux-hardened-${pkgver}.patch{,.sig}
+  https://osdn.mirror.constant.com//tomoyo/49684/ccs-patch-${ccsver}-${_timestamp}.tar.gz{,.asc}
+  config         # the main kernel config file
 )
-replaces=('linux-grsec')
-sha256sums=('b6f02a4b306ca5cd314d72615bfc2650166969613135da202630e6c4e1b5d4e6'
-            'SKIP'
-            'c4b3c9e7dad9b6d3a1171840d5e55d3840c0392f6f17899b8be9286aa3b6fc76'
-            'SKIP'
-            '946c2e921696591dac8df184fdc9581d329d96ff9fe8f8e8c535efa3a59e4137'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            '73f65475f1698147c153a442d116404cdbfef9f46897614d949c37b989db0996'
-            'a4cdccf1d0a389553a792dc370b843f898ed9b760b6e2d8f9befb574c1ed1d7f'
-            'SKIP')
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-              '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A' # Daniel Micay
-              'E240B57E2C4630BA768E2F26FC1B547C8D8172C8' # Levente Polyak
-              '43C83369623D7AD3A96C2FC7425F128D0C64F52A' # Tetsuo Handa https://tomoyo.osdn.jp/kumaneko-key
-             )
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A'  # Daniel Micay
+  'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
+  '43C83369623D7AD3A96C2FC7425F128D0C64F52A'  # Tetsuo Handa https://tomoyo.osdn.jp/kumaneko-key
+)
+sha256sums=('568e9f27fbba86131c2e2849f296d54216e2ed3e8c4d8aa78a93b417cab23ec0'
+            'SKIP'
+            '804f8a3ee06a810d88a4a57c555af0fa4dac934d24e58e69b83c0a01c8710a3a'
+            'SKIP'
+            'e7403947eb9bffdc6f4db6087e2703c3176e5794dbedd58b77f025d2f1e248f1'
+            'SKIP'
+            '744509e79204d8f6326ea7dbb351b8bbfce834312ca6cecca47c2c31e822d03e'
+            )
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-hardened-ccs-apparmor}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
 
   msg2 "Setting version..."
-  sed -e "/^EXTRAVERSION =/s/=.*/= .${_hardenedver}/" -i Makefile
+  sed -e "/^EXTRAVERSION =/s/=.*/= .${pkgver##*.}/" -i Makefile
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -83,11 +75,11 @@ prepare() {
   patch -sp1 < ../patches/ccs-patch-${ccskernver}.diff
 
   msg2 "Setting config..."
-  cp ../config.x86_64 .config
+  cp ../config .config
   make olddefconfig
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
@@ -96,73 +88,43 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  [[ $pkgbase = linux ]] && groups=(base)
-  depends=(coreutils linux-firmware kmod mkinitcpio)
+  pkgdesc="The $pkgdesc kernel and modules"
+  depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
-              'usbctl: deny_new_usb control'
-              'ccs-tools: TOMOYO Linux 1.8.x userspace tools'
-              'apparmor: Mandatory Access Control (MAC) using Linux Security Module (LSM)')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
-
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+              'linux-firmware: firmware images needed for some devices'
+              'usbctl: deny_new_usb control')
 
   cd $_srcname
+  local kernver="$(<version)"
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
-
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|$pkgbase|g
-    s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -172,9 +134,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -229,34 +188,25 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
-
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
+  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  msg2 "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  msg2 "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
