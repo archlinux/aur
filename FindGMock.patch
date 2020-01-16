@@ -1,0 +1,28 @@
+diff --unified --recursive cartographer-release-release-melodic-cartographer/cmake/modules/FindGMock.cmake cartographer-release-release-melodic-cartographer.new/cmake/modules/FindGMock.cmake
+--- cartographer-release-release-melodic-cartographer/cmake/modules/FindGMock.cmake	2018-06-01 14:10:29.000000000 +0200
++++ cartographer-release-release-melodic-cartographer.new/cmake/modules/FindGMock.cmake	2020-01-16 14:53:20.965570375 +0100
+@@ -31,6 +31,15 @@
+       /usr
+   )
+ 
++  find_library(GTEST_LIBRARIES
++    NAMES gtest
++    PATH_SUFFIXES lib
++  )
++  find_library(GMOCK_A_LIBRARIES
++    NAMES gmock
++    PATH_SUFFIXES lib
++  )
++
+   # Find system-wide gtest header.
+   find_path(GTEST_INCLUDE_DIRS gtest/gtest.h
+     HINTS
+@@ -65,7 +74,7 @@
+ 
+   # System-wide installed gmock library might require pthreads.
+   find_package(Threads REQUIRED)
+-  list(APPEND GMOCK_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
++  list(APPEND GMOCK_LIBRARIES ${GMOCK_A_LIBRARIES} ${GTEST_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+ endif()
+ 
+ include(FindPackageHandleStandardArgs)

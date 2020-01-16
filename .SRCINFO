@@ -1,0 +1,36 @@
+pkgbase = ros-melodic-cartographer
+	pkgdesc = ROS - Cartographer is a system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/googlecartographer/cartographer
+	arch = any
+	license = Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = boost
+	makedepends = google-glog
+	makedepends = protobuf
+	makedepends = cairo
+	makedepends = lua52
+	makedepends = python-sphinx
+	makedepends = gcc
+	makedepends = gflags
+	makedepends = eigen3
+	makedepends = ceres-solver
+	makedepends = gmock
+	depends = boost
+	depends = google-glog
+	depends = protobuf
+	depends = cairo
+	depends = lua52
+	depends = gflags
+	depends = eigen3
+	depends = ceres-solver
+	source = ros-melodic-cartographer-1.0.0.tar.gz::https://github.com/ros-gbp/cartographer-release/archive/release/melodic/cartographer/1.0.0.tar.gz
+	source = FindGMock.patch
+	sha256sums = 0b1979462b1715efc762f27bfb1b69fe659c269df96934baee12928b47b7cc9f
+	sha256sums = a109c0927cff5d0a9d8ad7d0f676ce0c3af81a1aa39b88b16a030431cde2cbb4
+
+pkgname = ros-melodic-cartographer
+
