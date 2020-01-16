@@ -12,7 +12,7 @@ source=("git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
