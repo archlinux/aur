@@ -1,6 +1,6 @@
 pkgbase = uftpd
 	pkgdesc = FTP/TFTP server for Linux that just works
-	pkgver = 2.7
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://github.com/troglobit/uftpd
 	arch = i686
@@ -8,8 +8,10 @@ pkgbase = uftpd
 	license = ISC
 	depends = libite
 	depends = libuev
-	source = https://github.com/troglobit/uftpd/archive/v2.7.tar.gz
-	md5sums = d2b6ef2426b412fc23deb3d86f850149
+	conflicts = tftp-hpa
+	conflicts = tftp-hpa-destruct
+	source = https://github.com/troglobit/uftpd/archive/v2.11.tar.gz
+	md5sums = b83ac2dea1b0b8ce9b9d606f60638c6a
 
 pkgname = uftpd
 
