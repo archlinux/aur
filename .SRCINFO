@@ -1,0 +1,27 @@
+pkgbase = ros-melodic-mbf-msgs
+	pkgdesc = ROS - The move_base_flex messages package providing the action definition files for the action GetPath, ExePath, Recovery and MoveBase.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = 3-Clause BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-message-runtime
+	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-actionlib-msgs
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-actionlib-msgs
+	source = ros-melodic-mbf-msgs-0.2.5.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/mbf_msgs/0.2.5.tar.gz
+	sha256sums = 603939164770a585198e17467e10dd17862d11a7f1ec7af8dbdee5041d29f027
+
+pkgname = ros-melodic-mbf-msgs
+
