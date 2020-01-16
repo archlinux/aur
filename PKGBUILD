@@ -1,6 +1,6 @@
 # Maintainer: bluebugs < cedric dot bail at free dot fr >
 pkgname=ganache-cli
-pkgver=6.0.3
+pkgver=6.8.1
 pkgrel=1
 pkgdesc='Personal blockchain for Ethereum development.'
 url='https://github.com/trufflesuite/ganache-cli'
@@ -11,7 +11,7 @@ noextract=("ganache-cli-${pkgver}.tgz")
 makedepends=('npm')
 depends=('nodejs')
 conflicts=('ganache-cli-git')
-sha1sums=('8b9da149707daa29c69da26f0582b89c90113b9c')
+sha1sums=('SKIP')
 provides=('ganache-cli')
 optdepends=('mocha: testing support'
             'testrpc: testing support'
