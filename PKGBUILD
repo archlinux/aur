@@ -3,8 +3,8 @@
 # Contributor: uastasi <uastasi at archlinux dot us>
 #
 pkgname="frogr"
-pkgver="1.5"
-pkgrel="2"
+pkgver="1.6"
+pkgrel="1"
 pkgdesc="A flickr remote organizer for GNOME"
 url="https://wiki.gnome.org/Apps/Frogr"
 arch=('i686' 'x86_64')
@@ -15,9 +15,8 @@ depends=('gtk3' 'libexif' 'hicolor-icon-theme' 'json-glib' \
 makedepends=('gnome-common' 'intltool' 'meson' 'yelp-tools')
 optdepends=('gst-libav: To support common video formats like .3gp and .MP4 ')
 conflicts=("${pkgname}-git")
-provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.xz::http://download.gnome.org/sources/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('874fab2cde9c56519c1675af377d5bd95b21fb7db686723b50da47e8f01907b1')
+sha256sums=('3f0065faf4f3b8ce0c1fc9d59b229a8ac16f96f5e86a1280f6d9fe8cebb82ed3')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -33,4 +32,4 @@ package() {
 	DESTDIR="${pkgdir}" ninja install
 }
 
-# vim:set ts=4 sw=4 ft=sh et syn=sh ft=sh:
+# vim:set ts=4 sw=4 et syn=sh ft=sh:
