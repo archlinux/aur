@@ -6,7 +6,7 @@ pkgver=${_pkgver//-/.}
 _geckover=2.47
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -33,7 +33,7 @@ depends=(
   "wine-mono-bin>=$_monover"
 #  "dxvk>=$_dxvkver"
 )
-makedepends=(autoconf ncurses bison perl fontforge flex
+makedepends=(autoconf ncurses bison perl fontforge flex meson
   'gcc>=4.5.0-2'
   mingw-w64-gcc
   giflib                lib32-giflib

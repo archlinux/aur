@@ -1,7 +1,7 @@
 pkgbase = proton-native
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution
 	pkgver = 4.11.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ValveSoftware/Proton
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = proton-native
 	makedepends = perl
 	makedepends = fontforge
 	makedepends = flex
+	makedepends = meson
 	makedepends = gcc>=4.5.0-2
 	makedepends = mingw-w64-gcc
 	makedepends = giflib
