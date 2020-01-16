@@ -23,12 +23,12 @@ pkgbase = palemoon-webide-kaios-bin
 	validpgpkeys = 439F46F42C6AE3D23CF52E70865E6C87C65285EC
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	sha256sums = c6cae1c0de6b59da1d846cb2092ca2725ba2baa4d554223f747a4a71ee63002e
-	source_i686 = https://linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-i686.tar.xz
-	source_i686 = https://linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-i686.tar.xz.sig
+	source_i686 = http://archive.palemoon.org/palemoon/28.x/28.6.1/palemoon-28.6.1.linux-i686.tar.xz
+	source_i686 = http://archive.palemoon.org/palemoon/28.x/28.6.1/palemoon-28.6.1.linux-i686.tar.xz.sig
 	sha256sums_i686 = 4f530653fd59c85d9f36d88735254bacc48b54e75af4aa0020dcb0611ffe7e6b
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-x86_64.tar.xz
-	source_x86_64 = https://linux.palemoon.org/datastore/release/palemoon-28.6.1.linux-x86_64.tar.xz.sig
+	source_x86_64 = http://archive.palemoon.org/palemoon/28.x/28.6.1/palemoon-28.6.1.linux-x86_64.tar.xz
+	source_x86_64 = http://archive.palemoon.org/palemoon/28.x/28.6.1/palemoon-28.6.1.linux-x86_64.tar.xz.sig
 	sha256sums_x86_64 = 7f884e449d3dc07d1c99ddb11bac2aeb7e31816c98321b55ee47c2fdb229fc76
 	sha256sums_x86_64 = SKIP
 
