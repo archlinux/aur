@@ -1,13 +1,13 @@
 pkgbase = r-bh
 	pkgdesc = Boost C++ Header Files
-	pkgver = 1.72.0_2
+	pkgver = 1.72.0_3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=BH
 	arch = any
 	license = BSL-1.0
 	depends = r
-	source = http://cran.r-project.org/src/contrib/BH_1.72.0-2.tar.gz
-	md5sums = daddf6f12cd90976cdff4907bd262ec4
+	source = http://cran.r-project.org/src/contrib/BH_1.72.0-3.tar.gz
+	md5sums = 6125aaade08e678496128a1f0ee79493
 
 pkgname = r-bh
 
