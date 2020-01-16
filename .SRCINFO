@@ -1,0 +1,20 @@
+pkgbase = pantheon-notifications-git
+	pkgdesc = A Gtk notification server for Pantheon
+	pkgver = r44.921e575
+	pkgrel = 1
+	url = https://github.com/elementary/notifications
+	arch = i686
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = libgranite.so
+	makedepends = vala
+	depends = gtk3
+	conflicts = pantheon-notifications
+	source = git+https://github.com/elementary/notifications.git
+	sha512sums = SKIP
+
+pkgname = pantheon-notifications-git
+
