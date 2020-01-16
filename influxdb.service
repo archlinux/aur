@@ -1,0 +1,14 @@
+[Unit]
+Description=InfluxDB 2.0 service file.
+Documentation=https://v2.docs.influxdata.com/v2.0/get-started/
+After=network-online.target
+
+[Service]
+User=influxdb
+Group=influxdb
+ExecStart=/usr/bin/influxd 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+Alias=influxd.service

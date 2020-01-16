@@ -1,0 +1,20 @@
+pkgbase = influxdb2-bin
+	pkgdesc = An open source agent for collecting metrics and data on the system; Binary pre-release
+	pkgver = 2.0.0_beta.1
+	pkgrel = 1
+	url = https://github.com/influxdata/influxdb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = influxdb
+	source = influxdb.sysusers
+	source = influxdb.service
+	sha256sums = dd96a189e7411fc1dd644f05bab06192ecc6afa2f2611e7433ec5efeecb4dd5b
+	sha256sums = 4aa6c35d5157115c1add2e80f1a80cf4918bfdb1d5032deb5fffce4f5fa553f7
+	source_x86_64 = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb_2.0.0-beta.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d45c6e38f1d15156bd2f520b4633342e70d26c374a3d9bc8e7709c62859f1638
+	source_aarch64 = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb_2.0.0-beta.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d45c6e38f1d15156bd2f520b4633342e70d26c374a3d9bc8e7709c62859f1638
+
+pkgname = influxdb2-bin
+
