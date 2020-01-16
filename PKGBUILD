@@ -10,7 +10,7 @@ pkgname=blender-2.82-git
 _fragment="#branch=blender-v2.82-release"
 pkgver=2.82.r92134.f8cdc5ac4c0
 pkgrel=1
-pkgdesc="Development version of Blender 2.8 branch"
+pkgdesc="Alpha version of Blender 2.82-release branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
