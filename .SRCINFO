@@ -1,6 +1,6 @@
 pkgbase = snapcraft
 	pkgdesc = Build Ubuntu snappy packages.
-	pkgver = 3.9
+	pkgver = 3.9.5
 	pkgrel = 1
 	url = http://snapcraft.io
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = snapcraft
 	depends = python-pyelftools
 	optdepends = lxd
 	options = !emptydirs
-	source = https://github.com/snapcore/snapcraft/archive/3.9.tar.gz
-	sha256sums = ce8a3949ea2009d0f0a445d91fbacf38d9dd383942f74d51ebd3fb73175c7e88
+	source = https://github.com/snapcore/snapcraft/archive/3.9.5.tar.gz
+	sha256sums = b30ce954b6cf89954504e166ae795c3b46c962bd16b9868d50476192ac888d39
 
 pkgname = snapcraft
 
