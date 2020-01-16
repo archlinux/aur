@@ -1,0 +1,12 @@
+diff -ura old/src/hiptext.cc new/src/hiptext.cc
+--- old/src/hiptext.cc	2019-12-07 21:19:18.505877118 -0500
++++ new/src/hiptext.cc	2019-12-07 21:20:44.655880181 -0500
+@@ -262,7 +262,7 @@
+     artiste.PrintImage(LoadPNG(path));
+   } else if (extension == "jpg" || extension == "jpeg") {
+     artiste.PrintImage(LoadJPEG(path));
+-  } else if (extension == "mov" || extension == "mp4" || extension == "flv" ||
++  } else if (extension == "mov" || extension == "mp4" || extension == "flv" || extension == "gif" ||
+              extension == "avi" || extension == "mkv" || path.find(uri_sig) != string::npos) {
+     artiste.PrintMovie(Movie(path));
+   } else {

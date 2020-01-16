@@ -1,0 +1,32 @@
+pkgbase = hiptext-gif
+	pkgdesc = Command line tool for rendering images and videos inside terminals (w/ gif patch).
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/jart/hiptext
+	arch = any
+	license = GPL
+	makedepends = ffmpeg
+	makedepends = freetype2
+	makedepends = giflib
+	makedepends = libjpeg-turbo
+	makedepends = libpng12
+	makedepends = ragel
+	depends = gflags
+	depends = google-glog
+	provides = hiptext
+	conflicts = hiptext
+	source = https://github.com/jart/hiptext/releases/download/0.2/hiptext-0.2.tar.gz
+	source = hiptext.sh
+	source = freetype_config.patch
+	source = build_with_latest_ffmpeg.patch
+	source = video_flicker.patch
+	source = add_gif_extension.patch
+	sha256sums = 7f2217dec8775b445be6745f7bd439c24ce99c4316a9faf657bee7b42bc72e8f
+	sha256sums = f25b95246f54d11489046a7278b549de48704a8d1b19235e07786c55998dc6a6
+	sha256sums = 9d3e5801a92ddd4bd278f3d515cf16d7d969f2c319bb05559ccf5299c37fbebe
+	sha256sums = 59482f694811569d08596c07c2461ad9adb6c74c500b6a8755889a78eb27f4b1
+	sha256sums = c9ddd3e4266a4f6fd0b92bf1c23d7bb5bf6ec150dfa67c76b5f17df6a92a3d49
+	sha256sums = 7f0ac14122bcf0c22c0ca2859f54746c95663782b2d1a2a47cfd477a72841ae4
+
+pkgname = hiptext-gif
+
