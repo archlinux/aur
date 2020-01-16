@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aisleriot-git
-pkgver=3.22.10.r3.g2ce4a2ce
+pkgver=3.22.10.r8.g4c79d5b0
 pkgrel=1
 pkgdesc="A collection of patience games written in guile scheme"
 url="https://wiki.gnome.org/Apps/Aisleriot"
 arch=('x86_64')
 license=('GPL')
-depends=('guile' 'gtk3' 'qt5-svg')
+depends=('guile-git' 'gtk3' 'qt5-svg')
 provides=('aisleriot')
 conflicts=('aisleriot')
 makedepends=('appdata-tools' 'gnome-common' 'git' 'meson')

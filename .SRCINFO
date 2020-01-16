@@ -1,6 +1,6 @@
 pkgbase = aisleriot-git
 	pkgdesc = A collection of patience games written in guile scheme
-	pkgver = 3.22.10.r3.g2ce4a2ce
+	pkgver = 3.22.10.r8.g4c79d5b0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Aisleriot
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = aisleriot-git
 	makedepends = gnome-common
 	makedepends = git
 	makedepends = meson
-	depends = guile
+	depends = guile-git
 	depends = gtk3
 	depends = qt5-svg
 	optdepends = pysolfc: for PySol card sets
