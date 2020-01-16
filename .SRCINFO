@@ -1,7 +1,7 @@
 pkgbase = python-togglpy
 	pkgdesc = A hosts file manager library written in python
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matthewdowney/TogglPy
 	arch = any
 	license = MIT
