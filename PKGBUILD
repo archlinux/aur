@@ -4,36 +4,30 @@
 
 pkgname=xfce-theme-greybird
 pkgver=3.22.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A grey and blue Xfce theme."
 arch=('any')
 url="https://github.com/shimmerproject/Greybird"
 license=('CCPL:by-sa-3.0' 'GPL')
 groups=('xfce-themes-shimmer-collection')
 conflicts=("$pkgname-git")
-depends=('gtk-engine-murrine')
+makedepends=('meson' 'sassc' 'librsvg')
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme'
             'gtk3: required for CSS/GTK3 theme'
             'lightdm-gtk-greeter: required for the LightDM GTK theme'
             'lightdm-unity-greeter: required for the LightDM Unity theme'
             'shimmer-wallpapers: contains the Greybird wallpaper, among others'
+            'gtk-engine-murrine: required for gtk2 support'
             'lib32-gtk-engine-murrine: required for multilib')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/shimmerproject/Greybird/archive/v$pkgver.tar.gz")
 sha256sums=('2bd51da36c445157d92c08039814571362d09986cbe19fa3917f1a08fbadbc61')
 
 package() {
-    cd "$srcdir"
 
-    install -dm 755 "$pkgdir/usr/share/themes/Greybird Classic"
-    install -dm 755 "$pkgdir/usr/share/themes/Greybird Compact"
-    install -dm 755 "$pkgdir/usr/share/themes/Greybird a11y"
+    cd "$srcdir/Greybird-$pkgver"
+    meson --prefix="$pkgdir/usr" "build"
 
-    cp -r  "Greybird-$pkgver/" "$pkgdir/usr/share/themes/Greybird/"
-    rm -rf "$pkgdir/usr/share/themes/Greybird/.gitignore"
-
-    ln -s  "/usr/share/themes/Greybird/xfwm4-compact" \
-           "$pkgdir/usr/share/themes/Greybird Compact/xfwm4"
-
-    ln -s  "/usr/share/themes/Greybird/xfwm4-a11y" \
-           "$pkgdir/usr/share/themes/Greybird a11y/xfwm4"
+    cd "build"
+    ninja
+    ninja install
 }
