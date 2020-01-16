@@ -2,7 +2,7 @@
 
 pkgname=('aspnet-runtime-2.1')
 pkgver=2.1.15.sdk803
-pkgrel=1
+pkgrel=2
 pkgdesc='The ASP.NET Core runtime version 2.1' 
 arch=('x86_64' 'armv7h')
 url='https://www.microsoft.com/net/core'
@@ -19,7 +19,7 @@ package() {
   arch=('x86_64' 'armv7h')
   pkgdesc='The ASP.NET Core runtime version 2.1'
   depends=('dotnet-runtime-2.1')
-  provides=("aspnet-runtime-2.1")
+  provides=("aspnet-runtime-2.1" "aspnet-runtime=${pkgver}")
   conflicts=("aspnet-runtime-2.1")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
