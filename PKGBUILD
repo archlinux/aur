@@ -10,14 +10,14 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.0.1.canary.4.r302.g4f3e4522
+pkgver=3.0.1.canary.4.r310.g943186a5
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
 url="https://hyper.is/"
 license=('MIT')
-depends=('nodejs' 'electron' 'gconf')
-makedepends=('git' 'yarn' 'python2')
+depends=('nodejs')
+makedepends=('git' 'yarn' 'python')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
@@ -29,7 +29,7 @@ then
 fi
 
 source=(
-    "$pkgname::git+https://github.com/zeit/${pkgname/-git/}.git#branch=$HYPER_BRANCH"
+    "$pkgname::git+https://github.com/zeit/${_pkgname}.git#branch=$HYPER_BRANCH"
     "disable-auto-update.diff"
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
     "Hyper.desktop"
@@ -86,11 +86,6 @@ package() {
     # link the binary to /usr/bin
     cd $pkgdir/usr/bin
     ln -s "../lib/$pkgname/resources/bin/hyper" hyper
-
-    # # TODO: remove included electron libs and use the system ones by symlink
-    # cd "$_libinstall"
-    # rm libnode.so libffmpeg.so
-    # ln -s /usr/share/electron/lib{node,ffmpeg}.so .
 
     install -Dm644 "$srcdir/Hyper.desktop" "$pkgdir/usr/share/applications/Hyper.desktop"
     install -Dm644 "$srcdir/Hyper-Mark-120@3x.png" "$pkgdir/usr/share/pixmaps/hyper.png"
