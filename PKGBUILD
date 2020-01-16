@@ -2,15 +2,15 @@
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 pkgname=ignition-math
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="http://ignitionrobotics.org/"
 license=('Apache')
 groups=('development')
 depends=('gcc-libs')
-makedepends=('ignition-cmake>=2')
-optdepends=()
+makedepends=('ignition-cmake>=2' 'ruby<=2.7' 'ruby>=2.6')
+optdepends=('eigen')
 conflicts=()
 source=("https://bitbucket.org/ignitionrobotics/ign-math/get/${pkgname}6_${pkgver}.tar.bz2")
 sha256sums=('5463d2ee5202ad60965a613361c1b12e34d3a8c49ad9037b16120f89b0250745')
