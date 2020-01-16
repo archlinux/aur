@@ -1,0 +1,4 @@
+*~
+*.log
+check-cve-2019-19781-*.tar.gz
+check-cve-2019-19781-*.pkg.tar.xz

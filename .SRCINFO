@@ -1,0 +1,16 @@
+pkgbase = check-cve-2019-19781
+	pkgdesc = Citrix CVE-2019-19781 (#Shitrix) vulnerability/mitigation checker
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cisagov/check-cve-2019-19781
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	depends = python
+	depends = python-docopt
+	depends = python-schema
+	source = check-cve-2019-19781-1.0.2.tar.gz::https://github.com/cisagov/check-cve-2019-19781/archive/v1.0.2.tar.gz
+	sha256sums = fa2e4633b0ea7c4f758a2bc123c586721d24adbcd392d199a5a731d2196b3029
+
+pkgname = check-cve-2019-19781
+
