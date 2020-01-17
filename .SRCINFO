@@ -1,7 +1,8 @@
 pkgbase = nextcloud-app-calendar-git
 	pkgdesc = Calendar app for nextcloud
-	pkgver = 2.0.0.beta3.r33.g4448ad93
+	pkgver = 2.0.0.r1.g6a8575a0
 	pkgrel = 1
+	epoch = 1
 	url = http://nextcloud.com
 	arch = any
 	license = AGPL
