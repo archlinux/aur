@@ -7,7 +7,7 @@ pkgbase = python-colorful
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = python-colorful-0.5.4.tar.gz::https://github.com/timofurrer/colorful/archive/v0.5.4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/colorful/colorful-0.5.4.tar.gz
 	sha256sums = 6800079a7bd4a3d17b4915b195267f80802703df8fe276565e5cedf7691807dd
 
 pkgname = python-colorful
