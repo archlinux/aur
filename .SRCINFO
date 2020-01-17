@@ -1,0 +1,21 @@
+pkgbase = ocaml-dtoa
+	pkgdesc = double-to-ascii ocaml implementation
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/flowtype/ocaml-dtoa
+	arch = x86_64
+	arch = i686
+	license = MIT
+	checkdepends = ocaml-ounit
+	makedepends = dune
+	makedepends = ocaml-findlib
+	depends = ocaml
+	options = !strip
+	source = ocaml-dtoa-0.3.2-1.tar.gz::https://github.com/flowtype/ocaml-dtoa/archive/v0.3.2.tar.gz
+	source = fix-ounit-name.diff
+	source = fix-tests.diff
+	sha256sums = 967bdcf83f67491a27a3e0c31bb55696f4f89a00be9aa0b3a248c7ef14374afd
+	sha256sums = 9b26ee783aeba8c8a2f299e2fd061d06ebceac61cbe13becd2debb93b61aa4e4
+	sha256sums = fc4ab96c8be38e7a2440ad80b474631829d48ae4a25c16a886997304d44da4b1
+
+pkgname = ocaml-dtoa

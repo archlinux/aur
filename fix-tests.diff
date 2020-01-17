@@ -1,0 +1,51 @@
+diff --git a/test/ecma_test.ml b/test/ecma_test.ml
+index 7e27652..de62c95 100644
+--- a/test/ecma_test.ml
++++ b/test/ecma_test.ml
+@@ -50,9 +50,9 @@ let tests = "ecma_string_of_float" >::: [
+
+     eq                  "5e-324" (ecma_string_of_float 5e-324);
+     eq "1.7976931348623157e+308" (ecma_string_of_float 1.7976931348623157e308);
+-    eq                     "NaN" (ecma_string_of_float Pervasives.nan);
+-    eq                "Infinity" (ecma_string_of_float Pervasives.infinity);
+-    eq               "-Infinity" (ecma_string_of_float Pervasives.neg_infinity);
++    eq                     "NaN" (ecma_string_of_float Stdlib.nan);
++    eq                "Infinity" (ecma_string_of_float Stdlib.infinity);
++    eq               "-Infinity" (ecma_string_of_float Stdlib.neg_infinity);
+
+     (* grisu3 fails, uses bignum *)
+     eq             "0.000035689" (ecma_string_of_float 0.000035689);
+diff --git a/test/g_fmt_test.ml b/test/g_fmt_test.ml
+index 9d0ae95..201377c 100644
+--- a/test/g_fmt_test.ml
++++ b/test/g_fmt_test.ml
+@@ -49,9 +49,9 @@ let tests = "g_fmt" >::: [
+
+     eq                  "5e-324" (g_fmt 5e-324);
+     eq "1.7976931348623157e+308" (g_fmt 1.7976931348623157e308);
+-    eq                     "NaN" (g_fmt Pervasives.nan);
+-    eq                "Infinity" (g_fmt Pervasives.infinity);
+-    eq               "-Infinity" (g_fmt Pervasives.neg_infinity);
++    eq                     "NaN" (g_fmt Stdlib.nan);
++    eq                "Infinity" (g_fmt Stdlib.infinity);
++    eq               "-Infinity" (g_fmt Stdlib.neg_infinity);
+
+     (* grisu3 fails, uses bignum *)
+     eq               "3.5689e-5" (g_fmt 0.000035689);
+diff --git a/test/shortest_test.ml b/test/shortest_test.ml
+index 0c7226a..2071bb0 100644
+--- a/test/shortest_test.ml
++++ b/test/shortest_test.ml
+@@ -53,9 +53,9 @@ let tests = "shortest_string_of_float" >::: [
+
+     eq                 "5e-324" (shortest_string_of_float 5e-324);
+     eq  "17976931348623157e292" (shortest_string_of_float 1.7976931348623157e308);
+-    eq                    "NaN" (shortest_string_of_float Pervasives.nan);
+-    eq               "Infinity" (shortest_string_of_float Pervasives.infinity);
+-    eq              "-Infinity" (shortest_string_of_float Pervasives.neg_infinity);
++    eq                    "NaN" (shortest_string_of_float Stdlib.nan);
++    eq               "Infinity" (shortest_string_of_float Stdlib.infinity);
++    eq              "-Infinity" (shortest_string_of_float Stdlib.neg_infinity);
+
+     (* grisu3 fails, uses bignum *)
+     eq               "35689e-9" (shortest_string_of_float 0.000035689);

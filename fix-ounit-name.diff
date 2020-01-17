@@ -1,0 +1,12 @@
+diff --git a/test/dune b/test/dune
+index 6a4b3b9..64327be 100644
+--- a/test/dune
++++ b/test/dune
+@@ -1,6 +1,6 @@
+ (executable
+  (name test)
+- (libraries dtoa oUnit))
++ (libraries dtoa ounit2))
+ 
+ (alias
+  (name runtest)
