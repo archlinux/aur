@@ -1,7 +1,7 @@
 pkgbase = xcursor-hackneyed
 	pkgdesc = Cursor theme inspired by Windows 3.x with high-contrast and sensible use of colors
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/Enthymeme/hackneyed-x11-cursors/
 	arch = any
 	license = custom:MIT
@@ -12,5 +12,10 @@ pkgbase = xcursor-hackneyed
 	source = https://gitlab.com/Enthymeme/hackneyed-x11-cursors//-/archive/0.8/hackneyed-x11-cursors-0.8.tar.bz2
 	sha512sums = 90fef39c02242ad51eb23cadc1afb90bd1df2428eba82a30860cb52e16bac237fb7bde11d5c917791c109a1d2b2c461c3352e4c11be3a4bd4e625656496a3d3f
 
-pkgname = xcursor-hackneyed
+pkgname = xcursor-hackneyed-light
+	conflicts = xcursor-hackneyed
+	replaces = xcursor-hackneyed
+
+pkgname = xcursor-hackneyed-dark
+	pkgdesc = Cursor theme inspired by Windows 3.x with high-contrast and sensible use of colors (dark variant)
 
