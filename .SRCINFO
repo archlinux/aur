@@ -16,8 +16,6 @@ pkgbase = gxr-git
 	optdepends = monado-git: The open source OpenXR runtime.
 	provides = gxr=0.13.99.813.56622d0
 	conflicts = gxr
-	options = debug
-	options = !strip
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gxr.git
 	md5sums = SKIP
 

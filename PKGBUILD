@@ -12,7 +12,6 @@ provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'vulkan-headers')
 license=('MIT')
-options=('debug' '!strip')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
 
