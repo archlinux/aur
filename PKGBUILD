@@ -1,6 +1,6 @@
 # Maintainer: herzrasen <dennis@herzrasen.me>
 pkgname=pkghist-bin
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Query your pacman logs. Precompiled binary."
 arch=('x86_64')
