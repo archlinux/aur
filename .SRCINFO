@@ -1,8 +1,8 @@
 pkgbase = chef-dk-free
 	pkgdesc = The Chef development kit contains all the tools you need to develop and test your infrastructure, built by the awesome Chef community. Non-commercial, free distribution.
-	pkgver = 3.12.10
+	pkgver = 3.13.1
 	pkgrel = 1
-	url = https://downloads.chef.io/chef-dk/
+	url = https://downloads.chef.io/chefdk/
 	arch = x86_64
 	license = Apache
 	conflicts = chef
@@ -10,8 +10,8 @@ pkgbase = chef-dk-free
 	conflicts = chef-dk
 	conflicts = chef-solo
 	conflicts = chef-workstation
-	source = https://packages.chef.io/files/stable/chefdk/3.12.10/debian/9/chefdk_3.12.10-1_amd64.deb
-	sha256sums = bc24c810aca81d4b2add7a99709247182e812783298ddc54998e6844b54e8e60
+	source = https://packages.chef.io/files/stable/chefdk/3.13.1/debian/9/chefdk_3.13.1-1_amd64.deb
+	sha256sums = 455bdb8828a1f9f50eb12dba49343cf77a165381eba3f4bed6a10a11c87d03c3
 
 pkgname = chef-dk-free
 
