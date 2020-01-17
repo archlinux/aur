@@ -29,9 +29,8 @@ pkgver() {
 }
 
 build() {
-  cd $_realname
   rm -rf build
-  meson build --prefix=/usr/ --libdir=lib
+  arch-meson $_realname build
   ninja -C build
 }
 
