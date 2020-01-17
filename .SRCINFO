@@ -8,7 +8,7 @@ pkgbase = python-block_tracing
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = python-block_tracing-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/b/block_tracing/block_tracing-1.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/block_tracing/block_tracing-1.0.1.tar.gz
 	sha256sums = 9faa009a702a8f2f605ebb78314d5ca2a2a93543d061038a3d3a978c93385e68
 
 pkgname = python-block_tracing
