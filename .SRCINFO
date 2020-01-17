@@ -1,6 +1,6 @@
 pkgbase = cutecom-git
 	pkgdesc = A graphical serial terminal (git master)
-	pkgver = v0.51.0.r14.ge840840
+	pkgver = 0.51.0.r14.ge840840
 	pkgrel = 1
 	url = https://gitlab.com/cutecom/cutecom
 	arch = x86_64

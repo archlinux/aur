@@ -4,7 +4,7 @@
 #   Contributor: Nils Bars <nils@nbars.de>
 
 pkgname=cutecom-git
-pkgver=v0.51.0.r14.ge840840
+pkgver=0.51.0.r14.ge840840
 pkgrel=1
 pkgdesc="A graphical serial terminal (git master)"
 arch=('x86_64')
@@ -18,7 +18,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
