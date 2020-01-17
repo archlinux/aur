@@ -36,6 +36,7 @@ check() {
 }
 
 package() {
-  depends=(gnome-shell)
   DESTDIR="$pkgdir" meson install -C build
+
+  install -Dm644 "${srcdir}"/gnome-shell-extension-xrdesktop/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
