@@ -1,0 +1,16 @@
+pkgbase = gdmd-git
+	pkgdesc = DMD-like wrapper for GDC
+	pkgver = r31.1a4bcb2
+	pkgrel = 1
+	url = https://github.com/D-Programming-GDC/gdmd
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	provides = gdmd
+	conflicts = gdmd
+	source = git+https://github.com/D-Programming-GDC/GDMD.git
+	md5sums = SKIP
+
+pkgname = gdmd-git
+
