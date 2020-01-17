@@ -2,12 +2,12 @@
  
 _realname='gulkan'
 pkgname="$_realname-git"
-pkgver=0.13.2.137.80ab70f
+pkgver=0.13.99.140.9684b5e
 pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gulkan'
-depends=('glib2' 'gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo')
+depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'gtk-doc')
@@ -44,4 +44,6 @@ build() {
 package() {
   cd $_realname
   DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dm644 "${srcdir}"/gulkan/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
