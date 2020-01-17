@@ -1,0 +1,21 @@
+pkgbase = sweethome3d-3dmodels-lucapresidente
+	pkgdesc = Free 3D models advertised on SweetHome3D website
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = http://www.sweethome3d.com/freeModels.jsp
+	install = sweethome3d-3dmodels-lucapresidente.install
+	arch = any
+	license = custom:FreeArtLicence
+	optdepends = sweethome3d: Models rendering
+	optdepends = sweethome3d-3dmodels-blendswap-cc0: More 3D models
+	optdepends = sweethome3d-3dmodels-blendswap-ccby: More 3D models
+	optdepends = sweethome3d-3dmodels-contributions: More 3D models
+	optdepends = sweethome3d-3dmodels-katorlegaz: More 3D models
+	optdepends = sweethome3d-3dmodels-reallusion: More 3D models
+	optdepends = sweethome3d-3dmodels-scopia: More 3D models
+	optdepends = sweethome3d-3dmodels-trees: More 3D models
+	source = http://prdownloads.sourceforge.net/sweethome3d/3DModels-LucaPresidente-1.7.1.zip
+	sha1sums = 61ec0100519b01b0e72afaaf063987a19a19f298
+
+pkgname = sweethome3d-3dmodels-lucapresidente
+

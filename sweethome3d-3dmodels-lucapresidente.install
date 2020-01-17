@@ -1,0 +1,23 @@
+set -eu
+user_path=".eteks/sweethome3d/furniture/"
+
+# arg 1:  the new package version
+post_install() {
+    find /home/* -maxdepth 0 -type d \! -user root -print0 | while IFS= read -r -d '' user_home; do
+        mkdir -p "${user_home}/${user_path}"
+        for lib in /usr/share/eteks/sweethome3d/furniture/lucapresidente/*.sh3f; do
+            ln -s "$lib" "${user_home}/${user_path}/"
+        done
+    done
+}
+
+# arg 1:  the old package version
+pre_remove() {
+    find /home/* -maxdepth 0 -type d \! -user root -print0 | while IFS= read -r -d '' user_home; do
+        rm -f "${user_home}/${user_path}/lucapresidente-*.sh3f"
+        (
+            cd "${user_home}" && rmdir --ignore-fail-on-non-empty -p "${user_path}"
+        )
+    done
+}
+
