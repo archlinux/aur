@@ -30,19 +30,16 @@ pkgver() {
 }
 
 build() {
-  cd $basename
   rm -rf build
-  meson build --prefix=/usr/ --libdir=lib
+  arch-meson $basename build --libdir=lib --buildtype release
   ninja -C build
 }
 
 check() {
-  cd $basename
   meson test -C build/ --no-suite xr --no-suite post-install
 }
 
 package() {
-  cd $basename
   DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 "${srcdir}"/xrdesktop/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
