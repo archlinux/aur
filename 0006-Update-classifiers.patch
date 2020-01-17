@@ -1,0 +1,25 @@
+From f8e5f6994aca3938ef6dc2392573acce4eb278fc Mon Sep 17 00:00:00 2001
+From: Alessandro Pisa <alessandro.pisa@gmail.com>
+Date: Thu, 13 Jul 2017 12:30:20 +0200
+Subject: [PATCH 6/8] Update classifiers
+
+Closes rspivak/slimit#91
+---
+ setup.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setup.py b/setup.py
+index ba95396..4c73828 100644
+--- a/setup.py
++++ b/setup.py
+@@ -11,6 +11,7 @@ classifiers = """\
+ Intended Audience :: Developers
+ License :: OSI Approved :: MIT License
+ Programming Language :: Python
++Programming Language :: Python :: 3
+ Topic :: Software Development :: Compilers
+ Operating System :: Unix
+ """
+-- 
+2.25.0
+

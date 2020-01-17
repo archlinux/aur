@@ -1,0 +1,26 @@
+From bb5e1b0b937268622305e945b9898c1c4d610b77 Mon Sep 17 00:00:00 2001
+From: Antti Haapala <antti.haapala@proxion.fi>
+Date: Wed, 13 Jul 2016 17:01:42 +0300
+Subject: [PATCH 5/8] fix the `identifier` regular expression by coalescing
+ alternated character classes into one.
+
+---
+ src/slimit/lexer.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/slimit/lexer.py b/src/slimit/lexer.py
+index 06cd7c5..986a882 100644
+--- a/src/slimit/lexer.py
++++ b/src/slimit/lexer.py
+@@ -414,7 +414,7 @@ class Lexer(object):
+         r'(?:' + COMBINING_MARK + r'|' + r'[0-9a-zA-Z_$]' + r'|' + DIGIT +
+         r'|' + CONNECTOR_PUNCTUATION + r')*'
+         )
+-    identifier = identifier_start + identifier_part
++    identifier = (identifier_start + identifier_part).replace(']|[', '')
+ 
+     getprop = r'get' + r'(?=\s' + identifier + r')'
+     @ply.lex.TOKEN(getprop)
+-- 
+2.25.0
+

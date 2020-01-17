@@ -1,0 +1,48 @@
+From cf6268540d5ed2781565eae53311be98bc4466e0 Mon Sep 17 00:00:00 2001
+From: Adam Chainz <adam@adamj.eu>
+Date: Sat, 11 Jun 2016 11:12:45 +0100
+Subject: [PATCH 4/8] Convert readthedocs links for their .org -> .io migration
+ for hosted projects
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+As per [their blog post of the 27th April](https://blog.readthedocs.com/securing-subdomains/) ‘Securing subdomains’:
+
+> Starting today, Read the Docs will start hosting projects from subdomains on the domain readthedocs.io, instead of on readthedocs.org. This change addresses some security concerns around site cookies while hosting user generated data on the same domain as our dashboard.
+
+Test Plan: Manually visited all the links I’ve modified.
+---
+ README.rst | 2 +-
+ setup.py   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 8e20b87..e7708e1 100644
+--- a/README.rst
++++ b/README.rst
+@@ -18,7 +18,7 @@ and runs faster.
+ `SlimIt` also provides a library that includes a JavaScript parser,
+ lexer, pretty printer and a tree visitor.
+ 
+-`http://slimit.readthedocs.org/ <http://slimit.readthedocs.org/>`_
++`https://slimit.readthedocs.io/ <https://slimit.readthedocs.io/>`_
+ 
+ Installation
+ ------------
+diff --git a/setup.py b/setup.py
+index 0dede46..ba95396 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,7 @@ def read(*rel_names):
+ setup(
+     name='slimit',
+     version='0.8.1',
+-    url='http://slimit.readthedocs.org',
++    url='https://slimit.readthedocs.io',
+     cmdclass = {'build_py': build_py},
+     license='MIT',
+     description='SlimIt - JavaScript minifier',
+-- 
+2.25.0
+

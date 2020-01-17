@@ -1,0 +1,33 @@
+From 9e4c51a6facfea3daab4d678623acea622bd69b1 Mon Sep 17 00:00:00 2001
+From: Thomas Kluyver <takowl@gmail.com>
+Date: Fri, 19 Jan 2018 18:03:14 +0000
+Subject: [PATCH 7/8] Remove outdated link to slimit.org
+
+The domain has expired (it redirects to a page at `buydomains.com`), so it shouldn't be linked from the docs.
+---
+ docs/source/index.rst | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/docs/source/index.rst b/docs/source/index.rst
+index e9dcf45..652a6e6 100644
+--- a/docs/source/index.rst
++++ b/docs/source/index.rst
+@@ -13,8 +13,6 @@ and runs faster.
+ `SlimIt` also provides a library that includes a JavaScript parser,
+ lexer, pretty printer and a tree visitor.
+ 
+-`http://slimit.org/ <http://slimit.org/>`_
+-
+ Installation
+ ------------
+ 
+@@ -183,4 +181,4 @@ Roadmap
+ 
+ License
+ -------
+-The MIT License (MIT)
+\ No newline at end of file
++The MIT License (MIT)
+-- 
+2.25.0
+

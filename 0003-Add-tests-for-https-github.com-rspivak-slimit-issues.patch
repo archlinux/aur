@@ -1,0 +1,56 @@
+From 7b9f5ecd536c101d7bbbf357530e7e034a5a5024 Mon Sep 17 00:00:00 2001
+From: Ruslan Spivak <rspivak@Ruslans-MacBook-Air.local>
+Date: Thu, 25 Apr 2013 21:54:37 -0400
+Subject: [PATCH 3/8] Add tests for https://github.com/rspivak/slimit/issues/47
+
+---
+ src/slimit/tests/test_minifier.py | 34 ++++++++++++++++++++++++++++---
+ 1 file changed, 31 insertions(+), 3 deletions(-)
+
+diff --git a/src/slimit/tests/test_minifier.py b/src/slimit/tests/test_minifier.py
+index e1b3e1d..e999335 100644
+--- a/src/slimit/tests/test_minifier.py
++++ b/src/slimit/tests/test_minifier.py
+@@ -435,8 +435,36 @@ class MinifierTestCase(unittest.TestCase):
+           'this.last=names[1];}};')
+         ),
+ 
+-        ('testObj[":"] = undefined;', 'testObj[":"]=undefined;'),
+-        ('testObj["::"] = undefined;', 'testObj["::"]=undefined;'),
+-
++        # https://github.com/rspivak/slimit/issues/47 - might be a Python 3
++        # related issue
++        ('testObj[":"] = undefined; // Breaks', 'testObj[":"]=undefined;'),
++        ('testObj["::"] = undefined; // Breaks', 'testObj["::"]=undefined;'),
++        ('testObj["a:"] = undefined; // Breaks', 'testObj["a:"]=undefined;'),
++        ('testObj["."] = undefined; // OK', 'testObj["."]=undefined;'),
++        ('testObj["{"] = undefined; // OK', 'testObj["{"]=undefined;'),
++        ('testObj["}"] = undefined; // OK', 'testObj["}"]=undefined;'),
++        ('testObj["["] = undefined; // Breaks', 'testObj["["]=undefined;'),
++        ('testObj["]"] = undefined; // Breaks', 'testObj["]"]=undefined;'),
++        ('testObj["("] = undefined; // OK', 'testObj["("]=undefined;'),
++        ('testObj[")"] = undefined; // OK', 'testObj[")"]=undefined;'),
++        ('testObj["="] = undefined; // Breaks', 'testObj["="]=undefined;'),
++        ('testObj["-"] = undefined; // OK', 'testObj["-"]=undefined;'),
++        ('testObj["+"] = undefined; // OK', 'testObj["+"]=undefined;'),
++        ('testObj["*"] = undefined; // OK', 'testObj["*"]=undefined;'),
++        ('testObj["/"] = undefined; // OK', 'testObj["/"]=undefined;'),
++        (r'testObj["\\"] = undefined; // Breaks', r'testObj["\\"]=undefined;'),
++        ('testObj["%"] = undefined; // OK', 'testObj["%"]=undefined;'),
++        ('testObj["<"] = undefined; // Breaks', 'testObj["<"]=undefined;'),
++        ('testObj[">"] = undefined; // Breaks', 'testObj[">"]=undefined;'),
++        ('testObj["!"] = undefined; // OK', 'testObj["!"]=undefined;'),
++        ('testObj["?"] = undefined; // Breaks', 'testObj["?"]=undefined;'),
++        ('testObj[","] = undefined; // OK', 'testObj[","]=undefined;'),
++        ('testObj["@"] = undefined; // Breaks', 'testObj["@"]=undefined;'),
++        ('testObj["#"] = undefined; // OK', 'testObj["#"]=undefined;'),
++        ('testObj["&"] = undefined; // OK', 'testObj["&"]=undefined;'),
++        ('testObj["|"] = undefined; // OK', 'testObj["|"]=undefined;'),
++        ('testObj["~"] = undefined; // OK', 'testObj["~"]=undefined;'),
++        ('testObj["`"] = undefined; // Breaks', 'testObj["`"]=undefined;'),
++        ('testObj["."] = undefined; // OK', 'testObj["."]=undefined;'),
+         ]
+ 
+-- 
+2.25.0
+
