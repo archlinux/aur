@@ -1,11 +1,11 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
-pkgver=1.3.1
-pkgrel=8
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -13,9 +13,13 @@ license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'magma')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
-        fix_include_system.patch)
+        fix_include_system.patch
+        https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/30332.patch
+        https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/30333.patch)
 sha256sums=('SKIP'
-            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9')
+            '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
+            '3170551116798dc496636a87f00b86c6463895bb6d174df616c5224adfb74ff3'
+            'c8c305c892be85c47872ae1f1ecd5b3b8af12876fbfe3641045c8c839e5126da')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -34,11 +38,12 @@ prepare() {
   # https://github.com/pytorch/pytorch/issues/26555
   sed -i 's#^  ${CMAKE_CURRENT_SOURCE_DIR}/tensor_iterator_test.cpp##g' aten/src/ATen/test/CMakeLists.txt
 
-  # Fix build with Python 3.8
-  # https://github.com/pytorch/pytorch/issues/28060
-  find -name '*.cpp' -exec sed -i '/tp_print/s/nullptr/0/' {} +
-
+  # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
+
+  # https://github.com/pytorch/pytorch/issues/32277
+  patch -Np1 -i "$srcdir"/30332.patch
+  patch -Np1 -i "$srcdir"/30333.patch
 
   cd ..
 
