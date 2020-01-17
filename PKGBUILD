@@ -7,8 +7,8 @@
 pkgname=acroread-fonts-systemwide
 epoch=1
 _cloudver=DC
-_ver=2015.020.20039
-_fontpackver=2015.007.20033
+_ver=2019.021.20058
+_fontpackver=2019.021.20058
 _shortver=${_ver:2}
 _nodotver=${_shortver//.}
 _fpshortver=${_fontpackver:2}
@@ -28,16 +28,16 @@ conflicts=('ttf-adobe-fonts'
 source=("http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/${_nodotver}/AcroRdr${_cloudver}${_nodotver}_en_US.exe"
         "http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/misc/FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi")
 noextract=("AcroRdr${_cloudver}${_nodotver}_en_US.exe")
-sha256sums=('a7c4f313ca013c8228ea534f9237fd4e559127adf6685eabd9dadeb64a738408'
-            '38ca687a30e3b40a9e8ba24275e4619db9914a572b7b6a5d6de1df452e0a7a47')
+sha256sums=('6bd68fea89cd6994715fe769717cc269fee78429fc12430e1a93a1cf7bb64b81'
+            'b5b9e15791a177715fa5e93ea458f8627cada7ac3218531461cfd35cecef6c24')
 
 prepare() {
   cd "$srcdir"
 
-  7z -i!Data1.cab e AcroRdr${_cloudver}${_nodotver}_en_US.exe
-  7z -i!*.otf e Data1.cab
-  7z -i!license.html19 e Data1.cab
-  7z -i\!*.o* e FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi
+  7z -y -i!Data1.cab e AcroRdr${_cloudver}${_nodotver}_en_US.exe
+  7z -y -i!*.otf e Data1.cab
+  7z -y -i!license.html19 e Data1.cab
+  7z -y -i\!*.o* e FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi
   mv adobedevanagari_bolditalic.o adobedevanagari_bolditalic.otf
 }
 
