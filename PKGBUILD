@@ -1,43 +1,37 @@
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
+
 pkgname=svt-av1-git
-pkgver=r125.a30e1f6
+pkgver=0.8.0.r23.gba3dd448
 pkgrel=1
-pkgdesc="The Scalable Video Technology for AV1 Encoder (SVT-AV1 Encoder) is an AV1-compliant encoder library core."
-arch=('x86_64' 'i686')
-url="https://github.com/OpenVisualCloud/SVT-AV1"
-license=('GPL')
-groups=()
-depends=()
-makedepends=('cmake' 'gcc' 'yasm' 'git')
-checkdepends=()
-optdepends=()
+pkgdesc='Scalable Video Technology AV1 encoder (git version)'
+arch=('x86_64')
+url='https://github.com/OpenVisualCloud/SVT-AV1/'
+license=('BSD')
+depends=('glibc')
+makedepends=('git' 'cmake' 'nasm')
 provides=('svt-av1')
-conflicts=()
-replaces=('svt-av1')
-backup=()
-options=()
-install=
-changelog=
-source=(svt-av1::git+https://github.com/OpenVisualCloud/SVT-AV1.git)
-md5sums=('SKIP')
+conflicts=('svt-av1')
+source=('git+https://github.com/OpenVisualCloud/SVT-AV1.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd SVT-AV1
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p build
-	cd build
-	cmake .. -DCMAKE_BUILD_TYPE='Release' \
-	-DCMAKE_INSTALL_PREFIX='/usr' \
-	-DBUILD_TESTING=False
-	make
+    export LDFLAGS+=' -Wl,-z,noexecstack'
+    cmake -B build -S SVT-AV1 \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
+        -DNATIVE:BOOL='OFF' \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"/build
-	make DESTDIR="$pkgdir/" install
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 SVT-AV1/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
