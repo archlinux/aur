@@ -15,7 +15,7 @@ pkgbase = sqltabs-bin
 	source = sqltabs.desktop
 	sha256sums = 67e15b5d8ed5e2baa176ac650b394c1f0fdeb6dc6e0e493f1ef3acc1569c1c82
 	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
-	sha256sums = 64639df2a4ac4c55faafcfae5a83829d5914205b92e7e755973197172cc3531e
+	sha256sums = 389342394f9fc044c8a5c2ebf3df8dec97b7def948d73980d6fcbf4fec3f3901
 
 pkgname = sqltabs-bin
 
