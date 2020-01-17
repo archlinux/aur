@@ -4,12 +4,12 @@
 _gemname=acme-client
 pkgname=ruby-$_gemname
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for the ACME protocol.'
 arch=(any)
 url='http://github.com/unixcharles/acme-client'
 license=(MIT)
-depends=(ruby ruby-faraday)
+depends=(ruby ruby-faraday-0.9)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
