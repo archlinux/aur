@@ -17,8 +17,6 @@ pkgbase = gulkan-git
 	depends = cairo
 	provides = gulkan=0.13.99.140.9684b5e
 	conflicts = gulkan
-	options = debug
-	options = !strip
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git
 	md5sums = SKIP
 

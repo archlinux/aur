@@ -12,7 +12,6 @@ provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'gtk-doc')
 license=('MIT')
-options=('debug' '!strip')
 
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git')
 md5sums=('SKIP')
