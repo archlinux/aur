@@ -15,10 +15,9 @@ pkgbase = dbxfs
 	depends = python-privy
 	depends = python-keyrings-alt
 	depends = python-sentry_sdk
-	replaces = python-dbxfs
-	source = dbxfs-1.0.43.tar.gz::https://github.com/rianhunter/dbxfs/archive/v1.0.43.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/dbxfs/dbxfs-1.0.43.tar.gz
 	source = dbxfs.patch
-	sha256sums = 9bf6738968c09edb650accb8ff7e6ee9b48d44ac31b95f5fcf0cdc06331cde05
+	sha256sums = 7a1a21eadf1db674555c994f523bcd5537e95c532ce7af79ecad04d195f03ab9
 	sha256sums = cc238c6562ec327efeba4f48e4523808338658b2b1f38b1fb6a901ba938c4868
 
 pkgname = dbxfs
