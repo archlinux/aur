@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('sgtk-menu')
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="GTK menu for sway and i3"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('python-i3ipc: to avoid deprecation warnings')
 
 source=("https://github.com/nwg-piotr/sgtk-menu/archive/v$pkgver.tar.gz")
 
-md5sums=('ca349275e68999d76c4ad1459f3e144f')
+md5sums=('dfd900c6395dc330785b7df012b1eeb7')
 
 package() {
   install -D -m 755 "$pkgname"-"$pkgver"/dist/sgtk-menu-arch "$pkgdir"/usr/bin/sgtk-menu
