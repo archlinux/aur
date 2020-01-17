@@ -1,43 +1,37 @@
-# Maintainer: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Thomas Schneider <maxmusterm@gmail.com>
+
 pkgname=svt-vp9-git
-pkgver=r6.e92a57c
+pkgver=0.1.0.r6.g420f9f3
 pkgrel=1
-pkgdesc="The Scalable Video Technology for VP9 Encoder (SVT-VP9 Encoder) is an VP9-compliant encoder library core."
-arch=('x86_64' 'i686')
-url="https://github.com/OpenVisualCloud/SVT-VP9"
-license=('GPL')
-groups=()
-depends=()
-makedepends=('cmake' 'gcc' 'yasm' 'git')
-checkdepends=()
-optdepends=()
+pkgdesc='Scalable Video Technology VP9 encoder (git version)'
+arch=('x86_64')
+url='https://github.com/OpenVisualCloud/SVT-VP9/'
+license=('BSD')
+depends=('glibc')
+makedepends=('git' 'cmake' 'nasm')
 provides=('svt-vp9')
-conflicts=()
-replaces=('svt-vp9')
-backup=()
-options=()
-install=
-changelog=
-source=(svt-vp9::git+https://github.com/OpenVisualCloud/SVT-VP9.git)
-md5sums=('SKIP')
+conflicts=('svt-vp9')
+source=('git+https://github.com/OpenVisualCloud/SVT-VP9.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd SVT-VP9
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	mkdir -p build
-	cd build
-	cmake .. -DCMAKE_BUILD_TYPE='Release' \
-	-DCMAKE_INSTALL_PREFIX='/usr'
-#	-DBUILD_TESTING=False
-	make
+    export LDFLAGS+=' -Wl,-z,noexecstack'
+    cmake -B build -S SVT-VP9 \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
+        -DNATIVE:BOOL='OFF' \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"/build
-	make DESTDIR="$pkgdir/" install
+    make -C build DESTDIR="$pkgdir" install
+    install -D -m644 SVT-VP9/LICENSE.md -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
-

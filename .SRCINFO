@@ -1,19 +1,18 @@
 pkgbase = svt-vp9-git
-	pkgdesc = The Scalable Video Technology for VP9 Encoder (SVT-VP9 Encoder) is an VP9-compliant encoder library core.
-	pkgver = r6.e92a57c
+	pkgdesc = Scalable Video Technology VP9 encoder (git version)
+	pkgver = 0.1.0.r6.g420f9f3
 	pkgrel = 1
-	url = https://github.com/OpenVisualCloud/SVT-VP9
+	url = https://github.com/OpenVisualCloud/SVT-VP9/
 	arch = x86_64
-	arch = i686
-	license = GPL
-	makedepends = cmake
-	makedepends = gcc
-	makedepends = yasm
+	license = BSD
 	makedepends = git
+	makedepends = cmake
+	makedepends = nasm
+	depends = glibc
 	provides = svt-vp9
-	replaces = svt-vp9
-	source = svt-vp9::git+https://github.com/OpenVisualCloud/SVT-VP9.git
-	md5sums = SKIP
+	conflicts = svt-vp9
+	source = git+https://github.com/OpenVisualCloud/SVT-VP9.git
+	sha256sums = SKIP
 
 pkgname = svt-vp9-git
 
