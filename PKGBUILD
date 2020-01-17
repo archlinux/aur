@@ -2,7 +2,7 @@
 
 pkgname=python-language-server-black
 _pkgname=pyls-black
-pkgver=0.3.0
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Black plugin for the Python Language Server."
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 makedepends=("python" "python-setuptools" "python-language-server" "python-black")
 makedepends=("python" "python-language-server" "python-black")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rupert/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("5c5a9221f1176ac75e8bf9ec3676114096e33f8a8dd587f4cf58679ebf2ce550")
+sha256sums=("673e16cdba7eb929a22829a2962a3f2b645eb81723c5e82174c3323b25c6ec83")
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
