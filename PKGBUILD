@@ -3,7 +3,7 @@
 
 pkgname=papermc-14
 _pkgver=1.14.4
-_build=238
+_build=240
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance (version for Minecraft 1.14)"
