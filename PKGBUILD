@@ -2,9 +2,9 @@
 # Contributor: Leonardo Santana Vieira <leosanvieira at gmail dot com>
 
 pkgname=imagescan
-pkgver=3.61.0
+pkgver=3.62.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=2
+pkgrel=1
 pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
 arch=(x86_64)
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
@@ -13,7 +13,7 @@ depends=(sane gtkmm graphicsmagick boost-libs)
 makedepends=(boost)
 optdepends=('tesseract: OCR support')
 source=(https://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_$pkgver.orig.tar.gz)
-sha256sums=('2fee01b65e43709a110db438b1b8d1ca70a193be6880d7118055c95a8d3fcbf5')
+sha256sums=('683204986061c8833a30482b1ec7cd183aac079f464bd7d0a591ca0f97067e32')
 backup=('etc/utsushi/utsushi.conf')
 
 prepare() {
