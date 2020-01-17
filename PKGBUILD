@@ -13,7 +13,7 @@ conflicts=('sqltabs')
 depends=('perl')
 optdepends=(
   'nvm'
-  'node>=10'
+  'nodejs>=10'
 )
 source=(
   'https://github.com/sasha-alias/sqltabs/releases/download/v1.0.0/sqltabs.linux.tar.gz'
