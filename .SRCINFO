@@ -39,8 +39,6 @@ pkgbase = gnome-shell-xrdesktop-git
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell=3.34.3
 	conflicts = gnome-shell
-	options = debug
-	options = !strip
 	source = gnome-shell::git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.34.3-xrdesktop
 	source = git+https://git.gnome.org/browse/libgnome-volume-control
 	sha256sums = SKIP

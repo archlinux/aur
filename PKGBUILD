@@ -26,7 +26,6 @@ source=($basename::"git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git
 
 sha256sums=('SKIP'
             'SKIP')
-options=('debug' '!strip')
 
 pkgver() {
   cd $basename
