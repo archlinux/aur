@@ -30,7 +30,7 @@ build() {
 }
 
 package_python-numdifftools() {
-  depends=('python-numpy' 'python-scipy' 'python-algopy' 'python-statsmodel')
+  depends=('python-numpy' 'python-scipy' 'python-algopy' 'python-statsmodels')
 
   cd "${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
@@ -40,7 +40,7 @@ package_python-numdifftools() {
 }
 
 package_python2-numdifftools() {
-  depends=('python2-numpy' 'python2-scipy' 'python2-algopy' 'python2-statsmodel')
+  depends=('python2-numpy' 'python2-scipy' 'python2-algopy' 'python2-statsmodels')
 
   cd "${_name}-py2-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
