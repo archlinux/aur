@@ -9,9 +9,8 @@ url="https://github.com/timofurrer/colorful"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
-")
-sha256sums=('6800079a7bd4a3d17b4915b195267f80802703df8fe276565e5cedf7691807dd')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('86848ad4e2eda60cd2519d8698945d22f6f6551e23e95f3f14dfbb60997807ea')
 
 build() {
 	cd "$_name-$pkgver"
