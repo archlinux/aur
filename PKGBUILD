@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-privy-git
 pkgver=r67.624bb58
 pkgrel=5
@@ -26,6 +26,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 "LICENSE-MIT" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE-MIT"
-	install -Dm644 "LICENSE-APACHE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE-APACHE"
+
+	install -Dm644 LICENSE-MIT LICENSE-APACHE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
