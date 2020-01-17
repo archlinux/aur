@@ -21,7 +21,7 @@ install=${pkgname}.install
 changelog="${pkgname}.Changelog"
 _srcdir="${pkgname%-git}"
 source=(
-  'git+https://github.com/DisplayLink/evdi/'
+  'git+https://github.com/DisplayLink/evdi'
   'https://crazy.dev.frugalware.org/evdi-all-in-one-fixes.patch'
   #'relro.patch'
 )
