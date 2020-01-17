@@ -32,6 +32,9 @@ package() {
 		install -Dm 644 "$srcdir/$pkgname-${pkgver/_/-}/lib/sigar/$f" usr/lib/graylog/lib/sigar/${f##*/}
 	done
 
+	for p in "$srcdir/$pkgname-${pkgver/_/-}"/plugin/*; do
+		install -Dm644 $p usr/lib/graylog/plugin/${p##*/}
+	done
 	install -Dm644 "$srcdir/$pkgname-${pkgver/_/-}"/graylog.jar usr/lib/graylog/server.jar
 	install -Dm644 "$srcdir/graylog-tmpfiles.conf" usr/lib/tmpfiles.d/graylog-server.conf
 	install -Dm644 "$srcdir/graylog.service" usr/lib/systemd/system/graylog.service
