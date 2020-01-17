@@ -1,16 +1,13 @@
 pkgbase = spaghettis-git
-	pkgdesc = Yet another fork of Pure Data (in development).
+	pkgdesc = Yet another fork of Pure Data (in development, alpha).
 	pkgver = r5438.cfb8ceb6
 	pkgrel = 1
 	url = https://github.com/Spaghettis/Spaghettis
 	arch = x86_64
 	license = BSD
 	depends = alsa-lib
-	depends = fftw
 	depends = glibc
-	depends = hicolor-icon-theme
 	depends = jack
-	depends = portaudio
 	depends = tk
 	source = git+https://github.com/Spaghettis/Spaghettis
 	md5sums = SKIP

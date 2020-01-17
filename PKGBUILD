@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=spaghettis-git
-pkgdesc="Yet another fork of Pure Data (in development)."
+pkgdesc="Yet another fork of Pure Data (in development, alpha)."
 pkgver=r5438.cfb8ceb6
 pkgrel=1
 epoch=
@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/Spaghettis/Spaghettis"
 license=(BSD)
 groups=()
-depends=('alsa-lib' 'fftw' 'glibc' 'hicolor-icon-theme' 'jack' 'portaudio' 'tk')
+depends=('alsa-lib' 'glibc' 'jack' 'tk')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -43,7 +43,9 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-	cd "${srcdir}/Spaghettis/build/bin"
-  cp spaghettis ${pkgdir}/usr/bin
+  install -D "${srcdir}/Spaghettis/build/bin/spaghettis" "${pkgdir}/usr/bin/spaghettis"
+  mkdir -p ${pkgdir}/usr/lib/spaghettis
+  cp -R "${srcdir}/Spaghettis/build/tcl" "${pkgdir}/usr/lib/spaghettis"
+  cp -R "${srcdir}/Spaghettis/build/help" "${pkgdir}/usr/lib/spaghettis"
+
 }
