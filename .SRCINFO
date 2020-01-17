@@ -1,6 +1,6 @@
 pkgbase = spirv-cross
 	pkgdesc = A tool and library for parsing and converting SPIR-V to other shader languages
-	pkgver = 2019.12.15
+	pkgver = 2020.01.16
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-Cross/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = spirv-cross
 	makedepends = python
 	makedepends = python-nose
 	depends = gcc-libs
-	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=2019-12-15
+	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git#tag=2020-01-16
 	source = git+https://github.com/KhronosGroup/glslang.git#commit=a4af7676feb011d61b1dfa8915bd41d9c5aaf22a
 	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#commit=e82a428605f6ce0a07337b36f8ba3935c9f165ac
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=204cd131c42b90d129073719f2766293ce35c081
