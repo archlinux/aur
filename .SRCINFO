@@ -1,7 +1,7 @@
 pkgbase = python-protobuf-compiler
 	pkgdesc = Compile all protobuf files and create a single package distribution for installing with pip
 	pkgver = 1.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netsaj/python-protobuf-compiler
 	arch = any
 	license = MIT
@@ -11,7 +11,9 @@ pkgbase = python-protobuf-compiler
 	depends = python-termcolor
 	depends = python-tqdm
 	source = https://files.pythonhosted.org/packages/source/p/protobuf_compiler/protobuf_compiler-1.0.20.tar.gz
+	source = https://raw.githubusercontent.com/netsaj/python-protobuf-compiler/master/LICENSE
 	sha256sums = ac8daa7187fb9cac7752008368b79d8d8e44dd1b154423fa7afd227a31d062f6
+	sha256sums = 67dbc546c9f988b222b0d3d0c747e77eee53c53146257b17debf82aa2c567f3e
 
 pkgname = python-protobuf-compiler
 
