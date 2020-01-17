@@ -32,19 +32,16 @@ pkgver() {
 }
 
 build() {
-  cd $_realname
   rm -rf build
-  meson build --prefix=/usr/ --libdir=lib
+  arch-meson $_realname build --libdir=lib --buildtype release
   ninja -C build
 }
 
 check() {
-  cd $_realname
   meson test -C build/ --no-suite xr
 }
 
 package() {
-  cd $_realname
   DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 "${srcdir}"/gxr/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
