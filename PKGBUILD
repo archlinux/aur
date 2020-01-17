@@ -3,7 +3,7 @@
 _pkgname=hotspot
 pkgname="${_pkgname}"-appimage
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux perf GUI for performance analysis."
 arch=('x86_64')
 url="https://github.com/KDAB/hotspot"
