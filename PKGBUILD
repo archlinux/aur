@@ -8,7 +8,7 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-git"
-pkgver=0.1.73.r1597.cff46ae
+pkgver=0.1.75.r1613.c0219d3
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('x86_64')
@@ -16,7 +16,7 @@ url="https://www.gegl.org/babl"
 license=('LGPL3')
 depends=('glibc' 'lcms2')
 makedepends=('git' 'gobject-introspection' 'meson')
-provides=("babl=${pkgver}")
+provides=("babl=${pkgver%%.r*}")
 conflicts=('babl')
 options=(!libtool)
 source=(git+https://gitlab.gnome.org/GNOME/babl)
