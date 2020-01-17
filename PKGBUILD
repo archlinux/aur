@@ -1,4 +1,5 @@
-# Maintainer:  Eric Bailey <nerflad@gmail.com>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Eric Bailey <nerflad@gmail.com>
 # Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
@@ -6,32 +7,40 @@
 # Contributor: Sebastian Wiesner <lunaryorn googlemail com>
 # Contributor: Benjamin Andresen <benny(at)klapmuetz(dot)org>
 # Contributor: Sylvester Johansson <syljo361(at)gmail(dot)org>
-
-pkgname=ocaml-ounit
-_pkgname=ounit
-pkgver=2.0.6
-pkgrel=1
-arch=('i686' 'x86_64')
-license=('MIT')
-pkgdesc="Unit testing framework for OCaml"
-url="http://ounit.forge.ocamlcore.org"
-depends=('ocaml')
-makedepends=('ocaml-findlib' 'ocamlbuild')
+_projectname='ounit'
+pkgname="ocaml-$_projectname"
+pkgver='2.2.1'
+pkgrel='1'
+pkgdesc='Unit testing framework for OCaml'
+arch=('x86_64' 'i686')
+url="https://github.com/gildor478/$_projectname"
+license=('custom')
+depends=('ocaml' 'ocaml-lwt')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("http://forge.ocamlcore.org/frs/download.php/1722/$_pkgname-$pkgver.tar.gz")
-sha512sums=('466ec1f691a81e0abd93f698c7328e6db4fa2d617d8f5262d9f18b57ede3d389a3ee122ed7bccc8dff20600826fbbae1d17dd88d7c1329562798792fae54417d')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c0140d256e34fcf2c213f3899a1ed756f190311f75c8e6b969641fbebdaef212')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+	cd "$srcdir/$_sourcedirectory"
+	dune build
+}
 
-  ./configure --disable-debug --prefix /usr --destdir "$pkgdir"
-  make all
+check() {
+	cd "$srcdir/$_sourcedirectory"
+	dune runtest
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-  install -dm 755 "$OCAMLFIND_DESTDIR"
-  make install
-  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/$_sourcedirectory"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
