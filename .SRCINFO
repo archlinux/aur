@@ -1,0 +1,20 @@
+pkgbase = intero
+	pkgdesc = Complete interactive development program for Haskell
+	pkgver = 0.1.40
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/intero
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD
+	makedepends = ghc
+	makedepends = emacs-company
+	makedepends = emacs-haskell-mode
+	makedepends = flycheck
+	depends = ghc-libs
+	depends = haskell-ghc-paths
+	source = intero-0.1.40.tar.gz::https://hackage.haskell.org/package/intero-0.1.40/intero-0.1.40.tar.gz
+	sha256sums = e3dbff092298bc612290696c3f4f017fbcd55fd5b734c7660f7f3d85a55ce526
+
+pkgname = intero
+
