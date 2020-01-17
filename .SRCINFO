@@ -3,14 +3,13 @@ pkgbase = python-fusepyng
 	pkgver = 1.0.7
 	pkgrel = 3
 	url = https://github.com/rianhunter/fusepyng
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = ISC
 	makedepends = python-setuptools
 	depends = python
-	source = python-fusepyng-1.0.7.tar.gz::https://github.com/rianhunter/fusepyng/archive/v1.0.7.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/fusepyng/fusepyng-1.0.7.tar.gz
 	source = https://raw.githubusercontent.com/rianhunter/fusepyng/fusepyng/LICENSE
-	sha256sums = e22b3643867cb1d4caa30d2bdbddbd67ac608f42438fa8307e119f101c3992e8
+	sha256sums = 8b4f6ef81e8600f23da7509169acb2615582ef116d46a2a1ad4b7e530d8f899f
 	sha256sums = e61e6b2171e77a5da5a6b8bdb1e588dd0c660fd2ac64342cded4ab53cf3d4140
 
 pkgname = python-fusepyng
