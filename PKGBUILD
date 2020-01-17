@@ -2,7 +2,7 @@
 # Based on the python-pillow package (Maintainer: Kyle Keen <keenerd@gmail.com>, Contributor: minder)
 
 pkgname=python-pillow-simd
-pkgver=6.0.0.post0
+pkgver=7.0.0.post0
 pkgrel=1
 epoch=1
 _appname=Pillow-SIMD
@@ -35,4 +35,4 @@ package() {
   install -m644 -t "$pkgdir/usr/include/python$_py3basever/" src/libImaging/*.h
 }
 
-sha256sums=('59bbf6ffa51718fe32d00aabf23fb14bff9d8b00b1d942996e09be16bf298aca')
+sha256sums=('19b89fec9282ab7d91ff1adf41b4df82078ddc6a970667912787cb152d0e061f')
