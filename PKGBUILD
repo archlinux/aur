@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=b3sum
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Command line implementation of the BLAKE3 hash function'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("b3sum-$pkgver.tar.gz::https://crates.io/api/v1/crates/b3sum/$pkgver/download")
-sha512sums=('fba4d71ffa84cb4b7b1ce968e48ded1143915e82cfbef4a7a6f1b8a4e97a25f9a3490a13b157f437ad18401b7c545d1fcdbf2032f72e29dba0c8d504e415b481')
+sha512sums=('edf13b3a2a200a8700860bc655fa07d06b5d0ec52316b93b634a218d237cff6fa0e7a1f9c51dea703bb853fe69ba63195cb25b238a019147b2c826a4ff89a541')
 
 build() {
   cd $pkgname-$pkgver
