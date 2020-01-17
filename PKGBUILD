@@ -1,9 +1,9 @@
 # Maintainer: Simao Gomes Viana <xdevs23@outlook.com>
 
 pkgname=linux-nitrous
-pkgver=5.4.12
-pkgrel=1
-_tar_pkgrel=1
+pkgver=5.4.13
+pkgrel=2
+_tar_pkgrel=2
 pkgdesc="Modified Linux kernel optimized for Haswell (and newer) compiled using clang"
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
@@ -18,7 +18,7 @@ optdepends=(
     'linux-nitrous-headers: to build DKMS modules against this kernel'
     )
 source=("https://github.com/xdevs23/linux-nitrous/releases/download/v$pkgver-$_tar_pkgrel/linux-nitrous-git-$pkgver-$_tar_pkgrel-x86_64.pkg.tar.xz")
-sha256sums=('7d8df41e5ca712b2a957a35dd7a98a829d2c0c476536120bb751e32b38cd03b4')
+sha256sums=('d4b7922bec79ff23fd07cf94247f5edac154ffb0c4654bd0e9e8460685f7b9da')
 
 build() {
     echo "No need to build anything"
