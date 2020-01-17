@@ -1,7 +1,7 @@
 pkgbase = nteract-desktop-bin
 	pkgdesc = All the power of Jupyter notebooks, wrapped in a native desktop application.
 	pkgver = 0.15.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nteract.io/desktop
 	arch = x86_64
 	license = BSD
@@ -10,12 +10,14 @@ pkgbase = nteract-desktop-bin
 	options = !strip
 	source = https://github.com/nteract/nteract/releases/download/v0.15.0/nteract-0.15.0.tar.gz
 	source = https://raw.githubusercontent.com/nteract/nteract/v0.15.0/LICENSE
-	source = https://raw.githubusercontent.com/nteract/nteract.io/master/static/icons/android-icon-192x192.png
+	source = https://raw.githubusercontent.com/nteract/nteract.io/c6a014ac670bdc7a75e80030c0255f77c3bda08f/static/icons/android-icon-192x192.png
+	source = nteract.svg
 	source = nteract.desktop
 	sha256sums = cab1da3ba8d325ec8aa7366a5cf75b03a0e5bbde9f24b5f0ac6e3157e0bd7151
 	sha256sums = 866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71
 	sha256sums = 3d60b13b503d6a74219d260c144c1de01cf3bc71bed47a8842c4ef87615c132d
-	sha256sums = 7ea096d8c58271e272bb559e60679e168115a1834e0f28693c1031dd608ca19c
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = nteract-desktop-bin
 
