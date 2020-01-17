@@ -6,8 +6,9 @@ pkgbase = python-pytweening
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/P/PyTweening/PyTweening-1.0.3.zip
-	md5sums = 41176abe770e8c318dc1f4213831e6da
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/P/PyTweening/PyTweening-1.0.3.zip
+	sha256sums = 4b608a570f4dccf2201e898f643c2a12372eb1d71a3dbc7e778771b603ca248b
 
 pkgname = python-pytweening
 
