@@ -1,22 +1,23 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=ninjas2
-pkgver=0.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A sample slicer audio plugin"
 arch=('x86_64')
 url="https://github.com/rghvdberg/ninjas2"
 license=('GPL3')
-groups=('lv2-plugins' 'pro-audio')
-depends=('gcc-libs' 'glibc' 'libaubio.so' 'libglvnd' 'libsamplerate' 'libsndfile' 'libx11')
+groups=('lv2-plugins' 'pro-audio' 'vst-plugins')
+depends=('gcc-libs' 'glibc' 'libaubio.so' 'libglvnd' 'libsamplerate'
+'libsndfile.so' 'libx11')
 makedepends=('gendesk' 'libjack.so')
-checkdepends=('lv2lint' 'sord')
+checkdepends=('lv2lint')
 optdepends=('libjack.so: for standalone application')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/rghvdberg/ninjas2/releases/download/v${pkgver}/ninjas2_source.tar.gz")
-sha512sums=('3aaf6657d9446c13ef889eb26eabf2918040db7b5289ff1b5a10e5cc55557db90af41c2815dc9c5fed9077b8e51c56ba02f378e6d28474fc722f436ec62a9694')
+source=("https://github.com/rghvdberg/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-source.zip")
+sha512sums=('b05c4d2eaba91a1104cb2700b857e0b428a9bb574973616c1477a6c993c6290bb31343f071d0607c0d6c21830fd29523d814aff2bb12442a8ca45e06efd75506')
 
 prepare() {
-  mv -v "$pkgname" "$pkgname-$pkgver"
+  mv -v "${pkgname}-v${pkgver}" "${pkgname}-${pkgver}"
   cd "$pkgname-$pkgver"
   # Removing the local aubio version from the plugin Makefile
   sed -e '/libaubio.a/d' \
@@ -40,8 +41,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  sord_validate "bin/${pkgname}.lv2/"*.ttl || echo "Known to fail: https://github.com/rghvdberg/ninjas2/issues/76"
-  LV2_PATH="${PWD}/bin" lv2lint "https://github.com/rghvdberg/ninjas2" || echo "Known to fail: https://github.com/rghvdberg/ninjas2/issues/76"
+  LV2_PATH="${PWD}/bin" lv2lint "https://github.com/rghvdberg/ninjas2" || echo "https://github.com/rghvdberg/ninjas2/issues/76"
 }
 
 package() {
