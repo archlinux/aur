@@ -2,7 +2,7 @@
 pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=74ce8d5
+pkgver=1.0.r8.g74ce8d5
 pkgrel=1
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
@@ -21,7 +21,7 @@ _qmake_args="CONFIG+=release"
 
 pkgver() {
   cd "$pkgname"
-  git rev-parse --short HEAD
+  git describe --long --tags | sed 's/v\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
