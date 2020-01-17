@@ -1,4 +1,4 @@
-From 7275786a32e9958d29e71415297038bb890bd4de Mon Sep 17 00:00:00 2001
+From 77437dba84a29da0fdf62f9946416b6e53496b1d Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Thu, 3 Oct 2019 11:55:30 +0300
 Subject: [PATCH 09/15] drm/i915: Fix audio power up sequence for gen10+
@@ -40,10 +40,10 @@ index 439bc0a93410..440b33762fef 100644
  
  	return ret;
 diff --git a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
-index e1fe356463ec..ccfea9c2b8bf 100644
+index a99ef18665f2..1dd7b6187780 100644
 --- a/drivers/gpu/drm/i915/i915_reg.h
 +++ b/drivers/gpu/drm/i915/i915_reg.h
-@@ -9105,6 +9105,8 @@ enum {
+@@ -9111,6 +9111,8 @@ enum {
  #define   SKL_AUD_CODEC_WAKE_SIGNAL		(1 << 15)
  
  #define AUD_FREQ_CNTRL			_MMIO(0x65900)
@@ -53,5 +53,5 @@ index e1fe356463ec..ccfea9c2b8bf 100644
  /*
   * HSW - ICL power wells
 -- 
-2.24.1
+2.25.0
 
