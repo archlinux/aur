@@ -1,6 +1,6 @@
 pkgbase = nodejs-hexo
 	pkgdesc = A fast, simple & powerful blog framework, powered by Node.js.
-	pkgver = 3.9.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://hexo.io
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = nodejs-hexo
 	conflicts = nodejs-hexo-cli
 	noextract = ${pkgver}.tar.gz
 	options = !strip
-	source = https://github.com/hexojs/hexo/archive/3.9.0.tar.gz
-	sha256sums = 3ee49f85a404f508c34f6fc65996989287ed23972dad89427a93ceb744515ee1
+	source = https://github.com/hexojs/hexo/archive/4.2.0.tar.gz
+	sha256sums = 8d1c3dfb8593b11d0f664860255cd4f047dd81d07d815371bf48f59bbc7494ec
 
 pkgname = nodejs-hexo
 
