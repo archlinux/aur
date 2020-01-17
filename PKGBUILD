@@ -6,7 +6,7 @@ url="https://hackage.haskell.org/package/intero"
 license=('BSD')
 arch=('x86_64' 'i686' 'aarch64')
 depends=('ghc-libs' 'haskell-ghc-paths')
-makedepends=('ghc' 'emacs-company' 'emacs-haskell-mode'
+makedepends=('ghc' 'emacs-company-mode' 'emacs-haskell-mode'
              'flycheck')
 source=(${pkgname}-${pkgver}.tar.gz::"https://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('e3dbff092298bc612290696c3f4f017fbcd55fd5b734c7660f7f3d85a55ce526')
