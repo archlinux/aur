@@ -3,12 +3,13 @@
 # Previous maintainer: Bjoern Franke <bjo at nord-west.org>
 pkgname=stapler
 pkgver=0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A small utility making use of the pypdf library to provide a (somewhat) lighter alternative to pdftk"
 arch=('any')
 url="https://github.com/hellerbarde/stapler"
 license=('BSD')
 depends=('python' 'python-pypdf2')
+makedepends=('git')
 conflicts=('stapler-git')
 
 # Until there is an official release with Python 3 support
