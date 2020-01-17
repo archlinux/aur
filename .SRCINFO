@@ -1,15 +1,14 @@
 pkgbase = python-alpha_vantage
 	pkgdesc = Python module to get stock data from the Alpha Vantage Api
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/RomelTorres/alpha_vantage
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/alpha_vantage/alpha_vantage-2.1.0.tar.gz
-	sha256sums = f4d5d59f8d5aa29cfe74ed1526fd2393b871b3aad8442bdeb23e2be0747446de
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/a/alpha_vantage/alpha_vantage-2.1.2.tar.gz
+	sha256sums = cbf86d7665804692f23e1fc841c722bb238b73cade21d06b01219bcac0f8f1c9
 
 pkgname = python-alpha_vantage
-	depends = python
 
