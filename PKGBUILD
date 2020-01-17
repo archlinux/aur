@@ -3,7 +3,7 @@ _srcname=LuaFormatter
 _pkgname=lua-format
 pkgname=$_pkgname-git
 pkgver=r126.2c3edd0
-pkgrel=1
+pkgrel=2
 pkgdesc='LuaFormatter - Code formatter for Lua'
 arch=(x86_64)
 url=https://github.com/Koihik/LuaFormatter
@@ -11,7 +11,7 @@ provides=($_pkgname $_srcname)
 conflicts=($_pkgname $_srcname)
 license=(Apache2)
 depends=()
-makedepends=(git)
+makedepends=(git cmake)
 source=(git+https://github.com/Koihik/LuaFormatter)
 sha512sums=(SKIP)
 pkgver() {
