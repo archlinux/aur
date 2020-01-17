@@ -16,6 +16,8 @@ options=('debug' '!strip')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
 
+optdepends=('monado-git: The open source OpenXR runtime.')
+
 md5sums=('SKIP')
 
 ver() {

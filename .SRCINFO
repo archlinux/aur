@@ -13,6 +13,7 @@ pkgbase = gxr-git
 	depends = gulkan-git
 	depends = openvr-git
 	depends = openxr-loader-git
+	optdepends = monado-git: The open source OpenXR runtime.
 	provides = gxr=0.13.99.813.56622d0
 	conflicts = gxr
 	options = debug
