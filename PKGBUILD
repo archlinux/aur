@@ -1,17 +1,19 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 pkgname=python-pyshortcuts
+_name=pyshortcuts
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Create desktop shortcuts to python scripts"
 arch=('any')
 url="https://github.com/newville/pyshortcuts"
 license=('MIT')
-depends=('python-six' 'python-wxpython')
+depends=('python-six')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/newville/pyshortcuts/archive/$pkgver.tar.gz"
-        'PyShortcut.desktop')
-sha256sums=('1bcba867cfef137ca6fbb188aeb4d30ec4747ed1f6278acca1a757e37c3c671f'
-            '8087c2ec7b71de9f0a9e7ef963a6f67d83e33271ef0071b1018ee475998380a5')
+optdepends=('python-wxpython: for GUI')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "PyShortcut.desktop")
+sha256sums=('24c179b76987863000ed29ba7114ead0febebe9caead2db4a0be33fd61ffa557'
+            '82fa76300174a1cdaaeea9181c0292bd80cd77bc7fc896091a8110c6d294779f')
 
 build() {
 	cd "pyshortcuts-$pkgver"
@@ -21,6 +23,7 @@ build() {
 package() {
 	cd "pyshortcuts-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 "$srcdir/PyShortcut.desktop" "$pkgdir/usr/share/applications/PyShortcut.desktop"
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "$srcdir/PyShortcut.desktop" -t "$pkgdir/usr/share/applications"
 }

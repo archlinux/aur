@@ -1,17 +1,17 @@
 pkgbase = python-pyshortcuts
 	pkgdesc = Create desktop shortcuts to python scripts
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/newville/pyshortcuts
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-six
-	depends = python-wxpython
-	source = python-pyshortcuts-1.7.tar.gz::https://github.com/newville/pyshortcuts/archive/1.7.tar.gz
+	optdepends = python-wxpython: for GUI
+	source = https://files.pythonhosted.org/packages/source/p/pyshortcuts/pyshortcuts-1.7.tar.gz
 	source = PyShortcut.desktop
-	sha256sums = 1bcba867cfef137ca6fbb188aeb4d30ec4747ed1f6278acca1a757e37c3c671f
-	sha256sums = 8087c2ec7b71de9f0a9e7ef963a6f67d83e33271ef0071b1018ee475998380a5
+	sha256sums = 24c179b76987863000ed29ba7114ead0febebe9caead2db4a0be33fd61ffa557
+	sha256sums = 82fa76300174a1cdaaeea9181c0292bd80cd77bc7fc896091a8110c6d294779f
 
 pkgname = python-pyshortcuts
 
