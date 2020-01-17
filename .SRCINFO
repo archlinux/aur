@@ -1,5 +1,5 @@
 pkgbase = spaghettis-git
-	pkgdesc = Yet another fork of Pure Data.
+	pkgdesc = Yet another fork of Pure Data (in development).
 	pkgver = r5438.cfb8ceb6
 	pkgrel = 1
 	url = https://github.com/Spaghettis/Spaghettis

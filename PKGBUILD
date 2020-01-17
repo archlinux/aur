@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=spaghettis-git
-pkgdesc="Yet another fork of Pure Data."
+pkgdesc="Yet another fork of Pure Data (in development)."
 pkgver=r5438.cfb8ceb6
 pkgrel=1
 epoch=
