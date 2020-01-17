@@ -3,7 +3,7 @@
 _pkgroot=signal-desktop
 pkgname=${_pkgroot}-noto
 _pkgname=Signal-Desktop
-pkgver=1.29.4
+pkgver=1.29.6
 pkgrel=1
 pkgdesc='Electron application that links with Signal on mobile (Noto emoji version)'
 arch=(x86_64)
@@ -26,10 +26,10 @@ source=(
   openssl-linking.patch
   noto-emoji.patch
 )
-sha512sums=('f07a8143c0a122a5927d8868f2858e253a7d79a872aec73e9e1cbe3ca43b04af36995a8ac00b6da6065adf10e71215397e38376ad0ef8efde0a0751195441c58'
+sha512sums=('3b04224c8bc105b14366fc585daff2a6210a0442e48c6ee5e4ffa964dcea5ab302b186eca8287d66d0d71fa7d41b7ba66ad886b23d86b35832744d88ad639f86'
             'c5ec0bf524e527ecf94207ef6aa1f2671346e115ec15de6d063cde0960151813752a1814e003705fc1a99d4e2eae1b3ca4d03432a50790957186e240527cc361'
             '2c10d4cc6c0b9ca650e786c1e677f22619a78c93465f27fc4cf4831f1cfe771f3b9885a416e381a9e14c3aea5d88cb3545264046188db72d54b8567266811e51'
-            '8d9ae370e3ee706c99280243dc0465785fd1ec97dad7fbdcee19ad7df8fdb8db1367bca4ba33d78e94ec87abe89b031cf787b10bf6f1747efaee0312f9446424')
+            '7ad3e53dda568d5218e25ff568fe4b5fd83dfcaa6cf25a6caf26da03dc23dd54d7a66bd45d75fdfbf23fdb6e95754e29e13dbc37d2fa5bd14c6d976a3187514f')
 
 prepare() {
   cd $_pkgname-$pkgver
