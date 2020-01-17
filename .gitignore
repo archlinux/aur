@@ -1,0 +1,4 @@
+pkg/
+src/
+kakoune-extra-filetypes-git/
+kakoune-extra-filetypes-git-*.tar.*
