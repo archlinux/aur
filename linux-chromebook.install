@@ -1,6 +1,11 @@
-flash_kernel() {
-  major=$(mountpoint -d / | cut -f 1 -d ':')
-  minor=$(mountpoint -d / | cut -f 2 -d ':')
+post_install () {
+  if mountpoint -q /boot; then
+    major=$(mountpoint -d /boot | cut -f 1 -d ':')
+    minor=$(mountpoint -d /boot | cut -f 2 -d ':')
+  else
+    major=$(mountpoint -d / | cut -f 1 -d ':')
+    minor=$(mountpoint -d / | cut -f 2 -d ':')
+  fi
   device=$(cat /proc/partitions | awk {'if ($1 == "'${major}'" && $2 == "'${minor}'") print $4 '})
   device="/dev/${device/%2/1}"
 
@@ -16,10 +21,6 @@ flash_kernel() {
   fi
 }
 
-post_install () {
-  flash_kernel
-}
-
 post_upgrade() {
-  flash_kernel
+  post_install
 }

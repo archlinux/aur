@@ -1,7 +1,7 @@
-From e0d783c7ee43a39dadeb96ac669c45f3a3192d96 Mon Sep 17 00:00:00 2001
+From ac55f63c14c1e7d0740c27d325e8abe40e2478b3 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Fri, 20 Sep 2019 11:39:18 +0300
-Subject: [PATCH 09/13] drm/i915: save AUD_FREQ_CNTRL state at audio domain
+Subject: [PATCH 08/14] drm/i915: save AUD_FREQ_CNTRL state at audio domain
  suspend
 
 When audio power domain is suspended, the display driver must
@@ -70,10 +70,10 @@ index 89b6112bd66b..043ce1b47aeb 100644
  	struct {
  		struct mutex mutex;
 diff --git a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
-index f8ee9aba3955..e1fe356463ec 100644
+index 7b6e68f082f8..a99ef18665f2 100644
 --- a/drivers/gpu/drm/i915/i915_reg.h
 +++ b/drivers/gpu/drm/i915/i915_reg.h
-@@ -9104,6 +9104,8 @@ enum {
+@@ -9110,6 +9110,8 @@ enum {
  #define HSW_AUD_CHICKENBIT			_MMIO(0x65f10)
  #define   SKL_AUD_CODEC_WAKE_SIGNAL		(1 << 15)
  
@@ -83,5 +83,5 @@ index f8ee9aba3955..e1fe356463ec 100644
   * HSW - ICL power wells
   *
 -- 
-2.24.1
+2.25.0
 

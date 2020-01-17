@@ -1,7 +1,7 @@
-From b9bebf4cde0cf46438b2a7ab1652172e8e16c33e Mon Sep 17 00:00:00 2001
+From 02dc4cbf4b169ff89a2380b178e07e20eb661d62 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Tue, 29 Oct 2019 20:00:22 +0300
-Subject: [PATCH 05/13] PCI: pciehp: Prevent deadlock on disconnect
+Subject: [PATCH 05/14] PCI: pciehp: Prevent deadlock on disconnect
 
 This addresses deadlocks in these common cases in hierarchies containing
 two switches:
@@ -268,5 +268,5 @@ index 86d97f3112f0..a2a263764ef8 100644
  
  int pciehp_query_power_fault(struct controller *ctrl)
 -- 
-2.24.1
+2.25.0
 

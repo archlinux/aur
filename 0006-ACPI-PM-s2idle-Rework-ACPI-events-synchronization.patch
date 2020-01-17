@@ -1,7 +1,7 @@
-From f74b67cce5f0c5c37b0c5cb0020a818f0594a743 Mon Sep 17 00:00:00 2001
+From b5ae067d036c7d621af4178bba61c8c6fa3c7850 Mon Sep 17 00:00:00 2001
 From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
 Date: Thu, 28 Nov 2019 23:50:40 +0100
-Subject: [PATCH 06/13] ACPI: PM: s2idle: Rework ACPI events synchronization
+Subject: [PATCH 06/14] ACPI: PM: s2idle: Rework ACPI events synchronization
 
 Note that the EC GPE processing need not be synchronized in
 acpi_s2idle_wake() after invoking acpi_ec_dispatch_gpe(), because
@@ -74,5 +74,5 @@ index 2af937a8b1c5..6747a279621b 100644
  
  	acpi_enable_all_runtime_gpes();
 -- 
-2.24.1
+2.25.0
 

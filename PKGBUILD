@@ -15,11 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.4.8
+pkgver=5.4.12
 pkgrel=1
 pkgdesc='Linux-libre'
-rcnver=5.4.5
-rcnrel=armv7-x13
+rcnver=5.4.12
+rcnrel=armv7-x14
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -53,12 +53,13 @@ source=(
   0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
   0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
   0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0008-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch
-  0009-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-  0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-  0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-  0012-drm-i915-gt-Detect-if-we-miss-WaIdleLiteRestore.patch
-  0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+  0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+  0009-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+  0010-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+  0011-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
+  0012-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+  0013-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
+  0014-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
 )
 source_armv7h=(
   # RCN patch (CM3 firmware deblobbed and bloatware removed)
@@ -73,6 +74,8 @@ source_armv7h=(
   0007-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
   0008-ARM-dove-enable-ethernet-on-D3Plug.patch
   0009-USB-Armory-MkII-support.patch
+  # ChromiumOS patches
+  0001-CHROMIUM-block-partitions-efi-Add-support-for-IGNORE.patch
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
@@ -80,7 +83,7 @@ validpgpkeys=(
 )
 sha512sums=('0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc701cd50af49c403ef0325adfcb07e354d5e46c1be3dcdd719a7a55c963f37'
             'SKIP'
-            '6cf4a01741eec4763e6bbb9762aafad815716f61d43b522da294cf8b2d2a1fc5228fffd710aa5e19aa4ffaa8e59b4ea37cfb987cb49d2cff064b8899b0558fba'
+            '9d2311e9bebc81dbd2032dd87a9f64290bd3a406701a7a83785897230c0cdc679e75fb8b5b4dc0b9bb54f5105d3101f7fcda4296a14e62f026d4882361447e1c'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -90,27 +93,28 @@ sha512sums=('0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc
             'SKIP'
             'b42beec97f61bf6475e50ef30c4712fc4cf711c51a5e96f588d897fd8f1e0951b1e7007e0545c1e6f2ae9a76abd1fbeb791e8c43991ebc33f3888a53f1af69b2'
             'a43fdc2d902b800e6fe37cc60ff95e3684e2e6d92961192ad0bd02b5dc52a98afb3a3de8e82c56e559ae794fe0feee4f072c07e818e0c66eccb2c92c660c0dd4'
-            'b0dbc53ec688eae4ea92181fb7658361c2647b8f6271f145e35b36a93e5170ddc285ebd78c1218e239b4f551b8a4c75b6a9a8beff7367250b302d5900ad0cff5'
+            '32590362aa544dd14bae48e24e2ffa979f2ea3cd80f0bf776126002860798a8dace8413bb19545f50af4b94dbf16ba5821780cbcdd19e10c7cfc2e4d0412eb30'
             'f01e7925b262d2874a8a991b1f27d057356a2a384d2012b61be5a631d4e4d7cf87461c8fb9e7f183831f5a829ad204897f1f0545a52df6288a0e04a5c2e31b96'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
             'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '19084ed74a127eaed636309d142fbac122a6593b2f10f42c70ef79663e318edd7d433fd268a88c036ce38545f7d2fb14a94fb903040ecbf16287b28073a59d32'
-            '1c5e6e98dbfc2ec9512967aa9c746d7396df0dcc3b8dff38106a6097528b4bfdb60dd9aee7cd189fb710780fb3593dc173e4c348076dd1ae25c7870d41d53286'
-            'dbd1a0dff6ac0f481b4879b44aef5cf6ca9d37383c95ec664094138261bcaab689b873f688f77a6df4f11145a4fb27a4b0676fae5eae16e0f3cbe1392acf1266'
-            '51b47890987eca1def8019464eb41d3c32038fc4158f6a8e4f06adc2cb6567599fadd1835cb35d5edc7b144749ccafed0ad4f8ce4996edf2cf60fa5a46725f20'
-            'a79a8900aae9ee2587cc7989b7e77215c63c0fc3bc75eb5ab0b50d378f6bb4072d46821514a97f81bd79498c6fb6ce97183110ccf7baa9b8434e560857f61611'
-            'c94cfe2b0c9e02c020955f0315b6b61be51125f612ce50dff15d8a3bd8de2976a98df56283d0198f977570974c12b15219c457d2682927f8a0fd9344b3e324b6'
-            '629012611c1100cc832121c1d53da9a414abfe638a8273488ca319229a66a706ad15d88cdfe3b1769a6176ba7df24fe585f794a502e20e9134730fcfe0341dc3'
-            '809461f3c3e3ec6019b0cde26cf69dfb8f171c49cf8a95c59d4bc84cc331aad0c7f5c313844fb7c655cc54381d2737fb9cbedd4cd047c68b0bd217c480d6f7b0'
-            '2165f7e671c61d43b7bb89c3edcf3cd4bf16a4e57eccd44f18eabeadeae250ed57fe0fd20efc101e11d49444edb3956db05f6fe7038b0ce1c3cca37f96795e1c'
-            'ff457ff06c3ea8e2a67346eb728540985f8a0dc172e818d381e88a97917b9c34d5b7938e49b08ce76692123c623f941714b31bd07c1b65e60beaa7e2b7ae5af9'
-            '277a8f3e9b0b015690ac82ef4e9c531d8e1a1ef2cb173ec73f807c649844623d1505f7f82d6b97134d1398e4a197586126d3df6c4925f40aaed7a60ed10c7986'
-            '3499d257cce45e9abc6ae040bb8f38c76dce6f23c1986c4b753a44f32528671d7d24ddd230ab639eb23f9081624f986697c604e1bdb12a0e4b91ea60ce91ea01'
-            'b17d58ea538af2f250dd3587323cb36e96fbd8c0d406792e5b7dc828c6bce25fdf5834185cb42e327450b74cd0821260d1f53a84057a3d72b004394d9393e19d')
-sha512sums_armv7h=('bc449032f904b5ef5c4506124871230587dd72849f7fed1d7e9f6ab6f530c24415dfa0f29b27fa98191a671c9646b6066fbf163b5533774307dc68f610e3958f'
+            '5c12036749138b026f299b44d4968507d265ca5182c9cd975669f9810e344b9786b787b9dd9eba310f1c480b6f856ba9a3a557ec94e313ea716cffe1e588f7b5'
+            '757182970d98ed04aec3d82fdde30787812ae5c0c4217a85be1a3c3d90ccfd7afe70b42a340859be517d52ab41357c12d50f46ef49701ab9673d3240969b0799'
+            'f224e185269d51fb8bbe2d8148567303f39d1216afc7d5f446be07601a6d969682051880903d4d61c917fa75ecf38a557c7b383217bb064577e369f096422843'
+            '061ddb48a6d574c80ec75ac686bface0f88e8e81586c36e32ac6493ba5fe9d5d4877dbb4709d3e29758adfebb9b6fe3ed0899d5a31af550d99fca5c4d6128a41'
+            'cbb6e8f92c2878ed89646667cfa54b0ebf73c426c09e3a5a9a5ed5aaf68e94364d85a589f5348c10fb3e90adb978e022ce9e7b541e64eb411bdf94ed00871f8e'
+            'd60a380b494c7d80f6b379a2c74f50d33251598c2c1fdf2019fd602e51f25541726cf81485eeab02b983f56ac71c751dd54471ead05c22a339b0e6589f4675fe'
+            '924a5eaed5f3d51dc9f983f7b941a11a3773bab5f686d211729b855e24dd70fa1637a8483230e3b326545d362ff09c8b07e6373ea52f79848c8d47eb27edbb3a'
+            '5643a9ca7b397628dc5705a28411e8a9572da9ad981e6737957b0f172a9165801633a55d10f44d81e156daccc84732ba472982c644e6e0ca091087be6086e5b6'
+            '48feeee39792d80702097caf463351f30b5084c76d2baafd0b0879889dadd078eb0d9f068dfc18dc5e39630ac90c726b5b496bb7f40873e541771a00e2995a01'
+            '21f258f366335867235432bc27e222fc6033007a7e36a0ec8f7b3d9868a7c1b84da48390749e9fcff5c2cb2ad2a4d3661de21638d5fbb557711eafb8bf6ab37a'
+            '2230b605ae5a9e16d98992e585590efc02684dbce1f7f310174610430cc817f69fa318ed97d066241a763a6f9a28a3b9702017ca88bb97e18b405f7ee1ec3e00'
+            'caea78d02fafd04334f6005a6974307e42bb808f813c9f2fe9ee4195288c77c3c1454707d1e49dfd22d6d83e53d5b8d5100de6a7537aa80425dd3a3128aee1ca'
+            'a92f15fe8e0bf10c390f252197421a268f14601f35887d4d1d87b9e597feae39b9819c955be885a62cf7a882c0080f780cdfde08a2c5efc7fdd88512c0629d4d'
+            '4be4ea402a7c8db3ee19aab613138edc47834861261c2ba9e5efc4162a569352dd0ef111bc3933c0f7de477dac1524111f35ae850ff0ee1c9d37cd70702ba68b')
+sha512sums_armv7h=('a9728939fc256c7d74c777b5cd5c7971efb6b43161667a39ee00cda66e3973faf63c2cdd6ad606722b3e5686eb9243d67eb48a931319dbfb99fe74fb88f06c64'
                    'SKIP'
                    'b576a9c40ba59485c350f71b9234d9e71f245e25b26382bd2f67019f3309c3b5705a6020eae0a9dfccacc763fb2056a5937c0a8ff4e64f99ba1d60f0b2acb03f'
                    '85a13a274d4cbaca3ddbe8eaf883f1a1184765f8d09d6d40bb32defbe0876cb0153513e8db8671d7fc053e383ced793b74245ff29364a760e1a52bb36ebc8e85'
@@ -120,7 +124,8 @@ sha512sums_armv7h=('bc449032f904b5ef5c4506124871230587dd72849f7fed1d7e9f6ab6f530
                    'bc0c6b1726679498393be8d4c417c62e1f356fe5c617c71ff23532652fdd5f314e5bfc6172eaca79cd4806b81031bf2f879d7d1a6050ad4c616c04e6bdf93c2a'
                    'b13bea6412580325dba0d02cf0dc712e860f659569ffcb968aa4836fdb2882448cfee4659a675a70affccae02c8d2589d80b7239eef5ae7b615162aeaa76f3bb'
                    'cff59f974651614587313674455a968ae5390a5ca825d204f0e2f8de2b422d577b007f5297a398e2afeb33ed0d324d34ad58ff4cd56e645bd4ca9a6bdc1354c5'
-                   '54adbec4b6b85cda901df7d2b3eb1f517f10d3528326e60c7afa4b49ccc7cfb43b0d1f574ceb5d7d03c94a0fbcc97c0ef785258292dd26ed46728355da27332c')
+                   '54adbec4b6b85cda901df7d2b3eb1f517f10d3528326e60c7afa4b49ccc7cfb43b0d1f574ceb5d7d03c94a0fbcc97c0ef785258292dd26ed46728355da27332c'
+                   '7bda2ad7eb81af802873cb6764cb9c675ec50ceeb5adc487881ebc8c316cf55f836e56c2cc67494a2920e86494861db2eb924b7ff9b151ae3c5b0e493c373bf9')
 
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${pkgbase#linux-libre}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${pkgbase#linux-libre}}")
@@ -140,7 +145,7 @@ prepare() {
 
   if [ "${_srcname##*-}" != "$pkgver" ]; then
     msg2 "Applying upstream patch..."
-    patch -Np1 -i ../patch-${_srcname##*-}-gnu-$pkgver-gnu
+    patch -Np1 < "../patch-${_srcname##*-}-gnu-$pkgver-gnu"
   fi
 
   msg2 "Adding freedo as boot logo..."
@@ -362,7 +367,7 @@ _package-chromebook() {
   cd $_srcname
 
   cp ../kernel.its .
-  mkimage -D "-I dts -O dtb -p 2048" -f kernel.its kernel.itb
+  mkimage -D "-I dts -O dtb -p 2048" -f kernel.its kernel.signed
   dd if=/dev/zero of=bootloader.bin bs=512 count=1
   echo 'console=tty0 init=/sbin/init root=PARTUUID=%U/PARTNROFF=1 rootwait rw noinitrd' > cmdline
 
@@ -370,7 +375,7 @@ _package-chromebook() {
   vbutil_kernel \
     --pack vmlinux.kpart \
     --version 1 \
-    --vmlinuz kernel.itb \
+    --vmlinuz kernel.signed \
     --arch arm \
     --keyblock ../kernel.keyblock \
     --signprivate ../kernel_data_key.vbprivk \

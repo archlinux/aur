@@ -1,7 +1,7 @@
-From adb810e1819b859aec1f8eb4c5611bc6ebe82137 Mon Sep 17 00:00:00 2001
+From c7e2526442e1a92f2c875c0300935918a295f527 Mon Sep 17 00:00:00 2001
 From: Boyan Ding <boyan.j.ding@gmail.com>
 Date: Wed, 1 Jan 2020 11:44:49 -0800
-Subject: [PATCH 13/13] pinctrl: sunrisepoint: Add missing Interrupt Status
+Subject: [PATCH 12/14] pinctrl: sunrisepoint: Add missing Interrupt Status
  register offset
 
 Commit 179e5a6114cc ("pinctrl: intel: Remove default Interrupt Status
@@ -31,5 +31,5 @@ index 44d7f50bbc82..d936e7aa74c4 100644
  		.pin_base = (s),			\
  		.npins = ((e) - (s) + 1),		\
 -- 
-2.24.1
+2.25.0
 
