@@ -1,0 +1,15 @@
+pkgbase = cutecom-git
+	pkgdesc = A graphical serial terminal (git master)
+	pkgver = v0.51.0.r14.ge840840
+	pkgrel = 1
+	url = https://gitlab.com/cutecom/cutecom
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt5-serialport
+	conflicts = cutecom
+	source = cutecom-git::git+https://gitlab.com/cutecom/cutecom.git
+	md5sums = SKIP
+
+pkgname = cutecom-git
+
