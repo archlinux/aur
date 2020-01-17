@@ -2,12 +2,12 @@
  
 basename='xrdesktop'
 pkgname="$basename-git"
-pkgver=0.13.2.584.20132fa
+pkgver=0.13.99.695.1e5b438
 pkgrel=1
 pkgdesc='A library for XR interaction with classical desktop compositors.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/xrdesktop'
-depends=('glib2' 'gxr-git' 'gulkan-git')
+depends=('gxr-git')
 provides=("$basename="$pkgver)
 conflicts=("$basename")
 makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers')
@@ -45,4 +45,6 @@ check() {
 package() {
   cd $basename
   DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dm644 "${srcdir}"/xrdesktop/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
