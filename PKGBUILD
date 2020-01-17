@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=0.12.r25.ga7c4d1c
+pkgver=0.12.r65.g0b53eac
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
@@ -24,6 +24,8 @@ depends=(
     'python-gobject'
     'gobject-introspection'
     'python-readability-lxml'
+    'python-pygments'
+    'python-beautifulsoup4'
 )
 replaces=(gnome-feeds gnome-feeds-git)
 makedepends=('git' 'meson')
