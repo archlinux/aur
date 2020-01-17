@@ -4,12 +4,12 @@
 _gemname=activesupport
 pkgname=ruby-$_gemname-5.2.3
 pkgver=5.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
 arch=(any)
 url='http://rubyonrails.org'
 license=(MIT)
-depends=(ruby ruby-i18n ruby-tzinfo-1 ruby-minitest ruby-concurrent-ruby)
+depends=(ruby ruby-i18n ruby-tzinfo ruby-minitest concurrent-ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
