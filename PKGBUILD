@@ -13,11 +13,13 @@ provides=(wasmer wapm libwasmer_runtime_c_api.so.${pkgver})
 source=(
   "wasmer-linux-amd64-${pkgver}.tar.gz"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
   "libwasmer_runtime_c_api.so.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/libwasmer_runtime_c_api.so"
+  "wasmer.h.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer.h"
+  "wasmer.hh.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer.hh"
   "https://raw.githubusercontent.com/wasmerio/wasmer/${pkgver}/LICENSE"
   wapm.sh
   logo.sh
 )
-sha512sums=(SKIP SKIP SKIP SKIP SKIP)
+sha512sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
 
 build() {
   cd "$srcdir"
@@ -42,6 +44,10 @@ package() {
   # libraries
   install -Dm755 libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so.${pkgver}
   ln -s libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so
+
+  # headers
+  install -Dm755 wasmer.h.${pkgver} "$pkgdir"/usr/lib/wasmer.h
+  install -Dm755 wasmer.hh.${pkgver} "$pkgdir"/usr/lib/wasmer.hh
 
   # wapm completions
   install -Dm644 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
