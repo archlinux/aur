@@ -1,6 +1,9 @@
 
-post_upgrade() {
+post_install() {
      loolconfig update-system-template
      setcap cap_fowner,cap_mknod,cap_sys_chroot=ep /usr/bin/loolforkit
 }
 
+post_upgrade() {
+    post_install
+}

@@ -5,12 +5,12 @@
 
 pkgname=libreoffice-online
 pkgver=6.2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML5-based/cloud-based version of the office suite"
 arch=('x86_64')
 url="https://www.libreoffice.org/download/libreoffice-online/"
 license=("MPL")
-makedepends=("poco" "libreoffice-fresh-sdk>=6.2" "nodejs" "python-polib" "cppunit" "npm")
+makedepends=("cppunit" "git" "libreoffice-fresh-sdk>=6.2" "nodejs" "npm" "poco" "python-polib")
 depends=("poco" "libreoffice" "cpio")
 backup=("etc/libreoffice-online/loolwsd.xml")
 source=("${pkgname}::git+https://git.libreoffice.org/online#tag=libreoffice-${pkgver}"
@@ -66,7 +66,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make DESTDIR=${pkgdir} install
-  mkdir -p "${pkgdir}/var/log" "${pkgdir}/var/lib/{,cache}/libreoffice-online"
+  mkdir -p "${pkgdir}/var/log" "${pkgdir}"/var/lib/{,cache}/libreoffice-online
 
   install -Dm644 "${srcdir}/loolwsd.service"     "${pkgdir}/usr/lib/systemd/system/loolwsd.service"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"

@@ -64,4 +64,3 @@ index 2c257c60..68370cf4 100644
          std::cout << "Running the following command:" << std::endl
                    << command << std::endl;
  
-

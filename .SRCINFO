@@ -1,7 +1,7 @@
 pkgbase = libreoffice-online
 	pkgdesc = HTML5-based/cloud-based version of the office suite
 	pkgver = 6.2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libreoffice.org/download/libreoffice-online/
 	install = libreoffice-online.install
 	arch = x86_64
