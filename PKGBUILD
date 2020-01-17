@@ -7,15 +7,14 @@
 
 pkgname="google-cloud-sdk"
 pkgver=276.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
 arch=('x86_64')
 depends=('python' 'python2')
 optdepends=(
-  "python: [cli] beta support for python3. see https://cloud.google.com/sdk/gcloud/reference/topic/startup"
-  "python2-crcmod: [gsutil] verify the integrity of GCS object contents"
+  "python-crcmod: [gsutil] verify the integrity of GCS object contents"
 )
 options=('!strip' 'staticlibs')
 source=(
@@ -23,7 +22,7 @@ source=(
   "google-cloud-sdk.sh"
 )
 sha256sums=('ad3d711e372fdcef141106d33e150aee4922a88c76484798a40b48a2fc779c3c'
-            '36ac88de630e49ea4b067b1f5f229142e4cf97561b98b3bd3d8115a356946692')
+            'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295')
 
 package() {
   echo "Copying core SDK components"
