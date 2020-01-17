@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-snappy
 _pkgname=snappy
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="A fast compressor/decompressor library (mingw-w64)"
 arch=('any')
@@ -11,9 +11,9 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://github.com/google/snappy/archive/${pkgver}.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/google/snappy/archive/${pkgver}.tar.gz"
         "snappy.pc")
-md5sums=('ee9086291c9ae8deb4dac5e0b85bf54a'
+md5sums=('70e48cba7fecf289153d009791c9977f'
          '99c76caed6b8a392037dab0265a85ce1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -49,7 +49,7 @@ package() {
     cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}-static"
     make DESTDIR="${pkgdir}" install
     
-    # install .pc file
+    # upstream dropped the pkgconfig file and isn't interested in adding it back.
     install -Dm644 "${srcdir}/snappy.pc" "${pkgdir}/usr/${_arch}/lib/pkgconfig/snappy.pc"
     sed -e "s|@PREFIX@|/usr/${_arch}|g" \
         -e "s|@VERSION@|${pkgver}|g" \
