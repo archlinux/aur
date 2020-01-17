@@ -1,8 +1,8 @@
 # Maintainer: Shane "SajeOne" Brown <contact@shane-brown.ca>
 pkgname=python-spotipy-git
 _pkgname=spotipy
-pkgver=r311.4c2c1d7
-pkgrel=1
+pkgver=r406.6da643e
+pkgrel=2
 pkgdesc='Simple client for the Spotify Web API'
 arch=('any')
 url="https://github.com/plamere/spotipy"
@@ -22,5 +22,5 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	python setup.py install --root="${pkgdir}/" --optimize=1
 
-	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

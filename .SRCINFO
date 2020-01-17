@@ -1,6 +1,6 @@
 pkgbase = python-spotipy-git
 	pkgdesc = Simple client for the Spotify Web API
-	pkgver = r311.4c2c1d7
+	pkgver = r406.6da643e
 	pkgrel = 1
 	url = https://github.com/plamere/spotipy
 	arch = any
