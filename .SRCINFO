@@ -1,13 +1,13 @@
 pkgbase = ruby-activesupport-5.2.3
 	pkgdesc = A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.
 	pkgver = 5.2.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://rubyonrails.org
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-i18n
-	depends = ruby-tzinfo
+	depends = ruby-tzinfo-1.1
 	depends = ruby-minitest
 	depends = ruby-concurrent
 	provides = ruby-activesupport
