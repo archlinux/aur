@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=nali-cli
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Parse geoinfo of IP Address without leaving your terminal"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
         "$pkgname-$pkgver.LICENSE::https://github.com/SukkaW/nali-cli/raw/master/LICENSE")
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('47066db13308699408efd982f21a52a3bdc26a0bede5f6d8d5956aae77f35a88'
+sha256sums=('ac25a6baefb1b02b233b8da53feaf5e2d53a939472ba2a940810659f76827d82'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
