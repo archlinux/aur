@@ -6,9 +6,10 @@ pkgver=0.4
 pkgrel=2
 pkgdesc="Better INI parser library for Python"
 arch=('any')
-license=('MIT')
+license=('custom:MIT')
 url="https://pypi.python.org/pypi/iniparse"
 depends=('python' 'python-six')
+checkdepends=('python-tests')
 source=("https://pypi.python.org/packages/source/i/iniparse/iniparse-$pkgver.tar.gz"
         "http://src.fedoraproject.org/rpms/$pkgname/raw/master/f/$pkgname-python3-compat.patch")
 md5sums=('5e573e9e9733d97623881ce9bbe5eca6'
