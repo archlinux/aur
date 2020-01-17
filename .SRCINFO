@@ -1,16 +1,17 @@
-pkgbase = arch-silence-grub-theme-git
+pkgbase = archie-silence-grub-theme-git
 	pkgdesc = Arch Silence - GRUB2 theme - GIT version
 	pkgver = r5.9fda3bf
 	pkgrel = 2
 	url = https://github.com/fghibellini/arch-silence
-	install = arch-silence-grub-theme-git.install
+	install = archie-silence-grub-theme-git.install
 	arch = any
 	license = GPL
 	makedepends = git
 	provides = arch-silence-grub-theme=r5.9fda3bf
 	conflicts = arch-silence-grub-theme
+	conflicts = arch-silence-grub-theme-git
 	source = git+https://github.com/fghibellini/arch-silence.git
 	sha512sums = SKIP
 
-pkgname = arch-silence-grub-theme-git
+pkgname = archie-silence-grub-theme-git
 
