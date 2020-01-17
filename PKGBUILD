@@ -21,7 +21,7 @@ pkgver() {
 build() {
   cd "${srcdir}/JDim"
   autoreconf -i
-  ./configure --prefix=/usr --with-stdthread  --with-gtkmm3
+  ./configure --prefix=/usr --with-gtkmm3 --with-thread=std --with-tls=openssl
   make
 }
 
