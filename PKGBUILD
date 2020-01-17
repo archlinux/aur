@@ -1,5 +1,5 @@
 pkgname=kakoune-extra-filetypes-git
-pkgver=1.0
+pkgver=r18_5a29ba9
 pkgrel=1
 pkgdesc='Extra highlighters for the Kakoune editor'
 arch=('any')
@@ -10,6 +10,11 @@ makedepends=('git')
 source=("${pkgname}::git+https://github.com/kakoune-editor/kakoune-extra-filetypes.git")
 sha256sums=('SKIP')
 install="${pkgname}.install"
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    printf r%s_%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+}
 
 package() {
     cd "${srcdir}/${pkgname}"
