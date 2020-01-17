@@ -2,7 +2,7 @@
 # Contributorr: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=1
+pkgrel=2
 _srcname=linux-5.4
 _major=5.4
 ### on initial release this is null otherwise it is the current stable subversion
@@ -33,7 +33,6 @@ source=(
 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
 0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
 0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
 0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
 0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
@@ -57,7 +56,6 @@ sha256sums=('9bae8b2f674152e4d126a505d1e89958b5de735791ebb7d321e436ff767990f3'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee'
             '0ee10a8bce75e243f20dcae2bf627325a65b0a725fc4af70b585e170a4c5b984'
             '1bc6c7503d5e30196ccb2210bbd9d17d73c245afa82a671d4ccf14796047cca6'
-            '4dddac706c4983bd9ddd67aafc08d4b17d0cd9d929be14d92586dfacdb0f37fb'
             '66a5cdff9a5a83d4f691f38b18a06bf373c32be9200ca8708eddde560fc8f33d'
             '4073da89517a8e25ceb63c686c0f4b5a3988ad91d4bfa7977a508e6f41dd56da'
             'd32cca150a2ccb9e5b144769e75ef7a7b851f3cd4a8357c1cd8e6a9f5eac6f31'
@@ -82,6 +80,9 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+
+  msg2 "Applying $_rcpatch..."
+  patch -Np1 <"../$_rcpatch"
 
   local src
   for src in "${source[@]}"; do
