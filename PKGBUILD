@@ -7,9 +7,17 @@ pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/cdrummond/cantata"
 license=(GPL3)
-depends=(qt5-svg qt5-multimedia libmtp libmusicbrainz5 mpg123 taglib-extras media-player-info libcdio-paranoia udisks2)
-optdepends=('perl-uri: dynamic playlist'
-            'mpd: playback'
+depends=(qt5-multimedia
+         qt5-svg
+         libcdio-paranoia
+         libmtp
+         libmusicbrainz5
+         media-player-info
+         mpg123
+         taglib-extras
+         udisks2)
+optdepends=('perl-uri: Dynamic playlist'
+            'mpd: Playback'
             'ffmpeg: ReplayGain support')
 makedepends=(git cmake qt5-tools ffmpeg)
 conflicts=(cantata)
@@ -19,7 +27,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "%s.r%s.%s" "$(git tag | tail -n 1 | sed 's/^v//')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
