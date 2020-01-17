@@ -1,4 +1,4 @@
-# Maintainer: Mark Tompkins
+# Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=archie-silence-grub-theme-git
 _gitname="arch-silence"
