@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   rm -rf build
-  arch-meson $_realname build
+  arch-meson $_realname build --libdir=lib --buildtype release
   ninja -C build
 }
 
@@ -40,7 +40,6 @@ build() {
 #}
 
 package() {
-  cd $_realname
   DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm644 "${srcdir}"/gulkan/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
