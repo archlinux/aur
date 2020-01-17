@@ -1,7 +1,7 @@
 pkgbase = python-pytweening
 	pkgdesc = A set of tweening / easing functions implemented in Python.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asweigart/pytweening
 	arch = any
 	license = BSD

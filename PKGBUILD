@@ -3,7 +3,7 @@
 pkgname=python-pytweening
 _name=PyTweening
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of tweening / easing functions implemented in Python."
 arch=('any')
 url="https://github.com/asweigart/pytweening"
