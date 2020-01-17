@@ -1,7 +1,7 @@
 # Maintainer: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=r1017.fd45a8d
+pkgver=r1039.de2dacd
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$_gitname/build"
-    cmake ..
+    cmake -DBUILD_PRO=true ..
     make -j4
 }
 
