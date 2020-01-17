@@ -42,7 +42,7 @@ prepare() {
 }
   
 build() {
-  arch-meson $basename build -D gtk_doc=true --buildtype=debug
+  arch-meson $basename build -D gtk_doc=true --buildtype=release
   ninja -C build
 }
 
