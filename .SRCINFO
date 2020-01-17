@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 13.0.1
+	pkgver = 13.0.2
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jre.install
@@ -31,8 +31,8 @@ pkgbase = jre
 	backup = etc/java13-jre/logging.properties
 	backup = etc/java13-jre/net.properties
 	backup = etc/java13-jre/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jdk/13.0.1+9/cec27d702aa74d5a8630c65ae61e4305/jdk-13.0.1_linux-x64_bin.tar.gz
-	sha256sums = 593f25d35493ec3edc1af341dc5ad1aad455aef1fdb7e596af56df754625a09d
+	source = https://download.oracle.com/otn-pub/java/jdk/13.0.2+8/d4173c853231432d94f001e99d882ca7/jdk-13.0.2_linux-x64_bin.tar.gz
+	sha256sums = e2214a723d611b4a781641061a24ca6024f2c57dbd9f75ca9d857cad87d9475f
 
 pkgname = jre
 
