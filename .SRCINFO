@@ -14,8 +14,6 @@ pkgbase = xrdesktop-git
 	depends = gxr-git
 	provides = xrdesktop=0.13.99.695.1e5b438
 	conflicts = xrdesktop
-	options = debug
-	options = !strip
 	source = git+https://gitlab.freedesktop.org/xrdesktop/xrdesktop.git
 	md5sums = SKIP
 

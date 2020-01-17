@@ -12,7 +12,6 @@ provides=("$basename="$pkgver)
 conflicts=("$basename")
 makedepends=('meson' 'git' 'glslang' 'gtk-doc' 'vulkan-headers')
 license=('MIT')
-options=('debug' '!strip')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/xrdesktop.git')
 
