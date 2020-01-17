@@ -1,18 +1,17 @@
-Submodule Telegram/lib_ui contains modified content
 diff --git a/Telegram/lib_ui/CMakeLists.txt b/Telegram/lib_ui/CMakeLists.txt
-index 687b25f..5243936 100644
+index 81bf4d1..05bf2a1 100644
 --- a/Telegram/lib_ui/CMakeLists.txt
 +++ b/Telegram/lib_ui/CMakeLists.txt
-@@ -20,7 +20,6 @@ set(style_files
-     ui/widgets/widgets.style
- )
- set(qrc_files
+@@ -33,7 +33,6 @@ PRIVATE
+     ui/colors.palette
+     emoji_suggestions/emoji_autocomplete.json
+ 
 -    fonts/fonts.qrc
-     qt_conf/linux.qrc
      qt_conf/mac.qrc
      qt_conf/win.qrc
+ 
 diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
-index e27850f..d1f45b8 100644
+index a4be3e4..aee47f5 100644
 --- a/Telegram/lib_ui/ui/style/style_core_font.cpp
 +++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
 @@ -15,7 +15,6 @@

@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -19,7 +19,6 @@ depends=(
 	zlib
 	minizip
 	openssl
-	sonnet
 	libtgvoip
 	rlottie-tdesktop
 	hicolor-icon-theme
@@ -64,17 +63,12 @@ source=(
 	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@2x.png"
 	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@3x.png"
 
-	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/09de9a8a98c79b8d4c4e19313a8e2b4db5591c58/pkgs/kotatogram-desktop/update-to-v1.9.3.patch"
-	"cmake-rules-fix.patch"
-	"remove-qt-config.patch"
-	"fix-spellcheck.patch"
-	"fix-notifications.patch"
+	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/4c17ad9c0d190ebdcb4e6c68860025ca81e9c708/pkgs/kotatogram-desktop/update-to-v1.9.4.patch"
 	"Use-system-font.patch"
 	"Use-system-wide-font.patch"
 	"system-tray-icon.patch"
 	"linux-autostart.patch"
 	"Use-system-font-by-default.patch"
-	"Use-native-notifications-by-default.patch"
 
 	"autostart.desktop"
 )
@@ -99,17 +93,12 @@ sha512sums=('SKIP'
             '767cc5f3a8e25ff94cfc4a0ad6968455ab52875262e40515cfd4ebea1765014808913ee624efa47c57b15de7cceb492bf7232de981d519bd104036f6d498b788'
             'ac55bcd0c572b1e5fdd72cd0dd9db4bb5eb9c12adc8c702f348201a52b1cf0271f550e144e6654605753960cab55146604a8b52d5294861f73d85b548e5503f0'
             'ec16fd3a70a225fd9aa54c8042b1115d0bdb15e2a95c1abbc74cee50a06878196a4e8c451167c9849ff816ce36e48f46166cb7e99790258d575bde11e305e548'
-            'a724ebcf13856fe9c261f9d0e5b4ffc3fc5f0b05b56e988554e75f65e5b9c5a2964444a5fa59b017c2c1689472f9a8be62a6cdde0ef7e3eae598b7c09d7f47b2'
-            '660d077e5f5da14b8abf4a6f7a58b2e51c5f4c37dda302a2737a4fd7580335e44de64c4e0c9c16aab58f0d555b875da9ac41d5b59543969329e2e3098e44327b'
-            'c90dbebb216233b5a3d5036fb244d1ce746540fcc84413de70cab6c557fee7d0a065cf1dc828c5ae7f8a0be26ff3ea05eec99c74006d201118c2b2531da4182f'
-            'aad19022eb8ddedf21e582a0c7dc7eac8435c667e542b7c36c7cce876a031acb675a05e9d8fa7fea631f1c3a00f20e9f1bfb2dcc0c8aaa609fd3bc6891804153'
-            'a481a82e1eb03e378cb5955fc7688cca5eee220311d941c755e2329d4b77f0b3183650cfb9ac34f340cab4a94b3eadbcf905fc347cfdca73fdcaea85f4a848e5'
+            'ece3cbbed63a04d1ee08218b16782a5105bc8f9d6d88b49bfbd768d3260a0d322e7544f224c5ee0da21177c252747dba24a0ce807da9dea2447e54ff04785e47'
             'b9fe9cb91e19271920c4cf075ba83703f093111d6a692cab91eb493563940091cda7b204742711157beb1e9857c1fefd6788ec8784f7b362423a9564925c0de6'
-            '94ea7c337c6c9dd6be7727d3b8e9f44cdcfe391c574607491aa32b6e64a93eff7bcc6adc993e7c93e8f5b75a4646a1cf884646fce65ca78edf1df7a969bcf56a'
+            '4263c3e3a3edcd91eed2a666b7aa1db61129531d60b5539d7aa24b83f46b17cb5fe65229175e36f76bf2ac76472aa2a1e5fa1c0c5ff0cbb809816cd006bb2ef4'
             '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a'
             'aaef50685b8871f32820e6cca2014aa986500ddcf34f4e99216081310e8622a242420a7d1ce30e277af85eb3f1d1e73c5a67dab9e02b42ef03ae6d76381fe635'
             'a95122676e18b1505b796b79e24521adcf5b29a28a01b7cd3285b5855c8d27e5e0e8f15928f61826e81163dfd3f06e71d27879bef748c1d491a3cd8f9e3212cc'
-            '14064af25fda0fcd31a0dc7626687eaf61c329e9100fb55a8a0a455600a63a761e864056088aa486afdd053eccad0a55f8b332151eeb46c90a2c562a64a0a36e'
             '610ce239e1e8ae6cfaaccc507eb2ca174f38e340ceec8f56bec4da1a6e390b516c56be5c82a90674e92d0958ac7c8f2fdba560b044f30fb165b522a58bfb600a')
 
 prepare() {
@@ -140,17 +129,12 @@ prepare() {
 
 	dos2unix "$srcdir/$pkgname/Telegram/build/build.bat"
 
-	patch -Np1 -i "$srcdir/update-to-v1.9.3.patch"
-	patch -Np1 -i "$srcdir/cmake-rules-fix.patch"
-	patch -Np1 -i "$srcdir/remove-qt-config.patch"
-	patch -Np1 -i "$srcdir/fix-spellcheck.patch"
-	patch -Np1 -i "$srcdir/fix-notifications.patch"
+	patch -Np1 -i "$srcdir/update-to-v1.9.4.patch"
 	patch -Np1 -i "$srcdir/Use-system-font.patch"
 	patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 	patch -Np1 -i "$srcdir/system-tray-icon.patch"
 	patch -Np1 -i "$srcdir/linux-autostart.patch"
 	patch -Np1 -i "$srcdir/Use-system-font-by-default.patch"
-	patch -Np1 -i "$srcdir/Use-native-notifications-by-default.patch"
 
 	unix2dos "$srcdir/$pkgname/Telegram/build/build.bat"
 
