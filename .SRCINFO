@@ -1,0 +1,16 @@
+pkgbase = ruby-thor-0.20.0
+	pkgdesc = Thor is a toolkit for building powerful command-line interfaces.
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = http://whatisthor.com/
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ruby-thor
+	noextract = thor-0.20.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/thor-0.20.0.gem
+	sha1sums = 2e921089cdc548fd06b585015cd2b15506792f63
+
+pkgname = ruby-thor-0.20.0
+
