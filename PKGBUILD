@@ -2,12 +2,12 @@
  
 _realname='gxr'
 pkgname="$_realname-git"
-pkgver=0.13.2.661.b24d5f6
+pkgver=0.13.99.813.56622d0
 pkgrel=1
-pkgdesc='A glib wrapper for the OpenVR and soon the OpenXR API.'
+pkgdesc='A glib wrapper for the OpenVR and OpenXR APIs.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gxr'
-depends=('glib2' 'gtk3' 'gulkan-git' 'openvr-git')
+depends=('gtk3' 'gulkan-git' 'openvr-git' 'openxr-loader-git')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'vulkan-headers')
@@ -45,4 +45,6 @@ check() {
 package() {
   cd $_realname
   DESTDIR="$pkgdir" ninja -C build install
+
+  install -Dm644 "${srcdir}"/gxr/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
