@@ -25,7 +25,7 @@ build() {
   cd "${_name}-py2-${pkgver}"
   python2 setup.py build
 
-  cd "${_name}-${pkgver}"
+  cd "${srcdir}/${_name}-${pkgver}"
   python setup.py build
 }
 
