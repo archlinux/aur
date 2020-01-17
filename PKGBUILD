@@ -14,10 +14,10 @@ pkgdesc='Security-Hardened Linux with CCS and AppArmor'
 url='https://tomoyo.osdn.jp'
 arch=(x86_64)
 license=(GPL2)
-#makedepends=(
-#  bc kmod libelf
-#  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-#)
+makedepends=(
+  bc kmod libelf
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+)
 options=('!strip')
 _srcname=linux-${pkgver%.*}
 source=(
