@@ -12,13 +12,11 @@ pkgdesc="The next generation GNOME Shell - with patches for xrdesktop."
 url="https://gitlab.freedesktop.org/xrdesktop"
 arch=(x86_64)
 license=(GPL2)
-depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
-         gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
-         mutter nm-connection-editor unzip gstreamer libibus xrdesktop-git libinputsynth-git)
+depends=(accountsservice gjs gnome-bluetooth gnome-session gnome-themes-extra libgdm
+         mutter nm-connection-editor unzip xrdesktop-git libinputsynth-git gnome-autoar evolution-data-server python)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc vulkan-headers asciidoc)
-optdepends=('gnome-control-center: System settings'
-            'evolution-data-server: Evolution calendar integration')
+optdepends=('gnome-control-center: System settings')
 groups=(gnome)
 provides=(gnome-shell=$pkgver)
 source=($basename::"git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.34.3-xrdesktop"
