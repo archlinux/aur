@@ -1,7 +1,7 @@
 # Maintainer: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite
-pkgver=1.6.0.1
+pkgver=1.6.2
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
@@ -16,7 +16,7 @@ conflicts=('runelite-git')
 source=("${url}/archive/runelite-parent-${pkgver}.tar.gz"
         runelite.desktop
         runelite.png)
-sha512sums=('f307ad12e6a367edd4c56aeab99d014321a64457b664b7beccaebf6007af068d83c50c931f7b7eb486fe6fd5aa243071f1b8cb07b0bb9f9ce6d6e9cef37f68ea'
+sha512sums=('2c364b5bb64367234d67e4dd3d602eb91a83e82b6ab61ae72c0388c18fa0f31ab76ce9e9de4df49ddafb750b4db6dfa19951d3cf1cea1fc3024b0bcf290e31ef'
             'e00339514623c2f683118f1cdba93cebbc0761fd72f31e2d139ed467b8c41a6738fd0f27ac2beba4d2caa2a365ef4cc49a43af54b13ca5a908e5fd11d03f4bc1'
             '73e0c42f4eaf2e0adc249e471bd241e8328da7f867177535f1da206acce14801b60e69fffdbb2a10bc105f1de37b6eaaad23d5e67147b53a108b6e5bf55c586b')
 
