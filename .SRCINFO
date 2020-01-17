@@ -1,8 +1,8 @@
 pkgbase = solaar-git
 	pkgdesc = Device manager for Logitech's Unifying receiver peripherals
-	pkgver = 0.9.2.r281.g2aab7f7
+	pkgver = 0.9.2.r323.gdef11e1
 	pkgrel = 1
-	url = https://pwr.github.com/Solaar/
+	url = https://pwr-solaar.github.io/Solaar/
 	arch = any
 	license = GPL2
 	depends = gtk3
