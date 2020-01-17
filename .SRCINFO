@@ -1,12 +1,13 @@
 pkgbase = lua-format-ext-git
 	pkgdesc = LuaFormatter with extended identifiers
-	pkgver = r56.c068f4c
+	pkgver = r126.2c3edd0
 	pkgrel = 1
 	url = https://github.com/tkkcc/LuaFormatter
 	arch = x86_64
 	license = Apache2
+	makedepends = git
+	makedepends = cmake
 	makedepends = antlr4
-	depends = antlr4-runtime
 	provides = lua-format-ext
 	provides = lua-format
 	provides = LuaFormatter
@@ -14,13 +15,9 @@ pkgbase = lua-format-ext-git
 	conflicts = lua-format
 	conflicts = LuaFormatter
 	source = git+https://github.com/Koihik/LuaFormatter
-	source = antlr4.patch
 	source = g4.patch
-	source = xdg_config.patch
 	sha512sums = SKIP
-	sha512sums = e33afdda51c9ab3aa23a7ccad536762f2807972e9bde52ea67793dbc9bb3c3884daf2fed830d44f0b34c6f7bef2e327af8634293fba74ceb091bf71bbd2fe662
 	sha512sums = 8747d10775b34b8e413263439b1284bd524ef0ef867e3646774cb5ed4dddf008f852b7a2b6f8a6a1492739a7f931d57e6346cb8b65e00542b7aa8d0b868a4ebc
-	sha512sums = 5497aa0fdc9d514049669e68b1eb4d140528403fa4a2846e3a7b5906ad7798a0108713d5d7a2accfe9ba69f0b8785ab2aa300731eec316e4c74ce08f573cc888
 
 pkgname = lua-format-ext-git
 
