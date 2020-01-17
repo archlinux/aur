@@ -5,7 +5,7 @@
 
 pkgname=fprintd-libfprint2
 pkgname_=fprintd
-pkgver=0.9.0+23+ga520896
+pkgver=0.9.0+33+g1a5ef6c
 pkgrel=1
 pkgdesc="D-Bus service to access fingerprint readers, modified to use libfprint2"
 arch=(x86_64)
