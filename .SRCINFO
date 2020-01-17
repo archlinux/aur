@@ -1,6 +1,6 @@
 pkgbase = r-knitr
 	pkgdesc = A General-Purpose Package for Dynamic Report Generation in R
-	pkgver = 1.26
+	pkgver = 1.27
 	pkgrel = 1
 	url = https://cran.r-project.org/package=knitr
 	arch = any
@@ -38,8 +38,8 @@ pkgbase = r-knitr
 	optdepends = r-tibble
 	optdepends = r-sass
 	optdepends = r-styler
-	source = https://cran.r-project.org/src/contrib/knitr_1.26.tar.gz
-	md5sums = 839f007053fab96e27089fa8a5a0b640
+	source = https://cran.r-project.org/src/contrib/knitr_1.27.tar.gz
+	md5sums = 2834fa5bece1893c998845a66ce41f6c
 
 pkgname = r-knitr
 
