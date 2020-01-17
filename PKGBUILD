@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=paymo-widget
-pkgver=6.6.13
+pkgver=6.7.3
 pkgrel=1
 pkgdesc="An app that allows you to track work time via a stopwatch or manually add bulk time for paymo"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=("paymo-widget-${pkgver}-x86_64.AppImage::https://www.paymoapp.com/widget?os=linux")
-sha512sums=('47d17cb6e4bfed255f52f2381ae5eb68f27ba0fd023ff1da92ff23d8619c2cc8996e7a09d4334d441c6915f715fd1996efeb4c4c6280bb4d550a66754ba99fd0')
+sha512sums=('ee9a8308b9f7c1191219477eea771add679d5d8789f16ac1ab8c95cd314be2d8cf960484ac3c29b45da3a1d14e10f30febd448e9fc08513fbdf3176f10da73b7')
 
 prepare() {
   chmod +x "$srcdir"/paymo-widget-${pkgver}-x86_64.AppImage
