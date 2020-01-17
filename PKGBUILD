@@ -55,11 +55,11 @@ _htmldocs_enable=
 _major=5.4
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=15
+_lqxpatchrel=16
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.4.12_1
-pkgrel=2
+pkgver=5.4.13_1
+pkgrel=1
 pkgdesc='Liquorix Kernel'
 arch=('x86_64')
 url="http://liquorix.net/"
@@ -348,7 +348,7 @@ done
 
 sha512sums=('9f60f77e8ab972b9438ac648bed17551c8491d6585a5e85f694b2eaa4c623fbc61eb18419b2656b6795eac5deec0edaa04547fc6723fbda52256bd7f3486898f'
             'SKIP'
-            'ee597f8cc2a42586d3ed25c4fdf225f1590bf401192b41f56abb0474472f020a96e7e8a374e3a129e08fc5ae4cfc9118b33edbf74e6b7515774c8d1c0a1f804c')
+            'abe3de83138503b3bec8a9409e75c5722c627a94d83f677bb38d377d8febb27a52133bd654e5162d1d6b317715294b68c9b9f0088967e7593f43b77ad1df966d')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
