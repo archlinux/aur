@@ -2,7 +2,7 @@
  
 _realname='gxr'
 pkgname="$_realname-git"
-pkgver=0.13.99.813.56622d0
+pkgver=0.13.99.814.2ca7b4d
 pkgrel=1
 pkgdesc='A glib wrapper for the OpenVR and OpenXR APIs.'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://gitlab.freedesktop.org/xrdesktop/gxr'
 depends=('gtk3' 'gulkan-git' 'openvr-git' 'openxr-loader-git')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
-makedepends=('meson' 'git' 'vulkan-headers')
+makedepends=('meson' 'git' 'vulkan-headers' 'openxr-headers-git')
 license=('MIT')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
