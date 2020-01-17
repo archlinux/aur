@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xKill
+Comment=Shortcut to kill applications
+Icon=application-exit
+Exec=xkill
+Categories=System;
