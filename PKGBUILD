@@ -1,17 +1,27 @@
-# Maintainer: Slithery <aur at slithery dot uk>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Slithery <aur at slithery dot uk>
+
+_name=linode_api4-python
 pkgname=python-linode-api
-pkgver=4.1.8b1
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
+epoch=1
 pkgdesc="Bindings for the Linode API v4"
 arch=('any')
-url="https://github.com/linode/$pkgname"
+url="https://github.com/linode/$_name"
 license=('BSD')
 depends=('python-setuptools')
-source=("$url/archive/v$pkgver.zip")
-sha256sums=('f2e84dac7e89484756a8bb81054efb2cf3bb13362323e367036412adacf09432')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('6c7d18398d75103eb12496f19d847e66a6443ce3965a9ab26e02bbe3c9577652')
+
+
+build () {
+  cd "$_name-$pkgver"
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 }
