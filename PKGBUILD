@@ -1,42 +1,38 @@
-# $Id: PKGBUILD 57440 2011-10-27 20:16:15Z lcarlier $
+# Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
-
+_name=numdifftools
 pkgbase=python-numdifftools
 pkgname=('python2-numdifftools' 'python-numdifftools')
-pkgver=0.9.14
+pkgver=0.9.39
 pkgrel=1
-pkgdesc='A suite of tools written in _Python to solve automatic numerical differentiation problems in one or more variables.'
+pkgdesc='suite of tools written in _Python to solve automatic numerical differentiation problems in one or more variables'
 url='https://github.com/pbrod/numdifftools/'
 license=("LGPL")
 arch=('i686' 'x86_64')
-depends=('python-numpydoc')
-#depends=('python2-numpydoc' 'python-numpydoc')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools' 'python-numpy' 'python-scipy' 'python-algopy' 'python-statsmodel')
+makedepends+=('python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-algopy' 'python2-statsmodel')
 options=('!libtool')
-source=("https://pypi.python.org/packages/source/N/Numdifftools/numdifftools-${pkgver}.zip")
-sha1sums=('d99930a9389ff23c044c8b4e7499d76201d8040b') 
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha1sums=('336c470027eb0730e6cfec0db7710f690311b129')
+
 
 prepare() {
-  cd "$srcdir"
-  cp -a numdifftools-${pkgver} numdifftools-py2-${pkgver}
+  cp -a ${_name}-${pkgver} ${_name}-py2-${pkgver}
 }
 
 build() {
-  msg2 "Building numdifftools - Python2"
-  cd "${srcdir}/numdifftools-py2-${pkgver}"
+  cd "${_name}-py2-${pkgver}"
   python2 setup.py build
 
-  msg2 "Building numdifftools - Python3"
-  cd "${srcdir}/numdifftools-${pkgver}"
+  cd "${_name}-${pkgver}"
   python setup.py build
 }
 
 package_python-numdifftools() {
-  depends=('python-numpydoc')
-  optdepends=()
-  msg2 "Installing numdifftools python3"
-  cd "${srcdir}/numdifftools-${pkgver}"
+  depends=('python-numpy' 'python-scipy' 'python-algopy' 'python-statsmodel')
+
+  cd "${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Remove left over directories from distribute utils.
@@ -44,12 +40,11 @@ package_python-numdifftools() {
 }
 
 package_python2-numdifftools() {
-#  depends=('python2-numpydoc')
-  optdepends=()
-  msg2 "Installing numdifftools python2"
-  cd "${srcdir}/numdifftools-py2-${pkgver}"
+  depends=('python2-numpy' 'python2-scipy' 'python2-algopy' 'python2-statsmodel')
+
+  cd "${_name}-py2-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
-  
+
   # Remove duplicated documentation
   rm -rf ${pkgdir}/usr/share
 

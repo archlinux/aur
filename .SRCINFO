@@ -1,22 +1,34 @@
 pkgbase = python-numdifftools
-	pkgdesc = A suite of tools written in _Python to solve automatic numerical differentiation problems in one or more variables.
-	pkgver = 0.9.14
+	pkgdesc = suite of tools written in _Python to solve automatic numerical differentiation problems in one or more variables
+	pkgver = 0.9.39
 	pkgrel = 1
 	url = https://github.com/pbrod/numdifftools/
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = python2-setuptools
 	makedepends = python-setuptools
-	depends = python-numpydoc
+	makedepends = python-numpy
+	makedepends = python-scipy
+	makedepends = python-algopy
+	makedepends = python-statsmodel
+	makedepends = python2-setuptools
+	makedepends = python2-numpy
+	makedepends = python2-scipy
+	makedepends = python2-algopy
+	makedepends = python2-statsmodel
 	options = !libtool
-	source = https://pypi.python.org/packages/source/N/Numdifftools/numdifftools-0.9.14.zip
-	sha1sums = d99930a9389ff23c044c8b4e7499d76201d8040b
+	source = https://files.pythonhosted.org/packages/source/n/numdifftools/numdifftools-0.9.39.tar.gz
+	sha1sums = 336c470027eb0730e6cfec0db7710f690311b129
 
 pkgname = python2-numdifftools
-	optdepends = 
+	depends = python2-numpy
+	depends = python2-scipy
+	depends = python2-algopy
+	depends = python2-statsmodel
 
 pkgname = python-numdifftools
-	depends = python-numpydoc
-	optdepends = 
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-algopy
+	depends = python-statsmodel
 
