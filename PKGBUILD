@@ -7,14 +7,15 @@ _libver=6.2.2
 _patch=lib.patch
 pkgname=$_pkg
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='LuaFormatter - Code formatter for Lua'
 arch=(x86_64)
 url=https://github.com/Koihik/LuaFormatter
 provides=($_pkg $_src)
 conflicts=($_pkg $_src)
 license=(Apache2)
-makedepends=(antlr4-runtime yaml-cpp cmake)
+depends=(antlr4-runtime yaml-cpp)
+makedepends=(cmake)
 source=($_pkg-$pkgver::https://github.com/Koihik/$_src/archive/$_pkgver.tar.gz
   $_lib-$_libver::https://github.com/Taywee/$_lib/archive/$_libver.tar.gz
   $_patch
