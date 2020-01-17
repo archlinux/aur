@@ -1,7 +1,7 @@
 pkgbase = jdim-git
 	pkgdesc = A 2channel browser written in C++ using gtkmm3. This is public beta version.
 	pkgver = r2787.1d1f767e
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/JDimproved/JDim/tree/master
 	arch = i686
 	arch = x86_64
