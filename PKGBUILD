@@ -1,7 +1,7 @@
 # Contributor: Natanael Copa <ncopa@alpinelinux.org>
 # Maintainer: Yauheni Kirylau <actionless.loveless+aur@gmail.com>
 pkgname=libxxf86dga
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="X11 Direct Graphics Access extension library"
 url="http://xorg.freedesktop.org/"
@@ -14,9 +14,9 @@ makedepends=(
 source=(
 	"libXxf86dga-${pkgver}.tar.bz2::http://www.x.org/releases/individual/lib/libXxf86dga-$pkgver.tar.bz2"
 )
-md5sums=('d7dd9b9df336b7dd4028b6b56542ff2c')
-sha256sums=('8eecd4b6c1df9a3704c04733c2f4fa93ef469b55028af5510b25818e2456c77e')
-sha512sums=('58d81a7850275fc8382018bcc56dbc65b4200828b1f1379dcee3da1878f12a83ee681a9d474bcd564d99bf93bedfeb7b243370e0ebb89177652b37cee158a3f2')
+md5sums=('0ddeafc13b33086357cfa96fae41ee8e')
+sha256sums=('2b98bc5f506c6140d4eddd3990842d30f5dae733b64f198a504f07461bdb7203')
+sha512sums=('0e77c4003aeba737b10c17d55aeefa935fc57c4ba9e8f79a834f3f8c690d6a1d98f69ad707eded784346c1cf40c41829719d257283b5eae3207147fb4c79ed89')
 
 build() {
 	builddir="$srcdir"/libXxf86dga-$pkgver
