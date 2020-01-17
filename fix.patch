@@ -1,7 +1,7 @@
-From 5fe69d9c8f2a7499e1b9c8c42e003490cf76c38d Mon Sep 17 00:00:00 2001
+From 41523cb5b2f0059269205be907d1de38dfed6e46 Mon Sep 17 00:00:00 2001
 From: tioguda <guda.flavio@gmail.com>
-Date: Thu, 9 Jan 2020 05:10:51 -0300
-Subject: Fix
+Date: Fri, 29 Jun 2018 05:26:18 -0300
+Subject: fix
 
 
 diff --git a/opt/thefanclub/ddutility/ddutility.sh b/opt/thefanclub/ddutility/ddutility.sh
@@ -37,30 +37,3 @@ index 67c5ce6..8cdb01c 100755
 -exit 0
 \ No newline at end of file
 +exit 0
-
-diff --git a/usr/share/applications/ddutility.desktop b/usr/share/applications/ddutility.desktop
-index 0ceca5f..1d225ce 100755
---- a/usr/share/applications/ddutility.desktop
-+++ b/usr/share/applications/ddutility.desktop
-@@ -6,7 +6,7 @@ GenericName=dd Utility
- X-GNOME-FullName=dd Utility
- Comment=Write and Backup Operating System IMG and ISO files on Memory Card
- 
--Exec=gksudo /bin/bash /opt/thefanclub/ddutility/ddutility.sh %U
-+Exec=gksu /bin/bash /opt/thefanclub/ddutility/ddutility.sh %U
- Terminal=false
- Path=/opt/thefanclub/ddutility/
- Icon=/opt/thefanclub/ddutility/ddutility.png
-@@ -18,10 +18,10 @@ X-Ayatana-Desktop-Shortcuts=Backup;Restore
- 
- [Backup Shortcut Group]
- Name=Backup
--Exec=gksudo "/bin/bash /opt/thefanclub/ddutility/ddutility.sh --Backup"
-+Exec=gksu "/bin/bash /opt/thefanclub/ddutility/ddutility.sh --Backup"
- TargetEnvironment=Unity
- 
- [Restore Shortcut Group]
- Name=Restore
--Exec=gksudo "/bin/bash /opt/thefanclub/ddutility/ddutility.sh --Restore"
-+Exec=gksu "/bin/bash /opt/thefanclub/ddutility/ddutility.sh --Restore"
- TargetEnvironment=Unity

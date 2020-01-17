@@ -1,13 +1,13 @@
 pkgbase = ddutility-bin
 	pkgdesc = Write and Backup Operating System IMG and ISO files on Memory Card or Disk
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 2
 	url = https://www.thefanclub.co.za/how-to/dd-utility-write-and-backup-operating-system-img-and-iso-files-memory-card-or-disk
 	arch = any
 	license = custom
 	depends = lsof
 	depends = udevil
-	depends = zensu
+	depends = gksu
 	depends = xz
 	depends = coreutils
 	depends = bash
@@ -19,7 +19,7 @@ pkgbase = ddutility-bin
 	source = https://raw.githubusercontent.com/thefanclub/dd-utility/master/DEB/ddutility_1.5_all.deb
 	source = fix.patch
 	sha256sums = 49417d46f41550ef1346670269f7d08be499ef4127fca99d762dfb90942ce445
-	sha256sums = 2310c088aa0944aea965f7182a1812ae42ee31d3bd4362b542988f8ddfeffc66
+	sha256sums = cb60afa451c48b139599d166a318e937291635864120ad1be8aa7e3c758a719b
 
 pkgname = ddutility-bin
 
