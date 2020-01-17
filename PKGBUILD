@@ -36,6 +36,10 @@ prepare() {
   sed -i 's!"dest": "program/js/tinymce"!"dest": "program/js/tinymce/langs"!' jsdeps.json
 
   mv composer.json-dist composer.json
+
+}
+
+build(){
   php -d extension=gd.so /usr/bin/composer install --no-dev
   bin/install-jsdeps.sh
   bin/jsshrink.sh
