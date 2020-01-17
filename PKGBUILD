@@ -1,7 +1,7 @@
 # Maintainer: bilabila <bilabila@qq.com>
 _src=LuaFormatter
 _pkg=lua-format
-_pkgver=1.3.0
+_pkgver=1.3.3
 _lib=args
 _libver=6.2.2
 _patch=lib.patch
@@ -14,14 +14,14 @@ url=https://github.com/Koihik/LuaFormatter
 provides=($_pkg $_src)
 conflicts=($_pkg $_src)
 license=(Apache2)
-depends=(antlr4-runtime yaml-cpp)
+makedepends=(antlr4-runtime yaml-cpp cmake)
 source=($_pkg-$pkgver::https://github.com/Koihik/$_src/archive/$_pkgver.tar.gz
   $_lib-$_libver::https://github.com/Taywee/$_lib/archive/$_libver.tar.gz
   $_patch
 )
-sha512sums=(1ea6183759c71147128caf36c22bcc5108cf0a4604d5c1ff426b91e6debceeb86f5ead87fef4e4de5e6339f2e35a8d2f7d48bd6722ccfd4e356151749b10fa2c
+sha512sums=(e9dc1ae7f05aac99af66dd61f71c00f2511db96cc65219a9ac9f777196cd688b093f867a0565627cf47f3c0416b1475cd4ecdd2ffcc88048842a5f93bbe5bbdb
   29b0f53316fe35f65ab92c807180c1e6cc6084dfed9f635aa2e3e848137ee8e5d24ec6831cf19189c6432335f73d1466564e0bc9bc259c98f3f0de264637f971
-  6c12fd6eae7ea8243216378a392e4bc1a3c2d7a6d16cf89c864c8f6656550e73754542e3068000abfd8ae6cd64af21fe4c2aa353e811fd5d2f94343452c6321b
+  ccc16949cceb6bb6a0961694921105e80fba3b478cc34d522d57277d5bbedfafeeb2d9638225fcbe9ae8d87cf01696eb22872e88cce078bdcc600bbef3c5efbd
 )
 _src=$_src-$pkgver
 prepare() {
