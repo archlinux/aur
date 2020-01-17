@@ -1,19 +1,17 @@
 pkgbase = lua-format-git
 	pkgdesc = LuaFormatter - Code formatter for Lua
-	pkgver = r50.21e0205
+	pkgver = r126.2c3edd0
 	pkgrel = 1
 	url = https://github.com/Koihik/LuaFormatter
 	arch = x86_64
 	license = Apache2
-	depends = antlr4-runtime
+	makedepends = git
 	provides = lua-format
 	provides = LuaFormatter
 	conflicts = lua-format
 	conflicts = LuaFormatter
 	source = git+https://github.com/Koihik/LuaFormatter
-	source = antlr4.patch
 	sha512sums = SKIP
-	sha512sums = e33afdda51c9ab3aa23a7ccad536762f2807972e9bde52ea67793dbc9bb3c3884daf2fed830d44f0b34c6f7bef2e327af8634293fba74ceb091bf71bbd2fe662
 
 pkgname = lua-format-git
 
