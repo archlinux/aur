@@ -10,12 +10,12 @@
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
 pkgver='2.2.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686')
 url="https://github.com/gildor478/$_projectname"
 license=('custom')
-depends=('ocaml' 'ocaml-lwt')
+depends=('ocaml' 'ocaml-lwt' 'ocaml-stdlib-shims')
 makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
