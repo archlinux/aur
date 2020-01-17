@@ -3,7 +3,7 @@
 
 pkgname=wsjtx-bin
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 arch=(i686 x86_64 armv7h)
 url="http://physics.princeton.edu/pulsar/k1jt/wsjtx.html"
@@ -26,7 +26,7 @@ fi
 source=("https://sourceforge.net/projects/wsjt/files/wsjtx-$pkgver/${debfile}")
 
 build() {
-    echo '/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0' > wsjtx-bin.conf
+    echo '/usr/lib/gcc/x86_64-pc-linux-gnu/7.5.0' > "$srcdir/wsjtx-bin.conf"
 }
 
 package() {
@@ -35,5 +35,5 @@ package() {
     cd "$pkgdir"
     chmod 755 usr/ usr/share/ usr/bin/ usr/share/doc/
     chmod 755 usr/share/applications/ usr/share/pixmaps/
-    install -Dm644 wsjtx-bin.conf "$pkgdir /etc/ld.so.conf.d/wsjtx-bin.conf"
+    install -Dm644 "$srcdir/wsjtx-bin.conf" "$pkgdir/etc/ld.so.conf.d/wsjtx-bin.conf"
 }
