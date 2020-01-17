@@ -17,7 +17,7 @@
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
-##
+
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
@@ -25,7 +25,7 @@ fi
 if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
-##
+
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
@@ -33,21 +33,32 @@ fi
 if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
-##
+
 ## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
 ## Set variable "use_pds" to: n to disable (stock Xanmod)
 ##                            y to enable
 if [ -z ${use_pds+x} ]; then
   use_pds=n
 fi
-##
+
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
 ## Set variable "use_ns" to: n to disable (stock Xanmod)
 ##                           y to enable (stock Archlinux)
 if [ -z ${use_ns+x} ]; then
   use_ns=n
 fi
-##
+
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
 pkgver=5.4.12
@@ -135,6 +146,18 @@ prepare() {
   fi
 
   make olddefconfig
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+      if [ -f $HOME/.config/modprobed.db ]; then
+        msg2 "Running Steven Rostedt's make localmodconfig now"
+        make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      else
+        msg2 "No modprobed.db data found"
+        exit
+      fi
+    fi
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
