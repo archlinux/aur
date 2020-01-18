@@ -1,14 +1,14 @@
 pkgbase = git-cinnabar
 	pkgdesc = Git remote helper to interact with Mercurial repositories
-	pkgver = 0.5.2
-	pkgrel = 2
+	pkgver = 0.5.3
+	pkgrel = 1
 	url = https://github.com/glandium/git-cinnabar
 	arch = x86_64
 	license = GPL2
 	depends = git
 	depends = mercurial
 	depends = python2
-	source = git+https://github.com/glandium/git-cinnabar#tag=0.5.2
+	source = git+https://github.com/glandium/git-cinnabar#tag=0.5.3
 	sha256sums = SKIP
 
 pkgname = git-cinnabar

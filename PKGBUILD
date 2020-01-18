@@ -1,7 +1,7 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=git-cinnabar
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Git remote helper to interact with Mercurial repositories"
 arch=(x86_64)
 url="https://github.com/glandium/$pkgname"
