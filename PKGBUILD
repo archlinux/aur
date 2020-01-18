@@ -8,14 +8,14 @@ pkgname=libfprint-git
 _pkgname=libfprint
 epoch=1
 pkgver=1.90.0.r211.g05df5e2
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for fingerprint readers"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
 license=(LGPL)
 depends=('glib2>=2.56' 'libgusb>=0.3.0' nss pixman)
-makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0' systemd)
-checkdepends=('umockdev>=0.13.2')
+makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0')
+checkdepends=(python python-cairo python-gobject 'umockdev>=0.13.2')
 groups=(fprint-git)
 provides=(libfprint)
 conflicts=(libfprint)
