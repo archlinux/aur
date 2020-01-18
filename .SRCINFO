@@ -1,12 +1,10 @@
 pkgbase = libndi3-bin
 	pkgdesc = Custom build of libndi from obs-ndi
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Palakis/obs-ndi
 	arch = x86_64
 	license = LGPL2.0
-	depends = obs-studio
-	depends = avahi
 	provides = libndi
 	conflicts = libndi-git
 	conflicts = ndi-sdk
