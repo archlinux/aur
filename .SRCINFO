@@ -9,6 +9,7 @@ pkgbase = structured-haskell-mode-git
 	license = BSD
 	makedepends = ghc
 	makedepends = git
+	makedepends = emacs
 	depends = ghc-libs
 	depends = haskell-src-exts
 	depends = haskell-descriptive

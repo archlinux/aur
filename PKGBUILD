@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'aarch64')
 depends=('ghc-libs' 'haskell-src-exts' 'haskell-descriptive')
 provides=('structured-haskell-mode')
 conflicts=('structured-haskell-mode')
-makedepends=('ghc' 'git')
+makedepends=('ghc' 'git' 'emacs')
 source=("${pkgname}::git://github.com/projectional-haskell/structured-haskell-mode")
 sha256sums=('SKIP')
 
