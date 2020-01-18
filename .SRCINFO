@@ -3,6 +3,7 @@ pkgbase = certbot-dns-vultr
 	pkgver = 20190506
 	pkgrel = 4
 	url = https://github.com/oefd/certbot-dns-vultr
+	install = certbot-dns-vultr.install
 	arch = any
 	license = MIT
 	depends = certbot

@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/oefd/$pkgname"
 license=('MIT')
 depends=('certbot' 'python' 'python-certifi' 'python-chardet' 'python-idna' 'python-requests' 'python-urllib3')
+install="$pkgname.install"
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('afd6998a24c52d87f95610de1da8038e9b6701b0532ba0e40d50d17e8d2ddcfb')
 
