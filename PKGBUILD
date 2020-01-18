@@ -1,67 +1,67 @@
-# Maintainer: OriginCode <origincoder@yahoo.com
+# Contributor: OriginCode <origincoder@yahoo.com
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=atom-transparent
-pkgver=1.35.1
+pkgver=1.43.0
+_commit=417cdc71bafff747ed16b363bbd576212fc03a78
 pkgrel=1
-pkgdesc='A hackable text editor for the 21st Century, with transparency patch.'
+pkgdesc='A hackable text editor for the 21st Century, with transparency patch'
 arch=('x86_64')
 url='https://github.com/atom/atom'
 license=('MIT' 'custom')
-depends=('apm' 'electron' 'libxkbfile')
+depends=('apm' 'electron4' 'libxkbfile' 'ripgrep')
 makedepends=('git' 'npm')
 optdepends=('ctags: symbol indexing support'
             'git: Git and GitHub integration')
-replaces=('atom-editor' 'atom-editor-transparent')
+conflicts=('atom')
+provides=('atom')
 options=(!emptydirs)
-source=("atom-${pkgver}.tar.gz::https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
+source=("git+https://github.com/atom/atom.git#commit=${_commit}"
         'atom.js'
         'dugite-use-system-git.patch'
-        'electron-3.patch'
         'fix-atom-sh.patch'
         'fix-license-path.patch'
-        'fix-middle-click.patch'
         'fix-restart.patch'
+        'git-utils.patch'
+        'no-unsafe-eval-warning.patch'
+        'node-env-production.patch'
         'symbols-view-use-system-ctags.patch'
         'use-system-apm.patch'
         'use-system-electron.patch'
         'enable-transparency.patch')
-sha256sums=('a50bcfcda4cfe6017fb76defc3a0eeaca209954d86a631f5963e69a0c064c2e8'
-            'cdf87ab82cfcf69e8904684c59b08c35a68540ea16ab173fce06037ac341efcd'
+sha256sums=('SKIP'
+            'd286e0766e47cfea73cd207abb9d6f7375846688823e72732c871a852b4b261d'
             '530b46d31df0f5e8f5881e1608a66fe75d549092a6db2e72ba3ad69c48714153'
-            '328da3b30f4e20e56b38e588d9fe871c01bbbe69865a79e9586919564bdfa869'
-            'ab9eed3d4c8bfefea256953428379ab1e636b9c7d4c4af30ddc3f485330183c2'
-            '5c77deec5896b658395bdf695c3bc044c9140ad0a5a87f34520c4a31972e51d1'
-            '142d540259296396f6d528ecf2f7c6a363f89f8a0d2ad66497f8392da06202bc'
-            'c4b883265d16ee30402c449d07be78b7088c1aa60c4f3e712b8bfe857c95f346'
+            'b3d3706519556a59ba557b695017c9debe8b23efe2782cdb440131520bc0540d'
+            '2894cce31935d45291c5fe4c625473bb83fc51e1b899f162aa6b419491c7ace1'
+            'e3c30c03006d23a72f07fa77f4309b16a6059af1179343033a87f74f50124076'
+            'e321fdfe880cd465918dd1dbb90e4c7d46fc5310f20666eddf0a41cbca4f8ac8'
+            '40d783794d62f12f3c429c624a84265871c7ed95f4120c9db800348896dd5437'
+            'a09439c2a908ca174ff3be1f0d85071d12c792ae19748e36fe601e372d6d925b'
             '3c68e6b3751313e1d386e721f8f819fb051351fb2cf8e753b1d773a0f475fef8'
-            '53f43c9328a66e24b3467a0a06d9dfde83475f7e54251bf7a523beafaa043806'
-            '457bd1b06604aec1e2ebb6e0ea473742747e183e833fffb36377aad64c37bcd5'
-            '2cb262dfd15f67dd1a01a9b314983f535da8b06ce4a814d214e12ec369631d58')
+            '8d48dca4571136375b325f4bf94ccfb996e90e57b7fdf83d53c1eb2e69b3b0d4'
+            '81af763f05c1afd87705b8c7a6647e35f524b2e952adb2e596de2a7e8fe4e69e'
+            '2693e528c689b770ba976aeaba125e4b269a57a02294d3c3f2a0d85ed65a93eb')
 
 prepare() {
-  cd "${srcdir}/atom-${pkgver}"
+  cd ${pkgname}
 
-  patch -Np1 -i "${srcdir}"/fix-atom-sh.patch
-  patch -Np1 -i "${srcdir}"/use-system-electron.patch
-  patch -Np1 -i "${srcdir}"/use-system-apm.patch
-  patch -Np1 -i "${srcdir}"/fix-license-path.patch
-  patch -Np1 -i "${srcdir}"/fix-restart.patch
+  patch -Np1 -i ../fix-atom-sh.patch
+  patch -Np1 -i ../use-system-electron.patch
+  patch -Np1 -i ../use-system-apm.patch
+  patch -Np1 -i ../fix-license-path.patch
+  patch -Np1 -i ../fix-restart.patch
+  patch -Np1 -i ../node-env-production.patch
+  patch -Np1 -i ../no-unsafe-eval-warning.patch
   patch -Np1 -i "${srcdir}"/enable-transparency.patch
-  
-  # Fix for Electron 3
-  patch -Np1 -i "${srcdir}"/electron-3.patch
 }
 
 build() {
-  cd "${srcdir}/atom-${pkgver}"
-
-  # Fix for Electron 3
-  npm install --package-lock-only @atom/nsfw@1.0.20 node-abi
-
-  rm package-lock.json
+  cd ${pkgname}
 
   ATOM_RESOURCE_PATH="${PWD}" \
-  npm_config_target=$(tail -c +2 /usr/lib/electron/version) \
+  npm_config_build_from_source=true \
+  npm_config_target=$(< /usr/lib/electron4/version) \
   apm install
 
   # Use system ctags
@@ -76,23 +76,41 @@ build() {
   rm -r git
   cd ../..
 
-  # https://bugs.archlinux.org/task/61047
-  cd node_modules/tabs
-  patch -Np1 -i "${srcdir}"/fix-middle-click.patch
+  # Fix issue with:
+  # build/Release/git.node: undefined symbol: git_net_url_is_default_port
+  cd node_modules/git-utils
+  patch -Np1 -i "${srcdir}"/git-utils.patch
+  env \
+    npm_config_disturl=https://electronjs.org/headers \
+    npm_config_runtime=electron \
+    npm_config_target=$(< /usr/lib/electron4/version) \
+    node-gyp rebuild
   cd ../..
 
   cd script
-  npm install
-  ./build
+  # Hack to avoid using Node 12
+  env \
+    npm_config_disturl=https://electronjs.org/headers \
+    npm_config_runtime=electron \
+    npm_config_target=$(< /usr/lib/electron4/version) \
+    npm install
+  # Set ELECTRON_VERSION (see use-system-electron.patch)
+  env \
+    ELECTRON_RUN_AS_NODE=1 \
+    ELECTRON_VERSION=$(< /usr/lib/electron4/version) \
+    electron4 \
+    build --no-bootstrap
 }
 
 package() {
-  cd "${srcdir}/atom-${pkgver}"
+  cd ${pkgname}
 
   install -d -m 755 "${pkgdir}"/usr/lib
   cp -r out/app "${pkgdir}"/usr/lib/atom
   install -m 644 out/startup.js "${pkgdir}"/usr/lib/atom
   install -m 755 "${srcdir}/atom.js" "${pkgdir}"/usr/lib/atom/atom
+
+  ln -sf /usr/bin/rg "${pkgdir}/usr/lib/atom/node_modules/vscode-ripgrep/bin/rg"
 
   install -d -m 755 "${pkgdir}/usr/share/applications"
   sed -e "s|<%= appName %>|Atom|" \

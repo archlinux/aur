@@ -1,13 +1,17 @@
 diff -ur a/atom.sh b/atom.sh
 --- a/atom.sh	2018-06-03 20:13:22.329490169 +0800
 +++ b/atom.sh	2018-06-03 20:22:19.346842103 +0800
-@@ -44,11 +44,11 @@
- mkdir -p "$ATOM_HOME"
+@@ -69,7 +69,7 @@
+ ATOM_PATH="/usr/lib/atom/atom"
  
  if [ $EXPECT_OUTPUT ]; then
 -  "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
 +  "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ --enable-transparent-visuals --disable-gpu "$@"
-   exit $?
+   ATOM_EXIT=$?
+   if [ ${ATOM_EXIT} -eq 0 ] && [ -n "${EXIT_CODE_OVERRIDE}" ]; then
+     exit "${EXIT_CODE_OVERRIDE}"
+@@ -78,7 +78,7 @@
+   fi
  else
    (
 -  nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
@@ -15,6 +19,7 @@ diff -ur a/atom.sh b/atom.sh
    if [ $? -ne 0 ]; then
      cat "$ATOM_HOME/nohup.out"
      exit $?
+
 diff -ur a/src/main-process/atom-window.js b/src/main-process/atom-window.js
 --- a/src/main-process/atom-window.js	2018-05-19 06:49:28.000000000 +0800
 +++ b/src/main-process/atom-window.js	2018-06-03 20:18:09.254908066 +0800
