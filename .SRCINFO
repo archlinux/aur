@@ -6,7 +6,6 @@ pkgbase = python-genpac
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	source = https://files.pythonhosted.org/packages/source/g/genpac/genpac-2.0.1.tar.gz
 	md5sums = 8a653ac6d3f540eff4308ad7288e5819
 
