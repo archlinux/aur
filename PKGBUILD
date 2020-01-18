@@ -1,20 +1,21 @@
-# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Maintainer: Timothy Gu <timothygu99@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=libfprint-git
 _pkgname=libfprint
 epoch=1
 pkgver=1.90.0.r211.g05df5e2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for fingerprint readers"
 arch=(x86_64)
-url="http://www.freedesktop.org/wiki/Software/fprint/libfprint"
+url="https://fprint.freedesktop.org/"
 license=(LGPL)
-depends=(libusb nss pixman glib2 libgusb)
-makedepends=(git meson gtk-doc gobject-introspection)
-checkdepends=(umockdev)
+depends=('glib2>=2.56' 'libgusb>=0.3.0' nss pixman)
+makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0' systemd)
+checkdepends=('umockdev>=0.13.2')
 groups=(fprint-git)
 provides=(libfprint)
 conflicts=(libfprint)
