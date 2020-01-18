@@ -47,7 +47,7 @@ package() {
     mkdir -p "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs
 
     find "$srcdir/$_gitname" -name '*.ko' -exec cp "{}" "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs \;
-    msg "Compressing modules, this will take awhile..."
+    echo "Compressing modules, this will take awhile..."
     find "$pkgdir" -name '*.ko' -print0 | xargs -0 -P"$(nproc)" -n10 gzip -9
 
     chmod 0644 "$pkgdir"/usr/lib/modules/"${_updatedmodules}"/tbs/*.ko.gz
