@@ -1,11 +1,11 @@
 pkgname=vgmstream-kode54-git
-pkgver=r1050.r2028.gac28ccc5
+pkgver=r1050.r2771.ge58c73aa
 pkgrel=1
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(x86_64)
 url='https://github.com/kode54/vgmstream'
 license=(BSD)
-depends=(audacious ffmpeg libao libatrac9-git libg7221_decode-git libogg libvorbis mpg123)
+depends=(audacious ffmpeg libao libatrac9-git libogg libvorbis mpg123)
 makedepends=(git)
 source=(${pkgname}::git+https://github.com/kode54/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
@@ -91,7 +91,7 @@ build() {
   cd "$srcdir/$pkgname"
   ./bootstrap
   CFLAGS="$CFLAGS -DVGM_USE_FFMPEG -DVGM_USE_MPEG -DVGM_USE_VORBIS -DVGM_USE_G7221 -DVGM_USE_ATRAC9 -DVGM_USE_CELT" \
-    LIBS="-lavcodec -lavformat -lavutil -lg7221 -latrac9 $srcdir/celt-0.6.1/libcelt/.libs/libcelt.a $srcdir/celt-0.11.0/libcelt/.libs/libcelt0.a -lm" \
+    LIBS="-lavcodec -lavformat -lavutil -latrac9 $srcdir/celt-0.6.1/libcelt/.libs/libcelt.a $srcdir/celt-0.11.0/libcelt/.libs/libcelt0.a -lm" \
     ./configure --prefix=/usr
   make -f Makefile.autotools
 }
