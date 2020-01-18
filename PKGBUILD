@@ -4,11 +4,12 @@
 _gemname=mixlib-config
 pkgname=ruby-${_gemname}
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A class based configuration library"
 arch=("any")
 url="https://rubygems.org/gems/${_gemname}"
 license=("Apache")
+depends=("ruby-tomlrb")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")

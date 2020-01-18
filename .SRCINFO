@@ -1,11 +1,12 @@
 pkgbase = ruby-mixlib-config
 	pkgdesc = A class based configuration library
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/mixlib-config
 	arch = any
 	license = Apache
 	makedepends = ruby-rdoc
+	depends = ruby-tomlrb
 	noextract = mixlib-config-3.0.6.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/mixlib-config-3.0.6.gem
