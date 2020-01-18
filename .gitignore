@@ -1,11 +1,4 @@
-Catch2
-GSL
-crl
-libtgvoip
-rlottie
-tdesktop
-variant
-xxHash
+tdesktop-*-full.tar.gz
 
 src
 pkg

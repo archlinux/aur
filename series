@@ -1,0 +1,5 @@
+0001-Dynamic-linking-system-libs.patch
+0002-Dynamic-linking-system-qt.patch
+0004-gtk3.patch
+0005-Use-system-wide-fonts.patch
+0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch

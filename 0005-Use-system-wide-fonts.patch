@@ -1,0 +1,64 @@
+Do not force custom fontconfig configuration.
+--- a/Telegram/lib_ui/fonts/fonts.qrc
++++ b/Telegram/lib_ui/fonts/fonts.qrc
+@@ -1,10 +1,4 @@
+ <RCC>
+   <qresource prefix="/gui/fonts">
+-    <file>DAOpenSansRegular.ttf</file>
+-    <file>DAOpenSansRegularItalic.ttf</file>
+-    <file>DAOpenSansBold.ttf</file>
+-    <file>DAOpenSansBoldItalic.ttf</file>
+-    <file>DAOpenSansSemibold.ttf</file>
+-    <file>DAOpenSansSemiboldItalic.ttf</file>
+   </qresource>
+ </RCC>
+--- a/Telegram/lib_ui/ui/style/style_core_font.cpp
++++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
+@@ -94,12 +94,12 @@
+ 	FontTypesCount,
+ };
+ QString FontTypeNames[FontTypesCount] = {
+-	"DAOpenSansRegular",
+-	"DAOpenSansRegularItalic",
+-	"DAOpenSansBold",
+-	"DAOpenSansBoldItalic",
+-	"DAOpenSansSemibold",
+-	"DAOpenSansSemiboldItalic",
++	"Open Sans",
++	"Open Sans",
++	"Open Sans",
++	"Open Sans",
++	"Open Sans Semibold",
++	"Open Sans Semibold",
+ };
+ int32 FontTypeFlags[FontTypesCount] = {
+ 	0,
+@@ -135,7 +135,7 @@
+ 	for (auto i = 0; i != FontTypesCount; ++i) {
+ 		const auto name = FontTypeNames[i];
+ 		const auto flags = FontTypeFlags[i];
+-		areGood[i] = LoadCustomFont(":/gui/fonts/" + name + ".ttf", name, flags);
++		areGood[i] = ValidateFont(name, flags);
+ 		Overrides[i] = name;
+ #ifdef Q_OS_WIN
+ 		// Attempt to workaround a strange font bug with Open Sans Semibold not loading.
+--- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
++++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
+@@ -82,8 +82,6 @@
+ 			return;
+ 		}
+ 	}
+-
+-	QFile(":/fc/fc-custom.conf").copy(custom);
+ #endif // TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION
+ }
+ 
+--- a/Telegram/lib_ui/qt_conf/linux.qrc
++++ b/Telegram/lib_ui/qt_conf/linux.qrc
+@@ -2,6 +2,5 @@
+   <qresource prefix="/qt/etc">
+   </qresource>
+   <qresource prefix="/fc">
+-    <file>fc-custom.conf</file>
+   </qresource>
+ </RCC>
