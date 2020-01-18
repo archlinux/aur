@@ -7,7 +7,7 @@ pkgver=0.7.4.r0.gc4fdad5
 pkgrel=1
 pkgdesc="simple python interface to binance.com's web API"
 arch=('any')
-url='https://github.com/ewtoombs/python-binance'
+url='https://github.com/sammchardy/python-binance'
 license=('MIT')
 depends=('python' 'python-autobahn' 'python-certifi' 'python-chardet' 'python-dateparser'
          'python-requests' 'python-service-identity' 'python-twisted' 'python-urllib3')
