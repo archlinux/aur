@@ -2,14 +2,15 @@
 # Contributor: holishing
 pkgname=esunbank-webatm
 pkgver=1.0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="玉山銀行晶片金融卡安控元件(Linux)10.0.5安裝. 這個精靈將指引你完成玉山銀行晶片金融卡安控元件(Linux)1.0.0.5的安裝流程。 在開始安裝之前，建議先關閉其他所有應用程式，並在安裝完成後於「套件庫」手動啟用玉山銀行晶片金融卡安控元件，或是重新啟動您的電腦。 按一下「安裝」開始安裝流程。 deb 套件請手動至玉山銀行 WebATM 入口頁面下載"
 arch=('x86_64')
 url="http://www.esunbank.com.tw"
 license=('custom')
 #groups=('')
 makedepends=('libarchive')
-depends=('libindicator-gtk2' 'desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libcanberra' 'nss' 'pcsclite')
+## add libappindicator-gtk3 for preventing breaking telegram-desktop dependencies....
+depends=('desktop-file-utils' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libcanberra' 'nss' 'pcsclite')
 ## please use browser agent to download deb package:
 ## https://netbank.esunbank.com.tw/webatm/assets/ActiveX/EsunATM.deb
 source=('local://EsunATM.deb')
