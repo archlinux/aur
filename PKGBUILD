@@ -14,7 +14,7 @@ license=('GPL')
 depends=('plymouth' 'knewstuff' 'kconfig' 'kconfigwidgets' 'ki18n' 'kdeclarative' 'kcmutils')
 makedepends=('cmake' 'kdoctools' 'extra-cmake-modules')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('f34e5bbf334b3cc5bfe2b3bd4937cab0f7cf7bbe6864131eb55ed7a239adb208'
+sha256sums=('bbd6994f60ed9d63b4e4dd0abe78bf1f9c14b8ecce8ba4355d16cd52a0a86528'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E')
 
