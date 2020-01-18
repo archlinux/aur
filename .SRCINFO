@@ -1,5 +1,5 @@
 pkgbase = flow-bin
-	pkgdesc = Adds static typing to JavaScript to improve developer productivity and code quality - binary version
+	pkgdesc = A static type checker for JavaScript - binary version
 	pkgver = 0.116.1
 	pkgrel = 1
 	url = https://flow.org/
