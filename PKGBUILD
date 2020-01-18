@@ -1,25 +1,26 @@
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: xantares
 
+_name=george
 pkgname=python-george
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Fast Gaussian Processes for regression"
-url="http://dan.iel.fm/george"
+url="https://github.com/dfm/george"
 arch=(any)
 license=('MIT')
-depends=('python-scipy')
-makedepends=('hodlr')
-source=("https://github.com/dfm/george/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
+depends=('python-scipy' 'python-numpy' 'pybind11')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+md5sums=('0ce0f2a225eb3a0ed4517a10b93a1dd6')
+
 
 build() {
-  cd "${srcdir}/george-$pkgver"
-  sed -i '62i"/usr/include",' setup.py
-  sed -i "s|assemble_Matrix(diag, tol_, 's', seed)|assemble_Matrix(diag, tol_, 's')|g" include/solver.h
+  cd "$_name-$pkgver"
   python setup.py build
 } 
 
 package() {
-  cd "${srcdir}/george-$pkgver"
-  python setup.py install --root="${pkgdir}"
+  cd "$_name-$pkgver"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
