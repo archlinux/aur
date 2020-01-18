@@ -16,6 +16,7 @@ depends=(
     binutils
     devtools
     rsync
+    sudo
 )
 makedepends=(
     git
