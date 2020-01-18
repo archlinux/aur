@@ -1,12 +1,13 @@
 # Maintainer: Kaushal M
 
 pkgname=fuse-overlayfs-git
-pkgver=107
+pkgver=446
 pkgrel=1
 pkgdesc="FUSE implementation for overlayfs"
 arch=('x86_64')
 url="https://github.com/containers/fuse-overlayfs"
 license=('GPL3')
+provides=(fuse-overlayfs)
 depends=('fuse3')
 makedepends=('git')
 source=("${pkgname%-*}::git+https://github.com/containers/fuse-overlayfs.git")
