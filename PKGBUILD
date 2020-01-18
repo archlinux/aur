@@ -1,34 +1,28 @@
-# Maintainer: Jesin <Jesin00@gmail.com>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Jesin <Jesin00@gmail.com>
+
 pkgname=libb2
-pkgver=0.0.17.g0d7015f
+pkgver=0.98.1
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc='C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions'
 url=https://blake2.net/
 license=(custom:CC0)
-makedepends=(git)
-source=("git+https://github.com/BLAKE2/$pkgname")
-sha256sums=(SKIP)
+depends=(gcc-libs)
+source=(https://github.com/BLAKE2/libb2/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('53626fddce753c454a3fea581cbbc7fe9bbcf0bc70416d48fdbbf5d87ef6c72e')
 
 # libb2's build system discards the $CFLAGS variable.
 # We can get around this by putting those flags in $CC.
 export CC="${CC-cc} $CFLAGS"
 
 prepare() {
-	cd "$pkgname"
-	# If there are no tags, tag the initial commit so pkgver() can work.
-	[ -n "$(git tag)" ] || git tag 0.0 "$(git rev-list --max-parents=0 --reverse HEAD | head -n1)"
+	cd "$pkgname-$pkgver"
 	autoreconf -fisv
 }
 
-pkgver() {
-	cd "$pkgname"
-	local v="$(git describe --tags)"
-	printf %s\\n "${v//-/.}"
-}
-
 build() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr --disable-static --enable-shared "--build=$CHOST" #--disable-native --enable-fat
 	# Uncomment the flags at the end of the previous line if you intend
 	# to distribute the binary package to other computers.
@@ -36,12 +30,12 @@ build() {
 }
 
 check() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make check
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make "DESTDIR=$pkgdir" install
-	install -Dm644 "-t$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 "-t$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
