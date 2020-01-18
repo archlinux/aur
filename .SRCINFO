@@ -1,6 +1,6 @@
 pkgbase = ulauncher
 	pkgdesc = Application launcher for Linux
-	pkgver = 5.6.0
+	pkgver = 5.6.1
 	pkgrel = 1
 	url = https://ulauncher.io
 	arch = any
@@ -12,13 +12,14 @@ pkgbase = ulauncher
 	depends = webkit2gtk
 	depends = python-dbus
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-pyinotify
 	depends = python-levenshtein
 	depends = python-xdg
 	depends = python-websocket-client
 	provides = ulauncher
 	conflicts = ulauncher
-	source = https://github.com/Ulauncher/Ulauncher/releases/download/5.6.0/ulauncher_5.6.0.tar.gz
+	source = https://github.com/Ulauncher/Ulauncher/releases/download/5.6.1/ulauncher_5.6.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ulauncher
