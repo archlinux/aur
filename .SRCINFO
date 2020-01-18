@@ -1,6 +1,6 @@
 pkgbase = zulu-11-bin
 	pkgdesc = Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 11.0.5
+	pkgver = 11.0.6
 	pkgrel = 1
 	url = https://www.azul.com/products/zulu-community/
 	install = zulu-11-bin.install
@@ -23,8 +23,8 @@ pkgbase = zulu-11-bin
 	provides = java-runtime-headless-openjdk=11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	source = https://cdn.azul.com/zulu/bin/zulu11.35.13-ca-jdk11.0.5-linux_x64.tar.gz
-	sha256sums = 074a063576f5941c9b28d6fa2dbc9cedf3182ec2761393adfe081cf2980383e4
+	source = https://cdn.azul.com/zulu/bin/zulu11.37.17-ca-jdk11.0.6-linux_x64.tar.gz
+	sha256sums = 360626cc19063bc411bfed2914301b908a8f77a7919aaea007a977fa8fb3cde1
 
 pkgname = zulu-11-bin
 
