@@ -14,12 +14,12 @@ sha256sums=('c2962e9fca39f3ce51f5dafe4077112cc4ee292f19aa978cac89e6320c36be8c')
 _sourcedirectory="$pkgname-$pkgver"
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	cargo build --release --locked --all-features
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
