@@ -1,0 +1,12 @@
+pkgbase = nintendo-labo-font
+	pkgdesc = Nintendo Labo font package
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.reddit.com/r/nintendolabo/comments/eqdbs9/i_recreated_the_nintendo_labo_font_for_everyone/
+	arch = any
+	license = custom
+	source = https://github.com/TarkanAl-Kazily/nintendo-labo-font/raw/master/nintendo-labo-font-otf.tar.gz
+	sha256sums = d5ed39678f5f8755136bcd39326c670dcf7ee9418742a826ebbd63528745650a
+
+pkgname = nintendo-labo-font
+
