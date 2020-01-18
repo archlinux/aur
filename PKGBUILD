@@ -11,6 +11,8 @@ url="https://github.com/ovalhub/pyicu"
 license=('custom')
 depends=('python2' 'icu')
 makedepends=('gcc')
+provides=('python2-pyicu')
+conflicts=('python2-pyicu')
 source=("https://files.pythonhosted.org/packages/95/0c/0fb09019efb65a29789ec5538f8e521b8f548da6935a3a474e19fbf2ea4d/${_realpkgname}-${pkgver}.tar.gz")
 md5sums=('bb09676c234849f586094e3fe99c3606')
 
