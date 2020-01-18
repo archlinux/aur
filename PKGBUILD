@@ -3,8 +3,8 @@
 
 _gemname=mixlib-config
 pkgname=ruby-${_gemname}
-pkgver=2.2.4
-pkgrel=2
+pkgver=3.0.6
+pkgrel=1
 pkgdesc="A class based configuration library"
 arch=("any")
 url="https://rubygems.org/gems/${_gemname}"
@@ -12,7 +12,7 @@ license=("Apache")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha256sums=('5c90f95d03687f78ec80dd895f656173dd2a5e60c5c195917d21a7f2a5794a68')
+sha256sums=('5306c0cfe5a67de0a82f0a8897ebf6332b00b26cd367d016c4063d4e5e4b8b92')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
