@@ -16,7 +16,7 @@ package() {
   cd "$srcdir"
   install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.TXT"
 
-  cd "$srcdir/$_pkgname-master/fonts/otf"
+  cd "$_pkgname-master/fonts/otf"
   install -d "$pkgdir/usr/share/fonts/$_pkgname-otf"
   install -m644 otf/*.otf "$pkgdir/usr/share/fonts/$_pkgname-otf/"
 }
@@ -24,8 +24,8 @@ package() {
 post_install() {
   echo -n "Updating font cache... "
   fc-cache -s
-  mkfontscale /usr/share/fonts/$_pkgname-otf
-  mkfontdir /usr/share/fonts/$_pkgname-otf
+  mkfontscale "/usr/share/fonts/$_pkgname-otf"
+  mkfontdir "/usr/share/fonts/$_pkgname-otf"
   echo "done."
 }
 
