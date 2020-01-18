@@ -1,5 +1,5 @@
 pkgname=vgmstream-kode54-git
-pkgver=r1050.r2771.ge58c73aa
+pkgver=r1050.2771.ge58c73aa
 pkgrel=1
 pkgdesc="Library for playback of various streamed audio formats used in video games (kode54's fork)"
 arch=(x86_64)
@@ -21,7 +21,8 @@ sha256sums=('SKIP'
 pkgver() {
   cd "$srcdir/$pkgname"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;y/-/./' ||
+    git describe --tags --exact-match 2>/dev/null | tr - . ||
+      git describe --long | tr - . ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
