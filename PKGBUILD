@@ -3,16 +3,26 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.0.r9.g977dae3
+pkgver=0.10.0.r24.g50e5f47
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_lua_deps=('bit32' 'luaepnf' 'lpeg' 'cassowary' 'linenoise' 'zlib' 'cliargs'
-           'luaepnf' 'filesystem' 'repl' 'sec' 'socket' 'penlight' 'stdlib'
-           'vstruct')
+_lua_deps=('cassowary'
+           'cliargs'
+           'filesystem'
+           'linenoise'
+           'lpeg'
+           'luaepnf'
+           'penlight'
+           'repl'
+           'sec'
+           'socket'
+           'stdlib'
+           'vstruct'
+           'zlib')
 depends=('fontconfig'
          'harfbuzz'
          "${_lua_deps[@]/#/lua-}"
