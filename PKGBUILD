@@ -3,8 +3,8 @@
 
 _gemname=mixlib-cli
 pkgname=ruby-$_gemname
-pkgver=1.7.0
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 pkgdesc="A simple mixin for CLI interfaces, including option parsing"
 arch=("any")
 url="https://www.chef.io"
@@ -13,7 +13,7 @@ depends=("ruby")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-sha1sums=('a8b3754e3f866a713941e848cee87425e1d1f81b')
+sha1sums=('45b7805f3f6ea140b37f5996643bb28d4a814912')
 noextract=($_gemname-$pkgver.gem)
 
 package() {

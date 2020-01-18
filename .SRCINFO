@@ -1,16 +1,16 @@
 pkgbase = ruby-mixlib-cli
 	pkgdesc = A simple mixin for CLI interfaces, including option parsing
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 2.1.5
+	pkgrel = 1
 	url = https://www.chef.io
 	arch = any
 	license = Apache-2.0
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = mixlib-cli-1.7.0.gem
+	noextract = mixlib-cli-2.1.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mixlib-cli-1.7.0.gem
-	sha1sums = a8b3754e3f866a713941e848cee87425e1d1f81b
+	source = https://rubygems.org/downloads/mixlib-cli-2.1.5.gem
+	sha1sums = 45b7805f3f6ea140b37f5996643bb28d4a814912
 
 pkgname = ruby-mixlib-cli
 
