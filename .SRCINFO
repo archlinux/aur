@@ -1,0 +1,24 @@
+pkgbase = wlogout-git
+	pkgdesc = Logout menu for wayland
+	pkgver = r5942.3f77591b
+	pkgrel = 1
+	url = https://github.com/ArtsyMacaw/wlogout.git
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	makedepends = scdoc
+	makedepends = ninja
+	depends = gtk3
+	depends = gobject-introspection
+	optdepends = swaylock: default buttons
+	optdepends = systemd: default buttons
+	provides = wlogout
+	conflicts = wlogout
+	options = debug
+	options = !strip
+	source = wlogout::git+https://github.com/ArtsyMacaw/wlogout.git
+	sha512sums = SKIP
+
+pkgname = wlogout-git
+
