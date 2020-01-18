@@ -4,13 +4,13 @@
 
 _pkgbase=icu
 _pkgmajor=50
-_pkgminor=1
-_pkgpatch=2
+_pkgminor=2
+_pkgpatch=0
 _libdir='/usr/lib'
 
 pkgname=${_pkgbase}${_pkgmajor}
 pkgver=${_pkgmajor}.${_pkgminor}.${_pkgpatch}
-pkgrel=3
+pkgrel=1
 pkgdesc='International Components for Unicode library'
 url='http://site.icu-project.org/'
 license=('custom:icu')
@@ -18,17 +18,15 @@ license=('custom:icu')
 arch=('i686' 'x86_64')
 depends=('gcc-libs>=4.7.1-5' 'sh')
 makedepends=('clang' 'make' 'patch')
-source=("http://download.icu-project.org/files/${_pkgbase}4c/${pkgver}/${_pkgbase}4c-${pkgver//./_}-src.tgz"
+source=(${_pkgbase}-${pkgver}.tar.gz::https://github.com/unicode-org/icu/archive/release-50-2.tar.gz
         'icu.8198.revert.icu5431.patch'
-        'icu-testtwodigityear.patch'
         'icu-positionNULLcheck.patch')
-md5sums=('beb98aa972219c9fcd9c8a71314943c9'
+md5sums=('671a083d9e56e953e36f10c556531637'
          'ebd5470fc969c75e52baf4af94a9ee82'
-         '8d14652aee347adba25886cd14af1637'
          'c2ead5292460c386818d75b2b6a69a5f')
 
 prepare() {
-  cd ${srcdir}/${_pkgbase}/source
+  cd ${srcdir}/${_pkgbase}-release-${_pkgmajor}-${_pkgminor}/icu4c/source
 
   # fix Malayalam encoding https://bugzilla.redhat.com/show_bug.cgi?id=654200
   patch -Rp3 -i ${srcdir}/icu.8198.revert.icu5431.patch
@@ -43,7 +41,7 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${_pkgbase}/source
+  cd ${srcdir}/${_pkgbase}-release-${_pkgmajor}-${_pkgminor}/icu4c/source
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -52,12 +50,12 @@ build() {
 }
 
 check() {
-  cd ${srcdir}/${_pkgbase}/source
+  cd ${srcdir}/${_pkgbase}-release-${_pkgmajor}-${_pkgminor}/icu4c/source
   make check
 }
 
 package() {
-  cd ${srcdir}/${_pkgbase}/source
+  cd ${srcdir}/${_pkgbase}-release-${_pkgmajor}-${_pkgminor}/icu4c/source
 
   # copy only version specific libs
   mkdir -p ${pkgdir}${_libdir}
