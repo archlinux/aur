@@ -3,20 +3,20 @@
 
 pkgname=pamac-tray-appindicator
 
-pkgver=9.2.2
+pkgver=9.2.99
 pkgrel=1
 _pkgfixver=$pkgver
 
 _pkgvercommit=v$pkgver
-#_pkgvercommit='cd8551cdd40aef492589589c8c3b7fcadf0eaa42'
-sha256sums=('86217be354f192ac196f630cbce6dba03ade7972e0d5dafdb02f7aa506b55540')
+_pkgvercommit='ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e'
+sha256sums=('1152a55530a14d3b4870708ce0316fad4dfb7a97fce822b8e80e5905aed7c4e5')
 
 pkgdesc="Tray icon using appindicator which feets better in KDE"
 depends=('pamac' 'libappindicator-gtk3')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'libappindicator-gtk3' 'meson' 'ninja' 'git' 'gobject-introspection')
+makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'libappindicator-gtk3' 'meson' 'ninja' 'git' 'gobject-introspection' 'xorgproto')
 options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_pkgvercommit/pamac-$_pkgvercommit.tar.gz")
