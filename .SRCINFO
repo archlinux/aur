@@ -1,14 +1,14 @@
 pkgbase = kepubify-bin
 	pkgdesc = Convert your ePubs into kepubs, with a easy-to-use command-line tool.
-	pkgver = 2.5.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://geek1011.github.io/kepubify
 	arch = x86_64
 	license = MIT
-	source = kepubify-2.5.1::https://github.com/geek1011/kepubify/releases/download/v2.5.1/kepubify-linux-64bit
-	source = seriesmeta-2.5.1::https://github.com/geek1011/kepubify/releases/download/v2.5.1/seriesmeta-linux-64bit
-	md5sums = 05700f7cc3e49bbe64a051c8fce4b1e4
-	md5sums = d3f3bcf0aec58697ba0c0d2fa37bf4e9
+	source = kepubify-3.0.0::https://github.com/geek1011/kepubify/releases/download/v3.0.0/kepubify-linux-64bit
+	source = seriesmeta-3.0.0::https://github.com/geek1011/kepubify/releases/download/v3.0.0/seriesmeta-linux-64bit
+	md5sums = f76490a742907ee3db1e2726f7eb4028
+	md5sums = 6401e902593da2a90e95cbe9c0210884
 
 pkgname = kepubify-bin
 
