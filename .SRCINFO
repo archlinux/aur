@@ -1,0 +1,18 @@
+pkgbase = python-yolk3k
+	pkgdesc = Command-line tool for querying PyPI and Python packages installed on your system (with Python 3 support)
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/myint/yolk
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-paste
+	optdepends = rstcheck
+	provides = python-yolk
+	conflicts = python-yolk
+	source = https://files.pythonhosted.org/packages/source/y/yolk3k/yolk3k-0.9.tar.gz
+	sha256sums = cf8731dd0a9f7ef50b5dc253fe0174383e3fed295a653672aa918c059eef86ae
+
+pkgname = python-yolk3k
+
