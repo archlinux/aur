@@ -1,0 +1,14 @@
+diff -ruN libssh-0.9.2/src/CMakeLists.txt patched/src/CMakeLists.txt
+--- libssh-0.9.2/src/CMakeLists.txt	2019-11-07 16:14:46.000000000 +0100
++++ patched/src/CMakeLists.txt	2019-12-05 17:35:42.941031097 +0100
+@@ -324,6 +324,10 @@
+ 
+ add_library(ssh::ssh ALIAS ssh)
+ 
++if (WIN32 AND NOT BUILD_SHARED_LIBS)
++    set_target_properties(ssh PROPERTIES COMPILE_FLAGS "-DLIBSSH_STATIC")
++endif ()
++
+ if (WITH_SYMBOL_VERSIONING AND HAVE_LD_VERSION_SCRIPT)
+     if (ABIMAP_FOUND)
+         # Change path to devel map file
