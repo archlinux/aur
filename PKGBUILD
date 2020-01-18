@@ -3,7 +3,6 @@
 
 _pkg_arch=x86
 _android_arch=x86
-_android_platform=22 # https://developer.android.com/about/dashboards/
 _android_platform_arch=arch-x86
 _pkgname=openssl
 _ver=1.1.1d
@@ -11,7 +10,7 @@ _ver=1.1.1d
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, $_pkg_arch)"
 arch=('any')
 url='https://www.openssl.org'
@@ -38,7 +37,7 @@ build() {
   ./Configure \
     --prefix="${ANDROID_PREFIX}" \
     --openssldir="${ANDROID_PREFIX}" \
-    -D__ANDROID_API__=$_android_platform \
+    -D__ANDROID_API__="${ANDROID_MINIMUM_PLATFORM}" \
     -Wl,--no-allow-shlib-undefined \
     -Wl,--no-undefined \
     no-stdio \
@@ -51,8 +50,10 @@ build() {
   sed -i -e 's/\#define TEST_ENG_OPENSSL_RC4_P_INIT//' crypto/engine/eng_openssl.c
 
   # build only libraries
+  # note: Setting SHLIB_EXT in accordance with qtbase/src/network/ssl/qsslsocket_openssl_symbols.cpp to avoid loading
+  #       system library.
   make depend
-  make CALC_VERSIONS="SHLIB_COMPAT=; SHLIB_SOVER=" SHLIB_VERSION_NUMBER= SHLIB_EXT=.so build_libs
+  make CALC_VERSIONS="SHLIB_COMPAT=; SHLIB_SOVER=" SHLIB_VERSION_NUMBER= SHLIB_EXT=_1_1.so build_libs
 }
 
 package() {
@@ -61,7 +62,7 @@ package() {
   export PATH="$ANDROID_TOOLCHAIN:$PATH"
 
   # install header files, libraries and license
-  for lib in libcrypto.{a,so} libssl.{a,so}; do
+  for lib in libcrypto{.a,_1_1.so} libssl{.a,_1_1.so}; do
     install -D -m0644 $lib "$pkgdir/${ANDROID_PREFIX_LIB}/$lib"
   done
   for pc in libcrypto.pc libssl.pc openssl.pc; do
