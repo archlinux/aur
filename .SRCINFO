@@ -1,6 +1,6 @@
 pkgbase = pamac-aur
 	pkgdesc = A Gtk3 frontend for libalpm
-	pkgver = 9.2.2
+	pkgver = 9.2.9
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
@@ -16,8 +16,8 @@ pkgbase = pamac-aur
 	makedepends = vala>=0.36.6
 	makedepends = meson
 	makedepends = ninja
-	makedepends = git
 	makedepends = gobject-introspection
+	makedepends = xorgproto
 	depends = glib2>=2.42
 	depends = json-glib
 	depends = libsoup
@@ -29,6 +29,7 @@ pkgbase = pamac-aur
 	depends = desktop-file-utils
 	depends = pacman>=5.2
 	depends = gnutls>=3.4
+	depends = git
 	depends = appstream-glib
 	depends = archlinux-appstream-data
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
@@ -38,8 +39,8 @@ pkgbase = pamac-aur
 	conflicts = pamac
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = pamac-9.2.2-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v9.2.2/pamac-v9.2.2.tar.gz
-	sha256sums = 86217be354f192ac196f630cbce6dba03ade7972e0d5dafdb02f7aa506b55540
+	source = pamac-9.2.9-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e/pamac-ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e.tar.gz
+	sha256sums = 1152a55530a14d3b4870708ce0316fad4dfb7a97fce822b8e80e5905aed7c4e5
 
 pkgname = pamac-aur
 
