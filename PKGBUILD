@@ -1,15 +1,18 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
+# Contributor: Jonathan Liu <net147@gmail.com>
+# Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
+
 pkgname=python2-pyicu
 _realpkgname=PyICU
-pkgver=1.9.2
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Python binding for ICU"
-arch=('i686' 'x86_64')
-url="http://pyicu.osafoundation.org/"
+arch=('x86_64' 'i686')
+url="https://github.com/ovalhub/pyicu"
 license=('custom')
 depends=('python2' 'icu')
-source=("https://pypi.python.org/packages/source/P/${_realpkgname}/${_realpkgname}-${pkgver}.tar.gz")
-md5sums=('a104ea78918a8b1f4ecbbb1063edb46b')
+makedepends=('gcc')
+source=("https://files.pythonhosted.org/packages/95/0c/0fb09019efb65a29789ec5538f8e521b8f548da6935a3a474e19fbf2ea4d/${_realpkgname}-${pkgver}.tar.gz")
+md5sums=('bb09676c234849f586094e3fe99c3606')
 
 build() {
   cd "${srcdir}/${_realpkgname}-${pkgver}"

@@ -1,15 +1,16 @@
 pkgbase = python2-pyicu
 	pkgdesc = Python binding for ICU
-	pkgver = 1.9.2
+	pkgver = 2.4.2
 	pkgrel = 1
-	url = http://pyicu.osafoundation.org/
-	arch = i686
+	url = https://github.com/ovalhub/pyicu
 	arch = x86_64
+	arch = i686
 	license = custom
+	makedepends = gcc
 	depends = python2
 	depends = icu
-	source = https://pypi.python.org/packages/source/P/PyICU/PyICU-1.9.2.tar.gz
-	md5sums = a104ea78918a8b1f4ecbbb1063edb46b
+	source = https://files.pythonhosted.org/packages/95/0c/0fb09019efb65a29789ec5538f8e521b8f548da6935a3a474e19fbf2ea4d/PyICU-2.4.2.tar.gz
+	md5sums = bb09676c234849f586094e3fe99c3606
 
 pkgname = python2-pyicu
 
