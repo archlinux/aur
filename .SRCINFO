@@ -1,6 +1,6 @@
 pkgbase = gnome-python-desktop
 	pkgver = 2.32.0
-	pkgrel = 19
+	pkgrel = 20
 	url = https://www.gnome.org
 	arch = i686
 	arch = x86_64

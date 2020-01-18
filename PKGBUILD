@@ -3,7 +3,7 @@
 pkgbase=gnome-python-desktop
 pkgname=('gnome-python-desktop' 'python2-gnomekeyring' 'python2-wnck')
 pkgver=2.32.0
-pkgrel=19
+pkgrel=20
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 makedepends=('intltool' 'pkg-config' 'gnome-python' 'libwnck' 'libgnome-keyring')
@@ -20,7 +20,11 @@ prepare() {
 
 build() {
   cd ${pkgbase}-${pkgver}
-  PYTHON=/usr/bin/python2 ./configure --prefix=/usr --disable-metacity
+  PYTHON=/usr/bin/python2 ./configure \
+    --prefix=/usr \
+    --disable-metacity \
+    --disable-evolution \
+    --disable-evolution_ecal
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
