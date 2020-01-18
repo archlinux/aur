@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Movim is a decentralized social network'
 arch=('x86_64')
 url='https://movim.eu/'
-license=('Copyright (c) 2013-2018 GitHub Inc.')
+license=('AGPL3' 'MIT')
 options=('!strip')
 
 source=(
