@@ -1,6 +1,6 @@
 pkgbase = gridtracker-bin
 	pkgdesc = Companion program for WSJT-X for mapping contacts
-	pkgver = 1.20.0110
+	pkgver = 1.20.0116
 	pkgrel = 1
 	url = https://tagloomis.com/grid-tracker/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = gridtracker-bin
 	depends = libxss
 	depends = nss
 	depends = gtk3
-	source = http://tagloomis.com/arch/GridTracker-Linux-64-1.20.0110.tar.gz
+	source = http://tagloomis.com/arch/GridTracker-Linux-64-1.20.0116.tar.gz
 	source = gridtracker.png
 	source = GridTracker.desktop
-	md5sums = 5d4c020f5f95b8e3be45747d6ad45b94
+	md5sums = 18028d03ceede813f0d0fb94d7486d69
 	md5sums = 3fa9c03006acb6b2771e9e173f617bac
 	md5sums = 5823ba6c9b92cb80c73b4fbc281af1f8
 
