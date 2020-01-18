@@ -1,0 +1,14 @@
+pkgbase = percentime
+	pkgdesc = percentile
+	pkgver = 20191219.11_c224372
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = percentime::git://github.com/fluktuid/percentime#branch=master
+	md5sums = SKIP
+
+pkgname = percentime
+
