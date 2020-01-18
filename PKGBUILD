@@ -5,13 +5,13 @@ _pkgname="${_projectname}3"
 pkgname="$_pkgname-bin"
 pkgver='3.1.13'
 pkgrel='3'
-pkgdesc='Build cross-platform desktop apps with JavaScript, HTML, and CSS - binary version'
+pkgdesc='Build cross platform desktop apps with web technologies - version 3 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org/"
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=("gtk3" "libxss" "nss")
+depends=('gtk3' 'libxss' 'nss')
 _releaseurl="https://github.com/$_projectname/$_projectname/releases/download/v$pkgver"
 source_x86_64=(
 	"$pkgname-chromedriver-$pkgver-$pkgrel-x86_64.zip::$_releaseurl/chromedriver-v$pkgver-linux-x64.zip"

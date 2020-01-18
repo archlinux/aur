@@ -1,5 +1,5 @@
 pkgbase = electron3-bin
-	pkgdesc = Build cross-platform desktop apps with JavaScript, HTML, and CSS - binary version
+	pkgdesc = Build cross platform desktop apps with web technologies - version 3 - binary version
 	pkgver = 3.1.13
 	pkgrel = 3
 	url = https://electronjs.org/
