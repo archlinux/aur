@@ -1,27 +1,33 @@
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Eric Toombs
+
 _pkgname='python-binance'
 pkgname="$_pkgname-git"
-_majmin='0.6.2'
-pkgver=0.6.2.23edd7b
+pkgver=0.7.4.r0.gc4fdad5
 pkgrel=1
-pkgdesc="A simple python interface to binance.com's web API."
+pkgdesc="simple python interface to binance.com's web API"
 arch=('any')
 url='https://github.com/ewtoombs/python-binance'
 license=('MIT')
-depends=('python' 'python-requests' 'python-autobahn' 'python-service-identity')
-makedepends=('python-setuptools')
-source=('git+https://github.com/ewtoombs/python-binance.git')
+depends=('python' 'python-autobahn' 'python-certifi' 'python-chardet' 'python-dateparser'
+         'python-requests' 'python-service-identity' 'python-twisted' 'python-urllib3')
+makedepends=('git' 'python-setuptools')
+source=('git+https://github.com/sammchardy/python-binance.git')
 md5sums=('SKIP')
 
-pkgver () {
-    #_date="$(date '+%Y%m%d')"
-	cd "$srcdir/$_pkgname"
-	echo "$_majmin.$(git rev-parse --short master)"
+
+pkgver() {
+    cd "$_pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
-package () {
-    cd "$srcdir/$_pkgname"
+build() {
+    cd "$_pkgname"
+    python setup.py build
+}
 
-    python setup.py install --root="$pkgdir/"
-
+package() {
+    cd "$_pkgname"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -D 'LICENSE' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
