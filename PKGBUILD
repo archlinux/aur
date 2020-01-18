@@ -22,12 +22,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	cargo build --release --locked --all-features
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
