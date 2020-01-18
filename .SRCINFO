@@ -1,6 +1,6 @@
 pkgbase = fcitx5-qt-git
 	pkgdesc = Fcitx Qt Library
-	pkgver = r148.3732581
+	pkgver = r149.2e38c95
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-qt
 	arch = x86_64
