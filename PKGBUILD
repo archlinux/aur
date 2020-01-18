@@ -23,23 +23,23 @@ sha256sums=('967bdcf83f67491a27a3e0c31bb55696f4f89a00be9aa0b3a248c7ef14374afd'
 _sourcedirectory="$pkgname-$pkgver"
 
 prepare() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	patch --forward -p1 < "$srcdir/fix-ounit-name.diff"
 	patch --forward -p1 < "$srcdir/fix-tests.diff"
 }
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	dune build
 }
 
 check() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	dune runtest
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
