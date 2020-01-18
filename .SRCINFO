@@ -1,7 +1,7 @@
 pkgbase = opennebula
 	pkgdesc = Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)
 	pkgver = 5.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opennebula.org/
 	install = opennebula.install
 	changelog = ChangeLog
@@ -111,7 +111,7 @@ pkgbase = opennebula
 	md5sums = 2f1c73538c52324c224684072ea7877b
 	md5sums = e00db582c46c97d96115eef252f37b40
 	md5sums = 680931b4555ea25a17ea8c20b382d175
-	md5sums = 2f16894c5461b00498f077c596647116
+	md5sums = 6621891a6de781d24e4395a36da2d0b0
 
 pkgname = opennebula
 
