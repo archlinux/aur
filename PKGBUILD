@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=79.0.3945.88
+pkgver=79.0.3945.130
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -16,7 +16,7 @@ license=('BSD')
 provides=(chromium=$pkgver)
 conflicts=(chromium)
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
                     'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'clang' 'lld' 'gn' 'java-runtime-headless')
@@ -30,16 +30,18 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         launch_manager.h-uses-std-vector.patch
         include-algorithm-to-use-std-lower_bound.patch
         icu65.patch
+        sync-enable-USSPasswords-by-default.patch
         chromium-system-icu.patch
         chromium-system-zlib.patch
         chromium-system-hb.patch
         fix-spammy-unique-font-matching-log.patch
         chromium-skia-harmony.patch)
-sha256sums=('4f18171d2225502018fcafae860ce9329199bcd6a0e50f8d83de041afd723fc9'
+sha256sums=('56193431ab9d1193773b133d86b419bfae8d8b9196eea253660895e0e8f87ba0'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
             '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
             '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
+            '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
             'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
             'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
             'c0ad3fa426cb8fc1a237ddc6309a6b2dd4055bbe41dd07f50071ee61f969b81a'
@@ -58,7 +60,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
-  #[libvpx]=libvpx    # https://github.com/webmproject/libvpx/commit/5a0242ba5c
+  [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -100,6 +102,9 @@ prepare() {
 
   # https://crbug.com/1014272
   patch -Np1 -i ../icu65.patch
+
+  # https://crbug.com/1027929
+  patch -Np1 -i ../sync-enable-USSPasswords-by-default.patch
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-icu.patch
