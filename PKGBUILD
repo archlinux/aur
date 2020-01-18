@@ -13,7 +13,7 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.4.14
+pkgver=3.4.15
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
@@ -21,7 +21,7 @@ license=(GPL)
 arch=(x86_64)
 depends=(desktop-file-utils gdal hicolor-icon-theme libzip python-qscintilla-qt5 qca qt5-3d
          qt5-serialport qt5-webkit qt5-xmlpatterns qtkeychain qwtpolar spatialindex python-sip)
-makedepends=(cmake fcgi gsl python-six qt5-tools txt2tags sip)
+makedepends=(cmake fcgi gsl python-setuptools python-six qt5-tools txt2tags sip)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin'
             'gsl: Georeferencer plugin'
@@ -34,16 +34,12 @@ optdepends=('fcgi: Map server'
             'python-yaml: Processing plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
-        fix-include.diff)
+source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
-md5sums=('1cd1220b8103b42cb21e73e5a57cb5b0'
-         '610bb88927095876c3f83020cdca523c')
+md5sums=('fa934484202c0901ce839da43ae95b88')
 
 prepare() {
   mkdir -p build
-  # patch from https://github.com/qgis/QGIS/issues/30316
-  patch -d "$_pkgname-$pkgver" -p0 <fix-include.diff
 }
 
 build() {
