@@ -1,8 +1,8 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=e846990877f6a8a4ef55470a46a514e323d6a684
-_gitsha256='843354f7344f7d4b093ebac7a1fd7b77e2de6156fe5c16bbb478ca8718698f3d'
+_gitcommit=6500cb9e2e3ddcb5ae28ee9d186d7112b0cb925f
+_gitsha256='024ccdbb9ee89b47c914a67f93b526f6a5bcae9d9724132c1ae812f4ade851e6'
 
 pkgbase=octopi-notifier-qt5
 pkgname=('octopi-notifier-qt5')
