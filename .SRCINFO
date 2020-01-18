@@ -1,0 +1,15 @@
+pkgbase = vhost_creator
+	pkgdesc = a little helper to create vhosts quickly
+	pkgver = 0.99_10
+	pkgrel = 1
+	url = https://github.com/pngnwthbrd/vhost_creator
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	backup = usr/share/vhost_creator/vhost_creator_conf.json
+	source = https://pngnwthbrd.com/pkg/download/vhost_creator-0.99_10.tar.gz
+	md5sums = 2236a7ca375a043158fa0317228da1cc
+
+pkgname = vhost_creator
+
