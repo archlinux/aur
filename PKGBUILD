@@ -4,13 +4,14 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-lame"
+         "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
@@ -48,7 +49,7 @@ build() {
     case "$_android_arch" in
         aarch64)
             target_arch=aarch64
-            export LDFLAGS="-L${ANDROID_PREFIX_LIB} -lm -logg -lvorbis"
+            export LDFLAGS="-L${ANDROID_PREFIX_LIB} -lm -logg -lvorbis -lssh -lcrypto_1_1 -lssl_1_1"
             ;;
         armv7a-eabi)
             target_arch=arm
@@ -95,6 +96,7 @@ build() {
         --enable-libmp3lame
         --enable-libopus
         --enable-libspeex
+        --enable-libssh
         --enable-libtheora
         --enable-libvorbis
         --enable-libvpx
