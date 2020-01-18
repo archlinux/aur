@@ -13,7 +13,8 @@ validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fs
 depends=( 
     binutils 
     devtools
-    rsync 
+    rsync
+    sudo
 ) 
 makedepends=(
     make

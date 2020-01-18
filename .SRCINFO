@@ -11,6 +11,7 @@ pkgbase = crema
 	depends = binutils
 	depends = devtools
 	depends = rsync
+	depends = sudo
 	depends = git
 	depends = jq
 	depends = pacutils
