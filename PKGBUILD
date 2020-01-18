@@ -16,17 +16,17 @@ sha256sums=('7151c71efd16d4e2a7dc1d4dcbcf6fdfbe2a07829428ffa6aac4b2586b1ce8c3')
 _sourcedirectory="$_projectname-$pkgver"
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	dune build
 }
 
 check() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	dune runtest
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
