@@ -5,7 +5,7 @@
 pkgname=(epoptes epoptes-client)
 pkgbase=epoptes-client
 pkgver=20.01
-pkgrel=1
+pkgrel=2
 pkgdesc='An opensource computer lab management and monitoring tool'
 makedepends=(git python-distutils-extra)
 url='https://github.com/Epoptes/epoptes'
@@ -24,28 +24,29 @@ prepare()
 package_epoptes()
 {
 	depends=(gobject-introspection
-		gtk3		
-		libfaketime
-		librsvg
-		notification-daemon
+		gtk3
 		iperf
 		iproute2
+		libfaketime
+		libnotify
+		librsvg
+		notification-daemon
 		openssl
-		python
-		python-pyopenssl
 		openssl
 		pygtk
+		python
+		python-cairo
 		python-dbus
 		python-gobject
-		python-cairo
 		python-netifaces
+		python-pyopenssl
 		python-pyopenssl
 		python-service-identity
 		python-twisted
 		socat
 		tigervnc
-		xterm
-		x11vnc)
+		x11vnc
+		xterm)
 	optdepends=('xfce4-notifyd: XFCE notification support')
 	install=epoptes.install
 	
@@ -73,21 +74,22 @@ package_epoptes()
 package_epoptes-client()
 {
 	depends=(bsdmainutils
+		ethtool
+		iperf
 		iperf
 		iproute2
+		libnotify
 		librsvg
+		openssl
 		procps-ng
-		python
-		screen
-		iperf
 		pygtk
+		python
+		python-cairo
+		screen
 		socat
-		x11vnc
 		tigervnc
 		x11vnc
-		openssl
-		xterm
-		ethtool)
+		xterm)
 	optdepends=('xfce4-notifyd: XFCE notification support'
 		'cups: printing support'
 		'sane: scanners support')
