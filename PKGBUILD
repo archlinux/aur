@@ -21,7 +21,7 @@ sha256sums_armv7h=('987b12e7482e4c5e5e3eed066fe3cd1a2c941aeb1307bf8ce611fb7cdea7
 sha256sums_aarch64=('56aee676deaf7d319b2098bbed78af346b03fcec6c6437ee1a955fd79134f6f7')
 
 package() {
-	cd "$srcdir/$_pkgname"
+	cd "$srcdir/$_pkgname/"
 	for binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
 		install -Dm755 "$binary" "$pkgdir/usr/bin/$binary"
 	done
