@@ -24,7 +24,7 @@ alpm_c_args = ['-D_FILE_OFFSET_BITS=64']
 common_vala_args = ['--pkg=posix', '--target-glib=2.38', '--vapidir=' + join_paths(meson.source_root(), 'vapi')]
 common_c_args = ['-DGETTEXT_PACKAGE="pamac"']
 
-common_sources = ['common.vala', 'package.vala', 'alpm_package.vala', 'pamac_config.vala']
+common_sources = ['package.vala', 'alpm_package.vala', 'pamac_config.vala']
 # transaction_gtk_sources = ['transaction-gtk.vala', 'choose_provider_dialog.vala', 'choose_pkgs_dialog.vala', 'transaction_sum_dialog.vala', 'progress_box.vala']
 # preferences_sources = ['preferences_dialog.vala']
 
@@ -72,7 +72,7 @@ custom_target('pamac typelib', command: [g_ir_compiler, '--shared-library', 'lib
 
 libpamac_dep = declare_dependency(link_with: libpamac)
 
-daemon_sources = ['version.vala', 'common_daemon.vala', 'alpm_utils.vala', 'alpm_config.vala', 'pamac_config_daemon.vala', 'daemon.vala']
+daemon_sources = ['version.vala', 'package.vala', 'alpm_package.vala', 'alpm_utils.vala', 'alpm_config.vala', 'pamac_config_daemon.vala', 'daemon.vala']
 daemon_dependencies = [vala_deps, alpm_deps, json, math, libsoup, polkit, appstream]
 if get_option('enable-snap')
 	daemon_sources += ['plugin_loader.vala', 'package.vala', 'snap_interface.vala']

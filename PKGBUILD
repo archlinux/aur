@@ -2,22 +2,22 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
-pkgver=9.2.2
-pkgrel=2
+pkgver=9.2.9
+pkgrel=1
 _pkgfixver=$pkgver
 
 _pkgvercommit=v$pkgver
-#_pkgvercommit='cd8551cdd40aef492589589c8c3b7fcadf0eaa42'
-sha256sums=('86217be354f192ac196f630cbce6dba03ade7972e0d5dafdb02f7aa506b55540'
-            '386c53cddb1cf1af98da8bdb3b66592d796bda0a53f07b24daa23516f8ca92e7')
+_pkgvercommit='ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e'
+sha256sums=('1152a55530a14d3b4870708ce0316fad4dfb7a97fce822b8e80e5905aed7c4e5'
+            '1e94a38b62e283d1c423b62d3465b26c22777563a15a0b25e57bf915ef4af208')
 
 pkgdesc="Pamac cli frontend for libalpm"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('glib2>=2.42' 'json-glib' 'libsoup' 'pacman>=5.2' 'appstream-glib' 'archlinux-appstream-data')
+depends=('glib2>=2.42' 'json-glib' 'libsoup' 'pacman>=5.2' 'appstream-glib' 'archlinux-appstream-data' 'git')
 optdepends=('')
-makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'meson' 'ninja' 'git' 'gobject-introspection')
+makedepends=('gettext' 'itstool' 'vala>=0.36.6' 'meson' 'ninja' 'gobject-introspection')
 conflicts=('pamac' 'pamac-aur' 'pamac-aur-git')
 provides=('pamac')
 replaces=('pamac')
