@@ -1,6 +1,6 @@
 pkgbase = pandoc-include-code
 	pkgdesc = A pandoc filter for including code from source files
-	pkgver = 1.3.0.0
+	pkgver = 1.5.0.0
 	pkgrel = 1
 	url = https://github.com/owickstrom/pandoc-include-code
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = pandoc-include-code
 	depends = haskell-pandoc-types
 	depends = haskell-text
 	depends = haskell-unordered-containers
-	source = https://hackage.haskell.org/packages/archive/pandoc-include-code/1.3.0.0/pandoc-include-code-1.3.0.0.tar.gz
-	sha512sums = 4c203a572b37f4ca3a41d9a69a408932498b69a278fcafc8e0f653bef537a84117ba807c02fc37cc4ed9b0cc03fc463fd555aa326c2d6b5bccbbdfc45cd61134
+	source = https://hackage.haskell.org/packages/archive/pandoc-include-code/1.5.0.0/pandoc-include-code-1.5.0.0.tar.gz
+	sha512sums = 1d2cc5fceb3183fe94e8a1ec3a641918f6531c961a1477f36686ee70b621325ff94e3006d17921ed55a1d53087d0ae614710c5a23913bc9a4419865061991018
 
 pkgname = pandoc-include-code
 

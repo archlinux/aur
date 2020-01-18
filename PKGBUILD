@@ -3,7 +3,7 @@
 
 _hkgname=pandoc-include-code
 pkgname=pandoc-include-code
-pkgver=1.3.0.0
+pkgver=1.5.0.0
 pkgrel=1
 pkgdesc="A pandoc filter for including code from source files"
 url="https://github.com/owickstrom/pandoc-include-code"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('ghc-libs' 'haskell-pandoc-types' 'haskell-text' 'haskell-unordered-containers')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('4c203a572b37f4ca3a41d9a69a408932498b69a278fcafc8e0f653bef537a84117ba807c02fc37cc4ed9b0cc03fc463fd555aa326c2d6b5bccbbdfc45cd61134')
+sha512sums=('1d2cc5fceb3183fe94e8a1ec3a641918f6531c961a1477f36686ee70b621325ff94e3006d17921ed55a1d53087d0ae614710c5a23913bc9a4419865061991018')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
