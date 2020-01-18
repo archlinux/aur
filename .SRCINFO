@@ -1,6 +1,6 @@
 pkgbase = python-py3nvml
 	pkgdesc = Bindings for NVML library.
-	pkgver = 0.2.3
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/fbcotter/py3nvml
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python-py3nvml
 	makedepends = python-setuptools
 	depends = nvidia-utils
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/py3nvml/py3nvml-0.2.3.tar.gz
-	source = https://raw.githubusercontent.com/fbcotter/py3nvml/0.2.3/LICENSE
-	sha256sums = 0a7b32e01c4d94142e9d44d826cd3b9637f86aa4d4e0c18e26464aa1cb9949bf
+	source = https://files.pythonhosted.org/packages/source/p/py3nvml/py3nvml-0.2.5.tar.gz
+	source = https://raw.githubusercontent.com/fbcotter/py3nvml/0.2.5/LICENSE
+	sha256sums = e263690a909857d1797b65e0ed4e13c57cb8ec73602025352fad4d462c83c67d
 	sha256sums = 9c4e61bb223b54a9f78b4b7c5fdcd777c7782debf577fddc6e07efeaceefcc98
 
 pkgname = python-py3nvml
