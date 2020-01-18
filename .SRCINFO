@@ -7,7 +7,6 @@ pkgbase = onion-service-index
 	license = Affero
 	depends = python
 	depends = python-flask
-	depends = python-jinja
 	optdepends = tor: for opening .onion links
 	optdepends = yacy: search engine for exploring
 	source = onion-service-index-1.0.1.tar.gz::https://github.com/GIJack/onion-service-index/archive/v1.0.1.tar.gz

@@ -6,7 +6,7 @@ pkgdesc="Python Webapp with a linked indexed TOR .onion space enumeration"
 arch=('any')
 url="https://github.com/GIJack/onion-service-index"
 license=('Affero')
-depends=('python' 'python-flask' 'python-jinja')
+depends=('python' 'python-flask')
 optdepends=('tor: for opening .onion links'
 	    'yacy: search engine for exploring')
 install=
