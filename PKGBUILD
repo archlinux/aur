@@ -2,7 +2,7 @@
 _projectname='imgsize'
 pkgname="python2-$_projectname"
 pkgver='2.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Pure Python image size library - python2 version'
 arch=('any')
 url="https://github.com/ojii/$_projectname"
@@ -17,6 +17,11 @@ _sourcedirectory="$_projectname-$pkgver"
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 	python2 setup.py build
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	python2 -m unittest discover
 }
 
 package() {
