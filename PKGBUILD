@@ -7,7 +7,8 @@ arch=('any')
 url="https://github.com/GIJack/onion-service-index"
 license=('Affero')
 depends=('python' 'python-flask' 'python-jinja')
-optdepends=('tor: for opening .onion links')
+optdepends=('tor: for opening .onion links'
+	    'yacy: search engine for exploring')
 install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GIJack/onion-service-index/archive/v${pkgver}.tar.gz")
