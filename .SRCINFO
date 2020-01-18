@@ -1,0 +1,8 @@
+pkgbase = test-package
+	pkgdesc = An empty test package intended to use for tests of AUR helpers
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+
+pkgname = test-package
+
