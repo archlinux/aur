@@ -1,6 +1,6 @@
 pkgbase = python-antspy
 	pkgdesc = Advanced Normalization Tools (ANTs) in Python
-	pkgver = 0.1.5
+	pkgver = 0.2.2
 	pkgrel = 2
 	url = https://github.com/ANTsX/ANTsPy
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-antspy
 	depends = python-webcolors
 	depends = insight-toolkit
 	optdepends = python-plotly: surface rendering
-	source = ANTsPy-0.1.5::git+https://github.com/ANTsX/ANTsPy.git
-	sha512sums = SKIP
+	source = ANTsPy-0.2.2.tar.gz::https://github.com/ANTsX/ANTsPy/archive/v0.2.2.tar.gz
+	sha512sums = e3f580a3164c273fd8a1d65227f38806a5cf17c3de1a2beca0c80d3ef8dcc8c52c3d619e38225f429555d89228768a720ce38a03b47e929848d3c2b1ed4c5802
 
 pkgname = python-antspy
 
