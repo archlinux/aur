@@ -1,0 +1,20 @@
+pkgbase = esunbank-webatm
+	pkgdesc = 玉山銀行晶片金融卡安控元件(Linux)10.0.5安裝. 這個精靈將指引你完成玉山銀行晶片金融卡安控元件(Linux)1.0.0.5的安裝流程。 在開始安裝之前，建議先關閉其他所有應用程式，並在安裝完成後於「套件庫」手動啟用玉山銀行晶片金融卡安控元件，或是重新啟動您的電腦。 按一下「安裝」開始安裝流程。
+	pkgver = 1.0.0.5
+	pkgrel = 1
+	url = http://www.esunbank.com.tw
+	arch = x86_64
+	license = custom
+	makedepends = libarchive
+	depends = libindicator-gtk2
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk2
+	depends = libcanberra
+	depends = nss
+	depends = pcsclite
+	source = local://EsunATM.deb
+	sha512sums = 176fdf1d9b331deabe3037a4e2ba49783b08f4cb430c1bbab21755e4b4d17185407c487f53da1cfa2909187fec7ed723bdea20fc4397ff0ad33fcfd973d4d48b
+
+pkgname = esunbank-webatm
+
