@@ -1,13 +1,14 @@
 pkgbase = structured-haskell-mode-git
 	pkgdesc = Structured editing minor mode for Haskell in Emacs
 	pkgver = r444.7f9df73
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hackage.haskell.org/package/structured-haskell-mode
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = BSD
 	makedepends = ghc
+	makedepends = git
 	depends = ghc-libs
 	depends = haskell-src-exts
 	depends = haskell-descriptive
