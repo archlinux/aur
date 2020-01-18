@@ -1,0 +1,8 @@
+post_install() {
+	echo '==> A systemd service file has been installed, enable it with:'
+	echo '==>	systemctl enable --now mailpile.service'
+}
+
+post_remove() {
+	systemctl disable --now mailpile.service > '/dev/null' 2>&1
+}

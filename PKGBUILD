@@ -4,6 +4,7 @@
 # Contributor: Frank Fishburn <frankthefishburn@gmail.com> (mailpile-git PKGBUILD)
 pkgname='mailpile'
 pkgver='1.0.0rc6'
+_printcommit='7c1372b999dd6e68710e08e16778f2986c064295'
 pkgrel='2'
 pkgdesc='A free & open modern, fast email client with user-friendly encryption and privacy features'
 arch=('any')
@@ -12,7 +13,7 @@ license=('AGPL3')
 depends=('gnupg' 'python2' 'python2-appdirs' 'python2-cryptography' 'python2-fasteners' 'python2-icalendar' 'python2-imgsize' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pbr' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'python2-socksipychain' 'tor')
 optdepends=('pagekite: remote access' 'python2-stem>=1.4: remote access')
 makedepends=('python2-setuptools')
-_printcommit='7c1372b999dd6e68710e08e16778f2986c064295'
+install="$pkgname.install"
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/$pkgname/${pkgname^}/archive/$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-print.tar.gz::https://github.com/$pkgname/${pkgname^}-print/archive/$_printcommit.tar.gz"

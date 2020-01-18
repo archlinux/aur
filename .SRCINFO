@@ -3,6 +3,7 @@ pkgbase = mailpile
 	pkgver = 1.0.0rc6
 	pkgrel = 2
 	url = http://www.mailpile.is
+	install = mailpile.install
 	arch = any
 	license = AGPL3
 	makedepends = python2-setuptools
