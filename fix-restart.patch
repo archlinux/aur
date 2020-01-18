@@ -1,11 +1,11 @@
 --- a/src/main-process/atom-application.js
 +++ b/src/main-process/atom-application.js
-@@ -1350,7 +1350,7 @@
+@@ -2047,7 +2047,7 @@
    }
  
-   restart () {
--    const args = []
-+    const args = ['/usr/lib/atom/atom']
-     if (this.safeMode) args.push('--safe')
-     if (this.logFile != null) args.push(`--log-file=${this.logFile}`)
-     if (this.socketPath != null) args.push(`--socket-path=${this.socketPath}`)
+   restart() {
+-    const args = [];
++    const args = ['/usr/lib/atom/atom'];
+     if (this.safeMode) args.push('--safe');
+     if (this.logFile != null) args.push(`--log-file=${this.logFile}`);
+     if (this.userDataDir != null)

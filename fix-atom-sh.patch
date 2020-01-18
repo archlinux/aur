@@ -27,10 +27,10 @@
 -    ;;
 -esac
 -
- export ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=true
- 
- while getopts ":wtfvh-:" opt; do
-@@ -65,95 +41,19 @@
+ # Only set the ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT env var if it hasn't been set.
+ if [ -z "$ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT" ]
+ then
+@@ -90,105 +66,24 @@
  ATOM_HOME="${ATOM_HOME:-$HOME/.atom}"
  mkdir -p "$ATOM_HOME"
  
@@ -52,7 +52,12 @@
 -  if [ ! -z "${ATOM_APP_NAME}" ]; then
 -    # If ATOM_APP_NAME is known, use it as the executable name
 -    ATOM_EXECUTABLE_NAME="${ATOM_APP_NAME%.*}"
--  else
++if [ $EXPECT_OUTPUT ]; then
++  "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
++  ATOM_EXIT=$?
++  if [ ${ATOM_EXIT} -eq 0 ] && [ -n "${EXIT_CODE_OVERRIDE}" ]; then
++    exit "${EXIT_CODE_OVERRIDE}"
+   else
 -    # Else choose it from the inferred channel name
 -    if [ "$CHANNEL" == 'beta' ]; then
 -      ATOM_EXECUTABLE_NAME="Atom Beta"
@@ -81,11 +86,17 @@
 -        exit 1
 -      fi
 -    fi
--  fi
++    exit ${ATOM_EXIT}
+   fi
 -
 -  if [ $EXPECT_OUTPUT ]; then
 -    "$ATOM_PATH/$ATOM_APP_NAME/Contents/MacOS/$ATOM_EXECUTABLE_NAME" --executed-from="$(pwd)" --pid=$$ "$@"
--    exit $?
+-    ATOM_EXIT=$?
+-    if [ ${ATOM_EXIT} -eq 0 ] && [ -n "${EXIT_CODE_OVERRIDE}" ]; then
+-      exit "${EXIT_CODE_OVERRIDE}"
+-    else
+-      exit ${ATOM_EXIT}
+-    fi
 -  else
 -    open -a "$ATOM_PATH/$ATOM_APP_NAME" -n --args --executed-from="$(pwd)" --pid=$$ --path-environment="$PATH" "$@"
 -  fi
@@ -114,15 +125,12 @@
 -
 -  if [ $EXPECT_OUTPUT ]; then
 -    "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
-+if [ $EXPECT_OUTPUT ]; then
-+  "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
-+  exit $?
-+else
-+  (
-+  nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
-+  if [ $? -ne 0 ]; then
-+    cat "$ATOM_HOME/nohup.out"
-     exit $?
+-    ATOM_EXIT=$?
+-    if [ ${ATOM_EXIT} -eq 0 ] && [ -n "${EXIT_CODE_OVERRIDE}" ]; then
+-      exit "${EXIT_CODE_OVERRIDE}"
+-    else
+-      exit ${ATOM_EXIT}
+-    fi
 -  else
 -    (
 -    nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
@@ -131,6 +139,12 @@
 -      exit $?
 -    fi
 -    ) &
++else
++  (
++  nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
++  if [ $? -ne 0 ]; then
++    cat "$ATOM_HOME/nohup.out"
++    exit $?
    fi
 +  ) &
  fi
