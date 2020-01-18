@@ -9,6 +9,8 @@ pkgbase = python2-pyicu
 	makedepends = gcc
 	depends = python2
 	depends = icu
+	provides = python2-pyicu
+	conflicts = python2-pyicu
 	source = https://files.pythonhosted.org/packages/95/0c/0fb09019efb65a29789ec5538f8e521b8f548da6935a3a474e19fbf2ea4d/PyICU-2.4.2.tar.gz
 	md5sums = bb09676c234849f586094e3fe99c3606
 
