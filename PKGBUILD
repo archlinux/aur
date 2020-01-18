@@ -15,7 +15,7 @@ sha256sums=('a08f5d1e0ad1976330e1c5e57faf384a27628323eaacf797644a3c42bcabac73')
 package() {
   cd "$_pkgname-master/fonts/otf"
   install -d "$pkgdir/usr/share/fonts/$_pkgname-otf"
-  install -m644 otf/*.otf "$pkgdir/usr/share/fonts/$_pkgname-otf/"
+  install -m644 *.otf "$pkgdir/usr/share/fonts/$_pkgname-otf/"
 }
 
 post_install() {
