@@ -10,7 +10,7 @@ _ver=1.1.1d
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, $_pkg_arch)"
 arch=('any')
 url='https://www.openssl.org'
@@ -71,6 +71,11 @@ package() {
   mkdir -p "$pkgdir/${ANDROID_PREFIX_INCLUDE}"
   cp -r include/openssl "$pkgdir/${ANDROID_PREFIX_INCLUDE}"
   install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  # add symlinks for dynamic libs with SHLIB_EXT so build scripts can find them under their usual names
+  for lib in libcrypto libssl; do
+    ln -s "${lib}_1_1.so" "${pkgdir}/${ANDROID_PREFIX_LIB}/${lib}.so"
+  done
 
   # strip binaries
   find "$pkgdir" -name 'lib*.so' -type f -exec "$ANDROID_STRIP" --strip-unneeded {} \;
