@@ -1,57 +1,45 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: jyantis <yantis@yantis.net>
 
-pkgname=python-bidict-git
-pkgver=0.3.2.dev.r30.f6fc702
 _gitname=bidict
-pkgrel=2
-pkgdesc='Provides a bidirectional mapping data structure and related functionality to naturally work with one-to-one relations in Python 3'
+pkgname=python-bidict-git
+pkgver=0.19.0.r7.g7d60b91
+pkgrel=1
+pkgdesc='bidirectional mapping library for Python'
 arch=('any')
-url='https://bidict.readthedocs.org/en/latest'
+url='https://bidict.readthedocs.io/en/master/'
 license=('ISC')
 depends=('python')
+makedepends=('git' 'python-setuptools-scm')
+checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-hypothesis' 'python-sortedcollections' 'python-sortedcontainers')
+provides=('python-bidict')
+conflicts=('python-bidict')
 source=('git+https://github.com/jab/bidict.git'
         'http://opensource.org/licenses/isc-license')
 sha256sums=('SKIP'
-            'SKIP')
-makedepends=('git')
-provides=('python-bidict')
-conflicts=('python-bidict')
+            '19cdca72269f2b1e7918edf814eb699773c3dc426744ce74c3ff2d2520b6a508')
+
 
 pkgver() {
-  cd "$_gitname"
-  set -o pipefail
-
-  _gitversion=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-
-  # If there is a setup.py then pull the version tag from the file
-  if [ -f "setup.py" ]; then
-    if grep --quiet "version = " setup.py; then
-      printf "%s.%s" "$(grep -R "version = " setup.py | awk -F\' '{print $2}')" $_gitversion | sed 's/-/./g'
-    elif grep --quiet "version=" setup.py; then
-      printf "%s.%s" "$(grep -R "version=" setup.py | awk -F\' '{print $2}')" $_gitversion | sed 's/-/./g'
-    else
-      printf "%s" $_gitversion
-    fi
-  else
-    printf "%s" $_gitversion
-  fi
+  cd "${_gitname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 build() {
-    cd ${_gitname}
-    python2 setup.py build
+    cd "${_gitname}"
+    python setup.py build
 }
 
 check() {
-  cd ${_gitname}
+  cd "${_gitname}"
   python setup.py test --verbose
 }
 
 package() {
     install -D -m644 isc-license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 
-    cd ${_gitname}
-    python setup.py install --root="${pkgdir}" --optimize=1
+    cd "${_gitname}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
