@@ -1,7 +1,7 @@
 pkgbase = linux-usermode
 	pkgdesc = User mode Linux kernel and modules
 	pkgver = 5.4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://user-mode-linux.sourceforge.net/
 	arch = x86_64
 	license = GPL2

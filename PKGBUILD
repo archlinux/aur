@@ -8,7 +8,7 @@ _major=5.4
 _minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -33,7 +33,7 @@ validpgpkeys=(
 prepare() {
   cd ${_srcname}
   
-  msg2 "Setting version..."
+  echo "Setting version..."
   sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
@@ -44,18 +44,18 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
   
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
   yes "" | make ARCH=um config >/dev/null
 
   make ARCH=um kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  msg2 "Save configuration for later reuse"
+  echo "Save configuration for later reuse"
   cat .config > "${startdir}/config.last"
 }
 
