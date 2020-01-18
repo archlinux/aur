@@ -1,7 +1,7 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-file-browser-extended-git
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Use rofi to quickly open files"
 arch=("x86_64")
