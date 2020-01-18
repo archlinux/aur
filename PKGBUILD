@@ -7,14 +7,12 @@ pkgrel=1
 pkgdesc='EB Garamond (OTF version) by Octavio Pardo & Georg Duffner'
 arch=('any')
 url='https://github.com/octaviopardo/EBGaramond12'
-license=('OFL')
+license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/octaviopardo/$_pkgname/archive/master.zip")
 sha256sums=('a08f5d1e0ad1976330e1c5e57faf384a27628323eaacf797644a3c42bcabac73')
 
 package() {
-  install -D -m644 OFL.txt "$pkgdir/usr/share/licenses/$_pkgname-otf/OFL.txt"
-
   cd "$_pkgname-master/fonts/otf"
   install -d "$pkgdir/usr/share/fonts/$_pkgname-otf"
   install -m644 otf/*.otf "$pkgdir/usr/share/fonts/$_pkgname-otf/"
