@@ -1,11 +1,14 @@
 pkgname=intero
 pkgver=0.1.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete interactive development program for Haskell"
 url="https://hackage.haskell.org/package/intero"
 license=('BSD')
 arch=('x86_64' 'i686' 'aarch64')
-depends=('ghc-libs' 'haskell-ghc-paths')
+depends=('ghc-libs' 'haskell-ghc-paths'
+         'haskell-random'
+         'haskell-network'
+         'haskell-syb')
 makedepends=('ghc' 'emacs-company-mode' 'emacs-haskell-mode'
              'flycheck')
 source=(${pkgname}-${pkgver}.tar.gz::"https://hackage.haskell.org/package/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
