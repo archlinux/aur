@@ -1,9 +1,9 @@
-# Maintainer: Ronuk Raval <ronuk.raval at gmail dot com>
+# Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 # Contributor: Narrat <autumn-wind at web dot de>
 # Contributor: David Scholl <djscholl at gmail dot com>
 
 pkgname=leo
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="Literate programmer's editor, outliner, and project manager"
 arch=('any')
@@ -35,17 +35,20 @@ source=(
     setup.py.patch
     MANIFEST.in
 )
-sha256sums=(
-    37a534cb5b567cf6cf6a816d9eb8f65aac201a166b050bbe04507182851e4a6c
-    7b326791378eefedecee2474c4e1a497838d2a06ff4259a195d817c38588395b
-    630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb
-    6212a47d5e6b171dc3bcf845bcae007454145958eab6da441c0b2676e573724a
-    03ef3e169f8761c1b1624f2e49058005b0fc94a1591d201436221df119c8d41e
-)
+sha256sums=('dc08f8e765b9ac990afb485466493de3e00f607cb2ec149cf925532f3811f994'
+            '7b326791378eefedecee2474c4e1a497838d2a06ff4259a195d817c38588395b'
+            '630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb'
+            '20c22bd8a2e892c484d90c7643ab820454f9e6d892fa48a6075395ec2e2ebcc9'
+            '03ef3e169f8761c1b1624f2e49058005b0fc94a1591d201436221df119c8d41e')
+
+
+prepare() {
+    cd "leo-editor-${pkgver}"
+    patch -Np1 -i ../setup.py.patch
+}
 
 build() {
     cd "leo-editor-${pkgver}"
-    patch -i ../setup.py.patch
     cp ../MANIFEST.in ./
     python setup.py build
 }
