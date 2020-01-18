@@ -1,7 +1,7 @@
 pkgbase = ytop-git
 	pkgdesc = A TUI system monitor written in Rust
 	pkgver = r101.115fb7f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cjbassi/ytop
 	arch = x86_64
 	license = MIT

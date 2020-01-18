@@ -6,7 +6,7 @@
 pkgname=ytop-git
 _pkgname=${pkgname%-git}
 pkgver=r101.115fb7f
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI system monitor written in Rust"
 arch=(x86_64)
 url="https://github.com/cjbassi/ytop"
@@ -31,5 +31,5 @@ build() {
 }
 
 package() {
-	install -Dm755 "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
