@@ -1,0 +1,16 @@
+pkgbase = onion-service-index
+	pkgdesc = Python Webapp with a linked indexed TOR .onion space enumeration
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/GIJack/onion-service-index
+	arch = any
+	license = Affero
+	depends = python
+	depends = python-flask
+	depends = python-jinja
+	optdepends = tor: for opening .onion links
+	source = onion-service-index-1.0.1.tar.gz::https://github.com/GIJack/onion-service-index/archive/v1.0.1.tar.gz
+	sha256sums = 9894318f4c6fee73a1d7aea6d99519386648cb1f3b6fdacffb09db76aedfe333
+
+pkgname = onion-service-index
+
