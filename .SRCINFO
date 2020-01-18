@@ -1,9 +1,8 @@
 pkgbase = libtorrent-rasterbar-git
 	pkgdesc = A C++ BitTorrent library that aims to be a good alternative to all the other implementations around (git version)
-	pkgver = 1.2.0.r24.g30b8a06bd
+	pkgver = 1.2.3.r319.g9dfff3677
 	pkgrel = 1
 	url = https://www.rasterbar.com/products/libtorrent/
-	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
