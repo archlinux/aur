@@ -1,0 +1,22 @@
+pkgbase = python-gym-jsbsim-git
+	pkgdesc = A reinforcement learning environment for aircraft control using the JSBSim flight dynamics model
+	pkgver = r241.02b1882
+	pkgrel = 1
+	url = https://github.com/Gor-Ren/gym-jsbsim
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jsbsim
+	depends = python-gym
+	depends = python-numpy
+	depends = python-matplotlib
+	optdepends = flightgear
+	provides = python-gym-jsbsim
+	conflicts = python-gym-jsbsim
+	source = git+https://github.com/Gor-Ren/gym-jsbsim
+	sha256sums = SKIP
+
+pkgname = python-gym-jsbsim-git
+
