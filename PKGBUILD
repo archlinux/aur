@@ -1,5 +1,5 @@
-# $Id$
-# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Maintainer: Em Zhan <zqianem at gmail dot com>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
 
 _hkgname=pandoc-include-code
 pkgname=pandoc-include-code
