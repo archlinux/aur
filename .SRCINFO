@@ -1,8 +1,8 @@
 pkgbase = guile-dbd-postgresql
 	pkgdesc = guile-dbi database driver postgresql
 	pkgver = 2.1.6
-	pkgrel = 2
-	url = http://home.gna.org/guile-dbi/
+	pkgrel = 3
+	url = https://github.com/eestrada/guile-dbi/tree/master/guile-dbd-postgresql
 	arch = i686
 	arch = x86_64
 	license = GPL2
