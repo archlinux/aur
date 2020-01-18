@@ -1,19 +1,17 @@
 pkgbase = python-datashape
 	pkgdesc = Data description protocol for dynd similar to Numpy DTypes.
-	pkgver = 0.5.3
-	pkgrel = 2
+	pkgver = 0.5.4
+	pkgrel = 1
 	url = https://github.com/blaze/datashape
 	arch = any
 	groups = blaze-ecosystem
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-numpy>=1.7
-	depends = python>=3.4
 	depends = python-multipledispatch>=0.4.7
 	depends = python-dateutil
-	source = https://github.com/blaze/datashape/archive/0.5.3.tar.gz
-	md5sums = e243704f530ef7520ad9d5a70d337683
-	sha1sums = e79b5eb684a698509cf8d46138fa717fa6826e2a
+	source = https://github.com/blaze/datashape/archive/0.5.4.tar.gz
+	sha256sums = c266c5803dde48b9fa8d8ee51b5b5979ef77443060e32db2d225b72648c638a5
 
 pkgname = python-datashape
 
