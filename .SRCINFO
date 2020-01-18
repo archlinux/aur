@@ -1,10 +1,10 @@
 pkgbase = sccache
 	pkgdesc = ccache with cloud storage
 	pkgver = 0.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/sccache
-	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	checkdepends = openssl-1.0
 	makedepends = cargo
