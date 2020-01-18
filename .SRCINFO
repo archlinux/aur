@@ -1,7 +1,7 @@
 pkgbase = sixfireusb-dkms
 	pkgdesc = Kernel modules for the Terratec DMX6FireUSB soundcard, including firmware
 	pkgver = 0.6.2
-	pkgrel = 7
+	pkgrel = 8
 	url = http://sourceforge.net/projects/sixfireusb
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,13 @@ pkgbase = sixfireusb-dkms
 	source = http://sourceforge.net/projects/sixfireusb/files/sixfireusb-0.6.2.tar.bz2
 	source = http://sourceforge.net/projects/sixfireusb/files/tools/fwinst.sh
 	source = fwinst.patch
+	source = pcm.patch
 	source = dkms.conf
 	source = blacklist-sixfireusb-dkms.conf
 	sha512sums = e79e4a62762626d966fa8c169b8666a0cfa3af8516e6f8a97e1a1d211d1deb1ed26bd2c5c8a4b563e03718c232e832686be783abbb66e5b49c8cc31858752068
 	sha512sums = 7e8eb7a78514f79b6ee2bb25357a233b1013884b836de5ea3784b7e5a5bdac423b7803ce92c9a31869b280f4b8edde595fdaca51aebf253eb6f6ffdee8ed1290
-	sha512sums = b74d045b0557b2de231f3698bc177a5947b0bcd538ffeb169d0753617ba94d5daea1d7572e9a5468ce54e248d8d21c7f5ca44e4c014b2832b69e98c9cf332ca8
+	sha512sums = fafabb05dafd1c03e715bcbdbb73c2fb4cc0e39695117e6b0260419bd2fa1dbeaf0982092a491724737ea31f09ef99e6e8cabce7e1dd98aca189a216530700b8
+	sha512sums = 5284cb5da0354eaba6a86e43634eac17097f20dc0120f4e3c06f9c9dc82a4659e2d487cde5bbab4c18a391a6db881255b48051afcf13fdad5c6a32a5e3aba576
 	sha512sums = e15302d1b589296ddc234f1836438bdfc0b864d1a6f2cf808d99dc5ed8f82b3fcdf7a097128af1f4f2e90258c9c0f9098b6d73698147ca830e08acdec64d85fb
 	sha512sums = 154150d5f6959c174a883504464e15e0c728ed71fa7f18ee3e75fa6e6810b7cdb87fae4a9df50587f7324943b5027096f9ef6b98e33bdcf147039fca1049dbd5
 
