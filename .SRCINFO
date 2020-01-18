@@ -1,12 +1,12 @@
 pkgbase = kfilt-bin
 	pkgdesc = kfilt can filter Kubernetes resources.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/ryane/kfilt
 	arch = x86_64
 	license = Apache
-	source = kfilt_0.0.3::https://github.com/ryane/kfilt/releases/download/v0.0.3/kfilt_0.0.3_linux_amd64
-	sha256sums = 27dc55af69b27e64ec78575d6a61a85c191aa21d028a00d2fb357c8a2effe13e
+	source = kfilt_0.0.4::https://github.com/ryane/kfilt/releases/download/v0.0.4/kfilt_0.0.4_linux_amd64
+	sha256sums = b582a8510beda1e3371f0476dcd9c4f193124e081faae3585f1fb7f56dc8bc34
 
 pkgname = kfilt-bin
 
