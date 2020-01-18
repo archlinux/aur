@@ -15,13 +15,13 @@ sha256sums=('80aa55c4e3c6c5e76136d179974e4b6de7c913d3ee53b0999888d4a08c0d5a11')
 _sourcedirectory="$_pkgname-$pkgver"
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	cargo build --release --locked --all-features
 	cargo run --release --locked --all-features --example generate-docs
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory/target"
+	cd "$srcdir/$_sourcedirectory/target/"
 	for binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
 		install -Dm755 "release/$binary" "$pkgdir/usr/bin/$binary"
 		install -Dm644 "$binary.1.gz" "$pkgdir/usr/share/man/man1/$binary.1.gz"
