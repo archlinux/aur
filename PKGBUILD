@@ -3,7 +3,7 @@
 
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.9.1
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Python library for distributed computing"
 arch=('any')
@@ -38,7 +38,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/d/distributed/distributed-$pkgver.tar.gz"
 )
 sha256sums=(
-  'd37a5c5be992f3b16db24b54d2801cbe370990fbc63089c6e7ef40d6f03cf5dd'
+  '70e29fed075270df4ca7dda2b26a79523b753fe90fb278b2a7d6b0290ba53d9a'
 )
 
 build() {
