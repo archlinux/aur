@@ -1,8 +1,8 @@
 pkgbase = xfce4-dockbarx-plugin-gtk3-git
 	pkgdesc = Embed DockbarX in the xfce4-panel
-	pkgver = r55+b3f828f
+	pkgver = r53+0edaf72
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/TiZ-EX1/xfce4-dockbarx-plugin
 	arch = i686
 	arch = x86_64

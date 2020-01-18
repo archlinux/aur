@@ -2,8 +2,8 @@
 
 _pkgname=xfce4-dockbarx-plugin
 pkgname=$_pkgname-gtk3-git
-epoch=1
-pkgver=r55+b3f828f
+epoch=2
+pkgver=r53+0edaf72
 pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64')
