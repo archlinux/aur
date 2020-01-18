@@ -1,225 +1,87 @@
 post_install() {
     echo
-    
-    systemctl daemon-reload
-    
-    ### Nginx & Apache ###
-    
-    # If Nginx is installed and either is active, or is inactive but Apache is not installed, we prefer Nginx.
-    if [[ "$(pacman -Qs nginx)" = *"local/nginx"* ]] && { [ "$(systemctl is-active nginx)" = "active" ] || [[ "$(pacman -Qs apache)" != *"local/apache"* ]] ; }
-    then
-        # Ensure the main conf file is present
-        if [ -f /etc/nginx/nginx.conf ] 
-        then
-            # Configure Nginx with the folder structure used in Debian-based distributions
-            if ( ! grep -q 'sites-enabled' /etc/nginx/nginx.conf )
-            then
-                sed -i 's|http {|http {\'$'\n    include       sites-enabled/*.conf;|g' /etc/nginx/nginx.conf
-            fi
-            
-            # Create the sites-enabled folder if it's not already created
-            if [ ! -d /etc/nginx/sites-enabled ]
-            then
-                mkdir -p /etc/nginx/sites-enabled
-            fi
-            
-            # Enable ZoneMinder's server block if it's not already enabled
-            if [ ! -f /etc/nginx/sites-enabled/zoneminder.conf ]
-            then
-                ln -sf /etc/nginx/sites-{available,enabled}/zoneminder.conf
-            fi
-            
-            # (Re)start Nginx
-            systemctl is-active --quiet nginx && systemctl stop nginx
-            systemctl start nginx
-        else
-            echo "ERROR: Nginx was detected but file '/etc/nginx/nginx.conf' was not found. Something seems broken."
-            echo
-        fi
-    # Else, if Nginx either is not installed, or is installed and inactive but Apache is also installed (no matter if it's active or not), we prefer Apache.
-    elif [[ "$(pacman -Qs apache)" = *"local/apache"* ]]
-    then
-        # Ensure the main conf file is present
-        if [ -f /etc/httpd/conf/httpd.conf ]
-        then
-            # Enable mod_proxy
-            sed -i 's|#LoadModule proxy_module modules/mod_proxy.so|LoadModule proxy_module modules/mod_proxy.so|g' /etc/httpd/conf/httpd.conf
-            # Enable mod_proxy_fcgi
-            sed -i 's|#LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so|LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so|g' /etc/httpd/conf/httpd.conf
-            # Enable mod_rewrite
-            sed -i 's|#LoadModule rewrite_module modules/mod_rewrite.so|LoadModule rewrite_module modules/mod_rewrite.so|g' /etc/httpd/conf/httpd.conf
-            # Enable mod_cgid
-            sed -i 's|#LoadModule cgid_module modules/mod_cgid.so|LoadModule cgid_module modules/mod_cgid.so|g' /etc/httpd/conf/httpd.conf
-            
-            # Enable ZoneMinder's VirtualHost if it's not already enabled
-            if ( ! grep -q 'zoneminder.conf' /etc/httpd/conf/httpd.conf )
-            then
-                echo "Include conf/extra/zoneminder.conf" >> /etc/httpd/conf/httpd.conf
-            fi
-    
-            # (Re)start Apache
-            systemctl is-active --quiet httpd && systemctl stop httpd
-            systemctl start httpd
-        else
-            echo "ERROR: Apache was detected but file '/etc/httpd/conf/httpd.conf' was not found. Something seems broken."
-            echo
-        fi
-    # Else, if neither of them is installed, we inform the user that something is seriously messed up.
-    else
-        echo "WARNING: Neither Nginx nor Apache were detected in your system. I hope you know what you're doing."
-        echo
-    fi
-    
-    ### fcgiwrap ###
-    
-    # By default fcgiwrap is configured to launch in 10 instances via spawn-fcgi and multiwatch. This should be
-    # enough for ZoneMinder to operate with 3 cameras. If you need more than 10 simultaneous CGI threads, edit the
-    # provided fcgiwrap-multiwatch.service file and increase the number of instances to whatever suits your needs.
-    
-    if [[ "$(pacman -Qs fcgiwrap)" = *"local/fcgiwrap"* ]]
-    then
-        systemctl is-active --quiet fcgiwrap.socket && systemctl stop fcgiwrap.socket
-        systemctl is-active --quiet fcgiwrap && systemctl stop fcgiwrap
-        systemctl is-active --quiet fcgiwrap-multiwatch && systemctl stop fcgiwrap-multiwatch
-        systemctl start fcgiwrap-multiwatch
-    fi
-    
-    ### PHP-FPM ###
-    
-    # To avoid modifying the global 'php.ini' file, this package uses a separate 'conf.d/zoneminder.ini' in order to apply
-    # some PHP settings that ZoneMinder needs to function properly, namely to load some PHP modules and to set the correct
-    # timezone.
-    #
-    # This has the side effect that any further changes to these specific PHP settings that have been overriden (i.e. to change
-    # the timezone or to disable one of the modules) will either need to be made inside 'conf.d/zoneminder.ini', or that file
-    # will have to be modified so it no longer overrides them.
-    #
-    # Modifying the global 'php.ini' on its own will have NO EFFECT as far as these settings are concerned.
-
-    # Set local timezone in /etc/php/conf.d/zoneminder.ini
-    sed -i 's|PLACEHOLDER|'`timedatectl | grep "Time zone" | tr -s ' ' | cut -f4 -d ' '`'|g' /etc/php/conf.d/zoneminder.ini
-    
-    if [[ "$(pacman -Qs php-fpm)" = *"local/php-fpm"* ]]
-    then
-        systemctl is-active --quiet php-fpm && systemctl stop php-fpm
-        systemctl start php-fpm
-    fi
-    
-    ### MariaDB ###
-    
-    # If MariaDB is installed
-    if [[ "$(pacman -Qs mariadb)" = *"local/mariadb "* ]]
-    then
-        # Initialize MariaDB's default database if it's not already initialized
-        if [ ! -d /var/lib/mysql/mysql ]
-        then
-            # Stop MariaDB if it's active
-            systemctl is-active --quiet mariadb && systemctl stop mariadb
-            mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql 2> /dev/null
-        fi
-        
-        # Start MariaDB if it's not already active
-        systemctl is-active --quiet mariadb || systemctl start mariadb
-        
-        # Create ZoneMinder's database & user if they do not exist
-        if [ ! -d /var/lib/mysql/zm ]
-        then
-            # Check for database root password
-            if [[ "$(mysql -uroot -e "select * from mysql.user;" 2>&1)" = *"Access denied"* ]]
-            then
-                # If a database root password is set
-                echo "* Secure MariaDB installation found, please enter the database root password."
-                echo
-                mysql -uroot -p < /usr/share/zoneminder/db/zm_create.sql
-                echo
-                echo "* Enter the password one more time..."
-                echo
-                mysql -uroot -p -e "grant select,insert,update,delete,create,drop,alter,index,lock tables,alter routine,create routine,trigger,execute on zm.* to 'zmuser'@localhost identified by 'zmpass';"
-                echo
-            else
-                # If a database root password is not set
-                mysql -uroot < /usr/share/zoneminder/db/zm_create.sql
-                mysql -uroot -e "grant select,insert,update,delete,create,drop,alter,index,lock tables,alter routine,create routine,trigger,execute on zm.* to 'zmuser'@localhost identified by 'zmpass';"
-            fi
-        fi
-    fi
-    
-    ### ZoneMinder ###
-    
-    systemctl is-active --quiet zoneminder && systemctl stop zoneminder
-    systemd-tmpfiles --create
-    systemctl start --quiet zoneminder &&
-    {  
-    echo "---------------"
+    echo "   ZoneMinder has been installed but some additional steps are required:"
     echo
-    
-    if [[ "$(systemctl is-active nginx)" = active ]] || [[ "$(systemctl is-active httpd)" = active ]]
-    then
-        echo "ZoneMinder is listening at http://localhost:8095"
-        echo
-    else
-        echo "WARNING: ZoneMinder is running, but no web server has been configured."
-        echo
-    fi
+    echo "1) You will need to install a MySQL-compatible database server and create a database and user"
+    echo "   for ZoneMinder. Then you will need to start the following systemd service:"
     echo
-    }
+    echo "   * mariadb.service"
+    echo
+    echo "2) You will need to install a web server and configure it to serve ZoneMinder's web interface,"
+    echo "   located at /usr/share/webapps/zoneminder/. Premade configurations are provided for Apache and"
+    echo "   Nginx; you can find them at /etc/httpd/conf/extra for Apache and /etc/nginx/sites-available for"
+    echo "   Nginx. After you install the web server, you will need to start the following systemd services:"
+    echo
+    echo "   * nginx.service (for Nginx)"
+    echo "   * httpd.service (for Apache)"
+    echo
+    echo "   ZoneMinder's default network address is http://localhost:8095"
+    echo
+    echo "3) If you choose to use Nginx, you will also need to install fcgiwrap, spawn-fcgi and multiwatch"
+    echo "   and then start the following systemd service (also provided by this package):"
+    echo
+    echo "   * fcgiwrap-multiwatch.service"
+    echo
+    echo "4) After the previous steps are complete, you will also need to refresh systemd's tmpfiles and then"
+    echo "   start the following systemd services:"
+    echo
+    echo "   * php-fpm.service"
+    echo "   * zoneminder.service"
+    echo
+    echo
+    echo "   For more detailed info on how to configure ZoneMinder, you should check the following links:"
+    echo
+    echo "   * https://wiki.archlinux.org/index.php/ZoneMinder"
+    echo "   * https://zoneminder.readthedocs.io/en/latest/"
+    echo
+    echo "   You can also run '/usr/bin/zmsetup.sh' if you wish to automate part or all of the configuration process."
+    echo
+    echo "   Bug reports and packaging suggestions are always welcome at https://aur.archlinux.org/packages/zoneminder/"
+    echo
 }
 
 post_upgrade() {
+    echo        
+    systemctl daemon-reload
+    
     # Parse zm.conf and all custom configuration files
     . /etc/zoneminder/zm.conf
-    for CONF in /etc/zoneminder/conf.d/*.conf; do
+    for CONF in /etc/zoneminder/conf.d/*.conf
+    do
         . $CONF
     done
     
     # Check if we're running a local database server
-    if [ "$ZM_DB_HOST" = "localhost" ] || [[ "$ZM_DB_HOST" = "127.0.0.1"* ]]; then        
-        systemctl daemon-reload
-        
-        # Make sure MariaDB is running before we attempt to use the updater
-        systemctl is-active --quiet mariadb || systemctl start mariadb
-        
-        # Make sure ZoneMinder is *not* running before we attempt to use the updater
-        systemctl is-active --quiet zoneminder && systemctl stop zoneminder
-        
-        echo
-        echo "---------------"
-        
-        # Temporary solution to apply new privileges on preexisting user & database
-        # Check for database root password
-        if [[ "$(mysql -uroot -e "select * from mysql.user;" 2>&1)" = *"Access denied"* ]]
+    if [[ "$ZM_DB_HOST" = "localhost" ]] || [[ "$ZM_DB_HOST" = "127.0.0.1"* ]]
+    then        
+        # Check if our database is MariaDB
+        if [[ "$(pacman -Qs mariadb)" = *"local/mariadb "* ]]
         then
-            # If a database root password is set
-            echo
-            echo "* Secure MariaDB installation found, please enter the database root password."
-            echo
-            mysql -uroot -p -e "grant select,insert,update,delete,create,drop,alter,index,lock tables,alter routine,create routine,trigger,execute on zm.* to 'zmuser'@localhost identified by 'zmpass';"
+            # Make sure MariaDB is running before we attempt to use the updater
+            systemctl is-active --quiet mariadb || systemctl start mariadb
+            
+            # Make sure ZoneMinder is *NOT* running before we attempt to use the updater
+            systemctl is-active --quiet zoneminder && systemctl stop zoneminder
+            
+            # Run the updater
+            /usr/bin/zmupdate.pl --nointeractive
+            /usr/bin/zmupdate.pl --nointeractive --freshen > /dev/null 2>&1
+            
+            # Update PTZ control presets
+            /usr/bin/zmcamtool.pl --import > /dev/null 2>&1
+        
+            # Start ZoneMinder
+            systemctl start zoneminder || echo "ERROR: zoneminder.service could not be started, something is wrong"
         else
-            # If a database root password is not set
-            mysql -uroot -e "grant select,insert,update,delete,create,drop,alter,index,lock tables,alter routine,create routine,trigger,execute on zm.* to 'zmuser'@localhost identified by 'zmpass';"
+            echo "ERROR: MariaDB was not found, please update ZoneMinder's database manually"
+            echo
         fi
-        
-        # Run the updater
-        /usr/bin/zmupdate.pl --nointeractive
-        /usr/bin/zmupdate.pl --nointeractive --freshen > /dev/null 2>&1
-        
-        # Update PTZ control presets
-        /usr/bin/zmcamtool.pl --import > /dev/null 2>&1
-    
-        systemctl start zoneminder
-    else
-        echo
-        echo "---------------"
-        echo
-        echo "Multiserver setup detected, database update skipped."
     fi
-    
-    post_install
 }
 
 post_remove() {
     systemctl daemon-reload && systemctl is-active --quiet zoneminder && systemctl stop zoneminder
-    
+
     # Disable ZoneMinder's Apache VirtualHost
     if [ -f /etc/httpd/conf/httpd.conf ]
     then
