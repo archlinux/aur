@@ -1,7 +1,9 @@
-# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
+_name=aioimaplib
 pkgname=python-aioimaplib
-pkgver=0.7.13
+pkgver=0.7.15
 pkgrel=1
 pkgdesc='Python asyncio IMAP4rev1 client library'
 arch=('any')
@@ -9,10 +11,16 @@ url='https://github.com/bamthomas/aioimaplib'
 license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/bamthomas/${pkgname#python-}/archive/${pkgver}.tar.gz")
-sha256sums=('770c5f231e2780d130bf081173e2396eb695048e32f78a1d0502a30feb81d49c')
+source=("$_name-$pkgver.tar.gz::https://github.com/bamthomas/${pkgname#python-}/archive/${pkgver}.tar.gz")
+sha256sums=('1f7cf0af7884fe7168a7c6a690920eb3c155b473cc658468c7a79d3ca120b10f')
+
+
+build() {
+  cd "${_name}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-  cd "${pkgname#python-}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd "${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
