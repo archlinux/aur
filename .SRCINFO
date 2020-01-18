@@ -1,0 +1,18 @@
+pkgbase = bao-git
+	pkgdesc = A verified streaming tool
+	pkgver = 0.10.0.r13.g9448902
+	pkgrel = 1
+	url = https://github.com/oconnor663/bao
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = bao
+	conflicts = bao
+	source = git+https://github.com/oconnor663/bao
+	sha256sums = SKIP
+
+pkgname = bao-git
+
