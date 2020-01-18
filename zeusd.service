@@ -1,0 +1,10 @@
+[Unit]
+Description=zfs backup tool
+Requires=zfs.target
+
+[Service]
+ExecStart=/usr/bin/zeusd backup
+Type=oneshot
+
+[Install]
+WantedBy=basic.target

@@ -1,0 +1,16 @@
+pkgbase = zeus-git
+	pkgdesc = zfs backup tool
+	pkgver = 20200118.9_2dd8962
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = zeus::git://github.com/reconquest/zeus.git#branch=master
+	source = zeusd.service
+	md5sums = SKIP
+	md5sums = 0e60533305684a378c0abe73a19b8169
+
+pkgname = zeus-git
+
