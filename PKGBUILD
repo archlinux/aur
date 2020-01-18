@@ -17,18 +17,18 @@ sha256sums=('SKIP')
 _sourcedirectory="$pkgname"
 
 pkgver() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	git describe --long --tags | sed -e's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	cargo build --release --locked --all-features
 	cargo run --release --locked --all-features --example generate-docs
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory/target"
+	cd "$srcdir/$_sourcedirectory/target/"
 	for binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
 		install -Dm755 "release/$binary" "$pkgdir/usr/bin/$binary"
 		install -Dm644 "$binary.1.gz" "$pkgdir/usr/share/man/man1/$binary.1.gz"
