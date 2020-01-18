@@ -3,17 +3,17 @@
 
 _gemname=mdl
 pkgname=ruby-$_gemname
-pkgver=0.5.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Markdown lint tool"
 arch=("any")
 url="http://github.com/markdownlint/markdownlint"
 license=("MIT")
-depends=("ruby-kramdown" "ruby-mixlib-config" "ruby-mixlib-cli")
+depends=("ruby-kramdown" "ruby-mixlib-config" "ruby-mixlib-cli" "ruby-kramdown-parser-gfm")
 makedepends=("ruby-rdoc")
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
-sha256sums=('913cc1c340b808645b54c8536e6e2e68b849677ca12e342e07c3a81a3ebaf010')
+sha256sums=('212eefeb6f6ddc5f34a98da1e6607312975add4ce36b6e9a733b0b2432f3822d')
 noextract=($_gemname-$pkgver.gem)
 
 package() {

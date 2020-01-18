@@ -1,6 +1,6 @@
 pkgbase = ruby-mdl
 	pkgdesc = Markdown lint tool
-	pkgver = 0.5.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://github.com/markdownlint/markdownlint
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-mdl
 	depends = ruby-kramdown
 	depends = ruby-mixlib-config
 	depends = ruby-mixlib-cli
-	noextract = mdl-0.5.0.gem
+	noextract = mdl-0.8.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mdl-0.5.0.gem
-	sha256sums = 913cc1c340b808645b54c8536e6e2e68b849677ca12e342e07c3a81a3ebaf010
+	source = https://rubygems.org/downloads/mdl-0.8.0.gem
+	sha256sums = 212eefeb6f6ddc5f34a98da1e6607312975add4ce36b6e9a733b0b2432f3822d
 
 pkgname = ruby-mdl
 
