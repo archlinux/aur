@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -77,21 +77,23 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0009-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0012-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0014-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch"
-        "${_lucjanpath}/arch-patches-rt-v2-sep/0015-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0009-x86-intel-Disable-HPET-on-Intel-Ice-Lake-platforms.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0010-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0011-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0012-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0013-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0014-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0015-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0016-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch"
+        "${_lucjanpath}/arch-patches-rt-v3-sep/0017-ptp-free-ptp-device-pin-descriptors-properly.patch"
          # the main kernel config files
         'config')
 
@@ -103,11 +105,11 @@ prepare() {
     cd $_srcname
 
     ### Add rt patch
-        msg2 "Add rt patch"
+        echo "Add rt patch"
         patch -Np1 -i ../patch-${_pkgver}-${_rtpatchver}.patch
 
     ### Setting version
-        msg2 "Setting version..."
+        echo "Setting version..."
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -118,24 +120,24 @@ prepare() {
             src="${src%%::*}"
             src="${src##*/}"
             [[ $src = *.patch ]] || continue
-        msg2 "Applying patch $src..."
+        echo "Applying patch $src..."
         patch -Np1 < "../$src"
         done
 
     ### Setting config
-        msg2 "Setting config..."
+        echo "Setting config..."
         cp ../config .config
         make olddefconfig
 
     ### Prepared version
         make -s kernelrelease > version
-        msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+        echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
 		if [[ -s /proc/config.gz ]]; then
-			msg2 "Extracting config from /proc/config.gz..."
+			echo "Extracting config from /proc/config.gz..."
 			# modprobe configs
 			zcat /proc/config.gz > ./.config
 		else
@@ -148,7 +150,7 @@ prepare() {
 
     ### Optionally set tickrate to 1000
 	if [ -n "$_1k_HZ_ticks" ]; then
-		msg2 "Setting tick rate to 1k..."
+		echo "Setting tick rate to 1k..."
 		sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
                     -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
                     -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
@@ -157,7 +159,7 @@ prepare() {
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
-            msg2 "Disabling NUMA from kernel config..."
+            echo "Disabling NUMA from kernel config..."
             sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
                 -i -e '/CONFIG_AMD_NUMA=y/d' \
                 -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
@@ -174,10 +176,10 @@ prepare() {
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
             if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Running Steven Rostedt's make localmodconfig now"
+            echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
-            msg2 "No modprobed.db data found"
+            echo "No modprobed.db data found"
             exit
             fi
         fi
@@ -219,7 +221,7 @@ _package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -227,13 +229,13 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -244,7 +246,7 @@ _package-headers() {
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -257,7 +259,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -273,10 +275,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -284,16 +286,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -308,11 +310,11 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -323,7 +325,7 @@ _package-docs() {
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing documentation..."
+  echo "Installing documentation..."
   local src dst
   while read -rd '' src; do
     dst="${src#Documentation/}"
@@ -331,11 +333,11 @@ _package-docs() {
     install -Dm644 "$src" "$dst"
   done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -353,22 +355,24 @@ sha512sums=('6328ad7e18b6fa982415b0de75e3384f58ce8428bd8c212871a31f3885a0819d241
             'SKIP'
             '10c9bbb02c6a0afe869efae97fe6133062110f46c973fd7b60cdd8a88f14de7646d206d5c2bbbf1170ca0aa9cf7c2d0daab477d12c074dc18e9b98075cd2b57c'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            'e4aeefe2cd8dffcf31f1359b5d3336e89c90c8ce61a84671c8c17c50d467e457eaccf88d5c1d45bc1f6c7321b31ea6ea44ecefb1632a9d56ba69dc21138f5827'
-            '5a8ccc78a3420b8e30902c9b4ef4c341b08d21f3727fad503394df2c34617bec957b4db5c5992d3015497a90775f8b982078e2e4f3b600d82439d99d82d470f7'
-            '1c4f68df3a04613ea6a58b218e87c24b8c488bebe7e2f111b02f582783bae8680a928dcb0b54d317d97b235064af7578f71e70193e596b65797eeab4b651d62a'
-            '9e76e68eb9d06194d7a9b916fa4a710f40320f36b0e02b4a1e2c90823367b0acfefd1b65b6dcd44f30d3f855822cbd92b672d5fa6c0e19c4dde3356b6d539513'
-            'f8506e4a0203e6bdfdef052d8bf29118ff39aa94cbd81dc9a33f315ae666b04572ec212c1a80df4f88f8e3f05dfe1a3d59a7c4f25c664fa326984e449a980cff'
-            '1dc58f175b0812335faf9996f761bbb560c81c99a79cee69726e185e5ecc20b61052d1f912d534ce40a535666866bc2be1e0946dfdc6cc365ba5d15ddf419bc4'
-            'ce4b89b2d78e989ebc936d8d6e008dc59cbacacd47398098dba88a5accb1994299c12bf55ed5ff9d3c0e1604e4d56c086184b1850da67f98fe99df3ee6b0cd44'
-            'a302436bee0e705635b59dddf9155db86530bf147e4029777bbf756394bdfc903456c9389efef8b0593ead571468e8828983e2472107bd2a2c870a9c3328e317'
-            '52c8415cb4dac46025a10abc7103413624e574380d3af89f445c5a5705d221b46fbc04ae248116153638d3c94249aa54c32f87c7348537ec5e262c4f9a090acd'
-            '62adc40f32a8d09336b72fc7881755c9c3c15ff2de65a3f0d076ff696159e438715be9509090c18b73f1c8b9181d842693c8c246521788444568bbddbf4f643b'
-            'f35b81f6194fbc08868631c7d5d31a8a266236c1be8e69665601f3c47a4c91916506efba1b866927529202615cee3a50f7b09e5884bdd9052e1b6877fb59752c'
-            '42851a85ea93b47314125d51ba46387a226571d58553466ead0ca1005d7372af9642f218609284c8457c44abc5dbad5bc2ff4a179a0139a8c7a1975d45883ce2'
-            '0182007c45b26f17dc7afd2ab0c60a2ea3ef467333f95f9078722f1c0b77fff1988911746e33328bb8ac15a26d1df95a56201542317a642969316264e890ad84'
-            'e21e18d2f7feafc33d023db58aed7aeb8292c1076c044ef93c07117695d7ecc50003bb5d7c0b9b9aaf3cb161c872046c7e215363d7b72644733d6e1c5b6d252b'
-            'bb7d693679b5179e4195a8d6d25266d1ceeb6c824e620344d81ca1b418df59ba6b790e9fa17d6ddc2dc8927a781880d587d3cbf69579ff767cbd34f9366ac1d6'
-            'c204c994de4f843e703221c50176f6b47b635e05c3048977a1ad7b1df8d15cbb27fcb964c28d321644de022597cb252091e54c0b7c860c46fd52b607b5e55a8f')
+            '7c7fa5ff0f8856a203cc1e5ea3e1124f4a812007f39dcf50416a838519dfd33f2676fdc155545ca15bc1a9070025c8c7c4e6b29670cbb6a011c03086a0c95604'
+            '779232ec56db6d6cd87e13398a5d2bbba39e1f45a6766d5e37a143aed278d4630be8309e72a2927d895a002288fea527d42c1e96dd16c437fca03eced97ae90a'
+            '808c669968006da1aeff5aac9b9d27ae32766da994cf4658899689a7d0e492533c05ae4ea283f55ed791e49078cb0403a6b17694225363fbbd1a554b2e7695b1'
+            'e3b123e203d38b0fcba4c662471573b668f27a29ae36afe521e7ed819b745b8f96c1375623d8a9406008ba634e15e6e745854b16df966bcae4509fcb3cd2aa78'
+            'f2c6a4c208bbf0869e369a8e5a59713d02864fb639fc205c8f23c4a36ddec8e6366b46e1027323897752fb3005422e8954a8265ff963a3665f6138b2a595e7db'
+            '77854636b7958c2d6824a4e7907e93dccaefe93c7c42f0a97b665a624070625ec6eb4a65bfc39f9118b14778072518b9ee56a062169eb7fad4ca140312803df5'
+            '18b22268a7596f90961d99a75b2d444190e4a7e4e20382450c8753b9db9998e6325139aba156c339c2f6f4728d5617a38d428c13b869c6d7cf39a9e09cec911e'
+            '861d9a32dd86f11fb9b75fa4524ff7f8de30884626057e75581c9608f5dcae006e29a5c8fc8697b83cec30cb1bdb5c5d45702159eb16f2f882d5b7bdce2e9a5f'
+            'f2e3905c03f176d000a79b83493957372a4539bf47fe9e2c28b283e54a87900eb2a81c03709c158d00e6012fc446153d37b61ff56f56703ffa645bf518b8c140'
+            'a4c3d543812b074bfb29a341d842542d692a06c74e1aac74705d5edbeac5be559ff9deb4179dbe391e2d5e25685d6fd21612f98ab653e53943cd320bb38c82f4'
+            '798e27d5820bd9ab84f88f99e5626be6e2617889ec9004c6b47d7580deaae8f17a741b906ed91c020f4402f98a6c747cbe8353f9f436b80640cf9c4ba363f226'
+            '67f9c4d3b4161ef5951b7e927824931bdc19a98b469dada8539ffd24e96f5ce754e6ebbd98338d12d197d859f7fdbcd529981e784a82d4e421eb3ec67ce258dd'
+            '93b84cef2d25ea896c9a1ff531231b8e2e94a6f16c13e72c28c913dc1ae5ccdcc89af49e2c61aa21b5982d390e199f6eb2da460361c26ec1031e6df4e3217a0e'
+            'e8c8b2600c3b4e0859eee541bfcfccf4a93129085951a1409177954d06d1d5eb906e412cac023408ce0c11d6d7bb3b0c0f98ce83ed9e02747feecdf7a9fbe647'
+            '997a9712a9e6ed7f4c34cd01f771fc4de552ff9d2edd10c63c1a2438adfbbf52f6b3ec9a95f3687534004717da638d77a5f03c148828665e34a4a6a63370451f'
+            '2a11ec15a2ba3d83ba6ecae5d83fe1edd761e20a512aba59c32e8546b27b35a78c73c2e740cc5d03b5fcbb00bdb39d7b63e0b61a810093f8d27d46ddd28401fe'
+            '1fe7e0ef2d78a683a737a7d8e1bf19356b1c49eeff18891c2cf3aa02f94383f3477324b2435111f8bb042601a03e60fe0fbe78f28906191c42304592bad109b3'
+            '0c0988d868c6c037d6b95adf5db3b60413530b10cd25df899f5794f6d66bbadba60a13477e53802564c634c0bc2109afd3dc01114473c28dbd3f54e216aa62e3')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
