@@ -6,13 +6,13 @@ pkgbase="python-testinfra"
 pkgname="python-testinfra"
 _pkgname='testinfra'
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Testinfra test your infrastructures'
 url='https://github.com/philpep/testinfra'
 arch=('any')
 license=('Apache')
 depends=('python-six')
-makedepends=('python' 'python-setuptools' 'python-pbr' 'python-sphinx')
+makedepends=('git' 'python' 'python-setuptools' 'python-pbr' 'python-sphinx')
 source=("git+https://github.com/philpep/testinfra.git#tag=$pkgver")
 sha256sums=('SKIP')
 

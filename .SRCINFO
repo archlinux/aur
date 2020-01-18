@@ -1,10 +1,11 @@
 pkgbase = python-testinfra
 	pkgdesc = Testinfra test your infrastructures
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/philpep/testinfra
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-pbr
