@@ -1,14 +1,14 @@
 pkgbase = python-easyprocess
-	pkgdesc = EasyProcess is an easy to use python subprocess interface.
-	pkgver = 0.2.3
+	pkgdesc = easy to use python subprocess interface
+	pkgver = 0.2.9
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/EasyProcess
+	url = https://github.com/ponty/EasyProcess
 	arch = any
 	license = BSD
-	depends = python>=3.2
+	depends = python
 	depends = python-setuptools
-	source = https://pypi.python.org/packages/0d/f1/d2de7591e7dfc164d286fa16f051e6c0cf3141825586c3b04ae7cda7ac0f/EasyProcess-0.2.3.tar.gz
-	md5sums = d08c91cbb2cc4603297968e1ed9eac0f
+	source = https://files.pythonhosted.org/packages/source/E/EasyProcess/EasyProcess-0.2.9.tar.gz
+	md5sums = a1008fc7b2cb69ff2f48a5fae201c24d
 
 pkgname = python-easyprocess
 
