@@ -13,8 +13,7 @@ source=("https://github.com/octaviopardo/$_pkgname/archive/master.zip")
 sha256sums=('a08f5d1e0ad1976330e1c5e57faf384a27628323eaacf797644a3c42bcabac73')
 
 package() {
-  cd "$srcdir"
-  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.TXT"
+  install -D -m644 OFL.txt "$pkgdir/usr/share/licenses/$_pkgname-otf/OFL.txt"
 
   cd "$_pkgname-master/fonts/otf"
   install -d "$pkgdir/usr/share/fonts/$_pkgname-otf"
