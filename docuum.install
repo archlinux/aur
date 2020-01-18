@@ -1,0 +1,8 @@
+post_install() {
+    cat << EOF
+==> A systemd service for docuum has been installed, it can be configured in /etc/default/docuum:
+==>     DOCUUM_THRESHOLD=5GB
+==>  and started with:
+==>     $ sudo systemctl start docuum.service
+EOF
+}

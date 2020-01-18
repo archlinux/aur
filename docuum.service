@@ -1,0 +1,45 @@
+[Unit]
+Description=LRU eviction of Docker images
+Documentation=https://github.com/stepchowfun/docuum
+DefaultDependencies=false
+After=docker.service docker.socket
+Requires=docker.service docker.socket
+
+[Service]
+Type=simple
+Environment=DOCUUM_THRESHOLD=10GB
+EnvironmentFile=-/etc/default/docuum
+ExecStart=/usr/bin/docuum --threshold $DOCUUM_THRESHOLD
+ProtectSystem=full
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=true
+CapabilityBoundingSet=
+KeyringMode=private
+RestrictNamespaces=~cgroup ipc net mnt pid user uts
+RestrictAddressFamilies=AF_UNIX
+ReadWritePaths=/var/run/docker.sock
+DeviceAllow=
+IPAddressDeny=any
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateMounts=true
+PrivateUsers=true
+ProtectControlGroups=true
+ProtectSystem=strict
+ProtectHome=tmpfs
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+UMask=0077
+ProtectHostname=true
+
+[Install]
+WantedBy=multi-user.target
