@@ -5,7 +5,7 @@ pkgname=papermc-14
 _pkgver=1.14.4
 _build=240
 pkgver="${_pkgver}+b${_build}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance (version for Minecraft 1.14)"
 arch=('any')
 url="https://papermc.io/"
@@ -29,7 +29,7 @@ sha512sums=('316a5b680c160c9a95c42c51a55515ba78c2cb4c1b26293de8fd9952651da638f94
             '51c5345155e8640d4f1eaef0c8cfb890ae46063f2d4e7a0fe181ad4c8ff7b96fea88b0f9fc74031d589dfd61602f37b440f183ca1859835930fe69d37508cd42'
             'f29c4044d9e3cc5ab137c21f7e62399b36d7e1f777d5558a39f7b4a01de75bdf2de0b8678e424accc03934ca7db9ebb6a22c78c8c4497759287dd55e1c3eb456'
             '70f7d4e42db9ed5efcde412f018d46628ad9c12198787421cc70aa1e51b8e278b436d480568ca21dabaacf33cfbd37c5e607504f2cd25ed65442ba67b9805958'
-            '3fddefaec25aa4001bce2cf8f654999a5f4736f8315bc23eccbfbaa68032a85481be4813d15898a03fe884345477eb5b28ec0e73fe471f641103fd07b419683b'
+            '46ae368d4d58b52e805d4a06930bb661856fb9455f3e2906a3e1289c03a2f0d5561160e205d31a8a8c38c944d116383ca4094dadb8f6389ea30e4c5bcbb59298'
             '687c51e16de4e5081066640228664e5aa642e8b61f22ae406b7385eba291c93f21ea7c1b625f27331e88936d405631b996089994d99e5201b71505e5fd08a294')
 
 _game="papermc"
