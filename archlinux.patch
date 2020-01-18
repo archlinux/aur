@@ -1,6 +1,5 @@
-diff -Naur guile-dbd-postgresql-2.1.6/src/guile-dbd-postgresql.c guile-dbd-postgresql-2.1.6-new/src/guile-dbd-postgresql.c
---- guile-dbd-postgresql-2.1.6/src/guile-dbd-postgresql.c	2008-12-13 23:44:28.000000000 +0100
-+++ guile-dbd-postgresql-2.1.6-new/src/guile-dbd-postgresql.c	2013-10-05 20:18:38.770299378 +0200
+--- guile-dbi-guile-dbd-postgresql-2.1.6/src/guile-dbd-postgresql.c	2015-08-02 04:53:32.000000000 +0200
++++ guile-dbi-guile-dbd-postgresql-2.1.6-new/src/guile-dbd-postgresql.c	2020-01-18 11:22:48.512807750 +0100
 @@ -24,7 +24,7 @@
  
  #include <guile-dbi/guile-dbi.h>
