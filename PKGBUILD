@@ -1,21 +1,22 @@
-# Maintainer: Andrea Fagiani <andfagiani_at_gmail_dot_com>
+# Maintainer: Miguel Bouza <miguelies.ruiz@gmail.com>
+# Contributor: Andrea Fagiani <andfagiani@gmail.com>
 # Contributor: Lisa Denia <eiffel56@gmail.com>
 
 pkgname=ganyremote
-pkgver=6.3.3
+pkgver=8.0
 pkgrel=1
 pkgdesc="GTK frontend for anyremote."
 arch=('i686' 'x86_64')
 url="http://anyremote.sourceforge.net/"
 license=('GPL')
-depends=('python2' 'python2-pybluez' 'pygtk' 'anyremote>=6.3')
+depends=('python' 'python-pybluez' 'pygtk' 'anyremote>=6.7' 'pygobject-devel' 'gtk3')
 source=(http://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
-md5sums=('3541cd3c278e3887b1c5273563a4403e')
+sha256sums=(b5cc6af6843cf1cc45ff2e83135f15f51b64cd778958d00521e7d085f062f15d)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  export PYTHON="python2"
+  #export PYTHON="python2"
 
   ./configure --prefix=/usr
   make
@@ -26,5 +27,7 @@ package() {
 
   make DESTDIR=$pkgdir install
 
-  sed -i -e 's:\(#!/usr/bin/env[ ]\+python$\|#!/usr/bin/python$\|\"python\):\12:g' $pkgdir/usr/bin/ganyremote
+  #sed -i -e \
+  #'s:\(#!/usr/bin/env[ ]\+python$\|#!/usr/bin/python$\|\"python\):\12:g' \
+  #$pkgdir/usr/bin/ganyremote
 }
