@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-jupyter_telemetry
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Configurable event-logging for Jupyter applications and extensions"
 url="https://github.com/jupyter/telemetry"
