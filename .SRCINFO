@@ -1,0 +1,21 @@
+pkgbase = python-mleap
+	pkgdesc = Common serialization format and execution engine for machine learning pipelines (Python API)
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://mleap-docs.combust.ml
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-six
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-scikit-learn
+	depends = python-nose-exclude
+	source = python-mleap-0.15.0::https://github.com/combust/mleap/archive/v0.15.0.tar.gz
+	sha256sums = e88f4edd4c50cf74d6c01d18f70c15f5dd3a8c1cd2fdfeb4889c3e4a17c83b44
+
+pkgname = python-mleap
+
