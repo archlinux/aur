@@ -2,14 +2,15 @@
 # and milk / milkii on Freenode
 _pkgname=zrythm
 pkgname=$_pkgname-debug-git
-pkgver=0.6.261.r48.geead9adb
+pkgver=0.7.383
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
-depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
-  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw' 'xdg-utils')
+depends=('git' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
+  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw' 'xdg-utils'
+  'rubberband')
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
