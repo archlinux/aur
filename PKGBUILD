@@ -30,7 +30,7 @@ sha256sums=('db4ee7d43b049fe8ffbd99225e9be7c9d66258bb7d30636c3361de1f2a08e0e0'
 _sourcedirectory="${pkgname^}-$pkgver"
 
 prepare() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	find . -type f -exec sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2.7|g' {} \;
 	find . -type f -exec sed -i 's|#!/usr/bin/python2.7|#!/usr/bin/env python2.7|g' {} \;
 	rm -rf 'shared-data/'{mailpile-gui/,multipile/}
@@ -41,7 +41,7 @@ prepare() {
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	# The folder structure breaks when we build and install separately for some reason
 	python2 setup.py install --root="$pkgdir/"
 
