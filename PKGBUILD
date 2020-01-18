@@ -22,12 +22,12 @@ sha256sums=('SKIP')
 _sourcedirectory="$pkgname"
 
 pkgver() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	printf 'r%s.%s' "$(hg identify -n)" "$(hg identify -i)"
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 'secret_storage_import_export.py' "$pkgdir/usr/bin/secret-storage-import-export"
 	install -Dm755 'gnome_keyring_import_export.py' "$pkgdir/usr/bin/gnome-keyring-import-export"
 }
