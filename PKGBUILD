@@ -44,18 +44,18 @@ package() {
 	ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/bin/x$_pkgname"
 
 	# Lib folder & translated man pages
-	lib_directory='usr/lib/wx'
+	local _libdir='usr/lib/wx'
 
-	install -dm755 "$pkgdir/$lib_directory/"
-	cp -r --no-preserve=ownership --preserve=mode 'usr/local/lib/wx/'* "$pkgdir/$lib_directory/"
+	install -dm755 "$pkgdir/$(echo "$_libdir" | rev | cut -d '/' -f 2- | rev)/"
+	cp -r --no-preserve=ownership --preserve=mode 'usr/local/lib/wx/' "$pkgdir/$_libdir/"
 
 	install -dm755 "$pkgdir/usr/local/lib/"
-	ln -sf "/$lib_directory" "$pkgdir/usr/local/lib/wx"
+	ln -sf "/$_libdir" "$pkgdir/usr/local/lib/wx"
 
 	for _language in 'de' 'es' 'fr' 'ja' 'pl'; do
 		install -dm755 "$pkgdir/usr/share/man/$_language/man1/"
 		for _manpage in 'wxcalibrate' 'wxfaq' 'wxrego' "x$_pkgname"; do
-			ln -sf "/$lib_directory/man/${_language}_$_manpage.1" "$pkgdir/usr/share/man/$_language/man1/$_manpage.1"
+			ln -sf "/$_libdir/man/${_language}_$_manpage.1" "$pkgdir/usr/share/man/$_language/man1/$_manpage.1"
 		done
 	done
 
