@@ -4,7 +4,7 @@
  
 pkgname=canon-pixma-mx870-complete
 pkgver=3.30
-pkgrel=5
+pkgrel=6
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MX870"
 url="https://www.usa.canon.com/internet/portal/us/home/support/details/printers/support-inkjet-printer/mx-series/pixma-mx870"
 arch=('i686' 'x86_64')
@@ -56,12 +56,4 @@ package() {
   # Install .desktop file and icon for scanner
   install -Dm644 "${srcdir}/${pkgname}-scangearmp.desktop" "${pkgdir}/usr/share/applications/${pkgname}-scangearmp.desktop"
   install -Dm644 "${srcdir}/${pkgname}-scangearmp-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}-scangearmp-icon.png"
-
-  # Fix directory structure differences
-  cd ${pkgdir}
-  if [[ ${CARCH} == x86_64 ]]; then
-	mkdir usr/lib32 2> /dev/null 
-	mv usr/lib/* usr/lib32
-	rm -rf usr/lib
-  fi
 }
