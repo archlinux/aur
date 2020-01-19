@@ -1,6 +1,6 @@
 _basename=kdiff3
 pkgname=${_basename}-git
-pkgver=1.9.70_f406df5
+pkgver=1.8.70_4622189
 pkgrel=1
 pkgdesc="A KDE file comparator/merge tool"
 arch=('i686' 'x86_64')
