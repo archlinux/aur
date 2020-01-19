@@ -1,0 +1,16 @@
+pkgbase = adwaita-plus-git
+	pkgdesc = A third-party icons theme, based on new GNOME Project's Adwaita
+	pkgver = 5.0
+	pkgrel = 1
+	url = https://github.com/Bonandry/adwaita-plus
+	changelog = CHANGELOG.sh
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = adwaita-plus
+	conflicts = adwaita-plus
+	source = git+https://github.com/Bonandry/adwaita-plus.git
+	sha256sums = SKIP
+
+pkgname = adwaita-plus-git
+
