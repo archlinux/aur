@@ -2,8 +2,8 @@
 
 pkgname=openra-raclassic-git
 _pkgname=${pkgname/-git}
-pkgver=183.git.c76c13e
-pkgrel=2
+pkgver=189.git.a199fec
+pkgrel=1
 pkgdesc="A mod of OpenRA that more faithfully recreates the Command & Conquer: Red Alert game"
 arch=('any')
 url="https://github.com/OpenRA/raclassic"
@@ -46,7 +46,7 @@ package() {
     cd $srcdir/raclassic
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-raclassic,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-raclassic
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-raclassic
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA*.exe,*.dll*,VERSION} $pkgdir/usr/lib/openra-raclassic
     cp -r mods/raclassic $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent,ra} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-raclassic $pkgdir/usr/bin/openra-raclassic
