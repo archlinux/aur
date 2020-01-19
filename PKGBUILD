@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend-git
-pkgver=3.0.0.255
+pkgver=3.0.0.277
 pkgrel=1
 pkgdesc="A daemon to suspend your server in case of inactivity"
 arch=(any)
@@ -19,7 +19,13 @@ optdepends=('python-dbus: logind session discovery'
             'python-requests-file: file:// URL support'
             'iputils: ping check'
             'xprintidle: X server idle time check')
-makedepends=('python-setuptools' 'python-pytest-runner' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-sphinx-issues')
+makedepends=('python-setuptools'
+             'python-pytest-runner'
+             'python-sphinx'
+             'python-sphinx_rtd_theme'
+             'python-sphinx-issues'
+             'python-sphinxcontrib-plantuml'
+             'python-sphinx-autodoc-typehints')
 provides=('autosuspend')
 conflicts=('autosuspend')
 source=("git+https://github.com/languitar/autosuspend.git")
