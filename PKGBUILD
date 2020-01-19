@@ -1,62 +1,59 @@
-# Maintainer: Frank Fishburn <frankthefishburn@gmail.com>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Frank Fishburn <frankthefishburn@gmail.com>
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
-
-pkgname=mailpile-git
-pkgver=r5955.cb4f0a71
-pkgrel=1
-pkgdesc="A modern, fast web-mail client with user-friendly encryption and privacy features."
+# Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
+_pkgname='mailpile'
+pkgname="$_pkgname-git"
+pkgver='r6265.aafe85bc'
+pkgrel='1'
+pkgdesc='A free & open modern, fast email client with user-friendly encryption and privacy features - git version'
 arch=('any')
+url="http://www.$_pkgname.is"
 license=('AGPL3')
-depends=('python2-appdirs' 'python2-setuptools' 'python2-cryptography' 'python2-lxml' 'python2-jinja' 'spambayes' 'python2-selenium' 'python2-markupsafe' 'python2-nose' 'python2-mock' 'python2-crypto' 'python2-pydns' 'python2-pgpdump' 'python2-pillow' 'python2-pbr' 'python2-fasteners' )
-url="http://www.mailpile.is"
-provides=("mailpile")
-conflicts=("mailpile")
-install=mailpile.install
-source=('git://github.com/pagekite/Mailpile.git' 'fix-rootdir.patch' 'mailpile.service')
-md5sums=('SKIP' '87acc0758b08e62b4a8eea17e5f0da5e' '5109bf42611bb0e9f1ce7caa5a00a6e7')
+depends=('gnupg' 'python2' 'python2-appdirs' 'python2-cryptography' 'python2-fasteners' 'python2-icalendar' 'python2-imgsize' 'python2-jinja>=2.6' 'python2-lxml>=2.3.2' 'python2-markupsafe' 'python2-pbr' 'python2-pgpdump' 'python2-pillow' 'python2-pydns' 'python2-socksipychain' 'tor')
+optdepends=('pagekite: remote access' 'python2-stem>=1.4: remote access')
+makedepends=('git' 'python2-setuptools')
+install="$_pkgname.install"
 
-pkgver() {
-  cd "${srcdir}/Mailpile"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=(
+	"$pkgname::git+https://github.com/$_pkgname/${_pkgname^}"
+	"$_pkgname.sysusers"
+	"$_pkgname.tmpfiles"
+	"$_pkgname.service"
+)
+sha256sums=('SKIP'
+            '47cad07997afb1e0b7a00d686db111cf819c4b6ffdcd5c174d5b5d1c0966ea13'
+            'ddfc114acd7b926aad8ff1e3b0ce31558aef8017458e2c1c98c923ef9d4174ea'
+            'e6a49dbf34a36a46b744e07cea39b443954f430835ff988a6938a07331b9726d')
+
+_sourcedirectory="$pkgname"
 
 prepare() {
-
-  # Fix path
-  patch "${srcdir}/Mailpile/scripts/mailpile" fix-rootdir.patch
-  cd "${srcdir}/Mailpile"
-
-  # python2 fixes
-  find . -type f -exec sed -i 's^bin/python^bin/python2^g' {} \;
-  sed -i 's^python ^python2 ^g' Makefile
-
+	cd "$srcdir/$_sourcedirectory/"
+	git submodule init
+	git submodule update
+	find . -type f -exec sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2.7|g' {} \;
+	find . -type f -exec sed -i 's|#!/usr/bin/python2.7|#!/usr/bin/env python2.7|g' {} \;
+	rm -rf 'shared-data/'{mailpile-gui/,multipile/}
+	rm -rf 'shared-data/default-theme/'{less/,index.html}
+	rm -rf 'mailpile/tests'
 }
 
-build() {
-
-  cd "${srcdir}/Mailpile"
-
-  # Compile bytecode
-  python2 -m compileall -f mailpile
-
+pkgver() {
+	cd "$srcdir/$_sourcedirectory/"
+	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
+	cd "$srcdir/$_sourcedirectory/"
+	# The folder structure breaks when we build and install separately for some reason
+	python2 setup.py install --root="$pkgdir/"
 
-  cd "${srcdir}/Mailpile"
+	install -dm755 "$pkgdir/usr/bin"
+	ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/bin/mp"
 
-  install -d "${pkgdir}/usr/share"
-
-  cp -r shared-data "${pkgdir}/usr/share/mailpile"
-  cp -r mailpile "${pkgdir}/usr/share/mailpile/"
-
-  find "${pkgdir}/usr/share/mailpile" -type f -exec chmod 644 '{}' ';'
-  find "${pkgdir}/usr/share/mailpile" -type d -exec chmod 755 '{}' ';'
-
-  install -D mp -t "${pkgdir}/usr/bin"
-  install -Dm644 "../mailpile.service" -t "${pkgdir}/usr/lib/systemd/system"
-
+	install -Dm644 "../$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+	install -Dm644 "../$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+	install -Dm644 "../$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+	install -Dm644 "packages/$_pkgname.1" "$pkgdir/usr/share/man/man8/$_pkgname.8"
 }
-
-# vim:set ts=2 sw=2 et:
-

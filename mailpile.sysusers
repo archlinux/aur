@@ -1,0 +1,4 @@
+# Type	Name		ID			GECOS					Home directory		Shell
+g		mailpile	-			-
+u		mailpile	-			"mailpile daemon user"	/var/lib/mailpile	/bin/bash
+m		mailpile	mailpile

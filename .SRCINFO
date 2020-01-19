@@ -1,35 +1,38 @@
 pkgbase = mailpile-git
-	pkgdesc = A modern, fast web-mail client with user-friendly encryption and privacy features.
-	pkgver = r5955.cb4f0a71
+	pkgdesc = A free & open modern, fast email client with user-friendly encryption and privacy features - git version
+	pkgver = r6265.aafe85bc
 	pkgrel = 1
 	url = http://www.mailpile.is
 	install = mailpile.install
 	arch = any
 	license = AGPL3
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = gnupg
+	depends = python2
 	depends = python2-appdirs
-	depends = python2-setuptools
 	depends = python2-cryptography
-	depends = python2-lxml
-	depends = python2-jinja
-	depends = spambayes
-	depends = python2-selenium
+	depends = python2-fasteners
+	depends = python2-icalendar
+	depends = python2-imgsize
+	depends = python2-jinja>=2.6
+	depends = python2-lxml>=2.3.2
 	depends = python2-markupsafe
-	depends = python2-nose
-	depends = python2-mock
-	depends = python2-crypto
-	depends = python2-pydns
+	depends = python2-pbr
 	depends = python2-pgpdump
 	depends = python2-pillow
-	depends = python2-pbr
-	depends = python2-fasteners
-	provides = mailpile
-	conflicts = mailpile
-	source = git://github.com/pagekite/Mailpile.git
-	source = fix-rootdir.patch
+	depends = python2-pydns
+	depends = python2-socksipychain
+	depends = tor
+	optdepends = pagekite: remote access
+	optdepends = python2-stem>=1.4: remote access
+	source = mailpile-git::git+https://github.com/mailpile/Mailpile
+	source = mailpile.sysusers
+	source = mailpile.tmpfiles
 	source = mailpile.service
-	md5sums = SKIP
-	md5sums = 87acc0758b08e62b4a8eea17e5f0da5e
-	md5sums = 5109bf42611bb0e9f1ce7caa5a00a6e7
+	sha256sums = SKIP
+	sha256sums = 47cad07997afb1e0b7a00d686db111cf819c4b6ffdcd5c174d5b5d1c0966ea13
+	sha256sums = ddfc114acd7b926aad8ff1e3b0ce31558aef8017458e2c1c98c923ef9d4174ea
+	sha256sums = e6a49dbf34a36a46b744e07cea39b443954f430835ff988a6938a07331b9726d
 
 pkgname = mailpile-git
-

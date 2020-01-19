@@ -1,34 +1,8 @@
 post_install() {
-  post_upgrade $1
-
-  echo ""
-  echo "==> Note: Mailpile is still in development and not"
-  echo "==>       suitable for production or end-user use."
-  echo ""
-  echo "==> Get more info at:"
-  echo "==> https://github.com/pagekite/Mailpile/wiki/Getting-started"
-  echo ""
-}
-
-# arg 2:  the old package version
-post_upgrade() {
-  if ! getent group mailpile >/dev/null; then
-    groupadd --system mailpile 
-  fi
-
-  if ! getent passwd mailpile >/dev/null; then 
-    useradd --system -c 'mailpile daemon user' -g mailpile -b /var/lib -m -s /bin/bash mailpile >/dev/null 2>&1
-  elif ! test -d /var/lib/mailpile; then
-    mkhomedir_helper mailpile
-  fi
-
-  if test $2 && test "`vercmp $2 0.4.1-1`" -lt 0; then
-    echo '==> Mailpile home directory has moved to /var/lib/mailpile'
-  fi
+	echo '==> A systemd service file has been installed, enable it with:'
+	echo '==>	systemctl enable --now mailpile.service'
 }
 
 post_remove() {
-  systemctl stop mailpile >/dev/null 2>&1
-
-  echo "==> Note: /var/lib/mailpile may still contain data" 
+	systemctl disable --now mailpile.service > '/dev/null' 2>&1
 }
