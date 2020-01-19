@@ -3,16 +3,15 @@
 
 pkgname=acpi-eeepc-generic
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="ACPI scripts for many EeePC netbook computers"
 url="https://github.com/nbigaouette/acpi-eeepc-generic"
 arch=(any)
 license=(GPL3)
-depends=(acpid xorg-server-utils dmidecode)
+depends=(acpid xorg-apps dmidecode)
 optdepends=(
     "unclutter: Hide cursor when touchpad is disabled"
     "kdebase-runtime: KDE's super-user privileges gaining"
-    "kdebase-kdialog: KDE's OSD"
     "sudo: super-user privileges gaining"
     "gksu: GNOME/GTK super-user privileges gaining"
     "pm-utils: Power management (suspend and hibernate) utilities"
