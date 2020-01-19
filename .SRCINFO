@@ -1,0 +1,15 @@
+pkgbase = lqsd
+	pkgdesc = LiQuid Screen Dim - Dim your screen smoothly
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.reekynet.com/ReekyMarko/lqsd
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	depends = light
+	source = lqsd-0.1.0.tar.gz::https://gitlab.com/ReekyMarko/lqsd/-/archive/v0.1.0/lqsd-0.1.0.tar.gz
+	sha256sums = 0e20a2814af13b1db4b3f2cf5a45105c1400e8da56495609803a95ccb5b01d4f
+
+pkgname = lqsd
+
