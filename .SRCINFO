@@ -1,13 +1,13 @@
 pkgbase = golang-github-rogpeppe-go-internal
 	pkgdesc = Selected Go-internal packages factored out from the standard library
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rogpeppe/go-internal
 	arch = any
 	license = BSD
 	depends = go-pie>=1.11
 	depends = golang-gopkg-errgo.v2>=2.1.0
-	source = golang-github-rogpeppe-go-internal-1.5.2-1.tar.gz::https://github.com/rogpeppe/go-internal/archive/v1.5.2.tar.gz
+	source = golang-github-rogpeppe-go-internal-1.5.2-2.tar.gz::https://github.com/rogpeppe/go-internal/archive/v1.5.2.tar.gz
 	sha256sums = 415da1a5d971b532e2156c8b9841b5e8a516b334754eea906feba5748138a172
 
 pkgname = golang-github-rogpeppe-go-internal
