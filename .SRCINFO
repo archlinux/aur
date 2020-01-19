@@ -1,6 +1,6 @@
 pkgbase = parquet-tools
 	pkgdesc = Java based command line tools that aid in the inspection of the Parquet files
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/apache/parquet-mr
 	arch = any
@@ -8,10 +8,12 @@ pkgbase = parquet-tools
 	makedepends = maven
 	makedepends = java-environment>=8
 	depends = java-runtime>=8
-	source = https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=parquet/apache-parquet-1.10.1/apache-parquet-1.10.1.tar.gz
+	source = https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=parquet/apache-parquet-1.11.0/apache-parquet-1.11.0.tar.gz
 	source = hdfs-packaging.patch
-	sha256sums = bf5fdcd3f1572bec105651ee9523159bf9c374dc09dbdbeea6c4907d91c48c29
-	sha256sums = e6250e855909e5437d8ea8d9230aad6e1b9ad7ea5519dc17f4a94d2b7460aac8
+	source = shaded-fasterxml-jackson.patch
+	sha256sums = bf33f08595a908ec865e664f66bb9f9ee8a0b5fd424d6a7dda52893f92545b1a
+	sha256sums = 6a3bf99c1b556257bb224a654e5d8bc93f10929b907d92874e97b68de49e04ea
+	sha256sums = 29e395981eff9b3530a9f381bbc6e0dc5480ead174cbc06f973578540ec6b452
 
 pkgname = parquet-tools
 

@@ -1,0 +1,46 @@
+--- a/src/main/java/org/apache/parquet/tools/json/JsonRecordFormatter.java
++++ b/src/main/java/org/apache/parquet/tools/json/JsonRecordFormatter.java
+@@ -19,7 +19,7 @@
+ 
+ package org.apache.parquet.tools.json;
+ 
+-import com.fasterxml.jackson.databind.ObjectMapper;
++import shaded.parquet.com.fasterxml.jackson.databind.ObjectMapper;
+ import org.apache.parquet.schema.GroupType;
+ import org.apache.parquet.schema.MessageType;
+ import org.apache.parquet.schema.Type;
+--- a/src/test/java/org/apache/parquet/tools/read/TestJsonRecordFormatter.java
++++ b/src/test/java/org/apache/parquet/tools/read/TestJsonRecordFormatter.java
+@@ -19,7 +19,7 @@
+ 
+ package org.apache.parquet.tools.read;
+ 
+-import com.fasterxml.jackson.databind.ObjectMapper;
++import shaded.parquet.com.fasterxml.jackson.databind.ObjectMapper;
+ import org.apache.parquet.schema.GroupType;
+ import org.apache.parquet.schema.MessageType;
+ import org.apache.parquet.schema.PrimitiveType;
+--- a/src/main/java/org/apache/parquet/tools/read/SimpleRecord.java
++++ b/src/main/java/org/apache/parquet/tools/read/SimpleRecord.java
+@@ -26,8 +26,8 @@
+ import java.util.List;
+ import java.util.Map;
+ 
+-import com.fasterxml.jackson.databind.ObjectMapper;
+-import com.fasterxml.jackson.databind.node.BinaryNode;
++import shaded.parquet.com.fasterxml.jackson.databind.ObjectMapper;
++import shaded.parquet.com.fasterxml.jackson.databind.node.BinaryNode;
+ import com.google.common.base.Strings;
+ import com.google.common.collect.Maps;
+ 
+--- a/src/main/java/org/apache/parquet/tools/read/SimpleMapRecord.java
++++ b/src/main/java/org/apache/parquet/tools/read/SimpleMapRecord.java
+@@ -18,7 +18,7 @@
+  */
+ package org.apache.parquet.tools.read;
+ 
+-import com.fasterxml.jackson.databind.node.BinaryNode;
++import shaded.parquet.com.fasterxml.jackson.databind.node.BinaryNode;
+ import com.google.common.collect.Maps;
+ 
+ import java.util.Arrays;

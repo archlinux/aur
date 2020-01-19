@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=parquet-tools
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Java based command line tools that aid in the inspection of the Parquet files'
 depends=('java-runtime>=8')
@@ -9,16 +9,19 @@ makedepends=('maven' 'java-environment>=8')
 arch=('any')
 source=(
   "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=parquet/apache-parquet-${pkgver}/apache-parquet-${pkgver}.tar.gz"
-  "hdfs-packaging.patch")
+  "hdfs-packaging.patch"
+  "shaded-fasterxml-jackson.patch")
 url='https://github.com/apache/parquet-mr'
 license=('Apache')
-sha256sums=('bf5fdcd3f1572bec105651ee9523159bf9c374dc09dbdbeea6c4907d91c48c29'
-            'e6250e855909e5437d8ea8d9230aad6e1b9ad7ea5519dc17f4a94d2b7460aac8')
+sha256sums=('bf33f08595a908ec865e664f66bb9f9ee8a0b5fd424d6a7dda52893f92545b1a'
+            '6a3bf99c1b556257bb224a654e5d8bc93f10929b907d92874e97b68de49e04ea'
+            '29e395981eff9b3530a9f381bbc6e0dc5480ead174cbc06f973578540ec6b452')
 
 prepare() {
   cd "apache-parquet-${pkgver}/parquet-tools"
   # Properly package HDFS service descriptors to work with files on remote filesystems
   patch -Np1 -i "${srcdir}/hdfs-packaging.patch"
+  patch -Np1 -i "${srcdir}/shaded-fasterxml-jackson.patch"
 }
 
 build() {
