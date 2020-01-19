@@ -10,13 +10,12 @@ license=('GPL2')
 depends=('mpv' 
          'ffmpeg'
          'python-aiohttp'
-         'qt5-quickcontrols2'
+         'qt5'
          'python'
          'ykdl-git')
 makedepends=('cmake'
              'git'
-             'extra-cmake-modules' 
-             'qt5-base')
+             'extra-cmake-modules' )
 source=(
     "QLivePlayer::git+https://github.com/IsoaSFlus/QLivePlayer.git"
     "qliveplayer.desktop"
