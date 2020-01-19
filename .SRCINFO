@@ -1,13 +1,13 @@
 pkgbase = golang-rsc-2fa
 	pkgdesc = Two-factor authentication on the command line using Go
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsc/2fa
 	arch = any
 	license = BSD
 	depends = go-pie
 	depends = golang-github-atotto-clipboard
-	source = golang-rsc-2fa-1.1.0-1.tar.gz::https://github.com/rsc/2fa/archive/v1.1.0.tar.gz
+	source = golang-rsc-2fa-1.1.0-2.tar.gz::https://github.com/rsc/2fa/archive/v1.1.0.tar.gz
 	sha256sums = ecd5ba067d3e3bbc3f8c10fa2df01b1b388b1cd6503fb56381573d8d17497755
 
 pkgname = golang-rsc-2fa
