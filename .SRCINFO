@@ -1,7 +1,7 @@
 pkgbase = webmacs-git
 	pkgdesc = browser for keyboard-based web navigation
 	pkgver = r791.35f1743
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/parkouss/webmacs
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = webmacs-git
 	depends = qt5-webengine
 	depends = python-dateparser
 	depends = python-dateutil
+	depends = python-jinja
 	source = git+https://github.com/parkouss/webmacs
 	source = minibuffer.patch
 	md5sums = SKIP

@@ -2,13 +2,13 @@
 
 pkgname=webmacs-git
 pkgver=r791.35f1743
-pkgrel=1
+pkgrel=2
 _pythonver=3.8
 pkgdesc="browser for keyboard-based web navigation"
 arch=('x86_64')
 url="https://github.com/parkouss/webmacs"
 license=('GPL3')
-depends=('python-pyqt5' 'qt5-webengine' 'python-dateparser' 'python-dateutil')
+depends=('python-pyqt5' 'qt5-webengine' 'python-dateparser' 'python-dateutil' 'python-jinja')
 makedepends=('python-setuptools' 'python-sphinx' 'git')
 source=("git+https://github.com/parkouss/webmacs" minibuffer.patch)
 md5sums=('SKIP'
