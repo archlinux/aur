@@ -2,14 +2,14 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=997.f37a050
+pkgver=1077.402e46b
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer"
 url="https://github.com/hishamhm/${gitname}"
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('ncurses')
-makedepends=('git' 'python2')
+makedepends=('git' 'python')
 optdepends=('lsof: list open files for running process'
             'strace: attach to running process')
 provides=('htop')
