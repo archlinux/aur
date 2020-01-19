@@ -1,7 +1,7 @@
 pkgbase = python-tablib
 	pkgdesc = Format-agnostic tabular data library (XLS, JSON, YAML, CSV)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://python-tablib.org
 	arch = any
 	license = MIT
@@ -18,7 +18,6 @@ pkgbase = python-tablib
 	optdepends = python-pyaml: for YAML support
 	source = https://files.pythonhosted.org/packages/source/t/tablib/tablib-1.0.0.tar.gz
 	sha256sums = ff3172802e8dd7fb795867942f5238f6c90e2d4e90ad6233c1a796cdfc63bb35
-	sha256sums = 18ba282dbdc710edfda125ba80ca97a46bf9eb7e6183dc11eb1a47825f3b12ae
 
 pkgname = python-tablib
 

@@ -4,7 +4,7 @@
 _module="tablib"
 pkgname="python-${_module}"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Format-agnostic tabular data library (XLS, JSON, YAML, CSV)"
 arch=("any")
 url="http://python-tablib.org"
@@ -21,8 +21,7 @@ optdepends=("python-tabulate: cli interface"
             "python-openpyxl: for XLSX support"
             "python-pyaml: for YAML support")
 source=(https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz)
-sha256sums=('ff3172802e8dd7fb795867942f5238f6c90e2d4e90ad6233c1a796cdfc63bb35'
-            '18ba282dbdc710edfda125ba80ca97a46bf9eb7e6183dc11eb1a47825f3b12ae')
+sha256sums=('ff3172802e8dd7fb795867942f5238f6c90e2d4e90ad6233c1a796cdfc63bb35')
 
 
 build() {
