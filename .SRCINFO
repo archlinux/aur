@@ -1,13 +1,14 @@
 pkgbase = coreaction
 	pkgdesc = A side bar for showing widgets from the CoreApps family.
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/cubocore/coreaction
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
+	depends = qt5-svg
 	depends = libcprime>=2.7.1
 	depends = libcsys>=2.7.1
 	source = https://gitlab.com/cubocore/coreaction/-/archive/v2.8.0/coreaction-v2.8.0.tar.gz
