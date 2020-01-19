@@ -13,7 +13,7 @@ PrivateDevices=yes
 ProtectControlGroups=yes
 ProtectKernelTunables=yes
 ProtectHome=tmpfs
-TemporaryFileSystem=:ro
+TemporaryFileSystem=/:ro
 
 [Install]
 WantedBy=multi-user.service
