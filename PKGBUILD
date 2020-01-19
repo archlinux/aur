@@ -4,7 +4,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=lib32-vulkan-mesa-layer
-pkgver=19.1.6
+pkgver=19.3.2
 pkgrel=1
 pkgdesc="Vulkan overlay layer to display information about the application (32-bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha512sums=('399ce97a293769893ef9a4a6af1f77c7d835f5405bdbc03bbf9b73e052e4ff3b43dec5dafd6b9fedaaf2c59531aeccaa0f685a8bfdc5719a26c3815fc7f68024'
+sha512sums=('fb69999fa7a15cd6f2c254fb6e8fe635e56dc49a5c2c762a96c77815cbad77060b8f81a02e67ac9ec58092ab866e080fb928086a5ac1e61c3efe882e5825cd28'
             'SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
