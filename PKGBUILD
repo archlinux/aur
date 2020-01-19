@@ -37,9 +37,9 @@ prepare() {
 package() {
 	cd "$srcdir/$_sourcedirectory/"
 	# Binaries & main man pages
-	for binary in 'wxbatch' 'wxmap' 'wxproj' 'wxrec' "$_pkgname"; do
-		install -Dm755 "usr/local/bin/$binary" "$pkgdir/usr/bin/$binary"
-		install -Dm644 "usr/local/man/man1/$binary.1" "$pkgdir/usr/share/man/man1/$binary.1"
+	for _binary in 'wxbatch' 'wxmap' 'wxproj' 'wxrec' "$_pkgname"; do
+		install -Dm755 "usr/local/bin/$_binary" "$pkgdir/usr/bin/$_binary"
+		install -Dm644 "usr/local/man/man1/$_binary.1" "$pkgdir/usr/share/man/man1/$_binary.1"
 	done
 	ln -sf "/usr/bin/$_pkgname" "$pkgdir/usr/bin/x$_pkgname"
 
@@ -52,10 +52,10 @@ package() {
 	install -dm755 "$pkgdir/usr/local/lib/"
 	ln -sf "/$lib_directory" "$pkgdir/usr/local/lib/wx"
 
-	for language in 'de' 'es' 'fr' 'ja' 'pl'; do
-		install -dm755 "$pkgdir/usr/share/man/$language/man1/"
-		for manpage in 'wxcalibrate' 'wxfaq' 'wxrego' "x$_pkgname"; do
-			ln -sf "/$lib_directory/man/${language}_$manpage.1" "$pkgdir/usr/share/man/$language/man1/$manpage.1"
+	for _language in 'de' 'es' 'fr' 'ja' 'pl'; do
+		install -dm755 "$pkgdir/usr/share/man/$_language/man1/"
+		for _manpage in 'wxcalibrate' 'wxfaq' 'wxrego' "x$_pkgname"; do
+			ln -sf "/$lib_directory/man/${_language}_$_manpage.1" "$pkgdir/usr/share/man/$_language/man1/$_manpage.1"
 		done
 	done
 
