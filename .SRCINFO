@@ -1,0 +1,12 @@
+pkgbase = golang-github-atotto-clipboard
+	pkgdesc = Clipboard for Go
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/atotto/clipboard
+	arch = any
+	license = BSD
+	depends = go-pie
+	source = golang-github-atotto-clipboard-0.1.2-1.tar.gz::https://github.com/atotto/clipboard/archive/v0.1.2.tar.gz
+	sha256sums = 84704a60eb4de90eaebe6e8cbfab30bb53d103c26c25560d67d13469fd17934e
+
+pkgname = golang-github-atotto-clipboard
