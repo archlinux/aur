@@ -1,6 +1,6 @@
 pkgbase = gb-studio-bin
 	pkgdesc = Visual retro game maker
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gbstudio.dev
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = gb-studio-bin
 	replaces = gb-studio
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/chrismaltby/gb-studio/releases/download/v1.2.0/GB-Studio-Linux-DEB-1.2.0.deb
-	sha512sums = c09e6c1ec47e1d0aac7728fb1c41eb49b6ab652457a86edc459714e585e0d8e2f2630d18af2fccca5dfbaab0df9ffbc518e3dd10a42096ec25950c30f0ff2f69
+	source = https://github.com/chrismaltby/gb-studio/releases/download/v1.2.1/GB-Studio-Linux-DEB-1.2.1.zip
+	sha512sums = 342ec9c823f2432a824b5aa06303ecca48bc93dfe12d0d5a3f34f13eec66f2a0de94ea664afe008ca6b3c5cc2ab8be76766e65f4da5ab7ef27793af993fe3ee9
 
 pkgname = gb-studio-bin
 
