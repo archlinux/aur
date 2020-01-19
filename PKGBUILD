@@ -3,7 +3,7 @@
 # Contributor: Alexander Dusheleit <alexander.duscheleit@gmail.com>
 
 pkgname=gkrellm-gkfreq
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A plugin for gkrellm2 which displays the current CPU frequency"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gkrellm')
 makedepends=('pkgconfig')
 source=(https://github.com/carcass82/$pkgname/archive/release-$pkgver.tar.gz)
-md5sums=('c5638c427a32fc8d10d807893fef2227')
+sha256sums=('a25b30f61c644fa8637bfb83bc6deeeb084a53295546beafc2ea6442ed804828')
 
 build()
 {
