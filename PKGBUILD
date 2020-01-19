@@ -9,13 +9,13 @@ arch=('i686' 'x86_64')
 url="http://www.unrealvoodoo.org/hiteck/projects/albumart/"
 license=('GPL')
 depends=('python2' 'pyqt3' 'python2-pillow')
-source=("https://www.googledrive.com/host/0B3j8F3jHfinZOFFXLXdvYVZKNFU/albumart/albumart-1.6.6.tar.gz"
+source=("http://data.unrealvoodoo.org/uvsite/albumart/albumart-${pkgver}.tar.gz"
         "$pkgname-coding.patch"
         'use_pillow.patch')
 
-md5sums=('445a487eea4b8e41e85b47134edb330a'
-         '582a0584c6a27a33c00d4909988b3d0b'
-         'SKIP')
+sha512sums=('200492a9f8933db95eb7055f35b9bb93c87182a07bba45149f7f58e6f42365329b11b35633eb776a230323e30edf94905414c8d06e29e517309b76661e7ac55f'
+            'd85da18d41e01fa2a9539d59464f0d125cb2b1787de100fba4e896359fe59815db435b5ae6d9c01fb8f09f68f4ccfda2f81342972130414663dcf0cf01ee71e1'
+            '1f25dde465e89ec1de49ecfb5db8b2ad94643e0db5d92d173981738cd26daa080c65d787474b667ed7db6bd31d081a9bf9658659ed234fec7cf04017db09342c')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
