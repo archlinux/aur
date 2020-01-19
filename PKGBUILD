@@ -2,24 +2,28 @@
 _pkgname='certspotter'
 pkgname="$_pkgname-git"
 pkgver='0.9.r17.ge74cb79'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Certificate Transparency Log Monitor - git version'
 arch=('x86_64')
 url="https://github.com/SSLMate/$_pkgname"
 license=('MPL2')
-makedepends=('git' 'go-pie>=1.5' 'golang-golang-x-net' 'golang-github-mreiferson-go-httpclient')
+makedepends=('git' 'go-pie>=1.5' 'golang-github-mreiferson-go-httpclient' 'golang-golang-x-net')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
-_builddir="$pkgname-$pkgver-$pkgrel-build"
+_builddir="$pkgname-build"
 _buildpath="src/software.sslmate.com/src/$_pkgname"
+_bindir="$pkgname-bin"
 
 prepare() {
 	cd "$srcdir/"
+
 	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	mv "$pkgname/" "$_builddir/$_buildpath/"
+
+	mkdir -p "$_bindir/"
 }
 
 pkgver() {
@@ -29,7 +33,7 @@ pkgver() {
 
 build() {
 	export GOPATH="$srcdir/$_builddir:/usr/share/gocode"
-	go build -v -trimpath -ldflags "-extldflags $LDFLAGS" -o "$srcdir/$pkgname-$pkgver-$pkgrel" "software.sslmate.com/src/$_pkgname/cmd/$_pkgname"
+	go build -v -trimpath -ldflags "-extldflags $LDFLAGS" -o "$srcdir/$_bindir/" "$(echo "$_buildpath" | cut -d '/' -f 2-)/..."
 }
 
 check() {
@@ -38,5 +42,8 @@ check() {
 }
 
 package() {
-	install -Dm755 "$srcdir/$pkgname-$pkgver-$pkgrel" "$pkgdir/usr/bin/$_pkgname"
+	cd "$srcdir/"
+	for binary in "$_pkgname" 'ctparsewatch' 'submitct'; do
+		install -Dm755 "$_bindir/$binary" "$pkgdir/usr/bin/$binary"
+	done
 }
