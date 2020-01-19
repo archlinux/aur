@@ -10,7 +10,10 @@ license=('GPL2')
 depends=('mpv' 
          'ffmpeg'
          'python-aiohttp'
-         'qt5'
+         'qt5-base'
+         'qt5-quickcontrols2'
+         'qt5-graphicaleffects'
+         'qt5-quickcontrols'
          'python'
          'ykdl-git')
 makedepends=('cmake'
