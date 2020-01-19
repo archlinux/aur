@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bigloo-devel
-_pkgver=4.3g-alpha13Dec19
+_pkgver=4.3g-alpha18Jan20
 pkgver=${_pkgver/-/_}
 majorver=4.3g
 pkgrel=1
@@ -20,7 +20,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=('bigloo')
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}${_pkgver}.tar.gz bigloo-emacs.patch)
-sha256sums=('1ea8dd477dc93b826359e15bbe3992ac4b3edb30fd927510857d57634f163452'
+sha256sums=('4ae2fe475b430a66fd4e41caacfa3469e9a8deac26f15d56a78b0fcd827aa852'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
