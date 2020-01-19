@@ -21,7 +21,7 @@ conflicts=('pyinstaller-git')
 source=("https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.gz"
 	"https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.gz.asc")
 validpgpkeys=("D4AD8B9C167B757C4F08E8777B752811BF773B65")
-sha256sums=('ee7504022d1332a3324250faf2135ea56ac71fdb6309cff8cd235de26b1d0a96'
+sha256sums=('3730fa80d088f8bb7084d32480eb87cbb4ddb64123363763cf8f2a1378c1c4b7'
             'SKIP')
 
 build() {
