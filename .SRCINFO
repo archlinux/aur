@@ -1,7 +1,7 @@
 pkgbase = queryit
 	pkgdesc = A very basic setupless terminal based SQL query
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/hugopl/queryit
 	arch = x86_64
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = queryit
 	depends = pcre
 	depends = libyaml>=0.2.0
 	depends = openssl>=1.1.1
-	source = queryit-0.5.0.tar.gz::https://github.com/hugopl/queryit/archive/v0.5.0.tar.gz
-	sha256sums = 569bb3cdbe9f282616fb7c5774160a4246a65d294807d2e9e54e69ee3054b2cd
+	source = queryit-0.5.1.tar.gz::https://github.com/hugopl/queryit/archive/v0.5.1.tar.gz
+	sha256sums = 89807f8045f8ffe8b2312df699620692cd6eaf482affd4180dcb4f79ab5794b5
 
 pkgname = queryit
 
