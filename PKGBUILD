@@ -6,10 +6,12 @@ pkgdesc="Nvidia:PRIME Render Offload Launcher"
 # namcap -i =>> PKGBUILD (prime) W: Reference to x86_64 should be changed to $CARCH
 url="https://download.nvidia.com/XFree86/Linux-${CARCH}/435.21/README/primerenderoffload.html"
 pkgver=1.0
-pkgrel=12
+pkgrel=13
 arch=('any')
 license=("custom")
 conflicts=(bumblebee)
+replaces=(nvidia-prime)
+provides=(nvidia-prime)
 depends=(bash)
 optdepends=(
 	"vulkan-intel: for vulkan support"
@@ -36,9 +38,9 @@ package()
 	mkdir -p "${pkgdir}"/usr/{bin,share/{X11/xorg.conf.d,zsh/site-functions,bash-completion/completions,licenses/prime}}
 
 	install -m 555 prime "${pkgdir}"/usr/bin/
-	install 10-nvidia.conf "${pkgdir}"/usr/share/X11/xorg.conf.d/
-	install zsh_prime "${pkgdir}"/usr/share/zsh/site-functions/_prime
-	install bash_prime "${pkgdir}"/usr/share/bash-completion/completions/
-	install LICENSE "${pkgdir}"/usr/share/licenses/prime/
+	install -m 666 10-nvidia.conf "${pkgdir}"/usr/share/X11/xorg.conf.d/
+	install -m 666 zsh_prime "${pkgdir}"/usr/share/zsh/site-functions/_prime
+	install -m 666 bash_prime "${pkgdir}"/usr/share/bash-completion/completions/
+	install -m 666 LICENSE "${pkgdir}"/usr/share/licenses/prime/
 }
 
