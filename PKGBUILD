@@ -3,15 +3,15 @@
 
 pkgname=wire-desktop-git
 _pkgname=${pkgname%-git}
-pkgver=3.10.3138.r65.gc8ff00f2
+pkgver=3.11.3259.r488.g38cb57bd
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
-arch=('x86_64')
+arch=('any')
 url='https://wire.com/'
 license=('GPL3')
 provides=('wire-desktop')
 conflicts=('wire-desktop')
-depends=('electron4' 'xdg-utils')
+depends=('electron6' 'xdg-utils')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('emoji-font: colorful emoji')
 source=("git+https://github.com/wireapp/wire-desktop.git"
@@ -29,14 +29,14 @@ prepare() {
     cat << EOF > "${_pkgname}-launcher"
 #!/usr/bin/env sh
 
-electron4 "/usr/lib/${_pkgname}" "\$@"
+electron6 "/usr/lib/${_pkgname}" "\$@"
 EOF
 }
 
 build() {
     cd "${_pkgname}"
     yarn
-    BUILD_NUMBER="$(echo ${pkgver} | cut -d. -f3)" LINUX_TARGET=dir yarn build:linux
+    BUILD_NUMBER="$(echo ${pkgver} | cut -d. -f3)" LINUX_TARGET=dir ENABLE_ASAR=false yarn build:linux
 }
 
 package() {
