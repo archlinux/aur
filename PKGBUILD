@@ -42,8 +42,8 @@ package() {
 	install -dm755 "$pkgdir/usr/share/gocode/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	cp -r --no-preserve=ownership --preserve=mode "$_builddir/$_buildpath/" "$pkgdir/usr/share/gocode/$_buildpath/"
 
-	for binary in 'gocopy' 'gopaste'; do
-		install -Dm755 "$_bindir/$binary" "$pkgdir/usr/bin/$binary"
+	for _binary in 'gocopy' 'gopaste'; do
+		install -Dm755 "$_bindir/$_binary" "$pkgdir/usr/bin/$_binary"
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
