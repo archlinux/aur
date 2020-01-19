@@ -1,17 +1,19 @@
-# Maintainer: j1simon <stemp@ono.com>
+# Maintainer  : Feresey <p.milko1999@yandex.ru>
+# Contributor : j1simon <stemp@ono.com>
+# Contributor : Feresey <p.milko1999@yandex.ru>
 
-_pkgname=flameshot
 pkgname=flameshot-git
-pkgver=r539.234a51b
+_pkgname=flameshot
+pkgver=r549.91ba28c
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
 url="https://github.com/lupoDharkael/flameshot"
 license=('GPL')
-depends=('qt5-base' 'qt5-svg')
-makedepends=('qt5-tools' 'git')
-provides=('flameshot-git')
-conflicts=('flameshot')
+depends=(qt5-base hicolor-icon-theme)
+makedepends=(qt5-tools)
+provides=(flameshot-git)
+conflicts=(flameshot)
 source=("git+https://github.com/lupoDharkael/flameshot.git")
 sha256sums=('SKIP')
 
