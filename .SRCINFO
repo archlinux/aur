@@ -1,0 +1,12 @@
+pkgbase = golang-github-mreiferson-go-httpclient
+	pkgdesc = Go HTTP client with timeouts
+	pkgver = 20160630
+	pkgrel = 1
+	url = https://github.com/mreiferson/go-httpclient
+	arch = any
+	license = MIT
+	depends = go-pie>=1.1
+	source = golang-github-mreiferson-go-httpclient-20160630-1.tar.gz::https://github.com/mreiferson/go-httpclient/archive/31f0106b4474f14bc441575c19d3a5fa21aa1f6c.tar.gz
+	sha256sums = 58b16aef6eab6e981ec3f0c0cfbf60b60fc0011c2007c430e7870488e35e2932
+
+pkgname = golang-github-mreiferson-go-httpclient
