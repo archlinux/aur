@@ -1,0 +1,21 @@
+# ssh key file must be present under /etc/prometheus-junos-exporter otherwise you need to create appropriate dropin for the systemd unit
+
+devices:
+  #- host: router1
+  #  key_file: /path/to/key
+  #- host: router2
+  #  username: exporter
+  #  password: secret
+
+features:
+  bgp: true
+  ospf: true
+  isis: false
+  nat: true
+  ldp: true
+  l2circuit: false
+  environment: true
+  routes: true
+  routing_engine: true
+  interface_diagnostic: true
+  fpc: true

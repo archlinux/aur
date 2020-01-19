@@ -1,0 +1,24 @@
+[Unit]
+Description=prometheus-junos-exporter
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-junos-exporter \
+          -config.file=/etc/prometheus-junos-exporter/config.yml \
+          -ssh.user=${SSH_USER} \
+          -ssh.keyfile=${SSH_KEYFILE} \
+          -config.ignore-targets=${IGNORE_TARGETS}
+EnvironmentFile=-/etc/conf.d/prometheus-junos-exporter
+ProtectSystem=strict
+PrivateDevices=yes
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectHome=tmpfs
+TemporaryFileSystem=/:ro
+BindReadOnlyPaths=/etc/prometheus-junos-exporter
+
+[Install]
+WantedBy=multi-user.service
+
+# vim: ft=systemd
