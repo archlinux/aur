@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -14,17 +14,18 @@ url="https://www.syslog-ng.com/products/open-source-log-management/"
 depends=('awk' 'glib2' 'libcap' 'libnsl' 'udev' 'json-c' 'curl' 'libnet')
 # we need latest mongo-c-driver build to make configure version check work correctly
 makedepends=('flex' 'pkg-config' 'libxslt' 'mongo-c-driver>=1.14.0-3' 'librabbitmq-c'
-             'python' 'libesmtp' 'hiredis' 'libdbi' 'libmaxminddb' 'net-snmp')
+             'python' 'libesmtp' 'hiredis' 'libdbi' 'libmaxminddb' 'net-snmp'
+             'librdkafka')
 optdepends=('logrotate: for rotating log files'
             'libdbi: for the SQL plugin'
             'librabbitmq-c: for the AMQP plugin'
             'mongo-c-driver: for the MongoDB plugin'
-            'python: for the Python plugin'
             'libesmtp: for the SMTP plugin'
             'hiredis: fir the redis plugin'
             'libmaxminddb: for the GeoIP2 plugin'
             'python: for Python-based plugins'
             'net-snmp: for the SNMP plugin'
+            'librdkafka: for the Kafka C plugin'
             'syslog-ng-openrc: syslog-ng openrc initscript')
 provides=("syslog-ng=${pkgver}")
 replaces=('syslog-ng' 'syslog-ng-eudev' 'eventlog')
@@ -73,7 +74,6 @@ build() {
     --disable-java \
     --disable-java-modules \
     --disable-riemann \
-    --disable-kafka \
     --with-python=3 \
     --with-jsonc=system \
     --disable-systemd
