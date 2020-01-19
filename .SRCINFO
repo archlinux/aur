@@ -1,19 +1,14 @@
 pkgbase = roger-router
 	pkgdesc = Journal, Fax-Software and Call-Monitor for AVM FRITZ!Box or compatible
-	pkgver = 2.1.0
-	pkgrel = 4
+	pkgver = 2.1.6
+	pkgrel = 1
 	url = https://www.tabos.org/
 	install = roger-router.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = intltool
-	makedepends = gobject-introspection
 	makedepends = meson
-	makedepends = git
-	makedepends = libgdata
-	makedepends = evolution-data-server
-	makedepends = libappindicator-gtk3
+	makedepends = ninja
 	depends = gtk3
 	depends = libsoup
 	depends = ghostscript
@@ -23,13 +18,13 @@ pkgbase = roger-router
 	optdepends = evolution-data-server: Evolution address book support
 	optdepends = libappindicator-gtk3: App indicator support
 	optdepends = libgdata: Google address book support
-	provides = rogerrouter=2.1.0
-	provides = roger=2.1.0
+	provides = rogerrouter=2.1.6
+	provides = roger=2.1.6
 	conflicts = rogerrouter
 	conflicts = roger
 	options = !emptydirs
-	source = git+https://gitlab.com/tabos/rogerrouter.git#tag=v2.1.0
-	sha1sums = SKIP
+	source = https://gitlab.com/tabos/rogerrouter/-/archive/v2.1.6/rogerrouter-v2.1.6.tar.gz
+	sha512sums = fe92aeccd9b5693fa8fdc0b9c572500341bfdf0be0a88a16eb796cf672019e87a361def2f8666ecd5ef38eb656b2956b37c8bc5d6edbe962e14b40dbab876626
 
 pkgname = roger-router
 
