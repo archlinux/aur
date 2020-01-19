@@ -1,13 +1,12 @@
 pkgbase = librm
 	pkgdesc = Router Manager library
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://www.tabos.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = meson
-	makedepends = git
+	makedepends = ninja
 	depends = glib2
 	depends = gdk-pixbuf2
 	depends = libsoup
@@ -21,13 +20,11 @@ pkgbase = librm
 	depends = gssdp
 	depends = gstreamer
 	depends = gst-plugins-base
-	depends = isdn4k-utils
 	depends = libsecret
+	depends = libcapi
 	options = !emptydirs
-	source = git+https://gitlab.com/tabos/librm.git#tag=v2.1.0
-	source = gupnp-gssdp-1.2.patch
-	sha512sums = SKIP
-	sha512sums = ff00431718e9cb6aaa0f28c910c4409bbcd792a6916a2192c8d62056eb7457ef8a6932deb9fb35d939d6ee52e024805214d04372c70b8deee59c041eea52e404
+	source = https://gitlab.com/tabos/librm/-/archive/v2.1.1/librm-v2.1.1.tar.gz
+	sha512sums = b9a75d8b2850e0ee72f4d83eaff845e0afc878549322f60d7c9e1e7acfa77fb3dd2c0b21aebf9ff1976dfa1a0b7b07671cbb1b432b18f7f2c2dad605817a50ad
 
 pkgname = librm
 
