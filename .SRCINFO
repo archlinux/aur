@@ -7,6 +7,7 @@ pkgbase = alice-vision-git
 	arch = x86_64
 	license = MPL2
 	license = MIT
+	makedepends = ninja
 	makedepends = boost
 	makedepends = eigen
 	makedepends = freetype2
