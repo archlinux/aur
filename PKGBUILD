@@ -1,7 +1,7 @@
 # Mantainer: sgar < swhaat at github >
 
 pkgname=libcapi
-pkgver=3.2.0
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Modular libcapi20"
 arch=('i686' 'x86_64')
