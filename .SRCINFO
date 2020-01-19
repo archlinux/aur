@@ -1,4 +1,4 @@
-pkgbase = lqsd
+pkgbase = lqsd-bin
 	pkgdesc = LiQuid Screen Dim - Dim your screen smoothly. Precompiled binary version
 	pkgver = 0.1.0
 	pkgrel = 1
