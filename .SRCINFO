@@ -1,0 +1,15 @@
+pkgbase = netgen-lvs-git
+	pkgdesc = A netlist comparison (LVS) and format manipulation
+	pkgver = r328.c1ad37f
+	pkgrel = 1
+	url = http://opencircuitdesign.com/netgen/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = netgen-lvs
+	conflicts = netgen-lvs
+	source = git://opencircuitdesign.com/netgen#branch=netgen-1.5
+	md5sums = SKIP
+
+pkgname = netgen-lvs-git
+
