@@ -5,7 +5,7 @@
 
 _reponame=videodownloader
 pkgname=videodownloader
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A video downloader with Qt GUI (currently only YouTube and Vimeo are maintained)'
@@ -14,7 +14,7 @@ depends=('qtutilities' 'openssl' 'desktop-file-utils' 'xdg-utils')
 makedepends=('cmake' 'qt5-tools' 'mesa')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('2d2537a25332ca745abff5dcde5354b6646c361f46f3dc4d00a529237f2f8e19')
+sha256sums=('07dd6c910ed6e1b28568e9a7d3d25c93f1f8bb90404a217fda3f69865d109a9b')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
