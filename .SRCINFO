@@ -1,6 +1,6 @@
 pkgbase = aeskulap-bin
 	pkgdesc = Medical image viewer and DICOM client. Binary package and libs extracted from Debian.
-	pkgver = 0.2.2_beta1
+	pkgver = 0.2.2_beta2
 	pkgrel = 7
 	url = http://www.nongnu.org/aeskulap
 	install = aeskulap.install
@@ -10,19 +10,19 @@ pkgbase = aeskulap-bin
 	depends = gconfmm
 	depends = hicolor-icon-theme
 	depends = libtiff
-	provides = aeskulap=0.2.2_beta1
+	provides = aeskulap=0.2.2_beta2
 	conflicts = aeskulap
 	noextract = aeskulap_0.2.2b1-11_amd64.deb
 	noextract = libdcmtk2_3.6.0-12_amd64.deb
 	noextract = libwrap0_7.6.q-25_amd64.deb
-	source = http://ftp.debian.org/debian/pool/main/a/aeskulap/aeskulap_0.2.2b1-11_amd64.deb
+	source = http://ftp.debian.org/debian/pool/main/a/aeskulap/aeskulap_0.2.2-beta2+git20180219.8787e95-2_amd64.deb
 	source = aeskulap.install
-	source = http://ftp.debian.org/debian/pool/main/d/dcmtk/libdcmtk2_3.6.0-12_amd64.deb
-	source = http://ftp.debian.org/debian/pool/main/t/tcp-wrappers/libwrap0_7.6.q-25_amd64.deb
-	md5sums = 95dc57332fc5c5f75256640c742c92c0
-	md5sums = 9fb089824cc31ee06b5032ee0378f89e
-	md5sums = f746079bb40587de32d18d87d69d6e5a
-	md5sums = 073e608b96d8e7fc9dbf6ecfc65fe07b
+	source = http://ftp.debian.org/debian/pool/main/d/dcmtk/libdcmtk2_3.6.0-15+deb8u1_amd64.deb
+	source = http://ftp.debian.org/debian/pool/main/t/tcp-wrappers/libwrap0_7.6.q-30_amd64.deb
+	sha512sums = 02d52adc92fc90e8b0b3996fb18016109f01dfef21e05725c9370f0c609d78b11143082b5a6db1a1e4a237ca8413e5b79971a7a4c1652acf64bfb0a3b097958c
+	sha512sums = 71b9a40bcd008aee95117fce9f70b29c683124f8c2b464a4059526c50ba5fd24df16f9432770b611ed0a49a1cbb1e29c126fe3d131f204679af4048bdb944cc6
+	sha512sums = 0b7a9bd6251b62feb6103e53113b6032f4e1a0c5c9c36efe3f5609b726021dc5d7920fcb09f4da1ac42b06241cde0e14daa467a4ac2808924e1e5d50a91282df
+	sha512sums = f7776b4430a2f49a1c305ae25fdbcf24eae25b6877dd4ce3341cd3c3c0f8f2ee6f8b179a1ee2030144d71aab5654b2aeacfa945aaf6e0575b8becae5a116215b
 
 pkgname = aeskulap-bin
 
