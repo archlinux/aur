@@ -1,0 +1,109 @@
+--- !ruby/object:Gem::Specification
+name: gstreamer
+version: !ruby/object:Gem::Version
+  version: 3.0.8
+platform: ruby
+authors:
+- The Ruby-GNOME2 Project Team
+autorequire: 
+bindir: bin
+cert_chain: []
+date: 2016-04-03 00:00:00.000000000 Z
+dependencies:
+- !ruby/object:Gem::Dependency
+  name: glib2
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - '='
+      - !ruby/object:Gem::Version
+        version: 3.0.8
+  type: :runtime
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - '='
+      - !ruby/object:Gem::Version
+        version: 3.0.8
+- !ruby/object:Gem::Dependency
+  name: gobject-introspection
+  requirement: !ruby/object:Gem::Requirement
+    requirements:
+    - - '='
+      - !ruby/object:Gem::Version
+        version: 3.0.8
+  type: :runtime
+  prerelease: false
+  version_requirements: !ruby/object:Gem::Requirement
+    requirements:
+    - - '='
+      - !ruby/object:Gem::Version
+        version: 3.0.8
+description: Ruby/GStreamer is a Ruby binding for GStreamer.
+email: ruby-gnome2-devel-en@lists.sourceforge.net
+executables: []
+extensions:
+- ext/gstreamer/extconf.rb
+extra_rdoc_files: []
+files:
+- Rakefile
+- ext/gstreamer/depend
+- ext/gstreamer/extconf.rb
+- ext/gstreamer/rbgst-child-proxy.c
+- ext/gstreamer/rbgst-element-factory.c
+- ext/gstreamer/rbgst.c
+- ext/gstreamer/rbgst.h
+- extconf.rb
+- lib/gst.rb
+- lib/gst/base-loader.rb
+- lib/gst/bin.rb
+- lib/gst/bus.rb
+- lib/gst/caps.rb
+- lib/gst/controller-loader.rb
+- lib/gst/element-factory.rb
+- lib/gst/element.rb
+- lib/gst/plugin-feature.rb
+- lib/gst/registry.rb
+- lib/gst/structure.rb
+- lib/gst/type-find-factory.rb
+- lib/gst/version.rb
+- lib/gstreamer.rb
+- sample/audio-example.rb
+- sample/framestep1.rb
+- sample/gst-inspect.rb
+- sample/helloworld.rb
+- sample/mp3parselaunch.rb
+- sample/queue.rb
+- sample/stream-status.rb
+- sample/text-color-example.rb
+- sample/typefind.rb
+- test/gstreamer-test-utils.rb
+- test/run-test.rb
+- test/test-caps.rb
+- test/test-child-proxy.rb
+- test/test-element-factory.rb
+- test/test-version.rb
+homepage: http://ruby-gnome2.sourceforge.jp/
+licenses:
+- LGPLv2.1+
+metadata: {}
+post_install_message: 
+rdoc_options: []
+require_paths:
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: 1.9.3
+required_rubygems_version: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: '0'
+requirements: []
+rubyforge_project: 
+rubygems_version: 2.5.1
+signing_key: 
+specification_version: 4
+summary: Ruby/GStreamer is a Ruby binding for GStreamer.
+test_files: []
