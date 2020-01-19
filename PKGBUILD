@@ -2,7 +2,7 @@
 
 pkgname=qliveplayer-git
 pkgver=3.3.0.r0.g5c898b5
-pkgrel=1
+pkgrel=2
 pkgdesc='Cute and useful Live Stream Player with danmaku support.'
 arch=('x86_64')
 url="https://github.com/IsoaSFlus/QLivePlayer"
