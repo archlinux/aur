@@ -1,6 +1,6 @@
 pkgbase = jack-select-git
 	pkgdesc = A systray app to set the JACK configuration from QjackCtl presets via DBus (git version)
-	pkgver = 1.4.1.r164.54dd419
+	pkgver = 1.5.0.r170.6bfa61d
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/jack-select
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = jack-select-git
 	depends = python-pyudev
 	depends = python-setuptools
 	depends = python-xdg
+	optdepends = a2jmidid: ALSA-MIDI to JACK bridge control
 	provides = jack-select
 	conflicts = jack-select
 	source = jack-select::git+https://github.com/SpotlightKid/jack-select
