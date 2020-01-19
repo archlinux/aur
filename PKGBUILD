@@ -4,7 +4,7 @@
 pkgname=ruby-gstreamer
 _pkgname=${pkgname#ruby-}
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Ruby binding for GStreamer'
 arch=('any')
 url='http://ruby-gnome2.osdn.jp/'

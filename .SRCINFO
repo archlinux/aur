@@ -1,7 +1,7 @@
 pkgbase = ruby-gstreamer
 	pkgdesc = A Ruby binding for GStreamer
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ruby-gnome2.osdn.jp/
 	arch = any
 	license = LGPL
