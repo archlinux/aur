@@ -3,19 +3,19 @@
 
 pkgname=wire-desktop-beta
 _pkgname=${pkgname%-beta}
-pkgver=3.10.2904
+pkgver=3.12.2916
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
-depends=('electron4' 'xdg-utils')
+depends=('electron6' 'xdg-utils')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${_pkgname}/archive/linux/${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${_pkgname}/releases/download/linux%2F${pkgver}/${_pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('25eec808ecd2bed5506749cc29c8ed5534dc455cf153d8e40ad933b68dfff031'
+sha256sums=('2957063edf3784c4c456fe19ef32cfa106ebe3c7b8d211e11702f32ae66b8a3c'
             'SKIP'
             '35e522978ac21f7aa2f67faa712037d8999482eed1b88953dbea5420a9b13196')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
@@ -25,15 +25,18 @@ prepare() {
     cat << EOF > "${pkgname}"
 #!/usr/bin/env sh
 
-electron4 "/usr/lib/${pkgname}" "\$@"
+electron6 "/usr/lib/${pkgname}" "\$@"
 EOF
 }
 
 build() {
     cd "${_pkgname}-linux-${pkgver}"
+
+    git init
+    git -c user.name='FIXME' -c user.email='FIXME' commit --allow-empty -m "FIXME"
+
     yarn
-    sed -i '/Promise.all/d' node_modules/@wireapp/build-tools/dist/cli/build-linux-cli.js
-    BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir yarn build:linux:internal
+    BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir ENABLE_ASAR=false yarn build:linux
 }
 
 package() {
