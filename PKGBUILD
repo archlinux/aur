@@ -19,12 +19,17 @@ optdepends=(
 )
 provides=('muse-git')
 conflicts=('muse')
-source=("$pkgname"::'git+https://github.com/muse-sequencer/muse.git')
+source=('git+https://github.com/muse-sequencer/muse.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/muse"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/_/./g;s/muse.//g')"
+}
+
 build() {
-  cd "${srcdir}/muse-git/muse3/"
+  cd "${srcdir}/muse/muse3/"
 
   sed -i 's/PyInt_AsLong/PyLong_AsLong/g' muse/remote/pyapi.cpp
   sed -i 's/PyString_AsString/PyBytes_AsString/g' muse/remote/pyapi.cpp
@@ -52,7 +57,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/muse-git/muse3/build"
+  cd "$srcdir/muse/muse3/build"
   make DESTDIR="$pkgdir" install
 
   # .. and oomidi grepmidi bin
