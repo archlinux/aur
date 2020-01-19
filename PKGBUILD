@@ -1,4 +1,4 @@
-# Maintainer: killruana <killruana@slaanesh.org>
+# Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qrouter-git
 pkgver=r232.25f1c06
 pkgrel=1
