@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qrouter-git
-pkgver=r232.25f1c06
+pkgver=1.4.r232.25f1c06
 pkgrel=1
 epoch=
 pkgdesc='Multi-level, over-the-cell maze router'
@@ -22,7 +22,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
     ./configure \
-        --prefix=/usr \
+        --prefix=/usr 
     make
 }
 

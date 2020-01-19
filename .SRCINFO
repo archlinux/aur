@@ -1,6 +1,6 @@
 pkgbase = qrouter-git
 	pkgdesc = Multi-level, over-the-cell maze router
-	pkgver = r232.25f1c06
+	pkgver = 1.4.r232.25f1c06
 	pkgrel = 1
 	url = http://opencircuitdesign.com/qrouter/
 	arch = i686
