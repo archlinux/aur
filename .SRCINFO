@@ -3,13 +3,12 @@ pkgbase = adguardhome-bin
 	pkgver = 0.100.9
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardHome
-	install = adguardhome-bin.install
 	arch = x86_64
 	license = GPL
 	source = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.100.9/AdGuardHome_linux_amd64.tar.gz
 	source = AdGuardHome.service
 	sha256sums = e1b28d38cc345de971a14a373025ea72da1145fe27199e2c94a9c7fab92d433b
-	sha256sums = 9f47d9b2d7daad4b4db08d7cf8c10a7fb55323f40e06161a56e6fcf109f890cd
+	sha256sums = 4464cd7c833827a1b615aaeba262be103282d8b274f22c4d7a74e45f568c1224
 
 pkgname = adguardhome-bin
 
