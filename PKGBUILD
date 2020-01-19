@@ -37,7 +37,8 @@ prepare() {
 	rm -rf 'shared-data/default-theme/'{less/,index.html}
 	rm -rf 'mailpile/tests'
 	# One of the plugins is a submodule and doesn't get pulled automatically, provide it manually
-	mv "$srcdir/${pkgname^}-print-$_printcommit/"* 'shared-data/contrib/print/'
+	rm -rf 'shared-data/contrib/print/'
+	mv "$srcdir/${pkgname^}-print-$_printcommit/" 'shared-data/contrib/print/'
 }
 
 package() {
