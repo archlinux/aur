@@ -1,6 +1,6 @@
 pkgbase = ttf-tahoma
 	pkgdesc = Tahoma and Tahoma Bold fonts from the Wine project
-	pkgver = 4.0
+	pkgver = 5.0rc6
 	pkgrel = 1
 	url = https://www.winehq.org/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ttf-tahoma
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = tahoma-4.0.ttf::https://source.winehq.org/source/fonts/tahoma.ttf?!v=wine-4.0&_raw=1
-	source = tahomabd-4.0.ttf::https://source.winehq.org/source/fonts/tahomabd.ttf?!v=wine-4.0&_raw=1
-	sha256sums = a91956ea95c7f705a20388683d764cf478cf1820a3788e8411baec9a380fcdf5
-	sha256sums = c826e6b16fa096adde340f4862d4d603dbaff50cbd675e426f36c103df97b1b8
+	source = https://source.winehq.org/git/wine.git/blob_plain/refs/tags/wine-5.0-rc6:/fonts/tahoma.ttf
+	source = https://source.winehq.org/git/wine.git/blob_plain/refs/tags/wine-5.0-rc6:/fonts/tahomabd.ttf
+	sha256sums = 90f1abad4da0ce03da5d2277ee75a9600ce812d37c90eab76e0838ffa7937e55
+	sha256sums = c29342ba99a04f983193756f01eb6de946fd4d33ba0bb7061aff11e70871b6f2
 
 pkgname = ttf-tahoma
 
