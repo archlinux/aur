@@ -2,12 +2,12 @@
 
 pkgname=libcapi
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular libcapi20"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
 license=('GPL2')
-
+conflicts=(isdn4k-utils)
 makedepends=(meson git)
 options=('!emptydirs')
 
