@@ -1,0 +1,16 @@
+pkgbase = qrouter-git
+	pkgdesc = Multi-level, over-the-cell maze router
+	pkgver = r232.25f1c06
+	pkgrel = 1
+	url = http://opencircuitdesign.com/qrouter/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = tk
+	provides = qrouter
+	conflicts = qrouter
+	source = git://opencircuitdesign.com/qrouter#branch=qrouter-1.4
+	sha512sums = SKIP
+
+pkgname = qrouter-git
+
