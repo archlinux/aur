@@ -1,6 +1,6 @@
 pkgbase = python-django-redis-cache
 	pkgdesc = A Redis cache backend for django
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 0
 	url = http://github.com/sebleier/django-redis-cache/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-redis-cache
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = python-redis
-	source = https://pypi.io/packages/source/d/python-django-redis-cache/python-django-redis-cache-2.0.0.tar.gz
-	sha256sums = 77dcb9d11beef5ce77dadfb95328b7712c3d9bde8419a0ba92968712b9bff48b
+	source = https://pypi.io/packages/source/d/django-redis-cache/django-redis-cache-2.1.0.tar.gz
+	sha256sums = 5c581743de5994e6b15abfd5b3dbcb8bf00e42d97658c96b7218bcb6a63f863b
 
 pkgname = python-django-redis-cache
 
