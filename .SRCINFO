@@ -11,7 +11,7 @@ pkgbase = evdev-right-click-emulation
 	makedepends = git
 	depends = libevdev
 	backup = etc/evdev-rce.conf
-	source = evdev-right-click-emulation::git+https://git.angry.im/PeterCxy/evdev-right-click-emulation#commit=350939b8d2e95ed1be352f1ac734bdedf14e43c7
+	source = evdev-right-click-emulation::git+https://github.com/PeterCxy/evdev-right-click-emulation#commit=350939b8d2e95ed1be352f1ac734bdedf14e43c7
 	source = evdev-rce.conf
 	source = evdev-rce.service
 	sha1sums = SKIP

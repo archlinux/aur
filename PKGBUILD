@@ -13,7 +13,7 @@ makedepends=(gcc make git)
 url='https://github.com/PeterCxy/evdev-right-click-emulation'
 install=$pkgname.install
 source=(
-  "${pkgname}::git+https://git.angry.im/PeterCxy/evdev-right-click-emulation#commit=${_commit}"
+  "${pkgname}::git+https://github.com/PeterCxy/evdev-right-click-emulation#commit=${_commit}"
   "evdev-rce.conf"
   "evdev-rce.service"
 )
