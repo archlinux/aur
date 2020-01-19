@@ -14,7 +14,6 @@ depends=('gnupg' 'python2' 'python2-appdirs' 'python2-cryptography' 'python2-fas
 optdepends=('pagekite: remote access' 'python2-stem>=1.4: remote access')
 makedepends=('git' 'python2-setuptools')
 install="$_pkgname.install"
-
 source=(
 	"$pkgname::git+https://github.com/$_pkgname/${_pkgname^}"
 	"$_pkgname.sysusers"
