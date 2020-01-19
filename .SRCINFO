@@ -1,13 +1,14 @@
 pkgbase = certspotter
 	pkgdesc = Certificate Transparency Log Monitor
 	pkgver = 0.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SSLMate/certspotter
 	arch = x86_64
 	license = MPL2
-	makedepends = git
-	makedepends = go-pie
-	source = certspotter-0.9-4.tar.gz::https://github.com/SSLMate/certspotter/archive/0.9.tar.gz
+	makedepends = go-pie>=1.5
+	makedepends = golang-golang-x-net
+	makedepends = golang-github-mreiferson-go-httpclient
+	source = certspotter-0.9-5.tar.gz::https://github.com/SSLMate/certspotter/archive/0.9.tar.gz
 	sha256sums = ea377ae70a0a754c6ec07ec63d23a0fd4b41be714d9e67a8603a858edc7309fa
 
 pkgname = certspotter
