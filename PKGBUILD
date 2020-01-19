@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=asd
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Preview Github Markdown Offline'
 arch=('i686' 'x86_64')
 url="https://github.com/grapegrip/asd"
@@ -14,7 +14,7 @@ sha256sums=('9257a56c4c22460d2927dcdeb4e4ac16787552c3a213c1e1baf23fd4e270b9e2')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
