@@ -1,0 +1,20 @@
+pkgbase = perl-git-fastexport
+	pkgdesc = A parser for git fast-export streams
+	pkgver = 0.108
+	pkgrel = 1
+	url = https://metacpan.org/release/Git-FastExport
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = git
+	checkdepends = perl-test-requires-git
+	depends = perl
+	depends = perl-git-repository
+	options = purge
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Git-FastExport-0.108.tar.gz
+	md5sums = 4eb973b24f85483efc9a2c19c078a19b
+	sha256sums = 4e976b247a6fb837f40a5d4861fd8a157b8e57040cf36ba4496a3491038683ef
+
+pkgname = perl-git-fastexport
+
