@@ -1,7 +1,7 @@
 pkgbase = openboard
 	pkgdesc = Interactive whiteboard software for schools and universities
 	pkgver = 1.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://openboard.ch/index.en.html
 	install = openboard.install
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = openboard
 	md5sums = 04c421c140e983d41975943ede5fe61a
 	md5sums = 21d1749400802f8fc0669feaf77de683
 	md5sums = 30a7928f696f958d5e8f06e02c49639f
-	md5sums = 8b774d204501bb8515ee224651a7d624
+	md5sums = 9a8f9ec3b244390b4c17a10494a94d29
 	md5sums = 879116c683374b2dde291014e44a29fe
 
 pkgname = openboard

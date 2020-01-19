@@ -1,5 +1,17 @@
+diff --git a/OpenBoard.pro b/OpenBoard.pro
+index b8a7ae5..0dcf3b8 100644
+--- a/OpenBoard.pro
++++ b/OpenBoard.pro
+@@ -3,6 +3,7 @@ TEMPLATE = app
+ 
+ THIRD_PARTY_PATH=../OpenBoard-ThirdParty
+ 
++CONFIG += c++14
+ CONFIG -= flat
+ CONFIG += debug_and_release \
+           no_include_pwd
 diff --git a/src/pdf/XPDFRenderer.cpp b/src/pdf/XPDFRenderer.cpp
-index a3e828e4..583882aa 100644
+index a3e828e..a77ee49 100644
 --- a/src/pdf/XPDFRenderer.cpp
 +++ b/src/pdf/XPDFRenderer.cpp
 @@ -32,6 +32,7 @@
@@ -10,7 +22,15 @@ index a3e828e4..583882aa 100644
  
  #include "core/memcheck.h"
  
-@@ -51,7 +52,7 @@ XPDFRenderer::XPDFRenderer(const QString &filename, bool importingFile)
+@@ -47,11 +48,15 @@ XPDFRenderer::XPDFRenderer(const QString &filename, bool importingFile)
+     {
+         // globalParams must be allocated once and never be deleted
+         // note that this is *not* an instance variable of this XPDFRenderer class
++#if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR >= 83
++        globalParams = std::make_unique<GlobalParams>();
++#else
+         globalParams = new GlobalParams(0);
++#endif
          globalParams->setupBaseFonts(QFile::encodeName(UBPlatformUtils::applicationResourcesDirectory() + "/" + "fonts").data());
      }
  
@@ -19,7 +39,20 @@ index a3e828e4..583882aa 100644
      sInstancesCount.ref();
  }
  
-@@ -99,16 +100,28 @@ QString XPDFRenderer::title() const
+@@ -70,8 +75,12 @@ XPDFRenderer::~XPDFRenderer()
+ 
+     if (sInstancesCount.loadAcquire() == 0 && globalParams)
+     {
++#if POPPLER_VERSION_MAJOR > 0 || POPPLER_VERSION_MINOR >= 83
++        globalParams.reset();
++#else
+         delete globalParams;
+         globalParams = 0;
++#endif
+     }
+ }
+ 
+@@ -99,16 +108,28 @@ QString XPDFRenderer::title() const
  {
      if (isValid())
      {
@@ -52,7 +85,7 @@ index a3e828e4..583882aa 100644
              }
          }
      }
-@@ -172,12 +185,12 @@ QImage* XPDFRenderer::createPDFImage(int pageNumber, qreal xscale, qreal yscale,
+@@ -172,12 +193,12 @@ QImage* XPDFRenderer::createPDFImage(int pageNumber, qreal xscale, qreal yscale,
          SplashColor paperColor = {0xFF, 0xFF, 0xFF}; // white
          if(mSplash)
              delete mSplash;
@@ -71,7 +104,7 @@ index a3e828e4..583882aa 100644
          mSliceY = 0.;
  
 diff --git a/src/pdf/XPDFRenderer.h b/src/pdf/XPDFRenderer.h
-index 8ab200bc..003a2055 100644
+index 8ab200b..003a205 100644
 --- a/src/pdf/XPDFRenderer.h
 +++ b/src/pdf/XPDFRenderer.h
 @@ -36,10 +36,10 @@

@@ -2,7 +2,7 @@
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard
 pkgver=1.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -27,7 +27,7 @@ md5sums=('fe3644033dccfd16c80b683210e4ac57'
          '04c421c140e983d41975943ede5fe61a'
          '21d1749400802f8fc0669feaf77de683'
          '30a7928f696f958d5e8f06e02c49639f'
-         '8b774d204501bb8515ee224651a7d624'
+         '9a8f9ec3b244390b4c17a10494a94d29'
          '879116c683374b2dde291014e44a29fe')
 
 prepare() {
