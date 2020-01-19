@@ -35,7 +35,7 @@ check() {
 
 package() {
 	cd "$srcdir/"
-	for binary in "$pkgname" 'ctparsewatch' 'submitct'; do
-		install -Dm755 "$_bindir/$binary" "$pkgdir/usr/bin/$binary"
+	for _binary in "$pkgname" 'ctparsewatch' 'submitct'; do
+		install -Dm755 "$_bindir/$_binary" "$pkgdir/usr/bin/$_binary"
 	done
 }
