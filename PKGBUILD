@@ -3,7 +3,7 @@
 
 pkgname=shared-mime-info
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('x86_64')
 license=('GPL2')
@@ -14,7 +14,7 @@ url="https://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec/"
 source=(https://gitlab.freedesktop.org/xdg/shared-mime-info/uploads/b27eb88e4155d8fccb8bb3cd12025d5b/$pkgname-$pkgver.tar.xz
         update-mime-database.hook)
 sha256sums=('f482b027437c99e53b81037a9843fccd549243fd52145d016e9c7174a4f5db90'
-            '7ecdd55ff7c4331e188cf46debbcc5660edb0e2bbeb4dd87cc5b87278c292821')
+            '58ed2c38bf2c78276a309d2e24040ed159868b0f04e72a6b039ea803e45ff6f0')
 options=(!makeflags)
 
 build() {
