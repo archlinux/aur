@@ -16,7 +16,7 @@ _buildpath="src/gopkg.in/$_projectname"
 
 prepare() {
 	cd "$srcdir/"
-  	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
+	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	mv "errgo-$pkgver/" "$_builddir/$_buildpath/"
 	rm -r "$_builddir/$_buildpath/go."{mod,sum}
 }
