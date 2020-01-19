@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/alemart/opensurge"
 license=('GPL3')
 depends=('allegro')
-makedepends=('cmake')
+makedepends=('cmake' 'surgescript')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alemart/opensurge/archive/v$pkgver.tar.gz")
 sha256sums=('dfb598be9feb5a1abbd1217f386e934c43dad4efe423190a8950820ba109e209')
 
