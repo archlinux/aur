@@ -1,15 +1,7 @@
 #!/usr/bin/sh
 
 cd "/opt/dwarffortress/armok-vision"
-arch=$(uname -m)
-if [ "$arch" = "i686" ]; then
-  exec "./Armok Vision.x86"
-elif [ "$arch" = "x86_64" ]; then
-  exec "./Armok Vision.x86_64"
-else
-  echo "Architecture $arch not recognized. Please notify the AUR package maintainer by posting a comment here:"
-  echo "https://aur.archlinux.org/packages/armok-vision/"
-fi
+exec "./Armok Vision Linux.x86_64"
 
 # Local Variables:
 # mode: shell-script
