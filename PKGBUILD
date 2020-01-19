@@ -40,10 +40,10 @@ sha256sums_aarch64=('e07b521b78bf1b8a798cf182da7d69addd4df14be1ba1b94f6ac2b8def0
 
 package() {
 	cd "$srcdir/"
-	install -dm755 "$pkgdir/usr/lib/$pkgname/"{locales,resources}
+	install -dm755 "$pkgdir/usr/lib/$pkgname/"
 	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/$pkgname/." {} +
-	cp -r --no-preserve=ownership --preserve=mode 'locales/'* "$pkgdir/usr/lib/$pkgname/locales/"
-	cp -r --no-preserve=ownership --preserve=mode 'resources/'* "$pkgdir/usr/lib/$pkgname/resources/"
+	cp -r --no-preserve=ownership --preserve=mode 'locales/' "$pkgdir/usr/lib/$pkgname/locales/"
+	cp -r --no-preserve=ownership --preserve=mode 'resources/' "$pkgdir/usr/lib/$pkgname/resources/"
 
 	install -dm755 "$pkgdir/usr/bin"
 	ln -nfs "/usr/lib/$pkgname/electron" "$pkgdir/usr/bin/$_pkgname"
