@@ -5,7 +5,7 @@
 _target=aarch64-linux-gnu
 _pkgname=expat
 pkgname=${_target}-expat
-pkgver=2.2.5
+pkgver=2.2.9
 pkgrel=1
 pkgdesc='An XML parser library'
 arch=('any')
@@ -13,7 +13,7 @@ url='https://libexpat.github.io/'
 license=(custom)
 depends=(${_target}-glibc)
 source=(https://github.com/libexpat/libexpat/releases/download/R_${pkgver//./_}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('d9dc32efba7e74f788fcc4f212a43216fc37cf5f23f4c2339664d473353aedf6')
+sha256sums=('f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237')
 
 build() {
   cd $_pkgname-$pkgver
