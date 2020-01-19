@@ -5,14 +5,17 @@
 
 pkgname=kraft
 pkgver=0.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"
 license=('GPL')
-depends=('boost' 'akonadi-contacts' 'ctemplate' 'python2-reportlab' 'python2-pypdf2')
+depends=('boost' 'akonadi-contacts' 'ctemplate' 'python-reportlab' 'python-pypdf2')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz")
+source=(
+  "https://github.com/dragotin/kraft/archive/v${pkgver}.tar.gz"
+  "7eff90f462c740b527a1484e31383ea707351180.patch"
+)
 
 
 prepare() {
@@ -45,4 +48,5 @@ package() {
   make "DESTDIR=${pkgdir}" install
 }
 
-sha256sums=('53d8e1afd6a0e9554a5bde44b654c11130f9ac43327759772351710ae1cb6f6b')
+sha256sums=('53d8e1afd6a0e9554a5bde44b654c11130f9ac43327759772351710ae1cb6f6b'
+            '9352224cb3461ea051c0faa7f494a772e286727a3eb029db8afa6c68a469d25a')
