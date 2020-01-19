@@ -4,6 +4,7 @@ pkgbase = bb-rs
 	pkgrel = 1
 	url = https://nessuent.xyz/bb.html
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
