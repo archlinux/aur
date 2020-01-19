@@ -6,7 +6,7 @@
 _target=aarch64-linux-gnu
 _pkgname=pcre
 pkgname=${_target}-pcre
-pkgver=8.41
+pkgver=8.43
 pkgrel=1
 pkgdesc='A library that implements Perl 5-style regular expressions'
 arch=('any')
@@ -19,8 +19,8 @@ depends=(
 'bash')
 validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
 source=("https://ftp.pcre.org/pub/pcre/$_pkgname-$pkgver.tar.bz2"{,.sig})
-md5sums=('c160d22723b1670447341b08c58981c1'
-         'SKIP')
+sha512sums=('3b4ac2c7ccd77c9575d07a33c3456f40b50731029e62d01fb8f2f5871d7118e12bc9e6bc7a8079769c765e38da5ecf98c4b261b10ff0a2f14f0881b434f67af7'
+            'SKIP')
 
 prepare() {
   cd $_pkgname-$pkgver
