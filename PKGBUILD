@@ -5,7 +5,7 @@
 
 pkgname=kraft
 pkgver=0.90
-pkgrel=2
+pkgrel=3
 pkgdesc="A program suitable for all trades or crafts"
 arch=('i686' 'x86_64')
 url="http://www.volle-kraft-voraus.de/"

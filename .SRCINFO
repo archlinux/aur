@@ -1,7 +1,7 @@
 pkgbase = kraft
 	pkgdesc = A program suitable for all trades or crafts
 	pkgver = 0.90
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.volle-kraft-voraus.de/
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,12 @@ pkgbase = kraft
 	depends = boost
 	depends = akonadi-contacts
 	depends = ctemplate
-	depends = python2-reportlab
-	depends = python2-pypdf2
+	depends = python-reportlab
+	depends = python-pypdf2
 	source = https://github.com/dragotin/kraft/archive/v0.90.tar.gz
+	source = 7eff90f462c740b527a1484e31383ea707351180.patch
 	sha256sums = 53d8e1afd6a0e9554a5bde44b654c11130f9ac43327759772351710ae1cb6f6b
+	sha256sums = 9352224cb3461ea051c0faa7f494a772e286727a3eb029db8afa6c68a469d25a
 
 pkgname = kraft
 
