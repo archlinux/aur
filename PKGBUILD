@@ -20,10 +20,10 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.4.12
+pkgver=5.4.13
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver}-arch${pkgrel}
+_srctag=v${pkgver}-arch1
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
@@ -34,7 +34,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$_srctag
-_bmqversion=5.4-r1
+_bmqversion=5.4-r2
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20190822'
 source=(
@@ -48,9 +48,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('fedda30427e4b65c9e8ae08f3ea7cb44781b79816b0f9a38289529b1902b7bd3'
-            'aa77f7e3b611787f734c7e7d7503d3debf9af86ac999e8bccf533c5a854ec15b'
-            '0b770209a72171dfd46401d67d13204a767eb1749ef522df7ea7292b83046537'
+sha256sums=('a2a1750ea4de933320126cbe167aede5999cdc30c1c02b1be4b58187e93c9c23'
+            '548d4588a491ba2bb7d53b6e3c59aa3fcf68a6d3465079607e4f1bee5add7016'
+            '6a6a736cf1b3513d108bfd36f60baf50bb36b33aec21ab0d0ffad13602b7ff75'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
 _kernelname=${pkgbase#linux}
