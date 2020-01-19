@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=dtool
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of development tools for numeric conversion'
 arch=('i686' 'x86_64')
 url="https://github.com/guoxbin/dtool"
@@ -14,7 +14,7 @@ sha256sums=('7e1c6cc9581da3b92bf3ec0e9cd88156d722e05a1691ccb0c72653a7194382a0')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
