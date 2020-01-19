@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qflow-git
-pkgver=r275.29f2639
+pkgver=1.4.r275.29f2639
 pkgrel=1
 epoch=
 pkgdesc='Opensource physical implementation flow'
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
  }
 
 build() {
