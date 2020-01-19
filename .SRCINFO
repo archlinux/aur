@@ -1,7 +1,7 @@
 pkgbase = adguardhome-bin
 	pkgdesc = Network-wide ads and trackers blocking DNS server (bin version)
 	pkgver = 0.100.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdguardTeam/AdGuardHome
 	arch = x86_64
 	license = GPL
