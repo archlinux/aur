@@ -1,6 +1,6 @@
 pkgbase = actinium-qt
 	pkgdesc = Cryptocurrency wallet(QT)
-	pkgver = 0.18.0.0
+	pkgver = 0.18.5.0
 	pkgrel = 1
 	url = https://actinium.org/
 	install = actinium-qt.install
@@ -18,7 +18,7 @@ pkgbase = actinium-qt
 	depends = protobuf
 	depends = libevent
 	conflicts = actinium
-	source = actinium-qt::git+https://github.com/Actinium-project/Actinium#tag= v0.17.4.0
+	source = actinium-qt::git+https://github.com/Actinium-project/Actinium#tag=v0.18.5.0
 	source = actinium-qt.desktop
 	sha256sums = SKIP
 	sha256sums = 20fe70ed4c00da0affc763f3f914dee9e061c8673d598a0d49f6b782aa2d1a70
