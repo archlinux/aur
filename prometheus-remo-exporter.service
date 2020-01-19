@@ -1,0 +1,21 @@
+[Unit]
+Description=prometheus-remo-exporter
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/prometheus-remo-exporter
+EnvironmentFile=/etc/conf.d/prometheus-remo-exporter
+User=nobody
+Group=nobody
+ProtectSystem=strict
+PrivateDevices=yes
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectHome=tmpfs
+TemporaryFileSystem=:ro
+
+[Install]
+WantedBy=multi-user.service
+
+# vim: ft=systemd
