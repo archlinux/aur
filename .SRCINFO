@@ -1,14 +1,15 @@
 pkgbase = mcinstall
 	pkgdesc = CLI Bash script to create a Minecraft server in one command
 	pkgver = 1.0.3
-	pkgrel = 1
-	url = https://github.com/iandrewt/mcinstall
+	pkgrel = 2
+	url = https://launchpad.net/mcinstall
+	install = mcinstall.install
 	arch = x86_64
 	license = GPL
 	depends = bash
 	optdepends = jre: if you want the server to use the already installed JRE instead of downloading one
-	source = mcinstall-1.0.3.tar.gz::https://github.com/iAndrewT/mcinstall/archive/1.0.3.tar.gz
-	md5sums = 56A52A9E54C2BEC71230D573439E6933
+	source = mcinstall-1.0.3.tar.gz::https://bazaar.launchpad.net/~andrewctitmuss/mcinstall/trunk/tarball/1
+	sha512sums = 07d0e752533eae3c29a534f9f808156ee50ace89f9ba1a44ffe1fb2591e06a3ca8da62411992cafce562a09d18ac095b93193837b6d3950344c121544377a6b9
 
 pkgname = mcinstall
 

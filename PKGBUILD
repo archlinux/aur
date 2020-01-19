@@ -1,20 +1,20 @@
 # Maintainer: Andrew Titmuss <andrewctitmuss@outlook.com>
 pkgname=mcinstall
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI Bash script to create a Minecraft server in one command"
 arch=('x86_64')
-url="https://github.com/iandrewt/mcinstall"
+url="https://launchpad.net/mcinstall"
 license=('GPL')
 depends=('bash')
 optdepends=('jre: if you want the server to use the already 
 installed JRE instead of downloading one')
 install=$pkgname.install
-source=($pkgname-$pkgver.tar.gz::https://github.com/iAndrewT/mcinstall/archive/$pkgver.tar.gz)
-md5sums=('56A52A9E54C2BEC71230D573439E6933')
+source=($pkgname-$pkgver.tar.gz::https://bazaar.launchpad.net/~andrewctitmuss/mcinstall/trunk/tarball/1)
+sha512sums=('07d0e752533eae3c29a534f9f808156ee50ace89f9ba1a44ffe1fb2591e06a3ca8da62411992cafce562a09d18ac095b93193837b6d3950344c121544377a6b9')
 
 package() {
-	cd MCInstall-$pkgver
+	cd ${srcdir}/~andrewctitmuss/mcinstall/trunk
 	install -Dm755 "mcinstall" "$pkgdir/usr/bin/mcinstall"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
