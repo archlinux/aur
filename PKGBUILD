@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=netgen-lvs-git
-pkgver=r328.c1ad37f
+pkgver=1.5.r328.c1ad37f
 pkgrel=1
 pkgdesc="A netlist comparison (LVS) and format manipulation"
 url="http://opencircuitdesign.com/netgen/"
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-lvs-git}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
