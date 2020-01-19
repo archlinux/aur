@@ -1,0 +1,12 @@
+pkgbase = golang-github-google-uuid
+	pkgdesc = Go package for UUIDs
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/google/uuid
+	arch = any
+	license = BSD
+	depends = go-pie
+	source = golang-github-google-uuid-1.1.1-1.tar.gz::https://github.com/google/uuid/archive/v1.1.1.tar.gz
+	sha256sums = bebd4b0b4ea152a9793615ef23c83f688876d8c284a2092264d20a4bf4ffc423
+
+pkgname = golang-github-google-uuid
