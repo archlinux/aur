@@ -29,9 +29,9 @@ build() {
 
 package() {
 	cd "$srcdir/$_sourcedirectory/target/"
-	for binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
-		install -Dm755 "release/$binary" "$pkgdir/usr/bin/$binary"
-		install -Dm644 "$binary.1.gz" "$pkgdir/usr/share/man/man1/$binary.1.gz"
+	for _binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
+		install -Dm755 "release/$_binary" "$pkgdir/usr/bin/$_binary"
+		install -Dm644 "$_binary.1.gz" "$pkgdir/usr/share/man/man1/$_binary.1.gz"
 	done
 	install -Dm644 '../LICENSE-MIT' "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
