@@ -1,0 +1,5 @@
+post_upgrade() {
+    echo ">> Systemd units have change with the 3.0 release."
+    echo ">> Please enable autosuspend.service and autosuspend-detect-suspend.service."
+    echo ">> Only autosuspend.service needs to be started."
+}

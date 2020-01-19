@@ -1,8 +1,9 @@
 pkgbase = autosuspend
 	pkgdesc = A daemon to suspend and wake up a system based on configurable checks
-	pkgver = 2.0.6
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://github.com/languitar/autosuspend
+	install = autosuspend.install
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
@@ -10,8 +11,11 @@ pkgbase = autosuspend
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-issues
+	makedepends = python-sphinxcontrib-plantuml
+	makedepends = python-sphinx-autodoc-typehints
 	depends = python
 	depends = python-psutil
+	depends = python-portalocker
 	optdepends = python-dbus: logind session discovery
 	optdepends = python-mpd2: MPD playing status check
 	optdepends = python-requests: network-based checks
@@ -25,8 +29,8 @@ pkgbase = autosuspend
 	optdepends = xprintidle: X server idle time check
 	backup = etc/autosuspend.conf
 	backup = etc/autosuspend-logging.conf
-	source = https://github.com/languitar/autosuspend/archive/v2.0.6.tar.gz
-	sha256sums = a2593ebb29a7c0b28244920504ca9d4550fbf398d6abf476bcf0f66c6520e9ba
+	source = https://github.com/languitar/autosuspend/archive/v3.0.tar.gz
+	sha256sums = 9218302df40c0517361fcb9983e3435d6c1f6e16a7e2c00b65f533605abd5f4d
 
 pkgname = autosuspend
 

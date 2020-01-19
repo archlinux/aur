@@ -1,13 +1,13 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend
-pkgver=2.0.6
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
 url="https://github.com/languitar/autosuspend"
 license=('GPL2')
-depends=('python' 'python-psutil')
+depends=('python' 'python-psutil' 'python-portalocker')
 optdepends=('python-dbus: logind session discovery'
             'python-mpd2: MPD playing status check'
             'python-requests: network-based checks'
@@ -19,14 +19,22 @@ optdepends=('python-dbus: logind session discovery'
             'python-requests-file: file:// URL support'
             'iputils: ping check'
             'xprintidle: X server idle time check')
-makedepends=('python-setuptools' 'python-pytest-runner' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-sphinx-issues')
+makedepends=('python-setuptools'
+             'python-pytest-runner'
+             'python-sphinx'
+             'python-sphinx_rtd_theme'
+             'python-sphinx-issues'
+             'python-sphinxcontrib-plantuml'
+             'python-sphinx-autodoc-typehints')
 source=("https://github.com/languitar/autosuspend/archive/v${pkgver}.tar.gz")
-sha256sums=('a2593ebb29a7c0b28244920504ca9d4550fbf398d6abf476bcf0f66c6520e9ba')
+sha256sums=('9218302df40c0517361fcb9983e3435d6c1f6e16a7e2c00b65f533605abd5f4d')
+install="${pkgname}.install"
 backup=('etc/autosuspend.conf'
         'etc/autosuspend-logging.conf')
 
 build() {
     cd "$pkgname-${pkgver}"
+    export PYTHONPATH=$(pwd)/src
     python3 setup.py build_sphinx -a -b html
     python3 setup.py build_sphinx -a -b man
 }
