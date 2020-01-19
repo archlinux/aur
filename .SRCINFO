@@ -1,0 +1,12 @@
+pkgbase = golang-github-godbus-dbus
+	pkgdesc = Native Go bindings for D-Bus
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = https://github.com/godbus/dbus
+	arch = any
+	license = BSD
+	depends = go-pie>=1.12
+	source = golang-github-godbus-dbus-5.0.3-1.tar.gz::https://github.com/godbus/dbus/archive/v5.0.3.tar.gz
+	sha256sums = 49d27bde2861f5e5ab4195fddc5f38f25324aac3b32b3cc03e712cca3d2b75fa
+
+pkgname = golang-github-godbus-dbus
