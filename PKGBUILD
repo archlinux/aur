@@ -18,13 +18,13 @@ makedepends=(
 	chrpath
 )
 optdepends=(
+    'enchant: spellchecking support'
 	'gtk2: GTK2-based desktop environment integration'
 	'gtk3: GTK3-based desktop environment integration'
 	'libappindicator-gtk2: to hide Kotatogram in the tray bar (GTK2-based desktop environment)'
 	'libappindicator-gtk3: to hide Kotatogram in the tray bar (GTK3-based desktop environment)'
 	'libayatana-appindicator-gtk2: to hide Kotatogram in the tray bar (GTK2-based desktop environment, modern fork)'
 	'libayatana-appindicator-gtk3: to hide Kotatogram in the tray bar (GTK3-based desktop environment, modern fork)'
-	'libnotify: desktop notifications'
 	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
 conflicts=('kotatogram-desktop' 'telegram-desktop' 'telegram-desktop-bin')
