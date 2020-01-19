@@ -17,7 +17,7 @@ _buildpath="src/github.com/$_author/$_projectname/v5"
 
 prepare() {
 	cd "$srcdir/"
-  	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
+	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	mv "$_projectname-$pkgver/" "$_builddir/$_buildpath/"
 	rm -r "$_builddir/$_buildpath/go."{mod,sum}
 }
