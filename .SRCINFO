@@ -1,0 +1,14 @@
+pkgbase = go-zoom-bin
+	pkgdesc = Parallel command executor with a focus on simplicity and good cross-platform behaviour.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/pwr22/go-zoom
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = go-zoom
+	source = https://github.com/pwr22/go-zoom/releases/download/v0.1.3/go-zoom-linux-amd64
+	sha256sums = cc4b7a18dd21d416a11cd36e168fcadbded634c8b9d9239a804d2186463cfa0e
+
+pkgname = go-zoom-bin
+
