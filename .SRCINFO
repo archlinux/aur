@@ -1,0 +1,15 @@
+pkgbase = yt-audio
+	pkgdesc = youtube-dl wrapper for downloading/managing youtube audio (with added features).
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pseudoroot/yt-audio
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = youtube-dl
+	depends = ffmpeg
+	source = https://github.com/pseudoroot/yt-audio/releases/download/v0.1/yt-audio-0.1.tar.gz
+	md5sums = 13a2535b49555c89a9bab71da5502334
+
+pkgname = yt-audio
+
