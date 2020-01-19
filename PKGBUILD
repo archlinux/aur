@@ -21,8 +21,8 @@ sha256sums=('b80369a1bbf5ed04e2d47c0f10ebf5493cc61d8ce7f26a4b9767980a803e5abf'
 package() {
 	cd "$srcdir/"
 	install -Dm644 "usr/share/$_pkgname/resources/app.asar" "$pkgdir/usr/lib/$_pkgname/app.asar"
-	install -dm755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode "usr/share/$_pkgname/resources/app.asar.unpacked/"* "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
+	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
+	cp -r --no-preserve=ownership --preserve=mode "usr/share/$_pkgname/resources/app.asar.unpacked/" "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
 	install -Dm755 "launch.sh" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 "usr/share/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "usr/share/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
