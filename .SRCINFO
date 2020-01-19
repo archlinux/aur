@@ -1,13 +1,14 @@
 pkgbase = python-azure-cli
 	pkgdesc = Microsoft Azure Command-Line Tools
 	pkgver = 2.0.80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Azure/azure-cli
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
 	depends = fabric
+	depends = python-antlr4
 	depends = python-applicationinsights
 	depends = python-argcomplete
 	depends = python-azure-git
