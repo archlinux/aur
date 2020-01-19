@@ -4,29 +4,36 @@
 # Maintainer: jorge_barroso <jorge.barroso.11@gmail.com> 
 
 pkgname=abraca
-pkgver=0.7.1
-_fullpkgver=0.7.1-107-g1dbef52
-pkgrel=5
+_pkgname=Abraca
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="A GTK3 client for the XMMS2 music player, with a focus on collections"
 arch=('x86_64' 'i686')
 url="http://abraca.github.com/Abraca/"
 license=('GPL')
-depends=('gtk3' 'xmms2' 'libgee' 'hicolor-icon-theme')
-makedepends=('scons' 'vala>=0.18.0' 'python2' 'gettext')
+depends=('gtk3' 'xmms2' 'libgee' 'waf')
+makedepends=('scons' 'vala>=0.18.0' 'python2' 'gettext' 'python<=3.7')
 install=abraca.install
-sha512sums=('793b505e8657ffd18bff6b9f5ae22353417833cb3b79a95570be1aea7caf07e8cd54042b5edc6c2a0d04bc72063372e2e3e3edda3bdf44eb28a92a426f4a5726')
-source=(https://github.com/$pkgname/$pkgname/tarball/master)
+sha512sums=('69facf0ebeca29fdff8d03b2fd5255c9344536a00d5993b42fa4b25eae8b67576e2cdfaa81a1cd025a7efc01404b9cab091e1bb9314e7691b6fd0ad883ae497d'
+            '7c3f395093212fd05dad4066f197d03ea1a0231b6de0e136268360a5b27829ab32b3ff0b9c0eef63ce424da31175a11329dedc81d8e40e56ede116542faa373c')
+source=("https://github.com/$_pkgname/$_pkgname/archive/${pkgver}.tar.gz"
+	"https://github.com/$_pkgname/$_pkgname/pull/33.patch")
+
+prepare() {
+  cd "$srcdir"/${_pkgname}-${pkgver}
+  patch -p1 < ../33.patch
+}  
 
 build() {
- 
-  cd "$srcdir"/*
+
+  cd "$srcdir"/${_pkgname}-${pkgver}
   
-  ./waf configure --prefix=/usr
-  ./waf build
+  waf configure --prefix=/usr
+  waf build
 }
 
 package() {
-  ./waf install
+  waf install
 }
 
 # vim:set ts=2 sw=2 et:
