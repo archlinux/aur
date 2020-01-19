@@ -2,7 +2,7 @@
 
 pkgname=atraci
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free music streaming player"
 arch=('i686' 'x86_64')
 url="http://getatraci.net/"
