@@ -1,19 +1,19 @@
 pkgbase = makro
 	pkgdesc = A simple KDE4 frontend for Xnee and Xbindkeys.
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.kde-apps.org/content/show.php/Makro?content=88647
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = automoc4
-	depends = kdelibs
+	depends = kdelibs4support
 	depends = xbindkeys
-	source = http://kde-apps.org/CONTENT/content-files/88647-makro.tar.gz
+	source = https://github.com/Raymo111/makro/raw/master/makro.tar.gz
 	source = patch
-	md5sums = 43f286516fd24890b222054b3931d5fa
-	md5sums = 7d51848f46784b1ac768a9ba16dd14ee
+	sha256sums = f3cd11acfd196197239b66e5cd3ab313881b42c950f6949ec75375c1f3b0d191
+	sha256sums = fa85e695a376dbf16661e0f09a21ab05a4f1672afce3279062ac3ca028bd1768
 
 pkgname = makro
 
