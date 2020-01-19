@@ -6,10 +6,13 @@ bootstrap_install() {
     install -dv "$destdir"
     install -dv "$bindir"
     install -dv "$libdir"
+    install -dv "$docdir"
     install -d "$prefix/bin/"
     install -d "$prefix/share/applications/"
     install -pm 0644 "./evesetup.shlib" "$libdir"
     install -pm 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
+    install -m 0644 "./evelauncher.kwinrule" "$docdir"
+    install -m 0644 "./evelauncher.lua" "$docdir"
     sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
     for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
 	cmd=eve$cmd
@@ -62,9 +65,6 @@ check_req() {
     if [ ! -x "$(which wine 2>/dev/null)" ] ;then
 	req="${req}wine\n"
     fi
-    if [ ! -x "$(which winetricks 2>/dev/null)" ] ;then
-	req="${req}winetricks\n"
-    fi
     tar xf evelauncher-$elver.tar.gz
     cd evelauncher/
     req="${req}$(LD_LIBRARY_PATH=$(pwd) ldd ./evelauncher | grep -i not | sed s,\\t,, | cut -d' ' -f1)"
@@ -83,6 +83,7 @@ prefix="/usr"
 destdir="/opt/evesetup"
 bindir="$destdir/bin"
 libdir="$destdir/lib"
+docdir="$destdir/doc"
 elver=""
 key=""
 

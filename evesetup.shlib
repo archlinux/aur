@@ -23,6 +23,10 @@ check_elv() {
 	    fi
 	    tar xf $SETUPDIR/lib/evelauncher-$ELVER.tar.?z -C $EVEDIR
 	    mv $EVEDIR/evelauncher $LAUNCHER
+	    if [ -f "$HOME/.config/devilspie2/evelauncher.lua" ] ;then
+		sed -i 2\ s,[0-9].*\",$ELVER\", \
+		    $HOME/.config/devilspie2/evelauncher.lua
+	    fi
 	fi
 }
 
@@ -56,10 +60,6 @@ check_steam() {
 }
 
 check_wine() {
-    if [ ! -r "$EVECONF" ] ;then
-	desktop_msg "ERROR: EVE Configuration not found!"
-	exit 1
-    fi
     CUSTOMWP=$(getval CustomWinePath)
     SHAREDIR=$(getval SharedCacheFolder)
     UCW=$(getval UseCustomWine)
@@ -89,14 +89,6 @@ check_wine() {
 	    $WINEPATH/wine reg add \
 	    'HKCU\Software\Wine\FileOpenAssociations' \
 	    /v Enable /d N /f >/dev/null
-	WINETRP=$(cat $WINEPREFIX/winetricks.log 2>/dev/null | uniq)
-	if [ "x$WINETRP" != "x" ] ;then
-	    desktop_msg "Apply winetricks settings. This will take some time."
-	    rm $WINEPREFIX/winetricks.log >/dev/null
-	    env WINEPREFIX=$WINEPREFIX \
-		WINE=$WINEPATH/wine \
-		$(which winetricks) -q --force $WINETRP >/dev/null
-	fi
     fi
     if [ "x$(grep -csw winemenubuilder $WINEPREFIX/system.reg)" != "x0" ] ;then
 	if [ -x "$WINEPATH/wine64" ] ;then
@@ -124,5 +116,9 @@ getdate() {
 }
 
 getval() {
+    if [ ! -r "$EVECONF" ] ;then
+	desktop_msg "ERROR: EVE Configuration not found!"
+	exit 1
+    fi
     printf $(grep "$1" $EVECONF | cut -d= -f2)
 }

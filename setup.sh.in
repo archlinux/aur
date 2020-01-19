@@ -6,6 +6,7 @@ bootstrap_install() {
     install -dv "$destdir"
     install -dv "$bindir"
     install -dv "$libdir"
+    install -dv "$docdir"
     install -d "$prefix/bin/"
     install -d "$prefix/share/applications/"
     for eta in ./eve-transl${qtver}-??.tar.gz ;do
@@ -13,6 +14,8 @@ bootstrap_install() {
     done
     install -m 0644 "./evesetup.shlib" "$libdir"
     install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
+    install -m 0644 "./evelauncher.kwinrule" "$docdir"
+    install -m 0644 "./evelauncher.lua" "$docdir"
     sed -i s,./eve-transl,$libdir/eve-transl, ./evelauncher.sh
     sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
     for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
@@ -128,20 +131,13 @@ check_req() {
 	printf "\nLeaving.\n\n"
 	exit 0
     fi
-    if [ -x "$(which winetricks 2>/dev/null)" ] ;then
-	echo "Winetricks version $(winetricks --version | cut -d' ' -f1) found."
-    else
-	echo "Winetricks not found. Winetricks are required."
-	echo " Please install Winetricks with your Package Manager."
-	printf "\nLeaving.\n\n"
-	exit 0
-    fi
 }
 
 prefix="/usr"
 destdir="/opt/evesetup"
 bindir="$destdir/bin"
 libdir="$destdir/lib"
+docdir="$destdir/doc"
 qtver="5.11"
 elver=""
 elcsum=""

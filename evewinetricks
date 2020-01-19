@@ -4,5 +4,12 @@
 
 check_wine
 
+WINETRICKs=$(which winetricks 2>/dev/null)
+
+if [ "x$WINETRICKS" = "x"  ] ;then
+    desktop_msg "winetricks not found!"
+    exit 1
+fi
+
 env WINEPREFIX=$WINEPREFIX \
-    WINE=$WINEPATH/wine $(which winetricks) "$@"
+    WINE=$WINEPATH/wine $WINETRICKS "$@"

@@ -8,11 +8,13 @@ backup_settings() {
 for SERVER in tranquility singularity duality thunderdome ;do
     CLPROFILE="$(ls -d *_$SERVER 2>/dev/null || true)"
     [ "x$CLPROFILE" = "x" ] && continue
-    if [ ! -f "$BACKUPDIR/$SERVER-settings_current.7z" ] ;then
-	MSGSTR="Preparing backup for $SERVER, please run $CMDSTR again."
-    else
+    if [ -f "$BACKUPDIR/$SERVER-settings_current.7z" ] ;then
 	mv "$BACKUPDIR/$SERVER-settings_current.7z" "$BACKUPDIR/$SERVER-settings.7z"
-	MSGSTR="User settings in $BACKUPDIR saved."
+	SERVERLIST="$SERVERLIST $SERVER"
+	MSGSTR="Settings for$SERVERLIST in $BACKUPDIR stored."
+    else
+	MSGSTR="Preparing backup for $SERVER, please run $CMDSTR again."
+	desktop_msg "$MSGSTR"
     fi
     cd "$CLPROFILE"
     7z u -t7z -xr!Browser "$BACKUPDIR/$SERVER-settings.7z" \
@@ -34,7 +36,8 @@ for SERVER in thunderdome duality singularity tranquility ;do
     esac
     [ -d c_"$SERVER_SHORT"_"$SERVER" ] || mkdir c_"$SERVER_SHORT"_"$SERVER"
     7z x "$BACKUPDIR/$SERVER-settings.7z" -oc_"$SERVER_SHORT"_"$SERVER" -y >/dev/null
-    MSGSTR="User settings from $BACKUPDIR restored."
+    SERVERLIST="$SERVERLIST $SERVER"
+    MSGSTR="Settings for$SERVERLIST from $BACKUPDIR restored."
 done
 }
 

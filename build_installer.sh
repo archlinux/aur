@@ -65,7 +65,9 @@ for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
     if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
     if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
 done
-cp ../evesetup.shlib evesetup/evesetup.shlib
+cp ../evesetup.shlib evesetup/
+cp ../evelauncher.kwinrule evesetup/
+cp ../evelauncher.lua evesetup/
 cp ../evelauncher.sh.in evesetup/evelauncher.sh
 sed -i s,ELVER=\"\",ELVER=\"$version\", evesetup/evelauncher.sh
 cp ../setup.sh.in evesetup/setup.sh
