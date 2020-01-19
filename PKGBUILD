@@ -2,7 +2,7 @@
 # Contributor: Vladimir Cerny <blackvladimir@gmail.com>
 
 pkgname=free42
-pkgver=2.5.14
+pkgver=2.5.15
 pkgrel=1
 pkgdesc="A complete re-implementation of the HP-42S calculator and the HP-82240 printer"
 arch=('i686' 'x86_64')
@@ -11,28 +11,18 @@ license=('GPL')
 depends=('gtk3')
 optdepends=('free42-skins: Additional skins')
 source=("http://thomasokken.com/free42/upstream/$pkgname-nologo-$pkgver.tgz"
-        "0001_system-skins.patch"
         "free42.desktop")
-md5sums=('dbe231fc32fea4067d8654c6203ff890'
-         '8c0522e3efa3c7fd54985af456b689b7'
+md5sums=('d2691946570a3af4f36679d3154c15c8'
          '9e1af9bfd8ce5eb2ad107f63ea446a55')
-
-prepare() {
-  cd "$srcdir/$pkgname-nologo-$pkgver/"
-
-  # Read skins from system-wide directory (see package "free42-skins")
-  # This patch can be removed if you want the original upstream version
-  patch -Np1 -i "$srcdir/0001_system-skins.patch"
-}
 
 build() {
   cd "$srcdir/$pkgname-nologo-$pkgver/gtk"
 
   # build both bin and dec version
   make cleaner
-  make SKIN_SYS_DIR="/usr/share/free42/skins"
+  make
   make clean
-  make BCD_MATH=1 SKIN_SYS_DIR="/usr/share/free42/skins"
+  make BCD_MATH=1
 }
 
 package() {
