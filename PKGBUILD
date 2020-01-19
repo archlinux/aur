@@ -1,46 +1,40 @@
+# Maintainer : Blair Bonnett <blair dot bonnett at gmail dot com>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-git-version-compare'
-pkgver='1.001'
-pkgrel='1'
+pkgname=perl-git-version-compare
+pkgver=1.004
+pkgrel=1
 pkgdesc="Functions to compare Git versions"
+_dist=Git-Version-Compare
 arch=('any')
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-namespace-clean' 'perl>=5.006')
-makedepends=()
-url='https://metacpan.org/release/Git-Version-Compare'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Git-Version-Compare-1.001.tar.gz')
-md5sums=('dcba8c3627c9e22f9e9d928acf227139')
-sha512sums=('a206dc18db0ce1e7d65a0ec8d74770b66ef5cd0db77dd402aa4bcc5e6126b8c78376b439b22919d6865e222ddfc59c9bad901b0b476b2a9dab57a34f33391e8e')
-_distdir="Git-Version-Compare-1.001"
+options=(purge '!emptydirs')
+depends=(perl)
+checkdepends=(perl-test-nowarnings)
+url="https://metacpan.org/release/$_dist"
+source=("https://cpan.metacpan.org/authors/id/B/BO/BOOK/$_dist-$pkgver.tar.gz")
+md5sums=('45a69d9f9bd2c13c0679de857d45bb18')
+sha256sums=('63e8264ed351cb2371b47852a72366214164b5f3fad9dbd68309c7fc63d06491')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
-
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
 
 # Local Variables:
