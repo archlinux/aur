@@ -2,8 +2,8 @@
 # Contributor: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop
-pkgver=1.1.2
-pkgrel=7
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -31,7 +31,6 @@ makedepends=(
 	ninja
 	range-v3
 	enchant
-	dos2unix
 )
 optdepends=(
 	'enchant: spellchecking support'
@@ -59,11 +58,6 @@ source=(
 	"lib_tl::git+https://github.com/desktop-app/lib_tl.git"
 	"lib_ui::git+https://github.com/kotatogram/lib_ui.git"
 
-	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane.png"
-	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@2x.png"
-	"https://raw.githubusercontent.com/telegramdesktop/tdesktop/100fed362271ada828fdaeb27e52f660a5a05d18/Telegram/Resources/icons/intro_qr_plane@3x.png"
-
-	"https://raw.githubusercontent.com/ilya-fedin/nur-repository/4c17ad9c0d190ebdcb4e6c68860025ca81e9c708/pkgs/kotatogram-desktop/update-to-v1.9.4.patch"
 	"Use-system-font.patch"
 	"Use-system-wide-font.patch"
 	"system-tray-icon.patch"
@@ -90,11 +84,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '767cc5f3a8e25ff94cfc4a0ad6968455ab52875262e40515cfd4ebea1765014808913ee624efa47c57b15de7cceb492bf7232de981d519bd104036f6d498b788'
-            'ac55bcd0c572b1e5fdd72cd0dd9db4bb5eb9c12adc8c702f348201a52b1cf0271f550e144e6654605753960cab55146604a8b52d5294861f73d85b548e5503f0'
-            'ec16fd3a70a225fd9aa54c8042b1115d0bdb15e2a95c1abbc74cee50a06878196a4e8c451167c9849ff816ce36e48f46166cb7e99790258d575bde11e305e548'
-            'ece3cbbed63a04d1ee08218b16782a5105bc8f9d6d88b49bfbd768d3260a0d322e7544f224c5ee0da21177c252747dba24a0ce807da9dea2447e54ff04785e47'
-            'b9fe9cb91e19271920c4cf075ba83703f093111d6a692cab91eb493563940091cda7b204742711157beb1e9857c1fefd6788ec8784f7b362423a9564925c0de6'
+            'c7917e7169543a3429b5d7598a3b34b20abf42283557aa6589a1e476d65007a34fa0aa65b4a88f99447eafa16822b0a97943a1f1a92f66949a3e9681c8b225bd'
             '4263c3e3a3edcd91eed2a666b7aa1db61129531d60b5539d7aa24b83f46b17cb5fe65229175e36f76bf2ac76472aa2a1e5fa1c0c5ff0cbb809816cd006bb2ef4'
             '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a'
             'aaef50685b8871f32820e6cca2014aa986500ddcf34f4e99216081310e8622a242420a7d1ce30e277af85eb3f1d1e73c5a67dab9e02b42ef03ae6d76381fe635'
@@ -127,20 +117,11 @@ prepare() {
 
 	git submodule update
 
-	dos2unix "$srcdir/$pkgname/Telegram/build/build.bat"
-
-	patch -Np1 -i "$srcdir/update-to-v1.9.4.patch"
 	patch -Np1 -i "$srcdir/Use-system-font.patch"
 	patch -Np1 -i "$srcdir/Use-system-wide-font.patch"
 	patch -Np1 -i "$srcdir/system-tray-icon.patch"
 	patch -Np1 -i "$srcdir/linux-autostart.patch"
 	patch -Np1 -i "$srcdir/Use-system-font-by-default.patch"
-
-	unix2dos "$srcdir/$pkgname/Telegram/build/build.bat"
-
-	cp "$srcdir/intro_qr_plane.png" "$srcdir/$pkgname/Telegram/Resources/icons/intro_qr_plane.png"
-	cp "$srcdir/intro_qr_plane@2x.png" "$srcdir/$pkgname/Telegram/Resources/icons/intro_qr_plane@2x.png"
-	cp "$srcdir/intro_qr_plane@3x.png" "$srcdir/$pkgname/Telegram/Resources/icons/intro_qr_plane@3x.png"
 }
 
 build() {
