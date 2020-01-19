@@ -6,7 +6,7 @@ _pkgbase=util-linux
 pkgbase=${_target}-util-linux
 #pkgname=(${_target}-util-linux ${_target}-libutil-linux)
 pkgname=(${_target}-util-linux ${_target}-libutil-linux)
-_pkgmajor=2.32
+_pkgmajor=2.34
 pkgver=${_pkgmajor}
 pkgrel=1
 pkgdesc="Miscellaneous system utilities for Linux"
@@ -22,7 +22,7 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/$_pkgbase
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('6c7397abc764e32e8159c2e96042874a190303e77adceb4ac5bd502a272a4734'
+sha256sums=('743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5'
             'SKIP'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
