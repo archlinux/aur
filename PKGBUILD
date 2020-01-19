@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdlsynth-beta-git
-pkgver=r102.175123c
+pkgver=r103.910073d
 pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl)'
@@ -33,5 +33,5 @@ package() {
 
 	install -Dm755 -t "$pkgdir/$(yosys-config --datdir)/plugins/" ghdl.so
 	install -dm755 "$pkgdir/usr/share/ghdlsynth/examples/"
-	cp -r ice40hx8k icestick icezum "$pkgdir/usr/share/ghdlsynth/examples/"
+	cp -r examples/* "$pkgdir/usr/share/ghdlsynth/examples/"
 }

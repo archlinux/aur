@@ -1,6 +1,6 @@
 pkgbase = ghdlsynth-beta-git
 	pkgdesc = VHDL synthesis (based on ghdl)
-	pkgver = r102.175123c
+	pkgver = r103.910073d
 	pkgrel = 1
 	url = https://github.com/tgingold/ghdlsynth-beta
 	arch = x86_64
