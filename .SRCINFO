@@ -1,0 +1,22 @@
+pkgbase = qflow-git
+	pkgdesc = Opensource physical implementation flow
+	pkgver = r275.29f2639
+	pkgrel = 1
+	url = http://opencircuitdesign.com/qflow/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = magic
+	depends = qrouter
+	depends = tcsh
+	depends = yosys
+	depends = netgen-lvs
+	optdepends = graywolf: Placement support
+	optdepends = opensta: Alternative static timing analysis tool
+	provides = qflow
+	conflicts = qflow
+	source = git://opencircuitdesign.com/qflow#branch=qflow-1.4
+	sha512sums = SKIP
+
+pkgname = qflow-git
+
