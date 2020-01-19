@@ -20,6 +20,9 @@ pkgbase = gummi-gtk2-git
 	depends = gtkspell
 	depends = gtksourceview2
 	depends = poppler-glib
+	provides = gummi
+	conflicts = gummi-gtk3-git
+	conflicts = gummi
 	source = git+ssh://git@github.com/florianbegusch/gummi#tag=0.6.7.3
 	md5sums = SKIP
 
