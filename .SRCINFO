@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-qt5
 	pkgdesc = Qt 5 for Android
 	pkgver = 5.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	install = android-x86-64-qt5.install
 	arch = any
@@ -41,9 +41,11 @@ pkgbase = android-x86-64-qt5
 	source = http://download.qt-project.org/official_releases/qt/5.14/5.14.0/single/qt-everywhere-src-5.14.0.tar.xz
 	source = 0001-Support-pkg-config-under-Android.patch
 	source = 0002-Use-pkg-config-to-find-external-libraries.patch
+	source = 0003-Fix-neon.patch
 	md5sums = e7ea948ab99a2ef0726db5eac8e4fd8e
 	md5sums = 6af9dcc450ae6c69d8fddccf0680d84a
 	md5sums = f0f5dda8352a675566a08fa0f863a08b
+	md5sums = 656c7eec7d37854cef1763c163c1ca98
 
 pkgname = android-x86-64-qt5
 
