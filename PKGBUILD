@@ -4,7 +4,7 @@
 
 pkgname=pyinstaller
 _pyname=PyInstaller
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
