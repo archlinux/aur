@@ -1,12 +1,12 @@
 # Maintainer: Thibaud Kehler <thibaud.kehler at gmx dot net>
 pkgname=timelineproject-hg
-pkgver=1.18.0.r5776+
+pkgver=2.0.0.r6848
 pkgrel=1
 pkgdesc="Aims to create a free, cross-platform application for displaying and navigating events on a timeline."
 arch=('any')
 url="http://thetimelineproj.sourceforge.net/"
 license=('GPL3')
-depends=('python2-humblewx' 'wxpython')
+depends=('python-humblewx' 'python-wxpython' 'python')
 makedepends=('mercurial' 'rsync')
 provides=("${pkgname%-hg}")
 conflicts=("${pkgname%-hg}")
@@ -18,11 +18,6 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/${pkgname%-hg}/"
   printf "%s.r%s" "$(hg tags -q | sed -n '2p')" "$(hg identify -n)" 
-}
-
-prepare() {
-   cd "$srcdir/${pkgname%-hg}/source"
-   sed -i 's/#!\/usr\/bin\/env\ python/#!\/usr\/bin\/env\ python2/' timeline.py # fix arch python2 compatibility
 }
 
 package() {
