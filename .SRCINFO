@@ -1,6 +1,6 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.3.0beta
+	pkgver = 9.3.0rc
 	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.3.0beta-2.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/4f4a2b3c9be322c7295135d9bcc178c48fd059ee/pamac-common-4f4a2b3c9be322c7295135d9bcc178c48fd059ee.tar.gz
-	sha256sums = 36c9fdb991288bcefe6d3a59b802b8b1bf681cb83de8e2f13ba5ba9ce22b708b
+	source = pamac-9.3.0rc-2.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e/pamac-common-ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e.tar.gz
+	sha256sums = 1152a55530a14d3b4870708ce0316fad4dfb7a97fce822b8e80e5905aed7c4e5
 
 pkgname = pamac-common
 	install = pamac-common.install
@@ -47,14 +47,14 @@ pkgname = pamac-gtk
 	install = pamac-gtk.install
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
-	provides = pamac=9.3.0beta-2
+	provides = pamac=9.3.0rc-2
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
 	replaces = pamac
 
 pkgname = pamac-tray-appindicator-src
-	pkgdesc = Tray icon using appindicator which fits better in KDE
+	pkgdesc = Tray icon for better integration of pamac-gtk in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
 	conflicts = pamac-tray-appindicator-dev
