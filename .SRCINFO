@@ -1,7 +1,7 @@
 pkgbase = 140-hib
 	pkgdesc = 140 is a challenging minimalistic platformer with abstract colorful graphics.
 	pkgver = 1389820765
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.game140.com/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = 140-hib
 	depends = glu
 	source = hib://140_Linux_1389820765.zip
 	source = 140-hib.desktop
-	sha256sums = 64f5831e60d4b369bd315698fff1e54e2ad088302ad204076ba491e156ce96bb
+	sha256sums = SKIP
 	sha256sums = a81be607cd7a7a7795ddeed0386d9d62eaffb56651d4217e99684ce07ea53883
 	depends_i686 = gtk2
 	depends_x86_64 = lib32-gtk2

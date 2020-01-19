@@ -2,7 +2,7 @@
 
 pkgname=140-hib
 pkgver=1389820765
-pkgrel=1
+pkgrel=2
 pkgdesc="140 is a challenging minimalistic platformer with abstract colorful graphics."
 arch=('i686' 'x86_64')
 url="http://www.game140.com/"
@@ -12,8 +12,8 @@ depends_i686=('gtk2')
 depends_x86_64=('lib32-gtk2')
 source=("hib://140_Linux_${pkgver}.zip"
         "${pkgname}.desktop")
-sha256sums=("64f5831e60d4b369bd315698fff1e54e2ad088302ad204076ba491e156ce96bb"
-            "a81be607cd7a7a7795ddeed0386d9d62eaffb56651d4217e99684ce07ea53883")
+sha256sums=('SKIP'
+            'a81be607cd7a7a7795ddeed0386d9d62eaffb56651d4217e99684ce07ea53883')
 [ "$CARCH" == "x86_64" ] && _arch="x86_64" || _arch="x86"
 # Prevent compressing final package
 PKGEXT='.pkg.tar'
