@@ -1,0 +1,18 @@
+pkgbase = perl-test-requires-git
+	pkgdesc = Check test requirements against the available version of Git
+	pkgver = 1.008
+	pkgrel = 1
+	url = https://metacpan.org/release/Test-Requires-Git
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-git-version-compare
+	options = purge
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Test-Requires-Git-1.008.tar.gz
+	md5sums = 65ff93a1eadfc1984ce3bf3b1f2a417d
+	sha256sums = 70916210970d84d7491451159ab8b67e15251c8c0dae7c3df6c8d88542ea42a6
+
+pkgname = perl-test-requires-git
+
