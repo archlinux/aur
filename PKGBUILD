@@ -16,6 +16,7 @@ _buildpath="src/gopkg.in/$_projectname"
 
 prepare() {
 	cd "$srcdir/"
+
 	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	mv "errgo-$pkgver/" "$_builddir/$_buildpath/"
 	rm -r "$_builddir/$_buildpath/go."{mod,sum}
@@ -28,8 +29,10 @@ check() {
 
 package() {
 	cd "$srcdir/"
+
 	install -dm755 "$pkgdir/usr/share/gocode/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	cp -r --no-preserve=ownership --preserve=mode "$_builddir/$_buildpath/" "$pkgdir/usr/share/gocode/$_buildpath/"
+
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	ln -sf "/usr/share/gocode/$_buildpath/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
