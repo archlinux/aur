@@ -22,8 +22,8 @@ sha256sums_aarch64=('56aee676deaf7d319b2098bbed78af346b03fcec6c6437ee1a955fd7913
 
 package() {
 	cd "$srcdir/$_pkgname/"
-	for binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
-		install -Dm755 "$binary" "$pkgdir/usr/bin/$binary"
+	for _binary in "$_pkgname" "$_pkgname-keygen" "$_pkgname-mount"; do
+		install -Dm755 "$_binary" "$pkgdir/usr/bin/$_binary"
 	done
 	install -Dm644 "../$pkgname-$pkgver-$pkgrel-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
 }
