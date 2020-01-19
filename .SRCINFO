@@ -1,6 +1,6 @@
 pkgbase = librm
 	pkgdesc = Router Manager library
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://www.tabos.org/
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = librm
 	depends = libsecret
 	depends = libcapi
 	options = !emptydirs
-	source = https://gitlab.com/tabos/librm/-/archive/v2.1.1/librm-v2.1.1.tar.gz
-	sha512sums = b9a75d8b2850e0ee72f4d83eaff845e0afc878549322f60d7c9e1e7acfa77fb3dd2c0b21aebf9ff1976dfa1a0b7b07671cbb1b432b18f7f2c2dad605817a50ad
+	source = https://gitlab.com/tabos/librm/-/archive/v2.1.2/librm-v2.1.2.tar.gz
+	sha512sums = 1afb9cb529207c1a29a8c45f91809d008949bf8d4e6ecbe139c72ffde5c4109ac46846ffa2fb3190ee6949f1233f4675a51d568b0fd0dac791915f6c7b22d621
 
 pkgname = librm
 
