@@ -1,0 +1,24 @@
+pkgbase = magic-git
+	pkgdesc = A VLSI layout system
+	pkgver = r646.594fc58
+	pkgrel = 1
+	url = http://opencircuitdesign.com/magic/
+	arch = i686
+	arch = x86_64
+	license = custom:copyright
+	makedepends = git
+	makedepends = tcsh
+	depends = tcl
+	depends = tk
+	depends = libx11
+	optdepends = mesa: for better graphics
+	optdepends = cairo: for better graphics
+	optdepends = glu: for better graphics
+	optdepends = blt: to create a tree diagram of the cell hierarchy in a design
+	provides = magic
+	conflicts = magic
+	source = git://opencircuitdesign.com/magic#branch=magic-8.2
+	md5sums = SKIP
+
+pkgname = magic-git
+
