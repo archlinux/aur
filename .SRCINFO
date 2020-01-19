@@ -1,13 +1,13 @@
 pkgbase = battery_warning
 	pkgdesc = Warn if the battery capacity drops too low
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Hendrikto/battery_warning
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = i3-wm
-	source = battery_warning-1.1::git+https://github.com/Hendrikto/battery_warning.git
+	source = battery_warning-1.2::git+https://github.com/Hendrikto/battery_warning.git
 	sha256sums = SKIP
 
 pkgname = battery_warning

@@ -1,7 +1,7 @@
 # Maintainer: Hendrik Werner <hendrik.to@gmail.com>
 
 pkgname=battery_warning
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Warn if the battery capacity drops too low'
 arch=('x86_64')
