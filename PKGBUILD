@@ -3,12 +3,12 @@
 
 pkgname=mytourbook_bin
 pkgver=19.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer."
 arch=('x86_64')
 url="http://mytourbook.sourceforge.net"
 license=("GPL")
-depends=('jre8-openjdk' 'fontconfig' 'libxrender')
+depends=('java-runtime' 'fontconfig' 'libxrender')
 install="mytourbook.install"
 source=("mytourbook.desktop" "http://downloads.sourceforge.net/project/mytourbook/MyTourbook/${pkgver}/mytourbook-${pkgver}-linux-64-II.zip")
 options=(!strip)
