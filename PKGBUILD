@@ -2,7 +2,7 @@
 
 pkgname=python-minkowskiengine
 _pkgname=MinkowskiEngine
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Auto-diff library for generalized sparse convolutions"
 url="https://github.com/StanfordVL/MinkowskiEngine"
@@ -15,7 +15,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('x86_64')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('95560dd215c75c5a127ce250d1a1fde81059d10d89955ac91d80e8b176338e93db8ff3d6c1dc705e175c4aedb248fcc4fcd26f7cdc43eba63877838c2675f1d8')
+sha512sums=('eff585b6e054e52f236bdfd7930abe987a57ca68a737bf81d85e18996132570895460aa02ed496e5e034001a640749bf1322fdfc9848acc7dec555976c47f995')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
