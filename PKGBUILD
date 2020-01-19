@@ -3,12 +3,12 @@
 
 pkgname=coretoppings
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional features,plugins etc for CuboCore Application Suite."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
 license=('GPL3')
-depends=('qt5-base' 'qt5-location' 'qt5-x11extras' 'qt5-connectivity' 'libpulse' 'libcprime')
+depends=('qt5-base' 'qt5-location' 'libxcomposite' 'qt5-x11extras' 'qt5-connectivity' 'libpulse' 'libcprime')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 md5sums=('a1c191e436edbc617b27cd545bba89f3')
