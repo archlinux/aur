@@ -1,8 +1,8 @@
 # Maintainer: 'Sergey Malkin <adresatt@gmail.com>'
 pkgname=python-pyabf
 _pkgname=pyabf
-pkgver=2.2.1
-pkgrel=1
+pkgver=2.2.2
+pkgrel=2
 pkgdesc="A Python interface to files in the Axon Binary Format (ABF)"
 url="https://github.com/swharden/pyABF"
 arch=('i686' 'x86_64')
