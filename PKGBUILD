@@ -1,12 +1,12 @@
 pkgname='kanjitomo'
 pkgdesc="identify Japanese characters from images or screen"
-pkgver=0.9.13.1
+pkgver=1.0.0
 pkgrel=1
 arch=('any') 
 license=('custom')
 url="http://kanjitomo.net"
-source=("$pkgname.zip::http://kanjitomo.net/download.php")
-md5sums=('dcd6de58507b4fee1545627a4dc3515b')
+source=("KanjiTomo.zip::http://kanjitomo.net/download.php")
+md5sums=('71f6550cd49684d1d781059c1bdcd94a')
 depends=('java-environment')
 
 package () {
