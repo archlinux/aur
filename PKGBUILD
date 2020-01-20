@@ -1,12 +1,12 @@
 # Maintainer: Fabio Zanini <fabio DOOT zanini AAT fastmail DOT fm>
 pkgname=aliview
 pkgver=1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for aligning viewing and editing dna/aminoacid sequences."
 arch=('any')
 url="http://www.ormbunkar.se/aliview/"
 license=('GPL')
-depends=('jre')
+depends=('jre-openjdk')
 makedepends=()
 optdepends=()
 options=()
