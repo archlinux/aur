@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 pkgver=1.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org/"
@@ -64,8 +64,8 @@ build() {
 
   #the option build=debug can be useful if the game crashes and you would like to report a bug
   scons jobs=4 desktop_entry=False prefix=/usr version_suffix=-devel prefsdir=.wesnoth-devel \
-  docdir=/usr/share/doc/wesnoth-devel mandir=/usr/share/man/wesnoth-devel fifodir=/run/wesnothd-devel \
-  appdata_file=False enable_lto=True openmp=True wesnoth wesnothd
+  docdir=/usr/share/doc/wesnoth-devel fifodir=/run/wesnothd-devel \
+  appdata_file=False enable_lto=True wesnoth wesnothd
 }
 
 package(){
@@ -86,6 +86,15 @@ package(){
 
   install -D -m644 "$srcdir/wesnoth-devel.appdata.xml" "$pkgdir/usr/share/metainfo/wesnoth-devel.appdata.xml"
 
-  #clean up, in case you will use these files not just for building a package
+  # add suffix to manpages (.6 is the file extension) and copy them in the right directory
+  for filename in "$pkgdir"/usr/share/man/{,*/}man6/wesnoth{,d}.6
+    do
+      mv "$filename" $(dirname $filename)/$(basename $filename .6)-"$pkgver"
+  done
+
+  # setting dist file
+  echo Linux repository > "$pkgdir"/usr/share/wesnoth-devel/data/dist
+
+  # clean up, in case you will use these files not just for building a package
   sed '/destdir = /d' -i "$srcdir/wesnoth-$pkgver/.scons-option-cache"
 }
