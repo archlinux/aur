@@ -1,58 +1,44 @@
 pkgname=antimicro-git
-_name=${pkgname%%-git}
-pkgver=2.23.r14.gecec251
-pkgrel=2
+_name=antimicroX
+pkgver=2.23.r421.gf3c11e5
+pkgrel=1
 
 pkgdesc='Map keyboard and mouse actions to gamepad buttons, inspired by qjoypad.'
-url='https://github.com/antimicro/antimicro'
+url='https://github.com/juliagoda/antimicroX'
 arch=('i686' 'x86_64')
 license=('GPL3')
 
-depends=('libxtst' 'qt5-base' 'sdl2')
-makedepends=('git' 'cmake' 'qt5-tools' 'itstool')
+depends=("desktop-file-utils" "hicolor-icon-theme" "libxtst" "qt5-base" "sdl2")
+makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
 
 provides=( "$_name" )
 conflicts=( "$_name" )
 
-source=('git://github.com/antimicro/antimicro')
+source=('git://github.com/juliagoda/antimicroX')
 install='antimicro-git.install'
 
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "$_name"
-	git describe | sed 's/-/.r/; s/-/./'
-}
-
-
-prepare() {
-	read -p '
-Use fix suggested by rakuco via AUR'"'"'s frealgagu? (Do not call QT5_WRAP_CPP.)
->	See: https://github.com/AntiMicro/antimicro/pull/207/files
->	Fix: sed -i "/QT5_WRAP_CPP/d" "${srcdir}/${_name}/CMakeLists.txt"
-[y/n]?
-' C
-	[[ "$C" =~ 'y' ]]	&&	{
-		set -x;
-		sed -i "/QT5_WRAP_CPP/d" "${srcdir}/${_name}/CMakeLists.txt";
-		set +x;
-	}	||	{
-		echo "NOT sedding...";
-	}
+	cd "${srcdir}/$_name"
+		git describe | sed 's/-/.r/; s/-/./'
 }
 
 
 build() {
-	cd "$_name"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr	\
-		-DUSE_SDL_2=ON							\
-		-DWITH_XTEST=ON						\
-		-DWITH_UINPUT=ON						\
-		-DAPPDATA=ON
-	make
+	cd "${srcdir}/$_name"
+		cmake . \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=/usr/lib \
+		-DUSE_SDL_2=ON \
+		-DAPPDATA=ON \
+		-DWITH_UINPUT=ON \
+		-DWITH_X11=ON \
+		-DWITH_XTEST=ON
+		make
 }
 
 package() {
-	cd "$_name"
-	make DESTDIR="$pkgdir" install
+	cd "${srcdir}/$_name"
+		make DESTDIR="$pkgdir" install
 }

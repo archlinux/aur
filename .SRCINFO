@@ -1,23 +1,26 @@
 pkgbase = antimicro-git
 	pkgdesc = Map keyboard and mouse actions to gamepad buttons, inspired by qjoypad.
-	pkgver = 2.23.r14.gecec251
-	pkgrel = 2
-	url = https://github.com/antimicro/antimicro
+	pkgver = 2.23.r421.gf3c11e5
+	pkgrel = 1
+	url = https://github.com/juliagoda/antimicroX
 	install = antimicro-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = cmake
-	makedepends = qt5-tools
+	makedepends = extra-cmake-modules
+	makedepends = gettext
 	makedepends = itstool
+	makedepends = qt5-tools
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
 	depends = libxtst
 	depends = qt5-base
 	depends = sdl2
-	provides = antimicro
-	conflicts = antimicro
-	source = git://github.com/antimicro/antimicro
-	md5sums = SKIP
+	provides = antimicroX
+	conflicts = antimicroX
+	source = git://github.com/juliagoda/antimicroX
+	sha512sums = SKIP
 
 pkgname = antimicro-git
 
