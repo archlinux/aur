@@ -1,21 +1,21 @@
 pkgbase = libint2
-	pkgdesc = A library for the evaluation of molecular integrals of many-body operators over Gaussian functions
+	pkgdesc = A high-performance library for computing Gaussian integrals in quantum mechanics
 	pkgver = 2.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evaleev/libint
 	arch = x86_64
-	license = GPL3
-	makedepends = make
+	license = GPL
+	makedepends = python
+	makedepends = gcc-fortran
+	makedepends = cmake
+	makedepends = automake
 	makedepends = autoconf
-	makedepends = doxygen
-	makedepends = clang
-	makedepends = texlive-bin
 	depends = boost
-	depends = boost-libs
-	depends = gmp
-	options = !strip
+	options = staticlibs
 	source = https://github.com/evaleev/libint/archive/v2.6.0.tar.gz
-	sha1sums = 2432391ff400bb9bf813443043582fa397f38b0a
+	source = 0001-Update-build_libint.cc.patch
+	sha256sums = 4ae47e8f0b5632c3d2a956469a7920896708e9f0e396ec10071b8181e4c8d9fa
+	sha256sums = 22fea5b46e61ad3a08f2b9ea9a898dc8c29faa77db06dfd45cdc8e9046286a6e
 
 pkgname = libint2
 

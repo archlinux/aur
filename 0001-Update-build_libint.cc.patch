@@ -1,0 +1,29 @@
+From 36e61e6b5a5bbc779b89badb79b8e034ed3fc4c4 Mon Sep 17 00:00:00 2001
+From: "Lori A. Burns" <lori.burns@gmail.com>
+Date: Thu, 3 Oct 2019 19:13:55 -0400
+Subject: [PATCH] Update build_libint.cc
+
+---
+ src/bin/libint/build_libint.cc | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/bin/libint/build_libint.cc b/src/bin/libint/build_libint.cc
+index 1b1da8c..626c651 100644
+--- a/src/bin/libint/build_libint.cc
++++ b/src/bin/libint/build_libint.cc
+@@ -785,7 +785,12 @@ BOOST_PP_LIST_FOR_EACH ( BOOST_PP_ONEBODY_MCR1, _, BOOST_PP_ONEBODY_TASK_LIST)
+   }
+ #else
+   iface->to_params(iface->macro_define("MAX_AM",LIBINT_MAX_AM));
+-  iface->to_params(iface->macro_define("MAX_AM_default",LIBINT_MAX_AM));
++  for(unsigned int d=0; d<=INCLUDE_ERI; ++d) {
++    std::ostringstream oss;
++    oss << "MAX_AM_default";
++    if (d > 0) oss << d;
++    iface->to_params(iface->macro_define(oss.str(),LIBINT_MAX_AM));
++  }
+ #endif
+   cparams->print(os);
+ 
+-- 
+2.24.1
