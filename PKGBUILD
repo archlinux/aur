@@ -2,7 +2,7 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoind-git
-pkgver=v2.0.0.2.r2.gcb69996
+pkgver=v2.0.0.2.r5.gf9d54f9
 pkgrel=1
 pkgdesc="Headless daemon for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
@@ -16,7 +16,7 @@ source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
         "boost.patch")
 
 sha256sums=('SKIP'
-            '3a984b6236e60cd34d31f24935e4c8cc92b5b725bd2f4159b8de375b3e0bb77a')
+            'd5911e88da183e9eb30fda5c1eec7e18ba15dc7907359257d9c1bc78ca390dc1')
 
 pkgver() {
   cd ${srcdir}/CurecoinSource

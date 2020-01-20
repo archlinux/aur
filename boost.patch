@@ -11,21 +11,3 @@ index 350f40c..57c6f9a 100644
  
  DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/obj $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH))
  LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH))
---- a/src/net.cpp
-+++ b/src/net.cpp
-@@ -1031,10 +1031,14 @@ void ThreadMapPort2(void* parg)
- #ifndef UPNPDISCOVER_SUCCESS
-     /* miniupnpc 1.5 */
-     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0);
--#else
-+#elif MINIUPNPC_API_VERSION < 14
-     /* miniupnpc 1.6 */
-     int error = 0;
-     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
-+#else
-+    /* miniupnpc 1.9.20150730 */
-+    int error = 0;
-+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 2, &error);
- #endif
- 
-     struct UPNPUrls urls;
