@@ -15,12 +15,6 @@ options=(!emptydirs)
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('d5a61761e0d7d83d0956f98d6d2e841427b9b7a6d8f80598bd97c5dea7bdd582a6d406ed0d8701180c0a8a950a5bbd50a50349ec4b85e5a3e999dcb3741de25f')
 
-# update the gemspec to allow newer versions of rake
-# remove deprecated options from the gemspec
-#prepare() {
-#  cd "${_gemname}-${pkgver}"
-#}
-
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"
   gem build "${_gemname}.gemspec"
