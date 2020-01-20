@@ -1,18 +1,18 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=sherpa
-pkgver=2.2.6
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="A particle physics package for Monte Carlo simulation of collider events."
 arch=('x86_64' 'i686')
 url="http://sherpa.hepforge.org"
 license=('GPL3')
-depends=('lhapdf' 'fastjet' 'hepmc' 'openmpi' 'openloops' 'rivet')
+depends=('lhapdf' 'fastjet' 'hepmc' 'hepmc3' 'openmpi' 'openloops' 'rivet')
 source=(http://www.hepforge.org/archive/sherpa/SHERPA-MC-$pkgver.tar.gz)
-md5sums=('1c44feaf4c918fe12c59c54796785659')
+md5sums=('3bcc367ab93edbe603db60eb21ca5164')
 
 build() {
 	cd "$srcdir/SHERPA-MC-$pkgver"
-	./configure --prefix=/usr --enable-hepmc2=/usr --enable-fastjet=/usr --enable-lhapdf=/usr --enable-lhole --enable-openloops=. --enable-mpi --enable-openloops=/usr/lib/openloops --enable-rivet=/usr CXXFLAGS=-std=c++11
+	./configure --prefix=/usr --enable-hepmc2=/usr --enable-fastjet=/usr --enable-lhapdf=/usr --enable-lhole --enable-openloops=. --enable-mpi --enable-openloops=/usr/lib/openloops --enable-rivet=/usr CXXFLAGS=-std=c++11 --enable-hepmc3=/usr
 	make
 }
 
