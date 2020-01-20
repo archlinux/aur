@@ -1,7 +1,7 @@
 pkgbase = clevis-git
 	pkgdesc = Automated Encryption Framework
-	pkgver = 11.r48.d1edeba
-	pkgrel = 2
+	pkgver = 12.r0.dabff02
+	pkgrel = 1
 	url = https://github.com/latchset/clevis
 	arch = x86_64
 	license = GPL3

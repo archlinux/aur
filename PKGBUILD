@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=clevis-git
-pkgver=11.r48.d1edeba
-pkgrel=2
+pkgver=12.r0.dabff02
+pkgrel=1
 pkgdesc='Automated Encryption Framework'
 arch=('x86_64')
 url='https://github.com/latchset/clevis'
@@ -42,7 +42,9 @@ build() {
 
 check() {
 	cd "${pkgname%-git}"
-	ninja -C build test
+	# The LUKS tests are skipped when not running as root but work fine without
+	# actual root privileges, so use fakeroot to bypass the root check
+	fakeroot ninja -C build test
 }
 
 package() {
