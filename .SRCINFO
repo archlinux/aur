@@ -9,7 +9,7 @@ pkgbase = pass-clip
 	optdepends = rofi: Use rofi to present choices.
 	optdepends = fzf: Use fzf to present choices.
 	source = https://github.com/ibizaman/pass-clip/archive/v0.2.tar.gz
-	sha512sums = 8c6058f3e7186dd622fb44139ea9a7b6ab9da4c4eb5ccf8eee10ccc2c388512c0ff21fc622d59d880c088ee80d9c5fd742f625f1747c9c77115dd39aecf363bb
+	sha512sums = 5aa11d97352e15d4a49ae590b01ac2806e74e221739ac27f58f7fe9a81a457c5c02e2cc4e8f2685c3abbdc2ccdca0748047ae8e756e650fc0b65b2bb5b11d5da
 
 pkgname = pass-clip
 
