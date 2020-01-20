@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=72.0.1
+pkgver=72.0.2
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.cfg.patch
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('1fa59aedc8469c3e6ffb12449ab7de2f93776f7679eedebfb74aa309b694956f'
+sha256sums=('77fd224bea885172d757aef587ad443f2171aa84e4297bca55df91a1951be389'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
             'SKIP'
@@ -133,13 +133,13 @@ build() {
   CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
-  msg2 "Building instrumented browser..."
+  echo "Building instrumented browser..."
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
   ./mach build
 
-  msg2 "Profiling instrumented browser..."
+  echo "Profiling instrumented browser..."
   ./mach package
   LLVM_PROFDATA=llvm-profdata \
     JARLOG_FILE="$PWD/jarlog" \
@@ -147,19 +147,19 @@ END
     ./mach python build/pgo/profileserver.py
 
   if [[ ! -s merged.profdata ]]; then
-    error "No profile data produced."
+    echo "No profile data produced."
     return 1
   fi
 
   if [[ ! -s jarlog ]]; then
-    error "No jar log produced."
+    echo "No jar log produced."
     return 1
   fi
 
-  msg2 "Removing instrumented browser..."
+  echo "Removing instrumented browser..."
   ./mach clobber
 
-  msg2 "Building optimized browser..."
+  echo "Building optimized browser..."
   # xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
@@ -169,7 +169,7 @@ ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   ./mach build
 
-  msg2 "Building symbol archive..."
+  echo "Building symbol archive..."
   ./mach buildsymbols
 }
 
