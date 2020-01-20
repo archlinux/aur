@@ -1,7 +1,7 @@
 # Maintainer:F43nd1r <support@faendir.com>
 
 pkgname=forge-quark-2.0-bin
-pkgver=210.948
+pkgver=210.949
 pkgrel=1
 epoch=
 pkgdesc="Minecraft mod quark by Vazkii"
