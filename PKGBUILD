@@ -7,8 +7,9 @@
 
 _gitname=vim9
 pkgbase=$_gitname-git
-pkgname=('vim9-tiny-git' 'vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
-pkgver=9.0.109+20200110.14e5daa67
+#pkgname=('vim9-tiny-git' 'vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
+pkgname=('vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
+pkgver=9.0.132+20200119.6bb39785b
 pkgrel=1
 arch=('x86_64')
 license=('custom:vim')
@@ -17,9 +18,11 @@ makedepends=('gpm' 'perl' 'python' 'lua' 'desktop-file-utils' 'gettext' 'pkgconf
 source=(
     "$_gitname::git://github.com/brammool/vim9.git"
     'license.txt'
+    "if_py_both.patch"
 )
 sha256sums=('SKIP'
-            'bb4744930a0030085d382356e9fdd4f2049b6298147aee2470c7fca7ec82fd55')
+            'bb4744930a0030085d382356e9fdd4f2049b6298147aee2470c7fca7ec82fd55'
+            '8353881a6ae9f48c7728172ec6b08b56c8d9ae8e43c9e29eb6bd633b821956b2')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -38,6 +41,7 @@ prepare() {
     cp -a ${_gitname} vim-build
     (
         cd vim-build && rm -rf ./.git*
+        patch -p0 -i "$srcdir/if_py_both.patch"
     )
 
     # define the place for the global (g)vimrc file (set to /etc/vimrc)
@@ -60,16 +64,16 @@ prepare() {
 }
 
 build() {
-    msg2 'Building vim-tiny'
-    cd ${srcdir}/vim-build-tn
-    ./configure --prefix=/usr --localstatedir=/var/lib/vim \
-        --mandir=/usr/share/man --with-compiledby=BlackEagle \
-        --with-global-runtime=/usr/share/vim/vim9 \
-        --with-features=tiny --disable-gpm --enable-acl --with-x=no \
-        --disable-gui --enable-multibyte --disable-cscope \
-        --disable-netbeans --disable-perlinterp --disable-pythoninterp \
-        --disable-rubyinterp --enable-luainterp=no
-    make VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9
+    #msg2 'Building vim-tiny'
+    #cd ${srcdir}/vim-build-tn
+    #./configure --prefix=/usr --localstatedir=/var/lib/vim \
+        #--mandir=/usr/share/man --with-compiledby=BlackEagle \
+        #--with-global-runtime=/usr/share/vim/vim9 \
+        #--with-features=tiny --disable-gpm --enable-acl --with-x=no \
+        #--disable-gui --enable-multibyte --disable-cscope \
+        #--disable-netbeans --disable-perlinterp --disable-pythoninterp \
+        #--disable-rubyinterp --enable-luainterp=no
+    #make VIMRCLOC=/etc VIMRUNTIMEDIR=/usr/share/vim/vim9
 
     msg2 'Building vim-cli-nox'
     cd ${srcdir}/vim-build-nox
