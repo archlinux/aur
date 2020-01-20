@@ -5,11 +5,11 @@ pkgbase = python-cyaron
 	url = https://www.luogu.org/
 	arch = any
 	license = LGPLv3
-	makedepends = python3
+	makedepends = python-setuptool
 	depends = python
 	depends = python-colorful
 	depends = python-xeger
-	source = https://files.pythonhosted.org/packages/b1/e9/279c7ab30b2ae766241487ea9bc86101a00b26b443d33ac9db1e58e090e9/cyaron-0.4.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/c/cyaron/cyaron-0.4.2.tar.gz
 	md5sums = b04af533e39ffb0232dc6fa9fb2a3250
 
 pkgname = python-cyaron
