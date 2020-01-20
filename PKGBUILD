@@ -2,14 +2,14 @@
 
 pkgname=rofi-mpd-git
 _gitname=Rofi_MPD
-pkgver=r62.55c4a7e
+pkgver=r74.5cad30c
 pkgrel=1
 pkgdesc="A Rofi menu for interacting with MPD written in Python."
 arch=('i686' 'x86_64')
 url="https://github.com/JakeStanger/Rofi_MPD"
 license=('MIT')
 makedepends=('git' 'binutils' 'python-setuptools' 'fakeroot')
-depends=('python' 'python-mpd2' 'python-mutagen' 'rofi')
+depends=('python' 'python-mpd2' 'python-mutagen' 'rofi' 'python-toml' 'python-appdirs')
 
 source=("git+https://github.com/JakeStanger/Rofi_MPD.git")
 

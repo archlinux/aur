@@ -1,6 +1,6 @@
 pkgbase = rofi-mpd-git
 	pkgdesc = A Rofi menu for interacting with MPD written in Python.
-	pkgver = r62.55c4a7e
+	pkgver = r74.5cad30c
 	pkgrel = 1
 	url = https://github.com/JakeStanger/Rofi_MPD
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = rofi-mpd-git
 	depends = python-mpd2
 	depends = python-mutagen
 	depends = rofi
+	depends = python-toml
+	depends = python-appdirs
 	source = git+https://github.com/JakeStanger/Rofi_MPD.git
 	sha256sums = SKIP
 
