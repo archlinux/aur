@@ -2,7 +2,7 @@
 _phpversion=73
 _extname=xdebug
 pkgname=php${_phpversion}-${_extname}
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development"
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://xdebug.org/"
 license=('Xdebug')
 depends=("php${_phpversion}")
 source=("http://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-sha256sums=('8dd1f867805d4ae78ccefc1825da1180eb82efbe6d6575eef2cc3dd1aeca5943')
+sha256sums=('f840292e9fd56f5167ec42b126e0807de6ad9ebd4f6260b65802d177a6aa6d31')
 backup=("etc/php${_phpversion}/conf.d/$_extname.ini")
 
 build() {
