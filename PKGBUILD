@@ -2,7 +2,7 @@
 
 pkgname='python-shlib'
 _pkgname=${pkgname#python-}
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Shell library"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://github.com/KenKundert/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('f9798b0a3e37407171f06efca7c213269f034eee2c94dd9933a819730a6d528b')
+sha256sums=('359ab9426ffc4baa224906f43d642040d5fbac2ab3700e20ca2d57f799ae2231')
 
 build() {
   cd $_pkgname-$pkgver
