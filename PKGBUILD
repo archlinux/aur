@@ -2,7 +2,7 @@
 pkgbase=python-msoffcrypto-tool
 pkgname=python-msoffcrypto-tool
 _pyname=msoffcrypto-tool
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc=''
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python' 'python-setuptools')
 checkdepends=('python-nose' 'python-coverage')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('66a38297308cbf6085b5ae612c48a5d0244ec04b4335164e25db43e3fb4df6d9')
+sha256sums=('e6dd01fdb3b44c573dba85b9675e5443520418e17bf8cc0a0f79a3928d3b3963')
 
 prepare() {
   cd "${srcdir}/${_pyname}-${pkgver}"
