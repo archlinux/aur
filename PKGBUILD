@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer:
+# Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Contributor: DonHugo
 pkgname=budgie-windowshuffler-git
 pkgver=r22.01297f8
