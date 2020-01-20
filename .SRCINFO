@@ -1,0 +1,16 @@
+pkgbase = tpfand-git
+	pkgdesc = Fan controller daemon for ThinkPads
+	pkgver = 0.93.r0.fa48281
+	pkgrel = 1
+	url = https://github.com/StefanNyman/tpfand
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = tpfand
+	conflicts = tpfand
+	source = git+https://github.com/StefanNyman/tpfand.git
+	md5sums = SKIP
+
+pkgname = tpfand-git
+
