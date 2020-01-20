@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.4.12
+pkgver=5.4.13
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -79,41 +79,43 @@ source=(
 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
 0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-0004-PCI-pciehp-Do-not-disable-interrupt-twice-on-suspend.patch
-0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-0009-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-0010-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-0011-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
-0012-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
-0013-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
-0014-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
+0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
+0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
+0011-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+0012-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
+0013-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
+0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
+0015-ptp-free-ptp-device-pin-descriptors-properly.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('d9c3c7a2d52d25c24cbca0f89d55511422d3d207c573d42ec58f7f17c948d0fb'
+sha256sums=('49fb29d96d7e7c1d7e6082701bd26bfddd0fbc87a796fb6ba6258bc5fd386ad7'
             'SKIP'
-            'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
+            '8470e238fcecbb03fdbadb35e6bfea5d09413f3f5ba38fa50ea600fd8f01abd1'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee'
-            '0ee10a8bce75e243f20dcae2bf627325a65b0a725fc4af70b585e170a4c5b984'
-            '1bc6c7503d5e30196ccb2210bbd9d17d73c245afa82a671d4ccf14796047cca6'
-            '4dddac706c4983bd9ddd67aafc08d4b17d0cd9d929be14d92586dfacdb0f37fb'
-            '66a5cdff9a5a83d4f691f38b18a06bf373c32be9200ca8708eddde560fc8f33d'
-            '4073da89517a8e25ceb63c686c0f4b5a3988ad91d4bfa7977a508e6f41dd56da'
-            'd32cca150a2ccb9e5b144769e75ef7a7b851f3cd4a8357c1cd8e6a9f5eac6f31'
-            '44ddfe0a758b2019bfc1bab5a20eabf93169c7e8752229b21b586501417e6ba7'
-            '5d015f7c3531ca1b71af816f61f7ebe136aea27d9e512428b63d900a62ff1da7'
-            '14d906805171e5dd48e68554211f1f16ed11072cd7e53a64b072966c55cedd4f'
-            '1723977a803dbccaab2304ea40f709f4a6dea8e14b13208563b0258a1928fa61'
-            'de47a6abdd33b662002016d384ea173c524dc8992c28ef6e2aca5d46141e6171'
-            '1cc21b1d55521e812b498d345e39d762e294ee52d344610b08ad3a8596119dae'
-            '75a804ea7e28b3794ce11122dd4fcf80652e115ee7f3b785f8f7853fd7869881')
+            'a8260a0cd688f145837510955df5bf1bad8e1a126fb2240a05cb33a524caff39'
+            '134df0458cfa0a1c9b5d68539fef58a5595b3c817cbf529f2216bdf5e9c513bf'
+            '0542389de25b787577c0042a17c0e667eeadadc5670abd8357dd60a5d5d99d36'
+            '59d4cff52a7c37429ab167d358d8bda44b1927361cd403be61bc5e8fc484d34b'
+            '6f88dfdbcd28e8bd216d1011605288651463e0de4c189c870785064c86d53bc9'
+            'd03ffe961a87b513a882fc77d40ec04465691bdb74f8d29d175e8cf8e08dff9e'
+            'b5f0c411c6537ffa77fee21bf5b89a603317361844149cd17d55e41522d62632'
+            'ee5d63c50646143c869efd74c205126e26a312d28b21ea6d151b89a4083b79ed'
+            'f031e429df53762f52e3fff252aea566f6a145d631cfd0486d5e7ce55987e999'
+            '0c91c462945bb6fc979ada9f81c957a299541ed0145ad948ab62827faf0235ec'
+            'a1e0bd8cb85b948e2d9d4b47eb8652d45bc62fed2057c2d4119a23ac91fd87ef'
+            '80d3ced391fe7c7d185188a99935e48b78151be0c562bdb107b09eb20f4e8499'
+            'fe3f7b524a1b03f53bcf2a67419682c3d843519176605603b45e99b70bd48ba0'
+            'ef11e3682c1c6c89de0afb6da04d8191536ba79351051ec16061ed83eb69a10a'
+            '19c9357b886857ba90928fb720b555d648f6434fa434adaf8f522ec8465246ad')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -122,7 +124,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd linux-${pkgver}
 
-  msg2 "Setting version..."
+  echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -132,11 +134,11 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = 0*.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
@@ -149,7 +151,7 @@ prepare() {
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
-  msg2 "Patching with ck patchset..."
+  echo "Patching with ck patchset..."
 
   # ck patchset itself
   patch -Np1 -i ../"${_ckpatch}"
@@ -159,7 +161,7 @@ prepare() {
   make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
-  msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
+  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
   if [ -n "$_subarch" ]; then
@@ -174,16 +176,16 @@ prepare() {
   # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
       if [ -f $HOME/.config/modprobed.db ]; then
-        msg2 "Running Steven Rostedt's make localmodconfig now"
+        echo "Running Steven Rostedt's make localmodconfig now"
         make LSMOD=$HOME/.config/modprobed.db localmodconfig
       else
-        msg2 "No modprobed.db data found"
+        echo "No modprobed.db data found"
         exit
       fi
     fi
 
   make -s kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -209,7 +211,7 @@ _package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   #install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -221,13 +223,13 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -240,7 +242,7 @@ _package-headers() {
   cd linux-${pkgver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -253,7 +255,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -269,10 +271,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -280,16 +282,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -304,11 +306,11 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 

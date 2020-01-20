@@ -1,7 +1,7 @@
-From 466961b7872771f84a86f2304197d303ed749925 Mon Sep 17 00:00:00 2001
+From 7ff6d556c831f5f909b3315974816a45a3802670 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Thu, 3 Oct 2019 11:55:31 +0300
-Subject: [PATCH 10/15] drm/i915: extend audio CDCLK>=2*BCLK constraint to more
+Subject: [PATCH 09/16] drm/i915: extend audio CDCLK>=2*BCLK constraint to more
  platforms
 
 The CDCLK>=2*BCLK constraint applies to all generations since gen10.
