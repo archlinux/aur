@@ -8,6 +8,8 @@ pkgdesc="Lists recursive library dependencies for an ELF executable"
 url="https://bitbucket.org/mpyne/${pkgname}/"
 arch=('x86_64')
 license=('GPL2')
+makedepends=('cmake')
+depends=('qt5-base')
 source=("https://bitbucket.org/mpyne/${pkgname}/get/${pkgver}.tar.gz")
 sha512sums=('43e22806f137f87ba64cfbebd8dabbacae92b2b79776431b6feb546deca872c2d1d03e3554744f006ad68f42fb4fbd4cd270f45e55191c230d6359bafd62c848')
 build() {
