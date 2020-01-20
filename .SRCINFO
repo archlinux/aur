@@ -1,0 +1,12 @@
+pkgbase = elflibviewer
+	pkgdesc = Lists recursive library dependencies for an ELF executable
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://bitbucket.org/mpyne/elflibviewer/
+	arch = x86_64
+	license = GPL2
+	source = https://bitbucket.org/mpyne/elflibviewer/get/0.10.tar.gz
+	sha512sums = 43e22806f137f87ba64cfbebd8dabbacae92b2b79776431b6feb546deca872c2d1d03e3554744f006ad68f42fb4fbd4cd270f45e55191c230d6359bafd62c848
+
+pkgname = elflibviewer
+
