@@ -1,11 +1,11 @@
 # Maintainerr: TransistorLogic <liuhongwu2003@outlook.com>
 
-pkgname=cyaron
+pkgname=python-cyaron
 pkgver=0.4.2
 pkgrel=1
 pkgdesc="CYaRon: Yet Another Random Olympic-iNformatics test data generator, A library for automatically generating test data for Online Judge, Olympic Informatics or automatic application testing"
 url="https://www.luogu.org/"
-depends=('python' )
+depends=('python' 'python-colorful' 'python-xeger')
 makedepends=('python3' )
 license=('LGPLv3')
 arch=('any')
