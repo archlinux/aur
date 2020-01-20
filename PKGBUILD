@@ -12,16 +12,16 @@ depends=('python-pyqt5' 'python-qtpy')
 optdepends=('code' 'atom')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/daehruoydeef/Yin-Yang")
+source=("${pkgname%-git}::git+https://github.com/daehruoydeef/Yin-Yang")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/Yin-Yang"
+	cd "$srcdir/${pkgname%-git}"
 	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
-	cd "$srcdir/Yin-Yang"
+	cd "$srcdir/${pkgname%-git}"
 	install -d "$pkgdir"/{opt/"${pkgname%-git}",usr/bin,usr/share/applications}
 	cp -r ./* "$pkgdir/opt/${pkgname%-git}"
 	rm -rf "$pkgdir/opt/${pkgname%-git}"/{build,install.sh,uninstall.sh}

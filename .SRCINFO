@@ -11,7 +11,7 @@ pkgbase = yin-yang-git
 	optdepends = atom
 	provides = yin-yang
 	conflicts = yin-yang
-	source = git+https://github.com/daehruoydeef/Yin-Yang
+	source = yin-yang::git+https://github.com/daehruoydeef/Yin-Yang
 	md5sums = SKIP
 
 pkgname = yin-yang-git
