@@ -1,0 +1,6 @@
+post_install() {
+	echo "Find upstream install instructions here:"
+	echo "    https://github.com/spl0k/supysonic#as-an-apache-wsgi-application"
+	echo "A sample apache WSGI config has been installed to:"
+	echo "    /usr/share/doc/supysonic/apache-wsgi.conf"
+}

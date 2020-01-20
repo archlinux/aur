@@ -1,0 +1,13 @@
+[Unit]
+Description=Supysonic Daemon
+;After=mariadb.service
+;After=postgresql.service
+
+[Service]
+User=supysonic
+Group=supysonic
+WorkingDirectory=/var/lib/supysonic
+ExecStart=/usr/bin/env python -m supysonic.daemon
+
+[Install]
+WantedBy=multi-user.target
