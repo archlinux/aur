@@ -3,7 +3,7 @@
 
 pkgname=baralga
 _pkgname=${pkgname/b/B}
-pkgver=1.8.0
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="A simple and lightweight time tracking solution for freelancers and consultants"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('java-runtime')
 options=(emptydirs)
 source=(https://github.com/${_pkgname}/${pkgname}/releases/download/v${pkgver}/${_pkgname}-Portable-${pkgver}.zip)
-md5sums=('f45f1ddd5a27538f46b4a2788f99715c')
+sha512sums=('a786ead107f075b56e0f0965e603a9eaacf6bab541094d5d0707dd396e1a1b28708a96eef2bbf5338a1fc2c6c725ee5da5bc774cf1c1db56618ea12c775bac77')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
