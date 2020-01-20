@@ -1,0 +1,76 @@
+diff --git i/tensorflow/python/eager/pywrap_tensor.cc w/tensorflow/python/eager/pywrap_tensor.cc
+--- i/tensorflow/python/eager/pywrap_tensor.cc
++++ w/tensorflow/python/eager/pywrap_tensor.cc
+@@ -768,7 +768,7 @@ static PyTypeObject _EagerTensorType = {
+     "EagerTensor",                      /* tp_name */
+     sizeof(EagerTensor),                /* tp_basicsize */
+     0,                                  /* tp_itemsize */
+     (destructor)EagerTensor_dealloc,    /* tp_dealloc */
+-    nullptr,                            /* tp_print */
++    0,					 /* tp_print */
+     nullptr,                            /* tp_getattr */
+     nullptr,                            /* tp_setattr */
+
+diff --git i/tensorflow/python/eager/pywrap_tfe_src.cc w/tensorflow/python/eager/pywrap_tfe_src.cc
+index ba9d8a36b0..cf66579634 100644
+--- i/tensorflow/python/eager/pywrap_tfe_src.cc
++++ w/tensorflow/python/eager/pywrap_tfe_src.cc
+@@ -1266,7 +1266,7 @@ static PyTypeObject TFE_Py_Tape_Type = {
+     sizeof(TFE_Py_Tape),                          /* tp_basicsize */
+     0,                                            /* tp_itemsize */
+     &TFE_Py_Tape_Delete,                          /* tp_dealloc */
+-    nullptr,                                      /* tp_print */
++    0,                              		   /* tp_print */
+     nullptr,                                      /* tp_getattr */
+     nullptr,                                      /* tp_setattr */
+     nullptr,                                      /* tp_reserved */
+diff --git i/tensorflow/python/lib/core/bfloat16.cc w/tensorflow/python/lib/core/bfloat16.cc
+index fde3a83770..6b0a657b30 100644
+--- i/tensorflow/python/lib/core/bfloat16.cc
++++ w/tensorflow/python/lib/core/bfloat16.cc
+@@ -310,7 +310,7 @@ PyTypeObject PyBfloat16_Type = {
+     sizeof(PyBfloat16),                        // tp_basicsize
+     0,                                         // tp_itemsize
+     nullptr,                                   // tp_dealloc
+-    nullptr,                                   // tp_print
++    0,                                   // tp_print
+     nullptr,                                   // tp_getattr
+     nullptr,                                   // tp_setattr
+     nullptr,                                   // tp_compare / tp_reserved
+diff --git i/tensorflow/python/lib/core/ndarray_tensor_bridge.cc w/tensorflow/python/lib/core/ndarray_tensor_bridge.cc
+index 16f6934186..70fe28d563 100644
+--- i/tensorflow/python/lib/core/ndarray_tensor_bridge.cc
++++ w/tensorflow/python/lib/core/ndarray_tensor_bridge.cc
+@@ -82,7 +82,7 @@ PyTypeObject TensorReleaserType = {
+     0,                                /* tp_itemsize */
+     /* methods */
+     TensorReleaser_dealloc,      /* tp_dealloc */
+-    nullptr,                     /* tp_print */
++    0,                     /* tp_print */
+     nullptr,                     /* tp_getattr */
+     nullptr,                     /* tp_setattr */
+     nullptr,                     /* tp_compare */
+diff --git i/tensorflow/python/platform/tf_logging.py w/tensorflow/python/platform/tf_logging.py
+index 86a4957c9d..0bc41309c7 100644
+--- i/tensorflow/python/platform/tf_logging.py
++++ w/tensorflow/python/platform/tf_logging.py
+@@ -45,7 +45,18 @@ def _get_caller(offset=3):
+ 
+ 
+ # The definition of `findCaller` changed in Python 3.2
+-if _sys.version_info.major >= 3 and _sys.version_info.minor >= 2:
++# and further changed in Python 3.8
++if _sys.version_info.major >= 3 and _sys.version_info.minor >= 8:
++  def _logger_find_caller(stack_info=False, stacklevel=1):  # pylint: disable=g-wrong-blank-lines
++    code, frame = _get_caller(4)
++    sinfo = None
++    if stack_info:
++      sinfo = '\n'.join(_traceback.format_stack())
++    if code:
++      return (code.co_filename, frame.f_lineno, code.co_name, sinfo)
++    else:
++      return '(unknown file)', 0, '(unknown function)', sinfo
++elif _sys.version_info.major >= 3 and _sys.version_info.minor >= 2:
+   def _logger_find_caller(stack_info=False):  # pylint: disable=g-wrong-blank-lines
+     code, frame = _get_caller(4)
+     sinfo = None
