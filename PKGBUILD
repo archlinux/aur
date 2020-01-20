@@ -3,13 +3,13 @@
 
 pkgname=vscodium-bin
 pkgver=1.41.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
 license=('MIT')
 depends=(
-        fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss gconf
+        fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss
         'glibc>=2.28-4'
         )
 optdepends=(
