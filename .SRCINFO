@@ -1,10 +1,11 @@
 pkgbase = python-pyautogui
 	pkgdesc = A cross-platform GUI automation Python module for human beings
 	pkgver = 0.9.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/asweigart/pyautogui
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python-pymsgbox
 	depends = python-pyscreeze
 	depends = python-pytweening
