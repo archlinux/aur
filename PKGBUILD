@@ -2,7 +2,7 @@
 
 pkgname=streamlink-twitch-gui-git
 _pkgname=streamlink-twitch-gui
-pkgver=2066.a5d2487d
+pkgver=2263.48fe766f
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -10,22 +10,8 @@ url="https://github.com/streamlink/streamlink-twitch-gui"
 license=("MIT")
 provides=("streamlink-twitch-gui")
 conflicts=("streamlink-twitch-gui")
-depends=(
-	"alsa-lib"
-	"gconf"
-	"glib2"
-	"gtk3"
-	"libxtst"
-	"nss"
-	"streamlink"
-)
-makedepends=(
-	"git"
-	"nodejs"
-	"yarn"
-	"grunt-cli"
-	"rsync"
-)
+depends=("gtk3" "libxss" "nss" "streamlink")
+makedepends=("git" "nodejs" "yarn" "grunt-cli")
 options=(!strip)
 source=(${_pkgname}::"git+https://github.com/streamlink/${_pkgname}.git")
 sha256sums=("SKIP")
@@ -51,15 +37,15 @@ package() {
 		"${pkgdir}/usr/bin/" \
 		"${pkgdir}/usr/share/applications/"
 
-	# copy application content and ignore certain files and dirs
-	rsync -a \
-		--exclude "start.sh" \
-		--exclude "add-menuitem.sh" \
-		--exclude "remove-menuitem.sh" \
-		--exclude "credits.html" \
-		--exclude "icons" \
-		"${builddir}/" \
-		"${pkgdir}/opt/${_pkgname}/"
+	# copy licenses
+	install -Dm644 \
+		-t "${pkgdir}/usr/share/licenses/${pkgname}/" \
+		"${srcdir}/${_pkgname}/LICENSE" \
+		"${builddir}/credits.html"
+
+	# copy application content and remove unneeded files and dirs
+	cp -a "${builddir}/." "${pkgdir}/opt/${_pkgname}/"
+	rm -r "${pkgdir}/opt/${_pkgname}/"{{add,remove}-menuitem.sh,credits.html,icons/}
 
 	# create custom start script and disable version check
 	cat > "${pkgdir}/usr/bin/${_pkgname}" <<-EOF
@@ -87,10 +73,4 @@ package() {
 		Exec=/usr/bin/${_pkgname}
 		Icon=${_pkgname}
 	EOF
-
-	# copy licenses
-	install -Dm644 \
-		-t "${pkgdir}/usr/share/licenses/${_pkgname}/" \
-		"${srcdir}/${_pkgname}/LICENSE" \
-		"${builddir}/credits.html"
 }
