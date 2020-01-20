@@ -2,7 +2,7 @@
 
 pkgname=gogios-bin
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
 url="https://angrysysadmins.tech"
@@ -11,16 +11,17 @@ optdepends=(
 	'nginx'
 	'nmap'
 )
-source=("https://github.com/BKasin/Gogios/releases/download/${pkgver}/gogios_${pkgver}-${pkgrel}_amd64.deb")
+source=("https://github.com/BKasin/gogios/releases/download/${pkgver}/gogios-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-noextract=("gogios_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('b182b942c9bf06a59fa76d86cdb8ae366d94d4dedeb80215506fdcda516f0075')
+noextract=("gogios-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
+sha256sums=('0e47c0b67d69d12b82e101b55b98717f1c1eb50640d35da2071160a69375a5ee')
 provides=('gogios')
 conflicts=('gogios')
 
 package() {
-    bsdtar -O -xf gogios_${pkgver}-${pkgrel}_amd64.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+    tar -xf gogios-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz -C "${pkgdir}"
+    rm "${pkgdir}"/{.MTREE,.PKGINFO,.INSTALL}
 
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +

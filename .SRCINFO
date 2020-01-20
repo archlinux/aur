@@ -1,7 +1,7 @@
 pkgbase = gogios-bin
 	pkgdesc = Checks to see if required services are still running on important machines.
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://angrysysadmins.tech
 	install = gogios-bin.install
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gogios-bin
 	optdepends = nmap
 	provides = gogios
 	conflicts = gogios
-	noextract = gogios_2.2-1_amd64.deb
+	noextract = gogios-2.2-2-x86_64.pkg.tar.xz
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/BKasin/Gogios/releases/download/2.2/gogios_2.2-1_amd64.deb
-	sha256sums = b182b942c9bf06a59fa76d86cdb8ae366d94d4dedeb80215506fdcda516f0075
+	source = https://github.com/BKasin/gogios/releases/download/2.2/gogios-2.2-2-x86_64.pkg.tar.xz
+	sha256sums = 0e47c0b67d69d12b82e101b55b98717f1c1eb50640d35da2071160a69375a5ee
 
 pkgname = gogios-bin
 
