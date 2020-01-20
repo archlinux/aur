@@ -1,0 +1,20 @@
+pkgbase = jesc-configurator-bin
+	pkgdesc = Application for JESC BLHeli firmware flashing and configuration.
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/jflight-public/jesc-configurator
+	install = jesc-configurator.install
+	arch = x86_64
+	license = GPL3
+	options = !strip
+	source = https://github.com/jflight-public/jesc-configurator/releases/download/v1.2.6/JESC-Configurator_linux64_1.2.6.zip
+	source = https://raw.githubusercontent.com/jflight-public/jesc-configurator/master/images/icon_128.png
+	source = https://raw.githubusercontent.com/jflight-public/jesc-configurator/master/LICENSE
+	source = jesc-configurator.desktop
+	sha256sums = 1620f6d932570f7ac333a8478501cf8af4204e0674c906110bec1be73f8cfc49
+	sha256sums = 0356279bd144225c42ad1605b02913ea013762d3de19e78e27281f966e4da947
+	sha256sums = SKIP
+	sha256sums = f514db9961d673825c381775fd0ef69e4a59ea0613d64b565a348c295be9fc19
+
+pkgname = jesc-configurator-bin
+

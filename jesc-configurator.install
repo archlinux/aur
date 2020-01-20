@@ -1,0 +1,4 @@
+## arg 1:  the new package version
+post_install() {
+  printf "\nVisit https://jflight.net, to purchase the required Telemetry licenses.\n\n"
+}

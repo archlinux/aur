@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=JESC Configurator
+Comment=Application for JESC ESC firmware flashing and configuration.
+Exec=/opt/jesc-configurator/jesc-configurator
+Icon=/opt/jesc-configurator/jesc_icon_128.png
+Terminal=false
+Type=Application
+Categories=Utility;Electronics;RemoteAccess;
