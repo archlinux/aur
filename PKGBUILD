@@ -5,7 +5,7 @@
 
 pkgname=betterdiscord
 pkgver=0.2.82.r450.1a6648eb
-pkgrel=0
+pkgrel=1
 pkgdesc='Discord extension that introduces new features like BTTV emotes and plugin support.'
 arch=('any')
 url='https://betterdiscord.net/home/'
@@ -13,9 +13,9 @@ license=('MIT')
 depends=('discord')
 makedepends=('asar')
 install='BetterDiscord.install'
-source=('git+https://github.com/Jiiks/BetterDiscordApp.git#commit=1a6648ebf03cd49daf8f31d9678d6d628204244d' LICENSE)
-md5sums=('SKIP'
-         '8414480728c5dc0d4ca9a93cfaf67acb')
+source=('git+https://github.com/Jiiks/BetterDiscordApp.git#commit=4114a6ee266d7ec5c6d980b200e282b9d2c28b7e' LICENSE)
+sha512sums=('SKIP'
+            'e2bb20271117ebef69eab2d505204dcfb83334e596c5ce02e5f5e1950ba502b9485ebb2005f9df74ac692ba4a99cce869942611b07bba4d588247d53bd21efcc')
 
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
