@@ -1,0 +1,18 @@
+pkgbase = gogios-plugins-bin
+	pkgdesc = Plugins for the gogios checking system.
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://angrysysadmins.tech
+	arch = x86_64
+	license = MIT
+	optdepends = nmap
+	provides = gogios-plugins
+	conflicts = gogios-plugins
+	noextract = gogios-plugins-2.2-1-x86_64.pkg.tar.xz
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/BKasin/gogios-plugins/releases/download/2.2/gogios-plugins-2.2-1-x86_64.pkg.tar.xz
+	sha256sums = 504e6c72cf9b39c7dd59127e7f20641f0fb6a7d25fc98955be087503eaa26daf
+
+pkgname = gogios-plugins-bin
+
