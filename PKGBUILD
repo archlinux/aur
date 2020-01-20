@@ -2,7 +2,7 @@
 # Maintainerr: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="A PopBall"
