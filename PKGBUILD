@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Gryzinski <rogryza@gmail.com>
 
 pkgname=ghcide
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="A library for building Haskell IDE tooling"
 arch=('x86_64')
