@@ -4,7 +4,7 @@
 
 pkgname=epiphany-pantheon
 pkgver=3.35.2+1+g16a4219dc
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)"
 url="https://wiki.gnome.org/Apps/Web"
 arch=(x86_64)
@@ -15,6 +15,7 @@ makedepends=(docbook-xml startup-notification lsb-release gobject-introspection 
 checkdepends=(xorg-server-xvfb)
 groups=(pantheon)
 provides=(epiphany="${pkgver}" epiphany-sync)
+conflicts=('epiphany')
 _commit=16a4219dcb44b23d23c9ebe69ad466cb2ea7e597 # tags/3.35.2+1
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=$_commit"
         epiphany-sync{,.service}

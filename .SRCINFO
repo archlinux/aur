@@ -1,7 +1,7 @@
 pkgbase = epiphany-pantheon
 	pkgdesc = A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
 	pkgver = 3.35.2+1+g16a4219dc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Apps/Web
 	arch = x86_64
 	groups = pantheon
@@ -22,6 +22,7 @@ pkgbase = epiphany-pantheon
 	depends = gst-plugins-base
 	provides = epiphany=3.35.2+1+g16a4219dc
 	provides = epiphany-sync
+	conflicts = epiphany
 	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=16a4219dcb44b23d23c9ebe69ad466cb2ea7e597
 	source = epiphany-sync
 	source = epiphany-sync.service
