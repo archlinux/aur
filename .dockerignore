@@ -1,0 +1,7 @@
+.git/
+**/*
+!**/.gitignore
+!**/.dockerignore
+!**/PKGBUILD
+!**/.SRCINFO
+!**/Dockerfile
