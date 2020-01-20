@@ -18,7 +18,7 @@ pkgbase = whatsapp-nativefier-dark
 	source = whatsapp-nativefier-dark-inject.js
 	sha256sums = 3899581abcfed9b40b7208bbbca8bdbfe3ae9655980dbf55f04dec9cb3309f27
 	sha256sums = 61f0033b6ac363699620065b18d54b922bc597c243667adafa61f8545839e0ad
-	sha256sums = ed4727b01f02f6b65285e27a12c239dbc2df42a51f68de7400524d080ba14f10
+	sha256sums = 49cbfdd4423fa129fb6cf715841d359bc879022bbba6715c78535c467b097bd6
 
 pkgname = whatsapp-nativefier-dark
 
