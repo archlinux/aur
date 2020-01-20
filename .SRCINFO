@@ -1,25 +1,24 @@
 pkgbase = rivet
 	pkgdesc = A particle physics package for data analysis and validation of Monte Carlo event generators
-	pkgver = 2.7.2
-	pkgrel = 3
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = http://rivet.hepforge.org
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = cython
 	depends = python
-	depends = yoda>=1.7.5
+	depends = yoda>=1.8.0
 	depends = fastjet
 	depends = gsl
-	depends = hepmc
+	depends = hepmc3
+	depends = fastjet-contrib
 	optdepends = texlive-core: Plotting functionality
 	optdepends = ghostscript: PDF plot output
 	optdepends = imagemagick: PNG plot output
 	optdepends = python2: For Python2 module in addition to Python3
-	source = http://www.hepforge.org/archive/rivet/Rivet-2.7.2.tar.gz
-	source = rivet-python3.patch
-	md5sums = 9b4061fbb79791045ffdff6b16c8272a
-	md5sums = e9476790ce0f6709713561583a8fbc10
+	source = http://www.hepforge.org/archive/rivet/Rivet-3.1.0.tar.gz
+	md5sums = d5eb0e69aa3fdf44f5925419e0d40dc9
 
 pkgname = rivet
 
