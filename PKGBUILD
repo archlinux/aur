@@ -1,7 +1,7 @@
 # Maintainer: Iztech LLC <iztech@iztech.ru>
 pkgname=mit8
 orgname=Iztech
-pkgver=3.0.60
+pkgver=3.0.61
 pkgrel=2
 pkgdesc="Программа для управления измерителями температуры серии МИТ-8 производства ООО ИзТех"
 url="https://www.iztech.ru"
@@ -12,7 +12,7 @@ replaces=("mit30")
 arch=("x86_64")
 options=("strip")
 source=("$url/content/files/app/$pkgname-latest-x86_64.tar.gz")
-md5sums=("e79b6d544c27dfa8a5dec113f54a55b9")
+md5sums=("a6a806b27da858878b8e463124dae9fd")
 
 
 package() {
