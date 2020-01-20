@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
 pkgver=2.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Web content engine library optimized for embedded devices'
-arch=(x86_64 i686 aarch64)
+arch=(x86_64 i686 aarch64 armv7l armv7h)
 url='https://wpewebkit.org'
 license=(custom)
 groups=(wpe)

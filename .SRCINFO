@@ -1,11 +1,13 @@
 pkgbase = wpewebkit
 	pkgdesc = Web content engine library optimized for embedded devices
 	pkgver = 2.26.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wpewebkit.org
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7l
+	arch = armv7h
 	groups = wpe
 	license = custom
 	makedepends = gperf
