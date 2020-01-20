@@ -1,14 +1,14 @@
 pkgname=wishbone-tool
-pkgver=0.4.8
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Utilities for working with a Wishbone bridge'
 arch=(x86_64)
-url='https://github.com/xobs/wishbone-utils'
-license=(custom:BSD2clause)
+url='https://github.com/litex-hub/wishbone-utils'
+license=(custom)
 depends=(gcc-libs)
 makedepends=(rust)
-source=(wishbone-tool-$pkgver.tar.gz::https://github.com/xobs/wishbone-utils/archive/v$pkgver.tar.gz)
-sha256sums=('10df4ad34c1f7b1587beba9dd4b7e96b7936fbc672723c9a7af871c34e2af400')
+source=(wishbone-tool-$pkgver.tar.gz::https://github.com/litex-hub/wishbone-utils/archive/v$pkgver.tar.gz)
+sha256sums=('bdd9b817dff6f228f3bf8f192044680c2009ddc6288841be1ecffe0d9afaf063')
 
 build(){
 	cd "$srcdir/wishbone-utils-$pkgver/wishbone-tool"
