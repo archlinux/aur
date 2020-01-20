@@ -1,0 +1,23 @@
+pkgbase = ripgrep-all-git
+	pkgdesc = rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
+	pkgver = 0.9.4.alpha.0.154.g235ee0a
+	pkgrel = 1
+	url = https://github.com/phiresky/ripgrep-all
+	arch = i686
+	arch = x86_64
+	license = AGPL3
+	makedepends = cargo
+	makedepends = git
+	depends = ripgrep
+	optdepends = ffmpeg
+	optdepends = pandoc
+	optdepends = poppler
+	optdepends = tesseract
+	optdepends = imagemagick
+	conflicts = ripgrep-all
+	conflicts = ripgrep-all-bin
+	source = ripgrep-all-git::git+https://github.com/phiresky/ripgrep-all
+	sha1sums = SKIP
+
+pkgname = ripgrep-all-git
+
