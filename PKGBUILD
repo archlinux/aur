@@ -3,7 +3,7 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -62,14 +62,14 @@ package() {
 		"$pkgdir/usr/share/fish/completions/cheat.fish"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/cheat-LICENSE"
 
-    install -dm755 "$pkgdir/usr/share/cheat/cheatsheets/community"
-    find "$srcdir/cheatsheets" \
-        -maxdepth 1 \
-        -type f \
-        -perm 644 \
-        -exec \
-            install -m644 "{}" \
-            "$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
+	install -dm755 "$pkgdir/usr/share/cheat/cheatsheets/community"
+	find "$srcdir/cheatsheets" \
+		-maxdepth 1 \
+		-type f \
+		-perm 644 \
+		-exec \
+			install -m644 "{}" \
+			"$pkgdir/usr/share/$pkgname/cheatsheets/community/" \;
 	install -Dm644 "$srcdir/conf.yml" -t "$pkgdir/etc/cheat"
 	install -Dm644 "$srcdir/LICENSE.txt" \
 		"$pkgdir/usr/share/licenses/$pkgname/cheatsheets-LICENSE"
