@@ -1,0 +1,12 @@
+pkgbase = bjumblr.lv2-git
+	pkgdesc = Pattern-controlled audio stream re-sequencer LV2 plugin
+	pkgver = r127.c8919dc
+	pkgrel = 1
+	url = https://github.com/sjaehn/BJumblr
+	arch = x86_64
+	license = GPL
+	source = bjumblr.lv2::git+https://github.com/sjaehn/BJumblr
+	md5sums = SKIP
+
+pkgname = bjumblr.lv2-git
+
