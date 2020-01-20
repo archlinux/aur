@@ -2,7 +2,7 @@
 # Contributor: Michael Thalmeier <michael@thalmeier.at>
 
 pkgname=curecoin-qt-git
-pkgver=v2.0.0.2.r2.gcb69996
+pkgver=v2.0.0.2.r5.gf9d54f9
 pkgrel=1
 pkgdesc="GUI client (wallet) for CureCoin cryptocurrency"
 arch=('x86_64' 'i686')
@@ -13,11 +13,9 @@ conflicts=('curecoin-qt')
 depends=('qt5-base' 'qt5-tools' 'miniupnpc' 'boost1.69-libs' 'openssl-1.0')
 makedepends=('boost1.69' 'db' 'git')
 source=("git+https://github.com/cygnusxi/CurecoinSource.git#branch=master"
-        "0001-miniupnpc.patch"
         "curecoin.desktop")
 
 sha256sums=('SKIP'
-            'ef598aee46b5ad12b43db8942c08ef2cbece002efa731394066ebff654bea5e1'
             '47e4c7305240dd16361d922bf6bc3a86ee53d7e0bc43bdf12c341ea0b7968387')
 
 pkgver() {
@@ -32,9 +30,6 @@ prepare() {
   # Switch to OpenSSL 1.0
   echo "INCLUDEPATH += /usr/include/openssl-1.0" >> "curecoin-qt.pro"
   echo "LIBS += -L/usr/lib/openssl-1.0 -lcrypto -lz" >> "curecoin-qt.pro"
-
-  # Fix compilation error with miniupnpc v 1.9
-  patch -p1 <"${srcdir}/0001-miniupnpc.patch"
 }
 
 build() {
