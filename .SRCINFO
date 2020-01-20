@@ -9,8 +9,8 @@ pkgbase = python-pyabf
 	depends = python
 	depends = python-numpy
 	depends = python-matplotlib
-	source = https://files.pythonhosted.org/packages/80/b1/35fef1d7f04aa3235ef9e487d4391d325103ba743e47a22cbfaf3a86753d/pyabf-2.2.1.tar.gz
-	sha256sums = b49bb767dbc3f3e47d073c3efaca82f1bb69fbfc54982d3375210323cfafd3d4
+	source = https://files.pythonhosted.org/packages/e2/1d/c404e7fdf9505959a5dab664457275b00c5cbfe777e85356b0aadede2430/pyabf-2.2.1.tar.gz
+	sha256sums = a34c63732be1804367a5ace9a76e1252c105a2544f7ec9206e196b0163a2e79f
 
 pkgname = python-pyabf
 
