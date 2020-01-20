@@ -1,28 +1,41 @@
 # Maintainer: Tom Zander
 
 pkgname=fulcrum
-pkgver=1.0
+pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Fulcrum"
+url='https://github.com/cculianu/Fulcrum'
 arch=('x86_64')
 license=('GPL3')
-depends=('qt5-base')
+depends=(
+  'qt5-base'
+  'rocksdb'
+  'python'
+)
 install=fulcrum.install
-backup=("etc/fulcrum.conf")
-source=("git+https://github.com/cculianu/Fulcrum.git"
+provides=("$pkgname")
+source=(
+    "Fulcrum-$pkgver.tar.gz::https://github.com/cculianu/Fulcrum/archive/v$pkgver.tar.gz"
     "fulcrum.conf"
-    )
-sha256sums=('SKIP'
-    '9e8feec3c2c4f87377a6e24112b5025108aadc6352e78488a4f4ab851a5da337'
+)
+sha256sums=('6f06020a14006bc3a200476c57fb1306b85d44b98fedd1285da903f61fd6e63c'
+    '2570cd9cabc9a31b1b7ec8210e62a1206d00d12bc162e8508f69575d396b202f'
 )
 
+_qmake_args="CONFIG+=release"
+
+prepare() {
+  cd "Fulcrum-$pkgver"
+  qmake -makefile features= Fulcrum.pro
+}
+
 build() {
-    cd "$srcdir/Fulcrum/"
-    qmake .
-    make
+  cd "Fulcrum-$pkgver"
+  make
 }
 
 package() {
-    install -Dm 775 "$srcdir/Fulcrum/Fulcrum" -T "$pkgdir/usr/bin/fulcrum"
+    install -Dm 775 "$srcdir/Fulcrum-$pkgver/Fulcrum" -T "$pkgdir/usr/bin/fulcrum"
+    install -Dm 775 "$srcdir/Fulcrum-$pkgver/FulcrumAdmin" -T "$pkgdir/usr/bin/fulcrum-admin"
     install -Dm 664 "$srcdir/fulcrum.conf" -t "$pkgdir/etc/"
 }

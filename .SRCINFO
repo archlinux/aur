@@ -1,16 +1,19 @@
 pkgbase = fulcrum
-	pkgdesc = Fulcrum
-	pkgver = 1.0
+	pkgdesc = A fast & nimble SPV server for Bitcoin Cash
+	pkgver = 1.0.1
 	pkgrel = 1
+	url = https://github.com/cculianu/Fulcrum
 	install = fulcrum.install
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
-	backup = etc/fulcrum.conf
-	source = git+https://github.com/cculianu/Fulcrum.git
+	depends = rocksdb
+	depends = python
+	provides = fulcrum
+	source = Fulcrum-1.0.1.tar.gz::https://github.com/cculianu/Fulcrum/archive/v1.0.1.tar.gz
 	source = fulcrum.conf
-	sha256sums = SKIP
-	sha256sums = 9e8feec3c2c4f87377a6e24112b5025108aadc6352e78488a4f4ab851a5da337
+	sha256sums = 6f06020a14006bc3a200476c57fb1306b85d44b98fedd1285da903f61fd6e63c
+	sha256sums = 2570cd9cabc9a31b1b7ec8210e62a1206d00d12bc162e8508f69575d396b202f
 
 pkgname = fulcrum
 
