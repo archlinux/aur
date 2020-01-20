@@ -1,4 +1,13 @@
-*.tar.xz
-/pkg
-/src
-*.tar.gz
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
