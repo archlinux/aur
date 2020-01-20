@@ -13,6 +13,7 @@ pkgbase = ninjas2-git
 	makedepends = jack
 	depends = libgl
 	depends = libsamplerate
+	depends = libsndfile
 	optdepends = jack: stand-alone JACK application
 	provides = ninjas2
 	conflicts = ninjas2
