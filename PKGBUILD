@@ -4,7 +4,7 @@ _projectname='electron'
 _pkgname="${_projectname}3"
 pkgname="$_pkgname-bin"
 pkgver='3.1.13'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Build cross platform desktop apps with web technologies - version 3 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org/"
@@ -40,13 +40,13 @@ sha256sums_aarch64=('e07b521b78bf1b8a798cf182da7d69addd4df14be1ba1b94f6ac2b8def0
 
 package() {
 	cd "$srcdir/"
-	install -dm755 "$pkgdir/usr/lib/$pkgname/"
-	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/$pkgname/." {} +
-	cp -r --no-preserve=ownership --preserve=mode 'locales/' "$pkgdir/usr/lib/$pkgname/locales/"
-	cp -r --no-preserve=ownership --preserve=mode 'resources/' "$pkgdir/usr/lib/$pkgname/resources/"
+	install -dm755 "$pkgdir/usr/lib/$_pkgname/"
+	find . -mindepth 1 -maxdepth 1 -type f ! -name "*.zip" ! -name "LICENSE*" -exec cp -r --no-preserve=ownership --preserve=mode -t "$pkgdir/usr/lib/$_pkgname/." {} +
+	cp -r --no-preserve=ownership --preserve=mode 'locales/' "$pkgdir/usr/lib/$_pkgname/locales/"
+	cp -r --no-preserve=ownership --preserve=mode 'resources/' "$pkgdir/usr/lib/$_pkgname/resources/"
 
 	install -dm755 "$pkgdir/usr/bin"
-	ln -nfs "/usr/lib/$pkgname/electron" "$pkgdir/usr/bin/$_pkgname"
+	ln -nfs "/usr/lib/$_pkgname/electron" "$pkgdir/usr/bin/$_pkgname"
 
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
