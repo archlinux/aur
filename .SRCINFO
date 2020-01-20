@@ -1,6 +1,6 @@
 pkgbase = arch-upgrade
 	pkgdesc = Desktop app to upgrade your Arch Linux system
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = https://github.com/bulletmark/arch-upgrade
 	install = install.sh
@@ -12,8 +12,8 @@ pkgbase = arch-upgrade
 	optdepends = zenity
 	optdepends = wmctrl
 	backup = etc/arch-upgrade.conf
-	source = arch-upgrade-1.17.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.17.tar.gz
-	md5sums = 16d85a7c7c9ea219bb713dcb9b4c48a0
+	source = arch-upgrade-1.18.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.18.tar.gz
+	md5sums = bf5a63724e20113685810f7a0eec9ee7
 
 pkgname = arch-upgrade
 
