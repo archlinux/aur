@@ -1,11 +1,11 @@
 # Maintainer: Sorah Fukumori <her@sorah.jp>
 pkgname=prometheus-remo-exporter
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Prometheus Nature Remo Exporter"
 arch=('x86_64')
 url="https://github.com/kenfdev/remo-exporter"
-license=('unknown')
+license=('MIT')
 makedepends=('go-pie' 'dep')
 backup=('etc/conf.d/prometheus-remo-exporter')
 source=(
