@@ -1,6 +1,6 @@
 pkgbase = gsequencer
 	pkgdesc = Advanced Gtk+ Sequencer
-	pkgver = 2.4.8
+	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://nongnu.org/gsequencer
 	arch = x86_64
@@ -8,6 +8,9 @@ pkgbase = gsequencer
 	license = GPL3
 	checkdepends = cunit
 	checkdepends = xorg-server-xvfb
+	depends = docbook-xsl
+	depends = webkit2gtk
+	depends = libsoup
 	depends = fftw
 	depends = ladspa
 	depends = dssi
@@ -16,12 +19,12 @@ pkgbase = gsequencer
 	depends = libsamplerate
 	depends = libinstpatch
 	depends = libpulse
-	depends = gtk2
+	depends = gtk3
 	provides = gsequencer
 	provides = midi2xml
 	conflicts = midi2xml
-	source = https://download.savannah.gnu.org/releases/gsequencer/2.4.x/gsequencer-2.4.8.tar.gz
-	md5sums = 731f13c905fdda8ed924bfb4023d0302
+	source = https://download.savannah.gnu.org/releases/gsequencer/3.0.x/gsequencer-3.0.7.tar.gz
+	md5sums = 055392bceae00d2747d1be6ad1749aec
 
 pkgname = gsequencer
 

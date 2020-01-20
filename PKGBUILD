@@ -5,19 +5,19 @@
 
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
-pkgver=2.4.8
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64' 'i686')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
-depends=('fftw' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk2')
+depends=('docbook-xsl' 'webkit2gtk' 'libsoup' 'fftw' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk3')
 checkdepends=('cunit' 'xorg-server-xvfb')
 provides=('gsequencer' 'midi2xml')
 conflicts=('midi2xml')
-source=("https://download.savannah.gnu.org/releases/gsequencer/2.4.x/$pkgname-$pkgver.tar.gz")
+source=("https://download.savannah.gnu.org/releases/gsequencer/3.0.x/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('731f13c905fdda8ed924bfb4023d0302')
+md5sums=('055392bceae00d2747d1be6ad1749aec')
 validpgpkeys=()
 
 prepare() {
@@ -26,8 +26,9 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --without-included-regex --with-threads=posix
+	./configure HTMLHELP_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/htmlhelp/htmlhelp.xsl --prefix=/usr --docdir=/usr/share/doc/gsequencer-doc
 	make
+	make html
 }
 
 check() {
@@ -37,5 +38,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make -j1 DESTDIR="$pkgdir/" install
+	make -j1 DESTDIR="$pkgdir/" install-html
 }
