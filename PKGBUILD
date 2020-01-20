@@ -1,9 +1,10 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034,SC2164,SC2154
 
 pkgname=openboard-git
 _fragment="#branch=master"
 pkgver=v1.5.3.r0.g426b1f7a
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64')
 url="http://openboard.ch/index.en.html"
@@ -30,18 +31,18 @@ md5sums=('SKIP'
          '04c421c140e983d41975943ede5fe61a'
          '21d1749400802f8fc0669feaf77de683'
          '30a7928f696f958d5e8f06e02c49639f'
-         '8b774d204501bb8515ee224651a7d624'
+         'ebddda8793f57b7b7e1402c5d271ed86'
          '879116c683374b2dde291014e44a29fe'
          '79afac7031634bf9e46ba67cbf2a2d0c')
 
 pkgver() {
-  cd $srcdir/OpenBoard
+  cd "$srcdir/OpenBoard"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $srcdir/OpenBoard
-  git apply -v $srcdir/*{diff,patch}
+  cd "$srcdir/OpenBoard"
+  git apply -v "$srcdir"/*{diff,patch}
 }
 
 build() {
@@ -53,16 +54,16 @@ build() {
 package() {
   cd "$srcdir/OpenBoard"
 
-  mkdir -p $pkgdir/opt/openboard
+  mkdir -p "$pkgdir/opt/openboard"
 
   for i in customizations etc i18n library; do
-    cp -rp $srcdir/OpenBoard/resources/$i $pkgdir/opt/openboard;
+    cp -rp "$srcdir/OpenBoard/resources/$i" "$pkgdir/opt/openboard"
   done 
 
-  cp -rp $srcdir/OpenBoard/resources/images/OpenBoard.png $pkgdir/opt/openboard/
-  cp -rp build/linux/release/product/OpenBoard $pkgdir/opt/openboard/
+  cp -rp "$srcdir/OpenBoard/resources/images/OpenBoard.png" "$pkgdir/opt/openboard/"
+  cp -rp "build/linux/release/product/OpenBoard" "$pkgdir/opt/openboard/"
 
-  install -D -m 644 $srcdir/openboard.desktop $pkgdir/usr/share/applications/openboard.desktop
-  install -d -m 755 $pkgdir/usr/bin
-  ln -s /opt/openboard/OpenBoard $pkgdir/usr/bin/openboard
+  install -D -m 644 "$srcdir/openboard.desktop" "$pkgdir/usr/share/applications/openboard.desktop"
+  install -d -m 755 "$pkgdir/usr/bin"
+  ln -s /opt/openboard/OpenBoard "$pkgdir/usr/bin/openboard"
 }
