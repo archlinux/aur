@@ -1,6 +1,6 @@
 pkgbase = sane-airscan-git
 	pkgdesc = SANE - Apple AirScan (eSCL) driver
-	pkgver = 0.9.10
+	pkgver = 0.9.11
 	pkgrel = 1
 	url = https://github.com/alexpevzner/sane-airscan
 	arch = aarch64
@@ -14,7 +14,6 @@ pkgbase = sane-airscan-git
 	depends = libxml2
 	depends = avahi
 	depends = gcc
-	depends = gcc-libs
 	depends = make
 	depends = pkgconf
 	provides = sane-airscan
