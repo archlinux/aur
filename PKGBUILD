@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=yoda
-pkgver=1.7.5
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A particle physics package for data analysis (specifically histogramming) classes."
 arch=('x86_64' 'i686')
@@ -10,12 +10,12 @@ depends=('python')
 optdepends=('python2: For Python2 module in addition to Python3')
 makedepends=('cython')
 source=(http://www.hepforge.org/archive/yoda/YODA-$pkgver.tar.gz)
-md5sums=('15568085598f41a35e0c21c2f63542d8')
+md5sums=('fcacc5832aac5baa29e6a69522bec0e4')
 
 build() {
   cd "$srcdir/YODA-$pkgver"
   # ## need to rebuild Python extension code with up-to-date Cython for Python 3.7
-  # ## will eventually be fixed upstream
+  # ## will eventually be fixed upstream (1.9.x)
   touch pyext/yoda/*.pyx
   ./configure --prefix=/usr
   make
