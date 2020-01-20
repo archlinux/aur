@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=avs-device-sdk
-pkgver=1.12
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="SDK for commercial device makers to integrate Alexa directly into connected products"
 arch=(x86_64 i686)
@@ -11,7 +11,7 @@ license=('Apache')
 makedepends=('cmake')
 depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs' 'snowboy' 'cblas')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexa/avs-device-sdk/archive/v${pkgver}.tar.gz")
-sha512sums=('9ea17eb76bbc6f4d478c33f1c2b4c7b4cd7250a07ea19a4795520e8f359df1fbe39bb18ff7fd97143eb95934eb62d87127c06029890c425c06ab57ab3fb4fe08')
+sha512sums=('b8e6f1931d120eb6e23068e5bb2e67857f3530a61ef5d56bb7e8799366bdbc4cef5eb6887697675ca4b1a76c5380b18bf1483e1dc3809f254dea5b9f53120cab')
 
 prepare() {
 	sed -i 's/blas/cblas/' "${srcdir}/avs-device-sdk-${pkgver}/KWD/KittAi/src/CMakeLists.txt"
