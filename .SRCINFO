@@ -1,7 +1,7 @@
 pkgbase = logtalk
 	pkgdesc = Object-Oriented Logic Programming Language
-	pkgver = 3.32.0
-	pkgrel = 3
+	pkgver = 3.34.0
+	pkgrel = 1
 	url = http://logtalk.org/
 	install = logtalk.install
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = logtalk
 	optdepends = gprolog: Prolog backend for logtalk
 	optdepends = yap: Prolog backend for logtalk
 	provides = logtalk
-	source = https://logtalk.org/files/logtalk-3.32.0.tar.bz2
-	sha256sums = ef2a218b82d1013f17236148f151b79a6a03ac9b7b34b27bcffc53e98bc6bac6
+	source = https://logtalk.org/files/logtalk-3.34.0.tar.bz2
+	sha256sums = 94cca31820514669c1e487f124f22ecf1708e9a1b24d0e2d54e9c1670694fc32
 
 pkgname = logtalk
 
