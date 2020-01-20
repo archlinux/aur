@@ -1,0 +1,18 @@
+pkgbase = bleachbit-py3-git
+	pkgdesc = Deletes unneeded files to free disk space and maintain privacy. Python 3 version.
+	pkgver = r4914.13ee23b7
+	pkgrel = 1
+	url = https://www.bleachbit.org/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = pygtk
+	depends = python-gobject
+	depends = gtk3
+	provides = bleachbit
+	conflicts = bleachbit
+	source = bleachbit::git+https://github.com/bleachbit/bleachbit.git
+	sha256sums = SKIP
+
+pkgname = bleachbit-py3-git
+
