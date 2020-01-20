@@ -1,6 +1,6 @@
 pkgbase = dmenu-lpass-nu
 	pkgdesc = dmenu script for lastpass-cli with account name and account user
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://smoolak.com/git/Smoolak/dmenu-lpass-nu
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dmenu-lpass-nu
 	depends = lastpass-cli
 	depends = dmenu
 	source = dmenu-lpass-nu-1.0.1.tar.gz::https://smoolak.com/git/Smoolak/dmenu-lpass-nu/archive/v1.0.1.tar.gz
-	sha256sums = 619ea06deb418f72fb09f88b64c9515208e83b2529d64d8801f32e0306ae71cf
+	sha256sums = b4312a8302314fbde2fc3d1f843d5bbed9c61ab1e7ac6e40df218e832ee7fc09
 
 pkgname = dmenu-lpass-nu
 
