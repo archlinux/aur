@@ -1,0 +1,14 @@
+pkgbase = lib_amxc-git
+	pkgdesc = Generic C-implementation of data containers
+	pkgver = v0.1.1.r3.g128ff19
+	pkgrel = 1
+	url = https://gitlab.com/proj_amx_01/libraries/lib_amxc
+	arch = any
+	license = MIT
+	provides = lib_amxc
+	conflicts = lib_amxc
+	source = lib_amxc-git::git+https://gitlab.com/proj_amx_01/libraries/lib_amxc.git#branch=master
+	md5sums = SKIP
+
+pkgname = lib_amxc-git
+
