@@ -1,0 +1,17 @@
+pkgbase = tailscale
+	pkgdesc = A mesh VPN that makes it easy to connect your devices, wherever they are.
+	pkgver = 0.94_236
+	pkgrel = 1
+	url = https://tailscale.com
+	arch = x86_64
+	license = custom
+	makedepends = rpmextract
+	depends = glibc
+	noextract = tailscale-0.94_236.rpm
+	backup = etc/default/tailscale-relay
+	backup = etc/tailscale/acl.json
+	source = tailscale-0.94_236.rpm::https://tailscale.com/files/dist/tailscale-relay-0.94-236.x86_64.rpm
+	sha256sums = b8e7505debba715f1a7c444715fbbbca5a6e3dd6515f35756006fa0daab3b9ea
+
+pkgname = tailscale
+
