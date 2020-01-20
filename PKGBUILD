@@ -23,7 +23,7 @@ package() {
 	cd "$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+#	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 #build() {
