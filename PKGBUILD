@@ -10,8 +10,8 @@ license=('Apache')
 depends=('light')
 provides=('lqsd')
 conflicts=('lqsd')
-source=("https://gitlab.com/ReekyMarko/lqsd/uploads/9e783ffe478273226f05b89f1c2ee8ab/lqsd")
-sha256sums=('f089bcfb18d2538486efc4954b8766d554170a194f32605ce2c939a49be292ff')
+source=("https://gitlab.com/ReekyMarko/lqsd/uploads/4f1dbc7ab8129d802ab0bc07180ec4c8/lqsd.tar.zst")
+sha256sums=('3d1fccf9f1fecdfe9a8615a8db13fcd890c800222b236a2366b678f91fe995ad')
 
 package() {
 	install -D -m755 "${progname}" "$pkgdir/usr/bin/${progname}"
