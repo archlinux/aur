@@ -16,7 +16,7 @@ makedepends=('python2-setuptools')
 install="$pkgname.install"
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/$pkgname/${pkgname^}/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver-$pkgrel-print.tar.gz::https://github.com/$pkgname/${pkgname^}-print/archive/$_printcommit.tar.gz"
+	"$pkgname-print-$pkgver-$pkgrel.tar.gz::https://github.com/$pkgname/${pkgname^}-print/archive/$_printcommit.tar.gz"
 	"$pkgname.sysusers"
 	"$pkgname.tmpfiles"
 	"$pkgname.service"
