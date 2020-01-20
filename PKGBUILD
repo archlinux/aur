@@ -1,27 +1,26 @@
-# Maintainer: Clemmitt Sigler <cmsigler (dot) online (at) gmail (dot) com>
-# Contributor: Michel Zou <xantares (at) archlinux (dot) org>
-
-pkgname=('python-pyautogui' 'python2-pyautogui')
-pkgver=0.9.38
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Clemmitt M. Sigler <cmsigler dot online at gmail dot com>
+# Contributor: xantares
+pkgname=python-pyautogui
+_name=PyAutoGUI
+pkgver=0.9.48
 pkgrel=1
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
 url="https://github.com/asweigart/pyautogui"
 license=('BSD')
-makedepends=('python-setuptools')
-depends=('python-xlib' 'python-pillow' 'python-pyscreeze' 'python-pytweening' 'python-pymsgbox')
+depends=('python-pymsgbox' 'python-pyscreeze' 'python-pytweening' 'python-mouseinfo')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('e91a25c1cdf826e7d0581775b5fbe47f7e12af79e0eb9dc3e1488ba99f2e0c60')
 
-source=("https://pypi.io/packages/source/P/PyAutoGUI/PyAutoGUI-${pkgver}.tar.gz")
-sha256sums=('52dae786359a51f6dcd64037fe0d703bb86e881059fe99af1fe4662cdf0d7d9e')
-
-package_python-pyautogui() {
-  cd "$srcdir/PyAutoGUI-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+build() {
+	cd "$_name-$pkgver"
+	python setup.py build
 }
 
-package_python2-pyautogui() {
-  cd "$srcdir/PyAutoGUI-${pkgver}"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-}
+package() {
+	cd "$_name-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-# vim:set ts=2 sw=2 ft=sh et:
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+}
