@@ -9,7 +9,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('yasm' 'git' 'ffmpeg-compat-54')
 provides=('libx264.so.142')
-source=(git://git.videolan.org/x264.git#commit=021c0dc6c95c x264.diff configure.diff)
+source=(git+https://code.videolan.org/videolan/x264.git#commit=021c0dc6c95c x264.diff configure.diff)
 md5sums=('SKIP' d1eb9bb90d4b89aab82d5e1c70161bbd 2039c9c910d4a667cb881e15aebb739f)
 
 pkgver() {
