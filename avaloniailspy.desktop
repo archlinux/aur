@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=v5.0
+Name=AvaloniaILSpy
+GenericName=AvaloniaILSpy
+Comment=Avalonia-based .NET Decompiler (port of ILSpy) 
+Categories=Development;
+Exec=avaloniailspy
+Icon=avaloniailspy
+Terminal=false
+Type=Application
+Name[en_US]=AvaloniaILSpy
+GenericName[en_US]=AvaloniaILSpy
+Comment[en_US]=Avalonia-based .NET Decompiler (port of ILSpy) 
