@@ -86,6 +86,8 @@ build() {
     -B builds/Release64 \
     -DBUILD_WAYLAND_SUPPORT=On \
     -DCMAKE_BUILD_TYPE=Release
+    -DBUILD_XLIB_XRANDR_SUPPORT=On \
+    || true
 
   cd builds/Release64
   ninja
