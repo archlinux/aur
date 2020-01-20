@@ -1,0 +1,26 @@
+pkgbase = ipsec-tools
+	pkgdesc = KAME IPSec tools ported to Linux
+	pkgver = 0.8.2
+	pkgrel = 9
+	url = http://ipsec-tools.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	depends = readline
+	depends = openssl
+	depends = krb5
+	depends = flex
+	options = !makeflags
+	source = https://downloads.sourceforge.net/sourceforge/ipsec-tools/ipsec-tools-0.8.2.tar.bz2
+	source = racoon.service
+	source = ipsec.service
+	source = ipsec-tools-linux-3.7-compat.patch
+	source = ipsec-tools-openssl-1.1.patch
+	sha256sums = 8eb6b38716e2f3a8a72f1f549c9444c2bc28d52c9536792690564c74fe722f2d
+	sha256sums = 721ef004a93d16ce1e0c4c6951d65b8bf9bfe0e101d1b9b0756dd7c349e2ccc0
+	sha256sums = 2f10696f93aa0e88fa623318644f42332118dee4c3666948a12eb2fa108e2665
+	sha256sums = 34529108d013f5ad6dce9fa8e2acec7367f29319e4049e82dcb54fb0970ff520
+	sha256sums = c88edf2f09c1b58d5e453d42381596775478de6a52f94adee521c75298fc474c
+
+pkgname = ipsec-tools
+
