@@ -1,0 +1,14 @@
+pkgbase = python-gputils
+	pkgdesc = Python module for getting the GPU status from NVIDA GPUs using nvidia-smi
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/anderskm/gputil
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = nvidia-utils
+	source = python-gputils-1.4.0.tar.gz::https://github.com/anderskm/gputil/archive/v1.4.0.tar.gz
+	sha512sums = ce41b727fe958d8cb0c029b9551aca9df33348ed385a7ec707fb2f131e84e7783e1446239da131c2ea04784f0f9e713fad861de55438404d549f6f6fee521d47
+
+pkgname = python-gputils
+
