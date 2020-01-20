@@ -6,11 +6,11 @@ pkgbase = libkqueue
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = gcc
+	makedepends = cmake
 	depends = glibc
 	options = !libtool
 	source = https://github.com/mheily/libkqueue/archive/v2.3.1.tar.gz
-	sha256sums = 44e187a42c8f8061c323d959742b9cfb53236dd34e5dc9837fea2571bd980efc
+	sha256sums = 38fcbcb97555d5409eec9e51cdd3c6a100b5d2a05edbc77c95e2ab49ee4e0836
 
 pkgname = libkqueue
 

@@ -9,10 +9,10 @@ url="https://github.com/mheily/libkqueue"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('glibc')
-makedepends=('gcc')
+makedepends=('cmake')
 options=('!libtool')
 source=(https://github.com/mheily/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('44e187a42c8f8061c323d959742b9cfb53236dd34e5dc9837fea2571bd980efc')
+sha256sums=('38fcbcb97555d5409eec9e51cdd3c6a100b5d2a05edbc77c95e2ab49ee4e0836')
 
 prepare() {
   mkdir -p build
