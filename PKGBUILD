@@ -2,8 +2,8 @@
 # Co-Maintainer: Jameson Pugh <imntreal at gmail dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
-pkgver=3.2.2
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -12,13 +12,13 @@ makedepends=('go-pie' 'git')
 optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions'
             'fish: for fish completions')
-conflicts=('cheat-bash-git' 'cheat-git')
+conflicts=('python-cheat' 'cheat-bash-git' 'cheat-git')
 replaces=('python-cheat')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver.tar.gz"
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git'
         'https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt')
-sha256sums=('9a756b249ae9a9ea7beb2149a57a6556b145075e97c4c90b52ea6492334a5c7e'
+sha256sums=('0a9a6c2acf330409d3538590778aca730f2731360edfab4da2459a94d3c92248'
             '1c3a6ebb65d3a91f9f9711dfaf81463f6b68b9e73fe341720946dd31b311d35b'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
