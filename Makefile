@@ -1,11 +1,11 @@
 .PHONY: clean install
 
 PKGNAME:=bitwig-8-track
-PKGVER:=1.3.13
+PKGVER:=3.1.2
 PKGARCH:=x86_64
 PKGREL:=1
 PACKAGE:=${PKGNAME}-${PKGVER}-${PKGREL}-${PKGARCH}.pkg.tar.xz
-PACKAGE-SOURCE:="bitwig-8-track-${PKGVER}.deb"
+PACKAGE-SOURCE:="bitwig-studio-${PKGVER}.deb"
 
 all: $(PACKAGE) $(PACKAGE-SOURCE)
 
