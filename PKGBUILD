@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Goy <kuon@goyman.com>
 
 pkgname=front-panel-designer-eu
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 epoch=
 pkgdesc="Free CAD software for front panel design"
@@ -11,9 +11,9 @@ license=('custom')
 groups=()
 depends=(libpng12)
 source=(
-"http://www.schaeffer-ag.de/fileadmin/downloads/FrontDesign-EU-$pkgver-amd64.tgz"
+"https://assets.schaeffer-ag.de/fpd/Version-$pkgver/FrontDesign-EU-$pkgver-amd64.tgz"
 "front-panel-express-eu.desktop" "front-panel-express-order-eu.desktop")
-md5sums=("b86cfa10449787a916d8e5108832b27d" "d34b7ed5d87a206fe8b50fd4a8f8e167"
+md5sums=("1a7f5858141c90e02b07298bc7617ff3" "d34b7ed5d87a206fe8b50fd4a8f8e167"
 "8bb49915edf0a5c611494b7753f9103f")
 
 package() {
