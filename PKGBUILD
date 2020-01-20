@@ -1,6 +1,6 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 pkgname=openloops
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A particle physics package for the fast numerical evaluation of tree and one-loop matrix elements."
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url="http://openloops.hepforge.org"
 license=('GPL3')
 depends=('gcc-fortran' 'scons' 'python2')
 source=(http://www.hepforge.org/archive/openloops/OpenLoops-$pkgver.tar.gz)
-md5sums=('af28b4d10b8d51a34f5becc766e5913f')
+md5sums=('f9948f58d45950956f801f35a9242f41')
 
 build() {
 	cd "$srcdir/OpenLoops-$pkgver"

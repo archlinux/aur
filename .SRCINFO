@@ -1,6 +1,6 @@
 pkgbase = openloops
 	pkgdesc = A particle physics package for the fast numerical evaluation of tree and one-loop matrix elements.
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = http://openloops.hepforge.org
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = openloops
 	depends = gcc-fortran
 	depends = scons
 	depends = python2
-	source = http://www.hepforge.org/archive/openloops/OpenLoops-2.0.0.tar.gz
-	md5sums = af28b4d10b8d51a34f5becc766e5913f
+	source = http://www.hepforge.org/archive/openloops/OpenLoops-2.1.1.tar.gz
+	md5sums = f9948f58d45950956f801f35a9242f41
 
 pkgname = openloops
 
