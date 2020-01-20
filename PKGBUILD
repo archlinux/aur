@@ -28,7 +28,8 @@ depends=('ansible'
          'python-six'
          'python-subprocess2'
          'python-tabulate'
-         'python-testinfra'
+         'python-testinfra>=3.0.6'
+         'python-testinfra<4.0.0'
          'python-tree-format-git'
          'yamllint')
 

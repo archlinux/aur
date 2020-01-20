@@ -13,7 +13,6 @@ pkgbase = molecule
 	makedepends = python-testinfra
 	depends = ansible
 	depends = ansible-lint
-	depends = python-anyconfig
 	depends = python-cerberus
 	depends = python-click
 	depends = python-click-completion
@@ -32,7 +31,8 @@ pkgbase = molecule
 	depends = python-six
 	depends = python-subprocess2
 	depends = python-tabulate
-	depends = python-testinfra
+	depends = python-testinfra>=3.0.6
+	depends = python-testinfra<4.0.0
 	depends = python-tree-format-git
 	depends = yamllint
 	optdepends = python-docker: docker driver
