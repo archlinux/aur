@@ -1,0 +1,15 @@
+pkgbase = lib_amxp-git
+	pkgdesc = Generic C-API for common patterns
+	pkgver = v0.0.4.r2.gc38da30
+	pkgrel = 1
+	url = https://gitlab.com/proj_amx_01/libraries/lib_amxp
+	arch = any
+	license = MIT
+	depends = lib_amxc
+	provides = lib_amxp
+	conflicts = lib_amxp
+	source = lib_amxp-git::git+https://gitlab.com/proj_amx_01/libraries/lib_amxp.git#branch=master
+	md5sums = SKIP
+
+pkgname = lib_amxp-git
+
