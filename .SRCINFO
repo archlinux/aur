@@ -1,7 +1,7 @@
 pkgbase = frr
 	pkgdesc = FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.
-	pkgver = 7.2
-	pkgrel = 2
+	pkgver = 7.2.1
+	pkgrel = 1
 	url = https://frrouting.org/
 	arch = any
 	license = GPL2
@@ -33,18 +33,16 @@ pkgbase = frr
 	backup = etc/frr/frr.conf
 	backup = etc/frr/daemons.conf
 	backup = etc/frr/vtysh.conf
-	source = https://github.com/FRRouting/frr/archive/frr-7.2.tar.gz
+	source = https://github.com/FRRouting/frr/archive/frr-7.2.1.tar.gz
 	source = frr.sysusers
 	source = frr.tmpfiles
 	source = frr_7.2_Archlinux.patch
 	source = frr-init-functions
-	source = 5213.patch
-	sha256sums = 11dff4a4b2f705bf0a4fd2ca2f186b7f91a104d3a2a17c79bb4009d69b38c924
+	sha256sums = 40fea6ff007453e27761a0372cde51fd8279f89984dff009092eebe2a7b29be3
 	sha256sums = 9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e
 	sha256sums = 6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89
 	sha256sums = fbbd0b6d40dffbdb850ecabf91ab6bd22da07aa2c7c6406af5e3816988905e02
 	sha256sums = e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a
-	sha256sums = ff30c1de8008aa02a1bae619644837f835372bca2c2244ef50e8963f8341a4d7
 
 pkgname = frr
 
