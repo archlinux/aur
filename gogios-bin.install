@@ -1,35 +1,37 @@
+pre_install() {
+    if ! grep "^gogios:" /etc/group &>/dev/null; then
+        groupadd -r gogios
+    fi
+    
+    if ! id gogios &>/dev/null; then
+        useradd -r -M gogios -s /bin/false -d /var/spool/gogios -g gogios
+    fi
+}
+
 post_install() {
+    LOG_DIR=/var/log/gogios
+    SCRIPT_DIR=/usr/lib/gogios/scripts
+
+    test -d $LOG_DIR || mkdir -p $LOG_DIR
+    chown -R -L gogios:gogios $LOG_DIR
+    chmod 755 $LOG_DIR
+
+    cp -f $SCRIPT_DIR/gogios.service /usr/lib/systemd/system/gogios.service
+    systemctl enable gogios || true
+    systemctl daemon-reload || true
+
+    # Add defaults file if it doesn't exist
+    if [[ ! -d /etc/default/gogios ]]; then
+        touch /etc/default/gogios
+    fi
+    
+    # If the user has no checks yet, give them the example file
     if [ ! -f /etc/gogios/checks.json ]; then
         echo "Making default check file"
         cp /etc/gogios/example.json /etc/gogios/checks.json
     fi
-    
-    if [ ! -f /etc/gogios/gogios.toml ]; then
-        echo "Making default config"
-        cp /etc/gogios/gogios.sample.toml /etc/gogios/gogios.toml
-    fi
 
-    if [ ! -f /opt/gogios/js/current.json ]; then
-	echo "Making current results file"
-	cp /etc/gogios/checks.json /opt/gogios/js/current.json
-    fi
-
-    if [ ! -f /var/log/gogios ]; then
-	mkdir /var/log/gogios
-    fi
-    
-    if id "gogios" >/dev/null 2>&1; then
-        echo "gogios user already exists"
-    else
-	mkdir -p /var/spool/gogios
-        useradd --system --user-group --home-dir /var/spool/gogios --shell /sbin/nologin gogios
-	chown gogios:gogios /var/spool/gogios
-    fi
-    
-    chown gogios:gogios -R /var/log/gogios
-    chmod 0764 -R /var/log/gogios
-    chown gogios:gogios -R /usr/lib/gogios
-    chown gogios:gogios -R /etc/gogios
+    # Gogios will fail to start if these files aren't owned
     chown gogios:gogios -R /opt/gogios
 }
 
@@ -37,8 +39,8 @@ post_upgrade() {
     post_install
 }
 
-pre_remove() {
-    systemctl stop gogios
+post_remove() {
     systemctl disable gogios
+    rm -f /usr/lib/systemd/system/gogios.service
 }
 
