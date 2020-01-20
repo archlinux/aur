@@ -1,7 +1,7 @@
 pkgbase = pagraphcontrol-git
 	pkgdesc = PulseAudio Graph Control
 	pkgver = 1.0.9.r1.g5cb776f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/futpib/pagraphcontrol
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,8 @@ pkgbase = pagraphcontrol-git
 	makedepends = nodejs
 	makedepends = yarn
 	makedepends = node-gyp
+	makedepends = python
+	makedepends = unzip
 	depends = papeaks-git
 	provides = pagraphcontrol
 	conflicts = pagraphcontrol
