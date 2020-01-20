@@ -1,0 +1,24 @@
+pkgbase = ruby-webmock
+	pkgdesc = Allows stubbing HTTP requests and setting expectations on HTTP requests.
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/bblimke/webmock
+	arch = any
+	license = MIT
+	checkdepends = ruby-rake
+	checkdepends = ruby-minitest
+	checkdepends = ruby-test-unit
+	checkdepends = ruby-rspec
+	checkdepends = ruby-httpclient
+	makedepends = ruby-rdoc
+	makedepends = ruby-bundler
+	depends = ruby
+	depends = ruby-crack
+	depends = ruby-hashdiff
+	depends = ruby-addressable
+	options = !emptydirs
+	source = https://github.com/bblimke/webmock/archive/v3.8.0/ruby-webmock-v3.8.0.tar.gz
+	sha512sums = 1dc76e9a43c9746d771a53106d02e2a2506be49f9e17ab5628ac6f6afdcc3d4112878f01287fcd97a3fdcb55f4d30e345666a68472e8d451414ca8f41046928f
+
+pkgname = ruby-webmock
+
