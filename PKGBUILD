@@ -9,7 +9,7 @@
 _pack=nan
 pkgname=octave-$_pack
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A statistics and machine learning toolbox for data with and w/o missing values"
 arch=(any)
 url="https://octave.sourceforge.io/$_pack/"
@@ -22,9 +22,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("https://pub.ist.ac.at/~schloegl/matlab/NaN/$_archive")
+source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('19aad8662c4bc1abe076ff751c50a7f3c0e481297b2942a8619ffcfddb322def')
+sha256sums=('9709fa16f59b4bdd5bacd9c88e32df91f5065ad78041a437bb38f09ab834a6b5')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
