@@ -1,6 +1,6 @@
 pkgbase = tale-git
 	pkgdesc = An experimental version control system.
-	pkgver = 1.0.0.r0.g16e1ac9
+	pkgver = 1.0.0.r18.g53d701b
 	pkgrel = 1
 	url = https://gitlab.com/severinkaderli/tale
 	arch = x86_64
