@@ -1,6 +1,6 @@
 pkgbase = yt-popball-git
 	pkgdesc = A PopBall
-	pkgver = 0.9.r0.61c1c08
+	pkgver = 1.0.r0.3d8d6b0
 	pkgrel = 1
 	url = https://github.com/yt-theme/popBall
 	arch = x86_64

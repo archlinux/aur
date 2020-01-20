@@ -2,7 +2,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=yt-popball-git
-pkgver=0.9.r0.61c1c08
+pkgver=1.0.r0.3d8d6b0
 pkgrel=1
 pkgdesc="A PopBall"
 arch=(x86_64)
