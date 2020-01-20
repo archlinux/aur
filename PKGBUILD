@@ -2,14 +2,14 @@
 
 pkgname=gogios
 pkgver=2.2.r1.g10612aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
 url="https://github.com/bkasin/gogios"
 license=('MIT')
 
 makedepends=('go' 'make')
-optdepends=('nginx' 'nmap')
+optdepends=('nginx' 'gogios-plugins')
 
 install=${pkgname}.install
 
