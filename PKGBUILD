@@ -2,12 +2,12 @@
 # Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrumx
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet"
 arch=('any')
 depends=('leveldb'
-         'python>=3.6'
+         'python>=3.7'
          'python-aiorpcx>=0.18.3' 'python-aiorpcx<0.19.0'
          'python-attrs'
          'python-plyvel'
@@ -24,7 +24,7 @@ source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/kyuupichan/$pkgname
         'electrumx.conf'
         'electrumx.service'
         'electrumx.sysusers')
-sha256sums=('8dc7cf5b15fe48c5abbadc5c12b5bf25ca8bd5d10f4d781ca9613004fe8d4b50'
+sha256sums=('1f4a6692042826ccfe01f0e40b4b161b473ca064a9e245b7a05b7fbce51cd411'
             'ca05f8e8cf01c5074376df75a6691c1aea74cf278244f86ac838900cad9547fb'
             'ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e'
             '761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1')
