@@ -6,6 +6,7 @@ pkgbase = gogios-plugins-bin
 	arch = x86_64
 	license = MIT
 	optdepends = nmap
+	optdepends = gogios
 	provides = gogios-plugins
 	conflicts = gogios-plugins
 	noextract = gogios-plugins-2.2-1-x86_64.pkg.tar.xz

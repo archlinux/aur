@@ -9,6 +9,7 @@ url="https://angrysysadmins.tech"
 license=('MIT')
 optdepends=(
 	'nmap'
+	'gogios'
 )
 source=("https://github.com/BKasin/gogios-plugins/releases/download/${pkgver}/gogios-plugins-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
 options=('!strip' '!emptydirs')
