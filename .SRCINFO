@@ -1,0 +1,16 @@
+pkgbase = lib_amxj-git
+	pkgdesc = JSON Reader/generation - JSON string variant
+	pkgver = v0.0.3.r3.g58289ff
+	pkgrel = 1
+	url = https://gitlab.com/proj_amx_01/libraries/lib_amxj
+	arch = any
+	license = MIT
+	depends = lib_amxc
+	depends = yajl
+	provides = lib_amxj
+	conflicts = lib_amxj
+	source = lib_amxj-git::git+https://gitlab.com/proj_amx_01/libraries/lib_amxj.git#branch=master
+	md5sums = SKIP
+
+pkgname = lib_amxj-git
+
