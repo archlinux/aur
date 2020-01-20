@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/debian"
-  pandoc -f markdown -t man -s man/dh-make-golang.md -o dh-make-golang.1
+  cd "${srcdir}/debian/man"
+  pandoc -f markdown -t man -s dh-make-golang.md -o dh-make-golang.1
   install -Dm644 dh-make-golang.1 "${pkgdir}/usr/share/man/man1/dh-make-golang.1"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
