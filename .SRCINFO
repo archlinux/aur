@@ -1,0 +1,18 @@
+pkgbase = gogios-plugins
+	pkgdesc = Plugins for the gogios service checking system.
+	pkgver = 2.2.r0.gd84975e
+	pkgrel = 1
+	url = https://github.com/bkasin/gogios-plugins
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = make
+	optdepends = nmap
+	optdepends = gogios
+	provides = gogios-plugins
+	conflicts = gogios-plugins-bin
+	source = gogios-plugins::git+https://github.com/bkasin/gogios-plugins.git#branch=master
+	sha256sums = SKIP
+
+pkgname = gogios-plugins
+
