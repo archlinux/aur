@@ -1,13 +1,13 @@
 pkgbase = ucm-bin
 	pkgdesc = Unison language code manager
-	pkgver = M1g
-	pkgrel = 2
+	pkgver = M1h
+	pkgrel = 1
 	url = https://www.unisonweb.org
 	arch = x86_64
 	license = custom
-	source = ucm::https://github.com/unisonweb/unison/releases/download/release/M1g/unison-linux64.tar.gz
-	source = https://raw.githubusercontent.com/unisonweb/unison/release/M1g/LICENSE
-	sha256sums = 4b05432d735fa12a17aac8a6233002617f6bb2c565c942edd5ea5216b26229ce
+	source = ucm::https://github.com/unisonweb/unison/releases/download/release/M1h/unison-linux64.tar.gz
+	source = https://raw.githubusercontent.com/unisonweb/unison/release/M1h/LICENSE
+	sha256sums = 917973ccdee78201cdb858bb30d79e74913da44906cf03a96bf122eb03236839
 	sha256sums = 6dd1702f5e06317fef9577559ff85dae2aba622b0bc66f18db88c66ffeb693a2
 
 pkgname = ucm-bin
