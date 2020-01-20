@@ -11,7 +11,7 @@ depends=('pass')
 optdepends=('rofi: Use rofi to present choices.'
             'fzf: Use fzf to present choices.')
 source=(https://github.com/ibizaman/pass-ssh/archive/v${pkgver}.tar.gz)
-sha512sums=('69b8758c296bba7f865f7a5faa81c83169c81eb4c6bc0356a53cde32b6f216726f87ad05b15152528529f37d88da2c8cddb102a9cc9f18e20952f0f61862c503')
+sha512sums=('72c7492502a0e6ef3710e08bc13a2925d2ca0fe5f1efe5ba5ab4ac3bbe4fd556ef725391f0f575e290b01b88ed0e53697060f5694fc5430cb527ec0a59220f98')
 
 package() {
   cd "${srcdir}/pass-ssh-$pkgver/"
