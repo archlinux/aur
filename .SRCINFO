@@ -1,7 +1,7 @@
 pkgbase = asf
 	pkgdesc = Steam cards farmer.
 	pkgver = 4.1.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = install
 	changelog = changelog
@@ -10,10 +10,8 @@ pkgbase = asf
 	arch = aarch64
 	license = Apache
 	makedepends = git
-	makedepends = dotnet-sdk-bin
-	depends = dotnet-host-bin
-	depends = dotnet-runtime-bin
-	depends = aspnet-runtime-bin
+	makedepends = dotnet-sdk>=3.1
+	depends = aspnet-runtime>=3.1
 	optdepends = asf-ui: standalone web interface for ASF
 	backup = var/lib/asf/config/ASF.json
 	backup = usr/lib/asf/NLog.config
