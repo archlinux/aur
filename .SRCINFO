@@ -1,0 +1,12 @@
+pkgbase = mpv-webm-git
+	pkgdesc = Simple WebM maker for mpv, with no external dependencies.
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/ekisu/mpv-webm
+	arch = any
+	depends = mpv
+	source = git+https://github.com/ekisu/mpv-webm
+	md5sums = SKIP
+
+pkgname = mpv-webm-git
+
