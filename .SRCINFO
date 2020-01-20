@@ -1,11 +1,13 @@
 pkgbase = cog-git
 	pkgdesc = WPE launcher and webapp container
 	pkgver = r134.f421c0a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Igalia/cog
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7l
+	arch = armv7h
 	groups = wpe
 	license = MIT
 	makedepends = cmake
