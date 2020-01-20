@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.30.1
+pkgver=1.32.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -20,17 +20,13 @@ depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake
              inetutils xorg-server-xvfb autoconf2.13 rust clang llvm
              jack gtk2 python nodejs python2-psutil cbindgen nasm libnotify
-             wget pulseaudio rsync gconf)
+             wget pulseaudio rsync)
 optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
-        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368'
-        '0001-Update-bindgen.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Update-bindgen.patch?h=packages/firefox&id=55921cf43980d878015a44731aedac5642d0ccb8'
-        '0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch?h=packages/firefox&id=55921cf43980d878015a44731aedac5642d0ccb8')
-sha256sums=('930785beeb58e917a7ed231c1d23ad7fd20945836cbaa9f2dc2173ea90f15797'
-            'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
-            '832d895c90d346fe4acf25b8b8ba9a62bea595fe5fcdeaf545c8e952393993fc'
-            '58890388e02af41055e1ec9797b7c094dee499a5219dc9c532c6cfccf2cce972')
+        '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=573f01ecdb53dc1add3b4b68a8e5a4113896e304')
+sha256sums=('0830c37775590c27377b9b9218265d06ad943f6a6020769fd5f1fac16e66ea96'
+            '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
@@ -64,10 +60,6 @@ END
 
   cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
 
-  # Make it compile with Rust 1.39 and Python 3.8
-  patch -Np1 -i "$srcdir/0001-Update-bindgen.patch"
-  patch -Np1 -i "$srcdir/0002-Bug-1212502-Switch-mozinfo-to-using-the-distro-packa.patch"
-
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i "$srcdir/0001-Use-remoting-name-for-GDK-application-names.patch"
 
@@ -98,7 +90,6 @@ ac_add_options --enable-lto
 export MOZ_APP_NAME=cliqz
 export MOZ_APP_DISPLAYNAME=Cliqz
 export MOZ_APP_REMOTINGNAME=Cliqz
-export MOZ_PGO=1
 export CC='clang --target=x86_64-unknown-linux-gnu'
 export CXX='clang++ --target=x86_64-unknown-linux-gnu'
 export AR=llvm-ar
@@ -142,6 +133,11 @@ build() {
   export MOZ_NOSPAM=1
   # LTO needs more open files
   ulimit -n 4096
+
+  # -fno-plt with cross-LTO causes obscure LLVM errors
+  # LLVM ERROR: Function Import: link error
+  CFLAGS="${CFLAGS/-fno-plt/}"
+  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   ./magic_build_and_package.sh
 }
