@@ -1,10 +1,10 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='General-purpose library specifically developed for the WPE-flavored port of WebKit.'
 pkgname=libwpe-git
-pkgver=1.0.0.r0.g4be4c7d
-pkgrel=2
+pkgver=1.3.1.r17.g67ccb40
+pkgrel=1
 url=https://github.com/WebPlatformForEmbedded/libwpe
-arch=(x86_64 i686 aarch64)
+arch=(x86_64 i686 aarch64 armv7l armv7h)
 groups=(wpe)
 makedepends=(cmake opengl-driver)
 provides=(libwpe)

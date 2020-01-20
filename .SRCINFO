@@ -1,11 +1,13 @@
 pkgbase = libwpe-git
 	pkgdesc = General-purpose library specifically developed for the WPE-flavored port of WebKit.
-	pkgver = 1.0.0.r0.g4be4c7d
-	pkgrel = 2
+	pkgver = 1.3.1.r17.g67ccb40
+	pkgrel = 1
 	url = https://github.com/WebPlatformForEmbedded/libwpe
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7l
+	arch = armv7h
 	groups = wpe
 	license = custom:BSD
 	makedepends = cmake
