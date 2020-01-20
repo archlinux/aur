@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BLHeli Configurator
+Comment=Configuration tool for BLHeli based ESCs
+Exec=/opt/blheli-configurator/blheli-configurator
+Icon=/opt/blheli-configurator/blheli_icon_128.png
+Terminal=false
+Type=Application
+Categories=Utility;Electronics;RemoteAccess;
