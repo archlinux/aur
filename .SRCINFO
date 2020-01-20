@@ -1,6 +1,6 @@
 pkgbase = proaudio-meta
 	pkgdesc = Metapackage for most useful audio production software
-	pkgver = 2019.09.27
+	pkgver = 2020.01.20
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	install = proaudio-meta.install
@@ -37,7 +37,7 @@ pkgbase = proaudio-meta
 	depends = dpf-plugins
 	depends = dragonfly-reverb
 	depends = noise-repellent
-	depends = guitarix2
+	depends = guitarix
 	depends = gxplugins.lv2
 
 pkgname = proaudio-meta
