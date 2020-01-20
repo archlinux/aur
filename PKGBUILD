@@ -5,7 +5,7 @@
 pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
 pkgver=v5.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 arch=("any")
@@ -34,7 +34,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/"
   cp -r "${srcdir}/${_gitname}/Release/" "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -s "${pkgdir}/usr/share/${pkgname}/ILSpy" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/share/${pkgname}/ILSpy" "${pkgdir}/usr/bin/${pkgname}"
 
   # Licenses
   install -Dm644 "${srcdir}/${_gitname}/doc/license.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
