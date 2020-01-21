@@ -1,5 +1,4 @@
-# Maintainer: grimsock <lord.grimsock at gmail dot com>
-# Contributor: kkb110
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=jgit
 pkgver=5.6.0.201912101111_r
