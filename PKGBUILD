@@ -27,7 +27,10 @@ _security=(seccomp !selinux !apparmor !smack)
 # Specify non-empty to enable these features
 _audit="y"  # audit framework support
 _cryptsetup="y"  # Disk encryption (LUKS)
-_clear=""  #  Clearlinux patches
+_curl="y"  # Enable support for uploading journals
+_http="y"  # Enable embedded HTTP server in journald
+_qrcode="y"  # Enable qrcode output support in journal
+_clear="y"  #  Clearlinux patches
 
 pkgbase=systemd-light
 _pkgbase=${pkgbase%-light}
@@ -35,12 +38,12 @@ pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
 _tag='50a79652baa8650dc2bf7fe5979e67eb673a218e' # git rev-parse v${pkgver}
 pkgver=244.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
-             'intltool' 'iptables' 'kmod' 'libcap' 'libidn2' 'libgcrypt'
-             'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
+             'intltool'  'kmod' 'libcap' 'libidn2' 'libgcrypt'
+             'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'pcre2' 'kexec-tools' 'libxkbcommon'
              'bash-completion')
@@ -94,12 +97,12 @@ _backports=(
 _reverts=(
 )
 
-if [ "$_bootloader" = 'systemd' ]; then
-  makedepends+=('gnu-efi-libs')
-fi
+[ "$_bootloader" = 'systemd' ] && makedepends+=('gnu-efi-libs')
+[ "$_network" = 'systemd' ] && makedepends+=('iptables')
 
 [ -n "$_audit" ] && makedepends+=('audit')
 [ -n "$_cryptsetup" ] && makedepends+=('cryptsetup')
+[ -n "$_http" ] && makedepends+=('libmicrohttpd')
 
 if [ -n "$_clear" ]; then
   local _clrrel=270
@@ -217,14 +220,19 @@ build() {
 
     -Daudit=$(is_nonempty "$_audit")
     -Dbacklight=$(is_systemd "$_backlight")
+    -Dbzip2=$(bool_opt 'importd' "${_features[@]}")
     -Defi=$(is_systemd "$_bootloader")
     -Dgnu-efi=$(is_systemd "$_bootloader")
     -Dhibernate=$(is_nonempty "$_hibernate")
     -Dlibcryptsetup=$(is_nonempty "$_cryptsetup")
+    -Dlibcurl=$(is_nonempty "$_libcurl")
+    -Dlibiptc=$(is_systemd "$_network")
+    -Dmicrohttpd=$(is_nonempty "$_http")
     -Dnetworkd=$(is_systemd "$_network")
     -Dnss-mymachines=$(bool_opt 'machined' "${_features[@]}")
     -Dnss-resolve=$(is_systemd "$_resolver")
     -Dopenssl=$(is_systemd "$_resolver")
+    -Dqrencode=$(is_nonempty "$_qrcode")
     -Dresolve=$(is_systemd "$_resolver")
     -Dtimedated=$(is_systemd "$_timesync")
     -Dtimesyncd=$(is_systemd "$_timesync")
@@ -258,21 +266,19 @@ check() {
 package_systemd-light() {
   pkgdesc='system and service manager'
   license=('GPL2' 'LGPL2.1')
-  depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
+  depends=('acl' 'bash' 'dbus' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' "systemd-light-libs=$pkgver" 'libidn2' 'libidn2.so' 'lz4' 'pam' 'libelf'
            'util-linux' 'xz' 'pcre2')
   provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
-  optdepends=('libmicrohttpd: remote journald capabilities'
-              'quota-tools: kernel-level quota management'
+  optdepends=('quota-tools: kernel-level quota management'
               'systemd-sysvcompat: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user'
               'curl: machinectl pull-tar and pull-raw')
   backup=(etc/pam.d/systemd-user
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
-          etc/systemd/journal-remote.conf
           etc/systemd/journal-upload.conf
           etc/systemd/logind.conf
           etc/systemd/sleep.conf
@@ -292,7 +298,7 @@ package_systemd-light() {
   esac
 
   case "$_network" in
-    "systemd") backup+=(etc/systemd/networkd.conf);;
+    "systemd") depends+=('iptables'); backup+=(etc/systemd/networkd.conf);;
     "none") ;;
     *) optdepends+=("${_network}: replacement for systemd-networkd");;
   esac
@@ -308,6 +314,12 @@ package_systemd-light() {
     "none") ;;
     *) optdepends+=("${_timesync}: replacement for systemd-timesyncd");;
   esac
+
+  [ -n "$_curl" ] && optdepends+=('curl: machinectl pull-tar and pull-raw')
+  [ -n "$_http" ] && {
+    optdepends+=('libmicrohttpd: remote journald capabilities')
+    backup+=(etc/systemd/journal-remote.conf)
+  }
 
   for opt in seccomp selinux smack; do
     if [ "$(bool_opt "$opt" "${_security[@]}")" = "true" ]; then
@@ -325,7 +337,7 @@ package_systemd-light() {
   DESTDIR="$pkgdir" meson install -C build
 
   # we'll create this on installation
-  rmdir "$pkgdir"/var/log/journal/remote
+  [ -n "$_http" ] && rmdir "$pkgdir"/var/log/journal/remote
 
   # runtime libraries shipped with systemd-libs
   install -d -m0755 systemd-libs
