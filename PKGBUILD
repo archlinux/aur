@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.43.1
+pkgver=0.44.0
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('e474ef9317f9f63ca5d96de0e774af6c2decc1ed')
+sha1sums=('60e0211b0edc3c961c47e461ca124da1cdb704bf')
 
 #JRE_VERSION=$(archlinux-java status | grep default | awk '{print $1}')
 
@@ -45,7 +45,7 @@ package() {
     cd $pkgname-$pkgver/portfolio-product/target/products/name.abuchen.portfolio.product/linux/gtk/$_platform/portfolio/
 
     install -dm755 ${pkgdir}${_DEST}
-    cp -r * ${pkgdir}${_DEST}
+    cp -r ./* ${pkgdir}${_DEST}
     chmod a+x ${pkgdir}${_DEST}/PortfolioPerformance
 
     msg2 "Symlink /usr/bin/portfolio -> ${_DEST}/PortfolioPerformance"
