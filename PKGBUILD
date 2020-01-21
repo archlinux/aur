@@ -2,13 +2,14 @@
 
 pkgname=wavebox
 pkgver=10.0.54
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation of web-desktop communication"
 arch=(x86_64)
 url="https://wavebox.io"
 license=('custom:Wavebox-EULA')
 depends=('ttf-liberation' 'libappindicator-gtk3' 'at-spi2-atk' 'cairo' 'libcups' 'gdk-pixbuf2' 'glib2' 'gtk3' 'nspr' 'nss' 'libxss' 'wget' 'xdg-utils')
 optdepends=('pam-u2f: Two-Factor Auth')
+conflicts=('wavebox-bin' 'wavebox-bin-beta')
 source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/stable/linux/tar"
         'wavebox.appdata.xml'
         'wavebox.menu'

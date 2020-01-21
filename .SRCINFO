@@ -1,7 +1,7 @@
 pkgbase = wavebox
 	pkgdesc = The next generation of web-desktop communication
 	pkgver = 10.0.54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wavebox.io
 	arch = x86_64
 	license = custom:Wavebox-EULA
@@ -19,6 +19,8 @@ pkgbase = wavebox
 	depends = wget
 	depends = xdg-utils
 	optdepends = pam-u2f: Two-Factor Auth
+	conflicts = wavebox-bin
+	conflicts = wavebox-bin-beta
 	source = wavebox-10.0.54.tar.gz::http://download.wavebox.app/latest/stable/linux/tar
 	source = wavebox.appdata.xml
 	source = wavebox.menu
