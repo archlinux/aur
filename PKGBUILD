@@ -1,7 +1,7 @@
 # Maintainer: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Command-line program to download image-galleries and collections from several image hosting sites"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
 	    'youtube-dl: Download videos')
 source=(https://github.com/mikf/${pkgname}/releases/download/v${pkgver}/gallery_dl-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('3E09F5908333DD83DBDCE7375680CA389D365A88') #Mike Fährmann
-sha512sums=('c41c3fbf2b3c78bb279b5f072250ca10c81ec6fa22d1417dfb10e5df161fa2252356b74e1454244bc3c65b5915a34fbdf9f268f2cb3147d3b457d1b3a99e8a96'
+sha512sums=('d06e17d88daccb5822a5c8684309d633b0bf6680c1cf0c2c482079fa5a3ae1a9524a22190231e4e03ddb708b437e2a1d57a7b728cf971f10de1ddf144f393fd2'
 	    'SKIP')
 
 prepare(){
