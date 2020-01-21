@@ -7,8 +7,8 @@
 pkgname=libfprint-git
 _pkgname=libfprint
 epoch=1
-pkgver=1.90.0.r211.g05df5e2
-pkgrel=3
+pkgver=1.90.0.r217.g3b47113
+pkgrel=1
 pkgdesc="Library for fingerprint readers"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
