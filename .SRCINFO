@@ -1,0 +1,13 @@
+pkgbase = fonts-jetbrains-mono
+	pkgdesc = A typeface made for developers.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.jetbrains.com/lp/mono/
+	arch = any
+	license = Apache License 2.0
+	makedepends = git
+	source = https://download.jetbrains.com/fonts/JetBrainsMono-1.0.0.zip
+	sha256sums = 82bf0dec956e4ca9afa4da4978fa5de80a75a576b3353d570ccbaabe4e858389
+
+pkgname = fonts-jetbrains-mono
+
