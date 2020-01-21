@@ -3,7 +3,7 @@
 
 pkgname=asbru-cm-git
 _pkgname=${pkgname%-git}
-pkgver=6.0.2
+pkgver=6.0.3.r1.gb57bb49
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -16,6 +16,11 @@ makedepends=('git')
 #conflicts=()
 source=("git+https://github.com/asbru-cm/asbru-cm.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
 	cd ${srcdir}/${_pkgname}
