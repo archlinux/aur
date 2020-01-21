@@ -2,7 +2,7 @@
 
 _pkgbase=udmabuf
 pkgname=udmabuf-dkms
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=2
 pkgdesc="Userspace DMA Buffers"
 arch=('i686' 'x86_64' 'armhf')
@@ -15,19 +15,14 @@ source=(
     "dkms.conf"
 )
 
-sha512sums=('652590de204db1642cecfd04c096345f0ca9d4c539485964bae7166be0cd5489aebf223f6d48bd77fc5b3d27aa5fe681356fd2897e31a50e8395adef8e9d102a'
-            'cdb79d66b0b9aa32457d6d2c6f1979412348d91bec6def055694595ee3528023b05142c89396b92e3a2e1ece5d69d18c13cece0588067ec401cfb666b03ae739')
-
-prepare() {
-    mkdir -p "${srcdir}/udmabuf"
-    tar zxf "${srcdir}/v${pkgver}.tar.gz" -C "${srcdir}/udmabuf" --strip-components=1
-}
+sha512sums=('d522cd5b4b545204dde437aeab8f4f86e98e10fb89f3d57aee82372d8b2e392c8561c0e89c144731ffca2957a29cd4871769219e6aeba91d0d8569d212667681'
+            '82bd3fa43181e6df22814217acda8262ccecd59e0b26df3a2372035b680af393e4b6304c1a32fedcd9c3288c294812855b469a6280fdd49da37c7a0d1ae00119')
 
 package() {
-    install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+  install -Dm644 dkms.conf "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 
-    sed -e "s/@_PKGBASE@/${_pkgbase}/" \
-        -e "s/@PKGVER@/${pkgver}/" \
-        -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
-    cp -r "${srcdir}/udmabuf"/* "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/
+  sed -e "s/@_PKGBASE@/${_pkgbase}/" \
+      -e "s/@PKGVER@/${pkgver}/" \
+      -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+  cp -r "${srcdir}/udmabuf-${pkgver}"/* "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
 }
