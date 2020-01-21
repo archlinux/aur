@@ -1,7 +1,7 @@
 #Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 PN="pcloud"
 pkgname=pcloud-drive
 pkgdesc="pCloud drive. Electron edition."
@@ -13,7 +13,7 @@ _api_url="https://api.pcloud.com/getpublinkdownload?code="
 _api_code="XZ1EnhkZnWhXYgODKIL9KCc6KgknuzhOr5MV"
 makedepends=('jq' 'sed')
 conflicts=('pcloud-git' 'pcloud')
-depends=('gconf' 'fuse3')
+depends=('fuse3')
 
 md5sums_x86_64=('9c808b309033b9fff8aee1703f4e2883')
 validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
