@@ -1,0 +1,11 @@
+post_install() {
+  echo
+  echo '==='
+  echo 'Standard installation on a USB flash drive now available, see new aui-mkinstall command.'
+  echo '==='
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
