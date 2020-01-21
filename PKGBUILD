@@ -9,7 +9,7 @@ license=('MIT')
 depends=('light')
 provides=('lqsd')
 conflicts=('lqsd')
-source=("https://github.com/ReekyMarko/lqsd/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_${arch}.tar.zst")
+source=("${pkgname/-bin/}_${pkgver}_${arch}.tar.zst::https://github.com/ReekyMarko/lqsd/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_${arch}.tar.zst")
 sha256sums=('502af7bf2c6637a7097e9e058eaee0679366c6f808f9675105902177e7aa7049')
 
 package() {

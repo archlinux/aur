@@ -8,7 +8,7 @@ pkgbase = lqsd-bin
 	depends = light
 	provides = lqsd
 	conflicts = lqsd
-	source = https://github.com/ReekyMarko/lqsd/releases/download/v0.1.1/lqsd_0.1.1_x86_64.tar.zst
+	source = lqsd_0.1.1_x86_64.tar.zst::https://github.com/ReekyMarko/lqsd/releases/download/v0.1.1/lqsd_0.1.1_x86_64.tar.zst
 	sha256sums = 502af7bf2c6637a7097e9e058eaee0679366c6f808f9675105902177e7aa7049
 
 pkgname = lqsd-bin
