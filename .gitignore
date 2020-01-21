@@ -1,3 +1,4 @@
+*.tar.zst
 *.tar.xz
 *.tar.gz
 /system76
