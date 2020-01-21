@@ -152,8 +152,9 @@ package() {
 	cp -r "build-linux/bin/"* "${pkgdir}/opt/vita3k/"
 	ln -s "/opt/vita3k/Vita3K" "${pkgdir}/usr/bin/vita3k"
 
-	# This folder needs 777 permissions because vita3k creates a log file
+	# These folders needs 777 permissions because vita3k creates files in them
 	chmod 777 "${pkgdir}/opt/vita3k/"
+	chmod 777 "${pkgdir}/opt/vita3k/data"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
