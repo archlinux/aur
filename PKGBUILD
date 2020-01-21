@@ -1,9 +1,9 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 # Contributor: Mike Williamson <mike at korora dot ca>
 
 pkgname=eksctl
 pkgdesc='Command line tool for creating clusters on Amazon EKS'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -12,7 +12,7 @@ depends=('kubectl')
 makedepends=('go')
 conflicts=('eksctl-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/weaveworks/eksctl/archive/$pkgver.tar.gz")
-sha256sums=('942b986ccf442e3e63e2669df2f7c420bef8c2dc50b8a7e5d39c14f1c94f3a0d')
+sha256sums=('c54807fe13a48f8bf0bd7f2d26617f2ddc6fb1d7403d1b4a7d9b4791d1570b15')
 
 build() {
   # Trim PWD from binary
