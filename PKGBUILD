@@ -11,42 +11,54 @@ pkgname="${_pkgname}${_major}"
 #https://javadl.oracle.com/webapps/download/AutoDL?BundleId=239848_
 #_minor='212'; _build='b10'; _bundleid='??????'; _hash='59066701cf1a433da9770636fbc4c9aa'
 #_minor='221'; _bundleid='239848'; _hash='230deb18db3e4014bb8e3e8324f81b43'
-_minor='231'; _bundleid='240718'; _hash='5b13a193868b4bf28bcb45c792fce896'
-#  https://download.oracle.com/otn/java/jdk/8u212-b10/59066701cf1a433da9770636fbc4c9aa/jre-8u212-linux-x64.tar.gz
+#_minor='231'; _bundleid='240718'; _hash='5b13a193868b4bf28bcb45c792fce896'
+_minor='241'; _bundleid='241526'; _hash='1f5b5a70bf22433b84d0e960903adac8'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
+pkgdesc+=' LTS'
 arch=('x86_64')
 #url='https://www.oracle.com/technetwork/java/javase/downloads/index.html'
 url='https://www.java.com/en/download/manual.jsp'
 license=('custom:Oracle')
 depends=('ca-certificates-java' 'hicolor-icon-theme' 'java-runtime-common' 'nss' 'xdg-utils')
-optdepends=('alsa-lib: for basic sound support'
-            'gtk2: for Gtk+ look and feel (desktop)')
-provides=("java-runtime=${_major}" "java-runtime-headless=${_major}" "java-web-start=${_major}"
-          "java-runtime-jre=${_major}" "java-runtime-headless-jre=${_major}" "java-web-start-jre=${_major}"
-          "java-openjfx=${_major}")
+optdepends=(
+  'alsa-lib: for basic sound support'
+  'gtk2: for Gtk+ look and feel (desktop)'
+)
+makedepends=('awk')
+provides=(
+  "java-runtime=${_major}"
+  "java-runtime-headless=${_major}"
+  "java-web-start=${_major}"
+  "java-runtime-jre=${_major}"
+  "java-runtime-headless-jre=${_major}"
+  "java-web-start-jre=${_major}"
+  "java-openjfx=${_major}"
+)
 
 # Variables
 
 _jname="${_pkgname}${_major}"
 _jvmdir="/usr/lib/jvm/java-${_major}-${_pkgname}/${_pkgname}"
 
-backup=("etc/java-${_jname}/amd64/jvm.cfg"
-        "etc/java-${_jname}/images/cursors/cursors.properties"
-        "etc/java-${_jname}/management/jmxremote.access"
-        "etc/java-${_jname}/management/management.properties"
-        "etc/java-${_jname}/security/java.policy"
-        "etc/java-${_jname}/security/java.security"
-        "etc/java-${_jname}/security/javaws.policy"
-        "etc/java-${_jname}/content-types.properties"
-        "etc/java-${_jname}/flavormap.properties"
-        "etc/java-${_jname}/fontconfig.properties.src"
-        "etc/java-${_jname}/logging.properties"
-        "etc/java-${_jname}/net.properties"
-        "etc/java-${_jname}/psfont.properties.ja"
-        "etc/java-${_jname}/psfontj2d.properties"
-        "etc/java-${_jname}/sound.properties")
+backup=(
+  "etc/java-${_jname}/amd64/jvm.cfg"
+  "etc/java-${_jname}/images/cursors/cursors.properties"
+  "etc/java-${_jname}/management/jmxremote.access"
+  "etc/java-${_jname}/management/management.properties"
+  "etc/java-${_jname}/security/java.policy"
+  "etc/java-${_jname}/security/java.security"
+  "etc/java-${_jname}/security/javaws.policy"
+  "etc/java-${_jname}/content-types.properties"
+  "etc/java-${_jname}/flavormap.properties"
+  "etc/java-${_jname}/fontconfig.properties.src"
+  "etc/java-${_jname}/logging.properties"
+  "etc/java-${_jname}/net.properties"
+  "etc/java-${_jname}/psfont.properties.ja"
+  "etc/java-${_jname}/psfontj2d.properties"
+  "etc/java-${_jname}/sound.properties"
+)
 options=('!strip') # JDK debug-symbols
 install="${pkgname}.install"
 source=(
@@ -56,13 +68,14 @@ source=(
   "policytool-${_jname}.desktop"
 )
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
-         '4a5b91b3a43a1f3af1f1fe519941a199'
+         '98f53c5894eeb2e8ffcff84092e0d2f2'
          'ef3ff483db5d38ed106e0b819006bdae')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
-            '022dd15e416080838835f55510a0b7f37d7adab49e358be5669325f6a108212c'
+            '83dfd1e916f0f903fabfd3cb6bcf6e46c14387eeb09d108ec6123f49bb3633e6'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
+
 ## Alternative mirror, if your local one is throttled:
-#source[1]="http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/${_pkgname}-${pkgver}-linux-x64.gz"
+#source[1]=???
 
 DLAGENTS=("${DLAGENTS[@]// -gqb \"\"/ -gq}")
 DLAGENTS=("${DLAGENTS[@]//curl -/curl -b 'oraclelicense=a' -}")
@@ -106,7 +119,7 @@ package() {
 
   # Move .desktops + icons to /usr/share
   mv 'lib/desktop'/* "${pkgdir}/usr/share/"
-  install -m644 "${srcdir}"/*.desktop "${pkgdir}/usr/share/applications/"
+  install -m644 "${srcdir}"/*.desktop -t "${pkgdir}/usr/share/applications/"
 
   # Move confs to /etc and link back to /usr: /usr/lib/jvm/java-${_jname}/lib -> /etc
   local _new_etc_path
