@@ -1,12 +1,12 @@
 pkgbase = scalafmt
 	pkgdesc = code formatter for the Scala programming language
-	pkgver = 1.5.1
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://olafurpg.github.io/scalafmt/
 	arch = any
 	license = Apache
 	makedepends = coursier
-	depends = java-environment
+	depends = java-environment=11
 	depends = bash
 
 pkgname = scalafmt
