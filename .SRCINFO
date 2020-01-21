@@ -1,0 +1,74 @@
+pkgbase = linux-libre
+	pkgdesc = Linux-libre Stable
+	pkgver = 5.4.12
+	pkgrel = 1
+	url = https://linux-libre.fsfla.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4-gnu/linux-libre-5.4-gnu.tar.xz
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4-gnu/linux-libre-5.4-gnu.tar.xz.sign
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4.12-gnu/patch-5.4-gnu-5.4.12-gnu.xz
+	source = https://linux-libre.fsfla.org/pub/linux-libre/releases/5.4.12-gnu/patch-5.4-gnu-5.4.12-gnu.xz.sign
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_vga16.ppm.sig
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm
+	source = https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm.sig
+	source = config
+	source = linux.preset
+	source = 90-linux.hook
+	source = 0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch
+	source = 0002-fix-Atmel-maXTouch-touchscreen-support.patch
+	validpgpkeys = 474402C8C582DAFBE389C427BCB7CF877E7D47A7
+	validpgpkeys = 6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78
+	sha512sums = 0d0915133864eb031adfc6700066147dcf3e768a50a31c39754950c95ef4fd322dc701cd50af49c403ef0325adfcb07e354d5e46c1be3dcdd719a7a55c963f37
+	sha512sums = SKIP
+	sha512sums = 9d2311e9bebc81dbd2032dd87a9f64290bd3a406701a7a83785897230c0cdc679e75fb8b5b4dc0b9bb54f5105d3101f7fcda4296a14e62f026d4882361447e1c
+	sha512sums = SKIP
+	sha512sums = 13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3
+	sha512sums = SKIP
+	sha512sums = 7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78
+	sha512sums = SKIP
+	sha512sums = 267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1
+	sha512sums = SKIP
+	sha512sums = a923bb36ff24d3f2326b0b6bccb8cdfe2ed2ab2acdae17dfcaf9beb269995a52bfba751ad7e616544ef4b98dd9487a66fe04dae2ec2e7d724f8ac47382ee71bd
+	sha512sums = 2dc6b0ba8f7dbf19d2446c5c5f1823587de89f4e28e9595937dd51a87755099656f2acec50e3e2546ea633ad1bfd1c722e0c2b91eef1d609103d8abdc0a7cbaf
+	sha512sums = 38ddc517f33fe41dec63b31313a82e0e8c05788e9db5e448d23a01605c50fe3422927cfd902e81c3b0eae17502db06f48e7f713e1ba1c9c76fd26f1473b02983
+	sha512sums = 02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af
+	sha512sums = b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168
+
+pkgname = linux-libre
+	pkgdesc = The Linux-libre Stable kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = kmod
+	depends = mkinitcpio
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-libre-firmware: firmware images needed for some devices
+	provides = linux-libre=5.4.12
+	conflicts = linux-libre
+	replaces = linux-libre
+	backup = etc/mkinitcpio.d/linux-libre.preset
+
+pkgname = linux-libre-headers
+	pkgdesc = Headers and scripts for building modules for the Linux-libre Stable kernel
+	provides = linux-libre-headers=5.4.12
+	conflicts = linux-libre-headers
+	replaces = linux-libre-headers
+
+pkgname = linux-libre-docs
+	pkgdesc = Documentation for the Linux-libre Stable kernel
+	provides = linux-libre-docs=5.4.12
+	conflicts = linux-libre-docs
+	replaces = linux-libre-docs
+
