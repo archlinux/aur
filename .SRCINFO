@@ -15,6 +15,7 @@ pkgbase = fmedia-git
 	makedepends = jdk8-openjdk
 	makedepends = dos2unix
 	makedepends = cmake
+	makedepends = gtk3
 	depends = sqlite
 	provides = fmedia-git
 	provides = fmedia
