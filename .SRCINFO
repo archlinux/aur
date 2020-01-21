@@ -1,7 +1,7 @@
 pkgbase = gnoga
-	pkgdesc = Ada native GUI framework similar to the electron framework
+	pkgdesc = Ada native GUI framework similar to the Electron framework
 	pkgver = 1.5a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnoga.com/
 	arch = i686
 	arch = x86_64

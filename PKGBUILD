@@ -2,8 +2,8 @@
 
 pkgname=gnoga
 pkgver=1.5a
-pkgrel=1
-pkgdesc="Ada native GUI framework similar to the electron framework"
+pkgrel=2
+pkgdesc="Ada native GUI framework similar to the Electron framework"
 arch=('i686' 'x86_64')
 url="http://www.gnoga.com/"
 license=('GPL3')
@@ -29,4 +29,5 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     make -j1 PREFIX="$pkgdir/usr" BUILD_MODE=Release install
+    cp "${srcdir}/${pkgname}-${pkgver}/settings.gpr" "${pkgdir}/usr/share/gpr/settings.gpr"
 }
