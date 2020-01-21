@@ -10,14 +10,13 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.0.1.canary.4.r310.g943186a5
+pkgver=3.0.1.canary.4.r320.gb4c996e9
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
 url="https://hyper.is/"
 license=('MIT')
-depends=('nodejs')
-makedepends=('git' 'yarn' 'python')
+makedepends=('git' 'npm' 'yarn' 'python')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
