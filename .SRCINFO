@@ -1,15 +1,15 @@
 pkgbase = lqsd-bin
 	pkgdesc = LiQuid Screen Dim - Dim your screen smoothly. Precompiled binary version
 	pkgver = 0.1.1
-	pkgrel = 2
-	url = https://git.reekynet.com/ReekyMarko/lqsd
+	pkgrel = 1
+	url = https://github.com/ReekyMarko/lqsd
 	arch = x86_64
 	license = MIT
 	depends = light
 	provides = lqsd
 	conflicts = lqsd
 	source = https://github.com/ReekyMarko/lqsd/releases/download/v0.1.1/lqsd_0.1.1_x86_64.tar.zst
-	sha256sums = 053d6080bba0c762ce9902345e87a4f1d1ae2109d767e1adff2646a333d72529
+	sha256sums = 502af7bf2c6637a7097e9e058eaee0679366c6f808f9675105902177e7aa7049
 
 pkgname = lqsd-bin
 
