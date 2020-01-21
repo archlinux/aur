@@ -2,28 +2,22 @@
 # Contributor: kkb110
 
 pkgname=jgit
-pkgver=5.5.0.201909110433_r
+pkgver=5.6.0.201912101111_r
 pkgrel=1
 pkgdesc="A 100% pure java implementation of git"
 arch=('any')
 url="http://www.eclipse.org/jgit/"
 license=('custom:EDL')
 depends=('java-runtime-common')
-source=("https://repo.eclipse.org/content/groups/releases//org/eclipse/${pkgname}/org.eclipse.${pkgname}.pgm/${pkgver//_/-}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh"
+source=("jgit-${pkgver}.sh::https://repo.eclipse.org/content/groups/releases//org/eclipse/${pkgname}/org.eclipse.${pkgname}.pgm/${pkgver//_/-}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh"
         "license.txt"
-        "jgit")
+)
 noextract=("org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh")
 
-md5sums=('777cd8f781ea67902dad17fbd9d49fc2'
-         'e67c5b842365a14ff39a3bd4a02842cb'
-         '69f39754c466a26057da8e409f0f3068')
-sha256sums=('309171d2bb0b6a530e5705c37240dbc075584493964a925185cba7de545bce19'
-            '7df6bb0c62b53240372c458dc6f88940f5ed81bde82e54403e1826134592dde5'
-            '0adb4123cf5db4bacd655898626bec674b3ab14b51bd52bcb24a5477d51a45ae')
+sha512sums=('c0593f3790a2c1e3a3645ddc5fc5703982e90de9e97fe59d468a6dda16a1ff476fee216f63026d036beb2998de1c4cd96ccfdb5e2427ed4edd68436e318329f3'
+            '289185bead9328258444210c1bfc1867f54ebb3cd6112b7b8e05da8e1aee32ceab0a8da3c99aaf5615cb00fe0bd174a0dca43922baa53775688bbef0b86ceadb')
 
 package() {
-  install -Dm 755 "${srcdir}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh" "${pkgdir}/usr/share/java/${pkgname}/org.eclipse.${pkgname}.pgm-${pkgver//_/-}.sh"
+  install -Dm 755 "${srcdir}/jgit-${pkgver}.sh" "${pkgdir}/usr/bin/jgit"
   install -Dm 644 "license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  install -Dm 755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }

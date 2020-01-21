@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/share/java/jgit/org.eclipse.jgit.pgm-5.5.0.201909110433-r.sh "$@"
