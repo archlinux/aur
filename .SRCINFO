@@ -1,0 +1,14 @@
+pkgbase = simple-chroot-git
+	pkgdesc = Simple chroot environment manager
+	pkgver = r89.edda14f
+	pkgrel = 1
+	url = https://github.com/mh5/simple-chroot
+	arch = any
+	license = BSD
+	depends = bash
+	options = !emptydirs
+	source = git+https://github.com/mh5/simple-chroot.git
+	sha256sums = SKIP
+
+pkgname = simple-chroot-git
+
