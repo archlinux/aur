@@ -1,7 +1,7 @@
 # Maintainer: loredan13
 # Contributor: lf <packages at lfcode dot ca>
 pkgname=klipper-git
-pkgver=r2730.ac863a95
+pkgver=r2761.b3c3b613
 pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -35,9 +35,9 @@ install=
 source=('git+https://github.com/KevinOConnor/klipper#branch=master' 'klipper.service' 'sysusers.conf' 'tmpfiles.conf')
 noextract=()
 md5sums=('SKIP'
-         '4bb29bd138c4b01e15a09d2c1a0d0f66'
+         'f2f72237af98e80fe8fdb6332f089261'
          '61912d101dc7c68c7314882b80621454'
-         '1a71747e1579e5d5503b95c3a6aa681f')
+         '28328bfd930a928c0fb8602d0e02a704')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -51,6 +51,8 @@ package() {
 	install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/klipper.conf"
 	install -dm755 "$pkgdir/opt/klipper"
 	install -dm775 "$pkgdir/etc/klipper"
+	python2 scripts/make_version.py ARCHLINUX > klippy/.version
+    python2 -m compileall klippy
+    python2 klippy/chelper/__init__.py
 	GLOBIGNORE=.git cp -r * "$pkgdir/opt/klipper"
-	chown -R klipper:klipper "$pkgdir/opt/klipper"
 }
