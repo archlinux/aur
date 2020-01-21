@@ -2,13 +2,13 @@
 # Contributor: Joel Goguen <contact+aur@jgoguen.ca>
 
 pkgname=buck-git
-pkgver=2019.10.17.01.r988.gcb7523a257
+pkgver=2019.10.17.01.r1034.g89a0c4c70c
 pkgrel=1
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
 arch=('any')
 depends=('python2')
-makedepends=('java-environment=8' 'ant' 'git')
+makedepends=('java-environment=11' 'ant' 'git')
 optdepends=('watchman: prevent Buck from parsing all of your build files every time')
 conflicts=('buck')
 provides=('buck')
