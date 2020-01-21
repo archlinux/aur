@@ -1,0 +1,19 @@
+pkgbase = python2-gnutls
+	pkgdesc = Python wrapper for the GNUTLS library
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://cheeseshop.python.org/pypi/python-gnutls
+	arch = any
+	license = LGPL
+	depends = python2
+	depends = gnutls
+	depends = libgcrypt
+	source = https://pypi.python.org/packages/source/p/python-gnutls/python-gnutls-3.1.2.tar.gz
+	source = libraryinit.patch
+	source = libraryfunctions.patch
+	sha256sums = 28748e02a8035c31826152944e41217ebcc58ab7793ae5a22850cd23d3cfbbbe
+	sha256sums = d288e90fae55652aada402a4e3c60b797df01a0da6ecc500a3a26b903c821d2b
+	sha256sums = 8443ae32fdbfc4c1880bf5e1a1d9cc71077d6ee5c5d52f01a9c9c4c291ae64d9
+
+pkgname = python2-gnutls
+

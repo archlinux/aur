@@ -1,0 +1,12 @@
+diff -wbBur python-gnutls-2.0.1/gnutls/library/__init__.py python-gnutls-2.0.1.my/gnutls/library/__init__.py
+--- python-gnutls-2.0.1/gnutls/library/__init__.py	2014-06-26 20:01:34.000000000 +0400
++++ python-gnutls-2.0.1.my/gnutls/library/__init__.py	2015-04-20 17:43:39.153403713 +0300
+@@ -56,7 +56,7 @@
+         raise RuntimeError('cannot find libgnutls on this system')
+ 
+ 
+-libgnutls = load_library(version=28)
++libgnutls = load_library(version=30)
+ libgnutls.gnutls_global_init()
+ 
+ 
