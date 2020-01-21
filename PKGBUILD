@@ -1,7 +1,7 @@
 # Maintainer: Jaro Habiger <jarohabiger@gmail.com>
 # Contributor: Robin Heinemann <robin.ole.heinemann@gmail.com>
 
-pkgname=hterm
+pkgname=hterm-32
 pkgver=0.8.4
 pkgrel=1
 pkgdesc="HTerm serial terminal"
