@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=19.04.21
+pkgver=19.10.1
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -41,13 +41,15 @@ source=(
 	'galu1.patch'
 	'gtk.patch'
   'cli.patch'
-  'wayland.patch')
+  'wayland.patch'
+  'os.patch')
 sha1sums=(
-  '54be0c68665983a81f8172a85b913318686177a2'
+  'ed01a848411a0277708f8bd45270b6daefede988'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
   '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
-  '4825b80d13555742c30d197e4de56638eef162e6')
+  '4825b80d13555742c30d197e4de56638eef162e6'
+  '0134ec37bfc874bd544a89c48124a03241af2aa4')
 
 
 build() {
@@ -64,6 +66,9 @@ build() {
 
 	# Use xhost for GUI apps on Wayland
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
+
+  # platform.dist() removed in Python 3.8. Hardcode OS instead.
+  patch --no-backup-if-mismatch -Np1 -i ${srcdir}/os.patch
 }
 
 package() {
