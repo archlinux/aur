@@ -1,0 +1,21 @@
+pkgbase = jmc
+	pkgdesc = jabber mail component
+	pkgver = 0.3rc3
+	pkgrel = 1
+	url = https://github.com/dax/jmc
+	install = jmc.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-pyxmpp
+	depends = jcl
+	backup = etc/jabber/jmc.conf
+	source = git+https://github.com/dax/jmc.git#commit=8db8619603afa408d47078112106a64e0c3e9f9b
+	source = jmc.service
+	sha256sums = SKIP
+	sha256sums = 93770f067647182d917df0206f8a6a47ab26bad009a5388bc1e3a240318c59f1
+
+pkgname = jmc
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=Jabber mail component
+
+[Service]
+Type=simple
+User=jabber
+PIDFile=/run/jmc.pid
+ExecStart=/usr/bin/jmc
+
+[Install]
+WantedBy=multi-user.target

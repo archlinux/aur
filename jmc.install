@@ -1,0 +1,7 @@
+post_install() {
+    chown -R jabber.jabber /var/spool/jabber
+}
+
+post_upgrade() {
+    chown -R jabber.jabber /var/spool/jabber
+}
