@@ -4,15 +4,14 @@
 # for example), your WINEPREFIX may break and experience unusual bugs.
 # Try to make a clean WINEPREFIX, such as by doing “rm -rf ~/.wine”
 
-pkgname=wine-stable-next
-_pkgver=5.0-rc6
-pkgver=${_pkgver/-/}
+pkgname=wine-stable
+pkgver=5.0
 pkgrel=1
 
-source=(https://dl.winehq.org/wine/source/5.0/wine-$_pkgver.tar.xz{,.sign}
+source=(https://dl.winehq.org/wine/source/5.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
         wine-binfmt.conf)
-sha512sums=('d50b1b0ef21f565244be25e7514f3a98a9ccd67b483146a202371676a78a52116326a912e8811b251acf2f17cab5ba1c094aa795e4e40212fe4e87926e7cbb8f'
+sha512sums=('681de951804c3dd3ae8c677a0ea52d172b04cac58594698b191cd972b25899cd2030d01a25fc2ad2eb6b99976a30319d2bd5ba8b7ff98b1a8b43832fa6514b83'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
@@ -35,10 +34,10 @@ depends=(desktop-file-utils faudio fontconfig freetype2 glu lcms2
 makedepends=(alsa-lib fontforge giflib gnutls gsm
   gst-plugins-base-libs libcups libgl libgphoto2 libldap libpng
   libpulse libxcomposite libxinerama libxmu libxslt libxxf86vm mesa
-  mpg123 ncurses ocl-icd openal opencl-headers perl samba sane sdl2
-  v4l-utils vkd3d vulkan-headers vulkan-icd-loader lib32-alsa-lib
-  lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs lib32-libcups
-  lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
+  mingw-w64-gcc mpg123 ncurses ocl-icd openal opencl-headers perl
+  samba sane sdl2 v4l-utils vkd3d vulkan-headers vulkan-icd-loader
+  lib32-alsa-lib lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs
+  lib32-libcups lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
   lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
   lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd
   lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
@@ -60,7 +59,7 @@ conflicts=("wine" "wine-stable")
 
 prepare() {
   # Allow ccache to work
-  mv wine-$_pkgver wine
+  mv wine-$pkgver wine
 
   for patch in *.patch; do
     if [ ! -f "$patch" ]; then
