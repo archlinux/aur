@@ -9,7 +9,6 @@ pkgbase = softu2f
 	depends = libdbus
 	depends = libsystemd
 	depends = openssl
-	optdepends = u2f-hidraw-policy: Automatically grant permissions to /dev/hidraw* (systemd <= v243)
 	source = git+https://github.com/danstiner/rust-u2f#commit=14a6ed0ffb63a4c440d27edd5ffc132f6f3ee623
 	sha256sums = SKIP
 

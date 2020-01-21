@@ -4,11 +4,6 @@ pkgrel=1
 pkgdesc="Software U2F HID token daemon (rust-u2f)"
 arch=(x86_64)
 depends=(libdbus libsystemd openssl)
-optdepends=(
-  # TODO: remove once systemd-udevd v244 (with fido_id) is out
-  # NOTE: this cannot be a required dependency as long as it conflicts with libu2f-host
-  "u2f-hidraw-policy: Automatically grant permissions to /dev/hidraw* (systemd <= v243)"
-)
 makedepends=(clang llvm rust)
 _commit=14a6ed0ffb63a4c440d27edd5ffc132f6f3ee623
 source=("git+https://github.com/danstiner/rust-u2f#commit=$_commit")
