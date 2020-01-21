@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=JMSToolBox
+GenericName=Universal JMS Client
+Comment=Universal JMS Client.
+Exec=jmstoolbox
+Icon=jmstoolbox
+Categories=Development
+StartupWMClass=JMSToolBox
+StartupNotify=true
+Keywords=JMS;Message;Queue;Java;
