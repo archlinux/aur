@@ -9,7 +9,7 @@ license=('MIT')
 depends=('light')
 makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ReekyMarko/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('73902dda8a399fbf58b0ce3f3680923121865a9925e3e4993f729ff256a736a5')
+sha256sums=('60274d9157f9adba7486255baf38bb5afa538026ca1426a3d739d022a93a981e')
 
 build(){
 	cd "$pkgname-$pkgver"
