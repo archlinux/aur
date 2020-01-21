@@ -4,16 +4,12 @@ pkgdesc="LiQuid Screen Dim - Dim your screen smoothly"
 pkgver=0.1.0
 pkgrel=1
 arch=('x86_64')
-url="https://git.reekynet.com/ReekyMarko/lqsd"
-license=('Apache')
+url="https://github.com/ReekyMarko/lqsd"
+license=('MIT')
 depends=('light')
 makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ReekyMarko/${pkgname}/-/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0e20a2814af13b1db4b3f2cf5a45105c1400e8da56495609803a95ccb5b01d4f')
-
-prepare() {
-	mv $srcdir/*/ $srcdir/$pkgname-$pkgver
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ReekyMarko/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('578ae42524a45410efb53a8d563678a00bcf7aedfc0ce0a07d429abb1ad91201')
 
 build(){
 	cd "$pkgname-$pkgver"
@@ -28,4 +24,5 @@ check(){
 package() {
 	cd "$pkgname-$pkgver"
 	install -D -m755 "target/release/${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname/-bin/}"
 }
