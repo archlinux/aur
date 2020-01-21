@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=1.940
+pkgver=1.941
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(x86_64)
@@ -153,8 +153,8 @@ package() {
     export archpkgdir="$pkgdir"
     cd "$srcdir"/$pkgname-$pkgver
 
-    # running iptables (nft interface) as non-root user
-    # goes into infinite loop so we avoid it in setup.sh
+    # new version of iptables do not allow to run as non-root user
+    # so is_installed() check fails, so we avoid it in setup.sh
     mv firewall/install_check{,.tmp}.pl
     mv firewall6/install_check{,.tmp}.pl
     "$srcdir"/$pkgname-$pkgver/setup.sh "$pkgdir"/opt/webmin
@@ -180,7 +180,7 @@ package() {
 }
 
 
-sha256sums=('ce76c58eab03ac376a51ed4486736c663fc192d5c83edc45fa0350b3d5c43478'
+sha256sums=('3a19228d92556c7722c6fe56c9d4b73d477a19845b0dae3f018fc7fc0306b29a'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             '21b24cbbf88593f9da727e8f36dea283c8765002a378b3d4e55e6332387c43c6'
             'd326da95233341ed0a6d51c6c28d9b47b5bbe8c1ae8e03e2578c24191dd14383'
