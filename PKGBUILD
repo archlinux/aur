@@ -22,7 +22,8 @@
 set -u
 pkgname='teamviewer9'
 #pkgver=8.0.20931
-pkgver=9.0.32150
+#pkgver=9.0.32150
+pkgver=9.0.225162
 #pkgver=10.0.35002
 #pkgver=10.0.36281
 #pkgver=10.0.37742
@@ -111,7 +112,7 @@ if [ "${_pkgver_major}" -ge 10 ]; then
 else
   source=("teamviewer_${pkgver}.i686.rpm::http://download.teamviewer.com/download/version_${_pkgver_major}x/teamviewer_linux.rpm")
 fi
-sha256sums=('12f00b1dff5e4fc2f49b50dd1e76a7c9fc6920f5d524a2d96879f0bfdc415aa7')
+sha256sums=('7ca98d7549ab83ac8e4f7f098fea23bf4d0d3d306f2cf2de8c53030e24e1e8c8')
 PKGEXT='.pkg.tar.gz'
 
 # There are 4 Linux downloads. The files and folder structure are all the same. The only difference is packaging and dependencies.
@@ -127,6 +128,10 @@ PKGEXT='.pkg.tar.gz'
 # Keep this at zero. While private logging is functional, the logs don't log anything
 # and there might be other problems.
 _opt_PRIVATELOG=0
+
+pkgver() {
+  sed -E -n -e 's:^TV_VERSION="([^"]+)"$:\1:p' "opt/${pkgname}/tv_bin/script/tvw_config"
+}
 
 prepare() {
   [ -d 'opt' ] && cd 'opt'
