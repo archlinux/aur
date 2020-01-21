@@ -6,7 +6,7 @@
 
 pkgname="brother-mfc-j5330dw"
 pkgver="1.0.1"
-pkgrel=5
+pkgrel=4
 pkgdesc="LPR and CUPS driver for the Brother MFC-J5330DW"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=gb&lang=en&prod=mfcj5330dw_us_eu_as"
