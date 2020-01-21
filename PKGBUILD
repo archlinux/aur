@@ -1,14 +1,14 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 pkgname=moviebattles2
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast-paced, action packed mod for Jedi Knight: Jedi Academy"
 arch=('i686' 'x86_64')
 url="https://www.moviebattles.org"
 license=('unknown')
 depends=('bin32-openjk')
 source=(
-    'https://doc-0o-24-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/aoecfm595455ja61h5dnn6192ftoi6nm/1579456800000/14575084510141239337/*/1VOqrtwfos25GhHlyDvPadbGRQIUCAbse?e=download'
+    "$pkgname-$pkgver.zip::https://drive.google.com/uc?id=1VOqrtwfos25GhHlyDvPadbGRQIUCAbse&export=download"
     'moviebattles2.desktop'
     'moviebattles2.png'
     'moviebattles2')
@@ -18,6 +18,16 @@ md5sums=(
     '3d20693ab4602ba56d61e9ee401e1dba'
     '400671872ffab35708b1acd1129b3797')
 install=moviebattles2.install
+
+cat > gdrive-dl <<EOF
+#!/bin/sh
+tcf=cookie
+confirm=\$(curl -c - -o /dev/null "\$1" | tee \$tcf | awk '/download/ { print \$NF }')
+curl -Lb \$tcf -C - -o "\$2" "\$1&confirm=\$confirm"
+EOF
+chmod +x gdrive-dl
+
+DLAGENTS=("https::$(pwd)/gdrive-dl %u %o")
 
 package() {
     destdir=$pkgdir/opt/moviebattles2
