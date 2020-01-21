@@ -1,13 +1,25 @@
-diff --git a/YUView.pro b/YUView.pro
-index b92db488..23615f79 100644
---- a/YUView.pro
-+++ b/YUView.pro
-@@ -177,7 +177,7 @@ OTHER_FILES += \
- 
+diff --git a/YUViewApp/YUViewApp.pro b/YUViewApp/YUViewApp.pro
+index 2f1d5742..853e68d3 100644
+--- a/YUViewApp/YUViewApp.pro
++++ b/YUViewApp/YUViewApp.pro
+@@ -13,7 +13,7 @@ LIBS += -L$$top_builddir/YUViewLib -lYUViewLib
+
  unix:!mac {
- 	isEmpty(PREFIX) {
--		PREFIX = /usr/local
-+		PREFIX = /usr
- 	}
- 	isEmpty(BINDIR) {
- 		BINDIR = bin
+     isEmpty(PREFIX) {
+-        PREFIX = /usr/local
++        PREFIX = /usr
+     }
+     isEmpty(BINDIR) {
+         BINDIR = bin
+diff --git a/YUViewLib/src/filesource/fileSource.h b/YUViewLib/src/filesource/fileSource.h
+index 4177c3d7..3cb7af70 100644
+--- a/YUViewLib/src/filesource/fileSource.h
++++ b/YUViewLib/src/filesource/fileSource.h
+@@ -38,6 +38,7 @@
+ #include <QFileSystemWatcher>
+ #include <QMutex>
+ #include <QMutexLocker>
++#include <QSize>
+ #include <QString>
+
+ #include "common/fileInfo.h"
