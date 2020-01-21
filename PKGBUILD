@@ -2,8 +2,9 @@
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
+# when changing major version (i.e. 1.15 to 1.1X) remeber to updated the occurences in build() and package()
 pkgver=1.15.2
-pkgrel=2
+pkgrel=3
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="https://www.wesnoth.org/"
@@ -65,6 +66,7 @@ build() {
   #the option build=debug can be useful if the game crashes and you would like to report a bug
   scons jobs=4 desktop_entry=False prefix=/usr version_suffix=-devel prefsdir=.wesnoth-devel \
   docdir=/usr/share/doc/wesnoth-devel fifodir=/run/wesnothd-devel \
+  prefsdir=.local/share/wesnoth/1.15 \
   appdata_file=False enable_lto=True wesnoth wesnothd
 }
 
@@ -89,7 +91,7 @@ package(){
   # add suffix to manpages (.6 is the file extension) and copy them in the right directory
   for filename in "$pkgdir"/usr/share/man/{,*/}man6/wesnoth{,d}.6
     do
-      mv "$filename" $(dirname $filename)/$(basename $filename .6)-"$pkgver"
+      mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.15.6
   done
 
   # setting dist file

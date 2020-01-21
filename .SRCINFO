@@ -1,7 +1,7 @@
 pkgbase = wesnoth-devel
 	pkgdesc = development version of a turn-based strategy game on a fantasy world
 	pkgver = 1.15.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.wesnoth.org/
 	install = wesnoth-devel.install
 	arch = i686
