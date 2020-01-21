@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=arxiv2bib
-pkgver=1.0.5
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Get a BibTeX entry from an arXiv id number"
 arch=('any')
@@ -12,6 +12,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-nose' 'python-mock')
 source=(https://github.com/nathangrigg/arxiv2bib/archive/$pkgver.tar.gz)
+md5sums=('268d263800cad636870110a891ccd405')
 
 build() {
   cd "$srcdir/arxiv2bib-$pkgver"
@@ -30,4 +31,3 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('63568d0d4a0e78b8851588662b4eddde')
