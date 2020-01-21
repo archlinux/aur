@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=megabasterd-bin
-pkgver=7.9
+pkgver=7.12
 pkgrel=1
 pkgdesc="Yet another (unofficial) cross-platform MEGA downloader/uploader/streaming suite"
 arch=('any')
@@ -22,6 +22,6 @@ package() {
 	install -Dm644 "${pkgname%%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%%-bin}.desktop"
 }
 
-md5sums=('de44c73df1ff4125cc4154fb8c49f079'
+md5sums=('362eb0a99d6888522b92030f7e55988a'
          'f4112d02ba321fbb769be50679d35357'
          'a61fc0026a70f2508514eb2107a1f79f')
