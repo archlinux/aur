@@ -1,0 +1,25 @@
+pkgbase = mediaproxy
+	pkgdesc = Open-source media proxy for OpenSER
+	pkgver = 2.6.1
+	pkgrel = 5
+	url = http://mediaproxy.ag-projects.com/
+	arch = x86_64
+	license = GPL
+	depends = python2
+	depends = libnetfilter_conntrack
+	depends = iptables
+	depends = python2-application
+	depends = python2-cjson
+	depends = python2-gnutls
+	depends = python2-twisted
+	source = http://download.ag-projects.com/MediaProxy/mediaproxy-2.6.1.tar.gz
+	source = mediaproxy-dispatcher.service
+	source = mediaproxy-relay.service
+	source = mediaproxy.tmpfiles
+	sha512sums = f4da0dcf2347911feacfa9b6757738d94d8f1fdd7eae885ba13e49aa590bb9f195c76c8928b11564d7e51d7f0e2e89ee277e0b58e7450b6a68f91d56b8428c8a
+	sha512sums = e1844392d45427e6596828df2f2db8c667dad94f74102ba628d5a650e8ac862409b8d1fa04ce68c3acff74f0d4ef3fe5fc9ef314c6c325af80488ca8bdf95092
+	sha512sums = 36e50aa1f0faa3e0207c256b81438bced99ff6879f1a878009637d0b5e812e11639ddd00799fb3be793f004ed4504023bedc513865f35d2e15f06efd3c58611a
+	sha512sums = c0405d824ad1aec2b11979727a731120bac1200167edd17b09faf6c9253f5e24fa2547c597eaa81728b5139c827c426c520dc578d05ee8e23e77df4cb2d2e6ca
+
+pkgname = mediaproxy
+

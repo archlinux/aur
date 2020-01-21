@@ -1,0 +1,11 @@
+[Unit]
+Description=Mediaproxy relay service
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/mediaproxy/relay.pid
+ExecStart=media-relay
+
+[Install]
+WantedBy=multi-user.target
