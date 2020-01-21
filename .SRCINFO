@@ -1,7 +1,7 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
 	pkgver = 6.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://docs.mikeboers.com/pyav/
 	arch = any
 	license = BSD
@@ -9,13 +9,15 @@ pkgbase = python-av
 	makedepends = python2-setuptools
 	makedepends = cython
 	makedepends = cython2
-	depends = python
-	depends = python2
 	depends = ffmpeg
 	source = https://github.com/mikeboers/PyAV/archive/v6.2.0.tar.gz
 	sha256sums = 312dbcd3efa5bc060ce6003f2579a65b1e8c017473fb55755e8e148b87dcf696
 
 pkgname = python-av
+	depends = python
+	depends = ffmpeg
 
 pkgname = python2-av
+	depends = python2
+	depends = ffmpeg
 

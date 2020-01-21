@@ -9,7 +9,7 @@ pkgdesc="Pythonic bindings for FFmpeg"
 url="https://docs.mikeboers.com/pyav/"
 
 pkgver=6.2.0
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("BSD")
@@ -21,8 +21,6 @@ makedepends=(
     "cython2"
 )
 depends=(
-    "python"
-    "python2"
     "ffmpeg"
 )
 
@@ -44,15 +42,25 @@ build() {
 }
 
 package_python-av() {
+    depends=(
+        "python"
+        "ffmpeg"
+    )
+
     cd "${srcdir}/PyAV-${pkgver}"
-    python setup.py install --root=${pkgdir} --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1
 
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-av/LICENSE"
 }
 
 package_python2-av() {
+    depends=(
+        "python2"
+        "ffmpeg"
+    )
+
     cd "${srcdir}/PyAV-${pkgver}-py2"
-    python2 setup.py install --root=${pkgdir} --optimize=1
+    python2 setup.py install --root="${pkgdir}" --optimize=1
 
     # rename /usr/bin/pyav to avoid filename conflict
     mv "${pkgdir}/usr/bin/pyav" "${pkgdir}/usr/bin/pyav2"
