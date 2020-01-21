@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mawk
-pkgver=1.3.4_20200106
+pkgver=1.3.4_20200120
 pkgrel=1
 pkgdesc="An interpreter for the AWK Programming Language"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('glibc')
 url="http://invisible-island.net/mawk/"
 source=("$pkgname-$pkgver.tar.gz::http://invisible-island.net/datafiles/release/$pkgname.tar.gz")
-sha256sums=('f1e1240ba7626ffe920a8bd2d596864dde9f3fa7411db0165142041628b015b6')
+sha256sums=('7fd4cd1e1fae9290fe089171181bbc6291dfd9bca939ca804f0ddb851c8b8237')
 
 build() {
   cd $pkgname-${pkgver/_/-}
