@@ -1,5 +1,5 @@
 pkgname=htmail-view
-pkgver=v0.5.r0.7ea9b55
+pkgver=v0.6.r3.59e04aa
 pkgrel=1
 pkgdesc="Web page renderer based on WebKit"
 arch=(any)
