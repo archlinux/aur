@@ -1,13 +1,8 @@
 --- main.cpp	2019-09-01 18:50:53.000000000 +0800
 +++ main_new.cpp	2019-11-02 17:59:37.048730782 +0800
-@@ -37,8 +37,8 @@
- #endif
- 
+@@ -49,3 +49,3 @@
  #ifdef Q_OS_LINUX
 -    qputenv("QTSCRCPY_ADB_PATH", "../../../third_party/adb/linux/adb");
--    qputenv("QTSCRCPY_SERVER_PATH", "../../../third_party/scrcpy-server.jar");
+-    qputenv("QTSCRCPY_SERVER_PATH", "../../../third_party/scrcpy-server");
 +    qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb");
-+    qputenv("QTSCRCPY_SERVER_PATH", "/usr/share/qt-scrcpy/scrcpy-server.jar");
- #endif
- 
-     //加载样式表
++    qputenv("QTSCRCPY_SERVER_PATH", "/usr/share/scrcpy/scrcpy-server");

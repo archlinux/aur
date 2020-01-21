@@ -1,20 +1,20 @@
 # Maintainer: Bruce Zhang
 pkgname=qt-scrcpy
 _name=QtScrcpy
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache')
-depends=('qt5-base')
+depends=('qt5-base' 'scrcpy')
 provides=('qt-scrcpy')
 source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/barry-ran/$_name/archive/v$pkgver.tar.gz"
 	binaries.patch
 )
-sha256sums=('84c02a9402d7cbaf9626e625ccdde09de6f1d8bd6c02b66995650b312e537adc'
-            'd6aaff9b94d2a14f2c27296d30cabbaa70e47bb7fbc2782ce9e754738c748ded')
+sha256sums=('83188edee4ace0330e05e0c8e973cdfac70cc7e0cbd9752ac71e3e3bd909f603'
+            '1fa61a24bf59a62db1b29a3d3ec49186ef6f539ff8d09dd04534d939cb30aedd')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver/$_name"
@@ -32,7 +32,4 @@ build() {
 package() {
 	cd "$srcdir/$_name-$pkgver/output/linux/release"
 	install -Dm755 QtScrcpy "$pkgdir/usr/bin/QtScrcpy"
-
-	cd "$srcdir/$_name-$pkgver/third_party"
-	install -Dm644 scrcpy-server.jar "$pkgdir/usr/share/qt-scrcpy/scrcpy-server.jar"
 }

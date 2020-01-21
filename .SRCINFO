@@ -1,16 +1,17 @@
 pkgbase = qt-scrcpy
 	pkgdesc = Android real-time screencast control tool
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/barry-ran/QtScrcpy
 	arch = x86_64
 	license = Apache
 	depends = qt5-base
+	depends = scrcpy
 	provides = qt-scrcpy
-	source = qt-scrcpy-1.0.3.src.tar.gz::https://github.com/barry-ran/QtScrcpy/archive/v1.0.3.tar.gz
+	source = qt-scrcpy-1.1.0.src.tar.gz::https://github.com/barry-ran/QtScrcpy/archive/v1.1.0.tar.gz
 	source = binaries.patch
-	sha256sums = 84c02a9402d7cbaf9626e625ccdde09de6f1d8bd6c02b66995650b312e537adc
-	sha256sums = d6aaff9b94d2a14f2c27296d30cabbaa70e47bb7fbc2782ce9e754738c748ded
+	sha256sums = 83188edee4ace0330e05e0c8e973cdfac70cc7e0cbd9752ac71e3e3bd909f603
+	sha256sums = 1fa61a24bf59a62db1b29a3d3ec49186ef6f539ff8d09dd04534d939cb30aedd
 
 pkgname = qt-scrcpy
 
