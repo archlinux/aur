@@ -7,7 +7,7 @@ index e6f8237..1efda97 100644
  GenericName=Media Player
  Comment=View your media
 -Exec=plexmediaplayer --fullscreen --tv
-+Exec=env LD_LIBRARY_PATH=/opt/qt595/usr/lib:$LD_LIBRARY_PATH plexmediaplayer --fullscreen --tv
++Exec=env LD_LIBRARY_PATH=/opt/qt595/lib:$LD_LIBRARY_PATH plexmediaplayer --fullscreen --tv
  Icon=plexmediaplayer
  Terminal=false
  Type=Application
@@ -16,14 +16,14 @@ index e6f8237..1efda97 100644
  [Desktop Action TV]
  Name=TV
 -Exec=plexmediaplayer --fullscreen --tv
-+Exec=env LD_LIBRARY_PATH=/opt/qt595/usr/lib:$LD_LIBRARY_PATH plexmediaplayer --fullscreen --tv
++Exec=env LD_LIBRARY_PATH=/opt/qt595/lib:$LD_LIBRARY_PATH plexmediaplayer --fullscreen --tv
  
  [Desktop Action DesktopF]
  Name=Desktop [Fullscreen]
 -Exec=plexmediaplayer --fullscreen --desktop
-+Exec=env LD_LIBRARY_PATH=/opt/qt595/usr/lib:$LD_LIBRARY_PATH plexmediaplayer --fullscreen --desktop
- 
++Exec=env LD_LIBRARY_PATH=/opt/qt595/lib:$LD_LIBRARY_PATH plexmediaplayer --fullscreen --desktop
+
  [Desktop Action DesktopW]
  Name=Desktop [Windowed]
 -Exec=plexmediaplayer --windowed --desktop
-+Exec=env LD_LIBRARY_PATH=/opt/qt595/usr/lib:$LD_LIBRARY_PATH plexmediaplayer --windowed --desktop
++Exec=env LD_LIBRARY_PATH=/opt/qt595/lib:$LD_LIBRARY_PATH plexmediaplayer --windowed --desktop
