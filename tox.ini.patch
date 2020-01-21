@@ -1,0 +1,10 @@
+--- src/tox.ini	2020-01-21 06:56:13.435221362 -0600
++++ src/tox.ini	2020-01-21 06:56:32.611884531 -0600
+@@ -3,6 +3,7 @@
+ 
+ [testenv]
+ deps=
++	pip>=19
+ 	pytest
+ 	coverage
+ 	pycryptodomex<3.7

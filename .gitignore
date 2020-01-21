@@ -6,3 +6,4 @@
 !.gitignore
 !PKGBUILD
 !*.install
+!*.patch
