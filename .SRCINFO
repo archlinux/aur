@@ -1,14 +1,13 @@
 pkgbase = tinywm-git
 	pkgdesc = A tiny window manager written in only ~50 lines of code
 	pkgver = 1.1.33.g9d05612
-	pkgrel = 1
+	pkgrel = 2
 	url = http://incise.org/tinywm.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = libx11
-	optdepends = python-xlib: for python version (uncomment last line of PKGBUILD)
 	provides = tinywm
 	conflicts = tinywm
 	source = git://github.com/mackstann/tinywm.git
