@@ -1,0 +1,16 @@
+pkgbase = yarrp-git
+	pkgdesc = High-speed Internet Topology Prober
+	pkgver = r45.91bcd88
+	pkgrel = 1
+	url = https://www.cmand.org/yarrp/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = zlib
+	provides = yarrp
+	conflicts = yarrp
+	source = git+https://github.com/cmand/yarrp.git
+	md5sums = SKIP
+
+pkgname = yarrp-git
+
