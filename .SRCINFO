@@ -1,6 +1,6 @@
 pkgbase = crema
 	pkgdesc = Manage (remote) custom repositories
-	pkgver = 2.1
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://gitlab.com/mipimipi/crema
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = crema
 	conflicts = crema-git
 	conflicts = aurutils
 	conflicts = aurutils-git
-	source = crema-2.1.tar.gz::https://gitlab.com/mipimipi/crema/-/archive/2.1/crema-2.1.tar.gz
+	source = crema-2.1.1.tar.gz::https://gitlab.com/mipimipi/crema/-/archive/2.1.1/crema-2.1.1.tar.gz
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
 	md5sums = SKIP
 
