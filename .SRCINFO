@@ -1,6 +1,6 @@
 pkgbase = python-django-etesync-journal
 	pkgdesc = The server side implementation of the EteSync protocol.
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/django-etesync-journal/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-django-etesync-journal
 	depends = python-django-rest-framework
 	depends = python-drf-nested-routers
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/d/django-etesync-journal/django-etesync-journal-1.0.3.tar.gz
-	sha256sums = a81674fab37913831c93107e3335030b0f8eeef074c0abb202aedc9b61a61bac
+	source = https://files.pythonhosted.org/packages/source/d/django-etesync-journal/django-etesync-journal-1.1.0.tar.gz
+	sha256sums = 7705ed5b0c8afd79c82d5662bb6d985439f32208ce572f0c914da69c7aa6a66f
 
 pkgname = python-django-etesync-journal
 
