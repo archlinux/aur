@@ -1,5 +1,5 @@
 [Trigger]
-Type = File
+Type = Path
 Operation = Upgrade
 Operation = Remove
 Target = usr/share/slib/unregister/*.sh
