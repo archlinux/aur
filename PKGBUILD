@@ -2,7 +2,7 @@
 
 srcname='dolog'
 pkgname="ocaml-${srcname}"
-pkgver='3.0'
+pkgver='4.0.0'
 pkgrel=1
 pkgdesc='A dumb OCaml logger'
 arch=('i686' 'x86_64')
@@ -10,18 +10,16 @@ url="https://github.com/UnixJunkie/dolog"
 license=('BSD')
 depends=('ocaml')
 makedepends=('ocaml'
-	'ocaml-findlib')
+    'ocaml-findlib'
+    'dune')
 source=("https://github.com/UnixJunkie/${srcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b0efb70e5e29cae47a571940b84645029da32ca36ede7032bf9e491fd7e2e877')
+sha256sums=('bd5b57e9954cc0b6750016e820b0ca8293207e2f337d465937a0f1d91430b503')
 options=('staticlibs')
 
 build() {
     cd "$srcdir/${srcname}-${pkgver}"
 
-    ./configure
-
     env DESTDIR="$pkgdir" \
-        OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
         make
 }
 
@@ -31,6 +29,5 @@ package() {
 
     mkdir -p "$pkgdir/$(ocamlfind printconf destdir)"
     env DESTDIR="$pkgdir" \
-        OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
         make install
 }
