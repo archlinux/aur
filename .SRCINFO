@@ -1,32 +1,20 @@
 pkgbase = python-pymisp
 	pkgdesc = Python library to access MISP platforms via their REST API
-	pkgver = 2.4.119.1
+	pkgver = 2.4.120
 	pkgrel = 1
 	url = https://github.com/MISP/PyMISP/
 	arch = any
 	license = custom
 	makedepends = python
-	makedepends = python2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = PyMISP-2.4.119.1.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.119.1.tar.gz
-	sha512sums = 98e58a168e71d45fedc6157ace0ad15426835c13a9b28f78a95a677e3d63773a71b1d6a78c15997f97040653945337bb67bd97f9264de8ee278a750f74305fc5
-
-pkgname = python-pymisp
 	depends = python
 	depends = python-jsonschema
 	depends = python-requests
 	depends = python-dateutil
 	depends = python-deprecated
 	depends = python-cachetools
+	source = PyMISP-2.4.120.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.120.tar.gz
+	sha512sums = 1978ca7462c1a3f18e2130e400eb07e18bce6381fc1b9288846bcd56107aa9063339a7729a67465d4198425a909c913b839f62883ff518dc718fefb0510e32c0
 
-pkgname = python2-pymisp
-	depends = python2
-	depends = python2-jsonschema
-	depends = python2-requests
-	depends = python2-dateutil
-	depends = python2-deprecated
-	depends = python2-enum34
-	depends = python2-functools32
-	depends = python2-cachetools
+pkgname = python-pymisp
 
