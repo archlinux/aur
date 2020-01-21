@@ -1,21 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
-url="https://github.com/getsentry/sentry-python"
+url="https://sentry.io/for/python"
 license=('BSD')
 depends=('python-urllib3' 'python-certifi')
 makedepends=('python-setuptools')
 optdepends=('python-flask' 'python-blinker' 'python-bottle' 'python-falcon' 'python-django'
             'python-sanic' 'python-celery' 'python-beam' 'python-rq' 'python-aiohttp'
             'python-tornado' 'python-sqlalchemy' 'python-pyspark')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/getsentry/sentry-python/master/LICENSE")
-sha256sums=('8e2d38dc58dc992280487e553ec3d97a424e4d179f4fad802ef3b08f64ccf4d8'
-            '59404d4c854e579097d41bfccd5006afde9d6d70e646cf55074cdbfead5ecf1c')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+#source=("https://github.com/getsentry/sentry-python/archive/$pkgver.tar.gz")
+sha256sums=('e023da07cfbead3868e1e2ba994160517885a32dfd994fc455b118e37989479b')
 
 build() {
 	cd "$_name-$pkgver"
@@ -26,5 +25,5 @@ package() {
 	cd "$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
