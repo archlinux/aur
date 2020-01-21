@@ -55,7 +55,7 @@ package_ibus-python3() {
 }
 
 package_libibus-python3() {
-  pkgdesc="IBus support library"
+  pkgdesc="IBus support library. Wihout python2."
   depends=('glib2')
   provides+=('libibus=$pkgver')
   conflicts+=('libibus')
