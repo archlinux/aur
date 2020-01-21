@@ -1,10 +1,10 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxm-git
-pkgver=v0.0.0.r13.gb80f433
+pkgver=v0.0.1.r0.g0335c40
 pkgrel=1
 pkgdesc="Generic C-implementation of modular support"
 arch=('any')
-url="https://gitlab.com/fenrig/lib_amxm"
+url="https://gitlab.com/proj_amx_01/libraries/lib_amxm"
 license=('MIT')
 
 depends=(
@@ -21,7 +21,7 @@ conflicts=(
 
 gitbranch="master"
 
-source=("${pkgname}::git+https://gitlab.com/fenrig/lib_amxm.git#branch=${gitbranch}")
+source=("${pkgname}::git+https://gitlab.com/proj_amx_01/libraries/lib_amxm.git#branch=${gitbranch}")
 md5sums=('SKIP')
 
 pkgver() {
