@@ -1,9 +1,9 @@
 pkgbase = frr
 	pkgdesc = FRRouting (quagga fork) supports BGP4, OSPFv2, OSPFv3, ISIS, RIP, RIPng, PIM, LDP, BFD, VRRP, NHRP and EIGRP.
 	pkgver = 7.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://frrouting.org/
-	arch = any
+	arch = x86_64
 	license = GPL2
 	checkdepends = python-pytest
 	makedepends = patch
@@ -41,7 +41,7 @@ pkgbase = frr
 	sha256sums = 40fea6ff007453e27761a0372cde51fd8279f89984dff009092eebe2a7b29be3
 	sha256sums = 9371cc0522d13621c623b5da77719052bdebdceb7ffdbdc06fc32a2f07118e7e
 	sha256sums = 6f8dd86ef9c600763faead3052908531e8dc8ef67058e6f7f8da01bf0fe4eb89
-	sha256sums = fbbd0b6d40dffbdb850ecabf91ab6bd22da07aa2c7c6406af5e3816988905e02
+	sha256sums = 36ac07e04b54bb2c4228bf4b380c133c134962ff5f39bc84c03972bc93b1261d
 	sha256sums = e6e2592a8b0b18f7f173186fb4ebf23e642b3d912179f0bb36251962ca64cd7a
 
 pkgname = frr
