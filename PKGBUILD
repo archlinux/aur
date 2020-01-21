@@ -3,7 +3,7 @@
 _pkgname=vita3k
 pkgname=${_pkgname}-git
 pkgver=r1362.c43b0969
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental PlayStation Vita emulator"
 arch=('x86_64')
 url="https://vita3k.org/"
