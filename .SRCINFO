@@ -1,14 +1,14 @@
 pkgbase = python-ipaddr
 	pkgdesc = An IPv4/IPv6 manipulation library in Python. The Google Code version for Python 3.x.
-	pkgver = 2.1.11
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://code.google.com/p/ipaddr-py/
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.1.11.tar.gz
-	md5sums = f2c7852f95862715f92e7d089dc3f2cf
+	source = https://pypi.python.org/packages/source/i/ipaddr/ipaddr-2.2.0.tar.gz
+	md5sums = f88353e40dec06410acfa075b8209b27
 
 pkgname = python-ipaddr
 
