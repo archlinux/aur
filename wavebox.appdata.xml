@@ -1,0 +1,20 @@
+<!-- Copyright 2017 The Chromium Authors -->
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>wavebox.desktop</id>
+  <update_contact>support@wavebox.io</update_contact>
+  <metadata_license>UNLICENSED</metadata_license>
+  <project_license>UNLICENSED</project_license>
+  <name>Wavebox</name>
+  <summary>The next generation of web-desktop communication</summary>
+  <description>
+    
+  </description>
+  <url type="homepage">https://wavebox.io</url>
+  <screenshots>
+  </screenshots>
+  <translation/>
+  <developer_name>Wavebox</developer_name>
+  <url type="bugtracker">https://wavebox.io</url>
+  <url type="help">https://wavebox.io</url>
+</component>

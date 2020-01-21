@@ -1,0 +1,32 @@
+pkgbase = wavebox
+	pkgdesc = The next generation of web-desktop communication
+	pkgver = 10.0.54
+	pkgrel = 1
+	url = https://wavebox.io
+	arch = x86_64
+	license = custom:Wavebox-EULA
+	depends = ttf-liberation
+	depends = libappindicator-gtk3
+	depends = at-spi2-atk
+	depends = cairo
+	depends = libcups
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = nspr
+	depends = nss
+	depends = libxss
+	depends = wget
+	depends = xdg-utils
+	optdepends = pam-u2f: Two-Factor Auth
+	source = wavebox-10.0.54.tar.gz::http://download.wavebox.app/latest/stable/linux/tar
+	source = wavebox.appdata.xml
+	source = wavebox.menu
+	source = LICENSE
+	md5sums = 431ceb9de9b0b3f335f2e14e9f23c49a
+	md5sums = cf3416572bcd3e3528958f36306e6e7c
+	md5sums = 4f08794ea93eafd0e77b522ac7738638
+	md5sums = b92c8854e4553540df6bc998afe68cc4
+
+pkgname = wavebox
+
