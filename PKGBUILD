@@ -1,7 +1,7 @@
 # Maintainer: Marko Korhonen <marko.korhonen@reekynet.com>
 pkgname="lqsd"
 pkgdesc="LiQuid Screen Dim - Dim your screen smoothly"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ReekyMarko/lqsd"
