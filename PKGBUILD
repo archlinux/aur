@@ -3,16 +3,16 @@
 # Contributor: James Feng Cao
 
 set -u
-_pyver="python2"
+_pyver="python"
 _pyverother='python python2 '
 _pyverother="${_pyverother//${_pyver} /}"
 _pyverother="${_pyverother// /}"
 _pybase='pdfminer'
 _pkgname="${_pyver}-${_pybase}"
 pkgname="${_pybase}"
-pkgver='20140328'
-pkgrel='2'
-pkgdesc='python2 utils to extract, analyze text data of PDF files. Includes pdf2txt, dumppdf, and latin2ascii'
+pkgver='20191125'
+pkgrel='1'
+pkgdesc='python3 utils to extract, analyze text data of PDF files. Includes pdf2txt, dumppdf, and latin2ascii'
 arch=('any')
 #url="https://pypi.python.org/pypi/${_pybase}/"
 #url="https://github.com/euske/${_pybase}/"
@@ -22,7 +22,8 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('ba187b93056586a14edd5e630cf63ae96b1cc84b611f55dcddbc997316d9f262')
+md5sums=('822eb51838a944154027b8ca42d439e3')
+sha256sums=('9e700bc731300ed5c8936343c1dd4529638184198e54e91dd2b59b64a755dc01')
 
 build() {
   set -u
