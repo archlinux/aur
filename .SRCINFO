@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
@@ -33,11 +33,15 @@ pkgbase = electron-cash
 	optdepends = python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes
 	optdepends = python-qdarkstyle: optional dark theme in graphical mode
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
+	optdepends = python-trezor: Trezor hardware wallet support
+	optdepends = python-keepkey: Trezor hardware wallet support
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
 	source = electron-cash-4.0.12.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/4.0.12.tar.gz
+	source = tox.ini.patch
 	sha256sums = 8b5b7dcc7b1420659f6d5b1fa38e0c631a9b8abf4e8451c4dca6d8381bbfdb14
+	sha256sums = 39c85a1eec8fcdc7fa80d47ff464e023b092cc623dce7fd6f42abe547c017ecb
 
 pkgname = electron-cash
 

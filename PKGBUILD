@@ -7,7 +7,7 @@
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.0.12
-pkgrel=1
+pkgrel=2
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -44,12 +44,23 @@ optdepends=(
   'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes'
   'python-qdarkstyle: optional dark theme in graphical mode'
   'python-rpyc: send commands to Electrum Python console from an external script'
+  'python-trezor: Trezor hardware wallet support'
+  'python-keepkey: Trezor hardware wallet support'
   'zbar: QR code reading support'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz")
-sha256sums=('8b5b7dcc7b1420659f6d5b1fa38e0c631a9b8abf4e8451c4dca6d8381bbfdb14')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
+        "tox.ini.patch")
+sha256sums=('8b5b7dcc7b1420659f6d5b1fa38e0c631a9b8abf4e8451c4dca6d8381bbfdb14'
+            '39c85a1eec8fcdc7fa80d47ff464e023b092cc623dce7fd6f42abe547c017ecb')
+
+prepare() {
+  cd "Electron-Cash-${pkgver}"
+
+  # Patch tox.ini to use the latest pip
+  patch --forward --strip=1 --input="${srcdir}/tox.ini.patch"
+}
 
 build() {
   cd "Electron-Cash-${pkgver}"
