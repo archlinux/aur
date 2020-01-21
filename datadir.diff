@@ -1,0 +1,30 @@
+--- bin/sgmltools.in.orig	2010-06-26 02:56:50.000000000 -0430
++++ bin/sgmltools.in	2010-06-26 02:57:26.000000000 -0430
+@@ -32,14 +32,14 @@
+     print '%s: need python 1.5 or better' % sys.argv[0]
+     raise SystemExit,1
+ 	     
+-sys.path.append('@datadir@/sgml/misc/sgmltools/python')
++sys.path.append('@pydatadir@/sgml/misc/sgmltools/python')
+ 
+ #
+ #  Autoconf edits most of these.
+ #
+ autoconf = {
+     'prefix': '@pyprefix@',
+-    'shrdir': '@datadir@/sgml/misc/sgmltools',
++    'shrdir': '@pydatadir@/sgml/misc/sgmltools',
+     'bindir': '@pybindir@',
+     'etcdir': '@etcsgml@',
+     'progs' : {
+@@ -52,8 +52,8 @@
+     #  Editable: places where backends can be found.
+     #
+     'backends' : [
+-	'@datadir@/sgml/misc/sgmltools/python/backends',
+-	'@datadir@/sgml/misc/sgmltools/site-backends'
++	'@pydatadir@/sgml/misc/sgmltools/python/backends',
++	'@pydatadir@/sgml/misc/sgmltools/site-backends'
+     ],
+ }
+ 
