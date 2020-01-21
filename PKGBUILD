@@ -2,7 +2,7 @@
 
 pkgname=python-dhash
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Python library to calculate the difference hash (perceptual hash) for a given image, useful for detecting duplicates"
 url="https://github.com/Jetsetter/dhash"
@@ -10,6 +10,7 @@ license=('MIT')
 
 arch=('any')
 makedepends=('python-setuptools')
+depends=('python-pillow')
 
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
