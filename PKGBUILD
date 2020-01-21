@@ -1,15 +1,15 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
-# Contributor:
+# Contributor: jpkotta
 pkgname=mfgtools
 pkgver=1.3.102
-pkgrel=1
+pkgrel=2
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
 url="https://github.com/NXPmicro/mfgtools"
 license=('BSD')
 groups=()
 depends=('bzip2' 'zlib' 'libusb' 'openssl')
-makedepends=()
+makedepends=('cmake' 'git')
 optdepends=()
 provides=()
 conflicts=()
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=History.md
-source=(git+https://github.com/NXPmicro/mfgtools#tag=uuu_$pkgver)
+source=(git+https://github.com/NXPmicro/mfgtools#tag=uuu_$pkgver uuu-complete.bash)
 noextract=()
-sha256sums=(SKIP)
+sha256sums=(SKIP SKIP)
 
 pkgver() {
   cd "$pkgname"
@@ -40,4 +40,17 @@ package() {
   cd "$pkgname/build"
 
   make DESTDIR="$pkgdir/" install
+
+  comp_dir="$pkgdir"/etc/bash_completion.d/
+  install -d -m 755 "$comp_dir"
+  install -m 644 "$srcdir"/uuu-complete.bash "$comp_dir"/uuu-complete.bash
+
+  ./uuu/uuu -udev > 99-uuu.rules
+  udev_dir="$pkgdir"/usr/lib/udev/rules.d/
+  install -d -m 755 "$udev_dir"
+  install -m 644 99-uuu.rules "$udev_dir"/99-uuu.rules
+
+  lic_dir="$pkgdir"/usr/share/licenses/mfgtools/
+  install -d -m 755 "$lic_dir"
+  install -m 644 ../LICENSE "$lic_dir"/LICENSE
 }
