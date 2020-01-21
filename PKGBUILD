@@ -1,5 +1,8 @@
+# Maintainer: Vasilii Novikov <n1dr+cm3513git@yaaa.ru>  (replace "aaa" with a single "a")
+# Contributor: sergej@aur.archlinux.org
+
 pkgname=slack-libpurple-git
-pkgver=r150.b0f1550
+pkgver=r200.be97802
 pkgver() {
   cd "$srcdir/slack-libpurple/"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -12,15 +15,8 @@ license=('GPL3')
 makedepends=('git')
 options=(!strip)
 depends=('libpurple' 'json-parser-git')
-source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git'
-	'api-token-in-passwd.patch')
-sha256sums=('SKIP'
-            'de4d34ba2985fbd582695c281d98ea171971325d95f7d39fb80881ed2f3a84d7')
-
-prepare() {
-  cd "$srcdir/slack-libpurple/"
-  patch -p1 <"$srcdir"/api-token-in-passwd.patch
-}
+source=('slack-libpurple::git+https://github.com/dylex/slack-libpurple.git')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/slack-libpurple/"
