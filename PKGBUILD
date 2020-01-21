@@ -1,5 +1,7 @@
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=mmg3d
-pkgver=5.3.11
+pkgver=5.4.1
 pkgrel=1
 pkgdesc='Anisotropic tetrahedral remesher and moving mesh generator'
 url="http://www.mmgtools.org/"
@@ -7,7 +9,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 makedepends=('cmake')
 source=("https://github.com/MmgTools/mmg/archive/v$pkgver.tar.gz")
-sha256sums=('ea7332230f88bd26239d1636944a970cd2aa98b017052215a54201f125e53b9f')
+sha256sums=('eb8782a6c418af30563a6bd463b465036e953f951fa363886a9e27ef8207f93a')
 
 build () {
   cd "mmg-$pkgver"
@@ -27,5 +29,3 @@ package() {
 
   make install
 }
-
-# vim: ts=2 sw=2 et
