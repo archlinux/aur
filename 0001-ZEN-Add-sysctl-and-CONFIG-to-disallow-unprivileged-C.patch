@@ -1,4 +1,4 @@
-From 98ab83a7426ef0ec20ff46947f2ee8d651980b1c Mon Sep 17 00:00:00 2001
+From ace933a17f0b2e6e75e5ed330e8c12efae62aa53 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
 Subject: [PATCH 01/16] ZEN: Add sysctl and CONFIG to disallow unprivileged
@@ -40,7 +40,7 @@ index b4daad2bac23..362f82c5ec07 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 6cabc124378c..fda4986da9eb 100644
+index 755d8160e001..ed909f8050b2 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -106,6 +106,11 @@
@@ -66,7 +66,7 @@ index 6cabc124378c..fda4986da9eb 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2826,6 +2835,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -2836,6 +2845,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -128,5 +128,5 @@ index 8eadadc478f9..c36ecd19562c 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.24.1
+2.25.0
 

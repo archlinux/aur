@@ -1,4 +1,4 @@
-From 34648b0396ec5dfdfc18627c9c21c03e7243dbe2 Mon Sep 17 00:00:00 2001
+From 78b64515af95e12dac806fa630ae4499e9527100 Mon Sep 17 00:00:00 2001
 From: Tuowen Zhao <ztuowen@gmail.com>
 Date: Wed, 16 Oct 2019 15:06:28 -0600
 Subject: [PATCH 02/16] lib: devres: add a helper function for ioremap_uc
@@ -75,5 +75,5 @@ index 6a0e9bd6524a..17624d35e82d 100644
   * devm_ioremap_nocache - Managed ioremap_nocache()
   * @dev: Generic device to remap IO address for
 -- 
-2.24.1
+2.25.0
 

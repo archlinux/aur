@@ -3,4 +3,5 @@
 *.pkg
 *.sign
 *.xz
-*.xz.sig
+*.zst
+*.sig
