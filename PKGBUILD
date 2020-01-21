@@ -1,13 +1,14 @@
+# Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=devtools-qemu
-pkgver=6.ee39808
+pkgver=14.0298784
 pkgrel=1
 pkgdesc='QEMU based cross-build tools for Arch Linux ARM package maintainers'
 arch=('x86_64')
-url='http://github.com/petronny/devtools-qemu'
+url='https://github.com/arch4edu/devtools-qemu'
 license=('GPL')
-depends=('archlinuxarm-keyring' 'binfmt-qemu-static' 'devtools-alarm' 'qemu-user-static-bin')
+depends=('archlinuxarm-keyring' 'binfmt-qemu-static' 'devtools-alarm>=20191227' 'qemu-user-static-bin')
 makedepends=('git')
-source=('git+https://github.com/petronny/devtools-qemu.git')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,6 +21,14 @@ build() {
 
   cp /usr/bin/archbuild qemu_archbuild
   patch qemu_archbuild < qemu.patch
+
+  for i in armv6h armv7h aarch64
+  do
+    cp /usr/share/devtools/pacman-extra.conf pacman-extra-$i.conf
+    cp /usr/share/devtools/makepkg-x86_64.conf makepkg-$i.conf
+    patch pacman-extra-$i.conf < pacman-extra-$i.conf.patch
+    patch makepkg-$i.conf < makepkg-$i.conf.patch
+  done
 }
 
 package() {
