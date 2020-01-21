@@ -1,10 +1,10 @@
-# Maintainer: Alfredo Palhares <alfredo@palhares.me>
+
 
 # Please contribute to:
 # https://github.com/masterkorp/joplin-pkgbuild
 
 pkgname=joplin
-pkgver=1.0.177
+pkgver=1.0.178
 pkgrel=1
 pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
 arch=("x86_64" "i686")
@@ -15,10 +15,10 @@ url="https://joplinapp.org/"
 license=("MIT")
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
         "https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
-sha256sums=('b4f41f027ccfaccf49887395d314a00fc193f856eb8547b3d06c72d340a68334'
+sha256sums=('ce4435654ee1f6d51d361945f32dd9bf07308f423c3f3c3db147744f203fbc2b'
             '41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d'
             '5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276'
-            '2d974a0c54488112d036942e3d7072391eb36248a7a8e92059abcc610f611397')
+            'a883032e2e929d4ce322fc5fefa36eedce77f86aeae3217eb52653ec6320351e')
 
 build() {
   # Remove husky (git hooks) from dependencies
@@ -74,7 +74,7 @@ package() {
   cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/node_modules" \
     "${pkgdir}/usr/share/${pkgname}-cli"
   # Remove uneeded .vscode from a dependency
-  rm -r "${pkgdir}/usr/share/${pkgname}-cli/node_modules/sqlite3/.vscode"
+  #rm -r "${pkgdir}/usr/share/${pkgname}-cli/node_modules/sqlite3/.vscode"
   cp -R "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/dist/linux-unpacked/"* \
     "${pkgdir}/usr/share/${pkgname}"
 
