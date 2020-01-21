@@ -1,0 +1,16 @@
+pkgbase = ipcheck
+	pkgdesc = A simple python script to register your dynamic IP address using the NIC V2.0 protocol
+	pkgver = 20140422
+	pkgrel = 2
+	url = http://ipcheck.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	backup = etc/ipcheck.conf
+	source = ipcheck-20140422.py::https://downloads.sourceforge.net/project/ipcheck/ipcheck.py
+	source = ipcheck-20140422.conf::https://downloads.sourceforge.net/project/ipcheck/ipcheck.conf
+	sha512sums = a6137b1458f69cae484aa3da7132e6e51b6fe374ad1f868f8f40e17e72d77bd0428233ab07f4a100c867fea58834b17edff8a1b422278cb5c61af2766d2957e3
+	sha512sums = fe9d68fcd98c586653c2f6b40d32c61293951487703fe15a1dde033d5c658edd11301c25648261a994dcca37e0c5f88d29d2a91494865b5696c3ae626487218b
+
+pkgname = ipcheck
+
