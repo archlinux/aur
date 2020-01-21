@@ -1,11 +1,12 @@
-# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Maintainer: Vilar da Camara Neto <archlinux5435 at vilarneto dot com>
+# Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 # Contributor: Troy Engel <troyengel+arch at gmail dot com>
 
 pkgbase=holland
 pkgname=('holland' 'holland-common' 'holland-lvm' 'holland-mysql' 
          'holland-mysqldump' 'holland-mysqllvm' 'holland-pgdump'
          'holland-xtrabackup' 'holland-mariabackup' 'holland-mongodump')
-pkgver=1.1.15
+pkgver=1.1.21
 pkgrel=1
 arch=('any')
 url="http://hollandbackup.org"
@@ -15,8 +16,8 @@ makedepends=('python-setuptools' 'python-sphinx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/holland-backup/holland/archive/v${pkgver}.tar.gz"
         "${pkgbase}-backup.github.com-${pkgver}.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v${pkgver}.tar.gz"
         "holland.logrotate")
-sha256sums=('7d0ca9d75436595d285caef9c7c6ccd3c8f6a93124b5f70ff3bbd87261f3c709'
-            'f8b70de3a1a56131b4c7d17d726175ccf3a0fce4175246f696ff0de766a594c5'
+sha256sums=('0662ad86c37b70db581eaf876970facbc48e249dff19112f786d6bf7f1b17041'
+            '8963b33614a29902e93cbd39c7b329279f061d4078bdbecf5067aee9bbf00698'
             '6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995')
 
 prepare() {
