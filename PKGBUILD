@@ -2,14 +2,14 @@
 # Contributor: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
 pkgname=clonehero
 pkgver=0.23.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone of Guitar Hero and Rockband-style games"
 arch=('x86_64')
 url="https://clonehero.net/"
 license=('freeware-proprietary')
 install="$pkgname.install"
 depends=('gtk2')
-source=("http://dl.clonehero.net/clonehero-v.23.2.2/clonehero-linux.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"http://dl.clonehero.net/clonehero-v.23.2.2/clonehero-linux.tar.gz"
         "$pkgname.install"
         "$pkgname.sh"
         "$pkgname.desktop")

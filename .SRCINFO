@@ -1,13 +1,13 @@
 pkgbase = clonehero
 	pkgdesc = Clone of Guitar Hero and Rockband-style games
 	pkgver = 0.23.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clonehero.net/
 	install = clonehero.install
 	arch = x86_64
 	license = freeware-proprietary
 	depends = gtk2
-	source = http://dl.clonehero.net/clonehero-v.23.2.2/clonehero-linux.tar.gz
+	source = clonehero-0.23.2.2.tar.gz::http://dl.clonehero.net/clonehero-v.23.2.2/clonehero-linux.tar.gz
 	source = clonehero.install
 	source = clonehero.sh
 	source = clonehero.desktop
