@@ -1,7 +1,7 @@
 pkgbase = umps-git
 	pkgdesc = Virtual machine simulator based around the MIPS R2/3000 microprocessor.
 	pkgver = 2.0.1.r7.g7539d30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mps.sourceforge.net/
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,8 @@ pkgbase = umps-git
 	depends = boost
 	depends = libsigc++
 	depends = cross-mipsel-linux-gnu-gcc
-	source = git+https://github.com/tjonjic/umps.git
+	conflicts = umps
+	source = umps-git::git+https://github.com/tjonjic/umps.git
 	md5sums = SKIP
 
 pkgname = umps-git
