@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 prepare () {
   sed -i "s|CUDAPATH=/usr/local/cuda|CUDAPATH=/opt/cuda|g" "$pkgname"/Makefile
 
-  # Hax to make the program pick up compare.ctx in /usr/lib
+  # Hax to make the program pick up compare.ptx in /usr/lib
   sed -i 's|const char \*kernelFile = "compare.ptx"|const char \*kernelFile = "/usr/lib/gpu_burn/compare.ptx"|g' "$pkgname"/gpu_burn-drv.cpp
 }
 
