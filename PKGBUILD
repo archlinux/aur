@@ -3,8 +3,8 @@
 
 pkgname=manuskript-git
 _pkgname=manuskript
-pkgver=0.9.0.r0.gf6293ca
-pkgrel=1
+pkgver=0.11.0.r0.g12defa8
+pkgrel=2
 arch=('any')
 
 pkgdesc="Manuskript is an open-source tool for writers (git version)."
@@ -33,10 +33,7 @@ pkgver() {
 
 prepare() {
     # generate a desktop file
-    gendesk -f -n --pkgname ${_pkgname} --pkgdesc "${pkgdesc}" --exec="${_pkgname} %U"
-
-    # add the custom icon
-    printf "\nIcon=/opt/${_pkgname}/icons/Manuskript/icon-512px.png" >> "${_pkgname}.desktop"
+    gendesk -f -n --icon="/opt/${_pkgname}/icons/Manuskript/icon-512px.png" --pkgname ${_pkgname} --pkgdesc "${pkgdesc}" --exec="${_pkgname} %U"
 }
 
 
