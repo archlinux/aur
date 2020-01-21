@@ -14,7 +14,7 @@ depends=('git' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
 makedepends=(
   'python' 'gettext' 'sed'
   'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2')
+  'ladspa' 'lv2-git')
 optdepends=('portaudio: portaudio backend'
             'qt5-base: for embedding qt5 plugin UIs')
 conflicts=()
