@@ -2,7 +2,7 @@
 # Contributor: Uladzimir Panasiuk <v.s.panasyuk+AUR(at)gmail.com>
 pkgname=epson-printer-utility
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='This is a Printer Utility program for Epson. Using this software, you can check ink levels, view error and other status... on EPSON Printers.'
 arch=('x86_64')
 url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
@@ -10,12 +10,12 @@ license=('LGPL' 'custom:Epson License Agreement')
 options=('strip')
 depends=('qt4' 'ld-lsb=3')
 install="$pkgname.install"
-source=("https://download3.ebz.epson.net/dsc/f/03/00/10/29/41/1c4d51ad4482dd7e1bd53a94ddfa0725daf904f3/${pkgname}_${pkgver}-1lsb3.2_amd64.deb"
-  'ecbd.service'
-  'LICENSE'
-  'AVASYSPL.en.txt'
-  "$pkgname.install"
-  "$pkgname.desktop")
+source=("https://download3.ebz.epson.net/dsc/f/03/00/10/54/64/969baa1dc484363c80a3ff1f69e655908cf75658/epson-printer-utility_1.1.0-1lsb3.2_amd64.deb"
+	'ecbd.service'
+	'LICENSE'
+	'AVASYSPL.en.txt'
+	"$pkgname.install"
+	"$pkgname.desktop")
 sha256sums=('8d6d4d53d8fd8fb87804908c3d8214a636f292bdeaf2548cad84bee5bfef7813'
             '8cc99a3e68b3367f4a78c05b93fdbbdcded13302fac72daf20b5a0ec9c6c9d55'
             'e1bb0ade3e05ab06adcdecc117d2243612419b2b959c46c70db08885a4670c9e'
@@ -37,20 +37,19 @@ package() {
 	mkdir -p $pkgdir/opt/$pkgname
 	cp -dr --no-preserve=ownership,mode $srcdir/data/opt/$pkgname/{lib,resource} $pkgdir/opt/$pkgname
 	install -Dm 755 $srcdir/data/opt/$pkgname/bin/$pkgname $pkgdir/opt/$pkgname/bin/$pkgname
-	
+
 	#mkdir -p $pkgdir/usr/lib/
 	#cp -dr --no-preserve=ownership,mode $srcdir/data/usr/lib/cups $pkgdir/usr/lib/
-	
+
 	install -Dm 755 $srcdir/data/usr/lib/epson-backend/ecbd $pkgdir/opt/$pkgname/lib/epson-backend/ecbd
-	
+
 	mkdir -p $pkgdir/usr/bin
 	ln -s /opt/$pkgname/bin/$pkgname $pkgdir/usr/bin/$pkgname
-	
+
 	install -Dm644 $srcdir/ecbd.service $pkgdir/usr/lib/systemd/system/ecbd.service
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	
+
 	for f in LICENSE AVASYSPL.en.txt; do
-	  install -Dm644 $srcdir/$f $pkgdir/usr/share/licenses/$pkgname/$f
+		install -Dm644 $srcdir/$f $pkgdir/usr/share/licenses/$pkgname/$f
 	done
 }
-
