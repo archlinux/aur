@@ -10,7 +10,7 @@ url="http://www.der-hammer.info/terminal"
 license=(properitary)
 depends=("lib32-gtk2" "lib32-libpng" "lib32-libsm")
 optdepends=()
-conflicts=(hterm-32)
+conflicts=(hterm)
 
 source=("hterm.png" "hterm.desktop" "http://www.der-hammer.info/terminal/hterm084-linux-32.tgz")
 sha256sums=('358862a79e6a88ca07dc86faa5e29d862bbf2aa2ca16e7f43e2f00a8c444e683'  

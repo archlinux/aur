@@ -1,4 +1,4 @@
-pkgbase = hterm
+pkgbase = hterm-32
 	pkgdesc = HTerm serial terminal
 	pkgver = 0.8.4
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = hterm
 	depends = lib32-gtk2
 	depends = lib32-libpng
 	depends = lib32-libsm
-	conflicts = hterm-32
+	conflicts = hterm
 	source = hterm.png
 	source = hterm.desktop
 	source = http://www.der-hammer.info/terminal/hterm084-linux-32.tgz
@@ -16,5 +16,5 @@ pkgbase = hterm
 	sha256sums = fba0a7159c9187bfe8d2c7f63611bf4c2193a69566566bca79f2ce3ff46073f7
 	sha256sums = a2a629502a014c517514f81f605520def930e3be6e8bd8290efd4201b80438ae
 
-pkgname = hterm
+pkgname = hterm-32
 
