@@ -4,10 +4,8 @@
 #debug=true
 
 pkgname=alps
-_pkgver=2.2.b3-r7462
-pkgver=2.2.b3_r7462
-#_pkgver=2.1.1-r6176
-#pkgver=2.1.1_r6176
+_pkgver=2.3.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Provides physics simulation code for strongly correlated quantum mechanical systems"
 arch=('i686' 'x86_64')
@@ -16,8 +14,7 @@ license=('custom:ALPS')
 depends=('boost' 'fftw' 'python2-scipy' 'python2-h5py' 'python2-matplotlib')
 makedepends=('cmake' 'gcc-fortran')
 source=(http://alps.comp-phys.org/static/software/releases/alps-${_pkgver}-src.tar.gz)
-md5sums=('f739c2f6987aed76cc5e417c563ae053')
-#md5sums=('f4c9b044ed9ee8964c449a473bd75842')
+sha512sums=('3746621ce1a2df03b1d1c2a763e5842a6b4aa82188f6e9847728942db55f8b869d1381cfc1f1394c5f4b97ed14f16f9de2ce912b039b384b4eb1827ba65d2317')
 [ "$debug" = "true" ] && options=(!strip)
 
 build() {
