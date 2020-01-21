@@ -1,4 +1,4 @@
-pkgbase = linux-libre
+pkgbase = linux-libre-hyperbola
 	pkgdesc = Linux-libre Stable
 	pkgver = 5.4.12
 	pkgrel = 1
@@ -47,7 +47,7 @@ pkgbase = linux-libre
 	sha512sums = 02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af
 	sha512sums = b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168
 
-pkgname = linux-libre
+pkgname = linux-libre-hyperbola
 	pkgdesc = The Linux-libre Stable kernel and modules
 	install = linux.install
 	depends = coreutils
@@ -58,15 +58,15 @@ pkgname = linux-libre
 	provides = linux-libre=5.4.12
 	conflicts = linux-libre
 	replaces = linux-libre
-	backup = etc/mkinitcpio.d/linux-libre.preset
+	backup = etc/mkinitcpio.d/linux-libre-hyperbola.preset
 
-pkgname = linux-libre-headers
+pkgname = linux-libre-hyperbola-headers
 	pkgdesc = Headers and scripts for building modules for the Linux-libre Stable kernel
 	provides = linux-libre-headers=5.4.12
 	conflicts = linux-libre-headers
 	replaces = linux-libre-headers
 
-pkgname = linux-libre-docs
+pkgname = linux-libre-hyperbola-docs
 	pkgdesc = Documentation for the Linux-libre Stable kernel
 	provides = linux-libre-docs=5.4.12
 	conflicts = linux-libre-docs
