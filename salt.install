@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  if [[ "$(vercmp $2 2014.1.1-1)" -le 0 ]]; then
+    cat << EOF
+==> Since version 2014.1.1-2, salt-master runs by default as root user.
+==> You need to manually update your configuration and remove the salt user and
+==> group to follow the new default behavior.
+EOF
+  fi
+
+  if [[ "$(vercmp $2 2016.3.3-1)" -le 0 ]]; then
+    cat << EOF
+==> Since version 2016.3.3-2 RAET is no longer supported.  Please switch to either
+==> zeromq or tcp for transport instead.
+EOF
+  fi
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

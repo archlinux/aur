@@ -1,0 +1,37 @@
+pkgbase = salt-py3
+	pkgdesc = Central system and configuration manager
+	pkgver = 2019.2.3
+	pkgrel = 1
+	url = http://saltstack.org/
+	install = salt.install
+	arch = any
+	license = Apache
+	depends = python-jinja
+	depends = python-msgpack
+	depends = python-yaml
+	depends = python-markupsafe
+	depends = python-requests
+	depends = python-pyzmq
+	depends = python-crypto
+	depends = python-m2crypto
+	depends = python-systemd
+	depends = python-tornado5
+	optdepends = dmidecode: decode SMBIOS/DMI tables
+	optdepends = python-pygit2: gitfs support
+	provides = salt
+	conflicts = salt
+	conflicts = salt-zmq
+	conflicts = salt-raet
+	replaces = salt
+	replaces = salt-zmq
+	replaces = salt-raet
+	backup = etc/logrotate.d/salt
+	backup = etc/salt/master
+	backup = etc/salt/minion
+	source = https://pypi.io/packages/source/s/salt/salt-2019.2.3.tar.gz
+	source = salt.logrotate
+	sha256sums = 7497e7dbfd4dc3799bbbc8da63da98b8301bbb644150f3905fe5775a7d81271a
+	sha256sums = abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215
+
+pkgname = salt-py3
+
