@@ -7,6 +7,7 @@ pkgbase = ocaml-dolog
 	arch = x86_64
 	license = BSD
 	makedepends = ocaml
+	makedepends = ocaml-findlib
 	depends = ocaml
 	options = staticlibs
 	source = https://github.com/UnixJunkie/dolog/archive/v3.0.tar.gz
