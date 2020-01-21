@@ -1,7 +1,7 @@
 pkgbase = ppet
 	pkgdesc = 给你的桌面添加一点趣味~
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zenghongtu/PPet
 	arch = x86_64
 	license = MIT

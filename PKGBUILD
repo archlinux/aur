@@ -2,7 +2,7 @@
 pkgname=ppet
 _name=PPet
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='给你的桌面添加一点趣味~'
 arch=('x86_64')
 url="https://github.com/zenghongtu/PPet"
@@ -23,6 +23,12 @@ prepare() {
         --arg dist "$electron_dist" \
         --arg version "$electron_version" \
         package.json | sponge package.json
+
+	jq '.electronWebpack.staticSourceDirectory = $static' \
+		--arg static "static" \
+		package.json | sponge package.json
+
+	sed -i 's#CmdOrCtrl+r#CmdOrCtrl+R#' src/main/ppetTray.ts
 
     export YARN_CACHE_FOLDER="$yarn_cache"
     yarn
