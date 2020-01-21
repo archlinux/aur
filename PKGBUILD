@@ -8,15 +8,17 @@ provides=('python-twitter')
 conflicts=('python-twitter')
 
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 license=('Apache')
 
-makedepends=(
-    "python-setuptools"
+depends=(
     "python-requests-oauthlib"
     "python-future"
+   )
+makedepends=(
+    "python-setuptools"
 )
 
 source=("https://github.com/bear/python-twitter/archive/v${pkgver}.tar.gz")
