@@ -4,8 +4,8 @@
 
 set -u
 pkgname='teamviewer8'
-pkgver='8.0.20931'
-pkgrel='1'
+pkgver=8.0.227120
+pkgrel=1
 pkgdesc='All-In-One Software for Remote Support and Online Meetings'
 arch=('i686' 'x86_64')
 url='https://www.teamviewer.com'
@@ -19,17 +19,21 @@ options=('!strip')
 install="${pkgname}.install"
 source_i686=("teamviewer_linux-${pkgver}.deb::http://www.teamviewer.com/download/version_8x/teamviewer_linux.deb")
 source_x86_64=("teamviewer_linux_x64-${pkgver}.deb::http://www.teamviewer.com/download/version_8x/teamviewer_linux_x64.deb")
-md5sums_i686=('218ecec198d5e6ce30958736d88e6645')
-md5sums_x86_64=('bb2c1f70b6d58379aca987e57435293c')
-sha256sums_i686=('6ad27b106a125c51075597c526b7b84fa9637af1aef6ee0514faa49694bf70dd')
-sha256sums_x86_64=('134c7ce23b2ea7194073d93450dd5ba14bd3704deb8dceffd5b5e5945c09b568')
+md5sums_i686=('167fa982715f7832b3bd610f43f1f467')
+md5sums_x86_64=('7d9940bc7d98fd5fde1dcb5178aa688f')
+sha256sums_i686=('5e394d18b028de7721376fdbfe539fdbebcd9d4f5d79b829257890872b771e84')
+sha256sums_x86_64=('eb880fa450ee347baee781b1581c9dd0daf1ede390f9605bbbbb19e1935c58c9')
 
 #PKGEXT='.pkg.tar.gz'
+
+pkgver() {
+  sed -E -n -e 's:^TV_VERSION="([^"]+)"$:\1:p' 'opt/teamviewer8/tv_bin/script/tvw_config'
+}
 
 prepare() {
   set -u
   cd "${srcdir}"
-  bsdtar -xf 'data.tar.gz'
+  bsdtar -xf data.tar.?z
   set +u
 }
 
