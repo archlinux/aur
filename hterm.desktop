@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=HTerm
+GenericName=Serial Terminal
+Comment=HTerm serial terminal
+Exec=hterm
+Icon=hterm
+Terminal=false
+Type=Application
+Categories=Tools;
+StartupNotify=false
