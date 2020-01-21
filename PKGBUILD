@@ -74,7 +74,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.6 \
+      python=3.8 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
