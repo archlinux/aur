@@ -2,12 +2,12 @@
 
 pkgname=buck
 pkgver=2019.10.17.01
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast build system that encourages the creation of small, \
 	   reusable modules over a variety of platforms and languages.'
 arch=('any')
 depends=('python2')
-makedepends=('java-environment=8' 'apache-ant')
+makedepends=('java-environment=11' 'apache-ant')
 optdepends=('watchman: prevent Buck from parsing all of your build files every time')
 url='https://buckbuild.com'
 license=('Apache')
