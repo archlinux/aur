@@ -1,12 +1,12 @@
 # Maintainer: Mattia Biondi <mattia biondi1 at gmail dot com>
 pkgname=umps
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
 url="http://mps.sourceforge.net/"
 license=('GPL2')
-conflicts=('umps-git')
+conflicts=("umps-git")
 depends=("qt4" 'libelf' 'boost' 'libsigc++' "cross-mipsel-linux-gnu-gcc")
 makedepends=('autoconf' 'make')
 source=("https://sourceforge.net/projects/mps/files/uMPS2/$pkgname-$pkgver.tar.gz"
