@@ -1,13 +1,13 @@
 pkgbase = hub-bin
 	pkgdesc = A command-line tool that makes git easier to use with GitHub
-	pkgver = 2.13.0
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://hub.github.com
 	arch = x86_64
 	license = MIT
 	depends = git
-	source = https://github.com/github/hub/releases/download/v2.13.0/hub-linux-amd64-2.13.0.tgz
-	sha256sums = e0f117d553f771938ee594ef280e1b2edf3feebab7c7cb55eab0240a76928652
+	source = https://github.com/github/hub/releases/download/v2.14.0/hub-linux-amd64-2.14.0.tgz
+	sha256sums = 48b7a3da8c54c1373848074c59a2233c4874f68ed362fc8d3d251423d02496fe
 
 pkgname = hub-bin
 
