@@ -1,6 +1,6 @@
 pkgbase = libretro-px68k-git
 	pkgdesc = Portable SHARP X68000 Emulator for PSP, Android and other platforms
-	pkgver = 284.601afd0
+	pkgver = 298.7aaa64e
 	pkgrel = 1
 	url = https://github.com/libretro/px68k-libretro
 	arch = i686
