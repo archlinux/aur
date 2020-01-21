@@ -2,7 +2,7 @@
 
 pkgname=wavebox
 pkgver=10.0.54
-pkgrel=2
+pkgrel=3
 pkgdesc="The next generation of web-desktop communication"
 arch=(x86_64)
 url="https://wavebox.io"
@@ -30,7 +30,7 @@ package() {
 	install -Dm 644 ${srcdir}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm 644 ${srcdir}/wavebox.appdata.xml ${pkgdir}/usr/share/appdata/wavebox.appdata.xml
 	install -Dm 755 wavebox.desktop ${pkgdir}/usr/share/applications/wavebox.desktop
-	install -Dm 644 product_logo_256.png  ${pkgdir}/usr/share/icons/hicolor/wavebox.png
+	install -Dm 644 product_logo_256.png  ${pkgdir}/usr/share/icons/hicolor/256x256/apps/wavebox.png
 	install -Dm 644 ${srcdir}/wavebox.menu ${pkgdir}/usr/share/menu/wavebox.menu
 	install -dm 755 ${pkgdir}/opt/wavebox.io
 
