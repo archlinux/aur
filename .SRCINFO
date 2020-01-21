@@ -1,6 +1,6 @@
 pkgbase = jucipp
 	pkgdesc = A lightweight cross-platform C++ IDE
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://gitlab.com/cppit/jucipp
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = jucipp
 	depends = boost-libs
 	depends = libgit2
 	depends = ctags
-	source = jucipp::git+https://gitlab.com/cppit/jucipp.git#tag=v1.5.0
+	source = jucipp::git+https://gitlab.com/cppit/jucipp.git#tag=v1.5.1
 	source = git+https://gitlab.com/cppit/libclangmm.git
 	source = git+https://gitlab.com/eidheim/tiny-process-library
 	sha1sums = SKIP
