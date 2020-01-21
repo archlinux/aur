@@ -26,6 +26,7 @@ ac_add_options --with-pthreads
 
 
 ac_add_options --disable-tests
+ac_add_options --disable-eme
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
 ac_add_options --disable-webrtc

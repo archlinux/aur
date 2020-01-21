@@ -2,7 +2,7 @@
 # Forked from palemoon PKGBUILD by WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: artiom <a.mv at gmx dot fr>
 pkgname=palemoon-git
-pkgver=28.2.0a1+r423.ga0a37ffd4
+pkgver=29.0.0a1+r2043.gd6dd25b5e
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency (git version)"
 arch=('i686' 'x86_64')
@@ -17,28 +17,34 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 conflicts=('palemoon')
 provides=('palemoon' 'firefox')
 install=palemoon.install
-source=(git+"https://github.com/MoonchildProductions/UXP"
+source=(git+"https://github.com/MoonchildProductions/Pale-Moon"
+        git+"https://github.com/MoonchildProductions/UXP"
         palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
+         'SKIP'
          '32231f6e6a532021fd04c6d7b32f4270'
-         'a52adf42c08aef3e48baa167cc751fe6')
+         '992f4c326e04652963213b325f8d3d0e')
 
 pkgver() {
-	cd UXP
-	echo $(cat application/palemoon/config/version.txt)"+"$(git describe --long | sed 's/^[^-]*-/r/;s/-/./g')
+	cd Pale-Moon
+	echo $(cat palemoon/config/version.txt)"+"$(git describe --long | sed 's/^[^-]*-/r/;s/-/./g')
 }
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
-  cd UXP
+  cd Pale-Moon
 
-  chmod -R +x build/autoconf/* python/*
+  git submodule init
+  git config submodule.UXP.url "$srcdir/UXP"
+  git submodule update
+
+  chmod -R +x build/autoconf/*
   find . -name '*.sh' -exec chmod +x {} \;
 }
 
 build() {
-  cd UXP
+  cd Pale-Moon
 
   export CC=gcc-5
   export CXX=g++-5
@@ -46,7 +52,7 @@ build() {
   export MOZCONFIG="$srcdir/mozconfig"
   export CPPFLAGS="$CPPFLAGS -O2 -msse2 -mfpmath=sse -march=native -mtune=native"
   export LDFLAGS="$LDFLAGS -Wl,-z,norelro,-O3,--sort-common,--as-needed,--relax,-z,combreloc,-z,global,--no-omagic"
-  python2 mach build
+  ./mach build
 }
 
 package() {
