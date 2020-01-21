@@ -4,7 +4,7 @@
 pkgname=freedownloadmanager
 pkgver=6.7.0.2439
 pkgrel=1
-pkgdesc="FDM is a powerful modern download accelerator and organizer. It is a powerful modern cross-platform download accelerator and organizer for Windows, Mac, Linux, Android."
+pkgdesc="FDM is a powerful modern download accelerator and organizer."
 arch=('x86_64')
 url="https://www.freedownloadmanager.org/"
 license=('Adware')

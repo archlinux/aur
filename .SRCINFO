@@ -1,5 +1,5 @@
 pkgbase = freedownloadmanager
-	pkgdesc = FDM is a powerful modern download accelerator and organizer. It is a powerful modern cross-platform download accelerator and organizer for Windows, Mac, Linux, Android.
+	pkgdesc = FDM is a powerful modern download accelerator and organizer.
 	pkgver = 6.7.0.2439
 	pkgrel = 1
 	url = https://www.freedownloadmanager.org/
