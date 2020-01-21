@@ -1,6 +1,5 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
-realname=pueue
 pkgname=pueue-git
 pkgver='r110.9f38fca'
 pkgrel=1
@@ -15,18 +14,23 @@ url='https://github.com/nukesor/pueue'
 source=("git+https://github.com/nukesor/pueue.git")
 sha256sums=('SKIP')
 
-package() {
-    cd "${realname}"
+
+build() {
+    cd pueue
 
     # Build the daemon and client
     cargo build --release
+}
+
+package() {
+    cd pueue
 
     # Install binaries
     install -Dm755 "target/release/pueue" "${pkgdir}/usr/bin/pueue"
     install -Dm755 "target/release/pueued" "${pkgdir}/usr/bin/pueued"
 
     # Place systemd user service
-    install -Dm644 "utils/pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
+    install -Dm644 "utils/pueued@.service" "${pkgdir}/usr/lib/systemd/user/pueued@.service"
 
     # Install zsh completions file
     # Zsh is broken for now
@@ -35,5 +39,5 @@ package() {
     install -Dm644 "utils/completions/pueue.fish" "${pkgdir}/usr/share/fish/completions/pueue.fish"
 
     # Install License
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${realname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/pueue/LICENSE"
 }
