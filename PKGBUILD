@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-auth-ldap-git
 pkgver=r145.e208153
-pkgrel=5
+pkgrel=6
 
 _modname=nginx-auth-ldap
-_nginxver=1.17.7
+_nginxver=1.17.8
 
 pkgdesc='LDAP Authentication module for nginx'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
     git+https://github.com/kvspb/nginx-auth-ldap.git
 )
 
-sha256sums=('b62756842807e5693b794e5d0ae289bd8ae5b098e66538b2a91eb80f25c591ff'
+sha256sums=('97d23ecf6d5150b30e284b40e8a6f7e3bb5be6b601e373a4d013768d5a25965b'
             'SKIP')
 
 pkgver() {
