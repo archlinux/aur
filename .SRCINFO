@@ -8,7 +8,7 @@ pkgbase = python-pysimplegui
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
 	source = python-pysimplegui-4.15.2.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-4.15.2.tar.gz
-	sha256sums = 7b7f49ab61d46e8becd6f78678634540e513047e787766ce4ef97196168c1edb
+	sha256sums = 91cf79070de893439cedb4d6689fc0d768f30d3b6e289634e5f81cd5caf25ff2
 
 pkgname = python-pysimplegui
 	depends = python

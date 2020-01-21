@@ -12,7 +12,7 @@ url='https://github.com/MikeTheWatchGuy/PySimpleGUI'
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-runner')
 source=(${pkgbase}-${pkgver}.tar.gz::https://pypi.python.org/packages/source/P/PySimpleGUI/PySimpleGUI-${pkgver}.tar.gz)
-sha256sums=('7b7f49ab61d46e8becd6f78678634540e513047e787766ce4ef97196168c1edb')
+sha256sums=('91cf79070de893439cedb4d6689fc0d768f30d3b6e289634e5f81cd5caf25ff2')
 
 build() {
   cd "$srcdir"/${_module}-$pkgver
