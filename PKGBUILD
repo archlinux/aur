@@ -1,6 +1,8 @@
 # Maintainer: Jake <aur@ja-ke.tech>
+# Co-Maintainer: Rein Fernhout <public@reinfernhout.xyz>
 # Contributor: Youngbin Han <sukso96100@gmail.com>
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
+
 pkgname=micro-git
 pkgver=v2.0.0.rc2.97ee3442
 pkgrel=1
