@@ -1,8 +1,8 @@
 # Maintainer: Bailey Kasin <bailey@gingertechnology.net> (https://angrysysadmins.tech)
 
 pkgname=gogios
-pkgver=2.2.r1.g10612aa
-pkgrel=2
+pkgver=2.2.1.r0.g82eb451
+pkgrel=1
 pkgdesc="Checks to see if required services are still running on important machines."
 arch=('x86_64')
 url="https://github.com/bkasin/gogios"
