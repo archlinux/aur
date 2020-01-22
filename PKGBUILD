@@ -26,7 +26,7 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
   make DESTDIR="$pkgdir" install install-doc
   install -Dm0644 contrib/lpass_zsh_completion "$pkgdir"/usr/share/zsh/site-functions/_lpass
-  install -Dm0644 contrib/completions-lpass.fish "$pkgdir"/usr/share/fish/completions/lpass.fish
+  install -Dm0644 contrib/completions-lpass.fish "$pkgdir"/usr/share/fish/vendor_completions.d/lpass.fish
 }
 
 # vim:set ts=2 sw=2 et:
