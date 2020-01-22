@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-roscpp-core
 	pkgdesc = ROS - Underlying data libraries for roscpp messages.
-	pkgver = 0.6.12
+	pkgver = 0.6.13
 	pkgrel = 1
 	url = https://www.wiki.ros.org/roscpp_core
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-roscpp-core
 	depends = ros-melodic-cpp-common
 	depends = ros-melodic-rostime
 	depends = ros-melodic-roscpp-serialization
-	source = ros-melodic-roscpp-core-0.6.12.tar.gz::https://github.com/ros/roscpp_core/archive/0.6.12.tar.gz
-	sha256sums = 6fb2cfb7ec7db0512cd0e43634328aa6474fc15005e51279d2926d9246f02afc
+	source = ros-melodic-roscpp-core-0.6.13.tar.gz::https://github.com/ros/roscpp_core/archive/0.6.13.tar.gz
+	sha256sums = 6740da6424373c8ffb075b30272f7a46804a76015649bc4f54fd1963d50a1e49
 
 pkgname = ros-melodic-roscpp-core
 
