@@ -24,27 +24,3 @@ index 5dfb9e0..ff0e494 100644
  		std::string logname = std::string(getenv("HOME")) 
  			+ "/.neoleo/logs/log.txt";
  		m_ofs.open(logname, std::ofstream::out | std::ofstream::app);
-diff --git a/src/shell.cc b/src/shell.cc
-index a5493e6..f972733 100644
---- a/src/shell.cc
-+++ b/src/shell.cc
-@@ -112,16 +112,17 @@ run_shell(char* cmd)
- 	/* Create a child to run command. */
- 	switch( pid = fork() )
- 	{
-+	  int i,j;
- 		case -1:
- 			perror("Can't fork");
- 			exit(1);
- 		case 0:
- 			/* Child. */
- 			close(1); /* Close current stdout. */
--			(void)dup( cp[1]); /* Make stdout go to write
-+			i=dup( cp[1]); /* Make stdout go to write
- 					end of pipe. */
- 			close(0); /* Close current stdin. */
--			(void)dup( pc[0]); /* Make stdin come from read
-+			j=dup( pc[0]); /* Make stdin come from read
- 					end of pipe. */
- 			close( pc[1]);
- 			close( cp[0]);
