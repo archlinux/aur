@@ -1,0 +1,19 @@
+pkgbase = python-nox
+	pkgdesc = Flexible test automation for Python
+	pkgver = 2019.11.9
+	pkgrel = 1
+	url = https://nox.thea.codes
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-argcomplete
+	depends = python-colorlog
+	depends = python-py
+	depends = python-virtualenv
+	optdepends = python-tox: tox-to-nox
+	optdepends = python-jinja: tox-to-nox
+	source = https://pypi.io/packages/source/n/nox/nox-2019.11.9.tar.gz
+	sha512sums = 77f36a6f6684ff1b4f66efab58bbadf0ecab0330e54b46135c7fb2f1325c7e8219d2d5d7f855d6c3c6d5edf89b6f920245f29f77fcd468058461b585434a693d
+
+pkgname = python-nox
+
