@@ -6,7 +6,7 @@
 #   curl https://keybase.io/threema/pgp_keys.asc | gpg --import
 #   gpg --lsign E7ADD9914E260E8B35DFB50665FDE935573ACDA6
 pkgname=threema-web
-pkgver=2.3.1
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="The Threema Web client, packaged to run locally on port 4242"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
     "launch.py"
 )
 sha256sums=(
-    '9ad81beb3686b498d85107b6845a8b7d84e18b4a7bafbb3731485800c7fa1939'
+    'ae5605de6fcb66643192d29c946dade9806fa4aa7aed876cd17c5d7b2298c7de'
     'SKIP'
     '1fbf9c4af5548138f75b00d2bd3de462c658db0c14e9897d09b79f8aa235db9e'
     '0968289ce31f750834b8f495951e1a29a2971d38e9d4d20213bb2a1f174a2fb1'
@@ -49,9 +49,9 @@ package() {
   chown -R root:http ${pkgdir}/opt/threema-web
   find "${pkgdir}/opt/threema-web" -type f -exec chmod 640 {} \;
   find "${pkgdir}/opt/threema-web" -type d -exec chmod 750 {} \;
-  install -Dm644 -o root -g http "${srcdir}/launch.py" "${pkgdir}/opt/threema-web/"
 
   # Install launcher
+  install -Dm644 -o root -g http "${srcdir}/launch.py" "${pkgdir}/opt/threema-web/"
 
   # Install service file
   install -Dm640 -o root -g root "${srcdir}/threema-web.service" "${pkgdir}/etc/systemd/system/"
