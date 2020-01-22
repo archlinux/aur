@@ -23,7 +23,7 @@ vhost="
 
 start_vm() {
 	qemu-system-x86_64 \
-		-cpu $cpu -smp 4 -m 4G \
+		-cpu $cpu -smp 4 -m 2G \
 		-accel kvm:tcg,thread=multi \
 		-device virtio-net,netdev=vlan \
 		-netdev user,id=vlan,hostfwd=::$vport-:22 \
@@ -32,7 +32,7 @@ start_vm() {
 		ssh $vhost 'curl -o /dev/null -s vesath.org' &&
 		break
 	done
-	cat /etc/pacman.d/mirrorlist |
+	sed 's/127.0.0.1/10.0.2.2/g' /etc/pacman.d/mirrorlist |
 	ssh $vhost 'sudo dd of=/etc/pacman.d/mirrorlist'
 }
 
@@ -67,7 +67,7 @@ set -E
 	start_vm $img
 	ssh $vhost 'sudo pacman --noconfirm -Syu'
 	ssh $vhost 'sudo pacman --noconfirm -Su'
-	ssh $vhost 'sudo paccache --remove --keep 0'
+	ssh $vhost 'sudo rm --force /var/cache/pacman/pkg/*'
 	stop_vm
 }
 
@@ -79,6 +79,7 @@ for r in $repo; do
 done | ssh $vhost
 ssh $vhost 'sudo pacman --noconfirm -Syu'
 ssh $vhost 'sudo pacman --noconfirm -Su'
+ssh $vhost 'sudo rm --force /var/cache/pacman/pkg/*'
 ssh $vhost 'sudo install -o user -g user -d /build'
 sftp $vhost <<<"mkdir .gnupg"
 sftp $vhost <<<"put $HOME/.makepkg.conf"

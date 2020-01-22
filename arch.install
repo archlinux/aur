@@ -32,9 +32,9 @@ pushd ${mnt}
 install -d boot
 mount ${loop}p1 boot
 
-setarch ${arch} pacstrap -C /usr/share/devtools/pacman-extra.conf -c . base base-devel pacman-contrib haveged openssh sudo syslinux
-systemctl --root=. enable systemd-{networkd,resolved} haveged sshd
+setarch ${arch} pacstrap -C /usr/share/devtools/pacman-extra.conf -c . base base-devel syslinux mkinitcpio haveged openssh sudo
 
+systemctl --root=. enable systemd-{networkd,resolved} haveged sshd
 ln -sf ../run/systemd/resolve/resolv.conf etc/resolv.conf
 
 install -d home/user/.ssh
@@ -76,8 +76,8 @@ DHCP=yes
 EOF
 
 setarch ${arch} arch-chroot . <<EOF
+sudo pacman --noconfirm -S linux
 syslinux-install_update -i -m
-mkinitcpio -p linux
 locale-gen
 useradd -p 00as1wm0AZG56 user
 chown -R user:users /home/user
