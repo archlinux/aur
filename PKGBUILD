@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.4.4
+pkgver=1.4.5.post2
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -26,6 +26,9 @@ depends=(
 	python-joblib
 	'python-numba>=0.41.0'
 	'python-umap-learn>=0.3.0'
+	python-legacy-api-wrap
+	python-setuptools_scm
+	python-packaging
 )
 optdepends=(
 	'python-bbknn: Batch balanced KNN (batch correction)'
@@ -36,7 +39,7 @@ optdepends=(
 makedepends=(install-wheel-scripts)
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('f07e743ace7fa2404b4305f377338058af916f5e02d21405529f44c369c1d4fe')
+sha256sums=('38202e60434a7be45166d6011305b9ef68196f4d9ac98d278fac24654b5d9e90')
 noextract=("$_wheel")
 
 package() {
