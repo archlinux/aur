@@ -1,7 +1,7 @@
 pkgbase = camouflage-git
 	pkgdesc = a mux websocket over TLS proxy, experimental version
-	pkgver = 0.12.0.r2.g123d873
-	pkgrel = 3
+	pkgver = 0.12.0.r11.g2e3294e
+	pkgrel = 1
 	url = https://github.com/Sherlock-Holo/camouflage
 	arch = x86_64
 	license = MPL
