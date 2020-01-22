@@ -1,0 +1,13 @@
+pkgbase = prosody-mod-csi-battery-saver
+	pkgdesc = Delay sending unimportant data to inactive devices to save power
+	pkgver = 2020.01.22
+	pkgrel = 1
+	url = http://modules.prosody.im/mod_csi_battery_saver.html
+	arch = any
+	license = MIT
+	depends = prosody
+	source = mod_csi_battery_saver_ffc64d285a96.lua::https://hg.prosody.im/prosody-modules/raw-file/ffc64d285a96/mod_csi_battery_saver/mod_csi_battery_saver.lua
+	sha1sums = b3983de32a85d7022e4b6df5d035c0587cbb1826
+
+pkgname = prosody-mod-csi-battery-saver
+
