@@ -1,5 +1,5 @@
 pkgbase = tarnation-git
-	pkgdesc = Simple, extensible backup/restore utility based solely on GNU Tar
+	pkgdesc = Simple, extensible backup/restore utility based solely on GNU Tar - git version
 	pkgver = r23.c5d8a17
 	pkgrel = 1
 	url = https://github.com/kennyparsons/tarnation-git
