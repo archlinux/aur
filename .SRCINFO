@@ -1,24 +1,18 @@
 pkgbase = pyinstaller
-	pkgdesc = An application to convert python scripts into stand-alone binaries
+	pkgdesc = Bundles a Python application and all its dependencies into a single package
 	pkgver = 3.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.pyinstaller.org
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	depends = python
+	depends = python-altgraph
 	depends = python-macholib
 	depends = python-pefile
-	depends = python-altgraph
 	optdepends = python-crypto: executable encryption support
 	optdepends = upx: executable compression support
-	conflicts = pyinstaller-git
-	source = https://github.com/pyinstaller/pyinstaller/releases/download/v3.5/PyInstaller-3.6.tar.gz
-	source = https://github.com/pyinstaller/pyinstaller/releases/download/v3.5/PyInstaller-3.6.tar.gz.asc
-	validpgpkeys = D4AD8B9C167B757C4F08E8777B752811BF773B65
+	source = https://files.pythonhosted.org/packages/source/P/PyInstaller/PyInstaller-3.6.tar.gz
 	sha256sums = 3730fa80d088f8bb7084d32480eb87cbb4ddb64123363763cf8f2a1378c1c4b7
-	sha256sums = SKIP
 
 pkgname = pyinstaller
 
