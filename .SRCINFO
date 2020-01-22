@@ -1,7 +1,7 @@
 pkgbase = buildstuff
 	pkgdesc = Stuff to build packages in virtual machines
-	pkgver = 1.6
-	pkgrel = 2
+	pkgver = 1.9
+	pkgrel = 1
 	url = http://arch.vesath.org/
 	arch = any
 	license = custom:ISC
@@ -14,10 +14,10 @@ pkgbase = buildstuff
 	source = LICENSE
 	source = arch.build
 	source = arch.install
-	sha256sums = 6225e9cd7dbd46692d3b3ebde37a182c05863459879e99dbca5b3a4125e5eb1d
+	sha256sums = f7ed61b7826b657ab32d715567642f86e824374e16d9637d40ffc7d21c7ecfae
 	sha256sums = acf683446e1162104759b1a75d18859b1a36ac6f3eeabb241025d0e6c37c7960
-	sha256sums = 12b438eaa95d48db7a9ff5a2c5e6af542548752e293fca6d824f2437a59fc5f2
-	sha256sums = ec9d9974fc65a670754f66aa16b6f64394fbf089685acae32e31d3727263f3ee
+	sha256sums = 82aafa6d8f46294d39686f2afe17b323db65f7fab0b239b740805046b13703cc
+	sha256sums = 90ecf020399db72ce0ac8e1eb05759652363c029c06616b770cd273b7923ae97
 
 pkgname = buildstuff
 

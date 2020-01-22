@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=buildstuff
-pkgver=1.9
+pkgver=2.1
 pkgrel=1
 pkgdesc='Stuff to build packages in virtual machines'
 url='http://arch.vesath.org/'
