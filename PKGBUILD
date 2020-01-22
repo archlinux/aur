@@ -1,8 +1,9 @@
-# Maintainer: Jonathan Steel <jsteel at archlinux.org>
+# Maintainer: Ian Watt <ian at ewatt.ca>
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 _pkgname=vagrant
 pkgname=vagrant-git
-pkgver=2.0.0.101.g52824f20b
+pkgver=2.2.6.203.ga1abc177b
 pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('i686' 'x86_64')
@@ -11,12 +12,12 @@ license=('MIT')
 options=('!emptydirs')
 depends=('curl' 'libarchive' 'libssh2' 'libxml2' 'libxslt' 'rsync'
          'ruby' 'xz')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 provides=('vagrant')
 conflicts=('vagrant' 'vagrant-substrate' 'vagrant-substrate-git')
 replaces=('vagrant-substrate' 'vagrant-substrate-git')
-source=(git://github.com/mitchellh/$_pkgname.git
-        git://github.com/mitchellh/vagrant-installers.git)
+source=(git://github.com/hashicorp/$_pkgname.git
+        git://github.com/hashicorp/vagrant-installers.git)
 md5sums=('SKIP'
          'SKIP')
 
@@ -29,13 +30,13 @@ pkgver() {
 build() {
   cd $_pkgname
 
-  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
+  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate
 
   gem build $_pkgname.gemspec
 
   cp vagrant-*.gem vagrant.gem
 
-  cd "$INSTALLERS_DIR"/vagrant_substrate/files/launcher
+  cd "$INSTALLERS_DIR"/launcher
   go get github.com/mitchellh/osext
   go build -o vagrant
 }
@@ -43,21 +44,21 @@ build() {
 package() {
   cd $_pkgname
 
-  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
+  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate
   EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
   install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
 
-  install -Dm644 "$INSTALLERS_DIR"/vagrant_substrate/templates/gemrc.erb \
+  install -Dm644 "$INSTALLERS_DIR"/common/gemrc \
     "$EMBEDDED_DIR"/etc/gemrc
 
-  cp -r "$INSTALLERS_DIR"/rubyencoder/files/rgloader "$EMBEDDED_DIR"
+  cp -r "$INSTALLERS_DIR"/common/rgloader "$EMBEDDED_DIR"
 
   GEM_PATH="$EMBEDDED_DIR"/gems GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
-    gem install $_pkgname.gem --no-ri --no-rdoc
+    gem install $_pkgname.gem --no-document
 
-  install -Dm755 "$INSTALLERS_DIR"/vagrant_substrate/files/launcher/vagrant \
+  install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$_pkgname/bin/$_pkgname
 
   ln -s /opt/$_pkgname/bin/$_pkgname "$pkgdir"/usr/bin/$_pkgname
