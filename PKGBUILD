@@ -1,6 +1,6 @@
 pkgname=asciidoc-py3
-pkgver=8.6.10
-pkgrel=2
+pkgver=9.0.0rc1
+pkgrel=1
 pkgdesc='Text document format for short documents, articles, books and UNIX man pages. (python3 version)'
 arch=('any')
 url='https://github.com/asciidoc/asciidoc-py3'
@@ -15,12 +15,11 @@ optdepends=('lilypond: music-filter'
             'w3m: text generation (alternative to lynx)')
 conflicts=('asciidoc')
 provides=('asciidoc')
-_gitcommit="544574e66ca89c898151c1c6d34b88a76e44343f"
-source=("${url}/archive/${_gitcommit}.tar.gz")
-sha512sums=('b151239b23a63bee52df2dffd35a690f89e8327ba9312382478a2cef2de6fcbc2c74604f6da3a9c879452aa22326a9d9e8ea69c66315a5b344b7fa24f2398ad2')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('965d65df18ff90596e5cd72bec8d0f7daf2f6ad585ec77af2a6ae9637569b613e2384cc7015c1823fcde99be8170107789505a543fe8b6d3273f2c75a6a92960')
 
 build() {
-  cd ${pkgname}-${_gitcommit}
+  cd ${pkgname}-${pkgver}
 
   autoconf
   ./configure \
@@ -29,7 +28,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${_gitcommit}
+  cd ${pkgname}-${pkgver}
 
   make install DESTDIR=${pkgdir}
   make docs DESTDIR=${pkgdir}
