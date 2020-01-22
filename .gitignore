@@ -1,6 +1,6 @@
-antimicro-*.pkg.tar.zst
-antimicro-*.tar.gz
-antimicro-*.log
+antimicrox-*.pkg.tar.zst
+antimicrox-*.tar.gz
+antimicrox-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
