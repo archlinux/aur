@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.1.beta0.r0.gb8f53f72e8
+pkgver=9.1.beta1.r0.gdde78cbd22
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -42,17 +42,15 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
-        sagemath-rpy-3.patch
         sagemath-python-3.8.patch)
 sha256sums=('SKIP'
             '5aa8febd117e7243a6d2d21eddf035cda99aac1018b559dd99ae32e5ce533b86'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '0a78fe1ca875028c72a80fb2006aa6017922894dffd114086132ff35e7a26009'
+            '1eedb88304df38e5c147c1943bc2a44faa724048f789fe0124518b3222836c66'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            'dca48f2eba8a27fdc027214faa63241f023f9e02e7bf2ca48b69395ce5a8d31b'
-            '9062b412595e81a5ca560a5ae789f8b7318981689cb8d076b30d8c54a4fc4495'
+            '0b79606ce932d12ce4e2baebd660bf42faebca3138511987faf5569a5f3adbbf'
             'ea5c54b2f2b12cb59633e6a0ad26e1f3809cb8ad60e889c31495aef0a7eeb578')
 
 pkgver() {
@@ -74,8 +72,6 @@ prepare(){
   patch -p1 -i ../sagemath-python-3.8.patch
 # Support IPython 7
   patch -p1 -i ../sagemath-ipython7.patch
-# Adapt to rpy 3.0 changes
-  patch -p1 -i ../sagemath-rpy-3.patch
 # Fix mathjax path
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 
