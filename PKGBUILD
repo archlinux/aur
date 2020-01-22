@@ -3,7 +3,7 @@
 
 _name=igbinary
 pkgname=php73-igbinary
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="A drop in replacement for the standard php serializer (PHP 7.3)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('glibc' 'php73')
 backup=("etc/php73/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('7b20048b2923ebf760b9743cd08aab04b90f02f3e6ddf840e829db9e6c5335cf936a5218b1590b31b1b553e7748e393d3aee83214b83532b722f4590a36f5b38')
+sha512sums=('617442e1fc437d12666b1172ca2ae34a4d7377bff8b1d00194a159260213179e65e7e2f755a1583d2b299e3b0e90374b9021cd61ec7ac67e64018153e77af8c5')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
