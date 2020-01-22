@@ -6,14 +6,14 @@ pkgver=1.99.5.rf1ddc98
 pkgrel=1
 pkgdesc="Qt cross platform v2ray GUI client (Dev branch build release)"
 arch=('x86_64')
-url="https://github.com/lhy0403/Qv2ray"
+url="https://github.com/Qv2ray/Qv2ray"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'grpc' 'qt5-charts')
 makedepends=('git' 'make' 'qt5-tools' 'protobuf' 'which' 'gcc' 'qt5-declarative')
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
 provides=('qv2ray')
 conflicts=('qv2ray')
-source=("${pkgname}::git+https://github.com/lhy0403/Qv2ray#branch=dev")
+source=("${pkgname}::git+https://github.com/Qv2ray/Qv2ray#branch=dev")
 
 sha512sums=('SKIP')
 

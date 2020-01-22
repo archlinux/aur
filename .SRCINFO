@@ -2,7 +2,7 @@ pkgbase = qv2ray-dev-git
 	pkgdesc = Qt cross platform v2ray GUI client (Dev branch build release)
 	pkgver = 1.99.5.rf1ddc98
 	pkgrel = 1
-	url = https://github.com/lhy0403/Qv2ray
+	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -20,7 +20,7 @@ pkgbase = qv2ray-dev-git
 	optdepends = v2ray-geoip
 	provides = qv2ray
 	conflicts = qv2ray
-	source = qv2ray-dev-git::git+https://github.com/lhy0403/Qv2ray#branch=dev
+	source = qv2ray-dev-git::git+https://github.com/Qv2ray/Qv2ray#branch=dev
 	sha512sums = SKIP
 
 pkgname = qv2ray-dev-git
