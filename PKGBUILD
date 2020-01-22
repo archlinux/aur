@@ -1,4 +1,5 @@
-# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _npmname=json-diff
 pkgname=nodejs-json-diff
 pkgver=0.5.4
