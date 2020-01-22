@@ -14,6 +14,7 @@ pkgbase = mingw-w64-paraview-git
 	makedepends = protobuf
 	depends = mingw-w64-qt5-xmlpatterns
 	depends = mingw-w64-qt5-tools
+	depends = mingw-w64-qt5-svg
 	depends = mingw-w64-boost
 	depends = mingw-w64-glew
 	depends = mingw-w64-freetype2
