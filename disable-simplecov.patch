@@ -1,0 +1,19 @@
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index 1120dfc..ca4560a 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -1,14 +1,9 @@
+ # frozen_string_literal: true
+
+-require 'simplecov'
+ require_relative '../lib/gettext-setup'
+
+ GettextSetup.initialize(File.join(File.dirname(__FILE__), 'fixtures', 'locales'))
+
+-SimpleCov.start do
+-  add_filter '/spec/'
+-end
+-
+ def cmd_present?(cmd)
+   # Try to call out to msgcmp, if it doesn't error, we have the tool
+   `#{cmd} --version`
