@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=1.99.6.3054+grpcfree
+pkgver=1.99.6.3076+grpcfree
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
@@ -35,14 +35,16 @@ pkgver() {
 }
 
 prepare() {
+    cd "${srcdir}/Qv2ray"
+    git submodule init
     submodules=('QNodeEditor' 'SingleApplication' 'x2struct' 'qzxing' 'qhttpserver')
     for module in ${submodules[@]}; do
-        rm -rf "${srcdir}/Qv2ray/3rdparty/$module"
-        ln -sfd "${srcdir}/$module" "${srcdir}/Qv2ray/3rdparty/"
+        git config submodule."3rdparty/$module".url "${srcdir}/$module"
     done
     
-    rm -rf "${srcdir}/Qv2ray/libs/libqvb"
-    ln -sfd "${srcdir}/QvRPCBridge" "${srcdir}/Qv2ray/libs/libqvb"
+    git config submodule."libs/libqvb".url "${srcdir}/QvRPCBridge"
+    git config submodule."libs/gRPC-win32".active false
+    git submodule update
 }
 
 build() {
