@@ -1,13 +1,13 @@
 pkgbase = beamerpresenter
 	pkgdesc = Simple dual screen pdf presentation software
-	pkgver = r179.8037b16
+	pkgver = r183.5456cd2
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = poppler-qt5>=0.50.0
-	depends = qt5-multimedia>=5.9.0
+	depends = poppler-qt5>=0.41.0
+	depends = qt5-multimedia>=5.5.1
 	optdepends = mupdf-tools: external rendering
 	optdepends = gst-libav: video support
 	optdepends = gst-plugins-good: multimedia support
