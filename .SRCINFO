@@ -1,7 +1,7 @@
 pkgbase = salt-py3
 	pkgdesc = Central system and configuration manager
 	pkgver = 2019.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://saltstack.org/
 	install = salt.install
 	arch = any
@@ -30,8 +30,10 @@ pkgbase = salt-py3
 	backup = etc/salt/minion
 	source = https://pypi.io/packages/source/s/salt/salt-2019.2.3.tar.gz
 	source = salt.logrotate
+	source = 0001-saltssh-py38.patch
 	sha256sums = 7497e7dbfd4dc3799bbbc8da63da98b8301bbb644150f3905fe5775a7d81271a
 	sha256sums = abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215
+	sha256sums = e91791b6431ba56ff5ba0b0ff4ae1fba7335fa358698e12829daf2c248c1568d
 
 pkgname = salt-py3
 
