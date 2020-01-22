@@ -5,7 +5,7 @@
 
 pkgname=imapfilter
 pkgver=2.6.16
-pkgrel=2
+pkgrel=3
 pkgdesc="A mail filtering utility for processing IMAP mailboxes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/lefcha/imapfilter"
@@ -25,13 +25,13 @@ build() {
   sed -i "s/MYCFLAGS =/MYCFLAGS=${CFLAGS}/" src/Makefile
   sed -i "s/MYLDFLAGS =/MYLDFLAGS=${LDFLAGS}/" src/Makefile
 
-  make PREFIX=/usr all
+  make PREFIX=/usr SSLCAFILE=/etc/ssl/certs/ca-certificates.crt all
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  make PREFIX=/usr DESTDIR="$pkgdir/" MANDIR=/usr/share/man SSLCAFILE=/etc/ssl/certs/ca-certificates.crt install
+  make PREFIX=/usr DESTDIR="$pkgdir/" MANDIR=/usr/share/man install
 
   # install sample files
   install -D -m644 samples/config.lua $pkgdir/usr/share/$pkgname/samples/config.lua
