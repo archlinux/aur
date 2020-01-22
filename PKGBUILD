@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=mingw-w64-libplacebo
-pkgver=1.21.0
+pkgver=1.29.1
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)'
 url='https://github.com/haasn/libplacebo'
@@ -12,7 +12,7 @@ depends=('mingw-w64-crt' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-glslang' 'ming
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'ninja' 'mingw-w64-vulkan-headers')
 #provides=('libplacebo.so')
 source=(https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libplacebo-v${pkgver}.tar.gz)
-sha512sums=('5de95b8cc48ba4ec9bc3afb8c8f2c4fae0d53ce6e69ffb53884c3a3ee2580998bae46b8934e462740b6c9c2e66e3c5d5f009f9b0f8ad2cb7b4fba829891cf333')
+sha512sums=('9f09560832a88e670d6c31e9f5b9cbc03de437bfb19ceb0985140307b5cdf20e2050a1dab5d07f18258dfa3e5429a51f1d3d54532099be4bfc6a0dafe3ffd516')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
@@ -37,7 +37,7 @@ build() {
 #check() {
 #  for _arch in ${_architectures}; do
 #    cd "${srcdir}/libplacebo-v${pkgver}/build-${_arch}"
-#    
+#
 #    export WINEDEBUG=-all
 #    meson test
 #  done
