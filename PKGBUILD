@@ -1,7 +1,7 @@
 # Maintainer: Duologic <jeroen@simplsitic.be>
 
 pkgname=tanka-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes"
 arch=('x86_64')
