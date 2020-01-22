@@ -1,7 +1,7 @@
 # Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=yaml-cpp-static
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec"
 url="https://github.com/jbeder/yaml-cpp"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=(https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-${pkgver}.tar.gz)
-sha512sums=('fea8ce0a20a00cbc75023d1db442edfcd32d0ac57a3c41b32ec8d56f87cc1d85d7dd7a923ce662f5d3a315f91a736d6be0d649997acd190915c1d68cc93795e4')
+sha256sums=('77ea1b90b3718aa0c324207cb29418f5bced2354c2e483a9523d98c3460af1ed')
 
 prepare() {
     mkdir -p yaml-cpp-yaml-cpp-$pkgver/build
