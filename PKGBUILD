@@ -1,6 +1,6 @@
 pkgname=woof-git
-pkgver=r121.ffef698
-pkgrel=2
+pkgver=0.9.0.r2.76ff38f
+pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --tags --long | sed 's/^woof_//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
