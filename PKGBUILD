@@ -23,7 +23,7 @@ validpgpkeys=('7D33D762FD6C35130481347FDB4B54CBA4826A18'  # Philipp Hagemeister
 prepare() {
   cd ${pkgname}
   sed -i 's|etc/bash_completion.d|share/bash-completion/completions|' setup.py
-  sed -i 's|etc/fish/completions|share/fish/completions|' setup.py
+  sed -i 's|etc/fish/completions|share/fish/vendor_completions.d|' setup.py
 }
 
 package() {
