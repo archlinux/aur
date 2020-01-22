@@ -68,17 +68,17 @@ _use_current=
 _major=5.4
 _minor=13
 _srcname=linux-${_major}
-_clr=${_major}.12-893
+_clr=${_major}.13-895
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='0.0.20200105'
+_wrg_snap='0.0.20200121'
 _gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -100,24 +100,24 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-        msg2 "Add upstream patches"
+        echo "Add upstream patches"
         patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
-        msg2 "Setting version..."
+        echo "Setting version..."
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec |\
-          grep -Ev '^Patch0123|^Patch0130|^Patch1001|^Patch005' | sed -n 's/.*: //p'); do
-        msg2 "Applying patch ${i}..."
+          grep -Ev '^Patch0123|^Patch0130|^Patch1001' | sed -n 's/.*: //p'); do
+        echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
 
     ### Link the WireGuard source directory into the kernel tree
-        msg2 "Adding the WireGuard source directory..."
+        echo "Adding the WireGuard source directory..."
         "${srcdir}/wireguard-linux-compat-${_wrg_snap}/kernel-tree-scripts/jury-rig.sh" ./
 
     local src
@@ -125,16 +125,16 @@ prepare() {
         src="${src%%::*}"
         src="${src##*/}"
         [[ $src = *.patch ]] || continue
-        msg2 "Applying patch $src..."
+        echo "Applying patch $src..."
         patch -Np1 < "../$src"
     done
 
     ### Setting config
-        msg2 "Setting config..."
+        echo "Setting config..."
         cp -Tf $srcdir/clearlinux/config ./.config
 
     ### Enable extra stuff from arch kernel
-        msg2 "Enable extra stuff from arch kernel..."
+        echo "Enable extra stuff from arch kernel..."
 
         # General setup
         scripts/config --enable IKCONFIG \
@@ -180,7 +180,7 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
         patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
         fi
 
@@ -193,13 +193,13 @@ prepare() {
 
     ### Prepared version
         make -s kernelrelease > version
-        msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+        echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
     if [ -n "$_use_current" ]; then
         if [[ -s /proc/config.gz ]]; then
-            msg2 "Extracting config from /proc/config.gz..."
+            echo "Extracting config from /proc/config.gz..."
             # modprobe configs
             zcat /proc/config.gz > ./.config
         else
@@ -214,10 +214,10 @@ prepare() {
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
           if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Running Steven Rostedt's make localmodconfig now"
+            echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
           else
-            msg2 "No modprobed.db data found"
+            echo "No modprobed.db data found"
             exit
           fi
         fi
@@ -253,7 +253,7 @@ _package() {
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    msg2 "Installing boot image..."
+    echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -261,13 +261,13 @@ _package() {
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-    msg2 "Installing modules..."
+    echo "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -277,7 +277,7 @@ _package-headers() {
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    msg2 "Installing build files..."
+    echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
         localversion.* version vmlinux
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -290,7 +290,7 @@ _package-headers() {
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
 
-    msg2 "Installing headers..."
+    echo "Installing headers..."
     cp -t "$builddir" -a include
     cp -t "$builddir/arch/x86" -a arch/x86/include
     install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -306,10 +306,10 @@ _package-headers() {
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-    msg2 "Installing KConfig files..."
+    echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-    msg2 "Removing unneeded architectures..."
+    echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
         [[ $arch = */x86/ ]] && continue
@@ -317,16 +317,16 @@ _package-headers() {
         rm -r "$arch"
     done
 
-    msg2 "Removing documentation..."
+    echo "Removing documentation..."
     rm -r "$builddir/Documentation"
 
-    msg2 "Removing broken symlinks..."
+    echo "Removing broken symlinks..."
     find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-    msg2 "Removing loose objects..."
+    echo "Removing loose objects..."
     find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-    msg2 "Stripping build tools..."
+    echo "Stripping build tools..."
     local file
     while read -rd '' file; do
         case "$(file -bi "$file")" in
@@ -341,11 +341,11 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-    msg2 "Adding symlink..."
+    echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -361,7 +361,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
             '40f429d1a47db11033179f4ac3306d72c72556a6727ead7a29dc0f4412a697d1'
             'SKIP'
-            '9f12f68e96f6865325995c38213e09b05751cd1ef03e0bbc9f1bdc3e5680b337'
+            '7726c2994d11913c4543fd3dc83636f7ce573ca689b15e11b83e980acc04422b'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
