@@ -1,7 +1,7 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -24,7 +24,6 @@ pkgbase = wine-stable
 	makedepends = libxslt
 	makedepends = libxxf86vm
 	makedepends = mesa
-	makedepends = mingw-w64-gcc
 	makedepends = mpg123
 	makedepends = ncurses
 	makedepends = ocl-icd

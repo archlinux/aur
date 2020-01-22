@@ -6,7 +6,7 @@
 
 pkgname=wine-stable
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/5.0/wine-$pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -34,10 +34,10 @@ depends=(desktop-file-utils faudio fontconfig freetype2 glu lcms2
 makedepends=(alsa-lib fontforge giflib gnutls gsm
   gst-plugins-base-libs libcups libgl libgphoto2 libldap libpng
   libpulse libxcomposite libxinerama libxmu libxslt libxxf86vm mesa
-  mingw-w64-gcc mpg123 ncurses ocl-icd openal opencl-headers perl
-  samba sane sdl2 v4l-utils vkd3d vulkan-headers vulkan-icd-loader
-  lib32-alsa-lib lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs
-  lib32-libcups lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
+  mpg123 ncurses ocl-icd openal opencl-headers perl samba sane sdl2
+  v4l-utils vkd3d vulkan-headers vulkan-icd-loader lib32-alsa-lib
+  lib32-giflib lib32-gnutls lib32-gst-plugins-base-libs lib32-libcups
+  lib32-libgl lib32-libldap lib32-libpng lib32-libpulse
   lib32-libxcomposite lib32-libxinerama lib32-libxmu lib32-libxslt
   lib32-libxxf86vm lib32-mesa lib32-mpg123 lib32-ncurses lib32-ocl-icd
   lib32-openal lib32-sdl2 lib32-v4l-utils lib32-vkd3d
