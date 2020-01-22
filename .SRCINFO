@@ -16,5 +16,5 @@ pkgbase = pak-config-pacman
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = pak-config-pacman
+pkgname = pak-config-pacman-git
 
