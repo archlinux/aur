@@ -2,16 +2,10 @@ post_install() {
 cat << EOF
 
 
-==> Make a backup of ~/.bash_aliases before running this executable!
-==> IT WILL OVERWRITE IT!
+==> Make a backup of ~/.bash_aliases before running this executable.
 
 ==> The programm also adds a new line to your ~/.bashrc
 ==> source ~/.config/bash-config/bashrc.bash
-
-
-==> And let me repeat:
-==> Make a backup of ~/.bash_aliases before running this executable!
-==> IT WILL OVERWRITE IT!
 
 
 EOF
