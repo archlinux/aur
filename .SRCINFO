@@ -16,6 +16,7 @@ pkgbase = sacad-git
 	depends = python-mutagen
 	depends = python-pillow
 	depends = python-tqdm
+	depends = python-fake-useragent
 	provides = sacad
 	provides = sacad-git
 	conflicts = sacad
