@@ -1,0 +1,16 @@
+pkgbase = mx-bash-config-git
+	pkgdesc = GUI tool written in Qt to modify the bashrc
+	pkgver = 19.10.09_110
+	pkgrel = 1
+	url = https://mxlinux.org/wiki/help-files/help-bash-config
+	install = bash-config.install
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = git+https://github.com/TheNiteCoder/mx-bashrc-config
+	source = https://raw.githubusercontent.com/MX-Linux/mx-goodies/master/bin/fancy-prompts.bash
+	md5sums = SKIP
+	md5sums = 90de09da55a2ede5f18ab06678a4c76c
+
+pkgname = mx-bash-config-git
+

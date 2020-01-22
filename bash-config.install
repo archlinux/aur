@@ -1,0 +1,34 @@
+post_install() {
+cat << EOF
+
+
+==> Make a backup of ~/.bash_aliases before running this executable!
+==> IT WILL OVERWRITE IT!
+
+==> The programm also adds a new line to your ~/.bashrc
+==> source ~/.config/bash-config/bashrc.bash
+
+
+==> And let me repeat:
+==> Make a backup of ~/.bash_aliases before running this executable!
+==> IT WILL OVERWRITE IT!
+
+
+EOF
+}
+
+post_remove() {
+cat << EOF
+
+
+==> To clean up:
+==> All alias changes have been made in ~/.bash_aliases
+==> Prompt changes are in ~/.config/bash-config
+
+==> This file is included at the end of ~/.bashrc
+==> If you choose the fancy prompt, you will miss now the fancy-prompts.bash
+==> file and must edit one of the above mentiond files.
+
+
+EOF
+}
