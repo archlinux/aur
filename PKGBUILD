@@ -1,7 +1,7 @@
 # Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _npmname=json-diff
 pkgname=nodejs-json-diff # All lowercase
-pkgver=0.3.1
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="JSON diff"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('6dbc3ae2d25e075a7fd71bcd9874458666fb681b')
+sha256sums=('81f7ce0aec1a8dbd8044753a0f786c25f1881a8c33068da0e05784ea083ff17a')
 
 package() {
   cd $srcdir
