@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=talos
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://github.com/talos-systems/talos'
 license=('MPL2')
 makedepends=('go' 'protobuf' 'protobuf-go')
 source=("https://github.com/talos-systems/talos/archive/v${pkgver}.tar.gz")
-sha512sums=('627eadb79eb41aed63463f35b68d305da0621b38f98267be84d8c9bf8f3d9c2de93f398056c01b5a6e67ec68b525c932d7d84bea0d317315e62858b4919a42a8')
+sha512sums=('5c5f1d8db63731016abdc84c41e7073bffc466b5dc61ebc206c528b405b148d59fdd2450387afd1a492f3cb2befb551190749642b6fa0e7c9b1e3d0ae6b699c2')
 
 prepare() {
   cd ${pkgname}-${pkgver}
