@@ -1,0 +1,15 @@
+pkgbase = kloak-git
+	pkgdesc = anti keystroke deanonymization tool
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://github.com/vmonaco/kloak
+	arch = i686
+	arch = x86_64
+	license = BSD3
+	provides = kloak
+	options = strip
+	source = git+https://github.com/vmonaco/kloak
+	md5sums = SKIP
+
+pkgname = kloak-git
+
