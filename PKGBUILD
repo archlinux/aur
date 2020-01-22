@@ -7,7 +7,7 @@
 
 pkgname=salt-py3
 pkgver=2019.2.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Central system and configuration manager'
 arch=('any')
@@ -37,12 +37,12 @@ backup=('etc/logrotate.d/salt'
 
 install=salt.install
 source=("https://pypi.io/packages/source/s/salt/salt-$pkgver.tar.gz"
-        salt.logrotate
+        "salt.logrotate"
         "0001-saltssh-py38.patch")
 
 sha256sums=('7497e7dbfd4dc3799bbbc8da63da98b8301bbb644150f3905fe5775a7d81271a'
             'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            'e91791b6431ba56ff5ba0b0ff4ae1fba7335fa358698e12829daf2c248c1568d')
+            '8029d67585bab0b0858c3e2fb317b08bfbeee94d8c785c74472e9c9ecd4c0d3c')
 
 prepare() {
   cd salt-$pkgver
