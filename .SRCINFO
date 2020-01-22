@@ -1,33 +1,35 @@
 pkgbase = alacritty-git
-	pkgver = 0.3.3.1233.g0b88b9f
+	pkgver = 0.4.2.1436.g767d5915
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
 	arch = i686
-	license = Apache-2.0
+	license = Apache
+	checkdepends = ttf-dejavu
 	makedepends = rust
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = fontconfig
-	makedepends = freetype2
-	makedepends = git
 	makedepends = ncurses
 	makedepends = desktop-file-utils
-	makedepends = python
+	makedepends = gdb
 	makedepends = libxcb
 	source = alacritty::git+https://github.com/jwilm/alacritty.git
 	sha256sums = SKIP
 
 pkgname = alacritty-git
-	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
 	depends = freetype2
 	depends = fontconfig
-	depends = libxcb
+	depends = libxi
+	depends = libxcursor
+	depends = libxrandr
+	optdepends = alacritty-terminfo: terminfo for alacritty
 	provides = alacritty
 	conflicts = alacritty
 
 pkgname = alacritty-terminfo-git
 	pkgdesc = Terminfo files for the alacritty terminal emulator
+	depends = ncurses
 	provides = alacritty-terminfo
 	conflicts = alacritty-terminfo
 
