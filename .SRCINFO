@@ -1,0 +1,19 @@
+pkgbase = htop-vim-mode-git
+	pkgdesc = lytedev's fork of the process monitor with a vim_mode setting
+	pkgver = 1081.9ed47a2
+	pkgrel = 1
+	url = https://github.com//
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = python
+	depends = ncurses
+	optdepends = lsof: list open files for running process
+	optdepends = strace: attach to running process
+	provides = htop
+	conflicts = htop
+	source = git+https://github.com/lytedev/htop.git#branch=daniel/add-simple-vim-mode
+	sha256sums = SKIP
+
+pkgname = htop-vim-mode-git
+
