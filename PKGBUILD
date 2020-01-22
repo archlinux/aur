@@ -2,22 +2,26 @@
 # Contributors: Mornielome <stuff@lukasjacobs.de>, c0ldcat <firez199984@gmail.com>, KbanKiller
 pkgname=marvin
 pkgver=20.2.0
-pkgrel=1
+_pkgver=$(echo $pkgver | sed 's/.[0-9]$//g')
+pkgrel=2
 pkgdesc="Intuitive applications and API for chemical sketching, visualization and data exploration"
 arch=('any')
 url="http://www.chemaxon.com"
 license=('proprietary')
 depends=('java-runtime<=11')
-filename="marvin_linux_20.2.rpm"
+filename="marvin_linux_${_pkgver}.rpm"
 source=("https://dl.chemaxon.com/marvin/$pkgver/$filename"
 "MarvinSketch.desktop"
+"MarvinView.desktop"
 "marvin-sketch-symbolic.svg")
 md5sums=('d4efa6190a298cf9f2a9c75223b013ca'
-'63b667e3188ffe688f516848e5db66c6'
-'e6758f94b843b97804112fa0420ba1bb')
+         '54cb1a06e79c0e1cd980490247486df2'
+         'cb6c8c35cd486844a465d408861642c0'
+         'e6758f94b843b97804112fa0420ba1bb')
 
 package() {
 install -Dm755 MarvinSketch.desktop ${pkgdir}/usr/share/applications/MarvinSketch.desktop
+install -Dm755 MarvinView.desktop ${pkgdir}/usr/share/applications/MarvinView.desktop
 
 cp -R opt ${pkgdir}/opt
 
