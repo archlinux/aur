@@ -6,6 +6,7 @@ pkgbase = pak-config-pacman
 	arch = x86_64
 	license = GPL3
 	depends = pacman
+	depends = pak
 	provides = pak-config
 	provides = pacwrap
 	conflicts = pak-config-yay
