@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 # Contributor: neverix <nev@ ateverix dot io>
 pkgname=yin-yang-git
-pkgver=1.0.beta.r11.a5c2712
+pkgver=v1.0.beta.r15.g50dbd1e
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -26,7 +26,7 @@ package() {
 	cp -r ./* "$pkgdir/opt/${pkgname%-git}"
 	rm -rf "$pkgdir/opt/${pkgname%-git}"/{build,install.sh,uninstall.sh}
 	chmod +x "$pkgdir/opt/${pkgname%-git}/src/${pkgname%-git}"
-	ln -s "opt/${pkgname%-git}/src/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+	ln -s "/opt/${pkgname%-git}/src/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "src/ui/assets/${pkgname%-git}.svg" -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
