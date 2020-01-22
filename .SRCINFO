@@ -1,13 +1,14 @@
 pkgbase = python-spacy-es_core_news_sm
 	pkgdesc = Spanish multi-task CNN trained on the AnCora and WikiNER corpus for spaCy
-	pkgver = 2.1.0
+	pkgver = 2.2.5
 	pkgrel = 2
 	url = https://spacy.io/models/es#section-es_core_news_sm
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	source = https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.1.0/es_core_news_sm-2.1.0.tar.gz
-	sha256sums = b021b1f5e3c1c296534b8dc1a1527293705e76b9b8611a9506095cfcc2f2beea
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.2.5/es_core_news_sm-2.2.5.tar.gz
+	sha256sums = d1bd75f7c0dcf2b6107d9aaae367a3f94dd7671ea0529e64727b15155ebf19a6
 
 pkgname = python-spacy-es_core_news_sm
 
