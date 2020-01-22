@@ -12,5 +12,5 @@ pkgbase = pak
 	source = https://gitlab.com/moussaelianarsen/pak/-/archive/master/pak-master.tar.gz
 	md5sums = SKIP
 
-pkgname = pak
+pkgname = pak-git
 
