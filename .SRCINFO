@@ -7,7 +7,7 @@ pkgbase = nodejs-json-diff
 	depends = nodejs
 	depends = npm
 	noextract = json-diff-0.5.4.tgz
-	source = http://registry.npmjs.org/json-diff/-/json-diff-0.5.4.tgz
+	source = https://registry.npmjs.org/json-diff/-/json-diff-0.5.4.tgz
 	sha256sums = 81f7ce0aec1a8dbd8044753a0f786c25f1881a8c33068da0e05784ea083ff17a
 
 pkgname = nodejs-json-diff

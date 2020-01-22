@@ -9,7 +9,7 @@ url="https://github.com/andreyvit/json-diff"
 license=()
 depends=('nodejs' 'npm')
 optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
 sha256sums=('81f7ce0aec1a8dbd8044753a0f786c25f1881a8c33068da0e05784ea083ff17a')
 
