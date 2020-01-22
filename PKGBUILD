@@ -5,21 +5,24 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.14.r151.4f54c17ea
-pkgrel=2
+pkgver=3.19.r157.5e6963a91
+pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
 license=('APACHE')
 conflicts=('lxd' 'lxd-lts')
 provides=('lxd')
-depends=('lxc' 'squashfs-tools' 'dnsmasq' 'libuv')
+depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'libuv')
 makedepends=('go' 'git' 'tcl' 'patchelf')
 optdepends=('lvm2: for lvm2 support'
             'thin-provisioning-tools: for thin provisioning support'
             'btrfs-progs: for btrfs storage driver support'
             'ceph: for ceph storage driver support'
             'jq: needed by empty-lxd.sh script'
+            'qemu: needed for virtual machine support'
+            'ovmf: needed for virtual machine support'
+            'mkisolinux: needed for virtual machine support'
 )
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/lxc/lxd.git"
@@ -27,9 +30,8 @@ source=("git+https://github.com/lxc/lxd.git"
         "lxd.socket"
 )
 md5sums=('SKIP'
-         'ad8ad313898fac0487fcf9a3b9b926ea'
-         '1fb28d8dfe82af71d0675c8e9a0a7293'
-)
+         '5b7032b4b6adc4c4b80d9a919b9cd8a2'
+         '1fb28d8dfe82af71d0675c8e9a0a7293')
 
 _lxd=github.com/lxc/lxd
 
@@ -50,6 +52,7 @@ build() {
   export CGO_CFLAGS="-I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/libco/ -I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
   export CGO_LDFLAGS="-L${GOPATH}/deps/sqlite/.libs/ -L${GOPATH}/deps/libco/ -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
   export LD_LIBRARY_PATH="${GOPATH}/deps/sqlite/.libs/:${GOPATH}/deps/libco/:${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/"
+  export CGO_LDFLAGS_ALLOW="-Wl,-wrap,pthread_create"
   make
 }
 

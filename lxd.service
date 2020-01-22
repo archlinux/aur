@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+Environment=LXD_OVMF_PATH=/usr/share/ovmf/x64
 ExecStart=/usr/bin/lxd --group lxd
 ExecStop=/usr/bin/lxd shutdown
 KillMode=process
