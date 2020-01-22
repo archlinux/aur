@@ -1,7 +1,7 @@
 # Maintainer : Colin Berry <colinb969 at gmail dot com>
 pkgname=flashpoint-bin
 pkgver=6.3
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc="Launcher for BlueMaxima's Flashpoint - Infinity Edition."
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -10,7 +10,7 @@ depends=('nss>=3.0'
          'php'
          'gtk3')
 optdepends=('wine: non-native game support')
-source=('https://bluepload.unstable.life/selif/flashpoint-linux-x64-20191112.tar.gz')
+source=('https://download.unstable.life/flashpoint-launcher/linux/x64/flashpoint-linux-x64-20191112.tar.gz')
 md5sums=('313d585f60cb4d7a0c834e0ff693729c')
 
 package(){
