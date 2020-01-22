@@ -4,7 +4,7 @@
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope
 pkgdesc="application server used by SOGo"
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 arch=('x86_64')
 url="http://www.sogo.nu/files/downloads/SOGo/Sources/"
