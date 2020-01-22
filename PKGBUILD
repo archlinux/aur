@@ -2,7 +2,7 @@
 
 pkgname=taskell
 pkgver=1.9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
@@ -11,6 +11,11 @@ depends=(ghc-libs haskell-aeson haskell-attoparsec haskell-brick haskell-config-
 makedepends=(ghc)
 source=(https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
 sha512sums=('91dbf6ef3d0d7f6308c3156c491235623abfa25a550af627841182e61ff517cb2bfc0608ae5ed814a391ab78a88df36d08c7a773cc08e76f7e38c218d63136b1')
+
+prepare() {
+  cd $pkgname-$pkgver
+  sed -i -e 's/< *4/<5/' -e 's/< *2/<3/' -e 's/< *1/<2/' $pkgname.cabal
+}
 
 build() {
   cd $pkgname-$pkgver
