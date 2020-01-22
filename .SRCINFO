@@ -1,7 +1,7 @@
 pkgbase = pak-config-yay
 	pkgdesc = A pacman config for yay
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/moussaelianarsen/pak
 	arch = x86_64
 	license = GPL3
