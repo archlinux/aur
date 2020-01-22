@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
 
 pkgname=jetbrains-toolbox
-pkgver=1.16.6207
+pkgver=1.16.6319
 pkgrel=1
 pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop
         LICENSE)
-sha512sums=('43cc732ee0a6699a2622b0a1c7a578a02236d889fb0e1f81a4753a5bf06eeecd57978ee752cd4c76021c92783462fe231aeb0eadbd949ebf1af5bb26e72d6d51'
+sha512sums=('66f5f12b07781bdb8cd54a288e9548cf41475c8af21de19543fc973ac73c1644c9f26b21a61c6eb572309f6d37e39c32713367c7286564b3f94b077d752943fd'
             '81456c724cc424d78f209ba6a0ba925f3aec6d5b01569f481745090d06bf2635f7dd0d05e2ad9e2bba9e2185ec5f606c97374d1e0fd6e92349ad3a7d6b9237db'
             'e2aaaa75571f368f85bcc4baef27cc502781ce382bf04737763b07244716918fc2f0eb0b78b02631e242c9a5c246b27d720bb28556fc64bbde213403b7bf57f6')
 
