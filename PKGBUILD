@@ -3,7 +3,7 @@
 # Contributor: b4283 <damispirit@gmail>
 
 pkgname=lander
-pkgver=0.6.6
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A Lunar Lander clone."
 arch=('i686' 'x86_64')
@@ -11,19 +11,19 @@ url="http://www.doof.me.uk/lunar-lander/"
 # https://github.com/nickg/lander
 license=('GPL')
 depends=('sdl_mixer' 'sdl_image' 'glu' 'boost-libs')
-makedepends=('boost')
-source=(http://www.nickg.me.uk/files/lander-$pkgver.tar.gz)
-md5sums=('8ab1d2e426eb430db4641e780d16656d')
+makedepends=('boost' 'meson' 'ninja')
+source=(http://www.nickg.me.uk/files/lander-$pkgver.tar.xz)
+md5sums=('f311d1762d5665e70003fd1375bfb582')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  # boost patch
-  #sed -i 's/file_string/string/' src/Main.cpp
-  ./configure --prefix=/usr
-  make
+  mkdir -p build
+  cd build
+  meson --prefix=/usr ../
+  ninja
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir/$pkgname-$pkgver/build"
+  DESTDIR="$pkgdir" ninja install
 }
