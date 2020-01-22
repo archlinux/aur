@@ -1,7 +1,7 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=folder-color-switcher
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Folder color switcher for Nemo and Caja"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 optdepends=('nemo-python>=3.9.0: Nemo extension'
             'python-caja: Caja extension')
 makedepends=('git')
-_commit='e831808e7c49e6f328e0fa089354891e55bcd543'
+_commit='3b9145ee0e80046e9783ab7c5d6db026223f0748'
 source=("${pkgname}::git+${url}#commit=${_commit}")
 sha256sums=('SKIP')
 
