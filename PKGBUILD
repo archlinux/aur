@@ -43,6 +43,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
+      -DCMAKE_BUILD_TYPE=Release \
       -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON \
       -DPARAVIEW_USE_PYTHON=OFF \
       -DPARAVIEW_ENABLE_EMBEDDED_DOCUMENTATION=OFF \
