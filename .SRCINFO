@@ -1,4 +1,4 @@
-pkgbase = pak-git
+pkgbase = pak
 	pkgdesc = A package manager wrapper written in swift designed to unify different package managers
 	pkgver = 1.0
 	pkgrel = 3
