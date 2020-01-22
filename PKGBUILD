@@ -12,7 +12,7 @@ pkgver=1081.9ed47a2
 pkgrel=1
 pkgdesc="lytedev's fork of the process monitor with a vim_mode setting"
 arch=('x86_64')
-url="git+$_gitrepo.git"
+url="$_gitrepo"
 license=('GPL2')
 depends=('ncurses')
 makedepends=('git' 'python')
@@ -20,7 +20,7 @@ optdepends=('lsof: list open files for running process'
 	'strace: attach to running process')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
-source=("${url}#branch=${_gitbranch}")
+source=("git+${url}.git#branch=${_gitbranch}")
 sha256sums=('SKIP')
 
 pkgver() {
