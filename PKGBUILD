@@ -18,5 +18,5 @@ build() {
 
 package() {
 	install -Dm755 yaywrap $pkgdir/usr/bin
-	install -Dm644 pak.cfg $pkgdir/etc
+	install -Dm744 pak.cfg $pkgdir/etc
 }
