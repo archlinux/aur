@@ -6,21 +6,19 @@
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
 pkgver=r104.9ce9b4c
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple indicator for the weather'
 arch=('any')
 url='https://github.com/atareao/my-weather-indicator'
 license=('GPL3')
 depends=('libappindicator-gtk3' 'libnotify' 'webkit2gtk' 'geocode-glib' 'python-pytz'
          'python-cairo' 'python-lxml' 'python-dateutil' 'osm-gps-map'
-         'python-requests-oauthlib' 'geoclue2' 'geoip')
-makedepends=('git' 'python-distutils-extra' 'python-polib')
+         'python-requests-oauthlib' 'geoclue' 'geoip')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator"
-        'https://raw.githubusercontent.com/atareao/my-weather-indicator/8701218dc218f5533590b995617f3f1e839135d9/setup.py')
-sha256sums=('SKIP'
-            '97e101e29ece53549ed1ce4c7958d9207cd1da9e60f6ea9f0aa7849baed82897')
+source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -29,25 +27,26 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  cp ../setup.py .
 
   # Don't install to /opt and install locales to correct directory
   find . -type f -exec \
     sed -i -e 's:/opt/extras.ubuntu.com/my-weather-indicator:/usr:g' \
            -e 's:locale-langpack:locale:g' '{}' \;
-
-  # async is a reserved keyword in python 3.7+
-#  cd src
-#  mv async.py mywi_async.py
-#  sed -i 's:from async import:from mywi_async import:' *py
-}
-
-build() {
-  cd "${_pkgname}"
-  python setup.py build
+  # Create a script to install the translations from the debian rules file
+  grep -A 1000 "Create languages directories" debian/rules | \
+    grep -B 1000 "End comile languages" | \
+    sed "s:\${CURDIR}/debian/my-weather-indicator:\"${pkgdir}\":g" > make_translations.sh
+  chmod +x make_translations.sh
+  # Missing newline at the end of the file makes the package function not install the file on the last line 
+  echo -e >> debian/install
 }
 
 package() {
   cd "${_pkgname}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  while read _in _out ; do
+    mkdir -p "${pkgdir}/${_out}/"
+    install -m644 ${_in} "${pkgdir}/${_out}/"
+  done < debian/install
+  chmod 755 "${pkgdir}"/usr/bin/my-weather-indicator
+  ./make_translations.sh
 }
