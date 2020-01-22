@@ -1,18 +1,18 @@
 # Maintainer: Uumas <u@uumas.fi>
 # Contributors: Mornielome <stuff@lukasjacobs.de>, c0ldcat <firez199984@gmail.com>, KbanKiller
 pkgname=marvin
-pkgver=20.1.0
-pkgrel=2
+pkgver=20.2.0
+pkgrel=1
 pkgdesc="Intuitive applications and API for chemical sketching, visualization and data exploration"
 arch=('any')
 url="http://www.chemaxon.com"
 license=('proprietary')
 depends=('java-runtime<=11')
-filename="marvin_linux_20.1.rpm"
+filename="marvin_linux_20.2.rpm"
 source=("https://dl.chemaxon.com/marvin/$pkgver/$filename"
 "MarvinSketch.desktop"
 "marvin-sketch-symbolic.svg")
-md5sums=('13a1f615a899ea68b1242ac70c38666c'
+md5sums=('d4efa6190a298cf9f2a9c75223b013ca'
 '63b667e3188ffe688f516848e5db66c6'
 'e6758f94b843b97804112fa0420ba1bb')
 
