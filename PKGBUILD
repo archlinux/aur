@@ -1,7 +1,7 @@
 # Maintainer: Denis Lobanov <denis dot lobanov at zooei dot com>
 pkgname=bloomrpc
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="GUI Client for gRPC Services"
 arch=(any)
 url="https://github.com/uw-labs/bloomrpc"
