@@ -1,11 +1,10 @@
 pkgbase = pak
 	pkgdesc = A package manager wrapper written in swift designed to unify different package managers
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/moussaelianarsen/pak
 	arch = x86_64
 	license = GPL3
-	makedepends = swift-language
 	depends = pak-config
 	provides = pak
 	replaces = pak-yay
