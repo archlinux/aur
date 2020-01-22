@@ -3,9 +3,9 @@
 
 _pkgname=ninjas2
 pkgname=${_pkgname}-git
-pkgver=2.0.0.r267.36df466
+pkgver=0.2.0.r331.a767a9e
 pkgrel=1
-#epoch=1
+epoch=1
 pkgdesc="An easy to use sample slicer LV2 & VST plugin and JACK application (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/rghvdberg/ninjas2"
