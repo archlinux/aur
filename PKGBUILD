@@ -1,7 +1,7 @@
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=buildstuff
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc='Stuff to build packages in virtual machines'
 url='http://arch.vesath.org/'
@@ -23,7 +23,7 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('6225e9cd7dbd46692d3b3ebde37a182c05863459879e99dbca5b3a4125e5eb1d'
+sha256sums=('f7ed61b7826b657ab32d715567642f86e824374e16d9637d40ffc7d21c7ecfae'
             'acf683446e1162104759b1a75d18859b1a36ac6f3eeabb241025d0e6c37c7960'
-            '12d4c4033073cc940b26581d3008c865145cd1bbe0f64491bff522922370d003'
-            '8f33b668ab81dcefd62191c3a01d596d498b8ba1058368dbb1ca2a2a2bf89218')
+            '82aafa6d8f46294d39686f2afe17b323db65f7fab0b239b740805046b13703cc'
+            '90ecf020399db72ce0ac8e1eb05759652363c029c06616b770cd273b7923ae97')

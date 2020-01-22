@@ -5,9 +5,9 @@ From a directory that contains a PKGBUILD, run:
 
 	arch.build i686
 
-This will build the package for the given architecture. You may also append a
-list of repositories to use on top of [core], [extra], and [community], for
-instance:
+This will build the package for the given architecture. You may also
+append a list of repositories to use on top of [core], [extra], and
+[community], for instance:
 
 	arch.build x86_64 testing multilib-testing multilib
 
@@ -19,7 +19,9 @@ Enable hardware virtualization.
 
 Make /tmp a tmpfs. (This is where the copy-on-write drive is stored.)
 
-Install a caching pacman mirror proxy on your local network and use it.
+Use a fast package mirror, ideally a caching proxy on your local network.
+Entries from /etc/pacman.d/mirrorlist are used as-is except that 127.0.0.1 gets
+translated to 10.0.2.2 which is the host address from the qemu guest viewpoint.
 
 
 REQUIREMENTS FOR ARCH.INSTALL

@@ -24,7 +24,7 @@ vhost="
 start_vm() {
 	qemu-system-x86_64 \
 		-cpu $cpu -smp 4 -m 2G \
-		-accel kvm:tcg,thread=multi \
+		-machine accel=kvm:tcg \
 		-device virtio-net,netdev=vlan \
 		-netdev user,id=vlan,hostfwd=::$vport-:22 \
 		-drive file=$1 &
@@ -87,6 +87,6 @@ sftp $vhost <<<"put $HOME/.gnupg/pubring.kbx .gnupg/pubring.kbx"
 sftp $vhost <<<'put -r . /build' # fake chroot build for db-update
 ssh $vhost 'rm -fr /build/{src,pkg}' # fix source repo relocation
 ssh $vhost 'cd /build; makepkg --log --noconfirm --syncdeps'
-sftp $vhost <<<'get /build/*.pkg.tar.xz'
+sftp $vhost <<<'get /build/*.pkg.tar.*'
 sftp $vhost <<<'get /build/*.log'
 stop_vm
