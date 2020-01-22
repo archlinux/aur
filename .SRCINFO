@@ -1,0 +1,18 @@
+pkgbase = tsim
+	pkgdesc = Simulation code for Principles of Concurrent Programming at CTH, courses TDA384/DIT391
+	pkgver = 0.84
+	pkgrel = 1
+	url = http://www.cse.chalmers.se/edu/course/TDA384_LP3/resources/
+	arch = x86_64
+	license = unknown
+	depends = libxaw
+	depends = libxt
+	depends = libxmu
+	depends = libx11
+	depends = libxext
+	provides = tsim
+	source = http://www.cse.chalmers.se/edu/course/TDA384_LP3/files/labs/tsim-0.84.tgz
+	md5sums = bb867e53ad884a1c6f7f67999ce1b0bc
+
+pkgname = tsim
+
