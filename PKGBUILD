@@ -2,7 +2,7 @@
 
 pkgname=ant-gtk-theme
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ant Theme for GTK 3.x"
 arch=('any')
 license=('GPL')
@@ -10,15 +10,14 @@ url=https://www.gnome-look.org/p/1099856
 options=('!strip')
 depends=('gtk3')
 
-_hash_time=($(curl -s "$url"| grep -e "hash =" -e "timetamp ="| sed "s/.*= '\(.*\)';/\1/"))
-source=("Ant.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578335110/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant.tar"
-	"Ant-Bloody.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578335460/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Bloody.tar"
-	"Ant-Nebula.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578334999/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Nebula.tar"
-	"Ant-Dracula.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578335151/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Dracula.tar"
-	"Ant-Dracula-slim.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578334984/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Dracula-Slim.tar"
-	"Ant-Nebula-slim.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578335047/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Nebula-Slim.tar"
-	"Ant-Bloody-slim.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578334951/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Bloody-Slim.tar"
-	"Ant-slim.tar::https://dl.opendesktop.org/api/files/downloadfile/id/1578335024/s/${_hash_time[0]}/t/${_hash_time[1]}/u/Ant-Slim.tar")
+source=("Ant.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant.tar"
+	"Ant-Bloody.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody.tar"
+	"Ant-Nebula.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Nebula.tar"
+	"Ant-Dracula.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Dracula.tar"
+	"Ant-Dracula-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Dracula-slim.tar"
+	"Ant-Nebula-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Nebula-slim.tar"
+	"Ant-Bloody-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody-slim.tar"
+	"Ant-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-slim.tar")
 
 noextract=('Ant.tar'
            'Ant-Bloody.tar'
@@ -30,14 +29,14 @@ noextract=('Ant.tar'
            'Ant-slim.tar'
 )
 
-sha512sums=('8c722ccaa3810fc8ac2b76ba02fa1c413b2335bb679e3e255438e324a152dbef894840d495fa1d8b82eb18a86f844aeb80dd112140388c1ec719472bac440a10'
-            'ac00d4b8611d8e07f60ac2c41d4f859f9f21b59b17be552756383fe7b719cdc80095fb082adcca7676c7aaf3f8eee917cb7734d29320ce518fc9e2a6a1e629cf'
-            'fdda01632aa8ef93838c7fb192e0e54a154788906e9c03fb14d6223330ebca20ead0f0a123f8638b1a14357b701bc92d939ed24f388bf4fa30daf40d7bb2bc55'
-            'eabd63acd9f7fd29d02b15fe498687f880a99367ede6518566aaee67dba41b5f109420440724a9773b2cb90fdadd0674cd0736c18e65f26718cdc1f9e9537d6d'
-            '52db9d6ad372892db71dea359b23873c8a6990d834969401fbe6771db706fd9b76476bf44aa49f3622f431ac9d4636ac416c77702926b397bac7f0929af664bd'
-            'd5a44c87978e6ee49bfd8efc733bb9f0e9d814186443d1669cee5e0c7c3ecbb5e1f6bed657ebdfdd2868bf9b22724fb6bebd4470db9a668848f9d7e96dd06a01'
-            'e609a57b0026d0c19f18b706dd4803a0ded6380e10ab0e33c26b4fa0b4f131b582e59f2f861334c7b9854a6f9220de790608a1d1430ac71a2eeb155167edfc1b'
-            '52bf12203615b9a703ff2cd61f89f2d5349c7684d896c22b03e2b53928f6cda0abf4f118f88dfd0c9a60149031970598b2d41be0c203da446045fe83618554e3')
+sha512sums=('eff8f9d6db62c28cca4f82b46a477b0e980193ade010f541bf3007513cc35041d812326ac4272a06157d6208af4fc8adc73897622d66469eb1839e80977e7d70'
+            '6847179d7983984af40b27ecb9c4ecd80adf47cad701add25ea9ffe8fe8944650dcf190685d857df282d620a7dcf19a90a900aeeebba5ddad04cd20cdba10e6d'
+            '7a0336ae7e1c2ea35507644b1e63d4bcb1b9a445a6261b6957eb4dda1ee38aa2b21bc6697694bab4a705235735a06e7340974f2177bfcc84b312990538cf8f5a'
+            'd55f12f3b1b852e2fe796498f170609bcc675e764ec54d62ad0a39f274ca3f747375f3a9d03e56199e6fdd503b54594cc8276958551df02d5f18d03846a62371'
+            'b6a9d867f9326d10b92f2abcca119190db5444a0beed27447ddd133ae6aff226738302eed253de1a278d853ccdbd59fa34a8cf99b1f1a3bdee91d3edf935d619'
+            '1e67cefb178accb3efa4b4b967cd04966a1645e50d434016eb9db1db499147351812496998a695bbe61242c31534ea6a279507b5c94f68797a67738f6fcbb45e'
+            'f17b1d3be2cb0314d8c25269d156b6ad358bd718fd820a12c3ba3665afcfa127c928b3890f1432964cc7c081fc398f739abb345e3db7b927ab45c65446f5d0de'
+            '668d80be55381fb1dbbd5a06d6e45f1a8858772d3207a762bb62dc53a2663271f29693445d5e8ff01495a13195e1eb4c513ec7633712eee21487b116ad1c3012')
 
 prepare() {
   cd "${srcdir}"
@@ -49,7 +48,7 @@ prepare() {
     then
       bsdtar xf "${THEME_FILE}" -C "${THEME_NAME}"
       cd "${THEME_NAME}"
-      for SUB_THEME_FILE in $(find . -type f -name '*.tar')
+      find . -type f -name '*.tar' | while read -r SUB_THEME_FILE
       do
         SUB_THEME_NAME=$(basename "${SUB_THEME_FILE}")
         SUB_THEME_NAME="${SUB_THEME_NAME%.*}"
@@ -65,7 +64,7 @@ prepare() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  for THEME_INDEX_FILE in $(find "${srcdir}" -type f -name 'index.theme')
+  find "${srcdir}" -type f -name 'index.theme' | while read -r THEME_INDEX_FILE
   do
     THEME_SRC_DIR=$(dirname "${THEME_INDEX_FILE}")
     THEME_NAME=$(basename "${THEME_SRC_DIR}")
