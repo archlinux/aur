@@ -40,6 +40,7 @@ prepare() {
 }
 
 build(){
+  cd "$srcdir"/roundcubemail
   php -d extension=gd.so /usr/bin/composer install --no-dev
   bin/install-jsdeps.sh
   bin/jsshrink.sh
