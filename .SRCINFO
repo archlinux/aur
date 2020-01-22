@@ -1,7 +1,7 @@
 pkgbase = flac2all
 	pkgdesc = Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata.
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZivaVatra/flac2all
 	arch = any
 	license = GPL2
@@ -17,7 +17,9 @@ pkgbase = flac2all
 	optdepends = python-pyzmq: for clustering
 	optdepends = vorbis-tools: for ogg support
 	source = flac2all-5.0.tar.gz::https://github.com/ZivaVatra/flac2all/archive/v5.0.tar.gz
+	source = 01-unfuck_python3.patch::https://github.com/ZivaVatra/flac2all/commit/dfe6d201d57866905dabf6bbcae4d396e4e4d130.patch
 	sha256sums = d18a01653eed4d497cc1fe0393fecfaf6b6eab5dac9bd5599d1e83231b76c22d
+	sha256sums = 2ad929c76351bcb63782ce06c45db62abfad6191be498914abaf17321e71479c
 
 pkgname = flac2all
 
