@@ -12,6 +12,9 @@ url="https://github.com/juliagoda/${pkgname/x}X"
 license=("GPL3")
 depends=("desktop-file-utils" "hicolor-icon-theme" "libxtst" "qt5-base" "sdl2")
 makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
+provides=("${pkgname/x}")
+conflicts=("${pkgname/x}")
+replaces=("${pkgname/x}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname/x/X}/archive/${pkgver}.tar.gz")
 sha256sums=("349a980addac44414f9e4c5d1f4c58fc15ac48c639cc07c2f3bfb416c79f94fe")
 

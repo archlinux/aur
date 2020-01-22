@@ -16,6 +16,9 @@ pkgbase = antimicrox
 	depends = libxtst
 	depends = qt5-base
 	depends = sdl2
+	provides = antimicro
+	conflicts = antimicro
+	replaces = antimicro
 	source = antimicrox-2.25.tar.gz::https://github.com/juliagoda/antimicroX/archive/2.25.tar.gz
 	sha256sums = 349a980addac44414f9e4c5d1f4c58fc15ac48c639cc07c2f3bfb416c79f94fe
 
