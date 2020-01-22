@@ -3,7 +3,7 @@
 # Contributor: Gabriel B. Casella <gbc921@gmail.com>
 pkgname=soundwire
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wirelessly transmit any audio from your PC to your Android phone or other PCs"
 url="http://georgielabs.net"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('pavucontrol')
 install='soundwire.install'
 
 source=("http://georgielabs.altervista.org/SoundWire_Server_linux64.tar.gz")
-sha256sums=('e9b02910c743f764d298f9ff78caed953b8a65e0e6409c1067d427e4ded4d868')
+sha256sums=('b6cba9cea099408fcad076268d9c8ad03c5eb16e9e95fb9cad7219d06ca8e961')
 
 package() {
   cd "${srcdir}/SoundWireServer"
