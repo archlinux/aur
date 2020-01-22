@@ -1,6 +1,6 @@
 pkgbase = micro-git
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = v1.4.1.2c219ba
+	pkgver = v2.0.0.rc2.97ee3442
 	pkgrel = 1
 	url = https://github.com/zyedidia/micro
 	arch = x86_64
@@ -12,7 +12,10 @@ pkgbase = micro-git
 	makedepends = go
 	makedepends = git
 	optdepends = xclip: Required for copying/pasting text
+	provides = micro
+	conflicts = micro-bin
 	conflicts = micro
+	conflicts = micro-nightly-bin
 	source = micro-git::git+https://github.com/zyedidia/micro.git
 	md5sums = SKIP
 
