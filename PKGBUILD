@@ -4,8 +4,8 @@
 # Contributor: Veli-Jussi Raitila <vjr AT iki DOT fi>
 
 pkgname=python-pysrt
-pkgver=1.1.1
-pkgrel=5
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Python parser for SubRip (srt) files"
 arch=('any')
 url="https://github.com/byroot/pysrt"
@@ -15,7 +15,7 @@ optdepends=('python-setuptools: for srt script')
 makedepends=('python-setuptools')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/byroot/pysrt/archive/v$pkgver.tar.gz")
-sha512sums=('91f4eb3b76aeb9eb3a9f6fa8c2a524c8e63b43adb5bd7424f4de7bef2f167967b7de9615eca28905516764f060cb04faae40f59964f5933ff78e6f4b8a7648ca')
+sha512sums=('0d6b3a7ce4c8733221bfb5c3e434233d1b221fedda3c145fafe124093f1f9090b99c175e79de386717ec5f8b564c62719f377651db95a8d3c382e2bf8dccb0a8')
 
 build() {
   cd pysrt-$pkgver
