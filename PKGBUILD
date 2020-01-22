@@ -2,7 +2,7 @@
 
 _gitname=htop
 _githubuser=lytedev
-_gitrepo=https://github.com/$githubuser/$gitname
+_gitrepo=https://github.com/$_githubuser/$_gitname
 _gitbranch=daniel/add-simple-vim-mode
 _gitcommit=9ed47a2
 _gitcommitcount=1081
@@ -12,15 +12,15 @@ pkgver=1081.9ed47a2
 pkgrel=1
 pkgdesc="lytedev's fork of the process monitor with a vim_mode setting"
 arch=('x86_64')
-url=$_gitrepo
+url="git+$_gitrepo.git"
 license=('GPL2')
 depends=('ncurses')
 makedepends=('git' 'python')
 optdepends=('lsof: list open files for running process'
 	'strace: attach to running process')
-provides=('htop')
-conflicts=('htop')
-source=("git+https://github.com/lytedev/${_gitname}.git#branch=${_gitbranch}")
+provides=("${_gitname}")
+conflicts=("${_gitname}")
+source=("${url}#branch=${_gitbranch}")
 sha256sums=('SKIP')
 
 pkgver() {
