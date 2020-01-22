@@ -1,7 +1,7 @@
 pkgbase = cov-analysis
 	pkgdesc = Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD
 	pkgver = 2019.03
-	pkgrel = 2
+	pkgrel = 3
 	url = https://scan.coverity.com/download
 	arch = i686
 	arch = x86_64

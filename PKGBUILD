@@ -2,7 +2,7 @@
 
 pkgname=cov-analysis
 pkgver=2019.03
-pkgrel=2
+pkgrel=3
 pkgdesc='Coverity Scan Build Tool for C/C++ - REQUIRES MANUAL DOWNLOAD'
 url='https://scan.coverity.com/download'
 arch=('i686' 'x86_64')
@@ -23,11 +23,11 @@ package() {
   msg2 "Extracting $tar with bsdtar"
   install -dm755 "$pkgdir/opt/$pkgname"
   cd "$pkgdir/opt/$pkgname"
-  bsdtar --strip-components=2 -xf "$srcdir/$tar"
+  bsdtar --strip-components=1 -xf "$srcdir/$tar"
   chown root: -R "$pkgdir/opt/$pkgname/"
 
   cd "$srcdir"
   install -dm755 "$pkgdir/etc/profile.d"
-  sed "s#@PATH@#/opt/$pkgname/#" "$pkgname.sh" > "$pkgdir/etc/profile.d/$pkgname.sh"
-  chmod 755 "$pkgdir/etc/profile.d/$pkgname.sh"
+  sed "s#@PATH@#/opt/$pkgname/bin#g" "$pkgname.sh" > "$pkgdir/etc/profile.d/$pkgname.sh"
+  chmod 644 "$pkgdir/etc/profile.d/$pkgname.sh"
 }
