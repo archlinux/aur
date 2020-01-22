@@ -3,17 +3,19 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=obs-build
-pkgver=2.5.0
-pkgrel=2
+pkgver=20200122
+_pkgname=$pkgver
+pkgrel=1
 pkgdesc="Building part of the OpenSUSE Build Service, osc-build"
 url="http://build.opensuse.org"
+url="https://github.com/openSUSE/obs-build"
 arch=(any)
 license=("GPL")
 depends=(bash perl rpmextract xz)
-source=("https://github.com/openSUSE/$pkgname/archive/obs_${pkgver}.tar.gz")
-sha256sums=('98b6fe50367805e588c05ae47d78da576a753c5cc32861c99e559dcef79ef328')
+source=("https://github.com/openSUSE/$pkgname/archive/${pkgver}.tar.gz")
+sha256sums=('b7dc00e0fd7579b917d1ebfef372a99af69b46e064cbefc3cb99ab88f820f59e')
 
 package() {
-  cd "$srcdir/$pkgname-obs_${pkgver}"
+  cd "$srcdir/$pkgname-${pkgver}"
   make install DESTDIR="$pkgdir"
 }
