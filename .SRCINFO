@@ -16,5 +16,5 @@ pkgbase = pak-config-yay
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = pak-config-yay
+pkgname = pak-config-yay-git
 
