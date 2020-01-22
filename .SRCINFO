@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-paraview-git
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
-	pkgver = r72391.e3ce24c1d3
+	pkgver = r72716.cd3aea28f8
 	pkgrel = 1
 	url = http://www.paraview.org
 	arch = any
@@ -28,6 +28,7 @@ pkgbase = mingw-w64-paraview-git
 	depends = mingw-w64-double-conversion
 	depends = mingw-w64-protobuf
 	depends = mingw-w64-pugixml
+	depends = mingw-w64-libtheora
 	provides = mingw-w64-paraview
 	conflicts = mingw-w64-paraview
 	options = !buildflags
