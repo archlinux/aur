@@ -6,12 +6,12 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _pkgname=browser-f
-pkgver=1.32.0
+pkgver=1.32.1
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
 #_cqzbuildid=20190507112044
-pkgdesc="Firefox-based privacy aware web browser, build from sources"
+pkgdesc="Firefox-based privacy aware web browser, built from sources"
 arch=(i686 x86_64)
 url="https://cliqz.com/"
 license=(MPL2)
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=573f01ecdb53dc1add3b4b68a8e5a4113896e304')
-sha256sums=('0830c37775590c27377b9b9218265d06ad943f6a6020769fd5f1fac16e66ea96'
+sha256sums=('ec69008726e60af40a86026a2252c09996770efe502279ead4f0512c5231c4ce'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c')
 options=(!emptydirs !makeflags !strip)
 
