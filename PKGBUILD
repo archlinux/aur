@@ -1,7 +1,7 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 pkgname=cairo-glesv2-armv7l
 pkgver=1.17.2
-arch=(armv7l)
+arch=(armv7l armv7h)
 pkgrel=1
 pkgdesc='Cairo vector graphics library (glesv2 version)'
 url='http://cairographics.org/'
