@@ -1,6 +1,6 @@
 pkgbase = buildstuff
 	pkgdesc = Stuff to build packages in virtual machines
-	pkgver = 1.9
+	pkgver = 2.1
 	pkgrel = 1
 	url = http://arch.vesath.org/
 	arch = any
