@@ -9,7 +9,7 @@ pkgbase = cloudcross
 	depends = curl
 	replaces = grive2
 	source = cloudcross-1.4.6::https://github.com/MasterSoft24/CloudCross/archive/v1.4.6.tar.gz
-	md5sums = 0ba5e449777e0b72d7bf7bf992978318
+	md5sums = d9717020511182a4d03410ce9b095291
 
 pkgname = cloudcross
 

@@ -11,7 +11,7 @@ categories=('network')
 replaces=('grive2')
 depends=( 'qt5-base' 'curl')
 source=("$pkgname-$pkgver::https://github.com/MasterSoft24/CloudCross/archive/v$pkgver.tar.gz")
-md5sums=('0ba5e449777e0b72d7bf7bf992978318')
+md5sums=('d9717020511182a4d03410ce9b095291')
 
 build() {
 	cd CloudCross-$pkgver
