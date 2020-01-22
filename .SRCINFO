@@ -1,6 +1,6 @@
 pkgbase = lmms-git
 	pkgdesc = The Linux MultiMedia Studio.
-	pkgver = 1.2.0.r3.g3ada5b8a1
+	pkgver = 1.2.1.63d11f7
 	pkgrel = 1
 	url = https://lmms.io
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = lmms-git
 	makedepends = ladspa
 	makedepends = qt5-tools
 	makedepends = wine
+	makedepends = perl-list-moreutils
+	makedepends = perl-xml-parser
 	depends = fftw
 	depends = fltk
 	depends = fluidsynth
