@@ -1,6 +1,6 @@
 pkgbase = reuse
 	pkgdesc = Helper tool for providing and confirming copyright and licensing information
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://git.fsfe.org/reuse/tool
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = reuse
 	depends = python-binaryornot
 	depends = python-boolean.py
 	depends = python-license-expression
-	source = reuse-0.7.0.tar.gz::https://git.fsfe.org/reuse/tool/archive/v0.7.0.tar.gz
-	sha256sums = 5156166879d32df30ae631a47bdf9e4de9b2ae075dd331c46b4786d834f55e14
+	source = reuse-0.8.0.tar.gz::https://git.fsfe.org/reuse/tool/archive/v0.8.0.tar.gz
+	sha256sums = bd3e794a848febf0ca30e0d2467144e86fd56109424ff5b3a6ec1c34c57aafa3
 
 pkgname = reuse
 
