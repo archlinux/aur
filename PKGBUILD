@@ -1,5 +1,5 @@
 pkgname=fast-p
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('fzf')
 makedepends=('go-pie' 'git')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('87e34e6b4bee5e20247e997b19c0d8c08dd6f35a6c0dd4b507224d6790e2b071')
+sha256sums=('ccd0a4630433a0ed000278f93c15300fd8bf47e612967568d824ad4ab23fb3ac')
 
 gopkg="gopath/src/$repo"
 
