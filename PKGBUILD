@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
-# Contributor: neverix <nev@ ateverix dot io>
+# Contributor: neverix <nev at ateverix dot io>
+# Contributor: Stepan Shabalin <stomperhomp at gmail dot com>
 pkgname=yin-yang-git
-pkgver=v1.0.beta.r15.g50dbd1e
+pkgver=1.0.beta.r15.g50dbd1e
 pkgrel=1
 pkgdesc="Auto Nightmode for KDE, Gnome, Budgie, VSCode, Atom and more"
 arch=('any')
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
