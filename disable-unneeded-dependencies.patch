@@ -1,0 +1,19 @@
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index 7a219fc..cfe0c53 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -1,14 +1,5 @@
+ require 'rubygems'
+ require 'httpclient'
+-unless RUBY_PLATFORM =~ /java/
+-  require 'curb'
+-  require 'patron'
+-  require 'em-http'
+-  require 'typhoeus'
+-end
+-if RUBY_PLATFORM =~ /java/
+-  require 'manticore'
+-end
+ 
+ $LOAD_PATH.unshift(File.dirname(__FILE__))
+ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
