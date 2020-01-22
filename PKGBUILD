@@ -3,7 +3,7 @@
 _name=itertools-len
 pkgname=python-$_name
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper around the stdlib’ itertools with len() support'
 arch=('any')
 url="https://github.com/flying-sheep/$_name"
@@ -18,4 +18,6 @@ package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
+	#fix permissions
+	find "$site" -type f -exec chmod 644 {} \;
 }

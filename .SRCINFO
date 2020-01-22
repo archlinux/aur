@@ -1,7 +1,7 @@
 pkgbase = python-itertools-len
 	pkgdesc = Wrapper around the stdlib’ itertools with len() support
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flying-sheep/itertools-len
 	arch = any
 	license = GPL3
