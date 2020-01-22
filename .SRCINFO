@@ -1,0 +1,19 @@
+pkgbase = indent-git
+	pkgdesc = C language source code formatting program
+	pkgver = 2.2.12.r4.g14313ae
+	pkgrel = 1
+	url = https://www.gnu.org/software/indent/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gperf
+	makedepends = texi2html
+	depends = glibc
+	provides = indent
+	conflicts = indent
+	source = git+https://git.savannah.gnu.org/git/indent.git
+	sha256sums = SKIP
+
+pkgname = indent-git
+
