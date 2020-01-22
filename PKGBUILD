@@ -11,6 +11,7 @@ depends=('java-environment')
 source=("${pkgname}.sh")
 sha256sums=('a36e738b4eae818cbc2c6ace3cae8a075c7e6f5d282c059397441e91208c8e97')
 makedepends=('libarchive')
+options=('!strip')
 
 source_i686=(  "cov-analysis-linux-${pkgver}.tar.gz")
 source_x86_64=("cov-analysis-linux64-${pkgver}.tar.gz")
