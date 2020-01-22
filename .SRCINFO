@@ -1,18 +1,18 @@
-pkgbase = winmbf-git
+pkgbase = woof-git
 	pkgdesc = Doom port remaining faithful to Lee Killough’s MBF on DOS
-	pkgver = r96.8bdbefc
+	pkgver = r121.ffef698
 	pkgrel = 1
-	url = https://github.com/fabiangreffrath/WinMBF
+	url = https://github.com/fabiangreffrath/woof
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = sdl2
 	depends = sdl2_net
 	depends = sdl2_mixer
-	provides = winmbf
-	conflicts = winmbf
-	source = winmbf::git+https://github.com/fabiangreffrath/WinMBF.git
+	provides = woof
+	conflicts = woof
+	source = woof::git+https://github.com/fabiangreffrath/woof.git
 	sha512sums = SKIP
 
-pkgname = winmbf-git
+pkgname = woof-git
 
