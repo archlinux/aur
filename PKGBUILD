@@ -31,7 +31,7 @@ prepare() {
 }
 
 check(){
-  cd ${_pkgname}-${pkgver}/test
+  cd ${_pkgname}/test
   python run_tests.py
 }
 
