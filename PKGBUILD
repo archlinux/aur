@@ -1,7 +1,7 @@
-# Maintainer: eolianoe <eolianoe [at] gmail [DoT] com>
+# Maintainer: c0gnitivefl0w
 
 pkgname=seadrive-daemon
-pkgver=1.0.0
+pkgver=1.0.9
 pkgrel=0
 pkgdesc="Daemon part of seadrive"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('libsearpc' 'libcurl-compat' 'libevent-compat'
          'openssl-1.0' 'fuse2')
 source=('seadrive'
         "https://deb.seadrive.org/jessie/pool/main/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('2e9e171daeee5013d5fcbb86160a9ea195a8bb8eb0b181c3b9cfdbf611a68a6e'
-            '3491f666ccf4b8441a508d18961d4257b10bf7578837c38223abf58f1f7bcb26')
+sha256sums=('25770d58f6e262a29e54a065ccf5e2d138ec5ec2aecaafa12fe2f6fe4ca256fb'
+            '2fe4bba4217423180b6085e35b4c0a81bd344d1413b87006fd35407a22e9723c')
 
 prepare() {
   cd "${srcdir}"
