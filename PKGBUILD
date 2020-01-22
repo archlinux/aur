@@ -16,6 +16,6 @@ sha256sums=('81f7ce0aec1a8dbd8044753a0f786c25f1881a8c33068da0e05784ea083ff17a')
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" "$_npmname@$pkgver"
+  npm install -g --prefix "$pkgdir/usr" "$_npmname-$pkgver.tgz"
 }
 # vim:set ts=2 sw=2 et:
