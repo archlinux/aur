@@ -1,0 +1,29 @@
+pkgbase = qomui-git
+	pkgdesc = Qt OpenVPN Management UI
+	pkgver = 0.8.2.r22.23650ab
+	pkgrel = 1
+	url = https://github.com/corrad1nho/qomui
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-dbus
+	depends = openvpn
+	depends = stunnel
+	depends = bind-tools
+	depends = dnsmasq
+	depends = python-psutil
+	depends = python-requests
+	depends = python-lxml
+	depends = python-beautifulsoup4
+	depends = python-pexpect
+	depends = libcgroup
+	depends = wireguard-tools
+	depends = python-cryptography
+	provides = qomui
+	conflicts = qomui
+	source = git+https://github.com/corrad1nho/qomui.git
+	sha256sums = SKIP
+
+pkgname = qomui-git
+
