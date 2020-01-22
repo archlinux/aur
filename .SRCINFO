@@ -1,0 +1,14 @@
+pkgbase = cronolog-git
+	pkgdesc = A log rotation utility
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/WayneD/cronolog
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	source = git+https://github.com/WayneD/cronolog.git
+	md5sums = SKIP
+
+pkgname = cronolog-git
+
