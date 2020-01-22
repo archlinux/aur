@@ -2,8 +2,8 @@
 
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git' 'gcc-fortran-multilib-git')
-pkgver=10.0.0.r168607.ee5dc49a579
-_pkgver_base=10.0.0
+pkgver=10.0.1.r174197.95a5c0336e18
+_pkgver_base=10.0.1
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
@@ -12,7 +12,7 @@ url="http://gcc.gnu.org"
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen' 'lib32-glibc>=2.20' 'git')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=('git+git://gcc.gnu.org/git/gcc.git#branch=trunk')
+source=('git+git://gcc.gnu.org/git/gcc.git#branch=master')
 md5sums=('SKIP')
 
 _basedir="gcc"
