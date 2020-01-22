@@ -1,0 +1,36 @@
+pkgbase = vscodium-bin-multiarch
+	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
+	pkgver = 1.41.1
+	pkgrel = 3
+	url = https://github.com/VSCodium/vscodium
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = fontconfig
+	depends = libxtst
+	depends = gtk3
+	depends = python
+	depends = cairo
+	depends = alsa-lib
+	depends = nss
+	depends = gcc-libs
+	depends = libnotify
+	depends = libxss
+	depends = glibc>=2.28-4
+	optdepends = gvfs: For move to trash functionality
+	optdepends = libdbusmenu-glib: For KDE global menu
+	provides = code
+	conflicts = code
+	noextract = vscodium-bin-multiarch-1.41.1-3-x86_64.tar.gz
+	source = vscodium-bin.desktop
+	sha256sums = 5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86
+	source_x86_64 = vscodium-bin-multiarch-1.41.1-3-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-x64-1.41.1.tar.gz
+	sha256sums_x86_64 = 3d50cedad289730301ddbb6cc5f754753e3fc58b0c812da5390b2871c0639c58
+	source_aarch64 = vscodium-bin-multiarch-1.41.1-3-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-arm64-1.41.1.tar.gz
+	sha256sums_aarch64 = 851cc32a8b71efd6dacb864c2dfb8216eef3880c8dd9ec6998d12dbb69566319
+	source_armv7h = vscodium-bin-multiarch-1.41.1-3-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-arm-1.41.1.tar.gz
+	sha256sums_armv7h = b13f911314d9523e75d0a9f0ee84dbcbe7d883e26aab1811776cd6643da64585
+
+pkgname = vscodium-bin-multiarch
+
