@@ -3,12 +3,12 @@
 _gemname='rspec-its'
 pkgname="ruby-${_gemname}"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='RSpec extension gem for attribute matching'
 arch=('any')
 url='https://github.com/rspec/rspec-its'
 license=('MIT')
-makedepends=('ruby-rdoc' 'ruby-bundler')
+makedepends=('ruby-rdoc')
 checkdepends=('ruby-rake' 'ruby-minitest' 'ruby-test-unit')
 depends=('ruby' 'ruby-rspec')
 options=(!emptydirs)
@@ -19,12 +19,20 @@ sha512sums=('97be9ba1f46db44a3d60676056d5ad66ee84585ff133ffaf25c42fc1e899c33d984
 
 prepare() {
   cd "${srcdir}/${_gemname}-${pkgver}"
-  sed --in-place 's|git ls-files|find|' "${_gemname}.gemspec"
+
+  # we build with a tar archive, so `git` won't work
+  sed --in-place 's|`git ls-files`.split($/)|`find`.split("\\n")|' "${_gemname}.gemspec"
+
+  # disable unneeded dependencies
   patch --forward --verbose --strip=1 --input='../disable-cucumber.patch'
+  sed --in-place '/.*dependency.*cucumber/d' "${_gemname}.gemspec"
+  sed --in-place '/aruba/d' "${_gemname}.gemspec"
+  sed --in-place '/bundler/d' "${_gemname}.gemspec"
 }
 
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"
+  cat "${_gemname}.gemspec"
   gem build "${_gemname}.gemspec"
 }
 

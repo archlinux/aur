@@ -1,7 +1,7 @@
 pkgbase = ruby-rspec-its
 	pkgdesc = RSpec extension gem for attribute matching
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rspec/rspec-its
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = ruby-rspec-its
 	checkdepends = ruby-minitest
 	checkdepends = ruby-test-unit
 	makedepends = ruby-rdoc
-	makedepends = ruby-bundler
 	depends = ruby
 	depends = ruby-rspec
 	options = !emptydirs
