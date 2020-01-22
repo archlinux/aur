@@ -1,7 +1,7 @@
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
 _pkgname=talk-cli
 pkgname=${_pkgname}-git
-pkgver=0.1.1.r2.g02f058a
+pkgver=0.2.0.r0.gcb7072c
 pkgrel=1
 pkgdesc="A command line interface for using Nextcloud Talk."
 arch=('i686' 'x86_64')

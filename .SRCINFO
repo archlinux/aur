@@ -1,6 +1,6 @@
 pkgbase = talk-cli-git
 	pkgdesc = A command line interface for using Nextcloud Talk.
-	pkgver = 0.1.1.r2.g02f058a
+	pkgver = 0.2.0.r0.gcb7072c
 	pkgrel = 1
 	url = https://gitlab.com/severinkaderli/talk-cli
 	arch = i686
