@@ -31,7 +31,7 @@ package() {
     cd "pueue-${pkgver}"
 
     # Place systemd user service
-    install -Dm644 "utils/pueued@.service" "${pkgdir}/usr/lib/systemd/user/pueued@.service"
+    install -Dm644 "utils/pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
 
     # Install zsh completions file
     # Zsh is broken for now
