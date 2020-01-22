@@ -1,15 +1,15 @@
 pkgbase = run-git
-	pkgdesc = Easily manage and invoke small scripts and wrappers
-	pkgver = r45.14598e7
-	pkgrel = 1
-	url = https://github.com/TekWizely/run
-	arch = i686
-	arch = x86_64
-	license = MIT
-	makedepends = go
-	makedepends = git
-	source = git+https://github.com/TekWizely/run.git
-	sha256sums = SKIP
+        pkgdesc = Easily manage and invoke small scripts and wrappers
+        pkgver = v0.7.0.r8.g0d33f74
+        pkgrel = 1
+        url = https://github.com/TekWizely/run
+        arch = i686
+        arch = x86_64
+        license = MIT
+        makedepends = go
+        makedepends = git
+        provides = run
+        source = git+https://github.com/TekWizely/run.git
+        sha256sums = SKIP
 
 pkgname = run-git
-
