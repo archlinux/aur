@@ -1,12 +1,13 @@
 # Maintainer: Severin Kaderli <severin@kaderli.dev>
 _pkgname=talk-cli
 pkgname=${_pkgname}-git
-pkgver=0.0.9.r0.g64530cc
+pkgver=0.1.1.r2.g02f058a
 pkgrel=1
 pkgdesc="A command line interface for using Nextcloud Talk."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/severinkaderli/talk-cli"
 license=('MIT')
+depends=('openssl')
 makedepends=('cargo' 'git')
 conflicts=('talk-cli')
 source=('git+https://gitlab.com/severinkaderli/talk-cli')
@@ -19,7 +20,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    cargo build --release --locked
+    cargo build --release --locked --all-features
 }
 
 package() {
@@ -32,4 +33,6 @@ package() {
     install -Dm644 "target/completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/completions/${_pkgname}.fish"
     
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
