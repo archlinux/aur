@@ -1,6 +1,6 @@
 pkgbase = qv2ray-dev-git
-	pkgdesc = Qt cross platform v2ray GUI client (Dev branch build release)
-	pkgver = 1.99.5.rf1ddc98
+	pkgdesc = Cross-platform V2ray Client written in Qt (Development Release)
+	pkgver = 1.99.6.3044+bridge
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -12,15 +12,28 @@ pkgbase = qv2ray-dev-git
 	makedepends = which
 	makedepends = gcc
 	makedepends = qt5-declarative
+	makedepends = go
 	depends = hicolor-icon-theme
+	depends = qt5-charts>5.11.0
 	depends = grpc
-	depends = qt5-charts
-	optdepends = v2ray
-	optdepends = v2ray-domain-list-community
-	optdepends = v2ray-geoip
+	depends = v2ray
+	depends = v2ray-domain-list-community
+	depends = v2ray-geoip
 	provides = qv2ray
 	conflicts = qv2ray
-	source = qv2ray-dev-git::git+https://github.com/Qv2ray/Qv2ray#branch=dev
+	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=dev
+	source = QNodeEditor::git+https://github.com/lhy0403/QNodeEditor
+	source = SingleApplication::git+https://github.com/itay-grudev/SingleApplication
+	source = x2struct::git+https://github.com/xyz347/x2struct
+	source = qzxing::git+https://github.com/ftylitak/qzxing
+	source = qhttpserver::git+https://github.com/nikhilm/qhttpserver
+	source = QvRPCBridge::git+https://github.com/Qv2ray/QvRPCBridge
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = qv2ray-dev-git
