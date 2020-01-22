@@ -1,3 +1,5 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: librewish <librewish at gmail dot com>
 pkgname=qomui-git
 pkgver=0.8.2.r22.23650ab
 pkgrel=1
@@ -33,4 +35,3 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
-
