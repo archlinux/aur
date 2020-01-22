@@ -1,26 +1,26 @@
-# Maintainer: Alexandre Petitjean <alpetitjean at gmail dot com>
+# Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
+# Contributor: Alexandre Petitjean <alpetitjean at gmail dot com>
 
 pkgname=mopidy-spotify
-pkgver=3.1.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from Spotify"
 arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
 depends=(
-    'mopidy>=2'
-    'python2-pykka>=1.1'
-    'python2-pyspotify>=2'
-    'python2-setuptools'
-    'python2-requests>=2')
-makedepends=('python2')
-provides=('mopidy-spotify')
-source=("https://github.com/mopidy/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('2fa4827b72c627b9d10ee10a5e5d7961')
+  'mopidy>=3'
+  python-pykka
+  python-pyspotify
+  python-setuptools
+  python-requests
+)
+source=(
+  "$pkgname-$pkgver.tar.gz::https://github.com/mopidy/$pkgname/archive/v$pkgver.tar.gz"
+)
+sha256sums=('8e90d9a18958145ef55fcd56f5f8f958e2a93d5b7451189e1ab9445000ca88a9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python3 setup.py install --root="$pkgdir/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
