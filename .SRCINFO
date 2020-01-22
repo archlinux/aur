@@ -7,6 +7,7 @@ pkgbase = pak-config-pacman
 	license = GPL3
 	depends = pacman
 	depends = pak
+	depends = swift-language
 	provides = pak-config
 	provides = pacwrap
 	conflicts = pak-config-yay
