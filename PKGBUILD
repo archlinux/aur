@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=parlatype
-pkgver=1.6
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="GNOME audio player for transcription"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('gtk3' 'appstream' 'gst-plugins-base' 'gst-plugins-good' 'sphinxbase' '
 makedepends=('libreoffice' 'appstream-glib' 'meson' 'yelp-tools')
 optdepends=('libreoffice: LibreOffice macros' 'gst-plugins-ugly: Play MP3 files')
 source=("https://github.com/gkarsay/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8150aab04988b6966863f8c42fbab7a8d096b52c859929a819b19ef307f878b9')
+sha256sums=('3362faffcee2bcec71ef2eb20362ade475983d3e89c20e7076ad10ddf7dace73')
 
 build() {
 	cd "$pkgname-$pkgver"
