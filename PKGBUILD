@@ -1,7 +1,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=ofono
-pkgver=1.28
+pkgver=1.31
 pkgrel=1
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
 url="https://01.org/ofono"
@@ -9,11 +9,11 @@ arch=("x86_64")
 license=("GPL2")
 depends=("bluez" "dbus" "modemmanager" "glib2" "udev" "mobile-broadband-provider-info")
 source=(
-	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.xz"
-	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.sign"
+	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.xz"
+	"https://www.kernel.org/pub/linux/network/ofono/$pkgname-$pkgver.tar.sign"
 )
 sha256sums=(
-	"93bb2cedef54f897dd5200e22b072a6e38b5d9b44be57eebbbe8d513f0beb0e4"
+	"a15c5d28096c10eb30e47a68b6dc2e7c4a5a99d7f4cfedf0b69624f33d859e9b"
 	"SKIP"
 )
 validpgpkeys=(
