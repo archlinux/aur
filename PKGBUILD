@@ -7,7 +7,7 @@ pkgname=(
     'performance-tweaks'
     )
 pkgver=r2.4ebcef5
-pkgrel=1
+pkgrel=2
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/performance-tweaks"
@@ -52,6 +52,7 @@ package_performance-tweaks() {
         'systemd-swap'
         'nohang-git'
 	'ananicy-git'
+	'x86_energy_perf_policy'
         )
     optdepends=(
         'timeshift-autosnap: for snapshots bfore pacman upgrade'
