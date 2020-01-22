@@ -1,6 +1,6 @@
 pkgname=woof-git
 pkgver=r121.ffef698
-pkgrel=1
+pkgrel=2
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
@@ -35,4 +35,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	make DESTDIR="$pkgdir/" install
+	install -Dm644 -t "$pkgdir/usr/share/applications" data/woof.desktop
+	install -Dm644 -t "$pkgdir/usr/share/icons" data/woof.png
 }
