@@ -1,6 +1,6 @@
 pkgbase = python-pyspotify
 	pkgdesc = A Python Spotify library
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = http://pyspotify.mopidy.com/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-pyspotify
 	depends = python-setuptools
 	conflicts = pyspotify-git
 	conflicts = pyspotify
-	source = https://github.com/mopidy/pyspotify/archive/v2.1.2.tar.gz
-	md5sums = 43182d7c38f83df9ad0bf3bf0c88cdb2
+	source = https://github.com/mopidy/pyspotify/archive/v2.1.3.tar.gz
+	md5sums = 2594290cd6d0ec0f7d76ddf94bef32ac
 
 pkgname = python-pyspotify
 
