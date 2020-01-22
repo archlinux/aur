@@ -25,6 +25,7 @@ package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cd "${pkgdir}/opt/${pkgname}"
   bsdtar --strip-components=2 -xf "${srcdir}/${_tarball}"
+  chown root: -R "${pkgdir}/opt/${pkgname}/"
 
   cd "${srcdir}"
   install -dm755 "${pkgdir}/etc/profile.d"
