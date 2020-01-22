@@ -4,7 +4,7 @@
 
 pkgname=vscodium-bin-multiarch
 pkgver=1.41.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
@@ -18,7 +18,7 @@ optdepends=(
         'libdbusmenu-glib: For KDE global menu'
 )
 provides=('code')
-conflicts=('code')
+conflicts=('code' 'vscodium-bin')
 source=(vscodium-bin.desktop)
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-x64-${pkgver}.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm64-${pkgver}.tar.gz")
