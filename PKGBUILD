@@ -1,16 +1,16 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('lib32-gamemode')
 _pkgname=('gamemode')
-pkgver=1.4
+pkgver=1.5
 pkgrel=3
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS"
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode.git"
 license=('BSD 3-Clause License (Revised)')
-depends=('gamemode' 'lib32-glibc')
+depends=('gamemode' 'lib32-glibc' 'lib32-dbus')
 makedepends=('meson' 'ninja' 'pkg-config' 'lib32-systemd')
 source=("https://github.com/FeralInteractive/gamemode/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha256sums=('e83f07dc91bbd27d1faadd69f7fda899810001e2a256be8061e36dee0e858f4a')
+sha256sums=('262389e0a625670c5f53f89d0c30a28cd5f9569a8e6b012dccf78b7fdcb98408')
 
 build() {
   export CFLAGS=-m32
