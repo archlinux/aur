@@ -1,7 +1,7 @@
 # Maintainer: Joseph Lansdowne <J49137@gmail.com>
 _pkgname=pyepgdb
 pkgname=python-$_pkgname
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Python 3 library for parsing Tvheadend epgdb files"
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD)
 makedepends=(python-setuptools)
 depends=("python>=3.4")
 source=(http://ikn.org.uk/files/library/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha1sums=('83fade99698e504f7edadb918d23c0b5a7d6a0c4')
+sha1sums=('bbbc760f34ad178a327d1c09d19c6f0adc573f1f')
 
 build () {
     cd "$srcdir/${_pkgname}-$pkgver"
