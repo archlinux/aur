@@ -1,6 +1,6 @@
 pkgname=kdocker
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An application to help you dock any application into the system tray"
 arch=('i686' 'x86_64')
 url="https://github.com/user-none/KDocker"
@@ -11,6 +11,8 @@ sha256sums=('ffcb11ac0cf50ae80a35e000b7a7470259e624511d1281579386a9cb68935cba')
 
 build() {
     cd "$srcdir/KDocker-$pkgver"
+
+    patch --forward --strip=1 --input="../../qt_514_build_fix.patch" src/trayitem.h
 
     qmake-qt5
     make
