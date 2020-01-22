@@ -17,14 +17,12 @@ source_x86_64=("cov-analysis-linux64-${pkgver}.tar.gz")
 sha256sums_i686=('a0e6c35db1effbbc33194f5aa8db63619911306314ce29c278a0bec2002038ed')
 sha256sums_x86_64=('0a633114ed0d702d03bc7638721a2b412b10b9f8b79575a894e4d637c52f816c')
 
-[ "$CARCH" = 'i686'   ] && _tarball="${source_i686}"
-[ "$CARCH" = 'x86_64' ] && _tarball="${source_x86_64}"
-noextract=("${_tarball}")
-
 package() {
+  tar=$(echo *.tar)
+  msg2 "Extracting $tar with bsdtar"
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cd "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components=2 -xf "${srcdir}/${_tarball}"
+  bsdtar --strip-components=2 -xf "${srcdir}/$tar"
   chown root: -R "${pkgdir}/opt/${pkgname}/"
 
   cd "${srcdir}"
