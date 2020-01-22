@@ -1,6 +1,86 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.3...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.4...HEAD)
+
+
+<a name="2.2.4"></a>
+## [2.2.4](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.3) (2020-01-22)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.3...2.2.4)
+
+### Bug Fixes
+- adjust brightness of sun glow, add empty release instructions file 
+- macos shader and sprite batch crashes 
+- libgdx scene2d ui Window snaps to integer pixel positions resulting in text rendering artifacts 
+- assets location when running from source and no properties found 
+- dataset highlighting API calls improved, add test scripts for a few use cases 
+- screenshot/frame advanced mode messes viewport. Fixes [#319](https://gitlab.com/langurmonkey/gaiasky/issues/319) [#319](https://gitlab.com/langurmonkey/gaiasky/issues/319) 
+- properties file version not found. Fixes [#317](https://gitlab.com/langurmonkey/gaiasky/issues/317) [#317](https://gitlab.com/langurmonkey/gaiasky/issues/317) 
+- fullscreen mode before initialization, cursor in slaves 
+- stop the rest server the right way 
+- correct perspective of labels in cubemap modes 
+- master-slave connection messed up by scripting engine 
+- fisheye setting persisted 
+- do not replace backslaches with forward slashes 
+- use fixed keyword for scene graph loader, improve internal catalog path handling 
+- typo - geenden -> beenden 
+- do not apply fog to normal shaders [#312](https://gitlab.com/langurmonkey/gaiasky/issues/312) 
+- default constructor for NBG 
+- milky way adapts to fov changes 
+- toggle buttons for dome, cubemap and stereo 
+- notifications interface background in stereo mode 
+- additive gpu VBOs 
+
+### Build System
+- fix install4j crash, sort out tar.gz md5, update changelog 
+- update changelog, changelog template and scripts 
+- allow more than one instance with the .exe file 
+- update to lwjgl 3.2.3, deprecated annotations 
+- update gradle version to 6.0.1 
+- to openjdk 11 
+- update CI java image to 11 
+- code analyzer, gradle update, build file runners 
+- update checks to java 11 
+- disable motion blur by default 
+
+### Code Refactoring
+- reorganize things for multiple windows 
+
+### Documentation
+- update reference 
+- update docs ref and minor changes 
+- add open iconic to acknowledgements 
+
+### Features
+- replace logo images by ttf text 
+- add cyrillic characters for russian translation 
+- add line width factor to conf and UI controls 
+- edit timedate button is text icon button 
+- new compact sliders 
+- finish blend map implementation for multiple-projector blend support 
+- add slave configuration and status window (S+L+V) to master instances 
+- configure slave instances live 
+- proper image warping for MPCDI support 
+- geometry warp and blend shader, improve reverse mapping 
+- configure slave instance using gaia sky configuration file 
+- add MPCDI parsing and orientation 
+- dataset highlight size factor API call 
+- active planetarium mode uses cubemap method 
+- add fisheye projection to cubemap mode 
+- remember last tab in preferences window 
+- update old preferences window icons 
+- replaced external UI window with external scene view 
+- half-functioning separate UI controls window 
+- add experimental separate UI window (not working yet) 
+- minimap size controls and tooltips 
+- add CTRL+PLUS/MINUS to increase/decrease the FOV 
+- add VR icon 
+- maintain a 1:1 aspect ratio for the fisheye/planetarium effect 
+- adjust mw parameters 
+- add support for per-object primitive in GPU arrays, improved earth-venus-dance script 
+- new API call to convert equatorial cartesian to internal cartesian with unit conversion factor 
+
+### Performance Improvements
+- improve performance of api call method/parameter matching 
 
 
 <a name="2.2.3"></a>
@@ -8,19 +88,19 @@
 [Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.2...2.2.3)
 
 ### Bug Fixes
-
 - last-minute fix 
 - improve user notification if wrong java version is used 
 - windows data loading crash -> [#308](https://gitlab.com/langurmonkey/gaiasky/issues/308) 
+
 ### Build System
-
 - add some extra translations for Catalan, German and Spanish 
-### Features
 
+### Features
 - update gaia sky icon with more modern version 
 - add more handy information in download manager 
 - add cancel download button to manager 
 - add support for release notes in download manager 
+
 
 <a name="2.2.2"></a>
 ## [2.2.2](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.1) (2019-10-31)
@@ -52,21 +132,25 @@
 - crash resizing window when loading scene graph 
 - add screen size check before persist 
 - java version string without minor or revision [#302](https://gitlab.com/langurmonkey/gaiasky/issues/302) 
+
 ### Build System
 
 - improve crash reporting by also outputting the log 
 - update source version number to 020202 
 - update to gdx 1.9.10, gradle 5.6.2 
+
 ### Code Refactoring
 
 - motion blur shaders to work like the rest 
 - complete package renaming 
 - package rename, first commit 
 - relocate some functions to more suitable spots 
+
 ### Documentation
 
 - info on vr controls and whatnot 
 - clarify OpenComposite vs SteamVR for running with Oculus headsets 
+
 ### Features
 
 - minimaps finished with local group (1 and 2) and High-z 
@@ -120,15 +204,18 @@
 - cmd windows launch script actually works 
 - report scene graph loading errors ([#293](https://gitlab.com/langurmonkey/gaiasky/issues/293)) 
 - deb dependency, issue [#291](https://gitlab.com/langurmonkey/gaiasky/issues/291) 
+
 ### Build System
 
 - remove unused deps, update version number 
 - add VR launcher 
 - info on the new VR stuff 
+
 ### Code Refactoring
 
 - cleanup glsl log z-buffer library 
 - improve shader performance and readability (from vr) 
+
 ### Documentation
 
 - fix vr flag in readme 
@@ -137,6 +224,7 @@
 - update docs reference 
 - requirements table in readme 
 - update readme reqs and supported hw 
+
 ### Features
 
 - update logos and x2 UI scaling factor 
@@ -149,6 +237,8 @@
 - add top ui element with current time 
 - unify VR with desktop version 
 - migrate completely to adaptive-scale logarithmic z-buffer 
+
+
 <a name="2.2.0"></a>
 ## [2.2.0](https://gitlab.com/langurmonkey/gaiasky/tree/2.1.7-vr) (2019-08-01)
 [Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.1.7-vr...2.2.0)
