@@ -1,0 +1,16 @@
+pkgbase = pear-console-getopt
+	pkgdesc = an implementation of getopt supporting both short and long options.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = http://pear.php.net/package/Console_Getopt
+	arch = any
+	license = PHP
+	makedepends = php-pear
+	depends = php>=5.4.0
+	noextract = Console_Getopt-1.4.3.tgz
+	options = !strip
+	source = http://download.pear.php.net/package/Console_Getopt-1.4.3.tgz
+	sha256sums = 54bdfb7c2c958cbd7e1e8f1b964b95c3bfbf3b2779052523011b4ee49d7dfacd
+
+pkgname = pear-console-getopt
+
