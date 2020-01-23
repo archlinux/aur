@@ -1,4 +1,4 @@
-# Maintainer: Ivan Tiukov <ivan(at)tiukov(dot)com>
+# Maintainer: Ivan Tiukov <ivan@tiukov.com>
 
 pkgname=remotixqc
 pkgver=1.2.15
