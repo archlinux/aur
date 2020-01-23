@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-proj
-pkgver=6.2.1
+pkgver=6.3.0
 pkgrel=1
 arch=('any')
 pkgdesc="Cartographic Projections library (mingw-w64)"
@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 license=('MIT')
 url="https://proj.org/"
 source=("https://github.com/OSGeo/PROJ/releases/download/${pkgver}/proj-${pkgver}.tar.gz")
-sha256sums=('7f2e0fe63312f1e766057cceb53dc9585c4a335ff6641de45696dbd40d17c340')
+sha256sums=('68ce9ba0005d442c2c1d238a3b9bc6654c358159b4af467b91e8d5b407c79c77')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,7 +19,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p ${srcdir}/build-${_arch} && pushd ${srcdir}/build-${_arch}
     cp -rf "${srcdir}"/proj-${pkgver}/. ${srcdir}/build-${_arch}
-    ${_arch}-configure \
+    LIBS+=" -lssp" ${_arch}-configure \
       .
     make
     popd
