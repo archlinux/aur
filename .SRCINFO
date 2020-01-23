@@ -1,6 +1,6 @@
 pkgbase = maptiler
 	pkgdesc = Map Tile Cutter - Tile Overlay Generator for Google Maps and Google Earth
-	pkgver = 10.1
+	pkgver = 10.3
 	pkgrel = 1
 	url = http://www.maptiler.org/
 	install = maptiler.install
@@ -10,8 +10,8 @@ pkgbase = maptiler
 	depends = gdal
 	depends = libwebp
 	replaces = maptiler-64bit
-	source = http://downloads.klokantech.com/maptiler/maptiler-desktop-10.1-free-linux.debian-testing.amd64.deb
-	md5sums = 57469052cb19725087557b1972308fa4
+	source = http://downloads.klokantech.com/maptiler/maptiler-desktop-10.3-free-linux.debian-10-buster.amd64.deb
+	md5sums = a7413a25f8b5cae0c75302c55dd3d17b
 
 pkgname = maptiler
 
