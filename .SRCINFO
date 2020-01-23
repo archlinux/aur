@@ -1,0 +1,18 @@
+pkgbase = wayvnc
+	pkgdesc = VNC server for wlroots-based Wayland compositors
+	pkgver = 0+r83+gda3cf24
+	pkgrel = 1
+	url = https://github.com/any1/wayvnc
+	arch = x86_64
+	license = custom:ISC
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = neatvnc
+	source = git+https://github.com/any1/wayvnc#commit=da3cf24a825b180528fd6e12a43b9dbd8166e0e9
+	sha512sums = SKIP
+
+pkgname = wayvnc
+
