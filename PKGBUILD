@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=bat-extras-git
-pkgver=v20190117.r8.g765658c
-pkgrel=1
+pkgver=20190117.r8.g765658c
+pkgrel=2
 pkgdesc='Bash scripts that integrate bat with various command line tools'
 arch=('any')
 _gitname='bat-extras'
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
