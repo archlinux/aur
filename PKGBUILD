@@ -1,7 +1,7 @@
 # Maintainer: Amal Karunarathna <nasashinega@gmail.com>
 
 pkgname=hakuneko-desktop
-pkgver=5.0.8
+pkgver=6.1.7
 pkgrel=1
 pkgdesc="Manga & Anime Downloader for Linux, Windows & MacOS"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "${pkgname}.sh"
 )
 sha512sums=(
-    '733086c5d693ee6d8bc7fe6a9ac68d6752c2dcb51fbe26c107860e89d014b589a2f5d311d5e2058b27d569ac7805cce40fe519d6729d2a78cee53c20ae523243'
+    '356204665e745f1bde45c1612b6f780174780ce2bcd8d5abe3b0ca9322ee696c3ab3404dd90b924a6f2d30daf563146582fda539aca229a8c7f4e40df2f1c406'
     '18c99d1f4f0d2cb889e5e3ec541c26842bd128af68018780d3d43bcd147e0b9cf99260f9c79f506b383f9d9946c3f92577a6c71ea647b1ea7936f4031e628601'
 )
 
