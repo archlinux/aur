@@ -1,0 +1,13 @@
+pkgbase = swaymgr
+	pkgdesc = Sway autotiling manager
+	pkgver = 20200123.3_c346cef
+	pkgrel = 1
+	arch = x86_64
+	license = Apache 2.0
+	makedepends = go
+	makedepends = git
+	source = swaymgr::git+https://github.com/Difrex/swaymgr
+	md5sums = SKIP
+
+pkgname = swaymgr
+
