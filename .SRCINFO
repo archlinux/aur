@@ -9,6 +9,7 @@ pkgbase = coin
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = glu
+	makedepends = boost
 	depends = libgl
 	optdepends = openal: sound/dynamic linking support
 	optdepends = fontconfig: dynamic linking support
