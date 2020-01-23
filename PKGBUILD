@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue-git
-pkgver='r110.9f38fca'
+pkgver='r148.b4f9611'
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -30,7 +30,7 @@ package() {
     install -Dm755 "target/release/pueued" "${pkgdir}/usr/bin/pueued"
 
     # Place systemd user service
-    install -Dm644 "utils/pueued@.service" "${pkgdir}/usr/lib/systemd/user/pueued@.service"
+    install -Dm644 "utils/pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
 
     # Install zsh completions file
     # Zsh is broken for now
