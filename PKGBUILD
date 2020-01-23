@@ -1,10 +1,10 @@
 # Maintainer: Cristóbal Tapia <crtapia at gmail dot com>
 pkgname=bibtex-tidy
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BibTeX Tidy - Cleaner and Formatter for BibTeX files "
 arch=('any')
-url="https://github.com/sheerun/bower-away"
+url="https://github.com/FlamingTempura/bibtex-tidy"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')

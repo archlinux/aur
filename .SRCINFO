@@ -1,8 +1,8 @@
 pkgbase = bibtex-tidy
 	pkgdesc = BibTeX Tidy - Cleaner and Formatter for BibTeX files
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = https://github.com/sheerun/bower-away
+	pkgrel = 2
+	url = https://github.com/FlamingTempura/bibtex-tidy
 	arch = any
 	license = MIT
 	makedepends = npm
