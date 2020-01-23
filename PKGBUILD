@@ -2,15 +2,15 @@
 
 pkgbase=python-macholib
 pkgname=('python-macholib' 'python2-macholib')
-pkgver=1.11
-pkgrel=2
+pkgver=1.14
+pkgrel=1
 pkgdesc="Mach-O header analysis and editing"
 arch=('any')
 url="https://bitbucket.org/ronaldoussoren/macholib/"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/72/60/2b22bef6edfb2864f7c0dc1d55b75e70ba1c3670899bead37e059e29b738/macholib-$pkgver.tar.gz")
-sha512sums=('626cb564ea22e61a5b395c5ffbe9b17df0c341f2355bd0def88faabab52d2bc43f8f61871b50e7bd53147965627b4d3399f96a651bd985418e32b519b7bb03bb')
+source=("https://files.pythonhosted.org/packages/0d/fe/61e8f6b569c8273a8f2dd73921738239e03a2acbfc55be09f8793261f269/macholib-$pkgver.tar.gz")
+sha512sums=('362b59634d30af2e2fbbeb7a7c9178aaae57c09c88ad2ae93097b9af64df75dd5c656a779c7616a915883dcea52cb6ebf17bf8c7232d40c0bbe9880b3d5ca009')
 
 prepare() {
   cd "$srcdir"
@@ -22,7 +22,7 @@ package_python-macholib() {
   cd "$srcdir/macholib-$pkgver"
   python setup.py install --root "$pkgdir"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 README.txt "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm 644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
 package_python2-macholib() {
@@ -30,7 +30,7 @@ package_python2-macholib() {
   cd "$srcdir/macholib2-$pkgver"
   python2 setup.py install --root "$pkgdir"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm 644 README.txt "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm 644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
   rm -rf "$pkgdir"/usr/bin
 }
 
