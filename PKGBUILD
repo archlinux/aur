@@ -17,6 +17,7 @@ _basedir=binutils-$pkgver
 sha256sums=('ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf'
             'SKIP'
             '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c')
+validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
 prepare() {
   cd $_basedir
 
