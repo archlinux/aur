@@ -1,6 +1,6 @@
 # Maintainer: naka <weedeadpixels@gmail.com>
 
-pkgname=premid
+pkgname=premid-bin
 _pkgname=premid
 pkgver=2.0.1.2
 pkgrel=1
