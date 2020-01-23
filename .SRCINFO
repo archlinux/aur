@@ -1,15 +1,18 @@
 pkgbase = python-block_tracing
 	pkgdesc = Protect process memory
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rianhunter/block_tracing
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/b/block_tracing/block_tracing-1.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/block_tracing/block_tracing-1.0.1.tar.gz.asc
 	source = https://raw.githubusercontent.com/rianhunter/block_tracing/master/LICENSE
+	validpgpkeys = 584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C
 	sha256sums = 9faa009a702a8f2f605ebb78314d5ca2a2a93543d061038a3d3a978c93385e68
+	sha256sums = SKIP
 	sha256sums = b6fe6404f46a6a82220d921d7854fa8c20c8ea40ff0d0e24748b46878c5d291f
 
 pkgname = python-block_tracing
