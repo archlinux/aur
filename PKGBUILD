@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-feedreader
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="System tray support for Feedreader"
 arch=('i686' 'x86_64')
@@ -15,20 +15,16 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=()
-changelog=()
-source=('https://github.com/naraesk/plasma-feedreader/archive/v1.0.1.tar.gz')
+install=''
+changelog=''
+source=("$pkgname-$pkgver.tar.gz::https://github.com/naraesk/plasma-feedreader/archive/v1.0.2.tar.gz")
 noextract=()
-md5sums=('a8224219d5986107626944a25115a533')
-
-prepare() {
-  cd plasma-feedreader-${pkgver}
-  mkdir -p build
-}
+sha256sums=('37399250e18585f18bdc3d2b84ad7bb6ec7a473f248c16665618cd6a32d36d31')
 
 build() {
-  cd plasma-feedreader-${pkgver}/build
-  export QT_SELECT=5
+  cd plasma-feedreader-${pkgver}
+  mkdir -p build
+  cd build
   cmake ../ \
     -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
     -DKDE_INSTALL_LIBDIR=lib \

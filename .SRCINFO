@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-feedreader
 	pkgdesc = System tray support for Feedreader
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/naraesk/plasma-feedreader
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = plasma5-applets-feedreader
 	makedepends = qt5-tools
 	depends = plasma-workspace
 	depends = feedreader
-	source = https://github.com/naraesk/plasma-feedreader/archive/v1.0.1.tar.gz
-	md5sums = a8224219d5986107626944a25115a533
+	source = plasma5-applets-feedreader-1.0.2.tar.gz::https://github.com/naraesk/plasma-feedreader/archive/v1.0.2.tar.gz
+	sha256sums = 37399250e18585f18bdc3d2b84ad7bb6ec7a473f248c16665618cd6a32d36d31
 
 pkgname = plasma5-applets-feedreader
 
