@@ -2,14 +2,14 @@
 
 pkgname=cc-cli
 pkgver=7
-pkgrel=3
+pkgrel=4
 pkgdesc='CloudControl Command Line Interface'
 arch=('any')
-url='https://git.arkena.net/cloudcontrol/cc-cli'
+url='https://git.seblu.net/mirror/cc-cli'
 license=('GPL2')
 depends=('python2' 'python2-sjrpc' 'python2-xdg')
 makedepends=('git' 'python2-setuptools')
-source=("git+https://git.arkena.net/cloudcontrol/cc-cli.git#tag=v$pkgver")
+source=("git+https://git.seblu.net/mirror/cc-cli.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
