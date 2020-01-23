@@ -3,7 +3,7 @@
 # Contributor: Hussam Al-Tayeb <hussam at visp dot net dot lb>
 pkgname=htpdate
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A client for time synchronisation"
 arch=(i686 x86_64)
 url="http://www.vervest.org/htp/"
@@ -14,7 +14,7 @@ depends=('glibc')
 source=("http://www.vervest.org/htp/archive/c/${pkgname}-${pkgver}.tar.xz"
         "htpdate.service")
 md5sums=('aad8c33933648532ac8716c809b15be1'
-         'ed9c9b1222e90e6ee0751f8f88772606')
+         'd00fce722a88150cffb1b322e6cc8869')
         # "100-adjtimex.patch"
         # "101-daemon-run-in-foreground.patch")
 
