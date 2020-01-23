@@ -1,0 +1,18 @@
+pkgbase = obfs4proxy-behind-tor
+	pkgdesc = The obfourscator - a pluggable transport proxy written in Go (using tor service to download sources)
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	optdepends = tor: you need tor to use this package
+	source = https://people.torproject.org/~yawning/releases/obfs4proxy/obfs4proxy-0.0.11.tar.xz
+	sha512sums = 7d7fef951bcebd4433dfb638896d4be15dc090d38a3b54c9a9d34ea264b006cff75a42da1b97b6af998cfbc3b44919770cd8cb519ada351486a247faf47c656f
+
+pkgname = obfs4proxy-behind-tor
