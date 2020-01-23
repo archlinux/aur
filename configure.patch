@@ -1,15 +1,15 @@
---- configure	2016-12-01 10:11:33.000000000 +0300
-+++ configure	2019-05-24 15:40:14.742991210 +0300
-@@ -466,7 +466,7 @@
+--- configure	2020-01-23 14:40:20.000000000 +0300
++++ configure	2020-01-23 14:56:53.679636518 +0300
+@@ -483,7 +483,7 @@
  
  $arch_cc          = "cc";
  $arch_ccpp        = "CC";
--$arch_nvcc        = "/usr/local/cuda-8.0/bin/nvcc";
+-$arch_nvcc        = "/usr/local/cuda-10.0/bin/nvcc";
 +$arch_nvcc        = "nvcc";
- $arch_nvccflags   = "--ptxas-options=-v " . 
+ $arch_nvccflags   = "-lineinfo --ptxas-options=-v " . 
                      "-gencode arch=compute_30,code=compute_30 " .
                      "-gencode arch=compute_30,code=sm_35 " .
-@@ -729,8 +729,8 @@
+@@ -767,8 +767,8 @@
  if ($config_tk) { $tcl_include .= " -I$stock_tk_include_dir"; }
  $tcl_library      = "-L$stock_tcl_library_dir";
  if ($config_tk) { $tcl_library .= " -L$stock_tk_library_dir"; }
@@ -20,39 +20,41 @@
  
  @tcl_cc           = ();
  @tcl_cu           = ();
-@@ -888,11 +888,7 @@
+@@ -895,13 +895,7 @@
  $system_dir           = "";
  $system_include       = "-I.";
  $system_library       = "";
 -if ( $config_gcc ) {
--  $system_libs        = "-ll -lm";
+-  ## Note: some old commercial versions of Unix require -ll for lex internals
+-  ## now that we've been using flex for years, -ll should be moot.
+-  $system_libs        = "-lm";
 -} else {
 -  $system_libs        = "-lm";
 -}
-+$system_libs        = "-lrt -lm";
++$system_libs          = "-lrt -lm";
  @system_cc             = ();
  @system_cu             = ();
  @system_ccpp           = ();
-@@ -922,7 +918,7 @@
+@@ -931,7 +925,7 @@
  #   This option enables the use of CUDA GPU acceleration functions.
  #######################
  $cuda_defines     = "-DVMDCUDA -DMSMPOT_CUDA";
--$cuda_dir         = "/usr/local/cuda-8.0";
+-$cuda_dir         = "/usr/local/cuda-10.0";
 +$cuda_dir         = "/opt/cuda";
  $cuda_include     = "";
  $cuda_library     = "";
- $cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static";
-@@ -1042,7 +1038,7 @@
- # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-3.6.3-linux64";
- # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-3.8.0-linux64";
- # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-3.9.0-linux64";
--$liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-4.0.1-linux64";
+ $cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static -lrt";
+@@ -1098,7 +1092,7 @@
+ # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-4.1.1-linux64";
+ # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.0-linux64";
+ # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.1-linux64";
+-$liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
 +$liboptix_dir         = "/opt/optix";
+ # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-6.0.0-linux64";
+ 
  # NCSA Blue Waters
- # $liboptix_dir         = "/u/sciteam/stonej/local/NVIDIA-OptiX-SDK-3.6.3-linux64";
- # $liboptix_dir         = "/u/sciteam/stonej/local/NVIDIA-OptiX-SDK-3.8.0-linux64";
-@@ -1082,7 +1078,7 @@
- $libospray_dir         = "/usr/local/ospray-1.1.1.x86_64.linux";
+@@ -1148,7 +1142,7 @@
+ $libospray_dir         = "/usr/local/ospray-1.7.0.x86_64.linux";
  $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
  $libospray_library     = "-L$libospray_dir/lib ";
 -$libospray_libs        = "-lospray -lospray_common -lembree -ltbb -ltbbmalloc ";
@@ -60,7 +62,7 @@
  # Both OptiX and OSPRay renderers use the Tachyon glwin code, 
  # so we have to make sure we don't build/link it twice
  if ($config_liboptix) {
-@@ -1375,20 +1371,20 @@
+@@ -1459,20 +1453,20 @@
  ###################
  # location of Python library and include file.
  # If left blank, standard system  directories will be searched.
@@ -69,15 +71,15 @@
  #$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "/usr/local/lib";
 -$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
 -$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
-+#$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.7";
-+#$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.7/config";
++#$stock_python_include_dir=$ENV{"PYTHON_INCLUDE_DIR"} || "$vmd_library_dir/python/lib_$config_arch/include/python2.5";
++#$stock_python_library_dir=$ENV{"PYTHON_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/config";
  
  #$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "/usr/local/include";
  #$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "/usr/local/lib";
 -$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
 -$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
 +#$stock_numpy_include_dir=$ENV{"NUMPY_INCLUDE_DIR"} || "$vmd_library_dir/numpy/lib_$config_arch/include";
-+#$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.7/site-packages/numpy/core/include";
++#$stock_numpy_library_dir=$ENV{"NUMPY_LIBRARY_DIR"} || "$vmd_library_dir/python/lib_$config_arch/lib/python2.5/site-packages/numpy/core/include";
  
  $python_defines     = "-DVMDPYTHON";
  $python_include     = "-I$stock_python_include_dir -I$stock_numpy_include_dir -I$stock_numpy_library_dir";
@@ -87,23 +89,23 @@
  @python_h           = ('PythonTextInterp.h',
                         'VMDTkinterMenu.h',
  		       'py_commands.h',
-@@ -2278,9 +2274,9 @@
+@@ -2368,9 +2362,9 @@
        # for compiling with g++:
        $arch_cc		= "gcc";
        $arch_ccpp  	= "g++";
--      $arch_opt_flag	= "-m64 -fno-for-scope -Wno-deprecated -Wall -O6 -ffast-math";
-+      $arch_opt_flag	= "-m64 -fno-for-scope -Wno-deprecated -Wall -O3 -ffast-math";
+-      $arch_opt_flag	= "-m64 -fno-for-scope -Wno-deprecated -Wall -Wno-unknown-pragmas -O6 -ffast-math";
++      $arch_opt_flag	= "-Ofast -march=native";
        $arch_depend_flag   = "-MM";
--      $arch_copts	        = "-m64 -Wall -O6 -ffast-math";
-+      $arch_copts	        = "-m64 -Wall -O3 -ffast-math";
-       $arch_template_repository = "foobar";
+-      $arch_copts       = "-m64 -Wall -Wno-unknown-pragmas -O6 -ffast-math";
++      $arch_copts       = "-Ofast -march=native";
  
        # so far only STATIC version tested
-@@ -2293,7 +2289,7 @@
+       if ($config_static) {
+@@ -2382,7 +2376,7 @@
  
      if ($config_cuda) {
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
--      $cuda_library     = "-L/usr/local/cuda-8.0/lib64";
+-      $cuda_library     = "-L/usr/local/cuda-10.0/lib64";
 +      $cuda_library     = "-L/opt/cuda/lib64";
      }
  
