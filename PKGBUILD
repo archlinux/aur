@@ -4,12 +4,13 @@ pkgname=tealdeer-bin
 _pkgname=tealdeer
 _binname=tldr
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A very fast tldr client in Rust. Static binaries from GitHub."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/dbrgn/tealdeer/"
 license=('MIT' 'Apache')
 provides=('tldr')
+conflicts=('tldr')
 validpgpkeys=('EA456E8BAF0109429583EED83578F667F2F3A5FA')
 source=(
   "https://github.com/dbrgn/${_pkgname}/releases/download/v${pkgver}/completions_bash"
