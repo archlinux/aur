@@ -1,5 +1,5 @@
 pkgname=kalliope
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Modular always-on voice controlled personal assistant designed for home automation"
@@ -8,12 +8,12 @@ depends=(portaudio python-markupsafe python-pyaudio python-pythondialog python-j
 license=('MIT')
 url="https://github.com/kalliope-project/kalliope"
 source=("https://github.com/kalliope-project/kalliope/archive/v${pkgver}.tar.gz")
-sha256sums=('3b2dbee3e380d3942491684a5c6dd00ab173dda3472faf71f08e138c8946cfbd')
+sha256sums=('22272954c49401993c9b9b1df6bc2e4d29a954b33197fd9f0ab2376e71e05459')
 
 prepare()
 {
   cd "$srcdir/kalliope-${pkgver}"
-  sed -i "s|ansible>=2.8.1,<2.9|ansible>=2.8|g" setup.py
+  sed -i "s|ansible>=2.8.1,<2.9|ansible>=2.8.1|g" setup.py
 }
 
 
@@ -31,4 +31,5 @@ package()
 {
   cd "$srcdir/kalliope-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
+  rm -r ${pkgdir}/usr/lib/python3.8/site-packages/kalliope/trigger/snowboy/armv*
 }
