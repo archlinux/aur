@@ -1,7 +1,7 @@
 pkgbase = phc-intel
 	pkgdesc = Frequency driver for Intel CPUs with undervolting feature
 	pkgver = 0.3.2.12.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linux-phc.org
 	install = phc-intel.install
 	arch = any
@@ -13,11 +13,13 @@ pkgbase = phc-intel
 	source = phc-intel.sh
 	source = phc-intel.sleep
 	source = phc-intel.system-sleep
+	source = phc-intel-pack-rev31.tar.bz2
 	source = dkms.conf
 	sha256sums = ce08a5a4107be1d5723f1f169d515e67b6c77893f3994fc2d0d2ccf611307ed3
 	sha256sums = b526f3e8e66f6495531f13f2e6867d3a07b2ec7a7c3b8aa061f22be1cd6e770f
 	sha256sums = 569b85988cb38380fec85c25688b76abc24a46601aa8f58eb24eaebf863eebef
 	sha256sums = 2e17c90d7bfae8f5070e46388e95d443188eaa7beb5ffdd418a0da090f2e7557
+	sha256sums = adee614a1aacfe924625de0d75703d8fa37f942dcd99e276ee357359beac3129
 	sha256sums = 7b44882a96eeb7c79dbb7fe5b1ff8cded68c2b6a374c95bdc5e08c414cfd3549
 
 pkgname = phc-intel
