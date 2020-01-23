@@ -1,26 +1,50 @@
-# Maintainer: liberodark
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=headset
-pkgver=2.0.1
+pkgver=3.2.0
 pkgrel=1
-pkgdesc="A music player for the busy ones"
+pkgdesc="Discover and collect music on YouTube"
 arch=('x86_64')
-url="https://github.com/headsetapp/headset-electron"
+url="https://headsetapp.co"
 license=('MIT')
-depends=('xdg-utils')
-source_x86_64=("https://github.com/headsetapp/headset-electron/releases/download/v${pkgver}/headset_${pkgver}_amd64.deb")
-source=($pkgname.desktop
-        $pkgname.png)
-sha512sums=('ab8248956308f6e5f1e9fcca38430cdb9f0fc6b1a03decf17da4b3c5c1f9d2a60c41d98face860172e15e0f23f89cc9c5fd6f6430e7762ec35d033b0772c18d2'
-         'a86076ab8b9f0f110e0ded37f3538339eaa2fb2c9fa28ce1cbadbc9e3980a5cbc52b11e4800e25eb55eab906078bcec60f20923d6e72121c8d7ccd56d24e6b36')
-sha512sums_x86_64=('e9cc4ac561a52e7d7e9ed1550e17c0e4d704b2c820c9ad1fb45b600a5869559136ebf086690ee6837625ee81063c745c85e21e0d6416070a3d33d286a1410f76')
-        
+depends=('gtk3' 'libnotify' 'nss' 'libxss')
+makedepends=('npm')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/headsetapp/headset-electron/archive/v$pkgver.tar.gz"
+        "$pkgname.desktop")
+sha256sums=('8369be7309b5ede954ba7d12ddc6ee2d5f8bccf7f7cae73518b36b080d316666'
+            '3bc18b531f1e914e317267a570241855dbf11b27347435fe4770d75b74958123')
+
+build() {
+	cd "$pkgname-electron-$pkgver"
+	npm ci --cache "$srcdir/npm-cache"
+
+	node_modules/.bin/electron-packager . \
+		--executable-name headset \
+		--ignore "(^/bin$|^/sig$|^/gh-pages$|^/player$|^/test$|Procfile|\.md$|^\.|^\/\.)" \
+		--prune true \
+		--out build/ \
+		--overwrite \
+		--asar \
+		--platform=linux \
+		--arch=x64
+}
+
 package() {
-  cd $srcdir
-  tar xvf data.tar.xz
-  cp -r usr $pkgdir
-  rm $pkgdir/usr/share/pixmaps/*.png
-  rm $pkgdir/usr/share/applications/*.desktop
-  install -vDm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-  install -vDm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
+	cd "$pkgname-electron-$pkgver"
+
+	# Fix file permissions
+	find build/Headset-linux-x64 -type f -exec chmod 0644 {} +
+	find build/Headset-linux-x64 -type d -exec chmod 0755 {} +
+	chmod 0755 build/Headset-linux-x64/"$pkgname"
+
+	install -d "$pkgdir/opt/$pkgname"
+	cp -r build/Headset-linux-x64/* "$pkgdir/opt/$pkgname"
+
+	install -d "$pkgdir/usr/bin"
+	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
+
+	install -Dm644 "src/icons/$pkgname.png" -t "$pkgdir/usr/share/pixmaps"
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
