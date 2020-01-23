@@ -1,0 +1,18 @@
+pkgbase = google-music-manager-uploader
+	pkgdesc = Google Music Manager Uploader Daemon
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://github.com/jaymoulin/google-music-manager-uploader
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = google-music-manager-auth
+	depends = python-beautifulsoup4
+	depends = python-gmusicapi
+	depends = python-netifaces
+	depends = python-watchdog
+	source = https://github.com/jaymoulin/google-music-manager-uploader/archive/1.5.7.tar.gz
+	md5sums = 294e05f37550742253cc8c5bad670258
+
+pkgname = google-music-manager-uploader
+
