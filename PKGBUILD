@@ -3,8 +3,8 @@
 
 _pkgname=drupal-check
 pkgname=${_pkgname}
-pkgver=1.0.12
-pkgrel=3
+pkgver=1.0.13
+pkgrel=1
 pkgdesc="Check Drupal code for deprecations and discover bugs via static analysis."
 arch=('any')
 url="https://github.com/mglaman/drupal-check"
