@@ -1,9 +1,8 @@
 pkgbase = pahole
 	pkgdesc = Various DWARF utils
-	pkgver = 1.11
+	pkgver = 1.16
 	pkgrel = 1
 	url = http://git.kernel.org/?p=devel/pahole/pahole.git;a=summary
-	changelog = pahole.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,9 +11,12 @@ pkgbase = pahole
 	depends = elfutils
 	depends = python
 	replaces = dwarves
-	source = https://git.kernel.org/pub/scm/devel/pahole/pahole.git/snapshot/pahole-1.11.tar.gz
-	md5sums = 33d2603497a599188b9d26ec3e416a98
-	sha1sums = d1e0aace518342203c713b87024ebada848acd64
+	source = https://git.kernel.org/pub/scm/devel/pahole/pahole.git/snapshot/pahole-1.16.tar.gz
+	source = libbpf-0.0.6.tar.gz::https://github.com/libbpf/libbpf/archive/v0.0.6.tar.gz
+	md5sums = 4dcec51a18842cc471340d12ca78cab6
+	md5sums = 73c12c58350bc348907aef564ebd8d81
+	sha1sums = eae1b968f2d687c591e256acbd2fefd9aa60ee21
+	sha1sums = a8f6bca240c05aa5049bc8b3a20962ff3916c1e4
 
 pkgname = pahole
 
