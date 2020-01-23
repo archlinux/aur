@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
-pkgver=0.5.1.1165.g789d1e9
+pkgver=0.5.1.1238.gacc0715
 pkgrel=1
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	mkdir build
+	mkdir -p build
 }
 
 build() {

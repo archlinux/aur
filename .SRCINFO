@@ -1,6 +1,6 @@
 pkgbase = hardinfo-git
 	pkgdesc = A system information and benchmark tool.
-	pkgver = 0.5.1.1165.g789d1e9
+	pkgver = 0.5.1.1238.gacc0715
 	pkgrel = 1
 	url = https://github.com/lpereira/hardinfo
 	arch = x86_64
