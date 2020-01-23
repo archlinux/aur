@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 # To enable the Instrumentation and Tracing Technology API (ittnotify):
 #   - install the package intel-seapi
@@ -7,92 +7,82 @@
 # intel-seapi will be autodetected by the build system, serving as a makedepend.
 # Currently it will not be a mandatory makedepend.
 
-pkgname=intel-media-sdk-git
-pkgver=2019.3.pre3.r25.g4311844c
-pkgrel=3
-pkgdesc='API to access hardware-accelerated video decode, encode and filtering on Intel platforms with integrated graphics (git version)'
+pkgbase=intel-media-sdk-git
+pkgname=('intel-media-sdk-git' 'libmfx-git')
+pkgver=2019.4.pre2.r121.g2c3a4551
+pkgrel=1
+pkgdesc='API to access hardware-accelerated video on Intel Gen graphics hardware platforms (git version)'
 arch=('x86_64')
-url='https://github.com/Intel-Media-SDK/MediaSDK/'
+url='https://software.intel.com/en-us/media-sdk/'
 license=('MIT')
-depends=(
-    # official repositories:
-        'gcc-libs' 'libdrm' 'wayland' 'intel-media-driver'
-    # AUR:
-        'libva-git'
-)
-optdepends=('ocl-icd: for rotate_opencl plugin'
-            'intel-compute-runtime: for rotate_opencl plugin')
-makedepends=('git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb'
-             'python' 'opencl-headers' 'ocl-icd' 'intel-compute-runtime')
-provides=('intel-media-sdk' 'libmfx')
-conflicts=('intel-media-sdk')
-install="${pkgname}.install"
-source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git'
-        'intel-media-sdk-git.conf'
-        'intel-media-sdk-git.sh')
-sha256sums=('SKIP'
-            '12a37e6e12d93fac5829082773b9f010a3c6c763ddeee177618b8e1a0547fbbc'
-            '315ea6f304cf2b7b6a8aaabb0b8f71fcd480677c7fb9c8cbfa51c7830bb159bc')
+makedepends=('libdrm' 'libva-git' 'wayland' 'intel-media-driver'
+             'git' 'git-lfs' 'cmake' 'libpciaccess' 'libx11' 'libxcb' 'python'
+             'opencl-headers' 'ocl-icd' 'intel-compute-runtime')
+source=('git+https://github.com/Intel-Media-SDK/MediaSDK.git')
+sha256sums=('SKIP')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
     cd MediaSDK
-    
     git lfs install --local
     git lfs pull "${source[0]/git+/}"
-    
-    mkdir -p build
 }
 
 pkgver() {
     cd MediaSDK
-    
     local _prefix='intel-mediasdk-'
-    
-    # git, tags available
     git describe --long --tags | sed "s/^${_prefix}//;s/^[0-9]\{2\}/20&/;s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
 build() {
-    cd MediaSDK/build
-    
-    cmake \
-        -DCMAKE_BUILD_TYPE='None' \
+    cmake -B build -S MediaSDK \
         -DBUILD_ALL:BOOL='ON' \
         -DBUILD_TOOLS:BOOL='ON' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_ITT:BOOL='OFF' \
         -DENABLE_OPENCL:BOOL='ON' \
         -DENABLE_WAYLAND:BOOL='ON' \
         -DENABLE_X11_DRI3:BOOL='ON' \
-        -Wno-dev \
-        ..
-        
-    make
+        -Wno-dev
+    make -C build
 }
 
 check() {
-    cd MediaSDK/build
-    
-    make test
+    make -C build test
 }
 
-package() {
-    cd MediaSDK/build
+package_intel-media-sdk-git() {
+    depends=('gcc-libs' 'libdrm' 'libva-git' 'wayland' "libmfx-git=${pkgver}" 'intel-media-driver')
+    optdepends=('ocl-icd: for rotate_opencl plugin'
+                'intel-compute-runtime: for rotate_opencl plugin')
+    provides=('intel-media-sdk')
+    conflicts=('intel-media-sdk')
     
-    make DESTDIR="$pkgdir" install
+    make -C build DESTDIR="$pkgdir" install
     
-    # metrics_monitor
-    install -D -m755 __bin/None/libcttmetrics.so -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
-    install -D -m755 __bin/None/metrics_monitor  -t "${pkgdir}/opt/intel/mediasdk/share/mfx/samples"
-    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib/libcttmetrics.so"
+    ln -s ../share/mfx/samples/libcttmetrics.so "${pkgdir}/usr/lib/libcttmetrics.so"
     
-    # ld.so and profile configuration files
-    cd "$srcdir"
-    install -D -m644 intel-media-sdk-git.conf -t "${pkgdir}/etc/ld.so.conf.d"
-    install -D -m755 intel-media-sdk-git.sh   -t "${pkgdir}/etc/profile.d"
+    # remove core component libmfx
+    [ -d 'libmfx' ] && rm -rf libmfx
+    mkdir -p libmfx/lib/pkgconfig
+    mv "${pkgdir}/usr/include" libmfx
+    mv "${pkgdir}/usr/lib/libmfx.so"* libmfx/lib
+    mv "${pkgdir}/usr/lib/pkgconfig/"{,lib}mfx.pc libmfx/lib/pkgconfig
     
-    # license
-    cd "${srcdir}/MediaSDK"
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_libmfx-git() {
+    pkgdesc='Intel Media SDK dispatcher library (git version)'
+    depends=('gcc-libs')
+    provides=('libmfx')
+    conflicts=('libmfx')
+    
+    # install core component libmfx into a separated package
+    mkdir -p "${pkgdir}/usr"
+    mv libmfx/{include,lib} "${pkgdir}/usr"
+    
+    install -D -m644 MediaSDK/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
