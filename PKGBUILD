@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '331c113d60a825af504f3e163209ae5b02fbdd9f7d142c7e20e81699b7210431'
+            '9eefb96e856c5b016b672f78ad68c34a5da320a406524d1e4cc7b0d056aee0ad'
             '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2')
 
 export KBUILD_BUILD_HOST=archlinux
