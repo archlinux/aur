@@ -14,9 +14,9 @@ pkgbase = topmenu-gtk
 	optdepends = lxpanel: Topmenu Applet for LXPanel
 	optdepends = mate-panel: Topmenu Applet for MATE panel
 	optdepends = xfce4-panel: Topmenu Applet for Xfce4 panel
-	source = topmenu-gtk-0.3.tar.xz::https://git.javispedro.com/cgit/topmenu-gtk.git/snapshot/release_0.3.tar.xz
+	source = topmenu-gtk-0.3.tar.xz::https://git.javispedro.com/cgit/topmenu-gtk.git/snapshot/topmenu-gtk-release_0.3.tar.gz
 	source = topmenu.xinit
-	md5sums = ff178220b1821ae0bb6f2e86afcabbbe
+	md5sums = 4b9cb7ce0479a0daedce64e9c7640dfd
 	md5sums = 9b16242683f36fd2e97c8fad2326782b
 
 pkgname = topmenu-gtk
