@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasmer-git
-pkgver=0.9.0.r0.gaa8b968d4
+pkgver=0.13.1.r79.gddaaa30e
 pkgrel=1
 pkgdesc="Standalone JIT WebAssembly runtime"
 arch=('i686' 'x86_64')
@@ -45,5 +45,5 @@ package() {
   cargo install --root "$pkgdir/usr" --path "$srcdir/wasmer"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/wasmer"
 
-  rm "$pkgdir/usr/.crates.toml"
+  rm -f "$pkgdir/usr"/.crates*
 }

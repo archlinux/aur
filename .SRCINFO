@@ -1,6 +1,6 @@
 pkgbase = wasmer-git
 	pkgdesc = Standalone JIT WebAssembly runtime
-	pkgver = 0.9.0.r0.gaa8b968d4
+	pkgver = 0.13.1.r79.gddaaa30e
 	pkgrel = 1
 	url = https://wasmer.io/
 	arch = i686
