@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libfreexl
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to extract valid data from within an Excel (.xls) spreadsheet (mingw-w64)"
 arch=('any')
 url="https://www.gaia-gis.it/fossil/freexl/"
@@ -26,7 +26,7 @@ build() {
   cd ${srcdir}/freexl-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    LIBS+=" -lssp" ${_arch}-configure
     make
     popd
   done
