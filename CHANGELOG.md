@@ -1,6 +1,15 @@
 <a name="unreleased"></a>
 ## [Unreleased](https://gitlab.com/langurmonkey/gaiasky/tree/master)
-[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.4...HEAD)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.4-1...HEAD)
+
+
+<a name="2.2.4-1"></a>
+## [2.2.4-1](https://gitlab.com/langurmonkey/gaiasky/tree/2.2.4) (2020-01-23)
+[Full changelog](https://gitlab.com/langurmonkey/gaiasky/compare/2.2.4...2.2.4-1)
+
+### Bug Fixes
+- build script typo 
+- ambient light slider 
 
 
 <a name="2.2.4"></a>
