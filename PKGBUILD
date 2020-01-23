@@ -1,4 +1,4 @@
-# Maintainer: Marc Boocha <marcboocha@gmail.com>
+# Maintainer: Finlay Maroney <finman292004@protonmail.com>
 
 _target=x86_64-elf
 _sysroot=/usr/lib/${_target}
@@ -19,7 +19,7 @@ source=("http://mirrors.kernel.org/gnu/binutils/binutils-$pkgver.tar.xz"
 sha256sums=('ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf'
             'SKIP')
 _basedir=binutils-$pkgver
-
+validpgpkeys=("3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F")
 prepare() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
 

@@ -10,6 +10,7 @@ pkgbase = x86_64-elf-binutils
 	options = !docs
 	source = http://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz
 	source = https://mirrors.kernel.org/gnu/binutils/binutils-2.33.1.tar.xz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
 	sha256sums = ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf
 	sha256sums = SKIP
 
