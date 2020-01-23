@@ -1,14 +1,14 @@
 pkgbase = cryptoplugin
 	pkgdesc = PrivatBank Crypto Plugin
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	install = cryptoplugin.install
 	arch = any
 	license = custom
 	depends = glibc
 	depends = gtk2
 	depends = pcsclite
-	source = https://master.dl.sourceforge.net/project/host-privatbank-cryptoplugin/cryptoplugin-1.2.2-all.deb
+	source = https://cb.privatbank.ua/p24-cryptoplugin/1.2.2/cryptoplugin-1.2.2-all.deb
 	source = cryptoplugin.install
 	md5sums = 0d8173b4f5c0c23616d6f4b90ca5b589
 	md5sums = dbd0b80e618c8bee39b65c444eb05240

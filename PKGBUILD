@@ -3,11 +3,11 @@
 
 pkgname=cryptoplugin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PrivatBank Crypto Plugin"
 license=('custom')
 source=(
-    "https://master.dl.sourceforge.net/project/host-privatbank-cryptoplugin/$pkgname-$pkgver-all.deb"
+    "https://cb.privatbank.ua/p24-cryptoplugin/$pkgver/$pkgname-$pkgver-all.deb"
     "cryptoplugin.install"
 )
 arch=('any')
