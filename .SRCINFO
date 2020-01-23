@@ -1,9 +1,13 @@
 pkgbase = ofono
 	pkgdesc = Infrastructure for building mobile telephony (GSM/UMTS) applications
 	pkgver = 1.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/ofono
+	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	depends = bluez
 	depends = dbus
