@@ -16,7 +16,7 @@ sha256sums=('84c508dc0e7d3047f5aa5b7048c2bef61e3588958b3276d603a65fc84b592b00')
 
 build() {
   cd "$pkgname-$pkgver/cmd/minify"
-  go build -ldflags "-X 'main.Version=v$pkgver' -extldflags $LDFLAGS" -trimpath -o minify .
+  go build -ldflags "-s -w -X 'main.Version=v$pkgver' -extldflags $LDFLAGS" -trimpath -o minify .
   source minify_bash_tab_completion
 }
 
