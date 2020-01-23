@@ -2,7 +2,7 @@
 
 pkgname=mystiq
 _pkgname=MystiQ
-pkgver=20.01.09
+pkgver=20.01.22
 pkgrel=1
 pkgdesc="FFmpeg GUI front-end based on Qt5."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-declarative' 'qt5-multimedia' 'ffmpeg' 'libnotify' 'sox')
 makedepends=('qt5-tools')
 replaces=('qwinff')
 source=("https://github.com/llamaret/MystiQ/archive/v${pkgver}.tar.gz")
-sha256sums=('fc0e3e534b1d75057315669b246c638c2462d1e1b7cda929dd7c527d47eec4d0')
+sha256sums=('e56cb284d16682e0534a9c9dde1920928ac55e439e1921b1c8aea7afe9899b01')
 
 build() {
   cd ${_pkgname}-${pkgver}
