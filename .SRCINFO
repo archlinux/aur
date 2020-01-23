@@ -1,6 +1,6 @@
 pkgbase = r-hms
 	pkgdesc = Implements an S3 class for storing and formatting time-of-day values, based on the 'difftime' class.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=hms
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = r-hms
 	depends = r
 	depends = r-pkgconfig
 	depends = r-rlang
-	depends = r-vctrs>=0.2.0
+	depends = r-vctrs>=0.2.1
 	optdepends = r-crayon
 	optdepends = r-lubridate
 	optdepends = r-pillar
 	optdepends = r-testthat
-	source = http://cran.r-project.org/src/contrib/hms_0.5.2.tar.gz
-	md5sums = 7ed26640a8df6aa3f14c1722723c2156
+	source = http://cran.r-project.org/src/contrib/hms_0.5.3.tar.gz
+	md5sums = e809e3677c2fd6116231a803dc583306
 
 pkgname = r-hms
 
