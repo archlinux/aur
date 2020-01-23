@@ -1,0 +1,16 @@
+diff --git a/feelpp/feel/feelfilters/gmshenums.cpp b/feelpp/feel/feelfilters/gmshenums.cpp
+index 037ef39c7..45289ac82 100644
+--- a/feelpp/feel/feelfilters/gmshenums.cpp
++++ b/feelpp/feel/feelfilters/gmshenums.cpp
+@@ -27,9 +27,9 @@
+ namespace Feel
+ {
+ 
+-#if GMSH_VERSION_GREATER_OR_EQUAL_THAN(4,2,0)
++#if 1
+ const char* FEELPP_GMSH_FORMAT_VERSION = "4.1";
+-#elif GMSH_VERSION_GREATER_OR_EQUAL_THAN(4,0,0)
++#elif 0
+ const char* FEELPP_GMSH_FORMAT_VERSION = "4.0";
+ #else
+ const char* FEELPP_GMSH_FORMAT_VERSION = "2.2";
