@@ -3,12 +3,22 @@
 _pkgname=via
 pkgname=$_pkgname-bin
 pkgver=1.2.4
-pkgrel=1
-pkgdesc="VIA Configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards."
+pkgrel=2
+pkgdesc="Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards."
 arch=(any)
 url="https://caniuse$_pkgname.com/"
 provides=("${_pkgname}=${pkgver}")
-depends=("hicolor-icon-theme")
+depends=("hicolor-icon-theme"
+        "gtk3" 
+        "libnotify"
+        "nss"
+        "libxss"
+        "libxtst"
+        "xdg-utils" 
+        "at-spi2-core"
+        "libutil-linux"
+        "libappindicator"
+        "libsecret")
 _filename=("${_pkgname}-${pkgver}-linux.deb")
 source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename"
         via)

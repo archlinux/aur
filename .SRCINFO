@@ -1,10 +1,20 @@
 pkgbase = via-bin
-	pkgdesc = VIA Configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards.
+	pkgdesc = Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards.
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caniusevia.com/
 	arch = any
 	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libutil-linux
+	depends = libappindicator
+	depends = libsecret
 	provides = via=1.2.4
 	source = https://github.com/the-via/releases/releases/download/v1.2.4/via-1.2.4-linux.deb
 	source = via
