@@ -2,8 +2,8 @@
 
 pkgname=openra-dr-git
 _pkgname=${pkgname/-git}
-pkgver=324.git.ffcd6ba
-pkgrel=2
+pkgver=340.git.f32964f
+pkgrel=1
 pkgdesc="A Dark Reign-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/drogoganor/DarkReign"
@@ -38,6 +38,7 @@ prepare() {
 build() {
     cd $srcdir/DarkReign
     make version VERSION="${pkgver}"
+    printf "Per https://github.com/drogoganor/DarkReign/issues/42 this mod currently will not build.\n"
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
@@ -47,7 +48,7 @@ package() {
     cd $srcdir/DarkReign
     mkdir -p $pkgdir/usr/{lib/openra-dr/mods,bin,share/pixmaps,share/doc/packages/openra-dr,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-dr
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-dr
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-dr
     cp -r mods/dr $pkgdir/usr/lib/openra-dr/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-dr/mods
     install -Dm755 $srcdir/openra-dr $pkgdir/usr/bin/openra-dr
