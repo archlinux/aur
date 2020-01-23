@@ -1,24 +1,23 @@
 pkgbase = soqt
 	pkgdesc = A library which provides the glue between Coin and Qt
-	pkgver = 1.6.0a+2014+m872b87e73dfb
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://www.coin3d.org/lib/soqt/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = mercurial
 	makedepends = cmake
 	makedepends = doxygen
-	depends = coin>=4.0.0a
+	depends = coin>=4.0.0
 	depends = qt5-base
-	source = soqt::hg+https://bitbucket.org/Coin3D/soqt#revision=872b87e73dfb
-	source = generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration
-	source = soanydata::hg+https://bitbucket.org/Coin3D/soanydata
-	source = sogui::hg+https://bitbucket.org/Coin3D/sogui
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/coin3d/soqt/archive/SoQt-1.6.0.tar.gz
+	source = soanydata-3ff6e9203fbb0cc08a2bdf209212b7ef4d78a1f2.tar.gz::https://github.com/coin3d/soanydata/archive/3ff6e9203fbb0cc08a2bdf209212b7ef4d78a1f2.tar.gz
+	source = sogui-100612bf4016916dd686e2b6fecf8ac23d3db14d.tar.gz::https://github.com/coin3d/sogui/archive/100612bf4016916dd686e2b6fecf8ac23d3db14d.tar.gz
+	source = soqt-remove-cpack.patch::https://github.com/coin3d/soqt/commit/1318402.patch
+	sha256sums = 80bbee01089af754380c48ea435008ea93465149999a545741c410efe8e9bef9
+	sha256sums = ede29d60d1b35e66193aaf115784f87867ab1658cb1d977fe75dfc0d0ffb3241
+	sha256sums = 605c649902c7be3549b9df7bfdd11d80f13f3aa09b8f0654bf99bcf66a1ee914
+	sha256sums = 54df1238fbe412b470e13f2c2f94abba23a283dafb9ca8b14ea31ac348668db5
 
 pkgname = soqt
 
