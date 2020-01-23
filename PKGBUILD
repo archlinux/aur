@@ -1,10 +1,11 @@
-# Maintainer: Ben Widawsky <ben@bwidawsk.net>
+# Maintainer: Yevhenii Kolesnikov <sigexp.acc@gmail.com>
+# Contributor: Ben Widawsky <ben@bwidawsk.net>
 # Contributor: Chad Versace <chad.versace@linux.intel.com>
 # Contributor: Emil Velikov <emil.l.velikov@gmail.com
 
 _pkgbasename='waffle'
 pkgname="lib32-${_pkgbasename}"
-pkgver='1.5.2'
+pkgver='1.6.0'
 pkgrel='3'
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
@@ -13,11 +14,11 @@ license=('BSD')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' "${_pkgbasename}=${pkgver}")
 makedepends=('cmake' 'xcb-proto' 'lib32-mesa-libgl' 'lib32-mesa' 'gcc-multilib')
 
-source=("https://github.com/waffle-gl/waffle/archive/v$pkgver.tar.gz")
-sha256sums=('d662f6743f688dc5ea4b7d29f558eb54bd8f57350080f04a006693d22e5d1d5b')
+source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v1.6.0/waffle-v1.6.0.tar.gz")
+sha256sums=('d2ee1eef9f0e35ae1cd916db24e46ce4358c94a82776dcb89f5f72bd97a7e9ba')
 
 build() {
-	cd "$srcdir/${_pkgbasename}-$pkgver"
+	cd "$srcdir/${_pkgbasename}-v$pkgver"
 
 	export CC='gcc -m32'
 	export CXX='g++ -m32'
@@ -38,7 +39,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_pkgbasename}-$pkgver"
+	cd "$srcdir/${_pkgbasename}-v$pkgver"
 	make DESTDIR="$pkgdir/" install
 
 	mv "$pkgdir/usr/bin/wflinfo" "$pkgdir/usr/bin/wflinfo32"
