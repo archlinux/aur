@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gloox
 	pkgdesc = C++ libraries for development of Jabber client/component/server (mingw-w64)
-	pkgver = 1.0.22
+	pkgver = 1.0.23
 	pkgrel = 1
 	url = http://camaya.net/gloox
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = mingw-w64-gloox
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://camaya.net/download/gloox-1.0.22.tar.bz2
+	source = https://camaya.net/download/gloox-1.0.23.tar.bz2
 	source = gloox-1.0.21-fix-undefined-reference.patch
-	sha256sums = 4ade1b14848ccfcd89a505a4fff05116c24f13cef8d02fab0ade2717117ec964
+	sha256sums = 97cb6a0c07e320ffa4a7c66e8ab06b2361086271dc87ed2398befef4e8435f8a
 	sha256sums = 4b293353b21b757df5e41237108075a9e2906af2189ff625460e05f132ff4510
 
 pkgname = mingw-w64-gloox
