@@ -59,7 +59,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=166
+_minor=167
 _srcname=linux-${_major}
 _clr=${_major}.154-80
 pkgbase=linux-clear-lts2017
@@ -87,27 +87,27 @@ prepare() {
     cd ${_srcname}
 
     ### Add upstream patches
-        msg2 "Add upstream patches"
+        echo "Add upstream patches"
         patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
-        msg2 "Setting version..."
+        echo "Setting version..."
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/${pkgbase}/linux-lts2017.spec | grep -Ev '^Patch0127|^Patch0130' | sed -n 's/.*: //p'); do
-        msg2 "Applying patch ${i}..."
+        echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/${pkgbase}/${i}"
         done
 
     ### Setting config
-        msg2 "Setting config..."
+        echo "Setting config..."
         cp -Tf $srcdir/${pkgbase}/config ./.config
 
     ### Enable extra stuff from arch kernel
-        msg2 "Enable extra stuff from arch kernel..."
+        echo "Enable extra stuff from arch kernel..."
 
         # General setup
         scripts/config --enable IKCONFIG \
@@ -153,7 +153,7 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
         patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
         fi
 
@@ -166,16 +166,16 @@ prepare() {
 
     ### Prepared version
         make -s kernelrelease > version
-        msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+        echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
           if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Running Steven Rostedt's make localmodconfig now"
+            echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
           else
-            msg2 "No modprobed.db data found"
+            echo "No modprobed.db data found"
             exit
           fi
         fi
@@ -211,7 +211,7 @@ _package() {
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    msg2 "Installing boot image..."
+    echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -219,13 +219,13 @@ _package() {
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-    msg2 "Installing modules..."
+    echo "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -235,7 +235,7 @@ _package-headers() {
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    msg2 "Installing build files..."
+    echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
         localversion.* version vmlinux
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -251,7 +251,7 @@ _package-headers() {
     # ???
     mkdir "$builddir/.tmp_versions"
 
-    msg2 "Installing headers..."
+    echo "Installing headers..."
     cp -t "$builddir" -a include
     cp -t "$builddir/arch/x86" -a arch/x86/include
     install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -267,10 +267,10 @@ _package-headers() {
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-    msg2 "Installing KConfig files..."
+    echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-    msg2 "Removing unneeded architectures..."
+    echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
         [[ $arch = */x86/ ]] && continue
@@ -278,16 +278,16 @@ _package-headers() {
         rm -r "$arch"
     done
 
-    msg2 "Removing documentation..."
+    echo "Removing documentation..."
     rm -r "$builddir/Documentation"
 
-    msg2 "Removing broken symlinks..."
+    echo "Removing broken symlinks..."
     find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-    msg2 "Removing loose objects..."
+    echo "Removing loose objects..."
     find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-    msg2 "Stripping build tools..."
+    echo "Stripping build tools..."
     local file
     while read -rd '' file; do
         case "$(file -bi "$file")" in
@@ -302,11 +302,11 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-    msg2 "Adding symlink..."
+    echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -320,7 +320,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '331b10b18fb5d1fa1a28baffcfeec3b59d6d56d38036b1cb2dfbf3a524822cde'
+            '610b622130eebdbf27bd523138f881d72a774c5516dd38c236716cc3bd7971ec'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
