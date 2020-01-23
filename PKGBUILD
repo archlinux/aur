@@ -2,7 +2,7 @@
 
 pkgname=rav1e
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -38,5 +38,5 @@ package() {
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rav1e"
   install -Dm644 "PATENTS" -t "$pkgdir/usr/share/licenses/rav1e"
 
-  rm "$pkgdir/usr/.crates.toml"
+  rm -f "$pkgdir/usr"/.crates*
 }
