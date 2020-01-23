@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hyperfine-git
-pkgver=1.9.0.r0.g4567088
+pkgver=1.9.0.r19.g3a99fe2
 pkgrel=1
 pkgdesc="A command-line benchmarking tool"
 arch=('i686' 'x86_64')
@@ -36,5 +36,5 @@ package() {
   install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/hyperfine"
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/hyperfine"
 
-  rm "$pkgdir/usr/.crates.toml"
+  rm -f "$pkgdir/usr"/.crates*
 }
