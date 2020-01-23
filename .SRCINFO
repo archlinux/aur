@@ -1,6 +1,6 @@
 pkgbase = python-epics
 	pkgdesc = Python interface to Epics Channel Access
-	pkgver = 3.3.3
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = http://pyepics.github.io/pyepics/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-epics
 	depends = python
 	depends = python-numpy
 	depends = epics-base
-	source = https://github.com/pyepics/pyepics/archive/3.3.3.tar.gz
-	sha256sums = 0ec2006a932246dd58b44f2ce122b70ca7c44f63ef2722aa59246cf2ea0f63e1
+	source = https://github.com/pyepics/pyepics/archive/3.4.1.tar.gz
+	sha256sums = e3b852a98e483b6a6b53af94ab4aa1d3d51ac49434bfae32fcdacae31577e8d0
 
 pkgname = python-epics
 

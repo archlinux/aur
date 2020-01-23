@@ -2,7 +2,7 @@
 
 pkgname=python-epics
 _pkgname=pyepics
-pkgver=3.3.3
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Python interface to Epics Channel Access "
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('python' 'python-numpy' 'epics-base')
 makedepends=('python-setuptools')
 source=("https://github.com/pyepics/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0ec2006a932246dd58b44f2ce122b70ca7c44f63ef2722aa59246cf2ea0f63e1')
+sha256sums=('e3b852a98e483b6a6b53af94ab4aa1d3d51ac49434bfae32fcdacae31577e8d0')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
