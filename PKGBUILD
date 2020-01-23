@@ -12,7 +12,7 @@ license=('GPL2')
 source=("https://github.com/ibmibmibm/r8125/archive/${pkgver}.tar.gz"
         'dkms.conf')
 sha256sums=('1531cc3d9649ea45fa324354adc22bdf75966db033da1385bc6f86fc398b7b9d'
-            'afcc422c14e908c89cd2b4338b2c3d1f40f1f583511f37f212bd912b27669315')
+            '7a6b42b6ebbd76ae3c40e10f824c2dae88448fab3ba074916b3be5c2b4bef448')
 
 build() {
   tar -xf "${pkgver}.tar.gz"
