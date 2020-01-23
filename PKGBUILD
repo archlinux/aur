@@ -3,7 +3,7 @@
 pkgbase=layan-kde-git
 pkgname=(layan-kde-git kvantum-theme-layan-git)
 _pkgname=layan-kde
-pkgver=r9.9dbe87f
+pkgver=r14.dac89ef
 pkgrel=1
 pkgdesc="A flat Design theme for KDE Plasma desktop"
 arch=(any)
