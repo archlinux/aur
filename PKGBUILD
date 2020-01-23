@@ -26,7 +26,7 @@ install="$pkgname.install"
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  CC=gcc make all
+  CC=gcc make all -j
 }
 
 package() {
