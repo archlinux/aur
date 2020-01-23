@@ -2,8 +2,8 @@
 
 pkgname=openra-dr-git
 _pkgname=${pkgname/-git}
-pkgver=340.git.f32964f
-pkgrel=1
+pkgver=324.git.ffcd6ba
+pkgrel=2
 pkgdesc="A Dark Reign-inspired mod of OpenRA"
 arch=('any')
 url="https://github.com/drogoganor/DarkReign"
