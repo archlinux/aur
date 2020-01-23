@@ -1,0 +1,17 @@
+pkgbase = google-music-manager-auth
+	pkgdesc = Google Music Manager Auth Daemon
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/jaymoulin/google-music-manager-auth
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-gmusicapi
+	depends = python-netifaces
+	depends = python-watchdog
+	source = https://github.com/jaymoulin/google-music-manager-auth/archive/1.3.0.tar.gz
+	sha256sums = cced52b6b3c927daf94ed97ddecab29ad252e9fac3edb4d2400a4e979cda207e
+
+pkgname = google-music-manager-auth
+
