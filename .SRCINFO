@@ -1,0 +1,14 @@
+pkgbase = groovy-sdk
+	pkgdesc = SDK for groovy language
+	pkgver = 2.5.9
+	pkgrel = 1
+	url = https://groovy-lang.org/download.html
+	arch = x86_64
+	license = Apache
+	optdepends = groovy: the binaries
+	options = !strip
+	source = https://dl.bintray.com/groovy/maven/apache-groovy-sdk-2.5.9.zip
+	sha256sums = 6660c5e98226faea4de6c191bc3e33eb9159e8f4251d1a38de612a8e2030cae3
+
+pkgname = groovy-sdk
+
