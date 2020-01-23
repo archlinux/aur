@@ -3,8 +3,8 @@
 #               stepych <msaleksandr@gmail.com>
 
 pkgname=kbdd-git
-pkgrel=2
-pkgver=0.7.1.r7.g9dca0b7
+pkgrel=1
+pkgver=0.7.1.r11.g7f3d9d2
 provides=('kbdd')
 conflicts=('kbdd')
 pkgdesc="Simple daemon and library to make per window layout"
