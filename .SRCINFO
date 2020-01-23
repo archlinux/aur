@@ -1,6 +1,6 @@
 pkgbase = hovercraft-git
 	pkgdesc = Makes impress.js presentations from reStructuredText
-	pkgver = 211
+	pkgver = 313
 	pkgrel = 1
 	url = https://github.com/regebro/hovercraft
 	arch = i686

@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=hovercraft-git
-pkgver=211
+pkgver=313
 pkgrel=1
 pkgdesc="Makes impress.js presentations from reStructuredText"
 arch=('i686' 'x86_64')
@@ -10,12 +10,12 @@ groups=()
 depends=('python-pygments' 'python-watchdog' 'python-svg.path' 'python-lxml' 'python-docutils')
 optdepends=()
 provides=()
-conflicts=('')
+conflicts=()
 replaces=()
 backup=()
 options=()
-install=()
-changelog=()
+install=''
+changelog=''
 source=('git+https://github.com/regebro/hovercraft.git')
 noextract=()
 md5sums=('SKIP')
