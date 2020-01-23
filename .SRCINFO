@@ -1,0 +1,18 @@
+pkgbase = qxkb-qt5
+	pkgdesc = Keyboard layout switcher (the further development of axkb). Qt5 version.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/thegala/qxkb
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = libxkbfile
+	depends = qt5-base
+	provides = qxkb
+	conflicts = qxkb
+	source = https://github.com/thegala/qxkb/archive/qxkb-0.5.2.tar.gz
+	md5sums = c095e2ecc2ea3f737de7eeffdb9c29e8
+
+pkgname = qxkb-qt5
+
