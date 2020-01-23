@@ -13,7 +13,7 @@ pkgbase = jetbrains-mps
 	depends = alsa-lib
 	optdepends = python: support for scripts like restart.py
 	optdepends = ffmpeg0.10: Multimedia plugin
-	source = https://download.jetbrains.com/mps/2019.3.1/MPS-2019.3.1.tar.gz
+	source = https://download.jetbrains.com/mps/2019.3/MPS-2019.3.1.tar.gz
 	sha256sums = 0fe85f89400b43a7dd44edcacebdd0a67776da4d0fc704049ae7eaec26ecae4b
 
 pkgname = jetbrains-mps

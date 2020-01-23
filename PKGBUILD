@@ -1,8 +1,8 @@
 # Maintainer: Marc Mettke <mettke@itmettke.de>
 pkgname=jetbrains-mps
 _pkgname=mps
-_pkgver=2019.3.1
-pkgver=${_pkgver}
+_pkgver=2019.3
+pkgver=${_pkgver}.1
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
