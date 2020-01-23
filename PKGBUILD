@@ -2,10 +2,10 @@
 # Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
 
 pkgname=upwork
-pkgver=5.3.3.848
+pkgver=5.3.3.860
 _rawver=${pkgver//./_}
-_hashver='ciy2bosj7ts6feza'
-pkgrel=2
+_hashver='wub7hae1mtgzk09u'
+pkgrel=1
 pkgdesc='Desktop App 64-bit Standard version'
 arch=(x86_64)
 url='https://www.upwork.com/downloads?source=Footer'
@@ -15,7 +15,7 @@ depends=(alsa-lib gtk3 libxss nss)
 install=upwork.install
 source=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
         LICENSE)
-sha256sums=('384479114a59fbd014c9885297486a14a5169f3952d5b17a8501f2f46d4f14a4'
+sha256sums=('7f0ff6b7b8d2a9ab118f982b8cd4ade7ebc5a239fb5a0aa819d5df19b27e910a'
             '793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38')
 
 prepare() {
