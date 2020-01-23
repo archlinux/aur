@@ -1,0 +1,15 @@
+pkgbase = via-bin
+	pkgdesc = VIA Configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards.
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://caniusevia.com/
+	arch = any
+	depends = hicolor-icon-theme
+	provides = via=1.2.4
+	source = https://github.com/the-via/releases/releases/download/v1.2.4/via-1.2.4-linux.deb
+	source = via
+	md5sums = 727000af3573ffaad3d5791c791de42e
+	md5sums = dc41d6a454c010ff44c2f22678dbd79e
+
+pkgname = via-bin
+
