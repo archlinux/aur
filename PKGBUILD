@@ -1,21 +1,19 @@
 # Maintainer: Allen Wild <allenwild93@gmail.com>
 pkgname=git-filter-repo
-pkgver=2.24.0
+pkgver=2.25.0
 pkgrel=1
-pkgdesc="Rapidly rewrite entire repository history using user-specified filters."
+pkgdesc="Quickly rewrite git repository history (filter-branch replacement)"
 arch=('any')
 url="https://github.com/newren/git-filter-repo"
 license=('MIT')
 depends=('git' 'python')
 checkdepends=('python-coverage')
-source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz"
-        "coverage-command.patch")
-sha256sums=('92188d3c44b9ff0dd40dfeed72859e0a088f775c12fb24c4e3e27a8064cfcc84'
-            'b37bb67d8cdca997f096f8231e41f01de020d78cb4df5b1d5affbe74e10f1111')
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('ea8cdb7dca68111e819d141fc4d302b811c1e5362c12de7403882ba9908be29c')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    patch -Np1 -i "${srcdir}/coverage-command.patch"
+    # hard-code the shebang to the system python(3) to avoid confusion with virtualenvs
+    sed -i 's|^#!.*|#!/usr/bin/python|' "$pkgname-$pkgver/git-filter-repo"
 }
 
 check() {
