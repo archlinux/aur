@@ -20,6 +20,8 @@ optdepends=('faac: AAC transcoding support'
             'opus-tools: OPUS transcoding support'
             'sox: WAV transcoding support'
             'vorbis-tools: OGG transcoding support')
+provides=('pulseaudio-dlna')
+conflicts=('pulseaudio-dlna')
 source=("git+$url.git#branch=python3")
 sha512sums=('SKIP')
 

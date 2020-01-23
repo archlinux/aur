@@ -25,6 +25,8 @@ pkgbase = pulseaudio-dlna-python3-git
 	optdepends = opus-tools: OPUS transcoding support
 	optdepends = sox: WAV transcoding support
 	optdepends = vorbis-tools: OGG transcoding support
+	provides = pulseaudio-dlna
+	conflicts = pulseaudio-dlna
 	source = git+https://github.com/masmu/pulseaudio-dlna.git#branch=python3
 	sha512sums = SKIP
 
