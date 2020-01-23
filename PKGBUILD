@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-systemd
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Start and stop systemd services"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/plasma-systemd"
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=''
 changelog=''
-source=('https://github.com/naraesk/plasma-systemd/archive/v1.2.1.tar.gz')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/naraesk/plasma-systemd/archive/v1.2.1.tar.gz")
 noextract=()
-md5sums=('b9d604d32afe43bc2e2887b3b9bde86c')
+sha256sums=('c24d13faf115a2adfaedb880a2f50e2824d798f108baa29c3804320314267ada')
 
 prepare() {
   cd plasma-systemd-${pkgver}
