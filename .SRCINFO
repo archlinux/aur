@@ -1,9 +1,9 @@
-pkgbase = xcape-git
-	pkgdesc = Use modifier pressed/released solo as another key/chord, e.g. CapsLock > Escape
+pkgbase = xcape-multilayout-git
+	pkgdesc = xcape with support for the multiple keyboard layouts feature of XKB
 	pkgver = 1.1.r9.gf3802fc
 	pkgrel = 2
 	epoch = 1
-	url = https://github.com/alols/xcape
+	url = https://github.com/alols/xcape/pull/117
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = xcape-git
 	depends = libxtst
 	provides = xcape
 	conflicts = xcape
-	source = git+https://github.com/alols/xcape
+	source = git+https://github.com/timakro/xcape#branch=pr_multiple_layouts
 	sha256sums = SKIP
 
-pkgname = xcape-git
+pkgname = xcape-multilayout-git
 
