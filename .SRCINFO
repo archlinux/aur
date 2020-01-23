@@ -9,7 +9,7 @@ pkgbase = gaiasky
 	license = MPL
 	depends = jre11-openjdk
 	depends = xorg-xrandr
-	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/2.2.4_1.a169540c8/gaiasky-2.2.4-1.a169540c8.tar.gz
+	source = http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/2.2.4-1.a169540c8/gaiasky-2.2.4-1.a169540c8.tar.gz
 	md5sums = d22daeebd184ca29d46951044cd9737f
 
 pkgname = gaiasky

@@ -20,13 +20,13 @@ backup=()
 options=()
 install=gaiasky.install
 changelog=CHANGELOG.md
-source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/$pkgver/$pkgname-2.2.4-1.a169540c8.tar.gz")
+source=("http://gaia.ari.uni-heidelberg.de/gaiasky/files/releases/2.2.4-1.a169540c8/$pkgname-2.2.4-1.a169540c8.tar.gz")
 noextract=()
 md5sums=("d22daeebd184ca29d46951044cd9737f")
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-2.2.4-1.a169540c8"
 }
 
 build() {
@@ -38,7 +38,7 @@ check() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-2.2.4-1.a169540c8"
 	mkdir -p "$pkgdir/opt/gaiasky/"
 	mv * "$pkgdir/opt/gaiasky/"
 }
