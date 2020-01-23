@@ -2,7 +2,7 @@
 
 pkgname=openra-ra2-git
 _pkgname=${pkgname/-git}
-pkgver=906.git.b9668d9
+pkgver=928.git.0236a3b
 pkgrel=1
 pkgdesc="An OpenRA mod inspired by Command & Conquer: Red Alert 2 "
 arch=('any')
@@ -46,7 +46,7 @@ package() {
     cd $srcdir/ra2
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-ra2,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-ra2
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-ra2
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ra2
     cp -r mods/ra2 $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-ra2 $pkgdir/usr/bin/openra-ra2
