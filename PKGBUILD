@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia-bin
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -21,11 +21,8 @@ sha256sums_aarch64=('59c8e2841ed9f51fe53723b0e984fe1e31fb860201040a5f7a60adcc793
 sha256sums_armv7h=('b8f47c5e887bffe5045b9aecc06d73e3038eabca5f6db474f19e88880a76baec')
 
 package() {
-  cd "${srcdir}"
-
+  install -Dm644 "${srcdir}/${pkgname/-bin/}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.service"
   install -Dm700 "${srcdir}/config.template.yml" "${pkgdir}/etc/${pkgname/-bin/}/configuration.yml"
-  install -Dm700 "${srcdir}/${pkgname/-bin/}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.service"
-
   if [[ ${CARCH} == 'x86_64' ]]; then
     install -Dm755 "${srcdir}/${pkgname/-bin/}-linux-amd64" "${pkgdir}/usr/bin/${pkgname/-bin/}"
   elif [[ ${CARCH} == 'aarch64' ]]; then
@@ -33,7 +30,6 @@ package() {
   else
     install -Dm755 "${srcdir}/${pkgname/-bin/}-linux-arm32v7" "${pkgdir}/usr/bin/${pkgname/-bin/}"
   fi
-
   install -dm655 "${pkgdir}/usr/share/webapps/${pkgname/-bin/}"
   cp -r "${srcdir}/public_html/." "${pkgdir}/usr/share/webapps/${pkgname/-bin/}/"
 }
