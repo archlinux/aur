@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=0.2.0.r55.g496138d8
+pkgver=0.2.1.r110.g7293535e
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
@@ -49,5 +49,5 @@ package() {
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rav1e"
   install -Dm644 "PATENTS" -t "$pkgdir/usr/share/licenses/rav1e"
 
-  rm "$pkgdir/usr/.crates.toml"
+  rm -f "$pkgdir/usr"/.crates*
 }
