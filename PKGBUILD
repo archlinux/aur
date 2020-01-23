@@ -12,7 +12,7 @@ _sogui_commit=100612bf4016916dd686e2b6fecf8ac23d3db14d
 pkgrel=1
 pkgdesc='A library which provides the glue between Coin and Qt'
 arch=('i686' 'x86_64')
-url='http://www.coin3d.org/lib/soqt/'
+url='https://github.com/coin3d/soqt'
 license=('GPL')
 depends=('coin>=4.0.0' 'qt5-base')
 makedepends=('cmake' 'doxygen')
