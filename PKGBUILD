@@ -2,14 +2,14 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 pkgname=fasta
-pkgver=36.3.8g
+    pkgver=36.3.8h
 pkgrel=1
 pkgdesc="Fast protein or a fast nucleotide comparison"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://fasta.bioch.virginia.edu/fasta_www2/fasta_list2.shtml"
 source=("http://faculty.virginia.edu/wrpearson/fasta/fasta36/fasta-$pkgver.tar.gz")
-sha256sums=('41c623f9ddbcaa7b1d479665216148cb30f75be263d3584d99e4d234a38babc3')
+sha256sums=('1d38c961b34b8aabc8360ea068bf50b7446efd318f99c8d28b3f5d25c66a7267')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"
