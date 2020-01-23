@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-decklink
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -27,6 +27,7 @@ depends=(
     'libdrm'
     'libfreetype.so'
     'libiec61883'
+    'libmfx'
     'libmodplug'
     'libomxil-bellagio'
     'libpulse'
@@ -66,7 +67,8 @@ makedepends=(
     # AUR:
         'decklink-sdk'
 )
-optdepends=('ladspa: LADSPA filters')
+optdepends=('intel-media-sdk: for Intel Quick Sync Video'
+            'ladspa: for LADSPA filters')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -103,6 +105,7 @@ build() {
         --enable-libgsm \
         --enable-libiec61883 \
         --enable-libjack \
+        --enable-libmfx \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
