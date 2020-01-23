@@ -1,16 +1,15 @@
 pkgbase = feelpp
 	pkgdesc = Finite Element Embedded Language and Library in C++
-	pkgver = 0.106.0
+	pkgver = 0.107.0
 	pkgrel = 1
 	url = https://github.com/feelpp
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
-	makedepends = python2
+	makedepends = clang
 	depends = cln
 	depends = mumps
-	depends = petsc
 	depends = slepc
 	depends = gmsh
 	depends = fftw
@@ -20,8 +19,8 @@ pkgbase = feelpp
 	depends = gsl
 	depends = python
 	depends = ginac
-	source = https://github.com/feelpp/feelpp/archive/v0.106.0.tar.gz
-	sha256sums = 4e5f5a68029244adb3dbbb6337ca06fad549fdbbb36c6b05aec0847ed116e6b5
+	source = feelpp-0.107.0::git+https://github.com/feelpp/feelpp.git#tag=v0.107.0
+	sha256sums = SKIP
 
 pkgname = feelpp
 
