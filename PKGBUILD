@@ -2,7 +2,7 @@
 
 pkgname=bao
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
 url="https://github.com/oconnor663/bao"
@@ -27,5 +27,5 @@ package() {
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/bao"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bao"
 
-  rm "$pkgdir/usr/.crates.toml"
+  rm -f "$pkgdir/usr"/.crates*
 }
