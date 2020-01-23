@@ -1,0 +1,18 @@
+pkgbase = roberta
+	pkgdesc = Steam Play compatibility tool to run adventure games using native Linux ScummVM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dreamer/roberta
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = scummvm
+	depends = inotify-tools
+	optdepends = steam: The Steam client
+	source = git+https://github.com/dreamer/roberta.git#tag=v0.1.0
+	sha512sums = SKIP
+
+pkgname = roberta
+
