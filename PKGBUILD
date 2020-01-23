@@ -2,7 +2,7 @@
 # Contributor: Fabien Dubosson <fabien.dubosson@gmail.com>
 
 pkgname=q
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="SQL-like queries on tabular text data, including joins and subqueries"
 url="https://github.com/harelba/q"
@@ -10,7 +10,7 @@ license=('GPL3')
 arch=('x86_64')
 depends=('python')
 source=("https://github.com/harelba/packages-for-q/raw/master/rpms/q-text-as-data-${pkgver}-1.x86_64.rpm")
-sha256sums=('14e5edaf91da456eeed11e6ee4f0205a395d2d4b16421ab3dbefd0b49983c14b')
+sha256sums=('ccb39dc7033524a833b7a9be90f8e44784d221a8ff4e8aed2c6847211cc378c4')
 
 package() {
   cd "${srcdir}/"
