@@ -1,6 +1,6 @@
 pkgbase = perl-math-prime-util
 	pkgdesc = Math::Prime::Util - utilities related to prime numbers, including fast sieves and factoring (ntheory)
-	pkgver = 0.73
+	pkgver = 0.73.git
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-Prime-Util
 	arch = i686
@@ -26,9 +26,12 @@ pkgbase = perl-math-prime-util
 	provides = perl-math-prime-util-zetabigfloat
 	provides = perl-ntheory
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-0.73.tar.gz
-	md5sums = 26496630990db586dfede6551de79cbe
-	sha512sums = a772ba116b51c906e1f6d25d8bc1cbda93c01220998f9606aabc767fe8d0973b71a86f027b3a2a6cc75de026813a70ea825532f2070ecfadbe697834a025404e
+	source = 34.patch
+	source = https://github.com/danaj/Math-Prime-Util/archive/c20fed38aea4a0675d5ff7b5cdc43a47c815d027.zip
+	md5sums = 1a85cfb5afacd0a065ba4c033355cbe1
+	md5sums = 363c0584aeaaac479e43f9cbda90e7a5
+	sha512sums = 9ee18c357fce8d8a0575db8c204197f836fa6967606dbc51180fbd31f2abf6bdca6b1a1cfa8fccd1bbaf2bc6511046b742870240632051898a2c5ee73712361a
+	sha512sums = c2c04218d8ddcdba28884ece55b0b81ab9c502f6007f64680d4c289b654c26a9ae68837e7fd171b6fa92aaa695198572768c260809c5316bd7e311c71006ebcc
 
 pkgname = perl-math-prime-util
 

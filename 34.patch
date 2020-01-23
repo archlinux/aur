@@ -1,0 +1,24 @@
+From e6258748e92f8244a144c21a67af7e3713beaac8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20=C8=98uteu?= <trizen@protonmail.com>
+Date: Tue, 5 Nov 2019 16:47:38 +0200
+Subject: [PATCH] Handle 2^n in is_totient()
+
+Fixes https://github.com/danaj/Math-Prime-Util/issues/33.
+
+See also: [A058213](https://oeis.org/A058213), [A058215](https://oeis.org/A058215).
+---
+ util.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/util.c b/util.c
+index e03ac43..4199254 100644
+--- a/util.c
++++ b/util.c
+@@ -1059,6 +1059,7 @@ static int _totpred(UV n, UV maxd) {
+   int res;
+ 
+   if (n & 1) return 0;
++  if ((n & (n-1)) == 0) return 1;
+   n >>= 1;
+   if (n == 1) return 1;
+   if (n < maxd && is_prime(2*n+1)) return 1;
