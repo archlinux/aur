@@ -1,35 +1,34 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
-pkgname=sfizz-git
-pkgver=r51.14bace7
+_pkgname="sfizz"
+pkgname="${_pkgname}-git"
+pkgver=r801.8ab993b
 pkgrel=1
-pkgdesc="Juce based SFZ format sampler"
-url="https://github.com/sfztools/sfizz"
+pkgdesc="SFZ library and LV2 plugin"
+url="https://sfz.tools/sfizz"
 arch=('x86_64')
-license=('GPL3')
-makedepends=('git' 'juce')
+license=('custom:BSD-2-Clause' 'custom:ISC')
+makedepends=('git' 'cmake')
+depends=('libsndfile')
 provides=('sfizz')
 conflicts=('sfizz')
-source=(
-    "$pkgname"::"git+https://github.com/sfztools/sfizz"
-)
-md5sums=(
-    'SKIP'
-)
+source=("$pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
+sha512sums=('SKIP')
 pkgver() {
-    cd "$pkgname"
+    cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    git submodule update --init --recursive
+}
 build() {
-    cd "$srcdir/${pkgname}/Builds/LinuxMakefile"
-    sed -i -e 's/$(HOME)/\/opt/' "./Makefile"
-    make INSTALL_DIR=$pkgdir
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" "${srcdir}/${pkgname}"
+    cmake --build . --target all
 }
 package() {
-    cd "$srcdir/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/resources/linux/sfizz.desktop" "${pkgdir}/usr/share/applications/sfizz.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/resources/linux/sfizz.appdata.xml" "${pkgdir}/usr/share/metainfo/sfizz.appdata.xml"
-    install -Dm644 "${srcdir}/${pkgname}/resources/icons/icon_256px.png" "${pkgdir}/usr/share/pixmaps/sfizz.png"
-    install -Dm755 "${srcdir}/${pkgname}/Builds/LinuxMakefile/build/sfizz" "${pkgdir}/usr/bin/sfizz"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/sfizz/LICENSE"
+    DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
+    install -Dm644 "${srcdir}/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

@@ -1,16 +1,18 @@
 pkgbase = sfizz-git
-	pkgdesc = Juce based SFZ format sampler
-	pkgver = r51.14bace7
+	pkgdesc = SFZ library and LV2 plugin
+	pkgver = r801.8ab993b
 	pkgrel = 1
-	url = https://github.com/sfztools/sfizz
+	url = https://sfz.tools/sfizz
 	arch = x86_64
-	license = GPL3
+	license = custom:BSD-2-Clause
+	license = custom:ISC
 	makedepends = git
-	makedepends = juce
+	makedepends = cmake
+	depends = libsndfile
 	provides = sfizz
 	conflicts = sfizz
-	source = sfizz-git::git+https://github.com/sfztools/sfizz
-	md5sums = SKIP
+	source = sfizz-git::git+https://github.com/sfztools/sfizz#branch=develop
+	sha512sums = SKIP
 
 pkgname = sfizz-git
 
