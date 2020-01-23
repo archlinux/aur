@@ -1,7 +1,7 @@
-From f247d4a6fe42acc60b775457e3c35b8289532590 Mon Sep 17 00:00:00 2001
+From ca12fbca4bf7482a73ace2a0504bd8fc7f980dc1 Mon Sep 17 00:00:00 2001
 From: Leo Li <sunpeng.li@amd.com>
 Date: Mon, 21 Oct 2019 14:58:47 -0400
-Subject: [PATCH 14/16] drm/amdgpu: Add DC feature mask to disable fractional
+Subject: [PATCH 14/15] drm/amdgpu: Add DC feature mask to disable fractional
  pwm
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

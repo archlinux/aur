@@ -1,7 +1,7 @@
-From cce47515454675d9c82448e865b42570f9eabc39 Mon Sep 17 00:00:00 2001
+From abfe541c371e84c6db50fd907c6a9941ee0a7da6 Mon Sep 17 00:00:00 2001
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Date: Sat, 4 Jan 2020 23:29:22 -0800
-Subject: [PATCH 13/16] e1000e: Revert "e1000e: Make watchdog use delayed work"
+Subject: [PATCH 13/15] e1000e: Revert "e1000e: Make watchdog use delayed work"
 
 This reverts commit 59653e6497d16f7ac1d9db088f3959f57ee8c3db.
 

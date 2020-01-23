@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.4.13
+pkgver=5.4.14
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -90,32 +90,30 @@ source=(
 0012-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
 0013-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
 0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
-0015-ptp-free-ptp-device-pin-descriptors-properly.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('49fb29d96d7e7c1d7e6082701bd26bfddd0fbc87a796fb6ba6258bc5fd386ad7'
+sha256sums=('531e18b0eef516fa4b3843f89729fafbf3c6bc00325b082cc1f2cfcb28c8d7f0'
             'SKIP'
             '8470e238fcecbb03fdbadb35e6bfea5d09413f3f5ba38fa50ea600fd8f01abd1'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            'a8260a0cd688f145837510955df5bf1bad8e1a126fb2240a05cb33a524caff39'
-            '134df0458cfa0a1c9b5d68539fef58a5595b3c817cbf529f2216bdf5e9c513bf'
-            '0542389de25b787577c0042a17c0e667eeadadc5670abd8357dd60a5d5d99d36'
-            '59d4cff52a7c37429ab167d358d8bda44b1927361cd403be61bc5e8fc484d34b'
-            '6f88dfdbcd28e8bd216d1011605288651463e0de4c189c870785064c86d53bc9'
-            'd03ffe961a87b513a882fc77d40ec04465691bdb74f8d29d175e8cf8e08dff9e'
-            'b5f0c411c6537ffa77fee21bf5b89a603317361844149cd17d55e41522d62632'
-            'ee5d63c50646143c869efd74c205126e26a312d28b21ea6d151b89a4083b79ed'
-            'f031e429df53762f52e3fff252aea566f6a145d631cfd0486d5e7ce55987e999'
-            '0c91c462945bb6fc979ada9f81c957a299541ed0145ad948ab62827faf0235ec'
-            'a1e0bd8cb85b948e2d9d4b47eb8652d45bc62fed2057c2d4119a23ac91fd87ef'
-            '80d3ced391fe7c7d185188a99935e48b78151be0c562bdb107b09eb20f4e8499'
-            'fe3f7b524a1b03f53bcf2a67419682c3d843519176605603b45e99b70bd48ba0'
-            'ef11e3682c1c6c89de0afb6da04d8191536ba79351051ec16061ed83eb69a10a'
-            '19c9357b886857ba90928fb720b555d648f6434fa434adaf8f522ec8465246ad')
+            '6bc06821c6dc94a8af1018df31780dfbad354dce46792f65ee45bf6261968ec7'
+            '4cdf7a686248aceeed6ca0296636dc0d4efaede2b77df98a6c3d559116156a00'
+            'c21b89ac3d24445dafcd8a3f2dfb6574eae0f50f3849f8abf1126862e2f82dcd'
+            '2c7733955ede78f64b21d14b2f3ad0c8e0e98cc5eccb3228e532203d9c60056b'
+            'aa19094814bf528f760c7bc5f207fe51d1163c9255add0fad09f15d8747b4e8e'
+            '8ec48bcab7e133fb3fcd49bac9e6aa8075beb2720ae07832a0c4962df9309b7c'
+            '4d497f775c8785771cf28ed7a807d53617dfb914567def8b65a970c7472a8dc4'
+            '022be9ea56431b07a169765def3f5b33330d710be527fde652a0164e1108d96f'
+            '77f0cbc3fb6fd7e357c9c052b9d483e00a542eba3cf7f5baba2576f96ba71416'
+            'c7602e3ef7986da9b8a6197db281ee41381fae65ed2d1a814160638acd6978e9'
+            '9fc6cfeab4da541b06993cc5a42d1d7de78238bcaf477d523cc51ae5337bd050'
+            'ba20b1928026473497a69e2a1c1c7c5fdd63c5f63818036998d9ee96258c34c1'
+            'a81cff6b669e36778a420b2c441a0ae79f257096d1059cc293bea931b91f6ff1'
+            'fa7b003f7c5acabae8cff051630a93e3d4556c275067516bb05922bfd9ee8b28')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
