@@ -2,14 +2,14 @@
 
 pkgname=python2-sjrpc
 pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc='Smartjog Remote Procedure Call'
 arch=('any')
-url='https://git.arkena.net/cloudcontrol/sjrpc'
+url='https://git.seblu.net/mirror/sjrpc'
 license=('GPL2')
 depends=('python2' 'python2-pyev')
 makedepends=('git' 'python2-setuptools')
-source=("git+https://git.arkena.net/cloudcontrol/sjrpc.git#tag=v$pkgver")
+source=("git+https://git.seblu.net/mirror/sjrpc.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
