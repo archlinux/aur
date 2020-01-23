@@ -4,7 +4,7 @@
 pkgname=duply
 _mainver=2.2
 pkgver=$_mainver.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A shell front end for duplicity. It manages backup job settings in profiles and allows to batch execute commands."
 arch=('any')
 url="http://duply.net/"
@@ -13,12 +13,6 @@ depends=('duplicity')
 makedepends=('txt2man')
 source=( "http://downloads.sourceforge.net/project/ftplicity/duply%20%28simple%20duplicity%29/${_mainver}.x/${pkgname}_${pkgver}.tgz")
 md5sums=('f7c2859df687db41aa7045edcf2eb502')
-
-prepare() {
-  cd "${srcdir}/${pkgname}_${pkgver}"
-  sed -i $'s|^DEFAULT_PYTHON=\'python\'$|DEFAULT_PYTHON=\'python2\'|' duply
-  sed -i 's|^#PYTHON="python"$|#PYTHON="python2"|' duply
-}
 
 package() {
   install -Dm755 "${srcdir}/${pkgname}_${pkgver}/duply" "$pkgdir/usr/bin/duply"
