@@ -1,0 +1,23 @@
+#%Module1.0
+#
+# Created by Darjan Krijan <darjan_krijan@gmx.de>
+#
+
+set MDL       "amduprof"
+set BASE_DIR  "/opt"
+set VERSION   "3.2.228"
+set MDL_ROOT "$BASE_DIR/$MDL"
+set MDL_TEXT "AMD uProf performance analysis tool"
+
+prepend-path PATH            $MDL_ROOT/bin
+prepend-path PKG_CONFIG_PATH $MDL_ROOT/lib/pkgconfig
+
+module-whatis "$MDL_TEXT version $VERSION"
+
+proc ModulesHelp {} {
+	global MDL_TEXT
+	puts stderr "This module sets up the environment for $MDL_TEXT"
+	puts stderr "by adapting the following environment variables:"
+	puts stderr "PATH"
+	puts stderr "PKG_CONFIG_PATH"
+}

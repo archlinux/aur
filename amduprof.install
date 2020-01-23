@@ -1,0 +1,7 @@
+post_install() {
+	echo "Use 'module load amduprof' to set up the environment for AMD uProf performance analysis tool."
+}
+
+post_upgrade() {
+	post_install
+}

@@ -1,15 +1,19 @@
 pkgbase = amduprof
-	pkgdesc = AMD uProf is a performance analysis tool for applications running on Windows and Linux operating systems. It allows developers to better understand the runtime performance of their application and to identify ways to improve its performance.
-	pkgver = 3.1.35
+	pkgdesc = AMD uProf performance analysis tool.
+	pkgver = 3.2.228
 	pkgrel = 1
 	url = https://developer.amd.com/amd-uprof/
+	install = amduprof.install
 	arch = x86_64
 	license = custom
+	depends = env-modules
 	options = staticlibs
 	options = !strip
 	options = libtool
-	source = local://AMDuProf_Linux_x64_3.1.35.tar.bz2
-	md5sums = d5097d8066c0f6ecdc0f82f4c92dc591
+	source = local://AMDuProf_Linux_x64_3.2.228.tar.bz2
+	source = local://modulefile
+	md5sums = 5b7927f1b583fc56f9d021d8116496af
+	md5sums = SKIP
 
 pkgname = amduprof
 
