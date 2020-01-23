@@ -1,7 +1,7 @@
 pkgbase = wpewebkit
 	pkgdesc = Web content engine library optimized for embedded devices
-	pkgver = 2.26.2
-	pkgrel = 2
+	pkgver = 2.26.3
+	pkgrel = 1
 	url = https://wpewebkit.org
 	arch = x86_64
 	arch = i686
@@ -31,14 +31,14 @@ pkgbase = wpewebkit
 	depends = geoclue
 	depends = at-spi2-atk
 	depends = libwpe>=1.4.0
-	source = https://wpewebkit.org/releases/wpewebkit-2.26.2.tar.xz
-	source = https://wpewebkit.org/releases/wpewebkit-2.26.2.tar.xz.asc
+	source = https://wpewebkit.org/releases/wpewebkit-2.26.3.tar.xz
+	source = https://wpewebkit.org/releases/wpewebkit-2.26.3.tar.xz.asc
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
-	md5sums = 057cc2647231e90c8197873df9a9f54c
+	md5sums = 735beb5c1f825d5feda2e355aca6bec0
 	md5sums = SKIP
-	sha1sums = eca4e35af2c2e70bd36a9bdef3bfbbfbd417210c
+	sha1sums = aeda665b3a137ac748ff1d08ce9e4c751f7caf97
 	sha1sums = SKIP
-	sha256sums = dd4fce390f1721d8d6d017fa712adb990f7230bde84a1b7d27327bd589053fdd
+	sha256sums = 2da9fe9c3a8bdfecc4281d848a4eacdd7be8ac5e0fc397020094d68cf32c10b3
 	sha256sums = SKIP
 
 pkgname = wpewebkit
