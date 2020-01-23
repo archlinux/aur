@@ -1,12 +1,11 @@
 pkgbase = coin
 	pkgdesc = A high-level 3D graphics toolkit on top of OpenGL
-	pkgver = 4.0.0a+11927+me74da184f75b
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://bitbucket.org/Coin3D/coin
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = mercurial
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = glu
@@ -15,12 +14,10 @@ pkgbase = coin
 	optdepends = fontconfig: dynamic linking support
 	optdepends = zlib: dynamic linking support
 	optdepends = freetype2: dynamic linking support
-	source = coin::hg+https://bitbucket.org/Coin3D/coin#revision=e74da184f75b
-	source = generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration
-	source = boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/coin3d/coin/archive/Coin-4.0.0.tar.gz
+	source = coin-remove-cpack.patch::https://github.com/coin3d/coin/commit/be8e3d5.patch
+	sha256sums = b00d2a8e9d962397cf9bf0d9baa81bcecfbd16eef675a98c792f5cf49eb6e805
+	sha256sums = c77a6bbcaef4d65b45eac7711d3be713d4d23699d63a38f57030febb4b16e24d
 
 pkgname = coin
 	optdepends = openal: sound/dynamic linking support
