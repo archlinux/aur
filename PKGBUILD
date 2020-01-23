@@ -1,7 +1,8 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tealdeer-git
 _name=tealdeer
-pkgver=r150.c1ca5ce
+_binname=tldr
+pkgver=r204.7a3a565
 pkgrel=1
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
@@ -10,32 +11,35 @@ license=('MIT' 'Apache')
 depends=()
 makedepends=('git' 'rust' 'cargo')
 provides=('tldr')
-conflicts=('nodejs-tldr' 'nodejs-tldr-git' 'tealdeer' 'tldr-bash-git' 'tldr-cpp-client'
-           'tldr-git' 'tldr-go-client-git' 'tldr-python-client')
+conflicts=('tldr')
 options=(!emptydirs)
 source=('git+https://github.com/dbrgn/tealdeer')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_name" || exit 1
+
+  # Patch version
   sed -i 's/^version = "\(.*\)"/version = "\1-aur-'${pkgver}'"/' Cargo.toml
+
+  # Build a release build
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_name" || exit 1
 
   # Install binary
-  mkdir -p $pkgdir/usr/bin
-  install -o root -g root -m 755 target/release/tldr $pkgdir/usr/bin
+  install -D -o root -g root -m 755 target/release/tldr "$pkgdir/usr/bin/${_binname}"
 
-  # Install bash completions
-  mkdir -p $pkgdir/usr/share/bash-completion/completions
-  install -o root -g root -m 644 bash_tealdeer $pkgdir/usr/share/bash-completion/completions/tldr
+  # Install shell completions
+  install -D -o root -g root -m 644 bash_tealdeer "$pkgdir/usr/share/bash-completion/completions/${_binname}"
+  install -D -o root -g root -m 644 fish_tealdeer "${pkgdir}/usr/share/fish/completions/${_binname}.fish"
+  install -D -o root -g root -m 644 zsh_tealdeer "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
 }
 
 pkgver() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_name" || exit 1
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
