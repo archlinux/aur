@@ -14,5 +14,6 @@ source_x86_64=(https://downloads.remotixcloud.com/qc-linux/${pkgname}-${pkgver}-
 sha256sums_x86_64=('f3021ea6f26c393a7d208789c2c086810b7e202bbd2523ba1c75e4e679b9c69f')
 
 package() {
-    bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
+    cd "${pkgdir}"
+    tar -xpJf "${srcdir}/data.tar.xz"
 }
