@@ -1,0 +1,14 @@
+pkgbase = cljstyle-bin
+	pkgdesc = A tool for formatting Clojure code
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/greglook/cljstyle
+	arch = x86_64
+	license = EPL
+	provides = cljstyle
+	conflicts = cljstyle
+	source = https://github.com/greglook/cljstyle/releases/download/0.11.1/cljstyle_0.11.1_linux.tar.gz
+	sha256sums = 690b408fbabfc8e838544a5438c3d6dbf456962be410a4c858697c48ae8dc9b4
+
+pkgname = cljstyle-bin
+
