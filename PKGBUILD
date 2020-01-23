@@ -3,7 +3,7 @@
 
 _basever=2.0.0.alpha
 pkgname=libmypaint-git
-pkgver=2.0.0.alpha.r782.8c40ca3
+pkgver=2.0.0.alpha.r951.8da671c
 pkgrel=1
 pkgdesc="A library for making brushstrokes which is used by MyPaint and other projects."
 arch=('i686' 'x86_64')
@@ -24,6 +24,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/libmypaint"
+    export CFLAGS='-Ofast -ftree-vectorize -fopt-info-vec-optimized -march=native -mtune=native -funsafe-math-optimizations -funsafe-loop-optimizations'
     
 }
 
