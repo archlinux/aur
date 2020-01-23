@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-systemd
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Start and stop systemd services"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/plasma-systemd"
