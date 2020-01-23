@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-ndi
 pkgver=4.2.2
-pkgrel=1
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI added and enabled'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -16,7 +16,6 @@ depends=(
   gmp
   gnutls
   gsm
-  intel-media-sdk
   jack
   lame
   libass.so
@@ -26,6 +25,7 @@ depends=(
   libdrm
   libfreetype.so
   libiec61883
+  libmfx
   libmodplug
   libomxil-bellagio
   libpulse
@@ -66,7 +66,10 @@ makedepends=(
   ladspa
   nasm
 )
-optdepends=('ladspa: LADSPA filters')
+optdepends=(
+  'intel-media-sdk: Intel QuickSync support'
+  'ladspa: LADSPA filters'
+)
 provides=(
   ffmpeg
   libavcodec.so
@@ -97,8 +100,6 @@ prepare() {
 
 build() {
   cd ffmpeg
-
-  export PKG_CONFIG_PATH=/opt/intel/mediasdk/lib/pkgconfig
 
   ./configure \
     --prefix=/usr \
