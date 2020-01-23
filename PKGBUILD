@@ -5,7 +5,7 @@
 
 _basever=1.3.0.alpha
 pkgname=mypaint-git
-pkgver=1.3.0.alpha.r5011.57685af8
+pkgver=1.3.0.alpha.r5618.d903b250
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/mypaint"
+    export CFLAGS='-Ofast -ftree-vectorize -fopt-info-vec-optimized -march=native -mtune=native -funsafe-math-optimizations -funsafe-loop-optimizations'
 }
 
 build() {
