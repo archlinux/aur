@@ -1,7 +1,7 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=docker-compose-bin
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 pkgdesc="Pythonless package of a a tool for defining and running multi-container applications"
 depends=('docker')
@@ -9,13 +9,13 @@ arch=('x86_64')
 conflicts=('docker-compose')
 options=(!strip)
 source=(
-  "docker-compose-$pkgver::https://github.com/docker/compose/releases/download/v$pkgver/docker-compose-Linux-x86_64"
-  "$pkgver.tar.gz::https://github.com/docker/compose/archive/v$pkgver.tar.gz"
+  "docker-compose-$pkgver::https://github.com/docker/compose/releases/download/$pkgver/docker-compose-Linux-x86_64"
+  "https://github.com/docker/compose/archive/$pkgver.tar.gz"
 )
 url="https://github.com/docker/compose"
 license=("Apache")
-sha256sums=('786f9390aa8d72bcf34a1757df71577b7d8b7cb915205f72f12b9ee3ca0e0cc6'
-            'c74550785929b319e8ec2771442041b4f77aad7eb54437c10d9f43b92d619f23')
+sha256sums=('b3835d30f66bd3b926511974138923713a253d634315479b9aa3166c0050da98'
+            'c294f71baab825b787b8c66a1e03c4631ed6813fee4e3b3b8a48fc65c7314ecb')
 
 package() {
   cd "$srcdir"
