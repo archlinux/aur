@@ -6,7 +6,7 @@
 _pkgbasename='waffle'
 pkgname="lib32-${_pkgbasename}"
 pkgver='1.6.0'
-pkgrel='3'
+pkgrel='1'
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
 url='http://www.waffle-gl.org'
