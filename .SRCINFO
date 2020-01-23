@@ -1,0 +1,14 @@
+pkgbase = golang-github-swaywm-go-wlroots
+	pkgdesc = Go binding for wlroots
+	pkgver = 20200121
+	pkgrel = 1
+	url = https://github.com/swaywm/go-wlroots
+	arch = any
+	license = BSD
+	depends = go-pie>=1.8
+	depends = wayland
+	depends = wlroots>=0.9.0
+	source = golang-github-swaywm-go-wlroots-20200121-1.tar.gz::https://github.com/swaywm/go-wlroots/archive/0646c28e8eb84a463af2bcfe424122b28dd5e565.tar.gz
+	sha256sums = e30f45cf794c48c70841321ed02af651b22c9cf47623fd7bb21defe1a1ed444e
+
+pkgname = golang-github-swaywm-go-wlroots
