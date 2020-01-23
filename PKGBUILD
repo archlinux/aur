@@ -4,13 +4,13 @@
 _pkgname=drupal-check
 pkgname=${_pkgname}
 pkgver=1.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Check Drupal code for deprecations and discover bugs via static analysis."
 arch=('any')
 url="https://github.com/mglaman/drupal-check"
 license=('GPL')
 depends=('php')
-makedepends=("php-box" "php-composer" "git")
+makedepends=("php-humbug-box-bin" "php-composer" "git")
 source=("${_pkgname}::git+${url}.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
@@ -19,7 +19,7 @@ build() {
   php /usr/bin/composer install --prefer-dist
 
   ulimit -Sn 2048
-  php -d phar.readonly=Off /usr/bin/php-box build
+  php -d phar.readonly=Off /usr/bin/box compile
 }
 
 package() {
