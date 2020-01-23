@@ -3,7 +3,7 @@
 #               stepych <msaleksandr@gmail.com>
 
 pkgname=kbdd-git
-pkgrel=1
+pkgrel=2
 pkgver=0.7.1.r7.g9dca0b7
 provides=('kbdd')
 conflicts=('kbdd')
@@ -11,7 +11,7 @@ pkgdesc="Simple daemon and library to make per window layout"
 arch=('i686' 'x86_64')
 url="https://github.com/qnikst/kbdd"
 license=('GPL3')
-makedepends=('git' 'automake' 'autoconf')
+makedepends=('git' 'automake' 'autoconf' 'python')
 depends=('libx11' 'dbus-glib')
 source=("git://github.com/qnikst/kbdd")
 md5sums=('SKIP')

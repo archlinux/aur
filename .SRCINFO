@@ -1,7 +1,7 @@
 pkgbase = kbdd-git
 	pkgdesc = Simple daemon and library to make per window layout
 	pkgver = 0.7.1.r7.g9dca0b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qnikst/kbdd
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kbdd-git
 	makedepends = git
 	makedepends = automake
 	makedepends = autoconf
+	makedepends = python
 	depends = libx11
 	depends = dbus-glib
 	provides = kbdd
