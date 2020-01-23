@@ -1,6 +1,6 @@
 pkgbase = tomoyo-tools
 	pkgdesc = TOMOYO Linux 2.6.x userspace tools for Linux kernel 5.1 and later
-	pkgver = 2.6.0.20190305
+	pkgver = 2.6.0.20200101
 	pkgrel = 1
 	url = https://tomoyo.osdn.jp
 	install = tomoyo-tools.install
@@ -9,12 +9,12 @@ pkgbase = tomoyo-tools
 	depends = ncurses>=6.0
 	optdepends = linux: TOMOYO Linux enabled kernel
 	conflicts = linux-lts-tomoyo
-	source = https://jaist.dl.osdn.jp/tomoyo/70710/tomoyo-tools-2.6.0-20190305.tar.gz
-	source = https://jaist.dl.osdn.jp/tomoyo/70710/tomoyo-tools-2.6.0-20190305.tar.gz.asc
+	source = https://jaist.dl.osdn.jp/tomoyo/70710/tomoyo-tools-2.6.0-20200101.tar.gz
+	source = https://jaist.dl.osdn.jp/tomoyo/70710/tomoyo-tools-2.6.0-20200101.tar.gz.asc
 	source = tomoyo-tools.install
 	source = tomoyo-auditd.service
 	validpgpkeys = 43C83369623D7AD3A96C2FC7425F128D0C64F52A
-	sha256sums = aa0b362a6bf983bf2da0d241605f3ce7575b1f4e65291cbc70392a260ae51e64
+	sha256sums = d023ec582bf5a26c424975d1fc141b4d424071aa24ac6688f32492ec7ba3162b
 	sha256sums = SKIP
 	sha256sums = b5a1b4508f7c0430f73d0977ad496fae686679201c8779843b56c308d295ab21
 	sha256sums = faf16938762902a73e50fdaa82d17c0fe13ef3c305508b55fa2cc64bacf998dd

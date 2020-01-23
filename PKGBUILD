@@ -6,7 +6,7 @@
 pkgname=tomoyo-tools
 _file=70710
 _basever=2.6.0
-_timestamp=20190305
+_timestamp=20200101
 pkgver=${_basever}.${_timestamp}
 pkgrel=1
 pkgdesc='TOMOYO Linux 2.6.x userspace tools for Linux kernel 5.1 and later'
@@ -23,7 +23,7 @@ source=(
         'tomoyo-tools.install'
         'tomoyo-auditd.service'
        )
-sha256sums=('aa0b362a6bf983bf2da0d241605f3ce7575b1f4e65291cbc70392a260ae51e64'
+sha256sums=('d023ec582bf5a26c424975d1fc141b4d424071aa24ac6688f32492ec7ba3162b'
             'SKIP'
             'b5a1b4508f7c0430f73d0977ad496fae686679201c8779843b56c308d295ab21'
             'faf16938762902a73e50fdaa82d17c0fe13ef3c305508b55fa2cc64bacf998dd')
