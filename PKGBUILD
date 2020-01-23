@@ -1,6 +1,6 @@
 # Maintainer: Aaron Rogers <aaron.kyle.rogers at gmail dot com>
 pkgname="obd-auto-doctor"
-pkgver="3.6.0"
+pkgver="3.6.2"
 pkgrel="1"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
@@ -25,6 +25,5 @@ package() {
 
 	install -D -m644 "./license.txt" "${pkgdir}/usr/share/licenses/obdautodoctor/LICENSE"
 }
-
-md5sums_i686=('f83b9ae3f9289954a10fdb05611d1e7d')
-md5sums_x86_64=('1e108c1fc1e65d4d260b4c82c259e006')
+md5sums_i686=('064a819db28d3bcb6ad83b89ea300ea8')
+md5sums_x86_64=('cc911bdb97e2f490a48bc47b21d21676')
