@@ -3,7 +3,7 @@
 
 _pkgbase=r8125
 pkgname=(r8125 r8125-dkms)
-pkgver=9.002.02
+pkgver=9.003.02
 pkgrel=0
 pkgdesc="r8125 kernel driver for linux"
 arch=('x86_64')
@@ -11,13 +11,13 @@ url="https://www.realtek.com/"
 license=('GPL2')
 source=("https://github.com/ibmibmibm/r8125/archive/${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('046d880547f2a1b817172621b046ebfc2d5ab951b636625be792252977eaf9ae'
-            '207a1de30627947950d1dbafc1e45f719e996e4d0ab7dd8c9c2530cc74bea0c9')
+sha256sums=('1531cc3d9649ea45fa324354adc22bdf75966db033da1385bc6f86fc398b7b9d'
+            'afcc422c14e908c89cd2b4338b2c3d1f40f1f583511f37f212bd912b27669315')
 
 build() {
   tar -xf "${pkgver}.tar.gz"
-  cd ${_pkgbase}-${pkgver}
-  make modules
+  cd "${_pkgbase}-${pkgver}"/src
+  make -C "/lib/modules/$(</usr/src/linux/version)/build" M="$(pwd)" modules
 }
 
 package_r8125() {
