@@ -38,6 +38,7 @@ prepare() {
 build() {
     cd $srcdir/Generals-Alpha
     make version VERSION="${pkgver}"
+    printf "Per https://github.com/MustaphaTR/Generals-Alpha/issues/13 this mod currently will not build properly."
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
@@ -47,7 +48,7 @@ package() {
     cd $srcdir/Generals-Alpha
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/${_pkgname},share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/${_pkgname}
-    cp -r generals-alpha-engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/${_pkgname}
+    cp -r generals-alpha-engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/${_pkgname}
     cp -r mods/gen $pkgdir/usr/lib/${_pkgname}/mods
     cp -r generals-alpha-engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
