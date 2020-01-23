@@ -2,14 +2,14 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 pkgname=tldr++
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('any')
 url="https://isacikgoz.me/tldr"
 license=('MIT')
 makedepends=('go-pie' 'dep' 'git')
 provides=("${pkgname%++}")
-conflicts=("${pkgname%++}" 'tldr-bash' 'nodejs-tldr' 'tldr-python-client')
+conflicts=("${pkgname%++}" 'nodejs-tldr' 'tldr-bash-git' 'tldr-cpp-client' 'tldr-python-client')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/isacikgoz/tldr/archive/v$pkgver.tar.gz")
 sha256sums=('e377942c6dd9cbe3f9f55b7614e17b7c5f0694b326ad3993d0cde59aca8dc8fa')
 
