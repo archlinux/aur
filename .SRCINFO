@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-laszip
+	pkgdesc = ASPRS LAS lossless compression library (mingw-w64)
+	pkgver = 3.4.3
+	pkgrel = 1
+	url = https://laszip.org
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/LASzip/LASzip/releases/download/3.4.3/laszip-src-3.4.3.tar.gz
+	sha512sums = 52033d4e271a75f77de9f112e034ff080e476c0d117010136088b255323e4542550c0fa4f87d86521959787919ca3c7e49ef8c8975ba8f8239799a4d7f34d53f
+
+pkgname = mingw-w64-laszip
+
