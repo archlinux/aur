@@ -3,7 +3,7 @@
 
 pkgname=perl-devel-dumpvar
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 _author="A/AD/ADAMK"
 _perlmod="Devel-Dumpvar"
 pkgdesc="Devel-Dumpvar - A pure-OO reimplementation of dumpvar.pl"
@@ -36,7 +36,7 @@ build(){
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
 
-  prove -r
+  prove -rl
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
