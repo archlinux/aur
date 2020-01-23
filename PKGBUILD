@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bao-git
-pkgver=0.10.0.r13.g9448902
+pkgver=0.10.0.r15.g8255146
 pkgrel=1
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
@@ -38,5 +38,5 @@ package() {
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/bao"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bao"
 
-  rm "$pkgdir/usr/.crates.toml"
+  rm -f "$pkgdir/usr"/.crates*
 }
