@@ -7,7 +7,7 @@
 pkgbase=sip418
 pkgname=('sip418' 'python-sip418' 'python2-sip418')
 pkgver=4.18.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.riverbankcomputing.com/software/sip/intro'
 license=('custom:"sip"')
@@ -52,11 +52,11 @@ package_python-sip418() {
 
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}-418/LICENSE
 
-  install -d "${pkgdir}/usr/lib/python3.7/site-packages/sip418" \
-             "${pkgdir}/usr/include/python3.7m/sip418"
-  mv "${pkgdir}/usr/lib/python3.7/site-packages/sip.so" "${pkgdir}/usr/lib/python3.7/site-packages/sip418/sip.so"
-  mv "${pkgdir}/usr/lib/python3.7/site-packages/sip.pyi" "${pkgdir}/usr/lib/python3.7/site-packages/sip418/sip.pyi"
-  mv "${pkgdir}/usr/include/python3.7m/sip.h" "${pkgdir}/usr/include/python3.7m/sip418/sip.h"
+  install -d "${pkgdir}/usr/lib/python3.8/site-packages/sip418" \
+             "${pkgdir}/usr/include/python3.8/sip418"
+  mv "${pkgdir}/usr/lib/python3.8/site-packages/sip.so" "${pkgdir}/usr/lib/python3.8/site-packages/sip418/sip.so"
+  mv "${pkgdir}/usr/lib/python3.8/site-packages/sip.pyi" "${pkgdir}/usr/lib/python3.8/site-packages/sip418/sip.pyi"
+  mv "${pkgdir}/usr/include/python3.8/sip.h" "${pkgdir}/usr/include/python3.8/sip418/sip.h"
 }
 
 package_python2-sip418() {
