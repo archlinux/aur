@@ -4,14 +4,19 @@ _projectname='electron'
 _pkgname="${_projectname}3"
 pkgname="$_pkgname-bin"
 pkgver='3.1.13'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Build cross platform desktop apps with web technologies - version 3 - binary version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org/"
 license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('gtk3' 'libxss' 'nss')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy')
+optdepends=(
+	'kde-cli-tools: file deletion support (kioclient5)'
+	'trash-cli: file deletion support (trash-put)'
+	"xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)"
+)
 _releaseurl="https://github.com/$_projectname/$_projectname/releases/download/v$pkgver"
 source_x86_64=(
 	"$pkgname-chromedriver-$pkgver-$pkgrel-x86_64.zip::$_releaseurl/chromedriver-v$pkgver-linux-x64.zip"
