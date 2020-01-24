@@ -2,6 +2,19 @@ Changelog
 =========
 
 
+0.4.1_16_gff7308c
+------------
+
+New
+~~~
+- Usr: Documentation now also complies to the ENABLE_WERROR setting for
+  enabling/disabling warning as error when building. [Bart Verhagen]
+- Usr: Moved to MSVC14.2 (2019) and Boost 1.71 for the pre-compiled
+  Windows installer. [Bart Verhagen]
+- Usr: Most of the built-in modules are now converted to lua modules.
+  [Bart Verhagen]
+
+
 0.4.1 (2019-10-08)
 ------------------
 
