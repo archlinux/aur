@@ -2,7 +2,7 @@
 
 pkgname=jupyterlab_code_formatter
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=('any')
 url='https://pypi.org/project/jupyterlab-code-formatter'
@@ -12,6 +12,7 @@ depends=(
   jupyterlab
   jupyter-notebook
   python-packaging)
+makedepends=('python-setuptools')
 optdepends=(
   autopep8
   yapf
@@ -23,13 +24,13 @@ md5sums=('cdca2a5ac09ce432a8f4cd82efbe0c6d'
          'SKIP')
 
 build() {
-	cd "${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 	python setup.py clean --all
 	python setup.py build
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 	python setup.py install --root "$pkgdir" --skip-build --optimize=1
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

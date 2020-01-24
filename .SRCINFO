@@ -1,10 +1,11 @@
 pkgbase = jupyterlab_code_formatter
 	pkgdesc = A universal code formatter for JupyterLab.
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/jupyterlab-code-formatter
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	depends = jupyterlab
 	depends = jupyter-notebook
