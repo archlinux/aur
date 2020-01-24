@@ -1,12 +1,11 @@
 # Maintainer: allencch <allencch at hotmail dot com>
 pkgname=inclusive
 pkgver=3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrated clustering, upstream sequence retrieval and motif sampling"
 arch=('i686' 'x86_64')
 url="http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download.html"
 license=('custom')
-makedepends=("")
 source=("http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifSampler"
 "http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifScanner"
 "http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download/linux_3.2/MotifLocator"

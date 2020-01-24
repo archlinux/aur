@@ -1,7 +1,7 @@
 pkgbase = inclusive
 	pkgdesc = Integrated clustering, upstream sequence retrieval and motif sampling
 	pkgver = 3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://homes.esat.kuleuven.be/~sistawww/bioi/thijs/download.html
 	arch = i686
 	arch = x86_64
