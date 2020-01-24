@@ -3,7 +3,7 @@
 pkgname=marvin
 pkgver=20.3.0
 _pkgver=$(echo $pkgver | sed 's/.[0-9]$//g')
-pkgrel=2
+pkgrel=1
 pkgdesc="Intuitive applications and API for chemical sketching, visualization and data exploration"
 arch=('any')
 url="http://www.chemaxon.com"

@@ -1,7 +1,7 @@
 pkgbase = marvin
 	pkgdesc = Intuitive applications and API for chemical sketching, visualization and data exploration
 	pkgver = 20.3.0
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.chemaxon.com
 	arch = any
 	license = proprietary
