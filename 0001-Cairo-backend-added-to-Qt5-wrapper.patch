@@ -1,4 +1,4 @@
-From 3a7e0da0618def03a1913ceb0b1f4543f2ea32ef Mon Sep 17 00:00:00 2001
+From c9ef97b68af1327131793d68d273e751a7d90329 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
-index ca1f2478..af19e065 100644
+index 643f56a1..eaadd0c0 100644
 --- a/qt5/src/CMakeLists.txt
 +++ b/qt5/src/CMakeLists.txt
 @@ -8,6 +8,11 @@ include_directories(
@@ -66,7 +66,7 @@ index ba9b86cd..d4336d3f 100644
      }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 69006754..8b31ec60 100644
+index c9987761..034b9c2b 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -48,6 +48,7 @@
@@ -168,7 +168,7 @@ index 69006754..8b31ec60 100644
    return false;
  }
 diff --git a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
-index 1460690f..96f1b986 100644
+index c501f67f..e9ec5f10 100644
 --- a/qt5/src/poppler-qt5.h
 +++ b/qt5/src/poppler-qt5.h
 @@ -1151,7 +1151,8 @@ delete it;
@@ -198,5 +198,5 @@ index 5abcbc45..99c12b9f 100644
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.24.0
+2.24.1
 
