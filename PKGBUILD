@@ -1,5 +1,5 @@
 # Maintainer: Andrew Lee <alee14498 at protonmail dot com>
-pkgname=aleeplayer-git
+pkgname=aleeplayer
 pkgver=1.0.0
 pkgrel=0
 pkgdesc="A audio player written in Qt"

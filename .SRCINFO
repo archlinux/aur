@@ -1,4 +1,4 @@
-pkgbase = aleeplayer-git
+pkgbase = aleeplayer
 	pkgdesc = A audio player written in Qt
 	pkgver = 1.0.0
 	pkgrel = 0
