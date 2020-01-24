@@ -1,5 +1,5 @@
 pkgbase = aleeplayer
-	pkgdesc = A audio player written in Qt
+	pkgdesc = An audio player written in Qt
 	pkgver = 1.0.0
 	pkgrel = 0
 	url = https://github.com/aleeproductions/AleePlayer
