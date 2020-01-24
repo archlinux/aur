@@ -3,7 +3,7 @@
 
 pkgname=ats2-contrib
 _pkgname=ATS2-Postiats-contrib
-pkgver=0.3.13
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Extra libraries for the ATS2 programming language"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=("ats2-postiats=${pkgver}")
 options=('staticlibs')
 source=("https://downloads.sourceforge.net/project/ats2-lang/ats2-lang/ats2-postiats-${pkgver}/${_pkgname}-${pkgver}.tgz")
-sha1sums=('b3887082b5e1084d2a447d11ff99f02b7322a345')
+sha256sums=('f5641a11dd6473a4904f84b08b713bdb0ae01a99f2914c6e5b2e0a2eccbc93b9')
 
 prepare() {
     # Duplicated from upstream's ats2-postiats archive
