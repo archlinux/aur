@@ -1,68 +1,347 @@
+diff --git a/Telegram/CMakeLists.txt b/Telegram/CMakeLists.txt
+index 1b86c2cd1..1d19b9474 100644
+--- a/Telegram/CMakeLists.txt
++++ b/Telegram/CMakeLists.txt
+@@ -1205,5 +1205,6 @@ if (LINUX AND DESKTOP_APP_USE_PACKAGED)
+     install(FILES "Resources/art/icon256.png" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps" RENAME "kotatogram.png")
+     install(FILES "Resources/art/icon512.png" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/512x512/apps" RENAME "kotatogram.png")
+     install(FILES "../lib/xdg/kotatogramdesktop.desktop" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications" RENAME "${TDESKTOP_LAUNCHER_BASENAME}.desktop")
++    install(FILES "../lib/xdg/autostart/kotatogramdesktop.desktop" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/KotatogramDesktop/autostart" RENAME "${TDESKTOP_LAUNCHER_BASENAME}.desktop")
+     install(FILES "../lib/xdg/kotatogramdesktop.appdata.xml" DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo" RENAME "${TDESKTOP_LAUNCHER_BASENAME}.appdata.xml")
+ endif()
 diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.cpp b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-index 68d07a55b..762d04ca6 100644
+index a085956ac..ec02c18af 100644
 --- a/Telegram/SourceFiles/platform/linux/specific_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/specific_linux.cpp
-@@ -393,6 +393,55 @@ bool psShowOpenWithMenu(int x, int y, const QString &file) {
+@@ -17,6 +17,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ #include "storage/localstorage.h"
+ #include "core/crash_reports.h"
+ #include "core/update_checker.h"
++#include "base/openssl_help.h"
+ 
+ #include <QtWidgets/QApplication>
+ #include <QtWidgets/QDesktopWidget>
+@@ -87,10 +88,108 @@ void FallbackFontConfig() {
+ #endif // !DESKTOP_APP_USE_PACKAGED
+ }
+ 
++bool GenerateDesktopFile(const QString &targetPath, const QString &args) {
++	DEBUG_LOG(("App Info: placing .desktop file to %1").arg(targetPath));
++	if (!QDir(targetPath).exists()) QDir().mkpath(targetPath);
++
++	QString path = cWorkingDir() + qsl("tdata/"),
++		file = path
++			+ qsl(MACRO_TO_STRING(TDESKTOP_LAUNCHER_BASENAME) ".desktop");
++	QDir().mkpath(path);
++	QFile f(file);
++	if (f.open(QIODevice::WriteOnly)) {
++		QTextStream s(&f);
++		s.setCodec("UTF-8");
++		s << "[Desktop Entry]\n";
++		s << "Version=1.0\n";
++		s << "Name=" << str_const_toString(AppName) << "\n";
++		s << "Comment=Experimental Telegram Desktop fork\n";
++		s << "TryExec="
++			<< EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << "\n";
++		s << "Exec="
++			<< EscapeShell(QFile::encodeName(cExeDir() + cExeName()))
++			<< (args.isEmpty() ? QString() : ' ' + args) << "\n";
++		s << "Icon=kotatogram\n";
++		s << "Terminal=false\n";
++		s << "StartupWMClass="
++			<< QCoreApplication::instance()->applicationName() << "\n";
++		s << "Type=Application\n";
++		s << "Categories=Chat;Network;InstantMessaging;Qt;\n";
++		s << "MimeType=x-scheme-handler/tg;\n";
++		s << "Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;\n";
++		s << "X-GNOME-UsesNotifications=true\n";
++		f.close();
++
++		if (RunShellCommand("desktop-file-install --dir="
++			+ EscapeShell(QFile::encodeName(targetPath))
++			+ " --delete-original "
++			+ EscapeShell(QFile::encodeName(file)))) {
++			DEBUG_LOG(("App Info: removing old .desktop file"));
++			QFile(qsl("%1kotatogram.desktop").arg(targetPath)).remove();
++
++			RunShellCommand("update-desktop-database "
++				+ EscapeShell(QFile::encodeName(targetPath)));
++			RunShellCommand("xdg-mime default "
++				+ QByteArrayLiteral(
++					MACRO_TO_STRING(TDESKTOP_LAUNCHER_FILENAME))
++				+ ".desktop x-scheme-handler/tg");
++		}
++
++		return true;
++	} else {
++		LOG(("App Error: Could not open '%1' for write").arg(file));
++		return false;
++	}
++}
++
+ } // namespace
+ 
+ namespace Platform {
+ 
++#ifndef TDESKTOP_DISABLE_DBUS_INTEGRATION
++SandboxAutostart::SandboxAutostart()
++: _handleToken(qsl("tdesktop")
++		+ QString::number(openssl::RandomValue<uint>()))
++, _backgroundInterface(
++		qsl("org.freedesktop.portal.Desktop"),
++		qsl("/org/freedesktop/portal/desktop"),
++		qsl("org.freedesktop.portal.Background"))
++, _requestInterface(
++		qsl("org.freedesktop.portal.Desktop"),
++		qsl("/org/freedesktop/portal/desktop/request/")
++			+ _backgroundInterface.connection().baseService()
++			+ '/' + _handleToken,
++		qsl("org.freedesktop.portal.Background")) {
++	_options["handle_token"] = _handleToken;
++	_options["commandline"] = QStringList()
++		<< cExeName()
++		<< qsl("-autostart");
++	_options["dbus-activatable"] = false;
++
++	connect(&_requestInterface,
++		SIGNAL(Response(QString)),
++		this, SLOT(responseHandler(QString)));
++}
++
++void SandboxAutostart::enableAutostart() {
++	_options["reason"] = qsl("Add to autostart");
++	_options["autostart"] = true;
++
++	_backgroundInterface.call(qsl("RequestBackground"), QString(), _options);
++}
++
++void SandboxAutostart::disableAutostart() {
++	_options["reason"] = qsl("Remove from autostart");
++	_options["autostart"] = false;
++
++	_backgroundInterface.call(qsl("RequestBackground"), QString(), _options);
++}
++
++void SandboxAutostart::responseHandler(const QVariantMap &response) {
++	LOG(("background: %1, autostart: %2").arg(response["background"].toBool()).arg(response["autostart"].toBool()));
++}
++#endif
++
+ void SetApplicationIcon(const QIcon &icon) {
+ 	QApplication::setWindowIcon(icon);
+ }
+@@ -263,58 +362,23 @@ void RegisterCustomScheme() {
+ 		return;
+ 
+ #ifndef TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION
+-	DEBUG_LOG(("App Info: placing .desktop file"));
+-	if (QDir(home + qsl(".local/")).exists()) {
+-		QString apps = home + qsl(".local/share/applications/");
+-		QString icons = home + qsl(".local/share/icons/");
+-		if (!QDir(apps).exists()) QDir().mkpath(apps);
+-		if (!QDir(icons).exists()) QDir().mkpath(icons);
+-
+-		QString path = cWorkingDir() + qsl("tdata/"), file = path + qsl("kotatogramdesktop.desktop");
+-		QDir().mkpath(path);
+-		QFile f(file);
+-		if (f.open(QIODevice::WriteOnly)) {
+-			QString icon = icons + qsl("kotatogram.png");
+-			auto iconExists = QFile(icon).exists();
+-			if (Local::oldSettingsVersion() < 10021 && iconExists) {
+-				// Icon was changed.
+-				if (QFile(icon).remove()) {
+-					iconExists = false;
+-				}
+-			}
+-			if (!iconExists) {
+-				if (QFile(qsl(":/gui/art/logo_256.png")).copy(icon)) {
+-					DEBUG_LOG(("App Info: Icon copied to 'tdata'"));
+-				}
+-			}
+-
+-			QTextStream s(&f);
+-			s.setCodec("UTF-8");
+-			s << "[Desktop Entry]\n";
+-			s << "Version=1.0\n";
+-			s << "Name=Kotatogram Desktop\n";
+-			s << "Comment=Experimental Telegram Desktop fork\n";
+-			s << "TryExec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << "\n";
+-			s << "Exec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << " -- %u\n";
+-			s << "Icon=kotatogram\n";
+-			s << "Terminal=false\n";
+-			s << "StartupWMClass=KotatogramDesktop\n";
+-			s << "Type=Application\n";
+-			s << "Categories=Network;InstantMessaging;Qt;\n";
+-			s << "MimeType=x-scheme-handler/tg;\n";
+-			s << "Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;\n";
+-			s << "X-GNOME-UsesNotifications=true\n";
+-			f.close();
+-
+-			if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".local/share/applications"))) + " --delete-original " + EscapeShell(QFile::encodeName(file)))) {
+-				DEBUG_LOG(("App Info: removing old .desktop file"));
+-				QFile(qsl("%1.local/share/applications/kotatogram.desktop").arg(home)).remove();
+-
+-				RunShellCommand("update-desktop-database " + EscapeShell(QFile::encodeName(home + qsl(".local/share/applications"))));
+-				RunShellCommand("xdg-mime default kotatogramdesktop.desktop x-scheme-handler/tg");
+-			}
+-		} else {
+-			LOG(("App Error: Could not open '%1' for write").arg(file));
++	GenerateDesktopFile(home + qsl(".local/share/applications/"),
++		qsl("-- %u"));
++
++	QString icons = home + qsl(".local/share/icons/");
++	if (!QDir(icons).exists()) QDir().mkpath(icons);
++
++	QString icon = icons + qsl("kotatogram.png");
++	auto iconExists = QFile(icon).exists();
++	if (Local::oldSettingsVersion() < 10021 && iconExists) {
++		// Icon was changed.
++		if (QFile(icon).remove()) {
++			iconExists = false;
++		}
++	}
++	if (!iconExists) {
++		if (QFile(qsl(":/gui/art/logo_256.png")).copy(icon)) {
++			DEBUG_LOG(("App Info: Icon copied to 'tdata'"));
+ 		}
+ 	}
+ #endif // !TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION
+@@ -324,38 +388,6 @@ void RegisterCustomScheme() {
+ 		RunShellCommand("gconftool-2 -t bool -s /desktop/gnome/url-handlers/tg/needs_terminal false");
+ 		RunShellCommand("gconftool-2 -t bool -s /desktop/gnome/url-handlers/tg/enabled true");
+ 	}
+-
+-	DEBUG_LOG(("App Info: placing .protocol file"));
+-	QString services;
+-	if (QDir(home + qsl(".kde4/")).exists()) {
+-		services = home + qsl(".kde4/share/kde4/services/");
+-	} else if (QDir(home + qsl(".kde/")).exists()) {
+-		services = home + qsl(".kde/share/kde4/services/");
+-	}
+-	if (!services.isEmpty()) {
+-		if (!QDir(services).exists()) QDir().mkpath(services);
+-
+-		QString path = services, file = path + qsl("tg.protocol");
+-		QFile f(file);
+-		if (f.open(QIODevice::WriteOnly)) {
+-			QTextStream s(&f);
+-			s.setCodec("UTF-8");
+-			s << "[Protocol]\n";
+-			s << "exec=" << QFile::decodeName(EscapeShell(QFile::encodeName(cExeDir() + cExeName()))) << " -- %u\n";
+-			s << "protocol=tg\n";
+-			s << "input=none\n";
+-			s << "output=none\n";
+-			s << "helper=true\n";
+-			s << "listing=false\n";
+-			s << "reading=false\n";
+-			s << "writing=false\n";
+-			s << "makedir=false\n";
+-			s << "deleting=false\n";
+-			f.close();
+-		} else {
+-			LOG(("App Error: Could not open '%1' for write").arg(file));
+-		}
+-	}
+ #endif // !TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
+ }
+ 
+@@ -416,6 +448,44 @@ bool psShowOpenWithMenu(int x, int y, const QString &file) {
  }
  
  void psAutoStart(bool start, bool silent) {
 +	auto home = getHomeDir();
 +	if (home.isEmpty() || cAlphaVersion() || cExeName().isEmpty()) return;
 +
-+	if(start) {
-+		DEBUG_LOG(("App Info: placing autostart .desktop file"));
-+		if (QDir(home + qsl(".config/")).exists()) {
-+			QString autostart = home + qsl(".config/autostart/");
-+			if (!QDir(autostart).exists()) QDir().mkpath(autostart);
-+
-+			QString autostartFilePath = cExeDir() + qsl("../share/") + QCoreApplication::instance()->applicationName() + qsl("/autostart/kotatogramdesktop.desktop");
++	if (InSandbox()) {
++#ifndef TDESKTOP_DISABLE_DBUS_INTEGRATION
++		if (start) {
++			SandboxAutostart().enableAutostart();
++		} else {
++			SandboxAutostart().disableAutostart();
++		}
++#endif
++	} else {
++		if (start) {
++			QString autostartFilePath = cExeDir() + qsl("../share/")
++				+ QCoreApplication::instance()->applicationName()
++				+ qsl("/autostart/")
++				+ qsl(MACRO_TO_STRING(TDESKTOP_LAUNCHER_BASENAME) ".desktop");
 +			if (QFile(autostartFilePath).exists()) {
-+				if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))) + " " + EscapeShell(QFile::encodeName(autostartFilePath)))) {
-+					RunShellCommand("update-desktop-database " + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))));
++				QString autostart = home + qsl(".config/autostart/");
++				if (!QDir(autostart).exists()) QDir().mkpath(autostart);
++
++				if (RunShellCommand("desktop-file-install --dir="
++					+ EscapeShell(QFile::encodeName(autostart))
++					+ ' '
++					+ EscapeShell(QFile::encodeName(autostartFilePath)))) {
++					RunShellCommand("update-desktop-database "
++						+ EscapeShell(QFile::encodeName(autostart)));
 +				}
 +			} else {
-+				QString path = cWorkingDir() + qsl("tdata/"), file = path + qsl("kotatogramdesktop.desktop");
-+				QDir().mkpath(path);
-+				QFile f(file);
-+				if (f.open(QIODevice::WriteOnly)) {
-+					QTextStream s(&f);
-+					s.setCodec("UTF-8");
-+					s << "[Desktop Entry]\n";
-+					s << "Version=1.0\n";
-+					s << "Name=" << str_const_toString(AppName) << "\n";
-+					s << "Comment=Experimental Telegram Desktop fork\n";
-+					s << "TryExec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << "\n";
-+					s << "Exec=" << EscapeShell(QFile::encodeName(cExeDir() + cExeName())) << " -autostart\n";
-+					s << "Icon=kotatogram\n";
-+					s << "Terminal=false\n";
-+					s << "StartupWMClass=" << QCoreApplication::instance()->applicationName() << "\n";
-+					s << "Type=Application\n";
-+					s << "Categories=Network;InstantMessaging;Qt;\n";
-+					s << "MimeType=x-scheme-handler/tg;\n";
-+					s << "Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;\n";
-+					s << "X-GNOME-UsesNotifications=true\n";
-+					f.close();
-+
-+
-+					if (RunShellCommand("desktop-file-install --dir=" + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))) + " --delete-original " + EscapeShell(QFile::encodeName(file)))) {
-+						RunShellCommand("update-desktop-database " + EscapeShell(QFile::encodeName(home + qsl(".config/autostart"))));
-+					}
-+				} else {
-+					LOG(("App Error: Could not open '%1' for write").arg(file));
-+				}
++				GenerateDesktopFile(home + qsl(".config/autostart/"),
++					qsl("-autostart"));
 +			}
++		} else {
++			QFile::remove(home + qsl(".config/autostart/")
++				+ qsl(MACRO_TO_STRING(TDESKTOP_LAUNCHER_BASENAME)
++					".desktop"));
 +		}
-+	} else {
-+		QFile::remove(home + qsl(".config/autostart/kotatogramdesktop.desktop"));
 +	}
  }
  
  void psSendToMenu(bool send, bool silent) {
+diff --git a/Telegram/SourceFiles/platform/linux/specific_linux.h b/Telegram/SourceFiles/platform/linux/specific_linux.h
+index 7546f758a..79a2a5f5e 100644
+--- a/Telegram/SourceFiles/platform/linux/specific_linux.h
++++ b/Telegram/SourceFiles/platform/linux/specific_linux.h
+@@ -11,12 +11,42 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+ 
+ #include <signal.h>
+ 
++#ifndef TDESKTOP_DISABLE_DBUS_INTEGRATION
++#include <QtDBus/QDBusInterface>
++#endif
++
+ namespace Data {
+ class LocationPoint;
+ } // namespace Data
+ 
+ namespace Platform {
+ 
++#ifndef TDESKTOP_DISABLE_DBUS_INTEGRATION
++class SandboxAutostart : public QObject {
++	Q_OBJECT
++
++public:
++	SandboxAutostart();
++
++	SandboxAutostart(const SandboxAutostart &other) = delete;
++	SandboxAutostart &operator=(const SandboxAutostart &other) = delete;
++	SandboxAutostart(SandboxAutostart &&other) = delete;
++	SandboxAutostart &operator=(SandboxAutostart &&other) = delete;
++
++	void enableAutostart();
++	void disableAutostart();
++
++private:
++	QString _handleToken;
++	QDBusInterface _backgroundInterface;
++	QDBusInterface _requestInterface;
++	QVariantMap _options;
++
++private slots:
++	void responseHandler(const QVariantMap &response);
++};
++#endif
++
+ inline void SetWatchingMediaKeys(bool watching) {
+ }
+ 
 diff --git a/Telegram/SourceFiles/settings/settings_advanced.cpp b/Telegram/SourceFiles/settings/settings_advanced.cpp
-index 0a41abef7..529be612e 100644
+index eb06cb7ba..3e613ee5a 100644
 --- a/Telegram/SourceFiles/settings/settings_advanced.cpp
 +++ b/Telegram/SourceFiles/settings/settings_advanced.cpp
-@@ -354,7 +354,7 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
+@@ -358,7 +358,7 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
  	}
  
  #ifndef OS_WIN_STORE
@@ -71,9 +350,9 @@ index 0a41abef7..529be612e 100644
  		const auto minimizedToggled = [] {
  			return cStartMinimized() && !Global::LocalPasscode();
  		};
-@@ -365,9 +365,6 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
+@@ -369,9 +369,6 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
  		const auto minimized = addSlidingCheckbox(
- 			tr::lng_settings_start_min(tr::now),
+ 			tr::ktg_settings_start_min(tr::now),
  			minimizedToggled());
 -		const auto sendto = addCheckbox(
 -			tr::ktg_settings_add_sendto(tr::now),
@@ -81,7 +360,7 @@ index 0a41abef7..529be612e 100644
  
  		autostart->checkedChanges(
  		) | rpl::filter([](bool checked) {
-@@ -404,6 +401,12 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
+@@ -408,6 +405,12 @@ void SetupTrayContent(not_null<Ui::VerticalLayout*> container) {
  		) | rpl::start_with_next([=] {
  			minimized->entity()->setChecked(minimizedToggled());
  		}, minimized->lifetime());
@@ -94,3 +373,22 @@ index 0a41abef7..529be612e 100644
  
  		sendto->checkedChanges(
  		) | rpl::filter([](bool checked) {
+diff --git a/lib/xdg/autostart/kotatogramdesktop.desktop b/lib/xdg/autostart/kotatogramdesktop.desktop
+new file mode 100644
+index 000000000..daf2aee2a
+--- /dev/null
++++ b/lib/xdg/autostart/kotatogramdesktop.desktop
+@@ -0,0 +1,13 @@
++[Desktop Entry]
++Version=1.0
++Name=Kotatogram Desktop
++Comment=Experimental Telegram Desktop fork
++Exec=kotatogram-desktop -autostart
++Icon=kotatogram
++Terminal=false
++StartupWMClass=KotatogramDesktop
++Type=Application
++Categories=Chat;Network;InstantMessaging;Qt;
++MimeType=x-scheme-handler/tg;
++Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
++X-GNOME-UsesNotifications=true

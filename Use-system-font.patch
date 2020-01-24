@@ -1,8 +1,8 @@
 diff --git a/Telegram/Resources/langs/lang.strings b/Telegram/Resources/langs/lang.strings
-index 56ad08e72..bd69d6111 100644
+index 34a13bc57..15291cd8c 100644
 --- a/Telegram/Resources/langs/lang.strings
 +++ b/Telegram/Resources/langs/lang.strings
-@@ -2287,6 +2287,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
+@@ -2313,6 +2313,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
  "ktg_settings_chat_list_compact" = "Compact chat list";
  
  "ktg_fonts_title" = "Fonts";
@@ -69,17 +69,22 @@ index d5da1f418..fc34589b6 100644
  	settings.insert(qsl("fonts"), settingsFonts);
  
 diff --git a/Telegram/SourceFiles/settings.cpp b/Telegram/SourceFiles/settings.cpp
-index f841a59f3..aa84fa1ef 100644
+index f841a59f3..a60f78ea4 100644
 --- a/Telegram/SourceFiles/settings.cpp
 +++ b/Telegram/SourceFiles/settings.cpp
-@@ -209,6 +209,7 @@ rpl::producer<> UpdatedRecentEmoji() {
- 
+@@ -210,6 +210,12 @@ rpl::producer<> UpdatedRecentEmoji() {
  QString gMainFont, gSemiboldFont, gMonospaceFont;
  bool gSemiboldFontIsBold = false;
-+bool gUseSystemFont = false;
  
++#ifdef DESKTOP_APP_USE_PACKAGED_FONTS
++bool gUseSystemFont = true;
++#else
++bool gUseSystemFont = false;
++#endif
++
  rpl::variable<int> gStickerHeight = 128;
  void SetStickerHeight(int height) {
+ 	gStickerHeight = height;
 diff --git a/Telegram/SourceFiles/settings.h b/Telegram/SourceFiles/settings.h
 index fd6fa8f2f..ec84b9911 100644
 --- a/Telegram/SourceFiles/settings.h
@@ -163,10 +168,10 @@ index 3f9b003..6872555 100644
  		const auto type = QFontDatabase::FixedFont;
  		family = QFontDatabase::systemFont(type).family();
 diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
-index 07ecbf9..a4be3e4 100644
+index 72269a4..a36fcfd 100644
 --- a/Telegram/lib_ui/ui/style/style_core_font.cpp
 +++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
-@@ -164,9 +164,14 @@ QString Overrides[FontTypesCount];
+@@ -170,9 +170,14 @@ QString Overrides[FontTypesCount];
  QString CustomMainFont;
  QString CustomSemiboldFont;
  bool CustomSemiboldIsBold = false;
@@ -181,7 +186,7 @@ index 07ecbf9..a4be3e4 100644
  void SetMainFont(const QString &familyName) {
  	CustomMainFont = familyName;
  }
-@@ -179,6 +184,10 @@ void SetSemiboldIsBold(bool isBold) {
+@@ -185,6 +190,10 @@ void SetSemiboldIsBold(bool isBold) {
  	CustomSemiboldIsBold = isBold;
  }
  
@@ -192,17 +197,18 @@ index 07ecbf9..a4be3e4 100644
  void StartFonts() {
  	if (Started) {
  		return;
-@@ -187,39 +196,41 @@ void StartFonts() {
+@@ -193,41 +202,43 @@ void StartFonts() {
  
  	style_InitFontsResource();
  
++	if (!UseSystemFont) {
+ #ifndef DESKTOP_APP_USE_PACKAGED_FONTS
 -	bool areGood[FontTypesCount] = { false };
 -	for (auto i = 0; i != FontTypesCount; ++i) {
 -		const auto name = FontTypeNames[i];
 -		const auto flags = FontTypeFlags[i];
 -		areGood[i] = LoadCustomFont(":/gui/fonts/" + name + ".ttf", name, flags);
 -		Overrides[i] = name;
-+	if (!UseSystemFont) {
 +		bool areGood[FontTypesCount] = { false };
 +		for (auto i = 0; i != FontTypesCount; ++i) {
 +			const auto name = FontTypeNames[i];
@@ -242,6 +248,7 @@ index 07ecbf9..a4be3e4 100644
  #endif // Q_OS_WIN
 -	}
 +		}
+ #endif // !DESKTOP_APP_USE_PACKAGED_FONTS
  #ifdef Q_OS_MAC
 -	auto list = QStringList();
 -	list.append(".SF NS Text");
@@ -262,7 +269,7 @@ index 07ecbf9..a4be3e4 100644
  
  	if (!CustomMainFont.isEmpty() && ValidateFont(CustomMainFont)) {
  		Overrides[FontTypeRegular] = CustomMainFont;
-@@ -256,7 +267,13 @@ QString GetPossibleEmptyOverride(const QString &familyName, int32 flags) {
+@@ -264,7 +275,13 @@ QString GetPossibleEmptyOverride(const QString &familyName, int32 flags) {
  }
  
  QString GetFontOverride(const QString &familyName, int32 flags) {
@@ -277,18 +284,18 @@ index 07ecbf9..a4be3e4 100644
  	return result.isEmpty() ? familyName : result;
  }
  
-@@ -295,6 +312,9 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
+@@ -303,6 +320,9 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
  		f.setBold(true);
  	} else if (fontFamilies[family] == "Open Sans Semibold" && CustomSemiboldIsBold) {
  		f.setBold(true);
 +	} else if (fontFamilies[family] == "Open Sans Semibold" && UseSystemFont
-+	&& GetPossibleEmptyOverride(fontFamilies[family], flags).isEmpty()) {
-+		f.setBold(true);
- 	}
- 	f.setItalic(_flags & FontItalic);
- 	f.setUnderline(_flags & FontUnderline);
++		&& GetPossibleEmptyOverride(fontFamilies[family], flags).isEmpty()) {
++		f.setWeight(QFont::DemiBold);
+ #ifdef DESKTOP_APP_USE_PACKAGED_FONTS
+ 	} else if (fontFamilies[family] == "Open Sans Semibold") {
+ 		f.setWeight(QFont::DemiBold);
 diff --git a/Telegram/lib_ui/ui/style/style_core_font.h b/Telegram/lib_ui/ui/style/style_core_font.h
-index 6fbf581..d77f499 100644
+index 6ea22c0..c684a71 100644
 --- a/Telegram/lib_ui/ui/style/style_core_font.h
 +++ b/Telegram/lib_ui/ui/style/style_core_font.h
 @@ -17,6 +17,7 @@ namespace internal {
