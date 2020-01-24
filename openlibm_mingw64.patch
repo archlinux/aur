@@ -1,0 +1,12 @@
+diff --unified --recursive --text --color openlibm-0.7.0/Make.inc openlibm-0.7.0.new/Make.inc
+--- openlibm-0.7.0/Make.inc	2019-12-10 03:43:44.000000000 +0100
++++ openlibm-0.7.0.new/Make.inc	2020-01-24 10:26:02.822334200 +0100
+@@ -3,7 +3,7 @@
+ # Default build rule for any Makefile in this project: all
+ default: all
+ 
+-OS := $(shell uname)
++OS := WINNT
+ # Do not forget to bump SOMINOR when changing VERSION,
+ # and SOMAJOR when breaking ABI in a backward-incompatible way
+ VERSION = 0.7.0

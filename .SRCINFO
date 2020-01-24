@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-openlibm
+	pkgdesc = High quality system independent, portable, open source libm implementation (mingw-w64)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://www.openlibm.org
+	arch = any
+	license = GPL
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/JuliaMath/openlibm/archive/v0.7.0.tar.gz
+	source = openlibm_mingw64.patch
+	sha256sums = 1699f773198018b55b12631db9c1801fe3ed191e618a1ee1be743f4570ae06a3
+	sha256sums = c5bdddd295963c15dc67747f489c618eb107fb3877fd6987fbeed4ec2f2f44f4
+
+pkgname = mingw-w64-openlibm
+
