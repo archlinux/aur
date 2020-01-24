@@ -9,7 +9,7 @@ url="https://github.com/linuxhw/hw-probe"
 license=('GPLv2')
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('8bb7d6ff272c1412e26fcfd86e9df5c3e34e1584552404b930c281b8498b25ea')
-depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools')
+depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools' 'edid-decode')
 optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
 
 package() {

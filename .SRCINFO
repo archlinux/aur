@@ -12,6 +12,7 @@ pkgbase = hw-probe
 	depends = pciutils
 	depends = usbutils
 	depends = net-tools
+	depends = edid-decode
 	optdepends = hdparm
 	optdepends = smartmontools
 	optdepends = inxi
