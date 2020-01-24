@@ -1,5 +1,6 @@
 *.pkg
 *.xz
+*.zst
 *.sig
 *.log
 *.sign
