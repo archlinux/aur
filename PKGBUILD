@@ -5,7 +5,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.9.4_12.17.0.1976-6"
+_ver="1.9.4_12.17.0.1976-7"
 _minecraft_ver_latest="1.14.4"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
@@ -45,7 +45,7 @@ source=("forged-backup.service"
 	"forged.conf"
 	"forged.sh")
 noextract=("forge-${_pkgver}.jar")
-sha512sums=('c5f59e8ebee35019da160bd816b508ddc8822253faf4ff286062f8615767aa1e6eed56955711fdbbe0e46eeb1261adee3aef482cdd1e099246716d52638aa462'
+sha512sums=('8f81064c1ccaf8f73228ab96618380d9d9cbc13d52e16ccf0c7ef6a4a06d3ab326d8c8dc9238a210961ceeb7fa97d91803f1bda53631ceb0a9fa13800c0ffc7e'
             '87fb390c49084fe5489ea10fc1246723f1e63ae818726aa2d0a6376621e8dad2947607671e7699d1b2a6076034902377e5b9ed8dc2cbb5b0f68fc61ad26aa588'
             '33337a5fd411fbff5781d799f5616a4af95eac0b8fcbd1f83f69dd00513a1291bf5a70867ca5f93b3716d96fc6173b4f5087d503a50bddad092e67c52c28a81d'
             'f2514e7012cc535bdffc10150a1e5b65f23f0762706b8698b0ed9c411fc4043c9338d4e58fae0278eb2da12214c9c11cf829211a4e37fd1520f837cc935a0c5f'
