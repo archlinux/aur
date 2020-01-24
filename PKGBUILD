@@ -4,14 +4,14 @@
 
 pkgname=iscan-plugin-ds-30
 pkgver=2.30.4
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (WorkForce DS-30)"
 arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EPSON EULA')
 depends=('iscan' 'iscan-data')
-source_x86_64=("https://download2.ebz.epson.net/iscan/plugin/ds-30/deb/x64/iscan-ds-30-bundle-${pkgver}.x64.deb.tar.gz")
-sha256sums_x86_64=('dd0745b0a4f55d8329afbfd61603f2d2d5026dff85044c6c5bdfc6152a8fa2f1')
+source=("https://download2.ebz.epson.net/iscan/plugin/ds-30/deb/x64/iscan-ds-30-bundle-${pkgver}.x64.deb.tar.gz")
+sha256sums=('dd0745b0a4f55d8329afbfd61603f2d2d5026dff85044c6c5bdfc6152a8fa2f1')
 install="${pkgname}.install"
 
 prepare() {
