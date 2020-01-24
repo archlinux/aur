@@ -4,7 +4,7 @@
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
 arch=('i686' 'x86_64')
 
@@ -12,7 +12,7 @@ url="https://github.com/mattermost/desktop"
 license=('Apache')
 
 makedepends=()
-depends=('gtk2' 'libxtst' 'libxss' 'gconf' 'nss' 'alsa-lib')
+depends=('alsa-lib' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libsecret')
 optdepends=()
 
 conflicts=('mattermost-desktop')
