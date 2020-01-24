@@ -1,16 +1,16 @@
 # Maintainer: Anton Karmanov <bergentroll@insiberia.net>
 pkgname=spectral-matrix-git
-pkgver=218.r574.g04bb4b1
+pkgver=218.r616.g6af7bef
 pkgrel=1
 epoch=
 pkgdesc="Glossy cross-platform client for Matrix"
 arch=(any)
-url="https://gitlab.com/b0/spectral"
+url="https://gitlab.com/spectral-im/spectral"
 license=('GPL3')
 depends=(
-  'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg'
+  'cmark' 'qt5-graphicaleffects' 'qt5-multimedia' 'qt5-quickcontrols2' 'qt5-svg'
   'qt5-tools' 'qtkeychain' 'libolm')
-makedepends=('cmake' 'cmark' 'git')
+makedepends=('cmake' 'git')
 options=()
 source=("$pkgname::git+https://gitlab.com/b0/spectral.git")
 md5sums=('SKIP')
