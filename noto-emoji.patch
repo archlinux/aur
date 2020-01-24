@@ -9,10 +9,10 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index 3c9a72d2..c13e71d4 100644
+index ccb82a2b..855ba704 100644
 --- a/package.json
 +++ b/package.json
-@@ -62,7 +62,7 @@
+@@ -79,7 +79,7 @@
      "electron-mocha": "8.1.1",
      "electron-notarize": "0.1.1",
      "emoji-datasource": "4.1.0",
@@ -21,8 +21,8 @@ index 3c9a72d2..c13e71d4 100644
      "emoji-regex": "8.0.0",
      "filesize": "3.6.1",
      "firstline": "1.2.1",
-@@ -297,8 +297,8 @@
-       "node_modules/**",
+@@ -366,8 +366,8 @@
+       "sticker-creator/dist/**",
        "!node_modules/emoji-datasource/emoji_pretty.json",
        "!node_modules/emoji-datasource/*.png",
 -      "!node_modules/emoji-datasource-apple/emoji_pretty.json",
@@ -33,10 +33,10 @@ index 3c9a72d2..c13e71d4 100644
        "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme,test,__tests__,tests,powered-test,example,examples,*.d.ts}",
        "!**/node_modules/.bin",
 diff --git a/ts/components/emoji/lib.ts b/ts/components/emoji/lib.ts
-index edddb196..0c7cbc0c 100644
+index 05dc8b73..9f10357c 100644
 --- a/ts/components/emoji/lib.ts
 +++ b/ts/components/emoji/lib.ts
-@@ -68,11 +68,11 @@ export type EmojiData = {
+@@ -69,7 +69,7 @@ export type EmojiData = {
  };
  
  const data = (untypedData as Array<EmojiData>).filter(
@@ -44,17 +44,21 @@ index edddb196..0c7cbc0c 100644
 +  emoji => emoji.has_img_google
  );
  
+ // @ts-ignore
+@@ -81,7 +81,7 @@ const ROOT_PATH = get(
+ );
+ 
  const makeImagePath = (src: string) => {
--  return `node_modules/emoji-datasource-apple/img/apple/64/${src}`;
-+  return `node_modules/emoji-datasource-google/img/google/64/${src}`;
+-  return `${ROOT_PATH}node_modules/emoji-datasource-apple/img/apple/64/${src}`;
++  return `${ROOT_PATH}node_modules/emoji-datasource-google/img/google/64/${src}`;
  };
  
  const imageQueue = new PQueue({ concurrency: 10 });
 diff --git a/yarn.lock b/yarn.lock
-index 5029cabb..bceedf4a 100644
+index 20fa5141..3c998b24 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -2934,10 +2934,10 @@ elliptic@^6.0.0:
+@@ -6107,10 +6107,10 @@ elliptic@^6.0.0:
      minimalistic-assert "^1.0.0"
      minimalistic-crypto-utils "^1.0.0"
  
