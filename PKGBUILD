@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=reprapfirmware-bin
-pkgver=1.2.3.0
-pkgrel=2
+pkgver=1.2.4.0
+pkgrel=1
 pkgdesc="RepRapFirmware Software Bundle"
 arch=('any')
 url="https://github.com/dc42/RepRapFirmware.git"
@@ -22,10 +22,10 @@ backup=(
 )
 install="${pkgname}.install"
 source=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/reprapfirmware_${pkgver}-1_all.deb")
-md5sums=('e8fa7285dcf193ccf42f401de083739e')
-sha1sums=('8c72bae4724aed7b681cd000184bea5404f8d456')
-sha256sums=('3b84763538f4763ff4485122b950a11765939d94006afaf78861d606056840c1')
-sha512sums=('6dbb045cd00290148f2bc4860295cdbf57a5ab34536f4549e7d18c194e86955f0aa8435501acef889c37b9466c8a402741b599e67cfbd1efbdf4d72d30d1cab9')
+md5sums=('06fa9fc3377679375dc61c10d7d80623')
+sha1sums=('ef1200e7366d18198c798b2d0def6358353de747')
+sha256sums=('95d8291832a79517401235cae872d234e406f34cf8f5356158da481740402a39')
+sha512sums=('a4daccfb9ea7d53d50d32961ef2a6859db14094ace5d76ff47b490f404d7ec774f7dd9cec8e1fd3c99f1a49c227a938e352592ba08d47e9a435de8f7ad3e5446')
 
 prepare() {
     tar -xf data.tar.xz
