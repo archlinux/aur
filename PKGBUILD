@@ -1,7 +1,7 @@
 # Maintainer: pfm <vorticity at mail dot ru>
 pkgname=python-eliot
 _pkgname=eliot
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Logging that tells you why it happened"
 arch=(any)
@@ -10,7 +10,7 @@ license=('Apache')
 depends=("python>3.5.2")
 makedepends=("python-setuptools")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/itamarst/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('f6b1d2a98ebeff2eb50ce1ba6b2b952e')
+md5sums=('8a4557011d6f04ec3a56a5cdf49b830d')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
