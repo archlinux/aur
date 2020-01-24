@@ -1,9 +1,9 @@
 [Desktop Entry]
+Version=0.8.1
 Name=Light Table
-Comment=Light Table IDE
-Type=Application
-Icon=lighttable
+GenericName=Source Code Editor
 Exec=lighttable
-Categories=Utility;TextEditor;Development
 Terminal=false
-MimeType=text/plain;
+Icon=lighttable
+Type=Application
+Categories=GTK;Utility;TextEditor;Application;IDE;Development;

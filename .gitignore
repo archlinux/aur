@@ -1,4 +1,8 @@
-*.pkg.tar.xz
-LightTable
-src
-pkg
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!lighttable.desktop
