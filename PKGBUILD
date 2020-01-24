@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gconf' 'gtk3' 'nss' 'libxss' 'java-runtime')
 makedepends=('git' 'npm' 'leiningen')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "$pkgname-bin")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=("${pkgname%-git}::git+https://github.com/LightTable/LightTable.git"
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
