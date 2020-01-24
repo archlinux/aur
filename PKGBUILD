@@ -1,22 +1,22 @@
-# Maintainer: Yosef Or Boczko <yoseforb@gnome.org>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Yosef Or Boczko <yoseforb@gnome.org>
 
 _pkgname=atomix
 pkgname=$_pkgname-git
-pkgver=3.16.0.r19.g4a84090
+pkgver=3.34.0.r6.gd3317c0
 pkgrel=1
-_realver=3.16.0
 pkgdesc="Build molecules out of single atoms"
 arch=('i686' 'x86_64')
-license=('GPLv2')
-depends=('gtk3' "glib2" "gdk-pixbuf2")
-makedepends=('intltool' 'git' 'gnome-common' 'appstream-glib')
+license=('GPL2')
+depends=(gtk3 libgnome-games-support)
+makedepends=(meson appstream-glib git)
 conflicts=('gnome-games' "${_pkgname}")
 replaces=('gnome-games' "${_pkgname}")
-provides=("${_pkgname}=$_realver")
+provides=("${_pkgname}=$pkgver")
 options=('!emptydirs' '!libtool')
 url="https://wiki.gnome.org/Apps/Atomix"
 groups=('gnome-extra')
-source=('git://git.gnome.org/atomix')
+source=('git+https://gitlab.gnome.org/GNOME/atomix.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,18 +24,11 @@ pkgver() {
   git describe --always | sed -E 's/^ATOMIX_//;s/_/./g;s/([^-]*-g)/r\1/;s|-|.|g'
 }
 
-prepare() {
-  cd "$srcdir/$_pkgname"
-}
-
 build() {
-  cd "$srcdir/$_pkgname"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-schemas-compile
-  make
+  arch-meson $_pkgname build
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }

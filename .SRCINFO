@@ -1,27 +1,25 @@
 pkgbase = atomix-git
 	pkgdesc = Build molecules out of single atoms
-	pkgver = 3.16.0.r19.g4a84090
+	pkgver = 3.34.0.r6.gd3317c0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Atomix
 	arch = i686
 	arch = x86_64
 	groups = gnome-extra
-	license = GPLv2
-	makedepends = intltool
-	makedepends = git
-	makedepends = gnome-common
+	license = GPL2
+	makedepends = meson
 	makedepends = appstream-glib
+	makedepends = git
 	depends = gtk3
-	depends = glib2
-	depends = gdk-pixbuf2
-	provides = atomix=3.16.0
+	depends = libgnome-games-support
+	provides = atomix=3.34.0.r6.gd3317c0
 	conflicts = gnome-games
 	conflicts = atomix
 	replaces = gnome-games
 	replaces = atomix
 	options = !emptydirs
 	options = !libtool
-	source = git://git.gnome.org/atomix
+	source = git+https://gitlab.gnome.org/GNOME/atomix.git
 	sha256sums = SKIP
 
 pkgname = atomix-git
