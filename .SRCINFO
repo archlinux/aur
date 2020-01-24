@@ -1,0 +1,20 @@
+pkgbase = brother-mfc-7360n
+	pkgdesc = LPR and CUPS drivers for Brother MFC-9360n
+	pkgver = 20200123
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfc7360n_all
+	install = brother-mfc-7360n.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = perl
+	makedepends = a2ps
+	depends = lib32-libcups
+	depends = ghostscript
+	optdepends = brscan4: Scanner support
+	source = https://download.brother.com/welcome/dlf006237/mfc7360nlpr-2.1.0-1.i386.deb
+	source = https://download.brother.com/welcome/dlf006239/cupswrapperMFC7360N-2.0.4-2.i386.deb
+	sha512sums = f3121fbe5aad77be6ebfc7425da9ffc11f65ee2eab34cece8d93c55ae6e912267d94395822af553979873d99cb5b3fe0ff119ea50e2cfb0ef4efb8d23b49cac4
+	sha512sums = 89c401b5e892e03f01d71f4fb64c74de98692cd5a1adced606906cdc81ddae80bf846a48d6dab157fc631cfcfd4414d4b05fe5d905de1f144f5766d4de2a6f7f
+
+pkgname = brother-mfc-7360n
