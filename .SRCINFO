@@ -1,7 +1,7 @@
 pkgbase = lua-luacov
 	pkgdesc = Coverage analysis tool for Lua scripts
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://keplerproject.github.io/luacov/
 	arch = i686
 	arch = x86_64
