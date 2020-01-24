@@ -1,7 +1,7 @@
 pkgbase = lua-luacov-coveralls
 	pkgdesc = LuaCov reporter for coveralls.io service
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/moteus/luacov-coveralls
 	arch = i686
 	arch = x86_64
