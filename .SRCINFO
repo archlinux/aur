@@ -1,0 +1,19 @@
+pkgbase = aleeplayer-git
+	pkgdesc = A audio player written in Qt
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/aleeproductions/AleePlayer
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = libmusicbrainz5
+	depends = xdg-utils
+	depends = qt5-base
+	depends = taglib
+	depends = qt5-svg
+	source = aleeplayer-git-1.0.0::https://github.com/aleeproductions/AleePlayer/archive/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = aleeplayer-git
+
