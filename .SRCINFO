@@ -1,6 +1,6 @@
 pkgbase = gopherus-svn
 	pkgdesc = Gopher client
-	pkgver = 1.1.r123
+	pkgver = 1.2.r221
 	pkgrel = 1
 	url = http://gopherus.sourceforge.net
 	arch = i686
@@ -12,8 +12,10 @@ pkgbase = gopherus-svn
 	provides = gopherus
 	conflicts = gopherus
 	source = gopherus::svn://svn.code.sf.net/p/gopherus/code
+	source = gopherus-1.2-ncheader.patch
 	source = gopherus.desktop
 	sha256sums = SKIP
+	sha256sums = 9637df8df7dfa15232b5898170b1d1d0a485628d77c2a40150db914c4fb2b866
 	sha256sums = b01f1fa220cb788edf5c743a35aeff169f62eefee19d5f6dee96274e8c8cfd21
 
 pkgname = gopherus-svn
