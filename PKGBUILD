@@ -1,11 +1,11 @@
 pkgname=woof-git
-pkgver=0.9.0.r2.76ff38f
+pkgver=0.9.0.r11.27f21ed
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-depends=('sdl2' 'sdl2_net' 'sdl2_mixer')
+depends=('hicolor-icon-theme' 'sdl2' 'sdl2_net' 'sdl2_mixer')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -35,6 +35,4 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	make DESTDIR="$pkgdir/" install
-	install -Dm644 -t "$pkgdir/usr/share/applications" data/woof.desktop
-	install -Dm644 -t "$pkgdir/usr/share/icons" data/woof.png
 }
