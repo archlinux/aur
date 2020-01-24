@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=dv-runtime
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="C++ event-based processing framework for neuromorphic cameras, targeting embedded and desktop systems."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("https://gitlab.com/inivation/dv/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e52aea6b4b73400b7f10f32bcd20abb08a2a6779cb7ed4b9f05be1a5d59d97fc')
+sha256sums=('041a78d37d37a70321d722201d7506066c11122bcac237ab1ba946ce16f204aa')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
