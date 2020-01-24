@@ -1,0 +1,18 @@
+pkgbase = corerenamer-git
+	pkgdesc = A batch file renamer from the CoreApps family.
+	pkgver = v2.8.0.r0.2a292f8
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	provides = corerenamer
+	conflicts = corerenamer
+	source = git+https://gitlab.com/cubocore/corerenamer.git
+	md5sums = SKIP
+
+pkgname = corerenamer-git
+
