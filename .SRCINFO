@@ -1,7 +1,7 @@
 pkgbase = rpcs3-bin
 	pkgdesc = Open-source Sony PlayStation 3 Emulator
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rpcs3.net/
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,7 @@ pkgbase = rpcs3-bin
 	depends = vulkan-icd-loader
 	depends = hicolor-icon-theme
 	depends = libpulse
+	depends = ncurses5-compat-libs
 	provides = rpcs3
 	conflicts = rpcs3
 	replaces = rpcs3
