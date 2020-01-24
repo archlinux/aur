@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=277.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -39,12 +39,8 @@ prepare() {
 }
 
 package() {
-  echo "Copying core SDK components"
   mkdir "${pkgdir}/opt"
   cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt"
-
-
-  echo "Running bootstrapping script"
 
   # The Google code uses a _TraceAction() method which spams the screen even
   # in "quiet" mode, we're throwing away output on purpose to keep it clean
@@ -57,33 +53,27 @@ package() {
     --additional-components "" \
     1 > /dev/null
 
-  echo "Cleaning up artifacts of the bootstrap script"
   rm -rf "${pkgdir}/opt/${pkgname}/.install/.backup"
   mkdir "${pkgdir}/opt/${pkgname}/.install/.backup"
   find $pkgdir -name '__pycache__' -type d -exec rm -rf {} +
 
-  echo "Setting up profile environment variables"
   install -Dm755 "${srcdir}/${source[1]}" \
     "${pkgdir}/etc/profile.d/google-cloud-sdk.sh"
 
-  echo "Installing bash completion script"
   install -Dm755 "${pkgdir}/opt/${pkgname}/completion.bash.inc" \
     "${pkgdir}/etc/bash_completion.d/google-cloud-sdk"
 
-  echo "Installing man pages"
   mkdir -p "${pkgdir}/usr/share"
   mv -f "${pkgdir}/opt/${pkgname}/help/man" "${pkgdir}/usr/share/"
   chmod 0755 "${pkgdir}/usr/share/man"
   chmod 0755 "${pkgdir}/usr/share/man/man1"
 
-  echo "Creating symlinks for applications"
   mkdir -p "${pkgdir}/usr/bin"
   for i in "${pkgdir}/opt/${pkgname}/bin"/*; do
     ln -st "${pkgdir}/usr/bin/" "${i#${pkgdir}}"
   done
   rm -f "${pkgdir}"/usr/bin/{bq,dev_appserver.py*,endpointscfg.py*,java_dev_appserver.sh}
 
-  echo "Fixing file permissions"
   chmod -x "${pkgdir}"/usr/share/man/man1/*
   find "${pkgdir}/opt/${pkgname}" -name "*.html" -o -name "*.json" -exec chmod -x {} \;
   find "${pkgdir}/opt/${pkgname}" -name "*_test.py" -exec chmod +x {} \;
