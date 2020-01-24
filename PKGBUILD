@@ -4,7 +4,7 @@
 
 pkgname=python-hiyapyco
 _name=hiyapyco
-pkgver=0.4.14
+pkgver=0.4.15
 pkgrel=1
 pkgdesc="A Hierarchical Yaml Python Config"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-yaml' 'python-jinja')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/zerwes/hiyapyco/archive/release-$pkgver.tar.gz")
-md5sums=('294a781fcd4235b88f70ac7fc6eb1798')
+md5sums=('b832609537d075faf80ee267fc8c9060')
 
 package() {
   cd "$srcdir/hiyapyco-release-$pkgver"
