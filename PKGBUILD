@@ -2,7 +2,7 @@
 
 pkgname='govmomi-git'
 pkgdesc='A Go library for interacting with VMware vSphere APIs (ESXi and/or vCenter).'
-pkgver=r2436.2509e907
+pkgver=r2495.ca640932
 pkgrel=1
 _repo_prefix='github.com/vmware'
 _repo_name="${pkgname/-git}"
@@ -37,13 +37,12 @@ _gobuild() {
   export GOPATH="${srcdir}"
   export PATH="$PATH:$GOPATH/bin"
 
-  go build -x -i -v -o $1
+  go build -x -i -v -ldflags "-X main.commit=${pkgver##*.} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(cat VERSION).${pkgver##*.}" -o $1
 }
 
 build () {
   cd "src/${_repo_prefix}/${_repo_name}"
 
-  #go build -x -i -v -ldflags "-X main.commit=${pkgver##*.} -X main.date=$(date -u +%Y%m%d.%H%M%S) -X main.version=$(cat VERSION).${pkgver##*.}" -o ${_repo_name}.bin
   for i in govc vcsim
   do
     cd $i
