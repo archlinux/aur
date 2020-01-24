@@ -1,7 +1,9 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=duplicity-dev
-pkgver=0.8.09
-pkgrel=0
+pkgver=0.8.10
+_pkgversuffix="fin1558"
+_pkgver="${pkgver}${_pkgversuffix}"
+pkgrel=1
 pkgdesc="A utility for encrypted, bandwidth-efficient backups using the rsync algorithm. Development version"
 arch=(x86_64)
 url="http://duplicity.nongnu.org/"
@@ -29,11 +31,11 @@ provides=('duplicity')
 conflicts=('duplicity')
 
 source=(
-    "https://code.launchpad.net/duplicity/0.8-series/$pkgver/+download/duplicity-$pkgver.tar.gz"{,.asc}
+    "https://code.launchpad.net/duplicity/0.8-series/$pkgver/+download/duplicity-${_pkgver}.tar.gz"{,.sig}
 )
 
 sha512sums=(
-    'e4045a1c1adbf0927ee5325f02b79e7c0b38034080be4b563f20f1af593c8c1943a772fe7f212730e60f7c7cee93756426fe769a62050d42651fd1af7f6ba50a'
+    '03c35fe6f7c542de96b53642fdf620c30848ffd753c49fdf2220c2dfcbdc09ff1394a660f92a61709ec4a105784c35bde571e3e92bd72634241cc1a04a5b84cb'
     'SKIP'
 )
 validpgpkeys=(
@@ -41,14 +43,14 @@ validpgpkeys=(
 )
 
 build() {
-	cd "duplicity-$pkgver"
+	cd "duplicity-${_pkgver}"
 	python setup.py build
 }
 
 package() {
-	cd "duplicity-$pkgver"
+	cd "duplicity-${_pkgver}"
 	python setup.py install --root="$pkgdir"
 
 	# fix broken documentation permissions until upstream does (FS#27301)
-	chmod -R +r "$pkgdir/usr/share/doc/duplicity-$pkgver"
+	chmod -R +r "$pkgdir/usr/share/doc"/duplicity-*
 }
