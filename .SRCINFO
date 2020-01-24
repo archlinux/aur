@@ -1,0 +1,18 @@
+pkgbase = libcsys-git
+	pkgdesc = Library for managing drive and getting system resource information in real time.
+	pkgver = v2.8.0.r0.feb9591
+	pkgrel = 1
+	url = https://gitlab.com/cubocore/libcsys
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	provides = libcsys
+	conflicts = libcsys
+	source = git+https://gitlab.com/cubocore/libcsys.git
+	md5sums = SKIP
+
+pkgname = libcsys-git
+
