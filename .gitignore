@@ -1,1 +1,4 @@
-asciimatics-*.tar.gz
+/src/
+/pkg/
+/asciimatics-*.tar.gz
+*.pkg.tar.*
