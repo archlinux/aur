@@ -3,13 +3,13 @@
 pkgname="elflibviewer"
 pkgname_="mpyne-elflibviewer-73f04bda4d61"
 pkgver=0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Lists recursive library dependencies for an ELF executable"
 url="https://bitbucket.org/mpyne/${pkgname}/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake')
-depends=('qt5-base' 'binutils')
+depends=('binutils' 'qt5-base' 'qt5-tools')
 source=("https://bitbucket.org/mpyne/${pkgname}/get/${pkgver}.tar.gz")
 sha512sums=('212639ddce085dcc51f6b92fa7f08e973cad2e973334660ad193afe67aea66c1679679cfa7f90309ecfccc639f176e4289e45f1addd681bfccff065774fc72aa')
 build() {

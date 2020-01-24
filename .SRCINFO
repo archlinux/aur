@@ -1,13 +1,14 @@
 pkgbase = elflibviewer
 	pkgdesc = Lists recursive library dependencies for an ELF executable
 	pkgver = 0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/mpyne/elflibviewer/
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = qt5-base
 	depends = binutils
+	depends = qt5-base
+	depends = qt5-tools
 	source = https://bitbucket.org/mpyne/elflibviewer/get/0.20.tar.gz
 	sha512sums = 212639ddce085dcc51f6b92fa7f08e973cad2e973334660ad193afe67aea66c1679679cfa7f90309ecfccc639f176e4289e45f1addd681bfccff065774fc72aa
 
