@@ -3,7 +3,7 @@
 pkgname=python-bullet
 _name=${pkgname#python-}
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Extensive support for Python list prompts formatting and colors.'
 arch=('any')
 url='https://pypi.org/project/bullet'
@@ -23,6 +23,6 @@ build() {
 
 package() {
 	cd "$srcdir/${_name}-$pkgver"
-	python setup.py install --root "$pkgdir"
+	python setup.py install --root "$pkgdir" --skip-build --optimize=1
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

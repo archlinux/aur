@@ -1,7 +1,7 @@
 pkgbase = python-bullet
 	pkgdesc = Extensive support for Python list prompts formatting and colors.
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/bullet
 	arch = any
 	license = MIT
