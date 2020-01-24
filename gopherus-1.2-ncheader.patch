@@ -1,0 +1,12 @@
+diff -r -u -N gopherus-1.2/ui/ui-curse.c gopherus-1.2-ncheader/ui/ui-curse.c
+--- gopherus-1.2/ui/ui-curse.c	2020-01-18 17:29:20.000000000 +0100
++++ gopherus-1.2-ncheader/ui/ui-curse.c	2020-01-23 22:37:16.625987506 +0100
+@@ -10,7 +10,7 @@
+ #define _XOPEN_SOURCE_EXTENDED
+ 
+ #include <locale.h>
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #include <stdio.h> /* this one contains the NULL definition */
+ #include <string.h>
+ 
