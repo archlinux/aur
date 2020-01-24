@@ -3,7 +3,7 @@
 
 pkgname=nextcloud-app-onlyoffice
 _pkgname=onlyoffice-nextcloud
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Integrate ONLYOFFICE documentserver into NextCloud"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ONLYOFFICE/onlyoffice-nextcloud/archive/v${pkgver}.tar.gz")
-sha512sums=('6641b5181b544fa156c41302ff2792993db1b3ce9073eaaec8ad435ddce1e6f4b7bc8f1a2538282aa871975651d772e1764651aefc698daf31723cb0c08ee587')
+sha512sums=('f72a3e97292e56100bc88b602cf27e92bfb8ba2071f1a51bd1bb8d33dd5cbb0e7a70aad531df0d4864fed0287e7acec178c03f765ed22db9f45cb3b74ab6cc99')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
