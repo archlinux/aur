@@ -5,7 +5,7 @@
 pkgbase=librealsense-git
 pkgname=(librealsense-git python-pyrealsense2-git)
 _pkgname=librealsense
-pkgver=v2.26.0.r6.g4f2eac248
+pkgver=v2.32.1
 pkgrel=1
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
 arch=('x86_64')
@@ -55,7 +55,7 @@ package_librealsense-git() {
 
 
 package_python-pyrealsense2-git() {
-  depends=("python")
+  depends=("python" "librealsense")
   provides=('python-pyrealsense2')
   conflicts=('python-pyrealsense2')
   cd "${srcdir}/${_pkgname}/wrappers/python"
