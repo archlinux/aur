@@ -1,0 +1,18 @@
+pkgbase = corepaint-git
+	pkgdesc = A paint app from the CoreApps family.
+	pkgver = v2.8.0.r1.e58fdbd
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	provides = corepaint
+	conflicts = corepaint
+	source = git+https://gitlab.com/cubocore/corepaint.git
+	md5sums = SKIP
+
+pkgname = corepaint-git
+
