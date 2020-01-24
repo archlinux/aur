@@ -1,0 +1,13 @@
+pkgbase = qtum-core-aarch64-bin
+	pkgdesc = Qtum Desktop Binary release
+	pkgver = 0.18.3
+	pkgrel = 1
+	url = https://qtum.org
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	source = https://repo.qtum.info/apt/raspbian/pool/main/q/qtum/qtum_0.18.3_armhf.deb
+	sha256sums = 45ed2e357e42a79e34250eefba619b021d8ac0a71a0128e03ce0f64e5b2d9935
+
+pkgname = qtum-core-aarch64-bin
+
