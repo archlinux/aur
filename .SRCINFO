@@ -1,7 +1,7 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-onnxruntime
 	depends = protobuf
 	depends = re2
 	depends = python-numpy
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.1.0
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.1.1
 	source = git+https://github.com/HowardHinnant/date.git
 	source = eigen::git+https://github.com/eigenteam/eigen-git-mirror.git
 	source = git+https://github.com/google/gemmlowp.git
@@ -43,6 +43,6 @@ pkgname = python-onnxruntime-cuda
 	depends = python-numpy
 	depends = cuda
 	depends = cudnn
-	provides = python-onnxruntime=1.1.0
+	provides = python-onnxruntime=1.1.1
 	conflicts = python-onnxruntime
 
