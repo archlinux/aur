@@ -1,0 +1,19 @@
+pkgbase = coretime-git
+	pkgdesc = A time related task manager from the CoreApps family.
+	pkgver = v2.8.0.r3.98d1c25
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	depends = qt5-multimedia
+	provides = coretime
+	conflicts = coretime
+	source = git+https://gitlab.com/cubocore/coretime.git
+	md5sums = SKIP
+
+pkgname = coretime-git
+
