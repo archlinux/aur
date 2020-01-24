@@ -1,25 +1,25 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
 pkgname="elflibviewer"
-pkgname_="mpyne-elflibviewer-4ef5cdf4878c"
-pkgver=0.10
+pkgname_="mpyne-elflibviewer-73f04bda4d61"
+pkgver=0.20
 pkgrel=1
 pkgdesc="Lists recursive library dependencies for an ELF executable"
 url="https://bitbucket.org/mpyne/${pkgname}/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('cmake')
-depends=('qt5-base')
+depends=('qt5-base' 'binutils')
 source=("https://bitbucket.org/mpyne/${pkgname}/get/${pkgver}.tar.gz")
-sha512sums=('43e22806f137f87ba64cfbebd8dabbacae92b2b79776431b6feb546deca872c2d1d03e3554744f006ad68f42fb4fbd4cd270f45e55191c230d6359bafd62c848')
+sha512sums=('212639ddce085dcc51f6b92fa7f08e973cad2e973334660ad193afe67aea66c1679679cfa7f90309ecfccc639f176e4289e45f1addd681bfccff065774fc72aa')
 build() {
-    cd "${srcdir}/${pkgname_}"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
-    make
+    mkdir -p build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" "${srcdir}/${pkgname_}"
+    cmake --build . --target all
 }
 package() {
-    cd "${srcdir}/${pkgname_}"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
     install -Dm644 "${srcdir}/${pkgname_}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${pkgname_}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
