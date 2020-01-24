@@ -1,0 +1,18 @@
+pkgbase = corehunt-git
+	pkgdesc = A file finder utility from the CoreApps family.
+	pkgver = v2.8.0.r1.8da2e56
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	provides = corehunt
+	conflicts = corehunt
+	source = git+https://gitlab.com/cubocore/corehunt.git
+	md5sums = SKIP
+
+pkgname = corehunt-git
+
