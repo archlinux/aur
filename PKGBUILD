@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=276.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -60,6 +60,7 @@ package() {
   echo "Cleaning up artifacts of the bootstrap script"
   rm -rf "${pkgdir}/opt/${pkgname}/.install/.backup"
   mkdir "${pkgdir}/opt/${pkgname}/.install/.backup"
+  find $pkgdir -name '__pycache__' -type d -exec rm -rf {} +
 
   echo "Setting up profile environment variables"
   install -Dm755 "${srcdir}/${source[1]}" \
