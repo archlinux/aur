@@ -3,20 +3,27 @@
 pkgname=python-ehforwarderbot-git
 _provide=${pkgname%-git}
 _name=${_provide#python-}
-pkgver=r449.70d29ce
-pkgrel=2
+pkgver=r544.d43f1c3
+pkgrel=1
 pkgdesc='An extensible message tunneling chat bot framework. Delivers messages to and from multiple platforms and remotely control your accounts.'
 arch=('any')
 url='https://github.com/blueset/ehForwarderBot'
 license=('AGPL-3')
 groups=('efb')
-depends=('python-ruamel-yaml' 'python-bullet' 'python-cjkwrap' 'python-typing-extensions')
-makedepends=('git' 'python-setuptools')
+depends=(
+	'python-ruamel-yaml'
+	'python-bullet'
+	'python-cjkwrap'
+	'python-typing-extensions')
+makedepends=(
+	'git'
+	'python-setuptools')
 provides=($_provide)
 conflicts=($_provide)
 source=("$_provide"::"git+${url}.git"
 	ehforwarderbot@.service)
-md5sums=('SKIP'
+md5sums=(
+	'SKIP'
 	'e5acd5cc51ffb0ff891d56c9fa7dcb10')
 
 pkgver() {
@@ -31,6 +38,7 @@ build() {
 	python setup.py clean --all
 	python setup.py build
 	cd "build/lib/${_name//-/_}/locale/"
+	rm -rf ach_UG
 	for _locale in $(ls); do
 		(cd "$_locale/LC_MESSAGES/"; msgfmt "${_name//-/_}.po" -o "${_name//-/_}.mo")
 	done
