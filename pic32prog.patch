@@ -1,0 +1,21 @@
+diff --git a/makefile b/makefile
+index 544ea9c..9e9bd0d 100644
+--- a/makefile
++++ b/makefile
+@@ -2,13 +2,13 @@ CC              = gcc
+ 
+ GITCOUNT        = $(shell git rev-list HEAD --count)
+ UNAME           = $(shell uname)
+-CFLAGS          = -Wall -g -O -Ihidapi/hidapi -DGITCOUNT='"$(GITCOUNT)"'
+-LDFLAGS         = -g
++CFLAGS         += -Wall -g -O -Ihidapi/hidapi -DGITCOUNT='"$(GITCOUNT)"'
++LDFLAGS        += -g
+ CCARCH          =
+ 
+ # Linux
+ ifeq ($(UNAME),Linux)
+-    LIBS        += -Wl,-Bstatic -lusb-1.0 -Wl,-Bdynamic -lpthread -ludev
++    LIBS        += -lusb-1.0 -lpthread
+     HIDLIB      = hidapi/libusb/.libs/libhidapi-libusb.a
+ endif
+ 
