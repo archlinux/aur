@@ -1,0 +1,19 @@
+pkgbase = coreterminal-git
+	pkgdesc = A terminal emulator from the CoreApps family.
+	pkgver = v2.8.0.r1.c2d8eea
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	depends = qtermwidget
+	provides = coreterminal
+	conflicts = coreterminal
+	source = git+https://gitlab.com/cubocore/coreterminal.git
+	md5sums = SKIP
+
+pkgname = coreterminal-git
+
