@@ -56,13 +56,13 @@ source=("$pkgname-$pkgver.tar.bz2::https://gitlab.com/Remmina/Remmina/-/archive/
 sha512sums=('62fef008729958f6ab479133d11d327b9edd6e21bc55613292f4c6c0c5abb744e70c958779a1ee5f72e4931e90152fc39ff25cea7a62fcb8107ee1f7bc3ff3c5')
 
 prepare() {
-  cd Remmina-${pkgver/rc/-rc}
+  cd Remmina-v${pkgver/rc/-rc}
   sed -e 's|ssh_threads|ssh|' -i cmake/FindLIBSSH.cmake # Fix build with libssh 0.8
   sed -i 's|include_directories(.)|include_directories(.)\ninclude_directories(/usr/include/harfbuzz)|' CMakeLists.txt
 }
 
 build() {
-  cd "$srcdir"/Remmina-${pkgver/rc/-rc}/
+  cd "$srcdir"/Remmina-v${pkgver/rc/-rc}/
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
