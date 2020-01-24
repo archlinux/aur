@@ -1,7 +1,7 @@
 # Maintainer: Jason Nader <jason.nader@protonmail.com>
 pkgname=wlogout-git
 _pkgname=wlogout
-pkgver=r48.0b7cc7b
+pkgver=r60.7d7fc8b
 pkgrel=1
 license=("MIT")
 pkgdesc="Logout menu for wayland"

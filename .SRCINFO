@@ -1,6 +1,6 @@
 pkgbase = wlogout-git
 	pkgdesc = Logout menu for wayland
-	pkgver = r5942.3f77591b
+	pkgver = r60.7d7fc8b
 	pkgrel = 1
 	url = https://github.com/ArtsyMacaw/wlogout.git
 	arch = x86_64
