@@ -5,13 +5,13 @@
 pkgname=flameshot-git
 _pkgname=flameshot
 pkgver=r549.91ba28c
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
 url="https://github.com/lupoDharkael/flameshot"
 license=('GPL')
-depends=(qt5-base hicolor-icon-theme)
-makedepends=(qt5-tools)
+depends=(qt5-base hicolor-icon-theme qt5-svg)
+makedepends=(qt5-tools git)
 provides=(flameshot-git)
 conflicts=(flameshot)
 source=("git+https://github.com/lupoDharkael/flameshot.git")
