@@ -1,7 +1,7 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=duettools-bin
-pkgver=1.2.3.0
-pkgrel=2
+pkgver=1.2.4.0
+pkgrel=1
 pkgdesc="Optional tools (code examples)"
 arch=('armv7h' 'aarch64')
 url="https://github.com/chrishamm/DuetSoftwareFramework.git"
@@ -12,14 +12,14 @@ depends=("duetcontrolserver>=${pkgver}")
 options=(!strip staticlibs)
 source_armv7h=("https://pkg.duet3d.com/dists/stable/armv7/binary-armhf/duettools_${pkgver}_armhf.deb")
 source_aarch64=("https://pkg.duet3d.com/dists/stable/armv7/binary-arm64/duettools_${pkgver}_arm64.deb")
-md5sums_armv7h=('bc6a2cc8ca0e1ba8cfb53026ef335a5b')
-md5sums_aarch64=('f2862c70ec06c6ef27a999ba9e086f9d')
-sha1sums_armv7h=('4a6ed64ef46c9b6f851f3892107ee2af41b4daa7')
-sha1sums_aarch64=('2290bee301f3313afb77c28f2d83af2f3353be4b')
-sha256sums_armv7h=('fcfedd24bcb4665c86415d75aca5d005e6e2710036c6999882266650b2d66cb8')
-sha256sums_aarch64=('bffae2e41deef719909912f15f07a9a554831b22b055aa84634d9fe1404ac5ed')
-sha512sums_armv7h=('dd74704f87f622c7c38e36f94039dd7eaf2c8ca7bbb101b274303092e7a662c23ba4f9c8729e6e8c3092f76e1053b54cba5f85955c089c1119805adc9dad1ab0')
-sha512sums_aarch64=('544b22169095b0e5df4f6d6a3eb28cab1f982f6fe6d6eb0fcc7d6267453d17065f0ad33c3cf8e7b1120769f4f5cfd31190f2e210272f1f188cee6bf4f8e390fb')
+md5sums_armv7h=('2e7dc505a596e707266cae3943024853')
+md5sums_aarch64=('75cc0d556c105c8520824111646ddb72')
+sha1sums_armv7h=('1cd8b34f6c82a021346ae2929c948352cc36d978')
+sha1sums_aarch64=('9357b03b8fdc2d2513ef7f1c342423aacf63199f')
+sha256sums_armv7h=('77a34437056d6cb5fc895e5559d639eaf5356fc7671aba80e593fe82aa995c37')
+sha256sums_aarch64=('92ca455ec2f15d7c39332db84e7c866cbc45803cdbf6ee70ba5999facdfb2802')
+sha512sums_armv7h=('bad18fbe60091661506957edaf95fe20ba80bf0dbbea24d9e4d70c6c05cadc4ca0ab7300b12c4520ee72aca830bc15564f9c134b3332ec82a3075ca36aacdb75')
+sha512sums_aarch64=('3b97a416552cdabc207230c36d85d65e8cf6fc9f179b2516df2f4c53684aca16b6788ba0bbd2ceee5587955608ec55bcebab4446b471011cbc9ea73ecb0aa1d7')
 
 prepare() {
     tar -xf data.tar.xz
