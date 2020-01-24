@@ -3,7 +3,7 @@
 pkgname=rlottie-tdesktop
 _pkgname=rlottie
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A platform independent standalone library that plays Lottie Animation (tdesktop fork)"
 arch=(x86_64)
 url="https://github.com/desktop-app/rlottie"
@@ -12,9 +12,9 @@ depends=(gcc-libs)
 makedepends=(cmake ninja)
 conflicts=(rlottie)
 provides=(rlottie)
-_commit="c490c7a098b9b3cbc3195b00e90d6fc3989e2ba2"
+_commit="75b31e49b3c69355c4971ee2029eff23a22fcb75"
 source=("https://github.com/desktop-app/rlottie/archive/${_commit}.zip")
-sha512sums=('7da1a9bb6b02de85cba24bba58d81fb0f8c54eeace24454ac7337c8be63a9314a7996adbd841213c8c67162984253544fcc87059bcf0277c2a911cf182747aae')
+sha512sums=('2fb09273cc2b2ea4976ef047be911a796b9a1e4a11d00ebd6288ed7d1fae5e5bef15f46609ddcecb3eac973ccc063ebc44eb970147f8c3835c9cbafe2ac5508d')
 
 build() {
 	cd "$srcdir/${_pkgname}-${_commit}"
