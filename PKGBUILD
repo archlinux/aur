@@ -1,31 +1,67 @@
-# Maintainer: Hork <aliyuchang33@outlook.com>
-# Maintainer: Leroy.H.Y <admin@lhy0403.top>
-
+# Maintainer: DuckSoft <realducksoft@gmail.com>
+# Contributor: ArielAxionL <i at axionl dot me>
+# Contributor: Leroy.H.Y <me at lhy0403 dot top>
+# Contributor: Neboer <rubinposter@gmail.com>
 pkgname=qv2ray
-pkgver=1.3.8.0
+pkgver=2.0.0+grpcfree
 pkgrel=1
-pkgdesc="Qt cross platform v2ray GUI client"
-arch=('i686' 'x86_64')
-url="https://github.com/lhy0403/Qv2ray"
+pkgdesc="Cross-platform V2ray Client written in Qt (Stable Release)"
+arch=('x86_64')
+url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('git' 'make' 'qt5-tools')
+depends=(
+    'hicolor-icon-theme' 'qt5-charts>5.11.0'
+)
 optdepends=('v2ray' 'v2ray-domain-list-community' 'v2ray-geoip')
-provides=('Qv2ray')
-source=("git+https://github.com/lhy0403/Qv2ray#tag=v$pkgver")
-sha512sums=('SKIP')
+makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'go')
+provides=('qv2ray')
+conflicts=('qv2ray')
+
+source=(
+    'Qv2ray::git+https://github.com/Qv2ray/Qv2ray#tag=v2.0.0'
+    'QNodeEditor::git+https://github.com/lhy0403/QNodeEditor'
+    'SingleApplication::git+https://github.com/itay-grudev/SingleApplication'
+    'x2struct::git+https://github.com/xyz347/x2struct'
+    'qzxing::git+https://github.com/ftylitak/qzxing'
+    'qhttpserver::git+https://github.com/nikhilm/qhttpserver'
+    'QvRPCBridge::git+https://github.com/Qv2ray/QvRPCBridge#tag=v1.1'
+)
+
+sha512sums=(
+    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+)
+
+#pkgver() {
+#    printf "%s.%s+grpcfree" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
+#}
+
+prepare() {
+    cd "${srcdir}/Qv2ray"
+    git submodule init
+    submodules=('QNodeEditor' 'SingleApplication' 'x2struct' 'qzxing' 'qhttpserver')
+    for module in ${submodules[@]}; do
+        git config submodule."3rdparty/$module".url "${srcdir}/$module"
+    done
+    
+    git config submodule."libs/libqvb".url "${srcdir}/QvRPCBridge"
+    git config submodule."libs/gRPC-win32".active false
+    git submodule update
+}
 
 build() {
+    cd "${srcdir}/QvRPCBridge"
+    chmod +x ./build.sh && ./build.sh
+    ln -sf "${srcdir}/QvRPCBridge/build/libqvb.a" "${srcdir}/Qv2ray/libs/libqvb-linux64.a"
+
     cd "${srcdir}/Qv2ray"
-    git submodule update --init
-    mkdir build && cd ./build
-    qmake ../
-    make -j4
+    mkdir -p build && cd build
+    qmake 'CONFIG += with_new_backend' 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\\\"/usr/bin/v2ray\\\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\\\"/usr/lib/v2ray\\\"' PREFIX=/usr ../
+    make
 }
 
 package() {
-    cd "${srcdir}/Qv2ray/build"
-    make install INSTALL_ROOT=$pkgdir
-    install -Dm644 ../icons/Qv2ray.desktop $pkgdir/usr/share/applications/Qv2ray.desktop
-    install -Dm644 ../icons/Qv2ray.png $pkgdir/usr/share/icons/hicolor/256x256/apps/Qv2ray.png
+    cd "${srcdir}/Qv2ray"
+    install -Dm755 build/qv2ray "${pkgdir}/usr/bin/qv2ray"
+    install -Dm644 assets/qv2ray.desktop "${pkgdir}/usr/share/applications/qv2ray.desktop"
+    install -Dm644 assets/icons/qv2ray.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/qv2ray.png"
 }
