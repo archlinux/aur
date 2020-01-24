@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libuv
 _pkgname=libuv
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc="Multi-platform support library with a focus on asynchronous I/O (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/libuv/libuv/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('95212bdba326a22edb2663982a4abb95c420d287c67b20e57d6acdd4c40d40956ad28c599beaf10fbc941c6e50df94261d84abf8ac25abceb10f67d9de5ef3d3')
+sha512sums=('7e7a54d2d1e0ed76654ece9481f02177d201a4590c5d9b5c8b4edf6f795a0d7c30970b907481847930a524a0f06c15c6c73b3ce73a8afa2f836e33dbd54a7249')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
