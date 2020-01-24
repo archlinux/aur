@@ -71,6 +71,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/Remmina-${pkgver/rc/-rc}/
+  cd "$srcdir"/Remmina-v${pkgver/rc/-rc}/
   make DESTDIR="$pkgdir" install
 }
