@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=hw-probe
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org"
 arch=('any')
 url="https://github.com/linuxhw/hw-probe"
 license=('GPLv2')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('90f3ea83bf641348b209e4a2a910f65d836ae7828c0be0f660236ea413bc46bb')
+sha256sums=('8bb7d6ff272c1412e26fcfd86e9df5c3e34e1584552404b930c281b8498b25ea')
 depends=('perl>=5' 'hwinfo' 'curl' 'dmidecode' 'pciutils' 'usbutils' 'net-tools')
 optdepends=('hdparm' 'smartmontools' 'inxi' 'pnputils')
 
