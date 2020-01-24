@@ -4,7 +4,7 @@ pkgname=python-ehforwarderbot-git
 _provide=${pkgname%-git}
 _name=${_provide#python-}
 pkgver=r544.d43f1c3
-pkgrel=1
+pkgrel=2
 pkgdesc='An extensible message tunneling chat bot framework. Delivers messages to and from multiple platforms and remotely control your accounts.'
 arch=('any')
 url='https://github.com/blueset/ehForwarderBot'
@@ -14,7 +14,7 @@ depends=(
 	'python-ruamel-yaml'
 	'python-bullet'
 	'python-cjkwrap'
-	'python-typing-extensions')
+	'python-typing_extensions')
 makedepends=(
 	'git'
 	'python-setuptools')
