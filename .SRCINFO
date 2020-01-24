@@ -1,0 +1,24 @@
+pkgbase = castor-git
+	pkgdesc = A gemini, gopher and finger graphical client
+	pkgver = 0.4.0.r1.g7f50a34
+	pkgrel = 1
+	url = https://git.sr.ht/~julienxx/castor
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = atk
+	depends = cairo
+	depends = openssl
+	source = castor::git+https://git.sr.ht/~julienxx/castor
+	source = castor-0.4.0-install.patch
+	sha256sums = SKIP
+	sha256sums = a659bb60626aa505b6f61f2a4669304a9806717858c79facc69b101879e4d0e2
+
+pkgname = castor-git
+
