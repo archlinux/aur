@@ -1,0 +1,222 @@
+diff -rupN without/dmenu.1 with/dmenu.1
+--- without/dmenu.1	2020-01-25 00:00:00.000000000 +0100
++++ with/dmenu.1	2020-01-25 00:00:00.000000000 +0100
+@@ -20,6 +20,8 @@ dmenu \- dynamic menu
+ .IR color ]
+ .RB [ \-sf
+ .IR color ]
++.RB [ \-hist
++.IR "<filename>" ]
+ .RB [ \-w
+ .IR windowid ]
+ .P
+@@ -78,6 +80,9 @@ defines the selected background color.
+ .BI \-sf " color"
+ defines the selected foreground color.
+ .TP
++.BI \-hist " <histfile>"
++the file to use for history
++.TP
+ .B \-v
+ prints version information to stdout, then exits.
+ .TP
+ .SH USAGE
+diff -rupN without/dmenu.c with/dmenu.c
+--- without/dmenu.c	2020-01-25 00:16:39.743187188 +0100
++++ with/dmenu.c	2020-01-25 00:26:28.806550594 +0100
+@@ -53,6 +53,9 @@ static XIC xic;
+ static Drw *drw;
+ static Clr *scheme[SchemeLast];
+ 
++static char *histfile = NULL;
++static struct item *histitems, *histend;
++
+ #include "config.h"
+ 
+ static int (*fstrncmp)(const char *, const char *, size_t) = strncmp;
+@@ -304,6 +307,59 @@ movewordedge(int dir)
+ 	}
+ }
+ 
++static int
++writehistory(char *command) {
++	FILE *f;
++	struct item *histitem;
++	char *histline;
++	char *histcmd;
++	int currcnt = 1;
++	int histcnt;
++
++	if(!histfile || strlen(command) <= 0)
++		return 0;
++
++	if((f = fopen(histfile, "w"))) {
++		/* get the current count of previous runs for this command */
++		for(histitem = histitems; histitem && histitem->text; histitem=histitem->right) {
++			histline = strdup(histitem->text);
++			histcmd = strsep(&histline, "\t");
++			if(strcmp(command, histcmd) == 0) {
++				currcnt = atoi(strsep(&histline, "\t")) + 1;
++			}
++		}
++
++		/* loop through history printing those with more runs */
++		for(histitem = histitems; histitem && histitem->text; histitem=histitem->right) {
++			histline = strdup(histitem->text);
++			histcmd = strsep(&histline, "\t");
++			histcnt = atoi(strsep(&histline, "\t"));
++			if(histcnt > currcnt) {
++				fprintf(f, "%s", histitem->text);
++			} else {
++				break;
++			}
++		}
++
++		/* print this command now so it's the first in line with this run count */
++		/* reducing the count by 1 here to keep the next comparison loop simple */
++		fprintf(f, "%s\t%d\n", command, currcnt--);
++
++		/* print all the rest except this command's old line */
++		for(; histitem && histitem->text; histitem=histitem->right) {
++			histline = strdup(histitem->text);
++			histcmd = strsep(&histline, "\t");
++			histcnt = atoi(strsep(&histline, "\t"));
++			if(histcnt < currcnt || strcmp(command, histcmd) != 0)
++				fprintf(f, "%s", histitem->text);
++		}
++		fclose(f);
++		return 1;
++	}
++
++	return 0;
++}
++
+ static void
+ keypress(XKeyEvent *ev)
+ {
+@@ -466,6 +522,7 @@ insert:
+ 	case XK_KP_Enter:
+ 		puts((sel && !(ev->state & ShiftMask)) ? sel->text : text);
+ 		if (!(ev->state & ControlMask)) {
++			writehistory( (sel == NULL) ? text : sel->text);
+ 			cleanup();
+ 			exit(0);
+ 		}
+@@ -519,32 +576,70 @@ paste(void)
+ }
+ 
+ static void
+-readstdin(void)
++readitems(void)
+ {
+-	char buf[sizeof text], *p;
+-	size_t i, imax = 0, size = 0;
++	char buf[sizeof text], *p, *histline, *histcmd;
++	size_t i = 0, j = 0, k = 0, max = 0, size = 0;
+ 	unsigned int tmpmax = 0;
++	FILE *f;
++	Bool listed;
++	struct item *histitem;
++
++	histitems = histend = NULL;
++	if(histfile && (f = fopen(histfile, "r"))) {
++		for(; fgets(buf, sizeof buf, f); i++) {
++			histitem = malloc(sizeof *histitem);
++			histitem->text = strdup(buf);
++			appenditem(histitem, &histitems, &histend);
++			if(i+1 >= size / sizeof *items)
++				if(!(items = realloc(items, (size += BUFSIZ))))
++					die("cannot realloc %u bytes:", size);
++			if((p = strchr(buf, '\n')))
++				*p = '\0';
++			histline = strdup(buf);
++			histcmd = strsep(&histline, "\t");
++			if(!(items[i].text = strdup(histcmd)))
++				die("cannot strdup %u bytes:", strlen(buf) + 1);
++			items[i].out = 0;
++			drw_font_getexts(drw->fonts, buf, strlen(buf), &tmpmax, NULL);
++			if (tmpmax > inputw) {
++				inputw = tmpmax;
++				max = i;
++			}
++		}
++		fclose(f);
++	}
+ 
+ 	/* read each line from stdin and add it to the item list */
+-	for (i = 0; fgets(buf, sizeof buf, stdin); i++) {
+-		if (i + 1 >= size / sizeof *items)
+-			if (!(items = realloc(items, (size += BUFSIZ))))
+-				die("cannot realloc %u bytes:", size);
++	for (j = i; fgets(buf, sizeof buf, stdin); j++) {
+ 		if ((p = strchr(buf, '\n')))
+ 			*p = '\0';
+-		if (!(items[i].text = strdup(buf)))
+-			die("cannot strdup %u bytes:", strlen(buf) + 1);
+-		items[i].out = 0;
+-		drw_font_getexts(drw->fonts, buf, strlen(buf), &tmpmax, NULL);
+-		if (tmpmax > inputw) {
+-			inputw = tmpmax;
+-			imax = i;
++		listed = False;
++		for(k = 0; k < i; k++) {
++			if(strcmp(buf, items[k].text) == 0) {
++				listed = True;
++				j--;
++				break;
++			}
++		}
++		if(!listed) {
++			if (j + 1 >= size / sizeof *items)
++				if (!(items = realloc(items, (size += BUFSIZ))))
++					die("cannot realloc %u bytes:", size);
++			if (!(items[j].text = strdup(buf)))
++				die("cannot strdup %u bytes:", strlen(buf) + 1);
++			items[j].out = 0;
++			drw_font_getexts(drw->fonts, buf, strlen(buf), &tmpmax, NULL);
++			if (tmpmax > inputw) {
++				inputw = tmpmax;
++				max = j;
++			}
+ 		}
+ 	}
+ 	if (items)
+-		items[i].text = NULL;
+-	inputw = items ? TEXTW(items[imax].text) : 0;
+-	lines = MIN(lines, i);
++		items[j].text = NULL;
++	inputw = items ? TEXTW(items[max].text) : 0;
++	lines = MIN(lines, j);
+ }
+ 
+ static void
+@@ -683,7 +778,7 @@ static void
+ usage(void)
+ {
+ 	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
+-	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n", stderr);
++	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-hist histfile] [-w windowid]\n", stderr);
+ 	exit(1);
+ }
+ 
+@@ -724,6 +819,8 @@ main(int argc, char *argv[])
+ 			colors[SchemeSel][ColBg] = argv[++i];
+ 		else if (!strcmp(argv[i], "-sf"))  /* selected foreground color */
+ 			colors[SchemeSel][ColFg] = argv[++i];
++		else if(!strcmp(argv[i], "-hist")) /* history file */
++			histfile = argv[++i];
+ 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
+ 			embed = argv[++i];
+ 		else
+@@ -754,9 +851,9 @@ main(int argc, char *argv[])
+ 
+ 	if (fast && !isatty(0)) {
+ 		grabkeyboard();
+-		readstdin();
++		readitems();
+ 	} else {
+-		readstdin();
++		readitems();
+ 		grabkeyboard();
+ 	}
+ 	setup();

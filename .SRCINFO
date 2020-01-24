@@ -1,7 +1,7 @@
 pkgbase = dmenu-xft-mouse-height-fuzzy-history
 	pkgdesc = Dynamic X menu - with xft, mouse, height, history, and fuzzy search support
 	pkgver = 4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tools.suckless.org/dmenu/
 	arch = i686
 	arch = x86_64
@@ -13,13 +13,15 @@ pkgbase = dmenu-xft-mouse-height-fuzzy-history
 	conflicts = dmenu
 	conflicts = dmenu2
 	source = http://dl.suckless.org/tools/dmenu-4.9.tar.gz
+	source = dmenu-history-fixed-4.9.diff
 	source = dmenu-fuzzymatch-4.9.diff
 	source = dmenu-mousesupport-4.7.diff
 	source = dmenu-lineheight-4.9.diff
-	md5sums = 9a537ec9a3a2ce9f08963d66b56cc030
-	md5sums = 10f1d55f242fd34aae6b72b51fd50915
-	md5sums = 274972c3f6de489dd00543a6d653b960
-	md5sums = 0832170eeeec1a70febf641828ddcd17
+	sha256sums = b3971f4f354476a37b2afb498693649009b201550b0c7c88e866af8132b64945
+	sha256sums = 480dae5b4d18198d887c8ea02758e03d55da04db5a6afb43f086e68f75a41b4c
+	sha256sums = d9a1e759cd518348fc37c2c83fbd097232098562ebfd1edf85b51413ff524b79
+	sha256sums = 084aa281c92bf87103121a031617c3ec10ee63ce40f955aefafc5dbded9489e5
+	sha256sums = ff4af5c72908f2f504ce480ada6462c9583c31eab7cabfb690c9528e4924389a
 
 pkgname = dmenu-xft-mouse-height-fuzzy-history
 

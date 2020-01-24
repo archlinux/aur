@@ -75,7 +75,7 @@ index 6b8f51b..45d1946 100644
  {
  	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
 +	      "             [-h height]\n"
- 	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n", stderr);
+ 	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-hist histfile] [-w windowid]\n", stderr);
  	exit(1);
  }
 @@ -716,6 +718,10 @@ main(int argc, char *argv[])
