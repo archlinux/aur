@@ -4,7 +4,7 @@
 # Contributor: otaj <jasek.ota@gmail.com>
 
 pkgname=mcelog
-pkgver=166
+pkgver=168
 pkgrel=1
 pkgdesc="Print machine check event log from x86-64 kernel"
 url="https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git"
@@ -14,7 +14,7 @@ makedepends=('git')
 options=('docs')
 backup=('etc/mcelog/mcelog.conf')
 source=("$url/snapshot/$pkgname-$pkgver.tar.gz")
-sha256sums=('f717b7bd725a2573e9d1556d3543cb385f1c9fa68fe682f1bc93952b726eedb4')
+sha256sums=('11c0f9ab9c97e12d912a51d2b4d2ee937378c5b08a3bb4e34214e0736c6fb7ef')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
