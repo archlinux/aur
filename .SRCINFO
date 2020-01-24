@@ -1,0 +1,18 @@
+pkgbase = corepins-git
+	pkgdesc = A bookmarking app from the CoreApps family.
+	pkgver = v2.8.0.r1.b32c665
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	provides = corepins
+	conflicts = corepins
+	source = git+https://gitlab.com/cubocore/corepins.git
+	md5sums = SKIP
+
+pkgname = corepins-git
+
