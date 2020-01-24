@@ -1,31 +1,35 @@
 # Maintainer: Pest <ppest@protonmail.com>
 _pkgname=devault
 pkgname="${_pkgname}core-git"
-pkgver=1.1.3
+pkgver=r16757.e8b7c87eb
 pkgrel=1
 pkgdesc="QT Desktop wallet for the dvt blockchain"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/devaultcrypto/"
-source=(${_pkgname}-${pkgver}::\
-https://github.com/devaultcrypto/devault/archive/v${pkgver}.tar.gz)
+source=("git+https://github.com/devaultcrypto/${_pkgname}.git")
 depends=('boost-libs' 'qt5-base' 'qrencode' 'zeromq' 'miniupnpc' 'hicolor-icon-theme' 'libevent')
 makedepends=('python' 'boost' 'qt5-tools')
-md5sums=('b35b32ab22c5a493a12bcc6d200940c9')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   ./autogen.sh
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_pkgname}"
   ./configure --prefix=/usr/
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   install -D -m644 \
    contrib/debian/devault-qt.desktop \
