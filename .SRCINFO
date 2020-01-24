@@ -1,12 +1,11 @@
 pkgbase = pic32prog-git
 	pkgdesc = Flash programming utility for Microchip PIC32 microcontrollers
 	pkgver = 2.0.241
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sergev/pic32prog
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = awk
 	depends = libusb
 	provides = pic32prog
 	conflicts = pic32prog
