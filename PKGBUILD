@@ -2,10 +2,10 @@
 
 pkgname=turbodiary
 pkgver=0.6.0
-pkgrel=1
-pkgdesc="Turbo Diary - A Personal Diary"
+pkgrel=2
+pkgdesc='Turbo Diary - A Personal Diary'
 arch=('x86_64')
-url="https://github.com/emvigo/turbodiary"
+url='https://github.com/emvigo/turbodiary'
 license=('APACHE')
 depends=('openssl' 'pcre2')
 makedepends=('pkgconf')
@@ -20,5 +20,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	mkdir -p "$pkgdir/usr/bin"
-	make DESTDIR="$pkgdir/" PREFIX="/usr" install
+	make DESTDIR="$pkgdir/" PREFIX='/usr' install
 }

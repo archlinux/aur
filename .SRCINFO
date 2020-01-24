@@ -1,7 +1,7 @@
 pkgbase = turbodiary
 	pkgdesc = Turbo Diary - A Personal Diary
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emvigo/turbodiary
 	arch = x86_64
 	license = APACHE
