@@ -11,7 +11,7 @@ depends=(
 	"xorg-server-xwayland" "swaybg-git"
 )
 optdepends=(
-	"rxvt-unicode: Default terminal emulator."
+	"alacritty: Default terminal emulator."
 	"dmenu: Default for launching applications."
 	"i3status: To display system information with a bar."
 	"swayidle-git: Idle management daemon for Sway."
