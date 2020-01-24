@@ -1,0 +1,11 @@
+--- a/lib/googlecloudsdk/core/console/console_io.py	2020-01-23 18:07:11.746083781 -0800
++++ b/lib/googlecloudsdk/core/console/console_io.py	2020-01-23 18:06:51.028805396 -0800
+@@ -541,7 +541,7 @@
+
+   while True:
+     answer = _GetInput()
+-    if answer is None or (answer is '' and default is not None):
++    if answer is None or (answer == '' and default is not None):
+       # Return default if we failed to read from stdin.
+       # Return default if the user hit enter and there is a valid default,
+       # or raise OperationCancelledError if default is the cancel option.

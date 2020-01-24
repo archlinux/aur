@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=276.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -20,14 +20,25 @@ options=('!strip' 'staticlibs')
 source=(
   "https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/${pkgname}_${pkgver}.orig.tar.gz"
   "google-cloud-sdk.sh"
+  "0001-fix-console-io-syntax-warning.patch"
 )
 sha256sums=('ad3d711e372fdcef141106d33e150aee4922a88c76484798a40b48a2fc779c3c'
-            'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295')
+            'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295'
+            'b3faeb3af2922510048d12063fa215610f12879f5cc9f8b78786c7d9f2957c70')
+
+prepare() {
+  cd "$pkgname"
+
+  for f in ./../*.patch; do
+    patch -p1 -i $f > /dev/null 2>&1 || ( echo "failed to apply patch: $(basename $f)" && exit 1 )
+  done
+}
 
 package() {
   echo "Copying core SDK components"
   mkdir "${pkgdir}/opt"
   cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt"
+
 
   echo "Running bootstrapping script"
 

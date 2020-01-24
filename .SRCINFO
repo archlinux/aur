@@ -1,7 +1,7 @@
 pkgbase = google-cloud-sdk
 	pkgdesc = A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
 	pkgver = 276.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
 	license = Apache
@@ -12,8 +12,10 @@ pkgbase = google-cloud-sdk
 	options = staticlibs
 	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk_276.0.0.orig.tar.gz
 	source = google-cloud-sdk.sh
+	source = 0001-fix-console-io-syntax-warning.patch
 	sha256sums = ad3d711e372fdcef141106d33e150aee4922a88c76484798a40b48a2fc779c3c
 	sha256sums = a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295
+	sha256sums = b3faeb3af2922510048d12063fa215610f12879f5cc9f8b78786c7d9f2957c70
 
 pkgname = google-cloud-sdk
 
