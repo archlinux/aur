@@ -4,7 +4,7 @@ pkgname=python-efb-wechat-slave-git
 _provide=${pkgname%-git}
 _name=${_provide#python-}
 pkgver=r227.540b7a7
-pkgrel=1
+pkgrel=2
 pkgdesc='EFB WeChat Slave, a channel for EH Forwarder Bot.'
 arch=('any')
 url='https://github.com/blueset/efb-wechat-slave'
@@ -19,7 +19,7 @@ depends=(
 	'python-pyqrcode'
 	'python-yaml'
 	'python-requests'
-	'python-typing-extensions'
+	'python-typing_extensions'
 	'python-bullet'
 	'python-cjkwrap')
 makedepends=(

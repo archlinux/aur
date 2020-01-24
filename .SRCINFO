@@ -1,7 +1,7 @@
 pkgbase = python-efb-wechat-slave-git
 	pkgdesc = EFB WeChat Slave, a channel for EH Forwarder Bot.
 	pkgver = r227.540b7a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blueset/efb-wechat-slave
 	arch = any
 	groups = efb
@@ -16,7 +16,7 @@ pkgbase = python-efb-wechat-slave-git
 	depends = python-pyqrcode
 	depends = python-yaml
 	depends = python-requests
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	depends = python-bullet
 	depends = python-cjkwrap
 	provides = python-efb-wechat-slave
