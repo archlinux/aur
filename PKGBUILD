@@ -1,7 +1,7 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
 pkgver=7.68.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
 url="https://curl.haxx.se"
@@ -13,10 +13,13 @@ source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc})
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 #source=("curl-$pkgver.zip::https://github.com/curl/curl/archive/master.zip")
 
-_quiche_tag=0.1.0
+_quiche_tag=0.2.0
 
 build(){
-  test -e quiche || git clone --recursive --branch ${_quiche_tag} --depth 1 https://github.com/cloudflare/quiche.git
+  if test -e quiche; then
+    rm -rf quiche
+  fi
+  git clone --recursive --branch ${_quiche_tag} --depth 1 https://github.com/cloudflare/quiche.git
 
   ## Build BoringSSL
   mkdir -p quiche/deps/boringssl/build
