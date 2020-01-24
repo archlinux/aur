@@ -1,0 +1,19 @@
+pkgbase = coreshot-git
+	pkgdesc = A screen capture utility from the CoreApps family.
+	pkgver = v2.8.0.r0.341bef9
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = qt5-x11extras
+	depends = libcprime-git
+	provides = coreshot
+	conflicts = coreshot
+	source = git+https://gitlab.com/cubocore/coreshot.git
+	md5sums = SKIP
+
+pkgname = coreshot-git
+
