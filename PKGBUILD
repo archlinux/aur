@@ -1,6 +1,6 @@
 # Maintainer: Miguel Palencia <mike@qtum.org>
 
-pkgname=qtum-core
+pkgname=qtum-core-aarch64
 pkgver=0.18.3
 pkgrel=1
 pkgdesc="Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake."
