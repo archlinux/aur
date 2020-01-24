@@ -7,6 +7,7 @@ pkgdesc="QT Desktop wallet for the dvt blockchain"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/devaultcrypto/"
+conflicts=("${_pkgname}" "${_pkgname}core")
 source=("git+https://github.com/devaultcrypto/${_pkgname}.git")
 depends=('boost-libs' 'qt5-base' 'qrencode' 'zeromq' 'miniupnpc' 'hicolor-icon-theme' 'libevent')
 makedepends=('python' 'boost' 'qt5-tools')
