@@ -9,8 +9,8 @@
 # Contributor: Sylvester Johansson <syljo361(at)gmail(dot)org>
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
-pkgver='2.2.1'
-pkgrel='2'
+pkgver='2.2.2'
+pkgrel='1'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686')
 url="https://github.com/gildor478/$_projectname"
@@ -19,7 +19,7 @@ depends=('ocaml' 'ocaml-lwt' 'ocaml-stdlib-shims')
 makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c0140d256e34fcf2c213f3899a1ed756f190311f75c8e6b969641fbebdaef212')
+sha256sums=('db5dbdd4fd29a9ff82dd9d75813e0391d833ba868f813e3c3349807bc9da5032')
 
 _sourcedirectory="$_projectname-$pkgver"
 
