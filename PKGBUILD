@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.0.r24.g50e5f47
+pkgver=0.10.1
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -31,8 +31,7 @@ depends=('fontconfig'
          'ttf-gentium-plus')
 makedepends=('git'
              'poppler')
-checkdepends=('lua-busted'
-              'lua-luacov=0.8')
+checkdepends=('lua-busted')
 source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
         "git://github.com/sile-typesetter/libtexpdf.git")
 sha256sums=('SKIP' 'SKIP')
@@ -48,7 +47,6 @@ prepare () {
     git config submodule.libtexpdf.url "$srcdir/libtexpdf"
     git submodule update
     ./bootstrap.sh
-    sed -i -e 's/rm -f core/rm -f/' configure
 }
 
 build () {
