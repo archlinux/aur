@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
@@ -27,7 +27,7 @@ optdepends=(
 	'libayatana-appindicator-gtk3: to hide Kotatogram in the tray bar (GTK3-based desktop environment, modern fork)'
 	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
-conflicts=('kotatogram-desktop' 'telegram-desktop' 'telegram-desktop-bin')
+conflicts=('kotatogram-desktop' 'kotatogram-desktop-dynamic-bin')
 provides=('kotatogram-desktop')
 
 # Sources
@@ -41,7 +41,7 @@ source=(
 
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('bfd867058a77535962bcc4e87b344c2ba2d5da2fcc7be579bb8f8507e9f063bd1970b00d9032de4c67a16f9e655c9dcc262eabbadbf73fe99ec85f51b50bfdba'
+sha512sums=('0e6278a4126dc271f6e1e97ada58df224ff08067ba090226fcb07c8316107cf097c5830320b17033dba6f81d9c1ecd98f11468125490bffd58b6e7529a415d01'
             'e54c2f5a4cdeff5850828072890679e07da07cfa3663cf9bfb1e6b8f5bca0dc15e6b4b9a2a6c111b796a0440035beea419cda9bf4ec5d476d4fbb54c1b4ad7fd'
             '4311278271e90b14be172b8cadb044c8cc2f34c730bce1aa8eaf1e086d4b15d02d071cbd1500dad4a933482b89e7f8f4ae606f510fb67a8f0dbb1a57fe21b33e'
             '9f4f8d6bbbb54012da0bd9bdf6975ba29fd6ebfca3083995581d815a54e46bc5d4c4d8fedc67f71e892ace08e79179ea6452a7dea0f6ea4f932c1f57ca8497a7'
@@ -70,13 +70,7 @@ package() {
 	# Desktop launcher
 	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
 	install -Dm644 "$srcdir/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
-
-	# KDE5 & KDE4 protocol file
-	install -d "$pkgdir/usr/share/kservices5"
-	install -d "$pkgdir/usr/share/kde4/services"
-	install -m644 "$srcdir/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
-	ln -s "/usr/share/kservices5/tg.protocol" "$pkgdir/usr/share/kde4/services"
-
+	
 	# Icons
 	local icon_size icon_dir
 	for icon_size in 16 32 48 64 128 256 512; do
