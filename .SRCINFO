@@ -1,0 +1,20 @@
+pkgbase = corefm-git
+	pkgdesc = A lightwight filemanager from the CoreApps family.
+	pkgver = v2.8.0.r6.2dc8b59
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = i686
+	arch = x86_64
+	groups = coreapps-git
+	license = GPL3
+	makedepends = git
+	depends = libcprime-git
+	depends = libcsys-git
+	depends = qt5-multimedia
+	provides = corefm
+	conflicts = corefm
+	source = git+https://gitlab.com/cubocore/corefm.git
+	md5sums = SKIP
+
+pkgname = corefm-git
+
