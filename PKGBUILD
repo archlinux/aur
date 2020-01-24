@@ -1,21 +1,22 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
 license=('Apache-2.0')
 makedepends=(
-  'curl'
   'gcc'
   'git'
   'go'
   'nodejs'
   'yarn'
 )
-provides=('authelia')
-conflicts=('authelia-bin')
+conflicts=(
+  'authelia-bin'
+  'authelia-git'
+)
 backup=('etc/authelia/configuration.yml')
 
 source=(
@@ -31,7 +32,7 @@ sha256sums=(
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   sed -i "s/__BUILD_TAG__/v${pkgver}/" cmd/authelia/constants.go
-  sed -i "s/__BUILD_COMMIT__/$(curl https://api.github.com/repos/${pkgname}/${pkgname}/git/refs/tags/v${pkgver} | awk -F '["]' '/"sha"/{print $4}')/" cmd/authelia/constants.go
+  sed -i "s/__BUILD_COMMIT__/$(git rev-parse --verify v${pkgver})/" cmd/authelia/constants.go
   go build -ldflags '-w' -trimpath -o authelia cmd/authelia/*.go
   cd web
   yarn install --frozen-lockfile
