@@ -2,7 +2,7 @@
 
 pkgname=qtum-core
 pkgver=0.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake."
 arch=('x86_64')
 url="https://qtum.org"

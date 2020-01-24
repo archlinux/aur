@@ -1,7 +1,7 @@
 pkgbase = qtum-core
 	pkgdesc = Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake.
 	pkgver = 0.18.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qtum.org
 	arch = x86_64
 	license = MIT
