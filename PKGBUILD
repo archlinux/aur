@@ -1,7 +1,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=appleseed-git
 #_fragment="#branch=2.0.5-beta-maintenance"
-pkgver=2.1.0.beta.r87.gb2a2631ed
+pkgver=2.1.0.beta.r137.g802dbf67b
 pkgrel=1
 epoch=1
 pkgdesc="physically-based global illumination rendering engine primarily designed for animation and visual effects. "
@@ -32,6 +32,7 @@ CMAKE_FLAGS=( -DWITH_EMBREE=ON
               -DUSE_STATIC_OIIO=OFF
               -DUSE_STATIC_OSL=OFF
               -DWARNINGS_AS_ERRORS=OFF
+              -DWITH_BENCH=OFF
             )
 
 pkgver() {
