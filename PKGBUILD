@@ -19,11 +19,11 @@ conflicts=('qv2ray')
 
 source=(
     'Qv2ray::git+https://github.com/Qv2ray/Qv2ray#tag=v2.0.0'
-    'QNodeEditor::git+https://github.com/lhy0403/QNodeEditor'
-    'SingleApplication::git+https://github.com/itay-grudev/SingleApplication'
-    'x2struct::git+https://github.com/xyz347/x2struct'
-    'qzxing::git+https://github.com/ftylitak/qzxing'
-    'qhttpserver::git+https://github.com/nikhilm/qhttpserver'
+    'QNodeEditor::git+https://github.com/lhy0403/QNodeEditor#tag=v2.1.5'
+    'SingleApplication::git+https://github.com/itay-grudev/SingleApplication#tag=v3.0.19'
+    'x2struct::git+https://github.com/xyz347/x2struct#tag=v1.2'
+    'qzxing::git+https://github.com/ftylitak/qzxing#commit=2a58c5032b2180f2cce95e1db106cbaa4ecaed02'
+    'qhttpserver::git+https://github.com/nikhilm/qhttpserver#commit=02a6e7174b5be76e2c0e74a109817e39a141b9fd'
     'QvRPCBridge::git+https://github.com/Qv2ray/QvRPCBridge#tag=v1.1'
 )
 
@@ -31,9 +31,10 @@ sha512sums=(
     'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
-#pkgver() {
-#    printf "%s.%s+grpcfree" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
-#}
+pkgver() {
+    cd "${srcdir}/Qv2ray"
+    printf "%s" $(git describe --long --tags | sed 's/v//;s/-\S*//g')
+}
 
 prepare() {
     cd "${srcdir}/Qv2ray"
