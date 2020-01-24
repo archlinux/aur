@@ -1,7 +1,7 @@
 pkgbase = forge-server-1.7.10
 	pkgdesc = Minecraft Forge server unit files, script and jar
 	pkgver = 1.7.10_10.13.4.1558
-	pkgrel = 6
+	pkgrel = 7
 	url = https://minecraftforge.net
 	install = forge-server.install
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = forge-server-1.7.10
 	source = Paulscode%20IBXM%20Library%20License-forge-server-1.7.10-1.7.10-10.13.4.1558.txt::https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.7.10/Paulscode%20IBXM%20Library%20License.txt
 	source = Paulscode%20SoundSystem%20CodecIBXM%20License-forge-server-1.7.10-1.7.10-10.13.4.1558.txt::https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.7.10/Paulscode%20SoundSystem%20CodecIBXM%20License.txt
 	source = LICENSE-fml-forge-server-1.7.10-1.7.10-10.13.4.1558.txt::https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.7.10/fml/LICENSE-fml.txt
-	sha512sums = 5b96dbb4ffa8b588e6b8b00a71b7fc853c863c8375176255695ecffa9e2955c643754c1ead458147437533b0cc68ec7d89123caf33cc4e5bb8c86221d2a61c78
+	sha512sums = 5447b2e5f9abca97b86a5b6ba7e428aa5f5a7221d61de503566fb90f513a9ca7e785ef9ed065cb6b904ee1efc7b2338f85cfb5cbdb7ae4110e4991ffb72177ba
 	sha512sums = 1ac9622e47f8f184f6870ccf8533d3f4ccbf16cdca11d7b78eddbf6786a6b25a1b3ff35c57dc94252251b2c41b364b90dd057435c0185bbbb689ba41afcb246a
 	sha512sums = 6aac51e495725e78ddf2bd52fbca9bf20d0f9cdb6502441a8ab4e8a93d71ab5d943a094186e8fba801c9c561d25841f6afb54e3eb39f1570c88b3818f4fbc4a8
 	sha512sums = 14aa332e2e0a9c795aad174f66f82eb18644223fbb6dd8878011acff4b6098b7685e4f6c04acdd7812672c659efa81ef7af5ad75831b46f3b82229749805e55d
