@@ -4,7 +4,7 @@
 # Contributor: xsmile <sascha_r gmx de>
 
 pkgname=nessus
-pkgver=8.8.0
+pkgver=8.9.0
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
@@ -13,13 +13,12 @@ license=('custom')
 url="https://www.tenable.com/downloads/nessus"
 install=${pkgname}.install
 
-# Note: I had to use a file hoster because Tenable doesn't provide a direct link.
-source=("nessus-${pkgver}-fc20.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/10198/download?i_agree_to_tenable_license_agreement=true"
+source=("nessus-${pkgver}-fc20.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/10452/download?i_agree_to_tenable_license_agreement=true"
         nessus.desktop
         nessus.sh
         LICENSE)
 
-sha256sums=('feb950ea8e2f6925e4c6e760266c51f2883b052fc2a806eb346f87955695554e'
+sha256sums=('0b5541467fc0cafa2379df8eb48dfec5683bec87144351e18f4fbc8e0bf7fdd2'
             '8c5e82d609a7290c34cbfa5635012cb66820e4e2c1db2bf5808fc306fcefdc30'
             '9b8e2c15d86ce7b83806a27bd6685f009ad339f3ea52022b87a75fbd2802ec5a'
             'd647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26')
