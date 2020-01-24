@@ -1,13 +1,16 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia-bin
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps. Pre-compiled."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
 license=('Apache-2.0')
 provides=('authelia')
-conflicts=('authelia')
+conflicts=(
+  'authelia'
+  'authelia-git'
+)
 backup=('etc/authelia/configuration.yml')
 
 source=('authelia.service')
