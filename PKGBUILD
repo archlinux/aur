@@ -1,8 +1,8 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 
 pkgname=octant
 pkgdesc='A tool for developers to understand how applications run on a Kubernetes cluster'
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -10,13 +10,12 @@ url='https://github.com/vmware/octant'
 depends=('kubectl')
 makedepends=('go' 'npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmware/octant/archive/v$pkgver.tar.gz")
-sha256sums=('751c347f8efcaf05a36f8451979d3a0ede2b90a20fea4447b238c80f0522c136')
+sha256sums=('da7ab643408c0f4cb2af85d32a9335944bbd41d5569d8e7cebfda08df0e4e41a')
 
 build() {
-  export NG_CLI_ANALYTICS=ci
-
   cd $pkgname-$pkgver
-  make go-install ci
+  go run build.go go-install
+  go run build.go ci
 }
 
 package() {
