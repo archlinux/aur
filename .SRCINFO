@@ -1,0 +1,18 @@
+pkgbase = typeracer
+	pkgdesc = terminal typing speed tester
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://gitlab.com/ttyperacer/terminal-typeracer
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = cargo
+	depends = openssl
+	depends = zlib
+	source = typeracer-1.4.3.tar.gz::https://gitlab.com/ttyperacer/terminal-typeracer/-/archive/v1.4.3/terminal-typeracer-v1.4.3.tar.gz
+	sha512sums = f4e7b1b0151239f584eddd48bbcbd5038aa82d1e162e2751a5a8f4bd87df997e8ed8c1a10a18d927867ed3dc0d2f3ff9b1315514d1d5dc013e3889dc1443fc07
+
+pkgname = typeracer
+
