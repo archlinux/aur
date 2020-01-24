@@ -2,7 +2,7 @@
 
 pkgname=python-nbopen
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Opens an Jupyter notebook in the best available server'
 arch=('any')
 url='https://pypi.org/project/nbopen'

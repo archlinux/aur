@@ -1,1 +1,4 @@
-nbopen-*.tar.gz
+/src/
+/pkg/
+/nbopen-*.tar.gz
+*.pkg.tar.*
