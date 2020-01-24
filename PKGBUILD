@@ -8,7 +8,8 @@ pkgdesc='A cross platform package to do curses-like operations, plus higher leve
 arch=('any')
 url='https://pypi.org/project/asciimatics'
 license=('Apache2')
-depends=('python-wcwidth' 'python-mock' 'python-pyfiglet' 'python-future' 'python-setuptools-scm' 'python-pillow')
+depends=('python' 'python-wcwidth' 'python-mock' 'python-pyfiglet' 'python-future' 'python-setuptools-scm' 'python-pillow')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 md5sums=('9abc134166e6a83671b379dc03830a3f')
 
