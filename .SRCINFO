@@ -1,7 +1,7 @@
 pkgbase = remmina-appindicator
 	pkgdesc = remote desktop client written in GTK+ (compiled with appindicator)
-	pkgver = 1.3.6
-	pkgrel = 2
+	pkgver = 1.3.10
+	pkgrel = 1
 	epoch = 1
 	url = https://www.remmina.org/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = remmina-appindicator
 	makedepends = spice-gtk
 	makedepends = spice-protocol
 	makedepends = telepathy-glib
+	makedepends = xorgproto
 	depends = avahi
 	depends = libappindicator-gtk3
 	depends = libgcrypt
@@ -33,8 +34,8 @@ pkgbase = remmina-appindicator
 	conflicts = remmina
 	replaces = remmina-plugins
 	replaces = remmina
-	source = remmina-1.3.6.tar.gz::https://github.com/FreeRDP/Remmina/archive/v1.3.6.tar.gz
-	sha256sums = c9a2327d02285cec78ef6eab8154d88d78d2d6a874e17681fcc6cb1aff20c40d
+	source = remmina-appindicator-1.3.10.tar.bz2::https://gitlab.com/Remmina/Remmina/-/archive/v1.3.10/Remmina-v1.3.10.tar.bz2
+	sha512sums = 62fef008729958f6ab479133d11d327b9edd6e21bc55613292f4c6c0c5abb744e70c958779a1ee5f72e4931e90152fc39ff25cea7a62fcb8107ee1f7bc3ff3c5
 
 pkgname = remmina-appindicator
 
