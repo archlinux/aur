@@ -1,7 +1,7 @@
 # Maintainer: Boris Timofeev <mashin87@gmail.com>
 pkgname=punes
 pkgver=0.105
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/punesemu/puNES"
 license=('GPL2')
 groups=()
 depends=('qt5-svg' 'alsa-lib' 'hicolor-icon-theme' 'desktop-file-utils' 'nvidia-cg-toolkit')
-makedepends=()
+makedepends=('qt5-tools')
 checkdepends=()
 optdepends=()
 provides=()
