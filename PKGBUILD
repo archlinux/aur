@@ -3,16 +3,33 @@
 pkgname=python-efb-telegram-master-git
 _provide=${pkgname%-git}
 _name=${_provide#python-}
-pkgver=r235.8778f91
-pkgrel=2
+pkgver=r384.2cd9b5d
+pkgrel=1
 pkgdesc='EFB Telegram Master, a channel for EH Forwarder Bot.'
 arch=('any')
 url='https://github.com/blueset/efb-telegram-master'
 license=('AGPL-3')
 groups=('efb')
 depends=(
-	'python-ehforwarderbot' 'python-telegram-bot-git' 'python-urllib3>=1.25.3' 'python-magic-ahupp' 'python-moviepy' 'python-imageio-ffmpeg' 'python-peewee' 'python-requests' 'python-pydub' 'python-ruamel-yaml' 'python-language-tags' 'python-retrying'  'python-bullet' 'python-cjkwrap' 'python-humanize' 'python-tgs' 'python-cairosvg')
-makedepends=('git' 'python-setuptools')
+	'python-ehforwarderbot'
+	'python-telegram-bot-git'
+	'python-magic-ahupp'
+	'python-ffmpeg-python'
+	'python-peewee'
+	'python-requests'
+	'python-pydub'
+	'python-ruamel-yaml'
+	'python-language-tags'
+	'python-retrying'
+	'python-bullet'
+	'python-cjkwrap'
+	'python-humanize'
+	'python-tgs'
+	'python-typing_extensions'
+	'python-cairosvg')
+makedepends=(
+	'git'
+	'python-setuptools')
 provides=($_provide)
 conflicts=($_provide)
 source=("$_provide"::"git+${url}.git")
@@ -25,9 +42,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_provide"
+	sed -i 's/typing-extensions[>=0-9\.]*/typing-extensions/' setup.py
 	python setup.py clean --all
 	python setup.py build
 	cd "build/lib/${_name//-/_}/locale/"
+	rm -rf ach_UG
 	for _locale in $(ls); do
 		(cd "$_locale/LC_MESSAGES/"; msgfmt "${_name//-/_}.po" -o "${_name//-/_}.mo")
 	done
