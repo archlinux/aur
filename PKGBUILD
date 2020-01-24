@@ -1,6 +1,6 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=0.901.0.r12.g12878073
+pkgver=0.901.0.r146.g6b6dc638
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -43,7 +43,7 @@ package() {
     cd "$srcdir/${pkgname}"
     
     install -d "${pkgdir}/opt/DeltaChat/electron_app"
-    cp -r node_modules  images src build static _locales "${pkgdir}/opt/DeltaChat/electron_app"
+    cp -r node_modules  images tsc-dist build static _locales "${pkgdir}/opt/DeltaChat/electron_app"
     cp index.js package.json "${pkgdir}/opt/DeltaChat/electron_app"
     
     install -Dm644 "${srcdir}/deltachat-desktop.desktop" "${pkgdir}/usr/share/applications/deltachat.desktop"
