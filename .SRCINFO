@@ -1,13 +1,20 @@
 pkgbase = rke
 	pkgdesc = An extremely simple, lightning fast Kubernetes installer that works everywhere.
-	pkgver = 0.2.6
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/rancher/rke
 	arch = x86_64
 	license = apache
-	noextract = rke-0.2.6
-	source = rke-0.2.6::https://github.com/rancher/rke/releases/download/v0.2.6/rke_linux-amd64
-	sha256sums = 7699e0fd3428c37c1683395c566931da0182317f5bde9084812dadc5dcae5619
+	makedepends = git
+	makedepends = go>=1.11
+	source = rke-1.0.3::git+https://github.com/rancher/rke#tag=v1.0.3
+	source = build.patch
+	source = ci.patch
+	source = version.patch
+	sha512sums = SKIP
+	sha512sums = cf18becc521bedafb13658d15e2a7ab8f847e375f4b4f6326320f587a11c657af6b4acd2d13e5fe885138a6c337336ed3d18001b6deb54425f96cfe6862d0331
+	sha512sums = 097d6211104ac7772d6f96c792902f690513b6e780a686c3fdda32ef66c6dd530c7c97a575fd380c4c627e8f7c1192cd877c1512d07a118ff1ad005a2f0cc14b
+	sha512sums = e586996e0acc0736116cd6bd085c5bfa01bb67bf73a99fc9dcddb0c56597485a78612456dd1bcf2d8d97e54cef3b61429df4874877c88fa24b1944a04093f6f4
 
 pkgname = rke
 
