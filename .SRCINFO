@@ -1,6 +1,6 @@
 pkgbase = sudo-selinux
 	pkgdesc = Give certain users the ability to run some commands as root - SELinux support
-	pkgver = 1.8.29
+	pkgver = 1.8.30
 	pkgrel = 1
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
@@ -12,17 +12,17 @@ pkgbase = sudo-selinux
 	depends = pam-selinux
 	depends = libldap
 	depends = libselinux
-	provides = sudo=1.8.29-1
-	provides = selinux-sudo=1.8.29-1
+	provides = sudo=1.8.30-1
+	provides = selinux-sudo=1.8.30-1
 	conflicts = sudo
 	conflicts = selinux-sudo
 	backup = etc/sudoers
 	backup = etc/pam.d/sudo
-	source = https://www.sudo.ws/sudo/dist/sudo-1.8.29.tar.gz
-	source = https://www.sudo.ws/sudo/dist/sudo-1.8.29.tar.gz.sig
+	source = https://www.sudo.ws/sudo/dist/sudo-1.8.30.tar.gz
+	source = https://www.sudo.ws/sudo/dist/sudo-1.8.30.tar.gz.sig
 	source = sudo.pam
 	validpgpkeys = 59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB
-	sha256sums = ce53ffac9604e23321334d8ba8ac59ded2bcf624fdb9dbde097ab2049bf29c7c
+	sha256sums = a35ad3ddc7465703e04190d3ff0b8d78ded9246749becf9a014dcb9c31c579e7
 	sha256sums = SKIP
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
