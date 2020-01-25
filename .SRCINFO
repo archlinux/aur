@@ -1,10 +1,9 @@
 pkgbase = coreimage-git
 	pkgdesc = An image viewer from the CoreApps family.
-	pkgver = v2.8.0.r2.79a9396
+	pkgver = 2.8.0.r3.c049d6c
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
