@@ -3,12 +3,12 @@
 pkgname=python-ffmpeg-python
 _name=${pkgname#python-}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for FFmpeg - with complex filtering support'
 arch=('any')
 url='https://pypi.org/project/ffmpeg-python'
 license=('Apache2')
-depends=('python' 'python-future')
+depends=('ffmpeg' 'python' 'python-future')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/kkroening/ffmpeg-python/master/LICENSE")
