@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Julien Sopena (jsopena.archlinux@free.fr)
 pkgname=smcroute
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing."
 arch=('i686' 'x86_64')
@@ -9,11 +9,11 @@ url="https://troglobit.com/smcroute.html"
 license=('GPL2')
 provides=('smcroute' 'mcsender')
 backup=('etc/smcroute.conf')
-depends=('glibc')
+depends=('libcap' 'bash')
 source=("https://github.com/troglobit/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
         'smcroute.conf.example'
         'smcroute.service')
-md5sums=('e57310c8135b65b7f84c0674a3e46f1a'
+md5sums=('a1dc8c54c684e8c8de139444f73a0ba3'
          '98bdb5bbd222686761e318ee04825b7a'
          '7b28500642045b2482f5ac873da0f86b')
 
