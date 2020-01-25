@@ -2,22 +2,23 @@
 # Maintainer: flu
 
 pkgname=mopidy-tunein
-pkgver=0.4.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Mopidy extension for playing music from TuneIn"
 arch=('any')
 url="http://www.mopidy.com"
 license=('APACHE')
 depends=(
-	'mopidy>=1.1'
-	'python2-setuptools'
-	'python2-requests'
+	'mopidy>=3.0'
+	'python-setuptools'
+	'python-requests'
+	'python-pykka'
 )
-makedepends=('python2' 'git')
+makedepends=('python' 'git')
 source=("https://github.com/kingosticks/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('388f90860d55b4a4f55120142e2c128c')
+md5sums=('e1533b57a2e7701dd05e5c595c04a26c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
