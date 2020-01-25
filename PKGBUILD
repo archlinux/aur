@@ -9,13 +9,13 @@
 _pack=communications
 pkgname=octave-$_pack
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Communications, Error Correcting Codes (Channel Code), Source Code functions, Modulation and Galois Fields"
 arch=(any)
 url="http://octave.sourceforge.net/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.4.0' 'octave-signal>=1.1.3')
+depends=('octave>=4.4.0' 'octave-signal>=1.1.3')
 makedepends=()
 optdepends=()
 backup=()
