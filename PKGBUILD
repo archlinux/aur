@@ -1,4 +1,5 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: David Santiago <demanuel@ymail.com>
+# Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
 pkgver=20180430
@@ -22,29 +23,16 @@ pkgver() {
   git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
 }
 
-prepare() {
-  cd ${pkgname%-git}
-
-  msg2 'Copying Git submodules...'
-  for _submodule in dynasm; do
-    rm -rf 3rdparty/$_submodule
-    cp -dpr --no-preserve=owner "$srcdir/$_submodule" 3rdparty
-  done
-}
 
 build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
   perl Configure.pl \
-    --prefix=/usr \
-    --toolchain=gnu \
-    --compiler=clang \
-    --has-libatomic_ops \
-    --has-libffi \
-    --has-libtommath \
-    --has-libuv \
-    --optimize
+       --no-debug \
+       --os linux \
+       --optimize \
+       --prefix /usr
   make
 }
 
