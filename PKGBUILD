@@ -6,7 +6,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=5.10.0.486.g529100d9f7
+pkgver=v6.0.0.r97.gdee2218bc8
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -74,7 +74,8 @@ md5sums=('SKIP'
      '020971887442ebbf1b6949e031c8dd3f')     
 pkgver() {
   cd "$SRCDEST/${pkgname/-git/}"
-  git describe --always | sed 's|-|.|g' | sed 's/^.//'
+  #git describe --always | sed 's|-|.|g' | sed 's/^.//'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
