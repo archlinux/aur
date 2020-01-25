@@ -1,0 +1,18 @@
+pkgbase = desq-session-git
+	pkgdesc = Session Manager for DesQ
+	pkgver = r8.d604b18
+	pkgrel = 1
+	url = https://gitlab.com/DesQ
+	arch = any
+	groups = desq-git
+	license = none
+	makedepends = git
+	depends = libdesq-git
+	depends = kwin
+	provides = desq-session
+	conflicts = desq-session
+	source = git+https://gitlab.com/Desq/Session.git
+	md5sums = SKIP
+
+pkgname = desq-session-git
+
