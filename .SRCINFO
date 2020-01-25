@@ -15,5 +15,5 @@ pkgbase = aleeplayer
 	source = aleeplayer-git-1.0.0::https://github.com/aleeproductions/AleePlayer/archive/master.tar.gz
 	sha256sums = SKIP
 
-pkgname = aleeplayer-git
+pkgname = aleeplayer
 
