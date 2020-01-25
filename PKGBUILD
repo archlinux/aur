@@ -1,7 +1,8 @@
-# Maintainer: Martchus <martchus@gmx.net>
+# Maintainer: Francois Menning <f.menning@protonmail.com>
+# Contributer: Martchus <martchus@gmx.net>
 
 pkgname=crazycat-dvb-firmware
-pkgver=0.0.51
+pkgver=20180309
 pkgrel=1
 pkgdesc='DVB firmware from CrazyCat media_build repo'
 arch=('any')

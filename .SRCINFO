@@ -1,6 +1,6 @@
 pkgbase = crazycat-dvb-firmware
 	pkgdesc = DVB firmware from CrazyCat media_build repo
-	pkgver = 0.0.51
+	pkgver = 20180309
 	pkgrel = 1
 	url = https://bitbucket.org/CrazyCat/media_build
 	arch = any
