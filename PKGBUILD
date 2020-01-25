@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.4.0.9
-pkgrel=1
+pkgrel=2
 _ffmpeg_ver=2019_11_09
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=('alsa-lib'
          'libass.so'         
          'libdrm'
          'libjpeg-turbo'
-         'libmfx.so'
+         'libmfx'
          'libpng'
          'libtheora'
          'libva-drm.so'
