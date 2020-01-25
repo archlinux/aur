@@ -1,10 +1,10 @@
-# Maintainer : Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer : Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor : Eric Engestrom <eric@engestrom.ch>
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=libdrm-git
 _realname=libdrm
-pkgver=2.4.100.r42.gc70bd7b7
+pkgver=2.4.100.r57.g074947ee
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, master git version"
 arch=(i686 x86_64)
