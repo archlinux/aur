@@ -1,18 +1,18 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=stylelint
-pkgver=12.0.1
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='A mighty, modern linter that helps you avoid errors and enforce conventions in your styles'
 arch=('any')
 url='https://stylelint.io/'
 license=('MIT')
 depends=('nodejs')
-optdepends=('stylelint-config-standard')
+optdepends=('stylelint-config-standard: config for common conventions')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('78e4bca30b0da18641bf9e6bdd59794a92b87658a2edaa74a3c0d566586ae75c')
+sha256sums=('0b5447ff0fc59e04cf61aee1a085def7330018ae5f19ae0706d8bbb27258c338')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
