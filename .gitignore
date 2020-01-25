@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+
+# Patches
+!build.patch
+!ci.patch
+!version.patch
