@@ -1,10 +1,9 @@
 pkgbase = coreinfo-git
-	pkgdesc = A x11 based virtual keyboard from the CoreApps family.
-	pkgver = v2.8.0.r1.2c235a0
+	pkgdesc = A file information tool from the CoreApps family.
+	pkgver = 2.8.0.r1.2c235a0
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
