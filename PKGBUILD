@@ -32,7 +32,7 @@ package() {
   export GOPATH="$srcdir/go"
   cd "$GOPATH/src/$_gopackagepath"
   make install DESTDIR="$pkgdir/usr"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
