@@ -1,9 +1,9 @@
 _pkgname=coreuniverse
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r2.abec8fe
+pkgver=2.8.0.r2.abec8fe
 pkgrel=1
 pkgdesc="Shows information about apps from the CoreApps family."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore/coreuniverse"
 license=('GPL3')
 depends=('libcprime-git')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

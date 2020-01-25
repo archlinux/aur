@@ -1,10 +1,9 @@
 pkgbase = coreuniverse-git
 	pkgdesc = Shows information about apps from the CoreApps family.
-	pkgver = v2.8.0.r2.abec8fe
+	pkgver = 2.8.0.r2.abec8fe
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/coreuniverse
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
