@@ -13,8 +13,8 @@ url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
 depends=('avahi' 'curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'gst-plugins-base-libs' 'luajit' 'libgl' 'libinput'
-         'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
-         'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
+         'libpulse' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
+         'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
          'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
