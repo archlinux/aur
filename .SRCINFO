@@ -1,7 +1,7 @@
 pkgbase = python2-autobahn
 	pkgdesc = Real-time framework for Web, Mobile & Internet of Things
-	pkgver = 19.6.2
-	pkgrel = 3
+	pkgver = 19.11.2
+	pkgrel = 1
 	url = https://crossbar.io/autobahn/
 	arch = any
 	license = MIT
@@ -19,10 +19,8 @@ pkgbase = python2-autobahn
 	depends = python2-wsaccel
 	optdepends = python2-msgpack: MsgPack serializer support
 	optdepends = python2-pynacl: WAMP-cryptosign support
-	source = https://pypi.io/packages/source/a/autobahn/autobahn-19.6.2.tar.gz
-	source = skip-test-missing-serializers.patch
-	sha256sums = 48c2d737d33cfe1d37124db984577c5d4f44e116d05a9f8b6505721413ff9b22
-	sha256sums = 2d4ec4300f98cddd13c3a4d70e6ae4934a98f17b04628cadfd18654172d04f92
+	source = https://pypi.io/packages/source/a/autobahn/autobahn-19.11.2.tar.gz
+	sha256sums = 64fa063b3a1ab16588037d4713f13f66167f7ad2a2e95fd675decbc3bc85c089
 
 pkgname = python2-autobahn
 

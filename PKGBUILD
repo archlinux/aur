@@ -6,8 +6,8 @@
 # Contributor: Anatol Pomozov
 
 pkgname=python2-autobahn
-pkgver=19.6.2
-pkgrel=3
+pkgver=19.11.2
+pkgrel=1
 pkgdesc='Real-time framework for Web, Mobile & Internet of Things'
 arch=(any)
 url='https://crossbar.io/autobahn/'
@@ -19,25 +19,13 @@ optdepends=(
   'python2-msgpack: MsgPack serializer support'
   'python2-pynacl: WAMP-cryptosign support'
 )
-source=(https://pypi.io/packages/source/a/autobahn/autobahn-$pkgver.tar.gz
-        skip-test-missing-serializers.patch)
-sha256sums=('48c2d737d33cfe1d37124db984577c5d4f44e116d05a9f8b6505721413ff9b22'
-            '2d4ec4300f98cddd13c3a4d70e6ae4934a98f17b04628cadfd18654172d04f92')
+source=(https://pypi.io/packages/source/a/autobahn/autobahn-$pkgver.tar.gz)
+sha256sums=('64fa063b3a1ab16588037d4713f13f66167f7ad2a2e95fd675decbc3bc85c089')
 
-prepare() {
-  cd "$srcdir/autobahn-$pkgver"
-  patch -Np1 -i ../skip-test-missing-serializers.patch
-}
 
 build() {
   cd "$srcdir/autobahn-$pkgver"
   AUTOBAHN_USE_NVX=1 python2 setup.py build
-}
-
-check() {
-  cd "$srcdir/autobahn-$pkgver"
-  USE_TWISTED=1 PYTHONPATH=.:build/lib.linux-$CARCH-3.7 pytest2 -v autobahn
-  USE_ASYNCIO=1 PYTHONPATH=.:build/lib.linux-$CARCH-3.7 pytest2 -v autobahn
 }
 
 package() {
