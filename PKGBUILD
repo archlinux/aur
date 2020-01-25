@@ -16,8 +16,8 @@ source=("git+https://github.com/fauzie811/Breeze10.git")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd "$_gitname"
-   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_gitname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -25,8 +25,8 @@ prepare() {
 }
 
 build() {
-   cd build   
-   cmake ../${_gitname} \
+    cd build   
+    cmake ../${_gitname} \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DKDE_INSTALL_LIBDIR=lib \
