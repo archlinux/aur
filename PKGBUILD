@@ -3,7 +3,7 @@
 
 _pkgname=libpeas
 pkgname=$_pkgname-git
-pkgver=1.24.0.r25.gc228acf
+pkgver=1.25.3.r9.g1714442
 pkgrel=1
 _realver=1.14.1
 pkgdesc="A GObject-based plugins engine"
