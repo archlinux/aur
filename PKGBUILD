@@ -2,13 +2,13 @@
 
 pkgname=pext
 _pkgname=Pext
-pkgver=0.27
+pkgver=0.28
 pkgrel=1
 pkgdesc='Python-based extendable tool'
 url='https://pext.io/'
 arch=(any)
 license=(GPL3)
-depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests python-watchdog python-psutil)
+depends=(python-dulwich python-pynput python-pip python-pyqt5 qt5-quickcontrols python-opengl python-opengl-accelerate python-requests python-watchdog python-psutil python-paramiko)
 makedepends=(python-setuptools)
 optdepends=('pass: password manager support'
             'ffmpeg: radiobrowser music support')
