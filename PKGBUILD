@@ -1,7 +1,8 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: David Santiago <demanuel@ymail.com>
+# Contributer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nqp-git
-pkgver=20180430
+pkgver=20200125
 pkgrel=1
 pkgdesc="Lightweight Perl6-like environment for virtual machines, with MoarVM support"
 arch=('i686' 'x86_64')
