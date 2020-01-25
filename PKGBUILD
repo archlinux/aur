@@ -7,7 +7,7 @@
 _pkgname=xvidcore
 pkgname=lib32-$_pkgname
 pkgver=1.3.7
-pkgrel=2
+pkgrel=1
 pkgdesc="XviD is an open source MPEG-4 video codec (32-bit)"
 arch=('x86_64')
 license=('GPL')
