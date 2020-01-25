@@ -1,6 +1,6 @@
 # Maintainer: Oscar Rainford <oscar@fourbytes.me>
 pkgname=vpncloud
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Peer-to-peer VPN'
 arch=('x86_64')
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+https://github.com/dswd/vpncloud.rs.git#tag=v1.2.1')
+source=('git+https://github.com/dswd/vpncloud.rs.git#tag=v1.3.0')
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=('6B5BBBCA2E3392315CC47434694A43B9C7FE6EA9')
