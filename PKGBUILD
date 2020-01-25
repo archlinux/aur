@@ -1,15 +1,17 @@
 # Maintainer: Albakham <contact@geber.ga>
 
 pkgname=domain-expiration-git
-pkgver=r15.a23fe61
+pkgver=r18.c13d395
 pkgrel=1
 pkgdesc="Checks the expiration dates of domains."
 arch=('any')
 url="https://gitnet.fr/deblan/domain-expiration"
 license=('GPL')
-depends=('php>=7.3' 'whois' 'composer')
-source=("$pkgname::git+https://gitnet.fr/deblan/domain-expiration")
-md5sums=('SKIP')
+depends=('php>=7.3' 'whois' 'composer' 'openssl')
+source=("$pkgname::git+https://gitnet.fr/deblan/domain-expiration"
+	"$pkgname/lib/check_ssl_cert::git+https://github.com/matteocorti/check_ssl_cert")
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -18,7 +20,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  sed -i "1c\#!/usr/bin/env php" domain-expiration
+  sed -i "1c\#!/usr/bin/env php" check
   echo "Version ${pkgver} installation"
 }
 
@@ -30,5 +32,5 @@ build() {
 package() {
   install -d "$pkgdir/"{usr/bin,opt}
   cp -R $srcdir/$pkgname $pkgdir/opt/$pkgname
-  ln -s /opt/$pkgname/domain-expiration $pkgdir/usr/bin/$pkgname
+  ln -s /opt/$pkgname/check $pkgdir/usr/bin/domain-expiration
 }

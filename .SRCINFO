@@ -1,6 +1,6 @@
 pkgbase = domain-expiration-git
 	pkgdesc = Checks the expiration dates of domains.
-	pkgver = r15.a23fe61
+	pkgver = r18.c13d395
 	pkgrel = 1
 	url = https://gitnet.fr/deblan/domain-expiration
 	arch = any
@@ -8,7 +8,10 @@ pkgbase = domain-expiration-git
 	depends = php>=7.3
 	depends = whois
 	depends = composer
+	depends = openssl
 	source = domain-expiration-git::git+https://gitnet.fr/deblan/domain-expiration
+	source = domain-expiration-git/lib/check_ssl_cert::git+https://github.com/matteocorti/check_ssl_cert
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = domain-expiration-git
