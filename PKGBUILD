@@ -1,9 +1,9 @@
 _pkgname=coretime
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r3.98d1c25
+pkgver=2.8.0.r3.98d1c25
 pkgrel=1
 pkgdesc="A time related task manager from the CoreApps family."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('libcprime-git' 'qt5-multimedia')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
