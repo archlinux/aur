@@ -1,7 +1,7 @@
-From 238026166679e618b3bad1c86b0e37a43303b6b0 Mon Sep 17 00:00:00 2001
+From 2828549af6c24235da03337c781053d4fc5edd08 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Tue, 31 Dec 2019 16:00:07 +0200
-Subject: [PATCH 11/15] drm/i915: Limit audio CDCLK>=2*BCLK constraint back to
+Subject: [PATCH 10/15] drm/i915: Limit audio CDCLK>=2*BCLK constraint back to
  GLK only
 
 Revert changes done in commit f6ec9483091f ("drm/i915: extend audio

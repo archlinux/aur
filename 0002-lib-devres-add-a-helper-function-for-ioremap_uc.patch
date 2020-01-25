@@ -1,4 +1,4 @@
-From 1e41b685fcac38c05219030acb033a42832f7459 Mon Sep 17 00:00:00 2001
+From 6a7489b6d1f0a586c08cc3ae6887f53f59e96b86 Mon Sep 17 00:00:00 2001
 From: Tuowen Zhao <ztuowen@gmail.com>
 Date: Wed, 16 Oct 2019 15:06:28 -0600
 Subject: [PATCH 02/15] lib: devres: add a helper function for ioremap_uc

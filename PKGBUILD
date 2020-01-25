@@ -2,12 +2,12 @@
 # Contributorr: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=2
+pkgrel=1
 _srcname=linux-5.4
 _major=5.4
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=12
+_minor=14
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -33,39 +33,41 @@ source=(
 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
 0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-0005-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-0006-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-0007-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0008-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-0009-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-0010-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-0011-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
-0012-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
-0013-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
-0014-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
+0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
+0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
+0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
+0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
+0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
+0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
+0011-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch
+0012-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch
+0013-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
+0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('9bae8b2f674152e4d126a505d1e89958b5de735791ebb7d321e436ff767990f3'
+sha256sums=('478af3d39f5b87f9c7d5e063ddea91ab8b6530c081b90de01798b1fbd1e47ca1'
             'SKIP'
-            'd9c3c7a2d52d25c24cbca0f89d55511422d3d207c573d42ec58f7f17c948d0fb'
+            '531e18b0eef516fa4b3843f89729fafbf3c6bc00325b082cc1f2cfcb28c8d7f0'
             'SKIP'
             'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
-            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee'
-            '0ee10a8bce75e243f20dcae2bf627325a65b0a725fc4af70b585e170a4c5b984'
-            '1bc6c7503d5e30196ccb2210bbd9d17d73c245afa82a671d4ccf14796047cca6'
-            '66a5cdff9a5a83d4f691f38b18a06bf373c32be9200ca8708eddde560fc8f33d'
-            '4073da89517a8e25ceb63c686c0f4b5a3988ad91d4bfa7977a508e6f41dd56da'
-            'd32cca150a2ccb9e5b144769e75ef7a7b851f3cd4a8357c1cd8e6a9f5eac6f31'
-            '44ddfe0a758b2019bfc1bab5a20eabf93169c7e8752229b21b586501417e6ba7'
-            '5d015f7c3531ca1b71af816f61f7ebe136aea27d9e512428b63d900a62ff1da7'
-            '14d906805171e5dd48e68554211f1f16ed11072cd7e53a64b072966c55cedd4f'
-            '1723977a803dbccaab2304ea40f709f4a6dea8e14b13208563b0258a1928fa61'
-            'de47a6abdd33b662002016d384ea173c524dc8992c28ef6e2aca5d46141e6171'
-            '1cc21b1d55521e812b498d345e39d762e294ee52d344610b08ad3a8596119dae'
-            '75a804ea7e28b3794ce11122dd4fcf80652e115ee7f3b785f8f7853fd7869881')
+            '6bc06821c6dc94a8af1018df31780dfbad354dce46792f65ee45bf6261968ec7'
+            '4cdf7a686248aceeed6ca0296636dc0d4efaede2b77df98a6c3d559116156a00'
+            'c21b89ac3d24445dafcd8a3f2dfb6574eae0f50f3849f8abf1126862e2f82dcd'
+            '2c7733955ede78f64b21d14b2f3ad0c8e0e98cc5eccb3228e532203d9c60056b'
+            'aa19094814bf528f760c7bc5f207fe51d1163c9255add0fad09f15d8747b4e8e'
+            '8ec48bcab7e133fb3fcd49bac9e6aa8075beb2720ae07832a0c4962df9309b7c'
+            '4d497f775c8785771cf28ed7a807d53617dfb914567def8b65a970c7472a8dc4'
+            '022be9ea56431b07a169765def3f5b33330d710be527fde652a0164e1108d96f'
+            '77f0cbc3fb6fd7e357c9c052b9d483e00a542eba3cf7f5baba2576f96ba71416'
+            'c7602e3ef7986da9b8a6197db281ee41381fae65ed2d1a814160638acd6978e9'
+            '9fc6cfeab4da541b06993cc5a42d1d7de78238bcaf477d523cc51ae5337bd050'
+            'ba20b1928026473497a69e2a1c1c7c5fdd63c5f63818036998d9ee96258c34c1'
+            'a81cff6b669e36778a420b2c441a0ae79f257096d1059cc293bea931b91f6ff1'
+            'fa7b003f7c5acabae8cff051630a93e3d4556c275067516bb05922bfd9ee8b28')
 
 _kernelname=${pkgbase#linux}
 
@@ -76,12 +78,12 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd linux-${_fullver}
 
-  msg2 "Setting version..."
+  echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  msg2 "Applying $_rcpatch..."
+  echo "Applying $_rcpatch..."
   patch -Np1 <"../$_rcpatch"
 
   local src
@@ -89,16 +91,16 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
   make olddefconfig
 
   make -s kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 }
 
 build() {
@@ -117,7 +119,7 @@ _package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -125,13 +127,13 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -141,7 +143,7 @@ _package-headers() {
   cd linux-${_fullver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -154,7 +156,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -170,10 +172,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -181,16 +183,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -205,11 +207,11 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 

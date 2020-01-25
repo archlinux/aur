@@ -1,7 +1,7 @@
-From ad6657302538790fdf5c0c0f6e88add139e0c530 Mon Sep 17 00:00:00 2001
+From a5962f62a4174023fa53d6c74e64fa83032dca56 Mon Sep 17 00:00:00 2001
 From: Mehmet Akif Tasova <makiftasova@gmail.com>
 Date: Mon, 30 Dec 2019 15:48:16 +0200
-Subject: [PATCH 13/15] Revert "iwlwifi: mvm: fix scan config command size"
+Subject: [PATCH 12/15] Revert "iwlwifi: mvm: fix scan config command size"
 
 Since v5.4-rc1 was released, iwlwifi started throwing errors when scan
 commands were sent to the firmware with certain devices (depending on
