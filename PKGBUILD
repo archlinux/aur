@@ -13,9 +13,9 @@ depends=('qt5-svg' 'qt5-sensors' 'libwebp' 'gtk3')
 source=("${pkgname}.desktop")
 source_x86_64=("XnConvert-linux-x64_${pkgver}.tgz::http://download.xnview.com/XnConvert-linux-x64.tgz")
 source_i686=("XnConvert-linux_${pkgver}.tgz::http://download.xnview.com/XnConvert-linux.tgz")
-md5sums=('3f33af83785546964d6e28ad1e06b642')
-md5sums_x86_64=('a7e5dbe37bebd0b516bd159ad00966a2')
-md5sums_i686=('bd7e065c5588d2e878b8605acddaf683')
+sha256sums=('b163bca7039f6877239535b88b9aacb6fde78573dc141a52addb99cb85b35f82')
+sha256sums_x86_64=('ba1a825deaceb05705229bef0bd2b0e53ffabd8e250770f11ef4ba5797437660')
+sha256sums_i686=('6e3a021d7636f747d15b1556051855c78c1916e05cb057b919d8a66d6271680a')
 
 package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
