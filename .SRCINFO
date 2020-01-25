@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.23.0.63655.g7dcce72eb7
+	pkgver = 1.23.99.64941.g1d28ff6a76
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -21,16 +21,14 @@ pkgbase = efl-git
 	makedepends = gcc
 	makedepends = binutils
 	makedepends = fakeroot
-	makedepends = python2
 	makedepends = procps-ng
 	depends = avahi
-	depends = bullet
 	depends = curl
 	depends = fontconfig
 	depends = fribidi
+	depends = harfbuzz
 	depends = gst-plugins-base-libs
 	depends = luajit
-	depends = libexif
 	depends = libgl
 	depends = libinput
 	depends = libpulse
@@ -42,7 +40,6 @@ pkgbase = efl-git
 	depends = libxcursor
 	depends = libxinerama
 	depends = libxkbcommon
-	depends = libxp
 	depends = libxrandr
 	depends = libxss
 	depends = libunwind
@@ -53,8 +50,6 @@ pkgbase = efl-git
 	depends = mailcap
 	depends = ttf-font
 	depends = scim
-	depends = libibus
-	depends = glib2
 	depends = wayland
 	depends = wayland-protocols
 	depends = libxkbcommon-x11
@@ -66,11 +61,10 @@ pkgbase = efl-git
 	optdepends = gst-plugins-ugly: Video and thumbnail codecs
 	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
 	optdepends = libreoffice: Office document thumbnails
-	optdepends = python2: Compare Eina benchmarks
-	provides = efl=1.23.0.63655.g7dcce72eb7
-	provides = elementary=1.23.0.63655.g7dcce72eb7
-	provides = elementary-git=1.23.0.63655.g7dcce72eb7
-	provides = evas_generic_loaders=1.23.0.63655.g7dcce72eb7
+	provides = efl=1.23.99.64941.g1d28ff6a76
+	provides = elementary=1.23.99.64941.g1d28ff6a76
+	provides = elementary-git=1.23.99.64941.g1d28ff6a76
+	provides = evas_generic_loaders=1.23.99.64941.g1d28ff6a76
 	conflicts = efl
 	conflicts = elementary
 	conflicts = elementary-git
