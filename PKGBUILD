@@ -1,15 +1,15 @@
 # Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 
-pkgname=('enchant-hspell')
+pkgname=enchant-hspell
 
 _pkgname=enchant
-pkgver="2.2.7"
-pkgrel=1
+pkgver=2.2.7
+pkgrel=2
 
 pkgdesc="An enchant provider plugin which adds support for Hspell backend"
 url="https://github.com/AbiWord/enchant"
 
-arch=('any')
+arch=('x86_64')
 license=('LGPL')
 
 depends=("enchant-pure" "hspell")
