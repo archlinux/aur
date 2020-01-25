@@ -13,7 +13,7 @@
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
 pkgver=1.12.16
-pkgrel=2
+pkgrel=5
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
@@ -22,7 +22,7 @@ groups=('selinux')
 # Make sure systemd's hook supports reloading dbus: the following commit was introduced in package systemd 242.84-2
 # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/systemd&id=4e247891655844511c775fba566df270f8d0d55f
 depends=('systemd-libs-selinux>=242.84-2' expat audit)
-makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz audit libselinux)
+makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive audit libselinux)
 _commit=23cc709db8fab94f11fa48772bff396b20aea8b0  # tags/dbus-1.12.16^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
         dbus-reload.hook)
@@ -38,11 +38,6 @@ pkgver() {
 
 prepare() {
   cd dbus
-
-  # Reduce docs size
-  printf '%s\n' >>Doxyfile.in \
-    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -76,19 +71,21 @@ check() {
 }
 
 package_dbus-selinux() {
-  provides=(libdbus libdbus-selinux "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  depends+=(libsystemd.so libaudit.so)
+  provides=(libdbus libdbus-1.so libdbus-selinux "${pkgname/-selinux}=${pkgver}-${pkgrel}" "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=(libdbus libdbus-selinux "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
   replaces=(libdbus libdbus-selinux)
 
   DESTDIR="$pkgdir" make -C dbus install
 
-  rm -r "$pkgdir/var/run"
-
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
+  rm -r "$pkgdir"/{etc,var}
 
   # We have a pre-assigned uid (81)
   echo 'u dbus 81 "System Message Bus"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
+
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 
   # Split docs
   mv "$pkgdir/usr/share/doc" "$srcdir"
@@ -96,10 +93,11 @@ package_dbus-selinux() {
 
 package_dbus-docs-selinux() {
   pkgdesc+=" (documentation)"
-  depends=(dbus-selinux)
+  depends=()
   conflicts=("${pkgname/-selinux}")
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
-
   mv doc "$pkgdir/usr/share"
 }
+
+# vim:set sw=2 et:
