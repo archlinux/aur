@@ -1,17 +1,17 @@
 pkgbase = nginx-mainline-mod-njs
 	pkgdesc = nginScript module for mainline nginx
 	pkgver = 0.3.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://nginx.org/en/docs/njs_about.html
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
 	depends = nginx-mainline
-	source = https://nginx.org/download/nginx-1.17.7.tar.gz
-	source = https://nginx.org/download/nginx-1.17.7.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.17.8.tar.gz
+	source = https://nginx.org/download/nginx-1.17.8.tar.gz.asc
 	source = njs-0.3.6.tar.gz::http://hg.nginx.org/njs/archive/0.3.6.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = b62756842807e5693b794e5d0ae289bd8ae5b098e66538b2a91eb80f25c591ff
+	sha256sums = 97d23ecf6d5150b30e284b40e8a6f7e3bb5be6b601e373a4d013768d5a25965b
 	sha256sums = SKIP
 	sha256sums = a99aa7ad0ec8c8037bbbe061f87d4c2945d49c4a12f7376b90a5844c4c31873a
 
