@@ -1,6 +1,6 @@
 pkgbase = petsc4py
 	pkgdesc = Python bindings for PETSc
-	pkgver = 3.11.0
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://bitbucket.org/petsc/petsc4py/src/master
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = petsc4py
 	depends = petsc
 	depends = openmpi
 	depends = python-numpy
-	source = https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.11.0.tar.gz
-	sha256sums = 58f4f57ac96ec39273906859cdc388b1ae372045c726bfd2a01d4eca8bc4a1e6
+	source = https://bitbucket.org/petsc/petsc4py/downloads/petsc4py-3.12.0.tar.gz
+	sha256sums = 1a02fa0336c27583aabf399124ac0610ef20452cf6b837a1082f7788f17fadad
 
 pkgname = petsc4py
 
