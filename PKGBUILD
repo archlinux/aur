@@ -5,7 +5,7 @@ pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc')
 pkgver=0.12.0
 _libbpf_commit='ab067ed'
-pkgrel=1
+pkgrel=2
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
@@ -38,7 +38,7 @@ build() {
 
 package_bcc() {
 	pkgdesc='BPF Compiler Collection - C library and examples'
-	depends=('libelf')
+	depends=('clang>=3.7.0' 'libelf')
 	optdepends=('linux-headers: build against the Arch kernel'
 		'bcc-tools: Python utilites using the BCC library'
 		'python-bcc: Python 3 bindings for BCC')

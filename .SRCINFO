@@ -1,7 +1,7 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
@@ -20,6 +20,7 @@ pkgbase = bcc
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection - C library and examples
+	depends = clang>=3.7.0
 	depends = libelf
 	optdepends = linux-headers: build against the Arch kernel
 	optdepends = bcc-tools: Python utilites using the BCC library
