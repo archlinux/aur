@@ -1,0 +1,15 @@
+pkgbase = systemd-keyscript
+	pkgdesc = Keyscript service for systemd-cryptsetup + mkinitcpio hook
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/StevenDoesStuffs/systemd-keyscript
+	arch = any
+	license = MIT
+	depends = mkinitcpio
+	source = sd-keyscript
+	source = systemd-keyscript@.service
+	sha256sums = 570b3cbc0e0e25d9ee829ac7874a14b235694cfe4f04d0dbf0b9fd609f9adca7
+	sha256sums = 9b6ff4eaa76f02d4d1cda3328791c15cb778ba3b8e6793bd27cc4348fa901a5b
+
+pkgname = systemd-keyscript
+

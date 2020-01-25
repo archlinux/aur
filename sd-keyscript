@@ -1,0 +1,24 @@
+#!/bin/sh
+
+build() {
+    add_file "/usr/lib/systemd/system/systemd-keyscript@.service"
+    add_full_dir "/etc/systemd-keyscript/initramfs"
+    mv $BUILDROOT/etc/systemd-keyscript/initramfs/* "$BUILDROOT/etc/systemd-keyscript/"
+
+    # enable all systemd units for existing script files
+    for scriptpath in $BUILDROOT/etc/systemd-keyscript/scripts/*.sh; do
+        fullname=$(basename "$scriptpath")
+        filename="${fullname%.*}"
+        wants="/usr/lib/systemd/system/systemd-cryptsetup@$filename.service.wants"
+
+        mkdir -p "$BUILDROOT$wants"
+        add_symlink "$wants/systemd-keyscript@$filename.service" \
+        "/usr/lib/systemd/system/systemd-keyscript@.service"
+    done
+}
+
+help() {
+    cat <<HELPEOF
+This hook adds systemd units to run script files before encrypted disks are decrypted
+HELPEOF
+}

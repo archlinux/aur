@@ -1,0 +1,12 @@
+[Unit]
+Description=Keyscript prerequisite for systemd-cryptsetup@%I
+Before=systemd-cryptsetup@%i.service
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/systemd-keyscript/scripts/%I.sh
+
+[Install]
+WantedBy=systemd-cryptsetup@%i.service
