@@ -6,25 +6,30 @@ pkgrel=1
 pkgdesc="Vulkan header files"
 groups=('vulkan-devel')
 arch=('any')
-url="https://github.com/KhronosGroup/Vulkan-Docs"
-provides=('vulkan-headers')
-license=('custom')
+url="https://github.com/KhronosGroup/Vulkan-Headers"
+provides=('vulkan-headers' 'vulkan-hpp')
+license=('Apache')
 conflicts=('vulkan-headers')
-source=("git+https://github.com/KhronosGroup/Vulkan-Docs.git")
-sha256sums=('SKIP')
-
+source=("git+https://github.com/KhronosGroup/Vulkan-Headers.git")
+sha512sums=('SKIP')
+makedepends=(cmake git)
 pkgver() {
-  cd "$srcdir/Vulkan-Docs"
+  cd "$srcdir/Vulkan-Headers"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  install -dm755 "$pkgdir/usr/include/vulkan/"
-  install -dm755 "$pkgdir/usr/share/vulkan"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+build() {
+  cd "$srcdir/Vulkan-Headers"
 
-  install -m644 ${srcdir}/Vulkan-Docs/include/vulkan/*.h "$pkgdir/usr/include/vulkan"
-  install -m644 "$srcdir/Vulkan-Docs/xml/vk.xml" "$pkgdir/usr/share/vulkan"
-  install -m644 "$srcdir/Vulkan-Docs/copyright-ccby.txt" "$pkgdir/usr/share/licenses/$pkgname/copyright-ccby.txt"
-  install -m644 "$srcdir/Vulkan-Docs/copyright-spec.txt" "$pkgdir/usr/share/licenses/$pkgname/copyright-spec.txt"
+  rm -rf build ; mkdir build ; cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    ..
+  make
+}
+
+package() {
+  cd "$srcdir/Vulkan-Headers/build"
+
+  make DESTDIR="${pkgdir}" install
 }
