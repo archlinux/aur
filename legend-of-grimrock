@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# https://github.com/mono/mono/issues/11557
+TERM=xterm /opt/legend-of-grimrock/start.sh "${@}"
+
+# vim: sw=2 ts=2 et:
+

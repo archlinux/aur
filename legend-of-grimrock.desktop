@@ -2,6 +2,6 @@
 Categories=Game;RolePlaying;
 Encoding=UTF-8
 Name=Legend of Grimrock
-Exec=/usr/bin/legend-of-grimrock
-Icon=/usr/share/legend-of-grimrock/grimrock.png
+Exec=legend-of-grimrock
+Icon=legend-of-grimrock
 Type=Application
