@@ -2,14 +2,14 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=1.99.6.3076+grpcfree
+pkgver=2.0.0.3096+grpcfree
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
 depends=(
-    'hicolor-icon-theme' 'qt5-charts>5.11.0'
+    'hicolor-icon-theme' 'qt5-base>5.11.0' 'qt5-charts>5.11.0'
     'v2ray' 'v2ray-domain-list-community' 'v2ray-geoip'
 )
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'go')
