@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 19.10.4.r109.g00e439fc
+	pkgver = 19.10.5.r249.gb768e58e
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -33,6 +33,11 @@ pkgname = yaru-gnome-shell-theme-git
 	depends = gnome-shell
 	provides = yaru-gnome-shell-theme
 	conflicts = yaru-gnome-shell-theme
+
+pkgname = yaru-unity-theme-git
+	pkgdesc = Yaru default ubuntu unity theme
+	provides = yaru-unity-theme
+	conflicts = yaru-unity-theme
 
 pkgname = yaru-icon-theme-git
 	pkgdesc = Yaru default ubuntu icon theme

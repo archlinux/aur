@@ -6,9 +6,10 @@ pkgbase=yaru-git
 pkgname=(yaru-sound-theme-git
          yaru-gtk-theme-git
          yaru-gnome-shell-theme-git
+         yaru-unity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=19.10.4.r109.g00e439fc
+pkgver=19.10.5.r249.gb768e58e
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -41,7 +42,7 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru
     fi
     if [[ "$1" != "unity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/unity
+        rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
     fi
     if [[ "$1" != "icon-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/icons
