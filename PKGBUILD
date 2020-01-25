@@ -1,7 +1,7 @@
 # Maintainer: vagnum08 <vagnum08@gmail.com>
 
 pkgname=cpupower-gui-git
-pkgver=0.7.2.r9.gfb6f977
+pkgver=0.8.0.r0.g23d95af
 pkgrel=1
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
@@ -25,7 +25,7 @@ pkgver() {
 
 
 build() {
-  meson --prefix /usr --buildtype=plain "$srcdir/${pkgname%-git}" build
+  meson --prefix /usr -Dsystemddir=/usr/lib/systemd --buildtype=plain "$srcdir/${pkgname%-git}" build
   ninja -C build
 }
 
