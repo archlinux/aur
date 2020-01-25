@@ -99,7 +99,7 @@ build() {
         -GNinja
 
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-    ninja ${MAKEFLAGS}
+    ninja $([ -v MAKEFLAGS ] || echo -j1)
 }
 
 package() {
