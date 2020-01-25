@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RuneLite Launcher
+GenericName=RuneLite Launcher
+Comment=Open source Old School RuneScape client.
+Exec=runelite-launcher
+Icon=runelite-launcher
+Terminal=false
+Type=Application
+Categories=Game;
