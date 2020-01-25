@@ -1,9 +1,9 @@
 _pkgname=corestuff
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r3.1d9337b
+pkgver=2.8.0.r4.fe22446
 pkgrel=1
 pkgdesc="An activity viewer from the CoreApps family."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('qt5-x11extras' 'libcprime-git' 'libcsys-git')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
