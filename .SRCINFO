@@ -1,0 +1,13 @@
+pkgbase = python-captcha
+	pkgdesc = A captcha library that generates audio and image CAPTCHAs.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/lepture/captcha
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = python-captcha-0.3.tar.gz::https://github.com/lepture/captcha/archive/v0.3.tar.gz
+	sha256sums = 4e12430461a122ba2d0b7dc288865ceff41512b810653a4405b80af9e21c6a0d
+
+pkgname = python-captcha
+
