@@ -32,6 +32,7 @@ pkgbase = efl-git
 	depends = libgl
 	depends = libinput
 	depends = libpulse
+	depends = libsndfile
 	depends = libspectre
 	depends = libraw
 	depends = librsvg
