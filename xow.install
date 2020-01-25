@@ -1,0 +1,6 @@
+post_install() {
+    echo ""
+    echo "To enable and start the service:"
+    echo -e "\e[33msystemctl enable --now xow.service"
+    echo ""
+}
