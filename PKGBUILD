@@ -1,9 +1,9 @@
 _pkgname=coreterminal
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r1.c2d8eea
+pkgver=2.8.0.r1.c2d8eea
 pkgrel=1
 pkgdesc="A terminal emulator from the CoreApps family."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('libcprime-git' 'qtermwidget')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
