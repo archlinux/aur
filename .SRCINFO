@@ -1,6 +1,6 @@
 pkgbase = lodepng
 	pkgdesc = PNG encoder and decoder in C and C++, without dependecies.
-	pkgver = 20191219
+	pkgver = 20200112
 	pkgrel = 1
 	url = https://lodev.org/lodepng
 	arch = x86_64
