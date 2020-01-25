@@ -2,7 +2,7 @@
 
 pkgname=ytop-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A TUI system monitor written in Rust"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=("MIT")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${arch}-unknown-linux-gnu.tar.gz")
-sha256sums=("50a7334e22dc08c4015794d37bcef4a2781a6a1ef32a89896d9ccf545c1f1c1b")
+sha256sums=("c05baaf598343b717165734f802f213a4f0654629f4f69c12a8919fae6f70271")
 
 package() {
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
