@@ -3,13 +3,13 @@
 
 pkgname=asciisec
 pkgver=0.7.2
-pkgrel=2
-pkgdesc="SDL roguelike with a 'Wing Commander: Privateer' theme"
+pkgrel=3
+pkgdesc="Ascii Sector: SDL roguelike with a 'Wing Commander: Privateer' theme"
 arch=('i686' 'x86_64')
 url="http://www.asciisector.net"
 license=("custom:freeware_with_limitations")
 install="asciisec.install"
-depends=('sdl2_mixer')
+depends=('sdl2_mixer' 'sdl2_image')
 source=("music.zip::http://www.laserbrainstudios.com/download.php?name=asciisecmusic" "asciisec.desktop" "asciisec.png")
 md5sums=('f061f51a41d98561447b750de8a45400'
          'd14120b34114c0f8414e8e8fa4594d72'
