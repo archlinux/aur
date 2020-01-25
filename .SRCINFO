@@ -1,0 +1,30 @@
+pkgbase = plymouth-theme-arch-wireframe
+	pkgdesc = An animated Plymouth theme based on a render from reddit user /u/RedPandaUA.
+	pkgver = 20200125
+	pkgrel = 1
+	install = plymouth-theme-arch-wireframe.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = plymouth-theme-arch-wireframe.tar.gz::https://github.com/dreamsmasher/Arch-Wireframe-Plymouth-Theme/releases/download/v1.0/arch-wireframe.tar.gz
+	source = plymouth-theme-arch-wireframe.install
+	md5sums = f24b691b705d37d3430848fedb9e897d
+	md5sums = a73e98c1e9881922ad2242588a42c33f
+
+pkgname = plymouth-theme-arch-wireframe
+
+pkgbase = plymouth-theme-arch-wireframe
+	pkgdesc = An animated Plymouth theme based on a render from reddit user /u/RedPandaUA.
+	pkgver = 20200125
+	pkgrel = 1
+	install = plymouth-theme-arch-wireframe.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = plymouth-theme-arch-wireframe.tar.gz::https://github.com/dreamsmasher/Arch-Wireframe-Plymouth-Theme/releases/download/v1.0/arch-wireframe.tar.gz
+	source = plymouth-theme-arch-wireframe.install
+	md5sums = f24b691b705d37d3430848fedb9e897d
+	md5sums = a73e98c1e9881922ad2242588a42c33f
+
+pkgname = plymouth-theme-arch-wireframe
+
