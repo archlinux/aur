@@ -6,7 +6,7 @@ _with_rust=1
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.3.0.alpha.r874.ga38014e
+pkgver=0.4.3.1.alpha.r7.gf10b7
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -20,7 +20,7 @@ backup=('etc/tor/torrc'
         'etc/tor/torrc.d/isolation'
         'etc/tor/torrc.d/transparent_proxy')
 
-depends=('openssl>=1.1.1' 'libevent' 'libseccomp' 'zstd' 'xz')
+depends=('openssl' 'libevent' 'libseccomp' 'zstd' 'xz')
 makedepends=('asciidoc')
 checkdepends=('python')
 optdepends=('torsocks: allow transparent SOCKS proxying'
@@ -76,6 +76,7 @@ build() {
         --enable-lzma \
         --enable-pic \
         --with-malloc=${_malloc:-system}
+        #--disable-module-relay
     make
 }
 

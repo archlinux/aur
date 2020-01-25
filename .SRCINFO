@@ -1,6 +1,6 @@
 pkgbase = tor-git
 	pkgdesc = An anonymizing overlay network (development version)
-	pkgver = 0.4.3.0.alpha.r870.g944be
+	pkgver = 0.4.3.1.alpha.r7.gf10b7
 	pkgrel = 1
 	url = https://www.torproject.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = tor-git
 	checkdepends = python
 	makedepends = asciidoc
 	makedepends = rust
-	depends = openssl>=1.1.1
+	depends = openssl
 	depends = libevent
 	depends = libseccomp
 	depends = zstd
