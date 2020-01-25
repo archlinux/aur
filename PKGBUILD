@@ -1,15 +1,15 @@
 # Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 
-pkgname=('enchant-pure')
+pkgname=enchant-pure
 
 _pkgname=enchant
-pkgver="2.2.7"
-pkgrel=1
+pkgver=2.2.7
+pkgrel=2
 
 pkgdesc="A wrapper library for pure and generic spell checking for all languages, supporting Aspell and Myspell/Hunspell backend engines"
 url="https://github.com/AbiWord/enchant"
 
-arch=('any')
+arch=('x86_64')
 license=('LGPL')
 
 depends=('aspell>=0.50.0' 'glib2' 'hunspell')
