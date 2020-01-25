@@ -1,14 +1,19 @@
 pkgbase = python2-txaio
 	pkgdesc = Compatibility API between asyncio/Twisted/Trollius
-	pkgver = 1.0.0
+	pkgver = 18.8.1
 	pkgrel = 1
-	url = https://github.com/tavendo/txaio
+	url = https://github.com/crossbario/txaio
 	arch = any
-	license = UNKNOWN
-	makedepends = python2
-	depends = python2
-	source = https://pypi.python.org/packages/source/t/txaio/txaio-1.0.0.zip
-	md5sums = 762755ba1ded4b7caf07247ab33efc5f
+	license = MIT
+	checkdepends = python2-pytest
+	checkdepends = python2-mock
+	checkdepends = python2-twisted
+	makedepends = python2-setuptools
+	depends = python2-six
+	source = https://pypi.io/packages/source/t/txaio/txaio-18.8.1.tar.gz
+	source = make-pytest-happy.patch
+	md5sums = ecdd4d0f401c7f01f22830b4d2788593
+	md5sums = 862ac257bb05a8064b6e2814686dcb3c
 
 pkgname = python2-txaio
 
