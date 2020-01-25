@@ -2,7 +2,7 @@
 pkgname=aleeplayer
 pkgver=1.0.0
 pkgrel=0
-pkgdesc="A audio player written in Qt"
+pkgdesc="An audio player written in Qt"
 arch=("x86_64")
 url="https://github.com/aleeproductions/AleePlayer"
 license=('GPL3')
