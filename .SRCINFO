@@ -1,6 +1,6 @@
 pkgbase = pulseeffects-git
 	pkgdesc = Audio Effects for Pulseaudio Applications
-	pkgver = 4.5.0.r23.g7e3852cf
+	pkgver = 4.7.1.r2.g38355f59
 	pkgrel = 1
 	url = https://github.com/wwmm/pulseeffects
 	arch = x86_64
@@ -37,6 +37,7 @@ pkgbase = pulseeffects-git
 	optdepends = rubberband: pitch shifting
 	optdepends = lsp-plugins: equalizer, delay
 	optdepends = mda.lv2: loudness
+	optdepends = yelp: in-app help
 	provides = pulseeffects
 	conflicts = pulseeffects
 	source = git+https://github.com/wwmm/pulseeffects.git

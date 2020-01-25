@@ -3,7 +3,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-git
-pkgver=4.5.0.r23.g7e3852cf
+pkgver=4.7.1.r2.g38355f59
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,7 +17,8 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
             'lsp-plugins: equalizer, delay'
-            'mda.lv2: loudness')
+            'mda.lv2: loudness'
+            'yelp: in-app help')
 source=("git+https://github.com/wwmm/pulseeffects.git")
 conflicts=(pulseeffects)
 provides=(pulseeffects)
