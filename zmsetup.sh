@@ -60,7 +60,7 @@ case "$choice" in
         systemctl is-active --quiet fcgiwrap.socket && systemctl stop fcgiwrap.socket
         systemctl is-active --quiet fcgiwrap && systemctl stop fcgiwrap
         systemctl is-active --quiet fcgiwrap-multiwatch && systemctl stop fcgiwrap-multiwatch
-        systemctl enable --now --quiet fcgiwrap-multiwatch && echo "* fcgiwrap-multiwatch successfully configured"
+        systemctl restart --quiet fcgiwrap-multiwatch && echo "* fcgiwrap-multiwatch successfully configured"
     else
         echo "ERROR: You must install Nginx, fcgiwrap, spawn-fcgi and multiwatch before using this script with the --nginx flag"
         exit 1
