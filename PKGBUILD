@@ -6,19 +6,19 @@
 #
 pkgname=dbus-nosystemd
 pkgver=1.12.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
 groups=('eudev-base')
 # dep on shadow for install scriptlet FS#29341
-depends=('expat' 'coreutils' 'filesystem' 'shadow' 'audit')
-makedepends=('libx11' 'autoconf-archive' 'graphviz')
+depends=('expat' 'coreutils' 'filesystem' 'shadow' 'audit' 'libaudit.so')
+makedepends=('libx11' 'autoconf-archive')
 optdepends=('libx11: dbus-launch support'
             'dbus-openrc: dbus openrc initscript'
             'dbus-docs: documentation')
-provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
+provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}" 'libdbus-1.so')
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 replaces=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
 install=dbus-nosystemd.install
