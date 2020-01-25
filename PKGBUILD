@@ -3,7 +3,7 @@
 _pkgname="easystroke"
 pkgname="$_pkgname-git"
 pkgver=0.6.0.r9.gf7c1614
-pkgrel=1
+pkgrel=2
 pkgdesc="Gesture-recognition application for X11."
 arch=("i686" "x86_64")
 url="https://github.com/thjaeger/easystroke/wiki"

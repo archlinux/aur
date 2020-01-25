@@ -1,7 +1,7 @@
 pkgbase = easystroke-git
 	pkgdesc = Gesture-recognition application for X11.
 	pkgver = 0.6.0.r9.gf7c1614
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thjaeger/easystroke/wiki
 	install = easystroke.install
 	arch = i686
