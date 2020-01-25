@@ -1,10 +1,9 @@
 pkgbase = coreshot-git
 	pkgdesc = A screen capture utility from the CoreApps family.
-	pkgver = v2.8.0.r0.341bef9
+	pkgver = 2.8.0.r0.341bef9
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
