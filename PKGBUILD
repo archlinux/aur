@@ -11,7 +11,7 @@ pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'MIT' 'custom')
-depends=('avahi' 'curl' 'fontconfig' 'fribidi'
+depends=('avahi' 'curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'gst-plugins-base-libs' 'luajit' 'libexif' 'libgl' 'libinput'
          'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
          'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
