@@ -44,7 +44,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}"
     rm -rf "${srcdir}/build"
-    meson --wrap-mode=nofallback --prefix=/usr "${srcdir}/build"
+    meson --prefix=/usr "${srcdir}/build"
     ninja -C "${srcdir}/build"
 }
 
