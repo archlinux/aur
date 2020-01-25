@@ -45,7 +45,6 @@ pkgbase = efl-git
 	depends = libxss
 	depends = libunwind
 	depends = mesa
-	depends = openjpeg2
 	depends = poppler
 	depends = shared-mime-info
 	depends = mailcap

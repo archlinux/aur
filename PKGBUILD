@@ -15,7 +15,7 @@ depends=('avahi' 'curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'gst-plugins-base-libs' 'luajit' 'libgl' 'libinput'
          'libpulse' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
-         'libxss' 'libunwind' 'mesa' 'openjpeg2' 'poppler'
+         'libxss' 'libunwind' 'mesa' 'poppler'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
