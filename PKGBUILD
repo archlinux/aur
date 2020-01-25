@@ -3,7 +3,7 @@
 
 _plug=kagefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r37.813f8f0
+pkgver=r46.fe8e96c
 pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=('vapoursynth'
          'vapoursynth-plugin-bm3d-git'
          'vapoursynth-plugin-knlmeanscl-git'
          'vapoursynth-plugin-tcanny-git'
+         'python-numpy'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
