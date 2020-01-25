@@ -9,11 +9,9 @@ pkgbase = asciisec
 	license = custom:freeware_with_limitations
 	depends = sdl2_mixer
 	depends = sdl2_image
-	source = music.zip::http://www.laserbrainstudios.com/download.php?name=asciisecmusic
 	source = asciisec.desktop
 	source = asciisec.png
 	source = asciisec0.7.2-linux64.tar.gz::http://www.laserbrainstudios.com/download.php?name=asciiseclinux64
-	md5sums = f061f51a41d98561447b750de8a45400
 	md5sums = d14120b34114c0f8414e8e8fa4594d72
 	md5sums = 9c994608913a1e62fb27276b0109f7bf
 	md5sums = da26c4f40bdb3738defe8aa7808b4a15
