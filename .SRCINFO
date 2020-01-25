@@ -1,10 +1,9 @@
 pkgbase = corearchiver-git
 	pkgdesc = Archiver from the CoreApps family to create and extract archives.
-	pkgver = v2.8.0.r0.a9d315c
+	pkgver = 2.8.0.r0.a9d315c
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git

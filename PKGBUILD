@@ -1,9 +1,9 @@
 _pkgname=corearchiver
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r0.a9d315c
+pkgver=2.8.0.r0.a9d315c
 pkgrel=1
 pkgdesc="Archiver from the CoreApps family to create and extract archives."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('libcprime-git' 'libcsys-git' 'libarchive-qt-git')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
