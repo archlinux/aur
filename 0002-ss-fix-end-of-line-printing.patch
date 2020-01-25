@@ -1,0 +1,39 @@
+From 9eee92a41ae630b2c9e92ae2875ca56801c96b73 Mon Sep 17 00:00:00 2001
+From: Brian Vazquez <brianvv@google.com>
+Date: Wed, 4 Dec 2019 13:32:28 -0800
+Subject: ss: fix end-of-line printing in misc/ss.c
+
+The previous change to ss to show header broke the printing of
+end-of-line for the last entry.
+
+Tested:
+
+diff <(./ss.old -nltp) <(misc/ss -nltp)
+38c38
+< LISTEN   0  128   [::1]:35417  [::]:*  users:(("foo",pid=65254,fd=116))
+\ No newline at end of file
+
+Signed-off-by: Stephen Hemminger <stephen@networkplumber.org>
+---
+ misc/ss.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/misc/ss.c b/misc/ss.c
+index c58e5c4d..95f1d37a 100644
+--- a/misc/ss.c
++++ b/misc/ss.c
+@@ -1290,6 +1290,11 @@ static void render(void)
+ 
+ 		token = buf_token_next(token);
+ 	}
++	/* Deal with final end-of-line when the last non-empty field printed
++	 * is not the last field.
++	 */
++	if (line_started)
++		printf("\n");
+ 
+ 	buf_free_all();
+ 	current_field = columns;
+-- 
+cgit 1.2-0.3.lf.el7
+

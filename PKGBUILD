@@ -8,7 +8,7 @@
 
 pkgname=iproute2-selinux
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64')
 license=('GPL2')
@@ -28,16 +28,21 @@ makedepends=('linux-atm')
 options=('staticlibs')
 validpgpkeys=('9F6FC345B05BE7E766B83C8F80A77F6095CDE47E') # Stephen Hemminger
 source=("https://www.kernel.org/pub/linux/utils/net/${pkgname/-selinux}/${pkgname/-selinux}-${pkgver}.tar."{xz,sign}
-        '0001-make-iproute2-fhs-compliant.patch')
+        '0001-make-iproute2-fhs-compliant.patch'
+        '0002-ss-fix-end-of-line-printing.patch')
 sha256sums=('fe97aa60a0d4c5ac830be18937e18dc3400ca713a33a89ad896ff1e3d46086ae'
             'SKIP'
-            'f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3')
+            'f60fefe4c17d3b768824bb50ae6416292bcebba06d73452e23f4147b46b827d3'
+            '79cb0378988c7f58c2769a3333bae95b94cbd867c8d88e7331df8f5038d2cc6a')
 
 prepare() {
   cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
 
   # set correct fhs structure
-  patch -Np1 -i "${srcdir}/0001-make-iproute2-fhs-compliant.patch"
+  patch -Np1 -i "${srcdir}"/0001-make-iproute2-fhs-compliant.patch
+
+  # ss: fix end-of-line printing
+  patch -Np1 -i "${srcdir}"/0002-ss-fix-end-of-line-printing.patch
 
   # do not treat warnings as errors
   sed -i 's/-Werror//' Makefile
