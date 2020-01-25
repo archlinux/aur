@@ -32,7 +32,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"
-  cat "${_gemname}.gemspec"
   gem build "${_gemname}.gemspec"
 }
 
