@@ -1,0 +1,15 @@
+pkgbase = crazycat-dvb-firmware
+	pkgdesc = DVB firmware from CrazyCat media_build repo
+	pkgver = 0.0.51
+	pkgrel = 1
+	url = https://bitbucket.org/CrazyCat/media_build
+	arch = any
+	license = GPL3
+	makedepends = linux-firmware
+	provides = crazycat-dvb-firmware
+	conflicts = openelec-dvb-firmware
+	source = https://bitbucket.org/CrazyCat/media_build/downloads/dvb-firmwares.tar.bz2
+	sha256sums = bbba5ea89ad65f535e22bfa97d0ad172b677cfbde4f7b399fc0b2e31a148d95e
+
+pkgname = crazycat-dvb-firmware
+
