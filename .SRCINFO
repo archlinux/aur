@@ -1,0 +1,18 @@
+pkgbase = breeze10-kde-git
+	pkgdesc = A Windows 10 style windows decoration for KDE Plasma
+	pkgver = r20.18edb47
+	pkgrel = 1
+	url = https://github.com/fauzie811/Breeze10
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-desktop
+	provides = breeze10-kde
+	conflicts = breeze10-kde
+	source = git+https://github.com/fauzie811/Breeze10.git
+	sha256sums = SKIP
+
+pkgname = breeze10-kde-git
+
