@@ -1,53 +1,36 @@
 # Maintainer: bitwave <aur [aT] oomlu {d.0t} de>
+# Contributor: jkoch < 	johannes [aTTTT] ortsraum {d00t} de>
 # Contributor: Daniel Dietrich <shaddow2k@@gmail..com>
 pkgname=kleiner-brauhelfer
-pkgver=1.4.4.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Qt-based tool for hobby brewer to calculate and manage the beer brewing process."
 arch=("i686" "x86_64")
-url="http://www.joerum.de/kleiner-brauhelfer"
+url="https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2"
 license=('GPL3')
-depends=('qt5-svg' 'qt5-webengine')
-provides=('kleiner-brauhelfer')
-source=("https://github.com/Gremmel/$pkgname/archive/v$pkgver.tar.gz"
-        kleiner-brauhelfer.desktop
-        brauhelfer
-        release.patch)
-
-prepare() {
-	cd "${srcdir}"
-	patch -p1 -i release.patch
-}
+depends=('qt5-webengine' 'qt5-charts' 'qt5-svg')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kleiner-brauhelfer/$pkgname-2/archive/v$pkgver.tar.gz"
+        kleiner-brauhelfer.desktop)
 
 build() {
-  mkdir -p build
-  cd build
+  cd "$pkgname-2-$pkgver"
 
-  cd "${srcdir}/${pkgname}-${pkgver}/source/"
-  qmake-qt5 brauhelfer.pro
+  qmake-qt5 kleiner-brauhelfer-2.pro
   make
 }
 
-package(){
-  cd "${srcdir}/${pkgname}-${pkgver}/source/"
+package() {
+  cd "$pkgname-2-$pkgver"
+  
+  install -d "$pkgdir/usr/bin"
+  install -m755 -D "bin/kleiner-brauhelfer-2" "$pkgdir/usr/bin"
 
-  #bin
-  install -d "$pkgdir/usr/bin/kleiner-brauhelfer"
-  install -D -m755 "bin/kleiner-brauhelfer" "$pkgdir/usr/bin/kleiner-brauhelfer"
-  install -D -m755 "${srcdir}/brauhelfer" "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/pixmaps"
+  install -m644 -D "deployment/kleiner-brauhelfer-2.svg" "$pkgdir/usr/share/pixmaps"
 
-  # languages
-  install -d "$pkgdir/usr/bin/kleiner-brauhelfer/languages"
-  install -D -m644 "languages/"*.qm "$pkgdir/usr/bin/kleiner-brauhelfer/languages"
-  install -D -m644 "languages/"*.png "$pkgdir/usr/bin/kleiner-brauhelfer/languages"
-
-    #Desktop Launcher
-  install -D -m644 "$srcdir/kleiner-brauhelfer.desktop" "$pkgdir/usr/share/applications/kleiner-brauhelfer.desktop"
-
-  #Icon
-  install -D -m644 "res/logo.svg" "$pkgdir/usr/share/pixmaps/kleiner-brauhelfer.svg"
+  install -d "$pkgdir/usr/share/applications"
+  install -m644 -D "$srcdir/kleiner-brauhelfer.desktop" "$pkgdir/usr/share/applications"
 }
-sha256sums=('771578ce1f857abd08f85522fdcc6ab88d021723479108f9ef67e19c5e0fd4f4'
-            '737f4e890a9c5993865a4885e0291d4bdeba1a6586da67716b3bb6ff15e6ee61'
-            '9d034a6c58a6adf7f584df6aba96251bcba52cdab65d661f0aa1a88761ed2067'
-            '4c111752656417598471fbc0a2ef030a042d882f4d233edcae7be2ea68fbadcd')
+
+sha256sums=('3fd0eeacf28af78b04b13b8a9c79342b5ede0d6c2cd195b118f8703c65a1fbfe'
+            '688d4ca1c70d19bbfdcd2b1f546f52e7ef585d5ed0b3566a4fb5f0c29317a11a')

@@ -1,11 +1,9 @@
 [Desktop Entry]
+Type=Application
 Encoding=UTF-8
 Name=kleiner-brauhelfer
-Comment=Calculate and manage the beer brewing process
-Comment[de]=Kalkuliere und verwalte den Bierbrauprozess
-Exec=brauhelfer
-Icon=kleiner-brauhelfer
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Application;Science; 
+Comment=Program to calculate and manage beer brewing
+Comment[de]=Ein Programm zum Berechnen und Verwalten von Biersuden
+Exec=kleiner-brauhelfer-2
+Icon=kleiner-brauhelfer-2
+Categories=Office;
