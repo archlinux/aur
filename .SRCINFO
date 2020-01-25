@@ -1,7 +1,7 @@
 pkgbase = ombi-v4
 	pkgdesc = Ombi V4 branch. Gives Plex or Emby users the ability to request content by themselves
 	pkgver = 4.0.174
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tidusjar/Ombi
 	install = ombi.install
 	arch = x86_64
@@ -19,7 +19,6 @@ pkgbase = ombi-v4
 	optdepends = emby-server: Emby media server
 	provides = ombi
 	conflicts = ombi
-	conflicts = ombi-dev
 	replaces = plexrequests
 	replaces = ombi-beta
 	noextract = ombi-v4-4.0.174.tar.gz

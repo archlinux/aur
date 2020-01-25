@@ -2,7 +2,7 @@
 
 pkgname=ombi-v4
 pkgver=4.0.174
-pkgrel=2
+pkgrel=3
 pkgdesc="Ombi V4 branch. Gives Plex or Emby users the ability to request content by themselves"
 jobid=
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('sonarr: Automated TV show downloads'
             'emby-server: Emby media server')
 replaces=('plexrequests' 'ombi-beta')
 provides=('ombi')
-conflicts=('ombi' 'ombi-dev')
+conflicts=('ombi')
 options=('staticlibs')
 install='ombi.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tidusjar/Ombi.Releases/releases/download/v4.0.174/linux-x64-174.tar.gz"
