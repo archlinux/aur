@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/language_tags-*.tar.gz
+/LICENSE
+*.pkg.tar.*
