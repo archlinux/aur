@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=19.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -13,7 +13,7 @@ groups=(kde-applications kdegraphics)
 depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca kpty kactivities threadweaver kjs kparts purpose discount phonon-qt5)
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib)
 optdepends=('ebook-tools: mobi and epub support'
-            'kdegraphics-mobipocket: mobi support' 'kirigami2: mobile UI' 'libzip: CHM support'
+            'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
@@ -30,7 +30,8 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DBUILD_OKULARKIRIGAMI=OFF
   make
 }
 
