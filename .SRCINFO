@@ -1,10 +1,9 @@
 pkgbase = coretoppings-git
 	pkgdesc = Additional features, plugins, widgets etc for CuboCore Application Suite.
-	pkgver = v2.8.0.r1.126a8cf
+	pkgver = 2.8.0.r1.126a8cf
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git

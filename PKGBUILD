@@ -1,9 +1,9 @@
 _pkgname=coretoppings
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r1.126a8cf
+pkgver=2.8.0.r1.126a8cf
 pkgrel=1
 pkgdesc="Additional features, plugins, widgets etc for CuboCore Application Suite."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('libcprime' 'qt5-x11extras' 'qt5-connectivity' 'qt5-location' 'libxcomposite' 'libpulse')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
