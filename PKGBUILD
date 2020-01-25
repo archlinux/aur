@@ -1,6 +1,7 @@
 # Maintainer: Clayton Craft <clayton at craftyguy dot net>
+# Co-Maintainer: Bandie <bandie at chaospott dot de>
 pkgname=grub2-signing-extension
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Scripts for signing and verifying grub2 files for grub2's check_signatures feature."
 arch=('any')
@@ -11,8 +12,8 @@ source=(
   "https://github.com/Bandie/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   "https://github.com/Bandie/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
 sha512sums=(
-  'f3aae11b410b79d0b8d0b9d95208f309f1f73c197d8d63fada8574ef44547f6dcd4ebafecda51a4b2f967e085e0272c83c2b3e99b45ee32b610aab38045bd11a'
-  'd52e37ae755ce493c26b809ab1195b7553ab6f0168827f6a6f7af0bd0c39058363f1c703c72d4592bc9d12cf6bbbebd75946f196e81c07384a266ac75a3fe39f')
+  '4e990be40978f5f68d2fe73a53fe3730ee04f2fc907293df05d80068e1eb80637c2deb8c9b6b81e409fbd9d5f167090886fba189c58e0a2843219307c150906b'
+  'SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,10 +23,10 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p "${pkgdir}/usr/bin"
-  install -D -m744 sbin/grub-verify "${pkgdir}/usr/bin/grub2-verify"
-  install -D -m744 sbin/grub-sign "${pkgdir}/usr/bin/grub2-sign"
-  install -D -m744 sbin/grub-unsign "${pkgdir}/usr/bin/grub2-unsign"
-  install -D -m744 sbin/grub-update-kernel-signature "${pkgdir}/usr/bin/grub2-update-kernel-signature"
+  install -D -m744 sbin/grub-verify "${pkgdir}/usr/bin/grub-verify"
+  install -D -m744 sbin/grub-sign "${pkgdir}/usr/bin/grub-sign"
+  install -D -m744 sbin/grub-unsign "${pkgdir}/usr/bin/grub-unsign"
+  install -D -m744 sbin/grub-update-kernel-signature "${pkgdir}/usr/bin/grub-update-kernel-signature"
 }
 
 # vim: ts=2 sw=2 et

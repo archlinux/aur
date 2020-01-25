@@ -1,16 +1,16 @@
 pkgbase = grub2-signing-extension
 	pkgdesc = Scripts for signing and verifying grub2 files for grub2's check_signatures feature.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Bandie/grub2-signing-extension
 	arch = any
 	license = GPL
 	depends = gnupg
 	depends = grub
-	source = https://github.com/Bandie/grub2-signing-extension/releases/download/0.1.4/grub2-signing-extension-0.1.4.tar.gz
-	source = https://github.com/Bandie/grub2-signing-extension/releases/download/0.1.4/grub2-signing-extension-0.1.4.tar.gz.asc
-	sha512sums = f3aae11b410b79d0b8d0b9d95208f309f1f73c197d8d63fada8574ef44547f6dcd4ebafecda51a4b2f967e085e0272c83c2b3e99b45ee32b610aab38045bd11a
-	sha512sums = d52e37ae755ce493c26b809ab1195b7553ab6f0168827f6a6f7af0bd0c39058363f1c703c72d4592bc9d12cf6bbbebd75946f196e81c07384a266ac75a3fe39f
+	source = https://github.com/Bandie/grub2-signing-extension/releases/download/0.1.5/grub2-signing-extension-0.1.5.tar.gz
+	source = https://github.com/Bandie/grub2-signing-extension/releases/download/0.1.5/grub2-signing-extension-0.1.5.tar.gz.asc
+	sha512sums = 4e990be40978f5f68d2fe73a53fe3730ee04f2fc907293df05d80068e1eb80637c2deb8c9b6b81e409fbd9d5f167090886fba189c58e0a2843219307c150906b
+	sha512sums = SKIP
 
 pkgname = grub2-signing-extension
 
