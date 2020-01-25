@@ -1,0 +1,15 @@
+[Unit]
+Description=Ombi
+After=network.target
+
+[Service]
+User=ombi
+Group=ombi
+WorkingDirectory=/opt/Ombi
+Type=simple
+ExecStart=/opt/Ombi/Ombi --storage /var/lib/ombi
+TimeoutStopSec=30
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
