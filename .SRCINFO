@@ -1,10 +1,9 @@
 pkgbase = corepdf-git
-	pkgdesc = A PDF viwer from the CoreApps family.
-	pkgver = v2.8.0.r0.8d3a8b7
+	pkgdesc = A PDF viewer from the CoreApps family.
+	pkgver = 2.8.0.r1.96ed219
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git

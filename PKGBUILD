@@ -1,9 +1,9 @@
 _pkgname=corepdf
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r0.8d3a8b7
+pkgver=2.8.0.r1.96ed219
 pkgrel=1
-pkgdesc="A PDF viwer from the CoreApps family."
-arch=('i686' 'x86_64')
+pkgdesc="A PDF viewer from the CoreApps family."
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('libcprime-git' 'poppler-qt5')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
