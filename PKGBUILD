@@ -1,12 +1,12 @@
 # Maintainer: zargbell <zargbell@yandex.ru>
 
 pkgname=pixiecore
-pkgver=2018.283
+pkgver=2019.332
 pkgrel=1
 epoch=
 pkgdesc="An all-in-one tool for easy netbooting"
 arch=('i686' 'x86_64' 'armv7h')
-url="https://github.com/google/netboot/tree/master/pixiecore"
+url="https://github.com/danderson/netboot/tree/master/pixiecore"
 license=('GPL2')
 groups=()
 depends=()
@@ -36,7 +36,7 @@ prepare() {
 
 pkgver(){
 	# date last comment
-	curl -s 'https://api.github.com/repos/google/netboot/commits?per_page=1' | jq -c -r '.[].commit.committer.date | fromdate | strftime("%Y.%j")'
+	curl -s 'https://api.github.com/repos/danderson/netboot/commits?per_page=1' | jq -c -r '.[].commit.committer.date | fromdate | strftime("%Y.%j")'
 }
 
 build() {
