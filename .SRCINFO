@@ -1,8 +1,8 @@
 pkgbase = slepc4py
 	pkgdesc = Python bindings for SLEPc
-	pkgver = 3.11.0
+	pkgver = 3.12.0
 	pkgrel = 1
-	url = https://bitbucket.org/slepc/slepc4py/src/master/
+	url = https://gitlab.com/slepc/slepc4py
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -11,8 +11,8 @@ pkgbase = slepc4py
 	depends = petsc4py
 	depends = openmpi
 	depends = python-numpy
-	source = https://bitbucket.org/slepc/slepc4py/downloads/slepc4py-3.11.0.tar.gz
-	sha256sums = 9812d8b398fd6f30e872993421e420c64387c74fc3dab410208f13d7270257cf
+	source = https://gitlab.com/slepc/slepc4py/-/archive/3.12.0/slepc4py-3.12.0.tar.gz
+	sha256sums = d8c06953b7d00f529a9a7fd016dfa8efdf1d05995baeea7688d1d59611f424f7
 
 pkgname = slepc4py
 
