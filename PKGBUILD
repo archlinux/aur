@@ -1,9 +1,9 @@
 _pkgname=libcsys
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r0.feb9591
+pkgver=2.8.0.r0.feb9591
 pkgrel=1
 pkgdesc="Library for managing drive and getting system resource information in real time."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore/libcsys"
 license=('GPL')
 depends=('qt5-base' )
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
