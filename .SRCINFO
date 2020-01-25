@@ -1,7 +1,7 @@
 pkgbase = xnconvert
 	pkgdesc = A powerful batch image-converter and resizer.
 	pkgver = 1.83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xnview.com/en/xnconvert/
 	arch = x86_64
 	arch = i686

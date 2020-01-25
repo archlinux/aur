@@ -4,7 +4,7 @@ _watch=('https://www.xnview.com/en/xnconvert/' '>Version (\d[\d.]*\d+)\b')
 
 pkgname=xnconvert
 pkgver=1.83
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful batch image-converter and resizer."
 url="https://www.xnview.com/en/xnconvert/"
 arch=('x86_64' 'i686')
@@ -27,5 +27,6 @@ package() {
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 XnConvert/license.txt "${pkgdir}/usr/share/licenses/$pkgname/license.txt"
 
+  rm "${pkgdir}/opt/${pkgname}/lib/libfreetype.so.6"
   rm "${pkgdir}/opt/${pkgname}/XnConvert.desktop"
 }
