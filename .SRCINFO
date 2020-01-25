@@ -1,6 +1,6 @@
 pkgbase = cleanerml-git
 	pkgdesc = System cleaners written in CleanerML used by BleachBit.
-	pkgver = r483.c1ba548
+	pkgver = r667.89de009
 	pkgrel = 1
 	url = https://github.com/az0/cleanerml
 	arch = any

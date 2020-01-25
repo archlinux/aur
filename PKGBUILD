@@ -2,7 +2,7 @@
 
 _pkgname=cleanerml
 pkgname=cleanerml-git
-pkgver=r483.c1ba548
+pkgver=r667.89de009
 pkgrel=1
 pkgdesc='System cleaners written in CleanerML used by BleachBit.'
 url='https://github.com/az0/cleanerml'
@@ -22,8 +22,13 @@ pkgver() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share/bleachbit/cleaners"
-  cp -r ${srcdir}/${_pkgname}/release/*.xml "${pkgdir}/usr/share/bleachbit/cleaners"
 
-  # duplicate entries
+  # WARNING: Files in "pending" are waiting for someone to verify they are safe
+  # You can uncomment the following lines at your own risk
+  #cp -r ${srcdir}/${_pkgname}/pending/*.xml "${pkgdir}/usr/share/bleachbit/cleaners"
+  #rm -rf "${pkgdir}/usr/share/bleachbit/cleaners/waterfox.xml"
+
+  # Is considered to be stable
+  cp -r ${srcdir}/${_pkgname}/release/*.xml "${pkgdir}/usr/share/bleachbit/cleaners"
   rm -rf "${pkgdir}/usr/share/bleachbit/cleaners/wine.xml"
 }
