@@ -1,0 +1,14 @@
+Only in src.orig/registrator: deconvolve
+Only in src.orig/registrator: registrator-bin
+diff -aur src.orig/registrator/registrator-bin.c src/registrator/registrator-bin.c
+--- src.orig/registrator/registrator-bin.c	2016-10-25 19:54:19.000000000 +0200
++++ src/registrator/registrator-bin.c	2020-01-25 14:08:06.850693545 +0100
+@@ -933,7 +933,7 @@
+ 		|PNG_FILTER_AVG|PNG_FILTER_PAETH);
+ 	png_set_compression_level(png_ptr,
+ 			strstr(fname,"intermediate")
+-			?3:Z_BEST_COMPRESSION);
++			?3:PNG_Z_DEFAULT_COMPRESSION);
+ 	png_set_IHDR(png_ptr,info_ptr,width,height
+ 			,16,PNG_COLOR_TYPE_RGB,PNG_INTERLACE_NONE,
+ 		PNG_COMPRESSION_TYPE_DEFAULT,PNG_FILTER_TYPE_DEFAULT);

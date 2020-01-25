@@ -9,13 +9,13 @@ arch=('i686' 'x86_64')
 license=('GPL-2')
 makedepends=('libjpeg' 'libpng')
 depends=('libpng')
-source=("http://ronja.twibright.com/utils/${pkgname}.tgz" "zlib_include.patch")
+source=("http://ronja.twibright.com/utils/${pkgname}.tgz" "png.patch")
 md5sums=('36ea4eb3b69ccc6c18cbb758da95f4f2'
-         '86295e23f9a1c361d5a8c77beecce36c')
+         '90ac328f4d462cfa6d2ef4ec5352b0ea')
 
 build() {
 cd $srcdir/${pkgname}
-patch -p0 <$srcdir/zlib_include.patch
+patch -p2 <$srcdir/png.patch
 make
 }
 
