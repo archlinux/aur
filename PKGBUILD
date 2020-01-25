@@ -1,13 +1,11 @@
-# Maintainer: nougad
-# Contributor: edoz90, Det, Edoardo Rosa
+# Maintainer: DragonX256
+# Contributor: nougad, edoz90, Det, Edoardo Rosa
 # Based on jre: https://aur.archlinux.org/packages/jre/
 
 pkgname=jdk-arm
 _pkgname=jdk
 _major=8
-_minor=221
-_build=b11
-_token="230deb18db3e4014bb8e3e8324f81b43"
+_minor=241
 
 pkgver=${_major}u${_minor}
 pkgrel=1
@@ -21,7 +19,8 @@ makedepends=('pacman>=4.2.0')
 provides=("java-runtime=$_major" "java-runtime-headless=$_major" "java-web-start=$_major" "java-environment=$_major"
 "java-runtime-jre=$_major" "java-runtime-headless-jre=$_major" "java-web-start-jre=$_major" "java-environment-jdk=$_major")
 
-DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
+DLAGENTS+=('manual::/usr/bin/echo The source file for this package needs to be downloaded manually, since it requires a login and is not redistributable. Please visit http://www.oracle.com/technetwork/java/javase/downloads/index.html')
+
 _jname=${_pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$_pkgname
 
@@ -48,26 +47,26 @@ source=("http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.
 "jvisualvm-$_jname.desktop"
 "policytool-$_jname.desktop")
 
-source_armv6h=("http://download.oracle.com/otn/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
+source_armv6h=("manual://$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
 source_armv7h=("$source_armv6h")
-source_aarch64=("http://download.oracle.com/otn/java/jdk/$pkgver-$_build/$_token/$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
+source_aarch64=("manual://$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
 
 md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_armv6h=('e29bf9cde5a12d44df79ea34f40ce329')
-md5sums_armv7h=('e29bf9cde5a12d44df79ea34f40ce329')
-md5sums_aarch64=('a7e730c6851b85551838255b2a651da1')
+md5sums_armv6h=('30719752856fc51675af3c23aa10aa10')
+md5sums_armv7h=('30719752856fc51675af3c23aa10aa10')
+md5sums_aarch64=('2f13fae59f56240d5273651e3f551e70')
 sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
             '105bac73e3b028a3502379e8f51e6c3ecf21e520d85b2b10d4a1103a0dd4cf4b'
             '3c790fd076f5877a4a4604ef4860ee5fe63a75f1c33bde1e9505f7fe246bf8a5'
             '142adba64bba9cafeca2a5e3622a09646fa8b285bb57d63d9f03096580044a61'
             'ef9ecbb758a7fd7755ad1aa0d36cee02bd795e7d54489b92641541198d071f45')
-sha256sums_armv6h=('848c315d316a55b5cb9a77a2e1fc055565ad167133880f78f4d7cd89f8ff1241')
-sha256sums_armv7h=('848c315d316a55b5cb9a77a2e1fc055565ad167133880f78f4d7cd89f8ff1241')
-sha256sums_aarch64=('bb0d299839e92ea858eea6e76aa33be06918da4763a661ba7c68738b6767d14b')
+sha256sums_armv6h=('4470cc89f78d31b173fc1cc1b2a39e15c9a31ebfae7c003777df928643f45fde')
+sha256sums_armv7h=('4470cc89f78d31b173fc1cc1b2a39e15c9a31ebfae7c003777df928643f45fde')
+sha256sums_aarch64=('345d017a38c40763c4d4e1da857b6d711e270ff5092d33f06d3a3f0f14d991fe')
 
 package() {
     cd "${_pkgname}1.${_major}.0_${_minor}" || exit 1

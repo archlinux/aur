@@ -1,6 +1,6 @@
 pkgbase = jdk-arm
 	pkgdesc = Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)
-	pkgver = 8u221
+	pkgver = 8u241
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = jdk-arm.install
@@ -52,15 +52,15 @@ pkgbase = jdk-arm
 	sha256sums = 3c790fd076f5877a4a4604ef4860ee5fe63a75f1c33bde1e9505f7fe246bf8a5
 	sha256sums = 142adba64bba9cafeca2a5e3622a09646fa8b285bb57d63d9f03096580044a61
 	sha256sums = ef9ecbb758a7fd7755ad1aa0d36cee02bd795e7d54489b92641541198d071f45
-	source_armv6h = http://download.oracle.com/otn/java/jdk/8u221-b11/230deb18db3e4014bb8e3e8324f81b43/jdk-8u221-linux-arm32-vfp-hflt.tar.gz
-	md5sums_armv6h = e29bf9cde5a12d44df79ea34f40ce329
-	sha256sums_armv6h = 848c315d316a55b5cb9a77a2e1fc055565ad167133880f78f4d7cd89f8ff1241
-	source_armv7h = http://download.oracle.com/otn/java/jdk/8u221-b11/230deb18db3e4014bb8e3e8324f81b43/jdk-8u221-linux-arm32-vfp-hflt.tar.gz
-	md5sums_armv7h = e29bf9cde5a12d44df79ea34f40ce329
-	sha256sums_armv7h = 848c315d316a55b5cb9a77a2e1fc055565ad167133880f78f4d7cd89f8ff1241
-	source_aarch64 = http://download.oracle.com/otn/java/jdk/8u221-b11/230deb18db3e4014bb8e3e8324f81b43/jdk-8u221-linux-arm64-vfp-hflt.tar.gz
-	md5sums_aarch64 = a7e730c6851b85551838255b2a651da1
-	sha256sums_aarch64 = bb0d299839e92ea858eea6e76aa33be06918da4763a661ba7c68738b6767d14b
+	source_armv6h = manual://jdk-8u241-linux-arm32-vfp-hflt.tar.gz
+	md5sums_armv6h = 30719752856fc51675af3c23aa10aa10
+	sha256sums_armv6h = 4470cc89f78d31b173fc1cc1b2a39e15c9a31ebfae7c003777df928643f45fde
+	source_armv7h = manual://jdk-8u241-linux-arm32-vfp-hflt.tar.gz
+	md5sums_armv7h = 30719752856fc51675af3c23aa10aa10
+	sha256sums_armv7h = 4470cc89f78d31b173fc1cc1b2a39e15c9a31ebfae7c003777df928643f45fde
+	source_aarch64 = manual://jdk-8u241-linux-arm64-vfp-hflt.tar.gz
+	md5sums_aarch64 = 2f13fae59f56240d5273651e3f551e70
+	sha256sums_aarch64 = 345d017a38c40763c4d4e1da857b6d711e270ff5092d33f06d3a3f0f14d991fe
 
 pkgname = jdk-arm
 
