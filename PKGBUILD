@@ -5,7 +5,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.23.99.64941.g1d28ff6a76
+pkgver=1.23.99.64945.g8ec6e28b7c
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,9 @@ depends=('avahi' 'curl' 'fontconfig' 'fribidi' 'harfbuzz'
          'gst-plugins-base-libs' 'luajit' 'libgl' 'libinput'
          'libpulse' 'libsndfile' 'libspectre' 'libraw' 'librsvg' 'libwebp'
          'libxcomposite' 'libxcursor' 'libxinerama' 'libxkbcommon' 'libxrandr'
-         'libxss' 'libunwind' 'mesa' 'poppler'
+         'libxss' 'libunwind' 'mesa' 'poppler' 'openjpeg2' 'libjpeg-turbo'
+         'libpng' 'libtiff' 'giflib' 'lz4' 'zlib' 'systemd-libs' 'openssl'
+         'glibc' 'libutil-linux' 'dbus'
          'shared-mime-info' 'mailcap' 'ttf-font' 'scim'
          'wayland' 'wayland-protocols' 'libxkbcommon-x11'
          'pulseaudio')
