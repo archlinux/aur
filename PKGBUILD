@@ -2,7 +2,7 @@
 # Contributor: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
