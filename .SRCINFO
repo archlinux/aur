@@ -1,0 +1,25 @@
+pkgbase = tftp-hpa-git
+	pkgdesc = Official tftp server
+	pkgver = 5.2.r10.gb2b34ce
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = readline>=6.0.00
+	provides = tftp-hpa
+	conflicts = tftp-hpa
+	backup = etc/conf.d/tftpd
+	source = git+https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git
+	source = tftpd.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.conf?h=packages/tftp-hpa
+	source = tftpd.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.service?h=packages/tftp-hpa
+	source = tftpd.socket::https://git.archlinux.org/svntogit/packages.git/plain/trunk/tftpd.socket?h=packages/tftp-hpa
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tftp-hpa-git
+
