@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=vulkan-extensionlayer-git
-pkgver=r4.e15509e728
+pkgver=r11.8812d5c478
 pkgrel=1
 pkgdesc="Layer providing Vulkan features when native support is unavailable"
 arch=(x86_64)
@@ -28,16 +28,11 @@ prepare() {
     -G Ninja \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D BUILD_LAYERS=ON \
-    -D BUILD_TESTS=ON
+    -D BUILD_LAYERS=ON
 }
 
 build() {
   ninja
-}
-
-check() {
-  ninja test
 }
 
 package() {
