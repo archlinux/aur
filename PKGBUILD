@@ -53,7 +53,6 @@ build() {
       --disable-static \
       --disable-tests \
       --disable-asserts \
-      --disable-libaudit \
       --disable-xml-docs \
       --disable-doxygen-docs \
       --disable-ducktype-docs \
