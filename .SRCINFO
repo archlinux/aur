@@ -1,6 +1,6 @@
 pkgbase = console-bridge
 	pkgdesc = A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.
-	pkgver = 0.4.1
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = http://www.ros.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = console-bridge
 	license = BSD
 	makedepends = cmake
 	depends = gcc-libs
-	source = https://github.com/ros/console_bridge/archive/0.4.1.tar.gz
-	md5sums = 6bb0f640db1712cf2277e7923e7bab68
+	source = https://github.com/ros/console_bridge/archive/0.4.4.tar.gz
+	sha256sums = 1147af6ad6477fcfd640c543684e17ee540e434aa70d6f31c1d137bc86fb937c
 
 pkgname = console-bridge
 
