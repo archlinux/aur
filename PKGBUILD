@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kjäll <alexander.kjall@gmail.com>
 pkgname=ripasso-git
 pkgrelname=ripasso
-pkgver=181
+pkgver=289
 pkgrel=1
 pkgdesc="A password manager that uses the file format of the standard unix password manager 'pass', implemented in rust."
 url="https://github.com/cortex/ripasso/"
@@ -29,6 +29,13 @@ package() {
     rm -f $srcdir/$pkgrelname/ripasso-cursive.1.gz
     gzip $srcdir/$pkgrelname/ripasso-cursive.1
     mkdir -p "$pkgdir/usr/share/man/man1/"
+    mkdir -p "$pkgdir/usr/share/ripasso/"
     install -Dm0644 "$srcdir/$pkgrelname/ripasso-cursive.1.gz" "$pkgdir/usr/share/man/man1/"
     install -Dm0555 "$srcdir/$pkgrelname/target/release/ripasso-cursive" "$pkgdir/usr/bin/$pkgrelname-cursive"
+
+    install -Dm0644 "$srcdir/$pkgrelname/target/translations/cursive/fr.mo" "$pkgdir/usr/share/ripasso/"
+    install -Dm0644 "$srcdir/$pkgrelname/target/translations/cursive/it.mo" "$pkgdir/usr/share/ripasso/"
+    install -Dm0644 "$srcdir/$pkgrelname/target/translations/cursive/nb.mo" "$pkgdir/usr/share/ripasso/"
+    install -Dm0644 "$srcdir/$pkgrelname/target/translations/cursive/nn.mo" "$pkgdir/usr/share/ripasso/"
+    install -Dm0644 "$srcdir/$pkgrelname/target/translations/cursive/sv.mo" "$pkgdir/usr/share/ripasso/"
 }
