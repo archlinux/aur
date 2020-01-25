@@ -1,9 +1,9 @@
 _pkgname=coreaction
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r1.a796070
+pkgver=2.8.0.r1.a796070
 pkgrel=1
 pkgdesc="A side bar for showing widgets from the CoreApps family."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore"
 license=('GPL3')
 depends=('libcprime-git' 'libcsys-git' 'qt5-svg' )
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
