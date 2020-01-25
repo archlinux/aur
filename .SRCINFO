@@ -1,6 +1,6 @@
 pkgbase = lightning-lang-patcher
 	pkgdesc = Patch langs of Lightning thunderbird addon
-	pkgver = 1.4.11
+	pkgver = 1.4.12
 	pkgrel = 1
 	url = https://www.tuxnvape.fr/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lightning-lang-patcher
 	depends = python
 	depends = python-gobject
 	depends = thunderbird
-	source = https://github.com/Elrondo46/lightning-lang-patcher/archive/1.4.11.tar.gz
-	sha256sums = e5e7487cb9f2a415671e397ec8bb661c9004e1c1353f0bfb78ef2a790cd19e5e
+	source = https://github.com/Elrondo46/lightning-lang-patcher/archive/1.4.12.tar.gz
+	sha256sums = 15c1702e11a84bcfc03cb7271fa1de0e99640df41d27a55c656ca6110e0830f9
 
 pkgname = lightning-lang-patcher
 
