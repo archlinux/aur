@@ -1,10 +1,9 @@
 pkgbase = coregarage-git
 	pkgdesc = A settings manager for the CoreApps family.
-	pkgver = v2.8.0.r1.4fb1488
+	pkgver = 2.8.0.r2.9668281
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
