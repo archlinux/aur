@@ -1,9 +1,9 @@
 _pkgname=libcprime
 pkgname=${_pkgname}-git
-pkgver=v2.8.0.r2.e52fb37
+pkgver=2.8.0.r2.e52fb37
 pkgrel=1
 pkgdesc="A library for bookmarking, saving recent activites, managing settings of CoreApps."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://gitlab.com/cubocore/libcprime"
 license=('GPL3')
 depends=('qt5-base' 'qt5-connectivity' 'libnotify')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

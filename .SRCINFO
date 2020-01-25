@@ -1,10 +1,9 @@
 pkgbase = libcprime-git
 	pkgdesc = A library for bookmarking, saving recent activites, managing settings of CoreApps.
-	pkgver = v2.8.0.r2.e52fb37
+	pkgver = 2.8.0.r2.e52fb37
 	pkgrel = 1
 	url = https://gitlab.com/cubocore/libcprime
-	arch = i686
-	arch = x86_64
+	arch = any
 	groups = coreapps-git
 	license = GPL3
 	makedepends = git
