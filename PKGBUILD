@@ -3,14 +3,15 @@
 
 pkgname=bitwarden
 pkgver=1.16.6
-pkgrel=1
+pkgrel=2
 _jslibcommit='53d08067df953e7a66ebf0b972e6443e1f275d86'
+_nodeversion='10.18.0'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
 makedepends=('git' 'npm' 'nvm' 'jq')
-depends=('alsa-lib' 'electron' 'gconf' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
+depends=('alsa-lib' 'electron' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
@@ -39,7 +40,7 @@ build() {
   _npm_prefix=$(npm config get prefix)
   npm config delete prefix
   source /usr/share/nvm/init-nvm.sh
-  nvm install 10.15.3 && nvm use 10.15.3
+  nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
   cd "${srcdir}/desktop-${pkgver}/jslib"
   npm install
