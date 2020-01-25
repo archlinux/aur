@@ -1,0 +1,53 @@
+pkgbase = qubes-gui-agent-linux
+	pkgdesc = The Qubes GUI Agent for AppVMs
+	pkgver = 4.1.5
+	pkgrel = 1
+	url = https://github.com/QubesOS/qubes-gui-agent-linux
+	arch = x86_64
+	license = GPL
+	makedepends = pkg-config
+	makedepends = make
+	makedepends = gcc
+	makedepends = patch
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = libtool
+	makedepends = pulseaudio
+	makedepends = xorg-server-devel
+	makedepends = xorg-util-macros
+	makedepends = libxcomposite
+	makedepends = libxt
+	makedepends = pixman
+	makedepends = qubes-vm-gui-common
+	makedepends = qubes-libvchan-xen
+	makedepends = qubes-db-vm
+	makedepends = lsb-release
+	source = qubes-vm-gui::git+https://github.com/QubesOS/qubes-gui-agent-linux.git?signed#tag=v4.1.5
+	source = PKGBUILD-z-qubes-session.sh
+	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
+	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724
+	validpgpkeys = 427F11FD0FAA4B080123F01CDDFA1A3E36879494
+	sha512sums = SKIP
+	sha512sums = 79231ea61f50f9ec85223358026bc12b4f8257ca80c01e8d406e1e01213815f48bec7333cca1465c2e941ffe909c236a68a8e64b0e5294ff0e66bebb31a639e1
+
+pkgname = qubes-vm-gui
+	install = PKGBUILD.install
+	depends = xorg-xinit
+	depends = libxcomposite
+	depends = zenity
+	depends = qubes-libvchan-xen
+	depends = python-xcffib
+	depends = xorg-server>=1.20.4
+	depends = xorg-server<1.20.8
+	depends = qubes-vm-core>=3.0.14
+
+pkgname = qubes-vm-pulseaudio
+	pkgdesc = Pulseaudio support for Qubes VM
+	install = PKGBUILD-pulseaudio.install
+	depends = alsa-lib
+	depends = alsa-utils
+	depends = pulseaudio-alsa
+	depends = pulseaudio>=13.0
+	depends = pulseaudio<14.0
+
