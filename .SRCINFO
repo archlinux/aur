@@ -1,6 +1,6 @@
 pkgbase = python-tf-encrypted
 	pkgdesc = A Framework for Machine Learning on Encrypted Data.
-	pkgver = 0.5.6
+	pkgver = 0.6.0rc0
 	pkgrel = 1
 	url = https://github.com/tf-encrypted/tf-encrypted
 	arch = any
