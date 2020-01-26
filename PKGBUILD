@@ -3,7 +3,7 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(lib32-gcc-libs openal)
 makedepends=(lib32-alsa-lib lib32-libpulse lib32-fluidsynth lib32-portaudio
              lib32-jack git cmake)
 optdepends=('lib32-fluidsynth: MIDI rendering')
-_commit=c0cf323e1d56ce605e90927324d2fdafcfbb564a  # tags/openal-soft-1.20.0
+_commit=f5e0eef34db3a3ab94b61a2f99f84f078ba947e7  # tags/openal-soft-1.20.1
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
 sha256sums=('SKIP')
 
