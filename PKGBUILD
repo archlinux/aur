@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.4.14
+pkgver=5.4.15
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver}-arch1
@@ -48,7 +48,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('1661feabd23e2823030488a200903643974dd6492467ca741e616d1d71a5ee3f'
+sha256sums=('0603a30a97480dea83edea04059b3a49b05cdfe767d95f3c3a90c65f237ff35e'
             '548d4588a491ba2bb7d53b6e3c59aa3fcf68a6d3465079607e4f1bee5add7016'
             '6a6a736cf1b3513d108bfd36f60baf50bb36b33aec21ab0d0ffad13602b7ff75'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
@@ -62,7 +62,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd $_srcname
 
-  msg2 "Setting version..."
+  echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
@@ -72,15 +72,15 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
 
   # https://github.com/graysky2/kernel_gcc_patch
-  msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
+  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
 
   make prepare
@@ -89,10 +89,10 @@ prepare() {
   # See https://aur.archlinux.org/packages/modprobed-db
   if [ -n "$_localmodcfg" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
-      msg2 "Running Steven Rostedt's make localmodconfig now"
+      echo "Running Steven Rostedt's make localmodconfig now"
       make LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
-      msg2 "No modprobed.db data found"
+      echo "No modprobed.db data found"
       exit
     fi
   fi
@@ -101,7 +101,7 @@ prepare() {
   yes "" | make config >/dev/null
 
   make -s kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -125,7 +125,7 @@ _package() {
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -133,13 +133,13 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -151,7 +151,7 @@ _package-headers() {
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -164,7 +164,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -180,10 +180,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -191,16 +191,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -215,11 +215,11 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  msg2 "Fixing permissions..."
+  echo "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
