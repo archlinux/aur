@@ -1,14 +1,13 @@
 pkgbase = supersm
 	pkgdesc = A Super Symlink Manager
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peeweep/SuperSM
 	arch = any
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
 	makedepends = make
-	depends = boost-libs
 	source = SuperSM-0.3.tar.gz::https://github.com/peeweep/SuperSM/archive/0.3.tar.gz
 	sha256sums = 54cad12a90d7cde1a7cb2e14243a69862dfc0113dbafd28a7a4469fea28a3318
 

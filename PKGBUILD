@@ -3,12 +3,11 @@
 pkgname=supersm
 _pkgname=SuperSM
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Super Symlink Manager"
 arch=("any")
 url="https://github.com/peeweep/SuperSM"
 license=('MIT')
-depends=('boost-libs')
 makedepends=('boost' 'cmake' 'make')
 source=("${_pkgname}-${pkgver}.tar.gz"::${url}/archive/${pkgver}.tar.gz)
 sha256sums=('54cad12a90d7cde1a7cb2e14243a69862dfc0113dbafd28a7a4469fea28a3318')
