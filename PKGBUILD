@@ -1,7 +1,7 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=scenarist
-pkgver=0.7.2.rc9f
+pkgver=0.7.2.rc9g
 pkgrel=1
 pkgdesc='A professional screenwriting software.'
 url='https://kitscenarist.ru/en/'
