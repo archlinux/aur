@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf@xs4all.nl>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: yurikoles <root@yurikoles.com>
 # Contributor: bearoso <bearoso@gmail.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=10.0.0_r331158.a078c77d720
+pkgver=11.0.0_r340508.713562f5485
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
