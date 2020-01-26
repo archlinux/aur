@@ -1,7 +1,7 @@
 pkgbase = sgtk-menu
 	pkgdesc = GTK menu for sway, i3 and some floating WMs
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/nwg-piotr/sgtk-menu
 	arch = x86_64
 	license = GPL3
@@ -11,9 +11,10 @@ pkgbase = sgtk-menu
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-i3ipc
+	depends = python-enum-compat
 	optdepends = python-pynput: for positioning in floating window managers
-	source = https://github.com/nwg-piotr/sgtk-menu/archive/v0.8.0.tar.gz
-	md5sums = d6e62eff784c5eea412f8891f5e7a51c
+	source = https://github.com/nwg-piotr/sgtk-menu/archive/v0.9.0.tar.gz
+	md5sums = fedac73ba679c3055b160a28eca42682
 
 pkgname = sgtk-menu
 
