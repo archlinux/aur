@@ -1,6 +1,6 @@
 pkgbase = pstoedit-nomagick
 	pkgdesc = Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)
-	pkgver = 3.74
+	pkgver = 3.75
 	pkgrel = 1
 	url = http://www.pstoedit.net/
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = pstoedit-nomagick
 	depends = libemf
 	provides = pstoedit
 	conflicts = pstoedit
-	source = https://sourceforge.net/projects/pstoedit/files/pstoedit/3.74/pstoedit-3.74.tar.gz
-	sha256sums = 353242fa4a3a73c3c856d1122a4d258a12be869707629603807e27137566990c
+	source = https://sourceforge.net/projects/pstoedit/files/pstoedit/3.75/pstoedit-3.75.tar.gz
+	sha256sums = b7b5d8510b40a5b148f7751268712fcfd0c1ed2bb46f359f655b6fcdc53364cf
 
 pkgname = pstoedit-nomagick
 
