@@ -1,4 +1,5 @@
 *.pkg.tar.xz
 *.tar.gz
+/locales
 /pkg
 /src
