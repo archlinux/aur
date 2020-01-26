@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
 # Contributor: Anders Bergh <anders@archlinuxppc.org>
@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=10.0.0_r338952.0f5f28d000f
+pkgver=11.0.0_r340516.4aea70ed329
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
