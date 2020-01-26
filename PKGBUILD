@@ -2,14 +2,14 @@
 
 pkgname='perl-cam-dbf'
 pkgver='1.02'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for reading and writing dBASE III DBF files (dbf2csv)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/CAM-DBF'
+url='https://metacpan.org/pod/CAM::DBF'
 source=('http://search.cpan.org/CPAN/authors/id/C/CL/CLOTHO/CAM-DBF-1.02.tgz')
 md5sums=('4c8561dd0dc5bb17f8f1585aa4490ace')
 sha512sums=('78acdd2e9366ecb8ca099d4d1ad25a29a06f922d2700644b9cf713a09b4a1c0e1e6794365a07f1e12b19c24f7fc80a963e9425470431664d9d2fca46b1d45226')

@@ -1,8 +1,8 @@
 pkgbase = perl-cam-dbf
 	pkgdesc = Perl extension for reading and writing dBASE III DBF files (dbf2csv)
 	pkgver = 1.02
-	pkgrel = 1
-	url = http://search.cpan.org/dist/CAM-DBF
+	pkgrel = 2
+	url = https://metacpan.org/pod/CAM::DBF
 	arch = any
 	license = PerlArtistic
 	license = GPL
