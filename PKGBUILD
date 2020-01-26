@@ -2,20 +2,23 @@
 # Contributor: sekret
 # Contributor: Army
 # Contributor: Funkmuscle
+# Contributor: David Runge <dvzrv@archlinux.org
 
 pkgname=guitarix-git
-pkgver=0.36.1.r16.g51ba3d2b
+pkgver=0.39.0.r5.g2addb8b8
 pkgrel=1
-pkgdesc="A virtual guitar amplifier for Linux"
-arch=('i686' 'x86_64')
-url="http://guitarix.sourceforge.net"
-license=('GPL')
-depends=('jack' 'gtkmm' 'liblrdf' 'lilv' 'bluez-libs' 'boost-libs' 'zita-convolver' 'zita-resampler' 'ttf-roboto')
-#depends=(jack liblrdf gtkmm fftw bluez-libs ffmpeg lilv boost-libs)
-makedepends=('git' 'python' 'python2' 'boost' 'eigen' 'gperf' 'intltool' 'lv2')
-optdepends=('meterbridge: sound meters')
-provides=("${pkgname%-*}" "guitarix2" "gx_head")
-conflicts=("${pkgname%-*}" "guitarix2" "gx_head")
+pkgdesc="A simple mono guitar amplifier and FX for JACK using Faust"
+arch=('x86_64')
+url="https://guitarix.org"
+license=('GPL3')
+groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio')
+depends=('avahi' 'bluez-libs' 'cairo' 'cairomm' 'gcc-libs' 'gdk-pixbuf2'
+'glib2' 'glibc' 'glibmm' 'gtk2' 'gtkmm' 'libboost_iostreams.so' 'libcurl.so'
+'libjack.so' 'liblilv-0.so' 'liblrdf.so' 'libsndfile.so' 'libzita-convolver.so'
+'libzita-resampler.so' 'pango' 'pangomm' 'ttf-roboto')
+makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf')
+provides=('libgxw.so' 'libgxwmm.so')
+replaces=('guitarix2')
 source=("${pkgname%-*}::git+https://git.code.sf.net/p/guitarix/git")
 md5sums=('SKIP')
 
@@ -26,17 +29,22 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}/trunk"
-  python2 waf configure --prefix=/usr \
-						--optimization \
-						--new-ladspa \
-						--no-ldconfig \
-						--no-desktop-update \
-						--no-font-cache-update
-  python2 waf build
+  # when building with faust 2.20.2 it fails: https://sourceforge.net/p/guitarix/bugs/86/
+  waf configure --prefix=/usr \
+                --enable-nls \
+                --ladspa \
+                --new-ladspa \
+                --no-faust \
+                --shared-lib \
+                --lib-dev \
+                --ldflags="${LDFLAGS}"
+  waf build -vv
 }
 
 package() {
   cd "${pkgname%-*}/trunk"
-  python2 waf install --destdir="$pkgdir"
+  waf install --destdir="${pkgdir}"
+  # docs
+  install -vDm 644 {changelog,README} -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 
