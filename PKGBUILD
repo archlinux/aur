@@ -17,9 +17,6 @@ sha256sums=('9d8a9b00a6c93da5b472d8a4c7d9549339ed050d1578c557a20add100172b0f5')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # BUG: make defconfig does not properly recognise the files this script
-  # generates, which breaks parallel make
-  scripts/genconfig.sh
   make defconfig
   make
 }
