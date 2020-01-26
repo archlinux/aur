@@ -1,7 +1,7 @@
 pkgbase = ttf-poppins
 	pkgdesc = Poppins font by ITFoundry
-	pkgver = 2.000
-	pkgrel = 0
+	pkgver = 4.003
+	pkgrel = 1
 	url = https://github.com/itfoundry/poppins
 	install = ttf-poppins.install
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ttf-poppins
 	depends = xorg-fonts-encodings
 	depends = xorg-mkfontdir
 	depends = xorg-mkfontscale
-	source = https://github.com/itfoundry/poppins/releases/download/v2.000/Poppins-2_000.zip
-	sha256sums = 86f53a3d50baaadca0d7a1aaf4d69e4d8d3a3d8a9fe67bc3d9b0c0db000e0f39
+	source = https://github.com/itfoundry/Poppins/archive/v4.003.zip
+	sha256sums = c7ba1cef54d498b851527234c0c3f028fa155b750aadd78247cb8ce80f0211e4
 
 pkgname = ttf-poppins
 
