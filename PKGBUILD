@@ -1,5 +1,4 @@
 # Maintainer: Figue <ffigue at gmail>
-# Contributor: Figue <ffigue at gmail>
 # Contributor (Parabola): fauno <fauno@kiwwwi.com.ar>
 # Thank you very much to the older contributors:
 # Contributor: evr <evanroman at gmail>
@@ -7,8 +6,6 @@
 
 pkgname=icecat
 pkgver=68.4.2
-a_pkgver=( ${pkgver//./ } )
-#_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
 pkgrel=1
 _gnu=-gnu1
 pkgdesc="GNU version of the Firefox browser."
@@ -27,8 +24,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
 
-#source=(http://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_pkgver}.tar.gz
-#source=(https://gitlab.com/anto.trande/icecat/-/archive/v${pkgver}${_gnu}/icecat-v${pkgver}${_gnu}.tar.bz2
 source=(git+https://git.savannah.gnu.org/git/gnuzilla.git#branch=68
         icecat.desktop icecat-safe.desktop
         "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368")
@@ -37,8 +32,6 @@ sha256sums=('SKIP'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
-
-#validpgpkeys=(A57369A8BABC2542B5A0368C3C76EED7D7E04784) # Ruben Rodriguez (GNU IceCat releases key) <ruben@gnu.org>
 
 prepare() {
   cd gnuzilla
