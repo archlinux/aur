@@ -1,7 +1,7 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.3.0rc
-	pkgrel = 2
+	pkgver = 9.3.0
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
@@ -26,8 +26,8 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.3.0rc-2.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e/pamac-common-ae50cf8dea7b0d39d6f98517daffd6dccdeb9b3e.tar.gz
-	sha256sums = 1152a55530a14d3b4870708ce0316fad4dfb7a97fce822b8e80e5905aed7c4e5
+	source = pamac-9.3.0-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/f55eb3d5a20b4aca305a60aca4763c6eae2c79b5/pamac-common-f55eb3d5a20b4aca305a60aca4763c6eae2c79b5.tar.gz
+	sha256sums = 366614977e3b90ff2b1c18f6b3acd7e2834c642fcbff3677a8206bd7fa6c36ec
 
 pkgname = pamac-common
 	install = pamac-common.install
@@ -47,7 +47,7 @@ pkgname = pamac-gtk
 	install = pamac-gtk.install
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
-	provides = pamac=9.3.0rc-2
+	provides = pamac=9.3.0-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
