@@ -1,10 +1,14 @@
-# Maintainerr: TransistorLogic <liuhongwu2003@outlook.com>
+# Maintainer: TransistorLogic <liuhongwu2003@outlook.com>
+
+# Author: Luogu Development Team <k@luogu.org> (https://github.com/luogu-dev)
+# The copyright of this library belongs to Luogu (https://www.luogu.com.cn/).
+# The library is released under LGPLv3.
 
 pkgname=python-cyaron
 _name=cyaron
 pkgver=0.4.2
 pkgrel=1
-pkgdesc="CYaRon: Yet Another Random Olympic-iNformatics test data generator, A library for automatically generating test data for Online Judge, Olympic Informatics or automatic application testing"
+pkgdesc="CYaRon: Yet Another Random Olympic-iNformatics test data generator, A library for automatically generating test data for Online Judge, Olympic Informatics or automatic application testing. The copyright belongs to Luogu"
 url="https://www.luogu.org/"
 depends=('python' 'python-colorful' 'python-xeger')
 makedepends=('python-setuptools' )

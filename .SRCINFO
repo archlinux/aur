@@ -1,5 +1,5 @@
 pkgbase = python-cyaron
-	pkgdesc = CYaRon: Yet Another Random Olympic-iNformatics test data generator, A library for automatically generating test data for Online Judge, Olympic Informatics or automatic application testing
+	pkgdesc = CYaRon: Yet Another Random Olympic-iNformatics test data generator, A library for automatically generating test data for Online Judge, Olympic Informatics or automatic application testing. The copyright belongs to Luogu
 	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://www.luogu.org/
