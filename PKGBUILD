@@ -4,7 +4,7 @@ pkgname=jesc-configurator-bin
 _pkgname=jesc-configurator
 pkgver=1.2.6
 pkgrel=1
-pkgdesc="Application for JESC BLHeli firmware flashing and configuration."
+pkgdesc="Flashing and configuring of JESC on BLHeli_S ESCs (see https://jflight.net)."
 arch=('x86_64')
 url="https://github.com/jflight-public/jesc-configurator"
 source=(
@@ -19,10 +19,11 @@ sha256sums=('1620f6d932570f7ac333a8478501cf8af4204e0674c906110bec1be73f8cfc49'
             '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2'
             '507f26e8e54f6097e43a9b9cb6de6d231393a4ce18308745a29e1a605ac77ec7')
 
-install="${_pkgname}.install"
+install="${pkgname}.install"
 options=(!strip)
 license=('GPL3')
-#conflicts=('jesc-configurator')
+provides=('jesc-configurator')
+conflicts=('jesc-configurator')
 
 package() {
   mkdir -p "${pkgdir}/opt/${_pkgname}"

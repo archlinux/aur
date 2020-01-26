@@ -1,0 +1,6 @@
+## arg 1:  the new package version
+post_install() {
+  printf "\nVisit https://jflight.net, to purchase the telemetry licenses.\n"
+  printf "Add your user to the 'uucp' group, to allow serial port access.\n"
+  printf "For example: 'sudo usermod -Ga uucp $USER'\n\n"
+}
