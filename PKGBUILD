@@ -1,5 +1,5 @@
 pkgname=wofi-hg
-pkgver=r148.0522e8bc4ee9
+pkgver=r167.83ab46c8985d
 pkgrel=1
 pkgdesc="Rofi-like wlroots launcher"
 arch=('x86_64')
@@ -7,6 +7,7 @@ url="https://hg.sr.ht/~scoopta/wofi"
 license=('GPL3')
 depends=('wayland' 'gtk3')
 makedepends=('mercurial' 'meson')
+provides=('wofi')
 conflicts=('wofi')
 source=("${pkgname}::hg+$url")
 sha256sums=('SKIP')
