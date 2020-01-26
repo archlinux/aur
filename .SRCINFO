@@ -1,13 +1,13 @@
 pkgbase = bridje-bin
 	pkgdesc = Bridje is a statically typed LISP targeting GraalVM, drawing inspiration from both Clojure and Haskell.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/bridje/bridje
 	arch = x86_64
 	license = custom
 	depends = jdk11-graalvm-bin
-	source = https://github.com/bridje/bridje/releases/download/v0.0.1/brj-component-0.0.1.jar
-	sha256sums = f30a48f03a6b007f1769958ca235e358c99eef2bc7a5ff59c0028d33267d4af8
+	source = https://github.com/bridje/bridje/releases/download/v0.0.2/brj-component-0.0.2.jar
+	sha256sums = 1422c534b7e572ea3eaffdb037e621a8a8d97daedbff9a4f6a63c6466075830d
 
 pkgname = bridje-bin
 
