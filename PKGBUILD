@@ -4,7 +4,7 @@
 pkgname=nccl
 pkgver=2.5.7
 _upstr_pkgrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -36,9 +36,12 @@ build() {
                        -gencode=arch=compute_60,code=sm_60 \
                        -gencode=arch=compute_61,code=sm_61 \
                        -gencode=arch=compute_70,code=sm_70 \
+                       -gencode=arch=compute_72,code=sm_72 \
                        -gencode=arch=compute_75,code=sm_75 \
+                       -gencode=arch=compute_60,code=compute_60 \
                        -gencode=arch=compute_61,code=compute_61 \
                        -gencode=arch=compute_70,code=compute_70 \
+                       -gencode=arch=compute_72,code=compute_72 \
                        -gencode=arch=compute_75,code=compute_75"
   export VERBOSE=1
 
