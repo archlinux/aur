@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
-_zfsver="0.8.2"
-_kernelver="5.4.13.zen1-1"
+_zfsver="0.8.3"
+_kernelver="5.4.14.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -27,7 +27,7 @@ makedepends=("linux-zen-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("47608e257c8ecebb918014ef1da6172c3a45d990885891af18e80f5cc28beab8")
+sha256sums=("545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-zen=${_kernelver}")
 
