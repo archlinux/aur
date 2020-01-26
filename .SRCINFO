@@ -1,0 +1,38 @@
+pkgbase = llvm-asserts
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = https://llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = ncurses
+	makedepends = libxml2
+	makedepends = python-sphinx
+	makedepends = python-recommonmark
+	makedepends = python-setuptools
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/llvm-9.0.1.src.tar.xz
+	sha256sums = 00a1ee1f389f81e9979f3a640a01c431b3021de0d42278f6508391a2f0b81c9a
+
+pkgname = llvm-asserts
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (with assertions enabled)
+	depends = llvm-asserts-libs
+	depends = perl
+	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
+	provides = llvm=9.0.1
+	conflicts = llvm
+
+pkgname = llvm-asserts-libs
+	pkgdesc = LLVM 9 runtime libraries (with assertions enabled)
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+	depends = libxml2
+	provides = llvm-libs=9.0.1
+	conflicts = llvm-libs
+
