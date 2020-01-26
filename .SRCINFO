@@ -1,0 +1,21 @@
+pkgbase = cppadcodegen-git
+	pkgdesc = A C++ Algorithmic Differentiation Package
+	pkgver = r928.38d4f3b
+	pkgrel = 1
+	url = https://github.com/joaoleal/CppADCodeGen
+	arch = any
+	license = GPL3
+	license = EPL1
+	makedepends = cmake
+	depends = cppad
+	optdepends = eigen: required when DAE differentiation index reduction is used,
+	optdepends = valgrind: memcheck test
+	optdepends = clang: only required for JIT compilation
+	optdepends = llvm: only required for JIT compilation
+	provides = cppadcodegen
+	conflicts = cppadcodegen
+	source = git+https://github.com/joaoleal/CppADCodeGen.git
+	sha256sums = SKIP
+
+pkgname = cppadcodegen-git
+
