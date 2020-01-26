@@ -4,7 +4,7 @@
 
 pkgname="cajarename"
 _pkgnamealt="caja-rename"
-pkgver="20.1.25.38"
+pkgver="20.1.25.39"
 pkgrel="2"
 pkgdesc="Batch renaming extension for Caja"
 arch=("any")
