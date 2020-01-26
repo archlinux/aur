@@ -2,8 +2,8 @@
 
 _pkgname=powder-player
 pkgname=${_pkgname}-bin
-pkgver=1.20
-pkgrel=2
+pkgver=1.55
+pkgrel=1
 pkgdesc="Hybrid between a Torrent Client and a Player (torrent streaming)"
 arch=('x86_64')
 url="http://powder.media/"
@@ -40,6 +40,6 @@ package() {
   install -Dm644 powder-icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
 
-md5sums=('5852030b112b37ec2b0cb1a40190841a'
+md5sums=('0da0414a5ff24570d96704c4ed5202b3'
          '40e4478fcfca9cfc32c2ae65279f35b8'
          '687feb9e0d2ce0395b455b85a39a0753')
