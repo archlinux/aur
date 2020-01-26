@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf@xs4all.nl>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: yurikoles <root@yurikoles.com>
 # Contributor: bearoso <bearoso@gmail.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=10.0.0_r330751.f78c236efda
+pkgver=11.0.0_r340508.713562f5485
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -56,7 +56,7 @@ prepare() {
 
     cd llvm-project
     # remove code parts not needed for build
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl mlir libc
 }
 
 build() {
