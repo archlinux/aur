@@ -2,7 +2,7 @@
 
 pkgname=urbit
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An operating function"
 arch=('x86_64')
 url="https://github.com/urbit/urbit"
@@ -18,5 +18,6 @@ package() {
   cp $srcdir/urbit $pkgdir/opt/$pkgname/urbit
   cp $srcdir/urbit-worker $pkgdir/opt/$pkgname/urbit-worker
   cp -R $srcdir/urbit-terminfo $pkgdir/opt/$pkgname
-  ln -s /opt/$pkgname/urbit $pkgdir/usr/bin/$pkgname
+  ln -s /opt/$pkgname/urbit $pkgdir/usr/bin/urbit
+  ln -s /opt/$pkgname/urbit-worker $pkgdir/usr/bin/urbit-worker
 }
