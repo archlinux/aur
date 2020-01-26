@@ -8,6 +8,7 @@ pkgbase = libdesq-git
 	license = none
 	makedepends = git
 	depends = qt5-base
+	depends = qt5-x11extras
 	provides = libdesq
 	conflicts = libdesq
 	source = git+https://gitlab.com/Desq/libdesq.git
