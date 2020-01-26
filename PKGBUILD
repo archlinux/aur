@@ -6,37 +6,22 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.9.4
+pkgver=1.9.8
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=(
-    'enchant'
-    'ffmpeg'
-    'hicolor-icon-theme'
-    'lz4'
-    'minizip'
-    'openal'
-    'qt5-imageformats'
-    'xxhash'
-)
-makedepends=(
-    'cmake'
-    'git'
-    'libappindicator-gtk3'
-    'python'
-    'range-v3'
-)
-optdepends=(
-    'ttf-opensans: default Open Sans font family'
-    'libappindicator-gtk3: AppIndicator-based tray icon'
-)
+depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'libappindicator-gtk3'
+         'lz4' 'minizip' 'openal' 'qt5-imageformats' 'xxhash')
+makedepends=('cmake' 'git' 'python' 'range-v3')
+optdepends=('ttf-opensans: default Open Sans font family')
+
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 _commit="tag=v$pkgver"
-#_commit="commit=46946c73236285649950071632beb3f3e855b2ea"
+#_commit="commit=COMMIT_SHA1"
+
 source=(
     # Git repositories; might be adjusted when a build issue arise.
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#$_commit"
@@ -68,8 +53,7 @@ source=(
 
     # These files might require modifications to be up-to-date. If that is the
     # case, they will be updated in place and untracked temporarily.
-    "0005-Use-system-wide-fonts.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/0005-Use-system-wide-fonts.patch?h=packages/telegram-desktop"
-    "0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch?h=packages/telegram-desktop"
+    # No patch for now...!
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -93,9 +77,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'e12021af0c95c967f80240abd683bf197f3c4f8f21315b48c5dadeb399dc39cd1e352352daba1c30691c6d1c6e66078af95b9262e8fe0c2174709fcb1a8a3f5d'
-            '41f22a8b63b1929288cca5638c2719ce9754aa4334deb9004370c44f780fb8ac57f2b4075d529c494f4eac49dde22885f0f9efc0911840f79cb5fcf8d737061d')
+            'SKIP')
 
 prepare() {
     cd "$srcdir/tdesktop"
@@ -135,21 +117,24 @@ prepare() {
         ln -s $fixed ${fixed/_fixed/}
     done
 
-    # Here the official package uses quilt... I do it manually
-    patch -Np1 -i "$srcdir/0005-Use-system-wide-fonts.patch"
-    patch -Np1 -i "$srcdir/0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch"
+    # Patch here, if needed!
+    # patch -Np1 -i "$srcdir/my_beautiful.patch"
 }
 
 build() {
     cd "$srcdir/tdesktop"
 
     export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
+
+    # Before were used:
+    # -DTDESKTOP_API_ID=17349
+    # -DTDESKTOP_API_HASH=344583e45741c457fe1862106095a5eb
+
     cmake -B build -G "Unix Makefiles" . \
         -Ddisable_autoupdate=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_ID=17349 \
-        -DTDESKTOP_API_HASH=344583e45741c457fe1862106095a5eb \
+        -DTDESKTOP_API_TEST=ON \
         -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
         -DDESKTOP_APP_USE_PACKAGED=ON \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
@@ -157,13 +142,14 @@ build() {
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
-        -DDESKTOP_APP_SPECIAL_TARGET=""
+        -DDESKTOP_APP_SPECIAL_TARGET="" \
+        -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop"
     make -C build
 }
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/tdesktop/build/bin/Telegram" "$pkgdir/usr/bin/telegram-desktop"
+    install -m755 "$srcdir/tdesktop/build/bin/telegram-desktop" "$pkgdir/usr/bin/telegram-desktop"
 
     install -d "$pkgdir/usr/share/applications"
     install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"

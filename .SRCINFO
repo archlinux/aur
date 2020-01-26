@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.9.4
+	pkgver = 1.9.8
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -8,22 +8,21 @@ pkgbase = telegram-desktop-dev
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	makedepends = libappindicator-gtk3
 	makedepends = python
 	makedepends = range-v3
 	depends = enchant
 	depends = ffmpeg
 	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
 	depends = lz4
 	depends = minizip
 	depends = openal
 	depends = qt5-imageformats
 	depends = xxhash
 	optdepends = ttf-opensans: default Open Sans font family
-	optdepends = libappindicator-gtk3: AppIndicator-based tray icon
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.9.4
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.9.8
 	source = Catch::git+https://github.com/philsquared/Catch
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = QR::git+https://github.com/nayuki/QR-Code-generator
@@ -46,8 +45,6 @@ pkgbase = telegram-desktop-dev
 	source = rlottie::git+https://github.com/desktop-app/rlottie.git
 	source = variant::git+https://github.com/mapbox/variant
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
-	source = 0005-Use-system-wide-fonts.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/0005-Use-system-wide-fonts.patch?h=packages/telegram-desktop
-	source = 0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/0006-Revert-Disable-DemiBold-fallback-for-Semibold.patch?h=packages/telegram-desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -71,8 +68,6 @@ pkgbase = telegram-desktop-dev
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = e12021af0c95c967f80240abd683bf197f3c4f8f21315b48c5dadeb399dc39cd1e352352daba1c30691c6d1c6e66078af95b9262e8fe0c2174709fcb1a8a3f5d
-	sha512sums = 41f22a8b63b1929288cca5638c2719ce9754aa4334deb9004370c44f780fb8ac57f2b4075d529c494f4eac49dde22885f0f9efc0911840f79cb5fcf8d737061d
 
 pkgname = telegram-desktop-dev
 
