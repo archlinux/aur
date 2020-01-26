@@ -7,7 +7,7 @@ pkgbase = bridje-bin
 	license = custom
 	depends = jdk11-graalvm-bin
 	source = https://github.com/bridje/bridje/releases/download/v0.0.2/brj-component-0.0.2.jar
-	sha256sums = 1422c534b7e572ea3eaffdb037e621a8a8d97daedbff9a4f6a63c6466075830d
+	sha256sums = 0480756b5ff04f8062c6664a0b4db2814035c556ba5176b4b3ec69231bf055ca
 
 pkgname = bridje-bin
 
