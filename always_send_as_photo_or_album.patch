@@ -18,6 +18,7 @@ index 2f4c45c48..ed9bf4bb6 100644
 -				? SendFilesWay::Album
 -				: SendFilesWay::Photos;
 -		}
- 		return (_list.albumIsPossible && !_albumPhotosCount)
+-		return (_list.albumIsPossible && !_albumPhotosCount)
++		return _list.albumIsPossible
  			? SendFilesWay::Album
  			: SendFilesWay::Photos;
