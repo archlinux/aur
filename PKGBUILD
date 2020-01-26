@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop9
 pkgver=1.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -70,6 +70,7 @@ build() {
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
+        -DDESKTOP_APP_DISABLE_SPELLCHECK=ON \
         -DTDESKTOP_FORCE_GTK_FILE_DIALOG=ON
     ninja -C build
 }
