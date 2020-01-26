@@ -4,14 +4,14 @@
 
 pkgname='perl-test-vars'
 pkgver='0.014'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Detects unused variables"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build-tiny')
-url='http://search.cpan.org/dist/Test-Vars'
+url='https://metacpan.org/pod/Test::Vars'
 source=('https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Test-Vars-0.014.tar.gz')
 md5sums=('8aec7213ad746761000530b6a79432af')
 sha512sums=('25361ab010c5d991e3f955fbc2956fb52c5a31801fbc742b4d7eb02fd56d71eee4314cb515ece8c3fc76ab88bdee4304ccc0762d7f7360bdfd05b05c51ac6314')

@@ -1,8 +1,8 @@
 pkgbase = perl-test-vars
 	pkgdesc = Detects unused variables
 	pkgver = 0.014
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-Vars
+	pkgrel = 2
+	url = https://metacpan.org/pod/Test::Vars
 	arch = any
 	license = PerlArtistic
 	license = GPL
