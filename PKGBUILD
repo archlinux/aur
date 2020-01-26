@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.25.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -15,7 +15,7 @@ depends=('awk' 'glib2' 'libcap' 'libnsl' 'udev' 'json-c' 'curl' 'libnet')
 # we need latest mongo-c-driver build to make configure version check work correctly
 makedepends=('flex' 'pkg-config' 'libxslt' 'mongo-c-driver>=1.14.0-3' 'librabbitmq-c'
              'python' 'libesmtp' 'hiredis' 'libdbi' 'libmaxminddb' 'net-snmp'
-             'librdkafka')
+             'librdkafka' 'libcap=2.28')
 optdepends=('logrotate: for rotating log files'
             'libdbi: for the SQL plugin'
             'librabbitmq-c: for the AMQP plugin'

@@ -1,7 +1,7 @@
 pkgbase = syslog-ng-nosystemd
 	pkgdesc = Next-generation syslogd with advanced networking and filtering capabilities
 	pkgver = 3.25.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.syslog-ng.com/products/open-source-log-management/
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = syslog-ng-nosystemd
 	makedepends = libmaxminddb
 	makedepends = net-snmp
 	makedepends = librdkafka
+	makedepends = libcap=2.28
 	depends = awk
 	depends = glib2
 	depends = libcap
