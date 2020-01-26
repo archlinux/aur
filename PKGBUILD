@@ -5,11 +5,11 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Frecency sorted database"
 arch=("x86_64")
-url="https://github.com/SicariusNoctis/frece"
+url="https://github.com/YodaEmbedding/frece"
 license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/SicariusNoctis/frece/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/YodaEmbedding/frece/archive/$pkgver.tar.gz")
 sha256sums=("af5cb178df8ef9a7f7d2ce7d76a9c794e8b1222c6dc0d7e884bd09adc65aed85")
 
 build() {
