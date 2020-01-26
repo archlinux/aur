@@ -3,8 +3,8 @@
 
 pkgname=mu-editor
 epoch=1
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='A simple Python editor for beginner programmers'
 arch=('any')
 url='https://codewith.mu/'
@@ -16,7 +16,7 @@ depends=('python-appdirs' 'python-gpiozero' 'python-guizero' 'python-matplotlib'
 makedepends=('gendesk' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mu-editor/mu/archive/$pkgver.tar.gz"
         'webbrowser-issue31014.diff')
-sha256sums=('77f59e2697c30393dc0ae460994ccde150f69174dc8c3603887c54be068f6516'
+sha256sums=('d9917794de845231ffea671ceff24824bbe342c9d0da4340b237f7a915c0c358'
             '6f2ebf536883ae182ec6a8118b049d7ff039b23d55f846eb7541a2ff0ae1849f')
 
 
