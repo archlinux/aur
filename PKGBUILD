@@ -7,8 +7,8 @@
 _pkgver="1_8g"
 
 pkgname=vasm
-pkgver=1.8f
-pkgrel=2
+pkgver=1.8g
+pkgrel=3
 pkgdesc="Portable and retargetable 6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
 url="http://sun.hasenbraten.de/vasm/"
