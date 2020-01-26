@@ -6,13 +6,12 @@
 pkgname=soulseekqt
 pkgver=20180130
 _pkgver=2018-1-30
-pkgrel=8
+pkgrel=9
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
 license=('CUSTOM')
 depends=('freetype2')
-makedepends=('gcc')
 source=("https://www.slsknet.org/SoulseekQt/Linux/SoulseekQt-${_pkgver}-64bit-appimage.tgz"
     selinux-mock.c
     soulseekqt.sh
@@ -46,5 +45,5 @@ package() {
 
 md5sums=('1d98331893bc9b9d45ba34f6523353ab'
          '4ed42be654289fc9cd7f4181c363f745'
-         'cdc28ff969333f5ef009dfa73c214efc'
+         '2c44de8164d81d54e458bb38de3eee18'
          '2544611108889c2c4c7a9084672f4d32')
