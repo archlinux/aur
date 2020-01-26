@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 479efc1..86cbd71 100755
+index b6913b2..e23ef1b 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -598,7 +598,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
+@@ -738,7 +738,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -12,10 +12,10 @@ index 479efc1..86cbd71 100755
                          cmd = [ python_executable, server_script_path, db_param ]
                          
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 9ec3402..0ea9266 100755
+index 3969396..bd6651a 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
-@@ -2,30 +2,9 @@ import os
+@@ -2,33 +2,9 @@ import os
  import sys
  
  # dirs
@@ -36,6 +36,9 @@ index 9ec3402..0ea9266 100755
 -    
 -else:
 -    
+-    # maybe this is better?
+-    # os.path.dirname( __file__ )
+-    
 -    RUNNING_FROM_FROZEN_BUILD = False
 -    
 -    BASE_DIR = sys.path[0]
@@ -48,7 +51,7 @@ index 9ec3402..0ea9266 100755
  
  PLATFORM_WINDOWS = False
  PLATFORM_MACOS  = False
-@@ -38,23 +17,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
+@@ -41,23 +17,16 @@ elif sys.platform == 'linux': PLATFORM_LINUX = True
  RUNNING_FROM_SOURCE = sys.argv[0].endswith( '.py' ) or sys.argv[0].endswith( '.pyw' )
  RUNNING_FROM_MACOS_APP = os.path.exists( os.path.join( BASE_DIR, 'running_from_app' ) )
  
