@@ -2,7 +2,7 @@
 
 pkgbase=python-fastjsonschema
 pkgname=('python-fastjsonschema' 'python2-fastjsonschema')
-pkgver=2.14.1
+pkgver=2.14.2
 pkgrel=1
 pkgdesc="Fastest Python implementation of JSON schema"
 arch=('any')
@@ -37,4 +37,4 @@ package_python2-fastjsonschema() {
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
 
-md5sums=('ee4cb3758fc3b0778f5783695b5b4e2a')
+md5sums=('d2ce371b5dce9ca0ea0db77f559e1c98')
