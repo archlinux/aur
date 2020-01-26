@@ -1,8 +1,8 @@
 pkgbase = osmium-tool
 	pkgdesc = Command line tool for working with OpenStreetMap data based on the Osmium library
 	pkgver = 1.11.1
-	pkgrel = 1
-	url = http://osmcode.org/osmium-tool/
+	pkgrel = 2
+	url = https://osmcode.org/osmium-tool/
 	arch = i686
 	arch = x86_64
 	license = GPL3
