@@ -1,7 +1,7 @@
 pkgbase = java-jserialcomm
 	pkgdesc = Platform-independent serial port access for Java.
 	pkgver = 2.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fazecast.github.io/jSerialComm/
 	arch = any
 	license = Apache
