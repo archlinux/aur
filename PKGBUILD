@@ -4,12 +4,6 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# CPU sched_yield_type - Choose what sort of yield sched_yield will perform
-# 0: No yield
-# 1: Yield only to better priority/deadline tasks
-# 2: Expire timeslice and recalculate deadline
-_sched_yield_type=
-
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -65,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.12.arch1
+pkgver=5.4.14.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -108,7 +102,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'fba44e56cd550775f56fe4840b95d4b7340ac20f4df767f02c6591e39f4d32e3d562b692066e8dee87f9312284c0d1463c0c55583d5e194cd2efe4af79164bd8'
+            '80b3456f7a6c95aeae25a41095ce984d964ce57d88058f08a40baac8415d9d31bb8159318d270a44d25dade05732a75cfd19a5ce9636ffa389ce130506b7219a'
             'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377'
             'af8e0a8f1e9ad587c01a945d50d03ed3fc593036ca20c641353a6496317716120bd5015aea25a9f1aad936b95f69a39e3d60db5b66499790d1dc9358ce81da28')
 
@@ -119,25 +113,25 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
     cd $_reponame
 
-    msg2 "Setting version..."
+    echo "Setting version..."
     scripts/setlocalversion --save-scmversion
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # https://github.com/graysky2/kernel_gcc_patch
-    msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
+    echo "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.4 by TkG"
+    echo "Patching with Undead PDS 0.99o patches, rebased to 5.4 by TkG"
     for MyPatch in 0005-v5.4_undead-pds099o.patch \
                    0005-glitched-pds.patch
     do
-        msg2 "Patching with $MyPatch..."
+        echo "Patching with $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
     done
 
-    msg2 "Setting config..."
+    echo "Setting config..."
     cp ../config .config
 
     if [ -n "$_subarch" ]; then
@@ -150,37 +144,21 @@ prepare() {
     # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then
         if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Running Steven Rostedt's make localmodconfig now"
+            echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
-            msg2 "No modprobed.db data found"
+            echo "No modprobed.db data found"
             exit
         fi
     fi
 
-    if [ -z "$_sched_yield_type" ]; then
-        plain ""
-        plain "CPU sched_yield_type - Choose what sort of yield sched_yield will perform."
-        plain ""
-        plain "For PDS:"
-        plain "0: No yield."
-        plain "1: Yield only to better priority/deadline tasks."
-        plain "2: Expire timeslice and recalculate deadline."
-        read -rp "`echo $'\n> 0 (Recommended option for gaming on PDS - "tkg" default)\n  1 (Default, but can lead to stability issues on some platforms)\n  2 (Usually the slowest option for PDS, not recommended unless you have issues with 0 or 1)\n  [0-2?]: '`" _sched_yield_type;
-    fi
-    if [ "$_sched_yield_type" == "1" ]; then
-        msg2 "Using default CPU sched yield type (1)"
-    elif [ "$_sched_yield_type" == "2" ]; then
-        sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 2;/' ./kernel/sched/pds.c
-    else
-        sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
-    fi
+    sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
 
     # do not run 'make olddefconfig' as it sets default options
     yes "" | make config >/dev/null
 
     make -s kernelrelease > version
-    msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+    echo "Prepared %s version %s" "$pkgbase" "$(<version)"
 
     [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -211,7 +189,7 @@ _package() {
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-    msg2 "Installing boot image..."
+    echo "Installing boot image..."
     # systemd expects to find the kernel here to allow hibernation
     # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -219,13 +197,13 @@ _package() {
     # Used by mkinitcpio to name the kernel
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-    msg2 "Installing modules..."
+    echo "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -240,7 +218,7 @@ _package-headers() {
     cd $_reponame
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    msg2 "Installing build files..."
+    echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
         localversion.* version vmlinux
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -253,7 +231,7 @@ _package-headers() {
     # add xfs and shmem for aufs building
     mkdir -p "$builddir"/{fs/xfs,mm}
 
-    msg2 "Installing headers..."
+    echo "Installing headers..."
     cp -t "$builddir" -a include
     cp -t "$builddir/arch/x86" -a arch/x86/include
     install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -269,10 +247,10 @@ _package-headers() {
     install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
     install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-    msg2 "Installing KConfig files..."
+    echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-    msg2 "Removing unneeded architectures..."
+    echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
         [[ $arch = */x86/ ]] && continue
@@ -280,16 +258,16 @@ _package-headers() {
         rm -r "$arch"
     done
 
-    msg2 "Removing documentation..."
+    echo "Removing documentation..."
     rm -r "$builddir/Documentation"
 
-    msg2 "Removing broken symlinks..."
+    echo "Removing broken symlinks..."
     find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-    msg2 "Removing loose objects..."
+    echo "Removing loose objects..."
     find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-    msg2 "Stripping build tools..."
+    echo "Stripping build tools..."
     local file
     while read -rd '' file; do
         case "$(file -bi "$file")" in
@@ -304,11 +282,11 @@ _package-headers() {
         esac
     done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-    msg2 "Adding symlink..."
+    echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
@@ -318,7 +296,7 @@ _package-docs() {
     cd $_srcname
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-    msg2 "Installing documentation..."
+    echo "Installing documentation..."
     local src dst
     while read -rd '' src; do
         dst="${src#Documentation/}"
@@ -326,11 +304,11 @@ _package-docs() {
         install -Dm644 "$src" "$dst"
     done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
-    msg2 "Adding symlink..."
+    echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/share/doc"
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-    msg2 "Fixing permissions..."
+    echo "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
