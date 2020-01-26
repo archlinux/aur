@@ -9,6 +9,7 @@ pkgbase = desq-session-git
 	makedepends = git
 	depends = libdesq-git
 	depends = kwin
+	depends = desq-shell-git
 	provides = desq-session
 	conflicts = desq-session
 	source = git+https://gitlab.com/Desq/Session.git
