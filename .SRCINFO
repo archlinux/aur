@@ -1,0 +1,18 @@
+pkgbase = recastnavigation
+	pkgdesc = Navigation-msh Toolset for Games
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/recastnavigation/recastnavigation
+	arch = x86_64
+	license = Zlib
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = sdl2
+	makedepends = glut
+	depends = sdl2
+	depends = glut
+	source = https://github.com/recastnavigation/recastnavigation/archive/1.5.1.tar.gz
+	sha256sums = fdd0d9ac656993cb34d02d3c6c41e3a3311c1da79b84bbedca71c5d629f915fc
+
+pkgname = recastnavigation
+
