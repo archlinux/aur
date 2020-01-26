@@ -1,7 +1,7 @@
 pkgbase = gst
 	pkgdesc = System utility designed to stress and monitoring various hardware components
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://gitlab.com/leinardi/gst
 	arch = any
 	license = GPL3
@@ -21,8 +21,8 @@ pkgbase = gst
 	depends = python-yaml
 	depends = python-xdg
 	depends = stress-ng
-	source = https://gitlab.com/leinardi/gst/-/archive/0.6.0/gst-0.6.0.tar.gz
-	sha256sums = 4491c591e52e2397efb8df28d0157f6ba1d2aa8bf52c2e4f03ff496f47d19a0c
+	source = https://gitlab.com/leinardi/gst/-/archive/0.6.1/gst-0.6.1.tar.gz
+	sha256sums = 85eaf145df0ecca578247596d9c654adb33b3217f890a161d53cdb8457c76ef7
 
 pkgname = gst
 
