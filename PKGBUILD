@@ -5,11 +5,11 @@
 
 pkgname=scrobby-git
 _pkgname=scrobby
-pkgver=20130328
-pkgrel=2
+pkgver=20131023
+pkgrel=1
 pkgdesc="C++ last.fm Client for MPD"
 arch=('i686' 'x86_64')
-url="http://unkart.ovh.org/scrobby/"
+url="https://github.com/wor/scrobby"
 license=('GPL2')
 depends=('curl' 'openssl')
 install=scrobby.install
@@ -18,6 +18,11 @@ options=(!strip)
 # Using a fork for the source, since the original does not compile
 source=("$_pkgname::git+https://github.com/wor/scrobby.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git log -n1 --format=%cs | tr -d -
+}
 
 build() {
   cd "$srcdir/$_pkgname"
