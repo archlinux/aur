@@ -1,0 +1,5 @@
+## arg 1:  the new package version
+post_install() {
+  printf "\nAdd your user to the 'uucp' group, to allow serial port access.\n"
+  printf "For example: 'sudo usermod -Ga uucp $USER'\n\n"
+}

@@ -14,11 +14,13 @@ source=("https://github.com/blheli-configurator/blheli-configurator/releases/dow
 
 sha256sums=('6a9b019113afd8901310e7e94fb3e3af637e89d2b6109a4a4501512c9cecded3'
             '0f806054053cf4dbb6204edd6457f868a53e8871047f5b0cc59e7e814994b182'
-            'SKIP'
+            '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2'
             '2bc56da58c65a897149e70720e76bff080ffa99d847b283f516ae9f3130ccbd1')
 
+install="${pkgname}.install"
 options=(!strip)
 license=('GPL3')
+provides=('blheli-configurator')
 conflicts=('blheli-configurator')
 
 package() {
