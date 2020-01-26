@@ -6,7 +6,7 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=68.4.1
+pkgver=68.4.2
 a_pkgver=( ${pkgver//./ } )
 #_pkgver=6634ee332979f7a78b11cbf09a77364143a981ed
 pkgrel=1
@@ -19,7 +19,7 @@ depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm wget mercurial)
+             python nodejs python2-psutil cbindgen nasm wget mercurial git)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -43,6 +43,30 @@ sha256sums=('SKIP'
 prepare() {
   cd gnuzilla
 
+  # Version patch
+  patch --ignore-whitespace << 'EOF'
+--- makeicecat	2020-01-24 18:41:46.475971093 +0100
++++ makeicecat_new	2020-01-24 18:42:20.121972160 +0100
+@@ -23,7 +23,7 @@
+ 
+ FFMAJOR=68
+ FFMINOR=4
+-FFSUB=1
++FFSUB=2
+ GNUVERSION=1
+ FFVERSION=$FFMAJOR.$FFMINOR.$FFSUB
+ ICECATVERSION=$FFVERSION-gnu$GNUVERSION
+@@ -44,7 +44,7 @@
+ wget -N https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${FFVERSION}esr/source/firefox-${FFVERSION}esr.source.tar.xz.asc
+ gpg --recv-keys --keyserver keyserver.ubuntu.com 14F26682D0916CDD81E37B6D61B7B526D98F0353
+ gpg --verify firefox-${FFVERSION}esr.source.tar.xz.asc
+-echo -n a00a7712d0f919162ce8181a9a3fc3e9ef37adf1caff0945a863b4c0c1d9f360 firefox-${FFVERSION}esr.source.tar.xz |sha256sum -c -
++echo -n 5d523259d9a01ca147c088494b6a7bd402ba75b1679a963558b0a0151e7d2ef4 firefox-${FFVERSION}esr.source.tar.xz |sha256sum -c -
+ 
+ echo Extracting Firefox tarball
+ tar -xf firefox-${FFVERSION}esr.source.tar.xz
+EOF
+
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
 
@@ -59,9 +83,9 @@ prepare() {
   sed -e 's/^tar cfj icecat-/#tar cfj icecat-/g' -i makeicecat
 
   # rename patches
-  cat << EOF > ../rename.patch
---- a/makeicecat	2020-01-10 09:32:39.000000000 +0100
-+++ b/makeicecat	2020-01-10 09:38:50.216370585 +0100
+  patch --ignore-whitespace << 'EOF'
+--- makeicecat	2020-01-10 09:32:39.000000000 +0100
++++ makeicecat_new	2020-01-10 09:38:50.216370585 +0100
 @@ -274,8 +274,10 @@
  ###############################################################################
  
@@ -85,7 +109,6 @@ prepare() {
  # do not alter useragent/platform/oscpu/etc with fingerprinting countermeasure, it makes things worse
  sed '/ShouldResistFingerprinting/,/}/s/^/\/\//' -i ./netwerk/protocol/http/nsHttpHandler.cpp
 EOF
-  patch -Np1 -i ../rename.patch
 
   # If we want to avoid all locales, we can use variable _SPEED=y to avoid them
   if [[ $_SPEED =~ [y|Y] ]]; then

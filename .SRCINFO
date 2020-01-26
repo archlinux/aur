@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
-	pkgver = 68.4.1
+	pkgver = 68.4.2
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = icecat
 	makedepends = nasm
 	makedepends = wget
 	makedepends = mercurial
+	makedepends = git
 	depends = gtk3
 	depends = mozilla-common
 	depends = libxt
