@@ -24,7 +24,6 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         telegram-desktop.sh
 
         "always_delete_for_everyone.patch"
-        "always_clear_history_for_everyone.patch"
         "always_pin_without_notify.patch"
         "always_send_as_photo_or_album.patch"
         "clicky_sticker_panel.patch"
@@ -32,8 +31,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "no_circles.patch")
 sha512sums=('5562eb99812a8faec74fe073323d6e04e36311c1e4ce984035212ecfed8bd5d12df92cd0f0022401201136315fb5556971b267b4bf47edf4eeddc9926c7969dc'
             '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b'
-            '83af5f5d18bc26d2de5318b97f31956f34ceb0c14efa8cf36c310a543c8c7d3a448c4c448f2fac1e552b40816273bb5139666ff2fa20e2762148ee69ac20d4cb'
-            'd32c2e0544b858842317b704e58016e028555a3baad6b22226e826c11dac8a412c808ffe8a7ea0f3f23c00c591e1a6e652c2ba63d8369491e188560f8296d0cb'
+            'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
             '8b4560deaa06ee20eeaa0d6b855f7a8e922804698f9b274875ece8842231bcf688a31f588cb5c726152b3e7b8784c0b5f61eed0eb48e5392dfdfd72117ee8bb1'
             '4f5b61073b4bd28d2cf92cb6bddb91a50518c4ce801d178366b3760ee2cf1692164546e439049c9ba821e23bff2e3080a42bfabf6fa46d613fd56905b405f340'
