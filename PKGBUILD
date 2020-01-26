@@ -4,7 +4,7 @@
 pkgname=sway
 pkgver=1.4
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -27,10 +27,10 @@ optdepends=(
 )
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
-        "10-systemd.conf")
+        "50-systemd-user.conf")
 sha512sums=('3b280bdfdbdae8fb9b4f555bc630c64e7c1d09f7b2c783b99413863a6b620d50cd2b6d10d63e11fdfb9c678fce9a403228ac52fa69fb52561ffbd06790505a71'
             'SKIP'
-            '122b97f7adb6444c442368c5bbbd3401bcd8420f522fcd6521def5a09cd2989f5f6f555a5a7762e922eaa307077eb26db6508242ee1b835ca73ad65acaeef95b')
+            'a44c7d2dd5af142c69bb8f43bea9db04da2a3cc5b34d8f10d6f00572dbb3aec6523cd2108a28b391a4422cc5d9c7371c4dc3e600fece225580a10f377e40817a')
 validpgpkeys=('9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 
 prepare() {
@@ -49,7 +49,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 10-systemd.conf "$pkgdir/etc/sway/conf.d/10-systemd.conf"
+  install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 }
 
 # vim: ts=2 sw=2 et
