@@ -1,7 +1,7 @@
 # Maintainer: BeeJay
 pkgname=sidequest-bin
 _pkgname=sidequest
-pkgver=0.5.0
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Easily sideload apps onto your standalone android VR headset"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=()
 install=
 source=("https://github.com/the-expanse/SideQuest/releases/download/v${pkgver}/SideQuest-${pkgver}.tar.xz")
 noextract=()
-md5sums=('5ff658d7caad9d2584e12de53ed25e34')
+md5sums=('4f448350f8a382efbb94e9072a3dfe46')
 
 package() {
 	cd "$srcdir/SideQuest-${pkgver}"
@@ -25,7 +25,7 @@ package() {
 	cp -r -t "$pkgdir/opt/$_pkgname" .
 
 	install -dm755 "$pkgdir/usr/bin"
-	ln -s /opt/$_pkgname/SideQuest "$pkgdir/usr/bin/sidequest"
+	ln -s /opt/$_pkgname/sidequest "$pkgdir/usr/bin/sidequest"
 
     install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE*
 }
