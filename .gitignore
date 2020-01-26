@@ -1,5 +1,5 @@
-*.gz
+*.zst
 *.log
 *.xz
 pkg
-pueue
+pueue-git

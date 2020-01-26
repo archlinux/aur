@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue-git
-pkgver='r148.b4f9611'
+pkgver='v0.1.0.r3.gb913bd5'
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -11,19 +11,24 @@ conflicts=('pueue')
 makedepends=('git')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
-source=("git+https://github.com/nukesor/pueue.git")
+source=("$pkgname"::"git://github.com/nukesor/pueue.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
 
 build() {
-    cd pueue
+    cd $pkgname
+    git pull
 
     # Build the daemon and client
     cargo build --release
 }
 
 package() {
-    cd pueue
+    cd $pkgname
 
     # Install binaries
     install -Dm755 "target/release/pueue" "${pkgdir}/usr/bin/pueue"
