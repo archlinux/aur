@@ -1,6 +1,6 @@
 --- src/module_list.py
 +++ src/module_list.py
-@@ -514,12 +514,6 @@ ext_modules = [
+@@ -517,12 +517,6 @@ ext_modules = [
      Extension('sage.libs.ecl',
                sources = ["sage/libs/ecl.pyx"]),
  

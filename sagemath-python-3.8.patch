@@ -15,7 +15,7 @@ diff --git a/src/sage/all.py b/src/sage/all.py
 index 42dca175d2..b4f544b664 100644
 --- a/src/sage/all.py
 +++ b/src/sage/all.py
-@@ -324,6 +324,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
+@@ -99,6 +99,11 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
  # However, be sure to keep OUR deprecation warnings
  warnings.filterwarnings('default', category=DeprecationWarning,
      message=r'[\s\S]*See https\?://trac\.sagemath\.org/[0-9]* for details.')
@@ -24,9 +24,9 @@ index 42dca175d2..b4f544b664 100644
 +    message='.*PY_SSIZE_T_CLEAN.*')
 +warnings.filterwarnings('ignore', category=DeprecationWarning,
 +    message='.*an integer is required.*')
+ ################ end setup warnings ###############################
  
- # Set a new random number seed as the very last thing
- # (so that printing initial_seed() and using that seed
+ 
 diff --git a/src/sage/categories/coxeter_groups.py b/src/sage/categories/coxeter_groups.py
 index e7410c2255..c6221162e8 100644
 --- a/src/sage/categories/coxeter_groups.py
