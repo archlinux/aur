@@ -6,12 +6,12 @@ pkgver=10
 pkgrel=1
 pkgdesc="A kernel module for Realtek Card Reader RTL8402/8411/8411B Device"
 arch=('any')
-url="https://github.com/Ri0n/rts_bpp"
+url="https://github.com/M0Rf30/rts_bpp"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
 options=(!strip)
-source=(git+https://github.com/Ri0n/rts_bpp.git
+source=(git+https://github.com/M0Rf30/rts_bpp.git
 	'dkms.conf'
 "81-udisks-udisks2-${_pkgname}.rules")
 
