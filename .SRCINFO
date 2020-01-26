@@ -1,7 +1,7 @@
 pkgbase = jdk11-openjdk-dcevm
 	pkgdesc = OpenJDK Java 11 development kit with DCEVM patches (Trava build)
 	pkgver = 11.0.5.u5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TravaOpenJDK/trava-jdk-11-dcevm
 	install = install_jdk11-openjdk-dcevm.sh
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = jdk11-openjdk-dcevm
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = c21866baceaf1275db53a771c64780e585803d60b93ecb4bcaa215c28d2fc824
+	sha256sums = f732a96d7e34068d52016f6d666d2f52ab66564c01175c8a3e6c27d50dd3bd31
 	sha256sums = 428325db0d1483e73bf075fa6ef06c7a50dcbf452651751e93c4c0cb018c127a
 	sha256sums = a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c
 	sha256sums = bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148

@@ -8,7 +8,7 @@ _securityver=5
 _updatever=5
 _tag_ver="${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
-pkgrel=2
+pkgrel=3
 
 pkgname='jdk11-openjdk-dcevm'
 pkgdesc='OpenJDK Java 11 development kit with DCEVM patches (Trava build)'
@@ -67,7 +67,7 @@ source=(
 )
 
 sha256sums=(
-  'c21866baceaf1275db53a771c64780e585803d60b93ecb4bcaa215c28d2fc824'
+  'f732a96d7e34068d52016f6d666d2f52ab66564c01175c8a3e6c27d50dd3bd31'
   '428325db0d1483e73bf075fa6ef06c7a50dcbf452651751e93c4c0cb018c127a'
   'a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c'
   'bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148'
