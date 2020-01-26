@@ -1,32 +1,29 @@
+# Maintainer: Volk_Milit (aka Ja'Virr-Dar) <javirrdar@gmail.com>
 # Maintainer: Gennadiy Chernyshyk <genaloner@gmail.com>
 # PKGBUILD source: https://github.com/TES3MP/openmw-tes3mp
 # Special thanks to Grim Kriegor who provide tarball and make special script for easy build TES3MP: https://github.com/GrimKriegor/TES3MP-deploy/tree/development   
 
 pkgname=openmw-tes3mp
-pkgver=0.6.2
-pkgrel=5
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="TES3MP is a project aiming to add multiplayer functionality to OpenMW, a free and open source recreation of the popular Bethesda Softworks game \"The Elder Scrolls III: Morrowind\"."
 arch=('x86_64')
-url="https://github.com/TES3MP/openmw-tes3mp"
+url="http://tes3mp.com"
 license=('GPL3' 'custom')
-depends=('openal' 'openscenegraph' 'mygui>=3.2.1' 'bullet' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'ncurses5-compat-libs')
-optdepends=('openmw: make engine configuration files')
+depends=('qt5-base' 'libxt')
+optdepends=('openmw: create initial engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=('https://github.com/TES3MP/openmw-tes3mp/releases/download/tes3mp-0.6.2/tes3mp-GNU.Linux-x86_64-release-0.6.2-hotfixed.tar.gz'
+source=("$pkgname.tar.gz"::'https://github.com/TES3MP/openmw-tes3mp/releases/download/0.7.0-alpha/tes3mp-GNU+Linux-x86_64-release-$pkgver-alpha-abc4090a0f-01d297f5c6.tar.gz'
         'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png'
-        'tes3mp.desktop'
-        'tes3mp-server.desktop'
         'tes3mp-browser.desktop')
-sha256sums=('958080e63602ef2e0f86956ba3333b7304defd8d8e70a4166df620ece3cb1f0a'
+sha256sums=('bfb942414e6b187f9da9365cd7b9ae959b9ff1e511e2c3a5682662dea3725ba8'
           '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
-          'c7e47f887457d72aee46f29d0f947e7c42a40676c5e80427b502af8d24b299a4'
-          '2bd9e9dddda956c7cbdc8bdf2448d42500aa88ffb7fb01d2cbffc58c22fdf57d'
           'ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408')
 
 prepare() {
-  cd ${srcdir}/TES3MP
+  cd "$srcdir/TES3MP"
 
   # Remove all .git files
   find . -name "*git*" -exec rm -rf {} +
@@ -36,7 +33,7 @@ prepare() {
 
   # Remove junk files
   rm CoreScripts/README.md
-  rm CoreScripts/LICENSE
+  rm CoreScripts/Turtorial.md
   rm tes3mp-package-info.txt
 
   # Remove OpenMW junk files
@@ -48,28 +45,37 @@ prepare() {
 package() {
   
   # Install .desktop files
-  install -Dm644 tes3mp.desktop $pkgdir/usr/share/applications/tes3mp.desktop
-  install -Dm644 tes3mp-server.desktop $pkgdir/usr/share/applications/tes3mp-server.desktop
-  install -Dm644 tes3mp-browser.desktop $pkgdir/usr/share/applications/tes3mp-browser.desktop
-
-
+  install -Dm644 tes3mp.desktop "$pkgdir/usr/share/applications/tes3mp.desktop"
+  install -Dm644 tes3mp-server.desktop "$pkgdir/usr/share/applications/tes3mp-server.desktop"
+  install -Dm644 tes3mp-browser.desktop "$pkgdir/usr/share/applications/tes3mp-browser.desktop"
+  
   # Icon for .desktop files
-  install -Dm644 tes3mp_logo.png $pkgdir/usr/share/pixmaps/tes3mp.png
+  install -Dm644 tes3mp_logo.png "$pkgdir/usr/share/pixmaps/tes3mp.png"
   
   # Copy files into /usr/local/etc/openmw to make TES3MP works with home settings
-  cd ${srcdir}/TES3MP
-  install -d $pkgdir/usr/local/etc/openmw
-  mv tes3mp-server-default.cfg $pkgdir/usr/local/etc/openmw/
-  mv tes3mp-client-default.cfg $pkgdir/usr/local/etc/openmw/
+  cd "$srcdir/TES3MP"
+  install -d "$pkgdir/usr/local/etc/openmw"
+  install -Dm644 tes3mp-server-default.cfg "$pkgdir/usr/local/etc/openmw/"
+  install -Dm644 tes3mp-client-default.cfg "$pkgdir/usr/local/etc/openmw/"
+  
+  # Copy licenses
+  install -d "$pkgdir/usr/share/licenses"
+  install -Dm 644 "CoreScripts/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm 644 tes3mp-credits.md "$pkgdir/usr/share/licenses/$pkgname/tes3mp-credits.md"
 
   # Change copying in launcher script for /usr/local/etc/openmw/ directory
   sed -i '18c\\t\tcp -f /usr/local/etc/openmw/tes3mp-server-default.cfg "$TES3MP_HOME"/tes3mp-server.cfg' tes3mp-prelaunch
   sed -i '43c\\t\tcp -f /usr/local/etc/openmw/tes3mp-client-default.cfg "$TES3MP_HOME"/tes3mp-client.cfg' tes3mp-prelaunch
 
   # Main
-  cd ${srcdir}
-  install -d $pkgdir/opt
-  mv TES3MP $pkgdir/opt/$pkgname
+  cd "${srcdir}"
+  install -d "$pkgdir/opt"
+  mv TES3MP "$pkgdir/opt/$pkgname"
+  
+  install -d "$pkgdir/usr/bin"
+  ln -s "$pkgdir/opt/$pkgname/tes3mp" "${pkgdir}/usr/bin"
+  ln -s "$pkgdir/opt/$pkgname/tes3mp-server" "$pkgdir/usr/bin"
+  ln -s "$pkgdir/opt/$pkgname/tes3mp-browser" "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
