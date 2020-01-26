@@ -11,7 +11,8 @@ depends=('kvantum-qt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'qogir-kde-theme-git')
-source=('git+https://github.com/vinceliuice/Qogir-kde.git')
+_commit=00ba46ac80c7710a0663d7c442adb9c6faccf237
+source=("git+https://github.com/vinceliuice/Qogir-kde.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {

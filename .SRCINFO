@@ -10,7 +10,7 @@ pkgbase = kvantum-theme-qogir-git
 	provides = kvantum-theme-qogir
 	conflicts = kvantum-theme-qogir
 	conflicts = qogir-kde-theme-git
-	source = git+https://github.com/vinceliuice/Qogir-kde.git
+	source = git+https://github.com/vinceliuice/Qogir-kde.git#commit=00ba46ac80c7710a0663d7c442adb9c6faccf237
 	sha256sums = SKIP
 
 pkgname = kvantum-theme-qogir-git
