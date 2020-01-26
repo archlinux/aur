@@ -1,6 +1,6 @@
 pkgbase = manager-accounting
 	pkgdesc = Manager is free accounting software for small business
-	pkgver = 19.6.27
+	pkgver = 19.12.14
 	pkgrel = 1
 	url = http://www.manager.io/
 	install = manager-accounting.install
@@ -12,8 +12,10 @@ pkgbase = manager-accounting
 	depends = gtk-sharp-3
 	options = !makeflags
 	source = LICENSE
-	source = https://d2ap5zrlkavzl7.cloudfront.net/19.6.27/Manager.deb
+	source = manager-accounting.png
+	source = https://github.com/Manager-io/Manager.zip/releases/download/19.12.14/Manager.zip
 	sha256sums = bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061
+	sha256sums = 1045ea9400e92c484cf751ac906d1589f8e2758b430b0861df09c161fe5cd044
 	sha256sums = SKIP
 
 pkgname = manager-accounting
