@@ -1,4 +1,4 @@
-# Maintainer: Georgi <georgi.patsev@gmail.com>
+# Maintainer: Georgi <baigeorgi@1mhz.eu>
 pkgname=otf-plovdivtypeface
 pkgver=1.00
 pkgrel=1
@@ -7,8 +7,8 @@ arch=('any')
 url="https://plovdivtypeface.com"
 license=('custom')
 provides=('otf-plovdivtypeface')
-source=('https://plovdivtypeface.com/download/PlovdivTypeface-Fonts.zip')
-sha256sums=('4ed7dd560ffafca7df7070ef09ef7944fce6c8d951766c616ce34577b1a54eb5')
+source=('https://github.com/BaiGeorgi/otf-plovdivtypeface/releases/download/v1.0/PlovdivTypeface-Fonts.zip')
+sha256sums=('bfa66552887d2fb3602833a3b24bda84ff7fcae501766d098a5391b22872bec8')
 
 package() {
   install -D -m644 ${srcdir}/PlovdivTypeface-Fonts/License*.pdf "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.pdf"
