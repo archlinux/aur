@@ -5,13 +5,13 @@ pkgbase="python-pytorch"
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'magma')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda' 'cudnn' 'git' 'magma' 'ninja')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         fix_include_system.patch
         https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/30332.patch
