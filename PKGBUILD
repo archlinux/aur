@@ -11,7 +11,7 @@
 
 pkgname=telegram-desktop-udf-patched
 pkgver=1.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -43,7 +43,7 @@ sha512sums=(
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
     'b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30'
-    '650a2a2568cacd2775979614c06c90a4c505207246eb229bbf4fccd8e9fc2540093eaa5bd748e3801c1e1b43beb89b19674c27c5f400d451475b0ee068b04ca2'
+    '1fb1e4d9dcf0d54f98b2cf47a3a0cc6e6eed649617efab0e5631d9760b42eb85c7c421ba659656405f0f1d1087a80090baebb9f5f1154f4d0da9493dfa4a13c3'
 )
 
 prepare() {

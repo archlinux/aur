@@ -2,10 +2,10 @@ Description: Disables loading the previous way media was sent, so it always sele
 photo or album by default.
 
 diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
-index 2f4c45c48..ed9bf4bb6 100644
+index cb9075432..41384abd0 100644
 --- a/Telegram/SourceFiles/boxes/send_files_box.cpp
 +++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
-@@ -1498,14 +1498,6 @@ void SendFilesBox::initSendWay() {
+@@ -1911,15 +1911,7 @@ void SendFilesBox::initSendWay() {
  				? SendFilesWay::Album
  				: SendFilesWay::Photos;
  		}
@@ -17,6 +17,8 @@ index 2f4c45c48..ed9bf4bb6 100644
 -				? SendFilesWay::Album
 -				: SendFilesWay::Photos;
 -		}
- 		return (_list.albumIsPossible && !_albumPhotosCount)
+-		return (_list.albumIsPossible && !_albumPhotosCount)
++		return _list.albumIsPossible
  			? SendFilesWay::Album
  			: SendFilesWay::Photos;
+ 	}();
