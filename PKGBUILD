@@ -4,7 +4,7 @@
 pkgname=nccl
 pkgver=2.5.7
 _upstr_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -29,6 +29,18 @@ prepare() {
 
 build() {
   cd "$pkgname"
+
+  export NVCC_GENCODE="-gencode=arch=compute_35,code=sm_35 \
+                       -gencode=arch=compute_50,code=sm_50 \
+                       -gencode=arch=compute_52,code=sm_52 \
+                       -gencode=arch=compute_60,code=sm_60 \
+                       -gencode=arch=compute_61,code=sm_61 \
+                       -gencode=arch=compute_70,code=sm_70 \
+                       -gencode=arch=compute_75,code=sm_75 \
+                       -gencode=arch=compute_61,code=compute_61 \
+                       -gencode=arch=compute_70,code=compute_70 \
+                       -gencode=arch=compute_75,code=compute_75"
+  export VERBOSE=1
 
   make CUDA_HOME='/opt/cuda' src.build
 }
