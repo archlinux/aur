@@ -1,7 +1,7 @@
 pkgbase = gst
 	pkgdesc = System utility designed to stress and monitoring various hardware components
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/leinardi/gst
 	arch = any
 	license = GPL3
