@@ -28,7 +28,7 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
 
-    mkdir build
+    mkdir -p build
     cd build/
 
     qmake-qt5 ../Moolticute.pro                     \
