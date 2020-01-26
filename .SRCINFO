@@ -1,8 +1,8 @@
 pkgbase = libosmium
 	pkgdesc = Fast and flexible C++ library for working with OpenStreetMap data.
 	pkgver = 2.15.4
-	pkgrel = 1
-	url = http://osmcode.org/libosmium/
+	pkgrel = 2
+	url = https://osmcode.org/libosmium/
 	arch = any
 	license = custom
 	makedepends = cmake

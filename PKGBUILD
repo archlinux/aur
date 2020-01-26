@@ -1,9 +1,9 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=libosmium
 pkgver=2.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
-url="http://osmcode.org/libosmium/"
+url="https://osmcode.org/libosmium/"
 arch=('any')
 license=('custom')
 makedepends=('cmake')
@@ -22,8 +22,6 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake \
     -DINSTALL_GDALCPP=ON \
-    -DINSTALL_PROTOZERO=ON \
-    -DINSTALL_UTFCPP=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	  ..
