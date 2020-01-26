@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rpclib
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="rpclib is a modern C++ msgpack-RPC server and client library"
 url="http://rpclib.net"
 arch=(x86_64)
@@ -16,6 +16,7 @@ build() {
   cd "$srcdir/${pkgname}-${pkgver}/build"
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+        -DBUILD_SHARED_LIBS=ON \
         ..
   make
 }
