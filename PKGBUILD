@@ -7,17 +7,16 @@
 pkgname=guitarix-git
 pkgver=0.39.0.r5.g2addb8b8
 pkgrel=1
-pkgdesc="A simple mono guitar amplifier and FX for JACK using Faust"
+pkgdesc="virtual guitar amplifier for Jack/Linux"
 arch=('x86_64')
 url="https://guitarix.org"
 license=('GPL3')
 groups=('ladspa-plugins' 'lv2-plugins' 'pro-audio')
-depends=('avahi' 'bluez-libs' 'cairo' 'cairomm' 'gcc-libs' 'gdk-pixbuf2'
-'glib2' 'glibc' 'glibmm' 'gtk2' 'gtkmm' 'libboost_iostreams.so' 'libcurl.so'
-'libjack.so' 'liblilv-0.so' 'liblrdf.so' 'libsndfile.so' 'libzita-convolver.so'
-'libzita-resampler.so' 'pango' 'pangomm' 'ttf-roboto')
+depends=('jack' 'gtkmm' 'liblrdf' 'lilv' 'bluez-libs' 'boost-libs' 
+'zita-convolver' 'zita-resampler' 'ttf-roboto' 'libsndfile')
 makedepends=('git' 'boost' 'eigen' 'gperf' 'intltool' 'ladspa' 'lv2' 'waf')
-provides=('libgxw.so' 'libgxwmm.so')
+provides=('guitarix' 'libgxw.so' 'libgxwmm.so')
+conflicts=('guitarix')
 replaces=('guitarix2')
 source=("${pkgname%-*}::git+https://git.code.sf.net/p/guitarix/git")
 md5sums=('SKIP')
@@ -29,10 +28,11 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}/trunk"
-  # when building with faust 2.20.2 it fails: https://sourceforge.net/p/guitarix/bugs/86/
   waf configure --prefix=/usr \
+  				--optimization \
+				--includeresampler \
+				--includeconvolver \
                 --enable-nls \
-                --ladspa \
                 --new-ladspa \
                 --no-faust \
                 --shared-lib \
