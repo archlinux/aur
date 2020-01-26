@@ -5,7 +5,7 @@ pkgver=0.1.1
 pkgrel=1
 pkgdesc="Pytest plugin for filtering based on sub-packages"
 arch=('i686' 'x86_64')
-url="https://github.com/astropy/pytest-astropy-header"
+url="https://github.com/astropy/pytest-filter-subpackage"
 license=('BSD')
 depends=('python-pytest>=3.0')
 makedepends=('python-setuptools')
