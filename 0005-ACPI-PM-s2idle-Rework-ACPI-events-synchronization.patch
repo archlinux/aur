@@ -1,4 +1,4 @@
-From ab195ccffbd0721892d70102ab836fd106361fe7 Mon Sep 17 00:00:00 2001
+From 766611dcde15685197f756d86f4ada389a98375e Mon Sep 17 00:00:00 2001
 From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
 Date: Thu, 28 Nov 2019 23:50:40 +0100
 Subject: [PATCH 05/15] ACPI: PM: s2idle: Rework ACPI events synchronization

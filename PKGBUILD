@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.4.14
+pkgver=5.4.15
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -95,25 +95,25 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('531e18b0eef516fa4b3843f89729fafbf3c6bc00325b082cc1f2cfcb28c8d7f0'
+sha256sums=('6407222f850f685b346011bd696a3216d5df0f37e0184099100d2724396d94b1'
             'SKIP'
-            '8470e238fcecbb03fdbadb35e6bfea5d09413f3f5ba38fa50ea600fd8f01abd1'
+            'eb95e2f45dc868b097136d75077b8861b85fea109de78bff253fbf98162e5cb6'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            '6bc06821c6dc94a8af1018df31780dfbad354dce46792f65ee45bf6261968ec7'
-            '4cdf7a686248aceeed6ca0296636dc0d4efaede2b77df98a6c3d559116156a00'
-            'c21b89ac3d24445dafcd8a3f2dfb6574eae0f50f3849f8abf1126862e2f82dcd'
-            '2c7733955ede78f64b21d14b2f3ad0c8e0e98cc5eccb3228e532203d9c60056b'
-            'aa19094814bf528f760c7bc5f207fe51d1163c9255add0fad09f15d8747b4e8e'
-            '8ec48bcab7e133fb3fcd49bac9e6aa8075beb2720ae07832a0c4962df9309b7c'
-            '4d497f775c8785771cf28ed7a807d53617dfb914567def8b65a970c7472a8dc4'
-            '022be9ea56431b07a169765def3f5b33330d710be527fde652a0164e1108d96f'
-            '77f0cbc3fb6fd7e357c9c052b9d483e00a542eba3cf7f5baba2576f96ba71416'
-            'c7602e3ef7986da9b8a6197db281ee41381fae65ed2d1a814160638acd6978e9'
-            '9fc6cfeab4da541b06993cc5a42d1d7de78238bcaf477d523cc51ae5337bd050'
-            'ba20b1928026473497a69e2a1c1c7c5fdd63c5f63818036998d9ee96258c34c1'
-            'a81cff6b669e36778a420b2c441a0ae79f257096d1059cc293bea931b91f6ff1'
-            'fa7b003f7c5acabae8cff051630a93e3d4556c275067516bb05922bfd9ee8b28')
+            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
+            'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
+            '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
+            '9940f9ebf8af70f2c1684276d86a46d3b0c07fd61ff23f66235b4a1e879b2180'
+            'f48c9a8a286901ce12eefe11fbd830fdede08afac8911ab887f7d89c687421f0'
+            '194b893c18118be08c5d42762f5f1926953fc7a5903f06f1d39f893542d377a9'
+            '2234444ae52bf3810e13bdb4c0ab6d808eb9fe6cb003c2b78be04a987ef12388'
+            '5a1584d26c7d046fa0398b56980f628b4194dff95d0916e9527dbea7299e7765'
+            'de34a0a82ce40de4394ad9d02421a53ac04c5e0b36a79b5f937fdebc93ac7bfb'
+            '1a3073cbbc5d4e3a7970fc92706a5ec5729ea4a5cffb94af8343e046881cabf1'
+            '49f10cb5cb70afe1aee8b6657d636dac9a0867feea4cc43ef4eda5d5a733c2bd'
+            'ea2308e7706749b09d2d5cd69c20a082a5e7eec97b1405d584ead6f776636e8d'
+            'bb376024ac7a13108064af60150af8746b57ebb72df2f464fddc037a14c9faff'
+            '7e6b2c7f919dc28d1144fe8d5cc08f9455ba65a32577944cf86d9c278fff6d20')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

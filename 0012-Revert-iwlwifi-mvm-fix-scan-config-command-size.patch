@@ -1,4 +1,4 @@
-From a5962f62a4174023fa53d6c74e64fa83032dca56 Mon Sep 17 00:00:00 2001
+From 035f023824c651cf18369bd971503bcb1ddddfd4 Mon Sep 17 00:00:00 2001
 From: Mehmet Akif Tasova <makiftasova@gmail.com>
 Date: Mon, 30 Dec 2019 15:48:16 +0200
 Subject: [PATCH 12/15] Revert "iwlwifi: mvm: fix scan config command size"
