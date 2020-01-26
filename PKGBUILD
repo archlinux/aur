@@ -4,7 +4,7 @@
 # Contributor: BlackLotus89 <maxmusterm@gmail.com>
 
 pkgname=toybox
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='All-in-one Linux command line'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ url='https://landley.net/toybox'
 license=('BSD')
 depends=('attr')
 source=("https://github.com/landley/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('72330da129a7b81b1e015948d69b0729649e623b820570dd1972ededdd1befc4')
+sha256sums=('9d8a9b00a6c93da5b472d8a4c7d9549339ed050d1578c557a20add100172b0f5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
