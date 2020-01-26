@@ -1,8 +1,7 @@
-# Original packager: Francois Boulogne <fboulogne at april dot org>
 # Maintainer: Andrea Girotto echo "naqern.tvebggb@tznvy.pbz" | tr '[a-z]' '[n-za-m]'
 pkgname=java-jserialcomm
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Platform-independent serial port access for Java.'
 arch=(any)
 url='https://fazecast.github.io/jSerialComm/'
