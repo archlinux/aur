@@ -1,8 +1,8 @@
 pkgbase = frece-git
 	pkgdesc = Frecency sorted database
-	pkgver = 1.0.0.r1.g4d037d3
+	pkgver = 1.0.3.r5.g19ad727
 	pkgrel = 1
-	url = https://github.com/SicariusNoctis/frece
+	url = https://github.com/YodaEmbedding/frece
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -10,7 +10,7 @@ pkgbase = frece-git
 	depends = gcc-libs
 	provides = frece
 	conflicts = frece
-	source = frece-git::git+https://github.com/SicariusNoctis/frece
+	source = frece-git::git+https://github.com/YodaEmbedding/frece
 	sha256sums = SKIP
 
 pkgname = frece-git
