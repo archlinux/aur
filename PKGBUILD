@@ -7,8 +7,8 @@ _gembuilder=("install"
 _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
 pkgname="ruby-rubyzip"
-pkgver="2.0.0"
-pkgrel=2
+pkgver="2.1.0"
+pkgrel=1
 pkgdesc="rubyzip is a ruby module for reading and writing zip files"
 arch=("any")
 url="http://github.com/rubyzip/rubyzip"
@@ -23,7 +23,7 @@ optdepends=("ruby-rake: Rake is a Make-like program implemented in Ruby (Develop
             "ruby-pry: An IRB alternative and runtime developer console (Development dependency)"
             "ruby-minitest: minitest provides a complete suite of testing facilities supporting TDD, BDD, mo... (Development dependency)")
 source=("https://rubygems.org/gems/$_gemname-$pkgver.gem")
-sha256sums=('ff11f68bc936504ee73ad39bf8880b656ec70593de18b7cc3ab90b7541cce0bf')
+sha256sums=('8e96d45ad7c2b441520eec05ebaecbf745c1e802750b0ff4ff92e068707e31ac')
 noextract=("$_gemname-$pkgver.gem")
 options=("!emptydirs")
 
