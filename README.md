@@ -11,3 +11,6 @@ Look for a timer with name `pacman-auto-update.timer`
 systemctl list-timers
 ```
 
+## License
+
+Source code original found here: https://www.techrapid.uk/2017/04/automatically-update-arch-linux-with-systemd.html
