@@ -1,0 +1,11 @@
+post_install() {
+    ln -sf '/opt/Snapmaker Luban/snapmaker-luban' '/usr/bin/snapmaker-luban'
+    ln -sf '/usr/bin/snapmaker-luban' '/usr/bin/luban'
+
+    update-mime-database /usr/share/mime || true
+    update-desktop-database /usr/share/applications || true
+}
+
+post_remove() {
+    rm -f '/usr/bin/snapmaker-luban' '/usr/bin/luban'
+}
