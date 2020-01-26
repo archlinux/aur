@@ -8,7 +8,7 @@
 # Contributor: Martin Poljak <martin 'at' poljak 'dot' cz>
 
 pkgname=xnviewmp
-pkgver=0.94.3
+pkgver=0.95
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
@@ -21,7 +21,7 @@ optdepends=('glib2: support for moving files to trash')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
         'xnviewmp.desktop')
-md5sums=('9380ae82adbe422dd181b8b9bb63a884'
+md5sums=('78d546aefb66a9b6b11b1d966b9e9ba3'
          '24f44d5a881b94daf48775213a57e4ec')
 
 package() {
@@ -39,6 +39,12 @@ package() {
   rm "${pkgdir}/opt/${pkgname}/XnView.desktop"
   chmod 644 "${pkgdir}/opt/${pkgname}"/xnview*.png
   chmod 755 "${pkgdir}/opt/${pkgname}/XnView"
+
+  # Some old version of libfreetype started getting shipped in 0.95.
+  # libfreetype depends on libfontconfig, but since libfontconfig is not
+  # provided in the archive and the system one is not compatible, we need to
+  # remove it so that the XnView uses the system libfreetype.
+  rm "${pkgdir}/opt/${pkgname}/lib/libfreetype.so"*
 }
 
 # vim:set ts=2 sw=2 et:
