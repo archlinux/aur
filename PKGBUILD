@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=assemblyscript
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="TypeScript to WebAssembly compiler"
 arch=('any')
