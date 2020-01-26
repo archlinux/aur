@@ -1,6 +1,6 @@
 pkgbase = geo
 	pkgdesc = Various tools for geocaching
-	pkgver = 191218065938
+	pkgver = 200121065113
 	pkgrel = 1
 	url = http://geo.rkkda.com/
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = geo
 	optdepends = gpsdrive: for GPS management
 	optdepends = foxtrotgps: for GPS management
 	optdepends = viking: for GPS management
-	source = http://geo.rkkda.com/geo-19-12-18-06-59-38.tar.gz
+	source = http://geo.rkkda.com/geo-20-01-21-06-51-13.tar.gz
 	source = geo-install-patch.diff
-	sha256sums = 20871acfa12eead9090350b74a835f27e52af303381255c5eedb299592a6da40
+	sha256sums = 646427334e8383d460186b5b8e108a779107019892801754e6a21d2805c9df06
 	sha256sums = e50e8d05c3f845c4e6667eb3b76f7c757353d9a1df720bda8b687a1a430e1bc4
 
 pkgname = geo
