@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf@xs4all.nl>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: yurikoles <root@yurikoles.com>
 # Contributor: bearoso <bearoso@gmail.com>
 # Contributor: Luchesar V. ILIEV <luchesar%2eiliev%40gmail%2ecom>
@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=10.0.0_r338931.183b5d38d7c
+pkgver=11.0.0_r340515.4a5f9d9faf7
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
