@@ -1,8 +1,8 @@
-# -*- mode: shell-script -*-
-# Maintainer: Dylon Edwards <deltaecho at archlinux dot us>
+# Contributor: Dylon Edwards <deltaecho at archlinux dot us>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='tetgen'
-pkgver='1.5.0'
+pkgver='1.5.1'
 pkgrel=1
 pkgdesc='A Quality Tetrahedral Mesh Generator and a 3D Delaunay Triangulator'
 arch=('x86_64')
@@ -13,7 +13,7 @@ changelog="${pkgname}.changelog"
 #   http://wias-berlin.de/software/tetgen/download2.jsp
 # Place the downloaded archive in $SRCDEST of your /etc/makepkg.conf
 source=("local://${pkgname}${pkgver}.tar.gz")
-md5sums=('3b9fd9cdec121e52527b0308f7aad5c1')
+md5sums=('2ab470d2b3c47b9edae6febe45d7a0e1')
 
 prepare() {
     mkdir -p build
