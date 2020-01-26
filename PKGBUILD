@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('custom:Modified BSD')
 depends=('fftw' 'jack' 'tk' 'libquicktime' 'libdv' 'gsl' 'imagemagick'
          'ftgl' 'lua51' 'libdc1394' 'libiec61883' 'desktop-file-utils' 
-         'libevent')
+         'libtirpc')
 makedepends=('dssi' 'libv4l' 'tcllib' 'swig' 'automake' 'ladspa')
 conflicts=('pdp' 'pd-zexy' 'pd' 'pd-vanilla' 'puredata-utils')
 provides=('pd' 'pd-gem' 'pdp' 'zexy')
