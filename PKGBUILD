@@ -4,7 +4,7 @@
 # Maintainer: uffe Jakobsen <_uffe_-at-_uffe_-_dot_-_org>
 #
 
-_pkgver="1_8f"
+_pkgver="1_8g"
 
 pkgname=vasm
 pkgver=1.8f
@@ -16,7 +16,7 @@ license=('custom')
 depends=()
 #source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz) # latest unversioned source url
 source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
-md5sums=('0de568efff19670838dbe9f1da24c28d')
+md5sums=('4b580bfe2d26d274a6a05c3a1d8e8474')
 
 
 CPU_LIST="6502 6800 arm c16x jagrisc m68k ppc test tr3200 vidcore x86 z80"
