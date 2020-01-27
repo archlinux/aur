@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 url="https://github.com/michaelrsweet/lprint"
 license=('apache')
 depends=('avahi' 'cups' 'libpng' 'libusb')
-makedepends=('perl')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('845464660B686AAB36540B6F999559A027815955')  # M. Sweet
 md5sums=('c05298c2b8f95d91ba99c22a5983e138'

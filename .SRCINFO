@@ -6,7 +6,6 @@ pkgbase = lprint
 	arch = i686
 	arch = x86_64
 	license = apache
-	makedepends = perl
 	depends = avahi
 	depends = cups
 	depends = libpng
