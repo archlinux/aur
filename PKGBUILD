@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zen
-pkgver=5.4.15.zen1
+pkgver=5.5.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -25,7 +25,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'd46b34cc83e1f933772bdf018b39c1102eeb0aa67d1e9bc8baabe27b227107c4')
+            '96ac7948c54ff2535c5c7b4622a1804fe17065a7252d3ee21e39034a99c3255b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
