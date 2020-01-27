@@ -2,7 +2,7 @@
 
 pkgname=openra-dr-git
 _pkgname=${pkgname/-git}
-pkgver=364.git.6eca454
+pkgver=365.git.c7fb9fe
 pkgrel=1
 pkgdesc="A Dark Reign-inspired mod of OpenRA"
 arch=('any')
