@@ -1,7 +1,7 @@
 pkgbase = f23-backgrounds
 	pkgdesc = Fedora 23 backgrounds.
 	pkgver = 23.1.0
-	pkgrel = 6
+	pkgrel = 8
 	url = https://fedoraproject.org/wiki/F23_Artwork
 	arch = i686
 	arch = x86_64
