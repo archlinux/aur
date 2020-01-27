@@ -1,7 +1,7 @@
 # Maintainer: Kazuki Przyborowski <kazukiprzyborowski[at]gmail[dot]com>
 pkgname=python-pyhockeystats
-pkgver=0.0.8
-pkgdate=20190217
+pkgver=0.1.0
+pkgdate=20200127
 pkgrel=1
 pkgdesc="Just a test script dealing with hockey games and stats."
 arch=('any')
@@ -10,14 +10,14 @@ license=('BSD')
 replaces=('python-hockeystats' 'python-pyhockeystats')
 depends=('python')
 options=(!strip !emptydirs)
-_gitrevision='cf3415f4098432c9d1cb66d1cf7e209664e0141b'
+_gitrevision='57e2f4f5e3edc525abe6cfda75b7b701a629fea2'
 source=("https://github.com/GameMaker2k/Neo-Hockey-Test/archive/${pkgdate}.tar.gz")
-md5sums=('b85edcab63f0fa765d7f6f51bb6422e5')
-sha224sums=('58d8882d7af9f4307566614834602d7a435e5d5524e1a1e859d9b060')
-sha256sums=('f91d360fde66fbef8d36f5a6ba7b38ab451f32bb1e72d0953a77945cba7cd44c')
-sha384sums=('d8d3977f24361efe5b1489b21f1b41a8d02c41e11565149e2f4f332c5ff23ac84e0749c260586dd780c023c151bc00d5')
-sha512sums=('7515c4f5f7b5f5cf71504269d8ee05a532d2ebeec211f61125e944674bb0df53c0a222a4853a9cdd7f5a31e61791bd5df68ab364686be7c6ae9f20c960be0dd0')
-b2sums=('f952877ea5619836ab11de571deeb367c212e7432d046ec172dc84dce48d143132cf6b1c2163eb7fb6bf43fcb550550ca973da12c07faa5fc47713131a3c1a4d')
+md5sums=('d5629b73d09bca11bdcd48188bebba11')
+sha224sums=('802c12af6df3016d4dcb5b8809308304ad53cdb779f6c5a9816d9c22')
+sha256sums=('63369fdb05cce3bbb1f36a04221e542bbcba50d4f105730fcab3b23694cb8d95')
+sha384sums=('5422c658d8d67bfa54f9336f43cbd9533e69d0a3584c4008b98c3b724e52d0b96e1aade12d750118a37c06fdb116e6b3')
+sha512sums=('f9047aca8fa68a8d1d508ad3243c5c7f4ec03203be5a397a6d253a2bf48a4d6a237082ba05c58ecc82e0ca58f3a6bcb56938c49f62229bcbcffe41072f52894f')
+b2sums=('45e340196eac0e4a0efffac1374577b1b66ee26e6760a5957ab1825146f74250a034016e772e0ae6a238a5404b75707eabd9ade0acc653eaa7a6483fd89325b6')
 
 package() {
   cd "${srcdir}/Neo-Hockey-Test-${_gitrevision}"
