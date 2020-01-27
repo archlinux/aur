@@ -1,0 +1,13 @@
+pkgbase = go.rice
+	pkgdesc = Go package that makes working with resources such as html,js,css,images,templates, etc very easy.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://statping.com/
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	source = go.rice-1.0.0.tar.gz::https://github.com/GeertJohan/go.rice/archive/v1.0.0.tar.gz
+	sha256sums = 540cb64258fc2422664c73454b5dbaac5487a45906c935d25285a2a60085d877
+
+pkgname = go.rice
+
