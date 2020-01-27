@@ -15,13 +15,14 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir/hmat-oss-${pkgver}"
+  sed -i "s|git_version(HMAT 1.5.0)|git_version(HMAT 1.6.0)|g" CMakeLists.txt
 }
 
 build() {
   cd "$srcdir/hmat-oss-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DINSTALL_INCLUDE_DIR=/usr/${_arch}/include/hmat \
+    ${_arch}-cmake -DINSTALL_INCLUDE_DIR=/usr/${_arch}/include/hmat -DHMAT_GIT_VERSION=OFF \
       ..
     make
     popd
