@@ -1,5 +1,5 @@
 pkgbase = liberica-jdk-11-lite-bin
-	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
+	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Lite version has compressed modules.
 	pkgver = 11.0.6+10
 	pkgrel = 1
 	url = https://bell-sw.com/
