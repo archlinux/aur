@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.1
+pkgver=0.10.1.r10.g2444431
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -12,6 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _lua_deps=('cassowary'
            'cliargs'
+           'expat'
            'filesystem'
            'linenoise'
            'lpeg'
@@ -25,9 +26,9 @@ _lua_deps=('cassowary'
            'zlib')
 depends=('fontconfig'
          'harfbuzz'
-         "${_lua_deps[@]/#/lua-}"
-         'lua'
          'icu'
+         'lua'
+         "${_lua_deps[@]/#/lua-}"
          'ttf-gentium-plus')
 makedepends=('git'
              'poppler')
