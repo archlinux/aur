@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-remoteobjects
-_qtver=5.14.0
+_qtver=5.14.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=(qt qt5)
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('306765539d97c9c5b9e262393b1950d14f487260f2e333019010689de04bd235')
+sha256sums=('189c8bddaebde0420742af0d85b7e7bf00c558f030bc0a7b704ce86072706e75')
 
 prepare() {
   mkdir -p build
