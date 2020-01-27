@@ -1,0 +1,22 @@
+diff --git a/Rakefile b/Rakefile
+index 968a3e8..52b3bca 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -1,7 +1,6 @@
+ # frozen_string_literal: true
+ 
+ require 'rake/testtask'
+-require 'rubocop/rake_task'
+ require 'yard'
+ 
+ YARD::Rake::YardocTask.new(:doc) do |yard|
+@@ -18,9 +17,3 @@ Rake::TestTask.new(:test_unit) do |t|
+   t.test_files = Dir['test/**/*_spec.rb'] + Dir['test/**/test_*.rb']
+   t.libs << 'test'
+ end
+-
+-RuboCop::RakeTask.new(:test_style)
+-
+-task test: %i[test_unit test_style]
+-
+-task default: :test
