@@ -2,7 +2,7 @@
 
 pkgname=mazespheres-bin
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A horror-themed minimalistic maze game'
 
 url='https://varden.info/product.php?sid=27'
@@ -16,7 +16,7 @@ source=("https://varden.info/~m/aur/Mazespheres-Linux-v1.1.tar.xz"
 	"LICENSE"
 	"mazespheres.sh")
 sha256sums=("180dbe7369e6116d000698e2d3e77b8a3913bface1f21db6f59cdf689998a3d2"
-	"189413f20b241f9cbcaafb1a8fb5e338e24b9b7c124deaef81da0d2d7a96a431"
+	"6e6947f62834633c57db9a745a21d290a54bbfc17609e7d2233d892b4c0263b1"
 	"3b698333e28f1cff1703e2109abc425228163c06339ed18794e8422931751c48")
 
 package() {
