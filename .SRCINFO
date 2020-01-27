@@ -1,13 +1,13 @@
 pkgbase = f24-backgrounds
 	pkgdesc = Fedora 24 backgrounds.
 	pkgver = 24.1.2
-	pkgrel = 8
+	pkgrel = 7
 	url = https://fedoraproject.org/wiki/F24_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
 	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f24-backgrounds-24.1.2-7.fc31.src.rpm
-	sha256sums = 55725eb84d48c642658846de779307a5e36dca691b952dbce37d3b4eb9e9ef5c
+	sha256sums = SKIP
 
 pkgname = f24-backgrounds
 
