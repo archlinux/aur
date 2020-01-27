@@ -6,18 +6,18 @@ pkgver=0.0.0.r811.g5be9d6b
 _branch='master'
 pkgrel=1
 arch=(any)
-url='https://github.com/alerque/casile/'
+url='https://github.com/sile-typesetter/casile/'
 license=('LGPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git://github.com/alerque/${pkgname%-git}.git#branch=$_branch")
+source=("git://github.com/sile-typesetter/${pkgname%-git}.git#branch=$_branch")
 sha512sums=('SKIP')
 makedepends=('git')
 depends=('bc'
          'cpdf'
          'entr'
          'epubcheck'
-         'imagemagick>=7.0'
+         'imagemagick'
          'inkscape'
          'jq'
          'kindlegen'
@@ -39,17 +39,17 @@ depends=('bc'
          'python-isbnlib'
          'python-pandocfilters'
          'python-pantable'
-         'python-usfm2osis-cw-git'
          'python-ruamel-yaml'
+         'python-usfm2osis-cw-git'
          'rsync'
-         'sile-git>=0.9.5.r1'
+         'sile'
          'sqlite'
          'tex-gyre-fonts'
          'texlive-core'
          'ttf-hack'
          'xcftools'
          'yarn'
-         'yq>=2.7.2'
+         'yq'
          'zint'
          'zsh')
 
