@@ -3,7 +3,7 @@
 _pkgname=xfce4-dockbarx-plugin
 pkgname=$_pkgname-gtk3-git
 epoch=2
-pkgver=r54+92bce50
+pkgver=r55+e3aec3d
 pkgrel=1
 pkgdesc="Embed DockbarX in the xfce4-panel"
 arch=('i686' 'x86_64')
@@ -22,10 +22,13 @@ pkgver() {
   printf "r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${_pkgname}"
   PREFIX=/usr python ./waf configure
-  python2 ./waf build
+}
+build() {
+  cd "${srcdir}/${_pkgname}"
+  python ./waf build
 }
 
 package() {
