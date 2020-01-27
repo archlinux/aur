@@ -1,7 +1,7 @@
 # Maintainer: Germán Franco <dev.germanfr@gmail.com>
 
 pkgname=elementary-blue-icon-theme-git
-pkgver=r2260.5ec8e85d
+pkgver=r2262.6aa716cc
 pkgrel=1
 pkgdesc='Classic blue folders of the elementary icon theme.'
 arch=('any')
