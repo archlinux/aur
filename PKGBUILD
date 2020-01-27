@@ -2,14 +2,19 @@
 
 pkgname=f27-backgrounds
 pkgver=27.0.1
-pkgrel=4
-_rhver="6.fc31"
+_string=$(curl -sL "https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f" | grep "${pkgname}" | cut -d '"' -f 6)
+_rhver=$(echo ${_string} | sed "s/${pkgname}-//g" | sed 's/.src.rpm//g')
+pkgrel=$(echo ${_rhver} | cut -d '-' -f 2| sed 's/.fc[0-9]*//g')
 pkgdesc="Fedora 27 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F27_Artwork"
 license=("CC-BY-SA")
 source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/${pkgname}-${pkgver}-${_rhver}.src.rpm")
-sha256sums=('ea075d818d03d4027d80d7667c400108cd2cf5928d4763a79fbefb267b0eac63')
+sha256sums=('SKIP')
+
+pkgver() {
+  echo $_string | cut -d '-' -f 3
+}
 
 prepare()  {
     tar -xf ./${pkgname}-${pkgver}.tar.xz
