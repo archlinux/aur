@@ -1,7 +1,7 @@
 pkgbase = okular-no-purpose
 	pkgdesc = Okular, a document viewer, without the dependency on purpose. This disables the share menu
 	pkgver = 19.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/applications/graphics/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -29,7 +29,6 @@ pkgbase = okular-no-purpose
 	depends = phonon-qt5
 	optdepends = ebook-tools: mobi and epub support
 	optdepends = kdegraphics-mobipocket: mobi support
-	optdepends = kirigami2: mobile UI
 	optdepends = libzip: CHM support
 	optdepends = khtml: CHM support
 	optdepends = chmlib: CHM support

@@ -3,7 +3,7 @@
 _pkgname=okular
 pkgname=okular-no-purpose
 pkgver=19.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Okular, a document viewer, without the dependency on purpose. This disables the share menu'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -12,7 +12,7 @@ groups=(kde-applications kdegraphics)
 depends=(djvulibre libspectre libkexiv2 poppler-qt5 qca-qt5 kpty kactivities threadweaver kjs kparts discount phonon-qt5)
 makedepends=(extra-cmake-modules ebook-tools kdegraphics-mobipocket kdoctools khtml chmlib)
 optdepends=('ebook-tools: mobi and epub support'
-            'kdegraphics-mobipocket: mobi support' 'kirigami2: mobile UI' 'libzip: CHM support'
+            'kdegraphics-mobipocket: mobi support' 'libzip: CHM support'
             'khtml: CHM support' 'chmlib: CHM support' 'calligra: ODT and ODP support'
             'unrar: Comic Book Archive support' 'unarchiver: Comic Book Archive support (alternative)')
 conflicts=(kdegraphics-okular)
@@ -36,6 +36,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DKDEExperimentalPurpose_FOUND=OFF \
     -DBUILD_TESTING=OFF
+    -DBUILD_OKULARKIRIGAMI=OFF
   make
 }
 
