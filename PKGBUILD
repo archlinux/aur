@@ -65,7 +65,7 @@ package() {
 	
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 pics/icon.png "$pkgdir/usr/share/pixmaps/lemon-lime.png"
-	install -D -m644 $srcdir/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -D -m644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
