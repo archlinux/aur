@@ -6,8 +6,9 @@ pkgbase = f28-backgrounds
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f28-backgrounds-28.1.5-3.fc31.src.rpm
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f28-backgrounds-28.1.5-28.1.5-3.fc31.src.rpm
 	md5sums = fdfefed91f981143e5708e2bde7638eb
+	sha256sums = SKIP
 
 pkgname = f28-backgrounds
 
