@@ -1,6 +1,6 @@
 pkgbase = elementary-blue-icon-theme-git
 	pkgdesc = Classic blue folders of the elementary icon theme.
-	pkgver = r2260.5ec8e85d
+	pkgver = r2262.6aa716cc
 	pkgrel = 1
 	url = https://github.com/germanfr/elementary-blue-icons
 	arch = any
