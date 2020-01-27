@@ -2,7 +2,7 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=5.7.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
@@ -11,6 +11,7 @@ depends=(
 	python python-requests python-wrapt python-ratelimiter
 	python-configargparse python-yaml python-appdirs
 	python-docutils python-datrie python-jsonschema
+	python-toposort jupyter-nbformat
 )
 makedepends=(python-setuptools python-gitpython)
 optdepends=(
@@ -26,10 +27,11 @@ optdepends=(
 	'python-ftputil: For FTP support'
 	'xrootd: For XRootD support'
 	'python-psutil: For benchmarking'
+	'slacker: For messaging'
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('874808ed3265d96d9df10c04dfb3fa28c0aa80484483d8973bbc5971e28b5dfb')
+sha256sums=('a3fa8b12db84938c919996d61be66031bcb99c4b4d017278731324a6112b0d59')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
