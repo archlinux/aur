@@ -2,14 +2,14 @@
 # Maintainer: LinkTed <link.ted@mailbox.org>
 
 pkgname=doh-client
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="doh-client is a DNS over HTTPS client"
 arch=("x86_64")
 url="https://github.com/LinkTed/doh-client"
 license=("BSD 3-Clause")
 depends=("ca-certificates-utils")
-makedepends=("cargo" "rust" "git")
+makedepends=("cargo" "rust" "git" "binutils")
 source=("git+https://github.com/LinkTed/$pkgname.git#tag=v$pkgver")
 md5sums=("SKIP")
 
@@ -17,6 +17,7 @@ build() {
   cd $pkgname
 
   cargo build --release
+  strip "target/release/doh-client"
 }
 
 package() {
