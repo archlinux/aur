@@ -1,0 +1,15 @@
+pkgbase = ttf-symbola-free
+	pkgdesc = font with grayscale emoji, older free version
+	pkgver = 9.00
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/symbola
+	arch = any
+	license = CC0-1.0
+	license = Public Domain
+	provides = ttf-symbola
+	conflicts = ttf-symbola
+	source = ttf-symbola-free-9.00.ttf::https://fontlibrary.org/assets/fonts/symbola/cf81aeb303c13ce765877d31571dc5c7/3f379d2c4d719c3c76736f0990fcaee8/SymbolaRegular.ttf
+	sha512sums = 4d9d8a59f40f17d96c76e12fdd684b7e9bee39890a1caf6e9389ce3fba3ccf93adb0ef2ecbecc6bca1671218240d371075b82eed098aaeecea2edf50afa45725
+
+pkgname = ttf-symbola-free
+
