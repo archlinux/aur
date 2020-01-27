@@ -1,12 +1,16 @@
 --- squashfs-root/freecad_conda.desktop
 +++ squashfs-root/freecad_conda.desktop
-@@ -1,7 +1,7 @@
+@@ -1,10 +1,10 @@
  [Desktop Entry]
  Version=1.0
  Name=FreeCAD Conda
 -Exec=AppRun
-+Exec=/usr/bin/freecad %F
 -Icon=freecad_conda
++Exec=/usr/bin/freecad %F
 +Icon=freecad
  Type=Application
- Categories=Engineering;Construction;
+-Categories=Engineering;
++Categories=Engineering;Construction;Development;
+ Comment=Feature based Parametric Modeler
+ Terminal=false
+ StartupNotify=true
