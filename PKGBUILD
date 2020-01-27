@@ -1,7 +1,7 @@
 #Maintainer: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=brogue-ce
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('sdl2_image')
 makedepends=('git')
 source=("https://github.com/tmewett/BrogueCE/releases/download/v${pkgver}/BrogueCE-${pkgver}-linux-x86_64.tar.gz"
         'brogue.sh')
-md5sums=('a52818abdcad35b3f33587395da4befa'
+md5sums=('d01c1e0ed41fc63f963343a17f80d0c1'
          '76eb49cd487ebbbf0b96e76661e66839')
 
 build() {
