@@ -2,15 +2,20 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f29-backgrounds
 pkgver=29.1.3
-pkgrel=3
-_rhver="${pkgver}-3.fc31"
+_string=$(curl -sL "https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f" | grep "${pkgname}" | cut -d '"' -f 6)
+_rhver=$(echo ${_string} | sed "s/${pkgname}-//g" | sed 's/.src.rpm//g')
+pkgrel=$(echo ${_rhver} | cut -d '-' -f 2| sed 's/.fc[0-9]*//g')
 pkgdesc="Fedora 29 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F29_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('f3bcf1f972d0b5df9514d908b1b106637ef85c62b2d9b432d19c09c8332a38d4')
+sha256sums=('SKIP')
+
+pkgver() {
+  echo $_string | cut -d '-' -f 3
+}
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
