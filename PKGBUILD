@@ -3,9 +3,9 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.14.0
+_qtver=5.14.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -21,10 +21,8 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-         qtbug-81272.patch::"https://code.qt.io/cgit/qt/qtbase.git/patch/?id=e6f1fde2")
-sha256sums=('4ef921c0f208a1624439801da8b3f4344a3793b660ce1095f2b7f5c4246b9463'
-            'e93ca83adbf0becc0c78b7db8fed32eed123a62907fe0274e4d352aa169daad1')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('d9d423a6e7bcf1055c0372fc029f14a6fe67dd62c67b83095cde68b60b762cf7')
 
 prepare() {
   cd ${_pkgfqn}
@@ -35,8 +33,6 @@ prepare() {
     mkspecs/common/gcc-base.conf
   sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
     mkspecs/common/g++-unix.conf
-
-  patch -p1 -i ../qtbug-81272.patch # https://bugreports.qt.io/browse/QTBUG-81272
 }
 
 build() {
