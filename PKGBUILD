@@ -2,7 +2,7 @@
 
 _pkggit=octopi
 _gitcommit=fd5dcc07fa7271e14636074d6136819cf5a59c3b
-_gitsha256='024ccdbb9ee89b47c914a67f93b526f6a5bcae9d9724132c1ae812f4ade851e6'
+_gitsha256='fe0dbd875c423b11890bd19d88d273c72dcbe734ee0737ab7b25e4b380b0b42f'
 
 pkgbase=octopi-dev
 pkgname='octopi-dev'
