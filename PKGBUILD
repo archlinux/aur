@@ -1,6 +1,6 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
-pkgname=lemon-lime
+pkgname=lemon-lime-git
 pkgver=v.0.1.0120
 pkgrel=1
 epoch=
