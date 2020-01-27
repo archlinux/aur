@@ -3,7 +3,7 @@
 # Contributor: zfo <zfoofz1@gmail.com>
 pkgname=gcsfuse
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 url="https://github.com/GoogleCloudPlatform/gcsfuse"
 arch=('x86_64')
@@ -28,4 +28,5 @@ build() {
 
 package() {
   install -Dm755 gcsfuse "${pkgdir}/usr/bin/gcsfuse"
+  ln -s ${pkgdir}/usr/bin/gcsfuse ${pkgdir}/usr/bin/mount.gcsfuse
 }
