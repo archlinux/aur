@@ -1,14 +1,14 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=3.48
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
 url="http://www.catb.org/esr/$pkgname/"
 license=('BSD')
-depends=('pypy')
-makedepends=('asciidoc' 'go' 'git' 'xmlto')
+depends=('python')
+makedepends=('asciidoctor' 'go' 'git' 'xmlto')
 optdepends=('bitkeeper'
             'bzr'
             'cvs-fast-export'
@@ -19,7 +19,7 @@ optdepends=('bitkeeper'
             'src'
             'subversion')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('fec3a59593dc65bf1d7a933202f66debce75c3aef144c1c9e7ffef674b735d05fcdccfa22f2401d67fd578431cf95a46900387e6abc559002c270203a9ef7a3f')
+sha512sums=('eba69468099fae6e03f4dcc09297926b417fec8b74f7882fe632feefb67497142e420f23469cb483c8123b30965c76de2f4bdb9379fec7e3733e20b4fafe69cd')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -39,9 +39,9 @@ build() {
   cd "$pkgbase-$pkgver"
 
   if [ "$(go version | grep gccgo)" ]; then
-    make GOPATH="$srcdir/go" GOFLAGS="" all
+    make GOPATH="$srcdir/go" GOFLAGS=""
   else
-    make GOPATH="$srcdir/go" all
+    make GOPATH="$srcdir/go"
   fi
 }
 
