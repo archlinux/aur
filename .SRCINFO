@@ -1,7 +1,7 @@
 pkgbase = tanka
 	pkgdesc = Flexible, reusable and concise configuration for Kubernetes
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tanka.dev
 	arch = i686
 	arch = x86_64

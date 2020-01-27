@@ -2,7 +2,7 @@
 
 pkgname=tanka
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://tanka.dev"
@@ -25,5 +25,5 @@ package() {
   install -Dm755 "$srcdir/tanka/tk" -t "$pkgdir/usr/bin"
 
   echo "complete -C /usr/bin/tk tk" | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/tk"
-  echo "complete -o nospace -C /usr/bin/tk tk" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_tk"
+  echo "complete -o nospace -C /usr/bin/tk tk" | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_tk"
 }
