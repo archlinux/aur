@@ -2,13 +2,13 @@
 
 pkgname=flit
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple packaging tool for simple Python packages.'
 arch=('any')
 url="http://$pkgname.readthedocs.io"
 license=('BSD')
 depends=(python python-pytoml python-requests python-requests_download python-docutils)
-makedepends=(install-wheel-scripts)
+makedepends=(install-wheel-scripts unzip)
 _wheel_cli="$pkgname-$pkgver-py3-none-any.whl"
 _wheel_core="${pkgname}_core-$pkgver-py2.py3-none-any.whl"
 source=(

@@ -1,11 +1,12 @@
 pkgbase = flit
 	pkgdesc = Simple packaging tool for simple Python packages.
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://flit.readthedocs.io
 	arch = any
 	license = BSD
 	makedepends = install-wheel-scripts
+	makedepends = unzip
 	depends = python
 	depends = python-pytoml
 	depends = python-requests
