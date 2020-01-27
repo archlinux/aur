@@ -11,7 +11,7 @@ url="https://fedoraproject.org/wiki/F22_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('c1bc37eaf4bfbb8e559a681032b228c9f6220602f33d9e64d68f6e670011e094')
+sha256sums=('SKIP')
 
 pkgver() {
   echo $_string | cut -d '-' -f 3
