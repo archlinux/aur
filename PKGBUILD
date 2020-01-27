@@ -24,6 +24,12 @@ md5sums=('578d4609719cb8060b3b7f722ec8f7e4'
 prepare() {
   # Statically link internal ftgl library. It contains Tecgraf's extensions needed by libcdgl.so
   sed '/LIBS += ftgl/{ N; s/.*/SLIB += $(FTGL_LIB)\/libftgl.a/; }' -i "$srcdir"/cd/tecmake.mak
+
+  # patch to build with harfbuzz-ed pango (i.e. pango >= 1.44)
+  if [[ "$(vercmp $(pacman -Q pango | cut -d' ' -f2) 1:1.44)" -ge 0 ]]; then
+    sed 's/LIBS += gdk_pixbuf-2.0 pango-1.0 gobject-2.0 gmodule-2.0 glib-2.0/LIBS += gdk_pixbuf-2.0 pango-1.0 harfbuzz gobject-2.0 gmodule-2.0 glib-2.0/' -i "$srcdir"/cd/tecmake.mak
+    sed 's|STDINCS += $(GTK)/include/cairo $(GTK)/include/pango-1.0 $(GTK)/include/glib-2.0|STDINCS += $(GTK)/include/cairo $(GTK)/include/pango-1.0 $(GTK)/include/harfbuzz $(GTK)/include/glib-2.0|' -i "$srcdir"/cd/tecmake.mak
+  fi
 }
 
 build() {
