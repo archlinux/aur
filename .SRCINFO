@@ -1,6 +1,6 @@
 pkgbase = snmpscan
 	pkgdesc = CLI-Tool to monitor routers and switches by SNMP
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/mafri27/snmpscan
 	arch = any

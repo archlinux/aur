@@ -1,6 +1,6 @@
 # Maintainer: Martin Fritzsche <aur at mafri dot org>
 pkgname=snmpscan
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="CLI-Tool to monitor routers and switches by SNMP"
 arch=('any')
