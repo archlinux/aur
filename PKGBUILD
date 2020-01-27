@@ -68,8 +68,10 @@ package_libcd() {
   pkgdesc="Canvas Draw - 2D vector graphics library"
   depends=('libim' 'glu' 'libxmu' 'gtk3')
 
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
+
   install -m755 -d "$pkgdir"/usr/lib
-  install -m644 "$srcdir"/cd/lib/Linux*/lib*.so "$pkgdir"/usr/lib
+  install -m644 "$srcdir"/cd/lib/${_linux_ver}/lib*.so "$pkgdir"/usr/lib
   install -m755 -d "$pkgdir"/usr/share/$pkgname
   install -m644 "$srcdir"/cd-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
   install -m755 -d "$pkgdir"/usr/include/cd
@@ -82,9 +84,10 @@ _lua_cd_package_helper() {
 
   _lua_ver=$1
   _lua_ver_nodot=`echo $1 | cut -c1,3`
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
 
   install -d "$pkgdir"/usr/lib/lua/${_lua_ver}/
-  install -Dm644 "$srcdir"/cd/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}/
+  install -Dm644 "$srcdir"/cd/lib/${_linux_ver}/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}/
   install -Dm644 "$srcdir"/cd/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   # create symlinks required for Lua modules
