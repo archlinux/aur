@@ -1,0 +1,46 @@
+pkgbase = liberica-jre-11-full-bin
+	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
+	pkgver = 11.0.6+10
+	pkgrel = 1
+	url = https://bell-sw.com/
+	install = liberica-jre-11-full.install
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = custom
+	depends = java-environment-common=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	optdepends = ffmpeg
+	optdepends = freetype2
+	optdepends = gtk2
+	optdepends = gtk3
+	optdepends = libnet
+	provides = java-environment=11
+	provides = java-environment-openjdk=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	provides = liberica-jre-11=11.0.6
+	backup = etc/liberica-jre-11-full/logging.properties
+	backup = etc/liberica-jre-11-full/management/jmxremote.access
+	backup = etc/liberica-jre-11-full/management/jmxremote.password.template
+	backup = etc/liberica-jre-11-full/management/management.properties
+	backup = etc/liberica-jre-11-full/net.properties
+	backup = etc/liberica-jre-11-full/security/java.policy
+	backup = etc/liberica-jre-11-full/security/java.security
+	backup = etc/liberica-jre-11-full/security/policy/README.txt
+	backup = etc/liberica-jre-11-full/security/policy/limited/default_US_export.policy
+	backup = etc/liberica-jre-11-full/security/policy/limited/default_local.policy
+	backup = etc/liberica-jre-11-full/security/policy/limited/exempt_local.policy
+	backup = etc/liberica-jre-11-full/security/policy/unlimited/default_US_export.policy
+	backup = etc/liberica-jre-11-full/security/policy/unlimited/default_local.policy
+	backup = etc/liberica-jre-11-full/sound.properties
+	source_aarch64 = https://download.bell-sw.com/java/11.0.6+10/bellsoft-jre11.0.6+10-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_aarch64 = a4ff921e39dc72ad71b0a7fcfbce4d8fad772c2f
+	source_x86_64 = https://download.bell-sw.com/java/11.0.6+10/bellsoft-jre11.0.6+10-linux-amd64-full.tar.gz
+	sha1sums_x86_64 = 3f28dc72ebce672333bc3fea1a7e3f89c41a2ae2
+
+pkgname = liberica-jre-11-full-bin
+
