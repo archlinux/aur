@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webchannel
-_qtver=5.14.0
+_qtver=5.14.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=()
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('0cb8dd07b34da8d44f8a14701409ce87fce5010f9b57273b357717c2dfd35383')
+sha256sums=('3af5262fde14c7dfe7bcc12d5796a482837bd09f0878851fd8de5db0b1985e6a')
 
 prepare() {
   mkdir -p build
