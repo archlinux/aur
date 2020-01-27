@@ -4,3 +4,4 @@ src/
 *.pkg.tar*
 anyconnect-linux64-*-core-vpn-webdeploy-k9.sh
 anyconnect-linux64-*-predeploy-k9.tar.gz
+anyconnect-linux64-*-webdeploy-k9.pkg

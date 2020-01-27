@@ -3,6 +3,7 @@
 
 _source="installer"   # if installing from .sh installer
 # _source="tarball"     # if installing from .tar.gz package
+# _source="pkg"         # if installing from .pkg package
 
 pkgname=cisco-anyconnect
 pkgver=4.8.01090
@@ -23,25 +24,39 @@ options=('!strip')
 
 url='https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-client/index.html'
 
+_installer_filename="anyconnect-linux64-${pkgver}-core-vpn-webdeploy-k9.sh"
+
+unpack_installer() {
+    mkdir -p "anyconnect-linux64-${pkgver}"
+
+    # stolen from vpn_install.sh
+    local marker=$((`grep -an "[B]EGIN\ ARCHIVE" "${_installer_filename}" | cut -d ":" -f 1` + 1))
+    local marker_end=$((`grep -an "[E]ND\ ARCHIVE" "${_installer_filename}" | cut -d ":" -f 1` - 1))
+
+    head -n ${marker_end} "${_installer_filename}" | tail -n +${marker} | head --bytes=-1 | tar xz -C "anyconnect-linux64-${pkgver}"
+}
+
+
 if [[ "${_source}" == "tarball" ]]; then
     _filename="anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
     _filehash="e210f390cd44e86ba4131e0365c974f88f25ffb61d7843be329842e53a7b1bf1"
 elif [[ "${_source}" == "installer" ]]; then
-    _filename="anyconnect-linux64-${pkgver}-core-vpn-webdeploy-k9.sh"
+    _filename="${_installer_filename}"
     _filehash="e210f390cd44e86ba4131e0365c974f88f25ffb61d7843be329842e53a7b1bf1"
 
     prepare() {
-        cd "${srcdir}"
-        mkdir -p "anyconnect-linux64-${pkgver}"
+        unpack_installer
+    }
+elif [[ "${_source}" == "pkg" ]]; then
+    _filename="anyconnect-linux64-${pkgver}-webdeploy-k9.pkg"
+    _filehash="11971e3b4088afb51f8156e79751ecf657f4abb7b84c6db723a6d1c3e1ded177"
 
-        # stolen from vpn_install.sh
-        local marker=$((`grep -an "[B]EGIN\ ARCHIVE" "${_filename}" | cut -d ":" -f 1` + 1))
-        local marker_end=$((`grep -an "[E]ND\ ARCHIVE" "${_filename}" | cut -d ":" -f 1` - 1))
-
-        head -n ${marker_end} "${_filename}" | tail -n +${marker} | head --bytes=-1 | tar xz -C "anyconnect-linux64-${pkgver}"
+    prepare() {
+        unzip -j "${_filename}" "binaries/${_installer_filename}"
+        unpack_installer
     }
 else
-    echo "Please set the _source variable in PKGBUILD to either 'tarball' or 'installer'!"
+    echo "Please set the _source variable in PKGBUILD to either 'tarball', 'installer' or 'pkg'!"
     exit 1
 fi
 
