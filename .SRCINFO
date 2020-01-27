@@ -1,0 +1,13 @@
+pkgbase = firefox-floccus
+	pkgdesc = Sync your bookmarks across browsers via Nextcloud, WebDAV or a local file (and thus any file sync solution) https://floccus.org
+	pkgver = 3.5.3
+	pkgrel = 1
+	url = https://github.com/marcelklehr/floccus
+	arch = any
+	groups = firefox-addons
+	license = MPL-2.0
+	noextract = floccus-3.5.3-fx.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/3469973/floccus-3.5.3-fx.xpi
+	sha256sums = bd14c256a8f4164a2a4c69a23c047940df8cb186abb6b6fd5237184a9c7455eb
+
+pkgname = firefox-floccus
