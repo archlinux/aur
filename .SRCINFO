@@ -1,6 +1,6 @@
 pkgbase = knot-resolver
 	pkgdesc = full caching DNS resolver implementation
-	pkgver = 4.3.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.knot-resolver.cz/
 	install = install
@@ -16,21 +16,18 @@ pkgbase = knot-resolver
 	depends = libedit
 	depends = libuv
 	depends = lmdb
-	depends = lua51-sec
-	depends = lua51-socket
 	depends = luajit
 	depends = systemd
 	depends = libcap-ng
 	optdepends = lua51-basexx: experimental_dot_auth module,
 	optdepends = lua51-cqueues: http and dns64 module, policy.rpz() function,
-	optdepends = lua51-http: http module,
-	optdepends = lua51-filesystem: prefill module,
+	optdepends = lua51-http: http and prefill modules, trust_anchors bootstrap,
 	optdepends = lua51-psl: policy.slice_randomize_psl() function,
 	options = debug
 	options = strip
 	backup = etc/knot-resolver/kresd.conf
-	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-4.3.0.tar.xz
-	sha256sums = 0ca0f171ae2b2d76830967a5150eb0fa496b48b2a48f41b2be65d3743aaece25
+	source = https://secure.nic.cz/files/knot-resolver/knot-resolver-5.0.0.tar.xz
+	sha256sums = ca6023cd0c18b11f4a0cff0c8e882c7f3a5ad6653e9aa95acdbedafc5a53a5ed
 
 pkgname = knot-resolver
 

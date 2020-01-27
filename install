@@ -4,8 +4,44 @@ post_install() {
   chown -R root:knot-resolver /etc/knot-resolver
 }
 
+pre_upgrade() {
+  # upgrade from 4.x to 5.x - save socket interfaces before package uninstall
+  if [ -f /usr/lib/systemd/system/kresd.socket ] ; then
+    export UPG_DIR=/var/lib/knot-resolver/.upgrade-4-to-5
+    mkdir -p ${UPG_DIR}
+    touch ${UPG_DIR}/.unfinished
+
+    for sock in kresd.socket kresd-tls.socket kresd-webmgmt.socket kresd-doh.socket ; do
+      if systemctl is-enabled ${sock} 2>/dev/null | grep -qv masked ; then
+        systemctl show ${sock} -p Listen > ${UPG_DIR}/${sock}
+        case "$(systemctl show ${sock} -p BindIPv6Only)" in
+        *ipv6-only)
+          touch ${UPG_DIR}/${sock}.v6only
+          ;;
+        *default)
+          if cat /proc/sys/net/ipv6/bindv6only | grep -q 1 ; then
+            touch ${UPG_DIR}/${sock}.v6only
+          fi
+          ;;
+        esac
+      fi
+    done
+  fi
+}
+
 post_upgrade() {
+  # upgrade from 4.x to 5.x - convert systemd socket configs to net.listen() format
+  export UPG_DIR=/var/lib/knot-resolver/.upgrade-4-to-5
+  if [ -f ${UPG_DIR}/.unfinished ] ; then
+    rm -f ${UPG_DIR}/.unfinished
+    kresd -c /usr/lib/knot-resolver/upgrade-4-to-5.lua &>/dev/null
+    echo -e "\n   !!! WARNING !!!"
+    echo -e "Knot Resolver configuration file requires manual upgrade.\n"
+    cat ${UPG_DIR}/kresd.conf.net 2>/dev/null
+  fi
+
   chown -R root:knot-resolver /etc/knot-resolver
+  chown -R root:knot-resolver /var/lib/knot-resolver
 }
 
 post_remove() {
