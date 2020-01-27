@@ -1,24 +1,26 @@
-
+# Maintainer: Alfredo Palhares <alfredo at palhares dot me>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 # Please contribute to:
 # https://github.com/masterkorp/joplin-pkgbuild
 
 pkgname=joplin
-pkgver=1.0.178
+pkgver=1.0.179
 pkgrel=1
-pkgdesc="Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS."
-arch=("x86_64" "i686")
-makedepends=("git" "nodejs" "rsync" "npm" "python")
-depends=("nodejs" "libxss")
-provides=("joplin" "joplin-cli")
+pkgdesc="A note taking and to-do application with synchronization capabilities"
+arch=('x86_64' 'i686')
+depends=('gtk3' 'lib32-glibc' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+         'nss' 'orc')
+makedepends=('git' 'npm' 'python' 'rsync')
+optdepends=('libappindicator-gtk3: for tray icon')
 url="https://joplinapp.org/"
-license=("MIT")
-source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
-        "https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
+license=('MIT')
+source=("${pkgname}.desktop" "${pkgname}-desktop.sh" "${pkgname}.sh"
+        "${pkgname}-${pkgver}.zip::https://github.com/laurent22/joplin/archive/v${pkgver}.zip")
 sha256sums=('ce4435654ee1f6d51d361945f32dd9bf07308f423c3f3c3db147744f203fbc2b'
             '41bfdc95a6ee285eb644d05eb3bded72a83950d4720c3c8058ddd3c605cd625d'
             '5245da6f5f647d49fbe044b747994c9f5a8e98b3c2cd02757dd189426a677276'
-            'a883032e2e929d4ce322fc5fefa36eedce77f86aeae3217eb52653ec6320351e')
+            '15c1ff7f42e4639d98c52780830d070d6aa60eea5f04fa6a7568aceca6628e9a')
 
 build() {
   # Remove husky (git hooks) from dependencies
@@ -31,18 +33,17 @@ build() {
 
   # Install dependencies for the Tools used on another projects
   cd "${srcdir}/${pkgname}-${pkgver}/Tools"
-  npm install
+  npm install --cache "${srcdir}/npm-cache"
 
   # Run copyLib and build the typescript
   # INFO: https://github.com/alfredopalhares/joplin-pkgbuild/issues/40
   cd "${srcdir}/${pkgname}-${pkgver}"
-  npm install
+  npm install --cache "${srcdir}/npm-cache"
   npm run copyLib
   npm run tsc
 
   # Build Cli CLient
   cd "${srcdir}/${pkgname}-${pkgver}/CliClient"
-
   rsync -a --exclude "node_modules/" "${srcdir}/${pkgname}-${pkgver}/CliClient/app/" \
     "${srcdir}/${pkgname}-${pkgver}/CliClient/build"
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/locales" \
@@ -52,12 +53,11 @@ build() {
 
   cd "${srcdir}/${pkgname}-${pkgver}/CliClient/build/"
   # NOTE: Manually forcing sqlite 4.0.7 for node v12, remove later on
-  npm install
+  npm install --cache "${srcdir}/npm-cache"
 
   # Electron App
   cd "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app"
-
-  npm install
+  npm install --cache "${srcdir}/npm-cache"
 
   rsync -a --delete "${srcdir}/${pkgname}-${pkgver}/ReactNativeClient/lib/" \
     "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/lib/"
@@ -66,24 +66,19 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/share/{${pkgname},${pkgname}-cli,applications,licenses/${pkgname}}
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -d ${pkgdir}/usr/share/{${pkgname},${pkgname}-cli}
+  cp -R CliClient/build/* "${pkgdir}/usr/share/${pkgname}-cli"
+  cp -R CliClient/node_modules "${pkgdir}/usr/share/${pkgname}-cli"
+  cp -R ElectronClient/app/dist/linux-unpacked/* "${pkgdir}/usr/share/${pkgname}"
 
-  cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/build/"* \
-    "${pkgdir}/usr/share/${pkgname}-cli"
-  cp -R "${srcdir}/${pkgname}-${pkgver}/CliClient/node_modules" \
-    "${pkgdir}/usr/share/${pkgname}-cli"
-  # Remove uneeded .vscode from a dependency
-  #rm -r "${pkgdir}/usr/share/${pkgname}-cli/node_modules/sqlite3/.vscode"
-  cp -R "${srcdir}/${pkgname}-${pkgver}/ElectronClient/app/dist/linux-unpacked/"* \
-    "${pkgdir}/usr/share/${pkgname}"
+  install -Dm755 ${srcdir}/${pkgname}-desktop.sh "${pkgdir}/usr/bin/${pkgname}-desktop"
+  install -m755 ${srcdir}/${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
 
+  install -Dm644 ${srcdir}/${pkgname}.desktop -t "${pkgdir}/usr/share/applications"
 
-  cd ${srcdir}
-  install -m755 joplin-desktop.sh "${pkgdir}/usr/bin/joplin-desktop"
-  install -m755 joplin.sh "${pkgdir}/usr/bin/joplin"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -Dm644 joplin.desktop "${pkgdir}/usr/share/applications/joplin.desktop"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Remove unneeded architecture files
+  rm -rf "${pkgdir}/usr/share/${pkgname}/resources/app/node_modules/7zip-bin-linux"/arm*
 }
