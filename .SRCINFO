@@ -1,5 +1,5 @@
 pkgbase = nodejs-ipv6
-	pkgdesc = Evented I/O for V8 javascript
+	pkgdesc = NodeJS patched to work in IPv6 only network
 	pkgver = 13.7.0
 	pkgrel = 1
 	url = https://nodejs.org/

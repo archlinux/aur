@@ -10,7 +10,7 @@
 pkgname=nodejs-ipv6
 pkgver=13.7.0
 pkgrel=1
-pkgdesc='Evented I/O for V8 javascript'
+pkgdesc='NodeJS patched to work in IPv6 only network'
 arch=('x86_64')
 provides=("${pkgname%-ipv6}")
 conflicts=("${pkgname%-ipv6}")
