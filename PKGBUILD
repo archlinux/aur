@@ -3,7 +3,7 @@ _pkgname=chordpro
 _author="Johan Vromans"
 pkgname=chordpro-git
 pkgbase=chordpro-git
-pkgver=r592.97abea4
+pkgver=r615.e5d0da5
 pkgrel=1
 pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets.'
 arch=('any')
@@ -42,7 +42,7 @@ package() {
   cd "$_pkgname"
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR=$pkgdir/
-  /usr/bin/find $startdir/pkg -name '.packlist' -delete
-  /usr/bin/find $startdir/pkg -name '*.pod' -delete
+  #/usr/bin/find ${startdir}/pkg -name '.packlist' -delete
+  #/usr/bin/find ${startdir}/pkg -name '*.pod' -delete
 }
 
