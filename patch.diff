@@ -1,0 +1,21 @@
+--- lib/dns.js.bak      2020-01-26 19:09:18.114911160 +0100
++++ lib/dns.js  2020-01-26 20:31:28.720237093 +0100
+@@ -95,7 +95,7 @@
+   let hints = 0;
+   let family = -1;
+   let all = false;
+-  let verbatim = false;
++  let verbatim = true;
+
+   // Parse arguments
+   if (hostname && typeof hostname !== 'string') {
+@@ -109,7 +109,7 @@
+     hints = options.hints >>> 0;
+     family = options.family >>> 0;
+     all = options.all === true;
+-    verbatim = options.verbatim === true;
++    verbatim = options.verbatim !== false;
+
+     validateHints(hints);
+   } else {
+
