@@ -2,7 +2,7 @@
 _hkgname=arbtt
 pkgname=arbtt
 pkgver=0.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Automatic Rule-Based Time Tracker"
 url="http://hackage.haskell.org/package/arbtt"
 license=('GPL2')
