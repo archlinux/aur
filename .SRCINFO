@@ -1,7 +1,7 @@
 pkgbase = chromium-widevine-armv7h
 	pkgdesc = A browser plugin designed for the viewing of premium video content (version for armv7h)
-	pkgver = 4.10.1503.4
-	pkgrel = 2
+	pkgver = 4.10.1610.6
+	pkgrel = 1
 	url = https://www.widevine.com/
 	arch = armv7h
 	license = custom
@@ -13,12 +13,12 @@ pkgbase = chromium-widevine-armv7h
 	depends = nss
 	provides = chromium-widevine
 	conflicts = chromium-widevine
-	noextract = chromeos_12371.75.0_elm_recovery_stable-channel_mp-v2.bin.zip
+	noextract = chromeos_12607.58.0_elm_recovery_stable-channel_mp-v2.bin.zip
 	options = !strip
 	source = chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eula_text.html
-	source = https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_12371.75.0_elm_recovery_stable-channel_mp-v2.bin.zip
+	source = https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_12607.58.0_elm_recovery_stable-channel_mp-v2.bin.zip
 	sha256sums = SKIP
-	sha256sums = 32d00d5ebdae667c843452eb1c87bd8aab6ff4f2520b3b461141bb78de7a0752
+	sha256sums = 629c9077a1cf70eb7c8fd3b86d3bb7d1155b27cc0ce1f5b3c978d48806e5a128
 
 pkgname = chromium-widevine-armv7h
 
