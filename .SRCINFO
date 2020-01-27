@@ -1,11 +1,13 @@
 pkgbase = asbru-cm
 	pkgdesc = A free and open-source connection manager. Latest release pulled from GIT.
-	pkgver = 5.2.0
+	pkgver = 6.0.3
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = perl-gtk3-simplelist
+	depends = perl-gtk3
 	depends = perl-gnome2-gconf
 	depends = glade-perl
 	depends = openssh
@@ -31,7 +33,7 @@ pkgbase = asbru-cm
 	optdepends = perl-x11-guitest: To fit perfectly RDP tabs
 	provides = asbru-cm
 	conflicts = asbru-cm-git
-	source = git+https://github.com/asbru-cm/asbru-cm.git#tag=5.2.0
+	source = git+https://github.com/asbru-cm/asbru-cm.git#tag=6.0.3
 	sha256sums = SKIP
 
 pkgname = asbru-cm
