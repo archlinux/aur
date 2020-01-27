@@ -2,7 +2,7 @@
 
 pkgname=gimp-nufraw
 pkgver=0.42
-pkgrel=5
+pkgrel=6
 pkgdesc='Converter for raw files; utility and GIMP plugin'
 url='https://sourceforge.net/projects/nufraw/'
 arch=('x86_64')
