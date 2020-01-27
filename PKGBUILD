@@ -28,8 +28,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         include-algorithm-to-use-std-lower_bound.patch
         icu65.patch
         sync-enable-USSPasswords-by-default.patch
+        fix-building-with-system-zlib.patch
         chromium-system-icu.patch
-        chromium-system-zlib.patch
         chromium-system-hb.patch
         fix-spammy-unique-font-matching-log.patch
         chromium-widevine.patch
@@ -40,8 +40,8 @@ sha256sums=('56193431ab9d1193773b133d86b419bfae8d8b9196eea253660895e0e8f87ba0'
             '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
             '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
             '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
+            '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
             'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
-            'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
             'c0ad3fa426cb8fc1a237ddc6309a6b2dd4055bbe41dd07f50071ee61f969b81a'
             '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
@@ -105,9 +105,11 @@ prepare() {
   # https://crbug.com/1027929
   patch -Np1 -i ../sync-enable-USSPasswords-by-default.patch
 
+  # https://crbug.com/977964
+  patch -Np1 -i ../fix-building-with-system-zlib.patch
+
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-system-icu.patch
-  patch -Np1 -i ../chromium-system-zlib.patch
   patch -Np1 -i ../chromium-system-hb.patch
 
   # https://crbug.com/1005508
