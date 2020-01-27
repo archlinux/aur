@@ -1,6 +1,6 @@
 pkgbase = wfuzz-git
 	pkgdesc = Web application fuzzer - python3 build of the dev branch
-	pkgver = 2.4.2.r0.619ea18
+	pkgver = 2.4.5.r0.4d47a60
 	pkgrel = 1
 	url = https://github.com/xmendez/wfuzz
 	arch = any

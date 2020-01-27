@@ -10,7 +10,7 @@ pkgver() {
   cd "${pkgname/-git}"
   git describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'
 }
-pkgver=2.4.2.r0.619ea18
+pkgver=2.4.5.r0.4d47a60
 pkgrel=1
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
@@ -43,7 +43,7 @@ package() {
 
   install -Dm644 *_bash_completion "$pkgdir/etc/bash_completion.d/${pkgname/-git}"
 
-  install -dm644 "$pkgdir/usr/share/${pkgname/-git}/wordlists"
+  install -dm755 "$pkgdir/usr/share/${pkgname/-git}/wordlists"
   rsync -rpt wordlist/* "$pkgdir/usr/share/${pkgname/-git}/wordlists/"
 
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
