@@ -35,7 +35,7 @@ build() {
   cmake ../$_pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DKDEExperimentalPurpose_FOUND=OFF \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
     -DBUILD_OKULARKIRIGAMI=OFF
   make
 }
