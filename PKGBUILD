@@ -1,12 +1,13 @@
 # Maintainer: Dan Elkouby <streetwalkermc@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=sway9
-pkgver=1.2
+pkgver=1.4
 epoch=1
 pkgrel=4
-_commit=a1c3ae39adda7d810c6d740f83e1526be06bc55f
+_commit=8cbcdc245c8a215279711cc18fc9f2d0a2577933
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/Streetwalrus/sway9'
@@ -30,9 +31,9 @@ optdepends=(
   'xorg-server-xwayland: X11 support'
 )
 source=("git+https://github.com/Streetwalrus/$pkgname.git#commit=$_commit"
-        "10-systemd.conf")
+        "50-systemd-user.conf")
 sha512sums=('SKIP'
-            '122b97f7adb6444c442368c5bbbd3401bcd8420f522fcd6521def5a09cd2989f5f6f555a5a7762e922eaa307077eb26db6508242ee1b835ca73ad65acaeef95b')
+            '57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e')
 validpgpkeys=('9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A') # Drew DeVault
 
 build() {
@@ -44,7 +45,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 10-systemd.conf "$pkgdir/etc/sway/conf.d/10-systemd.conf"
+  install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 }
 
 # vim: ts=2 sw=2 et
