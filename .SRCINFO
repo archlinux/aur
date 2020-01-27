@@ -1,0 +1,52 @@
+pkgbase = liberica-jre-11-bin
+	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
+	pkgver = 11.0.6+10
+	pkgrel = 1
+	url = https://bell-sw.com/
+	install = liberica-jre-11.install
+	arch = aarch64
+	arch = armv7h
+	arch = armv8h
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-environment-common=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	optdepends = ffmpeg
+	optdepends = freetype2
+	optdepends = gtk2
+	optdepends = gtk3
+	optdepends = libnet
+	provides = java-environment=11
+	provides = java-environment-openjdk=11
+	provides = java-runtime-headless=11
+	provides = java-runtime-headless-openjdk=11
+	provides = java-runtime=11
+	provides = java-runtime-openjdk=11
+	backup = etc/liberica-jre-11/logging.properties
+	backup = etc/liberica-jre-11/management/jmxremote.access
+	backup = etc/liberica-jre-11/management/jmxremote.password.template
+	backup = etc/liberica-jre-11/management/management.properties
+	backup = etc/liberica-jre-11/net.properties
+	backup = etc/liberica-jre-11/security/java.policy
+	backup = etc/liberica-jre-11/security/java.security
+	backup = etc/liberica-jre-11/security/policy/README.txt
+	backup = etc/liberica-jre-11/security/policy/limited/default_US_export.policy
+	backup = etc/liberica-jre-11/security/policy/limited/default_local.policy
+	backup = etc/liberica-jre-11/security/policy/limited/exempt_local.policy
+	backup = etc/liberica-jre-11/security/policy/unlimited/default_US_export.policy
+	backup = etc/liberica-jre-11/security/policy/unlimited/default_local.policy
+	backup = etc/liberica-jre-11/sound.properties
+	source_aarch64 = https://download.bell-sw.com/java/11.0.6+10/bellsoft-jre11.0.6+10-linux-aarch64.tar.gz
+	sha1sums_aarch64 = d00ab03ef75ea09b7c2b11b2c3a40a21fd366075
+	source_armv7h = https://download.bell-sw.com/java/11.0.6+10/bellsoft-jre11.0.6+10-linux-arm32-vfp-hflt.tar.gz
+	sha1sums_armv7h = 028592ea0f4a92d7438eceab1eeefabd7f7d50e2
+	sha1sums_armv8h = 028592ea0f4a92d7438eceab1eeefabd7f7d50e2
+	source_i686 = https://download.bell-sw.com/java/11.0.6+10/bellsoft-jre11.0.6+10-linux-i586.tar.gz
+	sha1sums_i686 = 78c32fcf939a56bb4e144fff22fa5e9d71fb052e
+	source_x86_64 = https://download.bell-sw.com/java/11.0.6+10/bellsoft-jre11.0.6+10-linux-amd64.tar.gz
+	sha1sums_x86_64 = 0b15fc3cc4165ef459ca6984e61d5e07762d1f08
+
+pkgname = liberica-jre-11-bin
+
