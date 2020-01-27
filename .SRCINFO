@@ -1,7 +1,7 @@
 pkgbase = blender-benchmark
 	pkgdesc = Benchmark based on Blender to perform hardware and software performance tests
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendata.blender.org/
 	arch = x86_64
 	license = GPL
