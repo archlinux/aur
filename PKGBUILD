@@ -1,5 +1,5 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# Maintainer:  Lone_Wolf <lonewolf@xs4all.nl>
+# Maintainer:  Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Steven She <mintcoffee@gmail.com>
 # Contributor: vbPadre <vbPadre@gmail.com>
 
@@ -7,10 +7,10 @@ set -u
 pkgbase='cnrdrvcups-lb'
 pkgname="${pkgbase}"
 # The download link changes with every version, try to keep changes in one place
-_pkgver='5.00';  _dl='8/0100007658/11'
+_pkgver='5.10';  _dl='8/0100007658/13'
 
 pkgver="${_pkgver}"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -25,11 +25,12 @@ optdepends=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-S
 
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
+
 source=(
-  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-06.tar.gz"
+  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-08.tar.gz"
 )
-md5sums=('6f9f292c05df589f5940b65dc4f5c8b6')
-sha512sums=('56ef4f53de630651e3953c17525f473b51b804853425f987b05ef1ee797234be01efde594f25b0a89d80098e5f5a2987cffd9eabee836dde0e3916c30cd25cf3')
+md5sums=('c80793681b666766cedf864a3fd20dd7')
+sha512sums=('dbc8b8e600ec29e73afa4ba8a760fd643d58ee2017f6c3c35e63c7f2186cf0cb675adb0ea344b0bd04d0b4fa7f13763b5ce97e8264790356134e6ded3069bf54')
 
 # variables that are useful in whole PKGBUILD
     _srcdir="extracted-${pkgbase}-${pkgver}"
@@ -185,7 +186,7 @@ package() {
     
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-uken/Documents"
-    install -Dpm644 "README-ufr2-5.0xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.0xUK.html"
+    install -Dpm644 "README-ufr2-5.1xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.1xUK.html"
     install -Dpm644 "UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
     install -Dpm644 "LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Documents/LICENSE-EN.txt"
     popd
