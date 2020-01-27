@@ -1,7 +1,7 @@
 # Maintainer Alexander Mcmillan <linuxguy93@gmail.com>
 
 pkgname=ava-plugins
-pkgver=2.1.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Harrison Consoles VST Plugin Suite."
 arch=('x86_64')
