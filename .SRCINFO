@@ -1,0 +1,21 @@
+pkgbase = macbook12-bluetooth-driver
+	pkgdesc = Driver for bluetooth on newer MacBook (Pro) models
+	pkgver = 5.4.15
+	pkgrel = 1
+	url = https://github.com/leifliddy/macbook12-bluetooth-driver
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	noextract = linux-5.4.15.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.15.tar.xz
+	source = bluetooth-remove-set-device-wakeup.patch
+	source = Makefile
+	md5sums = 39893c474f29a1f57445b9e420cd202d
+	md5sums = ff7c2d3a0a168f84b4dce81aec69eefd
+	md5sums = a94e2ba612e42b2c5cbfaa8a502b2581
+	sha256sums = 6407222f850f685b346011bd696a3216d5df0f37e0184099100d2724396d94b1
+	sha256sums = cb99a8c710c5a374291394796e976214cfb44da6006f691b5a3b379512da1e96
+	sha256sums = b07b6fc4b3a6ad60dfd3cd29804f9aaf6922018804bbfb52c8f31bba888b2272
+
+pkgname = macbook12-bluetooth-driver
+

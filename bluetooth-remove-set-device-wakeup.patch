@@ -1,0 +1,30 @@
+commit 737a7a0ee53a6a9413b19a9d0079fc1d0dcf1caa
+Author: Christoph Gysin <christoph.gysin@gmail.com>
+Date:   Mon Feb 12 10:50:34 2018 +0200
+
+    bluetooth: remove set_device_wakeup
+
+diff --git a/drivers/bluetooth/hci_bcm.c b/drivers/bluetooth/hci_bcm.c
+index 7646636f2d18..e245db70bb25 100644
+--- a/drivers/bluetooth/hci_bcm.c
++++ b/drivers/bluetooth/hci_bcm.c
+@@ -243,10 +243,6 @@ static int bcm_gpio_set_power(struct bcm_device *dev, bool powered)
+ 	if (err)
+ 		goto err_txco_clk_disable;
+ 
+-	err = dev->set_device_wakeup(dev, powered);
+-	if (err)
+-		goto err_revert_shutdown;
+-
+ 	if (!powered && dev->res_enabled) {
+ 		clk_disable_unprepare(dev->txco_clk);
+ 		clk_disable_unprepare(dev->lpo_clk);
+@@ -266,8 +262,6 @@ static int bcm_gpio_set_power(struct bcm_device *dev, bool powered)
+ 
+ 	return 0;
+ 
+-err_revert_shutdown:
+-	dev->set_shutdown(dev, !powered);
+ err_txco_clk_disable:
+ 	if (powered && !dev->res_enabled)
+ 		clk_disable_unprepare(dev->txco_clk);
