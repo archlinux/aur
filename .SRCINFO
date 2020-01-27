@@ -1,7 +1,7 @@
 pkgbase = openss7-modules-lts316-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (3.16 Kernel Modules)
 	pkgver = 1.1.8.456.gce55d4128
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openss7.org
 	arch = x86_64
 	arch = i686
@@ -31,12 +31,11 @@ pkgbase = openss7-modules-lts316-git
 	makedepends = gawk
 	makedepends = classpath
 	makedepends = popt
-	depends = linux-lts316=3.16.80-1
+	depends = linux-lts316=3.16.81-1
 	provides = openss7-modules-lts316=1.1.8.456.gce55d4128
 	conflicts = openss7-modules-lts316
 	options = !emptydirs
 	options = !strip
-	options = !makeflags
 	source = openss7-modules-lts316-git::git+https://github.com/openss7/openss7.git
 	md5sums = SKIP
 
