@@ -3,7 +3,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=3.34.0.r108.ga6ddd2dd0
+pkgver=3.35.3.r39.g444106ded
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 arch=(any)
@@ -18,27 +18,30 @@ depends=('gtk3'
 	'liblouis'
 	'brltty'
 	'xorg-xmodmap'
-	'gsettings-desktop-schemas'
 	'gst-plugins-base'
 	'gst-plugins-good')
 makedepends=('git'
+	'yelp-tools'
 	'itstool'
-	'intltool'
-	'yelp-tools')
+	'intltool')
 provides=('orca')
 conflicts=('orca')
 source=(${pkgname}::'git+https://gitlab.gnome.org/GNOME/orca.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${pkgname}
+	cd "${srcdir}/${pkgname}"
 	# cutting off 'ORCA_' prefix that presents in the git tag
 	git describe --long | sed 's/^ORCA_//;s/\([^-]*-g\)/r\1/;s/_/-/g;s/-/./g'
 }
 
-build() {
+prepare() {
 	cd "${srcdir}/${pkgname}"
 	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+}
+
+build() {
+	cd "${srcdir}/${pkgname}"
 	make
 }
 
