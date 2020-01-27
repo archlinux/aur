@@ -1,18 +1,18 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=pathvisio
-pkgver=3.2.4
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Pathway visualization tool'
 arch=('any')
 url='http://www.pathvisio.org/'
 license=('LGPL')
-makedepends=('java-environment' 'apache-ant')
+makedepends=('java-environment' 'ant')
 depends=('java-runtime')
 replaces=('pathvisio-devel')
-source=("http://www.pathvisio.org/data/releases/$pkgver/pathvisio_src-$pkgver.tar.gz"
+source=("https://github.com/PathVisio/pathvisio/releases/download/v$pkgver/pathvisio_src-$pkgver.zip"
         "pathvisio.sh")
-md5sums=('819262dee27b84ddf3edd5b69bda9d5c'
-         '68c218612a2f09c8e378c013f8d60117')
+sha256sums=('0e7f030f4c92bec8796ca39b9cdcffebc33603d49bb585e45fe8376035416d02'
+            '308fded5cf888642d054da46acbb800d2d63bc38e539086c327a6d13bc9a8846')
 
 build() {
   cd "$srcdir"/pathvisio-$pkgver
