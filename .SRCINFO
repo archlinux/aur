@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop9
 	pkgdesc = Official Telegram Desktop client (personal build)
 	pkgver = 1.9.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,6 @@ pkgbase = telegram-desktop9
 	makedepends = ninja
 	makedepends = python
 	makedepends = range-v3
-	depends = enchant
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = lz4

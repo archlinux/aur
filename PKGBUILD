@@ -7,12 +7,12 @@
 
 pkgname=telegram-desktop9
 pkgver=1.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
+depends=('ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libappindicator-gtk3')
 # for libappindicator-gtk3 see https://bugs.archlinux.org/task/65080
 
