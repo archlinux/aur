@@ -1,6 +1,6 @@
 pkgbase = phpsysinfo
 	pkgdesc = PHP script that displays information about the host being accessed.
-	pkgver = 3.2.10
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = http://rk4an.github.com/phpsysinfo/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = phpsysinfo
 	backup = etc/webapps/phpsysinfo/phpsysinfo.ini
 	backup = etc/webapps/phpsysinfo/.htaccess
 	source = https://github.com/rk4an/phpsysinfo/archive/v3.2.10.tar.gz
-	md5sums = c07de7fcc8a2ccab172232f5ab14a7f9
+	md5sums = c13a3f12dc7e5fbc71a7b12645f2f08d
 
 pkgname = phpsysinfo
 
