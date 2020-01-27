@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=hub-bin
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="A command-line tool that makes git easier to use with GitHub"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://hub.github.com"
 depends=('git')
 license=('MIT')
 source=("https://github.com/github/hub/releases/download/v${pkgver}/hub-linux-amd64-${pkgver}.tgz")
-sha256sums=('48b7a3da8c54c1373848074c59a2233c4874f68ed362fc8d3d251423d02496fe')
+sha256sums=('734733c9d807715a4ec26ccce0f9987bd19f1c3f84dd35e56451711766930ef0')
 
 package() {
   prefix="${pkgdir}/usr" "${srcdir}/hub-linux-amd64-${pkgver}/install"
