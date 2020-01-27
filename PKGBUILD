@@ -21,10 +21,10 @@ provides=(
   "java-runtime-headless-openjdk=$_java_ver"
   "java-runtime=$_java_ver"
   "java-runtime-openjdk=$_java_ver"
-  "liberica-jdk-11-bin=${pkgver/+*/}"
-  "liberica-jdk-11-lite-bin=${pkgver/+*/}"
-  "liberica-jre-11-bin=${pkgver/+*/}"
-  "liberica-jre-11-full-bin=${pkgver/+*/}"
+  "liberica-jdk-11-bin=$pkgver"
+  "liberica-jdk-11-lite-bin=$pkgver"
+  "liberica-jre-11-bin=$pkgver"
+  "liberica-jre-11-full-bin=$pkgver"
 )
 install=$_jdkname.install
 
