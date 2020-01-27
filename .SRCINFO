@@ -1,0 +1,15 @@
+pkgbase = xarexec_fuse
+	pkgdesc = Small program to mount a SquashFS xar image, required to execute xar files
+	pkgver = 19.4.22
+	pkgrel = 1
+	url = https://github.com/facebookincubator/xar
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = squashfuse
+	source = https://github.com/facebookincubator/xar/archive/19.4.22.tar.gz
+	md5sums = 993977a0e718fed66a66237c3bf2d8f0
+
+pkgname = xarexec_fuse
+
