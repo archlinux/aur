@@ -14,7 +14,6 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  #git describe --long | sed 's:\([^-]*-g\):r\1:;s:-:.:g;s:^v::'
   _totalcommits="$(git rev-list --count HEAD)"
   _curtag="$(git rev-list --tags --max-count=1)"
   _tagver="$(git describe --tags ${_curtag} | sed 's:^v::')"
