@@ -1,6 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
-# Co-Maintainer: Jameson Pugh <imntreal at gmail dot com>
 pkgname=cheat
 pkgver=3.3.1
 pkgrel=2
