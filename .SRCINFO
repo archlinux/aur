@@ -6,7 +6,7 @@ pkgbase = f27-backgrounds
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f27-backgrounds-27.0.1-27.0.1-6.fc31.src.rpm
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f27-backgrounds-27.0.1-6.fc31.src.rpm
 	sha256sums = SKIP
 
 pkgname = f27-backgrounds

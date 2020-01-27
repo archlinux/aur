@@ -9,7 +9,7 @@ pkgdesc="Fedora 27 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/F27_Artwork"
 license=("CC-BY-SA")
-source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/${pkgname}-${pkgver}-${_rhver}.src.rpm")
+source=("https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/${pkgname}-${_rhver}.src.rpm")
 sha256sums=('SKIP')
 
 pkgver() {
