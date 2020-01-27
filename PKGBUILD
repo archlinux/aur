@@ -6,7 +6,7 @@
 pkgbase=libim
 pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im')
 pkgver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/im/"
@@ -51,8 +51,10 @@ package_libim() {
   pkgdesc="Imaging toolkit library"
   depends=('zlib' 'libpng')
 
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
+
   install -m755 -d "$pkgdir"/usr/lib
-  install -m644 "$srcdir"/im/lib/Linux*/libim* "$pkgdir"/usr/lib
+  install -m644 "$srcdir"/im/lib/${_linux_ver}/libim* "$pkgdir"/usr/lib
   install -m755 -d "$pkgdir"/usr/share/$pkgname
   install -m644 "$srcdir"/im-${pkgver}_Docs.pdf "$pkgdir"/usr/share/$pkgname
   install -m755 -d "$pkgdir"/usr/include/im
@@ -65,11 +67,12 @@ _lua_im_package_helper() {
 
   _lua_ver=$1
   _lua_ver_nodot=`echo $1 | cut -c1,3`
+  _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
 
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
   install -Dm644 "$srcdir"/im/COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
   install -d "$pkgdir"/usr/lib/lua/${_lua_ver}
-  install -Dm644 "$srcdir"/im/lib/Linux*_??/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}
+  install -Dm644 "$srcdir"/im/lib/${_linux_ver}/Lua${_lua_ver_nodot}/*.so "$pkgdir"/usr/lib/lua/${_lua_ver}
 
   # create symlinks required for Lua modules
   for name in \
