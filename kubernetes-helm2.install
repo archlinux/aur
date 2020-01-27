@@ -1,0 +1,5 @@
+post_upgrade() {
+  echo ">>> There are discussions if we should rename the helm binary to helm2"
+  echo ">>> If you support that change please provide feedback at"
+  echo ">>> https://aur.archlinux.org/packages/kubernetes-helm2/"
+}

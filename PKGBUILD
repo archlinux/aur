@@ -3,12 +3,13 @@
 
 pkgname=kubernetes-helm2
 pkgver=2.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/helm/helm"
 makedepends=('git' 'glide' 'go')
 depends=('socat')
+install="kubernetes-helm2.install"
 optdepends=(
   'kubectl: check cluster status'
   'kubectl-bin: check cluster status - binary package'
