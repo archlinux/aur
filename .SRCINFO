@@ -18,6 +18,7 @@ pkgbase = plumed-mpi
 	optdepends = cython: Python module support
 	optdepends = graphviz: diagrams in manual
 	optdepends = gawk: partial tempering support
+	optdepends = plumed-patches: extra engine patches
 	source = https://github.com/plumed/plumed2/releases/download/v2.6.0/plumed-2.6.0.tgz
 	sha1sums = aa9e0eb5ff85a778f0ac4c0637e10a499f36b107
 

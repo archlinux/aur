@@ -13,7 +13,8 @@ optdepends=('vmd-molfile-plugins: add capability to read vmd compatible trajecto
             'python-setuptools: Python module support'
             'cython: Python module support'
             'graphviz: diagrams in manual'
-            'gawk: partial tempering support')
+            'gawk: partial tempering support'
+            'plumed-patches: extra engine patches')
 makedepends=('vim')
 source=(https://github.com/plumed/plumed2/releases/download/v${pkgver}/plumed-${pkgver}.tgz)
 sha1sums=('aa9e0eb5ff85a778f0ac4c0637e10a499f36b107')
