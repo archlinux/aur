@@ -4,15 +4,14 @@ pkgname=pmemd-cuda
 pkgver=18
 _toolsver=19
 _gccver=8.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PMEMD module of AMBER software package (with CUDA support)"
 url="http://ambermd.org/"
 license=('custom')
 arch=('x86_64')
 depends=('openmpi3-gcc8' 'cuda' 'fakeroot' 'zlib' 'bzip2' 'gcc8-libs' 'flex' 'python2' 'bash')
 makedepends=('make' 'gcc8' 'gcc8-fortran' 'patch' 'tcsh' 'imake')
-optdepends=('plumed-patches: PLUMED support'
-            'plumed: metadynamics support'
+optdepends=('plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
          '6b38d9cfb6e33b719bdf7fe73b26e841'
