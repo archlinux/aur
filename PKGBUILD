@@ -1,7 +1,7 @@
 # Maintainer: Markus Richter <mqus at disroot dot org>
 
 pkgname=bitwarden_rs-vault-git
-pkgver=v2.12.0.r13.g9ebd7003
+pkgver=v2.12.0.r37.g292d7134
 pkgrel=1
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs."
 arch=('any')
@@ -10,7 +10,7 @@ license=('AGPL3')
 
 # nodejs-lts-dubnium is included because nodejs>=12 doesn't work. otherwise this would be covered by npm.
 # python2 is included because the used npm package node-sass depends on node-gyp (and therefore python2) transitively. This should be covered by the official node-gyp package (https://bugs.archlinux.org/task/62277?project=5&string=node-gyp ) which is pulled in by npm.
-makedepends=('npm' 'nodejs-lts-dubnium' 'python2')
+makedepends=('npm' 'nodejs-lts-dubnium' 'python2' 'git')
 depends=('bitwarden_rs')
 conflicts=("bitwarden_rs-vault")
 provides=('bitwarden_rs-vault') 
