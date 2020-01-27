@@ -1,18 +1,18 @@
 pkgbase = openrpg-git
 	pkgdesc = Open C++ library and utilities for common RPG rulesets
-	pkgver = 0.4.4_dev
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://openrpg.io
 	arch = x86_64
 	license = custom:OSL
 	license = custom:OGL
-	makedepends = gcc>=4.7
-	makedepends = cmake>=2.8.4
+	makedepends = gcc>=9.0
+	makedepends = cmake>=3.0
 	provides = openrpg
 	provides = roll
 	provides = name-generator
 	provides = character-generator
-	source = git+https://github.com/incomingstick/OpenRPG#tag=v0.4.4-dev
+	source = git+https://github.com/incomingstick/OpenRPG#tag=v0.5.2
 	md5sums = SKIP
 
 pkgname = openrpg-git
