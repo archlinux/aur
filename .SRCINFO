@@ -1,7 +1,7 @@
 pkgbase = alltomp3-bin
 	pkgdesc = Download YouTube videos in MP3 with tags and lyrics
 	pkgver = 0.3.12.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alltomp3.org/
 	arch = x86_64
 	license = GPL-2.0
@@ -12,7 +12,7 @@ pkgbase = alltomp3-bin
 	depends = nss
 	depends = ffmpeg
 	depends = chromaprint
-	depends = python-pathlib
+	depends = python-pathlib2
 	source = alltomp3_0.3.12-59_amd64.deb::https://packagecloud.io/AllToMP3/alltomp3/packages/ubuntu/yakkety/alltomp3_0.3.12-59_amd64.deb/download.deb
 	sha256sums = 5fc41ba5610e49f49959045a0df502f7b387993f94a307a06f9df5d8dbb68de0
 
