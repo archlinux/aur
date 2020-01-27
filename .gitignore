@@ -1,0 +1,4 @@
+src/
+pkg/
+kiibohd-configurator-git/
+*.pkg.tar.xz
