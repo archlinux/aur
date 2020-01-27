@@ -1,15 +1,15 @@
 # Maintainer: LinuxVieLoisir <contact@gnumeria.fr>
 
 pkgname=firefox-nightly-hg
-pkgver=r481054.c52f9ebca761
+pkgver=r511851.df59b74d33d7
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 _repo=https://hg.mozilla.org/mozilla-central
 _pkgname=firefox-nightly
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss sqlite ttf-font libpulse libvpx icu)
+depends=(gtk3 nss mozilla-common libxt startup-notification mime-types dbus-glib
+         ffmpeg sqlite ttf-font libpulse libvpx icu)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust ccache mercurial clang llvm jack 
              python nodejs python2-psutil cbindgen nasm)
@@ -155,8 +155,8 @@ END
         "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
 
-  install -Dm644 browser/branding/nightly/default64.png \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_pkgname.png"
+  install -Dm644 browser/branding/nightly/default128.png \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
 
   install -Dm644 browser/branding/nightly/default128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
@@ -166,15 +166,10 @@ END
     
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$_pkgname/firefox/firefox-bin "\$@"
+exec /usr/lib/$_pkgname/firefox/firefox-nightly "\$@"
 END
-    # Replace duplicate binary with wrapper
-    # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-    ln -srf "$pkgdir/usr/bin/$_pkgname" \
-        "$pkgdir/usr/lib/$_pkgname/firefox-bin"
-    rm "$pkgdir/usr/bin/firefox"
 
-  # Use system-provided dictionaries
+  ln -sf "$pkgdir/usr/lib/$_pkgname/firefox/firefox-bin" "$pkgdir/usr/bin/$_pkgname"
   rm -rf "$pkgdir"/usr/lib/$_pkgname/{dictionaries,hyphenation}
   ln -sf /usr/share/hunspell "$pkgdir/usr/lib/$_pkgname/dictionaries"
   ln -sf /usr/share/hyphen "$pkgdir/usr/lib/$_pkgname/hyphenation"
