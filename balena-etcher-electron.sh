@@ -1,6 +1,6 @@
 #!/bin/bash
-ARGS="--no-sandbox"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    ARGS=""
+    exec electron6 /usr/lib/balena-etcher "$@"
+else
+    exec electron6 --no-sandbox /usr/lib/balena-etcher "$@"
 fi
-exec electron6 "${ARGS}" /usr/lib/balena-etcher "$@"
