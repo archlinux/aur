@@ -20,6 +20,7 @@ pkgbase = gst
 	depends = python-rx
 	depends = python-yaml
 	depends = python-xdg
+	depends = python-xlib
 	depends = stress-ng
 	source = https://gitlab.com/leinardi/gst/-/archive/0.6.1/gst-0.6.1.tar.gz
 	sha256sums = 85eaf145df0ecca578247596d9c654adb33b3217f890a161d53cdb8457c76ef7
