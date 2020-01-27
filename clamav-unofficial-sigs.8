@@ -1,6 +1,6 @@
 
 .\" Manual page for eXtremeSHOK.com ClamAV Unofficial Signature Updater
-.TH clamav-unofficial-sigs 8 "2019-07-30" "Version: 6.0.0" "SCRIPT COMMANDS"
+.TH clamav-unofficial-sigs 8 "2020-01-25" "Version: 7.0.1" "SCRIPT COMMANDS"
 .SH NAME
 clamav-unofficial-sigs \- Download, test, and install third-party ClamAV signature databases.
 .SH SYNOPSIS
@@ -43,9 +43,11 @@ This script follows the standard GNU command line syntax.
 .TP
 \fB \-o, \-\-output\-triggered \fR If HAM directory scanning is enabled in the script's   configuration file, then output names of any third\-party   signatures that triggered during the HAM directory scan
 .TP
-\fB \-w, \-\-whitelist \fR Adds a signature whitelist entry in the newer ClamAV IGN2   format to 'my\-whitelist.ign2' in order to temporarily resolve   a false\-positive issue with a specific third\-party signature.   Script added whitelist entries will automatically be removed   if the original signature is either modified or removed from   the third\-party signature database
+\fB \-w, \-\-whitelist <signature\-name> \fR Adds a signature whitelist entry in the newer ClamAV IGN2   format to 'my\-whitelist.ign2' in order to temporarily resolve   a false\-positive issue with a specific third\-party signature.   Script added whitelist entries will automatically be removed   if the original signature is either modified or removed from   the third\-party signature database
 .TP
 \fB \-\-check\-clamav \fR If ClamD status check is enabled and the socket path is correctly   specifiedthen test to see if clamd is running or not
+.TP
+\fB \-\-upgrade \fR Upgrades this script and master.conf to the latest available version
 .TP
 \fB \-\-install\-all \fR Install and generate the cron, logroate and man files, autodetects the values   based on your config files
 .TP

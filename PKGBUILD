@@ -3,7 +3,7 @@
 # Contributor: sinkuu <sinkuupump@gmail.com>
 
 pkgname="clamav-unofficial-sigs"
-pkgver="6.1.1"
+pkgver="7.0.1"
 pkgrel="1"
 pkgdesc="ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com"
 url="https://github.com/extremeshok/clamav-unofficial-sigs"
@@ -16,18 +16,18 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/extremeshok/clamav-unof
     'clamav-unofficial-sigs.8'
     'os.conf'
 )
-sha256sums=('bac14809c8106ebae6c13f4db1c330a75f0a284924b3ab3668c49e30619b299f'
+sha256sums=('20e1bd6da863513ec1dc42c3f498ca1dfe1c1845110442c2e4595df6ab8341ed'
             '0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e'
             'd5441953dbfafb14764ca30b75ad1ae48dbe8a9cace6d3f72ecb9fbe82aa36ca'
-            '983b40a2dcf1bf25a2e0ad5c8c971de609532a633879d051e08a0d484ad1ed27'
-            '84b71e4db873b0aa85886b53ed46d1fc13323f04d8997b3e36b5acc524fb2d83')
+            'bc5409c3d7006207bf83b7b30cb4c9fcd2aacb68c6cfbf3c5063bd265f47fcb3'
+            '434000ac8572890913775451e678ec6b23cb6570828aec8ab4c690eb3f603bfb')
 backup=('etc/clamav-unofficial-sigs/user.conf')
 install='clamav-unofficial-sigs.install'
 
 prepare() {
     cd "${pkgname}-${pkgver}"
     sed -i -e 's#/usr/local/s\?bin/#/usr/bin/#g' "systemd/${pkgname}.service"
-    sed -i -e 's#WantedBy=clamd@scan.service#WantedBy=timers.target#g' "systemd/${pkgname}.timer"
+    sed -i -e 's#WantedBy=multi-user.target#WantedBy=timers.target#g' "systemd/${pkgname}.timer"
 }
 
 package() {

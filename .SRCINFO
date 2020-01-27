@@ -1,6 +1,6 @@
 pkgbase = clamav-unofficial-sigs
 	pkgdesc = ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com
-	pkgver = 6.1.1
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://github.com/extremeshok/clamav-unofficial-sigs
 	install = clamav-unofficial-sigs.install
@@ -11,16 +11,16 @@ pkgbase = clamav-unofficial-sigs
 	depends = bind-tools
 	depends = curl
 	backup = etc/clamav-unofficial-sigs/user.conf
-	source = clamav-unofficial-sigs-6.1.1.tar.gz::https://github.com/extremeshok/clamav-unofficial-sigs/archive/6.1.1.tar.gz
+	source = clamav-unofficial-sigs-7.0.1.tar.gz::https://github.com/extremeshok/clamav-unofficial-sigs/archive/7.0.1.tar.gz
 	source = clamav-unofficial-sigs.logrotate
 	source = clamav-unofficial-sigs.tmpfiles
 	source = clamav-unofficial-sigs.8
 	source = os.conf
-	sha256sums = bac14809c8106ebae6c13f4db1c330a75f0a284924b3ab3668c49e30619b299f
+	sha256sums = 20e1bd6da863513ec1dc42c3f498ca1dfe1c1845110442c2e4595df6ab8341ed
 	sha256sums = 0564ecac9ea02376b627fed158c9ea899c58b528d276d6d962f9e642e060239e
 	sha256sums = d5441953dbfafb14764ca30b75ad1ae48dbe8a9cace6d3f72ecb9fbe82aa36ca
-	sha256sums = 983b40a2dcf1bf25a2e0ad5c8c971de609532a633879d051e08a0d484ad1ed27
-	sha256sums = 84b71e4db873b0aa85886b53ed46d1fc13323f04d8997b3e36b5acc524fb2d83
+	sha256sums = bc5409c3d7006207bf83b7b30cb4c9fcd2aacb68c6cfbf3c5063bd265f47fcb3
+	sha256sums = 434000ac8572890913775451e678ec6b23cb6570828aec8ab4c690eb3f603bfb
 
 pkgname = clamav-unofficial-sigs
 
