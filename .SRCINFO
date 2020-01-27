@@ -1,6 +1,6 @@
 pkgbase = plumed-mpi
 	pkgdesc = An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines (with MPI support)
-	pkgver = 2.5.3
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://www.plumed.org/
 	arch = i686
@@ -17,8 +17,9 @@ pkgbase = plumed-mpi
 	optdepends = python-setuptools: Python module support
 	optdepends = cython: Python module support
 	optdepends = graphviz: diagrams in manual
-	source = https://github.com/plumed/plumed2/releases/download/v2.5.3/plumed-2.5.3.tgz
-	sha1sums = 9ec02170495409dc8a5f38ab0c3270b66035e7ae
+	optdepends = gawk: partial tempering support
+	source = https://github.com/plumed/plumed2/releases/download/v2.6.0/plumed-2.6.0.tgz
+	sha1sums = aa9e0eb5ff85a778f0ac4c0637e10a499f36b107
 
 pkgname = plumed-mpi
 
