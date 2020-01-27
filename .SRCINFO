@@ -1,6 +1,6 @@
 pkgbase = pepper-flash-armv7h
 	pkgdesc = Adobe Flash Player (version for armv7h)
-	pkgver = 32.0.0.255
+	pkgver = 32.0.0.303
 	pkgrel = 1
 	url = https://www.adobe.com/nl/products/flashplayer.html
 	arch = armv7h
@@ -9,14 +9,14 @@ pkgbase = pepper-flash-armv7h
 	depends = gcc-libs
 	provides = pepper-flash
 	conflicts = pepper-flash
-	noextract = chromeos_12371.75.0_elm_recovery_stable-channel_mp-v2.bin.zip
+	noextract = chromeos_12607.58.0_elm_recovery_stable-channel_mp-v2.bin.zip
 	options = !strip
 	source = license.pdf::https://wwwimages2.adobe.com/www.adobe.com/content/dam/acom/en/legal/licenses-terms/pdf/PlatformClients_PC_WWEULA-en_US-20150407_1357.pdf
 	source = manifest-src.json
-	source = https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_12371.75.0_elm_recovery_stable-channel_mp-v2.bin.zip
-	md5sums = 9a8ac74425ac0fa8eb75c7bee1b5aaee
-	md5sums = 03a274b8c6411298149ec124525bbd6f
-	md5sums = 8200074d8710158c7fd5ae2e0822f4ee
+	source = https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_12607.58.0_elm_recovery_stable-channel_mp-v2.bin.zip
+	sha256sums = 5a0a95eb4082b6db7182188ce119f3829184b238b0a91293322c2a51a2b41fc1
+	sha256sums = c1bc83f31ac585124861537dc5e61e244acdf1c6d4042deb70d757d3b5abb388
+	sha256sums = 629c9077a1cf70eb7c8fd3b86d3bb7d1155b27cc0ce1f5b3c978d48806e5a128
 
 pkgname = pepper-flash-armv7h
 
