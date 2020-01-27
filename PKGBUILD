@@ -7,7 +7,7 @@
 
 pkgname=telegram-desktop9
 pkgver=1.9.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -55,6 +55,8 @@ build() {
     cd "$srcdir/tdesktop-$pkgver-full"
     mkdir build
     export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
+    # For some reason, this is needed when building without spellchecking
+    export LDFLAGS="$LDFLAGS,--copy-dt-needed-entries"
     cmake -B build -G Ninja . \
         -Ddisable_autoupdate=1 \
         -DCMAKE_INSTALL_PREFIX=/usr \
