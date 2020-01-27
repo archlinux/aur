@@ -1,0 +1,15 @@
+pkgbase = statping
+	pkgdesc = An easy to use Status Page for your websites and applications.
+	pkgver = 0.80.70
+	pkgrel = 1
+	url = https://statping.com/
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = sassc
+	makedepends = go.rice
+	source = statping-0.80.70.tar.gz::https://github.com/hunterlong/statping/archive/v0.80.70.tar.gz
+	sha256sums = 8ead17b56bcc6b5705f3e8ec894dbe885e0f622a39e58df3179ea26992574478
+
+pkgname = statping
+
