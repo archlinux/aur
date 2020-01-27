@@ -1,7 +1,7 @@
 pkgbase = bitwarden_rs-vault
 	pkgdesc = Integrates the Vault Web-Interface into bitwarden_rs.
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitwarden/web
 	install = bitwarden_rs-vault.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = bitwarden_rs-vault
 	makedepends = npm
 	makedepends = nodejs-lts-dubnium
 	makedepends = python2
+	makedepends = git
 	depends = bitwarden_rs
 	conflicts = bitwarden_rs-vault-git
 	source = https://github.com/bitwarden/web/archive/v2.12.0.tar.gz
