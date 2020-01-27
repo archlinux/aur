@@ -1,4 +1,6 @@
 *.bz2
 *.tar.xz
+*.tar.gz
 pkg
 src
+benchmark-launcher-cli

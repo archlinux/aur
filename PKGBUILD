@@ -2,7 +2,7 @@
 
 pkgname=blender-benchmark
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Benchmark based on Blender to perform hardware and software performance tests"
 arch=('x86_64')
 url="https://opendata.blender.org/"
@@ -17,5 +17,5 @@ package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
   install -d -m755 "${pkgdir}/usr/bin"
   cp "${srcdir}/benchmark-launcher" "${pkgdir}/opt/${pkgname}/benchmark-launcher"
-  ln -s "/opt/${pkgname}/benchmark-launcher" "${pkgdir}/usr/bin/benchmark-launcher"
+  ln -s "/opt/${pkgname}/benchmark-launcher" "${pkgdir}/usr/bin/${pkgname}"
 }
