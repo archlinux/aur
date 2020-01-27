@@ -5,7 +5,6 @@ pkgbase = studioarch-utils
 	url = https://github.com/usrmusicman/ArchBuilds
 	arch = x86_64
 	depends = bash
-	depends = bash-completion
 	depends = tar
 	depends = xz
 	depends = bzip2
