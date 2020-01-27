@@ -6,8 +6,8 @@ pkgdesc="A complete rewriting of the Tomboy note taking app"
 arch=('x86_64')
 license=('GPL-3.0')
 url="https://wiki.gnome.org/Apps/Tomboy/tomboy-ng"
-depends=()
-makedepends=('tar')
+depends=(gtk2 libcanberra)
+makedepends=()
 optdepends=()
 source=(
 	"https://github.com/tomboy-notes/tomboy-ng/releases/download/v${pkgver}/tomboy-ng_${pkgver}-${pkgrel}_amd64.deb"
