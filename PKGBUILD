@@ -5,8 +5,8 @@ _source="installer"   # if installing from .sh installer
 # _source="tarball"     # if installing from .tar.gz package
 
 pkgname=cisco-anyconnect
-pkgver=4.7.00136
-pkgrel=2
+pkgver=4.8.01090
+pkgrel=1
 pkgdesc='Cisco AnyConnect Secure Mobility Client'
 arch=('x86_64')
 depends=('libxml2' 'ca-certificates')
@@ -25,10 +25,10 @@ url='https://www.cisco.com/c/en/us/products/security/anyconnect-secure-mobility-
 
 if [[ "${_source}" == "tarball" ]]; then
     _filename="anyconnect-linux64-${pkgver}-predeploy-k9.tar.gz"
-    _filehash="cba75ac1f5ea939ed0705a504a4cde627ca31154e5bc981546ad55a2d98c1a02"
+    _filehash="e210f390cd44e86ba4131e0365c974f88f25ffb61d7843be329842e53a7b1bf1"
 elif [[ "${_source}" == "installer" ]]; then
     _filename="anyconnect-linux64-${pkgver}-core-vpn-webdeploy-k9.sh"
-    _filehash="39d369f3081fb6dbc795a92df3a07e404cebf8c43383abd45d65a2a83b32a9b1"
+    _filehash="e210f390cd44e86ba4131e0365c974f88f25ffb61d7843be329842e53a7b1bf1"
 
     prepare() {
         cd "${srcdir}"
@@ -58,7 +58,7 @@ package() {
     cd "${srcdir}/anyconnect-linux64-${pkgver}/vpn"
 
     # install binaries
-    for binary in "vpnagentd" "vpn" "vpndownloader" "vpndownloader-cli" "manifesttool" "acinstallhelper" "vpnui" "acwebhelper"; do
+    for binary in "vpnagentd" "vpn" "vpndownloader" "vpndownloader-cli" "manifesttool_vpn" "acinstallhelper" "vpnui" "acwebhelper"; do
         install -Dm755 ${binary} "${pkgdir}/opt/cisco/anyconnect/bin/${binary}"
     done
 
