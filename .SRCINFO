@@ -1,7 +1,7 @@
 pkgbase = freecad-appimage-git
 	pkgdesc = A general purpose 3D CAD modeler
 	pkgver = 0.19_19371
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL
