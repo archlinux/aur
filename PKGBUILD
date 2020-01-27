@@ -6,7 +6,7 @@ arch=('any')
 url='http://www.paraview.org'
 license=('custom')
 depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-pugixml' 'mingw-w64-libtheora')
-makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-wine-qt' 'protobuf')
+makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-wine-qt' 'protobuf' 'qt5-tools')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -14,8 +14,8 @@ source=("git+https://gitlab.kitware.com/paraview/paraview.git"
         "git+https://gitlab.kitware.com/vtk/vtk.git"
         "git+https://gitlab.kitware.com/paraview/visitbridge.git"
         "git+https://gitlab.kitware.com/paraview/icet.git"
-        "git+https://gitlab.kitware.com/paraview/qttesting.git")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        "git+https://gitlab.kitware.com/paraview/qttesting.git" native-tools.patch)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -33,6 +33,7 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3853.patch | patch -p1
+  patch -p1 -i native-tools.patch
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
   sed -i "s| AND NOT CMAKE_CROSSCOMPILING||g" IO/OggTheora/vtk.module
@@ -52,7 +53,6 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=OFF \
       -Dqt_xmlpatterns_executable=/usr/bin/${_arch}-xmlpatterns \
-      -DPARAVIEW_PLUGINS_DEFAULT=OFF \
       ..
     WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
     popd
