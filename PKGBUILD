@@ -1,6 +1,6 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>,
 pkgname=sleuthkit-java
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=0
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('CPL', 'custom:"IBM Public Licence"', 'GPL2')
 depends=(java-environment=8 java8-openjfx sleuthkit)
 makedepends=(ant)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz" "build-tmp-dir.patch" "download-deps-https.patch" "download-ivy-https.patch")
-md5sums=('ffd33f3130f954583527b31242bbaefa'
+md5sums=('b5c081eb2cc92d2e56b8c470de37f890'
          '8a39286ec6585c5298073043af3b4dcf'
          'f951e410ecef03c978d9d2034871fb35'
          '13c842d0bcc03867548d10e7808e3aa6')

@@ -1,6 +1,6 @@
 pkgbase = sleuthkit-java
 	pkgdesc = Java bindings for The Sleuth Kit.
-	pkgver = 4.7.0
+	pkgver = 4.8.0
 	pkgrel = 0
 	url = http://www.sleuthkit.org/sleuthkit
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = sleuthkit-java
 	depends = java-environment=8
 	depends = java8-openjfx
 	depends = sleuthkit
-	source = https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.7.0/sleuthkit-4.7.0.tar.gz
+	source = https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.8.0/sleuthkit-4.8.0.tar.gz
 	source = build-tmp-dir.patch
 	source = download-deps-https.patch
 	source = download-ivy-https.patch
-	md5sums = ffd33f3130f954583527b31242bbaefa
+	md5sums = b5c081eb2cc92d2e56b8c470de37f890
 	md5sums = 8a39286ec6585c5298073043af3b4dcf
 	md5sums = f951e410ecef03c978d9d2034871fb35
 	md5sums = 13c842d0bcc03867548d10e7808e3aa6
