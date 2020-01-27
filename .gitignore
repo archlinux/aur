@@ -1,0 +1,5 @@
+Goneovim-0.4.3-linux
+*.tar.bz2
+*.pkg.tar.xz
+pkg
+src

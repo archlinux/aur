@@ -1,0 +1,25 @@
+pkgbase = goneovim
+	pkgdesc = Neovim GUI written in Golang, using a Golang qt backend
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/akiyosi/goneovim
+	arch = x86_64
+	license = MIT
+	makedepends = coreutils
+	makedepends = tar
+	depends = neovim
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = nss
+	depends = nspr
+	depends = fontconfig
+	depends = freetype2
+	depends = expat
+	depends = zlib
+	depends = libglvnd
+	depends = libxcb
+	source = https://github.com/akiyosi/goneovim/releases/download/v0.4.3/Goneovim-0.4.3-linux.tar.bz2
+	sha256sums = e49e77885edcbd6acc40d9af4c2e4e67f1686747250ec123802dd74c1652290d
+
+pkgname = goneovim
