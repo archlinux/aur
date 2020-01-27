@@ -1,6 +1,6 @@
 pkgbase = sphobjinv
 	pkgdesc = Toolkit for manipulation and inspection of Sphinx objects.inv files
-	pkgver = 2.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/bskinn/sphobjinv
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = sphobjinv
 	depends = python-certifi
 	depends = python-fuzzywuzzy>=0.3
 	depends = python-jsonschema>=2.0
-	noextract = sphobjinv-2.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/sphobjinv/sphobjinv-2.0-py3-none-any.whl
-	sha256sums = 999587a951f6940c8017c0ca824b8de262347862bd015cefa79b40fa0e7223e0
+	noextract = sphobjinv-2.0.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/sphobjinv/sphobjinv-2.0.1-py3-none-any.whl
+	sha256sums = 57fcf0672882ce542ce4c6773416c804eeb31c99e5bb83599a12032bd053cad9
 
 pkgname = sphobjinv
 
