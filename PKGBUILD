@@ -14,13 +14,13 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("lemon-lime")
-conflicts=("lemon-lime-git")
+conflicts=("lemon-lime")
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=('yt-popball::git+https://github.com/iotang/Project_LemonLime.git'
+source=('Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git'
 		"lemon-lime.desktop"
 		)
 noextract=()
