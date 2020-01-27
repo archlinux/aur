@@ -3,7 +3,7 @@
 
 _gemname=colorls
 pkgname=ruby-$_gemname
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A Ruby CLI gem that beautifies the terminal'\''s ls command, with color and font-awesome icons.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-clocale ruby-filesize ruby-manpages ruby-rainbow)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('c164695be2d5d896f737e76ebefe8af8a81ed92d')
+sha1sums=('61b6f31254979a6b09a52bd169a6e31cb7ba7280')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
