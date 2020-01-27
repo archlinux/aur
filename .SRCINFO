@@ -7,7 +7,7 @@ pkgbase = f31-backgrounds
 	arch = x86_64
 	license = CC-BY-SA
 	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f31-backgrounds-31.0.4-1.fc32.src.rpm
-	sha256sums = 3e304c596cd8f363071453ab95bca3133a0fec2b155ba9098093311249620baf
+	sha256sums = SKIP
 
 pkgname = f31-backgrounds
 
