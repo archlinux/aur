@@ -7,7 +7,7 @@ pkgbase = f23-backgrounds
 	arch = x86_64
 	license = CC-BY-SA
 	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f23-backgrounds-23.1.0-8.fc31.src.rpm
-	sha256sums = 4163ec7392999d53d3d3d4f3ed58026b6aa34b115e67b171a6e63e5c88768397
+	sha256sums = SKIP
 
 pkgname = f23-backgrounds
 

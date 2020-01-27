@@ -11,7 +11,7 @@ url="https://fedoraproject.org/wiki/F23_Artwork"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('4163ec7392999d53d3d3d4f3ed58026b6aa34b115e67b171a6e63e5c88768397')
+sha256sums=('SKIP')
 
 pkgver() {
   echo $_string | cut -d '-' -f 3
