@@ -2,7 +2,7 @@
 
 pkgname=rust-analyzer-bin
 pkgver=20200120
-_pkgver='2020-01-20'
+_pkgver='2020-01-27'
 pkgrel=1
 pkgdesc="An experimental Rust compiler front-end for IDEs. Binary build."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 provides=('rust-analyzer')
 conflicts=('rust-analyzer' 'rust-analyzer-git' 'rust-analyzer-vscode-git')
 source=("ra_lsp_server::$url/releases/download/$_pkgver/ra_lsp_server-linux")
-md5sums=('1a6b0e4462875c7e16210282542714bb')
+md5sums=('7ee3e7ac47fc418c360a0c33a0ffc339')
 
 pkgver() {
     echo ${_pkgver//-}
