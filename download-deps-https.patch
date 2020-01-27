@@ -1,0 +1,13 @@
+diff --git a/ivysettings.xml.old b/ivysettings.xml
+index 29b2bf1..7d58cd2 100644
+--- a/ivysettings.xml.old
++++ b/ivysettings.xml
+@@ -2,7 +2,7 @@
+   <settings defaultResolver="default"/>
+   <resolvers>
+     <chain name="default">
+-    <ibiblio name="central" m2compatible="true"/>
++    <ibiblio name="central" m2compatible="true" root="https://repo1.maven.org/maven2/"/>
+     <ibiblio name="ibiblio" m2compatible="true"/>
+     </chain>
+   </resolvers>

@@ -13,8 +13,12 @@ pkgbase = sleuthkit-java
 	depends = sleuthkit
 	source = https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.7.0/sleuthkit-4.7.0.tar.gz
 	source = build-tmp-dir.patch
+	source = download-deps-https.patch
+	source = download-ivy-https.patch
 	md5sums = ffd33f3130f954583527b31242bbaefa
 	md5sums = 8a39286ec6585c5298073043af3b4dcf
+	md5sums = f951e410ecef03c978d9d2034871fb35
+	md5sums = 13c842d0bcc03867548d10e7808e3aa6
 
 pkgname = sleuthkit-java
 
