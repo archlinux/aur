@@ -22,7 +22,7 @@ pkgbase = liberica-jre-11-full-bin
 	provides = java-runtime-headless-openjdk=11
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = liberica-jre-11=11.0.6
+	provides = liberica-jre-11-bin=11.0.6+10
 	backup = etc/liberica-jre-11-full/logging.properties
 	backup = etc/liberica-jre-11-full/management/jmxremote.access
 	backup = etc/liberica-jre-11-full/management/jmxremote.password.template
