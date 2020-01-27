@@ -1,7 +1,7 @@
 pkgbase = gcsfuse
 	pkgdesc = A user-space file system for interacting with Google Cloud Storage
 	pkgver = 0.29.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GoogleCloudPlatform/gcsfuse
 	arch = x86_64
 	license = APACHE

@@ -3,7 +3,7 @@
 # Contributor: zfo <zfoofz1@gmail.com>
 pkgname=gcsfuse
 pkgver=0.29.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A user-space file system for interacting with Google Cloud Storage"
 url="https://github.com/GoogleCloudPlatform/gcsfuse"
 arch=('x86_64')
@@ -24,9 +24,11 @@ prepare() {
 build() {
   export GOPATH="$srcdir/go"  
   go build "$_gourl"
+  CGO_ENABLED=1 go build -buildmode=pie -o "mount.gcsfuse" "$_gourl/tools/mount_gcsfuse"
 }
 
 package() {
   install -Dm755 gcsfuse "${pkgdir}/usr/bin/gcsfuse"
-  ln -s ${pkgdir}/usr/bin/gcsfuse ${pkgdir}/usr/bin/mount.gcsfuse
+  install -Dm755 mount.gcsfuse "${pkgdir}/usr/bin/mount.gcsfuse"
+  cd "${pkgdir}/usr/bin" && ln -s mount.gcsfuse mount.fuse.gcsfuse
 }
