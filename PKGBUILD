@@ -10,7 +10,7 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.0.1.canary.4.r320.gb4c996e9
+pkgver=3.1.0.canary.3.r1.g0d086915
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -33,7 +33,6 @@ source=(
     "https://raw.githubusercontent.com/zeit/art/master/hyper/mark/Hyper-Mark-120@3x.png"
     "Hyper.desktop"
 )
-noextract=()
 sha256sums=('SKIP'
          'a0241b89a52b6fa959cb35f23aabd967223aa36698311bdb8bb8aa8f6bc6ac6c'
          'a928049af63f49dd270a26c7099dccbe038124e4195507919f2d062e5cd2ecaa'
@@ -41,7 +40,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
