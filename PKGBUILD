@@ -6,7 +6,7 @@
 pkgname=soulseekqt
 pkgver=20180130
 _pkgver=2018-1-30
-pkgrel=9
+pkgrel=10
 pkgdesc="A desktop client for the Soulseek peer-to-peer file sharing network"
 arch=('x86_64')
 url="http://www.soulseekqt.net/news/"
@@ -39,11 +39,12 @@ package() {
     
     msg2 "Cleanup"
     chmod 755 -R $pkgdir/opt/$pkgname
+    # This fix context menu on right click in search results
     rm $pkgdir/opt/$pkgname/lib/libfreetype.so.6
     rm -rf $pkgdir/opt/soulseekqt/{AppRun,default.desktop,soulseek.png,*.AppImage}
 }
 
 md5sums=('1d98331893bc9b9d45ba34f6523353ab'
          '4ed42be654289fc9cd7f4181c363f745'
-         '2c44de8164d81d54e458bb38de3eee18'
+         '41ce0a1b4d98db4e5309426c2fb2a3ef'
          '2544611108889c2c4c7a9084672f4d32')
