@@ -34,8 +34,14 @@ md5sums=('6419e8852927454a87145e807f695ab1'
          'f3aa42aad7d25dcbe9079b9b3214d09f')
 
 prepare() {
-  # Link iupview statically
-  sed 's/USE_STATIC = Yes/USE_STATIC =/' -i "$srcdir"/iup/srcview/config.mak
+  # Link to libcd, libim and libftgl dynamically (they are not part of iup source code)
+  sed '/ifdef USE_STATIC/{ N; s|.*\n\(\s*ifdef USE_XRENDER\)|ifdef x_UNDEFINED_x\n\1|; }' -i "$srcdir"/iup/tecmake.mak
+  sed '/ifdef USE_STATIC/{ N; s|.*\n\(\s*SLIB += $(IM_LIB)/libim.a\)|ifdef x_UNDEFINED_x\n\1|; }' -i "$srcdir"/iup/tecmake.mak
+  sed '/ifdef USE_STATIC/{ N; s|.*\n\(\s*SLIB += $(FTGL_LIB)/libftgl.a\)|ifdef x_UNDEFINED_x\n\1|; }' -i "$srcdir"/iup/tecmake.mak
+
+  # Link libcdgl and libcdcontextplus dynamically for iupvled
+  sed 's|SLIB += $(CD_LIB)/libcdgl.a|LIBS += cdgl|' -i "$srcdir"/iup/srcvled/config.mak
+  sed 's|SLIB += $(CD_LIB)/libcdcontextplus.a|LIBS += cdcontextplus|' -i "$srcdir"/iup/srcvled/config.mak
 
   # We want to use dynamic liblua
   sed '/NO_LUALINK = Yes/{ n; s/.*/LIBS += lua$(LUA_SFX)/; }' -i "$srcdir"/iup/srcluaconsole/config.mak
@@ -90,6 +96,7 @@ build() {
     iupimglib \
     ledc \
     iupview \
+    iupvled \
     CD_LIB=/usr/lib \
     CD_INC=/usr/include/cd \
     IM_LIB=/usr/lib \
