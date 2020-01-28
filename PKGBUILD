@@ -3,7 +3,7 @@
 pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
-pkgver='0.8.9'
+pkgver='0.8.10'
 pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://gitlab.com/sumner/sublime-music'
@@ -26,8 +26,8 @@ depends=(
 makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
-source=('https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.8.9.tar.gz')
-sha256sums=('3506a2a7493e3a344d4b08d3d44bdbd2aed25a88f9ac03b8cdb37fa81d5f1220')
+source=('https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.8.10.tar.gz')
+sha256sums=('1dbbb5a60419ec4b3adbde6bf3fc20cd4a414f7bbcfa478a952e314615727c9e')
 
 
 build() {
