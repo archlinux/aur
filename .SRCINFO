@@ -5,6 +5,7 @@ pkgbase = battery-monitor-git
 	url = https://github.com/maateen/battery-monitor
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = acpi
 	depends = python-gobject
