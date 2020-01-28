@@ -1,6 +1,6 @@
 pkgbase = python-lifelines
 	pkgdesc = Survival analysis in Python
-	pkgver = 0.23.8
+	pkgver = 0.23.9
 	pkgrel = 1
 	url = https://github.com/CamDavidsonPilon/lifelines
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-lifelines
 	depends = python-matplotlib
 	depends = python-pandas
 	options = !emptydirs
-	source = lifelines-0.23.8.tar.gz::https://github.com/CamDavidsonPilon/lifelines/archive/v0.23.8.tar.gz
-	sha256sums = 77d5e804f6811095db52fc82f65e56d8272e5c578e12011be8c2e8257c7674e8
+	source = lifelines-0.23.9.tar.gz::https://github.com/CamDavidsonPilon/lifelines/archive/v0.23.9.tar.gz
+	sha256sums = 11c5025583c1e2bc6475dee80f9c3839a2b3942dfe6f99adea36a1293e265167
 
 pkgname = python-lifelines
 
