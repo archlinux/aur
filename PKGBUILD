@@ -1,8 +1,8 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=firmware-manager-git
 pkgver=r152.df334ae
 pkgrel=1
-pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd, written in Rust."
+pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
 url="https://github.com/pop-os/firmware-manager"
 license=('GPL3')
