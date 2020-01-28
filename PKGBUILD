@@ -1,11 +1,13 @@
 # Maintainer: mehalter <micah at mehalter.com>
 # Contributor: mehalter <micah at mehalter.com>
+# Contributor: Maxim Moseychuk <franchesko.salias.hudro.pedros@gmail.com>
+# Contributor: oozyslug <oozyslug at gmail dot com>
 # Submitter: mehalter <micah at mehalter.com>
 
 _pkgname=antigen
 pkgname=antigen
 pkgver='2.2.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin manager for zsh, inspired by oh-my-zsh and vundle."
 arch=('any')
 url="https://github.com/zsh-users/antigen"
