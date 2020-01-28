@@ -1,16 +1,16 @@
 pkgbase = urlgrabber
 	pkgdesc = A high-level cross-protocol url-grabber and Python library
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
-	url = http://urlgrabber.baseurl.org/
+	url = https://github.com/rpm-software-management/urlgrabber
 	arch = any
 	license = LGPL
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-pycurl
 	depends = python2-six
-	source = http://urlgrabber.baseurl.org/download/urlgrabber-4.0.0.tar.gz
-	sha256sums = d152d10c7decce45ce5b44f8ee8ee5fd0047217f4152eebb8e0c552ca5137af0
+	source = urlgrabber-4.1.0.tar.gz::https://github.com/rpm-software-management/urlgrabber/archive/urlgrabber-4-1-0.tar.gz
+	sha256sums = 15d95a67be991cc0722d45f6c7902bfce06f298b1edcb3faba4ccc1865992342
 
 pkgname = urlgrabber
 
