@@ -9,9 +9,17 @@ pkgbase = vulkan-extensionlayer-git
 	makedepends = ninja
 	makedepends = vulkan-headers
 	depends = vulkan-icd-loader
+	provides = vulkan-extensionlayer
 	conflicts = vulkan-extensionlayer
 	source = https://github.com/KhronosGroup/Vulkan-ExtensionLayer
 	sha256sums = SKIP
 
 pkgname = vulkan-extensionlayer-git
+
+pkgname = lib32-vulkan-extensionlayer-git
+	pkgdesc = Layer providing Vulkan features when native support is unavailable (library for 32-bit applications)
+	depends = vulkan-icd-loader
+	depends = vulkan-extensionlayer
+	provides = lib32-vulkan-extensionlayer
+	conflicts = lib32-vulkan-extensionlayer
 
