@@ -1,7 +1,7 @@
 pkgbase = maestral-git
 	pkgdesc = A light-weight and open-source Dropbox client.
 	pkgver = 0.5.0.r0.g43c3e73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral-dropbox
 	arch = any
 	license = MIT
@@ -19,11 +19,15 @@ pkgbase = maestral-git
 	depends = python-pyro5
 	depends = python-systemd
 	depends = python-sdnotify
-	optdepends = python-pyqt5: GUI support (runtime)
+	optdepends = python-pyqt5: GUI support for runtime
 	provides = maestral
 	conflicts = maestral
 	source = git+https://github.com/SamSchott/maestral-dropbox
+	source = maestral.service
+	source = maestral-config@.service
 	md5sums = SKIP
+	md5sums = 3ba26948bcf8652de28d95e3fd787fdb
+	md5sums = c4fb651691cde2218426ca32c69cf859
 
 pkgname = maestral-git
 
