@@ -58,10 +58,10 @@ package() {
     # Run python setup function
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
     # Install the licence
-    install -Dm644 "${scrdir}/${_srcname}/LICENSE.txt" \
+    install -Dm644 "${srcdir}/${_srcname}/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
     # Install the icon
-    install -Dm644 "${scrdir}/${_srcname}/${_name}/gui/resources/maestral.png" \
+    install -Dm644 "${srcdir}/${_srcname}/${_name}/gui/resources/maestral.png" \
         "${pkgdir}/usr/share/pixmaps/${_name}.png"
     # Install the generated desktop file
     install -Dm644 "${srcdir}/${_name}.desktop" -t "${pkgdir}/usr/share/applications"
