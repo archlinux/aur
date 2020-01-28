@@ -1,7 +1,7 @@
 pkgbase = lbry-app-bin
 	pkgdesc = The LBRY app built using electron
 	pkgver = 0.39.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lbry.com/
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = lbry-app-bin
 	depends = libxtst
 	depends = nss
 	depends = libsecret
+	depends = gnome-keyring
 	source = https://github.com/lbryio/lbry-desktop/releases/download/v0.39.1/LBRY_0.39.1.deb
 	sha256sums = c5c462eef4a5f1062d708c98adef88a0e2cacd796a039e41a14d83e085ef5c22
 
