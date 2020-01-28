@@ -1,7 +1,7 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: Chris Nixon <chris.nixon@sigma.me.uk>
 pkgname=pyenv-git
-pkgver=1.2.8.r14.g337b92d9
+pkgver=1.2.16.r5.g7097f820
 pkgrel=2
 pkgdesc='Simple Python version management'
 arch=('any')
@@ -33,6 +33,7 @@ package() {
     # install python-build plugin
     cd plugins/python-build
     PREFIX="${pkgdir}/opt/pyenv" ./install.sh 
+    ln -s /opt/pyenv/bin/python-build "${pkgdir}/usr/bin/python-build"
 
     for bin in pyenv-{,un}install; do
         ln -s /opt/pyenv/bin/"${bin}" "${pkgdir}/opt/pyenv/libexec/${bin}"
