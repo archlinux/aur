@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: LinArcx <linarcx at gmail.com>
 pkgname=kindd
 pkgver=2.0.1
@@ -25,6 +25,5 @@ package() {
 	install -Dm644 appconf/"$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 	install -Dm644 appconf/"$pkgname.svg" -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
