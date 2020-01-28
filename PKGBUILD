@@ -5,7 +5,7 @@
 pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
 pkgver=v5.0
-pkgrel=2
+pkgrel=3
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 arch=("any")
@@ -14,7 +14,7 @@ license=("MIT" "LGPLv2.1" "Ms-PL")
 depends=("dotnet-runtime")
 makedepends=("dotnet-sdk" "libicns")
 
-source=("git+https://github.com/Necklaces/${_gitname}.git"
+source=("git+https://github.com/icsharpcode/${_gitname}.git"
         "${pkgname}.desktop")
 sha256sums=("SKIP"
             "607c64adb67e7d6d54e2d6ca57e5f3b2e68aa4ba80cb745dd9e93b8e86677d26")
