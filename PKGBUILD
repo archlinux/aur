@@ -1,8 +1,9 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-web-shortcuts-extension-git
 pkgver=r16.2d89c1e
 pkgrel=2
-pkgdesc="Adds a 'Create web link...' menu item to Nautilus, which makes it simple to create URL shortcut files in directories"
+pkgdesc="Adds a 'Create web link...' menu item to Nautilus, which makes it simple to
+         create URL shortcut files in directories"
 arch=('any')
 url="https://gitlab.gnome.org/sthursfield/gnome-web-shortcuts-extension"
 depends=('nautilus' 'firefox')
