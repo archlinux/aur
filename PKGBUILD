@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=horizontal-grub
 pkgver=0.1.2
 pkgrel=1
@@ -12,5 +12,5 @@ sha256sums=('f15383f572392827a062aeef995fdae895b8d7055003fa2bf802100f89cbe795')
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 horizontal-grub $pkgdir/usr/bin/horizontal-grub
+	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 }
