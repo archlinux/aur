@@ -11,8 +11,15 @@ license=('APACHE')
 depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_util.so' 'leatherman_locale.so')
 makedepends=('boost' 'cmake' 'leatherman' 'rapidjson')
 provides=('libcpp-hocon.so')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz")
-sha512sums=('fcc377da7923b77436a6f2787d5b8b1b573f239de4f059c4a5949cbb1a755fd12024b9155f5e44cf60141181942f3e9a2a8fad07ee0b1d516fe2cd4a88d4ac8b')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz"
+        $pkgname-boost-1.72.patch::https://github.com/puppetlabs/cpp-hocon/commit/caab27550982.patch)
+sha512sums=('fcc377da7923b77436a6f2787d5b8b1b573f239de4f059c4a5949cbb1a755fd12024b9155f5e44cf60141181942f3e9a2a8fad07ee0b1d516fe2cd4a88d4ac8b'
+            '1c73065ace6ec957b0d7241f680e475708deedad43d2a200b4877350e0712dbf13aea8b0c12c7a0d02c12e2c0b3f201ae85b952969eb66e390276bed83a5d7ad')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i ../$pkgname-boost-1.72.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
