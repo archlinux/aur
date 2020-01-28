@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Sibren Vasse <arch at sibrenvasse dot nl>
 # Contributor: Matt Welch <matt dot welch at gmail dot com>
 # Contributor: Anish Bhatt <anish at gatech dot edu>
@@ -10,7 +10,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=440.44
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -23,11 +23,13 @@ provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" "nvidia-beta=${pkgver}")
 conflicts=('nvidia')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
-        'FS62142.patch'
-        '0001-nvidia-beta-dkms-change-dkms-conf.patch'
-        '0002-nvidia-beta-dkms-linux-rt-gift.patch')
+        '010-nvidia-prime-kernel-5.4.patch::https://gitlab.com/snippets/1929174/raw'
+        '020-nvidia-kernel-5.5.patch::https://gitlab.com/snippets/1923197/raw'
+        '110-nvidia-beta-dkms-change-dkms-conf.patch'
+        '120-nvidia-beta-dkms-linux-rt-gift.patch')
 sha256sums=('794fdfc8e65c203ae482f59df7e55050ddcf0a11af2a95eaa1a10c7d48ec7e0f'
-            'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
+            'bedd55074771222bad8391c66b7022a266c135ff51d478710f7dda8708c3e9aa'
+            '7dcd609e85720cb812d7b41320d845931d8ea3e8529c700231372e0da66e5804'
             'eb2bdea01f430a493a40b5fa77f762d09fd5fa450517070b4d7f429cb75e2089'
             '25e29ee166552523366278d94ba69a7895cd50321cf402a9f69598b16a9e2827')
 
@@ -37,25 +39,15 @@ prepare() {
     printf '%s\n' "  -> Self-Extracting ${_pkg}.run..."
     sh "${_pkg}.run" --extract-only
     
-    cd "$_pkg"
-    patch -Np1 -i "${srcdir}/0001-nvidia-beta-dkms-change-dkms-conf.patch"
-    patch -Np1 -i "${srcdir}/0002-nvidia-beta-dkms-linux-rt-gift.patch"
-    
-    # fix https://bugs.archlinux.org/task/62142
-    patch -Np1 -i "${srcdir}/FS62142.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/010-nvidia-prime-kernel-5.4.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/020-nvidia-kernel-5.5.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-beta-dkms-change-dkms-conf.patch"
+    patch -d "$_pkg" -Np1 -i "${srcdir}/120-nvidia-beta-dkms-linux-rt-gift.patch"
 }
 
 package() {
-    cd "$_pkg"
-    
     mkdir -p "${pkgdir}/usr/src"
-    
-    # install
-    cp -dr --no-preserve='ownership' kernel "${pkgdir}/usr/src/nvidia-${pkgver}"
-    
-    # blacklist nouveau driver
+    cp -dr --no-preserve='ownership' "${_pkg}/kernel" "${pkgdir}/usr/src/nvidia-${pkgver}"
     printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
-    
-    # license
-    install -D -m644 "${srcdir}/${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
