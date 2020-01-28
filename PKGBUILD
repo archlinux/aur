@@ -15,7 +15,7 @@ depends=('python-altgraph' 'python-macholib' 'python-pefile')
 makedepends=('python-setuptools')
 optdepends=('python-crypto: executable encryption support'
             'upx: executable compression support')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz" #{,.asc})
 #source=("https://github.com/pyinstaller/pyinstaller/releases/download/v$pkgver/$_name-$pkgver.tar.gz"{,.asc})
 sha256sums=('3730fa80d088f8bb7084d32480eb87cbb4ddb64123363763cf8f2a1378c1c4b7')
             #'SKIP')
