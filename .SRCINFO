@@ -1,11 +1,11 @@
 pkgbase = git-nemo-icons-git
 	pkgdesc = A Nemo Python extension to overlay icons on files in git repositories
-	pkgver = 1.1.1.r7.37db00c
+	pkgver = 1.1.1.r9.geaf4fbf
 	pkgrel = 1
 	url = https://github.com/chrisjbillington/git_nemo_icons
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = BSD 2-Clause "Simplified"
+	makedepends = git
 	makedepends = python-setuptools
 	depends = git-nautilus-icons-common
 	depends = nemo-python
