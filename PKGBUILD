@@ -1,7 +1,7 @@
 # Maintainer: Matthias Reitinger <reima at edenprime dot de>
 
 pkgname=leocad-git
-pkgver=19.07.1.r74.3044bf39
+pkgver=19.07.1.r95.858bb737
 pkgrel=1
 pkgdesc="A CAD program for creating virtual LEGO models."
 arch=('i686' 'x86_64')
