@@ -1,8 +1,9 @@
 pkgbase = octopi-git
 	pkgdesc = This is Octopi, a powerful Pacman frontend using Qt libs
 	pkgver = 0.9.0.r336.a05add1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aarnt/octopi
+	install = octopi.install
 	arch = x86_64
 	license = GPL2
 	makedepends = git

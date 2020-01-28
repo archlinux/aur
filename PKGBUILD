@@ -12,7 +12,7 @@ WITH_DARK_ICON=1
 
 pkgname=octopi-git
 pkgver=0.9.0.r336.a05add1
-pkgrel=2
+pkgrel=3
 pkgdesc="This is Octopi, a powerful Pacman frontend using Qt libs"
 arch=('x86_64')
 url="https://github.com/aarnt/octopi"
@@ -46,6 +46,7 @@ conflicts=(
   'octopi-dev'
   'octopi-notifier-noknotify'
 )
+install=octopi.install
 source=(
   'git+https://github.com/aarnt/octopi.git' 
   'octopi_dark.png'
