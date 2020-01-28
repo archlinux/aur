@@ -1,7 +1,7 @@
 pkgbase = libdnf
 	pkgdesc = Library providing simplified C and Python API to libsolv
 	pkgver = 0.43.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rpm-software-management/libdnf
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = libdnf
 	depends = libsolv>=0.7.7
 	depends = libutil-linux
 	depends = openssl
-	depends = rpm-org>=4.11.0
+	depends = rpm-tools>=4.11.0
 	depends = sqlite
 	depends = zlib
 	optdepends = python: for python bindings

@@ -1,12 +1,12 @@
 pkgname=libdnf
 pkgver=0.43.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('LGPL2.1')
 depends=('glib2' 'gpgme' 'json-c' 'libmodulemd1>=1.6.1' 'librepo>=1.11.0' 'libsolv>=0.7.7'
-         'libutil-linux' 'openssl' 'rpm-org>=4.11.0' 'sqlite' 'zlib')
+         'libutil-linux' 'openssl' 'rpm-tools>=4.11.0' 'sqlite' 'zlib')
 makedepends=('cmake' 'gtk-doc' 'python' 'python-sphinx' 'swig' 'zchunk>=0.9.11')
 checkdepends=('check' 'cppunit' 'python-nose')
 optdepends=('python: for python bindings')
