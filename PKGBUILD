@@ -1,7 +1,7 @@
 # Maintainer: Lukas Rose <public@lrose.de>
 pkgname=geany-plugin-jsonprettifier
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clean up unformatted JSON in Geany editor"
 arch=('i686' 'x86_64')
 url="https://plugins.geany.org/jsonprettifier.html"
@@ -25,5 +25,5 @@ build() {
 package() {
   cd "Geany-JSON-Prettifier-$pkgver"
   mkdir -p "$pkgdir/usr/lib/geany"
-  make DESTDIR="$pkgdir/" install
+  make -j1 DESTDIR="$pkgdir/" install
 }
