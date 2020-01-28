@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=organizer-git
 pkgver=0.201.r0.g87e988e
 pkgrel=2
