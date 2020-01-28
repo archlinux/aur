@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gitin
 pkgver=0.2.3
 pkgrel=3
@@ -19,7 +19,7 @@ prepare() {
 	mkdir -p "$GOPATH/src"
 	ln -s "$srcdir/libgit2-$_lg2ver" "$GOPATH/src/libgit2-$_lg2ver"
 	ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$pkgname-$pkgver"
-	
+
 	cd "$GOPATH/src/libgit2-$_lg2ver"
 	git submodule update --init
 }
@@ -33,7 +33,7 @@ build() {
 		-DBUILD_CLAR=OFF \
 		-DCMAKE_BUILD_TYPE="RelWithDebInfo" ..
 	make
-	
+
 	cd "$GOPATH/src/$pkgname-$pkgver"
 	go build \
     	-trimpath \
@@ -43,6 +43,6 @@ build() {
 
 package() {
 	cd "$GOPATH/src/$pkgname-$pkgver"
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
