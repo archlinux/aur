@@ -1,16 +1,17 @@
 pkgbase = ejabberd-git
 	pkgdesc = Jabber server written in Erlang
-	pkgver = 16.12.27.gce42b6be
+	pkgver = 20.01.3.g20c0fed45
 	pkgrel = 1
-	url = http://www.ejabberd.im/
-	install = ejabberd.install
+	url = https://www.ejabberd.im/
 	arch = x86_64
-	arch = i686
 	license = GPL
 	makedepends = git
 	makedepends = rebar
+	makedepends = hevea
+	makedepends = texlive-bin
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
 	depends = expat
-	depends = elixir
 	depends = openssl
 	depends = zlib
 	depends = erlang-nox
@@ -19,47 +20,50 @@ pkgbase = ejabberd-git
 	depends = erlang-unixodbc
 	depends = libyaml
 	depends = sqlite
-	provides = ejabberd
+	depends = gd
+	optdepends = gsfonts: for captcha
+	optdepends = imagemagick: for captcha
+	provides = ejabberd=20.01.3.g20c0fed45
 	conflicts = ejabberd
 	options = emptydirs
 	backup = etc/ejabberd/ejabberd.yml
 	backup = etc/ejabberd/ejabberdctl.cfg
 	backup = etc/logrotate.d/ejabberd
 	source = ejabberd-git::git+https://github.com/processone/ejabberd#branch=master
-	source = cache_tab::git+https://github.com/processone/cache_tab
-	source = eredis::git+https://github.com/wooga/eredis
-	source = esip::git+https://github.com/processone/esip
-	source = ezlib::git+https://github.com/processone/ezlib
-	source = fast_tls::git+https://github.com/processone/fast_tls
-	source = fast_xml::git+https://github.com/processone/fast_xml
-	source = fast_yaml::git+https://github.com/processone/fast_yaml
-	source = goldrush::git+https://github.com/DeadZen/goldrush.git
-	source = hamcrest::git+https://github.com/basho/hamcrest-erlang
-	source = iconv::git+https://github.com/processone/iconv
-	source = jiffy::git+https://github.com/davisp/jiffy
-	source = lager::git+https://github.com/basho/lager
-	source = luerl::git+https://github.com/rvirding/luerl
-	source = meck::git+https://github.com/eproxus/meck
-	source = moka::git+https://github.com/processone/moka.git
-	source = p1_mysql::git+https://github.com/processone/p1_mysql
-	source = p1_oauth2::git+https://github.com/processone/p1_oauth2
-	source = p1_pam::git+https://github.com/processone/epam
-	source = p1_pgsql::git+https://github.com/processone/p1_pgsql
-	source = p1_utils::git+https://github.com/processone/p1_utils
-	source = p1_xmlrpc::git+https://github.com/processone/p1_xmlrpc
-	source = protobuffs::git+https://github.com/basho/erlang_protobuffs#commit=0d22220a8e56adab129836d6ff582a9bca103a0c
-	source = rebar_elixir_plugin::git+https://github.com/processone/rebar_elixir_plugin
-	source = riakc::git+https://github.com/basho/riak-erlang-client#commit=261df630afe4a998e099a8ab209a2dc7419f85de
-	source = riak_pb::git+https://github.com/basho/riak_pb#commit=9ca2395f9d6464b82bab466bbdca410cb85a0ac7
-	source = samerlib::git+https://github.com/processone/samerlib
-	source = sqlite3::git+https://github.com/processone/erlang-sqlite3
-	source = stringprep::git+https://github.com/processone/stringprep
-	source = stun::git+https://github.com/processone/stun
-	source = xmpp::git+https://github.com/processone/xmpp
+	source = base64url::git://github.com/dvv/base64url.git#commit=f2c64ed8b9bebc536fad37ad97243452b674b837
+	source = cache_tab::git://github.com/processone/cache_tab#commit=ee1b27bc64322e87b26e045779dd284dc217a998
+	source = eimp::git://github.com/processone/eimp#commit=9585ed6dc5473454ff6f27dedd7825474a4ccf40
+	source = elixir::git://github.com/elixir-lang/elixir#commit=867da6f876c48279823a41a33030c95ef37379b2
+	source = epam::git://github.com/processone/epam#commit=7d4d359c2862bd2d0ad5f3f641bade64aed8f35b
+	source = eredis::git://github.com/wooga/eredis#commit=cbc013f516e464706493c01662e5e9dd82d1db01
+	source = esip::git://github.com/processone/esip#commit=a58fdd16ddc02af03261f0642e789e2738d7eb5d
+	source = ezlib::git://github.com/processone/ezlib#commit=3bfd5bf53a6a6a58278aca354b56ab4f911a6c0d
+	source = fast_tls::git://github.com/processone/fast_tls#commit=2ec26b6a596efa5f3be0cd2e06ec54f2779a08e7
+	source = fast_xml::git://github.com/processone/fast_xml#commit=5f6aa4492ff8f601eb5b179e5280c8a8adf750fb
+	source = fast_yaml::git://github.com/processone/fast_yaml#commit=e7fb1c591c7d18aba4853bc2118794ec6fa565d4
+	source = goldrush::git://github.com/DeadZen/goldrush.git#commit=8f1b715d36b650ec1e1f5612c00e28af6ab0de82
+	source = idna::git://github.com/benoitc/erlang-idna#commit=6cff72747821110169ecfac871b0c69e5064afff
+	source = jiffy::git://github.com/davisp/jiffy#commit=1febce3ca86c5ca5d5a3618ed3d5f125bb99e4c5
+	source = jose::git://github.com/potatosalad/erlang-jose#commit=5ad99d03c5381ec68a9576c81ed4e9312fea73e0
+	source = lager::git://github.com/erlang-lager/lager#commit=4ffdf0dbef53304bc0e958a00776bf0650de8c8b
+	source = luerl::git://github.com/rvirding/luerl#commit=01fa43a1a5d68becfe07236a9a71505039474108
+	source = mqtree::git://github.com/processone/mqtree#commit=501ad10fd43e988ba6ebc75cc732a0667e236a40
+	source = p1_acme::git://github.com/processone/p1_acme.git#commit=0ec60cb929ba625f9c8dd8354c83588f048b4f8b
+	source = p1_mysql::git://github.com/processone/p1_mysql#commit=b3edaa2ca29fd073dd7620ba7282c752af7ec28d
+	source = p1_oauth2::git://github.com/processone/p1_oauth2#commit=57434e2e07530e9026159f891059eb808b08eae3
+	source = p1_pgsql::git://github.com/processone/p1_pgsql#commit=7db1347e487114b128fe805e1d329336ebda803e
+	source = p1_utils::git://github.com/processone/p1_utils#commit=6287a621c93a34d4f45a3844c8d1c7ef72dd0dfb
+	source = pkix::git://github.com/processone/pkix#commit=c204ea8dfd20473c866da0cb85691a1f77ef0bb8
+	source = rebar_elixir_plugin::git://github.com/processone/rebar_elixir_plugin#commit=10614dfef5d10b7071f7181858149259e50159f6
+	source = sqlite3::git://github.com/processone/erlang-sqlite3#commit=cedc45a668d7630f942cab1c6f695de14b097e05
+	source = stringprep::git://github.com/processone/stringprep#commit=ff2a90011d4b2014a96a3c5675447b3cd144aaf1
+	source = stun::git://github.com/processone/stun#commit=2a02761a6f7b09719005c27a632abfeeac21120a
+	source = unicode_util_compat::git://github.com/benoitc/unicode_util_compat.git#commit=38d7bc105f51159e8ea3279c40121db9db1e652f
+	source = xmpp::git://github.com/processone/xmpp#commit=9e236a64ebb5c8d66bce6bde31adb6196e4dfe6d
+	source = yconf::git://github.com/processone/yconf#commit=b40af2f95b33465e7cabf408478c7d56830e4a85
 	source = ejabberd.logrotate
-	source = ejabberd.service
 	source = sysuser.conf
-	source = rebar.config.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -92,9 +96,7 @@ pkgbase = ejabberd-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = a2d5b500d31c64a6a76effaad4335521161ec135d0f5706a9419acfedbffdbc8
-	sha256sums = 3b5d43138fc11433da529910278de017ebab02bb3c34aafac4aa1adba29cb58f
-	sha256sums = 2910ff12700cfe9c2fe73f4b7dfbc8c974fdb7f51c000fc754020548b737560b
-	sha256sums = 90e33c351adadfc39ec3b44cc8f13d0526393295d7b847a0d8f4bc69d8db664e
+	sha256sums = 68de8fd4df6e4f0e21a241dcd2b7075bdff495876646dd726c7054bf5780e3c6
 
 pkgname = ejabberd-git
 
