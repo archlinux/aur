@@ -1,6 +1,6 @@
 pkgbase = kplot
 	pkgdesc = Cairo plotting library
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://kristaps.bsd.lv/kplot/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = kplot
 	depends = cairo
 	depends = libbsd
 	source = https://kristaps.bsd.lv/kplot/snapshots/kplot.tgz
-	source = makefile_linux.patch
-	sha1sums = cc3ab77a39f5d1d057f8ed5319b3e1f52c4e9343
-	sha1sums = 115e6a685440d14efd682ac6a5418b1cb8204099
+	source = linux.patch
+	sha1sums = f894b9634dde97df3731f1155649350080b8bf8a
+	sha1sums = ce9ac134f39fd7a1b17c74a9cbc3df436522adac
 
 pkgname = kplot
 

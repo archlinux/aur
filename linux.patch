@@ -1,0 +1,21 @@
+diff -Nru kplot-0.1.15.orig/Makefile kplot-0.1.15/Makefile
+--- kplot-0.1.15.orig/Makefile	2016-11-03 07:38:25.000000000 +0100
++++ kplot-0.1.15/Makefile	2020-01-28 22:03:56.422383210 +0100
+@@ -6,7 +6,7 @@
+ VERSION		= 0.1.15
+ LDADD		= `pkg-config --libs --silence-errors cairo || echo '-L/opt/X11/lib -lcairo'`
+ #If you're on GNU/Linux, you'll need to uncomment this.
+-#LDADD		+= -L/usr/local/include -lbsd
++LDADD		+= -L/usr/include -lbsd
+ EXAMPLES	= example0 \
+ 		  example1 \
+ 		  example2 \
+@@ -173,7 +173,7 @@
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/man/man3
+ 	install -m 0444 libkplot.a $(DESTDIR)$(PREFIX)/lib
+ 	install -m 0444 kplot.h $(DESTDIR)$(PREFIX)/include
+-	install -m 0444 $(MANS) $(DESTDIR)$(PREFIX)/man/man3
++	install -m 0444 $(MANS) $(DESTDIR)$(PREFIX)/share/man/man3
+ 
+ www: $(HTMLS) $(PNGS) kplot.tgz kplot.tgz.sha512
+ 
