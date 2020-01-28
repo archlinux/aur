@@ -1,7 +1,7 @@
 pkgbase = rust-analyzer-bin
 	pkgdesc = An experimental Rust compiler front-end for IDEs. Binary build.
 	pkgver = 20200127
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rust-analyzer/rust-analyzer
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = rust-analyzer-bin
 	conflicts = rust-analyzer
 	conflicts = rust-analyzer-git
 	conflicts = rust-analyzer-vscode-git
-	source = ra_lsp_server::https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-01-27/ra_lsp_server-linux
+	source = ra_lsp_server-2020-01-27::https://github.com/rust-analyzer/rust-analyzer/releases/download/2020-01-27/ra_lsp_server-linux
 	md5sums = 7ee3e7ac47fc418c360a0c33a0ffc339
 
 pkgname = rust-analyzer-bin
