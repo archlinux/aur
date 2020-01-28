@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-network-displays-git
 pkgver=0.90.2.0.g844c308
 pkgrel=1
