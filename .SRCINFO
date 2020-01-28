@@ -10,6 +10,8 @@ pkgbase = mingw-w64-wine-qt
 	depends = mingw-w64-qt5-tools
 	source = wine-xmlpatterns.sh
 	source = wine-qhelpgenerator.sh
+	source = qt.conf.in
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
