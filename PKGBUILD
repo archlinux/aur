@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=battery-monitor-git
 pkgver=0.6.r21.gfd1f4d7
 pkgrel=1
