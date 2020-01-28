@@ -1,0 +1,62 @@
+userName() {
+    whoami
+}
+
+hostName() {
+    hostname
+}
+
+distro() {
+    head -1 /etc/os-release | cut -d'"' -f2
+}
+
+kernel() {
+    uname -r
+}
+
+upTime() {
+    uptime -p | sed 's/up //'
+}
+
+totalPackages() {
+    pacman -Q | wc -l
+}
+
+repoPackages() {
+    pacman -Qqn | wc -l
+}
+
+aurPackages() {
+    pacman -Qqm | wc -l
+}
+
+installedExplicitly() {
+    pacman -Qqe | wc -l
+}
+
+updatesCount() {
+    if hash checkupdates 2>/dev/null; then
+        checkupdates | wc -l
+    else
+        echo "Install pacman-contrib package" 
+    fi
+}
+
+shellName() {
+    basename ${SHELL}
+}
+
+cat <<EOF
+
+    $(userName)@$(hostName)
+    OS:         $(distro)
+    KERNEL:     $(kernel)
+    UPTIME:     $(upTime)
+    PACKAGES:   $(totalPackages)
+    REPOS:      $(repoPackages)
+    AUR:        $(aurPackages)
+    EXPLICITLY: $(installedExplicitly)
+    UPDATES:    $(updatesCount)
+    SHELL:      $(shellName)
+
+EOF
