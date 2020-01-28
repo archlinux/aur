@@ -3,8 +3,8 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=nrpe
-pkgver=3.2.1
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('x86_64')
 license=('GPL')
@@ -16,7 +16,7 @@ backup=('etc/nrpe/nrpe.cfg' 'etc/xinetd.d/nrpe')
 url="https://github.com/NagiosEnterprises/nrpe"
 source=(https://github.com/NagiosEnterprises/nrpe/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
         nrpe.sysusers)
-md5sums=('8997e195fea93cdceb8c7ed8ac1d43bc'
+md5sums=('e4cee2daed0ccdadb09693c55c4837d1'
          '079d1f8c06598303be95151a8985927b')
 
 build() {
@@ -58,7 +58,7 @@ package() {
   sed -i 's/=31$/=nrpe/g' "$pkgdir"/etc/nrpe/nrpe.cfg "$pkgdir"/usr/lib/systemd/system/nrpe.service
 
   # Tidy up
-  chmod 755 "$pkgdir"/usr/lib/monitoring-plugins
+  chmod -R 755 "$pkgdir"/usr/lib/monitoring-plugins
   chown -R root:root "$pkgdir"/usr/lib/monitoring-plugins
   rm -f "$pkgdir"/usr/bin/nrpe-uninstall
   rm -rf "$pkgdir"/run
