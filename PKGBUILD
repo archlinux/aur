@@ -1,49 +1,56 @@
-# Maintainer: Joel Teichroeb <joel@teichroeb.net>
-# Contributor: Bruno Pagani <archange@archlinux.org>
-# Contributor: Mirco Tischler <mt-ml at gmx dot de>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
 _pkgname=fwupd
-pkgver=1.2.5.r78.g6109652f
+pkgver=1.3.6.r62.g79309920
 pkgrel=1
 pkgdesc="A simple daemon to allow session software to update firmware"
-arch=('x86_64')
-url="https://github.com/hughsie/fwupd"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/fwupd/fwupd"
 license=('LGPL')
 depends=('libxmlb' 'efivar' 'python' 'libsmbios' 'libgusb'
          'libsoup' 'json-glib' 'gcab' 'libarchive' 'gpgme'
-         'libgudev' 'polkit' 'shared-mime-info')
+         'libgudev' 'polkit' 'shared-mime-info' 'modemmanager'
+         'tpm2-tss')
 makedepends=('meson' 'valgrind' 'gobject-introspection' 'gtk-doc'
              'python-cairo' 'noto-fonts' 'noto-fonts-cjk' 'python-gobject' 'vala'
-             'bash-completion' 'python-pillow' 'help2man' 'gnu-efi-libs' 'git')
-optdepends=('tpm2-abrmd: TPM2 support'
-            'tpm2-tools: TPM2 support')
+             'bash-completion' 'python-pillow' 'help2man' 'gnu-efi-libs' 'tpm2-tss')
 checkdepends=('umockdev')
 conflicts=('fwupd')
-backup=('etc/fwupd/daemon.conf' 'etc/fwupd/uefi.conf')
-source=("git+https://github.com/hughsie/fwupd.git")
-sha256sums=('SKIP')
+provides=('fwupd')
+backup=('etc/fwupd/daemon.conf'
+        'etc/fwupd/redfish.conf'
+        'etc/fwupd/remotes.d/dell-esrt.conf'
+        'etc/fwupd/remotes.d/fwupd-tests.conf'
+        'etc/fwupd/remotes.d/lvfs-testing.conf'
+        'etc/fwupd/remotes.d/lvfs.conf'
+        'etc/fwupd/remotes.d/vendor-directory.conf'
+        'etc/fwupd/remotes.d/vendor.conf'
+        'etc/fwupd/uefi.conf')
+source=("git+https://github.com/fwupd/fwupd.git")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd ${_pkgname}
+  cd "${_pkgname}"
 
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${_pkgname}
-    arch-meson -D b_lto=false ../build
-    ninja -v -C ../build
+  cd "${_pkgname}"
+  arch-meson -D b_lto=false ../build
+  ninja -v -C ../build
 }
 
+check() {
+  cd build
+  meson test
+}
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
-    # Fixup mode to match polkit
-    install -d -o root -g 102 -m 750 "${pkgdir}"/usr/share/polkit-1/rules.d
-    # Move D-BUS policy
-    mv "${pkgdir}"/{etc,usr/share}/dbus-1/system.d
-    rmdir "${pkgdir}"/etc/dbus-1
-    # Remove the tests
-    rm -r "${pkgdir}"/usr/share/installed-tests/
+  DESTDIR="${pkgdir}" ninja -C build install
+  # Fixup mode to match polkit
+  install -d -o root -g 102 -m 750 "${pkgdir}"/usr/share/polkit-1/rules.d
+  # Remove the tests
+  rm -r "${pkgdir}"/usr/share/installed-tests/
 }
