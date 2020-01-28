@@ -1,0 +1,28 @@
+From 22329f32bf1a7923dabbf53e728836dd274e9734 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Martin=20Kr=C3=B6ning?= <m.kroening@hotmail.de>
+Date: Wed, 29 Jan 2020 12:38:33 +0100
+Subject: [PATCH] Project File: Fix path seperator
+
+Since Qt 5.14 backslashes are not permitted.
+---
+ Sync-my-L2P.pro | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Sync-my-L2P.pro b/Sync-my-L2P.pro
+index 03baea5..5e73e82 100644
+--- a/Sync-my-L2P.pro
++++ b/Sync-my-L2P.pro
+@@ -62,8 +62,8 @@ TRANSLATIONS = lang/sync-my-l2p_de.ts \
+                lang/sync-my-l2p_sq.ts
+ 
+ RESOURCES += \
+-    icons\icons.qrc \
+-    lang\translation.qrc
++    icons/icons.qrc \
++    lang/translation.qrc
+ 
+ RC_FILE = icon.rc
+ 
+-- 
+2.25.0
+

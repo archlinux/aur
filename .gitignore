@@ -1,5 +1,5 @@
-/*.tar.xz
+/*.tar.*
 /*.AppImage
 /pkg
 /src
-/Sync-my-L2P
+/*.log
