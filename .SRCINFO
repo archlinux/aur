@@ -1,7 +1,7 @@
 pkgbase = brogue-ce-git
 	pkgdesc = Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor.
-	pkgver = 1.8.r13.gac3d50b
-	pkgrel = 2
+	pkgver = 1.8.1.r0.g9f9254d
+	pkgrel = 1
 	url = https://github.com/tmewett/BrogueCE
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,7 @@ pkgbase = brogue-ce-git
 	makedepends = git
 	depends = sdl2_image
 	source = brogue-ce-git::git+https://github.com/tmewett/BrogueCE.git
-	source = brogue.sh
 	md5sums = SKIP
-	md5sums = 38dc6a1ba7f29decb26a5745784341b3
 
 pkgname = brogue-ce-git
 
