@@ -2,12 +2,11 @@ diff --git a/oscar/oscar.pro b/oscar/oscar.pro
 index cd228b00..18199837 100644
 --- a/oscar/oscar.pro
 +++ b/oscar/oscar.pro
-@@ -471,6 +471,9 @@ QMAKE_CXXFLAGS += -Werror
+@@ -471,6 +471,8 @@ QMAKE_CXXFLAGS += -Werror
  QMAKE_CFLAGS += -Wno-error=deprecated-declarations
  QMAKE_CXXFLAGS += -Wno-error=deprecated-declarations
  
 +# Make g++ more permissive
-+QMAKE_CFLAGS += -fpermissive
 +QMAKE_CXXFLAGS += -fpermissive
  
  # Create a debug GUI build by adding "CONFIG+=memdebug" to your qmake command
