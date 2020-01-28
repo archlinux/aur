@@ -1,6 +1,6 @@
 pkgbase = neovide
 	pkgdesc = No Nonsense Neovim Client in Rust
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Kethku/neovide
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = neovide
 	depends = glibc
 	provides = neovide
 	conflicts = neovide-git
-	source = neovide-0.2.0.tar.gz::https://github.com/Kethku/neovide/archive/0.2.0.tar.gz
-	sha256sums = 6a6e97ca2859609675edde468405f2072a6cbb08636a80ec3120996b7fc7fdb6
+	source = neovide-0.3.0.tar.gz::https://github.com/Kethku/neovide/archive/0.3.0.tar.gz
+	sha256sums = 8228691ac9050e83ad83792a5587d63dfe8a0a291f140c14ad39295b7b29be89
 
 pkgname = neovide
 

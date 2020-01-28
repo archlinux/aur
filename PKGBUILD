@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=neovide
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'gtk3')
 provides=("neovide")
 conflicts=("neovide-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('6a6e97ca2859609675edde468405f2072a6cbb08636a80ec3120996b7fc7fdb6')
+sha256sums=('8228691ac9050e83ad83792a5587d63dfe8a0a291f140c14ad39295b7b29be89')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
