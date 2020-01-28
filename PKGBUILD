@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=6.4.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=5
+pkgrel=6
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
