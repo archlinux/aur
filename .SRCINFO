@@ -1,0 +1,17 @@
+pkgbase = kinect-3d-git
+	pkgdesc = Kinect 3D Video Capture Project
+	pkgver = 3.7_21_gdb5f641
+	pkgrel = 1
+	url = https://github.com/KeckCAVES/Kinect
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-server
+	depends = libgl
+	depends = vrui-git
+	source = git+https://github.com/KeckCAVES/Kinect.git
+	md5sums = SKIP
+
+pkgname = kinect-3d-git
+
