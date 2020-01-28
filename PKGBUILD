@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jdsp4linux-gui
 pkgver=1.1
 pkgrel=1
@@ -20,9 +20,9 @@ build() {
 
 package() {
 	cd "JDSP4Linux-GUI-$pkgver"
-	install -Dm755 jdsp-gui "$pkgdir/usr/bin/jdsp-gui"
-	install -Dm644 "$srcdir/$pkgname.desktop" \
-		"$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm755 jdsp-gui -t "$pkgdir/usr/bin"
+	install -Dm644 "$srcdir/$pkgname.desktop" -t \
+		"$pkgdir/usr/share/applications"
 	install -Dm644 icons/icon.png \
 		"$pkgdir/usr/share/pixmaps/jdsp-gui.png"
 }
