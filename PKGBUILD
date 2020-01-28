@@ -82,7 +82,7 @@ _lua_iup_build_helper() {
 build() {
   # Build main iup package (without Lua bindings)
   cd "$pkgname"
-  make \
+  DEFINES="IUP_CZECH IUP_RUSSIAN" make \
     iup \
     iupgtk \
     iupmot \
