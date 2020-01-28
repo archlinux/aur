@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nemo-subliminal-git
 pkgver=r15.a8dcd74
 pkgrel=1
@@ -21,7 +21,7 @@ pkgver() {
 package() {
 
 	_installdir="$pkgdir/usr/share/nemo-python/extensions"
-	
+
 	cd "$srcdir/nautilus-subliminal"
 	install -Dm755 "nautilus-subliminal.py" "$_installdir/${pkgname%-git}.py"
 	install -d "$_installdir/subliminal"
@@ -29,7 +29,8 @@ package() {
 	for filepath in i18n/*.po; do
 		filename=$(basename "$filepath")
 		install -d "$_installdir/subliminal/locale/${filename##*.}/LC_MESSAGES"
-		msgfmt ${filepath} -o "$_installdir/subliminal/locale/${filename##*.}/LC_MESSAGES/subliminal.mo"
+		msgfmt ${filepath} -o \
+			"$_installdir/subliminal/locale/${filename##*.}/LC_MESSAGES/subliminal.mo"
 	done
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
