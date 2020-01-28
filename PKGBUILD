@@ -1,7 +1,7 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=ibc
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc='Manages headless Interactive Brokers IB Gateway instances (formerly known as IB Controller)'
 replaces=('ib-controller')
@@ -17,7 +17,7 @@ source=("https://github.com/IbcAlpha/IBC/releases/download/${pkgver}/IBCLinux-${
         'edemo.ini'
         'fdemo.ini'
         'ibc@.service')
-md5sums=('3a83e29a6aef96bd546e89cc2121e332'
+md5sums=('32c87ce8738e3f144d207f7abf8f5a23'
          '97276d324a45bbf44cf82cf802c5ab0a'
          '55001e560331a3ee0c4988961090eff9'
          'a1bed3fed40a1a5165fbd86fb8204eec'
