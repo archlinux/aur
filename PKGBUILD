@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail>
 
 pkgbase=nvidia-full-beta-all
@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
 pkgver=440.44
-pkgrel=1
+pkgrel=2
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -20,12 +20,14 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta-all.sysusers'
-        'FS62142.patch'
-        'nvidia-settings-full-beta-all-change-desktop-paths.patch')
+        '010-nvidia-prime-kernel-5.4.patch::https://gitlab.com/snippets/1929174/raw'
+        '020-nvidia-kernel-5.5.patch::https://gitlab.com/snippets/1923197/raw'
+        '110-nvidia-settings-full-beta-all-change-desktop-paths.patch')
 sha256sums=('ad427df2b619e6150291f9e03938dc8253769a59e900178c7f07d12d6ec2fc14'
-            '5519cdb420a45c15030f99c5c8c73eff322dc24b55d20e0167f0f5e97ebf0a97'
+            'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            'c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d'
+            'bedd55074771222bad8391c66b7022a266c135ff51d478710f7dda8708c3e9aa'
+            '7dcd609e85720cb812d7b41320d845931d8ea3e8529c700231372e0da66e5804'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
 
 # create soname links
@@ -49,24 +51,35 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
-    
-    patch -Np1 -i "${srcdir}/nvidia-settings-full-beta-all-change-desktop-paths.patch"
+    mv kernel kernel-orig
     
     # create a build directory for each installed kernel
     local _kernel
     local -a _kernels
+    local _majver
     mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     for _kernel in "${_kernels[@]}"
     do
-        cp -a kernel "kernel-${_kernel}"
-        printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
-        cd "kernel-${_kernel}"
+        _majver="$(printf "$_kernel" | sed -E 's/^([0-9]+\.[0-9]+).*/\1/')"
+        cp -a kernel-orig kernel
         
-        # fix https://bugs.archlinux.org/task/62142
-        patch -Np2 -i "${srcdir}/FS62142.patch"
+        # current patches are for 5.4 and later only
+        if [ "$(vercmp "$_majver" '5.4')" -ge '0' ]
+        then
+            printf '%s\n' "  -> Applying patch(es) for kernel ${_kernel}..."
+            patch -Np1 -i "${srcdir}/010-nvidia-prime-kernel-5.4.patch"
+            
+            if [ "$(vercmp "$_majver" '5.5')" -ge '0' ]
+            then
+                patch -Np1 -i "${srcdir}/020-nvidia-kernel-5.5.patch"
+            fi
+        fi
         
-        cd ..
+        mv kernel "kernel-${_kernel}"
+        cp -a .manifest ".manifest-${_kernel}"
     done
+    
+    patch -Np1 -i "${srcdir}/110-nvidia-settings-full-beta-all-change-desktop-paths.patch"
 }
 
 build() {
@@ -264,7 +277,7 @@ package_nvidia-utils-full-beta-all() {
     # distro specific files must be installed in /usr/share/X11/xorg.conf.d
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
     
-    install -D -m644 "${srcdir}/nvidia-utils-full-beta-all.sysusers" -t "${pkgdir}/usr/lib/sysusers.d"
+    install -D -m644 "${srcdir}/nvidia-utils-full-beta-all.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
     
     _create_links
 }
