@@ -67,7 +67,6 @@ build() {
     -Ddrm=true \
     -Dwl=true \
     -Dnetwork-backend=connman \
-    -Devas-loaders-disabler=json \
     -Dbindings= \
     -Dbuild-examples=false \
     -Dbuild-tests=false \
