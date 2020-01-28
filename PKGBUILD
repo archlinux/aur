@@ -1,17 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gst-plugin-jamesdsp-git
 pkgver=r26.ccddd23
-pkgrel=1
+pkgrel=2
 pkgdesc="JamesDSP wrapper plugin for GStreamer"
 arch=('x86_64')
-url="https://github.com/ThePBone/gst-plugin-jamesdsp"
+url="https://github.com/Audio4Linux/gst-plugin-jamesdsp"
 license=('GPL2')
 depends=('gst-plugins-base-libs' 'libsamplerate')
 makedepends=('git')
 provides=("${pkgname%-git}" 'libgstjdspfx')
 conflicts=("${pkgname%-git}" 'libgstjdspfx' 'gst-plugin-viper4linux' 'gst-plugin-viperfx')
 install="${pkgname%-git}.install"
-source=('git+https://github.com/ThePBone/gst-plugin-jamesdsp.git')
+source=('git+https://github.com/Audio4Linux/gst-plugin-jamesdsp.git')
 sha256sums=('SKIP')
 
 pkgver() {
