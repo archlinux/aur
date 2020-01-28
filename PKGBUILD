@@ -1,7 +1,7 @@
 _pkgname=python-savery
 pkgname=python-savery-git
 pkgver=r19.bd5c127
-pkgrel=1
+pkgrel=2
 pkgdesc="A X11 Screensaver (and more) that actually does what I want."
 arch=("x86_64")
 url="https://github.com/linuxwhatelse/savery"
@@ -27,6 +27,7 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}" --force --quiet
+    install -Dm644 savery.service ${pkgdir}/usr/lib/systemd/user/savery.service
 }
 
 
