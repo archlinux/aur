@@ -3,7 +3,7 @@
 pkgname=python-fancycompleter
 _realname=fancycompleter
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Colorful TAB completion for Python prompt"
 arch=("any")
 url="https://bitbucket.org/antocuni/fancycompleter"
