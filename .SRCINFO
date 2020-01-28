@@ -1,19 +1,28 @@
 pkgbase = spotifyd-bin-full
 	pkgdesc = A spotify playing daemon - full distribution
-	pkgver = 0.2.23
+	pkgver = 0.2.24
 	pkgrel = 1
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
 	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	depends = libpulse
 	depends = dbus
 	provides = spotifyd
 	conflicts = spotifyd
-	source = spotifyd-bin-full-0.2.23.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v0.2.23/spotifyd-linux-full.tar.gz
-	source = spotifyd.service
-	sha256sums = e53a984a1280424e4679cf531b3eb896e1243f5cd3042df602ffe0ffcc3f1f4c
-	sha256sums = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
+	source_x86_64 = spotifyd-bin-full-0.2.24.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v0.2.24/spotifyd-linux-full.tar.gz
+	source_x86_64 = spotifyd.service
+	sha256sums_x86_64 = a3d01b7d74e49fa5c67946b9648f5b9c44de8290196b1858667503d8d53aa9e5
+	sha256sums_x86_64 = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
+	source_aarch64 = spotifyd-bin-full-0.2.24.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v0.2.24/spotifyd-linux-full.tar.gz
+	source_aarch64 = spotifyd.service
+	sha256sums_aarch64 = a3d01b7d74e49fa5c67946b9648f5b9c44de8290196b1858667503d8d53aa9e5
+	sha256sums_aarch64 = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
+	source_armv7h = spotifyd-bin-full-0.2.24.tar.gz::https://github.com/Spotifyd/spotifyd/releases/download/v0.2.24/spotifyd-linux-armhf-full.tar.gz
+	source_armv7h = spotifyd.service
+	sha256sums_armv7h = e5668c22dd27f29fe3c4e7d20de507dc6139ac96a6b699900175af31ea88248b
+	sha256sums_armv7h = 67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4
 
 pkgname = spotifyd-bin-full
 
