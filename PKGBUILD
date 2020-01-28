@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/maateen/battery-monitor"
 license=('GPL3')
 depends=('acpi' 'python' 'python-gobject' 'libnotify' 'libappindicator-gtk3')
+makedepends=('git')
 provides=("${pkgname%-devel-git}")
 conflicts=("${pkgname%-devel-git}")
 source=('git+https://github.com/maateen/battery-monitor.git#branch=devel')
