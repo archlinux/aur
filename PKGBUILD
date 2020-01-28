@@ -1,12 +1,12 @@
 pkgname=dnf
 pkgver=4.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2' 'GPL')
 depends=('libdnf>=0.41.0' 'libcomps>=0.1.8'
-         'python' 'python-gpgme' 'rpm-org>=4.14.0')
+         'python' 'python-gpgme' 'rpm-tools>=4.14.0')
 makedepends=('bash-completion' 'cmake' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python-unbound: for gpgkey_dns_verification option')

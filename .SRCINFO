@@ -1,7 +1,7 @@
 pkgbase = dnf
 	pkgdesc = Package manager forked from Yum, using libsolv as a dependency resolver
 	pkgver = 4.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rpm-software-management/dnf
 	arch = any
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = dnf
 	depends = libcomps>=0.1.8
 	depends = python
 	depends = python-gpgme
-	depends = rpm-org>=4.14.0
+	depends = rpm-tools>=4.14.0
 	optdepends = python-unbound: for gpgkey_dns_verification option
 	options = !emptydirs
 	backup = etc/dnf/automatic.conf
