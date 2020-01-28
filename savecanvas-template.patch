@@ -1,0 +1,15 @@
+diff -u --recursive --text a/src/synfig/savecanvas.cpp b/src/synfig/savecanvas.cpp
+--- a/src/synfig/savecanvas.cpp 2018-09-08 00:07:57.000000000 -0600
++++ b/src/synfig/savecanvas.cpp  2019-11-19 16:27:16.276693231 -0700
+@@ -71,7 +71,7 @@
+ #include "gradient.h"
+ #include <errno.h>
+
+-extern "C" {
+-#include <libxml/tree.h>
+-}
++// extern "C" {
++// #include <libxml/tree.h>
++// }
+
+ #endif
