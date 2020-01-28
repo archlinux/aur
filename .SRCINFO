@@ -1,11 +1,11 @@
 pkgbase = git-caja-icons-git
 	pkgdesc = A Caja Python extension to overlay icons on files in git repositories
-	pkgver = 1.1.r1.15d76c1
-	pkgrel = 5
+	pkgver = 1.1.1.r9.eaf4fbf
+	pkgrel = 1
 	url = https://github.com/chrisjbillington/git_nautilus_icons
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = BSD 2-Clause "Simplified"
+	makedepends = git
 	makedepends = python-setuptools
 	depends = git-nautilus-icons-common
 	depends = python-caja
