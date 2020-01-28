@@ -2,9 +2,9 @@
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 pkgname=phoenix
-_pkgver=1.0.0-beta.12
-pkgver=1.0.0.beta.12
-pkgrel=2
+_pkgver=1.0.0-beta.13
+pkgver=1.0.0.beta.13
+pkgrel=1
 pkgdesc='Burstcoin desktop wallet'
 arch=(x86_64)
 url='https://github.com/burst-apps-team/phoenix'
@@ -15,7 +15,7 @@ install=phoenix.install
 source=(https://github.com/burst-apps-team/phoenix/archive/desktop-${_pkgver}.zip
         phoenix.desktop
         electron-builder.json.patch)
-sha256sums=('5a9b8d0ce1bf5226f9ba3d94bba0b518cc22e536c690a2d8346bb06c6e951196'
+sha256sums=('73661af1db9c0e7a02bd5a6e71d210a24a723c98b9f2a070e316150fb3224013'
             '1409c32674b62e20d04a61b7bddbc787c3027c32ee350f4909f0aa6117ae02b1'
             'a89ebcaa537d3456ad49c5ab8157fb88d649e2aa3e5791b9217b2d0f95f838de')
 
