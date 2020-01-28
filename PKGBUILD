@@ -32,7 +32,6 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
-  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3853.patch | patch -p1
   patch -p1 -i "$srcdir"/native-tools.patch
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
