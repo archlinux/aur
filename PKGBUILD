@@ -73,6 +73,12 @@ package() {
   msg2 'Starting MATLAB installer'
   "${srcdir}/install" -t -inputFile "${srcdir}/installer_input.txt" -mode silent &> /dev/null
 
+  if [ $? -eq 0 ]; then
+    msg2 'Matlab installer done without error'
+  else
+    meg2 'Error encountered while running matlab installer'
+  fi
+
   msg2 'Installing license'
   install -D -m644 "${pkgdir}/opt/tmw/${pkgname}/license_agreement.txt" "${pkgdir}/usr/share/licenses/tmw/${pkgname}/LICENSE"
 
