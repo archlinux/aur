@@ -1,9 +1,9 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=battery-monitor
 pkgver=0.6
 pkgrel=10
-pkgdesc='A utility tool, notifies user about charging, discharging and not
-         charging state of the battery on Linux.'
+pkgdesc="A utility tool, notifies user about charging, discharging and not
+         charging state of the battery on Linux."
 arch=('any')
 url="https://github.com/maateen/battery-monitor"
 license=('GPL3')
