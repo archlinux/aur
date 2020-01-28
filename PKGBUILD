@@ -1,6 +1,6 @@
 # Maintainer: Radoslaw Mejer <radmen@radmen.info>
 pkgname=contentful-cli
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="The official Contentful command line interface"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ _npmver="${pkgver}"
 _fullpkg="${_npmname}-${_npmver}"
 source=("https://registry.npmjs.org/${_npmname}/-/${_fullpkg}.tgz")
 noextract=("${_fullpkg}.tgz")
-sha256sums=("ca1d19f783c464ed866cf9a081fac5783f11d6486eebeea001a2c64dae34b2a7")
+sha256sums=("18db359d81220958a57ef8e9624b43e7441c6cf6f2880a723ac2674899bf1ee4")
 package() {
     npm install -g --user root --production --prefix "$pkgdir"/usr "$srcdir"/"${_fullpkg}.tgz"
 
