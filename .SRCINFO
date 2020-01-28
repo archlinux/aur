@@ -1,0 +1,13 @@
+pkgbase = perl-text-layout
+	pkgdesc = Pango style markup formatting
+	pkgver = 0.014.1
+	pkgrel = 1
+	url = https://metacpan.org/pod/Text::Layout
+	arch = any
+	license = Artistic2.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JV/JV/Text-Layout-0.014.1.tar.gz
+	sha512sums = 19dc7407df4b6d41c20360cb8c1ab1f5fcf7338201cc3bd371f11675736d3884cf2e05d9d6cf77086a20c7751b676414829dc734f54e0e7959cde3b525524301
+
+pkgname = perl-text-layout
+
