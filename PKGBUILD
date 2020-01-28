@@ -4,7 +4,7 @@
 
 pkgname=savage2
 pkgver=2.1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Savage 2: A Tortured Soul is an fantasy themed online multiplayer team-based FPS/RTS/RPG hybrid. Completely free as of December 2008."
 arch=('x86_64')
 url='http://savage2.com/'
@@ -36,6 +36,9 @@ package() {
 
     # Run Installer
     "${srcdir}/${_installer_name}" --mode unattended --prefix "${pkgdir}/opt/savage2/"
+
+    # Remove old libraries
+    rm "${pkgdir}/opt/savage2/libs/libstdc++.so.6"
 
     # Install Game Script missing from 2.1.0.7
     install -D -m 755 "${srcdir}/savage2.sh" \
