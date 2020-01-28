@@ -1,7 +1,7 @@
 # Maintainer: Alexander Kjäll <alexander.kjall@gmail.com>
 pkgname=ripasso-git
 pkgrelname=ripasso
-pkgver=289
+pkgver=294.a6e83b9
 pkgrel=1
 pkgdesc="A password manager that uses the file format of the standard unix password manager 'pass', implemented in rust."
 url="https://github.com/cortex/ripasso/"
