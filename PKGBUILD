@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$pkgrelname" || exit 1
-    cargo build -p ripasso-cursive -p ripasso-man --release
+    cargo build -p ripasso-cursive --release
 }
 
 pkgver() {
@@ -25,12 +25,10 @@ pkgver() {
 
 package() {
     cd "$pkgrelname" || exit 1
-    $srcdir/$pkgrelname/target/release/ripasso-man > $srcdir/$pkgrelname/ripasso-cursive.1
-    rm -f $srcdir/$pkgrelname/ripasso-cursive.1.gz
-    gzip $srcdir/$pkgrelname/ripasso-cursive.1
+    gzip -fk $srcdir/$pkgrelname/target/man-page/cursive/ripasso-cursive.1
     mkdir -p "$pkgdir/usr/share/man/man1/"
     mkdir -p "$pkgdir/usr/share/ripasso/"
-    install -Dm0644 "$srcdir/$pkgrelname/ripasso-cursive.1.gz" "$pkgdir/usr/share/man/man1/"
+    install -Dm0644 "$srcdir/$pkgrelname/target/man-page/cursive/ripasso-cursive.1.gz" "$pkgdir/usr/share/man/man1/"
     install -Dm0555 "$srcdir/$pkgrelname/target/release/ripasso-cursive" "$pkgdir/usr/bin/$pkgrelname-cursive"
 
     install -Dm0644 "$srcdir/$pkgrelname/target/translations/cursive/fr.mo" "$pkgdir/usr/share/ripasso/"
