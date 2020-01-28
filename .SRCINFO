@@ -1,0 +1,14 @@
+pkgbase = python-arff
+	pkgdesc = Python package for reading and writing Weka arff files
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://pypi.org/project/arff/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/50/de/62d4446c5a6e459052c2f2d9490c370ddb6abc0766547b4cef585913598d/arff-0.9.tar.gz
+	sha256sums = a4013e25a01a88a08e33aae60ec5c66deba0565709d056d2c20819d032fdd1eb
+
+pkgname = python-arff
+
