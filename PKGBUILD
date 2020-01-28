@@ -1,5 +1,5 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
-# Co-Maintainer: Corax
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Corax <cor dot ax26 at gmail dot com>
 pkgname=nemo-mediainfo-tab
 pkgver=1.0
 pkgrel=1
@@ -12,8 +12,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/linux-man/$pkgname/archive/
 sha256sums=('d103f38340bed1b585d5a5e51f0f8c04ff48de58e36c89541e927146e70b17f7')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm644 "nemo-extension/$pkgname.py" "$pkgdir/usr/share/nemo-python/extensions/$pkgname.py"
-    install -d "$pkgdir/usr/share/nemo-python/extensions/$pkgname"
-    cp -a "nemo-extension/$pkgname/locale" "$pkgdir/usr/share/nemo-python/extensions/$pkgname/locale"
+	cd "$pkgname-$pkgver"
+	install -Dm644 "nemo-extension/$pkgname.py" \
+		"$pkgdir/usr/share/nemo-python/extensions/$pkgname.py"
+	install -d "$pkgdir/usr/share/nemo-python/extensions/$pkgname"
+	cp -a "nemo-extension/$pkgname/locale" \
+		"$pkgdir/usr/share/nemo-python/extensions/$pkgname/locale"
 }
