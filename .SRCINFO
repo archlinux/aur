@@ -1,0 +1,12 @@
+pkgbase = x86-manpages-git
+	pkgdesc = Man page documentation for x86-64 ISA
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/ttmo-O/x86-manpages
+	arch = any
+	depends = man-db
+	source = git://github.com/ttmo-O/x86-manpages
+	sha256sums = SKIP
+
+pkgname = x86-manpages-git
+
