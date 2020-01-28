@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili at-gmail a-dot com>
 # Contributor: PelPix <kylebloss[at]pelpix[dot]info>
 # Contributor: DrZaius <lou[at]fakeoutdoorsman.com>
@@ -13,15 +13,14 @@
 # 10-bit, please see, e.g.: https://gist.github.com/l4n9th4n9/4459997
 
 pkgname=x264-git
-pkgver=157.r2969.gd4099dd4
+pkgver=159.r2991.g1771b556
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Open Source H264/AVC video encoder (git version)'
 url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
-depends=('libavcodec.so' 'libavformat.so' 'libavutil.so' 'liblsmash.so'
-         'libswscale.so')
-makedepends=('git' 'nasm' 'ffmpeg' 'l-smash')
+depends=('liblsmash.so')
+makedepends=('git' 'nasm' 'l-smash')
 provides=('x264' 'libx264' 'libx264-git' 'libx264.so')
 conflicts=('x264' 'libx264' 'libx264-10bit' 'libx264-all')
 replaces=('libx264-git' 'libx264-10bit-git' 'libx264-all-git')
@@ -55,6 +54,9 @@ build() {
         --bit-depth='8' \
         --enable-lto \
         --enable-pic \
+        --disable-avs \
+        --disable-swscale \
+        --disable-lavf \
         --disable-gpac
     make
     
@@ -68,6 +70,9 @@ build() {
         --bit-depth='10' \
         --enable-lto \
         --enable-pic \
+        --disable-avs \
+        --disable-swscale \
+        --disable-lavf \
         --disable-gpac
     make
 }
