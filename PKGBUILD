@@ -11,7 +11,7 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=68.3.1
+pkgver=68.4.2
 pkgrel=1
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
@@ -26,12 +26,10 @@ provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
-        thunderbird-rust-1.39.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('76284cd3f192ac5678bbf10e1ce9308e913c2e6dde89e055d3ffe568e0e71fa6'
+sha256sums=('af56ca8629f352be1a8ca627af97b8c1bef0ebde10bcb583d12e6f03377512fc'
             'SKIP'
-            '08834ef1c2dd685edd40dea20dfa9d4b889f5c387385ac329a162eeff6cf90be'
             '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
             'bcb0dab3bbe5b2ca2bcc8e2d9856bc8583b603da6573618795dae0cf236c486f')
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
@@ -50,9 +48,6 @@ _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
   cd $_pkgname-$pkgver
-
-  # Fix build with rust 1.39 (Gentoo)
-  patch -p1 -i ../thunderbird-rust-1.39.patch
 
   # Actual appmenu patch from ubuntu repos
   patch -Np1 -i ../unity-menubar.patch
