@@ -11,7 +11,7 @@ _pkgname=scidavis
 pkgname=scidavis-qt5
 pkgver=1.26
 _commit=1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -36,7 +36,7 @@ build() {
 	INCLUDEPATH+="/usr/include/qt/qwt5-qt5" \
 	INCLUDEPATH+="/usr/include/qt/qwtplot3d-qt5" \
 	LIBS+="-lqwt5-qt5 -lqwtplot3d-qt5" \
-	QMAKE_CXXFLAGS=-fpermissive
+	QMAKE_CXXFLAGS="-Wno-deprecated-copy -Wno-deprecated-declarations -fpermissive"
   make qmake
   make
 }
