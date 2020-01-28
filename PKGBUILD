@@ -5,7 +5,7 @@
 
 pkgname=fprintd-libfprint2
 pkgname_=fprintd
-pkgver=0.9.0+33+g1a5ef6c
+pkgver=0.9.0+70+gb97903f
 pkgrel=1
 pkgdesc="D-Bus service to access fingerprint readers, modified to use libfprint2"
 arch=(x86_64)
@@ -20,16 +20,15 @@ groups=(fprint)
 source=(
   "git+https://gitlab.freedesktop.org/libfprint/fprintd.git"
   'disable-systemd-protection.patch'
+  'storage_fix.patch'
+  'disable_pam_tests.patch'
 )
 sha256sums=(
   'SKIP'
   '4854d32d6579de31fd59b4df02f6a29db2e266dedfe9edda13bedcda1b083be1'
+  '2c81b9f4c5e593ee3ebdca08584be4b42c7a1a33f240c0da6e2aab50f0ff4b5c'
+  'e94a80acaccc0e4830595b575f3865ed86a9866c18f910a83b568f602c750e3d'
 )
-
-check() {
-  cd $pkgname_
-  make check
-}
 
 pkgver() {
   cd $pkgname_
@@ -39,8 +38,16 @@ pkgver() {
 prepare() {
   cd $pkgname_
   patch -p1 -i "${srcdir}/disable-systemd-protection.patch"
+  patch -p1 -i "${srcdir}/storage_fix.patch"
+  patch -p1 -i "${srcdir}/disable_pam_tests.patch"
   NOCONFIGURE=1 ./autogen.sh
 }
+
+check() {
+  cd $pkgname_
+  make check
+}
+
 
 build() {
   cd $pkgname_

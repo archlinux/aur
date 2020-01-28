@@ -1,6 +1,6 @@
 pkgbase = fprintd-libfprint2
 	pkgdesc = D-Bus service to access fingerprint readers, modified for libfprint2
-	pkgver = 0.9.0+33+g1a5ef6c
+	pkgver = 0.9.0+70+gb97903f
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
 	arch = x86_64

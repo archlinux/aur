@@ -1,0 +1,13 @@
+diff --git a/src/device.c b/src/device.c
+index b4dfbc4..cb2edc1 100644
+--- a/src/device.c
++++ b/src/device.c
+@@ -34,6 +34,8 @@
+ #include "fprintd.h"
+ #include "storage.h"
+ 
++fp_storage store;
++
+ static char *fingers[] = {
+ 	[FP_FINGER_UNKNOWN] = "unknown",
+ 	"left-thumb",
