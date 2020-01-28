@@ -1,7 +1,8 @@
+# Contributor: Florian B <mr.maxmeier at gmail dot com>
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
@@ -11,8 +12,8 @@ depends=('glfw-x11' 'gtk2' 'intel-tbb')
 makedepends=('pkgconf' 'git')
 provides=('tracy')
 conflicts=('tracy')
-source=("git+$url#tag=v0.5")
-md5sums=('SKIP')
+source=("git+$url#tag=v$pkgver" "tracy.desktop")
+sha256sums=('SKIP' 'd70322648a10aacab4b471fa657ae57bf477ac98c77383d1a8491b3aa5a1c907')
 
 build() {
   cd tracy
@@ -22,9 +23,12 @@ build() {
 }
 
 package() {
+  install -Dm644 tracy.desktop $pkgdir/usr/share/applications/tracy.desktop
+
   cd tracy
   install -Dm755 profiler/build/unix/Tracy-release $pkgdir/usr/bin/tracy
   install -Dm755 update/build/unix/update-release $pkgdir/usr/bin/tracy-update
   install -Dm755 capture/build/unix/capture-release $pkgdir/usr/bin/tracy-capture
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 icon/icon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/tracy.png
 }
