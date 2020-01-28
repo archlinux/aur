@@ -9,8 +9,8 @@
 # Contributor: Steven Nance <steven@devtrw.com>
 
 pkgname=vagrant
-pkgver=2.2.6
-pkgrel=3
+pkgver=2.2.7
+pkgrel=1
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,16 +22,12 @@ makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86"
-        "fb4e6985e142da56bad143d70600cd3695c91757.patch")
-md5sums=('19d7b591503ab2190d5720dc5a64023c'
-         'SKIP'
-         '602f27d34747518f0a913c740cc5a48f')
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
+md5sums=('45147c55d560f3c91654e2c5535e7f58'
+         'SKIP')
 
 prepare() {
   cd $pkgname-$pkgver
-  # fix for virtualbox 6.1
-  patch -p1 -i "$srcdir/fb4e6985e142da56bad143d70600cd3695c91757.patch"
 
   # relax ruby version requirements so this package can be built with the latest ruby
   sed 's/s.required_ruby_version     = "~> 2.4", "< 2.7"//' -i vagrant.gemspec
