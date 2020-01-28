@@ -9,7 +9,7 @@ arch=('x86_64')
 license=("GPL3")
 depends=()
 makedepends=('openssl' 'libgit2' 'gettext' 'cargo')
-source=("git://github.com/cortex/ripasso.git")
+source=("git+https://github.com/cortex/ripasso.git")
 conflicts=('ripasso')
 md5sums=('SKIP')
 
