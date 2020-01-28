@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nautilus-subliminal-git
 pkgver=r14.4648e2e
 pkgrel=2
@@ -29,7 +29,8 @@ package() {
 	for filepath in i18n/*.po; do
 		filename=$(basename "$filepath")
 		install -d "$_installdir/subliminal/locale/${filename##*.}/LC_MESSAGES"
-		msgfmt ${filepath} -o "$_installdir/subliminal/locale/${filename##*.}/LC_MESSAGES/subliminal.mo"
+		msgfmt ${filepath} -o \
+			"$_installdir/subliminal/locale/${filename##*.}/LC_MESSAGES/subliminal.mo"
 	done
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
