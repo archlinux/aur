@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=future-fetch
-pkgver=0.5.2
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Simple fetch script"
 arch=(x86_64)
@@ -13,13 +13,13 @@ optdepends=(
 
 # Sources
 source=(
-	$pkgname-$pkgver-$pkgrel::$url/raw/v$pkgver/ff
+	$pkgname-$pkgver-$pkgrel::$url/raw/v$pkgver/future-fetch
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('1c1940c6d306ef35e48eed5bb6bd159bfeb8b06462e5873abafa34b17cb9cdf73d1b30ae62ef71288eb4c4b7f9157c4e7ff0eca105fbf82430c1911aaf24142c')
+sha512sums=('8dffb667f207fc43908bfd36bed96986058ad34f8b07d8b99d8d7fb8ce6284f806e0300f55b0e44f8d9d8f57eed0f5c6a1017413925349ee6a712c5745ed828c')
 
 package() {
 
 	# Creating needed directories
-	install -Dm755 $srcdir/$pkgname-$pkgver-$pkgrel "$pkgdir/usr/bin/ff"
+	install -Dm755 $srcdir/$pkgname-$pkgver-$pkgrel "$pkgdir/usr/bin/future-fetch"
 }
