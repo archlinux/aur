@@ -1,11 +1,11 @@
 pkgbase = git-nautilus-icons-git
 	pkgdesc = A Nautilus Python 3 extension to overlay icons on files in git repositories
-	pkgver = 1.1.1.r7.37db00c
-	pkgrel = 2
+	pkgver = 1.1.1.r9.geaf4fbf
+	pkgrel = 1
 	url = https://github.com/chrisjbillington/git_nautilus_icons
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = BSD 2-Clause "Simplified"
+	makedepends = git
 	makedepends = python-setuptools
 	depends = git-nautilus-icons-common
 	depends = python-nautilus
