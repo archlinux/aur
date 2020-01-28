@@ -20,7 +20,7 @@ build() {
 
 pkgver() {
   cd ${srcdir}/${pkgrelname} || exit 1
-  git rev-list --count HEAD
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
