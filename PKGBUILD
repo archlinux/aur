@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: telans <telans@protonmail.com>
 pkgname=mullvad-vpn-beta-bin
 _pkgver=2019.10
