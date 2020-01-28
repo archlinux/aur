@@ -7,8 +7,8 @@ _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-full
 pkgver=4.2.2
-pkgrel=1
-pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including nvenc, qsv and libfdk-aac)'
+pkgrel=2
+pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
@@ -68,8 +68,6 @@ build() {
     
     local _ldflags='-L/opt/cuda/lib64'
     
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib/pkgconfig"
-        
     # set path of -lcuda on systems with legacy nvidia-340xx drivers
     # (libcuda.so.x, required by --enable-cuda-sdk)
     if pacman -Qs '^nvidia-340xx-utils' >/dev/null 2>&1
