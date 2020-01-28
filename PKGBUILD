@@ -1,4 +1,4 @@
-# Maintainer: Dario Ostuni <another.code.996@gmail.com>
+# Maintainer: Sameer Puri <purisame@spuri.io>
 pkgname=python-or-tools
 pkgver=7.5
 pkgrel=1
