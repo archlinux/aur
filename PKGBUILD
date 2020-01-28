@@ -1,5 +1,4 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
-# Maintainer: Darcy Hu <hot123tea123@gmail.com>
 
 ## This PKGBUILD creates an Arch Linux package for the proprietary MATLAB application.
 ## In order to build the package, the user must supply:
@@ -37,8 +36,8 @@
 ## tar -cvf matlab.tar -C ~/matlab_R2019b_glnxa64/ .
 
 ## You can get your file installation key (that you must manually put into matlab.fik) from https://mathworks.com/licensecenter
-## Then maybe you could make the matlab.fik file you need for this installer like this:
-## echo "" > matlab.fik
+## Then maybe you could make the matlab.fik file you need for this package like this:
+## echo "xxxxx-xxxxx-xxxxx-xxxxx-..." > matlab.fik
 
 ## This PKGBUILD no longer attempts to activate the product.
 ## The user will be prompted to undertake their activation method of choice when the GUI is first run.
@@ -47,12 +46,12 @@
 
 ## This package will conflict with /usr/bin/mex from texlive-bin
 ## You could fix that by installing it with the pacman option --overwrite /usr/bin/mex
+## /ust/bin/mex from texlive-bin is just a symlink
 
 # partial install
 _partialinstall=false
 
 pkgname=matlab
-# install dir
 _install_dir="/opt/${pkgname}"
 # as of R2019b Update 3, MATLAB's version number is:
 pkgver=9.7.0.1261785
