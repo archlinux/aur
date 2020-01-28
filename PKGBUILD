@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 pkgname=office-runner
 pkgver=1.0.3
@@ -13,13 +13,13 @@ source=("https://gitlab.gnome.org/GNOME/$pkgname/-/archive/$pkgver/$pkgname-$pkg
 sha256sums=('63eaf719c71adc98abbc5c4adb538a196fab783f0417cdfd863c6b4b27334189')
 
 build() {
-	cd $pkgname-$pkgver
+	cd "$pkgname-$pkgver"
 	./autogen.sh
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd $pkgname-$pkgver
-	make DESTDIR="$pkgdir" install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
