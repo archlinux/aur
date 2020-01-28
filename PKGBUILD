@@ -8,6 +8,7 @@ url="https://gitlab.gnome.org/hughsie/gnome-firmware-updater"
 license=('GPL2')
 depends=('gtk3' 'fwupd' 'libxmlb' 'libsoup')
 makedepends=('git' 'meson' 'appstream' 'help2man')
+conflicts=("$pkgname-updater")
 replaces=("$pkgname-updater")
 source=("$pkgname::git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
