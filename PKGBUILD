@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=rust-analyzer-bin
-pkgver=20200120
+pkgver=20200127
 _pkgver='2020-01-27'
 pkgrel=1
 pkgdesc="An experimental Rust compiler front-end for IDEs. Binary build."
