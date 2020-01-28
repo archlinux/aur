@@ -2,7 +2,7 @@
 
 pkgname=veonim
 pkgver=0.22.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Simple modal IDE built on neovim'
 arch=('x86_64')
 url='https://github.com/veonim/veonim'
