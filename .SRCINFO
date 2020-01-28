@@ -8,7 +8,7 @@ pkgbase = iup
 	makedepends = lsb-release
 	makedepends = libcd
 	makedepends = ftgl
-	makedepends = webkitgtk
+	makedepends = webkit2gtk
 	makedepends = openmotif
 	makedepends = libxpm
 	makedepends = lua
@@ -26,7 +26,7 @@ pkgname = iup
 	pkgdesc = C cross platform GUI toolkit
 	depends = libcd
 	depends = ftgl
-	depends = webkitgtk
+	depends = webkit2gtk
 	depends = openmotif
 	depends = libxpm
 

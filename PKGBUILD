@@ -15,7 +15,7 @@ license=('MIT')
 makedepends=('lsb-release'
              'libcd'
              'ftgl'
-             'webkitgtk'
+             'webkit2gtk'
              'openmotif'
              'libxpm'
              'lua'
@@ -147,7 +147,7 @@ _lua_iup_package_helper() {
 
 package_iup() {
   pkgdesc="C cross platform GUI toolkit"
-  depends=('libcd' 'ftgl' 'webkitgtk' 'openmotif' 'libxpm')
+  depends=('libcd' 'ftgl' 'webkit2gtk' 'openmotif' 'libxpm')
 
   _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
 
