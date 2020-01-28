@@ -1,0 +1,19 @@
+pkgbase = monkeytype-git
+	pkgdesc = Generates static type annotations for Python modules by collecting runtime types
+	pkgver = v19.11.2.r3.ga586173
+	pkgrel = 1
+	url = https://github.com/instagram/MonkeyType
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-stringcase
+	depends = python-retype
+	provides = monkeytype
+	conflicts = monkeytype
+	source = git+https://github.com/instagram/MonkeyType
+	sha256sums = SKIP
+
+pkgname = monkeytype-git
+
