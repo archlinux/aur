@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.90
+pkgver=5.9.93
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(i686 x86_64)
@@ -45,19 +45,14 @@ optdepends=(
 )
 options=(!strip)
 source=(https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz
-        ignore-deprecated-errors.patch
         use-system-libxcb.patch
         use-system-vstsdk.patch)
-sha256sums=('d0062574b66eccb76baee71e3eae0ca1ca29b7d9c54c76e2bf5b86e263715c41'
-            '7825992e3d2e934a936f03d992d4b3d78994d9683e9e8a490c31b6487121e87b'
+sha256sums=('a94687652645abc77435f0d4c21ee7f7c92502f65fe43591201f1c1a78a2d497'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
             '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
 
 prepare() {
   cd radium-$pkgver
-  
-  # https://github.com/kmatheussen/radium/issues/1237#issuecomment-576637993
-  patch -p1 < "$srcdir/ignore-deprecated-errors.patch"
 
   # Use system libxcb 1.13 rather than try to compile it
   patch -p1 < "$srcdir/use-system-libxcb.patch"
