@@ -11,7 +11,7 @@ arch=(any)
 url="https://gitlab.com/portmod/portmod"
 license=(GPL3)
 depends=("python" "patool" "python-setuptools" "python-colorama" "python-appdirs" "python-black" "python-gitpython"
-         "python-yaml" "python-progressbar" "python-restrictedpython" "bubblewrap" "omwcmd")
+         "python-yaml" "python-progressbar" "python-restrictedpython" "bubblewrap" "omwcmd" "python-redbaron")
 makedepends=("python" "python-setuptools" "python-setuptools-scm")
 checkdepends=("python-pytest")
 optdepends=("omwllf" "tes3cmd" "tr-patcher")

@@ -21,6 +21,7 @@ pkgbase = portmod
 	depends = python-restrictedpython
 	depends = bubblewrap
 	depends = omwcmd
+	depends = python-redbaron
 	optdepends = omwllf
 	optdepends = tes3cmd
 	optdepends = tr-patcher
