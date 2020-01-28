@@ -1,7 +1,7 @@
 pkgbase = nvidia-beta
 	pkgdesc = NVIDIA drivers for Arch's official 'linux' package (beta version)
 	pkgver = 440.44
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -14,9 +14,11 @@ pkgbase = nvidia-beta
 	conflicts = nvidia
 	options = !strip
 	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/440.44/NVIDIA-Linux-x86_64-440.44-no-compat32.run
-	source = FS62142.patch
+	source = 010-nvidia-prime-kernel-5.4.patch::https://gitlab.com/snippets/1929174/raw
+	source = 020-nvidia-kernel-5.5.patch::https://gitlab.com/snippets/1923197/raw
 	sha256sums = 794fdfc8e65c203ae482f59df7e55050ddcf0a11af2a95eaa1a10c7d48ec7e0f
-	sha256sums = c961006882afb691410c017c239e2c2ef61badb88f15735d37112b513ef0a99d
+	sha256sums = bedd55074771222bad8391c66b7022a266c135ff51d478710f7dda8708c3e9aa
+	sha256sums = 7dcd609e85720cb812d7b41320d845931d8ea3e8529c700231372e0da66e5804
 
 pkgname = nvidia-beta
 
