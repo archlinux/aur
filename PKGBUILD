@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=2.0.post27.r26.dd8fcdb
+pkgver=2.0.post27.r45.f72aae1
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -14,17 +14,12 @@ optdepends=('python-pystray: for Notification Auditor'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/srevinsaju/guiscrcpy.git'
-        "${pkgname%-git}.desktop"
-        "${pkgname%-git}.sh")
+        "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            'a97ede5e1f363df0b3960c7cfbfdff69e8c2b2c39ef0abc522d5ff5ecb04061b'
-            'd00fdf9988324d8654509c39878bd488b63834ffe95fc51b0576204d4e2d0d34')
+            'a97ede5e1f363df0b3960c7cfbfdff69e8c2b2c39ef0abc522d5ff5ecb04061b')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-
-	# Remove folders that should be added to dev's .gitignore
-	rm -rf .circleci .github .idea .vscode
 
 	# Remove shortcut creation as files cannot be placed in $HOME in fakeroot environment
 	sed -i '44,74d' setup.py
@@ -44,7 +39,6 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
-	install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
 	install -Dm644 "installers/linux/icons/${pkgname%-git}_logo.png" \
 		"$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"

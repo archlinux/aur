@@ -1,6 +1,6 @@
 pkgbase = guiscrcpy-git
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
-	pkgver = 2.0.post27.r26.dd8fcdb
+	pkgver = 2.0.post27.r45.f72aae1
 	pkgrel = 1
 	url = https://srevinsaju.github.io/guiscrcpy
 	arch = any
@@ -21,10 +21,8 @@ pkgbase = guiscrcpy-git
 	conflicts = guiscrcpy
 	source = git+https://github.com/srevinsaju/guiscrcpy.git
 	source = guiscrcpy.desktop
-	source = guiscrcpy.sh
 	sha256sums = SKIP
 	sha256sums = a97ede5e1f363df0b3960c7cfbfdff69e8c2b2c39ef0abc522d5ff5ecb04061b
-	sha256sums = d00fdf9988324d8654509c39878bd488b63834ffe95fc51b0576204d4e2d0d34
 
 pkgname = guiscrcpy-git
 
