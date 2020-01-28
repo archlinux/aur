@@ -4,13 +4,13 @@
 
 _appname=smartgit
 pkgname=${_appname}_preview
-pkgver=19.1_rc_3
+pkgver=20.1_preview_9
 pkgrel=1
 pkgdesc="Graphical Git client. Preview version."
 arch=("any")
 url="https://www.syntevo.com/smartgit/preview/"
 license=('custom')
-depends=("java-environment>=11" "python3" "bash" "desktop-file-utils")
+depends=("java-environment>=11" "python3")
 optdepends=("mercurial: hg repositories support"
             "git: git repositories support")
 makedepends=("tar")
@@ -23,7 +23,7 @@ _pkgver=${pkgver//_/-}
 _pkgver=${_pkgver//./_}
 
 source=("https://www.syntevo.com/downloads/smartgit/${_appname}-${_pkgver}.deb")
-sha1sums=('6e0063365ef4ee150b43ebeeb2d7646d328c9d16')
+sha1sums=('7ade87102b97afb9d7181b699359f4f0560f2ea3')
 
 package() {
     cd "$srcdir"
