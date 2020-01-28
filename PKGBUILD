@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python-lxml' 'python-fonttools')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest-cov' 'python-pytest-xdist' 'python-pytest-randomly')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.zip")
+source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.zip")
 sha256sums=('a0ce7844f6add8b2afbfb4a305072bf5dcdd85d5f0d2ad32a41f8a563b8a6d52')
 
 build() {

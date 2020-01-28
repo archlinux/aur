@@ -12,7 +12,7 @@ pkgbase = psautohint
 	makedepends = python-setuptools-scm
 	depends = python-lxml
 	depends = python-fonttools
-	source = https://files.pythonhosted.org/packages/source/p/psautohint/psautohint-2.0.0.zip
+	source = https://pypi.org/packages/source/p/psautohint/psautohint-2.0.0.zip
 	sha256sums = a0ce7844f6add8b2afbfb4a305072bf5dcdd85d5f0d2ad32a41f8a563b8a6d52
 
 pkgname = psautohint
