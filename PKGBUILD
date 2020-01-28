@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=6.1.0
+pkgver=6.1.2
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
@@ -32,13 +32,14 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         'vboxservice-nox.service'
         'vboxweb.service'
         'vboxreload'
+        '001-disable-update.patch'
         '005-gsoap-build.patch'
         '008-no-vboxvideo.patch'
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         '013-Makefile.patch'
         )
 sha256sums=(
-    '49005ed94454f893fc3955e1e2b9607e85c300235cb983b39d1df2cfcf29f039'
+    '4326576e8428ea3626194fc82646347576e94c61f11d412a669fc8a10c2a1e67'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
@@ -47,6 +48,7 @@ sha256sums=(
     '01dbb921bd57a852919cc78be5b73580a564f28ebab2fe8d6c9b8301265cbfce'
     'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
     '4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d'
+    '9ee947c9b5ec5b25f52d3e72340fc3a57ca6e65a604e15b669ac582a3fb0dc1b'
     '7d2da8fe10a90f76bbfc80ad1f55df4414f118cd10e10abfb76070326abebd46'
     '053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491'
     '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
@@ -60,22 +62,22 @@ prepare() {
     local filename
     for filename in "${source[@]}"; do
         if [[ "$filename" =~ \.patch$ ]]; then
-            msg2 "Applying patch ${filename##*/}"
+            echo "Applying patch ${filename##*/}"
             patch -p1 -N -i "$srcdir/${filename##*/}"
         fi
     done
 
-    msg2 'Applying local config'
+    echo 'Applying local config'
     cp "$srcdir/LocalConfig.kmk" .
 
-    msg2 'Use our CFLAGS'
+    echo 'Use our CFLAGS'
     echo "VBOX_GCC_OPT=$CXXFLAGS" >> LocalConfig.kmk
 }
 
 build() {
     cd "VirtualBox-$pkgver"
 
-    msg2 'Build virtualbox'
+    echo 'Build virtualbox'
     ./configure \
         --build-headless \
         --disable-docs \
@@ -91,7 +93,7 @@ build() {
     source ./env.sh
     kmk
 
-    msg2 'Build VNC extension pack'
+    echo 'Build VNC extension pack'
     kmk -C src/VBox/ExtPacks/VNC packing
 }
 
