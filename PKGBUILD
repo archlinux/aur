@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-colorful
-_name=colorful
+_name=${pkgname#python-}
 pkgver=0.5.4
 pkgrel=2
 pkgdesc="Terminal string styling done right, in Python"
@@ -9,7 +9,7 @@ url="https://github.com/timofurrer/colorful"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('86848ad4e2eda60cd2519d8698945d22f6f6551e23e95f3f14dfbb60997807ea')
 
 build() {
