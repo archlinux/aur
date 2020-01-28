@@ -1,11 +1,11 @@
 pkgbase = git-nautilus-icons-common-git
 	pkgdesc = Common files for git-nautilus-icons, git-nemo-icons and git-caja-icons
-	pkgver = 1.1.1.r7.37db00c
-	pkgrel = 2
+	pkgver = 1.1.1.r9.eaf4fbf
+	pkgrel = 1
 	url = https://github.com/chrisjbillington/git_nautilus_icons
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = BSD 2-Clause "Simplified"
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-gobject
 	provides = git-nautilus-icons-common
