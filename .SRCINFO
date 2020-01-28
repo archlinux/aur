@@ -1,8 +1,9 @@
 pkgbase = viper4linux-git
 	pkgdesc = Implementation of the libviper library for modern Linux desktops.
-	pkgver = r64.49fdbe7
+	pkgver = r2.a208c06
 	pkgrel = 1
-	url = https://github.com/noahbliss/Viper4Linux
+	epoch = 1
+	url = https://github.com/Audio4Linux/Viper4Linux
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -11,7 +12,7 @@ pkgbase = viper4linux-git
 	provides = viper4linux
 	conflicts = viper4linux
 	conflicts = jdsp4linux
-	source = viper4linux::git+https://github.com/noahbliss/Viper4Linux.git
+	source = viper4linux::git+https://github.com/Audio4Linux/Viper4Linux.git
 	sha256sums = SKIP
 
 pkgname = viper4linux-git
