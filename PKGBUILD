@@ -4,8 +4,8 @@
 pkgname=mattermost-desktop-bin
 _pkgname=mattermost-desktop
 pkgver=4.3.2
-pkgrel=2
-pkgdesc="Mattermost Desktop (Beta) for Linux (binary)"
+pkgrel=3
+pkgdesc="Mattermost Desktop for Linux (binary)"
 arch=('i686' 'x86_64')
 
 url="https://github.com/mattermost/desktop"
