@@ -68,6 +68,7 @@ _lua_iup_build_helper() {
     IMLUA_LIB="/usr/lib/lua/${_lua_ver}" \
     CDLUA_LIB="/usr/lib/lua/${_lua_ver}" \
     ZLIB_LIB=/usr/lib \
+    USE_PKGCONFIG=Yes \
     USE_GTK3=Yes \
     "USE_LUA${_lua_ver//.}"=Yes \
     LUA_INC=/usr/include/lua${_lua_ver} \
@@ -102,6 +103,7 @@ build() {
     IM_LIB=/usr/lib \
     IM_INC=/usr/include/im \
     ZLIB_LIB=/usr/lib \
+    USE_PKGCONFIG=Yes \
     USE_GTK3=Yes
 
   _lua_iup_build_helper "5.3"
