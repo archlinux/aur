@@ -1,0 +1,18 @@
+pkgbase = geany-plugin-jsonprettifier
+	pkgdesc = Clean up unformatted JSON in Geany editor
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://plugins.geany.org/jsonprettifier.html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = geany
+	depends = yajl
+	source = https://github.com/zhgzhg/Geany-JSON-Prettifier/archive/v1.6.0.tar.gz
+	source = Makefile.patch
+	sha256sums = 3192d4d304cf1ce0bac78997a0ede9a88724e1f0fadbcf9a1968e9cff496740e
+	sha256sums = 391e5b83f87b23ac2a01c8f3252f028f391361500b70ee4b29710267cc54fa49
+
+pkgname = geany-plugin-jsonprettifier
+

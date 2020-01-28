@@ -1,0 +1,11 @@
+diff --unified --recursive --text Geany-JSON-Prettifier-1.6.0-bak/Makefile Geany-JSON-Prettifier-1.6.0/Makefile
+--- Geany-JSON-Prettifier-1.6.0-bak/Makefile	2020-01-28 10:25:26.554720020 +0100
++++ Geany-JSON-Prettifier-1.6.0/Makefile	2020-01-28 10:24:39.528054318 +0100
+@@ -1,5 +1,5 @@
+-libdir.x86_64 := $(shell if [ -d "/usr/lib/x86_64-linux-gnu" ]; then echo "/usr/lib/x86_64-linux-gnu"; else echo "/usr/lib64"; fi )
+-libdir.i686   := $(shell if [ -d "/usr/lib/i386-linux-gnu" ]; then echo "/usr/lib/i386-linux-gnu"; else echo "/usr/lib"; fi )
++libdir.x86_64 := $(DESTDIR)/usr/lib
++libdir.i686   := $(DESTDIR)/usr/lib
+ libdir.macos  := /usr/local/lib
+ 
+ ISNOTMACOS := $(shell uname -a | grep "Darwin" >/dev/null ; echo $$? )
