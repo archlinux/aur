@@ -1,0 +1,7 @@
+For maintainers and contributors:
+
+How to build and update:
+1. makepkg -s
+2. makepkg --printsrcinfo > .SRCINFO
+3. namcap PKGBUILD
+4. namcap python-spflow*.pkg.tar.xz
