@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "DejaVuSansMono Nerd Font Mono:size=10";
+static char *font = "DejaVuSansMono Nerd Font Mono:size=11";
 static int borderpx = 2;
 
 /*
