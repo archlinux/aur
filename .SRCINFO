@@ -1,0 +1,19 @@
+pkgbase = efi-roller
+	pkgdesc = simple script to help sign EFI images
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Foxboron/efi-roller
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = asciidoc
+	depends = efitools
+	depends = openssl
+	depends = sbsigntools
+	depends = util-linux
+	conflicts = efi-roller-git
+	source = efi-roller-0.1.tar.gz::https://github.com/Foxboron/efi-roller/archive/0.1.tar.gz
+	sha512sums = 63baa2f0c07735a42167cf40902fbab76be80afc4d158224fbbcc2812490044d76644cc51f25365cffa394bb7435d6336447c0a11ed6d704b55e492a4cac3b28
+
+pkgname = efi-roller
+
