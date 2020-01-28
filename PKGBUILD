@@ -1,3 +1,4 @@
+# Maintainer: Mark wagie <mark dot wagie at tutanota dot com>
 pkgname=pennywise-bin
 pkgver=0.8.0
 pkgrel=2
@@ -22,8 +23,9 @@ sha256sums_x86_64=('02d5f5ea3bf0b934d650cbb75c3cb43ab62b3d1c48c733b2f85816ccc873
 
 package() {
 	bsdtar -xvf data.tar.xz -C "$pkgdir"/
-	
+
 	install -d "$pkgdir"/usr/bin
 	ln -sf /opt/Pennywise/"${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
-	install -Dm644 license.md "$pkgdir/usr/share/licenses/${pkgname%-bin}/license.md"
+
+	install -Dm644 license.md -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
 }
