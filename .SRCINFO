@@ -1,12 +1,12 @@
 pkgbase = buck
 	pkgdesc = A fast build system that encourages the creation of small, \ reusable modules over a variety of platforms and languages.
 	pkgver = 2019.10.17.01
-	pkgrel = 5
+	pkgrel = 6
 	url = https://buckbuild.com
 	arch = any
 	license = Apache
 	makedepends = java-environment=11
-	makedepends = apache-ant
+	makedepends = ant
 	depends = python2
 	optdepends = watchman: prevent Buck from parsing all of your build files every time
 	source = buck-2019.10.17.01.tar.gz::https://github.com/facebook/buck/archive/v2019.10.17.01.tar.gz
