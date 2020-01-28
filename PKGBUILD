@@ -9,7 +9,7 @@ pkgver=1.0.179
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities"
 arch=('x86_64' 'i686')
-depends=('gtk3' 'lib32-glibc' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+depends=('gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
          'nss' 'orc')
 makedepends=('git' 'npm' 'python' 'rsync')
 optdepends=('libappindicator-gtk3: for tray icon')

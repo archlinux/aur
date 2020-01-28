@@ -1,5 +1,6 @@
 src/
 pkg
 v*.zip
+joplin*.zip
 *tar.xz
 *~
