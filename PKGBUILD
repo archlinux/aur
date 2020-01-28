@@ -50,6 +50,9 @@ prepare() {
   # Add RUN_PATH variable to be able to set DT_RUNPATH
   sed 's/$(ECHO)$(LINKER)/& $(RUN_PATH)/' -i "$srcdir"/iup/tecmake.mak
   sed 's/$(ECHO)$(LD)/& $(RUN_PATH)/' -i "$srcdir"/iup/tecmake.mak
+
+  # Add required gmodule-2.0 to pkg-config (temporary patch to build successfully)
+  sed '/PKGLIBS += $(shell pkg-config --libs gtk+-$(GTKSFX).0 gdk-$(GTKSFX).0)/{ s/\(.*\))/\1 gmodule-2.0)/ }' -i "$srcdir"/iup/tecmake.mak
 }
 
 _lua_iup_build_helper() {
