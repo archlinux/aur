@@ -1,0 +1,18 @@
+pkgbase = sarndbox-git
+	pkgdesc = Augmented Reality Sandbox
+	pkgver = 2.6_12_gd1e51b5
+	pkgrel = 1
+	url = https://github.com/KeckCAVES/SARndbox
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-server
+	depends = libgl
+	depends = vrui-git
+	depends = kinect-3d-git
+	source = git+https://github.com/KeckCAVES/SARndbox.git
+	md5sums = SKIP
+
+pkgname = sarndbox-git
+
