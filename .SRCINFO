@@ -5,7 +5,7 @@ pkgbase = mem-suspend
 	arch = x86_64
 	license = custom:WTFPL
 	source = mem-suspend.c
-	sha256sums = 73d599b79461e72d1963be5ddb6f7026b53705dbee523a48106eea0d5dfd000d
+	sha256sums = 4d4dfdcb7e5aa9b65489a28dd80e1a146fbc5d52034a938ccd0ee46ad744815c
 
 pkgname = mem-suspend
 
