@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=stilo-themes-git
 pkgver=3.34.1.r7.g730fbea
 pkgrel=1
