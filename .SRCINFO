@@ -1,0 +1,12 @@
+pkgbase = dejsonlz4-git
+	pkgdesc = Decompress Mozilla Firefox bookmarks backup files
+	pkgver = 9.c4305b8
+	pkgrel = 1
+	url = https://github.com/avih/dejsonlz4
+	arch = x86_64
+	license = other
+	source = dejsonlz4-git::git+https://github.com/avih/dejsonlz4
+	sha256sums = SKIP
+
+pkgname = dejsonlz4-git
+
