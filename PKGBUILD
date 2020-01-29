@@ -1,6 +1,7 @@
 # Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Infy <eugene.yudin@gmail.com>
+# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 pkgname=pcsxr-git
 pkgver=1.9.94.r1697.6484236c
@@ -47,7 +48,10 @@ build() {
     -DSND_BACKEND='pulse' \
     -DENABLE_CCDDA='ON' \
     -DUSE_LIBARCHIVE='ON' \
-    -DUSE_LIBCDIO='ON'
+    -DUSE_LIBCDIO='ON' \
+    -DCMAKE_C_FLAGS_RELEASE:STRING="-O2 -DNDEBUG -mtune=native -pipe -I/usr/include/harfbuzz/ -lGLU -lGL " \
+    -DCMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG -mtune=native -pipe -I/usr/include/harfbuzz/ -lGLU -lGL " \
+    -DOpenGL_GL_PREFERENCE:STRING="GLVND"
   make
 }
 
