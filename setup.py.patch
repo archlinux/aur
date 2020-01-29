@@ -1,0 +1,43 @@
+From dd0e0018daf309e0c79e840bb5b603555710bed3 Mon Sep 17 00:00:00 2001
+From: neeshy <neeshy@tfwno.gf>
+Date: Wed, 1 May 2019 22:16:29 -0400
+Subject: [PATCH] Add setup.py
+
+---
+ setup.py | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+ create mode 100644 setup.py
+
+diff --git a/setup.py b/setup.py
+new file mode 100644
+index 0000000..1715ae0
+--- /dev/null
++++ b/setup.py
+@@ -0,0 +1,24 @@
++from setuptools import setup
++
++with open('README.md') as fh:
++    long_description = fh.read()
++
++setup(
++    name='imbpy',
++    author='ring',
++    author_email='ring@8chan.co',
++    description='A python interface for imageboards',
++    long_description=long_description,
++    long_description_content_type='text/markdown',
++    license='ISC',
++    classifiers=[
++        'Programming Language :: Python :: 3',
++        'Development Status :: 3 - Alpha',
++        'Environment :: Console',
++        'License :: OSI Approved :: ISC License (ISCL)',
++        'Intended Audience :: End Users/Desktop'],
++    packages=['imbpy'],
++    scripts=['imb.py'],
++    install_requires=['requests', 'pillow'],
++    python_requires='>=3.7'
++)
+-- 
+2.22.0
+

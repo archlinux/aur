@@ -1,0 +1,17 @@
+pkgbase = imbpy-git
+	pkgdesc = A python interface for imageboards
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitgud.io/ring/imbpy
+	arch = any
+	license = custom:ISC
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://gitgud.io/ring/imbpy
+	source = setup.py.patch
+	sha256sums = SKIP
+	sha256sums = 4fc94e7c2dd2eebf135b76dbb2e3044fad688249f08bde8c28fe72a6e7785eba
+
+pkgname = imbpy-git
+
