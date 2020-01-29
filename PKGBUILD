@@ -2,7 +2,7 @@
 # Contributor: Beej Jorgensen <beej@beej.us>
 
 pkgname=gprojector
-pkgver=2.3.4
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Transforms an equirectangular map image into many global and regional map projections"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('java-runtime')
 source=("https://www.giss.nasa.gov/tools/gprojector/download/G.ProjectorJ-${pkgver}.tgz"
         'gprojector')
 install=${pkgname}.install
-sha512sums=('ee3223880614f4b032b619a9f3b90404a6aecec7a92c0fd075b297406514a328f77a6170383a4b613560b168f77f29b4733b0bb4d0b24d62855ab18cc5a6eeea'
-            '43055c0d8e6b0685d9bb3f0f31c282bfa6790d60ef27b436b974f93ff3c90a2302a7225aff0b8dbee863ba0c610dca5cc045b0044085dedbe8d139708807a5fd')
+md5sums=('3857403e02a216c20992b4a0619aa7a7'
+         'e59cbbefe3fe464b6fc8d11e087c7a8f')
 
 package() {
 	install -m 755 -d "$pkgdir/opt"
