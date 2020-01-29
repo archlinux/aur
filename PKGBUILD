@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Giovanni Scafora <giovanni at archlinux dot org>
 
 pkgname=c++-gtk-utils
-pkgver=2.2.18
+pkgver=2.2.19
 pkgrel=1
 pkgdesc="Classes and functions for programming in GTK+"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=('gtk3')
 options=('!docs' '!emptydirs')
 source=("https://downloads.sourceforge.net/project/cxx-gtk-utils/cxx-gtk-utils/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('166ffe14dffaf8dd90873786bcbf5d604c9337fca5382351a9051ff697f1be64')
+sha256sums=('382abe260863dc1ef84f912bcbc57414a0dd0d6fe622694fea2f5a042a04dd88')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
