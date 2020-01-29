@@ -1,0 +1,16 @@
+pkgbase = python-async_lru
+	pkgdesc = Simple lru_cache for asyncio
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/aio-libs/async_lru
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-async-lru
+	conflicts = python-async-lru
+	source = https://files.pythonhosted.org/packages/source/a/async_lru/async_lru-1.0.2.tar.gz
+	sha256sums = baa898027619f5cc31b7966f96f00e4fc0df43ba206a8940a5d1af5336a477cb
+
+pkgname = python-async_lru
+
