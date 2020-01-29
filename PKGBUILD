@@ -2,7 +2,7 @@
 pkgdesc='WPE launcher and webapp container'
 pkgname=cog-wpe-gl
 pkgver=r134.f421c0a
-pkgrel=3
+pkgrel=4
 license=(MIT)
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
