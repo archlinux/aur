@@ -3,14 +3,14 @@
 # vim: ts=4:sw=4
 
 
-_releaseVersion='2.9.0'
-_sha256='c7dadb6af3feefd4b000c19f96488d3c46c74187701d6577c1d89953cb479181'
+_releaseVersion='2.9.1'
+_sha256='930cd0e009f83f05d58de2a7c6203f6eb0b330184830ad19af006148265abe43'
 
 
 
 pkgname=phpdoc-phar
 pkgver=${_releaseVersion}
-pkgrel=2
+pkgrel=1
 pkgdesc='“Dependency-less” Phar version of phpDocumentor2 (works with PHP 7)'
 
 url='https://www.phpdoc.org/'
@@ -21,7 +21,7 @@ depends=('php')
 optdepends=('php-xsl: Needed for some of the rendering templates')
 conflicts=('phpdocumentor2')
 
-_baseURL='https://github.com/phpDocumentor/phpDocumentor2/releases/download'
+_baseURL='https://github.com/phpDocumentor/phpDocumentor/releases/download'
 _fileName='phpDocumentor.phar'
 
 source=("${_baseURL}/v${_releaseVersion}/${_fileName}")
