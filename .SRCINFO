@@ -1,10 +1,11 @@
 pkgbase = tempus-themes-kitty-git
 	pkgdesc = Tempus Themes for the Kitty terminal emulator
-	pkgver = r8.478b240
+	pkgver = r10.8fc9563
 	pkgrel = 1
 	url = https://protesilaos.com/tempus-themes
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = kitty
 	provides = tempus-themes-kitty
 	conflicts = tempus-themes-kitty
