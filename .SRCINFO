@@ -1,6 +1,6 @@
 pkgbase = textadept-bin
 	pkgdesc = A fast, minimalist and remarkably extensible text editor (binary version)
-	pkgver = 10.5
+	pkgver = 10.8
 	pkgrel = 1
 	url = http://foicica.com/textadept
 	install = textadept.install
@@ -17,11 +17,11 @@ pkgbase = textadept-bin
 	conflicts = textadept-modules
 	conflicts = textadept-modules-beta
 	conflicts = textadept
-	source = http://foicica.com/textadept/download/textadept_10.5.x86_64.tgz
-	source = http://foicica.com/textadept/download/textadept_10.5.modules.zip
+	source = http://foicica.com/textadept/download/textadept_10.8.x86_64.tgz
+	source = http://foicica.com/textadept/download/textadept_10.8.modules.zip
 	source = textadept.install
-	sha256sums = a783a7ff97505bbcaeb1b869d49f3359c0ec4426f286becb95febe72e255b776
-	sha256sums = 151fc50654cc03c07144c5b908801d336899a051ab1aab31aaf5195d43a80031
+	sha256sums = 2702e601091120909644b8f5b1b89661e46e16536de4d00a5c64c4951fe07d40
+	sha256sums = 2b2a94f43129ca81d67fde0b206fcd96e352b09a7f687833baa4ee8c5e46b32c
 	sha256sums = b2971d4c6743033b16b172c2b208942a4a6082c7bcfb593ae25bff3fbad45b4b
 
 pkgname = textadept-bin
