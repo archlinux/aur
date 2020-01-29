@@ -1,0 +1,10 @@
+% layout 'mingw-w64-qt5-module';
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="Qt Data Visualization module (mingw-w64)"
+depends=('mingw-w64-qt5-base')
+optdepends=('mingw-w64-qt5-declarative: QML bindings')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
