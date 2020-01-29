@@ -1,0 +1,13 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
+depends=('mingw-w64-qt5-base')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
