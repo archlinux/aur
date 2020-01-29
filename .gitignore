@@ -1,0 +1,4 @@
+phpDocumentor.phar
+phpdoc-phar-*
+pkg/
+src/
