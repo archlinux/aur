@@ -1,6 +1,6 @@
 
 pkgname=arduino-avr-core-rc
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude -- stable and release candidates"
 arch=('any')
