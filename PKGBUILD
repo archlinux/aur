@@ -6,7 +6,7 @@
 #
 
 pkgname=nethack-git
-pkgver=3.6.4d.r8.gbe47c0303
+pkgver=3.6.5.r3.g9cd694740
 pkgrel=1
 pkgdesc='A single player dungeon exploration game'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ replaces=('nethack')
 pkgver() {
   cd NetHack
   git describe --long --tags | \
-    sed 's/NetHack-//;s/_Release//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    sed 's/NetHack-//;s/_PostRelease//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
