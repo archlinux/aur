@@ -1,36 +1,42 @@
 # Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 # Contributor: ohmyarch
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
 
 # All patches are managed at https://github.com/Martchus/qtdeclarative
 
+# Includes dynamic and static versions; if only one version is requried, just
+# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
+
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.14.0
+pkgver=5.14.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'python')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-plugins-are-exported.patch'
         '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch')
-sha256sums=('bbf11ee33d6f0d6bd6c4dc641d4f2aafbc7c6cd3b421a658955302d441dc9d8e'
-            '23ef13e6155bdc06429f6dff97b37f26cab389594eea62a40365c1304ef57629'
-            '71dc45ee6a81cf3b612f83942283f5514c19d66a76736cb6bd84db58e6f82322')
+sha256sums=('762fe495d2f97fd70f06dc7d3929506ea3b5e3151ad813e0629209b7bc504c8a'
+            '81b34580fd40feab6596051674d37fcaafb4cbbe47db8792ae261d8f8ee8ed8f'
+            '8b6d62ccd68bc955908983162c24ef4688c6f3c44c4678b41e8b0b7e58467935')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
@@ -49,12 +55,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
+
   for _arch in ${_architectures}; do
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
-
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
@@ -63,6 +69,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgfqn}"
+
   for _arch in ${_architectures}; do
     for _config in "${_configurations[@]}"; do
       pushd build-${_arch}-${_config##*=}
@@ -114,8 +121,6 @@ package() {
   done
 
   # make sure the executables don't conflict with their mingw-qt4 counterpart
-  # (Actually only qmlplugindump.exe conflicts, but for consistency all executables
-  #  will be suffixed.)
   for _arch in ${_architectures}; do
     for exe_file in "${pkgdir}/usr/${_arch}/bin/"*.exe; do
       [[ -f $exe_file ]] && mv "${exe_file}" "${exe_file%.exe}-qt5.exe"

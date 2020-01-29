@@ -1,0 +1,26 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+# Contributor: Filip Brcic <brcha@gna.org>
+# Contributor: ohmyarch
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
+depends=('mingw-w64-qt5-base')
+makedepends=('mingw-w64-gcc' 'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'python')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for package => begin
+
+<%== include 'fragments/mingw-w64-qt5-executable_suffix' %>\
+% end
+\
+% content_for package_arch => begin
+
+    # strip native static libraries
+    find "${pkgdir}/usr/${_arch}" -name 'libQt5QmlDevTools.a' -exec strip -g {} \;
+% end
