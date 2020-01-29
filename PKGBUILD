@@ -1,11 +1,12 @@
 # Maintainer: Evgeniy Filimonov <evgfilim1@gmail.com>
 
-pkgname='python-aiogram'
-pkgver=2.6
+_pyname='aiogram'
+pkgname="python-${_pyname}"
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="A pretty simple and fully asynchronous library for Telegram Bot API written in Python 3.7 with asyncio and aiohttp"
 arch=('any')
-url="https://github.com/aiogram/aiogram"
+url="https://github.com/${_pyname}/${_pyname}"
 license=('MIT')
 depends=(
     'python>=3.7'
@@ -15,7 +16,6 @@ depends=(
 )
 makedepends=(
     'python-setuptools'
-#    'python-pip'
 )
 optdepends=(
     'python-uvloop: fast, drop-in replacement of the built-in asyncio event loop'
@@ -26,26 +26,19 @@ optdepends=(
     'python-aiohttp-socks: SOCKS4(a) and SOCKS5 proxy support'
 #    'python-rethinkdb: RethinkDB storage support'  # No such package yet
 )
-source=("https://github.com/aiogram/aiogram/archive/v${pkgver}.tar.gz")
-#        "no-pip.patch")
-sha256sums=('7d790b9334a5b96f22ac4267a868a34bb233dfb19e8e9eba82f3d9d46fbbb39d')
-#            '6279e16e20acbae3e289cd0e5ba89db199753f35afa5201e3e8adbcd9c1653bb')
-
-#prepare() {
-#    patch -u "$srcdir/aiogram-${pkgver}/setup.py" no-pip.patch
-#}
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('5f5bdadc67a0a81d3c9a529cfbc694a09c7813ee32606b506401df955a99cb6b')
 
 build() {
-	cd "$srcdir/aiogram-${pkgver}"
-	python setup.py build
+    cd "$srcdir/${_pyname}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-	cd "$srcdir/aiogram-${pkgver}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    cd "$srcdir/${_pyname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
 
 # vim: ft=sh ts=4 sw=4 et 
-
