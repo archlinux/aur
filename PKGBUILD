@@ -3,32 +3,39 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
+
+# All patches are managed at https://github.com/Martchus/qtconnectivity
+
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 _qt_module=qtconnectivity
-pkgname="mingw-w64-qt5-connectivity"
-pkgver=5.14.0
+pkgname=mingw-w64-qt5-connectivity
+pkgver=5.14.1
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-case-of-setupapi.h-for-mingw-w64.patch')
-sha256sums=('2843b3b479d0feba0624eb4ae41382b99db77b87a6b7dea5aacdf3b33644f0bd'
-            'b5b231fa866711f69107a4b0c65e79acf82986cb0c0e0c1184ef79ef46d79518')
+sha256sums=('ef0cb1883c0e765cacf6c8b9422997b93fd861cf2289e56791615401eefa2d72'
+            'f78533cd673d15d81b8ab136c892d7e1b61569bb84b48b27345dfa8d6dc3123b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
@@ -41,7 +48,6 @@ prepare() {
   done
 }
 
-
 build() {
   cd "${srcdir}/${_pkgfqn}"
 
@@ -49,7 +55,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
