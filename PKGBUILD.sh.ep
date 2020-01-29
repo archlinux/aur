@@ -1,0 +1,28 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
+depends=('mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for prepare => begin
+
+  # ensure qgltf is linked against zlib
+  echo 'LIBS += -L/usr/lib -lz' >> tools/qgltf/qgltf.pro
+% end
+\
+% content_for build_config_before_make => begin
+
+      # Search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
+      # hence we need insert those paths manually
+      make qmake_all
+      find ./tools -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap|-L/usr/$_arch/lib -lQt5Bootstrap|g" {} \;
+
+% end
