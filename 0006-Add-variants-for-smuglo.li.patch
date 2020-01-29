@@ -1,0 +1,87 @@
+From 4edf5a82248c99513b218ef90698bfa0a67e3a7f Mon Sep 17 00:00:00 2001
+From: neeshy <neeshy@tfwno.gf>
+Date: Thu, 29 Aug 2019 11:52:43 -0400
+Subject: [PATCH 6/6] Add variants for smuglo.li
+
+---
+ onionlolictl | 23 +++++++++++++++++++++++
+ setup.py     |  2 +-
+ smuglolictl  | 23 +++++++++++++++++++++++
+ 3 files changed, 47 insertions(+), 1 deletion(-)
+ create mode 100755 onionlolictl
+ create mode 100755 smuglolictl
+
+diff --git a/onionlolictl b/onionlolictl
+new file mode 100755
+index 0000000..1146692
+--- /dev/null
++++ b/onionlolictl
+@@ -0,0 +1,23 @@
++#!/usr/bin/env python3
++# Copyright 2016 ring <ring@8chan.co>
++# Copying and distribution of this file, with or without modification,
++# are permitted in any medium without royalty provided the copyright
++# notice and this notice are preserved.  This file is offered as-is,
++# without any warranty.
++
++"""infinityctl variant for smuglo.li (onion)"""
++
++import os
++
++import infinitychan
++import infinityctl
++
++infinitychan.dom = "http://bhm5koavobq353j54qichcvzr6uhtri6x4bjjy4xkybgvxkzuslzcqid.onion"
++infinitychan.mod = infinitychan.dom + "/mod.php?"
++infinitychan.sys = infinitychan.dom
++infinitychan.media_base = infinitychan.dom
++infinitychan.media = infinitychan.dom + "/{board}/src/{tim}{ext}"
++infinitychan.media_dedup = infinitychan.media
++infinitychan.config = os.path.join(os.path.expanduser("~"), ".onionlolictl")
++
++infinityctl.main()
+diff --git a/setup.py b/setup.py
+index 619fa5d..d3e587b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,7 +18,7 @@ setup(
+         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+         'Intended Audience :: End Users/Desktop'],
+     py_modules=['infinitychan', 'infinityctl', 'botmod', 'threadviewer', 'urls'],
+-    scripts=['infinityctl', 'onionctl'],
++    scripts=['infinityctl', 'onionctl', 'smuglolictl', 'onionlolictl'],
+     install_requires=['urllib3'],
+     python_requires='>=3.0'
+ )
+diff --git a/smuglolictl b/smuglolictl
+new file mode 100755
+index 0000000..3723620
+--- /dev/null
++++ b/smuglolictl
+@@ -0,0 +1,23 @@
++#!/usr/bin/env python3
++# Copyright 2016 ring <ring@8chan.co>
++# Copying and distribution of this file, with or without modification,
++# are permitted in any medium without royalty provided the copyright
++# notice and this notice are preserved.  This file is offered as-is,
++# without any warranty.
++
++"""infinityctl variant for smuglo.li"""
++
++import os
++
++import infinitychan
++import infinityctl
++
++infinitychan.dom = "https://smuglo.li"
++infinitychan.mod = infinitychan.dom + "/mod.php?"
++infinitychan.sys = infinitychan.dom
++infinitychan.media_base = infinitychan.dom
++infinitychan.media = infinitychan.dom + "/{board}/src/{tim}{ext}"
++infinitychan.media_dedup = infinitychan.media
++infinitychan.config = os.path.join(os.path.expanduser("~"), ".smuglolictl")
++
++infinityctl.main()
+-- 
+2.25.0
+

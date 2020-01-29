@@ -1,0 +1,30 @@
+pkgbase = infinityctl-git
+	pkgdesc = Command line interface for 8chan
+	pkgver = latest
+	pkgrel = 1
+	url = https://gitgud.io/ring/infinityctl
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-urllib3
+	optdepends = tesseract
+	optdepends = imagemagick
+	source = git+https://gitgud.io/ring/infinityctl
+	source = 0001-Add-setup.py.patch
+	source = 0002-Add-unix_original-file-scrape-mode.patch
+	source = 0003-Fix-for-file-names-which-potentially-exceed-the-file.patch
+	source = 0004-Remove-defunct-variants.patch
+	source = 0005-Use-8kun.top-addresses.patch
+	source = 0006-Add-variants-for-smuglo.li.patch
+	sha256sums = SKIP
+	sha256sums = d07d1e661e9361eae4d9ef181fed0b41ef1c0f726cb77cd1374b71e470ecfcda
+	sha256sums = 6e511397568acc0a619f73243cf2a52ac306557d9da93cb90a420a6550f059c8
+	sha256sums = 45763115641e5616b17bf2a6d8e791889852c8de0a16364769658af0ec06bcdd
+	sha256sums = 794d37c153946095b7ef67d17ac9c2adc848b4babad37f013edec9ff0d0dc6e4
+	sha256sums = a2414a02188f1824733d6d0e78ad8d98b16f902a0cbc6ba4f821d48d56112f9a
+	sha256sums = fa4bb1349955b94f3ca1d1577e3811496c6de360fd93b86bcec3814c30c67a9d
+
+pkgname = infinityctl-git
+

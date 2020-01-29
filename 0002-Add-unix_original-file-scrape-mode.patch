@@ -1,0 +1,55 @@
+From 7e6d910e31b338f3cfe6dcca6724c6b4b6084a7e Mon Sep 17 00:00:00 2001
+From: neeshy <neeshy@tfwno.gf>
+Date: Mon, 11 Jun 2018 21:22:06 -0400
+Subject: [PATCH 2/6] Add 'unix_original' file scrape mode
+
+and make it default
+---
+ infinitychan.py | 7 +++++--
+ infinityctl     | 2 +-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/infinitychan.py b/infinitychan.py
+index f65c33e..94c81ea 100644
+--- a/infinitychan.py
++++ b/infinitychan.py
+@@ -287,18 +287,21 @@ def render_report(report):
+         threadviewer.parser.parse_post(report['reason'])))
+ 
+ 
+-def scrape_files(board, thread, mode='unix'):
++def scrape_files(board, thread, mode='unix_original'):
+     """Download all of a thread's files."""
+     for post in posts(board, thread):
+         files = get_files(post)
+         for i, file in enumerate(files):
+-            if mode == 'unix':
++            if mode == 'unix' \
++                    or mode == 'unix_original':
+                 if is_dedup(file):
+                     name = str(post['time'] * 1000 + post['no'] % 1000)
+                     if len(files) != 1:
+                         name += '-{}'.format(i)
+                 else:
+                     name = file['tim']
++                if mode == 'unix_original':
++                    name += '_' + file['filename']
+             elif mode == 'plain':
+                 name = file['tim']
+             elif mode == 'original':
+diff --git a/infinityctl b/infinityctl
+index 304c895..f9c052e 100755
+--- a/infinityctl
++++ b/infinityctl
+@@ -72,7 +72,7 @@ argopts = {
+     ('-c', '--count'): {'action': 'store_true'},
+     ('-f', '--follow'): {'action': 'store_true'},
+     ('-i', '--interval'): {'type': float},
+-    ('-m', '--mode'): {'choices': ('unix', 'plain', 'original')},
++    ('-m', '--mode'): {'choices': ('unix', 'plain', 'original', 'unix_original')},
+     ('-n', '--number'): {'type': int},
+     ('-o', '--ocr'): {'action': 'store_true'},
+     ('-r', '--raw'): {'action': 'store_true'},
+-- 
+2.25.0
+

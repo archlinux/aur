@@ -1,0 +1,61 @@
+From 11aa63d34689dd95f864ffc5db0d4f35bccfbb12 Mon Sep 17 00:00:00 2001
+From: neeshy <neeshy@tfwno.gf>
+Date: Sun, 17 Feb 2019 05:40:27 -0500
+Subject: [PATCH 5/6] Use 8kun.top addresses
+
+---
+ infinitychan.py | 12 ++++++------
+ onionctl        | 14 ++++++--------
+ 2 files changed, 12 insertions(+), 14 deletions(-)
+
+diff --git a/infinitychan.py b/infinitychan.py
+index 2f17aa2..2a27bbe 100644
+--- a/infinitychan.py
++++ b/infinitychan.py
+@@ -26,12 +26,12 @@ import re
+ import threadviewer
+ import urls
+ 
+-dom = "https://8ch.net"
+-mod = "https://sys.8ch.net/mod.php?"
+-sys = "https://sys.8ch.net"
+-media_base = "https://media.8ch.net"
+-media = "https://media.8ch.net/{board}/src/{tim}{ext}"
+-media_dedup = "https://media.8ch.net/file_store/{tim}{ext}"
++dom = "https://8kun.top"
++mod = "https://sys.8kun.top/mod.php?"
++sys = "https://sys.8kun.top"
++media_base = "https://media.8kun.top"
++media = "https://media.8kun.top/{board}/src/{tim}{ext}"
++media_dedup = "https://media.8kun.top/file_store/{tim}{ext}"
+ 
+ config = os.path.join(os.path.expanduser("~"), ".infinityctl")
+ 
+diff --git a/onionctl b/onionctl
+index bb468e4..81dfa6e 100755
+--- a/onionctl
++++ b/onionctl
+@@ -12,14 +12,12 @@ import os
+ import infinitychan
+ import infinityctl
+ 
+-dom = "http://oxwugzccvk3dk6tj.onion"
+-infinitychan.dom = dom
+-infinitychan.mod = dom + "/mod.php?"
+-infinitychan.sys = dom
+-infinitychan.media_base = dom
+-infinitychan.media = dom + "/{board}/src/{tim}{ext}"
+-infinitychan.media_dedup = infinitychan.media
+-infinitychan.media_dedup = dom + "/file_store/{tim}{ext}"
++infinitychan.dom = "http://jthnx5wyvjvzsxtu.onion"
++infinitychan.mod = infinitychan.dom + "/mod.php?"
++infinitychan.sys = infinitychan.dom
++infinitychan.media_base = infinitychan.dom
++infinitychan.media = infinitychan.dom + "/{board}/src/{tim}{ext}"
++infinitychan.media_dedup = infinitychan.dom + "/file_store/{tim}{ext}"
+ infinitychan.config = os.path.join(os.path.expanduser("~"), ".onionctl")
+ 
+ infinityctl.main()
+-- 
+2.25.0
+

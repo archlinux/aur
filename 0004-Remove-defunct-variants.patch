@@ -1,0 +1,87 @@
+From 7b7f68a7a62eb2bd08651183ecb49571f2f690a2 Mon Sep 17 00:00:00 2001
+From: neeshy <neeshy@tfwno.gf>
+Date: Wed, 29 Jan 2020 00:27:59 -0500
+Subject: [PATCH 4/6] Remove defunct variants
+
+---
+ finalchanctl | 23 -----------------------
+ setup.py     |  2 +-
+ vichanctl    | 23 -----------------------
+ 3 files changed, 1 insertion(+), 47 deletions(-)
+ delete mode 100755 finalchanctl
+ delete mode 100755 vichanctl
+
+diff --git a/finalchanctl b/finalchanctl
+deleted file mode 100755
+index befdf41..0000000
+--- a/finalchanctl
++++ /dev/null
+@@ -1,23 +0,0 @@
+-#!/usr/bin/env python3
+-# Copyright 2016 ring <ring@8chan.co>
+-# Copying and distribution of this file, with or without modification,
+-# are permitted in any medium without royalty provided the copyright
+-# notice and this notice are preserved.  This file is offered as-is,
+-# without any warranty.
+-
+-"""infinityctl variant for finalchan.net"""
+-
+-import os
+-
+-import infinitychan
+-import infinityctl
+-
+-infinitychan.dom = "https://finalchan.net"
+-infinitychan.mod = "https://finalchan.net/mod.php?"
+-infinitychan.sys = "https://finalchan.net"
+-infinitychan.media_base = "https://finalchan.net"
+-infinitychan.media = "https://finalchan.net/{board}/src/{tim}{ext}"
+-infinitychan.media_dedup = infinitychan.media
+-infinitychan.config = os.path.join(os.path.expanduser("~"), ".finalchanctl")
+-
+-infinityctl.main()
+diff --git a/setup.py b/setup.py
+index 5ea51b9..619fa5d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -18,7 +18,7 @@ setup(
+         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+         'Intended Audience :: End Users/Desktop'],
+     py_modules=['infinitychan', 'infinityctl', 'botmod', 'threadviewer', 'urls'],
+-    scripts=['infinityctl', 'onionctl', 'finalchanctl', 'vichanctl'],
++    scripts=['infinityctl', 'onionctl'],
+     install_requires=['urllib3'],
+     python_requires='>=3.0'
+ )
+diff --git a/vichanctl b/vichanctl
+deleted file mode 100755
+index 3b2bf3c..0000000
+--- a/vichanctl
++++ /dev/null
+@@ -1,23 +0,0 @@
+-#!/usr/bin/env python3
+-# Copyright 2016 ring <ring@8chan.co>
+-# Copying and distribution of this file, with or without modification,
+-# are permitted in any medium without royalty provided the copyright
+-# notice and this notice are preserved.  This file is offered as-is,
+-# without any warranty.
+-
+-"""infinityctl variant for 8ch.pl (soon to become vichan.net)"""
+-
+-import os
+-
+-import infinitychan
+-import infinityctl
+-
+-infinitychan.dom = "https://8ch.pl"
+-infinitychan.mod = "https://8ch.pl/mod.php?"
+-infinitychan.sys = "https://8ch.pl"
+-infinitychan.media_base = "https://8ch.pl"
+-infinitychan.media = "https://8ch.pl/{board}/src/{tim}{ext}"
+-infinitychan.media_dedup = infinitychan.media
+-infinitychan.config = os.path.join(os.path.expanduser("~"), ".vichanctl")
+-
+-infinityctl.main()
+-- 
+2.25.0
+
