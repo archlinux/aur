@@ -1,6 +1,6 @@
 
 pkgname=arduino-cli-rc
-_tagver="0.5.0-showports"
+_tagver="0.7.2"
 pkgver="${_tagver%-*}"
 pkgrel=1
 pkgdesc="Arduino command line interface -- stable and release candidates"
@@ -16,7 +16,7 @@ optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude'
 	   'arduino-ctags')
 source=("https://github.com/arduino/arduino-cli/archive/${_tagver}.tar.gz")
 
-sha512sums=('a8ac5b6125a618126023b7df90b45439b9bb7ef7c54808546632fbba886e743e2291adce1f634d051b5e3dd85fc1b6cfdf8058a2e402e2165f4fc2a9f07bafa4')
+sha512sums=('8ad5716aea3a36e93550290363528d103741e451c5b016d876ff1d08f6540c647453d29ac40a325393f00346f305385674abefd2a1e52fa44d5b037de8ca3e33')
 
 
 prepare(){
@@ -62,7 +62,7 @@ package() {
 	install -Dm755 "arduino-cli" "${pkgdir}/usr/bin/arduino-cli"
 
 	# Install
-	install -Dm644 -t "${pkgdir}/usr/share/arduino/hardware/" "${srcdir}/${pkgname//-rc}-${_tagver}/legacy/builder/hardware/platform.keys.rewrite.txt"	
+	install -Dm644 -t "${pkgdir}/usr/share/arduino/hardware/" "${srcdir}/${pkgname//-rc}-${_tagver}/legacy/builder/hardware/platform.keys.rewrite.txt"
 
 	# Install platform.txt files
 	#install -Dm644 -t "${pkgdir}/usr/share/arduino/hardware/" "${srcdir}"/build/src/github.com/arduino/arduino-cli/hardware/*

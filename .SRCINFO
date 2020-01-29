@@ -1,6 +1,6 @@
 pkgbase = arduino-cli-rc
 	pkgdesc = Arduino command line interface -- stable and release candidates
-	pkgver = 0.5.0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-cli
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = arduino-cli-rc
 	optdepends = arduino-ctags
 	provides = arduino-cli
 	conflicts = arduino-cli
-	source = https://github.com/arduino/arduino-cli/archive/0.5.0-showports.tar.gz
-	sha512sums = a8ac5b6125a618126023b7df90b45439b9bb7ef7c54808546632fbba886e743e2291adce1f634d051b5e3dd85fc1b6cfdf8058a2e402e2165f4fc2a9f07bafa4
+	source = https://github.com/arduino/arduino-cli/archive/0.7.2.tar.gz
+	sha512sums = 8ad5716aea3a36e93550290363528d103741e451c5b016d876ff1d08f6540c647453d29ac40a325393f00346f305385674abefd2a1e52fa44d5b037de8ca3e33
 
 pkgname = arduino-cli-rc
 
