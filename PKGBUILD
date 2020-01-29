@@ -9,7 +9,7 @@ url="https://github.com/asweigart/mouseinfo"
 license=('GPL3')
 depends=('python-xlib' 'python-pyperclip' 'python-pillow' 'tk')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('00ea0c2410c7cada53e6c831fd70dafeb6cbc04b2ab09b099f8e97a8743d35b1')
 
 build() {
