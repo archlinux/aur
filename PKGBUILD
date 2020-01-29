@@ -1,8 +1,8 @@
 # Maintainer: Zhu Chuang <genelocated at yandex dot com>
 
 pkgname=nteract-desktop-bin
-pkgver=0.15.0
-pkgrel=4
+pkgver=0.21.0
+pkgrel=1
 pkgdesc='All the power of Jupyter notebooks, wrapped in a native desktop application.'
 arch=('x86_64')
 url='https://nteract.io/desktop'
@@ -16,7 +16,7 @@ source=("https://github.com/nteract/nteract/releases/download/v$pkgver/nteract-$
         "https://raw.githubusercontent.com/nteract/nteract.io/c6a014ac670bdc7a75e80030c0255f77c3bda08f/static/icons/android-icon-192x192.png"
         "nteract.svg"
         "nteract.desktop")
-sha256sums=('cab1da3ba8d325ec8aa7366a5cf75b03a0e5bbde9f24b5f0ac6e3157e0bd7151'
+sha256sums=('03090477d06b5c692fb41b14faa9b68374e1fdb29c842a6a6a5636fd9f079d7c'
             '866e6fa48cb8810d36d8d85a3085d7aa1c4317d3731f0ef84919428fee87bf71'
             '3d60b13b503d6a74219d260c144c1de01cf3bc71bed47a8842c4ef87615c132d'
             'SKIP'
