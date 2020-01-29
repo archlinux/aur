@@ -1,7 +1,7 @@
 # Maintainer:  Lukas K. <lu@0x83.eu>
 
 pkgname=horizon-eda
-pkgver=0.9.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="free EDA package written in C++"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('yaml-cpp' 'zeromq' 'gtkmm3' 'cairomm' 'librsvg' 'sqlite3' 'libgit2' 'curl' 'opencascade' 'podofo' 'libzip')
 makedepends=('boost-libs' 'boost' 'glm')
 source=("https://github.com/horizon-eda/horizon/archive/v${pkgver}.tar.gz")
-sha256sums=('61e4658262dd9cafba9de20ab201421c254e9d94c9f52642e2741a32861ba5f3')
+sha256sums=('64b97565599cb462bda1f14bfd289fa3204b5b3e7ec77b6576c07341dde32b4d')
 
 build() {
     cd "$srcdir/horizon-$pkgver"
