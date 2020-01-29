@@ -1,0 +1,24 @@
+% layout 'mingw-w64-qt5-module', shared_config => 0;
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+% end
+\
+% content_for comment_header => begin
+# Only includes static versions because this module seems to enforce
+# being built as static library.
+
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="ActiveX integration framework (mingw-w64)"
+depends=('mingw-w64-qt5-base')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
+\
+% content_for package => begin
+
+<%== include 'fragments/mingw-w64-qt5-executable_suffix' %>\
+% end

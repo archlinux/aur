@@ -4,30 +4,37 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
+
+# All patches are managed at https://github.com/Martchus/qtactiveqt
+
 # Only includes static versions because this module seems to enforce
 # being built as static library.
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.14.0
+pkgver=5.14.1
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'python')
+license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'LGPL2.1' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('0bfb32189a79af97c86e4591c8b11fa47cec53b1b2a81c7cf20b2e0a70a051b0'
-            '8c3bcfad62dd31ec07809114c0e0ae2f1ef738dc81bc135e60a3cf2c40c11396'
-            '247b0f5f8d46cd68ee32c838e3fe4c5eda44813a8be51163243d96eb05e92a35')
+sha256sums=('457dba433497d79a0ee0e44f9f8cf8afbcbb2e36861f98516413a688a5e88aa0'
+            'be77080f4d55621fde0b8ff5e0f5d8f914b0753502f511dcdc03a6218d2b351f'
+            '07004636c487802fb26c5eb7a5b125bbf236b3ef36fa56ba4652c1b10d5b549c')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
@@ -49,7 +56,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
