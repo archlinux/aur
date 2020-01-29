@@ -1,6 +1,6 @@
 # Maintainer: yakimka <ss.yakim at gmail dot com>
 pkgname=cherrytomato
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Easy to use, flexible PyQt5 Pomodoro Technique timer"
 arch=(any)
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('python-pyqt5' 'python-qroundprogressbar')
 makedepends=('python-setuptools')
 source=("https://github.com/yakimka/CherryTomato/archive/$pkgver.tar.gz")
-sha512sums=('75970e4afc52cfd67b924cc163cac4b3502f825f231939c17188c888708ad66600428c1cd4e947b99efbb8a8a00016baac19fa395f682961ace8041ce8ac093e')
+sha512sums=('fe042c4fcf0fbb3f5fc3885818d8f42199d323cb7d4cc7f05d3427bc470abbde60c86d83c2bb2b26bc506e88ebd0b9b6629e4ca13a482c1f0cb5af1048c24a52')
 
 package() {
   cd "$srcdir/CherryTomato-$pkgver"
