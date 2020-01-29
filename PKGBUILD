@@ -1,16 +1,16 @@
 # Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=ytt
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
 license=('Apache')
 arch=('x86_64')
 depends=('glibc')
-makedepends=('git' 'go-pie')
+makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k14s/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5241ab80e10e4062c2d468fe93491786f19a45e7274f2fe6cef6a11676a6eb1a')
+sha256sums=('090c7621550cc4f24053594a25b9c1a48d98ba2f1ce5d2aa7ee30e383d7b4198')
 
 prepare() {
 	rm -rf "${srcdir}/src/github.com/k14s/${pkgname}"
