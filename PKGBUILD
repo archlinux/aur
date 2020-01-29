@@ -1,6 +1,6 @@
 
 pkgname=arduino-samd-core-rc
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Arduino samd core -- stable and release candidates"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('arduino-ctags') ## this needs to be fixed to include the analogs to: a
 options=(!strip !emptydirs)
 source=("https://github.com/arduino/ArduinoCore-samd/archive/${pkgver}.tar.gz"
         "platform.patch")
-sha512sums=('f2ca5d2ed93393785d17033bd3a2acfee0dc4b00bb5d33282f6f306db7fbf836f3d136343e85a9a6a30482263fcab7d9c0e5233b323eba028bba9239bb3fa991'
+sha512sums=('2a55455e8b3f3c803b14d7fcade44b574b01a727a1b5ca15ca66a5575b722f38d809931b99e6b58685bcdfd5ee0beeef9200cc41ab80abd6b027fd8405dd1878'
             '7297a87af15ee68de23af6081391637caf871809b8c50d89065ea9311db41bde99b7ec1446669c68ffc9a3cef3d8401e7caeff040e3a1e84564ab0111d315a20')
 
 prepare()
