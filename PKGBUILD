@@ -1,33 +1,39 @@
 # Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
+
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
 
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 _qt_module=qtnetworkauth
-pkgname="mingw-w64-qt5-networkauth"
-pkgver=5.14.0
+pkgname=mingw-w64-qt5-networkauth
+pkgver=5.14.1
 pkgrel=1
 arch=('any')
 pkgdesc="Network authentication module (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 optdepends=()
 makedepends=('mingw-w64-gcc')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('16e8e9ed817a9cf1373f8ec57e4a6da9983fc8c5c80d0c61e092414d25472d11')
+sha256sums=('e7f9705d014056a0d8a9751e7ad4b472f1184b8ef822124f0363753730536ae0')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
@@ -38,7 +44,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
