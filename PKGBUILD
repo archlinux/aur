@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-vulkan-icd-loader
 _pkgname=Vulkan-Loader
-pkgver=1.1.114
+pkgver=1.2.131
 pkgrel=1
 pkgdesc="Vulkan Installable Client Driver (ICD) Loader (mingw-w64)"
 arch=(any)
@@ -20,9 +20,9 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_pkgnam
         "001-build-fix.patch"
         "002-proper-def-files-for-32bit.patch"
         "003-generate-pkgconfig-files.patch")
-sha256sums=('b5dd14f51f80de38d93dbf25b6a0232e3621507b97122a30534d39a82d89fa6f'
-            '64ef57d8551a0b33f63aa98a06c276d5e8e24d9b4ff27347baa8fcb2a39c1295'
-            '0182a4c25214fd63290396a23d162dd1e523232a5746e77bec2de1616de31c59'
+sha256sums=('c20976afc31337b7e97aab3b9f94a87d1e8a5bcfccb633af35aaf077463809e3'
+            'e1d765334a6582e2df41986d876a578e1c978a73a741f204332f073ce20f23a7'
+            '71819784f64244b3d51666877e4437fe30786bc82db165b921a3ac029a885a9b'
             '5c189b3f76fa53ad12077cd8932423a0cf385f9464cdde60ba711589ccde19ad')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -40,13 +40,6 @@ prepare() {
   sed -i'' -E 's/target_link_libraries\(([^\)]+)\)/target_link_libraries\(\L\1\)/g' CMakeLists.txt
   # revert back just the vulkan::headers caused by previous sed
   sed -i'' -E 's/vulkan::headers/Vulkan::Headers/g' CMakeLists.txt
-
-  # Added also this because __declspec(thread) was being ultimately ignored,
-  # making a non-tls variable of a tls variable.
-  # Replaced with __thread instead, of which at least works mingw-w64-gcc with thread model of "posix".
-  # Links libwinpthread in this case as effect but doesn't lose the tls properties of the variable.
-  # Untested on gcc compiled with a thread model of "win32".
-  sed -i'' -E 's/#define THREAD_LOCAL_DECL __declspec\(thread\)/#define THREAD_LOCAL_DECL __thread/g' vk_loader_platform.h
 }
 
 build() {

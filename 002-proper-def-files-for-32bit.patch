@@ -1,7 +1,7 @@
 diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/CMakeLists.txt Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/CMakeLists.txt
 --- Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/CMakeLists.txt	2017-04-05 00:36:39.000000000 +0300
 +++ Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/CMakeLists.txt	2017-06-29 08:34:52.393725000 +0300
-@@ -61,6 +61,16 @@
+@@ -153,6 +153,16 @@
      endif()
  endif()
  
@@ -15,21 +15,21 @@ diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/CMakeLists.txt Vul
 +  endif()
 +endif()
 +
- if(WIN32)
-     # Treat warnings as errors
-     add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/WX>")
-diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/loader/CMakeLists.txt Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/loader/CMakeLists.txt
---- Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/loader/CMakeLists.txt	2017-06-29 08:19:36.448133100 +0300
-+++ Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/loader/CMakeLists.txt	2017-06-29 08:42:41.322355600 +0300
-@@ -137,6 +137,7 @@
- set_target_properties(loader_gen_files PROPERTIES FOLDER ${LOADER_HELPER_FOLDER})
+ if(MSVC)
+     # /WX: Treat warnings as errors
+     # /GR-: Disable RTTI
+diff -Naur Vulkan-Loader-1.2.131.orig/loader/CMakeLists.txt Vulkan-Loader-1.2.131/loader/CMakeLists.txt
+--- Vulkan-Loader-1.2.131.orig/loader/CMakeLists.txt	2020-01-15 18:55:51.000000000 +0000
++++ Vulkan-Loader-1.2.131/loader/CMakeLists.txt	2020-01-29 14:46:24.000000000 +0000
+@@ -62,6 +62,7 @@
+ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG")
  
  if(WIN32)
 +    if(MSVC)
      # Use static MSVCRT libraries
      foreach(configuration
              in
-@@ -156,6 +157,7 @@
+@@ -81,6 +82,7 @@
                             "${${configuration}}")
          endif()
      endforeach()
@@ -37,51 +37,43 @@ diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/loader/CMakeLists.
  
      if(ENABLE_WIN10_ONECORE)
          # Note: When linking your app or driver to OneCore.lib, be sure to remove any links to non-umbrella libs (such as
-@@ -190,24 +192,32 @@
-                     $<TARGET_OBJECTS:loader-opt>
-                     $<TARGET_OBJECTS:loader-norm>
-                     $<TARGET_OBJECTS:loader-unknown-chain>
--                    ${CMAKE_CURRENT_SOURCE_DIR}/vulkan-1.def
-+                    ${CMAKE_CURRENT_SOURCE_DIR}/vulkan-1${DEFFILE_SUFFIX}.def
-                     ${CMAKE_CURRENT_SOURCE_DIR}/loader.rc)
-+        if(MSVC)
-         set_target_properties(vulkan
-                               PROPERTIES LINK_FLAGS_DEBUG
-                                          "/ignore:4098"
-                                          OUTPUT_NAME
-                                          vulkan-1)
-+        else()
-+        set_target_properties(vulkan
-+                              PROPERTIES
-+                              LIBRARY_OUTPUT_NAME vulkan
-+                              RUNTIME_OUTPUT_NAME vulkan-1
-+                              ARCHIVE_OUTPUT_NAME vulkan)
-+        endif()
-         target_link_libraries(vulkan Vulkan::Headers)
-     else()
-         add_library(vulkan
-                     STATIC
-                     $<TARGET_OBJECTS:loader-opt>
-                     $<TARGET_OBJECTS:loader-norm>
-                     $<TARGET_OBJECTS:loader-unknown-chain>)
-         set_target_properties(vulkan PROPERTIES OUTPUT_NAME VKstatic.1)
-     endif()
+@@ -194,16 +196,24 @@
+                 $<TARGET_OBJECTS:loader-opt>
+                 $<TARGET_OBJECTS:loader-norm>
+                 $<TARGET_OBJECTS:loader-unknown-chain>
+-                ${CMAKE_CURRENT_SOURCE_DIR}/vulkan-1.def
++                ${CMAKE_CURRENT_SOURCE_DIR}/vulkan-1${DEFFILE_SUFFIX}.def
+                 ${CMAKE_CURRENT_SOURCE_DIR}/loader.rc)
++    if(MSVC)
+     set_target_properties(vulkan
+                           PROPERTIES LINK_FLAGS_DEBUG
+                                      "/ignore:4098"
+                                      OUTPUT_NAME
+                                      vulkan-1)
++    else()
++    set_target_properties(vulkan
++                          PROPERTIES
++                          LIBRARY_OUTPUT_NAME vulkan
++                          RUNTIME_OUTPUT_NAME vulkan-1
++                          ARCHIVE_OUTPUT_NAME vulkan)
++    endif()
+     target_link_libraries(vulkan Vulkan::Headers)
  
 -    if(ENABLE_WIN10_ONECORE)
 +    if(ENABLE_WIN10_ONECORE AND MSVC)
          target_link_libraries(vulkan OneCoreUAP.lib LIBCMT.LIB LIBCMTD.LIB LIBVCRUNTIME.LIB LIBUCRT.LIB)
          set_target_properties(vulkan PROPERTIES LINK_FLAGS "/NODEFAULTLIB")
      else()
-diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/loader/vulkan-1-x86.def Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/loader/vulkan-1-x86.def
---- Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/loader/vulkan-1-x86.def	1970-01-01 03:00:00.000000000 +0300
-+++ Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/loader/vulkan-1-x86.def	2017-04-05 00:36:39.000000000 +0300
-@@ -0,0 +1,221 @@
+diff -Naur Vulkan-Loader-1.2.131.orig/loader/vulkan-1-x86.def Vulkan-Loader-1.2.131/loader/vulkan-1-x86.def
+--- Vulkan-Loader-1.2.131.orig/loader/vulkan-1-x86.def	1970-01-01 00:00:00.000000000 +0000
++++ Vulkan-Loader-1.2.131/loader/vulkan-1-x86.def	2020-01-29 14:57:46.000000000 +0000
+@@ -0,0 +1,235 @@
 +
 +;;;; Begin Copyright Notice ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;
-+; Copyright (c) 2015-2017 The Khronos Group Inc.
-+; Copyright (c) 2015-2017 Valve Corporation
-+; Copyright (c) 2015-2017 LunarG, Inc.
++; Copyright (c) 2015-2017, 2019 The Khronos Group Inc.
++; Copyright (c) 2015-2017, 2019 Valve Corporation
++; Copyright (c) 2015-2017, 2019 LunarG, Inc.
 +;
 +; Licensed under the Apache License, Version 2.0 (the "License");
 +; you may not use this file except in compliance with the License.
@@ -297,6 +289,20 @@ diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/loader/vulkan-1-x8
 +
 +   vkGetImageSparseMemoryRequirements2@16
 +   vkGetPhysicalDeviceImageFormatProperties2@12
++
++   vkCreateRenderPass2@16
++   vkCmdBeginRenderPass2@12
++   vkCmdNextSubpass2@12
++   vkCmdEndRenderPass2@8
++   vkCmdDrawIndirectCount@44
++   vkCmdDrawIndexedIndirectCount@44
++   vkGetSemaphoreCounterValue@16
++   vkWaitSemaphores@16
++   vkSignalSemaphore@8
++   vkGetBufferDeviceAddress@8
++   vkGetBufferOpaqueCaptureAddress@8
++   vkGetDeviceMemoryOpaqueCaptureAddress@8
++   vkResetQueryPool@20
 diff -Naur Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0-orig/tests/layers/CMakeLists.txt Vulkan-LoaderAndValidationLayers-sdk-1.0.46.0/tests/layers/CMakeLists.txt
 --- Vulkan-LoaderAndValidationLayers-sdk-1.1.73.0-orig/tests/layers/CMakeLists.txt	2017-04-05 00:36:39.000000000 +0300
 +++ Vulkan-LoaderAndValidationLayers-sdk-1.1.73.0/tests/layers/CMakeLists.txt	2017-06-29 08:39:07.115088000 +0300
