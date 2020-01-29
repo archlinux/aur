@@ -7,9 +7,9 @@
 
 pkgname=nim-legacy
 _pkgname=Nim
-pkgver=0.17.2
-pkgrel=2
-pkgdesc='Imperative, multi-paradigm, compiled programming language - legacy version to compile pakku'
+pkgver=0.18.0
+pkgrel=1
+pkgdesc='Imperative, multi-paradigm, compiled programming language'
 url='https://nim-lang.org/'
 arch=('x86_64')
 license=('MIT')
@@ -19,10 +19,10 @@ conflicts=('nim')
 provides=('nim')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/nim-lang/Nim/archive/v${pkgver}.tar.gz
         csources-${pkgver}.tar.gz::https://github.com/nim-lang/csources/archive/v${pkgver}.tar.gz)
-sha256sums=('eb8a98c7e576e8d858de98473569a29c539308fc7bb15a086b3f2b73d675f752'
-            '7eb28ba7d5a03d02fc1c1fd9089c037de9c058d327fd6e95d599db63d9afa9c8')
-sha512sums=('02d773a338cf4aeeedd614fbd694feb4b64c620e63415a979e9f4fdf29d306315ab8a07d81f7a5389744d6f526eee2b1774a1ee7a6911f5bd03bdbb0e30061e7'
-            '4a8f1e87bd96ab33998b0d3415c0ba9560b78795e0396d8af8b588a93c23477097f2c5388b4e612fbc142b490480326b394a933c805a3585cd6f3d7e8390e3e6')
+sha256sums=('9b9982f349fb96db44020a6da14fa683179b637a3d94782e2c99156ac613e187'
+            'e9aff9d58661ea852ae424ba34fc3750b45fb31982645a3038de2300bea2d17c')
+sha512sums=('b4c4ca78bfb310eba7cd105cc43bdb64b013ef90e06613e8d9af460b3f57ccdb4d4fc49f100bb4a5c0f06d45664197b68e69d5bf8ac724c0c849863082aa3a66'
+            'e89324e3d091e1a29b5d0110bf9de7fba2438ce1f37bddcfd5cb4dde3bf31ab906c4576b623a5d70504c3430dad737898474e17d6c0eef41c1effd438d0cc571')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
