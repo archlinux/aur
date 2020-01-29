@@ -4,7 +4,7 @@
 
 pkgbase=spotifyd
 pkgname=('spotifyd' 'spotifyd-pulseaudio' 'spotifyd-dbus-mpris' 'spotifyd-full')
-pkgver=0.2.23
+pkgver=0.2.24
 pkgrel=1
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'libpulse' 'dbus')
 pkgdesc="A spotify playing daemon"
 url="https://github.com/Spotifyd/$pkgbase"
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/Spotifyd/$pkgbase/archive/v$pkgver.tar.gz")
-sha256sums=('fc282ea0773645106195eb399df900bcbd1a9c5e9e54635ea7b9a9f4b90764bd')
+sha256sums=('d3763f4647217a8f98ee938b50e141d67a5f3d33e9378894fde2a92c9845ef80')
 _features=(''
   'pulseaudio_backend'
   'dbus_mpris'
