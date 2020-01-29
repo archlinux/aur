@@ -8,9 +8,9 @@
 
 pkgbase=shiboken2-git
 pkgname=(shiboken2-git python-shiboken2-git)
-_clangver=9.0.0
+_clangver=9.0.1
 pkgver=r6554.6eb583d7
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL2 LGPL)

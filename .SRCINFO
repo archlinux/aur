@@ -1,7 +1,7 @@
 pkgbase = shiboken2-git
 	pkgdesc = Generates bindings for C++ libraries using CPython source code (git version)
 	pkgver = r6554.6eb583d7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	license = GPL2
@@ -17,7 +17,7 @@ pkgbase = shiboken2-git
 	sha256sums = SKIP
 
 pkgname = shiboken2-git
-	depends = clang=9.0.0
+	depends = clang=9.0.1
 	depends = llvm
 	depends = libxslt
 	depends = qt5-xmlpatterns
