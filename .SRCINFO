@@ -7,6 +7,7 @@ pkgbase = gnome-shell-extension-gsconnect
 	license = GPL
 	makedepends = meson
 	makedepends = ninja
+	makedepends = eslint
 	depends = gnome-shell
 	optdepends = folks: Contacts integration (Evolution)
 	optdepends = libgdata: Contacts integration (GNOME Online Accounts)

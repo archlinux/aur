@@ -7,7 +7,7 @@ pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/andyholmes/gnome-shell-extension-gsconnect"
 license=('GPL')
-makedepends=('meson' 'ninja')
+makedepends=('meson' 'ninja' 'eslint')
 depends=('gnome-shell')
 optdepends=(
   'folks: Contacts integration (Evolution)'
