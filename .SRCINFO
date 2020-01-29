@@ -1,0 +1,16 @@
+pkgbase = cppyy-backend
+	pkgdesc = Cling-based Python-C++ bindings (backend)
+	pkgver = 1.10.7
+	pkgrel = 1
+	url = https://cppyy.readthedocs.io/en/latest/index.html
+	arch = any
+	license = LBNL BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = cppyy-cling
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/15/53/b75a3df99aa2a93d32aa7be94672657af9afd80d56a55432baf4ab52cdd7/cppyy-backend-1.10.7.tar.gz
+	sha256sums = 57e7773ce78ee2f22307c5f44f13d203af7b11d001dbe1a0b07f430da4e54b90
+
+pkgname = cppyy-backend
+
