@@ -1,4 +1,4 @@
-From 4c3a182e5ce8a05eb3db20b908a60015fb47d021 Mon Sep 17 00:00:00 2001
+From 46131a2bddc04cd7a647703e7ef372534d3b43e5 Mon Sep 17 00:00:00 2001
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 Date: Tue, 29 Oct 2019 20:00:22 +0300
 Subject: [PATCH 04/15] PCI: pciehp: Prevent deadlock on disconnect

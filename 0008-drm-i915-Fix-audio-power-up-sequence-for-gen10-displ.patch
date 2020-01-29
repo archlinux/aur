@@ -1,4 +1,4 @@
-From ec0217ea2a6aeb9b99b84bbc7b01023ab1f3547a Mon Sep 17 00:00:00 2001
+From fb5c4a65581a781da9bc327c51752616580fad95 Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Thu, 3 Oct 2019 11:55:30 +0300
 Subject: [PATCH 08/15] drm/i915: Fix audio power up sequence for gen10+

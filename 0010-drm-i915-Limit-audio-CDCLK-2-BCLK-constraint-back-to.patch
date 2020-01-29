@@ -1,4 +1,4 @@
-From 2828549af6c24235da03337c781053d4fc5edd08 Mon Sep 17 00:00:00 2001
+From e16ed265e3aad492d0143a41b22eeb050b3dc60f Mon Sep 17 00:00:00 2001
 From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Date: Tue, 31 Dec 2019 16:00:07 +0200
 Subject: [PATCH 10/15] drm/i915: Limit audio CDCLK>=2*BCLK constraint back to

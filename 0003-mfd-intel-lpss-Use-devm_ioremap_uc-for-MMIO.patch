@@ -1,4 +1,4 @@
-From 80b9003aa031b66333ab68692e0661b8d7a7e5f7 Mon Sep 17 00:00:00 2001
+From c751a20a61358f55933194dbd83e592a730ad0cb Mon Sep 17 00:00:00 2001
 From: Tuowen Zhao <ztuowen@gmail.com>
 Date: Wed, 16 Oct 2019 15:06:29 -0600
 Subject: [PATCH 03/15] mfd: intel-lpss: Use devm_ioremap_uc for MMIO
