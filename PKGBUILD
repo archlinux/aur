@@ -1,7 +1,7 @@
 # Maintainer Mircea Mihalea <mircea at mihalea dot ro>
 
 pkgname=i3expo
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Provide a workspace overview for i3wm"
 url="https://github.com/mihalea/i3expo"

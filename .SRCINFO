@@ -1,6 +1,6 @@
 pkgbase = i3expo
 	pkgdesc = Provide a workspace overview for i3wm
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/mihalea/i3expo
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = i3expo
 	depends = python-xdg
 	provides = i3expo-daemon
 	provides = i3expo
-	source = git+https://github.com/mihalea/i3expo.git#tag=v1.1.1
+	source = git+https://github.com/mihalea/i3expo.git#tag=v1.1.2
 	md5sums = SKIP
 
 pkgname = i3expo
