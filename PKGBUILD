@@ -20,17 +20,17 @@ build() {
 }
 
 package() {
-  install -dm644 "${pkgdir}/opt/"
-  install -dm644 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/opt/"
+  install -dm755 "${pkgdir}/usr/bin"
   install -dm644 "${pkgdir}/usr/share/pixmaps"
   install -dm644 "${pkgdir}/usr/share/applications"
 
-  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/microsoft-office-online.desktop"
-  cp -rL "${srcdir}/microsoft-office-online-linux-x64" "${pkgdir}/opt/"
+  install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
+  cp -rL "${srcdir}/MicrosoftOfficeOnline-linux-x64" "${pkgdir}/opt/${pkgname}"
 
-  ln -sf "/opt/microsoft-office-online-linux-x64/microsoft-office-online" "${pkgdir}/usr/bin/microsoft-office-online"
-  ln -sf "/opt/microsoft-office-online-linux-x64/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/microsoft-office-online.png"
+  ln -sf "/opt/${pkgname}/MicrosoftOfficeOnline" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/opt/${pkgname}/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/MicrosoftOfficeOnline.png"
 
-  chmod 777 "${pkgdir}/opt/microsoft-office-online-linux-x64/resources/app/nativefier.json"
+  chmod 777 "${pkgdir}/opt/${pkgname}/resources/app/nativefier.json"
 }
 
