@@ -1,0 +1,19 @@
+pkgbase = ikona
+	pkgdesc = Icon preview designed for Plasma
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://invent.kde.org/KDE/ikona
+	arch = any
+	license = GPL
+	makedepends = cmake
+	depends = kirigami2
+	depends = plasma-framework
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	depends = qt5-declarative
+	depends = qt5-webengine
+	source = https://invent.kde.org/kde/ikona/-/archive/v0.7.1/ikona-v0.7.1.tar.gz
+	md5sums = 71643037824ded39cac9cdc6ab6b0217
+
+pkgname = ikona
+
