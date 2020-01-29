@@ -9,7 +9,7 @@ _gitname=vim9
 pkgbase=$_gitname-git
 #pkgname=('vim9-tiny-git' 'vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
 pkgname=('vim9-cli-nox-git' 'vim9-cli-git' 'vim9-rt-git')
-pkgver=9.0.147+20200124.c73be1480
+pkgver=9.0.148+20200126.6fe9033b9
 pkgrel=1
 arch=('x86_64')
 license=('custom:vim')
@@ -18,11 +18,9 @@ makedepends=('gpm' 'perl' 'python' 'lua' 'desktop-file-utils' 'gettext' 'pkgconf
 source=(
     "$_gitname::git://github.com/brammool/vim9.git"
     'license.txt'
-    "if_py_both.patch"
 )
 sha256sums=('SKIP'
-            'bb4744930a0030085d382356e9fdd4f2049b6298147aee2470c7fca7ec82fd55'
-            '8353881a6ae9f48c7728172ec6b08b56c8d9ae8e43c9e29eb6bd633b821956b2')
+            'bb4744930a0030085d382356e9fdd4f2049b6298147aee2470c7fca7ec82fd55')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -41,7 +39,6 @@ prepare() {
     cp -a ${_gitname} vim-build
     (
         cd vim-build && rm -rf ./.git*
-        patch -p0 -i "$srcdir/if_py_both.patch"
     )
 
     # define the place for the global (g)vimrc file (set to /etc/vimrc)
