@@ -42,7 +42,12 @@ build() {
     # Kernel module awusb
     cd ${srcdir}/${pkgname}/awusb
     patch -Np1 -i ${srcdir}/awusb-fix.patch
-    sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i Makefile
+
+    # Kernels greater than 5.4 fails to build
+    function ver { printf "%03d%03d%03d" $(echo "$1" | tr '.' ' '); }
+    kernel_ver=$(uname -r | cut -d'-' -f1)
+    if [ "$(ver $kernel_ver)" -gt "$(ver 5.4)" ]; then sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i Makefile ; fi
+
     make
 }
 
