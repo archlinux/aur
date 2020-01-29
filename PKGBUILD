@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touchpad-indicator-git
 pkgver=r104.871c375
 pkgrel=2
@@ -7,20 +7,20 @@ pkgdesc="An indicator for the touchpad"
 arch=('any')
 url="https://github.com/atareao/Touchpad-Indicator"
 license=('GPL3')
-depends=('gtk3' 'gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'lsb-release' 'librsvg'
+depends=('gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'lsb-release' 'librsvg'
          'python-xlib' 'python-pyudev' 'python-dbus' 'python-evdev' 'xorg-xinput')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/atareao/Touchpad-Indicator.git')
+source=("${pkgname%-git}::git+https://github.com/atareao/Touchpad-Indicator.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "Touchpad-Indicator"
+	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "Touchpad-Indicator"
+	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 "bin/${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm644 debian/changelog -t "$pkgdir/usr/share/${pkgname%-git}"
 	install -Dm755 src/*.py "$pkgdir/usr/share/${pkgname%-git}"
