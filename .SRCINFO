@@ -1,18 +1,18 @@
 pkgbase = runelite-launcher
 	pkgdesc = Open source Old School RuneScape client. (Launcher with auto-update)
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/runelite/launcher
 	arch = any
 	license = BSD
 	makedepends = maven
 	makedepends = imagemagick
-	depends = java-environment
+	depends = java-environment>=11
 	depends = ttf-font
 	optdepends = gvfs: enable links
-	source = https://github.com/runelite/launcher/archive/2.0.1.tar.gz
+	source = https://github.com/runelite/launcher/archive/2.1.0.tar.gz
 	source = runelite-launcher.desktop
-	sha512sums = 0901198f8cc105bf4f9415fec045743f761fe64a76c95d2f53f6b2c5c2ede508d71364de69bc88e8c1ea905df66518674359a28366bd47e6e66ad2f21d8b9c0e
+	sha512sums = a1e06ca8be7ca08c33f1408bb61449ff3c0106f4cf985201d8e666d4304a52f163ec413a428da992ac1ee4b731002d1b7f92d9e785cdb31d9999bdeb6920dfa0
 	sha512sums = db548f7e675a1aabc8a97d40dc3f8f59f14fe55826e80faf95df1c957b6ae0cc40514998141a0e7fb5eb456a53a1fd298ea31cb97b6584487147ada7190668b7
 
 pkgname = runelite-launcher
