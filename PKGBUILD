@@ -1,0 +1,20 @@
+# Maintainer: Hao Long <aur@esd.cc>
+
+pkgname=subfinder-bin
+pkgver=2.3.1
+pkgrel=1
+pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites"
+arch=("x86_64")
+url="https://github.com/projectdiscovery/subfinder"
+license=("MIT")
+source=(
+    "https://github.com/projectdiscovery/subfinder/releases/download/v${pkgver}/subfinder-linux-amd64.tar"
+    "https://raw.githubusercontent.com/projectdiscovery/subfinder/v${pkgver}/LICENSE"
+)
+sha256sums=('02031d56bee4ac545f472d815333183329b4594bf25aa22653109e0aa9b4b8d8'
+            'fe9e33fc73d30a3c3ec7b1d75fd245c6a0d1679d5778ebe34b1d6fb9b63922ba')
+
+package() {
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm755 subfinder-linux-amd64 ${pkgdir}/usr/bin/subfinder
+}
