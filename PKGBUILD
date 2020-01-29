@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-block_tracing
-_name=block_tracing
+_name=${pkgname#python-}
 pkgver=1.0.1
 pkgrel=5
 pkgdesc="Protect process memory"
