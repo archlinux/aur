@@ -30,6 +30,20 @@ checkcommand() {
 	fi
 }
 
+promptuser() {
+	local defaultvalue="$1"
+	local newvalue=""
+	while true; do
+		read newvalue
+		if [[ -n "$defaultvalue" ]] || [[ -n "$newvalue" ]]; then
+			break
+		else
+			echo -en "Please enter a valid value: " > /dev/stderr
+		fi
+	done
+	[[ -n "$newvalue" ]] && echo "$newvalue" || echo "$defaultvalue"
+}
+
 _common_install() {
 	efidir="$1"
 	efifile="$2"
@@ -75,19 +89,25 @@ install() {
 
 	# Find ESP device number
 	partition=$(fdisk -l | grep "EFI System" | awk '{print $1}' | tail -n1)
-	echo -en "Press Enter if ${CB}$partition${CR} is your ESP partition, "
-	echo -en "else enter device path manually (like ${CB}/dev/sdXY${CR}): "
-	read choice
-	[[ -n $choice ]] && partition=$choice
+	if [[ -n "$partition" ]]; then
+		echo -en "Press Enter if ${CB}$partition${CR} is your ESP partition, "
+		echo -en "else enter device path manually (like ${CB}/dev/sdXY${CR}): "
+	else
+		echo -en "Enter device path for your ESP partition (like ${CB}/dev/sdXY${CR}): "
+	fi
+	partition=$(promptuser "$partition")
 	partnumber=$(echo $partition | grep -Eo '[0-9]+$')
 	[[ $partition == "/dev/nvme"* ]] && device=$(echo $partition | cut -dp -f1) || device=${partition//$partnumber}
 
 	# Find ESP mount point
 	esp=$(mount | grep $partition | awk '{print $3}' | tail -n1)
-	echo -en "Press Enter if ${CB}$esp${CR} is your mount point, "
-	echo -en "else enter mount point manually (like ${CB}/boot/efi${CR}): "
-	read choice
-	[[ -n $choice ]] && esp=$choice
+	if [[ -n "$esp" ]]; then
+		echo -en "Press Enter if ${CB}$esp${CR} is your mount point for ESP partition, "
+		echo -en "else enter mount point manually (like ${CB}/boot/efi${CR}): "
+	else
+		echo -en "Enter the mount point for the ESP partition (like ${CB}/boot/efi${CR}): "
+	fi
+	esp=$(promptuser "$esp")
 
 	# Check if ESP is mounted
 	if ! mount | grep $partition | grep -q $esp; then
