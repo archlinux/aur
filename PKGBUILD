@@ -12,7 +12,7 @@ provides=("motionbox")
 conflicts=("motionbox")
 depends=(vlc qt5-base)
 source=(
-    https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox-1.6.0-linux64.tar.gz
+    http://omega.gg/get/MotionBox/MotionBox-1.6.0-linux64.tar.gz
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
     https://github.com/G-P-L/AUR/raw/master/MotionBox/libdouble-conversion.so.1
