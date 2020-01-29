@@ -22,10 +22,10 @@ pkgbase = cairo-glesv2-aarch64
 	conflicts = cairo-gl
 	conflicts = cairo-xcb
 	source = https://webreflection.github.io/aur/cairo-glesv2-aarch64-1.17.2.tar.gz
-	md5sums = 95ad74fa403f509fcb7127ac927a264e
-	sha1sums = 53b065e4a87677b2832f9ce2e4cdd21a6501fb95
-	sha256sums = db1d0edf075eb7fe30deb9b423da1915a66cb2b8ba573cf8205034fa888e7687
-	sha512sums = b29df24ee895a52bbdda11d47b64eb11423a478747ea66eb15960fb3249f8a8df01a1e57c39d89e37afecea0243f3889c5e41a6fda218cb066972ffd4d22f19b
+	md5sums = 07cca5ed72a6b74dc8815ae8548c0268
+	sha1sums = 6a1e731e5836722563b9caa62d4ac1ee6abd23a7
+	sha256sums = 85409173668c2a784f3ee064efff492596ca2bf32fe7c4d0cb4ab9b5d938f633
+	sha512sums = f9f793154c93b018ca7656ea8ed3c7f0f3b78ce33306ac5fe42de1a47ed72431b8ab85c4c9bd930dad9e84258a4b949e2088c19cefdd8cefef64764cd0c29ae5
 
 pkgname = cairo-glesv2-aarch64
 
