@@ -1,0 +1,13 @@
+pkgbase = sowm
+	pkgdesc = An itsy bitsy floating window manager
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/dylanaraps/sowm
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = https://github.com/dylanaraps/sowm/archive/1.2.tar.gz
+	sha256sums = f69975670c015f3caf5f24ac448bd29cc215ae72458ca755c148c600dd2527ed
+
+pkgname = sowm
+
