@@ -1,0 +1,14 @@
+% layout 'mingw-w64-qt5-module', static_config => 0, no_libraries => 1;
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+# Contributor: Filip Brcic <brcha@gna.org>
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
+depends=('mingw-w64-qt5-base')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-tools')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
