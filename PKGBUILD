@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-fusepyng
-_name=fusepyng
+_name=${pkgname#python-}
 pkgver=1.0.7
 pkgrel=4
 pkgdesc="Simple ctypes bindings for FUSE"
@@ -9,7 +9,7 @@ url="https://github.com/rianhunter/fusepyng"
 license=('ISC')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"{,.asc}
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"{,.asc}
         "https://raw.githubusercontent.com/rianhunter/$_name/$_name/LICENSE")
 sha256sums=('8b4f6ef81e8600f23da7509169acb2615582ef116d46a2a1ad4b7e530d8f899f'
             'SKIP'
