@@ -1,0 +1,13 @@
+pkgbase = faubox
+	pkgdesc = Desktop client for FAU's file synchronization service.
+	pkgver = 14.11.100
+	pkgrel = 1
+	url = https://www.fau.eu/intranet/tools/faubox-cloud-storage-for-all-fau-members/
+	arch = any
+	license = custom
+	depends = jre8-openjdk
+	source = https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz
+	sha256sums = 9a04b17bacb17a72a5101033a9006d93a2b21a63c87319d0a00ac333c916acd4
+
+pkgname = faubox
+
