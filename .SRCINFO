@@ -1,5 +1,5 @@
 pkgbase = python-mouseinfo
-	pkgdesc = An application to display XY position and RGB color information for the pixel currently under the mouse.
+	pkgdesc = Display XY position and RGB color information for the pixel currently under the mouse.
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/asweigart/mouseinfo
