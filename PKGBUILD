@@ -3,19 +3,13 @@
 
 pkgname=cawbird-git
 _pkgname=cawbird
-pkgver=v1.0.4.r20.g5519fb88
+pkgver=v1.0.4.r21.gb1d34272
 pkgrel=1
 pkgdesc="A fork of the Corebird GTK Twitter client that continues to work with Twitter "
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/ibboard/cawbird/"
-depends=('gtk3'
-         'libgee'
-         'sqlite3'
-         'gst-plugins-good'
-         'gst-plugins-bad'
-         'gst-libav'
-         'gspell')
+depends=('gspell' 'gstreamer')
 optdepends=('noto-fonts-emoji: Emoji support')
 makedepends=('vala' 'git' 'meson' 'intltool')
 provides=('corebird')
