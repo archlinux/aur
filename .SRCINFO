@@ -1,0 +1,16 @@
+pkgbase = mustach
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://gitlab.com/jobol/mustach/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = json-c
+	depends = json-c
+	provides = mustach
+	source = https://gitlab.com/jobol/mustach/-/archive/0.99/mustach-0.99.zip
+	md5sums = c36a37d9e46c7db1225853c7fb207265
+
+pkgname = mustach
+
