@@ -1,0 +1,19 @@
+pkgbase = python-blowfish
+	pkgdesc = Fast, efficient Blowfish cipher implementation in pure Python (3.4+).
+	pkgver = 0.6.1
+	pkgrel = 00
+	url = https://github.com/jashandeep-sohi/python-blowfish
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/ca/06/6008f79f3df714da4eeb6d7daf5e417e072c69923d22ede09171e74d69f8/blowfish-0.6.1.tar.bz2
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 47d9e27f4cd19632400875b19f1ad28f
+	md5sums = 8f0e2cd40e05189ec81232da84bd6e1a
+
+pkgname = python-blowfish
+
