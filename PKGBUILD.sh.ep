@@ -1,0 +1,18 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+# Contributor: Filip Brcic <brcha@gna.org>
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)"
+depends=('mingw-w64-qt5-base')
+# these dependencies will enable further functionality
+#depends+=('mingw-w64-jasper') # for JPEG-2000 Part-1
+#depends+=('mingw-w64-libmng') # for MNG
+#depends+=('mingw-w64-libwebp') # for WebP
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
