@@ -17,12 +17,9 @@ install='overgrive.install'
 changelog=
 
 source=('overgrive.tar.xz::https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.7-0-any.pkg.tar.xz')
-noextract=('overgrive-3.3.7-0-any.pkg.tar.xz')
 md5sums=('31f44a4b705a58be1b94a22b73ad7c56')
 
 prepare() {
-    tar --extract --file=./overgrive-3.3.7-0-any.pkg.tar.xz
-    rm -- ./overgrive-3.3.7-0-any.pkg.tar.xz
     # chmod 0755 ./opt/thefanclub/overgrive/__pycache__/overgrive.cpython-38.pyc
 
     # script to execute through terminal 

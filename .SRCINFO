@@ -14,8 +14,7 @@ pkgbase = overgrive
 	depends = python-pyinotify
 	provides = overgrive
 	conflicts = overgrive
-	noextract = overgrive-3.3.5-0-any.pkg.tar.xz
-	source = https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.7-0-any.pkg.tar.xz
+	source = overgrive.tar.xz::https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.7-0-any.pkg.tar.xz
 	md5sums = 31f44a4b705a58be1b94a22b73ad7c56
 
 pkgname = overgrive
