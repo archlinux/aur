@@ -1,7 +1,7 @@
 pkgbase = yandex-disk
 	pkgdesc = Yandex.Disk keeps your files with you at all times.
 	pkgver = 0.1.5.1039
-	pkgrel = 1
+	pkgrel = 2
 	url = http://disk.yandex.ru/
 	install = yandex-disk.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yandex-disk
 	depends = gcc
 	depends = gcc-libs
 	depends = zlib
-	source = http://repo.yandex.ru/yandex-disk/deb/pool/main/y/yandex-disk/yandex-disk_0.1.5.1039_amd64.deb
+	source = https://repo.yandex.ru/yandex-disk/deb/pool/main/y/yandex-disk/yandex-disk_0.1.5.1039_amd64.deb
 	source = yandex-disk.install
 	source = yandex-disk.service
 	md5sums = 540bfce5526c1f761c44039a01edca6a
