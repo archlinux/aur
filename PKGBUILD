@@ -1,6 +1,5 @@
-
 pkgname=arduino-builder-rc
-pkgver=1.4.7
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A command line tool for compiling Arduino sketches -- stable and release candidates"
 arch=('x86_64')
@@ -14,7 +13,7 @@ optdepends=('arduino-avr-core: AVR core with upstream avr-gcc and avrdude'
 	   'arduino-cli: Arduino command line interface')
 source=("https://github.com/arduino/arduino-builder/archive/${pkgver}.tar.gz")
 
-sha512sums=('7550a8ec97e20ce88f519a33158df575c76b2de133d57db0323453f04a0bbe8484030f80e71fdcd095127289e53bcd635a056eb32845b7a7203003be2f5a9ab7')
+sha512sums=('97e643836befb42279c4b745197197a8057ca1a52eee776f13b70c5a564818e50ac155745e52df53e7fc6bbbf6d4478c1cc6dcc87bb5d4f7a02d79db692171f5')
 
 
 prepare(){
