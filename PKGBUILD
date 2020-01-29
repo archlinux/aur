@@ -3,13 +3,16 @@
 _pkgname=lxqt-kwin-desktop
 pkgname=$_pkgname-git
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt-Kwin desktop"
-arch=("i686" "x86_64")
+arch=("any")
 url="http://lxqt.org"
 license=("GPL2")
 depends=(
 	"pcmanfm-qt-git"
+	"lximage-qt-git"
+	"qterminal-git"
+	"pavucontrol-qt-git"
 	# components
 	"lxqt-about-git"
 	"lxqt-admin-git"
@@ -30,31 +33,35 @@ depends=(
 	"lxqt-kcm-integration-extra-git"
 	"lxqt-organizer-git"
 )
-optdepends=(
-	"sddm-git: Recommended display manager"
-	"sddm-config-editor-git: an sddm config editor"
-	"nm-tray-git: Qt front-end to NetworkManager"
-	"lxqt-connman-applet-git: Qt front-end to ConnMan"
-	"cmst-git: a connman system tray"
-	"kvantum-qt5-git: SVG-based Qt5 theme engine plus a config tool and extra themes"
-	"pavucontrol-qt-git: PulseAudio mixer. Qt port of pavucontrol"
-	"lximage-qt-git: The LXQt image viewer"
-	"qterminal-git: Pure Qt terminal"
-	"featherpad-git: Pure Qt text editor"
-	"feathernotes-git: Lightweight Qt hierarchical notes-manager for Linux"
-	"screengrab-git: Screenshot capture"
-	"qps-git: Task Monitoring"
-	"lector-git: Qt based ebook reader with support for PDF, epub, djvu, fb2, comicbooks, mobi, azw"
-	"mpv-git: Recommended video player"
-	"meteo-qt-git: System tray application for weather status information"
-	"qvkbd-git: Qt Virtual Keyboard"
-	"simplescreenrecorder-git: A feature-rich screen recorder that supports X11 and OpenGL"
-	"qbittorrent-git: A bittorrent client powered by C++, Qt5 and the good libtorrent library"
-	"ksmoothdock-git: Recommended dock to be used with lxqt-kwin"
-	"qomui-git: Qt OpenVPN Gui with advanced features and support for multiple providers"
-	"speedcrunch-git: Simple, high precision and powerful calculator"
+optdepends=("lxqt-connman-applet: Qt front-end to ConnMan"
+	"cmst: a connman system tray"
+	"kvantum-qt5: SVG-based Qt5 theme engine plus a config tool and extra themes"
+	"featherpad: Pure Qt text editor"
+	"feathernotes: Lightweight Qt hierarchical notes-manager for Linux"
+	"screengrab: Screenshot capture"
+	"qlipper: Lightweight & cross-platform clipboard history applet based on qt"
+	"qps: Task Monitoring"
+	"lector: Qt based ebook reader with support for PDF, epub, djvu, fb2, comicbooks, mobi, azw"
+	"qpdfview: A tabbed PDF viewer using the poppler library."
+	"mpv: Recommended video player"
+	"audacious-qt5: Recommended audio player"
+	"mystiq: FFmpeg GUI front-end based on Qt5."
+	"ffaudioconverter: Graphical audio converter"
+	"converseen: A batch image processor"
+	"shotcut: video editor"
+	"qvkbd: Qt Virtual Keyboard"
+	"simplescreenrecorder: A feature-rich screen recorder that supports X11 and OpenGL"
+	"qbittorrent: A bittorrent client powered by C++, Qt5 and the good libtorrent library"
+	"qomui: Qt OpenVPN Gui with advanced features and support for multiple providers"
 	"performance-tweaks: Recommended for fast and responsive desktop experience"
 	"systemdgenie: Systemd management utility"
+	"ksmoothdock: Recommended dock to be used with lxqt-kwin"
+	"kdocker: An application to help you dock any application into the system tray"
+	"speedcrunch: Simple, high precision and powerful calculator."
+	"sddm: Recommended display manager"
+	"sddm-config-editor-git: an sddm config editor"
+	"nm-tray-git: Qt front-end to NetworkManager"
+	"meteo-qt-git: System tray application for weather status information"
 )
 makedepends=("git")
 provides=("$_pkgname")
