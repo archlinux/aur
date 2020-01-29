@@ -6,7 +6,7 @@ _svt_av1_ver='0.8.0'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.3.r96270.gc3a17ffff6
+pkgver=4.3.r96534.gde1b2aa796
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -79,9 +79,7 @@ pkgver() {
 
 build() {
     cd ffmpeg
-    
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}/opt/intel/mediasdk/lib/pkgconfig"
-    
+     
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
