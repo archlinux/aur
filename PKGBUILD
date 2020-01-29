@@ -24,6 +24,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+	cd "${srcdir}/${_gitname}"
+	./bootstrap
+}
+
 build() {
   cd "${srcdir}/${_gitname}"
 	./configure --prefix=/usr \
