@@ -1,7 +1,7 @@
-From 4015d046c4a5432f907e057cbe35702c5f5e44d4 Mon Sep 17 00:00:00 2001
+From 4ce906f280106ae0554a7dda7c3afdee43cda662 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 24 Sep 2018 20:10:19 +0200
-Subject: [PATCH 3/3] Link directshow plugin against libamstrmid
+Subject: [PATCH 3/4] Link directshow plugin against libamstrmid
 
 Fixes errors about undefined references to IID_IMFVideoDeviceID,
 IID_IMFVideoPresenter, IID_IMFTopologyServiceLookupClient and
@@ -28,5 +28,5 @@ index 27bb3abb..5aa207dd 100644
  SOURCES += dsserviceplugin.cpp
  
 -- 
-2.24.1
+2.25.0
 

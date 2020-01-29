@@ -1,48 +1,50 @@
 # Maintainer: Martchus <martchus@gmx.net>
+# Contributor: ant32 <antreimer@gmail.com>
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
 
 # All patches are managed at https://github.com/Martchus/qtmultimedia
 
+# Includes dynamic and static versions; if only one version is requried, just
+# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
+
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.14.0
+pkgver=5.14.1
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch'
-        '0003-Link-directshow-plugin-against-libamstrmid.patch')
-sha256sums=('e7901aa32fe71f1409cf73a0c62f27b98f434688e7b16ea8591b29cd8f90ad5e'
-            'cacf75d26ac096fb4956bd95a21bfdb591f9170dc34d03435c4514e257a11f70'
-            '71707819e586f4c520d17791677a0541325cbace2e34a588bca2384343124f1f'
-            '70e0c12297ea88f582f45870028176c95da421a63ac3cf4f94637a9f149db91b')
+        '0003-Link-directshow-plugin-against-libamstrmid.patch'
+        '0004-Fix-case-of-header-file-includes-for-building-with-m.patch')
+sha256sums=('c458121c8db7ff77eefe643a7c9847ff324647f2603bb5664bcafa6435edeae7'
+            '868eee99997f42ea69f1fd58938b447be77a20b3e210f6b4a2e547666f5e8456'
+            'c47b93ba7de47f0a67c7a200b1d9d36b7aefa507c5a8f2fb510cc69545fd3a7b'
+            'e35c8f9877b2ade5c650ca79e56b527db30dcfc39048f2694e4da25281f530a0'
+            'a008984f200628a3a58bcde1c95247b578af77d0abcab242f2a16f46db23e911')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
-
-link_header_files() {
-  for header in "$@"; do
-    ln -sf "/usr/${_arch}/include/${header,,}" "./sysinclude/${header}"
-  done
-}
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
@@ -60,10 +62,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      # Header are case sensitive under Linux, provide symlinks to prevent compile errors
-      mkdir -p ./sysinclude/qtgui && link_header_files {ShlObj,Evr9,Mferror}.h
-      ln -sf "/usr/${_arch}/include/qt/QtGui/qguiapplication.h" './sysinclude/qtgui/qguiapplication.h'
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} INCLUDEPATH+="${srcdir}/${_pkgfqn}/build-${_arch}/sysinclude"
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
