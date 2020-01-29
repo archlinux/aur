@@ -1,26 +1,26 @@
-# Maintainer: 71e6fd52 <71e6fd52@gmail.com>
+# Maintainer: Hao Long <aur@esd.cc>
+# Contributor: 71e6fd52 <71e6fd52@gmail.com>
 
-pkgbase='python-aioamqp'
-pkgname=('python-aioamqp')
-_module='aioamqp'
-pkgver='0.13.0'
+pkgname=python-aioamqp
+_module=aioamqp
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="AMQP implementation using asyncio"
 url="https://github.com/polyconseil/aioamqp"
-depends=('python')
+depends=('python-pamqp')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('ced0d2bb0054809b37b0636da34fc7cda23d66943fb5f9f0610555988cf347b2')
+sha256sums=('eef5c23a7fedee079d8326406f5c7a5725dfe36c359373da3499fffa16f79915')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd ${_module}-${pkgver}
     python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd ${_module}-${pkgver}
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
