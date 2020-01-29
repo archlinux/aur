@@ -1,7 +1,7 @@
 pkgbase = astromenace-git
 	pkgdesc = The latest version of hardcore 3D space shooter with spaceship upgrade possibilities - git version
 	pkgver = v1.4.1.r23.g647f9017
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.viewizard.com/astromenace/index_linux.php
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = astromenace-git
 	makedepends = cmake
 	depends = sdl2
 	depends = freealut
-	depends = libjpeg
 	depends = libvorbis
 	depends = glu
 	depends = freetype2
