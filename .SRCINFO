@@ -1,0 +1,21 @@
+pkgbase = nim-legacy
+	pkgdesc = Imperative, multi-paradigm, compiled programming language
+	pkgver = 0.17.2
+	pkgrel = 2
+	url = https://nim-lang.org/
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = bash
+	provides = nim
+	conflicts = nim
+	options = !emptydirs
+	source = nim-legacy-0.17.2.tar.gz::https://github.com/nim-lang/Nim/archive/v0.17.2.tar.gz
+	source = csources-0.17.2.tar.gz::https://github.com/nim-lang/csources/archive/v0.17.2.tar.gz
+	sha256sums = eb8a98c7e576e8d858de98473569a29c539308fc7bb15a086b3f2b73d675f752
+	sha256sums = 7eb28ba7d5a03d02fc1c1fd9089c037de9c058d327fd6e95d599db63d9afa9c8
+	sha512sums = 02d773a338cf4aeeedd614fbd694feb4b64c620e63415a979e9f4fdf29d306315ab8a07d81f7a5389744d6f526eee2b1774a1ee7a6911f5bd03bdbb0e30061e7
+	sha512sums = 4a8f1e87bd96ab33998b0d3415c0ba9560b78795e0396d8af8b588a93c23477097f2c5388b4e612fbc142b490480326b394a933c805a3585cd6f3d7e8390e3e6
+
+pkgname = nim-legacy
+
