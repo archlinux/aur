@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.29.0.747.gc7d0a8f58e
+pkgver=v0.32.0.2.gcbfcd3e703
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -58,10 +58,10 @@ makedepends=(
              'ffnvcodec-headers'
              )
 optdepends=(
-            'mpv-bash-completion-git: Additional completion definitions for Bash users'
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
+            'bash-completion: Additional completion definitions for Bash users'
             )
 provides=('mpv'
           'libmpv.so'
