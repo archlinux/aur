@@ -3,31 +3,36 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
+
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 _qt_module=qtcharts
-pkgname="mingw-w64-qt5-charts"
-pkgver=5.14.0
+pkgname=mingw-w64-qt5-charts
+pkgver=5.14.1
 pkgrel=1
 arch=('any')
 pkgdesc="Provides a set of easy to use chart components (mingw-w64)"
 depends=('mingw-w64-qt5-base' 'mingw-w64-pkg-config')
 optdepends=('mingw-w64-qt5-declarative: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('ce7e22ca84e6a5fb85d6eb9e196407e0fa02848187548a2c388668e71f41a346')
+sha256sums=('3dd7466c06130ec3a7842189a203a72576e7ed5424950903410fa1a4f70d9c2b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
@@ -38,7 +43,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
