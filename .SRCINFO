@@ -1,0 +1,17 @@
+pkgbase = v1541commander
+	pkgdesc = virtual 1541 disk commander that allows you to create and modify D64 disk images (for the Commodore 1541 floppy drive).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/excess-c64/v1541commander
+	arch = i686
+	arch = x86_64
+	license = custom
+	source = v1541commander-v1.0.tar.gz::https://github.com/excess-c64/v1541commander/archive/v1.0.tar.gz
+	source = lib1541img-v1.0.tar.gz::https://github.com/excess-c64/lib1541img/archive/v1.0.tar.gz
+	source = zimk.tar.gz::https://github.com/Zirias/zimk/archive/31500ca556f258ab2d37d75fb8de5506cbdd5840.tar.gz
+	md5sums = a47887bd4eb570e07339400ce494182e
+	md5sums = 4fb415b69b23fbd79c0c77bb8a7cb91c
+	md5sums = b7a17162aeb953fb938c4ea4597f8fd8
+
+pkgname = v1541commander
+
