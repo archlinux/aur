@@ -34,6 +34,14 @@ cheatpaths:
   #
   # Note that the paths and tags listed below are just examples. You may freely
   # change them to suit your needs.
+  #
+  # TODO: regarding community cheatsheets: these must be installed separately.
+  # You may download them here:
+  #
+  # https://github.com/cheat/cheatsheets
+  #
+  # Once downloaded, ensure that 'path' below points to the location at which
+  # you downloaded the community cheatsheets.
   - name: community
     path: /usr/share/cheat/cheatsheets/community
     tags: [ community ]
