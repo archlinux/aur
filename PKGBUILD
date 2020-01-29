@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 pkgname=cheat
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git'
         'https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt')
-sha256sums=('a2104f0c7f9a7c00c4792405763406bac99ba89321fb8fc192619a450f1b4c17'
+sha256sums=('dba109065c383f9b0b2f20f3069c2a4ca95a9fdac7cda101054cd47de66733cb'
             '1eb318c8c8ada85bf1d63b88244d644ad0657f7f2a2678099a3ae1f6e6d76a1b'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
