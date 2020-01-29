@@ -1,4 +1,4 @@
-From 3b2e2f35716d183cba076dfea9de6ce73bd2ed1d Mon Sep 17 00:00:00 2001
+From 4da7840c0167fba67d57c7879291b996b094ca0b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 20:59:54 +0100
 Subject: [PATCH 25/31] Ignore errors about missing feature static
@@ -21,10 +21,10 @@ index 8273ba3fe1..4cdb55d4b3 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 diff --git a/mkspecs/features/qt_functions.prf b/mkspecs/features/qt_functions.prf
-index 661b7dd961..86c873e3fd 100644
+index 7777e615bd..5f30366660 100644
 --- a/mkspecs/features/qt_functions.prf
 +++ b/mkspecs/features/qt_functions.prf
-@@ -359,5 +359,5 @@ defineTest(qtConfig) {
+@@ -370,5 +370,5 @@ defineTest(qtConfig) {
          contains(QT.$${module}.disabled_features, $$1): \
              return(false)
      }
@@ -32,5 +32,5 @@ index 661b7dd961..86c873e3fd 100644
 +    !equals($$1, "static"): error("Could not find feature $${1}.")
  }
 -- 
-2.24.1
+2.25.0
 

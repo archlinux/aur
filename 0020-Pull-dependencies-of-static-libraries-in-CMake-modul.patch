@@ -1,4 +1,4 @@
-From 7a38a4a01fd72504c0196bc100bbaaa7138f149b Mon Sep 17 00:00:00 2001
+From 987965be28fab78041880dfbede4be209e142b26 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 20/31] Pull dependencies of static libraries in CMake modules
@@ -29,12 +29,12 @@ in favour of 'how it used to work'.
 
 Change-Id: I6566d42d7e27d4cd23d261a0eacca9efad9ce6df
 ---
- .../data/cmake/Qt5BasicConfig.cmake.in        | 223 ++++++++++--------
- .../data/cmake/Qt5PluginTarget.cmake.in       |  84 +------
- 2 files changed, 135 insertions(+), 172 deletions(-)
+ .../data/cmake/Qt5BasicConfig.cmake.in        | 241 ++++++++++--------
+ .../data/cmake/Qt5PluginTarget.cmake.in       |  84 +-----
+ 2 files changed, 135 insertions(+), 190 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 364c23e750..a2ceede0cf 100644
+index 50364765fb..357c8b9cba 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -53,6 +53,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
@@ -59,16 +59,16 @@ index 364c23e750..a2ceede0cf 100644
  
          # file(STRINGS) replaces all semicolons read from the file with backslash semicolons.
          # We need to do a reverse transformation in CMake. For that we replace all backslash
-@@ -79,7 +87,7 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
-                 # Handle normal libraries passed as -lfoo
-                 set(_lib \"${CMAKE_MATCH_1}\")
-                 foreach(_standard_library ${_standard_libraries})
--                    if(_standard_library MATCHES \"^${_lib}(\\\\.lib)?$\")
-+                    if(_standard_library MATCHES \"^${_lib}(\\\\.lib|\\\\.a)?$\")
-                         set(_lib_is_default_linked TRUE)
-                         break()
-                     endif()
-@@ -120,6 +128,37 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+@@ -92,7 +100,7 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
+                     # Handle normal libraries passed as -lfoo
+                     set(_lib \"${CMAKE_MATCH_1}\")
+                     foreach(_standard_library ${_standard_libraries})
+-                        if(_standard_library MATCHES \"^${_lib}(\\\\.lib)?$\")
++                        if(_standard_library MATCHES \"^${_lib}(\\\\.lib|\\\\.a)?$\")
+                             set(_lib_is_default_linked TRUE)
+                             break()
+                         endif()
+@@ -139,6 +147,37 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
      set(${lib_deps} ${_lib_deps} PARENT_SCOPE)
      set(${link_flags} \"SHELL:${_link_flags}\" PARENT_SCOPE)
  endfunction()
@@ -106,7 +106,7 @@ index 364c23e750..a2ceede0cf 100644
  !!ENDIF
  
  !!IF !equals(TEMPLATE, aux)
-@@ -133,52 +172,39 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
+@@ -152,61 +191,39 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
      set(imported_location \"$${CMAKE_DLL_DIR}${LIB_LOCATION}\")
  !!ENDIF
      _qt5_$${CMAKE_MODULE_NAME}_check_file_exists(${imported_location})
@@ -130,10 +130,10 @@ index 364c23e750..a2ceede0cf 100644
  !!ENDIF
 -        # For backward compatibility with CMake < 2.8.12
 -        \"IMPORTED_LINK_INTERFACE_LIBRARIES_${Configuration}\" \"${_deps};${_static_deps}\"
--    )
+     )
 -    set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
 -                 \"${_deps}\"
-     )
+-    )
 -
 -!!IF !isEmpty(CMAKE_STATIC_TYPE)
 -    if(NOT "${IsDebugAndRelease}")
@@ -150,20 +150,29 @@ index 364c23e750..a2ceede0cf 100644
 -        set(_static_deps_genex \"$<${_genex_condition}:${_static_deps}>\")
 -        set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
 -                     \"${_static_deps_genex}\"
--        )
--    endif()
--
--    set(_static_link_flags \"${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${Configuration}_LINK_FLAGS}\")
--    if(NOT CMAKE_VERSION VERSION_LESS \"3.13\" AND _static_link_flags)
--        set(_static_link_flags_genex \"$<${_genex_condition}:${_static_link_flags}>\")
--        set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_OPTIONS
--            \"${_static_link_flags_genex}\"
 +    _qt5_add_dependencies(Qt5::$${CMAKE_MODULE_NAME} \"${Configuration}\" \"${_deps}\")
 +    if(NOT CMAKE_VERSION VERSION_LESS \"3.13\")
 +        set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
 +            \"INTERFACE_LINK_OPTIONS\" \"${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${Configuration}_LINK_FLAGS}\"
          )
      endif()
+-
+-    set(_static_link_flags \"${_Qt5$${CMAKE_MODULE_NAME}_STATIC_${Configuration}_LINK_FLAGS}\")
+-    if(_static_link_flags)
+-        set(_static_link_flags_genex \"$<${_genex_condition}:${_static_link_flags}>\")
+-        if(NOT CMAKE_VERSION VERSION_LESS \"3.13\")
+-            set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_OPTIONS
+-                \"${_static_link_flags_genex}\"
+-            )
+-        else()
+-            # Abuse INTERFACE_LINK_LIBRARIES to add link flags when CMake version is too low.
+-            # Strip out SHELL:, because it is not supported in this property. And hope for the best.
+-            string(REPLACE \"SHELL:\" \"\" _static_link_flags_genex \"${_static_link_flags_genex}\")
+-            set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                \"${_static_link_flags_genex}\"
+-            )
+-        endif()
+-    endif()
 +!!ELSE
 +    set_target_properties(Qt5::$${CMAKE_MODULE_NAME} PROPERTIES
 +        \"INTERFACE_LINK_LIBRARIES_${Configuration}\" \"${_deps}\"
@@ -177,7 +186,7 @@ index 364c23e750..a2ceede0cf 100644
  !!ENDIF
  
  !!IF !isEmpty(CMAKE_WINDOWS_BUILD)
-@@ -195,6 +221,15 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
+@@ -223,6 +240,15 @@ macro(_populate_$${CMAKE_MODULE_NAME}_target_properties Configuration LIB_LOCATI
      endif()
  !!ENDIF
  endmacro()
@@ -193,7 +202,7 @@ index 364c23e750..a2ceede0cf 100644
  !!ENDIF
  
  if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
-@@ -380,13 +415,15 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -408,13 +434,15 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  
      add_library(Qt5::$${CMAKE_MODULE_NAME} STATIC IMPORTED)
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY IMPORTED_LINK_INTERFACE_LANGUAGES "CXX")
@@ -211,7 +220,7 @@ index 364c23e750..a2ceede0cf 100644
  !!IF !equals(TEMPLATE, aux)
  !!IF !isEmpty(CMAKE_BUILD_IS_FRAMEWORK)
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY FRAMEWORK 1)
-@@ -403,6 +440,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -431,6 +459,56 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  
      set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY INTERFACE_QT_PLUGIN_TYPES \"$${CMAKE_MODULE_PLUGIN_TYPES}\")
  
@@ -268,7 +277,7 @@ index 364c23e750..a2ceede0cf 100644
      set(_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIRS_EXIST TRUE)
      foreach (_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR ${Qt5$${CMAKE_MODULE_NAME}_OWN_PRIVATE_INCLUDE_DIRS})
          if (NOT EXISTS ${_Qt5$${CMAKE_MODULE_NAME}_PRIVATE_DIR})
-@@ -421,9 +508,13 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -449,9 +527,13 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
                  list(APPEND _Qt5$${CMAKE_MODULE_NAME}_PRIVATEDEPS ${dep}Private)
              endif()
          endforeach()
@@ -282,7 +291,7 @@ index 364c23e750..a2ceede0cf 100644
      endif()
  
  !!IF !equals(TEMPLATE, aux)
-@@ -493,9 +584,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -521,9 +603,11 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
  !!ELSE
          \"$${CMAKE_IMPLIB_FILE_LOCATION_RELEASE}\" )
  !!ENDIF
@@ -296,7 +305,7 @@ index 364c23e750..a2ceede0cf 100644
  !!ENDIF // CMAKE_RELEASE_TYPE
  !!ENDIF // CMAKE_FIND_OTHER_LIBRARY_BUILD
  
-@@ -506,64 +599,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+@@ -534,73 +618,6 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
      )
  !!ENDIF // TEMPLATE != aux
  
@@ -340,11 +349,20 @@ index 364c23e750..a2ceede0cf 100644
 -        endif()
 -
 -        set(_static_link_flags \"${_Qt5${Plugin}_STATIC_${Configuration}_LINK_FLAGS}\")
--        if(NOT CMAKE_VERSION VERSION_LESS \"3.13\" AND _static_link_flags)
+-        if(_static_link_flags)
 -            set(_static_link_flags_genex \"$<${_genex_condition}:${_static_link_flags}>\")
--            set_property(TARGET Qt5::${Plugin} APPEND PROPERTY INTERFACE_LINK_OPTIONS
--                \"${_static_link_flags_genex}\"
--            )
+-            if(NOT CMAKE_VERSION VERSION_LESS \"3.13\")
+-                set_property(TARGET Qt5::${Plugin} APPEND PROPERTY INTERFACE_LINK_OPTIONS
+-                    \"${_static_link_flags_genex}\"
+-                )
+-            else()
+-                # Abuse INTERFACE_LINK_LIBRARIES to add link flags when CMake version is too low.
+-                # Strip out SHELL:, because it is not supported in this property. And hope for the best.
+-                string(REPLACE \"SHELL:\" \"\" _static_link_flags_genex \"${_static_link_flags_genex}\")
+-                set_property(TARGET Qt5::${Plugin} APPEND PROPERTY INTERFACE_LINK_LIBRARIES
+-                    \"${_static_link_flags_genex}\"
+-                )
+-            endif()
 -        endif()
 -!!ENDIF
 -    endmacro()
@@ -466,5 +484,5 @@ index 7b70cfed09..25f2162fe6 100644
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_TYPE \"$$CMAKE_PLUGIN_TYPE\")
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
 -- 
-2.24.1
+2.25.0
 
