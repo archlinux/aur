@@ -4,13 +4,14 @@ pkgbase = python-privy-git
 	pkgrel = 5
 	url = https://github.com/ofek/privy
 	arch = any
-	license = dual
+	license = MIT
+	license = Apache
 	makedepends = python-setuptools
 	depends = python-cryptography
 	depends = python-argon2_cffi
 	provides = python-privy
 	conflicts = python-privy
-	source = python-privy::git+https://github.com/ofek/privy.git
+	source = git+https://github.com/ofek/privy.git
 	sha256sums = SKIP
 
 pkgname = python-privy-git
