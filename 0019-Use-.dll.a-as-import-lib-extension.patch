@@ -1,4 +1,4 @@
-From ca8a7fc78a4e88a58f96674104662c2306949dbf Mon Sep 17 00:00:00 2001
+From 9388b61efd236a365cf12218bfc24f2ba7b24e2f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:26:18 +0200
 Subject: [PATCH 19/31] Use *.dll.a as import lib extension
@@ -14,21 +14,21 @@ Change-Id: I1175feedd96ef4940af87dc3662fedc8f4d1d764
  3 files changed, 26 insertions(+), 9 deletions(-)
 
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index b8045753f0..cb4e136ded 100644
+index fa8c142ec5..e023f39a5d 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -328,8 +328,9 @@ mac {
-             CMAKE_PRL_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.prl
+@@ -332,8 +332,9 @@ mac {
+             CMAKE_PRL_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}$${debug_suffix}.prl
              CMAKE_PRL_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.prl
          } else {
--            CMAKE_IMPLIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.a
+-            CMAKE_IMPLIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}$${debug_suffix}.a
 -            CMAKE_IMPLIB_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.a
 +            isEmpty(QMAKE_EXTENSION_IMPORTLIB): QMAKE_EXTENSION_IMPORTLIB = a
-+            CMAKE_IMPLIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}d.$${QMAKE_EXTENSION_IMPORTLIB}
++            CMAKE_IMPLIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}$${debug_suffix}.$${QMAKE_EXTENSION_IMPORTLIB}
 +            CMAKE_IMPLIB_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.$${QMAKE_EXTENSION_IMPORTLIB}
          }
      } else {
-         CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}d.lib
+         CMAKE_LIB_FILE_LOCATION_DEBUG = $${CMAKE_QT_STEM}$${debug_suffix}.dll
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
 index bbada46c29..d6299d8eed 100644
 --- a/mkspecs/features/qt.prf
@@ -94,5 +94,5 @@ index c1b28a52e9..3b4372ad05 100644
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
 -- 
-2.24.1
+2.25.0
 
