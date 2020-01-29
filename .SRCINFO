@@ -1,7 +1,7 @@
 pkgbase = chordpro-git
 	pkgdesc = Reference implementation of the ChordPro standard for musical lead sheets.
-	pkgver = r615.e5d0da5
-	pkgrel = 2
+	pkgver = R0_974.r7.ge5d0da5
+	pkgrel = 1
 	url = https://github.com/ChordPro/chordpro
 	arch = any
 	license = Artistic2.0

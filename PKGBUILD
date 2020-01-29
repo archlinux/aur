@@ -3,8 +3,8 @@ _pkgname=chordpro
 _author="Johan Vromans"
 pkgname=chordpro-git
 pkgbase=chordpro-git
-pkgver=r615.e5d0da5
-pkgrel=2
+pkgver=R0_974.r7.ge5d0da5
+pkgrel=1
 pkgdesc='Reference implementation of the ChordPro standard for musical lead sheets.'
 arch=('any')
 url="https://github.com/ChordPro/chordpro"
@@ -18,10 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
