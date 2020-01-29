@@ -1,6 +1,6 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=overgrive
-pkgver=3.3.7
+pkgver=3.3.5
 pkgrel=0
 pkgdesc='A complete Google Drive™ desktop client solution for Linux'
 arch=('x86_64')
