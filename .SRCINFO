@@ -1,7 +1,7 @@
 pkgbase = cubieboard-livesuit
 	pkgdesc = LiveSuit is a tool to flash Images to the NAND of Allwinner devices, such as Cubieboard1, Cubieboard2, and Cubietruck. This package use the ZIP that comes from official Cubieboard download page.
 	pkgver = 306
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cubieboard.org
 	install = cubieboard-livesuit.install
 	arch = i686

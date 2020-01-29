@@ -3,7 +3,7 @@
 
 pkgname=cubieboard-livesuit
 pkgver=306
-pkgrel=3
+pkgrel=4
 pkgdesc="LiveSuit is a tool to flash Images to the NAND of Allwinner devices, such as Cubieboard1, Cubieboard2, and Cubietruck. This package use the ZIP that comes from official Cubieboard download page."
 arch=('i686' 'x86_64')
 url="http://cubieboard.org"
@@ -42,6 +42,7 @@ build() {
     # Kernel module awusb
     cd ${srcdir}/${pkgname}/awusb
     patch -Np1 -i ${srcdir}/awusb-fix.patch
+    sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i Makefile
     make
 }
 
