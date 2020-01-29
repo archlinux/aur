@@ -16,7 +16,7 @@ makedepends=('git')
 #conflicts=()
 source=("git+https://github.com/asbru-cm/asbru-cm.git#branch=loki" asbru-cm-loki.desktop)
 sha256sums=('SKIP'
-            '2a79176347ca05ae465ee9c6e64b252d67dc3cfb6d1df92b1cfb9b0b731c2561')
+            '6c22432e241f0743f8ac294b7623cbce5a41b0a8c859677853450e5451dc3d99')
 
 package() {
 	cd ${srcdir}/${_pkgname}
