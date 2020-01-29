@@ -10,7 +10,7 @@ pkgbase = python-pyautogui
 	depends = python-pyscreeze
 	depends = python-pytweening
 	depends = python-mouseinfo
-	source = https://files.pythonhosted.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.48.tar.gz
+	source = https://pypi.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.48.tar.gz
 	sha256sums = e91a25c1cdf826e7d0581775b5fbe47f7e12af79e0eb9dc3e1488ba99f2e0c60
 
 pkgname = python-pyautogui
