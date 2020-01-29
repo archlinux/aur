@@ -1,0 +1,14 @@
+pkgbase = arch-rcscripts-git
+	pkgdesc = Daemon scripts for initscripts-fork
+	pkgver = latest
+	pkgrel = 1
+	url = https://bitbucket.org/TZ86/arch-rcscripts
+	arch = any
+	license = GPL2
+	depends = initscripts-fork
+	source = git+https://bitbucket.org/TZ86/arch-rcscripts
+	sha256sums = SKIP
+
+pkgname = arch-rcscripts-git
+	backup = etc/conf.d/
+
