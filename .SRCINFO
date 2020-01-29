@@ -1,6 +1,6 @@
 pkgbase = vimrc-git
 	pkgdesc = The ultimate Vim configuration: vimrc
-	pkgver = r379.46195e4c
+	pkgver = r380.dbcdace7
 	pkgrel = 1
 	url = https://github.com/amix/vimrc
 	install = vimrc-git.install
