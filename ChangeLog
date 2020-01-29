@@ -1,0 +1,179 @@
+ver 1.4:
+	Fix issue with handling Crypto-Binding and invalid MACs.
+	Fix issue with handling change station error results.
+	Fix issue with handling DNS resolving installations.
+
+ver 1.3:
+	Fix issue with handling EAP-GTC and password requests.
+	Fix issue with handling Crypto-Binding TLV for PEAPv0.
+	Fix issue with handling key installation and PEAP Phase 2.
+	Fix issue with handling externally triggered scan requests.
+	Fix issue with handling RCPI calculation for RRM requests.
+
+ver 1.2:
+	Fix issue with handling scan requests while connecting.
+	Fix issue with handling scan duration for RRM requests.
+	Fix issue with handling parent TSF value for RRM requests.
+
+ver 1.1:
+	Fix issue with simple configuration support checks.
+	Fix issue with handling TLS tunnel and PEAPv0.
+	Add support for radio resource management.
+
+ver 1.0:
+	Add support for stable D-Bus interfaces.
+	Add support for network configuration documentation.
+
+ver 0.23:
+	Fix issue with strict certificate chain checks.
+	Fix issue with parsing RSNE_ADVANCE information.
+	Fix issue with parsing RSN information for WPA1.
+	Fix issue with logic error in scan frequency validation.
+	Fix issue with integer overflow and authentication frames.
+	Add support for installing various manual pages.
+
+ver 0.22:
+	Fix issue with hotplug and device capability detection.
+	Add support for IPv6 network configuration handling.
+	Add support for embedding certificates in profiles.
+
+ver 0.21:
+	Fix issue with cleartext ACK and tunneled EAP-Success.
+	Fix issue with setting bits in extended capabilities.
+	Fix issue with WPA-1 information element parsing.
+	Add support for handling QoS Map IE and frames.
+	Add support for STATE_DIRECTORY environment.
+	Add support for CONFIGURATION_DIRECTORY environment.
+
+ver 0.20:
+	Add support for adding Extended Capabilities bits.
+	Add support for ServerDomainMask configuration option.
+
+ver 0.19:
+	Add support for Hotspot 2.0 functionality.
+	Add support for FILS Fast Transition feature.
+	Add support for network configuration handling.
+	Add support for resolution services framework.
+
+ver 0.18:
+	Fix issue with handling stale scan results.
+	Fix issue with handling OWE group renegotiation.
+	Fix issue with handshake failures on FT-PSK.
+	Add support for FILS (Fast Initial Link Setup).
+
+ver 0.17:
+	Fix issue with handling association failure path.
+	Fix issue with handling checks for valid ECC point/scalar.
+	Fix issue with handling potential infinite loop and SAE.
+	Fix issue with handling randomization for passive scans.
+	Add support for randomization of SN for probe requests.
+	Add support for handling the FILS cipher suites.
+	Add support for ERP key caching feature.
+
+ver 0.16:
+	Add missing pkcs8.conf for module loading.
+
+ver 0.15:
+	Fix issue with handling RSSI thresholds.
+	Fix issue with handling abort for a connection.
+	Fix issue with stopping Access Point operation.
+	Add support for individual BSS blacklisting.
+	Add support for utilizing MAC randomization.
+	Add support for utilizing different key lengths.
+	Add support for 16, 24 and 32 byte MIC lengths.
+	Add support for handling driver rekying feature.
+
+ver 0.14:
+	Add support for tunneled MSCHAPv2 authentication.
+
+ver 0.13:
+	Fix issue with WSC interface runtime handling.
+	Add support for Opportunistic Wireless Encryption.
+	Add support for common EAP-TLS framework.
+
+ver 0.12:
+	Fix issue with handling 802.1x automatic connection.
+	Fix issue with handling missing support for backtrace.
+
+ver 0.11:
+	Fix issue with handling EAP-TTLS and redundant L flags.
+	Fix issue with handling EAP-TLS upper limit on request size.
+	Fix issue with handling handshake complete after setting keys.
+	Fix issue with handling access points with too many rates.
+	Fix issue with requiring PSK if passphrase is present.
+	Add support for retrieving list of hidden access points.
+	Add support for tunneled MS-CHAP.
+
+ver 0.10:
+	Fix issue with Ethernet authentication packet handling.
+	Fix issue with ad-hoc network scan results in station mode.
+	Fix issue with cancellation of ongoing rekey offload.
+	Add support for setting per-mac GTK credentials.
+	Add support for using external Embedded Linux library.
+
+ver 0.9:
+	Fix issue with handling EAP-WSC passwords.
+	Add support for TTLS-CHAP and TTLS-PAP.
+	Add support for handling FT over SAE.
+
+ver 0.8:
+	Fix issue with handling EAP_CACHE_NEVER secret types.
+	Fix issue with redundant usage of the L flag and PEAP.
+	Fix issue with EAP type 33 as termination mechanism for PEAPv1.
+	Add initial version of Ethernet authentication daemon.
+	Add support for Station mode interface.
+
+ver 0.7:
+	Fix issue with hard coded peer address and SAE networks.
+	Fix issue with raw passphrase requirement and SAE networks.
+	Fix issue with differentiating authenticator and supplicant.
+	Fix issue with timestamps comparison of known networks.
+	Fix issue with handling cancellation of power callbacks.
+	Fix issue with honoring auto-connect setting on power up.
+	Fix issue with crash during operstate callbacks.
+
+ver 0.6:
+	Fix issue with syncing the PSK on first connection.
+	Fix issue with unnecessary known object removal events.
+
+ver 0.5:
+	Fix issue with EAPoL handling and Ad-Hoc networks.
+	Add support for using agent with EAP-GTC methods.
+	Add support for improved Known Networks management.
+	Add support for Simultaneous Authentication of Equals.
+	Add support for exposing supported modes of operation.
+	Add support for D-Bus auto-activation via systemd.
+
+ver 0.4:
+	Fix issue with handling all zero PMKID.
+	Fix issue with handling PEAP servers and M bit requirement.
+	Fix issue with handling MS-CHAP v2 and uninitialized memory.
+	Fix issue with handling memory leak and aborting connections.
+	Fix issue with handling memory leak and PSK configuration.
+	Fix issue with handling not yet running D-Bus daemon.
+	Add support for advanced scanning of hidden networks.
+	Add support for MAC address randomization.
+	Add support for Ad-Hoc network interface.
+	Add support for Access Point interface.
+
+ver 0.3:
+	Fix issue with auto-connect settings for open networks.
+	Fix issue with handling beacon loss in roaming situations.
+	Fix issue with handling bridged wireless network interfaces.
+	Fix issue with handling EAP identity prompt or notification.
+	Fix issue with handling EAP state reset and reauthentication.
+	Add support for user specified hidden network connections.
+	Add support for configuring WDS / 4ADDR operation.
+
+ver 0.2:
+	Fix issue with unsupported bands from roam scan frequency set.
+	Fix issue with handling disconnect by AP and by SME events.
+	Fix issue with string start calculation for MS-CHAP v2.
+	Add workaround for 0 oper class in neighbor report.
+	Add support for EAPoL over NL80211 kernel feature.
+	Add support for EAP-PWD authentication method.
+	Add support for EAP-GTC authentication method.
+	Add support for agent functionality to client.
+
+ver 0.1:
+	Initial public release.
