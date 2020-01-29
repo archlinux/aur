@@ -5,9 +5,9 @@
 
 pkgname=buildbot
 pkgdesc='The Continuous Integration Framework'
-pkgver=2.5.1
+pkgver=2.6.0
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -31,7 +31,7 @@ optdepends=(
 )
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit")
-sha256sums=('cee691d3e04481ff5b5ad3514d7fe0d5e3971c0dd9a4f67640e7dae7af6826a5'
+sha256sums=('0ac835b58db309bebcf00fa77687385551833b3dac1c66aa671d271776050c19'
             'SKIP'
             'SKIP')
 validpgpkeys=(
