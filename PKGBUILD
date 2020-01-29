@@ -1,13 +1,14 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Protesilaos Stavrou <info at protesilaos dot com>
 pkgname=tempus-themes-xfce4-terminal-git
-pkgver=r26.04b04e2
+pkgver=r28.be237ad
 pkgrel=1
 pkgdesc="Tempus themes for Xfce4 Terminal"
 arch=('any')
 url="https://protesilaos.com/tempus-themes"
 license=('GPL3')
 depends=('xfce4-terminal')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitlab.com/protesilaos/${pkgname%-git}.git")
