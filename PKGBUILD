@@ -1,8 +1,8 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=193.6015.43
+pkgver=201.3803.68
 _pkgname=RubyMine
-_pkgver=2019.3.2
+_pkgver=2020.1
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)."
 arch=('i686' 'x86_64')
@@ -12,15 +12,15 @@ license=('custom')
 depends=('desktop-file-utils' 'gtk-update-icon-cache')
 optdepends=('ruby: Ruby run/debug support')
 install=rubymine.install
-source=(https://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}.tar.gz
+source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('a96ea1ad1ad43fd17427d58f75a3ffa1c6af64da2f32a94f46cbeb0df3869f57'
+sha256sums=('ac236aae6d4ccd49b83995d6f2d351f0ff243c278ecbe797d692d197c8237877'
             '3daf0808e001e780bf610e4c9726a0ed190ab6293a30d0ed13aa63d88209c954'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${_pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     #Remove non-linux libs
     rm -rf "lib/libpty/macosx"
@@ -49,7 +49,7 @@ package() {
 
     #Pre-packaged program files
     install -d -m 755 "${pkgdir}/usr/share"
-    cp -a "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/usr/share/${pkgname}"
+    cp -a "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
 
     #Desktop application
     install -Dm644 "${pkgdir}/usr/share/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
@@ -59,7 +59,7 @@ package() {
 
     #License
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
+    find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
         install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
     #Java config
