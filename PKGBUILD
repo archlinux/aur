@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 optdepends=('python-paste' 'rstcheck')
 provides=("${pkgname%3k}")
 conflicts=("${pkgname%3k}")
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('cf8731dd0a9f7ef50b5dc253fe0174383e3fed295a653672aa918c059eef86ae')
 
 build() {

@@ -11,7 +11,7 @@ pkgbase = python-yolk3k
 	optdepends = rstcheck
 	provides = python-yolk
 	conflicts = python-yolk
-	source = https://files.pythonhosted.org/packages/source/y/yolk3k/yolk3k-0.9.tar.gz
+	source = https://pypi.org/packages/source/y/yolk3k/yolk3k-0.9.tar.gz
 	sha256sums = cf8731dd0a9f7ef50b5dc253fe0174383e3fed295a653672aa918c059eef86ae
 
 pkgname = python-yolk3k
