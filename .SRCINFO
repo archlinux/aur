@@ -11,13 +11,8 @@ pkgbase = python-spritex
 	depends = python-kivy
 	depends = python-pillow
 	depends = xclip
-	source = https://files.pythonhosted.org/packages/source/s/spritex/spritex-0.1.3.tar.gz
-	md5sums = 6ba03731f5e48b1864bd696c886921cc
+	source = https://github.com/codetorex/spritex/archive/0.1.3.tar.gz
+	md5sums = 1f276da550ffc52447731cd4976ea941
 
 pkgname = python-spritex
-	depends = python
-	depends = python-numpy
-	depends = python-kivy
-	depends = python-pillow
-	depends = xclip
 
