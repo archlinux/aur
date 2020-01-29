@@ -1,0 +1,19 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
+depends=('mingw-w64-qt5-base')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for prepare => begin
+
+  # don't build examples or tests
+  sed -i 's/ examples tests//' qtserialport.pro
+% end
