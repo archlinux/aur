@@ -5,7 +5,7 @@
 pkgname=archsysback
 pkgver=0.1
 pkgrel=1
-pkgdesc="Archiso config for building Arch Linux Live Backup iso from your running system"
+pkgdesc="Archiso config for building Arch Linux Live Backup iso from your installed system"
 arch=('any')
 url="https://github.com/toxin265/archsysback"
 license=('GPL')
