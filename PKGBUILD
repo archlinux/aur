@@ -3,8 +3,9 @@
 
 pkgname=bump2version
 pkgver=1.0.0
-pkgrel=1
-pkgdesc='Version-bump your software with a single command!'
+pkgrel=2
+pkgdesc='Version-bump your software with a single command! (bumpversion community fork)'
+provides=('bumpversion')
 conflicts=('bumpversion')
 arch=('any')
 url='https://github.com/c4urself/bump2version'
