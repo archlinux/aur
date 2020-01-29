@@ -1,0 +1,13 @@
+% layout 'mingw-w64-qt5-module';
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="Qt module to make text to speech and speech recognition easy (mingw-w64)"
+depends=('mingw-w64-qt5-multimedia')
+optdepends=()
+makedepends=('mingw-w64-gcc')
+# mingw-w64-flite and mingw-w64-speech-dispatcher are currently not available
+#optdepends=('mingw-w64-flite: flite TTS backend' 'mingw-w64-speech-dispatcher: speech-dispatcher TTS backend')
+#makedepends=('mingw-w64-gcc' 'mingw-w64-flite' 'mingw-w64-speech-dispatcher')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
