@@ -1,7 +1,7 @@
 pkgname=googleplaymusic
 _pkgname=GooglePlayMusic
 pkgver=1.1.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Google Play Music is a unofficial client to play your music."
 arch=('any')
 url="https://gitlab.com/google-play-music-desktop/application"
