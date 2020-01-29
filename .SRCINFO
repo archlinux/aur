@@ -1,5 +1,5 @@
 pkgbase = zabbix-agent-lts
-	pkgver = 4.0.16
+	pkgver = 4.0.17
 	pkgrel = 1
 	url = https://www.zabbix.com/
 	arch = i686
