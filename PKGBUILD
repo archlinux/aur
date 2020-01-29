@@ -1,19 +1,19 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 pkgname=python-pwntools-git
-pkgver=3.13.0beta0.r226.gfb117841
+pkgver=4.1.0beta0.r10.g42abafdd
 pkgrel=1
-pkgdesc='A CTF framework and exploit development library. (git branch dev3)'
+pkgdesc='A CTF framework and exploit development library. (git branch dev)'
 url='https://github.com/Gallopsled/pwntools'
 arch=('any')
 license=('GPL')
 makedepends=('make')
 depends=('python' 'python-intervaltree' 'python-pyelftools' 'python-tox' 'python-mako'
-         'python-unicorn' 'python-psutil' 'python-dateutil' 'python-pysocks' 'python-pygments'
+         'python-unicorn-git' 'python-psutil' 'python-dateutil' 'python-pysocks' 'python-pygments'
          'python-pip' 'python-pyserial' 'python-paramiko' 'ropgadget' 'python-capstone'
          'python-requests' 'python-psutil' 'python-packaging')
 optdepends=('gdb: binary debugging')
-source=("${pkgname}::git+https://github.com/Gallopsled/pwntools.git#branch=dev3")
+source=("${pkgname}::git+https://github.com/Gallopsled/pwntools.git#branch=dev")
 sha256sums=('SKIP')
 provides=('python-pwntools')
 
@@ -25,8 +25,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  #sed -i "s/'sortedcontainers<2.0'/'sortedcontainers'/" setup.py
-  #sed -i "s/'intervaltree<3.0'/'intervaltree'/" setup.py
 }
 
 build() {
