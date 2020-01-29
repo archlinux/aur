@@ -1,6 +1,6 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 pkgname=rke
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="An extremely simple, lightning fast Kubernetes installer that works everywhere."
 arch=('x86_64')
