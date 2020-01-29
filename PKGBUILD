@@ -3,7 +3,7 @@
 
 _pkgbasename=libsecret
 pkgname=lib32-$_pkgbasename
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Library for storing and retrieving passwords and other secrets (32-bit)"
 url="https://wiki.gnome.org/Projects/Libsecret"
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('lib32-glib2' 'lib32-libgcrypt' "${_pkgbasename}")
 makedepends=('gcc-multilib' 'intltool' 'gobject-introspection' 'vala' 'git' 'gtk-doc' 'meson' 'valgrind')
 optdepends=('org.freedesktop.secrets: secret storage backend')
-_commit=3939b03f39dfef9fa9c54f709d094893b90d82a0  # tags/0.20.0^0
+_commit=e4428dd29fb41672a2dff330a600ed7af2dc74de  # tags/0.20.1^0
 source=("git+https://gitlab.gnome.org/GNOME/libsecret.git#commit=$_commit")
 sha256sums=('SKIP')
 
