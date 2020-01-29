@@ -1,0 +1,4 @@
+11c11
+< ExecStart=/usr/local/bin/nebula -config /etc/nebula/config.yml
+---
+> ExecStart=/usr/bin/nebula -config /etc/nebula/config.yml

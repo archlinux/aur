@@ -1,0 +1,16 @@
+pkgbase = nebula-systemd
+	pkgdesc = A scalable overlay networking tool with a focus on performance, simplicity and security, patched to add systemd service
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/slackhq/nebula
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	provides = nebula
+	source = nebula-1.1.0.tar.gz::https://github.com/slackhq/nebula/archive/v1.1.0.tar.gz
+	source = service.patch
+	md5sums = 9de8388dc9ab4f7787def54c8ec410b4
+	md5sums = d36d89cd5caacb037dd238fea28659c4
+
+pkgname = nebula-systemd
+
