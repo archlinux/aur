@@ -4,8 +4,9 @@
 pkgname=nebula-systemd
 _pkgname=nebula
 provides=('nebula')
+conflicts=('nebula')
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A scalable overlay networking tool with a focus on performance, simplicity and security, patched to add systemd service'
 arch=('x86_64')
 url='https://github.com/slackhq/nebula'
