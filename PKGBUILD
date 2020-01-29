@@ -1,6 +1,6 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=overgrive
-pkgver=3.3.5
+pkgver=3.3.7
 pkgrel=0
 pkgdesc='A complete Google Drive™ desktop client solution for Linux'
 arch=('x86_64')
@@ -16,9 +16,9 @@ conflicts=('overgrive')
 install='overgrive.install'
 changelog=
 
-source=('https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.7-0-any.pkg.tar.xz')
+source=('overgrive.tar.xz::https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.3.7-0-any.pkg.tar.xz')
 noextract=('overgrive-3.3.7-0-any.pkg.tar.xz')
-md5sums=('1f44a4b705a58be1b94a22b73ad7c56')
+md5sums=('31f44a4b705a58be1b94a22b73ad7c56')
 
 prepare() {
     tar --extract --file=./overgrive-3.3.7-0-any.pkg.tar.xz
