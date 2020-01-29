@@ -1,6 +1,6 @@
 pkgbase = arduino-pro-ide
 	pkgdesc = The Arduino Pro IDE bring features that address the needs of advanced users whilst retaining continuity with the simple classic Arduino IDE.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-pro-ide
 	install = arduino-pro-ide.install
@@ -16,9 +16,10 @@ pkgbase = arduino-pro-ide
 	depends = libxkbfile
 	depends = python
 	optdepends = arduino-cli
-	source = arduino-pro-ide-0.0.3-alpha.preview-linux64.tar.xz::https://downloads.arduino.cc/arduino-pro-ide/arduino-pro-ide-0.0.3-alpha.preview-linux64.tar.xz
+	noextract = arduino-pro-ide-0.0.4-alpha.preview-linux64.zip
+	source = https://downloads.arduino.cc/arduino-pro-ide/arduino-pro-ide-0.0.4-alpha.preview-linux64.zip
 	source = git+git://github.com/arduino/arduino-pro-ide.git
-	sha256sums = 4207a7c7dda8875685cda56191ab7e053ccb051dae4c5b40319a9bc704a747f8
+	sha256sums = c92bb727a8a8b2b25c39bce1e7e3ddce49f9e04e7f8db3a7c01b051a72304572
 	sha256sums = SKIP
 
 pkgname = arduino-pro-ide
