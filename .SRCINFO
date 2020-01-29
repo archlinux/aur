@@ -1,0 +1,16 @@
+pkgbase = taigo
+	pkgdesc = A virtual pet for your desktop built with GTK+, Vala, and love
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Appadeia/taigo
+	arch = any
+	license = GPL
+	makedepends = vala
+	makedepends = meson
+	depends = gtk3
+	depends = clutter
+	source = taigo-0.3.tar.gz::https://github.com/Appadeia/taigo/archive/0.3.tar.gz
+	md5sums = 0cdf727a9f419365106bd5c77006af6e
+
+pkgname = taigo
+
