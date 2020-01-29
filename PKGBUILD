@@ -1,17 +1,17 @@
 # Maintainer: Timmy Yao <timmy.yao+aur@gmail.com>
 pkgname=authy
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Two-Factor Authentication from your PC. Converted from Windows electron version"
 arch=("x86_64")
 url="https://authy.com/"
 license=('ISC')
-depends=('electron4')
+depends=('electron')
 makedepends=('npm' 'p7zip' 'asar')
 source=("https://s3.amazonaws.com/authy-electron-repository-production/authy/stable/${pkgver}/win32/x64/Authy%20Desktop%20Setup%20${pkgver}.exe"
         "authy.desktop")
-md5sums=('bd2182d0ae4c957efe5f2d244d4dfdb5'
-         '4458c142b18a779ac51496138a3782d5')
+md5sums=('2612c816ae5ea59ecfbbaef02e26830b'
+         '6e27d1fc03a2ba89c0b6670d4f38b08b')
 
 build() {
 	cd "$srcdir"
