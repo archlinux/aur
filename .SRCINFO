@@ -1,0 +1,22 @@
+pkgbase = qmidiarp-git
+	pkgdesc = A MIDI arpeggiator, phrase generator and controller LFO for the ALSA sequencer.
+	pkgver = 0.6.5.r20.gd774efc
+	pkgrel = 1
+	url = https://sourceforge.net/projects/qmidiarp/
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL2
+	makedepends = lv2
+	makedepends = qt5-tools
+	depends = jack
+	depends = hicolor-icon-theme
+	depends = liblo
+	depends = qt5-base
+	provides = qmidiarp
+	conflicts = qmidiarp
+	source = qmidiarp::git://git.code.sf.net/p/qmidiarp/code
+	sha512sums = SKIP
+
+pkgname = qmidiarp-git
+
