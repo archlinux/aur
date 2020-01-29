@@ -5,43 +5,49 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
+
+# All patches are managed at https://github.com/Martchus/qttools
+
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 # For QQuickWidgetPlugin, add mingw-w64-qt5-declarative to dependencies (already present by default)
-# For QWebViewPlugin, add mingw-w64-qt5-webkit to dependencies
+# For QWebViewPlugin, add mingw-w64-qt5-webkit to dependencies (mingw-w64-qt5-webkit is no longer updated)
 # For QAxWidgetPlugin, add mingw-w64-qt5-activeqt to dependencies
 
-# All patches are managed at https://github.com/Martchus/qttools
+# Note that static MySQL and PostgreSQL plugins are disabled because mariadb-connector-c and posgresql come with their own pthread
+# implementation which has conflicting symbols with the pthread library Qt uses leading to errors like:
+# /usr/lib/gcc/i686-w64-mingw32/8.2.0/../../../../i686-w64-mingw32/bin/ld: /usr/i686-w64-mingw32/lib/libpthread.a(libwinpthread_la-mutex.o):
+# in function `pthread_mutex_lock': /build/mingw-w64-winpthreads/src/mingw-w64-v6.0.0/mingw-w64-libraries/winpthreads/src/mutex.c:187:
+# multiple definition of `pthread_mutex_lock'; /usr/i686-w64-mingw32/lib/libpq.a(pthread-win32.o):(.text+0x70): first defined here
 
 _qt_module=qttools
-pkgname="mingw-w64-qt5-tools"
-pkgver=5.14.0
+pkgname=mingw-w64-qt5-tools
+pkgver=5.14.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-vulkan-headers')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch')
-sha256sums=('8d7f8612ab6078fe7289d8a8dd8112b550fd0f51b5455df2dcfba651c30c3adf'
-            '4f21d5bf00a1bb868b1ba88de8b8eee2a6977b24a74e9dd3c7c7eb2ee09ba6e6')
+sha256sums=('7f5e6370cf4ed59f2bdd6517870cdcb1df9a055bbd885d056d90938ab302c70c'
+            'd40cb534f47950c6a7d372e40ed07efede64bf92810a6929372e531549d6d0f0')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-
-# can not use static MySQL and PostgreSQL plugin because mariadb-connector-c and posgresql come with their own pthread implementation
-# which has conflicting symbols with the pthread library Qt uses, e.g. one would get the following error message:
-#/usr/lib/gcc/i686-w64-mingw32/8.2.0/../../../../i686-w64-mingw32/bin/ld: /usr/i686-w64-mingw32/lib/libpthread.a(libwinpthread_la-mutex.o): in function `pthread_mutex_lock':                                                                  /build/mingw-w64-winpthreads/src/mingw-w64-v6.0.0/mingw-w64-libraries/winpthreads/src/mutex.c:187: multiple definition of `pthread_mutex_lock'; /usr/i686-w64-mingw32/lib/libpq.a(pthread-win32.o):(.text+0x70): first defined here
 
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge QTPLUGIN.sqldrivers=qsqlite QTPLUGIN.sqldrivers+=qsqlodbc CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=no_smart_library_merge QTPLUGIN.sqldrivers=qsqlite QTPLUGIN.sqldrivers+=qsqlodbc CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
@@ -61,8 +67,7 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
-
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done
@@ -118,11 +123,6 @@ package() {
       for tool in lconvert lupdate lrelease windeployqt; do
         ln -sf "../${_arch}/lib/qt/bin/${tool}" "${pkgdir}/usr/bin/${_arch}-$tool-qt5"
       done
-
-      # remove phrasebooks
-      # Would save around 300 KiB on your floppy disk, I keep them by default because
-      # phrasebooks might be useful when using Linguist
-      #rm -r "${pkgdir}/usr/${_arch}/share"
       popd
     done
 

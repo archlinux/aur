@@ -1,0 +1,45 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+# Contributor: Filip Brcic <brcha@gna.org>
+% end
+\
+% content_for comment_header => begin
+# For QQuickWidgetPlugin, add mingw-w64-qt5-declarative to dependencies (already present by default)
+# For QWebViewPlugin, add mingw-w64-qt5-webkit to dependencies (mingw-w64-qt5-webkit is no longer updated)
+# For QAxWidgetPlugin, add mingw-w64-qt5-activeqt to dependencies
+
+# Note that static MySQL and PostgreSQL plugins are disabled because mariadb-connector-c and posgresql come with their own pthread
+# implementation which has conflicting symbols with the pthread library Qt uses leading to errors like:
+# /usr/lib/gcc/i686-w64-mingw32/8.2.0/../../../../i686-w64-mingw32/bin/ld: /usr/i686-w64-mingw32/lib/libpthread.a(libwinpthread_la-mutex.o):
+# in function `pthread_mutex_lock': /build/mingw-w64-winpthreads/src/mingw-w64-v6.0.0/mingw-w64-libraries/winpthreads/src/mutex.c:187:
+# multiple definition of `pthread_mutex_lock'; /usr/i686-w64-mingw32/lib/libpq.a(pthread-win32.o):(.text+0x70): first defined here
+
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
+depends=('mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c' 'mingw-w64-vulkan-headers')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for static_config => begin
+CONFIG+=no_smart_library_merge QTPLUGIN.sqldrivers=qsqlite QTPLUGIN.sqldrivers+=qsqlodbc \
+% end
+\
+% content_for package_config => begin
+
+      # create symlinks for tools
+      mkdir -p "${pkgdir}/usr/bin"
+      for tool in lconvert lupdate lrelease windeployqt; do
+        ln -sf "../${_arch}/lib/qt/bin/${tool}" "${pkgdir}/usr/bin/${_arch}-$tool-qt5"
+      done
+% end
+\
+% content_for package => begin
+
+<%== include 'fragments/mingw-w64-qt5-executable_suffix' %>\
+% end
