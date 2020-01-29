@@ -1,0 +1,22 @@
+% layout 'mingw-w64-qt5-module';
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
+depends=('mingw-w64-qt5-base')
+optdepends=('mingw-w64-qt5-declarative: QML bindings')
+makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
+\
+% content_for build_config_before_make => begin
+
+      # search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
+      # hence we need insert those paths manually
+      make qmake_all
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.a /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.a|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
+      find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap ||g" {} \;
+
+% end
