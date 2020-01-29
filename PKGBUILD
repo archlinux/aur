@@ -3,7 +3,7 @@
 
 pkgname=latte-dock-git
 _gitname=latte-dock
-pkgver=r3619.5d65909a
+pkgver=r3698.bc2e0709
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='https://cgit.kde.org/latte-dock.git/'
 license=('GPL')
 depends=('plasma-framework' 'plasma-desktop')
 optdepends=('libunity: quicklists, counters, and progress bars for apps using libunity')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'python' 'ruby' 'subversion')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
 conflicts=('latte-dock')
 provides=('latte-dock')
 source=("git://anongit.kde.org/latte-dock.git")
@@ -29,10 +29,8 @@ build() {
 
    mkdir build && cd build
    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DKDE_L10N_BRANCH=trunk \
-        -DKDE_L10N_AUTO_TRANSLATIONS=OFF \
-        -DCMAKE_BUILD_TYPE=Release ..
-#      make fetch-translations
+         -DCMAKE_BUILD_TYPE=Release ..
+
   
 }
 
