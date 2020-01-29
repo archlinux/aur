@@ -1,0 +1,20 @@
+pkgbase = tvolnoti
+	pkgdesc = Lightweight volume notification
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.github.com/mihalea/tvolnoti
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = dbus
+	depends = dbus-glib
+	depends = gtk2
+	depends = gdk-pixbuf2
+	source = tvolnoti-1.0.0.tar.gz
+	md5sums = c848fce75298339d03c96a76e5445dec
+
+pkgname = tvolnoti
+
