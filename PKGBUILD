@@ -2,7 +2,7 @@
 # Maintainer: csicar
 # Contributor: csicar
 pkgname=fx_cast
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Implementation of the Chrome Sender API (Chromecast) within Firefox"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 groups=('')
 depends=('nodejs')
 options=('!strip' '!emptydirs')
-source=("https://github.com/hensm/fx_cast/releases/download/v0.0.4/fx_cast_bridge-0.0.4-x64.deb")
-sha512sums=('88442f7ccfc530c3807825c63a61aeaac3a923c2bdccbdf5324dc499f630dba544857a782ee9b3c43194707b660401aec5df1ea36be8b4d8bb1e9faf94aba805')
+source=("https://github.com/hensm/fx_cast/releases/download/v0.0.5/fx_cast_bridge-0.0.5-x64.deb")
+sha512sums=('1fbdaaea9a49f8e6282e965e5a61f88b4b1a5039251c97e39e62f81e792f9c82392e6a717f6ea52feb1771c2f373687cf95988fb4e4635e2ebd9b11a53644c7d')
 
 package(){
 
