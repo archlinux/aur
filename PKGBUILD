@@ -1,6 +1,6 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 pkgname=('etesync-server')
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A self-hostable EteSync server"
 arch=(any)
@@ -17,7 +17,7 @@ source=(https://github.com/etesync/server/archive/v"$pkgver".tar.gz
         $pkgname.install
         $pkgname.sysusers
         $pkgname)
-sha256sums=('db30e146efaceea181d8bdae825ebd7b5a383e806beae14df5f83e1196d01985'
+sha256sums=('d0728effa898a8b7afb4ce7439e0d0fd46bc819008925f21788d7e113435b579'
             '965e5eb9664f7aaf4e071c901d3be9b345b6480846c7146697d945e877a5480e'
             '7363b065206a40e067675d072c5ff269b32704ec89c4eed98e5d3edd71fca122'
             'd695d13c339c72fde298d5f751e99a6f6c4da467692a6c1be352dfe7a9c8791a')
