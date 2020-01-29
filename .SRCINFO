@@ -1,6 +1,6 @@
 pkgbase = kubernetes-helm
 	pkgdesc = A tool to manage Kubernetes charts
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/helm/helm
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = kubernetes-helm
 	conflicts = kubernetes-helm-bin
 	conflicts = kubernetes-helm
 	conflicts = kubernetes-helm-git
-	source = git+https://github.com/helm/helm#tag=v3.0.2
+	source = git+https://github.com/helm/helm#tag=v3.0.3
 	md5sums = SKIP
 
 pkgname = kubernetes-helm
