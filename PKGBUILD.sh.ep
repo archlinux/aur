@@ -1,0 +1,14 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+# Contributor: Filip Brcic <brcha@gna.org>
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="Provides access to sensor hardware and motion gesture recognition (mingw-w64)"
+depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
