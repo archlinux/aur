@@ -70,12 +70,6 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/lxde/lxqt.git")
 sha256sums=("SKIP")
 
-
-pkgver() {
-	cd "$srcdir/$_pkgname"
-	git describe --always | sed "s/-/./g"
-}
-
 build() {
 	msg2 "This is a metapackage. Nothing will be built."
 }
