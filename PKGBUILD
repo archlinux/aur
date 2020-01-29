@@ -2,7 +2,7 @@
 pkgname=mustach
 pkgver=0.99
 pkgrel=1
-description="mustach is a C implementation of the mustache template specification.
+pkgdesc="mustach is a C implementation of the mustache template specification.
 See : http://mustache.github.io/"
 arch=('x86_64')
 url="https://gitlab.com/jobol/mustach/"
