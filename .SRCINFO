@@ -43,6 +43,7 @@ pkgbase = lxqt-kwin-desktop-git
 	optdepends = mystiq: FFmpeg GUI front-end based on Qt5.
 	optdepends = ffaudioconverter: Graphical audio converter
 	optdepends = converseen: A batch image processor
+	optdepends = photoflare: Quick, simple but powerful Cross Platform image editor.
 	optdepends = shotcut: video editor
 	optdepends = qvkbd: Qt Virtual Keyboard
 	optdepends = simplescreenrecorder: A feature-rich screen recorder that supports X11 and OpenGL
