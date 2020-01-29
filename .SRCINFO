@@ -1,10 +1,11 @@
 pkgbase = tempus-themes-tilix-git
 	pkgdesc = Tempus themes for the Tilix terminal emulator
-	pkgver = r23.2bf069e
+	pkgver = r25.b961ab1
 	pkgrel = 1
 	url = https://protesilaos.com/tempus-themes
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = tilix
 	provides = tempus-themes-tilix
 	conflicts = tempus-themes-tilix
