@@ -1,0 +1,21 @@
+% layout 'mingw-w64-qt5-module';
+\
+% content_for additional_contributors => begin
+# Contributor: ant32 <antreimer@gmail.com>
+% end
+\
+% content_for comment_header => begin
+# Skip building mapboxgl as it increases compile time significantly and
+# likely not a lot of people actually using it; if you need it, just remove the
+# following line:
+_additional_qmake_args+='QT.global.disabled_features+=geoservices_mapboxgl'
+
+% end
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
+depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL' 'FDL' 'custom')
