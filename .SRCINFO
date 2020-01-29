@@ -1,10 +1,11 @@
 pkgbase = tempus-themes-gtksourceview4-git
 	pkgdesc = Tempus themes for GTK4 syntax highlighting
-	pkgver = r7.85fddec
+	pkgver = r9.ea9f616
 	pkgrel = 1
 	url = https://protesilaos.com/tempus-themes
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = gtksourceview4
 	provides = tempus-themes-gtksourceview4
 	conflicts = tempus-themes-gtksourceview4
