@@ -1,4 +1,5 @@
 # Maintainer: Alexander Kjäll <alexander.kjall@gmail.com>
+# Maintainer: Stig Otnes Kolstad <stig@stigok.com>
 pkgname=ripasso-git
 pkgrelname=ripasso
 pkgver=294.a6e83b9
